@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: f133572b0c3163f5c5fe0a5c2e48ce5e6d53adcc
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: bb12224fd29d50765bc56a531787b7a0849cd06e
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767737"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075785"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>快速入門：使用應用程式設定建立 .NET Core 應用程式
 
@@ -40,7 +40,7 @@ ms.locfileid: "91767737"
 
 ## <a name="create-a-net-core-console-app"></a>建立 .NET Core 主控台應用程式
 
-您會使用 [.NET Core 命令列介面 (CLI)](https://docs.microsoft.com/dotnet/core/tools/) 來建立新的 .NET Core 主控台應用程式專案。 使用 .NET Core CLI 而非 Visual Studio 的好處，在於 .NET Core CLI 可同時於 Windows、macOS 及 Linux 平台上取得。  或者，使用 [Azure Cloud Shell](https://shell.azure.com) 中提供的預先安裝工具。
+您會使用 [.NET Core 命令列介面 (CLI)](/dotnet/core/tools/) 來建立新的 .NET Core 主控台應用程式專案。 使用 .NET Core CLI 而非 Visual Studio 的好處，在於 .NET Core CLI 可同時於 Windows、macOS 及 Linux 平台上取得。  或者，使用 [Azure Cloud Shell](https://shell.azure.com) 中提供的預先安裝工具。
 
 1. 為您的專案建立新資料夾。
 
@@ -124,7 +124,7 @@ ms.locfileid: "91767737"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已建立新的應用程式組態存放區，並透過[應用程式組態提供者](https://go.microsoft.com/fwlink/?linkid=2074664)將其與 .NET Corek 主控台應用程式搭配使用。 若要了解如何將 .NET Core 應用程式設定為以動態方式重新整理組態設定，請繼續進行下一個教學課程。
+在本快速入門中，您已建立新的應用程式組態存放區，並透過[應用程式組態提供者](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)將其與 .NET Corek 主控台應用程式搭配使用。 若要了解如何將 .NET Core 應用程式設定為以動態方式重新整理組態設定，請繼續進行下一個教學課程。
 
 > [!div class="nextstepaction"]
 > [啟用動態組態](./enable-dynamic-configuration-dotnet-core.md)

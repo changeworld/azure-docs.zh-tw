@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: 7228368645023ffc7debbc84adb8e3b7c27b1bbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f5f920f14a556d63f433b36658d7b265d51a28d
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728432"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340371"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure 資訊安全中心的安全性警示
 
@@ -98,5 +98,4 @@ Azure 資訊安全中心的優勢在於 Microsoft 上上下下都設有資訊安
 
 在本文中，您了解到資訊安全中心中不同類型的警示。 如需詳細資訊，請參閱
 
-- **Azure 活動記錄中的安全性警示**：Azure 入口網站有提供安全性警示，也可透過程式設計方式取得，此外安全性警示和事件還會在 [Azure 活動記錄](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)中以事件的形式接受稽核。 如需事件結構描述的詳細資訊，請參閱 [Azure 活動記錄中的安全性警示](https://go.microsoft.com/fwlink/?linkid=2114113) (英文)
-
+- **Azure 活動記錄中的安全性警示**：Azure 入口網站有提供安全性警示，也可透過程式設計方式取得，此外安全性警示和事件還會在 [Azure 活動記錄](../azure-monitor/platform/activity-log.md#view-the-activity-log)中以事件的形式接受稽核。 如需事件結構描述的詳細資訊，請參閱 [Azure 活動記錄中的安全性警示](https://go.microsoft.com/fwlink/?linkid=2114113) (英文)

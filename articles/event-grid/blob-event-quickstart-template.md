@@ -3,12 +3,13 @@ title: 將 Blob 儲存體事件傳送至 Web 端點 - 範本
 description: 使用 Azure 事件方格和 Azure Resource Manager 範本來建立 Blob 儲存體帳戶，並訂閱其事件。 將事件傳送到 Webhook。
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: fc6216142c6bec99cb12bf4e0bdae920f27f1bf2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: subject-armqs
+ms.openlocfilehash: bfaee324f3e46f64fd4ad0d8b7e1240331b56c27
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91598355"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093645"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>快速入門：使用 ARM 範本將 Blob 儲存體事件路由至 Web 端點
 

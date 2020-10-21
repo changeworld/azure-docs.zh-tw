@@ -7,12 +7,12 @@ ms.subservice: enterprise
 ms.topic: article
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 652348d5feb7e382287c91536f1479f9aec126e1
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 777c8549d79f820c1847e711969919df128cebd3
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031801"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132409"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>使用 REST API 檢閱 Enterprise 註冊計費
 
@@ -37,9 +37,9 @@ Authorization: Bearer
 |要求標頭|描述|  
 |--------------------|-----------------|  
 |*Content-Type:*|必要。 設定為 `application/json`。|  
-|*Authorization:*|必要。 設定為有效的 `Bearer` [API 金鑰](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)。 |  
+|*Authorization:*|必要。 設定為有效的 `Bearer` [API 金鑰](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)。 |  
 
-此範例示範傳回目前計費週期詳細資料的同步呼叫。 基於效能的考量，同步呼叫會傳回過去一個月的資訊。  您也可以[非同步呼叫 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) 傳回 36 個月的資料。
+此範例示範傳回目前計費週期詳細資料的同步呼叫。 基於效能的考量，同步呼叫會傳回過去一個月的資訊。  您也可以[非同步呼叫 API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) 傳回 36 個月的資料。
 
 
 ## <a name="response"></a>回應  
@@ -90,9 +90,9 @@ Authorization: Bearer
 |要求標頭|描述|  
 |--------------------|-----------------|  
 |*Content-Type:*|必要。 設定為 `application/json`。|  
-|*Authorization:*|必要。 設定為有效的 `Bearer` [API 金鑰](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)。 |  
+|*Authorization:*|必要。 設定為有效的 `Bearer` [API 金鑰](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)。 |  
 
-此範例示範傳回目前計費週期詳細資料的同步呼叫。 基於效能的考量，同步呼叫會傳回過去一個月的資訊。  您也可以[非同步呼叫 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) 傳回 36 個月的資料。
+此範例示範傳回目前計費週期詳細資料的同步呼叫。 基於效能的考量，同步呼叫會傳回過去一個月的資訊。  您也可以[非同步呼叫 API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) 傳回 36 個月的資料。
 
 ### <a name="response"></a>回應  
 
@@ -146,9 +146,9 @@ Authorization: Bearer
 |要求標頭|描述|  
 |--------------------|-----------------|  
 |*Content-Type:*|必要。 設定為 `application/json`。|  
-|*Authorization:*|必要。 設定為有效的 `Bearer` [API 金鑰](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)。 |  
+|*Authorization:*|必要。 設定為有效的 `Bearer` [API 金鑰](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)。 |  
 
-此範例示範傳回目前計費週期詳細資料的同步呼叫。 基於效能的考量，同步呼叫會傳回過去一個月的資訊。  您也可以[非同步呼叫 API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) 傳回 36 個月的資料。
+此範例示範傳回目前計費週期詳細資料的同步呼叫。 基於效能的考量，同步呼叫會傳回過去一個月的資訊。  您也可以[非同步呼叫 API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) 傳回 36 個月的資料。
 
 ### <a name="response"></a>回應  
 
@@ -183,6 +183,6 @@ Authorization: Bearer
 此範例已經過縮減；如需每個回應欄位和錯誤處理的完整說明，請參閱[取得註冊帳戶的使用量詳細資料](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist-legacy)。
 
 ## <a name="next-steps"></a>後續步驟
-- 檢閱[企業報告概觀](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
-- 調查[企業計費 REST API](https://docs.microsoft.com/rest/api/billing/)   
-- [Get started with Azure REST API](https://docs.microsoft.com/rest/api/azure/) (開始使用 Azure REST API)   
+- 檢閱[企業報告概觀](./enterprise-api.md)
+- 調查[企業計費 REST API](/rest/api/billing/)   
+- [Get started with Azure REST API](/rest/api/azure/) (開始使用 Azure REST API)

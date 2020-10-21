@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: e6bb3389fe035b1ccfbefaca788a40530581ac7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2b17e15c5548b4c9b93a62a7d4dfe62ff44404c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851036"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341748"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure 資訊安全中心中的適應性網路強化
 瞭解如何在安全中心設定自動調整網路強化功能。
@@ -33,7 +33,7 @@ ms.locfileid: "91851036"
 |||
 
 ## <a name="what-is-adaptive-network-hardening"></a>什麼是適應性網路強化？
-將 [網路安全性群組套用 (NSG) ](https://docs.microsoft.com/azure/virtual-network/security-overview) ，以篩選進出資源的流量，進而改善您的網路安全性狀況。 但在某些情況下，透過 NSG 傳輸的實際流量仍有可能包含在已定義的 NSG 規則中。 在這些情況下，您可以根據實際的流量模式強化 NSG 規則，以進一步改善安全性態勢。
+將 [網路安全性群組套用 (NSG) ](../virtual-network/network-security-groups-overview.md) ，以篩選進出資源的流量，進而改善您的網路安全性狀況。 但在某些情況下，透過 NSG 傳輸的實際流量仍有可能包含在已定義的 NSG 規則中。 在這些情況下，您可以根據實際的流量模式強化 NSG 規則，以進一步改善安全性態勢。
 
 彈性網路強化可提供建議，以進一步強化 NSG 規則。 此功能會使用將實際流量、已知的信任設定、威脅情報和其他危害指標等因素納入考量的機器學習演算法，然後提供建議，而僅允許來自特定 IP/連接埠元組的流量。
 
@@ -93,7 +93,7 @@ ms.locfileid: "91851036"
 * 您無法將「允許」規則變更為「拒絕」規則。 
 
   > [!NOTE]
-  > 建立和修改「拒絕」規則會直接在 NSG 上完成。 如需詳細資訊，請參閱 [建立、變更或刪除網路安全性群組](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)。
+  > 建立和修改「拒絕」規則會直接在 NSG 上完成。 如需詳細資訊，請參閱 [建立、變更或刪除網路安全性群組](../virtual-network/manage-network-security-group.md)。
 
 * **拒絕所有流量**規則是唯一會在此列出的「拒絕」規則類型，而且無法修改。 不過，您可以刪除它 (請參閱 [刪除規則](#delete-rule)) 。
   > [!NOTE]
@@ -121,7 +121,7 @@ ms.locfileid: "91851036"
 您可以新增安全性中心不建議的「允許」規則。
 
 > [!NOTE]
-> 此處只可新增「允許」規則。 如果您想要新增「拒絕」規則，您可以直接在 NSG 上這麼做。 如需詳細資訊，請參閱 [建立、變更或刪除網路安全性群組](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)。
+> 此處只可新增「允許」規則。 如果您想要新增「拒絕」規則，您可以直接在 NSG 上這麼做。 如需詳細資訊，請參閱 [建立、變更或刪除網路安全性群組](../virtual-network/manage-network-security-group.md)。
 
 *新增調適型網路強化規則：*
 

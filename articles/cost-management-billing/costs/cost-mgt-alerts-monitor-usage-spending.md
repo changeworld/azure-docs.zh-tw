@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 72e9fd0d5a178897cf84b2babe4c02f7ef920841
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: c59bd7f9bc8c5049572afdf93343222b30c0007b
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531333"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131899"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>使用成本警示監視使用量和支出
 
@@ -21,7 +21,7 @@ ms.locfileid: "90531333"
 
 ## <a name="budget-alerts"></a>預算警示
 
-預算警示會在支出 (根據使用量或成本) 到達或超過[預算的警示條件](tutorial-acm-create-budgets.md)中所定義的數量時通知您。 成本管理預算會使用 Azure 入口網站或 [Azure 使用量](https://docs.microsoft.com/rest/api/consumption) \(英文\) API 來建立。
+預算警示會在支出 (根據使用量或成本) 到達或超過[預算的警示條件](tutorial-acm-create-budgets.md)中所定義的數量時通知您。 成本管理預算會使用 Azure 入口網站或 [Azure 使用量](/rest/api/consumption) \(英文\) API 來建立。
 
 在 Azure 入口網站中，預算會依成本來定義。 使用 Azure 使用量 API，預算會依成本或使用量來定義。 預算警示支援以成本為基礎和以使用量為基礎的預算。 每當預算警示條件相符時，即會自動產生預算警示。 您可以在 Azure 入口網站中檢視所有成本警示。 每當警示產生時，就會顯示於成本警示中。 系統也會傳送警示電子郵件給預算警示收件者清單中的人員。
 

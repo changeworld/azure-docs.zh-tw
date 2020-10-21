@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: aa73fed0af0d6cd7154118d8987f42e55814e25a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6991c222590b52ca4dadb2b9f5a9661bf731c4c4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448930"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340830"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>在 Azure 資訊安全中心自訂 SQL 資訊保護原則 (預覽)
  
@@ -78,8 +78,8 @@ Information Protection 隨附一組預設會使用的內建標籤和資訊類型
 
 ## <a name="manage-sql-information-protection-using-azure-powershell"></a>使用 Azure PowerShell 管理 SQL 資訊保護
 
-- [AzSqlInformationProtectionPolicy：取得](https://docs.microsoft.com/powershell/module/az.security/get-azsqlinformationprotectionpolicy)有效的租使用者 SQL 資訊保護原則。
-- [AzSqlInformationProtectionPolicy](https://docs.microsoft.com/powershell/module/az.security/set-azsqlinformationprotectionpolicy)：設定有效的租使用者 SQL 資訊保護原則。
+- [AzSqlInformationProtectionPolicy：取得](/powershell/module/az.security/get-azsqlinformationprotectionpolicy)有效的租使用者 SQL 資訊保護原則。
+- [AzSqlInformationProtectionPolicy](/powershell/module/az.security/set-azsqlinformationprotectionpolicy)：設定有效的租使用者 SQL 資訊保護原則。
  
 ## <a name="next-steps"></a>後續步驟
  

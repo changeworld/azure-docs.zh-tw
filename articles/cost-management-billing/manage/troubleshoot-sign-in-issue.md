@@ -10,19 +10,19 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3ee600cb72d06781f87c8f68640576afa50cea06
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2e9b14fa264f3286134913e3c279c4400ce5bcc3
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686491"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132324"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>針對 Azure 訂用帳戶登入問題進行疑難排解
 
 本指南可協助解決無法登入 Azure 入口網站或 Azure 帳戶中心的問題。
 
 > [!NOTE]
-> 如果您在註冊新的 Azure 帳戶時遇到問題，請參閱[針對 Azure 訂用帳戶註冊問題進行疑難排解](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up)。
+> 如果您在註冊新的 Azure 帳戶時遇到問題，請參閱[針對 Azure 訂用帳戶註冊問題進行疑難排解](./troubleshoot-azure-sign-up.md)。
 
 ## <a name="page-hangs-in-the-loading-status"></a>頁面在載入狀態停止回應
 
@@ -66,7 +66,7 @@ ms.locfileid: "88686491"
 若要修正此問題：
 
 - 選取右上角的帳戶，確定您已選取正確的 Azure 目錄。
-- 若已選取正確的 Azure 目錄，但您仍收到錯誤訊息，請[將您的帳戶新增為擁有者](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator)。
+- 若已選取正確的 Azure 目錄，但您仍收到錯誤訊息，請[將您的帳戶新增為擁有者](./add-change-subscription-administrator.md)。
 
 **案例 2：** 您在登入 [Azure 帳戶中心](https://account.windowsazure.com/Subscriptions)時收到錯誤訊息
 
@@ -80,11 +80,11 @@ ms.locfileid: "88686491"
 
 Azure 計費和訂用帳戶的其他疑難排解文章
 
-- [卡片遭拒](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [訂用帳戶註冊問題](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-azure-sign-up)
-- [找不到訂用帳戶](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [已停用企業成本檢視](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
-- [Azure 計費文件](https://docs.microsoft.com/azure/cost-management-billing/)
+- [卡片遭拒](./troubleshoot-declined-card.md)
+- [訂用帳戶註冊問題](./troubleshoot-azure-sign-up.md)
+- [找不到訂用帳戶](./no-subscriptions-found.md)
+- [已停用企業成本檢視](./enterprise-mgmt-grp-troubleshoot-cost-view.md)
+- [Azure 計費文件](../index.yml)
 
 ## <a name="contact-us-for-help"></a>如需協助，請與我們連絡
 

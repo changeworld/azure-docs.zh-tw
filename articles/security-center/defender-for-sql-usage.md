@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: a532418ebc5cab08b06f8dde87e8126bf8e96ffe
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: aee886e4e5ccaa3e07851ba839532f47c0a46ef8
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217162"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342037"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>電腦上適用于 SQL server 的 Azure Defender 
 
@@ -49,13 +49,13 @@ ms.locfileid: "92217162"
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>步驟 1： 在您的 SQL server 主機上布建 Log Analytics 代理程式：
 
 - **AZURE vm 上的 SQL Server** -如果您的 SQL 機器裝載于 azure vm 上，您可以自動布建 [Log Analytics 代理程式](security-center-enable-data-collection.md#workspace-configuration)。 或者，您也可以依照手動程式來將 [Azure Stack vm 上架](quickstart-onboard-machines.md#onboard-your-azure-stack-vms)。
-- **SQL Server Azure Arc** -如果您的 SQL Server 裝載于 [Azure Arc](https://docs.microsoft.com/azure/azure-arc/) 電腦上，您可以使用資訊安全中心建議的「log analytics 代理程式應該安裝在 Windows 架構的 Azure Arc 電腦 (Preview) 」上，以部署 Log analytics 代理程式。 或者，您可以依照 [Azure Arc 檔](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal)中的手動程式進行操作。
+- **SQL Server Azure Arc** -如果您的 SQL Server 裝載于 [Azure Arc](../azure-arc/index.yml) 電腦上，您可以使用資訊安全中心建議的「log analytics 代理程式應該安裝在 Windows 架構的 Azure Arc 電腦 (Preview) 」上，以部署 Log analytics 代理程式。 或者，您可以依照 [Azure Arc 檔](../azure-arc/servers/manage-vm-extensions.md#enable-extensions-from-the-portal)中的手動程式進行操作。
 
 - **SQL Server 內部內部部署** -如果您的 SQL Server 裝載于內部部署 Windows 機器上，而沒有 Azure Arc，您有兩個選項可將其連接到 Azure：
     
-    - **部署 Azure Arc** -您可以將任何 Windows 電腦連接到安全性中心。 不過，Azure Arc 可在 *所有* Azure 環境之間提供更深入的整合。 如果您設定了 Azure Arc，您會在入口網站中看到 [ **SQL Server] Azure Arc** 頁面，而您的安全性警示將會出現在該頁面上的 [專用 **安全性** ] 索引標籤上。 第一個和建議的選項是 [設定主機上的 Azure Arc](https://docs.microsoft.com/azure/azure-arc/servers/onboard-portal#install-and-validate-the-agent-on-windows) ，並遵循上述 **Azure Arc 上 SQL Server**的指示。
+    - **部署 Azure Arc** -您可以將任何 Windows 電腦連接到安全性中心。 不過，Azure Arc 可在 *所有* Azure 環境之間提供更深入的整合。 如果您設定了 Azure Arc，您會在入口網站中看到 [ **SQL Server] Azure Arc** 頁面，而您的安全性警示將會出現在該頁面上的 [專用 **安全性** ] 索引標籤上。 第一個和建議的選項是 [設定主機上的 Azure Arc](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows) ，並遵循上述 **Azure Arc 上 SQL Server**的指示。
         
-    - **不 Azure Arc 連接 windows 電腦** -如果您選擇連接 windows 電腦上執行的 SQL Server，而不使用 Azure Arc，請依照將 [windows 機器連線至 Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)中的指示進行。
+    - **不 Azure Arc 連接 windows 電腦** -如果您選擇連接 windows 電腦上執行的 SQL Server，而不使用 Azure Arc，請依照將 [windows 機器連線至 Azure 監視器](../azure-monitor/platform/agent-windows.md)中的指示進行。
 
 
 ### <a name="step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>步驟 2： 在 [安全性中心的定價和設定] 頁面中啟用選擇性方案：
@@ -75,7 +75,7 @@ ms.locfileid: "92217162"
     此方案將會在所有連線到所選工作區的 SQL 伺服器上啟用。 在第一次重新開機 SQL Server 實例之後，保護將會完全有效。
 
     >[!TIP] 
-    > 若要建立新的工作區，請遵循 [建立 Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)中的指示。
+    > 若要建立新的工作區，請遵循 [建立 Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace.md)中的指示。
 
 
 1. （選擇性）設定安全性警示的電子郵件通知。 
@@ -118,7 +118,7 @@ ms.locfileid: "92217162"
 
 1. 警示是設計成獨立的，其中每一項都有詳細的補救步驟和調查資訊。 您可以使用其他 Azure 資訊安全中心和 Azure Sentinel 功能進一步調查，以取得更廣泛的觀點：
 
-    * 啟用 SQL Server 的審核功能，以進行進一步的調查。 如果您是 Azure Sentinel 使用者，您可以將來自 Windows 安全性記錄檔事件的 SQL 審核記錄上傳至 Sentinel，並享受豐富的調查體驗。 [深入瞭解 SQL Server 的審核](https://docs.microsoft.com/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?view=sql-server-ver15&preserve-view=true)。
+    * 啟用 SQL Server 的審核功能，以進行進一步的調查。 如果您是 Azure Sentinel 使用者，您可以將來自 Windows 安全性記錄檔事件的 SQL 審核記錄上傳至 Sentinel，並享受豐富的調查體驗。 [深入瞭解 SQL Server 的審核](/sql/relational-databases/security/auditing/create-a-server-audit-and-server-audit-specification?preserve-view=true&view=sql-server-ver15)。
     * 若要改善您的安全性狀態，請針對每個警示中指出的主機電腦使用安全中心的建議。 這會降低未來攻擊的風險。 
 
     [深入瞭解如何管理及回應警示](security-center-managing-and-responding-alerts.md)。
@@ -130,5 +130,5 @@ ms.locfileid: "92217162"
 
 - [先前的 SQL 資料倉儲 SQL Database 和 Azure Synapse Analytics (的安全性警示) ](alerts-reference.md#alerts-sql-db-and-warehouse)
 - [設定安全性警示的電子郵件通知](security-center-provide-security-contact-details.md)
-- [深入瞭解 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/)
-- [Azure 資訊安全中心的資料安全性封裝](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+- [深入瞭解 Azure Sentinel](../sentinel/index.yml)
+- [Azure 資訊安全中心的資料安全性封裝](../azure-sql/database/azure-defender-for-sql.md)

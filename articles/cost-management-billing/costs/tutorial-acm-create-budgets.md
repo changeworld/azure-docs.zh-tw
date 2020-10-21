@@ -9,18 +9,18 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 32aad7bc350c2ee8ca55d340623c3c3e44820d43
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 48cf5aea60f66fa8b24fd09e7304be0077f2fdcf
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527134"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132800"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教學課程：建立和管理 Azure 預算
 
 成本管理中的預算可協助您進行規劃並促進組織責任歸屬。 透過預算，您可以說明您在特定期間所取用或訂閱的 Azure 服務。 它們可協助您通知其他人其費用的相關資訊以主動管理成本，並監視費用在經過一段時間的進展方式。 當超過您所建立的預算閾值時，只會觸發通知。 您的資源都會不受到影響，而您的使用量並不會停止。 當您分析成本時，您可以使用預算來比較及追蹤費用。
 
-成本和使用方式資料通常會在 8-24 小時內提供，而其後將會根據這些成本每 12-14 時評估一次預算。 請務必熟悉[成本和使用量資料更新](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data#cost-and-usage-data-updates-and-retention) 詳細資訊。 達到預算閾值時，通常會在評估的一小時內收到電子郵件通知。
+成本和使用方式資料通常會在 8-24 小時內提供，而其後將會根據這些成本每 12-14 時評估一次預算。 請務必熟悉[成本和使用量資料更新](./understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention) 詳細資訊。 達到預算閾值時，通常會在評估的一小時內收到電子郵件通知。
 
 當您在未來選取到期日時，預算會在期間 (每月、每季或每年) 結束時自動重設相同的預算金額。 因為它們會使用相同的預算金額重設，所以，在預算的貨幣金額與未來期間不同時您需要另外建立預算。
 
@@ -72,7 +72,7 @@ ms.locfileid: "90527134"
 - 參與者和成本管理參與者 – 可以建立、修改或刪除他們自己的預算。 可以修改其他人所建立之預算的預算金額。
 - 讀者和成本管理讀者 – 可以檢視他們有權限的預算。
 
-如需成本管理資料的指派權限詳細資訊，請參閱[指派成本管理資料的存取權](../../cost-management/assign-access-acm-data.md)。
+如需成本管理資料的指派權限詳細資訊，請參閱[指派成本管理資料的存取權](./assign-access-acm-data.md)。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -104,7 +104,7 @@ ms.locfileid: "90527134"
 
 設定預算金額之後，請選取 [下一步] 以設定預算警示。 預算需要至少一個成本閾值 (預算的百分比) 與對應的電子郵件地址。 您可以選擇性地在單一預算中最多包含五個閾值與五個電子郵件地址。 達到預算限額時，通常會在評估的一小時內收到電子郵件通知。
 
-如果您想要接收電子郵件，請將 azure-noreply@microsoft.com 新增至核准的寄件者清單，讓電子郵件不會進入您的垃圾郵件資料夾。 如需有關通知的詳細資訊，請參閱[使用成本警示](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md)。
+如果您想要接收電子郵件，請將 azure-noreply@microsoft.com 新增至核准的寄件者清單，讓電子郵件不會進入您的垃圾郵件資料夾。 如需有關通知的詳細資訊，請參閱[使用成本警示](./cost-mgt-alerts-monitor-usage-spending.md)。
 
 在下列範例中，達到預算的 90% 時，就會產生電子郵件警示。 如果您使用預算 API 建立預算，您也可以將角色指派給其他人以接收警示。 目前不支援在 Azure 入口網站將角色指派給人員。 如需 Azure 預算 API 的詳細資訊，請參閱[預算 API](/rest/api/consumption/budgets)。 如果您想要以不同的語言傳送電子郵件警示，請參閱[預算警示電子郵件支援的地區設定](manage-automation.md#supported-locales-for-budget-alert-emails)。
 
@@ -112,7 +112,7 @@ ms.locfileid: "90527134"
 
 ![顯示警示條件的範例](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
-建立預算之後，即會在成本分析中顯示它。 當您開始[分析成本和費用](../../cost-management/quick-acm-cost-analysis.md)時，首要步驟之一就是針對您的費用趨勢來檢視預算。
+建立預算之後，即會在成本分析中顯示它。 當您開始[分析成本和費用](./quick-acm-cost-analysis.md)時，首要步驟之一就是針對您的費用趨勢來檢視預算。
 
 ![成本分析中顯示的預算和支出範例](./media/tutorial-acm-create-budgets/cost-analysis.png)
 

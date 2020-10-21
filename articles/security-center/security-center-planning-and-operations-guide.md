@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 0de41941fa5907b7d33e24de331571015510e7bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de6a416666866a4089d22f2fa047dc860c922d3c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713790"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341238"
 ---
 # <a name="planning-and-operations-guide"></a>規劃與操作指南
 本指南適用於計劃採用 Azure 資訊安全中心的資訊技術 (IT) 專業人員、IT 架構設計人員、資訊安全性分析師和雲端系統管理員。
@@ -135,7 +135,7 @@ Azure 資訊安全中心會使用 Log Analytics 代理程式 (這是 Azure 監�
 
 ### <a name="agent"></a>代理程式
 
-在安全性原則中啟用自動佈建時，Log Analytics 代理程式 (適用於 [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) 或 [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)) 已安裝於所有支援的 Azure VM 和任何新建的 VM 上。 如果 VM 或電腦已經安裝 Log Analytics 代理程式，則 Azure 資訊安全中心將會利用目前安裝的代理程式。 代理程式的程序會設計為非侵入式，對 VM 效能的影響很少。
+在安全性原則中啟用自動佈建時，Log Analytics 代理程式 (適用於 [Windows](../azure-monitor/platform/agent-windows.md) 或 [Linux](../azure-monitor/learn/quick-collect-linux-computer.md)) 已安裝於所有支援的 Azure VM 和任何新建的 VM 上。 如果 VM 或電腦已經安裝 Log Analytics 代理程式，則 Azure 資訊安全中心將會利用目前安裝的代理程式。 代理程式的程序會設計為非侵入式，對 VM 效能的影響很少。
 
 適用於 Windows 的 Log Analytics 代理程式需要使用 TCP 通訊埠443。 如需詳細資訊，請參閱[疑難排解文章](security-center-troubleshooting-guide.md)。
 
@@ -217,7 +217,7 @@ Azure 資訊安全中心會使用 Log Analytics 代理程式 (這是 Azure 監�
 
 ![可疑的活動](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-ga.png)
 
-此分頁會顯示有關攻擊發生時間、來源主機名稱、目標 VM 的詳細資訊，也會提供建議步驟。 在某些情況下，攻擊的來源資訊可能是空的。 如需有關這類行為的詳細資訊，請閱讀 [Azure 資訊安全中心警示中的缺少來源資訊](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/) 。
+此分頁會顯示有關攻擊發生時間、來源主機名稱、目標 VM 的詳細資訊，也會提供建議步驟。 在某些情況下，攻擊的來源資訊可能是空的。 如需有關這類行為的詳細資訊，請閱讀 [Azure 資訊安全中心警示中的缺少來源資訊](/archive/blogs/azuresecurity/missing-source-information-in-azure-security-center-alerts) 。
 
 一旦識別出遭入侵的系統之後，您就可以執行先前建立的[工作流程自動化](workflow-automation.md)。 這些是程序的集合，可以從警示所觸發的資訊安全中心執行。
 
@@ -233,6 +233,6 @@ Azure 資訊安全中心會使用 Log Analytics 代理程式 (這是 Azure 監�
 
 * [管理及回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md)
 * [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md) — 了解如何監視 Azure 資源的健全狀況。
-* [使用 Azure 資訊安全中心監視合作夥伴解決方案](security-center-partner-solutions.md) — 了解如何監視合作夥伴解決方案的健全狀況。
+* [使用 Azure 資訊安全中心監視合作夥伴解決方案](./security-center-partner-integration.md) — 了解如何監視合作夥伴解決方案的健全狀況。
 * [Azure 資訊安全中心常見問題集](faq-general.md) — 尋找有關使用服務的常見問題。
-* [Azure 安全性部落格](https://docs.microsoft.com/archive/blogs/azuresecurity/) — 尋找有關 Azure 安全性與相容性的部落格文章。
+* [Azure 安全性部落格](/archive/blogs/azuresecurity/) — 尋找有關 Azure 安全性與相容性的部落格文章。

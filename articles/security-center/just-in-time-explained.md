@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 73b1ba5e93ad82498938055db50abb665849f442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be2aa75fb7c532d48188493b2ed09adc8b141b6a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449013"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340014"
 ---
-# <a name="understanding-just-in-time-jit-vm-access"></a>瞭解 (JIT) VM 存取的即時
+# <a name="understanding-just-in-time-jit-vm-access"></a>了解 Just-In-Time VM (JIT) 存取
 
 本頁面說明 Azure 資訊安全中心即時 (JIT) VM 存取功能，以及建議背後的邏輯背後的原則。
 
@@ -40,14 +40,14 @@ ms.locfileid: "91449013"
 
 ## <a name="how-jit-operates-with-network-security-groups-and-azure-firewall"></a>如何使用網路安全性群組和 Azure 防火牆進行 JIT 操作
 
-當您啟用即時 VM 存取時，您可以選取 VM 上將封鎖輸入流量的埠。 在 [網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) (NSG) 和 [Azure 防火牆規則](https://docs.microsoft.com/azure/firewall/rule-processing)中，「安全性中心」可確保您所選取埠的「拒絕所有輸入流量」規則存在。 這些規則會限制對您 Azure Vm 管理埠的存取，並保護其免于遭受攻擊。 
+當您啟用即時 VM 存取時，您可以選取 VM 上將封鎖輸入流量的埠。 在 [網路安全性群組](../virtual-network/network-security-groups-overview.md#security-rules) (NSG) 和 [Azure 防火牆規則](../firewall/rule-processing.md)中，「安全性中心」可確保您所選取埠的「拒絕所有輸入流量」規則存在。 這些規則會限制對您 Azure Vm 管理埠的存取，並保護其免于遭受攻擊。 
 
 如果選取的埠已有其他規則，則這些現有的規則會優先于新的「拒絕所有輸入流量」規則。 如果選取的埠上沒有任何現有的規則，則新規則在 NSG 和 Azure 防火牆中會優先採用最高優先順序。
 
-當使用者要求存取 VM 時，安全性中心會檢查使用者是否有 [azure 角色型存取控制 (AZURE RBAC) ](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 該 vm 的許可權。 如果要求已核准，則 [安全性中心] 會設定 Nsg 和 Azure 防火牆，以允許從相關 IP 位址 (或範圍) 中所選取埠的輸入流量，以指定的時間長度。 時間到期之後，資訊安全中心會將 NSG 還原為其先前的狀態。 已建立的連接不會中斷。
+當使用者要求存取 VM 時，安全性中心會檢查使用者是否有 [azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/role-assignments-portal.md) 該 vm 的許可權。 如果要求已核准，則 [安全性中心] 會設定 Nsg 和 Azure 防火牆，以允許從相關 IP 位址 (或範圍) 中所選取埠的輸入流量，以指定的時間長度。 時間到期之後，資訊安全中心會將 NSG 還原為其先前的狀態。 已建立的連接不會中斷。
 
 > [!NOTE]
-> JIT 不支援由 [Azure 防火牆管理員](https://docs.microsoft.com/azure/firewall-manager/overview)所控制的 Azure 防火牆所保護的 vm。
+> JIT 不支援由 [Azure 防火牆管理員](../firewall-manager/overview.md)所控制的 Azure 防火牆所保護的 vm。
 
 
 

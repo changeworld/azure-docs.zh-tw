@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 82e542eafe1578a969c4348fe7562ba1da106e2c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ac9828ca61009eb3ee39412169b2b454b9ecbd00
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683397"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131865"
 ---
 # <a name="group-and-filter-options-in-cost-analysis"></a>成本分析中的分組和篩選選項
 
@@ -49,10 +49,10 @@ ms.locfileid: "88683397"
 | **服務名稱**或**計量類別** | 依 Azure 服務細分成本。 | 購買項目與 Marketplace 使用量都會顯示為 [不適用] 或 [未指派]。 |
 | **服務層**或**計量子類別** | 依 Azure 使用量計量子類別細分成本。 | 購買項目與 Marketplace 使用量都會顯示為 [不適用] 或 [未指派]。 |
 | **訂用帳戶** | 依照 Azure 訂用帳戶和 AWS 連結帳戶來細分成本。 | 購買和租用戶資源可能會顯示為 [不適用]。 |
-| **Tag** | 依特定標籤金鑰的標籤值細分成本。 | 標記不適用於購買項目、未與訂用帳戶相關聯的租用戶資源、未部署到資源群組的訂用帳戶資源，或傳統資源。 某些服務不會在使用量資料中包含標籤。 深入了解[每種資源類型的標籤支援](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support)。 |
+| **Tag** | 依特定標籤金鑰的標籤值細分成本。 | 標記不適用於購買項目、未與訂用帳戶相關聯的租用戶資源、未部署到資源群組的訂用帳戶資源，或傳統資源。 某些服務不會在使用量資料中包含標籤。 深入了解[每種資源類型的標籤支援](../../azure-resource-manager/management/tag-support.md)。 |
 
 如需術語的詳細資訊，請參閱[了解 Azure 使用量和費用檔案中所使用的術語](../understand/understand-usage.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [開始分析成本](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis)。
+- [開始分析成本](./quick-acm-cost-analysis.md)。

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 71fbd56c2566f008a096482755abbcdb174a987e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 53a10123bf3304ab9c949146d7cad6b904c8323d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89001632"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317214"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>使用舊版的 Azure Migrate
 
@@ -121,7 +121,7 @@ Windows Server 2012 R2 與所有 SP | Azure 提供完整支援。 | 可供 Azure
 Windows Server 2012 與所有 SP | Azure 提供完整支援。 | 可供 Azure 使用
 Windows Server 2008 R2 與所有 SP | Azure 提供完整支援。| 可供 Azure 使用
 Windows Server 2008 (32 位元和 64 位元) | Azure 提供完整支援。 | 可供 Azure 使用
-Windows Server 2003、2003 R2 | 不支援，需要[自訂支援合約 (CSA)](https://aka.ms/WSosstatement) 才能獲得 Azure 支援。 | 可有條件地供 Azure 使用，在移轉到 Azure 之前，請考慮升級作業系統。
+Windows Server 2003、2003 R2 | 不支援，需要[自訂支援合約 (CSA)](/troubleshoot/azure/virtual-machines/server-software-support) 才能獲得 Azure 支援。 | 可有條件地供 Azure 使用，在移轉到 Azure 之前，請考慮升級作業系統。
 Windows 2000、98、95、NT、3.1、MS-DOS | 不支援。 機器可能可以在 Azure 中開機，但 Azure 不會提供 OS 支援。 | 可有條件地供 Azure 使用，建議在移轉到 Azure 之前升級作業系統。
 Windows Client 7、8 及 10 | Azure [僅對 Visual Studio 訂用帳戶](../virtual-machines/windows/client-images.md)提供支援。 | 可有條件地供 Azure 使用
 Windows 10 專業版桌面 | Azure 對[多租用戶主機權限](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md)提供支援。 | 可有條件地供 Azure 使用

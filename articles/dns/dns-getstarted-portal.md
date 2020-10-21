@@ -6,14 +6,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 3/11/2019
+ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: 93d9ce50a451221c86f5336107dba30695af159f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: be76a7902c2747c7a8dc1bfc21d58ae88f3ff343
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355358"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282149"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 Azure DNS 區域和記錄
 
@@ -31,6 +31,14 @@ You can also perform these steps using [Azure PowerShell](dns-getstarted-powersh
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 為了執行各個入口網站步驟，請先登入 [Azure 入口網站](https://portal.azure.com)。
+
+## <a name="prerequisites"></a>必要條件
+
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
+
+使用您的 Azure 帳戶登入 [Azure 入口網站](https://portal.azure.com) 。
 
 ## <a name="create-a-dns-zone"></a>建立 DNS 區域
 

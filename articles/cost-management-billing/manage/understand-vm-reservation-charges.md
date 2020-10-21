@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: dd21faa07426c80bb3a95dbd1b6d4ee93f783881
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: e9ee1d9ff8145051bbbe6b65004f7f358b5fdade
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686440"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132137"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Azure 保留折扣如何套用至虛擬機器
 
@@ -57,7 +57,7 @@ ms.locfileid: "88686440"
 
 ## <a name="discount-can-apply-to-different-sizes"></a>折扣可套用於不同的大小
 
-當您購買保留的 VM 執行個體時，如果選取 [針對執行個體大小彈性最佳化]，折扣範圍就會涵蓋您選取的 VM 大小。 這也可以套用至相同系列執行個體大小彈性群組中的其他 VM 大小。 如需詳細資訊，請參閱[利用保留的 VM 執行個體獲得虛擬機器大小彈性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
+當您購買保留的 VM 執行個體時，如果選取 [針對執行個體大小彈性最佳化]，折扣範圍就會涵蓋您選取的 VM 大小。 這也可以套用至相同系列執行個體大小彈性群組中的其他 VM 大小。 如需詳細資訊，請參閱[利用保留的 VM 執行個體獲得虛擬機器大小彈性](../../virtual-machines/reserved-vm-instance-size-flexibility.md)。
 
 ## <a name="premium-storage-vms-dont-get-non-premium-discounts"></a>進階儲存體 VM 不提供非進階折扣
 

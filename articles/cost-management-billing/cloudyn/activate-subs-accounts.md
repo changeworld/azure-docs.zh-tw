@@ -10,12 +10,12 @@ ms.subservice: cloudyn
 ms.reviewer: vitavor
 ms.custom: secdec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: acfbdb203cfa6b1b54145c5d325493b90525bf43
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 52ac239369f2998a3a8eac9c400512ac845a0c49
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690148"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131423"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>使用 Cloudyn 啟動 Azure 訂用帳戶與帳戶
 
@@ -96,7 +96,7 @@ ms.locfileid: "88690148"
 以下是修正問題的方法：
 
 1. 您的轉銷商必須為您的帳戶啟用「標記」  。 如需指示，請參閱[間接客戶上線指南](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide)。
-2. 您要產生用於 Cloudyn 的 Azure Enterprise 合約金鑰。 如需相關指示，請參閱[註冊 Azure Enterprise 合約並檢視成本資料](https://docs.microsoft.com/azure/cost-management/quick-register-ea)。
+2. 您要產生用於 Cloudyn 的 Azure Enterprise 合約金鑰。 如需相關指示，請參閱[註冊 Azure Enterprise 合約並檢視成本資料](./quick-register-ea.md)。
 
 在您可以產生 Azure Enterprise 合約 API 金鑰以設定 Cloudyn 之前，您必須啟用 Azure 帳單 API，方法是遵循下列文章中的指示：
 

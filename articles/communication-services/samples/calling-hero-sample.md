@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d4c3c8e2f8470d187156f0dd98fab2bd74eb33bc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cfb6a7ba10c388cadb19268ee1431fe523a0cfa4
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963103"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126321"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>開始使用群組通話 Hero 範例
 
@@ -30,7 +30,7 @@ Azure 通訊服務的**群組通話 Hero 範例**會示範如何使用通訊服�
 在此範例快速入門中，我們將先了解範例如何運作，然後在您的本機電腦上執行範例。 接著，我們會使用您自己的 Azure 通訊服務資源，將範例部署至 Azure。
 
 > [!IMPORTANT]
-> [從 GitHub 下載範例](https://github.com/Azure/Communication/tree/master/samples/Group%20Calling%20Hero%20Sample/Web/Calling)
+> [從 GitHub 下載範例](https://github.com/Azure-Samples/communication-services-web-calling-hero)
 
 ## <a name="overview"></a>概觀
 
@@ -103,7 +103,7 @@ Azure 通訊服務的**群組通話 Hero 範例**會示範如何使用通訊服�
 ## <a name="next-steps"></a>後續步驟
 
 >[!div class="nextstepaction"] 
->[從 GitHub 下載範例](https://github.com/Azure/Communication/tree/master/samples/Group%20Calling%20Hero%20Sample/Web/Calling)
+>[從 GitHub 下載範例](https://github.com/Azure-Samples/communication-services-web-calling-hero)
 
 如需詳細資訊，請參閱下列文章：
 

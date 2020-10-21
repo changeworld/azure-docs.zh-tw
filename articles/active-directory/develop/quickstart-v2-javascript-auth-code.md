@@ -12,20 +12,18 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 35362733849305ad2ad7e008840d53ba085fa987
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 45a6843c5ce55dca7ff72731752f3c1f24a5db6b
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613436"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216652"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>快速入門：使用授權碼流程讓使用者登入並取得 JavaScript SPA 中的存取權杖
 
 在本快速入門中，您會執行程式碼範例，該範例會示範 JavaScript 單頁應用程式 (SPA) 如何使用授權碼流程讓使用者登入個人帳戶、公司帳戶和學校帳戶。 此程式碼範例也會示範如何取得存取權杖來呼叫 Web API (在此案例中為 Microsoft Graph API)。 如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。
 
 本快速入門會使用 MSAL.js 2.0 搭配授權碼流程。 如需搭配使用 MSAL.js 1.0 與隱含流程的類似快速入門，請參閱[快速入門：在 JavaScript 單頁應用程式中讓使用者登入](./quickstart-v2-javascript.md)。
-
-[!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
 ## <a name="prerequisites"></a>Prerequisites
 

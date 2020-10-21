@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 10/09/2020
 ms.author: banders
-ms.openlocfilehash: a30f85ae1b65321a25ee93239374d2a8aae26769
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b32bb979176af8a8a3751db8edf9c129caf1002e
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92026230"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131984"
 ---
 # <a name="troubleshoot-ea-billing-issues-with-usage-file-pivot-tables"></a>透過使用情況檔案樞紐分析表對 EA 計費問題進行疑難排解
 
@@ -33,7 +33,7 @@ ms.locfileid: "92026230"
 
 由於 Azure 使用情況檔案是 CSV 格式，您必須準備資料以在 Excel 中使用。 請使用下列步驟，將資料格式化為資料表。
 
-1. 使用[下載 EA 客戶的使用量](https://docs.microsoft.com/azure/cost-management-billing/manage/download-azure-invoice-daily-usage-date#download-usage-for-ea-customers)中的指示，下載含有所有費用 (使用量及購買) 檔案的使用量詳細資料第 2 版。
+1. 使用[下載 EA 客戶的使用量](./download-azure-invoice-daily-usage-date.md#download-usage-for-ea-customers)中的指示，下載含有所有費用 (使用量及購買) 檔案的使用量詳細資料第 2 版。
 1. 在 Excel 中開啟檔案。
 1. 未格式化的資料如下列範例所示。  
     :::image type="content" source="./media/troubleshoot-ea-billing-issues-usage-file-pivot-tables/raw-csv-data-ea.png" alt-text="顯示 Excel 未格式化資料的範例" lightbox="./media/troubleshoot-ea-billing-issues-usage-file-pivot-tables/raw-csv-data-ea.png" :::

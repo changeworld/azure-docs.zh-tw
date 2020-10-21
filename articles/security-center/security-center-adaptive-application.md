@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: c580dd26c64a27b88b4416e85da101b78782013e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ee5a88dfcc3b4ab29cd3ad8c5ff7c4701d1fced6
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076975"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339708"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用適應性應用程式控制來減少電腦的攻擊面
 
@@ -52,7 +52,7 @@ ms.locfileid: "92076975"
 |----|:----|
 |版本狀態：|正式上市 (GA)|
 |定價：|需要[適用於伺服器的 Azure Defender](defender-for-servers-introduction.md)|
-|支援的電腦：|![是 ](./media/icons/yes-icon.png) azure 和不是執行 Windows 和 Linux 的非 azure 機器<br>![是 ](./media/icons/yes-icon.png) [Azure Arc](https://docs.microsoft.com/azure/azure-arc/) 電腦|
+|支援的電腦：|![是 ](./media/icons/yes-icon.png) azure 和不是執行 Windows 和 Linux 的非 azure 機器<br>![是 ](./media/icons/yes-icon.png) [Azure Arc](../azure-arc/index.yml) 電腦|
 |必要的角色和權限：|**安全性讀取** 者和 **讀取** 者角色可以同時查看群組和已知安全的應用程式清單<br>**參與者** 和 **安全性系統管理員** 角色可以編輯群組和已知安全的應用程式清單|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
 |||
@@ -85,7 +85,7 @@ ms.locfileid: "92076975"
     - **沒有任何建議** -沒有已定義的允許清單應用程式的電腦，且不支援此功能。 您的電腦可能會在此索引標籤中，原因如下：
       - 缺少 Log Analytics 代理程式
       - Log Analytics 代理程式未傳送事件
-      - 它是具有已由 GPO 或本機安全性原則啟用之既存 [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) 原則的 Windows 電腦
+      - 它是具有已由 GPO 或本機安全性原則啟用之既存 [AppLocker](/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview) 原則的 Windows 電腦
 
       > [!TIP]
       > 安全性中心需要至少兩周的資料，以定義每個電腦群組的唯一建議。 最近建立的機器，或屬於最近使用 Azure Defender 啟用之訂用帳戶的電腦，將會出現在 [ **沒有建議** ] 索引標籤底下。
@@ -224,7 +224,7 @@ ms.locfileid: "92076975"
 
 若要以程式設計方式管理您的自我調整應用程式控制，請使用我們的 REST API。 
 
-完整的 API 檔位於 [此處](https://docs.microsoft.com/rest/api/securitycenter/adaptiveapplicationcontrols)。
+完整的 API 檔位於 [此處](/rest/api/securitycenter/adaptiveapplicationcontrols)。
 
 REST API 中提供的部分函數：
 
@@ -245,5 +245,5 @@ REST API 中提供的部分函數：
 ## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解如何在 Azure 資訊安全中心中使用自動調整應用程式控制，以定義在 Azure 和非 Azure 電腦上執行之應用程式的允許清單。 若要深入瞭解資訊安全中心的其他雲端工作負載保護功能，請參閱：
 
-* [瞭解 (JIT) VM 存取的即時](just-in-time-explained.md)
+* [了解 Just-In-Time VM (JIT) 存取](just-in-time-explained.md)
 * [保護您的 Azure Kubernetes 叢集](defender-for-kubernetes-introduction.md)

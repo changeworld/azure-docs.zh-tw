@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 7700e151a49dbfbad452927ba4a308651a0b584a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68338341d47b8fa15d0bd88ea23e951210105fc4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84782807"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340779"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>安全性中心的跨租使用者管理
 
@@ -52,9 +52,9 @@ ms.locfileid: "84782807"
 
 - **管理先進的雲端防禦功能和更多功能**：管理各種威脅防護服務，例如 [及時 (JIT) VM 存取](security-center-just-in-time.md)、彈性 [網路強化](security-center-adaptive-network-hardening.md)、 [適應性應用](security-center-adaptive-application.md)程式控制等等。
  
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 本文說明跨租使用者管理如何在安全性中心內運作。 如要深入了解資訊安全中心，請參閱下列主題：
 
 * [使用 Azure 資訊安全中心強化您的安全性](security-center-monitoring.md) 狀態-瞭解如何監視 Azure 資源的健康情況。
 * [AZURE 資訊安全中心常見問題](faq-general.md) -尋找有關使用服務的常見問題。
-* [瞭解企業案例中的 Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/enterprise) -探索 Azure Lighthouse 如何簡化企業內使用多個 Azure AD 租使用者的跨租使用者管理。
+* [瞭解企業案例中的 Azure Lighthouse](../lighthouse/concepts/enterprise.md) -探索 Azure Lighthouse 如何簡化企業內使用多個 Azure AD 租使用者的跨租使用者管理。

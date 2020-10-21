@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 4ef19b1fc8f0d503f1a35c60afd1faec2a548ca4
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5cb4e3dd4145319361a2494ee346c0d2696edf45
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681986"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148309"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mysql"></a>保留折扣如何套用至適用於 MySQL 的 Azure 資料庫
 
@@ -30,7 +30,7 @@ ms.locfileid: "88681986"
 
 下列範例說明如何根據所購買的核心數目，以及其執行時間，套用適用於 MySQL 的 Azure 資料庫保留容量折扣。
 
-* **範例 1**：您針對 8 虛擬核心購買適用於 MySQL 的 Azure 資料庫保留容量。 如果您執行的 16 虛擬核心適用於 MySQL 的 Azure 資料庫伺服器符合其餘的保留屬性，則會針對 8 虛擬核心的 MySQL 伺服器計算使用量向您收取隨用隨付價格的費用，而您可就一小時的 8 虛擬核心 MySQL 伺服器計算使用量獲得保留折扣。</br>
+**範例 1**：您針對 8 虛擬核心購買適用於 MySQL 的 Azure 資料庫保留容量。 如果您執行的 16 虛擬核心適用於 MySQL 的 Azure 資料庫伺服器符合其餘的保留屬性，則會針對 8 虛擬核心的 MySQL 伺服器計算使用量向您收取隨用隨付價格的費用，而您可就一小時的 8 虛擬核心 MySQL 伺服器計算使用量獲得保留折扣。</br>
 
 對於下列其餘範例，假設您所購買適用於 MySQL 的 Azure 資料庫保留容量適用於 16 虛擬核心適用於 MySQL 的 Azure 資料庫，而且其餘的保留屬性符合執行中的 MySQL 伺服器。
 
@@ -40,7 +40,7 @@ ms.locfileid: "88681986"
 
 * **範例 4**：您會從下午 1 點到 1:45 執行一部 16 虛擬核心適用於 MySQL 的 Azure 資料庫伺服器。 您會從下午 1:30 到 2 點執行另一部 16 虛擬核心適用於 MySQL 的 Azure 資料庫伺服器。 您需要就 15 分鐘的重疊時間支付隨用隨付價格的費用。 保留折扣會套用至其餘時間的計算使用量。
 
-若要在計費使用量報告中了解及檢視 Azure Reservations 的應用，請參閱[了解 Azure 保留使用量](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)。
+若要在計費使用量報告中了解及檢視 Azure Reservations 的應用，請參閱[了解 Azure 保留使用量](./understand-reserved-instance-usage-ea.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

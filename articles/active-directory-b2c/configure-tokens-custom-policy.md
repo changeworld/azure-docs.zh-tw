@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/07/2020
+ms.date: 10/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a9b2c5b24b88dd51596dfb5bd8b5f397419ca6e4
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e72bd04bb41537546191b8ceb320c0722bd10146
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215190"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340286"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來管理 SSO 和權杖自訂
 
@@ -90,6 +90,45 @@ ms.locfileid: "92215190"
 
 > [!NOTE]
 > 使用授權碼流程與 PKCE 的單一頁面應用程式一律會有24小時的重新整理權杖存留期。 [深入瞭解在瀏覽器中重新整理權杖的安全性含意](../active-directory/develop/reference-third-party-cookies-spas.md#security-implications-of-refresh-tokens-in-the-browser)。
+
+## <a name="provide-optional-claims-to-your-app"></a>為您的應用程式提供選擇性宣告
+
+信賴憑證者 [原則技術設定檔](relyingparty.md#technicalprofile) 輸出宣告是傳回給應用程式的值。 新增輸出宣告會在成功的使用者旅程圖之後將宣告發出至權杖，並傳送至應用程式。 修改 [信賴憑證者] 區段內的技術設定檔元素，以新增所需的宣告作為輸出宣告。
+
+1. 開啟您的自訂原則檔案。 例如 SignUpOrSignin.xml。
+1. 尋找 OutputClaims 元素。 新增您想要包含在權杖中的 OutputClaim。 
+1. 設定輸出宣告屬性。 
+
+下列範例會新增宣告 `accountBalance` 。 AccountBalance 宣告會以餘額的形式傳送至應用程式。 
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="OpenIdConnect" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+      <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+      <!--Add the optional claims here-->
+      <OutputClaim ClaimTypeReferenceId="accountBalance" DefaultValue="" PartnerClaimType="balance" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" />
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+OutputClaim 元素包含下列屬性：
+
+  - **ClaimTypeReferenceId** -已在原則檔或父原則檔的 [ClaimsSchema](claimsschema.md) 區段中定義之宣告類型的識別碼。
+  - **PartnerClaimType** -可讓您變更權杖中的宣告名稱。 
+  - **DefaultValue** -預設值。 您也可以將預設值設定為宣告 [解析程式](claim-resolver-overview.md)，例如租使用者識別碼。
+  - **AlwaysUseDefaultValue** -強制使用預設值。
 
 ## <a name="next-steps"></a>後續步驟
 

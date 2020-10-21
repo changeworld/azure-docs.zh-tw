@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 10/12/2020
+ms.date: 10/16/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4, azuread-video-2020
-ms.openlocfilehash: b0dec57a67053c3791e68fb40e28d83d5b97777b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d46dfba9d9dedea57b6be872a6853bc522a0bc8c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962151"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145245"
 ---
 # <a name="what-is-conditional-access"></a>何謂條件式存取？
 
@@ -84,13 +84,6 @@ ms.locfileid: "91962151"
 - 封鎖或授與特定位置的存取權
 - 封鎖有風險的登入行為
 - 需要由組織管理的裝置來使用特定應用程式
-
-## <a name="customer-case-studies"></a>客戶案例研究
-
-探索其他組織如何使用 Azure AD 條件式存取來定義和實作自動化的存取控制決策。 下列精選案例會示範這些客戶的需求如何獲得滿足。
-
-* [Wipro 使用 Microsoft 雲端安全性工具來提升行動生產力，以改善客戶參與度。](https://customers.microsoft.com/story/wipro-professional-services-enterprise-mobility-security) Azure AD 中的條件式存取原則已讓該公司既能夠與受信任的外部實體 (實體可使用本身的認證) 共用文件、資源和應用程式，同時又保有自己公司資料的控制權。
-* [Aramex delivery limited - 這家全球性的物流和運輸公司使用身分識別和存取管理解決方案，打造了與雲端連線的辦公室](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en)。 Aramex 的遠端員工特別難以確保其存取資料時的安全性。 該公司現在運用了條件式存取規則，讓這些遠端員工從網路外部存取其 SaaS 應用程式。 條件式存取規則會決定是否要強制執行 Multi-Factor Authentication，只為合適的人員提供存取權。
 
 ## <a name="license-requirements"></a>授權需求
 

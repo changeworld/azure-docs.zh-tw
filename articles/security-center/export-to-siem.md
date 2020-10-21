@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: 0800c0d6fb2cf57b919d29ac354d2d89c06c7aeb
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: b4458a2b37a3da83591e101344d08c3090868696
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946618"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341799"
 ---
 # <a name="stream-alerts-to-a-siem-soar-or-it-service-management-solution"></a>將警示串流至 SIEM、SOAR 或 IT 服務管理解決方案
 
@@ -60,7 +60,7 @@ Azure Sentinel 包含訂用帳戶和租使用者層級 Azure 資訊安全中心�
 您可以使用此 API 來串流 **整個租** 使用者的警示 (以及許多其他 Microsoft 安全性產品) 至協力廠商 siem 和其他熱門平臺的資料：
 
 - **Splunk Enterprise And Splunk Cloud**  - [針對 Splunk 使用 Microsoft Graph 安全性 API Add-On](https://splunkbase.splunk.com/app/4564/) 
-- **Power BI**  - [連接到 Power BI Desktop 中的 Microsoft Graph 安全性 API](https://docs.microsoft.com/power-bi/connect-data/desktop-connect-graph-security)
+- **Power BI**  - [連接到 Power BI Desktop 中的 Microsoft Graph 安全性 API](/power-bi/connect-data/desktop-connect-graph-security)
 - **ServiceNow**  - [依照指示從 ServiceNow 存放區安裝和設定 Microsoft Graph 安全性 API 應用程式](https://docs.servicenow.com/bundle/orlando-security-management/page/product/secops-integration-sir/secops-integration-ms-graph/task/ms-graph-install.html)
 - **QRadar**  - [IBM 的裝置支援模組，可透過 MICROSOFT GRAPH API 進行 Azure 資訊安全中心](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/com.ibm.dsm.doc/c_dsm_guide_ms_azure_security_center_overview.html) 
 - **Palo Alto Networks**、 **Anomali**、 **Lookout**、 **InSpark**和其他 [Microsoft Graph 安全性 API](https://www.microsoft.com/security/business/graph-security-api#office-MultiFeatureCarousel-09jr2ji)

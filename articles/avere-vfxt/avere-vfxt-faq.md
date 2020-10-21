@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.custom: references_regions
-ms.openlocfilehash: c6459e2daf17772b28ee53289754deb33b4823ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 647a9792384a21dfc191371ef444cbdc098bc819
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272686"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342360"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure 常見問題集
 
@@ -160,7 +160,7 @@ Avere vFXT for Azure 目前不支援本機 SSD。 用於 Avere vFXT 的磁碟必
 
 ### <a name="does-the-system-encrypt-the-cache"></a>系統會將快取加密嗎？
 
-資料會等量分散在磁碟，但不會加密。 不過，您可以將磁碟本身加密。 如需詳細資訊，請參閱[在 Azure 中的虛擬機器上保護及使用原則](https://docs.microsoft.com/azure/virtual-machines/linux/security-policy#encryption)。
+資料會等量分散在磁碟，但不會加密。 不過，您可以將磁碟本身加密。 如需詳細資訊，請參閱[在 Azure 中的虛擬機器上保護及使用原則](../virtual-machines/security-policy.md#encryption)。
 
 ## <a name="technical-networking"></a>技術：網路
 
@@ -259,7 +259,7 @@ Avere vFXT 不支援私用物件儲存體。
 
 通常不建議 Avere vFXT for Azure 核心檔案管理工具使用非經常性存取層 blob 儲存體。 非經常性存取層提供較低的儲存體成本，但營運成本較高。 如需更多詳細資料，請參閱 [區塊 blob 定價](<https://azure.microsoft.com/pricing/details/storage/blobs/>) (。 ) 如果資料會經常存取、修改或刪除，請考慮使用經常性存取層。
 
-[存取層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#cool-access-tier) 會提供更多有關使用非經常性存取層儲存體作為 vFXT 核心檔案管理工具的時機。
+[存取層](../storage/blobs/storage-blob-storage-tiers.md#cool-access-tier) 會提供更多有關使用非經常性存取層儲存體作為 vFXT 核心檔案管理工具的時機。
 
 ### <a name="how-do-i-encrypt-the-blob-container"></a>如何加密 Blob 容器？
 

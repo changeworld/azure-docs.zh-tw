@@ -7,18 +7,18 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 5db25f993fa006fa635ac12c1be5ff1c3eb92f68
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a545059c520f3cbdeee6c73a044af48795d49ac8
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90883464"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282448"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>適用於 MongoDB (3.2 版) 的 Azure Cosmos DB API：支援的功能和語法
 
 Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以使用任何開放原始碼 MongoDB 用戶端[驅動程式](https://docs.mongodb.org/ecosystem/drivers)來與 Azure Cosmos DB 適用於 MongoDB 的 API 通訊。 Azure Cosmos DB 適用於 MongoDB 的 API 需遵循 MongoDB [有線通訊協定](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)，才能使用現有的用戶端驅動程式。
 
-藉由使用 Azure Cosmos DB 適用於 MongoDB 的 API，您除了可享有慣用的 MongoDB 權益外，還可使用 Cosmos DB 提供的所有企業功能：[全域發佈](distribute-data-globally.md)、[自動分區](partition-data.md)、可用性和延遲保證、每個欄位的自動編製索引、待用加密、備份等功能。
+藉由使用 Azure Cosmos DB 適用於 MongoDB 的 API，您除了可享有慣用的 MongoDB 權益外，還可使用 Cosmos DB 提供的所有企業功能：[全域發佈](distribute-data-globally.md)、[自動分區](partitioning-overview.md)、可用性和延遲保證、每個欄位的自動編製索引、待用加密、備份等功能。
 
 > [!NOTE]
 > 本文以適用於 MongoDB 3.2. 的 Azure Cosmos DB API 為主。 針對 MongoDB 3.6 版本，請參閱 [MongoDB 3.6 支援的功能和語法](mongodb-feature-support-36.md)。

@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 1d21c7ed93ac2ce2ab61282707d57fbf43e0b71a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 110d4a3219b4898fa6f138e29f1112d7134f674c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81261069"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340082"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Azure 監視器中有動態閾值的計量警示
 
@@ -98,7 +98,7 @@ ms.locfileid: "81261069"
 
 ## <a name="dynamic-thresholds-best-practices"></a>動態閾值最佳做法
 
-「動態閾值」可以套用至任何平台或「Azure 監視器」中的自訂計量，而且它也已針對常見的應用程式和基礎結構計量進行過調整。
+動態閾值可以在 Azure 監視器中套用至大部分的平臺和自訂計量，而且也會針對常見的應用程式和基礎結構計量進行調整。
 下列項目是有關如何使用「動態閾值」來設定這其中一些計量相關警示的最佳做法。
 
 ### <a name="dynamic-thresholds-on-virtual-machine-cpu-percentage-metrics"></a>虛擬機器 CPU 百分比計量的相關動態閾值
@@ -127,7 +127,7 @@ ms.locfileid: "81261069"
 
 8. 計量圖表會顯示以最近資料為基礎的計算臨界值。
 
-9. 按一下 [完成]。
+9. 按一下 [完成]  。
 
 10. 填寫 [警示詳細資料]****，例如 [警示規則名稱]****、[描述]**** 及 [嚴重性]****。
 
@@ -162,7 +162,7 @@ ms.locfileid: "81261069"
 
 8. 計量圖表會顯示以最近資料為基礎的計算臨界值。
 
-9. 按一下 [完成]。
+9. 按一下 [完成]  。
 
 10. 填寫 [警示詳細資料]****，例如 [警示規則名稱]****、[描述]**** 及 [嚴重性]****。
 

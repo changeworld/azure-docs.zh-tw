@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 89a12be047a3571c1d85febc246a1ed8a3c8b720
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 62651f611654fa601752308ac2fa7f4c388297d6
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297856"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132834"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入門：使用成本分析探索及分析成本
 
@@ -32,7 +32,7 @@ ms.locfileid: "91297856"
 
 成本分析支援不同的 Azure 帳戶類型。 若要檢視所支援帳戶類型的完整清單，請參閱[了解成本管理資料](understand-cost-mgt-data.md)。 若要檢視成本資料，您至少需要 Azure 帳戶的讀取存取。
 
-如需 Azure 成本管理資料的存取權指派相關資訊，請參閱[指派資料的存取權](../../cost-management/assign-access-acm-data.md)。
+如需 Azure 成本管理資料的存取權指派相關資訊，請參閱[指派資料的存取權](./assign-access-acm-data.md)。
 
 如果您有新的訂用帳戶，您無法立即使用成本管理功能。 最多可能需要48小時的時間，才能使用所有的成本管理功能。
 
@@ -108,7 +108,7 @@ ms.locfileid: "91297856"
 
 一般而言，您可以預期會在 8 到 12 小時內看到已耗用資源的資料或通知。
 
-可使用 [分組方式] 依適用屬性分組，以細分成本並識別成本最高的參與者。 例如，若要依資源標記分組，請選取要作為分組方式的標記索引鍵。 系統就會依每個標記值細分成本，並提供一個額外區段以顯示未套用該標記的資源。  如需分組及篩選選項的相關詳細資訊，請參閱[分組和篩選選項](https://docs.microsoft.com/azure/cost-management-billing/costs/group-filter) \(英文\)。
+可使用 [分組方式] 依適用屬性分組，以細分成本並識別成本最高的參與者。 例如，若要依資源標記分組，請選取要作為分組方式的標記索引鍵。 系統就會依每個標記值細分成本，並提供一個額外區段以顯示未套用該標記的資源。  如需分組及篩選選項的相關詳細資訊，請參閱[分組和篩選選項](./group-filter.md) \(英文\)。
 
 大部分的 [Azure 資源都支援標記](../../azure-resource-manager/management/tag-support.md)。 不過，某些標記無法在成本管理和計費中使用。 此外，也不支援資源群組標記。 標記支援適用於將標記套用至資源「之後」所回報的使用量。 您無法追溯套用標記以彙總成本。
 

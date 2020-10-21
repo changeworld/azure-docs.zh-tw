@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: 893b2eefc2c4c81e66bf86a1c999a3c4198a3c71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d7ecf4751e9f3fe2051feb64a94e828e00bf106
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883840"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339487"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>使用 Azure 資訊安全中心來加強安全性狀態
 本文可協助您加強安全性狀態。 您可以使用「Azure 資訊安全中心」中的監視功能來確保您的資源安全性儘可能嚴密周到，並監視是否符合原則規範。
@@ -38,4 +38,4 @@ ms.locfileid: "90883840"
 
 * [在 Azure 資訊安全中心設定安全性原則](tutorial-security-policy.md)：了解如何在 Azure 資訊安全中心設定安全性設定。
 * [管理與回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md)：了解如何管理與回應安全性警示。
-* [使用 Azure 資訊安全中心監視合作夥伴解決方案](security-center-partner-solutions.md)：了解如何監視合作夥伴解決方案的健全狀況。
+* [使用 Azure 資訊安全中心監視合作夥伴解決方案](./security-center-partner-integration.md)：了解如何監視合作夥伴解決方案的健全狀況。

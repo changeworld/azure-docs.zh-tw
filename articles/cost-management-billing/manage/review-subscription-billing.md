@@ -7,12 +7,12 @@ ms.subservice: billing
 ms.topic: article
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 345535ae52b9a271bcee5ff7a2b651af144624f1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b4d6502e49fdd30a68188a1e580a1c137984c89f
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684706"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132375"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>使用 REST API 檢閱訂用帳戶計費
 
@@ -32,7 +32,7 @@ Authorization: Bearer
 
 `{subscriptionID}` 是必要參數，用於識別目標訂用帳戶。
 
-`{billingPeriod}` 是必要參數，用於指定目前的[計費週期](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)。
+`{billingPeriod}` 是必要參數，用於指定目前的[計費週期](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)。
 
 `${startDate}` 和 `${endDate}` 在此範例中為必要參數，但對於端點則非必要。 它以 YYYY-MM-DD 格式的字串來指定日期範圍 (例如：`'20180501'` 和 `'20180615'`)。
 
@@ -41,7 +41,7 @@ Authorization: Bearer
 |要求標頭|描述|
 |--------------------|-----------------|
 |*Content-Type:*|必要。 設定為 `application/json`。|
-|*Authorization:*|必要。 設定為有效的 `Bearer` [存取權杖](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
+|*Authorization:*|必要。 設定為有效的 `Bearer` [存取權杖](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
 
 ## <a name="response"></a>回應
 
@@ -85,7 +85,7 @@ Authorization: Bearer
 |**meterDetails** | 使用的相關詳細資訊。 |
 |**nextLink**| 設定時，指定「下一頁」詳細資料的 URL。 如果該頁面是最後一頁，則為空白。 |
 
-此範例已經過縮減；如需每個回應欄位的完整描述，請參閱 [List usage details](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod-legacy) (列出使用情況詳細資料)。
+此範例已經過縮減；如需每個回應欄位的完整描述，請參閱 [List usage details](/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod-legacy) (列出使用情況詳細資料)。
 
 其他狀態碼表示錯誤狀況。 在這些情況下，回應物件會說明要求為何失敗。
 
@@ -101,6 +101,6 @@ Authorization: Bearer
 ```
 
 ## <a name="next-steps"></a>後續步驟
-- 檢閱[企業報告概觀](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
-- 調查[企業計費 REST API](https://docs.microsoft.com/rest/api/billing/)
-- [Get started with Azure REST API](https://docs.microsoft.com/rest/api/azure/) (開始使用 Azure REST API)
+- 檢閱[企業報告概觀](./enterprise-api.md)
+- 調查[企業計費 REST API](/rest/api/billing/)
+- [Get started with Azure REST API](/rest/api/azure/) (開始使用 Azure REST API)

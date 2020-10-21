@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2020
 ms.author: duau
-ms.openlocfilehash: e5b8e5059d4d7df8d7061698ea29d7a6785236f9
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: ef7870363940a0db4ff09ae9ebd82eedb0e60495
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825637"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282268"
 ---
 # <a name="what-is-azure-front-door"></a>Azure Front Door 是什麼？
 
@@ -32,11 +32,11 @@ Front Door 會在第 7 層 (HTTP/HTTPS 層) 上運作，使用任一傳播通訊
 >[!NOTE]
 > Azure 會為您的案例提供一套完整受控的負載平衡解決方案。 
 > * 如果您想要執行 DNS 型全域路由，而且**沒有**傳輸層安全性 (TLS) 通訊協定終止 (「SSL 卸載」)、每一 HTTP/HTTPS 要求或應用程式層的需求，請檢閱[流量管理員](../traffic-manager/traffic-manager-overview.md)。 
-> * 如果您想要在應用程式層區域中的伺服器之間進行負載平衡，請參閱[應用程式閘道](../application-gateway/application-gateway-introduction.md)
+> * 如果您想要在應用程式層區域中的伺服器之間進行負載平衡，請參閱[應用程式閘道](../application-gateway/overview.md)
 > * 若要執行網路層負載平衡，請參閱 [Load Balancer](../load-balancer/load-balancer-overview.md)。 
 > 
 > 視需要結合這些解決方案，可能有益於您的端對端案例。
-> 如需 Azure 負載平衡選項的比較，請參閱 [Azure 中的負載平衡選項概觀](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)。
+> 如需 Azure 負載平衡選項的比較，請參閱 [Azure 中的負載平衡選項概觀](/azure/architecture/guide/technology-choices/load-balancing-overview)。
 
 ## <a name="why-use-azure-front-door"></a>為何使用 Azure Front Door？
 

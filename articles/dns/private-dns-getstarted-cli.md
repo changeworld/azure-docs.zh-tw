@@ -5,15 +5,15 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 10/05/2019
+ms.date: 10/20/2020
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8fdf78c0a3dd2f7a130d827751ce93c5539575df
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: df180f0aefc817004e99d63998d000498c4d15aa
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87502948"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310158"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>快速入門：使用 Azure CLI 建立 Azure 私人 DNS 區域
 
@@ -21,13 +21,7 @@ ms.locfileid: "87502948"
 
 DNS 區域用來裝載特定網域的 DNS 記錄。 若要開始將網域裝載到 Azure DNS 中，您必須建立該網域名稱的 DNS 區域。 接著在此 DNS 區域內，建立網域的每筆 DNS 記錄。 若要將私人 DNS 區域發佈至虛擬網路，指定可以在區域內解析記錄的虛擬網路清單。  這稱為「連結」  虛擬網路。 啟用自動註冊時，Azure DNS 也會在每次建立虛擬機器時更新區域記錄，變更其 IP 位址，或者在刪除虛擬機器時更新。
 
-在此快速入門中，您可了解如何：
-
-> [!div class="checklist"]
-> * 建立私人 DNS 區域
-> * 建立測試虛擬機器
-> * 建立其他的 DNS 記錄
-> * 測試私人區域
+## <a name="prerequisites"></a>先決條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
@@ -203,7 +197,7 @@ az network private-dns record-set list \
    PS C:\>
    ```
 
-## <a name="delete-all-resources"></a>刪除所有資源
+## <a name="clean-up-resources"></a>清除資源
 
 當不再需要時，請刪除 **MyAzureResourceGroup** 資源群組，來刪除本快速入門中建立的資源。
 

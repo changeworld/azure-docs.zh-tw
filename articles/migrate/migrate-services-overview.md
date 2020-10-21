@@ -4,12 +4,12 @@ description: 了解 Azure Migrate 服務。
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 72f2dfb3e5e05466892d838af4e1c84c855b94a9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 48447959f0a60baf8802a9939612bf0d536c2557
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86122076"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314754"
 ---
 # <a name="about-azure-migrate"></a>關於 Azure Migrate
 
@@ -124,5 +124,5 @@ Azure Migrate 服務有兩個版本。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 嘗試進行我們的教學課程以評估 [VMware VM](tutorial-prepare-vmware.md)、[Hyper-V VM](tutorial-prepare-hyper-v.md) 或[實體伺服器](tutorial-prepare-physical.md)。
+- 嘗試進行我們的教學課程以評估 [VMware VM](./tutorial-discover-vmware.md)、[Hyper-V VM](./tutorial-discover-hyper-v.md) 或[實體伺服器](./tutorial-discover-physical.md)。
 - 針對 Azure Migrate [檢閱相關常見問題](resources-faq.md)。

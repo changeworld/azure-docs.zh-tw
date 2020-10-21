@@ -1,15 +1,15 @@
 ---
 title: Azure Resource Graph Explorer 的 Azure 入口網站中的鍵盤快速鍵
 description: Azure 入口網站中的 Azure Resource Graph Explorer 支援鍵盤快速鍵，可協助您執行動作和導覽。
-ms.date: 08/25/2020
+ms.date: 10/21/2020
 ms.topic: reference
 ms.custom: accessibility
-ms.openlocfilehash: 02471a6efc4ac4d002ca641b792c1c721ffeb3f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdb53e079adf2f65180c15ab93da4f8343e3bab5
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89146431"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340116"
 ---
 # <a name="keyboard-shortcuts-for-azure-resource-graph-explorer"></a>Azure Resource Graph Explorer 的鍵盤快速鍵
 
@@ -24,7 +24,7 @@ ms.locfileid: "89146431"
 |增加縮排 |<kbd>CTRL</kbd>+<kbd>]</kbd> |<kbd>Cmd</kbd> +<kbd>]</kbd> |
 |將行向下移動 |<kbd>ALT</kbd> +<kbd>↓</kbd> |<kbd>選項</kbd> +<kbd>↓</kbd> |
 |將行上移 |<kbd>ALT</kbd> +<kbd>↑</kbd> |<kbd>選項</kbd> +<kbd>↑</kbd> |
-|取代 |<kbd>CTRL</kbd>+<kbd>F</kbd> |<kbd>Cmd</kbd> +<kbd>ALT</kbd> +<kbd>F</kbd> |
+|取代 |<kbd>CTRL</kbd>+<kbd>H</kbd> |<kbd>Cmd</kbd> +<kbd>H</kbd> |
 |全選 |<kbd>CTRL</kbd>+<kbd>A</kbd> |<kbd>Cmd</kbd> +<kbd>A</kbd> |
 |向下選取 |<kbd>SHIFT</kbd> +<kbd>↓</kbd> |<kbd>SHIFT</kbd> +<kbd>↓</kbd> |
 |選取右邊 |<kbd>SHIFT</kbd> +<kbd>→</kbd> |<kbd>SHIFT</kbd> +<kbd>→</kbd> |
