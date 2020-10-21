@@ -3,12 +3,12 @@ title: Service Fabric 專案建立後續步驟
 description: 了解您剛才在 Visual Studio 中建立的應用程式專案。  了解如何使用教學課程建置服務，並深入了解為 Service Fabric 開發服務。
 ms.topic: conceptual
 ms.date: 12/07/2017
-ms.openlocfilehash: e8fc105657bda6114851f4819be4658926ad621c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01a69016e0c299fba0365fab5332b572fd2ca87a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75349404"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314480"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>您的 Service Fabric 應用程式和後續步驟
 您的 Azure Service Fabric 應用程式已經建立。 本文說明一些可嘗試的教學課程、專案的組成、您感興趣的一些其他資訊，以及潛在後續步驟。
@@ -24,7 +24,7 @@ ms.locfileid: "75349404"
 - [Windows 上可供來賓執行的服務](quickstart-guest-app.md) 
 - [Windows 容器應用程式](service-fabric-get-started-containers.md) 
 
-您可以試用我們的[範例應用程式](https://aka.ms/servicefabricsamples)。
+您可以試用我們的[範例應用程式](/samples/browse/?products=azure)。
 
 ## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>有任何問題或意見嗎？  需要回報問題？
 閱讀[常見問題](service-fabric-common-questions.md)並尋找有關 Service Fabric 可以執行的工作和其使用方式的答案。
@@ -62,5 +62,3 @@ Service Fabric 應用程式是由不同的服務組成，每一個服務用來�
 - [在 Azure 中建立 Windows 叢集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)。
 - 使用 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 將叢集視覺化，包括已部署的應用程式和實體配置。
 - [進行服務版本設定和升級](service-fabric-application-upgrade-tutorial.md)
-
-

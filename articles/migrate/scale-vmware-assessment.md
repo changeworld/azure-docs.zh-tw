@@ -3,12 +3,12 @@ title: 使用 Azure Migrate 評定大量的 VMware Vm 以遷移至 Azure
 description: 說明如何使用 Azure Migrate 服務，評定大量的 VMware Vm 以遷移至 Azure。
 ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: 6490a5448bb68dcccd61784d149e9765107400c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a5a29ffc8abe0e8ec4fe85a41b4b67c2e655d2b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87171912"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314123"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>評定大量的 VMware Vm 以遷移至 Azure
 
@@ -26,7 +26,7 @@ ms.locfileid: "87171912"
 
 
 > [!NOTE]
-> 如果您想要在大規模評估之前，嘗試評估幾個 Vm，請遵循我們的 [教學課程系列](tutorial-prepare-vmware.md)
+> 如果您想要在大規模評估之前，嘗試評估幾個 Vm，請遵循我們的 [教學課程系列](./tutorial-discover-vmware.md)
 
 ## <a name="plan-for-assessment"></a>規劃評量
 
@@ -78,7 +78,7 @@ ms.locfileid: "87171912"
 2. 為您的 Azure 帳戶設定許可權，以與 Azure Migrate 互動。
 3. 準備 VMware 進行評量。
 
-遵循 [本教學](tutorial-prepare-vmware.md) 課程中的指示來進行這些設定。
+遵循 [本教學](./tutorial-discover-vmware.md) 課程中的指示來進行這些設定。
 
 
 ## <a name="create-a-project"></a>建立專案
@@ -96,7 +96,7 @@ ms.locfileid: "87171912"
 1. 請參閱評定以準備進行遷移規劃。
 
 
-遵循 [本教學](tutorial-assess-vmware.md) 課程中的指示來進行這些設定。
+遵循 [本教學](./tutorial-assess-vmware-azure-vm.md) 課程中的指示來進行這些設定。
     
 
 ## <a name="next-steps"></a>後續步驟

@@ -3,12 +3,12 @@ title: 從 Apache Kafka 應用程式使用事件中樞 - Azure 事件中樞 | Mi
 description: 本文提供與 Azure 事件中樞所支援的 Apache Kafka 有關的資訊。
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: 5c49f8f87d8d399cda33a332f7464ed340ae3a0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95534d32bdf34d44a11b31c2476c153272717941
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761493"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319853"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>從 Apache Kafka 應用程式使用 Azure 事件中樞
 事件中樞提供與 Apache Kafka 相容的端點，®生產者和取用者 Api，可供大部分現有的 Apache Kafka 用戶端應用程式用來作為執行您自己的 Apache Kafka 叢集的替代方案。 事件中樞支援在1.0 和更新版本的 Apache Kafka 生產者和取用者 Api 用戶端。
@@ -128,7 +128,7 @@ Kafka 資料流程是適用于串流分析的用戶端程式庫，其為 Apache 
 
 - [Azure 串流分析](../stream-analytics/stream-analytics-introduction.md)
 - [透過事件中樞捕獲 Azure Synapse Analytics () ](../event-grid/event-grid-event-hubs-integration.md)
-- [Azure Databricks](https://docs.microsoft.com/azure/databricks/scenarios/databricks-stream-from-eventhubs)
+- [Azure Databricks](/azure/databricks/scenarios/databricks-stream-from-eventhubs)
 - [Apache Samza](https://samza.apache.org/learn/documentation/latest/connectors/eventhubs)
 - [Apache Storm](event-hubs-storm-getstarted-receive.md)
 - [Apache Spark](event-hubs-kafka-spark-tutorial.md)

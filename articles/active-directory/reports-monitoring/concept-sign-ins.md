@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 696b295a481d7b986f08f1d758edb8d5adca5717
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23074dcd7ee888d6d9d8bf288cf0fda66dc0ceec
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812823"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319765"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 入口網站中的登入活動報告
 
@@ -31,14 +31,14 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 - **活動** 
     - **登入** – 受控應用程式和使用者登入活動的使用情況相關資訊。
     - **審核記錄**  - [Audit 記錄](concept-audit-logs.md)檔提供有關使用者和群組管理、受控應用程式和目錄活動的系統活動資訊。
-    - 布建**記錄**  - 布建[記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)可讓客戶透過布建服務監視活動，例如在 ServiceNow 中建立群組或從 Workday 匯入的使用者。 
+    - 布建**記錄**  - 布建[記錄](./concept-provisioning-logs.md)可讓客戶透過布建服務監視活動，例如在 ServiceNow 中建立群組或從 Workday 匯入的使用者。 
 - **安全性** 
     - 有**風險**的登入：有[風險](../identity-protection/overview-identity-protection.md)的登入是指使用者帳戶不是合法擁有者的登入指示。
     - **標示為有風險的使用者** -有 [風險的使用者](../identity-protection/overview-identity-protection.md) 是指可能遭到盜用的使用者帳戶指標。
 
 本文提供登入報告的總覽。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 ### <a name="who-can-access-the-data"></a>誰可以存取資料？
 
@@ -233,7 +233,7 @@ Azure AD 和 Azure 入口網站都提供您登入資料的額外進入點：
 - 應用程式識別碼
 - 應用程式
 - 用戶端
-- Location
+- 位置
 - IP 位址
 - Date
 - 需要 MFA

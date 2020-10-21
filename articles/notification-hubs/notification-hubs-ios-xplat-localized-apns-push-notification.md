@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 4bc392cb6d499d967656358e920f46e261af2906
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a78d3a76e2b13a120e9e744e181c95bfcb330f27
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87030329"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313920"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將當地語系化的推播通知傳送至 iOS
 
@@ -73,7 +73,7 @@ ms.locfileid: "87030329"
 
 如需範本的詳細資訊，請參閱[範本](notification-hubs-templates-cross-platform-push-messages.md)一文。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * 完成[將通知推送至特定的 iOS 裝置](notification-hubs-ios-xplat-segmented-apns-push-notification.md)教學課程並具備該教學課程中的程式碼，因為本教學課程是以該程式碼為基礎。
 * Visual Studio 2019 是選擇性的。
@@ -261,7 +261,7 @@ ms.locfileid: "87030329"
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本教學課程中，您已將當地語系化通知傳送至 iOS 裝置。 若要了解如何將通知推送至 iOS 應用程式的特定使用者，請繼續進行下列教學課程：
 
@@ -289,6 +289,6 @@ ms.locfileid: "87030329"
 [Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
 [JavaScript and HTML]: ../get-started-with-push-js.md
 [Windows Developer Preview registration steps for Mobile Services]: ../mobile-services-windows-developer-preview-registration.md
-[wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
+[wns object]: /previous-versions/azure/reference/jj860484(v=azure.100)
 [Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Notification Hubs How-To for iOS]: /previous-versions/azure/reference/dn223264(v=azure.100)

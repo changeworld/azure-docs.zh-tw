@@ -3,12 +3,12 @@ title: Azure Service Fabric-使用 Service Fabric 應用程式 KeyVault 參考
 description: 本文說明如何使用適用于應用程式秘密的 service fabric KeyVaultReference 支援。
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: c4de6ae17ae728e1dbadbd6d6e2d94c0e1471112
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2221bb3e8e3ee3181b2cff70107dccc203954cf
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261136"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313800"
 ---
 # <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>KeyVaultReference Service Fabric 應用程式的支援 (預覽) 
 
@@ -18,9 +18,9 @@ ms.locfileid: "91261136"
 > 不建議在生產環境中使用此預覽功能。
 
 > [!NOTE]
-> KeyVault 參考預覽功能僅支援已建立 [版本](https://docs.microsoft.com/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning) 的密碼。 不支援無版本秘密。
+> KeyVault 參考預覽功能僅支援已建立 [版本](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning) 的密碼。 不支援無版本秘密。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 應用程式 (MIT) 的受控識別
     

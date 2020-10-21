@@ -3,12 +3,12 @@ title: 設定 Hyper-v 的 Azure Migrate 設備
 description: 瞭解如何設定 Azure Migrate 設備來評定和遷移 Hyper-v Vm。
 ms.topic: article
 ms.date: 03/23/2020
-ms.openlocfilehash: 8841f934ba21fda6cc36b856ea773ed0f53cfe32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a12785ea3791366badb907498796a73c2c993623
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448091"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314174"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>為 Hyper-v Vm 設定設備
 
@@ -118,7 +118,7 @@ ms.locfileid: "91448091"
    
    不支援使用 PIN 登入。
 3. 成功登入後，返回 Web 應用程式。 
-4. 如果用於記錄的 Azure 使用者針對在金鑰產生期間建立的 Azure 資源帳戶具有正確的[權限](tutorial-prepare-hyper-v.md#prepare-azure)，就會起始設備註冊。
+4. 如果用於記錄的 Azure 使用者針對在金鑰產生期間建立的 Azure 資源帳戶具有正確的[權限](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account)，就會起始設備註冊。
 1. 成功註冊設備之後，您可以按一下 [檢視詳細資料]查看註冊詳細資料。
 
 

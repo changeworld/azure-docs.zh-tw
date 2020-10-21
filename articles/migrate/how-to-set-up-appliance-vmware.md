@@ -3,12 +3,12 @@ title: 設定適用于 VMware 的 Azure Migrate 設備
 description: 瞭解如何設定 Azure Migrate 設備來評定和遷移 VMware Vm。
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 9a4e652180b236262ea57ae49d35410ebfbdc927
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f20bb77c29d98ab4e3549bfed43d47d1f1f7dc0c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448646"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318208"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>為 VMware Vm 設定設備
 
@@ -58,7 +58,7 @@ ms.locfileid: "91448646"
 2. 執行下列命令以產生 OVA 的雜湊：
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用方式範例：```C:\>C:\>CertUtil -HashFile C:\Users\Administrator\Desktop\MicrosoftAzureMigration.ova SHA256```
-3. 針對最新的設備版本，所產生的雜湊應符合這些 [設定](./tutorial-assess-vmware.md#verify-security)。
+3. 針對最新的設備版本，所產生的雜湊應符合這些 [設定](./tutorial-discover-vmware.md#verify-security)。
 
 
 
@@ -117,7 +117,7 @@ ms.locfileid: "91448646"
    
    不支援使用 PIN 登入。
 3. 成功登入後，返回 Web 應用程式。 
-4. 如果用於記錄的 Azure 使用者針對在金鑰產生期間建立的 Azure 資源帳戶具有正確的[權限](tutorial-prepare-vmware.md#prepare-azure)，就會起始設備註冊。
+4. 如果用於記錄的 Azure 使用者針對在金鑰產生期間建立的 Azure 資源帳戶具有正確的[權限](./tutorial-discover-vmware.md#prepare-an-azure-user-account)，就會起始設備註冊。
 1. 成功註冊設備之後，您可以按一下 [檢視詳細資料]查看註冊詳細資料。
 
 
@@ -126,7 +126,7 @@ ms.locfileid: "91448646"
 設備必須連線到 vCenter Server，才能探索 VM 的設定與效能資料。
 
 1. 在 [步驟 1：選取復原點]**提供 vCenter Server 認證**中，按一下 [新增認證] 以指定認證的自訂名稱，並新增 vCenter Server 帳戶的**使用者名稱**和**密碼**，設備將使用此 vCenter Server 帳戶探索 vCenter Server 執行個體上的 VM。
-    - 您應該已在[上一個教學課程](tutorial-prepare-vmware.md#set-up-permissions-for-assessment)中設定具有必要權限的帳戶。
+    - 您應該已在[上一個教學課程](./tutorial-discover-vmware.md#create-an-account-to-access-vcenter)中設定具有必要權限的帳戶。
     - 如果您想要將探索範圍限定成特定的 VMware 物件 (vCenter Server 資料中心、叢集、叢集的資料夾、主機、主機的資料夾或個別的 VM)，請參閱本文的[指示](set-discovery-scope.md)來限制 Azure Migrate 所使用的帳戶。
 1. 在**步驟 2：提供 vCenter Server 詳細資料**中，按一下 [新增探索來源]，從下拉式選單選取自訂的認證名稱，指定 vCenter Server 執行個體的 **IP 位址/FQDN**。 您可以將**連接埠**保留為預設 (443)，或指定 vCenter Server 接聽的自訂連接埠並按一下 [儲存]。
 1. 按一下 [儲存] 時，設備會嘗試使用提供的認證驗證與 vCenter Server 的連線，並根據 vCenter Server 的 IP 位址/FQDN，在資料表中顯示**驗證狀態** 。
@@ -145,4 +145,4 @@ ms.locfileid: "91448646"
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱 [VMware 評定](tutorial-assess-vmware.md) 和 [無代理程式遷移](tutorial-migrate-vmware.md)的教學課程。
+請參閱 [VMware 評定](./tutorial-assess-vmware-azure-vm.md) 和 [無代理程式遷移](tutorial-migrate-vmware.md)的教學課程。

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 622f0d66f2c8a9f7cf0539d14499897acf7b68e6
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 525ab34bb9edff737686a88d7a8e664500282555
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096329"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320517"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>關於 Azure VM 災難修復中的網路功能
 
@@ -21,7 +21,7 @@ ms.locfileid: "92096329"
 
 本文提供您使用 [Azure Site Recovery](site-recovery-overview.md)，將 Azure VM 從一個區域複寫和復原到另一個區域時的網路功能指引。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 了解 Site Recovery 如何針對[這種情況](azure-to-azure-architecture.md)提供災害復原。
 
@@ -41,8 +41,8 @@ ms.locfileid: "92096329"
 > Site Recovery 不支援使用經過驗證的 Proxy 來控制網路連線能力，而且無法啟用複寫。
 
 >[!NOTE]
-> 不應執行以 IP 位址為基礎的篩選，以控制輸出連線能力。
-> Azure Site Recovery IP 位址不應新增至 Azure 路由表以控制輸出連線能力。
+>- 不應執行以 IP 位址為基礎的篩選，以控制輸出連線能力。
+>- Azure Site Recovery IP 位址不應新增至 Azure 路由表以控制輸出連線能力。
 
 ## <a name="outbound-connectivity-for-urls"></a>URL 的輸出連線能力
 

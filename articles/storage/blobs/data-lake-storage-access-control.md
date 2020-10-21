@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 188c30a79074b819c5785cf5560f5843a3fcf6b4
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 80c27613ad3956d565b858b02ed32ac13af3a62c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131610"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320481"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中)  (Acl 的存取控制清單
 
@@ -199,7 +199,7 @@ return ( (desired_perms & perms & mask ) == desired_perms)
 
 針對新的 Data Lake Storage Gen2 容器，根目錄的存取 ACL ( "/" ) 的遮罩預設為 **750** （適用于目錄）和 **640** （檔案）。 下表顯示這些許可權等級的符號標記法。
 
-|單位|目錄|檔案儲存體|
+|單位|目錄|檔案|
 |--|--|--|
 |擁有使用者|`rwx`|`r-w`|
 |擁有群組|`r-x`|`r--`|
@@ -258,7 +258,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>我必須啟用 ACL 的支援嗎？
 
-否。 只要已開啟階層命名空間 (HNS) 功能，就會為儲存體帳戶啟用透過 Acl 的存取控制。
+不正確。 只要已開啟階層命名空間 (HNS) 功能，就會為儲存體帳戶啟用透過 Acl 的存取控制。
 
 如果已關閉 HNS，則 Azure Azure RBAC 授權規則仍然適用。
 
@@ -326,6 +326,11 @@ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 
 當您有服務主體的正確 OID 時，請移至儲存體總管 **管理存取權** ] 頁面，以新增 oid 並為 oid 指派適當的許可權。 請確定選取了 [儲存]。
 
+### <a name="can-i-set-the-acl-of-a-container"></a>是否可以設定容器的 ACL？
+
+不正確。 容器沒有 ACL。 不過，您可以設定容器根目錄的 ACL。 每個容器都有一個根目錄，且共用與容器相同的名稱。 例如，如果容器名為，則 `my-container` 根目錄的名稱為 `myContainer/` 。 
+
+Azure 儲存體 REST API 包含名為 [ [設定容器 ACL](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)] 的作業，但該作業不能用來設定容器的 ACL 或容器的根目錄。 相反地，該作業會用來指出是否可以 [公開存取](anonymous-read-access-configure.md)容器中的 blob。 
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>何處可以進一步了解 POSIX 存取控制模型？
 

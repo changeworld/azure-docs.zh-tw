@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c16008ac4a328f93669179ccca783efb9ef092a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b076c757c8f86941c79da4f0be598aaa5ea6761
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91773500"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317950"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能？
 
@@ -84,7 +84,7 @@ Azure AD Connect 雲端布建公開預覽重新整理功能，提供了兩個從
  
 當 IT 系統管理員或使用者讀取 () s 的 BitLocker 修復金鑰時，Azure Active Directory 現在會產生審核記錄，以捕獲存取修復金鑰的人員。 相同的審核會提供與 BitLocker 金鑰相關聯之裝置的詳細資料。
 
-終端使用者可以透過 [我的帳戶存取其修復金鑰](../user-help/my-account-portal-devices-page.md#view-a-bitlocker-key)。 IT 系統管理員可以透過 [Beta 版中的 BitLocker 修復金鑰 API](https://docs.microsoft.com/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta,) 或透過 Azure AD 入口網站來存取修復金鑰。 若要深入瞭解，請參閱 [在 Azure AD 入口網站中查看或複製 BitLocker 金鑰](../devices/device-management-azure-portal.md#view-or-copy-bitlocker-keys)。
+終端使用者可以透過 [我的帳戶存取其修復金鑰](../user-help/my-account-portal-devices-page.md#view-a-bitlocker-key)。 IT 系統管理員可以透過 [Beta 版中的 BitLocker 修復金鑰 API](/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta) 或透過 Azure AD 入口網站來存取修復金鑰。 若要深入瞭解，請參閱 [在 Azure AD 入口網站中查看或複製 BitLocker 金鑰](../devices/device-management-azure-portal.md#view-or-copy-bitlocker-keys)。
 
 ---
 
@@ -412,7 +412,7 @@ Insights 商務領導者角色中的使用者可透過 [M365 Insights 應用程�
  
 由於用戶端應用程式在條件式存取中的正式發行版本，新原則現在會預設套用至所有用戶端應用程式。 這包括舊版驗證用戶端。 現有的原則會維持不變，但 [ *設定為]/[否]* 切換將會從現有的原則中移除，以輕鬆查看原則所套用的用戶端應用程式。 
 
-建立新原則時，請務必排除仍在使用舊版驗證的使用者和服務帳戶。如果不這麼做，將會被封鎖。 [深入了解](https://aka.ms/caclientapps)。
+建立新原則時，請務必排除仍在使用舊版驗證的使用者和服務帳戶。如果不這麼做，將會被封鎖。 [深入了解](../conditional-access/concept-conditional-access-conditions.md)。
  
 ---
 
@@ -978,7 +978,7 @@ Microsoft Graph Directory 物件 Api、啟用計數、搜尋、篩選和排序�
 **服務類別：** 應用程式佈建  
 **產品功能：** 身分識別生命週期管理
  
-我們已增強 Workday 回寫布建應用程式，現在支援公司電話號碼和行動電話號碼屬性的回寫。 除了電子郵件和使用者名稱之外，您現在還可以設定 Workday 回寫布建應用程式，將電話號碼值從 Azure AD 傳送到 Workday。 如需有關如何設定電話號碼回寫的詳細資訊，請參閱 [Workday 回寫](https://aka.ms/WorkdayWriteback) 應用程式教學課程。 
+我們已增強 Workday 回寫布建應用程式，現在支援公司電話號碼和行動電話號碼屬性的回寫。 除了電子郵件和使用者名稱之外，您現在還可以設定 Workday 回寫布建應用程式，將電話號碼值從 Azure AD 傳送到 Workday。 如需有關如何設定電話號碼回寫的詳細資訊，請參閱 [Workday 回寫](../saas-apps/workday-writeback-tutorial.md) 應用程式教學課程。 
 
 ---
 
@@ -1025,7 +1025,7 @@ Azure AD B2C 的新應用程式註冊體驗現已正式推出。
 
 Azure AD B2C 應用程式註冊體驗是根據 Azure AD 租使用者的一般 [應用程式註冊體驗](https://developer.microsoft.com/identity/blogs/new-app-registrations-experience-is-now-generally-available/) ，但專為 Azure AD B2C 量身打造。 舊版的「應用程式」體驗將在未來淘汰。
 
-如需詳細資訊，請造訪 [Azure AD B2C 的新應用程式註冊體驗](https://aka.ms/b2cappregtraining)。
+如需詳細資訊，請造訪 [Azure AD B2C 的新應用程式註冊體驗](../../active-directory-b2c/app-registrations-training-guide.md)。
 
 ---
 
@@ -1051,7 +1051,7 @@ Multi-Factor Authentication (MFA) 和 Self-Service 密碼重設 (SSPR) 的結合
 
 **產品功能：** 身分識別安全性 & 保護
 
-持續存取評估是一項新的安全性功能，可讓信賴憑證者在 Azure AD (（例如使用者帳戶刪除) ）中發生事件時，近乎即時地強制使用 Azure AD 存取權杖的原則。 我們會先為小組和 Outlook 用戶端推出這項功能。 如需詳細資訊，請閱讀我們的 [blog](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933) 和  [檔](./concept-fundamentals-continuous-access-evaluation.md)。
+持續存取評估是一項新的安全性功能，可讓信賴憑證者在 Azure AD (（例如使用者帳戶刪除) ）中發生事件時，近乎即時地強制使用 Azure AD 存取權杖的原則。 我們會先為小組和 Outlook 用戶端推出這項功能。 如需詳細資訊，請閱讀我們的 [blog](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933) 和  [檔](../conditional-access/concept-continuous-access-evaluation.md)。
 
 ---
 
@@ -1127,7 +1127,7 @@ Office 正在啟動一系列行動優先的商務應用程式，這些應用程�
 
 [SincroPool Apps](https://www.sincropool.com/)、 [SmartDB](https://hibiki.dreamarts.co.jp/smartdb/trial/)、 [Float](../saas-apps/float-tutorial.md)、 [LMS365](https://lms.365.systems/)、 [IWT 採購 Suite](../saas-apps/iwt-procurement-suite-tutorial.md)、 [Lunni](https://lunni.fi/)、 [EasySSO for Jira](../saas-apps/easysso-for-jira-tutorial.md)、[虛擬訓練](https://vta.c3p.ca/app/en/openid?authenticate_with=microsoft)學術、 [Meraki 儀表板](../saas-apps/meraki-dashboard-tutorial.md)、 [Microsoft 365 移動](https://app.mover.io/login)、[說話者](https://speakerengage.com/login.php) [、老實、](../saas-apps/honestly-tutorial.md)Ally [、DutyFlow、](https://app.dutyflow.nl/) [AlertMedia](../saas-apps/alertmedia-tutorial.md)、 [gr8 人員](../saas-apps/gr8-people-tutorial.md)、Pendo、 [HighGround](../saas-apps/highground-tutorial.md)、Timetabling [、SynchroNet、](../saas-apps/timetabling-solutions-tutorial.md) [Fortes、](../saas-apps/pendo-tutorial.md)Litmus [empower](https://www.made-in-office.com/en/) [、GroupTalk](../saas-apps/harmony-tutorial.md) [、Frontify](https://review.docs.microsoft.com/azure/active-directory/saas-apps/trend-micro-tutorial) [、TickitLMS、](../saas-apps/synchronet-click-tutorial.md)COCO、Nitro [、)  (](../saas-apps/nitro-productivity-suite-tutorial.md) TMWS、、 [、](https://hexaware.com/partnerships-and-alliances/digital-transformation-using-microsoft-azure/) [、、](../saas-apps/fortes-change-cloud-tutorial.md) [、](../saas-apps/tickitlms-learn-tutorial.md) [、](../saas-apps/litmus-tutorial.md) [、](../saas-apps/mongodb-cloud-tutorial.md) [、](../saas-apps/frontify-tutorial.md)、 [、](https://recorder.grouptalk.com/) [Ally](../saas-apps/ally-tutorial.md)
 
-如需應用程式的詳細資訊，請參閱[與 Azure Active Directory 整合的 SaaS 應用程式](https://aka.ms/appstutorial)。 如需在 Azure AD 應用程式庫中列出應用程式的詳細資訊，請參閱[在 Azure Active Directory 應用程式庫中列出您的應用程式](https://aka.ms/azureadapprequest)。
+如需應用程式的詳細資訊，請參閱[與 Azure Active Directory 整合的 SaaS 應用程式](../saas-apps/tutorial-list.md)。 如需在 Azure AD 應用程式庫中列出應用程式的詳細資訊，請參閱[在 Azure Active Directory 應用程式庫中列出您的應用程式](../azuread-dev/howto-app-gallery-listing.md)。
 
 ---
 
@@ -1211,7 +1211,7 @@ Office 正在啟動一系列行動優先的商務應用程式，這些應用程�
 - 使用系統管理許可權來指派僅限管理單位中 Azure AD 使用者的角色
 - 視需要使用使用者和群組填入系統管理單位
 
-如需詳細資訊，請參閱 [Azure Active Directory (preview) 中的管理單位管理 ](https://aka.ms/AdminUnitsDocs)。
+如需詳細資訊，請參閱 [Azure Active Directory (preview) 中的管理單位管理 ](../users-groups-roles/directory-administrative-units.md)。
 
 ---
 
@@ -1282,7 +1282,7 @@ Office 正在啟動一系列行動優先的商務應用程式，這些應用程�
 
 **產品功能：**
 
-「我的員工」可讓第一線管理員（例如商店經理）確保其員工成員能夠存取 Azure AD 帳戶。 組織可以將一般工作（例如重設密碼或變更電話號碼）委派給第一線 Manager，而不是依賴中央技術服務人員。 使用「我的員工」時，無法存取其帳戶的使用者只要按幾下，就可以重新取得存取權，而不需要技術服務人員或 IT 人員。 如需詳細資訊，請參閱使用 [我的員工來管理您的使用者 (預覽) ](https://aka.ms/MyStaffAdminDocs) 並 [使用我的員工來委派使用者管理 (preview) ](https://aka.ms/MyStaffUserDocs)。
+「我的員工」可讓第一線管理員（例如商店經理）確保其員工成員能夠存取 Azure AD 帳戶。 組織可以將一般工作（例如重設密碼或變更電話號碼）委派給第一線 Manager，而不是依賴中央技術服務人員。 使用「我的員工」時，無法存取其帳戶的使用者只要按幾下，就可以重新取得存取權，而不需要技術服務人員或 IT 人員。 如需詳細資訊，請參閱使用 [我的員工來管理您的使用者 (預覽) ](../users-groups-roles/my-staff-configure.md) 並 [使用我的員工來委派使用者管理 (preview) ](../user-help/my-staff-team-manager.md)。
 
 ---
 

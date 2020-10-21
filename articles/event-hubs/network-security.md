@@ -3,12 +3,12 @@ title: Azure 事件中樞的網路安全性
 description: 本文說明如何設定私人端點的存取權
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: ae6cbdc8258cde9bb2da961cb452f996f0797cfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02a3a3436c354f7a9c817298d0ce887e33d8016a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767795"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318489"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Azure 事件中樞的網路安全性 
 本文說明如何搭配 Azure 事件中樞使用下列安全性功能： 
@@ -22,7 +22,7 @@ ms.locfileid: "91767795"
 ## <a name="service-tags"></a>服務標籤
 服務標籤代表來自指定 Azure 服務的一組 IP 位址前置詞。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤，而盡可能簡化網路安全性規則頻繁的更新。 如需服務標籤的詳細資訊，請參閱 [服務標記總覽](../virtual-network/service-tags-overview.md)。
 
-您可以使用服務標籤來定義[網路安全性群組](../virtual-network/security-overview.md#security-rules) 或 [Azure 防火牆](../firewall/service-tags.md)的網路存取控制。 建立安全性規則時，請以服務標籤取代特定的 IP 位址。 藉由指定服務標籤名稱 (例如，在規則的適當*來源*或目的地欄位中指定**EventHub**)    *destination*   ，您可以允許或拒絕對應服務的流量。
+您可以使用服務標籤來定義[網路安全性群組](../virtual-network/network-security-groups-overview.md#security-rules) 或 [Azure 防火牆](../firewall/service-tags.md)的網路存取控制。 建立安全性規則時，請以服務標籤取代特定的 IP 位址。 藉由指定服務標籤名稱 (例如，在規則的適當*來源*或目的地欄位中指定**EventHub**)    *destination*   ，您可以允許或拒絕對應服務的流量。
 
 | 服務標籤 | 目的 | 可以使用輸入還是輸出？ | 是否可為區域性？ | 是否可與 Azure 防火牆搭配使用？ |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|

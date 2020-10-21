@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 5696bd167010ae81249eeac3134b79d3d5307288
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 2c949447635ccdf4cf36acec43a09c1104b9fdd4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91943861"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280031"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure 作業安全性最佳做法
 本文提供一組操作最佳做法，以保護您在 Azure 中的資料、應用程式和其他資產。
@@ -53,7 +53,7 @@ Azure 作業安全性是指使用者可在 Azure 中用來保護其資料、應�
 在 Azure 註冊入口網站中，您可以確保系統管理員連絡人資訊包含通知安全性作業的詳細資料。 連絡人資訊為電子郵件地址和電話號碼。
 
 ## <a name="organize-azure-subscriptions-into-management-groups"></a>將 Azure 訂用帳戶組織成管理群組
-如果您的組織有許多訂用帳戶，則可能需要有效管理這些訂用帳戶的存取權、原則與合規性方法。 [Azure 管理群組](/azure/governance/management-groups/create) 提供高於訂用帳戶的範圍層級。 您將訂用帳戶整理到稱為管理群組的容器，並將治理條件套用至管理群組。 管理群組內的所有訂用帳戶都會自動繼承套用到管理群組的條件。
+如果您的組織有許多訂用帳戶，則可能需要有效管理這些訂用帳戶的存取權、原則與合規性方法。 [Azure 管理群組](/azure/governance/management-groups/create) 提供高於訂用帳戶的範圍層級。 您可將訂用帳戶組織成稱為管理群組的容器，並將治理條件套用到管理群組。 管理群組內的所有訂用帳戶都會自動繼承套用到管理群組的條件。
 
 您可以在目錄中建立管理群組和訂用帳戶的彈性結構。 每個目錄都有一個最上層管理群組，稱為根管理群組。 這個根管理群組會建置於階層內，讓所有的管理群組和訂用帳戶摺疊於其中。 根管理群組可讓全域原則和 Azure 角色指派套用於目錄層級。
 
@@ -122,7 +122,7 @@ Azure 作業安全性是指使用者可在 Azure 中用來保護其資料、應�
 **詳細**資料：使用 [Azure 監視器來收集和匯出資料](/azure/azure-monitor/overview#integrate-and-export-data)。 這種作法對於啟用安全性事件調查而言很重要，而且線上記錄保留期有限。 如果您是使用 Azure Sentinel，請參閱 [連接資料來源](../../sentinel/connect-data-sources.md)。
 
 **最佳做法**：將端點偵測和回應 (EDR) 功能整合到攻擊調查中，以加速您的調查和搜尋程式，並減少誤報。   
-**詳細資料**：透過您的資訊安全中心安全性原則 [啟用 Microsoft Defender ATP 整合](../../security-center/security-center-wdatp.md#enable-microsoft-defender-atp-integration) 。 請考慮使用 Azure Sentinel 進行威脅搜尋和事件回應。
+**詳細資料**： [啟用 Microsoft Defender 以](../../security-center/security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration) 透過資訊安全中心安全性原則進行端點整合。 請考慮使用 Azure Sentinel 進行威脅搜尋和事件回應。
 
 ## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>監視以端對端案例為基礎的網路監視
 客戶可以結合網路資源 (例如虛擬網路、ExpressRoute、應用程式閘道及負載平衡器)，在 Azure 中建置端對端網路。 每個網路資源都可進行監視。

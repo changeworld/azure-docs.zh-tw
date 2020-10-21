@@ -1,19 +1,19 @@
 ---
 title: 建立安全連線的私人端點
 titleSuffix: Azure Cognitive Search
-description: 設定虛擬網路中的私人端點，以安全地連接到 Azure 認知搜尋服務
+description: 設定虛擬網路中的私人端點，以安全地連接到 Azure 認知搜尋服務。
 manager: nitinme
 author: mrcarter8
 ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 0cfa7b63d1ce9dd4d9b40cd0eedac247f9c56437
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: bbbc79a129ec3140ea6d286cbdce0165e2f6ae7b
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935750"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280405"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>建立私人端點，以 Azure 認知搜尋的安全連線
 
@@ -67,7 +67,7 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
     | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。|
     | **執行個體詳細資料** |  |
     | URL | 輸入唯一名稱。 |
-    | Location | 選取所需的區域。 |
+    | 位置 | 選取所需的區域。 |
     | 定價層 | 選取 [ **變更定價層** ]，然後選擇您想要的服務層級。 **免費**層上的 (不支援。 必須是 **基本** 或更高的版本。 )  |
     |||
   
@@ -85,7 +85,7 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
     | ------- | ----- |
     | 訂用帳戶 | 選取您的訂用帳戶。 |
     | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。|
-    | Location | 選取 [美國西部]****。|
+    | 位置 | 選取 [美國西部]****。|
     | 名稱 | 輸入 myPrivateEndpoint。  |
     | 目標子資源 | 保留預設 **searchService**。 |
     | **網路** |  |
@@ -152,10 +152,16 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
     | 選取輸入連接埠 | 選取 [HTTP] 和 [RDP]。|
     ||
 
+   > [!NOTE]
+   > IPv4 位址可以用 [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 格式表示。 請記得避免保留給私用網路的 IP 範圍，如 [RFC 1918](https://tools.ietf.org/html/rfc1918)中所述：
+   >
+   > - `10.0.0.0 - 10.255.255.255  (10/8 prefix)`
+   > - `172.16.0.0 - 172.31.255.255  (172.16/12 prefix)`
+   > - `192.168.0.0 - 192.168.255.255 (192.168/16 prefix)`
+
 1. 選取 [檢閱 + 建立]。 您會移至 [檢閱 + 建立] 頁面，其中 Azure 會驗證您的設定。
 
 1. 當您看到 [驗證成功] 訊息時，請選取 [建立]。 
-
 
 ## <a name="connect-to-the-vm"></a>連接至 VM
 
@@ -181,7 +187,6 @@ Azure 認知搜尋的[私人端點](../private-link/private-endpoint-overview.md
 1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是] 或 [繼續]。
 
 1. 當 VM 桌面出現之後，將它最小化以回到您的本機桌面。  
-
 
 ## <a name="test-connections"></a>測試連接
 

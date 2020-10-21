@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: e8786c2d6e93c18a5bf9856a5555d6b528f842c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a50de7154bd768f5cc4c25062ec3ce05c0f37328
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75441227"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279859"
 ---
 # <a name="create-a-synthetic-partition-key"></a>建立綜合分割區索引鍵
 
@@ -58,7 +58,7 @@ ms.locfileid: "75441227"
 
 您可以在下列文章中深入了解分割概念：
 
-* 深入了解[邏輯分割區](partition-data.md)。
+* 深入了解[邏輯分割區](partitioning-overview.md)。
 * 深入了解如何[在 Azure Cosmos 容器和資料庫上佈建輸送量](set-throughput.md)。
 * 了解如何[在 Azure Cosmos 容器上佈建輸送量](how-to-provision-container-throughput.md)。
 * 了解如何[在 Azure Cosmos 資料庫上佈建輸送量](how-to-provision-database-throughput.md)。

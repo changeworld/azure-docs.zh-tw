@@ -17,12 +17,12 @@ ms.date: 10/07/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61a143d4294359249bffceac12e65c36ea9e5fb9
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 675c98e00b7458f326c95741529f7ce41a91dc18
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056152"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319734"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 入口網站中布建報表 (預覽) 
 
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 本主題提供布建報告的總覽。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 ### <a name="who-can-access-the-data"></a>誰可以存取資料？
 * 應用程式擁有者可以查看他們所擁有之應用程式的記錄
@@ -61,7 +61,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 您可以在[Azure 入口網站](https://portal.azure.com)的**Azure Active Directory**分頁的 [**監視**] 區段中選取 [布建**記錄**]，以存取布建記錄。 某些布建記錄最多可能需要兩個小時才會顯示在入口網站中。
 
-![布建記錄](./media/concept-provisioning-logs/access-provisioning-logs.png "佈建記錄")
+![佈建記錄](./media/concept-provisioning-logs/access-provisioning-logs.png "佈建記錄")
 
 
 布建記錄有一個預設的清單視圖，顯示：
@@ -86,7 +86,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 選取清單檢視中的項目，即可取得更詳細的資訊。
 
-![詳細資訊](./media/concept-provisioning-logs/steps.png "篩選")
+![詳細資訊](./media/concept-provisioning-logs/steps.png "Filter")
 
 
 ## <a name="filter-provisioning-activities"></a>篩選布建活動
@@ -95,12 +95,12 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 在預設視圖中，您可以選取下列篩選準則：
 
 - 身分識別
-- 日期
+- Date
 - 狀態
 - 動作
 
 
-![新增篩選條件](./media/concept-provisioning-logs/default-filter.png "篩選")
+![新增篩選條件](./media/concept-provisioning-logs/default-filter.png "Filter")
 
 身分 **識別** 篩選器可讓您指定您關心的名稱或身分識別。 此身分識別可以是使用者、群組、角色或其他物件。 您可以依物件的名稱或識別碼進行搜尋。 此識別碼會因案例而異。 例如，從 Azure AD 將物件布建到 SalesForce 時，來源識別碼是 Azure AD 中使用者的物件識別碼，而 TargetID 是 Salesforce 中使用者的識別碼。 從 Workday 布建至 Active Directory 時，來源識別碼是 Workday 背景工作員工識別碼。 請注意，使用者的名稱不一定會出現在識別欄位中。 一律會有一個識別碼。 
 
@@ -176,7 +176,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 - 摘要
 
 
-![布建詳細資料](./media/concept-provisioning-logs/provisioning-tabs.png "定位點")
+![布建詳細資料](./media/concept-provisioning-logs/provisioning-tabs.png "索引標籤")
 
 
 
@@ -191,7 +191,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 
 
-![螢幕擷取畫面顯示 [步驟] 索引標籤，其中顯示布建步驟。](./media/concept-provisioning-logs/steps.png "篩選")
+![螢幕擷取畫面顯示 [步驟] 索引標籤，其中顯示布建步驟。](./media/concept-provisioning-logs/steps.png "Filter")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>疑難排解和建議
@@ -215,7 +215,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 - 您可以使用 [變更識別碼] 屬性做為唯一識別碼。 例如，當與產品支援互動時，這會很有説明。
 
-- 目前沒有任何選項可將布建資料下載為 CSV 檔案，但您可以使用 [Microsoft Graph](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http)來匯出資料。
+- 目前沒有任何選項可將布建資料下載為 CSV 檔案，但您可以使用 [Microsoft Graph](/graph/api/provisioningobjectsummary-list?tabs=http&view=graph-rest-beta)來匯出資料。
 
 - 您可能會看到不在範圍中的使用者略過的事件。 這是預期的情況，特別是當同步處理範圍設定為 [所有使用者和群組] 時。 我們的服務會評估租使用者中的所有物件，甚至是超出範圍的物件。 
 
@@ -245,10 +245,10 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 |DuplicateSourceEntries | 無法完成作業，因為發現多個使用者具有設定的相符屬性。 請移除重複的使用者，或重新設定您的屬性對應[，如下所述。](../app-provisioning/customize-application-attributes.md)|
 |ImportSkipped | 評估每位使用者時，我們會嘗試從來源系統匯入使用者。 當匯入的使用者缺少屬性對應中定義的相符屬性時，通常會發生這個錯誤。 在使用者物件上沒有符合屬性的值時，我們無法評估範圍、比對或匯出變更。 請注意，此錯誤是否存在，不表示使用者在範圍內，但尚未評估使用者的範圍。|
 |EntrySynchronizationSkipped | 布建服務已成功查詢來源系統並識別使用者。 使用者沒有採取任何進一步的動作，而且已略過。 略過的原因可能是使用者超出範圍，或使用者已存在於目標系統中，因此不需要進一步變更。|
-|SystemForCrossDomainIdentityManagementMultipleEntriesInResponse| 當執行 GET 要求以取得使用者或群組時，我們在回應中收到多個使用者或群組。 我們預期只會在回應中收到一個使用者或群組。 [例如](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#get-group)，如果我們進行 GET 要求以抓取群組並提供篩選器來排除成員，而您的 SCIM 端點會傳回成員，我們會擲回此錯誤。|
+|SystemForCrossDomainIdentityManagementMultipleEntriesInResponse| 當執行 GET 要求以取得使用者或群組時，我們在回應中收到多個使用者或群組。 我們預期只會在回應中收到一個使用者或群組。 [例如](../app-provisioning/use-scim-to-provision-users-and-groups.md#get-group)，如果我們進行 GET 要求以抓取群組並提供篩選器來排除成員，而您的 SCIM 端點會傳回成員，我們會擲回此錯誤。|
 
 ## <a name="next-steps"></a>後續步驟
 
 * [檢查使用者布建的狀態](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
 * [設定 Azure AD 資源庫應用程式的使用者佈建時遇到的問題](../app-provisioning/application-provisioning-config-problem.md)
-* [布建記錄圖形 API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)
+* [布建記錄圖形 API](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)

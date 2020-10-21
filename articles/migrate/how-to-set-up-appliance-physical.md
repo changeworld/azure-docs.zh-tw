@@ -4,12 +4,12 @@ description: 瞭解如何設定 Azure Migrate 設備以進行實體伺服器評�
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
-ms.openlocfilehash: 348c12e08a9bed98016ac825921b67836b32b9e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e9d79d16e805eeaf770327a56a4247067c78a35
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448077"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314142"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>設定實體伺服器的設備
 
@@ -122,7 +122,7 @@ Azure Migrate 設備是輕量型設備，可供 Azure Migrate 伺服器評量用
    
    不支援使用 PIN 登入。
 3. 成功登入後，返回 Web 應用程式。 
-4. 如果用於記錄的 Azure 使用者針對在金鑰產生期間建立的 Azure 資源帳戶具有正確的[權限](tutorial-prepare-physical.md)，就會起始設備註冊。
+4. 如果用於記錄的 Azure 使用者針對在金鑰產生期間建立的 Azure 資源帳戶具有正確的[權限](./tutorial-discover-physical.md)，就會起始設備註冊。
 1. 成功註冊設備之後，您可以按一下 [檢視詳細資料]查看註冊詳細資料。
 
 

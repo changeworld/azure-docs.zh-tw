@@ -4,15 +4,15 @@ description: 如何在服務資訊清單中描述端點資源，包括如何設�
 ms.topic: conceptual
 ms.date: 09/16/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 775e554128b9828915ce7dafaf4bccf597911912
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5e8f39fe25011d02b989614fdc6538cd92c12d4e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017585"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313576"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服務資訊清單中指定資源
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 Service Fabric 的應用程式和服務會使用資訊清單檔案來定義和建立版本。 如需 ServiceManifest.xml 和 ApplicationManifest.xml 的更高層級總覽，請參閱 [Service Fabric 應用程式和服務資訊清單](service-fabric-application-and-service-manifests.md)。
 
 服務資訊清單允許宣告或變更服務所使用的資源，而不需變更已編譯的程式碼。 Service Fabric 支援設定服務的端點資源。 透過應用程式資訊清單中的 SecurityGroup，即可控制存取服務資訊清單中的指定資源。 資源宣告可讓您在部署階段變更這些資源，也就是服務不需要導入新的組態機制。 ServiceManifest.xml 檔案的架構定義會隨 Service Fabric SDK 和工具一起安裝，以 *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*，並記載于 [>servicefabricservicemodel.xsd .xsd 架構檔](service-fabric-service-model-schema.md)中。
@@ -158,7 +158,7 @@ HTTPS 通訊協定提供伺服器驗證，也能用於加密用戶端-伺服器�
 
 若是 Linux 叢集，**MY** 存放區預設為資料夾 **/var/lib/sfcerts**。
 
-如需利用 HTTPS 端點的完整應用程式範例，請參閱 [使用 Kestrel 將 HTTPs 端點新增至 ASP.NET Core WEB API 前端服務](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-dotnet-app-enable-https-endpoint#define-an-https-endpoint-in-the-service-manifest)。
+如需利用 HTTPS 端點的完整應用程式範例，請參閱 [使用 Kestrel 將 HTTPs 端點新增至 ASP.NET Core WEB API 前端服務](./service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest)。
 
 ## <a name="port-acling-for-http-endpoints"></a>HTTP 端點的埠執行 acl
 Service Fabric 預設會自動 ACL HTTP (S) 端點。 如果端點沒有與其相關聯的[SecurityAccessPolicy](service-fabric-assign-policy-to-endpoint.md) ，且 Service Fabric 設定為使用具有系統管理員許可權的帳戶來執行，則它**不**會執行自動執行 acl。

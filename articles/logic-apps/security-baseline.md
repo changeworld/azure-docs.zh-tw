@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 16ee5fb59741d57f47083a0c5db852872ceb91d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1846a6d94b81a907ac05fe92151c860aab457292
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89296085"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315829"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>適用于 Logic Apps 的 Azure 安全性基準
 
@@ -24,7 +24,7 @@ ms.locfileid: "89296085"
 
 ## <a name="network-security"></a>網路安全性
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：網路安全性](/azure/security/benchmarks/security-control-network-security)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：網路安全性](../security/benchmarks/security-control-network-security.md)。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保護虛擬網路內的 Azure 資源
 
@@ -102,7 +102,7 @@ ms.locfileid: "89296085"
 
 - [如何部署 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [了解 Azure 資訊安全中心的整合式威脅情報](/azure/security-center/security-center-alerts-service-layer)
+- [了解 Azure 資訊安全中心的整合式威脅情報](../security-center/azure-defender.md)
 
 - [瞭解 Azure 資訊安全中心適應性網路強化](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -200,13 +200,13 @@ ms.locfileid: "89296085"
 
 您可以使用 Azure PowerShell 或 Azure CLI，根據其標記查閱或執行資源的動作。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 - [如何建立虛擬網路](../virtual-network/quick-create-portal.md)
 
 - [如何建立具有安全性設定的 NSG](../virtual-network/tutorial-filter-network-traffic.md)
 
-- [Logic Apps 的 Azure 原則定義清單](/azure/logic-apps/policy-samples)
+- [Logic Apps 的 Azure 原則定義清單](./policy-reference.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -216,7 +216,7 @@ ms.locfileid: "89296085"
 
 **指導**方針：使用 Azure 活動記錄來監視網路資源設定，並偵測與 Azure Logic Apps 實例相關之網路資源的變更。 在 Azure 監視器中建立警示，以在重要網路資源發生變更時觸發。
 
-- [如何檢視及擷取 Azure 活動記錄事件](/azure/azure-monitor/platform/activity-log-view)
+- [如何檢視及擷取 Azure 活動記錄事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [如何在 Azure 監視器中建立警示](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -226,7 +226,7 @@ ms.locfileid: "89296085"
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：記錄和監視](/azure/security/benchmarks/security-control-logging-monitoring)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：記錄和監視](../security/benchmarks/security-control-logging-monitoring.md)。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用已核准的時間同步處理來源
 
@@ -242,7 +242,7 @@ ms.locfileid: "89296085"
 
 或者，您也可啟用 Azure Sentinel 或第三方 SIEM，並讓資料上線。 
 
-- [如何啟用 Azure 活動記錄的診斷設定](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [如何啟用 Azure 活動記錄的診斷設定](../azure-monitor/platform/activity-log.md)
 
 - [如何設定 Azure 監視器記錄，並收集 Azure Logic Apps 的診斷資料](monitor-logic-apps-log-analytics.md)
 
@@ -258,7 +258,7 @@ ms.locfileid: "89296085"
 
 或者，您也可啟用 Azure Sentinel 或第三方 SIEM，並讓資料上線。 
 
-- [如何啟用 Azure 活動記錄的診斷設定](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [如何啟用 Azure 活動記錄的診斷設定](../azure-monitor/platform/activity-log.md)
 
 - [如何設定 Azure 監視器記錄，並收集 Azure Logic Apps 的診斷資料](monitor-logic-apps-log-analytics.md)
 
@@ -300,9 +300,9 @@ ms.locfileid: "89296085"
 
 - [如何設定 Azure 監視器記錄，並收集 Azure Logic Apps 的診斷資料](monitor-logic-apps-log-analytics.md)
 
-- [如何啟用 Azure 活動記錄的診斷設定](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [如何啟用 Azure 活動記錄的診斷設定](../azure-monitor/platform/activity-log.md)
 
-- [如何在 Azure 監視器中收集和分析 Log Analytics 中的 Azure 活動記錄](/azure/azure-monitor/platform/activity-log-collect)
+- [如何在 Azure 監視器中收集和分析 Log Analytics 中的 Azure 活動記錄](../azure-monitor/platform/activity-log.md)
 
 - [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md) 
 
@@ -352,7 +352,7 @@ ms.locfileid: "89296085"
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：身分識別與存取控制](/azure/security/benchmarks/security-control-identity-access-control)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：身分識別與存取控制](../security/benchmarks/security-control-identity-access-control.md)。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
@@ -362,11 +362,11 @@ ms.locfileid: "89296085"
 
 邏輯應用程式上的每個要求端點都具有共用存取簽章， (SAS) 端點的 URL 中。 對於以要求為基礎的觸發程序，如果您要將端點 URL 分享給其他人，您可以產生使用特定金鑰且有到期日的回呼 URL。 如此一來，您可以根據特定的時間範圍，無縫輪替金鑰，或限制有無存取權來觸發邏輯應用程式。
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
 - [使用 Azure Logic Apps 中的受控識別驗證及存取 Azure 資源](create-managed-service-identity.md)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 - [如何使用 SAS 保護 Azure Logic Apps 中的存取和資料](logic-apps-securing-a-logic-app.md#sas)
 
@@ -460,7 +460,7 @@ ms.locfileid: "89296085"
 
 - [如何部署 Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [了解 Azure AD 風險偵測](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [了解 Azure AD 風險偵測](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -508,7 +508,7 @@ Azure Logic Apps 支援系統指派和使用者指派的受控識別。 您的�
 
 **指導**方針： AZURE ACTIVE DIRECTORY (AD) 提供記錄檔，以協助您探索過時的帳戶。 此外，使用 Azure 身分識別存取審核來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢閱使用者的存取權，以確定只有適當的使用者具有持續存取權。 
 
-- [瞭解 Azure AD 報告](/azure/active-directory/reports-monitoring/)
+- [瞭解 Azure AD 報告](../active-directory/reports-monitoring/index.yml)
 
 - [如何使用 Azure 身分識別存取權檢閱](../active-directory/governance/access-reviews-overview.md)
 
@@ -524,7 +524,7 @@ Azure Logic Apps 支援系統指派和使用者指派的受控識別。 您的�
 
 您可以建立 Azure AD 使用者帳戶的診斷設定，並將審核記錄和登入記錄傳送至 Log Analytics 工作區，以簡化此程式。 您可以在 Log Analytics 中設定所需的記錄警示。
 
-- [如何將 Azure 活動記錄整合到 Azure 監視器中](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何將 Azure 活動記錄整合到 Azure 監視器中](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [如何讓 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
@@ -536,7 +536,7 @@ Azure Logic Apps 支援系統指派和使用者指派的受控識別。 您的�
 
 **指引**：使用 Azure AD 風險和身分識別保護功能設定自動回應，以偵測與使用者身分識別相關的可疑動作。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。 
 
-- [如何檢視有風險的 Azure AD 登入](/azure/active-directory/reports-monitoring/concept-risky-sign-ins) 
+- [如何檢視有風險的 Azure AD 登入](../active-directory/identity-protection/overview-identity-protection.md) 
 
 - [如何設定和啟用身分識別保護風險原則](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) 
 
@@ -558,13 +558,13 @@ Azure Logic Apps 支援系統指派和使用者指派的受控識別。 您的�
 
 ## <a name="data-protection"></a>資料保護
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：資料保護](/azure/security/benchmarks/security-control-data-protection)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：資料保護](../security/benchmarks/security-control-data-protection.md)。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的詳細目錄
 
 **指引**：使用標籤協助追蹤可儲存或處理敏感性資訊的 Azure 資源。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -584,11 +584,11 @@ Azure Logic Apps 支援系統指派和使用者指派的受控識別。 您的�
 
 - [透過整合服務環境 (ISE) 從 Azure Logic Apps 存取 Azure 虛擬網路資源](connect-virtual-network-vnet-isolated-environment-overview.md)
 
-- [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription) 
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md) 
 
-- [如何建立管理群組](/azure/governance/management-groups/create) 
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md) 
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -693,7 +693,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 ## <a name="vulnerability-management"></a>弱點管理
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：弱點管理](/azure/security/benchmarks/security-control-vulnerability-management)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：弱點管理](../security/benchmarks/security-control-vulnerability-management.md)。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：執行自動化弱點掃描工具
 
@@ -737,7 +737,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：清查和資產管理](/azure/security/benchmarks/security-control-inventory-asset-management)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：清查和資產管理](../security/benchmarks/security-control-inventory-asset-management.md)。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自動化資產探索解決方案
 
@@ -747,7 +747,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 - [如何使用 Azure Resource Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-- [如何檢視您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -759,7 +759,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 **指引**：將標籤套用至提供中繼資料的 Azure 資源，以邏輯方式依分類組織這些資源。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -774,11 +774,11 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 - 不允許的資源類型
 - 允許的資源類型
 
-- [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](/azure/governance/management-groups/create)
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -847,7 +847,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure 原則拒絕特定的資源類型](/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure 原則拒絕特定的資源類型](../governance/policy/samples/index.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -889,7 +889,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 - [如何使用安全性設定建立 NSG](../virtual-network/tutorial-filter-network-traffic.md)
 
-- [如何建立管理群組](/azure/governance/management-groups/create) 
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md) 
 
 - [如何透過 RBAC 安全地存取 Logic Apps](logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
@@ -899,7 +899,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 ## <a name="secure-configuration"></a>安全設定
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：安全](/azure/security/benchmarks/security-control-secure-configuration)設定。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：安全](../security/benchmarks/security-control-secure-configuration.md)設定。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
@@ -909,7 +909,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 此外，也請使用安全的參數來保護機密資料和秘密。
 
-- [如何檢視可用的 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何檢視可用的 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
@@ -979,9 +979,9 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 此外，Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出範本，這應該經過檢查以確保設定符合/超過組織的安全性需求。
 
-- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Azure Repos 文件](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos 文件](/azure/devops/repos/index?view=azure-devops)
 
 - [Azure 入口網站中的單一和多重資源匯出至範本](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -1092,7 +1092,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 ## <a name="malware-defense"></a>惡意程式碼防禦
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：惡意程式碼防護](/azure/security/benchmarks/security-control-malware-defense)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：惡意程式碼防護](../security/benchmarks/security-control-malware-defense.md)。*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反惡意程式碼軟體
 
@@ -1112,7 +1112,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 - [瞭解 Azure 雲端服務和虛擬機器的 Microsoft 反惡意程式碼](../security/fundamentals/antimalware.md)
 
-- [瞭解 Azure 資訊安全中心的資料服務威脅偵測](/azure/security-center/security-center-alerts-data-services)
+- [瞭解 Azure 資訊安全中心的資料服務威脅偵測](../security-center/azure-defender.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1128,7 +1128,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 ## <a name="data-recovery"></a>資料復原
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：資料](/azure/security/benchmarks/security-control-data-recovery)復原。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：資料](../security/benchmarks/security-control-data-recovery.md)復原。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確定定期自動備份
 
@@ -1178,7 +1178,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 - [設定客戶管理的金鑰，以在 Azure Logic Apps 中 (Ise) 為整合服務環境加密待用資料](customer-managed-keys-integration-service-environment.md)
 
-- [如何在 Azure 中還原金鑰保存庫金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [如何在 Azure 中還原金鑰保存庫金鑰](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1196,7 +1196,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 - [設定客戶管理的金鑰，以在 Azure Logic Apps 中 (Ise) 為整合服務環境加密待用資料](customer-managed-keys-integration-service-environment.md)
 
-- [如何在 Key Vault 中啟用 Soft-Delete 和清除保護](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [如何在 Key Vault 中啟用 Soft-Delete 和清除保護](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 資訊安全中心監視**：是
 
@@ -1204,7 +1204,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 ## <a name="incident-response"></a>事件回應
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：事件回應](/azure/security/benchmarks/security-control-incident-response)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：事件回應](../security/benchmarks/security-control-incident-response.md)。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：建立事件回應指南
 
@@ -1228,7 +1228,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 - [Azure 資訊安全中心的安全性警示](../security-center/security-center-alerts-overview.md)
 
-- [使用標記來組織 Azure 資源](/azure/azure-resource-manager/resource-group-using-tags)
+- [使用標記來組織 Azure 資源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1278,7 +1278,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：滲透測試和 red team 練習](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：滲透測試和 red team 練習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
@@ -1294,5 +1294,5 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

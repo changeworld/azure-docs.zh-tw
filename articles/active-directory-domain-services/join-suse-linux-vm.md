@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: joflore
-ms.openlocfilehash: 5d89f1a3d6028afb3450e0112a6081c9c706775b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 607d3bc8eca3bd969f0f47ca95923040fb22591e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962457"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275853"
 ---
 # <a name="join-a-suse-linux-enterprise-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>將 SUSE Linux Enterprise 虛擬機器加入 Azure Active Directory Domain Services 受控網域
 
@@ -23,7 +23,7 @@ ms.locfileid: "91962457"
 
 本文說明如何將 SUSE Linux Enterprise (SLE) VM 加入受控網域。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此教學課程，您需要下列資源和權限：
 
@@ -165,7 +165,7 @@ sudo vi /etc/hosts
 
 1. 如果您想要變更 Samba 使用者和群組的 UID 和 GID 範圍，請選取 [ *專家設定*]。
 
-1. 選取 [ *ntp*設定]，為您的受控網域設定 ntp 時間同步處理。 輸入受控網域的 IP 位址。 這些 IP 位址會顯示在受控網域 Azure 入口網站的 [ *屬性* ] 視窗中，例如 *10.0.2.4* 和 *10.0.2.5*。
+1. 選取 [ *ntp*設定]，為受控網域設定網路時間通訊協定 (NTP) 時間同步處理。 輸入受控網域的 IP 位址。 這些 IP 位址會顯示在受控網域 Azure 入口網站的 [ *屬性* ] 視窗中，例如 *10.0.2.4* 和 *10.0.2.5*。
 
 1. 選取 **[確定]** ，並在出現提示時確認加入網域。
 
@@ -174,6 +174,127 @@ sudo vi /etc/hosts
     ![當您將 SLE VM 加入受控網域時，驗證對話提示的範例螢幕擷取畫面](./media/join-suse-linux-vm/domain-join-authentication-prompt.png)
 
 加入受控網域之後，您可以使用桌面或主控台的顯示管理員，從您的工作站登入。
+
+## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-yast-command-line-interface"></a>從 YaST 命令列介面使用 Winbind 將 VM 加入受控網域
+
+若要使用 **winbind** 和 *YaST 命令列介面*加入受控網域：
+
+* 加入網域：
+
+  ```console
+  sudo yast samba-client joindomain domain=aaddscontoso.com user=<admin> password=<admin password> machine=<(optional) machine account>
+  ```
+
+## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-terminal"></a>從終端機使用 Winbind 將 VM 加入受控網域
+
+若要使用**winbind**和* `samba net` 命令*加入受控網域：
+
+1. 安裝 kerberos 用戶端和 samba-winbind：
+
+   ```console
+   sudo zypper in krb5-client samba-winbind
+   ```
+
+2. 編輯設定檔：
+
+   * /etc/samba/smb.conf
+   
+     ```ini
+     [global]
+         workgroup = AADDSCONTOSO
+         usershare allow guests = NO #disallow guests from sharing
+         idmap config * : backend = tdb
+         idmap config * : range = 1000000-1999999
+         idmap config AADDSCONTOSO : backend = rid
+         idmap config AADDSCONTOSO : range = 5000000-5999999
+         kerberos method = secrets and keytab
+         realm = AADDSCONTOSO.COM
+         security = ADS
+         template homedir = /home/%D/%U
+         template shell = /bin/bash
+         winbind offline logon = yes
+         winbind refresh tickets = yes
+     ```
+
+   * /etc/krb5.conf
+   
+     ```ini
+     [libdefaults]
+         default_realm = AADDSCONTOSO.COM
+         clockskew = 300
+     [realms]
+         AADDSCONTOSO.COM = {
+             kdc = PDC.AADDSCONTOSO.COM
+             default_domain = AADDSCONTOSO.COM
+             admin_server = PDC.AADDSCONTOSO.COM
+         }
+     [domain_realm]
+         .aaddscontoso.com = AADDSCONTOSO.COM
+     [appdefaults]
+         pam = {
+             ticket_lifetime = 1d
+             renew_lifetime = 1d
+             forwardable = true
+             proxiable = false
+             minimum_uid = 1
+         }
+     ```
+
+   * /etc/security/pam_winbind 的會議
+   
+     ```ini
+     [global]
+         cached_login = yes
+         krb5_auth = yes
+         krb5_ccache_type = FILE
+         warn_pwd_expire = 14
+     ```
+
+   * /etc/nsswitch.conf
+   
+     ```ini
+     passwd: compat winbind
+     group: compat winbind
+     ```
+
+3. 檢查 Azure AD 和 Linux 中的日期和時間是否同步。若要這麼做，您可以將 Azure AD 伺服器新增至 NTP 服務：
+   
+   1. 將下列程式程式碼新增至/etc/ntp.conf：
+     
+      ```console
+      server aaddscontoso.com
+      ```
+
+   1. 重新開機 NTP 服務：
+     
+      ```console
+      sudo systemctl restart ntpd
+      ```
+
+4. 加入網域：
+
+   ```console
+   sudo net ads join -U Administrator%Mypassword
+   ```
+
+5. 在 (PAM) 的 Linux 插即用驗證模組中，將 winbind 啟用為登入來源：
+
+   ```console
+   pam-config --add --winbind
+   ```
+
+6. 啟用主目錄的自動建立，讓使用者可以登入：
+
+   ```console
+   pam-config -a --mkhomedir
+   ```
+
+7. 啟動並啟用 winbind 服務：
+
+   ```console
+   sudo systemctl enable winbind
+   sudo systemctl start winbind
+   ```
 
 ## <a name="allow-password-authentication-for-ssh"></a>允許 SSH 的密碼驗證
 

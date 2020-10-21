@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: a7b463394a6919dee56e0448997dbd6c59ac9cc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5e8305fb80e6869bf604108aaa0e4d8e36cab8e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576586"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314749"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>評量/相依性視覺效果疑難排解
 
@@ -26,11 +26,11 @@ ms.locfileid: "91576586"
 **問題** | 修正
 --- | ---
 不支援的開機類型 | Azure 不支援具有 EFI 開機類型的 Vm。 建議您在執行遷移之前，先將開機類型轉換成 BIOS。 <br/><br/>您可以使用 Azure Migrate Server 遷移來處理這類 Vm 的遷移。 它會在遷移期間將 VM 的開機類型轉換成 BIOS。
-有條件地支援的 Windows 作業系統 | 作業系統已通過終止支援的日期，且需要自訂支援合約 (CSA) 以 [支援 Azure](https://aka.ms/WSosstatement)。 在遷移至 Azure 之前，請考慮進行升級。
-不支援的 Windows 作業系統 | Azure 僅支援 [選取的 WINDOWS 作業系統版本](https://aka.ms/WSosstatement)。 在遷移至 Azure 之前，請考慮先升級機器。
-有條件地背書 Linux 作業系統 | Azure 只會背書 [選取的 LINUX OS 版本](../virtual-machines/linux/endorsed-distros.md)。 在遷移至 Azure 之前，請考慮先升級機器。 另請參閱 [這裡](https://docs.microsoft.com/azure/migrate/troubleshoot-assessment#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment) 以取得詳細資料。
+有條件地支援的 Windows 作業系統 | 作業系統已通過終止支援的日期，且需要自訂支援合約 (CSA) 以 [支援 Azure](/troubleshoot/azure/virtual-machines/server-software-support)。 在遷移至 Azure 之前，請考慮進行升級。
+不支援的 Windows 作業系統 | Azure 僅支援 [選取的 WINDOWS 作業系統版本](/troubleshoot/azure/virtual-machines/server-software-support)。 在遷移至 Azure 之前，請考慮先升級機器。
+有條件地背書 Linux 作業系統 | Azure 只會背書 [選取的 LINUX OS 版本](../virtual-machines/linux/endorsed-distros.md)。 在遷移至 Azure 之前，請考慮先升級機器。 另請參閱 [這裡](#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment) 以取得詳細資料。
 未背書的 Linux 作業系統 | 電腦可能會在 Azure 中啟動，但 Azure 不會提供作業系統支援。 在遷移至 Azure 之前，請考慮升級至已 [背書的 Linux 版本](../virtual-machines/linux/endorsed-distros.md) 。
-作業系統不明 | 在 vCenter Server 中，已將 VM 的作業系統指定為「其他」。 此行為會封鎖 Azure Migrate 確認 VM 的 Azure 是否就緒。 在您遷移電腦之前，請先確定 Azure [支援](https://aka.ms/azureoslist) 作業系統。
+作業系統不明 | 在 vCenter Server 中，已將 VM 的作業系統指定為「其他」。 此行為會封鎖 Azure Migrate 確認 VM 的 Azure 是否就緒。 在您遷移電腦之前，請先確定 Azure [支援](./migrate-support-matrix-vmware-migration.md#azure-vm-requirements) 作業系統。
 不支援的位版本 | 具有32位作業系統的 Vm 可能會在 Azure 中開機，但建議您在遷移至 Azure 之前，先升級至64位。
 需要 Microsoft Visual Studio 訂用帳戶 | 電腦正在執行 Windows 用戶端作業系統，僅透過 Visual Studio 訂用帳戶支援。
 找不到所需儲存體效能的 VM | 儲存體效能 (機器所需的每秒輸入/輸出作業 [IOPS] 和輸送量) 超過 Azure VM 支援。 在移轉之前，降低機器的儲存體需求。
@@ -61,7 +61,7 @@ ms.locfileid: "91576586"
 - 這項缺口可防止它偵測內部部署 Vm 上安裝的 Linux OS 次要版本。
 - 例如，在 RHEL 6.10 中，伺服器評量目前只會偵測到 RHEL 6 作為作業系統版本。 這是因為 vCenter Server ar，Hyper-v 主機未提供 Linux VM 作業系統的核心版本。
 -  因為 Azure 只背書特定版本的 Linux，所以 Linux Vm 目前在伺服器評量中標示為有條件地備妥。
-- 您可以藉由查看 [Azure Linux 支援](https://aka.ms/migrate/selfhost/azureendorseddistros)，來判斷在內部部署 VM 上執行的 Linux OS 是否已在 azure 中背書。
+- 您可以藉由查看 [Azure Linux 支援](../virtual-machines/linux/endorsed-distros.md)，來判斷在內部部署 VM 上執行的 Linux OS 是否已在 azure 中背書。
 -  確認背書發行版本之後，您可以忽略此警告。
 
 在 VMware Vm 上啟用 [應用程式探索](./how-to-discover-applications.md) 可解決此缺口。 伺服器評估會使用所提供的來賓認證，從 VM 偵測到的作業系統。 在 Windows 和 Linux Vm 的情況下，此作業系統資料會識別正確的作業系統資訊。
@@ -107,7 +107,7 @@ Azure Migrate Server 評定可能會根據評量類型建議較大的磁片。
 
 ## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>為何我的評量信賴評等偏低？
 
-系統會根據計算評量所需的[可用資料點](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings)百分比，為「以效能為基礎的」評量計算信賴評等。 以下是評量會獲得低信賴評等的原因：
+系統會根據計算評量所需的[可用資料點](./concepts-assessment-calculation.md#ratings)百分比，為「以效能為基礎的」評量計算信賴評等。 以下是評量會獲得低信賴評等的原因：
 
 - 您未針對正在建立評量的持續時間剖析環境。 例如，如果您要建立將效能持續時間設定為一週的評量，您需要至少等待一週後再開始探索，才能收集到所有資料點。 如果您無法等待該持續時間，請將效能持續時間變更為較短的期間，並「重新計算」評量。
  
@@ -115,7 +115,7 @@ Azure Migrate Server 評定可能會根據評量類型建議較大的磁片。
 
 - 有少數 VM 是在伺服器評量中的探索啟動後建立的。 例如，如果您要建立過去一個月的效能記錄評量，但是少數虛擬機器在一週前才建立在環境中。 在此情況下，將無法取得新的 VM 在這整段期間內的效能資料，且信賴評等將會偏低。
 
-[深入了解](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based)信賴評等。
+[深入了解](./concepts-assessment-calculation.md#confidence-ratings-performance-based)信賴評等。
 
 ## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>Azure VM 評量中是否包含作業系統授權？
 
@@ -126,7 +126,7 @@ Azure Migrate 伺服器評量目前只會考慮 Windows 機器的作業系統授
 伺服器評量會持續收集內部部署機器的效能資料，並用這些資料來建議 Azure 中的 VM SKU 和磁碟 SKU。 [瞭解如何](concepts-assessment-calculation.md#calculate-sizing-performance-based) 收集以效能為基礎的資料。
 
 ## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combination-of-reserved-instances-vm-uptime-and-discount-"></a>為什麼我的評量會顯示一則警告，指出它是使用不正確保留實例組合來建立、VM 執行時間和折扣 (% ) ？
-當您選取 [保留實例] 時，[折扣 (% ) ] 和 [VM 執行時間] 屬性都不適用。 當您的評量是以不正確這些屬性組合來建立時，就會停用 [編輯] 和 [重新計算] 按鈕。 請建立新的評量。 [深入了解](https://go.microsoft.com/fwlink/?linkid=2131554)。
+當您選取 [保留實例] 時，[折扣 (% ) ] 和 [VM 執行時間] 屬性都不適用。 當您的評量是以不正確這些屬性組合來建立時，就會停用 [編輯] 和 [重新計算] 按鈕。 請建立新的評量。 [深入了解](./concepts-assessment-calculation.md#whats-an-assessment)。
 
 ## <a name="i-do-not-see-performance-data-for-some-network-adapters-on-my-physical-servers"></a>我看不到實體伺服器上某些網路介面卡的效能資料
 
@@ -161,7 +161,7 @@ Azure Government 不支援以代理程式為基礎的相依性分析。 請使�
 
     ![MMA 狀態](./media/troubleshoot-assessment/mma-properties.png)
 
-針對 Linux Vm，請確定 MMA 的安裝命令和相依性代理程式都已成功。 請參閱 [這裡](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#post-installation-issues)的疑難排解指引。
+針對 Linux Vm，請確定 MMA 的安裝命令和相依性代理程式都已成功。 請參閱 [這裡](../azure-monitor/insights/service-map.md#post-installation-issues)的疑難排解指引。
 
 ## <a name="supported-operating-systems"></a>支援的作業系統
 
