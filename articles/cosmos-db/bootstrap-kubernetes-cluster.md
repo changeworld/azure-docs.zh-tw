@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: b9e6e1388465542e9fb3ac69540c981a1fd70d4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbfa780269f28e269fed51a25ec4255d18d8ab39
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570129"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277876"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>如何使用採用 Azure Cosmos DB 的 Azure Kubernetes (預覽)
 
@@ -25,7 +25,7 @@ Azure Cosmos DB 中的 etcd API 可讓您使用 Azure Cosmos DB 作為 Azure Kub
 
 若要深入了解 Azure Cosmos DB 中的 etcd API，請參閱[概觀](etcd-api-introduction.md)一文。 本文會示範如何使用 [Azure Kubernetes 引擎](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md) (aks-engine) 在採用 [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) 的 Azure 上執行 Kubernetes 叢集的啟動程序，而不是使用本機安裝和設定的 etcd。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 1. 安裝最新版的 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。 您可以下載專屬於您作業系統的 Azure CLI，並加以安裝。
 
@@ -181,6 +181,6 @@ Azure Cosmos 帳戶的名稱將會符合加上 k8s 的指定 DNS 首碼。 您�
 
 ## <a name="next-steps"></a>後續步驟
 
-* 了解如何[使用 Azure Cosmos 資料庫、容器和項目](databases-containers-items.md)
+* 了解如何[使用 Azure Cosmos 資料庫、容器和項目](account-databases-containers-items.md)
 * 了解如何[最佳化已佈建的輸送量成本](optimize-cost-throughput.md)
 

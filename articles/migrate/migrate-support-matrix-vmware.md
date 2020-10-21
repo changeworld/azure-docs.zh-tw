@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 評估支援
 description: 了解使用 Azure Migrate 伺服器評估來評估 VMware VM 的支援。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: f672c90f6056cd735d5ddc8dd96de9e7007999ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fd884a7d95edaf6586e7eecd644400c05c15e5a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667787"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315802"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 評估的支援矩陣 
 
@@ -40,7 +40,7 @@ ms.locfileid: "91667787"
 **VMware** | **詳細資料**
 --- | ---
 **VMware VM** | 所有作業系統都可以進行評估以進行遷移。 
-**Storage** | 支援連接至 SCSI、IDE 和以 SATA 為基礎之控制器的磁片。
+**存放裝置** | 支援連接至 SCSI、IDE 和以 SATA 為基礎之控制器的磁片。
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate 設備需求
@@ -117,4 +117,4 @@ Azure Migrate 會使用 [Azure Migrate 設備](migrate-appliance.md)來進行探
 ## <a name="next-steps"></a>後續步驟
 
 - [檢閱](best-practices-assessment.md)適用於建立評估的最佳做法。
-- [準備 VMware](tutorial-prepare-vmware.md) 評估。
+- [準備 VMware](./tutorial-discover-vmware.md) 評估。

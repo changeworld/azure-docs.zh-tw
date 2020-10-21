@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: 93cf29651110356023752f2377c9a0fc358982a7
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 4b072257d49011819fe19d6e2901560df43b26dc
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203038"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275549"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>管理及增加 Azure Machine Learning 資源的配額
 
@@ -177,7 +177,7 @@ Azure 會使用限制和配額來防止因詐騙而無法執行預算，以及�
     | ----- | ----- |
     | 問題類型 | 技術 |
     | 服務 | 我的服務。 在下拉式清單中選取 __Machine Learning__ 。 |
-    | 問題類型 | 工作區設定、SDK 和 CLI |
+    | 問題類型 | 工作區設定和安全性 |
     | 問題子類型 | 私人端點和私人 DNS 區域額度要求 |
 
 2. 在 [ __詳細資料__ ] 區段中，使用 [ __描述__ ] 欄位來提供您想要使用的 Azure 區域，以及您打算使用的案例。 如果您需要針對多個訂用帳戶要求增加配額，請同時列出此欄位中的訂用帳戶識別碼。

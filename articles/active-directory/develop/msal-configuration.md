@@ -13,12 +13,12 @@ ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: f5950347fff380fcfbaa89834407ff5f497a9719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa0ce6a5f909e67f0551c8667bb7e5c5e6d7eb04
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88854908"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275607"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft 驗證程式庫設定檔案
 
@@ -34,6 +34,7 @@ Android Microsoft 驗證程式庫 (MSAL) 隨附預設的設定 [JSON](https://gi
 |-----------|------------|-------------|-------|
 | `client_id` | String | 是 | [應用程式註冊頁面](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)中的應用程式用戶端識別碼 |
 | `redirect_uri`   | String | 是 | [應用程式註冊頁面](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)中的應用程式重新導向 URI |
+| `broker_redirect_uri_registered` | Boolean | 否 | 可能的值： `true` 、 `false` |
 | `authorities` | 清單\<Authority> | 否 | 您應用程式所需的授權單位清單 |
 | `authorization_user_agent` | AuthorizationAgent (列舉)  | 否 | 可能的值： `DEFAULT` 、 `BROWSER` 、 `WEBVIEW` |
 | `http` | HttpConfiguration | 否 | 設定 `HttpUrlConnection` `connect_timeout` 和 `read_timeout` |
@@ -46,6 +47,10 @@ Android Microsoft 驗證程式庫 (MSAL) 隨附預設的設定 [JSON](https://gi
 ### <a name="redirect_uri"></a>redirect_uri
 
 您註冊應用程式時註冊的重新導向 URI。 如果重新導向 URI 是對訊息代理程式應用程式，請參閱 [公用用戶端應用程式的重新導向 uri](msal-client-application-configuration.md#redirect-uri-for-public-client-apps) ，以確定您針對訊息代理程式應用程式使用的是正確的重新導向 uri 格式。
+
+### <a name="broker_redirect_uri_registered"></a>broker_redirect_uri_registered
+
+如果您想要使用代理驗證，則 `broker_redirect_uri_registered` 必須將屬性設定為 `true` 。 在代理驗證案例中，如果應用程式的格式與訊息代理程式通訊的格式不正確（如 [公用用戶端應用程式的重新導向 uri](msal-client-application-configuration.md#redirect-uri-for-public-client-apps)所述），則應用程式會驗證您的重新導向 uri，並在啟動時擲回例外狀況。
 
 ### <a name="authorities"></a>當局
 
@@ -86,7 +91,7 @@ Android Microsoft 驗證程式庫 (MSAL) 隨附預設的設定 [JSON](https://gi
 
 #### <a name="map-aad-authority--audience-to-microsoft-identity-platform-endpoints"></a>將 AAD 授權單位 & 的使用者對應到 Microsoft 身分識別平臺端點
 
-| 類型 | 對象 | 租用戶識別碼 | Authority_Url | 產生的端點 | 注意 |
+| 類型 | 適用對象 | 租用戶識別碼 | Authority_Url | 產生的端點 | 注意 |
 |------|------------|------------|----------------|----------------------|---------|
 | AAD | AzureADandPersonalMicrosoftAccount | | | `https://login.microsoftonline.com/common` | `common` 這是帳戶所在的租使用者別名。 例如，特定的 Azure Active Directory 租使用者或 Microsoft 帳戶系統。 |
 | AAD | AzureADMyOrg | contoso.com | | `https://login.microsoftonline.com/contoso.com` | 只有存在於 contoso.com 中的帳戶可以取得權杖。 任何已驗證的網域或租使用者 GUID 都可作為租使用者識別碼使用。 |
@@ -98,6 +103,7 @@ Android Microsoft 驗證程式庫 (MSAL) 隨附預設的設定 [JSON](https://gi
 > 無法在 MSAL 中啟用和停用授權驗證。
 > 您可以透過設定來指定授權單位，或透過中繼資料從 Microsoft 得知授權單位。
 > 如果 MSAL 接收到未知授權單位的權杖要求，則為 `MsalClientException` 類型的 `UnknownAuthority` 結果。
+> Azure AD B2C 的代理驗證無法運作。
 
 #### <a name="authority-properties"></a>授權屬性
 

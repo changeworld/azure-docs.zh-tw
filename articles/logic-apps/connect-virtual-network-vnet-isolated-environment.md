@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: 49248575cb10f3df746b9ba484244e4702fb5d72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fee95a435b477639fe2b98cf2c9cbf500df5941
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91369003"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310025"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>透過使用整合服務環境 (ISE) 從 Azure Logic Apps 連線至 Azure 虛擬網路
 
@@ -95,11 +95,11 @@ ISE 已增加執行期間、儲存體保留期、輸送量、HTTP 要求和回�
    > [!NOTE]
    > 當您的案例需要限制需要存取的 IP 位址數目時，您可以將此方法用於單一 ISE。 請考慮防火牆或虛擬網路設備的額外成本對您的案例是否有意義。 深入了解 [Azure 防火牆定價](https://azure.microsoft.com/pricing/details/azure-firewall/)。
 
-* 如果您已建立新的 Azure 虛擬網路和子網路，但沒有任何條件約束，則您不需要在虛擬網路中設定[網路安全性群組 (NSG)](../virtual-network/security-overview.md#network-security-groups) 來控制子網路之間的流量。
+* 如果您已建立新的 Azure 虛擬網路和子網路，但沒有任何條件約束，則您不需要在虛擬網路中設定[網路安全性群組 (NSG)](../virtual-network/network-security-groups-overview.md#network-security-groups) 來控制子網路之間的流量。
 
-* 針對現有的虛擬網路，您可以「選擇性地」設定[網路安全性群組 (NSG)](../virtual-network/security-overview.md#network-security-groups) 來[篩選跨子網路的網路流量](../virtual-network/tutorial-filter-network-traffic.md)。 如果您想要前往此路由，或如果您已在使用 NSG，請確定您已針對這些 NSG [開啟此資料表中所述的連接埠](#network-ports-for-ise)。
+* 針對現有的虛擬網路，您可以「選擇性地」設定[網路安全性群組 (NSG)](../virtual-network/network-security-groups-overview.md#network-security-groups) 來[篩選跨子網路的網路流量](../virtual-network/tutorial-filter-network-traffic.md)。 如果您想要前往此路由，或如果您已在使用 NSG，請確定您已針對這些 NSG [開啟此資料表中所述的連接埠](#network-ports-for-ise)。
 
-  當設定 [NSG 安全性規則](../virtual-network/security-overview.md#security-rules)時，您必須「同時」使用 **TCP** 和 **UDP** 通訊協定，或者您可以改為選取 [任何]，讓您不必為每個通訊協定建立個別規則。 NSG 安全性規則描述您必須針對需要存取這些連接埠的 IP 位址開啟哪些埠。 確定在這些端點之間存在的任何防火牆、路由器或其他項目，也會讓這些連接埠可供這些 IP 位址存取。
+  當設定 [NSG 安全性規則](../virtual-network/network-security-groups-overview.md#security-rules)時，您必須「同時」使用 **TCP** 和 **UDP** 通訊協定，或者您可以改為選取 [任何]，讓您不必為每個通訊協定建立個別規則。 NSG 安全性規則描述您必須針對需要存取這些連接埠的 IP 位址開啟哪些埠。 確定在這些端點之間存在的任何防火牆、路由器或其他項目，也會讓這些連接埠可供這些 IP 位址存取。
 
 * 如果您透過防火牆設定強制通道來重新導向網際網路系結流量，請參閱 [其他強制通道需求](#forced-tunneling)。
 

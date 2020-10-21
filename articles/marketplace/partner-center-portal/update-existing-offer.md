@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: f83f5da03d2db5354b020ce7d0c3c8d70f1830a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 810c38397981a100c2d5a68492f8a15b75cd79bd
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89650096"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276041"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>更新商業 marketplace 中的現有供應專案
 
@@ -67,7 +67,7 @@ ms.locfileid: "89650096"
 
 1. 在合作夥伴中心中，返回 **[計畫總覽**]。
 2. 選取 [建立新方案]。 輸入 **方案識別碼** 和 **方案名稱**，然後選取 [ **建立**]。
-1. 若要從您隱藏的方案重複使用技術設定，請選取 [ **重複使用技術** 設定] 核取方塊。 若要深入瞭解，請參閱「讀取 [計畫」總覽](azure-vm-create-offer.md#plan-overview) 。
+1. 若要從您隱藏的方案重複使用技術設定，請選取 [ **重複使用技術** 設定] 核取方塊。 若要深入瞭解，請參閱 [建立 VM 供應專案的方案](../azure-vm-create-plans.md) 。
     > [!IMPORTANT]
     > 如果您選取 **此方案，重複使用另一個方案的技術**設定，您將無法在稍後停止銷售父方案。 如果您想要停止銷售父方案，請不要使用此選項。
 3. 完成新方案的所有必要區段，包括新的價格。

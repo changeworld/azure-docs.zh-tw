@@ -44,10 +44,6 @@
         - name: 從 Azure 資料總管共用
           href: /azure/data-explorer/data-share
           maintainContext: true
-    - name: 監視
-      href: how-to-monitor.md
-    - name: 疑難排解
-      href: data-share-troubleshoot.md
     - name: 新增資料集
       href: how-to-add-datasets.md
     - name: 設定資料集對應
@@ -58,10 +54,14 @@
       href: how-to-delete-invitation.md
     - name: 撤銷共用訂用帳戶
       href: how-to-revoke-share-subscription.md
+    - name: 監視
+      href: how-to-monitor.md
     - name: 安全性
       href: security.md
     - name: 災害復原
       href: disaster-recovery.md
+    - name: 疑難排解
+      href: data-share-troubleshoot.md
 - name: 參考
   items:
     - name: .NET

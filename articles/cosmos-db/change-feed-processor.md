@@ -6,15 +6,15 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3a802cc3d6178302445e0c31c52785d00207d0bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2da6fcb82b1ec14d6f57931709321871fa575d38
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88998538"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277033"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 中的變更摘要處理器
 
@@ -68,15 +68,15 @@ ms.locfileid: "88998538"
 
 變更摘要處理器具有使用者程式碼錯誤的復原性。 這表示如果您的委派實作有未處理的例外狀況 (步驟 #4)，處理該特定批次變更的執行緒將會停止，並會建立新的執行緒。 新的執行緒會檢查哪一個是租用存放區對於該範圍的資料分割索引鍵值而言最新的時間點，然後從該時間點重新開機，以有效地將相同的變更批次傳送至委派。 此行為會繼續進行，直到您的委派正確處理變更，而且這是變更摘要處理器至少具有「一次」保證的原因，因為如果委派程式碼擲回例外狀況，則會重試該批次。
 
-為了避免您的變更摘要處理器「停滯」持續重試相同的變更批次，您應該在委派程式碼中新增邏輯，以在例外狀況時，將檔寫入無效信件佇列。 這項設計可確保您可以追蹤未處理的變更，同時仍能繼續處理未來的變更。 無效信件佇列可能只是另一個 Cosmos 容器。 確切的資料存放區並不重要，只是保存未處理的變更。
+為了避免您的變更摘要處理器「停滯」持續重試相同的變更批次，您應該在委派程式碼中新增邏輯，以在例外狀況時，將檔寫入無效信件佇列。 這項設計可確保您可以追蹤未處理的變更，同時仍能繼續處理未來的變更。 寄不出的信件佇列可能是另一個 Cosmos 容器。 確切的資料存放區並不重要，只是保存未處理的變更。
 
-此外，您可以使用[變更摘要估算器](how-to-use-change-feed-estimator.md)，以監視變更摘要處理器執行個體讀取變更摘要時的進度。 除了監視變更摘要處理器是否「停滯」不斷重試相同的變更批次之外，您也可以了解變更摘要處理器是否因為可用的資源 (例如 CPU、記憶體和網路頻寬) 而延遲落後。
+此外，您可以使用[變更摘要估算器](how-to-use-change-feed-estimator.md)，以監視變更摘要處理器執行個體讀取變更摘要時的進度。 您可以使用此預估來瞭解變更摘要處理器是因為 CPU、記憶體和網路頻寬等可用資源而「卡在」或延遲背後。
 
 ## <a name="deployment-unit"></a>部署單位
 
 單一變更摘要處理器部署單位是由一或多個具有相同 `processorName` 和租用容器設定的執行個體所組成。 您可以有許多部署單位，其中每一個都有不同的商務流程來進行變更，而每個部署單位都包含一或多個執行個體。 
 
-例如，您可能會有一個部署單位，每當您的容器有變更時，就會觸發外部 API。 另一個部署單位可能會在每次有變更時，即時移動資料。 當受監視的容器中發生變更時，您所有的部署單位都會收到通知。
+例如，您可能會有一個部署單位，每當您的容器有變更時，就會觸發外部 API。 另一個部署單位可能會在每次發生變更時，即時移動資料。 當受監視的容器中發生變更時，您所有的部署單位都會收到通知。
 
 ## <a name="dynamic-scaling"></a>動態調整
 
@@ -94,7 +94,32 @@ ms.locfileid: "88998538"
 
 ## <a name="change-feed-and-provisioned-throughput"></a>變更摘要和佈建的輸送量
 
-您需針對耗用的 RU 支付費用，因為資料移入或移出 Cosmos 容器一律會耗用 RU。 您必須針對租用容器耗用的 RU 支付費用。
+受監視容器上的變更摘要讀取作業將會耗用 ru。 
+
+租用容器上的作業會耗用 ru。 使用相同租用容器的實例數目愈高，可能的 RU 耗用量就愈高。 如果您決定調整並遞增實例數目，請記得監視租用容器上的 RU 耗用量。
+
+## <a name="starting-time"></a>開始時間
+
+根據預設，當變更摘要處理器初次開機時，它會初始化租用容器，並開始其 [處理生命週期](#processing-life-cycle)。 在第一次初始化變更摘要處理器之前，受監視容器中發生的任何變更都不會被偵測到。
+
+### <a name="reading-from-a-previous-date-and-time"></a>從上一個日期和時間讀取
+
+您可以初始化會從**特定的日期和時間**開始讀取變更的變更摘要處理器，只要將 `DateTime` 的執行個體傳至 `WithStartTime` 建立器延伸模組即可：
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
+
+變更摘要處理器會針對該日期和時間進行初始化，並開始讀取其後發生的變更。
+
+### <a name="reading-from-the-beginning"></a>從頭開始讀取
+
+在其他案例中 (例如資料移轉，或分析容器的整個歷程記錄)，我們必須從**該容器存留期的開端**開始讀取變更摘要。 若要這麼做，我們可以在建立器延伸模組上使用 `WithStartTime`，但傳遞 `DateTime.MinValue.ToUniversalTime()`，這會產生 `DateTime` 最小值的 UTC 表示法，如下所示：
+
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartFromBeginningInitialization)]
+
+變更摘要處理器將會初始化，並從容器存留期的開端開始讀取變更。
+
+> [!NOTE]
+> 這些自訂選項只適用于設定變更摘要處理器的開始時間點。 在租用容器第一次初始化之後，其變更就不會有任何作用。
 
 ## <a name="where-to-host-the-change-feed-processor"></a>變更摘要處理器的裝載位置
 
@@ -105,7 +130,7 @@ ms.locfileid: "88998538"
 * [Azure Kubernetes Service](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-kubernetes-service)中的背景工作。
 * [ASP.NET 託管服務](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services)。
 
-雖然變更摘要處理器可以在短期的環境中執行，因為租用容器會維護狀態，而這些環境的啟動和停止週期將會增加接收通知的延遲， (因為每次啟動環境時啟動處理器的額外負荷) 。
+雖然變更摘要處理器可以在短期的環境中執行，因為租用容器會維護狀態，而這些環境的啟動週期將會增加接收通知的延遲， (因為每次啟動環境時啟動處理器的額外負荷) 。
 
 ## <a name="additional-resources"></a>其他資源
 

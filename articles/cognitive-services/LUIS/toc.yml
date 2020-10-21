@@ -295,7 +295,7 @@
                   href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/'
                 - name: NuGet - 執行階段
                   href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/'
-                - name: 參考資料
+                - name: 參考
                   href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet'
                 - name: 範例
                   href: 'https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS'
@@ -402,6 +402,8 @@
       href: luis-reference-prebuilt-sentiment.md
 - name: 資源
   items:
+    - name: 支援和說明選項
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/luis/context/context
     - name: 程式碼範例
       href: 'https://github.com/Azure-Samples/cognitive-services-language-understanding'
     - name: 區域可用性
@@ -425,10 +427,6 @@
     - name: 設定虛擬網路
       maintainContext: true
       href: ../cognitive-services-virtual-networks.md
-    - name: 堆疊溢位
-      href: 'https://stackoverflow.com/questions/tagged/LUIS'
-    - name: UserVoice
-      href: 'https://go.microsoft.com/fwlink/?linkid=2092090'
     - name: 搜尋
       href: 'https://docs.microsoft.com/search/index?search=LUIS'
     - name: 部落格

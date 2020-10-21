@@ -109,6 +109,8 @@
               href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
 - name: 資源
   items:
+    - name: 支援和說明選項
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/personalizer/context/context
     - name: 疑難排解
       href: troubleshooting.md
     - name: 區域可用性
@@ -121,7 +123,3 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2092153'
     - name: 定價
       href: 'https://go.microsoft.com/fwlink/?linkid=2092154'
-    - name: 堆疊溢位
-      href: 'https://stackoverflow.com/questions/tagged/personalizer'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/921562-personalizer'

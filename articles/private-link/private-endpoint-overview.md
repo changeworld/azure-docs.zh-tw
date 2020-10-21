@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 7456402605328592d4f5677767bcd985941173ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: def394369ebcb8b457d78ad6537830487e8049f7
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88639829"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277517"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什麼是 Azure 私人端點？
 
@@ -22,7 +22,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
  私人端點指定了下列屬性： 
 
 
-|屬性  |說明 |
+|屬性  |描述 |
 |---------|---------|
 |名稱    |    資源群組內的唯一名稱。      |
 |子網路    |  要從虛擬網路部署和配置私人 IP 位址的子網路。 如需子網路需求，請參閱此文章的＜限制＞一節。         |
@@ -77,7 +77,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 |**Azure 轉送** | Microsoft.Relay/namespaces | 命名空間 |
 |**事件格線** | Microsoft.EventGrid/topics    | 主題 |
 |**事件格線** | Microsoft.EventGrid/domains    | 網域 |
-|**Azure WebApps** | Microsoft.Web/sites    | sites |
+|**Azure App Service** | Microsoft.Web/sites    | sites |
 |**Azure Machine Learning** | Microsoft.MachineLearningServices/workspaces    | 工作區 |
 |**SignalR** | Microsoft.SignalRService/SignalR    | signalR |
 |**Azure 監視器** | Microsoft Insights/privateLinkScopes    | azuremonitor |

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 08ac95fe2a6b3e01d6bbcf96b120426f12f4e21c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e948031d3d1d03890bfcfccd65424a15e6e314cd
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85261251"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276113"
 ---
 # <a name="query-an-azure-cosmos-container"></a>查詢 Azure Cosmos 容器
 
@@ -19,7 +19,7 @@ ms.locfileid: "85261251"
 
 ## <a name="in-partition-query"></a>分割區內查詢
 
-當您從容器查詢資料時，如果查詢已指定分割區索引鍵篩選，Azure Cosmos DB 會自動優化查詢。 它會將查詢路由至對應至篩選中指定之分割區索引鍵值的 [實體](partition-data.md#physical-partitions) 分割區。
+當您從容器查詢資料時，如果查詢已指定分割區索引鍵篩選，Azure Cosmos DB 會自動優化查詢。 它會將查詢路由至對應至篩選中指定之分割區索引鍵值的 [實體](partitioning-overview.md#physical-partitions) 分割區。
 
 例如，請考慮下列使用相等篩選的查詢 `DeviceId` 。 如果我們在分割的容器上執行此查詢 `DeviceId` ，此查詢會篩選到單一實體資料分割。
 
@@ -61,7 +61,7 @@ Azure Cosmos DB SDK 1.9.0 和更新版本支援平行查詢執行選項。 跨�
 
 - **MaxBufferedItemCount**：權衡取捨查詢延遲性和用戶端記憶體使用量。 如果省略此選項或將其設定為 -1，則 SDK 會管理在平行查詢執行期間緩衝處理的項目數。
 
-由於 Azure Cosmos DB 平行處理跨資料分割查詢的能力，因此查詢延遲通常會隨著系統新增 [實體](partition-data.md#physical-partitions)分割區而調整。 不過，當實體分割區總數增加時，RU 費用會大幅增加。
+由於 Azure Cosmos DB 平行處理跨資料分割查詢的能力，因此查詢延遲通常會隨著系統新增 [實體](partitioning-overview.md#physical-partitions)分割區而調整。 不過，當實體分割區總數增加時，RU 費用會大幅增加。
 
 當您執行跨分割區查詢時，基本上是針對個別的實體分割區執行個別的查詢。 雖然跨資料分割查詢查詢將會使用索引（如果有的話），但它們仍不如資料分割內查詢有效率。
 

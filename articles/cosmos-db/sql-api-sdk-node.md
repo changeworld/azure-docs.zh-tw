@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-js
-ms.openlocfilehash: 106f446c56377c1211d04e388608cd31e2aeef23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3834b1890cb20b717462c4cb8ed1f779570c675
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804209"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275218"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>適用於 SQL API 的 Azure Cosmos DB Node.js SDK：版本資訊和資源
 > [!div class="op_single_selector"]
@@ -26,14 +26,14 @@ ms.locfileid: "91804209"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [非同步 Java SDK v2](sql-api-sdk-async-java.md)
 > * [同步 Java SDK v2](sql-api-sdk-java.md)
-> * [春季資料 v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
 > * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark 連接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST 資源提供者](/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [大量執行程式-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
+> * [大量執行工具 - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [大量執行程式 - Java](sql-api-sdk-bulk-executor-java.md)
 
 |資源  |連結  |
@@ -353,7 +353,7 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 * 新加入文件的存留時間 (TTL) 功能支援。
 
 ### <a name="160"></a><a name="1.6.0"></a>1.6.0
-* 實作[已分割的集合](partition-data.md)和[使用者定義的效能等級](performance-levels.md)。
+* 實作[已分割的集合](partitioning-overview.md)和[使用者定義的效能等級](performance-levels.md)。
 
 ### <a name="156"></a><a name="1.5.6"></a>1.5.6
 * 已修正 RangePartitionResolver.resolveForRead 錯誤，其因錯誤的結果 CONCAT 而無法傳回連結。

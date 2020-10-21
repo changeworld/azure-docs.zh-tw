@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev, devx-track-azurepowershell
-ms.openlocfilehash: 08abd9ff1134415e47923f22e753691225fc23b8
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f32bc444ba753f48955de4a4c16bde8dfb7a05fc
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164715"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316656"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>在 Windows 上準備您的開發環境
 
@@ -23,7 +23,7 @@ ms.locfileid: "92164715"
 
 若要在您的 Windows 開發機器上建置並執行 [Azure Service Fabric 應用程式][1]，請安裝 Service Fabric 執行階段、SDK 和工具。 您也必須啟用 SDK 中 [所含 Windows PowerShell 腳本的執行](#enable-powershell-script-execution) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 ### <a name="supported-operating-system-versions"></a>支援的作業系統版本
 
@@ -94,7 +94,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 
 * [了解如何建立、部署及管理應用程式](service-fabric-tutorial-create-dotnet-app.md)
 * [深入了解程式設計模型：Reliable Services 和 Reliable Actors](service-fabric-choose-framework.md)
-* [請查看 GitHub 上的 Service Fabric 程式碼範例](https://aka.ms/servicefabricsamples)
+* [請查看 GitHub 上的 Service Fabric 程式碼範例](/samples/browse/?products=azure)
 * [使用 Service Fabric 總管將叢集視覺化](service-fabric-visualizing-your-cluster.md)
 * [在 Windows 上準備 Linux 開發環境](service-fabric-local-linux-cluster-windows.md)
 * 瞭解 [Service Fabric 支援選項](service-fabric-support.md)

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/16/2018
-ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/19/2020
+ms.openlocfilehash: 7838f9f1febcab073633dbb4af011e99acbe22d3
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75397460"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310284"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>在 Azure 監視器記錄查詢中使用字串
 
@@ -48,9 +48,9 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 運算子       |描述                         |區分大小寫|範例 (結果為 `true`)
 ---------------|------------------------------------|--------------|-----------------------
-`==`           |Equals                              |是           |`"aBc" == "aBc"`
+`==`           |等於                              |是           |`"aBc" == "aBc"`
 `!=`           |不等於                          |是           |`"abc" != "ABC"`
-`=~`           |Equals                              |否            |`"abc" =~ "ABC"`
+`=~`           |等於                              |否            |`"abc" =~ "ABC"`
 `!~`           |不等於                          |否            |`"aBc" !~ "xyz"`
 `has`          |右側是左側中的完整詞彙 |否|`"North America" has "america"`
 `!has`         |右側不是左側中的完整詞彙       |否            |`"North America" !has "amer"` 
@@ -74,8 +74,8 @@ print @"C:\backslash\not\escaped\with @ prefix"
 `!startswith_cs`  |右側不是左側的初始項目|是        |`"Fabrikam" !startswith_cs "fab"`
 `endswith`     |右側是左側的結尾項目|否             |`"Fabrikam" endswith "Kam"`
 `!endswith`    |右側不是左側的結尾項目|否         |`"Fabrikam" !endswith "brik"`
-`endswith_cs`     |右側是左側的結尾項目|是             |`"Fabrikam" endswith "Kam"`
-`!endswith_cs`    |右側不是左側的結尾項目|是         |`"Fabrikam" !endswith "brik"`
+`endswith_cs`     |右側是左側的結尾項目|是             |`"Fabrikam" endswith_cs "kam"`
+`!endswith_cs`    |右側不是左側的結尾項目|是         |`"Fabrikam" !endswith_cs "brik"`
 `matches regex`|左側包含右側的相符項        |是           |`"Fabrikam" matches regex "b.*k"`
 `in`           |等於其中一個元素       |是           |`"abc" in ("123", "345", "abc")`
 `!in`          |不等於任何元素   |是           |`"bca" !in ("123", "345", "abc")`

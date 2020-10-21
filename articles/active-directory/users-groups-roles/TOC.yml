@@ -9,7 +9,7 @@
     - name: 在 Azure AD 中新增使用者
       href: ../fundamentals/add-users-azure-active-directory.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
     - name: 將授權指派給使用者
-      href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+      href: ../fundamentals/license-users-groups.md?context=azure%252factive-directory%252fusers-groups-roles%252fcontext%252fugr-context
     - name: 建立無限制的應用程式註冊
       href: roles-quickstart-app-registration-limits.md
     - name: 設定群組到期日
@@ -65,13 +65,13 @@
         - name: 關閉非受控目錄中的帳戶
           href: users-close-account.md
         - name: 新增來賓使用者
-          href: /azure/active-directory/b2b/what-is-b2b?context=azure/active-directory/users-groups-roles/context/ugr-context
+          href: ../external-identities/what-is-b2b.md?context=azure%252factive-directory%252fusers-groups-roles%252fcontext%252fugr-context
         - name: 將角色指派給來賓使用者
-          href: /azure/active-directory/b2b/add-guest-to-role?context=azure/active-directory/users-groups-roles/context/ugr-context
+          href: ../external-identities/add-guest-to-role.md?context=azure%252factive-directory%252fusers-groups-roles%252fcontext%252fugr-context
         - name: 限制來賓使用者的存取權
           href: users-restrict-guest-permissions.md
         - name: 動態群組與來賓
-          href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+          href: ../external-identities/use-dynamic-groups.md?context=azure%252factive-directory%252fusers-groups-roles%252fcontext%252fugr-context
     - name: 管理您的目錄
       items:
         - name: Azure AD 組織

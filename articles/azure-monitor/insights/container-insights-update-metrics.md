@@ -2,14 +2,14 @@
 title: 如何更新計量容器的 Azure 監視器 |Microsoft Docs
 description: 本文說明如何更新容器的 Azure 監視器，以啟用支援探索和警示匯總計量的自訂計量功能。
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 10/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c420c91e20cc1cf9ab5e4f58bdd352ead3ba4d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a94f250c83fbd2779620376087a83b8851e583e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618140"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309439"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>如何更新容器的 Azure 監視器以啟用計量
 
@@ -26,6 +26,7 @@ ms.locfileid: "91618140"
 | 深入解析。容器/節點 | cpuUsageMillicores、cpuUsagePercentage、memoryRssBytes、memoryRssPercentage、memoryWorkingSetBytes、memoryWorkingSetPercentage、nodesCount、diskUsedPercentage、 | 作為 *節點* 計量，它們包含 *主機* 做為維度。 它們也包含<br> 節點的名稱，作為 *主機* 維度的值。 |
 | 深入解析容器/pod | podCount, completedJobsCount, restartingContainerCount, oomKilledContainerCount, podReadyPercentage | 作為 *pod* 計量，它們包含下列各項：維度-ControllerName、Kubernetes 命名空間、名稱、階段。 |
 | 深入解析容器/容器 | cpuExceededPercentage, memoryRssExceededPercentage, memoryWorkingSetExceededPercentage | |
+| Insights. container/persistentvolumes | pvUsageExceededPercentage | |
 
 為了支援這些新功能，新的容器化代理套裝程式含在發行版本中， **microsoft/oms： ciprod05262020** for AKS and version **microsoft/oms： ciprod09252020** for Azure Arc enabled Kubernetes 叢集。 AKS 的新部署會自動包含這項設定變更和功能。 更新您的叢集以支援這項功能，可以從 Azure 入口網站、Azure PowerShell 或 Azure CLI 執行。 使用 Azure PowerShell 和 CLI。 您可以針對您訂用帳戶中的每個叢集或所有叢集啟用此功能。
 
@@ -34,7 +35,7 @@ ms.locfileid: "91618140"
 > [!IMPORTANT]
 > Azure Arc 啟用的 Kubernetes 叢集並不需要升級，因為它們已具有最低的必要代理程式版本。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在您更新叢集之前，請確認下列事項：
 

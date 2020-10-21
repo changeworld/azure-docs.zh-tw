@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: bd6afa8b3776ed48d4b25a36b2902265fa0ab5c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02d9852f6615c3926a02294e0e7eca50f2fbe9a5
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269755"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310044"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>封鎖連接器在 Azure Logic Apps 中建立的連接
 
@@ -19,7 +19,7 @@ ms.locfileid: "91269755"
 
 本主題說明如何使用 Azure 入口網站來設定用來封鎖特定連線的原則，但您可以透過其他方式建立原則定義，例如透過 Azure REST API、Azure PowerShell、Azure CLI 和 Azure Resource Manager 範本。 如需詳細資訊，請參閱 [教學課程：建立和管理原則以強制執行合規性](../governance/policy/tutorials/create-and-manage.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，請在開始前 [建立免費的 Azure 帳戶](https://azure.microsoft.com/free/) 。
 
@@ -129,7 +129,7 @@ ms.locfileid: "91269755"
    | **名稱** | 是 | <*原則定義名稱*> | 要用於原則定義的名稱 |
    | **說明** | 否 | <*原則定義名稱*> | 原則定義的描述 |
    | **類別** | 是 | **邏輯應用程式** | 原則定義之現有類別或新類別的名稱 |
-   | **原則強制執行** | 是 | **Enabled** | 此設定會指定當您儲存工作時，是要啟用或停用原則定義。 |
+   | **原則強制執行** | 是 | **已啟用** | 此設定會指定當您儲存工作時，是要啟用或停用原則定義。 |
    ||||
 
 1. 在 [ **原則規則**] 下，JSON 編輯方塊會預先填入原則定義範本。 根據下表所述的屬性，並遵循下列語法，將此範本取代為您的 [原則定義](../governance/policy/concepts/definition-structure.md) ：
@@ -224,7 +224,7 @@ ms.locfileid: "91269755"
 
 * [原則結構定義](../governance/policy/concepts/definition-structure.md)
 * [教學課程：建立和管理原則來強制執行相容性](../governance/policy/tutorials/create-and-manage.md)
-* [適用於 Azure Logic Apps 的 Azure 原則內建原則定義](../logic-apps/policy-samples.md)
+* [適用於 Azure Logic Apps 的 Azure 原則內建原則定義](./policy-reference.md)
 
 <a name="create-policy-connector-usage"></a>
 
@@ -250,7 +250,7 @@ ms.locfileid: "91269755"
    | **名稱** | 是 | <*原則定義名稱*> | 要用於原則定義的名稱 |
    | **說明** | 否 | <*原則定義名稱*> | 原則定義的描述 |
    | **類別** | 是 | **邏輯應用程式** | 原則定義之現有類別或新類別的名稱 |
-   | **原則強制執行** | 是 | **Enabled** | 此設定會指定當您儲存工作時，是要啟用或停用原則定義。 |
+   | **原則強制執行** | 是 | **已啟用** | 此設定會指定當您儲存工作時，是要啟用或停用原則定義。 |
    ||||
 
 1. 在 [ **原則規則**] 下，JSON 編輯方塊會預先填入原則定義範本。 根據下表所述的屬性，並遵循下列語法，將此範本取代為您的 [原則定義](../governance/policy/concepts/definition-structure.md) ：
@@ -311,7 +311,7 @@ ms.locfileid: "91269755"
 
 * [原則結構定義](../governance/policy/concepts/definition-structure.md)
 * [教學課程：建立和管理原則來強制執行相容性](../governance/policy/tutorials/create-and-manage.md)
-* [適用於 Azure Logic Apps 的 Azure 原則內建原則定義](../logic-apps/policy-samples.md)
+* [適用於 Azure Logic Apps 的 Azure 原則內建原則定義](./policy-reference.md)
 
 <a name="create-policy-assignment"></a>
 

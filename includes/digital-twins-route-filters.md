@@ -12,7 +12,7 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
 ms.locfileid: "91779397"
 ---
-| 篩選名稱 | 描述 | 篩選文字架構 | 支援的值 | 
+| 篩選名稱 | 說明 | 篩選文字架構 | 支援的值 | 
 | --- | --- | --- | --- |
 | True/False | 允許建立未篩選的路由，或停用路由，不傳送任何事件 | `<true/false>` | `true` = 未篩選的路由已啟用 <br> `false` = 路由已停用 |
 | 類型 | 流經數位對應項實例的[事件種類](../articles/digital-twins/concepts-route-events.md#types-of-event-messages) | `type = '<eventType>'` | 以下是可能的事件種類值： <br>`Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
@@ -35,14 +35,14 @@ ms.locfileid: "91779397"
 
 定義路由篩選時支援下列運算子：
 
-|Family|操作員|範例|
+|系列|操作員|範例|
 |-|-|-|
 |邏輯|和、或 ( ) |`(type != 'microsoft.iot.telemetry' OR datacontenttype = 'application/json') OR (specversion != '1.0')`|
 |比較|<、<=、>、>=、=、！ =|`$body.temperature <= 5.5`
 
 定義路由篩選時支援下列功能：
 
-|函式|描述|範例|
+|函式|說明|範例|
 |--|--|--|
 |STARTS_WITH (x，y) |如果值是以字串開頭，則傳回 true `x` `y` 。|`STARTS_WITH($body.$metadata.$model, 'dtmi:example:com:floor')`|
 |ENDS_WITH (x，y)  | 如果值 `x` 以字串結尾，則傳回 true `y` 。|`ENDS_WITH($body.$metadata.$model, 'floor;1')`|

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/21/2020
-ms.openlocfilehash: 8a1b30803494facf6eaabcc3695770d694b4e221
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/20/2020
+ms.openlocfilehash: 0755ca7e77592a2efd6d8687f9eb19eacc2f0128
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708674"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315163"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽) 中的計算和儲存體選項
 
@@ -49,25 +49,25 @@ ms.locfileid: "91708674"
 | 計算大小         | 虛擬核心 | 記憶體大小 (GiB)  | 
 |----------------------|--------|-------------------|
 | **高載**        |        |                   | 
-| B1s                  | 1      | 1                 |  
-| B1ms                 | 1      | 2                 | 
-| B2s                  | 2      | 4                 |  
+| Standard_B1s         | 1      | 1                 |  
+| Standard_B1ms        | 1      | 2                 | 
+| Standard_B2s         | 2      | 4                 |  
 | **一般用途**  |        |                   | 
-| D2ds_v4              | 2      | 8                 |  
-| D4ds_v4              | 4      | 16                | 
-| D8ds_v4              | 8      | 32                | 
-| D16ds_v4             | 16     | 64                | 
-| D32ds_v4             | 32     | 128               |  
-| D48ds_v4             | 48     | 192               |  
-| D64ds_v4             | 64     | 256               | 
+| Standard_D2ds_v4     | 2      | 8                 |  
+| Standard_D4ds_v4     | 4      | 16                | 
+| Standard_D8ds_v4     | 8      | 32                | 
+| Standard_D16ds_v4    | 16     | 64                | 
+| Standard_D32ds_v4    | 32     | 128               |  
+| Standard_D48ds_v4    | 48     | 192               |  
+| Standard_D64ds_v4    | 64     | 256               | 
 | **記憶體優化** |        |                   |
-| E2ds_v4              | 2      | 16                |
-| E4ds_v4              | 4      | 32                |
-| E8ds_v4              | 8      | 64                |
-| E16ds_v4             | 16     | 128               |
-| E32ds_v4             | 32     | 256               |
-| E48ds_v4             | 48     | 384               |
-| E64ds_v4             | 64     | 504               |
+| Standard_E2ds_v4     | 2      | 16                |
+| Standard_E4ds_v4     | 4      | 32                |
+| Standard_E8ds_v4     | 8      | 64                |
+| Standard_E16ds_v4    | 16     | 128               |
+| Standard_E32ds_v4    | 32     | 256               |
+| Standard_E48ds_v4    | 48     | 384               |
+| Standard_E64ds_v4    | 64     | 504               |
 
 若要取得可用計算系列的詳細資料，請參閱適用于 [高載 (B 系列) ](../../virtual-machines/sizes-b-series-burstable.md)的 Azure VM 檔、 [一般用途 (Ddsv4 系列) ](../../virtual-machines/ddv4-ddsv4-series.md)，以及 [記憶體優化 (Edsv4 系列) ](../../virtual-machines/edv4-edsv4-series.md)。
 
@@ -110,25 +110,25 @@ ms.locfileid: "91708674"
 | 計算大小         | 最大有效 IOPS  | 
 |----------------------|---------------------|
 | **高載**        |                     |
-| B1s                  | 320                 |
-| B1ms                 | 640                 |
-| B2s                  | 1280                | 
+| Standard_B1s         | 320                 |
+| Standard_B1ms        | 640                 |
+| Standard_B2s         | 1280                | 
 | **一般用途**  |                     |
-| D2ds_v4              | 3200                |
-| D4ds_v4              | 6400                |
-| D8ds_v4              | 12800               |
-| D16ds_v4             | 20000               |
-| D32ds_v4             | 20000               |
-| D48ds_v4             | 20000               | 
-| D64ds_v4             | 20000               | 
+| Standard_D2ds_v4     | 3200                |
+| Standard_D4ds_v4     | 6400                |
+| Standard_D8ds_v4     | 12800               |
+| Standard_D16ds_v4    | 20000               |
+| Standard_D32ds_v4    | 20000               |
+| Standard_D48ds_v4    | 20000               | 
+| Standard_D64ds_v4    | 20000               | 
 | **記憶體最佳化** |                     | 
-| E2ds_v4              | 3200                | 
-| E4ds_v4              | 6400                | 
-| E8ds_v4              | 12800               | 
-| E16ds_v4             | 20000               | 
-| E32ds_v4             | 20000               | 
-| E48ds_v4             | 20000               | 
-| E64ds_v4             | 20000               |  
+| Standard_E2ds_v4     | 3200                | 
+| Standard_E4ds_v4     | 6400                | 
+| Standard_ E8ds_v4    | 12800               | 
+| Standard_ E16ds_v4   | 20000               | 
+| Standard_E32ds_v4    | 20000               | 
+| Standard_E48ds_v4    | 20000               | 
+| Standard_E64ds_v4    | 20000               |  
 
 有效 IOPS 的最大值取決於每個計算大小的最大可用 IOPS。 請參閱下面的公式，並參考資料行最大未快取的磁片輸送量： [B 系列](../../virtual-machines/sizes-b-series-burstable.md)、 [Ddsv4 系列](../../virtual-machines/ddv4-ddsv4-series.md)和[EDSV4 系列](../../virtual-machines/edv4-edsv4-series.md)檔中的*IOPS/MBps* 。
 
@@ -151,7 +151,7 @@ ms.locfileid: "91708674"
 
 調整儲存體和變更備份保留期限為線上作業，不需要重新開機伺服器。
 
-## <a name="pricing"></a>定價
+## <a name="pricing"></a>價格
 
 如需最新的定價資訊，請參閱服務的[定價頁面](https://azure.microsoft.com/pricing/details/MySQL/)。 若要查看您想要的設定成本， [Azure 入口網站](https://portal.azure.com/#create/Microsoft.MySQLServer/flexibleServers) 根據您選取的選項，在 [ **計算 + 儲存體** ] 索引標籤上顯示每月成本。 如果您沒有 Azure 訂用帳戶，則可以使用 Azure 價格計算機來取得估計的價格。 在 [Azure 定價計算機](https://azure.microsoft.com/pricing/calculator/) 網站上，選取 **[新增專案**]，展開 [ **資料庫** ] 類別，選擇 [ **適用於 MySQL 的 Azure 資料庫**] 和 [ **彈性伺服器** ] 作為部署類型，以自訂選項。
 
