@@ -4,12 +4,12 @@ description: 本文提供企業內 Azure DevTest Labs 的參考架構指引。
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 7b9652009a4e3c7bfdea029f204429a86562a552
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 29f739c2fb9dd1cc58bf6c400eeee1bebb6243c2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144543"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328839"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs 企業的參考架構
 本文提供的參考架構可協助您根據企業中的 Azure DevTest Labs 來部署解決方案。 其中包括下列各項：
@@ -24,7 +24,7 @@ ms.locfileid: "92144543"
 以下是參考架構的重要元素：
 
 - **Azure Active Directory (Azure AD) **： DevTest Labs 使用 [Azure AD 服務進行身分識別管理](../active-directory/fundamentals/active-directory-whatis.md)。 當您授與使用者以 DevTest Labs 為基礎之環境的存取權時，請考慮下列兩個重要層面：
-    - **資源管理**：提供 Azure 入口網站的存取權，以管理資源 (建立虛擬機器;建立環境;啟動、停止、重新開機、刪除和套用構件;) 。 資源管理是在 Azure 中使用角色型存取控制 (RBAC) 來完成。 您將角色指派給使用者，並設定資源和存取層級許可權。
+    - **資源管理**：提供 Azure 入口網站的存取權，以管理資源 (建立虛擬機器;建立環境;啟動、停止、重新開機、刪除和套用構件;) 。 您可以使用 Azure 角色型存取控制 (Azure RBAC) 來進行資源管理。 您將角色指派給使用者，並設定資源和存取層級許可權。
     - **虛擬機器 (網路層級) **：在預設設定中，虛擬機器使用本機系統管理員帳戶。 如果有可用的網域 ([Azure AD Domain Services](../active-directory-domain-services/overview.md)、內部部署網域或雲端架構網域) ，則可以將電腦加入網域。 然後，使用者可以使用其網域身分識別來連線至 Vm。
 - **內部部署連線能力**：在我們的架構圖中，會使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 。 但是您也可以使用 [站對站 VPN](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)。 雖然 DevTest Labs 不需要 ExpressRoute，但它通常會在企業中使用。 只有當您需要存取公司資源時，才需要 ExpressRoute。 常見案例包括：
     - 您有無法移至雲端的內部部署資料。

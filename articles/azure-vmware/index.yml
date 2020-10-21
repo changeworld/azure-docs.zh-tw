@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: dikamath
   ms.author: dikamath
-  ms.date: 09/21/2020
-  ms.openlocfilehash: 197cf8ca3f819a83d13869a43c3685bba916ce4f
-  ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+  ms.date: 10/19/2020
+  ms.openlocfilehash: 31b3ad9c33ffd07b62067de3aa46333608522f97
+  ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/12/2020
-  ms.locfileid: "91949100"
+  ms.lasthandoff: 10/19/2020
+  ms.locfileid: "92172140"
 landingContent:
 - title: 關於 Azure VMware 解決方案
   linkLists:
@@ -36,14 +36,12 @@ landingContent:
       url: concepts-role-based-access-control.md
     - text: 私人雲端升級
       url: concepts-upgrades.md
-- title: 部署 Azure VMware 解決方案
+- title: 開始使用
   linkLists:
-  - linkListType: get-started
+  - linkListType: deploy
     links:
-    - text: 前置部署程序
+    - text: 計劃部署
       url: production-ready-deployment-steps.md
-    - text: 前置部署檢查清單
-      url: pre-deployment-checklist.md
     - text: 1 - 部署 Azure VMware 解決方案
       url: deploy-azure-vmware-solution.md
     - text: 2 - 連線至內部部署
@@ -64,14 +62,16 @@ landingContent:
       url: tutorial-nsx-t-network-segment.md
     - text: 將內部部署環境對等互連至私人雲端
       url: tutorial-expressroute-global-reach-private-cloud.md
-    - text: 部署及設定 VMWare HCX
-      url: tutorial-deploy-vmware-hcx.md
     - text: 縮放私人雲端
       url: tutorial-scale-private-cloud.md
 - title: 擴充 Azure VMware 解決方案
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: 啟用 Azure VMware 解決方案
+      url: enable-azure-vmware-solution.md
+    - text: 透過保留執行個體節省成本
+      url: reserved-instance.md
     - text: 移轉評估
       url: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
     - text: 管理 DHCP
@@ -80,5 +80,49 @@ landingContent:
       url: disaster-recovery-for-virtual-machines.md
     - text: 透過內容庫部署 VM
       url: ./deploy-vm-content-library.md
-    - text: 使用公用 IP 功能
+    - text: 設定 GitHub Enterprise 伺服器
+      url: github-enterprise-server.md
+    - text: 公用 IP 使用量
       url: public-ip-usage.md
+    - text: 建立 IPSec 通道
+      url: create-ipsec-tunnel.md
+- title: Azure 原生整合
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: API 管理
+      url: concepts-api-management.md
+    - text: 中樞與輪幅
+      url: concepts-hub-and-spoke.md
+    - text: Azure 備份伺服器
+      url: set-up-backup-server-for-azure-vmware-solution.md
+    - text: VM 上的生命週期管理
+      url: lifecycle-management-of-azure-vmware-solution-vms.md
+    - text: 應用程式閘道
+      url: protect-azure-vmware-solution-with-application-gateway.md
+    - text: 流量管理員
+      url: deploy-traffic-manager-balance-workloads.md
+- title: VMware 解決方案
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 設定 vRealize 作業
+      url: vrealize-operations-for-azure-vmware-solution.md
+    - text: 部署 VMware Horizon
+      url: azure-vmware-solution-horizon.md
+- title: VMware 生態系統
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: VM 的備份解決方案
+      url: ecosystem-back-up-vms.md
+- title: 資源
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.vmware
+    - text: 取得部署或佈建失敗的協助
+      url: fix-deployment-provisioning-failures.md
+    - text: 常見問題集
+      url: faq.md

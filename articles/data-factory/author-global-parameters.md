@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: djpmsft
 ms.author: daperlov
 ms.date: 08/31/2020
-ms.openlocfilehash: a936fbec23a38c5b96c678b38b92eed9346b88bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c20bb77711833a1a17082e25e31d4a2e14db5bf9
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567531"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328160"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Azure Data Factory 中的全域參數
 
@@ -52,7 +52,7 @@ ms.locfileid: "91567531"
 
 ![包含在 ARM 範本中](media/author-global-parameters/include-arm-template.png)
 
-將全域參數新增至 ARM 範本會新增可在其他環境中覆寫其他工廠層級設定（例如客戶管理的金鑰或 git 設定）的原廠層級設定。 如果您已在更高許可權的環境中（例如 UAT 或生產環境）啟用這些設定，最好是透過下列步驟中所強調步驟的 PowerShell 腳本來部署全域參數。
+將全域參數新增至 ARM 範本會新增處理站層級的設定，以覆寫其他環境中的其他工廠層級設定，例如客戶管理的金鑰或 git 設定。 如果您已在更高許可權的環境中（例如 UAT 或生產環境）啟用這些設定，最好是透過下列步驟中所強調步驟的 PowerShell 腳本來部署全域參數。
 
 ### <a name="deploying-using-powershell"></a>使用 PowerShell 進行部署
 

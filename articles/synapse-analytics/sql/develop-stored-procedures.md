@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 09/23/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f2046614f3665a699d02c76210676fb32f99fc73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2089a6895a34c74de9d3e14beaa3807bbb1b6e6b
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288914"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279071"
 ---
 # <a name="use-stored-procedures-in-synapse-sql"></a>在 Synapse SQL 中使用預存程式
 
-在 Synapse SQL 集區中執行預存程式的秘訣 (資料倉儲) 開發解決方案。
+在 Synapse SQL 集區中執行預存程式以開發解決方案的秘訣。
 
 ## <a name="what-to-expect"></a>預期的情況
 
@@ -181,7 +181,7 @@ EXEC clean_up 'mytest'  -- This call is nest level 1
 
 ## <a name="insertexecute"></a>INSERT..EXECUTE
 
-Synapse SQL 不允許您使用 INSERT 語句來取用預存程式的結果集。 您可以使用替代方法。 如需範例，請參閱[暫存資料表](develop-tables-temporary.md)上的文章。
+Synapse SQL 不允許您使用 INSERT 語句來取用預存程式的結果集。 您可以使用替代方法。 如需範例，請參閱有關已布建 Synapse SQL 集區之 [臨時表](develop-tables-temporary.md) 的文章。
 
 ## <a name="limitations"></a>限制
 

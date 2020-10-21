@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 525ab34bb9edff737686a88d7a8e664500282555
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 1189324cf0bb2731a100032058c7ba9ae4add758
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320517"
+ms.locfileid: "92332037"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>關於 Azure VM 災難修復中的網路功能
 
@@ -29,7 +29,7 @@ ms.locfileid: "92320517"
 
 下圖說明適用於 Azure VM 上執行之應用程式的一般 Azure 環境：
 
-![客戶環境](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
+![描繪 Azure Vm 上執行之應用程式的一般 Azure 環境圖表。](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
 
 如果您使用 Azure ExpressRoute 或從內部部署網路到 Azure 的 VPN 連線，環境將如下所示：
 

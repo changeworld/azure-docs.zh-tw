@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 10/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 652299ebb98f685a16871cf4e944608a471d8df2
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 96d759f0f722e332eb25e049fd336c784eb99789
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279083"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332071"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>管理 Azure 數位 Twins 中的端點和路由 (Api 和 CLI) 
 
@@ -64,7 +64,7 @@ az eventgrid topic create -g <your-resource-group-name> --name <your-topic-name>
 az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eventgrid-resource-group <Event-Grid-resource-group-name> --eventgrid-topic <your-Event-Grid-topic-name> -n <your-Azure-Digital-Twins-instance-name>
 ```
 
-現在，事件方格主題可作為 Azure 數位 Twins 內部的端點，在以引數指定的名稱下 `--endpoint-name` 。 您通常會使用該名稱做為 **事件路由**的目標，您 [稍後會在本文中](#event-routes-with-apis-and-the-c-sdk) 使用 AZURE 數位 Twins 服務 API 來建立。
+現在，事件方格主題可作為 Azure 數位 Twins 內部的端點，在以引數指定的名稱下 `--endpoint-name` 。 您通常會使用該名稱做為 **事件路由**的目標，您 [稍後會在本文中](#create-an-event-route) 使用 AZURE 數位 Twins 服務 API 來建立。
 
 ### <a name="create-an-event-hubs-or-service-bus-endpoint"></a>建立事件中樞或服務匯流排端點
 
@@ -150,7 +150,7 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 }
 ```
 
-## <a name="event-routes-with-apis-and-the-c-sdk"></a> (Api 和 c # SDK 的事件路由) 
+## <a name="create-an-event-route"></a>建立事件路由
 
 若要實際將資料從 Azure 數位 Twins 傳送至端點，您必須定義 **事件路由**。 Azure 數位 Twins **EventRoutes api** 可讓開發人員連接整個系統和下游服務的事件流程。 深入瞭解事件路由的 [*概念：路由傳送 Azure 數位 Twins 事件*](concepts-route-events.md)。
 
@@ -163,7 +163,7 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 >
 > 如果您正在編寫此流程的腳本，您可能會想要在等候結束之前，先在2-3 分鐘內建立端點服務完成部署的等候時間，然後再繼續進行路由設定。
 
-### <a name="create-an-event-route"></a>建立事件路由
+### <a name="creation-code-with-apis-and-the-c-sdk"></a>使用 Api 和 c # SDK 建立程式碼
 
 事件路由是使用 [資料平面 api](how-to-use-apis-sdks.md#overview-data-plane-apis)定義。 
 
@@ -217,7 +217,7 @@ catch (RequestFailedException e)
 }
 ```
 
-### <a name="filter-events"></a>篩選事件
+## <a name="filter-events"></a>篩選事件
 
 若未篩選，端點會從 Azure 數位 Twins 接收各種事件：
 * 使用 Azure 數位 Twins 服務 API 的 [數位 twins](concepts-twins-graph.md) 所引發的遙測

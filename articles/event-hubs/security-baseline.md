@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f47e9cb93b90c8a2401d1dfe6c0ff7800b0bcf27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 007409d755da2d879297b4b898663dcbd9fd6d7f
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401124"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329622"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>適用于事件中樞的 Azure 安全性基準
 
@@ -397,7 +397,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指導**方針：使用 AZURE ACTIVE DIRECTORY (AD) 作為 Azure 資源（例如事件中樞）的中央驗證和授權系統。 這可讓您對系統管理敏感資源 (RBAC) 的角色型存取控制。
+**指導**方針：使用 AZURE ACTIVE DIRECTORY (AD) 作為 Azure 資源（例如事件中樞）的中央驗證和授權系統。 這可讓 Azure 角色型存取控制 (Azure RBAC) 至系統管理的機密資源。
 
  如何建立和設定 Azure AD 實例： https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
@@ -539,9 +539,9 @@ Microsoft 管理 Azure 事件中樞的基礎結構，並已實行嚴格的控制
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指導**方針： Azure 事件中樞支援使用 AZURE ACTIVE DIRECTORY (AD) 來授權事件中樞資源的要求。 使用 Azure AD 時，您可以使用角色型存取控制 (RBAC) ，將許可權授與安全性主體（可能是使用者或應用程式服務主體）。
+**指導**方針： Azure 事件中樞支援使用 AZURE ACTIVE DIRECTORY (AD) 來授權事件中樞資源的要求。 使用 Azure AD 時，您可以使用 Azure 角色型存取控制 (Azure RBAC) ，將許可權授與安全性主體（可能是使用者或應用程式服務主體）。
 
-瞭解 Azure 事件中樞 Azure AD RBAC 和可用角色： https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
+瞭解適用于 Azure 事件中樞的 Azure RBAC 和可用角色： https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory
 
 **Azure 資訊安全中心監視**：不適用
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 83cc1b2fd0936d814e4a31714fecfdea7ccce988
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f107741dc3e601d0a46c295932a745c99dadb96d
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89225661"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328071"
 ---
 # <a name="azure-security-baseline-for-azure-dns"></a>適用于 Azure DNS 的 Azure 安全性基準
 
@@ -102,7 +102,7 @@ ms.locfileid: "89225661"
 
 - [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-- [瞭解 Azure DNS 中的 Azure RBAC](dns-protect-zones-recordsets.md#role-based-access-control)
+- [瞭解 Azure DNS 中的 Azure RBAC](dns-protect-zones-recordsets.md#azure-role-based-access-control)
 
 **Azure 資訊安全中心監視**：是
 
@@ -260,13 +260,13 @@ ms.locfileid: "89225661"
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6：使用 Azure RBAC 來管理資源的存取權
 
-**指導**方針： Azure Role-Based 存取控制 (azure RBAC) 可針對 azure 使用者、群組和資源提供更細緻的存取權管理。 使用 Azure RBAC，您可以授與使用者所需的存取層級。 
+**指導**方針： azure 角色型存取控制 (azure RBAC) 可針對 azure 使用者、群組和資源提供更細緻的存取權管理。 使用 Azure RBAC，您可以授與使用者所需的存取層級。 
 
 在 Azure DNS 中，已有 DNS 區域參與者角色，以及區域層級和記錄集層級的 Azure RBAC。 您也可以建立自己的自訂 Azure 角色，以提供更細微的控制。
 
 - [如何設定 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
-- [瞭解 Azure DNS 中的 Azure RBAC](dns-protect-zones-recordsets.md#role-based-access-control)
+- [瞭解 Azure DNS 中的 Azure RBAC](dns-protect-zones-recordsets.md#azure-role-based-access-control)
 
 - [瞭解 Azure 私人 DNS 中的 Azure RBAC](dns-protect-private-zones-recordsets.md)
 

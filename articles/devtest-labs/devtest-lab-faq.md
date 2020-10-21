@@ -3,18 +3,18 @@ title: Azure DevTest Labs 常見問題集 | Microsoft Docs
 description: 本文提供一些 Azure DevTest Labs 相關常見問題集 (FAQ) 的解答。
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 6f4c0e34242677eca6a32af4731817085be12436
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1cbea3628d6c8c1b43766140d201ce46964a60b5
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144583"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328380"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs 常見問題集
 獲得一些關於 Azure DevTest Labs 最常見問題的解答。
 
 ## <a name="blog-post"></a>部落格文章
-我們的 DevTest Labs 小組部落格已於 2019 年 3 月 20 日淘汰。 
+我們的 DevTest Labs 小組部落格已於 2019 年 3 月 20 日淘汰。 
 
 ### <a name="where-can-i-track-feature-updates-from-now-on"></a>我可以從何處追蹤功能更新？
 從現在開始，我們將在 Azure 部落格和 Azure 更新上張貼功能更新和資訊性部落格文章。 這些部落格文章也會在必要之處連結至我們的文件。
@@ -22,7 +22,7 @@ ms.locfileid: "92144583"
 請訂閱 [DevTest Labs Azure 部落格](https://azure.microsoft.com/blog/tag/azure-devtest-labs/)和 [DevTest Labs Azure 更新](https://azure.microsoft.com/updates/?product=devtest-lab)，隨時掌握 DevTest Labs 的新功能。
 
 ### <a name="what-happens-to-the-existing-blog-posts"></a>現有的部落格文章將會如何？
-我們目前正致力於將現有的部落格文章 (不包括中斷更新) 遷移至 [DevTest Labs 文件](devtest-lab-overview.md)。 MSDN 部落格淘汰後，系統會將其重新導向至 DevTest Labs 的文件概觀。 重新導向後，您可以在 [篩選依據] 標題中搜尋您要尋找的文章。 我們尚未遷移所有文章，但應會在這個月底完成。 
+我們目前正致力於將現有的部落格文章 (不包括中斷更新) 遷移至 [DevTest Labs 文件](devtest-lab-overview.md)。 MSDN 部落格淘汰後，系統會將其重新導向至 DevTest Labs 的文件概觀。 重新導向後，您可以在 [篩選依據] 標題中搜尋您要尋找的文章。 我們尚未遷移所有文章，但應會在這個月底完成。 
 
 
 ### <a name="where-do-i-see-outage-updates"></a>我可以在何處查看中斷更新？
@@ -68,7 +68,7 @@ DevTest Labs 是免費的服務。 在 DevTest Labs 建立實驗室和設定原�
 ## <a name="security"></a>安全性
 
 ### <a name="what-are-the-different-security-levels-in-devtest-labs"></a>DevTest Labs 中有哪些不同的安全性層級？
-安全性存取權是由角色型存取控制 (RBAC) 所決定。 若要了解存取權的運作方式，了解 RBAC 所定義的權限、角色和範圍之間的差異將有所幫助。
+安全性存取權是由 Azure 角色型存取控制 (Azure RBAC) 所決定。 若要瞭解存取權的運作方式，可協助您瞭解 Azure RBAC 所定義的許可權、角色和範圍之間的差異。
 
 - **權限**：權限是針對特定動作所定義的存取權。 例如，權限可以是對所有 VM 的讀取權限。
 - **角色**：角色是一組可以分組並指派給使用者的權限。 例如，具有訂用帳戶擁有者角色的使用者可存取訂用帳戶內的所有資源。
@@ -83,7 +83,7 @@ DevTest Labs 是免費的服務。 在 DevTest Labs 建立實驗室和設定原�
 
 因為範圍是階層形式，當使用者擁有特定範圍的權限時，就會自動獲得該範圍的每個較低層級範圍的權限。 例如，如果有使用者指派給訂用帳戶擁有者角色，該使用者就可以存取訂用帳戶中的所有資源。 這些資源包括 VM、虛擬網路和實驗室。 訂用帳戶擁有者會自動繼承實驗室擁有者角色。 不過，若情形顛倒過來就不成立。 實驗室擁有者可存取實驗室，而實驗室是比訂用帳戶層級還低的範圍。 因此，實驗室擁有者看不到該實驗室之外的 VM、虛擬網路或任何其他資源。
 
-### <a name="how-do-i-define-role-based-access-control-for-my-devtest-labs-environments-to-ensure-that-it-can-govern-while-developerstest-can-do-their-work"></a>如何為我的 DevTest Labs 環境定義角色型存取控制，以確保 IT 可以治理，而開發人員/測試同時還能執行其工作？
+### <a name="how-do-i-define-azure-role-based-access-control-for-my-devtest-labs-environments-to-ensure-that-it-can-govern-while-developerstest-can-do-their-work"></a>如何? 針對我的 DevTest Labs 環境定義 Azure 角色型存取控制，以確保其可在開發人員/測試可以執行其工作時進行管理？
 有一個廣泛的模式，但詳細資料取決於您的組織。
 
 中央 IT 應該只擁有必要項目，並讓專案和應用程式小組能夠擁有所需的控制層級。 一般而言，這表示中央 IT 擁有訂用帳戶並會處理核心 IT 函式，例如網路設定。 這組適用於訂用帳戶的**擁有者**應該很小。 這些擁有者可以在需要時提名其他擁有者，或套用訂用帳戶層級的原則，例如「沒有公用 IP」。
@@ -92,7 +92,7 @@ DevTest Labs 是免費的服務。 在 DevTest Labs 建立實驗室和設定原�
 
 DevTest Labs 資源應該由接近專案/應用程式小組的擁有者所擁有。 這是因為他們了解對於機器及必要軟體的需求。 在大多數組織中，此 DevTest Labs 資源的擁有者通常是專案/開發潛在客戶。 此擁有者可以管理實驗室環境內的使用者和原則，而且可以管理 DevTest Labs 環境中的所有 VM。
 
-您應該將專案/應用程式小組成員新增至 **DevTest Labs 使用者**角色。 這些使用者可以建立虛擬機器 (使用實驗室和訂用帳戶層級原則來內建)。 他們也可以管理自己的虛擬機器。 他們無法管理屬於其他使用者的虛擬機器。
+專案/應用程式小組成員應該加入至 **DevTest Labs 使用者** 角色。 這些使用者可以建立虛擬機器 (使用實驗室和訂用帳戶層級原則來內建)。 他們也可以管理自己的虛擬機器。 他們無法管理屬於其他使用者的虛擬機器。
 
 如需詳細資訊，請參閱 [Azure 企業 Scaffold - 規定的訂用帳戶治理](/azure/architecture/cloud-adoption/appendix/azure-scaffold)一文。
 

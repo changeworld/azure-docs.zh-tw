@@ -7,24 +7,24 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9b9fae8f32f9d7ffeee53df8e5a888394572cbd7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 0b99b9034dc382552d292cef95a3790bb27eba89
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014999"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331748"
 ---
 # <a name="secure-azure-digital-twins"></a>保護 Azure 數位 Twins
 
-為了安全起見，Azure 數位 Twins 可讓您精確地控制部署中的特定資料、資源和動作。 它會透過名為 **角色型存取控制 **的細微角色和版權管理策略來 (RBAC) 。 您可以在 [這裡](../role-based-access-control/overview.md)閱讀 Azure RBAC 的一般原則。
+為了安全起見，Azure 數位 Twins 可讓您精確地控制部署中的特定資料、資源和動作。 它會透過稱為 **azure 角色型存取控制 (AZURE RBAC) **的細微角色和版權管理策略來執行此工作。 您可以在 [這裡](../role-based-access-control/overview.md)閱讀 Azure RBAC 的一般原則。
 
 Azure 數位 Twins 也支援靜態資料的加密。
 
-## <a name="granting-permissions-with-rbac"></a>使用 RBAC 授與許可權
+## <a name="granting-permissions-with-azure-rbac"></a>使用 Azure RBAC 授與許可權
 
-RBAC 會透過與 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) 的整合，提供給 Azure 數位 Twins。
+Azure RBAC 透過整合 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) ，提供給 Azure 數位 Twins。
 
-您可以使用 RBAC 將許可權授與 *安全性主體，該安全性主體*可能是使用者、群組或應用程式服務主體。 安全性主體是由 Azure AD 進行驗證，並接收傳回的 OAuth 2.0 權杖。 此權杖可以用來授權對 Azure 數位 Twins 實例的存取要求。
+您可以使用 Azure RBAC 將許可權授與 *安全性主體，該安全性主體*可能是使用者、群組或應用程式服務主體。 安全性主體是由 Azure AD 進行驗證，並接收傳回的 OAuth 2.0 權杖。 此權杖可以用來授權對 Azure 數位 Twins 實例的存取要求。
 
 ### <a name="authentication-and-authorization"></a>驗證與授權
 
@@ -57,7 +57,7 @@ Azure 提供下列 Azure 內建角色，以授權存取 Azure 數位 Twins 資�
 如需如何定義內建角色的詳細資訊，請參閱瞭解 Azure RBAC 檔中的 [*角色定義*](../role-based-access-control/role-definitions.md) 。 如需建立 Azure 自訂角色的詳細資訊，請參閱 [*azure 自訂角色*](../role-based-access-control/custom-roles.md)。
 
 您可以透過兩種方式來指派角色：
-* 透過 Azure 入口網站 (中 Azure 數位 Twins 的 [存取控制] (IAM) 窗格，請參閱 [*使用 AZURE RBAC 和 Azure 入口網站新增或移除角色指派*](../role-based-access-control/role-assignments-portal.md)) 
+* 透過 Azure 入口網站 (中 Azure 數位 Twins 的 [存取控制] (IAM) 窗格，請參閱 [*使用 Azure 入口網站新增或移除 azure 角色指派*](../role-based-access-control/role-assignments-portal.md)) 
 * via CLI 命令以新增或移除角色
 
 如需如何執行這項作業的詳細步驟，請在 Azure 數位 Twins 教學課程 [*：連接端對端解決方案*](tutorial-end-to-end.md)中試用。
@@ -95,4 +95,4 @@ Azure 數位 Twins 目前不支援 **跨原始來源資源分享 (CORS) **。 �
 
 * 請參閱 how to [*：撰寫應用程式驗證程式*](how-to-authenticate-client.md)代碼，以瞭解如何從用戶端應用程式程式碼與這些概念互動。
 
-* 深入瞭解 [適用于 Azure 的 RBAC](../role-based-access-control/overview.md)。
+* 深入瞭解 [AZURE RBAC](../role-based-access-control/overview.md)。

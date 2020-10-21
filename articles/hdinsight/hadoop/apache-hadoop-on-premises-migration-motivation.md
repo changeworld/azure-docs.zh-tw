@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: 1de9fc480c753b2497a1ea4e3438583b3582bc96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 595bf6f921265e9e8dbc0e0e065fe835efea14bc
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87072783"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331646"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>將內部部署 Apache Hadoop 叢集遷移到 Azure HDInsight - 動機和優點
 
@@ -39,11 +39,11 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 
 - **受控硬體和設定** - 不需要擔心 HDInsight 叢集的實體硬體或基礎結構。 只要指定的叢集的設定，Azure 就會設定它。
 
-- **輕鬆地擴充** - HDInsight 可讓您 [調整](../hdinsight-administer-use-portal-linux.md)工作負載，將它相應增加或減少。 Azure 會負責資料轉散發和重新平衡工作負載，而不會中斷資料處理作業。
+- **可輕鬆**[調整](../hdinsight-administer-use-portal-linux.md)-HDInsight 可讓您相應增加或減少工作負載。 Azure 會負責資料轉散發和重新平衡工作負載，而不會中斷資料處理作業。
 
 - **全球可用性** -HDInsight 比任何其他 big data analytics 供應專案的 [區域](https://azure.microsoft.com/regions/services/) 更多。 Azure HDInsight 也會適用於 Azure Government、中國和德國，可讓您符合您在重要主權區域中的企業需求。
 
-- **安全與合規性** - HDInsight 可讓您使用  [Azure 虛擬網路](../hdinsight-plan-virtual-network-deployment.md)、 [加密](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)，以及與  [Azure Active Directory](../domain-joined/hdinsight-security-overview.md) 整合來保護企業資料資產。 HDInsight 也符合最熱門的產業和政府 [合規性標準](https://azure.microsoft.com/overview/trusted-cloud)。
+- **安全且符合規範** -HDInsight 可讓您使用 [Azure 虛擬網路](../hdinsight-plan-virtual-network-deployment.md)、 [加密](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)，以及與 [Azure Active Directory](../domain-joined/hdinsight-security-overview.md)整合，來保護您的企業資料資產。 HDInsight 也符合最受歡迎的產業和政府[合規性標準](https://azure.microsoft.com/overview/trusted-cloud)。
 
 - **簡化版本管理** -Azure HDInsight 管理 Hadoop 生態系統元件的版本，並讓它們保持在最新狀態。 軟體更新對於內部部署通常是複雜的程序。
 
@@ -51,9 +51,9 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 
 - **生產力** - 您可以在慣用的開發環境中使用各種適用於 Hadoop 和 Spark 的工具。
 
-- **使用自訂工具或協力廠商應用程式的擴充性** - HDInsight 叢集可以使用安裝的元件來擴充，並從 Azure Marketplace 使用[單鍵](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) 部署來與其他巨量資料解決方案整合。
+- **使用自訂工具或協力廠商應用程式** 的擴充性-HDInsight 叢集可以擴充已安裝的元件，也可以與其他 big data 解決方案整合，方法是從 Azure [市場使用單鍵](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) 部署。
 
-- **輕鬆管理、管理和監視**-Azure HDInsight 可與 [Azure 監視器記錄](../hdinsight-hadoop-oms-log-analytics-tutorial.md)整合，   以提供單一介面讓您監視所有的叢集。
+- **輕鬆管理、管理和監視** -Azure HDInsight 可與 [Azure 監視器記錄](../hdinsight-hadoop-oms-log-analytics-tutorial.md) 整合，以提供單一介面讓您監視所有的叢集。
 
 - **與其他 Azure 服務整合** - HDInsight 可輕鬆地與其他熱門 Azure 服務整合，如下列服務：
 
@@ -185,7 +185,7 @@ Azure HDInsight 是 Hadoop 元件的雲端發行版。 Azure HDInsight 可輕鬆
 |僅雲端使用者？|                 是||
 |是否需要 MFA？|                       否|| 
 |是否符合資料授權需求？|  是||
-|是否使用角色型存取控制？|        是||
+|以角色為基礎的存取控制？|        是||
 |是否需要稽核？|                  是||
 |是否使用待用資料加密？|          是||
 |是否使用傳輸中資料加密？|       是||

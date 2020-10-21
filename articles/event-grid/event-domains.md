@@ -3,12 +3,12 @@ title: Azure 事件方格中的事件網域
 description: 本文說明如何使用事件網域，來管理自訂事件到您各種不同商業組織、客戶或應用程式的流程。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 02529ba770e636021cf9cec4ed555247e1c63d8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b313784cd006087f3c2f1354053540cc9224782
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86114358"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328822"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>了解用於管理事件方格主題的事件網域
 
@@ -37,13 +37,13 @@ ms.locfileid: "86114358"
 
 ## <a name="access-management"></a>存取管理
 
-使用網域，您就能透過 Azure 角色型存取控制 (RBAC) 來微調對每個主題的授權和驗證控制。 您可以使用這些角色，將應用程式中的每個租用戶限制為只有您想要為其授與存取權的主題。
+使用網域，您可以透過 Azure 角色型存取控制 (Azure RBAC) ，更精細地控制每個主題的授權和驗證。 您可以使用這些角色，將應用程式中的每個租用戶限制為只有您想要為其授與存取權的主題。
 
-事件網域中 RBAC 的運作方式，與[受控存取控制](security-authorization.md)在事件方格和 Azure 其餘部分中運作的方式相同。 使用 RBAC，在事件網域中建立和強制執行自訂角色定義。
+事件網域中的 Azure RBAC 的運作方式，與在事件方格和 Azure 其餘部分中 [受控存取控制](security-authorization.md) 的運作方式相同。 使用 Azure RBAC 在事件網域中建立和強制執行自訂角色定義。
 
 ### <a name="built-in-roles"></a>內建角色
 
-事件方格具有兩個內建角色定義，可使 RBAC 更容易與事件網域搭配運作。 這些角色為 **EventGrid EventSubscription 參與者 (預覽)** 和 **EventGrid EventSubscription 讀者 (預覽)**。 您可以將這些角色指派給需要訂閱您事件網域中之主題的使用者。 您將角色指派的範圍限定在使用者需要訂閱的主題。
+事件方格有兩個內建角色定義，可讓 Azure RBAC 更容易使用事件網域。 這些角色為 **EventGrid EventSubscription 參與者 (預覽)** 和 **EventGrid EventSubscription 讀者 (預覽)**。 您可以將這些角色指派給需要訂閱您事件網域中之主題的使用者。 您將角色指派的範圍限定在使用者需要訂閱的主題。
 
 如需這些角色的詳細資訊，請參閱[適用於事件方格的內建角色](security-authorization.md#built-in-roles)。
 
@@ -108,6 +108,6 @@ ms.locfileid: "86114358"
 
 作業在事件網域中的運作方式，與它們在自訂主題中所做的一樣。 每個對事件網域的事件輸入都是一項作業，而每次對於事件的傳遞嘗試都是一項作業。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要了解如何設定事件網域、建立主題、建立事件訂閱，以及發行事件，請參閱[管理事件網域](./how-to-event-domains.md)。

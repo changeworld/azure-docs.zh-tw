@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
-ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: baa03e9a9bbbc7f8eefc1e0ba57a0a8b18da6e29
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77121729"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328754"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS 常見問題集
 
@@ -24,7 +24,7 @@ ms.locfileid: "77121729"
 
 Azure DNS 中的 DNS 網域裝載於 Azure 的 DNS 名稱伺服器全球網路。 此系統會使用「任一傳播」網路，所以每個 DNS 查詢是由最接近的可用 DNS 伺服器回答。 Azure DNS 能為您的網域提供快速的效能與高可用性。
 
-Azure DNS 是架構在 Azure Resource Manager 上。 Azure DNS 可得益於 Resource Manager 的功能，如角色型存取控制、稽核記錄和資源鎖定。 您可以透過 Azure 入口網站、Azure PowerShell Cmdlet 和跨平台 Azure CLI 來管理網域和記錄。 需要自動化 DNS 管理的應用程式可以透過 REST API 和 SDK 與服務進行整合。
+Azure DNS 是架構在 Azure Resource Manager 上。 Azure DNS 從 Resource Manager 功能獲益，例如 Azure 角色型存取控制、審核記錄和資源鎖定。 您可以透過 Azure 入口網站、Azure PowerShell Cmdlet 和跨平台 Azure CLI 來管理網域和記錄。 需要自動化 DNS 管理的應用程式可以透過 REST API 和 SDK 與服務進行整合。
 
 ### <a name="how-much-does-azure-dns-cost"></a>Azure DNS 的費用是多少？
 
@@ -68,25 +68,25 @@ Azure DNS 僅支援裝載靜態 DNS 網域，其中所指定 DNS 記錄的每個
 
 ### <a name="does-azure-dns-support-domain-name-registration"></a>Azure DNS 是否支援網域名稱註冊？
 
-不可以。 Azure DNS 目前不支援購買網域名稱的選項。 若要購買網域，您必須使用第三方網域名稱註冊機構。 註冊機構通常會收取些微年費。 然後，您就可以在 Azure DNS 裝載這些網域來管理 DNS 記錄。 如需詳細資訊，請參閱[將網域委派給 Azure DNS](dns-domain-delegation.md)。
+否。 Azure DNS 目前不支援購買網域名稱的選項。 若要購買網域，您必須使用第三方網域名稱註冊機構。 註冊機構通常會收取些微年費。 然後，您就可以在 Azure DNS 裝載這些網域來管理 DNS 記錄。 如需詳細資訊，請參閱[將網域委派給 Azure DNS](dns-domain-delegation.md)。
 
 系統會在 Azure 待辦項目中，追蹤用來購買網域名稱的功能。 請使用意見反應網站來[註冊此功能的支援](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar) \(英文\)。
 
 ### <a name="does-azure-dns-support-dnssec"></a>Azure DNS 是否支援 DNSSEC？
 
-不可以。 Azure DNS 目前不支援網域名稱系統安全性延伸模組 (DNSSEC)。
+否。 Azure DNS 目前不支援網域名稱系統安全性延伸模組 (DNSSEC)。
 
 系統會在 Azure DNS 待辦項目中追蹤 DNSSEC 功能。 請使用意見反應網站來[註冊此功能的支援](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support) \(英文\)。
 
 ### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Azure DNS 是否支援區域傳輸 (AXFR/IXFR)？
 
-不可以。 Azure DNS 目前不支援區域傳輸。 您可以[使用 Azure CLI 將 DNS 區域匯入到 Azure DNS 中](dns-import-export.md)。 透過 [Azure DNS 管理入口網站](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell Cmdlet](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)，即可管理 DNS 記錄。
+否。 Azure DNS 目前不支援區域傳輸。 您可以[使用 Azure CLI 將 DNS 區域匯入到 Azure DNS 中](dns-import-export.md)。 透過 [Azure DNS 管理入口網站](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell Cmdlet](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)，即可管理 DNS 記錄。
 
 系統會在 Azure DNS 待辦項目中追蹤區域傳輸功能。 請使用意見反應網站來[註冊此功能的支援](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c) \(英文\)。
 
 ### <a name="does-azure-dns-support-url-redirects"></a>Azure DNS 是否支援 URL 重新導向？
 
-不可以。 URL 重新導向服務不是 DNS 服務。 它們是在 HTTP 層級運作，而不是在 DNS 層級。 有些 DNS 提供者會將 URL 重新導向服務結合成其整體供應項目的一部分。 但 Azure DNS 目前不支援此服務。
+否。 URL 重新導向服務不是 DNS 服務。 它們是在 HTTP 層級運作，而不是在 DNS 層級。 有些 DNS 提供者會將 URL 重新導向服務結合成其整體供應項目的一部分。 但 Azure DNS 目前不支援此服務。
 
 系統會在 Azure DNS 待辦項目中追蹤 URL 重新導向功能。 請使用意見反應網站來[註冊此功能的支援](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape) \(英文\)。
 
@@ -177,7 +177,7 @@ Azure DNS 區域中的下列記錄類型支援別名記錄集：
 
 ### <a name="how-can-i-protect-my-dns-zones-against-accidental-deletion"></a>我要如何保護我的 DNS 區域免於遭到意外刪除？
 
-Azure DNS 的管理是使用 Azure Resource Manager 來進行的。 Azure DNS 可享有 Azure Resource Manager 所提供的存取控制功能優點。 角色型存取控制可控制哪些使用者具備 DNS 區域和記錄集的讀取或寫入存取權。 資源鎖定可防止意外修改或刪除 DNS 區域和記錄集。
+Azure DNS 的管理是使用 Azure Resource Manager 來進行的。 Azure DNS 可享有 Azure Resource Manager 所提供的存取控制功能優點。 您可以使用 Azure 角色型存取控制來控制哪些使用者具有 DNS 區域和記錄集的讀取或寫入存取權。 資源鎖定可防止意外修改或刪除 DNS 區域和記錄集。
 
 如需詳細資訊，請參閱[保護 DNS 區域和記錄](dns-protect-zones-recordsets.md)。
 

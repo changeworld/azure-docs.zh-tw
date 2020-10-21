@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 0c7838b291ca5ba1747b08d7e8fcc6d17cc35f7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9eac64eff8c87046fd1ce76ee71475fda79ac6f7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802220"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329248"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 私人連結將網路安全地連線到 Azure 監視器
 
@@ -41,6 +41,9 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 ## <a name="planning-based-on-your-network"></a>根據您的網路進行規劃
 
 在設定您的 AMPLS 資源之前，請考慮您的網路隔離需求。 評估您的虛擬網路對公用網際網路的存取，以及您的每個 Azure 監視器資源 (也就是 Application Insights 元件和 Log Analytics 工作區) 的存取限制。
+
+> [!NOTE]
+> 中樞和輪輻網路或對等互連網路的任何其他拓撲，都可以在中樞 (主要) VNet 和相關的 Azure 監視器資源之間設定 Private Link，而不是在每個 VNet 上設定 Private Link。 如果共用這些網路所使用的 Azure 監視器資源，這就特別有用。 但是，如果您想要讓每個 VNet 都能存取一組個別的監視資源，請為每個網路建立專用 AMPLS 的 Private Link。
 
 ### <a name="evaluate-which-virtual-networks-should-connect-to-a-private-link"></a>評估哪些虛擬網路應該連線到私人連結
 

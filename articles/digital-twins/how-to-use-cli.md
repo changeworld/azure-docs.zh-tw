@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 118e137f06a49f2c125b1ca156877514d65af86f
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 34afc732d64a7aa29261989cc790c8a113208d96
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047058"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331765"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>使用 Azure Digital Twins CLI
 
@@ -23,7 +23,7 @@ ms.locfileid: "92047058"
 * 管理對應項關聯性
 * 設定端點
 * 管理 [路由](concepts-route-events.md)
-* 透過以角色為基礎的存取控制來設定 [安全性](concepts-security.md) (RBAC) 
+*  (Azure RBAC) 透過 Azure 角色型存取控制設定[安全性](concepts-security.md)
 
 [!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 

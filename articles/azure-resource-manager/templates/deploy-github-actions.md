@@ -4,12 +4,12 @@ description: 描述如何使用 GitHub Actions 部署 Azure Resource Manager 範
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure,subject-armqs
-ms.openlocfilehash: b5852a65b4ed3c7cc73352fed37eeff035f8563c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f982ecd208dfd30757050df48c783718ed2b917a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106785"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282840"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>使用 GitHub Actions 部署 Azure Resource Manager 範本
 
@@ -17,7 +17,7 @@ ms.locfileid: "92106785"
 
 使用 [ [部署 Azure Resource Manager 範本] 動作](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) ，將 Resource Manager 範本自動部署至 Azure。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - GitHub 帳戶。 如果您沒有帳戶，請 [免費](https://github.com/join)註冊。  
@@ -40,13 +40,19 @@ ms.locfileid: "92106785"
 
 您可以在[Azure CLI](/cli/azure/)中使用[az ad sp 建立-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true)命令來建立[服務主體](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 使用 Azure 入口網站中的 [Azure Cloud Shell](https://shell.azure.com/) 來執行此命令，或選取 [ **試試看** ] 按鈕。
 
+如果您還沒有資源群組，請建立一個。 
+
+```azurecli-interactive
+    az group create -n {MyResourceGroup}
+```
+
 將預留位置取代為 `myApp` 您的應用程式名稱。 
 
 ```azurecli-interactive
-   az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} --sdk-auth
+   az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth
 ```
 
-在上述範例中，請將預留位置取代為您的訂用帳戶識別碼和資源組名。 輸出是具有角色指派認證的 JSON 物件，可讓您存取您的 App Service 應用程式，如下所示。 複製此 JSON 物件以供稍後之用。
+在上述範例中，請將預留位置取代為您的訂用帳戶識別碼和資源組名。 輸出是具有角色指派認證的 JSON 物件，可讓您存取您的 App Service 應用程式，如下所示。 複製此 JSON 物件以供稍後之用。 您只需要具有 `clientId` 、 `clientSecret` 、 `subscriptionId` 和值的區段 `tenantId` 。 
 
 ```output 
   {
@@ -73,9 +79,9 @@ ms.locfileid: "92106785"
 
 1. 將 Azure CLI 命令中的整個 JSON 輸出貼到秘密的值欄位中。 提供秘密的名稱 `AZURE_CREDENTIALS` 。
 
-1. 建立另一個名為 `AZURE_RG` 的秘密。 將您的資源組名新增至秘密的值欄位。 
+1. 建立另一個名為 `AZURE_RG` 的秘密。 將資源群組的名稱新增至秘密的值欄位， (範例： `myResourceGroup`) 。 
 
-1. 建立名為的其他秘密 `AZURE_SUBSCRIPTION` 。 將您的訂用帳戶識別碼新增至秘密的值欄位。 
+1. 建立名為的其他秘密 `AZURE_SUBSCRIPTION` 。 將您的訂用帳戶識別碼新增至秘密的值欄位， (範例： `90fd3f9d-4c61-432d-99ba-1273f236afa2`) 。 
 
 ## <a name="add-resource-manager-template"></a>新增 Resource Manager 範本
 
@@ -114,17 +120,19 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
             creds: ${{ secrets.AZURE_CREDENTIALS }}
      
           # Deploy ARM template
-        - uses: azure/arm-deploy@v1
         - name: Run ARM deploy
+          uses: azure/arm-deploy@v1
           with:
             subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
             resourceGroupName: ${{ secrets.AZURE_RG }}
             template: ./azuredeploy.json
-            parameters: storageAccountType=Standard_LRS
+            parameters: storageAccountType=Standard_LRS 
         
           # output containerName variable from template
         - run: echo ${{ steps.deploy.outputs.containerName }}
     ```
+    > [!NOTE]
+    > 您可以改為在 ARM 部署動作中指定 JSON 格式參數檔案 (範例： `.azuredeploy.parameters.json`) 。  
 
     工作流程檔案的第一個區段包括：
 

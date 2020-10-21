@@ -7,12 +7,12 @@ ms.date: 07/07/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: e7b24dd9cdbd11b56545f85ac233665f8fa4adfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d33811dc056baa3d205d7d86c1bdd7bff74ae54
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91574274"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329997"
 ---
 # <a name="iot-plug-and-play-components-in-models"></a>模型中的 IoT 隨插即用元件
 
@@ -69,7 +69,7 @@ ms.locfileid: "91574274"
 沒有元件的 DTDL 模型對於具有一組遙測、屬性和命令的裝置或 IoT Edge 模組而言，是很有用的簡化方式。 不使用元件的模型可讓您輕鬆地將現有的裝置或模組遷移為 IoT 隨插即用裝置或模組-您會建立 DTDL 模型來描述您的實際裝置或模組，而不需要定義任何元件。
 
 > [!TIP]
-> 模組可以是裝置 [模組] (。/iot-hub/iot-hub-devguide-module-twins.md 或 [IoT Edge 模組](../iot-edge/about-iot-edge.md)。
+> 模組可以是裝置 [模組](../iot-hub/iot-hub-devguide-module-twins.md) 或 [IoT Edge 模組](../iot-edge/about-iot-edge.md)。
 
 ## <a name="multiple-components"></a>多個元件
 

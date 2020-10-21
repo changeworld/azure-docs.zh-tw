@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: 86fd6a5d7ca1cb9c828a4ad095720f1664b82caa
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d1c3ad9aa034e6eace5323dd80c5275699a6e728
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201410"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331493"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>服務要求失敗。 狀態： 403 (禁止的) 
 
@@ -25,7 +25,7 @@ ms.locfileid: "92201410"
 
 ### <a name="cause-1"></a>原因 #1
 
-最常見的情況是，此錯誤表示您的角色型存取控制 (服務的 RBAC) 許可權未正確設定。 Azure 數位 Twins 實例的許多動作都需要您在**嘗試管理的實例上**擁有*Azure 數位 Twins 擁有者 (預覽版) *角色。 
+最常見的情況是，此錯誤表示您的 Azure 角色型存取控制 (Azure RBAC) 服務的許可權未正確設定。 Azure 數位 Twins 實例的許多動作都需要您在**嘗試管理的實例上**擁有*Azure 數位 Twins 擁有者 (預覽版) *角色。 
 
 ### <a name="cause-2"></a>原因 #2
 

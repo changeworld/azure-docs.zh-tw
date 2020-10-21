@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 24c9e5137e59fbd14a489b4d41709f39aa448ed8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4794e581dc9855d79cb7cafbc5a6e55f1477f318
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231345"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329724"
 ---
 # <a name="azure-security-baseline-for-azure-firewall"></a>Azure 防火牆的 azure 安全性基準
 
@@ -370,7 +370,7 @@ Azure 監視器記錄可以用來進行應用程式的一般即時監視，或�
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
-**指導**方針：針對個別的安全性網域（例如環境類型和資料敏感度層級），使用不同的訂用帳戶和管理群組來執行隔離。 您可以限制您的應用程式和企業環境所需的 Azure 防火牆資源存取層級。 您可以透過 Azure Active Directory 角色型存取控制，來控制 Azure 資源的存取權。 
+**指導**方針：針對個別的安全性網域（例如環境類型和資料敏感度層級），使用不同的訂用帳戶和管理群組來執行隔離。 您可以限制您的應用程式和企業環境所需的 Azure 防火牆資源存取層級。 您可以透過 Azure 角色型存取控制來控制對 Azure 資源的存取。 
 
 - [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription)
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: b812a727a555f8c4c95389f2ba0cc5ccea2f608a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: b1b93110c3dba38dadf7079fc24ba12e81793c02
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205552"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329844"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>設定自訂警示以監視已公告路由
 
@@ -58,7 +58,7 @@ ms.locfileid: "92205552"
 
 * 在 Azure AD 中建立應用程式的服務主體帳戶。
 
-* 在使用中的 Azure 訂用帳戶上，將「參與者」角色指派 (RBAC) 。 此角色會使用 runbook 來管理 Azure Resource Manager 資源。
+* 在使用中的 Azure 訂用帳戶上，將「參與者」角色指派 (Azure RBAC) 。 此角色會使用 runbook 來管理 Azure Resource Manager 資源。
 
 若要建立自動化帳戶，您需要許可權和許可權。 如需詳細資訊，請參閱 [建立自動化帳戶所需的許可權](../automation/automation-create-standalone-account.md#permissions-required-to-create-an-automation-account)。
 

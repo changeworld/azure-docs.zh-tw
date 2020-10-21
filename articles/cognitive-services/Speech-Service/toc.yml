@@ -229,6 +229,8 @@
   items:
     - name: 意圖辨識文件
       href: index-intent-recognition.yml
+    - name: 意圖辨識概觀
+      href: intent-recognition.md
     - name: 意圖辨識快速入門
       href: quickstarts/intent-recognition.md
     - name: 操作指南
@@ -295,7 +297,7 @@
           href: index-conversation-scenarios.yml
         - name: 對話轉譯
           items:
-            - name: 概觀
+            - name: 總覽
               items:
                 - name: 什麼是對話轉譯？
                   href: conversation-transcription.md

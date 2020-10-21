@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: 0761db6b73c6fcfeb1ef6fda729a68c9644bbc72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2535c05241c076e08f8f0f2ba9e2301fb353723e
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79479554"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330473"
 ---
 # <a name="install-azure-farmbeats"></a>安裝 Azure FarmBeats
 
@@ -71,7 +71,7 @@ Azure FarmBeats 的成本是基礎 Azure 服務成本的匯總。 您可以使�
 
 Azure FarmBeats 的整個設定（包括準備和安裝）將花費不到一小時的時間。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 您必須先完成下列步驟，才能開始實際安裝 Azure FarmBeats：
 
@@ -87,7 +87,7 @@ Azure FarmBeats 的整個設定（包括準備和安裝）將花費不到一小�
 
 從 marketplace 執行 FarmBeats 安裝的人員必須是要在其中安裝 FarmBeats 之資源群組的擁有者。 對於訂用帳戶擁有者，這會在建立資源群組時自動發生。 針對其他人，請預先建立資源群組，並要求訂用帳戶擁有者讓您成為資源群組的擁有者。
 
-您可以遵循 [角色型存取控制](https://docs.microsoft.com/azure/role-based-access-control/check-access)中的指示，確認 Azure 入口網站中的存取權限。
+您可以遵循 [Azure 角色型存取控制](https://docs.microsoft.com/azure/role-based-access-control/check-access)中的指示，確認 Azure 入口網站中的存取權限。
 
 ### <a name="decide-subscription-and-region"></a>決定訂用帳戶和區域
 
@@ -152,7 +152,7 @@ Azure FarmBeats 需要 Azure Active Directory 的應用程式建立和註冊。 
 
 2. 移至入口網站中的 Azure Marketplace，然後在 Marketplace 中搜尋 **Azure FarmBeats** 。
 
-3. 隨即出現新的視窗，其中顯示 Azure FarmBeats 的總覽。 選取 [建立]****。
+3. 隨即出現新的視窗，其中顯示 Azure FarmBeats 的總覽。 選取 [建立]。
 
 4. 新視窗隨即出現。 選擇正確的訂用帳戶、資源群組，以及您想要安裝 Azure FarmBeats 的位置，以完成註冊程式。
 

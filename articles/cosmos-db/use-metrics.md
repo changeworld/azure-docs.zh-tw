@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6de0a6632c53055dd3d3f428481dcc465b67ef6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb6869aa8bc7ede7d2047abf8eddc98b01f567fa
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568007"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280810"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的計量進行監視及偵錯
 
@@ -59,7 +59,7 @@ Azure Cosmos DB 為輸送量、儲存體、一致性、可用性和延遲提供�
 
 :::image type="content" source="media/use-metrics/metrics-17.png" alt-text="Azure 入口網站中的 Cosmos DB 效能度量":::
 
-輸送量分佈不平均可能會造成磁碟分割過度使用**，這可能會導致節流要求，而且可能需要重新分割磁碟。 如需有關在 Azure Cosmos DB 中進行磁碟分割的詳細資訊，請參閱[在 Azure Cosmos DB 中進行磁碟分割和調整](./partition-data.md)。
+輸送量分佈不平均可能會造成磁碟分割過度使用**，這可能會導致節流要求，而且可能需要重新分割磁碟。 如需有關在 Azure Cosmos DB 中進行磁碟分割的詳細資訊，請參閱[在 Azure Cosmos DB 中進行磁碟分割和調整](./partitioning-overview.md)。
 
 ## <a name="determine-the-storage-distribution-across-partitions"></a>判斷所有磁碟分割中的儲存體分佈
 
@@ -71,7 +71,7 @@ Azure Cosmos DB 為輸送量、儲存體、一致性、可用性和延遲提供�
 
 :::image type="content" source="media/use-metrics/metrics-05.png" alt-text="Azure 入口網站中的 Cosmos DB 效能度量":::
 
-找出導致資料分佈扭曲的分割區索引鍵之後，便可能必須用更分散的分割區索引鍵來重新分割容器。 如需有關在 Azure Cosmos DB 中進行磁碟分割的詳細資訊，請參閱[在 Azure Cosmos DB 中進行磁碟分割和調整](./partition-data.md)。
+找出導致資料分佈扭曲的分割區索引鍵之後，便可能必須用更分散的分割區索引鍵來重新分割容器。 如需有關在 Azure Cosmos DB 中進行磁碟分割的詳細資訊，請參閱[在 Azure Cosmos DB 中進行磁碟分割和調整](./partitioning-overview.md)。
 
 ## <a name="compare-data-size-against-index-size"></a>比較資料大小與索引大小
 
