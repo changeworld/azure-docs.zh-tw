@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: 71760e9b54ff3a520f0784ecda4484bb3ea047e3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4513a1997dc2955e1c5488a4a3740afa88f51623
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88892655"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207269"
 ---
 # <a name="quickstart-deploy-native-c-sample-to-hololens"></a>快速入門：將原生 C++ 範例部署至 HoloLens
 
@@ -32,7 +32,7 @@ ms.locfileid: "88892655"
 
 * Windows SDK 10.0.18362.0 [(下載)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * 最新版的 Visual Studio 2019 [(下載)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* [適用於混合實境的 Visual Studio 工具](https://docs.microsoft.com/windows/mixed-reality/install-the-tools)。 具體而言，必須要安裝下列「工作負載」：
+* [適用於混合實境的 Visual Studio 工具](/windows/mixed-reality/install-the-tools)。 具體而言，必須要安裝下列「工作負載」：
   * **使用 C++ 開發桌面**
   * **通用 Windows 平台 (UWP) 開發**
 * GIT [(下載)](https://git-scm.com/downloads)

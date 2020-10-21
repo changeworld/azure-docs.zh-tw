@@ -10,12 +10,12 @@ ms.subservice: cloudyn
 ms.custom: seodec18
 ms.reviewer: benshy
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2b151395bccdaa866844e6832db925773e8a6f51
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: afdcd458dbda282a23b7b8f7f1cd8459bc8ec5c5
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687683"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131270"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -131,4 +131,4 @@ Azure 成本管理也會提供 Azure 服務的成本節省建議。 如需詳細
 前進到下一個教學課程，以了解如何使用歷程記錄資料預測花費。
 
 > [!div class="nextstepaction"]
-> [測未來花費](../../cost-management/tutorial-forecast-spending.md)
+> [測未來花費](./tutorial-forecast-spending.md)

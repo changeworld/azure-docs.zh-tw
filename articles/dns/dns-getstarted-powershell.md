@@ -6,15 +6,15 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 3/11/2019
+ms.date: 10/20/2020
 ms.author: rohink
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7361f58247019584d7fb3d60cdd7f76b2e62a212
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: f2563c33d02490732f73fcf9d1a78f548ec2d3e2
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355443"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282221"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立 Azure DNS 區域和記錄
 
@@ -26,9 +26,12 @@ DNS 區域用來裝載特定網域的 DNS 記錄。 若要開始將網域裝載�
 
 Azure DNS 也支援建立私人網域。 如需有關如何建立第一個私人 DNS 區域與記錄的逐步指示，請參閱[透過 PowerShell 開始使用 Azure DNS 私人區域 ](private-dns-getstarted-powershell.md)。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="prerequisites"></a>必要條件
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 已在本機安裝 Azure PowerShell 或 Azure Cloud Shell
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-the-resource-group"></a>建立資源群組
 
@@ -94,7 +97,7 @@ Get-AzDnsRecordSet -ZoneName contoso.xyz -ResourceGroupName MyResourceGroup
 
 主機名稱 **www\.contoso.xyz** 解析為 **10.10.10.10**，正如您所設定。 此結果確認了名稱解析正常運作。
 
-## <a name="delete-all-resources"></a>刪除所有資源
+## <a name="clean-up-resources"></a>清除資源
 
 不再需要時，您可以藉由刪除資源群組，刪除在本快速入門中建立的所有資源：
 

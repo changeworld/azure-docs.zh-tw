@@ -297,7 +297,7 @@
           href: index-conversation-scenarios.yml
         - name: 對話轉譯
           items:
-            - name: 總覽
+            - name: 概觀
               items:
                 - name: 什麼是對話轉譯？
                   href: conversation-transcription.md
@@ -580,9 +580,8 @@
       href: how-to-migrate-from-translator-speech-api.md
 - name: 資源
   items:
-    - name: 支援
-      displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
-      href: support.md
+    - name: 支援和說明選項
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context
     - name: Swagger 文件
       href: swagger-documentation.md
     - name: Sovereign Clouds

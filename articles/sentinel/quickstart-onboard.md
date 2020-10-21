@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: da1f3154d492a36a196d87eec98af462fd659cd2
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: b33f3e58f82d52e77437c29f7e5219926b2578c3
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057513"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106972"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>快速入門：使 Azure Sentinel 上線
 
@@ -52,7 +52,6 @@ ms.locfileid: "92057513"
     | 澳大利亞 | 澳大利亞 |
     | United Kingdom | United Kingdom |
     | Canada | Canada |
-    | 亞太地區 | 亞太地區 (新加坡) |
     | 日本 | 日本 |
     |
 

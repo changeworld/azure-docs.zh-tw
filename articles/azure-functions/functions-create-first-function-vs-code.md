@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo, devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: a8fefee3903a9ff5ce9bdd05a0fd5bcf07bc5429
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: c8e22373f4550b0c65f6ea5c0b62815e32dcbb58
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91408528"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105119"
 ---
 # <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>快速入門：使用 Visual Studio Code 在 Azure 中建立函式
 
@@ -65,7 +65,7 @@ ms.locfileid: "91408528"
 - [.NET Core 3.1](https://www.microsoft.com/net/download) 與 [.NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.2)
 ::: zone-end
 ::: zone pivot="programming-language-java"
-- [Java Developer Kit](https://aka.ms/azure-jdks) 第 8 版。
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) 第 8 版。
 
 - [Apache Maven](https://maven.apache.org) 3.0 版或更高版本。
 ::: zone-end

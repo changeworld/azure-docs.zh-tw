@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 1fedad7dac4c253c68a0f27d0e0470123833a3be
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: d2814a989cb82216081083f3198d52ccd70210ff
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91666104"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131916"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>將 Azure 訂用帳戶的帳單擁有權轉移給另一個帳戶
 
@@ -69,7 +69,7 @@ Visual Studio 和 Microsoft 合作夥伴網路訂用帳戶都有相關聯的每�
 1. 請檢閱並更新服務管理員、共同管理員和 Azure 角色指派。 若要深入了解，請參閱[新增或變更 Azure 訂用帳戶管理員](add-change-subscription-administrator.md)及[使用 Azure 入口網站新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)。
 1. 更新與此訂用帳戶服務相關聯的認證，包括：
    1. 可將使用者管理權限授與給訂用帳戶資源的管理憑證。 如需詳細資訊，請參閱 [建立和上傳 Azure 的管理憑證](../../cloud-services/cloud-services-certs-create.md)
-   1. 服務 (例如儲存體) 的存取金鑰。 如需詳細資訊，請參閱[關於 Azure 儲存體帳戶](../../storage/common/storage-create-storage-account.md)
+   1. 服務 (例如儲存體) 的存取金鑰。 如需詳細資訊，請參閱[關於 Azure 儲存體帳戶](../../storage/common/storage-account-create.md)
    1. 服務 (例如 Azure 虛擬機器) 的遠端存取認證。
 1. 如果您正與合作夥伴協力作業，請考慮更新訂用帳戶的合作夥伴 ID。 您可以在 [Azure 入口網站](https://portal.azure.com)更新合作夥伴識別碼。 如需詳細資訊，請參閱[將合作夥伴識別碼連結到您的 Azure 帳戶](link-partner-id.md)。
 

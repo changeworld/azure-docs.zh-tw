@@ -7,15 +7,15 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
-ms.author: matjazl
-ms.openlocfilehash: afb4026a7865f2cc8f831d8d1d7b1d332014d310
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: cavoeg
+ms.openlocfilehash: ea9a47676b8294b2541c27d361b0dc2fa1ae3627
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90007565"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339503"
 ---
-# <a name="features"></a>特性
+# <a name="features"></a>功能
 
 Azure API for FHIR 可為 Azure 提供完全受控的 Microsoft FHIR Server 部署。 伺服器是 [FHIR](https://hl7.org/fhir) 標準的實作為。 本檔列出 FHIR 伺服器的主要功能。
 
@@ -37,6 +37,7 @@ Azure API for FHIR 可為 Azure 提供完全受控的 Microsoft FHIR Server 部�
 | 補丁                          | 否        | 否        | 否        |                                                     |
 | delete                         | 是       | 是       | 是       |                                                     |
 | 刪除 (條件式)            | 否        | 否        | 否        |                                                     |
+| history                        | 是       | 是       | 是       |                                                     |
 | 建立                         | 是       | 是       | 是       | 支援 POST/PUT                               |
 | 建立 (條件式)            | 是       | 是       | 是       |                                                     |
 | 搜尋                         | Partial   | Partial   | Partial   | 請參閱下方                                           |
@@ -45,7 +46,6 @@ Azure API for FHIR 可為 Azure 提供完全受控的 Microsoft FHIR Server 部�
 | capabilities                   | 是       | 是       | 是       |                                                     |
 | 批次                          | 是       | 是       | 是       |                                                     |
 | 交易                    | 否        | 是       | 否        |                                                     |
-| history                        | 是       | 是       | 是       |                                                     |
 | 分頁                         | Partial   | Partial   | Partial   | `self``next`支援和                     |
 | 仲介                 | 否        | 否        | 否        |                                                     |
 
@@ -94,28 +94,30 @@ Azure API for FHIR 可為 Azure 提供完全受控的 Microsoft FHIR Server 部�
 | `_has`                  | 否        | 否        | 否        |         |
 | `_type`                 | 是       | 是       | 是       |         |
 | `_query`                | 否        | 否        | 否        |         |
-
-| 搜尋作業       | 支援-PaaS | 支援的作業系統 (SQL)  | 支援的-OSS (Cosmos DB)  | 註解 |
-|-------------------------|-----------|-----------|-----------|---------|
 | `_filter`               | 否        | 否        | 否        |         |
+
+| 搜尋結果參數 | 支援-PaaS | 支援的作業系統 (SQL)  | 支援的-OSS (Cosmos DB)  | 註解 |
+|-------------------------|-----------|-----------|-----------|---------|
 | `_sort`                 | Partial        | Partial   | Partial        |   支援 `_sort=_lastUpdated`       |
-| `_score`                | 否        | 否        | 否        |         |
-| `_count`                | 是       | 是       | 是       |         |
-| `_summary`              | 部分   | Partial   | Partial   | 支援 `_summary=count` |
+| `_count`                | 是       | 是       | 是       | `_count` 的限制為100個字元。 如果設定為大於100，則只會傳回100，並會在組合中傳回警告。 |
 | `_include`              | 否        | 是       | 否        |         |
 | `_revinclude`           | 否        | 是       | 否        | 包含的專案限制為100。 |
+| `_summary`              | Partial   | Partial   | Partial   | 支援 `_summary=count` |
+| `_total`                | Partial   | Partial   | Partial   | _total = 非且 _total = 精確      |
+| `_elements`             | 是       | 是       | 是       |         |
 | `_contained`            | 否        | 否        | 否        |         |
-| `_elements`             | 是        | 是        | 是        |         |
+| `containedType`         | 否        | 否        | 否        |         |
+| `_score`                | 否        | 否        | 否        |         |
 
 ## <a name="extended-operations"></a>擴充作業
 
 擴充 RESTful API 所支援的所有作業。
 
 | 搜尋參數類型 | 支援-PaaS | 支援的作業系統 (SQL)  | 支援的-OSS (Cosmos DB)  | 註解 |
-|-----------------------|-----------|-----------|-----------|---------|
-| $export (整個系統)                 | 是       | 是       | 是       |         |
-| 患者/$export         | 是       | 是       | 是       |         |
-| 群組/$export               | 是       | 是       | 是       |         |
+|------------------------|-----------|-----------|-----------|---------|
+| $export (整個系統)  | 是       | 是       | 是       |         |
+| 患者/$export        | 是       | 是       | 是       |         |
+| 群組/$export          | 是       | 是       | 是       |         |
 
 ## <a name="persistence"></a>持續性
 

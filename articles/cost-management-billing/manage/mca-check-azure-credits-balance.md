@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: banders
-ms.openlocfilehash: ebe750440528e40feaf0b4700c018a612b482e34
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: cf5772e9cf08eaa7f34acd59a9c96da6f20cd03d
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447636"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131406"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>追蹤 Microsoft 客戶合約的 Azure 點數餘額
 
@@ -102,7 +102,7 @@ ms.locfileid: "91447636"
 
 ### <a name="rest-api"></a>[REST API](#tab/rest)
 
-您可以使用 [Azure 計費](https://docs.microsoft.com/rest/api/billing/)和[使用量](https://docs.microsoft.com/rest/api/consumption/) API，以程式設計方式取得計費帳戶的點數餘額。
+您可以使用 [Azure 計費](/rest/api/billing/)和[使用量](/rest/api/consumption/) API，以程式設計方式取得計費帳戶的點數餘額。
 
 以下顯示的範例使用 REST API。 目前不支援 PowerShell 和 Azure CLI。
 

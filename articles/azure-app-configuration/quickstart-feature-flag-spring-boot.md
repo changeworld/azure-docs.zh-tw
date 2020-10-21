@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 94f3fd9f9c66082beace47d675539e9f73c21e83
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 9a804bd40635cd039a2c099f98351b2487c554d3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824196"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075530"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>快速入門：將功能旗標新增至 Spring Boot 應用程式
 
@@ -23,7 +23,7 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
 ## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
-* 受支援的 [Java 開發套件 JDK](https://docs.microsoft.com/java/azure/jdk) 第 8 版。
+* 受支援的 [Java 開發套件 JDK](/java/azure/jdk) 第 8 版。
 * [Apache Maven](https://maven.apache.org/download.cgi) 3.0 版或更新版本。
 
 ## <a name="create-an-app-configuration-instance"></a>建立應用程式組態執行個體
@@ -304,7 +304,7 @@ Spring Boot 功能管理程式庫可透過全方位的功能旗標支援來擴�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已建立新的應用程式組態存放區，並透過[功能管理程式庫](https://go.microsoft.com/fwlink/?linkid=2074664)用它來管理 Spring Boot Web 應用程式中的功能。
+在本快速入門中，您已建立新的應用程式組態存放區，並透過[功能管理程式庫](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)用它來管理 Spring Boot Web 應用程式中的功能。
 
 * 深入了解[功能管理](./concept-feature-management.md)。
 * [管理功能旗標](./manage-feature-flags.md)。

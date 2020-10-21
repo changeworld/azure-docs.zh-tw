@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: 2cd97e205d88fe7ead02889f5ae9ad9df0985f07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8bce19e384e600e95b8306dcbba38652b4432bc9
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092519"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340524"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>針對 Azure HPC Cache 使用客戶管理的加密金鑰
 
@@ -58,7 +58,7 @@ Key vault 存取權限：
 
 * 建立 Azure HPC Cache 的使用者必須具有相當於 [Key Vault 參與者角色](../role-based-access-control/built-in-roles.md#key-vault-contributor)的許可權。 設定和管理 Azure Key Vault 需要相同的許可權。
 
-  如需詳細資訊，請參閱 [金鑰保存庫的安全存取](../key-vault/key-vault-secure-your-key-vault.md) 。
+  如需詳細資訊，請參閱 [金鑰保存庫的安全存取](../key-vault/general/secure-your-key-vault.md) 。
 
 ## <a name="1-set-up-azure-key-vault"></a>1. 設定 Azure Key Vault
 
@@ -66,7 +66,7 @@ Key vault 存取權限：
 
 在快取建立期間，您必須指定要用於快取加密的保存庫、金鑰和金鑰版本。
 
-如需詳細資料，請參閱 [Azure Key Vault 檔](../key-vault/key-vault-overview.md) 。
+如需詳細資料，請參閱 [Azure Key Vault 檔](../key-vault/general/overview.md) 。
 
 > [!NOTE]
 > Azure Key Vault 必須使用相同的訂用帳戶，而且與 Azure HPC Cache 位於相同的區域中。 請確定您選擇的區域 [支援客戶管理的金鑰功能](hpc-cache-overview.md#region-availability)。
@@ -92,7 +92,7 @@ Key vault 存取權限：
 
 1. 選取保存庫之後，請從可用的選項中選取個別的金鑰，或建立新的金鑰。 金鑰必須是2048位 RSA 金鑰。
 
-1. 指定所選金鑰的版本。 若要深入瞭解 [Azure Key Vault 檔](../key-vault/about-keys-secrets-and-certificates.md#objects-identifiers-and-versioning)中的版本設定，請參閱。
+1. 指定所選金鑰的版本。 若要深入瞭解 [Azure Key Vault 檔](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning)中的版本設定，請參閱。
 
 繼續進行其餘的規格，並依照 [建立 Azure HPC Cache](hpc-cache-create.md)所述的方式建立快取。
 
@@ -146,7 +146,7 @@ Key vault 存取權限：
 * [Azure 儲存體加密總覽](../storage/common/storage-service-encryption.md)
 * 使用[客戶管理的金鑰進行磁片加密](../virtual-machines/linux/disk-encryption.md#customer-managed-keys)-搭配受控磁片使用 Azure Key Vault 的檔，這是類似于 Azure HPC Cache 的案例
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在您建立 Azure HPC Cache 和授權的 Key Vault 式加密之後，請將您的資料來源存取權授與您的快取，以繼續設定您的快取。
 

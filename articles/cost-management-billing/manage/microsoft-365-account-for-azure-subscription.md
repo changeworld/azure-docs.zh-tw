@@ -9,16 +9,16 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: eb266680cc514b1e2d70e510ed65e9a7790c0260
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 255fbe4036c83618dd0131b262d13709ab7f9c2f
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370329"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131882"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-microsoft-365-account"></a>使用 Microsoft 365 帳戶註冊 Azure 訂用帳戶
 
-如果您有 Microsoft 365 訂用帳戶，您可以使用您的 Microsoft 365 帳戶來建立 Azure 訂用帳戶。 使用 Microsoft 365 使用者名稱和密碼來登入 [Azure 入口網站](https://portal.azure.com/)。 如果您想要設定虛擬機器或使用其他 Azure 服務，您必須註冊 Azure 訂用帳戶。 您可以與他人共用您的 Azure 訂用帳戶，並[使用 Azure 角色型存取控制 (Azure RBAC) 來管理 Azure 訂用帳戶和資源的存取](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
+如果您有 Microsoft 365 訂用帳戶，您可以使用您的 Microsoft 365 帳戶來建立 Azure 訂用帳戶。 使用 Microsoft 365 使用者名稱和密碼來登入 [Azure 入口網站](https://portal.azure.com/)。 如果您想要設定虛擬機器或使用其他 Azure 服務，您必須註冊 Azure 訂用帳戶。 您可以與他人共用您的 Azure 訂用帳戶，並[使用 Azure 角色型存取控制 (Azure RBAC) 來管理 Azure 訂用帳戶和資源的存取](../../role-based-access-control/role-assignments-portal.md)。
 
 如果您已經有 Microsoft 365 帳戶和 Azure 訂用帳戶，請參閱[將 Microsoft 365 租用戶關聯至 Azure 訂用帳戶](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 
@@ -57,4 +57,4 @@ Microsoft 365 和 Azure 均使用 Azure AD 服務來管理使用者和訂用帳�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 與他人共用您的 Azure 訂用帳戶，並[使用 Azure 角色型存取控制 (Azure RBAC) 來管理 Azure 訂用帳戶和資源的存取](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
+- 與他人共用您的 Azure 訂用帳戶，並[使用 Azure 角色型存取控制 (Azure RBAC) 來管理 Azure 訂用帳戶和資源的存取](../../role-based-access-control/role-assignments-portal.md)。

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: ffecd09d1084188195da83568ab3fe32ef2cdaac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3ef4790f9f7a3b3488dade9312203de41be1ff75
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90972224"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122146"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>持續性患者監視架構
 
@@ -33,11 +33,11 @@ ms.locfileid: "90972224"
 
 ### <a name="mobile-phone-gateway"></a>行動電話閘道
 
-行動電話應用程式的主要功能是從醫療裝置收集 BLE 資料，並將其傳輸至 IoT Central。 應用程式也會透過裝置設定引導患者，並讓他們檢視其個人健康情況資料。 其他解決方案可以使用平板電腦閘道或醫院病房中的靜態閘道。 適用於 Android 和 iOS 的開放原始碼範例行動應用程式可以作為起點，開始進行應用程式開發工作。 若要深入了解，請參閱 [IoT Central 持續性患者監視行動應用程式](https://docs.microsoft.com/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/)。
+行動電話應用程式的主要功能是從醫療裝置收集 BLE 資料，並將其傳輸至 IoT Central。 應用程式也會透過裝置設定引導患者，並讓他們檢視其個人健康情況資料。 其他解決方案可以使用平板電腦閘道或醫院病房中的靜態閘道。 適用於 Android 和 iOS 的開放原始碼範例行動應用程式可以作為起點，開始進行應用程式開發工作。 若要深入了解，請參閱 [IoT Central 持續性患者監視行動應用程式](/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/)。
 
 ### <a name="export-to-azure-api-for-fhirreg"></a>匯出至 Azure API for FHIR&reg;
 
-Azure IoT Central 符合 HIPAA 規範且通過 HITRUST&reg; 認證。 您也可以使用 [Azure API for FHIR](../../healthcare-apis/overview.md)，將患者健康情況資料傳送給其他服務。 Azure API for FHIR 是以標準為基礎的 API，適用於臨床健康情況資料。 [適用於 FHIR 的 Azure IoT 連接器](https://docs.microsoft.com/azure/healthcare-apis/iot-fhir-portal-quickstart)可讓您使用 Azure API for FHIR 作為 IoT Central 中的連續資料匯出目的地。
+Azure IoT Central 符合 HIPAA 規範且通過 HITRUST&reg; 認證。 您也可以使用 [Azure API for FHIR](../../healthcare-apis/overview.md)，將患者健康情況資料傳送給其他服務。 Azure API for FHIR 是以標準為基礎的 API，適用於臨床健康情況資料。 [適用於 FHIR 的 Azure IoT 連接器](../../healthcare-apis/iot-fhir-portal-quickstart.md)可讓您使用 Azure API for FHIR 作為 IoT Central 中的連續資料匯出目的地。
 
 ### <a name="machine-learning"></a>機器學習服務
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 5a0a040d80911b086561213bd0884ed67545c618
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9eda54ad23e06149910fe69ec16588f49829a5a5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920784"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122818"
 ---
 ::: zone target = "docs"
 
@@ -124,7 +124,7 @@ ms.locfileid: "87920784"
  
 1. 平行使用這兩個 40 Gbps 資料介面，將資料複製到這兩個裝置節點。
 
-    - 如果使用 Windows 主機，請使用 SMB 相容的檔案複製工具，例如 [Robocopy](https://technet.microsoft.com/library/ee851678.aspx)。
+    - 如果使用 Windows 主機，請使用 SMB 相容的檔案複製工具，例如 [Robocopy](/previous-versions/technet-magazine/ee851678(v=msdn.10))。
     - 針對 NFS 主機，使用 `cp` 命令或 `rsync` 來複製資料。
 2. 使用以下路徑連線到裝置上的共用：`\\<IP address of your device>\ShareName`。 若要取得共用存取認證，請前往 Data Box Heavy 的本機 Web UI 中的 [連線並複製]  頁面。
 3. 請確定共用和資料夾名稱，以及資料遵循 [Azure 儲存體和 Data Box Heavy 服務限制](data-box-heavy-limits.md)中所述的指導方針。

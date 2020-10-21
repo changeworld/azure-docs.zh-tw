@@ -4,12 +4,12 @@ description: 了解如何使用 Visual Studio 新增輸出繫結，以將 C# 類
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: b18401037bf14c99ed198eb3754438ece5718c9b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0711516143839dbcdbafec56ab1d9643b4b8cdc7
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84235376"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167115"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>使用 Visual Studio 將函式連線至 Azure 儲存體
 
@@ -106,7 +106,7 @@ ms.locfileid: "84235376"
 接下來，您應為函式應用程式啟用 Application Insights 監視：
 
 > [!div class="nextstepaction"]
-> [啟用 Application Insights 整合](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [啟用 Application Insights 整合](configure-monitoring.md#add-to-an-existing-function-app)
 
 [Azure Storage Explorer]: https://storageexplorer.com/
 [先前的快速入門文章]: functions-create-your-first-function-visual-studio.md

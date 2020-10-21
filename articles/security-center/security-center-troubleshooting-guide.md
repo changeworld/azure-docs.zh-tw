@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 9afc827d1cef4ae1f0ed304b3c1d3cfbfe89b82e
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 6646b8a563cfe156a23b47011a769c6df015a286
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201795"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340337"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 資訊安全中心疑難排解指南
 
 本指南適用於組織目前採用 Azure 資訊安全中心，且需要針對資訊安全中心相關問題進行疑難排解的資訊技術 (IT) 專業人員、資訊安全性分析師和雲端系統管理員。
 
-資訊安全中心使用 Log Analytics 代理程式來收集和儲存資料。 若要深入了解，請參閱 [Azure 資訊安全中心平台移轉](security-center-platform-migration.md)。 本文中的資訊說明轉換至 Monitoring Agent 後的資訊安全中心功能。
+資訊安全中心使用 Log Analytics 代理程式來收集和儲存資料。 若要深入了解，請參閱 [Azure 資訊安全中心平台移轉](./security-center-enable-data-collection.md)。 本文中的資訊說明轉換至 Monitoring Agent 後的資訊安全中心功能。
 
 ## <a name="troubleshooting-guide"></a>疑難排解指南
 
@@ -91,14 +91,14 @@ ms.locfileid: "92201795"
 | 安裝失敗 - 已安裝本機代理程式 | Log Analytics 代理程式安裝失敗。 資訊安全中心發現本機代理程式 (Log Analytics 或 System Center Operations Manager) 已安裝在 VM 上。 為了避免多路連接的設定 (在此設定中，VM 會向兩個不同的工作區回報)，已停止安裝 Log Analytics 代理程式。 | 解決方式有兩種：[手動安裝擴充功能](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)並將它連線到您所需的工作區。 或者，將您所需的工作區設定為預設工作區，並啟用代理程式的自動佈建功能。  請參閱[啟用自動佈建](security-center-enable-data-collection.md)。 |
 | 代理程式無法連線到工作區 | 已安裝 Log Analytics 代理程式，但因為網路連線問題而失敗。  請檢查是否有網際網路存取權，或已針對代理程式設定有效的 HTTP Proxy。 | 請參閱「監視代理程式網路需求」。 |
 | 代理程式已連線到遺漏或未知的工作區 | 資訊安全中心發現安裝於 VM 上的 Log Analytics 代理程式已連線到其無權存取的工作區。 | 有兩種情況會發生這種情形。 工作區已遭刪除而不復存在。 重新安裝具有正確工作區的代理程式，或將代理程式解除安裝並允許資訊安全中心完成其自動佈建安裝。 第二種情況是工作區屬於資訊安全中心無權存取的訂用帳戶。 資訊安全中心需有訂用帳戶，才可允許 Microsoft 安全性資源提供者進行存取。 若要啟用這項功能，請向 Microsoft 安全性資源提供者註冊訂用帳戶。 此作業可經由 API、PowerShell、入口網站完成，而在資訊安全中心的 [概觀] 儀表板中直接篩選訂用帳戶亦可完成。 如需詳細資訊，請參閱[資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。 |
-| 代理程式沒有回應或缺少識別碼 | 即使已安裝代理程式，資訊安全中心仍無法從 VM 擷取已掃描的安全性資料。 | 代理程式並未回報任何資料，包括活動訊號。 代理程式可能已損毀，或有物件封鎖流量。 或者，代理程式雖回報資料，但遺漏 Azure 資源識別碼，因此無法比對資料與 Azure VM。 若要對 Linux 進行疑難排解，請參閱[適用於 Linux 的 Log Analytics 代理程式疑難排解指南](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)。 若要對 Windows 進行疑難排解，請參閱[對 Windows 虛擬機器進行疑難排解](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows#troubleshoot-and-support)。 |
+| 代理程式沒有回應或缺少識別碼 | 即使已安裝代理程式，資訊安全中心仍無法從 VM 擷取已掃描的安全性資料。 | 代理程式並未回報任何資料，包括活動訊號。 代理程式可能已損毀，或有物件封鎖流量。 或者，代理程式雖回報資料，但遺漏 Azure 資源識別碼，因此無法比對資料與 Azure VM。 若要對 Linux 進行疑難排解，請參閱[適用於 Linux 的 Log Analytics 代理程式疑難排解指南](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)。 若要對 Windows 進行疑難排解，請參閱[對 Windows 虛擬機器進行疑難排解](../virtual-machines/extensions/oms-windows.md#troubleshoot-and-support)。 |
 | 未安裝代理程式 | 資料收集已啟用。 | 在安全性原則中開啟資料收集，或手動安裝 Log Analytics 代理程式。 |
 
 ## <a name="troubleshooting-monitoring-agent-network-requirements"></a>對監視代理程式網路需求進行疑難排解<a name="mon-network-req"></a>
 
 代理程式若要連線到資訊安全中心並向其註冊，就必須能夠存取網路資源，包括連接埠號碼和網域 URL。
 
-* 對於 Proxy 伺服器，您需要確保代理程式設定中已設定了適當的 Proxy 伺服器資源。 如需有關[如何變更 Proxy 設定](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents)的詳細資訊，請參閱這篇文章。
+* 對於 Proxy 伺服器，您需要確保代理程式設定中已設定了適當的 Proxy 伺服器資源。 如需有關[如何變更 Proxy 設定](../azure-monitor/platform/agent-windows.md)的詳細資訊，請參閱這篇文章。
 * 對於限制網際網路存取的防火牆，您需要設定防火牆以允許存取 Log Analytics。 您不需要在代理程式設定中進行任何動作。
 
 下表說明通訊所需資源。
@@ -124,7 +124,7 @@ ms.locfileid: "92201795"
 * 某些存取控制清單 (ACL) 可能會防止磁碟存取。
 * 磁碟空間不足會封鎖客體代理程式而使其無法正確運作。
 
-預設會停用 Microsoft Antimalware 使用者介面，如需如何視需要啟用此功能的詳細資訊，請閱讀[在 Azure Resource Manager VM 後續部署上啟用 Microsoft Antimalware 使用者介面 (英文)](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/09/enabling-microsoft-antimalware-user-interface-post-deployment/)。
+預設會停用 Microsoft Antimalware 使用者介面，如需如何視需要啟用此功能的詳細資訊，請閱讀[在 Azure Resource Manager VM 後續部署上啟用 Microsoft Antimalware 使用者介面 (英文)](/archive/blogs/azuresecurity/enabling-microsoft-antimalware-user-interface-post-deployment)。
 
 ## <a name="troubleshooting-problems-loading-the-dashboard"></a>針對載入儀表板的問題進行疑難排解
 
@@ -132,7 +132,7 @@ ms.locfileid: "92201795"
 
 ## <a name="contacting-microsoft-support"></a>連絡 Microsoft 支援服務
 
-您可以使用本文所提供的指導方針來識別某些問題，其他您也可以在《 Security Center public [Microsoft Q&》頁面](https://docs.microsoft.com/answers/topics/azure-security-center.html)中找到相關說明。 不過，如果您需要進一步疑難排解，您可以使用 **Azure 入口網站**開啟新的支援要求，如下所示︰
+您可以使用本文所提供的指導方針來識別某些問題，其他您也可以在《 Security Center public [Microsoft Q&》頁面](/answers/topics/azure-security-center.html)中找到相關說明。 不過，如果您需要進一步疑難排解，您可以使用 **Azure 入口網站**開啟新的支援要求，如下所示︰
 
 ![Microsoft 支援服務](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
@@ -143,12 +143,12 @@ ms.locfileid: "92201795"
 * [Azure 資訊安全中心規劃和操作指南](security-center-planning-and-operations-guide.md) — 了解如何規劃及了解採用 Azure 資訊安全中心的設計考量。
 * [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md) — 了解如何監視 Azure 資源的健全狀況。
 * [管理與回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md) — 了解如何管理與回應安全性警示。
-* [了解 Azure 資訊安全中心的安全性警示](security-center-alerts-type.md)
+* [了解 Azure 資訊安全中心的安全性警示](./security-center-alerts-overview.md)
 * [教學課程：回應安全性事件](tutorial-security-incident.md)
 * [Azure 資訊安全中心的警示驗證](security-center-alert-validation.md)
 * [Azure 資訊安全中心的電子郵件通知](security-center-provide-security-contact-details.md)
 * [在 Azure 資訊安全中心處理安全性事件](security-center-incident.md)
-* [Azure 資訊安全中心的偵測功能](security-center-detection-capabilities.md)
-* [使用 Azure 資訊安全中心監視合作夥伴解決方案](security-center-partner-solutions.md) — 了解如何監視合作夥伴解決方案的健全狀況。
+* [Azure 資訊安全中心的偵測功能](./security-center-alerts-overview.md)
+* [使用 Azure 資訊安全中心監視合作夥伴解決方案](./security-center-partner-integration.md) — 了解如何監視合作夥伴解決方案的健全狀況。
 * [Azure 資訊安全中心常見問題集](faq-general.md) — 尋找有關使用服務的常見問題。
-* [Azure 安全性部落格](https://docs.microsoft.com/archive/blogs/azuresecurity/) — 尋找有關 Azure 安全性與相容性的部落格文章。
+* [Azure 安全性部落格](/archive/blogs/azuresecurity/) — 尋找有關 Azure 安全性與相容性的部落格文章。

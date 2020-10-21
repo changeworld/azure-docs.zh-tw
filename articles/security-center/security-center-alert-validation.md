@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 764a2263587a477eb506edec1e0f661d0ca7ae31
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 999888b12f10c07f7d42f14289e88030f9542a36
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971603"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340813"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Azure 資訊安全中心中的警示驗證
 這份文件可協助您了解如何驗證您的系統是否已針對 Azure 資訊安全中心警示正確設定。
@@ -36,7 +36,7 @@ ms.locfileid: "91971603"
 1. 等待 5 到 10 分鐘，然後開啟安全性中心警示。 應該會出現警示。
 
 > [!NOTE]
-> 查看 Windows 的這項測試警示時，請確定**已啟用欄位引數審核** **。** 如果為 **false**，則您必須啟用命令列引數的審核。 若要啟用它，請使用下列命令：
+> 查看 Windows 的這項測試警示時，請確定**已啟用欄位引數審核** **。** 如果為 **false**，則您必須啟用命令列引數的審核。 若要將其啟用，請使用下列命令：
 >
 >```reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"```
 
@@ -65,7 +65,7 @@ ms.locfileid: "91971603"
 ## <a name="next-steps"></a>後續步驟
 本文介紹警示驗證程序。 現在，您已熟悉此驗證，請嘗試下列文章︰
 
-* [在 Azure 資訊安全中心中驗證 Azure Key Vault 威脅偵測](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
+* [驗證 Azure 資訊安全中心的 Azure Key Vault 威脅偵測](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
 * [管理和回應 Azure 資訊安全中心中的安全性警示](security-center-managing-and-responding-alerts.md) -瞭解如何管理警示，以及回應安全中心的安全性事件。
 * [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md) - 了解如何監視 Azure 資源的健全狀況。
-* [瞭解 Azure 資訊安全中心中的安全性警示](security-center-alerts-type.md) -瞭解不同類型的安全性警示。
+* [瞭解 Azure 資訊安全中心中的安全性警示](./security-center-alerts-overview.md) -瞭解不同類型的安全性警示。

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 2ee9d1edefb0e248d0eba13e2d0b9f1c651fdd42
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 81dee0c63db711b39ff8fd2123623a16b2b9cb91
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924507"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122784"
 ---
 # <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>開始使用 Azure 資料箱將資料匯入至 Azure
 
@@ -40,7 +40,7 @@ ms.locfileid: "87924507"
 
 - 請確定您用於資料箱服務的訂用帳戶是下列其中一種類型：
     - Microsoft Enterprise 合約 (EA)。 深入了解 [EA 訂用帳戶](https://azure.microsoft.com/pricing/enterprise-agreement/)。
-    - 雲端解決方案提供者 (CSP)。 深入了解 [Azure CSP 方案](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)。
+    - 雲端解決方案提供者 (CSP)。 深入了解 [Azure CSP 方案](/azure/cloud-solution-provider/overview/azure-csp-overview)。
     - Microsoft Azure 贊助。 深入了解 [Azure 贊助方案](https://azure.microsoft.com/offers/ms-azr-0036p/)。 
 
 - 請確定您有訂用帳戶的擁有者或參與者存取權，才能建立資料箱訂單。
@@ -131,7 +131,7 @@ ms.locfileid: "87924507"
 
 完成這項作業的時間取決於您的資料大小和網路速度。
  
-1. 如果使用 Windows 主機，請使用 SMB 相容的檔案複製工具，例如 Robocopy。 針對 NFS 主機，使用 `cp` 命令或 `rsync` 來複製資料。 將工具連接到您的裝置，並開始將資料複製到共用。 如需有關如何使用 Robocopy 來複製資料的詳細資訊，請移至 [Robocopy](https://technet.microsoft.com/library/ee851678.aspx)。
+1. 如果使用 Windows 主機，請使用 SMB 相容的檔案複製工具，例如 Robocopy。 針對 NFS 主機，使用 `cp` 命令或 `rsync` 來複製資料。 將工具連接到您的裝置，並開始將資料複製到共用。 如需有關如何使用 Robocopy 來複製資料的詳細資訊，請移至 [Robocopy](/previous-versions/technet-magazine/ee851678(v=msdn.10))。
 2. 使用路徑連線到共用：`\\<IP address of your device>\ShareName`。 若要取得共用存取認證，請前往資料箱之本機 Web UI 中的 [連線並複製] 頁面。
 3. 請確定共用和資料夾名稱，以及資料遵循 [Azure 儲存體和資料箱服務限制](data-box-limits.md)中所述的指導方針。
 
@@ -170,5 +170,3 @@ ms.locfileid: "87924507"
 > [使用 Azure 入口網站來管理資料箱](data-box-portal-admin.md)
 
 ::: zone-end
-
-

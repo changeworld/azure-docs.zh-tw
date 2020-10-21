@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 868470292fbacd71e1eb2d39de7e3a9c5cf6900e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28d0d7b14c18a1d98be1872b1555930b2e1650c3
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883879"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342445"
 ---
 # <a name="protect-your-network-resources"></a>保護您的網路資源
 Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲得網路安全性最佳做法。 當資訊安全中心發現潛在的安全性弱點時，它會建立可引導您完成所需控制之設定程序的建議，以加強並保護您的資源。
@@ -120,4 +120,4 @@ Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲�
 
 若要深入了解適用於其他 Azure 資源類型的建議，請參閱下列文章︰
 
-- [保護 Azure 資訊安全中心內的機器和應用程式](security-center-virtual-machine-protection.md)
+- [保護 Azure 資訊安全中心內的機器和應用程式](./asset-inventory.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: c6bb335ad7783c180ceeaafde955d6ac9dcb8799
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2d156887416fb9a587c9690c3b275229e91f1dbe
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280134"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339793"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 資訊安全中心內新功能的封存？
 
@@ -93,7 +93,7 @@ Azure 資訊安全中心的工作流程自動化功能現已正式推出。 可�
 
 如需執行工作流程之自動和手動資訊安全中心功能的詳細資訊，請參閱[工作流程自動化](workflow-automation.md)。
 
-深入瞭解[建立邏輯應用程式](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)。
+深入瞭解[建立邏輯應用程式](../logic-apps/logic-apps-overview.md)。
 
 
 ### <a name="integration-of-azure-security-center-with-windows-admin-center"></a>Azure 資訊安全中心與 Windows 管理中心整合
@@ -214,7 +214,7 @@ Azure 儲存體的威脅防護提供由 Microsoft 威脅情報提供技術支援
 
 如需執行工作流程之自動及手動資訊安全中心功能的詳細資訊，請參閱[工作流程自動化](workflow-automation.md)。
 
-若要了解如何建立 Logic Apps，請參閱 [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)。
+若要了解如何建立 Logic Apps，請參閱 [Azure Logic Apps](../logic-apps/logic-apps-overview.md)。
 
 
 ### <a name="quick-fix-for-bulk-resources-generally-available"></a>適用於大量資源的快速修正已正式推出
@@ -270,9 +270,9 @@ Kubernetes 很快就成為在雲端中部署及管理軟體的新標準。 少�
 
 Azure 資訊安全中心對於在 IaaS VM 上執行的 SQL DB 進行威脅防護和弱點評估支援現為預覽狀態。
 
-[弱點評估](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)是容易設定的服務，可探索、追蹤及協助您修復潛在的資料庫弱點。 其可讓您在 Azure 安全分數中看見安全性狀態，且包含解決安全性問題和增強資料庫防護性的步驟。
+[弱點評估](../azure-sql/database/sql-vulnerability-assessment.md)是容易設定的服務，可探索、追蹤及協助您修復潛在的資料庫弱點。 其可讓您在 Azure 安全分數中看見安全性狀態，且包含解決安全性問題和增強資料庫防護性的步驟。
 
-[進階威脅防護](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)偵測到了異常活動，這表示有不尋常及可能有害的活動試圖存取或惡意探索您的 SQL 伺服器。 其會持續監視您的資料庫是否有可疑的活動，並在發現異常資料庫存取模式時，提供動作導向的安全性警示。 這些警示會提供可疑活動的詳細資料，以及調查與降低威脅的建議動作。
+[進階威脅防護](../azure-sql/database/threat-detection-overview.md)偵測到了異常活動，這表示有不尋常及可能有害的活動試圖存取或惡意探索您的 SQL 伺服器。 其會持續監視您的資料庫是否有可疑的活動，並在發現異常資料庫存取模式時，提供動作導向的安全性警示。 這些警示會提供可疑活動的詳細資料，以及調查與降低威脅的建議動作。
 
 
 ### <a name="support-for-custom-policies-preview"></a>支援自訂原則 (預覽)
@@ -346,7 +346,7 @@ JIT VM 存取會使用您的 NSG 和 Azure 防火牆規則，只在需要時提�
 
 要求會記錄在 Azure 活動記錄中，因此您可以輕鬆地監視及稽核存取。 Just-In-Time 也可協助您快速識別已啟用 JIT 的現有 VM，以及建議使用 JIT 的 VM。
 
-[深入了解 Azure 防火牆](https://docs.microsoft.com/azure/firewall/overview)。
+[深入了解 Azure 防火牆](../firewall/overview.md)。
 
 
 ### <a name="single-click-remediation-to-boost-your-security-posture-preview"></a>單鍵補救以提升您的安全性狀態 (預覽)

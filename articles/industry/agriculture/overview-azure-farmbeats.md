@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 12bb0b0098b5108bf780b88fc42b86861ea6fcdc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d9882f23096e19435566323de4d0ebaf7c0af3ef
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87439566"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331918"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Azure FarmBeats 概觀 (預覽)
 
@@ -43,7 +43,7 @@ Datahub 會設計為可延伸的 API 平台。 我們正與更多供應商合作
 
 Azure FarmBeats 加速器是以 Datahub 為基礎所建置的範例 Web 應用程式。 此加速器會快速啟動使用者介面和模型的開發。 Azure FarmBeats 加速器會使用 Azure FarmBeats 的 API。 其會將內嵌感應器資料視覺化為圖表，並將模型輸出視覺化為地圖。 例如，您可以使用此加速器來快速建立農場，並輕鬆取得該農場的植被指數圖或感應器放置圖。
 
-## <a name="role-based-access-control-rbac"></a>角色型存取控制 (RBAC)
+## <a name="azure-role-based-access-control-azure-rbac"></a>Azure 角色型存取控制 (Azure RBAC)
 
 管理員可以針對使用其中一個預先定義角色的 Azure FarmBeats，為其定義存取規則。 角色會決定使用者可存取的應用程式區域，以及他們可以執行的動作。 Azure FarmBeats 中有兩種角色，分別適用於使用者和合作夥伴。
 

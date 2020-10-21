@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 8c94109746545a1f7ff33534ca3ec54f55357281
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 00ef6cf6d4149f139876cb0c2d845133ba00157c
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316029"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127501"
 ---
 # <a name="azure-iot-central---solar-panel-app-architecture"></a>Azure IoT Central - 太陽能板應用程式架構
 
@@ -29,7 +29,7 @@ ms.locfileid: "91316029"
 
 ## <a name="solar-panels-and-connectivity"></a>太陽能板與連線能力 
 
-太陽能板是可再生能源的重要來源之一。 根據太陽能板類型和設定而定，您可以使用閘道或其他中繼裝置和專屬系統來與其連線。 您可能需要建置 IoT Central 裝置橋接器，來連線無法直接連線的裝置。 IoT Central 裝置橋接器是一個開放原始碼解決方案，您可以[在這裡](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge) \(部分機器翻譯\) 找到完整詳細資料。 
+太陽能板是可再生能源的重要來源之一。 根據太陽能板類型和設定而定，您可以使用閘道或其他中繼裝置和專屬系統來與其連線。 您可能需要建置 IoT Central 裝置橋接器，來連線無法直接連線的裝置。 IoT Central 裝置橋接器是一個開放原始碼解決方案，您可以[在這裡](../core/howto-build-iotc-device-bridge.md) \(部分機器翻譯\) 找到完整詳細資料。 
 
 
 
@@ -43,4 +43,4 @@ IoT Central 平台提供兩個擴充性選項：連續資料匯出 (CDE) 和 API
 ## <a name="next-steps"></a>後續步驟
 
 * 既然您已了解架構，請[免費建立太陽能板應用程式](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring) \(英文\)
-* 若要深入了解 IoT Central，請參閱 [IoT Central 概觀](https://docs.microsoft.com/azure/iot-central/)
+* 若要深入了解 IoT Central，請參閱 [IoT Central 概觀](../index.yml)

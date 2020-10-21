@@ -9,18 +9,18 @@ ms.subservice: cost-management
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 50451acdbd1c88b6ae703ed25de9cee1f3e48216
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: de0e9c631a97891e75c091c75a34b7dd94a52894
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446453"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131457"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>使用 Azure 預算來管理成本
 
-成本控制是為您在雲端的投資創造最大價值的關鍵。 在幾種案例中，成本可見性、報告和成本型協調流程，對於持續的業務營運而言非常重要。 [Azure 成本管理 API](https://docs.microsoft.com/rest/api/consumption/) \(英文\) 提供一組 API 來支援上述每一種情節。 API 能提供使用情況詳細資料，可讓您檢視更細微的執行個體層級成本。
+成本控制是為您在雲端的投資創造最大價值的關鍵。 在幾種案例中，成本可見性、報告和成本型協調流程，對於持續的業務營運而言非常重要。 [Azure 成本管理 API](/rest/api/consumption/) \(英文\) 提供一組 API 來支援上述每一種情節。 API 能提供使用情況詳細資料，可讓您檢視更細微的執行個體層級成本。
 
-預算經常被當作成本控制的一部分。 在 Azure 中可以設定預算範圍。 例如，您可以依訂用帳戶、資源群組或資源集合縮小預算檢視。 除了使用預算 API 於達到預算閾值時透過電子郵件通知您之外，您也可以使用 [Azure 監視器動作群組](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)在發生預算事件時，觸發一組已協調的動作。
+預算經常被當作成本控制的一部分。 在 Azure 中可以設定預算範圍。 例如，您可以依訂用帳戶、資源群組或資源集合縮小預算檢視。 除了使用預算 API 於達到預算閾值時透過電子郵件通知您之外，您也可以使用 [Azure 監視器動作群組](../../azure-monitor/platform/action-groups.md)在發生預算事件時，觸發一組已協調的動作。
 
 對於執行非關鍵工作負載的客戶而言，其中一個常見的預算案例為想要針對某個預算進行管理，並同時在查看每月發票時取得可預測的成本。 這種案例需要針對作為 Azure 環境之一部分的資源進行成本型的協調流程。 在此案例中，會針對訂用帳戶設定每月 $1000 美元的預算。 此外，也會設定通知閾值以觸發幾個協調流程。 此案例一開始具有 80% 的成本閾值，這會停止資源群組 **Optional** 中的所有 VM。 然後，在達到 100% 的成本閾值之後，系統就會停止所有 VM 執行個體。
 
@@ -35,7 +35,7 @@ ms.locfileid: "91446453"
 
 ## <a name="create-an-azure-automation-runbook"></a>建立 Azure 自動化 Runbook
 
-[Azure 自動化](https://docs.microsoft.com/azure/automation/automation-intro)是一個服務，可讓您編寫大部分資源管理工作的指令碼，並以排程或在需要時執行那些工作。 在這個案例中，您將會建立 [Azure 自動化 Runbook](https://docs.microsoft.com/azure/automation/automation-runbook-types)，並將它用來停止 VM。 您將使用來自[資源庫](https://docs.microsoft.com/azure/automation/automation-runbook-gallery)的 [Stop Azure V2 VM](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) \(英文\) 圖形化 Runbook 來建置這個案例。 透過將此 Runbook 匯入您的 Azure 帳戶並發佈它，您就能在達到預算閾值後停止 VM。
+[Azure 自動化](../../automation/automation-intro.md)是一個服務，可讓您編寫大部分資源管理工作的指令碼，並以排程或在需要時執行那些工作。 在這個案例中，您將會建立 [Azure 自動化 Runbook](../../automation/automation-runbook-types.md)，並將它用來停止 VM。 您將使用來自[資源庫](../../automation/automation-runbook-gallery.md)的 [Stop Azure V2 VM](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) \(英文\) 圖形化 Runbook 來建置這個案例。 透過將此 Runbook 匯入您的 Azure 帳戶並發佈它，您就能在達到預算閾值後停止 VM。
 
 ### <a name="create-an-azure-automation-account"></a>建立 Azure 自動化帳戶
 
@@ -49,7 +49,7 @@ ms.locfileid: "91446453"
 
 ### <a name="import-the-stop-azure-v2-vms-runbook"></a>匯入 Stop Azure V2 VM Runbook
 
-透過使用 [Azure 自動化 Runbook](https://docs.microsoft.com/azure/automation/automation-runbook-types)，從資源庫匯入 [Stop Azure V2 VM](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) \(英文\) 圖形化 Runbook。
+透過使用 [Azure 自動化 Runbook](../../automation/automation-runbook-types.md)，從資源庫匯入 [Stop Azure V2 VM](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-ARM-VMs-1ba96d5b) \(英文\) 圖形化 Runbook。
 
 1. 使用您的 Azure 帳戶認證登入 [Azure 入口網站](https://portal.azure.com/)。
 1. 選取 [所有服務]   > [自動化帳戶]  來開啟您的自動化帳戶。 然後選取您的自動化帳戶。
@@ -60,7 +60,7 @@ ms.locfileid: "91446453"
 1. Runbook 完成匯入過程之後，請選取 [編輯]  以顯示圖形化 Runbook 編輯器和發佈選項。  
     ![Azure - 編輯圖形化 Runbook](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-01.png)
 1. 選取 [發佈]  來發佈 Runbook，然後在系統提示時選取 [是]  。 當您發佈 Runbook 時，您會以草稿版本覆寫任何現有的已發佈版本。 在本範例的情況中，因為您剛剛才建立 Runbook，所以還沒有已發佈的版本。
-    如需發佈 Runbook 的詳細資訊，請參閱[建立圖形化 Runbook](https://docs.microsoft.com/azure/automation/automation-first-runbook-graphical)。
+    如需發佈 Runbook 的詳細資訊，請參閱[建立圖形化 Runbook](../../automation/learn/automation-tutorial-runbook-graphical.md)。
 
 ## <a name="create-webhooks-for-the-runbook"></a>建立 Runbook 的 Webhook
 
@@ -91,7 +91,7 @@ ms.locfileid: "91446453"
 
 ## <a name="create-an-azure-logic-app-for-orchestration"></a>針對協調流程建立 Azure 邏輯應用程式
 
-Logic Apps 可協助您建立、排程程序，並以工作流程的形式自動執行程序，以便整合各企業或組織的應用程式、資料、系統和服務。 在此案例中，您將建立之[邏輯應用程式](https://docs.microsoft.com/azure/logic-apps/)的功能，將不僅僅只有呼叫您所建立的自動化 Webhook 而己。
+Logic Apps 可協助您建立、排程程序，並以工作流程的形式自動執行程序，以便整合各企業或組織的應用程式、資料、系統和服務。 在此案例中，您將建立之[邏輯應用程式](../../logic-apps/index.yml)的功能，將不僅僅只有呼叫您所建立的自動化 Webhook 而己。
 
 預算可以設定成在符合指定閾值的情況下觸發通知。 您可以提供多個要進行通知的閾值，然後邏輯應用程式將會示範可讓您根據不同閾值來執行不同動作的能力。 在此範例中，您會設定可讓您接收到數個通知的案例，第一個通知會在達到 80% 的預算時傳送，而第二個通知則會在達到 100% 的預算時傳送。 邏輯應用程式將會被用來關閉資源群組中的所有 VM。 首先，在 80% 的時候會達到 **Optional** 閾值，接著在達到第二個閾值時，訂用帳戶中的所有 VM 都會被關閉。
 
@@ -122,11 +122,11 @@ Logic Apps 可協助您建立、排程程序，並以工作流程的形式自動
 每個邏輯應用程式都必須使用觸發程序啟動，而該觸發程序會在特定事件發生或符合特定條件時引發。 每次引發觸發程序時，Logic Apps 引擎會建立邏輯應用程式執行個體，啟動並執行您的工作流程。 「動作」是指在觸發程序之後發生的所有步驟。
 
 1. 在 [Logic Apps 設計工具]  區域的 [範本]  中，選擇 [空白邏輯應用程式]  。
-1. 在 [Logic Apps 設計工具]  搜尋方塊中輸入「http 要求」來新增[觸發程序](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts)，以尋找並選取名為 [要求 – 接收到 HTTP 要求時]  的觸發程序。  
+1. 在 [Logic Apps 設計工具]  搜尋方塊中輸入「http 要求」來新增[觸發程序](../../logic-apps/logic-apps-overview.md#logic-app-concepts)，以尋找並選取名為 [要求 – 接收到 HTTP 要求時]  的觸發程序。  
     ![Azure - 邏輯應用程式 - Http 觸發程序](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-04.png)
 1. 選取 [新增步驟]   > [新增動作]  。  
     ![Azure - 新增步驟 - 新增動作](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-05.png)
-1. 在 [Logic Apps 設計工具]  搜尋方塊中搜尋「剖析 JSON」，以尋找並選取 [資料作業 - 剖析 JSON]  [動作](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview#logic-app-concepts)。  
+1. 在 [Logic Apps 設計工具]  搜尋方塊中搜尋「剖析 JSON」，以尋找並選取 [資料作業 - 剖析 JSON]  [動作](../../logic-apps/logic-apps-overview.md#logic-app-concepts)。  
     ![Azure - 邏輯應用程式 - 新增剖析 JSON 動作](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-06.png)
 1. 輸入 "Payload" 作為剖析 JSON 承載的 [內容]  名稱或使用動態內容中的 "Body" 標籤。
 1. 選取 [剖析 JSON]  方塊中的 [請使用範例承載產生結構描述]  選項。  
@@ -311,7 +311,7 @@ Logic Apps 可協助您建立、排程程序，並以工作流程的形式自動
     ```
 1. 按 [Send]  \(傳送\) 來傳送要求。
 
-現在，呼叫[預算 API](https://docs.microsoft.com/rest/api/consumption/budgets)\(英文\) 的所有元件皆已準備完畢。 預算 API 參考針對特定要求有提供其他詳細資料，包括：
+現在，呼叫[預算 API](/rest/api/consumption/budgets)\(英文\) 的所有元件皆已準備完畢。 預算 API 參考針對特定要求有提供其他詳細資料，包括：
 
 - **budgetName** - 支援多個預算。  預算名稱必須是唯一的。
 - **category** - 必須是 **Cost** 或 **Usage**。 API 同時支援成本和使用量預算。

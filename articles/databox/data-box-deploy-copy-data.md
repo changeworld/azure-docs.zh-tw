@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 4dbae9d08a4adf250c9317b392d80f8e04c53d56
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 9427ec4530ac249d5b8059d04fc85f1183c0081c
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951004"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123886"
 ---
 ::: zone target="docs"
 
@@ -105,7 +105,7 @@ ms.locfileid: "91951004"
 
     **一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾**。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root] 資料夾。
     
-使用 Linux 用戶端時，請使用下列命令來掛接 SMB 共用。 下方的 "vers" 參數是您的 Linux 主機支援的 SMB 版本。 請在下列命令中插入適當的版本。 如需資料箱支援哪些 SMB 版本的相關資訊，請參閱 [Linux 用戶端支援的檔案系統](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) 
+使用 Linux 用戶端時，請使用下列命令來掛接 SMB 共用。 下方的 "vers" 參數是您的 Linux 主機支援的 SMB 版本。 請在下列命令中插入適當的版本。 如需資料箱支援哪些 SMB 版本的相關資訊，請參閱 [Linux 用戶端支援的檔案系統](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients) 
 
 ```console
 sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home/databoxubuntuhost/databox
@@ -131,7 +131,7 @@ sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home
 連線至 SMB 共用之後，請開始複製資料。 您可以使用任何與 SMB 相容的檔案複製工具 (例如 Robocopy) 來複製資料。 使用 Robocopy 可起始多個複製作業。 使用下列命令：
 
 ```console
-robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile>
+robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile>
 ```
 
 下表說明這些屬性。

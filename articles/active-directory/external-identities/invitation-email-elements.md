@@ -5,28 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/20/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d03391ba5a82c128197c86ea6ed84389552fadb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90c70dd626ea093b9dfe2fd71e39b53c81ac5d5f
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91439839"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340584"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B 共同作業邀請電子郵件的元素 - Azure Active Directory
 
 邀請電子郵件是一個可讓合作夥伴在 Azure AD 中以 B2B 共同作業使用者身分上線的重要元件。 雖然 [您不需要傳送電子郵件來邀請使用 B2B](add-user-without-invite.md)共同作業的人，但是這麼做會為使用者提供決定是否接受您的邀請所需的所有資訊。 它也提供他們在未來需要返回您的資源時，可以隨時參考的連結。
 
 ![顯示 B2B 邀請電子郵件的螢幕擷取畫面](media/invitation-email-elements/invitation-email.png)
-
-> [!NOTE]
-> 這個新的電子郵件範本仍會推出給所有租使用者，因此某些租使用者仍在使用較舊的設計。 在5月2020日結束時，所有租使用者的邀請都會使用此範本。
 
 ## <a name="explaining-the-email"></a>說明電子郵件
 
@@ -52,17 +49,11 @@ ms.locfileid: "91439839"
 
 ![電子郵件中網路釣魚警告的影像](media/invitation-email-elements/phishing-warning.png)
 
-### <a name="inviters-information"></a>邀請者的資訊
+### <a name="inviters-information-and-invitation-message"></a>邀請者的資訊與邀請訊息
 
-電子郵件包含邀請者的相關資訊，以及他們正在傳送邀請的組織。 這包括寄件者的名稱和電子郵件地址，以及與組織相關聯的名稱和主域。 所有這項資訊都應協助受邀者做出有關接受邀請的明智決策。
+電子郵件包含與傳送邀請的組織相關聯的名稱和主域。 此資訊應可協助受邀者做出接受邀請的明智決定。 如果邀請者在邀請 [來賓使用者加入目錄、群組或應用程式](add-users-administrator.md) 時，或在 [使用邀請 API](customize-invitation-api.md)時，在其邀請中包含訊息，則會在電子郵件的主要區段中反白顯示訊息。 此外也包含邀請者的名稱和設定檔影像（如果已設定的話）。 訊息本身是文字區域，因此基於安全性考慮，它不會處理 HTML 標籤。
 
-![電子郵件中邀請者資訊的影像](media/invitation-email-elements/inviters-information.png)
-
-### <a name="invitation-message"></a>邀請訊息
-
-如果邀請者在邀請 [來賓使用者加入目錄、群組或應用程式](add-users-administrator.md) 時，或在 [使用邀請 API](customize-invitation-api.md)時，在其邀請中包含訊息，則會在電子郵件的主要區段中反白顯示訊息。 此外也包含邀請者的名稱和設定檔影像（如果已設定的話）。 訊息本身是文字區域，因此基於安全性考慮，它不會處理 HTML 標籤。
-
-![電子郵件中邀請訊息的影像](media/invitation-email-elements/invitation-message.png)
+![電子郵件中邀請訊息的影像](media/invitation-email-elements/invitation-message-inviters-info.png)
 
 ### <a name="accept-button-and-redirect-url"></a>接受按鈕和重新導向 URL
 

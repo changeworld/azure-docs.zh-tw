@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 16ddb9cfc2f0731381b1c92d8fdb5f4cffa1ca63
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 61a8dbbdde87af792bb4337660d4d3c34f7cf802
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372352"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132290"
 ---
 # <a name="understand-and-work-with-scopes"></a>了解並使用範圍
 
@@ -180,7 +180,7 @@ Microsoft 客戶合約上的 CSP 與客戶支援下列範圍：
 
 只有具備「全域系統管理員」和「管理員代理人」角色的使用者，才能直接在合作夥伴的 Azure 租用戶中管理及檢視計費帳戶、帳單設定檔和客戶的成本。 如需合作夥伴中心角色的詳細資訊，請參閱[指派使用者角色和權限](/partner-center/permissions-overview)。
 
-只有在客戶擁有 Microsoft 客戶合約時，Azure 成本管理才支援 CSP 合作夥伴客戶。 如需尚未列於 Microsoft 客戶合約的 CSP 支援客戶，請參閱[合作夥伴中心](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview)。
+只有在客戶擁有 Microsoft 客戶合約時，Azure 成本管理才支援 CSP 合作夥伴客戶。 如需尚未列於 Microsoft 客戶合約的 CSP 支援客戶，請參閱[合作夥伴中心](/azure/cloud-solution-provider/overview/partner-center-overview)。
 
 成本管理不支援 CSP 範圍中的管理群組。 如果您有 CSP 訂用帳戶，並在成本分析中將範圍設定為管理群組，您會看到類似以下的錯誤：
 

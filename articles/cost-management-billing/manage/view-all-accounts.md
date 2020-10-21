@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 42d9c2b4b1edac62449fa4120463a384400d6d27
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 0049efda603532099cc9bf24dc9d9411b5aaa389
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360682"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132120"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Azure 入口網站中的計費帳戶和範圍
 
@@ -27,7 +27,7 @@ Azure 入口網站支援下列計費帳戶類型：
 
 - **Microsoft 客戶合約**：當貴組織與 Microsoft 代表共同簽署 Microsoft 客戶合約時，就會建立 Microsoft 客戶合約的計費帳戶。 精選區域中某些透過 Azure 網站註冊[採用隨用隨付費率的帳戶](https://azure.microsoft.com/offers/ms-azr-0003p/)或 [Azure 免費帳戶](https://azure.microsoft.com/offers/ms-azr-0044p/)的客戶，可能也有 Microsoft 客戶合約的計費帳戶。 在 Microsoft 客戶合約中，您最多可以有 20 個訂用帳戶。 如需詳細資訊，請參閱[開始使用 Microsoft 客戶合約的計費帳戶](../understand/mca-overview.md)。
 
-- **Microsoft 合作夥伴合約**：Microsoft 合作夥伴合約的計費帳戶是針對雲端解決方案提供者 (CSP) 合作夥伴所建立的，可供其在新的商務體驗中管理客戶。 合作夥伴必須至少有一個客戶具有 [Azure 方案](https://docs.microsoft.com/partner-center/purchase-azure-plan)，才能在 Azure 入口網站中管理其計費帳戶。 如需詳細資訊，請參閱[開始使用 Microsoft 合作夥伴合約的計費帳戶](../understand/mpa-overview.md)。
+- **Microsoft 合作夥伴合約**：Microsoft 合作夥伴合約的計費帳戶是針對雲端解決方案提供者 (CSP) 合作夥伴所建立的，可供其在新的商務體驗中管理客戶。 合作夥伴必須至少有一個客戶具有 [Azure 方案](/partner-center/purchase-azure-plan)，才能在 Azure 入口網站中管理其計費帳戶。 如需詳細資訊，請參閱[開始使用 Microsoft 合作夥伴合約的計費帳戶](../understand/mpa-overview.md)。
 
 若要判斷您的計費帳戶類型，請參閱[檢查計費帳戶的類型](#check-the-type-of-your-account)。
 

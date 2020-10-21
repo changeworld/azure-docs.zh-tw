@@ -3,12 +3,12 @@ title: 快速入門：使用 Kafka 通訊協定透過 Azure 事件中樞進行�
 description: 快速入門：本文提供關於如何使用 Kafka 通訊協定和 API 串流至 Azure 事件中樞的資訊。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 612a7515c14b77569b34c91d9b43413353b4d0e8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e87d9b1e4a444695d64dc6acfa0e29f7b72e37f2
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90061541"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319359"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>快速入門：透過使用 Kafka 通訊協定的事件中樞串流資料 | Microsoft Docs
 本快速入門說明如何串流至事件中樞，而不需要變更通訊協定用戶端或執行您自己的叢集。 您將了解如何僅在應用程式中變更設定，就能讓產生者和取用者與事件中樞交談。 
@@ -22,7 +22,7 @@ ms.locfileid: "90061541"
 
 * 請參閱[適用於 Apache Kafka 的事件中樞](event-hubs-for-kafka-ecosystem-overview.md)一文。
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-* [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)。
+* [Java Development Kit (JDK) 1.7+](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
 * [下載](https://maven.apache.org/download.cgi)及[安裝](https://maven.apache.org/install.html) Maven 二進位封存檔。
 * [Git](https://www.git-scm.com/)
 
@@ -103,4 +103,4 @@ ms.locfileid: "90061541"
 如果事件中樞 Kafka 叢集包含事件，您現在應該會開始從取用者接收到這些事件。
 
 ## <a name="next-steps"></a>後續步驟
-在本文中，您已了解如何串流至事件中樞，而不需要變更通訊協定用戶端或執行您自己的叢集。 若要深入了解，請參閱[適用於 Azure 事件中樞的 Apache Kafka 開發人員指南](apache-kafka-developer-guide.md)。 
+在本文中，您已了解如何串流至事件中樞，而不需要變更通訊協定用戶端或執行您自己的叢集。 若要深入了解，請參閱[適用於 Azure 事件中樞的 Apache Kafka 開發人員指南](apache-kafka-developer-guide.md)。

@@ -7,18 +7,18 @@ ms.topic: overview
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: b03bedd9abbe59ed3bc1b0ec1439aa27af57e6da
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 159851f5b1ca38cc34da785b39229a6a91e1e4dd
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91758892"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92090687"
 ---
 # <a name="what-is-azure-spring-cloud"></a>什麼是 Azure Spring Cloud？
 
 Azure Spring Cloud 可讓您在不需要變更程式碼的情況下，輕鬆地將以 Spring Boot 為基礎的微服務應用程式部署到 Azure。  Azure Spring Cloud 會管理 Spring Cloud 應用程式的基礎結構，讓開發人員可以專注於處理程式碼。  Spring Cloud 能使用全方位的監視和診斷、設定管理、服務探索、CI/CD 整合、藍色-綠色部署等等，來提供生命週期管理。
 
-Azure Spring Cloud 可支援 Java [Spring Boot](https://spring.io/projects/spring-boot) 和 ASP.NET Core [Steeltoe](https://steeltoe.io/) 應用程式。 Steeltoe 支援目前以公開預覽的形式提供。 公開預覽版供應項目可讓您在其正式發行前，先試驗新功能。  公開預覽功能和服務不適用於生產環境。  如需詳細資訊，請參閱[常見問題集](https://azure.microsoft.com/support/faq/)或提出[支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
+Azure Spring Cloud 可支援 Java [Spring Boot](https://spring.io/projects/spring-boot) 和 ASP.NET Core [Steeltoe](https://steeltoe.io/) 應用程式。 Steeltoe 支援目前以公開預覽的形式提供。 公開預覽版供應項目可讓您在其正式發行前，先試驗新功能。  公開預覽功能和服務不適用於生產環境。  如需詳細資訊，請參閱[常見問題集](https://azure.microsoft.com/support/faq/)或提出[支援要求](../azure-portal/supportability/how-to-create-azure-support-request.md)。
 
 Azure Spring Cloud 作為 Azure 生態系統的一部分，可讓您輕鬆繫結到其他 Azure 服務，包括儲存體、資料庫、監視等等。
 
