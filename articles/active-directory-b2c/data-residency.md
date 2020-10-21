@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/06/2020
+ms.date: 10/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: references_regions
-ms.openlocfilehash: f8c6f7daecd38babaa4f2961d04a6cd4c3b4dbed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9cb7a97b3f57ee7ac10babc53ee2263d51838777
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840552"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309672"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C：區域可用性和資料存留處
 
@@ -59,6 +59,14 @@ Azure AD B2C 會將使用者資料儲存在美國、歐洲或亞太地區區域�
 
 > 阿根廷、澳大利亞、巴西、智利、哥倫比亞、厄瓜多爾、伊拉克、紐西蘭、巴拉圭、秘魯、烏拉圭和委內瑞拉。
 
+## <a name="remote-profile-solution"></a>遠端設定檔解決方案
+
+透過 Azure AD B2C [自訂原則](custom-policy-overview.md)，您可以整合 [RESTful API 服務](custom-policy-rest-api-intro.md)，讓您可以從遠端資料庫儲存及讀取使用者設定檔 (例如，行銷資料庫、CRM 系統或任何企業營運應用程式) 。  
+- 在註冊和設定檔編輯流程中，Azure AD B2C 會呼叫自訂 REST API，將使用者設定檔保存至遠端資料源。 使用者的認證會儲存在 Azure AD B2C 的目錄中。 
+- 登入後，在使用本機或社交帳戶驗證認證之後，Azure AD B2C 會叫用 REST API，以 (電子郵件地址或使用者 objectId) ，將使用者的唯一識別碼傳送為使用者的主要金鑰。 REST API 會從遠端資料庫讀取資料，並傳回使用者設定檔。  
+
+註冊、設定檔編輯或登入完成之後，Azure AD B2C 會在傳回給應用程式的存取權杖中包含使用者設定檔。 如需詳細資訊，請參閱 GitHub 中的 [Azure AD B2C 遠端設定檔範例解決方案](https://github.com/azure-ad-b2c/samples/tree/master/policies/remote-profile) 。
+
 ## <a name="preview-tenant"></a>預覽租用戶
 
 如果您已在 Azure AD B2c 預覽期間建立 B2C 租使用者，則您的租使用者 **類型** 可能會顯示 [ **預覽租**使用者]。
@@ -70,3 +78,7 @@ Azure AD B2C 會將使用者資料儲存在美國、歐洲或亞太地區區域�
 當您刪除預覽 B2C 租使用者，並建立具有相同功能變數名稱的生產級別 B2C 租使用者時，會發生已知的問題。 *您必須使用不同的功能變數名稱建立生產級別 B2C 租使用者*。
 
 ![租使用者類型的螢幕擷取畫面，作為預覽租使用者。](./media/data-residency/preview-b2c-tenant.png)
+
+## <a name="next-steps"></a>後續步驟
+
+- [建立 Azure AD B2C 租](tutorial-create-tenant.md)使用者。

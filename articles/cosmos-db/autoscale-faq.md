@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: bc8e5baa92f507c9abb9bc6b5305773010803f01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5905471dad5cf4e2e8191894af52c503c23e9036
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567582"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277969"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>關於 Azure Cosmos DB 中自動調整佈建輸送量的常見問題集
 
@@ -125,7 +125,7 @@ Azure Cosmos DB 在共用輸送量資料庫中可強制執行最多 25 個容器
 - 第 1 小時：T=2：容器開始取得要求，這會在 1 秒內耗用 1000 RU。 另外還會發生 200 RU 的 TTL。 可計費的 RU/秒仍為 1000 RU/秒。 無論 TTL 是在何時發生，都不會影響自動調整縮放比例邏輯。
 
 ### <a name="what-is-the-mapping-between-the-max-rus-and-physical-partitions"></a>最大 RU/秒與實體分割區之間的對應為何？
-當您第一次選取最大 RU/秒時，Azure Cosmos DB 將會佈建：最大 RU/秒 / 10,000 RU/秒 = 實體分割區數目。 每個[實體分割區](partition-data.md#physical-partitions)最多可支援 10,000 RU/秒和 50 GB 的儲存體。 隨著儲存體大小的增加，如果儲存體[超過相關限制](#what-is-the-storage-limit-associated-with-each-max-rus-option)，Azure Cosmos DB 會自動分割分割區，以新增更多的實體分割區來處理儲存體的增加，或增加最大 RU/秒。 
+當您第一次選取最大 RU/秒時，Azure Cosmos DB 將會佈建：最大 RU/秒 / 10,000 RU/秒 = 實體分割區數目。 每個[實體分割區](partitioning-overview.md#physical-partitions)最多可支援 10,000 RU/秒和 50 GB 的儲存體。 隨著儲存體大小的增加，如果儲存體[超過相關限制](#what-is-the-storage-limit-associated-with-each-max-rus-option)，Azure Cosmos DB 會自動分割分割區，以新增更多的實體分割區來處理儲存體的增加，或增加最大 RU/秒。 
 
 資料庫或容器的最大 RU/秒會平均分散到所有實體分割區。 因此，任何單一實體分割區可以調整的輸送量總計為：資料庫或容器的最大 RU/秒 / 實體分割區數目。 
 
@@ -147,5 +147,5 @@ Azure Cosmos DB 在共用輸送量資料庫中可強制執行最多 25 個容器
 
 * 了解如何[在 Azure Cosmos DB 資料庫或容器上啟用自動調整](how-to-provision-autoscale-throughput.md)。
 * 了解[使用自動調整佈建輸送量的好處](provision-throughput-autoscale.md#benefits-of-autoscale)。
-* 深入了解[邏輯和實體分割區](partition-data.md)。
+* 深入了解[邏輯和實體分割區](partitioning-overview.md)。
                         

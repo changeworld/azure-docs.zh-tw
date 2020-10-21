@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ce81ce9afa45c93010c457bc292bba037607f96f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fd7431b19ed21ee9cf76b6c2fe190b3f31cacf6
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020876"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281043"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>淘汰 S1、S2 和 S3 效能層級
 
@@ -82,7 +82,7 @@ S1、S2 和 S3 效能層級不提供標準 Azure Cosmos DB 所提供的彈性。
 
 ## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>如果我需要超過 20 GB 的儲存體，該怎麼辦？
 
-無論您擁有具有 S1、S2 或 S3 效能層級的集合，或是擁有單一資料分割集合，全部都有 20 GB 的可用儲存空間，您可以使用 Azure Cosmos DB 資料移轉工具，將您的資料移轉至具有幾乎無限制儲存體的資料分割集合。 如需資料分割集合優點的相關詳細資訊，請參閱 [Azure Cosmos DB 中的資料分割與規模調整](sql-api-partition-data.md)。 
+無論您擁有具有 S1、S2 或 S3 效能層級的集合，或是擁有單一資料分割集合，全部都有 20 GB 的可用儲存空間，您可以使用 Azure Cosmos DB 資料移轉工具，將您的資料移轉至具有幾乎無限制儲存體的資料分割集合。 如需資料分割集合優點的相關詳細資訊，請參閱 [Azure Cosmos DB 中的資料分割與規模調整](partitioning-overview.md)。 
 
 <a name="change-before"></a>
 
@@ -132,6 +132,6 @@ EA 客戶將會受保護的價格，直到其目前合約結束。
 ## <a name="next-steps"></a>後續步驟
 若要深入了解 Azure Cosmos DB 的價格和管理資料，請探索這些資源：
 
-1.  [在 Cosmos DB 中分割資料](sql-api-partition-data.md)。 了解單一資料分割容器和資料分割容器的差異，以及實作資料分割策略以順暢地調整的秘訣。
+1.  [在 Cosmos DB 中分割資料](partitioning-overview.md)。 了解單一資料分割容器和資料分割容器的差異，以及實作資料分割策略以順暢地調整的秘訣。
 2.  [Cosmos DB 定價](https://azure.microsoft.com/pricing/details/cosmos-db/)。 深入了解佈建輸送量和使用儲存體的成本。
 3.  [要求單位](request-units.md)。 了解不同作業類型，例如讀取、寫入、查詢的輸送量耗用量。

@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 53442f0727544221f28bfdb58d8069163eb374e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7032c64efa486c65830e013373239647a368540
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87024855"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311145"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-api-management-instance"></a>設定 Azure API 管理實例的自訂功能變數名稱
 
@@ -50,10 +50,10 @@ ms.locfileid: "87024855"
     您可以為多個端點指派自訂功能變數名稱。 目前有下列端點可用：
 
     - **閘道** (預設值為： `<apim-service-name>.azure-api.net`) 、
-    - **入口網站** (預設值為：`<apim-service-name>.portal.azure-api.net`)、
+    - **開發人員入口網站 (舊版) ** (預設值為： `<apim-service-name>.portal.azure-api.net`) 、
+    - **開發人員入口網站** (預設為： `<apim-service-name>.developer.azure-api.net`) 。
     - **管理** (預設值為：`<apim-service-name>.management.azure-api.net`)、
     - **SCM** (預設值為： `<apim-service-name>.scm.azure-api.net`) 、
-    - **NewPortal** (預設值為： `<apim-service-name>.developer.azure-api.net`) 。
 
     > [!NOTE]
     > 只有 **閘道** 端點可在使用層中進行設定。
@@ -95,6 +95,6 @@ ms.locfileid: "87024855"
 > [!NOTE]
 > 雖然 API 管理實例 IP 位址是靜態的，但在某些情況下可能會變更。 基於這個原因，建議您在設定自訂網域時使用 CNAME。 選擇 DNS 設定方法時請考慮這一點。 如需詳細資訊，請參閱 [IP 檔文章](api-management-howto-ip-addresses.md#changes-to-the-ip-addresses) 和 [API 管理常見問題](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [升級和調整服務的規模](upgrade-and-scale.md)

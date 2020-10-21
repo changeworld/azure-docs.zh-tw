@@ -3,17 +3,17 @@ title: 在 dns 多區域性環境中診斷 Azure Cosmos Sdk 的可用性並進�
 description: 瞭解如何在多個區域環境中運作時的 Azure Cosmos SDK 可用性行為。
 author: ealsur
 ms.service: cosmos-db
-ms.date: 10/05/2020
+ms.date: 10/20/2020
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 400795d20b6e7ad919f5cbbfa6078987bb65297e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d43305040e7896a9d3a58929537f19c2bd1f526c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743959"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319372"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>在 dns 多區域性環境中診斷 Azure Cosmos Sdk 的可用性並進行疑難排解
 
@@ -34,7 +34,7 @@ ms.locfileid: "91743959"
 | 單一寫入區域 | 慣用區域 | 主要區域  |
 | 多個寫入區域 | 慣用區域 | 慣用區域  |
 
-如果您未設定慣用區域：
+如果您 **未設定慣用區域**，SDK 用戶端會預設為主要區域：
 
 |帳戶類型 |讀取 |寫入 |
 |------------------------|--|--|
@@ -44,7 +44,9 @@ ms.locfileid: "91743959"
 > [!NOTE]
 > 主要區域指的是[Azure Cosmos 帳戶區域清單](distribute-data-globally.md)中的第一個區域
 
-當發生下列任何情況時，使用 Azure Cosmos SDK 的用戶端會公開記錄，並在作業 **診斷資訊**中包含重試資訊：
+在正常情況下，除非發生下列任何一種情況，否則 SDK 用戶端會連線到慣用的區域 (如果區域偏好設定) 或主要區域中 (如果沒有設定) 的喜好設定，則作業將會限制為該區域。
+
+在這些情況下，使用 Azure Cosmos SDK 的用戶端會公開記錄，並在作業 **診斷資訊**中包含重試資訊：
 
 * .NET V2 SDK 回應中的 *RequestDiagnosticsString* 屬性。
 * .NET V3 SDK 中回應和例外狀況的 *診斷* 屬性。
@@ -66,7 +68,7 @@ Azure Cosmos SDK 用戶端每隔5分鐘會讀取帳戶設定，並重新整理�
 
 如果您將用戶端設定為最好連接至 Azure Cosmos 帳戶沒有的區域，則會忽略慣用的區域。 如果您稍後新增該區域，用戶端會偵測到該區域，並將其永久切換至該區域。
 
-## <a name="failover-the-write-region-in-a-single-write-region-account"></a><a id="manual-failover-single-region"></a>在單一寫入區域帳戶中容錯移轉寫入區域
+## <a name="fail-over-the-write-region-in-a-single-write-region-account"></a><a id="manual-failover-single-region"></a>在單一寫入區域帳戶中容錯移轉寫入區域
 
 如果您起始目前寫入區域的容錯移轉，下一個寫入要求將會失敗，並出現已知的後端回應。 偵測到此回應時，用戶端會查詢帳戶以學習新的寫入區域，並繼續重試目前的作業，並將所有未來的寫入作業永久路由至新的區域。
 
@@ -76,7 +78,7 @@ Azure Cosmos SDK 用戶端每隔5分鐘會讀取帳戶設定，並重新整理�
 
 ## <a name="session-consistency-guarantees"></a>會話一致性保證
 
-使用 [會話一致性](consistency-levels.md#guarantees-associated-with-consistency-levels)時，用戶端必須保證它可以讀取自己的寫入。 在 [讀取區域偏好設定] 與 [寫入區域] 不同的單一寫入區域帳戶中，可能會發生使用者發出寫入，以及從本機區域讀取時，本機區域尚未收到「資料複寫」 (速度的燈光條件約束) 。 在這種情況下，SDK 會偵測讀取作業的特定失敗，並在中樞區域上重試讀取，以確保會話一致性。
+使用 [會話一致性](consistency-levels.md#guarantees-associated-with-consistency-levels)時，用戶端必須保證它可以讀取自己的寫入。 在 [讀取區域偏好設定] 與 [寫入區域] 不同的單一寫入區域帳戶中，可能會發生使用者發出寫入，以及從本機區域讀取時，本機區域尚未收到「資料複寫」 (速度的燈光條件約束) 。 在這種情況下，SDK 會偵測讀取作業的特定失敗，並在主要區域上重試讀取，以確保會話一致性。
 
 ## <a name="transient-connectivity-issues-on-tcp-protocol"></a>TCP 通訊協定上的暫時性連接問題
 

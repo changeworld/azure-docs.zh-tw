@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: db1de363856fd560fea97f8f9cdf542717c4cca3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce6f0ff97b1dfa8757b05b13dff653a1d34f4531
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090088"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315295"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>使用 Azure Migrate 建立移轉計劃
 
@@ -162,8 +162,8 @@ ms.locfileid: "87090088"
 > [!NOTE]
 > 若為 VMware Vm，伺服器評量會使用 vCenter Server 中為 VM 指定的作業系統來處理「客體作業系統」分析。 針對在 VMware 上執行的 Linux Vm，它目前不會識別虛擬作業系統的確切核心版本。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 調查 Azure 雲端採用架構中的 [雲端遷移旅程](/azure/architecture/cloud-adoption/getting-started/migrate)   。
 - Azure Migrate[入門](https://youtu.be/wFfq3YPxYHE)。
-- 建立 [VMware vm](tutorial-assess-vmware.md) 或 [hyper-v vm](tutorial-assess-hyper-v.md)的評量。
+- 建立 [VMware vm](./tutorial-assess-vmware-azure-vm.md) 或 [hyper-v vm](tutorial-assess-hyper-v.md)的評量。

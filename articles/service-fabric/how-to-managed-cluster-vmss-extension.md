@@ -3,18 +3,18 @@ title: '將虛擬機器擴展集延伸模組新增至 Service Fabric 受控叢�
 description: 以下說明如何將虛擬機器擴展集擴充功能新增 Service Fabric 受控叢集節點類型
 ms.topic: article
 ms.date: 09/28/2020
-ms.openlocfilehash: 10487bad4fce41c68b4e2cb90c311b986d709eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be51a03494c90ba91cddb383b62b2477fabc8fc3
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91410296"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309287"
 ---
 # <a name="add-a-virtual-machine-scale-set-extension-to-a-service-fabric-managed-cluster-node-type-preview"></a>將虛擬機器擴展集延伸模組新增至 Service Fabric 受控叢集節點類型 (preview) 
 
 Service Fabric 受控叢集中的每個節點類型都是由虛擬機器擴展集支援。 這可讓您將 [虛擬機器擴展集延伸](../virtual-machines/extensions/overview.md) 模組新增至 Service Fabric 受控叢集節點類型。
 
-您可以使用 [AzServiceFabricManagedNodeTypeVMExtension](https://docs.microsoft.com/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmextension?view=azps-4.7.0&preserve-view=true) PowerShell 命令，將虛擬機器擴展集延伸模組新增至節點類型。
+您可以使用 [AzServiceFabricManagedNodeTypeVMExtension](/powershell/module/az.servicefabric/add-azservicefabricmanagednodetypevmextension?preserve-view=true&view=azps-4.7.0) PowerShell 命令，將虛擬機器擴展集延伸模組新增至節點類型。
 
 或者，您可以在 Azure Resource Manager 範本中，Service Fabric 受控叢集節點類型上的虛擬機器擴展集擴充功能，例如：
 
@@ -51,7 +51,7 @@ Service Fabric 受控叢集中的每個節點類型都是由虛擬機器擴展�
 }
 ```
 
-如需設定受管理叢集節點類型 Service Fabric 的詳細資訊，請參閱 [受控叢集節點類型](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2020-01-01-preview/managedclusters/nodetypes)。
+如需設定受管理叢集節點類型 Service Fabric 的詳細資訊，請參閱 [受控叢集節點類型](/azure/templates/microsoft.servicefabric/2020-01-01-preview/managedclusters/nodetypes)。
 
 ## <a name="next-steps"></a>後續步驟
 

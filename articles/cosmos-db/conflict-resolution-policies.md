@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 49400ad0da86eddf7bbbd51dd92101084cdf1ee1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69bc58e7d217bbd902a82a15333eee6df40a21c9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570102"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276341"
 ---
 # <a name="conflict-types-and-resolution-policies-when-using-multiple-write-regions"></a>使用多個寫入區域時的衝突類型和解決原則
 
@@ -32,7 +32,7 @@ Azure Cosmos DB 提供彈性的原則導向機制來解決寫入衝突。 您可
 
 * **上次寫入獲勝 (LWW) **：此解決原則預設會使用系統定義的時間戳記屬性。 它是以時間同步化時鐘通訊協定為基礎。 如果您使用 SQL API，您可以指定任何其他自訂數值屬性 (例如，您自己的時間戳記概念) 要用於衝突解決。 自訂數值屬性也稱為「 *衝突解決路徑*」。 
 
-  如果兩個或更多項目在插入或取代作業時發生衝突，則包含衝突解決路徑最高值的項目會成為「優先」項目。 如果多個項目的衝突解決路徑值都相同，則由系統決定「優先」項目。 所有區域保證都會彙整出單一優先項目，且認可項目的版本最後都會相同。 如果涉及刪除衝突，則刪除的版本一律優先於插入或取代衝突。 無論衝突解決路徑的值為何，都會發生這種結果。
+  如果兩個或更多項目在插入或取代作業時發生衝突，則包含衝突解決路徑最高值的項目會成為「優先」項目。 如果多個項目的衝突解決路徑值都相同，則由系統決定「優先」項目。 所有區域都會融合成單一優勝者，最後得到相同版本的已認可專案。 如果涉及刪除衝突，則刪除的版本一律優先於插入或取代衝突。 無論衝突解決路徑的值為何，都會發生這種結果。
 
   > [!NOTE]
   > 最後一個寫入獲勝是預設的衝突解決原則，並使用下列 Api 的時間戳記 `_ts` ： SQL、MongoDB、Cassandra、Gremlin 和 Table。 自訂數值屬性僅適用于 SQL API。

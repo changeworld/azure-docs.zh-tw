@@ -3,12 +3,12 @@ title: Azure Migrate 設備常見問題
 description: 取得 Azure Migrate 設備的常見問題解答。
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 7839c2678152837cc9217e6afe13f7cca36ab4b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e0fd170859de2d4a9d38fdba0fff0575921c6d32
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630486"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314787"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate 設備：常見問題
 
@@ -42,7 +42,7 @@ Azure Migrate 設備是一種輕量設備，Azure Migrate：伺服器評估工�
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>設備如何連接至 Azure？
 
-設備可透過網際網路或使用 Azure ExpressRoute 進行連線。 請確定已針對設備核准這些 [url](https://docs.microsoft.com/azure/migrate/migrate-appliance#url-access) ，以連接至 Azure。
+設備可透過網際網路或使用 Azure ExpressRoute 進行連線。 請確定已針對設備核准這些 [url](./migrate-appliance.md#url-access) ，以連接至 Azure。
 
 - 若要將 Azure ExpressRoute 用於 Azure Migrate 複寫流量，必須有 Microsoft 對等互連或現有的公用對等互連 (公用對等互連已針對新的 ER 建立) 淘汰。
 - 不支援透過 Azure ExpressRoute (（僅限已啟用) 私人對等互連）進行複寫。
@@ -101,7 +101,7 @@ Azure Migrate 設備所收集的資料會儲存在您建立 Azure Migrate 專案
 
 ## <a name="can-the-azure-migrate-appliance-connect-to-multiple-vcenter-servers"></a>Azure Migrate 設備是否可以連接到多部 vCenter Server？
 
-否。 [Azure Migrate 設備](migrate-appliance.md)與 vCenter Server 之間有一對一的對應。 若要在多個 vCenter Server 實例上探索 Vm，您必須部署多個設備。 
+不正確。 [Azure Migrate 設備](migrate-appliance.md)與 vCenter Server 之間有一對一的對應。 若要在多個 vCenter Server 實例上探索 Vm，您必須部署多個設備。 
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Azure Migrate 專案可以有多個設備嗎？
 
@@ -131,11 +131,11 @@ Azure Migrate 設備所收集的資料會儲存在您建立 Azure Migrate 專案
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>我可以在 Azure VM 上設定設備嗎？
 
-否。 目前不支援此選項。 
+不正確。 目前不支援此選項。 
 
 ## <a name="can-i-discover-on-an-esxi-host"></a>我可以在 ESXi 主機上探索嗎？
 
-否。 若要探索 VMware Vm，您必須有 vCenter Server。
+不正確。 若要探索 VMware Vm，您必須有 vCenter Server。
 
 ## <a name="how-do-i-update-the-appliance"></a>如何? 更新設備？
 

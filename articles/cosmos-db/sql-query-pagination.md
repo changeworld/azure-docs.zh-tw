@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 1cd0c3f48d4dc79294b3ebf9907ac18d23794830
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4de3ec79b94969e45553857f1179a1104e090347
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804192"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276105"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分頁
 
@@ -21,9 +21,9 @@ ms.locfileid: "91804192"
 
 有時查詢結果將會分割成多個頁面。 每個頁面的結果都是由個別的查詢執行所產生。 如果在單一執行時無法傳回查詢結果，Azure Cosmos DB 會自動將結果分割成多個頁面。
 
-您可以藉由設定，指定查詢所傳回的最大專案數 `MaxItemCount` 。 `MaxItemCount`是針對每個要求所指定，並保證查詢引擎會傳回該數量的專案或較少的專案。 `MaxItemCount` `-1` 如果您不想限制每個查詢執行的結果數目，您可以將設定為。
+您可以藉由設定，指定查詢所傳回的最大專案數 `MaxItemCount` 。 `MaxItemCount`是針對每個要求所指定，並告知查詢引擎會傳回該數量的專案或較少的專案。 `MaxItemCount` `-1` 如果您不想限制每個查詢執行的結果數目，您可以將設定為。
 
-此外，還有其他原因是查詢引擎可能需要將查詢結果分割成多個頁面。 其中包括：
+此外，還有其他原因是查詢引擎可能需要將查詢結果分割成多個頁面。 它們包括：
 
 - 容器已進行節流處理，而且沒有可用的 ru 可傳回更多查詢結果
 - 查詢執行的回應太大

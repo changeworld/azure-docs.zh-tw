@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: jasonh
-ms.openlocfilehash: 01bfff6db7827218dafa539b8bc2c7ce0a7869f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ad56bf0295efca45ee958e1ce135d79ed850d62
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409641"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277593"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>將資料從 MongoDB 移轉到「適用於 MongoDB 的 Azure Cosmos DB API」的預先移轉步驟
 
@@ -36,7 +36,7 @@ ms.locfileid: "91409641"
 
 - **彈性容量**：給定集合或資料庫的容量可隨時變更。 這讓資料庫可彈性地適應工作負載的輸送量需求。
 
-- **自動分區化**：Azure Cosmos DB 提供一個只需要分區 (或分割區索引鍵) 的自動資料分割系統。 [自動資料分割機制](partition-data.md)會在所有 Azure Cosmos DB API 之間共用，可透過水平發佈，順暢地進行資料和輸送量調整。
+- **自動分區化**：Azure Cosmos DB 提供一個只需要分區 (或分割區索引鍵) 的自動資料分割系統。 [自動資料分割機制](partitioning-overview.md)會在所有 Azure Cosmos DB API 之間共用，可透過水平發佈，順暢地進行資料和輸送量調整。
 
 ## <a name="migration-options-for-azure-cosmos-dbs-api-for-mongodb"></a><a id="options"></a>「適用於 MongoDB 的 Azure Cosmos DB API」的移轉選項
 
@@ -88,7 +88,7 @@ Azure Cosmos DB 所提供的索引功能包括將複合索引、唯一索引和�
 ## <a name="next-steps"></a>後續步驟
 * [使用 Database Migration Service 將您的 MongoDB 資料移轉至 Cosmos DB。](../dms/tutorial-mongodb-cosmos-db.md) 
 * [在 Azure Cosmos 容器和資料庫上佈建輸送量](set-throughput.md)
-* [Azure Cosmos DB 中的資料分割](partition-data.md)
+* [Azure Cosmos DB 中的資料分割](partitioning-overview.md)
 * [Azure Cosmos DB 中的全域散發](distribute-data-globally.md)
 * [Azure Cosmos DB 中的編製索引](index-overview.md)
 * [Azure Cosmos DB 中的要求單位](request-units.md)

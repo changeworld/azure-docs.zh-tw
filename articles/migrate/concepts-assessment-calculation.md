@@ -3,12 +3,12 @@ title: Azure Migrate 伺服器評量中的 Azure VM 評量
 description: 瞭解 Azure Migrate Server 評量中的評量
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 4020df3ef77e4b8ae0618108f539322092b93079
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d08e3c1c0035ee2bb56ee54f1ffb7ffb439d61b6
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275518"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319322"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>伺服器評定總覽 (遷移至 Azure Vm) 
 
@@ -54,7 +54,7 @@ ms.locfileid: "91275518"
 
 在設備開始探索機器之後，您可以將想要評估的機器收集到群組中，並針對具有評量類型 **AZURE VM**的群組執行評量。
 
-遵循適用于 [VMware](tutorial-prepare-vmware.md)、 [hyper-v](tutorial-prepare-hyper-v.md)或 [實體伺服器](tutorial-prepare-physical.md) 的教學課程，以嘗試執行這些步驟。
+遵循適用于 [VMware](./tutorial-discover-vmware.md)、 [hyper-v](./tutorial-discover-hyper-v.md)或 [實體伺服器](./tutorial-discover-physical.md) 的教學課程，以嘗試執行這些步驟。
 
 ## <a name="how-do-i-assess-with-imported-data"></a>如何? 使用匯入的資料來評估嗎？
 
@@ -173,7 +173,7 @@ Windows Server 2012 R2 與所有 SP | Azure 提供完整支援。 | 準備好進
 Windows Server 2012 與所有 SP | Azure 提供完整支援。 | 準備好進行 Azure。
 Windows Server 2008 R2，含所有 SP | Azure 提供完整支援。| 準備好進行 Azure。
 Windows Server 2008 (32 位元和 64 位元) | Azure 提供完整支援。 | 準備好進行 Azure。
-Windows Server 2003 和 Windows Server 2003 R2 | 這些作業系統已通過支援的結束日期，並需要 [自訂支援合約， (CSA) ](https://aka.ms/WSosstatement) 以取得 Azure 支援。 | 有條件地備妥 Azure。 在遷移至 Azure 之前，請考慮先升級作業系統。
+Windows Server 2003 和 Windows Server 2003 R2 | 這些作業系統已通過支援的結束日期，並需要 [自訂支援合約， (CSA) ](/troubleshoot/azure/virtual-machines/server-software-support) 以取得 Azure 支援。 | 有條件地備妥 Azure。 在遷移至 Azure 之前，請考慮先升級作業系統。
 Windows 2000、Windows 98、Windows 95、Windows NT、Windows 3.1 和 MS-DOS | 這些作業系統已經過其支援結束日期。 電腦可能會在 Azure 中啟動，但 Azure 不會提供 OS 支援。 | 有條件地備妥 Azure。 建議您在遷移至 Azure 之前，先升級作業系統。
 Windows 7、Windows 8 和 Windows 10 | Azure[僅提供 Visual Studio 訂](../virtual-machines/windows/client-images.md)用帳戶的支援。 | 有條件地備妥 Azure。
 Windows 10 Pro | Azure 對[多租用戶主機權限](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md)提供支援。 | 有條件地備妥 Azure。
@@ -282,7 +282,7 @@ Azure Migrate 中每個以效能為基礎的 Azure VM 評量都與信賴評等�
     - 軟體保證
     - 保留執行個體
     - VM 運作時間
-    - Location
+    - 位置
     - 貨幣設定
 
     伺服器評量會匯總所有機器的成本，以計算每月總計算成本。
@@ -297,6 +297,6 @@ Azure Migrate 中每個以效能為基礎的 Azure VM 評量都與信賴評等�
 
 [檢閱](best-practices-assessment.md)適用於建立評估的最佳做法。 
 
-- 瞭解如何對 [VMware vm](tutorial-prepare-vmware.md)、 [hyper-v vm](tutorial-prepare-hyper-v.md)和 [實體伺服器](tutorial-prepare-physical.md)執行評量。
-- 瞭解如何評估 [使用 CSV](tutorial-assess-import.md)檔案匯入的伺服器。
+- 瞭解如何對 [VMware vm](./tutorial-discover-vmware.md)、 [hyper-v vm](./tutorial-discover-hyper-v.md)和 [實體伺服器](./tutorial-discover-physical.md)執行評量。
+- 瞭解如何評估 [使用 CSV](./tutorial-discover-import.md)檔案匯入的伺服器。
 - 瞭解如何設定相依性 [視覺效果](concepts-dependency-visualization.md)。

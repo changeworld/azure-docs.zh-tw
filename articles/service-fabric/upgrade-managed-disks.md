@@ -3,12 +3,12 @@ title: 將叢集節點升級為使用 Azure 受控磁片
 description: 以下說明如何將現有的 Service Fabric 叢集升級為使用 Azure 受控磁片，而不需要叢集停機。
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 152bdaea121e65de8332fcde8543b8158ff11714
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36896a6cf471ff0c9312ab454465419471bb164d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88717518"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316151"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>將叢集節點升級為使用 Azure 受控磁片
 
@@ -25,7 +25,7 @@ ms.locfileid: "88717518"
 本文將逐步引導您完成將範例叢集的主要節點類型升級為使用受控磁片的步驟，同時避免任何叢集停機 (請參閱以下) 的附注。 範例測試叢集的初始狀態是由一種具有 [銀級持久性](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)的節點類型所組成，由具有五個節點的單一擴展集提供支援。
 
 > [!NOTE]
-> 基本 SKU 負載平衡器的限制，可防止新增額外的擴展集。 建議您改為使用標準 SKU 負載平衡器。 如需詳細資訊，請參閱 [這兩個 sku 的比較](/azure/load-balancer/skus)。
+> 基本 SKU 負載平衡器的限制，可防止新增額外的擴展集。 建議您改為使用標準 SKU 負載平衡器。 如需詳細資訊，請參閱 [這兩個 sku 的比較](../load-balancer/skus.md)。
 
 > [!CAUTION]
 > 只有當您有叢集 DNS (的相依性時（例如存取 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)) 時），您才會遇到此程式中斷。 [前端服務的架構最佳做法](/azure/architecture/microservices/design/gateway)是在您的節點類型前面加上某種[負載平衡器](/azure/architecture/guide/technology-choices/load-balancing-overview)，以便在不中斷的情況下交換節點。
@@ -359,7 +359,7 @@ foreach($name in $nodeNames){
 
 ![已移除錯誤狀態下節點的 Service Fabric Explorer](./media/upgrade-managed-disks/service-fabric-explorer-healthy-cluster.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本逐步解說中，您已瞭解如何將 Service Fabric 叢集的虛擬機器擴展集升級為使用受控磁片，同時避免在處理期間發生服務中斷。 如需相關主題的詳細資訊，請參閱下列資源。
 

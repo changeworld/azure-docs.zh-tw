@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51983e52643d587fc497a1a67fcb0cd29dbb7f17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b218f4c94e33d4a91b3981c66d3ac052c6caf7e2
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306560"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318121"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>規劃 Azure Active Directory 存取審查部署
 
@@ -87,7 +87,7 @@ ms.locfileid: "91306560"
 
 ### <a name="engage-the-right-stakeholders"></a>包含正確的專案關係人
 
-當技術專案失敗時，通常是因為對影響、結果與責任的預期不符所造成。 若要避免這些錯誤，請[確保您吸引合適的專案關係人](https://aka.ms/deploymentplans) \(英文\)，且專案角色是明確的。
+當技術專案失敗時，通常是因為對影響、結果與責任的預期不符所造成。 若要避免這些錯誤，請[確保您吸引合適的專案關係人](../fundamentals/active-directory-deployment-plans.md) \(英文\)，且專案角色是明確的。
 
 針對存取權評論，您可能會在組織內包含下列小組的代表：
 
@@ -182,7 +182,7 @@ ms.locfileid: "91306560"
 
 * 群組 [成員資格](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (同步處理至 Azure AD，或在 Azure AD 或 Microsoft 365 中建立，包括 Microsoft 小組) 。
 
-* 將資源群組、應用程式和網站群組 (群組、應用程式和網站的[存取套件](/azure/active-directory/governance/entitlement-management-overview)，) 成單一套件來管理存取權。
+* 將資源群組、應用程式和網站群組 (群組、應用程式和網站的[存取套件](./entitlement-management-overview.md)，) 成單一套件來管理存取權。
 
 * [Azure AD 角色和 Azure 資源角色，](../privileged-identity-management/pim-resource-roles-assign-roles.md) 如 Privileged Identity Management 中所定義。
 
@@ -448,7 +448,7 @@ ms.locfileid: "91306560"
 
 ![顯示 Azure A D 角色 [審核成員資格] 清單的螢幕擷取畫面。](./media/deploy-access-review/8-review-azure-ad-roles-picker.png)
 
-遵循下列連結中的指示：
+請遵循下列連結中的指示：
 
 | 操作說明文章 | 描述 |
 | - | - |
@@ -463,7 +463,7 @@ ms.locfileid: "91306560"
 
 ![審查 azure ad 角色](./media/deploy-access-review/9-review-azure-roles-picker.png)
 
-遵循下列連結中的指示：
+請遵循下列連結中的指示：
 
 | 操作說明文章| 描述 |
 | - | -|
@@ -518,4 +518,3 @@ ms.locfileid: "91306560"
 * [什麼是 Azure AD 權利管理？](entitlement-management-overview.md)
 
 * [什麼是 Azure AD Privileged Identity Management？](../privileged-identity-management/pim-configure.md)
-

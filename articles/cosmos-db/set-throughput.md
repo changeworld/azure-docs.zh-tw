@@ -5,17 +5,17 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 81a31448a588849a410b37868cf579fbb0a9ceb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/14/2020
+ms.openlocfilehash: 8cca75f7071b8b9c8d1108b82ebf8f7049ec316a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777783"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282568"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>簡介 Azure Cosmos DB 中的佈建輸送量
 
-Azure Cosmos DB 可讓您在資料庫和容器上設定佈建輸送量。 佈建輸送量有兩種類型：標準 (手動) 或自動調整。 本文概述佈建輸送量如何運作。 
+Azure Cosmos DB 可讓您在資料庫和容器上設定佈建輸送量。 佈建輸送量有兩種類型：標準 (手動) 或自動調整。 本文概述布建的輸送量的運作方式。 
 
 Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無從驗證結構描述的容器所組成的。 Azure Cosmos 容器是適用於輸送量和儲存體的延展性單位。 容器會跨 Azure 區域內的一組機器進行水平分割，並散發到與您 Azure Cosmos 帳戶相關聯的所有 Azure 區域。
 
@@ -34,9 +34,9 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 
 如果邏輯分割區上執行的工作負載耗用的輸送量超過配置給基礎實體分割區的輸送量，您的作業可能會有速率限制。 當某個邏輯分割區的要求數目比其他資料分割索引鍵值還多時，就會發生所謂的 _熱分割_ 。
 
-發生速率限制時，您可以提高整個容器的佈建輸送量或重試此作業。 您也應該確定您選擇的是平均分配儲存體和要求磁片區的分割區索引鍵。 如需有關資料分割的詳細資訊，請參閱 [Azure Cosmos DB 中的資料分割和水準調整](partition-data.md)。
+發生速率限制時，您可以提高整個容器的佈建輸送量或重試此作業。 您也應該確定您選擇的是平均分配儲存體和要求磁片區的分割區索引鍵。 如需有關資料分割的詳細資訊，請參閱 [Azure Cosmos DB 中的資料分割和水準調整](partitioning-overview.md)。
 
-當您想要保證容器的效能時，我們建議您在容器資料粒度上設定輸送量。
+當您想要容器的可預測效能時，建議您在容器資料細微性上設定輸送量。
 
 下圖示範實體分割區如何裝載容器的一或多個邏輯分割區：
 
@@ -49,7 +49,7 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 
 當您在 Azure Cosmos 資料庫上佈建輸送量時，輸送量會在資料庫中的所有容器 (稱為標準資料庫容器) 上共用。 例外狀況是您在資料庫中特定的容器上指定了佈建輸送量。 在其容器之間共用資料庫層級佈建輸送量，相當於在機器叢集上裝載資料庫。 因為資料庫共用內的所有容器都會共用機器上可用的資源，因此，您自然不會取得任何特定容器上的可預測效能。 若要了解如何在資料庫上設定佈建輸送量，請參閱[在 Azure Cosmos 資料庫上設定佈建輸送量](how-to-provision-database-throughput.md)。 若要了解如何在資料上設定自動調整輸送量，請參閱[佈建自動調整輸送量](how-to-provision-autoscale-throughput.md)。
 
-在 Azure Cosmos 資料庫上設定輸送量，保證您隨時都能接收到該資料庫的佈建輸送量。 因為資料庫共用內的所有容器都會共用佈建輸送量，因此，Azure Cosmos DB 不會針對該資料庫中的特定容器提供任何可預測的輸送量保證。 特定容器可接收的輸送量部分取決於：
+因為資料庫共用內的所有容器都會共用佈建輸送量，因此，Azure Cosmos DB 不會針對該資料庫中的特定容器提供任何可預測的輸送量保證。 特定容器可接收的輸送量部分取決於：
 
 * 容器數目。
 * 對於各種容器所選擇的分割區索引鍵。
@@ -63,9 +63,9 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 
 * 當您將從 VM 叢集或從內部部署實體伺服器裝載的 NoSQL 資料庫 (例如 MongoDB 或 Cassandra) 移轉到 Azure Cosmos DB 時，在一組容器之間共用資料庫的佈建輸送量就很實用。 將 Azure Cosmos 資料庫上設定的佈建輸送量想像為 MongoDB 或 Cassandra 叢集計算容量之佈建輸送量的邏輯對等項目 (但更符合成本效益且更具彈性)。  
 
-以所佈建輸送量在資料庫內建立的所有容器，在建立時都必須具有[分割區索引鍵](partition-data.md)。 在任何指定的時間點，配置給資料庫內容器的輸送量都會散發到該容器的所有邏輯分割區。 當您有容器共用資料庫上設定的佈建輸送量時，就無法選擇性地將輸送量套用到特定容器或邏輯分割區。 
+以所佈建輸送量在資料庫內建立的所有容器，在建立時都必須具有[分割區索引鍵](partitioning-overview.md)。 在任何指定的時間點，配置給資料庫內容器的輸送量都會散發到該容器的所有邏輯分割區。 當您有容器共用資料庫上設定的佈建輸送量時，就無法選擇性地將輸送量套用到特定容器或邏輯分割區。 
 
-如果邏輯分割區上的工作負載所取用的輸送量超過配置給特定邏輯分割區的輸送量時，您的作業將會受到速率限制。 發生速率限制時，您可以提高整個資料庫的輸送量或重試此作業。 如需有關分割的詳細資訊，請參閱[邏輯分割區](partition-data.md)。
+如果邏輯分割區上的工作負載所取用的輸送量超過配置給特定邏輯分割區的輸送量時，您的作業將會受到速率限制。 發生速率限制時，您可以提高整個資料庫的輸送量或重試此作業。 如需有關分割的詳細資訊，請參閱[邏輯分割區](partitioning-overview.md)。
 
 共用輸送量資料庫中的容器會共用配置給該資料庫的輸送量 (RU/秒)。 在資料庫中，您最多可以有四個最小輸送量為 400 RU/秒的容器。 使用標準 (手動) 佈建輸送量時，前四個容器之後的每個新容器最少都需要額外的 100 RU/秒。 例如，如果您有包含八個容器的共用輸送量資料庫，資料庫中的最低值 (RU/秒) 將是 800 RU/秒。 透過自動調整布建的輸送量，資料庫中最多可以有25個容器，其中最多可有 4000 RU/秒的自動調整， (在 400-4000 RU/秒) 之間進行調整。
 
@@ -82,7 +82,7 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 您可以結合這兩個模型， 就能同時在資料庫和容器上佈建輸送量。 下列範例說明如何在 Azure Cosmos 資料庫和容器上佈建標準(手動) 佈建輸送量：
 
 * 您可以使用 *"K"* 個 RU 的標準 (手動) 佈建輸送量來建立名為 *Z* 的 Azure Cosmos 資料庫。 
-* 接下來，在資料庫中建立五個容器，名稱分別為 *A*、*B*、*C*、*D* 和 *E*。 建立容器 B 時，請務必啟用 [為此容器佈建專用輸送量] 選項，並在此容器上明確設定 *"P"* 個 RU 的佈建輸送量。 請注意，只有在建立資料庫和容器時，才能設定共用和專用輸送量。 
+* 接下來，在資料庫中建立五個容器，名稱分別為 *A*、*B*、*C*、*D* 和 *E*。 建立容器 B 時，請務必啟用 [為此容器佈建專用輸送量] 選項，並在此容器上明確設定 *"P"* 個 RU 的佈建輸送量。 只有在建立資料庫和容器時，您才能設定共用和專用輸送量。 
 
    :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="裝載容器的一或多個邏輯分割區的實體分割區":::
 
@@ -94,22 +94,47 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 
 ## <a name="update-throughput-on-a-database-or-a-container"></a>更新資料庫和容器上的輸送量
 
-在建立 Azure Cosmos 容器或資料庫之後，您可以更新佈建輸送量。 您可以在資料庫或容器上設定的最大佈建輸送量沒有任何限制。 
+在建立 Azure Cosmos 容器或資料庫之後，您可以更新佈建輸送量。 您可以在資料庫或容器上設定的最大佈建輸送量沒有任何限制。
 
-若要估計資料庫或容器的布 [建輸送量下限](concepts-limits.md#storage-and-database-operations) ，請找出最大值：
+### <a name="current-provisioned-throughput"></a>目前布建的輸送量
+
+您可以在 Azure 入口網站中或使用 Sdk 來取得容器或資料庫的布建輸送量：
+
+* .NET SDK 上的[ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true) 。
+* JAVA SDK 上的[CosmosContainer. readThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.readthroughput?view=azure-java-stable&preserve-view=true) 。
+
+這些方法的回應也包含容器或資料庫的 [最小布建輸送量](concepts-limits.md#storage-and-database-operations) ：
+
+* .NET SDK 上的[ThroughputResponse. MinThroughput](/dotnet/api/microsoft.azure.cosmos.throughputresponse.minthroughput?view=azure-dotnet&preserve-view=true) 。
+* [ThroughputResponse. getMinThroughput ( ](/java/api/com.azure.cosmos.models.throughputresponse.getminthroughput?view=azure-java-stable&preserve-view=true) JAVA SDK 上的 # B1。
+
+實際的最小 RU/秒可能會依您的帳戶設定而有所不同。 但一般而言，它的最大值是：
 
 * 400 RU/秒 
 * 目前的儲存體（GB） * 10 RU/秒
 * 在資料庫或容器上布建的最高 RU/秒/100
 * 容器計數 * 100 RU/秒 (只) 的共用輸送量資料庫
 
-實際的最小 RU/秒可能會依您的帳戶設定而有所不同。 您可以使用 [Azure 監視器計量](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) 來查看布建輸送量的歷程記錄 (RU/秒) 和資源上的儲存體。
+### <a name="changing-the-provisioned-throughput"></a>變更布建的輸送量
 
-您可以使用 SDK，以程式設計方式擷取容器或資料庫的最小輸送量，或檢視 Azure 入口網站中的值。 使用 .NET SDK （容器）時 [。ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) 方法可讓您調整布建的輸送量值。 使用 JAVA SDK 時， [CosmosContainer. replaceProvisionedThroughput](sql-api-java-sdk-samples.md) 方法可讓您調整布建的輸送量值。
+您可以透過 Azure 入口網站或使用 Sdk 來調整容器或資料庫的布建輸送量：
 
-使用 .NET SDK 時， [ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true) 方法可讓您取得容器或資料庫的最小輸送量。 
+* .NET SDK 上的[ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) 。
+* JAVA SDK 上的[CosmosContainer. replaceThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput?view=azure-java-stable&preserve-view=true) 。
 
-您可以隨時調整容器或資料庫的佈建輸送量。 執行調整作業以增加輸送量時，可能需要較長的時間，因為系統工作會佈建所需的資源。 您可以在 Azure 入口網站中，或使用 SDK 以程式設計方式檢查調整作業的狀態。 使用 .NET SDK 時，您可以使用 `Container.ReadThroughputAsync` 方法來取得調整作業的狀態。
+如果您要 **減少布建的輸送量**，您將能夠達到 [最小值](#current-provisioned-throughput)。
+
+如果您要 **增加布建的輸送量**，大部分的情況下，作業會立即進行。 不過，在某些情況下，作業可能需要較長的時間，因為系統工作會布建所需的資源。 在此情況下，嘗試在此作業進行時修改布建的輸送量將會產生 HTTP 423 回應，並顯示錯誤訊息，說明另一個調整作業正在進行中。
+
+> [!NOTE]
+> 如果您正在規劃非常大型的內嵌工作負載，且需要大幅增加布建的輸送量，請記住調整規模作業沒有 SLA，而在上一段所述的情況下，可能會花很長的時間來提高規模。 您可能想要在工作負載啟動之前事先規劃並開始調整，並使用下列方法來檢查進度。
+
+您可以藉由讀取 [目前布建的輸送量](#current-provisioned-throughput) ，並使用下列方法，以程式設計方式檢查調整進度：
+
+* .NET SDK 上的[ThroughputResponse. IsReplacePending](/dotnet/api/microsoft.azure.cosmos.throughputresponse.isreplacepending?view=azure-dotnet&preserve-view=true) 。
+* [ThroughputResponse. isReplacePending ( ](/java/api/com.azure.cosmos.models.throughputresponse.isreplacepending?view=azure-java-stable&preserve-view=true) JAVA SDK 上的 # B1。
+
+您可以使用 [Azure 監視器計量](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) 來查看布建輸送量的歷程記錄 (RU/秒) 和資源上的儲存體。
 
 ## <a name="comparison-of-models"></a>模型的比較
 下表顯示在資料庫上與在容器上佈建標準 (手動) 輸送量之間的比較。 
@@ -126,7 +151,7 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入了解[邏輯分割區](partition-data.md)。
+* 深入了解[邏輯分割區](partitioning-overview.md)。
 * 了解如何[在 Azure Cosmos 容器上佈建標準 (手動) 輸送量](how-to-provision-container-throughput.md)。
 * 了解如何[在 Azure Cosmos 資料庫上佈建標準 (手動) 輸送量](how-to-provision-database-throughput.md)。
 * 了解如何[在 Azure Cosmos 資料庫或容器上佈建自動調整輸送量](how-to-provision-autoscale-throughput.md)。

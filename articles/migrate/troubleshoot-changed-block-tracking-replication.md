@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 6318f426e42612f21da7a43c9857894ae610f68e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b653a0abbe89686c764a6a0885720cc746975c8
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871170"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314721"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>針對無代理程式 VMware VM 遷移中的複寫問題進行疑難排解
 
@@ -90,7 +90,7 @@ Set-AzureRmKeyVaultAccessPolicy-VaultName "keyvaultname"-ObjectId $userPrincipal
     
     **執行效能基準測試的步驟：**
     
-      1. [下載](https://go.microsoft.com/fwlink/?linkid=2138966) azcopy
+      1. [下載](../storage/common/storage-use-azcopy-v10.md) azcopy
         
       2. 在資源群組中尋找設備儲存體帳戶。 儲存體帳戶的名稱類似 migrategwsa \* \* \* \* \* \* \* \* \* \* 。 這是上述命令中參數 [account] 的值。
         
@@ -170,7 +170,7 @@ Set-AzureRmKeyVaultAccessPolicy-VaultName "keyvaultname"-ObjectId $userPrincipal
     
     **執行效能基準測試的步驟：**
     
-      1. [下載](https://go.microsoft.com/fwlink/?linkid=2138966) azcopy
+      1. [下載](../storage/common/storage-use-azcopy-v10.md) azcopy
         
       2. 在資源群組中尋找設備儲存體帳戶。 儲存體帳戶的名稱類似 migratelsa \* \* \* \* \* \* \* \* \* \* 。 這是上述命令中參數 [account] 的值。
         
@@ -295,4 +295,4 @@ _錯誤訊息：發生內部錯誤。[錯誤訊息]_
 
 ## <a name="next-steps"></a>後續步驟
 
-繼續進行 VM 複寫，然後執行 [測試遷移](https://go.microsoft.com/fwlink/?linkid=2139333)。
+繼續進行 VM 複寫，然後執行 [測試遷移](./tutorial-migrate-vmware.md#run-a-test-migration)。

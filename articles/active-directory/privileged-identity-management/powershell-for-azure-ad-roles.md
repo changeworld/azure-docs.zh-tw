@@ -16,12 +16,12 @@ ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8d9740e05bf4236f1b2b722c9a91b3644533fce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a3c5274a1b63d486bb7eb48b89560d5684db2e2
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707895"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316999"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management 中 Azure AD 角色的 PowerShell
 
@@ -54,7 +54,7 @@ ms.locfileid: "90707895"
     ![在 Azure AD 組織的屬性中尋找組織識別碼](./media/powershell-for-azure-ad-roles/tenant-id-for-Azure-ad-org.png)
 
 > [!Note]
-> 下列各節是可協助您開始執行的簡單範例。 您可以在中找到有關下列 Cmdlet 的詳細檔 [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true) 。 不過，您必須將 providerID 參數中的 "azureResources" 取代為 "aadRoles"。 您也必須記得將 Azure AD 組織的租使用者識別碼作為 resourceId 參數。
+> 下列各節是可協助您開始執行的簡單範例。 您可以在中找到有關下列 Cmdlet 的詳細檔 [https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true](/powershell/module/azuread/?view=azureadps-2.0-preview#privileged_role_management&preserve-view=true) 。 不過，您必須將 providerID 參數中的 "azureResources" 取代為 "aadRoles"。 您也必須記得將 Azure AD 組織的租使用者識別碼作為 resourceId 參數。
 
 ## <a name="retrieving-role-definitions"></a>正在抓取角色定義
 

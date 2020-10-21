@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 207b597bc865c8234d447759ab8b0f53dc35413c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f7afe044ab4f782f2028598c2c56e75edf95860
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090275"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317384"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure Logic Apps 的常見情節、範例、教學課程和逐步解說
 
@@ -126,7 +126,7 @@ ms.locfileid: "87090275"
 
 ## <a name="handle-content-types-conversions-and-transformations"></a>處理內容類型、轉換和轉換
 
-您可以使用 Azure Logic Apps [工作流程定義語言](https://aka.ms/logicappsdocs)中的許多函數，來存取、轉換 (Convert) 及轉換 (Transform) 多種內容類型。 例如，您可以使用 `@json()` 和 `@xml()` 工作流程運算式，在字串、JSON 和 XML 之間進行轉換 (Convert)。 Logic Apps 引擎會保留內容類型，以支援在服務之間以不失真的方式進行內容傳輸的功能。
+您可以使用 Azure Logic Apps [工作流程定義語言](./logic-apps-workflow-definition-language.md)中的許多函數，來存取、轉換 (Convert) 及轉換 (Transform) 多種內容類型。 例如，您可以使用 `@json()` 和 `@xml()` 工作流程運算式，在字串、JSON 和 XML 之間進行轉換 (Convert)。 Logic Apps 引擎會保留內容類型，以支援在服務之間以不失真的方式進行內容傳輸的功能。
 
 * [處理 Azure Logic Apps 中的內容類型](../logic-apps/logic-apps-content-type.md)，例如 `application/` 、 `application/octet-stream` 和 `multipart/formdata`
 * [在運算式中使用函式的參考指南，適用於 Azure Logic Apps 和 Power Automate](../logic-apps/workflow-definition-language-functions-reference.md)
@@ -153,7 +153,7 @@ Azure Logic Apps 與許多服務整合，例如 Azure Functions、Azure API 管�
 
 了解 Azure Logic Apps 以及其他 Azure 服務和 Microsoft 產品如何協助[這些公司](https://aka.ms/logic-apps-customer-stories)提升其靈活度，並藉由簡化、組織、自動化及協調複雜的程序，專注於其核心業務。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解 [Logic Apps 的連接器](../connectors/apis-list.md)
 * 瞭解 [Azure Logic Apps 的 B2B 企業整合案例](../logic-apps/logic-apps-enterprise-integration-overview.md)

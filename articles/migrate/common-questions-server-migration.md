@@ -3,12 +3,12 @@ title: Azure Migrate Server 遷移的常見問題
 description: 取得有關使用 Azure Migrate Server 遷移來遷移機器的常見問題的解答。
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 80334bb2f0d6c0284c9031a99c0eb469b348873d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b62110e6b2ce97cdd80ed91ee4b1e75d119c7c7d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275535"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315241"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server 遷移：常見問題
 
@@ -34,8 +34,8 @@ Azure Migrate：伺服器遷移工具會將 UEFI 型機器遷移至 Azure 作為
 | SUSE Linux Enterprise Server 15 SP1                     | Y                                                                                                                                         | Y                              | Y                                                          |
 | SUSE Linux Enterprise Server 12 SP4                     | Y                                                                                                                                         | Y                              | Y                                                          |
 | Ubuntu Server 16.04、18.04、19.04、19.10                | Y                                                                                                                                         | Y                              | Y                                                          |
-| RHEL 8.1、8.0、7.8、7.7、7.6、7.5、7.4、7.0、6。x        | Y<br>                 _RHEL 8.x 需要 [手動準備](https://go.microsoft.com/fwlink/?linkid=2143939)_   | Y                              | Y                                                          |
-| 分幣 OS 8.1、8.0、7.7、7.6、7.5、7.4、6。x               | Y<br>_美分 OS 8.x 需要 [手動準備](https://go.microsoft.com/fwlink/?linkid=2143939)_ | Y                              | Y                                                          |
+| RHEL 8.1、8.0、7.8、7.7、7.6、7.5、7.4、7.0、6。x        | Y<br>                 _RHEL 8.x 需要 [手動準備](./prepare-for-migration.md#linux-machines)_   | Y                              | Y                                                          |
+| 分幣 OS 8.1、8.0、7.7、7.6、7.5、7.4、6。x               | Y<br>_美分 OS 8.x 需要 [手動準備](./prepare-for-migration.md#linux-machines)_ | Y                              | Y                                                          |
 | Oracle Linux 7.7、7.7-CI                                |  Y                                                                                                                                        | Y                              | Y                                                          |
 
 ## <a name="can-i-use-the-recovery-services-vault-created-by-azure-migrate-for-disaster-recovery-scenarios"></a>是否可以使用 Azure Migrate 針對嚴重損壞修復案例所建立的復原服務保存庫？
@@ -43,11 +43,11 @@ Azure Migrate：伺服器遷移工具會將 UEFI 型機器遷移至 Azure 作為
 
 ## <a name="where-should-i-install-the-replication-appliance-for-agent-based-migrations"></a>要在哪裡安裝以代理程式為基礎之遷移的複寫設備？
 
-複寫設備應該安裝在專用電腦上。 複寫設備不應該安裝在您想要複寫的來源機器上，也不應該安裝在您先前已安裝的 Azure Migrate 探索和評估設備上。 遵循 [教學](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines) 課程以取得詳細資料。
+複寫設備應該安裝在專用電腦上。 複寫設備不應該安裝在您想要複寫的來源機器上，也不應該安裝在您先前已安裝的 Azure Migrate 探索和評估設備上。 遵循 [教學](./tutorial-migrate-physical-virtual-machines.md) 課程以取得詳細資料。
 
 ## <a name="how-can-i-migrate-my-aws-ec2-instances-to-azure"></a>如何將我的 AWS EC2 實例遷移至 Azure？
 
-請參閱這 [篇文章](https://docs.microsoft.com/azure/migrate/tutorial-migrate-aws-virtual-machines) ，以探索、評估您的 AWS EC2 實例，並將其遷移至 Azure。
+請參閱這 [篇文章](./tutorial-migrate-aws-virtual-machines.md) ，以探索、評估您的 AWS EC2 實例，並將其遷移至 Azure。
 
 ## <a name="can-i-migrate-aws-vms-running-amazon-linux-operating-system"></a>是否可以遷移執行 Amazon Linux 作業系統的 AWS Vm？
 
@@ -79,18 +79,18 @@ Azure Migrate：伺服器遷移工具提供兩個選項，可讓您將來源伺�
 以下是在決定遷移選項時要牢記在心的一些考慮。
 
 **無代理程式遷移** 不需要將任何軟體 (代理程式) 部署到所要遷移的來源 vm/伺服器上。 無代理程式選項會整合虛擬化提供者所提供的功能，以協調複寫。
-適用于 [VMware vm](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware) 和 [Hyper-v Vm](https://docs.microsoft.com/azure/migrate/tutorial-migrate-hyper-v)的無代理程式複寫選項。
+適用于 [VMware vm](./tutorial-migrate-vmware.md) 和 [Hyper-v Vm](./tutorial-migrate-hyper-v.md)的無代理程式複寫選項。
 
 以代理程式為**基礎的遷移**需要在要遷移的來源 vm/機器上安裝 Azure Migrate 軟體 (代理程式) 。 以代理程式為基礎的選項並不依賴虛擬化平臺的複寫功能，因此可以搭配執行 x86/x64 架構的任何伺服器和代理程式型複寫方法所支援的作業系統版本使用。
 
-以代理程式為基礎的遷移選項可用於 [VMware vm](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware-agent)、 [hyper-v vm](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines)、 [實體伺服器](https://docs.microsoft.com/azure/migrate/tutorial-migrate-physical-virtual-machines)、 [在 AWS](https://docs.microsoft.com/azure/migrate/tutorial-migrate-aws-virtual-machines)上執行的 vm、在 GCP 上執行的 vm，或在不同的虛擬化提供者上執行的 vm。 以代理程式為基礎的遷移會將您的電腦視為實體伺服器，以進行遷移。
+以代理程式為基礎的遷移選項可用於 [VMware vm](./tutorial-migrate-vmware-agent.md)、 [hyper-v vm](./tutorial-migrate-physical-virtual-machines.md)、 [實體伺服器](./tutorial-migrate-physical-virtual-machines.md)、 [在 AWS](./tutorial-migrate-aws-virtual-machines.md)上執行的 vm、在 GCP 上執行的 vm，或在不同的虛擬化提供者上執行的 vm。 以代理程式為基礎的遷移會將您的電腦視為實體伺服器，以進行遷移。
 
 雖然無代理程式遷移可針對 (VMWare 和 Hyper-v) 所支援案例的代理程式型複寫選項提供額外的便利性和簡單性，但您可能會想要考慮使用以代理程式為基礎的案例來進行下列使用案例：
 
 - IOPS 受限的環境：無代理程式複寫使用快照集，並耗用儲存體 IOPS/頻寬。 如果您的環境中有儲存體/IOPS 的限制，我們建議以代理程式為基礎的遷移方法。
 - 如果您沒有 vCenter Server，您可以將 VMware Vm 視為實體伺服器，並使用以代理程式為基礎的遷移工作流程。
 
-若要深入瞭解，請參閱這 [篇文章](https://docs.microsoft.com/azure/migrate/server-migrate-overview) ，以比較 VMware 遷移的遷移選項。
+若要深入瞭解，請參閱這 [篇文章](./server-migrate-overview.md) ，以比較 VMware 遷移的遷移選項。
 
 ## <a name="how-does-agentless-migration-work"></a>無代理程式遷移的運作方式為何？
 
@@ -101,13 +101,13 @@ Azure Migrate：伺服器遷移提供無代理程式複寫選項，可讓您遷�
 針對虛擬機器設定複寫時，它會先經歷初始複寫階段。 在初始複寫期間，會建立 VM 快照集，並將快照集磁片的完整資料複本複寫到您訂用帳戶中的受控磁片。 完成 VM 的初始複寫之後，複寫程式會轉換為累加式複寫， (delta replication) 階段。 在增量複寫階段中，自從上一個完成的複寫週期以來發生的資料變更會定期複寫並套用至複本受控磁片，因此會讓複寫與 VM 上發生的變更保持同步。 在 VMware 虛擬機器的情況下，VMware 變更區塊追蹤技術是用來追蹤複寫週期之間的變更。 在複寫週期開始時，會建立 VM 快照集，並使用變更的區塊追蹤來取得目前快照集與最後一個成功複寫快照之間的變更。 如此一來，就只需要複寫自上一次完成複寫週期之後變更的資料，才能讓 VM 的複寫保持同步。在每個複寫週期結束時，快照集會釋出，並針對虛擬機器執行快照集匯總。 同樣地，在 Hyper-v 虛擬機器的情況下，也會使用 Hyper-v 複本變更追蹤引擎來追蹤連續複寫週期之間的變更。
 當您在複寫的虛擬機器上執行遷移作業時，您可以選擇關閉內部部署虛擬機器，並執行最後一次的累加式複寫，以確保零的資料遺失。 執行遷移選項時，會使用對應至虛擬機器的複本受控磁片，在 Azure 中建立虛擬機器。
 
-若要開始使用，請參閱 [VMware 無代理程式遷移](https://docs.microsoft.com/azure/migrate/tutorial-migrate-vmware) 和 [hyper-v 無代理程式遷移](https://docs.microsoft.com/azure/migrate/tutorial-migrate-hyper-v) 教學課程。
+若要開始使用，請參閱 [VMware 無代理程式遷移](./tutorial-migrate-vmware.md) 和 [hyper-v 無代理程式遷移](./tutorial-migrate-hyper-v.md) 教學課程。
 
 ## <a name="how-does-agent-based-migration-work"></a>以代理程式為基礎的遷移如何運作？
 
 除了適用于 VMware 虛擬機器和 Hyper-v 虛擬機器的無代理程式遷移選項之外，伺服器遷移工具還提供以代理程式為基礎的遷移選項，可遷移在實體伺服器上執行的 Windows 和 Linux 伺服器，或在 VMware、Hyper-v、AWS、Google Cloud Platform 等上以 x86/x64 虛擬機器的形式執行。
 
-以代理程式為基礎的遷移方法會使用在要遷移的伺服器上所安裝的代理程式軟體，將伺服器資料複寫至 Azure。 複寫程式會使用卸載架構，在此架構中，代理程式會將複寫資料轉送至稱為複寫設備或設定伺服器 (或向外延展處理伺服器) 的專用複寫伺服器。 [深入瞭解](https://docs.microsoft.com/azure/migrate/agent-based-migration-architecture) 以代理程式為基礎的遷移選項如何運作。 
+以代理程式為基礎的遷移方法會使用在要遷移的伺服器上所安裝的代理程式軟體，將伺服器資料複寫至 Azure。 複寫程式會使用卸載架構，在此架構中，代理程式會將複寫資料轉送至稱為複寫設備或設定伺服器 (或向外延展處理伺服器) 的專用複寫伺服器。 [深入瞭解](./agent-based-migration-architecture.md) 以代理程式為基礎的遷移選項如何運作。 
 
 注意：複寫設備與 Azure Migrate 探索設備不同，而且必須安裝在不同的/專用電腦上。
 
@@ -127,7 +127,7 @@ Azure Migrate：伺服器遷移提供無代理程式複寫選項，可讓您遷�
 
 ### <a name="agent-based-vmware-vm-migration"></a>以代理程式為基礎的 VMware VM 遷移
 
-針對以代理程式為基礎的複寫方法，部署規劃工具可協助分析環境中的資料變換，並協助預測必要的頻寬需求。 若要深入瞭解，請參閱這 [篇文章](https://docs.microsoft.com/azure/migrate/agent-based-migration-architecture#plan-vmware-deployment)。 
+針對以代理程式為基礎的複寫方法，部署規劃工具可協助分析環境中的資料變換，並協助預測必要的頻寬需求。 若要深入瞭解，請參閱這 [篇文章](./agent-based-migration-architecture.md#plan-vmware-deployment)。 
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>使用 Azure Migrate 設備進行無代理程式 VMware 複寫時，如何? 節流閥複寫？  
 
@@ -153,10 +153,10 @@ New-NetQosPolicy-Name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWi
 
 ## <a name="how-do-i-migrate-windows-server-2003-running-on-vmwarehyper-v-to-azure"></a>如何? 將在 VMware/Hyper-v 上執行的 Windows Server 2003 遷移至 Azure 嗎？
 
-[Windows Server 2003 延伸支援](https://go.microsoft.com/fwlink/?linkid=2140400) 已于2015年7月14日結束。  Azure 支援團隊會持續協助您針對在 Azure 上執行 Windows Server 2003 的問題進行疑難排解。 不過，這項支援僅限於不需要 OS 層級疑難排解或修補程式的問題。
+[Windows Server 2003 延伸支援](/troubleshoot/azure/virtual-machines/run-win-server-2003#microsoft-windows-server-2003-end-of-support) 已于2015年7月14日結束。  Azure 支援團隊會持續協助您針對在 Azure 上執行 Windows Server 2003 的問題進行疑難排解。 不過，這項支援僅限於不需要 OS 層級疑難排解或修補程式的問題。
 建議您將應用程式遷移至執行較新版本 Windows Server 的 Azure 實例，以確保您有效地運用 Azure 雲端的彈性和可靠性。
 
-但是，如果您仍然選擇將您的 Windows Server 2003 遷移至 Azure，您可以使用 Azure Migrate：伺服器遷移工具（如果您的 Windows Server 是在 VMware 或 Hyper-v 上執行的 VM），請參閱這篇文章，以 [準備要進行遷移的 Windows server 2003 電腦](https://go.microsoft.com/fwlink/?linkid=2140302)。
+但是，如果您仍然選擇將您的 Windows Server 2003 遷移至 Azure，您可以使用 Azure Migrate：伺服器遷移工具（如果您的 Windows Server 是在 VMware 或 Hyper-v 上執行的 VM），請參閱這篇文章，以 [準備要進行遷移的 Windows server 2003 電腦](./prepare-windows-server-2003-migration.md)。
 
 ## <a name="what-is-the-difference-between-the-test-migration-and-migrate-operations"></a>測試遷移和遷移作業之間有何差異？
 

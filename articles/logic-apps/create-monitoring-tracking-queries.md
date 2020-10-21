@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: cb1af437fc663fcb95c768ec295862209a26064e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1f575d9d588ccd99523c6b6d5d2ceba6369dc3d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090394"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309921"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>在 Azure Logic Apps 的 Azure 監視器記錄中，查看並建立用於監視和追蹤的查詢
 
-您可以查看從 [Azure 監視器記錄](../azure-monitor/log-query/log-query-overview.md) 產生結果的基礎查詢，以及建立根據您的特定準則來篩選結果的查詢。 例如，您可以找到根據特定交換控制編號的訊息。 查詢會使用 [Kusto 查詢語言](https://aka.ms/LogAnalyticsLanguageReference)，如果您想要查看不同的結果，則可加以編輯。 如需詳細資訊，請參閱 [Azure 監視器記錄查詢](../azure-monitor/log-query/query-language.md)。
+您可以查看從 [Azure 監視器記錄](../azure-monitor/log-query/log-query-overview.md) 產生結果的基礎查詢，以及建立根據您的特定準則來篩選結果的查詢。 例如，您可以找到根據特定交換控制編號的訊息。 查詢會使用 [Kusto 查詢語言](/azure/data-explorer/kusto/query/)，如果您想要查看不同的結果，則可加以編輯。 如需詳細資訊，請參閱 [Azure 監視器記錄查詢](/azure/data-explorer/kusto/query/)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -59,11 +59,11 @@ ms.locfileid: "87090394"
 
      ![從「Logic Apps B2B」解決方案預建查詢開始](./media/create-monitoring-tracking-queries/b2b-prebuilt-queries.png)
 
-   * 若要從空的查詢開始，請在查詢編輯器中，開始輸入查詢的 [Kusto 查詢語言](../azure-monitor/log-query/query-language.md) 。
+   * 若要從空的查詢開始，請在查詢編輯器中，開始輸入查詢的 [Kusto 查詢語言](/azure/data-explorer/kusto/query/) 。
 
      ![開始使用空白查詢](./media/create-monitoring-tracking-queries/create-query-from-blank.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [AS2 追蹤架構](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [X12 追蹤架構](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)

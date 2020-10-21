@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: a0cba1c3a7a3b713fa5f0603ad9e116068d8df66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2c7953ea7b85eca3628329b427f960f9466fd6b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618466"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316034"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中可用的 Blob 儲存體功能
 
@@ -49,7 +49,7 @@ Blob 儲存體功能 (例如[診斷記錄](../common/storage-analytics-logging.m
 |Blob 虛刪除|尚不支援|尚不支援|[Blob 的虛刪除](storage-blob-soft-delete.md)|
 |Blobfuse|預覽|尚不支援|[如何使用 Blobfuse 將 Blob 儲存體掛接為檔案系統](storage-how-to-mount-container-linux.md)|
 |帳戶容錯移轉|尚不支援|尚不支援|[災害復原和帳戶容錯移轉](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Blob 容器 ACL|尚不支援<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|尚不支援<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|[Set Container ACL (設定容器 ACL)](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
+|Blob 容器 ACL|不支援<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|不支援<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|請參閱下表中的相關附注。|
 |客戶提供的金鑰|尚不支援|尚不支援|[針對 Blob 儲存體的要求提供加密金鑰](encryption-customer-provided-keys.md)|
 |自訂網域|尚不支援|尚不支援|[將自訂網域對應至 Azure Blob 儲存體端點](storage-custom-domain-name.md)|
 |加密範圍|尚不支援|尚不支援|[建立及管理加密範圍 (預覽) ](encryption-scope-manage.md)|
