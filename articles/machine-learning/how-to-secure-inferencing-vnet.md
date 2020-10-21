@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/12/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 806505e5ac9c9b3dcf53624a1151961b0db45ef9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e778538efe97266eb73f85e8548a9cd5ca1f53c4
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972504"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341306"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 推斷環境
 
@@ -36,7 +36,7 @@ ms.locfileid: "91972504"
 > - Azure 容器執行個體 (ACI)
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 + 閱讀 [網路安全性總覽](how-to-network-security-overview.md) 文章，以瞭解常見的虛擬網路案例和整體虛擬網路架構。
 
@@ -119,11 +119,11 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 有兩種方法可將 AKS 叢集的流量與虛擬網路隔離：
 
-* __私用 AKS__叢集：此方法會使用 Azure Private Link 來建立 VNET 內 AKS 叢集的私人端點。
-* __內部 AKS 負載平衡器__：此方法會設定叢集的負載平衡器，以使用 VNet 中的內部 IP 位址。
+* __私用 AKS__叢集：此方法會使用 Azure Private Link 來保護與叢集的通訊，以進行部署/管理作業。
+* __內部 AKS 負載平衡器__：此方法會將您部署的端點設定為 AKS，以使用虛擬網路內的私人 IP。
 
 > [!WARNING]
-> 這兩種設定都是達到相同目標的不同方式 (保護 VNet) 內 AKS 叢集的流量。 **使用其中一個，但不能同時使用兩者**。
+> **使用私用 AKS 或內部負載平衡器，但不能同時使用兩者**。
 
 ### <a name="private-aks-cluster"></a>私用 AKS 叢集
 

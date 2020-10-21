@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/22/2020
 ms.author: memildin
-ms.openlocfilehash: db042a6112944e1c825177506782758d0a96b390
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab9be4b14ca51b56ec0a52147b409a56f87cf302
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448395"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341884"
 ---
 # <a name="using-custom-security-policies"></a>使用自訂安全性原則
 
@@ -21,7 +21,7 @@ ms.locfileid: "91448395"
 
 透過這項功能，您可以加入自己的「自訂」方案。 如果您的環境未遵循您所建立的原則，您就會收到建議。 您所建立的任何自訂方案都會與法規合規性儀表板中的內建方案一起出現，如[改善您的法規合規性](security-center-compliance-dashboard.md)教學課程中所述。
 
-如[Azure 原則文件](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location)中所述，當您指定自訂方案的位置時，其必須是管理群組或訂用帳戶。 
+如[Azure 原則文件](../governance/policy/concepts/definition-structure.md#definition-location)中所述，當您指定自訂方案的位置時，其必須是管理群組或訂用帳戶。 
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>將自訂方案新增至您的訂用帳戶 
 
@@ -136,7 +136,7 @@ ms.locfileid: "91448395"
 }
   ```
 
-如需使用 securityCenter 屬性的另一個範例，請參閱 [REST API 文件的這一節](https://docs.microsoft.com/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples)。
+如需使用 securityCenter 屬性的另一個範例，請參閱 [REST API 文件的這一節](/rest/api/securitycenter/assessmentsmetadata/createinsubscription#examples)。
 
 
 ## <a name="next-steps"></a>後續步驟
@@ -146,4 +146,4 @@ ms.locfileid: "91448395"
 如需其他相關內容，請參閱下列文章： 
 
 - [安全性原則概觀](tutorial-security-policy.md)
-- [內建安全性原則的清單](security-center-policy-definitions.md)
+- [內建安全性原則的清單](./policy-reference.md)

@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9457836a3048ff08b228bf9d5b84400af15d6cc5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eb02de25cfcb0dde01699c1169d03f0d822c4ae2
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88854954"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097400"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure Spatial Anchors 的相關常見問題集
 
@@ -128,4 +128,4 @@ Azure Spatial Anchors 會遵循 [Azure 服務合約條款](https://go.microsoft.
 
 **問：Azure Spatial Anchors 使用哪些連接埠和通訊協定？**
 
-**答：** Azure Spatial Anchors 使用加密通訊協定，透過 TCP 連接埠 443 進行通訊。 針對驗證，它使用 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)，使用 HTTPS 透過連接埠 443 進行通訊。
+**答：** Azure Spatial Anchors 使用加密通訊協定，透過 TCP 連接埠 443 進行通訊。 針對驗證，它使用 [Azure Active Directory](../active-directory/index.yml)，使用 HTTPS 透過連接埠 443 進行通訊。

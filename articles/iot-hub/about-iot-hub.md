@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: cde9d8614883168c3fbb3ab8219cdbef6087c9d0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aaf803d463e03f2de7814fed4b20a0b4312fa1ef
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87428981"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148836"
 ---
 # <a name="what-is-azure-iot-hub"></a>何謂 Azure IoT 中心？
 
@@ -40,7 +40,7 @@ IoT 中樞提供了安全的通訊通道，以便讓裝置傳送資料。
 
 * 您可以完全控制裝置存取，並且可以控制裝置層級的連線。
 
-* 裝置第一次開機時，[IoT 中樞裝置佈建服務](https://docs.microsoft.com/azure/iot-dps/)會自動將裝置佈建到正確的 IoT 中樞。
+* 裝置第一次開機時，[IoT 中樞裝置佈建服務](../iot-dps/index.yml)會自動將裝置佈建到正確的 IoT 中樞。
 
 * 多個驗證類型可支援各式各樣的裝置功能：
 
@@ -64,13 +64,13 @@ IoT 中樞提供了安全的通訊通道，以便讓裝置傳送資料。
 
 您可以將 IoT 中樞與其他 Azure 服務整合，以建置完整的解決方案。 例如，使用：
 
-* [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) 可讓您的企業以可靠、可調整規模且安全的方式快速回應重大事件。
+* [Azure Event Grid](../event-grid/index.yml) 可讓您的企業以可靠、可調整規模且安全的方式快速回應重大事件。
 
-* [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) 可自動化商業流程。
+* [Azure Logic Apps](../logic-apps/index.yml) 可自動化商業流程。
 
 * [Azure Machine Learning](iot-hub-weather-forecast-machine-learning.md) 可將機器學習和 AI 模型加入您的解決方案。
 
-* [Azure 串流分析](https://docs.microsoft.com/azure/stream-analytics/)可針對來自裝置的資料流執行即時分析運算。
+* [Azure 串流分析](../stream-analytics/index.yml)可針對來自裝置的資料流執行即時分析運算。
 
 ## <a name="configure-and-control-your-devices"></a>設定及控制您的裝置
 
@@ -88,7 +88,7 @@ IoT 中樞提供了安全的通訊通道，以便讓裝置傳送資料。
 
 ## <a name="connect-your-devices"></a>連線您的裝置
 
-使用 [Azure IoT 裝置 SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) 程式庫，以建置在您的裝置上執行並與 IoT 中樞互動的應用程式。 支援的平台包括多個 Linux 散發套件、Windows 和即時作業系統。 支援的語言包括：
+使用 [Azure IoT 裝置 SDK](./iot-hub-devguide-sdks.md) 程式庫，以建置在您的裝置上執行並與 IoT 中樞互動的應用程式。 支援的平台包括多個 Linux 散發套件、Windows 和即時作業系統。 支援的語言包括：
 
 * C
 * C#
@@ -108,7 +108,7 @@ IoT 中樞和裝置 SDK 支援下列連線裝置的通訊協定：
 
 如果您的解決方案無法使用任一種支援的通訊協定，則您可以擴充 IoT 中樞以支援自訂通訊協定：
 
-* 使用 [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) 建立一個現場閘道，以在 Edge 上執行通訊協定轉譯。
+* 使用 [Azure IoT Edge](../iot-edge/index.yml) 建立一個現場閘道，以在 Edge 上執行通訊協定轉譯。
 
 * 自訂 [Azure IoT 通訊協定閘道](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)，以在雲端中執行通訊協定轉譯。
 

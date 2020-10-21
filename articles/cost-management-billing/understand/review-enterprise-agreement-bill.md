@@ -9,12 +9,12 @@ ms.subservice: enterprise
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 5340d6124ae4fdc669a30458b9e58cf4c86d6746
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: d707051e20b4ce9d1289557aec6f8256c2e6bfba
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684655"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150067"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>了解您的 Azure Enterprise 合約帳單
 
@@ -436,7 +436,7 @@ API 金鑰每六個月就會過期。 如果您遇到問題，企業系統管理
 
 ### <a name="why-dont-my-resource-tags-show-on-my-reports"></a>為什麼我的資源標籤不會顯示在我的報表中
 
-資源標籤可從 Azure 入口網站管理。 您可以在 [Azure 入口網站](https://portal.azure.com)中連絡 Azure 訂用帳戶小組。 請依照[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)一文中的步驟進行。
+資源標籤可從 Azure 入口網站管理。 您可以在 [Azure 入口網站](https://portal.azure.com)中連絡 Azure 訂用帳戶小組。 請依照[如何建立 Azure 支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md)一文中的步驟進行。
 
 ### <a name="why-does-my-resource-rate-change-every-day"></a>為何我的資源費率每天都會變更？
 

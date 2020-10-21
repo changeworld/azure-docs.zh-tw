@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: a418841d91ab6b8fe5457f3fd64d91306fe08dfe
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: af2dc8378d1f1fe952a568ecb4bd89d088e3e3d3
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383117"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147232"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>了解保留折扣如何套用至 Azure 資料總管
 
@@ -70,4 +70,4 @@ ms.locfileid: "81383117"
 * [管理 Azure 保留](manage-reserved-vm-instance.md)  
 * [了解隨用隨付訂用帳戶的保留使用量](understand-reserved-instance-usage.md)
 * [了解 Enterprise 註冊的保留項目使用量](understand-reserved-instance-usage-ea.md)
-* [了解 CSP 訂用帳戶的保留使用量](https://docs.microsoft.com/partner-center/azure-reservations)
+* [了解 CSP 訂用帳戶的保留使用量](/partner-center/azure-reservations)

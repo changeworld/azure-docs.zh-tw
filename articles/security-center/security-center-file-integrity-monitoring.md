@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 45e173f87559368244ab7b0f90af1dbb6fc739d4
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 1773e1345e9410f54a0364b586c3afca5b648b4c
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205382"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341527"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 資訊安全中心中的檔案完整性監視
 瞭解如何使用本逐步解說，在 Azure 資訊安全中心中設定檔案完整性監視 (FIM) 。
@@ -30,7 +30,7 @@ ms.locfileid: "92205382"
 |----|:----|
 |版本狀態：|正式上市 (GA)|
 |定價：|需要 [適用于伺服器的 Azure Defender](defender-for-servers-introduction.md)。<br>FIM 會將資料上傳到 Log Analytics 工作區。 根據您上傳的資料量，需要支付資料費用。 請參閱 [Log Analytics 定價](https://azure.microsoft.com/pricing/details/log-analytics/)以深入了解。|
-|必要的角色和權限：|**工作區擁有** 者可以啟用/停用 FIM (如需詳細資訊，請參閱 [適用于 Log Analytics 的 Azure 角色](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)) 。<br>**讀者** 可以看到結果。|
+|必要的角色和權限：|**工作區擁有** 者可以啟用/停用 FIM (如需詳細資訊，請參閱 [適用于 Log Analytics 的 Azure 角色](/services-hub/health/azure-roles#azure-roles)) 。<br>**讀者** 可以看到結果。|
 |雲端：|![是 ](./media/icons/yes-icon.png) 商用雲端<br>![是 ](./media/icons/yes-icon.png) US Gov<br>![沒有 ](./media/icons/no-icon.png) 中國 Gov，其他 Gov<br>只有在 Azure 自動化的變更追蹤解決方案可用的區域中才支援。<br>請參閱 [連結的 Log Analytics 工作區支援的區域](../automation/how-to/region-mappings.md)。<br>[深入瞭解變更追蹤](../automation/change-tracking/overview.md)。|
 |||
 
@@ -212,7 +212,7 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 
    ![新增要監視的項目][14]
 
-3. 選取 [新增]。 [Add for Change Tracking] \(新增變更追蹤項目\)**** 會隨即開啟。
+3. 選取 [新增]  。 [Add for Change Tracking] \(新增變更追蹤項目\)**** 會隨即開啟。
 
    ![輸入所要求的資訊][15]
 
@@ -262,7 +262,7 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 
 * [設定安全性原則](tutorial-security-policy.md) --瞭解如何為您的 Azure 訂用帳戶和資源群組設定安全性原則。
 * [管理安全性建議](security-center-recommendations.md) - 了解建議如何協助保護您的 Azure 資源。
-* [Azure 安全性部落格](https://docs.microsoft.com/archive/blogs/azuresecurity/)-- 取得最新的 Azure 安全性新聞和資訊。
+* [Azure 安全性部落格](/archive/blogs/azuresecurity/)-- 取得最新的 Azure 安全性新聞和資訊。
 
 <!--Image references-->
 [1]: ./media/security-center-file-integrity-monitoring/security-center-dashboard.png

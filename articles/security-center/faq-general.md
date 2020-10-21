@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 5695f9fa090419d803f4f3603b45b771321e5ce9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 061b190af6e66cf0c7e8095251a3ef77d9aaf247
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91301443"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341680"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>常見問題-Azure 資訊安全中心的一般問題
 
@@ -62,7 +62,7 @@ Azure 資訊安全中心會監視下列 Azure 資源：
 「Azure 資訊安全中心」會分析 Azure 資源的安全性狀態。 當發現潛在的安全性弱點時，就會產生相關建議。 這些建議會引導您完成設定所需控制項的程序。 範例包括：
 
 * 佈建反惡意程式碼，以協助識別及移除惡意軟體
-* [網路安全性群組](../virtual-network/security-overview.md)與規則，以控制對虛擬機器的流量
+* [網路安全性群組](../virtual-network/network-security-groups-overview.md)與規則，以控制對虛擬機器的流量
 * 佈建 Web 應用程式防火牆，以協助抵禦以 Web 應用程式為目標的攻擊
 * 部署遺漏的系統更新
 * 處理不符合建議基準的作業系統組態

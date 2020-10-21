@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 6fa70eba5875c32d41fa1cfc8daf9b1cdf8f19df
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 915f8675ffda0d70347905d11c7d93975b9d4526
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83599106"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132732"
 ---
 # <a name="quotas-in-azure-static-web-apps-preview"></a>Azure 靜態 Web Apps 預覽版中的配額
 
@@ -26,7 +26,7 @@ Azure 靜態 Web Apps 預覽版有下列配額。
 | 內含頻寬          | 每個月 100 GB |
 | 超額頻寬           | 無法使用      |
 | 每個 Azure 訂用帳戶的應用程式 | 10               |
-| 應用程式大小                    | 100 MB           |
+| 應用程式大小                    | 250 MB           |
 | 生產前環境 | 1                |
 | 自訂網域              | 1                |
 | 授權<br><br>具有自訂角色和路由規則 | 最多 25 個受邀的使用者和指派的角色 |

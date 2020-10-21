@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: c8ab6f51daf18802b83508a3e1bbd5af3ee59799
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 50180984423b7c6d2921234a3502495016c4df5c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336863"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150114"
 ---
 # <a name="plan-to-manage-azure-costs"></a>規劃管理 Azure 成本
 
@@ -24,7 +24,7 @@ ms.locfileid: "91336863"
 - 使用[定價計算機](https://azure.microsoft.com/pricing/calculator/)、Azure 價位表新增服務前，或在 Azure 入口網站中新增服務時，先取得預估成本。
 - 使用[預算](../costs/tutorial-acm-create-budgets.md)、[警示](../costs/cost-mgt-alerts-monitor-usage-spending.md)和[成本分析](../costs/quick-acm-cost-analysis.md)來監視成本。
 - 藉由與[詳細的使用量檔案](../manage/download-azure-invoice-daily-usage-date.md)進行比較，以檢閱您發票的費用。
-- 使用[計費](https://docs.microsoft.com/rest/api/billing/)和[使用量](https://docs.microsoft.com/rest/api/consumption/) API 來整合帳單和成本資料與您自己的報告系統。
+- 使用[計費](/rest/api/billing/)和[使用量](/rest/api/consumption/) API 來整合帳單和成本資料與您自己的報告系統。
 - 使用 Enterprise 合約 (EA)、雲端解決方案提供者 (CSP) 和 Azure 贊助客戶的其他資源與工具。
 - 免費使用 [Azure 免費帳戶](https://azure.microsoft.com/free/)提供的[一些最常用的 Azure 服務 12 個月](../manage/create-free-services.md)。 除了下列建議之外，請參閱[避免產生免費帳戶的費用](../manage/avoid-charges-free-account.md)。
 
@@ -125,7 +125,7 @@ ms.locfileid: "91336863"
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>整合帳單與使用量 API
 
-使用 Azure [帳單](https://docs.microsoft.com/rest/api/billing/)和[使用量](https://docs.microsoft.com/rest/api/consumption/) API，以程式設計方式取得帳單和成本資料。 RateCard API 與使用情況 API 一起使用即可取得您的計費使用量。 如需詳細資訊，請參閱[深入瞭解 Microsoft Azure 資源耗用量](../manage/usage-rate-card-overview.md)。
+使用 Azure [帳單](/rest/api/billing/)和[使用量](/rest/api/consumption/) API，以程式設計方式取得帳單和成本資料。 RateCard API 與使用情況 API 一起使用即可取得您的計費使用量。 如需詳細資訊，請參閱[深入瞭解 Microsoft Azure 資源耗用量](../manage/usage-rate-card-overview.md)。
 
 ## <a name="additional-resources-and-special-cases"></a><a name="other-offers"></a> 其他資源和特殊案例
 

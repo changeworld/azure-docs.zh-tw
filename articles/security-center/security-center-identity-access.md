@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 02e78969ce30f109f16309075b040b06c773b0dd
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 88ab04eb69be0f9f765e6f95a0ea1194189d823a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946210"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341257"
 ---
 # <a name="monitor-identity-and-access"></a>監視身分識別和存取
 
@@ -30,7 +30,7 @@ ms.locfileid: "91946210"
 
 Azure 資訊安全中心有兩個專屬的安全性控制措施可確保您符合組織的身分識別和安全性需求： 
 
- - **管理存取權和許可權** -我們鼓勵您採用 [最低許可權存取模型](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) ，並確保您只授與使用者執行其作業所需的存取權。 此控制項也包含執行 [角色型存取控制 (RBAC) ](../role-based-access-control/overview.md) 來控制資源存取權的建議。
+ - **管理存取權和許可權** -我們鼓勵您採用 [最低許可權存取模型](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) ，並確保您只授與使用者執行其作業所需的存取權。 此控制項也包含執行 [角色型存取控制 (RBAC) ](../role-based-access-control/overview.md) 來控制資源存取權的建議。
  
  - **啟用 mfa** -啟用 [mfa](https://www.microsoft.com/security/business/identity/mfa) 後，您的帳戶會更安全，使用者仍可使用單一登入驗證幾乎任何應用程式。
 
@@ -84,7 +84,7 @@ Azure 資訊安全中心有兩個專屬的安全性控制措施可確保您符�
     > 帳戶會顯示為物件識別碼而非帳戶名稱，以保護帳戶持有者的隱私權。
 
 > [!TIP]
-> 或者，您可以使用安全中心的 REST API 方法 [評定-Get](https://docs.microsoft.com/rest/api/securitycenter/assessments/get)。
+> 或者，您可以使用安全中心的 REST API 方法 [評定-Get](/rest/api/securitycenter/assessments/get)。
 
 
 ## <a name="next-steps"></a>後續步驟

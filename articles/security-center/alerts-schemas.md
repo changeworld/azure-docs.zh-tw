@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 264cab08fa967af783b758ed1030826d2a179e8a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 082f246437cdd99b844d1ed8010d8dc846fc4d47
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220664"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341935"
 ---
 # <a name="security-alerts-schemas"></a>安全性警示架構
 
@@ -24,9 +24,9 @@ ms.locfileid: "92220664"
 
 您可以在 Azure 資訊安全中心的 **威脅防護** 頁面中查看這些安全性警示，或透過外部工具（例如：
 
-- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) -Microsoft 的雲端原生 SIEM。 Sentinel 連接器會從 Azure 資訊安全中心取得警示，並將其傳送至 [Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) 以進行 Azure Sentinel。
-- 協力廠商 Siem-使用安全中心的 [連續匯出](continuous-export.md) 工具將資料傳送至 [Azure 事件中樞](https://docs.microsoft.com/azure/event-hubs/)。 然後將您的事件中樞資料與協力廠商 SIEM 整合。
-- [REST API](https://docs.microsoft.com/rest/api/securitycenter/) -如果您要使用 REST API 來存取警示，請參閱 [線上警示 API 檔](https://docs.microsoft.com/rest/api/securitycenter/alerts)。
+- [Azure Sentinel](../sentinel/index.yml) -Microsoft 的雲端原生 SIEM。 Sentinel 連接器會從 Azure 資訊安全中心取得警示，並將其傳送至 [Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace.md) 以進行 Azure Sentinel。
+- 協力廠商 Siem-使用安全中心的 [連續匯出](continuous-export.md) 工具將資料傳送至 [Azure 事件中樞](../event-hubs/index.yml)。 然後將您的事件中樞資料與協力廠商 SIEM 整合。
+- [REST API](/rest/api/securitycenter/) -如果您要使用 REST API 來存取警示，請參閱 [線上警示 API 檔](/rest/api/securitycenter/alerts)。
 
 如果您使用任何程式設計方法來取用警示，您需要正確的架構，才能找到與您相關的欄位。 此外，如果您要匯出至事件中樞，或嘗試使用泛型 HTTP 連接器來觸發工作流程自動化，請使用架構來適當地剖析 JSON 物件。
 
@@ -60,7 +60,7 @@ Sentinel 連接器會從 Azure 資訊安全中心取得警示，並將其傳送�
 
 若要使用「安全性中心」警示來建立 Sentinel 案例或事件，您將需要這些警示的架構，如下所示。 
 
-如需 Azure Sentinel 的詳細資訊，請參閱 [檔](https://docs.microsoft.com/azure/sentinel/)。
+如需 Azure Sentinel 的詳細資訊，請參閱 [檔](../sentinel/index.yml)。
 
 [!INCLUDE [Sentinel and workspace schema](../../includes/security-center-alerts-schema-log-analytics-workspace.md)]
 
@@ -139,7 +139,7 @@ Azure 資訊安全中心會在 Azure 活動記錄中以事件形式來審核產�
 
 ### <a name="the-data-model-of-the-schema"></a>架構的資料模型
 
-|欄位|描述|
+|欄位|說明|
 |----|----|
 |**管道**|常數，"Operation"|
 |**correlationId**|Azure 資訊安全中心警示識別碼|
@@ -172,7 +172,7 @@ Azure 資訊安全中心會在 Azure 活動記錄中以事件形式來審核產�
 
 Microsoft Graph 是 Microsoft 365 中資料和智慧的閘道。 它提供統一的可程式性模型，可讓您用來存取 Microsoft 365、Windows 10 和 Enterprise Mobility + Security 的大量資料。 在 Microsoft Graph 中使用豐富的資料來建立與數百萬個使用者互動之組織和取用者的應用程式。
 
-針對傳送至 MS Graph 的安全性警示，架構和 JSON 標記法可在 [Microsoft Graph 檔](https://docs.microsoft.com/graph/api/resources/alert?view=graph-rest-1.0&preserve-view=true)中取得。
+針對傳送至 MS Graph 的安全性警示，架構和 JSON 標記法可在 [Microsoft Graph 檔](/graph/api/resources/alert?preserve-view=true&view=graph-rest-1.0)中取得。
 
 ---
 
@@ -183,7 +183,7 @@ Microsoft Graph 是 Microsoft 365 中資料和智慧的閘道。 它提供統一
 
 如需有關從資訊安全中心存取安全性警示方式的詳細資訊，請參閱下列頁面：
 
-- [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/) -Microsoft 的雲端原生 SIEM
-- [Azure 事件中樞](https://docs.microsoft.com/azure/event-hubs/) -Microsoft 完全受控的即時資料內嵌服務
+- [Azure Sentinel](../sentinel/index.yml) -Microsoft 的雲端原生 SIEM
+- [Azure 事件中樞](../event-hubs/index.yml) -Microsoft 完全受控的即時資料內嵌服務
 - 安全性中心的 [連續匯出功能](continuous-export.md)
-- [Log analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) -Azure 監視器將記錄資料儲存在 log Analytics 工作區中，包含資料和設定資訊的容器
+- [Log analytics 工作區](../azure-monitor/learn/quick-create-workspace.md) -Azure 監視器將記錄資料儲存在 log Analytics 工作區中，包含資料和設定資訊的容器

@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 10/09/2020
 ms.author: banders
-ms.openlocfilehash: 2ca4affaeae7f19cf3c913b5dfcf89a04e5bc628
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 32c0779f4086574aeaf8d38ea675f80fbd2c1ec7
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92026256"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132222"
 ---
 # <a name="troubleshoot-mca-billing-issues-with-usage-file-pivot-tables"></a>透過使用情況檔案樞紐分析表對 MCA 計費問題進行疑難排解
 
@@ -27,13 +27,13 @@ ms.locfileid: "92026256"
 
 您可以利用使用情況檔案中的資訊，進一步了解使用問題並加以診斷。 使用情況檔案會以逗號分隔 (CSV) 格式產生。 由於使用情況檔案可能是大型 CSV 檔案，因此在 Excel 之類的試算表應用程式中以樞紐分析表的形式操作和檢視，會較為容易。 本文中的範例使用 Excel，但是您可以使用任何偏好的試算表應用程式。
 
-只有帳單設定檔擁有者、參與者、讀者或發票管理員才有權下載使用情況檔案。 如需詳細資訊，請參閱[下載 Microsoft 客戶合約的使用情況](https://docs.microsoft.com/azure/cost-management-billing/manage/download-azure-invoice-daily-usage-date#download-usage-for-your-microsoft-customer-agreement)。 
+只有帳單設定檔擁有者、參與者、讀者或發票管理員才有權下載使用情況檔案。 如需詳細資訊，請參閱[下載 Microsoft 客戶合約的使用情況](./download-azure-invoice-daily-usage-date.md#download-usage-for-your-microsoft-customer-agreement)。 
 
 ## <a name="get-the-data-and-format-it"></a>取得資料並將其格式化
 
 由於 Azure 使用情況檔案是 CSV 格式，您必須準備資料以在 Excel 中使用。 請使用下列步驟，將資料格式化為資料表。
 
-1. 使用[在 Azure 入口網站中下載使用情況](https://docs.microsoft.com/azure/cost-management-billing/manage/download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)的指示，下載使用情況檔案。
+1. 使用[在 Azure 入口網站中下載使用情況](./download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)的指示，下載使用情況檔案。
 1. 在 Excel 中開啟檔案。
 1. 未格式化的資料如下列範例所示。  
     :::image type="content" source="./media/troubleshoot-customer-agreement-billing-issues-usage-file-pivot-tables/raw-csv-data-mca.png" alt-text="顯示未格式化資料的範例" lightbox="./media/troubleshoot-customer-agreement-billing-issues-usage-file-pivot-tables/raw-csv-data-mca.png" :::

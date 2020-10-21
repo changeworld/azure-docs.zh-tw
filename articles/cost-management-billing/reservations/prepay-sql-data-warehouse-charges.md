@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: ca83760f09ea29ba0b21a0f7177dd3f3188c44cd
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b82f4252754e79813629e0c792ee0ba35e437714
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686134"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151512"
 ---
 # <a name="save-costs-for-azure-synapse-analytics-charges-with-reserved-capacity"></a>使用保留容量節省 Azure Synapse Analytics 費用的成本
 
@@ -27,7 +27,7 @@ ms.locfileid: "88686134"
 
 如需定價資訊，請參閱 [Azure Synapse Analytics 保留容量供應專案](https://azure.microsoft.com/pricing/details/synapse-analytics/)。
 
-您可以在 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)購買 Azure Synapse Analytics 保留容量。 保留的付款方式可為[預先付款或每月付款](monthly-payments-reservations.md)。 若要購買保留容量：
+您可以在 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)購買 Azure Synapse Analytics 保留容量。 保留的付款方式可為[預先付款或每月付款](./prepare-buy-reservation.md)。 若要購買保留容量：
 
 - 您必須有至少一個企業或隨用隨付訂用帳戶的擁有者角色。
 - 針對企業訂用帳戶，必須在 [EA 入口網站](https://ea.azure.com/)中啟用 [新增保留執行個體]  選項。 如果該設定已停用，則您必須是 EA 系統管理員。

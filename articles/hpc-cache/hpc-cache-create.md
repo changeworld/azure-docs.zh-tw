@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: bed158fb99654bd48184073b1266ae630255558b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 867cfa1321106c24354b29ea803a4fb914a6778d
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613164"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341375"
 ---
 # <a name="create-an-azure-hpc-cache"></a>建立 Azure HPC Cache
 
@@ -81,7 +81,7 @@ Azure HPC Cache 會管理要快取和預先載入哪些檔案，以最大化快�
 
 ## <a name="add-resource-tags-optional"></a>新增資源標記 (選擇性)
 
-[標籤]**** 頁面可讓您將[資源標籤](https://go.microsoft.com/fwlink/?linkid=873112)新增至 Azure HPC Cache 執行個體。
+[標籤]**** 頁面可讓您將[資源標籤](../azure-resource-manager/management/tag-resources.md)新增至 Azure HPC Cache 執行個體。
 
 ## <a name="finish-creating-the-cache"></a>完成建立快取
 
@@ -196,7 +196,7 @@ az hpc-cache create --resource-group doc-demo-rg --name my-cache-0619 \
 
 ## <a name="requirements"></a>需求
 
-如果您選擇在本機使用 PowerShell，本文會要求您安裝 Az PowerShell 模組，並使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet 連線到您的 Azure 帳戶。 如需安裝 Az PowerShell 模組的詳細資訊，請參閱[安裝 Azure PowerShell](/powershell/azure/install-az-ps)。 如果您選擇使用 Cloud Shell，請參閱 [Azure Cloud Shell 的概觀](https://docs.microsoft.com/azure/cloud-shell/overview)以取得詳細資訊。
+如果您選擇在本機使用 PowerShell，本文會要求您安裝 Az PowerShell 模組，並使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet 連線到您的 Azure 帳戶。 如需安裝 Az PowerShell 模組的詳細資訊，請參閱[安裝 Azure PowerShell](/powershell/azure/install-az-ps)。 如果您選擇使用 Cloud Shell，請參閱 [Azure Cloud Shell 的概觀](../cloud-shell/overview.md)以取得詳細資訊。
 
 > [!IMPORTANT]
 > **HPCCache** PowerShell 模組目前為預覽狀態，您必須使用指令程式個別進行安裝 `Install-Module` 。 在此 PowerShell 模組正式推出之後，它將會成為未來 Az PowerShell 模組版本的一部分，並以原生方式從 Azure Cloud Shell 內提供。

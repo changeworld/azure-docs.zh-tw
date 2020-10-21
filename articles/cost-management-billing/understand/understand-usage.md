@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d113ad7d3de3478fbbdcce32363e048b7a8a75ce
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 559fe43bbd9b8951a97733ae1250046f65f10404
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681731"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149362"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>了解 Azure 使用量和費用檔案中的詞彙
 
@@ -90,8 +90,8 @@ PublisherType | 全部 | 發行者的類型 (值：**Azure**、**AWS**、**Marke
 數量 | 全部 | 所購買或取用的單位數。
 ReservationId | EA、MCA | 所購買保留執行個體的唯一識別碼。
 ReservationName | EA、MCA | 所購買保留執行個體的名稱。
-ResourceGroup | 全部 | 資源所在[資源群組](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)的名稱。 並非所有費用都來自於部署至資源群組的資源。 沒有資源群組的費用會顯示為 Null/空白、[其他] 或 [不適用]。
-ResourceId<sup>1</sup> | 全部 | [AzureResource Manager](https://docs.microsoft.com/rest/api/resources/resources) 資源的唯一識別碼。
+ResourceGroup | 全部 | 資源所在[資源群組](../../azure-resource-manager/management/overview.md)的名稱。 並非所有費用都來自於部署至資源群組的資源。 沒有資源群組的費用會顯示為 Null/空白、[其他] 或 [不適用]。
+ResourceId<sup>1</sup> | 全部 | [AzureResource Manager](/rest/api/resources/resources) 資源的唯一識別碼。
 ResourceLocation | 全部 | 正在執行資源的資料中心位置。 請參閱 Location。
 ResourceName | EA、PAYG | 資源名稱。 並非所有費用都來自於已部署的資源。 沒有資源類型的費用會顯示為 Null/空白、[其他] 或 [不適用]。
 ResourceType | MCA | 資源執行個體的類型。 並非所有費用都來自於已部署的資源。 沒有資源類型的費用會顯示為 Null/空白、[其他] 或 [不適用]。

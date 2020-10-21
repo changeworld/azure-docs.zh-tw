@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 4d6208360bd876a2a1ae0a9ff154604a33584db9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 4dff56db9f1450ff7eb2a2b9ca6f4ca648e2ac38
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447940"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150091"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>開始使用您的 Microsoft 合作夥伴合約計費帳戶
 
@@ -29,7 +29,7 @@ Microsoft 合作夥伴合約的計費帳戶包含您計費所用之每種貨幣�
 
 ![顯示 Microsoft 合作夥伴合約計費階層的圖表](./media/mpa-overview/mpa-hierarchy.svg)
 
-貴組織中具有 [全域管理員]  和 [管理員代理人]  角色的使用者可以管理計費帳戶、帳單設定檔和客戶。 若要深入了解，請參閱[合作夥伴中心 - 指派使用者角色和權限](https://docs.microsoft.com/partner-center/permissions-overview)。
+貴組織中具有 [全域管理員]  和 [管理員代理人]  角色的使用者可以管理計費帳戶、帳單設定檔和客戶。 若要深入了解，請參閱[合作夥伴中心 - 指派使用者角色和權限](/partner-center/permissions-overview)。
 
 ## <a name="billing-profiles"></a>帳單設定檔
 
@@ -47,7 +47,7 @@ Microsoft 合作夥伴合約的計費帳戶包含您計費所用之每種貨幣�
 
 ### <a name="enable-policy-to-give-visibility-into-cost"></a>啟用原則以提供成本的可見度
 
-套用原則，以控制客戶組織中的使用者是否可以針對其 Azure 使用量，以隨用隨付費率檢視和分析成本。 根據預設，此原則會關閉且使用者無法檢視成本。 啟用後，具有訂用帳戶適當 [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) 存取權的使用者即可檢視及分析該訂用帳戶的成本。
+套用原則，以控制客戶組織中的使用者是否可以針對其 Azure 使用量，以隨用隨付費率檢視和分析成本。 根據預設，此原則會關閉且使用者無法檢視成本。 啟用後，具有訂用帳戶適當 [Azure RBAC](../../role-based-access-control/overview.md) 存取權的使用者即可檢視及分析該訂用帳戶的成本。
 
 若要開啟原則：
 
@@ -69,7 +69,7 @@ Microsoft 合作夥伴合約的計費帳戶包含您計費所用之每種貨幣�
 
 ## <a name="resellers"></a>經銷商
 
-CSP [兩層式模型](https://docs.microsoft.com/partner-center)中的間接提供者在 Azure 入口網站中為客戶建立訂用帳戶時，可以選取轉銷商。 建立後，他們可以檢視依轉銷商篩選的訂用帳戶清單，並在 Azure 成本分析中依轉售商分析客戶的成本。
+CSP [兩層式模型](/partner-center)中的間接提供者在 Azure 入口網站中為客戶建立訂用帳戶時，可以選取轉銷商。 建立後，他們可以檢視依轉銷商篩選的訂用帳戶清單，並在 Azure 成本分析中依轉售商分析客戶的成本。
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>檢查 Microsoft 合作夥伴合約的存取權
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]
@@ -83,5 +83,5 @@ CSP [兩層式模型](https://docs.microsoft.com/partner-center)中的間接提�
 若要了解您的計費帳戶，請參閱下列文章：
 
 - [為 Microsoft 合作夥伴合約建立額外的 Azure 訂用帳戶](../manage/create-subscription.md)
-- 使用 [Azure 計費 API](https://docs.microsoft.com/rest/api/billing/) 來整合帳單資料與您自己的報告系統
-- [合作夥伴的 Azure 成本管理快速入門指南](https://go.microsoft.com/fwlink/?linkid=2106482)
+- 使用 [Azure 計費 API](/rest/api/billing/) 來整合帳單資料與您自己的報告系統
+- [合作夥伴的 Azure 成本管理快速入門指南](../costs/get-started-partners.md)

@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 4677426337a48d4fde74f61b8a4ad6fcb695f420
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b2855f82927b6f1707fd748f097dd357818ac4b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577810"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341969"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>適用於儲存體的 Azure Defender 簡介
 
@@ -27,7 +27,7 @@ ms.locfileid: "91577810"
 |----|:----|
 |版本狀態：|正式上市 (GA)|
 |定價：|**適用於儲存體的 Azure Defender** 的計費方式如[定價頁面](security-center-pricing.md)所示|
-|受保護的儲存體類型：|[Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure 檔案](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)<br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) \(部分機器翻譯\)|
+|受保護的儲存體類型：|[Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure 檔案](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) \(部分機器翻譯\)|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov、其他 Gov|
 |||
 
@@ -66,6 +66,6 @@ ms.locfileid: "91577810"
 如需相關內容，請參閱下列文章： 
 
 - 無論是由資訊安全中心產生警示，還是由不同的安全性產品資訊安全中心接收的警示，您都可以將其匯出。 若要將您的警示匯出至 Azure Sentinel、任何第三方 SIEM 或任何其他外部工具，請依照[將警示匯出至 SIEM](continuous-export.md) 中的指示操作。
-- [如何啟用 Advanced Defender for Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
+- [如何啟用 Advanced Defender for Storage](../storage/common/azure-defender-storage-configure.md)
 - [適用於儲存體的 Azure Defender 警示清單](alerts-reference.md#alerts-azurestorage)
 - [Microsoft 的威脅情報功能](https://go.microsoft.com/fwlink/?linkid=2128684)

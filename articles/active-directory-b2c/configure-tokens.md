@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/07/2020
+ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 10f86d194c5c70f2de0ab6502893e228800b1bdf
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 67bc9d6b35d4841999721a00592a6bbe23bff10f
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215462"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340218"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>設定 Azure Active Directory B2C 中的權杖
 
@@ -54,6 +54,17 @@ ms.locfileid: "92215462"
     ![Azure 入口網站中的權杖相容性屬性設定](./media/configure-tokens/token-compatibility.png)
 
 5. 按一下 [檔案] 。
+
+## <a name="provide-optional-claims-to-your-app"></a>為您的應用程式提供選擇性宣告
+
+應用程式宣告是傳回給應用程式的值。 更新您的使用者流程以包含所需的宣告。
+
+1. 選取 [使用者流程 (原則)]。
+1. 開啟您先前建立的使用者流程。
+1. 選取 [應用程式宣告]****。
+1. 選擇您想要傳回給應用程式的宣告和屬性。
+1. 按一下 [檔案] 。
+
 
 ## <a name="next-steps"></a>後續步驟
 

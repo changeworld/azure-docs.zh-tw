@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: ecc3c4e97ea533f19e570db21eceb6f759969a8f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1decb3e9915f0595afb05b46be8ba9fae836081d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87317938"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150650"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>快速入門：將遙測從裝置傳送至 IoT 中樞，並使用後端應用程式讀取遙測 (C)
 
@@ -96,7 +96,7 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
     cmake ..
     ```
 
-    如果 `cmake` 找不到 C++ 編譯器，您在執行上述命令時，可能會收到建置錯誤。 如果發生這種情況，請嘗試在 [Visual Studio 命令提示字元](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs)中執行此命令。 
+    如果 `cmake` 找不到 C++ 編譯器，您在執行上述命令時，可能會收到建置錯誤。 如果發生這種情況，請嘗試在 [Visual Studio 命令提示字元](/dotnet/framework/tools/developer-command-prompt-for-vs)中執行此命令。 
 
     建置成功後，最後幾行輸出會類似於下列輸出：
 
@@ -120,7 +120,7 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
 
 ## <a name="register-a-device"></a>註冊裝置
 
-裝置必須向的 IoT 中樞註冊，才能進行連線。 在本節中，您將使用 Azure Cloud Shell 搭配 [IoT 擴充功能](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)來註冊模擬裝置。
+裝置必須向的 IoT 中樞註冊，才能進行連線。 在本節中，您將使用 Azure Cloud Shell 搭配 [IoT 擴充功能](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)來註冊模擬裝置。
 
 1. 在 Azure Cloud Shell 中執行下列命令，以建立裝置身分識別。
 
@@ -189,7 +189,7 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
 
 ## <a name="read-the-telemetry-from-your-hub"></a>從您的中樞讀取遙測
 
-在本節中，您將使用 Azure Cloud Shell 搭配 [IoT 擴充功能](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)來監視由模擬裝置傳送的裝置訊息。
+在本節中，您將使用 Azure Cloud Shell 搭配 [IoT 擴充功能](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)來監視由模擬裝置傳送的裝置訊息。
 
 1. 使用 Azure Cloud Shell，執行下列命令以連線到您的 IoT 中樞並讀取訊息：
 

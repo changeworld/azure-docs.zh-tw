@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 98e4a5097f1ebd26c54d1e0de9bda7ca2055c320
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: d15d73b0f2b87b8e6f66c7bd4e7fb34f6b06e1a0
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91950732"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341918"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>使用資產清查和管理工具探索及管理資源
 
@@ -68,22 +68,22 @@ Azure 資訊安全中心的資產清查頁面會提供單一頁面，讓您檢�
     ![清查的匯出選項](./media/asset-inventory/inventory-export-options.png)
 
     > [!TIP]
-    > KQL 檔提供具有一些範例資料的資料庫，以及一些簡單的查詢，以取得語言的「操作」。 [在本 KQL 教學課程中深入瞭解](https://docs.microsoft.com/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer)。
+    > KQL 檔提供具有一些範例資料的資料庫，以及一些簡單的查詢，以取得語言的「操作」。 [在本 KQL 教學課程中深入瞭解](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer)。
 
 - **資產管理選項** -清查可讓您執行複雜的探索查詢。 當您找到符合查詢的資源時，清查會提供作業的快捷方式，例如：
 
     - 將標籤指派給篩選過的資源-選取您想要標記的資源旁的核取方塊。
     - 將新伺服器上架到安全性中心-使用 [ **新增非 Azure 伺服器** ] 工具列按鈕。
-    - 使用 Azure Logic Apps 將工作負載自動化-使用 **觸發程式邏輯應用程式** 按鈕在一或多個資源上執行邏輯應用程式。 您的邏輯應用程式必須事先準備，並 (HTTP 要求) 接受相關的觸發程式類型。 [深入瞭解邏輯應用程式](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)。
+    - 使用 Azure Logic Apps 將工作負載自動化-使用 **觸發程式邏輯應用程式** 按鈕在一或多個資源上執行邏輯應用程式。 您的邏輯應用程式必須事先準備，並 (HTTP 要求) 接受相關的觸發程式類型。 [深入瞭解邏輯應用程式](../logic-apps/logic-apps-overview.md)。
 
 
 ## <a name="how-does-asset-inventory-work"></a>資產清查的運作方式為何？
 
-資產清查利用 [Azure Resource Graph (ARG) ](https://docs.microsoft.com/azure/governance/resource-graph/)，這是一項 Azure 服務，可讓您跨多個訂用帳戶查詢安全中心的安全性狀態資料。
+資產清查利用 [Azure Resource Graph (ARG) ](../governance/resource-graph/index.yml)，這是一項 Azure 服務，可讓您跨多個訂用帳戶查詢安全中心的安全性狀態資料。
 
 ARG 是設計用來提供有效率的資源探索，並能夠大規模查詢。
 
-使用 [Kusto 查詢語言 (KQL) ](https://docs.microsoft.com/azure/data-explorer/kusto/query/)，資產清查可以透過與其他資源屬性交互參考 ASC 資料，快速產生深入的見解。
+使用 [Kusto 查詢語言 (KQL) ](/azure/data-explorer/kusto/query/)，資產清查可以透過與其他資源屬性交互參考 ASC 資料，快速產生深入的見解。
 
 
 ## <a name="how-to-use-asset-inventory"></a>如何使用資產清查
@@ -156,5 +156,5 @@ ARG 是設計用來提供有效率的資源探索，並能夠大規模查詢。
 
 如需相關工具的詳細資訊，請參閱下列頁面：
 
-- [Azure Resource Graph (ARG) ](https://docs.microsoft.com/azure/governance/resource-graph/)
-- [Kusto 查詢語言 (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)
+- [Azure Resource Graph (ARG) ](../governance/resource-graph/index.yml)
+- [Kusto 查詢語言 (KQL)](/azure/data-explorer/kusto/query/)

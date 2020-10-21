@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: c277da54e56fcd0ce68444d499b17e84f706ad03
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: c4c99142c64278514066efa8925ed8e3f6617235
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442491"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132579"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure 企業版 REST API
 
@@ -25,15 +25,15 @@ Microsoft Enterprise Azure 客戶可以透過 REST API 取得使用量和帳單�
 
 ### <a name="available-apis"></a>可用的 API
 
-**餘額與摘要 -** [餘額與摘要 API](../../billing/billing-enterprise-api-balance-summary.md) 可提供餘額、最新購買、Azure Marketplace 服務費用、調整，以及超額部分費用的每月摘要資訊。 如需詳細資訊，請參閱[適用於企業客戶的報告 API - 餘額與摘要](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary)。
+**餘額與摘要 -** [餘額與摘要 API](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) 可提供餘額、最新購買、Azure Marketplace 服務費用、調整，以及超額部分費用的每月摘要資訊。 如需詳細資訊，請參閱[適用於企業客戶的報告 API - 餘額與摘要](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary)。
 
-**使用量詳細資料 -** [使用量詳細資料 API](../../billing/billing-enterprise-api-usage-detail.md) 可提供註冊的每日使用量和預估費用明細。 結果也包含執行個體、計量和部門的資訊。 您可以依計費週期或指定開始和結束日期來查詢 API。 如需詳細資訊，請參閱[適用於企業客戶的報告 API - 使用量詳細資料](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)。
+**使用量詳細資料 -** [使用量詳細資料 API](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) 可提供註冊的每日使用量和預估費用明細。 結果也包含執行個體、計量和部門的資訊。 您可以依計費週期或指定開始和結束日期來查詢 API。 如需詳細資訊，請參閱[適用於企業客戶的報告 API - 使用量詳細資料](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)。
 
-**Marketplace 市集費用 -** [Marketplace 市集費用 API](../../billing/billing-enterprise-api-marketplace-storecharge.md) 可針對指定的計費週期或開始和結束日期，傳回以使用量為基礎的 Marketplace 費用每日明細 (不含一次性費用)。 如需詳細資訊，請參閱[適用於企業客戶的報告 API - Marketplace 市集費用](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)。
+**Marketplace 市集費用 -** [Marketplace 市集費用 API](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) 可針對指定的計費週期或開始和結束日期，傳回以使用量為基礎的 Marketplace 費用每日明細 (不含一次性費用)。 如需詳細資訊，請參閱[適用於企業客戶的報告 API - Marketplace 市集費用](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)。
 
 **價位表 -** [價位表 API](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) 可針對註冊和計費期間的每個計量提供適用的費率。 如需詳細資訊，請參閱[適用於企業客戶的報告 API - 價位表](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet)。
 
-**列出計費週期 -** [計費週期 API](../../billing/billing-enterprise-api-billing-periods.md) 會傳回計費週期清單，其中包含註冊的使用情況資料 (以反向時間順序排列)。 每個週期包含的屬性會指向四組資料 (BalanceSummary、UsageDetails、MarketplaceCharges 和 PriceSheet) 的 API 路由。 如需詳細資訊，請參閱[適用於企業客戶的報告 API - 計費週期](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)。
+**列出計費週期 -** [計費週期 API](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) 會傳回計費週期清單，其中包含註冊的使用情況資料 (以反向時間順序排列)。 每個週期包含的屬性會指向四組資料 (BalanceSummary、UsageDetails、MarketplaceCharges 和 PriceSheet) 的 API 路由。 如需詳細資訊，請參閱[適用於企業客戶的報告 API - 計費週期](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)。
 
 ### <a name="enable-api-data-access"></a>啟用 API 資料存取
 

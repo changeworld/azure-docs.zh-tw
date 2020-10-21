@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 2e0b9f10a321fce0b8ccc31bf914fe4f2995c49a
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: b2340e5b220936c1333cf842251b669b3e034042
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91651899"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151212"
 ---
 # <a name="analyze-unexpected-charges"></a>分析非預期的費用
 
@@ -76,7 +76,7 @@ ms.locfileid: "91651899"
 
 ### <a name="analyze-the-audit-logs-for-the-resource"></a>分析資源的稽核記錄
 
-如果您擁有檢視資源的許可權，您應該能夠存取其稽核記錄。 請檢閱記錄，以尋找負責資源最新變更的使用者。 若要深入了解，請參閱[檢視及擷取 Azure 活動記錄事件](../../azure-monitor/platform/activity-log-view.md)。
+如果您擁有檢視資源的許可權，您應該能夠存取其稽核記錄。 請檢閱記錄，以尋找負責資源最新變更的使用者。 若要深入了解，請參閱[檢視及擷取 Azure 活動記錄事件](../../azure-monitor/platform/activity-log.md#view-the-activity-log)。
 
 ### <a name="analyze-user-permissions-to-the-resources-parent-scope"></a>分析使用者對資源父範圍的許可權
 

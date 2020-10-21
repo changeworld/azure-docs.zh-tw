@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 0404e3b268f5797e34b3818df8eebeefbe68a1f3
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 617351d5d1bdf9b6528803552e2d34766e9ab217
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371944"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132647"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>開始使用 Azure 企業版入口網站
 
@@ -561,7 +561,7 @@ Azure 企業版入口網站為企業客戶提供兩種類型的訂用帳戶：
 
 建立部門和訂用帳戶之後，您可以在使用量報告中查看資料。 此資訊可協助您追蹤使用量，以及管理部門層級的成本與支出。
 
-您也可以透過報告 API 來存取使用量資料。 如需詳細資訊和範例程式碼，請參閱 [Azure Enterprise REST API](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis)。
+您也可以透過報告 API 來存取使用量資料。 如需詳細資訊和範例程式碼，請參閱 [Azure Enterprise REST API](./ea-portal-rest-apis.md)。
 
 ### <a name="can-i-set-a-spending-quota-and-get-alerts-as-i-approach-my-limit"></a>我可以設定消費配額，並在接近限制時收到警示嗎？
 
@@ -573,7 +573,7 @@ Azure 企業版入口網站為企業客戶提供兩種類型的訂用帳戶：
 
 如果您使用「資源群組」和「標記」，則會在服務層級追蹤此資訊，而且您可在詳細使用量下載 (CSV) 檔案中加以存取。 請參閱 Azure 企業版入口網站中的[下載使用量報告](https://ea.azure.com/report/downloadusage)。
 
-您也可以透過 API 存取使用量。 如需詳細資訊和範例程式碼，請參閱 [Azure Enterprise REST API](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis)。
+您也可以透過 API 存取使用量。 如需詳細資訊和範例程式碼，請參閱 [Azure Enterprise REST API](./ea-portal-rest-apis.md)。
 
 > [!NOTE]
 > 您只能將標籤套用到支援 Azure Resource Manager 作業的資源。 如果您透過傳統部署模型 (例如透過傳統入口網站) 建立虛擬機器、虛擬網路或儲存體，就無法將標記套用至該資源。 您必須透過 Resource Manager 重新部署這些資源才能支援標記。 所有其他資源皆支援標記。

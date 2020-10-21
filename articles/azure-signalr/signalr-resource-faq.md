@@ -7,18 +7,18 @@ ms.topic: overview
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 5d6b46e288007bc0bbac53a97b1bdd5e727b8ac8
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 910de9efbd132fb98a0c4bd596867800f65f5ad5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405117"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150957"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR Service 常見問題集
 
 ## <a name="is-azure-signalr-service-ready-for-production-use"></a>Azure SignalR Service 是否已可用於生產用途？
 
-是，已正式推出 [ASP.NET Core SignalR](https://dotnet.microsoft.com/apps/aspnet/signalr) 和 [ASP.NET SignalR](https://docs.microsoft.com/aspnet/signalr/overview/getting-started/introduction-to-signalr) 的支援。
+是，已正式推出 [ASP.NET Core SignalR](https://dotnet.microsoft.com/apps/aspnet/signalr) 和 [ASP.NET SignalR](/aspnet/signalr/overview/getting-started/introduction-to-signalr) 的支援。
 
 ## <a name="when-there-are-multiple-application-servers-are-client-messages-sent-to-all-servers-or-just-one-of-them"></a>有多個應用程式伺服器時，用戶端訊息會傳送至所有伺服器還是僅傳送至其中之一？
 
@@ -48,7 +48,7 @@ Azure SignalR Service 會監視來自應用程式伺服器的活動訊號。
 
 Azure SignalR Service 依預設會提供 ASP.NET Core SignalR 所支援的三種傳輸。 您無法設定。 Azure SignalR Service 會處理所有用戶端連線的連線與傳輸。
 
-您可以設定用戶端傳輸，如 [ASP.NET Core SignalR 組態](https://docs.microsoft.com/aspnet/core/signalr/configuration#configure-allowed-transports-1)中所述。
+您可以設定用戶端傳輸，如 [ASP.NET Core SignalR 組態](/aspnet/core/signalr/configuration#configure-allowed-transports-1)中所述。
 
 ## <a name="what-is-the-meaning-of-metrics-like-message-count-or-connection-count-shown-in-the-azure-portal-which-kind-of-aggregation-type-should-i-choose"></a>Azure 入口網站中顯示的類似計量 (例如訊息計數或連線計數) 有何意義？ 我應該選擇哪一種彙總類型？
 

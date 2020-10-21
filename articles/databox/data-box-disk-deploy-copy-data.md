@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d964efd6d9923190a6fef92c91d357a8a650572d
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 9186c742f34f1c060b57ffdfbf1bf688607b4c03
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766844"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125332"
 ---
 ::: zone target="docs"
 
@@ -273,7 +273,7 @@ ms.locfileid: "91766844"
 
 如果您未使用「分割複製」工具複製資料，則必須驗證資料。 若要確認資料，請執行下列步驟。
 
-1. 在磁碟機的 DataBoxDiskImport 資料夾中執行 `DataBoxDiskValidation.cmd`，以進行總和檢查碼驗證。 這僅適用於 Windows 環境。 Linux 使用者必須驗證複製到磁碟的來源資料是否符合[必要條件](https://docs.microsoft.com/azure/databox/data-box-disk-limits)。
+1. 在磁碟機的 DataBoxDiskImport 資料夾中執行 `DataBoxDiskValidation.cmd`，以進行總和檢查碼驗證。 這僅適用於 Windows 環境。 Linux 使用者必須驗證複製到磁碟的來源資料是否符合[必要條件](./data-box-disk-limits.md)。
     
     ![資料箱磁碟驗證工具的輸出](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
@@ -335,6 +335,6 @@ ms.locfileid: "91766844"
 1. 在磁碟機的 DataBoxDiskImport 資料夾中執行 `DataBoxDiskValidation.cmd`，以進行總和檢查碼驗證。
 2. 使用選項 2 來驗證您的檔案並產生總和檢查碼。 視您的資料大小而定，此步驟可能需要一段時間。 如果在驗證和產生總和檢查碼期間發生任何錯誤，您會收到通知及錯誤記錄的連結。
 
-    如需有關資料驗證的詳細資訊，請參閱[驗證資料](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data)。 如果您在驗證期間遇到錯誤，請參閱[針對驗證錯誤進行疑難排解](data-box-disk-troubleshoot.md)。
+    如需有關資料驗證的詳細資訊，請參閱[驗證資料](#validate-data)。 如果您在驗證期間遇到錯誤，請參閱[針對驗證錯誤進行疑難排解](data-box-disk-troubleshoot.md)。
 
 ::: zone-end

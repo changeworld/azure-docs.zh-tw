@@ -10,12 +10,12 @@ ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: benshy
 ROBOTS: NOINDEX
-ms.openlocfilehash: 92d4c84cc73ea05f58912549674f76513e3faeb1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1cbdeb09a1f3182aef9dcc6445c5b5e22e2448ff
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985504"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132341"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>註冊 CSP 合作夥伴計劃並檢視成本資料
 
@@ -29,7 +29,7 @@ ms.locfileid: "90985504"
 > 只有 CSP 直接協力廠商和 CSP 間接提供者可以完成 Cloudyn 註冊。
 >
 > 驗證和資料存取需要設定合作夥伴中心 API。 需要合作夥伴中心全域系統管理員帳戶，才能佈建 API 存取權。
-> 如需詳細資訊，請參閱[連線到合作夥伴中心 API](https://msdn.microsoft.com/library/partnercenter/mt709136.aspx)。
+> 如需詳細資訊，請參閱[連線到合作夥伴中心 API](/partner-center/develop/set-up-api-access-in-partner-center)。
 >
 > CSP 間接轉售商向 Cloudyn 註冊其 CSP 間接提供者之後，即可取得 Cloudyn 的存取權。 CSP 間接轉售商可再將 Cloudyn 存取權提供給 Azure 客戶和訂用帳戶。
 >

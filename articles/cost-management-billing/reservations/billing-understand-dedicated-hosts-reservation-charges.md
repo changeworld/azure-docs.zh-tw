@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: f9080d13c4358a03b3f13ffcf346af42e49c47c6
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8d273aae3588a006f7b0a55d2798b7a43c040c9b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689451"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148378"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-azure-dedicated-hosts"></a>Azure 保留折扣如何套用至 Azure 專用主機
 
@@ -36,17 +36,16 @@ Azure 保留專用主機執行個體為您的專用主機所使用的計算基�
 
 若要深入了解 Azure 保留項目，請參閱下列文章：
 
-- [什麼是 Azure 的保留？](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
+- [什麼是 Azure 的保留？](./save-compute-costs-reservations.md)
 
-- [使用 Azure 專用主機](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)
+- [使用 Azure 專用主機](../../virtual-machines/dedicated-hosts.md)
 
 - [專用主機定價](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
 
-- [管理 Azure 的保留](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
+- [管理 Azure 的保留](./manage-reserved-vm-instance.md)
 
-- [了解隨用隨付訂用帳戶的保留使用量](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)
+- [了解隨用隨付訂用帳戶的保留使用量](./understand-reserved-instance-usage.md)
 
-- [了解 Enterprise 註冊的保留項目使用量](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
+- [了解 Enterprise 註冊的保留項目使用量](./understand-reserved-instance-usage-ea.md)
 
-- [了解 CSP 訂用帳戶的保留使用量](https://docs.microsoft.com/partner-center/azure-reservations)
-
+- [了解 CSP 訂用帳戶的保留使用量](/partner-center/azure-reservations)

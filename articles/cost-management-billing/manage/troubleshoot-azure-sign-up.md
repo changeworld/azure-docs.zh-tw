@@ -10,19 +10,19 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3e611e25288d52b0be93c76e8a3a28ce6d7d5088
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 91b3b7b71524c76006ad4d431774e05e47fd0266
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326601"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131066"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>針對在 Azure 入口網站或 Azure 帳戶中心註冊新帳戶時所發生的問題進行疑難排解
 
 您嘗試在 Microsoft Azure 入口網站或 Azure 帳戶中心註冊新帳戶時，可能會遇到某些問題。 這份簡短的指南將逐步引導您完成註冊程序，並討論每個步驟的一些常見問題。
 
 > [!NOTE]
-> 如果您已經有現有的帳戶，而且正在尋找針對登入問題進行疑難排解的指引，請參閱[針對 Azure 訂用帳戶登入問題進行疑難排解](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)。
+> 如果您已經有現有的帳戶，而且正在尋找針對登入問題進行疑難排解的指引，請參閱[針對 Azure 訂用帳戶登入問題進行疑難排解](./troubleshoot-sign-in-issue.md)。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -76,8 +76,8 @@ Azure 註冊體驗包含四個區段：
 
 #### <a name="you-see-the-message-your-current-account-type-is-not-supported"></a>您看到「不支援您目前的帳戶類型」訊息
 
-如果帳戶是在[非受控 Azure AD 目錄](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-self-service-signup)中註冊，而且不在您組織的 Azure AD 目錄中註冊，就會發生此問題。
-若要解決此問題，請使用另一個帳戶來註冊 Azure 帳戶，或接管非受控 AD 目錄。 如需詳細資訊，請參閱[如何以系統管理員身分接管 Azure Active Directory 中非受控目錄](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)。
+如果帳戶是在[非受控 Azure AD 目錄](../../active-directory/users-groups-roles/directory-self-service-signup.md)中註冊，而且不在您組織的 Azure AD 目錄中註冊，就會發生此問題。
+若要解決此問題，請使用另一個帳戶來註冊 Azure 帳戶，或接管非受控 AD 目錄。 如需詳細資訊，請參閱[如何以系統管理員身分接管 Azure Active Directory 中非受控目錄](../../active-directory/users-groups-roles/domains-admin-takeover.md)。
 
 ## <a name="identity-verification-by-phone"></a>依據手機進行身分識別驗證
 
@@ -107,7 +107,7 @@ Azure 註冊體驗包含四個區段：
 
 #### <a name="credit-card-declined-or-not-accepted"></a>信用卡被拒絕或不被接受
 
-虛擬卡、預付信用卡或金融卡不被視為 Azure 訂用帳戶的付款方式。 若要查看其他可能造成您的卡片遭到拒絕的原因，請參閱[針對 Azure 註冊上遭拒的卡片進行疑難排解](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)。
+虛擬卡、預付信用卡或金融卡不被視為 Azure 訂用帳戶的付款方式。 若要查看其他可能造成您的卡片遭到拒絕的原因，請參閱[針對 Azure 註冊上遭拒的卡片進行疑難排解](./troubleshoot-declined-card.md)。
 
 #### <a name="credit-card-form-doesnt-support-my-billing-address"></a>信用卡表單不支援我的帳單地址
 
@@ -144,7 +144,7 @@ Azure 註冊體驗包含四個區段：
 請檢查您是否使用正確的登入認證。 然後，請檢查權益方案並確認您符合資格。
 - MSDN
   - 請在您的 [MSDN 帳戶頁面](https://msdn.microsoft.com/subscriptions/manage/default.aspx)驗證自己的資格狀態。
-  - 如果您無法驗證自己的狀態，請連絡 [MSDN 訂閱客服中心](https://msdn.microsoft.com/library/aa493452.aspx)。
+  - 如果您無法驗證自己的狀態，請連絡 [MSDN 訂閱客服中心](/previous-versions/mappoint/aa493452(v=msdn.10))。
 - Microsoft for Startups
   - 登入 [Microsoft for Startups 入口網站](https://startups.microsoft.com/#start-two)，以驗證您的資格狀態是否適用於 Microsoft for Startups。
   - 如果您無法驗證自己的狀態，您可以在 [Microsoft for Startups 論壇](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups)上取得協助。
@@ -161,10 +161,10 @@ Azure 註冊體驗包含四個區段：
 
 Azure 計費和訂用帳戶的其他疑難排解文章
 
-- [卡片遭拒](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [訂用帳戶登入問題](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)
-- [找不到訂用帳戶](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [已停用企業成本檢視](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
+- [卡片遭拒](./troubleshoot-declined-card.md)
+- [訂用帳戶登入問題](./troubleshoot-sign-in-issue.md)
+- [找不到訂用帳戶](./no-subscriptions-found.md)
+- [已停用企業成本檢視](./enterprise-mgmt-grp-troubleshoot-cost-view.md)
 
 ## <a name="contact-us-for-help"></a>如需協助，請與我們連絡
 
@@ -172,4 +172,4 @@ Azure 計費和訂用帳戶的其他疑難排解文章
 
 ## <a name="find-out-more-about-azure-cost-management"></a>深入了解 Azure 成本管理
 
-- [Azure 成本管理和計費文件](https://docs.microsoft.com/azure/cost-management-billing)
+- [Azure 成本管理和計費文件](../index.yml)

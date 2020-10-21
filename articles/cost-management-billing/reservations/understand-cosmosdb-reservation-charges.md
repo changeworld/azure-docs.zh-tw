@@ -7,12 +7,12 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: bfa84a993fafe9240ba765de8d87ea4afb69cbd5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ca4c1810912771f56661ca5b682b6991735f526e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015942"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150825"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>了解保留折扣如何套用至 Azure Cosmos DB
 
@@ -121,4 +121,4 @@ Azure 計費系統會將保留計費權益指派給第一個處理且符合保�
 * [管理 Azure 的保留](manage-reserved-vm-instance.md)  
 * [了解隨用隨付訂用帳戶的保留使用量](understand-reserved-instance-usage.md)  
 * [了解 Enterprise 註冊的保留項目使用量](understand-reserved-instance-usage-ea.md)
-* [了解 CSP 訂用帳戶的保留使用量](https://docs.microsoft.com/partner-center/azure-reservations)
+* [了解 CSP 訂用帳戶的保留使用量](/partner-center/azure-reservations)

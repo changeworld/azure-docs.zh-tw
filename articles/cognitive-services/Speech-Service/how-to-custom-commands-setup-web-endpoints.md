@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: e64c5ddfafb8bc8e9041e6d6b3e473a9a20565ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a8bdd911db82a07bfcdd1596b7a8203a19a6442
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843119"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341952"
 ---
 # <a name="set-up-web-endpoints"></a>設定 Web 端點
 
@@ -206,4 +206,4 @@ private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [為自訂命令應用程式啟用 CI/CD 程序](./how-to-custom-commands-deploy-cicd.md)
+> [將自訂命令應用程式匯出為遠端技能](./how-to-custom-commands-integrate-remote-skills.md)
