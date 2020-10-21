@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 31660d13fe69d393a19167eaea8a69bfb6260467
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 09fee610ccc15874481ecfd4693e4b89379caa7a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202067"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330031"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>適用於雲端解決方案提供者 (CSP) 的 ExpressRoute
 Microsoft 為傳統的轉銷商和經銷商 (CSP) 提供超大規模的服務，以便為您的客戶快速佈建新的服務和解決方案，而不需要投資開發這些新服務。 若要讓雲端解決方案提供者 (CSP) 能夠直接管理這些新服務，Microsoft 提供了一些程式和 API，讓 CSP 可以代表您的客戶管理 Microsoft Azure 資源。 其中一個資源是 ExpressRoute。 ExpressRoute 可讓 CSP 將現有的客戶資源連接到 Azure 服務。 ExpressRoute 是 Azure 中服務的高速私人通訊連結。 
@@ -60,7 +60,7 @@ Microsoft 提供 Csp Api 來管理 Azure 客戶訂用帳戶，其方式是允許
 
 這兩個選項之間的選擇，取決於您客戶的需求，以及您目前提供 Azure 服務的需求。 下列連結涵蓋這些模型的詳細資料，以及相關聯的角色型存取控制、網路和身分識別設計模式︰
 
-* **Azure 以角色為基礎的存取控制 (AZURE RBAC) ** – RBAC 是以 Azure Active Directory 為基礎。  如需有關 Azure RBAC 的詳細資訊，請參閱 [這裡](../role-based-access-control/role-assignments-portal.md)。
+* **Azure 角色型存取控制 (AZURE rbac) ** – azure rbac 是以 Azure Active Directory 為基礎。  如需有關 Azure RBAC 的詳細資訊，請參閱 [這裡](../role-based-access-control/role-assignments-portal.md)。
 * **網路** – 涵蓋 Microsoft Azure 中的各種網路主題。
 * **Azure Active Directory (Azure AD) ** – Azure AD 提供 Microsoft Azure 和協力廠商 SaaS 應用程式的身分識別管理。 如需 Azure AD 的詳細資訊，請參閱 [這裡](https://azure.microsoft.com/documentation/services/active-directory/)。  
 

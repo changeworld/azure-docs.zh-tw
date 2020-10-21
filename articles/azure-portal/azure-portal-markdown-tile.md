@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: devx-track-js
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 4e8d7054fb0df265285bda223e360ea61612aaf2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ca225f136b0c3a6fc8b47d00ff64064fe17d4ee
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263941"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281759"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>在 Azure 儀表板上使用 Markdown 磚以顯示自訂內容
 
@@ -48,7 +48,7 @@ ms.locfileid: "91263941"
       ![顯示輸入 URL 的螢幕擷取畫面](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
 
       > [!NOTE]
-      > 為了增加安全性，您可以建立 markdown 檔案，並將它儲存在 [啟用加密的 Azure 儲存體帳戶 blob](../storage/common/storage-service-encryption.md)中，然後使用 [URL] 選項指向檔案。 Markdown 內容會透過儲存體帳戶的加密選項進行加密。 只有具有檔案許可權的使用者可以在儀表板上看到 markdown 內容。
+      > 為了增加安全性，您可以建立 markdown 檔案，並將它儲存在 [啟用加密的 Azure 儲存體帳戶 blob](../storage/common/storage-service-encryption.md)中，然後使用 [URL] 選項指向檔案。 Markdown 內容會透過儲存體帳戶的加密選項進行加密。 只有具有檔案許可權的使用者可以在儀表板上看到 markdown 內容。 在儲存體帳戶上設定跨原始來源資源分享 (CORS) 規則，讓 Azure 入口網站 (_https://portal.azure.com/_) 可以存取 blob 中的 markdown 檔案。
 
 1. 選取 [完成]**** 以關閉 [編輯 Markdown]**** 窗格。 您的內容會出現在 [Markdown] 圖格上，您可以拖曳右下角的控點來調整其大小。
 

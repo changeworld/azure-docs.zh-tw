@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 8cca75f7071b8b9c8d1108b82ebf8f7049ec316a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 83909fdc75ec09b9ddd1fa9452f9a77e5763f895
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282568"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331816"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>簡介 Azure Cosmos DB 中的佈建輸送量
 
@@ -96,7 +96,7 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 
 在建立 Azure Cosmos 容器或資料庫之後，您可以更新佈建輸送量。 您可以在資料庫或容器上設定的最大佈建輸送量沒有任何限制。
 
-### <a name="current-provisioned-throughput"></a>目前布建的輸送量
+### <a name="current-provisioned-throughput"></a><a id="current-provisioned-throughput"></a> 目前布建的輸送量
 
 您可以在 Azure 入口網站中或使用 Sdk 來取得容器或資料庫的布建輸送量：
 
@@ -135,6 +135,14 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 * [ThroughputResponse. isReplacePending ( ](/java/api/com.azure.cosmos.models.throughputresponse.isreplacepending?view=azure-java-stable&preserve-view=true) JAVA SDK 上的 # B1。
 
 您可以使用 [Azure 監視器計量](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) 來查看布建輸送量的歷程記錄 (RU/秒) 和資源上的儲存體。
+
+## <a name="high-storage--low-throughput-program"></a><a id="high-storage-low-throughput-program"></a> 高儲存體/低輸送量程式
+
+如上面目前布 [建的輸送量](#current-provisioned-throughput) 一節所述，您可以在容器或資料庫上布建的最小輸送量取決於許多因素。 其中一個是目前儲存的資料量，因為 Azure Cosmos DB 強制執行每 GB 儲存體 10 RU/秒的最小輸送量。
+
+這可能會在您需要儲存大量資料，但比較中有低輸送量需求的情況下考慮。 為了更妥善配合這些案例，Azure Cosmos DB 引進了「 **高儲存體/低輸送量」程式** ，可將符合資格的帳戶從10個到1減少 RU/秒的限制。
+
+您目前必須至少有1個容器或共用輸送量資料庫，且您的帳戶中必須包含超過 1 TB 的資料才能符合資格。 若要加入此計畫並評估您的完整資格，您只需要填寫 [這份問卷](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u)。 然後，Azure Cosmos DB 的小組會跟進並繼續進行上線。
 
 ## <a name="comparison-of-models"></a>模型的比較
 下表顯示在資料庫上與在容器上佈建標準 (手動) 輸送量之間的比較。 

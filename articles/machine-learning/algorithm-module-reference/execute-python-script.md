@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 09/29/2020
-ms.openlocfilehash: de372b9800f4b76b42624b30f05848bc570ae6e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: d4934d784e871988b5bc30f7b7cf8c09651576e2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450119"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330356"
 ---
 # <a name="execute-python-script-module"></a>執行 Python 腳本模組
 
@@ -120,9 +120,47 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
     ![執行 Python 輸入對應](media/module/python-module.png)
 
-4. 若要包含新的 Python 套件或程式碼，請在 **腳本**套件組合上新增包含這些自訂資源的壓縮檔案。 **腳本**套件組合的輸入必須是以檔案類型資料集的形式上傳至工作區的 zip 壓縮檔案。 您可以在 [ **資料集** 資產] 頁面上傳資料集。 您可以從 [設計師撰寫] 頁面上左側模組樹狀結構中的 [ **我的資料集** ] 清單，拖曳資料集模組。 
+4. 若要包含新的 Python 套件或程式碼，請將包含這些自訂資源的壓縮檔案連接至 **腳本** 組合埠。 或者，如果您的腳本大於 16 KB，請使用 **腳本** 套件組合埠來避免像 *命令列一樣的錯誤超過16597個字元的限制*。 
 
-    在管線執行期間，可以使用上傳的 zip 封存中包含的任何檔案。 如果封存包含目錄結構，則會保留結構，但您必須在路徑前面加上名為 **src** 的目錄。
+    
+    1. 將腳本和其他自訂資源組合成 zip 檔案。
+    1. 將 zip 檔案以檔案 **資料集** 的形式上傳至 studio。 
+    1. 從 [設計師撰寫] 頁面左側模組窗格中的 [ *資料集* ] 清單，拖曳資料集模組。 
+    1. 將資料集模組連接至 [**執行 R 腳本**] 模組的**腳本**組合埠。
+    
+    在管線執行期間，可以使用上傳的 zip 封存中包含的任何檔案。 如果封存包含目錄結構，則會保留結構。
+    
+    以下是腳本套件組合範例，其中包含 python 腳本檔案和 txt 檔案：
+      
+    > [!div class="mx-imgBorder"]
+    > ![腳本套件組合範例](media/module/python-script-bundle.png)  
+
+    以下是的內容 `my_script.py` ：
+
+    ```python
+    def my_func(dataframe1):
+    return dataframe1
+    ```
+    以下是示範如何在腳本套件組合中使用檔案的範例程式碼：    
+
+    ```python
+    import pandas as pd
+    from my_script import my_func
+ 
+    def azureml_main(dataframe1 = None, dataframe2 = None):
+ 
+        # Execution logic goes here
+        print(f'Input pandas.DataFrame #1: {dataframe1}')
+ 
+        # Test the custom defined python function
+        dataframe1 = my_func(dataframe1)
+ 
+        # Test to read custom uploaded files by relative path
+        with open('./Script Bundle/my_sample.txt', 'r') as text_file:
+            sample = text_file.read()
+    
+        return dataframe1, pd.DataFrame(columns=["Sample"], data=[[sample]])
+    ```
 
 5. 在 [ **Python 腳本** ] 文字方塊中，輸入或貼上有效的 Python 腳本。
 

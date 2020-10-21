@@ -263,6 +263,8 @@
           items:
             - name: 伺服器層級 IP 防火牆規則
               href: database/firewall-create-server-level-portal-quickstart.md
+        - name: GitHub 動作
+          href: database/connect-github-actions-sql-db.md
     - name: 教學課程
       items:
         - name: 設計資料庫

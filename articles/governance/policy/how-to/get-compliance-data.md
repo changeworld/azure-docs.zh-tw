@@ -3,12 +3,12 @@ title: 取得原則合規性資料
 description: Azure 原則評估和效果會決定合規性。 了解如何取得 Azure 資源的合規性詳細資料。
 ms.date: 10/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 186312ae91c3545a7aac1a9c7a108e2197f3fa8a
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 36645d5eb50aaf571c608fc51127b47ac885777d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873620"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320430"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>取得 Azure 資源的合規性資料
 
@@ -157,6 +157,11 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 }
 ```
 
+#### <a name="on-demand-evaluation-scan---visual-studio-code"></a>隨選評估掃描-Visual Studio Code
+
+Visual Studio 程式碼的 Azure 原則延伸模組能夠針對特定資源執行評估掃描。 這項掃描是同步處理的程式，與 Azure PowerShell 和 REST 方法不同。
+如需詳細資訊和步驟，請參閱 [使用 VS Code 擴充功能的隨選評估](./extension-for-vscode.md#on-demand-evaluation-scan)。
+
 ## <a name="how-compliance-works"></a>合規性的運作方式
 
 在指派中，如果資源沒有遵循原則或方案規則，也不會_豁免_，則資源不**符合規範**。 下表顯示不同的原則效果如何與結果合規性狀態的條件評估搭配使用：
@@ -169,7 +174,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 | Exists | Deny、Audit、Append、Modify、DeployIfNotExist、AuditIfNotExist | False | 相容 |
 
 > [!NOTE]
-> DeployIfNotExist 和 AuditIfNotExist 效果需要 IF 語句為 TRUE，而且存在條件必須為 FALSE，才不符合規範。 若為 TRUE，IF 條件會觸發相關資源的存在條件評估。
+> DeployIfNotExist 和 AuditIfNotExist 效果要求 IF 陳述式為 TRUE 且存在條件為 FALSE，才不符合規範。 若為 TRUE，IF 條件會觸發相關資源的存在條件評估。
 
 例如，假設您有資源群組 – ContosoRG，且部分的儲存體帳戶 (以紅色醒目提示) 會公開至公用網路。
 

@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/06/2020
-ms.openlocfilehash: ab7ed95ba4b9a4fa6f0bafb78ea80a2d4acac71d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5645bd37ec466619a4093d767db1c846b90a4365
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827882"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281417"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>對應資料流程中的資料轉換運算式
 
@@ -155,7 +155,7 @@ ___
 ___
 ### <code>collect</code>
 <code><b>collect(<i>&lt;value1&gt;</i> : any) => array</b></code><br/><br/>
-將彙總群組中運算式的所有值收集到陣列中。 在此過程中，可以收集結構並將其轉換成替代結構。 項目數會等於該群組中的資料列數，而且可包含 Null 值。 收集的專案數目應該很小。  
+將匯總群組中的所有運算式值收集到陣列中。 在此過程中，可以收集結構並將其轉換成替代結構。 項目數會等於該群組中的資料列數，而且可包含 Null 值。 收集的專案數目應該很小。  
 * ``collect(salesPerson)``
 * ``collect(firstName + lastName))``
 * ``collect(@(name = salesPerson, sales = salesAmount) )``
@@ -682,7 +682,7 @@ ___
 * ``rpad('dumbo', 4, '-') -> 'dumb'``  
 * ``rpad('dumbo', 8, '<>') -> 'dumbo<><'``  ___
 ### <code>rtrim</code>
-<code><b>rtrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/> Right 修剪開頭字元的字串。 若未指定第二個參數，則會修剪空白字元。 否則，它會修剪 s 中指定的任何字元。econd parameter.  
+<code><b>rtrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/> Right 修剪尾端字元的字串。 若未指定第二個參數，則會修剪空白字元。 否則，它會修剪 s 中指定的任何字元。econd parameter.  
 * ``rtrim('  dumbo  ') -> '  dumbo'``  
 * ``rtrim('!--!du!mbo!', '-!') -> '!--!du!mbo'``  
 ___
@@ -1524,7 +1524,7 @@ Right pads the string by the supplied padding until it is of a certain length. I
 ___
 ### <code>rtrim</code>
 <code><b>rtrim(<i>&lt;string to trim&gt;</i> : string, [<i>&lt;trim characters&gt;</i> : string]) => string</b></code><br/><br/>
-Right trims a string of leading characters. If second parameter is unspecified, it trims whitespace. Else it trims any character specified in the second parameter.  
+Right trims a string of trailing characters. If second parameter is unspecified, it trims whitespace. Else it trims any character specified in the second parameter.  
 * ``rtrim('  dumbo  ') -> '  dumbo'``  
 * ``rtrim('!--!du!mbo!', '-!') -> '!--!du!mbo'``  
 ___

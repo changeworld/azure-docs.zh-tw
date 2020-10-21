@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f3441d7c7f42c58928bb97c945e7b1e7673f7afa
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 00a3c1d0a2a905e6435b811d5f2611c16a5de502
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876985"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328874"
 ---
 # <a name="configure-device-redirections"></a>設定裝置重新導向
 
@@ -50,7 +50,10 @@ ms.locfileid: "91876985"
 - `camerastoredirect:s:*` 重新導向所有相機。
 - `camerastoredirect:s:` 停用相機重新導向。
 
-您也可以使用以分號分隔的 KSCATEGORY_VIDEO_CAMERA 介面清單來重新導向特定相機，例如 `camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi` 。
+>[!NOTE]
+>即使 `camerastoredirect:s:` 已停用此屬性，還是可以透過屬性重新導向本機相機 `devicestoredirect:s:` 。 若要完全停用相機重新導向 `camerastoredirect:s:` 的設定，並設定 `devicestoredirect:s:` 或定義不包含任何相機的一些隨插即用裝置子集。
+
+您也可以使用以分號分隔的 KSCATEGORY_VIDEO_CAMERA 介面清單來重新導向特定相機，例如 `camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi` 。 
 
 ### <a name="clipboard-redirection"></a>剪貼簿重新導向
 
@@ -78,7 +81,7 @@ ms.locfileid: "91876985"
 - 流覽至**Computer Configuration**  >  **Policies** >  **Administrative Templates**  >  **Windows Components**  >  **遠端桌面服務**  >  **遠端桌面連線用戶端**  >  **RemoteFX USB 裝置**重新導向的系統管理範本 Windows 元件的電腦設定原則。
 - 選取 [ **允許從這部電腦對其他支援的 REMOTEFX USB 裝置進行 RDP**重新導向]。
 - 選取 [ **已啟用** ] 選項，然後選取 [RemoteFX USB 重新導向存取權限] 方塊中的 [系統 **管理員和使用者** ]。
-- 選取 [確定]  。
+- 選取 [確定]。
 
 ### <a name="plug-and-play-device-redirection"></a>隨插即用裝置重新導向
 

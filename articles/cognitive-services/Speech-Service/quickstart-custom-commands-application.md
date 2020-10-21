@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 05b47a786fe845460177b66b5bd54cdb140c246e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d89f9330947d1c5d0146b8531f265d86d0fd5160
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289427"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329146"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>使用自訂命令建立語音助理
 
@@ -34,7 +34,7 @@ ms.locfileid: "87289427"
 * 東亞
 * 東南亞
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 > [!div class="checklist"]
 > * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">在支援自訂命令的區域中建立 Azure 語音資源。<span class="docon docon-navigate-external x-hidden-focus"></span></a> 請參閱上方的 **區域可用性** 一節，以取得支援的區域清單。
@@ -103,7 +103,7 @@ ms.locfileid: "87289427"
 
 1. 選取左窗格中的 [ **設定** ]，然後選取中間窗格中的 [  **LUIS 資源** ]。
 1. 選取預測資源，或選取 [ **建立新資源**] 建立一個。
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
     
     > [!div class="mx-imgBorder"]
     > ![設定 LUIS 資源](media/custom-commands/set-luis-resources.png)
@@ -123,7 +123,7 @@ ms.locfileid: "87289427"
 1. 啟動 **VoiceAssistantClient.exe**。
 1. 建立新的發行設定檔，並輸入 **連接設定檔**的值。 在 [ **一般設定** ] 區段中，輸入值訂用帳戶 **金鑰** (這與您發佈應用程式時所儲存的 **語音資源金鑰** 值相同) 、訂用帳戶 **金鑰區域** 和 **自訂命令應用程式識別碼**。
     > [!div class="mx-imgBorder"]
-    > ![WVAC 建立設定檔](media/custom-commands/create-profile.png)
+    > ![醒目顯示建立 WVAC 設定檔的 [一般設定] 區段的螢幕擷取畫面。](media/custom-commands/create-profile.png)
 1. 選取 [ **儲存並套用設定檔**]。
 1. 現在透過語音/文字試用下列輸入
     > [!div class="mx-imgBorder"]
@@ -133,6 +133,6 @@ ms.locfileid: "87289427"
 > [!TIP]
 > 您可以按一下 [ **活動記錄** 檔] 中的專案，檢查從自訂命令服務傳送的原始回應。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您使用了現有的應用程式。 接下來，在 [操作 [說明] 區段](how-to-custom-commands-create-application-with-simple-commands.md)中，您將瞭解如何從頭開始設計、開發、測試和整合自訂命令應用程式。

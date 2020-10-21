@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2020
+ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: c7a5a02a063f90953982d42fe9c7d2c6dc199b2a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 1b49ac357fd021b23272112a24ae9371d12bc042
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282288"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331578"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Front Door 的常見問題
 
@@ -162,6 +162,10 @@ Azure Front Door (AFD) 需要公用 IP 或可公開解析的 DNS 名稱來路由
 
 規則引擎設定大約需要10到15分鐘的時間才能完成更新。 您可以預期當更新完成時，規則就會生效。 
 
+### <a name="can-i-configure-azure-cdn-behind-my-front-door-profile-or-vice-versa"></a>我可以設定 Front Door 設定檔後方的 Azure CDN，反之亦然？
+
+Azure Front Door 和 Azure CDN 無法設定在一起，因為這兩個服務會在回應要求時使用相同的 Azure edge 網站。 
+
 ## <a name="performance"></a>效能
 
 ### <a name="how-does-azure-front-door-support-high-availability-and-scalability"></a>Azure Front Door 如何支援高可用性和擴充性？
@@ -251,7 +255,7 @@ Front Door 受控選項會透過 Digicert 布建標準的 TLS/SSL 憑證，並�
 
 ### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>我可以搭配 Azure Front Door 使用用戶端/相互驗證嗎？
 
-不正確。 雖然 Azure Front Door 支援在 [RFC 5246](https://tools.ietf.org/html/rfc5246)中引入用戶端/相互驗證的 TLS 1.2，但目前 Azure Front Door 不支援用戶端/相互驗證。
+否。 雖然 Azure Front Door 支援在 [RFC 5246](https://tools.ietf.org/html/rfc5246)中引入用戶端/相互驗證的 TLS 1.2，但目前 Azure Front Door 不支援用戶端/相互驗證。
 
 ## <a name="diagnostics-and-logging"></a>診斷和記錄
 

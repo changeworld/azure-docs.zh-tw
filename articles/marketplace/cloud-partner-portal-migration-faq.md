@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: bda72a72e8ac0adf48fd8981a6eccf40385469d5
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 122de64e33778966d563cc8e94b46515e54769f7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281411"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331204"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>從 Cloud Partner 入口網站轉換到合作夥伴中心的常見問題
 
@@ -77,8 +77,8 @@ Cloud Partner 入口網站先前支援的所有供應專案類型都可在合作
 
 | 供應項目類型 <img src="" width=150px>| 移至合作夥伴中心？ <img src="" width=100px>| 後續步驟 |
 | --- | --- | --- |
-| SaaS | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何在 [商業市場中建立新的 SaaS 供應](partner-center-portal/create-new-saas-offer.md)專案。 |
-| 虛擬機器 | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何在 [Azure Marketplace 上建立 Azure 虛擬機器供應](azure-vm-create.md)專案。 |
+| SaaS | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解 [商用 marketplace 的 SaaS 供應專案方案](plan-saas-offer.md)。 |
+| 虛擬機器 | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請參閱 [虛擬機器供應](marketplace-virtual-machines.md)專案。 |
 | Azure 應用程式 | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何 [建立 Azure 應用程式供應](partner-center-portal/create-new-azure-apps-offer.md)專案。 |
 | Dynamics 365 Business Central | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何 [建立 Dynamics 365 Business Central 供應](partner-center-portal/create-new-business-central-offer.md)專案。 |
 | Dynamics 365 for Customer Engagement & PowerApps | 是 | 登入合作夥伴中心來建立新的供應專案，以及管理在 Cloud Partner 入口網站中建立的供應專案。 深入瞭解如何 [建立 Dynamics 365 For Customer Engagement & PowerApps 供應專案](partner-center-portal/create-new-customer-engagement-offer.md)。 |

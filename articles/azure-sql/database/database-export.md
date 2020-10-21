@@ -11,12 +11,12 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/16/2019
 ms.topic: how-to
-ms.openlocfilehash: b91b7175fa4c7b91fec63a817206fa540813bdb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0e62a7d9b9beb8ecdfaabdd44fdd547dd78d38f
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443810"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328184"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>匯出至 BACPAC 檔案-Azure SQL Database 和 Azure SQL 受控執行個體
 
@@ -48,7 +48,7 @@ ms.locfileid: "91443810"
 
 1. 若要使用 [Azure 入口網站](https://portal.azure.com)匯出資料庫，請開啟資料庫頁面，然後按一下工具列上的 [匯出]****。
 
-   ![資料庫匯出](./media/database-export/database-export1.png)
+   ![醒目顯示 [匯出] 按鈕的螢幕擷取畫面。](./media/database-export/database-export1.png)
 
 2. 指定 BACPAC 檔案名稱、選取要匯出之現有的 Azure 儲存體帳戶和容器，然後提供適當的認證以存取來源資料庫。 如果您是 Azure 系統管理員，則需要 SQL **Server 系統管理員登** 入，因為 azure 系統管理員不等於具有 Azure SQL Database 或 azure SQL 受控執行個體的系統管理員許可權。
 

@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: e67346eb1a0fccc7a788e8698df734536e1e395b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06821b62fa05a4fd772b15aa5a57bd1e3de5dbb2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708946"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329367"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服務配額
 
@@ -19,7 +19,7 @@ ms.locfileid: "91708946"
 
 ## <a name="storage-and-database-operations"></a>儲存體和資料庫作業
 
-在訂用帳戶下建立 Azure Cosmos DB 帳戶之後，即可透過[建立資料庫、容器和項目](databases-containers-items.md)來管理帳戶中的資料。
+在訂用帳戶下建立 Azure Cosmos DB 帳戶之後，即可透過[建立資料庫、容器和項目](account-databases-containers-items.md)來管理帳戶中的資料。
 
 ### <a name="provisioned-throughput"></a>佈建的輸送量
 
@@ -27,15 +27,15 @@ ms.locfileid: "91708946"
 
 | 資源 | 預設限制 |
 | --- | --- |
-| 每個容器的 RU 數上限 ([專用輸送量佈建模式](databases-containers-items.md#azure-cosmos-containers)) | 預設為 1,000,000。 您可藉由[提出 Azure 支援票證](create-support-request-quota-increase.md)來增加此值 |
-| 每個資料庫的 RU 數上限 ([共用輸送量佈建模式](databases-containers-items.md#azure-cosmos-containers)) | 預設為 1,000,000。 您可藉由[提出 Azure 支援票證](create-support-request-quota-increase.md)來增加此值 |
+| 每個容器的 RU 數上限 ([專用輸送量佈建模式](account-databases-containers-items.md#azure-cosmos-containers)) | 預設為 1,000,000。 您可藉由[提出 Azure 支援票證](create-support-request-quota-increase.md)來增加此值 |
+| 每個資料庫的 RU 數上限 ([共用輸送量佈建模式](account-databases-containers-items.md#azure-cosmos-containers)) | 預設為 1,000,000。 您可藉由[提出 Azure 支援票證](create-support-request-quota-increase.md)來增加此值 |
 | 每 (邏輯) 分割區的 ru 上限 | 10,000 |
 | 每 (邏輯) 分割區中所有專案的最大儲存空間 | 20 GB |
 | 相異 (邏輯) 分割區索引鍵的數目上限 | 無限制 |
 | 每個容器的儲存體上限 | 無限制 |
 | 每個資料庫的儲存體上限 | 無限制 |
 | 每個帳戶的附件大小上限 (附件功能即將淘汰)  | 2 GB |
-| 每 1 GB 所需的 RU 數下限 | 10 RU/秒 |
+| 每 1 GB 需要的最小 RU/秒 | 10 RU/秒<br>**注意：** 如果您的容器或資料庫包含超過 1 TB 的資料，您的帳戶可能符合「[高儲存體/低輸送量」計畫](set-throughput.md#high-storage-low-throughput-program)的資格 |
 
 > [!NOTE]
 > 若要了解管理工作負載 (所含分割區索引鍵需要更高儲存體或輸送量限制) 的最佳做法，請參閱[建立綜合分割區索引鍵](synthetic-partition-keys.md)。
@@ -55,8 +55,8 @@ Cosmos 容器 (或共用輸送量資料庫) 的最小輸送量必須為 400 RU/�
 
 | 資源 | 預設限制 |
 | --- | --- |
-| 每個容器的 RU 數下限 ([專用輸送量佈建模式](databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| 每個資料庫的 RU 數下限 ([共用輸送量佈建模式](databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| 每個容器的 RU 數下限 ([專用輸送量佈建模式](account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| 每個資料庫的 RU 數下限 ([共用輸送量佈建模式](account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
 | 共用輸送量資料庫內每個容器的 RU 數下限 | 100 |
 
 Cosmos DB 可透過 SDK 或入口網站，支援彈性調整每個容器或資料庫的輸送量 (RU)。 每個容器可在最小值與最大值之間，於 10 到 100 倍的調整範圍內，以同步方式立即進行調整。 如果要求的輸送量值超出範圍，則會以非同步方式執行調整。 視容器中所要求的輸送量和資料儲存體大小而定，非同步調整可能需要數分鐘到數小時的時間才能完成。  

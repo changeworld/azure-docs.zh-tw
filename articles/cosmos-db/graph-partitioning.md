@@ -8,18 +8,18 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6a993779bc47f1a9b2be8851fafe628ae4286f4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89615f53f62329ca37ae4a4dde301a9fae6b1202
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400497"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279744"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的資料分割圖表
 
 Azure Cosmos DB 中的 Gremlin API 的主要功能之一，是能夠透過水平縮放處理大規模的圖形。 容器可以在儲存體和輸送量方面獨立調整。 您可以在 Azure Cosmos DB 中，建立能自動縮放來儲存圖表資料的容器。 資料根據指定的**分割區金鑰**來自動取得平衡。
 
-如果容器應儲存的大小超過 20 GB，或您想要 (ru) 配置超過每秒10000個要求單位，**則需要資料分割**。 [Azure Cosmos DB 分割機制](partition-data.md)的相同一般原則適用于以下所述的一些圖表特定優化。
+如果容器應儲存的大小超過 20 GB，或您想要 (ru) 配置超過每秒10000個要求單位，**則需要資料分割**。 [Azure Cosmos DB 分割機制](partitioning-overview.md)的相同一般原則適用于以下所述的一些圖表特定優化。
 
 :::image type="content" source="./media/graph-partitioning/graph-partitioning.png" alt-text="圖表資料分割。" border="false":::
 
@@ -78,7 +78,7 @@ Azure Cosmos DB 中的 Gremlin API 的主要功能之一，是能夠透過水平
 
 - **查詢邊緣時應盡可能使用外傳方向**。 如前所述，邊緣會連同其外傳方向的來源頂點一起儲存。 依此模式為原則設計資料和查詢時，將可盡量降低進行跨資料分割查詢的可能性。 相反地， `in()` 查詢一律會是昂貴的展開查詢。
 
-- **選擇將資料平均分散到資料分割的資料分割索引鍵**。 此決策高度仰賴解決方案的資料模型。 請閱讀 [Azure Cosmos DB 中的資料分割和調整](partition-data.md)，以深入了解如何建立適當的資料分割索引鍵。
+- **選擇將資料平均分散到資料分割的資料分割索引鍵**。 此決策高度仰賴解決方案的資料模型。 請閱讀 [Azure Cosmos DB 中的資料分割和調整](partitioning-overview.md)，以深入了解如何建立適當的資料分割索引鍵。
 
 - **將查詢最佳化以在資料分割的界限內取得資料**。 最佳的資料分割策略將與查詢模式相對應。 叢單一資料分割取得資料的查詢，將可提供最佳效能。
 
@@ -86,6 +86,6 @@ Azure Cosmos DB 中的 Gremlin API 的主要功能之一，是能夠透過水平
 
 接下來，您可以繼續閱讀下列文章：
 
-* 了解 [Azure Cosmos DB 中的資料分割和調整](partition-data.md)。
+* 了解 [Azure Cosmos DB 中的資料分割和調整](partitioning-overview.md)。
 * 了解 [Gremlin API 中的 Gremlin 支援](gremlin-support.md)。
 * 了解 [Gremlin API 簡介](graph-introduction.md)。

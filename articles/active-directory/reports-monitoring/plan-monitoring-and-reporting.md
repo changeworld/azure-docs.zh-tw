@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf8ceb308fbcc2156a6df43e0167f4cb544b2d3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 568a524e9300905a5e70b2cf7481fc7eabfc669e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331194"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311229"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>規劃 Azure Active Directory 報告和監視部署
 
@@ -73,7 +73,7 @@ Azure AD 報告提供您環境中 Azure AD 活動的完整觀點和記錄，包�
 
 ### <a name="engage-the-right-stakeholders"></a>包含正確的專案關係人
 
-當技術專案失敗時，其通常是因為人員對影響、結果與責任抱持不相符的預期而造成。 若要避免這些問題，請 [確定您正參與適當的專案關係人](https://aka.ms/deploymentplans)。 此外，也請記錄專案關係人及其專案輸入和責任，以確定專案中的專案關係人角色都能充分瞭解。
+當技術專案失敗時，其通常是因為人員對影響、結果與責任抱持不相符的預期而造成。 若要避免這些問題，請 [確定您正參與適當的專案關係人](../fundamentals/active-directory-deployment-plans.md)。 此外，也請記錄專案關係人及其專案輸入和責任，以確定專案中的專案關係人角色都能充分瞭解。
 
 ### <a name="plan-communications"></a>規劃通訊
 
@@ -133,7 +133,7 @@ Azure AD 報告提供您環境中 Azure AD 活動的完整觀點和記錄，包�
 
 將記錄路由傳送至 Azure 事件中樞，可與協力廠商 SIEM 工具整合。 此整合可讓您結合 Azure AD 活動記錄資料與 SIEM 所管理的其他資料，進而更深入了解您的環境。 
 
-了解如何[將記錄串流至事件中樞](/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub)。
+了解如何[將記錄串流至事件中樞](./tutorial-azure-monitor-stream-logs-to-event-hub.md)。
 
 ## <a name="plan-operations-and-security-for-azure-ad-reporting-and-monitoring"></a>規劃 Azure AD 報告和監視的作業和安全性
 

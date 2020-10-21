@@ -4,12 +4,12 @@ description: 此文章提供在組織中協調 Azure DevTest Labs 實作的指�
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 0438445f99a22ed9fd239156044d6b3f6b477edc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1958e818f014b7419a1a33e9453fbad460dfc159
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85480842"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330609"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>協調 Azure DevTest Labs 的實作
 此文章提供快速部署和實作 Azure DevTest Labs 的建議方法。 下圖強調作為規範性指南的整體程序，同時觀察支援各種產業需求和案例的彈性。
@@ -36,7 +36,7 @@ ms.locfileid: "85480842"
 
 1. 建立初始的 DevTest Labs 環境。
 2. 判斷允許的 VM 映像和大小，以便與實驗室搭配使用。 決定是否可將自訂映像上傳至 Azure，以便與 DevTest Labs 搭配使用。
-3. 藉由為實驗室 (實驗室擁有者和實驗室使用者) 建立初始角色型存取控制 (RBAC)，來保護對實驗室的存取。 我們建議搭配 Azure Active Directory 使用同步處理的 Active Directory 帳戶，以使用 DevTest Labs 進行身分識別。
+3. 藉由建立 Azure 的初始 Azure 角色型存取控制 (Azure RBAC) 取得實驗室 (實驗室擁有者和實驗室使用者) ，以保護實驗室的存取權。 我們建議搭配 Azure Active Directory 使用同步處理的 Active Directory 帳戶，以使用 DevTest Labs 進行身分識別。
 4. 設定 DevTest Labs 來使用原則，例如排程、成本管理、可認領 VM、自訂映像或公式。
 5. 建立 Azure Repos/Git 之類的線上存放庫。
 6. 決定使用公用或私人存放庫或兩者的組合。 組織 JSON 範本以用於部署和長期維持流程。
@@ -51,5 +51,5 @@ ms.locfileid: "85480842"
 4. 根據最初的理解，確認 IP 位址空間的原始預測仍然合理且準確
 5. 確定已完成適當的合規性與安全性檢閱
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 請參閱本系列的下一篇文章：[治理 Azure DevTest Labs 基礎結構](devtest-lab-guidance-governance-resources.md)

@@ -9,19 +9,19 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d61bc99e851b28712262dba8512c06b6e8872c0e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: ecf0f54913f980d879b562eb4aa8063acf6c4772
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108213"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320261"
 ---
 # <a name="install-client-tools-for-deploying-and-managing-azure-arc-enabled-data-services"></a>安裝用戶端工具，以部署和管理已啟用 Azure Arc 的資料服務
 
 > [!IMPORTANT]
-> 如果您要更新至新的每月版本，請務必同時更新至最新版本的 Azure Data Studio、Azure Data CLI (azdata) 工具和 Azure Data CLI 以及適用于 Azure Data Studio 的 Azure Arc 延伸模組。
+> 如果您要更新至新的每月版本，請務必同時更新至最新版本的 Azure Data Studio、 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 工具，以及 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] Azure Data Studio 的和 Azure Arc 擴充功能。
 
-本檔將逐步引導您完成在用戶端電腦上安裝 Azure 資料 CLI (azdata) 、Azure Data Studio、Azure CLI (az) 和 Kubernetes CLI 工具 (kubectl) 的步驟。
+本檔將逐步引導您完成在 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 用戶端電腦上安裝、Azure Data Studio、Azure CLI (az) 和 KUBERNETES CLI 工具 (kubectl) 的步驟。
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -31,10 +31,10 @@ ms.locfileid: "92108213"
 
 | 工具 | 必要 | 描述 | 安裝 |
 |---|---|---|---|
-| Azure Data CLI (azdata)  | 是 | 用於安裝和管理巨量資料叢集的命令列工具。 Azure Data CLI 也包含命令列公用程式，可使用命令 `azdata sql query` (從命令列執行單一查詢) 、 `azdata sql shell` (互動式 shell) 和，來連線至 azure SQL 和 SQL Server 實例和 Postgres 伺服器並加以查詢 `azdata postgres query` `azdata postgres shell` 。 | [安裝](/sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json) |
+| [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] | 是 | 用於安裝和管理巨量資料叢集的命令列工具。 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 也包含命令列公用程式，可使用命令 `azdata sql query` 從命令列執行單一查詢， (從命令列執行單一查詢) 、 `azdata sql shell` (互動式 shell) 和，以連接到 Azure SQL 和 SQL Server 實例和 Postgres 伺服器並加以查詢 `azdata postgres query` `azdata postgres shell` 。 | [安裝](/sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json) |
 | Azure Data Studio | 是 | 豐富的體驗工具，可用於連接和查詢各種不同的資料庫，包括 Azure SQL、SQL Server、PostrgreSQL 和 MySQL。 Azure Data Studio 的延伸模組可提供 Azure Arc 啟用的資料服務的系統管理體驗。 | [安裝](/sql/azure-data-studio/download-azure-data-studio) |
-| 適用于 Azure Data Studio 的 Azure Data CLI 擴充功能 | 是 | 如果您還沒有適用于 Azure Data Studio 的延伸模組，將會安裝 Azure 資料 CLI。| 從 Azure Data Studio 中的擴充功能庫安裝。|
-| Azure Data Studio 的 Azure Arc 擴充功能 | 是 | Azure Data Studio 的擴充功能，可為 Azure Arc 啟用的資料服務提供管理體驗。 適用于 Azure Data Studio 的 Azure Data CLI 擴充功能相依。 | 從 Azure Data Studio 中的擴充功能庫安裝。|
+| [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] Azure Data Studio 的延伸模組 | 是 | 如果您還沒有，將會安裝 Azure Data Studio 的副檔名 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 。| 從 Azure Data Studio 中的擴充功能庫安裝。|
+| Azure Data Studio 的 Azure Arc 擴充功能 | 是 | Azure Data Studio 的擴充功能，可為 Azure Arc 啟用的資料服務提供管理體驗。 Azure Data Studio 的擴充功能相依性 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 。 | 從 Azure Data Studio 中的擴充功能庫安裝。|
 | Azure Data Studio 中的于 postgresql 延伸模組 | 否 | 提供于 postgresql 管理功能之 Azure Data Studio 的于 postgresql 延伸模組。 | <!--{need link} [Install](../azure-data-studio/data-virtualization-extension.md) --> 從 Azure Data Studio 中的擴充功能庫安裝。|
 | Azure CLI (az) <sup>1</sup> | 是 | 用於管理 Azure 服務的新式命令列介面。 搭配 AKS 部署使用，並將 Azure Arc 啟用的資料服務清查和帳單資料上傳至 Azure。  ([詳細資訊](/cli/azure/?view=azure-cli-latest&preserve-view=true)) 。 | [安裝](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) |
 | Kubernetes CLI (kubectl) <sup>2</sup> | 是 | 用來管理 Kubernetes 叢集的命令列工具 ([詳細資訊](https://kubernetes.io/docs/tasks/tools/install-kubectl/)) 。 | [Windows](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-with-powershell-from-psgallery) \(英文\) \| [Linux](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-using-native-package-management) \(英文\) |

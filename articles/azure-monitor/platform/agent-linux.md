@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 61233173452bb45162c7b254203e0ff2922a9784
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 8b9fac51b5bdab20d7b082945ee594ac76c3e52a
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013741"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332496"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>在 Linux 電腦上安裝 Log Analytics 代理程式
 本文將詳細說明如何使用下列方法，在 Linux 電腦上安裝 Log Analytics 代理程式：
@@ -43,9 +43,11 @@ ms.locfileid: "92013741"
 >[!NOTE]
 >如果您使用的散發版本或版本目前不受支援，且不符合支援模型，建議您為此存放庫建立分支，以認可 Microsoft 支援服務將不會對分支代理程式版本提供協助。
 
-### <a name="python-2-requirement"></a>Python 2 需求
+### <a name="python-requirement"></a>Python 需求
 
- Log Analytics 代理程式需要 Python 2。 如果您的虛擬機器預設使用未包含 Python 2 的發行版本，則您必須安裝它。 下列範例命令會在不同的散發版本上安裝 Python 2。
+從代理程式版本1.13.27 開始，Linux 代理程式將同時支援 Python 2 和3。 我們一律建議使用最新的代理程式。 
+
+如果您使用的是舊版的代理程式，則必須讓虛擬機器預設使用 python 2。 如果您的虛擬機器預設使用未包含 Python 2 的發行版本，則您必須安裝它。 下列範例命令會在不同的散發版本上安裝 Python 2。
 
  - Red Hat、CentOS、Oracle： `yum install -y python2`
  - Ubuntu、Debian： `apt-get install -y python2`
@@ -71,7 +73,7 @@ OMS 代理程式對 Linux 有有限的自訂支援。
 目前支援下列各項： 
 - Fips
 
-已規劃但尚未支援下列各項：
+下列為考慮但尚不支援的事項：
 - Cis
 - SELINUX
 
@@ -81,7 +83,7 @@ OMS 代理程式對 Linux 有有限的自訂支援。
 
 下表強調代理程式將安裝的 [支援 Linux 散發版本](#supported-operating-systems) 所需的套件。
 
-|必要的套件 |描述 |最小版本 |
+|必要的套件 |Description |最小版本 |
 |-----------------|------------|----------------|
 |Glibc |    GNU C 程式庫 | 2.5-12 
 |Openssl    | OpenSSL 程式庫 | 1.0.x 或 1.1.x |
@@ -126,9 +128,9 @@ docker-cimprov | 1.0.0 | OMI 的 Docker 提供者。 僅在偵測到 Docker 時�
 
 如果您的 Linux 電腦需要透過 proxy 伺服器與 Log Analytics 通訊，您可以在命令列上指定此設定，包括 `-p [protocol://][user:password@]proxyhost[:port]` 。 *Protocol*屬性會接受 `http` 或 `https` ，而*proxyhost*屬性會接受 PROXY 伺服器的完整功能變數名稱或 IP 位址。 
 
-例如： `https://proxy01.contoso.com:30443`
+例如：`https://proxy01.contoso.com:30443`
 
-如果任何一種情況都需要驗證，您必須指定使用者名稱和密碼。 例如： `https://user01:password@proxy01.contoso.com:30443`
+如果任何一種情況都需要驗證，您必須指定使用者名稱和密碼。 例如：`https://user01:password@proxy01.contoso.com:30443`
 
 1. 若要設定 Linux 電腦以連線到 Log Analytics 工作區，請執行下列命令來提供工作區識別碼和主要金鑰。 下列命令會下載代理程式、驗證其總和檢查碼，並加以安裝。
     

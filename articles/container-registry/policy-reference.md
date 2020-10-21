@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure Container Registry 的內建原則定義
 description: 列出適用於 Azure Container Registry 的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: reference
 author: dlepow
 ms.author: danlep
 ms.service: container-registry
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 35bd684076441dfbf64cbc152b81ae63883baf8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acc347bf0a2237d827a4320edd00a6c62f58d0c2
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826956"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319956"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-container-registry"></a>適用於 Azure Container Registry 的 Azure 原則內建定義
 

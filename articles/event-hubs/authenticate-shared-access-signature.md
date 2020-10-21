@@ -4,12 +4,12 @@ description: 本文說明如何使用共用存取簽章來驗證事件中樞資�
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: f0cdf37963e40d871ad1079e9ccd5d0eb61fa2c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5d52b82ad6bbcb8dc7c028d3eba25a584590840
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91270095"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332428"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>使用 (SAS) 的共用存取簽章來驗證事件中樞資源的存取權
 共用存取簽章 (SAS) 可讓您更精確地控制您授與具有共用存取簽章之用戶端的存取類型。 以下是您可以在 SAS 中設定的一些控制項： 
@@ -222,7 +222,7 @@ private static string createToken(string resourceUri, string keyName, string key
 查看下列文章：
 
 - [使用 SAS 進行授權](authenticate-shared-access-signature.md)
-- [使用角色基底存取控制 (RBAC) 進行授權 ](authenticate-shared-access-signature.md)
+- [使用 Azure 角色型存取控制 (Azure RBAC) 進行授權 ](authenticate-shared-access-signature.md)
 - [深入瞭解事件中樞](event-hubs-about.md)
 
 請參閱下列相關文章：

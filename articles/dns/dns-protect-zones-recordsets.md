@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 2/20/2020
 ms.author: allensu
-ms.openlocfilehash: b06ae396ae15c8572cf8160ce576651f47001add
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52cb1f144608202739dc46f2053950b38d810631
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87920495"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330150"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>如何保護 DNS 區域和記錄
 
@@ -22,9 +22,9 @@ DNS 區域和記錄是重要的資源。 刪除 DNS 區域或單一 DNS 記錄�
 
 本文說明 Azure DNS 如何讓您針對這類變更保護私人 DNS 區域和記錄。  我們會套用 Azure Resource Manager 所提供的兩項強大的安全性功能： [azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md) 和 [資源鎖定](../azure-resource-manager/management/lock-resources.md)。
 
-## <a name="role-based-access-control"></a>角色型存取控制
+## <a name="azure-role-based-access-control"></a>Azure 角色型存取控制
 
-Azure 角色型存取控制 (Azure RBAC) 可針對 Azure 使用者、群組和資源提供更細緻的存取權管理。 使用 RBAC，您可以授與使用者所需的存取層級。 如需有關 RBAC 如何協助您管理存取權的詳細資訊，請參閱 [什麼是 azure (AZURE RBAC) 的 azure 角色型存取控制 ](../role-based-access-control/overview.md)。
+Azure 角色型存取控制 (Azure RBAC) 可針對 Azure 使用者、群組和資源提供更細緻的存取權管理。 使用 Azure RBAC，您可以授與使用者所需的存取層級。 如需 Azure RBAC 如何協助您管理存取權的詳細資訊，請參閱 [什麼是 azure (AZURE rbac) 的 azure 角色型存取控制 ](../role-based-access-control/overview.md)。
 
 ### <a name="the-dns-zone-contributor-role"></a>DNS 區域參與者角色
 
@@ -32,11 +32,11 @@ DNS 區域參與者角色是用來管理私人 DNS 資源的內建角色。 此�
 
 資源群組 *myResourceGroup* 包含 Contoso Corporation 的五個區域。 將該資源群組的 DNS 區域參與者權限授與 DNS 系統管理員，可讓他們具有這些 DNS 區域的完整控制權。 它可避免授與不必要的許可權。 DNS 系統管理員無法建立或停止虛擬機器。
 
-指派 RBAC 權限的最簡單方式是[透過 Azure 入口網站](../role-based-access-control/role-assignments-portal.md)。  
+指派 Azure RBAC 許可權最簡單的方式是透過 [Azure 入口網站](../role-based-access-control/role-assignments-portal.md)。  
 
 開啟資源群組的 [ **存取控制] (IAM) ** ，然後選取 [ **新增**]，再選取 [ **DNS 區域參與者** ] 角色。 選取所需的使用者或群組以授與許可權。
 
-![透過 Azure 入口網站的資源群組層級 RBAC](./media/dns-protect-zones-recordsets/rbac1.png)
+![透過 Azure 入口網站的資源群組層級 Azure RBAC](./media/dns-protect-zones-recordsets/rbac1.png)
 
 權限也可以[使用 Azure PowerShell 授與](../role-based-access-control/role-assignments-powershell.md)：
 
@@ -61,15 +61,15 @@ az role assignment create \
 --resource-group "<resource group name>"
 ```
 
-### <a name="zone-level-rbac"></a>區域層級 RBAC
+### <a name="zone-level-azure-rbac"></a>區域層級 Azure RBAC
 
 Azure RBAC 規則可以套用至訂用帳戶、資源群組或個別資源。 該資源可以是個別的 DNS 區域，也可以是個別的記錄集。
 
 例如，資源群組 *myResourceGroup* 包含區域 *contoso.com* 和子領域 *customers.contoso.com*。 系統會為每個客戶帳戶建立 CNAME 記錄。 用來管理 CNAME 記錄的系統管理員帳戶，會獲指派在 *customers.contoso.com* 區域中建立記錄的許可權。 帳戶只能管理 *customers.contoso.com* 。
 
-區域層級 RBAC 權限可以透過 Azure 入口網站授與。  開啟區域的 [ **存取控制] (IAM) ** ，選取 [ **新增**]，然後選取 [ **DNS 區域參與者** ] 角色，然後選取必要的使用者或群組以授與許可權。
+您可以透過 Azure 入口網站授與區域層級的 Azure RBAC 許可權。  開啟區域的 [ **存取控制] (IAM) ** ，選取 [ **新增**]，然後選取 [ **DNS 區域參與者** ] 角色，然後選取必要的使用者或群組以授與許可權。
 
-![透過 Azure 入口網站的 DNS 區域層級 RBAC](./media/dns-protect-zones-recordsets/rbac2.png)
+![經由 Azure 入口網站的 DNS 區域層級 Azure RBAC](./media/dns-protect-zones-recordsets/rbac2.png)
 
 權限也可以[使用 Azure PowerShell 授與](../role-based-access-control/role-assignments-powershell.md)：
 
@@ -96,15 +96,15 @@ az role assignment create \
 --scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/DnsZones/<zone name>/"
 ```
 
-### <a name="record-set-level-rbac"></a>記錄集層級 RBAC
+### <a name="record-set-level-azure-rbac"></a>記錄集層級 Azure RBAC
 
 許可權會套用於記錄集層級。  使用者會獲得所需專案的控制權，而且無法進行任何其他變更。
 
-記錄集層級 RBAC 許可權可透過 Azure 入口網站設定，請使用 [記錄集] 頁面中的 [ **存取控制] (IAM) ** 按鈕：
+您可以使用 [記錄集] 頁面中的 [ **存取控制] (IAM) ** 按鈕，透過 Azure 入口網站設定記錄集層級的 Azure RBAC 許可權：
 
-![透過 Azure 入口網站的記錄集層級 RBAC](./media/dns-protect-zones-recordsets/rbac3.png)
+![透過 Azure 入口網站記錄集層級的 Azure RBAC](./media/dns-protect-zones-recordsets/rbac3.png)
 
-記錄集層級 RBAC 權限也可以[使用 Azure PowerShell 授與](../role-based-access-control/role-assignments-powershell.md)：
+您也可以 [使用 Azure PowerShell 來授](../role-based-access-control/role-assignments-powershell.md)與記錄集層級的 Azure RBAC 許可權：
 
 ```azurepowershell
 # Grant permissions to a specific record set
@@ -186,7 +186,7 @@ az role create -inputfile <file path>
 
 然後可以使用與內建角色相同的方式指派角色，如本文稍早所述。
 
-如需有關如何建立、管理及指派自訂角色的詳細資訊，請參閱 [AZURE RBAC 中的自訂角色](../role-based-access-control/custom-roles.md)。
+如需有關如何建立、管理及指派自訂角色的詳細資訊，請參閱 [Azure 自訂角色](../role-based-access-control/custom-roles.md)。
 
 ## <a name="resource-locks"></a>資源鎖定
 
@@ -286,5 +286,5 @@ New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceTy
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需使用 RBAC 的詳細資訊，請參閱[開始使用 Azure 入口網站中的存取管理](../role-based-access-control/overview.md)。
+* 如需有關使用 Azure RBAC 的詳細資訊，請參閱 [什麼是 azure (AZURE rbac) 的 azure 角色型存取控制 ](../role-based-access-control/overview.md)。
 * 如需使用資源鎖定的詳細資訊，請參閱[使用 Azure Resource Manager 鎖定資源](../azure-resource-manager/management/lock-resources.md)。

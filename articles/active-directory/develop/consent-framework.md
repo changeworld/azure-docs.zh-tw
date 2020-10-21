@@ -9,16 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 10/21/2020
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
-ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: e9780332ad6279deef63910c7e6ba95e1ccf43bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5e53c29c41b3c4a5a2dd1f421e128231aa5eec3
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706127"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327544"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory 同意架構
 
@@ -64,5 +63,4 @@ Azure Active Directory (Azure AD) 同意架構可讓您輕鬆地開發多租用�
 
 ## <a name="next-steps"></a>後續步驟
 
-* 請參閱[如何將應用程式轉換成多租用戶](howto-convert-app-to-be-multi-tenant.md)
-* 深入了解[授權碼授與流程期間 OAuth 2.0 通訊協定層如何支援同意](../azuread-dev/v1-protocols-oauth-code.md#request-an-authorization-code)。
+請參閱[如何將應用程式轉換成多租用戶](howto-convert-app-to-be-multi-tenant.md)

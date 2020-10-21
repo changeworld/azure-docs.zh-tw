@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7315ef68b3562a28ee2515077c1e7d2f23c3803f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34b4a7395102549dfea6f9d51ef8d1216bacddba
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230427"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327700"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>適用于 HDInsight 的 Azure 安全性基準
 
@@ -142,7 +142,7 @@ https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags
 
 **指導**方針：定義和執行與您的 Azure HDInsight 叢集相關之網路資源的標準安全性設定。 使用 "Microsoft. HDInsight" 和 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以對 Azure HDInsight 叢集的網路設定進行審核或強制執行。
 
-您也可以使用 Azure 藍圖，藉由在單一藍圖定義中封裝關鍵環境成品，例如 Azure Resource Manager 範本、RBAC 控制項和原則，來簡化大規模的 Azure 部署。 輕鬆地將藍圖套用至新的訂閱、環境，以及透過版本控制來微調控制和管理。
+您也可以使用 Azure 藍圖，藉由在單一藍圖定義中封裝關鍵環境成品（例如 Azure Resource Manager 範本、Azure RBAC 控制項和原則）來簡化大規模的 Azure 部署。 輕鬆地將藍圖套用至新的訂閱、環境，以及透過版本控制來微調控制和管理。
 
 如何檢視可用的 Azure 原則別名： 
 
