@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: c8bc9e844687c85255be972011eba03e9c38de48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3910b6ffcce6c5bc4a8d565071c4b07db9e3ff63
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488298"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279020"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>在運算式中使用函式的參考指南，適用於 Azure Logic Apps 和 Power Automate
 
@@ -1136,7 +1136,7 @@ bool(<value>)
 
 | 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| `true` 或 `false` | 布林值 | 指定之值的布林值版本。 |
+| `true` 或 `false` | Boolean | 指定之值的布林值版本。 |
 ||||
 
 *輸出*
@@ -1149,7 +1149,7 @@ bool(<value>)
 | `bool(0)` | 整數    | `false` |
 | `bool(-1)` | 整數 | `true` |
 | `bool('true')` | String | `true` |
-| `bool('false')` | 字串 | `false` |
+| `bool('false')` | String | `false` |
 
 <a name="coalesce"></a>
 
@@ -4767,7 +4767,21 @@ xpath('<xml>', '<xpath>')
 
 假設您有這個 `'items'` XML 字串： 
 
-`"<?xml version="1.0"?> <produce> <item> <name>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
 
 此範例會傳入 XPath 運算式， `'/produce/item/name'` 以尋找符合 `<name></name>` XML 字串中節點的節點 `'items'` ，並傳回具有這些節點值的陣列：
 
@@ -4799,7 +4813,21 @@ xpath('<xml>', '<xpath>')
 
 在此範例中，假設您 `items` 的 XML 字串也包含屬性， `expired='true'` 以及 `expired='false'` ：
 
-`"<?xml version="1.0"?> <produce> <item> <name expired='true'>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name expired='false'>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name expired='true'>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name expired='false'>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
 
 此範例會傳入 XPath 運算式， `'//name[@expired]'` 以尋找 `name` 具有該屬性的所有元素 `expired` ：
 
@@ -4811,7 +4839,21 @@ xpath('<xml>', '<xpath>')
 
 在此範例中，假設您的 `items` XML 字串只包含這個屬性 `expired = 'true'` ：
 
-`"<?xml version="1.0"?> <produce> <item> <name expired='true'>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name expired='true'>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
 
 此範例會傳入 XPath 運算式， `'//name[@expired = 'true']'` 以尋找 `name` 具有該屬性的所有元素 `expired = 'true'` ：
 
@@ -4826,7 +4868,21 @@ xpath('<xml>', '<xpath>')
 * `expired='true' price='12'`
 * `expired='false' price='40'`
 
-`"<?xml version="1.0"?> <produce> <item> <name expired='true' price='12'>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name expired='false' price='40'>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name expired='true' price='12'>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name expired='false' price='40'>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
 
 此範例會傳入 XPath 運算式， `'//name[price>35]'` 以尋找具有下列專案的 `name` 所有元素 `price > 35` ：
 
@@ -4838,7 +4894,21 @@ xpath('<xml>', '<xpath>')
 
 在此範例中，假設您 `items` 的 XML 字串與範例1中的相同：
 
-`"<?xml version="1.0"?> <produce> <item> <name>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+```xml
+<?xml version="1.0"?>
+<produce>
+  <item>
+    <name>Gala</name>
+    <type>apple</type>
+    <count>20</count>
+  </item>
+  <item>
+    <name>Honeycrisp</name>
+    <type>apple</type>
+    <count>10</count>
+  </item>
+</produce>
+```
 
 此範例會尋找符合節點的節點 `<count></count>` ，並使用函式加入這些節點值 `sum()` ：
 
@@ -4850,7 +4920,9 @@ xpath('<xml>', '<xpath>')
 
 在此範例中，假設您有此 XML 字串，其中包含 XML 檔命名空間， `xmlns="http://contoso.com"` 如下所示：
 
-`"<?xml version="1.0"?> <file xmlns="http://contoso.com"> <location>Paris</location> </file>"`
+```xml
+<?xml version="1.0"?><file xmlns="http://contoso.com"><location>Paris</location></file>
+```
 
 這些運算式使用 XPath 運算式 `/*[name()="file"]/*[name()="location"]` 或 `/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]` ，來尋找符合節點的節點 `<location></location>` 。 這些範例顯示您在邏輯應用程式設計工具或運算式編輯器中使用的語法：
 
@@ -4871,7 +4943,7 @@ xpath('<xml>', '<xpath>')
 >
 > * 運算式編輯器：`xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
 
-*範例9*
+*範例 9*
 
 在範例8之後，此範例會使用 XPath 運算式， `'string(/*[name()="file"]/*[name()="location"])'` 以找出節點中的值 `<location></location>` ：
 

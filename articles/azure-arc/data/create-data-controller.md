@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: ba2d0acec37d0f59240381cdea04f4d53ded0b1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00d8e0d3ba57034bd65dfb7663341e4fcdf586dc
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273036"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310927"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>建立 Azure Arc 資料控制器
 
@@ -65,7 +65,7 @@ ms.locfileid: "91273036"
 > **只想試試看嗎？**  
 > 快速開始使用 [Azure Arc](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) 快速入門 AZURE KUBERNETES SERVICE (AKS) 、AWS 彈性 Kubernetes 服務 (EKS) 、Google Cloud Kubernetes 引擎 (GKE) 或在 Azure VM 中！
 > 
-- [使用 Azure Data CLI 建立資料控制器 (azdata) ](create-data-controller-using-azdata.md)
+- [建立包含的資料控制器 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]](create-data-controller-using-azdata.md)
 - [使用 Azure Data Studio 建立資料控制器](create-data-controller-azure-data-studio.md)
 - [透過 Azure Data Studio 中的 Jupyter 筆記本，從 Azure 入口網站建立資料控制器](create-data-controller-resource-in-azure-portal.md)
 - [使用 Kubernetes 工具（例如 kubectl 或 oc）來建立資料控制器](create-data-controller-using-kubernetes-native-tools.md)

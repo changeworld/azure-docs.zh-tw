@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: b2a01e816c0f0569c207aa65e5027b935210e3b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6fed24c7de87424bde94b864d4a9db91828a510
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331772"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315779"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>針對 Azure Migrate 設備和探索進行疑難排解
 
@@ -27,7 +27,7 @@ ms.locfileid: "91331772"
 
 如果您收到錯誤「提供的資訊清單檔案無效：不正確 OVF 資訊清單專案」，請執行下列動作：
 
-1. 藉由檢查其雜湊值，確認 Azure Migrate 設備 OVA 檔是否已正確下載。 [深入了解](./tutorial-prepare-vmware.md)。 如果雜湊值不相符，請再次下載 OVA 檔案並重試部署。
+1. 藉由檢查其雜湊值，確認 Azure Migrate 設備 OVA 檔是否已正確下載。 [深入了解](./tutorial-discover-vmware.md)。 如果雜湊值不相符，請再次下載 OVA 檔案並重試部署。
 2. 如果部署仍然失敗，而且您使用 VMware vSphere 用戶端來部署 OVF 檔案，請嘗試透過 vSphere web 用戶端進行部署。 如果部署仍然失敗，請嘗試使用不同的網頁瀏覽器。
 3. 如果您使用的是 vSphere web 用戶端，並嘗試將它部署在 vCenter Server 6.5 或6.7 上，請嘗試直接在 ESXi 主機上部署 OVA：
    - 直接連接至 ESXi 主機 (而不是 vCenter Server) 與 web 用戶端 (HTTPs://<*主機 IP 位址*>/ui contoso\) 。

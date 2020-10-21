@@ -3,12 +3,12 @@ title: 使用 Apache Kafka MirrorMaker - Azure 事件中樞 | Microsoft Docs
 description: 本文提供有關如何使用 Kafka MirrorMaker 為「Azure 事件中樞」中的 Kafka 叢集建立鏡像的資訊。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: aea8ebcfa65d5f4c90aa1908d03f0fcde8906bba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab0f78adeeff34334c9800632fc58ab634b4fab6
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85320185"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308345"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>使用 Kafka MirrorMaker 搭配適用於 Apache Kafka 的事件中樞
 
@@ -33,13 +33,13 @@ ms.locfileid: "85320185"
 
 Azure 事件中樞 Kafka 端點可讓您使用 Kafka 通訊協定 (亦即 Kafka 用戶端) 連線到 Azure 事件中樞。 幾乎不需要變更 Kafka 應用程式，您就可以連線到 Azure 事件中樞，並享受 Azure 生態系統的優點。 事件中樞目前支援 Kafka 1.0 版和更新版本。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，請確定您具有下列項目︰
 
 * 請參閱[適用於 Apache Kafka 的事件中樞](event-hubs-for-kafka-ecosystem-overview.md)一文。 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-* [JAVA 開發工具組 (JDK) 1.7 +](https://aka.ms/azure-jdks)
+* [JAVA 開發工具組 (JDK) 1.7 +](/azure/developer/java/fundamentals/java-jdk-long-term-support)
     * 在 Ubuntu 上，執行 `apt-get install default-jdk` 來安裝 JDK。
     * 務必設定 JAVA_HOME 環境變數，以指向 JDK 安裝所在的資料夾。
 * [下載](https://maven.apache.org/download.cgi) 並 [安裝](https://maven.apache.org/install.html) Maven 二進位封存

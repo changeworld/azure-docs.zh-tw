@@ -7,16 +7,16 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: 417a1dbc72c3b3c35c501351dcc8bda9dc95a78d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b2e94bfe1bef9ecdeaa4b2b84224967bb1c7741
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84431600"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281594"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Cassandra Azure Cosmos DB API 中的變更摘要
 
-Azure Cosmos DB API for Cassandra 中的[變更](change-feed.md)摘要支援可透過 Cassandra 查詢語言中的查詢述詞來取得， (CQL) 。 您可以使用這些述詞條件來查詢變更摘要 API。 應用程式可以使用主鍵來取得對資料表所做的變更 (也稱為分割區索引鍵) 在 CQL 中是必要的。 然後，您可以根據結果採取進一步的動作。 變更資料表中的資料列時，會依照修改時間的順序來加以捕獲，而且每個分割區索引鍵都能保證排序次序。
+Azure Cosmos DB API for Cassandra 中的[變更](change-feed.md)摘要支援可透過 Cassandra 查詢語言中的查詢述詞來取得， (CQL) 。 您可以使用這些述詞條件來查詢變更摘要 API。 應用程式可以使用主鍵來取得對資料表所做的變更 (也稱為分割區索引鍵) 在 CQL 中是必要的。 然後，您可以根據結果採取進一步的動作。 變更資料表中的資料列時，會依其修改時間的順序和每個資料分割索引鍵的排序次序來加以捕捉。
 
 下列範例顯示如何使用 .NET 取得 Cassandra API Keyspace 資料表中所有資料列的變更摘要。 述詞 COSMOS_CHANGEFEED_START_TIME ( # A1 會直接在 CQL 中用來從指定的開始時間查詢變更摘要中的專案 (在此案例中為目前的日期時間) 。 您可以 [在這裡下載 c #](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/) [和 JAVA 的](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java)完整範例。
 
@@ -144,6 +144,6 @@ Azure Cosmos DB API for Cassandra 中的[變更](change-feed.md)摘要支援可�
 
 * **HTTP 錯誤碼 429** -變更摘要受到速率限制時，會傳回空白頁面。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [使用 Azure Resource Manager 範本管理 Azure Cosmos DB Cassandra API 資源](manage-cassandra-with-resource-manager.md)

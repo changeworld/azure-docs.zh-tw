@@ -79,7 +79,7 @@
           href: ../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
         - name: 常見問題集
           href: dns-faq-private.md
-- name: 如何
+- name: 操作指南
   items:
     - name: 公用 DNS
       items:

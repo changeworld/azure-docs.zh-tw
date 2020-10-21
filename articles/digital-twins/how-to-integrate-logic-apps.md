@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 21e72e63dae2c52d04aca0cd11971fe5cd23fb47
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 292305c3f899ac4156fd84e8edcb0d6e9a3c0b34
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207541"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280858"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>使用自訂連接器與 Logic Apps 整合
 
@@ -200,7 +200,7 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 在 [新增 *DigitalTwinsAdd* ] 方塊中，填寫欄位，如下所示：
 * _識別碼_：在您想要邏輯應用程式更新的實例中，填入數位對應項的對應項 *識別碼* 。
 * 對應_項：此_欄位可讓您輸入所選 API 要求所需的主體。 針對 *DigitalTwinsUpdate*，此主體是 JSON 修補程式碼的形式。 如需有關結構化 JSON 修補程式以更新對應項的詳細資訊，請參閱 how *to：管理數位 twins*的[更新數位](how-to-manage-twin.md#update-a-digital-twin)對應項一節。
-* _api 版本_：最新的 api 版本。 在目前的公開預覽中，此值為 *2020-05-31-preview*
+* _api 版本_：最新的 api 版本。 目前，此值為 *2020-10-31*。
 
 點擊 Logic Apps 設計工具中的 [ *儲存* ]。
 

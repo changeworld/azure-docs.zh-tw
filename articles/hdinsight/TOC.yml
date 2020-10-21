@@ -3,7 +3,7 @@
 - name: HDInsight 服務
   expanded: true
   items:
-    - name: 概觀
+    - name: 總覽
       items:
         - name: 什麼是 Azure HDInsight？
           href: ./hdinsight-overview.md
@@ -647,6 +647,8 @@
               href: ./kafka/apache-kafka-auto-create-topics.md
             - name: 使用 Apache Kafka 與 IoT 中樞
               href: ./kafka/apache-kafka-connector-iot-hub.md
+            - name: 匯合結構描述登錄
+              href: ./kafka/schema-registry.md
             - name: 建立資料流管線
               items:
                 - name: Apache Spark、Apache Kafka 和 Azure Cosmos DB
@@ -845,6 +847,8 @@
               href: ./hdinsight-troubleshoot-hive.md
             - name: Apache Hive 記錄佔據了前端節點上的整個磁碟空間
               href: ./interactive-query/interactive-query-troubleshoot-hive-logs-diskspace-full-headnodes.md
+            - name: Hive 的安全性選項
+              href: ./interactive-query/hdinsight-security-options-for-hive.md
 - name: ML 服務
   items:
     - name: 概觀

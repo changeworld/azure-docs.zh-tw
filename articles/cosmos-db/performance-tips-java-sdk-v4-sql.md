@@ -5,15 +5,15 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: how-to
-ms.date: 07/08/2020
+ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: a014038996ae2846d059551b565feedd8de560a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43206fbc956602ddaf189f45648cf8a44a3dd143
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88258320"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277323"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 的效能秘訣
 
@@ -38,14 +38,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 * **連線模式：使用直接模式**
 <a id="direct-connection"></a>
     
-    用戶端連線到 Azure Cosmos DB 的方式，對於效能有重大影響 (尤其對用戶端延遲而言)。 連接模式是可用於設定用戶端的重要設定。 針對 Azure Cosmos DB JAVA SDK v4，可用的兩種連接模式如下：  
-
-    * 直接模式 (預設)       
-    * 閘道模式
-
-    這些連線模式基本上會將資料平面要求的路由（檔讀取和寫入）從您的用戶端電腦移至 Azure Cosmos DB 後端中的資料分割。 一般直接模式是最佳效能的最佳選項，可讓您的用戶端直接開啟 Azure Cosmos DB 後端中的資料分割的 TCP 連線，並傳送要求 *直接*lesson.ly 而不需要媒介。 相反地，在閘道模式中，用戶端所提出的要求會路由傳送至 Azure Cosmos DB 前端的所謂「閘道」伺服器，進而將您的要求傳送到 Azure Cosmos DB 後端中的適當磁碟分割區。 如果您的應用程式在有嚴格防火牆限制的公司網路中執行，則閘道模式會是最佳的選擇，因為它會使用標準 HTTPS 連接埠與單一端點。 不過對於效能的影響，就在於每次讀取或寫入 Azure Cosmos DB 資料時，閘道模式都會涉及額外的網路躍點 (用戶端到閘道，以及閘道到分割區)。 因此，直接模式因為網路躍點較少，所以可提供較佳的效能。
-
-    資料平面要求的連接模式是使用 *directMode ( # B1 * 或 *GatewayMode ( # B3 * 方法在 Azure Cosmos DB 用戶端產生器中設定，如下所示。 若要使用預設值設定任一種模式，請呼叫其中一個沒有引數的方法。 否則，請將設定類別實例傳遞為引數 (*DirectConnectionConfig* for *DirectMode ( # B2 *，  *GatewayConnectionConfig* for *gatewayMode ( # B4 *. ) 
+    JAVA SDK 預設連接模式是 direct。 您可以使用 *directMode ( # B1 * 或 *GatewayMode ( # B3 * 方法，在用戶端建立器中設定連接模式，如下所示。 若要使用預設值設定任一種模式，請呼叫其中一個沒有引數的方法。 否則，請將設定類別實例傳遞為引數 (*DirectConnectionConfig* for *DirectMode ( # B2 *，  *GatewayConnectionConfig* for *gatewayMode ( # B4 *. ) 。 若要深入瞭解不同的連線選項，請參閱連線 [模式](sql-sdk-connection-modes.md) 文章。
     
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
@@ -372,4 +365,4 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解如何針對規模和高效能設計您的應用程式，請參閱 [Azure Cosmos DB 的資料分割與調整規模](partition-data.md)。
+若要深入了解如何針對規模和高效能設計您的應用程式，請參閱 [Azure Cosmos DB 的資料分割與調整規模](partitioning-overview.md)。

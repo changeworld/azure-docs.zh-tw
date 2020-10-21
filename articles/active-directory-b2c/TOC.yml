@@ -101,8 +101,10 @@
   items:
     - name: 應用程式整合
       items:
-        - name: 註冊應用程式
+        - name: 註冊 Web 應用程式
           href: tutorial-register-applications.md
+        - name: 註冊單一頁面應用程式 (SPA)
+          href: tutorial-register-spa.md
         - name: 註冊 SAML 服務提供者
           href: connect-with-saml-service-providers.md
           displayName: 'SP, RP, service provider, connect'

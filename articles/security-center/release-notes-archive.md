@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 09b23e9951c6da597b82d2e012a57f2c93410a5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6bb335ad7783c180ceeaafde955d6ac9dcb8799
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289798"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280134"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure 資訊安全中心內新功能的封存？
 
@@ -28,6 +28,50 @@ ms.locfileid: "91289798"
 - 新功能
 - 錯誤修正
 - 已被取代的功能
+
+
+## <a name="april-2020"></a>2020 年 4 月
+
+4 月的更新包括：
+- [動態合規性套件現已正式推出](#dynamic-compliance-packages-are-now-generally-available)
+- [Azure 資訊安全中心免費層中現在已包含身分識別建議](#identity-recommendations-now-included-in-azure-security-center-free-tier)
+
+
+### <a name="dynamic-compliance-packages-are-now-generally-available"></a>動態合規性套件現已正式推出
+
+Azure 資訊安全中心的法規合規性儀表板現在包含**動態相容性套件** (現已正式運作)，以追蹤額外的產業和法規標準。
+
+您可以從 [資訊安全中心安全性原則] 頁面，將動態相容性套件新增至您的訂閱或管理群組。 當您上架標準或基準測試時，標準會出現在您的法規合規性儀表板中，並將所有相關聯的相容性資料對應為評量。 任何已上架之標準的摘要報告都可供下載。
+
+現在，您可以加入標準，例如：
+
+- **NIST SP 800-53 R4**
+- **SWIFT CSP CSCF-v2020**
+- **UK Official 與 UK NHS**
+- **加拿大聯邦 PBMM**
+- **Azure CIS 1.1.0 (新)** (這是更完整的 Azure CIS 1.1.0 標記法)
+
+此外，我們最近新增了 **Azure 安全性基準測試**，這是 Microsoft 針對以通用合規性架構為基礎的安全性和合規性最佳做法所撰寫的 Azure 特定指導方針。 當儀表板可供使用時，將會支援其他標準。  
+ 
+深入了解[如何在您的法規合規性儀表板中自訂一組標準](update-regulatory-compliance-packages.md)。
+
+
+### <a name="identity-recommendations-now-included-in-azure-security-center-free-tier"></a>Azure 資訊安全中心免費層中現在已包含身分識別建議
+
+Azure 資訊安全中心免費層的身分識別和存取安全性建議現已正式推出。 這是讓雲端安全性狀態管理 (CSPM) 功能免費的一部份。 到目前為止，這些建議僅適用於標準定價層。
+
+身分識別與存取建議的範例包括：
+
+- 「應在您訂閱上具有擁有者權限的帳戶上啟用多重要素驗證。」
+- 「應針對您的訂閱指定最多 3 位擁有者。」
+- 「已取代帳戶應該從您的訂閱中移除。」
+
+如果您擁有免費定價層的訂閱，其安全分數會受到這項變更的影響，因為這些訂閱永遠不會評估其身分識別和存取安全性。
+
+深入瞭解[身分識別與存取建議](recommendations-reference.md#recs-identity)。
+
+深入瞭解[監視身分識別及存取](security-center-identity-access.md)。
+
 
 
 ## <a name="march-2020"></a>2020 年 3 月
@@ -47,7 +91,7 @@ Azure 資訊安全中心的工作流程自動化功能現已正式推出。 可�
 
 每個安全性程式都包含事件回應的多個工作流程。 這些流程可能包括通知相關的專案利害關係人、啟動變更管理程式，以及套用特定的補救步驟。 安全性專家建議您盡可能自動化這些程式的許多步驟。 自動化會藉由確保按照您預先定義的需求快速、一致地執行程式步驟，來減少額外負荷並改善您的安全性。
 
-如需執行工作流程之自動及手動資訊安全中心功能的詳細資訊，請參閱[工作流程自動化](workflow-automation.md)。
+如需執行工作流程之自動和手動資訊安全中心功能的詳細資訊，請參閱[工作流程自動化](workflow-automation.md)。
 
 深入瞭解[建立邏輯應用程式](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)。
 

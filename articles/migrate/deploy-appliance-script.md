@@ -3,12 +3,12 @@ title: 使用腳本設定 Azure Migrate 設備
 description: 瞭解如何使用腳本設定 Azure Migrate 設備
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 6b0637019e40308cf40dcdbb4dc78512a8aa91e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4f92d787ea2a72dd534e514e27fa1a5defef39c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91438914"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317322"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>使用腳本設定設備
 
@@ -16,11 +16,11 @@ ms.locfileid: "91438914"
 
 您可以使用腳本，或使用您從 Azure 入口網站下載的範本，為 VMware 和 Hyper-v Vm 部署設備。 如果您無法使用下載的範本來建立 VM，則使用腳本會很有用。
 
-- 若要使用範本，請遵循 [VMware](tutorial-prepare-vmware.md) 或 [hyper-v](tutorial-prepare-hyper-v.md)的教學課程。
+- 若要使用範本，請遵循 [VMware](./tutorial-discover-vmware.md) 或 [hyper-v](./tutorial-discover-hyper-v.md)的教學課程。
 - 若要設定實體伺服器的設備，您只能使用腳本。 請遵循 [這篇文章](how-to-set-up-appliance-physical.md)。
 - 若要在 Azure Government 雲端中設定設備，請遵循 [這篇文章](deploy-appliance-script-government.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 腳本會在現有的實體機器或 VM 上設定 Azure Migrate 設備。
 

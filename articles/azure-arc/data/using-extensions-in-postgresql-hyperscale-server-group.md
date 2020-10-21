@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 58386786266c48c6e721094f9f2837709bb684e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b9c3c66e58ae51773a959aba0b2c76d97b44445
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631761"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309504"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>在啟用 Azure Arc 的于 postgresql 超大規模伺服器群組中使用於 postgresql 延伸模組
 
@@ -57,7 +57,7 @@ azdata arc postgres server edit -n <name of your postgresql server group> --exte
 #### <a name="get-the-list-of-extensions-enabled"></a>取得已啟用的擴充功能清單：
 執行下列其中一個命令。
 
-##### <a name="with-azdata"></a>使用 azdata
+##### <a name="with-azure-data-cli-azdata"></a>使用 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 ```console
 azdata arc postgres server show -n <server group name>
 ```

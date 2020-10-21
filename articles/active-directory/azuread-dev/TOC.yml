@@ -97,8 +97,6 @@
               href: howto-v1-enable-sso-android.md
             - name: 在 iOS 上啟用 SSO
               href: howto-v1-enable-sso-ios.md
-            - name: 偵錯 SAML 型 SSO
-              href: howto-v1-debug-saml-sso-issues.md
         - name: 設定宣告
           items:
             - name: 設定角色宣告

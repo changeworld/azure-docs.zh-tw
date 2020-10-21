@@ -1,7 +1,7 @@
 ---
-title: Azure API 管理開發人員入口網站的總覽
+title: Azure API 管理中的開發人員入口網站總覽
 titleSuffix: Azure API Management
-description: 瞭解 API 管理中的開發人員入口網站。 開發人員入口網站可讓取用者找到您的 Api。
+description: 瞭解 API 管理中的開發人員入口網站-可自訂的網站，API 取用者可以在其中探索您的 Api。
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
@@ -11,61 +11,46 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/28/2020
+ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 3642b95f5bd6d0207508ca85f1d22ce20b44eae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30a6a73768db7b073258487435ddbe6c0daccf16
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715452"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317828"
 ---
-# <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理開發人員入口網站概觀
+# <a name="overview-of-the-developer-portal"></a>開發人員入口網站總覽
 
 開發人員入口網站是自動產生、可完全自訂的網站，內含 Api 的檔。 API 取用者可以在其中探索您的 Api、瞭解如何使用它們、要求存取權，以及試用。
 
-本文說明「API 管理」中的「開發人員入口網站自我裝載」和「受控」版本之間的差異。 此外也會說明其架構，並提供常見問題的解答。
+本文說明「API 管理」中的「開發人員入口網站自我裝載」和「受控」版本之間的差異。 也提供常見問題的解答。
 
 ![API Management developer portal](media/api-management-howto-developer-portal/cover.png)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-> [!NOTE]
-> <a name="migrate-from-legacy"></a> 新的開發人員入口網站與舊版開發人員入口網站不相容，因此無法進行自動化的遷移。 您必須手動重新建立 (頁面、文字、媒體檔案) 的內容，並自訂新入口網站的外觀。 如需指引，請參閱 [開發人員入口網站教學](api-management-howto-developer-portal-customize.md) 課程。
+## <a name="migration-from-the-legacy-portal"></a>從舊版入口網站遷移
 
-## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a> 受控和自我裝載版本
+> [!IMPORTANT]
+> 舊版開發人員入口網站現已淘汰，而且只會收到安全性更新。 您可以繼續使用它，就像平常一樣，直到2023年10月淘汰為止（當它從所有 API 管理服務中移除）。
 
-您可以透過兩種方式來建立開發人員入口網站：
+[專用檔文章](developer-portal-deprecated-migration.md)中會說明遷移至新的開發人員入口網站。
 
-- **受控版本** -藉由編輯和自訂入口網站（內建在您的 API 管理實例中），並可透過 URL 存取 `<your-api-management-instance-name>.developer.azure-api.net` 。 請參閱 [這篇檔文章](api-management-howto-developer-portal-customize.md) ，以瞭解如何存取和自訂受控入口網站。
-- **自我裝載版本** -藉由在 API 管理實例外部部署和自我裝載您的入口網站。 這種方法可讓您編輯入口網站的程式碼基底，並擴充提供的核心功能，例如，執行自訂 widget 來與協力廠商系統整合。 在此案例中，您是入口網站的維護程式，而您必須負責將入口網站升級至最新版本。 如需詳細資訊和指示，請參閱 [GitHub 存放庫，其中包含入口網站的原始程式碼][1] 和 [執行 widget 的教學][3]課程。 [受控版本的教學](api-management-howto-developer-portal-customize.md)課程會逐步解說入口網站的系統管理面板，此面板常見於 managed 和自我裝載版本。
+## <a name="customization-and-styling"></a>自訂和樣式
 
-## <a name="portal-architectural-concepts"></a>入口網站架構概念
+開發人員入口網站可以透過內建的拖放視覺效果編輯器來自訂和樣式。 如需詳細資訊，請參閱 [此教學](api-management-howto-developer-portal-customize.md) 課程。
 
-入口網站元件可以邏輯方式分成兩種類別：程式 *代碼* 和 *內容*。
+## <a name="extensibility"></a><a name="managed-vs-self-hosted"></a> 擴充性
 
-程式*代碼*會保留在[GitHub 存放庫][1]中，並包含：
+您的 API 管理服務包含內建、隨時處於最新狀態的 **受管理** 開發人員入口網站。 您可以從 Azure 入口網站介面進行存取。
 
-- Widget-代表視覺元素，並結合 HTML、JavaScript、樣式能力、設定和內容對應。 範例包括影像、文欄位落、表單、Api 清單等等。
-- 樣式定義-指定如何設定 widget 的樣式
-- 引擎-這會從入口網站內容產生靜態網頁，並以 JavaScript 撰寫
-- 視覺化編輯器-允許瀏覽器內自訂和撰寫體驗
+如果您需要使用不支援的自訂邏輯來擴充它，您可以修改其程式碼基底。 入口網站的程式碼基底 [可在 GitHub 存放庫中][1]取得。 例如，您可以執行與協力廠商支援系統整合的新 widget。 當您執行新功能時，您可以選擇下列其中一個選項：
 
-*內容* 分為兩個子類別： *入口網站內容* 和 *API 管理內容*。
+- 將產生的入口網站**自我裝載**在您的 API 管理服務外部。 當您自行裝載入口網站時，您會成為其維護程式，並負責其升級。 Azure 支援的協助僅限於自我裝載入口網站的基本設定，如存放 [庫的 Wiki 區段][2]中所述。
+- 開啟 API 管理小組的提取要求，以將新功能合併到 **受控** 入口網站的程式碼基底。
 
-*入口網站內容* 是入口網站專屬的內容，包括：
-
-- 頁面-例如登陸頁面、API 教學課程、blog 文章
-- 媒體-影像、動畫和其他以檔案為基礎的內容
-- 版面配置-與 URL 比對的範本，並定義頁面的顯示方式
-- 樣式-樣式定義的值，例如字型、色彩、框線
-- 設定-設定，例如 favicon、網站中繼資料
-
-*入口網站內容*（媒體除外）會表示為 JSON 檔。
-
-*Api 管理內容* 包含 Api、作業、產品、訂用帳戶等實體。
-
-入口網站是以 [Paperbits 架構](https://paperbits.io/)的調整分支為基礎。 原始的 Paperbits 功能已擴充，以提供 API 管理專屬的 widget (例如 Api 清單、) 的產品清單，以及用來儲存和抓取內容的 API 管理服務連接器。
+如需擴充性的詳細資料和指示，請參閱 [GitHub 存放庫][1] 和 [執行 widget 的教學][3]課程。 [自訂受控入口網站的教學](api-management-howto-developer-portal-customize.md)課程會逐步引導您完成入口網站的系統管理面板，此面板常見於**受控**和**自我**裝載版本。
 
 ## <a name="frequently-asked-questions"></a><a name="faq"></a> 常見問題集
 
@@ -77,7 +62,7 @@ ms.locfileid: "91715452"
 
 如果您是根據預覽版本的內容而高度自訂入口網站，您可以繼續使用它，並在入口網站的頁面上手動放置新的小工具。 否則，建議您以新的預設內容取代您的入口網站內容。
 
-若要在受控入口網站中重設內容，請按一下 [**作業**] 功能表區段中的 [**重設內容**]。 這項作業會移除入口網站的所有內容，並提供新的預設內容。 您將會遺失所有開發人員入口網站的自訂和變更。 **您無法復原此動作**。
+若要在受控入口網站中重設內容，請在 [**作業**] 功能表區段中選取 [**重設內容**]。 這項作業會移除入口網站的所有內容，並提供新的預設內容。 您將會遺失所有開發人員入口網站的自訂和變更。 **您無法復原此動作**。
 
 ![重設入口網站內容](media/api-management-howto-developer-portal/reset-content.png)
 
@@ -85,21 +70,11 @@ ms.locfileid: "91715452"
 
 如果您在2019年11月的正式運作公告之後第一次存取入口網站，它應該已有新的預設內容，且不需要採取進一步的動作。
 
-### <a name="does-the-portal-have-all-the-features-of-the-legacy-portal"></a>入口網站是否有舊版入口網站的所有功能？
-
-開發人員入口網站已不再支援與 Facebook、Microsoft、Twitter 和 Google 的 *應用程式*、 *問題*和直接整合作為身分識別提供者 (您可以改用 Azure AD B2C 來) 。
-
-### <a name="has-the-legacy-portal-been-deprecated"></a>舊版入口網站是否已淘汰？
-
-舊版開發人員和發行者入口網站現在是 *舊版* 的功能，只會接收到安全性更新。 新的功能只會在新的開發人員入口網站中執行。
-
-舊版入口網站的淘汰將會分開宣佈。 如果您有任何疑問、疑慮或意見，請 [在專屬的 GitHub 問題中](https://github.com/Azure/api-management-developer-portal/issues/121)提出。
-
 ### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>入口網站不支援我所需的功能
 
-您可以開啟 [功能要求](https://aka.ms/apimwish) ，或 [自行執行遺漏的功能][3]。 如果您自行實行此功能，您可以自行裝載開發人員入口網站，或在 GitHub 上開啟提取要求，以包含受管理版本中的變更。
+您可以在 [GitHub 存放庫][1] 中開啟功能要求，或 [自行執行遺漏的功能][3]。 如需詳細資訊，請參閱上面的擴充 **性一節** 。
 
-### <a name="how-can-i-automate-portal-deployments"></a>如何自動化入口網站部署？
+### <a name="how-can-i-automate-portal-deployments"></a><a id="automate"></a> 如何自動化入口網站部署？
 
 您可以透過 REST API，以程式設計方式存取和管理開發人員入口網站的內容，不論您使用的是受控或自我裝載版本。
 
@@ -115,11 +90,11 @@ ms.locfileid: "91715452"
 
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>入口網站支援 Azure Resource Manager 範本和/或相容于 API 管理 DevOps 資源套件嗎？
 
-否。
+不正確。
 
 ### <a name="is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management"></a>入口網站的內容是否以「API 管理」中的備份/還原功能儲存？
 
-否。
+不正確。
 
 ### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>我是否需要為受控入口網站相依性啟用額外的 VNet 連線？
 
@@ -127,7 +102,7 @@ ms.locfileid: "91715452"
 
 如果您的 API 管理服務在內部 VNet 中，則只能從網路記憶體取您的開發人員入口網站。 管理端點的主機名稱必須從您用來存取入口網站的系統管理介面的機器解析為服務的內部 VIP。 請確定已在 DNS 中註冊管理端點。 如果設定錯誤，您會看到錯誤： `Unable to start the portal. See if settings are specified correctly in the configuration (...)` 。
 
-如果您的 API 管理服務在內部 VNet 中，而您是透過來自網際網路的應用程式閘道來存取它，請務必啟用與開發人員入口網站的連線，以及 API 管理的管理端點。
+如果您的 API 管理服務在內部 VNet 中，而您是透過來自網際網路的應用程式閘道來存取它，請務必啟用與開發人員入口網站的連線，以及 API 管理的管理端點。 您可能需要停用 Web 應用程式防火牆規則。 如需詳細資訊，請參閱 [這篇檔文章](api-management-howto-integrate-internal-vnet-appgateway.md) 。
 
 ### <a name="i-have-assigned-a-custom-api-management-domain-and-the-published-portal-doesnt-work"></a>我已指派自訂 API 管理網域，且發佈的入口網站無法運作
 
@@ -135,7 +110,7 @@ ms.locfileid: "91715452"
 
 ### <a name="i-have-added-an-identity-provider-and-i-cant-see-it-in-the-portal"></a>我已新增身分識別提供者，但在入口網站中看不到它
 
-設定身分識別提供者之後 (例如，AAD、AAD B2C) ，您需要重新 [發佈入口網站](api-management-howto-developer-portal-customize.md#publish) ，變更才會生效。
+設定身分識別提供者之後 (例如 Azure AD Azure AD B2C) ，您需要重新 [發佈入口網站](api-management-howto-developer-portal-customize.md#publish) ，變更才會生效。 請確定您的開發人員入口網站頁面包含 OAuth 按鈕 widget。
 
 ### <a name="i-have-set-up-delegation-and-the-portal-doesnt-use-it"></a>我已設定委派，但入口網站未使用它
 
@@ -143,7 +118,7 @@ ms.locfileid: "91715452"
 
 ### <a name="my-other-api-management-configuration-changes-havent-been-propagated-in-the-developer-portal"></a>我的其他 API 管理設定變更尚未傳播至開發人員入口網站
 
-大部分的設定變更 (例如，VNet、登入和產品條款) 需要重新 [發佈入口網站](api-management-howto-developer-portal-customize.md#publish)。
+大部分的設定變更 (例如，VNet、登入、產品條款) 需要重新 [發佈入口網站](api-management-howto-developer-portal-customize.md#publish)。
 
 ### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a><a name="cors"></a> 我在使用互動式主控台時遇到 CORS 錯誤
 
@@ -157,9 +132,9 @@ ms.locfileid: "91715452"
 
 您也可以手動啟用 CORS。
 
-1. 按一下 [以 **手動方式將它套用到全域層級** ] 連結，以查看產生的原則代碼。
+1. 選取 [在 **全域層級上手動** 套用] 連結，以查看產生的原則代碼。
 2. 在 Azure 入口網站的 API 管理服務的 [ **api** ] 區段中，流覽至 [api] 區段中的**所有 api** 。
-3. 按一下 **</>** [ **輸入處理** ] 區段中的圖示。
+3. 選取 **</>** [ **輸入處理** ] 區段中的圖示。
 4. 在 XML 檔案的區段中插入原則 **<inbound>** 。 請確定 **<origin>** 值符合開發人員入口網站的網域。
 
 > [!NOTE]
@@ -169,6 +144,10 @@ ms.locfileid: "91715452"
 > 瀏覽器會自動發出 OPTIONS HTTP 要求，但不包含具有訂用帳戶金鑰的標頭。 由於缺少訂用帳戶金鑰，API 管理無法將選項呼叫與產品建立關聯，因此無法套用 CORS 原則。
 >
 > 因應措施是，您可以在查詢參數中傳遞訂用帳戶金鑰。
+
+> [!NOTE]
+> 
+> 只會執行一個 CORS 原則。 如果您指定多個 CORS 原則 (例如，在 API 層級和所有 Api 層級上) ，您的互動式主控台可能無法如預期般運作。
 
 ### <a name="what-permissions-do-i-need-to-edit-the-developer-portal"></a>我需要哪些許可權才能編輯開發人員入口網站？
 

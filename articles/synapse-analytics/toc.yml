@@ -2,7 +2,7 @@
   href: sql-data-warehouse/index.yml
 - name: 切換至 Azure Synapse (SQL DW)
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
-- name: 概觀
+- name: 總覽
   items:
     - name: 什麼是 Azure Synapse？
       href: overview-what-is.md
@@ -40,6 +40,8 @@
       href: quickstart-create-workspace.md
     - name: 使用 Azure CLI 建立 Synapse 工作區
       href: quickstart-create-workspace-cli.md
+    - name: 使用 Azure PowerShell 建立 Synapse 工作區
+      href: quickstart-create-workspace-powershell.md
     - name: 透過範本進行部署
       href: quickstart-deployment-template-workspaces.md
     - name: 使用 Synapse Studio
@@ -204,7 +206,7 @@
           href: ./data-integration/concepts-data-factory-differences.md
     - name: Spark
       items:
-        - name: 概觀
+        - name: 總覽
           items:
             - name: Apache Spark 概觀
               href: ./spark/apache-spark-overview.md
@@ -270,7 +272,7 @@
               href: sql/load-data-overview.md
         - name: 部署
           items:
-            - name: 概觀
+            - name: 總覽
               href: sql/develop-overview.md
             - name: 最佳作法
               href: sql/develop-best-practices.md
@@ -388,7 +390,7 @@
           items:
             - name: SQL 集區的模型評分精靈
               href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
-            - name: 使用 Azure AutoML 執行迴歸實驗 (DW 中的評分)
+            - name: 使用 Azure AutoML 執行迴歸實驗
               href: ./spark/apache-spark-azure-machine-learning-tutorial.md
     - name: 工具整合 (AI、ETL、BI)
       items:
@@ -483,9 +485,9 @@
             - name: 連線到適用於 Cosmos DB 的 Azure Synapse Link
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
             - name: 使用 Power BI 和無伺服器 SQL 集區來分析 Azure Cosmos DB
-              href: ../cosmos-db/synapse-link-power-bi.mdtoc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+              href: ../cosmos-db/synapse-link-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 使用無伺服器 SQL 集區來查詢 Azure Cosmos DB 資料
-              href: ./sql/query-cosmos-db-analytical-store.md
+              href: ./sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 使用 Apache Spark 查詢 Azure Cosmos DB 分析存放區
               href: ./synapse-link/how-to-query-analytical-store-spark.md
             - name: 使用 Apache Spark 將資料從 Synapse Link 複製到 SQL 集區
@@ -925,7 +927,7 @@
       href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/preview/synapse@v43.3.0+incompatible'
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.synapse?view=azure-dotnet-preview
-    - name: PowerShell
+    - name: Azure PowerShell
       href: /powershell/module/az.synapse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: REST API
       href: /rest/api/synapse/

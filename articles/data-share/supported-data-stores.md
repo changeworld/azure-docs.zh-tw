@@ -6,12 +6,12 @@ author: jifems
 ms.author: jife
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: ddd586bf9a88b1246fcf20fc19493f5003bbb530
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f3ecf8ef22d3f1d66b7148b809475a830c7e9f13
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151736"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318586"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure Data Share 中支援的資料存放區
 
@@ -28,8 +28,8 @@ Azure Data Share 提供開放式且彈性的資料共用，包括能夠從不同
 | Azure Blob 儲存體 |✓ | |
 | Azure Data Lake Storage Gen1 |✓ | |
 | Azure Data Lake Storage Gen2 |✓ ||
-| Azure SQL Database |公開預覽 | |
-| Azure Synapse Analytics (先前的 Azure SQL DW)  |公開預覽 | |
+| Azure SQL Database |✓ | |
+| Azure Synapse Analytics (先前的 Azure SQL DW)  |✓ | |
 | Azure 資料總管 | |✓ |
 
 ## <a name="data-store-support-matrix"></a>資料存放區支援矩陣

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: d0234ca04b772e4ff5127ef9dd896b49141febfb
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f12919cd35441c6c198269e2f79c705c1d304acd
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167554"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278817"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 中的資料分割
 
@@ -25,7 +25,7 @@ Cassandra API 使用資料分割來調整 keyspace 中的個別資料表，以�
 
 ## <a name="differences-between-apache-cassandra-and-azure-cosmos-db"></a>Apache Cassandra 與 Azure Cosmos DB 之間的差異
 
-在 Azure Cosmos DB 中，儲存磁碟分割的每一部機器本身都稱為 [實體分割](partition-data.md#physical-partitions)區。 實體分割區類似于虛擬機器;專用的計算單位或一組實體資源。 此計算單位上儲存的每個分割區都稱為 Azure Cosmos DB 中的 [邏輯分割](partition-data.md#logical-partitions) 區。 如果您已經熟悉 Apache Cassandra，您可以像是在 Cassandra 中想像一般資料分割一樣的方式來考慮邏輯分割區。 
+在 Azure Cosmos DB 中，儲存磁碟分割的每一部機器本身都稱為 [實體分割](partitioning-overview.md#physical-partitions)區。 實體分割區類似于虛擬機器;專用的計算單位或一組實體資源。 此計算單位上儲存的每個分割區都稱為 Azure Cosmos DB 中的 [邏輯分割](partitioning-overview.md#logical-partitions) 區。 如果您已經熟悉 Apache Cassandra，您可以像是在 Cassandra 中想像一般資料分割一樣的方式來考慮邏輯分割區。 
 
 Apache Cassandra 針對可儲存在分割區中的資料大小，建議 100-MB 的限制。 Azure Cosmos DB 的 Cassandra API 允許每個邏輯分割區最多 20 GB，每個實體分割區最多可30GB 資料。 在 Azure Cosmos DB 中，與 Apache Cassandra 不同的是，實體分割區中可用的計算容量是以單一計量（稱為 [要求單位](request-units.md)）來表示，而這可讓您將工作負載視為每秒) 的要求 (讀取或寫入，而不是核心、記憶體或 IOPS。 當您瞭解每個要求的成本時，這樣做可以更快地進行容量規劃。 每個實體分割區最多可以有10000個 ru 的可用計算。 若要深入瞭解擴充性選項，請閱讀我們的 Cassandra API 的 [彈性延展](manage-scale-cassandra.md) 文章。 
 
@@ -112,6 +112,6 @@ CREATE TABLE uprofile.user (
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解 [Azure Cosmos DB 中的資料分割和水準調整](partition-data.md)。
+* 瞭解 [Azure Cosmos DB 中的資料分割和水準調整](partitioning-overview.md)。
 * 瞭解 [Azure Cosmos DB 中布建的輸送量](request-units.md)。
 * 瞭解 [Azure Cosmos DB 中的全域散發](distribute-data-globally.md)。

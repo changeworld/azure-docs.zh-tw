@@ -193,29 +193,33 @@
         - name: 變更追蹤和清查
           items:
             - name: 概觀
-              href: change-tracking.md
+              href: change-tracking/overview.md
             - name: 已連結 Log Analytics 工作區的支援區域
               href: how-to/region-mappings.md
             - name: 啟用
               items:
-                - name: 'Azure 入口網站的 [啟用變更追蹤和清查]'
-                  href: automation-enable-changes-from-browse.md
-                - name: 'Azure VM 的 [啟用變更追蹤和清查]'
-                  href: automation-enable-changes-from-vm.md
-                - name: '自動化帳戶的 [啟用變更追蹤和清查]'
-                  href: automation-enable-changes-from-auto-acct.md
-                - name: 'Runbook 的 [啟用變更追蹤和清查]'
-                  href: automation-enable-changes-from-runbook.md
+                - name: 從 Azure 入口網站啟用
+                  href: change-tracking/enable-from-portal.md
+                - name: 從 Azure VM 啟用
+                  href: change-tracking/enable-from-vm.md
+                - name: 從自動化帳戶啟用
+                  href: change-tracking/enable-from-automation-account.md
+                - name: 從 Runbook 啟用
+                  href: change-tracking/enable-from-runbook.md
             - name: 管理變更追蹤和清查
-              href: change-tracking-file-contents.md
+              href: change-tracking/manage-change-tracking.md
             - name: 從虛擬機器管理清查集合
-              href: automation-vm-inventory.md
+              href: change-tracking/manage-inventory-vms.md
             - name: 使用範圍設定
-              href: automation-scope-configurations-change-tracking.md
-            - name: 取消工作區與自動化帳戶的連結
-              href: automation-unlink-workspace-change-tracking.md
-            - name: 從變更追蹤和清查中移除 VM
-              href: automation-remove-vms-from-change-tracking.md
+              href: change-tracking/manage-scope-configurations.md
+            - name: 設定警示
+              href: change-tracking/configure-alerts.md
+            - name: 停用
+              items:
+                - name: 移除變更追蹤和清查
+                  href: change-tracking/remove-feature.md
+                - name: 從變更追蹤和清查中移除 VM
+                  href: change-tracking/remove-vms-from-change-tracking.md
             - name: 疑難排解
               items:
                 - name: 針對功能部署問題進行疑難排解
@@ -239,49 +243,49 @@
     - name: 更新管理
       items:
         - name: 概觀
-          href: update-management/update-mgmt-overview.md
+          href: update-management/overview.md
         - name: 已連結 Log Analytics 工作區的支援區域
           href: how-to/region-mappings.md
         - name: 啟用
           items:
-            - name: 使用 Azure Resource Manager 範本啟用更新管理
-              href: update-management/update-mgmt-enable-template.md
-            - name: 從 Azure 入口網站啟用更新管理
-              href: update-management/update-mgmt-enable-portal.md
-            - name: 從 Azure VM 啟用更新管理
-              href: update-management/update-mgmt-enable-vm.md
-            - name: 從自動化帳戶啟用更新管理
-              href: update-management/update-mgmt-enable-automation-account.md
-            - name: 從 Runbook 啟用更新管理
-              href: update-management/update-mgmt-enable-runbook.md
+            - name: 啟用使用 Azure Resource Manager 範本
+              href: update-management/enable-from-template.md
+            - name: 從 Azure 入口網站啟用
+              href: update-management/enable-from-portal.md
+            - name: 從 Azure VM 啟用
+              href: update-management/enable-from-vm.md
+            - name: 從自動化帳戶啟用
+              href: update-management/enable-from-automation-account.md
+            - name: 從 Runbook 啟用
+              href: update-management/enable-from-runbook.md
         - name: 管理虛擬機器的更新
           items:
             - name: 開始使用
-              href: update-management/update-mgmt-manage-updates-for-vm.md
+              href: update-management/manage-updates-for-vm.md
             - name: 評定合規性
-              href: update-management/update-mgmt-view-update-assessments.md
+              href: update-management/view-update-assessments.md
             - name: 部署更新並檢閱狀態
-              href: update-management/update-mgmt-deploy-updates.md
+              href: update-management/deploy-updates.md
             - name: 使用前指令碼和後指令碼
-              href: update-management/update-mgmt-pre-post-scripts.md
+              href: update-management/pre-post-scripts.md
             - name: 設定警示
-              href: update-management/update-mgmt-configure-alerts.md
+              href: update-management/configure-alerts.md
         - name: 與 Configuration Manager 整合
-          href: update-management/update-mgmt-mecmintegration.md
+          href: update-management/mecmintegration.md
         - name: 設定 Windows Update 用戶端
-          href: update-management/update-mgmt-configure-wuagent.md
+          href: update-management/configure-wuagent.md
         - name: 使用動態群組
-          href: update-management/update-mgmt-groups.md
+          href: update-management/configure-groups.md
         - name: 查詢更新管理記錄
-          href: update-management/update-mgmt-query-logs.md
+          href: update-management/query-logs.md
         - name: 使用範圍設定
-          href: update-management/update-mgmt-scope-configuration.md
+          href: update-management/scope-configuration.md
         - name: 停用
           items:
             - name: 移除更新管理
-              href: update-management/update-mgmt-remove-feature.md
+              href: update-management/remove-feature.md
             - name: 從更新管理中移除 VM
-              href: update-management/update-mgmt-remove-vms.md
+              href: update-management/remove-vms.md
         - name: 疑難排解
           items:
             - name: 針對功能部署問題進行疑難排解
@@ -339,7 +343,7 @@
       href: 'https://azure.microsoft.com/updates/?product=automation'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=automation'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'http://stackoverflow.com/questions/tagged/azure-automation'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=automation'

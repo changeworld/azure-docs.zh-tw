@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 3aab1329dc7bbcc70621684b3f1ac2362f4bc458
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4897c1b54eff5eb06e0ef49f0c74e261f5a9687e
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268259"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281279"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure 資訊安全中心的安全分數
 
@@ -57,7 +57,7 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
 
 ### <a name="get-your-secure-score-from-the-rest-api"></a>從 REST API 取得您的安全分數
 
-您可以透過 [安全分數 API](https://docs.microsoft.com/rest/api/securitycenter/securescores/) 來存取您的分數， (目前為預覽) 。 API 方法可讓您靈活地查詢資料，並在一段時間後建立您自己的安全分數報告機制。 例如，您可以使用**安全分數** API 來取得特定訂用帳戶的分數。 此外，您可以使用**安全分數控制項** API 來列出您訂用帳戶的安全性控制項和目前分數。
+您可以透過安全分數 API 來存取您的分數， (目前為預覽) 。 API 方法可讓您靈活地查詢資料，並在一段時間後建立您自己的安全分數報告機制。 例如，您可以使用 [安全分數 API](https://docs.microsoft.com/rest/api/securitycenter/securescores) 來取得特定訂用帳戶的分數。 此外，您可以使用 [安全分數控制項 API](https://docs.microsoft.com/rest/api/securitycenter/securescorecontrols) 來列出安全性控制項和您的訂用帳戶的目前分數。
 
 ![透過 API 來抓取單一安全分數](media/secure-score-security-controls/single-secure-score-via-api.png)
 
@@ -156,7 +156,7 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">限制未經授權的網路存取 (最高分數 4)</p></strong>組織內的端點可讓您從虛擬網路直接連線到支援的 Azure 服務。 子網路中的所有虛擬機器可以與所有資源通訊。 若要限制與子網內資源之間的通訊，請建立網路安全性群組，並將其與子網建立關聯。 組織可以藉由建立輸入和輸出規則來限制及防範未經授權的流量。</td>
-    <td class="tg-lboi"; width=55%>- 應停用虛擬機器上的 IP 轉送<br>- Kubernetes Service 上應定義授權 IP 範圍 (預覽)<br>- (已淘汰) 應限制對 App Service 的存取 (預覽)<br>- (已淘汰) 應強化 IaaS NSG 上 Web 應用程式的規則<br>-虛擬機器應與網路安全性群組建立關聯<br>- CORS 不應允許每項資源存取您的 API 應用程式<br>- CORS 不應允許每項資源存取您的函式應用程式<br>- CORS 不應允許每項資源存取您的 Web 應用程式<br>- 應關閉 API 應用程式的遠端偵錯<br>- 應關閉函式應用程式的遠端偵錯<br>- 應關閉 Web 應用程式的遠端偵錯<br>- 應限制具有網際網路對應 VM 之寬鬆網路安全性群組的存取<br>- 應強化網際網路對應虛擬機器的網路安全性群組規則<br>- 您應在您的叢集上安裝並啟用 Kubernetes Azure 原則附加元件 (preview) <br>- 容器應該只在允許的埠上接聽 (預覽) <br>- 服務應該只在允許的埠上接聽 (預覽) <br>- 使用主機網路和埠應受限於 (預覽版) </td>
+    <td class="tg-lboi"; width=55%>- 應停用虛擬機器上的 IP 轉送<br>- Kubernetes Service 上應定義授權 IP 範圍 (預覽)<br>- (已淘汰) 應限制對 App Service 的存取 (預覽)<br>- (已淘汰) 應強化 IaaS NSG 上 Web 應用程式的規則<br>-虛擬機器應與網路安全性群組建立關聯<br>- CORS 不應允許每項資源存取您的 API 應用程式<br>- CORS 不應允許每項資源存取您的函式應用程式<br>- CORS 不應允許每項資源存取您的 Web 應用程式<br>- 應關閉 API 應用程式的遠端偵錯<br>- 應關閉函式應用程式的遠端偵錯<br>- 應關閉 Web 應用程式的遠端偵錯<br>- 應限制具有網際網路對應 VM 之寬鬆網路安全性群組的存取<br>- 應強化網際網路對應虛擬機器的網路安全性群組規則<br>- 您應在您的叢集上安裝並啟用 Kubernetes Azure 原則附加元件 (preview) <br>- 容器應該只在允許的埠上接聽 (預覽) <br>- 服務應該只在允許的埠上接聽 (預覽) <br>- 使用主機網路和埠應受限於 (預覽版) <br>- 虛擬網路應受 Azure 防火牆 (預覽) </td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">套用自適性應用程式控制 (最高分數 3)</p></strong>自適性應用程式控制 (AAC) 是一種智慧型、自動化的端對端解決方案，可讓您控制哪些應用程式可以在您的 Azure 和非 Azure 機器上執行。 它也有助於強化機器，防範惡意程式碼的攻擊。<br>「安全性中心」會使用機器學習來建立一組機器的已知安全應用程式清單。<br>這套經過核准的應用程式清單可提供安全性優點，而不需要管理複雜性。<br>AAC 特別適合需要執行一組特定應用程式的特殊用途伺服器。</td>
