@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c8219214e7053dcf6b119f6cd5dc97daaa355f7
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73663180"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327632"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>將 Hyper-V 複寫至次要網站的測試結果
 
@@ -47,7 +47,7 @@ ms.locfileid: "73663180"
 * Hyper-V 複本會利用自我維護的記憶體快取，以減少 IOPS 的追蹤負荷。 它會在記憶體中儲存對 VHDX 的寫入，並在記錄傳送至復原網站之前，將這些寫入排清到記錄檔中。 如果寫入達到預先決定的限制，也會發生磁碟排清。
 * 下圖顯示複寫的穩定狀態 IOPS 負荷。 我們可以看到複寫的 IOPS 負荷大約是 5%，這相當低。
 
-  ![主要結果](./media/hyper-v-vmm-performance-results/IC744913.png)
+  ![此圖顯示覆寫的穩定狀態 IOPS 負擔。](./media/hyper-v-vmm-performance-results/IC744913.png)
 
 Hyper-V 複本會利用主要伺服器上的記憶體來最佳化磁碟效能。 如下圖所示，主要叢集中所有伺服器上的記憶體負荷都很低。 所顯示的記憶體負荷是複寫所使用的記憶體相較於 Hyper-V 伺服器上已安裝的記憶體總數的百分比。
 
@@ -55,20 +55,20 @@ Hyper-V 複本會利用主要伺服器上的記憶體來最佳化磁碟效能。
 
 Hyper-V 複本的 CPU 負荷最低。 如圖所示，複寫負荷位於 2-3% 的範圍內。
 
-![主要結果](./media/hyper-v-vmm-performance-results/IC744915.png)
+![顯示覆寫額外負荷的圖形範圍是2-3%。](./media/hyper-v-vmm-performance-results/IC744915.png)
 
 ## <a name="secondary-server-performance"></a>次要伺服器效能
 
 Hyper-V 複本會使用復原伺服器上的少量記憶體來最佳化儲存作業數目。 此圖形會摘要說明復原伺服器上的記憶體使用量。 所顯示的記憶體負荷是複寫所使用的記憶體相較於 Hyper-V 伺服器上已安裝的記憶體總數的百分比。
 
-![次要結果](./media/hyper-v-vmm-performance-results/IC744916.png)
+![摘要說明復原伺服器上記憶體使用量的圖表。](./media/hyper-v-vmm-performance-results/IC744916.png)
 
 復原站台上的 I/O 作業量為主要站台上寫入作業數目的函數。 讓我們看看復原站台上的 I/O 作業總數與主要站台上的 I/O 作業和與寫入作業的總數的比較。 此圖顯示復原站台上的 IOPS 總數
 
 * 大約是主要站台上寫入 IOPS 的 1.5 倍。
 * 大約是主要站台上 IOPS 總數的 37%。
 
-![次要結果](./media/hyper-v-vmm-performance-results/IC744917.png)
+![此圖顯示主要和次要網站上的 IOPS 比較。](./media/hyper-v-vmm-performance-results/IC744917.png)
 
 ![次要結果](./media/hyper-v-vmm-performance-results/IC744918.png)
 
@@ -106,7 +106,7 @@ Hyper-V 複本會使用復原伺服器上的少量記憶體來最佳化儲存作
 
 ![主要硬體需求](./media/hyper-v-vmm-performance-results/IC744922.png)
 
-| 伺服器 | RAM | 模型 | 處理器 | 處理器數目 | NIC | 軟體 |
+| 伺服器 | RAM | 型號 | 處理器 | 處理器數目 | NIC | 軟體 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 叢集中的 Hyper-V 伺服器： <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128<br />ESTLAB-HOST25 有 256 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2.20GHz |4 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
 | VMM 伺服器 |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
@@ -118,7 +118,7 @@ Hyper-V 複本會使用復原伺服器上的少量記憶體來最佳化儲存作
 
 ![主要硬體規格](./media/hyper-v-vmm-performance-results/IC744923.png)
 
-| 伺服器 | RAM | 模型 | 處理器 | 處理器數目 | NIC | 軟體 |
+| 伺服器 | RAM | 型號 | 處理器 | 處理器數目 | NIC | 軟體 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 叢集中的 Hyper-V 伺服器： <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell ™ PowerEdge ™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 \@ 2.30GHz |2 |I Gbps x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |
 | ESTLAB-HOST17 |128 |Dell ™ PowerEdge ™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 \@ 2.20GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V 角色 |

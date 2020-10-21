@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: 058300dca3e7eae41b7d8010e1ca5ee7d4cdcf3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e67d705f8e878cff6934c2e8a172148fab3f1d71
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82598465"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328993"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>移轉至叢集組態中以角色為基礎的細微存取
 
@@ -20,13 +20,13 @@ ms.locfileid: "82598465"
 
 ## <a name="what-is-changing"></a>變更內容為何？
 
-先前，擁有擁有者、參與者或讀取者 [RBAC 角色](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)的叢集使用者可以透過 HDInsight API 取得秘密，因為這些使用者可供具有該許可權的任何人使用 `*/read` 。 密碼會定義為值，可用來取得比使用者角色應允許更高的存取權。 這些包括叢集閘道 HTTP 認證、儲存體帳戶金鑰和資料庫認證等值。
+先前，擁有擁有者、參與者或讀者 [Azure 角色](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)的叢集使用者可以透過 HDInsight API 取得秘密，因為這些使用者可供具有該許可權的任何人使用 `*/read` 。 密碼會定義為值，可用來取得比使用者角色應允許更高的存取權。 這些包括叢集閘道 HTTP 認證、儲存體帳戶金鑰和資料庫認證等值。
 
 從2019年9月3日開始，存取這些秘密將需要 `Microsoft.HDInsight/clusters/configurations/action` 許可權，這表示使用者無法再存取具有「讀取者」角色的使用者。 具有此許可權的角色是「參與者」、「擁有者」和「新的 HDInsight 叢集操作員」角色 (詳細資訊) 。
 
 我們也引進了一個新的 [HDInsight 叢集操作員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) 角色，此角色將能夠在不授與參與者或擁有者的系統管理許可權的情況下，取得秘密。 總括來說：
 
-| 角色                                  | 先前是                                                                                        | 往後       |
+| [角色]                                  | 先前是                                                                                        | 往後       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
 | 讀取者                                | -讀取存取權，包括秘密。                                                                   | -讀取存取權， **排除** 秘密 |           |   |   |
 | HDInsight 叢集操作員<br> (新的角色)  | N/A                                                                                              | -讀取/寫入存取權，包括秘密         |   |   |
@@ -183,7 +183,7 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 
 ### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
 
-您也可以使用 Azure 入口網站，將 HDInsight 叢集操作員角色指派新增至使用者。 請參閱檔、 [使用 RBAC 管理 Azure 資源的存取權和 Azure 入口網站-新增角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)。
+您也可以使用 Azure 入口網站，將 HDInsight 叢集操作員角色指派新增至使用者。 請參閱檔、 [使用 Azure 入口網站新增角色指派來新增或移除 Azure 角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)。
 
 ## <a name="faq"></a>常見問題集
 

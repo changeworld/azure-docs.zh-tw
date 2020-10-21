@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/19/2020
 ms.author: hamusa
-ms.openlocfilehash: b84a7b88f700e2ba8e9fbe29099dfcbce8dbf3b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 227e27d25ad5d0c61ed4f36c234222a079315619
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85081081"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317146"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>評定大量的實體伺服器以遷移至 Azure
 
@@ -30,7 +30,7 @@ ms.locfileid: "85081081"
 
 
 > [!NOTE]
-> 如果您想要在大規模評估之前，嘗試評估幾部伺服器的概念證明，請遵循我們的 [教學課程系列](tutorial-prepare-physical.md)。
+> 如果您想要在大規模評估之前，嘗試評估幾部伺服器的概念證明，請遵循我們的 [教學課程系列](./tutorial-discover-physical.md)。
 
 ## <a name="plan-for-assessment"></a>規劃評量
 
@@ -64,7 +64,7 @@ ms.locfileid: "85081081"
 2. 為您的 Azure 帳戶設定許可權，以與 Azure Migrate 互動。
 3. 準備實體伺服器。
 
-遵循 [本教學](tutorial-prepare-physical.md) 課程中的指示來進行這些設定。
+遵循 [本教學](./tutorial-discover-physical.md) 課程中的指示來進行這些設定。
 
 ## <a name="create-a-project"></a>建立專案
 

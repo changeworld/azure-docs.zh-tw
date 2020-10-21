@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 32759ed59e280980abdced46c29390e00ee7229c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 34a7cd8669c1545361bc7cd9579cfb6140c0c946
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973269"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331697"
 ---
 # <a name="optical-character-recognition-ocr"></a>光學字元辨識 (OCR)
 
@@ -37,7 +37,7 @@ Azure 的電腦視覺 API 包含光學字元辨識 (OCR) 功能，可從影像�
 * PDF 尺寸必須最多為 17 x 17 英寸，對應于合法或 A3 紙張大小，且較小。
 
 ### <a name="read-32-preview-allows-selecting-pages"></a>讀取3.2 預覽可讓您選取頁面 (s) 
-使用 [讀取3.2 預覽 API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)時，對於大型的多頁檔，您可以提供特定頁碼或頁面範圍做為輸入參數，只將這些頁面中的文字解壓縮。 除了選用的語言參數之外，這還是新的輸入參數。
+使用 [讀取3.2 預覽 API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005)時，對於大型的多頁檔，您可以提供特定頁碼或頁面範圍做為輸入參數，只將這些頁面中的文字解壓縮。 除了選用的語言參數之外，這還是新的輸入參數。
 
 > [!NOTE]
 > **語言輸入** 
@@ -50,7 +50,7 @@ Azure 的電腦視覺 API 包含光學字元辨識 (OCR) 功能，可從影像�
 
 |回應標頭| 結果 URL |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/vision/v3.2/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/vision/v3.1/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
 > [!NOTE]
 > **Billing** 
@@ -129,23 +129,17 @@ Azure 的電腦視覺 API 包含光學字元辨識 (OCR) 功能，可從影像�
 }
 ```
 ### <a name="read-32-preview-adds-text-line-style-latin-languages-only"></a>閱讀 3.2 preview 只會將文字行樣式新增 (拉丁語言) 
-[Read 3.2 PREVIEW API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)會輸出**外觀**物件，以分類每個文字行是列印或手寫樣式，以及信賴分數。 這項功能僅支援拉丁語言。
+[Read 3.2 PREVIEW API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005)會輸出**外觀**物件，以分類每個文字行是列印或手寫樣式，以及信賴分數。 這項功能僅支援拉丁語言。
 
-```json
-  "appearance": {
-              "style": "handwriting",
-              "styleConfidence": 0.836
-            }
-```
-開始使用 [電腦視覺 OCR SDK 快速入門](./quickstarts-sdk/client-library.md) 和 [Read REST API 快速](./QuickStarts/CSharp-hand-text.md) 入門，開始將 OCR 功能整合到您的應用程式中。
+開始使用 [電腦視覺 READ OCR SDK 快速入門](./quickstarts-sdk/client-library.md) 和 [read REST API 快速](./QuickStarts/CSharp-hand-text.md) 入門，開始將 OCR 功能整合到您的應用程式中。
 
 ## <a name="supported-languages-for-print-text"></a>列印文字支援的語言
-[Read 3.2 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005)支援以英文、西班牙文、德文、法文、義大利文、葡萄牙文和荷蘭文語言來解壓縮印刷文字。
+[讀取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005)支援以英文、西班牙文、德文、法文、義大利文、葡萄牙文和荷蘭文語言來解壓縮印刷文字。
 
 如需 OCR 支援語言的完整清單，請參閱 [支援的語言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) 。
 
 ### <a name="read-32-preview-adds-simplified-chinese-and-japanese"></a>閱讀 3.2 preview 新增簡體中文和日文
-[Read 3.2 API 公開預覽版](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005)新增了簡體中文和日文的支援。 如果您的案例需要支援更多語言，請參閱 [OCR API](#ocr-api) 一節。 
+[Read 3.2 API 公開預覽版](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005)新增了簡體中文和日文的支援。 如果您的案例需要支援更多語言，請參閱 [OCR API](#ocr-api) 一節。 
 
 ## <a name="supported-languages-for-handwritten-text"></a>手寫文字支援的語言
 讀取作業目前支援專門以英文解壓縮手寫文字。
@@ -154,7 +148,7 @@ Azure 的電腦視覺 API 包含光學字元辨識 (OCR) 功能，可從影像�
 [Read 3.x REST API](./QuickStarts/CSharp-hand-text.md)是最適合大多數客戶的選項，因為這種方法可讓您輕鬆整合並快速提高產能。 當您專注于滿足客戶的需求時，Azure 和電腦視覺服務可處理規模調整、效能、資料安全性和合規性需求。
 
 ## <a name="deploy-on-premise-with-docker-containers"></a>使用 Docker 容器部署內部部署
-[Read 2.0 Docker 容器 (preview) ](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers)可讓您在自己的本機環境中部署新的 OCR 功能。 容器非常適合用於特定的安全性和資料控管需求。
+[讀取 Docker 容器 (預覽版) ](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers)可讓您在自己的本機環境中部署新的 OCR 功能。 容器非常適合用於特定的安全性和資料控管需求。
 
 ## <a name="example-outputs"></a>範例輸出
 
@@ -201,7 +195,7 @@ Read API 也可以將 PDF 檔做為輸入。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 以 c #、JAVA、JavaScript 或 Python 開始使用 [電腦視覺閱讀 3.0 SDK 快速入門](./quickstarts-sdk/client-library.md) 。
-- 使用 c #、JAVA、JavaScript 或 Python 中的 [Read 3.1 REST API 快速入門](./QuickStarts/CSharp-hand-text.md) ，瞭解如何使用 REST api。
-- 瞭解 [Read 3.1 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005)。
-- 深入瞭解 [Read 3.2 公開預覽版 REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-2/operations/5d986960601faab4bf452005) ，並新增對簡體中文和日文的支援。
+- 開始使用以 c #、JAVA、JavaScript 或 Python 撰寫的 [電腦視覺讀取 SDK 快速入門](./quickstarts-sdk/client-library.md) 。
+- 使用 c #、JAVA、JavaScript 或 Python 中的 [Read REST API 快速入門](./QuickStarts/CSharp-hand-text.md) ，瞭解如何使用 REST api。
+- 瞭解 [讀取 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005)。
+- 深入瞭解 [Read 3.2 公開預覽版 REST API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) ，並新增對簡體中文和日文的支援。

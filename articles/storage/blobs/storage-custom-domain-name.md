@@ -9,12 +9,12 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 903413b6ca00600e15ac3af0a93b98a8d67a1c28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e6289fb4e3b5bb695b79589d544d0ae475f9774
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88053621"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314658"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>將自訂網域對應至 Azure Blob 儲存體端點
 
@@ -23,7 +23,7 @@ ms.locfileid: "88053621"
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
-> 這種對應只適用于子域 (例如： `www.contoso.com`) 。 如果您想要讓 web 端點可在根域中使用 (例如： `contoso.com`) ，您必須使用 AZURE CDN。 如需指引，請參閱本文的「將 [自訂網域與 HTTPS 啟用對應](#enable-https) 」一節。 因為您前往本文的該區段來啟用自訂網域的根域，所以啟用 HTTPS 的該區段內的步驟是選擇性的。 
+> 這種對應只適用于子域 (例如： `www.contoso.com`) 。 如果您想要讓 web 端點可在根域中使用 (例如： `contoso.com`) ，您必須使用 AZURE CDN。 如需指引，請參閱本文的「將 [自訂網域與 HTTPS 啟用對應](#enable-https) 」一節。 因為您將在本文中的那個部分啟用自訂網域的根域，所以啟用 HTTPS 的該區段內的步驟是選擇性的。 
 
 <a id="enable-http"></a>
 

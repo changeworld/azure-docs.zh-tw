@@ -13,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5de505ff9573fb186ca2bbe4f5bd6783022eb3ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90efdd560735a112c2a4c5eb5740f211b587a241
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89421453"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275762"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：針對企業應用程式自訂 SAML 權杖中發出的宣告
 
@@ -167,7 +167,7 @@ ms.locfileid: "89421453"
 3. 選取該使用者應隸屬的群組。 您可以針對指定的應用程式，在所有宣告中選取最多50個唯一的群組。 
 4. 選取宣告要擷取其值的 [來源]。 您可以從來源屬性下拉式清單選取使用者屬性，或在將使用者屬性發出為宣告之前對其套用轉換。
 
-您新增條件的順序很重要。 Azure AD 會從上到下評估條件，以決定要在宣告中發出哪一個值。 
+您新增條件的順序很重要。 Azure AD 會從上到下評估條件，以決定要在宣告中發出哪一個值。 符合運算式的最後一個值將會在宣告中發出。
 
 例如，Britta Simon 是 Contoso 租用戶中的來賓使用者。 她隸屬同樣也使用 Azure AD 的另一個組織。 基於 Fabrikam 應用程式的下列設定，當 Britta 嘗試登入 Fabrikam 時，Microsoft 身分識別平臺將會依下列方式評估條件。
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 7590d40085c3963a95fd251dd1291cf34fbaf4a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c9ec20ffe52c23c2dec5a624fc157da7ebd4a41
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85262084"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330932"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>使用 Striim 將資料移轉至 Azure Cosmos DB Cassandra API 帳戶
 
@@ -20,7 +20,7 @@ Azure marketplace 中的 Striim 映射提供從資料倉儲和資料庫到 Azure
 
 本文說明如何使用 Striim 將 **Oracle 資料庫** 中的資料移轉至 **Azure Cosmos DB Cassandra API 帳戶**。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 如果您沒有 [Azure 訂用帳戶](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
@@ -28,7 +28,7 @@ Azure marketplace 中的 Striim 映射提供從資料倉儲和資料庫到 Azure
 
 ## <a name="deploy-the-striim-marketplace-solution"></a>部署 Striim marketplace 解決方案
 
-1. 登入[Azure 入口網站](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
 1. 選取 [ **建立資源** ]，並在 Azure marketplace 中搜尋 **Striim** 。 選取第一個選項，然後 **建立**。
 
@@ -41,7 +41,7 @@ Azure marketplace 中的 Striim 映射提供從資料倉儲和資料庫到 Azure
 
 1. 在 [ **Striim 叢集設定** ] 窗格中，選擇 Striim 部署的類型和虛擬機器大小。
 
-   |設定 | 值 | 描述 |
+   |設定 | 值 | 說明 |
    | ---| ---| ---|
    |Striim 部署類型 |獨立 | Striim 可在**獨立****或叢集**部署類型中執行。 獨立模式會將 Striim 伺服器部署在單一虛擬機器上，而且您可以根據您的資料量來選取 Vm 的大小。 叢集模式會將 Striim 伺服器部署在具有所選大小的兩部或多部 Vm 上。 具有2個以上節點的叢集環境提供自動高可用性和容錯移轉。</br></br> 在本教學課程中，您可以選取 [獨立] 選項。 使用預設的「Standard_F4s」大小的 VM。 | 
    | Striim 叢集的名稱|    <Striim_cluster_Name>|  Striim 叢集的名稱。|

@@ -3,25 +3,25 @@ title: 將特定實驗室原則的權限授與使用者 | Microsoft Docs
 description: 了解如何根據每個使用者的需求將使用者權限授與研發/測試實驗室中的特定實驗室原則
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8e910a5d4499d104e4b09076ec7862ae96272ef4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 976862476d25e4e9a4933d8a5319eec9d77ca39b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87835675"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92328465"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>將特定實驗室原則的權限授與使用者
 ## <a name="overview"></a>概觀
 本文說明如何使用 PowerShell 將特定實驗室原則的權限授與使用者。 這樣便可根據每個使用者的需求來套用權限。 例如，您可能想要將變更 VM 原則設定 (而非成本原則) 的能力授與特定的使用者。
 
 ## <a name="policies-as-resources"></a>原則即資源
-如同 [azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/role-assignments-portal.md) 一文所述，RBAC 可針對 azure 的資源進行更細緻的存取管理。 您可以使用 RBAC 來區隔開發小組的職責，僅授與使用者作業所需的存取權。
+如同 [azure 角色型存取控制 (AZURE rbac) ](../role-based-access-control/role-assignments-portal.md) 一文中所述，azure rbac 可針對 azure 的資源進行更細緻的存取管理。 使用 Azure RBAC，您可以將 DevOps 團隊內的職責區隔，並只授與使用者執行其作業所需的存取權數量。
 
-在研發/測試實驗室中，原則是一種可啟用 RBAC 動作 **Microsoft.DevTestLab/labs/policySets/policies/** 的資源類型。 每個實驗室原則都是原則資源類型中的資源，而且可以指派為 Azure 角色的範圍。
+在 DevTest Labs 中，原則是一種資源類型，可啟用 Azure RBAC 動作 **microsoft.devtestlab/Labs/policySets/原則/**。 每個實驗室原則都是原則資源類型中的資源，而且可以指派為 Azure 角色的範圍。
 
 例如，若要授與使用者對 **允許的 VM 大小** 原則的讀取/寫入權限，您可以建立與 **microsoft.devtestlab/labs/policySets/policy/** action 搭配運作的自訂角色，然後在 **microsoft.devtestlab/labs/policySets/policy/AllowedVmSizesInLab**的範圍中，將適當的使用者指派給這個自訂角色。
 
-若要深入了解 RBAC 中的自訂角色，請參閱[自訂角色存取控制](../role-based-access-control/custom-roles.md)。
+若要深入瞭解 Azure RBAC 中的自訂角色，請參閱 [azure 自訂角色](../role-based-access-control/custom-roles.md)。
 
 ## <a name="creating-a-lab-custom-role-using-powershell"></a>使用 PowerShell 建立實驗室自訂角色
 您必須 [安裝 Azure PowerShell](/powershell/azure/install-az-ps)，才能開始使用。 

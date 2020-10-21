@@ -3,18 +3,18 @@ title: Azure Event Grid 安全性與驗證
 description: 說明 Azure Event Grid 與其概念。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 8220e0f913a16cc32b4598ecb3836cc892ea83fd
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 5a1e4af17c2f4335ed26490bfc2408c66f4aee6b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318560"
+ms.locfileid: "92328720"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>授權存取事件方格資源
-Azure 事件方格可讓您控制為不同的使用者提供的存取層級，以進行各種 **管理作業** ，例如列出事件訂閱、建立新的訂用帳戶，以及產生金鑰。 事件格線會使用 Azure 的角色型存取控制 (RBAC)。
+Azure 事件方格可讓您控制為不同的使用者提供的存取層級，以進行各種 **管理作業** ，例如列出事件訂閱、建立新的訂用帳戶，以及產生金鑰。 事件方格會使用 Azure 角色型存取控制 (Azure RBAC) 。
 
 > [!NOTE]
-> EventGrid 不支援將事件發佈至事件方格主題或網域的 RBAC。 使用共用存取簽章 (SAS) 金鑰或權杖來驗證發佈事件的用戶端。 如需詳細資訊，請參閱 [驗證發行用戶端](security-authenticate-publishing-clients.md)。 
+> EventGrid 不支援將事件發佈至事件方格主題或網域的 Azure RBAC。 使用共用存取簽章 (SAS) 金鑰或權杖來驗證發佈事件的用戶端。 如需詳細資訊，請參閱 [驗證發行用戶端](security-authenticate-publishing-clients.md)。 
 
 ## <a name="operation-types"></a>作業類型
 

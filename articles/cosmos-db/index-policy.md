@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: tisande
-ms.openlocfilehash: f9e1ff633f70e544a3cde579f1550d3fd708f269
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b525f3299420f81670c0aea9872ac5fdef00be97
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089508"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277800"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引編製原則
 
@@ -101,7 +101,7 @@ Azure Cosmos DB 支援兩種索引編制模式：
 
 如果包含的路徑和排除的路徑發生衝突，則會優先採用更精確的路徑。
 
-以下為範例：
+以下是範例：
 
 **包含的路徑**： `/food/ingredients/nutrition/*`
 
@@ -271,7 +271,7 @@ SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.time
 
 新增新的索引時，不會影響讀取可用性。 只有在索引轉換完成之後，查詢才會使用新的索引。 在索引轉換期間，查詢引擎會繼續使用現有的索引，因此您會在索引轉換期間觀察到在起始索引變更之前所觀察到的讀取效能類似。 加入新的索引時，也不會有不完整或不一致的查詢結果的風險。
 
-移除索引並立即執行篩選已卸載索引的查詢時，並不保證會有一致或完整的查詢結果。 如果您移除多個索引，並在單一索引編制原則變更時執行此作業，則查詢引擎會在整個索引轉換中保證一致且完整的結果。 但是，如果您透過多個編制索引原則變更來移除索引，則在所有索引轉換完成之前，查詢引擎不會保證一致或完成的結果。 大部分的開發人員都不會捨棄索引，然後立即嘗試執行利用這些索引的查詢，因此在實務上，這種情況不太可能發生。
+移除索引並立即執行篩選已卸載索引的查詢時，並不保證會有一致或完整的查詢結果。 如果您在單一索引編制原則變更中移除多個索引，則查詢引擎會在整個索引轉換中提供一致且完整的結果。 但是，如果您透過多個編制索引原則變更來移除索引，則在所有索引轉換完成之前，查詢引擎將不會提供一致或完整的結果。 大部分的開發人員都不會捨棄索引，然後立即嘗試執行利用這些索引的查詢，因此在實務上，這種情況不太可能發生。
 
 > [!NOTE]
 > 可能的話，您應該一律嘗試將多個編制索引變更群組為單一的索引編制原則修改

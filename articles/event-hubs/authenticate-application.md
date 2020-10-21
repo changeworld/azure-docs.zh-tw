@@ -3,12 +3,12 @@ title: 驗證應用程式以存取 Azure 事件中樞資源
 description: 本文提供的資訊說明如何使用 Azure Active Directory 來驗證應用程式，以存取 Azure 事件中樞資源
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 1c8503aa8db7350275648d9f5eda69e9e352c859
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50c697e5c430b72f8d5da393e90f1db7ff6d48a1
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566324"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332479"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 來驗證應用程式，以存取事件中樞資源
 Microsoft Azure 針對以 Azure Active Directory (Azure AD) 為基礎的資源和應用程式提供了整合式的存取控制管理功能。 使用 Azure AD 搭配 Azure 事件中樞的主要優點是您不再需要將認證儲存在程式碼中。 相反地，您可以從 Microsoft 身分識別平臺要求 OAuth 2.0 存取權杖。 要求權杖的資源名稱是 `https://eventhubs.azure.net/` 針對 Kafka 用戶端 (，) 要求權杖的資源 `https://<namespace>.servicebus.windows.net` 。 Azure AD 會 (使用者、群組或服務主體) 執行應用程式來驗證安全性主體。 如果驗證成功，Azure AD 會將存取權杖傳回給應用程式，然後應用程式就可以使用存取權杖來授權 Azure 事件中樞資源的要求。
@@ -16,7 +16,7 @@ Microsoft Azure 針對以 Azure Active Directory (Azure AD) 為基礎的資源�
 將角色指派給 Azure AD 安全性主體時，Azure 會為該安全性主體授與這些資源的存取權。 存取範圍可設定為訂用帳戶層級、資源群組、事件中樞命名空間或其下的任何資源。 Azure AD 安全性可將角色指派給使用者、群組、應用程式服務主體或 [Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/overview.md)。 
 
 > [!NOTE]
-> 角色定義是一個權限集合。 以角色為基礎的存取控制 (RBAC) 控制如何透過角色指派來強制執行這些許可權。 角色指派由三項元素所組成：安全性主體、角色定義和範圍。 如需詳細資訊，請參閱 [瞭解不同的角色](../role-based-access-control/overview.md)。
+> 角色定義是一個權限集合。 Azure 角色型存取控制 (Azure RBAC) 控制如何透過角色指派來強制執行這些許可權。 角色指派由三項元素所組成：安全性主體、角色定義和範圍。 如需詳細資訊，請參閱 [瞭解不同的角色](../role-based-access-control/overview.md)。
 
 ## <a name="built-in-roles-for-azure-event-hubs"></a>Azure 事件中樞的內建角色
 Azure 提供下列 Azure 內建角色，以使用 Azure AD 和 OAuth 來授權事件中樞資料的存取權：
@@ -25,13 +25,13 @@ Azure 提供下列 Azure 內建角色，以使用 Azure AD 和 OAuth 來授權�
 - [Azure 事件中樞資料](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)傳送者：使用此角色可授與事件中樞資源的傳送存取權。
 - [Azure 事件中樞資料接收者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver)：使用此角色可授與事件中樞資源的接收存取權。   
 
-如需 Schema Registry 內建角色，請參閱 [架構登錄角色](schema-registry-overview.md#role-based-access-control)。
+如需 Schema Registry 內建角色，請參閱 [架構登錄角色](schema-registry-overview.md#azure-role-based-access-control)。
 
 > [!IMPORTANT]
 > 我們的預覽版本支援將事件中樞資料存取權限新增至擁有者或參與者角色。 不過，已不再接受擁有者和參與者角色的資料存取權限。 如果您使用的是擁有者或參與者角色，請切換到使用 Azure 事件中樞資料擁有者角色。
 
 ## <a name="assign-azure-roles-using-the-azure-portal"></a>使用 Azure 入口網站指派 Azure 角色  
-若要深入瞭解如何使用 RBAC 和 Azure 入口網站來管理 Azure 資源的存取權，請參閱 [這篇文章](..//role-based-access-control/role-assignments-portal.md)。 
+若要深入瞭解如何使用 Azure RBAC 和 Azure 入口網站來管理 Azure 資源的存取權，請參閱 [這篇文章](..//role-based-access-control/role-assignments-portal.md)。 
 
 確定角色指派的適當範圍之後，請流覽至 Azure 入口網站中的該資源。 顯示資源的存取控制 (IAM) 設定，並遵循下列指示來管理角色指派：
 
@@ -109,12 +109,12 @@ Azure 提供下列 Azure 內建角色，以使用 Azure AD 和 OAuth 來授權�
     此範例已更新為使用最新的 **EventHubs** 程式庫。
 
 ## <a name="next-steps"></a>後續步驟
-- 若要深入瞭解 RBAC，請參閱 [什麼是 AZURE rbac)  (azure 角色型存取控制 ](../role-based-access-control/overview.md)？
+- 若要深入瞭解 Azure RBAC，請參閱 [什麼是 AZURE rbac)  (azure 角色型存取控制 ](../role-based-access-control/overview.md)？
 - 若要瞭解如何使用 Azure PowerShell、Azure CLI 或 REST API 來指派及管理 Azure 角色指派，請參閱下列文章：
-    - [使用 Azure PowerShell 管理角色型存取控制 (RBAC)](../role-based-access-control/role-assignments-powershell.md)  
-    - [使用 Azure CLI 管理角色型存取控制 (RBAC)](../role-based-access-control/role-assignments-cli.md)
-    - [使用 REST API 管理角色型存取控制 (RBAC)](../role-based-access-control/role-assignments-rest.md)
-    - [使用 Azure Resource Manager 範本管理角色型存取控制 (RBAC) ](../role-based-access-control/role-assignments-template.md)
+    - [使用 Azure PowerShell 新增或移除 Azure 角色指派](../role-based-access-control/role-assignments-powershell.md)  
+    - [使用 Azure CLI 新增或移除 Azure 角色指派](../role-based-access-control/role-assignments-cli.md)
+    - [使用 REST API 新增或移除 Azure 角色指派](../role-based-access-control/role-assignments-rest.md)
+    - [使用 Azure Resource Manager 範本新增 Azure 角色指派](../role-based-access-control/role-assignments-template.md)
 
 請參閱下列相關文章：
 - [使用 Azure Active Directory 來驗證受控識別，以存取事件中樞資源](authenticate-managed-identity.md)

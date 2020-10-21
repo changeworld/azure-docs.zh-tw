@@ -3,12 +3,12 @@ title: Azure Migrate 中的實體伺服器評量支援
 description: 瞭解 Azure Migrate Server 評定的實體伺服器評量支援
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: dffa95fe717f8588f56b9dee60ede8bbf44aceb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9f7dea69c78bb038c06e5cb276628eba0381bb2
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89660343"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319295"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>實體伺服器評量的支援矩陣 
 
@@ -74,4 +74,4 @@ Azure Migrate 會使用 [Azure Migrate 設備](migrate-appliance.md)來進行探
 
 ## <a name="next-steps"></a>後續步驟
 
-[準備進行實體伺服器評](tutorial-prepare-physical.md)量。
+[準備進行實體伺服器評](./tutorial-discover-physical.md)量。

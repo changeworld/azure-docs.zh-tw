@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 91589a88712b093acfbb88df146074ad91ba0ea2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 8e9d11ed39d6e4dc7ad432659534e7dd14fcf1ec
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168370"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277984"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>如何使用實際範例在 Azure Cosmos DB 上建立資料的模型及加以分割
 
@@ -327,7 +327,7 @@ function createComment(postId, comment) {
 - 取代貼文
 - 新增留言
 
-預存程序會以不可部分完成交易的形式執行，因此可確保 `commentCount` 的值與留言的實際數目將隨時保持同步。
+因為預存程式是以不可部分完成的交易執行，所以的值 `commentCount` 和實際的批註數目一律會保持同步。
 
 我們在增加新的讚時理當也呼叫了類似的預存程序，使 `likeCount` 遞增。
 
@@ -586,6 +586,6 @@ function truncateFeed() {
 
 在看完這些關於實際資料模型化和分割的簡介之後，您可以查看下列文章，以檢閱我們所說明的概念：
 
-- [使用資料庫、容器和項目](databases-containers-items.md)
+- [使用資料庫、容器和項目](account-databases-containers-items.md)
 - [Azure Cosmos DB 中的資料分割](partitioning-overview.md)
 - [Azure Cosmos DB 中的變更摘要](change-feed.md)

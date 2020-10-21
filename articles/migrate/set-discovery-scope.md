@@ -3,12 +3,12 @@ title: 使用 Azure Migrate 設定 VMware VM 探索的範圍
 description: 說明如何使用 Azure Migrate 設定 VMware VM 評量和遷移的探索領域。
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: dfc9c12edd93fc720ef716fd43b04e0c193d5803
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c61f544e3222dba83123aa1be5e53a19e671035
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919721"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314035"
 ---
 # <a name="set-discovery-scope-for-vmware-vms"></a>設定 VMware Vm 的探索範圍
 
@@ -19,9 +19,9 @@ ms.locfileid: "88919721"
 
 當您設定設備時，它會連接到 vCenter Server 並開始探索。 將設備連線到 vCenter Server 之前，您可以將探索限制為 vCenter Server 的資料中心、叢集、叢集的資料夾、主機、主機的資料夾或個別 Vm。 若要設定範圍，請在設備用來存取 vCenter Server 的帳戶上指派許可權。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
-如果您尚未設定 Azure Migrate 用於探索的 vCenter 使用者帳戶，請立即進行 [評定](tutorial-prepare-vmware.md#set-up-permissions-for-assessment) 或 [無代理程式遷移](tutorial-prepare-vmware.md#assign-permissions-to-an-account)。
+如果您尚未設定 Azure Migrate 用於探索的 vCenter 使用者帳戶，請立即進行 [評定](./tutorial-discover-vmware.md#prepare-vmware) 或 [無代理程式遷移](./migrate-support-matrix-vmware-migration.md#agentless-migration)。
 
 
 ## <a name="assign-permissions-and-roles"></a>指派許可權和角色
@@ -58,6 +58,6 @@ ms.locfileid: "88919721"
 以角色為基礎的存取控制設定可確保對應的 vCenter 使用者帳戶只能存取租使用者特定的 Vm。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [設定設備](how-to-set-up-appliance-vmware.md)

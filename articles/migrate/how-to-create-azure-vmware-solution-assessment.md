@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: rajosh
-ms.openlocfilehash: 89dc962c73a6446afc79eec2a0fcfd5c0e32e84e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 834fd32d17c4a5ff112dd11a331a59336d7cbcb7
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576705"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315262"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>建立 (AVS) 評量的 Azure VMware 解決方案
 
@@ -19,12 +19,12 @@ ms.locfileid: "91576705"
 
 [Azure Migrate](migrate-services-overview.md) 可協助您遷移至 Azure。 Azure Migrate 能提供集中式的中樞，以追蹤針對 Azure 的內部部署基礎結構、應用程式與資料的探索、評量及移轉。 該中樞能提供 Azure 工具以進行評量和移轉，也提供協力廠商獨立軟體廠商 (ISV) 供應項目。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 - 請確定您已 [建立](how-to-add-tool-first-time.md) Azure Migrate 專案。
 - 如果您已建立專案，請確定您已 [新增](how-to-assess.md) Azure Migrate：伺服器評定工具。
 - 若要建立評量，您必須設定 [VMware](how-to-set-up-appliance-vmware.md)的 Azure Migrate 設備，以探索內部部署電腦，並將中繼資料和效能資料傳送至 Azure Migrate：伺服器評量。 [深入了解](migrate-appliance.md)。
-- 您也可以 [將伺服器中繼資料](tutorial-assess-import.md) 以逗號分隔值匯入 (CSV) 格式。
+- 您也可以 [將伺服器中繼資料](./tutorial-discover-import.md) 以逗號分隔值匯入 (CSV) 格式。
 
 
 ## <a name="azure-vmware-solution-avs-assessment-overview"></a>Azure VMware Solution (AVS) 評量總覽
