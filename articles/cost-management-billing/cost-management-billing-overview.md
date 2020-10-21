@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: ''
-ms.openlocfilehash: 7f4585d7199b44c82df9a03ea3244885da72d2fa
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 1e5f49fb48cfc9be9cfb6970641ad7b4b3c06fb5
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685165"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131049"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>什麼是 Azure 成本管理 + 計費？
 
@@ -112,7 +112,7 @@ Azure 入口網站目前支援下列計費帳戶類型：
 Azure 有其他不屬於 Azure 成本管理 + 計費功能集的工具。 不過，它們在成本管理流程中扮演重要角色。 若要深入了解這些工具，請參閱下列連結。
 
 - [Azure 定價計算機](https://azure.microsoft.com/pricing/calculator/) - 使用此工具來評估您的前期雲端成本。
-- [Azure Migrate](../migrate/migrate-overview.md) - 評估您目前的資料中心工作負載，以取得 Azure 替代解決方案需求的見解。
+- [Azure Migrate](/azure/cost-management-billing/migrate-services-overview) - 評估您目前的資料中心工作負載，以取得 Azure 替代解決方案需求的見解。
 - [Azure Advisor](../advisor/advisor-overview.md) - 識別未使用的 VM，並接收有關 Azure 保留執行個體購買的建議。
 - [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) - 將您目前的內部部署 Windows Server 或 SQL Server 授權用於 Azure 中的 VM 以節省成本。
 

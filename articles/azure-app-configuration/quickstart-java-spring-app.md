@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: e3bc26b8f4d66c95f6f777af06d71172a4b882b9
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: dd2305e13322540e9e30223f200baed9919d1840
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767640"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92075394"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>快速入門：使用 Azure 應用程式組態建立 Java Spring 應用程式
 
@@ -25,7 +25,7 @@ ms.locfileid: "91767640"
 ## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
-- 受支援的 [Java 開發套件 (JDK)](https://docs.microsoft.com/java/azure/jdk) 第 8 版。
+- 受支援的 [Java 開發套件 (JDK)](/java/azure/jdk) 第 8 版。
 - [Apache Maven](https://maven.apache.org/download.cgi) 3.0 版或更新版本。
 
 ## <a name="create-an-app-configuration-store"></a>建立應用程式組態存放區
@@ -188,7 +188,7 @@ ms.locfileid: "91767640"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已建立新的應用程式組態存放區，並將其與 Java Spring 應用程式搭配使用。 如需詳細資訊，請參閱 [Azure 上的 Spring](https://docs.microsoft.com/java/azure/spring-framework/)。 若要了解如何讓 Java Spring 應用程式以動態方式重新整理組態設定，請繼續進行下一個教學課程。
+在本快速入門中，您已建立新的應用程式組態存放區，並將其與 Java Spring 應用程式搭配使用。 如需詳細資訊，請參閱 [Azure 上的 Spring](/java/azure/spring-framework/)。 若要了解如何讓 Java Spring 應用程式以動態方式重新整理組態設定，請繼續進行下一個教學課程。
 
 > [!div class="nextstepaction"]
 > [啟用動態組態](./enable-dynamic-configuration-java-spring-app.md)

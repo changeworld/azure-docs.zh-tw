@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 237565a7b72c3317e2c443f86965634ed7c9942c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f4dd6d67d60603ed6cad7056cff4bb07dcb1c2e5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336860"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149379"
 ---
 # <a name="about-transferring-billing-ownership-for-an-azure-subscription"></a>關於移轉 Azure 訂用帳戶的帳單擁有權
 
@@ -63,7 +63,7 @@ Azure 入口網站中的訂用帳戶轉移適用於以下所列的訂用帳戶�
 
 ## <a name="resources-transferred-with-subscriptions"></a>使用訂用帳戶轉移的資源
 
-VM、磁碟和網站等所有資源都會轉移給新的帳戶。 不過，如果您將訂用帳戶轉移給另一個 Azure AD 租用戶中的帳戶，並不會轉移訂用帳戶上的任何[管理員角色](../manage/add-change-subscription-administrator.md)和 [Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)。 此外，[應用程式註冊](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)和其他租用戶特定服務也不會隨訂用帳戶轉移。
+VM、磁碟和網站等所有資源都會轉移給新的帳戶。 不過，如果您將訂用帳戶轉移給另一個 Azure AD 租用戶中的帳戶，並不會轉移訂用帳戶上的任何[管理員角色](../manage/add-change-subscription-administrator.md)和 [Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)。 此外，[應用程式註冊](../../active-directory/develop/quickstart-register-app.md)和其他租用戶特定服務也不會隨訂用帳戶轉移。
 
 ## <a name="transfer-account-ownership-to-another-countryregion"></a>將帳戶擁有權轉移至另一個國家/區域
 
@@ -99,7 +99,7 @@ VM、磁碟和網站等所有資源都會轉移給新的帳戶。 不過，如�
 即使在轉移期間移除 [Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)，原始擁有者帳戶中的使用者仍可透過其他安全性機制繼續存取訂用帳戶，包括：
 
 * 可將使用者管理權限授與給訂用帳戶資源的管理憑證。 如需詳細資訊，請參閱[建立和上傳 Azure 的管理憑證](../../cloud-services/cloud-services-certs-create.md)。
-* 服務 (例如儲存體) 的存取金鑰。 如需詳細資訊，請參閱[關於 Azure 儲存體帳戶](../../storage/common/storage-create-storage-account.md)。
+* 服務 (例如儲存體) 的存取金鑰。 如需詳細資訊，請參閱[關於 Azure 儲存體帳戶](../../storage/common/storage-account-create.md)。
 * 服務 (例如 Azure 虛擬機器) 的遠端存取認證。
 
 如果接受者需要限制對資源的存取權，則應考慮更新所有與服務相關聯的密碼。 大部分資源都可以更新。 登入 [Azure 入口網站](https://portal.azure.com)，然後在 [中樞] 功能表中選取 [所有資源]。 接下來選取資源。 然後在資源頁面中，選取 [設定]。 您可以在該處檢視並更新現有的密碼。

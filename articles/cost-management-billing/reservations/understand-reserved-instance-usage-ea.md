@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 20a9fb6a158134ffc18dc5bbb7eddd34d2b79562
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6e51363ff2f3782b77288f9dc1fcb8e59e9ffe0c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682003"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151787"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>取得 Enterprise 合約保留成本和使用量
 
@@ -55,7 +55,7 @@ Azure 使用量資料中的其他可用資訊已變更：
 - 期限 - 12 個月或 36 個月。
 - RINormalizationRatio - 可在 AdditionalInfo 下取得。 這是將保留套用至使用量記錄的比率。 如果已對您的保留啟用執行個體大小彈性，該功能即可套用至其他大小。 此值會顯示對使用量記錄套用的保留比率。
 
-[請參閱欄位定義](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#definitions)
+[請參閱欄位定義](/rest/api/consumption/usagedetails/list#definitions)
 
 ## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>使用 API 取得 Azure 使用量和保留使用量資料
 
@@ -71,7 +71,7 @@ Azure 使用量資料中的其他可用資訊已變更：
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
 ```
 
-如需有關 {enrollmentId} 和 {billingPeriodId} 的詳細資訊，請參閱[使用量詳細資料 – 清單](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) API 一文。
+如需有關 {enrollmentId} 和 {billingPeriodId} 的詳細資訊，請參閱[使用量詳細資料 – 清單](/rest/api/consumption/usagedetails/list) API 一文。
 
 下表中關於計量和篩選的資訊有助於解決常見的保留問題。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 8cc12ba40b6722f75e4f3f4e8ce7023a0523c278
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 778feda8d72101d4ae2a0f0c27549701dfb53340
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219661"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341408"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure 資訊安全中心中的 Endpoint protection 評定和建議
 
@@ -29,9 +29,9 @@ Azure 資訊安全中心提供 [支援](security-center-services.md#endpoint-sup
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* 資訊安全中心會建議您在[MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps&preserve-view=true)執行時「**在虛擬機器上安裝 endpoint protection 解決方案**」，且結果為**AMServiceEnabled： False**
+* 資訊安全中心會建議您在[MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus?preserve-view=true&view=win10-ps)執行時「**在虛擬機器上安裝 endpoint protection 解決方案**」，且結果為**AMServiceEnabled： False**
 
-* 當[MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps&preserve-view=true)執行時，資訊安全中心會建議您「**解決電腦上的端點保護健康情況問題**」，並進行下列任何一項動作：
+* 當[MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus?preserve-view=true&view=win10-ps)執行時，資訊安全中心會建議您「**解決電腦上的端點保護健康情況問題**」，並進行下列任何一項動作：
 
   * 下列任何一個屬性為 false：
 
@@ -81,7 +81,7 @@ Azure 資訊安全中心提供 [支援](security-center-services.md#endpoint-sup
 - **HKLM： \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 - **HKLM： \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
-或者
+Or
 
 - **HKLM： \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 - **HKLM： \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**

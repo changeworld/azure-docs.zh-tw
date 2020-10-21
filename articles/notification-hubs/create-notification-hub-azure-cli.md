@@ -14,12 +14,12 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ebed70a99e8e906db802099e052e69ab2575d737
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: e7e140e26da79475bea032c8190ee64740370d04
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875017"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92312880"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>使用 Azure CLI 建立 Azure 通知中樞
 
@@ -36,7 +36,7 @@ Azure 通知中樞提供易於使用且相應放大的推播引擎，可讓您�
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-Azure 通知中樞與所有 Azure 資源一樣都必須部署到資源群組中。  資源群組可讓您組織和管理相關的 Azure 資源。  若要深入了解資源群組，請參閱[什麼是 Azure Resource Manager](/azure/azure-resource-manager/management/overview)。
+Azure 通知中樞與所有 Azure 資源一樣都必須部署到資源群組中。  資源群組可讓您組織和管理相關的 Azure 資源。  若要深入了解資源群組，請參閱[什麼是 Azure Resource Manager](../azure-resource-manager/management/overview.md)。
 
 針對此快速入門，請使用下列 [az group create](/cli/azure/group#az-group-create) 命令，在 eastus 位置中建立一個名為 spnhubrg 的資源群組。
 

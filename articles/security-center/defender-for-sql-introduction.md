@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 328a565dbb22a13c71a7001d43941e7be062dff9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7301f6bbb33c3eedff2e8c41edeaacb3df66d4c2
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449051"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342020"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>適用於 SQL 的 Azure Defender 簡介
 
-適用於 SQL 的 Azure Defender 包含兩個 Azure Defender 方案，可擴充 Azure 資訊安全中心的[資料安全性套件](../azure-sql/database/advanced-data-security.md)，以保護您的資料庫及其資料 (不論位於何處)。 
+適用於 SQL 的 Azure Defender 包含兩個 Azure Defender 方案，可擴充 Azure 資訊安全中心的[資料安全性套件](../azure-sql/database/azure-defender-for-sql.md)，以保護您的資料庫及其資料 (不論位於何處)。 
 
 ## <a name="availability"></a>可用性
 
@@ -69,5 +69,5 @@ ms.locfileid: "91449051"
 如需相關內容，請參閱下列文章： 
 
 - [如何啟用適用於機器上的 SQL 伺服器的 Azure Defender](defender-for-sql-usage.md)
-- [如何啟用適用於 SQL 資料庫伺服器的 Azure Defender](../azure-sql/database/advanced-data-security.md)
+- [如何啟用適用於 SQL 資料庫伺服器的 Azure Defender](../azure-sql/database/azure-defender-for-sql.md)
 - [適用於 SQL 的 Azure Defender 警示清單](alerts-reference.md#alerts-sql-db-and-warehouse)

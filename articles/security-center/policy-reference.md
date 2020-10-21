@@ -7,12 +7,12 @@ author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 371bbd6919f787401da361339f705fa5edfa4547
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b7478199e4bb6f1e9ad986193370d4ea8610bd7a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328686"
+ms.locfileid: "92340898"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>適用於 Azure 資訊安全中心的 Azure 原則內建定義
 
@@ -52,5 +52,5 @@ ms.locfileid: "92328686"
 - [Azure 資訊安全中心規劃與操作指南](./security-center-planning-and-operations-guide.md)：瞭解如何規劃及瞭解 Azure 資訊安全中心中的設計考慮。
 - [Azure 資訊安全中心的安全性健全狀況監視](./security-center-monitoring.md)：了解如何監視 Azure 資源的健全狀況。
 - [管理與回應 Azure 資訊安全中心的安全性警示](./security-center-managing-and-responding-alerts.md)：了解如何管理與回應安全性警示。
-- [使用 Azure 資訊安全中心監視合作夥伴解決方案](./security-center-partner-solutions.md)：了解如何監視合作夥伴解決方案的健全狀況。
+- [使用 Azure 資訊安全中心監視合作夥伴解決方案](./security-center-partner-integration.md)：了解如何監視合作夥伴解決方案的健全狀況。
 - [Azure 原則](../governance/policy/overview.md)：瞭解如何審核及管理您的 Azure 資源。

@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 51b985cd67e1b540e2f24f2f37b19f9bff4223db
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d244ed92cceb385f9f80690ae630e617e952c481
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962984"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124580"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>開始使用群組聊天 Hero 範例
 
@@ -30,7 +30,7 @@ Azure 通訊服務的**群組聊天 Hero 範例**會示範如何使用通訊服�
 在此範例快速入門中，我們將先了解範例如何運作，然後在您的本機電腦上執行範例。 接著，我們會使用您自己的 Azure 通訊服務資源，將範例部署至 Azure。
 
 > [!IMPORTANT]
-> [從 GitHub 下載範例](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
+> [從 GitHub 下載範例](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 ## <a name="overview"></a>概觀
 
@@ -103,7 +103,7 @@ Azure 通訊服務的**群組聊天 Hero 範例**會示範如何使用通訊服�
 ## <a name="next-steps"></a>後續步驟
 
 >[!div class="nextstepaction"] 
->[從 GitHub 下載範例](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
+>[從 GitHub 下載範例](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 如需詳細資訊，請參閱下列文章：
 

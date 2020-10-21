@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 729150188e918d4964f8abe729c66032d8e6c9c0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 4dd22427038bc7c4052ee714c3ec3ce45d7a1837
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689145"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132817"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>如何透過 Azure 成本管理將雲端投資最佳化
 
@@ -126,7 +126,7 @@ Azure 定價計算機可讓您混合及比對不同的 Azure 服務組合，以�
 
 Azure Migrate 是一種服務，可評估貴組織在內部部署資料中心內的目前工作負載。 它可讓您深入了解您需要從 Azure 替代方案獲得的服務。 首先，Migrate 會分析您的內部部署電腦，以判斷移轉是否可行。 接著，它會建議 Azure 中的 VM 大小，以便將效能發揮到極致。 最後，它也會建立以 Azure 為基礎的解決方案成本預估。
 
-如需詳細資訊，請參閱 [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-services-overview)。
+如需詳細資訊，請參閱 [Azure Migrate](../../migrate/migrate-services-overview.md)。
 
 ## <a name="analyze-and-manage-your-costs"></a>分析和管理成本
 

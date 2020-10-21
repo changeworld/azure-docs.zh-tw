@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: bf31c2d4a90abeec62d785d0294a9c50f3b675ab
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 8fa72dcd857977474cf76eada500214bf8129aca
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993609"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340864"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>將您的非 Azure 機器連線至資訊安全中心
 
@@ -86,7 +86,7 @@ ms.locfileid: "91993609"
 1. 登入您的 **Azure Stack** 入口網站，並開啟 [虛擬機器] 頁面。
 1. 選取要用資訊安全中心來保護的虛擬機器。
     >[!TIP]
-    > 如需如何在 Azure Stack 上建立虛擬機器的詳細資訊，請參閱 [Windows 虛擬機器的此快速入門](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal)或 [Linux 虛擬機器的此快速入門](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal)。
+    > 如需如何在 Azure Stack 上建立虛擬機器的詳細資訊，請參閱 [Windows 虛擬機器的此快速入門](/azure-stack/user/azure-stack-quick-windows-portal)或 [Linux 虛擬機器的此快速入門](/azure-stack/user/azure-stack-quick-linux-portal)。
 1. 選取 [擴充功能]  。 此時會列出安裝在此虛擬機器上的虛擬機器擴充功能。
 1. 選取 [新增] 索引標籤。[新增資源] 功能表會顯示可用的虛擬機器擴充功能清單。
 1. 選取 [Azure 監視器、更新和組態管理] 擴充功能，然後選取 [建立]。 [安裝擴充功能] 設定頁面隨即開啟。

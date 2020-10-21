@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: f701e41c62336bcd7638360a27a0fb4c3ce3ec7d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 71561f6ecdde09f259e54260e7bab4dcc0e85c98
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686661"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132630"
 ---
 # <a name="troubleshoot-viewing-your-billing-account-in-the-azure-portal"></a>針對在 Azure 入口網站中檢視計費帳戶的問題進行疑難排解
 
@@ -59,7 +59,7 @@ ms.locfileid: "88686661"
 
 閱讀下列計費和訂用帳戶文章，以協助針對問題進行疑難排解。
 
-- [卡片遭拒](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-declined-card)
-- [訂用帳戶登入問題](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)
-- [找不到訂用帳戶](https://docs.microsoft.com/azure/cost-management-billing/manage/no-subscriptions-found)
-- [已停用企業成本檢視](https://docs.microsoft.com/azure/cost-management-billing/manage/enterprise-mgmt-grp-troubleshoot-cost-view)
+- [卡片遭拒](./troubleshoot-declined-card.md)
+- [訂用帳戶登入問題](./troubleshoot-sign-in-issue.md)
+- [找不到訂用帳戶](./no-subscriptions-found.md)
+- [已停用企業成本檢視](./enterprise-mgmt-grp-troubleshoot-cost-view.md)

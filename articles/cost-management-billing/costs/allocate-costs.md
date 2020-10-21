@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 025b9b7e503f38a111bd158f17b7fbeec5b23579
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 51baa26cf78846bd0a719b8b86056e2ea8176155
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684978"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131083"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>建立和管理 Azure 成本配置規則 (預覽)
 
@@ -58,16 +58,16 @@ ms.locfileid: "88684978"
 
 將成本分散到總成本時，會以目前計費月份所選目標的總和或總成本來分配比例百分比。
 
-:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="顯示配置百分比的範例" lightbox="./media/allocate-costs/cost-distribution.png" :::
+:::image type="content" source="./media/allocate-costs/cost-distribution.png" alt-text="顯示建立規則名稱的範例" lightbox="./media/allocate-costs/cost-distribution.png" :::
 
 一旦設定，預先定義的百分比就會固定不變。 所有進行中的配置都會使用這項資料。 只有在手動更新規則時，才會變更百分比。
 
 1. 在 [預先填入百分比] 清單中，選取下列其中一個選項。
     - **平均分散** - 每個目標會接收總成本的平均百分比比例。
     - **總成本** - 根據其總成本，建立與目標成正比的比率。 比率用來從選取的來源分散成本。
-    - **計算成本** - 根據其 Azure 計算成本 ([Microsoft.Compute](https://docs.microsoft.com/azure/templates/microsoft.compute/allversions) 命名空間中的資源類型)，建立與目標的比例。比率用來從選取的來源分散成本。
-    - **儲存體成本** - 根據其 Azure 儲存體成本 ([Microsoft.Storage](https://docs.microsoft.com/azure/templates/microsoft.storage/allversions) 命名空間中的資源類型) 建立與目標的比例。 比率用來從選取的來源分散成本。
-    - **網路成本** - 根據其 Azure 網路成本 ([Microsoft.Network](https://docs.microsoft.com/azure/templates/microsoft.network/allversions) 命名空間中的資源類型) 建立與目標的比例。 比率用來從選取的來源分散成本。
+    - **計算成本** - 根據其 Azure 計算成本 ([Microsoft.Compute](/azure/templates/microsoft.compute/allversions) 命名空間中的資源類型)，建立與目標的比例。比率用來從選取的來源分散成本。
+    - **儲存體成本** - 根據其 Azure 儲存體成本 ([Microsoft.Storage](/azure/templates/microsoft.storage/allversions) 命名空間中的資源類型) 建立與目標的比例。 比率用來從選取的來源分散成本。
+    - **網路成本** - 根據其 Azure 網路成本 ([Microsoft.Network](/azure/templates/microsoft.network/allversions) 命名空間中的資源類型) 建立與目標的比例。 比率用來從選取的來源分散成本。
     - **自訂** - 允許手動指定整數百分比。 指定的總合必須等於 100%。
 1. 設定規則後，請選取 [建立]。
 
@@ -84,7 +84,7 @@ ms.locfileid: "88684978"
 
 您會在成本分析中，看到配置規則的影響。 在 Azure 入口網站中，前往[訂用帳戶](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。 選取清單中的訂用帳戶，這是使用中的成本配置規則目標。 然後在功能表中選取 [成本分析]。 在成本分析中，選取 [群組依據] 然後選取 [成本配置]。 結果檢視會顯示訂用帳戶所產生的快速成本明細。 系統也會顯示配置給訂用帳戶的成本，如下圖所示。
 
-:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="顯示成本明細的範例" lightbox="./media/allocate-costs/cost-breakdown.png" :::
+:::image type="content" source="./media/allocate-costs/cost-breakdown.png" alt-text="顯示建立規則名稱的範例" lightbox="./media/allocate-costs/cost-breakdown.png" :::
 
 ### <a name="view-cost-allocation-for-a-resource-group"></a>檢視資源群組的成本配置
 
@@ -94,7 +94,7 @@ ms.locfileid: "88684978"
 
 在 Azure 入口網站中，瀏覽至**成本管理 + 帳單** > **成本管理** > **成本分析**。 在成本分析中，選取 [新增篩選]。 選取 [標籤]，選擇標籤金鑰，以及為其配置成本的標籤值。
 
-:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="顯示已標記項目成本的範例" lightbox="./media/allocate-costs/tagged-costs.png" :::
+:::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="顯示建立規則名稱的範例" lightbox="./media/allocate-costs/tagged-costs.png" :::
 
 ## <a name="edit-an-existing-cost-allocation-rule"></a>編輯現有的成本配置規則
 
@@ -112,10 +112,10 @@ ms.locfileid: "88684978"
 成本配置公開預覽目前不支援下列項目：
 
 - 排定的[匯出](tutorial-export-acm-data.md)
-- [使用量詳細資料](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) API 公開的資料
+- [使用量詳細資料](/rest/api/consumption/usagedetails/list) API 公開的資料
 - 計費訂用帳戶區域
 - [成本管理 Power BI 應用程式](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)
-- [Power BI Desktop 連接器](https://docs.microsoft.com/power-bi/connect-data/desktop-connect-azure-cost-management)
+- [Power BI Desktop 連接器](/power-bi/connect-data/desktop-connect-azure-cost-management)
 
 ### <a name="are-costs-factored-into-budgets-and-forecast-views"></a>成本會分解成預算和預測的檢視嗎？
 <a name="budgets-forecast"></a>
@@ -144,5 +144,5 @@ ms.locfileid: "88684978"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 使用[成本配置 Rest API](https://go.microsoft.com/fwlink/?linkid=2135004) 建立或更新配置規則
+- 使用[成本配置 Rest API](/rest/api/cost-management/costallocationrules) 建立或更新配置規則
 - 深入了解[如何使用 Azure 成本管理來最佳化您的雲端投資](cost-mgt-best-practices.md)

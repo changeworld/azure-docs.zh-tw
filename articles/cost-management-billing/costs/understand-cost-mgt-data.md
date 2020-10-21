@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: 904ea7a50e4546d2721a9e701c78b6b77ed2d43a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a9ec5fd7d6e93d4413e86b5c9433cb6c0c9b59a1
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683176"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132307"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理資料
 
@@ -110,7 +110,7 @@ Azure 成本管理會在個別服務提交的每個使用記錄中接收標記�
 
 - 標記必須直接套用至資源，而且不會隱含繼承自父資源群組。
 - 僅部署至資源群組的資源可支援資源標記。
-- 某些已部署的資源可能不支援標記，或是可能無法在使用量資料中包含標記 – 請參閱 [Azure 資源的標記支援](../../azure-resource-manager/tag-support.md)。
+- 某些已部署的資源可能不支援標記，或是可能無法在使用量資料中包含標記 – 請參閱 [Azure 資源的標記支援](../../azure-resource-manager/management/tag-support.md)。
 - 資源標記只會在套用標記時，包含在使用量資料中 – 標記不會套用至歷史記錄資料。
 - 只有在重新整理資料後，您才能在成本管理中使用資源標記，請參閱[成本和使用量資料更新與保留](#cost-and-usage-data-updates-and-retention)。
 - 資源標記只有在資源為作用中/執行中，以及正在產生使用量記錄時 (例如，未將 VM 解除配置時)，才可在成本管理中使用。
@@ -121,7 +121,7 @@ Azure 成本管理會在個別服務提交的每個使用記錄中接收標記�
 
 - 標記是否已直接套用至資源？
 - 標記套用的時間是否已超過 24 小時？ 請參閱 [成本和使用量資料更新與保留](#cost-and-usage-data-updates-and-retention)
-- 該資源類型是否支援標記？ 自 2019 年 12 月 1 日起，下列資源類型不支援在使用量資料中使用標記。 如需支援內容的完整清單，請參閱[適用於 Azure 資源的 標記支援](../../azure-resource-manager/tag-support.md)。
+- 該資源類型是否支援標記？ 自 2019 年 12 月 1 日起，下列資源類型不支援在使用量資料中使用標記。 如需支援內容的完整清單，請參閱[適用於 Azure 資源的 標記支援](../../azure-resource-manager/management/tag-support.md)。
     - Azure Active Directory B2C 目錄
     - Azure Bastion
     - Azure 防火牆
@@ -185,4 +185,4 @@ Azure 成本管理會在個別服務提交的每個使用記錄中接收標記�
 
 ## <a name="see-also"></a>另請參閱
 
-- 如果您尚未完成成本管理的第一個快速入門，請在[開始分析成本](../../cost-management/quick-acm-cost-analysis.md)閱讀它。
+- 如果您尚未完成成本管理的第一個快速入門，請在[開始分析成本](./quick-acm-cost-analysis.md)閱讀它。

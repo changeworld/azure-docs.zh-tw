@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: banders
-ms.openlocfilehash: d2d098c3a80bbbdb8c9fb64b25cc5967ee693046
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: ae504072e2a2cc481217933478ccbfb7bc3372b3
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371400"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132358"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>在訂閱者與 CSP 之間轉移 Azure 訂用帳戶
 
@@ -26,7 +26,7 @@ ms.locfileid: "91371400"
 當要求獲得核准後，CSP 就可以為其客戶提供合併的發票。 若要深入了解 CSP 的訂用帳戶轉移，請參閱[取得您 MPA 帳戶的 Azure 訂用帳戶帳單擁有權](mpa-request-ownership.md)。
 
 >[!IMPORTANT]
-> 將 EA 訂用帳戶轉移給 CSP 合作夥伴之後，先前套用到 EA 訂用帳戶的所有配額增加都會重設為預設值。 如果在訂用帳戶轉移之後需要額外的配額，請讓您的 CSP 提供者提交[配額增加](https://docs.microsoft.com/azure/azure-portal/supportability/regional-quota-requests)要求。 
+> 將 EA 訂用帳戶轉移給 CSP 合作夥伴之後，先前套用到 EA 訂用帳戶的所有配額增加都會重設為預設值。 如果在訂用帳戶轉移之後需要額外的配額，請讓您的 CSP 提供者提交[配額增加](../../azure-portal/supportability/regional-quota-requests.md)要求。 
 
 ## <a name="other-subscription-transfers-to-a-csp-partner"></a>其他訂用帳戶轉移至 CSP 合作夥伴
 
@@ -42,7 +42,7 @@ ms.locfileid: "91371400"
 1. 開始之前，請先[確認](/rest/api/resources/resources/validatemoveresources)所有 Azure 資源都可以從來源訂用帳戶移至目的地訂用帳戶。  
     某些 Azure 資源無法在訂用帳戶之間移動。 若要檢視可移動的 Azure 資源完整清單，請參閱[資源的移動作業支援](../../azure-resource-manager/management/move-support-resources.md)。
     > [!IMPORTANT]
-    >  - Azure CSP 僅支援 Azure Resource Manager 資源。 如果來源訂用帳戶中的 Azure 資源是使用 Azure 傳統部署模型建立的，則必須先將其遷移至 [Azure Resource Manager](https://docs.microsoft.com/azure/cloud-solution-provider/migration/ea-payg-to-azure-csp/ea-open-direct-asm-to-arm)，才能進行移轉。 您必須是合作夥伴才能看到網頁。
+    >  - Azure CSP 僅支援 Azure Resource Manager 資源。 如果來源訂用帳戶中的 Azure 資源是使用 Azure 傳統部署模型建立的，則必須先將其遷移至 [Azure Resource Manager](/azure/cloud-solution-provider/migration/ea-payg-to-azure-csp/ea-open-direct-asm-to-arm)，才能進行移轉。 您必須是合作夥伴才能看到網頁。
 
 1. 確認所有來源訂用帳戶服務都可使用 Azure Resource Manager 模型。 然後，使用 [Azure 資源移動](../../azure-resource-manager/management/move-resource-group-and-subscription.md)，將資源從來源訂用帳戶轉移至目的地訂用帳戶。
     > [!IMPORTANT]

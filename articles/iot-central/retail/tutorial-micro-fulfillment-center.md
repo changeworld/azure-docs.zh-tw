@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: d6b5d337090ebd664e855be47128e76d3c61e151
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bb50b513a9b09db4a8d59d32816b702bff250f2
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840433"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125964"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>教學課程：部署並逐步執行微型物流中心應用程式範本
 
@@ -47,7 +47,7 @@ ms.locfileid: "91840433"
 
 1. 如果您有 Azure 訂用帳戶，請輸入您的 [目錄]、[Azure 訂用帳戶] 和 [區域]。 如果您沒有訂用帳戶，則可以啟用 [7 天免費試用] 並填妥必要的連絡人資訊。  
 
-    如需關於目錄和訂用帳戶的詳細資訊，請參閱[建立應用程式快速入門](../preview/quick-deploy-iot-central.md)。
+    如需關於目錄和訂用帳戶的詳細資訊，請參閱[建立應用程式快速入門](../core/quick-deploy-iot-central.md)。
 
 1. 選取 [建立]  。
 
@@ -96,4 +96,4 @@ ms.locfileid: "91840433"
 > [!div class="nextstepaction"]
 > [微型物流中心解決方案架構](./architecture-micro-fulfillment-center.md)
 * 深入了解 [Azure IoT Central 零售範本](./overview-iot-central-retail.md)
-* 深入了解 [Azure IoT Central](../preview/overview-iot-central.md)
+* 深入了解 [Azure IoT Central](../core/overview-iot-central.md)

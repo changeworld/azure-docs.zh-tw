@@ -7,18 +7,18 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 4387a1aa5b22c9808f36364b71f89a71736958b8
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: aba6ea467788c51d179ef9377243efb6035b6f98
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689468"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148364"
 ---
 # <a name="charge-back-azure-reservation-costs"></a>針對 Azure 保留成本進行退費
 
 Enterprise 合約及 Microsoft 客戶合約帳單讀者可以檢視保留的分攤成本資料。 他們可以使用成本資料，將訂用帳戶、資源群組、資源或標籤的幣值退費給其合作夥伴。 在分攤的資料中，有效的價格是按比例計算的每小時保留成本。 成本是該日資源的保留使用量總成本。
 
-具有個別訂用帳戶的使用者可以從其使用量檔案取得分攤的成本資料。 當資源取得保留折扣時，使用量檔案中的 AdditionalInfo 區段會包含保留詳細資料。 如需詳細資訊，請參閱[從 Azure 入口網站下載使用量](https://docs.microsoft.com/azure/cost-management-billing/understand/download-azure-daily-usage#download-usage-from-the-azure-portal-csv)。
+具有個別訂用帳戶的使用者可以從其使用量檔案取得分攤的成本資料。 當資源取得保留折扣時，使用量檔案中的 AdditionalInfo 區段會包含保留詳細資料。 如需詳細資訊，請參閱[從 Azure 入口網站下載使用量](../understand/download-azure-daily-usage.md#download-usage-from-the-azure-portal-csv)。
 
 ## <a name="get-reservation-charge-back-data-for-chargeback"></a>取得保留退費資料以進行退款
 

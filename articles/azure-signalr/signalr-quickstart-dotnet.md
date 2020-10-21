@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: 8c7d7f84e02cdd2cd4f53bc9eb42c78f936146ae
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: da91a5a7c077eb14d12a711b8b308d7045c88f4a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91408364"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150998"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>快速入門：使用 ASP.NET 和 SignalR 服務建立聊天室
 
-Azure SignalR 服務依據的是 [SignalR for ASP.NET Core 2.1](https://docs.microsoft.com/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1)，其並**不**完全相容於 ASP.NET SignalR。 Azure SignalR 服務會採用最新的 ASP.NET Core 技術來重新實作 ASP.NET SignalR 資料通訊協定。 對 ASP.NET SignalR 使用 Azure SignalR 服務時，不會再支援某些 ASP.NET SignalR 功能。例如當用戶端重新連線時，Azure SignalR 不會重播訊息。 此外，不支援 Forever Frame 傳輸和 JSONP。 需要變更某些程式碼並使用合適的相依程式庫版本，ASP.NET SignalR 應用程式才能搭配 SignalR 服務運作。
+Azure SignalR 服務依據的是 [SignalR for ASP.NET Core 2.1](/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1)，其並**不**完全相容於 ASP.NET SignalR。 Azure SignalR 服務會採用最新的 ASP.NET Core 技術來重新實作 ASP.NET SignalR 資料通訊協定。 對 ASP.NET SignalR 使用 Azure SignalR 服務時，不會再支援某些 ASP.NET SignalR 功能。例如當用戶端重新連線時，Azure SignalR 不會重播訊息。 此外，不支援 Forever Frame 傳輸和 JSONP。 需要變更某些程式碼並使用合適的相依程式庫版本，ASP.NET SignalR 應用程式才能搭配 SignalR 服務運作。
 
-關於將 ASP.NET SignalR 及 ASP.NET Core SignalR 的功能比較的完整清單，請參閱[版本差異文件](https://docs.microsoft.com/aspnet/core/signalr/version-differences?preserve-view=true&view=aspnetcore-3.1)。
+關於將 ASP.NET SignalR 及 ASP.NET Core SignalR 的功能比較的完整清單，請參閱[版本差異文件](/aspnet/core/signalr/version-differences?preserve-view=true&view=aspnetcore-3.1)。
 
 在本快速入門中，您會了解如何開始使用類似[聊天室應用程式](./signalr-quickstart-dotnet-core.md)的 ASP.NET 和 Azure SignalR 服務。
 

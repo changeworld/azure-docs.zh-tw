@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: banders
-ms.openlocfilehash: fce0ca7df3851aa0e96b6ee630a4a1b0b85eb070
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 0b3cf0c705048d37d422d62b77dc7d94c5ae13bd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371737"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149397"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>開始使用更新的 Azure 計費帳戶
 
@@ -104,8 +104,8 @@ ms.locfileid: "91371737"
 
 |API | 變更  |
 |---------|---------|
-|[計費帳戶 - 清單](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/billingaccounts/list) | 在「計費帳戶 - 清單」API 中，您舊計費帳戶的 agreementType 為 **MicrosoftOnlineServiceProgram**，而新計費帳戶的 agreementType 為 **MicrosoftCustomerAgreement**。 如果您與 agreementType 具有相依性，請進行更新。 |
-|[發票 - 依計費訂用帳戶列出](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | 此 API 只會傳回您帳戶更新前所產生的發票。 您必須使用[發票 - 依計費帳戶列出](https://docs.microsoft.com/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) API 來取得新計費帳戶中產生的發票。 |
+|[計費帳戶 - 清單](/rest/api/billing/2019-10-01-preview/billingaccounts/list) | 在「計費帳戶 - 清單」API 中，您舊計費帳戶的 agreementType 為 **MicrosoftOnlineServiceProgram**，而新計費帳戶的 agreementType 為 **MicrosoftCustomerAgreement**。 如果您與 agreementType 具有相依性，請進行更新。 |
+|[發票 - 依計費訂用帳戶列出](/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | 此 API 只會傳回您帳戶更新前所產生的發票。 您必須使用[發票 - 依計費帳戶列出](/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) API 來取得新計費帳戶中產生的發票。 |
 
 ## <a name="additional-information"></a>其他資訊
 

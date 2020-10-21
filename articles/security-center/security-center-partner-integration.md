@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 9a781fd48b30ccb32b0a733e5aa1ac054b96dc12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 039fabbbb04f352042973f559e34a3c3a77e7500
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323649"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340422"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 資訊安全中心整合安全性解決方案
 這份文件可協助您管理已連線到 Azure 資訊安全中心的安全性解決方案，並且新增新的項目。
@@ -85,7 +85,7 @@ ms.locfileid: "91323649"
 
 ### <a name="discovered-solutions"></a>探索到的解決方案
 
-「安全性中心」會自動探索在 Azure 中執行但未連線至「安全性中心」的安全性解決方案，並在 [ **探索的解決方案** ] 區段中顯示解決方案。 這些解決方案包括 Azure 解決方案，例如 [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)和合作夥伴解決方案。
+「安全性中心」會自動探索在 Azure 中執行但未連線至「安全性中心」的安全性解決方案，並在 [ **探索的解決方案** ] 區段中顯示解決方案。 這些解決方案包括 Azure 解決方案，例如 [Azure AD Identity Protection](../active-directory/identity-protection/overview-identity-protection.md)和合作夥伴解決方案。
 
 > [!NOTE]
 > 針對探索到的解決方案功能，在訂用帳戶層級啟用 **Azure Defender** 。 若要深入瞭解定價層，請參閱 [定價](security-center-pricing.md) 層。

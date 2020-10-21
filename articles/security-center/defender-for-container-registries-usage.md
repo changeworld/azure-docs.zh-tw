@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 79a0db3b9f81368fbdaace5be3fd94ad29649291
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57e8b6f47c4166c4f8b9f5de0f3e03a7d757e100
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532596"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342071"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>使用適用于容器登錄的 Azure Defender 來掃描映射是否有弱點
 
@@ -29,7 +29,7 @@ ms.locfileid: "91532596"
 |版本狀態：|正式上市 (GA)|
 |定價：|**適用于 container registry 的 Azure Defender**會依[定價頁面上的](security-center-pricing.md)顯示方式計費|
 |支援的登錄和映射：|![是 ](./media/icons/yes-icon.png) 可從公用網際網路存取並提供 shell 存取的 Linux 託管 ACR 登錄。<br>![沒有任何 ](./media/icons/no-icon.png) Windows 主控的 ACR 登錄。<br>![無「私人」登錄 ](./media/icons/no-icon.png) -「安全性中心」需要您的登錄才能從公用網際網路存取。 「安全性中心」目前無法連接或掃描登錄，其存取權受限於防火牆、服務端點或私人端點（例如 Azure Private Link）。<br>![沒有任何 ](./media/icons/no-icon.png) 超級極簡映射（例如 [Docker 臨時](https://hub.docker.com/_/scratch/) 影像）或 "Distroless" 映射（只包含應用程式和其執行時間相依性，沒有套件管理員、shell 或 OS）。|
-|必要的角色和權限：|**安全性讀取者** 和 [Azure Container Registry 讀者角色](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
+|必要的角色和權限：|**安全性讀取者** 和 [Azure Container Registry 讀者角色](../container-registry/container-registry-roles.md)|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
 |||
 

@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.subservice: alerts
-ms.openlocfilehash: 7b5332f68bb35e3c9b9ed82bb7bed2908e744e9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b1015573e4c01f01d82c7c152b66db80bef0aee
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88065857"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342156"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>使用 Azure 監視器建立、檢視及管理計量警示
 
@@ -43,17 +43,17 @@ Azure 監視器中的計量警示可讓您在其中一個計量超過閾值時�
 8. 如果度量具有維度，您將會看到顯示的維度資料表。 為每個維度選取一或多個值。
     - 顯示的維度值是以過去三天的度量資料為基礎。
     - 如果未顯示您要尋找的維度值，請按一下 [+] 以新增自訂值。
-    - **Select \*** 也可以讓您選取任何維度。 **Select \*** 會將選擇動態擴充至維度的所有目前與未來值。
+    - 您也可以 **選取 \* *任何維度的 _。 _*選取 \* *_ 會動態地將選取範圍調整為維度的所有目前和未來值。
 
     計量警示規則會評估所有選定值組合的條件。 [深入了解對多維度計量發出警示的運作方式](alerts-metric-overview.md)。
 
-9. 選取 **臨界值** 類型、 **運算子**和 **匯總類型**。 這會決定計量警示規則將評估的邏輯。
+9. 選取 [_*閾值*] * [類型]、[ **運算子**] 和 [ **匯總類型**]。 這會決定計量警示規則將評估的邏輯。
     - 如果您使用的是 **靜態** 閾值，請繼續定義 **臨界值**。 度量圖表可協助判斷哪些可能是合理的閾值。
     - 如果您使用的是 **動態** 閾值，請繼續定義 **閾值敏感度**。 計量圖表會顯示以最近資料為基礎的計算臨界值。 [深入了解動態閾值條件類型和敏感度選項](alerts-dynamic-thresholds.md)。
 
 10. （選擇性）藉由調整 **匯總資料細微性** 和 **評估頻率**來精簡條件。 
 
-11. 按一下 [完成]。
+11. 按一下 [完成]  。
 
 12. (選擇性) 如果您想要監視複雜的警示規則，請新增另一個準則。 目前使用者可以使用具有動態閾值準則的警示規則作為單一準則。
 
@@ -154,8 +154,8 @@ Azure 監視器中的計量警示可讓您在其中一個計量超過閾值時�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 Azure Resource Manager 範本建立計量警示](./alerts-metric-create-templates.md)。
-- [了解計量警示的運作方式](alerts-metric-overview.md)。
-- [了解計量警示如何搭配動態閾值條件運作](alerts-dynamic-thresholds.md)。
+- [使用 Azure Resource Manager 範本建立度量警示](./alerts-metric-create-templates.md)
+- [瞭解計量警示的運作方式](alerts-metric-overview.md)
+- [瞭解具有動態閾值的計量警示條件如何運作](alerts-dynamic-thresholds.md)
 - [了解計量警示的 Webhook 結構描述](./alerts-metric-near-real-time.md#payload-schema)
-
+- [針對計量警示中的問題進行疑難排解](alerts-troubleshoot-metric.md)

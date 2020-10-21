@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b6f4e50cac2f809172c2525ea9136a63e6bd9066
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 7924b06b9056a53fa9861fcd0df516845662b34b
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107006"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341561"
 ---
 # <a name="access-built-in-metrics"></a>存取內建計量
 
@@ -27,7 +27,7 @@ IoT Edge 執行時間元件（IoT Edge 中樞和 IoT Edge 代理程式）會以 
 ```
 {
   "ExposedPorts": {
-    "9600/tcp": {},
+    "9600/tcp": {}
   },
   "HostConfig": {
     "PortBindings": {
@@ -50,7 +50,7 @@ IoT Edge 執行時間元件（IoT Edge 中樞和 IoT Edge 代理程式）會以 
 
 計量包含的標記可協助您識別所收集之計量的本質。 所有度量都包含下列標記：
 
-| Tag | 描述 |
+| Tag | 說明 |
 |-|-|
 | iothub | 裝置正在交談的中樞 |
 | edge_device | 目前裝置的識別碼 |
@@ -62,7 +62,7 @@ IoT Edge 執行時間元件（IoT Edge 中樞和 IoT Edge 代理程式）會以 
 
 **EdgeHub**模組會產生下列計量：
 
-| 名稱 | 維度 | 描述 |
+| Name | 維度 | 描述 |
 |-|-|-|
 | `edgehub_gettwin_total` | `source` (操作來源) <br> `id` (模組識別碼)  | 類型：計數器<br> GetTwin 呼叫總數 |
 | `edgehub_messages_received_total` | `route_output` (傳送訊息的輸出) <br> `id` | 類型：計數器<br> 從用戶端接收的訊息總數 |
@@ -85,7 +85,7 @@ IoT Edge 執行時間元件（IoT Edge 中樞和 IoT Edge 代理程式）會以 
 
 **EdgeAgent**模組會產生下列計量：
 
-| 名稱 | 維度 | 描述 |
+| Name | 維度 | 描述 |
 |-|-|-|
 | `edgeAgent_total_time_running_correctly_seconds` | `module_name` | 類型：量測計<br> 模組在部署中指定的時間量，且處於執行中狀態 |
 | `edgeAgent_total_time_expected_running_seconds` | `module_name` | 類型：量測計<br> 模組在部署中指定的時間量 |

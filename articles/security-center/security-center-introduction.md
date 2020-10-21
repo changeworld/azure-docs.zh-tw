@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: a6f0af188bb999acecad7fee0a90256eff05f902
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: e72d1161f80ad92c1e4cfc7fd2c9fde0d46e77b9
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91742072"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332003"
 ---
 # <a name="what-is-azure-security-center"></a>什麼是 Azure 資訊安全中心？
 
@@ -120,10 +120,6 @@ Azure 資訊安全中心的價值核心在於其建議。 建議是專為工作�
 ### <a name="protect-data-services"></a>保護資料服務
 
 資訊安全中心所含的功能可協助您在 Azure SQL 中自動將資料分類。 您也可以取得所有 Azure SQL 和儲存體服務的潛在弱點評量，以及如何緩解的建議。
-
-### <a name="protect-iot-and-hybrid-cloud-workloads"></a>保護 IoT 和混合式雲端工作負載
-
-適用於 IoT (物聯網) 的 Defender 可藉由在邊緣、內部、在 Azure 及其他雲端中執行的工作負載，提供統一的可見性和控制、調適型威脅防護，以及智慧型威脅防護和回應，以簡化混合式工作負載保護。 如需相關資訊，請參閱[適用於 IoT 的 Defender](../defender-for-iot/index.yml)。
 
 ## <a name="get-secure-faster"></a>更快保障安全
 

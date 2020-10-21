@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 9f559587e1abca7642edfc6278018d760b55e774
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f946a657b5129f773319d73fb428fe0108bac20f
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86206223"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123557"
 ---
 # <a name="what-is-azure-data-box"></a>什麼是 Azure 資料箱？
 
@@ -144,7 +144,7 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠和可靠�
 
 - **服務可用性** - 針對匯入或匯出訂單使用資料箱時，若要取得區域可用性的相關資訊，請移至[依區域提供的 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 資料箱上的匯出功能目前為預覽狀態。 
 
-    針對匯入訂單，資料箱也可部署在 Azure Government 雲端中。 如需詳細資訊，請參閱[何謂 Azure Government？](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)。 
+    針對匯入訂單，資料箱也可部署在 Azure Government 雲端中。 如需詳細資訊，請參閱[何謂 Azure Government？](../azure-government/documentation-government-welcome.md)。 
 
 - **目的地儲存體帳戶** - 儲存資料的儲存體帳戶在服務可用的所有 Azure 區域都可用。
 
@@ -154,7 +154,3 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠和可靠�
 - 檢閱[資料箱系統需求](data-box-system-requirements.md)。
 - 了解[資料箱限制](data-box-limits.md)。
 - 在 Azure 入口網站中快速部署 [Azure 資料箱](data-box-quickstart-portal.md)。
-
-
-
-

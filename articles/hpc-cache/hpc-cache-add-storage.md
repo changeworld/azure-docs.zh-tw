@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: ab9b7fa330964f7db8393334dd8f209efd75573d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1edbaf394a4abd36e47843a6f419eb9d62f08d7
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611266"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340303"
 ---
 # <a name="add-storage-targets"></a>新增儲存體目標
 
@@ -74,9 +74,9 @@ Azure 入口網站的 [ **新增儲存體目標** ] 頁面包含選項，可在�
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>將存取控制角色新增至您的帳戶
 
-Azure HPC Cache 使用 [azure 角色型存取控制 (AZURE RBAC) ](https://docs.microsoft.com/azure/role-based-access-control/index) 授權快取服務存取 Azure Blob 儲存體目標的儲存體帳戶。
+Azure HPC Cache 使用 [azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/index.yml) 授權快取服務存取 Azure Blob 儲存體目標的儲存體帳戶。
 
-儲存體帳戶擁有者必須明確地為使用者「HPC Cache 資源提供者」新增角色 [儲存體帳戶參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) 和 [儲存體 Blob 資料參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) 。
+儲存體帳戶擁有者必須明確地為使用者「HPC Cache 資源提供者」新增角色 [儲存體帳戶參與者](../role-based-access-control/built-in-roles.md#storage-account-contributor) 和 [儲存體 Blob 資料參與者](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) 。
 
 您可以事先完成這項作業，或按一下您新增 Blob 儲存體目標的頁面上的連結。 請記住，角色設定最多可能需要五分鐘的時間才會傳播到 Azure 環境，因此您應該在新增角色之後等候幾分鐘，再建立儲存體目標。
 

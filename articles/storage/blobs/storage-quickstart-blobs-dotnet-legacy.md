@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: efec40e4236c00fd4792e9d6aa51943cf43838ca
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 434093df3465e363d95fb79342d1854b99583d08
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89001411"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091418"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>快速入門：適用於 .NET 的 Azure Blob 儲存體用戶端程式庫 v11
 
@@ -33,7 +33,7 @@ ms.locfileid: "89001411"
 
 其他資源：
 
-* [API 參考文件](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)
+* [API 參考文件](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 * [程式庫原始程式碼](https://github.com/Azure/azure-storage-net/tree/master/Blob)
 * [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
 * [範例](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
@@ -205,7 +205,7 @@ Azure Blob 儲存體經過最佳化，已能妥善儲存大量的非結構化資
 
 ### <a name="authenticate-the-client"></a>驗證用戶端
 
-下列程式碼會檢查環境變數是否包含可剖析的連接字串，以建立指向儲存體帳戶的 [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet) 物件。 若要檢查連接字串是否有效，請使用[TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse?view=azure-dotnet) 方法。 如果 `TryParse` 成功，它會初始化 `storageAccount` 變數並傳回 `true`。
+下列程式碼會檢查環境變數是否包含可剖析的連接字串，以建立指向儲存體帳戶的 [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount) 物件。 若要檢查連接字串是否有效，請使用[TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse) 方法。 如果 `TryParse` 成功，它會初始化 `storageAccount` 變數並傳回 `true`。
 
 在 `ProcessAsync` 方法內新增此程式碼：
 

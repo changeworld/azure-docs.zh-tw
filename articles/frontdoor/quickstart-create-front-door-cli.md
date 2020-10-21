@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/21/2020
 ms.author: duau
-ms.openlocfilehash: 6aa960837a3bfc7f8a04ca1f554fb10d635c2ea2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a24c0fdb244f87dbf281bcf59b5e1986a215142a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91348021"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275623"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>快速入門：使用 Azure CLI 為高可用性的全域 Web 應用程式建立 Front Door
 
@@ -46,7 +46,7 @@ az extension add --name front-door
 
 在本快速入門中，您需要兩個資源群組。 其中一個在「美國中部」，第二個在「美國中南部」。
 
-使用 [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true) 來建立資源群組：
+使用 [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true) 來建立資源群組：
 
 ```azurecli-interactive
 az group create \
@@ -68,7 +68,7 @@ az group create \
 
 建立 Web 應用程式之前，您需要兩個 App Service 方案，一個在「美國中部」，而第二個在「美國中南部」。
 
-使用 [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create&preserve-view=true) 來建立 App Service 方案：
+使用 [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create&preserve-view=true) 來建立 App Service 方案：
 
 ```azurecli-interactive
 az appservice plan create \
@@ -84,7 +84,7 @@ az appservice plan create \
 
 執行下列命令將會在上一個步驟的每個 App Service 方案中建立 Web 應用程式。 Web 應用程式名稱必須是全域唯一的。
 
-使用 [az webapp create](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az_webapp_create&preserve-view=true) 建立 Web 應用程式：
+使用 [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create&preserve-view=true) 建立 Web 應用程式：
 
 ```azurecli-interactive
 az webapp create \
@@ -104,7 +104,7 @@ az webapp create \
 
 執行下列動作，以建立具有預設負載平衡設定、健全狀態探查和路由規則的基本 Front Door：
 
-使用 [az network front-door create](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door?view=azure-cli-latest#ext_front_door_az_network_front_door_create&preserve-view=true) 建立 Front Door：
+使用 [az network front-door create](/cli/azure/ext/front-door/network/front-door?view=azure-cli-latest#ext_front_door_az_network_front_door_create&preserve-view=true) 建立 Front Door：
 
 ```azurecli-interactive
 az network front-door create \
@@ -134,7 +134,7 @@ az network front-door create \
 
 當您不再需要先前為 Front Door 建立的資源時，請刪除這兩個資源群組。 在刪除資源群組時，將同時刪除 Front Door 及其所有相關資源。 
 
-若要刪除資源群組，請使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az_group_delete&preserve-view=true)：
+若要刪除資源群組，請使用 [az group delete](/cli/azure/group?view=azure-cli-latest#az_group_delete&preserve-view=true)：
 
 ```azurecli-interactive
 az group delete \

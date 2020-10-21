@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: 3e8cef04e0711492b6e76d4c865695ac75e21422
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 9927d4780ea015502151188b61c50ddbd2656819
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125674"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339538"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>如何設定進階 Azure Cache for Redis 的資料持續性
 在本文中，您將瞭解如何透過 Azure 入口網站在 premium Azure Cache for Redis 實例中設定持續性。 Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快取大小和功能，包括叢集功能、持續性及虛擬網路支援等「進階」層功能。 
@@ -60,7 +60,7 @@ Azure Cache for Redis 使用下列模型提供 Redis 持續性：
 
 8. 若要啟用 RDB 持續性，請按一下 **rdb** 並進行設定。 
    
-   | 設定      | 建議的值  | 描述 |
+   | 設定      | 建議的值  | 說明 |
    | ------------ |  ------- | -------------------------------------------------- |
    | **備份頻率** | 下拉式清單並選取備份間隔，選項包括 **15 分鐘**、 **30 分鐘**、 **60 分鐘**、 **6 小時**、 **12 小時**和 **24 小時**。 | 在先前的備份作業成功完成後，此間隔便會開始倒數計時，時間過後就會起始新的備份。 | 
    | **儲存體帳戶** | 下拉式清單，然後選取您的儲存體帳戶。 | 您必須選擇與快取位於相同區域和訂用帳戶中的儲存體帳戶，而且建議使用 **進階儲存體** 帳戶，因為 Premium 儲存體有更高的輸送量。  | 
@@ -70,7 +70,7 @@ Azure Cache for Redis 使用下列模型提供 Redis 持續性：
 
 9. 若要啟用 AOF 持續性，請按一下 [ **AOF** ] 並進行設定。 
    
-   | 設定      | 建議的值  | 描述 |
+   | 設定      | 建議的值  | 說明 |
    | ------------ |  ------- | -------------------------------------------------- |
    | **第一個儲存體帳戶** | 下拉式清單，然後選取您的儲存體帳戶。 | 此儲存體帳戶必須與快取位於相同的區域和訂用帳戶，而且建議使用 **進階儲存體** 帳戶，因為 Premium 儲存體有更高的輸送量。 | 
    | **第一個儲存體金鑰** | 下拉式清單，並選擇要使用的 **主要金鑰** 或 **次要金鑰** 。 | 如果重新產生了永續性帳戶的儲存體金鑰，您必須從 [儲存體金鑰]**** 下拉式清單中重新設定所需的金鑰。 | 
@@ -83,11 +83,11 @@ Azure Cache for Redis 使用下列模型提供 Redis 持續性：
 
 11. 在 [標記] 索引標籤中，如果您想要分類資源，可以選擇性地輸入名稱和值。 
 
-12. 選取 [檢閱 + 建立] ****。 您會移至 [檢閱 + 建立] 索引標籤，其中 Azure 會驗證您的組態。
+12. 選取 [檢閱 + 建立]。 您會移至 [檢閱 + 建立] 索引標籤，其中 Azure 會驗證您的組態。
 
 13. 出現綠色的「通過驗證」訊息之後，請選取 [建立]。
 
-建立快取需要一些時間。 您可以在 Azure Cache for Redis 的 [概觀] ****   頁面上監視進度。 當 [狀態] **** 顯示為 [執行中]  **** 時，表示快取已可供使用。 
+建立快取需要一些時間。 您可以在 Azure Cache for Redis 的 [概觀] 頁面上監視進度。 當 [狀態] 顯示為 [執行中] 時，表示快取已可供使用。 
 
 ## <a name="persistence-faq"></a>永續性常見問題集
 下列清單包含 Azure Cache for Redis 持續性相關常見問題的解答。
@@ -96,6 +96,7 @@ Azure Cache for Redis 使用下列模型提供 Redis 持續性：
 * [我可以同時啟用 AOF 和 RDB 持續性嗎？](#can-i-enable-aof-and-rdb-persistence-at-the-same-time)
 * [我應該選擇哪一種持續性模型？](#which-persistence-model-should-i-choose)
 * [如果我調整為不同大小，並還原為調整作業之前製作的備份時，會發生什麼事？](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
+* [我可以在兩個不同的快取中使用相同的儲存體帳戶來持續保存嗎？](#can-i-use-the-same-storage-account-for-persistence-across-two-different-caches)
 
 
 ### <a name="rdb-persistence"></a>RDB 持續性
@@ -135,6 +136,9 @@ AOF 持續性將每筆寫入內容儲存至記錄，因此會對輸送量造成�
 * 如果您已調整為較大的大小則沒有任何影響。
 * 如果已調整為較小的大小，而且您的自訂[資料庫](cache-configure.md#databases)設定大於新大小的[資料庫限制](cache-configure.md#databases)，則不會還原這些資料庫中的資料。 如需詳細資訊，請參閱[我的自訂資料庫設定在調整期間會受到影響嗎？](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)
 * 如果已調整為較小的大小，而且較小的大小中沒有足夠的空間可保存來自最近備份的所有資料，將會在還原程序中收回金鑰，通常是使用 [allkeys-lru](https://redis.io/topics/lru-cache) 收回原則。
+
+### <a name="can-i-use-the-same-storage-account-for-persistence-across-two-different-caches"></a>我可以在兩個不同的快取中使用相同的儲存體帳戶來持續保存嗎？
+是，您可以在兩個不同的快取中使用相同的儲存體帳戶來持續保存
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>在建立快取之後，可以變更 RDB 備份頻率嗎？
 是，您可以在 **資料持續** 性分頁上變更 RDB 持續性的備份頻率。 如需相關指示，請參閱「設定 Redis 永續性」。
@@ -184,7 +188,7 @@ AOF 持續性將每筆寫入內容儲存至記錄，因此會對輸送量造成�
 重寫後，儲存體中會有兩組 AOF 檔案。 重寫會在背景進行並將內容附加至第一組檔案，而當重寫內容附加至第二組檔案期間，會將設定作業傳送至快取。 重寫期間會暫時儲存備份以備失敗之需，但在重寫完成之後則會立即刪除備份。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 深入瞭解 Azure Cache for Redis 功能。
 
 * [Azure Cache for Redis Premium 服務層級](cache-overview.md#service-tiers)

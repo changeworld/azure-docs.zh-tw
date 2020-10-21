@@ -9,14 +9,14 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 35fb8adaa5f7c0fff1c6d967f0136736b8071ce4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2f5b87fe313f7d152a80a35671bc7e0da3bb7c7
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91260150"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341544"
 ---
-# <a name="secure-your-synapse-workspace-preview"></a>保護您的 Synapse 工作區 (預覽)
+# <a name="secure-your-synapse-workspace-preview"></a>保護您的 Synapse 工作區 (預覽) 
 
 本文將告訴您如何使用角色和存取控制來控制活動及存取資料。 遵循這些指示，即可簡化 Azure Synapse Analytics 中的存取控制。 您只需要對三個安全性群組的其中一個新增及移除使用者。
 
@@ -31,7 +31,7 @@ ms.locfileid: "91260150"
   - 適用於 Azure Synapse Analytics 的 Apache Spark 管理員
 - Azure Data Lake Storage Gen 2 (ADLSGEN2) 中的資料存取控制。
 - Synapse SQL 和 Spark 資料庫的存取控制
-
+- 
 ## <a name="steps-to-secure-a-synapse-workspace"></a>保護 Synapse 工作區的步驟
 
 本文件會使用標準名稱來簡化指示。 請將其取代為您選擇的任何名稱。
@@ -71,11 +71,12 @@ ms.locfileid: "91260150"
 
 ## <a name="step-3-create-and-configure-your-synapse-workspace"></a>步驟 3：建立和設定您的 Synapse 工作區
 
-在 Azure 入口網站中，建立 Synapse 工作區：
+ 在 Azure 入口網站中，建立 Synapse 工作區：
 
+- 選取您的訂用帳戶
+- 選取您的資源群組-您必須能夠存取已獲指派 **擁有** 者角色的資源群組。
 - 將工作區命名為 WS1
-- 選擇儲存體帳戶的 STG1
-- 針對將作為「檔案系統」使用的容器，選擇 [CNT1]。
+- 選擇儲存體帳戶的 [STG1]。 針對將作為「檔案系統」使用的容器，選擇 [CNT1]。
 - 在 Synapse Studio 中開啟 WS1
 - 選取 [管理] > [存取控制]，將安全性群組指派給下列 Synapse 角色。
   - 將 **WS1\_WSAdmins** 指派給 Synapse 工作區管理員

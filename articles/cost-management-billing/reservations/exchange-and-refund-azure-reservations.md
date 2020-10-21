@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 553652832f3f4ce84a0a141455551e4977215184
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 32db8396a687428c668a9b8a4213b50986614083
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684417"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150134"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure 保留的自助式交換和退費
 
@@ -21,7 +21,7 @@ Azure 保留可提供彈性，以協助您滿足不斷演變的需求。 您可�
 自助式交換和取消功能不適用於美國政府 Enterprise 合約客戶。 可支援其他美國政府訂用帳戶類型，包括隨用隨付和雲端解決方案提供者雲端解決方案提供者 (CSP)。
 
 > [!NOTE]
-> - **您必須擁有保留訂單的擁有者存取權，才能對現有的保留進行交換和退款**。 您可以[新增或變更可以管理保留的使用者](https://docs.microsoft.com/azure/cost-management-billing/reservations/manage-reserved-vm-instance#add-or-change-users-who-can-manage-a-reservation)。
+> - **您必須擁有保留訂單的擁有者存取權，才能對現有的保留進行交換和退款**。 您可以[新增或變更可以管理保留的使用者](./manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
 > - Microsoft 目前不收取保留退款的提早終止費用。 對於未來的退款，我們可能會收取費用。 我們目前尚未訂定啟用此費用的日期。
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>如何交換現有的保留或將其退款

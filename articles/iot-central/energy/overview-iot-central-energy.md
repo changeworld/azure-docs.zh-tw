@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 1a7502a77f8dca526c95e92302f0ca0a06a1dd32
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0cc9fd5836371a925be531de773ea9c2e276c0eb
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90970444"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127347"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>使用 IoT Central 建置能源解決方案 
 
@@ -66,6 +66,6 @@ ms.locfileid: "90970444"
 ## <a name="next-steps"></a>後續步驟
 開始建置能源解決方案：
 * 免費建立應用程式範本：[智慧型電表應用程式](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)、[太陽能板應用程式](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
-* 了解[智慧型電表監視應用程式概念](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app) \(英文\)
-* 了解[太陽能板監視應用程式概念](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-solar-panel-app) \(英文\)
-* 了解 [IoT Central 平台](https://docs.microsoft.com/azure/iot-central/)
+* 了解[智慧型電表監視應用程式概念](./concept-iot-central-smart-meter-app.md) \(英文\)
+* 了解[太陽能板監視應用程式概念](./concept-iot-central-solar-panel-app.md) \(英文\)
+* 了解 [IoT Central 平台](../index.yml)

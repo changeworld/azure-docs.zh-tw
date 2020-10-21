@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 086feb3aa7c9a38756fded58538eb22e094a5960
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9cd5136d69e4b14aa50a96d20f3187ce88db6e96
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90906806"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320498"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>什麼是 Azure Static Web Apps 預覽？
 
@@ -44,7 +44,7 @@ Azure Static Web Apps 的工作流程是專為開發人員每天的工作流程�
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>如何使用 Static Web Apps
 
-- **建置新式 Web 應用程式**，使用像是 [Angular](getting-started.md?tabs=angular)、[React](getting-started.md?tabs=react)、[Svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/)、[Vue](getting-started.md?tabs=react) 的 JavaScript 架構和程式庫，或使用 [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) 建立具有 [Azure Functions](apis.md) 後端的 WebAssembly 應用程式。
+- **建置新式 Web 應用程式**，使用像是 [Angular](getting-started.md?tabs=angular)、[React](getting-started.md?tabs=react)、[Svelte](/learn/modules/publish-app-service-static-web-app-api/)、[Vue](getting-started.md?tabs=react) 的 JavaScript 架構和程式庫，或使用 [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor) 建立具有 [Azure Functions](apis.md) 後端的 WebAssembly 應用程式。
 - **發佈靜態網站**，使用像是 [Gatsby](publish-gatsby.md)、[Hugo](publish-hugo.md)、[VuePress](publish-vuepress.md) 的架構。
 - **部署 Web 應用程式**，使用像是 [Next.js](deploy-nextjs.md) 和 [Nuxt.js](deploy-nuxtjs.md) 的架構。
 

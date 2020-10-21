@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 12fb644430d4bfd6444c6bbf09d37b4662ca6fd1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 610112f9374f2ca39a8df4b849aeda4abf965e57
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87810100"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097417"
 ---
 # <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>快速入門：使用 Azure Spatial Anchors 建立 Xamarin iOS 應用程式
 
@@ -33,7 +33,7 @@ ms.locfileid: "87810100"
 若要完成本快速入門，請確定您具備︰
 - 執行 macOS High Sierra (10.13) 或以上版本、且具有下列項目的 Mac：
   - 從 [App Store](https://itunes.apple.com/us/app/xcode/id497799835?mt=12) 安裝的最新版 Xcode 和 iOS SDK。
-  - 最新版的 <a href="https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio for Mac 8.1+</a>。
+  - 最新版的 <a href="/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio for Mac 8.1+</a>。
   - <a href="https://git-scm.com/download/mac" target="_blank">Git for macOS</a>。
   - <a href="https://git-lfs.github.com/">Git LFS</a>。
 

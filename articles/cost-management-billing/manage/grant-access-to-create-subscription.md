@@ -8,12 +8,12 @@ ms.reviewer: amberb
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: banders
-ms.openlocfilehash: 661b088d024a6da631fa06fbd97131091b9f650b
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 02919cf2e35fdd4d981f3fde53085c2174f11bd1
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371876"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132562"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>授與建立 Azure 企業版訂用帳戶的權限 (預覽)
 
@@ -84,7 +84,7 @@ ms.locfileid: "91371876"
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-    使用 [az billing enrollment-account list](https://aka.ms/EASubCreationPublicPreviewCLI) 命令來列出您可以存取的所有註冊帳戶。 選取 [試試看] 以開啟 [Azure Cloud Shell](https://shell.azure.com/)。 若要貼上程式碼，請以滑鼠右鍵按一下 Shell 視窗，然後選取 [貼上]。
+    使用 [az billing enrollment-account list](/cli/azure/billing) 命令來列出您可以存取的所有註冊帳戶。 選取 [試試看] 以開啟 [Azure Cloud Shell](https://shell.azure.com/)。 若要貼上程式碼，請以滑鼠右鍵按一下 Shell 視窗，然後選取 [貼上]。
 
     ```azurecli-interactive
     az billing enrollment-account list
