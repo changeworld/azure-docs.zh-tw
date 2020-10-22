@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be8dbd4d8deccd42d6fcc391eab1e57df7514401
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d1dda465dd675e0f5f519f86289df2621be0b9bb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114118"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367851"
 ---
 # <a name="scim-synchronization-with-azure-active-directory"></a>Azure Active Directory 的 SCIM 同步處理
 
@@ -26,14 +26,14 @@ ms.locfileid: "92114118"
 
 SCIM 是兩個端點的標準化定義：/Users 的端點和/Groups 端點。 它會使用常見的 REST 動詞來建立、更新及刪除物件。 它也會針對常見屬性使用預先定義的架構，例如組名、使用者名稱、名字、姓氏和電子郵件。 提供 SCIM 2.0 REST API 的應用程式可以減少或消除使用專屬使用者管理 Api 或產品的難題。 例如，任何符合 SCIM 規範的用戶端都可以將 JSON 物件的 HTTP POST 發出至/Users 端點，以建立新的使用者專案。 符合 SCIM 標準的應用程式可以立即運用既有的用戶端、工具和程式碼，而無須使用略為不同的 API 來執行相同的基本動作。 
 
-## <a name="use-when"></a>使用時機： 
+## <a name="use-when"></a>使用時機： 
 
 您想要自動將使用者資訊從 HCM 系統布建到 Azure AD 和 Windows Server Active Directory，然後在必要時，將其設為目標系統。 
 
 ![架構圖](./media/authentication-patterns/scim-auth.png)
 
 
-## <a name="components-ofsystem"></a>系統的元件 
+## <a name="components-of-system"></a>系統的元件 
 
 * **HCM system**：應用程式和技術，可在整個員工生命週期中，提供可支援及自動化 HR 流程的人力資本管理程式和作法。 
 
@@ -43,7 +43,7 @@ SCIM 是兩個端點的標準化定義：/Users 的端點和/Groups 端點。 �
 
 * **目標系統**：具有 SCIM 端點的應用程式或系統，並可搭配 Azure AD 布建來啟用自動布建使用者和群組。  
 
-## <a name="implementscimwith-azure-ad"></a>使用 Azure AD 來執行 SCIM 
+## <a name="implement-scim-with-azure-ad"></a>使用 Azure AD 來執行 SCIM 
 
 * [布建在 Azure AD 中的運作方式 ](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works)
 
@@ -51,5 +51,5 @@ SCIM 是兩個端點的標準化定義：/Users 的端點和/Groups 端點。 �
 
 * [使用 Azure AD 建立 SCIM 端點並設定使用者布建  ](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups)
 
-* [Azure AD 布建服務的 SCIM 2.0 通訊協定相容性](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groupsapplication-provisioning-config-problem-scim-compatibility)
+* [Azure AD 布建服務的 SCIM 2.0 通訊協定相容性](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility)
 

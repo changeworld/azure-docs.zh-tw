@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/17/2020
-ms.openlocfilehash: 453821e99f53a90a076ff13f010f2031a055cbf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e7da02f7dd7e8fb19e031b814624b289730b3ee
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444172"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367715"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>教學課程：使用 Azure AD 應用程式建立 Azure AD 使用者
 
@@ -65,7 +65,7 @@ ms.locfileid: "91444172"
     如需詳細資訊，請參閱 [Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) \(英文\) 命令。
 
     > [!IMPORTANT]
-    > 如果已針對 Azure SQL 邏輯伺服器設定 Azure AD 身分識別，則必須將[**目錄讀取者**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)權限授與身分識別。 我們將在下一節逐步解說此步驟。 **請勿**跳過此步驟，因為 Azure AD 驗證將停止運作。
+    > 如果已針對 Azure SQL 邏輯伺服器設定 Azure AD 身分識別，則必須將[**目錄讀取者**](../../active-directory/roles/permissions-reference.md#directory-readers)權限授與身分識別。 我們將在下一節逐步解說此步驟。 **請勿**跳過此步驟，因為 Azure AD 驗證將停止運作。
 
     - 如果您過去已使用 [New-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlserver) \(英文\) 命令搭配 `AssignIdentity` 參數來建立新的 SQL 伺服器，則您之後將需要以個別命令形式執行 [Set-AzSqlServer](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver) \(英文\) 命令，在 Azure 網狀架構中啟用此屬性。
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 06/12/2020
-ms.openlocfilehash: 4d5bb50d4fa34176da63c1305462903e9b62f010
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d2d7b0e8d4a67b2ff67a780a71ea46ec54df1de
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87504725"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280008"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-table-api-table-using-azure-powershell"></a>使用 Azure PowerShell 建立 Azure Cosmos 資料表 API 資料表的資源鎖定
 
@@ -50,5 +50,3 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 ## <a name="next-steps"></a>後續步驟
 
 如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/PowerShell/)。
-
-您可以在 [Azure Cosmos DB PowerShell 指令碼](../../../PowerShell-samples.md)中找到其他 Azure Cosmos DB PowerShell 指令碼範例。

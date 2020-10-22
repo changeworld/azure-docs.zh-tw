@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: cff2af745e9b79f573aba02e0a9baefe4a5e45a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cfcd758390ff401c786c28d410c4d092a82c37f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819265"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368480"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>設定使用者同意應用程式的方式
 
@@ -47,7 +47,7 @@ ms.locfileid: "91819265"
 
 若要透過 Azure 入口網站設定使用者同意設定：
 
-1. 以[全域管理員](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)身分登入 [Azure 入口網站](https://portal.azure.com)。
+1. 以[全域管理員](../roles/permissions-reference.md#global-administrator--company-administrator)身分登入 [Azure 入口網站](https://portal.azure.com)。
 1. 選取 **Azure Active Directory**  >  **企業應用程式**  >  **同意和權限**  >  **使用者同意設定**。
 1. 在 [應用程式的使用者同意] 底下，選取您要為所有使用者設定的同意設定。
 1. 選取 [儲存] 以儲存您的設定。

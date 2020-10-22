@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 648d456534e86075a243a84ac0485d95a7f28479
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1873e21db1c586453dc9e9fe890268d8797303a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843102"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367001"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>教學課程：使用 Azure Sentinel 調查事件
 
@@ -39,10 +39,10 @@ ms.locfileid: "91843102"
 
 事件可以包含多個警示。 它是特定調查的所有相關辨識項的匯總。 系統會根據您在 [ **分析** ] 頁面中建立的分析規則來建立事件。 與警示相關的屬性（例如嚴重性和狀態）都是在事件層級設定。 當您讓 Azure Sentinel 知道您要尋找的威脅種類，以及如何找到它們之後，您可以藉由調查事件來監視偵測到的威脅。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 - 如果您在設定分析規則時使用實體對應欄位，您將只能調查事件。 調查圖形要求您的原始事件必須包含實體。
 
-- 如果您有需要指派事件的來賓使用者，則必須將 Azure AD 租使用者中的 [目錄讀取](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) 者角色指派給使用者。 一般 (非來賓) 使用者預設會指派此角色。
+- 如果您有需要指派事件的來賓使用者，則必須將 Azure AD 租使用者中的 [目錄讀取](../active-directory/roles/permissions-reference.md#directory-readers) 者角色指派給使用者。 一般 (非來賓) 使用者預設會指派此角色。
 
 ## <a name="how-to-investigate-incidents"></a>如何調查事件
 

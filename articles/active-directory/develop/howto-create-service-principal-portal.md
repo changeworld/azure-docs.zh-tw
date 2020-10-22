@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: d14e31aa4fbeb2d29137c554f14333e1617c484a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46781edad6ad9290932216b9e9f23a359d25497a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265896"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366151"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>操作說明：使用入口網站來建立可存取資源的 Azure AD 應用程式和服務主體
 
@@ -45,7 +45,7 @@ ms.locfileid: "91265896"
 1. 在左窗格中，選取 [ **使用者設定**]。
 1. 檢查 [應用程式註冊]**** 設定。 此值只能由系統管理員設定。 若設定為 [是]****，則 Azure AD 租用戶中的任何使用者都可以註冊應用程式。
 
-如果應用程式註冊設定設為 [否]****，則只有具備系統管理員角色的使用者才能註冊這些類型的應用程式。 若要了解 Azure AD 中可用的系統管理員角色及賦予每個角色的特定權限，請參閱[可用的角色](../users-groups-roles/directory-assign-admin-roles.md#available-roles)和[角色權限](../users-groups-roles/directory-assign-admin-roles.md#role-permissions)。 如果您的帳戶已獲指派使用者角色，但應用程式註冊設定僅限於系統管理員使用者，請要求系統管理員為您指派其中一個系統管理員角色，以建立和管理應用程式註冊的所有層面，或讓使用者可以註冊應用程式。
+如果應用程式註冊設定設為 [否]****，則只有具備系統管理員角色的使用者才能註冊這些類型的應用程式。 若要了解 Azure AD 中可用的系統管理員角色及賦予每個角色的特定權限，請參閱[可用的角色](../roles/permissions-reference.md#available-roles)和[角色權限](../roles/permissions-reference.md#role-permissions)。 如果您的帳戶已獲指派使用者角色，但應用程式註冊設定僅限於系統管理員使用者，請要求系統管理員為您指派其中一個系統管理員角色，以建立和管理應用程式註冊的所有層面，或讓使用者可以註冊應用程式。
 
 ### <a name="check-azure-subscription-permissions"></a>檢查 Azure 訂用帳戶權限
 
@@ -155,12 +155,12 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 1. 選取 **Azure Active Directory**。
 1. 在 Azure AD 中，從 [應用程式註冊]**** 選取您的應用程式。
-1. 選取 [憑證和秘密]。
+1. 選取 [憑證和秘密]  。
 1. 選取 [ **上傳憑證** ]，然後選取憑證 (現有憑證或您匯出) 的自我簽署憑證。
 
     ![選取 [上傳憑證]，然後選取您想要新增的憑證](./media/howto-create-service-principal-portal/upload-cert.png)
 
-1. 選取 [新增]。
+1. 選取 [新增]  。
 
 在應用程式註冊入口網站中向應用程式註冊憑證之後，您必須啟用用戶端應用程式程式碼，才能使用該憑證。
 
@@ -170,9 +170,9 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 1. 選取 **Azure Active Directory**。
 1. 在 Azure AD 中，從 [應用程式註冊]**** 選取您的應用程式。
-1. 選取 [憑證和秘密]。
-1. 選取 [用戶端秘密] -> [新增用戶端密碼]****。
-1. 提供秘密的描述及持續時間。 完成時，選取 [新增]。
+1. 選取 [憑證和秘密]  。
+1. 選取 [用戶端秘密] -> [新增用戶端密碼]  。
+1. 提供秘密的描述及持續時間。 完成時，選取 [新增]  。
 
    儲存用戶端秘密之後，就會顯示用戶端秘密的值。 複製此值，因為您稍後將無法取得金鑰。 您會提供金鑰值和應用程式識別碼，以應用程式的形式登入。 將金鑰值儲存在應用程式可擷取的地方。
 

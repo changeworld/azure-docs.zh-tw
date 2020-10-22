@@ -6,25 +6,26 @@ ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.openlocfilehash: 7a471868bac8f5e0623942c0cc1dc4af4e3881e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d019f5df4bba6d223076c8ce35151510afedf2e9
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88185344"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220800"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>教學課程：建立 Azure FXT Edge Filer 叢集
 
-為您的快取安裝並初始化 Azure FXT Edge Filer 硬體節點之後，使用 FXT 叢集軟體建立快取叢集。 
+為您的快取安裝並初始化 Azure FXT Edge Filer 硬體節點之後，使用 FXT 叢集軟體建立快取叢集。
 
-此教學課程會逐步引導您將硬體節點設定為叢集。 
+此教學課程會逐步引導您將硬體節點設定為叢集。
 
-在本教學課程中，您將了解： 
+在本教學課程中，您將了解：
 
 > [!div class="checklist"]
+>
 > * 開始建立叢集之前需要哪些資訊
 > * 叢集的管理網路、叢集網路及面向用戶端的網路之間的差異
-> * 如何連線到叢集 
+> * 如何連線到叢集
 > * 如何使用 Azure FXT Edge Filer 節點建立初始叢集
 > * 如何登入叢集控制台來設定叢集設定
 
@@ -34,14 +35,14 @@ ms.locfileid: "88185344"
 
 開始進行此教學課程之前，請完成下列先決條件：
 
-* 在您的資料中心安裝 Azure FXT Edge Filer 硬體系統 
+* 在您的資料中心安裝 Azure FXT Edge Filer 硬體系統
 
-  建立叢集只需要一個節點，但您必須先[新增至少兩個其他節點](fxt-add-nodes.md)才能設定叢集，並將它備妥以供使用。 
+  建立叢集只需要一個節點，但您必須先[新增至少兩個其他節點](fxt-add-nodes.md)才能設定叢集，並將它備妥以供使用。
 
 * 將適當的電源和網路線連接到系統  
 * 開啟至少一個 Azure FXT Edge Filer 節點的電源，並[設定其根密碼](fxt-node-password.md)
 
-## <a name="gather-information-for-the-cluster"></a>收集叢集資訊 
+## <a name="gather-information-for-the-cluster"></a>收集叢集資訊
 
 您需要下列資訊來建立 Azure FXT Edge Filer 叢集：
 
@@ -52,18 +53,18 @@ ms.locfileid: "88185344"
 * IP 位址：
 
   * 用於叢集管理的單一 IP 位址，以及用於管理網路的網路遮罩與路由器
-  * 連續 IP 範圍的第一個與最後一個 IP 位址，以供叢集 (節點對節點) 通訊使用。 如需詳細資訊，請參閱下面的 [IP 位址散發](#ip-address-distribution)。 
+  * 連續 IP 範圍的第一個與最後一個 IP 位址，以供叢集 (節點對節點) 通訊使用。 如需詳細資訊，請參閱下面的 [IP 位址散發](#ip-address-distribution)。
   * (叢集建立之後，才設定面向用戶端的 IP 位址。)
 
 * 網路基礎結構資訊：
 
   * 叢集的 DNS 伺服器 IP 位址
   * 叢集的 DNS 網域名稱
-  * 叢集 NTP 伺服器的 IP 位址或名稱 (一部伺服器，或是三部或 (含) 以上) 
+  * 叢集 NTP 伺服器的 IP 位址或名稱 (一部伺服器，或是三部或 (含) 以上)
   * 您是否要在叢集的介面上啟用 IEEE 802.1AX-2008 連結彙總
   * 如果您啟用連結彙總，是否要使用 IEEE 802.3ad (LACP) 動態彙總
 
-您可以在建立叢集之後再設定這些網路基礎結構項目，但最好在建立時進行。 
+您可以在建立叢集之後再設定這些網路基礎結構項目，但最好在建立時進行。
 
 ### <a name="ip-address-distribution"></a>IP 位址散發
 
@@ -117,11 +118,11 @@ Azure FXT Edge Filer 混合式儲存體快取叢集使用三種類別的 IP 位�
 
 例如，命令 `ifconfig | grep -B5 inet` 可搜尋具有網際網路位址的連接埠，並提供五行的內容以顯示連接埠識別碼。
 
-請記下 ifconfig 報告中顯示的任何 IP 位址。 所列出的位址若有 e0a 或 e0b 等諸如此類的連接埠名稱，都是不錯的選項。 請勿使用具有 e7 * 名稱的任何 IP 位址，因為這些名稱只適用於 iDRAC/IPMI 服務連接埠。  
+請記下 ifconfig 報告中顯示的任何 IP 位址。 所列出的位址若有 e0a 或 e0b 等諸如此類的連接埠名稱，都是不錯的選項。 請勿使用具有 e7 * 名稱的任何 IP 位址，因為這些名稱只適用於 iDRAC/IPMI 服務連接埠。
 
 ## <a name="load-the-cluster-configuration-wizard"></a>載入叢集設定精靈
 
-使用瀏覽器式叢集設定工具來建立叢集。 
+使用瀏覽器式叢集設定工具來建立叢集。
 
 在網頁瀏覽器中，輸入節點的 IP 位址。 如果瀏覽器發出一則有關網站未受信任的訊息，請繼續前往該網站。 (個別的 Azure FXT Edge Filer 節點不會有 CA 提供的安全性憑證。)
 
@@ -133,19 +134,19 @@ Azure FXT Edge Filer 混合式儲存體快取叢集使用三種類別的 IP 位�
 
 ## <a name="create-the-cluster"></a>建立叢集
 
-叢集設定工具會引導您完成建立 Azure FXT Edge Filer 叢集的一組畫面。 開始之前，請先備妥[必要資訊](#gather-information-for-the-cluster)。 
+叢集設定工具會引導您完成建立 Azure FXT Edge Filer 叢集的一組畫面。 開始之前，請先備妥[必要資訊](#gather-information-for-the-cluster)。
 
 ### <a name="creation-options"></a>建立選項
 
 第一個畫面提供三個選項。 除非您有支援人員的特殊指示，否則請使用手動設定選項。
 
-按一下 [我要手動設定叢集]  ，以載入新的叢集設定選項畫面。 
+按一下 [我要手動設定叢集]  ，以載入新的叢集設定選項畫面。
 
 其他選項都很少使用：
 
-* [更新系統映像] 會提示您先安裝新的作業系統軟體，再建立叢集。 (畫面頂端會列出目前安裝的軟體版本。)您必須提供軟體套件檔案 - URL 與使用者名稱/密碼，或從電腦上傳檔案。 
+* [更新系統映像] 會提示您先安裝新的作業系統軟體，再建立叢集。 (畫面頂端會列出目前安裝的軟體版本。)您必須提供軟體套件檔案 - URL 與使用者名稱/密碼，或從電腦上傳檔案。
 
-* Microsoft 客戶服務及支援有時會使用叢集安裝檔案選項。 
+* Microsoft 客戶服務及支援有時會使用叢集安裝檔案選項。
 
 ## <a name="cluster-options"></a>叢集選項
 
@@ -157,36 +158,36 @@ Azure FXT Edge Filer 混合式儲存體快取叢集使用三種類別的 IP 位�
 
 在頂端區段中，填入新叢集的基本資訊。
 
-![瀏覽器 GUI 頁面中 [基本設定] 區段的詳細資料。 它會顯示三個欄位 (叢集名稱、系統管理員密碼、確認密碼)](media/fxt-cluster-create/basic-configuration.png) 
+![瀏覽器 GUI 頁面中 [基本設定] 區段的詳細資料。 它會顯示三個欄位 (叢集名稱、系統管理員密碼、確認密碼)](media/fxt-cluster-create/basic-configuration.png)
 
 * **叢集名稱** - 請輸入叢集的唯一名稱。
 
   叢集名稱必須符合下列準則：
   
   * 長度為 1 到 16 個字元
-  * 可以包含字母、數字與虛線 (-) 和底線 (_) 字元 
+  * 可以包含字母、數字與虛線 (-) 和底線 (_) 字元
   * 不能包含其他標點符號或特殊字元
   
   您可以稍後在 [叢集]   > [一般設定]  設定頁面上變更此名稱。 (如需叢集設定的詳細資訊，請閱讀[叢集設定指南](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html)，這不是此文件集的一部分。)
 
-  > [!NOTE] 
+  > [!NOTE]
   > 叢集名稱是用來識別上傳的系統資訊以供監視或疑難排解使用，所以最好可以包含公司名稱。
 
 * **系統管理員密碼** - 設定預設系統管理使用者 `admin` 的密碼。
   
   您應該為管理叢集的每個人員設定個別的使用者帳戶，但您無法移除使用者 `admin`。 如果您需要建立其他使用者，請以 `admin` 的身分登入。
- 
+
   您可以在叢集控制台中的 [管理]   > [使用者]  設定頁面變更 `admin` 的密碼。 如需詳細資訊，請參閱[叢集設定指南](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html)中的＜使用者＞  文件。
 
 <!-- to do: update "legacy" URLs when docs are ported to Microsoft site -->
 
 ### <a name="network-configuration"></a>網路組態
 
-[網路]  區段會提示您指定叢集將使用的網路基礎結構。 
+[網路]  區段會提示您指定叢集將使用的網路基礎結構。
 
 要設定兩個不同的網路：
 
-* 「管理網路」  可讓系統管理員存取叢集以進行設定及監視。 連線到控制台或進行 SSH 存取時，就會使用這裡指定的 IP 位址。 
+* 「管理網路」  可讓系統管理員存取叢集以進行設定及監視。 連線到控制台或進行 SSH 存取時，就會使用這裡指定的 IP 位址。
 
   大部分叢集只使用一個管理 IP 位址，但如果您想要新增介面，可在建立叢集之後進行。
 
@@ -216,9 +217,9 @@ Azure FXT Edge Filer 混合式儲存體快取叢集使用三種類別的 IP 位�
 
 * **MTU** - 必要時，請為叢集的管理網路調整傳輸單元最大值 (MTU)。
 
-* **使用 1Gb 管理網路** - 如果您只想要將 FXT 節點上的兩個 1GbE 網路連接埠指派給管理網路，請選取此方塊。 (您必須提供 25GbE/10GbE 連接埠，用於所有其他流量。)如果您不選取此方塊，管理網路會使用速度最快的可用連接埠。 
+* **使用 1Gb 管理網路** - 如果您只想要將 FXT 節點上的兩個 1GbE 網路連接埠指派給管理網路，請選取此方塊。 (您必須提供 25GbE/10GbE 連接埠，用於所有其他流量。)如果您不選取此方塊，管理網路會使用速度最快的可用連接埠。
 
-### <a name="configure-the-cluster-network"></a>設定叢集網路 
+### <a name="configure-the-cluster-network"></a>設定叢集網路
 
 叢集網路設定會套用到叢集節點之間的流量，以及叢集節點與核心檔案管理工具之間的流量。
 
@@ -230,11 +231,11 @@ Azure FXT Edge Filer 混合式儲存體快取叢集使用三種類別的 IP 位�
 
   計算 [範圍中的 IP 數目]  中的值並自動顯示。
 
-* **非管理網路遮罩 (選用)** - 指定叢集網路的網路遮罩。 
+* **非管理網路遮罩 (選用)** - 指定叢集網路的網路遮罩。
 
   系統會自動建議您為管理網路輸入的網路遮罩值，請視需要予以變更。
 
-* **叢集路由器 (選用)** - 指定叢集網路使用的預設閘道位址。 
+* **叢集路由器 (選用)** - 指定叢集網路使用的預設閘道位址。
 
   系統會自動建議您為管理網路提供的相同閘道位址。
 
@@ -242,7 +243,7 @@ Azure FXT Edge Filer 混合式儲存體快取叢集使用三種類別的 IP 位�
 
 * **非管理 MTU (選用)** - 必要時，請為叢集網路調整傳輸單元最大值 (MTU)。
 
-### <a name="configure-cluster-dns-and-ntp"></a>設定叢集 DNS 和 NTP 
+### <a name="configure-cluster-dns-and-ntp"></a>設定叢集 DNS 和 NTP
 
 [叢集]  區段下方的欄位可用於指定 DNS 和 NTP 伺服器，以及啟用連結彙總。 這些設定會套用到叢集使用的所有網路。
 
@@ -250,7 +251,7 @@ Azure FXT Edge Filer 混合式儲存體快取叢集使用三種類別的 IP 位�
 
 * **DNS 伺服器** - 輸入網域名稱系統 (DNS) 伺服器的一或多個 IP 位址。
 
-  建議所有叢集都使用 DNS，而且如果您想要使用 SMB、AD 或 Kerberos，則為 DNS 為必要項目。 
+  建議所有叢集都使用 DNS，而且如果您想要使用 SMB、AD 或 Kerberos，則為 DNS 為必要項目。
   
   為獲得最佳效能，請依照[設定 Azure FXT Edge Filer 叢集的 DNS](fxt-configure-network.md#configure-dns-for-load-balancing) 中所述，設定叢集的 DNS 伺服器以提供循環配置資源負載平衡。
 
@@ -272,13 +273,13 @@ Azure FXT Edge Filer 混合式儲存體快取叢集使用三種類別的 IP 位�
 
 ![瀏覽器中的叢集設定狀態訊息：「FXT 節點目前正在建立叢集。 這將需要幾分鐘的時間。 建立叢集時，請瀏覽此連結來完成設定。」 「瀏覽此連結」為超連結](media/fxt-cluster-create/creating-message.png)
 
-幾分鐘後，您可以按一下訊息中的連結，以前往叢集控制台。 (此連結會帶您前往 [管理 IP]  中指定的 IP 位址。)按一下建立按鈕後，需要 15 秒到一分鐘的時間，連結才會運作。 如果 Web 介面未載入，請多等候幾秒，然後再按一次連結。 
+幾分鐘後，您可以按一下訊息中的連結，以前往叢集控制台。 (此連結會帶您前往 [管理 IP]  中指定的 IP 位址。)按一下建立按鈕後，需要 15 秒到一分鐘的時間，連結才會運作。 如果 Web 介面未載入，請多等候幾秒，然後再按一次連結。
 
-建立叢集需要一分鐘或幾分鐘的時間，但您可以在程序進行時登入控制台。 在叢集建立程序完成之前，控制台的儀表板頁面顯示警告，都是正常情況。 
+建立叢集需要一分鐘或幾分鐘的時間，但您可以在程序進行時登入控制台。 在叢集建立程序完成之前，控制台的儀表板頁面顯示警告，都是正常情況。
 
-## <a name="open-the-settings-pages"></a>開啟 [設定] 頁面 
+## <a name="open-the-settings-pages"></a>開啟 [設定] 頁面
 
-建立叢集之後，您需要為網路與工作流程自訂其設定。 
+建立叢集之後，您需要為網路與工作流程自訂其設定。
 
 使用控制台 Web 介面設定您的新叢集。 依照叢集建立狀態畫面中的連結，瀏覽到叢集上設定的管理 IP 位址。
 
@@ -300,9 +301,9 @@ Azure FXT Edge Filer 混合式儲存體快取叢集使用三種類別的 IP 位�
 
 ### <a name="required-configuration"></a>必要設定
 
-大部分或所有叢集都需要這些步驟。 
+大部分或所有叢集都需要這些步驟。
 
-* 將節點新增至叢集 
+* 將節點新增至叢集
 
   標準為三個節點，但許多生產環境叢集有更多個，最多可有 24 個節點。
 
@@ -312,24 +313,24 @@ Azure FXT Edge Filer 混合式儲存體快取叢集使用三種類別的 IP 位�
 
   針對叢集將使用的每個後端儲存體系統，新增「核心檔案管理工具」  定義。 若要深入了解，請參閱[新增後端儲存體並設定虛擬命名空間](fxt-add-storage.md#about-back-end-storage)。
 
-* 設定用戶端存取和虛擬命名空間 
+* 設定用戶端存取和虛擬命名空間
 
   建立至少一部虛擬伺服器 (vserver)，並為它指派 IP 位址範圍以供用戶端電腦使用。 您也必須設定叢集命名空間 (有時稱為全域命名空間或 GNS)，此虛擬檔案系統功能可讓您將後端儲存體匯出項對應至虛擬路徑。 即使您切換後端儲存體媒體，叢集命名空間還是可為用戶端提供一致且可存取的檔案系統結構。 命名空間也可以為 Azure Blob 容器或其他支援的雲端物件儲存體，提供方便使用的虛擬儲存體階層。
 
   如需詳細資訊，請參閱[設定命名空間](fxt-add-storage.md#configure-the-namespace)。 此步驟包括：
   * 建立 vserver
-  * 設定用戶端網路檢視和後端儲存體之間的連接點 
+  * 設定用戶端網路檢視和後端儲存體之間的連接點
   * 定義每部 vserver 提供哪些用戶端 IP 位址
 
-  > [!Note] 
+  > [!Note]
   > 開始設定叢集的 GNS 之前，建議進行詳盡的規劃。 請參閱《叢集設定指南》中的[使用全域命名空間](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gns_overview.html)英文[建立和使用 VServer](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#creating-and-working-with-vservers) \(英文\) 兩節以取得說明。
 
 * [調整網路設定](fxt-configure-network.md)
 
   新叢集有幾個網路相關設定應該加以驗證或自訂。 如需下列項目的詳細資訊，請參閱[調整網路設定](fxt-configure-network.md)：
 
-  * 驗證 DNS 與 NTP 設定 
-  * 設定目錄服務 (若有需要) 
+  * 驗證 DNS 與 NTP 設定
+  * 設定目錄服務 (若有需要)
   * 設定 VLAN
   * 設定 Proxy 伺服器
   * 將 IP 位址新增至叢集網路
@@ -343,14 +344,14 @@ Azure FXT Edge Filer 混合式儲存體快取叢集使用三種類別的 IP 位�
 
 ### <a name="optional-configuration"></a>選用設定
 
-這些並非所有叢集的必要步驟。 某些類型的工作流程或特定叢集管理樣式才需要進行。 
+這些並非所有叢集的必要步驟。 某些類型的工作流程或特定叢集管理樣式才需要進行。
 
 * 自訂節點設定
 
   您可以在整個叢集層級或個別地設定節點名稱，以及設定節點 IPMI 連接埠。 如果您在將節點新增至叢集之前就設定這些設定，新的節點可在加入時自動取得設定。 選項如舊版的叢集建立文件[自訂節點設定](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_node.html) \(英文\) 中所述。
 
   > [!TIP]
-  > Microsoft Azure 文件網站尚未提供此產品的某些文件。 [叢集組態指南](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html) \(英文\) 與舊版[叢集建立指南](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/create_index.html) \(英文\) 的連結會帶您前往個別的 GitHub 裝載網站。 
+  > Microsoft Azure 文件網站尚未提供此產品的某些文件。 [叢集組態指南](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html) \(英文\) 與舊版[叢集建立指南](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/create_index.html) \(英文\) 的連結會帶您前往個別的 GitHub 裝載網站。
 
 * 設定 SMB
 
@@ -364,14 +365,13 @@ Azure FXT Edge Filer 混合式儲存體快取叢集使用三種類別的 IP 位�
 
   如果您想要使用 Azure Blob 以外的雲端儲存體，您必須安裝額外功能授權。 如需購買 FlashCloud<sup>TM</sup> 授權的詳細資訊，請連絡您的 Microsoft 業務代表。 [新增後端儲存體並設定虛擬命名空間](fxt-add-storage.md#about-back-end-storage)中會詳細說明。
 
-
 ### <a name="enable-support"></a>啟用支援
 
 Azure FXT Edge Filer 可以自動上傳有關您叢集的支援資料。 這些上傳項目可讓人員提供可能的最佳服務。
 
 請依照下列步驟來設定支援上傳項目。
 
-1. 瀏覽至 [叢集]   > [支援]  設定頁面。 接受隱私權原則。 
+1. 瀏覽至 [叢集]   > [支援]  設定頁面。 接受隱私權原則。
 
    ![顯示控制台與快顯視窗的螢幕擷取畫面，視窗上有可接受隱私權原則的 [確認] 按鈕](media/fxt-cluster-create/fxt-privacy-policy.png)
 
@@ -391,7 +391,7 @@ Azure FXT Edge Filer 可以自動上傳有關您叢集的支援資料。 這些�
 
 ## <a name="next-steps"></a>後續步驟
 
-在您建立基本叢集並接受隱私權原則之後，請新增其餘的叢集節點。 
+在您建立基本叢集並接受隱私權原則之後，請新增其餘的叢集節點。
 
 > [!div class="nextstepaction"]
 > [新增叢集節點](fxt-add-nodes.md)

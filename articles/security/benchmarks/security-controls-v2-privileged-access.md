@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 68fdff9444286a7f304c3a3361ad33a02e87a282
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6676187f87cecb7f876150d1582cde9051dd251
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758365"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367477"
 ---
 # <a name="security-control-v2-privileged-access"></a>安全性控制 V2：特殊許可權存取
 
@@ -34,11 +34,11 @@ ms.locfileid: "91758365"
 
 您可以使用 Azure AD Privileged Identity Management (PIM) ，啟用對 Azure 資源和 Azure AD 的即時 (JIT) 特殊許可權存取。 JIT 只會在使用者需要時授與暫時許可權，以執行特殊許可權的工作。 當您的 Azure AD 組織中有可疑或不安全的活動時，PIM 也可以產生安全性警示。
 
-- [Azure AD 中的系統管理員角色許可權](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+- [Azure AD 中的系統管理員角色許可權](../../active-directory/roles/permissions-reference.md)
 
 - [使用 Azure Privileged Identity Management 安全性警示](../../active-directory/privileged-identity-management/pim-how-to-configure-security-alerts.md)
 
-- [在 Azure AD 中保護混合式部署和雲端部署的特殊權限存取](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)
+- [在 Azure AD 中保護混合式部署和雲端部署的特殊權限存取](../../active-directory/roles/security-planning.md)
 
 **責任**：客戶
 
@@ -114,7 +114,7 @@ ms.locfileid: "91758365"
 若要避免不小心遭到 Azure AD 的組織封鎖，請在無法使用一般系統管理帳戶時，設定緊急存取帳戶以進行存取。 緊急存取帳戶通常具有高度許可權，不應指派給特定個人。 緊急存取帳戶僅限用於無法使用一般系統管理帳戶的緊急或「急用」狀況。
 您應該確保緊急存取帳戶的認證 (（例如密碼、憑證或智慧卡) ）保持安全，而且只有獲授權可在緊急情況下使用這些認證的人員才知道。
 
-- [在 Azure AD 中管理緊急存取帳戶](../../active-directory/users-groups-roles/directory-emergency-access.md)
+- [在 Azure AD 中管理緊急存取帳戶](../../active-directory/roles/security-emergency-access.md)
 
 **責任**：客戶
 

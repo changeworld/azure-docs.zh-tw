@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: d5699c1d08df8364f33371f911ea3be892b4b285
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 949ddae903a53957f62b89a01ce477edb92917c1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90528123"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365903"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>適用於 iOS 裝置的共用裝置模式
 
@@ -43,7 +43,7 @@ ms.locfileid: "90528123"
 
 1. **裝置系統管理員** 會使用行動裝置管理 (MDM) 提供者（例如 Microsoft Intune）來準備要共用的裝置，以管理其組織中的裝置。 MDM 會將 Microsoft Authenticator 應用程式推送至裝置，並透過裝置的設定檔更新，為每個裝置開啟「共用模式」。 此共用模式設定會變更裝置上支援的應用程式行為。 MDM 提供者的這項設定會設定裝置的共用裝置模式，並為共用裝置模式所需的 [Apple 裝置啟用 Microsoft 企業 SSO 外掛程式](apple-sso-plugin.md) 。
 
-1. [**只有在公開預覽期間才需要**]具有 [雲端裝置系統管理員](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator) 角色的使用者，接著必須啟動 [Microsoft Authenticator 應用程式](../user-help/user-help-auth-app-overview.md) ，並將其裝置加入組織。
+1. [**只有在公開預覽期間才需要**]具有 [雲端裝置系統管理員](../roles/permissions-reference.md#cloud-device-administrator) 角色的使用者，接著必須啟動 [Microsoft Authenticator 應用程式](../user-help/user-help-auth-app-overview.md) ，並將其裝置加入組織。
 
     若要在 Azure 入口網站中設定組織角色的成員資格： **Azure Active Directory**  >  **角色和**  >  **系統管理員雲端裝置管理員**
 

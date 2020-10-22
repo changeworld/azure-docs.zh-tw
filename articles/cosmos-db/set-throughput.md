@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 83909fdc75ec09b9ddd1fa9452f9a77e5763f895
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 7caa29807f2779ee1f52cb22de2bf95fdb9cb37e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331816"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367120"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>簡介 Azure Cosmos DB 中的佈建輸送量
 
@@ -43,9 +43,6 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 :::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="裝載容器的一或多個邏輯分割區的實體分割區" border="false":::
 
 ## <a name="set-throughput-on-a-database"></a>在資料庫上設定輸送量
-
-> [!NOTE]
-> 在 [客戶管理的金鑰](how-to-setup-cmk.md) 啟用的帳戶中，目前無法在 Azure Cosmos 資料庫上布建輸送量。
 
 當您在 Azure Cosmos 資料庫上佈建輸送量時，輸送量會在資料庫中的所有容器 (稱為標準資料庫容器) 上共用。 例外狀況是您在資料庫中特定的容器上指定了佈建輸送量。 在其容器之間共用資料庫層級佈建輸送量，相當於在機器叢集上裝載資料庫。 因為資料庫共用內的所有容器都會共用機器上可用的資源，因此，您自然不會取得任何特定容器上的可預測效能。 若要了解如何在資料庫上設定佈建輸送量，請參閱[在 Azure Cosmos 資料庫上設定佈建輸送量](how-to-provision-database-throughput.md)。 若要了解如何在資料上設定自動調整輸送量，請參閱[佈建自動調整輸送量](how-to-provision-autoscale-throughput.md)。
 

@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: bcd06ce879282ab9897d7e22006bac19a5c22b8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e995e88b80bf14f9c7784f465bcd3d89d0bed65
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91565083"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367936"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 建立及使用虛擬機器擴展集所適用的磁碟
 
@@ -88,7 +88,7 @@ Azure 提供兩種類型的磁碟。
 ## <a name="create-and-attach-disks"></a>建立和連結磁碟
 您可以在建立擴展集時建立並連結磁碟，或使用現有的擴展集。
 
-從 API 版本 `2019-07-01` 開始，您可以使用 [storageProfile.osDisk.diskSizeGb](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosdisk) 屬性來設定虛擬機器擴展集中的 OS 磁碟大小。 佈建之後，您可能必須擴充或重新分割磁碟，以利用整個空間。 在這裡深入了解[擴充磁碟](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk#expand-the-volume-within-the-os)。
+從 API 版本 `2019-07-01` 開始，您可以使用 [storageProfile.osDisk.diskSizeGb](/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosdisk) 屬性來設定虛擬機器擴展集中的 OS 磁碟大小。 佈建之後，您可能必須擴充或重新分割磁碟，以利用整個空間。 在這裡深入了解[擴充磁碟](../virtual-machines/windows/expand-os-disk.md#expand-the-volume-within-the-os)。
 
 ### <a name="attach-disks-at-scale-set-creation"></a>在建立擴展集時連結磁碟
 使用 [New-AzVmss](/powershell/module/az.compute/new-azvmss) 建立虛擬機器擴展集。 出現提示時，請提供 VM 執行個體的使用者名稱和密碼。 為了將流量散發到個別的虛擬機器執行個體，也會建立負載平衡器。 負載平衡器包含在 TCP 連接埠 80 上分配流量的規則，同時允許 TCP 連接埠 3389 上的遠端桌面流量以及 TCP 連接埠 5985 上的 PowerShell 遠端處理。

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: phsignor
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: d5016dbff30eb054e413acc66b1b2dfee62a5873
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 448106b1c514762c101991f5f944d521f7ea6f75
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070668"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368514"
 ---
 # <a name="configure-permission-classifications"></a>設定權限分類
 
@@ -33,7 +33,7 @@ ms.locfileid: "92070668"
 
 遵循下列步驟以使用 Azure 入口網站分類許可權：
 
-1. 以[全域管理員](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)、[應用程式系統](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)管理員或[雲端應用程式系統管理員](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)身分登入[Azure 入口網站](https://portal.azure.com)
+1. 以[全域管理員](../roles/permissions-reference.md#global-administrator--company-administrator)、[應用程式系統](../roles/permissions-reference.md#application-administrator)管理員或[雲端應用程式系統管理員](../roles/permissions-reference.md#cloud-application-administrator)身分登入[Azure 入口網站](https://portal.azure.com)
 1. 選取 **Azure Active Directory**  >  **企業應用程式**  >  **同意和權限**  >  **權限分類**。
 1. 選擇 [新增權限]，將另一個權限分類為「低影響」。
 1. 選取 API，然後選取委派的權限。

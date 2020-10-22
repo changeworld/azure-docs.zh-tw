@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 710122ed4e5a02453f6f0c19a145af64f2c69178
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d14c9330977296630ee58bc2b508f4304472044c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145411"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366355"
 ---
 # <a name="conditional-access-users-and-groups"></a>條件式存取：使用者和群組
 
@@ -46,13 +46,13 @@ ms.locfileid: "92145411"
 > 如果使用者或群組是超過2048個群組的成員，其存取權可能會遭到封鎖。 這項限制適用于直接和嵌套群組成員資格。
 
 > [!WARNING]
-> 條件式存取原則不支援使用者將目錄角色指派給範圍直接指向物件的 [管理單位](../users-groups-roles/roles-admin-units-assign-roles.md) 或目錄角色，例如透過 [自訂角色](../users-groups-roles/roles-create-custom.md)。
+> 條件式存取原則不支援使用者將目錄角色指派給範圍直接指向物件的 [管理單位](../roles/admin-units-assign-roles.md) 或目錄角色，例如透過 [自訂角色](../roles/custom-create.md)。
 
 ## <a name="exclude-users"></a>排除使用者
 
 當組織包含和排除使用者或群組時，系統會將使用者或群組從原則中排除，因為排除動作會覆寫包含在原則中。 排除專案通常用於緊急存取或半透明的帳戶。 如需緊急存取帳戶的詳細資訊，以及其重要性，請參閱下列文章： 
 
-* [在 Azure AD 中管理緊急存取帳戶](../users-groups-roles/directory-emergency-access.md)
+* [在 Azure AD 中管理緊急存取帳戶](../roles/security-emergency-access.md)
 * [使用 Azure Active Directory 來建立具彈性的存取控制管理策略](../authentication/concept-resilient-controls.md)
 
 建立條件式存取原則時，可以使用下列選項來排除。

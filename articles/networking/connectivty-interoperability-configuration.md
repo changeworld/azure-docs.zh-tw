@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 7be326e0f01ed6a00244c0f5b9ed6a960b2b6e0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "86171851"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure 後端連線功能的互通性：測試組態詳細資料
@@ -49,7 +49,7 @@ ms.locfileid: "86171851"
 
 下圖顯示 ExpressRoute1 線路和中樞 VNet 之間的連線設定：
 
-[![.5]][5]
+[![5]][5]
 
 下列清單顯示 ExpressRoute 私人對等互連連線的主要 CE 路由器設定。  (Cisco ASR1000 路由器在測試設定中是用來做為 CE 路由器。 ) 當站對站 VPN 和 ExpressRoute 線路平行設定為將內部部署網路連線到 Azure 時，Azure 預設會排定 ExpressRoute 電路的優先順序。 若要避免不對稱的路由，內部部署網路也應優先考慮 ExpressRoute 連線而非站對站 VPN 連線。 下列組態會使用 BGP **local-preference** 屬性建立優先順序：
 
@@ -194,7 +194,7 @@ ExpressRoute 作為備援線路組可確保高可用性。 您可以在不同的
 
 如需詳細資訊，請參閱[什麼是 VPN 閘道？][VPN]和[部署高可用性 NVA][Deploy-NVA]。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 了解測試設定的[控制平面分析][Control-Analysis]以及拓撲中不同 VNet 或 VLAN 的檢視。
 

@@ -14,18 +14,18 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9819b90ba390e8601cc33a17338ce9b16bf3b3cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5421efc96b957f5ae96515bbcf17c8a773397c9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84982487"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368242"
 ---
 # <a name="list-azure-role-definitions"></a>列出 Azure 角色定義
 
 角色定義是可以執行的許可權集合，例如讀取、寫入和刪除。 一般會直接稱之為角色。 [Azure 角色型存取控制 (AZURE RBAC) ](overview.md) 具有超過120個內 [建角色](built-in-roles.md) ，或您可以建立自己的自訂角色。 本文說明如何列出您可以用來授與存取權給 Azure 資源的內建和自訂角色。
 
-若要查看 Azure Active Directory 的系統管理員角色清單，請參閱 [Azure Active Directory 中的系統管理員角色許可權](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+若要查看 Azure Active Directory 的系統管理員角色清單，請參閱 [Azure Active Directory 中的系統管理員角色許可權](../active-directory/roles/permissions-reference.md)。
 
 ## <a name="azure-portal"></a>Azure 入口網站
 
@@ -344,7 +344,7 @@ az role definition list --name "Virtual Machine Contributor" --output json --que
 1. 在 URI 中，將 *{scope}* 取代為您要列出角色定義的範圍。
 
     > [!div class="mx-tableFixed"]
-    > | 影響範圍 | 類型 |
+    > | 範圍 | 類型 |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理群組 |
     > | `subscriptions/{subscriptionId1}` | 訂用帳戶 |
@@ -356,7 +356,7 @@ az role definition list --name "Virtual Machine Contributor" --output json --que
 1. 將 *{filter}* 取代為您要套用以篩選角色定義清單的條件。
 
     > [!div class="mx-tableFixed"]
-    > | Filter | 說明 |
+    > | Filter | 描述 |
     > | --- | --- |
     > | `$filter=atScopeAndBelow()` | 列出指定範圍和任何子範圍內的角色定義。 |
     > | `$filter=type+eq+'{type}'` | 列出指定之類型的角色定義。 角色的類型可以是 `CustomRole` 或 `BuiltInRole` 。 |
@@ -429,7 +429,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId1}/providers/Micro
 1. 在 URI 中，將 *{scope}* 取代為您要列出角色定義的範圍。
 
     > [!div class="mx-tableFixed"]
-    > | 影響範圍 | 類型 |
+    > | 範圍 | 類型 |
     > | --- | --- |
     > | `providers/Microsoft.Management/managementGroups/{groupId1}` | 管理群組 |
     > | `subscriptions/{subscriptionId1}` | 訂用帳戶 |
@@ -474,7 +474,7 @@ GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitio
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [Azure 內建角色](built-in-roles.md)
 - [Azure 自訂角色](custom-roles.md) (機器翻譯)

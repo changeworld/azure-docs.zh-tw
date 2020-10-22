@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cba67e571370d48a04a4e95198462953acdd4d59
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: dfa8227f319a818efee20f26c1f2bebf72ad7cf9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131542"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367647"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>整合 Azure 數位 Twins 與 Azure SignalR Service
 
@@ -20,7 +20,7 @@ ms.locfileid: "92131542"
 
 本文所述的解決方案可讓您將數位對應項遙測資料推送至連線的用戶端，例如單一網頁或行動應用程式。 如此一來，用戶端就會從 IoT 裝置以即時計量和狀態進行更新，而不需要輪詢伺服器或提交新的 HTTP 要求以進行更新。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 以下是您在繼續之前應完成的必要條件：
 
@@ -30,7 +30,7 @@ ms.locfileid: "92131542"
 
 您也可以繼續使用您的 Azure 帳戶登入 [Azure 入口網站](https://portal.azure.com/) 。
 
-## <a name="solution-architecture"></a>方案架構
+## <a name="solution-architecture"></a>解決方案架構
 
 您將透過下列路徑將 Azure SignalR Service 附加至 Azure 數位 Twins。 圖中的 A、B 和 C 區段取自 [端對端教學](tutorial-end-to-end.md)課程的架構圖表，在此操作說明中，您將藉由新增區段 D 來建立。
 
@@ -244,12 +244,6 @@ npm start
 
 ```azurecli
 az group delete --name <your-resource-group>
-```
-
-如果您要刪除 Azure 數位 Twins 實例，也可以使用下列命令，刪除您在端對端教學課程中為它建立的 Azure AD 應用程式註冊：
-
-```azurecli
-az ad app delete --id <your-application-ID>
 ```
 
 最後，刪除您下載到本機電腦 (*Azure_Digital_Twins_end_to_end_samples.zip* 和 *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*) 的專案範例資料夾。

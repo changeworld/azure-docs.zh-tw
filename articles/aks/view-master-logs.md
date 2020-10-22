@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 中啟用並檢視 K
 services: container-service
 ms.topic: article
 ms.date: 10/14/2020
-ms.openlocfilehash: 79ed9308488725d9be0c839bbd04b6783bbbd85a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1089cb4ea52efaa545478ced053a921728a894ef
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076380"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368446"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中啟用並檢閱 Kubernetes 主要節點記錄
 
@@ -37,9 +37,11 @@ Azure 監視器記錄會在 Azure 入口網站中啟用和管理。 若要在 AK
 
 除了 Kubernetes 撰寫的專案之外，您專案的 audit 記錄也有來自 AKS 的專案。
 
-Audit 記錄會記錄到兩個類別中： *kube-audit-admin* 和 *kube-audit*。 *Kube-audit*類別包含每個 audit 事件的所有審核記錄資料，包括*get*、 *list*、 *create*、 *update*、 *delete*、 *patch*和*post*。
+Audit 記錄會記錄到三個類別中： *kube-audit*、 *kube-audit-admin*和 *guard*。
 
-*Kube-audit-admin*類別是*kube-audit*記錄類別的子集。 *kube-audit-系統管理員* 會從記錄檔中排除 *get* 和 *list* audit 事件，以大幅減少記錄檔的數目。
+- *Kube-audit*類別包含每個 audit 事件的所有審核記錄資料，包括*get*、 *list*、 *create*、 *update*、 *delete*、 *patch*和*post*。
+- *Kube-audit-admin*類別是*kube-audit*記錄類別的子集。 *kube-audit-系統管理員* 會從記錄檔中排除 *get* 和 *list* audit 事件，以大幅減少記錄檔的數目。
+- 此 *防護* 類別是受控 Azure AD 和 Azure RBAC 的審核。 針對 managed Azure AD：中的權杖，使用者資訊輸出。針對 Azure RBAC：存取簽入和傳出。
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>在 AKS 叢集上對測試 Pod 進行排程
 
@@ -75,7 +77,7 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>檢視收集的記錄
 
-可能需要幾分鐘的時間，才會啟用並顯示診斷記錄。
+診斷記錄最多可能需要10分鐘的時間才會啟用並出現。
 
 > [!NOTE]
 > 如果您需要所有的 audit 記錄資料以符合規範或其他用途，請將其收集並儲存在低成本的儲存體中，例如 blob 儲存體。 使用 *kube-audit-admin* 記錄類別來收集和儲存一組有意義的 audit 記錄資料，以供監視和警示之用。

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 46b764c9fcdb771f0a82fa47c0b1aa9112bb9e94
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f9dd69c147dff1bf0bd10ca070e023bb6f7692a5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150521"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368429"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>使用裝置布建服務 (DPS) 自動管理 Azure 數位 Twins 中的裝置
 
@@ -22,7 +22,7 @@ ms.locfileid: "92150521"
 
 如需有關布建和_淘汰__階段的詳細_資訊，並進一步瞭解所有企業 IoT 專案通用的一般裝置管理階段，請參閱 IoT 中樞裝置管理檔的[*裝置生命週期*一節](../iot-hub/iot-hub-device-management-overview.md#device-lifecycle)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在您可以設定布建之前，您必須擁有包含模型和 Twins 的 **Azure 數位 Twins 實例** 。 此實例也應該設定為根據資料更新數位對應項資訊。 
 
@@ -36,7 +36,7 @@ ms.locfileid: "92150521"
 
 裝置模擬器是以 **Node.js**10.0. x 版或更新版本為基礎。 [*準備您的開發環境*](https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md) ，說明如何在 Windows 或 Linux 上安裝本教學課程的 Node.js。
 
-## <a name="solution-architecture"></a>方案架構
+## <a name="solution-architecture"></a>解決方案架構
 
 下圖說明此解決方案使用 Azure 數位 Twins 搭配裝置布建服務的架構。 它會顯示裝置布建和淘汰流程。
 
@@ -505,12 +505,6 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 ```azurecli
 az group delete --name <your-resource-group>
 ```
-<!-- 
-Next, delete the Azure AD app registration you created for your client app with this command:
-
-```azurecli
-az ad app delete --id <your-application-ID>
-``` -->
 
 然後，刪除您從本機電腦下載的專案範例資料夾。
 

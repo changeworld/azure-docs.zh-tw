@@ -9,12 +9,12 @@ ms.reviewer: klam, estfan
 ms.suite: infrastructure-services
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: b85932bf0d4fd080afadef2bc28d6a218b2d627a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a74240e3f116121c0aaddd11c186e6e674ea26a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78898592"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368174"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>在 Azure 排程器中建置作業的進階排程和週期
 
@@ -54,11 +54,11 @@ ms.locfileid: "78898592"
 
 若要使用 [Azure 排程器 REST API](/rest/api/scheduler) 建立基本排程，請遵循下列步驟：
 
-1. 使用[註冊操作 - Resource Manager REST API](https://docs.microsoft.com/rest/api/resources/providers) 來向資源提供者註冊您的 Azure 訂用帳戶。 Azure 排程器服務的提供者名稱是 **Microsoft.Scheduler**。 
+1. 使用[註冊操作 - Resource Manager REST API](/rest/api/resources/providers) 來向資源提供者註冊您的 Azure 訂用帳戶。 Azure 排程器服務的提供者名稱是 **Microsoft.Scheduler**。 
 
-1. 在排程器 REST API 中，使用[適用於作業集合的建立或更新操作](https://docs.microsoft.com/rest/api/scheduler/jobcollections)來建立作業集合。 
+1. 在排程器 REST API 中，使用[適用於作業集合的建立或更新操作](/rest/api/scheduler/jobcollections)來建立作業集合。 
 
-1. 使用[適用於作業的建立或更新操作](https://docs.microsoft.com/rest/api/scheduler/jobs/createorupdate)來建立作業。 
+1. 使用[適用於作業的建立或更新操作](/rest/api/scheduler/jobs/createorupdate)來建立作業。 
 
 ## <a name="job-schema-elements"></a>作業結構描述元素
 

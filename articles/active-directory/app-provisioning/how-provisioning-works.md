@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 5fdce791ba8848b93a8457f3738392b1f5f15508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b990fc7282cd986b0903fb1f33114a164be1c191
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801795"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366678"
 ---
 # <a name="how-provisioning-works"></a>佈建運作方式
 
@@ -65,15 +65,15 @@ Azure AD 連線至應用程式的使用者管理 API 時所需的認證。 在�
 
 * **群組。** 透過 Azure AD Premium 授權方案，您可以使用群組指派對 SaaS 應用程式的存取權。 然後，當佈建範圍設定為 [只同步已指派的使用者和群組] 時，Azure AD 佈建服務將會根據使用者是否為已指派給應用程式的群組成員，來佈建或取消佈建使用者。 除非應用程式支援群組物件，否則不會佈建群組物件本身。 請確定指派給應用程式的群組將 "SecurityEnabled" 屬性設定為 "True"。
 
-* **動態群組。** Azure AD 使用者佈建服務可以讀取和佈建[動態群組](../users-groups-roles/groups-create-rule.md)中的使用者。 請留意下列注意事項和建議：
+* **動態群組。** Azure AD 使用者佈建服務可以讀取和佈建[動態群組](../enterprise-users/groups-create-rule.md)中的使用者。 請留意下列注意事項和建議：
 
   * 對於從 Azure AD 到 SaaS 應用程式的端對端佈建，動態群組可能會影響到其效能。
 
-  * 在 SaaS 應用程式中佈建或取消佈建動態群組使用者的速度，取決於動態群組評估成員資格變更的速度。 如需如何檢查動態群組處理狀態的相關資訊，請參閱[檢查成員資格規則的處理狀態](../users-groups-roles/groups-create-rule.md)。
+  * 在 SaaS 應用程式中佈建或取消佈建動態群組使用者的速度，取決於動態群組評估成員資格變更的速度。 如需如何檢查動態群組處理狀態的相關資訊，請參閱[檢查成員資格規則的處理狀態](../enterprise-users/groups-create-rule.md)。
 
   * 當使用者失去動態群組的成員資格時，將會被視為取消佈建事件。 建立動態群組的規則時，請考量這種情況。
 
-* **巢狀群組。** Azure AD 使用者佈建服務無法讀取或佈建巢狀群組中的使用者。 此服務只能讀取和佈建在明確指派的群組中屬於直接成員的使用者。 這種「應用程式的群組型指派」的限制對單一登入也會產生影響 (請參閱[使用群組管理 SaaS 應用程式的存取權](../users-groups-roles/groups-saasapps.md))。 此時應明確指派所含的使用者需要佈建的群組，或[設定範圍](define-conditional-rules-for-provisioning-user-accounts.md)。
+* **巢狀群組。** Azure AD 使用者佈建服務無法讀取或佈建巢狀群組中的使用者。 此服務只能讀取和佈建在明確指派的群組中屬於直接成員的使用者。 這種「應用程式的群組型指派」的限制對單一登入也會產生影響 (請參閱[使用群組管理 SaaS 應用程式的存取權](../enterprise-users/groups-saasapps.md))。 此時應明確指派所含的使用者需要佈建的群組，或[設定範圍](define-conditional-rules-for-provisioning-user-accounts.md)。
 
 ### <a name="attribute-based-scoping"></a>以屬性為基礎的範圍 
 
@@ -184,18 +184,18 @@ Azure AD 布建服務會在移除使用者存取權時，透過解除布建帳�
 
 下列案例將會觸發停用或刪除： 
 * 在 Azure AD 中，使用者會被虛刪除， (傳送至 [回收站]/[AccountEnabled] 屬性設定為 [false]) 。
-    在 Azure AD 中刪除使用者的 30 天後，就會從租用戶中永久刪除使用者。 此時，佈建服務會傳送 DELETE 要求，以永久刪除應用程式中的使用者。 在30天的時間範圍內，您可以在30天內 [手動刪除使用者](../fundamentals/active-directory-users-restore.md)，這會將刪除要求傳送到應用程式。
+    在 Azure AD 中刪除使用者的 30 天後，就會從租用戶中永久刪除使用者。 此時，佈建服務會傳送 DELETE 要求，以永久刪除應用程式中的使用者。 在 30 天的時間範圍內，您可以[手動永久刪除使用者](../fundamentals/active-directory-users-restore.md)，此動作會將刪除要求傳送至應用程式。
 * 使用者會在 Azure AD 中永久刪除/刪除回收站。
 * 從應用程式解除指派使用者。
 * 使用者從範圍移至超出範圍 (不會再傳遞範圍篩選器) 。
     
-根據預設，Azure AD 佈建服務會虛刪除或停用超出範圍的使用者。 如果您想要覆寫此預設行為，您可以設定旗標來 [略過超出範圍的刪除。](skip-out-of-scope-deletions.md)
+根據預設，Azure AD 佈建服務會虛刪除或停用超出範圍的使用者。 如果您想要覆寫此預設行為，您可以設定旗標來 [略過超出範圍的刪除。](skip-out-of-scope-deletions.md)
 
 如果發生上述四個事件之一，而目標應用程式不支援虛刪除，則佈建服務會傳送 DELETE 要求，以從應用程式中永久刪除使用者。
 
 如果您在屬性對應中看到 IsSoftDeleted 屬性，此屬性將用來決定使用者的狀態，以及是否要傳送 active = false 的更新要求以虛刪除使用者。
 
-**已知限制**
+**已知的限制**
 
 * 如果先前由布建服務管理的使用者未指派給應用程式或指派給應用程式的群組，則會傳送停用要求。 屆時，使用者不是由服務所管理，而且我們不會在從目錄中刪除時傳送刪除要求。
 * 不支援布建在 Azure AD 中停用的使用者。 在布建之前，它們必須在 Azure AD 中處於作用中狀態。

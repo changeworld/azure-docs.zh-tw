@@ -9,17 +9,17 @@ ms.subservice: availability
 ms.date: 12/18/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 32efde2cb2497fb8aab415d09a1063ff07c6b0f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70e1a131daf95a9b0f6ae75c022dec2fdbc394a7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87837188"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366647"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>為虛擬機器擴展集選擇正確的容錯網域數目
 在沒有任何區域 (zone) 的 Azure 區域 (region) 中，預設會建立具有五個容錯網域的虛擬機器擴展集。 針對支援虛擬機器擴展集之區域部署的區域，選取此選項時，每個區域的容錯網域計數預設值為1。 在此情況下，FD = 1 表示屬於擴展集的 VM 執行個體會儘可能分散於許多機架。
 
-您也可以考慮讓擴展集容錯網域數目與受控磁碟容錯網域數目保持一致。 如果整個受控磁碟容錯網域停止運作，此一致狀態有助於防止仲裁遺失。 您可將 FD 計數設定為小於或等於每個區域中可用的受控磁碟容錯網域數目。 請參考這份[文件](../virtual-machines/windows/manage-availability.md)，了解各區域的受控磁碟容錯網域數目。
+您也可以考慮讓擴展集容錯網域數目與受控磁碟容錯網域數目保持一致。 如果整個受控磁碟容錯網域停止運作，此一致狀態有助於防止仲裁遺失。 您可將 FD 計數設定為小於或等於每個區域中可用的受控磁碟容錯網域數目。 請參考這份[文件](../virtual-machines/manage-availability.md)，了解各區域的受控磁碟容錯網域數目。
 
 ## <a name="rest-api"></a>REST API
 `properties.platformFaultDomainCount`如果未指定) ，您可以將屬性設定為1、2或 3 (預設值3。 請參考[這裡](/rest/api/compute/virtualmachinescalesets/createorupdate)的 REST API 文件。
