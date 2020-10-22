@@ -3,12 +3,12 @@ title: Azure Kubernetes Service (AKS) 的常見問題集
 description: 尋找一些關於 Azure Kubernetes Service (AKS) 的常見問題解答。
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: d46b3ba9e3df5e2b3600db2be2a41789fed5242f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8f50475d7ba9117fd32951b401b24b63d192fcd8
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207966"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372373"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 的常見問題集
 
@@ -198,6 +198,13 @@ AKS 代理程式節點會以標準 Azure 虛擬機器計費，因此，如果您
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>AKS 是否會將任何客戶資料儲存在叢集區域以外？
 
 啟用在單一區域中儲存客戶資料的功能目前僅適用于東南亞區域 (新加坡) 的亞太地區地區。 至於其他所有區域，客戶資料會儲存在地區中。
+
+## <a name="are-aks-images-required-to-run-as-root"></a>AKS 映射是否需要以 root 的形式執行？
+
+除了下列兩個映射以外，AKS 映射不需要以 root 的形式執行：
+
+- *mcr.microsoft.com/oss/kubernetes/coredns*
+- *mcr.microsoft.com/azuremonitor/containerinsights/ciprod*
 
 <!-- LINKS - internal -->
 

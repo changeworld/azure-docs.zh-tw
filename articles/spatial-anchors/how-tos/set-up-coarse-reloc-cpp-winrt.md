@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 6d2bb4c563bd7bae186ce9832ff0472f17a8afd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9eace1ee1f97acaf04608d37c9edba482622bd59
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76548283"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097366"
 ---
 # <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-cwinrt"></a>如何在 C++/WinRT 中使用粗略重新定位建立和尋找錨點
 
@@ -31,7 +31,7 @@ Azure 空間錨點可以將裝置上、定位感應器資料與您建立的錨�
 
 若要完成本指南，請確定您具有下列項目︰
 
-- 已基本了解 C++ 和 <a href="https://docs.microsoft.com/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">Windows 執行階段 API</a>。
+- 已基本了解 C++ 和 <a href="/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">Windows 執行階段 API</a>。
 - 已完整閱讀 [Azure Spatial Anchors 概觀](../overview.md)。
 - 已完成其中一個 [5 分鐘快速入門](../index.yml)。
 - 請參閱[建立並尋找錨點操作說明](../create-locate-anchors-overview.md)。

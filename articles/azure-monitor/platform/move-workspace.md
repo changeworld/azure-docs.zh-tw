@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: d59fb0dc39103119edbc4096b506c588c38cece4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e80ff2c04cf71fa322bb0bf41e8132f595c0644e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282865"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372271"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>將 Log Analytics 工作區移至不同的訂用帳戶或資源群組
 
@@ -40,11 +40,20 @@ ms.locfileid: "92282865"
 
 >[!IMPORTANT]
 > **Azure Sentinel 客戶**
-> - 在工作區部署之後，Azure Sentinel **目前即不支援**將該工作區移至其他資源群組或訂用帳戶。 
-> - 如果您已移動工作區，請停用 **Analytics** 下的所有作用中規則，然後在五分鐘後重新啟用。 不過在大部分的情況下，這種做法應該是有效的，但請注意此方法不受支援，而且您需自行承擔風險。
+> - 目前，在工作區上部署 Azure Sentinel 之後，不支援將工作區移至另一個資源群組或訂用帳戶。 
+> - 如果您已移動工作區，請停用 **Analytics** 下的所有作用中規則，然後在五分鐘後重新啟用。 但在大部分情況下，這應該是有效的解決方案，但在此情況下，它不受支援且會自行承擔風險。
 > 
-> **警示**
-> - 所有警示都必須在移動之後重新建立，因為這些許可權是以工作區的 Azure 資源識別碼為基礎，而且會隨著工作區移動而變更。 
+> **重新建立警示**
+> - 您必須在移動之後重新建立所有警示，因為許可權是以工作區移動期間變更的 Azure 資源識別碼為基礎。
+>
+> **更新資源路徑**
+> - 工作區移動之後，所有指向工作區的 Azure 或外部資源都必須經過檢查並更新，以指向新的資源目標路徑。
+> 
+>   *範例：*
+>   - [Azure 監視器警示規則](alerts-resource-move.md)
+>   - 協力廠商應用程式
+>   - 自訂腳本
+>
 
 ### <a name="delete-solutions-in-azure-portal"></a>在 Azure 入口網站中刪除解決方案
 使用下列程式，利用 Azure 入口網站移除解決方案：

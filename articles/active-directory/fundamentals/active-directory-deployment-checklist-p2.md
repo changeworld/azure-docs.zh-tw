@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd33845c331f907dbd5720ac92c6b1c627f01873
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64f78dadc0eb1570018320aa77a390f94adf708a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318404"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371897"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 功能部署指南
 
@@ -26,7 +26,7 @@ ms.locfileid: "89318404"
 
 此外，客戶可以檢查其[身分識別安全分數](identity-secure-score.md)，以了解他們符合 Microsoft 最佳做法的程度。 在實作這些建議前後檢查您的安全分數，以了解相較於您產業中的其他人和規模與您相同的其他組織，您的表現如何。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 本指南中的許多建議都可以使用 Azure AD Free 或完全沒有授權的方式來執行。 若需要授權，我們會陳述至少需要哪一個授權才能完成工作。
 
@@ -34,7 +34,7 @@ ms.locfileid: "89318404"
 
 * [Azure AD 授權](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Microsoft 365 企業版 ](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
-* [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
+* [企業行動力 + 安全性](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
 * [Azure AD B2B 授權指導方針](../external-identities/licensing-guidance.md)
 
 ## <a name="phase-1-build-a-foundation-of-security"></a>第1階段：打造安全性基礎
@@ -43,8 +43,8 @@ ms.locfileid: "89318404"
 
 | Task | 詳細資料 | 必要授權 |
 | ---- | ------ | ---------------- |
-| [指定超過一個全域管理員](../users-groups-roles/directory-emergency-access.md) | 在發生緊急狀況時，請指定至少兩個僅限雲端的永久全域管理員帳戶。 這些帳戶並非每天使用，而且應該有複雜的長密碼。 | Azure AD Free |
-| [可能的話，請使用非全域系統管理角色](../users-groups-roles/directory-assign-admin-roles.md) | 僅賦予您的系統管理員存取其所需存取區域的權限。 並非所有系統管理員都必須是全域管理員。 | Azure AD Free |
+| [指定超過一個全域管理員](../roles/security-emergency-access.md) | 在發生緊急狀況時，請指定至少兩個僅限雲端的永久全域管理員帳戶。 這些帳戶並非每天使用，而且應該有複雜的長密碼。 | Azure AD Free |
+| [可能的話，請使用非全域系統管理角色](../roles/permissions-reference.md) | 僅賦予您的系統管理員存取其所需存取區域的權限。 並非所有系統管理員都必須是全域管理員。 | Azure AD Free |
 | [啟用 Privileged Identity Management 以便追蹤管理員角色使用方式](../privileged-identity-management/pim-getting-started.md) | 啟用 Privileged Identity Management 以開始追蹤系統管理角色使用方式。 | Azure AD Premium P2 |
 | [推出自助式密碼重設](../authentication/howto-sspr-deployment.md) | 允許員工使用您設為管理員控制項的原則來重設自己的密碼，以減少針對密碼重設的技術支援電話。 | |
 | [建立組織特定的自訂禁用密碼清單](../authentication/tutorial-configure-custom-password-protection.md) | 防止使用者從您的組織或區域建立包含常見字組或片語的密碼。 | |
@@ -69,7 +69,7 @@ ms.locfileid: "89318404"
 | [實作密碼雜湊同步處理](../hybrid/how-to-connect-password-hash-synchronization.md) | 同步密碼雜湊，以允許複寫變更密碼、偵測和補救不正確的密碼，以及回報外洩的認證。 | Azure AD Free |
 | [實作密碼回寫](../authentication/tutorial-enable-sspr-writeback.md) | 可讓雲端中的密碼變更回寫至內部部署 Windows Server Active Directory 環境。 | Azure AD Premium P1 |
 | [實作 Azure AD Connect Health](../hybrid/whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) | 能夠監視 Azure AD Connect 伺服器、AD FS 伺服器和網域控制站的主要健康情況統計資料。 | Azure AD Premium P1 |
-| [依據 Azure Active Directory 中的群組成員資格將授權指派給使用者](../users-groups-roles/licensing-groups-assign.md) | 建立可依照群組啟用或停用功能 (而非依據每位使用者設定) 的授權群組，以節省時間和精力。 | |
+| [依據 Azure Active Directory 中的群組成員資格將授權指派給使用者](../enterprise-users/licensing-groups-assign.md) | 建立可依照群組啟用或停用功能 (而非依據每位使用者設定) 的授權群組，以節省時間和精力。 | |
 | [建立來賓使用者存取權的計劃](../external-identities/what-is-b2b.md) | 讓來賓使用者使用自己的公司、學校或社交身分識別登入您的應用程式與服務，藉此與他們共同作業。 | [Azure AD B2B 授權指導方針](../external-identities/licensing-guidance.md) |
 | [決定裝置管理策略](../devices/overview.md) | 決定貴組織允許的裝置相關事項。 註冊與加入，攜帶您自己的裝置與公司提供。 | |
 | [在組織中部署 Windows Hello 企業版](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | 使用 Windows Hello 準備進行無密碼 authentication | |
@@ -93,7 +93,7 @@ ms.locfileid: "89318404"
 | ---- | ------ | ---------------- |
 | [強制使用 Privileged Identity Management](../privileged-identity-management/pim-security-wizard.md) | 從一般日常使用者帳戶中移除系統管理角色。 在成功執行多重要素驗證檢查、提供業務理由，或是向指定的核准者要求核准之後，讓系統管理使用者有資格使用其角色。 | Azure AD Premium P2 |
 | [在 PIM 中完成 Azure AD 目錄角色的存取權檢閱](../privileged-identity-management/pim-how-to-start-security-review.md) | 與您的安全性和領導小組合作，一起建立存取權檢閱原則，以根據貴組織原則來檢閱系統管理存取權。 | Azure AD Premium P2 |
-| [實作動態群組成員資格原則](../users-groups-roles/groups-dynamic-membership.md) | 使用動態群組，根據 HR (或您的真實來源) 的屬性自動將使用者指派至群組，例如部門、標題、區域和其他屬性。 |  |
+| [實作動態群組成員資格原則](../enterprise-users/groups-dynamic-membership.md) | 使用動態群組，根據 HR (或您的真實來源) 的屬性自動將使用者指派至群組，例如部門、標題、區域和其他屬性。 |  |
 | [實作群組型應用程式佈建](../manage-apps/what-is-access-management.md) | 使用群組型存取管理佈建，為 SaaS 應用程式自動佈建使用者。 |  |
 | [自動化使用者佈建和解除佈建](../app-provisioning/user-provisioning.md) | 從您員工帳戶的生命週期移除手動步驟，以防止未經授權的存取。 將真實來源 (HR系統) 中的身分識別同步至 Azure AD。 |  |
 

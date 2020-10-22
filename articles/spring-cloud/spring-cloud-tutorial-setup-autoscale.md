@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/22/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 5ca0c498e9fd03ce6397824465f9e1e006eeccc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4effdbf5fb924b59a540ce16e769633c484c641a
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905389"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92091061"
 ---
 # <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>教學課程：設定微服務應用程式的自動調整
 
@@ -25,7 +25,7 @@ ms.locfileid: "90905389"
 若要遵循這些程序，您需要：
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 已部署的 Azure Spring Cloud 服務執行個體。 請遵循[關於如何透過 Azure CLI 來部署應用程式的快速入門](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli)來開始使用。
+* 已部署的 Azure Spring Cloud 服務執行個體。 請遵循[關於如何透過 Azure CLI 來部署應用程式的快速入門](./spring-cloud-quickstart.md)來開始使用。
 * 服務執行個體中至少已建立一個應用程式。
 
 ## <a name="navigate-to-the-autoscale-page-in-the-azure-portal"></a>在 Azure 入口網站中，瀏覽至 [自動調整] 頁面
@@ -70,5 +70,5 @@ ms.locfileid: "90905389"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Microsoft Azure 的自動調整概觀](https://docs.microsoft.com/azure/azure-monitor/platform/autoscale-overview)
-* [Azure CLI 監視自動調整](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest&preserve-view=true)
+* [Microsoft Azure 的自動調整概觀](../azure-monitor/platform/autoscale-overview.md)
+* [Azure CLI 監視自動調整](/cli/azure/monitor/autoscale?preserve-view=true&view=azure-cli-latest)

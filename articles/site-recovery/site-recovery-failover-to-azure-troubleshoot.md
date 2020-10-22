@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: e2ab52120e2a5db6648caac61f0228cb0be7e67b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2a0444483c382da7c54accf7dca49d097671771
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91355035"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371982"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>針對將 VMware VM 或實體機器容錯移轉至 Azure 時的錯誤進行疑難排解
 
@@ -55,7 +55,7 @@ Site Recovery 無法在 Azure 中建立已容錯移轉的虛擬機器。 這可�
     如果需要序列化，則會提供下列結果：
 
     ```output
-    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
+    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
     This system doesn't meet no-hydration requirement.
     ```
@@ -168,7 +168,7 @@ RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] Cu
 
 2. 如果先前命令的輸出顯示已定義 http_proxy 或 https_proxy 設定，請使用下列其中一種方法來解除封鎖與設定伺服器的主要目標通訊：
    
-   - 下載 [PsExec 工具](https://aka.ms/PsExec)。
+   - 下載 [PsExec 工具](/sysinternals/downloads/psexec)。
    - 使用此工具來存取系統使用者內容，並判斷是否已設定 Proxy 位址。 
    - 如果已設定 Proxy，請使用 PsExec 工具在系統使用者內容中開啟 IE。
   

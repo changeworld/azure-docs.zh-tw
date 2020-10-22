@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: 95d892bf7a0c0e395289d4a5535cd9b6b789b055
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62f78ed9063d4736e541dda2b1763ffded8eab5d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88565922"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371472"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>使用 Azure Logic Apps 中的受控識別驗證及存取 Azure 資源
 
@@ -35,7 +35,7 @@ Azure Logic Apps 支援[*系統指派的*](../active-directory/managed-identitie
 
 * Azure 帳戶和訂用帳戶。 如果您沒有訂用帳戶，請[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 受控識別與您需要指派存取權的目標 Azure 資源必須使用相同的 Azure 訂用帳戶。
 
-* 若要為受控識別授與 Azure 資源的存取權，您必須將角色新增至該身分識別的目標資源。 若要新增角色，您需要 [Azure AD 系統管理員權限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)才能將角色指派給對應 Azure AD 租用戶中的身分識別。
+* 若要為受控識別授與 Azure 資源的存取權，您必須將角色新增至該身分識別的目標資源。 若要新增角色，您需要 [Azure AD 系統管理員權限](../active-directory/roles/permissions-reference.md)才能將角色指派給對應 Azure AD 租用戶中的身分識別。
 
 * 您想要存取的目標 Azure 資源。 在此資源上，您將新增受控識別的角色，以協助邏輯應用程式驗證對目標資源的存取。
 
@@ -301,7 +301,7 @@ Azure Logic Apps 支援[*系統指派的*](../active-directory/managed-identitie
    ![選取 [新增] > [新增角色指派]](./media/create-managed-service-identity/add-role-to-resource.png)
 
    > [!TIP]
-   > 如果 [新增角色指派] 選項已停用，很可能表示您沒有權限。 如需可讓您管理資源角色的權限的詳細資訊，請參閱 [Azure Active Directory 中的系統管理員角色權限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+   > 如果 [新增角色指派] 選項已停用，很可能表示您沒有權限。 如需可讓您管理資源角色的權限的詳細資訊，請參閱 [Azure Active Directory 中的系統管理員角色權限](../active-directory/roles/permissions-reference.md)。
 
 1. 在 [新增角色指派] 中，選取能為您的身分識別提供目標資源必要存取權的**角色**。
 
@@ -462,7 +462,7 @@ Azure Logic Apps 支援[*系統指派的*](../active-directory/managed-identitie
 1. 在角色清單中，選取您想要移除的受控識別。 在工具列上，選取 [移除]。
 
    > [!TIP]
-   > 如果 [移除] 選項已停用，您很可能沒有權限。 如需可讓您管理資源角色的權限的詳細資訊，請參閱 [Azure Active Directory 中的系統管理員角色權限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+   > 如果 [移除] 選項已停用，您很可能沒有權限。 如需可讓您管理資源角色的權限的詳細資訊，請參閱 [Azure Active Directory 中的系統管理員角色權限](../active-directory/roles/permissions-reference.md)。
 
 受控識別現在已移除，且不再具有目標資源的存取權。
 

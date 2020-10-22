@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 084058edca59eda776c47a3e20bb49178de78681
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c11e87934ee3ba2af97ee8d885b87d087a1c531
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74790076"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096414"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cwinrt"></a>如何在 C++/WinRT 中使用 Azure Spatial Anchors 建立和尋找錨點
 
@@ -38,11 +38,11 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 - 已完整閱讀 [Azure Spatial Anchors 概觀](../overview.md)。
 - 已完成其中一個 [5 分鐘快速入門](../index.yml)。
-- 已基本了解 C++ 和 <a href="https://docs.microsoft.com/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">Windows 執行階段 API</a>。
+- 已基本了解 C++ 和 <a href="/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">Windows 執行階段 API</a>。
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 
-深入了解 [CloudSpatialAnchorSession](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession) 類別。
+深入了解 [CloudSpatialAnchorSession](/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession) 類別。
 
 ```cpp
     CloudSpatialAnchorSession m_cloudSession{ nullptr };
@@ -52,7 +52,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
 
-深入了解 [SessionConfiguration](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/sessionconfiguration) 類別。
+深入了解 [SessionConfiguration](/cpp/api/spatial-anchors/winrt/sessionconfiguration) 類別。
 
 ```cpp
     auto configuration = m_cloudSession.Configuration();
@@ -68,7 +68,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
 
-深入了解 [TokenRequiredDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/tokenrequireddelegate) 委派。
+深入了解 [TokenRequiredDelegate](/cpp/api/spatial-anchors/winrt/tokenrequireddelegate) 委派。
 
 ```cpp
     m_accessTokenRequiredToken = m_cloudSession.TokenRequired(winrt::auto_revoke, [](auto&&, auto&& args) {
@@ -117,7 +117,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-non-ios.md)]
 
-深入了解 [Start](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#start) 方法。
+深入了解 [Start](/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#start) 方法。
 
 ```cpp
     m_cloudSession.Start();
@@ -125,7 +125,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
-深入了解 [ProcessFrame](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession) 方法。
+深入了解 [ProcessFrame](/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession) 方法。
 
 ```cpp
     m_cloudSession->ProcessFrame(ar_frame_);
@@ -133,7 +133,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
 
-深入了解 [SessionUpdatedDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/sessionupdateddelegate) 委派。
+深入了解 [SessionUpdatedDelegate](/cpp/api/spatial-anchors/winrt/sessionupdateddelegate) 委派。
 
 ```cpp
     m_sessionUpdatedToken = m_cloudSession.SessionUpdated(winrt::auto_revoke, [this](auto&&, auto&& args)
@@ -147,7 +147,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
 
-深入了解 [CloudSpatialAnchor](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchor) 類別。
+深入了解 [CloudSpatialAnchor](/cpp/api/spatial-anchors/winrt/cloudspatialanchor) 類別。
 
 ```cpp
     // Initialization
@@ -183,7 +183,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
-深入了解 [GetSessionStatusAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#getsessionstatusasync) 方法。
+深入了解 [GetSessionStatusAsync](/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#getsessionstatusasync) 方法。
 
 ```cpp
     SessionStatus status = co_await m_cloudSession.GetSessionStatusAsync();
@@ -193,7 +193,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
-深入了解 [AppProperties](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchor#appproperties) 方法。
+深入了解 [AppProperties](/cpp/api/spatial-anchors/winrt/cloudspatialanchor#appproperties) 方法。
 
 ```cpp
     CloudSpatialAnchor cloudAnchor = CloudSpatialAnchor();
@@ -206,7 +206,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
-深入了解 [UpdateAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#updateanchorpropertiesasync) 方法。
+深入了解 [UpdateAnchorPropertiesAsync](/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#updateanchorpropertiesasync) 方法。
 
 ```cpp
     CloudSpatialAnchor anchor = /* locate your anchor */;
@@ -216,7 +216,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
 
-深入了解 [GetAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#getanchorpropertiesasync) 方法。
+深入了解 [GetAnchorPropertiesAsync](/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#getanchorpropertiesasync) 方法。
 
 ```cpp
     CloudSpatialAnchor anchor = co_await m_cloudSession.GetAnchorPropertiesAsync(LR"(anchorId)");
@@ -229,7 +229,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
-深入了解 [Expiration](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchor#expiration) 方法。
+深入了解 [Expiration](/cpp/api/spatial-anchors/winrt/cloudspatialanchor#expiration) 方法。
 
 ```cpp
     const int64_t oneWeekFromNowInHours = 7 * 24;
@@ -239,7 +239,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-深入了解 [CreateWatcher](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#createwatcher) 方法。
+深入了解 [CreateWatcher](/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#createwatcher) 方法。
 
 ```cpp
     AnchorLocateCriteria criteria = AnchorLocateCriteria();
@@ -249,7 +249,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
 
-深入了解 [AnchorLocated](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/anchorlocateddelegate) 委派。
+深入了解 [AnchorLocated](/cpp/api/spatial-anchors/winrt/anchorlocateddelegate) 委派。
 
 ```cpp
     m_anchorLocatedToken = m_cloudSession.AnchorLocated(winrt::auto_revoke, [this](auto&&, auto&& args)
@@ -279,7 +279,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
-深入了解 [DeleteAnchorAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#deleteanchorasync) 方法。
+深入了解 [DeleteAnchorAsync](/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#deleteanchorasync) 方法。
 
 ```cpp
     co_await m_cloudSession.DeleteAnchorAsync(cloudAnchor);
@@ -288,7 +288,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-深入了解 [Stop](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#stop) 方法。
+深入了解 [Stop](/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#stop) 方法。
 
 ```cpp
     m_cloudSession.Stop();
@@ -296,7 +296,7 @@ Azure Spatial Anchors 可讓您在世界各地的不同裝置間共用錨點。 
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-深入了解 [Reset](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#reset) 方法。
+深入了解 [Reset](/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#reset) 方法。
 
 ```cpp
     m_cloudSession.Reset();

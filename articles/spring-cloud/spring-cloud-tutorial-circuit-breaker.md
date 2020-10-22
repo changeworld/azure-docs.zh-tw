@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: fa66f17c6f96ac7f70188c5a28c0b180ed2f03e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c189411b13baf2497f0752c15550dd419f88f754
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906885"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088596"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>搭配 Azure Spring Cloud 使用斷路器儀表板
 
@@ -42,7 +42,7 @@ mvn clean package -D skipTests -f recommendation-service/pom.xml
 mvn clean package -D skipTests -f hystrix-turbine/pom.xml
 ```
 ## <a name="provision-your-azure-spring-cloud-instance"></a>佈建您的 Azure Spring Cloud 執行個體
-遵循下列程序，[在 Azure CLI 上佈建服務執行個體](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#provision-a-service-instance-on-the-azure-cli)。
+遵循下列程序，[在 Azure CLI 上佈建服務執行個體](./spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud)。
 
 ## <a name="deploy-your-applications-to-azure-spring-cloud"></a>將您的應用程式部署至 Azure Spring Cloud
 這些應用程式不會使用**組態伺服器**，因此不需要為 Azure Spring Cloud 設定 **組態伺服器**。  建立並部署，如下所示：
@@ -82,6 +82,6 @@ az spring-cloud app deploy -n hystrix-turbine --jar-path hystrix-turbine/target/
 作為 Web 應用程式，Hystrix 儀表板應在 `test-endpoint` 上運作。 如果沒有正常運作，則可能有兩個原因：第一個原因是已使用 `test-endpoint` 變更基底 URL，從 `/ to /<APP-NAME>/<DEPLOYMENT-NAME>`，第二個原因是，Web 應用程式使用靜態資源的絕對路徑。 若要讓其在 `test-endpoint` 上運作，您可能需要手動編輯前端檔案中的 <base>。
 
 ## <a name="next-steps"></a>後續步驟
-* [在 Azure CLI 上佈建服務執行個體](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#provision-a-service-instance-on-the-azure-cli)
-* [準備 Java Spring 應用程式以部署到 Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
+* [在 Azure CLI 上佈建服務執行個體](./spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud)
+* [準備 Java Spring 應用程式以部署到 Azure Spring Cloud](./spring-cloud-tutorial-prepare-app-deployment.md)
 ::: zone-end

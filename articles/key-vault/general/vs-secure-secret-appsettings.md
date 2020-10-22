@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: cawa
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 79fa01e53b53f3066e55736c105d6489ccbd96e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96b6b262765a361befeadd9b5a42d37ca5e66497
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019839"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372050"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>安全地儲存 Web 應用程式的祕密應用程式設定
 
@@ -56,14 +56,19 @@ ms.locfileid: "89019839"
     > 在 Visual Studio 2017 V 15.6 版之前，我們建議您安裝適用于 Visual Studio 的 Azure 服務驗證延伸模組。 但現在已被取代，因為功能已在 Visual Studio 內整合。 因此，如果您使用舊版的 visual Studio 2017，建議您至少更新至 VS 2017 15.6 或更新版本，如此一來，您就能以原生方式使用這項功能，並從使用 Visual Studio 登入身分識別本身存取金鑰保存庫。
     >
 
-4. 將下列 NuGet 封裝新增至您的專案：
+4. 使用 CLI 登入 Azure，您可以輸入：
+
+    ```azurecli
+    az login
+    ```
+
+5. 將下列 NuGet 封裝新增至您的專案：
 
     ```
-    Microsoft.Azure.KeyVault
-    Microsoft.Azure.Services.AppAuthentication
-    Microsoft.Extensions.Configuration.AzureKeyVault
+    Azure.Identity
+    Azure.Extensions.AspNetCore.Configuration.Secrets
     ```
-5. 將下列程式碼新增至 Program.cs 檔案：
+6. 將下列程式碼新增至 Program.cs 檔案：
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -73,12 +78,7 @@ ms.locfileid: "89019839"
                     var keyVaultEndpoint = GetKeyVaultEndpoint();
                     if (!string.IsNullOrEmpty(keyVaultEndpoint))
                     {
-                        var azureServiceTokenProvider = new AzureServiceTokenProvider();
-                        var keyVaultClient = new KeyVaultClient(
-                            new KeyVaultClient.AuthenticationCallback(
-                                azureServiceTokenProvider.KeyVaultTokenCallback));
-                        builder.AddAzureKeyVault(
-                        keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+                        builder.AddAzureKeyVault(new Uri(keyVaultEndpoint), new DefaultAzureCredential(), new KeyVaultSecretManager());
                     }
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
@@ -88,11 +88,12 @@ ms.locfileid: "89019839"
 
         private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT");
     ```
-6. 將您的金鑰保存庫 URL 新增至 launchsettings.json 檔案。 環境變數名稱 *KEYVAULT_ENDPOINT* 會定義於您在步驟 6 新增的程式碼中。
+
+7. 將您的金鑰保存庫 URL 新增至 launchsettings.json 檔案。 環境變數名稱 *KEYVAULT_ENDPOINT* 是在您于步驟7中新增的程式碼中定義。
 
     ![將金鑰保存庫 URL 新增為專案的環境變數](../media/vs-secure-secret-appsettings/add-keyvault-url.png)
 
-7. 開始進行專案偵錯。 此作業應可順利執行。
+8. 開始進行專案偵錯。 此作業應可順利執行。
 
 ## <a name="aspnet-and-net-applications"></a>ASP.NET 和 .NET 應用程式
 

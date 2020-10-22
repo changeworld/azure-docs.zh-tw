@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c062b907f1e8a8e0541db0d69c6e24901f3145f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fe19a1fadd54b7146ccb074d82a68ec259100f2
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268548"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093254"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>教學課程：手動設定已加入混合式 Azure Active Directory 的裝置
 
@@ -564,7 +564,7 @@ Azure AD Connect：
 ### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
 
 1. 使用[直接連結](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)移至裝置頁面。
-2. 如需如何找出裝置的資訊，請參閱[如何使用 Azure 入口網站管理裝置身分識別](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices)。
+2. 如需如何找出裝置的資訊，請參閱[如何使用 Azure 入口網站管理裝置身分識別](./device-management-azure-portal.md#manage-devices)。
 3. 如果**已註冊**資料行顯示為**擱置**，表示混合式 Azure AD Join 尚未完成。 在同盟環境中，只有在無法註冊，而且 AAD connect 已設定為同步裝置時，才會發生這種情況。
 4. 如果**已註冊**資料行包含**日期/時間**，表示混合式 Azure AD Join 已完成。
 

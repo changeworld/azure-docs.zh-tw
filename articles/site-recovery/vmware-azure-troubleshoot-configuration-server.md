@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: b60a53b05c0d2c80c36c94e27e4d00952b5af954
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5fd014732fd4cdfaa52f971b5e4d2c74db580d2
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86113066"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371948"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>針對組態伺服器問題進行疑難排解
 
@@ -63,7 +63,7 @@ ms.locfileid: "86113066"
 
 若要解決 vCenter 探索失敗，請將 vCenter 伺服器新增至 byPass 清單 Proxy 設定。 
 
-- 請從[此處](https://aka.ms/PsExec)下載 PsExec 工具，以存取系統使用者內容。
+- 請從[此處](/sysinternals/downloads/psexec)下載 PsExec 工具，以存取系統使用者內容。
 - 藉由執行下列命令列   psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"，在系統使用者內容中開啟 Internet Explorer
 - 在 IE 中新增 Proxy 設定，然後重新啟動 tmanssvc 服務。
 - 若要設定 DRA Proxy 設定，請執行   cd C:\Program Files\Microsoft Azure Site Recovery Provider
@@ -99,7 +99,7 @@ ms.locfileid: "86113066"
 
 設定 | 詳細資料
 --- | ---
-使用量 | UnifiedAgentConfigurator.exe  /CSEndPoint <設定伺服器 IP位址\> /PassphraseFilePath <複雜密碼檔案路徑\>
+使用方式 | UnifiedAgentConfigurator.exe  /CSEndPoint <設定伺服器 IP位址\> /PassphraseFilePath <複雜密碼檔案路徑\>
 代理程式設定記錄 | 位在 %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log 底下。
 /CSEndPoint | 必要參數。 指定設定伺服器的 IP 位址。 請使用任何有效的 IP 位址。
 /PassphraseFilePath |  Mandatory。 複雜密碼的位置。 請使用任何有效的 UNC 或本機檔案路徑。
@@ -114,7 +114,7 @@ ms.locfileid: "86113066"
 
 設定 | 詳細資料
 --- | ---
-使用量 | cd /usr/local/ASR/Vx/bin<br /><br /> UnifiedAgentConfigurator.sh -i <設定伺服器 IP 位址\> -P <複雜密碼檔案路徑\>
+使用方式 | cd /usr/local/ASR/Vx/bin<br /><br /> UnifiedAgentConfigurator.sh -i <設定伺服器 IP 位址\> -P <複雜密碼檔案路徑\>
 -i | 必要參數。 指定設定伺服器的 IP 位址。 請使用任何有效的 IP 位址。
 -P |  Mandatory。 儲存複雜密碼之檔案的完整檔案路徑。 請使用任何有效的資料夾。
 
@@ -163,16 +163,16 @@ ms.locfileid: "86113066"
 若要找出問題，請瀏覽至組態伺服器上的 C:\ProgramData\ASRSetupLogs\CX_TP_InstallLogFile。 如果您發現下列錯誤，請依照下列步驟來解決問題： 
 
 ```output
-2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
-2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
-2018-06-28 14:28:12.944   Stopping svagents service.
-2018-06-28 14:31:32.949   Unable to stop svagents service.
-2018-06-28 14:31:32.949   Stopping svagents service.
-2018-06-28 14:34:52.960   Unable to stop svagents service.
-2018-06-28 14:34:52.960   Stopping svagents service.
-2018-06-28 14:38:12.971   Unable to stop svagents service.
-2018-06-28 14:38:12.971   Rolling back the install changes.
-2018-06-28 14:38:12.971   Upgrade has failed.
+2018-06-28 14:28:12.943   Successfully copied php.ini to C:\Temp from C:\thirdparty\php5nts
+2018-06-28 14:28:12.943   svagents service status - SERVICE_RUNNING
+2018-06-28 14:28:12.944   Stopping svagents service.
+2018-06-28 14:31:32.949   Unable to stop svagents service.
+2018-06-28 14:31:32.949   Stopping svagents service.
+2018-06-28 14:34:52.960   Unable to stop svagents service.
+2018-06-28 14:34:52.960   Stopping svagents service.
+2018-06-28 14:38:12.971   Unable to stop svagents service.
+2018-06-28 14:38:12.971   Rolling back the install changes.
+2018-06-28 14:38:12.971   Upgrade has failed.
 ```
 
 若要解決問題：
@@ -194,7 +194,7 @@ ms.locfileid: "86113066"
 
 若要解決此問題，請登入 Azure 入口網站並執行下列其中一項：
 
-- 在 AAD 中要求應用程式開發人員角色。 如需應用程式開發人員角色的詳細資訊，請參閱 [Azure Active Directory 中的系統管理員角色權限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+- 在 AAD 中要求應用程式開發人員角色。 如需應用程式開發人員角色的詳細資訊，請參閱 [Azure Active Directory 中的系統管理員角色權限](../active-directory/roles/permissions-reference.md)。
 - 在 AAD 中確認 [使用者可以建立應用程式]**** 旗標設為 true**。 如需詳細資訊，請參閱 [如何：使用入口網站來建立可存取資源 Azure AD 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
 ## <a name="process-servermaster-target-are-unable-to-communicate-with-the-configuration-server"></a>處理序伺服器/主要目標無法與組態伺服器通訊 
@@ -258,4 +258,3 @@ TCP    192.168.1.40:52739     192.168.1.40:443      SYN_SENT  // 以這裡的 CS
 若要解決問題：
 
 在電腦上設定正確時間，然後重試登入。 
- 

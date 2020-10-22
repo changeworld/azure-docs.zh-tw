@@ -8,12 +8,12 @@ ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6b7d670f5e38968fa6592e323ede075abf687435
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 404f435e321e53694807a627121d84f6cbf6724d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939012"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359674"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>受控磁片的效能層級 (預覽) 
 
@@ -52,9 +52,9 @@ Azure 磁碟儲存體目前提供內建的高載功能，以提供更高的效�
 ## <a name="restrictions"></a>限制
 
 - 這項功能目前僅支援 premium Ssd。
-- 您必須先從執行中的 VM 卸離您的磁片，才能變更磁片層。
+- 您必須從執行中的 VM 解除配置 VM 或卸離您的磁片，然後才能變更磁片層。
 - 使用 P60、P70 和 P80 效能層級僅限於 4096 GiB 或更高版本的磁片。
-- 磁片的效能層級只能每隔24小時變更一次。
+- 磁片的效能層級只能每24小時降級一次。
 
 ## <a name="regional-availability"></a>區域可用性
 

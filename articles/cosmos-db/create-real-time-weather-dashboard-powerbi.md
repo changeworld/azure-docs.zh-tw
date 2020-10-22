@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 681929928e6e6b28c7950c8aeeadc8b181491f46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f44a8d82ea2588abad6855fd8eaf7aed34256d87
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804124"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370758"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>使用 Azure Cosmos DB 和 Power BI 建立即時儀表板
 
@@ -23,7 +23,7 @@ ms.locfileid: "91804124"
 有多種方式可針對儲存在 Azure Cosmos DB 中的資料設定報告儀表板。 根據過期需求和資料大小，下表描述每個案例的報告設定：
 
 
-|狀況 |安裝程式 |
+|案例 |安裝程式 |
 |---------|---------|
 |1. 產生臨機操作報表 (沒有重新整理)     |  [使用匯入模式 Power BI Azure Cosmos DB 連接器](powerbi-visualize.md)       |
 |2. 使用定期重新整理來產生特定報表   |  [使用匯入模式 Power BI Azure Cosmos DB 連接器 (排程的定期更新) ](powerbi-visualize.md)       |
@@ -46,7 +46,7 @@ Azure Analysis Services 提供完全受控的平臺即服務，可裝載雲端�
 
 ### <a name="ingest-weather-data-into-azure-cosmos-db"></a>將天氣資料內嵌至 Azure Cosmos DB
 
-設定可將 [天氣資料](https://catalog.data.gov/dataset/local-weather-archive) 載入 Azure Cosmos DB 的內嵌管線。 您可以設定 [Azure Data Factory (ADF) ](../data-factory/connector-azure-cosmos-db.md) 作業，以使用 HTTP 來源和 Cosmos DB 接收，定期將最新的氣象資料載入 Azure Cosmos DB。
+設定可將 [天氣資料](https://catalog.data.gov/dataset/local-weather-archive/resource/c28974a2-fc83-4722-8977-9a701323f729) 載入 Azure Cosmos DB 的內嵌管線。 您可以設定 [Azure Data Factory (ADF) ](../data-factory/connector-azure-cosmos-db.md) 作業，以使用 HTTP 來源和 Cosmos DB 接收，定期將最新的氣象資料載入 Azure Cosmos DB。
 
 
 ### <a name="connect-power-bi-to-azure-cosmos-db"></a>將 Power BI 連接到 Azure Cosmos DB
@@ -66,8 +66,8 @@ Azure Analysis Services 提供完全受控的平臺即服務，可裝載雲端�
    |屬性  |資料類型  |Filter  |
    |---------|---------|---------|
    |_ts     |   數值      |  [_ts] > 持續時間。 TotalSeconds (RangeStart-#datetime (1970、1、1、0、0、0) # A3 和 [_ts] < 持續時間。 TotalSeconds (到 rangeend-#datetime (1970，1，1，0，0，0) # A7 # A8       |
-   |日期 (例如：-2019-08-19)      |   字串      | [Document. date] > DateTime. Duration.totext (RangeStart，"yyyy-mm-dd" ) 和 [Document. date] < DateTime. Duration.totext (到 rangeend，"yyyy-mm-dd" )         |
-   |日期 (例如：-2019-08-11 12:00:00)    |  字串       |  [Document. date] > DateTime. Duration.totext (RangeStart，"yyyy-mm-dd HH： mm： ss" ) 和 [Document. date] < DateTime. Duration.totext (到 rangeend，"yyyy-mm-dd HH： mm： ss" )        |
+   |日期 (例如：-2019-08-19)      |   String      | [Document. date] > DateTime. Duration.totext (RangeStart，"yyyy-mm-dd" ) 和 [Document. date] < DateTime. Duration.totext (到 rangeend，"yyyy-mm-dd" )         |
+   |日期 (例如：-2019-08-11 12:00:00)    |  String       |  [Document. date] > DateTime. Duration.totext (RangeStart，"yyyy-mm-dd HH： mm： ss" ) 和 [Document. date] < DateTime. Duration.totext (到 rangeend，"yyyy-mm-dd HH： mm： ss" )        |
 
 
 1. **定義**重新整理原則：流覽至資料表**內容**功能表上的 [累加**式**重新整理] 索引標籤，以定義重新整理原則。 將重新整理原則設定為 **每天重新整理，並儲存** 上個月的資料。
@@ -87,7 +87,7 @@ Azure Analysis Services 提供完全受控的平臺即服務，可裝載雲端�
 
 ### <a name="ingest-weather-data-into-azure-cosmos-db"></a>將天氣資料內嵌至 Azure Cosmos DB 
 
-設定可將 [天氣資料](https://catalog.data.gov/dataset/local-weather-archive) 載入 Azure Cosmos DB 的內嵌管線。 您可以設定 Azure Data Factory (ADF) 作業，以使用 HTTP 來源和 Cosmos DB 接收，定期將最新的氣象資料載入 Azure Cosmos DB。
+設定可將 [天氣資料](https://catalog.data.gov/dataset/local-weather-archive/resource/c28974a2-fc83-4722-8977-9a701323f729) 載入 Azure Cosmos DB 的內嵌管線。 您可以設定 Azure Data Factory (ADF) 作業，以使用 HTTP 來源和 Cosmos DB 接收，定期將最新的氣象資料載入 Azure Cosmos DB。
 
 ### <a name="connect-azure-analysis-services-to-azure-cosmos-account"></a>將 Azure Analysis Services 連線到 Azure Cosmos 帳戶
 

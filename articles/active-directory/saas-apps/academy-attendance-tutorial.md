@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
-ms.openlocfilehash: cc64e36e5fa65a8d6eca117f33be8cac89514177
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fd7425169ddc3ebed11ddaf513f0182dd397703
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88538156"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313530"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-academy-attendance"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Academy Attendance 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88538156"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Academy Attendance。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -94,7 +94,7 @@ ms.locfileid: "88538156"
     ![image](common/edit-attribute.png)
 
     > [!NOTE]
-    > Academy Attendance 支援兩種使用者角色：**講師**和**學生**。 在 Azure AD 中設定這些角色，以便您可以將使用者指派為適當的角色。 請參閱[這份](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)文件，該文件說明如何在 Azure AD 中建立自訂角色。
+    > Academy Attendance 支援兩種使用者角色：**講師**和**學生**。 在 Azure AD 中設定這些角色，以便您可以將使用者指派為適當的角色。 請參閱[這份](../develop/active-directory-enterprise-app-role-management.md)文件，該文件說明如何在 Azure AD 中建立自訂角色。
 
 1. 除了上述屬性外，Academy Attendance 應用程式還需要在 SAML 回應中多傳回幾個屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
 
@@ -152,15 +152,14 @@ ms.locfileid: "88538156"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Academy Attendance] 圖格時，應該會自動登入您設定 SSO 的 Academy Attendance。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Academy Attendance] 圖格時，應該會自動登入您設定 SSO 的 Academy Attendance。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Academy Attendance](https://aad.portal.azure.com/)
-

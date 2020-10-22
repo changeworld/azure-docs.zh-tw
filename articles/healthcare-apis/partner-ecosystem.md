@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 10/22/2019
 ms.author: chrupa
-ms.openlocfilehash: edc337849b53cb8e818114d3dd100d30cf00b895
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 556cc7fb5f735346a35903840501cf8f8e1be033
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84871378"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372169"
 ---
 # <a name="partner-ecosystem-for-azure-api-for-fhir"></a>Azure API for FHIR 的合作夥伴生態系統
 我們很高興 Azure API for FHIR 已正式推出給所有 Azure 客戶。 我們更興奮您將使用我們的服務建立的解決方案。  
@@ -25,7 +25,7 @@ ms.locfileid: "84871378"
 |------------------|--------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | 獎章            | 解除識別、舊版 FHIR 轉換  | USA                         | [Contact](http://www.medal.com/)                                                                                           |
 | 狂想曲         | 舊版-FHIR 轉換                     | 美國、澳大利亞、紐西蘭 | [Contact](https://rhapsody.health/contact-us)                                                                                          |
-| iNTERFACEWARE    | 舊版-FHIR 轉換                     | 美國、加拿大                 | [Contact](https://www.interfaceware.com/contact.html)                                                                                  |
+| iNTERFACEWARE    | 舊版-FHIR 轉換                     | 美國、加拿大                 | [Contact](https://www.interfaceware.com/contact)                                                                                  |
 | Darena 解決方案 | 應用程式開發，系統整合者 | USA                         | [Contact](https://www.darenasolutions.com/contact)                                                                                     |
 | NewWave          | 應用程式開發，系統整合者 | USA                         | [Contact](https://newwave.io/get-in-touch/)                                                                                            |
 | Dapasoft         | 應用程式開發，系統整合者 | 美國、加拿大                 | [Contact](https://www.dapasoft.com/contact-us/)                                                                                        |

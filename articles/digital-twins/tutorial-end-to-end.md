@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: e7d966aa5aa4b5a498c80cab26686411dd586185
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 5ac3d76d8c80947b820d195b9727d1fe50d32899
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044593"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372339"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>教學課程：建置端對端解決方案
 
@@ -453,12 +453,6 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 
 ```azurecli
 az group delete --name <your-resource-group>
-```
-
-接下來，使用此命令刪除您為用戶端應用程式所建立的 Azure AD 應用程式註冊：
-
-```azurecli
-az ad app delete --id <your-application-ID>
 ```
 
 最後，刪除下載到您本機電腦的專案範例資料夾。
