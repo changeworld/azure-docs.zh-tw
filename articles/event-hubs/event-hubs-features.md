@@ -3,12 +3,12 @@ title: 功能概觀 - Azure 事件中樞 | Microsoft Docs
 description: 本文將詳細說明 Azure 事件中樞的相關功能與術語。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9e004b3a8a9dd454eae5a20564a1ab74a26b66d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43ebf4e928cadfc87f52fc10b27f9c8419d11a8f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936226"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369636"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中樞的功能與術語
 
@@ -33,7 +33,9 @@ ms.locfileid: "88936226"
 
 ### <a name="publishing-an-event"></a>發佈事件
 
-您可以透過 AMQP 1.0、Kafka 1.0 (和更新版本) 或 HTTPS 來發佈事件。 事件中樞提供[用戶端程式庫和類別](./event-hubs-dotnet-framework-getstarted-send.md)，以供您從 .NET 用戶端將事件發佈到事件中樞。 對於其他執行階段和平台，您可以使用任何 AMQP 1.0 用戶端 (如 [Apache Qpid](https://qpid.apache.org/))。 您可以單獨發佈事件，或以批次方式進行。 不論是單一事件或批次，單次發佈 (事件資料執行個體) 的上限為 1 MB。 發佈大於此臨界值的事件會導致錯誤。 發行者最好不要察覺事件中樞內的資料分割，並只指定 (下一節) 所引進的分割區索引 *鍵* ，或透過其 SAS 權杖的身分識別。
+您可以透過 AMQP 1.0、Kafka 1.0 (和更新版本) 或 HTTPS 來發佈事件。 事件中樞服務會提供 [REST API](https://docs.microsoft.com/rest/api/eventhub/) 和 [.net](event-hubs-dotnet-standard-getstarted-send.md)、 [JAVA](event-hubs-java-get-started-send.md)、 [Python](event-hubs-python-get-started-send.md)、 [JavaScript](event-hubs-node-get-started-send.md)和 [Go](event-hubs-go-get-started-send.md) 用戶端程式庫，以將事件發佈至事件中樞。 對於其他執行階段和平台，您可以使用任何 AMQP 1.0 用戶端 (如 [Apache Qpid](https://qpid.apache.org/))。 
+
+您可以單獨發佈事件，或以批次方式進行。 不論是單一事件或批次，單次發佈 (事件資料執行個體) 的上限為 1 MB。 發佈大於此臨界值的事件會導致錯誤。 發行者最好不要察覺事件中樞內的資料分割，並只指定 (下一節) 所引進的分割區索引 *鍵* ，或透過其 SAS 權杖的身分識別。
 
 使用 AMQP 或 HTTPS 的選擇因使用案例而異。 除了傳輸層級安全性 (TLS) 或 SSL/TLS 之外，AMQP 還需要建立持續性的雙向通訊端。 在初始化會話時，AMQP 會有較高的網路成本，不過 HTTPS 需要針對每個要求增加額外的 TLS 負擔。 對於頻繁的發行者，AMQP 的效能較高。
 
@@ -127,13 +129,13 @@ Azure Sdk 所提供的部分用戶端是智慧型取用者代理程式，可自�
 事件資料︰
 * Offset
 * 序號
-* 主體
+* body
 * 使用者屬性
 * 系統屬性
 
 您必須負責管理位移。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需事件中樞的詳細資訊，請造訪下列連結：
 

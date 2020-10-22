@@ -3,12 +3,12 @@ title: 使用 Azure Site Recovery 的 VMware 嚴重損壞修復常見問題
 description: 使用 Azure Site Recovery 取得內部部署 VMware Vm 至 Azure 的嚴重損壞修復常見問題解答。
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1d61b8556038959f6acab447fc0510830b1dd943
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 421a96255e7dbbec723122fb3920dcc27da72670
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89054966"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359793"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware 到 Azure 的複寫常見問題
 
@@ -75,7 +75,7 @@ Site Recovery 通過 ISO 27001:2013 和27018、HIPAA 和 DPA 的認證。 SOC2 �
 
 使用 [定價計算機](https://aka.ms/asr_pricing_calculator) 來預估使用 Site Recovery 的成本。
 
-如需成本的詳細估計，請執行 [VMware](https://aka.ms/siterecovery_deployment_planner) 的 deployment planner 工具，並使用 [成本估計報告](https://aka.ms/asr_DP_costreport)。
+如需成本的詳細估計，請執行 [VMware](./site-recovery-deployment-planner.md) 的 deployment planner 工具，並使用 [成本估計報告](./site-recovery-vmware-deployment-planner-cost-estimation.md)。
 
 ### <a name="is-there-any-difference-in-cost-between-replicating-to-storage-or-directly-to-managed-disks"></a>複寫至儲存體或直接複寫到受控磁片之間的成本有任何差異嗎？
 
@@ -114,7 +114,7 @@ Site Recovery 會將內部部署 VMware Vm 和實體伺服器複寫至 Azure 中
 
 否。 從2019年3月開始，在 Azure 入口網站中，您只能複寫到 Azure 受控磁片。
 
-只有使用 PowerShell ([Az. az.recoveryservices module version 1.4.5](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) 或 REST API (2018-01-10 版或) 2016-08-10 版，才能將新的 vm 複寫至儲存體帳戶。 [瞭解如何](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell) 使用 PowerShell 命令來設定複寫。
+只有使用 PowerShell ([Az. az.recoveryservices module version 1.4.5](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) 或 REST API (2018-01-10 版或) 2016-08-10 版，才能將新的 vm 複寫至儲存體帳戶。 [瞭解如何](./vmware-azure-disaster-recovery-powershell.md) 使用 PowerShell 命令來設定複寫。
 
 ### <a name="what-are-the-benefits-of-replicating-to-managed-disks"></a>複寫至受控磁片的優點有哪些？
 
@@ -190,7 +190,7 @@ Site Recovery 每隔5分鐘會產生一次損毀一致復原點。
 
 ### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>我的行動服務代理程式或設定伺服器版本是舊的，我的升級失敗。 該怎麼辦？
 
-Site Recovery 遵循 N-4 支援模型。 [深入瞭解](https://aka.ms/asr_support_statement) 如何從非常舊的版本進行升級。
+Site Recovery 遵循 N-4 支援模型。 [深入瞭解](./service-updates-how-to.md#support-statement-for-azure-site-recovery) 如何從非常舊的版本進行升級。
 
 ### <a name="where-can-i-find-the-release-notes-and-update-rollups-for-azure-site-recovery"></a>我可以在哪裡找到 Azure Site Recovery 的版本資訊和更新彙總套件？
 
@@ -198,11 +198,11 @@ Site Recovery 遵循 N-4 支援模型。 [深入瞭解](https://aka.ms/asr_suppo
 
 ### <a name="where-can-i-find-upgrade-information-for-disaster-recovery-to-azure"></a>哪裡可以找到損毀修復至 Azure 的升級資訊？
 
-[瞭解如何升級](https://aka.ms/asr_vmware_upgrades)。
+[瞭解如何升級](./service-updates-how-to.md#vmware-vmphysical-server-disaster-recovery-to-azure)。
 
 ## <a name="do-i-need-to-reboot-source-machines-for-each-upgrade"></a>每次升級時是否需要重新開機來源機器？
 
-建議您重新開機，而不是每次升級都強制進行。 [深入了解](https://aka.ms/asr_vmware_upgrades)。
+建議您重新開機，而不是每次升級都強制進行。 [深入了解](./service-updates-how-to.md#reboot-after-mobility-service-upgrade)。
 
 ## <a name="configuration-server"></a>組態伺服器
 
@@ -246,7 +246,7 @@ Site Recovery 遵循 N-4 支援模型。 [深入瞭解](https://aka.ms/asr_suppo
 
 - 您可以在 [Azure 更新頁面](https://azure.microsoft.com/updates/?product=site-recovery)上找到最新的更新資訊。
 - 您可以從入口網站下載最新版本。 或者，您可以直接從 [Microsoft 下載中心](https://aka.ms/asrconfigurationserver)下載最新版的設定伺服器。
-- 如果您的版本比目前的版本還舊了四個以上的版本，請參閱升級指南的 [支援聲明](https://aka.ms/asr_support_statement) 。
+- 如果您的版本比目前的版本還舊了四個以上的版本，請參閱升級指南的 [支援聲明](./service-updates-how-to.md#support-statement-for-azure-site-recovery) 。
 
 ### <a name="should-i-back-up-the-configuration-server"></a>我應該備份設定伺服器嗎？
 

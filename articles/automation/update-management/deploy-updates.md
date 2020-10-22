@@ -3,14 +3,14 @@ title: 如何建立 Azure 自動化更新管理的更新部署
 description: 本文說明如何排程更新部署並檢查其狀態。
 services: automation
 ms.subservice: update-management
-ms.date: 10/14/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8b9b3df024839007a349d3a412de4a70ff3a1cd2
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 2c4489e22344d2807b22bf4752add9c336215bec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222108"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369689"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>如何部署更新和檢查結果
 
@@ -54,12 +54,12 @@ ms.locfileid: "92222108"
     > [!NOTE]
     > 如果您選取了 Azure VM 或啟用 Arc 的伺服器，則無法使用此選項。 系統會自動識別作業系統。
 
-5. 在 [要更新的群組 (預覽)] 區域中，結合訂用帳戶、資源群組、位置及標記來定義查詢，以建立要包含在您部署中的動態 Azure VM 群組。 若要進一步了解，請參閱[搭配更新管理使用動態群組](configure-groups.md)。
+5. 在 [ **要更新的群組** ] 區域中，定義結合訂用帳戶、資源群組、位置和標籤的查詢，以建立要包含在部署中的動態 Azure vm 群組。 若要進一步了解，請參閱[搭配更新管理使用動態群組](configure-groups.md)。
 
     > [!NOTE]
     > 如果您選取了 Azure VM 或啟用 Arc 的伺服器，則無法使用此選項。 機器會自動以排程的部署為目標。
 
-6. 在 [要更新的電腦] 中，選取已儲存的搜尋、已匯入的群組，或從下拉式功能表中選擇 [機器]，然後選取個別的機器。 利用此選項，您可以查看每一部機器的 Log Analytics 代理程式的整備狀態。 若要深入了解在 Azure 監視器記錄中建立電腦群組的不同方法，請參閱 [Azure 監視器記錄中的電腦群組](../../azure-monitor/platform/computer-groups.md)。 在排程的更新部署中，最多可以包含500部機器。
+6. 在 [要更新的電腦] 中，選取已儲存的搜尋、已匯入的群組，或從下拉式功能表中選擇 [機器]，然後選取個別的機器。 利用此選項，您可以查看每一部機器的 Log Analytics 代理程式的整備狀態。 若要深入了解在 Azure 監視器記錄中建立電腦群組的不同方法，請參閱 [Azure 監視器記錄中的電腦群組](../../azure-monitor/platform/computer-groups.md)。 在排程的更新部署中，最多可以包含1000部機器。
 
     > [!NOTE]
     > 如果您選取了 Azure VM 或啟用 Arc 的伺服器，則無法使用此選項。 機器會自動以排程的部署為目標。
@@ -83,7 +83,7 @@ ms.locfileid: "92222108"
 
 10. 使用 **迴圈** 來指定部署是否發生一次，或使用週期性排程，然後選取 **[確定]**。
 
-11. 在 [前置指令碼 + 後置指令碼 (預覽)] 區域，選取在部署前和部署後要執行的指令碼。 若要深入了解，請參閱[管理前指令碼和後指令碼](pre-post-scripts.md)。
+11. 在 [ **前置腳本 + 後置腳本** ] 區域中，選取部署之前和之後要執行的腳本。 若要深入了解，請參閱[管理前指令碼和後指令碼](pre-post-scripts.md)。
 
 12. 使用 [維護時間範圍 (分鐘)] 欄位，指定允許安裝更新的時間長度。 在指定維護時間範圍時，請考慮下列詳細資料：
 
@@ -111,7 +111,7 @@ ms.locfileid: "92222108"
     > [!NOTE]
     > 當您完成設定選取之已啟用 Arc 之伺服器的部署排程時，請選取 [ **審核 + 建立**]。
 
-15. 您會回到狀態儀表板。 選取 [ **部署** 排程]，以顯示您已建立的部署排程。
+15. 您會回到狀態儀表板。 選取 [ **部署** 排程]，以顯示您已建立的部署排程。 最多會列出500個排程。 如果您有超過500個排程，而您想要查看完整清單，請參閱使用2019-06-01 版或更高版本的 [軟體更新設定-列出](/rest/api/automation/softwareupdateconfigurations/list) REST API 方法。
 
 ## <a name="schedule-an-update-deployment-programmatically"></a>以程式設計方式排程更新部署
 

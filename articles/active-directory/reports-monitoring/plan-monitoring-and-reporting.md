@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 568a524e9300905a5e70b2cf7481fc7eabfc669e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 094ecd88c8b493d44b756d03d700b43cbcba1ee9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311229"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362394"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>規劃 Azure Active Directory 報告和監視部署
 
@@ -151,7 +151,7 @@ Azure AD 角色可讓您根據您的角色委派設定和查看 Azure AD 報表�
 
 * 報告讀者
 
-深入瞭解 [Azure AD 系統管理角色](../users-groups-roles/directory-assign-admin-roles.md)。
+深入瞭解 [Azure AD 系統管理角色](../roles/permissions-reference.md)。
 
 請*一律套用最低許可權的概念，以降低帳戶入侵的風險*。 請考慮實施 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) ，以進一步保護您的組織。
 

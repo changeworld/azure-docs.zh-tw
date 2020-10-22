@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 233645519a6a918e451c425971d2e2e16f788f3a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3781a87bde283de3b798f840274db1dd5ea3ac7e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145393"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366491"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory 使用規定
 
@@ -44,7 +44,7 @@ Azure AD 使用規定具有下列功能：
 - 要求員工或來賓在 Azure Multi-Factor Authentication (MFA) 註冊安全性資訊之前，先接受您的使用規定。
 - 要求員工在 Azure AD 自助式密碼重設 (SSPR) 中註冊安全性資訊之前，先接受您的使用規定。
 - 提供組織中所有使用者的一般使用條款。
-- 根據使用者屬性提出特定使用規定 (例如 醫生與護士或國內員工與國際員工，透過使用[動態群組](../users-groups-roles/groups-dynamic-membership.md)完成)。
+- 根據使用者屬性提出特定使用規定 (例如 醫生與護士或國內員工與國際員工，透過使用[動態群組](../enterprise-users/groups-dynamic-membership.md)完成)。
 - 在存取高業務影響應用程式（例如 Salesforce）時，提供特定的使用條款。
 - 以不同的語言呈現使用條款。
 - 列出已接受或未接受使用規定的人員。
@@ -52,7 +52,7 @@ Azure AD 使用規定具有下列功能：
 - 顯示使用規定活動的記錄，以進行合規性和審核。
 - 使用 [Microsoft Graph api](/graph/api/resources/agreement?view=graph-rest-beta) 來建立和管理使用規定 (目前為預覽) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要使用及設定 Azure AD 使用規定，您必須具備：
 
@@ -129,7 +129,7 @@ Azure AD 使用規定使用 PDF 格式來呈現內容。 此 PDF 檔案可以是
 
     自訂條件式存取原則可對特定雲端應用程式或使用者群組啟用細微的使用規定。 如需詳細資訊，請參閱 [快速入門：在存取雲端應用程式之前，必須先接受使用](require-tou.md)規定。
 
-1. 按一下 [建立]  。
+1. 按一下 [建立]。
 
    如果您已選取自訂的條件式存取範本，則會出現新的畫面，讓您建立自訂的條件式存取原則。
 

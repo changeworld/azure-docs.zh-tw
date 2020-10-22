@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: d6c447deedbdcc4f2439fc069f368db88b3560b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88483b29c8951f8e3f38f7cdc5bbdfb80eeca2b1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278017"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370112"
 ---
 # <a name="tutorial-assign-directory-readers-role-to-an-azure-ad-group-and-manage-role-assignments"></a>教學課程：將目錄讀取者角色指派給 Azure AD 群組並管理角色指派
 
@@ -23,9 +23,9 @@ ms.locfileid: "91278017"
 > [!NOTE]
 > 在本文中，群組的**目錄讀者**角色指派為**公開預覽**。 
 
-本文會引導您在 Azure Active Directory (Azure AD) 中建立群組，並將[**目錄讀者**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)角色指派給該群組。 目錄讀者權限允許群組擁有者將其他成員新增至群組，例如 [Azure SQL Database](sql-database-paas-overview.md) 的 [受控識別](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)、[Azure SQL 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md)，以及 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)。 如此就不需要[全域管理員](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)或[特殊權限角色管理員](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)，即直接為租用戶中的每個 Azure SQL 邏輯伺服器身分識別指派目錄讀者角色。
+本文會引導您在 Azure Active Directory (Azure AD) 中建立群組，並將[**目錄讀者**](../../active-directory/roles/permissions-reference.md#directory-readers)角色指派給該群組。 目錄讀者權限允許群組擁有者將其他成員新增至群組，例如 [Azure SQL Database](sql-database-paas-overview.md) 的 [受控識別](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)、[Azure SQL 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md)，以及 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)。 如此就不需要[全域管理員](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator)或[特殊權限角色管理員](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)，即直接為租用戶中的每個 Azure SQL 邏輯伺服器身分識別指派目錄讀者角色。
 
-本教學課程使用[在 Azure Active Directory (預覽) 中使用雲端群組管理角色指派](../../active-directory/users-groups-roles/roles-groups-concept.md)中介紹的功能。 
+本教學課程使用[在 Azure Active Directory (預覽) 中使用雲端群組管理角色指派](../../active-directory/roles/groups-concept.md)中介紹的功能。 
 
 如需了解將目錄讀者角色指派給 Azure SQL Azure AD 群組有何優點的詳細資訊，請參閱 [Azure SQL 的 Azure Active Directory 中目錄讀者角色](authentication-aad-directory-readers-role.md)。
 
@@ -38,7 +38,7 @@ ms.locfileid: "91278017"
 
 ### <a name="create-a-new-group-and-assign-owners-and-role"></a>建立新的群組，並指派擁有者和角色
 
-1. 具有[全域管理員](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)或[特殊權限角色管理員](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)權限的使用者必須具備初始設定的權限。
+1. 具有[全域管理員](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator)或[特殊權限角色管理員](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)權限的使用者必須具備初始設定的權限。
 1. 讓特殊權限使用者登入 [Azure 入口網站](https://portal.azure.com)。
 1. 移至 **Azure Active Directory** 資源。 在**受控**下，移至**群組**。 若要建立新群組，請選取 [新增群組]。
 1. 選取 [**安全性**] 作為群組類型，並填入其餘欄位。 請確定 **Azure AD 角色可指派給群組 (預覽)** 設定已切換為 **是**。 然後將 Azure AD **目錄讀者**角色指派給群組。
@@ -94,7 +94,7 @@ ms.locfileid: "91278017"
 ## <a name="directory-readers-role-assignment-using-powershell"></a>使用 PowerShell 的目錄讀者角色指派
 
 > [!IMPORTANT]
-> [全域管理員](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)或[特殊權限角色管理員](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)需要執行這些初始步驟。 除了 PowerShell 之外，Azure AD 提供 Microsoft 圖形 API [可在 Azure AD 中建立可指派角色的群組](../../active-directory/users-groups-roles/roles-groups-create-eligible.md#using-microsoft-graph-api)。
+> [全域管理員](../../active-directory/roles/permissions-reference.md#global-administrator--company-administrator)或[特殊權限角色管理員](../../active-directory/roles/permissions-reference.md#privileged-role-administrator)需要執行這些初始步驟。 除了 PowerShell 之外，Azure AD 提供 Microsoft 圖形 API [可在 Azure AD 中建立可指派角色的群組](../../active-directory/roles/groups-create-eligible.md#using-microsoft-graph-api)。
 
 1. 使用下列命令下載 Azure AD Preview PowerShell 模組。 您必須以管理員身分執行 PowerShell。
 

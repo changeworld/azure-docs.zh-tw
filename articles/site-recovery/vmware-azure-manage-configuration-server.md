@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 5748ff87e94daef80b140e015371eb7a334fffac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcd232a3242b0341bfc81fa9785f76b0d3bd90cb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361478"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369449"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>管理 VMware VM/實體伺服器災害復原的設定伺服器
 
@@ -169,12 +169,12 @@ ms.locfileid: "91361478"
 - 如果您執行 9.7、9.8、9.9 或 9.10，就可以直接升級至 9.11。
 - 如果您執行 9.6 或更早版本，而且想要升級至 9.11，則在升級到 9.11 之前，必須先升級到 版本 9.7。
 
-如需 Azure Site Recovery 元件支援聲明的詳細指引，請參閱[這裡](https://aka.ms/asr_support_statement)。
-用來升級至組態伺服器所有版本的更新彙總連結，可以在[這裡](https://aka.ms/asr_update_rollups)取得。
+如需 Azure Site Recovery 元件支援聲明的詳細指引，請參閱[這裡](./service-updates-how-to.md#support-statement-for-azure-site-recovery)。
+用來升級至組態伺服器所有版本的更新彙總連結，可以在[這裡](./service-updates-how-to.md#links-to-currently-supported-update-rollups)取得。
 
 > [!IMPORTANT]
 > 每當發行新的 Azure Site Recovery 元件版本 'N' 時，'N-4' 以下的所有版本就會被視為不支援的版本。 我們一律建議您升級到可用的最新版本。</br>
-> 如需 Azure Site Recovery 元件支援聲明的詳細指引，請參閱[這裡](https://aka.ms/asr_support_statement)。
+> 如需 Azure Site Recovery 元件支援聲明的詳細指引，請參閱[這裡](./service-updates-how-to.md#support-statement-for-azure-site-recovery)。
 
 升級伺服器，如下所示：
 
@@ -192,7 +192,7 @@ ms.locfileid: "91361478"
     ![更新](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. 按一下 [完成]**** 以關閉安裝程式。
-8. 若要升級其餘 Site Recovery 元件，請參閱我們的[升級指引](https://aka.ms/asr_vmware_upgrades)。
+8. 若要升級其餘 Site Recovery 元件，請參閱我們的[升級指引](./service-updates-how-to.md#vmware-vmphysical-server-disaster-recovery-to-azure)。
 
 ## <a name="upgrade-configuration-serverprocess-server-from-the-command-line"></a>您可以從命令列升級組態伺服器/處理序伺服器
 
@@ -222,12 +222,12 @@ ms.locfileid: "91361478"
 |/PSIP|必要|要用於複寫資料傳輸的 NIC IP 位址| 任何有效的 IP 位址|
 |/CSIP|必要|接聽組態伺服器的 NIC IP 位址| 任何有效的 IP 位址|
 |/PassphraseFilePath|必要|複雜密碼檔案的位置完整路徑|有效的檔案路徑|
-|/BypassProxy|選用|指定組態伺服器不使用 Proxy 連接至 Azure|若要這樣做，請從 Venu 取得此值|
-|/ProxySettingsFilePath|選用|Proxy 設定 (預設的 Proxy 需要驗證或自訂的 Proxy)|此檔案應該具備如下所指定的格式|
-|DataTransferSecurePort|選用|要用於複寫資料的 PSIP 上的連接埠號碼| 有效的連接埠號碼 (預設值是 9433)|
-|/SkipSpaceCheck|選用|略過快取磁碟的空間檢查| |
+|/BypassProxy|選擇性|指定組態伺服器不使用 Proxy 連接至 Azure|若要這樣做，請從 Venu 取得此值|
+|/ProxySettingsFilePath|選擇性|Proxy 設定 (預設的 Proxy 需要驗證或自訂的 Proxy)|此檔案應該具備如下所指定的格式|
+|DataTransferSecurePort|選擇性|要用於複寫資料的 PSIP 上的連接埠號碼| 有效的連接埠號碼 (預設值是 9433)|
+|/SkipSpaceCheck|選擇性|略過快取磁碟的空間檢查| |
 |/AcceptThirdpartyEULA|必要|旗標表示接受協力廠商使用者授權合約| |
-|/ShowThirdpartyEULA|選用|顯示協力廠商使用者授權合約。 如果提供作為輸入，則會忽略所有其他參數| |
+|/ShowThirdpartyEULA|選擇性|顯示協力廠商使用者授權合約。 如果提供作為輸入，則會忽略所有其他參數| |
 
 
 

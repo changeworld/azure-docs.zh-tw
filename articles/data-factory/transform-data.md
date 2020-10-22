@@ -1,6 +1,6 @@
 ---
 title: 轉換資料
-description: 使用 Hadoop、Machine Learning 或 Azure Data Lake Analytics，在 Azure Data Factory 中轉換資料或處理資料。
+description: 使用 Hadoop、Azure Machine Learning Studio (傳統) 或 Azure Data Lake Analytics，在 Azure Data Factory 中轉換資料或處理資料。
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 19b4ee621a3918a49b524c5e4515bddd5962e0f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 039afdafdccbefe03b5b366a89256409fda482e9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442780"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368854"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory 中的資料轉換
 
@@ -26,7 +26,7 @@ ms.locfileid: "89442780"
 > * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
 > * [HDInsight 串流](transform-data-using-hadoop-streaming.md)
 > * [HDInsight Spark](transform-data-using-spark.md)
-> * [Machine Learning](transform-data-using-machine-learning.md) 
+> * [Azure Machine Learning Studio (傳統) ](transform-data-using-machine-learning.md) 
 > * [預存程序](transform-data-using-stored-procedure.md)
 > * [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md)
 > * [Databricks 筆記本](transform-data-databricks-notebook.md)
@@ -70,12 +70,12 @@ Data Factory 管線中的 HDInsight 串流活動會在您自己或隨選的 Wind
 ### <a name="hdinsight-spark-activity"></a>HdInsight Spark 活動
 Data Factory 管線中的 HDInsight Spark 活動會在您自己的 HDInsight 叢集上執行 Spark 程式。 如需詳細資訊，請參閱[從 Azure Data Factory 叫用 Spark 程式](transform-data-using-spark.md)。 
 
-### <a name="machine-learning-activities"></a>Machine Learning 活動
-Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的 Azure Machine Learning Web 服務進行預測性分析。 在 Azure Data Factory 管線中使用[批次執行活動](transform-data-using-machine-learning.md)，您可以叫用 Machine Learning Web 服務來對批次中的資料進行預測。
+### <a name="azure-machine-learning-studio-classic-activities"></a>Azure Machine Learning Studio (傳統) 活動
+Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的 Azure Machine Learning Studio (傳統) web 服務進行預測性分析。 使用 Azure Data Factory 管線中的 [批次執行活動](transform-data-using-machine-learning.md) ，您可以叫用 Studio (傳統) web 服務來對批次中的資料進行預測。
 
-經過一段時間，必須使用新的輸入資料集重新訓練 Machine Learning 評分實驗中的預測模型。 完成重新訓練之後，您想要使用已重新訓練的 Machine Learning 模型來更新評分 Web 服務。 您可以使用[更新資源活動](update-machine-learning-models.md)，以新訓練的模型來更新 Web 服務。  
+經過一段時間之後，就必須使用新的輸入資料集重新定型 Studio 中的預測模型， (傳統的) 評分實驗。 完成重新訓練之後，您想要使用重新定型機器學習模型來更新評分 web 服務。 您可以使用[更新資源活動](update-machine-learning-models.md)，以新訓練的模型來更新 Web 服務。  
 
-如需這些機器學習活動的詳細資料，請參閱 [使用 Machine Learning 活動](transform-data-using-machine-learning.md) 。 
+如需這些 Studio (傳統) 活動的詳細資訊，請參閱 [使用 Azure Machine Learning Studio (傳統) 活動](transform-data-using-machine-learning.md) 。 
 
 ### <a name="stored-procedure-activity"></a>預存程序活動
 您可以在 Data Factory 管線中使用 SQL Server 預存程式活動，以叫用下列其中一個資料存放區中的預存程式： Azure SQL Database、Azure Synapse Analytics (先前的 SQL 資料倉儲) ，SQL Server 您的企業或 Azure VM 中的資料庫。 如需詳細資料，請參閱[預存程序活動](transform-data-using-stored-procedure.md)一文。  

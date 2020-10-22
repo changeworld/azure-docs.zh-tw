@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ff683c7c3214be6ae60b5d00d4cd1c2becc32e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7dd1234e13f77f1ea95327a0a489e9a97cdc0ffd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447082"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362496"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中管理外部使用者的存取權
 
@@ -109,7 +109,7 @@ Azure AD 權利管理會利用 [Azure AD 的企業對企業 (B2B) ](../external-
 
 - 如果您想要讓外部使用者能夠存取 SharePoint Online 網站和與 Microsoft 365 群組相關聯的資源，請確定您開啟的是 SharePoint Online 外部共用。 如需詳細資訊，請參閱 [開啟或關閉外部共用](/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)。
 
-- 如需如何在 PowerShell 中為目錄層級的 Microsoft 365 群組設定來賓原則的詳細資訊，請參閱 [範例：在目錄層級設定群組的來賓原則](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level)。
+- 如需如何在 PowerShell 中為目錄層級的 Microsoft 365 群組設定來賓原則的詳細資訊，請參閱 [範例：在目錄層級設定群組的來賓原則](../enterprise-users/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level)。
 
 ### <a name="review-your-teams-sharing-settings"></a>檢查您的小組共用設定
 
