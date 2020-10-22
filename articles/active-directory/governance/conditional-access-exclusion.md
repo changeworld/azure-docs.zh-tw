@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: def74cccb3ad2c45a18210cc9d5a0d7ff0ba76f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4a18ad04064ef8356e21d106843d6c946f50741
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88783683"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362717"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>使用 Azure AD 存取權檢閱來管理已從條件式存取原則中排除的使用者
 
@@ -38,7 +38,7 @@ ms.locfileid: "88783683"
 
 ![條件式存取中的具名位置](./media/conditional-access-exclusion/named-locations.png)
 
-可惜的是，有些使用者可能仍有正當理由要從這些遭到封鎖的國家/區域進行登入。 例如，使用者可能出差當中而且需要存取公司資源。 在此情況下，用來封鎖這些國家/區域的條件式存取原則，可能使用從原則中排除的使用者所適用的雲端安全性群組。 在旅行時需要存取的使用者，可以使用 [Azure AD 自助式群組管理](../users-groups-roles/groups-self-service-management.md)將本身新增到群組。
+可惜的是，有些使用者可能仍有正當理由要從這些遭到封鎖的國家/區域進行登入。 例如，使用者可能出差當中而且需要存取公司資源。 在此情況下，用來封鎖這些國家/區域的條件式存取原則，可能使用從原則中排除的使用者所適用的雲端安全性群組。 在旅行時需要存取的使用者，可以使用 [Azure AD 自助式群組管理](../enterprise-users/groups-self-service-management.md)將本身新增到群組。
 
 另一個範例可能是您有條件式存取原則，可[封鎖絕大多數使用者的舊版驗證](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/)。 不過，如果有些使用者需要使用舊版驗證方法才能透過 Office 2010 或 IMAP/SMTP/POP 型用戶端存取您的資源，您則可從封鎖舊版驗證方法的原則中排除這些使用者。
 

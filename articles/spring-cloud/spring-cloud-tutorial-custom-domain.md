@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 2fc20737ab371135a62d510d9d083e084b592fae
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: ea0887dd1d28bb958b27813df7f4c7a221470bac
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945765"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088749"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>將現有的自訂網域對應至 Azure Spring Cloud
 
@@ -26,7 +26,7 @@ ms.locfileid: "91945765"
 * 部署至 Azure Spring Cloud 的應用程式 (請參閱[快速入門：使用 Azure 入口網站來啟動現有的 Azure Spring Cloud 應用程式](spring-cloud-quickstart.md)，或使用現有應用程式)。
 * 網域名稱，其可存取網域提供者 (例如 GoDaddy) 的 DNS 登錄。
 * 來自第三方提供者的私人憑證 (也就是您的自我簽署憑證)。 此憑證必須符合網域。
-* [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)的已部署執行個體
+* [Azure Key Vault](../key-vault/general/overview.md)的已部署執行個體
 
 ## <a name="import-certificate"></a>匯入憑證
 ### <a name="prepare-your-certificate-file-in-pfx-optional"></a>準備 PFX 格式的憑證檔案 (選擇性)
@@ -224,7 +224,6 @@ az spring-cloud app update -n <app name> --resource-group <resource group name> 
 當作業完成時，瀏覽至指向您的應用程式的任何 HTTPS URL。 請注意，HTTP URL 沒有作用。
 
 ## <a name="see-also"></a>另請參閱
-* [什麼是 Azure 金鑰保存庫？](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
-* [匯入憑證](https://docs.microsoft.com/azure/key-vault/certificate-scenarios#import-a-certificate)
-* [使用 Azure CLI 啟動您的 Spring Cloud 應用程式](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli)
-
+* [什麼是 Azure 金鑰保存庫？](../key-vault/general/overview.md)
+* [匯入憑證](../key-vault/certificates/certificate-scenarios.md#import-a-certificate)
+* [使用 Azure CLI 啟動您的 Spring Cloud 應用程式](./spring-cloud-quickstart.md)

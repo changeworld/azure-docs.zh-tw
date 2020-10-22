@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
-ms.openlocfilehash: 901f4a9d4fd53f665c3d078f5e463dcde2af1882
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef4baa4be7f6058ca704f8f499c47099de7c1a85
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654866"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372084"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>分析部署規劃工具報告中的 VMware 災難復原至 Azure
 
@@ -102,7 +102,7 @@ ms.locfileid: "88654866"
 ![Deployment Planner 中所需的 Azure 核心數目](media/site-recovery-vmware-deployment-planner-analyze-report/required-cores-v2a.png)
 
 ### <a name="required-on-premises-infrastructure"></a>所需的內部部署基礎結構
-此數字是為了足以保護所有相容的 VM，所要設定的組態伺服器與額外處理序伺服器總數。 視支援的[組態伺服器大小建議](https://aka.ms/asr-v2a-on-prem-components)而定，此工具可能會建議額外的伺服器。 建議是以每日變換或受保護 VM 數目上限中的較大者為基礎 (假設每部 VM 平均有三個磁碟)，無論在組態伺服器或額外處理序伺服器上何者先達到。 您可在「內部部署摘要」一節中找到每日變換總計和受保護磁碟總數的詳細資料。
+此數字是為了足以保護所有相容的 VM，所要設定的組態伺服器與額外處理序伺服器總數。 視支援的[組態伺服器大小建議](/en-in/azure/site-recovery/site-recovery-plan-capacity-vmware#size-recommendations-for-the-configuration-server)而定，此工具可能會建議額外的伺服器。 建議是以每日變換或受保護 VM 數目上限中的較大者為基礎 (假設每部 VM 平均有三個磁碟)，無論在組態伺服器或額外處理序伺服器上何者先達到。 您可在「內部部署摘要」一節中找到每日變換總計和受保護磁碟總數的詳細資料。
 
 ![Deployment Planner 中所需的內部部署基礎結構](media/site-recovery-vmware-deployment-planner-analyze-report/required-on-premises-components-v2a.png)
 
@@ -165,7 +165,7 @@ ms.locfileid: "88654866"
 
 **記錄儲存體帳戶類型**：所有複寫記錄都會儲存在標準儲存體帳戶中。
 
-**建議的儲存體帳戶前置**詞：建議的三個字元前置詞，可用來命名快取儲存體帳戶。 您可以使用自己的前置詞，但工具的建議會遵循[儲存體帳戶的磁碟分割命名慣例](https://aka.ms/storage-performance-checklist)。
+**建議的儲存體帳戶前置**詞：建議的三個字元前置詞，可用來命名快取儲存體帳戶。 您可以使用自己的前置詞，但工具的建議會遵循[儲存體帳戶的磁碟分割命名慣例](/en-in/azure/storage/blobs/storage-performance-checklist)。
 
 **建議的記錄帳戶名稱**：在您包含建議前置詞後的儲存體帳戶名稱。 以您的自訂輸入取代括弧內的名稱 (< 和 >)。
 
@@ -178,7 +178,7 @@ ms.locfileid: "88654866"
 
 **VM 名稱**：產生報告時，使用於 VMListFile 的 VM 名稱或 IP 位址。 此資料行也會列出連結至 VM 的磁碟 (VMDK)。 為了區分具有重複名稱或 IP 位址的 vCenter VM，名稱中包含 ESXi 主機名稱。 所列的 ESXi 主機是此工具在分析期間探索到 VM 時其所在位置的主機。
 
-**VM 相容性**：值為 **[是]** 和 **[是\*]**。 **是** \*適用于 VM 符合[Premium ssd](../virtual-machines/disks-types.md)的情況。 在此情況下，剖析的高變換 / IOPS 磁碟符合 P20 或 P30 類別，但磁碟大小會導致它向下對應至 P10 或 P20。 儲存體帳戶會根據磁碟大小，決定磁碟所要對應至的進階儲存體大小類型。 例如：
+**Vm 相容性**：值為 **[是]** 和 **[是] \* *。 _*** 是 \* 適用于 VM 符合[premium ssd](../virtual-machines/disks-types.md)的實例。 在此情況下，剖析的高變換 / IOPS 磁碟符合 P20 或 P30 類別，但磁碟大小會導致它向下對應至 P10 或 P20。 儲存體帳戶會根據磁碟大小，決定磁碟所要對應至的進階儲存體大小類型。 例如：
 * <128 GB 為 P10。
 * 128 GB 至 256 GB 為 P15。
 * 256 GB 至 512 GB 為 P20。
@@ -219,7 +219,7 @@ ms.locfileid: "88654866"
 
 **VM 名稱**：產生報告時，使用於 VMListFile 的 VM 名稱或 IP 位址。 此資料行也會列出連結至 VM 的磁 VMDK。 為了區分具有重複名稱或 IP 位址的 vCenter VM，名稱中包含 ESXi 主機名稱。 所列的 ESXi 主機是此工具在分析期間探索到 VM 時其所在位置的主機。
 
-**VM 相容性**：指出為何指定的 VM 不適合與 Site Recovery 搭配使用。 相關原因會針對 VM 的每個不相容磁碟進行說明，且根據發佈的[儲存體限制](https://aka.ms/azure-storage-scalbility-performance)，原因可能是下列其中一項：
+**VM 相容性**：指出為何指定的 VM 不適合與 Site Recovery 搭配使用。 相關原因會針對 VM 的每個不相容磁碟進行說明，且根據發佈的[儲存體限制](/en-in/azure/storage/common/scalability-targets-standard-account)，原因可能是下列其中一項：
 
 * 錯誤的資料磁片大小或 OS 磁片大小錯誤。 請[參閱](vmware-physical-azure-support-matrix.md#azure-vm-requirements)支援限制。 
 * VM 大小總計 (複寫 + TFO) 超過支援的儲存體帳戶大小限制 (35 TB)。 當 VM 中單一磁碟的效能特性超過標準儲存體支援的最大 Azure 或 Site Recovery 限制，通常會發生此不相容情況。 這類情況會將 VM 推送到進階儲存體區域中。 不過，進階儲存體帳戶支援的大小上限為 35 TB，而單一的受保護 VM 無法跨多個儲存體帳戶受到保護。 也請注意，在受保護的 VM 上執行測試容錯移轉時，它會在正在進行複寫的相同儲存體帳戶中執行。 在此例中，設定 2 倍的磁碟大小，以便進行複寫並以平行方式繼續進行測試容錯移轉。
@@ -281,5 +281,5 @@ VM 上所有磁碟的尖峰資料變換 | 54 MB/秒
 深入了解[成本估計](site-recovery-vmware-deployment-planner-cost-estimation.md)。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 深入了解[成本估計](site-recovery-vmware-deployment-planner-cost-estimation.md)。

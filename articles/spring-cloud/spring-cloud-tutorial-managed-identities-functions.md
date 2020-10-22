@@ -6,12 +6,12 @@ ms.author: margard
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/10/2020
-ms.openlocfilehash: 44268bf1b7805ece8de4a3499a7d53fc851af142
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 8ea8376307807abff8227d82bb6de7956fa3de99
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91664982"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92088528"
 ---
 # <a name="tutorial-use-a-managed-identity-to-invoke-azure-functions-from-an-azure-spring-cloud-app"></a>教學課程：使用受控識別從 Azure Spring Cloud 應用程式叫用 Azure Functions
 
@@ -23,9 +23,9 @@ Azure Functions 和應用程式服務都具有 Azure Active Directory (Azure AD)
 ## <a name="prerequisites"></a>必要條件
 
 * [註冊 Azure 訂用帳戶](https://azure.microsoft.com/free/)
-* [安裝 Azure CLI 2.0.67 版或更新版本](https://docs.microsoft.com/cli/azure/install-azure-cli)
+* [安裝 Azure CLI 2.0.67 版或更新版本](/cli/azure/install-azure-cli)
 * [安裝 Maven 3.0 或更新版本](https://maven.apache.org/download.cgi) \(英文\)
-* [安裝 Azure Functions Core Tools 3.0.2009 版或更新版本](https://docs.microsoft.com/azure/azure-functions/functions-run-local#install-the-azure-functions-core-tools)
+* [安裝 Azure Functions Core Tools 3.0.2009 版或更新版本](../azure-functions/functions-run-local.md#install-the-azure-functions-core-tools)
 
 
 ## <a name="create-a-resource-group"></a>建立資源群組
@@ -77,7 +77,7 @@ func init --worker-runtime node
 func new --template HttpTrigger --name HttpTrigger
 ```
 
-根據預設，函式會使用以金鑰為基礎的驗證來保護 HTTP 端點。 因為我們將啟用 Azure AD 驗證來保護對函式的存取，所以我們想要 [將函式驗證層級設定為匿名](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger#secure-an-http-endpoint-in-production)。
+根據預設，函式會使用以金鑰為基礎的驗證來保護 HTTP 端點。 因為我們將啟用 Azure AD 驗證來保護對函式的存取，所以我們想要 [將函式驗證層級設定為匿名](../azure-functions/functions-bindings-http-webhook-trigger.md#secure-an-http-endpoint-in-production)。
 
 ```json function.json
 {
@@ -124,7 +124,7 @@ az spring-cloud app create --name "msiapp" --service "mymsispringcloud" --resour
 
 ## <a name="build-sample-spring-boot-app-to-invoke-the-function"></a>用來叫用函式的組建範例 Spring Boot 應用程式
 
-這個範例會先從 [MSI 端點](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http)要求存取權杖，然後使用該權杖來驗證函式 HTTP 要求，藉此叫用由 HTTP 觸發的函式。
+這個範例會先從 [MSI 端點](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md#get-a-token-using-http)要求存取權杖，然後使用該權杖來驗證函式 HTTP 要求，藉此叫用由 HTTP 觸發的函式。
 
 1. 複製範例專案。 
 
@@ -173,6 +173,6 @@ az spring-cloud app create --name "msiapp" --service "mymsispringcloud" --resour
 
 ## <a name="next-steps"></a>下一步
 
-* [如何針對 Azure Spring Cloud 應用程式啟用系統指派的受控識別](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity)
+* [如何針對 Azure Spring Cloud 應用程式啟用系統指派的受控識別](./spring-cloud-howto-enable-system-assigned-managed-identity.md)
 * [深入了解 Azure 資源受控識別](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
-* [設定服務對服務呼叫的精靈用戶端應用程式](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad#configure-a-daemon-client-application-for-service-to-service-calls)
+* [設定服務對服務呼叫的精靈用戶端應用程式](../app-service/configure-authentication-provider-aad.md#configure-a-daemon-client-application-for-service-to-service-calls)

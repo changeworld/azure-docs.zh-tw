@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: dc8dffb12dcd205671e2219dbef45ac14f9f7df7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c706f38dabbe21e5bafb096bf406e70af0855aa3
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892542"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92089973"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>教學課程：如何使用警示和動作群組監視 Spring Cloud 資源
 
@@ -113,7 +113,7 @@ Azure Spring Cloud 警示支援根據可用的儲存體、要求率或資料使�
 在本教學課程中，您已了解如何設定 Azure Spring Cloud 應用程式的警示和動作群組。 若要深入了解動作群組，請參閱：
 
 > [!div class="nextstepaction"]
-> [在 Azure 入口網站中建立和管理動作群組](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+> [在 Azure 入口網站中建立和管理動作群組](../azure-monitor/platform/action-groups.md)
 
 > [!div class="nextstepaction"]
-> [動作群組中的 SMS 警示行為](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
+> [動作群組中的 SMS 警示行為](../azure-monitor/platform/alerts-sms-behavior.md)

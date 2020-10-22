@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: b24d9e1cbbcf875d7b4bde3981b28d8999ba8d47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b070d6600f18b87ec16f1f9894d577f4c0a6c51c
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019125"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149190"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>教學課程：搭配 IoT 中樞來設定及使用計量和診斷記錄
 
@@ -190,7 +190,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 移至入口網站中的中樞。 按一下 [資源群組]  ，選取 [ContosoResources]  ，然後選取 IoT 中樞 [ContosoTestHub]  。 
 
-IoT 中樞尚未遷移至 [Azure 監視器中的計量](/azure/azure-monitor/platform/data-collection#metrics)；您必須使用[傳統警示](/azure/azure-monitor/platform/alerts-classic.overview)。
+IoT 中樞尚未遷移至 [Azure 監視器中的計量](../azure-monitor/platform/data-platform.md#metrics)；您必須使用[傳統警示](../azure-monitor/platform/alerts-classic.overview.md)。
 
 1. 在 [監視]  底下，按一下 [警示]  ；這會顯示主要的 [警示] 畫面。 
 
@@ -369,7 +369,7 @@ await Task.Delay(10);
 
 若要將您已針對本教學課程所建立的所有資源移除，請刪除資源群組。 此動作會同時刪除群組內含的所有資源。 在本例中，此動作會移除 IoT 中樞、儲存體帳戶和資源群組本身。 如果您已將計量釘選到儀表板，則必須對每個計量右上角的三個點按一下，然後選取 [移除]  ，來手動移除這些計量。
 
-若要移除資源群組，請使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令。
+若要移除資源群組，請使用 [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令。
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

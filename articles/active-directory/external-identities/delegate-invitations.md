@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb0147af559d9de4a8589344d61b06368086dd20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5a983931bd372931eacff2f7b21f3358f536046
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278782"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362921"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>啟用 B2B 外部共同作業和管理誰可以邀請來賓
 
@@ -24,7 +24,7 @@ ms.locfileid: "91278782"
 
 根據預設，您目錄中的所有使用者和來賓都可以邀請來賓，即使他們未獲派系統管理員角色亦然。 外部共同作業設定可讓您針對組織中不同類型的使用者，開啟或關閉來賓邀請。 您也可以指派允許個人邀請來賓的角色，將邀請委派給個別使用者。
 
-Azure AD 可讓您限制外部來賓使用者可在 Azure AD 目錄中看到的內容。 根據預設，來賓使用者會設定為有限的許可權等級，以封鎖它們列舉使用者、群組或其他目錄資源，但可讓他們看到非隱藏群組的成員資格。 新的預覽設定可讓您更進一步限制來賓存取，讓來賓只能查看自己的設定檔資訊。 如需詳細資訊，請參閱 [限制來賓存取許可權 (預覽) ](../users-groups-roles/users-restrict-guest-permissions.md)。
+Azure AD 可讓您限制外部來賓使用者可在 Azure AD 目錄中看到的內容。 根據預設，來賓使用者會設定為有限的許可權等級，以封鎖它們列舉使用者、群組或其他目錄資源，但可讓他們看到非隱藏群組的成員資格。 新的預覽設定可讓您更進一步限制來賓存取，讓來賓只能查看自己的設定檔資訊。 如需詳細資訊，請參閱 [限制來賓存取許可權 (預覽) ](../enterprise-users/users-restrict-guest-permissions.md)。
 
 ## <a name="configure-b2b-external-collaboration-settings"></a>設定 B2B 外部共同作業設定
 

@@ -14,18 +14,18 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-js
-ms.openlocfilehash: 304ded466aeb734388c13b87331eb4813e850e56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1410b9e8287b34c8b40e841ff513de784e1730a
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842813"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150546"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>教學課程：實作裝置韌體更新程序
 
 您可能需要對連線至 IoT 中樞的裝置更新軔體。 例如，您可以將新功能新增至韌體，或套用安全性修補程式。 在許多 IoT 案例中，實際瀏覽並手動將韌體更新套用至裝置，並非切實可行的做法。 本教學課程將說明透過連線至中樞的後端應用程式，從遠端啟動並監視韌體更新程序。
 
-若要建立及監視韌體更新程序，請在本教學課程中，以後端應用程式在 IoT 中樞內建立_組態_。 IoT 中樞[自動裝置管理](iot-hub-auto-device-config.md)會使用此組態，在您的所有 Chiller 裝置上更新一組_裝置對應項的所需屬性_。 所需屬性會指定必要韌體更新的詳細資料。 Chiller 裝置在執行韌體更新程序時，會使用_裝置對應項的報告屬性_將其狀態報告給後端應用程式。 後端應用程式可使用此組態來監視從裝置傳送的報告屬性，並追蹤韌體更新程序的完成進度：
+若要建立及監視韌體更新程序，請在本教學課程中，以後端應用程式在 IoT 中樞內建立_組態_。 IoT 中樞[自動裝置管理](./iot-hub-automatic-device-management.md)會使用此組態，在您的所有 Chiller 裝置上更新一組_裝置對應項的所需屬性_。 所需屬性會指定必要韌體更新的詳細資料。 Chiller 裝置在執行韌體更新程序時，會使用_裝置對應項的報告屬性_將其狀態報告給後端應用程式。 後端應用程式可使用此組態來監視從裝置傳送的報告屬性，並追蹤韌體更新程序的完成進度：
 
 ![韌體更新程序](media/tutorial-firmware-update/Process.png)
 

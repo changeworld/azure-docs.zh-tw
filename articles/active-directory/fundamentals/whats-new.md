@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b076c757c8f86941c79da4f0be598aaa5ea6761
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 37dc60fd14eb26ab4c8f5a867b97369a066b743b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317950"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362751"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能？
 
@@ -94,7 +94,7 @@ Azure AD Connect 雲端布建公開預覽重新整理功能，提供了兩個從
 **服務類別：** Rbac  
 **產品功能：** 存取控制
  
-具有 [小組裝置系統管理員](../users-groups-roles/directory-assign-admin-roles.md#teams-devices-administrator) 角色的使用者可以從小組系統管理中心管理 [經過團隊認證的裝置](https://www.microsoft.com/microsoft-365/microsoft-teams/across-devices/devices) 。 
+具有 [小組裝置系統管理員](../roles/permissions-reference.md#teams-devices-administrator) 角色的使用者可以從小組系統管理中心管理 [經過團隊認證的裝置](https://www.microsoft.com/microsoft-365/microsoft-teams/across-devices/devices) 。 
 
 此角色可讓使用者透過搜尋和篩選裝置的能力，一眼就能查看所有裝置。 使用者也可以檢查每個裝置的詳細資料，包括登入帳戶和裝置的製作和型號。 使用者可以變更裝置上的設定，並更新軟體版本。 此角色不會授與檢查小組活動和呼叫裝置品質的許可權。
  
@@ -146,7 +146,7 @@ Azure AD 的入口網站已更新，可讓您更輕鬆地在 [所有使用者] �
 - 屬性的新排序功能，例如名稱、使用者主體名稱和刪除日期。
 - 新的總使用者計數會以任何搜尋或篩選進行更新。
 
-如需詳細資訊，請參閱 [Azure Active Directory 中的使用者管理增強功能 (預覽) ](../users-groups-roles/users-search-enhanced.md)。
+如需詳細資訊，請參閱 [Azure Active Directory 中的使用者管理增強功能 (預覽) ](../enterprise-users/users-search-enhanced.md)。
 
 ---
 
@@ -255,7 +255,7 @@ Azure AD 權利管理中新增了新的「存取套件指派管理員」角色�
 
 我們已更新來賓使用者的目錄層級許可權。 這些許可權可讓系統管理員在外部來賓使用者存取上要求額外的限制和控制項。 系統管理員現在可以為外部來賓的使用者和群組設定檔和成員資格資訊的存取權新增額外的限制。 有了這項公開預覽功能，客戶可以藉由模糊化群組成員資格來大規模管理外部使用者的存取權，包括限制來賓使用者查看他們所在的群組 () 的成員資格。
 
-若要深入瞭解，請參閱 [限制的來賓存取許可權](../users-groups-roles/users-restrict-guest-permissions.md) 和 [使用者的預設許可權](./users-default-permissions.md)。
+若要深入瞭解，請參閱 [限制的來賓存取許可權](../enterprise-users/users-restrict-guest-permissions.md) 和 [使用者的預設許可權](./users-default-permissions.md)。
  
 ---
 
@@ -358,7 +358,7 @@ Azure AD 我的 Sign-Ins 是一項新功能，可讓企業使用者檢查其登�
 **服務類別：** Azure AD 角色  
 **產品功能：** 存取控制
 
-您現在可以使用這項新功能，將 Azure AD 內建角色指派給雲端群組。 例如，您可以將 SharePoint 系統管理員角色指派給 Contoso_SharePoint_Admins 群組。 您也可以使用 PIM 讓群組成為角色的合格成員，而不是授與長期存取權。 若要瞭解如何設定這項功能，請參閱 [Azure Active Directory (preview) 中使用雲端群組管理角色指派 ](../users-groups-roles/roles-groups-concept.md)。
+您現在可以使用這項新功能，將 Azure AD 內建角色指派給雲端群組。 例如，您可以將 SharePoint 系統管理員角色指派給 Contoso_SharePoint_Admins 群組。 您也可以使用 PIM 讓群組成為角色的合格成員，而不是授與長期存取權。 若要瞭解如何設定這項功能，請參閱 [Azure Active Directory (preview) 中使用雲端群組管理角色指派 ](../roles/groups-concept.md)。
  
 ---
 
@@ -368,7 +368,7 @@ Azure AD 我的 Sign-Ins 是一項新功能，可讓企業使用者檢查其登�
 **服務類別：** Azure AD 角色  
 **產品功能：** 存取控制
  
-Insights 商務領導者角色中的使用者可透過 [M365 Insights 應用程式](https://www.microsoft.com/microsoft-365/partners/workplaceanalytics)存取一組儀表板和深入解析。 這包括所有儀表板的完整存取權，以及提供的深入解析和資料探索功能。 不過，此角色中的使用者無法存取「產品設定」設定，這是「深入解析管理員」角色的責任。 若要深入瞭解此角色，請參閱 [Azure Active Directory 中的系統管理員角色許可權](../users-groups-roles/directory-assign-admin-roles.md#insights-business-leader)
+Insights 商務領導者角色中的使用者可透過 [M365 Insights 應用程式](https://www.microsoft.com/microsoft-365/partners/workplaceanalytics)存取一組儀表板和深入解析。 這包括所有儀表板的完整存取權，以及提供的深入解析和資料探索功能。 不過，此角色中的使用者無法存取「產品設定」設定，這是「深入解析管理員」角色的責任。 若要深入瞭解此角色，請參閱 [Azure Active Directory 中的系統管理員角色許可權](../roles/permissions-reference.md#insights-business-leader)
  
 ---
 
@@ -378,7 +378,7 @@ Insights 商務領導者角色中的使用者可透過 [M365 Insights 應用程�
 **服務類別：** Azure AD 角色  
 **產品功能：** 存取控制
  
-深入解析系統管理員角色中的使用者可以存取 [M365 Insights 應用程式](https://www.microsoft.com/microsoft-365/partners/workplaceanalytics)中的完整管理功能集。 此角色的使用者可以讀取目錄資訊、監視服務健康狀態、檔案支援票證，以及存取深入解析系統管理員設定方面。 若要深入瞭解此角色，請參閱 [Azure Active Directory 中的系統管理員角色許可權](../users-groups-roles/directory-assign-admin-roles.md#insights-administrator)
+深入解析系統管理員角色中的使用者可以存取 [M365 Insights 應用程式](https://www.microsoft.com/microsoft-365/partners/workplaceanalytics)中的完整管理功能集。 此角色的使用者可以讀取目錄資訊、監視服務健康狀態、檔案支援票證，以及存取深入解析系統管理員設定方面。 若要深入瞭解此角色，請參閱 [Azure Active Directory 中的系統管理員角色許可權](../roles/permissions-reference.md#insights-administrator)
  
 --- 
 
@@ -528,7 +528,7 @@ Azure AD 應用程式 Proxy 現在支援遠端桌面服務 (RDS) Web 用戶端�
  
 在2020年7月，我們已在具有同盟支援的應用程式庫中新增下列55個新應用程式：
 
-[Clap 您的手](http://www.rmit.com.ar/)、 [Appreiz](https://microsoftteams.appreiz.com/)、 [Inextor Vault](https://inexto.com/inexto-suite/inextor)、 [Beekast](https://my.beekast.com/)、 [Templafy OpenID Connect](https://app.templafy.com/)、 [PeterConnects 接待員](https://msteams.peterconnects.com/)、 [AlohaCloud](https://appfusions.alohacloud.com/auth)、 [Control 塔式](https://bpm.tnxcorp.com/sso/microsoft)、 [Cocoom](https://start.cocoom.com/)、[硬幣建築雲端](https://sso.coinsconstructioncloud.com/#login/)、 [Medxnote MT](https://task.teamsmain.medx.im/authorization)、 [Reflekt](https://reflekt.konsolute.com/login) [、Rever](https://app.reverscore.net/access)、 [MyCompanyArchive、GReminders](https://login.mycompanyarchive.com/)、Titanfile [、Wootric](../saas-apps/titanfile-tutorial.md) [、SolarWinds](../saas-apps/wootric-tutorial.md)、 [Orion、OpenText](https://app.greminders.com/o365-oauth)、 [Datasite、BlogIn](https://support.solarwinds.com/SuccessCenter/s/orion-platform?language=en_US)、 [IntSights](../saas-apps/intsights-tutorial.md)、 [kpifire、](../saas-apps/textline-tutorial.md)[就、Chatwork](../saas-apps/blogin-tutorial.md) [、CloudSign、](../saas-apps/opentext-directory-services-tutorial.md) [Community Spark](../saas-apps/community-spark-tutorial.md) [、](../saas-apps/datasite-tutorial.md)、 [Chatwork](../saas-apps/chatwork-tutorial.md) [、、](../saas-apps/kpifire-tutorial.md) [、](../saas-apps/cloud-academy-sso-tutorial.md) [、](../saas-apps/cloudsign-tutorial.md)、 [C3M Cloud Control](../saas-apps/c3m-cloud-control-tutorial.md)、 [SmartHR](https://smarthr.jp/)、 [NumlyEngage™](../saas-apps/numlyengage-tutorial.md)、[密歇根 Data Hub 單一登入](../saas-apps/michigan-data-hub-single-sign-on-tutorial.md) [、輸出、](../saas-apps/egress-tutorial.md) [SendSafely](../saas-apps/sendsafely-tutorial.md)、 [Eletive](https://app.eletive.com/)、[右手邊的網路安全性 ADI](https://right-hand.ai/)、 [Fyde Enterprise Authentication](https://enterprise.fyde.com/)、 [Verme](../saas-apps/verme-tutorial.md)、 [Lenses.io](../saas-apps/lensesio-tutorial.md)、 [Momenta](../saas-apps/momenta-tutorial.md)、 [Uprise](https://app.uprise.co/sign-in)、 [Q](https://q.moduleq.com/login)、 [CloudCords](../saas-apps/cloudcords-tutorial.md)、 [TellMe Bot](https://tellme365liteweb.azurewebsites.net/)、[啟發](https://app.inspiresoftware.com/)、 [Maverics Identity Orchestrator SAML Connector](https://www.strata.io/identity-fabric/)、 [Smartschool (School 管理系統) ](https://smart-schoolapp.com/frmLoginForm)、Zepto [-智慧型 timekeeping](https://user.zepto-ai.com/signin)、 [Studi.ly](https://studi.ly/)、 [Trackplan](http://www.trackplanfm.com/)、 [Skedda](../saas-apps/skedda-tutorial.md)、 [WhosOnLocation](../saas-apps/whos-on-location-tutorial.md)、 [Coggle](../saas-apps/coggle-tutorial.md)、 [Kemp LoadMaster](https://kemptechnologies.com/cloud-load-balancer/)、 [BrowserStack 單一登入](../saas-apps/browserstack-single-sign-on-tutorial.md)
+[Clap 您的手](http://www.rmit.com.ar/)、 [Appreiz](https://microsoftteams.appreiz.com/)、 [Inextor Vault](https://inexto.com/inexto-suite/inextor)、 [Beekast](https://my.beekast.com/)、 [Templafy OpenID Connect](https://app.templafy.com/)、 [PeterConnects 接待員](https://msteams.peterconnects.com/)、 [AlohaCloud](https://appfusions.alohacloud.com/auth)、 [Control 塔式](https://bpm.tnxcorp.com/sso/microsoft)、 [Cocoom](https://start.cocoom.com/)、[硬幣建築雲端](https://sso.coinsconstructioncloud.com/#login/)、 [Medxnote MT](https://task.teamsmain.medx.im/authorization)、 [Reflekt](https://reflekt.konsolute.com/login) [、Rever](https://app.reverscore.net/access)、 [MyCompanyArchive、GReminders](https://login.mycompanyarchive.com/)、Titanfile [、Wootric](../saas-apps/titanfile-tutorial.md) [、SolarWinds](../saas-apps/wootric-tutorial.md)、 [Orion、OpenText](https://app.greminders.com/o365-oauth)、 [Datasite、BlogIn](https://support.solarwinds.com/SuccessCenter/s/orion-platform?language=en_US)、 [IntSights](../saas-apps/intsights-tutorial.md)、 [kpifire、](../saas-apps/textline-tutorial.md)[就、Chatwork](../saas-apps/blogin-tutorial.md) [、CloudSign、](../saas-apps/opentext-directory-services-tutorial.md) [Community Spark](../saas-apps/community-spark-tutorial.md) [、](../saas-apps/datasite-tutorial.md)、 [Chatwork](../saas-apps/chatwork-tutorial.md) [、、](../saas-apps/kpifire-tutorial.md) [、](../saas-apps/cloud-academy-sso-tutorial.md) [、](../saas-apps/cloudsign-tutorial.md)、 [C3M Cloud Control](../saas-apps/c3m-cloud-control-tutorial.md)、 [SmartHR](https://smarthr.jp/)、 [NumlyEngage™](../saas-apps/numlyengage-tutorial.md)、[密歇根 Data Hub 單一登入](../saas-apps/michigan-data-hub-single-sign-on-tutorial.md) [、輸出、](../saas-apps/egress-tutorial.md) [SendSafely](../saas-apps/sendsafely-tutorial.md)、 [Eletive](https://app.eletive.com/)、[右手邊的網路安全性 ADI](https://right-hand.ai/)、 [Fyde Enterprise Authentication](https://enterprise.fyde.com/)、 [Verme](../saas-apps/verme-tutorial.md)、 [Lenses.io](../saas-apps/lensesio-tutorial.md)、 [Momenta](../saas-apps/momenta-tutorial.md)、 [Uprise](https://app.uprise.co/sign-in)、 [Q](https://q.moduleq.com/login)、 [CloudCords](../saas-apps/cloudcords-tutorial.md)、 [TellMe Bot](https://tellme365liteweb.azurewebsites.net/)、[啟發](https://app.inspiresoftware.com/)、 [Maverics Identity Orchestrator SAML Connector](https://www.strata.io/identity-fabric/)、 [Smartschool (School 管理系統) ](https://smartschoolz.com/login)、Zepto [-智慧型 timekeeping](https://user.zepto-ai.com/signin)、 [Studi.ly](https://studi.ly/)、 [Trackplan](http://www.trackplanfm.com/)、 [Skedda](../saas-apps/skedda-tutorial.md)、 [WhosOnLocation](../saas-apps/whos-on-location-tutorial.md)、 [Coggle](../saas-apps/coggle-tutorial.md)、 [Kemp LoadMaster](https://kemptechnologies.com/cloud-load-balancer/)、 [BrowserStack 單一登入](../saas-apps/browserstack-single-sign-on-tutorial.md)
 
 您也可以在這裡找到所有應用程式的檔 https://aka.ms/AppsTutorial
 
@@ -554,7 +554,7 @@ Azure AD 應用程式 Proxy 現在支援遠端桌面服務 (RDS) Web 用戶端�
 **服務類別：** Azure AD 角色  
 **產品功能：** 存取控制
  
-您現在可以在 Azure AD 入口網站中的 [角色和系統管理員] 索引標籤上，針對角色的所有範圍，查看角色指派。 您也可以將每個角色的角色指派下載至 CSV 檔案。 如需有關如何查看和新增角色指派的指引，請參閱 [Azure Active Directory 中的 [查看和指派系統管理員角色](../users-groups-roles/directory-manage-roles-portal.md)]。
+您現在可以在 Azure AD 入口網站中的 [角色和系統管理員] 索引標籤上，針對角色的所有範圍，查看角色指派。 您也可以將每個角色的角色指派下載至 CSV 檔案。 如需有關如何查看和新增角色指派的指引，請參閱 [Azure Active Directory 中的 [查看和指派系統管理員角色](../roles/manage-roles-portal.md)]。
  
 ---
 
@@ -703,7 +703,7 @@ RiskyUsers 和 riskDetections Microsoft Graph Api 現已正式推出。 現在�
 
 您現在可以建立敏感度標籤，並使用標籤設定將原則套用至 Microsoft 365 群組，包括隱私權 (公用或私用) 以及外部使用者存取原則。 您可以建立具有隱私權原則的標籤為私用，而外部使用者存取原則則不允許新增來賓使用者。 當使用者將此標籤套用至群組時，群組將會是私用的，而且不允許將任何來賓使用者新增至群組。 
 
-敏感度標籤很重要，可保護您的商務關鍵資料，並可讓您以符合規範且安全的方式，大規模管理群組。 如需使用敏感度標籤的指導方針，請參閱 [Azure Active Directory (preview) 將敏感度標籤指派給 Microsoft 365 群組 ](../users-groups-roles/groups-assign-sensitivity-labels.md)。
+敏感度標籤很重要，可保護您的商務關鍵資料，並可讓您以符合規範且安全的方式，大規模管理群組。 如需使用敏感度標籤的指導方針，請參閱 [Azure Active Directory (preview) 將敏感度標籤指派給 Microsoft 365 群組 ](../enterprise-users/groups-assign-sensitivity-labels.md)。
  
 ---
 
@@ -805,7 +805,7 @@ Azure AD/Microsoft 365 登入體驗上的公司商標功能已更新，可讓客
 **產品功能：** 使用者驗證
  
 
-目前，在 Azure AD 但未同步至租使用者的網域中的使用者，無法存取小組。 從6月底開始，這項新功能可讓使用者藉由擴充現有的電子郵件驗證註冊功能來達成此目的。 這可讓可登入同盟 IdP 的使用者，但在 Azure 識別碼中還沒有使用者物件的使用者，會自動建立使用者物件並對小組進行驗證。 其使用者物件將會標示為「自助式註冊」。 這是現有功能的延伸模組，可進行電子郵件驗證的自我註冊，也就是受控網域中的使用者可以進行，而且可以使用相同的旗標加以控制。 這項變更將在下列兩個月內完成推出。 請觀賞 [此處](../users-groups-roles/directory-self-service-signup.md)的檔更新。
+目前，在 Azure AD 但未同步至租使用者的網域中的使用者，無法存取小組。 從6月底開始，這項新功能可讓使用者藉由擴充現有的電子郵件驗證註冊功能來達成此目的。 這可讓可登入同盟 IdP 的使用者，但在 Azure 識別碼中還沒有使用者物件的使用者，會自動建立使用者物件並對小組進行驗證。 其使用者物件將會標示為「自助式註冊」。 這是現有功能的延伸模組，可進行電子郵件驗證的自我註冊，也就是受控網域中的使用者可以進行，而且可以使用相同的旗標加以控制。 這項變更將在下列兩個月內完成推出。 請觀賞 [此處](../enterprise-users/directory-self-service-signup.md)的檔更新。
  
 ---
 
@@ -853,7 +853,7 @@ Azure AD/Microsoft 365 登入體驗上的公司商標功能已更新，可讓客
 **服務類別：** Azure AD 雲端布建  
 **產品功能：** 身分識別生命週期管理
  
-IT 系統管理員可以開始使用新的「混合式系統管理員」角色，作為設定 Azure ADConnect Cloud 布建的最低特殊許可權角色。 使用這個新的角色時，您不再需要使用全域管理員角色來設定和設定雲端布建。 [深入了解](../users-groups-roles/roles-delegate-by-task.md#connect)。
+IT 系統管理員可以開始使用新的「混合式系統管理員」角色，作為設定 Azure ADConnect Cloud 布建的最低特殊許可權角色。 使用這個新的角色時，您不再需要使用全域管理員角色來設定和設定雲端布建。 [深入了解](../roles/delegate-by-task.md#connect)。
  
 ---
 
@@ -1225,7 +1225,7 @@ Office 正在啟動一系列行動優先的商務應用程式，這些應用程�
 
 **印表機系統管理員**：具備此角色的使用者可以註冊印表機，並管理 Microsoft 通用列印解決方案中所有印表機設定的所有層面，包括通用列印連接器設定。 他們可以同意所有委派的列印權限要求。 印表機管理員也具有列印報告的權限。 
 
-**印表機技術人員**：具備此角色的使用者可以在 Microsoft 通用列印解決方案中登錄印表機及管理印表機狀態。 他們也可以讀取所有連接器資訊。 印表機技術人員無法進行的主要工作，是設定印表機和共用印表機的使用者權限。 [深入了解。](../users-groups-roles/directory-assign-admin-roles.md#printer-administrator)
+**印表機技術人員**：具備此角色的使用者可以在 Microsoft 通用列印解決方案中登錄印表機及管理印表機狀態。 他們也可以讀取所有連接器資訊。 印表機技術人員無法進行的主要工作，是設定印表機和共用印表機的使用者權限。 [深入了解。](../roles/permissions-reference.md#printer-administrator)
 
 ---
 
@@ -1237,7 +1237,7 @@ Office 正在啟動一系列行動優先的商務應用程式，這些應用程�
 
 **產品功能：** 存取控制
 
-具備此角色的使用者可以啟用、設定及管理與在 Azure AD 中啟用混合式身分識別相關的服務和設定。 此角色可讓您將 Azure AD 設定為其中一種支援的驗證方法&#8212;密碼雜湊同步處理 (PHS) 、傳遞驗證 (PTA) 或同盟 (AD FS 或協力廠商同盟提供者) # B1，以及部署相關的內部部署基礎結構來加以啟用。 內部部署基礎結構包括布建和 PTA 代理程式。 此角色能夠啟用無縫單一登入 (SSO)，以在非 Windows 10 裝置或非 Windows Server 2016 電腦上啟用無縫驗證。 此外，此角色會授與查看登入記錄的能力，以及存取健康情況與分析以進行監視和疑難排解。 [深入了解。](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator)
+具備此角色的使用者可以啟用、設定及管理與在 Azure AD 中啟用混合式身分識別相關的服務和設定。 此角色可讓您將 Azure AD 設定為其中一種支援的驗證方法&#8212;密碼雜湊同步處理 (PHS) 、傳遞驗證 (PTA) 或同盟 (AD FS 或協力廠商同盟提供者) # B1，以及部署相關的內部部署基礎結構來加以啟用。 內部部署基礎結構包括布建和 PTA 代理程式。 此角色能夠啟用無縫單一登入 (SSO)，以在非 Windows 10 裝置或非 Windows Server 2016 電腦上啟用無縫驗證。 此外，此角色會授與查看登入記錄的能力，以及存取健康情況與分析以進行監視和疑難排解。 [深入了解。](../roles/permissions-reference.md#hybrid-identity-administrator)
 
 ---
 
@@ -1249,7 +1249,7 @@ Office 正在啟動一系列行動優先的商務應用程式，這些應用程�
 
 **產品功能：** 存取控制
 
-具有此角色的使用者可以根據來自其使用者位置的網路遙測，檢查來自 Microsoft 的網路周邊架構建議。 Microsoft 365 的網路效能依賴審慎的企業客戶網路周邊架構，通常是使用者位置特定的架構。 此角色能夠編輯探索到的使用者位置及設定這些位置的網路參數，促使改善遙測測量和設計建議。 [深入了解。](../users-groups-roles/directory-assign-admin-roles.md#network-administrator)
+具有此角色的使用者可以根據來自其使用者位置的網路遙測，檢查來自 Microsoft 的網路周邊架構建議。 Microsoft 365 的網路效能依賴審慎的企業客戶網路周邊架構，通常是使用者位置特定的架構。 此角色能夠編輯探索到的使用者位置及設定這些位置的網路參數，促使改善遙測測量和設計建議。 [深入了解。](../roles/permissions-reference.md#network-administrator)
 
 ---
 
@@ -1267,10 +1267,10 @@ Office 正在啟動一系列行動優先的商務應用程式，這些應用程�
 
 如需詳細資訊，請參閱下列內容：
 
-- [建立使用者](../users-groups-roles/users-bulk-add.md) 或 [邀請來賓使用者](../external-identities/tutorial-bulk-invite.md)
-- [刪除使用者](../users-groups-roles/users-bulk-delete.md) 或 [還原已刪除的使用者](../users-groups-roles/users-bulk-restore.md)
-- [下載使用者清單](../users-groups-roles/users-bulk-download.md) 或 [下載群組清單](../users-groups-roles/groups-bulk-download.md)
-- [新增 (匯入) 成員](../users-groups-roles/groups-bulk-import-members.md)或[移除成員](../users-groups-roles/groups-bulk-remove-members.md)或[下載群組成員清單](../users-groups-roles/groups-bulk-download-members.md)
+- [建立使用者](../enterprise-users/users-bulk-add.md) 或 [邀請來賓使用者](../external-identities/tutorial-bulk-invite.md)
+- [刪除使用者](../enterprise-users/users-bulk-delete.md) 或 [還原已刪除的使用者](../enterprise-users/users-bulk-restore.md)
+- [下載使用者清單](../enterprise-users/users-bulk-download.md) 或 [下載群組清單](../enterprise-users/groups-bulk-download.md)
+- [新增 (匯入) 成員](../enterprise-users/groups-bulk-import-members.md)或[移除成員](../enterprise-users/groups-bulk-remove-members.md)或[下載群組成員清單](../enterprise-users/groups-bulk-download-members.md)
 
 ---
 
@@ -1350,7 +1350,7 @@ Office 正在啟動一系列行動優先的商務應用程式，這些應用程�
 
 Azure Active Directory (Azure AD) 現在提供驗證動態群組規則的方法。 在 [ **驗證規則** ] 索引標籤上，您可以針對範例群組成員驗證動態規則，以確認規則如預期般運作。 當建立或更新動態群組規則時，系統管理員想要知道使用者或裝置是否為群組的成員。 這有助於評估使用者或裝置是否符合規則準則，並在不需要成員資格時協助進行疑難排解。
 
-如需詳細資訊，請參閱 [驗證動態群組成員資格規則 (預覽) ](../users-groups-roles/groups-dynamic-rule-validation.md)。
+如需詳細資訊，請參閱 [驗證動態群組成員資格規則 (預覽) ](../enterprise-users/groups-dynamic-rule-validation.md)。
 
 ---
 

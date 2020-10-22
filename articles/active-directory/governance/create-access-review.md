@@ -15,12 +15,12 @@ ms.date: 09/15/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02d1c40c26dd6b6992d8df85a986b4157a22226a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b87af4a08c5a796d96d853ca63e50e335b9731fb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602926"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362768"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 存取權評論中建立群組和應用程式的存取權審核
 
@@ -32,7 +32,7 @@ ms.locfileid: "90602926"
 
 本文說明如何針對群組成員或應用程式存取建立一或多個存取權審核。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - Azure AD Premium P2
 - 全域管理員或使用者管理員
@@ -164,6 +164,7 @@ ms.locfileid: "90602926"
 |自動審核 | 系統已針對所有未進行審核的使用者記錄這些決策。 如果已啟用自動 **套用，則** 審核已準備好繼續套用。 |
 |應用 | 已核准的使用者將不會變更存取權。 |
 |已套用 | 已拒絕的使用者（如果有的話）已從資源或目錄中移除。 |
+|Failed | 無法進行評論。 此錯誤可能與刪除租使用者、授權變更或其他內部租使用者變更相關。 |
 
 ## <a name="create-reviews-via-apis"></a>透過 API 建立檢閱
 

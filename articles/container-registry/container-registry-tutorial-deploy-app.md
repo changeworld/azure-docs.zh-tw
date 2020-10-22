@@ -4,12 +4,12 @@ description: 使用異地複寫 Azure Container Registry 中的容器映像，�
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: bcbce3c60aa0b4613b1dd1840c335c800193e549
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a203bfc9b1317bc258e4a93ae4ac03ecbdc7a15
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328683"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148420"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>教學課程：從異地複寫的 Azure Container Registry 部署 Web 應用程式
 
@@ -27,7 +27,7 @@ ms.locfileid: "91328683"
 
 ## <a name="automatic-deployment-to-web-apps-for-containers"></a>自動部署至用於容器的 Web 應用程式
 
-Azure Container Registry 支援將容器化的應用程式直接部署至[用於容器的 Web 應用程式](../app-service/containers/index.yml)。 在本教學課程中，您要使用 Azure 入口網站，將上一個教學課程中建立的容器映像，部署至位於不同 Azure 區域的兩個 Web 應用程式方案。
+Azure Container Registry 支援將容器化的應用程式直接部署至[用於容器的 Web 應用程式](../app-service/index.yml)。 在本教學課程中，您要使用 Azure 入口網站，將上一個教學課程中建立的容器映像，部署至位於不同 Azure 區域的兩個 Web 應用程式方案。
 
 當您從登錄中的容器映像部署 Web 應用程式，而且您在相同的區域中有異地複寫的登錄時，Azure Container Registry 會為您建立映像部署 [Webhook](container-registry-webhook.md)。 當您將新的映像推送至您的容器存放庫時，Webhook 會挑出變更，並自動將新的容器映像部署到您的 Web 應用程式。
 

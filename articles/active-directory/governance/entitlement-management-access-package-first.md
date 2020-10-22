@@ -16,12 +16,12 @@ ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38edbd9e491d4bea469c6b83ad98df48fbce1d4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4030dedfb0d7308bb5a0f7a86bc49ee168e6d0c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597494"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362802"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>教學課程：在 Azure AD 權利管理中建立您的第一個存取套件
 
@@ -42,7 +42,7 @@ ms.locfileid: "91597494"
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
 
-您也可以使用 Microsoft Graph 以程式設計方式建立存取套件。 如需說明如何以程式設計方式建立存取套件的教學課程，請參閱[權利管理 API](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta)。
+您也可以使用 Microsoft Graph 以程式設計方式建立存取套件。 如需說明如何以程式設計方式建立存取套件的教學課程，請參閱[權利管理 API](/graph/tutorial-access-package-api?view=graph-rest-beta)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -118,10 +118,10 @@ ms.locfileid: "91597494"
 
     ![新增存取套件 - [資源角色] 索引標籤](./media/entitlement-management-access-package-first/resource-roles.png)
     >[!IMPORTANT]
-    >新增至存取套件的可指派角色群組，將會使用**可指派給角色**的子類型來表示。 如需可指派給 Azure AD 角色的群組詳細資訊，請參閱 Azure Active Directory 中的[建立可指派角色的群組](../users-groups-roles/roles-groups-create-eligible.md)。 如果您沒有看到想要新增的可指派角色群組，或無法新增，請確定您擁有必要的 Azure AD 角色和權利管理角色，才能執行此作業。 您可能需要要求具有必要角色的人員將資源新增至您的目錄。 如需詳細資訊，請參閱[將資源新增至目錄的必要角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)。
+    >新增至存取套件的可指派角色群組，將會使用**可指派給角色**的子類型來表示。 如需可指派給 Azure AD 角色的群組詳細資訊，請參閱 Azure Active Directory 中的[建立可指派角色的群組](../roles/groups-create-eligible.md)。 如果您沒有看到想要新增的可指派角色群組，或無法新增，請確定您擁有必要的 Azure AD 角色和權利管理角色，才能執行此作業。 您可能需要要求具有必要角色的人員將資源新增至您的目錄。 如需詳細資訊，請參閱[將資源新增至目錄的必要角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)。
 
     >[!NOTE]
-    > 使用[動態群組](../users-groups-roles/groups-create-rule.md)時，您不會看到擁有者以外的其他任何可用角色。 這是原廠設定。
+    > 使用[動態群組](../enterprise-users/groups-create-rule.md)時，您不會看到擁有者以外的其他任何可用角色。 這是原廠設定。
     > ![案例概觀](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
     
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: b899485589f19a5b74d6d22b4e5dae5fbf3ff604
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f3dd5898518a9788a7079ab903b6f88b9f82989
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827536"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371200"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory 中的整合執行階段 
 
@@ -56,7 +56,7 @@ Azure 整合執行時間可以：
 
 - 在 Azure 中執行資料流程 
 - 在雲端資料存放區之間執行複製活動
-- 在公用網路中分派下列轉換活動： Databricks 筆記本/Jar/Python 活動、HDInsight Hive 活動、HDInsight Pig 活動、HDInsight MapReduce 活動、HDInsight Spark 活動、HDInsight 串流活動、Machine Learning 批次執行活動、Machine Learning 更新資源活動、預存程式活動、Data Lake Analytics U SQL 活動、.NET 自訂活動、Web 活動、查閱活動，以及取得中繼資料活動。
+- 在公用網路中分派下列轉換活動： Databricks 筆記本/Jar/Python 活動、HDInsight Hive 活動、HDInsight Pig 活動、HDInsight MapReduce 活動、HDInsight Spark 活動、HDInsight 串流活動、Azure Machine Learning Studio (傳統) 批次執行活動、Azure Machine Learning Studio (傳統) 更新資源活動、預存程式活動、網路活動、查閱活動，以及取得中繼資料活動。
 
 ### <a name="azure-ir-network-environment"></a>Azure IR 網路環境
 
@@ -79,7 +79,7 @@ Azure 整合執行階段提供原生計算，能夠以安全、可靠且高效�
 自我裝載 IR 能夠：
 
 - 在雲端資料存放區和私人網路中的資料存放區之間執行複製活動。
-- 針對內部部署或 Azure 虛擬網路中的計算資源分派下列轉換活動： HDInsight Hive 活動 (BYOC-攜帶您自己的叢集) 、HDInsight Pig 活動 (BYOC) 、HDInsight MapReduce 活動 (BYOC) 、HDInsight Spark 活動 (BYOC) 、HDInsight 串流活動 (BYOC) 、Machine Learning 批次執行活動、Machine Learning 的資源活動、預存程式活動 Data Lake Analytics (、查閱活動，以及取得中繼資料活動。
+- 針對內部部署或 Azure 虛擬網路中的計算資源分派下列轉換活動： HDInsight Hive 活動 (BYOC-自備叢集) HDInsight Pig 活動 (BYOC) 、HDInsight MapReduce 活動 (BYOC) 、HDInsight Spark 活動 (BYOC) 、HDInsight 串流活動 (BYOC) 、Azure Machine Learning Studio (傳統) 的「批次執行」活動、Azure Machine Learning Studio (傳統) 更新資源活動、預存程式活動 Data Lake Analytics (、查閱活動，以及取得中繼資料活動。
 
 > [!NOTE] 
 > 使用自我裝載整合執行時間來支援需要自備驅動程式的資料存放區，例如 SAP Hana、MySQL 等等。 如需詳細資訊，請參閱 [支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。

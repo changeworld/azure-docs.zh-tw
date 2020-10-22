@@ -12,14 +12,14 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75081c218536d17798d1ffa788f79130211f72d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acd2f49f009a8bd71d8cfc9f442e579bb1ad396b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89318422"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371880"
 ---
-# <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory 部署計劃
+# <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory 部署方案
 尋找部署 Azure Active Directory (Azure AD) 功能的端對端指引嗎？ Azure AD 部署計畫會逐步引導您完成商務價值、規劃考慮，以及成功部署常見 Azure AD 功能所需的操作程式。
 
 從任何計畫頁面，使用瀏覽器的 [列印至 PDF] 功能建立檔的最新離線版本。
@@ -54,7 +54,7 @@ ms.locfileid: "89318422"
 
 在您的第一波，將目標設為 IT、可用性，以及可以測試並提供意見反應的其他適當使用者。 此意見反應應用來進一步開發您傳送給使用者的通訊和指示，並提供您的支援人員可能會看到的問題類型見解。 
 
-將導入擴展至更大的使用者群組，應藉由增加) 目標的群組 (範圍來執行。 這可以透過 [動態群組成員資格](../users-groups-roles/groups-dynamic-membership.md)來完成，或手動將使用者新增至目標群組， (s) 。
+將導入擴展至更大的使用者群組，應藉由增加) 目標的群組 (範圍來執行。 這可以透過 [動態群組成員資格](../enterprise-users/groups-dynamic-membership.md)來完成，或手動將使用者新增至目標群組， (s) 。
 
 
 ## <a name="deploy-authentication"></a>部署驗證

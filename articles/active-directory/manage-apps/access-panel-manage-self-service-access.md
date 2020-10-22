@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere,asteen
-ms.openlocfilehash: 0cd20d7a11bcffe9937537e3681199757a52bee5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d99f0021ee53e972dacfdadb3e488498a3fc4ad0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89181709"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372458"
 ---
 # <a name="how-to-use-self-service-application-access"></a>如何使用自助應用程式存取
 
@@ -67,4 +67,4 @@ ms.locfileid: "89181709"
 -   如果最近已設定自助應用程式存取，請在幾分鐘後嘗試登入並再次登入使用者的我的應用程式，以查看是否出現自助存取變更。
 
 ## <a name="next-steps"></a>後續步驟
-[設定 Azure Active Directory 進行自助服務群組管理](../users-groups-roles/groups-self-service-management.md)
+[設定 Azure Active Directory 進行自助服務群組管理](../enterprise-users/groups-self-service-management.md)

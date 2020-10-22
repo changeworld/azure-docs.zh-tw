@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
 ms.openlocfilehash: 240018381a3139a6378141d78514e43ae469de5d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "92146322"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 安全性
@@ -117,7 +117,7 @@ Data Lake Storage Gen1 也會為帳戶中儲存的資料提供加密功能。 �
 
 如果您想要在 Data Lake Storage Gen1 中看到新功能，請在 [Data Lake Storage Gen1 UserVoice 論壇](https://feedback.azure.com/forums/327234-data-lake)將您的意見反應傳給我們。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * [Azure Data Lake Storage Gen1 概觀](data-lake-store-overview.md)
 * [開始使用 Data Lake Storage Gen1](data-lake-store-get-started-portal.md)

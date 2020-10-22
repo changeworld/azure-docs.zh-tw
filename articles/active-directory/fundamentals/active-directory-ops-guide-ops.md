@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 74ebd25cb48276f76cdf379eaa596f4ec1f3a2b9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2de3f78b58e10a4fbf65bb00d516448a089f85b6
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312600"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370945"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory 一般操作指南參考
 
@@ -49,7 +49,7 @@ ms.locfileid: "92312600"
 
 #### <a name="owners-recommended-reading"></a>擁有者建議閱讀
 
-- [在 Azure Active Directory 中指派系統管理員角色](../users-groups-roles/directory-assign-admin-roles.md)
+- [在 Azure Active Directory 中指派系統管理員角色](../roles/permissions-reference.md)
 - [Azure 中的治理](../../governance/index.yml)
 
 ## <a name="hybrid-management"></a>混合式管理
@@ -154,7 +154,7 @@ Azure AD：會使用兩個「寄件者」位址 <o365mc@email2.microsoft.com> �
 
 ### <a name="ad-fs-lockdown"></a>AD FS 鎖定
 
-組織會將應用程式設定為直接驗證 Azure AD 受益于 [Azure AD 智慧鎖定](../authentication/concept-sspr-howitworks.md)。 如果您在 Windows Server 2012 R2 中使用 AD FS，請執行 AD FS 的 [外部網路鎖定保護](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)。 如果您使用 Windows Server 2016 或更新版本上的 AD FS，請執行 [外部網路智慧鎖定](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)。 建議您至少啟用外部網路鎖定，以包含對內部部署 Active Directory 進行暴力密碼破解攻擊的風險。 但是，如果您已在 Windows 2016 或更高版本中 AD FS，您也應該啟用外部網路智慧鎖定，以協助降低 [密碼噴灑](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) 攻擊。
+將應用程式設定為直接向 Azure AD 進行驗證的組織，可受益於 [Azure AD 智慧鎖定](../authentication/concept-sspr-howitworks.md)。 如果您在 Windows Server 2012 R2 中使用 AD FS，請執行 AD FS 的 [外部網路鎖定保護](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)。 如果您使用 Windows Server 2016 或更新版本上的 AD FS，請執行 [外部網路智慧鎖定](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)。 建議您至少啟用外部網路鎖定，以包含對內部部署 Active Directory 進行暴力密碼破解攻擊的風險。 但是，如果您已在 Windows 2016 或更高版本中 AD FS，您也應該啟用外部網路智慧鎖定，以協助降低 [密碼噴灑](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/) 攻擊。
 
 如果 AD FS 只用于 Azure AD 同盟，則有一些端點可關閉，以將受攻擊面區域降至最低。 例如，如果 AD FS 只用于 Azure AD，您應該停用 WS-Trust 的端點，而不是啟用 **usernamemixed** 和 **windowstransport**的端點。
 
@@ -166,9 +166,9 @@ Active Directory 管理層模型的設計目的，是要使用一組緩衝區區
 
 階層 [模型](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) 是由三個層級所組成，而且只包含系統管理帳戶，而不包含標準使用者帳戶。
 
-- **第0層**  -直接控制環境中的企業身分識別。 第 0 層包括可直接或間接對 Active Directory 樹系、網域或網域控制站進行系統管理控制的帳戶、群組和其他資產及其上的所有資產。 所有第 0 層資產的安全性敏感度相當於它們全都在彼此的有效控制之下。
-- **第1層**  -企業伺服器和應用程式的控制。 第 1 層資產包括伺服器作業系統、雲端服務和企業應用程式。 第 1 層系統管理員帳戶對於這些資產上裝載的大量商業價值具有系統管理控制權。 常見的範例角色是伺服器系統管理員，其可利用會影響所有企業服務的能力來維護這些作業系統。
-- **第2層**  -控制使用者工作站和裝置。 第 2 層系統管理員帳戶對於使用者工作站和裝上裝載的大量商業價值具有系統管理控制權。 範例包括技術支援中心及電腦支援系統管理員，因為他們會影響到幾乎所有使用者資料的完整性。
+- **第 0 層** - 直接控制環境中的企業身分識別。 第 0 層包括可直接或間接對 Active Directory 樹系、網域或網域控制站進行系統管理控制的帳戶、群組和其他資產及其上的所有資產。 所有第 0 層資產的安全性敏感度相當於它們全都在彼此的有效控制之下。
+- **第 1 層** - 控制企業伺服器與應用程式。 第 1 層資產包括伺服器作業系統、雲端服務和企業應用程式。 第 1 層系統管理員帳戶對於這些資產上裝載的大量商業價值具有系統管理控制權。 常見的範例角色是伺服器系統管理員，其可利用會影響所有企業服務的能力來維護這些作業系統。
+- **第 2 層** - 控制使用者工作站和裝置。 第 2 層系統管理員帳戶對於使用者工作站和裝上裝載的大量商業價值具有系統管理控制權。 範例包括技術支援中心及電腦支援系統管理員，因為他們會影響到幾乎所有使用者資料的完整性。
 
 鎖定對內部部署身分識別元件的存取，例如 Azure AD Connect、AD FS 和 SQL 服務，其方式與網域控制站相同。
 

@@ -14,12 +14,12 @@ ms.date: 09/01/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff5d15ef66b597fdf56fefe90f35cbf122bb093f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4662e9fb537a93cb87c554e319256e2eca40d2e7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534432"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372424"
 ---
 # <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>Azure AD 角色的探索和見解 (預覽)  (先前的安全性嚮導) 
 
@@ -29,7 +29,7 @@ ms.locfileid: "91534432"
 
 在您的組織開始使用 Privileged Identity Management 之前，所有角色指派都是永久的。 使用者一律會在其指派的角色中，即使他們不需要他們的許可權也一樣。 探索和深入解析 (預覽) （取代先前的安全性嚮導）會顯示特殊許可權角色的清單，以及這些角色中目前有多少使用者。 您可以列出角色指派，以深入瞭解指派的使用者（如果有一或多個使用者不熟悉）。
 
-： heavy_check_mark： **Microsoft 建議** 您保留永久指派給全域管理員角色的兩個「中斷玻璃」帳戶。 請確定這些帳戶不需要與一般系統管理帳戶相同的多重要素驗證機制來登入，如 Azure AD 中的 [管理緊急存取帳戶](../users-groups-roles/directory-emergency-access.md)中所述。
+： heavy_check_mark： **Microsoft 建議** 您保留永久指派給全域管理員角色的兩個「中斷玻璃」帳戶。 請確定這些帳戶不需要與一般系統管理帳戶相同的多重要素驗證機制來登入，如 Azure AD 中的 [管理緊急存取帳戶](../roles/security-emergency-access.md)中所述。
 
 此外，如果使用者具有 Microsoft 帳戶 (（也就是他們用來登入 Microsoft 服務例如 Skype 或 Outlook.com) 的帳戶），請將角色指派保持永久。 如果您需要具有 Microsoft 帳戶的使用者進行多重要素驗證，才能啟用角色指派，使用者將遭到鎖定。
 

@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 643010ef1f6e941a57673a711e1871aafd1e341d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaa9fa036f86fc822a4bb2175f404cdff1ca81d7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361903"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362564"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>教學課程：設定記錄分析精靈
 
@@ -45,7 +45,7 @@ ms.locfileid: "91361903"
 
 - [如何整合活動記錄與 Log Analytics](./howto-integrate-activity-logs-with-log-analytics.md)
 
-- [在 Azure AD 中管理緊急存取帳戶](../users-groups-roles/directory-emergency-access.md)
+- [在 Azure AD 中管理緊急存取帳戶](../roles/security-emergency-access.md)
 
 - [KQL 快速參考](/azure/data-explorer/kql-quick-reference)
 

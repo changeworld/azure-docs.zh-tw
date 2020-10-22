@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 執行 VMware VM 的代理程式�
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: f437c0f3b9f786863d3b58f10d1a7384b0f1e8ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ffdbdba0aeae33b04195c5a6bf6aeaff5658424b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296139"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92314709"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>將 VMware VM 遷移至 Azure (代理程式型)
 
@@ -391,7 +391,7 @@ Azure Migrate 伺服器移轉需要 VMware 伺服器的存取權，才能探索�
     - 使用 Site Recovery 將 Azure VM 複寫至次要區域，讓工作負載保持執行且持續可供使用。 [深入了解](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - 針對提升安全性：
     - 使用 [Azure 資訊安全中心 - Just In Time 系統管理](../security-center/security-center-just-in-time.md)來鎖定並限制輸入流量存取。
-    - 使用[網路安全性群組](../virtual-network/security-overview.md)來限制傳送至管理端點的網路流量。
+    - 使用[網路安全性群組](../virtual-network/network-security-groups-overview.md)來限制傳送至管理端點的網路流量。
     - 部署 [Azure 磁碟加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)以協助保護磁碟，以及防止資料遭到竊取和受到未經授權的存取。
     - 深入了解如何[保護 IaaS 資源](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)，並瀏覽 [Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)。
 - 針對監視及管理：

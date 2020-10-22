@@ -4,16 +4,16 @@ description: 建立 Azure Container Registry、設定異地複寫、準備 Docke
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 780a16d691e0d8afe62cd06f37a37fc3f6445ea6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 854b4eb35694f7498d0dc70567b19ccfdf7c8c82
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259528"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148387"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>教學課程：準備異地複寫的 Azure Container Registry
 
-Azure Container Registry 是一種部署在 Azure 中的私人 Docker 登錄，可讓您將網路保持在靠近部署的位置。 在這三篇教學課程系列文章中，您可以了解如何使用異地複寫，將執行於 Linux 容器中的 ASP.NET Core Web 應用程式部署至兩個[用於容器的 Web 應用程式](../app-service/containers/index.yml)執行個體。 您會了解 Azure 如何從最近的異地複寫存放庫，將映像自動部署到每個 Web 應用程式執行個體。
+Azure Container Registry 是一種部署在 Azure 中的私人 Docker 登錄，可讓您將網路保持在靠近部署的位置。 在這三篇教學課程系列文章中，您可以了解如何使用異地複寫，將執行於 Linux 容器中的 ASP.NET Core Web 應用程式部署至兩個[用於容器的 Web 應用程式](../app-service/index.yml)執行個體。 您會了解 Azure 如何從最近的異地複寫存放庫，將映像自動部署到每個 Web 應用程式執行個體。
 
 本教學課程是下列三段式課程的第一段：
 

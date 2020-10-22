@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: c8ede3c4a186b4b24d56651deb8172fdcde8e5ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3201870d2d738a867f89166904d668b5596cbcdf
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89420875"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149067"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure App Service 中新增 TLS/SSL 憑證
 
@@ -145,8 +145,8 @@ ms.locfileid: "89420875"
 | 資源群組 | 建議選取相同的資源群組作為您的 App Service 憑證。 |
 | Location | 選取與 App Service 應用程式相同的位置。 |
 | 定價層 | 如需詳細資訊，請參閱 [Azure Key Vault 定價詳細資料](https://azure.microsoft.com/pricing/details/key-vault/)。 |
-| 存取原則| 定義應用程式以及允許的保存庫資源存取權。 您可以稍後設定，並遵循[指派 Key Vault 存取原則](/azure/key-vault/general/assign-access-policy-portal)中的步驟。 |
-| 虛擬網路存取 | 限制某些 Azure 虛擬網路的保存庫存取權。 您可以稍後設定它，並遵循[設定 Azure Key Vault 防火牆和虛擬網路](/azure/key-vault/general/network-security)中的步驟。 |
+| 存取原則| 定義應用程式以及允許的保存庫資源存取權。 您可以稍後設定，並遵循[指派 Key Vault 存取原則](../key-vault/general/assign-access-policy-portal.md)中的步驟。 |
+| 虛擬網路存取 | 限制某些 Azure 虛擬網路的保存庫存取權。 您可以稍後設定它，並遵循[設定 Azure Key Vault 防火牆和虛擬網路](../key-vault/general/network-security.md)中的步驟。 |
 
 選取保存庫之後，關閉 [Key Vault 存放庫] 頁面。 [步驟 1：儲存] 選項應該會顯示綠色核取記號來表示已成功。 讓頁面保持開啟，以供下一個步驟使用。
 
@@ -189,7 +189,7 @@ ms.locfileid: "89420875"
 如果您使用 Azure Key Vault 管理憑證，只要 PKCS12 憑證[符合需求](#private-certificate-requirements)，便可將該憑證從 Key Vault 匯入到 App Service。
 
 ### <a name="authorize-app-service-to-read-from-the-vault"></a>授權 App Service 從保存庫讀取
-根據預設，App Service 資源提供者無法存取 Key Vault。 若要使用 Key Vault 進行憑證部署，您必須[授權資源提供者對 KeyVault 的讀取權限](../key-vault/general/group-permissions-for-apps.md#grant-access-to-your-key-vault)。 
+根據預設，App Service 資源提供者無法存取 Key Vault。 若要使用 Key Vault 進行憑證部署，您必須[授權資源提供者對 KeyVault 的讀取權限](../key-vault/general/assign-access-policy-cli.md)。 
 
 `abfa0a7c-a6b6-4736-8310-5855508787cd` 是 App Service 的資源提供者服務主體名稱，而對所有 Azure 訂用帳戶都是相同的。 針對 Azure Government 雲端環境，使用 `6a02c803-dafd-4136-b4c3-5a6f318b4714`，而不是資源提供者服務主體名稱。
 
@@ -378,11 +378,11 @@ az keyvault secret download \
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>其他資源
 

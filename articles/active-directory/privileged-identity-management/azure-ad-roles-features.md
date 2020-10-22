@@ -14,12 +14,12 @@ ms.date: 07/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c039842a04923bc02aa288576570d51c39156c40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4478c9c286c06d5d6c5593195a0e93abd286b8c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88784006"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371506"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management 中 Azure AD 角色的管理功能
 
@@ -64,9 +64,9 @@ Privileged Identity Management 中 Azure AD 角色的管理體驗已更新，以
 
 針對使用 Azure AD 角色 Privileged Identity Management PowerShell 模組的客戶，PowerShell 將會停止使用更新。 您必須使用 Azure AD Preview PowerShell 模組內的 Privileged Identity Management Cmdlet 來取代先前的 Cmdlet。 從 [PowerShell 資源庫](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)安裝 Azure AD PowerShell 模組。 您現在可以 [在此 PowerShell 模組中閱讀 PIM 作業的檔和範例](powershell-for-azure-ad-roles.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [指派 Azure AD 自訂角色](azure-ad-custom-roles-assign.md)
 - [移除或更新 Azure AD 自訂角色指派](azure-ad-custom-roles-update-remove.md)
 - [設定 Azure AD 自訂角色指派](azure-ad-custom-roles-configure.md)
-- [Azure AD 中的角色定義](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure AD 中的角色定義](../roles/permissions-reference.md)

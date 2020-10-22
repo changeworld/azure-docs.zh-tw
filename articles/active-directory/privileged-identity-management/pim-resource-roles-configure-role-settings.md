@@ -15,12 +15,12 @@ ms.date: 01/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0a38194c46fa1f5bf7a6a0683e85776abb1f93b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8458fc11f5e836e290c593d3ad4983f44e6abf6
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84743791"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370367"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中設定 Azure 資源角色設定
 
@@ -30,7 +30,7 @@ ms.locfileid: "84743791"
 
 請遵循下列步驟來開啟 Azure 資源角色的設定。
 
-1. 使用具有特殊[許可權角色管理員](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色的使用者登入[Azure 入口網站](https://portal.azure.com/)。
+1. 使用具有特殊[許可權角色管理員](../roles/permissions-reference.md#privileged-role-administrator)角色的使用者登入[Azure 入口網站](https://portal.azure.com/)。
 
 1. 開啟 **Azure AD Privileged Identity Management**。
 
@@ -135,7 +135,7 @@ Privileged Identity Management 可針對兩個不同的案例選擇性地強制�
 
 1. 在您指定所有角色設定後，請選取 [ **更新** ] 以儲存您的變更。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [在 Privileged Identity Management 中指派 Azure 資源角色](pim-resource-roles-assign-roles.md)
 - [在 Privileged Identity Management 中設定 Azure 資源角色的安全性警示](pim-resource-roles-configure-alerts.md)

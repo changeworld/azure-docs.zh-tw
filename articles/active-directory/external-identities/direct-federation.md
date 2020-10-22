@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78ad8761d3a4ff3e3cdab9dee5f50b469ff840fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b7350d793ea42a46d52d881f1399174a3bb5d0e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87908680"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362887"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>直接與來賓使用者的 AD FS 和第三方提供者同盟 (預覽)
 
@@ -45,7 +45,7 @@ ms.locfileid: "87908680"
 ## <a name="limitations"></a>限制
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>Azure AD 中的 DNS 驗證網域
-您想要同盟的網域***不能***是 Azure AD 中的 DNS 驗證網域。 您可以設定與非受控 (透過電子郵件驗證或「病毒式」) Azure AD 租用戶直接同盟，因為這些租用戶未進行過 DNS 驗證。
+您要與同盟的網域，在 Azure AD**not**中必須以 DNS 驗證。 您可以設定與非受控 (透過電子郵件驗證或「病毒式」) Azure AD 租用戶直接同盟，因為這些租用戶未進行過 DNS 驗證。
 
 ### <a name="authentication-url"></a>驗證 URL
 驗證 URL 的網域符合目標網域的原則，或驗證 URL 是其中一個所允許識別提供者 (此清單可能會變更) 的原則時，才允許直接同盟：
@@ -60,7 +60,7 @@ ms.locfileid: "87908680"
 -   federation.exostar.com
 -   federation.exostartest.com
 
-例如，在為 **fabrikam.com** 設定直接同盟時，驗證 URL `https://fabrikam.com/adfs` 會通過驗證。 相同網域中的主機也會通過，例如 `https://sts.fabrikam.com/adfs`。 不過，相同網域的驗證 URL `https://fabrikamconglomerate.com/adfs` 或 `https://fabrikam.com.uk/adfs` 則不會通過。
+例如，設定 _ * fabrikam * * 的直接同盟時，驗證 URL `https://fabrikam.com/adfs` 會通過驗證。 相同網域中的主機也會通過，例如 `https://sts.fabrikam.com/adfs`。 不過，相同網域的驗證 URL `https://fabrikamconglomerate.com/adfs` 或 `https://fabrikam.com.uk/adfs` 則不會通過。
 
 ### <a name="signing-certificate-renewal"></a>簽署憑證更新
 如果您在識別提供者設定中指定中繼資料 URL，Azure AD 便會在簽署憑證到期時自動予以更新。 不過，如果憑證因任何原因而在到期之前輪替，或如果您未提供中繼資料 URL，Azure AD 便無法加以更新。 在此情況下，您必須手動更新簽署憑證。
@@ -73,7 +73,7 @@ ms.locfileid: "87908680"
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 ### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>是否可以設定與存在非受控 (透過電子郵件驗證) 租用戶的網域直接同盟？ 
-是。 如果網域尚未經過驗證，而且租用戶尚未經歷[系統管理員接管](../users-groups-roles/domains-admin-takeover.md)，便可以設定與該網域直接同盟。 當使用者兌換 B2B 邀請或使用目前不存在的網域執行自助式 Azure AD 註冊時，系統就會建立非受控 (或透過電子郵件驗證) 的租用戶。 您可以設定與這些網域直接同盟。 如果您嘗試在 Azure 入口網站或透過 PowerShell 設定與 DNS 驗證網域直接同盟，則會看到錯誤。
+是。 如果網域尚未經過驗證，而且租用戶尚未經歷[系統管理員接管](../enterprise-users/domains-admin-takeover.md)，便可以設定與該網域直接同盟。 當使用者兌換 B2B 邀請或使用目前不存在的網域執行自助式 Azure AD 註冊時，系統就會建立非受控 (或透過電子郵件驗證) 的租用戶。 您可以設定與這些網域直接同盟。 如果您嘗試在 Azure 入口網站或透過 PowerShell 設定與 DNS 驗證網域直接同盟，則會看到錯誤。
 ### <a name="if-direct-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>如果同時啟用直接同盟和電子郵件單次密碼驗證，則會優先使用哪種方法？
 如果已與夥伴組織建立直接同盟，則來自該組織的新來賓使用者會優先採用直接同盟，而非電子郵件單次密碼驗證。 如果在您設定直接同盟之前，來賓使用者早已使用單次密碼驗證兌換了邀請，則會繼續使用單次密碼驗證。 
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>直接同盟能解決登入問題，是不是因為其採用部分同步租用？

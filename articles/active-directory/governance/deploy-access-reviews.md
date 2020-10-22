@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b218f4c94e33d4a91b3981c66d3ac052c6caf7e2
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2f3e825f908ffe475b05a5e6748d9505e7283b50
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318121"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362694"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>規劃 Azure Active Directory 存取審查部署
 
@@ -198,7 +198,7 @@ ms.locfileid: "92318121"
 | 存取套件| 全域管理員<p>存取套件的建立者| 僅限全域管理員 |
 
 
-如需詳細資訊，請參閱 [Azure Active Directory 中的管理員角色權限](../users-groups-roles/directory-assign-admin-roles.md)。
+如需詳細資訊，請參閱 [Azure Active Directory 中的管理員角色權限](../roles/permissions-reference.md)。
 
 ### <a name="who-will-review-the-access-to-the-resource"></a>誰將檢查資源的存取權？
 
@@ -310,7 +310,7 @@ ms.locfileid: "92318121"
 
 群組成員資格可透過下列方式進行審核： 
 
-* 系統管理員
+* Administrators
 
 * 群組擁有者
 
@@ -343,7 +343,7 @@ ms.locfileid: "92318121"
 
 ### <a name="review-external-users-group-memberships"></a>檢查外部使用者的群組成員資格
 
-若要將手動工作和相關的潛在錯誤降至最低，請考慮使用 [動態群組](../users-groups-roles/groups-create-rule.md) ，根據使用者的屬性指派群組成員資格。 您可能會想要為外部使用者建立一或多個動態群組。 內部贊助者可以擔任群組中成員資格的審核者。 
+若要將手動工作和相關的潛在錯誤降至最低，請考慮使用 [動態群組](../enterprise-users/groups-create-rule.md) ，根據使用者的屬性指派群組成員資格。 您可能會想要為外部使用者建立一或多個動態群組。 內部贊助者可以擔任群組中成員資格的審核者。 
 
 注意：不會從租使用者中刪除從群組中移除的外部使用者。 
 
@@ -389,7 +389,7 @@ ms.locfileid: "92318121"
 
 ## <a name="plan-review-of-azure-ad-and-azure-resource-roles"></a>規劃 Azure AD 和 Azure 資源角色的評論
 
-[Privileged Identity Management (PIM) ](../privileged-identity-management/pim-configure.md) 可簡化企業在 Azure AD 中管理資源的特殊許可權存取的方式。 這會讓特殊許可權角色清單保持在 [Azure AD](../users-groups-roles/directory-assign-admin-roles.md) 和 [Azure 資源](../../role-based-access-control/built-in-roles.md) 中的較小，並提高目錄的整體安全性。
+[Privileged Identity Management (PIM) ](../privileged-identity-management/pim-configure.md) 可簡化企業在 Azure AD 中管理資源的特殊許可權存取的方式。 這會讓特殊許可權角色清單保持在 [Azure AD](../roles/permissions-reference.md) 和 [Azure 資源](../../role-based-access-control/built-in-roles.md) 中的較小，並提高目錄的整體安全性。
 
 存取評論可讓審核者證明使用者是否仍然必須在角色中。 就像存取套件的存取權評論一樣，Azure AD 角色和 Azure 資源的評論也會整合到 PIM 系統管理員使用者體驗中。 建議您定期檢查下列角色指派：
 

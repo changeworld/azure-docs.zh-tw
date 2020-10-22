@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c761be04c7d31567e727e93b84c98a1b3510e3d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75965fc9719c9ba16ee7fe24a23dfd4693f8afe0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979869"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362547"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD 權利管理中的委派和角色
 
@@ -92,7 +92,7 @@ ms.locfileid: "90979869"
 
 下表列出權利管理角色可執行檔工作。
 
-| Task | 系統管理員 | 目錄建立者 | 目錄擁有者 | 存取套件管理員 | 存取套件指派管理員 |
+| Task | 管理 | 目錄建立者 | 目錄擁有者 | 存取套件管理員 | 存取套件指派管理員 |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | [委派給目錄建立者](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |  |
 | [新增已連線的組織](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |  |
@@ -124,20 +124,20 @@ ms.locfileid: "90979869"
 
 | Azure AD 目錄角色 | 權利管理角色 | 可以新增安全性群組 | 可以新增 Microsoft 365 群組 | 可以新增應用程式 | 可以新增 SharePoint Online 網站 |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| [全域管理員](../users-groups-roles/directory-assign-admin-roles.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [使用者管理員](../users-groups-roles/directory-assign-admin-roles.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Intune 管理員](../users-groups-roles/directory-assign-admin-roles.md) | 目錄擁有者 | :heavy_check_mark: | :heavy_check_mark: |  |  |
-| [Exchange 管理員](../users-groups-roles/directory-assign-admin-roles.md) | 目錄擁有者 |  | :heavy_check_mark: |  |  |
-| [Microsoft Teams 服務管理員](../users-groups-roles/directory-assign-admin-roles.md) | 目錄擁有者 |  | :heavy_check_mark: |  |  |
-| [SharePoint 管理員](../users-groups-roles/directory-assign-admin-roles.md) | 目錄擁有者 |  | :heavy_check_mark: |  | :heavy_check_mark: |
-| [應用程式系統管理員](../users-groups-roles/directory-assign-admin-roles.md) | 目錄擁有者 |  |  | :heavy_check_mark: |  |
-| [雲端應用程式管理員](../users-groups-roles/directory-assign-admin-roles.md) | 目錄擁有者 |  |  | :heavy_check_mark: |  |
+| [全域管理員](../roles/permissions-reference.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [使用者管理員](../roles/permissions-reference.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Intune 管理員](../roles/permissions-reference.md) | 目錄擁有者 | :heavy_check_mark: | :heavy_check_mark: |  |  |
+| [Exchange 管理員](../roles/permissions-reference.md) | 目錄擁有者 |  | :heavy_check_mark: |  |  |
+| [Microsoft Teams 服務管理員](../roles/permissions-reference.md) | 目錄擁有者 |  | :heavy_check_mark: |  |  |
+| [SharePoint 管理員](../roles/permissions-reference.md) | 目錄擁有者 |  | :heavy_check_mark: |  | :heavy_check_mark: |
+| [應用程式系統管理員](../roles/permissions-reference.md) | 目錄擁有者 |  |  | :heavy_check_mark: |  |
+| [雲端應用程式管理員](../roles/permissions-reference.md) | 目錄擁有者 |  |  | :heavy_check_mark: |  |
 | User | 目錄擁有者 | 只有當群組擁有者 | 只有當群組擁有者 | 只有在應用程式擁有者 |  |
 
 > [!NOTE]
-> 如果使用者新增安全性群組或 Microsoft 365 群組，則群組將無法以角色指派。 如果使用者在建立存取套件時新增角色可指派的群組，則他們也必須是該角色可指派群組的擁有者。 如需詳細資訊，請參閱 [在 Azure Active Directory 中建立可指派角色的群組](../users-groups-roles/roles-groups-create-eligible.md)。
+> 如果使用者新增安全性群組或 Microsoft 365 群組，則群組將無法以角色指派。 如果使用者在建立存取套件時新增角色可指派的群組，則他們也必須是該角色可指派群組的擁有者。 如需詳細資訊，請參閱 [在 Azure Active Directory 中建立可指派角色的群組](../roles/groups-create-eligible.md)。
 
-若要判斷工作的最低特殊許可權角色，您也可以 [在 Azure Active Directory 中依管理工作參考系統管理員角色](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)。
+若要判斷工作的最低特殊許可權角色，您也可以 [在 Azure Active Directory 中依管理工作參考系統管理員角色](../roles/delegate-by-task.md#entitlement-management)。
 
 ## <a name="next-steps"></a>後續步驟
 
