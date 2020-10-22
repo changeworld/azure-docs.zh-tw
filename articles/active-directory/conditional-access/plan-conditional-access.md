@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b90ca2812651e139fb62d86ba0bf4d181d5e9d76
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 0e44cb38435ca86ad7cd4709d5e99f5cf41fcf91
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145280"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366321"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>規劃條件式存取部署
 
@@ -220,7 +220,7 @@ CA 原則是 if-then 語句：如果符合指派，則套用這些存取控制�
 
 ### <a name="set-up-emergency-access-accounts"></a>設定緊急存取帳戶
 
-如果您設定了錯誤的原則，則可能會將組織鎖定在 Azure 入口網站之外。 透過在組織中建立兩個或多個[緊急存取帳戶](../users-groups-roles/directory-emergency-access.md) \(部分機器翻譯\)，來減輕管理員意外遭鎖定的影響。
+如果您設定了錯誤的原則，則可能會將組織鎖定在 Azure 入口網站之外。 透過在組織中建立兩個或多個[緊急存取帳戶](../roles/security-emergency-access.md) \(部分機器翻譯\)，來減輕管理員意外遭鎖定的影響。
 
 * 建立一個專門用來管理原則，且從您的所有原則排除的使用者帳戶。
 

@@ -7,14 +7,14 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 392ecff2ab120e713a07d130493a4a8339dae5ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67f1f2fe3f6ac1061f1edcd22532bffaf0a1e815
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296190"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366865"
 ---
-# <a name="options"></a>選項。 #
+# <a name="options"></a>選項 #
 
 ## <a name="setting-options"></a>設定選項 ##
 
@@ -102,7 +102,7 @@ Height 屬性會設定影片的顯示高度。
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 
 
-設定的其他屬性 `playbackSpeed` 是由 [PlaybackSpeedOptions](/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions) 物件提供。
+設定的其他屬性 `playbackSpeed` 是由 [PlaybackSpeedOptions](/javascript/api/azuremediaplayer/playbackspeedoptions) 物件提供。
 
 以 JavaScript 設定播放速度選項的範例：
 

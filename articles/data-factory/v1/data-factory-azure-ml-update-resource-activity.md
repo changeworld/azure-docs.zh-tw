@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: bed66ab8f3dc3db47b94070cbbeb64fb91163f8c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: d0dd7f71c21e223203fb0e695ba3139eaea0aa81
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014455"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368820"
 ---
 # <a name="updating-azure-machine-learning-studio-classic-models-using-update-resource-activity"></a>使用更新資源活動更新 Azure Machine Learning Studio (傳統) 模型
 
@@ -38,13 +38,13 @@ ms.locfileid: "92014455"
 
 本文補充主要 Azure Data Factory-Azure Machine Learning Studio (傳統) 整合文章： [使用 Azure Machine Learning Studio (傳統) 和 Azure Data Factory 建立預測管線](data-factory-azure-ml-batch-execution-activity.md)。 如果您尚未檢閱主要文件，請在閱讀這篇文章之前先這麼做。 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 經過一段時間之後，就必須使用新的輸入資料集重新定型 Azure Machine Learning Studio 中的預測模型 (傳統) 評分實驗。 完成重新訓練之後，您想要使用已重新訓練的 ML 模型來更新評分 Web 服務。 透過 web 服務啟用重新訓練和更新 Studio (傳統) 模型的一般步驟如下：
 
 1. 在 [Azure Machine Learning Studio (傳統) ](https://studio.azureml.net)中建立實驗。
 2. 當您滿意模型時，請使用 Azure Machine Learning Studio (傳統) ，將 web 服務發佈至 **訓練實驗** 和評分/預測性**實驗**。
 
-下表說明本範例中使用的 Web 服務。  請參閱以程式設計方式重新定型 [Machine Learning Studio (傳統) 模型](../../machine-learning/studio/retrain-machine-learning-model.md) 以取得詳細資料。
+下表說明本範例中使用的 Web 服務。  請參閱以程式設計方式重新定型 [Azure Machine Learning Studio (傳統) 模型](../../machine-learning/studio/retrain-machine-learning-model.md) 以取得詳細資料。
 
 - **訓練 Web 服務** - 接收訓練資料並產生已訓練的模型。 重新訓練的輸出是 Azure Blob 儲存體中的 .ilearner 檔案。 當您將訓練實驗發佈為 Web 服務時，系統會自動為您建立 **預設端點** 。 您可以建立多個端點，但此範例僅使用預設端點。
 - **評分 Web 服務** - 接收未標記的資料範例並進行預測。 預測的輸出可能會有各種不同的表單，例如 Azure SQL Database 中的 .csv 檔案或資料列，視實驗的設定而定。 當您將預測實驗發佈為 Web 服務時，系統會自動為您建立預設端點。 

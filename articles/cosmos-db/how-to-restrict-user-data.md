@@ -6,19 +6,19 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 44a62643c459fb61e7a2a95c2a9dd55ea4f19111
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 869513d5a668544b2aa8afb13bb56e8293788b06
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570653"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368718"
 ---
 # <a name="restrict-user-access-to-data-operations-in-azure-cosmos-db"></a>限制使用者存取 Azure Cosmos DB 中的資料作業
 
 在 Azure Cosmos DB 中，有兩種方式可以驗證與資料庫服務的互動：
 
 - 與 Azure 入口網站互動時，使用您的 Azure Active Directory 身分識別，
-- 從 Api 和 Sdk 發出呼叫時，使用 Azure Cosmos DB [金鑰](secure-access-to-data.md#primary-keys) 或 [資源權杖](secure-access-to-data.md#resource-tokens) 。
+- 從 Api 和 Sdk 發出呼叫時，使用 Azure Cosmos DB [金鑰](database-security.md#primary-keys) 或 [資源權杖](secure-access-to-data.md#resource-tokens) 。
 
 每個驗證方法都可讓您存取不同的作業集，但有一些重迭：
 

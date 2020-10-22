@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 899c64e818896cde18e955d6abd82594734c4b57
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80878386"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368157"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure 排程器中的概念、術語及實體
 
@@ -27,7 +27,7 @@ ms.locfileid: "80878386"
 
 Azure 排程器 REST API 會公開並使用這些主要實體或資源：
 
-| 實體 | 描述 |
+| 單位 | 描述 |
 |--------|-------------|
 | **工作 (Job)** | 定義單一週期性動作，以及簡單或複雜的執行策略。 動作可能包括 HTTP、儲存體佇列、服務匯流排佇列或服務匯流排主題要求。 | 
 | **工作集合** | 包含作業群組，並維護集合中作業所共用的設定、配額及節流。 身為 Azure 訂用帳戶擁有者，您可以建立作業集合，並根據作業的使用方式或應用程式界限將作業群組在一起。 作業集合具有下列屬性： <p>- 受限於一個區域。 <br>- 可讓您強制執行配額，以限制集合中所有作業的使用方式。 <br>- 配額包含 MaxJobs 和 MaxRecurrence。 | 
@@ -40,7 +40,7 @@ Azure 排程器 REST API 會公開並使用這些主要實體或資源：
 
 ### <a name="job-management"></a>作業管理
 
-支援建立和編輯作業的作業。 所有作業都必須屬於現有作業集合，因此沒有隱含的建立作業。 如需詳細資訊，請參閱[排程器 REST API - 作業](https://docs.microsoft.com/rest/api/scheduler/jobs)。 以下是這些作業的 URI 位址：
+支援建立和編輯作業的作業。 所有作業都必須屬於現有作業集合，因此沒有隱含的建立作業。 如需詳細資訊，請參閱[排程器 REST API - 作業](/rest/api/scheduler/jobs)。 以下是這些作業的 URI 位址：
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}
@@ -48,7 +48,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-collection-management"></a>作業集合管理
 
-支援建立和編輯作業及作業集合的作業，這會對應到配額和共用設定。 例如，配額會指定最大作業數目和最小週期間隔。 如需詳細資訊，請參閱[排程器 REST API - 作業集合](https://docs.microsoft.com/rest/api/scheduler/jobcollections)。 以下是這些作業的 URI 位址：
+支援建立和編輯作業及作業集合的作業，這會對應到配額和共用設定。 例如，配額會指定最大作業數目和最小週期間隔。 如需詳細資訊，請參閱[排程器 REST API - 作業集合](/rest/api/scheduler/jobcollections)。 以下是這些作業的 URI 位址：
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}
@@ -56,7 +56,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 ### <a name="job-history-management"></a>作業記錄管理
 
-支援使用 GET 作業擷取 60 天的作業執行記錄，例如作業經歷時間和作業執行結果。 包含根據狀況和狀態篩選的查詢字串參數支援。 如需詳細資訊，請參閱[排程器 REST API - 作業 - 列出作業記錄](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory)。 以下是此作業的 URI 位址：
+支援使用 GET 作業擷取 60 天的作業執行記錄，例如作業經歷時間和作業執行結果。 包含根據狀況和狀態篩選的查詢字串參數支援。 如需詳細資訊，請參閱[排程器 REST API - 作業 - 列出作業記錄](/rest/api/scheduler/jobs/listjobhistory)。 以下是此作業的 URI 位址：
 
 ```
 https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history
@@ -214,7 +214,7 @@ Azure 排程器支援多個作業類型：
 },
 ```
 
-如需共用存取簽章 (SAS) 權杖的詳細資訊，請參閱[使用共用存取簽章進行授權](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
+如需共用存取簽章 (SAS) 權杖的詳細資訊，請參閱[使用共用存取簽章進行授權](../storage/common/storage-sas-overview.md)。
 
 <a name="error-action"></a>
 

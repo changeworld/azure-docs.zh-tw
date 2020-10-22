@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: ab3597ddba3e41e88c8b2b575ed5857aca01e610
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b71c6b834a6217007134b3be961a0ffa103e2706
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397958"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368038"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>對 Azure 至 Azure VM 的複寫錯誤進行疑難排解
 
@@ -202,7 +202,7 @@ Site Recovery configuration failed.
 #### <a name="fix-the-problem"></a>修正問題
 
 Azure Site Recovery 需要 Microsoft 365 IP 範圍的存取權，才能進行驗證。
-如果您使用 Azure 網路安全性群組 (NSG) 規則/防火牆 proxy 來控制 VM 上的輸出網路連線能力，請確定您使用 [Azure Active Directory (aad) 以服務標記](../virtual-network/security-overview.md#service-tags) 為基礎的 NSG 規則，以允許存取 AAD。 我們不再支援以 IP 位址為基礎的 NSG 規則。
+如果您使用 Azure 網路安全性群組 (NSG) 規則/防火牆 proxy 來控制 VM 上的輸出網路連線能力，請確定您使用 [Azure Active Directory (aad) 以服務標記](../virtual-network/network-security-groups-overview.md#service-tags) 為基礎的 NSG 規則，以允許存取 AAD。 我們不再支援以 IP 位址為基礎的 NSG 規則。
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>問題 3：	Site Recovery 設定失敗 (151197)
 
@@ -239,7 +239,7 @@ Azure Site Recovery 需要 Microsoft 365 IP 範圍的存取權，才能進行驗
 > [!NOTE]
 > 行動服務代理程式只支援未 **驗證**的 proxy。
 
-### <a name="more-information"></a>詳細資訊
+### <a name="more-information"></a>更多資訊
 
 若要指定 [必要的 url](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) 或所 [需的 IP 範圍](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)，請遵循 [關於 Azure 中的網路到 azure](azure-to-azure-about-networking.md)複寫的指引。
 

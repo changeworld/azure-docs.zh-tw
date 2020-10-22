@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: harshacs
-ms.openlocfilehash: 904bc63ed2a135cdcadad75e96acd6fe3ca39039
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 367aba09f84da1e227c08721077aa1b2132a62bf
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069674"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367968"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>網路安全性群組搭配 Azure Site Recovery
 
-網路安全性群組可用來將網路流量限制為虛擬網路中的資源。 [網路安全性群組 (NSG)](../virtual-network/security-overview.md#network-security-groups) 包含一些安全性規則，可根據來源或目的地 IP 位址、連接埠和通訊協定允許或拒絕輸入或輸出網路流量。
+網路安全性群組可用來將網路流量限制為虛擬網路中的資源。 [網路安全性群組 (NSG)](../virtual-network/network-security-groups-overview.md#network-security-groups) 包含一些安全性規則，可根據來源或目的地 IP 位址、連接埠和通訊協定允許或拒絕輸入或輸出網路流量。
 
 在 Resource Manager 部署模式下，NSG 可與子網路或個別網路介面建立關聯。 當 NSG 與子網路相關聯時，系統會將規則套用至已連線至子網路的所有資源。 若某個子網路已有相關聯的 NSG，而您讓 NSG 也關聯至該子網路內的個別網路介面，就可以進一步限制流量。
 
@@ -37,7 +37,7 @@ ms.locfileid: "90069674"
 
 這可讓您進行更細微的安全性規則應用。 例如，您可以允許對子網路底下的一些應用程式 VM (例如，前端 VM) 進行輸入網際網路存取，但限制不得對其他 VM (例如，資料庫和其他後端 VM) 進行輸入網際網路存取。 在此情況下，您可以對子網路 NSG 實施較寬鬆的規則，允許網際網路流量，但藉由拒絕對 VM NSG 的存取來限制對特定 VM 的存取。 您也可以對輸出流量套用相同的規則。
 
-在設定這類 NSG 組態時，請確定您對[安全性規則](../virtual-network/security-overview.md#security-rules)所套用的優先順序正確無誤。 系統會依照優先權順序處理規則，較低的數字會在較高的數字之前處理，因為較低的數字具有較高的優先順序。 一旦流量符合規則，處理就會停止。 因此，如果存在較低優先順序 (較高數字) 的規則具有與較高優先順序之規則相同的屬性，則不會進行處理。
+在設定這類 NSG 組態時，請確定您對[安全性規則](../virtual-network/network-security-groups-overview.md#security-rules)所套用的優先順序正確無誤。 系統會依照優先權順序處理規則，較低的數字會在較高的數字之前處理，因為較低的數字具有較高的優先順序。 一旦流量符合規則，處理就會停止。 因此，如果存在較低優先順序 (較高數字) 的規則具有與較高優先順序之規則相同的屬性，則不會進行處理。
 
 您可能永遠不會注意網路安全性群組何時同時套用至網路介面和子網路。 藉由檢視網路介面的[有效安全性規則](../virtual-network/virtual-network-network-interface.md#view-effective-security-rules)，可以確認套用至網路介面的彙總規則。 您也可以使用[Azure 網路](../network-watcher/network-watcher-monitoring-overview.md)監看員中的[IP 流量驗證](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md)功能來判斷是否允許網路介面進行通訊。 此工具會告訴您是否允許通訊，以及哪個網路安全性規則允許或拒絕流量。
 
@@ -72,7 +72,7 @@ Site Recovery 不會在容錯移轉作業進行期間建立或複寫 NSG。 建�
 建立並設定 NSG 後，建議您執行[測試容錯移轉](azure-to-azure-tutorial-dr-drill.md)以確認所編寫的 NSG 關聯和容錯移轉後的 VM 連線能力。
 
 ## <a name="next-steps"></a>後續步驟
--    深入了解[網路安全性群組](../virtual-network/security-overview.md#network-security-groups)。
--    深入了解 NSG [安全性規則](../virtual-network/security-overview.md#security-rules)。
+-    深入了解[網路安全性群組](../virtual-network/network-security-groups-overview.md#network-security-groups)。
+-    深入了解 NSG [安全性規則](../virtual-network/network-security-groups-overview.md#security-rules)。
 -    深入了解 NSG 的[有效安全性規則](../virtual-network/diagnose-network-traffic-filter-problem.md)。
 -    深入了解自動執行應用程式容錯移轉的[復原計劃](site-recovery-create-recovery-plans.md)。

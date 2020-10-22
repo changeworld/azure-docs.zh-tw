@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: ec2516010768eded939b0ffa44c197f102c7766b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "89401192"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>將站台對站台連線新增至使用現有 VPN 閘道連線的 VNet
@@ -62,7 +62,7 @@ ms.locfileid: "89401192"
      ![新增連接頁面](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "新增連接頁面")<br>
 
 ## <a name="part-2---add-a-local-network-gateway"></a><a name="part2"></a>第 2 部分 - 新增區域網路閘道
-1. 按一下 [區域網路閘道]** > [選擇區域網路閘道]** ******。 這會開啟 [選擇區域網路閘道]**** 頁面。
+1. 按一下 [ **局域網路閘道**] **_選擇局域網路閘道_*。這會開啟 [* 選擇局域網路閘道** ] 頁面。
    
     ![選擇區域網路閘道](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "選擇區域網路閘道")<br>
 2. 按一下 [建立新的]**** 以開啟 [建立區域網路閘道]**** 頁面。

@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperfq1, identityplatformtop40
-ms.openlocfilehash: 79475414f6785474596beae208fefae81a673dea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c8a911bef5fb92f5bf9aa447e9e810a85317208
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842677"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365845"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 身分識別平台端點中的權限和同意
 
@@ -54,13 +54,13 @@ Microsoft 身分識別平台會實作 [OAuth 2.0](active-directory-v2-protocols.
 
 Microsoft 身分識別平台支援兩種類型的權限：**委派權限**和**應用程式權限**。
 
-* **委派權限**供已有登入使用者的應用程式使用。 針對這些應用程式，使用者或系統管理員會同意應用程式所要求的許可權，而應用程式會委派許可權，以在呼叫目標資源時作為已登入的使用者。 有些委派權限可由非系統管理使用者同意，但有些較高的特定權限則需要[系統管理員的同意](#admin-restricted-permissions)。 若要了解哪些系統管理員角色可同意委派權限，請參閱 [Azure AD 中的系統管理員角色權限](../users-groups-roles/directory-assign-admin-roles.md)。
+* **委派權限**供已有登入使用者的應用程式使用。 針對這些應用程式，使用者或系統管理員會同意應用程式所要求的許可權，而應用程式會委派許可權，以在呼叫目標資源時作為已登入的使用者。 有些委派權限可由非系統管理使用者同意，但有些較高的特定權限則需要[系統管理員的同意](#admin-restricted-permissions)。 若要了解哪些系統管理員角色可同意委派權限，請參閱 [Azure AD 中的系統管理員角色權限](../roles/permissions-reference.md)。
 
 * **應用程式權限**供沒有登入使用者的應用程式在執行時使用；例如，當作背景服務或精靈來執行的應用程式。  應用程式權限只能[由系統管理員同意](#requesting-consent-for-an-entire-tenant)。
 
 _有效權限_ 是應用程式向目標資源提出要求時所將具備的權限。 請務必瞭解您的應用程式被授與的委派和應用程式許可權之間的差異，以及對目標資源進行呼叫時的有效許可權。
 
-- 就委派權限來說，應用程式的 _有效權限_ 是應用程式 (透過同意) 所獲得授與的委派權限和目前已登入使用者的權限二者的最小權限交集。 應用程式絕對不會擁有已登入使用者權限以外的權限。 在組織內，已登入使用者的權限會由原則或是一或多個系統管理員角色的成員資格決定。 若要了解哪些系統管理員角色可同意委派權限，請參閱 [Azure AD 中的系統管理員角色權限](../users-groups-roles/directory-assign-admin-roles.md)。
+- 就委派權限來說，應用程式的 _有效權限_ 是應用程式 (透過同意) 所獲得授與的委派權限和目前已登入使用者的權限二者的最小權限交集。 應用程式絕對不會擁有已登入使用者權限以外的權限。 在組織內，已登入使用者的權限會由原則或是一或多個系統管理員角色的成員資格決定。 若要了解哪些系統管理員角色可同意委派權限，請參閱 [Azure AD 中的系統管理員角色權限](../roles/permissions-reference.md)。
 
    例如，假設已經對您的應用程式授與 _User.ReadWrite.All_ 委派權限。 此權限名義上會對應用程式授與讀取及更新組織中每個使用者設定檔的權限。 如果已登入使用者是全域管理員，應用程式便能夠更新組織中每個使用者的設定檔。 不過，如果登入的使用者不是系統管理員角色，您的應用程式將只能更新已登入使用者的設定檔。 應用程式有權代表其行事的使用者沒有這些權限，因此應用程式無法更新組織中其他使用者的設定檔。
 

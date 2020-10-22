@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: dech
-ms.openlocfilehash: 66eee67ae191d764228a85aaf1e63eae43208cc3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16412e6949bd6bf3d9496b33a900a0331bd1e9fb
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537730"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278163"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>教學課程：使用資料移轉工具將您的資料移轉至 Azure Cosmos DB
 
@@ -344,7 +344,7 @@ dt.exe /s:HBase /s.ConnectionString:ServiceURL=<server-address>;Username=<userna
 
 ## <a name="import-to-the-sql-api-bulk-import"></a><a id="SQLBulkTarget"></a>匯入 SQL API (大量匯入)
 
-為了提高效率，Azure Cosmos DB 大量匯入工具可讓您使用 Azure Cosmos DB 預存程序，從任何可用的來源選項匯入。 此工具支援匯入到一個單一分割的 Azure Cosmos 容器。 也支援跨多個單一分割 Azure Cosmos 容器分割資料的分區化匯入。 如需分割資料的詳細資訊，請參閱 [Azure Cosmos DB 的資料分割與調整規模](partition-data.md)。 此工具會建立並執行預存程序，然後從目標集合中將它刪除。  
+為了提高效率，Azure Cosmos DB 大量匯入工具可讓您使用 Azure Cosmos DB 預存程序，從任何可用的來源選項匯入。 此工具支援匯入到一個單一分割的 Azure Cosmos 容器。 也支援跨多個單一分割 Azure Cosmos 容器分割資料的分區化匯入。 如需分割資料的詳細資訊，請參閱 [Azure Cosmos DB 的資料分割與調整規模](partitioning-overview.md)。 此工具會建立並執行預存程序，然後從目標集合中將它刪除。  
 
 :::image type="content" source="./media/import-data/documentdbbulk.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
 
@@ -403,7 +403,7 @@ Azure Cosmos DB 大量匯入工具含有下列其他進階選項：
 
 ## <a name="import-to-the-sql-api-sequential-record-import"></a><a id="SQLSeqTarget"></a>匯入 SQL API (循序記錄匯入)
 
-Azure Cosmos DB 循序記錄匯入工具可讓您從可用的來源選項逐筆匯入記錄。 如果您打算匯入至已達到預存程序配額的現有集合，您可以選擇此選項。 此工具支援匯入到單一 (單一分割區和多個分割區) Azure Cosmos 容器。 也支援跨多個單一分割區或多重分割區 Azure Cosmos 容器分割資料的分區化匯入。 如需分割資料的詳細資訊，請參閱 [Azure Cosmos DB 的資料分割與調整規模](partition-data.md)。
+Azure Cosmos DB 循序記錄匯入工具可讓您從可用的來源選項逐筆匯入記錄。 如果您打算匯入至已達到預存程序配額的現有集合，您可以選擇此選項。 此工具支援匯入到單一 (單一分割區和多個分割區) Azure Cosmos 容器。 也支援跨多個單一分割區或多重分割區 Azure Cosmos 容器分割資料的分區化匯入。 如需分割資料的詳細資訊，請參閱 [Azure Cosmos DB 的資料分割與調整規模](partitioning-overview.md)。
 
 :::image type="content" source="./media/import-data/documentdbsequential.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
 

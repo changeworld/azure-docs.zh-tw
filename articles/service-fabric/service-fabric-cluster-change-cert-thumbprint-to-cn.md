@@ -1,126 +1,66 @@
 ---
 title: 將叢集更新為使用憑證一般名稱
-description: 了解如何切換 Service Fabric 叢集，將原本使用憑證指紋的叢集改為使用憑證通用名稱。
+description: 瞭解如何將 Service Fabric 叢集憑證從以指紋為基礎的宣告轉換成一般名稱。
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: a90290430616302dbbe9ab9cf717510070936529
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 224798565921593d3c91dfcc187efa71a71b1fdd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86247909"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368055"
 ---
-# <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>將叢集從憑證指紋變更為通用名稱
-由於憑證的指紋皆不相同，導致叢集憑證變換或管理變成艱難的任務。 然而，不同的憑證卻能擁有相同的通用名稱或主體。  將使用憑證指紋的已部署叢集切換為使用憑證通用名稱，有助於大幅簡化憑證管理作業。 本文章描述如何更新執行中的 Service Fabric 叢集，改為使用憑證通用名稱，而非憑證指紋。
-
->[!NOTE]
-> 如果您的範本中有兩個宣告的指紋，您需要執行兩個部署。  必須先完成第一個部署，才能執行本文中的步驟。  第一個部署會將您範本中的**指紋**屬性設定為要使用的憑證，並移除 **thumbprintSecondary** 屬性。  至於第二個部署，請遵循本文中的步驟。
- 
+# <a name="convert-cluster-certificates-from-thumbprint-based-declarations-to-common-names"></a>將叢集憑證從以指紋為基礎的宣告轉換為一般名稱
+憑證 (堆疊的簽章稱為「指紋」 ) 是唯一的，這表示指紋所宣告的叢集憑證會參考特定的憑證實例。 接著，這會讓憑證變換和管理更為普遍且明確：每項變更都需要協調叢集和基礎運算主機的升級。 將 Service Fabric 叢集的憑證宣告從以指紋為基礎的憑證宣告轉換成以憑證的主體一般名稱為基礎的宣告，就能大幅簡化管理，尤其是在憑證上輪流，不再需要叢集升級。 本文說明如何將現有的叢集轉換為一般以名稱為基礎的宣告，而不需要停機。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="get-a-certificate"></a>取得憑證
-首先，請向[憑證授權單位 (CA)](https://wikipedia.org/wiki/Certificate_authority) 索取憑證。  憑證的一般名稱應該用於您擁有的自訂網域，並且向網域註冊機構購買。 例如，"azureservicefabricbestpractices.com"；並非 Microsoft 員工的人員法佈建 MS 網域的憑證，因此您無法使用您的 LB 或流量管理員本身的 DNS 名稱作為您的憑證一般名稱，而且，如果您的自訂網域可以在 Azure 中解析，您必須佈建 [Azure DNS 區域](../dns/dns-delegate-domain-azure-dns.md)。 如果您想要入口網站反映叢集的自訂網域別名，您也需要宣告您擁有的自訂網域成為叢集的 “managementEndpoint”。
+## <a name="moving-to-certificate-authority-ca-signed-certificates"></a>移至憑證授權單位單位 (CA) 簽署的憑證
+如果叢集的安全性是由指紋宣告，則在不可能的情況下，或在不可行與另一個簽章相同的憑證的情況下進行計算。 在此情況下，憑證的來源比較不重要，因此自我簽署的憑證已足夠。 相反地，具有一般名稱所宣告之憑證的叢集安全性，會從公開金鑰基礎結構服務 (PKI) 發出該憑證，並包含其認證實務等層面，包括其運作安全性是否經過審核和其他許多方面。 基於這個理由，PKI 的選擇很重要、對簽發者 (憑證授權單位單位或 CA) 有深入的瞭解，而且自我簽署的憑證基本上是毫無價值。 一般名稱 (CN) 所宣告的憑證通常會被視為有效，如果它的鏈可以成功建立、主體具有預期的 CN 元素，而且其簽發者 (在) 鏈中的「立即」或「更高」，則會由執行驗證的代理程式信任。 Service Fabric 支援透過具有 ' 隱含 ' 簽發者的 CN 宣告憑證 (鏈必須以信任錨點結尾) ，或使用指紋宣告的簽發者 ( 「簽發者釘選」 ) ;如需詳細資訊，請參閱這  [篇文章](cluster-security-certificates.md#common-name-based-certificate-validation-declarations) 。 若要使用指紋所宣告的自我簽署憑證將叢集轉換為一般名稱，則必須先將目標、CA 簽署的憑證依指紋導入到叢集中;只有這樣才可以從 TP 轉換成 CN。
 
-基於測試目的，您可以向免費或開放的憑證授權單位索取 CA 簽署憑證。
-
-> [!NOTE]
-> 至於自我簽署憑證，包括在 Azure 入口網站中部署 Service Fabric 叢集時產生的憑證則不受支援。 
+基於測試目的，可透過 CN 宣告自我簽署憑證，將簽發者釘選到自己的指紋;從安全性的觀點來看，這幾乎等同于以 TP 宣告相同的憑證。 不過請注意，這種類型的成功轉換並不保證成功地從 TP 轉換為具有 CA 簽署憑證的 CN。 因此，建議使用適當的 CA 簽署憑證來測試轉換 () 中有可用的免費選項。
 
 ## <a name="upload-the-certificate-and-install-it-in-the-scale-set"></a>上傳憑證並安裝在擴展集
-在 Azure 中，Service Fabric 叢集會部署在虛擬機器擴展集上。  將憑證上傳到金鑰保存庫，然後安裝在叢集執行所在的虛擬機器擴展集上。
+在 Azure 中，取得和布建憑證的建議機制包含 Azure Key Vault 服務和其工具。 符合叢集憑證宣告的憑證必須布建到組成您叢集的虛擬機器擴展集的每個節點;如需進一步的詳細資料，請參閱 [虛擬機器擴展集上的密碼](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-securely-ship-a-certificate-to-the-vm) 。 在叢集的憑證宣告進行變更之前，必須先在叢集的每個節點類型的 Vm 上安裝目前的和目標叢集憑證。 從憑證發行到布建至 Service fabric 節點的旅程將在 [這裡](cluster-security-certificate-management.md#the-journey-of-a-certificate)深入討論。
 
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
+## <a name="bring-cluster-to-an-optimal-starting-state"></a>將叢集帶入最佳的啟動狀態
+將憑證宣告從指紋式轉換成以一般名稱為基礎的影響兩者：
 
-$SubscriptionId  =  "<subscription ID>"
+- 叢集中的每個節點如何找到並將其認證提供給其他節點
+- 當每個節點建立安全連線時，如何驗證其對應的認證  
 
-# Sign in to your Azure account and select your subscription
-Login-AzAccount -SubscriptionId $SubscriptionId
+請檢查 [這兩個設定的簡報和驗證規則](cluster-security-certificates.md#certificate-configuration-rules) ，再繼續進行。 執行指紋轉換一般名稱轉換時，最重要的考慮是升級和尚未升級的節點 (也就是屬於不同升級網域的節點) 必須能夠在升級期間隨時執行成功的相互驗證。 若要達到此目的，建議您在初始升級中依指紋宣告目標/目標憑證，並在後續的程式中完成轉換為一般名稱。 如果叢集已處於建議的啟動狀態，則可以略過此區段。
 
-$region = "southcentralus"
-$KeyVaultResourceGroupName  = "mykeyvaultgroup"
-$VaultName = "mykeyvault"
-$certFilename = "C:\users\sfuser\myclustercert.pfx"
-$certname = "myclustercert"
-$Password  = "P@ssw0rd!123"
-$VmssResourceGroupName     = "myclustergroup"
-$VmssName                  = "prnninnxj"
+轉換有多個有效的啟動狀態;非變異是叢集已經使用目標憑證 (在升級至一般名稱開始時由指紋) 宣告。 我們考慮 `GoalCert` `OldCert1` `OldCert2` ：
 
-# Create new Resource Group 
-New-AzResourceGroup -Name $KeyVaultResourceGroupName -Location $region
+#### <a name="valid-starting-states"></a>有效的啟動狀態
+- `Thumbprint: GoalCert, ThumbprintSecondary: None`
+- `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`，其中的 `GoalCert` 日期晚 `NotAfter` 于 `OldCert1`
+- `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`，其中的 `GoalCert` 日期晚 `NotAfter` 于 `OldCert1`
 
-# Create the new key vault
-$newKeyVault = New-AzKeyVault -VaultName $VaultName -ResourceGroupName $KeyVaultResourceGroupName `
-    -Location $region -EnabledForDeployment 
-$resourceId = $newKeyVault.ResourceId 
+如果您的叢集不是上述的其中一個有效狀態，請參閱本文結尾的 < 關於如何達成該狀態的附錄。
 
-# Add the certificate to the key vault.
-$PasswordSec = ConvertTo-SecureString -String $Password -AsPlainText -Force
-$KVSecret = Import-AzKeyVaultCertificate -VaultName $vaultName -Name $certName `
-    -FilePath $certFilename -Password $PasswordSec
+## <a name="select-the-desired-common-name-based-certificate-validation-scheme"></a>選取所需的一般名稱型憑證驗證配置
+如先前所述，Service Fabric 支援透過具有隱含信賴起點的 CN 宣告憑證，或是明確地釘選簽發者指紋。 請參閱 [這篇文章](cluster-security-certificates.md#common-name-based-certificate-validation-declarations) 以取得詳細資訊，並確定您已充分瞭解差異，以及選擇任一種機制的含意。 在語法上，此差異/選擇取決於參數的值 `certificateIssuerThumbprintList` ：空白表示依賴信任的根 CA (信賴起點) ，而一組指紋會限制允許的叢集憑證直接簽發者。
 
-$CertificateThumbprint = $KVSecret.Thumbprint
-$CertificateURL = $KVSecret.SecretId
-$SourceVault = $resourceId
-$CommName    = $KVSecret.Certificate.SubjectName.Name
+   > [!NOTE]
+   > ' CertificateIssuerThumbprint ' 欄位允許指定主體一般名稱所宣告之憑證的預期直接簽發者。 可接受的值為一或多個逗點分隔的 SHA1 指紋。 請注意，這是憑證驗證的增強-如果未指定簽發者/清單是空的，則會接受憑證進行驗證（如果可以建立憑證鏈），並在驗證程式信任的根目錄中結束。 如果指定了一或多個簽發者指紋，當其直接簽發者的指紋（從鏈中解壓縮）符合此欄位中指定的任何值時，就會接受憑證，不論根是否受信任。 請注意，PKI 可能會使用不同的憑證授權單位單位 ( 「簽發者」 ) 來簽署具有特定主旨的憑證，因此請務必為該主體指定所有預期的簽發者指紋。 換句話說，憑證的更新並不保證是由與要更新之憑證相同的簽發者所簽署。
+   >
+   > 指定簽發者是最佳的做法；雖然省略它仍然可以運作 (針對鏈結至受信任根目錄的憑證)，此行為仍具有限制，並可能會在不久的將來被移除。 此外，請注意到在 Azure 中部署、受到由私人 PKI 簽發的 X509 憑證所保護，並由主體所宣告的叢集，在該 PKI 的憑證原則不可探索、不可用且不可存取的情況下，該叢集可能會無法由 Azure Service Fabric 服務進行驗證 (針對叢集對服務通訊)。 
 
-Write-Host "CertificateThumbprint    :"  $CertificateThumbprint
-Write-Host "CertificateURL           :"  $CertificateURL
-Write-Host "SourceVault              :"  $SourceVault
-Write-Host "Common Name              :"  $CommName    
+## <a name="update-the-clusters-azure-resource-management-arm-template-and-deploy"></a>更新叢集的 Azure 資源管理 (ARM) 範本和部署
+建議您使用 ARM 範本來管理 Azure Service Fabric 叢集;另一種方法是使用 json 成品，也就是 [Azure 資源總管 (preview) ](https://resources.azure.com)。 Azure 入口網站目前無法使用相同的體驗。 如果無法使用對應至現有叢集的原始範本，則可以在 Azure 入口網站中取得對等的範本，方法是流覽至包含該叢集的資源群組，選取 [**自動化**] 左側功能表中的 [**匯出範本**]，然後再選取所需的資源;至少應該匯出虛擬機器擴展集和叢集資源。 也可以下載產生的範本。 請注意，此範本可能需要在完整部署之前變更，而且可能不符合原始的變更-它會反映叢集資源的目前狀態。
 
-Set-StrictMode -Version 3
-$ErrorActionPreference = "Stop"
+必要的變更如下所示：
+    - 更新虛擬機器資源) 下 (Service Fabric 節點擴充功能的定義;如果叢集定義了多個節點類型，您將需要更新每個對應虛擬機器擴展集的定義
+    - 更新叢集資源定義
 
-$certConfig = New-AzVmssVaultCertificateConfig -CertificateUrl $CertificateURL -CertificateStore "My"
+以下提供詳細的範例。
 
-# Get current VM scale set 
-$vmss = Get-AzVmss -ResourceGroupName $VmssResourceGroupName -VMScaleSetName $VmssName
-
-# Add new secret to the VM scale set.
-$vmss = Add-AzVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $SourceVault `
-    -VaultCertificate $certConfig
-
-# Update the VM scale set 
-Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
-    -Name $VmssName -VirtualMachineScaleSet $vmss 
-```
-
->[!NOTE]
-> 擴展集祕密不支援將相同的資源識別碼用於兩個不同的祕密，因為每個祕密都是已設定版本的唯一資源。 
-
-## <a name="download-and-update-the-template-from-the-portal"></a>從入口網站下載及更新範本
-憑證已安裝在基礎擴展集，不過您還需要更新 Service Fabric 叢集，才能使用該憑證和憑證的通用名稱。  現在，請下載叢集部署所需的範本。  登入 [Azure 入口網站](https://portal.azure.com) ，然後流覽至裝載叢集的資源群組。  在 [設定]**** 中，選取 [部署]****。  選取最新的部署，然後按一下 [檢視範本]****。
-
-![檢視範本][image1]
-
-將範本和參數 JSON 檔案下載到本機電腦。
-
-首先，請在文字編輯器中開啟參數檔案，然後新增以下參數值：
+### <a name="updating-the-virtual-machine-scale-set-resources"></a>正在更新虛擬機器擴展集資源 (s) 
+寄件者
 ```json
-"certificateCommonName": {
-    "value": "myclustername.southcentralus.cloudapp.azure.com"
-},
-```
-
-接下來，在文字編輯器中開啟範本檔案，然後更新三個項目以支援憑證通用名稱。
-
-1. 在 **parameters** 區段，新增 *certificateCommonName* 參數：
-    ```json
-    "certificateCommonName": {
-        "type": "string",
-        "metadata": {
-            "description": "Certificate Commonname"
-        }
-    },
-    ```
-
-    也請考慮移除 *certificateThumbprint*，Resource Manager 範本中可能不會再加以參考。
-
-2. 在 **Microsoft.Compute/virtualMachineScaleSets** 資源中，更新虛擬機器擴充功能以在憑證設定中使用通用名稱，而非使用指紋。  在**virtualMachineProfile** -> **extensionProfile** -> **擴充**功能 -> **屬性** -> **設定** -> **憑證**中，新增 `"commonNames": ["[parameters('certificateCommonName')]"],` 和移除 `"thumbprint": "[parameters('certificateThumbprint')]",` 。
-    ```json
-        "virtualMachineProfile": {
+"virtualMachineProfile": {
         "extensionProfile": {
             "extensions": [
                 {
@@ -129,17 +69,36 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
                         "type": "ServiceFabricNode",
                         "autoUpgradeMinorVersion": true,
                         "protectedSettings": {
-                            "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
-                            "StorageAccountKey2": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key2]"
+                            ...
                         },
                         "publisher": "Microsoft.Azure.ServiceFabric",
                         "settings": {
-                            "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
-                            "nodeTypeRef": "[variables('vmNodeType0Name')]",
-                            "dataPath": "D:\\SvcFab",
-                            "durabilityLevel": "Bronze",
-                            "enableParallelJobs": true,
-                            "nicPrefixOverride": "[variables('subnet0Prefix')]",
+                            ...
+                            "certificate": {
+                                "thumbprint": "[parameters('certificateThumbprint')]",
+                                "x509StoreName": "[parameters('certificateStoreValue')]"
+                            }
+                        },
+                        ...
+                    }
+                },
+```
+收件者
+```json
+"virtualMachineProfile": {
+        "extensionProfile": {
+            "extensions": [
+                {
+                    "name": "[concat('ServiceFabricNodeVmExt','_vmNodeType0Name')]",
+                    "properties": {
+                        "type": "ServiceFabricNode",
+                        "autoUpgradeMinorVersion": true,
+                        "protectedSettings": {
+                            ...
+                        },
+                        "publisher": "Microsoft.Azure.ServiceFabric",
+                        "settings": {
+                            ...
                             "certificate": {
                                 "commonNames": [
                                     "[parameters('certificateCommonName')]"
@@ -147,37 +106,59 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
                                 "x509StoreName": "[parameters('certificateStoreValue')]"
                             }
                         },
-                        "typeHandlerVersion": "1.0"
+                        ...
                     }
                 },
-    ```
+```
 
-3.  在 **Microsoft.ServiceFabric/clusters** 資源中，將 API 版本更新為 "2018-02-01"。  另外，新增 **certificateCommonNames** 設定並使用 **commonNames** 屬性，同時移除 **certificate** 設定 (使用 thumbprint 屬性)，如以下範例所示：
-    ```json
+### <a name="updating-the-cluster-resource"></a>正在更新叢集資源
+在**ServiceFabric/** 叢集資源中，新增具有**CommonNames**設定的 **>certificatecommonnames**屬性，並將 [**憑證**] 屬性全部移除 (其所有設定) ：
+
+寄件者
+```json
     {
         "apiVersion": "2018-02-01",
         "type": "Microsoft.ServiceFabric/clusters",
         "name": "[parameters('clusterName')]",
         "location": "[parameters('clusterLocation')]",
         "dependsOn": [
-            "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]"
+            ...
         ],
         "properties": {
             "addonFeatures": [
-                "DnsService",
-                "RepairManager"
+                ...
+            ],
+            "certificate": {
+              "thumbprint": "[parameters('certificateThumbprint')]",
+              "x509StoreName": "[parameters('certificateStoreValue')]"
+            },
+        ...
+```
+收件者
+```json
+    {
+        "apiVersion": "2018-02-01",
+        "type": "Microsoft.ServiceFabric/clusters",
+        "name": "[parameters('clusterName')]",
+        "location": "[parameters('clusterLocation')]",
+        "dependsOn": [
+            ...
+        ],
+        "properties": {
+            "addonFeatures": [
+                ...
             ],
             "certificateCommonNames": {
                 "commonNames": [
                     {
                         "certificateCommonName": "[parameters('certificateCommonName')]",
-                        "certificateIssuerThumbprint": ""
+                        "certificateIssuerThumbprint": "[parameters('certificateIssuerThumbprintList')]"
                     }
                 ],
                 "x509StoreName": "[parameters('certificateStoreValue')]"
             },
         ...
-    ```
+```
 
 如需詳細資訊，請參閱 [部署使用憑證一般名稱而非指紋的 Service Fabric 叢集。](./service-fabric-create-cluster-using-cert-cn.md)
 
@@ -191,9 +172,22 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
     -TemplateParameterFile "C:\temp\cluster\parameters.json" -TemplateFile "C:\temp\cluster\template.json" 
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="appendix-achieve-a-valid-starting-state-for-converting-a-cluster-to-cn-based-certificate-declarations"></a>附錄：達成將叢集轉換為以 CN 為基礎之憑證宣告的有效啟動狀態
+
+| 開始狀態 | 升級 1 | 升級 2 |
+| :--- | :--- | :--- |
+| `Thumbprint: OldCert1, ThumbprintSecondary: None` 而且 `GoalCert` 的日期晚 `NotAfter` 于 `OldCert1` | `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert` | - |
+| `Thumbprint: OldCert1, ThumbprintSecondary: None` 而且 `OldCert1` 的日期晚 `NotAfter` 于 `GoalCert` | `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1` | `Thumbprint: GoalCert, ThumbprintSecondary: None` |
+| `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`，其中的 `OldCert1` 日期晚 `NotAfter` 于 `GoalCert` | 升級至 `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
+| `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`，其中的 `OldCert1` 日期晚 `NotAfter` 于 `GoalCert` | 升級至 `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
+| `Thumbprint: OldCert1, ThumbprintSecondary: OldCert2` | 移除其中一個 `OldCert1` 或 `OldCert2` 以進入狀態 `Thumbprint: OldCertx, ThumbprintSecondary: None` | 從新的啟動狀態繼續 |
+
+如需有關如何執行這些升級的指示，請參閱 [這份檔](service-fabric-cluster-security-update-certs-azure.md)。
+
+
+## <a name="next-steps"></a>後續步驟
 * 瞭解叢集 [安全性](service-fabric-cluster-security.md)。
-* 了解如何[變換叢集憑證](service-fabric-cluster-rollover-cert-cn.md)
-* [更新及管理叢集憑證](service-fabric-cluster-security-update-certs-azure.md)
+* 瞭解如何依照 [一般名稱來變換叢集憑證](service-fabric-cluster-rollover-cert-cn.md)
+* 瞭解如何[設定 touchless autorollover 的](cluster-security-certificate-management.md)叢集
 
 [image1]: ./media/service-fabric-cluster-change-cert-thumbprint-to-cn/PortalViewTemplates.png

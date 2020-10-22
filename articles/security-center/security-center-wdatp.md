@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 1574810de5b1a2df1b82ea9cc19c88be5c72fec6
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 372ff1dc53f15a1338cad933fec64746b6736f40
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342139"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368075"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>使用安全中心的整合式 EDR 解決方案來保護您的端點： Microsoft Defender for Endpoint
 
@@ -85,7 +85,7 @@ Microsoft Defender for Endpoint 是全方位的雲端提供端點安全性解決
 1. 在資訊安全中心功能表中，選取 [定價和設定]。
 1. 選取您想變更的訂用帳戶。
 1. 選取 [威脅偵測]。
-1. 選取 [ **允許 Windows Defender ATP 存取我的資料**]，然後選取 [ **儲存**]。
+1. 選取 [ **允許 Microsoft Defender For Endpoint 存取我的資料**]，然後選取 [ **儲存**]。
 
     :::image type="content" source="./media/security-center-wdatp/enable-integration-with-edr.png" alt-text="適用于端點本身的安全性中心的 Microsoft Defender":::
 

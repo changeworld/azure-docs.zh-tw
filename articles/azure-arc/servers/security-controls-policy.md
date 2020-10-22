@@ -1,15 +1,15 @@
 ---
 title: 適用於啟用 Azure Arc 之伺服器的 Azure 原則法規合規性控制項
 description: 列出適用於啟用 Azure Arc 之伺服器 (預覽) 可用的 Azure 原則法規合規性控制項。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: sample
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 7829a2e75b60f641af96a0e70b5e05d1d86deb4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d57d6a3a39ef28af8b350063c2f9f79117c8db0d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826050"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320151"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-arc-enabled-servers"></a>適用於啟用 Azure Arc 之伺服器的 Azure 原則法規合規性控制項
 

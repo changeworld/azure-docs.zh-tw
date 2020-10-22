@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2cbb9876d9e28b2cab8efb9ccdb2aa543fcc4b4
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d3d03f46e3948d1134c442f93af2e8f274dcd256
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964463"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366474"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>規劃 Azure Multi-Factor Authentication 部署
 
@@ -226,7 +226,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 若要規劃您的條件式存取原則策略，以此判斷何時需要 MFA 和其他控制項，請參閱[常見的條件式存取原則](../conditional-access/concept-conditional-access-policy-common.md)。
 
-請務必避免不小心鎖定 Azure AD 的租用戶。 您可以藉由[在租用戶中建立兩個或多個緊急存取帳戶](../users-groups-roles/directory-emergency-access.md)，來減緩不慎失去系統管理存取權的影響，並將其排除在條件式存取原則之外。
+請務必避免不小心鎖定 Azure AD 的租用戶。 您可以藉由[在租用戶中建立兩個或多個緊急存取帳戶](../roles/security-emergency-access.md)，來減緩不慎失去系統管理存取權的影響，並將其排除在條件式存取原則之外。
 
 ### <a name="create-conditional-access-policy"></a>建立條件式存取原則
 

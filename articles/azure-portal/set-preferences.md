@@ -9,12 +9,12 @@ ms.date: 08/05/2020
 ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 20ed84a87486f1095a90e012368b1f56d6426c8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34750bcc2e9913b23daa3682d4fdea736f9c7a9a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88205724"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367426"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>管理 Azure 入口網站設定和喜好設定
 
@@ -96,7 +96,7 @@ ms.locfileid: "88205724"
 
 ### <a name="change-the-directory-timeout-setting-admin"></a> (系統管理員) 變更 [目錄超時] 設定
 
-[全域管理員角色](../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)中的系統管理員可以強制執行會話登出之前的最大閒置時間。無活動 timeout 設定適用于目錄層級。 此設定會在新的會話中生效。 它不會立即套用至已登入的任何使用者。 如需目錄的詳細資訊，請參閱 [Active Directory Domain Services 總覽](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)。
+[全域管理員角色](../active-directory/roles/permissions-reference.md#global-administrator--company-administrator)中的系統管理員可以強制執行會話登出之前的最大閒置時間。無活動 timeout 設定適用于目錄層級。 此設定會在新的會話中生效。 它不會立即套用至已登入的任何使用者。 如需目錄的詳細資訊，請參閱 [Active Directory Domain Services 總覽](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)。
 
 如果您是全域管理員，而且想要為 Azure 入口網站的所有使用者強制執行閒置的 timeout 設定，請遵循下列步驟：
 
@@ -108,7 +108,7 @@ ms.locfileid: "88205724"
 
 1. 接下來，輸入使用者可閒置的時間上限（ **小時** 和 **分鐘）** ，然後才會自動將其會話登出。
 
-1. 選取 [套用]。
+1. 選取 [套用]  。
 
     ![顯示頁面的螢幕擷取畫面，可設定目錄層級的非啟用時間](./media/set-preferences/configure.png)
 

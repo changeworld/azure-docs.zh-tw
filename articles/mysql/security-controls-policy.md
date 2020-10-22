@@ -1,18 +1,18 @@
 ---
 title: 適用於「適用於 MySQL 的 Azure 資料庫」的 Azure 原則法規合規性控制措施
 description: 列出適用於「適用於 MySQL 的 Azure 資料庫」的 Azure 原則法規合規性控制措施。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: sample
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 39ed26bdbc18b5e6fb0b9f6f1158e83c86194ac1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11a45dd11108336e5b59641da444b37ba2673a55
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91816245"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319270"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-mysql"></a>適用於「適用於 MySQL 的 Azure 資料庫」的 Azure 原則法規合規性控制措施
 

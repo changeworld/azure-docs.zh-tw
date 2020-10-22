@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: ab76b4aafd73173077d5b2b9f29e6e2da24c1710
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f65707d80461385c28369e75a294865e03f8c662
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104388"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367732"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理動作群組
 動作群組是 Azure 訂用帳戶擁有者定義的通知喜好設定集合。 Azure 監視器和服務健康狀態警示使用動作群組來通知使用者警示已被觸發。 根據使用者的需求而定，不同的警示可能使用相同的動作群組或不同的動作群組。 一個訂用帳戶中最多可設定 2,000 個動作群組。
@@ -157,7 +157,7 @@ ITSM 動作需要 ITSM 連線。 了解如何建立 [ITSM 連線](./itsmc-overvi
 2. 啟用 [動作群組] 以使用您的 Azure AD 應用程式。
 
     > [!NOTE]
-    > 您必須是 [Azure AD 應用程式系統管理員角色](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles)的成員，才能執行此指令碼。
+    > 您必須是 [Azure AD 應用程式系統管理員角色](../../active-directory/roles/permissions-reference.md#available-roles)的成員，才能執行此指令碼。
     
     - 修改 PowerShell 指令碼的 Connect-AzureAD 呼叫，以使用您的 Azure AD 租用戶識別碼。
     - 修改 PowerShell 腳本的變數 $myAzureADApplicationObjectId，以使用 Azure AD 應用程式的物件識別碼。

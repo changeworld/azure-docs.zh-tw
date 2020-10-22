@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: e67d705f8e878cff6934c2e8a172148fab3f1d71
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 23811f379f8738e3fe9f162e23627d0c3c457621
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328993"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367494"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>移轉至叢集組態中以角色為基礎的細微存取
 
@@ -136,12 +136,12 @@ ms.locfileid: "92328993"
 
 ### <a name="sdk-for-go"></a>適用于 Go 的 SDK
 
-更新至 [27.1.0 版](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight) 或更新版本的 HDInsight SDK for Go。 如果您使用受這些變更影響的方法，則可能需要進行少量的程式碼修改：
+更新至 [27.1.0 版](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight) 或更新版本的 HDInsight SDK for Go。 如果您使用受這些變更影響的方法，則可能需要進行少量的程式碼修改：
 
-- [`ConfigurationsClient.get`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ConfigurationsClient.Get) 將 **不會再傳回機密參數** ，例如 (核心) 的儲存體金鑰，或 (閘道) 的 HTTP 認證。
-    - 若要抓取所有設定，包括敏感性參數，請 [`ConfigurationsClient.list`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ConfigurationsClient.List) 繼續使用。請注意，具有「讀者」角色的使用者將無法使用此方法。 這可讓您更精確地控制哪些使用者可以存取叢集的機密資訊。 
-    - 若只取出 HTTP 閘道認證，請使用 [`ClustersClient.get_gateway_settings`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ClustersClient.GetGatewaySettings) 。
-- [`ConfigurationsClient.update`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ConfigurationsClient.Update) 現在已被取代，並已由取代 [`ClustersClient.update_gateway_settings`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ClustersClient.UpdateGatewaySettings) 。
+- [`ConfigurationsClient.get`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight#ConfigurationsClient.Get) 將 **不會再傳回機密參數** ，例如 (核心) 的儲存體金鑰，或 (閘道) 的 HTTP 認證。
+    - 若要抓取所有設定，包括敏感性參數，請 [`ConfigurationsClient.list`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight#ConfigurationsClient.List) 繼續使用。請注意，具有「讀者」角色的使用者將無法使用此方法。 這可讓您更精確地控制哪些使用者可以存取叢集的機密資訊。 
+    - 若只取出 HTTP 閘道認證，請使用 [`ClustersClient.get_gateway_settings`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight#ClustersClient.GetGatewaySettings) 。
+- [`ConfigurationsClient.update`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight#ConfigurationsClient.Update) 現在已被取代，並已由取代 [`ClustersClient.update_gateway_settings`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight#ClustersClient.UpdateGatewaySettings) 。
 
 ### <a name="azhdinsight-powershell"></a>Az. HDInsight PowerShell
 更新為 [Az PowerShell version 2.0.0](https://www.powershellgallery.com/packages/Az) 或更新版本，以避免中斷。  如果您使用受這些變更影響的方法，則可能需要修改程式碼。

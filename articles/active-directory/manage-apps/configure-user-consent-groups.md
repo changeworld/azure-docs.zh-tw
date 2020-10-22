@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: e590981fabcd20f23f25d12b4176b6730cb0fc3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4203c572ed040b37a377e8d4a6b1bc82c883ebd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804298"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368497"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>設定群組擁有者同意存取群組資料的應用程式
 
@@ -30,7 +30,7 @@ ms.locfileid: "91804298"
 
 遵循下列步驟來管理群組擁有者對存取群組資料的應用程式的同意：
 
-1. 以[全域管理員](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)身分登入 [Azure 入口網站](https://portal.azure.com)。
+1. 以[全域管理員](../roles/permissions-reference.md#global-administrator--company-administrator)身分登入 [Azure 入口網站](https://portal.azure.com)。
 2. 選取 **Azure Active Directory**  >  **企業應用程式**  >  **同意和權限**  >  **使用者同意設定**。
 3. 在 [群組擁有者同意存取資料的應用程式] 底下，選取您要啟用的選項。
 4. 選取 [儲存] 以儲存您的設定。
