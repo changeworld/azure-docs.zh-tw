@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 53861bbff9ba328ca97063df59cfedc6e886212d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a8f9734714f0439383f6242cda3b51690284852
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258144"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363414"
 ---
 # <a name="publisher-verification"></a>發行者驗證
 
@@ -49,7 +49,7 @@ Azure AD 同意提示和其他畫面上會出現一個藍色的「已驗證」�
 
 -  執行驗證的使用者必須獲得授權，才能對 Azure AD 中的應用程式註冊和合作夥伴中心內的 MPN 帳戶進行變更。 
 
-    -  在 Azure AD 此使用者必須是下列其中一個 [角色](../users-groups-roles/directory-assign-admin-roles.md)的成員：應用程式系統管理員、雲端應用程式系統管理員或全域管理員。 
+    -  在 Azure AD 此使用者必須是下列其中一個 [角色](../roles/permissions-reference.md)的成員：應用程式系統管理員、雲端應用程式系統管理員或全域管理員。 
 
     -  在合作夥伴中心內，此使用者必須擁有下列其中一種[角色](/partner-center/permissions-overview)：MPN 管理員、帳戶管理員或全域管理員 (這是在 Azure AD 中主控的共用角色)。
     

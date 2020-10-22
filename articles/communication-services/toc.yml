@@ -93,7 +93,7 @@
 - name: 參考資料
   items:
     - name: REST API 文件
-      href: 'https://docs.microsoft.com/rest/api/azure/'
+      href: 'https://docs.microsoft.com/rest/api/communication/'
     - name: 呼叫程式庫 (Android/Java)
       href: 'https://docs.microsoft.com/java/api/com.azure.communication.calling?view=communication-services-java-android'
     - name: 呼叫程式庫 (JS)

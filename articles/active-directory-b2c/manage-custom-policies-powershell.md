@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8a86be8fa08b6fec7c401ad30165b590b3a6ccde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 888e2287c869200434e198204881d5bd5014f87d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85387672"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363856"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure AD B2C 自訂原則
 
@@ -27,9 +27,9 @@ Azure PowerShell 在您的 Azure AD B2C 租使用者中提供數個命令列和�
 * 將新的原則上傳至您的 Azure AD B2C 租使用者
 * 從租使用者刪除自訂原則
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-* [Azure AD B2C 租](tutorial-create-tenant.md)使用者，以及具有 [B2C IEF 原則系統管理員](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) 角色之目錄中的使用者認證
+* [Azure AD B2C 租](tutorial-create-tenant.md)使用者，以及具有 [B2C IEF 原則系統管理員](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator) 角色之目錄中的使用者認證
 * 已上傳至您租使用者的[自訂原則](custom-policy-get-started.md)
 * [適用于 Graph preview 的 Azure AD PowerShell **模組**](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
 
@@ -37,7 +37,7 @@ Azure PowerShell 在您的 Azure AD B2C 租使用者中提供數個命令列和�
 
 若要在 Azure AD B2C 租使用者中使用自訂原則，您必須先使用 [AzureAD][Connect-AzureAD] 命令將您的 PowerShell 會話連線至租使用者。
 
-執行下列命令， `{b2c-tenant-name}` 並以您 Azure AD B2C 租使用者的名稱取代。 使用已在目錄中指派 [B2C IEF 原則系統管理員](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) 角色的帳戶登入。
+執行下列命令， `{b2c-tenant-name}` 並以您 Azure AD B2C 租使用者的名稱取代。 使用已在目錄中指派 [B2C IEF 原則系統管理員](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator) 角色的帳戶登入。
 
 ```PowerShell
 Connect-AzureAD -Tenant "{b2c-tenant-name}.onmicrosoft.com"

@@ -107,8 +107,6 @@
                   href: service-bus-managed-service-identity.md
                 - name: 從應用程式進行驗證
                   href: authenticate-application.md
-        - name: 內建安全性控制
-          href: service-bus-messaging-security-controls.md
         - name: Azure 原則的安全性控制
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -296,7 +294,7 @@
       href: 'https://github.com/paolosalvatori/ServiceBusExplorer'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=service-bus'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azureservicebus'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-bus'

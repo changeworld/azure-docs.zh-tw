@@ -95,6 +95,10 @@
       href: expressroute-connect-azure-to-public-cloud.md
     - name: 跨網路連線能力
       href: cross-network-connectivity.md
+    - name: 安全性
+      items:
+        - name: 安全性基準
+          href: security-baseline.md
     - name: 安全性屬性
       href: expressroute-security-controls.md
     - name: 透過 ExpressRoute 的 BFD
@@ -269,5 +273,3 @@
           href: expressroute-howto-add-gateway-classic.md
         - name: 建立及修改公用對等互連
           href: about-public-peering.md
-    - name: 安全性基準
-      href: security-baseline.md

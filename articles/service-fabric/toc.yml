@@ -148,8 +148,6 @@
           href: service-fabric-application-and-service-security.md
         - name: Service Fabric 叢集安全性
           href: service-fabric-cluster-security.md
-        - name: 內建安全性控制
-          href: service-fabric-security-controls.md
         - name: Service Fabric 中的憑證型驗證
           href: cluster-security-certificates.md
         - name: Service Fabric 中的憑證管理

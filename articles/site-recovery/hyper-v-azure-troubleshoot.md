@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: sharrai
-ms.openlocfilehash: 9e8a1246a2e48c3c569b82845c713ba25ee2467a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 721e09c2bc0562ba833115361cf33c3daaef380b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426117"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364026"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>對 Hyper-V 至 Azure 的複寫和容錯移轉進行疑難排解
 
@@ -29,7 +29,7 @@ ms.locfileid: "89426117"
 4. 檢查 Hyper-V-VMMS\Admin 登入虛擬機器時出現的問題。 此記錄檔位於 [**應用程式及服務記錄**]  >  **Microsoft**  >  **Windows**。
 5. 在客體 VM 上，確認 WMI 已啟用並可供存取。
    - [瞭解](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf) 基本的 WMI 測試。
-   - [疑難排解](https://aka.ms/WMiTshooting) Wmi。
+   - [疑難排解](/windows/win32/wmisdk/wmi-troubleshooting) Wmi。
    - 針對 WMI 腳本和服務的問題[進行疑難排解](/previous-versions/tn-archive/ff406382(v=msdn.10)#H22)。
 6. 在客體 VM 上，確定所執行的是最新版的 Integration Services。
     - [確認](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services)您擁有最新版本。

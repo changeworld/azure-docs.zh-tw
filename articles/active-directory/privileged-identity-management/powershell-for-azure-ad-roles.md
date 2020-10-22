@@ -16,12 +16,12 @@ ms.date: 09/15/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a3c5274a1b63d486bb7eb48b89560d5684db2e2
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: e7d04a2941888592ffa37acfe6cba52a33fda528
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316999"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365505"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management 中 Azure AD 角色的 PowerShell
 
@@ -162,4 +162,4 @@ Set-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Id 'ff518d09-47f5-45a
 - [指派 Azure AD 自訂角色](azure-ad-custom-roles-assign.md)
 - [移除或更新 Azure AD 自訂角色指派](azure-ad-custom-roles-update-remove.md)
 - [設定 Azure AD 自訂角色指派](azure-ad-custom-roles-configure.md)
-- [Azure AD 中的角色定義](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure AD 中的角色定義](../roles/permissions-reference.md)

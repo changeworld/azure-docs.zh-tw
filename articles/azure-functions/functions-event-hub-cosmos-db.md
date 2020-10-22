@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: ef2b774195f522be3520850d2e6e7193e70dd4fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ba15047d04d3af25518e8c55a50c55bcacf9037
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372445"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103929"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>教學課程：使用事件中樞觸發程序和 Azure Cosmos DB 輸出繫結來建立以 Java 撰寫的函式
 
@@ -30,7 +30,7 @@ ms.locfileid: "87372445"
 
 若要完成本教學課程，您必須安裝下列項目：
 
-* [Java Developer Kit](https://aka.ms/azure-jdks) 第 8 版
+* [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) 第 8 版
 * [Apache Maven](https://maven.apache.org) 3.0 版或更新版本
 * [Azure CLI](/cli/azure/install-azure-cli) (如果您不想要使用 Cloud Shell 的話)
 * [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) 2.6.666 版或更新版本

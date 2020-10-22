@@ -1,5 +1,5 @@
 - name: 由 CloudSimple 提供的 VMware 解決方案
-  href: /azure/vmware-cloudsimple
+  href: ./index.md
   items:
     - name: 概觀
       items:

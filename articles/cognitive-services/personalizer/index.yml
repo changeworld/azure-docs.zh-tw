@@ -12,12 +12,12 @@ metadata:
   title: 個人化工具文件
   titleSuffix: Azure Cognitive Services
   description: Azure 個人化工具是雲端式 API 服務，可讓您選擇最佳體驗來對使用者展現，進而從其即時行為中學習。
-  ms.openlocfilehash: 28197f7408ea93ed07d09e1ae44e7924f4605a14
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 51aba4941eb1e1e575e6d33a48a8fe1552eb4d47
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "88506543"
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92371132"
 landingContent:
 - title: 關於個人化工具
   linkLists:
@@ -123,9 +123,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
+    - text: 支援和協助選項
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/personalizer/context/context
     - text: 疑難排解
       url: troubleshooting.md
-    - text: 提出 Stack Overflow 相關問題
-      url: https://stackoverflow.com/questions/tagged/personalizer
-    - text: 使用 UserVoice 影響服務
-      url: https://cognitive.uservoice.com/forums/921562-personalizer

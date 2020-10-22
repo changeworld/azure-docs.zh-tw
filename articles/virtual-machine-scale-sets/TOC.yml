@@ -203,8 +203,6 @@
           href: disk-encryption-overview.md
         - name: Azure 安全性基準
           href: security-baseline.md
-        - name: 內建安全性控制
-          href: virtual-machine-scale-sets-security-controls.md
       maintainContext: true
     - name: 監視
       href: ../azure-monitor/insights/monitor-vm-azure.md
@@ -416,5 +414,5 @@
           href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-vm-scale-set'

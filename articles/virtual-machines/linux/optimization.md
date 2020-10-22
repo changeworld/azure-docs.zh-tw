@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: eff512c9d050eb293391233848fcece83e845680
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fceef1fa9f79ead0ffbbfd7de17b21b750659fc9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654186"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370231"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>在 Azure 上最佳化 Linux VM
 您可以從命令列或入口網站，輕鬆建立 Linux 虛擬機器 (VM)。 本教學課程示範如何在 Microsoft Azure 平台上設定，以確保將其效能最佳化。 本主題會使用 Ubuntu Server VM，但您也可以使用 [自己的映像做為範本](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)來建立 Linux 虛擬機器。  
@@ -47,7 +47,38 @@ ms.locfileid: "88654186"
 ## <a name="linux-swap-partition"></a>Linux 交換分割區
 如果您的 Azure VM 是來自 Ubuntu 或 CoreOS 映像，則您可以使用 CustomData 將 cloud-config 傳送到 cloud-init。 如果您[上傳自訂 Linux 映像](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，使用 cloud-init，您也可以使用 cloud-init 設定交換資料分割。
 
-在 Ubuntu 雲端映像上，您必須使用 cloud-init 設定交換資料分割。 如需詳細資訊，請參閱 [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions)。
+您無法使用 **/etc/waagent.conf** 檔案來管理雲端初始化所布建和支援之所有映射的交換。 如需映射的完整清單，請參閱 [使用雲端初始化](using-cloud-init.md)。 
+
+管理這些映射交換的最簡單方式是完成下列步驟：
+
+1. 在 **/var/lib/cloud/scripts/per-boot** 資料夾中，建立名為 **create_swapfile. sh**：
+
+   **$ sudo touch/var/lib/cloud/scripts/per-boot/create_swapfile sh**
+
+1. 將下列幾行新增至檔案：
+
+   **$ sudo vi/var/lib/cloud/scripts/per-boot/create_swapfile sh**
+
+   ```
+   #!/bin/sh
+   if [ ! -f '/mnt/swapfile' ]; then
+   fallocate --length 2GiB /mnt/swapfile
+   chmod 600 /mnt/swapfile
+   mkswap /mnt/swapfile
+   swapon /mnt/swapfile
+   swapon -a ; fi
+   ```
+
+   > [!NOTE]
+   > 您可以根據您的需求來變更值，並根據資源磁片中的可用空間，根據所使用的 VM 大小而有所不同。
+
+1. 將檔案設為可執行檔：
+
+   **$ sudo chmod + x/var/lib/cloud/scripts/per-boot/create_swapfile sh**
+
+1. 若要建立 cloud-init，請在最後一個步驟之後執行腳本：
+
+   **$ sudo/var/lib/cloud/scripts/per-boot/./create_swapfile sh**
 
 對於沒有 cloud-init 支援的映像，從 Azure Marketplace 部署的 VM 映像具有與作業系統整合的 VM Linux 代理程式。 此代理程式可讓 VM 與各種 Azure 服務進行互動。 假設您從 Azure Marketplace 部署標準映像，需要執行以下操作來正確配置 Linux 交換檔設定︰
 

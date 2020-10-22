@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 763441d023e4a707c6a1edc09abfb6d8e5525723
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4e2e18f3bb9d1c972d805a60493897d605921e4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88782731"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365522"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>邀請來賓使用者，並在 Privileged Identity Management 中指派 Azure 資源角色
 
@@ -67,7 +67,7 @@ Azure Active Directory (Azure AD) 來賓使用者屬於 (中的企業對企業) 
 
 您可以使用 Privileged Identity Management 來邀請來賓，並使其符合 Azure 資源角色的資格。
 
-1. 使用具有特殊[許可權角色管理員](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)或[使用者系統管理員](../users-groups-roles/directory-assign-admin-roles.md#user-administrator)角色成員的使用者登入[Azure 入口網站](https://portal.azure.com/)。
+1. 使用具有特殊[許可權角色管理員](../roles/permissions-reference.md#privileged-role-administrator)或[使用者系統管理員](../roles/permissions-reference.md#user-administrator)角色成員的使用者登入[Azure 入口網站](https://portal.azure.com/)。
 
 1. 開啟 **Azure AD Privileged Identity Management**。
 
@@ -163,7 +163,7 @@ Azure Active Directory (Azure AD) 來賓使用者屬於 (中的企業對企業) 
 
     ![目錄審核記錄清單日期、目標、起始者和活動](./media/pim-resource-roles-external-users/audit-directory.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [在 Privileged Identity Management 中指派 Azure AD 管理員角色](pim-how-to-add-role-to-user.md)
 - [什麼是 Azure AD B2B 共同作業中的來賓使用者存取權？](../external-identities/what-is-b2b.md)

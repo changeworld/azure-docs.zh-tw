@@ -2,7 +2,7 @@
   href: sql-data-warehouse/index.yml
 - name: 切換至 Azure Synapse (SQL DW)
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
-- name: 總覽
+- name: 概觀
   items:
     - name: 什麼是 Azure Synapse？
       href: overview-what-is.md
@@ -44,8 +44,6 @@
       href: quickstart-create-workspace-powershell.md
     - name: 透過範本進行部署
       href: quickstart-deployment-template-workspaces.md
-    - name: 使用 Synapse Studio
-      href: quickstart-synapse-studio.md
     - name: 連結 Power BI 工作區
       href: quickstart-power-bi.md
     - name: 建立集區
@@ -206,7 +204,7 @@
           href: ./data-integration/concepts-data-factory-differences.md
     - name: Spark
       items:
-        - name: 總覽
+        - name: 概觀
           items:
             - name: Apache Spark 概觀
               href: ./spark/apache-spark-overview.md
@@ -272,7 +270,7 @@
               href: sql/load-data-overview.md
         - name: 部署
           items:
-            - name: 總覽
+            - name: 概觀
               href: sql/develop-overview.md
             - name: 最佳作法
               href: sql/develop-best-practices.md

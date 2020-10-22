@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 327505dfbaf5f6f35b065f4f3941053c5114aa33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 478b53b78fb72a01ad028c7fb6b7683b34cbca14
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019210"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370792"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Cache for Redis
 > [!div class="op_single_selector"]
@@ -853,5 +853,5 @@ ms.locfileid: "89019210"
 * [使用資源群組來管理您的 Azure 資源](../azure-resource-manager/templates/deploy-portal.md)：了解如何在 Azure 入口網站中建立和管理資源群組。
 * [Azure 部落格](https://azure.microsoft.com/blog/)：了解 Azure 的新功能。
 * [Windows PowerShell 部落格](https://devblogs.microsoft.com/powershell/)：了解 Windows PowerShell 的新功能。
-* ["Hey, Scripting Guy!"部落格](https://blogs.technet.microsoft.com/heyscriptingguy/author/the-scripting-guys/)：從 Windows PowerShell 社群中取得實際的秘訣及訣竅。
+* ["Hey, Scripting Guy!"部落格](https://devblogs.microsoft.com/scripting/tag/hey-scripting-guy/)：從 Windows PowerShell 社群中取得實際的秘訣及訣竅。
 

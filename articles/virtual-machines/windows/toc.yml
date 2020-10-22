@@ -348,8 +348,6 @@
           href: ../security-controls-policy.md
         - name: Azure 安全性效能評定的安全性基準
           href: security-baseline.md
-        - name: 內建安全性控制
-          href: virtual-machines-windows-security-controls.md
         - name: Bastion
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 狀態和生命週期
@@ -555,7 +553,7 @@
           href: client-images.md
         - name: 下載現有磁碟
           href: download-vhd.md
-        - name: 來自映像版本的受控磁片
+        - name: 來自映像版本的受控磁碟
           href: ../managed-disk-from-image-version.md
     - name: 保護 VM
       items:
