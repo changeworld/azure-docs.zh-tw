@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 3ea719a26f47da98e80abd9e3fcd1785ed8efa69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97e2be64818888040b7e6ac3bc8861da24ebdbbd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82185586"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359946"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>從 Azure Data Factory 叫用 Spark 程式管線
 
@@ -26,8 +26,8 @@ ms.locfileid: "82185586"
 > * [MapReduce 活動](data-factory-map-reduce.md)
 > * [Hadoop 串流活動](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活動](data-factory-spark.md)
-> * [Machine Learning 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
-> * [Machine Learning 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning Studio (傳統) 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
+> * [Azure Machine Learning Studio (傳統) 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
 > * [預存程序活動](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL 活動](data-factory-usql-activity.md)
 > * [.NET 自訂活動](data-factory-use-custom-activities.md)
@@ -51,7 +51,7 @@ Spark 活動是 Data Factory 所支援的其中一個[資料轉換活動](data-f
 * 建立會參考儲存體已連結服務的資料集。 目前，您必須指定活動的輸出資料集，即使沒有產生任何輸出。
 * 建立含有 Spark 活動的管線，此活動會參考您所建立的 HDInsight 已連結服務。 此活動已使用您在上一個步驟中建立的資料集設定為輸出資料集。 輸出資料集是驅動排程 (每小時、每天) 的因子。 因此，即使活動並不會真的產生輸出，您仍然必須指定輸出資料集。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 1. 依照[建立儲存體帳戶](../../storage/common/storage-account-create.md)中的指示，建立一般用途的儲存體帳戶。
 
 1. 依照教學課程[在 HDInsight 中建立 Spark 叢集](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)中的指示，在 HDInsight 中建立 Spark 叢集。 將您在步驟 1 中建立的儲存體帳戶與此叢集產生關聯。
@@ -273,7 +273,7 @@ Spark 活動是 Data Factory 所支援的其中一個[資料轉換活動](data-f
 如需進行進一步的疑難排解，請執行下列步驟：
 
 
-1. 前往 `https://<CLUSTERNAME>.azurehdinsight.net/yarnui/hn/cluster`。
+1. 移至 `https://<CLUSTERNAME>.azurehdinsight.net/yarnui/hn/cluster`。
 
     ![YARN UI 應用程式](media/data-factory-spark/yarnui-application.png)
 
@@ -324,7 +324,7 @@ Spark 活動是 Data Factory 所支援的其中一個[資料轉換活動](data-f
 
 下表說明 JSON 定義中所使用的 JSON 屬性。
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 | -------- | ----------- | -------- |
 | NAME | 管線中的活動名稱。 | 是 |
 | description | 說明活動用途的文字。 | 否 |

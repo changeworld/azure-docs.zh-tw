@@ -6,12 +6,12 @@ manager: gaggupta
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: sharrai
-ms.openlocfilehash: 51f45b5c0b8a2729f64eb376e06875719474cbfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aeb89a9d18e4550fa1d6162920d60507fd50c208
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89663889"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359861"
 ---
 # <a name="monitoring-churn-patterns-on-virtual-machines"></a>監視虛擬機器上的流失模式
 
@@ -21,7 +21,7 @@ ms.locfileid: "89663889"
 
 如果您的電腦裝載在 Azure 中，並使用受控或非受控磁片來儲存，您可以藉由追蹤磁片計量來輕鬆地追蹤效能。 這可讓您密切監視並做出正確的磁片選擇，以符合您的應用程式使用模式。 您也可以使用它來建立警示、診斷和組建自動化。 [深入了解](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)。
 
-當您使用 Azure Site Recovery 保護電腦之後，您可以使用 Azure 監視器記錄和記錄分析來監視您的機器。 [深入了解](https://docs.microsoft.com/azure/site-recovery/monitor-log-analytics)。
+當您使用 Azure Site Recovery 保護電腦之後，您可以使用 Azure 監視器記錄和記錄分析來監視您的機器。 [深入了解](./monitor-log-analytics.md)。
 
 您也可以使用一些作業系統特定的工具。
 
@@ -62,7 +62,7 @@ ms.locfileid: "89663889"
 
     ![效能監視器步驟3](./media/monitoring-high-churn/perfmon-step3.png)
 
-若要深入瞭解 [效能監視器，](https://docs.microsoft.com/dynamics365/business-central/dev-itpro/administration/monitor-use-performance-monitor-collect-event-trace-data)請參閱。
+若要深入瞭解 [效能監視器，](/dynamics365/business-central/dev-itpro/administration/monitor-use-performance-monitor-collect-event-trace-data)請參閱。
 
 ## <a name="for-linux-machines"></a>Linux 電腦
 

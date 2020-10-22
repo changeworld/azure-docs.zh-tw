@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: ed06aef4d494fbdce5a07c5bc50bad9737ba5433
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 957cea854b9894b3149a0e292b8072b73875cae5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86497041"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127075"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>教學課程：建置 Power BI 提供者儀表板
 
@@ -44,14 +44,14 @@ ms.locfileid: "86497041"
 
 * Azure IoT Central 持續性患者監視應用程式範本。 如果您還沒有範本，可以遵循[部署應用程式範本](overview-iot-central-healthcare.md)的步驟進行。
 
-* Azure [事件中樞命名空間與事件中樞](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)。
+* Azure [事件中樞命名空間與事件中樞](../../event-hubs/event-hubs-create.md)。
 
-* 您要存取事件中樞的邏輯應用程式。 若要使用 Azure 事件中樞觸發程序啟動邏輯應用程式，您需要一個[空白的邏輯應用程式](https://docs.microsoft.com/azure/logic-apps/quickstart-create-first-logic-app-workflow)。
+* 您要存取事件中樞的邏輯應用程式。 若要使用 Azure 事件中樞觸發程序啟動邏輯應用程式，您需要一個[空白的邏輯應用程式](../../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-* Power BI 服務帳戶。 如果您還沒有帳戶，可以[為 Power BI 服務建立免費的試用帳戶](https://app.powerbi.com/)。 如果您之前未曾用過 Power BI，瀏覽[開始使用 Power BI](https://docs.microsoft.com/power-bi/service-get-started) 可能會很有幫助。
+* Power BI 服務帳戶。 如果您還沒有帳戶，可以[為 Power BI 服務建立免費的試用帳戶](https://app.powerbi.com/)。 如果您之前未曾用過 Power BI，瀏覽[開始使用 Power BI](/power-bi/service-get-started) 可能會很有幫助。
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>設定 Azure 事件中樞的連續資料匯出
-您將必須先設定從 Azure IoT Central 應用程式範本到訂用帳戶中的 Azure 事件中樞的連續資料匯出。 您可以遵循本 Azure IoT Central 教學課程中的步驟，[匯出至事件中樞](https://docs.microsoft.com/azure/iot-central/core/howto-export-data)。 基於此教學課程的目的，您只需要針對遙測匯出。
+您將必須先設定從 Azure IoT Central 應用程式範本到訂用帳戶中的 Azure 事件中樞的連續資料匯出。 您可以遵循本 Azure IoT Central 教學課程中的步驟，[匯出至事件中樞](../core/howto-export-data.md)。 基於此教學課程的目的，您只需要針對遙測匯出。
 
 ## <a name="create-a-power-bi-streaming-dataset"></a>建立 Power BI 串流資料集
 
@@ -72,10 +72,10 @@ ms.locfileid: "86497041"
     >[!div class="mx-imgBorder"] 
     >![輸入資料集值](media/enter-dataset-values.png)
 
-若要深入了解 Power BI 中的串流資料集，您可以閱讀此文件的 [Power BI 中的即時串流](https://docs.microsoft.com/power-bi/service-real-time-streaming)。
+若要深入了解 Power BI 中的串流資料集，您可以閱讀此文件的 [Power BI 中的即時串流](/power-bi/service-real-time-streaming)。
 
 ## <a name="connect-your-logic-app-to-azure-event-hubs"></a>將邏輯應用程式連線至 Azure 事件中樞
-若要將邏輯應用程式連線至 Azure 事件中樞，您可以依照此文件的[使用 Azure 事件中樞與 Azure Logic Apps 傳送事件](https://docs.microsoft.com/azure/connectors/connectors-create-api-azure-event-hubs#add-event-hubs-action) \(部分機器翻譯\) 中所述的指示進行。 以下是一些建議的參數：
+若要將邏輯應用程式連線至 Azure 事件中樞，您可以依照此文件的[使用 Azure 事件中樞與 Azure Logic Apps 傳送事件](../../connectors/connectors-create-api-azure-event-hubs.md#add-event-hubs-action) \(部分機器翻譯\) 中所述的指示進行。 以下是一些建議的參數：
 
 |參數|值|
 |---|---|
@@ -91,7 +91,7 @@ ms.locfileid: "86497041"
 ## <a name="stream-data-to-power-bi-from-your-logic-app"></a>從邏輯應用程式將資料串流至 Power BI
 下一個步驟將要剖析來自事件中樞的資料，將其串流至您先前建立的 Power BI 資料集。
 
-1. 在執行此動作之前，您將必須了解從裝置傳送到事件中樞的 JSON 承載。 方法是，查看此[範例結構描述](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#telemetry)並加以修改，以符合您的結構描述，或使用[服務匯流排總管](https://github.com/paolosalvatori/ServiceBusExplorer)檢查訊息。 如果您使用的是持續性患者監視應用程式，您的訊息看起來會像這樣：
+1. 在執行此動作之前，您將必須了解從裝置傳送到事件中樞的 JSON 承載。 方法是，查看此[範例結構描述](../core/howto-export-data.md#telemetry-format)並加以修改，以符合您的結構描述，或使用[服務匯流排總管](https://github.com/paolosalvatori/ServiceBusExplorer)檢查訊息。 如果您使用的是持續性患者監視應用程式，您的訊息看起來會像這樣：
 
 **Smart Vitals Patch 遙測**
 

@@ -9,10 +9,10 @@ ms.date: 10/17/2018
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 2dcb8489d94b9afc3ae4df829b37dd9785383d85
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "92208238"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>設定 ExpressRoute 私人對等互連的 IPsec 傳輸模式
@@ -147,7 +147,7 @@ ms.locfileid: "92208238"
 8. 在 [自訂安全性方法設定]**** 頁面上，選取 [資料完整性和加密 (ESP)：SHA1、3DES]****。 然後按一下 **[確定]**。
 
    [![22]][22]
-9. 在 [管理篩選動作]**** 頁面上，您會看到 **myEncryption** 篩選條件已成功新增。 按一下 [關閉]。
+9. 在 [管理篩選動作]**** 頁面上，您會看到 **myEncryption** 篩選條件已成功新增。 按一下 [關閉]  。
 
    [![23]][23]
 
@@ -158,7 +158,7 @@ ms.locfileid: "92208238"
 1. 若要限定哪些類型的流量必須加密，請使用 **IP 篩選清單**。 在 [管理 IP 篩選清單]**** 索引標籤中按一下 [新增]****，以新增 IP 篩選清單。
 
    [![24]][24]
-2. 在 [名稱]**** 欄位中，輸入 IP 篩選清單的名稱。 例如 **azure-onpremises-HTTP8080**。 然後按一下 [ **新增**]。
+2. 在 [名稱]**** 欄位中，輸入 IP 篩選清單的名稱。 例如 **azure-onpremises-HTTP8080**。 然後按一下 [新增]  。
 
    [![25]][25]
 3. 在 [IP 篩選描述和鏡像屬性]**** 頁面上，選取 [鏡像]****。 鏡像設定會比對雙向傳輸、而支援雙向通訊的封包。 然後按一下 [下一步]  。

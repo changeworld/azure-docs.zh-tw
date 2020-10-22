@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 114f26c71ee1aecdb1a0ad3d1c01e558843c0969
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bdaaed72b85bc3c0196a8897be311efa5fb714e2
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91705053"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366338"
 ---
 # <a name="common-conditional-access-policies"></a>一般條件式存取原則
 
@@ -28,7 +28,7 @@ ms.locfileid: "91705053"
 
 如需緊急存取帳戶的詳細資訊，以及其重要性，請參閱下列文章： 
 
-* [在 Azure AD 中管理緊急存取帳戶](../users-groups-roles/directory-emergency-access.md)
+* [在 Azure AD 中管理緊急存取帳戶](../roles/security-emergency-access.md)
 * [使用 Azure Active Directory 來建立具彈性的存取控制管理策略](../authentication/concept-resilient-controls.md)
 
 ## <a name="typical-policies-deployed-by-organizations"></a>組織部署的一般原則

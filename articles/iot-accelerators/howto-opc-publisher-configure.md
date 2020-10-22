@@ -9,12 +9,12 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b004bb4fbca768d782863f73d83ec5443bc66ae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 405fa04a3b6af7f0c87888aa48aba9bdffeaf282
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320604"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366950"
 ---
 # <a name="configure-opc-publisher"></a>設定 OPC 發行者
 
@@ -144,7 +144,7 @@ OPC 發行者會實作下列 IoT 中樞直接方法呼叫：
 - ExitApplication
 - GetInfo
 
-方法要求和回應的 JSON 承載格式定義於 [opcpublisher/HubMethodModel.cs](https://github.com/Azure/iot-edge-opc-publisher/blob/master/opcpublisher/HubMethodModel.cs) 中。
+方法要求和回應的 JSON 承載格式定義於 [opcpublisher/HubMethodModel.cs](https://github.com/Azure/iot-edge-opc-publisher/tree/master/opcpublisher) 中。
 
 如果您對模組呼叫未知的方法，它將會以一個字串回應，指出未實作該方法。 您可以呼叫未知的方法來偵測模組。
 

@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: c64c40e96c0ff5864e5b9c9d34bad896c0b03d91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55c884375372b3fea2ff3153aa936893cf668903
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441692"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359980"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server 預存程序活動
 > [!div class="op_single_selector" title1="轉換活動"]
@@ -26,8 +26,8 @@ ms.locfileid: "89441692"
 > * [MapReduce 活動](data-factory-map-reduce.md)
 > * [Hadoop 串流活動](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活動](data-factory-spark.md)
-> * [Machine Learning 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
-> * [Machine Learning 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning Studio (傳統) 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
+> * [Azure Machine Learning Studio (傳統) 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
 > * [預存程序活動](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL 活動](data-factory-usql-activity.md)
 > * [.NET 自訂活動](data-factory-use-custom-activities.md)
@@ -51,7 +51,7 @@ ms.locfileid: "89441692"
 
 下列逐步解說會在管線中使用預存程式活動，以叫用 Azure SQL Database 中的預存程式。
 
-## <a name="walkthrough"></a>逐步介紹
+## <a name="walkthrough"></a>逐步解說
 ### <a name="sample-table-and-stored-procedure"></a>範例資料表與預存程序
 1. 在您的 Azure SQL Database 中，使用 SQL Server Management Studio 或任何其他您很熟悉的工具，來建立下列 **資料表** 。 Datetimestamp 資料行是產生對應識別碼的日期和時間。
 

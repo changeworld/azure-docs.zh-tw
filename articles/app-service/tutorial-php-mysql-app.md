@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.custom: mvc, cli-validate, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: d9f08840165e7e4cf4d13e9a66cbb59489a2b3f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0faf269852418ee8694e5fa51ce8010e57a2c054
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90974263"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150211"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure-app-service"></a>教學課程：在 Azure App Service 中建置 PHP 和 MySQL 應用程式
 
@@ -153,7 +153,7 @@ php artisan serve
 
 ## <a name="create-mysql-in-azure"></a>在 Azure 中建立 MySQL
 
-在此步驟中，您會在[適用於 MySQL 的 Azure 資料庫](/azure/mysql)中建立 MySQL 資料庫。 稍後，您要將 PHP 應用程式設定為連線至此資料庫。
+在此步驟中，您會在[適用於 MySQL 的 Azure 資料庫](../mysql/index.yml)中建立 MySQL 資料庫。 稍後，您要將 PHP 應用程式設定為連線至此資料庫。
 
 ### <a name="create-a-resource-group"></a>建立資源群組
 
@@ -163,7 +163,7 @@ php artisan serve
 
 在 Cloud Shell 中，使用 [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest&preserve-view=true#az-mysql-server-create) 命令在適用於 MySQL 的 Azure 資料庫中建立伺服器。
 
-在下列命令中，以唯一的伺服器名稱替代 *\<mysql-server-name>* 預留位置、以使用者名稱替代 *\<admin-user>* ，還有以密碼替代 *\<admin-password>* 預留位置。 這個伺服器名稱會用來作為 MySQL 端點 (`https://<mysql-server-name>.mysql.database.azure.com`) 的一部分，所以在 Azure 的所有伺服器中必須是唯一的名稱。 如需有關選取 MySQL DB SKU 的詳細資訊，請參閱[建立適用於 MySQL 的 Azure 資料庫伺服器](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli#create-an-azure-database-for-mysql-server)。
+在下列命令中，以唯一的伺服器名稱替代 *\<mysql-server-name>* 預留位置、以使用者名稱替代 *\<admin-user>* ，還有以密碼替代 *\<admin-password>* 預留位置。 這個伺服器名稱會用來作為 MySQL 端點 (`https://<mysql-server-name>.mysql.database.azure.com`) 的一部分，所以在 Azure 的所有伺服器中必須是唯一的名稱。 如需有關選取 MySQL DB SKU 的詳細資訊，請參閱[建立適用於 MySQL 的 Azure 資料庫伺服器](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md#create-an-azure-database-for-mysql-server)。
 
 ```azurecli-interactive
 az mysql server create --resource-group myResourceGroup --name <mysql-server-name> --location "West Europe" --admin-user <admin-user> --admin-password <admin-password> --sku-name B_Gen5_1

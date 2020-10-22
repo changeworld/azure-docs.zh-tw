@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 08/23/2019
 ms.author: dech
 ms.custom: devx-track-js
-ms.openlocfilehash: aa0f0878366e7afc51f066502c24c09a9981027b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9644cb51f7575df7dba757da23af33a26ae4201a
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801353"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279265"
 ---
 # <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中管理資料的 Node.js 範例
 
@@ -50,7 +50,7 @@ ms.locfileid: "91801353"
 
 ## <a name="database-examples"></a>資料庫範例
 
-[DatabaseManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/DatabaseManagement.ts) 檔案會顯示如何在資料庫上執行 CRUD 作業。 若要在執行下列範例之前先了解 Azure Cosmos 資料庫，請參閱[使用資料庫、容器和項目](databases-containers-items.md)概念性文章。 
+[DatabaseManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/DatabaseManagement.ts) 檔案會顯示如何在資料庫上執行 CRUD 作業。 若要在執行下列範例之前先了解 Azure Cosmos 資料庫，請參閱[使用資料庫、容器和項目](account-databases-containers-items.md)概念性文章。 
 
 | Task | API 參考資料 |
 | --- | --- |
@@ -61,7 +61,7 @@ ms.locfileid: "91801353"
 
 ## <a name="container-examples"></a>容器範例
 
-[ContainerManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement.ts) 檔案會顯示如何在容器上執行 CRUD 作業。 若要在執行下列範例之前先了解 Azure Cosmos 集合，請參閱[使用資料庫、容器和項目](databases-containers-items.md)概念性文章。 
+[ContainerManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement.ts) 檔案會顯示如何在容器上執行 CRUD 作業。 若要在執行下列範例之前先了解 Azure Cosmos 集合，請參閱[使用資料庫、容器和項目](account-databases-containers-items.md)概念性文章。 
 
 | Task | API 參考資料 |
 | --- | --- |
@@ -72,7 +72,7 @@ ms.locfileid: "91801353"
 
 ## <a name="item-examples"></a>項目範例
 
-[ItemManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts) 檔案會顯示如何在項目上執行 CRUD 作業。 若要在執行下列範例之前先了解 Azure Cosmos 文件，請參閱[使用資料庫、容器和項目](databases-containers-items.md)概念性文章。 
+[ItemManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts) 檔案會顯示如何在項目上執行 CRUD 作業。 若要在執行下列範例之前先了解 Azure Cosmos 文件，請參閱[使用資料庫、容器和項目](account-databases-containers-items.md)概念性文章。 
 
 | Task | API 參考資料 |
 | --- | --- |

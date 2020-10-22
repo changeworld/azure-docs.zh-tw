@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: c8978504244fbf68875ca8cff7a92f042e8e988b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbea6a0aa31034cd1c04145fb50b72432c9f8520
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329494"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319004"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Akamai 整合
 
@@ -26,9 +26,9 @@ ms.locfileid: "91329494"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Akamai。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
-Azure Active Directory 和 Akamai 企業應用程式存取的整合，可讓您順暢地存取裝載於雲端或內部部署的舊版應用程式。 整合式解決方案可直接將 Azure Active Directory 的各種新式功能 (例如 [Azure AD 條件式存取](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)、[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) 和 [Azure AD Identity Governance](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)) 運用於舊版應用程式存取，而無須進行應用程式修改或代理程式安裝。
+Azure Active Directory 和 Akamai 企業應用程式存取的整合，可讓您順暢地存取裝載於雲端或內部部署的舊版應用程式。 整合式解決方案可直接將 Azure Active Directory 的各種新式功能 (例如 [Azure AD 條件式存取](../conditional-access/overview.md)、[Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) 和 [Azure AD Identity Governance](../governance/identity-governance-overview.md)) 運用於舊版應用程式存取，而無須進行應用程式修改或代理程式安裝。
 
 下圖說明如何將 Akamai EAA 運用於更廣泛的混合式安全存取案例
 
@@ -589,14 +589,14 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Akamai] 圖格時，應該會自動登入您已設定 SSO 的 Akamai。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Akamai] 圖格時，應該會自動登入您已設定 SSO 的 Akamai。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Akamai](https://aad.portal.azure.com/)

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.custom: devx-track-js
-ms.openlocfilehash: e0bb4df611c6a9cfecf0aadbdfc3a577243856ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6df47d3fd62083a5d0940a1d6da50ac5d7d955f4
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327613"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150901"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>教學課程：使用 Azure Functions 進行 Azure SignalR 服務驗證
 
@@ -356,13 +356,13 @@ Web 應用程式也需要 HTTP API 以傳送聊天訊息。 您將建立名為 *
 
 ### <a name="configure-function-app-for-authentication"></a>進行函式應用程式的驗證設定
 
-到目前為止，聊天應用程式皆以匿名方式運作。 在 Azure 中，您將使用 [App Service 驗證](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)來驗證使用者。 已驗證的使用者所使用的使用者識別碼或使用者名稱可傳至 *SignalRConnectionInfo* 繫結，以產生驗證為使用者的連線資訊。
+到目前為止，聊天應用程式皆以匿名方式運作。 在 Azure 中，您將使用 [App Service 驗證](../app-service/overview-authentication-authorization.md)來驗證使用者。 已驗證的使用者所使用的使用者識別碼或使用者名稱可傳至 *SignalRConnectionInfo* 繫結，以產生驗證為使用者的連線資訊。
 
 在傳送訊息時，應用程式可以決定是要將其傳送給所有已連線的用戶端，還是只傳送給已對指定的使用者驗證的用戶端。
 
 1. 在 VS Code 中，開啟 **negotiate/function.json**。
 
-1. 將[繫結運算式](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings)插入 *SignalRConnectionInfo* 繫結的 *userId*屬性中：`{headers.x-ms-client-principal-name}`。 這會將值設為已驗證使用者的使用者名稱。 其屬性此時應該會顯示如下。
+1. 將[繫結運算式](../azure-functions/functions-triggers-bindings.md)插入 *SignalRConnectionInfo* 繫結的 *userId*屬性中：`{headers.x-ms-client-principal-name}`。 這會將值設為已驗證使用者的使用者名稱。 其屬性此時應該會顯示如下。
 
     ```json
     {
@@ -431,11 +431,11 @@ App Service 驗證支援以 Azure Active Directory、Facebook、Twitter、Micros
 
 1. 根據您選擇的登入提供者，依照其隨附文件中的指示完成設定。
 
-    - [Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad)
-    - [Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook)
-    - [Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter)
-    - [Microsoft 帳戶](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft)
-    - [Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google)
+    - [Azure Active Directory](../app-service/configure-authentication-provider-aad.md)
+    - [Facebook](../app-service/configure-authentication-provider-facebook.md)
+    - [Twitter](../app-service/configure-authentication-provider-twitter.md)
+    - [Microsoft 帳戶](../app-service/configure-authentication-provider-microsoft.md)
+    - [Google](../app-service/configure-authentication-provider-google.md)
 
 ### <a name="update-the-web-app"></a>更新 Web 應用程式
 
@@ -517,4 +517,3 @@ Web 應用程式會使用 Azure Blob 儲存體的靜態網站功能進行裝載�
 > [使用 Azure Functions 建置即時應用程式](signalr-concept-azure-functions.md)
 
 [有任何問題嗎？請告訴我們。](https://aka.ms/asrs/qsauth)
-

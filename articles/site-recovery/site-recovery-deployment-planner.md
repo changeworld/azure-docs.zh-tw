@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: mayg
-ms.openlocfilehash: f930fbb9cad893363db2b1a6b9b6ea8acade5a54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a78b0ec53dfce0a1c1478790f404adb78a8c6b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083781"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359844"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>關於 VMware 至 Azure 的 Azure Site Recovery 部署規劃工具
 本文是 VMware 到 Azure 生產部署的 Azure Site Recovery 部署規劃工具使用者指南。
@@ -71,12 +71,12 @@ ms.locfileid: "87083781"
 
 *此工具主要用於 Hyper-V 到 Azure 的災害復原案例。 若為 Hyper-V 到次要站台的災害復原，此工具只能用來了解來源端建議，例如所需的網路頻寬、每個來源 Hyper-V 伺服器上所需的可用儲存體空間，以及初始複寫批次處理數目和批次定義。 請忽略報告中的 Azure 建議和成本。 此外，取得輸送量作業不適用於 Hyper-V 到次要站台的災害復原案例。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 此工具有兩個主要階段：分析和報告產生。 另外還有第三個選項：只計算輸送量。 下表列出起始分析 / 輸送量測量之伺服器的需求。
 
-| 伺服器需求 | 說明|
+| 伺服器需求 | 描述|
 |---|---|
-|分析和輸送量測量| <ul><li>作業系統：Windows Server 2016 或 Windows Server 2012 R2<br>(最好至少符合[組態伺服器的大小建議](https://aka.ms/asr-v2a-on-prem-components))</li><li>機器組態︰8 個 vCPU、16 GB RAM、300 GB HDD</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[適用於 Visual Studio 2012 的 Visual C++ 可轉散發套件](https://aka.ms/vcplusplus-redistributable)</li><li>從這部伺服器的網際網路存取 Azure ( *. blob.core.windows.net) ，埠443<br>[這是選擇性的。 您可以選擇在產生報告時，以手動方式提供可用的頻寬。]</li><li>Azure 儲存體帳戶</li><li>伺服器的系統管理員存取權</li><li>100 GB 的可用磁碟空間下限 (假設分析平均各有 3 個磁碟的 1,000 部 VM 30 天)</li><li>VMware vCenter 統計資料層級設定可以是 1 或更高層級</li><li>允許 vCenter 連接埠 (預設為 443)：Site Recovery 部署規劃工具使用此連接埠來連線至 vCenter 伺服器/ESXi 主機</ul></ul>|
+|分析和輸送量測量| <ul><li>作業系統：Windows Server 2016 或 Windows Server 2012 R2<br>(最好至少符合[組態伺服器的大小建議](/en-in/azure/site-recovery/site-recovery-plan-capacity-vmware#size-recommendations-for-the-configuration-server))</li><li>機器組態︰8 個 vCPU、16 GB RAM、300 GB HDD</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[適用於 Visual Studio 2012 的 Visual C++ 可轉散發套件](https://aka.ms/vcplusplus-redistributable)</li><li>從這部伺服器的網際網路存取 Azure ( *. blob.core.windows.net) ，埠443<br>[這是選擇性的。 您可以選擇在產生報告時，以手動方式提供可用的頻寬。]</li><li>Azure 儲存體帳戶</li><li>伺服器的系統管理員存取權</li><li>100 GB 的可用磁碟空間下限 (假設分析平均各有 3 個磁碟的 1,000 部 VM 30 天)</li><li>VMware vCenter 統計資料層級設定可以是 1 或更高層級</li><li>允許 vCenter 連接埠 (預設為 443)：Site Recovery 部署規劃工具使用此連接埠來連線至 vCenter 伺服器/ESXi 主機</ul></ul>|
 | 報告產生 | 具有 Excel 2013 或更新版本的 Windows 電腦或 Windows Server。<li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[適用於 Visual Studio 2012 的 Visual C++ 可轉散發套件](https://aka.ms/vcplusplus-redistributable)</li><li>只有在您會於報告產生命令中傳遞 -User 選項，以擷取 VM 之最新 VM 設定資訊的情況下，才需要 [VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli) \(英文\)。 部署規劃工具會連線至 vCenter 伺服器。 允許 vCenter 連接埠 (預設為 443) 以連線至 vCenter 伺服器。</li>|
 | 使用者權限 | 使用者帳戶的唯讀權限，在分析期間用來存取 VMware vCenter Server/VMware vSphere ESXi 主機 |
 
@@ -90,7 +90,7 @@ ms.locfileid: "87083781"
 此工具封裝在 .zip 資料夾中。 目前的工具版本僅支援 VMware 到 Azure 案例。
 
 2. 從您要執行工具的位置，將 .zip 資料夾複製到 Windows Server。
-如果伺服器可存取網路以連線到保存要剖析之 VM 的 vCenter Server/vSphere ESXi 主機，您可以從 Windows Server 2012 R2 執行此工具。 不過，我們建議您在硬體設定符合[組態伺服器調整大小方針](https://aka.ms/asr-v2a-on-prem-components)的伺服器上執行此工具。 如果您已在內部部署環境部署 Site Recovery 元件，請從組態伺服器執行此工具。
+如果伺服器可存取網路以連線到保存要剖析之 VM 的 vCenter Server/vSphere ESXi 主機，您可以從 Windows Server 2012 R2 執行此工具。 不過，我們建議您在硬體設定符合[組態伺服器調整大小方針](/en-in/azure/site-recovery/site-recovery-plan-capacity-vmware#size-recommendations-for-the-configuration-server)的伺服器上執行此工具。 如果您已在內部部署環境部署 Site Recovery 元件，請從組態伺服器執行此工具。
 
     我們建議執行此工具的伺服器具有與組態伺服器 (具備內建處理序伺服器) 相同的硬體組態。 這種組態可確保工具報告的達成輸送量符合 Site Recovery 在複寫期間可達到的實際輸送量。 輸送量計算取決於伺服器可用的網路頻寬和伺服器的硬體組態 (CPU、儲存體等等)。 如果您從任何其他伺服器執行此工具，則會計算從該伺服器至 Azure 的輸送量。 此外，因為該伺服器的硬體組態可能會與組態伺服器不同，因為工具報告的達成輸送量可能不正確。
 
@@ -122,5 +122,5 @@ ms.locfileid: "87083781"
 最新的 Site Recovery 部署規劃工具工具版本為2.5。
 請參閱 [部署規劃工具版本記錄](./site-recovery-deployment-planner-history.md)頁面，了解每個更新中所新增的修正。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 [執行 Site Recovery 部署規劃工具](site-recovery-vmware-deployment-planner-run.md)
