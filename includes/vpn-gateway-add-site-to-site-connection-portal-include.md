@@ -9,10 +9,10 @@ ms.date: 08/02/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5149973fe63f867b49e55c970779c005e12536b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "68780266"
 ---
 1. 開啟虛擬網路閘道的頁面。 瀏覽的方法有好幾種。 您可以藉由移至**您的 VNet 的名稱 -> 概觀 -> 已連線的裝置 -> 您的閘道的名稱**以瀏覽至閘道。

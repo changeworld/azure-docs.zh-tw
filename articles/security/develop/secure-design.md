@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: d0cffbd1fa09abef9853e0ef853696c3c8ed353c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22f74d3135597e8627cf7af933f8c6f4fbebc990
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86246804"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364043"
 ---
 # <a name="design-secure-applications-on-azure"></a>在 Azure 上設計安全的應用程式
 在本文中，我們會提供在您設計雲端應用程式時要考慮的安全性活動和控制項。 訓練資源，以及在 Microsoft [安全性開發生命週期 ](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) 的需求和設計階段時要考慮的安全性問題和概念 (SDL) 的涵蓋範圍。 目標是協助您定義活動和 Azure 服務，您可以使用這些服務來設計更安全的應用程式。
@@ -226,7 +226,7 @@ Azure 提供您可用來裝載網站和 web 應用程式的其他服務。 大�
 
 #### <a name="implement-just-in-time-access"></a>實行即時存取
 
-執行 *及時* (JIT) 存取，以進一步降低許可權的曝光時間。 使用 [Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-take-control-of-admin-activity) ：
+執行 *及時* (JIT) 存取，以進一步降低許可權的曝光時間。 使用 [Azure AD Privileged Identity Management](../../active-directory/roles/security-planning.md#stage-3-take-control-of-admin-activity) ：
 
 - 僅提供使用者需要 JIT 的許可權。
 - 指派縮短持續時間的角色，而且有信心會自動撤銷權限。
@@ -316,7 +316,7 @@ Key Vault 是 *秘密存放區*：這是用來儲存應用程式秘密的集中�
 
 確定應用程式會監視使用者管理事件，例如成功和失敗的使用者登入、密碼重設、密碼變更、帳戶鎖定和使用者註冊。 記錄這些事件可協助您偵測及回應潛在的可疑行為。 它也可讓您收集作業資料，例如誰正在存取應用程式。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 在下列文章中，我們建議可協助您開發及部署安全應用程式的安全性控制與活動。
 
 - [開發安全的應用程式](secure-develop.md)

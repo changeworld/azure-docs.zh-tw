@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2b88c053e1f9029f916d9a180221a3bb58629608
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d6e10b025b9e9524982b1558beacfab1970eb59
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87448855"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216431"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>教學課程：在 Azure 中監視變更及更新 Windows 虛擬機器
 
-透過 Azure [變更追蹤](../../automation/change-tracking.md)和[更新管理](../../automation/update-management/update-mgmt-overview.md)，您可以輕鬆地在 Azure 中識別 Windows 虛擬機器的變更，並管理這些 VM 的作業系統更新。
+透過 Azure [變更追蹤](../../automation/change-tracking/overview.md)和[更新管理](../../automation/update-management/overview.md)，您可以輕鬆地在 Azure 中識別 Windows 虛擬機器的變更，並管理這些 VM 的作業系統更新。
 
 在本教學課程中，您會了解如何：
 
@@ -112,10 +112,10 @@ New-AzVm `
 | --- | --- |
 | **名稱** |輸入唯一名稱來識別更新部署。 |
 |**作業系統**| 選取 [Linux] 或 [Windows]。|
-| **要更新的群組** |針對裝載於 Azure 上的 VM，根據訂用帳戶、資源群組、位置和標籤的組合來定義查詢。 此查詢會為 Azure 裝載的 VM 建立動態群組，以包含在您的部署中。 </br></br>針對未裝載在 Azure 上的 VM，請選取已儲存的現有搜尋。 在此搜尋中，您可以選取這些 VM 的群組，以包含在部署中。 </br></br> 若要深入了解，請參閱[動態群組](../../automation/update-management/update-mgmt-groups.md)。|
+| **要更新的群組** |針對裝載於 Azure 上的 VM，根據訂用帳戶、資源群組、位置和標籤的組合來定義查詢。 此查詢會為 Azure 裝載的 VM 建立動態群組，以包含在您的部署中。 </br></br>針對未裝載在 Azure 上的 VM，請選取已儲存的現有搜尋。 在此搜尋中，您可以選取這些 VM 的群組，以包含在部署中。 </br></br> 若要深入了解，請參閱[動態群組](../../automation/update-management/configure-groups.md)。|
 | **要更新的機器** |選取 [儲存的搜尋]、[匯入的群組]或 [機器]。<br/><br/>如果您選取 [機器]，您可以從下拉式清單中選擇個別機器。 每部機器的整備程度會顯示於表格的 [更新代理程式整備程度] 欄中。</br></br> 若要深入了解在 Azure 監視器記錄中建立電腦群組的不同方法，請參閱 [Azure 監視器記錄中的電腦群組](../../azure-monitor/platform/computer-groups.md) |
 |**更新分類**|選擇所有必要的更新分類。|
-|**包含/排除更新**|選取此選項以開啟 [包含/排除] 窗格。 要包含和要排除的更新會在個別的索引標籤上。 如需如何處理包含的詳細資訊，請參閱[排定更新部署](../../automation/update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment)。 |
+|**包含/排除更新**|選取此選項以開啟 [包含/排除] 窗格。 要包含和要排除的更新會在個別的索引標籤上。 如需如何處理包含的詳細資訊，請參閱[排定更新部署](../../automation/update-management/deploy-updates.md#schedule-an-update-deployment)。 |
 |**排程設定**|選擇開始時間，並選取 [一次] 或 [週期性]。|
 | **前置指令碼 + 後置指令碼**|選擇要在部署前和部署後執行的指令碼。|
 | **維護時間範圍** | 輸入為更新設定的分鐘數。 有效值的範圍為 30 到 360 分鐘。 |

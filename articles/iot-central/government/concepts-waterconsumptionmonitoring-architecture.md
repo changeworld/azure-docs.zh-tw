@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 3a64ca5b0c2a092f895873e097ea6beb9a235a37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57dfec33beef6a9b5a6a3cd8edc43cae32d62e33
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77017695"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92123006"
 ---
 # <a name="water-consumption-monitoring-reference-architecture"></a>用水量監視參考架構 
 
@@ -34,7 +34,7 @@ ms.locfileid: "77017695"
 ## <a name="devices-and-connectivity"></a>裝置與連線能力 
 本節會參考智慧型水解決方案所用的裝置，一般是指智慧型水資源裝置，例如水質監視或用水量監視。 智慧型水資源裝置可以是流量計量器、水質監視器、智慧型閥門、漏水偵測器等等。
 
-在智慧型水解決方案中使用的裝置通常可經由第三方網路操作員，透過低電力廣域網路 (LPWAN) 進行連線。 針對這些類型的裝置，您可以使用 [Azure IoT Central 裝置橋接器](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge)，將裝置資料傳送至 Azure IoT Central 中的 IoT 應用程式。 或者，您可能有具備 IP 功能的裝置閘道，而且可以直接連線到 IoT Central。
+在智慧型水解決方案中使用的裝置通常可經由第三方網路操作員，透過低電力廣域網路 (LPWAN) 進行連線。 針對這些類型的裝置，您可以使用 [Azure IoT Central 裝置橋接器](../core/howto-build-iotc-device-bridge.md)，將裝置資料傳送至 Azure IoT Central 中的 IoT 應用程式。 或者，您可能有具備 IP 功能的裝置閘道，而且可以直接連線到 IoT Central。
 
 ## <a name="iot-central"></a>IoT 中心 
 Azure IoT Central 是 IoT 應用程式平台，可讓您快速啟動並在 IoT 解決方案上執行。 您可以使用第三方服務來建立品牌、自訂及整合您的解決方案。
@@ -54,4 +54,4 @@ IoT 資料可用來為水資源利用內的不同商務應用程式提供強大�
 ## <a name="next-steps"></a>後續步驟
 * 了解如何[建立用水量](./tutorial-water-consumption-monitoring.md) IoT Central 應用程式
 * 深入了解 [IoT Central 政府機關範本](./overview-iot-central-government.md)
-* 若要深入了解 IoT Central，請參閱 [IoT Central 概觀](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central)
+* 若要深入了解 IoT Central，請參閱 [IoT Central 概觀](../core/overview-iot-central.md)

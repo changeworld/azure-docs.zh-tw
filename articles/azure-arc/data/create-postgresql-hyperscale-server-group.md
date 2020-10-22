@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7fdc367e3db298b60dc9a15453d58a738c13274a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d2eef20b4c5648b1b11f16d8e46b956fc1497181
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108298"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364417"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>建立已啟用 Azure Arc 的 PostgreSQL 超大規模資料庫伺服器群組
 
@@ -138,7 +138,7 @@ azdata arc postgres endpoint list -n <server group name>
 
 當您使用 Azure 虛擬機器時，端點 IP 位址不會顯示 _公用_ IP 位址。 若要找出公用 IP 位址，請使用下列命令：
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 
@@ -148,7 +148,7 @@ az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o 
 
 若要設定規則，您將需要知道 NSG 的名稱。 您可以使用下列命令來判斷 NSG：
 
-```console
+```azurecli
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
@@ -156,7 +156,7 @@ az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 
 將下列--destination-port-範圍參數的值取代為您從上述 ' azdata arc postgres server list ' 命令取得的埠號碼。
 
-```console
+```azurecli
 az network nsg rule create -n db_port --destination-port-ranges 30655 --source-address-prefixes '*' --nsg-name azurearcvmNSG --priority 500 -g azurearcvm-rg --access Allow --description 'Allow port through for db access' --destination-address-prefixes '*' --direction Inbound --protocol Tcp --source-port-ranges '*'
 ```
 
@@ -169,7 +169,7 @@ az network nsg rule create -n db_port --destination-port-ranges 30655 --source-a
 
 請記住，如果您使用 Azure VM，您將需要可透過下列命令存取的 _公用_ IP 位址：
 
-```console
+```azurecli
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
 ```
 

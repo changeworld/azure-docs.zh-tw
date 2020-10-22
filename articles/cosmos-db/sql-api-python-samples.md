@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: a0db0ff7db8f0bf5b036e40080ee7ff8eac62b63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba4382e03e6fc1acfd606a375a062c05581f712c
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322677"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278217"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB Python 範例
 
@@ -50,7 +50,7 @@ ms.locfileid: "91322677"
 
 ## <a name="database-examples"></a>資料庫範例
 
-[database_management.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py) Python 範例示範如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 資料庫，請參閱[使用資料庫、容器和項目](databases-containers-items.md)概念性文章。
+[database_management.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py) Python 範例示範如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 資料庫，請參閱[使用資料庫、容器和項目](account-databases-containers-items.md)概念性文章。
 
 | Task | API 參考資料 |
 | --- | --- |
@@ -62,7 +62,7 @@ ms.locfileid: "91322677"
 
 ## <a name="container-examples"></a>容器範例
 
-[container_management.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py) Python 範例示範如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 集合，請參閱[使用資料庫、容器和項目](databases-containers-items.md)概念性文章。
+[container_management.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py) Python 範例示範如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 集合，請參閱[使用資料庫、容器和項目](account-databases-containers-items.md)概念性文章。
 
 | Task | API 參考資料 |
 | --- | --- |
@@ -75,7 +75,7 @@ ms.locfileid: "91322677"
 
 ## <a name="item-examples"></a>項目範例
 
-[item_management.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py) Python 範例示範如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 文件，請參閱[使用資料庫、容器和項目](databases-containers-items.md)概念性文章。
+[item_management.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py) Python 範例示範如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 文件，請參閱[使用資料庫、容器和項目](account-databases-containers-items.md)概念性文章。
 
 | Task | API 參考資料 |
 | --- | --- |

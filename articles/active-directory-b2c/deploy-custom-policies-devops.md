@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 411fa207323a9bff6cfcc3b17769203c444dd844
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0dba5f96d90304418d7ebd297419c1f36244f868
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388675"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363924"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>使用 Azure Pipelines 部署自訂原則
 
@@ -31,9 +31,9 @@ ms.locfileid: "85388675"
 > [!IMPORTANT]
 > 使用 Azure 管線管理 Azure AD B2C 自訂原則目前使用 Microsoft Graph API 端點上提供的 **預覽** 作業 `/beta` 。 不支援在生產應用程式中使用這些 API。 如需詳細資訊，請參閱 [Microsoft Graph REST API Beta 端點參考](https://docs.microsoft.com/graph/api/overview?toc=./ref/toc.json&view=graph-rest-beta)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-* [Azure AD B2C 租](tutorial-create-tenant.md)使用者，以及具有 [B2C IEF 原則系統管理員](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator) 角色之目錄中的使用者認證
+* [Azure AD B2C 租](tutorial-create-tenant.md)使用者，以及具有 [B2C IEF 原則系統管理員](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator) 角色之目錄中的使用者認證
 * 已上傳至您租使用者的[自訂原則](custom-policy-get-started.md)
 * 已在您的租使用者中註冊使用 Microsoft Graph API 許可權原則的[管理應用程式](microsoft-graph-get-started.md) *。 TrustFramework*
 * [Azure 管線](https://azure.microsoft.com/services/devops/pipelines/)和[Azure DevOps Services 專案][devops-create-project]的存取權
@@ -131,7 +131,7 @@ ms.locfileid: "85388675"
 1. 選取 [ **變數** ] 索引標籤。
 1. 在 **管線變數** 底下新增下列變數，並依照指定的方式設定其值：
 
-    | 名稱 | 值 |
+    | Name | 值 |
     | ---- | ----- |
     | `clientId` | **應用程式 (用戶端) ** 您稍早註冊之應用程式的識別碼。 |
     | `clientSecret` | 您稍早建立的 **用戶端密碼** 的值。 <br /> 將變數類型變更為 **秘密** (選取鎖定圖示) 。 |
@@ -151,7 +151,7 @@ ms.locfileid: "85388675"
     * 工作**版本**： 2. *
     * **顯示名稱**：此工作應該上傳的原則名稱。 例如， *B2C_1A_TrustFrameworkBase*。
     * **類型**：檔案路徑
-    * **腳本路徑**：選取省略號 (***...***) ，流覽至 [ *腳本* ] 資料夾，然後選取 *DeployToB2C.ps1* 的檔案。
+    * **腳本路徑**：選取省略號 ( **_..._*_) 中，流覽至 [_Scripts] 資料夾，然後選取 *DeployToB2C.ps1* 的檔案。
     * **引數:**
 
         輸入 **引數**的下列值。 取代 `{alias-name}` 為您在上一節中指定的別名。

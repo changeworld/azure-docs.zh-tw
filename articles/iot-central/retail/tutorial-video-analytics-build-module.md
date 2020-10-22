@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 4bbc25f98f494660fc4997af1c3a248172ef08d2
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: c2f6f386f4a8ea062980c0efc97d0cfb4f37f4f2
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873467"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124889"
 ---
 # <a name="tutorial-modify-and-build-the-live-video-analytics-gateway-modules"></a>教學課程：修改並建置即時影片分析閘道模組
 
@@ -28,8 +28,8 @@ ms.locfileid: "91873467"
 * [Node.js](https://nodejs.org/en/download/) v10 或更新版本
 * 已安裝 [TSLint](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin) 擴充功能的 [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Docker](https://www.docker.com/products/docker-desktop) 引擎
-* 用來裝載模組版本的 [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/)。
-* [Azure 媒體服務](https://docs.microsoft.com/azure/media-services/)帳戶。 如果您已完成先前的教學課程，您可以重複使用先前建立的帳戶。
+* 用來裝載模組版本的 [Azure Container Registry](../../container-registry/index.yml)。
+* [Azure 媒體服務](../../media-services/index.yml)帳戶。 如果您已完成先前的教學課程，您可以重複使用先前建立的帳戶。
 
 ## <a name="clone-the-repository"></a>複製儲存機制
 

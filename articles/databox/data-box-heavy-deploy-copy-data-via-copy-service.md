@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 67547db53d2b9ce05838335ffcb5d789b77ecbbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 601e5cf15c47b16c53ff9ca81a56cb613bcfc3f5
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77560215"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127143"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>教學課程：使用資料複製服務將資料複製到 Azure Data Box Heavy (預覽)
 
@@ -64,7 +64,7 @@ ms.locfileid: "77560215"
     |**目的地儲存體帳戶**    |從清單中選取要作為資料上傳目的地的儲存體帳戶。         |
     |**目的地類型**       |從清單中選取目標儲存體類型：**區塊 Blob**、**分頁 Blob** 或 **Azure 檔案儲存體**。        |
     |**目的地容器/共用**    |輸入位於目的地儲存體帳戶中，要作為資料上傳目的地容器或共用的名稱。 此名稱可以是共用名稱或容器名稱。 例如，使用 `myshare` 或 `mycontainer`。 您也可以使用 `sharename\directory_name` 或 `containername\virtual_directory_name` 格式來輸入名稱。        |
-    |**複製符合模式的檔案**    | 您可以利用下列兩種方式來輸入檔案名稱比對模式：<ul><li>**使用萬用字元運算式：** 萬用字元運算式僅支援 `*` 和 `?`。 例如，`*.vhd` 運算式會比對所有具有 `.vhd` 副檔名的檔案。 同樣地，`*.dl?` 會使用 `.dl` 副檔名或開頭為 `.dl` 的副檔名 (例如，`.dll`) 來比對所有檔案。 同樣地，`*foo` 會比對其名稱結尾為 `foo` 的所有檔案。<br>您可以在欄位中直接輸入萬用字元運算式。 根據預設，系統會將此欄位中的輸入值視為萬用字元運算式。</li><li>**使用規則運算式：** 支援 POSIX 型規則運算式。 例如，規則運算式 `.*\.vhd` 會比對具有 `.vhd` 副檔名的所有檔案。 針對規則運算式，直接提供 `<pattern>` 作為 `regex(<pattern>)`。 如需有關規則運算式的詳細資訊，請移至[規則運算式語言 - 快速參考](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)。</li><ul>|
+    |**複製符合模式的檔案**    | 您可以利用下列兩種方式來輸入檔案名稱比對模式：<ul><li>**使用萬用字元運算式：** 萬用字元運算式僅支援 `*` 和 `?`。 例如，`*.vhd` 運算式會比對所有具有 `.vhd` 副檔名的檔案。 同樣地，`*.dl?` 會使用 `.dl` 副檔名或開頭為 `.dl` 的副檔名 (例如，`.dll`) 來比對所有檔案。 同樣地，`*foo` 會比對其名稱結尾為 `foo` 的所有檔案。<br>您可以在欄位中直接輸入萬用字元運算式。 根據預設，系統會將此欄位中的輸入值視為萬用字元運算式。</li><li>**使用規則運算式：** 支援 POSIX 型規則運算式。 例如，規則運算式 `.*\.vhd` 會比對具有 `.vhd` 副檔名的所有檔案。 針對規則運算式，直接提供 `<pattern>` 作為 `regex(<pattern>)`。 如需有關規則運算式的詳細資訊，請移至[規則運算式語言 - 快速參考](/dotnet/standard/base-types/regular-expression-language-quick-reference)。</li><ul>|
     |**檔案最佳化**              |這項功能啟用時，系統會在擷取期間封裝小於 1 MB 的檔案。 此封裝動作可加快小型檔案的資料複製作業。 此外，當檔案數目遠遠超過目錄數目時，亦可省下不少時間。        |
  
 4. 選取 [開始]  。 系統會驗證輸入的內容，如果驗證成功，便會啟動作業。 系統可能需要花幾分鐘的時間才能讓作業啟動。
@@ -147,4 +147,3 @@ ms.locfileid: "77560215"
 
 > [!div class="nextstepaction"]
 > [將 Azure Data Box Heavy 裝置寄給 Microsoft](./data-box-heavy-deploy-picked-up.md)
-

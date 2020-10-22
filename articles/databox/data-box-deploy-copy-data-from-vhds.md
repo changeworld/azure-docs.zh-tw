@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 9af4de51e94a1be118211e2bb4404926656fedf6
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 28232981d007e7be04d520ec46739408d03d90b4
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91739862"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124008"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>教學課程：使用資料箱匯入資料以作為 Azure 中的受控磁碟
 
@@ -38,7 +38,7 @@ ms.locfileid: "91739862"
 4. 您已檢閱：
 
     - [Azure 物件大小限制中所支援的受控磁碟大小](data-box-limits.md#azure-object-size-limits)。
-    - [Azure 受控磁碟簡介](/azure/virtual-machines/windows/managed-disks-overview)。 
+    - [Azure 受控磁碟簡介](../virtual-machines/managed-disks-overview.md)。 
 
 5. 在確認資料箱將您的資料移轉至 Azure 儲存體之前，您保留了一份來源資料複本。
 
@@ -183,4 +183,3 @@ ms.locfileid: "91739862"
 
 > [!div class="nextstepaction"]
 > [將您的 Azure 資料箱寄送給 Microsoft](./data-box-deploy-picked-up.md)
-

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 1dc2aba6241ef498cd6802c7490e46552e7737ab
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 5ade2f0c2afcb15541003cc8c1e5fccdb22de35b
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708804"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92319141"
 ---
 # <a name="tutorial-integrate-23-video-with-azure-active-directory"></a>教學課程：整合 23 Video 與 Azure Active Directory
 
@@ -26,7 +26,7 @@ ms.locfileid: "91708804"
 * 讓使用者使用其 Azure AD 帳戶自動登入 23 Video。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -156,12 +156,12 @@ ms.locfileid: "91708804"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 23 Video 圖格時，應該會自動登入您已設定 SSO 的 23 Video。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 23 Video 圖格時，應該會自動登入您已設定 SSO 的 23 Video。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
