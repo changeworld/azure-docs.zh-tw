@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 91157f625b328dfc03927cf0036aea1b6040cdbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c93f8e50b0437f9ac1569b8abe19bd0b5174ea8d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88783717"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363958"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虛擬機器擴展集的網路
 
@@ -43,7 +43,7 @@ Azure 加速網路可以對虛擬機器啟用 Single Root I/O Virtualization (SR
 ```
 
 ## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>具有 Azure Load Balancer 的 Azure 虛擬機器擴展集
-請參閱 [Azure Load Balancer 和虛擬機器擴展集](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-virtual-machine-scale-sets) ，以深入瞭解如何根據您的案例，使用虛擬機器擴展集來設定您的 Standard Load Balancer。
+請參閱 [Azure Load Balancer 和虛擬機器擴展集](../load-balancer/load-balancer-standard-virtual-machine-scale-sets.md) ，以深入瞭解如何根據您的案例，使用虛擬機器擴展集來設定您的 Standard Load Balancer。
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>建立參考應用程式閘道的擴展集
 若要建立使用應用程式閘道的擴展集，請和此 ARM 範本設定中一樣，參考擴展集 ipConfigurations 區段中的應用程式閘道後端位址集區：
@@ -299,7 +299,7 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
 ```
 
 ## <a name="nsg--asgs-per-scale-set"></a>每個擴展集的 NSG 和 ASG
-[網路安全性群組](../virtual-network/security-overview.md)可讓您使用安全性規則篩選在 Azure 虛擬網路中進出於 Azure 資源的流量。 [應用程式安全性群組](../virtual-network/security-overview.md#application-security-groups)可讓您處理 Azure 資源的網路安全性，並將其群組為應用程式結構的擴充功能。
+[網路安全性群組](../virtual-network/network-security-groups-overview.md)可讓您使用安全性規則篩選在 Azure 虛擬網路中進出於 Azure 資源的流量。 [應用程式安全性群組](../virtual-network/network-security-groups-overview.md#application-security-groups)可讓您處理 Azure 資源的網路安全性，並將其群組為應用程式結構的擴充功能。
 
 您可以將「網路安全性群組」直接套用至擴展集，方法是將參考新增至擴展集虛擬機器屬性的網路介面設定區段。
 
@@ -384,5 +384,5 @@ az vmss show \
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如需 Azure 虛擬網路的詳細資訊，請參閱 [Azure 虛擬網路概觀](../virtual-network/virtual-networks-overview.md)。

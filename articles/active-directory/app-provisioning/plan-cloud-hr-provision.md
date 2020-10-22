@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: cb36366143286c05603a8d14b5ad56ebb6544bda
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ce8b792beb8652bedfddff470444240bc3edf148
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070379"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363652"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>規劃雲端 HR 應用程式以 Azure Active Directory 使用者布建
 
@@ -52,7 +52,7 @@ Azure AD 的使用者布建服務可讓您自動化下列 HR 式身分識別生�
 - 需要根據在雲端 HR 應用程式中偵測到的變更資訊，來加入、移動及離開使用者，使其同步至一或多個 Active Directory 的樹系、網域和 Ou。
 - 使用電子郵件的 Microsoft 365。
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>學習
 
 使用者布建可為進行中的身分識別治理建立基礎。 它能增強依賴授權身分識別資料的商務程式品質。
 
@@ -79,10 +79,10 @@ Azure AD 的使用者布建服務可讓您自動化下列 HR 式身分識別生�
 
 針對將源自雲端 HR 應用程式並布建至 Active Directory 或 Azure AD 的每個使用者，您也需要有效的 Azure AD Premium P1 或更高的訂用帳戶授權。 在雲端 HR 應用程式中所擁有的授權數量不正確，可能會在使用者布建期間導致錯誤。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
-- Azure AD [混合式身分識別管理員](../users-groups-roles/directory-assign-admin-roles.md#hybrid-identity-administrator)  來設定 Azure AD Connect 布建代理程式。
-- Azure AD [應用程式系統管理員](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) 角色，以在 Azure 入口網站中設定布建應用程式
+- Azure AD [混合式身分識別管理員](../roles/permissions-reference.md#hybrid-identity-administrator)  來設定 Azure AD Connect 布建代理程式。
+- Azure AD [應用程式系統管理員](../roles/permissions-reference.md#application-administrator) 角色，以在 Azure 入口網站中設定布建應用程式
 - 雲端 HR 應用程式的測試和實際執行實例。
 - 雲端 HR 應用程式中的系統管理員許可權，可建立系統整合使用者並進行變更以測試員工資料，以供測試之用。
 - 針對使用者布建至 Active Directory，需要執行 Windows Server 2012 或更新版本與 .NET 4.7.1 + runtime 的伺服器，才能裝載 Azure AD Connect 布建代理程式
@@ -96,10 +96,10 @@ Azure AD 的使用者布建服務可讓您自動化下列 HR 式身分識別生�
 | | [如何在 Active Azure 目錄中部署使用者布建](https://youtu.be/pKzyts6kfrw) |
 | 教學課程 | [有關如何整合 SaaS 應用程式與 Azure AD 的教學課程清單](../saas-apps/tutorial-list.md) |
 | | [教學課程：設定 Workday 來自動佈建使用者](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
-| 常見問題集 | [自動的使用者佈建](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
+| 常見問題集 | [自動使用者布建](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
 | | [從 Workday 布建至 Azure AD](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 
-### <a name="solution-architecture"></a>方案架構
+### <a name="solution-architecture"></a>解決方案架構
 
 下列範例說明一般混合式環境的端對端使用者布建解決方案架構，包括：
 
@@ -110,7 +110,7 @@ Azure AD 的使用者布建服務可讓您自動化下列 HR 式身分識別生�
 
 #### <a name="description-of-workflow"></a>工作流程的描述
 
-下列主要步驟如下圖所示：  
+下列主要步驟如下圖所示：  
 
 1. **HR 小組** 在雲端 HR 應用程式租使用者中執行交易。
 2. **Azure AD** 布建服務會從雲端 HR 應用程式租使用者執行排定的週期，並識別需要處理以與 Active Directory 同步的變更。
@@ -257,7 +257,7 @@ Azure AD Connect 布建代理程式部署拓撲取決於雲端 HR 應用程式�
 
 當您起始 Joiners-Leavers 進程時，請收集下列需求。
 
-| 處理序 | 規格需求 |
+| 程序 | 需求 |
 | - | - |
 | **權變** | 從身分識別生命週期的觀點來看，您要如何處理重新雇用？ 重新雇用要保留舊的員工識別碼嗎？ |
 | | 您是否處理未來的員工，並事先為他們建立 Active Directory 帳戶？ 這些帳戶會建立為啟用或停用狀態嗎？ |
@@ -276,7 +276,7 @@ Azure AD Connect 布建代理程式部署拓撲取決於雲端 HR 應用程式�
 
 當您起始權變-權變進程時，請收集下列需求。
 
-| 處理序 | 規格需求 |
+| 程序 | 需求 |
 | - | - |
 | **權變** | Active Directory 帳戶建立程式是手動、自動或部分自動化？ |
 | | 您是否計畫將自訂屬性從雲端 HR 應用程式傳播至 Active Directory？ |

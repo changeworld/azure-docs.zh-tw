@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 07374debf8d660d8f1c32788db3d218da611d539
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 200d23f390c9c22af90099e1e136c832287aa10d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91650471"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207524"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>教學課程：保護 Azure 遠端轉譯和模型儲存體
 
@@ -188,11 +188,11 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
 
 ## <a name="azure-active-directory-azure-ad-authentication"></a>Azure Active Directory (Azure AD) 驗證
 
-AAD 驗證可讓您以更受控制的方式判斷使用 ARR 的個人或群組。 ARR 內建接受[存取權杖](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)，而不是使用帳戶金鑰的支援。 您可以將存取權杖視為具有時間限制的使用者特定金鑰，只會解除鎖定所要求之特定資源的特定部分。
+AAD 驗證可讓您以更受控制的方式判斷使用 ARR 的個人或群組。 ARR 內建接受[存取權杖](../../../../active-directory/develop/access-tokens.md)，而不是使用帳戶金鑰的支援。 您可以將存取權杖視為具有時間限制的使用者特定金鑰，只會解除鎖定所要求之特定資源的特定部分。
 
 **RemoteRenderingCoordinator** 指令碼具有名為 **ARRCredentialGetter** 的委派，其會保存一個方法來傳回 **AzureFrontendAccountInfo** 物件，用來設定遠端工作階段管理。 我們可以針對 **ARRCredentialGetter** 指派不同的方式以便使用 Azure 登入流程，產生包含 Azure 存取權杖的 **AzureFrontendAccountInfo** 物件。 此存取權杖專屬於登入的使用者。
 
-1. 遵循[操作說明：設定驗證 - 已部署應用程式的驗證](../../../how-tos/authentication.md#authentication-for-deployed-applications)，其中請依照 Azure 空間錨點文件 [Azure AD 使用者驗證](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication) 中所列的指示進行。 這牽涉到註冊新的 Azure Active Directory 應用程式，以及設定 ARR 執行個體的存取權。
+1. 遵循[操作說明：設定驗證 - 已部署應用程式的驗證](../../../how-tos/authentication.md#authentication-for-deployed-applications)，其中請依照 Azure 空間錨點文件 [Azure AD 使用者驗證](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication) 中所列的指示進行。 這牽涉到註冊新的 Azure Active Directory 應用程式，以及設定 ARR 執行個體的存取權。
 1. 設定新的 AAD 應用程式後，請檢查您的 AAD 應用程式是否看起來像下列映像：
 
     **AAD 應用程式 -> 驗證** ![應用程式驗證](./media/app-authentication-public.png)
@@ -361,7 +361,7 @@ AAD 驗證可讓您以更受控制的方式判斷使用 ARR 的個人或群組�
 
 程式碼會先嘗試使用 **AquireTokenSilent** 以無訊息方式取得權杖。 如果使用者先前已驗證過此應用程式，此作業將會成功。 如果不成功，請繼續進行其他需要使用者操作的策略。
 
-在此程式碼中，我們會使用[裝置程式碼流程](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code)來取得存取權杖。 此流程可讓使用者在電腦或行動裝置上登入其 Azure 帳戶，並將產生的權杖傳送回 HoloLens 應用程式。
+在此程式碼中，我們會使用[裝置程式碼流程](../../../../active-directory/develop/v2-oauth2-device-code.md)來取得存取權杖。 此流程可讓使用者在電腦或行動裝置上登入其 Azure 帳戶，並將產生的權杖傳送回 HoloLens 應用程式。
 
 從 ARR 觀點來看，這個類別最重要的部分就是這一行：
 

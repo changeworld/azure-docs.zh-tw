@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: b7d05cd394453ff7c3a40b80a4cd6c850b86ee21
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7cc9e8a1cf51d57bf10523174179b5a9f2ef6e97
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070362"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363686"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>規劃自動使用者佈建部署
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) 自動使用者布建可簡化此程式，方�
 
 請參閱 [使用 Azure Active Directory 自動化 SaaS 應用程式的使用者](../app-provisioning/user-provisioning.md) 布建和解除布建，以進一步瞭解其功能。
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>學習
 
 使用者布建會建立進行中身分識別治理的基礎，並增強依賴授權身分識別資料的商務程式品質。
 
@@ -139,13 +139,13 @@ Azure AD 布建服務會藉由連接到每個應用程式廠商所提供的使�
 
 建議您在測試環境中設定自動使用者布建的初始設定，然後將其調整為生產環境中的所有使用者。 請參閱執行試驗的 [最佳作法](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) 。
 
-#### <a name="best-practices-for-a-pilot"></a>試驗的最佳作法  
+#### <a name="best-practices-for-a-pilot"></a>試驗的最佳作法  
 
 試驗可讓您使用小型群組進行測試，再為所有人部署功能。 確定在測試過程中，您組織內的每個使用案例都經過徹底測試。
 
 在您的第一波，將目標設為 IT、可用性，以及可以測試並提供意見反應的其他適當使用者。 您可以使用此意見反應，進一步開發您傳送給使用者的通訊和指示，並讓您深入瞭解支援人員可能會看到的問題類型。
 
-藉由增加) 目標的群組 (範圍，將推出擴大到較大的使用者群組。 這可以透過 [動態群組成員資格](../users-groups-roles/groups-dynamic-membership.md)來完成，或手動將使用者新增至目標群組， (s) 。
+藉由增加) 目標的群組 (範圍，將推出擴大到較大的使用者群組。 這可以透過 [動態群組成員資格](../enterprise-users/groups-dynamic-membership.md)來完成，或手動將使用者新增至目標群組， (s) 。
 
 ## <a name="plan-application-connections-and-administration"></a>規劃應用程式連接和管理
 

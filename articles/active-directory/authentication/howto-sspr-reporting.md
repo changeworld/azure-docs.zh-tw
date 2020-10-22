@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92b9d3c51a9240b7dfc0f8e815735f0e1ecd4dd3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c6aa31d0b8c68f38d2b4fc41a6bbaaeab8a3ffac
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968305"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363601"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD 密碼管理的報告選項
 
@@ -27,7 +27,7 @@ ms.locfileid: "91968305"
 存在於 [Azure 入口網站](https://portal.azure.com/)中的報告可以回答下列問題：
 
 > [!NOTE]
-> 您必須是[全域管理員](../users-groups-roles/directory-assign-admin-roles.md)且至少必須已瀏覽一次報告索引標籤或稽核記錄。 若要選擇加入，您必須瀏覽 [報告]**** 索引標籤或稽核記錄至少一次。 在此之前，不會為您的組織收集資料。
+> 您必須是[全域管理員](../roles/permissions-reference.md)且至少必須已瀏覽一次報告索引標籤或稽核記錄。 若要選擇加入，您必須瀏覽 [報告]**** 索引標籤或稽核記錄至少一次。 在此之前，不會為您的組織收集資料。
 >
 
 * 有多少人已註冊密碼重設？

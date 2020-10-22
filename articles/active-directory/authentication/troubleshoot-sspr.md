@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ef46cf0947f1ea31c74a6d189b5bdf00fea44fc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9e661bd24acbb15ced9f5bb0a0fba7eec51eae06
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963817"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363533"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>針對 Azure Active Directory 中的自助式密碼重設進行疑難排解
 
@@ -32,7 +32,7 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
 
 如果您沒有將 Azure AD 授權指派給執行此作業的系統管理員，您將不會看到 [ **密碼重設** ] 功能表選項。
 
-若要將授權指派給有問題的系統管理員帳戶，請遵循 [指派、驗證和解決授權問題](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)的步驟。
+若要將授權指派給有問題的系統管理員帳戶，請遵循 [指派、驗證和解決授權問題](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses)的步驟。
 
 ### <a name="i-dont-see-a-particular-configuration-option"></a>我看不到特定的設定選項。
 
@@ -52,7 +52,7 @@ UI 的許多元素在需要之前都是隱藏的。 在您尋找特定的設定�
 
 如果未將 Azure AD 授權指派給執行此作業的系統管理員，就會發生這種情況。
 
-若要將授權指派給有問題的系統管理員帳戶，請遵循 [指派、驗證和解決授權問題](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)的步驟。
+若要將授權指派給有問題的系統管理員帳戶，請遵循 [指派、驗證和解決授權問題](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses)的步驟。
 
 ### <a name="user-registrations-show-multiple-times"></a>使用者註冊顯示多個時間。
 
@@ -74,7 +74,7 @@ UI 的許多元素在需要之前都是隱藏的。 在您尋找特定的設定�
 
 目前只有一個 Azure AD 群組可以使用 Azure 入口網站啟用 SSPR。 在較廣泛的 SSPR 部署中，可支援巢狀群組。 請確定您選擇的群組中的使用者已獲派適當的授權。 請參閱先前的疑難排解步驟，以視需要啟用 SSPR。
 
-另請參閱疑難排解步驟，以確定執行設定選項的系統管理員已獲指派授權。 若要將授權指派給有問題的系統管理員帳戶，請遵循 [指派、驗證和解決授權問題](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)的步驟。
+另請參閱疑難排解步驟，以確定執行設定選項的系統管理員已獲指派授權。 若要將授權指派給有問題的系統管理員帳戶，請遵循 [指派、驗證和解決授權問題](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses)的步驟。
 
 ### <a name="theres-an-error-processing-the-request"></a>處理要求時發生錯誤。
 
@@ -87,7 +87,7 @@ UI 的許多元素在需要之前都是隱藏的。 在您尋找特定的設定�
 | 錯誤 | 解決方法 |
 | --- | --- |
 | 目錄未啟用密碼重設功能。 | 在 [Azure 入口網站中，將 [ **已啟用自助式密碼重設] 設定** 變更為 [已 *選取* ] 或 [ *全部* ]，然後選取 [ **儲存**]。 |
-| 使用者未獲指派 Azure AD 授權。 | 如果您沒有將 Azure AD 授權指派給所需的使用者，就會發生這種情況。 若要將授權指派給有問題的系統管理員帳戶，請遵循 [指派、驗證和解決授權問題](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)的步驟。 |
+| 使用者未獲指派 Azure AD 授權。 | 如果您沒有將 Azure AD 授權指派給所需的使用者，就會發生這種情況。 若要將授權指派給有問題的系統管理員帳戶，請遵循 [指派、驗證和解決授權問題](../enterprise-users/licensing-groups-assign.md#step-1-assign-the-required-licenses)的步驟。 |
 | 目錄已啟用密碼重設，但使用者的驗證資訊遺失或格式不正確。 | 請確定使用者已在目錄中的檔案上正確地建立連絡人資料格式。 如需詳細資訊，請參閱 [Azure AD 自助式密碼重設所用的資料](howto-sspr-authenticationdata.md)。 |
 | 目錄已啟用密碼重設，原則設定為需要兩個驗證方法，但使用者只登記一個連絡資料。 | 請確定使用者至少有兩個正確設定的連絡人方法。 例如，擁有行動電話號碼和辦公室電話號碼。 |
 | 目錄已啟用密碼重設，並已正確設定使用者，但無法連絡到使用者。 | 這可能是暫時性服務錯誤的結果，或是因為無法正確偵測到不正確的連絡人資料。 <br> <br> 如果使用者等候10秒，則會顯示 [再試一次] 和 [洽詢您的系統管理員] 連結。 如果使用者選取 [再試一次]，它會重試呼叫。 如果使用者選取 [洽詢您的系統管理員]，它會傳送表單電子郵件給系統管理員，要求對該使用者帳戶執行密碼重設。 |
@@ -114,7 +114,7 @@ UI 的許多元素在需要之前都是隱藏的。 在您尋找特定的設定�
 | UserNotLicensed = 12 | 很抱歉，您目前無法重設您的密碼，因為您的組織缺少必要的授權。 您無法採取進一步的動作來解決這種情況。 請連絡您的系統管理員，並要求他們檢查授權指派。<br /><br />若要深入了解有關授權的詳細資訊，請參閱 [Azure AD 自助式密碼重設的授權需求](./concept-sspr-licensing.md)。 | SSPR_0012：您的組織沒有執行密碼重設所需的必要授權。 請連絡您的系統管理員，並要求他們檢閱授權指派。 |
 | UserNotMemberOfScopedAccessGroup = 13 | 抱歉，因為您的系統管理員尚未將您的帳戶設定為使用密碼重設，所以目前無法重設您的密碼。 您無法採取進一步的動作來解決這種情況。 請連絡您的系統管理員，並要求他們設定您的帳戶以供密碼重設使用。<br /><br />若要深入了解密碼重設的帳戶設定，請參閱[為使用者推出密碼重設](./howto-sspr-deployment.md)。 | SSPR_0013：您不是已啟用密碼重設之群組的成員。 請連絡您的系統管理員，並要求加入群組。 |
 | UserNotProperlyConfigured = 14 | 很抱歉，您目前無法重設您的密碼，因為帳戶缺少必要的資訊。 您無法採取進一步的動作來解決這種情況。 請連絡您的系統管理員，並要求他們為您重設密碼。 當您再次可以存取您的帳戶之後，必須註冊所需的資訊。<br /><br />若要註冊資訊，請遵循[註冊自助式密碼重設](../user-help/active-directory-passwords-reset-register.md)一文。 | SSPR_0014：重設密碼所需要的其他安全性資訊。 若要繼續進行，請連絡您的系統管理員，並要求他們重設您的密碼。 當您可以存取您的帳戶之後，可在 https://aka.ms/ssprsetup 註冊其他安全性資訊。 您的系統管理員可以遵循[設定與閱讀密碼重設的驗證資料](howto-sspr-authenticationdata.md)中的步驟，將其他安全性資訊新增至您的帳戶中。 |
-| OnPremisesAdminActionRequired = 29 | 很抱歉，因為貴組織的密碼重設設定發生問題，所以目前無法重設您的密碼。 您無法採取進一步的動作來解決這種情況。 請連絡您的系統管理員，並要求他們調查。 <br /><br />或者<br /><br />因為貴組織的密碼重設設定發生問題，所以目前無法重設您的密碼。 您無法採取任何進一步的動作來解決此問題。 請連絡您的系統管理員，並要求他們調查。<br /><br />若要深入了解潛在問題，請參閱[疑難排解密碼回寫](troubleshoot-sspr-writeback.md)。 | SSPR_0029：因為您的內部部署設定發生錯誤，我們無法重設您的密碼。 請連絡您的系統管理員，並要求他們調查。 |
+| OnPremisesAdminActionRequired = 29 | 很抱歉，因為貴組織的密碼重設設定發生問題，所以目前無法重設您的密碼。 您無法採取進一步的動作來解決這種情況。 請連絡您的系統管理員，並要求他們調查。 <br /><br />Or<br /><br />因為貴組織的密碼重設設定發生問題，所以目前無法重設您的密碼。 您無法採取任何進一步的動作來解決此問題。 請連絡您的系統管理員，並要求他們調查。<br /><br />若要深入了解潛在問題，請參閱[疑難排解密碼回寫](troubleshoot-sspr-writeback.md)。 | SSPR_0029：因為您的內部部署設定發生錯誤，我們無法重設您的密碼。 請連絡您的系統管理員，並要求他們調查。 |
 | OnPremisesConnectivityError = 30 | 很抱歉，因為您的組織有連線問題，所以目前無法重設您的密碼。 現在無需採取任何動作，但如果您稍後再試，可能會解決問題。 如果問題持續發生，請連絡您的系統管理員，並要求他們調查。<br /><br />若要深入了解連線問題，請參閱[針對密碼回寫連線問題進行疑難排解](troubleshoot-sspr-writeback.md)。 | SSPR_0030：因為您內部部署環境的連線不佳，我們無法重設您的密碼。 請連絡您的系統管理員，並要求他們調查。|
 
 ## <a name="azure-ad-forums"></a>Azure AD 論壇

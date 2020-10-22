@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9a8f572189afaa726f7e01f5e0bbb73340face8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee0c5093fc1dab69e0502b8ed1efe42fa63f1eb9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657215"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363720"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>規劃 Azure Active Directory 自助式密碼重設部署
 
@@ -313,7 +313,7 @@ Azure AD 可以透過稽核和報告來提供 SSPR 效能的額外資訊。
 您可以在 Azure 入口網站上使用預先建置的報告來測量 SSPR 效能。 如果您已適當地取得授權，則也可以建立自訂查詢。 如需詳細資訊，請參閱[Azure AD 密碼管理的報告選項](./howto-sspr-reporting.md) \(部分機器翻譯\)
 
 > [!NOTE]
->  您必須是[全域管理員](../users-groups-roles/directory-assign-admin-roles.md) \(部分機器翻譯\)，且您必須選擇加入以讓系統針對您的組織收集此資料。 若要選擇加入，您必須瀏覽 Azure 入口網站上的 [報告] 索引標籤或稽核記錄至少一次。 在那之前，系統並不會針對您的組織收集該資料。
+>  您必須是[全域管理員](../roles/permissions-reference.md) \(部分機器翻譯\)，且您必須選擇加入以讓系統針對您的組織收集此資料。 若要選擇加入，您必須瀏覽 Azure 入口網站上的 [報告] 索引標籤或稽核記錄至少一次。 在那之前，系統並不會針對您的組織收集該資料。
 
 針對註冊和密碼重設的稽核記錄會可供使用 30 天。 如果您公司內的安全性稽核要求更長的保留期，便必須將該記錄匯出並使用 [Azure Sentinel](../../sentinel/connect-azure-active-directory.md)、Splunk 或 ArcSight 之類的 SIEM 工具加以取用。
 

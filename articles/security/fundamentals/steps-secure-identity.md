@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: a0a11cf3bfac7d1e8fd2d117e13532e2ce49caa0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 18e04350260258b74d746a2796a56d7d3ba46346
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107805"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364111"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>可保護身分識別基礎結構的五個步驟
 
@@ -135,7 +135,7 @@ Microsoft 建議限制使用者同意，以協助降低您的介面區並降低�
 
 啟用 Azure AD PIM，然後檢視已獲派系統管理角色的使用者，並將這些角色中的不必要帳戶移除。 對於其餘特殊權限使用者，則將它們從永久性角色改為合適角色。 最後，請建立適當原則，以確定當使用者需要存取那些特殊權限角色時，可以搭配必要的變更控制安全地進行。
 
-在部署特殊權限帳戶程序時，請遵循[最佳做法建立至少兩個緊急帳戶](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)，以確定您自己在遭到鎖定時，仍可存取 Azure AD。
+在部署特殊權限帳戶程序時，請遵循[最佳做法建立至少兩個緊急帳戶](../../active-directory/roles/security-planning.md)，以確定您自己在遭到鎖定時，仍可存取 Azure AD。
 
 ## <a name="step-3---automate-threat-response"></a>步驟 3 - 將威脅回應自動化
 
@@ -193,7 +193,7 @@ Azure AD 的[自助密碼重設 (SSPR)](../../active-directory/authentication/qu
 
 ### <a name="implement-self-service-group-and-application-access"></a>實作自助式的群組和應用程式存取
 
-Azure AD 可讓非系統管理員使用安全性群組、Microsoft 365 群組、應用程式角色和存取套件目錄來管理資源的存取權。  [自助群組管理](../../active-directory/users-groups-roles/groups-self-service-management.md)可讓群組擁有者管理自己的群組，而不需要指派系統管理角色。 使用者也可以建立和管理 Microsoft 365 群組，而不需要依賴系統管理員來處理其要求，且未使用的群組會自動到期。  [Azure AD 權利管理](../../active-directory/governance/entitlement-management-overview.md)可透過完整的存取要求工作流程和自動到期功能，進一步實現委派和可見度。  您可以向非管理員委派能力，讓其能夠為所擁有的群組、小組、應用程式和 SharePoint Online 網站設定自己的存取套件，方法是為需要核准存取權的人員自訂原則，包括將員工的經理和商業夥伴贊助商設定為核准者。
+Azure AD 可讓非系統管理員使用安全性群組、Microsoft 365 群組、應用程式角色和存取套件目錄來管理資源的存取權。  [自助群組管理](../../active-directory/enterprise-users/groups-self-service-management.md)可讓群組擁有者管理自己的群組，而不需要指派系統管理角色。 使用者也可以建立和管理 Microsoft 365 群組，而不需要依賴系統管理員來處理其要求，且未使用的群組會自動到期。  [Azure AD 權利管理](../../active-directory/governance/entitlement-management-overview.md)可透過完整的存取要求工作流程和自動到期功能，進一步實現委派和可見度。  您可以向非管理員委派能力，讓其能夠為所擁有的群組、小組、應用程式和 SharePoint Online 網站設定自己的存取套件，方法是為需要核准存取權的人員自訂原則，包括將員工的經理和商業夥伴贊助商設定為核准者。
 
 ### <a name="implement-azure-ad-access-reviews"></a>實作 Azure AD 存取權檢閱
 

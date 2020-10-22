@@ -51,8 +51,6 @@
               href: ./database/security-controls-policy.md
             - name: 安全性基準
               href: database/security-baseline.md
-            - name: 安全性屬性
-              href: database/security-controls.md
             - name: 適用於 SQL 的 Azure Defender
               href: database/azure-defender-for-sql.md
             - name: 進階威脅防護
@@ -1072,7 +1070,7 @@
                           href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
                         - name: 手動設定
                           items:
-                            - name: Prerequisites
+                            - name: 必要條件
                               href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
                             - name: 教學課程
                               href: virtual-machines/windows/availability-group-manually-configure-tutorial.md

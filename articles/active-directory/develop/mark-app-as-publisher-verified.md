@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 80731421b6a0d3f5bdabf117a7239bafa056e652
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b658cdc58777274bb14f9e8069cef2facdb0479
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258331"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363448"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>將應用程式標示為發行者已驗證
 
@@ -42,7 +42,7 @@ ms.locfileid: "91258331"
 
 1. 確定您已使用 [多重要素驗證](../fundamentals/concept-fundamentals-mfa-get-started.md) 登入組織 (Azure AD) 帳戶，該帳戶已獲授權可對應用 (程式進行變更) 您要標示為「發行者驗證」，並在合作夥伴中心的 MPN 帳戶上。
 
-    - 在 Azure AD 此使用者必須是下列其中一個 [角色](../users-groups-roles/directory-assign-admin-roles.md)的成員：應用程式系統管理員、雲端應用程式系統管理員、全域管理員。 
+    - 在 Azure AD 此使用者必須是下列其中一個 [角色](../roles/permissions-reference.md)的成員：應用程式系統管理員、雲端應用程式系統管理員、全域管理員。 
 
     - 在合作夥伴中心內，此使用者必須擁有下列其中一種[角色](/partner-center/permissions-overview)：MPN 管理員、帳戶管理員或全域管理員 (這是在 Azure AD 中主控的共用角色)。 
 

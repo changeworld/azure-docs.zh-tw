@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 0dad78ad76a870ea9f1db28a3cb5ccace5cd804f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ff6d064b6bfabbd8a648c23b5648aae9b12a11d
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510924"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207490"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>教學課程：建立商業就緒的 Azure 遠端轉譯應用程式
 
@@ -35,8 +35,8 @@ Azure 遠端轉譯可擴充混合實境的可能性。 將基本概念整合到�
 
 如需全系統架構最佳做法的廣泛概觀，請造訪：
 
-* [Azure Architecture Center](https://docs.microsoft.com/azure/architecture/)
-* [Azure 開發人員快速入門指南](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide)
+* [Azure Architecture Center](/azure/architecture/)
+* [Azure 開發人員快速入門指南](../../../../guides/developer/azure-developer-guide.md)
 
 ## <a name="analytics"></a>分析
 
@@ -54,7 +54,7 @@ Azure 遠端轉譯可擴充混合實境的可能性。 將基本概念整合到�
 
 如需資源命名與標記的詳細資訊，最好從下列位置開始：
 
-* [資源命名與標記決策指南](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
+* [資源命名與標記決策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%252fazure%252fazure-resource-manager%252fmanagement%252ftoc.json)
 
 ### <a name="diagnostics"></a>診斷
 
@@ -62,9 +62,9 @@ Windows 事件追蹤 (ETW) 和事件追蹤記錄 (ETL) 等功能強大的工具�
 
 如需詳細資訊，請瀏覽：
 
-* [建立用戶端效能追蹤](https://docs.microsoft.com/azure/remote-rendering/how-tos/performance-tracing)
-* [如何收集 Windows 事件追蹤 (ETW) 資料](https://docs.microsoft.com/visualstudio/profiling/how-to-collect-event-tracing-for-windows-etw-data)
-* [使用 Windows 裝置入口網站：記錄](https://docs.microsoft.com/windows/mixed-reality/using-the-windows-device-portal)
+* [建立用戶端效能追蹤](../../../how-tos/performance-tracing.md)
+* [如何收集 Windows 事件追蹤 (ETW) 資料](/visualstudio/profiling/how-to-collect-event-tracing-for-windows-etw-data)
+* [使用 Windows 裝置入口網站：記錄](/windows/mixed-reality/using-the-windows-device-portal)
 
 ### <a name="usage-analysis"></a>使用量分析
 
@@ -72,7 +72,7 @@ Azure Application Insights 可協助您了解使用者如何使用您的 Azure �
 
 如需詳細資訊，請瀏覽：
 
-* [使用 Application Insights 進行使用量分析](https://docs.microsoft.com/azure/azure-monitor/app/usage-overview)
+* [使用 Application Insights 進行使用量分析](../../../../azure-monitor/app/usage-overview.md)
 
 ## <a name="fast-startup-time-strategies"></a>快速啟動時間策略
 
@@ -102,7 +102,7 @@ Azure 遠端轉譯需要前置處理過的 3D 模型，而 Azure 目前需要幾
 
 如需 Azure 遠端轉譯工作階段的詳細資訊，請參閱：
 
-* [遠端轉譯工作階段](https://docs.microsoft.com/azure/remote-rendering/concepts/sessions)
+* [遠端轉譯工作階段](../../../concepts/sessions.md)
 
 ## <a name="standard-vs-premium-server-size-routing-strategies"></a>標準與進階伺服器大小路由策略
 
@@ -164,9 +164,9 @@ Azure 遠端轉譯需要具有低延遲的快速網際網路連線。 使用者�
 如需網路分析的詳細資訊，請檢視：
 
 * [Azure 儲存體 Blob 下載速度測試](https://www.azurespeed.com/Azure/Download)
-* [Azure 網路來回行程延遲統計資料](https://docs.microsoft.com/azure/networking/azure-network-latency)
-* [伺服器端效能追蹤](https://docs.microsoft.com/azure/remote-rendering/overview/features/performance-queries)
-* [用戶端效能追蹤](https://docs.microsoft.com/azure/remote-rendering/how-tos/performance-tracing)
+* [Azure 網路來回行程延遲統計資料](../../../../networking/azure-network-latency.md)
+* [伺服器端效能追蹤](../../../overview/features/performance-queries.md)
+* [用戶端效能追蹤](../../../how-tos/performance-tracing.md)
 
 ## <a name="collaboration-considerations"></a>共同作業考量
 
@@ -192,8 +192,8 @@ Azure 遠端轉譯最有價值的用途，包括多個參與者在同一時間�
 
 其他資訊：
 
-* [混合實境中的共用體驗](https://docs.microsoft.com/windows/mixed-reality/shared-experiences-in-mixed-reality)
-* [Azure 儲存體備援](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+* [混合實境中的共用體驗](/windows/mixed-reality/shared-experiences-in-mixed-reality)
+* [Azure 儲存體備援](../../../../storage/common/storage-redundancy.md)
 
 ## <a name="managing-model-access"></a>管理模型存取
 
@@ -230,7 +230,7 @@ Azure 遠端轉譯最有價值的用途，包括多個參與者在同一時間�
 其他資訊：
 
 * [適用於 OneDrive 進行 Azure 儲存體複寫的 Microsoft Power Automate 範本](https://flow.microsoft.com/galleries/public/templates/2f90b5d3-029b-4e2e-ad37-1c0fe6d187fe/when-a-file-is-uploaded-to-onedrive-copy-it-to-azure-storage-container/)
-* [OneDrive 檔案儲存體 API 概觀](https://docs.microsoft.com/graph/onedrive-concept-overview)
+* [OneDrive 檔案儲存體 API 概觀](/graph/onedrive-concept-overview)
 
 ### <a name="direct-cad-access"></a>直接 CAD 存取
 
@@ -255,7 +255,7 @@ Azure 遠端轉譯最有價值的用途，包括多個參與者在同一時間�
 其他資訊：
 
 * [Azure Marketplace](https://azure.microsoft.com/marketplace/)
-* [教學課程：在 Marketplace 中發佈 Azure 受控應用程式](https://docs.microsoft.com/azure/azure-resource-manager/managed-applications/publish-marketplace-app)
+* [教學課程：在 Marketplace 中發佈 Azure 受控應用程式](../../../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)
 
 ### <a name="security"></a>安全性
 
@@ -277,6 +277,6 @@ Azure 遠端轉譯最有價值的用途，包括多個參與者在同一時間�
 
 其他資訊：
 
-* [Azure AD 服務驗證](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-service-authentication)
+* [Azure AD 服務驗證](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-service-authentication)
 * [使用 Azure 強化您的安全性狀態](https://azure.microsoft.com/overview/security/)
 * [雲端安全性](https://azure.microsoft.com/product-categories/security/)

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9630e1f23b6595ca690ecafcf0c4b9bfff603f2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb13b350dfecf70e5f3a45755f6f77069a855c6c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78185653"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92363839"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的使用者帳戶概觀
 
@@ -43,7 +43,7 @@ ms.locfileid: "78185653"
 
     - **使用者** - 使用者可存取受指派的資源，但無法管理多數租用戶資源。
     - **全域管理員** - 全域管理員可完整控制所有租用戶資源。
-    - **受限的管理員** - 為使用者選取一或多個系統管理角色。 如需可選角色的詳細資訊，請參閱[在 Azure Active Directory 中指派系統管理員角色](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+    - **受限的管理員** - 為使用者選取一或多個系統管理角色。 如需可選角色的詳細資訊，請參閱[在 Azure Active Directory 中指派系統管理員角色](../active-directory/roles/permissions-reference.md)。
 
 ### <a name="create-a-work-account"></a>建立公司帳戶
 

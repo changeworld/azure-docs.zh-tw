@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 伺服器評量工具探索內部�
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: e62effc31ab5dbc687e0509617b89561c5f2a3b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0643a13a07572dc24ef895062593e00188a0752f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442322"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317159"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>教學課程：使用伺服器評量來探索 Hyper-V VM
 
@@ -204,7 +204,7 @@ ms.locfileid: "91442322"
    
    不支援使用 PIN 登入。
 3. 成功登入後，返回 Web 應用程式。 
-4. 如果用於記錄的 Azure 使用者針對在金鑰產生期間建立的 Azure 資源帳戶具有正確的[權限](tutorial-prepare-hyper-v.md#prepare-azure)，就會起始設備註冊。
+4. 如果用於記錄的 Azure 使用者針對在金鑰產生期間建立的 Azure 資源帳戶具有正確的權限，就會起始設備註冊。
 1. 成功註冊設備之後，您可以按一下 [檢視詳細資料]查看註冊詳細資料。
 
 
