@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 4ffaad77a34be66d06f8f0033731d0496e444e52
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9e4e45cdefc9342ec5727bae8ea10fe133df1627
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715885"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318849"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Alibaba Cloud Service (角色型 SSO) 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91715885"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Alibaba Cloud Service (角色型 SSO)。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -94,7 +94,7 @@ ms.locfileid: "91715885"
     > [!Note]
     > 如果 [識別碼]  和 [回覆 URL]  值未自動填入，則請根據您的需求手動填入這些值。
 
-1. Alibaba Cloud Service (角色型 SSO) 需要在 Azure AD 中設定角色。 角色宣告已預先設定，因此您不需要進行設定，但您仍然需要使用[本文](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)在 Azure AD 中建立角色。
+1. Alibaba Cloud Service (角色型 SSO) 需要在 Azure AD 中設定角色。 角色宣告已預先設定，因此您不需要進行設定，但您仍然需要使用[本文](../develop/active-directory-enterprise-app-role-management.md)在 Azure AD 中建立角色。
 
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -250,11 +250,10 @@ ms.locfileid: "91715885"
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Alibaba Cloud Service (角色型 SSO)](https://aad.portal.azure.com/)
-

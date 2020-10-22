@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/28/2020
-ms.openlocfilehash: 5aa760c661fd596c55693edd537ca7820c7d7f58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: adc3b4542b6eba0cc0df7d93ac2cabbf7c1c144a
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89489896"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216584"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>教學課程：使用 Azure Data Share 共用資料  
 
@@ -33,7 +33,7 @@ ms.locfileid: "89489896"
 
 ### <a name="share-from-a-storage-account"></a>從儲存體帳戶共用：
 
-* Azure 儲存體帳戶：如果您還沒有此帳戶，則可以建立 [Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure 儲存體帳戶：如果您還沒有此帳戶，則可以建立 [Azure 儲存體帳戶](../storage/common/storage-account-create.md)
 * 寫入儲存體帳戶的權限，存在於 Microsoft.Storage/storageAccounts/write  中。 此權限存在於參與者角色中。
 * 將角色指派新增至儲存體帳戶的權限，存在於 Microsoft.Authorization/role assignments/write  中。 此權限存在於擁有者角色中。 
 
@@ -141,4 +141,4 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何建立 Azure Data Share 並邀請收件者。 若要了解資料取用者要如何接受和接收資料共用，請繼續閱讀[接受和接收資料](subscribe-to-data-share.md)教學課程。 
+在本教學課程中，您已了解如何建立 Azure Data Share 並邀請收件者。 若要了解資料取用者要如何接受和接收資料共用，請繼續閱讀[接受和接收資料](subscribe-to-data-share.md)教學課程。

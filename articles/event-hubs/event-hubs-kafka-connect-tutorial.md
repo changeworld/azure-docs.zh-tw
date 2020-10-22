@@ -3,12 +3,12 @@ title: 與 Apache Kafka Connect 整合 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供有關如何搭配使用 Kafka Connect 與適用于 Kafka 的 Azure 事件中樞的資訊。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: b063bb36ec17c22c0f093f1b33f11597eed5ea68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d37d2465d9389a0bcfaabdec32bad0c86846cfb2
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061660"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369534"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>在 Azure 事件中樞上整合 Apache Kafka Connect 支援 (預覽)
 隨著擷取商務需求的情況增加，對於擷取各種外部來源和接收的需求也隨之增加。 [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) 會提供這類架構，以便在任何外部系統 (例如，MySQL、HDFS 以及透過 Kafka 叢集的檔案系統) 往返連線和匯入/匯出資料。 本教學課程會逐步引導您使用 Kafka Connect 架構搭配事件中樞。
@@ -90,6 +90,10 @@ consumer.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModul
 
 plugin.path={KAFKA.DIRECTORY}/libs # path to the libs directory within the Kafka release
 ```
+
+> [!IMPORTANT]
+> 將 `{YOUR.EVENTHUBS.CONNECTION.STRING}` 取代為事件中樞命名空間的連接字串。 如需取得連接字串的指示，請參閱 [取得事件中樞連接字串](event-hubs-get-connection-string.md)。 以下是範例設定： `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
 
 ## <a name="run-kafka-connect"></a>執行 Kafka Connect
 

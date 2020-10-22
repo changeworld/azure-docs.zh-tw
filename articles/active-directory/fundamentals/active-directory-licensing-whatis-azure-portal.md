@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bb0c1773a08bc934eebc4f110cec43e4b07e49e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0490334c759da6ef7ba7ff2535f5f561cdb7a9bf
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565050"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369806"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>什麼是 Azure Active Directory 中的群組型授權？
 
@@ -39,7 +39,7 @@ Microsoft 付費雲端服務（例如 Microsoft 365、Enterprise Mobility + Secu
 ### <a name="required-number-of-licenses"></a>所需的授權數目
 針對指派授權的任何群組，您也必須為每個唯一成員取得授權。 雖然您不必為群組中的每個成員指派授權，但您必須至少要有足夠的授權，才能包含所有成員。 例如，如果您的租用戶中有 1,000 個唯一成員屬於授權群組，則必須至少擁有 1,000 個授權，才能符合授權合約。
 
-## <a name="features"></a>特性
+## <a name="features"></a>功能
 
 以下是群組型授權的主要特色：
 
@@ -65,9 +65,9 @@ Microsoft 付費雲端服務（例如 Microsoft 365、Enterprise Mobility + Secu
 
 若要深入了解透過群組型授權來管理授權的其他案例，請參閱：
 
-* [將授權指派給 Azure Active Directory 中的群組](../users-groups-roles/licensing-groups-assign.md)
-* [識別及解決 Azure Active Directory 中群組的授權問題](../users-groups-roles/licensing-groups-resolve-problems.md)
-* [如何將個別授權使用者移轉至 Azure Active Directory 中以群組為基礎的授權](../users-groups-roles/licensing-groups-migrate-users.md)
-* [如何使用 Azure Active Directory 中的群組型授權在產品授權之間移轉使用者](../users-groups-roles/licensing-groups-change-licenses.md)
-* [Azure Active Directory 群組型授權其他案例 (英文)](../users-groups-roles/licensing-group-advanced.md)
-* [Azure Active Directory 群組型授權的 PowerShell 範例](../users-groups-roles/licensing-ps-examples.md)
+* [將授權指派給 Azure Active Directory 中的群組](../enterprise-users/licensing-groups-assign.md)
+* [識別及解決 Azure Active Directory 中群組的授權問題](../enterprise-users/licensing-groups-resolve-problems.md)
+* [如何將個別授權使用者移轉至 Azure Active Directory 中以群組為基礎的授權](../enterprise-users/licensing-groups-migrate-users.md)
+* [如何使用 Azure Active Directory 中的群組型授權在產品授權之間移轉使用者](../enterprise-users/licensing-groups-change-licenses.md)
+* [Azure Active Directory 群組型授權其他案例 (英文)](../enterprise-users/licensing-group-advanced.md)
+* [Azure Active Directory 群組型授權的 PowerShell 範例](../enterprise-users/licensing-ps-examples.md)

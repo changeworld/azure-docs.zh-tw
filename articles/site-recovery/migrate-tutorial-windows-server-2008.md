@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d8cd8bf2e1a29b122fb4bac7a12454f102183fe3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6cc0855d3a4540de780a566a4613b4dbc647cfc5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87845556"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369483"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>將執行 Windows Server 2008 的伺服器移轉到 Azure
 
@@ -61,7 +61,7 @@ ms.locfileid: "87845556"
 
 本教學課程的其餘部分會說明如何遷移執行 Windows Server 2008 或 2008 R2 的內部部署 VMware 虛擬機器和實體伺服器。
 > [!TIP]
-> 正在尋找可將 VMware VM 移轉至 Azure 的無代理程式方式嗎？ [按一下這裡](https://aka.ms/migrateVMs-signup)
+> 正在尋找可將 VMware VM 移轉至 Azure 的無代理程式方式嗎？ [按一下這裡](../migrate/tutorial-migrate-vmware.md)
 
 
 ### <a name="limitations-and-known-issues"></a>限制與已知問題

@@ -3,12 +3,12 @@ title: 關於 Azure Site Recovery 中的容錯移轉和容錯回復
 description: 瞭解 Azure Site Recovery 中的容錯移轉和 failable。
 ms.topic: conceptual
 ms.date: 12/24/2019
-ms.openlocfilehash: d9b54f3c452212e12419a5ffd67b116c8660308d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3617683200aa3ffba08061b70993613fd0cc7241
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87089527"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369874"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>關於內部部署嚴重損壞修復容錯移轉/容錯回復
 
@@ -46,9 +46,9 @@ Site Recovery 中的容錯移轉和容錯回復有四個階段：
 **容錯移轉** | **位置** | **動作**
 --- | --- | ---
 **Azure VM (Windows (** | 在容錯移轉前的內部部署機器上 | 透過**網際網路存取**：啟用 RDP。 請確定已為**公用**新增 TCP 和 UDP 規則，而且允許**Windows 防火牆**  >  **允許的應用程式**中的所有設定檔使用 RDP。<br/><br/> 透過**站對站 VPN 存取**：在電腦上啟用 RDP。 檢查**Windows 防火牆**  ->  **允許的應用程式和功能**（適用于**網域和專用**網）是否允許 RDP。<br/><br/>  確定作業系統的 SAN 原則已設為 **OnlineAll**。 [深入了解](https://support.microsoft.com/kb/3031135)。<br/><br/> 觸發容錯移轉時，請確定 VM 上沒有任何暫止的 Windows 更新。 當您容錯移轉時，Windows Update 可能會啟動，而且您必須等到更新完成後才能登入 VM。
-**執行 Windows 的 Azure VM** | 在容錯移轉後的 Azure VM 上 |  [新增 VM 的公用 IP 位址](https://aka.ms/addpublicip)。<br/><br/> 已容錯移轉的 VM (上的網路安全性群組規則，以及其所連線的 Azure 子網) 必須允許 RDP 埠的連入連線。<br/><br/> 勾選 [開機診斷]**** 以確認 VM 的螢幕擷取畫面。 如果您無法連線，請檢查 VM 是否正在執行，並檢查 [疑難排解秘訣](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
+**執行 Windows 的 Azure VM** | 在容錯移轉後的 Azure VM 上 |  [新增 VM 的公用 IP 位址](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr)。<br/><br/> 已容錯移轉的 VM (上的網路安全性群組規則，以及其所連線的 Azure 子網) 必須允許 RDP 埠的連入連線。<br/><br/> 勾選 [開機診斷]**** 以確認 VM 的螢幕擷取畫面。 如果您無法連線，請檢查 VM 是否正在執行，並檢查 [疑難排解秘訣](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
 **執行 Linux 的 Azure VM** | 在容錯移轉前的內部部署機器上 | 確定 VM 上的安全殼層服務已設定為在系統開機時自動啟動。<br/><br/> 請檢查防火牆規則是否允許 SSH 連線。
-**執行 Linux 的 Azure VM** | 在容錯移轉後的 Azure VM 上 | 已容錯移轉的 VM 上的網路安全性群組規則 (以及它所連線的 Azure 子網路) 必須允許 SSH 連接埠的連入連線。<br/><br/> [新增 VM 的公用 IP 位址](https://aka.ms/addpublicip)。<br/><br/> 勾選 [開機診斷]**** 以檢視 VM 的螢幕擷取畫面。<br/><br/>
+**執行 Linux 的 Azure VM** | 在容錯移轉後的 Azure VM 上 | 已容錯移轉的 VM 上的網路安全性群組規則 (以及它所連線的 Azure 子網路) 必須允許 SSH 連接埠的連入連線。<br/><br/> [新增 VM 的公用 IP 位址](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr)。<br/><br/> 勾選 [開機診斷]**** 以檢視 VM 的螢幕擷取畫面。<br/><br/>
 
 ## <a name="types-of-failover"></a>容錯移轉的類型
 
@@ -59,7 +59,7 @@ Site Recovery 提供不同的容錯移轉選項。
 **測試容錯移轉** | 用來執行演練，以驗證您的 BCDR 策略，而不會遺失任何資料或停止運作。| 在 Azure 中建立 VM 的複本，而不會影響進行中的複寫或生產環境。 | 1. 在單一 VM 或復原方案中的多個 Vm 上執行測試容錯移轉。<br/><br/> 2. 選取要用於測試容錯移轉的復原點。<br/><br/> 3. 選取 azure VM 在容錯移轉後建立時所在的 Azure 網路。 網路只用于測試容錯移轉。<br/><br/> 4. 確認鑽是否如預期般運作。 Site Recovery 會在演練期間自動清除在 Azure 中建立的 Vm。
 **規劃的容錯移轉-Hyper-v**  | 通常用於計畫中的停機時間。<br/><br/> 來源 Vm 會關閉。 在起始容錯移轉之前，會同步處理最新的資料。 | 規劃的工作流程零資料遺失。 | 1. 規劃停機維護時段，並通知使用者。<br/><br/> 2. 讓使用者互動的應用程式離線。<br/><br/> 3. 使用最新的復原點起始計畫的容錯移轉。 如果電腦未關機或發生錯誤，則不會執行容錯移轉。<br/><br/> 4. 容錯移轉之後，請確認複本 Azure VM 在 Azure 中為作用中。<br/><br/> 5. 認可容錯移轉以完成。 認可動作會刪除所有復原點。
 **容錯移轉-Hyper-v** | 通常會在發生未計畫的中斷或主要網站無法使用時執行。<br/><br/> 在起始容錯移轉之前，選擇性地關閉 VM，並同步處理最後的變更。  | 減少應用程式的資料遺失。 | 1. 起始您的 BCDR 計畫。 <br/><br/> 2. 起始容錯移轉。 指定 Site Recovery 是否應該在觸發容錯移轉之前，關閉 VM 並同步處理/複寫最新的變更。<br/><br/> 3. 您可以容錯移轉到多個復原點選項，如下表所摘要。<br/><br/> 如果您未啟用關閉 VM 的選項，或 Site Recovery 無法關閉 VM，則會使用最新的復原點。<br/>即使無法關閉電腦，仍會執行容錯移轉。<br/><br/> 4. 在容錯移轉之後，您會檢查 Azure 中的複本 Azure VM 是否為作用中。<br/> 如有需要，您可以從 [保留期間] 中選取24小時以外的不同復原點。<br/><br/> 5. 認可容錯移轉以完成。 認可動作會刪除所有可用的復原點。
-**容錯移轉-VMware** | 通常會在發生未計畫的中斷或主要網站無法使用時執行。<br/><br/> （選擇性）指定 Site Recovery 應該嘗試觸發 VM 關機，並在起始容錯移轉之前同步處理和複寫最終變更。  | 減少應用程式的資料遺失。 | 1. 起始您的 BCDR 計畫。 <br/><br/> 2. 起始 Site Recovery 的容錯移轉。 指定 Site Recovery 是否應該在執行容錯移轉之前，嘗試觸發 VM 關機並進行同步處理。<br/> 即使無法關閉電腦，仍會執行容錯移轉。<br/><br/> 3. 容錯移轉之後，請確認複本 Azure VM 在 Azure 中為作用中。 <br/>如有需要，您可以從 [保留期間] 72 小時選取不同的復原點。<br/><br/> 5. 認可容錯移轉以完成。 認可動作會刪除所有復原點。<br/> 若是 Windows Vm，Site Recovery 會在容錯移轉期間停用 VMware 工具。
+**容錯移轉-VMware** | 通常會在發生未計畫的中斷或主要網站無法使用時執行。<br/><br/> （選擇性）指定 Site Recovery 應該嘗試觸發 VM 關機，並在起始容錯移轉之前同步處理和複寫最終變更。  | 減少應用程式的資料遺失。 | 1. 起始您的 BCDR 計畫。 <br/><br/> 2. 起始 Site Recovery 的容錯移轉。 指定 Site Recovery 是否應該在執行容錯移轉之前，嘗試觸發 VM 關機並進行同步處理。<br/> 即使無法關閉電腦，仍會執行容錯移轉。<br/><br/> 3. 容錯移轉之後，請確認複本 Azure VM 在 Azure 中為作用中。 <br/>如有需要，您可以從 [保留期間] 72 小時選取不同的復原點。<br/><br/> 5. 認可容錯移轉以完成。 認可動作會刪除所有復原點。<br/> 對於 Windows VM，Site Recovery 會在容錯移轉期間停用 VMware 工具。
 
 ## <a name="failover-processing"></a>容錯移轉處理
 
@@ -157,11 +157,10 @@ Site Recovery 提供不同的容錯移轉選項。
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - [針對特定 VMware vm](vmware-azure-tutorial-failover-failback.md)進行容錯移轉
 - [針對特定 Hyper-v vm](hyper-v-azure-failover-failback-tutorial.md)進行容錯移轉。
 - [建立](site-recovery-create-recovery-plans.md) 復原方案。
 - 容錯移轉復原 [方案中的 vm](site-recovery-failover.md)。
 - [準備](vmware-azure-failback.md) VMware 重新保護和容錯回復。
 - 容錯回復 [Hyper-v vm](hyper-v-azure-failback.md)。
-

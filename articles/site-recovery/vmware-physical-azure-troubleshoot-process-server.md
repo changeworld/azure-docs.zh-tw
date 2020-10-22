@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 4816b597d66aea3bbe7f834004f924b5108de939
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad1bec66edaa3fcc6049f4911684f6e6d6c3e366
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87499750"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369398"
 ---
 # <a name="troubleshoot-the-process-server"></a>針對處理序伺服器進行疑難排解
 
@@ -54,11 +54,11 @@ ms.locfileid: "87499750"
 ![Healthy][green] | None  | 處理序伺服器已連線且狀況良好。
 ![警告][yellow] | 指定的服務不在執行中。 | 1.確認服務都在執行中。<br/> 2.如果服務如預期般執行，請遵循下列指示[針對連線能力和複寫問題進行疑難排解](#check-connectivity-and-replication)。
 ![警告][yellow]  | 過去 15 分鐘內的 CPU 使用率 > 80%。 | 1.請勿新增電腦。<br/>2.檢查使用處理序伺服器的 VM 數目是否符合[定義的限制](site-recovery-plan-capacity-vmware.md#capacity-considerations)，並考慮設定[其他處理序伺服器](vmware-azure-set-up-process-server-scale.md)。<br/>3.請遵循下列指示[針對連線能力和複寫問題進行疑難排解](#check-connectivity-and-replication)。
-![重大][red] |  過去 15 分鐘內的 CPU 使用率 > 95%。 | 1.請勿新增電腦。<br/>2.檢查使用處理序伺服器的 VM 數目是否符合[定義的限制](site-recovery-plan-capacity-vmware.md#capacity-considerations)，並考慮設定[其他處理序伺服器](vmware-azure-set-up-process-server-scale.md)。<br/>3.請遵循下列指示[針對連線能力和複寫問題進行疑難排解](#check-connectivity-and-replication)。<br/> 4.如果問題持續發生，請執行 VMware/實體伺服器複寫的[部署規劃工具](https://aka.ms/asr-v2a-deployment-planner)。
+![重大][red] |  過去 15 分鐘內的 CPU 使用率 > 95%。 | 1.請勿新增電腦。<br/>2.檢查使用處理序伺服器的 VM 數目是否符合[定義的限制](site-recovery-plan-capacity-vmware.md#capacity-considerations)，並考慮設定[其他處理序伺服器](vmware-azure-set-up-process-server-scale.md)。<br/>3.請遵循下列指示[針對連線能力和複寫問題進行疑難排解](#check-connectivity-and-replication)。<br/> 4.如果問題持續發生，請執行 VMware/實體伺服器複寫的[部署規劃工具](./site-recovery-deployment-planner.md)。
 ![警告][yellow] | 過去 15 分鐘內記憶體使用量 > 80%。 |  1.請勿新增電腦。<br/>2.檢查使用處理序伺服器的 VM 數目是否符合[定義的限制](site-recovery-plan-capacity-vmware.md#capacity-considerations)，並考慮設定[其他處理序伺服器](vmware-azure-set-up-process-server-scale.md)。<br/>3.遵循與警告相關聯的任何指示。<br/> 4.如果問題持續發生，請遵循下列指示[針對連線能力和複寫問題進行疑難排解](#check-connectivity-and-replication)。
-![重大][red] | 過去 15 分鐘內記憶體使用量 > 95%。 | 1.請勿新增電腦，並考慮設定[其他處理序伺服器](vmware-azure-set-up-process-server-scale.md)。<br/> 2.遵循與警告相關聯的任何指示。<br/> 3. 4. 如果問題持續，請遵循下列指示[針對連線能力和複寫問題進行疑難排解](#check-connectivity-and-replication)。<br/> 4.如果問題持續發生，請執行 VMware/實體伺服器複寫問題的[部署規劃工具](https://aka.ms/asr-v2a-deployment-planner)。
+![重大][red] | 過去 15 分鐘內記憶體使用量 > 95%。 | 1.請勿新增電腦，並考慮設定[其他處理序伺服器](vmware-azure-set-up-process-server-scale.md)。<br/> 2.遵循與警告相關聯的任何指示。<br/> 3. 4. 如果問題持續，請遵循下列指示[針對連線能力和複寫問題進行疑難排解](#check-connectivity-and-replication)。<br/> 4.如果問題持續發生，請執行 VMware/實體伺服器複寫問題的[部署規劃工具](./site-recovery-deployment-planner.md)。
 ![警告][yellow] | 過去 15 分鐘內快取資料夾可用空間 < 30%。 | 1.請勿新增電腦，並考慮設定[其他處理序伺服器](vmware-azure-set-up-process-server-scale.md)。<br/>2.檢查使用處理序伺服器的 VM 數目與[指導方針](site-recovery-plan-capacity-vmware.md#capacity-considerations)一致。<br/> 3.請遵循下列指示[針對連線能力和複寫問題進行疑難排解](#check-connectivity-and-replication)。
-![重大][red] |  過去 15 分鐘內的可用空間 < 25% | 1.遵循與此問題警告相關聯的指示。<br/> 2. 3. 請遵循下列指示[針對連線能力和複寫問題進行疑難排解](#check-connectivity-and-replication)。<br/> 3.如果問題持續發生，請執行 VMware/實體伺服器複寫的[部署規劃工具](https://aka.ms/asr-v2a-deployment-planner)。
+![重大][red] |  過去 15 分鐘內的可用空間 < 25% | 1.遵循與此問題警告相關聯的指示。<br/> 2. 3. 請遵循下列指示[針對連線能力和複寫問題進行疑難排解](#check-connectivity-and-replication)。<br/> 3.如果問題持續發生，請執行 VMware/實體伺服器複寫的[部署規劃工具](./site-recovery-deployment-planner.md)。
 ![重大][red] | 處理序伺服器沒有 15 分鐘或更久的任何活動訊號。 Tmansvs 服務未與組態伺服器通訊。 | 1) 檢查處理序伺服器是否已啟動且執行中。<br/> 2.檢查 tmassvc 是否正在處理序伺服器上執行。<br/> 3.請遵循下列指示[針對連線能力和複寫問題進行疑難排解](#check-connectivity-and-replication)。
 
 

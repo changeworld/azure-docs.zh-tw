@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: 37784c4a294ccf296818f2afb1a8a345cb9d813e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2db8d09511385039ea79ad1ed1f50177156f69c8
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658262"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369925"
 ---
 # <a name="replicate-machines-with-private-endpoints"></a>複寫具有私人端點的電腦
 
@@ -127,7 +127,7 @@ Azure Site Recovery 可讓您使用 [Azure Private Link](../private-link/private
 > [!NOTE]
 > 儲存體的私人端點只能在 **一般用途 v2** 儲存體帳戶上建立。 如需定價資訊，請參閱 [標準分頁 blob 價格](https://azure.microsoft.com/pricing/details/storage/page-blobs/)。
 
-遵循 [建立私人儲存體的指導](../private-link/create-private-endpoint-storage-portal.md#create-your-private-endpoint) 方針，建立具有私人端點的儲存體帳戶。 請務必選取 **[是]** ，以與私人 DNS 區域整合。 選取已建立的 DNS 區域，或建立一個新的。
+遵循 [建立私人儲存體的指導](../private-link/tutorial-private-endpoint-storage-portal.md#create-storage-account-with-a-private-endpoint) 方針，建立具有私人端點的儲存體帳戶。 請務必選取 **[是]** ，以與私人 DNS 區域整合。 選取已建立的 DNS 區域，或建立一個新的。
 
 ## <a name="grant-required-permissions-to-the-vault"></a>將必要的許可權授與保存庫
 

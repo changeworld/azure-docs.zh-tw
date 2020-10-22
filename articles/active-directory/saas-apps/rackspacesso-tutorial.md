@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: a2c2e7358c32453daf53c40a9322df4fe30642d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 991201429bdc09a03ddc46c5beb9d0f4d6744ed5
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548874"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108621"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>教學課程：Azure Active Directory 與 Rackspace SSO 整合
 
@@ -101,11 +101,11 @@ Rackspace SSO 與 Azure AD 整合提供下列優點：
 
     a. 按一下 [上傳中繼資料檔案]  。
 
-    ![image](common/upload-metadata.png)
+    ![此螢幕擷取畫面顯示具有上傳中繼資料檔案連結的基本 SAML 設定。](common/upload-metadata.png)
 
     b. 按一下**資料夾圖示**以選取中繼資料檔案，然後按一下 [上傳]  。
 
-    ![image](common/browse-upload-metadata.png)
+    ![此螢幕擷取畫面顯示您可以在其中選取並上傳檔案的對話方塊。](common/browse-upload-metadata.png)
 
     c. 成功上傳中繼資料檔案後，就會自動填入所需的 URL。
 

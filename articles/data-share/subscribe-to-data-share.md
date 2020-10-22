@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
-ms.openlocfilehash: ce47bc5e880f15eaa1bbf07477673d2475e5a10a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d4ef9f1d80604373463450adf597f8202611175
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89489913"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216567"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>教學課程：使用 Azure Data Share 接受和接收資料  
 
@@ -34,7 +34,7 @@ ms.locfileid: "89489913"
 
 ### <a name="receive-data-into-a-storage-account"></a>將資料接收到儲存體帳戶中： 
 
-* Azure 儲存體帳戶：如果您還沒有此帳戶，則可以建立 [Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)。 
+* Azure 儲存體帳戶：如果您還沒有此帳戶，則可以建立 [Azure 儲存體帳戶](../storage/common/storage-account-create.md)。 
 * 寫入儲存體帳戶的權限，存在於 Microsoft.Storage/storageAccounts/write  中。 此權限存在於參與者角色中。 
 * 將角色指派新增至儲存體帳戶的權限，存在於 Microsoft.Authorization/role assignments/write  中。 此權限存在於擁有者角色中。  
 
@@ -62,7 +62,7 @@ ms.locfileid: "89489913"
 
 ### <a name="receive-data-into-an-azure-data-explorer-cluster"></a>將資料接收到 Azure 資料總管叢集中： 
 
-* 與資料提供者的資料總管叢集位於相同 Azure 資料中心的 Azure 資料總管叢集：如果您還沒有此叢集，可以建立 [Azure 資料總管叢集](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal)。 如果您不知道資料提供者叢集的 Azure 資料中心，您可以在稍後的程序中建立叢集。
+* 與資料提供者的資料總管叢集位於相同 Azure 資料中心的 Azure 資料總管叢集：如果您還沒有此叢集，可以建立 [Azure 資料總管叢集](/azure/data-explorer/create-cluster-database-portal)。 如果您不知道資料提供者叢集的 Azure 資料中心，您可以在稍後的程序中建立叢集。
 * 寫入 Azure 資料總管叢集的權限，存在於 Microsoft.Kusto/clusters/write  中。 此權限存在於參與者角色中。 
 * 將角色指派新增至 Azure 資料總管叢集的權限，存在於 Microsoft.Authorization/role assignments/write  中。 此權限存在於擁有者角色中。 
 

@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b3070a1296b368ea2c56038ec696942416a6fe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d9fdc44681c8773d7b6f724174a74e76e57939e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84743876"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369755"
 ---
 # <a name="create-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中建立 Azure AD 角色的存取權審核
 
@@ -27,9 +27,9 @@ ms.locfileid: "84743876"
 
 本文說明如何建立一或多個特殊許可權 Azure AD 角色的存取權審核。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-[特殊權限角色管理員](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
+[特殊權限角色管理員](../roles/permissions-reference.md#privileged-role-administrator)
 
 ## <a name="open-access-reviews"></a>開啟存取權評論
 
@@ -65,7 +65,7 @@ ms.locfileid: "84743876"
 
 根據您在 **完成設定時**所做的選擇，自動套用將會在審核的結束日期之後或您手動停止審核之後執行。 審核的狀態將會從 [已完成] 變更為 [ **已完成** ]，例如 [套用 **] 和 [** 最後] 套用至 **[狀態]**。 在幾分鐘內，您應該會看到遭到拒絕的使用者（如果有的話）會從角色中移除。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [審查 Azure AD 角色的存取權](pim-how-to-perform-security-review.md)
 - [完成 Azure AD 角色的存取權審核](pim-how-to-complete-review.md)

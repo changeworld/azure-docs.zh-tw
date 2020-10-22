@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4543a46c9362ac6d20cc7597de9f59c1a7520163
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dc931c461988daf9ff6fb2f954b52fa58ce94af
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90600791"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369772"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>使用 Azure Active Directory 的強式身分識別基礎進行四個步驟
 
@@ -156,7 +156,7 @@ MFA 登 [入報告](../authentication/howto-mfa-reporting.md) 包含 mfa 使用�
 * 以屬性為基礎的動態群組成員資格
 * 委派給應用程式擁有者
 
-Azure AD 能讓您使用安全性群組和 Microsoft 365 群組來管理資源的存取權。 這些群組可以由群組擁有者管理，該擁有者可以核准或拒絕成員資格要求，以及委派群組成員資格的控制權。 這項功能稱為「 [自助群組管理](../users-groups-roles/groups-self-service-management.md)」，可讓未獲派系統管理角色的群組擁有者建立及管理群組，而不需要依賴系統管理員來處理其要求，藉此節省時間。
+Azure AD 能讓您使用安全性群組和 Microsoft 365 群組來管理資源的存取權。 這些群組可以由群組擁有者管理，該擁有者可以核准或拒絕成員資格要求，以及委派群組成員資格的控制權。 這項功能稱為「 [自助群組管理](../enterprise-users/groups-self-service-management.md)」，可讓未獲派系統管理角色的群組擁有者建立及管理群組，而不需要依賴系統管理員來處理其要求，藉此節省時間。
 
 ## <a name="step-4---operationalize-your-insights"></a>步驟 4-讓您的見解
 
@@ -172,9 +172,9 @@ Azure AD 能讓您使用安全性群組和 Microsoft 365 群組來管理資源�
 
 當您考慮操作的方法時，需要考慮幾個層級的管理。 第一個層級會將管理的負擔放在全域管理員 (的) 。 一律使用「全域管理員」角色，可能適用于小型公司。 但對於具有協助服務中心人員和負責特定工作之系統管理員的較大型組織而言，指派全域管理員的角色可能會造成安全性風險，因為它可讓這些人員管理上述工作的能力，並超越他們應該能夠執行的工作。
 
-在此情況下，您應該考慮下一個層級的系統管理。 您可以使用 Azure AD 將終端使用者指定為「受限的系統管理員」，以便管理許可權較低的角色中的工作。 例如，您可以將「 [安全性讀者](../users-groups-roles/directory-assign-admin-roles.md#security-reader) 」角色指派給技術支援中心人員，讓他們能夠以唯讀存取權管理安全性相關功能。 或者，將「 [驗證管理員](../users-groups-roles/directory-assign-admin-roles.md#authentication-administrator) 」角色指派給個人，讓他們能夠重設非密碼認證或讀取和設定 Azure 服務健康狀態，是合理的。
+在此情況下，您應該考慮下一個層級的系統管理。 您可以使用 Azure AD 將終端使用者指定為「受限的系統管理員」，以便管理許可權較低的角色中的工作。 例如，您可以將「 [安全性讀者](../roles/permissions-reference.md#security-reader) 」角色指派給技術支援中心人員，讓他們能夠以唯讀存取權管理安全性相關功能。 或者，將「 [驗證管理員](../roles/permissions-reference.md#authentication-administrator) 」角色指派給個人，讓他們能夠重設非密碼認證或讀取和設定 Azure 服務健康狀態，是合理的。
 
-若要深入瞭解，請參閱 [Azure Active Directory 中的系統管理員角色許可權](../users-groups-roles/directory-assign-admin-roles.md)。
+若要深入瞭解，請參閱 [Azure Active Directory 中的系統管理員角色許可權](../roles/permissions-reference.md)。
 
 ### <a name="monitor-hybrid-components-azure-ad-connect-sync-ad-fs-using-azure-ad-connect-health"></a>使用 Azure AD Connect Health 監視混合式元件 (Azure AD Connect 同步處理、AD FS) 
 

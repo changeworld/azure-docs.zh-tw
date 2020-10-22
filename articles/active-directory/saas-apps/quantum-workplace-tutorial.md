@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2019
 ms.author: jeedes
-ms.openlocfilehash: d99d11f6cffa42aa706a863c3061583eab3f98f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cb4e23a9d5334af5ebdaab2ef15a5c39f232095
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552245"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108587"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quantum-workplace"></a>教學課程：Azure Active Directory 與 Quantum Workplace 整合
 
@@ -99,11 +99,11 @@ ms.locfileid: "88552245"
 
 4. 在 [基本 SAML 設定]  設定區段上，已預先設定好應用程式，並已經為 Azure 預先填入必要的 URL。 使用者必須按一下 [儲存]  按鈕，才能儲存設定。
 
-    ![Quantum Workplace 網域與 URL 單一登入資訊](common/preintegrated.png)
+    ![顯示 [基本 SAML 設定] 的螢幕擷取畫面。](common/preintegrated.png)
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
 
-    ![Quantum Workplace 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/metadata-upload-additional-signon.png)
 
     在 [登入 URL]  文字方塊中，輸入 URL：`https://auth.quantumworkplace.com/Account/Login`
 

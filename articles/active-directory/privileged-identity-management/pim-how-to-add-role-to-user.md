@@ -13,16 +13,16 @@ ms.subservice: pim
 ms.date: 09/16/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f4d1e0d43758645d43843417eadf0ce21d43cb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69884b9e07172e9b25f4c14884be8713da23cbdb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533837"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369823"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中指派 Azure AD 角色
 
-使用 Azure Active Directory (Azure AD) 時，全域管理員可以進行 **永久** Azure AD 系統管理員角色指派。 您可以使用 [Azure 入口網站](../users-groups-roles/directory-assign-admin-roles.md)或使用 [PowerShell 命令](/powershell/module/azuread#directory_roles)來建立這些角色指派。
+使用 Azure Active Directory (Azure AD) 時，全域管理員可以進行 **永久** Azure AD 系統管理員角色指派。 您可以使用 [Azure 入口網站](../roles/permissions-reference.md)或使用 [PowerShell 命令](/powershell/module/azuread#directory_roles)來建立這些角色指派。
 
 Azure AD Privileged Identity Management (PIM) 服務也允許特殊許可權角色管理員進行永久的系統管理員角色指派。 此外，特殊許可權角色系統管理員可以讓使用者符合 Azure AD 管理員角色的 **資格** 。 合格系統管理員可在需要時啟用角色，而在完成工作之後，其權限就隨即失效。
 
@@ -30,7 +30,7 @@ Azure AD Privileged Identity Management (PIM) 服務也允許特殊許可權角�
 
 自2019年11月起，Privileged Identity Management 的 Azure AD 角色部分會更新為符合 Azure 資源角色體驗的新版本。 這會建立其他功能以及 [現有 API 的變更](azure-ad-roles-features.md#api-changes)。 當新版本推出時，您在本文中遵循的程式將取決於您目前擁有的 Privileged Identity Management 版本。 遵循本節中的步驟，判斷您擁有的 Privileged Identity Management 版本。 知道您的 Privileged Identity Management 版本之後，您可以在本文中選取符合該版本的程式。
 
-1. 使用[特殊權限角色管理員](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色的使用者登入[Azure 入口網站](https://portal.azure.com/)。
+1. 使用[特殊權限角色管理員](../roles/permissions-reference.md#privileged-role-administrator)角色的使用者登入[Azure 入口網站](https://portal.azure.com/)。
 1. 開啟 **Azure AD Privileged Identity Management**。 如果您在 [總覽] 頁面頂端有橫幅，請依照本文的 **新版本** 索引標籤中的指示進行。 否則，請遵循 [ **舊版** ] 索引標籤中的指示。
 
   [![選取 Azure AD > Privileged Identity Management。](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
@@ -41,7 +41,7 @@ Azure AD Privileged Identity Management (PIM) 服務也允許特殊許可權角�
 
 遵循這些步驟，讓使用者有資格使用 Azure AD 管理員角色。
 
-1. 使用[特殊權限角色管理員](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色成員的使用者登入[Azure 入口網站](https://portal.azure.com/)。
+1. 使用[特殊權限角色管理員](../roles/permissions-reference.md#privileged-role-administrator)角色成員的使用者登入[Azure 入口網站](https://portal.azure.com/)。
 
     如需如何授與其他系統管理員存取權以管理 Privileged Identity Management 的詳細資訊，請參閱 [授與其他系統管理員存取權以管理 Privileged Identity Management](pim-how-to-give-access-to-pim.md)。
 
@@ -77,7 +77,7 @@ Azure AD Privileged Identity Management (PIM) 服務也允許特殊許可權角�
 
 ## <a name="assign-a-role-with-restricted-scope"></a>指派受限範圍的角色
 
-針對某些角色，授與許可權的範圍可以限制為單一管理單位、服務主體或應用程式。 如果指派具有管理單位範圍的角色，則此程式是一個範例。 如需透過管理單位支援範圍的角色清單，請參閱 [指派範圍角色給管理單位](../users-groups-roles/roles-admin-units-assign-roles.md)。 這項功能目前正推出給 Azure AD 組織。
+針對某些角色，授與許可權的範圍可以限制為單一管理單位、服務主體或應用程式。 如果指派具有管理單位範圍的角色，則此程式是一個範例。 如需透過管理單位支援範圍的角色清單，請參閱 [指派範圍角色給管理單位](../roles/admin-units-assign-roles.md)。 這項功能目前正推出給 Azure AD 組織。
 
 1. 使用具有特殊許可權的角色系統管理員許可權登入 [Azure Active Directory admin center](https://aad.portal.azure.com) 。
 
@@ -97,7 +97,7 @@ Azure AD Privileged Identity Management (PIM) 服務也允許特殊許可權角�
    - 選取角色範圍 (在此案例中為管理單位) 
    - 選取範圍的管理單位
 
-如需有關建立管理單位的詳細資訊，請參閱 [新增和移除管理單位](../users-groups-roles/roles-admin-units-manage.md)。
+如需有關建立管理單位的詳細資訊，請參閱 [新增和移除管理單位](../roles/admin-units-manage.md)。
 
 ## <a name="update-or-remove-an-existing-role-assignment"></a>更新或移除現有角色指派
 

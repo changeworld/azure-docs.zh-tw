@@ -11,19 +11,19 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6adf7e6c5abbba3c018f9a03b5167aec7537c704
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b21f14bc6f80445d1119f34d24281d764fff38c8
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87908146"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369160"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>動態群組與 Azure Active Directory B2B 共同作業
 
 ## <a name="what-are-dynamic-groups"></a>什麼是動態群組？
 [Azure 入口網站](https://portal.azure.com)允許您動態設定 Azure Active Directory (Azure AD) 的安全性群組成員資格。 系統管理員可以設定規則，以根據使用者屬性 (（例如 userType、部門或國家/地區) ）填入在 Azure AD 中建立的群組。 在安全性群組中，可以根據成員的屬性而自動新增或移除成員。 這些群組可以提供對應用程式或雲端資源 (SharePoint 網站和文件) 的存取，以及將授權指派給成員。 若要深入了解動態群組，請參閱 [Azure Active Directory 中的專用群組](../active-directory-accessmanagement-dedicated-groups.md)。
 
-需要有適當的 [Azure AD Premium P1 或 P2 授權](https://azure.microsoft.com/pricing/details/active-directory/)，才能建立和使用動態群組。 請參閱[在 Azure Active Directory 中針對動態群組成員資格建立以屬性為基礎的規則](../users-groups-roles/groups-dynamic-membership.md)一文，以深入了解。
+需要有適當的 [Azure AD Premium P1 或 P2 授權](https://azure.microsoft.com/pricing/details/active-directory/)，才能建立和使用動態群組。 請參閱[在 Azure Active Directory 中針對動態群組成員資格建立以屬性為基礎的規則](../enterprise-users/groups-dynamic-membership.md)一文，以深入了解。
 
 ## <a name="creating-an-all-users-dynamic-group"></a>建立「所有使用者」動態群組
 您建立的群組可以包含使用成員資格規則的租用戶內的所有使用者。 未來在租用戶中新增或移除使用者時，系統會自動調整群組的成員資格。
@@ -38,11 +38,11 @@ ms.locfileid: "87908146"
    ```
    user.objectId -ne null
    ```
-1. 選取 [確定]  。 規則會出現在 [規則語法] 方塊中：
+1. 選取 [確定]。 規則會出現在 [規則語法] 方塊中：
 
    ![所有使用者動態群組的規則語法](media/use-dynamic-groups/all-user-rule-syntax.png)
 
-1.  選取 [儲存]****。 新的動態群組現在會包含 B2B 來賓使用者以及成員使用者。
+1.  選取 [儲存]。 新的動態群組現在會包含 B2B 來賓使用者以及成員使用者。
 
 
 1. 選取 [**新增群組**] 頁面上的 [**建立**] 以建立群組。

@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cb101e415499150cd3d825fe5f42ce0dbc766fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed23ffa9971bf4c97b784f230053aed4b1acf0a4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662520"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369789"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Azure AD 如何為內部部署工作負載提供雲端控管管理
 
@@ -107,7 +107,7 @@ Azure AD 可以 [在必要時自動為來賓使用者建立 ad 帳戶](../extern
 
 一般而言，IT 會將存取核准決策委派給商務決策者。 此外，IT 可能是使用者本身。 例如，存取歐洲境內公司行銷應用程式中的機密客戶資料的使用者需要知道公司的原則。 來賓使用者也可能不知道其受邀組織中的資料處理需求。
 
-組織可以透過 [動態群組](../users-groups-roles/groups-dynamic-membership.md)之類的技術（例如，將使用者布建到 [SaaS 應用程式](../saas-apps/tutorial-list.md)），或 [使用系統整合的應用程式（用於跨網域身分識別管理 (SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md)) 標準）來自動化存取生命週期程式。 組織也可以控制哪些 [來賓使用者可以存取內部部署應用程式](../external-identities/hybrid-cloud-to-on-premises.md)。 接著可以利用週期性 [Azure AD 存取權檢閱](../governance/access-reviews-overview.md)，定期檢閱這些存取權限。
+組織可以透過 [動態群組](../enterprise-users/groups-dynamic-membership.md)之類的技術（例如，將使用者布建到 [SaaS 應用程式](../saas-apps/tutorial-list.md)），或 [使用系統整合的應用程式（用於跨網域身分識別管理 (SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md)) 標準）來自動化存取生命週期程式。 組織也可以控制哪些 [來賓使用者可以存取內部部署應用程式](../external-identities/hybrid-cloud-to-on-premises.md)。 接著可以利用週期性 [Azure AD 存取權檢閱](../governance/access-reviews-overview.md)，定期檢閱這些存取權限。
 
 ## <a name="future-directions"></a>未來方向
 

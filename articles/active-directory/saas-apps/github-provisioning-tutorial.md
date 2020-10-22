@@ -2,20 +2,20 @@
 title: 教學課程： GitHub 的使用者布建-Azure AD
 description: 了解如何設定 Azure Active Directory 將使用者帳戶自動佈建和取消佈建至 GitHub。
 services: active-directory
-author: ArvindHarinder1
+author: Zhchia
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: article
-ms.date: 03/27/2019
-ms.author: arvinh
-ms.openlocfilehash: 847c69a18a73d67b9b994e72686a4073ddd6d27f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.author: Zhchia
+ms.openlocfilehash: 5f48cd0056d40ed7dc5c99c4260621533c1f71f0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857529"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369075"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>教學課程︰設定 GitHub 來自動佈建使用者
 
@@ -61,7 +61,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 3. 選取您的 GitHub 執行個體，然後選取 [佈建]**** 索引標籤。
 
-4. 將 [佈建模式] 設定為 [自動]。
+4. 將 [佈建模式]  設定為 [自動]  。
 
     ![GitHub 佈建](./media/github-provisioning-tutorial/GitHub1.png)
 
@@ -77,7 +77,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 8. 在 [通知電子郵件]**** 欄位中，輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選 [發生失敗時傳送電子郵件通知] 核取方塊。
 
-9. 按一下 **[儲存]** 。
+9. 按一下 [檔案]  。
 
 10. 在 [對應] 區段下，選取 [同步處理 Azure Active Directory 使用者至 GitHub]****。
 
@@ -85,7 +85,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 12. 若要對 GitHub 啟用 Azure AD 佈建服務，請在 [設定]**** 區段中，將 [佈建狀態]**** 變更為 [開啟]****
 
-13. 按一下 **[儲存]** 。
+13. 按一下 [檔案]  。
 
 此作業會對 [使用者和群組] 區段中指派給 GitHub 的任何使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料]**** 區段來監視進度，並依循連結前往佈建活動記錄，此記錄會描述佈建服務所執行的所有動作。
 

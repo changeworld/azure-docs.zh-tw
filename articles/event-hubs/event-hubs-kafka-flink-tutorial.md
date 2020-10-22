@@ -3,12 +3,12 @@ title: 將 Apache Flink 用於 Apache Kafka - Azure 事件中樞 | Microsoft Doc
 description: 本文提供有關如何將 Apache Flink 連接至 Azure 事件中樞的資訊
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 40efd15e56d0b74459aefb4d88972df293b48c26
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 1d382270248e95b1b973f57f67ebf81160f03a16
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308431"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369500"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>使用 Apache Flink 搭配適用於 Apache Kafka 的 Azure 事件中樞
 本教學課程說明如何將 Apache Flink 連接到事件中樞，而不需要變更通訊協定用戶端或執行您自己的叢集。 如需有關「事件中樞」的 Apache Kafka 取用者通訊協定支援的詳細資訊，請參閱 [適用于 Apache Kafka 的事件中樞](event-hubs-for-kafka-ecosystem-overview.md)。
@@ -71,6 +71,9 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
    password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
+> [!IMPORTANT]
+> 將 `{YOUR.EVENTHUBS.CONNECTION.STRING}` 取代為事件中樞命名空間的連接字串。 如需取得連接字串的指示，請參閱 [取得事件中樞連接字串](event-hubs-get-connection-string.md)。 以下是範例設定： `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
 ### <a name="run-producer-from-the-command-line"></a>從命令列執行生產者
 
 若要從命令列執行生產者，請從 Maven 中產生 JAR 然後從中執行 (或是使用 Maven 產生 JAR，然後將必要的 Kafka JAR 加入至 classpath，在 Java 中執行)：
@@ -101,6 +104,10 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
    username="$ConnectionString" \
    password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
+
+> [!IMPORTANT]
+> 將 `{YOUR.EVENTHUBS.CONNECTION.STRING}` 取代為事件中樞命名空間的連接字串。 如需取得連接字串的指示，請參閱 [取得事件中樞連接字串](event-hubs-get-connection-string.md)。 以下是範例設定： `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
 
 ### <a name="run-consumer-from-the-command-line"></a>從命令列執行取用者
 

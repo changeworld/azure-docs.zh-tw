@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96b4cb6f751a5d2bc4259117007b3abec2e0598d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9680c9bee6d0cf5c9605ce7b6009a500abd81ffb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069572"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369092"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>對應用程式授與全租用戶的管理員同意
 
@@ -25,9 +25,9 @@ ms.locfileid: "90069572"
 
 如需同意應用程式的詳細資訊，請參閱 [Azure Active Directory 同意架構](../develop/consent-framework.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-授與整個租使用者的系統管理員同意需要您以 [全域管理員](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)、 [應用程式系統](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)管理員或 [雲端應用程式系統管理員](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)的身分登入。
+授與整個租使用者的系統管理員同意需要您以 [全域管理員](../roles/permissions-reference.md#global-administrator--company-administrator)、 [應用程式系統](../roles/permissions-reference.md#application-administrator)管理員或 [雲端應用程式系統管理員](../roles/permissions-reference.md#cloud-application-administrator)的身分登入。
 
 > [!IMPORTANT]
 > 當應用程式被授與整個租使用者的系統管理員同意時，所有使用者都可以登入應用程式，除非它已設定為需要使用者指派。 若要限制哪些使用者可以登入應用程式，必須先指派使用者，然後將使用者或群組指派給應用程式。 如需詳細資訊，請參閱[指派使用者和群組的方法](methods-for-assigning-users-and-groups.md)。
@@ -47,7 +47,7 @@ ms.locfileid: "90069572"
 
 若要將整個租使用者的系統管理員同意授與 **企業應用程式**中所列的應用程式：
 
-1. 以[全域管理員](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)、[應用程式系統](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)管理員或[雲端應用程式系統管理員](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)的身分登入[Azure 入口網站](https://portal.azure.com)。
+1. 以[全域管理員](../roles/permissions-reference.md#global-administrator--company-administrator)、[應用程式系統](../roles/permissions-reference.md#application-administrator)管理員或[雲端應用程式系統管理員](../roles/permissions-reference.md#cloud-application-administrator)的身分登入[Azure 入口網站](https://portal.azure.com)。
 2. 依序選取 [**企業應用程式**] **Azure Active Directory** 。
 3. 選取您要授與整個租使用者系統管理員同意的應用程式。
 4. 選取 [ **許可權** ]，然後按一下 **[授與管理員同意**]。
@@ -63,7 +63,7 @@ ms.locfileid: "90069572"
 
 若要從 **應用程式註冊**授與租使用者範圍的系統管理員同意：
 
-1. 以[全域管理員](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)、[應用程式系統](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)管理員或[雲端應用程式系統管理員](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)的身分登入[Azure 入口網站](https://portal.azure.com)。
+1. 以[全域管理員](../roles/permissions-reference.md#global-administrator--company-administrator)、[應用程式系統](../roles/permissions-reference.md#application-administrator)管理員或[雲端應用程式系統管理員](../roles/permissions-reference.md#cloud-application-administrator)的身分登入[Azure 入口網站](https://portal.azure.com)。
 2. 選取 **Azure Active Directory** 然後 **應用程式註冊**。
 3. 選取您要授與整個租使用者系統管理員同意的應用程式。
 4. 選取 [ **API 許可權** ]，然後按一下 **[授與管理員同意**]。

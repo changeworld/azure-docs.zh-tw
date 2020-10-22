@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 764526bbe7242ede790711c8fa3999dd118fbdd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04fe19960f01709562a47404373801715385e9c3
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548203"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318682"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-altamira-hrm"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Altamira HRM 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88548203"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Altamira HRM。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -41,7 +41,7 @@ ms.locfileid: "88548203"
 
 * Altamira HRM 支援由 **SP 和 IDP** 起始的 SSO
 * Altamira HRM 支援 **Just In Time** 使用者佈建
-* 設定 Altamira HRM 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 Altamira HRM 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-altamira-hrm-from-the-gallery"></a>從資源庫新增 Altamira HRM
 
@@ -141,16 +141,16 @@ ms.locfileid: "88548203"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Altamira HRM] 圖格時，應該會自動登入您已設定 SSO 的 Altamira HRM。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Altamira HRM] 圖格時，應該會自動登入您已設定 SSO 的 Altamira HRM。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Altamira HRM](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)

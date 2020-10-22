@@ -3,12 +3,12 @@ title: 使用適用於 Apache Kafka 的 Akka Streams - Azure 事件中樞 | Micr
 description: 本文提供有關如何將 Akka streams 串流連接至 Azure 事件中樞的資訊。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 43f0c359af6f699ce3e7c19948d706c09adeba70
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 92ab927189329493696c70b61ffc7f11cad22a66
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316330"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369568"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>使用 Akka Streams 搭配適用於 Apache Kafka 的事件中樞
 
@@ -77,6 +77,10 @@ akka.kafka.producer {
 }
 ```
 
+> [!IMPORTANT]
+> 將 `{YOUR.EVENTHUBS.CONNECTION.STRING}` 取代為事件中樞命名空間的連接字串。 如需取得連接字串的指示，請參閱 [取得事件中樞連接字串](event-hubs-get-connection-string.md)。 以下是範例設定： `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
+
 ### <a name="run-producer-from-the-command-line"></a>從命令列執行生產者
 
 若要從命令列執行生產者，請從 Maven 中產生 JAR 然後從中執行 (或是使用 Maven 產生 JAR，然後將必要的 Kafka JAR 加入至 classpath，在 Java 中執行)：
@@ -116,6 +120,10 @@ akka.kafka.consumer {
     }
 }
 ```
+
+> [!IMPORTANT]
+> 將 `{YOUR.EVENTHUBS.CONNECTION.STRING}` 取代為事件中樞命名空間的連接字串。 如需取得連接字串的指示，請參閱 [取得事件中樞連接字串](event-hubs-get-connection-string.md)。 以下是範例設定： `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
 
 ### <a name="run-consumer-from-the-command-line"></a>從命令列執行取用者
 

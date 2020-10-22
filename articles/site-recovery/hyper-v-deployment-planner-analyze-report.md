@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
-ms.openlocfilehash: b2bb351de292ff2015cdcbd388155063a86a7359
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f230445ecdb046c2b631e89567df71e1d09c3234
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653574"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369942"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>分析 Azure Site Recovery 部署規劃工具報告
 本文討論 Azure Site Recovery 部署規劃工具針對 Hyper-V 到 Azure 的案例產生的 Excel 報告所包含的工作表。
@@ -154,7 +154,7 @@ ms.locfileid: "88653574"
 
 **磁碟儲存體類型**：標準或進階儲存體帳戶，用來複寫 [要放置的 VM]**** 資料行中提到的所有對應 VM。
 
-**建議的前置詞**：建議的三個字元前置詞，可用來命名儲存體帳戶。 您可以使用自己的前置詞，但工具的建議會遵循[儲存體帳戶的磁碟分割命名慣例](https://aka.ms/storage-performance-checklist)。
+**建議的前置詞**：建議的三個字元前置詞，可用來命名儲存體帳戶。 您可以使用自己的前置詞，但工具的建議會遵循[儲存體帳戶的磁碟分割命名慣例](/en-in/azure/storage/blobs/storage-performance-checklist)。
 
 **建議的帳戶名稱**：在您包含建議前置詞後的儲存體帳戶名稱。 以您的自訂輸入取代括弧內的名稱 (< 和 >)。
 
@@ -220,7 +220,7 @@ Site Recovery 部署規劃工具所產生的 Excel 報告會在「不相容的 V
 
 **VM 名稱**：產生報告時，使用於 VMListFile 的 VM 名稱。 此資料行也會列出連結至 VM 的磁碟 (VHD)。 名稱包含此工具在分析期間探索到 VM 時其所在位置的 Hyper-V 主機名稱。
 
-**VM 相容性**：指出為何指定的 VM 不適合與 Site Recovery 搭配使用。 相關原因會針對 VM 的每個不相容磁碟進行說明，且根據發佈的[儲存體限制](https://aka.ms/azure-storage-scalbility-performance)，原因可能是下列其中一項：
+**VM 相容性**：指出為何指定的 VM 不適合與 Site Recovery 搭配使用。 相關原因會針對 VM 的每個不相容磁碟進行說明，且根據發佈的[儲存體限制](/en-in/azure/storage/common/scalability-targets-standard-account)，原因可能是下列其中一項：
 
 * 磁碟大小大於 4,095 GB。 Azure 儲存體目前不支援大於 4,095 GB 的資料磁碟大小。
 
@@ -356,5 +356,5 @@ Site Recovery 部署規劃工具所產生的 Excel 報告會在「不相容的 V
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 深入了解[成本估計](hyper-v-deployment-planner-cost-estimation.md)。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/14/2020
 ms.author: jeedes
-ms.openlocfilehash: d2a3eda97fec03e767425b7f7a126073b2f13ca5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fe591c55065372245d95210ab0282a0070c96434
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713638"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318796"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Amazon Web Services (AWS) 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91713638"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Amazon Web Services (AWS)。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ![Azure AD 和 AWS 關聯性的圖表](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
@@ -61,7 +61,7 @@ ms.locfileid: "91713638"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * Amazon Web Services (AWS) 支援由 **SP 和 IDP** 起始的 SSO
-* 設定 Amazon Web Services (AWS) 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 設定 Amazon Web Services (AWS) 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
@@ -366,17 +366,17 @@ ms.locfileid: "91713638"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Amazon Web Services (AWS)] 圖格時，應該會自動登入您已設定 SSO 的 Amazon Web Services (AWS)。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Amazon Web Services (AWS)] 圖格時，應該會自動登入您已設定 SSO 的 Amazon Web Services (AWS)。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="known-issues"></a>已知問題
 
  * 在 [佈建] 區段中，[對應] 子區段會顯示「正在載入...」訊息且永遠不會顯示屬性對應。 目前支援的唯一佈建工作流程是在使用者或群組指派期間，將角色從 AWS 匯入 Azure AD 以供選取。 此屬性對應是預先決定的，無法加以設定。
 
- * [佈建] 區段只支援一次輸入一個 AWS 租用戶的一組認證。 所有匯入的角色都會針對 AWS 租用戶寫入 Azure AD [`servicePrincipal` 物件](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)的 `appRoles` 屬性。
+ * [佈建] 區段只支援一次輸入一個 AWS 租用戶的一組認證。 所有匯入的角色都會針對 AWS 租用戶寫入 Azure AD [`servicePrincipal` 物件](/graph/api/resources/serviceprincipal?view=graph-rest-beta)的 `appRoles` 屬性。
 
    您可以從資源庫中，將多個 AWS 租用戶 (以 `servicePrincipals` 表示) 新增至 Azure AD 以進行佈建。 不過，有一個已知的問題，就是無法自動從用於佈建的多個 AWS `servicePrincipals` 中，將所有匯入的角色寫入用於 SSO 的單一 `servicePrincipal`。
 
-   因應措施如下：您可以使用 [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) 來擷取所有匯入每個 AWS `servicePrincipal` (已設定佈建) 的 `appRoles`。 接著，您可以將這些角色字串新增至已設定 SSO 的 AWS `servicePrincipal`。
+   因應措施如下：您可以使用 [Microsoft Graph API](/graph/api/resources/serviceprincipal?view=graph-rest-beta) 來擷取所有匯入每個 AWS `servicePrincipal` (已設定佈建) 的 `appRoles`。 接著，您可以將這些角色字串新增至已設定 SSO 的 AWS `servicePrincipal`。
 
 * 角色必須符合下列需求才能從 AWS 匯入到 Azure AD：
 
@@ -384,17 +384,17 @@ ms.locfileid: "91713638"
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Amazon Web Services (AWS)](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用進階可見性和控制項保護 Amazon Web Services (AWS)](https://docs.microsoft.com/cloud-app-security/protect-aws)
+- [如何使用進階可見性和控制項保護 Amazon Web Services (AWS)](/cloud-app-security/protect-aws)
 
 [11]: ./media/amazon-web-service-tutorial/ic795031.png
 [12]: ./media/amazon-web-service-tutorial/ic795032.png

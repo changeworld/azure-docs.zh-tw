@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 7b4a622de142fd44b64015c8238f44dafc34ce72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69f0a20bdcba23d947e3d1b573c1a359da245161
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86133692"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369415"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>設定多層式 SAP NetWeaver 應用程式部署的災害復原
 
@@ -24,7 +24,7 @@ ms.locfileid: "86133692"
 
 您可以使用 [Azure Site Recovery](site-recovery-overview.md)來保護 SAP NetWeaver 應用程式部署。 本文涵蓋使用 Site Recovery 複寫至另一個 Azure 資料中心時，在 Azure 上保護三層式 SAP NetWeaver 部署的最佳做法。 本文描述支援的案例和設定，以及如何 (嚴重損壞修復演練) 和實際的容錯移轉進行測試容錯移轉。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 在開始之前，請確定您了解如何執行下列工作：
 
@@ -39,11 +39,11 @@ ms.locfileid: "86133692"
 
 您可以使用 Site Recovery，在下列案例中實作災害復原解決方案：
 * 您的 SAP 系統在一個 Azure 資料中心內執行，而您要將它們複寫到另一個 Azure 資料中心， (Azure 到 Azure 的嚴重損壞修復) 。 
-   如需詳細資訊，請參閱 [Azure 對 Azure 複寫架構](https://aka.ms/asr-a2a-architecture)。
+   如需詳細資訊，請參閱 [Azure 對 Azure 複寫架構](./azure-to-azure-architecture.md)。
 * 您的 SAP 系統在 VMware (或實體) 伺服器內部部署上執行。 您也會將 SAP 系統複寫到 Azure 資料中心內的災難復原網站， (VMware 對 Azure 的嚴重損壞修復) 。 
-   此案例需要一些額外的元件。 如需詳細資訊，請參閱 [VMware 對 Azure 複寫架構](https://aka.ms/asr-v2a-architecture)。
+   此案例需要一些額外的元件。 如需詳細資訊，請參閱 [VMware 對 Azure 複寫架構](./vmware-azure-architecture.md)。
 * 您有在內部部署 Hyper-v 上執行的 SAP 系統。 您也會將 SAP 系統複寫到 Azure 資料中心內的災難復原網站， (Hyper-v 到 Azure 的嚴重損壞修復) 。
-   此案例需要一些額外的元件。 如需詳細資訊，請參閱 [Hyper-V 對 Azure 複寫架構](https://aka.ms/asr-h2a-architecture)。
+   此案例需要一些額外的元件。 如需詳細資訊，請參閱 [Hyper-V 對 Azure 複寫架構](./hyper-v-azure-architecture.md)。
 
 在本文中，我們會使用 **azure 到 azure** 的嚴重損壞修復案例。 此案例會顯示 Site Recovery 的 SAP 嚴重損壞修復功能。 由於 Site Recovery 複寫不限於特定應用程式，因此所述程序應也可以套用至其他案例。
 
@@ -166,6 +166,6 @@ SMLG 交易會管理 ABAP 應用程式伺服器的登入群組。 它會在中�
 
 如需詳細資訊，請參閱[在 Site Recovery 中容錯移轉](site-recovery-failover.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 深入瞭解如何使用 Site Recovery 針對 SAP NetWeaver 部署建立嚴重損壞修復解決方案。 請參閱可下載的白皮書 [： SAP NetWeaver：使用 Site Recovery 建立嚴重損壞修復解決方案](https://aka.ms/asr_sap)。 本白皮書討論各種 SAP 架構的建議。 您可以查看 Azure 上的 SAP 的支援應用程式和 VM 類型。 另外還有可用於測試嚴重損壞修復解決方案的方案選項。
 * 深入了解如何使用 Site Recovery [複寫其他工作負載](site-recovery-workload.md)。

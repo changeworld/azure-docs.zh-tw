@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 3caf12e13b5999c40843f1203ac8ce7f2f21ef6b
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 01169f3e73fb1d6ddf0ecaf4958c6121cb21c295
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91665866"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216125"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>教學課程：使用授權碼流程來登入使用者，並從 JavaScript 單頁應用程式 (SPA) 呼叫 Microsoft Graph API
 
@@ -30,8 +30,6 @@ ms.locfileid: "91665866"
 > * 呼叫需要從 Microsoft 身分識別平台端點取得存取權杖的 Microsoft Graph API 或自有 API
 
 MSAL.js 2.0 改良了 MSAL.js 1.0，可在瀏覽器中支援授權碼流程，而非隱含的授與流程。 MSAL.js 2.0 **不**支援隱含流程。
-
-[!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -120,13 +118,13 @@ MSAL.js 2.0 改良了 MSAL.js 1.0，可在瀏覽器中支援授權碼流程，�
 ```
 msal-spa-tutorial/
 ├── app
-│   ├── authConfig.js
-│   ├── authPopup.js
-│   ├── authRedirect.js
-│   ├── graphConfig.js
-│   ├── graph.js
-│   ├── index.html
-│   └── ui.js
+│   ├── authConfig.js
+│   ├── authPopup.js
+│   ├── authRedirect.js
+│   ├── graphConfig.js
+│   ├── graph.js
+│   ├── index.html
+│   └── ui.js
 └── server.js
 ```
 

@@ -15,12 +15,12 @@ ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32b678058e2d24d277eaf56a1aadec3678e25a5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf2b7a72b76c3ea028580a642a6a9f634c162edb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87128160"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369721"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中指派 Azure 資源角色
 
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以管
 
 請遵循下列步驟來讓使用者有資格獲派 Azure 資源角色。
 
-1. 使用[特殊權限角色管理員](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色成員的使用者登入[Azure 入口網站](https://portal.azure.com/)。
+1. 使用[特殊權限角色管理員](../roles/permissions-reference.md#privileged-role-administrator)角色成員的使用者登入[Azure 入口網站](https://portal.azure.com/)。
 
     如需如何授與其他系統管理員存取權以管理 Privileged Identity Management 的詳細資訊，請參閱 [授與其他系統管理員存取權以管理 Privileged Identity Management](pim-how-to-give-access-to-pim.md)。
 
@@ -113,7 +113,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以管
 
     如需擴充角色指派的相關資訊，請參閱 [Privileged Identity Management 中的擴充或更新 Azure 資源角色](pim-resource-roles-renew-extend.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [在 Privileged Identity Management 中延長或更新 Azure 資源角色](pim-resource-roles-renew-extend.md)
 - [在 Privileged Identity Management 中設定 Azure 資源角色設定](pim-resource-roles-configure-role-settings.md)

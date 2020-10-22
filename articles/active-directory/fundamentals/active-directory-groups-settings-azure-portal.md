@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e9b38208526ba83e0a0e31e2e139e340a3ee511
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c346877d29c5fef03b45c895cbf8d462f90d0979
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797520"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369126"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>使用 Azure Active Directory 來編輯群組資訊
 
@@ -53,7 +53,7 @@ ms.locfileid: "87797520"
     
     - **成員資格類型。** 變更成員資格類型。 如需各種可用成員資格類型的詳細資訊，請參閱 [如何：使用 Azure Active Directory 入口網站建立基本群組和新增成員](active-directory-groups-create-azure-portal.md)。
     
-    - **物件識別碼。** 物件識別碼無法變更，但可以將它複製以便在 PowerShell 命令中用於群組。 如需使用 PowerShell Cmdlet 的詳細資訊，請參閱[用於進行群組設定的 Azure Active Directory Cmdlet](../users-groups-roles/groups-settings-v2-cmdlets.md)。
+    - **物件識別碼。** 物件識別碼無法變更，但可以將它複製以便在 PowerShell 命令中用於群組。 如需使用 PowerShell Cmdlet 的詳細資訊，請參閱[用於進行群組設定的 Azure Active Directory Cmdlet](../enterprise-users/groups-settings-v2-cmdlets.md)。
 
 ## <a name="next-steps"></a>後續步驟
 這些文章提供有關 Azure Active Directory 的其他資訊。
@@ -64,7 +64,7 @@ ms.locfileid: "87797520"
 
 - [如何從群組中新增或移除成員](active-directory-groups-members-azure-portal.md)
 
-- [管理群組中使用者的動態規則](../users-groups-roles/groups-create-rule.md)
+- [管理群組中使用者的動態規則](../enterprise-users/groups-create-rule.md)
 
 - [管理群組的成員資格](active-directory-groups-membership-azure-portal.md)
 

@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ab3ae459d5719e965be668c529eacf0ab86d19b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 391d4d6cb925eec0ea7be19eb6fa6849aa38985e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541130"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369738"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中設定 Azure AD 角色設定
 
@@ -29,7 +29,7 @@ ms.locfileid: "91541130"
 
 自2019年11月起，Privileged Identity Management 的 Azure AD 角色部分會更新為符合 Azure 資源角色體驗的新版本。 這會建立其他功能以及 [現有 API 的變更](azure-ad-roles-features.md#api-changes)。 當新版本推出時，您在本文中遵循的程式將取決於您目前擁有的 Privileged Identity Management 版本。 遵循本節中的步驟，判斷您擁有的 Privileged Identity Management 版本。 知道您的 Privileged Identity Management 版本之後，您可以在本文中選取符合該版本的程式。
 
-1. 使用[特殊權限角色管理員](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色的使用者登入[Azure 入口網站](https://portal.azure.com/)。
+1. 使用[特殊權限角色管理員](../roles/permissions-reference.md#privileged-role-administrator)角色的使用者登入[Azure 入口網站](https://portal.azure.com/)。
 1. 開啟 **Azure AD Privileged Identity Management**。 如果您在 [總覽] 頁面頂端有橫幅，請依照本文的 **新版本** 索引標籤中的指示進行。 否則，請遵循 [ **舊版** ] 索引標籤中的指示。
 
   [![選取 Azure AD > Privileged Identity Management。](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
@@ -42,7 +42,7 @@ ms.locfileid: "91541130"
 
 請依照下列步驟開啟 Azure AD 角色的設定。
 
-1. 使用具有特殊[許可權角色管理員](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色的使用者登入[Azure 入口網站](https://portal.azure.com/)。
+1. 使用具有特殊[許可權角色管理員](../roles/permissions-reference.md#privileged-role-administrator)角色的使用者登入[Azure 入口網站](https://portal.azure.com/)。
 gt
 1. 開啟 **Azure AD Privileged Identity Management** &gt; **Azure AD 角色**] &gt; **角色設定**。
 
@@ -163,7 +163,7 @@ Privileged Identity Management 可針對兩個不同的案例選擇性地強制�
 
 使用 **事件/要求票證** 參數，要求合格系統管理員在啟用其角色時包含票證號碼。 這種作法可以讓角色存取權的審核更有效率。
 
-## <a name="multi-factor-authentication"></a>多重要素驗證
+## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 使用 [Multi-Factor Authentication]**** 的切換，指定是否要要求使用者在啟用其角色之前，先以 MFA 驗證其身分識別。 他們只需要在每個會話中確認其身分識別一次，而不是每次啟用角色時驗證。 啟用 MFA 時，需要記住兩個秘訣：
 

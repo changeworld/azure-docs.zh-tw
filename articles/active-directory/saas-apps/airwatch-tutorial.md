@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 2baff2ac2af10caf857fd08b0d7e7df5030220e4
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: cedea9eb4ec47af445b2ae31225a697f3c51b46e
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91758127"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318931"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>教學課程：整合 AirWatch 與 Azure Active Directory
 
@@ -26,7 +26,7 @@ ms.locfileid: "91758127"
 * 讓使用者使用其 Azure AD 帳戶自動登入 AirWatch。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -238,12 +238,12 @@ ms.locfileid: "91758127"
 
 ### <a name="test-sso"></a>測試 SSO
 
-當您在存取面板中選取 [AirWatch] 圖格時，應該會自動登入您已設定 SSO 的 AirWatch。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [AirWatch] 圖格時，應該會自動登入您已設定 SSO 的 AirWatch。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

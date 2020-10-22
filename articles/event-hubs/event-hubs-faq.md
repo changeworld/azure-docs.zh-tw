@@ -3,12 +3,12 @@ title: 常見問題集 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供 Azure 事件中樞的常見問題集 (FAQ) 清單及其答案。
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: 65b6fd40c66ec055a5b80ccea9d2dd9ba1510d54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94ddfbf0803ea7ab53b1b42b977a9ebdd2354bc5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729095"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369602"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中樞常見問題集
 
@@ -132,7 +132,7 @@ bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093 request.timeout.ms=60000 security.p
 
 範例：
 
-bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=";
+啟動安裝程式。 servers = dummynamespace。 windows. net： 9093 request.timeout.ms request. timeout. ms = 60000 security. protocol = SASL_SSL SASL。 protocol = 純 sasl.jaas.config= kafka。一般. Required 需要 username = "$ConnectionString" password = "Endpoint = sb：//dummynamespace.servicebus.windows.net/;SharedAccessKeyName = DummyAccessKeyName;SharedAccessKey = XXXXXXXXXXXXXXXXXXXXX ";
 
 注意:如果 sasl.jaas.config 不是您架構中支援的設定，請尋找用來設定 SASL 使用者名稱和密碼的設定，並改用那些設定。 將使用者名稱設定為 $ConnectionString，並將密碼設定為您的事件中樞連接字串。
 

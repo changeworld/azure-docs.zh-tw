@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 43206fbc956602ddaf189f45648cf8a44a3dd143
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8735bf721ec85dcd556582f7fd887dd82b55a35d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277323"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369976"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 的效能秘訣
 
@@ -148,49 +148,49 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
     在 Azure Cosmos DB JAVA SDK v4 中，直接模式最適合用來改善工作負載最大的資料庫效能。 
 
-    * 直接模式概覽
+    * ***直接模式 _ 總覽**
 
         :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Azure Cosmos DB 連接原則的圖例" border="false":::
 
-        直接模式中採用的用戶端架構，能讓網路使用率得以預測，並實現對 Azure Cosmos DB 複本的多工存取。 上圖顯示直接模式如何將用戶端要求路由傳送到 Cosmos DB 後端複本。 直接模式架構會在用戶端上為每個 DB 複本配置最多 10 個**通道**。 通道是前面加上要求緩衝區的 TCP 連線，深度為 30 個要求。 屬於複本的通道會視複本**服務端點**的需求動態配置。 當使用者在直接模式下發出要求時，**TransportClient** 會根據分割區索引鍵，將要求路由傳送到適當的服務端點。 **要求佇列**會在服務端點之前對要求進行緩衝處理。
+        直接模式中採用的用戶端架構，能讓網路使用率得以預測，並實現對 Azure Cosmos DB 複本的多工存取。 上圖顯示直接模式如何將用戶端要求路由傳送到 Cosmos DB 後端複本。 直接模式架構會在用戶端為每個 DB 複本配置最多 10 _*通道**。 通道是前面加上要求緩衝區的 TCP 連線，深度為 30 個要求。 屬於複本的通道會視複本**服務端點**的需求動態配置。 當使用者在直接模式下發出要求時，**TransportClient** 會根據分割區索引鍵，將要求路由傳送到適當的服務端點。 **要求佇列**會在服務端點之前對要求進行緩衝處理。
 
-    * ***直接模式的設定選項***
+    * ***Direct mode 的設定選項**_
 
-        如果需要非預設的直接模式行為，請建立 *DirectConnectionConfig* 實例並自訂其屬性，然後將自訂的屬性實例傳遞至 Azure Cosmos DB client builder 中的 *DirectMode ( # B1 * 方法。
+        如果需要非預設的直接模式行為，請建立 _DirectConnectionConfig * 實例，並自訂其屬性，然後將自訂的屬性實例傳遞至 Azure Cosmos DB 用戶端產生器中的 *directMode ( # B1 * 方法。
 
         這些設定會控制上述基礎直接模式架構的行為。
 
         首先，請使用下列建議的組態設定。 這些 *DirectConnectionConfig* 選項為 advanced configuration 設定，可能會以非預期的方式影響 SDK 效能;我們建議使用者避免修改它們，除非他們覺得很樂意瞭解取捨，而且是絕對必要的。 如果遇到關於此特定主題的問題，請連絡 [Azure Cosmos DB 小組](mailto:CosmosDBPerformanceSupport@service.microsoft.com)。
 
-        | 組態選項       | 預設    |
-        | :------------------:       | :-----:    |
-        | idleConnectionTimeout      | "PT1M"     |
-        | maxConnectionsPerEndpoint  | "PT0S"     |
-        | connectTimeout             | "PT1M10S"  |
-        | idleEndpointTimeout        | 8388608    |
-        | maxRequestsPerConnection   | 10         |
+        | 組態選項       | 預設   |
+        | :------------------:       | :-----:   |
+        | idleConnectionTimeout      | "PT0"     |
+        | maxConnectionsPerEndpoint  | "130"     |
+        | connectTimeout             | "PT5S"    |
+        | idleEndpointTimeout        | PT1H    |
+        | maxRequestsPerConnection   | 30      |
 
 * **微調分割之集合的平行查詢**
 
     Azure Cosmos DB Java SDK v4 支援平行查詢，可讓您平行查詢分割的集合。 如需詳細資訊，請參閱使用 Azure Cosmos DB Java SDK v4 的相關[程式碼範例](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)。 平行查詢的設計目的是要改善其連續對應項目的查詢延遲和輸送量。
 
-    * 調整 setMaxDegreeOfParallelism***\:***
+    * ***微調 setMaxDegreeOfParallelism \: **_
     
         平行查詢的運作方式是以平行方式查詢多個分割。 不過，對於查詢會以循序方式擷取來自個別分割集合的資料。 因此，使用 setMaxDegreeOfParallelism 設定分割數目會最有機會達到最高效能的查詢，但前提是其他所有系統條件皆維持不變。 如果您不知道分割數目，您可以使用 setMaxDegreeOfParallelism 設定為較高的數字，然後系統會選擇最小值 (分割數目、使用者提供的輸入) 作為平行處理原則的最大刻度。
 
         請務必注意，若對於查詢是以平均方式將資料分佈於所有分割，平行查詢便會產生最佳效益。 如果分割之集合的分割方式是查詢所傳回的所有或大多數資料集中在少數幾個分割中 (最差的情況是集中在一個分割)，則這些分割會成為查詢效能的瓶頸。
 
-    * 調整 setMaxBufferedItemCount***\:***
+    _ ***微調 setMaxBufferedItemCount \: **_
     
-        平行查詢的設計是可在用戶端處理目前的結果批次時，先預先擷取結果。 預先擷取有助於改善查詢的整體延遲。 setMaxBufferedItemCount 可限制預先擷取的結果數目。 將 setMaxBufferedItemCount 設定為預期傳回的結果數目 (或更高的數目)，可讓查詢透過預先擷取獲得最大效益。
+        Parallel query is designed to pre-fetch results while the current batch of results is being processed by the client. The pre-fetching helps in overall latency improvement of a query. setMaxBufferedItemCount limits the number of pre-fetched results. Setting setMaxBufferedItemCount to the expected number of results returned (or a higher number) enables the query to receive maximum benefit from pre-fetching.
 
-        預先擷取會以相同方式運作，不受 MaxDegreeOfParallelism 的影響，而且來自所有分割的資料會有單一緩衝區。
+        Pre-fetching works the same way irrespective of the MaxDegreeOfParallelism, and there is a single buffer for the data from all partitions.
 
-* **擴增用戶端工作負載**
+_ **向外擴充您的用戶端-工作負載**
 
-    如果您是以高輸送量層級進行測試，用戶端應用程式可能會成為瓶頸，因為電腦對 CPU 或網路的使用率將達到上限。 如果到了這一刻，您可以將用戶端應用程式向外延展至多部伺服器，以繼續將 Azure Cosmos DB 帳戶再往前推進一步。
+    If you are testing at high throughput levels, the client application may become the bottleneck due to the machine capping out on CPU or network utilization. If you reach this point, you can continue to push the Azure Cosmos DB account further by scaling out your client applications across multiple servers.
 
-    根據理想的經驗法則，建議不要超過任何指定伺服器上 > 50% 的 CPU 使用率，以保持低延遲。
+    A good rule of thumb is not to exceed >50% CPU utilization on any given server, to keep latency low.
 
    <a id="tune-page-size"></a>
 
@@ -231,19 +231,19 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
     您可能會基於各種原因，而想要或需要在產生高要求輸送量的執行緒中新增記錄。 如果您的目標是使用此執行緒產生的要求，使容器的佈建輸送量完全飽和，記錄最佳化即可大幅提升效能。
 
-    * 設定非同步記錄器
+    * ***設定非同步記錄器**_
 
         同步記錄器的延遲一定會影響到產生要求的執行緒的整體延遲計算。 建議使用非同步記錄器 (例如 [log4j2](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flogging.apache.org%2Flog4j%2Flog4j-2.3%2Fmanual%2Fasync.html&data=02%7C01%7CCosmosDBPerformanceInternal%40service.microsoft.com%7C36fd15dea8384bfe9b6b08d7c0cf2113%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637189868158267433&sdata=%2B9xfJ%2BWE%2F0CyKRPu9AmXkUrT3d3uNA9GdmwvalV3EOg%3D&reserved=0))，從高效能應用程式執行緒將將記錄作業的額外負荷分離出去。
 
-    * 停用 netty 的記錄
+    _ ***停用 netty 的記錄**_
 
-        Netty 程式庫記錄通訊頻繁，而且必須加以關閉 (隱藏組態中的登入可能不夠) 以避免額外的 CPU 成本。 如果您不是在偵錯模式中，請停用 netty 全部的記錄。 因此，如果您要使用 log4j 來移除 netty 中的 ``org.apache.log4j.Category.callAppenders()`` 所產生的額外 CPU 成本，請將下列行新增至程式碼基底：
+        Netty library logging is chatty and needs to be turned off (suppressing sign in the configuration may not be enough) to avoid additional CPU costs. If you are not in debugging mode, disable netty's logging altogether. So if you are using log4j to remove the additional CPU costs incurred by ``org.apache.log4j.Category.callAppenders()`` from netty add the following line to your codebase:
 
         ```java
         org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
         ```
 
- * **OS 開啟檔案資源限制**
+ _ **OS 開啟檔案資源限制**
  
     某些 Linux 系統 (例如 Red Hat) 有開啟檔案數目的上限，因此有連線總數的上限。 執行下列命令來檢視目前的限制：
 
