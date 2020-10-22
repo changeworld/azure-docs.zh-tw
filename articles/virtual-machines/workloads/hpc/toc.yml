@@ -18,10 +18,16 @@
       items:
         - name: HB 系列
           items:
-            - name: 總覽
+            - name: 概觀
               href: hb-series-overview.md
             - name: 效能
               href: hb-series-performance.md
+        - name: HBv2 系列
+          items:
+            - name: 概觀
+              href: hbv2-series-overview.md
+            - name: 效能
+              href: hbv2-performance.md
         - name: HC 系列
           items:
             - name: 概觀

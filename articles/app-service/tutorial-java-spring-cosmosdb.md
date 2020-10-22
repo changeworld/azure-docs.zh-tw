@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 0531ff7765fbcfb304d58e5b444eafdb3ad4fb1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9320abb46c45b4bd151839eda40b03b445a2675f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91404794"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152019"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>教學課程：使用 Linux 上的 Azure App Service 和 Azure Cosmos DB 建置 Java Spring Boot Web 應用程式
 
@@ -35,7 +35,7 @@ ms.locfileid: "91404794"
 
 * 在您自己的電腦上安裝 [Azure CLI](/cli/azure/overview)。 
 * [Git](https://git-scm.com/)
-* [Java JDK](https://aka.ms/azure-jdks)
+* [Java JDK](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 * [Maven](https://maven.apache.org)
 
 ## <a name="clone-the-sample-todo-app-and-prepare-the-repo"></a>複製 TODO 應用程式範例，並準備存放庫
@@ -299,8 +299,8 @@ az appservice plan update --number-of-workers 2 \
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果您不需要這些資源來進行其他教學課程 (請參閱[後續步驟](#next))，您可以在 Cloud Shell 中執行下列命令來將這些資源刪除︰ 
-  
+如果您不需要這些資源來進行其他教學課程 (請參閱[後續步驟](#next))，您可以在 Cloud Shell 中執行下列命令來將這些資源刪除︰ 
+  
 ```bash
 az group delete --name <your-azure-group-name>
 ```

@@ -4,12 +4,12 @@ description: 在本教學課程中，您將部署 Service Fabric 受控叢集以
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: c7ed1a8fceeddecb942edb541c6112492a6e5a2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0265a1393c697cbd767de13df1064a5eea957380
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91410195"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316177"
 ---
 # <a name="tutorial-deploy-a-service-fabric-managed-cluster-preview"></a>教學課程：部署 Service Fabric 受控叢集 (預覽)
 
@@ -37,7 +37,7 @@ ms.locfileid: "91410195"
 
 * 安裝 [Service Fabric SDK 和 PowerShell 模組](service-fabric-get-started.md)。
 
-* 安裝 [Azure PowerShell 4.7.0](https://docs.microsoft.com/powershell/azure/release-notes-azureps?view=azps-4.7.0&preserve-view=true#azservicefabric) (或更新版本)。
+* 安裝 [Azure PowerShell 4.7.0](/powershell/azure/release-notes-azureps?preserve-view=true&view=azps-4.7.0#azservicefabric) (或更新版本)。
 
 ## <a name="connect-to-your-azure-account"></a>連線至您的 Azure 帳戶
 
@@ -73,7 +73,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 * **叢集名稱**：輸入您叢集的唯一名稱，例如 mysfcluster。
 * **管理員密碼**：輸入系統管理員的密碼，以用於叢集中基礎 VM 上的 RDP。
-* **用戶端憑證指紋**：提供您想要用來存取叢集的用戶端憑證指紋。 如果您沒有憑證，請遵循[設定並擷取憑證](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal)來建立自我簽署憑證。
+* **用戶端憑證指紋**：提供您想要用來存取叢集的用戶端憑證指紋。 如果您沒有憑證，請遵循[設定並擷取憑證](../key-vault/certificates/quick-create-portal.md)來建立自我簽署憑證。
 * **叢集 SKU**：指定要部署 [Service Fabric 受控叢集的類型](overview-managed-cluster.md#service-fabric-managed-cluster-skus)。 「基本」SKU 叢集僅適用於測試部署，不允許新增或移除節點類型。
 
 ```powershell

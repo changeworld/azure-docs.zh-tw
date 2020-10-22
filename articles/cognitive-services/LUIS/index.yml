@@ -12,12 +12,12 @@ metadata:
   title: Language Understanding (LUIS) 文件
   titleSuffix: Azure Cognitive Services
   description: Language Understanding (LUIS) 服務可讓應用程式了解人在文字中所表達的意思。 LUIS 使用機器學習，讓開發人員建置應用程式，來可接收使用者的自然語言輸入，並從其中擷取意義。
-  ms.openlocfilehash: 6e34c5e39118565e14a40765443583b0b9ed237b
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 3bae2e6e0a79dbc0106dc71a9510aa4dc318650c
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "89322478"
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92364179"
 landingContent:
 - title: 關於 Language Understanding (LUIS)
   linkLists:
@@ -137,9 +137,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
+    - text: 支援和協助選項
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/luis/context/context
     - text: 疑難排解
       url: troubleshooting.md
-    - text: 提出 Stack Overflow 相關問題
-      url: https://stackoverflow.com/questions/tagged/LUIS
-    - text: 使用 UserVoice 影響服務
-      url: https://cognitive.uservoice.com/forums/551524-luis

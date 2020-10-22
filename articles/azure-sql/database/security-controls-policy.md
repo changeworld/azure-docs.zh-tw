@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure SQL Database 的 Azure 原則法規合規性控制措施
 description: 列出適用於 Azure SQL Database 和 SQL 受控執行個體的 Azure 原則法規合規性控制措施。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.service: sql-database
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 6e3fce0e4075c6a0d3d63ee990a54102f135aace
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 242883c453343a03726f33103c013cd16b695569
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91818651"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315574"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-sql-database--sql-managed-instance"></a>適用於 Azure SQL Database 與 SQL 受控執行個體的 Azure 原則法規合規性控制措施
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

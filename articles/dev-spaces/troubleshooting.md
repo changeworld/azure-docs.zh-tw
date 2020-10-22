@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解在啟用和使用 Azure Dev Spaces 時，如何針對常見問題進行疑難排解並加以解決
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
-ms.openlocfilehash: 5d8bf69d456bca2a88b8aa2031d5ef0ba20f7c30
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 42551443fb5af1bd3f783c33f708b231eea68907
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979114"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364162"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 疑難排解
 
@@ -278,7 +278,7 @@ Service cannot be started.
 
 在您的叢集上執行的服務 Azure Dev Spaces 會使用叢集的受控識別，與叢集外的 Azure Dev Spaces 後端服務溝通。 安裝 Pod 受控身分識別時，會在叢集的節點上設定網路規則，以便將受控識別認證的所有呼叫重新導向至叢集上安裝的 [Node 受控識別 (NMI) DaemonSet](https://github.com/Azure/aad-pod-identity#node-managed-identity)。 此 NMI DaemonSet 會識別呼叫的 Pod，並確保 Pod 已妥善標示為可存取要求的受控識別。 Azure Dev Spaces 無法偵測叢集是否已安裝 Pod 受控識別，且無法執行必要的設定，以允許 Azure Dev Spaces 服務存取叢集的受控識別。 由於 Azure Dev Spaces 服務尚未設定為存取叢集的受控識別，因此 NMI DaemonSet 將不會允許它們取得受控識別的 Azure AD 權杖，而且無法與 Azure Dev Spaces 後端服務進行通訊。
 
-若要修正此問題，請套用 *azds-injector-webhook* 的 [AzurePodIdentityException](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md)，並透過 Azure Dev Spaces 所檢測的更新 Pod 來存取受控識別。
+若要修正此問題，請套用 *azds-injector-webhook* 的 [AzurePodIdentityException](https://azure.github.io/aad-pod-identity/docs/configure/application_exception)，並透過 Azure Dev Spaces 所檢測的更新 Pod 來存取受控識別。
 
 建立名為 *webhookException.yaml* 的檔案，並複製下列 YAML 定義：
 

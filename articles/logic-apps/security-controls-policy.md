@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure Logic Apps 的 Azure 原則法規合規性控制項
 description: 列出適用於 Azure Logic Apps 的 Azure 原則法規合規性控制項。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: sample
 author: ecfan
 ms.author: estfan
 ms.service: logic-apps
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 76c4463e68526a883413f65f7fa0936fba83eb85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a143d10a93f534397cecc29edd17a918a4f14d48
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91817748"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315872"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-logic-apps"></a>適用於 Azure Logic Apps 的 Azure 原則法規合規性控制項
 
