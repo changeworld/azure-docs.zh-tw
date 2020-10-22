@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: c3fd06e2ac399fa18b588b1db5e154eaf013753b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2baccec75c7b525c0837cebd9d828dff3a79543
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979492"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150175"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure App Service 中建置 Ruby 和 Postgres 應用程式
 
@@ -108,7 +108,7 @@ rails server
 
 ## <a name="create-postgres-in-azure"></a>在 Azure 中建立 Postgres
 
-在此步驟中，您會在[適用於 PostgreSQL 的 Azure 資料庫](/azure/postgresql/)中建立 Postgres 資料庫。 稍後，您會將 Ruby on Rails 應用程式設定為連線至此資料庫。
+在此步驟中，您會在[適用於 PostgreSQL 的 Azure 資料庫](../postgresql/index.yml)中建立 Postgres 資料庫。 稍後，您會將 Ruby on Rails 應用程式設定為連線至此資料庫。
 
 ### <a name="create-a-resource-group"></a>建立資源群組
 
@@ -117,7 +117,7 @@ rails server
 ## <a name="create-postgres-database-in-azure"></a>在 Azure 中建立 Postgres 資料庫
 
 <!-- > [!NOTE]
-> Before you create an Azure Database for PostgreSQL server, check which [compute generation](/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores) is available in your region. If your region doesn't support Gen4 hardware, change *--sku-name* in the following command line to a value that's supported in your region, such as B_Gen4_1.  -->
+> Before you create an Azure Database for PostgreSQL server, check which [compute generation](../postgresql/concepts-pricing-tiers.md#compute-generations-and-vcores) is available in your region. If your region doesn't support Gen4 hardware, change *--sku-name* in the following command line to a value that's supported in your region, such as B_Gen4_1.  -->
 
 在本節中，您會建立「適用於 PostgreSQL 的 Azure 資料庫」伺服器和資料庫。 若要啟動，請執行下列命令安裝 `db-up` 延伸模組：
 

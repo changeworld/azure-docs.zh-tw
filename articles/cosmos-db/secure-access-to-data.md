@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 30444523bfc26fc0f4eb410957bcc9ee46aff725
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 574592d4434b9d8c49086b82bab0b8775fb67e03
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760864"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371727"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>安全存取 Azure Cosmos DB 中的資料
 
@@ -29,20 +29,7 @@ Azure Cosmos DB 會使用兩種類型的金鑰來驗證使用者，以允許存�
 
 ## <a name="primary-keys"></a>主索引鍵
 
-主鍵提供資料庫帳戶所有系統管理資源的存取權。 主鍵：
-
-- 允許存取帳戶、資料庫、使用者和權限。 
-- 無法用來提供容器和文件的更細微的存取權。
-- 在帳戶建立期間建立。
-- 可隨時重新產生。
-
-每個帳戶都是由兩個主要金鑰組成：主鍵和次要金鑰。 雙重金鑰的目的是讓您可以重新產生或輸替金鑰，以持續存取您的帳戶和資料。
-
-除了 Cosmos DB 帳戶的兩個主要金鑰，還有兩個唯讀金鑰。 這些唯讀金鑰只允許帳戶上的讀取作業。 唯讀金鑰不提供存取權來讀取權限資源。
-
-您可以使用 Azure 入口網站來抓取和重新產生主要、次要、唯讀和讀寫的主要金鑰。 相關指示請參閱[檢視、複製和重新產生存取金鑰](manage-with-cli.md#regenerate-account-key)。
-
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Azure 入口網站中的存取控制 (IAM) - 示範 NoSQL 資料庫安全性":::
+主鍵提供資料庫帳戶所有系統管理資源的存取權。 每個帳戶都是由兩個主要金鑰組成：主鍵和次要金鑰。 雙重金鑰的目的是讓您可以重新產生或輸替金鑰，以持續存取您的帳戶和資料。 若要深入瞭解主要金鑰，請參閱 [資料庫安全性](database-security.md#primary-keys) 文章。
 
 ### <a name="key-rotation"></a>金鑰輪替<a id="key-rotation"></a>
 
@@ -51,10 +38,10 @@ Azure Cosmos DB 會使用兩種類型的金鑰來驗證使用者，以允許存�
 1. 流覽至 Azure 入口網站，以取得您的次要金鑰。
 2. 將您的主要金鑰取代為應用程式中的次要金鑰。 確定所有部署中的所有 Cosmos DB 用戶端都會立即重新開機，並且會開始使用更新的金鑰。
 3. 輪替 Azure 入口網站中的主要金鑰。
-4. 驗證新的主要金鑰適用于所有資源。 視 Cosmos DB 帳戶的大小而定，金鑰輪替程式可能會從小於一分鐘到數小時的時間進行。
+4. 驗證新的主要金鑰適用于所有資源。 視 Cosmos DB 帳戶的大小而定，金鑰輪替程式可能需要不到一分鐘到數小時的時間。
 5. 將次要金鑰取代為新的主要金鑰。
 
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Azure 入口網站中的存取控制 (IAM) - 示範 NoSQL 資料庫安全性" border="false":::
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Azure 入口網站中的主要金鑰輪替-示範 NoSQL 資料庫安全性" border="false":::
 
 ### <a name="code-sample-to-use-a-primary-key"></a>使用主要金鑰的程式碼範例
 
@@ -102,9 +89,9 @@ Cosmos DB 資源權杖提供一個安全的替代方案，可讓用戶端根據�
 7. 電話應用程式可以繼續使用資源權杖，利用資源權杖所定義的權限並在資源權杖所允許的間隔內，直接存取 Cosmos DB 資源。
 8. 資源權杖過期時，後續要求會收到 401 未經授權的例外狀況。  此時，電話應用程式會重新建立身分識別，並要求新的資源權杖。
 
-    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Azure 入口網站中的存取控制 (IAM) - 示範 NoSQL 資料庫安全性" border="false":::
+    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Azure 入口網站中的主要金鑰輪替-示範 NoSQL 資料庫安全性" border="false":::
 
-資源權杖的產生和管理由原生 Cosmos DB 用戶端程式庫處理。不過，如果您使用 REST，您必須建構要求/驗證標頭。 如需有關建立 REST 驗證標頭的詳細資訊，請參閱 [Cosmos DB 資源的存取控制](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) 或 [.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/Authorization/AuthorizationHelper.cs) 或 [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)的原始程式碼。
+資源權杖的產生和管理由原生 Cosmos DB 用戶端程式庫處理;但是，如果您使用 REST，您必須建立要求/驗證標頭。 如需有關建立 REST 驗證標頭的詳細資訊，請參閱 [Cosmos DB 資源的存取控制](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) 或 [.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/Authorization/AuthorizationHelper.cs) 或 [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)的原始程式碼。
 
 如需用來產生或代理資源權杖的中間層服務的範例，請參閱 [ResourceTokenBroker 應用程式](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers)。
 
@@ -168,7 +155,7 @@ CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrR
 4. 在 [ **指派存取權**] 方塊中，選取 [ **Azure AD 使用者、群組或應用程式**]。
 5. 選取目錄中您要為其授與存取權的使用者、群組或應用程式。  您可以依顯示名稱、電子郵件地址或物件識別碼來搜尋目錄。
     選取的使用者、群組或應用程式會出現在選取的成員清單中。
-6. 按一下 **[儲存]** 。
+6. 按一下 [檔案]  。
 
 實體現在已可讀取 Azure Cosmos DB 資源。
 

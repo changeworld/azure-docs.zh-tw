@@ -5,6 +5,8 @@
   items:
     - name: 什麼是應用程式佈建？
       href: user-provisioning.md
+    - name: Docs 有哪些新功能？
+      href: whats-new-docs.md
 - name: 教學課程
   expanded: true
   items:

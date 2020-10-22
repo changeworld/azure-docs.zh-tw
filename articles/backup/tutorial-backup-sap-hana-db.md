@@ -3,12 +3,12 @@ title: 教學課程 - 將 SAP HANA 資料庫備份至 Azure VM
 description: 在本教學課程中，您將了解如何將執行於 Azure VM 上的 SAP HANA 資料庫備份至 Azure 備份復原服務保存庫。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 0e0f6ff89f59b862ea15148124f44abc3ed196bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8de567b9f895ea0b3fa4a0f85a8bbad8bf82588f
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254342"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173777"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>教學課程：將 SAP HANA 資料庫備份至 Azure VM
 
@@ -65,7 +65,7 @@ ms.locfileid: "91254342"
 
 ### <a name="nsg-tags"></a>NSG 標籤
 
-如果您使用網路安全性群組 (NSG)，請使用 AzureBackup 服務標籤，以允許對 Azure 備份進行輸出存取。 除了 Azure 備份標籤之外，您還需要為 Azure AD (*AzureActiveDirectory*) 和 Azure 儲存體 (儲存體) 建立類似的 [NSG 規則](../virtual-network/security-overview.md#service-tags)，以允許用於驗證和資料傳輸的連線。 下列步驟說明建立 Azure 備份標籤規則的程序：
+如果您使用網路安全性群組 (NSG)，請使用 AzureBackup 服務標籤，以允許對 Azure 備份進行輸出存取。 除了 Azure 備份標籤之外，您還需要為 Azure AD (*AzureActiveDirectory*) 和 Azure 儲存體 (儲存體) 建立類似的 [NSG 規則](../virtual-network/network-security-groups-overview.md#service-tags)，以允許用於驗證和資料傳輸的連線。 下列步驟說明建立 Azure 備份標籤規則的程序：
 
 1. 在 [所有服務] 中，移至 [網路安全性群組]，然後選取網路安全性群組。
 
@@ -75,7 +75,7 @@ ms.locfileid: "91254342"
 
 1. 選取 [新增] 以儲存新建立的輸出安全性規則。
 
-同樣地，您也可以建立 Azure 儲存體和 Azure AD 的 [NSG 輸出安全性規則](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview#service-tags)。 如需服務標記的詳細資訊，請參閱這篇[文章](../virtual-network/service-tags-overview.md)。
+同樣地，您也可以建立 Azure 儲存體和 Azure AD 的 [NSG 輸出安全性規則](../virtual-network/network-security-groups-overview.md#service-tags)。 如需服務標記的詳細資訊，請參閱這篇[文章](../virtual-network/service-tags-overview.md)。
 
 ### <a name="azure-firewall-tags"></a>Azure 防火牆標籤
 

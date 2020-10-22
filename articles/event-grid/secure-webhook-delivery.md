@@ -3,12 +3,12 @@ title: 在 Azure 事件方格中使用 Azure AD 的安全 WebHook 傳遞
 description: 說明如何使用 Azure 事件方格將事件傳遞至受 Azure Active Directory 保護的 HTTPS 端點
 ms.topic: how-to
 ms.date: 10/05/2020
-ms.openlocfilehash: 0320e78e6b436f6ba1c0a6ca1bfec81eb974e106
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd898fadf718509504d44df36572ac75050b02d6
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812194"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371659"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>將事件發佈至 Azure Active Directory 受保護的端點 (機器翻譯)
 
@@ -26,7 +26,7 @@ ms.locfileid: "91812194"
 本節說明如何啟用事件方格以使用您的 Azure AD 應用程式。 
 
 > [!NOTE]
-> 您必須是 [Azure AD 應用程式系統管理員角色](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles)的成員，才能執行此指令碼。
+> 您必須是 [Azure AD 應用程式系統管理員角色](../active-directory/roles/permissions-reference.md#available-roles)的成員，才能執行此指令碼。
 
 ### <a name="connect-to-your-azure-tenant"></a>連接到您的 Azure 租使用者
 首先，使用命令連接到您的 Azure 租使用者 `Connect-AzureAD` 。 
