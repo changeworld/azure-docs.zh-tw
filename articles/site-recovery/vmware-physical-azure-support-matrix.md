@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的 VMware/實體嚴重損壞修復的支援矩陣
 description: 摘要說明使用 Azure Site Recovery 將 VMware Vm 和實體伺服器的災難復原至 Azure 的支援。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 8983923a6ccc3b5462c3e9f00337763b225ed9ac
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 5b511eeb99b70fd64a5366b7b54900166f06b4d7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330303"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369313"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>從 VMware VM 和實體伺服器至 Azure 之災害復原的支援矩陣
 
@@ -65,7 +65,7 @@ Site Recovery 支援複寫任何執行於所支援機器上的工作負載。
 **元件** | **詳細資料**
 --- | ---
 機器設定 | 複寫到 Azure 的電腦必須符合 [Azure 需求](#azure-vm-requirements)。
-機器工作負載 | Site Recovery 支援複寫任何執行於所支援機器上的工作負載。 [深入了解](https://aka.ms/asr_workload)。
+機器工作負載 | Site Recovery 支援複寫任何執行於所支援機器上的工作負載。 [深入了解](./site-recovery-workload.md)。
 電腦名稱 | 確定電腦的顯示名稱不屬於 [Azure 保留的資源名稱](../azure-resource-manager/templates/error-reserved-resource-name.md)<br/><br/> 邏輯磁片區名稱不區分大小寫。 請確定裝置上的兩個磁片區都沒有相同的名稱。 例如：名稱為 "voLUME1"、"voLUME1" 的磁片區無法透過 Azure Site Recovery 保護。
 
 ### <a name="for-windows"></a>若為 Windows
@@ -235,7 +235,7 @@ Docker 磁碟設定 | 否
 客體/伺服器多重路徑 (MPIO) | 否
 來賓/伺服器 GPT 磁碟分割 | [更新彙總套件 37](https://support.microsoft.com/help/4508614/)支援五個磁碟分割 (行動服務) 的版本9.25。 先前支援四個。
 ReFS | 行動服務9.23 版或更高版本支援復原檔案系統
-來賓/伺服器 EFI/UEFI 開機 | -支援所有具有 Site Recovery 行動代理程式9.30 版的 [Azure MARKETPLACE UEFI 作業系統](../virtual-machines/windows/generation-2.md#generation-2-vm-images-in-azure-marketplace) 。 <br/> -不支援安全 UEFI 開機類型。 [深入了解。](../virtual-machines/windows/generation-2.md#on-premises-vs-azure-generation-2-vms)
+來賓/伺服器 EFI/UEFI 開機 | -支援所有具有 Site Recovery 行動代理程式9.30 版的 [Azure MARKETPLACE UEFI 作業系統](../virtual-machines/generation-2.md#generation-2-vm-images-in-azure-marketplace) 。 <br/> -不支援安全 UEFI 開機類型。 [深入了解。](../virtual-machines/generation-2.md#on-premises-vs-azure-generation-2-vms)
 
 ## <a name="replication-channels"></a>複寫通道
 

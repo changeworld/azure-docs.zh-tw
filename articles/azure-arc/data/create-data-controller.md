@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 00d8e0d3ba57034bd65dfb7663341e4fcdf586dc
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: a78c67892e2bccb7c98d680539a84c2cc1f49a95
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310927"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372288"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>建立 Azure Arc 資料控制器
 
@@ -39,7 +39,7 @@ ms.locfileid: "92310927"
 > * 最小支援的 Kubernetes 版本為 v 1.14。
 > * 若要瞭解您的環境與 Azure 之間的連線能力，請參閱連線 [需求](connectivity.md) 。
 > * 如要瞭解如何設定持續性儲存體的詳細資料，請參閱 [存放裝置設定指引](storage-configuration.md) 。
-> * 如果您使用 Azure Kubernetes Service，您叢集的背景工作節點 VM 大小至少應為 **Standard_D8s_v3** 並使用 **premium 磁片。** 
+> * 如果您使用 Azure Kubernetes Service，您叢集的背景工作節點 VM 大小至少應為 **Standard_D8s_v3** 並使用 **premium 磁片。** 叢集不應該跨多個可用性區域。 
 > * 如果您使用另一個 Kubernetes 散發或服務，您應該確定您的節點大小下限為 8 GB RAM 和4個核心，以及所有 Kubernetes 節點上可用 32 GB RAM 的總容量總計。 例如，您可以在 32 GB RAM 和4個核心上有1個節點，也可能有2個節點具有 16 GB RAM 和4個核心。
 
 > [!NOTE]

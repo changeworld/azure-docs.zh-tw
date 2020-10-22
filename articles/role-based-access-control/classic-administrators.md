@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 76b41e25a95f23b66edfbd4715037074537221f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc8a23d8cdb923f86d581d1af2967112d226c847
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87076448"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370622"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure 傳統訂用帳戶管理員
 
@@ -62,7 +62,7 @@ Microsoft 建議您使用 Azure RBAC)  (azure 角色型存取控制來管理對 
 
 ### <a name="differences-for-guest-users"></a>來賓使用者的差異
 
-已獲指派 Co-Administrator 角色的來賓使用者可能會看到與具有 Co-Administrator 角色的成員使用者相比有些差異。 請考慮下列案例：
+已獲指派 Co-Administrator 角色的來賓使用者可能會看到與具有 Co-Administrator 角色的成員使用者相比有些差異。 考慮下列案例：
 
 - Azure AD 帳戶 (公司或學校帳戶的使用者 A) 是 Azure 訂用帳戶的服務管理員。
 - 使用者 B 具有 Microsoft 帳戶。
@@ -71,9 +71,9 @@ Microsoft 建議您使用 Azure RBAC)  (azure 角色型存取控制來管理對 
 
 您會預期使用者可以管理所有項目。 此差異的原因在於 Microsoft 帳戶是以來賓使用者而不是成員使用者身分新增至訂用帳戶。 在 Azure AD 中，來賓使用者與成員使用者具有不同的預設權限。 例如，成員使用者能夠在 Azure AD 中讀取其他使用者，來賓使用者不能。 成員使用者能夠在 Azure AD 中註冊新的服務主體，來賓使用者不能。
 
-如果來賓使用者需要能夠執行這些工作，可能的解決方案是指派來賓使用者所需的特定 Azure AD 角色。 例如，在先前的案例中，您可以指派[目錄讀者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)角色以讀取其他使用者，以及指派[應用程式開發人員](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer)角色，以便能夠建立服務主體。 如需有關成員使用者和來賓使用者及其權限的詳細資訊，請參閱 [Azure Active Directory 中的預設使用者權限是什麼？](../active-directory/fundamentals/users-default-permissions.md) 如需授與來賓使用者存取權的詳細資訊，請參閱 [使用 Azure 入口網站新增或移除外部來賓使用者的 Azure 角色指派](role-assignments-external-users.md)。
+如果來賓使用者需要能夠執行這些工作，可能的解決方案是指派來賓使用者所需的特定 Azure AD 角色。 例如，在先前的案例中，您可以指派[目錄讀者](../active-directory/roles/permissions-reference.md#directory-readers)角色以讀取其他使用者，以及指派[應用程式開發人員](../active-directory/roles/permissions-reference.md#application-developer)角色，以便能夠建立服務主體。 如需有關成員使用者和來賓使用者及其權限的詳細資訊，請參閱 [Azure Active Directory 中的預設使用者權限是什麼？](../active-directory/fundamentals/users-default-permissions.md) 如需授與來賓使用者存取權的詳細資訊，請參閱 [使用 Azure 入口網站新增或移除外部來賓使用者的 Azure 角色指派](role-assignments-external-users.md)。
 
-請注意， [Azure 內建角色](../role-based-access-control/built-in-roles.md) 與 [Azure AD 角色](../active-directory/users-groups-roles/directory-assign-admin-roles.md)不同。 內建的角色不會授與任何 Azure AD 存取權。 如需詳細資訊，請參閱[了解各種不同角色](../role-based-access-control/rbac-and-directory-admin-roles.md)。
+請注意， [Azure 內建角色](../role-based-access-control/built-in-roles.md) 與 [Azure AD 角色](../active-directory/roles/permissions-reference.md)不同。 內建的角色不會授與任何 Azure AD 存取權。 如需詳細資訊，請參閱[了解各種不同角色](../role-based-access-control/rbac-and-directory-admin-roles.md)。
 
 如需比較成員使用者和來賓使用者的相關資訊，請參閱 [Azure Active Directory 中的預設使用者許可權為何？](../active-directory/fundamentals/users-default-permissions.md)。
 
@@ -148,7 +148,7 @@ Microsoft 建議您使用 Azure RBAC)  (azure 角色型存取控制來管理對 
 
     ![顯示帳戶系統管理員的螢幕擷取畫面](./media/classic-administrators/account-admin.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [了解不同的角色](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [使用 Azure 入口網站新增或移除 Azure 角色指派](../role-based-access-control/role-assignments-portal.md)

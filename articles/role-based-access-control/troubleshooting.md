@@ -15,12 +15,12 @@ ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 415af4d71365a88a5998f6a9356d5240bc5e2518
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 069c290de0278202b2e20d67f0ce792a0a79c345
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665985"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368225"
 ---
 # <a name="troubleshoot-azure-rbac"></a>針對 Azure RBAC 進行疑難排解
 
@@ -61,7 +61,7 @@ $ras.Count
 
     如果您收到「許可權不足，無法完成作業」錯誤，可能是因為 Azure CLI 嘗試查閱 Azure AD 中的「受託者」身分識別，而服務主體預設無法讀取 Azure AD。
 
-    有兩種方式可以解決此錯誤。 第一種方式是將 [目錄讀取](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) 者角色指派給服務主體，讓它可以讀取目錄中的資料。
+    有兩種方式可以解決此錯誤。 第一種方式是將 [目錄讀取](../active-directory/roles/permissions-reference.md#directory-readers) 者角色指派給服務主體，讓它可以讀取目錄中的資料。
 
     解決這個錯誤的第二個方法是使用參數而非來建立角色指派 `--assignee-object-id` `--assignee` 。 藉由使用 `--assignee-object-id` ，Azure CLI 將會略過 Azure AD 查閱。 您將需要取得您想要指派角色之使用者、群組或應用程式的物件識別碼。 如需詳細資訊，請參閱 [使用 Azure CLI 新增或移除 Azure 角色指派](role-assignments-cli.md#add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope)。
 

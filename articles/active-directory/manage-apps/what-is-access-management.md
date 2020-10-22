@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
-ms.openlocfilehash: d9dd03ec349daf2312b7d803e16e3c5fb41ecf0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c73a5ccd9e16fb5efd9fefca6253701f942c3202
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604099"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367783"
 ---
 # <a name="managing-access-to-apps"></a>管理應用程式的存取
 
@@ -94,4 +94,4 @@ Microsoft 應用程式 (例如 Exchange、SharePoint、Yammer 等 ) 的指派和
 
 ## <a name="next-steps"></a>後續步驟
 * [使用條件式存取來保護應用程式](../conditional-access/concept-conditional-access-cloud-apps.md)
-* [自助式群組管理/SSAA](../users-groups-roles/groups-self-service-management.md)
+* [自助式群組管理/SSAA](../enterprise-users/groups-self-service-management.md)

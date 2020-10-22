@@ -16,16 +16,16 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 398db465a6cc383f8869c549761afc0947e7ed03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c0d98641f8e2040de8350b7dd0231c2e7c889c9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87421156"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371608"
 ---
 # <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>在 Privileged Identity Management (PIM) 中啟用 Azure AD 自訂角色
 
-Azure Active Directory (Azure AD) 中的 Privileged Identity Management 現在支援對為了在「身分識別與存取管理」管理體驗中管理應用程式而建立的自訂角色進行 Just-In-Time 和有時限的指派。 如需關於在 Azure AD 中建立自訂角色以委派應用程式管理的詳細資訊，請參閱 [Azure Active Directory 中的自訂系統管理員角色 (預覽)](../users-groups-roles/roles-custom-overview.md)。
+Azure Active Directory (Azure AD) 中的 Privileged Identity Management 現在支援對為了在「身分識別與存取管理」管理體驗中管理應用程式而建立的自訂角色進行 Just-In-Time 和有時限的指派。 如需關於在 Azure AD 中建立自訂角色以委派應用程式管理的詳細資訊，請參閱 [Azure Active Directory 中的自訂系統管理員角色 (預覽)](../roles/custom-overview.md)。
 
 > [!NOTE]
 > 在預覽期間，Azure AD 自訂角色不會與內建目錄角色整合。 在功能正式推出後，角色管理就會在內建角色體驗中進行。 如果您看到下列橫幅，這些角色應該 [在內建角色體驗中](pim-how-to-activate-role.md) 進行管理，而本文並不適用：
@@ -56,15 +56,15 @@ Azure Active Directory (Azure AD) 中的 Privileged Identity Management 現在�
 
 1. 如有需要，請指定自訂的啟用開始時間。 使用時，角色成員會在指定的時間啟用。
 1. 在 [原因]**** 方塊中輸入此啟用要求的原因。 這在角色設定中可以是必要或非必要的項目。
-1. 選取 [啟用]。
+1. 選取 [啟用]  。
 
 如果角色不需要核准，則會根據您的設定加以啟用，並新增至作用中角色的清單。 如果您想要使用已啟用的角色，請從[在 Privileged Identity Management 中指派 Azure AD 自訂角色](azure-ad-custom-roles-assign.md)中的步驟開始操作。
 
 如果角色需要核准才能啟用，您將會收到 Azure 通知，告知您要求正在等待核准。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [指派 Azure AD 自訂角色](azure-ad-custom-roles-assign.md)
 - [移除或更新 Azure AD 自訂角色指派](azure-ad-custom-roles-update-remove.md)
 - [設定 Azure AD 自訂角色指派](azure-ad-custom-roles-configure.md)
-- [Azure AD 中的角色定義](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure AD 中的角色定義](../roles/permissions-reference.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 2312befa5fe534cc2042b7586755ac5322d036db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66bce573be5a31641bdff809b8e9a79b617a703a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601296"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370996"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory 身分識別與存取管理作業參考指南
 
@@ -45,7 +45,7 @@ ms.locfileid: "90601296"
 
 #### <a name="assigning-owners-recommended-reading"></a>指派擁有者建議的讀取
 
-- [在 Azure Active Directory 中指派系統管理員角色](../users-groups-roles/directory-assign-admin-roles.md)
+- [在 Azure Active Directory 中指派系統管理員角色](../roles/permissions-reference.md)
 - [Azure 中的治理](../../governance/index.yml)
 
 ## <a name="on-premises-identity-synchronization"></a>內部部署身分識別同步處理
@@ -157,13 +157,13 @@ Azure Active Directory 透過 Microsoft 雲端服務以 [群組為基礎的授�
 - （選擇性）您可以定義屬性來保留使用者的封裝。
 
 > [!IMPORTANT]
-> Azure AD 中以群組為基礎的授權引進了授權錯誤狀態的使用者概念。 如果您發現任何授權錯誤，則應該立即 [找出並解決](../users-groups-roles/licensing-groups-resolve-problems.md) 任何授權指派的問題。
+> Azure AD 中以群組為基礎的授權引進了授權錯誤狀態的使用者概念。 如果您發現任何授權錯誤，則應該立即 [找出並解決](../enterprise-users/licensing-groups-resolve-problems.md) 任何授權指派的問題。
 
 ![自動產生電腦螢幕描述的螢幕擷取畫面](./media/active-directory-ops-guide/active-directory-ops-img2.png)
 
 #### <a name="lifecycle-management"></a>生命週期管理
 
-如果您目前使用依賴內部部署基礎結構的工具，例如 [Microsoft Identity Manager](/microsoft-identity-manager/) 或協力廠商系統，我們建議您從現有的工具卸載指派、執行群組型授權，並根據 [群組](../users-groups-roles/licensing-group-advanced.md#use-group-based-licensing-with-dynamic-groups)定義群組生命週期管理。 同樣地，如果您現有的程式未考慮離開組織的新員工或員工，您應該根據動態群組部署以群組為基礎的授權，並定義群組成員資格生命週期。 最後，如果以群組為基礎的授權是針對缺少生命週期管理的內部部署群組進行部署，請考慮使用雲端群組來啟用委派擁有權或以屬性為基礎的動態成員資格等功能。
+如果您目前使用依賴內部部署基礎結構的工具，例如 [Microsoft Identity Manager](/microsoft-identity-manager/) 或協力廠商系統，我們建議您從現有的工具卸載指派、執行群組型授權，並根據 [群組](../enterprise-users/licensing-group-advanced.md#use-group-based-licensing-with-dynamic-groups)定義群組生命週期管理。 同樣地，如果您現有的程式未考慮離開組織的新員工或員工，您應該根據動態群組部署以群組為基礎的授權，並定義群組成員資格生命週期。 最後，如果以群組為基礎的授權是針對缺少生命週期管理的內部部署群組進行部署，請考慮使用雲端群組來啟用委派擁有權或以屬性為基礎的動態成員資格等功能。
 
 ### <a name="assignment-of-apps-with-all-users-group"></a>指派具有「所有使用者」群組的應用程式
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 912b4966312d8925f70deeed99042d2701641f49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 587fe536e860f3039bfd3a2d2c1e3c76cb40e4d5
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801506"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278465"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>教學課程：建置 .NET 主控台應用程式來管理 Azure Cosmos DB SQL API 帳戶中的資料
 
@@ -117,7 +117,7 @@ ms.locfileid: "91801506"
     ```
 
    > [!NOTE]
-   > 如果您熟悉舊版 .NET SDK，則可能已熟悉「集合」和「文件」等詞彙。 Azure Cosmos DB 支援多個 API 模型，因此 3.0+ 版的 .NET SDK 會使用「容器」和「項目」這些泛用詞彙。 「容器」可以是集合、圖形或資料表。 「項目」可以是文件、邊緣/頂點或資料列，並且是容器內的內容。 如需詳細資訊，請參閱[使用 Azure Cosmos DB 中的資料庫、容器和項目](databases-containers-items.md)。
+   > 如果您熟悉舊版 .NET SDK，則可能已熟悉「集合」和「文件」等詞彙。 Azure Cosmos DB 支援多個 API 模型，因此 3.0+ 版的 .NET SDK 會使用「容器」和「項目」這些泛用詞彙。 「容器」可以是集合、圖形或資料表。 「項目」可以是文件、邊緣/頂點或資料列，並且是容器內的內容。 如需詳細資訊，請參閱[使用 Azure Cosmos DB 中的資料庫、容器和項目](account-databases-containers-items.md)。
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com)。 尋找 Azure Cosmos DB 帳戶，然後選取 [金鑰]。
 
@@ -260,7 +260,7 @@ ms.locfileid: "91801506"
 1. 選取 F5 鍵執行您的應用程式。
 
    > [!NOTE]
-   > 如果您收到「503 服務無法使用例外狀況」錯誤，可能是因為直接連線模式所需的[連接埠](performance-tips.md#networking)遭到防火牆封鎖。 若要修正此問題，請開啟所需的連接埠，或使用閘道模式連線，如下列程式碼所示：
+   > 如果您收到「503 服務無法使用例外狀況」錯誤，可能是因為直接連線模式所需的[連接埠](sql-sdk-connection-modes.md#service-port-ranges)遭到防火牆封鎖。 若要修正此問題，請開啟所需的連接埠，或使用閘道模式連線，如下列程式碼所示：
    ```csharp
      // Create a new instance of the Cosmos Client in Gateway mode
      this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions()

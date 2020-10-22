@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 68671a98c7703514af11de2f8c505110129fe713
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12bec5af95e7da595d5af09fe9020992b1cf839d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398641"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367987"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute 搭配 Azure Site Recovery
 
@@ -37,7 +37,7 @@ Site Recovery 會透過公用端點，將資料複寫到目標 Azure 區域上�
 
 如果您在內部部署使用 proxy，且想要使用 ExpressRoute 進行複寫流量，則必須在設定伺服器和進程伺服器上設定 Proxy 略過清單。 遵循下列步驟：
 
-- 從 [這裡](https://aka.ms/PsExec) 下載 PsExec 工具，以存取系統使用者內容。
+- 從 [這裡](/sysinternals/downloads/psexec) 下載 PsExec 工具，以存取系統使用者內容。
 - 在系統使用者內容中開啟 Internet Explorer，方法是執行下列命令列 psexec-s-i "%programfiles%\Internet Explorer\iexplore.exe"
 - 在 IE 中新增 proxy 設定
 - 在 [略過] 清單中，新增 Azure 儲存體 URL *. blob.core.windows.net

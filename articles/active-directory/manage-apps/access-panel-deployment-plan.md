@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: kenwith
-ms.openlocfilehash: 0bff283b8e9c0c753100c635ecd4451b467c206d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc36fccf84807621b8b3a186979ccfd000fe48f3
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89146618"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372475"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>規劃 Azure Active Directory 我的應用程式部署
 
@@ -225,7 +225,7 @@ Microsoft 會為 [電子郵件提供可自訂的範本，以及我的應用程�
 
 您可以讓使用者在 Azure AD 中建立及管理自己的安全性群組或 Microsoft 365 群組。 群組擁有者可以核准或拒絕成員資格要求，以及委派群組成員資格的控制權。 自助群組管理功能不適用於擁有郵件功能的安全性群組或通訊群組清單。
 
-若要規劃自助群組成員資格，請判斷您是否允許組織中的所有使用者建立和管理群組，或只允許一部分的使用者。 如果您允許一部分的使用者，您必須設定要新增這些人員的群組。 如需啟用這些案例的詳細資訊，請參閱 [Azure Active Directory 中的「設定自助群組管理](../users-groups-roles/groups-self-service-management.md) 」。
+若要規劃自助群組成員資格，請判斷您是否允許組織中的所有使用者建立和管理群組，或只允許一部分的使用者。 如果您允許一部分的使用者，您必須設定要新增這些人員的群組。 如需啟用這些案例的詳細資訊，請參閱 [Azure Active Directory 中的「設定自助群組管理](../enterprise-users/groups-self-service-management.md) 」。
 
 ## <a name="plan-reporting-and-auditing"></a>規劃報告和審核
 
@@ -299,7 +299,7 @@ Azure AD 會將大部分的審核資料保留30天。 您可以透過 Azure 系�
 
 ## <a name="manage-your-implementation"></a>管理您的實作為
 
-使用最低特殊許可權角色來完成 Azure Active Directory 內的必要工作。 請[參閱可用的不同角色](../users-groups-roles/directory-assign-admin-roles.md)，並選擇正確的角色，為此應用程式的每個角色解決您的需求。 某些角色可能需要暫時套用，並在部署完成後移除。
+使用最低特殊許可權角色來完成 Azure Active Directory 內的必要工作。 請[參閱可用的不同角色](../roles/permissions-reference.md)，並選擇正確的角色，為此應用程式的每個角色解決您的需求。 某些角色可能需要暫時套用，並在部署完成後移除。
 
 | 角色| 角色| Azure AD 角色  |
 | - | -| -|

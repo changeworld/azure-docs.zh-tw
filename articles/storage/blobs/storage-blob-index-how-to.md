@@ -1,64 +1,70 @@
 ---
-title: 利用 blob 索引標記來管理和尋找 Azure Blob 儲存體上的資料
+title: 使用 blob 索引標記來管理和尋找 Azure Blob 儲存體上的資料
 description: 請參閱如何使用 blob 索引標記來分類、管理和查詢 blob 物件的範例。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/24/2020
+ms.date: 10/19/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.reviewer: hux
+ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 175c9efd02665bf0212d7078a2ec2767ed1be6b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 159252cf850fd59f40d1b59e592153f50d7cb813
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850977"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371965"
 ---
-# <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>利用 blob 索引標記 (預覽) 來管理和尋找 Azure Blob 儲存體上的資料
+# <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>使用 blob 索引標記 (預覽) 來管理和尋找 Azure Blob 儲存體上的資料
 
-Blob 索引標記會使用索引鍵/值標記屬性，將儲存體帳戶中的資料分類。 這些標記會自動編製索引，並公開為可查詢的多維度索引，以便輕鬆地尋找資料。 本文說明如何使用 Blob 索引標記來設定、取得及尋找資料。
-
-若要深入瞭解 blob 索引功能，請參閱 [使用 blob 索引 (預覽) 來管理和尋找 Azure Blob 儲存體上的資料 ](storage-manage-find-blobs.md)。
+Blob 索引標記會使用索引鍵/值標記屬性，將儲存體帳戶中的資料分類。 這些標記會自動編制索引，並公開為可搜尋的多維度索引，方便您尋找資料。 本文說明如何使用 Blob 索引標記來設定、取得及尋找資料。
 
 > [!NOTE]
-> Blob 索引處於公開預覽狀態，可在 **加拿大中部**、 **加拿大東部**、 **法國中部** 和 **法國南部** 區域中使用。 若要深入瞭解這項功能以及已知問題和限制，請參閱 [使用 Blob 索引 (預覽) 來管理和尋找 Azure Blob 儲存體上的資料 ](storage-manage-find-blobs.md)。
+> Blob 索引處於公開預覽狀態，可在 **加拿大中部**、 **加拿大東部**、 **法國中部** 和 **法國南部** 區域中使用。 若要深入瞭解這項功能以及已知問題和限制，請參閱 [使用 Blob 索引標記管理和尋找 Azure blob 資料 (預覽) ](storage-manage-find-blobs.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
+
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
-- 註冊並核准存取 blob 索引預覽的訂用帳戶
+
+- 註冊並核准以存取 blob 索引預覽的 Azure 訂用帳戶
 - 存取 [Azure 入口網站](https://portal.azure.com/)
 
 # <a name="net"></a>[.NET](#tab/net)
-由於 blob 索引處於公開預覽狀態，因此會在預覽 NuGet 摘要中發行 .NET 儲存體套件。 此程式庫在現在和正式發行之間可能會有變更。 
+
+由於 blob 索引處於預覽狀態，因此會在預覽 NuGet 摘要中發行 .NET 儲存體套件。 此程式庫在預覽期間可能會變更。
 
 1. 設定您的 Visual Studio 專案，以開始使用適用于 .NET 的 Azure Blob 儲存體用戶端程式庫 v12。 若要深入瞭解，請參閱 [.Net 快速入門](storage-quickstart-blobs-dotnet.md)
 
-2. 在 NuGet 封裝管理員中，尋找 **Azure** 12.7.0 套件，並將版本 **-preview. 1** 或更新版本安裝至您的專案。 您也可以執行 ```Install-Package Azure.Storage.Blobs -Version 12.7.0-preview.1``` 命令
+2. 在 NuGet 封裝管理員中，尋找 **Azure** 12.7.0 套件，並將版本 **-preview. 1** 或更新版本安裝至您的專案。 您也可以執行 PowerShell 命令： `Install-Package Azure.Storage.Blobs -Version 12.7.0-preview.1`
 
    若要了解作法，請參閱[尋找並安裝套件](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)。
 
 3. 在程式碼檔案頂端新增以下 using 陳述式。
-```csharp
-using Azure;
-using Azure.Storage.Blobs;
-using Azure.Storage.Blobs.Models;
-using Azure.Storage.Blobs.Specialized;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-```
+
+    ```csharp
+    using Azure;
+    using Azure.Storage.Blobs;
+    using Azure.Storage.Blobs.Models;
+    using Azure.Storage.Blobs.Specialized;
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    ```
+
 ---
 
 ## <a name="upload-a-new-blob-with-index-tags"></a>使用索引標記上傳新的 Blob
+
+使用索引標籤上傳新的 blob 可由 [儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)者執行。 此外，具有 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [角色型存取控制](/azure/role-based-access-control/overview) 許可權的使用者可以執行這項操作。
+
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您的儲存體帳戶 
 
 2. 流覽至 [ **Blob 服務**] 底下的 [**容器**] 選項，選取您的容器
 
-3. 選取 [上傳] 按鈕以開啟 [上傳] 刀鋒視窗，然後瀏覽您的本機檔案系統，尋找要上傳做為區塊 blob 的檔案。
+3. 選取 [ **上傳** ] 按鈕，然後流覽您的本機檔案系統，以尋找要上傳為區塊 blob 的檔案。
 
 4. 展開 [進階] 下拉式清單，並移至 [Blob 索引標記] 區段
 
@@ -66,7 +72,7 @@ using System.Threading.Tasks;
 
 6. 選取 [上傳] 按鈕上傳 Blob
 
-![使用 Blob 索引標記上傳資料](media/storage-blob-index-concepts/blob-index-upload-data-with-tags.png)
+:::image type="content" source="media/storage-blob-index-concepts/blob-index-upload-data-with-tags.png" alt-text="Azure 入口網站的螢幕擷取畫面，顯示如何上傳具有索引標記的 blob。":::
 
 # <a name="net"></a>[.NET](#tab/net)
 
@@ -107,13 +113,18 @@ static async Task BlobIndexTagsOnCreate()
 ---
 
 ## <a name="get-set-and-update-blob-index-tags"></a>取得、設定和更新 Blob 索引標記
+
+[儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)者可以執行取得 blob 索引標記。 此外，具有 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` [角色型存取控制](/azure/role-based-access-control/overview) 許可權的使用者可以執行這項操作。
+
+[儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)者可以執行設定和更新 blob 索引標記。 此外，具有 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [角色型存取控制](/azure/role-based-access-control/overview) 許可權的使用者可以執行這項操作。
+
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您的儲存體帳戶 
 
 2. 瀏覽至 [Blob 服務] 底下的 [容器] 選項，然後選取您的容器
 
-3. 從所選容器內的 Blob 清單中選取您想要的 Blob
+3. 從選取之容器內的 blob 清單中選取您的 blob
 
 4. [Blob 概觀] 索引標籤會顯示您的 Blob 屬性，包括任何 **Blob 索引標記**
 
@@ -121,9 +132,10 @@ static async Task BlobIndexTagsOnCreate()
 
 6. 選取 [儲存] 按鈕，以確認您 Blob 的任何更新
 
-![取得、設定、更新和刪除物件上的 Blob 索引標記](media/storage-blob-index-concepts/blob-index-get-set-tags.png)
+:::image type="content" source="media/storage-blob-index-concepts/blob-index-get-set-tags.png" alt-text="Azure 入口網站的螢幕擷取畫面，顯示如何上傳具有索引標記的 blob。":::
 
 # <a name="net"></a>[.NET](#tab/net)
+
 ```csharp
 static async Task BlobIndexTagsExample()
    {
@@ -181,9 +193,11 @@ static async Task BlobIndexTagsExample()
 
 ## <a name="filter-and-find-data-with-blob-index-tags"></a>使用 blob 索引標記篩選和尋找資料
 
+[儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)者可以執行依 blob 索引標記搜尋和篩選。 此外，具有 `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` [角色型存取控制](/azure/role-based-access-control/overview) 許可權的使用者可以執行這項操作。
+
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-在 Azure 入口網站中，blob 索引標記篩選會自動套用 `@container` 參數，以界定您選取的容器的範圍。 如果您想要在整個儲存體帳戶中篩選並尋找已標記的資料，請使用我們的 REST API、SDK 或工具。
+在 Azure 入口網站中，blob 索引標記篩選會自動套用 `@container` 參數，以界定您選取的容器的範圍。 如果您想要在整個儲存體帳戶中篩選和尋找已標記的資料，請使用我們的 REST API、Sdk 或工具。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您的儲存體帳戶。 
 
@@ -195,9 +209,10 @@ static async Task BlobIndexTagsExample()
 
 5. 選取 [Blob 索引標記篩選] 按鈕，以新增其他標記篩選 (最多 10 個)
 
-![使用 Blob 索引標記篩選和尋找已標記物件](media/storage-blob-index-concepts/blob-index-tag-filter-within-container.png)
+:::image type="content" source="media/storage-blob-index-concepts/blob-index-tag-filter-within-container.png" alt-text="Azure 入口網站的螢幕擷取畫面，顯示如何上傳具有索引標記的 blob。":::
 
 # <a name="net"></a>[.NET](#tab/net)
+
 ```csharp
 static async Task FindBlobsByTagsExample()
    {
@@ -286,18 +301,23 @@ static async Task FindBlobsByTagsExample()
 
 3. 選取 [新增規則]，然後填寫 [動作集] 表單欄位
 
-4. 選取 **篩選** 設定以新增選擇性篩選準則，以新增前置詞比對和 blob 索引比 ![ 對新增 blob 索引標記篩選器以進行生命週期管理](media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png)
+4. 選取 [ **篩選** 設定] 以新增選擇性篩選準則，以符合前置詞比對和 blob 索引相符
 
-5. 選取 [檢閱 + 新增]，以檢閱規則設定![使用 Blob 索引標記篩選的生命週期管理規則範例](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
+  :::image type="content" source="media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png" alt-text="Azure 入口網站的螢幕擷取畫面，顯示如何上傳具有索引標記的 blob。":::
+
+5. 選取 [ **審核] + [新增** ] 以查看規則設定
+
+  :::image type="content" source="media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png" alt-text="Azure 入口網站的螢幕擷取畫面，顯示如何上傳具有索引標記的 blob。":::
 
 6. 選取 [新增] 以將新規則套用至生命週期管理原則
 
 # <a name="net"></a>[.NET](#tab/net)
-[生命週期管理](storage-lifecycle-management-concepts.md)原則會套用至控制平面層級的每個儲存體帳戶。 針對 .NET，請安裝 [Microsoft Azure 管理儲存體程式庫版本16.0.0 版](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/) 或更高版本，以利用生命週期管理規則中的 blob 索引相符篩選準則。
+
+[生命週期管理](storage-lifecycle-management-concepts.md)原則會套用至控制平面層級的每個儲存體帳戶。 針對 .NET，請安裝 [Microsoft Azure 管理存放庫](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/) 版本16.0.0 版或更高版本。
 
 ---
 
 ## <a name="next-steps"></a>後續步驟
 
- - 深入瞭解 blob 索引的詳細資訊，請參閱 [使用 blob 索引 (預覽來管理和尋找 Azure Blob 儲存體上的資料) ](storage-manage-find-blobs.md )
- - 深入了解生命週期管理。 請參閱[管理 Azure Blob 儲存體生命週期](storage-lifecycle-management-concepts.md)
+ - 深入瞭解 blob 索引標籤，請參閱 [使用 blob 索引標記管理和尋找 Azure blob 資料 (預覽) ](storage-manage-find-blobs.md )
+ - 深入瞭解生命週期管理的詳細資訊，請參閱 [管理 Azure Blob 儲存體生命週期](storage-lifecycle-management-concepts.md)

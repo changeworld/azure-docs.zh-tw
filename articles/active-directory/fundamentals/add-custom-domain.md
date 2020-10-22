@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc512bf664857129377d2eb928ff025d1c5f659b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28847ece3c08e93d14d381b35fc93fb16dad95a1
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321169"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370860"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>使用 Azure Active Directory 入口網站新增自訂網域名稱
 
@@ -104,9 +104,9 @@ ms.locfileid: "89321169"
 
   如果您無法更新註冊機構網站上的記錄，請與有權新增專案並確認其是否正確的人共用該專案。
 
-- **確定網域名稱並未在另一個目錄中使用。** 功能變數名稱只能在單一目錄中進行驗證。 如果您的功能變數名稱目前已在另一個目錄中驗證，則也無法在新目錄中進行驗證。 若要修正此重複問題，您必須從舊的目錄中刪除網域名稱。 如需如何刪除網域名稱的詳細資訊，請參閱 [管理自訂網域名稱](../users-groups-roles/domains-manage.md)。
+- **確定網域名稱並未在另一個目錄中使用。** 功能變數名稱只能在單一目錄中進行驗證。 如果您的功能變數名稱目前已在另一個目錄中驗證，則也無法在新目錄中進行驗證。 若要修正此重複問題，您必須從舊的目錄中刪除網域名稱。 如需如何刪除網域名稱的詳細資訊，請參閱 [管理自訂網域名稱](../enterprise-users/domains-manage.md)。
 
-- **確定您沒有任何非受控 Power BI 租用戶。** 如果您的使用者已透過自助式註冊啟用 Power BI 並針對貴組織建立非受控租用戶，您就必須使用 PowerShell 以內部或外部管理員身分接管管理。 如需詳細資訊，請參閱[如何以系統管理員身分接管 Azure Active Directory 中非受控目錄](../users-groups-roles/domains-admin-takeover.md)。
+- **確定您沒有任何非受控 Power BI 租用戶。** 如果您的使用者已透過自助式註冊啟用 Power BI 並針對貴組織建立非受控租用戶，您就必須使用 PowerShell 以內部或外部管理員身分接管管理。 如需詳細資訊，請參閱[如何以系統管理員身分接管 Azure Active Directory 中非受控目錄](../enterprise-users/domains-admin-takeover.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -114,6 +114,6 @@ ms.locfileid: "89321169"
 
 - 將使用者新增至您的網域。 如需詳細資訊，請參閱 [如何新增或刪除使用者](add-users-azure-active-directory.md)。
 
-- 在 Azu e AD 中管理網域名稱資訊。 如需詳細資訊，請參閱[管理自訂網域名稱](../users-groups-roles/domains-manage.md)。
+- 在 Azu e AD 中管理網域名稱資訊。 如需詳細資訊，請參閱[管理自訂網域名稱](../enterprise-users/domains-manage.md)。
 
 - 如果您有想要與 Azure Active Directory 一起使用的內部部署 Windows Server 版本，請參閱[整合內部部署目錄與 Azure Active Directory](../hybrid/whatis-hybrid-identity.md)。

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: f6c47d4cbfe6311333d95b07c0553afa2b3bb15c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8ceb3df68ebe42f83c70ed62327bf59c0dfc225
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87287741"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359810"
 ---
 # <a name="deploy-a-configuration-server"></a>部署設定伺服器
 
@@ -26,7 +26,7 @@ ms.locfileid: "87287741"
 
 設定伺服器必須設定為高可用性 VMware VM，並具備特定的最低硬體和大小需求。 為了方便且輕鬆地部署，Site Recovery 提供可下載的開放式虛擬化應用程式 (OVA) 範本，以設定符合此處所列之所有強制需求的設定伺服器。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 下列各節摘要說明設定伺服器的最低硬體需求。
 
@@ -103,7 +103,7 @@ ms.locfileid: "87287741"
 3. 在安裝完成之後，以系統管理員身分登入 VM。
 4. 當您第一次登入時，Azure Site Recovery 設定工具會在幾秒鐘內啟動。
 5. 輸入用來向 Site Recovery 註冊設定伺服器的名稱。 然後選取 [下一步]  。
-6. 此工具會檢查 VM 是否可連線到 Azure。 建立連線之後，選取 [登入] 以登入您的 Azure 訂用帳戶。</br>
+6. 此工具會檢查 VM 是否可連線到 Azure。 建立連線之後，選取 [登入]  以登入您的 Azure 訂用帳戶。</br>
     a. 認證必須能夠存取您要在其中註冊組態伺服器的保存庫。</br>
     b. 確定選擇的使用者帳戶具有在 Azure 中建立應用程式的許可權。 若要啟用必要的許可權，請遵循 [Azure Active Directory 許可權需求](#azure-active-directory-permission-requirements)一節中的指導方針。
 7. 此工具會執行一些設定工作，而後重新開機。
@@ -111,7 +111,7 @@ ms.locfileid: "87287741"
 
 ### <a name="configure-settings"></a>進行設定
 
-1. 在設定伺服器管理精靈中，選取 [設定連線]  。 從下拉式方塊中，先選取內建進程伺服器用來在來源機器上進行行動服務探索及推入安裝的 NIC。 然後選取設定伺服器用來與 Azure 連線的 NIC。 選取 [儲存]****。 您在設定後便無法變更此設定。 請勿變更設定伺服器的 IP 位址。 確定指派給設定伺服器的 IP 是靜態 IP 而不是 DHCP IP。
+1. 在設定伺服器管理精靈中，選取 [設定連線]  。 從下拉式方塊中，先選取內建進程伺服器用來在來源機器上進行行動服務探索及推入安裝的 NIC。 然後選取設定伺服器用來與 Azure 連線的 NIC。 選取 [儲存]。 您在設定後便無法變更此設定。 請勿變更設定伺服器的 IP 位址。 確定指派給設定伺服器的 IP 是靜態 IP 而不是 DHCP IP。
 2. 在 [ **選取復原服務保存庫**] 上，使用 [向 Azure Site Recovery 服務註冊設定伺服器](#register-the-configuration-server-with-azure-site-recovery-services)的步驟6中所使用的認證登入 Microsoft Azure。
 3. 登入後，請選取您的 Azure 訂用帳戶和相關的資源群組和保存庫。
 
@@ -166,7 +166,7 @@ ms.locfileid: "87287741"
     若要深入瞭解設定伺服器及其功能，請參閱 [VMware 至 Azure 複寫架構](vmware-azure-architecture.md)。
 * 我可以在哪裡找到最新版本的設定伺服器？
 
-    如需透過入口網站升級組態伺服器的步驟，請參閱[升級組態伺服器](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)。 如需有關如何升級所有 Site Recovery 元件的指示，請參閱 [Site Recovery 中的服務更新](https://aka.ms/asr_how_to_upgrade)。
+    如需透過入口網站升級組態伺服器的步驟，請參閱[升級組態伺服器](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)。 如需有關如何升級所有 Site Recovery 元件的指示，請參閱 [Site Recovery 中的服務更新](./service-updates-how-to.md)。
 * 哪裡可以下載設定伺服器的複雜密碼？
 
     若要下載複雜密碼，請參閱 [管理設定伺服器以進行 VMWARE VM](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)嚴重損壞修復。
@@ -193,6 +193,6 @@ ms.locfileid: "87287741"
 
 如需更多有關設定伺服器的常見問題，請參閱設定 [伺服器的常見問題](vmware-azure-common-questions.md#configuration-server)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 為 [VMware VM](vmware-azure-tutorial.md) 設定以 Azure 作為目標的災害復原。

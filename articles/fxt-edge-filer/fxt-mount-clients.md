@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: ea963b143cedf36137d9c36bc57d323353da6786
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa1f9da2c60aaf4c552916d16c266e984bf08892
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86231347"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92340507"
 ---
 # <a name="tutorial-mount-the-cluster"></a>教學課程：掛接叢集
 
@@ -20,6 +20,7 @@ ms.locfileid: "86231347"
 本教學課程會說明：
 
 > [!div class="checklist"]
+>
 > * 將用戶端負載平衡到面向用戶端 IP 位址範圍的策略
 > * 如何透過面向用戶端的 IP 位址和命名空間連接點來建構掛接路徑
 > * 要在掛接命令中使用哪些引數
@@ -108,6 +109,6 @@ ms.locfileid: "86231347"
 
 在掛接用戶端之後，您可以測試工作流程並開始使用叢集。
 
-如果您需要將資料移至新的雲端核心檔案管理工具，請使用平行資料擷取來利用快取結構。 [將資料移至 vFXT 叢集](https://docs.microsoft.com/azure/avere-vfxt/avere-vfxt-data-ingest)中會說明一些策略。 (Avere vFXT for Azure 是雲端式產品，會使用與 Azure FXT Edge Filer 非常類似的快取技術。)
+如果您需要將資料移至新的雲端核心檔案管理工具，請使用平行資料擷取來利用快取結構。 [將資料移至 vFXT 叢集](../avere-vfxt/avere-vfxt-data-ingest.md)中會說明一些策略。 (Avere vFXT for Azure 是雲端式產品，會使用與 Azure FXT Edge Filer 非常類似的快取技術。)
 
 如果您需要針對任何硬體問題進行疑難排解，請閱讀[監視 Azure FXT Edge Filer 硬體狀態](fxt-monitor.md)。

@@ -1,15 +1,14 @@
 ---
 title: 從 Azure 入口網站將混合式機器連線至 Azure
 description: 在本文中，您將瞭解如何使用 Azure 入口網站 Azure Arc 啟用的伺服器，安裝代理程式並將機器連線到 Azure。
-ms.date: 09/24/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
-ms.custom: references_regions
-ms.openlocfilehash: 2ba834d8c55f53792606fffe65d65794e837e9e3
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 8769a3b76172bc6508b7c52eda359695c01eaa4b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101727"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370146"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>從 Azure 入口網站將混合式機器連線至 Azure
 
@@ -17,7 +16,7 @@ ms.locfileid: "92101727"
 
 若要使用這種方法，您必須擁有機器上的系統管理員權限，才能安裝和設定代理程式。 在 Linux 上請使用根帳號，在 Windows 上則必須是本機系統管理員群組的成員。
 
-開始之前，請務必檢閱[必要條件](agent-overview.md#prerequisites)並確認訂用帳戶和資源已符合需求。
+開始之前，請務必檢閱[必要條件](agent-overview.md#prerequisites)並確認訂用帳戶和資源已符合需求。 如需支援的區域和其他相關考慮的詳細資訊，請參閱 [支援的 Azure 區域](overview.md#supported-regions)。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -25,22 +24,13 @@ ms.locfileid: "92101727"
 
 用來自動下載和安裝以及用來與 Azure Arc 建立連線的指令碼，可從 Azure 入口網站取得。 若要完成此程序，請執行下列動作：
 
-1. 在瀏覽器中，移至 [Azure 入口網站](https://aka.ms/hybridmachineportal)。
+1. 在瀏覽器中，移至 [Azure 入口網站](https://portal.azure.com)。
 
 1. 在 [ **伺服器-Azure Arc** ] 頁面上，選取左上方的 [ **新增** ]。
 
 1. 在 [ **選取方法** ] 頁面上，選取 [ **使用互動式腳本新增伺服器** ] 磚，然後選取 [ **產生腳本**]。
 
-1. 在 [產生指令碼] 頁面上，選取您要在 Azure 中用來管理機器的訂用帳戶和資源群組。 選取要用來儲存機器中繼資料的 Azure 位置。
-
-    >[!NOTE]
-    >Azure Arc 啟用的伺服器僅支援下欄區域：
-    >- EastUS
-    >- WestUS2
-    >- WestEurope
-    >- SoutheastAsia
-    >
-    >在[這裡](overview.md#supported-regions)選取區域時，請檢閱「概觀」文章中的其他考量。
+1. 在 [產生指令碼] 頁面上，選取您要在 Azure 中用來管理機器的訂用帳戶和資源群組。 選取要用來儲存機器中繼資料的 Azure 位置。 此位置可與資源群組的位置相同或不同。
 
 1. 在 [ **必要條件** ] 頁面上，檢查資訊，然後選取 **[下一步：資源詳細資料]**。
 
@@ -84,7 +74,7 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
     msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
     ```
 
-    如果此代理程式在安裝完成之後無法啟動，請檢查記錄以取得詳細的錯誤資訊。 記錄目錄是「%Programfiles%\AzureConnectedMachineAgentAgent\logs」。
+    如果此代理程式在安裝完成之後無法啟動，請檢查記錄以取得詳細的錯誤資訊。 *位於%programdata%\azureconnectedmachineagent\log*記錄檔目錄。
 
 2. 如果電腦需要透過 proxy 伺服器進行通訊，若要設定 proxy 伺服器環境變數，請執行下列命令：
 
@@ -117,7 +107,7 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /?
 
 1. 變更至作為指令碼複製目的地的資料夾或共用，然後在伺服器上執行 `./OnboardingScript.ps1` 指令碼來執行此工作。
 
-如果此代理程式在安裝完成之後無法啟動，請檢查記錄以取得詳細的錯誤資訊。 記錄目錄是「%Programfiles%\AzureConnectedMachineAgentAgent\logs」。
+如果此代理程式在安裝完成之後無法啟動，請檢查記錄以取得詳細的錯誤資訊。 *位於%programdata%\azureconnectedmachineagent\log*記錄檔目錄。
 
 ## <a name="install-and-validate-the-agent-on-linux"></a>在 Linux 上安裝和驗證代理程式
 
@@ -151,7 +141,7 @@ wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 ```
 
-## <a name="verify-the-connection-with-azure-arc"></a>驗證與 Azure Arc 的連線
+## <a name="verify-the-connection-with-azure-arc"></a>確認與 Azure Arc 的連線
 
 在安裝好代理程式並將其設定為連線至已啟用 Azure Arc 的伺服器之後，請移至 Azure 入口網站以確認伺服器已成功連線。 在 [Azure 入口網站](https://aka.ms/hybridmachineportal)中檢視您的機器。
 

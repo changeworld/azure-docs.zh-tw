@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 236b4f47894db8aa8880b7535b6ee0921802a31c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3210aa5ae2ff94ba2c7dda673fbb60847c4dfd0b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317356"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92372152"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>停機期間啟動/停止 VM 概觀
 
@@ -79,7 +79,7 @@ ms.locfileid: "91317356"
 您可以使用新的自動化帳戶和 Log Analytics 工作區，以啟用 VM 的「停機期間啟動/停止 VM」功能。 在此情況下，您需要上一節所定義的權限及本節所定義的權限。 您也需要下列角色：
 
 - 訂用帳戶上的 Co-Administrator。 如果您要管理傳統 VM，則需要此角色才能建立「傳統執行身分帳戶」。 預設不會再建立[傳統執行身分帳戶](automation-create-standalone-account.md#create-a-classic-run-as-account)。
-- [Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md) 應用程式開發人員角色的成員資格。 如需設定「執行身分帳戶」的詳細資訊，請參閱[設定「執行身分帳戶」所需的權限](manage-runas-account.md#permissions)。
+- [Azure AD](../active-directory/roles/permissions-reference.md) 應用程式開發人員角色的成員資格。 如需設定「執行身分帳戶」的詳細資訊，請參閱[設定「執行身分帳戶」所需的權限](manage-runas-account.md#permissions)。
 - 訂用帳戶的參與者，或下列權限。
 
 | 權限 |影響範圍|
@@ -154,16 +154,16 @@ ms.locfileid: "91317356"
 
 ### <a name="schedules"></a>排程
 
-下表列出在您的自動化帳戶中建立的各個預設排程。 您可以修改它們，或建立自己的自訂排程。 所有排程都預設為停用，但 **Scheduled_StartVM** 和 **Scheduled_StopVM** 除外。
+下表列出在您的自動化帳戶中建立的各個預設排程。  您可以修改它們，或建立自己的自訂排程。  所有排程都預設為停用，但 **Scheduled_StartVM** 和 **Scheduled_StopVM** 除外。
 
 請勿啟用所有排程，因為這樣可能會產生重疊的排程動作。 最好先決定您想要的最佳化，再據以修改。 如需進一步說明，請參閱＜概觀＞一節中的範例案例。
 
 |排程名稱 | 頻率 | 描述|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | 每 8 小時 | 每 8 小時執行一次 **AutoStop_CreateAlert_Parent** Runbook，以停止 `External_Start_ResourceGroupNames`、`External_Stop_ResourceGroupNames` 和 `External_ExcludeVMNames` 變數中以 VM 為基礎的值。 或者，您可以使用 `VMList` 參數，指定以逗號分隔的 VM 清單。|
-|Scheduled_StopVM | 使用者定義，每日 | 每天在指定的時間，搭配參數 `Stop` 執行 **ScheduledStopStart_Parent** Runbook。 自動停止與資產變數所定義的規則相符的所有 VM。 啟用相關排程 **Scheduled-StartVM**。|
-|Scheduled_StartVM | 使用者定義，每日 | 每天在指定的時間，搭配參數值 `Start` 執行 **ScheduledStopStart_Parent** Runbook。 自動啟動與資產變數所定義的規則相符的所有 VM。 啟用相關排程 **Scheduled-StopVM**。|
-|Sequenced-StopVM | 上午 1:00 (UTC)，每星期五 | 每星期五在指定的時間，搭配參數值 `Stop` 執行 **Sequenced_StopStop_Parent** Runbook。 會以循序方式 (遞增) 停止具有由適當變數定義之 **SequenceStop** 標記的所有虛擬機器。 如需標記值和資產變數的詳細資訊，請參閱 [Runbook](#runbooks)。 啟用相關排程 **Sequenced-StartVM**。|
+|Scheduled_StopVM | 使用者定義，每日 | 每天在指定的時間，搭配參數 `Stop` 執行 **ScheduledStopStart_Parent** Runbook。  自動停止與資產變數所定義的規則相符的所有 VM。  啟用相關排程 **Scheduled-StartVM**。|
+|Scheduled_StartVM | 使用者定義，每日 | 每天在指定的時間，搭配參數值 `Start` 執行 **ScheduledStopStart_Parent** Runbook。 自動啟動與資產變數所定義的規則相符的所有 VM。  啟用相關排程 **Scheduled-StopVM**。|
+|Sequenced-StopVM | 上午 1:00 (UTC)，每星期五 | 每星期五在指定的時間，搭配參數值 `Stop` 執行 **Sequenced_StopStop_Parent** Runbook。  會以循序方式 (遞增) 停止具有由適當變數定義之 **SequenceStop** 標記的所有虛擬機器。 如需標記值和資產變數的詳細資訊，請參閱 [Runbook](#runbooks)。  啟用相關排程 **Sequenced-StartVM**。|
 |Sequenced-StartVM | 下午 1:00 (UTC)，每星期一 | 每星期一在指定的時間，搭配參數 `Start` 執行 **SequencedStopStart_Parent** Runbook。 會以循序方式 (遞減) 啟動具有由適當變數定義之 **SequenceStart** 標記的所有虛擬機器。 如需標記值和變數資產的詳細資訊，請參閱 [Runbook](#runbooks)。 啟用相關排程 **Sequenced-StopVM**。
 
 ## <a name="use-the-feature-with-classic-vms"></a>對傳統 VM 使用此功能

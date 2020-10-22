@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d3082e3dc45102bc8700c7d1285ef832d09712a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0903828b04922104a9dd93ac79459bf73644f35c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87419813"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365828"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>如何管理已加入 Azure AD 的裝置上的本機系統管理員群組
 
@@ -39,7 +39,7 @@ Azure AD 也會將 Azure AD 裝置管理員角色新增至本機系統管理員�
 
 若要檢視及更新全域管理員角色的成員資格，請參閱：
 
-- [檢視 Azure Active Directory 中的所有系統管理員角色成員](../users-groups-roles/directory-manage-roles-portal.md)
+- [檢視 Azure Active Directory 中的所有系統管理員角色成員](../roles/manage-roles-portal.md)
 - [在 Azure Active Directory 中將使用者指派給系統管理員角色](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 
 
@@ -108,7 +108,7 @@ Azure AD 也會將 Azure AD 裝置管理員角色新增至本機系統管理員�
 
 當您從裝置管理員角色中移除使用者時，這些使用者只要仍在裝置上處於登入狀態，就仍具有本機系統管理員權限。 發行新的主要重新整理權杖時，會在下次登入時撤銷此許可權。 這種撤銷與權限提高的類似，最多可能需要4小時的時間。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 若要取得在 Azure 入口網站中管理裝置的概觀，請參閱[使用 Azure 入口網站來管理裝置](device-management-azure-portal.md)
 - 若要深入瞭解裝置型條件式存取，請參閱 [設定 Azure Active Directory 以裝置為基礎的條件式存取原則](../conditional-access/require-managed-devices.md)。

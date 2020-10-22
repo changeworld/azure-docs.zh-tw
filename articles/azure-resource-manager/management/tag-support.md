@@ -2,13 +2,13 @@
 title: 資源的標記支援
 description: 顯示哪些 Azure 資源類型支援標記。 提供所有 Azure 服務的詳細資料。
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: 27e25b1048bb759a3b38859788c27c03f1cf0447
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: c3a94ece52e5c5b17a50fed9810303480a9c974a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371536"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370282"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 資源的標記支援
 本文將說明資源類型是否支援[標記](tag-resources.md)。 標示為 [ **支援** 標籤] 的資料行會指出資源類型是否有標記的屬性。 在 [ **成本] 報表中** 標示為 [標籤] 的資料行會指出該資源類型是否要將標記傳遞給成本報告。 您可以依 [成本管理成本分析](../../cost-management-billing/costs/group-filter.md) 和 [Azure 計費發票及每日使用量資料](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)中的標記來查看成本。
@@ -37,6 +37,7 @@ ms.locfileid: "91371536"
 > - [Microsoft.AzureData](#microsoftazuredata)
 > - [Microsoft.AzureStack](#microsoftazurestack)
 > - [Microsoft.AzureStackHCI](#microsoftazurestackhci)
+> - [BareMetalInfrastructure](#microsoftbaremetalinfrastructure)
 > - [Microsoft.Batch](#microsoftbatch)
 > - [Microsoft.Billing](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
@@ -167,6 +168,7 @@ ms.locfileid: "91371536"
 > - [Microsoft.ServiceFabricMesh](#microsoftservicefabricmesh)
 > - [Microsoft.Services](#microsoftservices)
 > - [Microsoft.SignalRService](#microsoftsignalrservice)
+> - [Singularity](#microsoftsingularity)
 > - [Microsoft.SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft.Solutions](#microsoftsolutions)
 > - [Microsoft .SQL](#microsoftsql)
@@ -361,6 +363,7 @@ ms.locfileid: "91371536"
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
 > | privateClouds | 是 | 是 |
+> | privateClouds/附加元件 | 否 | 否 |
 > | privateClouds/授權 | 否 | 否 |
 > | privateClouds/叢集 | 否 | 否 |
 > | privateClouds / globalReachConnections | 否 | 否 |
@@ -423,12 +426,21 @@ ms.locfileid: "91371536"
 > | ------------- | ----------- | ----------- |
 > | clusters | 是 | 是 |
 
+## <a name="microsoftbaremetalinfrastructure"></a>BareMetalInfrastructure
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 支援標記 | 成本報告中的標記 |
+> | ------------- | ----------- | ----------- |
+> | bareMetalInstances | 是 | 是 |
+
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
 > | batchAccounts | 是 | 是 |
+> | batchAccounts / certificates | 否 | 否 |
+> | batchAccounts / pools | 否 | 否 |
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
@@ -737,7 +749,7 @@ ms.locfileid: "91371536"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
-> | plans | 是 | 是 |
+> | plans | 是 | 否 |
 > | registeredSubscriptions | 否 | 否 |
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
@@ -973,7 +985,6 @@ ms.locfileid: "91371536"
 > | ------------- | ----------- | ----------- |
 > | workspaces | 是 | 是 |
 > | 工作區/dbWorkspaces | 否 | 否 |
-> | 工作區/storageEncryption | 否 | 否 |
 > | 工作區/virtualNetworkPeerings | 否 | 否 |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
@@ -1132,6 +1143,7 @@ ms.locfileid: "91371536"
 > | applicationgroups / desktops | 否 | 否 |
 > | applicationgroups / startmenuitems | 否 | 否 |
 > | hostpools | 是 | 是 |
+> | hostpools / msixpackages | 否 | 否 |
 > | hostpools / sessionhosts | 否 | 否 |
 > | hostpools / sessionhosts / usersessions | 否 | 否 |
 > | hostpools / usersessions | 否 | 否 |
@@ -1383,13 +1395,15 @@ ms.locfileid: "91371536"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
-> | devices | 是 | 是 |
+> | 裝置 | 是 | 是 |
+> | networkFunctions | 是 | 是 |
+> | networkFunctionVendors | 否 | 否 |
 > | registeredSubscriptions | 否 | 否 |
 > | 廠商 | 否 | 否 |
-> | 廠商/vendorskus | 否 | 否 |
-> | 廠商/vendorskus/previewSubscriptions | 否 | 否 |
-> | virtualnetworkfunctions | 是 | 是 |
-> | virtualnetworkfunctionvendors | 否 | 否 |
+> | 廠商/vendorSkus | 否 | 否 |
+> | 廠商/vendorSkus/previewSubscriptions | 否 | 否 |
+> | virtualNetworkFunctions | 是 | 是 |
+> | virtualNetworkFunctionVendors | 否 | 否 |
 
 ## <a name="microsofthydra"></a>Microsoft.Hydra
 
@@ -1537,9 +1551,20 @@ ms.locfileid: "91371536"
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
 > | workspaces | 是 | 是 |
+> | 工作區/batchEndpoints | 是 | 是 |
+> | 工作區/batchEndpoints/部署 | 是 | 是 |
+> | 工作區/代碼 | 否 | 否 |
+> | 工作區/代碼/版本 | 否 | 否 |
 > | workspaces / computes | 否 | 否 |
+> | 工作區/資料存放區 | 否 | 否 |
 > | 工作區/eventGridFilters | 否 | 否 |
+> | 工作區/作業 | 否 | 否 |
+> | 工作區/labelingJobs | 否 | 否 |
 > | 工作區/Linkedservices.json 和 datasets.json | 否 | 否 |
+> | 工作區/模型 | 否 | 否 |
+> | 工作區/模型/版本 | 否 | 否 |
+> | 工作區/onlineEndpoints | 是 | 是 |
+> | 工作區/onlineEndpoints/部署 | 是 | 是 |
 
 ## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
 
@@ -2194,6 +2219,17 @@ ms.locfileid: "91371536"
 > | SignalR | 是 | 是 |
 > | SignalR/eventGridFilters | 否 | 否 |
 
+## <a name="microsoftsingularity"></a>Singularity
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 支援標記 | 成本報告中的標記 |
+> | ------------- | ----------- | ----------- |
+> | accounts | 是 | 是 |
+> | 帳戶/accountQuotaPolicies | 否 | 否 |
+> | 帳戶/groupPolicies | 否 | 否 |
+> | 帳戶/作業 | 否 | 否 |
+> | 帳戶/storageContainers | 否 | 否 |
+
 ## <a name="microsoftsoftwareplan"></a>Microsoft.SoftwarePlan
 
 > [!div class="mx-tableFixed"]
@@ -2332,6 +2368,7 @@ ms.locfileid: "91371536"
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
 > | clusters | 是 | 是 |
+> | 叢集/privateEndpoints | 否 | 否 |
 > | streamingjobs | 是 (請參閱下方注意事項) | 是 |
 
 > [!NOTE]
@@ -2420,7 +2457,7 @@ ms.locfileid: "91371536"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
-> | devices | 是 | 是 |
+> | 裝置 | 是 | 是 |
 > | registeredSubscriptions | 否 | 否 |
 > | 廠商 | 否 | 否 |
 > | 廠商/sku | 否 | 否 |
@@ -2433,8 +2470,8 @@ ms.locfileid: "91371536"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
-> | accounts | 是 | 是 |
-> | plans | 是 | 是 |
+> | accounts | 是 | 否 |
+> | plans | 是 | 否 |
 > | registeredSubscriptions | 否 | 否 |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
@@ -2469,6 +2506,8 @@ ms.locfileid: "91371536"
 > | runtimes | 否 | 否 |
 > | serverFarms | 是 | 是 |
 > | serverFarms/eventGridFilters | 否 | 否 |
+> | serverFarms/firstPartyApps | 否 | 否 |
+> | serverFarms/firstPartyApps/keyVaultSettings | 否 | 否 |
 > | sites | 是 | 是 |
 > | 網站/設定  | 否 | 否 |
 > | sites/eventGridFilters | 否 | 否 |

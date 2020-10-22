@@ -1,5 +1,5 @@
 ---
-title: 什麼是自動化 ML / AutoML
+title: 什麼是自動化 ML？ AutoML
 titleSuffix: Azure Machine Learning
 description: 了解 Azure Machine Learning 如何自動為您挑選演算法，以及如何藉由使用您提供來為模型選取最佳演算法的參數與準則，從其中產生模型來節省您的時間。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 4908f66dbc699a449b7b94febac8133bacc9f669
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49c3e5602834576e8d3de86ac7d6683f9b6f7b89
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760964"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367511"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什麼是自動化機器學習 (AutoML)？
 
@@ -158,7 +158,7 @@ ms.locfileid: "91760964"
 選擇您的計算目標時，請考慮下列因素：
 
  * **選擇本機計算**：如果您的案例是關於使用小型資料和簡短定型 (也就是每個子回合的秒數或幾分鐘) 進行的初始探勘或示範，則在本機電腦上進行定型可能是一個更好的選擇。  沒有設定時間，可以直接使用基礎結構資源 (您的電腦或 VM)。
- * **選擇遠端 ML 計算叢集**：如果您要使用較大的資料集進行定型，例如在生產定型中建立需要較長定型的模型，則遠端計算會提供更好的端對端時間效能，因為 `AutoML` 會在叢集的節點上平行處理定型。 在遠端計算上，內部基礎結構的啟動時間大約會每個子回合增加 1.5 分鐘，而如果 VM 尚未啟動並執行，叢集基礎結構也會增加額外的分鐘數。
+ * **選擇遠端 ML 計算**叢集：如果您要使用較大型的資料集進行定型，例如在生產訓練中建立需要較長定型的模型，則遠端計算將可提供更好的端對端時間效能，因為會平行處理叢集 `AutoML` 節點上的訓練。 在遠端計算上，內部基礎結構的啟動時間會在每個子回合大約1.5 分鐘內增加，如果 Vm 尚未啟動並執行，則需要額外幾分鐘的時間來執行叢集基礎結構。
 
 ### <a name="pros-and-cons"></a>優缺點
 選擇使用本機與遠端時，請考慮這些優缺點。
@@ -166,7 +166,7 @@ ms.locfileid: "91760964"
 |  | 優點 (優勢)  |缺點 (障礙)  |
 |---------|---------|---------|---------|
 |**本機計算目標** |  <li> 沒有任何環境啟動時間   | <li>  功能的子集<li>  無法平行處理回合 <li> 不適用於大型資料。 <li>定型時沒有資料串流 <li>  沒有以 DNN 為基礎的特徵化 <li> 僅限 Python SDK |
-|**遠端 ML 計算叢集**|  <li> 完整的功能集 <li> 平行處理子回合 <li>   大型資料支援<li>  以 DNN 為基礎的特徵化 <li>  視需要計算叢集的動態擴充性 <li> 無程式碼體驗 (Web UI) 也可供使用  |  <li> 叢集節點的啟動時間 <li> 每個子回合的啟動時間    |
+|**遠端 ML 計算叢集**|  <li> 完整的功能集 <li> 平行處理子回合 <li>   大型資料支援<li>  以 DNN 為基礎的特徵化 <li>  視需要計算叢集的動態擴充性 <li> 無程式碼體驗 (Web UI) 也可供使用  |  <li> 叢集節點的啟動時間 <li> 每個子執行的啟動時間    |
 
 ### <a name="feature-availability"></a>功能可用性 
 
@@ -219,7 +219,7 @@ Azure Machine Learning 提供兩種使用自動化 ML 的體驗：
 |**將資料分割成定型/驗證集**| ✓|✓
 |**支援 ML 工作：分類、迴歸和預測**| ✓| ✓
 |**根據主要計量最佳化**| ✓| ✓
-|**支援 AML 計算作為計算目標** | ✓|✓
+|**支援 Azure ML 計算作為計算目標** | ✓|✓
 |**設定預測範圍，目標延遲 & 滾動時間範圍**|✓|✓
 |**設定允出準則** |✓|✓ 
 |**設定並行反覆項目**| ✓|✓

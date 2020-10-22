@@ -12,12 +12,12 @@ ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 788386dc3cbfb8b4252e8710d8ee1bfd9dbe4e66
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2847678c78aec4a287427463a9aeeb8bd82c6771
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969909"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371931"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>在 Azure Active Directory 中新增或移除群組擁有者
 Azure Active Directory (Azure AD) 群組是由群組擁有者所擁有及管理。 群組擁有者可以是使用者或服務主體，而且能夠管理包含成員資格的群組。 只有現有的群組擁有者或群組管理系統管理員可以指派群組擁有者。 群組擁有者不需要是該群組的成員。
@@ -63,10 +63,10 @@ Azure Active Directory (Azure AD) 群組是由群組擁有者所擁有及管理�
 ## <a name="next-steps"></a>後續步驟
 - [使用 Azure Active Directory 群組管理資源的存取權](active-directory-manage-groups.md)
 
-- [設定群組設定的 Azure Active Directory Cmdlet](../users-groups-roles/groups-settings-cmdlets.md)
+- [設定群組設定的 Azure Active Directory Cmdlet](../enterprise-users/groups-settings-cmdlets.md)
 
-- [使用群組來指派對整合 SaaS 應用程式的存取權](../users-groups-roles/groups-saasapps.md)
+- [使用群組來指派對整合 SaaS 應用程式的存取權](../enterprise-users/groups-saasapps.md)
 
 - [整合內部部署身分識別與 Azure Active Directory](../hybrid/whatis-hybrid-identity.md)
 
-- [設定群組設定的 Azure Active Directory Cmdlet](../users-groups-roles/groups-settings-v2-cmdlets.md)
+- [設定群組設定的 Azure Active Directory Cmdlet](../enterprise-users/groups-settings-v2-cmdlets.md)

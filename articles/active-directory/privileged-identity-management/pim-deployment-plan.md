@@ -14,12 +14,12 @@ ms.date: 08/27/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bfe0fee14ed463e265dc4e7e4177c702b051c81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c9ba7217dfc167a06a1fea389cfc40a5e1251ca
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050194"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367800"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>部署 Azure AD Privileged Identity Management (PIM)
 
@@ -58,7 +58,7 @@ ms.locfileid: "89050194"
 
 ## <a name="roles-that-can-be-managed-by-pim"></a>PIM 所能管理的角色
 
-**Azure AD 角色** 全都位於 Azure Active Directory 的 (，例如全域管理員、Exchange 系統管理員和安全性系統管理員) 。 您可以在 [Azure Active Directory 中的系統管理員角色權限](../users-groups-roles/directory-assign-admin-roles.md)中深入了解這些角色及其功能。 如需協助以便判斷要對系統管理員指派哪些角色，請參閱[依工作區分的最低特殊權限角色](../users-groups-roles/roles-delegate-by-task.md)。
+**Azure AD 角色** 全都位於 Azure Active Directory 的 (，例如全域管理員、Exchange 系統管理員和安全性系統管理員) 。 您可以在 [Azure Active Directory 中的系統管理員角色權限](../roles/permissions-reference.md)中深入了解這些角色及其功能。 如需協助以便判斷要對系統管理員指派哪些角色，請參閱[依工作區分的最低特殊權限角色](../roles/delegate-by-task.md)。
 
 **Azure 角色** 是連結至 azure 資源、資源群組、訂用帳戶或管理群組的角色。 您可以使用 PIM 來提供內建 Azure 角色的即時存取權，例如擁有者、使用者存取系統管理員和參與者，以及 [自訂角色](../../role-based-access-control/custom-roles.md)。 如需 Azure 角色的詳細資訊，請參閱 [azure 角色型存取控制](../../role-based-access-control/overview.md)。
 
@@ -78,7 +78,7 @@ ms.locfileid: "89050194"
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>專案關係人： Azure AD 角色的 Privileged Identity Management
 
-| 名稱 | 角色 | 動作 |
+| Name | [角色] | 動作 |
 | --- | --- | --- |
 | 名稱和電子郵件 | **身分識別架構設計師或 Azure 全域系統管理員**<br/>身分識別管理小組的代表，負責定義如何配合您組織中的核心身分識別管理基礎結構來調整這項變更。 | SO/R/I |
 | 名稱和電子郵件 | **服務擁有者/部門經理**<br/>單一或一組服務的 IT 擁有者所推派的代表人員。 它們是制定決策和協助為團隊推出 Privileged Identity Management 的關鍵。 | SO/R/I |
@@ -88,7 +88,7 @@ ms.locfileid: "89050194"
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-roles"></a>專案關係人：適用于 Azure 角色的 Privileged Identity Management
 
-| 名稱 | 角色 | 動作 |
+| Name | [角色] | 動作 |
 | --- | --- | --- |
 | 名稱和電子郵件 | **訂用帳戶/資源擁有者**<br/>您想要部署 Privileged Identity Management 的每個訂用帳戶或資源的 IT 擁有者代表 | SO/R/I |
 | 名稱和電子郵件 | **安全性擁有者**<br/>安全性團隊所推派的代表人員，可簽字同意該規劃符合組織的安全性需求。 | SO/R |
@@ -111,7 +111,7 @@ ms.locfileid: "89050194"
 
 請遵循下列步驟，為您的 Azure AD 角色執行最低許可權原則。
 
-1. 閱讀及了解[可用的 Azure AD 系統管理員角色](../users-groups-roles/directory-assign-admin-roles.md#available-roles)，來了解角色的細微性。 您和您的小組也應該參考 [Azure AD 中依識別工作區分的系統管理員角色](../users-groups-roles/roles-delegate-by-task.md)，文內會說明特定工作的最低特殊權限角色。
+1. 閱讀及了解[可用的 Azure AD 系統管理員角色](../roles/permissions-reference.md#available-roles)，來了解角色的細微性。 您和您的小組也應該參考 [Azure AD 中依識別工作區分的系統管理員角色](../roles/delegate-by-task.md)，文內會說明特定工作的最低特殊權限角色。
 
 1. 列出組織中具有特殊權限角色的人員。 您可以使用 Privileged Identity Management [探索和深入解析 (預覽) ](pim-security-wizard.md) 來縮減您的曝光。
 
@@ -200,11 +200,11 @@ ms.locfileid: "89050194"
 
 #### <a name="many-users-are-assigned-to-a-role"></a>有許多使用者指派給角色
 
-若要追蹤指派給角色的人員，並根據使用者的需求來管理指派，可能需要一些時間才能手動完成。 若要將群組指派給角色，請先建立可指派 [角色的群組](../users-groups-roles/roles-groups-create-eligible.md) ，然後將該群組指派為符合角色的資格。 此動作會將群組中的每個人都與符合可提升為角色的個別使用者進行相同的啟用程式。 群組成員會使用 Privileged Identity Management 啟用要求和核准程式來個別啟用對群組的指派。 群組不會啟動，只會啟用使用者的群組成員資格。
+若要追蹤指派給角色的人員，並根據使用者的需求來管理指派，可能需要一些時間才能手動完成。 若要將群組指派給角色，請先建立可指派 [角色的群組](../roles/groups-create-eligible.md) ，然後將該群組指派為符合角色的資格。 此動作會將群組中的每個人都與符合可提升為角色的個別使用者進行相同的啟用程式。 群組成員會使用 Privileged Identity Management 啟用要求和核准程式來個別啟用對群組的指派。 群組不會啟動，只會啟用使用者的群組成員資格。
 
 #### <a name="you-want-to-delegate-assigning-the-role"></a>您想要委派指派角色
 
-群組擁有者可以管理群組的成員資格。 針對 Azure AD 角色指派的群組，只有特殊許可權角色管理員、全域管理員和群組擁有者可以管理群組成員資格。 藉由將新成員新增至群組，成員就可以存取指派給群組的角色，無論指派是否合格或作用中。 使用群組擁有者來委派管理指派角色的群組成員資格，以降低所需的許可權範圍。 如需在建立群組時將擁有者指派給群組的詳細資訊，請參閱 [Azure AD 中的建立角色](../users-groups-roles/roles-groups-create-eligible.md)可指派群組。
+群組擁有者可以管理群組的成員資格。 針對 Azure AD 角色指派的群組，只有特殊許可權角色管理員、全域管理員和群組擁有者可以管理群組成員資格。 藉由將新成員新增至群組，成員就可以存取指派給群組的角色，無論指派是否合格或作用中。 使用群組擁有者來委派管理指派角色的群組成員資格，以降低所需的許可權範圍。 如需在建立群組時將擁有者指派給群組的詳細資訊，請參閱 [Azure AD 中的建立角色](../roles/groups-create-eligible.md)可指派群組。
 
 > [!TIP]
 > ： heavy_check_mark： **Microsoft 建議** 您透過 Privileged Identity Management，將 Azure AD 角色可指派的群組納入管理之下。 由 PIM 管理可指派角色的群組之後，就稱為「特殊許可權存取群組」。 使用 PIM 要求群組擁有者必須先啟用其擁有者角色指派，才能管理群組成員資格。 如需在 PIM 管理下將群組帶入的詳細資訊，請參閱 Privileged Identity Management 中將特殊許可權 [存取群組 (預覽) ](groups-discover-groups.md)。
@@ -214,7 +214,7 @@ ms.locfileid: "89050194"
 一旦決定要由 Privileged Identity Management 管理的角色清單之後，您必須決定哪些使用者應該取得符合資格的角色，而不是永久有效的角色。 永久有效的角色是透過 Azure Active Directory 和 Azure 資源指派的一般角色，而符合資格的角色只能在 Privileged Identity Management 中指派。
 
 > [!TIP]
-> ： heavy_check_mark： **Microsoft 建議** 您針對 Azure AD 角色和 Azure 角色，除了建議的 [兩個全形緊急存取帳戶](../users-groups-roles/directory-emergency-access.md)（應該具有永久全域管理員角色）之外，還會有零個永久有效的指派。
+> ： heavy_check_mark： **Microsoft 建議** 您針對 Azure AD 角色和 Azure 角色，除了建議的 [兩個全形緊急存取帳戶](../roles/security-emergency-access.md)（應該具有永久全域管理員角色）之外，還會有零個永久有效的指派。
 
 雖然我們建議不要有永久性的系統管理員，但組織有時難以立即實現這一點要求。 以下是進行這項決策時所要考量的事項：
 
@@ -230,7 +230,7 @@ ms.locfileid: "89050194"
 
 #### <a name="privileged-identity-management-settings-for-azure-ad-roles"></a>Azure AD 角色的 Privileged Identity Management 設定
 
-| 角色 | 需要 MFA | 通知 | 事件票證 | 需要核准 | 核准者 | 啟動持續時間 | 永久性系統管理員 |
+| [角色] | 需要 MFA | 通知 | 事件票證 | 需要核准 | 核准者 | 啟動持續時間 | 永久性系統管理員 |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | 全域管理員 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 其他全域系統管理員 | 1 小時 | 緊急存取帳戶 |
 | Exchange 系統管理員 | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | 無 | 2 小時 | 無 |
@@ -238,7 +238,7 @@ ms.locfileid: "89050194"
 
 #### <a name="privileged-identity-management-settings-for-azure-roles"></a>Azure 角色的 Privileged Identity Management 設定
 
-| 角色 | 需要 MFA | 通知 | 需要核准 | 核准者 | 啟動持續時間 | 有效系統管理員 | 有效到期日 | 合格到期日 |
+| [角色] | 需要 MFA | 通知 | 需要核准 | 核准者 | 啟動持續時間 | 有效系統管理員 | 有效到期日 | 合格到期日 |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | 重要訂用帳戶的擁有者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 訂用帳戶的其他擁有者 | 1 小時 | 無 | n/a | 3 個月 |
 | 較不重要訂用帳戶的使用者存取系統管理員 | :heavy_check_mark: | :heavy_check_mark: | :x: | 無 | 1 小時 | 無 | n/a | 3 個月 |
@@ -248,7 +248,7 @@ ms.locfileid: "89050194"
 
 | 設定 | 描述 |
 | --- | --- |
-| 角色 | 要為其定義設定的角色名稱。 |
+| [角色] | 要為其定義設定的角色名稱。 |
 | 需要 MFA | 符合資格的使用者是否必須先執行 MFA 才能啟動該角色。<br/><br/> ： heavy_check_mark： **Microsoft 建議** 您針對所有系統管理員角色強制執行 MFA，特別是當角色具有來賓使用者時。 |
 | 通知 | 如果設定為 true，則組織中的全域系統管理員、特殊權限角色系統管理員和安全性系統管理員會在符合資格的使用者啟動該角色時收到電子郵件通知。<br/><br/>**注意：** 某些組織沒有系結至其系統管理員帳戶的電子郵件地址，若要取得這些電子郵件通知，您應該設定替代的電子郵件地址，讓系統管理員能夠收到這些電子郵件。 |
 | 事件票證 | 符合資格的使用者是否必須在啟動其角色時記錄下事件票證號碼。 此設定可協助組織透過內部事件號碼來識別每個啟動，以減少不必要的啟動。<br/><br/> ： heavy_check_mark： **Microsoft 建議** 利用事件票證號碼，將 Privileged Identity Management 系結至您的內部系統。 對於需要啟用內容的核准者而言，這個方法會很有用。 |
@@ -308,7 +308,7 @@ ms.locfileid: "89050194"
 
 請使用這個階段來確認您為角色設定的所有組態是否可正常運作。 請使用下表來記載測試。 也請使用這個階段來將與受影響使用者的溝通方式最佳化。
 
-| 角色 | 啟動期間的預期行為 | 實際結果 |
+| [角色] | 啟動期間的預期行為 | 實際結果 |
 | --- | --- | --- |
 | 全域管理員 | (1) 需要 MFA<br/>(2) 需要核准<br/>(3) 核准者收到通知並可核准<br/>(4) 角色在預設時間過後到期 |  |
 | 訂用帳戶 X** 的擁有者 | (1) 需要 MFA<br/>(2) 符合資格的指派在所設定的期間過後到期 |  |

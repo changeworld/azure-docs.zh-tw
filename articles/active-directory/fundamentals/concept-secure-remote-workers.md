@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f4d9d1a2a4c88601e7dd7e0d6f56025b79aaac1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43b883cac7b970488a30116bc06efc8663766629
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705362"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370197"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>使用 Azure AD 快速回應安全身分識別
 
@@ -34,7 +34,7 @@ ms.locfileid: "90705362"
 - 利用雲端智慧。
 - 啟用終端使用者自助服務。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 本指南假設您已在 Azure AD 中建立您的僅限雲端或混合式身分識別。 如需選擇身分識別類型的說明，請參閱文章， [為您的 Azure Active Directory 混合式身分識別解決方案選擇正確的驗證方法](../hybrid/choose-ad-authn.md) 
 
@@ -61,7 +61,7 @@ ms.locfileid: "90705362"
 | [自動化 SaaS 應用程式的使用者](../app-provisioning/user-provisioning.md) 布建和解除布建 (如果適用)  | 在雲端 (SaaS) 使用者需要存取的應用程式中，自動建立使用者身分識別和角色。 除了建立使用者身分識別之外，自動布建還包括維護和移除使用者身分識別的狀態或角色變更，從而提高組織的安全性。 |
 | [啟用安全的混合式存取：使用現有的應用程式傳遞控制器和網路保護繼承應用程式](../manage-apps/secure-hybrid-access.md) (如果適用)  | 使用您現有的應用程式傳遞控制器或網路，將您的內部部署和雲端舊版驗證應用程式連接到 Azure AD，以發佈並保護這些應用程式。 |
 | [啟用自助式密碼重設](../authentication/tutorial-enable-sspr.md) (適用于僅限雲端的帳戶)  | 當使用者無法登入其裝置或應用程式時，這項功能可減少技術支援中心的來電和喪失生產力。 |
-| [可能的話，請使用非全域系統管理角色](../users-groups-roles/directory-assign-admin-roles.md) | 僅賦予您的系統管理員存取其所需存取區域的權限。 並非所有系統管理員都必須是全域管理員。 |
+| [可能的話，請使用非全域系統管理角色](../roles/permissions-reference.md) | 僅賦予您的系統管理員存取其所需存取區域的權限。 並非所有系統管理員都必須是全域管理員。 |
 | [啟用 Microsoft 的密碼指引](https://www.microsoft.com/research/publication/password-guidance/) | 停止要求使用者依照設定的排程變更其密碼，停用複雜性需求，而您的使用者會更容易記住其密碼並維護其安全性。 |
 
 
@@ -90,8 +90,8 @@ ms.locfileid: "90705362"
 | [自動化 SaaS 應用程式的使用者](../app-provisioning/user-provisioning.md) 布建和解除布建 (如果適用)  | 在雲端 (SaaS) 使用者需要存取的應用程式中，自動建立使用者身分識別和角色。 除了建立使用者身分識別之外，自動布建還包括維護和移除使用者身分識別的狀態或角色變更，從而提高組織的安全性。 |
 | [啟用條件式存取–以裝置為基礎](../conditional-access/require-managed-devices.md) | 使用以裝置為基礎的條件式存取來改善安全性和使用者體驗。 此步驟可確保使用者只能從符合安全性和合規性標準的裝置進行存取。 這些裝置也稱為受控裝置。 受管理的裝置可以是與 Intune 相容或混合式 Azure AD 加入的裝置。 |
 | [啟用密碼保護](../authentication/howto-password-ban-bad-on-premises-deploy.md) | 防止使用者使用弱且容易猜測的密碼。 |
-| [指定超過一個全域管理員](../users-groups-roles/directory-emergency-access.md) | 在發生緊急狀況時，請指定至少兩個僅限雲端的永久全域管理員帳戶。 這些帳戶並非每天使用，而且應該有複雜的長密碼。 中斷玻璃帳戶可確保您可以在緊急情況下存取服務。 |
-| [可能的話，請使用非全域系統管理角色](../users-groups-roles/directory-assign-admin-roles.md) | 僅賦予您的系統管理員存取其所需存取區域的權限。 並非所有系統管理員都必須是全域管理員。 |
+| [指定超過一個全域管理員](../roles/security-emergency-access.md) | 在發生緊急狀況時，請指定至少兩個僅限雲端的永久全域管理員帳戶。 這些帳戶並非每天使用，而且應該有複雜的長密碼。 中斷玻璃帳戶可確保您可以在緊急情況下存取服務。 |
+| [可能的話，請使用非全域系統管理角色](../roles/permissions-reference.md) | 僅賦予您的系統管理員存取其所需存取區域的權限。 並非所有系統管理員都必須是全域管理員。 |
 | [啟用 Microsoft 的密碼指引](https://www.microsoft.com/research/publication/password-guidance/) | 停止要求使用者依照設定的排程變更其密碼，停用複雜性需求，而您的使用者會更容易記住其密碼並維護其安全性。 |
 | [建立來賓使用者存取權的計劃](../external-identities/what-is-b2b.md) | 讓使用者使用自己的公司、學校或社交身分識別登入您的應用程式和服務，以與來賓使用者共同作業。 |
 
@@ -122,8 +122,8 @@ ms.locfileid: "90705362"
 | [自動化 SaaS 應用程式的使用者](../app-provisioning/user-provisioning.md) 布建和解除布建 (如果適用)  | 在雲端 (SaaS) 使用者需要存取的應用程式中，自動建立使用者身分識別和角色。 除了建立使用者身分識別之外，自動布建還包括維護和移除使用者身分識別的狀態或角色變更，從而提高組織的安全性。 |
 | [啟用條件式存取–以裝置為基礎](../conditional-access/require-managed-devices.md) | 使用以裝置為基礎的條件式存取來改善安全性和使用者體驗。 此步驟可確保使用者只能從符合安全性和合規性標準的裝置進行存取。 這些裝置也稱為受控裝置。 受管理的裝置可以是與 Intune 相容或混合式 Azure AD 加入的裝置。 |
 | [啟用密碼保護](../authentication/howto-password-ban-bad-on-premises-deploy.md) | 防止使用者使用弱且容易猜測的密碼。 |
-| [指定超過一個全域管理員](../users-groups-roles/directory-emergency-access.md) | 在發生緊急狀況時，請指定至少兩個僅限雲端的永久全域管理員帳戶。 這些帳戶並非每天使用，而且應該有複雜的長密碼。 中斷玻璃帳戶可確保您可以在緊急情況下存取服務。 |
-| [可能的話，請使用非全域系統管理角色](../users-groups-roles/directory-assign-admin-roles.md) | 僅賦予您的系統管理員存取其所需存取區域的權限。 並非所有系統管理員都必須是全域管理員。 |
+| [指定超過一個全域管理員](../roles/security-emergency-access.md) | 在發生緊急狀況時，請指定至少兩個僅限雲端的永久全域管理員帳戶。 這些帳戶並非每天使用，而且應該有複雜的長密碼。 中斷玻璃帳戶可確保您可以在緊急情況下存取服務。 |
+| [可能的話，請使用非全域系統管理角色](../roles/permissions-reference.md) | 僅賦予您的系統管理員存取其所需存取區域的權限。 並非所有系統管理員都必須是全域管理員。 |
 | [啟用 Microsoft 的密碼指引](https://www.microsoft.com/research/publication/password-guidance/) | 停止要求使用者依照設定的排程變更其密碼，停用複雜性需求，而您的使用者會更容易記住其密碼並維護其安全性。 |
 | [建立來賓使用者存取權的計劃](../external-identities/what-is-b2b.md) | 讓使用者使用自己的公司、學校或社交身分識別登入您的應用程式和服務，以與來賓使用者共同作業。 |
 | [啟用 Privileged Identity Management](../privileged-identity-management/pim-configure.md) | 可讓您管理、控制及監視您組織中重要資源的存取權，以確保系統管理員只有在需要時才可存取，並具有核准 |
