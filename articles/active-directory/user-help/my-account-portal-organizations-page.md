@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: 8b8abe60503c68f06a97782ea09d418ebf659216
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbe0c2047b3ed52fdd69295fd0fd867cb3a5f0ef
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90005066"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370333"
 ---
 # <a name="manage-organizations-you-have-access-to-in-the-my-account-portal"></a>在我的帳戶入口網站中管理您可以存取的組織
 
@@ -30,7 +30,7 @@ ms.locfileid: "90005066"
 - **其他組織**。 其他組織是您先前使用公司或學校帳戶登入的任何群組。 您可以隨時離開這些組織。
 
 >[!Important]
->本文適用于嘗試更新工作或學校帳戶所存取之組織資訊的使用者。 如果您是系統管理員，正在尋找適用於員工和其他用途的群組和使用者管理相關資訊，請參閱[企業使用者管理文件](../users-groups-roles/index.yml)。
+>本文適用于嘗試更新工作或學校帳戶所存取之組織資訊的使用者。 如果您是系統管理員，正在尋找適用於員工和其他用途的群組和使用者管理相關資訊，請參閱[企業使用者管理文件](../enterprise-users/index.yml)。
 
 ## <a name="view-your-organizations"></a>檢閱您的組織
 

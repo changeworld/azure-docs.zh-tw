@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
-ms.openlocfilehash: d333972ea5f74d1676e5e4b4e1417c6bf5d87b79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a8471305af93194ccae7b0928685e10d4d64726
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135348"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92366646"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>針對 vCenter Server 探索失敗進行疑難排解
 
@@ -36,7 +36,7 @@ System.FormatException: Input string was not in a correct format.
 
 - 識別 VM，並將值設定為 vCenter)  (VM 編輯設定的數值。
 
-或者
+Or
 
 - 將設定伺服器升級至9.20 版或更新版本。
 
@@ -54,7 +54,7 @@ vCenter Discovery 會接受系統使用者所設定的系統預設 proxy 設定�
 
 若要解決問題：
 
-下載 [PsExec 工具](https://aka.ms/PsExec)。 
+下載 [PsExec 工具](/sysinternals/downloads/psexec)。 
 
 使用 PsExec 工具來存取系統使用者內容，並判斷是否已設定 proxy 位址。 然後，您可以使用下列程式，將 vCenter 新增至略過清單。
 
@@ -79,6 +79,6 @@ vCenter Discovery 會接受系統使用者所設定的系統預設 proxy 設定�
 
 4. 重新開機 DRA 提供者服務。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-[管理 VMware VM 災害復原的設定伺服器](./vmware-azure-manage-configuration-server.md#refresh-configuration-server) 
+[管理 VMware VM 災害復原的設定伺服器](./vmware-azure-manage-configuration-server.md#refresh-configuration-server)

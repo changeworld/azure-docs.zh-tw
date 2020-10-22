@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: bf68963515e1208868efb40c2d3fc56c9ab4e0df
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 447b781ec83a01a58e6af9e9e43f75b3fc56b10f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107754"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370775"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>使用安全匯出將 Azure 連接至 ITSM 工具
 
@@ -36,18 +36,18 @@ ITSMC 會使用使用者名稱和密碼認證。 安全匯出有更強的驗證�
 安全匯出資料流程的步驟如下：
 
 1. Azure 監視器傳送已設定為使用安全匯出的警示。
-1. 警示內容是由安全的 Webhook 動作傳送至 ITSM 工具。
-1. 如果警示已獲授權進入 ITSM 工具，ITSM 應用程式會檢查 Azure AD。
-1. 如果警示已獲得授權，則應用程式：
+2. 警示內容是由安全的 Webhook 動作傳送至 ITSM 工具。
+3. 如果警示已獲授權進入 ITSM 工具，ITSM 應用程式會檢查 Azure AD。
+4. 如果警示已獲得授權，則應用程式：
    
    1. 建立工作專案 (例如，ITSM 工具中的事件) 。
-   1. 將設定專案的識別碼 (CI) 系結至客戶管理資料庫 (CMDB) 。
+   2. 將設定專案的識別碼 (CI) 系結至客戶管理資料庫 (CMDB) 。
 
 ![此圖顯示 ITSM 工具如何與 Azure A D、Azure 警示和動作群組進行通訊。](media/it-service-management-connector-secure-webhook-connections/secure-export-diagram.png)
 
-## <a name="connection-with-bmc-helix"></a>與 BMC Helix 連接
+## <a name="benefits-of-secure-export"></a>安全匯出的優點
 
-安全匯出支援 BMC Helix。 整合的一些優點如下：
+整合的主要優點如下：
 
 * **更好的驗證**： Azure AD 提供更安全的驗證，而不會發生 ITSMC 中經常發生的超時狀況。
 * **ITSM 工具中已解決的警示**：計量警示會執行「已引發」和「已解決」狀態。 符合條件時，警示狀態會是「已引發」。 當條件不再符合時，警示狀態會是「已解決」。 在 ITSMC 中，無法自動解決警示。 使用「安全匯出」時，已解決狀態會流向 ITSM 工具，因此會自動更新。
@@ -57,18 +57,18 @@ ITSMC 會使用使用者名稱和密碼認證。 安全匯出有更強的驗證�
 
 1. 向 Azure AD 註冊應用程式.
 2. 建立安全 Webhook 動作群組。
-3. 設定您的夥伴環境。
+3. 設定您的夥伴環境。 今天我們支援一個是 BMC Helix 的廠商。
 
 ## <a name="register-with-azure-active-directory"></a>向 Azure Active Directory 註冊
 
 請遵循下列步驟，向 Azure AD 註冊應用程式：
 
 1. 遵循 [使用 Microsoft 身分識別平臺註冊應用程式](../../active-directory/develop/quickstart-register-app.md)中的步驟。
-1. 在 Azure AD 中，選取 [ **公開應用程式**]。
-1. 選取 [**應用程式識別碼 URI**的**設定**]。
+2. 在 Azure AD 中，選取 [ **公開應用程式**]。
+3. 選取 [**應用程式識別碼 URI**的**設定**]。
 
    [![設定我的應用程式 U R I D 的選項螢幕擷取畫面。](media/it-service-management-connector-secure-webhook-connections/azure-ad.png)](media/it-service-management-connector-secure-webhook-connections/azure-ad-expand.png#lightbox)
-1. 選取 [儲存]。
+4. 選取 [儲存]。
 
 ## <a name="create-a-secure-webhook-action-group"></a>建立安全 Webhook 動作群組
 
@@ -77,25 +77,17 @@ ITSMC 會使用使用者名稱和密碼認證。 安全匯出有更強的驗證�
 動作群組提供模組化且可重複使用的方式來觸發 Azure 警示的動作。 您可以在 Azure 入口網站中使用具有計量警示、活動記錄警示和 Azure Log Analytics 警示的動作群組。
 若要深入了解動作群組，請參閱[在 Azure 入口網站中建立和管理動作群組](./action-groups.md)。
 
-在 BMC Helix 環境中使用下列程式：
-
-1. 登入 Integration Studio。
-1. 搜尋 **從 Azure 警示流程建立事件** 。
-1. 複製 webhook URL。
-   
-   ![Integration Studio 中 webhook U R L 的螢幕擷取畫面。](media/it-service-management-connector-secure-webhook-connections/bmc-url.png)
-
 若要將 webhook 新增至動作，請依照下列指示進行安全 Webhook：
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，搜尋並選取 [監視器]。 [監視器] 頁面會將您的所有監視設定與資料合併在一個檢視中。
-1. 選取 [**警示**  >  **管理動作**]。
-1. 選取 [新增動作群組]，並填寫各欄位。
-1. 在 [動作群組名稱] 方塊中輸入名稱，然後在 [簡短名稱] 方塊中，輸入名稱。 使用這個群組傳送通知時，會使用簡短名稱來取代完整的動作群組名稱。
-1. 選取 [ **安全 Webhook**]。
-1. 選取下列詳細資料：
+2. 選取 [**警示**  >  **管理動作**]。
+3. 選取 [新增動作群組]，並填寫各欄位。
+4. 在 [動作群組名稱] 方塊中輸入名稱，然後在 [簡短名稱] 方塊中，輸入名稱。 使用這個群組傳送通知時，會使用簡短名稱來取代完整的動作群組名稱。
+5. 選取 [ **安全 Webhook**]。
+6. 選取下列詳細資料：
    1. 選取您所註冊 Azure Active Directory 實例的物件識別碼。
-   1. 針對 URI，貼上您從 BMC Helix 環境複製的 webhook URL。
-   1. 將 **[啟用一般警示架構** ] 設定為 **[是]**。 
+   2. 針對 URI，貼上您從廠商環境複製的 webhook URL。
+   3. 將 **[啟用一般警示架構** ] 設定為 **[是]**。 
 
    下圖顯示範例安全 Webhook 動作的設定：
 
@@ -103,11 +95,15 @@ ITSMC 會使用使用者名稱和密碼認證。 安全匯出有更強的驗證�
 
 ## <a name="configure-the-partner-environment"></a>設定夥伴環境
 
+此設定包含兩個步驟：
+1. 取得安全匯出定義的 URI。
+2. 根據廠商流程的定義。
+
 ### <a name="connect-bmc-helix-to-azure-monitor"></a>將 BMC Helix 連接到 Azure 監視器
 
 下列各節提供有關如何在 Azure 中連接您的 BMC Helix 產品和安全匯出的詳細資料。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 確定您符合下列必要條件：
 
@@ -116,18 +112,26 @@ ITSMC 會使用使用者名稱和密碼認證。 安全匯出有更強的驗證�
 
 ### <a name="configure-the-bmc-helix-connection"></a>設定 BMC Helix 連接
 
-1. 遵循 accoring 至版本的指示：
+1. 在 BMC Helix 環境中使用下列程式，以便取得安全匯出的 URI：
+
+   1. 登入 Integration Studio。
+   2. 搜尋 **從 Azure 警示流程建立事件** 。
+   3. 複製 webhook URL。
+   
+   ![Integration Studio 中 webhook U R L 的螢幕擷取畫面。](media/it-service-management-connector-secure-webhook-connections/bmc-url.png)
+   
+2. 依照下列版本的指示進行：
    * [針對20.02 版的 Azure 監視器啟用預建整合](https://docs.bmc.com/docs/multicloud/enabling-prebuilt-integration-with-azure-monitor-879728195.html)。
    * [針對19.11 版的 Azure 監視器啟用預建整合](https://docs.bmc.com/docs/multicloudprevious/enabling-prebuilt-integration-with-azure-monitor-904157623.html)。
 
-1. 在 BMC Helix 中設定連線的一部分，請移至您的整合 BMC 實例，並遵循下列指示：
+3. 在 BMC Helix 中設定連線的一部分，請移至您的整合 BMC 實例，並遵循下列指示：
 
    1. 選取 [ **目錄**]。
-   1. 選取 **Azure 警示**。
-   1. 選取 [ **連接器**]。
-   1. 選取 **[** 設定]。
-   1. 選取 [ **新增連接** 設定]。
-   1. 填入設定區段的資訊：
+   2. 選取 **Azure 警示**。
+   3. 選取 [ **連接器**]。
+   4. 選取 **[** 設定]。
+   5. 選取 [ **新增連接** 設定]。
+   6. 填入設定區段的資訊：
       - **名稱**：組成您自己的。
       - **授權類型**： **無**
       - **描述**：組成您自己的。

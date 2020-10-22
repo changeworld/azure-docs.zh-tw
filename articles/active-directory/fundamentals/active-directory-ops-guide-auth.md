@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 178c54b9726f21775603d67cb0911237aa4caf01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f91928812dd2f9f850b5e4c3af16ce5c82608e05
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90601359"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371047"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory Authentication 管理作業參考指南
 
@@ -42,13 +42,13 @@ ms.locfileid: "90601359"
 | 分級並調查 Azure AD Identity Protection 中標示為有風險的使用者和弱點報告 | InfoSec 作業小組 |
 
 > [!NOTE]
-> Azure AD Identity Protection 需要 Azure AD Premium P2 授權。 若要尋找您需求的正確授權，請參閱 [比較 Azure AD Free 的正式運作功能和 Azure AD Premium 的版本](https://azure.microsoft.com/pricing/details/active-directory/)。
+> Azure AD Identity Protection 需要 Azure AD Premium P2 授權。 若要尋找您需求的正確授權，請參閱 [比較 Azure AD Free 的正式運作功能和 Azure AD Premium 的版本](https://azure.microsoft.com/pricing/details/active-directory/)。
 
 當您複習清單時，可能會發現您需要為缺少擁有者的工作指派擁有者，或針對擁有者未與上述建議一致的工作，調整其擁有權。
 
 #### <a name="owner-recommended-reading"></a>擁有者建議閱讀
 
-- [在 Azure Active Directory 中指派系統管理員角色](../users-groups-roles/directory-assign-admin-roles.md)
+- [在 Azure Active Directory 中指派系統管理員角色](../roles/permissions-reference.md)
 - [Azure 中的治理](../../governance/index.yml)
 
 ## <a name="credentials-management"></a>認證管理
@@ -119,7 +119,7 @@ ms.locfileid: "90601359"
 
 ### <a name="device-trust-access-policies"></a>裝置信任存取原則
 
-就像是貴組織中的使用者，裝置是您想要保護的核心身分識別。 您可以使用裝置的身分識別，隨時隨地保護您的資源。驗證裝置，並針對其信任類型進行帳戶處理，可透過下列方式改善您的安全性狀態和可用性：
+就像是貴組織中的使用者，裝置是您想要保護的核心身分識別。 您可以使用裝置的身分識別，隨時隨地保護您的資源。 驗證裝置，並針對其信任類型進行帳戶處理，可透過下列方式改善您的安全性狀態和可用性：
 
 - 在裝置受信任時避免發生衝突，例如透過 MFA
 - 封鎖不受信任裝置的存取
@@ -128,7 +128,7 @@ ms.locfileid: "90601359"
 您可以使用下列其中一種方法，藉由在 Azure AD 中帶入裝置身分識別並管理它們，以達成此目標：
 
 - 組織可以使用 [Microsoft Intune](/intune/what-is-intune) 來管理裝置並強制執行合規性原則、證明裝置健康情況，以及根據裝置是否符合規範來設定條件式存取原則。 Microsoft Intune 可以管理 iOS 裝置、Mac 桌面 (透過 JAMF 整合) 、Windows 桌面 (以原生方式使用行動裝置管理進行 Windows 10，以及使用 Microsoft Endpoint Configuration Manager) 和 Android 行動裝置進行共同管理。
-- [混合式 Azure AD join](../devices/hybrid-azuread-join-managed-domains.md) 可在 Active Directory 加入網域的電腦裝置的環境中，使用群組原則或 Microsoft Endpoint Configuration Manager 來管理。 組織可以透過無縫 SSO 的 PHS 或 PTA 部署受控環境。 將您的裝置帶入 Azure AD 可透過跨雲端和內部部署資源的 SSO 來將使用者生產力最大化，同時讓您同時使用 [條件式存取](../conditional-access/overview.md)來保護雲端和內部部署資源的存取   。
+- [混合式 Azure AD join](../devices/hybrid-azuread-join-managed-domains.md) 可在 Active Directory 加入網域的電腦裝置的環境中，使用群組原則或 Microsoft Endpoint Configuration Manager 來管理。 組織可以透過無縫 SSO 的 PHS 或 PTA 部署受控環境。 將您的裝置帶入 Azure AD 可透過跨雲端和內部部署資源的 SSO 來將使用者生產力最大化，同時讓您同時使用 [條件式存取](../conditional-access/overview.md) 來保護雲端和內部部署資源的存取。
 
 如果您有已加入網域的 Windows 裝置未在雲端中註冊，或已加入網域的 Windows 裝置已在雲端中註冊，但沒有條件式存取原則，則您應該註冊未註冊的裝置，並在任何一種情況下，在條件式存取原則中 [使用混合式 Azure AD 聯結作為控制項](../conditional-access/require-managed-devices.md) 。
 
@@ -177,7 +177,7 @@ ms.locfileid: "90601359"
 
 ### <a name="assign-users-to-applications"></a>將使用者指派給應用程式
 
-將[使用者指派給應用程式](../manage-apps/assign-user-or-group-access-portal.md)最好是使用群組進行對應，因為它們可提供更大的彈性和大規模管理的能力。 使用群組的優點包括以 [屬性為基礎的動態群組成員資格](../users-groups-roles/groups-dynamic-membership.md) ，以及 [對應用程式擁有](../fundamentals/active-directory-accessmanagement-managing-group-owners.md)者的委派。 因此，如果您已經在使用和管理群組，建議您採取下列動作來大規模改進管理：
+將[使用者指派給應用程式](../manage-apps/assign-user-or-group-access-portal.md)最好是使用群組進行對應，因為它們可提供更大的彈性和大規模管理的能力。 使用群組的優點包括以 [屬性為基礎的動態群組成員資格](../enterprise-users/groups-dynamic-membership.md) ，以及 [對應用程式擁有](../fundamentals/active-directory-accessmanagement-managing-group-owners.md)者的委派。 因此，如果您已經在使用和管理群組，建議您採取下列動作來大規模改進管理：
 
 - 將群組管理和治理委派給應用程式擁有者。
 - 允許自助服務存取應用程式。
@@ -189,8 +189,8 @@ ms.locfileid: "90601359"
 #### <a name="assign-users-to-applications-recommended-reading"></a>將使用者指派給建議的應用程式閱讀
 
 - [將使用者和群組指派至 Azure Active Directory 中的應用程式](../manage-apps/assign-user-or-group-access-portal.md)
-- [在 Azure Active Directory 中委派應用程式註冊許可權](../users-groups-roles/roles-delegate-app-roles.md)
-- [Azure Active Directory 中群組的動態成員資格規則](../users-groups-roles/groups-dynamic-membership.md)
+- [在 Azure Active Directory 中委派應用程式註冊許可權](../roles/delegate-app-roles.md)
+- [Azure Active Directory 中群組的動態成員資格規則](../enterprise-users/groups-dynamic-membership.md)
 
 ## <a name="access-policies"></a>存取原則
 
@@ -248,7 +248,7 @@ Microsoft Intune 應用程式管理 (MAM) 提供將資料保護控制（例如�
 - 使用條件式存取原則來 [實行 mfa](../conditional-access/plan-conditional-access.md)，而不是使用 **每個使用者的 mfa**
 - 具有可套用至多個應用程式的一組小型核心原則
 - 定義空的例外狀況群組，並將其新增至原則以具有例外狀況策略
-- 規劃 [中斷玻璃](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency) 帳戶而不搭配 MFA 控制項
+- 規劃 [中斷玻璃](../roles/security-planning.md#break-glass-what-to-do-in-an-emergency) 帳戶而不搭配 MFA 控制項
 - 針對 Exchange Online 和 Sharepoint Online 等服務執行相同的一組控制項，確保跨 Microsoft 365 用戶端應用程式（例如，小組、OneDrive、Outlook 等） ) 一致的體驗。
 - 原則的指派應透過群組（而非個人）來執行
 - 定期審核原則中所使用的例外狀況群組，以限制使用者超出安全性狀態的時間。 如果您擁有 Azure AD P2，則可以使用存取權審核來自動化流程
@@ -347,7 +347,7 @@ MFA 等強式認證無法使用舊版驗證通訊協定來保護應用程式，�
 - [整合應用程式與 Azure Active Directory](../develop/quickstart-register-app.md)
 - [Azure Active Directory 中的應用程式、許可權及同意。](../develop/quickstart-register-app.md)
 - [使用群組來管理 Azure Active Directory 中資源的存取權](./active-directory-manage-groups.md)
-- [在 Azure Active Directory 中設定自助應用程式存取管理](../users-groups-roles/groups-self-service-management.md)
+- [在 Azure Active Directory 中設定自助應用程式存取管理](../enterprise-users/groups-self-service-management.md)
 
 ### <a name="traffic-from-unexpected-locations"></a>來自非預期位置的流量
 

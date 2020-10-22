@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 841bc3ae4fbddb376ea4da8141bf4df3f895c4dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a56cd23494f65b1c74e44868496855c6e4a32bf7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269551"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365811"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>部署安全的 Azure 管理工作站
 
@@ -51,11 +51,11 @@ ms.locfileid: "89269551"
 
 本指南涵蓋的概念假設您有 Microsoft 365 企業版 E5 或對等的 SKU。 本指南中的某些建議可使用較低的 Sku 來執行。 如需詳細資訊，請參閱 [Microsoft 365 企業版授權](https://www.microsoft.com/licensing/product-licensing/microsoft-365-enterprise)。
 
-若要將授權布建自動化，請考慮以 [群組為基礎的授權](../users-groups-roles/licensing-groups-assign.md) 給您的使用者。
+若要將授權布建自動化，請考慮以 [群組為基礎的授權](../enterprise-users/licensing-groups-assign.md) 給您的使用者。
 
 ## <a name="azure-active-directory-configuration"></a>Azure Active Directory 組態
 
-Azure Active Directory (Azure AD) 管理系統管理員工作站的使用者、群組和裝置。 使用 [系統管理員帳戶](../users-groups-roles/directory-assign-admin-roles.md)啟用身分識別服務和功能。
+Azure Active Directory (Azure AD) 管理系統管理員工作站的使用者、群組和裝置。 使用 [系統管理員帳戶](../roles/permissions-reference.md)啟用身分識別服務和功能。
 
 當您建立安全的工作站系統管理員帳戶時，您會將帳戶公開給目前的工作站。 請務必使用已知的安全裝置來執行此初始設定和所有全域設定。 若要減少首次體驗的攻擊風險，請考慮遵循指導方針 [來防止惡意](/windows/security/threat-protection/intelligence/prevent-malware-infection)代碼的感染。
 
@@ -71,13 +71,13 @@ Azure Active Directory (Azure AD) 管理系統管理員工作站的使用者、�
    * **使用者名稱** - `secure-ws-admin@identityitpro.com`
    * **目錄角色**  - **受限的系統管理員**，然後選取**Intune 系統管理員**角色。
 
-1. 選取 [建立]****。
+1. 選取 [建立]。
 
 接下來，您會建立兩個群組：工作站使用者和工作站裝置。
 
 在 Azure 入口網站中，流覽至**Azure Active Directory**  >  **群組**  >  **新增群組**。
 
-1. 針對工作站使用者群組，您可能會想要設定以 [群組為基礎的授權](../users-groups-roles/licensing-groups-assign.md) ，將授權的布建自動化至使用者。
+1. 針對工作站使用者群組，您可能會想要設定以 [群組為基礎的授權](../enterprise-users/licensing-groups-assign.md) ，將授權的布建自動化至使用者。
 1. 針對工作站使用者群組，請輸入：
 
    * **群組類型** -安全性
@@ -86,14 +86,14 @@ Azure Active Directory (Azure AD) 管理系統管理員工作站的使用者、�
 
 1. 新增您的安全工作站系統管理員使用者： `secure-ws-admin@identityitpro.com`
 1. 您可以新增任何其他將管理安全工作站的使用者。
-1. 選取 [建立]****。
+1. 選取 [建立]。
 1. 針對工作站裝置群組，請輸入：
 
    * **群組類型** -安全性
    * **組名** -安全工作站
    * **成員資格類型** -已指派
 
-1. 選取 [建立]****。
+1. 選取 [建立]。
 
 ### <a name="azure-ad-device-configuration"></a>Azure AD 裝置設定
 
@@ -117,7 +117,7 @@ Azure Active Directory (Azure AD) 管理系統管理員工作站的使用者、�
 
 1. 移至 [Azure Active Directory] > [裝置] > [裝置設定]。
 1. 在 [**需要多重要素驗證來加入裝置**] 下方選取 **[是]** 。
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
 #### <a name="configure-mobile-device-management"></a>設定行動裝置管理
 
@@ -125,13 +125,13 @@ Azure Active Directory (Azure AD) 管理系統管理員工作站的使用者、�
 
 1. 流覽至**Azure Active Directory**  >  **行動 (MDM 和 MAM) **  >  **Microsoft Intune**。
 1. 將 [ **MDM 使用者範圍** ] 設定變更為 [ **全部**]。
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
 這些步驟可讓您使用 Intune 管理任何裝置。 如需詳細資訊，請參閱 [Intune 快速入門：設定 Windows 10 裝置的自動註冊](/Intune/quickstart-setup-auto-enrollment)。 您在未來的步驟中會建立 Intune 設定和合規性原則。
 
 #### <a name="azure-ad-conditional-access"></a>Azure AD 條件式存取
 
-Azure AD 條件式存取有助於將特殊許可權的系統管理工作限制為符合規範的裝置。 登入雲端應用程式時，需要 **安全工作站使用者** 群組的預先定義成員，才能執行多重要素驗證。 最佳做法是從原則中排除緊急存取帳戶。 如需詳細資訊，請參閱 [Azure AD 中的管理緊急存取帳戶](../users-groups-roles/directory-emergency-access.md)。
+Azure AD 條件式存取有助於將特殊許可權的系統管理工作限制為符合規範的裝置。 登入雲端應用程式時，需要 **安全工作站使用者** 群組的預先定義成員，才能執行多重要素驗證。 最佳做法是從原則中排除緊急存取帳戶。 如需詳細資訊，請參閱 [Azure AD 中的管理緊急存取帳戶](../roles/security-emergency-access.md)。
 
 ## <a name="intune-configuration"></a>Intune 設定
 
@@ -166,13 +166,13 @@ Azure AD 條件式存取有助於將特殊許可權的系統管理工作限制�
    * [ **加入 Azure AD 為** ] 方塊應該會顯示 **Azure AD 已加入** 並呈現灰色。
    * 選取您的語言 (區域) 、使用者帳戶類型 **標準**。 
 
-1. 選取 [下一步]  。
+1. 選取 [下一步] 。
 
    * 如果您已預先設定範圍標籤，請加以選取。
 
-1. 選取 [下一步]  。
+1. 選取 [下一步] 。
 1. 選擇**Assignments**  >  **指派給**  >  **所選群組**的指派。 在 [ **選取要包含的群組**] 中，選擇 [ **安全工作站**]。
-1. 選取 [下一步]  。
+1. 選取 [下一步] 。
 1. 選取 [建立] 以建立設定檔。 現在可以指派 Autopilot 部署設定檔給裝置。
 
 Autopilot 中的裝置註冊會根據裝置類型和角色提供不同的使用者體驗。 在我們的部署範例中，我們會說明一個模型，其中受保護的裝置會大量部署並可共用，但在第一次使用時，會將裝置指派給使用者。 如需詳細資訊，請參閱 [Intune Autopilot 裝置註冊](/intune/device-enrollment)。
@@ -200,7 +200,7 @@ Autopilot 中的裝置註冊會根據裝置類型和角色提供不同的使用�
    * 延遲預約重新開機提醒 (天) - **3**
    * 設定暫止重新開機的期限 (天) - **3**
 
-1. 選取 [建立]****。
+1. 選取 [建立]。
 1. 在 [ **指派** ] 索引標籤上，新增 **安全工作站** 群組。
 
 如需 Windows Update 原則的詳細資訊，請參閱 [原則 CSP-更新](/windows/client-management/mdm/policy-csp-update)。
@@ -221,7 +221,7 @@ Windows Defender ATP 與 Microsoft Intune 合作，以協助防止安全性缺�
 
 1. 建立連線之後，請返回 Intune， **然後選取頂端的 [** 重新整理]。
 1. 將 [將 Windows 裝置 10.0.15063 版和更高版本連線至 Windows Defender ATP]**** 設定為 [開啟]****。
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
 如需詳細資訊，請參閱 [Windows Defender 進階威脅防護](/Windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection)。
 
@@ -308,7 +308,7 @@ Windows Defender ATP 與 Microsoft Intune 合作，以協助防止安全性缺�
 
 ### <a name="conditional-access-only-allowing-secured-workstation-ability-to-access-azure-portal"></a>條件式存取僅允許安全的工作站存取 Azure 入口網站
 
-Azure AD 提供管理和限制的能力，以及誰可以存取您的 Azure 雲端管理入口網站。 啟用 [條件式存取](../conditional-access/overview.md) 可確保只有您的安全工作站可以管理或變更資源。 當您部署這項功能時，請務必在部署這項功能時，如果 [緊急存取](../users-groups-roles/directory-emergency-access.md) 功能可以或應該僅用於極端案例和透過原則管理的帳戶。
+Azure AD 提供管理和限制的能力，以及誰可以存取您的 Azure 雲端管理入口網站。 啟用 [條件式存取](../conditional-access/overview.md) 可確保只有您的安全工作站可以管理或變更資源。 當您部署這項功能時，請務必在部署這項功能時，如果 [緊急存取](../roles/security-emergency-access.md) 功能可以或應該僅用於極端案例和透過原則管理的帳戶。
 
 > [!NOTE]
 > 您將需要建立使用者群組，並包含可以略過條件式存取原則的緊急使用者。 在我們的範例中，我們有一個稱為**緊急 BreakGlass**的安全性群組
@@ -341,11 +341,11 @@ Microsoft 腳本中心提供的 [SetDesktopBackground.ps1](https://gallery.techn
 1. 提供腳本的 **名稱** ，並指定 **腳本位置**。
 1. 選取 [設定] 。
    1. 將 **[使用登入認證執行此腳本** ] 設定為 **[是]**。
-   1. 選取 [確定]  。
-1. 選取 [建立]****。
+   1. 選取 [確定]。
+1. 選取 [建立]。
 1. 選取**指派**  >  **選取群組**。
    1. 新增安全性群組安全 **工作站**。
-   1. 選取 [儲存]****。
+   1. 選取 [儲存]。
 
 ## <a name="enroll-and-validate-your-first-device"></a>註冊並驗證您的第一部裝置
 
@@ -428,11 +428,11 @@ Sentinel 監視要求您的資料來源（例如 Azure AD）必須設定連接�
 1. 提供腳本的 **名稱** ，並指定 **腳本位置**。
 1. 選取 [設定] 。
    1. 將 **[使用登入認證執行此腳本** ] 設定為 **[是]**。
-   1. 選取 [確定]  。
-1. 選取 [建立]****。
+   1. 選取 [確定]。
+1. 選取 [建立]。
 1. 選取**指派**  >  **選取群組**。
    1. 新增安全性群組安全 **工作站**。
-   1. 選取 [儲存]****。
+   1. 選取 [儲存]。
 
 接下來，您必須設定 Log Analytics 以接收新的記錄
 1. 在 **Azure 入口網站**中，移至 **Log Analytics 工作區** > 選取-「安全工作站監視」

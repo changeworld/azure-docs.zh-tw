@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 66cf408799b37de1160ec3a76ee11ff1ffbb770b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe31e67168c4eaf6fe94c056a96fdf695ea94fe4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801387"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279989"
 ---
 # <a name="azure-cosmos-dbnet-v3-sdk-microsoftazurecosmos-examples-for-the-sql-api"></a>適用於 SQL API 的 Azure Cosmos DB.NET V3 SDK (Microsoft.Azure.Cosmos) 範例
 
@@ -54,7 +54,7 @@ Azure 訂用帳戶或免費的 Cosmos DB 試用帳戶
 
 ## <a name="database-examples"></a>資料庫範例
 
-DatabaseManagement 專案範例的 [RunDatabaseDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/DatabaseManagement/Program.cs#L65-L91) 方法說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 資料庫，請參閱[使用資料庫、容器和項目](databases-containers-items.md)。
+DatabaseManagement 專案範例的 [RunDatabaseDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/DatabaseManagement/Program.cs#L65-L91) 方法說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 資料庫，請參閱[使用資料庫、容器和項目](account-databases-containers-items.md)。
 
 | Task | API 參考資料 |
 | --- | --- |
@@ -65,7 +65,7 @@ DatabaseManagement 專案範例的 [RunDatabaseDemo](https://github.com/Azure/az
 
 ## <a name="container-examples"></a>容器範例
 
-範例 *ContainerManagement* 專案的 [RunContainerDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ContainerManagement/Program.cs#L69-L89) 方法會說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 容器，請參閱[使用資料庫、容器和項目](databases-containers-items.md)。
+範例 *ContainerManagement* 專案的 [RunContainerDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ContainerManagement/Program.cs#L69-L89) 方法會說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 容器，請參閱[使用資料庫、容器和項目](account-databases-containers-items.md)。
 
 | Task | API 參考資料 |
 | --- | --- |
@@ -78,7 +78,7 @@ DatabaseManagement 專案範例的 [RunDatabaseDemo](https://github.com/Azure/az
 
 ## <a name="item-examples"></a>項目範例
 
-範例 *ItemManagement* 專案的 [RunItemsDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L119-L130) 方法會說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 項目，請參閱[使用資料庫、容器和項目](databases-containers-items.md)。
+範例 *ItemManagement* 專案的 [RunItemsDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L119-L130) 方法會說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 項目，請參閱[使用資料庫、容器和項目](account-databases-containers-items.md)。
 
 | Task | API 參考資料 |
 | --- | --- |

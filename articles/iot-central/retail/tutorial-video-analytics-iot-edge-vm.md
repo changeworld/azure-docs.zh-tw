@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: db3d4bb7f4b32c07e75487764acc5e7ba7d05915
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: aa4ddfc773e2226fe155b563c237f1c533d52311
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873273"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127023"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>教學課程：建立適用於影片分析的 IoT Edge 執行個體 (Linux VM)
 
@@ -94,7 +94,7 @@ sudo iotedge list
 
 部署已建立自訂的 IoT Edge 環境，其中包含即時影片分析所需的模組。 部署已更新預設的 **config.yaml**，以確保 IoT Edge 執行階段會使用 IoT 裝置佈建服務連線到 IoT Central。 此部署也會在 **/data/storage** 資料夾中建立名為 **state.json** 的檔案，以提供其他設定資料給模組。 如需詳細資訊，請參閱[建立適用於影片分析的 IoT Edge 執行個體 (Intel NUC)](./tutorial-video-analytics-iot-edge-nuc.md) 教學課程。
 
-若要針對 IoT Edge 裝置進行疑難排解，請參閱[針對您的 IoT Edge 裝置進行疑難排解](https://docs.microsoft.com/azure/iot-edge/troubleshoot)
+若要針對 IoT Edge 裝置進行疑難排解，請參閱[針對您的 IoT Edge 裝置進行疑難排解](../../iot-edge/troubleshoot.md)
 
 ## <a name="use-the-rtsp-simulator"></a>使用 RTSP 模擬器
 

@@ -16,18 +16,18 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 870c9c91e285988cdc1fb294b3fc9b3270de7483
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a891830d876bfa99d29087278dd5b870ae7e2866
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85361899"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368378"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>使用 Azure 入口網站新增或移除外部來賓使用者的 Azure 角色指派
 
 [Azure 角色型存取控制 (AZURE RBAC) ](overview.md) 可針對大型組織以及需要存取您環境中特定資源，但不一定要存取整個基礎結構或任何計費相關範圍的外部共同作業者、廠商或兼職企業，提供更佳的安全性管理。 您可以使用 [AZURE ACTIVE DIRECTORY B2B](../active-directory/b2b/what-is-b2b.md) 中的功能與外部來賓使用者共同作業，也可以使用 Azure RBAC 僅授與來賓使用者在您環境中所需的許可權。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要新增或移除角色指派，您必須具有：
 
@@ -183,7 +183,7 @@ ms.locfileid: "85361899"
 
 ![來賓使用者無法流覽目錄中的使用者](./media/role-assignments-external-users/directory-no-users.png)
 
-如果來賓使用者需要目錄中的額外許可權，您可以將目錄角色指派給來賓使用者。 如果您真的想要讓來賓使用者擁有您目錄的完整讀取權限，您可以將來賓使用者新增至 Azure AD 中的 [目錄讀取](../active-directory/users-groups-roles/directory-assign-admin-roles.md) 者角色。 如需詳細資訊，請參閱 [在您的 Azure Active Directory 租使用者中，將許可權授與夥伴組織的使用者](../active-directory/b2b/add-guest-to-role.md)。
+如果來賓使用者需要目錄中的額外許可權，您可以將目錄角色指派給來賓使用者。 如果您真的想要讓來賓使用者擁有您目錄的完整讀取權限，您可以將來賓使用者新增至 Azure AD 中的 [目錄讀取](../active-directory/roles/permissions-reference.md) 者角色。 如需詳細資訊，請參閱 [在您的 Azure Active Directory 租使用者中，將許可權授與夥伴組織的使用者](../active-directory/b2b/add-guest-to-role.md)。
 
 ![指派目錄讀取者角色](./media/role-assignments-external-users/directory-roles.png)
 
@@ -193,11 +193,11 @@ ms.locfileid: "85361899"
 
 ![來賓使用者無法流覽安全性主體以指派角色](./media/role-assignments-external-users/directory-no-browse.png)
 
-如果來賓使用者知道某人在目錄中的確切登入名稱，他們可以授與存取權。 如果您真的想要讓來賓使用者擁有您目錄的完整讀取權限，您可以將來賓使用者新增至 Azure AD 中的 [目錄讀取](../active-directory/users-groups-roles/directory-assign-admin-roles.md) 者角色。 如需詳細資訊，請參閱 [在您的 Azure Active Directory 租使用者中，將許可權授與夥伴組織的使用者](../active-directory/b2b/add-guest-to-role.md)。
+如果來賓使用者知道某人在目錄中的確切登入名稱，他們可以授與存取權。 如果您真的想要讓來賓使用者擁有您目錄的完整讀取權限，您可以將來賓使用者新增至 Azure AD 中的 [目錄讀取](../active-directory/roles/permissions-reference.md) 者角色。 如需詳細資訊，請參閱 [在您的 Azure Active Directory 租使用者中，將許可權授與夥伴組織的使用者](../active-directory/b2b/add-guest-to-role.md)。
 
 ### <a name="guest-user-cannot-register-applications-or-create-service-principals"></a>來賓使用者無法註冊應用程式或建立服務主體
 
-來賓使用者具有受限的目錄權限。 如果來賓使用者需要能夠註冊應用程式或建立服務主體，您可以將來賓使用者新增至 Azure AD 中的 [應用程式開發人員](../active-directory/users-groups-roles/directory-assign-admin-roles.md) 角色。 如需詳細資訊，請參閱 [在您的 Azure Active Directory 租使用者中，將許可權授與夥伴組織的使用者](../active-directory/b2b/add-guest-to-role.md)。
+來賓使用者具有受限的目錄權限。 如果來賓使用者需要能夠註冊應用程式或建立服務主體，您可以將來賓使用者新增至 Azure AD 中的 [應用程式開發人員](../active-directory/roles/permissions-reference.md) 角色。 如需詳細資訊，請參閱 [在您的 Azure Active Directory 租使用者中，將許可權授與夥伴組織的使用者](../active-directory/b2b/add-guest-to-role.md)。
 
 ![來賓使用者無法註冊應用程式](./media/role-assignments-external-users/directory-access-denied.png)
 

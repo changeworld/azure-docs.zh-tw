@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: a634743441866c4f1a9f6d634efe0ff9e368b5e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dee5a56f309dab8f09a598219f6302c88f4308e7
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757838"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370707"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>設定及使用適用於 Azure Cosmos DB 的 Azure Synapse Link (預覽)
 
@@ -218,9 +218,6 @@ container.replace(containerProperties).block();
 ## <a name="query-the-analytical-store-using-synapse-sql-serverless"></a><a id="query-analytical-store-sql-on-demand"></a> 使用 Synapse SQL 無伺服器查詢分析存放區
 
 Synapse SQL 無伺服器 (一項預覽功能，先前稱為 SQL 隨 **選**) 可讓您在使用 Azure Synapse 連結啟用的 Azure Cosmos DB 容器中查詢及分析資料。 您可以近乎即時地分析資料，而不會影響交易式工作負載的效能。 它提供了一個熟悉的 T-sql 語法，可從分析存放區查詢資料，並透過 T-sql 介面整合各種 BI 和臨機操作查詢工具的連接。 若要深入瞭解，請參閱 [使用 SYNAPSE SQL 無伺服器文章的查詢分析存放區](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) 。
-
-> [!NOTE]
-> 搭配 Synapse SQL 無伺服器使用 Azure Cosmos DB 分析存放區目前處於閘道預覽下。 若要要求存取權，請與 [Azure Cosmos DB 團隊](mailto:cosmosdbsynapselink@microsoft.com)聯繫。
 
 ## <a name="use-synapse-sql-serverless-to-analyze-and-visualize-data-in-power-bi"></a><a id="analyze-with-powerbi"></a>使用 Synapse SQL 無伺服器來分析 Power BI 中的資料並將其視覺化
 

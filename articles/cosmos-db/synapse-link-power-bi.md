@@ -6,23 +6,20 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
-ms.openlocfilehash: 26a6ddf3ea3009c1463f40403c9d1860a7cb81f2
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1157ca31a66e5df92ff28f5d7190993e51d7dd65
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125998"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367630"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>使用 Power BI 和無伺服器 Synapse SQL 集區，透過 Synapse 連結 (預覽來分析 Azure Cosmos DB 資料)  
 
 在本文中，您將瞭解如何建立無伺服器 Synapse SQL 集區 (它先前稱為 **sql 隨選** 的) 資料庫，以及 Azure Cosmos DB 的 Synapse 連結。 您將會查詢 Azure Cosmos 容器，然後使用這些視圖 Power BI 建立模型，以反映該查詢。
 
-> [!NOTE]
-> 使用無伺服器 SQL 集區的 Azure Cosmos DB 分析存放區目前處於閘道預覽下。 若要要求存取權，請與 [Azure Cosmos DB 團隊](mailto:cosmosdbsynapselink@microsoft.com)聯繫。
-
 在此案例中，您將會在合作夥伴零售商店中使用有關 Surface product sales 的虛擬資料。 您將根據大型家庭的鄰近程度，以及對特定周廣告的影響，分析每個商店的收入。 在本文中，您會建立兩個名為 **RetailSales** 和 **StoreDemographics** 的視圖，以及兩者之間的查詢。 您可以從這個 [GitHub](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) 存放庫取得範例產品資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 開始之前，請務必先建立下列資源：
 
@@ -143,6 +140,6 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 
 :::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="將 SQL 腳本新增至 Synapse Analytics 工作區":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 使用無伺服器 Synapse SQL 集區來 [分析 Azure 開放資料集，並在 Azure Synapse Studio 中將結果視覺化](../synapse-analytics/sql/tutorial-data-analyst.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 06836673f1a567f64217d49cf8e0ca82e132111f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd68fd79d25e839876180ff25cacfa1ddf64eb2b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934075"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368803"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>在您的 IoT Edge 裝置上部署安全性模組
 
@@ -32,9 +32,9 @@ ms.locfileid: "90934075"
 
 使用下列步驟來為 IoT Edge 部署適用于 IoT 的 Defender 安全性模組。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
-1. 在 IoT 中樞中，確定您的裝置已 [註冊為 IoT Edge 裝置](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)。
+1. 在 IoT 中樞中，確定您的裝置已 [註冊為 IoT Edge 裝置](https://docs.microsoft.com/azure/iot-edge/how-to-manual-provision-symmetric-key#register-a-new-device)。
 
 1. IoT Edge 模組的 Defender 需要在 IoT Edge 裝置上安裝 [AuditD framework](https://linux.die.net/man/8/auditd) 。
 
@@ -139,9 +139,9 @@ ms.locfileid: "90934075"
     }
     ```
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
-1. 選取 [下一步]  。
+1. 選取 [下一步] 。
 
 #### <a name="step-3-specify-routes"></a>步驟3：指定路由
 
@@ -157,7 +157,7 @@ ms.locfileid: "90934075"
     "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
     ```
 
-1. 選取 [下一步]  。
+1. 選取 [下一步] 。
 
 #### <a name="step-4-review-deployment"></a>步驟4：審查部署
 
@@ -175,7 +175,7 @@ ms.locfileid: "90934075"
 
 1. 確認下列容器正在執行：
 
-   | 名稱 | 影像 |
+   | Name | IMAGE |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |

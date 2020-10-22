@@ -9,18 +9,18 @@ author: rolyon
 ms.author: rolyon
 ms.date: 09/22/2020
 ms.custom: generated
-ms.openlocfilehash: f5d5b4f801dd406518a6ba516bf2e38e01cb96ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8db16ba415e609827f6b775840f153489702ecca
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275263"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370554"
 ---
 # <a name="azure-built-in-roles"></a>Azure 內建角色
 
 [Azure 角色型存取控制 (RBAC)](overview.md) 有數個 Azure 內建角色，可供您指派給使用者、群組、服務主體和受控身分識別。 角色指派是您控制 Azure 資源存取權的方式。 如果內建的角色無法滿足您組織的特定需求，您可以建立自己的 [Azure 自訂角色](custom-roles.md)。
 
-本文列出的 Azure 內建角色不斷演變。 若要取得最新角色，請使用 [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) 或 [az role definition list](/cli/azure/role/definition#az-role-definition-list)。 如果要尋找 Azure Active Directory (Azure AD) 的管理員角色，請參閱 [Azure Active Directory 中的管理員角色權限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+本文列出的 Azure 內建角色不斷演變。 若要取得最新角色，請使用 [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) 或 [az role definition list](/cli/azure/role/definition#az-role-definition-list)。 如果要尋找 Azure Active Directory (Azure AD) 的管理員角色，請參閱 [Azure Active Directory 中的管理員角色權限](../active-directory/roles/permissions-reference.md)。
 
 下表提供每個內建角色的簡短說明和唯一識別碼。 按一下角色名稱，即可查看每個角色的 `Actions`、`NotActions`、`DataActions` 及 `NotDataActions` 清單。 如需這些動作的意義及其如何套用至管理和資料平面的相關資訊，請參閱[了解 Azure 角色定義](role-definitions.md)。
 

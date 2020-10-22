@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: d9874e27c21906512c2f6c841767b4d6591dbeaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1bf6b33176bf7942fbd76fa86ecd61b4f24e154
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80550262"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92365998"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>適用於 Android 裝置的共用裝置模式
 
@@ -36,7 +36,7 @@ ms.locfileid: "80550262"
 若要建立共用裝置模式應用程式，開發人員和雲端裝置系統管理員會一起運作：
 
 - 開發人員會撰寫單一帳戶應用程式 (在共用裝置模式下不支援多帳戶應用程式) 、新增 `"shared_device_mode_supported": true` 至應用程式的設定，以及撰寫程式碼來處理共用裝置登出之類的作業。
-- 裝置系統管理員可透過安裝驗證器應用程式，並使用驗證器應用程式將裝置設定為共用模式，來準備要共用的裝置。 只有處於 [雲端裝置系統管理員](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions) 角色的使用者可以使用 [驗證器應用程式](../user-help/user-help-auth-app-overview.md)，讓裝置進入共用模式。 您可以透過下列方式，在 Azure 入口網站中設定組織角色的成員資格： **Azure Active Directory**  >  **角色和**  >  **系統管理員雲端裝置系統管理員**。
+- 裝置系統管理員可透過安裝驗證器應用程式，並使用驗證器應用程式將裝置設定為共用模式，來準備要共用的裝置。 只有處於 [雲端裝置系統管理員](../roles/permissions-reference.md#cloud-device-administrator-permissions) 角色的使用者可以使用 [驗證器應用程式](../user-help/user-help-auth-app-overview.md)，讓裝置進入共用模式。 您可以透過下列方式，在 Azure 入口網站中設定組織角色的成員資格： **Azure Active Directory**  >  **角色和**  >  **系統管理員雲端裝置系統管理員**。
 
  本文主要著重于開發人員應考慮的事項。
 
