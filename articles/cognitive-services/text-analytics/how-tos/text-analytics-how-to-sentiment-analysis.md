@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 10/09/2020
+ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: 570a21a307d60ab1e2c02d6481746576f5dcf0e3
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 2b13ac02a8a276b2ef46c8ffd5f13846e394d938
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930283"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166925"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>如何：使用文字分析 API 來偵測情感
 
@@ -36,7 +36,7 @@ ms.locfileid: "91930283"
 | 以 Linux 為基礎的 [Docker 容器](text-analytics-how-to-install-containers.md) | X  |  |
 | 意見挖掘                            |                       | X                                 |
 
-### <a name="sentiment-scoring-and-labeling"></a>情感評分和標籤
+## <a name="sentiment-scoring-and-labeling"></a>情感評分和標籤
 
 v3 中的情感分析會將情感標籤套用至文字 (在句子和文件層級傳回)，每個都有信賴分數。 
 
@@ -51,7 +51,7 @@ v3 中的情感分析會將情感標籤套用至文字 (在句子和文件層級
 
 信賴分數的範圍是從 1 到 0。 接近 1 的分數表示標籤分類的信賴度更高，而較低的分數則表示較低的信賴度。 針對每個檔案或每個句子，與標籤 (正面、負面和中性) 相關聯的預測分數最多會加到 1 為止。
 
-### <a name="opinion-mining"></a>意見挖掘
+## <a name="opinion-mining"></a>意見挖掘
 
 意見挖掘是情感分析的功能，從版本 3.1-preview.1 開始。 這項功能也稱為自然語言處理 (NLP) 中的層面型情感分析，可提供文字中與各層面相關意見的詳細資訊 (例如產品或服務的屬性)。
 

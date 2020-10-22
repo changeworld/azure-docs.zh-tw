@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 440d8af17bccaf8d3fcb92f65e5d91ed969aec31
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b29873e161b64c52abbfdf3f2611714f6b012361
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971278"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097281"
 ---
 # <a name="tutorial-share-spatial-anchors-across-sessions-and-devices"></a>教學課程：跨工作階段和裝置共用空間錨點
 
@@ -86,7 +86,7 @@ Azure Spatial Anchors 是一款跨平台開發人員服務，可讓您使用在�
 
 開啟 Visual Studio Code，然後開啟 *Sharing\SharingServiceSample* 資料夾中的專案。 
 
-若要透過 Visual Studio Code 部署共用服務，請依照<a href="https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">使用 Visual Studio Code 將 ASP.NET Core 應用程式發佈至 Azure</a> 中的指示操作。 請從「使用 Visual Studio Code 加以開啟」一節開始。 請勿建立另一個 ASP.NET 專案 (如上述步驟所述)，因為您已有要部署和發佈的專案：SharingServiceSample。
+若要透過 Visual Studio Code 部署共用服務，請依照<a href="/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">使用 Visual Studio Code 將 ASP.NET Core 應用程式發佈至 Azure</a> 中的指示操作。 請從「使用 Visual Studio Code 加以開啟」一節開始。 請勿建立另一個 ASP.NET 專案 (如上述步驟所述)，因為您已有要部署和發佈的專案：SharingServiceSample。
 
 ---
 
@@ -104,4 +104,3 @@ Azure Spatial Anchors 是一款跨平台開發人員服務，可讓您使用在�
 
 > [!div class="nextstepaction"]
 > [使用 Azure Cosmos DB 儲存錨點](./tutorial-use-cosmos-db-to-store-anchors.md)
-

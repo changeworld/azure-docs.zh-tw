@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/25/2019
 ms.author: duau
 ms.openlocfilehash: 2a5730cd75ccb76d25897e9109555113f7355c2f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "92202408"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>使用 ExpressRoute 私用對等互連設計災難復原
@@ -80,7 +80,7 @@ ExpressRoute 的設計目的是為了提供高可用性，以提供對 Microsoft
 
 下圖說明如何使用連接權數來影響 ExpressRoute 路徑選取專案。 預設連接權數為0。 在下列範例中，ExpressRoute 1 的連線權數設定為100。 當 VNet 收到透過多個 ExpressRoute 線路所通告的路由首碼時，VNet 會偏好最高權數的連接。
 
-[![億]][4]
+[![4]][4]
 
 如果 ExpressRoute 1 的兩個連線都停止運作，則 VNet 只會透過 ExpressRoute 2 查看 10.1.11.0/24 路由公告;因此，此失敗狀態會使用待命電路。
 
@@ -88,7 +88,7 @@ ExpressRoute 的設計目的是為了提供高可用性，以提供對 Microsoft
 
 下圖說明使用作為路徑開頭的方式來影響 ExpressRoute 路徑選取專案。 在圖表中，透過 ExpressRoute 1 的路由通告表示 eBGP 的預設行為。 在透過 ExpressRoute 2 的路由通告上，內部部署網路的 ASN 會在路由的 AS 路徑上額外加上。 當透過多個 ExpressRoute 線路收到相同的路由時，根據 eBGP 路由選取進程，VNet 會偏好使用最短路徑的路由。 
 
-[![.5]][5]
+[![5]][5]
 
 如果兩個 ExpressRoute 1 的連線都停止運作，則 VNet 只會看到透過 ExpressRoute 2 的 10.1.11.0/24 路由通告。 因此，較長的路徑會變成不相關。 因此，待命電路會在此失敗狀態中使用。
 
@@ -118,7 +118,7 @@ ExpressRoute 的設計目的是為了提供高可用性，以提供對 Microsoft
 
 您可以使用連線權數來設計案例，以對內部部署網路系結流量的本機對等互連位置 ExpressRoute 進行 Vnet 影響。 若要完成此解決方案，您必須確保對稱的反向流量。 您可以在 BGP 路由器之間的 iBGP 會話使用本機喜好設定 (在內部部署端) 的 ExpressRoute 線路，以優先使用 ExpressRoute 線路。 下圖說明此解決方案。 
 
-[![8]][8]
+[![八角]][8]
 
 ### <a name="scenario-2"></a>案例 2
 

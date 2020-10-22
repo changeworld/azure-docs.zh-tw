@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 08/17/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ee7a0ca1abedd2f80cd8f5fe66e603315a10966f
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: e94ced70ad17286612328884d03d4d1253b7818b
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939523"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096533"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>教學課程：使用 Azure Spatial Anchors 新建 HoloLens Unity 應用程式的逐步指示
 
@@ -25,7 +25,7 @@ ms.locfileid: "91939523"
 
 1. 已安裝 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017+</a> 的 Windows 機器，並且具有**通用 Windows 平台開發**工作負載和 **Windows 10 SDK (10.0.18362.0 或更新版本)** 元件，以及 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a>。
 2. 從 [Visual Studio Marketplace](https://marketplace.visualstudio.com/) 安裝 Visual Studio 的 [C++/WinRT Visual Studio 延伸模組 (VSIX)](https://aka.ms/cppwinrt/vsix)。
-3. 已啟用[開發人員模式](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio)的 HoloLens 裝置。 本文需要具有 [Windows 10 2020 年 5 月更新](https://docs.microsoft.com/windows/mixed-reality/whats-new/release-notes-may-2020 )的 HoloLens 裝置。 若要在 HoloLens 上更新至最新版本，請開啟**設定**應用程式，移至 [更新與安全性]，然後選取 [檢查更新] 按鈕。
+3. 已啟用[開發人員模式](/windows/mixed-reality/using-visual-studio)的 HoloLens 裝置。 本文需要具有 [Windows 10 2020 年 5 月更新](/windows/mixed-reality/whats-new/release-notes-may-2020)的 HoloLens 裝置。 若要在 HoloLens 上更新至最新版本，請開啟**設定**應用程式，移至 [更新與安全性]，然後選取 [檢查更新] 按鈕。
 
 ## <a name="getting-started"></a>開始使用
 
@@ -89,7 +89,7 @@ ms.locfileid: "91939523"
 您的 [專案] 窗格中現在應該會有圓球預製項目。
 
 ## <a name="trying-it-out"></a>立即試用
-若要測試是否一切都正常運作，請在 **Unity** 中建置您的應用程式，並從 **Visual Studio** 加以部署。 請依照 [**MR Basics 100：開始使用 Unity** 課程](https://docs.microsoft.com/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio)第 6 章的指示執行此作業。 您應該會看到 Unity 的開始畫面，和隨後的全新顯示畫面。
+若要測試是否一切都正常運作，請在 **Unity** 中建置您的應用程式，並從 **Visual Studio** 加以部署。 請依照 [**MR Basics 100：開始使用 Unity** 課程](/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio)第 6 章的指示執行此作業。 您應該會看到 Unity 的開始畫面，和隨後的全新顯示畫面。
 
 ## <a name="place-an-object-in-the-real-world"></a>將物件放在實際環境中
 我們將使用您的應用程式建立及放置物件。 開啟我們在[部署應用程式](#trying-it-out)時建立的 Visual Studio 解決方案。
@@ -208,7 +208,7 @@ ms.locfileid: "91939523"
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-397&highlight=26-77)]
 
-再次從 **Visual Studio** 執行您的應用程式。 動一動您的頭部，然後藉由空中點選放置圓球。 一旦有足夠的畫面格時，圓球就會變成黃色，並開始進行雲端上傳。 上傳完成後，圓球就會變成藍色。 (選擇性) 您也可以在 **Visual Studio** 內進行偵錯時使用[輸出視窗](https://docs.microsoft.com/visualstudio/ide/reference/output-window)，來監視應用程式傳送的記錄訊息。 請務必從 Visual Studio 部署應用程式的 `Debug` 組態，以查看記錄訊息。 您可以觀賞 `RecommendedForCreateProgress`，一旦上傳完成，您就能夠看到從雲端傳回的錨點識別碼。
+再次從 **Visual Studio** 執行您的應用程式。 動一動您的頭部，然後藉由空中點選放置圓球。 一旦有足夠的畫面格時，圓球就會變成黃色，並開始進行雲端上傳。 上傳完成後，圓球就會變成藍色。 (選擇性) 您也可以在 **Visual Studio** 內進行偵錯時使用[輸出視窗](/visualstudio/ide/reference/output-window)，來監視應用程式傳送的記錄訊息。 請務必從 Visual Studio 部署應用程式的 `Debug` 組態，以查看記錄訊息。 您可以觀賞 `RecommendedForCreateProgress`，一旦上傳完成，您就能夠看到從雲端傳回的錨點識別碼。
 
 > [!NOTE]
 > 如果您收到「DllNotFoundException：無法載入 DLL 'AzureSpatialAnchors'：找不到指定的模組。」，您應**清除**解決方案並重新加以**建置**。

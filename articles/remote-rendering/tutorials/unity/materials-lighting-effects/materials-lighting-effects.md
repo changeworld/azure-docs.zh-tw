@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0580614468d4003b3640fd4df08ff02f3a1c8476
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04cb48a3ff84a67995c1a920a323fa568a67cdf3
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021063"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203240"
 ---
 # <a name="tutorial-refining-materials-lighting-and-effects"></a>教學課程：調整材質、光源和效果
 
@@ -32,7 +32,7 @@ ms.locfileid: "89021063"
 
 在任何應用程式中，為使用者提供視覺化的意見反應都是使用者體驗的重要部分。 Azure 遠端轉譯會透過[階層式狀態覆寫](../../../overview/features/override-hierarchical-state.md)，提供視覺化的意見反應機制。 階層式狀態覆寫會使用附加至模型本機執行個體的元件來實作。 我們已了解如何在[將遠端物件圖形同步處理至 Unity 階層](../manipulate-models/manipulate-models.md#synchronizing-the-remote-object-graph-into-the-unity-hierarchy)中，建立這些本機執行個體。
 
-首先，我們會建立 [**HierarchicalStateOverrideComponent**](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent) 元件的包裝函式。 **HierarchicalStateOverrideComponent** 是控制遠端實體覆寫的本機指令碼。 [**教學課程資產**](../custom-models/custom-models.md#import-assets-used-by-this-tutorial)包含名為 **BaseEntityOverrideController** 的抽象基底類別，我們將會擴充以建立包裝函式。
+首先，我們會建立 [**HierarchicalStateOverrideComponent**](/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent) 元件的包裝函式。 **HierarchicalStateOverrideComponent** 是控制遠端實體覆寫的本機指令碼。 [**教學課程資產**](../custom-models/custom-models.md#import-assets-used-by-this-tutorial)包含名為 **BaseEntityOverrideController** 的抽象基底類別，我們將會擴充以建立包裝函式。
 
 1. 建立名為 **EntityOverrideController** 的新指令碼，並將其內容取代為下列程式碼：
 
