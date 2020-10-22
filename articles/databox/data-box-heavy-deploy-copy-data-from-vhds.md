@@ -9,12 +9,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 755d0077abcba71d705a14643f5c2b28001bfa13
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 335b564225bc2b7a4c2217c1d912f952239ecf24
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951429"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127194"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>教學課程：使用 Data Box Heavy 匯入資料以作為 Azure 中的受控磁碟
 
@@ -38,7 +38,7 @@ ms.locfileid: "91951429"
 4. 您已檢閱：
 
     - [Azure 物件大小限制中所支援的受控磁碟大小](data-box-heavy-limits.md#azure-object-size-limits)。
-    - [Azure 受控磁碟簡介](/azure/virtual-machines/windows/managed-disks-overview)。 
+    - [Azure 受控磁碟簡介](../virtual-machines/managed-disks-overview.md)。 
 
 ## <a name="connect-to-data-box-heavy"></a>連線至 Data Box Heavy
 
@@ -182,4 +182,3 @@ ms.locfileid: "91951429"
 
 > [!div class="nextstepaction"]
 > [將 Azure Data Box Heavy 寄送給 Microsoft](./data-box-heavy-deploy-picked-up.md)
-

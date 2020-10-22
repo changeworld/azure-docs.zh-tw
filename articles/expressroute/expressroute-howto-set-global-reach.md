@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: duau
-ms.openlocfilehash: dd4c6f0b9d518acf06f7d018a65cc2b9b92db33d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2365317d83a4c11fa17cb5c449a25b70da17c2eb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89395446"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368361"
 ---
 # <a name="configure-expressroute-global-reach"></a>設定 ExpressRoute Global Reach
 
@@ -105,17 +105,17 @@ ms.locfileid: "89395446"
 
 使用下列命令來確認進行設定之線路 (例如上述範例中的線路 1) 上的設定。
 ```azurepowershell-interactive
-$ckt1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
+$ckt_1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
 ```
 
-如果您直接在 PowerShell 中執行 *$ckt1*，就會在輸出中看到 *CircuitConnectionStatus*。 它會告訴您連線狀態是已建立 (已連線) 還是未建立 (已中斷連線)。 
+如果您只是在 PowerShell 中執行 *$ckt _1* ，您會在輸出中看到 *>circuitconnectionstatus* 。 它會告訴您連線狀態是已建立 (已連線) 還是未建立 (已中斷連線)。 
 
 ## <a name="disable-connectivity"></a>停用連線
 
 若要停用內部部署網路之間的連線，請針對進行設定的線路執行命令 (例如，上一個範例中的線路 1) 。
 
 ```azurepowershell-interactive
-$ckt1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
+$ckt_1 = Get-AzExpressRouteCircuit -Name "Your_circuit_1_name" -ResourceGroupName "Your_resource_group"
 Remove-AzExpressRouteCircuitConnectionConfig -Name "Your_connection_name" -ExpressRouteCircuit $ckt_1
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt_1
 ```

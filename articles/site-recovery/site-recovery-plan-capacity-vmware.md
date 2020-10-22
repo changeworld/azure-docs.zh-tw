@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: a74d9347d0050a2970e698ae616eb09fe32bdc5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b86d0c189bcf0687a703f2338188df2090feaf0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135453"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368021"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>針對復原到 Azure 的 VMware 災害復原進行容量和規模調整規劃
 
@@ -20,7 +20,7 @@ ms.locfileid: "86135453"
 
 ## <a name="how-do-i-start-capacity-planning"></a>如何開始容量規劃？
 
-若要了解 Azure Site Recovery 基礎結構需求，請針對 VM 複寫執行 [Azure Site Recovery 部署規劃工具](https://aka.ms/asr-deployment-planner-doc)，以收集複寫環境的相關資訊。 如需詳細資訊，請參閱[關於 VMware 至 Azure 的 Azure Site Recovery 部署規劃工具](site-recovery-deployment-planner.md)。 
+若要了解 Azure Site Recovery 基礎結構需求，請針對 VM 複寫執行 [Azure Site Recovery 部署規劃工具](./site-recovery-deployment-planner.md)，以收集複寫環境的相關資訊。 如需詳細資訊，請參閱[關於 VMware 至 Azure 的 Azure Site Recovery 部署規劃工具](site-recovery-deployment-planner.md)。 
 
 「Site Recovery 部署規劃工具」會提供一個報告，內含有關相容與不相容 VM、每一 VM 之磁碟及每一磁碟之資料變換的完整資訊。 此工具也會摘要列出要達到目標 RPO 所需的網路頻寬，以及要成功複寫和測試容錯移轉所需的 Azure 基礎結構。
 
@@ -170,6 +170,6 @@ Set-OBMachineSetting -WorkDay $mon, $tue -StartWorkHour "9:00:00" -EndWorkHour "
  > [!NOTE]
  > 請下載 [Windows 的主要目標伺服器統一安裝程式檔案](https://aka.ms/latestmobsvc)最新版本。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 下載並執行 [Site Recovery 部署規劃工具](https://aka.ms/asr-deployment-planner)。

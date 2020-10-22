@@ -13,25 +13,25 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb7ab83bc9939d2f0b4b0ff0860ea97a0b07f12f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe0c7eec5c023fcba3152ad6329d318210a0c2ab
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321237"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370928"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>使用 Azure Active Directory 將系統管理員和非系統管理員角色指派給使用者
 
 在 Azure Active Directory (Azure AD) 中，如果您的其中一位使用者需要管理 Azure AD 資源的許可權，您必須將其指派給提供所需許可權的角色。 如需管理 Azure 資源的角色，以及哪些角色管理 Azure AD 資源的相關資訊，請參閱 [傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。
 
-如需可用 Azure AD 角色的詳細資訊，請參閱 [Azure Active Directory 中指派系統管理員角色](../users-groups-roles/directory-assign-admin-roles.md)。 若要新增使用者，請參閱 [將新使用者新增至 Azure Active Directory](add-users-azure-active-directory.md)。
+如需可用 Azure AD 角色的詳細資訊，請參閱 [Azure Active Directory 中指派系統管理員角色](../roles/permissions-reference.md)。 若要新增使用者，請參閱 [將新使用者新增至 Azure Active Directory](add-users-azure-active-directory.md)。
 
 ## <a name="assign-roles"></a>指派角色
 
 將 Azure AD 角色指派給使用者的常見方式是在使用者的 [ **指派的角色** ] 頁面上。 您也可以使用 Privileged Identity Management (PIM) ，將使用者資格設定為及時提升為角色。 如需有關如何使用 PIM 的詳細資訊，請參閱 [Privileged Identity Management](../privileged-identity-management/index.yml)。
 
 > [!Note]
-> 如果您有 Azure AD Premium P2 授權方案，並已使用 PIM，則會在 [Privileged Identity Management 體驗](../users-groups-roles/directory-manage-roles-portal.md)中執行所有角色管理工作。 這項功能目前僅限一次只能指派一個角色。 您目前無法選取多個角色，並一次將它們指派給使用者。
+> 如果您有 Azure AD Premium P2 授權方案，並已使用 PIM，則會在 [Privileged Identity Management 體驗](../roles/manage-roles-portal.md)中執行所有角色管理工作。 這項功能目前僅限一次只能指派一個角色。 您目前無法選取多個角色，並一次將它們指派給使用者。
 >
 > ![在 PIM 中針對已使用 PIM 並擁有 Premium P2 授權的使用者，Azure AD 管理的角色](./media/active-directory-users-assign-role-azure-portal/pim-manages-roles-for-p2.png)
 
@@ -81,4 +81,4 @@ ms.locfileid: "89321237"
 
 - [從另一個目錄中新增來賓使用者](../external-identities/what-is-b2b.md)
 
-您可以查看的其他使用者管理工作可在 [Azure Active Directory 使用者管理檔](../users-groups-roles/index.yml)中取得。
+您可以查看的其他使用者管理工作可在 [Azure Active Directory 使用者管理檔](../enterprise-users/index.yml)中取得。

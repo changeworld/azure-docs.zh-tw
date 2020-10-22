@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: fec52caa3cb7565a86a6c50d300fe448b6518457
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51de1ab26318a02381ed95f00eadcc4e892f2f57
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320063"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371625"
 ---
 # <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>用來在合作夥伴中心中將 Azure 應用程式上架的合作夥伴中心提交 API
 
@@ -29,7 +29,7 @@ ms.locfileid: "87320063"
 
 在您開始撰寫程式碼以呼叫合作夥伴中心提交 API 之前，請確定您已完成下列先決條件。
 
-- 您 (或您的組織) 必須具有 Azure AD 目錄，且您必須具備該目錄的[全域管理員](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) \(部分機器翻譯\) 權限。 如果您已經使用 Microsoft 365 或 Microsoft 的其他商務服務，則您已經有 Azure AD 目錄。 否則，您可以免費地[在合作夥伴中心中建立新的 Azure AD](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account) \(部分機器翻譯\)。
+- 您 (或您的組織) 必須具有 Azure AD 目錄，且您必須具備該目錄的[全域管理員](../../active-directory/roles/permissions-reference.md) \(部分機器翻譯\) 權限。 如果您已經使用 Microsoft 365 或 Microsoft 的其他商務服務，則您已經有 Azure AD 目錄。 否則，您可以免費地[在合作夥伴中心中建立新的 Azure AD](https://docs.microsoft.com/windows/uwp/publish/associate-azure-ad-with-partner-center#create-a-brand-new-azure-ad-to-associate-with-your-partner-center-account) \(部分機器翻譯\)。
 
 - 您必須[將 Azure AD 應用程式與您的合作夥伴中心帳戶建立關聯](https://docs.microsoft.com/windows/uwp/monetize/create-and-manage-submissions-using-windows-store-services#associate-an-azure-ad-application-with-your-windows-partner-center-account) \(部分機器翻譯\)，並取得您的租用戶識別碼、用戶端識別碼及金鑰。 您需要這些值才能取得 Azure AD 存取權杖，而您將會在呼叫 Microsoft Store 提交 API 時使用該權杖。
 

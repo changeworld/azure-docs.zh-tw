@@ -3,12 +3,12 @@ title: 透過 Azure Migrate 伺服器評量使用匯入的 CSV 檔案來評估�
 description: 說明如何在 Azure Migrate 伺服器評量中使用匯入的 CSV 檔案來探索內部部署伺服器是否可移轉至 Azure
 ms.topic: tutorial
 ms.date: 09/14/2020
-ms.openlocfilehash: 743f18ce72e3f14fe54e0bbadff254ea03fc6278
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30f17bb6b22d4d19cf225aa52d8284f5306a44ee
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604218"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308379"
 ---
 # <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>教學課程：使用匯入的 CSV 檔案評估伺服器
 
@@ -203,4 +203,4 @@ Apple Mac OS X 10<br/>Asianux 3<br/>Asianux 4<br/>Asianux 5<br/>CentOS<br/>CentO
 
 > [!div class="checklist"]
 > * 建立 Azure Migrate 專案 
-> * 使用匯入的 CSV 檔案探索伺服器。 現在，執行 [VMware VM 遷移至 Azure VM](tutorial-assess-vmware.md) 的評量。
+> * 使用匯入的 CSV 檔案探索伺服器。 現在，執行 [VMware VM 遷移至 Azure VM](./tutorial-assess-vmware-azure-vm.md) 的評量。

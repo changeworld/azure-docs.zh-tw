@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: c46d977b6ce4eaa62aefc6874ce2b855a4711670
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efca190f3dad1c0a323aa56ffd68b8b2597b5862
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317507"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370214"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD 連線能力進行疑難排解
 這篇文章說明 Azure AD Connect 與 Azure AD 之間的連線的運作方式，以及如何疑難排解連線問題。 這些問題最有可能出現在具有 Proxy 伺服器的環境中。
@@ -186,7 +186,7 @@ Azure AD 目錄找不到或無法解析。 可能是您嘗試以未驗證網域�
 </div>
 
 ### <a name="azure-ad-global-admin-role-needed"></a>需要 Azure AD 全域系統管理員角色
-已成功驗證使用者。 不過，未對使用者指派全域系統管理員角色。 這是對使用者[指派全域系統管理員角色的方式](../users-groups-roles/directory-assign-admin-roles.md)。
+已成功驗證使用者。 不過，未對使用者指派全域系統管理員角色。 這是對使用者[指派全域系統管理員角色的方式](../roles/permissions-reference.md)。
 
 <div id="privileged-identity-management">
 <!--

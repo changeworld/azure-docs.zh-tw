@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: juliako
-ms.openlocfilehash: 7e97dc6ad4c6591a470e19050d79230f9ea7fd43
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 24b41a77985cac13e829d69ff77a4bf14fb40389
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164785"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371370"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>建立連線到 Azure 的影片索引器帳戶
 
@@ -25,7 +25,7 @@ ms.locfileid: "92164785"
 
 如果您要從 *試用版* 移至 *付費* 影片索引子帳戶，您可以選擇將所有的影片和模型自訂複製到新的帳戶，如 [從試用帳戶匯入內容](#import-your-content-from-the-trial-account) 一節中所述。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure 訂用帳戶。
 
@@ -33,7 +33,7 @@ ms.locfileid: "92164785"
 
 * Azure Active Directory (Azure AD) 網域。
 
-    如果您沒有 Azure AD 網域，請使用您的 Azure 訂用帳戶建立此網域。 如需詳細資訊，請參閱 [在您的 Azure AD 中管理自訂功能變數名稱](../../active-directory/users-groups-roles/domains-manage.md)
+    如果您沒有 Azure AD 網域，請使用您的 Azure 訂用帳戶建立此網域。 如需詳細資訊，請參閱 [在您的 Azure AD 中管理自訂功能變數名稱](../../active-directory/enterprise-users/domains-manage.md)
 
 * Azure AD 網域中具有 **應用程式系統管理員** 角色的使用者。 當您將影片索引器帳戶連線到 Azure 時，會用到此成員。
 

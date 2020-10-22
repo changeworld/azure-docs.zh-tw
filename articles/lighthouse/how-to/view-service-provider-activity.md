@@ -3,19 +3,19 @@ title: 檢視服務提供者活動
 description: 客戶可以透過 Azure 委派的資源管理來查看已記錄的活動，以查看服務提供者所執行的動作。
 ms.date: 10/12/2020
 ms.topic: how-to
-ms.openlocfilehash: 8ec9d49de953a0fed3a5afc669e9297148aadf32
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 56c8b88274909aa55e19a4b364aaa3ace2a0c26d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974306"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371081"
 ---
 # <a name="view-service-provider-activity"></a>檢視服務提供者活動
 
 有 [Azure Lighthouse](../overview.md) 委派訂用帳戶的客戶可以 [查看 Azure 活動記錄](../../azure-monitor/platform/platform-logs-overview.md) 資料，以查看所採取的所有動作。 這可讓客戶完全掌握服務提供者透過 [Azure 委派的資源管理](../concepts/azure-delegated-resource-management.md)所執行的作業，以及客戶本身 Azure Active Directory (Azure AD) 租使用者中的使用者所執行的作業。
 
 > [!TIP]
-> 我們也提供 Azure 原則內建原則定義，以 [限制對特定管理](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Lighthouse/AllowCertainManagingTenantIds_Deny.json) 租使用者的委派，以及將 [範圍委派給管理租](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json)使用者。 如需詳細資訊，請參閱 [在您的環境中審核委派](view-manage-service-providers.md#audit-delegations-in-your-environment)。
+> 我們也提供 Azure 原則內建原則定義，以 [限制對特定管理](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/AllowCertainManagingTenantIds_Deny.json) 租使用者的委派，以及將 [範圍委派給管理租](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json)使用者。 如需詳細資訊，請參閱 [在您的環境中審核委派](view-manage-service-providers.md#audit-delegations-in-your-environment)。
 
 ## <a name="view-activity-log-data"></a>檢視活動記錄資料
 

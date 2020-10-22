@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: b6a3e67ffd909262da2f890874f049dfac59a4ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93d741d22ac03c132954a48731451f891042d7b4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90562004"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371166"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory 中的管道及活動
 
@@ -56,7 +56,7 @@ Azure Data Factory 支援下列可個別或與其他活動鏈結而新增至管�
 [MapReduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
 [Hadoop 串流](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
-[Machine Learning 活動︰批次執行和更新資源](transform-data-using-machine-learning.md) | Azure VM
+[Azure Machine Learning Studio (傳統) 活動：批次執行和更新資源](transform-data-using-machine-learning.md) | Azure VM
 [預存程序](transform-data-using-stored-procedure.md) | Azure SQL、Azure Synapse Analytics (先前的 SQL 資料倉儲) 或 SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [自訂活動](transform-data-using-dotnet-custom-activity.md) | Azure Batch
@@ -109,7 +109,7 @@ Azure Data Factory 支援下列可個別或與其他活動鏈結而新增至管�
 Tag | 描述 | 類型 | 必要
 --- | ----------- | ---- | --------
 NAME | 管線的名稱。 指定代表管線所執行之動作的名稱。 <br/><ul><li>字元數目上限︰140</li><li>開頭必須為字母、數字或底線 (\_)</li><li>不允許使用下列字元： "."、"+"、"？"、"/"、"<"、">"、"*"、"%"、"&"、"："、" \" </li></ul> | String | 是
-description | 指定說明管線用途的文字。 | 字串 | 否
+description | 指定說明管線用途的文字。 | String | 否
 活動 | [ **活動** ] 區段內可以有一或多個已定義的活動。 如需活動 JSON 元素的詳細資料，請參閱[活動 JSON](#activity-json) 一節。 | Array | 是
 參數 | **parameters** 區段可以在管道內定義一或多個參數，讓管道變得更有彈性而可重複使用。 | 清單 | 否
 並行 | 管線可擁有的並存執行數目上限。 依預設，沒有最大值。 如果達到平行存取限制，則會將額外的管線執行排入佇列，直到之前的管線執行完成為止 | 數字 | 否 
@@ -146,7 +146,7 @@ Tag | 描述 | 必要
 NAME | 活動的名稱。 指定代表活動所執行之動作的名稱。 <br/><ul><li>字元數目上限︰55</li><li>開頭必須是字母數位或底線 (\_) </li><li>不允許使用下列字元： "."、"+"、"？"、"/"、"<"、">"、"*"、"%"、"&"、"："、" \" | 是</li></ul>
 description | 說明活動用途的文字 | 是
 type | 活動的類型。 如需了解不同類型的活動，請參閱[資料移動活動](#data-movement-activities)、[資料轉換活動](#data-transformation-activities)和[控制活動](#control-flow-activities)各節。 | 是
-linkedServiceName | 活動所使用的連結服務名稱。<br/><br/>活動可能會要求您指定可連結至所需計算環境的連結服務。 | 對於 HDInsight 活動、Azure Machine Learning 批次計分活動和預存程序活動而言為必要。 <br/><br/>否：所有其他
+linkedServiceName | 活動所使用的連結服務名稱。<br/><br/>活動可能會要求您指定可連結至所需計算環境的連結服務。 | 是，HDInsight 活動的 Azure Machine Learning Studio (傳統) 批次評分活動、預存程式活動。 <br/><br/>否：所有其他
 typeProperties | typeProperties 區段中的屬性視每一種活動而定。 若要查看活動的類型屬性，請按一下先前小節中的活動連結。 | 否
 原則 | 會影響活動之執行階段行為的原則。 此屬性包含 timeout 和重試行為。 如果未指定，則會使用預設值。 如需詳細資訊，請參閱[活動原則](#activity-policy)一節。 | 否
 dependsOn | 這個屬性用來定義活動相依性，以及後續活動如何相依於先前活動。 如需詳細資訊，請參閱[活動相依性](#activity-dependency) | 否

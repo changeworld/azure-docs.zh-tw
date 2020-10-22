@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6aa8d08dde3cf2dbfb5cb1e819ba9941aea4e387
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 5be746b73cef37826be36b13c6f491b8ef6ad809
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203699"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359011"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure Digital Twins API 和 SDK
 
@@ -58,12 +58,13 @@ Azure 數位 Twins 隨附 **控制平面 api** 和 **資料平面 api** ，可�
    - 您可以在 GitHub： [適用于 .net 的 Azure IoT 數位 Twins 用戶端程式庫](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)中找到 SDK 來源，包括範例的資料夾。 
    - 您可以查看 [SDK 參考檔](/dotnet/api/overview/azure/digitaltwins?preserve-view=true&view=azure-dotnet-preview)。
    - 您可以繼續閱讀本文的 [.net (c # ) SDK (資料平面) ](#net-c-sdk-data-plane) 一節，以查看詳細的資訊和使用範例。
-* 您可以使用 **JavaScript** SDK。 使用 JavaScript SDK .。。
-   - 您可以從 npm： [適用于 JavaScript 的 Azure Azure 數位 Twins 用戶端程式庫](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1)，查看並安裝套件。
-   - 您可以查看 [SDK 參考檔](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest)。
 * 您可以使用 **JAVA** SDK。 使用 JAVA SDK .。。
    - 您可以從 Maven 查看並安裝套件： [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)
+   - 您可以在 GitHub 中找到 SDK 來源： [適用于 JAVA 的 Azure IoT 數位 Twins 用戶端程式庫](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
    - 您可以查看 [SDK 參考檔](/java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-preview)
+* 您可以使用 **JavaScript** SDK。 使用 JavaScript SDK .。。
+   - 您可以從 npm： [適用于 JavaScript 的 Azure Azure 數位 Twins 用戶端程式庫](https://www.npmjs.com/package/@azure/digital-twins)，查看並安裝套件。
+   - 您可以查看 [SDK 參考檔](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest)。
 * 您可以使用 AutoRest 來產生另一種語言的 SDK。 遵循 how [*to：使用 AutoRest 建立 Azure 數位 Twins 的自訂 sdk*](how-to-create-custom-sdks.md)中的指示。
 
 您也可以透過 [CLI](how-to-use-cli.md)與 Azure 數位 Twins 互動，來練習日期平面 api。

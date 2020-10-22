@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: f420f66e1db6efc6a0aa43cb88f26687839f0d1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4df373f78a9c74584d0e4046f7532a2190f3a3f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321509"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370962"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Azure Active Directory 治理作業參考指南
 
@@ -49,14 +49,14 @@ ms.locfileid: "89321509"
 
 #### <a name="owner-recommended-reading"></a>擁有者建議閱讀
 
-- [在 Azure Active Directory 中指派系統管理員角色](../users-groups-roles/directory-assign-admin-roles.md)
+- [在 Azure Active Directory 中指派系統管理員角色](../roles/permissions-reference.md)
 - [Azure 中的治理](../../governance/index.yml)
 
 ### <a name="configuration-changes-testing"></a>設定變更測試
 
 在測試時，有一些需要特殊考慮的變更，從簡單的技術（例如，在平行測試租使用者中推出使用者的目標子集）部署變更。 如果您尚未實行測試策略，您應該根據下表中的指導方針來定義測試方法：
 
-| 狀況| 建議 |
+| 案例| 建議 |
 |-|-|
 |將驗證類型從同盟變更為 PHS/PTA 或反之亦然| 使用 [分段推出](../hybrid/how-to-connect-staged-rollout.md) 來測試變更驗證類型的影響。|
 | (CA) 原則或 Identity Protection 原則中推出新的條件式存取|建立新的 CA 原則，並指派給測試使用者。|
@@ -66,7 +66,7 @@ ms.locfileid: "89321509"
 |推出新功能|如果功能支援向一組目標使用者推出，請找出試驗使用者並建立。例如，「自助式密碼重設」和「多重要素驗證」可以鎖定特定使用者或群組。|
 |將應用程式從內部部署身分識別提供者轉換 (IdP) ，例如 Active Directory）來 Azure AD|如果應用程式支援多個 IdP 設定（例如 Salesforce），請在變更期間設定和測試 Azure AD (以防應用程式引進 HRD 頁面) 。 如果應用程式不支援多個 Idp，請在變更控制視窗和程式停機期間排程測試。|
 |更新動態群組規則|使用新規則建立平行動態群組。 針對計算結果進行比較，例如，以相同的條件執行 PowerShell。<br>如果測試成功，請交換使用舊群組的地方 (是否可行) 。|
-|遷移產品授權|請參閱 [Azure Active Directory 中的「變更授權群組中單一使用者的授權](../users-groups-roles/licensing-groups-change-licenses.md)」。|
+|遷移產品授權|請參閱 [Azure Active Directory 中的「變更授權群組中單一使用者的授權](../enterprise-users/licensing-groups-change-licenses.md)」。|
 |變更 AD FS 的規則，例如授權、發行、MFA|使用群組宣告將目標設為使用者的子集。|
 |變更 AD FS 驗證體驗或類似的全伺服器陣列變更|使用相同的主機名稱建立平行伺服器陣列、執行設定變更、使用主機檔案、NLB 路由規則或類似路由從用戶端進行測試。<br>如果目標平臺不支援主機檔案 (例如行動裝置) 、控制變更。|
 
@@ -92,9 +92,9 @@ ms.locfileid: "89321509"
 
 ### <a name="privileged-account-usage"></a>特殊許可權帳戶使用方式
 
-駭客通常會以系統管理員帳戶和其他特殊許可權存取元素為目標，以快速取得敏感性資料和系統的存取權。由於具有特殊許可權角色的使用者通常會累積一段時間，因此請務必定期審核並管理系統管理員存取權，並提供 Azure AD 和 Azure 資源的即時特殊許可權存取。
+駭客通常會以系統管理員帳戶和其他特殊許可權存取元素為目標，以快速取得敏感性資料和系統的存取權。 由於具有特殊許可權角色的使用者通常會累積一段時間，因此請務必定期審核並管理系統管理員存取權，並提供 Azure AD 和 Azure 資源的即時特殊許可權存取。
 
-如果您的組織中沒有可管理特殊許可權帳戶的進程，或您目前有系統管理員使用他們的一般使用者帳戶來管理服務和資源，您應該立即開始使用不同的帳戶，例如一個用於一般日常活動;另一個用於特殊許可權存取，並設定了 MFA。 更好的是，如果您的組織有 Azure AD Premium P2 訂用帳戶，則您應該立即部署 [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md#license-requirements) (PIM) 。 在相同的權杖中，您也應該檢查這些特殊許可權帳戶，並且 [指派較少的特殊許可權角色](../users-groups-roles/directory-admin-roles-secure.md) （如果適用）。
+如果您的組織中沒有可管理特殊許可權帳戶的進程，或您目前有系統管理員使用他們的一般使用者帳戶來管理服務和資源，您應該立即開始使用不同的帳戶，例如一個用於一般日常活動;另一個用於特殊許可權存取，並設定了 MFA。 更好的是，如果您的組織有 Azure AD Premium P2 訂用帳戶，則您應該立即部署 [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md#license-requirements) (PIM) 。 在相同的權杖中，您也應該檢查這些特殊許可權帳戶，並且 [指派較少的特殊許可權角色](../roles/security-planning.md) （如果適用）。
 
 應執行之特殊許可權帳戶管理的另一個層面是定義這些帳戶的 [存取權評論](../governance/access-reviews-overview.md) ，不論是 [透過 PIM](../privileged-identity-management/pim-how-to-perform-security-review.md)手動或自動進行。
 
@@ -104,12 +104,12 @@ ms.locfileid: "89321509"
 
 ### <a name="emergency-access-accounts"></a>緊急存取帳戶
 
-組織必須建立 [緊急帳戶](../users-groups-roles/directory-emergency-access.md) ，以準備管理 Azure AD，例如像這樣的驗證中斷：
+組織必須建立 [緊急帳戶](../roles/security-emergency-access.md) ，以準備管理 Azure AD，例如像這樣的驗證中斷：
 
 - 驗證基礎結構的中斷元件 (AD FS、內部部署 AD、MFA 服務) 
 - 系統管理人員營業額
 
-若要避免因為您無法以系統管理員身分登入或啟動現有個別使用者的帳戶，而不小心鎖定您的租使用者，您應該建立兩個或更多的緊急帳戶，並確定其已實行並符合 [Microsoft 的最佳作法](../users-groups-roles/directory-admin-roles-secure.md) 並 [中斷玻璃程式](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency)。
+若要避免因為您無法以系統管理員身分登入或啟動現有個別使用者的帳戶，而不小心鎖定您的租使用者，您應該建立兩個或更多的緊急帳戶，並確定其已實行並符合 [Microsoft 的最佳作法](../roles/security-planning.md) 並 [中斷玻璃程式](../roles/security-planning.md#break-glass-what-to-do-in-an-emergency)。
 
 ### <a name="privileged-access-to-azure-ea-portal"></a>Azure EA 入口網站的特殊許可權存取
 
@@ -119,7 +119,7 @@ ms.locfileid: "89321509"
 
 #### <a name="privileged-access-recommended-reading"></a>建議閱讀的特殊許可權存取
 
-- [Azure Active Directory 中的系統管理員角色權限](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure Active Directory 中的系統管理員角色權限](../roles/permissions-reference.md)
 
 ## <a name="entitlement-management"></a>權利管理
 

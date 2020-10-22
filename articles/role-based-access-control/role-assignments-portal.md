@@ -10,20 +10,20 @@ ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4e5c13c635091988f299d31c67795916e709d51a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1aebb80fcba6c21ccce63772195af80b94092bde
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597620"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368313"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>使用 Azure 入口網站新增或移除 Azure 角色指派
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] 本文說明如何使用 Azure 入口網站指派角色。
 
-如果您需要在 Azure Active Directory 中指派系統管理員角色，請參閱 [Azure Active Directory 中的 [查看和指派系統管理員角色](../active-directory/users-groups-roles/directory-manage-roles-portal.md)]。
+如果您需要在 Azure Active Directory 中指派系統管理員角色，請參閱 [Azure Active Directory 中的 [查看和指派系統管理員角色](../active-directory/roles/manage-roles-portal.md)]。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要新增或移除角色指派，您必須具有：
 

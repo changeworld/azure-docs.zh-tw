@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/17/2020
-ms.openlocfilehash: d8268ebf89bed6b67919e77576118343b58edb6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57d24c824782bdc6530b78450fc55a879a511ddc
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88516617"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367681"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>使用 Azure SQL 的 Azure Active Directory 服務主體
 
@@ -74,12 +74,12 @@ SQL Database、Azure Synapse 和 SQL 受控執行個體支援下列 Azure AD 物
     > [!NOTE]
     > 您也可以使用 CLI 命令來指派伺服器身分識別。 如需詳細資訊，請參閱 [az sql server create](https://docs.microsoft.com/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) 和 [az sql server update](https://docs.microsoft.com/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-update)。
 
-2. 將所建立或指派給伺服器的伺服器身分識別授與 Azure AD [**Directory 讀取器**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) 許可權。
+2. 將所建立或指派給伺服器的伺服器身分識別授與 Azure AD [**Directory 讀取器**](../../active-directory/roles/permissions-reference.md#directory-readers) 許可權。
     - 若要授與此許可權，請依照下列文章中提供的 SQL 受控執行個體描述：布建 [Azure AD admin (sql 受控執行個體) ](authentication-aad-configure.md?tabs=azure-powershell#provision-azure-ad-admin-sql-managed-instance)
     - 授與此許可權的 Azure AD 使用者必須是 Azure AD **全域管理員** 或特殊 **許可權角色系統管理員** 角色的一部分。
 
 > [!IMPORTANT]
-> 您必須以上述循序執行步驟1和2。 首先，建立或指派伺服器身分識別，然後再授與 [**目錄讀取**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) 者許可權。 省略上述其中一個步驟，或兩者都會在 Azure SQL 中代表 Azure AD 應用程式建立 Azure AD 物件時，造成執行錯誤。 如需代表 Azure AD 應用程式建立 Azure AD 使用者的逐步指示，請參閱 [教學課程：使用 Azure AD 應用程式建立 Azure AD 的使用者](authentication-aad-service-principal-tutorial.md)。
+> 您必須以上述循序執行步驟1和2。 首先，建立或指派伺服器身分識別，然後再授與 [**目錄讀取**](../../active-directory/roles/permissions-reference.md#directory-readers) 者許可權。 省略上述其中一個步驟，或兩者都會在 Azure SQL 中代表 Azure AD 應用程式建立 Azure AD 物件時，造成執行錯誤。 如需代表 Azure AD 應用程式建立 Azure AD 使用者的逐步指示，請參閱 [教學課程：使用 Azure AD 應用程式建立 Azure AD 的使用者](authentication-aad-service-principal-tutorial.md)。
 >
 > 在 **公開預覽**中，您可以將 **目錄讀取** 者角色指派給 Azure AD 中的群組。 然後，群組擁有者可以將受控識別新增為此群組的成員，這會略過 **全域管理員** 或特殊 **許可權角色管理員** 授與 **目錄讀取** 者角色的需求。 如需這項功能的詳細資訊，請參閱 [Azure Active Directory 中適用於 Azure SQL 的 Directory 讀者角色](authentication-aad-directory-readers-role.md)。
 

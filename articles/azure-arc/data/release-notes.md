@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: d22976254cc804ca53060fb284abde8e80a684e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c20bbd3ab02cd1eccd00e2d36c14eebf2f63205
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319719"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92360292"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>版本資訊-Azure Arc 啟用的資料服務 (預覽) 
 
@@ -62,3 +62,8 @@ ms.locfileid: "91319719"
 - 不支援調整 Postgres 超大規模背景 _工作節點的_ 數目。
 - 如果您使用 Azure Kubernetes Service 引擎 (AKS 引擎) Azure Stack Hub 使用 Azure Arc 資料控制器和資料庫實例，則不支援升級至較新的 Kubernetes 版本。 升級 Kubernetes 叢集之前，請先卸載 Azure Arc 資料控制器和所有資料庫實例。
 - 預覽不支援 Postgres 11 版引擎的備份/還原。 它只支援 Postgres 12 版的備份/還原。
+- Azure Kubernetes Service (AKS) ，Azure Arc 啟用的資料服務目前不支援跨越 [多個可用性區域](../../aks/availability-zones.md) 的叢集。 若要避免這個問題，當您在 Azure 入口網站中建立 AKS 叢集時，如果您選取區域可用的區域，請清除選取專案控制項中的所有區域。 請見下圖：
+
+   :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="清除每個區域的核取方塊，以指定 [無]。":::
+
+  

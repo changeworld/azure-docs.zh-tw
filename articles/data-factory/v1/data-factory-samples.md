@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f1e861bf9c6cc2a485ac9f153a0c932ec2e6fbb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2b7e96934c96dd944e17a1ef1ffb51a6ee89bf4
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85318904"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359997"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory - 範例
 > [!NOTE]
@@ -34,7 +34,7 @@ ms.locfileid: "85318904"
 | [跨 AppDomain .NET 活動範例](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |此範例可讓您撰寫不受 ADF 啟動器所使用之組件版本 (例如 WindowsAzure.Storage v4.3.0、Newtonsoft.Json v6.0.x 等) 限制的自訂 .NET 活動。 |
 | [執行 R 指令碼](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |此範例包含可用來叫用 RScript.exe 的 Data Factory 自訂活動。 此範例只能與您自己的 (非隨選) 且已安裝 R 的 HDInsight 叢集搭配運作。 |
 | [在 HDInsight Hadoop 叢集上叫用 Spark 作業](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |此範例示範如何使用 MapReduce 活動來叫用 Spark 程式。 Spark 程式只是將資料從一個 Azure Blob 容器複製到另一個。 |
-| [使用 Azure Machine Learning 批次評分活動進行的 Twitter 分析](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |此範例示範如何使用 AzureMLBatchScoringActivity 來叫用執行 Twitter 情緒分析、評分、預測等的 Azure Machine Learning 模型。 |
+| [使用 Azure Machine Learning Studio (傳統) 批次評分活動的 Twitter 分析](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |此範例示範如何使用 AzureMLBatchScoringActivity 來叫用執行 Twitter 情緒分析、評分、預測等的 Azure Machine Learning 模型。 |
 | [使用自訂活動進行的 Twitter 分析](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |此範例示範如何使用自訂的 .NET 活動來叫用執行 Twitter 情緒分析、評分、預測等的 Azure Machine Learning 模型。 |
 | [Azure Machine Learning 的參數化管線](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |此範例提供一個端對端 C# 程式碼來部署 N 條管線，為的是以不同的區域參數來評分和重新訓練每條管線，其中區域清單是來自此檔案隨附的 parameters.txt 檔案。 |
 | [Azure 串流分析作業的參考資料重新整理](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs) |此範例示範如何使用 Azure Data Factory 搭配「Azure 串流分析」來以參考資料執行查詢，並在排程上設定參考資料重新整理。 |
@@ -46,7 +46,7 @@ ms.locfileid: "85318904"
 ## <a name="azure-resource-manager-templates"></a>Azure 資源管理員範本
 您可以在 GitHub 上找到下列適用於 Data Factory 的 Azure Resource Manager 範本。
 
-| [範本] | 描述 |
+| 範本 | 描述 |
 | --- | --- |
 | [從 Azure Blob 儲存體複製到 Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |部署此範本會建立 Azure data factory，其中有管線可將資料從指定的 Azure blob 儲存體複製到 Azure SQL Database |
 | [從 Salesforce 複製到 Azure Blob 儲存體](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |部署此範本會建立 Azure Data Factory，其中有管線可將資料從指定的 Salesforce 帳戶複製到 Azure Blob 儲存體。 |
@@ -75,7 +75,7 @@ ms.locfileid: "85318904"
     ![Data Factory 刀鋒視窗](./media/data-factory-samples/DataFactoryBladeAfter.png)
 
 ## <a name="samples-in-visual-studio"></a>Visual Studio 中的範例
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 您必須已在電腦上安裝下列項目：
 
 * Visual Studio 2013 或 Visual Studio 2015
@@ -90,7 +90,7 @@ ms.locfileid: "85318904"
    2. 在右窗格中選取 [Data Factory 範本] **** 。
    3. 輸入專案的 [名稱]  。
    4. 選取專案的 [位置]  。
-   5. 按一下 [確定]  。
+   5. 按一下 [確定]。
 
       ![[新增專案] 對話方塊](./media/data-factory-samples/vs-new-project-adf-templates.png)
 3. 在 [Data Factory 範本]**** 對話方塊中，從 [使用案例範本]**** 區段選取範例範本，然後按 [下一步]****。 以下步驟將引導您完成 [客戶分析] **** 範本的使用。 其他範例的步驟均相去不遠。
@@ -103,7 +103,7 @@ ms.locfileid: "85318904"
    3. 選取您要在其中建立 Data Factory 的 [Azure 訂用帳戶] **** 。
    4. 選取 Data Factory 的 [資源群組] **** 。
    5. 針對 [區域]****，選取 [美國西部]****、[美國東部]**** 或 [北歐]****。
-   6. 按一下 [下一步]。
+   6. 按 [下一步]  。
 6. 在 [**設定資料存放區**] 頁面中，指定 Azure SQL Database 和**Azure 儲存體帳戶**中的現有**資料庫** (或) 建立資料庫/儲存體]，然後按一下 [下一步]。
 7. 在 [設定計算]**** 頁面中，選取預設值，然後按 [下一步]****。
 8. 在 [摘要]**** 頁面中，檢閱所有設定，然後按 [下一步]****。

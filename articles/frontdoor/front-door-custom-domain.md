@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: duau
-ms.openlocfilehash: a161bc14e8f7628e04673700ca6d90ebc3e8f648
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e153edd807dcb119c34f60dc34e33fed510916bb
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729163"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92277605"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>教學課程：將自訂網域新增到您的前端
 本教學課程說明如何將自訂網域新增至您的 Front Door。 使用 Azure Front Door 進行應用程式傳遞時，如果您想要在使用者要求中顯示您自己的網域名稱，則需要自訂網域。 有可見的網域名稱對您的客戶而言較為方便，並且也有助於宣傳商標。
@@ -39,9 +39,9 @@ ms.locfileid: "91729163"
 
 * 您必須先建立 Front Door，才能完成本教學課程中的步驟。 如需詳細資訊，請參閱[快速入門：建立前端](quickstart-create-front-door.md)。
 
-* 如果您還沒有自訂網域，必須先向網域提供者購買。 如需範例，請參閱[購買自訂網域名稱](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain)。
+* 如果您還沒有自訂網域，必須先向網域提供者購買。 如需範例，請參閱[購買自訂網域名稱](../app-service/manage-custom-dns-buy-domain.md)。
 
-* 如果您使用 Azure 來裝載您的 [DNS 網域](https://docs.microsoft.com/azure/dns/dns-overview)，必須將網域提供者的網域名稱系統 (DNS) 委派給 Azure DNS。 如需詳細資訊，請參閱[將網域委派給 Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)。 反之，如果您使用網域提供者來處理 DNS 網域，請繼續執行[建立 CNAME DNS 記錄](#create-a-cname-dns-record)。
+* 如果您使用 Azure 來裝載您的 [DNS 網域](../dns/dns-overview.md)，必須將網域提供者的網域名稱系統 (DNS) 委派給 Azure DNS。 如需詳細資訊，請參閱[將網域委派給 Azure DNS](../dns/dns-delegate-domain-azure-dns.md)。 反之，如果您使用網域提供者來處理 DNS 網域，請繼續執行[建立 CNAME DNS 記錄](#create-a-cname-dns-record)。
 
 
 ## <a name="create-a-cname-dns-record"></a>建立 CNAME DNS 記錄

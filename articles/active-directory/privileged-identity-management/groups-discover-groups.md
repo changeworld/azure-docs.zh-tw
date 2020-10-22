@@ -14,12 +14,12 @@ ms.subservice: pim
 ms.date: 08/03/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68795033d36ad0bcb36b7cd81cea0d848ecd5113
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ef27475509c59b3c0caf194fd85530f3fdd6c7c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049004"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367834"
 ---
 # <a name="bring-privileged-access-groups-preview-into-privileged-identity-management"></a>將特殊許可權存取群組 (預覽版) 至 Privileged Identity Management
 
@@ -27,7 +27,7 @@ ms.locfileid: "89049004"
 
 ## <a name="identify-groups-to-manage"></a>識別要管理的群組
 
-您可以在 Azure AD 中建立可指派角色的群組，如 [Azure Active Directory 中建立角色可指派的群組](../users-groups-roles/roles-groups-create-eligible.md)中所述。 您必須是群組的擁有者，才能將它納入 Privileged Identity Management 的管理之下。
+您可以在 Azure AD 中建立可指派角色的群組，如 [Azure Active Directory 中建立角色可指派的群組](../roles/groups-create-eligible.md)中所述。 您必須是群組的擁有者，才能將它納入 Privileged Identity Management 的管理之下。
 
 1. 使用特殊許可權角色管理員角色許可權登[入 Azure AD](https://aad.portal.azure.com) 。
 1. 選取 [ **群組** ]，然後選取您想要在 PIM 中管理的角色可指派群組。 您可以搜尋和篩選清單。

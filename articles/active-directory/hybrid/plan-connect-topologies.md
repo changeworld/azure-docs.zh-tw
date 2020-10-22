@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4f8987a8daccc012f9d6da53e46fe7c4e8b43ad
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 8d3f8e9441064a5d2d1372e3f177534b8dfefb93
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146353"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359827"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect 的拓撲
 本文說明使用 Azure AD Connect 同步處理做為重要整合解決方案的各種內部部署和 Azure Active Directory (Azure AD) 拓撲。 本文包含受支援和不受支援的組態。
@@ -142,7 +142,7 @@ Azure AD Connect 支援以「預備模式」** 安裝第二部伺服器。 此�
 
 ## <a name="multiple-azure-ad-tenants"></a>多個 Azure AD 租用戶
 我們建議一個組織在 Azure AD 中有單一租用戶。
-在您計劃使用多個 Azure AD 租用戶之前，請參閱文章 [Azure AD 中的系統管理單位管理](../users-groups-roles/directory-administrative-units.md)。 它涵蓋了常見的案例，您可以使用單一租用戶。
+在您計劃使用多個 Azure AD 租用戶之前，請參閱文章 [Azure AD 中的系統管理單位管理](../roles/administrative-units.md)。 它涵蓋了常見的案例，您可以使用單一租用戶。
 
 ![多個樹系和多個租用戶的拓撲](./media/plan-connect-topologies/multiforestmultidirectory.png)
 

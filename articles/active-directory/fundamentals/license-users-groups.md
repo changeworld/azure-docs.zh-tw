@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7473da6289d4b871ae77f18fab4c00cebcb55d98
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 50e0fe1cf3bb628c40e774423e45ea88d6ab78a5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977009"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359708"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>在 Azure Active Directory 入口網站中指派或移除授權
 
@@ -144,10 +144,10 @@ Azure AD 服務有數個可用的授權方案，包括：
 
 指派授權後，您可以執行下列程序：
 
-- [識別並解決授權指派問題](../users-groups-roles/licensing-groups-resolve-problems.md)
+- [識別並解決授權指派問題](../enterprise-users/licensing-groups-resolve-problems.md)
 
-- [將經授權的使用者新增至群組以進行授權](../users-groups-roles/licensing-groups-migrate-users.md)
+- [將經授權的使用者新增至群組以進行授權](../enterprise-users/licensing-groups-migrate-users.md)
 
-- [使用群組來管理 Azure Active Directory 授權的案例、限制及已知問題](../users-groups-roles/licensing-group-advanced.md)
+- [使用群組來管理 Azure Active Directory 授權的案例、限制及已知問題](../enterprise-users/licensing-group-advanced.md)
 
 - [新增或變更設定檔資訊](active-directory-users-profile-azure-portal.md)

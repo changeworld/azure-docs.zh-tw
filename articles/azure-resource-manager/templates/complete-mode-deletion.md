@@ -2,13 +2,13 @@
 title: 完整模式刪除
 description: 顯示資源類型如何處理 Azure Resource Manager 範本中的完整模式刪除。
 ms.topic: conceptual
-ms.date: 10/06/2020
-ms.openlocfilehash: 72303a7916aec39c05f9b4fa2cbc77de18b7fb3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: b1f7623d6eee1ff629412a4cc0d76e59e6c9e847
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766715"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370119"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>完整模式部署的 Azure 資源刪除
 
@@ -24,7 +24,6 @@ ms.locfileid: "91766715"
 
 > [!NOTE]
 > 在以完整模式部署範本之前，請一律使用「 [假設](template-deploy-what-if.md) 」作業。 假設會顯示要建立、刪除或修改哪些資源。 使用假設來避免不慎刪除資源。
-
 跳至資源提供者命名空間：
 > [!div class="op_single_selector"]
 > - [Microsoft.AAD](#microsoftaad)
@@ -47,6 +46,7 @@ ms.locfileid: "91766715"
 > - [Microsoft.AzureData](#microsoftazuredata)
 > - [Microsoft.AzureStack](#microsoftazurestack)
 > - [Microsoft.AzureStackHCI](#microsoftazurestackhci)
+> - [BareMetalInfrastructure](#microsoftbaremetalinfrastructure)
 > - [Microsoft.Batch](#microsoftbatch)
 > - [Microsoft.Billing](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
@@ -176,6 +176,7 @@ ms.locfileid: "91766715"
 > - [Microsoft.ServiceFabricMesh](#microsoftservicefabricmesh)
 > - [Microsoft.Services](#microsoftservices)
 > - [Microsoft.SignalRService](#microsoftsignalrservice)
+> - [Singularity](#microsoftsingularity)
 > - [Microsoft.SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft.Solutions](#microsoftsolutions)
 > - [Microsoft .SQL](#microsoftsql)
@@ -364,6 +365,7 @@ ms.locfileid: "91766715"
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
 > | privateClouds | 是 |
+> | privateClouds/附加元件 | 否 |
 > | privateClouds/授權 | 否 |
 > | privateClouds/叢集 | 否 |
 > | privateClouds / globalReachConnections | 否 |
@@ -426,12 +428,21 @@ ms.locfileid: "91766715"
 > | ------------- | ----------- |
 > | clusters | 是 |
 
+## <a name="microsoftbaremetalinfrastructure"></a>BareMetalInfrastructure
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 完整模式刪除 |
+> | ------------- | ----------- |
+> | bareMetalInstances | 是 |
+
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
 > | batchAccounts | 是 |
+> | batchAccounts / certificates | 否 |
+> | batchAccounts / pools | 否 |
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 
@@ -973,7 +984,6 @@ ms.locfileid: "91766715"
 > | ------------- | ----------- |
 > | workspaces | 是 |
 > | 工作區/dbWorkspaces | 否 |
-> | 工作區/storageEncryption | 否 |
 > | 工作區/virtualNetworkPeerings | 否 |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
@@ -1129,6 +1139,7 @@ ms.locfileid: "91766715"
 > | applicationgroups / desktops | 否 |
 > | applicationgroups / startmenuitems | 否 |
 > | hostpools | 是 |
+> | hostpools / msixpackages | 否 |
 > | hostpools / sessionhosts | 否 |
 > | hostpools / sessionhosts / usersessions | 否 |
 > | hostpools / usersessions | 否 |
@@ -1380,13 +1391,15 @@ ms.locfileid: "91766715"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | devices | 是 |
+> | 裝置 | 是 |
+> | networkFunctions | 是 |
+> | networkFunctionVendors | 否 |
 > | registeredSubscriptions | 否 |
 > | 廠商 | 否 |
-> | 廠商/vendorskus | 否 |
-> | 廠商/vendorskus/previewSubscriptions | 否 |
-> | virtualnetworkfunctions | 是 |
-> | virtualnetworkfunctionvendors | 否 |
+> | 廠商/vendorSkus | 否 |
+> | 廠商/vendorSkus/previewSubscriptions | 否 |
+> | virtualNetworkFunctions | 是 |
+> | virtualNetworkFunctionVendors | 否 |
 
 ## <a name="microsofthydra"></a>Microsoft.Hydra
 
@@ -1507,9 +1520,20 @@ ms.locfileid: "91766715"
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
 > | workspaces | 是 |
+> | 工作區/batchEndpoints | 是 |
+> | 工作區/batchEndpoints/部署 | 是 |
+> | 工作區/代碼 | 否 |
+> | 工作區/代碼/版本 | 否 |
 > | workspaces / computes | 否 |
+> | 工作區/資料存放區 | 否 |
 > | 工作區/eventGridFilters | 否 |
+> | 工作區/作業 | 否 |
+> | 工作區/labelingJobs | 否 |
 > | 工作區/Linkedservices.json 和 datasets.json | 否 |
+> | 工作區/模型 | 否 |
+> | 工作區/模型/版本 | 否 |
+> | 工作區/onlineEndpoints | 是 |
+> | 工作區/onlineEndpoints/部署 | 是 |
 
 ## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
 
@@ -2157,6 +2181,17 @@ ms.locfileid: "91766715"
 > | SignalR | 是 |
 > | SignalR/eventGridFilters | 否 |
 
+## <a name="microsoftsingularity"></a>Singularity
+
+> [!div class="mx-tableFixed"]
+> | 資源類型 | 完整模式刪除 |
+> | ------------- | ----------- |
+> | accounts | 是 |
+> | 帳戶/accountQuotaPolicies | 否 |
+> | 帳戶/groupPolicies | 否 |
+> | 帳戶/作業 | 否 |
+> | 帳戶/storageContainers | 否 |
+
 ## <a name="microsoftsoftwareplan"></a>Microsoft.SoftwarePlan
 
 > [!div class="mx-tableFixed"]
@@ -2289,6 +2324,7 @@ ms.locfileid: "91766715"
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
 > | clusters | 是 |
+> | 叢集/privateEndpoints | 否 |
 > | streamingjobs | 是 |
 
 ## <a name="microsoftsubscription"></a>Microsoft.Subscription
@@ -2374,7 +2410,7 @@ ms.locfileid: "91766715"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 完整模式刪除 |
 > | ------------- | ----------- |
-> | devices | 是 |
+> | 裝置 | 是 |
 > | registeredSubscriptions | 否 |
 > | 廠商 | 否 |
 > | 廠商/sku | 否 |
@@ -2423,6 +2459,8 @@ ms.locfileid: "91766715"
 > | runtimes | 否 |
 > | serverFarms | 是 |
 > | serverFarms/eventGridFilters | 否 |
+> | serverFarms/firstPartyApps | 否 |
+> | serverFarms/firstPartyApps/keyVaultSettings | 否 |
 > | sites | 是 |
 > | 網站/設定  | 否 |
 > | sites/eventGridFilters | 否 |
