@@ -54,7 +54,7 @@
       href: api-management-terminology.md
     - name: 原則
       items:
-        - name: 總覽
+        - name: 概觀
           href: api-management-howto-policies.md
         - name: 原則參考索引
           href: api-management-policies.md
@@ -62,8 +62,6 @@
       items:
         - name: 安全性基準
           href: security-baseline.md
-        - name: 內建安全性控制
-          href: api-management-security-controls.md
     - name: 訂用帳戶
       href: api-management-subscriptions.md
     - name: 版本
@@ -160,6 +158,8 @@
       items:
         - name: 了解開發人員入口網站
           href: api-management-howto-developer-portal.md
+        - name: 從已淘汰的入口網站遷移至新的開發人員入口網站
+          href: developer-portal-deprecated-migration.md
         - name: 使用 Azure AD 進行驗證
           href: api-management-howto-aad.md
         - name: 使用 Azure AD B2C 進行驗證
@@ -170,13 +170,13 @@
           href: api-management-howto-configure-notifications.md
         - name: 啟用主控台 OAuth 支援
           href: api-management-howto-oauth2.md
-        - name: 舊版入口網站 - 自訂入口網站
+        - name: 已淘汰的入口網站 - 自訂入口網站
           href: api-management-customize-styles.md
-        - name: 舊版入口網站 - 修改頁面和版面配置
+        - name: 已淘汰的入口網站 - 修改頁面和版面配置
           href: api-management-modify-content-layout.md
-        - name: 舊版入口網站 - 自訂範本
+        - name: 已淘汰的入口網站 - 使用範本進行自訂
           href: api-management-developer-portal-templates.md
-    - name: 舊版入口網站範本
+    - name: 已淘汰的入口網站範本
       items:
         - name: 資料模型參考
           href: api-management-template-data-model-reference.md

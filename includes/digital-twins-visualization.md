@@ -5,18 +5,18 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/10/2020
 ms.author: baanders
-ms.openlocfilehash: b637ef2be51ef2bbbe9fa7e1a2374927647ca382
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a07c2684856cfe21001f996bb62ce4ea3297e8c2
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87061719"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92379836"
 ---
 ## <a name="visualization"></a>視覺效果
 
 雖然與 Azure 數位 Twins 實例互動的主要方式是透過 [api 和 sdk](../articles/digital-twins/how-to-use-apis-sdks.md)，但查看您在實例中建立之 Twins 和圖形的視覺效果可能會很有説明。
 
-[**Azure 數位 Twins explorer**](https://docs.microsoft.com/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)是用來視覺化和使用 Azure 數位 Twins 的範例應用程式。 遵循範例提供的指示，下載並執行應用程式程式碼。 
+[**Azure 數位 Twins explorer**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)是用來視覺化和使用 Azure 數位 Twins 的範例應用程式。 遵循範例提供的指示，下載並執行應用程式程式碼。 
 
 使用此範例，您可以看到數位 twins 的視覺標記法，以及它們所建立的圖表，還有其他建立和管理活動。
 

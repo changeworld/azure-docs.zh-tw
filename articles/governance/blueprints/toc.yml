@@ -31,6 +31,9 @@
     - name: 使用藍圖資源鎖定保護新資源
       displayName: 'read only, do not delete, lock assignment'
       href: ./tutorials/protect-new-resources.md
+    - name: 了解：使用 Azure 藍圖管理多個訂用帳戶
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/10-govern-subscriptions-azure-blueprints
 - name: 範例
   items:
     - name: 索引

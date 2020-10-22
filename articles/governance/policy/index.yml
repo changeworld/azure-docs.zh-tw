@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 09/30/2020
-  ms.openlocfilehash: fce9674e9ad21f51344b3ea249849e1474c40ee4
-  ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+  ms.date: 10/16/2020
+  ms.openlocfilehash: 28011d2f3bbbb838f0de9a66c98845d968620fb1
+  ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/14/2020
-  ms.locfileid: "92054826"
+  ms.lasthandoff: 10/21/2020
+  ms.locfileid: "92314187"
 landingContent:
 - title: 關於 Azure 原則
   linkLists:
@@ -63,8 +63,10 @@ landingContent:
       url: ./tutorials/create-and-manage.md
     - text: 使用 VS Code 擴充功能
       url: ./how-to/extension-for-vscode.md
-    - text: 設計原則即程式碼工作流程
+    - text: 設計 Azure 原則即程式碼工作流程
       url: ./concepts/policy-as-code.md
+    - text: 使用 GitHub 實作 Azure 原則即程式碼
+      url: ./tutorials/policy-as-code-github.md
   - linkListType: deploy
     links:
     - text: 原則範例索引
@@ -89,9 +91,9 @@ landingContent:
     links:
     - text: 法規合規性
       url: ./concepts/regulatory-compliance.md
-    - text: 適用於 Kubernetes 的原則
+    - text: 適用於 Kubernetes 的 Azure 原則
       url: ./concepts/policy-for-kubernetes.md
-    - text: 適用於 VM 的原則
+    - text: 適用於 VM 的 Azure 原則
       url: ./concepts/guest-configuration.md
 - title: 檢閱和補救資源
   linkLists:

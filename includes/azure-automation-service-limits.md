@@ -5,15 +5,15 @@ services: automation
 author: mgoedtel
 ms.service: automation
 ms.topic: include
-ms.date: 10/14/2020
+ms.date: 10/21/2020
 ms.author: magoedte
 ms.custom: include file
-ms.openlocfilehash: f01ca03167c7088c344f72e9943c103d9611bbc6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 4a6b21d3782931e3bee4a13ff95e7f313dcc1af2
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92082104"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92379776"
 ---
 #### <a name="process-automation"></a>程序自動化
 
@@ -60,4 +60,4 @@ ms.locfileid: "92082104"
 
 | **Resource** | **限制**| **備註** |
 |---|---|---|
-|每個更新部署的電腦數目|500||
+|每個更新部署的電腦數目|1000||

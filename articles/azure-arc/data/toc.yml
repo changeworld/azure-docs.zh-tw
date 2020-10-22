@@ -24,7 +24,7 @@
       items:
         - name: 安裝用戶端工具
           href: install-client-tools.md
-        - name: azdata
+        - name: Azure Data CLI (azdata)
           items:
             - name: 安裝
               href: /sql/azdata/install/deploy-install-azdata?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
@@ -46,7 +46,7 @@
           href: create-data-controller-azure-data-studio.md
         - name: 建立資料控制器資源 (入口網站)
           href: create-data-controller-resource-in-azure-portal.md
-        - name: 建立資料控制器 (azdata)
+        - name: 建立資料控制器 (Azure Data CLI)
           href: create-data-controller-using-azdata.md
         - name: 使用 Kubernetes 建立資料控制器
           href: create-data-controller-using-kubernetes-native-tools.md

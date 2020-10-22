@@ -107,28 +107,36 @@
               href: partner-center-portal/create-azure-container-offer.md
     - name: Azure 虛擬機器供應項目
       items:
-        - name: 規劃虛擬機器供應項目
+        - name: 規劃 VM 供應項目
           href: marketplace-virtual-machines.md
-        - name: 建立及發佈虛擬機器供應項目
+        - name: 建立和發佈 VM 供應項目
           items:
-            - name: 建立 Azure 虛擬機器供應項目
-              href: partner-center-portal/azure-vm-create-offer.md
-            - name: 建立 Azure VM 技術資產
+            - name: 建立 VM 技術資產
               items:
-                - name: 虛擬機器認證問題
-                  href: partner-center-portal/vm-certification-issues-solutions.md
-                - name: 建立 Azure VM 技術資產
-                  href: partner-center-portal/create-azure-vm-technical-asset.md
-                - name: Azure VM 技術資產常見問題集
-                  href: partner-center-portal/common-issues-during-vhd-creation.md
-                - name: 測試從 VHD 部署的虛擬機器
-                  href: partner-center-portal/azure-vm-image-certification.md
-                - name: SAS URI
-                  items:
-                    - name: 取得 SAS URI
-                      href: partner-center-portal/get-sas-uri.md
-                    - name: SAS URI 常見問題集
-                      href: partner-center-portal/common-sas-uri-issues.md
+                - name: 從已核准的基底建立 VM
+                  href: azure-vm-create-using-approved-base.md
+                - name: 使用自己的映像建立 VM
+                  href: azure-vm-create-using-own-image.md
+                - name: 測試 VM 映射
+                  href: azure-vm-image-test.md
+                - name: 取得 SAS URI
+                  href: azure-vm-get-sas-uri.md
+                - name: SAS 失敗訊息
+                  href: azure-vm-sas-failure-messages.md
+                - name: VM 建立常見問題集
+                  href: azure-vm-create-faq.md
+                - name: VM 認證疑難排解
+                  href: azure-vm-create-certification-faq.md
+            - name: 建立 VM 供應項目
+              href: azure-vm-create.md
+            - name: 設定 VM 供應項目屬性
+              href: azure-vm-create-properties.md
+            - name: 設定 VM 供應項目清單
+              href: azure-vm-create-listing.md
+            - name: 建立 VM 方案
+              href: azure-vm-create-plans.md
+            - name: 新增預覽對象
+              href: azure-vm-create-preview.md
     - name: 諮詢服務
       items:
         - name: 規劃諮詢服務供應項目
@@ -329,7 +337,7 @@
     - name: 技術與發行辦公時間
       href: 'https://aka.ms/marketplacepublishingofficehours'
     - name: 合作夥伴中心支援選項
-      href: partner-center-portal/support.md
+      href: support.md
     - name: 合作夥伴中心公告
       href: /partner-center/announcements
     - name: Microsoft 合作夥伴社群

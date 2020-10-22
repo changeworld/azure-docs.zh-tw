@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure Cosmos DB 文件
-summary: Azure Cosmos DB是 Microsoft 全域發佈的多模型資料庫服務，適用於營運和分析工作負載。 它藉由自動調整輸送量、計算和儲存體，提供多主機功能。
+summary: Azure Cosmos DB - 快速的 NoSQL 資料庫，其具有 SLA 保障的速度和可用性、自動且即時的可擴縮性，以及適用於 MongoDB 和 Cassandra 的開放原始碼 API。
 metadata:
   title: Azure Cosmos DB
-  description: Azure Cosmos DB是 Microsoft 全域發佈的多模型資料庫服務，適用於營運和分析工作負載。 它藉由自動調整輸送量、計算和儲存體，提供多主機功能。
+  description: Azure Cosmos DB - 快速的 NoSQL 資料庫，其具有 SLA 保障的速度和可用性、自動且即時的可擴縮性，以及適用於 MongoDB 和 Cassandra 的開放原始碼 API。
   services: service
   ms.service: cosmos-db
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   author: SnehaGunda
   ms.author: sngun
   ms.date: 09/10/2019
-  ms.openlocfilehash: 8f2dea260472da4178173d110c33d2681520cfce
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 3daa7ed6e59230fe0f6c66e01982f6021f8e1ba7
+  ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91566715"
+  ms.lasthandoff: 10/20/2020
+  ms.locfileid: "92278450"
 landingContent:
 - title: 關於 Azure Cosmos DB
   linkLists:
@@ -24,184 +24,78 @@ landingContent:
     links:
     - text: 什麼是 Azure Cosmos DB？
       url: introduction.md
-  - linkListType: concept
+  - linkListType: get-started
     links:
-    - text: 與 MongoDB 的 Wire Protocol 定相容性
-      url: mongodb-feature-support-36.md
-    - text: 與 Apache Cassandra 的 Wire Protocol 相容性
-      url: cassandra-support.md
-    - text: 與 Tinkerpop’s Gremlin 的 Wire Protocol 相容性
-      url: gremlin-support.md
+    - text: NoSQL 與關聯式資料庫
+      url: relational-nosql.md
+    - text: Azure Cosmos DB 資源模型
+      url: account-databases-containers-items.md
+    - text: 全域散發資料
+      url: distribute-data-globally.md
+    - text: 資料分割
+      url: partitioning-overview.md
+    - text: 輸送量和要求單位
+      url: request-units.md
+    - text: 資料模型化和資料分割
+      url: how-to-model-partition-example.md
+    - text: 服務配額
+      url: concepts-limits.md
   - linkListType: quickstart
     links:
     - text: 建立 Azure Cosmos 帳戶
       url: create-cosmosdb-resources-portal.md
-- title: 全球發佈
-  linkLists:
-  - linkListType: concept
+  - linkListType: video
     links:
-    - text: 概觀
-      url: distribute-data-globally.md
-    - text: 一致性層級
-      url: consistency-levels.md
-    - text: 選擇正確的一致性層級
-      url: consistency-levels-choosing.md
-    - text: 一致性層級和 API
-      url: consistency-levels-across-apis.md
-    - text: 一致性、可用性與效能權衡取捨
-      url: consistency-levels-tradeoffs.md
-    - text: 高可用性
-      url: high-availability.md
-    - text: 衝突類型和解決原則
-      url: conflict-resolution-policies.md
-    - text: 全域資料散發運作原理
-      url: global-dist-under-the-hood.md
-    - text: 遍及各區
-      url: regional-presence.md
-  - linkListType: how-to-guide
-    links:
-    - text: 設定多重區域寫入
-      url: how-to-multi-master.md
-    - text: 設定一致性層級
-      url: how-to-manage-consistency.md
-    - text: 實作自訂同步處理
-      url: how-to-manage-conflicts.md
-    - text: 設定衝突解決原則
-      url: how-to-manage-conflicts.md
-- title: 資料分割和最佳做法
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 概觀
-      url: partitioning-overview.md
-    - text: 資料分割與水平放大
-      url: partition-data.md
-    - text: 綜合磁碟分割索引鍵
-      url: synthetic-partition-keys.md
-    - text: 資料模型化
-      url: modeling-data.md
-  - linkListType: how-to-guide
-    links:
-    - text: 使用大型磁碟分割索引鍵建立容器
-      url: large-partition-keys.md
-    - text: 遷移至已進行磁碟分割的容器
-      url: migrate-containers-partitioned-to-nonpartitioned.md
-- title: 建立和管理 Cosmos DB 資源
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 什麼是 Azure Cosmos 帳戶？
-      url: account-overview.md
-    - text: Azure Cosmos 資料庫、容器和項目
-      url: databases-containers-items.md
-    - text: 如何在 Cosmos DB 中為資料編製索引
-      url: index-overview.md
-    - text: 編製索引原則，包含及排除屬性
-      url: index-policy.md
-    - text: 存留時間
-      url: time-to-live.md
-    - text: 唯一金鑰條件約束
-      url: unique-keys.md
-  - linkListType: how-to-guide
-    links:
-    - text: 建立資料庫
-      url: how-to-manage-database-account.md
-    - text: 建立容器
-      url: how-to-create-container.md
-    - text: 查詢容器中的資料
-      url: how-to-query-container.md
-    - text: 設定容器和項目的上線時間
-      url: how-to-time-to-live.md
-    - text: 設定編製索引原則
-      url: how-to-manage-indexing-policy.md
-    - text: 定義唯一索引鍵
-      url: how-to-define-unique-keys.md
-    - text: 使用模擬器進行本機開發
-      url: local-emulator.md
-    - text: 使用 Azure PowerShell 進行管理
-      url: manage-with-powershell.md
-    - text: 使用 Azure CLI 管理
-      url: manage-with-cli.md
-    - text: 使用 Resource Manager (ARM) 範本進行管理
-      url: manage-sql-with-resource-manager.md
-- title: 佈建的輸送量
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 要求單位
-      url: request-units.md
-    - text: 資料庫和容器層級輸送量
-      url: set-throughput.md
-  - linkListType: how-to-guide
-    links:
-    - text: 估計所需的輸送量
-      url: estimate-ru-with-capacity-planner.md
-    - text: 佈建資料庫的輸送量
-      url: how-to-provision-database-throughput.md
-    - text: 佈建容器的輸送量
-      url: how-to-provision-container-throughput.md
-    - text: 取得要求單位費用
-      url: find-request-unit-charge.md
-    - text: 使用 Azure Functions 計時器進行調整
-      url: scale-on-schedule.md
-- title: 建置包含 SQL API 的應用程式
+    - text: 資料模型化 - 改善應用程式的速度和效能
+      url: https://www.youtube.com/watch?v=wOWa8ecFo88
+- title: 使用 Azure Cosmos DB SQL API
   linkLists:
   - linkListType: quickstart
     links:
-    - text: .NET 主控台應用程式
-      url: create-sql-api-dotnet.md
-    - text: JAVA 應用程式
+    - text: 使用 .NET 主控台應用程式管理您的資料
+      url: create-sql-api-dotnet-v4.md
+    - text: 使用 Java 應用程式管理您的資料
       url: create-sql-api-java.md
-    - text: Node.js 應用程式
-      url: create-sql-api-nodejs.md
-    - text: Python 應用程式
-      url: create-sql-api-python.md
-    - text: Xamarin 應用程式
-      url: create-sql-api-xamarin-dotnet.md
+  - linkListType: concept
+    links:
+    - text: 開始使用 SQL 查詢
+      url: sql-query-getting-started.md
+    - text: 什麼是變更摘要？
+      url: change-feed.md
   - linkListType: tutorial
     links:
-    - text: .NET Web 應用程式
+    - text: 建置 .NET Web 應用程式來管理您的資料
       url: sql-api-dotnet-application.md
     - text: 包含 Async SDK 的 Java 應用程式
       url: sql-api-async-java-get-started.md
-    - text: 具有變更摘要的 Java 應用程式範例
-      url: create-sql-api-java-changefeed.md
     - text: 使用 SQL 查詢來查詢資料
       url: tutorial-query-sql-api.md
   - linkListType: how-to-guide
     links:
-    - text: 使用 Power BI 視覺化資料
-      url: powerbi-visualize.md
+    - text: 微調查詢效能
+      url: sql-api-query-metrics.md
     - text: 定義預存程序、觸發程序和 UDF
       url: how-to-write-stored-procedures-triggers-udfs.md
-    - text: 執行預存程序、觸發程序和 UDF
-      url: how-to-use-stored-procedures-triggers-udfs.md
-  - linkListType: reference
-    links:
-    - text: .NET
-      url: sql-api-sdk-dotnet.md
-    - text: Java
-      url: sql-api-sdk-java.md
-    - text: JavaScript
-      url: sql-api-sdk-node.md
-    - text: REST
-      url: /rest/api/cosmos-db/
-  - linkListType: learn
-    links:
-    - text: 建立和管理 SQL API 資料
-      url: /learn/modules/store-access-data-cosmos-table-api/
-- title: 建置包含 MongoDB API 的應用程式
+- title: 使用適用於 MongoDB 的 Azure Cosmos DB API
   linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是適用於 MongoDB 的 Azure Cosmos DB API？
+      url: mongodb-introduction.md
   - linkListType: quickstart
     links:
-    - text: .NET 應用程式
+    - text: 使用 .NET 應用程式管理您的資料
       url: create-mongodb-dotnet.md
-    - text: JAVA 應用程式
-      url: create-mongodb-java.md
-    - text: Node.js 應用程式
-      url: create-mongodb-nodejs.md
-    - text: Python 應用程式
-      url: create-mongodb-flask.md
+    - text: 使用 GoLang 應用程式管理您的資料
+      url: create-mongodb-go.md
+  - linkListType: concept
+    links:
+    - text: 與 MongoDB 的 Wire Protocol 定相容性
+      url: mongodb-feature-support-36.md
+    - text: MongoDB 擴充功能命令
+      url: mongodb-custom-commands.md
+    - text: 變更資料流
+      url: mongodb-change-streams.md
   - linkListType: tutorial
     links:
     - text: 使用 MongoDB 殼層查詢資料
@@ -210,26 +104,26 @@ landingContent:
     links:
     - text: 管理資料索引
       url: mongodb-indexing.md
-    - text: 設定存留時間
-      url: mongodb-time-to-live.md
     - text: 與 RoBo 3T 連線
       url: mongodb-robomongo.md
-- title: 建置包含 Gremlin API 的應用程式
+- title: 使用 Azure Cosmos DB Gremlin API
   linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure Cosmos Gremlin API？
+      url: graph-introduction.md
   - linkListType: quickstart
     links:
-    - text: 使用 Gremlin 主控台
+    - text: 使用 Gremlin 主控台管理您的資料
       url: create-graph-gremlin-console.md
-    - text: .NET 應用程式
+    - text: 使用 .NET 應用程式管理您的資料
       url: create-graph-dotnet.md
-    - text: JAVA 應用程式
-      url: create-graph-java.md
-    - text: Node.js 應用程式
-      url: create-graph-nodejs.md
-    - text: Python 應用程式
-      url: create-graph-python.md
-    - text: PHP 應用程式
-      url: create-graph-php.md
+  - linkListType: concept
+    links:
+    - text: 與 Tinkerpop’s Gremlin 的 Wire Protocol 相容性
+      url: gremlin-support.md
+    - text: Gremlin API 服務限制
+      url: gremlin-limits.md
   - linkListType: how-to-guide
     links:
     - text: 圖表資料模型
@@ -238,50 +132,34 @@ landingContent:
       url: graph-partitioning.md
     - text: 最佳化 Gremlin 查詢
       url: graph-execution-profile.md
-  - linkListType: learn
-    links:
-    - text: 儲存和存取圖形資料
-      url: /learn/modules/store-access-data-cosmos-graph-api/
-- title: 建置包含 Cassandra API 的應用程式
+- title: 使用 Azure Cosmos DB Cassandra API
   linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure Cosmos DB Cassandra API？
+      url: cassandra-introduction.md
   - linkListType: quickstart
     links:
-    - text: .NET
-      url: create-cassandra-dotnet.md
-    - text: .NET Core
+    - text: 使用 .NET Core 應用程式管理您的資料
       url: create-cassandra-dotnet-core.md
-    - text: Java v3
-      url: create-cassandra-java.md
-    - text: Java v4
+    - text: 使用 Java 應用程式管理您的資料
       url: create-cassandra-java-v4.md
-    - text: Node.js
-      url: create-cassandra-nodejs.md
-    - text: Python
-      url: create-cassandra-python.md
+  - linkListType: concept
+    links:
+    - text: 與 Apache Cassandra 的 Wire Protocol 相容性
+      url: cassandra-support.md
+    - text: 彈性調整
+      url: manage-scale-cassandra.md
+    - text: 次要索引
+      url: cassandra-secondary-index.md
+    - text: 資料分割
+      url: cassandra-partitioning.md
   - linkListType: how-to-guide
     links:
     - text: 從 Spark 連線到 Cassandra API
       url: cassandra-spark-generic.md
-- title: 效能最佳化和成本
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: 輸送量成本
-      url: optimize-cost-throughput.md
-    - text: 查詢成本
-      url: optimize-cost-queries.md
-    - text: 儲存成本
-      url: optimize-cost-storage.md
-    - text: 讀取和寫入成本
-      url: optimize-cost-reads-writes.md
-    - text: 多區域成本
-      url: optimize-cost-regions.md
-    - text: 查詢效能
-      url: sql-api-query-metrics.md
-  - linkListType: how-to-guide
-    links:
-    - text: 使用資料模型進行最佳化
-      url: how-to-model-partition-example.md
+    - text: 使用查詢述詞的變更摘要支援
+      url: cassandra-change-feed.md?tabs=java
 - title: 將資料遷移到 Cosmos DB
   linkLists:
   - linkListType: tutorial
@@ -320,3 +198,15 @@ landingContent:
     links:
     - text: 設定 Azure Synapse Link
       url: configure-synapse-link.md
+- title: 使用 Azure Cosmos DB 資料表 API
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用 .NET 應用程式管理您的資料
+      url: create-table-dotnet.md
+    - text: 使用 Java 應用程式管理您的資料
+      url: create-table-java.md
+  - linkListType: concept
+    links:
+    - text: 資料表 API 與 Azure 資料表儲存體之間的差異
+      url: table-support.md
