@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 針對已啟用 Azure Arc 的叢集設定使用 GitOps (預覽)
 keywords: GitOps, Kubernetes, K8s, Azure, Arc, Azure Kubernetes Service, 容器
-ms.openlocfilehash: c00ed30c9a7424d083bf076c64cf008e0480bb2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a8839c2463494ba0e165bf9e1a5d22245fac8df
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714191"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371251"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>在啟用 Arc 的 Kubernetes 叢集 (預覽版上使用 Gitops) 將部署設定) 
 
@@ -98,17 +98,16 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 | 狀況 | [格式] | 描述 |
 | ------------- | ------------- | ------------- |
-| 私人 GitHub 存放庫 - SSH | git@github.com:username/repo | Flux 所產生的 SSH 金鑰組。  使用者必須將此公開金鑰新增至 GitHub 帳戶以作為部署金鑰。 |
-| 公用 GitHub 存放庫 | `http://github.com/username/repo` 或 git://github.com/username/repo   | 公用 Git 存放庫  |
+| 公用 Git 存放庫 | HTTP [s]：//server/repo.git 或 git://server/repo.git   | 公用 Git 存放庫  |
+| 私人 Git 存放庫– SSH – Flux 建立的金鑰 | ssh：//[user@] server/存放庫。 git 或 [user@] 伺服器：存放庫 git | Flux 所產生的公開金鑰必須新增至您 Git 服務提供者中的使用者帳戶或存放庫。 在 [這裡](#apply-configuration-from-a-private-git-repository) |
 
-Flux 支援這些案例，但 sourceControlConfiguration 尚未支援。 
+Flux 支援這些案例，但尚未由 sourceControlConfiguration 支援。
 
 | 狀況 | [格式] | 描述 |
 | ------------- | ------------- | ------------- |
-| 私人 GitHub 存放庫 - HTTPS | `https://github.com/username/repo` | Flux 不會產生 SSH 金鑰組。  [指示](https://docs.fluxcd.io/en/1.17.0/guides/use-git-https.html) |
-| 私人 Git 主機 | user@githost:path/to/repo | [指示](https://docs.fluxcd.io/en/1.18.0/guides/use-private-git-host.html) |
-| 私人 GitHub 存放庫 - SSH (攜帶您自己的金鑰) | git@github.com:username/repo | [使用您自己的 SSH 金鑰組](https://docs.fluxcd.io/en/1.17.0/guides/provide-own-ssh-key.html) \(英文\) |
-
+| 私人 Git 存放庫-HTTPS | https://server/repo.git | 即將推出 (將支援使用者名稱/密碼、使用者名稱/權杖、憑證)  |
+| 私人 Git 存放庫-SSH –使用者提供的金鑰 | ssh：//[user@] server/存放庫。 git 或 [user@] 伺服器：存放庫 git | 即將推出 |
+| 私人 Git 主機– SSH –自訂 known_hosts | ssh：//[user@] server/存放庫。 git 或 [user@] 伺服器：存放庫 git | 即將推出 |
 
 #### <a name="additional-parameters"></a>其他參數
 
@@ -225,7 +224,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 **將公開金鑰當做部署金鑰新增至 Git 存放庫**
 
-1. 開啟 GitHub，依序瀏覽至您的分支、[設定] 及 [部署金鑰]
+1. 開啟 GitHub、流覽至您的存放庫、至 **設定**，然後 **部署金鑰**
 2. 按一下 [新增部署金鑰]
 3. 提供標題
 4. 檢查**允許寫入權限**

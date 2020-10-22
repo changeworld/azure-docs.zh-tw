@@ -2,13 +2,13 @@
 title: Azure Batch 中的節點和集區
 description: 從開發觀點了解計算節點和集區，以及如何在 Azure Batch 工作流程中使用。
 ms.topic: conceptual
-ms.date: 06/16/2020
-ms.openlocfilehash: 16a5309711b9c8633da9ba473c1b55bc2e54c334
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: a6422976f5362e9ff32cd41cc167a00441ab7aec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87385750"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371438"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch 中的節點和集區
 
@@ -26,7 +26,7 @@ Batch 中的所有計算節點也包括︰
 
 - 工作可參考的標準[資料夾結構](files-and-directories.md)與相關聯的[環境變數](jobs-and-tasks.md)。
 - **防火牆** 設定。
-- [遠端存取](error-handling.md#connect-to-compute-nodes) Windows (遠端桌面通訊協定 (RDP)) 和 Linux (安全殼層 (SSH)) 節點。
+- 除非您[建立的集區已停用遠端存取](pool-endpoint-configuration.md) (，否則 Windows (遠端桌面通訊協定 (RDP) # A3 和 Linux 安全殼層 () SSH (# A7 節點) 的[遠端存取](error-handling.md#connect-to-compute-nodes)。
 
 依預設，節點可以彼此通訊，但無法與不屬於相同集區的虛擬機器進行通訊。 若要讓節點能安全地與其他虛擬機器或內部部署網路通訊，您可以 [在 Azure 虛擬網路的子網中 ](batch-virtual-network.md)布建集區 (VNet) 。 當您這樣做時，您的節點可以透過公用 IP 位址來存取。 這些公用 IP 位址是由 Batch 建立，而且可能會在集區的存留期內變更。 您也可以建立具有您所控制之 [靜態公用 IP 位址的集](create-pool-public-ip.md) 區，以確保它們不會意外變更。
 

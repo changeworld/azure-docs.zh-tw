@@ -14,12 +14,12 @@ ms.date: 01/07/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe2f464791995b9168868f1661a3c303d46f7987
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8481c562ecbab1f26e877e55a5a9454695ddf4c0
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530114"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370826"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中查看 Azure AD 角色的審核歷程記錄
 
@@ -29,7 +29,7 @@ ms.locfileid: "91530114"
 
 自2019年11月起，Privileged Identity Management 的 Azure AD 角色部分會更新為符合 Azure 資源角色體驗的新版本。 這會建立其他功能以及 [現有 API 的變更](azure-ad-roles-features.md#api-changes)。 當新版本推出時，您在本文中遵循的程式將取決於您目前擁有的 Privileged Identity Management 版本。 遵循本節中的步驟，判斷您擁有的 Privileged Identity Management 版本。 知道您的 Privileged Identity Management 版本之後，您可以在本文中選取符合該版本的程式。
 
-1. 使用[特殊權限角色管理員](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色的使用者登入[Azure 入口網站](https://portal.azure.com/)。
+1. 使用[特殊權限角色管理員](../roles/permissions-reference.md#privileged-role-administrator)角色的使用者登入[Azure 入口網站](https://portal.azure.com/)。
 1. 開啟 **Azure AD Privileged Identity Management**。 如果您在 [總覽] 頁面頂端有橫幅，請依照本文的 **新版本** 索引標籤中的指示進行。 否則，請遵循 [ **舊版** ] 索引標籤中的指示。
 
     [![顯示 [Azure AD 角色-目錄角色審核歷程記錄] 頁面的螢幕擷取畫面。](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "為您的版本選取索引標籤")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
@@ -74,7 +74,7 @@ ms.locfileid: "91530114"
 
 請遵循下列步驟來查看 Azure AD 角色的審核歷程記錄。
 
-1. 以屬於[特殊權限角色管理員](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色一員的使用者身分登入 [Azure 入口網站](https://portal.azure.com/)。
+1. 以屬於[特殊權限角色管理員](../roles/permissions-reference.md#privileged-role-administrator)角色一員的使用者身分登入 [Azure 入口網站](https://portal.azure.com/)。
 
 1. 開啟 **Azure AD Privileged Identity Management**。
 
@@ -94,7 +94,7 @@ ms.locfileid: "91530114"
     | 要求者 | 要求啟用或變更角色的使用者。 如果值是 **Azure 系統**，請查看 azure 審核歷程記錄以取得詳細資訊。 |
     | 動作 | 要求者所採取的動作。 動作可以包括指派、取消指派、啟動、停用或 AddedOutsidePIM。 |
     | 成員 | 啟用或指派給角色的使用者。 |
-    | 角色 | 使用者指派或啟用的角色。 |
+    | [角色] | 使用者指派或啟用的角色。 |
     | 理由 | 啟用期間在 [原因] 欄位中輸入的文字。 |
     | 到期 | 當啟用的角色過期時。 僅適用于合格的角色指派。 |
 

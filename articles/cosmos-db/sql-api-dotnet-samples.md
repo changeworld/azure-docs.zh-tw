@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 07/23/2019
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: e9eeca39dfbbefd36c9662aa0fc8b16d2c804158
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ef3347b6f22d623571c8fe9cc8b156bfd92c411
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252981"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282565"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB：適用於 SQL API 的 .NET 範例
 
@@ -53,7 +53,7 @@ Azure 訂用帳戶或免費的 Cosmos DB 試用帳戶
 > 
 
 ## <a name="database-examples"></a>資料庫範例
-DatabaseManagement 專案範例的 [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DatabaseManagement/Program.cs#L75-L91) 方法說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 資料庫，請參閱[使用資料庫、容器和項目](databases-containers-items.md)。 
+DatabaseManagement 專案範例的 [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DatabaseManagement/Program.cs#L75-L91) 方法說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 資料庫，請參閱[使用資料庫、容器和項目](account-databases-containers-items.md)。 
 
 | Task | API 參考資料 |
 | --- | --- |
@@ -63,7 +63,7 @@ DatabaseManagement 專案範例的 [RunDatabaseDemo](https://github.com/Azure/az
 | [刪除資料庫](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DatabaseManagement/Program.cs#L89) |[DocumentClient.DeleteDatabaseAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.deletedatabaseasync) |
 
 ## <a name="collection-examples"></a>集合範例
-CollectionManagement 專案範例的 [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L86-L104) 方法說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 集合，請參閱[使用資料庫、容器和項目](databases-containers-items.md)。 
+CollectionManagement 專案範例的 [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L86-L104) 方法說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 集合，請參閱[使用資料庫、容器和項目](account-databases-containers-items.md)。 
 
 | Task | API 參考資料 |
 | --- | --- |
@@ -74,7 +74,7 @@ CollectionManagement 專案範例的 [RunCollectionDemo](https://github.com/Azur
 | [刪除集合](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L228) |[DocumentClient.DeleteDocumentCollectionAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.deletedocumentcollectionasync) |
 
 ## <a name="document-examples"></a>文件範例
-DocumentManagement 專案範例的 [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L109-L118) 方法說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 文件，請參閱[使用資料庫、容器和項目](databases-containers-items.md)。 
+DocumentManagement 專案範例的 [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L109-L118) 方法說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos 文件，請參閱[使用資料庫、容器和項目](account-databases-containers-items.md)。 
 
 | Task | API 參考資料 |
 | --- | --- |

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/13/2020
 ms.author: harshacs
-ms.openlocfilehash: 1189324cf0bb2731a100032058c7ba9ae4add758
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b9fdaf8a0791570ecee402442c5faefe2f70a22b
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332037"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370435"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>關於 Azure VM 災難修復中的網路功能
 
@@ -62,9 +62,9 @@ login.microsoftonline.com | 需要此項目方可進行 Site Recovery 服務 URL
 使用 NSG 來控制輸出連線能力時，必須允許這些服務標記。
 
 - 針對來源區域中的儲存體帳戶：
-    - 為這個來源地區建立[儲存體服務標記](../virtual-network/security-overview.md#service-tags)型 NSG 規則。
+    - 為這個來源地區建立[儲存體服務標記](../virtual-network/network-security-groups-overview.md#service-tags)型 NSG 規則。
     - 允許這些位址，方可從 VM 將該資料寫入到快取儲存體帳戶。
-- 建立 [Azure Active Directory (AAD) 服務標籤](../virtual-network/security-overview.md#service-tags)型 NSG 規則，以允許存取對應至 AAD 的所有 IP 位址
+- 建立 [Azure Active Directory (AAD) 服務標籤](../virtual-network/network-security-groups-overview.md#service-tags)型 NSG 規則，以允許存取對應至 AAD 的所有 IP 位址
 - 針對目的地區域建立以 EventsHub 服務標記為基礎的 NSG 規則，以允許存取 Site Recovery 監視。
 - 建立以 AzureSiteRecovery 服務標記為基礎的 NSG 規則，以允許在任何區域中存取 Site Recovery 服務。
 - 建立以 AzureKeyVault 服務標記為基礎的 NSG 規則。 只有在透過入口網站啟用啟用 ADE 的虛擬機器複寫時，才需要此項。

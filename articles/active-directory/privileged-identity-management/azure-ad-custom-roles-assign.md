@@ -16,18 +16,18 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d14023065005977334a9f399a61acfde3b6ba9f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75e004980ada23a616b57e3c7eb1afb241e09598
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87413148"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371642"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>在 Privileged Identity Management (PIM) 中指派 Azure AD 自訂角色
 
 本文說明如何使用 Privileged Identity Management (PIM) 對為了在 Azure Active Directory (Azure AD) 管理體驗中管理應用程式而建立的自訂角色建立 Just-In-Time 和有時限的指派。
 
-- 如需關於在 Azure AD 中建立自訂角色以委派應用程式管理的詳細資訊，請參閱 [Azure Active Directory 中的自訂系統管理員角色 (預覽)](../users-groups-roles/roles-custom-overview.md)。
+- 如需關於在 Azure AD 中建立自訂角色以委派應用程式管理的詳細資訊，請參閱 [Azure Active Directory 中的自訂系統管理員角色 (預覽)](../roles/custom-overview.md)。
 - 如果您尚未使用 Privileged Identity Management，請在[開始使用 Privileged Identity Management](pim-getting-started.md) 中取得詳細資訊。
 - 如需如何授與其他系統管理員存取權以管理 Privileged Identity Management 的詳細資訊，請參閱 [授與其他系統管理員存取權以管理 Privileged Identity Management](pim-how-to-give-access-to-pim.md)。
 
@@ -78,9 +78,9 @@ Privileged Identity Management 可管理您可在 Azure Active Directory (Azure 
 
  ![查看角色指派是否顯示為 [合格] 或 [有效]](./media/azure-ad-custom-roles-assign/verify-assignments.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [啟用 Azure AD 自訂角色](azure-ad-custom-roles-assign.md)
 - [移除或更新 Azure AD 自訂角色指派](azure-ad-custom-roles-update-remove.md)
 - [設定 Azure AD 自訂角色指派](azure-ad-custom-roles-configure.md)
-- [Azure AD 中的角色定義](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure AD 中的角色定義](../roles/permissions-reference.md)

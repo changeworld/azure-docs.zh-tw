@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 800c1742b49fce7e1adf8c3ca22181cfb7d0a085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9aed5f282ff7b5d573a6f8511f2fc4dbfd27135d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565502"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371812"
 ---
 # <a name="delete-a-group-using-azure-active-directory"></a>使用 Azure Active Directory 刪除群組
 您有可能基於任何原因而刪除 Azure Active Directory (Azure AD) 群組，但通常是因為您：
@@ -48,4 +48,4 @@ ms.locfileid: "89565502"
 
 - 若您不慎將群組刪除，您可以再次建立。 如需詳細資訊，請參閱[如何建立基本的群組及新增成員](active-directory-groups-create-azure-portal.md)。
 
-- 如果您不小心刪除了 Microsoft 365 群組，就可以將它還原。 如需詳細資訊，請參閱[還原已刪除的 Office 365 群組](../users-groups-roles/groups-restore-deleted.md)。
+- 如果您不小心刪除了 Microsoft 365 群組，就可以將它還原。 如需詳細資訊，請參閱[還原已刪除的 Office 365 群組](../enterprise-users/groups-restore-deleted.md)。

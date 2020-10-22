@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 08/27/2020
-ms.openlocfilehash: a2d2c4d29a6af073e3e4e6a74c257cb864b8a78c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d794716fe1f4717acbabfd90643b72c682e475bc
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400684"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370588"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>在合作夥伴中心管理您的商業市集帳戶
 
@@ -170,7 +170,7 @@ ms.locfileid: "91400684"
 
 ### <a name="create-new-users"></a>建立新的使用者
 
-若要建立全新的使用者帳戶，您必須擁有具備[**全域管理員**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)權限的帳戶。
+若要建立全新的使用者帳戶，您必須擁有具備[**全域管理員**](../../active-directory/roles/permissions-reference.md)權限的帳戶。
 
 1. 移至 [使用者] (在 [帳戶設定] 下)，選取 [新增使用者]，然後選擇 [建立新的使用者]。
 1. 輸入每個新使用者的名字、姓氏和使用者名稱。 
@@ -184,7 +184,7 @@ ms.locfileid: "91400684"
 
 ### <a name="invite-new-users-by-email"></a>透過電子郵件邀請新的使用者
 
-若要透過電子郵件邀請目前不屬於您公司帳戶 (Azure AD 租用戶) 的使用者，您必須擁有具備[**全域管理員**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)權限的帳戶。
+若要透過電子郵件邀請目前不屬於您公司帳戶 (Azure AD 租用戶) 的使用者，您必須擁有具備[**全域管理員**](../../active-directory/roles/permissions-reference.md)權限的帳戶。
 
 1. 移至 [使用者] (在 [帳戶設定] 下)，選取 [新增使用者]，然後選擇 [Invite users by email] \(透過電子郵件邀請使用者\)。
 2. 輸入一或多個電子郵件地址， (最多10個) （以逗號或分號分隔）。
@@ -204,7 +204,7 @@ ms.locfileid: "91400684"
 
 ### <a name="change-a-user-password"></a>變更使用者密碼
 
-如果有使用者需要變更其密碼，而且您在建立使用者帳戶時已提供**密碼復原電子郵件**，則該使用者可以自行執行這項操作。 您也可以依照下列步驟來更新使用者的密碼。 若要變更您公司帳戶 (Azure AD 租用戶) 的使用者密碼，您必須使用[**全域管理員**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)權限登入帳戶。 這會變更您 Azure AD 租使用者中的使用者密碼，以及他們用來存取合作夥伴中心的密碼。
+如果有使用者需要變更其密碼，而且您在建立使用者帳戶時已提供**密碼復原電子郵件**，則該使用者可以自行執行這項操作。 您也可以依照下列步驟來更新使用者的密碼。 若要變更您公司帳戶 (Azure AD 租用戶) 的使用者密碼，您必須使用[**全域管理員**](../../active-directory/roles/permissions-reference.md)權限登入帳戶。 這會變更您 Azure AD 租使用者中的使用者密碼，以及他們用來存取合作夥伴中心的密碼。
 
 1. 從 [使用者] 頁面 (在 [帳戶設定] 下)，選取您要編輯的使用者帳戶名稱。
 2. 選取頁面底部的 [重設密碼] 按鈕。
@@ -237,7 +237,7 @@ ms.locfileid: "91400684"
 4. 指定群組的角色或自訂權限。 群組的所有成員都能以您在這裡套用的權限，存取您的合作夥伴中心帳戶，而不論與其個別帳戶相關聯的角色/權限為何。
 5. 從顯示的清單中選取新群組的使用者。 您可以使用搜尋方塊來搜尋特定使用者。
 6. 當您完成選取使用者時，請選取 [新增 **選取** 專案] 將其新增至新群組。
-7. 選取 [儲存]****。
+7. 選取 [儲存]。
 
 這個新群組也會在您組織的工作帳戶中建立 (Azure AD 租使用者) ，而不只是在您的合作夥伴中心帳戶中。
 

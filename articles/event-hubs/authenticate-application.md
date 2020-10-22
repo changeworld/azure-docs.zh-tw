@@ -2,13 +2,13 @@
 title: 驗證應用程式以存取 Azure 事件中樞資源
 description: 本文提供的資訊說明如何使用 Azure Active Directory 來驗證應用程式，以存取 Azure 事件中樞資源
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 50c697e5c430b72f8d5da393e90f1db7ff6d48a1
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.date: 10/21/2020
+ms.openlocfilehash: 6eac2ef362705ecb68212166f8b691ac969a40ff
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332479"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359929"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 來驗證應用程式，以存取事件中樞資源
 Microsoft Azure 針對以 Azure Active Directory (Azure AD) 為基礎的資源和應用程式提供了整合式的存取控制管理功能。 使用 Azure AD 搭配 Azure 事件中樞的主要優點是您不再需要將認證儲存在程式碼中。 相反地，您可以從 Microsoft 身分識別平臺要求 OAuth 2.0 存取權杖。 要求權杖的資源名稱是 `https://eventhubs.azure.net/` 針對 Kafka 用戶端 (，) 要求權杖的資源 `https://<namespace>.servicebus.windows.net` 。 Azure AD 會 (使用者、群組或服務主體) 執行應用程式來驗證安全性主體。 如果驗證成功，Azure AD 會將存取權杖傳回給應用程式，然後應用程式就可以使用存取權杖來授權 Azure 事件中樞資源的要求。
@@ -29,34 +29,6 @@ Azure 提供下列 Azure 內建角色，以使用 Azure AD 和 OAuth 來授權�
 
 > [!IMPORTANT]
 > 我們的預覽版本支援將事件中樞資料存取權限新增至擁有者或參與者角色。 不過，已不再接受擁有者和參與者角色的資料存取權限。 如果您使用的是擁有者或參與者角色，請切換到使用 Azure 事件中樞資料擁有者角色。
-
-## <a name="assign-azure-roles-using-the-azure-portal"></a>使用 Azure 入口網站指派 Azure 角色  
-若要深入瞭解如何使用 Azure RBAC 和 Azure 入口網站來管理 Azure 資源的存取權，請參閱 [這篇文章](..//role-based-access-control/role-assignments-portal.md)。 
-
-確定角色指派的適當範圍之後，請流覽至 Azure 入口網站中的該資源。 顯示資源的存取控制 (IAM) 設定，並遵循下列指示來管理角色指派：
-
-> [!NOTE]
-> 以下所述的步驟會將角色指派給事件中樞命名空間下的事件中樞，但您可以遵循相同的步驟來指派範圍為任何事件中樞資源的角色。
-
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，瀏覽到您的事件中樞命名空間。
-2. 在 [ **總覽** ] 頁面上，選取您要指派角色的事件中樞。
-
-    ![選取您的事件中樞](./media/authenticate-application/select-event-hub.png)
-1. 選取 [ **存取控制] (IAM) ** 來顯示事件中樞的存取控制設定。 
-1. 選取 [角色指派] 索引標籤，以查看角色指派的清單。 選取工具列上的 [ **新增** ] 按鈕，然後選取 [ **新增角色指派**]。 
-
-    ![工具列上的 [新增] 按鈕](./media/authenticate-application/role-assignments-add-button.png)
-1. 在 [ **新增角色指派** ] 頁面上，執行下列步驟：
-    1. 選取您要指派的 **事件中樞角色** 。 
-    1. 搜尋以找出您要指派角色 (使用者、群組、服務主體) 的 **安全性主體** 。
-    1. 選取 [ **儲存** ] 以儲存角色指派。 
-
-        ![將角色指派給使用者](./media/authenticate-application/assign-role-to-user.png)
-    4. 您對其指派角色的身分識別會出現在該角色下方。 例如，下圖顯示 Azure 使用者位於 Azure 事件中樞資料擁有者角色中。 
-        
-        ![清單中的使用者](./media/authenticate-application/user-in-list.png)
-
-您可以依照類似的步驟，指派範圍為事件中樞命名空間、資源群組或訂用帳戶的角色。 定義角色及其範圍之後，您可以使用 [此 GitHub 位置中](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)的範例來測試此行為。
 
 
 ## <a name="authenticate-from-an-application"></a>從應用程式進行驗證
@@ -93,6 +65,30 @@ Azure 提供下列 Azure 內建角色，以使用 Azure AD 和 OAuth 來授權�
 1. 立即將新密碼的值複製到安全的位置。 填滿值只會顯示一次。
 
     ![用戶端密碼](./media/authenticate-application/client-secret.png)
+
+
+## <a name="assign-azure-roles-using-the-azure-portal"></a>使用 Azure 入口網站指派 Azure 角色  
+註冊應用程式之後，您可以將應用程式的服務主體指派給事件中樞 Azure AD 角色，Azure 事件中樞區段的 [ [內建角色](#built-in-roles-for-azure-event-hubs) ] 區段中所述。 
+
+1. 在 [Azure 入口網站](https://portal.azure.com/)中，瀏覽到您的事件中樞命名空間。
+2. 在 [ **總覽** ] 頁面上，選取您要指派角色的事件中樞。
+
+    ![選取您的事件中樞](./media/authenticate-application/select-event-hub.png)
+1. 選取 [ **存取控制] (IAM) ** 來顯示事件中樞的存取控制設定。 
+1. 選取 [角色指派] 索引標籤，以查看角色指派的清單。 選取工具列上的 [ **新增** ] 按鈕，然後選取 [ **新增角色指派**]。 
+
+    ![工具列上的 [新增] 按鈕](./media/authenticate-application/role-assignments-add-button.png)
+1. 在 [ **新增角色指派** ] 頁面上，執行下列步驟：
+    1. 選取您要指派的 **事件中樞角色** 。 
+    1. 搜尋以找出您要指派角色 (使用者、群組、服務主體) 的 **安全性主體** 。 從清單中選取 **已註冊的應用程式** 。 
+    1. 選取 [ **儲存** ] 以儲存角色指派。 
+
+        ![將角色指派給使用者](./media/authenticate-application/assign-role-to-user.png)
+    4. 切換至 [ **角色指派** ] 索引標籤，並確認角色指派。 例如，下圖顯示 **mywebapp** 是在 **Azure 事件中樞資料** 傳送者角色中。 
+        
+        ![清單中的使用者](./media/authenticate-application/user-in-list.png)
+
+您可以依照類似的步驟，指派範圍為事件中樞命名空間、資源群組或訂用帳戶的角色。 定義角色及其範圍之後，您可以使用 [此 GitHub 位置中](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)的範例來測試此行為。 若要深入瞭解如何使用 Azure RBAC 和 Azure 入口網站來管理 Azure 資源的存取權，請參閱 [這篇文章](..//role-based-access-control/role-assignments-portal.md)。 
 
 
 ### <a name="client-libraries-for-token-acquisition"></a>取得權杖的用戶端程式庫  

@@ -3,12 +3,12 @@ title: 檢視和管理服務提供者
 description: 客戶可以使用 Azure 入口網站中的 [服務提供者] 頁面，檢視服務提供者、服務提供者供應項目與委派的資源的相關資訊。
 ms.date: 10/12/2020
 ms.topic: how-to
-ms.openlocfilehash: ecbeb7f5b6fccb7b66043cf57aa5f48674c6fe8b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e94a9fd6562a9fa8bc0f2d84cce477e7907a1e48
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974391"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371098"
 ---
 # <a name="view-and-manage-service-providers"></a>檢視和管理服務提供者
 
@@ -78,7 +78,7 @@ ms.locfileid: "91974391"
 
 我們提供 [Azure 原則內建原則定義](../../governance/policy/samples/built-in-policies.md#lighthouse) ，以將 [範圍委派審核至管理租](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/Lighthouse_Delegations_Audit.json)使用者。 您可以將此原則指派給管理群組，其中包含您想要審核的所有訂用帳戶。 當您檢查是否符合此原則時，在指派原則的管理群組內 (任何委派的訂用帳戶和/或資源群組) 將會顯示為不符合規範的狀態。 然後，您可以檢查結果，並確認沒有任何未預期的委派。
 
-另一個 [內建原則定義](../../governance/policy/samples/built-in-policies.md#lighthouse) 可讓您將 [委派限制于特定的管理](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Lighthouse/AllowCertainManagingTenantIds_Deny.json)租使用者。 此原則同樣可以套用至管理群組，其中包含您想要限制委派的任何訂用帳戶。 部署原則之後，任何嘗試將訂用帳戶委派給您指定的租使用者的嘗試將會被拒絕。
+另一個 [內建原則定義](../../governance/policy/samples/built-in-policies.md#lighthouse) 可讓您將 [委派限制于特定的管理](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Lighthouse/AllowCertainManagingTenantIds_Deny.json)租使用者。 此原則同樣可以套用至管理群組，其中包含您想要限制委派的任何訂用帳戶。 部署原則之後，任何嘗試將訂用帳戶委派給您指定的租使用者的嘗試將會被拒絕。
 
 如需如何指派原則和查看合規性狀態結果的詳細資訊，請參閱 [快速入門：建立原則指派](../../governance/policy/assign-policy-portal.md)。
 

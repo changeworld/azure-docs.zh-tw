@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 3e0869e045db0a791bc25f4b81db2efdc1b1645d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 699bdeb34d4a7134cd9fc4938427a2bd813069fa
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87504901"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282619"
 ---
 # <a name="create-a-database-and-container-for-azure-cosmos-db---sql-api"></a>建立 Azure Cosmos DB 資料庫和容器 - SQL API
 
@@ -58,5 +58,3 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 ## <a name="next-steps"></a>後續步驟
 
 如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/powershell/)。
-
-您可以在 [Azure Cosmos DB PowerShell 指令碼](../../../powershell-samples.md)中找到其他 Azure Cosmos DB PowerShell 指令碼範例。

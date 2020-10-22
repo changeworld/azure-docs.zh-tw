@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 4f05d4dd13e63d8022ffb61be4451cb5350ba68f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e13db803a491f5baa33c17ab650995346cd48022
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87504945"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282649"
 ---
 # <a name="create-a-container-with-a-large-partition-key-in-an-azure-cosmos-db-account-using-powershell"></a>在 Azure Cosmos DB 帳戶中使用 PowerShell 建立具有大型分割區索引鍵的容器
 
@@ -49,5 +49,3 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 ## <a name="next-steps"></a>後續步驟
 
 如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/powershell/)。
-
-您可以在 [Azure Cosmos DB PowerShell 指令碼](../../../powershell-samples.md)中找到其他 Azure Cosmos DB PowerShell 指令碼範例。

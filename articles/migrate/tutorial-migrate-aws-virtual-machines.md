@@ -4,12 +4,12 @@ description: 本文說明如何使用 Azure Migrate 將 AWS VM 遷移至 Azure�
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 6c4b53e3c3673b913e4afbfb65801d83f0640bd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62bfad2cc92e7af61a10360878ebaa3093897e97
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651839"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310730"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>探索、評估 Amazon Web Services (AWS) VM，並將其遷移至 Azure
 
@@ -40,7 +40,7 @@ ms.locfileid: "89651839"
 
 設定評量，如下所示：
 
-1. 請遵循[教學課程](./tutorial-prepare-physical.md)來設定 Azure，並準備 AWS VM 來進行評量。 請注意：
+1. 請遵循[教學課程](./tutorial-discover-physical.md)來設定 Azure，並準備 AWS VM 來進行評量。 請注意：
 
     - Azure Migrate 在探索 AWS 執行個體時，會使用密碼驗證。 依預設，AWS 執行個體不支援密碼驗證。 您必須先啟用密碼驗證，才可以探索執行個體。
         - 針對 Windows 電腦，允許 WinRM 連接埠 5985 (HTTP)。 這會允許遠端 WMI 呼叫。
@@ -370,7 +370,7 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
     - 使用 Site Recovery 將 Azure VM 複寫至次要區域，讓工作負載保持執行且持續可供使用。 [深入了解](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - 針對提升安全性：
     - 使用 [Azure 資訊安全中心 - Just In Time 系統管理](../security-center/security-center-just-in-time.md)來鎖定並限制輸入流量存取。
-    - 使用[網路安全性群組](../virtual-network/security-overview.md)來限制傳送至管理端點的網路流量。
+    - 使用[網路安全性群組](../virtual-network/network-security-groups-overview.md)來限制傳送至管理端點的網路流量。
     - 部署 [Azure 磁碟加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)以協助保護磁碟，以及防止資料遭到竊取和受到未經授權的存取。
     - 深入了解如何[保護 IaaS 資源](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)，並瀏覽 [Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)。
 - 針對監視及管理：

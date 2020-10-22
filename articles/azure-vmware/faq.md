@@ -4,12 +4,12 @@ description: 提供有關 Azure VMware 解決方案的一些常見問題解答�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 8868f86f0cf46ff82e37cd433d7b5bca0d69567d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: bdc0bdb5966445fe98b2f65bce552fe6dca493ea
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078930"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368973"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>關於 Azure VMware 解決方案的常見問題
 
@@ -45,7 +45,7 @@ Azure VMware 解決方案客戶將可使用所有 Azure 服務。 特定服務�
 
 #### <a name="can-i-migrate-vsphere-vms-from-on-premises-environments-to-azure-vmware-solution-private-clouds"></a>是否可將 vSphere Vm 從內部部署環境遷移至 Azure VMware 解決方案私人雲端？
 
-是。 如果符合標準的跨 vCenter [vMotion 需求](https://kb.vmware.com/s/article/210695) ，則可以使用 VM 遷移和 VMotion 將 vm 移至私人雲端。
+是。 如果符合標準的跨 vCenter [vMotion 需求](https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=2106952) ，則可以使用 VM 遷移和 VMotion 將 vm 移至私人雲端。
 
 #### <a name="is-a-specific-version-of-vsphere-required-in-on-premises-environments"></a>內部部署環境中是否需要特定版本的 vSphere？
 
@@ -80,7 +80,7 @@ VMware HCX Enterprise Edition (EE) 可供使用，並有 Azure VMware 解決方�
 Azure 防禦服務建議連線到跳躍方塊，以防止將 Azure VMware 解決方案公開到網際網路。 您無法使用 Azure 防禦來連接至 Azure VMware 解決方案 Vm，因為它們不是 Azure IaaS 物件。
 
 #### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>是否可以使用現有的 ExpressRoute 閘道來連接到 Azure VMware 解決方案？
-是，您可以使用現有的 ExpressRoute 閘道來連接到 Azure VMware 解決方案，只要它不超過每個虛擬網路的四個 ExpressRoute 線路限制。  不過，若要從內部部署透過 ExpressRoute 存取 Azure VMware 解決方案，您必須具有 ExpressRoute 全球存取範圍，因為 ExpressRoute 閘道不會在其連線線路之間提供可轉移的路由。
+是，您可以使用現有的 ExpressRoute 閘道來連接到 Azure VMware 解決方案，只要它不超過每個虛擬網路的四個 ExpressRoute 線路限制。  不過，若要透過 ExpressRoute 從內部部署存取 Azure VMware 解決方案，則必須要有 ExpressRoute Global Reach，因為 ExpressRoute 閘道不會在其連線的線路之間提供可轉移的路由。
 
 ## <a name="compute-network-storage-and-backup"></a>計算、網路、儲存體和備份
 
@@ -277,7 +277,7 @@ Azure 訂閱需要 Azure 帳戶。
    如需註冊資源提供者的其他方式，請參閱 [Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)。
 
 <!-- LINKS - external -->
-[kb2106952]: https://kb.vmware.com/s/article/2106952
+[kb2106952]: https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=21069522
 
 <!-- LINKS - internal -->
 [Access and Identity Concepts]: concepts-identity.md

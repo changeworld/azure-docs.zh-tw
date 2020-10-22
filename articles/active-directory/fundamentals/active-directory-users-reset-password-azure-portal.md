@@ -14,26 +14,26 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69da6aa0253f92f9242a988c6b46de873df0677e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 397c74203aae2f52ce81844695266cc36fdf3042
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797198"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370894"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>使用 Azure Active Directory 重設使用者的密碼
 
 身為系統管理員，您可以在使用者忘記密碼、使用者被鎖定而無法進入裝置，或是使用者從未收到密碼的情況下重設該使用者的密碼。
 
 >[!Note]
->除非您的 Azure AD 租用戶是使用者的主目錄，否則您無法重設其密碼。 這表示如果使用者正在使用另一個組織的帳戶、Microsoft 帳戶或 Google 帳戶來登入您的組織，您將無法重設其密碼。<br><br>如果使用者的授權來源為 Windows Server Active Directory，您只能在已開啟密碼回寫功能時重設密碼。<br><br>如果使用者的授權來源為外部 Azure AD，您將無法重設密碼。 只有使用者或外部 Azure AD 的系統管理員才能重設密碼。
+>除非您的 Azure AD 租用戶是使用者的主目錄，否則您無法重設其密碼。 這表示如果使用者正在使用另一個組織的帳戶、Microsoft 帳戶或 Google 帳戶來登入您的組織，您將無法重設其密碼。<br><br>如果使用者的授權來源為 Windows Server Active Directory，您只能在已開啟密碼回寫功能時重設密碼。<br><br>如果使用者的授權來源為外部 Azure AD，您將無法重設密碼。 只有使用者或外部 Azure AD 中的系統管理員可以重設密碼。
 
 >[!Note]
 >如果您不是系統管理員，且正在尋找如何重設自己公司或學校密碼的相關指示，請參閱[重設您的工作密碼或學校密碼](../user-help/active-directory-passwords-update-your-own-password.md)。
 
 ## <a name="to-reset-a-password"></a>重設密碼
 
-1. 以使用者系統管理員或密碼系統管理員身分登入 [Azure 入口網站](https://portal.azure.com/) 。 如需可用角色的詳細資訊，請參閱[在 Azure Active Directory 中指派系統管理員角色](../users-groups-roles/directory-assign-admin-roles.md#available-roles)
+1. 以使用者系統管理員或密碼系統管理員身分登入 [Azure 入口網站](https://portal.azure.com/) 。 如需可用角色的詳細資訊，請參閱[在 Azure Active Directory 中指派系統管理員角色](../roles/permissions-reference.md#available-roles)
 
 2. 依序選取 [Azure Active Directory]**** 和 [使用者]****，搜尋並選取需要重設的使用者，然後選取 [重設密碼]****。
 
@@ -63,4 +63,4 @@ ms.locfileid: "87797198"
 
 - [建立基本群組並新增成員](active-directory-groups-create-azure-portal.md)
 
-或者，您也可以執行複雜的使用者案例，例如指派委派、使用原則及共用使用者帳戶。 如需其他可用動作的詳細資訊，請參閱 [Azure Active Directory 使用者管理文件](../users-groups-roles/index.yml)。
+或者，您也可以執行複雜的使用者案例，例如指派委派、使用原則及共用使用者帳戶。 如需其他可用動作的詳細資訊，請參閱 [Azure Active Directory 使用者管理文件](../enterprise-users/index.yml)。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 88ab04eb69be0f9f765e6f95a0ea1194189d823a
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 575c139a3b417eb9429695d3ea6be26bf5625de5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341257"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371064"
 ---
 # <a name="monitor-identity-and-access"></a>監視身分識別和存取
 
@@ -56,7 +56,7 @@ Azure 資訊安全中心有兩個專屬的安全性控制措施可確保您符�
 
 ## <a name="multi-factor-authentication-mfa-and-azure-active-directory"></a> (MFA) 和 Azure Active Directory 的多重要素驗證 
 
-需要有 [Azure Active Directory (AD) 租用戶權限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)才能啟用 MFA。
+需要有 [Azure Active Directory (AD) 租用戶權限](../active-directory/roles/permissions-reference.md)才能啟用 MFA。
 
 - 如果您有進階版的 AD，請使用[條件式存取](../active-directory/conditional-access/concept-conditional-access-policy-common.md)來啟用 MFA。
 - 如果您使用的是 AD free edition，請啟用[Azure Active Directory 檔](../active-directory/fundamentals/concept-fundamentals-security-defaults.md)中所述的**安全性預設值**。

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: b1b93110c3dba38dadf7079fc24ba12e81793c02
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: a960150d68cf2f939e206321a20d98b0e4080313
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329844"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371489"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>設定自訂警示以監視已公告路由
 
@@ -70,7 +70,7 @@ ms.locfileid: "92329844"
 
 ### <a name="2-assign-the-run-as-account-a-role"></a><a name="about"></a>2. 將角色指派給執行身份帳戶
 
-依預設，「 **參與者** 」角色會指派給您的 **執行身份** 帳戶所使用的服務主體。 您可以保留指派給服務主體的預設角色，或藉由指派 [內建角色](../role-based-access-control/built-in-roles.md) (（例如，讀取器) 或 [自訂角色](../active-directory/users-groups-roles/roles-create-custom.md)）來限制許可權。
+依預設，「 **參與者** 」角色會指派給您的 **執行身份** 帳戶所使用的服務主體。 您可以保留指派給服務主體的預設角色，或藉由指派 [內建角色](../role-based-access-control/built-in-roles.md) (（例如，讀取器) 或 [自訂角色](../active-directory/roles/custom-create.md)）來限制許可權。
 
  使用下列步驟來判斷角色指派給您的執行身份帳戶所使用的服務主體：
 

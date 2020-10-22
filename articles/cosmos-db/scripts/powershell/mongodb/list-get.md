@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 05/01/2020
 ms.author: mjbrown
-ms.openlocfilehash: 94c41df305abe3e1678efc1dc59d0c855c5cb069
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d2b6334769d7dcb1fda66119188c35a3951efd8
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87505055"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282745"
 ---
 # <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>列出及取得 Azure Cosmos DB 資料庫和圖表 - MongoDB API
 
@@ -49,5 +49,3 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 ## <a name="next-steps"></a>後續步驟
 
 如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/powershell/)。
-
-您可以在 [Azure Cosmos DB PowerShell 指令碼](../../../powershell-samples.md)中找到其他 Azure Cosmos DB PowerShell 指令碼範例。

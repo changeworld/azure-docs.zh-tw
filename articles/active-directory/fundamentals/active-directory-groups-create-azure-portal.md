@@ -13,15 +13,15 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dcbd8618dc0f2bae2eacc9ced67869d8209286a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e4533334204a3a1cfd46ff27b04ff0c05350dfc
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565519"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371846"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>使用 Azure Active Directory 建立基本群組並新增成員
-您可以使用 Azure Active Directory (Azure AD) 入口網站建立基本群組。 基於此文章的目的，一個基本的群組會由資源擁有者 (系統管理員) 新增到單一資源，並包含需要存取該資源的特定成員 (員工)。 如需更複雜的案例，包括動態成員資格和規則建立，請參閱[Azure Active Directory 使用者管理文件](../users-groups-roles/index.yml)。
+您可以使用 Azure Active Directory (Azure AD) 入口網站建立基本群組。 基於此文章的目的，一個基本的群組會由資源擁有者 (系統管理員) 新增到單一資源，並包含需要存取該資源的特定成員 (員工)。 如需更複雜的案例，包括動態成員資格和規則建立，請參閱[Azure Active Directory 使用者管理文件](../enterprise-users/index.yml)。
 
 ## <a name="group-and-membership-types"></a>群組與成員資格類型
 有數個群組與成員資格類型。 下列資訊說明每個群組與成員資格類型，以及其使用方式，以協助您決定建立群組時要使用的選項。
@@ -36,7 +36,7 @@ ms.locfileid: "89565519"
 - **動態裝置**： 讓您使用動態群組規則來自動新增及移除裝置。 如果裝置的屬性出現變化，系統會查看您針對目錄所設定的動態群組規則，以判斷該裝置是否仍符合規則需求 (並新增該裝置)，或已不再符合規則需求 (並移除該裝置)。
 
     > [!IMPORTANT]
-    > 您可以針對裝置或使用者建立動態群組，但不能同時建立。 您也無法根據裝置擁有者的屬性來建立裝置群組。 裝置成員資格規則只能參考裝置屬性。 如需針對使用者與裝置建立動態群組的詳細資訊，請參閱[建立動態群組並檢查狀態](../users-groups-roles/groups-create-rule.md)
+    > 您可以針對裝置或使用者建立動態群組，但不能同時建立。 您也無法根據裝置擁有者的屬性來建立裝置群組。 裝置成員資格規則只能參考裝置屬性。 如需針對使用者與裝置建立動態群組的詳細資訊，請參閱[建立動態群組並檢查狀態](../enterprise-users/groups-create-rule.md)
 
 ## <a name="create-a-basic-group-and-add-members"></a>建立基本群組並新增成員
 您可以同時建立基本群組並新增成員。 若要建立基本群組並新增成員，請使用下列程序：
@@ -81,5 +81,5 @@ ms.locfileid: "89565519"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用群組管理對 SaaS 應用程式的存取](../users-groups-roles/groups-saasapps.md)
-- [使用 PowerShell 命令管理群組](../users-groups-roles/groups-settings-v2-cmdlets.md)
+- [使用群組管理對 SaaS 應用程式的存取](../enterprise-users/groups-saasapps.md)
+- [使用 PowerShell 命令管理群組](../enterprise-users/groups-settings-v2-cmdlets.md)

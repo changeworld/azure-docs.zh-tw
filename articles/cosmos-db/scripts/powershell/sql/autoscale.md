@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 07/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 32ebbb43fc02a3aa3d5129ea66ebe8640d11b0cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f49f2541ea150719f4145708f1811c8ceed42a4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87504791"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282695"
 ---
 # <a name="create-a-database-and-container-with-autoscale-for-azure-cosmos-db---sql-api"></a>針對 Azure Cosmos DB，建立具有自動調整功能的資料庫和容器 - SQL API
 
@@ -51,5 +51,3 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 ## <a name="next-steps"></a>後續步驟
 
 如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/)。
-
-您可以在 [Azure Cosmos DB PowerShell 指令碼](../../../powershell-samples.md)中找到其他 Azure Cosmos DB PowerShell 指令碼範例。

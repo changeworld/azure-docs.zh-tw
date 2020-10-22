@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55df425367cc8295ef6a3899e2edb47669fe57b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bba8a0898c11cf1af150f4824d9bef5e9e03576e
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91741171"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370877"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>使用 Azure Active Directory 將最近刪除的使用者還原或移除
 刪除使用者之後，其帳戶會維持在暫時停權狀態 30 天。 在這 30 天期間，可以還原該使用者帳戶及其所有屬性。 30 天期限過後，系統會自動將該使用者永久刪除。
@@ -90,4 +90,4 @@ ms.locfileid: "91741171"
 
 - [從另一個組織新增來賓使用者](../external-identities/what-is-b2b.md)
 
-如需其他可用的使用者管理工作的詳細資訊，請 [Azure AD 使用者管理檔](../users-groups-roles/index.yml)。
+如需其他可用的使用者管理工作的詳細資訊，請 [Azure AD 使用者管理檔](../enterprise-users/index.yml)。

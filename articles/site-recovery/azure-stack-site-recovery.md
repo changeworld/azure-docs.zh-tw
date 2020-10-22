@@ -3,12 +3,12 @@ title: 使用 Azure Site Recovery 將 Azure Stack VM 複寫至 Azure | Microsoft
 description: 了解如何使用 Azure Site Recovery 服務設定將 Azure Stack VM 進行災害復原至 Azure。
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: a7e58f5b24786169c9d0c989b79a14c4115acca8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36e11bfe5354644f9ef6603ffe20cb2e86074323
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448972"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370520"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>將 Azure Stack VM 複寫至 Azure
 
@@ -56,7 +56,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 7. 複寫機器與組態伺服器通訊 (透過連接埠 HTTPS 443 輸入，以管理複寫)。 機器將複寫資料傳送到處理序伺服器 (透過連接埠 HTTPS 9443 輸入 - 可修改)。
 8. 流量透過網際網路複寫到 Azure 儲存體的公用端點。 或者，您可以使用 Azure ExpressRoute 公用對等互連。 不支援從內部部署網站透過站台對站台 VPN 將流量複寫至 Azure。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 以下是設定此情節時所需的項目。
 
@@ -153,7 +153,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 2. 在 [使用者入門]  中，選取 Site Recovery。 然後選取 [準備基礎結構]  。
 3. 在 [保護目標]   > [您的電腦位於何處]  中，選取 [內部部署]  。
 4. 在 [您要將電腦複寫到何處]  中，選取 [複製到 Azure]  。
-5. 在 [您的電腦虛擬化了嗎]**** 中，選取 [未虛擬化/其他]****。 然後選取 [確定]。
+5. 在 [您的電腦虛擬化了嗎]**** 中，選取 [未虛擬化/其他]****。 然後選取 [確定]  。
 
     ![保護目標](./media/azure-stack-site-recovery/protection-goal.png)
 
@@ -186,7 +186,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 > [!NOTE]
 > 組態伺服器也可從命令列安裝。 [深入了解](physical-manage-configuration-server.md#install-from-the-command-line)。
 >
-> 可能需要 15 分鐘以上，帳戶名稱才會出現在入口網站。 若要立即更新，請選取 [設定伺服器]   > 伺服器名稱 > [重新整理伺服器]  。
+> 可能需要 15 分鐘以上，帳戶名稱才會出現在入口網站。 若要立即更新，請選取設定**伺服器**  >  **_伺服器名稱_*_ > _*** 重新整理伺服器。
 
 ## <a name="step-4-set-up-the-target-environment"></a>步驟 4：設定目標環境
 
@@ -282,7 +282,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 
 對 VM 執行測試容錯移轉，如下所示：
 
-1. 在 [**設定**  >  **已**複寫的專案] 中，按一下 VM > **+ 測試容錯移轉**。
+1. 在 [設定] > [複寫的項目] 中，按一下 [VM] > [+測試容錯移轉]。
 2. 針對此逐步解說，我們將選擇使用 [最近處理]**** 復原點。
 3. 在 [測試容錯移轉]**** 中，選取目標 Azure 網路。
 4. 按一下 [確定] **** 即可開始容錯移轉。
@@ -314,7 +314,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 
 ### <a name="fail-back-to-azure-stack"></a>容錯回復至 Azure Stack
 
-當主要網站再次啟動並執行時，您可以從 Azure 容錯回復至 Azure Stack。 若要這樣做，請遵循 [此處](https://docs.microsoft.com/azure-stack/operator/site-recovery-failback?view=azs-2005)所列的步驟。
+當主要網站再次啟動並執行時，您可以從 Azure 容錯回復至 Azure Stack。 若要這樣做，請遵循 [此處](/azure-stack/operator/site-recovery-failback?view=azs-2005)所列的步驟。
 
 ## <a name="conclusion"></a>結論
 
@@ -323,4 +323,3 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 ## <a name="next-steps"></a>後續步驟
 
 容錯回復後，您可以重新保護 VM，並開始將它再次複寫到 Azure，做法是重複本文中的步驟。
-

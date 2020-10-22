@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: cf7a3ff478100c892e59e98c91e9605c88bdc667
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f584ba1021e9cc66454e3aebd7f51b34e72885f5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89438818"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369177"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Azure Data Factory 第1版支援的計算環境
 > [!NOTE]
@@ -30,7 +30,7 @@ ms.locfileid: "89438818"
 | ---------------------------------------- | ---------------------------------------- |
 | [隨選 Azure HDInsight 叢集](#azure-hdinsight-on-demand-linked-service)或[您自己的 HDInsight 叢集](#azure-hdinsight-linked-service) | [DotNet](data-factory-use-custom-activities.md)、[Hive](data-factory-hive-activity.md)、[Pig](data-factory-pig-activity.md)、[MapReduce](data-factory-map-reduce.md)、[Hadoop 串流](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](#azure-batch-linked-service) | [DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Machine Learning 活動︰批次執行和更新資源](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure Machine Learning Studio (傳統) ](#azure-machine-learning-studio-classic-linked-service) | [Studio (傳統) 活動：批次執行和更新資源](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
 | [AZURE SQL](#azure-sql-linked-service)， [Azure Synapse Analytics](#azure-synapse-analytics-linked-service)， [SQL Server](#sql-server-linked-service) | [預存程序活動](data-factory-stored-proc-activity.md) |
 
@@ -230,7 +230,7 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 
 * Azure HDInsight
 * Azure Batch
-* Azure Machine Learning
+* Azure Machine Learning Studio (傳統) 
 * Azure Data Lake Analytics
 * Azure SQL Database，Azure Synapse Analytics 先前的 SQL 資料倉儲 () ，SQL Server
 
@@ -311,8 +311,8 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 | poolName          | VM 集區的名稱。    | 是      |
 | linkedServiceName | 與此 Batch 連結服務相關聯之儲存體服務連結的名稱。 此連結服務會用於執行活動及儲存活動執行記錄所需的暫存檔案。 | 是      |
 
-## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning 連結服務
-您可以建立 Machine Learning 連結服務，以向資料處理站註冊 Machine Learning 批次評分端點。
+## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure Machine Learning Studio (傳統) 連結服務
+您可以建立 Azure Machine Learning Studio (傳統) 連結服務，以向 data factory 註冊 Studio (傳統) 批次評分端點。
 
 ### <a name="example"></a>範例
 

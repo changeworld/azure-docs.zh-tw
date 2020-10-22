@@ -12,12 +12,12 @@ ms.date: 04/11/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63b716aa22954af51a9eb53a0d04a8299d348c71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27896bac6f5436fb6717e4bc1ab0a1f9381904ad
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797232"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370911"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>使用 Azure Active Directory 新增或更新使用者的設定檔資訊
 使用 Azure Active Directory (Azure AD) 新增使用者設定檔資訊，包括個人資料圖片、工作特定資訊，以及一些設定。 如需新增使用者的詳細資訊，請參閱[如何在 Azure Active Directory 中新增或刪除使用者](add-users-azure-active-directory.md)。
@@ -50,7 +50,7 @@ ms.locfileid: "87797232"
 
     - **驗證連絡資訊。** 驗證這項資訊，以確定具有使用者的有效電話號碼和電子郵件地址。 Azure Active Directory 會使用這項資訊，在登入期間確定使用者是真正的使用者。 只有全域系統管理員才能更新驗證連絡資訊。
 
-4. 選取 [儲存]****。
+4. 選取 [儲存]。
 
     系統將為使用者儲存您的所有變更。
 
@@ -66,4 +66,4 @@ ms.locfileid: "87797232"
 
 - [建立基本群組並新增成員](active-directory-groups-create-azure-portal.md)
 
-或者，您也可以執行其他使用者管理工作，例如指派委派、使用原則及共用使用者帳戶。 如需其他可用動作的詳細資訊，請參閱 [Azure Active Directory 使用者管理文件](../users-groups-roles/index.yml)。
+或者，您也可以執行其他使用者管理工作，例如指派委派、使用原則及共用使用者帳戶。 如需其他可用動作的詳細資訊，請參閱 [Azure Active Directory 使用者管理文件](../enterprise-users/index.yml)。

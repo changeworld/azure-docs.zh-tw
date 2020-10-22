@@ -3,12 +3,12 @@ title: Connected Machine Windows 代理程式概觀
 description: 本文提供 Azure Arc 啟用的伺服器代理程式的詳細總覽，可支援監視混合式環境中裝載的虛擬機器。
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 344bd2c801cb21932b35bcdfdcc38cc3fa73783b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f1f74ff12d007553c0c0c9b16f56a27371618bbb
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102977"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370163"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 已啟用伺服器代理程式的總覽
 
@@ -122,17 +122,17 @@ Azure PowerShell：
 
 ```azurepowershell-interactive
 Login-AzAccount
-Set-AzContext -SubscriptionId [subscription you want to onboard]
-Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
-Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
+Set-AzContext -SubscriptionId [subscription you want to onboard]
+Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
+Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
 ```
 
 Azure CLI：
 
 ```azurecli-interactive
-az account set --subscription "{Your Subscription Name}"
-az provider register --namespace 'Microsoft.HybridCompute'
-az provider register --namespace 'Microsoft.GuestConfiguration'
+az account set --subscription "{Your Subscription Name}"
+az provider register --namespace 'Microsoft.HybridCompute'
+az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
 您也可以遵循 [Azure 入口網站](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)底下的步驟，使用 Azure 入口網站來註冊資源提供者。
@@ -203,7 +203,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 * 解除安裝代理程式期間，不會移除下列成品。
 
-    * %ProgramFiles%\AzureConnectedMachineAgent\Logs
+    * * 位於%programdata%\azureconnectedmachineagent\log
     * %ProgramData%\AzureConnectedMachineAgent 和子目錄
     * %ProgramData%\GuestConfig
 

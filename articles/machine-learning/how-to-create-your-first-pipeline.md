@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: sgilley
 ms.author: nilsp
 author: NilsPohlmann
-ms.date: 8/14/2020
+ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 9bfec8c1da0581fa7f17dd671358218f22c877c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6cbda4067e98c16ea26f3436b5f65e696549462
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708470"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370299"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>使用 Azure Machine Learning SDK 來建立及執行機器學習管線
 
@@ -32,7 +32,7 @@ ML 管線是在計算目標上執行 (查看 [Azure Machine Learning) 中的計�
 
 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 建立 [Azure Machine Learning 工作區](how-to-manage-workspace.md)以保存您的所有管線資源。
 
@@ -251,6 +251,18 @@ from azureml.pipeline.core import Pipeline
 pipeline1 = Pipeline(workspace=ws, steps=[compare_models])
 ```
 
+### <a name="how-python-environments-work-with-pipeline-parameters"></a>Python 環境如何搭配管線參數使用
+
+如先前在 [設定定型回合的環境](#configure-the-training-runs-environment)中所述，系統會使用物件來指定環境狀態和 Python 程式庫相依性 `Environment` 。 一般而言，您可以 `Environment` 參考其名稱，並選擇性地指定版本，以指定現有的：
+
+```python
+aml_run_config = RunConfiguration()
+aml_run_config.environment.name = 'MyEnvironment'
+aml_run_config.environment.version = '1.0'
+```
+
+但是，如果您選擇 `PipelineParameter` 在執行時間針對管線步驟，使用物件動態設定變數，您就無法使用這項技術來參考現有的 `Environment` 。 相反地，如果您想要使用 `PipelineParameter` 物件，則必須將 `environment` 的欄位設定 `RunConfiguration` 為 `Environment` 物件。 您必須負責確保這類的相依性 `Environment` 已正確設定其對外部 Python 套件的相依性。
+
 ### <a name="use-a-dataset"></a>使用資料集 
 
 從 Azure Blob 儲存體、Azure 檔案儲存體、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL Database 和適用於 PostgreSQL 的 Azure 資料庫建立的資料集會可用來作為任何管線步驟的輸入。 您可以將輸出寫入至 [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py&preserve-view=true)、 [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py&preserve-view=true)，或者，如果您想要將資料寫入至特定資料存放區，請使用 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true)。 
@@ -337,6 +349,8 @@ pipeline_run1.wait_for_completion()
 ![以管線的形式執行實驗的圖表](./media/how-to-create-your-first-pipeline/run_an_experiment_as_a_pipeline.png)
 
 如需詳細資訊，請參閱 [實驗類別](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true) 參考。
+
+## <a name="use-pipeline-parameters-for-arguments-that-change-at-inference-time"></a>針對在推斷階段變更的引數使用管線參數
 
 ## <a name="view-results-of-a-pipeline"></a>查看管線的結果
 

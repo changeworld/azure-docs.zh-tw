@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 5f43654b4ff7d0e1f73bd2d83df21d7277c570d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70234c9bf6be8b9c2fbb5750fa1dba718ac2690d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854552"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370469"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>監視、診斷與疑難排解 Microsoft Azure 儲存體
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -217,7 +217,7 @@ Storage Client Library for .NET 能讓您針對應用程式所執行的儲存體
 您可以擷取用戶端與伺服器之間的流量，針對用戶端與伺服器在交換的資料，以及在底層運作的網路狀況提供詳細資訊。 有用的網路記錄工具如下：
 
 * [Fiddler](https://www.telerik.com/fiddler) 是免費的 Web 偵錯 Proxy，可讓您檢視 HTTP 與 HTTPS 要求及回應訊息的標頭與承載資料。 如需詳細資訊，請參閱 [附錄 1：使用 Fiddler 擷取 HTTP 與 HTTPS 流量](#appendix-1)。
-* [Microsoft Network Monitor (Netmon)](https://cnet-downloads.com/network-monitor) 與 [Wireshark](https://www.wireshark.org/) 都是免費的網路通訊協定分析器，可讓您針對廣泛的網路通訊協定檢視詳細封包資訊。 如需 Wireshark 的詳細資訊，請參閱[附錄 2：使用 Wireshark 擷取網路流量](#appendix-2)。
+* [Microsoft Network Monitor (Netmon)](https://download.cnet.com/s/network-monitor/) 與 [Wireshark](https://www.wireshark.org/) 都是免費的網路通訊協定分析器，可讓您針對廣泛的網路通訊協定檢視詳細封包資訊。 如需 Wireshark 的詳細資訊，請參閱[附錄 2：使用 Wireshark 擷取網路流量](#appendix-2)。
 * 如果您想要執行基本的連線測試以確認用戶端機器能夠透過網路與 Azure 儲存體服務連線的話，您無法使用用戶端上的標準 **ping** 工具來執行。 不過，您可以使用 [**tcping** 工具](https://www.elifulkerson.com/projects/tcping.php)來檢查連線能力。
 
 在許多案例中，來自儲存體記錄與儲存體用戶端程式庫的記錄資料，用來診斷問題都已綽綽有餘，但是在某些情況中，您可能需要比這些網路記錄工具所能提供的資訊還要詳盡的資料才行。 舉例來說，透過 Fiddler 來檢視 HTTP 與 HTTPS 訊息可以讓您檢視在儲存體服務之間來回傳送的標頭與裝載資料，進一步幫助您確認用戶端應用程式如何重試儲存體操作。 諸如 Wireshark 之類的通訊協定分析器可在封包層級運作，方便您檢視 TCP 資料，從而為遺失的封包與連線問題進行疑難排解。 

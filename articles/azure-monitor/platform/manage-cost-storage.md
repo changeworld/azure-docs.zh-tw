@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 3783c3dea67ebb9a77486d18bf80e67b85292744
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6a14ef6f75d5939501c6bd8ca84620a7a5619a54
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144178"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369058"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure 監視器記錄來管理使用量和成本    
 
@@ -243,7 +243,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 - 目標：選取您的 Log Analytics 資源
 - 準則： 
    - 訊號名稱：自訂記錄搜尋
-   - 搜尋查詢： `_LogOperation | where Detail has 'OverQuota'`
+   - 搜尋查詢： `_LogOperation | where Category == "Ingestion" | where Operation == "Ingestion rate" | where Level == "Warning"`
    - 依據：結果數目
    - 條件：大於
    - 閾值：0
@@ -600,9 +600,9 @@ union *
 - **定義警示條件**：將您的 Log Analytics 工作區指定為資源目標。
 - **警示準則**：指定下列項目：
    - **訊號名稱**：選取 [自訂記錄搜尋]
-   - **搜尋查詢** 至 `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` 。 如果您想要不同 
+   - **搜尋查詢** 至 `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` 。 如果您想要不同的 
    - [警示邏輯] 為 [根據結果數目]，而 [條件] 為 [大於臨界值 0]
-   - 每次*1440* minutesto 一天執行一次的時間， *1440*分鐘和**警示頻率**的**時間週期**。
+   - 每隔*1440*分鐘一天執行一次的時間（ *1440*分鐘）和**警示頻率**的**時間週期**。
 - **定義警示詳細資料**：指定下列項目：
    - *在24小時內大於 50 GB 的可計費資料磁片*區**名稱**
    - 將 [嚴重性] 設定為「警告」

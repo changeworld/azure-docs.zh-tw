@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: e71325246b69f501ec8af91c59cb4f042180542c
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: fe8f4229a2bc967f1368e263d2c055b153c3717d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999649"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369959"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure 私人端點 DNS 設定
 
@@ -40,7 +40,7 @@ Azure 服務會在公用 DNS 服務上建立正式名稱 DNS 記錄 (CNAME) ，�
 針對 Azure 服務，請使用下表中所述的建議區域名稱：
 
 | Private link 資源類型/Subresource |私人 DNS 區功能變數名稱稱 | 公用 DNS 區域轉寄站 |
-|---|---|---|---|
+|---|---|---|
 | Azure 自動化/ (Microsoft. Automation/automationAccounts) /Webhook，DSCAndHybridWorker | privatelink.azure-automation.net | azure-automation.net |
 | Azure SQL Database (的 Microsoft .Sql/伺服器) /SQL Server | privatelink.database.windows.net | database.windows.net |
 | Azure Synapse Analytics (的 Microsoft .Sql/伺服器) /SQL Server  | privatelink.database.windows.net | database.windows.net |
@@ -77,6 +77,8 @@ Azure 服務會在公用 DNS 服務上建立正式名稱 DNS 記錄 (CNAME) ，�
 | Azure 監視器 (privateLinkScopes) /azuremonitor | privatelink.monitor.azure.com<br/> privatelink.oms.opinsights.azure.com <br/> privatelink.ods.opinsights.azure.com <br/> privatelink.agentsvc.azure-automation.net | monitor.azure.com<br/> oms.opinsights.azure.com<br/> ods.opinsights.azure.com<br/> agentsvc.azure-automation.net |
 |  (Microsoft CognitiveServices/帳戶) /帳戶的認知服務 | privatelink.cognitiveservices.azure.com  | cognitiveservices.azure.com  |
 | Azure 檔案同步 (Microsoft.storagesync/storageSyncServices) /afs |  privatelink.afs.azure.net  |  afs.azure.net  |
+| Azure Data Factory (DataFactory/工廠 ) /dataFactory |  privatelink.datafactory.azure.net  |  datafactory.azure.net  |
+| Azure Data Factory (DataFactory/工廠 ) /入口網站 |  privatelink.azure.com  |  azure.com  |
 
  
 ## <a name="dns-configuration-scenarios"></a>DNS 設定案例
@@ -130,38 +132,37 @@ DNS 是一個重要元件，可成功解析私人端點 IP 位址，讓應用程
 下列案例適用于在 Azure 中具有 DNS 轉寄站的內部部署網路，而後者負責透過伺服器層級轉寄站，將所有 DNS 查詢解析到 Azure 提供的 DNS [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md)。 
 
 > [!NOTE]
-> 此案例會使用 Azure SQL Database 建議的私人 DNS 區域。對於其他服務，您可以使用下列參考來調整模型： [Azure 服務 DNS 區域](#azure-services-dns-zone-configuration)設定。
+> 此案例會使用 Azure SQL Database 建議的私人 DNS 區域。 對於其他服務，您可以使用下列參考來調整模型： [Azure 服務 DNS 區域](#azure-services-dns-zone-configuration)設定。
 
 若要正確設定，您需要下列資源：
 
 - 內部部署網路
--  [連線到內部部署的](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)虛擬網路
-- 部署在 Azure 中的 DNS 轉寄站 
--  [privatelink.database.windows.net](../dns/private-dns-privatednszone.md)   具有 [類型 A 記錄的](../dns/dns-zones-records.md#record-types)私人 DNS 區域 privatelink.database.windows.net
+- [連線到內部部署的](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)虛擬網路
+- 部署在 Azure 中的 DNS 轉寄站 
+- 具有[類型 A 記錄的](../dns/dns-zones-records.md#record-types)私人 DNS 區域[privatelink.database.windows.net](../dns/private-dns-privatednszone.md)
 - 私人端點資訊 (FQDN 記錄名稱和私人 IP 位址) 
 
 下圖說明使用部署在 Azure 中的 DNS 轉寄站之內部部署網路中的 DNS 解析順序，其中的解析是由 [連結至虛擬網路](../dns/private-dns-virtual-network-links.md)的私人 DNS 區域所建立：
 
 :::image type="content" source="media/private-endpoint-dns/on-premises-using-azure-dns.png" alt-text="單一虛擬網路與 Azure 提供的 DNS":::
 
-這項設定可以針對已經有 DNS 解決方案的內部部署網路進行擴充。 
-內部部署 DNS 解決方案必須設定為透過參考 Azure 中部署之 DNS 轉寄站的 [條件](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) 轉寄站，將 DNS 流量轉送至 Azure DNS。
+這項設定可以針對已經有 DNS 解決方案的內部部署網路進行擴充。 內部部署 DNS 解決方案必須設定為透過參考 Azure 中部署之 DNS 轉寄站的 [條件](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) 轉寄站，將 DNS 流量轉送至 Azure DNS。
 
 > [!NOTE]
-> 此案例會使用 Azure SQL Database 建議的私人 DNS 區域。 針對其他服務，您可以使用下列參考來調整模型： [Azure 服務 DNS 區域](#azure-services-dns-zone-configuration)設定
+> 此案例會使用 Azure SQL Database 建議的私人 DNS 區域。 針對其他服務，您可以使用下列參考來調整模型： [Azure 服務 DNS 區域](#azure-services-dns-zone-configuration)設定
 
 若要正確設定，您需要下列資源：
 
-- 具備自訂 DNS 解決方案的內部部署網路 
--  [連線到內部部署的](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)虛擬網路
+- 具備自訂 DNS 解決方案的內部部署網路 
+- [連線到內部部署的](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)虛擬網路
 - 部署在 Azure 中的 DNS 轉寄站
--  [privatelink.database.windows.net](../dns/private-dns-privatednszone.md)    具有 [類型 A 記錄的](../dns/dns-zones-records.md#record-types)私人 DNS 區域 privatelink.database.windows.net
+- 具有[類型 A 記錄的](../dns/dns-zones-records.md#record-types)私人 DNS 區域[privatelink.database.windows.net](../dns/private-dns-privatednszone.md)
 - 私人端點資訊 (FQDN 記錄名稱和私人 IP 位址) 
 
-下圖說明內部部署網路中的 DNS 解析順序，其會有條件地將 DNS 流量轉送至 Azure，其中的解析是由 [連結至虛擬網路](../dns/private-dns-virtual-network-links.md)的私人 dns 區域所建立。
+下圖說明內部部署網路中的 DNS 解析順序，其會有條件地將 DNS 流量轉送至 Azure，其中的解析是由 [連結至虛擬網路](../dns/private-dns-virtual-network-links.md)的私人 dns 區域所建立。
 
 > [!IMPORTANT]
-> 條件式轉送必須對建議的 [公用 DNS 區域](#azure-services-dns-zone-configuration)轉寄站進行。例如：  `database.windows.net`   而不是 **privatelink**. database.windows.net。
+> 條件式轉送必須對建議的 [公用 DNS 區域](#azure-services-dns-zone-configuration)轉寄站進行。 例如： `database.windows.net` 而不是 **privatelink**. database.windows.net。
 
 :::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="單一虛擬網路與 Azure 提供的 DNS":::
 
@@ -177,18 +178,18 @@ DNS 是一個重要元件，可成功解析私人端點 IP 位址，讓應用程
 > 此設定需要單一私人 DNS 區域。 從內部部署和 [對等互連虛擬網路](../virtual-network/virtual-network-peering-overview.md) 建立的所有用戶端連線也都必須使用相同的私人 DNS 區域。
 
 > [!NOTE]
-> 此案例會使用 Azure SQL Database 建議的私人 DNS 區域。 對於其他服務，您可以使用下列參考來調整模型： [Azure 服務 DNS 區域](#azure-services-dns-zone-configuration)設定。
+> 此案例會使用 Azure SQL Database 建議的私人 DNS 區域。 對於其他服務，您可以使用下列參考來調整模型： [Azure 服務 DNS 區域](#azure-services-dns-zone-configuration)設定。
 
 若要正確設定，您需要下列資源：
 
 - 內部部署網路
--  [連線到內部部署的](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)虛擬網路
-- [對等互連虛擬網路](../virtual-network/virtual-network-peering-overview.md) 
+- [連線到內部部署的](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)虛擬網路
+- [對等互連虛擬網路](../virtual-network/virtual-network-peering-overview.md) 
 - 部署在 Azure 中的 DNS 轉寄站
--  [privatelink.database.windows.net](../dns/private-dns-privatednszone.md)    具有 [類型 A 記錄的](../dns/dns-zones-records.md#record-types)私人 DNS 區域 privatelink.database.windows.net
+- 具有[類型 A 記錄的](../dns/dns-zones-records.md#record-types)私人 DNS 區域[privatelink.database.windows.net](../dns/private-dns-privatednszone.md)
 - 私人端點資訊 (FQDN 記錄名稱和私人 IP 位址) 
 
-下圖說明使用部署在 Azure 中的 DNS 轉寄站之內部部署和虛擬網路中的 DNS 解析順序，其中會透過 [連結至虛擬網路](../dns/private-dns-virtual-network-links.md)的私人 DNS 區域進行解析：
+下圖說明使用部署在 Azure 中的 DNS 轉寄站之內部部署和虛擬網路中的 DNS 解析順序，其中會透過 [連結至虛擬網路](../dns/private-dns-virtual-network-links.md)的私人 DNS 區域進行解析：
 
 :::image type="content" source="media/private-endpoint-dns/hybrid-scenario.png" alt-text="單一虛擬網路與 Azure 提供的 DNS":::
 

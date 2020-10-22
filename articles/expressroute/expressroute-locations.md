@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: 931794dba3266301dd9bb873ff68cacfcb3cac07
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 09bd46f3265656a1f8ea28279ce1a9ebea5e83f5
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106360"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368633"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 連線能力合作夥伴和對等互連位置
 
@@ -130,7 +130,7 @@ ExpressRoute 位置 (有時稱為對等互連位置或 meet-me-locations) 是 Mi
 | **LG CNS** |支援 |支援 |釜山、首爾 |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |支援 |支援 |開普敦、約翰尼斯堡 |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支援 |支援 |阿姆斯特丹、亞特蘭大、奧克蘭、芝加哥、達拉斯、丹佛、Dubai2、都柏林、法蘭克福、Geneva、香港特別行政區、內華達州、倫敦、倫敦2、洛杉磯、墨爾本、邁阿密、蒙特利爾、紐約、Oslo、達拉斯、魁北克市、San Antonio、西雅圖、矽谷、新加坡、新加坡2、Stavanger、斯德哥爾摩、華盛頓特區、Sydney2、Tokyo2、斯德哥爾摩、華盛頓特區、華盛頓特區、蘇黎世 |
-| **[MTN](https://www.mtnbusiness.com/en/enterprise/Pages/microsoft-express-route.aspx)** |支援 |支援 |London |
+| **[MTN](https://www.mtnbusiness.co.za/en/Cloud-Solutions/Pages/microsoft-express-route.aspx)** |支援 |支援 |London |
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |支援 |支援 |達拉斯、洛杉磯、邁阿密、聖保羅、華盛頓特區 |
 | **[新一代資料](https://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |支援 |支援 |Newport(Wales) |
 | **[NEXTDC](https://www.nextdc.com/services/axon-ethernet/microsoft-expressroute)** |支援 |支援 |墨爾本、伯斯、雪梨、雪梨 2 |
@@ -280,7 +280,7 @@ Azure 國家雲端彼此隔離，也與全球商業 Azure 隔離。 某個 Azure
 | **[Macquarie Telecom Group](https://macquariegovernment.com/secure-cloud/secure-cloud-exchange/)** | Megaport | 雪梨 |
 | **[MainOne](https://www.mainone.net/services/connectivity/cloud-connect/)** |Equinix | 阿姆斯特丹 |
 | **[Masergy](https://www.masergy.com/solutions/hybrid-networking/cloud-marketplace/microsoft-azure)** | Equinix | 華盛頓 |
-| **[MTN](https://www.mtnbusiness.com/en/enterprise/Pages/microsoft-express-route.aspx)** | Teraco | 開普敦、約翰尼斯堡 |
+| **[MTN](https://www.mtnbusiness.co.za/en/Cloud-Solutions/Pages/microsoft-express-route.aspx)** | Teraco | 開普敦、約翰尼斯堡 |
 | **[NexGen Networks](https://www.nexgen-net.com/nexgen-networks-direct-connect-microsoft-azure-expressroute.html)** | Interxion | London |
 | **[Nianet](https://nianet.dk/produkter/internet/microsoft-expressroute)** |Equinix | 阿姆斯特丹、法蘭克福 |
 | **[POST Telecom Luxembourg](https://www.teralinksolutions.com/cloud-connectivity/cloudbridge-to-azure-expressroute/)**|Equinix | 阿姆斯特丹 |

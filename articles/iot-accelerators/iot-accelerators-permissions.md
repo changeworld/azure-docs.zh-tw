@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: 87f6b9cef50e4b8c388be835b2aa7bed8177ac4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5d816b3d44a6fadd8dd462a14e62de4cdac2a00
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61447421"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370605"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>使用 AzureIoTSolutions.com 網站部署解決方案加速器
 
@@ -38,7 +38,7 @@ ms.locfileid: "61447421"
 
 您用以部署解決方案加速器、管理使用者及管理 Azure 服務的權限，取決於您在所選取目錄中的角色。 與解決方案加速器相關聯的常見 Azure AD 角色包括：
 
-* **全域管理員**：每個 Azure AD 租使用者可以有許多 [全域管理員](../active-directory/users-groups-roles/directory-assign-admin-roles.md) ：
+* **全域管理員**：每個 Azure AD 租使用者可以有許多 [全域管理員](../active-directory/roles/permissions-reference.md) ：
 
   * 當您建立 Azure AD 租用戶時，您預設會是該租用戶的全域管理員。
   * 全域管理員可以部署基本和標準的解決方案加速器。
