@@ -323,8 +323,6 @@
               items:
                 - name: 至 StorSimple 8000 系列裝置
                   href: storsimple-8000-migrate-from-5000-7000.md
-                - name: 至 Azure 檔案同步
-                  href: storsimple-5000-7000-afs-migration.md
             - name: 從其他存放裝置
               href: 'https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf'
         - name: 更新
@@ -371,7 +369,7 @@
           href: /azure/templates/microsoft.storsimple/allversions
 - name: StorSimple 資料管理員
   items:
-    - name: 總覽
+    - name: 概觀
       items:
         - name: 解決方案為何？
           href: storsimple-data-manager-overview.md

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 6885c28d993b8ddab5fe158ad7b1480259cb8fb0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: b62095a3dc48480d8b1d33328d2d0dc25470d763
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92163780"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461085"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>在執行 Windows 的 N 系列 VM 上安裝 AMD GPU 驅動程式
 
@@ -31,7 +31,7 @@ NVv4 VM 只支援 Microsoft 所發佈的 GPU 驅動程式。 請「不要」從�
 
 | OS | 驅動程式 |
 | -------- |------------- |
-| Windows 10 企業版多會話-組建1903 <br/><br/>Windows 10 - 組建 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. Q1。](https://download.microsoft.com/download/d/e/f/def0fb44-15ab-4b83-959a-8094eb9d0dfe/AMD-Azure-NVv4-Driver-20Q1-Hotfix3.exe) ( .exe) 的修正程式 |
+| Windows 10 企業版多會話-組建1903 <br/><br/>Windows 10 - 組建 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. q 1.17](https://download.microsoft.com/download/d/e/f/def0fb44-15ab-4b83-959a-8094eb9d0dfe/AMD-Azure-NVv4-Driver-20Q1-Hotfix3.exe) ( .exe)  |
 
 
 ## <a name="driver-installation"></a>驅動程式安裝

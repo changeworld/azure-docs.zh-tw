@@ -8,9 +8,11 @@
   expanded: true
   items:
     - name: 建立和管理 VPN 閘道
-      href: vpn-gateway-tutorial-create-gateway-powershell.md
-    - name: 建立和管理 S2S VPN 連線
-      href: vpn-gateway-tutorial-vpnconnection-powershell.md
+      items:
+        - name: Azure 入口網站
+          href: tutorial-create-gateway-portal.md
+        - name: Azure PowerShell
+          href: vpn-gateway-tutorial-create-gateway-powershell.md
 - name: 範例
   items:
     - name: Azure PowerShell
@@ -64,7 +66,7 @@
         - name: 建立路由式 VPN 閘道
           items:
             - name: Azure 入口網站
-              href: create-routebased-vpn-gateway-portal.md
+              href: tutorial-create-gateway-portal.md
             - name: Azure PowerShell
               href: create-routebased-vpn-gateway-powershell.md
             - name: Azure CLI
@@ -72,7 +74,7 @@
         - name: 確認 VPN 閘道連線
           href: vpn-gateway-verify-connection-resource-manager.md
         - name: 重設 VPN 閘道
-          href: vpn-gateway-resetgw-classic.md
+          href: reset-gateway.md
         - name: 刪除 VPN 閘道
           items:
             - name: Azure 入口網站

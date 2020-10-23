@@ -163,14 +163,14 @@
                   href: dynamics-365-finance-operations-functional-validation.md
             - name: 建立 Dynamics 365 Business Central 供應項目
               href: partner-center-portal/create-new-business-central-offer.md
-        - name: IoT Edge 模組供應項目
-          items:
-            - name: 規劃 IoT Edge 模組供應項目
-              href: iot-edge-module.md
-            - name: 建立 IoT Edge 模組供應項目
-              href: partner-center-portal/azure-iot-edge-module-creation.md
-            - name: 預備 IoT Edge 模組技術資產
-              href: partner-center-portal/create-iot-edge-module-asset.md
+    - name: IoT Edge 模組供應項目
+      items:
+        - name: 規劃 IoT Edge 模組供應項目
+          href: iot-edge-module.md
+        - name: 建立 IoT Edge 模組供應項目
+          href: partner-center-portal/azure-iot-edge-module-creation.md
+        - name: 預備 IoT Edge 模組技術資產
+          href: partner-center-portal/create-iot-edge-module-asset.md
     - name: 受控服務供應項目
       items:
         - name: 建立受控服務供應項目

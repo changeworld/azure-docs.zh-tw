@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 8485907eba75f80c8f0ed4fd0cc7368c6147b9fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ad35c36e497e4719729c00a90eb8919b75ef0fd
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79532173"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425656"
 ---
 # <a name="azure-database-for-mariadb-advanced-threat-protection"></a>適用於 MariaDB 的 Azure 資料庫 Advanced 威脅防護
 
@@ -42,6 +42,6 @@ ms.locfileid: "79532173"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入了解 [Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* 深入了解 [Azure 資訊安全中心](../security-center/security-center-introduction.md)
 * 如需定價的詳細資訊，請參閱 [適用於 MariaDB 的 Azure 資料庫定價頁面](https://azure.microsoft.com/pricing/details/mariadb/) 
-* 使用 Azure 入口網站設定[適用於 MariaDB 的 Azure 資料庫 Advanced 威脅防護](howto-database-threat-protection-portal.md)  
+* 使用 Azure 入口網站設定[適用於 MariaDB 的 Azure 資料庫 Advanced 威脅防護](howto-database-threat-protection-portal.md)

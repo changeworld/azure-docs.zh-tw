@@ -7,22 +7,22 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ba19b7255be5ae24b3c4475f4195b84441b6c777
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 0123a89c4ec1c2c70326de1a2f685b08278333ab
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131491"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461544"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>將 IoT 中樞遙測內嵌到 Azure 數位 Twins
 
 Azure 數位 Twins 是由來自 IoT 裝置和其他來源的資料所驅動。 Azure 數位 Twins 中要使用之裝置資料的常見來源為 [IoT 中樞](../iot-hub/about-iot-hub.md)。
 
-將資料擷取至 Azure 數位 Twins 的程式是設定可接收資料的外部計算資源，例如 [Azure](../azure-functions/functions-overview.md)函式，並使用 [DigitalTwins api](how-to-use-apis-sdks.md) 來設定屬性，或在 [數位 Twins](concepts-twins-graph.md) 上引發遙測事件。 
+將資料擷取至 Azure 數位 Twins 的程式是設定可接收資料的外部計算資源，例如 [Azure](../azure-functions/functions-overview.md)函式，並使用 [DigitalTwins api](/rest/api/digital-twins/dataplane/twins) 來設定屬性，或在 [數位 Twins](concepts-twins-graph.md) 上引發遙測事件。 
 
 此操作說明文件將逐步解說撰寫可從 IoT 中樞內嵌遙測資料的 Azure 函式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 繼續進行此範例之前，您必須將下列資源設定為必要條件：
 * **IoT 中樞**。 如需相關指示，請參閱[此 Iot 中樞快速入門](../iot-hub/quickstart-send-telemetry-cli.md)的*建立 iot 中樞*一節。
@@ -228,7 +228,7 @@ namespace IotHubtoTwins
 :::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="此圖表顯示流程圖。在圖表中，IoT 中樞裝置會透過 IoT 中樞將溫度遙測傳送至 Azure 函式，以更新 Azure 數位 Twins 中對應項的溫度屬性。":::
 
 在開啟的 [ _選取 Azure Function_ ] 頁面中，確認下列詳細資料。
- 1. **訂**用帳戶：您的 Azure 訂用帳戶
+ 1. **訂用帳戶**：Azure 訂閱
  2. **資源群組**：您的資源群組
  3. **函數應用程式**：您的函數應用程式名稱
  4. **Slot**位置：_生產環境_

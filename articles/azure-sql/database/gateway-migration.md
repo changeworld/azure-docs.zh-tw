@@ -4,18 +4,18 @@ description: 文章提供有關遷移 Azure SQL Database 閘道 IP 位址的使�
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
-ms.custom: sqldbrb=1 
+ms.custom: sqldbrb=1
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: ee55e0a66a0487291233713498f6eb541980dbba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fadbecc2c00a739afb2f94dd1d049805915cfa5
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90004267"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427111"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database 流量遷移至較新的閘道
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -108,7 +108,8 @@ ms.locfileid: "90004267"
 
 - 對內部部署防火牆中任何特定閘道的 IP 位址進行硬式編碼
 - 有任何子網使用 Microsoft 做為服務端點，但無法與閘道 IP 位址通訊
-- 針對您的資料庫使用 [區域多餘](high-availability-sla.md#zone-redundant-configuration) 設定
+- [針對一般用途層使用區域多餘](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)設定
+- [針對 premium & 商務關鍵層使用區域冗余](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability)設定
 
 如果您有下列情況，將不會受到影響：
  

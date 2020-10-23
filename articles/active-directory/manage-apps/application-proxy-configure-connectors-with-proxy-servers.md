@@ -11,12 +11,13 @@ ms.topic: how-to
 ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 4c50e881fd6b7dda5c609a4ac6492d77fff1b537
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.custom: contperfq2
+ms.openlocfilehash: fcf06c280a93489b2e958b9baff2e132da37c005
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92208000"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426466"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>使用現有的內部部署 Proxy 伺服器
 
@@ -121,7 +122,7 @@ OS 元件會嘗試藉由對 wpad.domainsuffix 執行 DNS 查閱來尋找 Proxy �
 如果您不允許 FQDN 連線且需要改為指定 IP 範圍，請使用下列選項：
 
 * 允許連接器輸出存取所有目的地。
-* 允許連接器輸出存取全部的 Azure 資料中心 IP 範圍。 Azure 資料中心 IP 範圍清單在使用上的麻煩在於此清單是每週更新。 您必須制定程序，以確保存取規則會跟著更新。 僅使用 IP 位址的子集可能會導致您的組態中斷。 若要下載最新的 Azure 資料中心 IP 範圍，請流覽至「 [https://download.microsoft.com](https://download.microsoft.com) AZURE IP 範圍和服務標籤」並進行搜尋。 請務必選取相關的雲端。 例如，您可以使用「Azure IP 範圍和服務標籤–公用雲端」來找到公用雲端 IP 範圍。 您可以藉由搜尋「Azure IP 範圍和服務標籤– US 政府雲端」來找到 US 政府雲端。
+* 允許連接器輸出存取全部的 Azure 資料中心 IP 範圍。 Azure 資料中心 IP 範圍清單在使用上的麻煩在於此清單是每週更新。 您必須制定程序，以確保存取規則會跟著更新。 僅使用 IP 位址的子集可能會導致您的組態中斷。 若要下載最新的 Azure 資料中心 IP 範圍，請流覽至「 [https://download.microsoft.com](https://download.microsoft.com) AZURE IP 範圍和服務標籤」並進行搜尋。 請務必選取相關的雲端。 例如，您可以使用「Azure IP 範圍和服務標籤–公用雲端」來找到公用雲端 IP 範圍。 您可以藉由搜尋「Azure IP 範圍和服務標籤–美國政府雲端」來找到美國政府雲端。
 
 #### <a name="proxy-authentication"></a>Proxy 驗證
 

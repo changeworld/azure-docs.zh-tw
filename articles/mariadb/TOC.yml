@@ -81,6 +81,8 @@
           href: ./security-controls-policy.md
         - name: 安全性基準
           href: security-baseline.md
+    - name: 預定的維修
+      href: concepts-planned-maintenance-notification.md
     - name: 業務持續性
       items:
         - name: 業務持續性簡介
@@ -260,7 +262,7 @@
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/mariadb/'
     - name: Microsoft 問與答頁面
-      href: 'https://docs.microsoft.com/answers/topics/azure-database-mariadb.html'
+      href: /answers/topics/azure-database-mariadb.html
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mariadb'
     - name: 要求功能

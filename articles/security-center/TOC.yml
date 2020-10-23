@@ -44,8 +44,6 @@
         - name: 適用於 SQL 的 Azure Defender
           displayName: database
           href: defender-for-sql-introduction.md
-        - name: 適用於 IoT 的 Azure Defender
-          href: defender-for-iot-introduction.md
         - name: 適用於 Key Vault 的 Azure Defender
           displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
@@ -255,7 +253,7 @@
 - name: 參考
   items:
     - name: REST API
-      href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+      href: /rest/api/securitycenter/
     - name: Azure 資訊安全中心常見問題集
       items:
         - name: 一般問題
@@ -283,9 +281,9 @@
     - name: 管理使用者資料
       href: security-center-privacy.md
     - name: 適用於 IoT 的 Azure Defender 文件
-      href: 'https://docs.microsoft.com/azure/asc-for-iot/'
+      href: /azure/asc-for-iot/
     - name: Azure 安全性文件
-      href: /azure/security/
+      href: ../security/index.yml
     - name: Azure 更新
       href: 'https://azure.microsoft.com/updates/?category=security-identity'
     - name: 整備藍圖

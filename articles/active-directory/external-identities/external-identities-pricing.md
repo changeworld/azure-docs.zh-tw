@@ -11,16 +11,16 @@ author: msmimart
 manager: celestedg
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d281b0ecd38ebbb76e093fd4f85213da4fc7d713
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 983a803245467145a0b1161a4495e8045759e7ab
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265779"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442060"
 ---
 # <a name="billing-model-for-azure-ad-external-identities"></a>Azure AD 外部身分識別的計費模型
 
-Azure Active Directory (Azure AD) 外部身分識別定價是根據每月作用中使用者 (MAU) ，也就是在日曆月份中具有驗證活動的唯一使用者計數。 此計費模型適用于 (B2B) 和 [Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/billing)租使用者 Azure AD 來賓使用者共同作業。 MAU 計費可提供免費層和彈性且可預測的定價，協助您降低成本。 在本文中，您將瞭解如何 MAU 計費，以及將 Azure AD 租使用者連結至訂用帳戶。
+Azure Active Directory (Azure AD) 外部身分識別定價是根據每月作用中使用者 (MAU) ，也就是在日曆月份中具有驗證活動的唯一使用者計數。 此計費模型適用于 (B2B) 和 [Azure AD B2C](../../active-directory-b2c/billing.md)租使用者 Azure AD 來賓使用者共同作業。 MAU 計費可提供免費層和彈性且可預測的定價，協助您降低成本。 在本文中，您將瞭解如何 MAU 計費，以及將 Azure AD 租使用者連結至訂用帳戶。
 
 > [!IMPORTANT]
 > 本文不包含定價詳細資料。 如需使用方式計費和定價的最新資訊，請參閱 [Azure Active Directory 定價](https://azure.microsoft.com/pricing/details/active-directory/)。
@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) 外部身分識別定價是根據每月作用�
 
 您必須將 Azure AD 租使用者連結至 Azure 訂用帳戶，才能適當地計費和存取功能。 如果目錄中還沒有您可以連結的訂用帳戶，您將有機會在此程式中新增一個。
 
-1. 使用至少獲指派訂用帳戶中的[參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)角色或訂用帳戶內資源群組的 Azure 帳戶來登入[Azure 入口網站](https://portal.azure.com/)。
+1. 使用至少獲指派訂用帳戶中的[參與者](../../role-based-access-control/built-in-roles.md)角色或訂用帳戶內資源群組的 Azure 帳戶來登入[Azure 入口網站](https://portal.azure.com/)。
 
 2. 選取您要連結的目錄：在 Azure 入口網站的工具列中，選取 [ **目錄 + 訂** 用帳戶] 圖示，然後選取目錄。
 

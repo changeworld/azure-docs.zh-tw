@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b5e1db2c86f6118c3cd333974c9cfd64f747128
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 547b455dc776b7304e413b3b6f1330e7cedcf2a2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87908289"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441992"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>將 Facebook 新增為外部身分識別的識別提供者
 
@@ -78,7 +78,7 @@ ms.locfileid: "87908289"
    `New-AzureADMSIdentityProvider -Type Facebook -Name Facebook -ClientId [Client ID] -ClientSecret [Client secret]`
  
    > [!NOTE]
-   > 使用您於上方在 Facebook 開發人員主控台所建立之應用程式中的用戶端識別碼和用戶端密碼。 如需詳細資訊，請參閱 [New-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) 一文。 
+   > 使用您於上方在 Facebook 開發人員主控台所建立之應用程式中的用戶端識別碼和用戶端密碼。 如需詳細資訊，請參閱 [New-AzureADMSIdentityProvider](/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) 一文。 
 
 ## <a name="how-do-i-remove-facebook-federation"></a>要如何移除 Facebook 同盟？
 您可以刪除 Facebook 同盟設定。 如果您這麼做，使用其 Facebook 帳戶透過使用者流程註冊的所有使用者都將無法登入。 
@@ -99,7 +99,7 @@ ms.locfileid: "87908289"
     `Remove-AzureADMSIdentityProvider -Id Facebook-OAUTH`
 
    > [!NOTE]
-   > 如需詳細資訊，請參閱 [Remove-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview)。 
+   > 如需詳細資訊，請參閱 [Remove-AzureADMSIdentityProvider](/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview)。 
 
 ## <a name="next-steps"></a>後續步驟
 
