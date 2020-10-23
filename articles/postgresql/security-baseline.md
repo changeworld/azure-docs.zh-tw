@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: fb27868a06e133f6f90d0a7a18d218b74aafdd69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 828be8e790803e53b0434a71fb32a29a4a0c17bc
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89420042"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428080"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---single-server"></a>適用于適用於 PostgreSQL 的 Azure 資料庫的 Azure 安全性基準-單一伺服器
 
@@ -544,7 +544,7 @@ Microsoft 會管理適用於 PostgreSQL 的 Azure 資料庫基礎結構，並已
 
 **責任**：共用
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用角色型存取控制來控制資源的存取權
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
 **指導**方針：使用 azure 角色型存取控制 (azure RBAC) 來控制適用於 PostgreSQL 的 Azure 資料庫控制平面的存取 (例如 Azure 入口網站) 。 針對資料平面存取 (在該資料庫本身內)，請使用 SQL 查詢來建立使用者和設定使用者權限。 Azure RBAC 不會影響資料庫中的使用者許可權。
 

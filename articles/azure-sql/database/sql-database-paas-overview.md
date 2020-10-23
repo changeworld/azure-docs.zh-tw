@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 0fd3778d50216e337b872f0a27cb30b04a0219f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 972e4bcfc0eb20903dafc598bad812d0afe98afb
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617215"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428304"
 ---
 # <a name="what-is-azure-sql-database"></a>什麼是 Azure SQL Database？
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -108,7 +108,7 @@ Azure SQL Database 可讓企業在面臨中斷時持續運作。 在傳統的 SQ
 
 災害復原假設在災難性事件遠端設置了具有資料複本的另一部電腦或另一組電腦。 在 SQL Server 中，您可使用在非同步模式下執行的 Always On 可用性群組來取得這項功能。 使用者通常不想要等候複寫在那麼遠的地方出現再認可交易，因此當執行非計劃性容錯移轉時，可能會遺失資料。
 
-進階和業務關鍵服務層級中的資料庫已執行與可用性群組的同步處理[類似的功能](high-availability-sla.md#premium-and-business-critical-service-tier-availability)。 較低服務層級中資料庫則使用[不同但對等的機制](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability)，以透過儲存體提供備援。 內建邏輯有助於提供保護來防止單一電腦失敗。 主動式異地複寫功能可供提供保護來防止整個區域損毀的災害。
+進階和業務關鍵服務層級中的資料庫已執行與可用性群組的同步處理[類似的功能](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability)。 較低服務層級中資料庫則使用[不同但對等的機制](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-locally-redundant-availability)，以透過儲存體提供備援。 內建邏輯有助於提供保護來防止單一電腦失敗。 主動式異地複寫功能可供提供保護來防止整個區域損毀的災害。
 
 Azure 可用性區域會嘗試提供保護來防止單一區域內單一資料中心建築物的中斷。 其可協助提供保護來防止建築物的電源或網路中斷。 在 SQL Database 中，您會將不同複本放在不同的可用性區域中 (實際不同的建築物)。
 

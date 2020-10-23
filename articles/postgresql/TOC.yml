@@ -157,6 +157,8 @@
             - name: 私人連結
               href: concepts-data-access-and-security-private-link.md
               displayName: 'security, private link, private endpoint'
+        - name: 預定的維修
+          href: concepts-planned-maintenance-notification.md
         - name: 業務持續性
           items:
             - name: 業務持續性簡介
