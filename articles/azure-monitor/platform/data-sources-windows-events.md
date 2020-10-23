@@ -1,25 +1,28 @@
 ---
-title: 收集與分析 Azure 監視器中的 Windows 事件記錄 | Microsoft Docs
+title: 在 Azure 監視器中使用 Log Analytics 代理程式收集 Windows 事件記錄檔資料來源
 description: 說明如何透過 Azure 監視器設定收集 Windows 事件記錄，以及它們建立記錄的詳細資料。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 109e96f862ec2f3ddf879bccba114c44aecfe3c8
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87075257"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440598"
 ---
-# <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure 監視器中的 Windows 事件記錄檔資料來源
-Windows 事件記錄是使用 Windows 代理程式收集資料的常見[資料來源](agent-data-sources.md)之一，因為許多應用程式會寫入 Windows 事件記錄。  除了指定您要監視之應用程式所建立的任何自訂記錄之外，您也可以透過標準記錄 (例如系統和應用程式) 來收集事件。
+# <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>使用 Log Analytics 代理程式收集 Windows 事件記錄檔資料來源
+Windows 事件記錄是 Windows 虛擬機器上的 Log Analytics 代理程式最常見的其中一個 [資料來源](agent-data-sources.md) ，因為許多應用程式會寫入 windows 事件記錄檔。  除了指定您要監視之應用程式所建立的任何自訂記錄之外，您也可以透過標準記錄 (例如系統和應用程式) 來收集事件。
+
+> [!IMPORTANT]
+> 本文說明如何使用 [Log Analytics 代理程式](log-analytics-agent.md) （Azure 監視器所使用的其中一個代理程式）來收集 Windows 事件。 其他代理程式會收集不同的資料，並以不同的方式進行設定。 如需可用的代理程式清單和可收集的資料，請參閱 [Azure 監視器代理](agents-overview.md) 程式的總覽。
 
 ![Windows 事件](media/data-sources-windows-events/overview.png)     
 
 ## <a name="configuring-windows-event-logs"></a>設定 Windows 事件記錄
-從 [[進階設定] 中的 [資料] 功能表](agent-data-sources.md#configuring-data-sources)來設定 Windows 事件記錄。
+從 Log Analytics 工作區的 [資料] 功能表中，設定 [ [資料] 功能表中](agent-data-sources.md#configuring-data-sources) 的 [Windows 事件記錄檔]。
 
 Azure 監視器只會從設定中指定的 Windows 事件記錄收集事件。  您可以輸入記錄檔的名稱，然後按一下，以新增事件記錄檔 **+** 。  針對每個記錄檔，僅會收集包含所選嚴重性的事件。  請檢查您想要收集之特定記錄檔的嚴重性。  您無法提供任何其他準則來篩選事件。
 
@@ -30,7 +33,7 @@ Azure 監視器只會從設定中指定的 Windows 事件記錄收集事件。  
 > [!NOTE]
 > Windows 事件記錄檔中的重大事件，在 Azure 監視器記錄中會有「錯誤」的嚴重性。
 
-## <a name="data-collection"></a>資料收集
+## <a name="data-collection"></a>資料集合
 在建立事件時，Azure 監視器會從受監視的事件記錄檔收集符合所選嚴重性的每個事件。  代理程式會在它收集的每個事件記錄檔中記錄它的位置。  如果代理程式離線一段時間，便會從上次停止的地方收集事件，即使這些事件是在代理程式離線時所建立亦同。  如果事件記錄檔是在代理程式離線時使用未收集且已遭覆寫的事件進行包裝，可能就無法收集這些事件。
 
 >[!NOTE]
@@ -68,7 +71,7 @@ Windows 事件記錄有一種 **事件** 類型，並具有下表中的屬性：
 | Event &#124; where EventLevelName == "error" &#124; summarize count() by Source |依據來源的 Windows 錯誤事件計數。 |
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 設定 Log Analytics 以收集其他 [資料來源](agent-data-sources.md) 進行分析。
 * 了解[記錄查詢](../log-query/log-query-overview.md)，以分析從資料來源和解決方案收集到的資料。  
 * 設定從您的 Windows 代理程式進行 [效能計數器收集](data-sources-performance-counters.md) 。

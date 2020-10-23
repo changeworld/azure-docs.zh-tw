@@ -1,7 +1,7 @@
 ---
 title: 管理工作區中的角色
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用角色型存取控制 (RBAC) 來存取 Azure Machine Learning 工作區。
+description: 瞭解如何使用 Azure RBAC)  (的 Azure 角色型存取控制來存取 Azure Machine Learning 工作區。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: a9259e287c75a3a39ad1d4e701638f38b4512ee0
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e15092ee767e6840f190027b0a35af3ce07e8ba9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966401"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425647"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理對 Azure Machine Learning 工作區的存取
 
@@ -34,9 +34,9 @@ Azure Machine Learning 工作區是一項 Azure 資源。 就像其他 Azure 資
 | **自訂角色** | 可讓您自訂工作區中特定控制項或資料平面作業的存取權。 例如，提交執行、建立計算、部署模型或註冊資料集。 |
 
 > [!IMPORTANT]
-> 角色存取範圍可以設定為 Azure 中的多個層級。 例如，具有工作區存取權的人員可能無法擁有包含該工作區之資源群組的擁有者存取權。 如需詳細資訊，請參閱 [RBAC 的運作方式](/azure/role-based-access-control/overview#how-rbac-works)。
+> 角色存取範圍可以設定為 Azure 中的多個層級。 例如，具有工作區存取權的人員可能無法擁有包含該工作區之資源群組的擁有者存取權。 如需詳細資訊，請參閱 [AZURE RBAC 的運作方式](/azure/role-based-access-control/overview#how-azure-rbac-works)。
 
-如需特定內建角色的詳細資訊，請參閱 [Azure 的內建角色](/azure/role-based-access-control/built-in-roles)。
+如需特定內建角色的詳細資訊，請參閱 [Azure 內建角色](/azure/role-based-access-control/built-in-roles)。
 
 ## <a name="manage-workspace-access"></a>管理工作區存取
 
@@ -432,13 +432,13 @@ az provider operation show –n Microsoft.MachineLearningServices
     - VNet 資源上的「Microsoft. Network/virtualNetworks/join/action」。
     - 子網資源上的「Microsoft. Network/virtualNetworks/subnet/join/action」。
     
-    如需具有網路功能之 RBAC 的詳細資訊，請參閱 [網路內建角色](/azure/role-based-access-control/built-in-roles#networking)。
+    如需有關具有網路功能的 Azure RBAC 的詳細資訊，請參閱 [網路內建角色](/azure/role-based-access-control/built-in-roles#networking)。
 
 - 有時，您的新角色指派可能需要最多一小時的時間，才會對整個堆疊的快取許可權生效。
 
 ### <a name="q-what-permissions-do-i-need-to-use-a-user-assigned-managed-identity-with-my-amlcompute-clusters"></a>Q. 使用使用者指派的受控識別搭配我的 Amlcompute 叢集時，需要哪些許可權？
 
-若要在 Amlcompute 叢集上指派使用者指派的身分識別，您必須具有寫入權限，才能建立計算並具有 [受控識別操作員角色](/azure/role-based-access-control/built-in-roles#managed-identity-operator)。 如需有關具有受控識別的 RBAC 的詳細資訊，請參閱[如何管理使用者指派](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)的身分識別
+若要在 Amlcompute 叢集上指派使用者指派的身分識別，您必須具有寫入權限，才能建立計算並具有 [受控識別操作員角色](/azure/role-based-access-control/built-in-roles#managed-identity-operator)。 如需 Azure RBAC 與受控識別的詳細資訊，請參閱[如何管理使用者指派](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)的身分識別
 
 
 ### <a name="q-do-we-support-role-based-access-control-on-the-studio-portal"></a>Q. 是否支援在 Studio 入口網站上以角色為基礎的存取控制？

@@ -3,12 +3,12 @@ title: 深入瞭解 Azure Service Fabric
 description: 了解 Azure Service Fabric 的核心概念和主要領域。 提供 Service Fabric 及如何建立微服務的延伸概觀。
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 0f4e0ea03b631773f96ca4645d44b9fe28d89da9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6cbc99b56df18448add47a70b42742aa8dabbeb5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319815"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461493"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>您想要了解 Service Fabric 嗎？
 Azure Service Fabric 是分散式系統平台，可讓您輕鬆封裝、部署及管理可調整和可信賴的微服務。  Service Fabric 有相當大的介面區，不過，要了解的方面很多。  本文提供 Service Fabric 的概述，並描述核心概念、程式設計模型、應用程式生命週期、測試、叢集及健康情況監視。 如需相關簡介及了解如何使用 Service Fabric 來建立微服務，請參閱[概觀](service-fabric-overview.md)和[什麼是微服務？](service-fabric-overview-microservices.md)。 本文並未包含完整的內容清單，但有連結到 Service Fabric 每個領域的概觀與入門文章。 
@@ -51,7 +51,7 @@ Azure Service Fabric 是分散式系統平台，可讓您輕鬆封裝、部署�
 
 每個資料分割的複本會分散至各個叢集節點，以允許[調整](service-fabric-concepts-scalability.md)具名服務的狀態規模。 資料需求成長時，資料分割也會成長，而 Service Fabric 會重新平衡全體節點之間的資料分割，以期有效率地使用硬體資源。 若您新增節點至叢集，則 Service Fabric 會重新平衡全體增加節點數的資料分割複本。 整體應用程式效能會有所改善，改善，並減少爭用記憶體的存取權。 若未有效率地使用叢集中的節點，您可減少叢集中的節點數目。 Service Fabric 會再次重新平衡全體減少節點數的資料分割複本，以善加使用每個節點上的硬體。
 
-在分割內，無狀態的具名服務會有執行個體，而具狀態的具名服務則有複本。 通常，無狀態具名服務只會有 1 個分割，因為它們有沒有內部狀態。 資料分割實例提供 [可用性](service-fabric-availability-services.md)。 若某個執行個體失敗，其他執行個體會繼續正常運作，接著 Service Fabric 會建立新的執行個體。 具狀態的具名服務會在複本中維持其狀態，且每個資料分割都有自己的複本集。 讀取與寫入作業會在單一複本上執行 (稱為「主要複本」)。 從寫入作業對狀態進行的變更，會複寫至多個其他複本 (稱為「作用中次要複本」)。 複本失敗失敗時，Service Fabric 會從現有複本建立新的複本。
+在分割內，無狀態的具名服務會有執行個體，而具狀態的具名服務則有複本。 通常，無狀態的名稱服務只會有一個資料分割，因為它們沒有內部狀態，但有 [例外](https://docs.microsoft.com/azure/service-fabric/service-fabric-concepts-partitioning#partition-service-fabric-stateless-services)狀況。 資料分割實例提供 [可用性](service-fabric-availability-services.md)。 若某個執行個體失敗，其他執行個體會繼續正常運作，接著 Service Fabric 會建立新的執行個體。 具狀態的具名服務會在複本中維持其狀態，且每個資料分割都有自己的複本集。 讀取與寫入作業會在單一複本上執行 (稱為「主要複本」)。 從寫入作業對狀態進行的變更，會複寫至多個其他複本 (稱為「作用中次要複本」)。 複本失敗失敗時，Service Fabric 會從現有複本建立新的複本。
 
 ## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>Service Fabric 的無狀態與具狀態微服務
 Service Fabric 可讓您建置由微服務或容器組成的應用程式。 無狀態微服務 (如通訊協定閘道器、Web Proxy) 不會維護要求之外的可變動狀態及來自服務的回應。 Azure 雲端服務背景工作角色即為無狀態服務的範例。 可設定狀態的微服務 (如使用者帳戶、資料庫、裝置、購物車、佇列) 會維護要求及其回應外的可變動授權狀態。 現今的網際網路級別應用程式包含無狀態與可設定狀態微服務的組合。 

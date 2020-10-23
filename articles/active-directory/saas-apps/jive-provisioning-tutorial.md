@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: fa45ece76499b50694d366ed2dcdd57cc1e0c7dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caeff5be83e02948baab4ecbcf05630eacff74df
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91312091"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459368"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>教學課程︰設定 Jive 來自動佈建使用者
 
@@ -35,7 +35,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 在設定並啟用佈建服務之前，您必須決定 Azure AD 中的哪些使用者及/或群組代表需要 Jive 應用程式存取權的使用者。 一旦決定後，您可以依照此處的指示，將這些使用者指派給 Jive 應用程式︰
 
-[將使用者或群組指派給企業應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[將使用者或群組指派給企業應用程式](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-jive"></a>將使用者指派給 Jive 的重要秘訣
 
@@ -61,7 +61,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 1. 選取您的 Jive 執行個體，然後選取 [佈建]**** 索引標籤。
 
-1. 將 [佈建模式] 設定為 [自動]。 
+1. 將 [佈建模式]  設定為 [自動]  。 
 
     ![螢幕擷取畫面顯示 Jive 布建頁面，其中布建模式設定為 [自動] 和其他您可以設定的值。](./media/jive-provisioning-tutorial/provisioning.png)
 

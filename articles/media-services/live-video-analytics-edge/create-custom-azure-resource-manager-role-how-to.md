@@ -3,12 +3,12 @@ title: 建立自訂 Azure Resource Manager 角色並指派給服務主體-Azure
 description: 本文提供的指引，說明如何建立自訂 Azure Resource Manager 角色，並在 IoT Edge 使用 Azure CLI 指派給 Live Video Analytics 的服務主體。
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: a780ecbbf2530b15984c596281c4aa7e4f5dd520
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40bf0f60a718d512e02481d977b8208112ed1a55
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526573"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425731"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>建立自訂 Azure Resource Manager 角色並指派給服務主體
 
@@ -16,7 +16,7 @@ IoT Edge 模組實例上的即時影片分析需要使用中的 Azure 媒體服�
 
 本文說明使用 Azure Cloud Shell 建立自訂 Azure Resource Manager 角色的步驟，然後用來建立服務主體。
 
-## <a name="prerequisites"></a>必要條件  
+## <a name="prerequisites"></a>先決條件  
 
 本文的必要條件如下：
 
@@ -230,7 +230,7 @@ az role assignment list  --assignee < objectId>
 
 這會確認我們已將自訂使用者角色連結至應用程式所使用的服務主體。
 
-### <a name="test-the-service-principal-rbac"></a>測試服務主體 RBAC  
+### <a name="test-the-service-principal-access-control"></a>測試服務主體存取控制
 
 1. 使用服務主體登入。 為此，我們需要三項資訊，讓 Azure Active Directory 將可從「 [建立服務主體](#create-service-principal) 」步驟的輸出中取得的適當存取權杖授與我們：
     1. AadClientID 

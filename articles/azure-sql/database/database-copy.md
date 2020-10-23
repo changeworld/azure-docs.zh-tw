@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: 67f123472a5fd6060bc4e2de36fb7ac1ea46d356
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: a38816f00c0e05c3bde1760e39ba00d745f12a44
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124390"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460949"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>在 Azure SQL Database 中複製資料庫的交易一致性複本
 
@@ -82,7 +82,7 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
 
 使用伺服器管理員登入或建立您要複製之資料庫的登入來登入 master 資料庫。 若要讓資料庫複製成功，非伺服器管理員的登入必須是該角色的成員 `dbmanager` 。 如需登入與連接到伺服器的詳細資訊，請參閱 [管理登入](logins-create-manage.md)。
 
-開始複製源資料庫與 [建立資料庫 .。。作為語句的副本](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#copy-a-database) 。 T-sql 語句會繼續執行，直到資料庫複製作業完成為止。
+開始複製源資料庫與 [建立資料庫 .。。作為語句的副本](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true#copy-a-database) 。 T-sql 語句會繼續執行，直到資料庫複製作業完成為止。
 
 > [!NOTE]
 > 終止 T-sql 語句並不會終止資料庫複製作業。 若要終止作業，請卸載目標資料庫。
@@ -100,6 +100,21 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
    ```sql
    -- execute on the master database to start copying
    CREATE DATABASE Database2 AS COPY OF Database1;
+   ```
+
+### <a name="copy-to-an-elastic-pool"></a>複製到彈性集區
+
+使用伺服器管理員登入或建立您要複製之資料庫的登入來登入 master 資料庫。 若要讓資料庫複製成功，非伺服器管理員的登入必須是該角色的成員 `dbmanager` 。
+
+此命令會將 Database1 複製到名為 pool1 的彈性集區中名為 Database2 的新資料庫。 視資料庫大小而定，複製作業可能需要一些時間才能完成。
+
+Database1 可以是單一或集區資料庫，但 pool1 必須是與 Database1 相同的服務層級。 
+
+   ```sql
+   -- execute on the master database to start copying
+   CREATE DATABASE "Database2"
+   AS COPY OF "Database1"
+   (SERVICE_OBJECTIVE = ELASTIC_POOL( name = "pool1" ) ) ;
    ```
 
 ### <a name="copy-to-a-different-server"></a>複製到不同的伺服器
@@ -167,7 +182,7 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 
 ## <a name="resolve-logins"></a>解析登入
 
-在目標伺服器上的新資料庫上線之後，請使用 [ALTER USER](https://docs.microsoft.com/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current) 語句，將新資料庫中的使用者重新對應至目標伺服器上的登入。 若要解析被遺棄的使用者，請參閱 [被遺棄使用者疑難排解](https://docs.microsoft.com/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server)。 另請參閱 [如何在嚴重損壞修復之後管理 Azure SQL Database 安全性](active-geo-replication-security-configure.md)。
+在目標伺服器上的新資料庫上線之後，請使用 [ALTER USER](https://docs.microsoft.com/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current&preserve-view=true) 語句，將新資料庫中的使用者重新對應至目標伺服器上的登入。 若要解析被遺棄的使用者，請參閱 [被遺棄使用者疑難排解](https://docs.microsoft.com/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server)。 另請參閱 [如何在嚴重損壞修復之後管理 Azure SQL Database 安全性](active-geo-replication-security-configure.md)。
 
 新資料庫中的所有使用者都保有其在來源資料庫中原有的權限。 起始資料庫複本的使用者會變成新資料庫的資料庫擁有者。 在複製成功之後，重新對應其他使用者之前，只有資料庫擁有者可以登入新的資料庫。
 
@@ -193,7 +208,7 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 | 40570 |16 |資料庫複製因內部錯誤而失敗。 請卸除目標資料庫並稍後再試一次。 |
 | 40571 |16 |資料庫複製因內部錯誤而失敗。 請卸除目標資料庫並稍後再試一次。 |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 如需登入的相關資訊，請參閱 [管理](logins-create-manage.md) 登入，以及 [如何在嚴重損壞修復之後管理 Azure SQL Database 安全性](active-geo-replication-security-configure.md)。
 * 若要匯出資料庫，請參閱將 [資料庫匯出至 BACPAC](database-export.md)。

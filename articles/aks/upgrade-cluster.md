@@ -3,13 +3,13 @@ title: 升級 Azure Kubernetes Service (AKS) 叢集
 description: 瞭解如何升級 Azure Kubernetes Service (AKS) 叢集，以取得最新的功能和安全性更新。
 services: container-service
 ms.topic: article
-ms.date: 05/28/2020
-ms.openlocfilehash: da46c44dc9cc16dfa44aacb15b35b652c0c912a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 046c010cdd811b53ef8ef35624ed41a673af43d3
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050625"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461442"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>升級 Azure Kubernetes Service (AKS) 叢集
 
@@ -107,7 +107,7 @@ az aks nodepool update -n mynodepool -g MyResourceGroup --cluster-name MyManaged
 
 ## <a name="upgrade-an-aks-cluster"></a>升級 AKS 叢集
 
-透過適用於您的 AKS 叢集的可用版本清單，使用 [az aks upgrade][az-aks-upgrade] 命令進行升級。 在升級過程中，AKS 會將新節點新增至執行指定 Kubernetes 版本的叢集，然後仔細 [隔離並][kubernetes-drain] 清空其中一個舊節點，以將執行中應用程式的中斷情況降到最低。 當新節點確認為執行中的應用程式 pod 時，會刪除舊節點。 此程式會重複，直到叢集中的所有節點都已升級為止。
+透過適用於您的 AKS 叢集的可用版本清單，使用 [az aks upgrade][az-aks-upgrade] 命令進行升級。 在升級過程中，AKS 會將新的緩衝區節點 (或多個節點設定為 [ [最大浪湧](#customize-node-surge-upgrade-preview)) 中所設定的節點，以執行指定的 Kubernetes 版本。 然後，它會 [隔離並清空][kubernetes-drain] 其中一個舊節點，將執行應用程式的中斷情況降到最低 (如果您使用最大的激增，則會 [隔離和清空][kubernetes-drain] 多個節點，同時與指定的緩衝區節點數目) 。 當舊節點完全清空時，系統會將它重新安裝映射以接收新的版本，而且它會變成要升級之下列節點的緩衝區節點。 此程式會重複，直到叢集中的所有節點都已升級為止。 在程式結束時，將會刪除最後一個清空的節點，以維護現有的代理程式節點計數。
 
 ```azurecli-interactive
 az aks upgrade \
@@ -135,7 +135,7 @@ Name          Location    ResourceGroup    KubernetesVersion    ProvisioningStat
 myAKSCluster  eastus      myResourceGroup  1.13.10               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 本文說明如何升級現有的 AKS 叢集。 若要深入了解部署和管理 AKS 叢集，請參閱教學課程集合。
 

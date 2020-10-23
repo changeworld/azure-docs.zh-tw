@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eeafe41888163c27f583529bed1998f067e107f
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 84169daa28fc394254ddce211a96d4a462f78cbd
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107618"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441856"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>對 Azure AD 中的 B2B 使用者授與內部部署應用程式的存取權
 
@@ -29,7 +29,7 @@ ms.locfileid: "92107618"
 您必須執行下列兩個動作：
 
 - 使用 SAML 來整合應用程式，如 [設定 saml 型單一登入](../manage-apps/configure-saml-single-sign-on.md)中所述。 請務必記下您所使用的**登入 URL** 值。
--  使用 Azure AD 應用程式 Proxy 來發行內部部署應用程式，並將 **Azure Active Directory** 設定為驗證來源。 如需指示，請參閱[使用 Azure AD 應用程式 Proxy 發行應用程式](../manage-apps/application-proxy-publish-azure-portal.md)。 
+-  使用 Azure AD 應用程式 Proxy 來發行內部部署應用程式，並將 **Azure Active Directory** 設定為驗證來源。 如需指示，請參閱[使用 Azure AD 應用程式 Proxy 發行應用程式](../manage-apps/application-proxy-add-on-premises-application.md)。 
 
    當您設定 [內部 Url]**** 設定時，請使用您在非資源庫的應用程式範本中指定的登入 URL。 如此一來，使用者就可以從組織界限外存取應用程式。 應用程式 Proxy 會為內部部署應用程式執行 SAML 單一登入。
  
@@ -39,7 +39,7 @@ ms.locfileid: "92107618"
 
 針對使用整合式 Windows 驗證和 Kerberos 限制委派所保護的內部部署應用程式，若要讓 B2B 使用者獲得這些應用程式的存取權，您需要下列元件：
 
-- **透過 Azure AD 應用程式 Proxy 的驗證**。 B2B 使用者必須能夠向內部部署應用程式進行驗證。 若要這麼做，您必須透過 Azure AD 應用程式 Proxy 發行內部部署應用程式。 如需詳細資訊，請參閱[開始使用應用程式 Proxy 並安裝連接器](../manage-apps/application-proxy-enable.md)和[使用 Azure AD 應用程式 Proxy 發佈應用程式](../manage-apps/application-proxy-publish-azure-portal.md)。
+- **透過 Azure AD 應用程式 Proxy 的驗證**。 B2B 使用者必須能夠向內部部署應用程式進行驗證。 若要這麼做，您必須透過 Azure AD 應用程式 Proxy 發行內部部署應用程式。 如需詳細資訊，請參閱[開始使用應用程式 Proxy 並安裝連接器](../manage-apps/application-proxy-add-on-premises-application.md)和[使用 Azure AD 應用程式 Proxy 發佈應用程式](../manage-apps/application-proxy-add-on-premises-application.md)。
 - **透過內部部署目錄中 B2B 使用者物件的授權**。 應用程式必須能夠執行使用者存取權檢查，並授與正確資源的存取權。 IWA 和 KCD 需要內部部署 Windows Server Active Directory 中的使用者物件才能完成此授權。 如[使用 KCD 單一登入的運作方式](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)所述，應用程式 Proxy 需要這個使用者物件，以模擬使用者並將 Kerberos 權杖交給應用程式。 
 
    > [!NOTE]
@@ -71,7 +71,7 @@ ms.locfileid: "92107618"
 
 ### <a name="create-b2b-guest-user-objects-through-mim"></a>透過 MIM 建立 B2B 來賓使用者物件
 
-若要了解如何使用 MIM 2016 Service Pack 1 和 Microsoft Graph 的 MIM 管理代理程式在內部部署目錄中建立來賓使用者物件，請參閱 [使用 Microsoft Identity Manager (MIM) 2016 SP1 與 Azure 應用程式 Proxy 進行 Azure AD 企業對企業 (B2B) 共同作業](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario)。
+若要了解如何使用 MIM 2016 Service Pack 1 和 Microsoft Graph 的 MIM 管理代理程式在內部部署目錄中建立來賓使用者物件，請參閱 [使用 Microsoft Identity Manager (MIM) 2016 SP1 與 Azure 應用程式 Proxy 進行 Azure AD 企業對企業 (B2B) 共同作業](/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario)。
 
 ### <a name="create-b2b-guest-user-objects-through-a-script-preview"></a>透過指令碼建立 B2B 來賓使用者物件 (預覽)
 
@@ -90,4 +90,3 @@ ms.locfileid: "92107618"
 - [混合式組織的 Azure Active Directory B2B 共同作業](hybrid-organizations.md)
 
 - 如需 Azure AD Connect 的概觀，請參閱[整合您的內部部署目錄與 Azure Active Directory](../hybrid/whatis-hybrid-identity.md)。
-

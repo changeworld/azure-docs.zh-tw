@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 10851754bda73fc769e613153582e491265ebb71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db83e24931ec91449ac8c08bf4ce476e0f527b26
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85963235"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461340"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>在 Azure 監視器中收集 Linux 應用程式的效能計數器 
-[!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
+
 本文詳細說明如何設定[適用於 Linux 的 Log Analytics 代理程式](https://github.com/Microsoft/OMS-Agent-for-Linux)，以將特定應用程式的效能計數器收集至「Azure 監視器」。  本文包含的應用程式如下︰  
 
 - [MySQL](#mysql)
@@ -41,7 +41,7 @@ MySQL 驗證檔案儲存在 `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysq
 
 下表說明驗證檔案中的項目。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 | 連接埠 | 代表 MySQL 執行個體目前正在接聽的連接埠。 連接埠 0 指定後面的屬性用於預設執行個體。 |
 | 繫結位址| 目前的 MySQL 繫結位址。 |
@@ -165,6 +165,6 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 從 Linux 代理程式[收集效能計數器](data-sources-performance-counters.md)。
 * 了解[記錄查詢](../log-query/log-query-overview.md)，以分析從資料來源和解決方案收集到的資料。 

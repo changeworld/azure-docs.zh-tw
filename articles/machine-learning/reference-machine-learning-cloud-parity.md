@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4a6f09fdff82b8e86c7fe75018c5267dba3c1b4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddfe1344b235500f0f1ea69b6e3d8c537f96b855
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892974"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426522"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning 主權雲端同位
 
@@ -56,14 +56,14 @@ ms.locfileid: "90892974"
 | 工作區筆記本和檔案共用                                        | GA                   | YES                | YES         |
 | R 和 Python 支援                                                       | GA                   | YES                | YES         |
 | 虛擬網路支援                                                    | 公開預覽       | 否                 | 否          |
-| **計算執行個體** |   |  | | 
+| **計算實例** |   |  | | 
 | 整合式筆記本的受控計算實例                         | GA                   | YES                | YES         |
 | Jupyter，JupyterLab 整合                                            | GA                   | YES                | YES         |
 | 虛擬網路 (VNet) 支援                                             | 公開預覽       | YES                | YES         |
 | **SDK 支援** |  |  | | 
 | R SDK 支援                                                              | 公開預覽       | YES                | YES         |
 | Python SDK 支援                                                         | GA                   | YES                | YES         |
-| **安全性** |   | | | 
+| **Security** |   | | | 
 | 虛擬網路 (VNet) 支援定型                                | GA                   | YES                | YES         |
 | 虛擬網路 (VNet) 支援推斷                               | GA                   | YES                | YES         |
 | 評分端點驗證                                            | 公開預覽       | YES                | YES         |
@@ -112,7 +112,7 @@ ms.locfileid: "90892974"
 
 ### <a name="azure-government-scenarios"></a>Azure Government 案例
 
-| 狀況                                                    | US-Virginia | US-Arizona| 限制  |
+| 案例                                                    | US-Virginia | US-Arizona| 限制  |
 |----------------------------------------------------------------------------|:----------------------:|:--------------------:|-------------|
 | **一般安全性設定** |   | | |
 | 服務之間的私人網路通訊                                     | 否 | 否 | 目前沒有 Private Link | 
@@ -122,7 +122,7 @@ ms.locfileid: "90892974"
 | 計算資源的根和 SSH 存取權。                                          | YES | YES |  |
 | 維護已部署系統的安全性 (實例、端點等 ) ，包括 endpoint protection、修補和記錄 |  PARTIAL|  PARTIAL |VNet 和私人端點背後的 ACI 目前無法使用 |                                  
 | 控制 (停用/限制/限制) 使用 ACI/AKS 整合                    | PARTIAL| PARTIAL |VNet 和私人端點背後的 ACI 目前無法使用|
-| Role-Based 存取控制 (RBAC) -自訂角色建立                           | YES | YES |  |
+| Azure 角色型存取控制 (Azure RBAC) -自訂角色建立                           | YES | YES |  |
 | 控制 ML 服務所使用的 ACR 映射存取， (Azure 提供/維護和自訂)   |PARTIAL|  PARTIAL | Azure Government 中不支援私人端點和 VNet 背後的 ACR |
 | **一般 Machine Learning 服務使用量** |  | | |
 | 能夠讓開發環境建立模型、將該模型定型、將其裝載為端點，並透過 webapp 使用     | YES | YES |  |
@@ -169,14 +169,14 @@ ms.locfileid: "90892974"
 | 工作區筆記本和檔案共用                                        | GA               | YES       | N/A        |
 | R 和 Python 支援                                                       | GA               | YES       | N/A        |
 | 虛擬網路支援                                                    | 公開預覽   | 否        | N/A        |
-| **計算執行個體** |    | | |
+| **計算實例** |    | | |
 | 整合式筆記本的受控計算實例                         | GA               | 否        | N/A        |
 | Jupyter，JupyterLab 整合                                            | GA               | YES       | N/A        |
 | 虛擬網路 (VNet) 支援                                             | 公開預覽   | YES       | N/A        |
 | **SDK 支援** |    | | |
 | R SDK 支援                                                              | 公開預覽   | YES       | N/A        |
 | Python SDK 支援                                                         | GA               | YES       | N/A        |
-| **安全性** |   | | |
+| **Security** |   | | |
 | 虛擬網路 (VNet) 支援定型                                | GA               | YES       | N/A        |
 | 虛擬網路 (VNet) 支援推斷                               | GA               | YES       | N/A        |
 | 評分端點驗證                                            | 公開預覽   | YES       | N/A        |

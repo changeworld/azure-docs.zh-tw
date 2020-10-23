@@ -1,17 +1,17 @@
 ---
-title: 在 Azure 監視器中收集自訂 JSON 資料 | Microsoft Docs
+title: 在 Azure 監視器中使用 Log Analytics Linux 代理程式收集自訂 JSON 資料來源
 description: 您可以使用 Log Analytics Linux 代理程式將自訂 JSON 資料來源收集到 Azure 監視器中。  這些自訂資料來源可以是會傳回 JSON 的簡單指令碼，例如 curl 或 FluentD 的 300 個以上的外掛程式之一。 本文說明此資料收集所需的設定。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 407257dbe9fbfa560153d5044263fc4c947cb05c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ce83efea9337992209f9ade1f10ebad08edd57e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86111927"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461170"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>在 Azure 監視器中使用 Log Analytics Linux 代理程式收集自訂 JSON 資料來源
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -103,5 +103,5 @@ Type=tomcat_CL
 ```
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 了解[記錄查詢](../log-query/log-query-overview.md)，以分析從資料來源和解決方案收集到的資料。 

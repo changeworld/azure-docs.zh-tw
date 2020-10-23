@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 447b781ec83a01a58e6af9e9e43f75b3fc56b10f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 64d45861f37e2015b747a4db0feb2d32e68fe893
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370775"
+ms.locfileid: "92427328"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>使用安全匯出將 Azure 連接至 ITSM 工具
 
@@ -57,7 +57,10 @@ ITSMC 會使用使用者名稱和密碼認證。 安全匯出有更強的驗證�
 
 1. 向 Azure AD 註冊應用程式.
 2. 建立安全 Webhook 動作群組。
-3. 設定您的夥伴環境。 今天我們支援一個是 BMC Helix 的廠商。
+3. 設定您的夥伴環境。 
+
+安全匯出支援連接與下列 ITSM 工具：
+* [BMC Helix](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#connect-bmc-helix-to-azure-monitor)
 
 ## <a name="register-with-azure-active-directory"></a>向 Azure Active Directory 註冊
 
@@ -86,18 +89,18 @@ ITSMC 會使用使用者名稱和密碼認證。 安全匯出有更強的驗證�
 5. 選取 [ **安全 Webhook**]。
 6. 選取下列詳細資料：
    1. 選取您所註冊 Azure Active Directory 實例的物件識別碼。
-   2. 針對 URI，貼上您從廠商環境複製的 webhook URL。
+   2. 針對 URI，貼上您從 [ITSM 工具環境](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#configure-the-partner-environment)複製的 webhook URL。
    3. 將 **[啟用一般警示架構** ] 設定為 **[是]**。 
 
    下圖顯示範例安全 Webhook 動作的設定：
 
    ![顯示安全 Webhook 動作的螢幕擷取畫面。](media/it-service-management-connector-secure-webhook-connections/secure-webhook.png)
 
-## <a name="configure-the-partner-environment"></a>設定夥伴環境
+## <a name="configure-the-itsm-tool-environment"></a>設定 ITSM 工具環境
 
 此設定包含兩個步驟：
 1. 取得安全匯出定義的 URI。
-2. 根據廠商流程的定義。
+2. 以 ITSM 工具的流程為依據的定義。
 
 ### <a name="connect-bmc-helix-to-azure-monitor"></a>將 BMC Helix 連接到 Azure 監視器
 

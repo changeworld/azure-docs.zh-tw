@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 10/22/2020
 ms.author: aahi
-ms.openlocfilehash: 3cd6febfc774b214a8c1ae8553e6c127c4f452fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3b2a9db688104c168017863910745427a3a68f9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319073"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425793"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>適用于語音容器的批次處理套件
 
@@ -75,9 +75,8 @@ Batch 用戶端可以動態偵測端點是否變得無法使用 (例如，因為
 > [!NOTE] 
 > * 此範例會 `/my_nfs` 針對設定檔和輸入、輸出和記錄目錄，使用相同的目錄 () 。 您可以針對這些資料夾使用裝載或 NFS 掛接的目錄。
 > * 執行用戶端時 `–h` ，將會列出可用的命令列參數，以及其預設值。 
+> * 只有 Linux 支援批次處理容器。
 
-
-#### <a name="linux"></a>[Linux](#tab/linux)
 使用 Docker `run` 命令來啟動容器。 這會啟動容器內的互動式 shell。
 
 ```Docker
@@ -95,17 +94,6 @@ run-batch-client -config /my_nfs/config.yaml -input_folder /my_nfs/audio
 ```Docker
 docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-若要在單一命令中執行 batch 用戶端和容器：
-
-```Docker
-docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config  /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config
-
-```
-
----
 
 
 用戶端將會開始執行。 如果已在先前的執行中轉譯音訊檔案，用戶端會自動略過該檔案。 如果發生暫時性錯誤，則會以自動重試的方式傳送檔案，而且您可以區分您希望用戶端重試的錯誤。 在轉譯錯誤中，用戶端會繼續轉譯，而且可以重試而不會遺失進度。  
@@ -126,7 +114,7 @@ docker run --rm -ti -v   c:\my_nfs:/my_nfs docker.io/batchkit/speech-batch
 4. 這些檔案會分派至步驟1中的容器端點。
 5. 記錄和語音容器輸出會傳回至指定的輸出目錄。 
 
-#### <a name="daemon"></a>[守護 進程](#tab/daemon)
+#### <a name="daemon"></a>[精靈](#tab/daemon)
 
 > [!TIP]
 > 如果同時在輸入目錄中加入多個檔案，您可以改為以固定的間隔加入它們，以改善效能。

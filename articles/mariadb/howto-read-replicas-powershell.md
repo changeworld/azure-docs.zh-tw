@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6e90e9c2ebbc6ba05e5778f618a5c3de02adf3ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2b622372c881997fd77a83feb8f6c393504900b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542354"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428291"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>如何使用 PowerShell 在適用於 MariaDB 的 Azure 資料庫中建立及管理讀取複本
 
@@ -22,18 +22,18 @@ ms.locfileid: "91542354"
 
 您可以使用 PowerShell 來建立及管理讀取複本。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要完成本操作說明指南，您需要：
 
-- [Az PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)安裝在本機或[Azure Cloud Shell](https://shell.azure.com/)于瀏覽器中
+- [Az PowerShell 模組](/powershell/azure/install-az-ps)安裝在本機或[Azure Cloud Shell](https://shell.azure.com/)于瀏覽器中
 - [適用於 MariaDB 的 Azure 資料庫伺服器](quickstart-create-mariadb-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
 > 雖然 Az.MariaDb PowerShell 模組處於預覽狀態，但您仍必須使用下列命令，將其與 Az PowerShell 模組分開安裝：`Install-Module -Name Az.MariaDb -AllowPrerelease`。
 > 在正式推出 Az.MariaDb PowerShell 模組後，其會成為未來 Az PowerShell 模組版本的一部分，並可從 Azure Cloud Shell 內以原生方式提供。
 
-如果您選擇在本機使用 PowerShell，請使用 [disconnect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) Cmdlet 連接到您的 Azure 帳戶。
+如果您選擇在本機使用 PowerShell，請使用 [disconnect-azaccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet 連接到您的 Azure 帳戶。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -54,10 +54,10 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `New-AzMariaDbServerReplica` 命令需要下列參數：
 
-| 設定 | 範例值 | 描述  |
+| 設定 | 範例值 | 描述  |
 | --- | --- | --- |
-| resourceGroupName |  myresourcegroup |  建立複本伺服器的資源群組。  |
-| 名稱 | mydemoreplicaserver | 所建立的新複本伺服器名稱。 |
+| resourceGroupName |  myresourcegroup |  建立複本伺服器的資源群組。  |
+| Name | mydemoreplicaserver | 所建立的新複本伺服器名稱。 |
 
 若要建立跨區域讀取複本，請使用 **Location** 參數。 下列範例會在 **美國西部** 區域建立複本。
 
@@ -83,9 +83,9 @@ Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 `Get-AzMariaDReplica` 命令需要下列參數：
 
-| 設定 | 範例值 | 描述  |
+| 設定 | 範例值 | 描述  |
 | --- | --- | --- |
-| resourceGroupName |  myresourcegroup |  複本伺服器會建立於其中的資源群組。  |
+| resourceGroupName |  myresourcegroup |  複本伺服器會建立於其中的資源群組。  |
 | ServerName | mydemoserver | 來源伺服器的名稱或識別碼。 |
 
 ### <a name="delete-a-replica-server"></a>刪除複本伺服器

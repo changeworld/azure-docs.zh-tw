@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: c0d3ece75d15ae07091f613348389f845ec74ef7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9dae3b1adc1f7fecf6a34fc51d2a35bf4c98ea65
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262493"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425917"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>使用 Azure AD 驗證存取 Azure 媒體服務 API 
 
@@ -29,7 +29,7 @@ ms.locfileid: "89262493"
 
 Azure 媒體服務 API 是一種 RESTful API。 您可以使用 REST API 或使用可用的用戶端 SDK 來執行媒體資源的作業。 Azure 媒體服務提供適用於 Microsoft .NET 的媒體服務用戶端 SDK。 在獲得存取媒體服務資源和媒體服務 API 的授權之前，您必須先進行驗證。 
 
-媒體服務支援 [Azure Active Directory (Azure AD) 型驗證](../../active-directory/fundamentals/active-directory-whatis.md)。 Azure 媒體 REST 服務規定，發出 REST API 要求的使用者或應用程式需具備**參與者**或**擁有者**角色才能存取資源。 如需詳細資訊，請參閱[在 Azure 入口網站中開始使用角色型存取控制](../../role-based-access-control/overview.md)。  
+媒體服務支援 [Azure Active Directory (Azure AD) 型驗證](../../active-directory/fundamentals/active-directory-whatis.md)。 Azure 媒體 REST 服務規定，發出 REST API 要求的使用者或應用程式需具備**參與者**或**擁有者**角色才能存取資源。 如需詳細資訊，請參閱 [什麼是 azure (AZURE RBAC) 的 azure 角色型存取控制 ](../../role-based-access-control/overview.md)。  
 
 本文件提供如何使用 REST 或 .NET API 來存取媒體服務 API 的概觀。
 
@@ -153,7 +153,7 @@ Azure 媒體 REST 要求若要成功，呼叫的使用者必須擁有嘗試存�
 
 - [Azure AD 的驗證案例](../../active-directory/develop/authentication-vs-authorization.md)
 - [在 Azure AD 新增、更新或移除應用程式](../../active-directory/develop/quickstart-register-app.md)
-- [使用 PowerShell 設定及 管理角色型存取控制](../../role-based-access-control/role-assignments-powershell.md)
+- [使用 Azure PowerShell 新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-powershell.md)
 
 ## <a name="next-steps"></a>後續步驟
 

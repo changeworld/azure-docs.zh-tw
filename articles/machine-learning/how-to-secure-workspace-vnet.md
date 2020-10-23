@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: ef1e3c886cfd30db4c6a550d0ecabe7d41fab55c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 3001b8829660f2891cb051269026bf7100a8f938
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424990"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460985"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 工作區
 
@@ -281,6 +281,13 @@ Azure Machine Learning 會使用相關聯的 Key Vault 實例來儲存下列認�
     ]
     }
     ```
+
+    此範本會建立 _私人端點_ ，以從工作區到您的 ACR 進行網路存取。 下列螢幕擷取畫面顯示此私人端點的範例。
+
+    :::image type="content" source="media/how-to-secure-workspace-vnet/acr-private-endpoint.png" alt-text="工作區的 Azure Container Registry":::
+
+    > [!IMPORTANT]
+    > 請勿刪除此端點！ 如果您不小心將其刪除，您可以在此步驟中重新套用範本，以建立新的範本。
 
 ## <a name="next-steps"></a>後續步驟
 

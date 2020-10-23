@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db68528a810ebc9cd61b205dd5167396d75db7f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de255836cb269f5077a417a203e136f9e903f05d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613980"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441669"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>將 API 連接器新增至使用者流程
 
@@ -38,13 +38,13 @@ ms.locfileid: "91613980"
    - 目前僅支援基本驗證。 如果您想要在開發用途不使用基本驗證的情況下使用 API，只要輸入您的 API 可以忽略的虛擬使用者 **名稱** 和 **密碼** 即可。 若要搭配使用 Azure 函式與 API 金鑰，您可以在 **端點 URL** 中包含程式碼做為查詢參數 (例如 HTTPs： []() //contoso.azurewebsites.net/api/endpoint<b>？ code = 0123456789</b>) 。
 
    ![設定新的 API 連接器](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
-8. 選取 [儲存]****。
+8. 選取 [儲存]。
 
 > [!IMPORTANT]
 > 先前，您必須設定要傳送至 API ( 「要傳送的宣告」 ) 的使用者屬性，以及要從 API 接受哪些使用者屬性 ( 「要接收的宣告」 ) 。 現在，如果所有使用者屬性都有值，而且 API 可在「接續」回應中傳回任何使用者屬性，則預設會傳送這些屬性。
 
 ## <a name="the-request-sent-to-your-api"></a>傳送給 API 的要求
-API 連接器具體化為 **HTTP POST** 要求，會將使用者屬性 ( ' 宣告 ' ) 作為 JSON 主體中的機碼值組。 屬性的序列化方式類似于 [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/user#properties) 使用者屬性。 
+API 連接器具體化為 **HTTP POST** 要求，會將使用者屬性 ( ' 宣告 ' ) 作為 JSON 主體中的機碼值組。 屬性的序列化方式類似于 [Microsoft Graph](/graph/api/resources/user#properties) 使用者屬性。 
 
 **範例要求**
 ```http
@@ -85,7 +85,7 @@ Content-type: application/json
 > 如果在呼叫 API 端點時，要傳送的宣告沒有值，則不會將宣告傳送至 API。 您的 API 應設計為明確檢查其預期的值。
 
 > [!TIP] 
-> 身分識別 ( 「身分識別」 [**) **](https://docs.microsoft.com/graph/api/resources/objectidentity)和**電子郵件地址 ( 「電子郵件」 ) **宣告可供您的 API 用來識別使用者，然後他們在您的租使用者中具有帳戶。 當使用者使用身分識別提供者（例如 Google 或 Facebook）進行驗證時，會傳送「身分識別」宣告。 一律會傳送「電子郵件」。
+> 身分識別 ( 「身分識別」 [**) **](/graph/api/resources/objectidentity)和**電子郵件地址 ( 「電子郵件」 ) **宣告可供您的 API 用來識別使用者，然後他們在您的租使用者中具有帳戶。 當使用者使用身分識別提供者（例如 Google 或 Facebook）進行驗證時，會傳送「身分識別」宣告。 一律會傳送「電子郵件」。
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>在使用者流程中啟用 API 連接器
 
@@ -102,11 +102,11 @@ Content-type: application/json
 
    ![將 Api 新增至使用者流程](./media/self-service-sign-up-add-api-connector/api-connectors-user-flow-select.png)
 
-6. 選取 [儲存]****。
+6. 選取 [儲存]。
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>使用身分識別提供者登入之後
 
-當使用者向身分識別提供者驗證 (Google、Facebook Azure AD) 時，會立即叫用註冊程式中這個步驟的 API 連接器。 此步驟會在 [ ***屬性集合] 頁面***的前面，也就是向使用者呈現的表單，以收集使用者屬性。 
+當使用者向身分識別提供者驗證 (Google、Facebook Azure AD) 時，會立即叫用註冊程式中這個步驟的 API 連接器。 此步驟位於 **_屬性集合頁面_*_ 上方，這是向使用者顯示的表單，以收集使用者屬性。 
 
 <!-- The following are examples of API connector scenarios you may enable at this step:
 - Use the email or federated identity that the user provided to look up claims in an existing system. Return these claims from the existing system, pre-fill the attribute collection page, and make them available to return in the token.
@@ -248,7 +248,7 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | version                                            | String            | 是      | API 的版本。                                                                                                                                                                                                                                                                |
 | 動作                                             | String            | 是      | 值必須為 `Continue`。                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | 否       | 如果值選取為要在 API 連接器設定中 **接收** 的宣告，以及使用者流程的 **使用者屬性** ，則這些值可以儲存在目錄中。 如果選取做為 **應用程式**宣告，則可在權杖中傳回值。                                              |
+| \<builtInUserAttribute>                            | \<attribute-type> | 否       | 如果值在 [API 連接器設定] 和 [使用者流程] 的 [**使用者屬性**] 中選取為 [*要接收** 的 _ 宣告]，則可以儲存在目錄中。 如果選取做為 **應用程式**宣告，則可在權杖中傳回值。                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | 否       | 傳回的宣告不需要包含 `_<extensions-app-id>_` 。 如果值選取為要在 API 連接器設定中 **接收** 的宣告和使用者流程的 **使用者屬性** ，則這些值會儲存在目錄中。 自訂屬性不能在權杖中傳送回來。 |
 
 ### <a name="example-of-a-blocking-response"></a>封鎖回應的範例
@@ -271,7 +271,7 @@ Content-type: application/json
 | version     | String | 是      | API 的版本。                                                    |
 | 動作      | String | 是      | 值必須是 `ShowBlockPage`                                              |
 | userMessage | String | 是      | 要向使用者顯示的訊息。                                            |
-| code        | 字串 | 否       | 錯誤碼。 可用於偵錯工具。 不會向使用者顯示。 |
+| code        | String | 否       | 錯誤碼。 可用於偵錯工具。 不會向使用者顯示。 |
 
 **封鎖回應的終端使用者體驗**
 
@@ -298,7 +298,7 @@ Content-type: application/json
 | 動作      | String  | 是      | 值必須為 `ValidationError`。                                           |
 | status      | 整數 | 是      | 必須是 `400` ValidationError 回應的值。                        |
 | userMessage | String  | 是      | 要向使用者顯示的訊息。                                            |
-| code        | 字串  | 否       | 錯誤碼。 可用於偵錯工具。 不會向使用者顯示。 |
+| code        | String  | 否       | 錯誤碼。 可用於偵錯工具。 不會向使用者顯示。 |
 
 **使用驗證錯誤回應的使用者體驗**
 

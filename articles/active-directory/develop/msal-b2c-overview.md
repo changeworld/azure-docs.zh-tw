@@ -13,12 +13,12 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 13b478e85278827258ea2fc25a0ee4298039fb1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab072fa53d3ecc3f856b6765acfb8c19da3ff298
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119781"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442247"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>使用適用于 JavaScript 的 Microsoft 驗證程式庫來處理 Azure AD B2C
 
@@ -32,7 +32,7 @@ ms.locfileid: "88119781"
 - 支援在單一頁面應用程式中 (SPA) 登入，並呼叫受保護 *的* web API
 - 啟用密碼重設支援
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 如果您還沒有這麼做，請建立 [Azure AD B2C 的租](../../active-directory-b2c/tutorial-create-tenant.md)使用者。
 
@@ -56,16 +56,22 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="step-3-configure-authentication"></a>步驟3：設定驗證
 
-1. 開啟範例中的 `config.js` 檔案。
+1. 開啟範例中的 `config.json` 檔案。
 
-2. 使用您稍早在註冊應用程式時取得的應用程式認證來設定範例。 變更下列幾行程式碼，將值取代為您的 clientID、主機、tenantId 和原則名稱的名稱。
+2. 使用您稍早在註冊應用程式時取得的應用程式認證來設定範例。 藉由將值取代為您的租使用者名稱、用戶端識別碼和原則名稱，來變更下列幾行程式碼。
 
-```JavaScript
-const clientID = "<Application ID for your Node.js web API - found on Properties page in Azure portal e.g. 93733604-cc77-4a3c-a604-87084dd55348>";
-const b2cDomainHost = "<Domain of your B2C host eg. fabrikamb2c.b2clogin.com>";
-const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can use your Directory (tenant) ID (GUID)
-const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsignin1>";
-```
+    ```json
+         "credentials": {
+             "tenantName": "<your-tenant-name>",
+             "clientID": "<your-webapi-application-ID>"
+         },
+         "policies": {
+             "policyName": "B2C_1_signupsignin1"
+         },
+         "resource": {
+             "scope": ["demo.read"] 
+         },
+    ```
 
 如需詳細資訊，請參閱此 [Node.js B2C WEB API 範例](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)。
 

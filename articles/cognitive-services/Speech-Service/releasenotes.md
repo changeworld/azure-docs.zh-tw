@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 9eac4b08b590f93b3ec450eb1e1329d706fa09a3
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 89a87cd881689f58bbc4d2b4bf2a63a992e8dae9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206198"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461629"
 ---
 # <a name="speech-service-release-notes"></a>語音服務版本資訊
 
@@ -216,7 +216,7 @@ ms.locfileid: "92206198"
 **範例**
 -   **C #**：說話者辨識的程式 [代碼範例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/speaker-recognition) 。
 -   **C + +**：說話者辨識的程式 [代碼範例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp/windows/speaker-recognition) 。
--   **JAVA**： Android 上意圖辨識的程式 [代碼範例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/intent-recognition) 。 
+-   **JAVA**： Android 上意圖辨識的程式 [代碼範例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/intent-recognition) 。 
 
 **Covid-19-19 縮減測試：** 由於在過去幾周的遠端工作，我們無法像往常一樣執行手動驗證測試。 我們尚未進行任何變更，而且我們的自動化測試全都通過了。 在不太可能發生的情況下，請在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen)上讓我們知道。<br>
 保持狀況良好！
@@ -251,7 +251,7 @@ ms.locfileid: "92206198"
 **範例**
 - **Go**：已新增 [語音辨識](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone?pivots=programming-language-go) 和 [自訂語音助理](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/voice-assistants?pivots=programming-language-go)的快速入門。 [在這裡](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples)尋找範例程式碼。 
 - **JavaScript**：新增 [文字轉換語音](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech?pivots=programming-language-javascript)、 [轉譯](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-speech-translation?tabs=script&pivots=programming-language-csharp)和 [意圖辨識](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition?pivots=programming-language-javascript)的快速入門。
-- [C \# ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer)和[JAVA](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer) (Android) 的關鍵字辨識範例。  
+- [C \# ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer)和[JAVA](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer) (Android) 的關鍵字辨識範例。  
 
 **Covid-19-19 縮減測試：** 由於在過去幾周的遠端工作，我們無法像往常一樣執行手動驗證測試。 我們尚未進行任何變更，而且我們的自動化測試全都通過了。 如果我們錯過了某個內容，請在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen)上讓我們知道。<br>
 保持狀況良好！
@@ -260,7 +260,7 @@ ms.locfileid: "92206198"
 **新功能**
 - Linux：已新增 Red Hat Enterprise Linux (RHEL) /Centos 作為基礎 7 x64 的支援，以及如何設定 system for Speech SDK 的 [指示](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-rhel-centos-7) 。
 - Linux：已新增 Linux ARM32 和 ARM64 上的 .NET Core c # 支援。 您可以在[這裡](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux)深入了解. 
-- C #、c + +： `UtteranceId` 在中加入 `ConversationTranscriptionResult` ，在所有中繼和最終語音辨識結果中都是一致的識別碼。 [C #](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?view=azure-dotnet)、 [c + +](https://docs.microsoft.com/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult)的詳細資料。
+- C #、c + +： `UtteranceId` 在中加入 `ConversationTranscriptionResult` ，在所有中繼和最終語音辨識結果中都是一致的識別碼。 [C #](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?view=azure-dotnet&preserve-view=true)、 [c + +](https://docs.microsoft.com/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult)的詳細資料。
 - Python：已新增的支援 `Language ID` 。 請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)存放庫中的 speech_sample .py。
 - Windows：已針對所有 win32 主控台應用程式，在 Windows 平臺上新增壓縮的音訊輸入格式支援。 詳細 [資訊](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams)請參閱。 
 - JavaScript：支援 NodeJS 中的語音合成 (文字轉換語音) 。 請按一下[這裡](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech)進一步了解。 
@@ -268,7 +268,7 @@ ms.locfileid: "92206198"
         
 **Bug 修正**
 - C #、c + +：已修正問題，因此 `SendMessageAsync` 現在會將二進位訊息傳送為二進位類型。 [C #](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_)、 [c + +](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)的詳細資料。
-- C #、c + +：已修正使用 `Connection MessageReceived` 事件在 `Recognizer` 物件之前處置時可能造成損毀的問題 `Connection` 。 [C #](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?view=azure-dotnet)、 [c + +](https://docs.microsoft.com/cpp/cognitive-services/speech/connection#messagereceived)的詳細資料。
+- C #、c + +：已修正使用 `Connection MessageReceived` 事件在 `Recognizer` 物件之前處置時可能造成損毀的問題 `Connection` 。 [C #](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?view=azure-dotnet&preserve-view=true)、 [c + +](https://docs.microsoft.com/cpp/cognitive-services/speech/connection#messagereceived)的詳細資料。
 - Android：來自麥克風的音訊緩衝區大小從800ms 減少為100毫秒，以改善延遲。
 - Android：已修正 Android Studio 中 x86 Android 模擬器的 [問題](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/563) 。
 - JavaScript：已新增使用 API 的中國區域支援 `fromSubscription` 。 詳細 [資訊](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true#fromsubscription-string--string-)請參閱。 
