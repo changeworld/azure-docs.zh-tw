@@ -235,10 +235,13 @@
                   href: ../common/storage-import-export-requirements.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 將資料匯入至 Blob
                   href: ../common/storage-import-export-data-to-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                  displayName: 'Azure CLI, az import-export create, import-export'
                 - name: 將資料匯入至檔案
                   href: ../common/storage-import-export-data-to-files.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                  displayName: 'Azure CLI, az import-export create, import-export'
                 - name: 從 Blob 匯出資料
                   href: ../common/storage-import-export-data-from-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                  displayName: 'Azure CLI, az import-export create, import-export'
                 - name: 操作方式
                   items:
                     - name: 使用客戶管理的金鑰
@@ -876,7 +879,7 @@
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: 服務更新
           href: 'https://azure.microsoft.com/updates/?product=storage'
-        - name: Stack Overflow
+        - name: 堆疊溢位
           href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
         - name: 影片
           href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'

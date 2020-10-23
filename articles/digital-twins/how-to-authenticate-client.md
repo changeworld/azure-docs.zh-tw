@@ -22,7 +22,7 @@ Azure 數位 Twins 會使用以 [OAUTH 2.0 為基礎的 Azure AD 安全性權杖
 
 本文說明如何使用 `Azure.Identity` 用戶端程式庫取得認證。 雖然本文說明 c # 中的程式碼範例（例如您針對 [.net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)撰寫的內容），但您可以使用版本的， `Azure.Identity` 不論您使用的 sdk 為何 (如需 azure 數位 Twins 可用 sdk 的詳細資訊，請參閱作法 [*：使用 Azure 數位 Twins api 和 sdk*](how-to-use-apis-sdks.md)) 。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 首先，請完成 how [*to：設定實例和驗證*](how-to-set-up-instance-portal.md)中的設定步驟。 這可確保您有 Azure 數位 Twins 實例、您的使用者具有存取權限，而且您已設定用戶端應用程式的許可權。 完成此設定之後，您就可以開始撰寫用戶端應用程式程式碼。
 
@@ -150,7 +150,7 @@ try
 
 如果上述的醒目提示驗證案例並未涵蓋您應用程式的需求，您可以探索 [**Microsoft 身分識別平臺**](../active-directory/develop/v2-overview.md#getting-started)所提供的其他驗證類型。 此平臺的檔涵蓋其他驗證案例，依應用程式類型進行組織。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 深入瞭解 Azure 數位 Twins 中的安全性運作方式：
 * [*概念： Azure 數位 Twins 解決方案的安全性*](concepts-security.md)

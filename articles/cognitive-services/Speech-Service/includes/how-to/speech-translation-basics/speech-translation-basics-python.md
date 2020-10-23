@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: 91683b3328af384c073f7273b97a1cc0e49814a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 987aad74401a11407e33f0b0bd51548f354bdd6d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91376442"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92470800"
 ---
 語音服務的其中一項核心功能是能夠辨識人類語音，並將它轉譯成其他語言。 在本快速入門中，您將瞭解如何在您的應用程式和產品中使用語音 SDK，以執行高品質的語音翻譯。 本快速入門涵蓋的主題包括：
 
@@ -60,7 +60,7 @@ speech_key, service_region = os.environ['SPEECH__SUBSCRIPTION__KEY'], os.environ
 * 使用主機：傳入主機位址。 金鑰或授權權杖是選用項目。
 * 使用授權權杖：傳入授權權杖和相關聯的區域。
 
-我們來看看如何使用金鑰和區域建立 [`SpeechTranslationConfig`][config]。 請參閱[區域支援](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)頁面，以尋找您的區域識別碼。
+我們來看看如何使用金鑰和區域建立 [`SpeechTranslationConfig`][config]。 遵循 [免費試用語音服務](../../../overview.md#try-the-speech-service-for-free)中的步驟來取得這些認證。
 
 ```python
 from_language, to_language = 'en-US', 'de'
