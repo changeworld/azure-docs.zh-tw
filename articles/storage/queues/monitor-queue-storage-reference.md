@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 52ee08e0cce23aebbac1564a5c3ed894d0e487d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 396d2785d80ff29212dddcfb97adbff8ba9ce4c8
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711190"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425169"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Azure 佇列儲存體監視資料參考
 
@@ -36,7 +36,7 @@ Azure 儲存體會提供下列 Azure 監視器容量計量。
 
 #### <a name="queue-storage"></a>佇列儲存體
 
-此表格顯示 [佇列儲存體計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsqueueservices)。
+此表格顯示 [佇列儲存體計量](/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsqueueservices)。
 
 | 計量 | 描述 |
 | ------------------- | ----------------- |

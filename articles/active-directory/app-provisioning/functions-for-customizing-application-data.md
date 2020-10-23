@@ -10,12 +10,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 02/05/2020
 ms.author: kenwith
-ms.openlocfilehash: 14e3b23b4246f26e1ac59e0b12b043341546d0a0
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.custom: contperfq2
+ms.openlocfilehash: fc480ab025a0e0de7cccde8818ddbd85ce6c8529
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018238"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424598"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>在 Azure AD 中撰寫屬性對應之運算式的參考
 
@@ -48,10 +49,10 @@ ms.locfileid: "92018238"
 
 **參數：**
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **source** |必要 |字串 |通常為 source 物件的屬性名稱。 |
-| **尾碼** |必要 |字串 |您想要附加至 source 值結尾的字串。 |
+| **source** |必要 |String |通常為 source 物件的屬性名稱。 |
+| **尾碼** |必要 |String |您想要附加至 source 值結尾的字串。 |
 
 ---
 ### <a name="bitand"></a>BitAnd
@@ -66,7 +67,7 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **value1** |必要 |num |應以 value2 AND'ed 的數值|
 | **value2** |必要 |num |應使用 value1 AND'ed 的數值|
@@ -86,7 +87,7 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **expression** |必要 | 運算式 | 任何有效的運算式 |
 
@@ -102,9 +103,9 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **source1.rc .。。sourceN** | 必要 | 字串 |必要、可變次數。 通常為 source 物件的屬性名稱。 |
+| **source1.rc .。。sourceN** | 必要 | String |必要、可變次數。 通常為 source 物件的屬性名稱。 |
 | **defaultValue** | 選用 | String | 當所有來源值都是 Null 時，所要使用的預設值。 可以是空字串 ("")。
 
 ---
@@ -115,9 +116,9 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **source** |必要 |字串 |要轉換成基底64的字串|
+| **source** |必要 |String |要轉換成基底64的字串|
 
 **例子：**
 `ConvertToBase64("Hello world!")`
@@ -132,9 +133,9 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **source** |必要 |字串 |要轉換成 UTF8 十六進位的字串|
+| **source** |必要 |String |要轉換成 UTF8 十六進位的字串|
 
 **例子：**
 `ConvertToUTF8Hex("Hello world!")`
@@ -149,7 +150,7 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **屬性** |必要 |屬性 |會計算元素的多重值屬性|
 
@@ -161,7 +162,7 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **value** |必要 | 數值、參考或布林值 | 可以是數值、參考屬性或布林值。 |
 
@@ -178,7 +179,7 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **value** |必要 | 日期 | 要轉換為日期時間類型的 AD 日期 |
 
@@ -197,11 +198,11 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **source** |必要 |字串 |通常為 source 物件的屬性名稱。 |
-| **inputFormat** |必要 |字串 |source 值的預期格式。 如需支援的格式，請參閱 [/dotnet/standard/base-types/custom-date-and-time-format-strings](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
-| **>outputformat** |必要 |字串 |輸出日期的格式。 |
+| **source** |必要 |String |通常為 source 物件的屬性名稱。 |
+| **inputFormat** |必要 |String |source 值的預期格式。 如需支援的格式，請參閱 [/dotnet/standard/base-types/custom-date-and-time-format-strings](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
+| **>outputformat** |必要 |String |輸出日期的格式。 |
 
 ---
 ### <a name="guid"></a>Guid
@@ -217,7 +218,7 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **條件** |必要 |變數或運算式 |可評估為 true 或 false 的任何值或運算式。 |
 | **valueIfTrue** |必要 |變數或字串 | 條件評估為 True 時所傳回的值。 |
@@ -234,10 +235,10 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **value1** |必要 |字串 |要搜尋的字串 |
-| **value2** |必要 |字串 |要尋找的字串 |
+| **value1** |必要 |String |要搜尋的字串 |
+| **value2** |必要 |String |要尋找的字串 |
 | **開始** |選用 |整數 |尋找子字串的起始位置|
 | **compareType** |選擇性 |列舉 |可以是 vbTextCompare 或 vbBinaryCompare |
 
@@ -258,7 +259,7 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **expression** |必要 |運算式 |要評估的運算式 |
 
@@ -276,7 +277,7 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **expression** |必要 |運算式 |要評估的運算式 |
 
@@ -293,7 +294,7 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **expression** |必要 |運算式 |要評估的運算式 |
 
@@ -308,7 +309,7 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **expression** |必要 |運算式 |要評估的運算式 |
 
@@ -320,7 +321,7 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **屬性** |必要 |屬性 |要搜尋的多重值屬性 |
 | **index** |必要 |整數 | 多重值字串中專案的索引|
@@ -338,10 +339,10 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **separator** |必要 |字串 |用來分隔串連成一個字串的 source 值的字串。 如果不需要分隔符號，可以是 ""。 |
-| **source1.rc .。。sourceN** |必要，變動次數 |字串 |要聯結在一起的字串值。 |
+| **separator** |必要 |String |用來分隔串連成一個字串的 source 值的字串。 如果不需要分隔符號，可以是 ""。 |
+| **source1.rc .。。sourceN** |必要，變動次數 |String |要聯結在一起的字串值。 |
 
 ---
 ### <a name="left"></a>Left
@@ -354,7 +355,7 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **String** |必要 |屬性 | 要從中傳回字元的字串 |
 | **NumChars** |必要 |整數 | 數位，識別要從字串的開頭 (左) 傳回的字元數|
@@ -372,9 +373,9 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **source** |必要 |字串 |通常為屬性的名稱。 |
+| **source** |必要 |String |通常為屬性的名稱。 |
 | **開始** |必要 |整數 |**來源**字串中的索引，代表子字串的開頭。 字串第一個字元的索引為 1，第二個字元的索引為 2，依此類推。 |
 | **length** (長度) |必要 |整數 |子字串的長度。 如果長度超出 **source** 字串結尾，函式會傳回從 **start** 索引一直到 **source** 字串結尾的子字串。 |
 
@@ -386,9 +387,9 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **source** |必要 |字串 | 通常是名字或姓氏屬性。 |
+| **source** |必要 |String | 通常是名字或姓氏屬性。 |
 
 ---
 ### <a name="not"></a>Not
@@ -398,7 +399,7 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **source** |必要 |Boolean String |預期的**來源**值為 "True" 或 "False"。 |
 
@@ -410,9 +411,9 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **value** |必要 | 字串 | 支援格式的日期時間字串。 如需支援的格式，請參閱https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx。 |
+| **value** |必要 | String | 支援格式的日期時間字串。 如需支援的格式，請參閱https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx。 |
 
 **範例︰**
 * Workday 範例假設您想要將 *ContractEndDate* 自 Workday 的屬性（格式為 *2020-12-31-08:00* 的格式）對應到 AD 中的 *accountExpires* 欄位，以下是您可以如何使用此函式，並將時區位移變更為符合您的地區設定。 
@@ -430,7 +431,7 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **屬性** |必要 |多重值屬性 |將移除重複專案的多重值屬性|
 
@@ -462,9 +463,9 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **source** |必要 |字串 |通常是來自 **來源** 物件的屬性名稱。 |
+| **source** |必要 |String |通常是來自 **來源** 物件的屬性名稱。 |
 | **oldValue** |選用 |String |在 **source** 或 **template** 中要被取代的值。 |
 | **regexPattern** |選用 |String |用於比對**來源**中要取代之值的 Regex 模式。 或者，如果使用了 **replacementPropertyName**，則為從 **replacementPropertyName** 擷取值的模式。 |
 | **regexGroupName** |選用 |String |**regexPattern**內的群組名稱。 只有在使用了 **replacementPropertyName** 時，我們才會從 **replacementPropertyName** 擷取此群組的值作為 **replacementValue**。 |
@@ -487,9 +488,9 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **uniqueValueRule1  … uniqueValueRuleN** |至少需要 2 個，沒有上限 |字串 | 要評估的唯一值產生規則清單。 |
+| **uniqueValueRule1  … uniqueValueRuleN** |至少需要 2 個，沒有上限 |String | 要評估的唯一值產生規則清單。 |
 
 
 ---
@@ -500,9 +501,9 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **[appRoleAssignments]** |必要 |字串 |**[appRoleAssignments]** 物件。 |
+| **[appRoleAssignments]** |必要 |String |**[appRoleAssignments]** 物件。 |
 
 ---
 ### <a name="split"></a>分割
@@ -512,10 +513,10 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **source** |必要 |字串 |要更新的**來源**值。 |
-| **分隔符號** |必要 |字串 |指定將用來分割字串的字元 (範例：",") |
+| **source** |必要 |String |要更新的**來源**值。 |
+| **分隔符號** |必要 |String |指定將用來分割字串的字元 (範例：",") |
 
 ---
 ### <a name="stripspaces"></a>StripSpaces
@@ -525,9 +526,9 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **source** |必要 |字串 |要更新的**來源**值。 |
+| **source** |必要 |String |要更新的**來源**值。 |
 
 ---
 ### <a name="switch"></a>參數
@@ -537,12 +538,12 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **source** |必要 |字串 |**Source** 值。 |
+| **source** |必要 |String |**Source** 值。 |
 | **defaultValue** |選用 |String |當 source 不符合任何 key 時要使用的預設值。 可以是空字串 ("")。 |
-| **key** |必要 |字串 |要與 **source** 值比較的 **key**。 |
-| **value** |必要 |字串 |符合 key 的 **source** 的取代值。 |
+| **key** |必要 |String |要與 **source** 值比較的 **key**。 |
+| **value** |必要 |String |符合 key 的 **source** 的取代值。 |
 
 ---
 ### <a name="tolower"></a>ToLower
@@ -552,9 +553,9 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **source** |必要 |字串 |通常為 source 物件的屬性名稱 |
+| **source** |必要 |String |通常為 source 物件的屬性名稱 |
 | **culture** |選用 |String |根據 RFC 4646，文化特性 (Culture) 名稱的格式為 *languagecode2-country/regioncode2*，其中 *languagecode2* 是兩個字母的語言代碼，而 *country/regioncode2* 則是兩個字母的子文化特性代碼。 範例包括 ja-JP 代表日文 (日本)，en-US 代表英文 (美國)。 如果沒有兩個字母的語言代碼可供使用，則會使用衍生自 ISO 639-2 的三個字母代碼。|
 
 ---
@@ -565,9 +566,9 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **source** |必要 |字串 |通常為 source 物件的屬性名稱。 |
+| **source** |必要 |String |通常為 source 物件的屬性名稱。 |
 | **culture** |選用 |String |根據 RFC 4646，文化特性 (Culture) 名稱的格式為 *languagecode2-country/regioncode2*，其中 *languagecode2* 是兩個字母的語言代碼，而 *country/regioncode2* 則是兩個字母的子文化特性代碼。 範例包括 ja-JP 代表日文 (日本)，en-US 代表英文 (美國)。 如果沒有兩個字母的語言代碼可供使用，則會使用衍生自 ISO 639-2 的三個字母代碼。|
 
 ---
@@ -582,11 +583,11 @@ ms.locfileid: "92018238"
 
 **參數：** 
 
-| 名稱 | 必要 / 重複 | 類型 | 注意 |
+| Name | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **String** |必要 |多重值屬性 |要從中傳回單字的字串。|
 | **WordNumber** |必要 | 整數 | 識別應該傳回的文字數目的數位|
-| **分隔符號** |必要 |字串| 字串，代表應該用來識別單字的分隔符號 (s) |
+| **分隔符號** |必要 |String| 字串，代表應該用來識別單字的分隔符號 (s) |
 
 **例子：**
 `Word("The quick brown fox",3," ")`

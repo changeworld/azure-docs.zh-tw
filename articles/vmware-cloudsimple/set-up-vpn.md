@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cd08ce938a25e3311358892c9afa9eefd6c6dbf
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77087136"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424681"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>設定 CloudSimple 私人雲端的 VPN 連線
 
@@ -63,7 +63,7 @@ VPN 閘道可讓您從內部部署網路和用戶端電腦遠端連線到 CloudS
 
 4. 選取您要使用之通訊協定的 OpenVPN 設定檔 (. vpnconfig.ovpn) ，然後按一下 [ **開啟**]。
 
-    ![VPN](media/import-p2s-vpn-config-choose-ovpn.png)
+    ![醒目顯示您可以選取的 OpenVPN 設定檔的螢幕擷取畫面。](media/import-p2s-vpn-config-choose-ovpn.png)
 
 連接現在會出現在 [Viscosity] 功能表中。
 
@@ -71,7 +71,7 @@ VPN 閘道可讓您從內部部署網路和用戶端電腦遠端連線到 CloudS
 
 若要使用 Viscosity OpenVPN 用戶端連線到 VPN，請從功能表中選取 [連接]。 功能表圖示會更新，以指出已建立連接。
 
-![VPN](media/vis03.png)
+![顯示 CloudSimple VPN 線上狀態的螢幕擷取畫面。](media/vis03.png)
 
 ### <a name="connecting-to-multiple-private-clouds"></a>連接到多個私人雲端
 

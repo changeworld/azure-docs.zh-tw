@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 32ac78c6bc613daf04fc98c03044699f387f290d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd67a5a7f1bf665333e06c66f73c7f18727a3e12
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88140848"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427764"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>在您的私人雲端上建立 VMware 虛擬機器
 
@@ -25,7 +25,7 @@ ms.locfileid: "88140848"
 
 ## <a name="access-the-cloudsimple-portal"></a>存取 CloudSimple 入口網站
 
-1. 選取 [所有服務]。
+1. 選取 [所有服務]  。
 2. 搜尋 **CloudSimple 服務**。
 3. 選取您要在其上建立私人雲端的 CloudSimple 服務。
 4. 在 [ **總覽** ] 頁面中，按一下 [ **移至 CloudSimple 入口網站** ] 以開啟 CloudSimple 入口網站的新瀏覽器索引標籤。  如果出現提示，請使用您的 Azure 登入認證登入。  
@@ -58,37 +58,37 @@ ms.locfileid: "88140848"
 1. 在 vCenter 中，按一下 [ **主機和** 叢集] 圖示。
 
 2. 以滑鼠右鍵按一下 [ **工作負載** ]，然後選取 [ **新增虛擬機器**]。
-    ![新的 VM](media/vcvm01.png)
+    ![反白顯示 [新增虛擬機器] 功能表選項的螢幕擷取畫面。](media/vcvm01.png)
 
 3. 選取 [ **建立新的虛擬機器** ]，然後按 **[下一步]**。
-    ![新的 VM](media/vcvm02.png)
+    ![醒目顯示 [建立新的虛擬機器] 選項的螢幕擷取畫面。](media/vcvm02.png)
 
 4. 為電腦命名、選取 **工作負載 VM 的** 位置，然後按 **[下一步]**。
-    ![新的 VM](media/vcvm03.png)
+    ![醒目顯示 [工作負載 Vm] 選項的螢幕擷取畫面。](media/vcvm03.png)
 
 5. 選取 **工作負載** 計算資源，然後按一下 **[下一步]**。
-    ![新的 VM](media/vcvm04.png)
+    ![強調工作負載計算資源的螢幕擷取畫面。](media/vcvm04.png)
 
 6. 選取 **vsanDatastore** ，然後按 **[下一步]**。
-    ![新的 VM](media/vcvm05.png)
+    ![醒目顯示 vsanDatastore 選項的螢幕擷取畫面。](media/vcvm05.png)
 
 7. 保留預設的 ESXi 6.5 相容性選取專案，然後按 **[下一步]**。
-    ![新的 VM](media/vcvm06.png)
+    ![顯示所選 [ESXi 6.5 相容性] 選項的螢幕擷取畫面。](media/vcvm06.png)
 
 8. 針對您要建立的 VM 選取 ISO 的來賓 OS，然後按 **[下一步]**。
-    ![新的 VM](media/vcvm07.png)
+    ![顯示如何為 VM 選取 ISO guese OS 的螢幕擷取畫面。](media/vcvm07.png)
 
 9. 選取 [硬碟] 和 [網路選項]。 若為新的 CD/DVD 磁片磁碟機，請選取 [資料存放區 **ISO**檔案]。  如果您想要允許從公用 IP 位址到此 VM 的流量，請選取網路作為 **vm-1**。
-    ![新的 VM](media/vcvm08.png)
+    ![醒目顯示您選取資料存放區 ISO 檔案之位置的螢幕擷取畫面。](media/vcvm08.png)
 
 10. [選取範圍] 視窗隨即開啟。 選取您先前上傳至 Iso 和 Templates 資料夾的檔案，然後按一下 **[確定]**。
     ![新的 VM](media/vcvm10.png)
 
 11. 檢查設定，然後按一下 **[確定]** 以建立 VM。
-    ![新的 VM](media/vcvm11.png)
+    ![顯示您審核設定的螢幕擷取畫面。](media/vcvm11.png)
 
 VM 現在已新增至工作負載計算資源，並已可供使用。 
-![新的 VM](media/vcvm12.png)
+![螢幕擷取畫面，顯示已新增至工作負載計算資源的 VM。](media/vcvm12.png)
 
 基本設定現已完成。 您可以開始使用您的私人雲端，類似于您使用內部部署 VM 基礎結構的方式。
 
@@ -102,7 +102,7 @@ CloudSimple 會指派具有使用者名稱的預設 vCenter 使用者帳戶 `clo
 
 在私用雲端環境中執行的應用程式和工作負載需要名稱解析和 DHCP 服務，以便進行查閱和 IP 位址指派。 必須要有適當的 DHCP 和 DNS 基礎結構，才能提供這些服務。 您可以在 vCenter 中設定虛擬機器，以在您的私人雲端環境中提供這些服務。
 
-必要條件
+先決條件
 
 * 已設定 VLAN 的分散式埠群組
 
@@ -139,7 +139,7 @@ CloudSimple 入口網站中的 [網路] 頁面可讓您指定防火牆資料表�
 5. 如有需要，請使用滑杆來變更閒置的超時時間。
 6. 輸入您想要為其指派公用 IP 位址的本機 IP 位址。
 7. 如有需要，請輸入相關聯的 DNS 名稱。
-8. 按一下 [完成]。
+8. 按一下 [完成]  。
 
     ![公用 IP](media/quick-create-pc-public-ip.png)
 

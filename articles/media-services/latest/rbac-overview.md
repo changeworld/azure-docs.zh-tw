@@ -1,6 +1,6 @@
 ---
-title: 媒體服務帳戶的角色型存取控制-Azure |Microsoft Docs
-description: 本文討論 Azure 媒體服務帳戶 (RBAC) 的角色型存取控制。
+title: 適用于媒體服務帳戶的 azure 角色型存取控制-Azure |Microsoft Docs
+description: 本文討論 Azure 角色型存取控制 (適用于 Azure 媒體服務帳戶的 Azure RBAC) 。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: d6bc37a8aaddfb48e6d06eb46d9c1648e815b5ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fba3db14c2a950dd230a4721841b4baa9f64636
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289234"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426802"
 ---
-# <a name="role-based-access-control-rbac-for-media-services-accounts"></a>媒體服務帳戶 (RBAC) 的角色型存取控制
+# <a name="azure-role-based-access-control-azure-rbac-for-media-services-accounts"></a>Azure 角色型存取控制 (適用于媒體服務帳戶的 Azure RBAC) 
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -27,7 +27,7 @@ ms.locfileid: "89289234"
 
 ## <a name="design-principles"></a>設計原則
 
-v3 API 的金鑰設計原則之一，是讓 API 更為安全。 v3 Api 不會傳回 **取得** 或 **列出** 作業的秘密或認證。 回應中的金鑰一律為 Null、空白或處理過的。 使用者必須呼叫個別的動作方法，才能取得秘密或認證。 **讀者**角色無法呼叫 ListContainerSas、StreamingLocator、ListContentKeys、ContentKeyPolicies 等作業。 擁有不同的動作可讓您視需要在自訂角色中設定更細微的 RBAC 安全性許可權。
+v3 API 的金鑰設計原則之一，是讓 API 更為安全。 v3 Api 不會傳回 **取得** 或 **列出** 作業的秘密或認證。 回應中的金鑰一律為 Null、空白或處理過的。 使用者必須呼叫個別的動作方法，才能取得秘密或認證。 **讀者**角色無法呼叫 ListContainerSas、StreamingLocator、ListContentKeys、ContentKeyPolicies 等作業。 擁有不同的動作可讓您視需要在自訂角色中設定更細微的 Azure RBAC 安全性許可權。
 
 若要列出媒體服務支援的作業，請執行：
 
@@ -42,9 +42,9 @@ foreach (Microsoft.Azure.Management.Media.Models.Operation a in client.Operation
 
 如需詳細資訊，請參閱下列文章：
 
-- [傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 系統管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 - [什麼是 Azure 角色型存取控制 (Azure RBAC)？](../../role-based-access-control/overview.md)
-- [使用 RBAC 來管理存取權](../../role-based-access-control/role-assignments-rest.md)
+- [使用 REST API 新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-rest.md)
 - [媒體服務資源提供者作業](../../role-based-access-control/resource-provider-operations.md#microsoftmedia)
 
 ## <a name="next-steps"></a>後續步驟

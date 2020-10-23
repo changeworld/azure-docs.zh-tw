@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1846a6d94b81a907ac05fe92151c860aab457292
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 9630919b71afd0219a2e82a86e0f89106e8a0ac2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315829"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424056"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>適用于 Logic Apps 的 Azure 安全性基準
 
@@ -182,7 +182,7 @@ ms.locfileid: "92315829"
 
 - 應啟用 DDoS 保護標準
 
-您也可以使用 Azure 藍圖，藉由在單一藍圖定義中封裝關鍵環境成品（例如 Azure Resource Manager 範本、角色型存取控制 (RBAC) 和原則）來簡化大規模的 Azure 部署。 輕鬆地將藍圖套用至新的訂閱、環境，以及透過版本控制來微調控制和管理。
+您也可以使用 Azure 藍圖，藉由在單一藍圖定義中封裝關鍵環境成品（例如 Azure Resource Manager 範本、Azure 角色型存取控制 (Azure RBAC) 和原則）來簡化大規模的 Azure 部署。 輕鬆地將藍圖套用至新的訂閱、環境，以及透過版本控制來微調控制和管理。
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
@@ -578,7 +578,7 @@ Azure Logic Apps 支援系統指派和使用者指派的受控識別。 您的�
 
 當您建立 ISE 時，可以選擇使用內部或外部存取端點。 您的選擇會決定您 ISE 中的邏輯應用程式上的要求或 webhook 觸發程式是否可以接收來自虛擬網路外部的呼叫。
 
-此外，針對個別的安全性網域（例如環境類型和資料敏感度層級），使用個別的訂用帳戶和管理群組來執行隔離。 您可以限制您的應用程式和企業環境所需的 Azure 資源存取層級。 您可以透過 Azure Active Directory 角色型存取控制，來控制 Azure 資源的存取權。
+此外，針對個別的安全性網域（例如環境類型和資料敏感度層級），使用個別的訂用帳戶和管理群組來執行隔離。 您可以限制您的應用程式和企業環境所需的 Azure 資源存取層級。 您可以透過 Azure 角色型存取控制 (Azure RBAC) 來控制 Azure 資源的存取權。
 
 - [瞭解 Logic Apps 的連接器](../connectors/apis-list.md)
 
@@ -644,9 +644,9 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 **責任**：共用
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用角色型存取控制來控制資源的存取權
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指導**方針：您只能允許特定的使用者或群組執行特定的工作，例如管理、編輯和觀看邏輯應用程式。 若要控制其權限，請使用 Azure 角色型存取控制 (RBAC)，以將自訂或內建角色指派給 Azure 訂用帳戶中的成員：
+**指導**方針：您只能允許特定的使用者或群組執行特定的工作，例如管理、編輯和觀看邏輯應用程式。 若要控制其許可權，請使用 Azure 角色型存取控制 (Azure RBAC) ，讓您可以將自訂或內建角色指派給 Azure 訂用帳戶中的成員：
 
 - 邏輯應用程式參與者：可讓您管理邏輯應用程式，但無法變更對邏輯應用程式的存取。
 - 邏輯應用程式操作員：可讓您讀取、啟用及停用邏輯應用程式，但無法編輯或更新邏輯應用程式。
@@ -883,7 +883,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 **指導**方針：與您的 Logic Apps 所需的資源相關的資源，但可能會對組織產生更高的風險，應該隔離在其自己的虛擬機器和/或虛擬網路內，並使用 Azure 防火牆或網路安全性群組來充分保護。
 
-針對商務營運所需的 Logic Apps，但可能會對組織產生更高的風險，應該在可能的情況下，透過具有特定許可權和 RBAC 界限的個別資源群組，盡可能隔離。
+針對商務營運所需的 Logic Apps，但可能會對組織產生更高的風險，應該在可能的情況下，透過具有特定許可權的個別資源群組和 Azure RBAC 界限，盡可能隔離。
 
 - [如何建立虛擬網路](../virtual-network/quick-create-portal.md) 
 
@@ -891,7 +891,7 @@ Microsoft 管理 Azure Logic Apps 的基礎結構，並已實行嚴格的控制�
 
 - [如何建立管理群組](../governance/management-groups/create-management-group-portal.md) 
 
-- [如何透過 RBAC 安全地存取 Logic Apps](logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
+- [如何透過 Azure RBAC 安全地存取 Logic Apps](logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Azure 資訊安全中心監視**：不適用
 

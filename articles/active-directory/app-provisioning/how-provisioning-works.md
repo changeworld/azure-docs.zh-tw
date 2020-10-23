@@ -11,12 +11,13 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: b990fc7282cd986b0903fb1f33114a164be1c191
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.custom: contperfq2
+ms.openlocfilehash: c9d8bf42d8856ffcf7bb0247172f6c0fd49600e0
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366678"
+ms.locfileid: "92424653"
 ---
 # <a name="how-provisioning-works"></a>佈建運作方式
 
@@ -179,6 +180,8 @@ Azure AD 布建服務會在移除使用者存取權時，透過解除布建帳�
 
 確定您的應用程式有作用 *中的對應* 。 如果您是使用應用程式資源庫中的應用程式，則對應可能會稍有不同。 請確定您使用的是資源庫應用程式的預設/外框對應。
 
+:::image type="content" source="./media/how-provisioning-works/disable-user.png" alt-text="停用使用者" lightbox="./media/how-provisioning-works/disable-user.png":::
+
 
 **設定您的應用程式以刪除使用者**
 
@@ -188,7 +191,9 @@ Azure AD 布建服務會在移除使用者存取權時，透過解除布建帳�
 * 使用者會在 Azure AD 中永久刪除/刪除回收站。
 * 從應用程式解除指派使用者。
 * 使用者從範圍移至超出範圍 (不會再傳遞範圍篩選器) 。
-    
+
+:::image type="content" source="./media/how-provisioning-works/delete-user.png" alt-text="停用使用者" lightbox="./media/how-provisioning-works/delete-user.png":::
+
 根據預設，Azure AD 佈建服務會虛刪除或停用超出範圍的使用者。 如果您想要覆寫此預設行為，您可以設定旗標來 [略過超出範圍的刪除。](skip-out-of-scope-deletions.md)
 
 如果發生上述四個事件之一，而目標應用程式不支援虛刪除，則佈建服務會傳送 DELETE 要求，以從應用程式中永久刪除使用者。

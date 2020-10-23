@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 10/22/2020
 tags: connectors
-ms.openlocfilehash: 534b9fedc6649d3174ea65caf51b28004de7bda2
-ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
+ms.openlocfilehash: 674d496485f89bee1904e3588a0fb81c6140945b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92169382"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426613"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 將 SQL database 的工作流程自動化
 
@@ -214,19 +214,16 @@ ms.locfileid: "92169382"
 
 有時候，您必須處理的結果集很大，導致連接器無法一次傳回所有結果，或是您想要對結果集的大小和結構擁有更好的控制能力。 以下是用於處理這類大型結果集的一些方法：
 
-* 為協助您將結果分成較小的集合來管理，請開啟 [分頁]。 如需詳細資訊，請參閱[使用分頁取得大量資料、記錄和項目](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md)。
+* 為協助您將結果分成較小的集合來管理，請開啟 [分頁]。 如需詳細資訊，請參閱[使用分頁取得大量資料、記錄和項目](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md)。 如需詳細資訊，請參閱 [使用 Logic Apps 進行大量資料傳輸的 SQL 分頁](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)。
 
-* 建立預存程序，以您想要的方式來組織結果。
+* 建立 [*預存*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) 程式，以您想要的方式組織結果。 SQL connector 提供許多可利用 Azure Logic Apps 存取的後端功能，讓您可以更輕鬆地將使用 SQL database 資料表的商務工作自動化。
 
   在取得或插入多個資料列時，邏輯應用程式可在這些[限制](../logic-apps/logic-apps-limits-and-config.md)內使用 [*until 迴圈*](../logic-apps/logic-apps-control-flow-loops.md#until-loop)，來逐一查看這些資料列。 但是，當邏輯應用程式必須處理的記錄集很大時 (例如，數千或數百萬個資料列)，您應將資料庫的呼叫成本降至最低。
 
-  為了以所需方式組織結果，您可以轉而建立[*預存程序*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine)，其可在 SQL 執行個體中執行，並使用 **SELECT - ORDER BY** 陳述式。 此解決方案可讓您對結果的大小和結構擁有更好的控制能力。 邏輯應用程式會使用 SQL Server 連接器的**執行預存程序**動作來呼叫預存程序。
+  為了以所需方式組織結果，您可以轉而建立預存程序，其可在 SQL 執行個體中執行，並使用 **SELECT - ORDER BY** 陳述式。 此解決方案可讓您對結果的大小和結構擁有更好的控制能力。 邏輯應用程式會使用 SQL Server 連接器的**執行預存程序**動作來呼叫預存程序。 如需詳細資訊，請參閱 [SELECT-ORDER By 子句](/sql/t-sql/queries/select-order-by-clause-transact-sql)。
 
-  如需解決方案的詳細資訊，請參閱下列文章：
-
-  * [可供使用 Logic Apps 傳輸大量資料的 SQL 分頁](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
-
-  * [SELECT - ORDER BY 子句](/sql/t-sql/queries/select-order-by-clause-transact-sql)
+  > [!NOTE]
+  > 使用此連接器時，預存程式執行限制為 [小於2分鐘的超時限制](/connectors/sql/#known-issues-and-limitations)。 某些預存程式的處理時間可能會超過此限制，而且會產生 `504 TIMEOUT` 錯誤。 實際上，某些長時間執行的進程會針對此用途明確編碼為預存程式。 從 Azure Logic Apps 呼叫這些程式可能會因為這個超時限制而造成問題。 雖然 SQL connector 原本就不支援非同步模式，但您可以使用 SQL 完成觸發程式、原生 SQL 傳遞查詢、狀態資料表和伺服器端作業，藉由使用 [Azure 彈性作業代理程式](../azure-sql/database/elastic-jobs-overview.md)來模擬此模式。
 
 ### <a name="handle-dynamic-bulk-data"></a>處理動態大量資料
 
@@ -253,13 +250,13 @@ ms.locfileid: "92169382"
 
 ## <a name="troubleshoot-problems"></a>問題疑難排解
 
-連接問題通常可能發生，因此若要疑難排解和解決這類問題，請參閱 [解決連線錯誤以 SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)。 以下是一些範例：
+* 連接問題通常可能發生，因此若要疑難排解和解決這類問題，請參閱 [解決連線錯誤以 SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)。 以下是一些範例：
 
-* `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+  * `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
 
-* `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+  * `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
 
-* `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
+  * `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
 
 ## <a name="connector-specific-details"></a>連接器特定的詳細資料
 

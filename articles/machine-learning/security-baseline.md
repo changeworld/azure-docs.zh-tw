@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3cc8974be9adb81391134790d85336016a7d9f1c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: cb403e2d1b11391ca3917478955dc282a174ae88
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204328"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426298"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>適用于 Azure Machine Learning 的 Azure 安全性基準
 
@@ -303,13 +303,13 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
-**指導**方針：您可以使用 Azure 入口網站中資源的 [身分識別與存取管理] 索引標籤，來設定 (RBAC) 的角色型存取控制，並維護 Azure Machine Learning 資源的清查。 角色會套用至 Active Directory 中的使用者、群組、服務主體和受控識別。 您可以針對個人和群組使用內建角色或自訂角色。
+**指導**方針：您可以使用 Azure 入口網站中資源的 [身分識別與存取管理] 索引標籤，設定 azure RBAC) 的 azure 角色型訪問 (控制，並維護 Azure Machine Learning 資源的清查。 角色會套用至 Active Directory 中的使用者、群組、服務主體和受控識別。 您可以針對個人和群組使用內建角色或自訂角色。
 
-Azure Machine Learning 針對 Azure Machine Learning 中的常見管理案例提供內建的 RBAC。 在 Azure Active Directory (Azure AD) 中具有設定檔的個人可以將這些 RBAC 角色指派給使用者、群組、服務主體或受控識別，以授與或拒絕對 Azure Machine Learning 資源的資源和作業的存取權。
+Azure Machine Learning 針對 Azure Machine Learning 中的常見管理案例提供內建角色。 在 Azure Active Directory (Azure AD) 中具有設定檔的個人可以將這些角色指派給使用者、群組、服務主體或受控識別，以授與或拒絕對 Azure Machine Learning 資源的資源和作業的存取權。
 
 您也可以使用 Azure AD PowerShell 模組來執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
 
-- [瞭解 Azure Machine Learning 中的角色型存取控制](how-to-assign-roles.md)
+- [瞭解 Azure Machine Learning 中的 Azure 角色型存取控制](how-to-assign-roles.md)
 
 - [如何使用 PowerShell 在 Azure Active Directory 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -902,13 +902,13 @@ Azure Machine Learning 完全支援用於追蹤工作的 Git 存放庫;您可以
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全地儲存自訂作業系統映像
 
-**指導**方針： Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資源之間有不同的支援。 針對您組織所擁有的計算資源，請使用 Azure 角色型存取控制 (RBAC) ，以確保只有獲得授權的使用者可以存取您的自訂映射。 您可以使用 Azure 共用映射庫，將映射分享給組織內的不同使用者、服務主體或 Azure AD 群組。 在 Azure Container Registry 中儲存容器映射，並使用 RBAC 來確保只有授權的使用者可以存取。
+**指導**方針： Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資源之間有不同的支援。 針對您組織所擁有的計算資源，請使用 Azure 角色型存取控制 (Azure RBAC) ，以確保只有獲得授權的使用者可以存取您的自訂映射。 您可以使用 Azure 共用映射庫，將映射分享給組織內的不同使用者、服務主體或 Azure AD 群組。 在 Azure Container Registry 中儲存容器映射，並使用 Azure RBAC 來確保只有授權的使用者可以存取。
 
-- [瞭解 Azure 中的 RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [了解 Azure RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-- [瞭解 Container Registry 的 RBAC](../container-registry/container-registry-roles.md)
+- [瞭解適用于 Container Registry 的 Azure RBAC](../container-registry/container-registry-roles.md)
 
-- [如何在 Azure 中設定 RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
+- [如何設定 Azure RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 - [共用映像資源庫概觀](../virtual-machines/windows/shared-image-galleries.md)
 
@@ -1088,7 +1088,7 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理的金鑰的保護
 
-**指導**方針：針對內部部署備份，會使用您在備份至 Azure 時所提供的複雜密碼來提供靜態加密。 使用角色型存取控制來保護備份和客戶管理的金鑰。 
+**指導**方針：針對內部部署備份，會使用您在備份至 Azure 時所提供的複雜密碼來提供靜態加密。 使用 Azure 角色型存取控制來保護備份和客戶管理的金鑰。 
 
 啟用 Key Vault 中的虛刪除和清除保護，以防止金鑰遭到意外或惡意刪除。 如果使用 Azure 儲存體來儲存備份，請在刪除 blob 或 blob 快照集時，啟用虛刪除來儲存及復原您的資料。
  

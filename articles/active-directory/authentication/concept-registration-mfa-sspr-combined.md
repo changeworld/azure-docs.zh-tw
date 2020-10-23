@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71900bc3741c25299402e31057ea2237cd0a4637
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 79a5d306643fa9597b30f6941c420c403695c22e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965143"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424570"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory 總覽的結合安全性資訊註冊
 
@@ -34,7 +34,7 @@ ms.locfileid: "91965143"
 
 在啟用新的體驗之前，請先查看以系統管理員為主的檔和以使用者為主的檔，以確保您瞭解這項功能的功能和效果。 根據 [使用者檔](../user-help/security-info-setup-signin.md) 的訓練，讓您的使用者能夠獲得新的體驗，並協助確保成功推出。
 
-美國國家雲端（例如 Azure 美國政府、Azure 德國或 Azure 中國的世紀）目前無法使用 Azure AD 組合的安全性資訊註冊。
+Azure AD 組合的安全性資訊註冊目前無法供國家雲端使用，例如 Azure 德國或 Azure 中國的世紀。 適用于 Azure 美國政府。
 
 > [!IMPORTANT]
 > 針對原始預覽和增強的組合註冊體驗啟用的使用者，會看到新的行為。 同時啟用這兩種體驗的使用者只會看到新的「我的設定檔」體驗。 新的「 *我的個人資料* 」符合合併註冊的外觀和風格，並為使用者提供順暢的體驗。 使用者可以查看我的設定檔，方法是前往 [https://myprofile.microsoft.com](https://myprofile.microsoft.com) 。

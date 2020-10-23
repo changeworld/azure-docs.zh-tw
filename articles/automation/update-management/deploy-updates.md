@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 10/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2c4489e22344d2807b22bf4752add9c336215bec
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d1f4c04bf4a26e67a905679db23e303c2762d90c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369689"
+ms.locfileid: "92426407"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>如何部署更新和檢查結果
 
@@ -111,7 +111,7 @@ ms.locfileid: "92369689"
     > [!NOTE]
     > 當您完成設定選取之已啟用 Arc 之伺服器的部署排程時，請選取 [ **審核 + 建立**]。
 
-15. 您會回到狀態儀表板。 選取 [ **部署** 排程]，以顯示您已建立的部署排程。 最多會列出500個排程。 如果您有超過500個排程，而您想要查看完整清單，請參閱使用2019-06-01 版或更高版本的 [軟體更新設定-列出](/rest/api/automation/softwareupdateconfigurations/list) REST API 方法。
+15. 您會回到狀態儀表板。 選取 [ **部署** 排程]，以顯示您已建立的部署排程。 最多會列出500個排程。 如果您有超過500個排程，而您想要查看完整清單，請參閱 [軟體更新設定-列出](/rest/api/automation/softwareupdateconfigurations/list) REST API 方法。 指定 API 版本2019-06-01 或更高版本。
 
 ## <a name="schedule-an-update-deployment-programmatically"></a>以程式設計方式排程更新部署
 

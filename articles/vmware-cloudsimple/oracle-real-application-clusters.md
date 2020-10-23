@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2cc2f954f4255c00b7c3549ab5d33d71b240fb70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 980ba86a9916e13dd2ac7639bd06d3ab8546d2f1
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86507662"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424688"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>優化您的 CloudSimple 私人雲端以安裝 Oracle RAC
 
@@ -79,7 +79,7 @@ Oracle RAC 虛擬機器有多個磁片，用於特定功能。  共用磁片會�
 * 共用設定為 [ **無共用**]。
 * 在使用 vSAN 原則的儲存體上定義了冗余。  
 
-![Oracle RAC 資料磁片群組設定](media/oracle-vm-os-disks.png)
+![顯示 Oracle RAC OS 磁片實體設定的圖表。](media/oracle-vm-os-disks.png)
 
 ### <a name="data-disk-configuration"></a>資料磁片設定
 
@@ -148,7 +148,7 @@ SQL > alter database add logfile thread 2 ('+ORCLRAC_REDO1','+ORCLRAC_REDO2') si
 * 磁片必須設定為 ASM 磁片群組。  
 * ASM 冗余設定為 **外部** 冗余。
 
-![Oracle RAC 投票磁片群組設定](media/oracle-vm-fra-disks.png)
+![顯示 Oracle RAC 投票磁片群組設定的圖表。](media/oracle-vm-fra-disks.png)
 
 ## <a name="deploy-cloudsimple-private-cloud-vsphere-cluster"></a>部署 CloudSimple 私用雲端 vSphere 叢集
 
@@ -220,7 +220,7 @@ Oracle 使用共用磁片來儲存資料、記錄檔和重做記錄檔。  您�
 9. 若要進行共用，請指定 **多個寫入器**。
 10. 針對 [虛擬裝置] 節點，選取在步驟2中建立的新 SCSI 控制器。
 
-    ![在第一部 VM 上建立磁片](media/oracle-rac-new-hard-disk.png)
+    ![醒目顯示在第一個 VM 上建立磁片所需欄位的螢幕擷取畫面。](media/oracle-rac-new-hard-disk.png)
 
 針對 Oracle 資料、記錄和重做記錄檔所需的所有新磁片，重複步驟2–10。
 
@@ -259,7 +259,7 @@ VM 對主機親和性規則可確保 VM 會在所需的主機上執行。  您�
 13. 選取您所建立的主機群組。
 14. 按一下 **[確定]** 以建立規則。
 
-## <a name="references"></a>參考
+## <a name="references"></a>參考資料
 
 * [關於 vSAN 原則](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-08911FD3-2462-4C1C-AE81-0D4DBC8F7990.html)
 * [共用 Vmdk 的 VMware 多重寫入器屬性](https://docs.vmware.com/en/VMware-Cloud-on-AWS/solutions/VMware-Cloud-on-AWS.df6735f8b729fee463802083d46fdc75/GUID-A7642A82B3D6C5F7806DB40A3F2766D9.html)

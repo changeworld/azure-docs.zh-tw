@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 66e280f20109967f029a14e368fdb0aeea269aad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db85892115f345039353cd90eeedbe809eb6ae67
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536608"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425576"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>將資料複寫到適用於 MariaDB 的 Azure Database
 
@@ -28,14 +28,14 @@ ms.locfileid: "91536608"
 ### <a name="data-not-replicated"></a>不會複寫資料
 來源伺服器上的 [*mysql 系統資料庫*](https://mariadb.com/kb/en/library/the-mysql-database-tables/) 不會複寫。 系統不會複寫來源伺服器上的帳戶和許可權變更。 如果您在來源伺服器上建立帳戶，且此帳戶需要存取複本伺服器，請在複本伺服器端手動建立相同的帳戶。 若要了解系統資料庫中包含哪些資料表，請參閱 [MariaDB 文件](https://mariadb.com/kb/en/library/the-mysql-database-tables/) \(英文\)。
 
-### <a name="requirements"></a>需求
+### <a name="requirements"></a>規格需求
 - 來源伺服器版本必須至少是適用于 mariadb 10.2 版。
 - 來源和複本伺服器的版本必須相同。 例如，兩者都必須是 MariaDB 10.2 版。
 - 每個資料表都必須有主索引鍵。
 - 來源伺服器應使用 InnoDB 引擎。
 - 使用者必須有權設定二進位記錄，並在來源伺服器上建立新的使用者。
-- 如果來源伺服器已啟用 SSL，請確定為網域提供的 SSL CA 憑證已包含在 `mariadb.az_replication_change_master` 預存程式中。 請參閱下列 [範例](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication) 和 `master_ssl_ca` 參數。
-- 確定來源伺服器的 IP 位址已新增至適用於 MariaDB 的 Azure 資料庫複本伺服器的防火牆規則。 使用 [Azure 入口網站](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal)或 [Azure CLI](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli) 更新防火牆規則。
+- 如果來源伺服器已啟用 SSL，請確定為網域提供的 SSL CA 憑證已包含在 `mariadb.az_replication_change_master` 預存程式中。 請參閱下列 [範例](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication) 和 `master_ssl_ca` 參數。
+- 確定來源伺服器的 IP 位址已新增至適用於 MariaDB 的 Azure 資料庫複本伺服器的防火牆規則。 使用 [Azure 入口網站](howto-manage-firewall-portal.md)或 [Azure CLI](howto-manage-firewall-cli.md) 更新防火牆規則。
 - 確定裝載來源伺服器的機器允許埠3306上的輸入和輸出流量。
 - 請確定來源伺服器具有 **公用 IP 位址**、DNS 可公開存取，或具有 (FQDN) 的完整功能變數名稱。
 

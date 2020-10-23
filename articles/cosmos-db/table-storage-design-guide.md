@@ -8,12 +8,12 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 05a469dbeb093c41b45be278aec42cc930223c72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc140553cbca2347678c376cc9420cfddef22b07
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89002171"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428064"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure 表格儲存體資料表設計指南：可擴充的高效能資料表
 
@@ -476,7 +476,7 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用越多分割區
 #### <a name="context-and-problem"></a>內容和問題
 表格儲存體會使用 `PartitionKey` 和 `RowKey` 值，自動為實體編製索引。 這可讓用戶端應用程式使用這些值，有效率地取出實體。 例如，就下列資料表結構來說，用戶端應用程式可以使用點查詢，依門名稱和員工識別碼 (`PartitionKey` 和 `RowKey` 值) 來取出個別員工實體。 用戶端也可以擷取每個部門內以員工識別碼排序的實體。  
 
-:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE09.png" alt-text="此圖顯示部門實體和員工實體":::[9]
+:::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE09.png" alt-text="此圖顯示部門實體和員工實體":::形
 
 如果您也想能夠根據其他屬性 (例如電子郵件地址) 的值尋找員工實體，您必須使用效率較低的資料分割掃描來尋找相符項目。 這是因為表格儲存體不提供次要索引。 此外，無法要求以 `RowKey` 順序以外的順序來排序員工清單。  
 

@@ -1,22 +1,22 @@
 ---
 title: 使用 Azure Resource Manager 範本部署 Azure Cache for Redis
-description: 瞭解如何使用 Azure Resource Manager 範本來部署 Azure Cache for Redis 資源。 針對常見案例提供範本。
+description: 瞭解如何使用 Azure Resource Manager 範本 (ARM 範本) 部署 Azure Cache for Redis 資源。 針對常見案例提供範本。
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
-ms.openlocfilehash: a2ab400158f77af7934ca3f9f7c811d5fe2bd340
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0445aeaea6f99754469d5c0e46972aef2ed667aa
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461233"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424207"
 ---
-# <a name="create-an-azure-cache-for-redis-using-a-resource-manager-template"></a>使用 Resource Manager 範本建立 Azure Cache for Redis
+# <a name="create-an-azure-cache-for-redis-using-an-arm-template"></a>使用 ARM 範本建立 Azure Cache for Redis
 
-瞭解如何建立部署 Azure Cache for Redis 的 Azure Resource Manager 範本。 快取可以搭配現有的儲存體帳戶以保留診斷資料。 您將學習如何定義要部署哪些資源，以及如何定義執行部署時所指定的參數。 您可以直接在自己的部署中使用此範本，或自訂此範本以符合您的需求。 目前對於訂用帳戶，同一區域中所有快取的診斷設定是共用的。 更新區域中的一個快取將會影響區域中的所有其他快取。
+瞭解如何建立 Azure Resource Manager 範本 (ARM 範本) ，以部署 Azure Cache for Redis。 快取可以搭配現有的儲存體帳戶以保留診斷資料。 您將學習如何定義要部署哪些資源，以及如何定義執行部署時所指定的參數。 您可以直接在自己的部署中使用此範本，或自訂此範本以符合您的需求。 目前對於訂用帳戶，同一區域中所有快取的診斷設定是共用的。 更新區域中的一個快取將會影響區域中的所有其他快取。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -46,7 +46,7 @@ ms.locfileid: "89461233"
 * [建立具有資料持續性的進階 Azure Cache for Redis](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
 * [建立部署到虛擬網路中的 Premium Redis 快取](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
 
-若要查看最新的範本，請參閱 [Azure 快速入門範本](https://azure.microsoft.com/documentation/templates/)並搜尋 `Azure Cache for Redis`。
+若要檢查最新的範本，請參閱 [Azure 快速入門範本](https://azure.microsoft.com/documentation/templates/) 並搜尋 _Azure Cache for Redis_。
 
 ## <a name="deploy-the-template"></a>部署範本
 
@@ -59,7 +59,7 @@ ms.locfileid: "89461233"
     * **資源群組**：選取 [新建] 以建立新資源群組或選取現有的資源群組。
     * **位置**：選取資源群組的位置。 儲存體帳戶和 Redis 快取必須位於相同的區域中。 根據預設，Redis 快取會使用與資源群組相同的位置。 因此，請指定與儲存體帳戶相同的位置。
     * **Redis Cache name**：輸入 Redis 快取的名稱。
-    * **現有的診斷儲存體帳戶**：輸入儲存體帳戶的資源識別碼。 語法為 **/Subscriptions/ &lt; 訂用帳戶識別碼>/RESOURCEGROUPS/ &lt; 資源組名>/PROVIDERS/MICROSOFT.STORAGE/STORAGEACCOUNTS/ &lt; 儲存體帳戶名稱>**。
+    * **現有的診斷儲存體帳戶**：輸入儲存體帳戶的資源識別碼。 語法是 `/subscriptions/&lt;SUBSCRIPTION ID>/resourceGroups/&lt;RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/&lt;STORAGE ACCOUNT NAME>`。
 
     其餘設定請使用預設值。
 1. 選取 [我同意上方所述的條款及條件]，然後選取 [購買]。

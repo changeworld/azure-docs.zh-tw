@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d44964b5aed55e2ee70d18e6be5d632b652956e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78ff0440fa83b6bd002cdf4256dc066342b1b390
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90976255"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424763"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>案例：透過 NVA 路由傳送流量
 
@@ -41,16 +41,16 @@ ms.locfileid: "90976255"
 
 | 來自             | 變更為：|   *NVA 輪輻*|*NVA Vnet*|*非 NVA Vnet*|*分支*|
 |---|---|---|---|---|---|
-| **NVA 輪輻**   | &#8594; | 0/0 UDR  |  對等互連 |   0/0 UDR    |  0/0 UDR  |
-| **NVA Vnet**    | &#8594; |   Static |      X   |        X     |      X    |
-| **非 NVA Vnet**| &#8594; |   Static |      X   |        X     |      X    |
-| **分支**     | &#8594; |   Static |      X   |        X     |      X    |
+| **NVA 輪輻**   | &#8594; | Over NVA VNet | 對等互連 | Over NVA VNet | Over NVA VNet |
+| **NVA Vnet**    | &#8594; | 對等互連 | 直接 | 直接 | 直接 |
+| **非 NVA Vnet**| &#8594; | Over NVA VNet | 直接 | 直接 | 直接 |
+| **分支**     | &#8594; | Over NVA VNet | 直接 | 直接 | 直接 |
 
-連接矩陣中的每個資料格都會描述虛擬 WAN 連線是否 (流程的「來源」端、資料表中的資料列標頭) 學習目的地前置詞 (流程的「到」端，也就是資料表中的資料行標頭，) 特定的流量。 「X」表示連線是由虛擬 WAN 原生提供的，而「靜態」表示連線是由虛擬 WAN 使用靜態路由所提供。 請考慮下列事項：
+連接矩陣中的每個資料格都會描述 VNet 或分支如何 (流程的「來源」端、資料表中的資料列標頭) 與目的地 VNet 或分支通訊 (流程的「到」端，也就是資料表) 中的資料行標頭（斜體）。 「直接」表示連線是由虛擬 WAN 以原生方式提供的，「對等互連」表示連線是由 VNet 中的 User-Defined 路由所提供，「Over NVA VNet」表示連線會流經 NVA VNet 中所部署的 NVA。 請考慮下列事項：
 
 * NVA 輪輻並非由虛擬 WAN 管理。 因此，與其他 Vnet 或分支通訊的機制會由使用者維護。 NVA VNet 的連線是由 VNet 對等互連所提供，而 0.0.0.0/0 的預設路由則指向 NVA，因為下一個躍點應該涵蓋網際網路、其他輪輻和分支的連線能力。
 * NVA Vnet 將知道自己的 NVA 輪輻，而不是連接到其他 NVA Vnet 的 NVA 輪輻。 例如，在表1中，VNet 2 知道 VNet 5 和 VNet 6，但不適用於 VNet 7 和 VNet 8 等其他輪輻。 需要靜態路由，才能將其他輪輻的首碼插入 NVA Vnet
-* 同樣地，分支和非 NVA Vnet 將不知道任何 NVA 輪輻，因為 NVA 輪輻並未連接到 VWAN 中樞。 因此，在這裡也需要靜態路由。
+* 同樣地，分支和非 NVA Vnet 將不知道任何 NVA 輪輻，因為 NVA 輪輻未連線至虛擬 WAN 中樞。 因此，在這裡也需要靜態路由。
 
 考慮到 NVA 輪輻並非由虛擬 WAN 管理，其他所有資料列則會顯示相同的連接模式。 因此，單一路由表 (預設的) 將會執行下列作業：
 

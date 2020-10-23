@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 292305c3f899ac4156fd84e8edcb0d6e9a3c0b34
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b23e9a1e344bb0db1399a4f04712815557b8139e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280858"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427995"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>使用自訂連接器與 Logic Apps 整合
 
@@ -66,7 +66,7 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 本文使用 Logic Apps 來更新 Azure 數位 Twins 實例中的對應項。 若要繼續，您應該在實例中新增至少一個對應項。 
 
-您可以使用 [DigitalTwins api](how-to-use-apis-sdks.md)、 [.Net (c # ) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或 [Azure 數位 twins CLI](how-to-use-cli.md)來新增 twins。 如需有關如何使用這些方法建立 twins 的詳細步驟，請參閱 [*如何：管理數位 twins*](how-to-manage-twin.md)。
+您可以使用 [DigitalTwins api](how-to-use-apis-sdks.md)、 [.Net (c # ) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)或 [Azure 數位 twins CLI](how-to-use-cli.md)來新增 twins。 如需有關如何使用這些方法建立 twins 的詳細步驟，請參閱 [*如何：管理數位 twins*](how-to-manage-twin.md)。
 
 您必須在您所建立的實例中，對應項的對應項 **_識別碼_** 。
 

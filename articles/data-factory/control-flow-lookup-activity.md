@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 371afbd9380ed1ecf28d0b26e2b4c5cd16ae6317
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 66a17b61fef652160dc6d4a02bf330adbf0c7362
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044066"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425702"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory 中的查閱活動
 
@@ -72,7 +72,7 @@ firstRowOnly | 指出是否只傳回第一個資料列或傳回所有資料列�
 
 查閱結果會在活動執行結果的 `output` 區段中傳回。
 
-* **當 `firstRowOnly` 設為 `true` (預設值)** ，輸出格式如下列程式碼所示。 查閱結果就在固定的 `firstRow` 索引鍵底下。 若要在後續活動中使用結果，請使用的模式  `@{activity('LookupActivity').output.firstRow.table` 。
+* **當 `firstRowOnly` 設為 `true` (預設值)** ，輸出格式如下列程式碼所示。 查閱結果就在固定的 `firstRow` 索引鍵底下。 若要在後續活動中使用結果，請使用的模式  `@{activity('LookupActivity').output.firstRow.table}` 。
 
     ```json
     {

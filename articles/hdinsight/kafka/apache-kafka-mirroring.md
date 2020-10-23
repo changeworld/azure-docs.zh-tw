@@ -8,16 +8,19 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 278fbdf7010fe7b14488bb021ab8a366393ad512
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4a2be6719fdaaa9dc859df21cc030478e474210
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087357"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428248"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>使用 MirrorMaker，透過 HDInsight 上的 Kafka 來複寫 Apache Kafka 主題
 
 了解如何使用 Apache Kafka 的鏡像功能，將主題複寫至次要叢集。 鏡像功能可以當作連續程序執行，或間歇地做為在叢集間移轉資料的方法。
+
+> [!NOTE]
+> 本文包含「詞彙 *白名單*」的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
 
 在此範例中，會使用鏡像來複寫兩個 HDInsight 叢集之間的主題。 這兩個叢集都位於不同資料中心的不同虛擬網路中。
 
@@ -81,7 +84,7 @@ ms.locfileid: "86087357"
 1. 建立虛擬網路對等互連。 此步驟會建立兩個對等互連：一個從 **kafka-主要 vnet** 到 **kafka-次要 vnet** ，另一個則是從 **kafka-次要** vnet 再到 **kafka-主要 vnet**。
     1. 選取 [ **kafka-主要 vnet** 虛擬網路]。
     1. 在 [**設定**] 底下選取 [**對等互連**]。
-    1. 選取 [新增]。
+    1. 選取 [新增]  。
     1. 在 [ **新增對等互連** ] 畫面上，輸入詳細資料，如下列螢幕擷取畫面所示。
 
         ![HDInsight Kafka 新增 vnet 對等互連](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
@@ -92,7 +95,7 @@ ms.locfileid: "86087357"
 
 1. 移至主要叢集的 Ambari 儀表板： `https://PRIMARYCLUSTERNAME.azurehdinsight.net` 。
 1. 選取 [**服務**  >  **Kafka**]。 CliSelectck [ **選項** ] 索引標籤。
-1. 將下列設定行新增至底部的 **kafka 環境範本** 區段。 選取 [儲存]****。
+1. 將下列設定行新增至底部的 **kafka 環境範本** 區段。 選取 [儲存]。
 
     ```
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -112,7 +115,7 @@ ms.locfileid: "86087357"
 ### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>將 Kafka 設定為在所有網路介面上接聽。
     
 1. 停留**在 [** **服務**Kafka] 下的 [選項] 索引標籤  >  ** **。 在 [ **Kafka Broker** ] 區段中 **，將 [接聽** 程式] 屬性設定為 `PLAINTEXT://0.0.0.0:9092` 。
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 1. 選取 [ **重新開機**]，然後 **確認 [全部重新開機**]。
 
 ### <a name="record-broker-ip-addresses-and-zookeeper-addresses-for-primary-cluster"></a>記錄 Broker IP 位址和主要叢集的 Zookeeper 位址。
@@ -268,7 +271,7 @@ ms.locfileid: "86087357"
 
     此範例中使用的參數：
 
-    |參數 |說明 |
+    |參數 |描述 |
     |---|---|
     |--consumer.config|指定包含取用者屬性的檔案。 這些屬性是用來建立從 *主要* Kafka 叢集讀取的取用者。|
     |--producer.config|指定包含產生者屬性的檔案。 這些屬性是用來建立寫入 *次要* Kafka 叢集的生產者。|
@@ -300,7 +303,7 @@ ms.locfileid: "86087357"
 
 本檔中的步驟已在不同的 Azure 資源群組中建立叢集。 若要刪除所建立的所有資源，您可以刪除建立的兩個資源群組： **kafka-primary-rg** 和 **kafka-secondary_rg**。 刪除資源群組會移除依照本檔建立的所有資源，包括叢集、虛擬網路和儲存體帳戶。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文件中，您已學會如何使用 [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) 建立 [Apache Kafka](https://kafka.apache.org/) 叢集的複本。 使用下列連結來探索使用 Kafka 的其他方式︰
 

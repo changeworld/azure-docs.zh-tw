@@ -3,12 +3,12 @@ title: Azure 實驗室服務 - 管理員指南 |Microsoft Docs
 description: 本指南可協助使用 Azure 實驗室服務建立及管理實驗室帳戶的管理員。
 ms.topic: article
 ms.date: 10/20/2020
-ms.openlocfilehash: 380676b22fc27b5f62c40112457c42a04b4bf955
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a39ee2cc57c8fc1497c3798759bd40d1ed2976e3
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371404"
+ms.locfileid: "92425298"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure 實驗室服務 - 管理員指南
 管理大學雲端資源的資訊技術 (IT) 管理員通常負責為其學校設定實驗室帳戶。 設定實驗室帳戶之後，管理員或教師會建立屬於該實驗室帳戶的教室實驗室。 本文提供相關 Azure 資源的高階概述以及建立概述的指引。
@@ -178,7 +178,7 @@ ms.locfileid: "92371404"
 
 ## <a name="manage-identity"></a>管理身分識別
 
-使用 [Azure 的角色型存取控制](https://docs.microsoft.com/azure/role-based-access-control/overview)，可以指派下列角色來授與實驗室帳戶和教室實驗室的存取權：
+使用 [azure 角色型存取控制 (AZURE RBAC) ](https://docs.microsoft.com/azure/role-based-access-control/overview)，您可以指派下列角色來授與實驗室帳戶和教室實驗室的存取權：
 
 - **實驗室帳戶擁有者**
 

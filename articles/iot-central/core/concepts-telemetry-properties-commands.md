@@ -7,12 +7,13 @@ ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 554079ddec3332ced2817d18ea55ce1260d68817
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: device-developer
+ms.openlocfilehash: 9e5288bb177d5827f05003e4561bc79240a71b59
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87291606"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427864"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>遙測、屬性和命令承載
 
@@ -1087,6 +1088,6 @@ DCM 中的下列程式碼片段會顯示非同步命令的定義。 此命令具
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 作為裝置開發人員，您現在已瞭解裝置範本，建議的後續步驟是閱讀 [連線至 Azure IoT Central](./concepts-get-connected.md) ，以深入瞭解如何使用 IoT Central 註冊裝置，以及 IoT Central 如何保護裝置連線。

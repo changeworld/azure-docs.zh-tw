@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 10/22/2020
 tags: connectors
-ms.openlocfilehash: 5834a1927fda71faa924e14265fb7f82034887de
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: b6276ff940d8b156a671cb5386ce53ede30dd879
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996352"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426642"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure Logic Apps 和 Azure 服務匯流排在雲端中交換訊息
 
@@ -60,7 +60,7 @@ ms.locfileid: "91996352"
       ![複製服務匯流排命名空間連接字串](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > 若要確認您的連接字串，是否與您的服務匯流排命名空間或傳訊實體 (例如佇列) 相關聯，請搜尋連接字串中是否有 `EntityPath`  參數。 如果您發現這個參數，表示此連接字串適用於特定實體，但不是可用於您邏輯應用程式的正確字串。
+   > 若要確認您的連接字串，是否與您的服務匯流排命名空間或傳訊實體 (例如佇列) 相關聯，請搜尋連接字串中是否有 `EntityPath` 參數。 如果您發現這個參數，表示此連接字串適用於特定實體，但不是可用於您邏輯應用程式的正確字串。
 
 ## <a name="add-service-bus-trigger"></a>新增服務匯流排觸發程式
 
@@ -68,18 +68,22 @@ ms.locfileid: "91996352"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，然後在邏輯應用程式設計工具中開啟空白邏輯應用程式。
 
-1. 在搜尋方塊中，輸入 "azure service bus" 作為篩選準則。 從觸發程式清單中選取您想要的觸發程式。
+1. 在入口網站的搜尋方塊中，輸入 `azure service bus` 。 從顯示的觸發程式清單中，選取您要的觸發程式。
 
    例如，若要在新專案傳送至「服務匯流排」佇列時觸發邏輯應用程式，請選取 [在 **佇列中收到訊息時] (自動完成) ** 觸發程式。
 
    ![選取服務匯流排觸發程序](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
-   所有服務匯流排觸發程式都是 *長時間輪詢觸發程式* 。 這項描述表示當觸發程式引發時，觸發程式會處理所有訊息，然後等候30秒讓佇列或主題訂閱中出現更多訊息。 如果在 30 秒內未出現任何訊息，就會略過觸發程序執行。 如果有，觸發程序會繼續讀取訊息，直到佇列或主題訂閱是空的。 下一次的觸發程序輪詢，會根據觸發程序的屬性指定的循環間隔。
+   以下是使用服務匯流排觸發程式時的一些考慮：
 
-   某些觸發程式，例如， **當一或多個訊息抵達佇列 (自動完成) 觸發程式時 ** ，可能會傳回一或多個訊息。 當這些觸發程式引發時，它們會在觸發程式的 [ **最大訊息計數** ] 屬性指定的訊息數目之間傳回。
+   * 所有服務匯流排觸發程式都是 *長時間輪詢觸發程式* 。 這項描述表示當觸發程式引發時，觸發程式會處理所有訊息，然後等候30秒讓佇列或主題訂閱中出現更多訊息。 如果在 30 秒內未出現任何訊息，就會略過觸發程序執行。 如果有，觸發程序會繼續讀取訊息，直到佇列或主題訂閱是空的。 下一次的觸發程序輪詢，會根據觸發程序的屬性指定的循環間隔。
 
-    > [!NOTE]
-    > 自動完成的觸發程式會自動完成訊息，但是只會在下一次呼叫服務匯流排時才會完成。 此行為可能會影響您的邏輯應用程式設計。 例如，請避免變更自動完成觸發程式上的平行存取，因為如果您的邏輯應用程式進入節流狀態，這項變更可能會導致重複的訊息。 變更並行存取控制會建立下列條件：使用程式碼略過節流觸發程式 `WorkflowRunInProgress` 、完成作業不會發生，而且下一個觸發程式執行會在輪詢間隔之後進行。 您必須將服務匯流排鎖定持續時間設定為超過輪詢間隔的值。 不過，儘管這項設定，如果您的邏輯應用程式在下一個輪詢間隔處於節流狀態，仍可能無法完成訊息。
+   * 某些觸發程式，例如， **當一或多個訊息抵達佇列 (自動完成) 觸發程式時 ** ，可能會傳回一或多個訊息。 當這些觸發程式引發時，它們會在觸發程式的 [ **最大訊息計數** ] 屬性指定的訊息數目之間傳回。
+
+     > [!NOTE]
+     > 自動完成的觸發程式會自動完成訊息，但是只會在下一次呼叫服務匯流排時才會完成。 此行為可能會影響您的邏輯應用程式設計。 例如，請避免變更自動完成觸發程式上的平行存取，因為如果您的邏輯應用程式進入節流狀態，這項變更可能會導致重複的訊息。 變更並行存取控制會建立下列條件：使用程式碼略過節流觸發程式 `WorkflowRunInProgress` 、完成作業不會發生，而且下一個觸發程式執行會在輪詢間隔之後進行。 您必須將服務匯流排鎖定持續時間設定為超過輪詢間隔的值。 不過，儘管這項設定，如果您的邏輯應用程式在下一個輪詢間隔處於節流狀態，仍可能無法完成訊息。
+
+   * 如果您開啟服務匯流排觸發程式 [的並行設定](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) ，屬性的預設值 `maximumWaitingRuns` 為10。 根據服務匯流排實體的鎖定持續時間設定和邏輯應用程式實例的執行持續時間，此預設值可能太大，而且可能會導致「鎖定遺失」例外狀況。 若要找出您案例的最佳值，請針對屬性開始測試值為1或 2 `maximumWaitingRuns` 。 若要變更等候執行的最大值，請參閱 [變更等候執行的限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)。
 
 1. 如果您的觸發程式第一次連接到您的服務匯流排命名空間，當邏輯應用程式設計工具提示您輸入連接資訊時，請遵循下列步驟。
 
@@ -113,13 +117,13 @@ ms.locfileid: "91996352"
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)，然後在邏輯應用程式設計工具中開啟邏輯應用程式。
+1. 在 [Azure 入口網站](https://portal.azure.com)的邏輯應用程式設計工具中，開啟邏輯應用程式。
 
 1. 在您要新增動作的步驟下，選取 [ **新增步驟**]。
 
    或者，若要在步驟之間新增動作，請將指標移至這些步驟之間的箭號。 選取顯示的加號 (**+**) ，然後選取 [ **新增動作**]。
 
-1. 在 [ **選擇動作**] 下的 [搜尋] 方塊中，輸入 "azure service bus" 作為篩選準則。 從 [動作] 清單中選取您想要的動作。 
+1. 在 [選擇動作] 底下的搜尋方塊中，輸入 `azure service bus`。 從顯示的動作清單中，選取您要的動作。 
 
    在此範例中，請選取 [ **傳送訊息** ] 動作。
 

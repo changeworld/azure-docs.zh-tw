@@ -1,29 +1,25 @@
 ---
-title: 使用應用程式 Proxy 進行單一登入 | Microsoft Docs
-description: 涵蓋如何使用 Azure AD 應用程式 Proxy 提供單一登入。
+title: '以 Kerberos 為基礎的單一登入 (Azure Active Directory 中具有應用程式 Proxy 的 SSO) '
+description: 涵蓋如何使用 Azure Active Directory 應用程式 Proxy 提供單一登入。
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 08/13/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8320f5c034eb3a6de8c912ba23a9fb3f69a8a53c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperfq2
+ms.openlocfilehash: 860d29d3fff2187e770a5ff00b7145fc188a497c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299743"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426485"
 ---
-# <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>可供使用應用程式 Proxy 單一登入應用程式的 Kerberos 限制委派
+# <a name="kerberos-constrained-delegation-for-single-sign-on-sso-to-your-apps-with-application-proxy"></a>使用應用程式 Proxy 進行單一登入 (SSO) 至您應用程式的 Kerberos 限制委派
 
 您可以針對透過應用程式 Proxy 發佈並使用整合式 Windows 驗證保護的內部部署應用程式，提供單一登入。 這些應用程式需要 Kerberos 票證以進行存取。 應用程式 Proxy 會使用 Kerberos 限制委派 (KCD) 來支援這些應用程式。 
 
@@ -43,7 +39,7 @@ ms.locfileid: "91299743"
 7. 「連接器」會使用從 AD 接收的 Kerberos 權杖，將原始要求傳送至應用程式伺服器。
 8. 應用程式會傳送回應至「連接器」，然後再傳回至「應用程式 Proxy」服務，最後再傳回給使用者。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 開始使用 IWA 應用程式的單一登入之前，請確定您的環境已完成下列設定和組態︰
 
 * 您的應用程式 (例如 SharePoint Web 應用程式) 已設為使用「整合式 Windows 驗證」。 如需詳細資訊，請參閱 [啟用 Kerberos 驗證的支援](https://technet.microsoft.com/library/dd759186.aspx)，或針對 SharePoint 參閱 [sharepoint 2013 中的 kerberos 驗證計畫](https://technet.microsoft.com/library/ee806870.aspx)。

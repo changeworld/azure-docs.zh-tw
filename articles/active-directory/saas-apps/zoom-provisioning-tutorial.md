@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: f5d76168b75d9352898d8f0abf80a6ccfb83af30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9f4947fe379f19593d06ba9efb6bfc43c397e9f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333438"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424402"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的 Zoom
 
@@ -30,7 +30,7 @@ ms.locfileid: "91333438"
 > * 讓使用者屬性在 Azure AD 和 Zoom 之間保持同步
 > * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-tutorial) 以縮放 (建議) 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -93,11 +93,11 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![應用程式清單中的 Zoom 連結](common/all-applications.png)
 
-3. 選取 [佈建] 索引標籤。
+3. 選取 [佈建]  索引標籤。
 
     ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
-4. 將 [佈建模式] 設定為 [自動]。
+4. 將 [佈建模式]  設定為 [自動]  。
 
     ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
@@ -134,7 +134,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![佈建範圍](common/provisioning-scope.png)
 
-13. 當您準備好要佈建時，按一下 [儲存]。
+13. 當您準備好要佈建時，按一下 [儲存]  。
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
@@ -152,6 +152,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 ## <a name="change-log"></a>變更記錄
 * 05/14/2020-對電子郵件 [type eq "work"] 屬性新增的更新作業支援。
+* 10/20/2020-新增了兩個新角色「已授權」和「內部內部部署」的支援，以取代現有的角色「Pro」和「Corp」。 未來將會移除對 "Pro" 和 "Corp" 角色的支援。
 
 ## <a name="additional-resources"></a>其他資源
 

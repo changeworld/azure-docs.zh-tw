@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33d52f871de75a7f7d34016b040e44d6f1623fd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89da6935d85628b5ce4ff762ad31d3f280682921
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70101266"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424248"
 ---
 # <a name="disaster-recovery-principles"></a>災害復原原則
 
@@ -68,7 +68,7 @@ HANA 大型執行個體提供了能在不同 Azure 區域的 HANA 大型執行�
 - 在 DR Azure 區域中的 HANA 大型執行個體單位上，停止新安裝的 SAP HANA 執行個體。
 - 卸載這些 PRD 磁碟區並連絡「SAP HANA on Azure 服務管理」。 磁碟區無法一直掛接至此單位，因為它們在當作儲存體複寫目標時無法加以存取。  
 
-![建立複寫之前的 DR 設定步驟](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
+![此圖顯示生產 Azure 區域中 PRD 磁片區與 DR Azure 區域中 PRD 磁片區之間的複寫關聯性。](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
 
 營運小組會建立生產 Azure 區域中的 PRD 磁碟區與 DR Azure 區域中的 PRD 磁碟區之間的複寫關聯性。
 

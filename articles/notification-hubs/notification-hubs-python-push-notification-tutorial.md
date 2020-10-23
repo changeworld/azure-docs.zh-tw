@@ -17,12 +17,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 3b6a38087aee7f33861f980cb6d245024f8d51ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f81614005a1b0374dc249187c4ff3c920b7c97e9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852322"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424845"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>如何透過 Python 使用通知中樞
 
@@ -33,7 +33,7 @@ ms.locfileid: "87852322"
 > [!NOTE]
 > 這是在 Python 實作通知傳送的範例參考實作，並非正式支援的通知中樞 Python SDK。 此範例是使用 Python 3.4 建立的。
 
-本文將示範下列項目的作法：
+本文示範如何：
 
 - 在 Python 中建置通知中樞功能的 REST 用戶端。
 - 使用 Python 介面傳送通知到通知中樞 REST API。
@@ -425,7 +425,7 @@ tags = {'sports', 'politics'}
 hub.send_windows_notification(wns_payload, tags)
 ```
 
-![主控台的螢幕擷取畫面，其中包含 H T T P 要求的詳細資料，以及服務匯流排通知格式、服務匯流排通知標籤和 X W N S 類型值（以紅色概述）。][4]
+![主控台的螢幕擷取畫面，其中包含 H T T P 要求的詳細資料，以及服務匯流排通知格式、多個服務匯流排通知標籤和 X W N S 類型值（以紅色標示）。][4]
 
 ### <a name="templated-notification"></a>樣板化通知
 
@@ -448,7 +448,7 @@ hub.send_template_notification(template_payload)
 
 ## <a name="next-steps"></a>後續步驟
 
-本主題會說明如何針對通知中樞建立 Python REST 用戶端。 從這裡，您可以：
+本主題會說明如何針對通知中樞建立 Python REST 用戶端。 從這裡您可以：
 
 - 下載完整的 [Python REST 包裝函式範例]，其中包含本文章的所有程式碼。
 - 繼續了解 [即時新聞教學課程]

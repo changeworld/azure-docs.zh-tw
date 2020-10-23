@@ -3,12 +3,12 @@ title: Azure Lighthouse 案例中的租用戶、角色和使用者
 description: 了解 Azure Active Directory 租用戶、使用者和角色的概念，以及如何在 Azure Lighthouse 案例中使用它們。
 ms.date: 07/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: c409b45d18504d071ffed3185de20ec5e1147bc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dae09ddd7760af1663e0329eb646c8956dff3ac
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399239"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424119"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Azure Lighthouse 案例中的租用戶、角色和使用者
 
@@ -22,7 +22,7 @@ ms.locfileid: "91399239"
 
 ## <a name="role-support-for-azure-lighthouse"></a>Azure Lighthouse 的角色支援
 
-定義授權時，每個使用者帳戶都必須獲指派其中一個[角色型存取控制 (RBAC) 內建角色](../../role-based-access-control/built-in-roles.md)。 此外，不支援自訂角色與[傳統訂用帳戶管理員角色](../../role-based-access-control/classic-administrators.md) \(部分機器翻譯\)。
+定義授權時，必須為每個使用者帳戶指派其中一個 [Azure 內建角色](../../role-based-access-control/built-in-roles.md)。 此外，不支援自訂角色與[傳統訂用帳戶管理員角色](../../role-based-access-control/classic-administrators.md) \(部分機器翻譯\)。
 
 Azure Lighthouse 目前支援所有 [內建角色](../../role-based-access-control/built-in-roles.md) ，但有下列例外狀況：
 
