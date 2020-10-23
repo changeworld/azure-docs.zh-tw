@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 28c34e97fa340b6fb95877ebece740897ae72e7a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.custom: contperfq2
+ms.openlocfilehash: 38bff38ebe44d9018299444b89d7743c4cc92b72
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104558"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424199"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) 應用程式 Proxy 常見問題
 
@@ -48,7 +49,7 @@ ms.locfileid: "92104558"
 
 否，目前無法這麼做。 註冊嘗試一律會在使用者的主租使用者上進行。
 
-### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>我的後端應用程式裝載在多部網頁伺服器上，而且需要使用者會話持續性 () 。 如何達成會話持續性？ 
+### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>我的後端應用程式裝載在多部網頁伺服器上，而且需要使用者會話持續性 () 。 如何達成會話持續性？ 
 
 如需建議，請參閱 [應用程式 Proxy 連接器和應用程式的高可用性和負載平衡](application-proxy-high-availability-load-balancing.md)。
 
@@ -57,7 +58,7 @@ ms.locfileid: "92104558"
 應用程式 Proxy 連接器會對 Azure 執行以憑證為基礎的驗證。 TLS 終止 (TLS/HTTPS 檢查或加速) 會中斷此驗證方法，而且不受支援。 從連接器到 Azure 的流量，必須略過任何正在執行 TLS 終止的裝置。  
 
 ### <a name="is-tls-12-required-for-all-connections"></a>所有連接都需要 TLS 1.2 嗎？
-可以。 為了將頂級的加密提供給客戶，應用程式 Proxy 服務會限制僅接受 TLS 1.2 通訊協定的存取。 這些變更已逐漸推出，並於 2019 年 8 月 31 日起生效。 請確定所有用戶端-伺服器和瀏覽器-伺服器組合都已更新為使用 TLS 1.2，以保持與應用程式 Proxy 服務的連線。 其中包括使用者存取透過應用程式 Proxy 發佈的應用程式時，所使用的用戶端。 請參閱準備 [Office 365 中的 TLS 1.2](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365)，以取得實用的參考和資源。
+是。 為了將頂級的加密提供給客戶，應用程式 Proxy 服務會限制僅接受 TLS 1.2 通訊協定的存取。 這些變更已逐漸推出，並於 2019 年 8 月 31 日起生效。 請確定所有用戶端-伺服器和瀏覽器-伺服器組合都已更新為使用 TLS 1.2，以保持與應用程式 Proxy 服務的連線。 其中包括使用者存取透過應用程式 Proxy 發佈的應用程式時，所使用的用戶端。 請參閱準備 [Office 365 中的 TLS 1.2](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365)，以取得實用的參考和資源。
 
 ### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>我可以在連接器伺服器 (s) 和後端應用程式伺服器之間放置轉寄 proxy 裝置嗎？
 是，從連接器版本1.5.1526.0 開始支援此案例。 請參閱使用 [現有的內部部署 proxy 伺服器](application-proxy-configure-connectors-with-proxy-servers.md)。
@@ -190,7 +191,7 @@ Windows Admin Center (WAC) 或遠端桌面 Web 用戶端 (HTML5) 中 (檢視、P
 
 ### <a name="does-using-link-translation-affect-performance"></a>使用連結轉譯會影響效能嗎？
 
-可以。 連結轉譯會影響效能。 應用程式 Proxy 服務會掃描應用程式中的硬式編碼連結，並將其取代為其各自發布的外部 Url，然後再呈現給使用者。 
+是。 連結轉譯會影響效能。 應用程式 Proxy 服務會掃描應用程式中的硬式編碼連結，並將其取代為其各自發布的外部 Url，然後再呈現給使用者。 
 
 為了達到最佳效能，建議您設定 [自訂網域](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain)，以使用相同的內部和外部 url。 如果無法使用自訂網域，您可以在行動裝置上使用我的應用程式安全登入延伸模組或 Microsoft Edge 瀏覽器，以改善連結轉譯效能。 請參閱 [針對使用 Azure AD 應用程式 Proxy 發佈的應用程式重新導向硬式編碼連結](application-proxy-configure-hard-coded-link-translation.md)。
 

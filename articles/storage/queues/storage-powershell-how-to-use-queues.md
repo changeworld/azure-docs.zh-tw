@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8f45a4de2e13f936556f8dd99aa107110edc6e91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1f758390a270f072bc08e13d1d542e08e4df553
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077920"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425534"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 執行 Azure 佇列儲存體作業
 
@@ -104,7 +104,7 @@ Get-AzStorageQueue -Context $ctx | Select-Object Name
 
 ## <a name="add-a-message-to-a-queue"></a>將訊息新增至佇列
 
-影響佇列中實際訊息的作業會使用 PowerShell 中公開的 .NET 儲存體用戶端程式庫。 若要將訊息新增至佇列，請建立 message 物件 [>cloudqueuemessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue.cloudqueuemessage) 類別的新實例。 接下來，呼叫 [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue.cloudqueue.addmessage) 方法。 您可以從字串 (採用 UTF-8 格式) 或位元組陣列建立 CloudQueueMessage。
+影響佇列中實際訊息的作業會使用 PowerShell 中公開的 .NET 儲存體用戶端程式庫。 若要將訊息新增至佇列，請建立 message 物件 [>cloudqueuemessage](/java/api/com.microsoft.azure.storage.queue.cloudqueuemessage) 類別的新實例。 接下來，呼叫 [AddMessage](/java/api/com.microsoft.azure.storage.queue.cloudqueue.addmessage) 方法。 您可以從字串 (採用 UTF-8 格式) 或位元組陣列建立 CloudQueueMessage。
 
 下列範例示範如何將訊息新增至佇列。
 

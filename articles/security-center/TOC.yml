@@ -191,6 +191,9 @@
             - name: 管理 Just-In-Time 存取
               displayName: 'jit, management'
               href: security-center-just-in-time.md
+        - name: 使用整合式適用於端點的 Microsoft Defender 授權
+          displayName: 'ATP, mdatp, wdatp'
+          href: security-center-wdatp.md
         - name: 管理自適性應用程式控制
           href: security-center-adaptive-application.md
         - name: 使用檔案完整性監視
@@ -201,8 +204,6 @@
               href: security-center-file-integrity-monitoring-baselines.md
         - name: 管理自適性網路強化
           href: security-center-adaptive-network-hardening.md
-        - name: 整合 Microsoft Defender ATP
-          href: security-center-wdatp.md
         - name: 強化 Docker 主機
           displayName: containers
           href: harden-docker-hosts.md

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: d8c4eea10b0c2230e50b5ded710b3455539f6493
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 1681217c9e55b67ee2a6737aeece5303256bc1e6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206028"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461799"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure 監視器監視的項目為何？
 本文說明 Azure 監視器監視的不同應用程式和服務。 
@@ -169,6 +169,19 @@ ms.locfileid: "92206028"
 |虛擬網路 - NSG 流量記錄 | 否 | 是 | 否 |  |
 |VPN 閘道 | 是 | 是 | 否 |  |
 |Windows 虛擬桌面 | 否 | 否 | 否 |  |
+
+## <a name="virtual-machine-agents"></a>虛擬機器代理程式
+下表列出可從虛擬機器的客體作業系統收集資料，並將資料傳送至監視的代理程式。 每個代理程式都可以收集不同的資料，並將其傳送至 Azure 監視器中的計量或記錄。 
+
+如需每個代理程式可收集之資料的詳細資訊，請參閱 [Azure 監視器代理](platform/agents-overview.md) 程式的總覽。
+
+| 代理程式 |  計量 | 記錄 |
+|:---|:---|:---|:---|
+| [Azure 監視器代理程式 (預覽) ](platform/azure-monitor-agent-overview.md) | 是 | 是 |
+| [Log Analytics 代理程式](platform/log-analytics-agent.md) | 否 | 是|
+| [診斷擴充功能](platform/diagnostics-extension-overview.md) | 是 | 否 |
+| [Telegraf 代理程式](platform/collect-custom-metrics-linux-telegraf.md) | 是 | 否 |
+| [相依性代理程式](insights/vminsights-enable-overview.md) | 否 | 是 |
 
 
 ## <a name="product-integrations"></a>產品整合

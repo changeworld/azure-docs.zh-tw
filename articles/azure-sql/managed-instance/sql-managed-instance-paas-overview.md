@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: c98e377ec216bea6c1d4a96b15b3741aa52672e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e515df0ff8c7cd3794efb4db567ef7146ccb7a03
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618123"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424239"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>什麼是 Azure SQL 受控執行個體？
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -96,7 +96,7 @@ SQL 受控執行個體中[以虛擬核心為基礎的購買模型](../database/s
 
 - 專為大多數有標準效能需求的商務應用程式所設計
 - 高效能的 Azure Blob 儲存體 (8 TB)
-- 根據可靠的 Azure Blob 儲存體和 [Azure Service Fabric](../../service-fabric/service-fabric-overview.md) 內建的[高可用性](../database/high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability)
+- 根據可靠的 Azure Blob 儲存體和 [Azure Service Fabric](../../service-fabric/service-fabric-overview.md) 內建的[高可用性](../database/high-availability-sla.md#basic-standard-and-general-purpose-service-tier-locally-redundant-availability)
 
 如需詳細資訊，請參閱[一般用途層中的儲存體層](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c)和 [SQL 受控執行個體 (一般用途) 的儲存體效能最佳做法和考量](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/) (英文)。
 
@@ -110,7 +110,7 @@ SQL 受控執行個體中[以虛擬核心為基礎的購買模型](../database/s
 
 - 專為具有極高效能和 HA 需求的商務應用程式所設計
 - 提供超級快速的本機 SSD 儲存體 (在 Gen4 上可達 1 TB，而在 Gen5 上可達 4 TB)
-- 根據 [Always On 可用性群組](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)和 [Azure Service Fabric](../../service-fabric/service-fabric-overview.md) 內建的[高可用性](../database/high-availability-sla.md#premium-and-business-critical-service-tier-availability)
+- 根據 [Always On 可用性群組](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)和 [Azure Service Fabric](../../service-fabric/service-fabric-overview.md) 內建的[高可用性](../database/high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability)
 - 可用於報告和其他唯讀工作負載的其他內建[唯讀資料庫複本](../database/read-scale-out.md)
 - [記憶體內部 OLTP](../in-memory-oltp-overview.md)，可用於具有高效能需求的工作負載  
 

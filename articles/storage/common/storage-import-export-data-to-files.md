@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/08/2019
+ms.date: 10/20/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: a88cf9981d4f3a69a503c9caa56be1b5f35029f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5eacd84d2ff37c10702896127adcb67f5459b6be
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86105178"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461663"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>使用 Azure 匯入/匯出服務將資料匯入 Azure 檔案服務
 
@@ -21,7 +21,7 @@ ms.locfileid: "86105178"
 
 匯入/匯出服務僅支援將 Azure 檔案服務匯入到 Azure 儲存體。 不支援將 Azure 檔案服務匯出。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 在建立匯入作業來將資料傳入 Azure 檔案服務之前，請仔細檢閱並完成下列必要條件清單。 您必須：
 
@@ -29,13 +29,13 @@ ms.locfileid: "86105178"
 - 具有至少一個 Azure 儲存體帳戶。 請參閱[匯入/匯出服務支援的儲存體帳戶和儲存體類型](storage-import-export-requirements.md)清單。 如需建立新儲存體帳戶的詳細資訊，請參閱 [如何建立儲存體帳戶](storage-account-create.md)(英文)。
 - 具有屬於[支援類型](storage-import-export-requirements.md#supported-disks)的磁碟，且數量足夠。
 - 具有執行[受支援 OS 版本](storage-import-export-requirements.md#supported-operating-systems) 的 Windows 系統。
-- 請在 Windows 系統上[下載 WAImportExport 第 2 版](https://aka.ms/waiev2)。 將檔案解壓縮至預設資料夾 `waimportexport`。 例如： `C:\WaImportExport` 。
+- 請在 Windows 系統上[下載 WAImportExport 第 2 版](https://aka.ms/waiev2)。 將檔案解壓縮至預設資料夾 `waimportexport`。 例如： `C:\WaImportExport`。
 - 擁有 FedEx/DHL 帳戶。 如果您想要使用 FedEx/DHL 以外的電訊廠商，請聯絡 Azure 資料箱營運團隊 `adbops@microsoft.com` 。  
     - 帳戶必須是有效的、需要有餘額，且必須有退貨運送功能。
     - 產生匯出作業的追蹤號碼。
     - 每個作業都應該具有個別的追蹤號碼。 不支援多個作業使用相同的追蹤號碼。
     - 如果您沒有貨運公司帳戶，請移至：
-        - [建立 FedEX 帳戶](https://www.fedex.com/en-us/create-account.html) \(英文\)，或
+        - [建立 FedEx 帳戶](https://www.fedex.com/en-us/create-account.html)，或
         - [建立 DHL 帳戶](http://www.dhl-usa.com/en/express/shipping/open_account.html) \(英文\)。
 
 
@@ -114,6 +114,8 @@ ms.locfileid: "86105178"
 
 ## <a name="step-2-create-an-import-job"></a>步驟 2：建立匯入作業
 
+### <a name="portal"></a>[入口網站](#tab/azure-portal)
+
 在 Azure 入口網站中執行下列步驟，以建立匯入作業。
 1. 登入 https://portal.azure.com/。
 2. 移至 [所有服務] > [儲存體] > [匯入/匯出作業]****。
@@ -162,6 +164,86 @@ ms.locfileid: "86105178"
 
         ![建立匯入作業 - 步驟 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+使用下列步驟，在 Azure CLI 中建立匯入作業。
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+### <a name="create-a-job"></a>建立作業
+
+1. 使用 [az extension add](/cli/azure/extension#az_extension_add) 命令新增 [az 匯入匯出](/cli/azure/ext/import-export/import-export) 延伸模組：
+
+    ```azurecli
+    az extension add --name import-export
+    ```
+
+1. 您可以使用現有的資源群組，或建立一個群組。 若要建立資源群組，請執行 [az group create](/cli/azure/group#az_group_create) 命令：
+
+    ```azurecli
+    az group create --name myierg --location "West US"
+    ```
+
+1. 您可以使用現有的儲存體帳戶或建立一個帳戶。 若要建立儲存體帳戶，請執行 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令：
+
+    ```azurecli
+    az storage account create -resource-group myierg -name myssdocsstorage --https-only
+    ```
+
+1. 若要取得您可以寄送磁片的位置清單，請使用 az 匯 [入-匯出位置清單](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list) 命令：
+
+    ```azurecli
+    az import-export location list
+    ```
+
+1. 使用 [az 匯入-匯出位置 show](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_show) 命令來取得您區域的位置：
+
+    ```azurecli
+    az import-export location show --location "West US"
+    ```
+
+1. 執行下列 [az import-export create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) 命令來建立匯入作業：
+
+    ```azurecli
+    az import-export create \
+        --resource-group myierg \
+        --name MyIEjob1 \
+        --location "West US" \
+        --backup-drive-manifest true \
+        --diagnostics-path waimportexport \
+        --drive-list bit-locker-key=439675-460165-128202-905124-487224-524332-851649-442187 \
+            drive-header-hash= drive-id=AZ31BGB1 manifest-file=\\DriveManifest.xml \
+            manifest-hash=69512026C1E8D4401816A2E5B8D7420D \
+        --type Import \
+        --log-level Verbose \
+        --shipping-information recipient-name="Microsoft Azure Import/Export Service" \
+            street-address1="3020 Coronado" city="Santa Clara" state-or-province=CA postal-code=98054 \
+            country-or-region=USA phone=4083527600 \
+        --return-address recipient-name="Gus Poland" street-address1="1020 Enterprise way" \
+            city=Sunnyvale country-or-region=USA state-or-province=CA postal-code=94089 \
+            email=gus@contoso.com phone=4085555555" \
+        --return-shipping carrier-name=FedEx carrier-account-number=123456789 \
+        --storage-account myssdocsstorage
+    ```
+
+   > [!TIP]
+   > 請提供群組電子郵件，而不是指定單一使用者的電子郵件地址。 這樣可以確保即使當系統管理員不在時，您也可以收到通知。
+
+
+1. 使用 [az 匯入-匯出清單](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_list) 命令來查看 myierg 資源群組的所有工作：
+
+    ```azurecli
+    az import-export list --resource-group myierg
+    ```
+
+1. 若要更新您的作業或取消作業，請執行 [az 匯入-匯出更新](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_update) 命令：
+
+    ```azurecli
+    az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true
+    ```
+
+---
+
 ## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>步驟 3：將磁碟機寄送至 Azure 資料中心
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
@@ -205,7 +287,7 @@ WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /j:<JournalFile> /id:
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset-2.csv
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [檢視作業和磁碟機狀態](storage-import-export-view-drive-status.md)
 * [檢閱匯入/匯出的需求](storage-import-export-requirements.md)

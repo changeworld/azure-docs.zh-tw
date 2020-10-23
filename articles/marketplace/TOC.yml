@@ -111,6 +111,16 @@
           href: marketplace-virtual-machines.md
         - name: 建立和發佈 VM 供應項目
           items:
+            - name: 建立 VM 供應項目
+              href: azure-vm-create.md
+            - name: 設定 VM 供應項目屬性
+              href: azure-vm-create-properties.md
+            - name: 設定 VM 供應項目清單
+              href: azure-vm-create-listing.md
+            - name: 建立 VM 方案
+              href: azure-vm-create-plans.md
+            - name: 新增預覽對象
+              href: azure-vm-create-preview.md
             - name: 建立 VM 技術資產
               items:
                 - name: 從已核准的基底建立 VM
@@ -127,16 +137,6 @@
                   href: azure-vm-create-faq.md
                 - name: VM 認證疑難排解
                   href: azure-vm-create-certification-faq.md
-            - name: 建立 VM 供應項目
-              href: azure-vm-create.md
-            - name: 設定 VM 供應項目屬性
-              href: azure-vm-create-properties.md
-            - name: 設定 VM 供應項目清單
-              href: azure-vm-create-listing.md
-            - name: 建立 VM 方案
-              href: azure-vm-create-plans.md
-            - name: 新增預覽對象
-              href: azure-vm-create-preview.md
     - name: 諮詢服務
       items:
         - name: 規劃諮詢服務供應項目

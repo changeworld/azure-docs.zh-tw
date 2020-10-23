@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 0b4f18c32639ceb2084febe210a8cfd4c423a0cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f438fadb73f7e3bd25cd7ab9aef0bc46285e30e2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135749"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424830"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>將執行儲存空間直接存取的 Azure Vm 複寫至另一個區域
 
@@ -49,12 +49,12 @@ ms.locfileid: "86135749"
 1. 選取應用程式一致性關閉的複寫原則* (僅提供損毀一致性支援)
 1. 啟用複寫
 
-   ![storagespacesdirect 保護](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
+   ![顯示如何設定複寫設定的螢幕擷取畫面。](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
 
 2. 移至複寫的項目，然後您即可看到兩個虛擬機器狀態。
 3. 兩個虛擬機器會開始受到保護，而且會顯示為多 VM 一致性群組的一部分。
 
-   ![storagespacesdirect 保護](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)
+   ![顯示虛擬機器受保護的螢幕擷取畫面，以及多 VM 一致性群組的一部分。](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)
 
 ## <a name="creating-a-recovery-plan"></a>建立復原計劃
 復原方案支援在容錯移轉期間對多層式應用程式中的各層進行排序。 排序有助於維持應用程式的一致性。 當您為多層式 Web 應用程式建立復原方案時，請完成[使用 Site Recovery 建立復原方案](site-recovery-create-recovery-plans.md)中所述的步驟。
@@ -92,6 +92,6 @@ Vm 的兩個節點都必須使用 Site Recovery 復原[方案](./site-recovery-c
 4.  若要啟動容錯移轉程序，請選取復原點。
 
 如需詳細資訊，請參閱[在 Site Recovery 中容錯移轉](site-recovery-failover.md)。
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [深入了解](./azure-to-azure-tutorial-failover-failback.md)如何執行容錯回復。

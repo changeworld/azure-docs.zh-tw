@@ -28,6 +28,11 @@
     - name: 建立管理群組 - REST
       displayName: hierarchy
       href: ./create-management-group-rest-api.md
+- name: 教學課程
+  items:
+    - name: 了解：建立訂用帳戶治理策略
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/3-create-subscription-governance-strategy
 - name: 操作指南
   expanded: true
   items:

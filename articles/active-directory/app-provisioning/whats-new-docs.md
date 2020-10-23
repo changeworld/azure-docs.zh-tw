@@ -10,22 +10,22 @@ ms.author: kenwith
 author: kenwith
 manager: CelesteDG
 services: active-directory
-ms.openlocfilehash: f2859ddb6ddf7d1041509c47adfe7bf3a1ce99b8
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 885838e1a517ab4713f1753957f8b85f40297fd2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374964"
+ms.locfileid: "92424547"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory 應用程式布建：新功能
 
-歡迎使用 Azure Active Directory 應用程式布建檔的新功能。 本文列出已新增的檔，以及過去三個月內有重大更新的新檔。
+歡迎使用 Azure Active Directory 應用程式布建檔的新功能。 本文列出已新增的檔，以及過去三個月內有重大更新的新檔。 若要瞭解布建服務的新功能，請參閱 [Azure Active Directory 中的新功能](../fundamentals/whats-new.md)。
 
 ## <a name="september-2020"></a>2020 年 9 月
 
 ### <a name="new-articles"></a>新文章
 
-- [新功能](whats-new-docs.md)
+- [Docs 有哪些新功能？](whats-new-docs.md)
 
 ### <a name="updated-articles"></a>更新的文章
 - [隔離狀態中的應用程式布建](application-provisioning-quarantine-status.md)

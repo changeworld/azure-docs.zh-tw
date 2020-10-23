@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js
-ms.openlocfilehash: 486f026f0d9b325f8e17a040c69f9d3e1da9b359
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1d89def944529235a0141d7e700049f15d1d0a7
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729027"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424987"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>設定 Azure Machine Learning 資源和工作流程的驗證
 
@@ -28,7 +28,7 @@ ms.locfileid: "91729027"
 * __互動式__：您在 Azure Active Directory 中使用您的帳戶來直接驗證，或取得用於驗證的權杖。 互動式驗證會在實驗和反復開發期間使用。 或者，您想要控制對資源的存取 (例如，以每個使用者為基礎的 web 服務) 。
 * __服務主體__：您會在 Azure Active Directory 中建立服務主體帳戶，並使用它來驗證或取得權杖。 當您需要自動化程式來向服務驗證，而不需要使用者互動時，就會使用服務主體。 例如，每次定型程式碼變更時，會訓練並測試模型的持續整合和部署腳本。 如果您不想要要求服務的終端使用者進行驗證，您也可以使用服務主體來取得權杖，以驗證 web 服務。 或不使用 Azure Active Directory 直接執行使用者驗證。
 
-無論使用哪種驗證類型， (RBAC) 的角色型存取控制都是用來限定資源允許的存取層級。 例如，用來取得已部署模型之存取權杖的帳戶只需要工作區的讀取權限。 如需 RBAC 的詳細資訊，請參閱 [管理 Azure Machine Learning 工作區的存取權](how-to-assign-roles.md)。
+無論使用哪一種驗證類型，Azure RBAC)  (的 Azure 角色型存取控制，都是用來限定資源允許的存取層級。 例如，用來取得已部署模型之存取權杖的帳戶只需要工作區的讀取權限。 如需有關 Azure RBAC 的詳細資訊，請參閱 [管理 Azure Machine Learning 工作區的存取權](how-to-assign-roles.md)。
 
 ## <a name="prerequisites"></a>必要條件
 

@@ -43,6 +43,12 @@
     - name: 管理標籤治理
       displayName: 'modify, append, effects'
       href: ./tutorials/govern-tags.md
+    - name: 使用 GitHub 實作 Azure 原則即程式碼
+      displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
+      href: ./tutorials/policy-as-code-github.md
+    - name: 了解：使用 Azure 原則來控制和稽核您的資源
+      displayName: 'governance, module'
+      href: /learn/modules/build-cloud-governance-strategy-azure/8-control-audit-resources-azure-policy
 - name: 範例
   items:
     - name: 索引
@@ -113,7 +119,7 @@
     - name: 法規合規性
       displayName: 'standards, domains, controls'
       href: ./concepts/regulatory-compliance.md
-    - name: 設計原則即程式碼工作流程
+    - name: 設計 Azure 原則即程式碼工作流程
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
     - name: Kubernetes 整合

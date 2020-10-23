@@ -8,15 +8,15 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: 891cd651278906c6ff4b24d91342c612c67604de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b28d75e6526f27fd0076244ec32848dbf20e91e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596558"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424780"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure 串流分析輸出至 Azure Cosmos DB  
-Azure 串流分析可以將 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 設定為 JSON 輸出的目標，讓您能夠針對非結構化的 JSON 資料進行資料封存和低延遲查詢。 本文件涵蓋實作這種組態的一些最佳作法。
+Azure 串流分析可以將 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 設定為 JSON 輸出的目標，讓您能夠針對非結構化的 JSON 資料進行資料封存和低延遲查詢。 本文件涵蓋實作這種組態的一些最佳作法。 當您使用 Azure Cosmos DB 作為輸出時，建議您將作業設定為相容性層級1.2。
 
 如果您尚不熟悉 Azure Cosmos DB，請參閱 [Azure Cosmos DB 文件](https://docs.microsoft.com/azure/cosmos-db/)以開始使用。 
 
@@ -137,3 +137,17 @@ Azure Cosmos DB 輸出的輸送量與 1.0 和 1.1 相同。 我們「強烈建�
 - 找不到 (HTTP 錯誤碼 404)
 - 禁止 (HTTP 錯誤碼 403)
 - 不正確的要求 (HTTP 錯誤碼 400)
+
+## <a name="common-issues"></a>常見問題
+
+1. 將唯一索引條件約束新增至集合，而來自串流分析的輸出資料違反此條件約束。 請確定來自串流分析的輸出資料不會違反唯一條件約束或移除條件約束。 如需詳細資訊，請參閱 [Azure Cosmos DB 中的唯一索引鍵條件約束](../cosmos-db/unique-keys.md)。
+
+2. 資料 `PartitionKey` 行不存在。
+
+3. 資料 `Id` 行不存在。
+
+## <a name="next-steps"></a>後續步驟
+
+* [了解來自 Azure 串流分析的輸出](stream-analytics-define-outputs.md) 
+* [Azure 串流分析輸出至 Azure SQL Database](stream-analytics-sql-output-perf.md)
+* [Azure 串流分析自訂 Blob 輸出資料分割](stream-analytics-custom-path-patterns-blob-storage-output.md)

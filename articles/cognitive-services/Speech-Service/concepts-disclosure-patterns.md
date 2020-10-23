@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: fe4f0cdcdb863582560b0eba3a22e95b93ff858b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7df082cd5044f142d8d5900ec1fff6c182262bd9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150936"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425119"
 ---
 # <a name="disclosure-design-patterns"></a>公開設計模式
 現在&#39;您已為您的綜合語音體驗決定適當 [的洩漏層級](concepts-disclosure-guidelines.md#disclosure-assessment) ，&#39;s 是探索潛在設計模式的好時機。
@@ -184,7 +184,7 @@ Anthropomorphism 可以不同的方式呈現，從代理程式實際的視覺標
 
 您可以藉由設定數位助理所能提供的精確預期，來隱含地達成洩漏。 提供範例命令，讓使用者可以瞭解如何與數位助理互動，並提供內容相關的說明，以在體驗的初期階段深入瞭解綜合語音。
 
-![視覺提示和意見反應](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
+![您可以製作之對話的預設回應範例。](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
 
 ### <a name="conversational-transparency"></a>對話式透明度
 

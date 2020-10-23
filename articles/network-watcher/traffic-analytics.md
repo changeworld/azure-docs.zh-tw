@@ -13,12 +13,12 @@ ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: c0d0e1c5f096a45c08265927a288b4ff56876d94
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 7a5157c955a51215a9e62711ebb7838b61fda496
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951548"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424264"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -164,7 +164,7 @@ Log Analytics 工作區必須存在於下列區域：
 
 ### <a name="user-access-requirements"></a>使用者存取需求
 
-您的帳戶必須是下列 Azure [內建角色](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)的成員之一：
+您的帳戶必須是下列其中一個 [Azure 內建角色](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)的成員：
 
 |部署模型   | 角色                   |
 |---------          |---------               |

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 12bc99d24472780f87a6b2a83befdbbf12944860
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca1ee8418bc08d70a031d81a15dc1b4ace2f1a3a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267715"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461816"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>案例： Vnet 的自訂隔離
 
@@ -25,11 +25,11 @@ ms.locfileid: "91267715"
 
 | 來自 | 變更為：| *藍色 Vnet* | *Red Vnet* | *分支*|
 |---|---|---|---|---|
-| **藍色 Vnet** |   &#8594;|      X        |               |       X      |
-| **Red Vnet**  |   &#8594;|              |       X       |       X      |
-| **分支**   |   &#8594;|     X        |       X       |       X      |
+| **藍色 Vnet** |   &#8594;|   直接     |           |  直接 |
+| **Red Vnet**  |   &#8594;|              |   直接  |  直接 |
+| **分支**   |   &#8594;|   直接     |   直接  |  直接 |
 
-上表中的每個資料格都會描述虛擬 WAN 連線是否 (流程的「來源」端、資料表中的資料列標頭) 學習目的地前置詞 (流程的「到」端、在資料表中為斜體的資料行標頭) 特定的流量，其中「X」表示連線是由虛擬 WAN 提供。
+上表中的每個資料格都會描述虛擬 WAN 連線是否 (流程的「來源」端，而資料列標頭) 與目的地 (「到」流程的「到」端（斜體) 中的資料行標頭）通訊。 在此案例中，沒有任何防火牆或網路虛擬裝置，因此通訊會直接透過虛擬 WAN (因此，資料表中的「直接」一字) 。
 
 不同資料列模式的數目將是此案例中所需的路由表數目。 在此情況下，我們將會針對虛擬網路呼叫 **RT_BLUE** 和 **RT_RED** 的三個路由路由表，並為分支的 **預設值** 。 請記住，分支永遠必須與預設路由表相關聯。
 

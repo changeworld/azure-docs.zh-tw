@@ -5,19 +5,19 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 3a1ac6dd940ea5d31adae45a435c5425497362b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe5feed4bb6f9b84a3f161692310922f7a6d2f00
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86135776"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424787"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>將 Azure VM 複寫至另一個 Azure 區域
 
 
 本文說明如何將 Azure VM 從一個 Azure 區域複寫到另一個區域。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 本文假設您已備妥 Site Recovery 部署，如 [azure 至 azure](azure-to-azure-tutorial-enable-replication.md)的嚴重損壞修復教學課程中所述。
 
@@ -36,10 +36,10 @@ ms.locfileid: "86135776"
    - **來源訂**用帳戶：您的來源 vm 所屬的訂用帳戶。 這可以是您的復原服務保存庫所在的相同 Azure Active Directory 租用戶內的任何訂用帳戶。
    - **資源群組**：來源虛擬機器所屬的資源群組。 下一個步驟會列出所選取資源群組下的所有 VM，以供保護。
 
-     ![啟用複寫](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
+     ![醒目顯示設定複寫所需欄位的螢幕擷取畫面。](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
 
 3. 在 [虛擬機器] > [選取虛擬機器]**** 中，按一下並選取您要複寫的每部 VM。 您只能選取可以啟用複寫的機器。 然後按一下 [確定] 。
-    ![啟用複寫](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
+    ![醒目顯示您選取虛擬機器之位置的螢幕擷取畫面。](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
 
 4. 在 [設定]**** 中，您可以選擇性地設定目標網站設定：
 
@@ -101,7 +101,7 @@ ms.locfileid: "86135776"
     - 在 [可用性設定組]**** 中，如果 VM 是來源區域中可用性設定組的一部分，即可將可用性設定組新增至其中。
     - 在 [目標儲存體帳戶]**** 中，選取您要使用的帳戶。
 
-        ![啟用複寫](./media/site-recovery-replicate-azure-to-azure/customize.PNG)
+        ![顯示如何自訂目標訂用帳戶設定的螢幕擷取畫面。](./media/site-recovery-replicate-azure-to-azure/customize.PNG)
 3. 按一下 [自訂:]**** 以修改複寫設定。
 4. 在 [ **多 VM 一致性**] 中，選取您要一起複寫的 vm。
     - 在容錯移轉時，複寫群組中的所有機器都會共用當機時保持一致和應用程式一致復原點。
@@ -111,7 +111,7 @@ ms.locfileid: "86135776"
     - 如果您啟用多部 VM 一致性，則複寫群組中的機器會透過連接埠 20004 彼此通訊。
     - 確定沒有任何防火牆設備阻礙 Vm 在埠20004之間的內部通訊。
     - 如果您想要讓 Linux Vm 成為複寫群組的一部分，請確定已根據特定 Linux 版本的指引手動開啟埠20004上的輸出流量。
-![啟用複寫](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
+![顯示多 VM 一致性設定的螢幕擷取畫面。](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
 
 5. 按一下 [**建立目標資源**  >  **啟用**複寫]。
 6. 啟用 VM 以進行複寫之後，您就可以在 [複寫的項目]**** 下方檢查 VM 健康情況的狀態。
@@ -121,6 +121,6 @@ ms.locfileid: "86135776"
 > - 在初始複寫期間，狀態可能需要一些時間才會重新整理，期間不會有任何進展。 按一下 [重新整理]**** 按鈕來取得最新狀態。
 > - 如果過去60分鐘內未產生復原點，虛擬機器的複寫健康狀態將會變成「重大」。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [深入了解](site-recovery-test-failover-to-azure.md)執行測試容錯移轉。

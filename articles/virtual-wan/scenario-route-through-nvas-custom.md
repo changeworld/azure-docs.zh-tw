@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e1cf9faeab60264d491539256828151e496ade8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 031cbb48a7e0c572866dc591d26fb1e6b6b12dba
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267494"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424717"
 ---
 # <a name="scenario-route-traffic-through-nvas---custom-preview"></a>案例：透過 Nva 路由傳送流量-自訂 (預覽) 
 
@@ -24,25 +24,24 @@ ms.locfileid: "91267494"
 
 在此案例中，我們將使用命名慣例：
 
-* 「服務 VNet」適用于使用者已在 [ **圖 1** ] 中部署 NVA (VNet 4) 檢查非網際網路流量的虛擬網路。
+* 「輪輻」適用于連線至虛擬中樞的虛擬網路， (VNet 1、VNet 2 和「 **圖 1** 」中的 vnet 3) 。
+* 「服務 VNet」適用于虛擬網路，其中使用者已在 [ **圖 1** ] 中部署 NVA (VNet 4) 檢查非網際網路流量，以及可能具有輪輻所存取的一般服務。
 * 「DMZ VNet」適用于已部署 NVA 的虛擬網路，以用來檢查網際網路系結流量 (「 **圖 1** 」中的 VNet 5) 。
-* 「NVA 輪輻」適用于連線至 NVA VNet 的虛擬網路 (VNet 1、VNet 2 和「 **圖 1** 」中的 vnet 3) 。
 * 適用于 Microsoft 管理的虛擬 WAN 中樞的「中樞」。
 
 下列連接對照表摘要說明此案例中所支援的流程：
 
 **連接矩陣**
 
-| 來自          | 變更為：|*NVA 輪輻*|*服務 VNet*|*DMZ VNet*|*分支靜態*|
-|---|---|---|---|---|---|
-| **NVA 輪輻**| &#8594;|      X |            X |   對等互連 |    Static    |
-| **服務 VNet**| &#8594;|    X |            X |      X    |      X       |
-| **DMZ VNet** | &#8594;|       X |            X |      X    |      X       |
-| **分支** | &#8594;|  Static |            X |      X    |      X       |
+| 來自          | 變更為：|*輪輻*|*服務 VNet*|*分支*|*網際網路*|
+|---|---|:---:|:---:|:---:|:---:|:---:|
+| **輪輻**| &#8594;| 直接 |直接 | 透過服務 VNet |透過 DMZ VNet |
+| **服務 VNet**| &#8594;| 直接 |n/a| 直接 | |
+| **分支** | &#8594;| 透過服務 VNet |直接| 直接 |  |
 
-連線矩陣中的每個資料格都會描述虛擬 WAN 連線是否 (流程的「來源」端、資料列標頭) 學習目的地首碼 (流程的「到」端，以及在特定流量的斜體) 中的資料行標頭。 「X」表示連線是由虛擬 WAN 原生提供的，而「靜態」表示連線是由虛擬 WAN 使用靜態路由所提供。 讓我們詳細探討不同的資料列：
+連接矩陣中的每個資料格都會說明連線是否直接透過虛擬 WAN 或透過 NVA 的其中一個 Vnet 進行流動。 讓我們詳細探討不同的資料列：
 
-* NVA 輪輻：
+* 輻條：
   * 輪輻可直接透過虛擬 WAN 中樞觸及其他輪輻。
   * 輪輻可透過指向服務 VNet 的靜態路由，來連接到分支。 它們不應該從分支學習特定的前置詞 (否則這些首碼會更具體，並覆寫摘要) 。
   * 輪輻會透過直接的 VNet 對等互連，將網際網路流量傳送至 DMZ VNet。
@@ -51,12 +50,12 @@ ms.locfileid: "91267494"
 * 服務 VNet 將類似于需要從每個 VNet 和每個分支連線的共用服務 VNet。
 * DMZ VNet 實際上不需要透過虛擬 WAN 進行連線，因為它所支援的唯一流量將會透過直接 VNet 對等互連。 不過，我們將使用與 DMZ VNet 相同的連線模型來簡化設定。
 
-因此，我們的連線矩陣提供三種不同的連接模式，可轉譯為三個路由表。 不同 Vnet 的關聯將如下所示：
+我們的連線矩陣提供三種不同的連接模式，可轉譯成三個路由表。 不同 Vnet 的關聯將如下所示：
 
-* NVA 輪輻：
+* 輻條：
   * 相關聯的路由表： **RT_V2B**
   * 傳播至路由表： **RT_V2B** 和 **RT_SHARED**
-* NVA Vnet (內部和網際網路) ：
+* NVA Vnet (Service VNet 和 DMZ VNet) ：
   * 相關聯的路由表： **RT_SHARED**
   * 傳播至路由表： **RT_SHARED**
 * 分支：

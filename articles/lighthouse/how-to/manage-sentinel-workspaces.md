@@ -3,12 +3,12 @@ title: 大規模管理 Azure Sentinel 工作區
 description: 瞭解如何有效管理委派客戶資源上的 Azure Sentinel。
 ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: d1ab392ee946e09a5f9e32ddf01ec2cd1e8bd41f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91e2f875aa2fc067420c0c6eda4e7dd56bd2b088
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596934"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424092"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>大規模管理 Azure Sentinel 工作區
 
@@ -39,7 +39,7 @@ Azure Sentinel 提供安全性分析和威脅情報，提供單一解決方案�
 > [!NOTE]
 > 您可以管理位於不同 [區域](../../availability-zones/az-overview.md#regions)的委派資源。 但是，不支援跨 [全國雲端](../../active-directory/develop/authentication-national-cloud.md) 、Azure 公用雲端或跨兩個不同國家雲端的訂用帳戶委派。
 
-## <a name="granular-role-based-access-control-rbac"></a>以角色為基礎的細微存取控制 (RBAC) 
+## <a name="granular-azure-role-based-access-control-azure-rbac"></a> (Azure RBAC) 的細微 Azure 角色型存取控制
 
 MSSP 將管理的每個客戶訂用帳戶都必須 [上線至 Azure Lighthouse](onboard-customer.md)。 這可讓管理租使用者中指定的使用者在客戶租使用者中部署的 Azure Sentinel 工作區上存取和執行管理作業。
 

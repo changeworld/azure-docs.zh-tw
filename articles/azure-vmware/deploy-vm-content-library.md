@@ -3,12 +3,12 @@ title: 建立內容庫以在 Azure VMware 解決方案中部署 Vm
 description: 建立內容庫，以在 Azure VMware 解決方案私人雲端中部署 VM。
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: 3a1b0a091dcdf9a225b4bf91ec83f542c2310285
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57db8ac4da8eef826d85feb11680c9c87823ee36
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575816"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461680"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>建立內容庫以在 Azure VMware 解決方案中部署 Vm
 
@@ -18,7 +18,7 @@ ms.locfileid: "91575816"
 
 ## <a name="prerequisites"></a>必要條件
 
-需要使用 NSX-T 邏輯交換器區段和受控 DHCP 服務，才能完成本教學課程。  如需詳細資訊，請參閱 [如何在 Azure VMWare 中管理 DHCP 解決方案](manage-dhcp.md) 文章。
+需要使用 NSX-T 邏輯交換器區段和受控 DHCP 服務，才能完成本教學課程。  如需詳細資訊，請參閱 [如何在 Azure VMware 中管理 DHCP 解決方案](manage-dhcp.md) 文章。
 
 ## <a name="create-a-content-library"></a>建立內容庫
 
@@ -92,7 +92,7 @@ ms.locfileid: "91575816"
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您打算使用混合式雲端擴充功能 (HCX) 將 VM 工作負載遷移至私人雲端，請使用[安裝適用於 Azure VMware Solution 的 HCX](tutorial-deploy-vmware-hcx.md)程序。
+如果您打算使用 VMware HCX 將 VM 工作負載遷移至私人雲端，請使用「 [部署和設定 VMWARE HCX](tutorial-deploy-vmware-hcx.md) 」程式。
 
 <!-- LINKS - external-->
 

@@ -4,12 +4,12 @@ description: 提供有關 Azure VMware 解決方案的一些常見問題解答�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: bdc0bdb5966445fe98b2f65bce552fe6dca493ea
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 816f64f9987abbdcd49de93b3bc218ec1606d9f3
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368973"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461646"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>關於 Azure VMware 解決方案的常見問題
 
@@ -61,11 +61,11 @@ Azure VMware 解決方案客戶將可使用所有 Azure 服務。 特定服務�
 
 #### <a name="are-red-hat-solutions-supported-on-azure-vmware-solution"></a>Azure VMware 解決方案支援 Red Hat 解決方案嗎？
 
-Microsoft 和 Red Hat 共用一組整合式共置的支援小組，可針對在 Azure 平臺上執行的 Red Hat 生態系統提供統一的聯繫點。  如同與 Red Hat Enterprise Linux 搭配使用的其他 Azure 平臺服務，Azure VMware 解決方案屬於雲端存取和整合式支援範圍，且 Red Hat Enterprise Linux 支援在 azure 中的 Azure VMware 解決方案上執行。
+Microsoft 和 Red Hat 共用整合式共置的支援小組，為在 Azure 平臺上執行的 Red Hat 生態系統提供統一的連絡人點。  如同與 Red Hat Enterprise Linux 搭配使用的其他 Azure 平臺服務，Azure VMware 解決方案屬於雲端存取和整合式支援範圍，且 Red Hat Enterprise Linux 支援在 azure 中的 Azure VMware 解決方案上執行。
 
 #### <a name="is-vmware-hcx-enterprise-edition-available-and-if-so-how-much-does-it-cost"></a>VMware HCX Enterprise Edition 是否可用，若是如此，它會有多少費用？
 
-VMware HCX Enterprise Edition (EE) 可供使用，並有 Azure VMware 解決方案做為「預覽」函式/服務。 雖然適用於 Azure VMware 的 VMware HCX EE 解決方案處於「預覽」，但其為免費的函式/服務，並受預覽版服務條款及條件的約束。 一旦 VMware HCX EE 服務正式發行後，您將會收到 30 天的通知，指出帳單將會切換。 您也可以選擇關閉/退出服務。
+VMware HCX Enterprise Edition (EE) 可供使用，並有 Azure VMware 解決方案做為「預覽」函式/服務。 雖然適用于 Azure VMware 的 VMware HCX EE 解決方案處於預覽狀態，但它是免費的函式/服務，並且受限於預覽服務條款及條件。 一旦 VMware HCX EE 服務正式發行後，您將會收到 30 天的通知，指出帳單將會切換。 您可以關閉或退出服務。
 
 #### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Azure VMware 解決方案 Vm 是否可由 VMRC 管理？
 是的，前提是安裝在上的系統可以存取私用雲端 vCenter，並且使用公用 DNS (以便能夠解析) 的 ESXi 主機名稱。
@@ -116,7 +116,7 @@ Azure 防禦服務建議連線到跳躍方塊，以防止將 Azure VMware 解決
 
 由於這些備份解決方案是由客戶安裝和管理，因此可以與各自的 ISV 聯繫以取得支援。 
 
-#### <a name="what-is-the-correct-storage-policy-for-the-dedup-set-up"></a>設定重復資料刪除的正確儲存體原則為何？
+#### <a name="what-is-the-correct-storage-policy-for-the-dedup-setup"></a>重復資料刪除設定的正確儲存體原則為何？
 
 使用 VM 範本的 *thin_provision* 儲存體原則。  預設值為 *thick_provision*。
 
@@ -239,7 +239,7 @@ Azure 訂閱需要 Azure 帳戶。
 * 您將需要 [Azure Enterprise 合約 (EA) ](../cost-management-billing/manage/ea-portal-agreements.md) 的 Microsoft。
 * Azure 訂閱需要 Azure 帳戶。
 
-建立 Azure VMware 解決方案資源之前，您必須提交支援票證，以配置您的節點。 一旦支援小組收到您的要求後，最多需要五個工作天的時間來確認您的要求，並配置您的節點。 如果您有現有的 Azure VMware 解決方案私人雲端，且想要配置更多節點，您將會經歷相同的程序。
+在您建立 Azure VMware 解決方案資源之前，您必須提交支援票證以配置您的節點。 最多需要五個工作天，才能確認您的要求並配置您的節點。 如果您有現有的 Azure VMware 解決方案私人雲端，且想要配置更多節點，您將會經歷相同的程序。
 
 
 1. 在您的 Azure 入口網站中的 [說明 **+ 支援**] 下，建立 **[新的支援要求](https://rc.portal.azure.com/#create/Microsoft.Support)** ，並為票證提供下列資訊：

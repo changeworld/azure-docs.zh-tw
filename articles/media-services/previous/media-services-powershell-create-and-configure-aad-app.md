@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7e54c89a609b39a88d2a34078aadd6bbe9308e39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f9568d175d564547e58bc3584174cb0f239dd49
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268361"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425222"
 ---
 # <a name="use-powershell-to-create-an-azure-ad-app-to-use-with-the-azure-media-services-api"></a>使用 PowerShell 建立 Azure AD 應用程式，以搭配 Azure 媒體服務 API 使用
 
@@ -29,7 +29,7 @@ ms.locfileid: "89268361"
 
 了解如何使用 PowerShell 指令碼建立 Azure Active Directory (Azure AD) 應用程式和服務主體，以存取 Azure 媒體服務資源。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 一個 Azure 帳戶。 如果您沒有帳戶，請先從 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)開始。 
 - 媒體服務帳戶。 如需詳細資訊，請參閱[在 Azure 入口網站建立 Azure 媒體服務帳戶](media-services-portal-create-account.md)。
@@ -63,7 +63,7 @@ $Retries = 0;While ($NewRole -eq $null -and $Retries -le 6)
 如需詳細資訊，請參閱下列文章：
 
 - [使用 Azure PowerShell 建立用來存取資源的服務主體](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-- [使用 Azure PowerShell 管理角色型存取控制](../../role-based-access-control/role-assignments-powershell.md)
+- [使用 Azure PowerShell 新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-powershell.md)
 - [如何使用憑證手動設定精靈應用程式](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2) \(英文\)
 
 ## <a name="next-steps"></a>後續步驟

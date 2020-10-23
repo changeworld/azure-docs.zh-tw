@@ -67,6 +67,8 @@
       items:
         - name: 編碼和串流遠端檔案 REST
           href: stream-files-tutorial-with-rest.md
+        - name: 客戶自控金鑰與媒體服務
+          href: tutorial-byok.md
     - name: CLI
       items:
         - name: 編碼和串流遠端檔案 CLI
@@ -175,6 +177,8 @@
         - name: 動態加密和金鑰傳遞
           displayName: 'content protection, streaming protocols, encryption types, PlayReady, Widevine, FairPlay, custom'
           href: content-protection-overview.md
+        - name: 客戶管理的金鑰
+          href: concept-use-customer-managed-keys-byok.md
         - name: 多重 DRM 系統設計
           displayName: 'drm, access control'
           href: design-multi-drm-system-with-access-control.md

@@ -7,12 +7,13 @@ ms.author: dobett
 ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
-ms.openlocfilehash: 34a9350f830171a137ca3a63ecae2203edec92b2
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.custom: device-developer
+ms.openlocfilehash: 6438b938dc007e8d157f6549b3ed164cd2a723e8
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127364"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424475"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>針對裝置中的資料未顯示在 Azure IoT Central 的原因進行疑難排解
 
@@ -209,7 +210,7 @@ tatype 'double'. Data '56'. All dates/times/datetimes/durations must be ISO 8601
 
 如果您選擇建立可正確建立資料模型的新範本，請從舊範本將裝置遷移至新的範本。 若要深入瞭解，請參閱 [在您的 Azure IoT Central 應用程式中管理裝置](howto-manage-devices.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如果您需要更多協助，您可以聯繫 [MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/community/)上的 azure 專家。 或者，您也可以提出 [Azure 支援的票證](https://portal.azure.com/#create/Microsoft.Support)。
 

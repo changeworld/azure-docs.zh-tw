@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6d03f0057e657933f4b0f38c48f2a2cdbe1ba2a4
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 2786a45ef779b9c66edda4c765a1cf2140f1bf9f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940322"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425278"
 ---
 # <a name="azure-security-baseline-for-azure-load-balancer"></a>適用于 Azure Load Balancer 的 Azure 安全性基準
 
@@ -104,7 +104,7 @@ Standard Load Balancer 的設計預設為安全的，並且是私人和隔離虛
 
 - [Azure 資訊安全中心內的威脅防護](https://docs.microsoft.com/azure/security-center/threat-protection)
 
-- [使用即時存取保護您的管理埠](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+- [使用 Just-In-Time 存取來保護管理連接埠](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
 
 - [Azure 資訊安全中心中的適應性網路強化](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
 
@@ -402,7 +402,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 **指導**方針：使用 Azure RBAC 來控制 Load Balancer 資源的存取權。
 
-- [如何在 Azure 中設定 RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [如何設定 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 **Azure 資訊安全中心監視**：是
 

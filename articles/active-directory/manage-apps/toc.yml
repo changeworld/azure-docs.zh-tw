@@ -220,6 +220,8 @@
           href: troubleshoot-password-based-sso.md
         - name: 針對 SAML 型單一登入進行疑難排解
           href: troubleshoot-saml-based-sso.md
+        - name: 偵錯 SAML 型單一登入
+          href: debug-saml-sso-issues.md
         - name: 使用者登入疑難排解
           items:
             - name: 未預期的同意提示
@@ -268,7 +270,7 @@
               href: application-sign-in-problem-on-premises-application-proxy.md
             - name: 應用程式 Proxy 中的 CORS 問題
               href: application-proxy-understand-cors-issues.md
-- name: 參考資料
+- name: 參考
   items:
     - name: 應用程式 Proxy 常見問題集
       href: application-proxy-faq.md

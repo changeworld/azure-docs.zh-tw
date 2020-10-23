@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f725932b30fad062123d6c752f2d563b84f98b2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5e2ce17be6d8a1fa82d8a92b9b788f0bd2a37b8
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267630"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424743"
 ---
 # <a name="scenario-isolating-vnets"></a>案例：隔離 Vnet
 
@@ -26,10 +26,10 @@ ms.locfileid: "91267630"
 
 | 寄件者 |   收件者 |  *Vnet* | *分支* |
 | -------------- | -------- | ---------- | ---|
-| VNets     | &#8594;|           |     X    |
-| 分支   | &#8594;|    X     |     X    |
+| VNets     | &#8594;| 直接 |   直接    |
+| 分支   | &#8594;|  直接  |   直接    |
 
-上表中的每個資料格都會描述虛擬 WAN 連線是否 (流程的「來源」端、資料列標頭) 學習目的地首碼 (流程的「到」端、以斜體) 的資料行標頭來指定流量，其中「X」表示虛擬 WAN 提供連線能力。
+上表中的每個資料格都會描述虛擬 WAN 連線是否 (流程的「來源」端，而資料列標頭) 與目的地前置詞通訊 (流程的「到」端，也就是斜體) 中的資料行標頭。 在此案例中，沒有任何防火牆或網路虛擬裝置，因此通訊會直接透過虛擬 WAN (因此，資料表中的「直接」一字) 。
 
 此連接矩陣可提供兩個不同的資料列模式，以轉譯成兩個路由表。 虛擬 WAN 已經有預設路由表，因此需要另一個路由表。 在此範例中，我們會將路由表命名為 **RT_VNET**。
 

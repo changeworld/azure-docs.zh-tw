@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 06/25/2020
+ms.date: 10/19/2020
 ms.author: aahi
-ms.openlocfilehash: 12c09ad8e1db3914263fcc864c9c2d09069d63a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 172e684c6edbab4d7d47c8cf78e35ae38de3a0af
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85412578"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461782"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>遷移至文字分析 API 的3.x 版
 
@@ -33,7 +33,12 @@ ms.locfileid: "85412578"
 
 ### <a name="rest-api"></a>REST API
 
-如果您的應用程式使用 REST API，請將其要求端點更新至 v3 端點以進行情感分析。 例如： `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment` 。 您也必須更新應用程式，以使用 [JSON 回應](how-tos/text-analytics-how-to-sentiment-analysis.md#view-the-results)中傳回的情感標籤。 
+如果您的應用程式使用 REST API，請將其要求端點更新至 v3 端點以進行情感分析。 例如： `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment` 。 您也必須更新應用程式，以使用 [API 回應](how-tos/text-analytics-how-to-sentiment-analysis.md#view-the-results)中傳回的情感標籤。 
+
+請參閱參考檔，以取得 JSON 回應的範例。
+* [2.1 版](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
+* [3.0 版](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Sentiment) 
+* [3.1-preview 版](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Sentiment)
 
 ### <a name="client-libraries"></a>用戶端程式庫
 
@@ -60,7 +65,12 @@ ms.locfileid: "85412578"
 NER
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
 
-您也必須更新應用程式，以使用[JSON 回應](how-tos/text-analytics-how-to-entity-linking.md#view-results)中傳回的[實體類別](named-entity-types.md)。
+您也必須更新應用程式，以使用[API 回應](how-tos/text-analytics-how-to-entity-linking.md#view-results)中傳回的[實體類別](named-entity-types.md)。
+
+請參閱參考檔，以取得 JSON 回應的範例。
+* [2.1 版](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+* [3.0 版](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral) 
+* [3.1-preview 版](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/EntitiesRecognitionGeneral)
 
 ### <a name="client-libraries"></a>用戶端程式庫
 
@@ -77,7 +87,12 @@ NER
 
 ### <a name="rest-api"></a>REST API
 
-如果您的應用程式使用 REST API，請將其要求端點更新至 v3 端點以進行語言偵測。 例如： `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages` 。 您也必須更新應用程式，以 `ConfidenceScore` `score` 在 [JSON 回應](how-tos/text-analytics-how-to-language-detection.md#step-3-view-the-results)中使用而不是。 
+如果您的應用程式使用 REST API，請將其要求端點更新至 v3 端點以進行語言偵測。 例如： `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages` 。 您也必須更新應用程式，以 `ConfidenceScore` `score` 在 [API 的回應](how-tos/text-analytics-how-to-language-detection.md#step-3-view-the-results)中使用而不是。 
+
+請參閱參考檔，以取得 JSON 回應的範例。
+* [2.1 版](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)
+* [3.0 版](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages) 
+* [3.1 版](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
 
 ### <a name="client-libraries"></a>用戶端程式庫
 
@@ -94,7 +109,12 @@ NER
 
 ### <a name="rest-api"></a>REST API
 
-如果您的應用程式使用 REST API，請將其要求端點更新至 v3 端點以進行主要片語解壓縮。 例如： `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`
+如果您的應用程式使用 REST API，請將其要求端點更新至 v3 端點以進行主要片語解壓縮。 例如：`https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`
+
+請參閱參考檔，以取得 JSON 回應的範例。
+* [2.1 版](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)
+* [3.0 版](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases) 
+* [3.1 版](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/KeyPhrases)
 
 ### <a name="client-libraries"></a>用戶端程式庫
 
@@ -103,9 +123,8 @@ NER
 ---
 
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-* [文字分析 API v2 參考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/)
 * [什麼是文字分析 API](overview.md)
 * [語言支援](language-support.md)
 * [模型版本設定](concepts/model-versioning.md)

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 10/09/2020
-ms.openlocfilehash: 8669330a8cfccea0dcc10c318c2be4acbcb7788c
-ms.sourcegitcommit: a75ca63da5c0cc2aff5fb131308853b9edb41552
+ms.openlocfilehash: 16dab7897fc41a97a8607df5a03281582377e1e4
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92169348"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424076"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps 的限制和設定資訊
 
@@ -41,32 +41,31 @@ ms.locfileid: "92169348"
 
 <a name="run-duration-retention-limits"></a>
 
-## <a name="run-duration-and-retention-limits"></a>執行持續時間和保留期限制
+## <a name="run-duration-and-retention-history-limits"></a>執行持續時間和保留歷程記錄限制
 
 以下是單一邏輯應用程式執行的限制：
 
 | 名稱 | 多租用戶限制 | 整合服務環境限制 | 注意 |
 |------|--------------------|---------------------------------------|-------|
-| 執行持續時間 | 90 天 | 366 天 | 執行持續時間的計算方式是使用執行的開始時間，以及工作流程 ([[執行歷程記錄保留期 (天)]](#change-duration)) 指定於「開始時間」的限制。 <p><p>若要變更預設限制，也就是 90 天，請參閱[變更執行持續時間](#change-duration)。 |
-| 在儲存體中執行保留期 | 90 天 | 366 天 | 執行保留期的計算方式是使用執行的開始時間，以及工作流程 ([[執行歷程記錄保留期 (天)]](#change-retention)) 指定於「目前時間」的限制。 無論執行完成還是逾時，保留期計算一律會使用執行的開始時間。 當執行的持續時間超過「目前」保留期限制時，就會從執行歷程記錄中移除執行。 <p><p>如果變更此設定，則不管先前有何限制，一律都會使用目前的限制計算保留期。 例如，如果您將保留期限制從 90 天減少為 30 天，則會從執行歷程記錄中移除 60 天以前的執行。 如果您將保留期從 30 天增加到 60 天，則過去 20 天的執行又會在執行歷程記錄中持續保留 40 天。 <p><p>若要變更預設限制，也就是 90 天，請參閱[變更儲存體中的執行保留期](#change-retention)。 |
+| 執行持續時間 | 90 天 | 366 天 | 執行持續時間的計算方式是使用回合的開始時間。 |
+| 在儲存體中執行記錄保留 | 90 天 | 366 天 | 當執行完成或超時時，一律會使用執行時間的開始時間和 *目前時間* 的工作流程設定所指定的限制來計算執行歷程記錄保留期， [**以天**](#change-retention)為單位執行歷程記錄。 如果您變更此設定，則一律會使用 *目前* 的限制來計算保留，而不考慮先前的限制。 當執行的持續時間超過目前的限制時，就會從執行歷程記錄中移除執行。 <p><p>例如，假設您將保留限制從90天減少為30天。 從執行歷程記錄中移除60天-舊執行。 如果您將保留期限從30天增加到60天，則會在執行歷程記錄中保留20天的執行歷程記錄，以供另一個40天使用。 <p><p>若要變更預設限制（90天），請參閱 [變更儲存體中的執行歷程記錄保留](#change-retention)。 |
 | 最小循環間隔 | 1 秒 | 1 秒 ||
 | 最大循環間隔 | 500 天 | 500 天 ||
 |||||
 
-<a name="change-duration"></a>
 <a name="change-retention"></a>
 
-### <a name="change-run-duration-and-run-retention-in-storage"></a>變更儲存體中的執行持續時間和保留期
+### <a name="change-run-history-retention-in-storage"></a>變更儲存體中的執行歷程記錄保留
 
-若要變更儲存體中執行持續時間和執行保留期的預設限制，請遵循下列步驟。 若要增加上限，請[與 Logic Apps 小組連絡](mailto://logicappsemail@microsoft.com)來協助處理您的需求。
+若要變更儲存體中執行歷程記錄保留的預設限制，請遵循下列步驟。 若要增加上限，請[與 Logic Apps 小組連絡](mailto://logicappsemail@microsoft.com)來協助處理您的需求。
 
 > [!NOTE]
 > 對於多租用戶 Azure 中的邏輯應用程式，90 天的預設限制與上限相同。 您只能減少此值。
 > 對於整合服務環境中的邏輯應用程式，您可以減少或增加 90 天的預設限制。
 
-1. 移至 [Azure 入口網站](https://portal.azure.com)。 在入口網站的搜尋方塊中，尋找並選取 [邏輯應用程式]。
+1. 在 [Azure 入口網站](https://portal.azure.com) 搜尋方塊中，尋找並選取 **邏輯應用程式**。
 
-1. 在邏輯應用程式設計工具中選取您的邏輯應用程式，然後開啟。
+1. 尋找並選取您的邏輯應用程式。 在邏輯應用程式設計工具中開啟邏輯應用程式。
 
 1. 在邏輯應用程式的功能表上，選取 [工作流程設定]。
 

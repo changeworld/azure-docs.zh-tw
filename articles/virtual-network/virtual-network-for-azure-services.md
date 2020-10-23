@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/06/2020
 ms.author: kumud
-ms.openlocfilehash: ddc7f5f8844c602defb99a56ea3f511f0ea88cbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e53127b51116c87dd8b92ea3cd87ebf1892d38b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90084697"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461697"
 ---
 # <a name="deploy-dedicated-azure-services-into-virtual-networks"></a>將專用 Azure 服務部署至虛擬網路
 
@@ -48,6 +48,7 @@ ms.locfileid: "90084697"
 | 容器 | [Azure Kubernetes Service (AKS)](../aks/concepts-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure 容器執行個體 (ACI)](https://www.aka.ms/acivnet)<br/>[Azure Container Service 引擎](https://github.com/Azure/acs-engine)搭配 Azure 虛擬網路 CNI [外掛程式](https://github.com/Azure/acs-engine/tree/master/examples/vnet)<br/>[Azure Functions](../azure-functions/functions-networking-options.md#virtual-network-integration) |否<sup>2</sup><br/> 是 <br/><br/> 否 <br/> 是
 | Web | [API 管理](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Web Apps](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[App Service 環境](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|是 <br/> 是 <br/> 是 <br/> 是
 | 裝載 | [Azure 專用 HSM](../dedicated-hsm/index.yml?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|是 <br/> 是 <br/>
+| Azure Spring Cloud | [在 Azure 虛擬網路中部署 (VNet 插入) ](../spring-cloud/spring-cloud-tutorial-deploy-in-azure-virtual-network.md)<br/>| 是 <br/>
 | | |
 
 <sup>1</sup>「專用」暗示只有服務特定資源可以部署在此子網路中，且無法與客戶 VM/VMSS 合併 <br/> 

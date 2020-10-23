@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 10/21/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: c8816d4db6ee054df574263f90522f08f7dcd058
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6f7114188a7a996ee80346ec48a51f0cce8bba54
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282380"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425026"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>管理 Azure Cosmos DB 的 MongoDB API 中的編制索引
 
@@ -22,7 +22,7 @@ Azure Cosmos DB 適用于 MongoDB 的 API 會利用 Azure Cosmos DB 的核心索
 
 ## <a name="indexing-for-mongodb-server-version-36"></a>MongoDB 伺服器版本3.6 的索引編制
 
-Azure Cosmos DB 適用于 MongoDB 伺服器版本3.6 的 API 會自動為無法卸載的欄位編制索引 `_id` 。 它會自動 `_id` 針對每個分區索引鍵強制執列欄位的唯一性。 在 Azure Cosmos DB 適用于 MongoDB 的 API 中，分區化和索引是不同的概念。 您不需要為分區索引鍵編制索引。 但是，如同檔中的任何其他屬性，如果此屬性是查詢中的通用篩選，我們建議您為分區索引鍵編制索引。
+Azure Cosmos DB 適用于 MongoDB 伺服器版本3.6 的 API 會自動為無法卸載的欄位編制索引 `_id` 。 它會自動 `_id` 針對每個分區索引鍵強制執列欄位的唯一性。 在 Azure Cosmos DB 適用于 MongoDB 的 API 中，分區化和索引是不同的概念。 您不需要為分區索引鍵編制索引。 但是，如同檔中的任何其他屬性，如果此屬性是查詢中的一般篩選準則，建議您為分區索引鍵編制索引。
 
 若要為其他欄位編製索引，請套用 MongoDB 索引管理命令。 在 MongoDB 中，Azure Cosmos DB 的 MongoDB API 只會自動為 `_id` 欄位編制索引。 這個預設的編製索引原則與 Azure Cosmos DB SQL API 不同，後者預設會為所有欄位編製索引。
 
@@ -40,7 +40,10 @@ Azure Cosmos DB 適用于 MongoDB 伺服器版本3.6 的 API 會自動為無法�
 
 ### <a name="compound-indexes-mongodb-server-version-36"></a> (MongoDB server 3.6 版的複合索引) 
 
-Azure Cosmos DB 的 MongoDB API 支援使用3.6 線路通訊協定版本之帳戶的複合索引。 複合索引中最多可以包含8個欄位。 **與 MongoDB 不同的是，只有當您的查詢需要在多個欄位上有效率地排序時，才應該建立複合索引。** 針對具有多個不需要排序之篩選準則的查詢，請建立多個單一欄位索引，而不是單一複合索引。
+Azure Cosmos DB 的 MongoDB API 支援使用3.6 線路通訊協定版本之帳戶的複合索引。 複合索引中最多可以包含8個欄位。 與 MongoDB 不同的是，只有當您的查詢需要在多個欄位上有效率地排序時，才應該建立複合索引。 針對具有多個不需要排序之篩選準則的查詢，請建立多個單一欄位索引，而不是單一複合索引。 
+
+> [!NOTE]
+> 您無法在嵌套屬性或陣列上建立複合索引。
 
 下列命令會在欄位上建立複合索引 `name` ，並 `age` ：
 
@@ -50,7 +53,7 @@ Azure Cosmos DB 的 MongoDB API 支援使用3.6 線路通訊協定版本之帳�
 
 `db.coll.find().sort({name:1,age:1})`
 
-您也可以使用上述的複合索引，在所有欄位上以相反的排序次序來有效率地排序查詢。 以下是範例：
+您也可以使用上述的複合索引，在所有欄位上以相反的排序次序來有效率地排序查詢。 以下為範例：
 
 `db.coll.find().sort({name:-1,age:-1})`
 
@@ -59,7 +62,7 @@ Azure Cosmos DB 的 MongoDB API 支援使用3.6 線路通訊協定版本之帳�
 `db.coll.find().sort({age:1,name:1})`
 
 > [!NOTE]
-> 您無法在嵌套屬性或陣列上建立複合索引。
+> 複合索引只會用於排序結果的查詢。 如果查詢中有多個不需要排序的篩選準則，請建立 multipe 單一欄位索引。
 
 ### <a name="multikey-indexes"></a>Multikey 索引
 
@@ -75,7 +78,7 @@ Azure Cosmos DB 建立 multikey 索引來索引儲存在陣列中的內容。 �
 
 ### <a name="text-indexes"></a>文字索引
 
-Azure Cosmos DB 適用于 MongoDB 的 API 目前不支援文字索引。 針對字串的文字搜尋查詢，您應該使用 [Azure 認知搜尋](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) 與 Azure Cosmos DB 整合。
+Azure Cosmos DB 適用于 MongoDB 的 API 目前不支援文字索引。 針對字串的文字搜尋查詢，您應該使用 [Azure 認知搜尋](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) 與 Azure Cosmos DB 整合。 
 
 ## <a name="wildcard-indexes"></a>萬用字元索引
 
@@ -131,7 +134,10 @@ Azure Cosmos DB 適用于 MongoDB 的 API 目前不支援文字索引。 針對�
 
 `db.coll.createIndex( { "$**" : 1 } )`
 
-當您開始開發時，在所有欄位上建立萬用字元索引可能會很有説明。 當檔中有更多的屬性編制索引時，要求單位 (RU) 撰寫和更新檔的費用將會增加。 因此，如果您有大量寫入的工作負載，則應該選擇個別的索引路徑，而不是使用萬用字元索引。
+> [!NOTE]
+> 如果您只是開始開發， **強烈** 建議您從所有欄位上的萬用字元索引開始著手。 這可以簡化開發工作，讓查詢更容易。
+
+具有許多欄位的檔可能會有較高的要求單位 (RU) 寫入和更新的收費。 因此，如果您有大量寫入的工作負載，則應該選擇個別的索引路徑，而不是使用萬用字元索引。
 
 ### <a name="limitations"></a>限制
 
@@ -335,7 +341,7 @@ globaldb:PRIMARY> db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
 
 ## <a name="indexing-for-mongodb-version-32"></a>MongoDB 版本3.2 的索引編制
 
-適用于與3.2 版 MongoDB 網路通訊協定相容的 Azure Cosmos 帳戶，可用的索引編制功能和預設值是不同的。 您可以 [檢查您的帳戶版本](mongodb-feature-support-36.md#protocol-support)。 您可以藉由 [提出支援要求](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)來升級為3.6 版。
+適用于與3.2 版 MongoDB 網路通訊協定相容的 Azure Cosmos 帳戶，可用的索引編制功能和預設值是不同的。 您可以 [檢查您的帳戶版本](mongodb-feature-support-36.md#protocol-support) ，並 [升級至3.6 版](mongodb-version-upgrade.md)。
 
 如果您使用的是3.2 版，本節將概述3.6 版的主要差異。
 
@@ -352,11 +358,11 @@ globaldb:PRIMARY> db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
 
 ### <a name="compound-indexes-version-32"></a>3.2 版 (複合索引) 
 
-複合索引可存放文件中多個欄位的參考。 如果您想要建立複合索引，請 [提出支援要求](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以升級至3.6 版。
+複合索引可存放文件中多個欄位的參考。 如果您想要建立複合索引，請 [升級至3.6 版](mongodb-version-upgrade.md)。
 
 ### <a name="wildcard-indexes-version-32"></a> (3.2 版的萬用字元索引) 
 
-如果您想要建立萬用字元索引，請 [提出支援要求](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以升級至3.6 版。
+如果您想要建立萬用字元索引，請 [升級至3.6 版](mongodb-version-upgrade.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
