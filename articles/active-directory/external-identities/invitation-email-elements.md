@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90c70dd626ea093b9dfe2fd71e39b53c81ac5d5f
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: e1e1bbdfe1cb83f9b479861840081cd0bb138957
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340584"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441873"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B 共同作業邀請電子郵件的元素 - Azure Active Directory
 
@@ -63,7 +63,7 @@ ms.locfileid: "92340584"
 
 ### <a name="footer-section"></a>頁尾區段
 
-頁尾包含有關正在傳送之邀請的詳細資訊。 有一個選項可讓受邀者封鎖未來的邀請。 如果組織已 [設定隱私權聲明](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area)，則會在此處顯示該語句的連結。  否則，附注指出組織未設定隱私權聲明。
+頁尾包含有關正在傳送之邀請的詳細資訊。 有一個選項可讓受邀者封鎖未來的邀請。 如果組織已 [設定隱私權聲明](../fundamentals/active-directory-properties-area.md)，則會在此處顯示該語句的連結。  否則，附注指出組織未設定隱私權聲明。
 
 ![電子郵件中頁尾區段的影像](media/invitation-email-elements/footer-section.png)
 
@@ -85,8 +85,8 @@ ms.locfileid: "92340584"
 
 在邀請電子郵件中向來賓使用者顯示的語言取決於下列設定。 這些設定是依優先順序列出的。 如果未設定某個設定，就會由清單中的下一個設定決定語言。
 
-- [invitedUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) 物件的 **messageLanguage** 屬性 (如果使用「建立邀請」API)
--   來賓[使用者物件](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0)中指定的 **preferredLanguage** 屬性
+- [invitedUserMessageInfo](/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) 物件的 **messageLanguage** 屬性 (如果使用「建立邀請」API)
+-   來賓[使用者物件](/graph/api/resources/user?view=graph-rest-1.0)中指定的 **preferredLanguage** 屬性
 -   來賓使用者主租用戶的屬性中設定的**通知語言** (僅適用於 Azure AD 租用戶)
 -   來源租用戶的屬性中設定的**通知語言**
 

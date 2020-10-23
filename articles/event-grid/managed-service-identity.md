@@ -1,14 +1,14 @@
 ---
-title: 使用受管理的服務識別進行事件傳遞
+title: 事件傳遞、受控服務識別和私用連結
 description: 本文說明如何為 Azure 事件方格主題啟用受管理的服務識別。 使用它來將事件轉送到支援的目的地。
 ms.topic: how-to
-ms.date: 07/07/2020
-ms.openlocfilehash: 7eaa3ddd43cc68a99ad7c2bab66630f30d4960c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 434a2e36ead0d210b7edf64d104243f6643ac019
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87534238"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460915"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>使用受控識別傳遞事件
 本文說明如何啟用 Azure 事件方格主題或網域的 [受控服務識別](../active-directory/managed-identities-azure-resources/overview.md) 。 使用此功能將事件轉送到支援的目的地，例如，服務匯流排佇列和主題、事件中樞，以及儲存體帳戶。
@@ -17,6 +17,9 @@ ms.locfileid: "87534238"
 1. 使用系統指派的身分識別來建立主題或網域，或更新現有的主題或網域以啟用身分識別。 
 1. 將身分識別新增至適當的角色 (例如，服務匯流排資料傳送者) 在目的地 (例如，服務匯流排佇列) 。
 1. 當您建立事件訂閱時，請啟用此身分識別的使用方式，將事件傳遞至目的地。 
+
+> [!NOTE]
+> 目前無法使用 [私人端點](../private-link/private-endpoint-overview.md)傳遞事件。 如需詳細資訊，請參閱本文結尾的「 [私用端點](#private-endpoints) 」一節。 
 
 ## <a name="create-a-topic-or-domain-with-an-identity"></a>使用身分識別建立主題或網域
 首先，讓我們看看如何使用系統管理的身分識別來建立主題或網域。
@@ -279,6 +282,12 @@ az eventgrid event-subscription create
     -n $sa_esname 
 ```
 
+## <a name="private-endpoints"></a>私人端點
+目前無法使用 [私人端點](../private-link/private-endpoint-overview.md)傳遞事件。 也就是說，如果您有嚴格的網路隔離需求，而您傳遞的事件流量不一定要離開私人 IP 空間，則不支援。 
+
+但是，如果您的需求使用加密的通道和傳送者的已知身分識別來傳送事件 (在此案例中，事件方格) 使用公用 IP 空間，您可以使用 Azure 事件方格主題或具有系統管理身分識別的網域（如本文所示），將事件傳遞至事件中樞、服務匯流排或 Azure 儲存體服務。 然後，您可以使用在 Azure Functions 中設定的私人連結，或在您的虛擬網路上部署的 webhook 來提取事件。 請參閱範例： [使用 Azure Functions 連接到私人端點](/samples/azure-samples/azure-functions-private-endpoints/connect-to-private-endpoints-with-azure-functions/)。
+
+請注意，在此設定下，流量會從事件方格傳送到事件中樞、服務匯流排或 Azure 儲存體的公用 IP/網際網路，但通道可以加密並使用事件方格的受控識別。 如果您將 Azure Functions 或 webhook 部署到您的虛擬網路，以使用事件中樞、服務匯流排或 Azure 儲存體透過私人連結，流量的該區段將會顯然保持在 Azure 內。
 
 
 ## <a name="next-steps"></a>後續步驟

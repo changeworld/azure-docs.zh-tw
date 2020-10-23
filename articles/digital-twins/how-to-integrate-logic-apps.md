@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: b23e9a1e344bb0db1399a4f04712815557b8139e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 54a96d1f3227cd4a66e344b63b2ecb337df31aba
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427995"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461068"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>使用自訂連接器與 Logic Apps 整合
 
@@ -43,7 +43,7 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 首先， **設定 Azure 數位 Twins 實例** 和必要的驗證，以便能夠使用它。 若要這麼做，請依照指示操作：[*操作說明：設定執行個體和驗證*](how-to-set-up-instance-portal.md)。 您可以根據本身偏好的體驗，選擇參閱針對 [Azure 入口網站](how-to-set-up-instance-portal.md)、[CLI](how-to-set-up-instance-cli.md) 或[自動化 Cloud Shell 部署指令碼範例](how-to-set-up-instance-scripted.md)而提供的設定文章。 各種版本的指示也包含可驗證您已成功完成每個步驟，並已準備好繼續使用新執行個體的步驟。
 * 設定您的 Azure 數位 Twins 實例之後，您將需要實例的 **_主機名稱_** ([在 Azure 入口網站) 中找到](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values) 。
 
-若要驗證 ADT Explorer 應用程式，您也需要設定 **應用程式註冊**。 遵循 [*如何：建立應用程式註冊*](how-to-create-app-registration.md) 來設定此功能的指示。 
+若要驗證連接器，您也需要設定 **應用程式註冊**。 遵循 [*如何：建立應用程式註冊*](how-to-create-app-registration.md) 來設定此功能的指示。 
 * 註冊應用程式之後，您將需要註冊的 **_應用程式 (用戶端) 識別碼_** 和 **_目錄 (租使用者) 識別碼_** ([在 Azure 入口網站) 中找到](how-to-create-app-registration.md#collect-client-id-and-tenant-id) 。
 
 ### <a name="get-app-registration-client-secret"></a>取得應用程式註冊用戶端密碼
@@ -66,7 +66,7 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 本文使用 Logic Apps 來更新 Azure 數位 Twins 實例中的對應項。 若要繼續，您應該在實例中新增至少一個對應項。 
 
-您可以使用 [DigitalTwins api](how-to-use-apis-sdks.md)、 [.Net (c # ) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)或 [Azure 數位 twins CLI](how-to-use-cli.md)來新增 twins。 如需有關如何使用這些方法建立 twins 的詳細步驟，請參閱 [*如何：管理數位 twins*](how-to-manage-twin.md)。
+您可以使用 [DigitalTwins api](/rest/api/digital-twins/dataplane/twins)、 [.Net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)或 [Azure 數位 twins CLI](how-to-use-cli.md)來新增 twins。 如需有關如何使用這些方法建立 twins 的詳細步驟，請參閱 [*如何：管理數位 twins*](how-to-manage-twin.md)。
 
 您必須在您所建立的實例中，對應項的對應項 **_識別碼_** 。
 

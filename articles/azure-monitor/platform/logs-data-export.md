@@ -7,17 +7,17 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 6b94b6d66046c29de99339887d5c5c87d6c5bb5f
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7183a9c75c78a973b53a9c8c065d62c592b13151
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055931"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441103"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure 監視器 (預覽中的 Log Analytics 工作區資料匯出) 
 Azure 監視器中的 Log Analytics 工作區資料匯出可讓您從 Log Analytics 工作區中選取的資料表持續將資料匯出到 Azure 儲存體帳戶，或在收集時 Azure 事件中樞。 本文提供這項功能的詳細資料，以及在工作區中設定資料匯出的步驟。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 針對您的 Log Analytics 工作區設定資料匯出後，任何傳送至工作區中所選資料表的新資料都會以近乎即時的方式自動匯出到您的儲存體帳戶，或您的事件中樞。
 
 ![資料匯出總覽](media/logs-data-export/data-export-overview.png)
@@ -36,7 +36,7 @@ Log Analytics 工作區資料匯出會持續從 Log Analytics 工作區匯出資
 ## <a name="current-limitations"></a>目前的限制
 
 - 目前只能使用 CLI 或 REST 要求來執行設定。 您無法使用 Azure 入口網站或 PowerShell。
-- 支援的資料表目前僅限於以下 ( # 支援-tabes) 一節所特有的資料表。 如果資料匯出規則包含不支援的資料表，作業將會成功，但不會針對該資料表匯出任何資料。 如果資料匯出規則包含不存在的資料表，該資料表將會失敗，而且* <tableName> 工作區中不*會有錯誤資料表。
+- 支援的資料表目前僅限於以下支援的 [資料表](#supported-tables) 區段中的特定資料表。 如果資料匯出規則包含不支援的資料表，作業將會成功，但不會針對該資料表匯出任何資料。 如果資料匯出規則包含不存在的資料表，它將會失敗並出現錯誤 ```Table <tableName> does not exist in the workspace.```
 - 您的 Log Analytics 工作區可以位於下列任何區域中：
   - 瑞士北部
   - 瑞士西部
@@ -57,7 +57,7 @@ Log Analytics 工作區資料匯出會持續從 Log Analytics 工作區匯出資
 ## <a name="data-completeness"></a>資料完整性
 當目的地無法使用時，資料匯出會繼續重試傳送資料最多30分鐘。 如果在30分鐘後仍無法使用，則會捨棄資料，直到目的地變成可用為止。
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>成本
 資料匯出功能目前沒有額外的費用。 未來將會宣佈資料匯出的定價，以及開始計費之前所提供的通知。 如果您選擇在通知期間之後繼續使用資料匯出，將會以適用的費率向您收費。
 
 ## <a name="export-destinations"></a>匯出目的地
@@ -79,7 +79,7 @@ Log Analytics 工作區資料匯出會持續從 Log Analytics 工作區匯出資
 匯出的資料量通常會隨著時間增加，而且必須增加事件中樞規模以處理較大的傳輸速率，並避免節流案例和資料延遲。 您應該使用事件中樞的自動擴充功能，自動擴大並增加輸送量單位的數目，並符合使用量需求。 如需詳細資料，請參閱 [自動擴大 Azure 事件中樞輸送量單位](../../event-hubs/event-hubs-auto-inflate.md) 。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 以下是在設定 Log Analytics 資料匯出之前必須完成的必要條件。
 
 - 儲存體帳戶和事件中樞必須已建立，且必須與 Log Analytics 工作區位於相同的區域。 如果您需要將資料複寫至其他儲存體帳戶，您可以使用任何 [Azure 儲存體的冗余選項](../../storage/common/storage-redundancy.md)。  
@@ -239,14 +239,14 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="unsupported-tables"></a>不支援的資料表
 如果資料匯出規則包含不支援的資料表，設定將會成功，但不會針對該資料表匯出任何資料。 如果稍後支援資料表，則會在該時間匯出其資料。
 
-如果資料匯出規則包含不存在的資料表，該資料表將會失敗，而且 * <tableName> 工作區中不*會有錯誤資料表。
+如果資料匯出規則包含不存在的資料表，它將會失敗並出現錯誤 ```Table <tableName> does not exist in the workspace.```
 
 
 ## <a name="supported-tables"></a>支援的資料表
 支援的資料表目前僅限於以下指定的資料表。 除非指定了限制，否則將匯出資料表中的所有資料。 這份清單會隨著加入其他資料表的支援而更新。
 
 
-| Table | 限制 |
+| 資料表 | 限制 |
 |:---|:---|:---|
 | AADDomainServicesAccountLogon | |
 | AADDomainServicesAccountManagement | |

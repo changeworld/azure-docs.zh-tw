@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24f8a60c5b955096f1661877416936b747a16979
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad03942a2200c57475cf8a81d0fb08d475ec6964
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306390"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458027"
 ---
 # <a name="risky-ip-report-public-preview"></a>具風險的 IP 報告 (公開預覽) 
 AD FS 客戶可能會向網際網路公開密碼驗證端點，以提供驗證服務給終端使用者存取 SaaS 應用程式，例如 Microsoft 365。 在此情況下，不良執行者便有機會嘗試登入您的 AD FS 系統，以猜出終端使用者的密碼並存取應用程式資源。 自 Windows Server 2012 R2 中的 AD FS 開始，AD FS 會提供外部網路帳戶鎖定功能以避免這類攻擊。 如果您使用較低的版本，我們強烈建議您將 AD FS 系統升級至 Windows Server 2016。 <br />
@@ -35,7 +35,7 @@ AD FS 客戶可能會向網際網路公開密碼驗證端點，以提供驗證�
 
 > [!NOTE]
 > 若要使用此報告，您必須確定已啟用 AD FS 稽核。 如需詳細資訊，請參閱 [啟用 AD FS 的稽核](how-to-connect-health-agent-install.md#enable-auditing-for-ad-fs)。 <br />
-> 若要存取預覽，則需要全域管理員或[安全性讀取者](../../role-based-access-control/built-in-roles.md#security-reader)的權限。  
+> 若要存取預覽，則需要全域管理員或[安全性讀取者](../../role-based-access-control/built-in-roles.md#security-reader)的權限。  
 > 
 
 ## <a name="what-is-in-the-report"></a>報表中有哪些內容？
@@ -79,16 +79,16 @@ AD FS 客戶可能會向網際網路公開密碼驗證端點，以提供驗證�
 您可以透過**通知設定**更新報告的管理員連絡人。 根據預設，具風險之 IP 的警示電子郵件通知是關閉狀態。 您可以切換 [在有 IP 位址超過失敗活動閾值的報告時取得電子郵件通知] 下的按鈕來啟用通知。含 Connect Health 中的一般警示通知設定一樣，其可讓您在這裡自訂有關「具風險的 IP 報告」的指定通知收件者清單。 您也可以在進行變更時通知所有全域管理員。 
 
 ## <a name="configure-threshold-settings"></a>設定閾值設定
-您可以透過 [閾值設定] 更新警示閾值。 一開始，系統依預設會設定閾值。 「具風險的 IP 報告」閾值設定中有四個類別：
+您可以透過 [閾值設定] 更新警示閾值。 一開始，系統依預設會設定閾值。 以下提供預設值。 「具風險的 IP 報告」閾值設定中有四個類別：
 
 ![Azure AD Connect Health 入口網站](./media/how-to-connect-health-adfs/report4d.png)
 
 | 閾值項目 | 描述 |
 | --- | --- |
-| (錯誤 U/P + 外部網路鎖定) / 天  | 當每**天**的不正確密碼計數加上外部網路鎖定計數超過此閾值設定時，系統會報告活動和觸發程序警示通知。 |
-| (錯誤 U/P + 外部網路鎖定) / 小時 | 當每**小時**的不正確密碼計數加上外部網路鎖定計數超過此閾值設定時，系統會報告活動和觸發程序警示通知。 |
-| 外部網路鎖定 / 天 | 當每**天**的外部網路鎖定計數超過此閾值設定時，系統會報告活動和觸發程序警示通知。 |
-| 外部網路鎖定 / 小時| 當每**小時**的外部網路鎖定計數超過此閾值設定時，系統會報告活動和觸發程序警示通知。 |
+| (錯誤 U/P + 外部網路鎖定) / 天  | 當每**天**的不正確密碼計數加上外部網路鎖定計數超過此閾值設定時，系統會報告活動和觸發程序警示通知。 預設值為 100。|
+| (錯誤 U/P + 外部網路鎖定) / 小時 | 當每**小時**的不正確密碼計數加上外部網路鎖定計數超過此閾值設定時，系統會報告活動和觸發程序警示通知。 預設值為50。|
+| 外部網路鎖定 / 天 | 當每**天**的外部網路鎖定計數超過此閾值設定時，系統會報告活動和觸發程序警示通知。 預設值為 50。|
+| 外部網路鎖定 / 小時| 當每**小時**的外部網路鎖定計數超過此閾值設定時，系統會報告活動和觸發程序警示通知。 預設值為25|
 
 > [!NOTE]
 > - 報告閾值的變更會在設定變更一小時後套用。 

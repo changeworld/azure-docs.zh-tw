@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 41aabeeeb151a6e2cf3c52dbfa2075c55f86989f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c163b7325cb4e039ddcfee95a39b82b4cb258b3c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427316"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461289"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>使用 IT Service Management Connector 將 Azure 連線到 ITSM 工具
 
@@ -107,10 +107,9 @@ ITSMC 支援與下列 ITSM 工具連線：
    藉由使用 ITSM Connector 解決方案，您可以從 Azure 警示、Log Analytics 警示及 Log Analytics 記錄檔記錄中建立工作項目。
 
 ## <a name="template-definitions"></a>範本定義
-   有一些 **工作專案** 類型可以使用 ITSM 工具所定義的範本。
-使用範本可讓客戶定義欄位，這些欄位會根據定義為動作群組一部分的固定值來自動填入欄位。 這項定義是在 ITSM 工具中完成。
-在這些情況下，[使用自訂範本] 的核取方塊可讓客戶有現成的欄位，這些欄位會根據定義為動作群組一部分的固定值自動填入。
-   
+   有一些工作專案類型可以使用 ITSM 工具所定義的範本。
+使用範本可讓客戶定義欄位，這些欄位會根據定義為動作群組一部分的固定值來自動填入欄位。 範本的定義是在 ITSM 工具中完成。
+      
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>從 Azure 警示建立 ITSM 工作項目
 
 一旦建立 ITSM 連線之後，就可使用 [動作群組] 中的 [ITSM 動作]，根據 Azure 警示，在您的 ITSM 工具中建立工作項目。
@@ -139,7 +138,7 @@ ITSMC 支援與下列 ITSM 工具連線：
 
 6. 從下拉式功能表選取 [工作項目] 類型。
 
-7. 選擇使用現有的範本，或使用 [一般] 範本，並填寫 ITSM 產品所需的欄位。
+7. 如果您想要以固定值填寫方塊欄位，請選取 [使用自訂範本] 的核取方塊，否則請選擇使用下拉式清單中的現有 [範本](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) ，然後以固定值填滿範本欄位。
 
 8. 按一下 [確定]。
 

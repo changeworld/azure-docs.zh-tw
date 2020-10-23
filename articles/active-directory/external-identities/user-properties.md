@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b68a4d0c9c33f6a7eb1a2300955e9185bd52d8fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1052ad06400eb70fe41617421b54978bddd9e50
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705464"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441363"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B 共同作業使用者的屬性
 
@@ -104,11 +104,11 @@ ms.locfileid: "90705464"
 ![顯示 [使用者設定] 中 [外部使用者] 選項的螢幕擷取畫面](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>能否在 Exchange 全域通訊清單中顯示來賓使用者？
-是。 根據預設，來賓物件不會在貴組織的全域通訊清單中顯示，但您可以使用 Azure Active Directory PowerShell 讓其顯示。 如需詳細資訊，請參閱 [[管理 Microsoft 365 群組中的來賓存取](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups)] 中**的 [我可以在全域通訊清單中顯示來賓物件嗎？** ]。
+是。 根據預設，來賓物件不會在貴組織的全域通訊清單中顯示，但您可以使用 Azure Active Directory PowerShell 讓其顯示。 如需詳細資訊，請參閱 [[管理 Microsoft 365 群組中的來賓存取](/office365/admin/create-groups/manage-guest-access-in-groups)] 中**的 [我可以在全域通訊清單中顯示來賓物件嗎？** ]。
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>我可以更新來賓使用者的電子郵件地址嗎？
 
-如果來賓使用者接受您的邀請，且後續變更其電子郵件地址，則新的電子郵件不會自動同步至您目錄中的來賓使用者物件。 Mail 屬性是透過 [MICROSOFT GRAPH API](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0)所建立。 您可以透過 Microsoft Graph API、Exchange 系統管理中心或 [Exchange Online PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps)來更新 mail 屬性。 變更將會反映在 Azure AD guest 使用者物件中。
+如果來賓使用者接受您的邀請，且後續變更其電子郵件地址，則新的電子郵件不會自動同步至您目錄中的來賓使用者物件。 Mail 屬性是透過 [MICROSOFT GRAPH API](/graph/api/resources/user?view=graph-rest-1.0)所建立。 您可以透過 Microsoft Graph API、Exchange 系統管理中心或 [Exchange Online PowerShell](/powershell/module/exchange/users-and-groups/set-mailuser?view=exchange-ps)來更新 mail 屬性。 變更將會反映在 Azure AD guest 使用者物件中。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,12 +3,12 @@ title: 死信和重試原則-Azure 事件方格
 description: 說明如何為事件方格自訂事件傳遞選項。 設定無效信件目的地，然後指定要重試傳遞的時間長度。
 ms.topic: conceptual
 ms.date: 07/20/2020
-ms.openlocfilehash: e780ddd5c49b1a2cced10a1907d25784b0285f01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d8cd74ccfb77bcec45d06071a4f46fb2a640cf8
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261799"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460932"
 ---
 # <a name="set-dead-letter-location-and-retry-policy"></a>設定無效信件的位置和重試原則
 
@@ -17,7 +17,7 @@ ms.locfileid: "91261799"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> 若要瞭解訊息傳遞、重試和無效信件，請參閱概念文章： [事件方格訊息傳遞和重試]()。
+> 若要瞭解訊息傳遞、重試和無效信件，請參閱概念文章： [事件方格訊息傳遞和重試](delivery-and-retry.md)。
 
 ## <a name="set-dead-letter-location"></a>設定無效信件位置
 

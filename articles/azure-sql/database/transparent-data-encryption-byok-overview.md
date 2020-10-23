@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 4e17af8289c68ded282a9c4a9ca2d400d31ca30d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b89b8cc58cb48770b9b42036f8b834cc1bf11b8b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602664"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441125"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>搭配使用 Azure SQL 透明資料加密與客戶管理的金鑰
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ Azure SQL [透明資料加密 (TDE) ](/sql/relational-databases/security/encrypt
 > 對於使用服務管理的 TDE，而想要開始使用客戶管理的 TDE，資料會在切換過程中保持加密狀態，而且不會有停機時間或重新加密資料庫檔案。 從服務管理的金鑰切換至客戶管理的金鑰時，只需要重新加密 DEK，這是一項快速且線上的操作。
 
 > [!NOTE]
-> 若要為 Azure SQL 客戶提供兩層的待用資料加密，使用 AES-256 加密演算法) 的基礎結構加密 (正在推出平臺管理的金鑰。這會提供待用加密的一層，以及 TDE 與客戶管理的金鑰（已提供）。 目前，客戶必須要求存取這項功能。 如果您對這項功能有興趣，請聯絡 AzureSQLDoubleEncryptionAtRest@service.microsoft.com 。
+> 若要為 Azure SQL 客戶提供兩層的待用資料加密，使用 AES-256 加密演算法) 的基礎結構加密 (正在推出平臺管理的金鑰。這會提供待用加密的一層，以及 TDE 與客戶管理的金鑰（已提供）。 針對 Azure SQL Database 和受控執行個體，在開啟基礎結構加密時，所有資料庫（包括 master 資料庫和其他系統資料庫）都會加密。 目前，客戶必須要求存取這項功能。 如果您對這項功能有興趣，請聯絡 AzureSQLDoubleEncryptionAtRest@service.microsoft.com 。
 
 ## <a name="benefits-of-the-customer-managed-tde"></a>客戶管理 TDE 的優點
 

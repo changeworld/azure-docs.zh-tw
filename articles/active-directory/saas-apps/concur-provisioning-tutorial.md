@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 9e7ac5afb176e58ce47f918ddcbab742ecb90baf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65db3bcbad905626a47b617c3c34935ec5cd0e88
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317441"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455415"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>教學課程︰設定 Concur 來自動佈建使用者
 
@@ -35,7 +35,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 在設定並啟用佈建服務之前，您必須決定 Azure AD 中的哪些使用者及/或群組代表需要 Concur 應用程式存取權的使用者。 一旦決定後，您可以依照此處的指示，將這些使用者指派給 Concur 應用程式︰
 
-[將使用者或群組指派給企業應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[將使用者或群組指派給企業應用程式](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-concur"></a>將使用者指派給 Concur 的重要秘訣
 
@@ -94,7 +94,7 @@ Concur 顧問或用戶端系統管理員必須建立不同的 Web 服務系統�
 
 8. 選取您的 Concur 執行個體，然後選取 [佈建]**** 索引標籤。
 
-9. 將 [佈建模式] 設定為 [自動]。 
+9. 將 [佈建模式]  設定為 [自動]  。 
  
     ![Azure 入口網站中 Concur [布建] 索引標籤的螢幕擷取畫面。 [布建模式] 設定為 [自動]，[測試連接] 按鈕會反白顯示。](./media/concur-provisioning-tutorial/provisioning.png)
 
@@ -121,4 +121,3 @@ Concur 顧問或用戶端系統管理員必須建立不同的 Web 服務系統�
 * [管理企業應用程式的使用者帳戶佈建](tutorial-list.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 * [設定單一登入](concur-tutorial.md)
-

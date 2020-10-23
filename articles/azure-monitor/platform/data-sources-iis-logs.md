@@ -1,20 +1,23 @@
 ---
-title: Azure 監視器中的 IIS 記錄 | Microsoft Docs
+title: 在 Azure 監視器中使用 Log Analytics 代理程式收集 IIS 記錄檔
 description: Internet Information Services (IIS) 會將使用者活動儲存在記錄檔中，並可由 Azure 監視器進行收集。  本文描述如何設定收集 IIS 記錄，以及它們在 Azure 監視器中所建立記錄的詳細資料。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: 0bca809d6c25594c1c614f694e71e39a4f61e2a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: ca3cf93329ea84183ef11eec8f8fac52cd84d445
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87008178"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461187"
 ---
-# <a name="collect-iis-logs-in-azure-monitor"></a>在 Azure 監視器中收集 IIS 記錄
-Internet Information Services (IIS) 會將使用者活動儲存在記錄檔中，並可由 Azure 監視器進行收集並儲存為[記錄資料](data-platform.md)。
+# <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>在 Azure 監視器中使用 Log Analytics 代理程式收集 IIS 記錄檔
+Internet Information Services (IIS) 會將使用者活動儲存在 log Analytics 代理程式所收集並儲存在 [Azure 監視器記錄](data-platform.md)檔中的記錄檔。
+
+> [!IMPORTANT]
+> 本文說明如何使用 [Log Analytics 代理程式](log-analytics-agent.md) 收集 IIS 記錄，這是 Azure 監視器所使用的其中一個代理程式。 其他代理程式會收集不同的資料，並以不同的方式進行設定。 如需可用的代理程式清單和可收集的資料，請參閱 [Azure 監視器代理](agents-overview.md) 程式的總覽。
 
 ![IIS 記錄](media/data-sources-iis-logs/overview.png)
 
@@ -23,10 +26,10 @@ Azure 監視器會從 IIS 建立的記錄檔收集項目，因此您必須[設�
 
 Azure 監視器只支援以 W3C 格式儲存的 IIS 記錄檔，不支援自訂欄位或 IIS 進階記錄。 它不會收集 NCSA 或 IIS 原生格式的記錄。
 
-從 [[進階設定] 功能表](agent-data-sources.md#configuring-data-sources)在 Azure 監視器中設定 IIS 記錄。  您只需選取 [Collect W3C format IIS log files]\(收集 W3C 格式的 IIS 記錄檔) **** 即可完成設定。
+從 Log Analytics 代理程式的 [ [Advanced Settings] （Advanced Settings）功能表](agent-data-sources.md#configuring-data-sources) ，在 Azure 監視器中設定 IIS 記錄。  您只需選取 [Collect W3C format IIS log files]\(收集 W3C 格式的 IIS 記錄檔) **** 即可完成設定。
 
 
-## <a name="data-collection"></a>資料收集
+## <a name="data-collection"></a>資料集合
 Azure 監視器會在每次記錄時間戳記變更時，從每個代理程式收集 IIS 記錄專案。 每隔 **5 分鐘**就會讀取一次記錄。 如果基於任何原因，IIS 在建立新檔案時不會更新變換時間的時間戳記，則會在建立新檔案之後收集項目。 新檔案建立的頻率是由 IIS 網站的 **記錄檔變換排程** 設定所控制，預設為一天一次。 如果設定為 [ **每**小時]，Azure 監視器每小時會收集記錄檔。 如果設定為 [ **每日**]，Azure 監視器每隔24小時會收集記錄一次。
 
 
@@ -68,6 +71,6 @@ IIS 記錄檔記錄都具有 **W3CIISLog** 類型以及下表中的屬性：
 | W3CIISLog &#124; 其中 csHost = = "www \. contoso.com" &#124; 摘要計數 ( # A2 By csUriStem |主機 www contoso.com 的 IIS 記錄專案計數（依 URL） \. 。 |
 | W3CIISLog &#124; summarize sum(csBytes) by Computer &#124; take 500000 |每部 IIS 電腦所接收的位元組總數。 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 將 Azure 監視器設定成收集其他[資料來源](agent-data-sources.md)，以進行分析。
 * 了解[記錄查詢](../log-query/log-query-overview.md)，以分析從資料來源和解決方案收集到的資料。

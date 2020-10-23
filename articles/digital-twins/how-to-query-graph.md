@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 127fd9a9e47a85479018524998e33f44b0a65ba8
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ea12b3eb72ce05f2672f6ca0912cc67345413c3c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078471"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461272"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查詢 Azure 數位 Twins 對應項圖表
 
-本文提供使用 [Azure 數位 Twins 查詢語言](concepts-query-language.md) 來查詢對應項 [圖表](concepts-twins-graph.md) 以取得資訊的範例和詳細資料。 您可以使用 Azure 數位 Twins [**查詢 api**](how-to-use-apis-sdks.md)在圖形上執行查詢。
+本文提供使用 [Azure 數位 Twins 查詢語言](concepts-query-language.md) 來查詢對應項 [圖表](concepts-twins-graph.md) 以取得資訊的範例和詳細資料。 您可以使用 Azure 數位 Twins [**查詢 api**](/rest/api/digital-twins/dataplane/query)在圖形上執行查詢。
 
 [!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
 

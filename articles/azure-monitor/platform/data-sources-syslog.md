@@ -1,20 +1,23 @@
 ---
-title: 在 Azure 監視器中收集和分析 Syslog 訊息 | Microsoft Docs
+title: 在 Azure 監視器中使用 Log Analytics 代理程式收集 Syslog 資料來源
 description: Syslog 是通用於 Linux 的事件記錄通訊協定。 本文描述如何在 Log Analytics 設定收集 Syslog 訊息，以及它們所建立之記錄的詳細資料。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/22/2019
-ms.openlocfilehash: d9efdb11ffd30c68a0ac8ea8e8156fe707f188de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 2d86983c8ed6c738e4b4e96d8d291dee4dc4d87d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322307"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440615"
 ---
-# <a name="syslog-data-sources-in-azure-monitor"></a>Azure 監視器中的 Syslog 資料來源
+# <a name="collect-syslog-data-sources-with-log-analytics-agent"></a>使用 Log Analytics 代理程式收集 Syslog 資料來源
 Syslog 是通用於 Linux 的事件記錄通訊協定。 應用程式將傳送的訊息可能會儲存在本機電腦上，或傳遞到 Syslog 收集器。 安裝 Log Analytics Linux 代理程式時，它會設定本機 Syslog 精靈來將訊息轉送到代理程式。 然後，代理程式會將訊息傳送至 Azure 監視器 (建立相對應記錄的位置)。  
+
+> [!IMPORTANT]
+> 本文說明如何使用 [Log Analytics 代理程式](log-analytics-agent.md) （Azure 監視器所使用的其中一個代理程式）來收集 Syslog 事件。 其他代理程式會收集不同的資料，並以不同的方式進行設定。 如需可用的代理程式清單和可收集的資料，請參閱 [Azure 監視器代理](agents-overview.md) 程式的總覽。
 
 > [!NOTE]
 > Azure 監視器支援收集由 rsyslog 或 syslog-ng 所傳送的訊息，其中 rsyslog 是預設精靈。 Red Hat Enterprise Linux 第 5 版、CentOS 和 Oracle Linux 版本 (sysklog) 不支援預設 syslog 精靈，進行 syslog 事件收集。 若要從此版本的這些散發套件收集 syslog 資料，應安裝 [rsyslog daemon](http://rsyslog.com) 並設定為取代 sysklog。
@@ -45,7 +48,7 @@ Syslog 收集器支援下列功能：
 Log Analytics Linux 代理程式只會收集具有其設定中指定之設備和嚴重性的事件。 您可以透過 Azure 入口網站，或藉由管理您 Linux 代理程式上的組態檔來設定 Syslog。
 
 ### <a name="configure-syslog-in-the-azure-portal"></a>在 Azure 入口網站中設定 Syslog
-從 [[進階設定] 中的 [資料] 功能表](agent-data-sources.md#configuring-data-sources)設定 Syslog。 這個組態會傳遞到每個 Linux 代理程式上的組態檔。
+從 Log Analytics 工作區的 [資料] 功能表中，設定 [ [資料] 功能表中](agent-data-sources.md#configuring-data-sources) 的 Syslog。 這個組態會傳遞到每個 Linux 代理程式上的組態檔。
 
 您可以先選取 [ **將下列設定套用到我的電腦** ] 選項，然後輸入其名稱，然後按一下，以新增設備 **+** 。 針對每個設備，僅會收集包含所選嚴重性的訊息。  請檢查您想要收集之特定設備的嚴重性。 您無法提供任何其他準則來篩選訊息。
 
@@ -226,7 +229,7 @@ Syslog 記錄具有 **Syslog** 類型，以及下表中的屬性。
 | Syslog &#124; summarize AggregatedValue = count() by Computer |依電腦的 Syslog 記錄計數。 |
 | Syslog &#124; summarize AggregatedValue = count() by Facility |依設備的 Syslog 記錄計數。 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 了解[記錄查詢](../log-query/log-query-overview.md)，以分析從資料來源和解決方案收集到的資料。
 * 使用 [自訂欄位](./custom-fields.md) ，以將來自 syslog 記錄的資料剖析至個別欄位。
 * [設定 Linux 代理程式](../learn/quick-collect-linux-computer.md) ，以收集其他類型的資料。

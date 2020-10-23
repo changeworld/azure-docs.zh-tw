@@ -3,22 +3,28 @@ title: 概念- (RBAC) 的角色型存取控制
 description: 瞭解 Azure VMware 解決方案的角色型存取控制的主要功能
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: a863f44dd5fdd485f8d5ebfcfbacee994e6b63a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fbda24ec6a8c1d08570d7f64270a954eb3d8a35
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579686"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440938"
 ---
 # <a name="role-based-access-control-rbac-for-azure-vmware-solution"></a>以角色為基礎的存取控制 (適用于 Azure VMware 解決方案的 RBAC) 
 
-在 vCenter 和 ESXi 內部部署中，系統管理員可以存取 vCenter administrator@vsphere.local 帳戶，而且可能會有指派的額外 Active Directory (AD) 使用者/群組。 不過，在 Azure VMware 解決方案部署中，系統管理員無法存取系統管理員使用者帳戶，但可以將 AD 使用者和群組指派給 vCenter 上的 CloudAdmin 角色。  此外，Azure VMware 解決方案私用雲端使用者無權存取或設定 Microsoft 支援及管理的特定管理元件，例如叢集、主機、資料存放區和分散式虛擬交換器。
-
-
-在 Azure VMware 解決方案中，vCenter 有一個稱為 cloudadmin 的內建本機使用者，它會指派給內建的 CloudAdmin 角色。 本機 cloudadmin 使用者可用來設定 AD 中的其他使用者。 一般而言，CloudAdmin 角色具有在私人雲端中建立和管理工作負載的許可權， (虛擬機器、資源集區、資料存放區和網路) 。 Azure VMware 解決方案中的 CloudAdmin 角色有一組特定的 vCenter 許可權，與其他 VMware 雲端解決方案不同。   
+在 Azure VMware 解決方案中，vCenter 有內建的本機使用者，稱為 cloudadmin，並指派給內建的 CloudAdmin 角色。 本機 cloudadmin 使用者用於設定 AD 中的使用者。 一般而言，CloudAdmin 角色會在您的私人雲端中建立和管理工作負載。 在 Azure VMware 解決方案中，CloudAdmin 角色具有與其他 VMware 雲端解決方案不同的 vCenter 許可權。     
 
 > [!NOTE]
 > Azure VMware 解決方案目前不提供 vCenter 或 Azure VMware 解決方案入口網站上的自訂角色。 
+
+在 vCenter 和 ESXi 內部部署中，系統管理員可以存取 vCenter administrator@vsphere.local 帳戶。 它們也可以有指派的其他 Active Directory (AD) 使用者/群組。 
+
+在 Azure VMware 解決方案部署中，系統管理員無法存取系統管理員使用者帳戶。 但他們可以將 AD 使用者和群組指派給 vCenter 上的 CloudAdmin 角色。  
+
+私用雲端使用者沒有存取權，也無法設定 Microsoft 支援及管理的特定管理元件。 例如，叢集、主機、資料存放區和分散式虛擬交換器。
+
+
+
 
 ## <a name="azure-vmware-solution-cloudadmin-role-on-vcenter"></a>VCenter 上的 Azure VMware Solution CloudAdmin 角色
 

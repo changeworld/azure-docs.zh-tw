@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: d56f9890396d0381d24676964dabc57e2020ec28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a0a69784be3b03b030ef599037b57c2c20ea2c6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317424"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454672"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>教學課程︰設定 DocuSign 來自動佈建使用者
 
@@ -35,7 +35,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 在設定並啟用佈建服務之前，您必須決定 Azure AD 中的哪些使用者及/或群組代表需要 DocuSign 應用程式存取權的使用者。 一旦決定後，您可以依照此處的指示，將這些使用者指派給 DocuSign 應用程式︰
 
-[將使用者或群組指派給企業應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[將使用者或群組指派給企業應用程式](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-docusign"></a>將使用者指派給 DocuSign 的重要秘訣
 
@@ -63,7 +63,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 1. 選取您的 DocuSign 執行個體，然後選取 [佈建]**** 索引標籤。
 
-1. 將 [佈建模式] 設定為 [自動]。 
+1. 將 [佈建模式]  設定為 [自動]  。 
 
     ![Azure 入口網站中 DocuSign [布建] 索引標籤的螢幕擷取畫面。 布建模式設定為 [自動] 和 [管理員使用者名稱]、[密碼] 和 [測試連接]。](./media/docusign-provisioning-tutorial/provisioning.png)
 
@@ -93,6 +93,12 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 這會啟動在 [使用者和群組] 區段中指派給 DocuSign 之任何使用者的首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料]**** 區段來監視進度，並依循連結前往佈建活動記錄，此記錄會描述您 DocuSign 應用程式上佈建服務所執行的所有動作。
 
 如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
+
+## <a name="troubleshooting-tips"></a>疑難排解秘訣
+* 您可以使用參數對應中的運算式，在 Docusign 中為使用者布建角色或許可權設定檔，方法是使用 [switch](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#switch) 和 [singleAppRoleAssignment](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#singleapproleassignment) 函數。 例如，下列運算式會在使用者已在 Azure AD 中指派「DS 系統管理員」角色時，布建識別碼 "8032066"。 如果使用者未在 Azure AD 端指派角色，則不會布建任何許可權設定檔。 您可以從 DocuSign [入口網站](https://support.docusign.com/articles/Default-settings-for-out-of-the-box-DocuSign-Permission-Profiles)中取出識別碼。
+
+Switch (SingleAppRoleAssignment ( [appRoleAssignments] ) 、""、"8032066"、"DS Admin" ) 
+
 
 ## <a name="additional-resources"></a>其他資源
 

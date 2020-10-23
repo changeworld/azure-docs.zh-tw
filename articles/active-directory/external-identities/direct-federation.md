@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b7350d793ea42a46d52d881f1399174a3bb5d0e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7cb0223b338457ad5eeea0b0bb40593f57a0d3aa
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362887"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442077"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>直接與來賓使用者的 AD FS 和第三方提供者同盟 (預覽)
 
@@ -66,7 +66,7 @@ ms.locfileid: "92362887"
 如果您在識別提供者設定中指定中繼資料 URL，Azure AD 便會在簽署憑證到期時自動予以更新。 不過，如果憑證因任何原因而在到期之前輪替，或如果您未提供中繼資料 URL，Azure AD 便無法加以更新。 在此情況下，您必須手動更新簽署憑證。
 
 ### <a name="limit-on-federation-relationships"></a>同盟關聯性的限制
-目前支援的同盟關聯性上限為 1,000 個。 這項限制包括[內部同盟](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)和直接同盟。
+目前支援的同盟關聯性上限為 1,000 個。 這項限制包括[內部同盟](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)和直接同盟。
 
 ### <a name="limit-on-multiple-domains"></a>多個網域的限制
 我們目前不支援與來自相同租用戶的多個網域直接同盟。
@@ -87,7 +87,7 @@ ms.locfileid: "92362887"
 
 ### <a name="saml-20-configuration"></a>SAML 2.0 設定
 
-Azure AD B2B 可設定為與使用 SAML 通訊協定的識別提供者同盟，但有下列特定需求。 如需如何在 SAML 識別提供者與 Azure AD 之間設定信任的詳細資訊，請參閱[使用 SAML 2.0 識別提供者 (IdP) 進行單一登入](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-saml-idp)。  
+Azure AD B2B 可設定為與使用 SAML 通訊協定的識別提供者同盟，但有下列特定需求。 如需如何在 SAML 識別提供者與 Azure AD 之間設定信任的詳細資訊，請參閱[使用 SAML 2.0 識別提供者 (IdP) 進行單一登入](../hybrid/how-to-connect-fed-saml-idp.md)。  
 
 > [!NOTE]
 > 直接同盟的目標網域不得是 Azure AD 上的 DNS 驗證網域。 驗證 URL 網域必須符合目標網域，或者必須是所允許識別提供者的網域。 如需詳細資訊，請參閱[限制](#limitations)一節。 
