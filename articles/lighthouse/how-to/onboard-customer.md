@@ -3,12 +3,12 @@ title: 讓客戶在 Azure Lighthouse 上線
 description: 瞭解如何將客戶上架到 Azure Lighthouse，讓其資源可透過您自己的租使用者使用 Azure 委派的資源管理來存取及管理。
 ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: 926e9bc5302403063d536e31fe304d837bca8ec5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: b5a6d60d10b2cee7f26ae405ed95b980f423b42e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109063"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426341"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>讓客戶在 Azure Lighthouse 上線
 
@@ -62,7 +62,7 @@ az account show
 
 ## <a name="define-roles-and-permissions"></a>定義角色與權限
 
-身為服務提供者，您可以對單一客戶執行多個工作，每個都要求存取不同範圍。 您可以定義所需數量的授權，以將適當的 [角色型存取控制 (RBAC) 內建角色](../../role-based-access-control/built-in-roles.md) 指派給租使用者中的使用者。
+身為服務提供者，您可以對單一客戶執行多個工作，每個都要求存取不同範圍。 您可以定義所需數量的授權，以便將適當的 [Azure 內建角色](../../role-based-access-control/built-in-roles.md) 指派給租使用者中的使用者。
 
 為了讓管理更容易，建議您針對每個角色使用 Azure AD 的使用者群組。 這可讓您彈性地將個別使用者新增或移除至具有存取權的群組，如此您就不需要重複上執行緒序來進行使用者變更。 您可以將角色指派給服務主體，這對自動化案例可能很有用。
 

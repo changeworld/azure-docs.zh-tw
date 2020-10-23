@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 094a146f8e0e32667986a8e807955be1a5f66e39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71d9af57ab85d694cc08f30c19f6ac87796b2c4e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613914"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425552"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>教學課程︰設定 Tableau Online 來自動佈建使用者
 
@@ -86,11 +86,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![應用程式清單中的 Tableau Online 連結](common/all-applications.png)
 
-3. 選取 [佈建] 索引標籤。
+3. 選取 [佈建]  索引標籤。
 
     ![Tableau Online 佈建](./media/tableau-online-provisioning-tutorial/ProvisioningTab.png)
 
-4. 將 [佈建模式] 設定為 [自動]。
+4. 將 [佈建模式]  設定為 [自動]  。
 
     ![Tableau Online 布建模式](./media/tableau-online-provisioning-tutorial/ProvisioningCredentials.png)
 
@@ -98,7 +98,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
    * 在 [ **網域** ] 方塊中，根據步驟6填入子域。
 
-   * 在 [系統 **管理員使用者名稱** ] 方塊中，填入 Clarizen 租使用者中系統管理員帳戶的使用者名稱。 例如 admin@contoso.com。
+   * 在 [系統 **管理員使用者名稱** ] 方塊中，填入 Tableau Online 租使用者中系統管理員帳戶的使用者名稱。 例如 admin@contoso.com。
 
    * 在 [ **管理密碼** ] 方塊中，填入對應到管理員使用者名稱之系統管理員帳戶的密碼。
 
@@ -125,7 +125,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![Tableau 線上通知電子郵件](./media/tableau-online-provisioning-tutorial/EmailNotification.png)
 
-9. 選取 [儲存]****。
+9. 選取 [儲存]。
 
 10. 在 [對應]**** 區段中，選取 [將 Azure Active Directory 使用者同步至 Tableau]****。
 

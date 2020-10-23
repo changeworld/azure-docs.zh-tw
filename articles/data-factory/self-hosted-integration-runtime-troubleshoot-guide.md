@@ -2,17 +2,17 @@
 title: 針對在 Azure Data Factory 中的自我裝載整合執行階段進行疑難排解
 description: 深入了解如何針對在 Azure Data Factory 中的自我裝載整合執行階段進行疑難排解。
 services: data-factory
-author: nabhishek
+author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 10/16/2020
-ms.author: abnarain
-ms.openlocfilehash: f0957b74bf13acfcc80e38cccaec389fbbd19fa0
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.date: 10/22/2020
+ms.author: lle
+ms.openlocfilehash: d35dd94c8aa264c9b4dd679d3b50f3783acb2fde
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131293"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427222"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>針對自我裝載整合執行階段進行疑難排解
 
@@ -62,7 +62,7 @@ ms.locfileid: "92131293"
 
 這是 WCF 的已知問題：WCF TLS/SSL 驗證只會檢查 SAN 中的最後一個 DNSName。 
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通常是因為 SSL 憑證不正確而發生。 SAN 中的最後一個 DNSName 應該是有效的。 請遵循下列步驟來驗證。 
 1.  開啟管理主控台，再從憑證詳細資料中，再次檢查 *主體* 和 *主體替代名稱* 。 例如，在上述案例中， *主體別名*中的最後一個專案是「DNS 名稱 = microsoft.com.com」，並不合法。
@@ -98,7 +98,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 處理與 SSL/TLS 交握相關的案例時，可能會遇到一些與憑證鏈結驗證相關的問題。 
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 - 以下是針對 x.509 憑證鏈組建失敗進行疑難排解的快速且直覺的方式。
  
@@ -169,7 +169,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 ![設定篩選](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 您可以找到 **System.ValueTuple.dll** 位於 *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway\DataScan* 資料夾。 將 **System.ValueTuple.dll** 複製到 *C:\Program Files\Microsoft Integration Runtime\4.0\Gateway* 資料夾，以解決此問題。
 
@@ -199,7 +199,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 - 已刪除自我裝載的 IR 節點或入口網站中的邏輯自我裝載 IR。
 - 已完成完整的解除安裝作業。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 如果上述任一原因都不適用，您可以移至資料夾： *%Programdata%\Microsoft\Data Transfer\DataManagementGateway*，並檢查名稱為 [設定] 的檔案 **是否已刪除** 。 如果已刪除，請依照[這裡](https://www.netwrix.com/how_to_detect_who_deleted_file.html)的指示，稽核刪除該檔案的人員。
 
@@ -218,7 +218,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
  
 在上述情況下，每個資料存放區的連結服務都應該使用相同的 IR 建立，而該 IR 應該能夠透過網路存取這兩個資料存放區。 無論 IR 是安裝在來源資料存放區、目的地資料存放區或第三部電腦上，如果有兩個連結服務是使用不同的 IR 建立的，但在相同的複製活動中使用，則會使用目的地 IR，而且這兩個資料存放區的驅動程式必須安裝在目的地 IR 電腦上。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 將來源和目的地驅動程式安裝在目的地 IR 上，並確定其可以存取來源資料存放區。
  
@@ -235,7 +235,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 您的自我裝載整合執行階段是以具有兩個節點的 HA 模式建立，但這兩者的狀態並非認證同步，這表示儲存在發送器節點中的認證不會同步處理至其他背景工作角色節點。 如果從發送器節點到背景工作節點發生任何容錯移轉，但認證只存在於先前的發送器節點中，則當嘗試存取認證時，工作將會失敗，而且您會遇到上述錯誤。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 避免此問題的唯一方法是確保兩個節點都處於認證同步狀態。 否則，您必須重新針對新發送器輸入認證。
 
@@ -254,7 +254,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 - 使用者帳戶權限太低，無法存取私密金鑰。
 - 憑證是以簽章的形式產生，並非作為金鑰交換。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 1.  使用可存取私密金鑰的特殊權限帳戶來操作 UI。
 2.  執行下列命令以匯入憑證：
@@ -282,7 +282,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 有許多資源只會授與服務帳戶。 將服務帳戶變更為另一個帳戶時，所有相依資源的許可權都會保持不變。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 移至 Integration Runtime 事件記錄檔以檢查錯誤。
 
@@ -353,7 +353,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 自 *Integration Runtime 3.0*版起，已移除現有 Integration Runtime 節點上的 [ **註冊** ] 按鈕，以啟用更清楚且更安全的環境。 若某個節點已註冊到某個 Integration Runtime (無論是否為線上)，若要將該節點重新註冊至另一個 Integration Runtime，您必須先解除安裝舊有的節點，再安裝並註冊該節點。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 1. 移至 [控制台] 卸載現有的 Integration Runtime。
 
@@ -382,7 +382,7 @@ Get_LoopbackIpOrName 時，無法在新電腦上註冊自我裝載 IR。
 
 解決 localhost 時通常會發生此問題。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 使用 Localhost 127.0.0.1 來裝載檔案並解決這類問題。
 
@@ -618,34 +618,37 @@ Get_LoopbackIpOrName 時，無法在新電腦上註冊自我裝載 IR。
 
 ### <a name="receiving-email-to-update-the-network-configuration-to-allow-communication-with-new-ip-addresses"></a>接收電子郵件以更新網路設定，以允許與新的 IP 位址進行通訊
 
-#### <a name="symptoms"></a>徵兆
+#### <a name="email-notification-from-microsoft"></a>來自 Microsoft 的電子郵件通知
 
 您可能會收到下列電子郵件通知，建議您更新網路設定，以允許 Azure Data Factory 2020 年11月8日與新的 IP 位址進行通訊：
 
    ![電子郵件通知](media/self-hosted-integration-runtime-troubleshoot-guide/email-notification.png)
 
-#### <a name="resolution"></a>解決方法
+#### <a name="how-to-determine-if-you-are-impacted-by-this-notification"></a>如何判斷您是否受到此通知的影響
 
-此通知適用于從**內部部署**或**Azure 虛擬私人網路**中執行的**Integration Runtime**到 ADF 服務的**輸出通訊**。 例如，如果您在 Azure VNET 中有自我裝載的 IR 或 Azure SQL Server Integration Services (SSIS) IR，而這需要存取 ADF 服務，則您需要在網路安全性群組中新增此 IP 範圍， ** (NSG) ** 規則。 如果您的輸出 NSG 規則使用服務標籤，將不會有任何影響。
+此通知會影響下列案例：
+##### <a name="scenario-1-outbound-communication-from-self-hosted-integration-runtime-running-on-premises-behind-the-corporate-firewall"></a>案例1：從自我裝載的 Integration Runtime 在公司防火牆後方內部部署執行的輸出通訊
+如何判斷您是否受影響：
+- 如果您使用本檔中所述的方法，根據 FQDN 名稱定義防火牆規則，則不會受到影響： [ip 位址的防火牆設定和允許清單設定](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)。
+- 但是，如果您在公司防火牆上明確允許清單輸出 Ip，就會受到影響。
 
-#### <a name="more-details"></a>其他詳細資訊
+當您受到影響時要採取的動作：通知您的網路基礎結構小組，更新您的網路設定，以在2020年11月8日之前使用最新的 Data Factory IP 位址。  若要下載最新的 IP 位址，請移至 [服務標籤 [IP 範圍下載] 連結](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)。
 
-這些新的 IP 範圍 **只會影響** 來自 **內部部署防火牆** 或 **azure 虛擬私人網路** 的輸出通訊規則到 ADF 服務 (如需在內部部署網路或 azure 虛擬網路中有自我裝載 ir 或 SSIS ir 的情況下，您必須在內部部署網路或 azure 虛擬網路中使用自我裝載 ir 或 SSIS IR，) [而且](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway) 必須與 adf 服務通訊，
+##### <a name="scenario-2-outbound-communication-from-self-hosted-integration-runtime-running-on-an-azure-vm-inside-customer-managed-azure-virtual-network"></a>案例2：從自我裝載的 Integration Runtime 在客戶管理的 Azure 虛擬網路內于 Azure VM 上執行的輸出通訊
+如何判斷您是否受影響：
+- 檢查您的私人網路中是否有任何包含自我裝載 Integration Runtime 的輸出 NSG 規則。 如果沒有輸出限制，就不會有任何影響。
+- 如果您有輸出規則限制，請檢查您是否使用服務標記。 如果您使用服務標籤，則不需要變更或新增任何新的 IP 範圍，因為新的 IP 範圍會在現有的服務標籤底下。 
+ ![目的地檢查](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
+- 但是，如果您在 Azure 虛擬網路上的 NSG 規則設定上明確地允許清單輸出 IP 位址，則會受到影響。
 
-針對使用 **AZURE VPN**的現有使用者：
+當您受到影響時要採取的動作：通知網路基礎結構小組，以更新 Azure 虛擬網路設定上的 NSG 規則，以在2020年11月8日之前使用最新的 Data Factory IP 位址。  若要下載最新的 IP 位址，請移至 [服務標籤 [IP 範圍下載] 連結](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)。
 
-1. 檢查您私人網路中設定 SSIS 或 Azure SSIS 的任何輸出 NSG 規則。 如果沒有輸出限制，就不會影響它們。
-1. 如果您有輸出規則限制，請檢查您是否使用服務標記。 如果您使用服務標籤，則不需要變更或新增任何新的 IP 範圍，因為新的 IP 範圍會在現有的服務標籤底下。 
-  
-    ![目的地檢查](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
+##### <a name="scenario-3-outbound-communication-from-ssis-integration-runtime-in-customer-managed-azure-virtual-network"></a>案例3：客戶管理的 Azure 虛擬網路中來自 SSIS Integration Runtime 的輸出通訊
+- 檢查您的私人網路中是否有包含 SSIS Integration Runtime 的任何輸出 NSG 規則。 如果沒有輸出限制，就不會有任何影響。
+- 如果您有輸出規則限制，請檢查您是否使用服務標記。 如果您使用服務標籤，則不需要變更或新增任何新的 IP 範圍，因為新的 IP 範圍會在現有的服務標籤底下。
+- 但是，如果您在 Azure 虛擬網路上的 NSG 規則設定上明確允許清單了輸出 IP 位址，則會受到影響。
 
-1. 如果您直接在規則設定中使用 IP 位址，請檢查是否在服務標籤 [IP 範圍下載連結](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)中新增所有 ip 範圍。 我們已將新的 IP 範圍放在此檔案中。 針對新使用者：您只需要在檔中追蹤相關的自我裝載 IR 或 SSIS IR 設定，即可設定 NSG 規則。
-
-適用于 **內部部署**具有 SSIS Ir 或自我裝載 ir 的現有使用者：
-
-- 與您的網路基礎結構小組進行驗證，看看他們是否需要在輸出規則的通訊上包含新的 IP 範圍位址。
-- 針對以 FQDN 名稱為基礎的防火牆規則，當您使用 [防火牆設定] 記錄的設定 [以及 ip 位址的允許清單設定](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)時，不需要更新。 
-- 某些內部部署防火牆支援服務標籤，如果您使用更新的 Azure 服務標籤設定檔，則不需要進行其他變更。
+當您受到影響時要採取的動作：通知網路基礎結構小組，以更新 Azure 虛擬網路設定上的 NSG 規則，以在2020年11月8日之前使用最新的 Data Factory IP 位址。  若要下載最新的 IP 位址，請移至 [服務標籤 [IP 範圍下載] 連結](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)。
 
 ## <a name="self-hosted-ir-sharing"></a>自我裝載 IR 共用
 

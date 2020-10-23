@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: e033f00f7657f7f4e5e63509672e924979ce03e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77d2f600a651f44abddf4a77f2a01486fa0259f2
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362511"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428430"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>根據 Azure Machine Learning 事件來觸發應用程式、進程或 CI/CD 工作流程 (preview) 
 
@@ -62,7 +62,7 @@ Azure Machine Learning 在機器學習服務生命週期的各個點中提供事
 
 設定事件時，您可以只將篩選條件套用至特定事件資料的觸發程序。 在下列範例中，針對執行狀態已變更的事件，您可以依執行類型進行篩選。 只有條件符合時，才會觸發事件。 請參閱 [Azure Machine Learning 事件方格架構](/azure/event-grid/event-schema-machine-learning)，以瞭解您可以篩選的事件資料。 
 
-Azure Machine Learning 事件的訂閱受到角色型存取控制 (RBAC) 的保護。 只有工作區的[參與者和擁有者](how-to-assign-roles.md#default-roles)可以建立、更新、刪除事件訂閱。  可以在事件訂閱的[建立](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest&preserve-view=true)期間或之後，將篩選套用至事件訂閱。 
+Azure Machine Learning 事件的訂用帳戶會受到 Azure RBAC)  (azure 角色型存取控制的保護。 只有工作區的[參與者和擁有者](how-to-assign-roles.md#default-roles)可以建立、更新、刪除事件訂閱。  可以在事件訂閱的[建立](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest&preserve-view=true)期間或之後，將篩選套用至事件訂閱。 
 
 
 1. 移至 Azure 入口網站，選取新的訂閱或現有的訂閱。 

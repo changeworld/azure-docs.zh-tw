@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: inhenkel
-ms.openlocfilehash: a9e34c4aaeb6fc2c151233b05ed5584e0e624148
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cb4bcf5eb205d27cbca764d5ec16890a23be5c6
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297972"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426774"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>媒體服務中的轉換和作業
 
@@ -62,7 +62,7 @@ ms.locfileid: "89297972"
 
 ### <a name="creating-transforms"></a>建立轉換
 
-您可以使用 REST、CLI 或任何已發佈的 Sdk 來建立轉換。 媒體服務 v3 API 是由 Azure Resource Manager 所驅動，因此您也可以使用 Resource Manager 範本，在您的媒體服務帳戶中建立及部署轉換。 角色型存取控制可用於鎖定轉換的存取權。
+您可以使用 REST、CLI 或任何已發佈的 Sdk 來建立轉換。 媒體服務 v3 API 是由 Azure Resource Manager 所驅動，因此您也可以使用 Resource Manager 範本，在您的媒體服務帳戶中建立及部署轉換。 您可以使用 Azure 角色型存取控制來鎖定對轉換的存取。
 
 ### <a name="updating-transforms"></a>更新轉換
 

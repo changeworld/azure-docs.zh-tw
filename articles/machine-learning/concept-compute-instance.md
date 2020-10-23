@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: f32783b18b5454164567910aa369739d025b8be0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d840fe5b6fde72149893a15ab9096d3880c1c8ea
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826900"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425669"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什麼是 Azure Machine Learning 計算執行個體？
 
@@ -118,9 +118,9 @@ Python 套件全都安裝在 **Python 3.6 - AzureML** 環境中。
 * 透過 SSH 連線到計算執行個體。 預設會停用 SSH 存取，但可在建立計算執行個體時加以啟用。 SSH 存取是透過公開/私密金鑰機制來加以控制的。 此索引標籤會提供 SSH 連線的詳細資料，例如 IP 位址、使用者名稱和連接埠號碼。
 * 取得特定計算執行個體的詳細資料，例如 IP 位址和區域。
 
-[RBAC](/azure/role-based-access-control/overview) 可讓您控制工作區中的哪些使用者可以建立、刪除、啟動、停止、重新啟動計算執行個體。 工作區參與者和擁有者角色中的所有使用者都可以在工作區中建立、刪除、啟動、停止和重新啟動計算執行個體。 不過，只有特定計算實例的建立者，或代表其建立的使用者指派時，才允許存取該計算實例上的 Jupyter、JupyterLab 和 RStudio。 計算實例專用於具有根存取權的單一使用者，而且可以透過 Jupyter/JupyterLab/RStudio 來進行終端機。 計算實例將會有單一使用者登入，而且所有動作都將使用該使用者的身分識別來進行 RBAC 和實驗執行的屬性。 SSH 存取是透過公開/私密金鑰機制來加以控制的。
+[AZURE RBAC](/azure/role-based-access-control/overview) 可讓您控制工作區中的哪些使用者可以建立、刪除、啟動、停止、重新開機計算實例。 工作區參與者和擁有者角色中的所有使用者都可以在工作區中建立、刪除、啟動、停止和重新啟動計算執行個體。 不過，只有特定計算實例的建立者，或代表其建立的使用者指派時，才允許存取該計算實例上的 Jupyter、JupyterLab 和 RStudio。 計算實例專用於具有根存取權的單一使用者，而且可以透過 Jupyter/JupyterLab/RStudio 來進行終端機。 計算實例將會有單一使用者登入，而且所有動作都將使用該使用者的身分識別來進行 Azure RBAC 和實驗執行的屬性。 SSH 存取是透過公開/私密金鑰機制來加以控制的。
 
-這些動作可由 RBAC 控制：
+這些動作可由 Azure RBAC 控制：
 * *Microsoft.MachineLearningServices/workspaces/computes/read*
 * *Microsoft.MachineLearningServices/workspaces/computes/write*
 * *Microsoft.MachineLearningServices/workspaces/computes/delete*
@@ -148,7 +148,7 @@ Python 套件全都安裝在 **Python 3.6 - AzureML** 環境中。
 * [Azure Resource Manager 範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)。  如需有關如何尋找此範本所需之 TenantID 和 ObjectID 的詳細資訊，請參閱 [尋找驗證設定的識別物件識別碼](../healthcare-apis/find-identity-object-ids.md)。  您也可以在 Azure Active Directory 入口網站中找到這些值。
 * REST API
 
-您建立計算實例所需的資料科學家需要下列 RBAC 許可權： 
+您為其建立計算實例的資料科學家需要下列 Azure RBAC 許可權： 
 * *MachineLearningServices/workspace/計算/開始/動作*
 * *MachineLearningServices/workspace/計算/停止/動作*
 * *MachineLearningServices/workspace/計算/重新開機/動作*

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 0efb2c26a63418835dd2b7561a1fb9d3a9d5fee8
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: f3fb31dc7db4808db83f33abdf14179265d147f9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945547"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425185"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure 資訊安全中心的安全性建議 
 本主題說明如何查看並瞭解 Azure 資訊安全中心中的建議，以協助保護您的 Azure 資源。
@@ -75,7 +75,10 @@ ms.locfileid: "91945547"
  
 ## <a name="next-steps"></a>後續步驟
 
-在本文件中，已向您介紹「資訊安全中心」的安全性建議。 若要瞭解如何補救建議：
+在本文件中，已向您介紹「資訊安全中心」的安全性建議。 如需相關資訊：
 
 - [補救建議](security-center-remediate-recommendations.md) -瞭解如何為您的 Azure 訂用帳戶和資源群組設定安全性原則。
 - [使用強制/拒絕建議防止錯誤配置](prevent-misconfigurations.md)。
+- [自動回應建議](workflow-automation.md)
+- [讓資源豁免建議](exempt-resource.md)
+- [安全性建議 - 參考指南](recommendations-reference.md)

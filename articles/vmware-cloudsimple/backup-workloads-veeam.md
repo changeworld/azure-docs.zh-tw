@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e661485e58c7e00c4eee41d808f727153a7761c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb883b70d1ae9f2894c7679633a586586922aa18
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86525036"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92419938"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>使用 Veeam B&R 備份 CloudSimple 私人雲端上的工作負載 Vm
 
@@ -56,7 +56,7 @@ Proxy 伺服器會安裝在備份伺服器與備份基礎結構的其他元件�
 * Azure 中以 Linux 為主的主要備份存放庫，設定為備份作業的目標。
 * `azcopy` 用來將資料從主要備份儲存機制複製到已複寫至另一個區域的 Azure blob 容器。
 
-![基本部署案例](media/veeam-basicdeployment.png)
+![顯示基本 Veeam 部署案例的圖表。](media/veeam-basicdeployment.png)
 
 **進階部署**
 
@@ -260,7 +260,7 @@ Veeam 解決方案會要求您執行下列作業：
 
 若要取消提升許可權，請參閱 [取消提升許可權](escalate-private-cloud-privileges.md#de-escalate-privileges)。
 
-## <a name="references"></a>參考
+## <a name="references"></a>參考資料
 
 ### <a name="cloudsimple-references"></a>CloudSimple 參考
 

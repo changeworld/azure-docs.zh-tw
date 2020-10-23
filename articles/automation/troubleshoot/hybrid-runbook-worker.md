@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4fcd3d143cf2dbb529a8c9c78a769165621e2e89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1386dd820b10b63862ddab38c441f251bea1d83d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400412"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428401"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>針對混合式 Runbook 背景工作角色問題進行疑難排解
 
@@ -46,7 +46,7 @@ Runbook 在嘗試執行三次後會立即暫停。 在某些情況下，Runbook 
 
 #### <a name="resolution"></a>解決方案
 
-確認電腦可透過連接埠 443 輸出存取 * **.azure-automation.net**。
+確認電腦的輸出存取埠443上的** \* azure-automation.net** 。
 
 執行混合式 Runbook 背景工作角色的電腦應滿足最低硬體需求，您才能設定背景工作角色來裝載這項功能。 Runbook 及其所使用的背景處理序可能會導致系統超用，造成 Runbook 作業延遲或逾時。
 
@@ -226,7 +226,7 @@ Windows 混合式 Runbook 背景工作角色仰賴[適用於 Windows 的 Log Ana
 
 #### <a name="cause"></a>原因
 
-此問題是因 Proxy 或網路防火牆封鎖 Microsoft Azure 的通訊所引起。 確認電腦可透過連接埠 443 輸出存取 * **.azure-automation.net**。
+此問題是因 Proxy 或網路防火牆封鎖 Microsoft Azure 的通訊所引起。 確認電腦的輸出存取埠443上的** \* azure-automation.net** 。
 
 #### <a name="resolution"></a>解決方案
 
@@ -293,7 +293,7 @@ Remove-Item -Path 'C:\Program Files\Microsoft Monitoring Agent\Agent\Health Serv
 Start-Service -Name HealthService
 ```
 
-### <a name="scenario-you-cant-add-a-hybrid-runbook-worker"></a><a name="already-registered"></a>案例：您無法新增混合式 Runbook 背景工作角色
+### <a name="scenario-you-cant-add-a-windows-hybrid-runbook-worker"></a><a name="already-registered"></a>案例：您無法新增 Windows 混合式 Runbook 背景工作角色
 
 #### <a name="issue"></a>問題
 
@@ -313,10 +313,50 @@ Machine is already registered
 
 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\HybridRunbookWorker`
 
+### <a name="scenario-you-cant-add-a-linux-hybrid-runbook-worker"></a><a name="already-registered"></a>案例：您無法新增 Linux 混合式 Runbook 背景工作角色
+
+#### <a name="issue"></a>問題
+
+當您嘗試使用 python 腳本新增混合式 Runbook 背景工作角色時，會收到下列訊息 `sudo python /opt/microsoft/omsconfig/.../onboarding.py --register` ：
+
+```error
+Unable to register, an existing worker was found. Please deregister any existing worker and try again.
+```
+
+此外，嘗試使用 python 腳本取消註冊混合式 Runbook 背景工作角色 `sudo python /opt/microsoft/omsconfig/.../onboarding.py --deregister` ：
+
+```error
+Failed to deregister worker. [response_status=404]
+```
+
+#### <a name="cause"></a>原因
+
+如果電腦已向不同的自動化帳戶註冊、已刪除 Azure 混合式背景工作角色群組，或您在從電腦移除混合式 Runbook 背景工作角色時嘗試重新新增混合式 Runbook 背景工作角色，就可能會發生此問題。
+
+#### <a name="resolution"></a>解決方案
+
+若要解決此問題：
+
+1. 移除代理程式 `sudo sh onboard_agent.sh --purge` 。
+
+1. 執行以下命令：
+
+   ```
+   sudo mv -f /home/nxautomation/state/worker.conf /home/nxautomation/state/worker.conf_old
+   sudo mv -f /home/nxautomation/state/worker_diy.crt /home/nxautomation/state/worker_diy.crt_old
+   sudo mv -f /home/nxautomation/state/worker_diy.key /home/nxautomation/state/worker_diy.key_old
+   ```
+
+1. 重新上架代理程式 `sudo sh onboard_agent.sh -w <workspace id> -s <workspace key> -d opinsights.azure.com` 。
+
+1. 等候資料夾 `/opt/microsoft/omsconfig/modules/nxOMSAutomationWorker` 填入。
+
+1. 再試一次 `sudo python /opt/microsoft/omsconfig/.../onboarding.py --register` Python 腳本。
+
 ## <a name="next-steps"></a>後續步驟
 
 如果在這裡沒有看到問題或無法解決問題，請嘗試下列其中一個管道以取得其他支援：
 
 * 透過 [Azure 論壇](https://azure.microsoft.com/support/forums/)獲得由 Azure 專家所提供的解答。
 * 連線至 [@AzureSupport](https://twitter.com/azuresupport)，這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 Azure 支援會將 Azure 社群連線到解答、支援及專家。
-* 提出 Azure 支援事件。 前往 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。
+* 提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。

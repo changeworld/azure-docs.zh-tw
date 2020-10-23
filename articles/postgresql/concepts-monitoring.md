@@ -5,13 +5,13 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 4fd16e9dcf9f0b75b48311adf3e9282adbce2a25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 9424a56eeda5750afc00dd996be957e67850c30c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708708"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426684"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>監視和調整「適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器」
 監視伺服器的相關資料，可協助您疑難排解並最佳化您的工作負載。 「適用於 PostgreSQL 的 Azure 資料庫」提供各種監視選項，可讓您深入了解伺服器的行為。
@@ -55,28 +55,12 @@ ms.locfileid: "91708708"
 
 ## <a name="planned-maintenance-notification"></a>規劃的維護通知
 
-**規劃的維護通知** 可讓您接收適用於 PostgreSQL 的 Azure 資料庫單一伺服器之預定維修的警示。 這些通知會與 [服務健康狀態的](../service-health/overview.md) 規劃維護整合，並可讓您在單一位置查看訂用帳戶的所有排程維護。 它也有助於將通知擴充至不同資源群組的適當物件，因為您可能會有不同的連絡人負責不同的資源。 您將會收到關於活動即將進行之維護72小時的通知。
+[規劃的維護通知](./concepts-planned-maintenance-notification.md) 可讓您接收適用於 PostgreSQL 的 Azure 資料庫單一伺服器之預定維修的警示。 這些通知會與 [服務健康狀態的](../service-health/overview.md) 規劃維護整合，並可讓您在單一位置查看訂用帳戶的所有排程維護。 它也有助於將通知擴充至不同資源群組的適當物件，因為您可能會有不同的連絡人負責不同的資源。 您將會收到關於活動即將進行之維護72小時的通知。
 
-> [!Note]
-> 我們會每次嘗試針對所有事件提供 **預定的維護通知** 72 小時通知。 不過，在重大或安全性修補程式的情況下，可能會在較接近事件的情況下傳送通知，或將其省略。
-
-### <a name="to-receive-planned-maintenance-notification"></a>若要接收預定的維修通知
-
-1. 在[入口網站](https://portal.azure.com)中，選取 [服務健康情況]****。
-2. 在 [警示]**** 區段中，選取 [健康情況警示]****。
-3. 選取 [ **+ 新增服務健康情況警示** ]，然後填入欄位。
-4. 填寫必要的欄位。 
-5. 選擇 [**事件種類**]，選取 [**預定維修**] 或 [全**選**]
-6. 在 [ **動作群組** ] 中，定義您想要如何接收警示 (取得電子郵件、觸發邏輯應用程式等 )   
-7. 確認 [建立時啟用規則] 設為 [是]。
-8. 選取 [ **建立警示規則** ] 以完成您的警示
-
-如需有關如何建立 **服務健康狀態警示**的詳細步驟，請參閱 [建立服務通知的活動記錄警示](../service-health/alerts-activity-log-service-notifications.md)。
-
-> [!IMPORTANT]
-> 規劃的維護通知目前在所有區域都可供預覽， **但** 美國中西部
+深入瞭解如何在 [規劃的維護通知](./concepts-planned-maintenance-notification.md) 檔中設定通知。
 
 ## <a name="next-steps"></a>後續步驟
 - 瞭解 [如何設定警示](howto-alert-on-metric.md) ，以取得有關在計量上建立警示的指引。
-- 如需如何使用 Azure 入口網站、REST API 或 CLI 存取及匯出計量的詳細資訊，請參閱 [Azure 計量概觀](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
+- 如需如何使用 Azure 入口網站、REST API 或 CLI 來存取和匯出計量的詳細資訊，請參閱 [Azure 計量總覽](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
 - 請參閱有關[監視伺服器的最佳做法](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-postgresql-monitoring/) \(英文\) 的部落格。
+- 深入瞭解適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中的 [規劃維護通知](./concepts-planned-maintenance-notification.md) 。

@@ -11,12 +11,13 @@ ms.topic: troubleshooting
 ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
-ms.openlocfilehash: 715cbb78cc33ce2ae9b22e743abfea81afc2cb55
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.custom: contperfq2
+ms.openlocfilehash: ec39a6d106973808e26b7c06dce8b3054af490ff
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108179"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427375"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>登入已設定 SAML 型單一登入的應用程式時發生問題
 若要針對下列登入問題進行疑難排解，建議您遵循下列步驟來更妥善地進行診斷，並將解決步驟自動化：
@@ -144,7 +145,7 @@ Azure AD 無法識別 HTTP 要求中 URL 參數內的 SAML 要求。 如果應�
 
 刪除為應用程式設定的未使用回復 Url。
 
-在 [SAML SSO 設定] 頁面的 [ **回復 URL (判斷提示取用者服務 URL) ** ] 區段中，刪除系統所建立的未使用或預設回復 url。 例如： `https://127.0.0.1:444/applications/default.aspx` 。
+在 [SAML SSO 設定] 頁面的 [ **回復 URL (判斷提示取用者服務 URL) ** ] 區段中，刪除系統所建立的未使用或預設回復 url。 例如： `https://127.0.0.1:444/applications/default.aspx`。
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>自訂傳送至應用程式的 SAML 宣告時發生問題
 若要瞭解如何自訂傳送至應用程式的 SAML 屬性宣告，請參閱 [Azure Active Directory 中的宣告對應](../develop/active-directory-claims-mapping.md)。

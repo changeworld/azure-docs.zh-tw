@@ -1,5 +1,5 @@
 ---
-title: 使用功能所需的 RBAC 許可權
+title: 使用功能所需的 Azure RBAC 許可權
 titleSuffix: Azure Network Watcher
 description: 了解使用網路監看員功能時，需要哪些 Azure 角色型存取控制權限。
 services: network-watcher
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
-ms.openlocfilehash: de345578b2cade18d126a113937f2eede8e8157e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e048729aa1d37a63678451525f8f37612c8c464
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87497302"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426746"
 ---
-# <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>使用網路監看員功能時所需的角色型存取控制權限
+# <a name="azure-role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>使用網路監看員功能所需的 Azure 角色型存取控制許可權
 
 Azure 角色型存取控制 (Azure RBAC) 可讓您只將特定動作指派給組織成員，以完成其指派的責任。 若要使用網路監看員的功能，登入 Azure 的帳號必須受指派為[擁有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner)、[參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor)、[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor)等內建角色，或者是受指派以下段落中各項網路監看員功能所屬動作的[自訂角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。 若要深入了解網路監看員的功能，請參閱[網路監看員是什麼？](network-watcher-monitoring-overview.md)。
 
@@ -102,7 +102,7 @@ Azure 角色型存取控制 (Azure RBAC) 可讓您只將特定動作指派給組
 
 網路監看員功能也需要下列動作：
 
-| 動作 (s)                                                            | 說明                                                    |
+| 動作 (s)                                                            | 描述                                                    |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Authorization/\*/Read                                     | 用來提取 Azure 角色指派和原則定義          |
 | Microsoft.Resources/subscriptions/resourceGroups/Read               | 用來列舉訂用帳戶中的所有資源群組    |

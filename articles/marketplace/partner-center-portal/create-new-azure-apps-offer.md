@@ -7,12 +7,12 @@ ms.topic: how-to
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: fb3a3ab5339186d8fa4e347d9d13e66940457f8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bd43f89ff6e341756c1706eb96d07510c6fb1a4
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710714"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428210"
 ---
 # <a name="create-an-azure-application-offer"></a>建立 Azure 應用程式供應項目
 
@@ -187,7 +187,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 4. 使用規定
 5. 隱私權原則位址 (連結) 
 6. 供應項目名稱
-7. 摘要
+7. 總結
 8. 描述
 9. 螢幕擷取畫面/影片
 
@@ -328,16 +328,16 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 ### <a name="create-new-plan"></a>建立新的方案
 
-***方案識別碼*** – 為此供應項目中的每個方案建立唯一的方案識別碼。 客戶將可在產品 URL 中看到此識別碼。  只能使用小寫英數字元、連字號或底線。 針對此方案識別碼，最多允許 50 個字元。 選取 [建立] 之後，就無法修改此識別碼。
+**_方案識別碼_*_ –為此供應專案中的每個方案建立唯一的方案識別碼。 客戶將可在產品 URL 中看到此識別碼。  只能使用小寫英數字元、連字號或底線。 針對此方案識別碼，最多允許 50 個字元。 選取 [建立] 之後，就無法修改此識別碼。
 
-***方案名稱*** -當您決定要在您的供應專案內選取哪一個方案時，客戶會看到此名稱。 為此供應項目中的每個方案建立唯一的供應項目名稱。 方案名稱是用來區分可能屬於相同供應項目的軟體方案 (例如，供應項目名稱：Windows 伺服器；方案：Windows Server 2016、Windows Server 2019)。
+_*_方案名稱_*_ -當您決定要在您的供應專案內選取哪一個方案時，客戶會看到此名稱。 為此供應項目中的每個方案建立唯一的供應項目名稱。 方案名稱是用來區分可能屬於相同供應項目的軟體方案 (例如，供應項目名稱：Windows 伺服器；方案：Windows Server 2016、Windows Server 2019)。
 
 ### <a name="plan-setup"></a>方案設定
 
 此索引標籤可讓您設定方案類型的高階設定、是否重複使用來自另一個方案的套件，以及該方案應該用於哪些雲端。 您在此索引標籤上的答案將會影響要顯示在相同方案的其他索引標籤上的欄位。
 
 #### <a name="plan-type"></a>方案類型
-選取供應項目的方案類型。 **解決方案範本**方案完全由客戶所管理。 **受控應用程式**方案可讓發行者代表客戶管理應用程式。 如需詳細資訊，請參閱 [Azure 應用程式方案類型](#types-of-azure-application-plans)。
+選取供應項目的方案類型。 _*方案範本** 方案完全由客戶管理。 **受控應用程式**方案可讓發行者代表客戶管理應用程式。 如需詳細資訊，請參閱 [Azure 應用程式方案類型](#types-of-azure-application-plans)。
 
 #### <a name="re-use-technical-configuration"></a>重複使用技術設定
 
@@ -508,7 +508,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 選取此選項可指定客戶除了預設可用的 `*/read` 動作以外，還可以對受控資源執行哪些動作。
 
-列出您想要讓客戶在此處執行的其他動作，並以分號分隔。  如需詳細資訊，請參閱[了解 Azure 資源的拒絕指派](../../role-based-access-control/deny-assignments.md) \(部分機器翻譯\)。 如需可用動作的清單，請參閱 [Azure Resource Manager 資源提供者作業](../../role-based-access-control/resource-provider-operations.md)。 例如，若要允許取用者重新啟動虛擬機器，可將 `Microsoft.Compute/virtualMachines/restart/action` 新增至允許的動作。
+列出您想要讓客戶在此處執行的其他動作，並以分號分隔。  如需詳細資訊，請參閱[了解 Azure 資源的拒絕指派](../../role-based-access-control/deny-assignments.md) \(部分機器翻譯\)。 如需可用的動作，請參閱 [Azure 資源提供者作業](../../role-based-access-control/resource-provider-operations.md)。 例如，若要允許取用者重新啟動虛擬機器，可將 `Microsoft.Compute/virtualMachines/restart/action` 新增至允許的動作。
 
 #### <a name="global-azure--azure-government-cloud"></a>Global Azure / Azure Government 雲端
 
@@ -518,7 +518,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 **授權** – 針對您要對其授與權限的使用者、群組或應用程式，將其 Azure Active Directory 物件識別碼新增至受控資源群組。 依使用者的主體識別碼 (可在 [Azure 入口網站上的 Azure Active Directory 使用者刀鋒視窗](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)中找到) 識別使用者。
 
-針對每個主體，從清單中選取其中一個 Azure AD 內建角色 ([擁有者] 或 [參與者])。 您選取的角色將會描述主體對客戶訂用帳戶中的資源所擁有的權限。 如需詳細資訊，請參閱 [Azure 內建角色](../../role-based-access-control/built-in-roles.md)。 如需有關角色型存取控制 (RBAC) 的詳細資訊，請參閱[在 Azure 入口網站中開始使用 RBAC](../../role-based-access-control/overview.md)。
+針對每個主體，從清單中選取其中一個 Azure AD 內建角色 ([擁有者] 或 [參與者])。 您選取的角色將會描述主體對客戶訂用帳戶中的資源所擁有的權限。 如需詳細資訊，請參閱 [Azure 內建角色](../../role-based-access-control/built-in-roles.md)。 如需 azure 角色型存取控制 (Azure RBAC) 的詳細資訊，請參閱 [什麼是 AZURE rbac](../../role-based-access-control/overview.md)。
 
 >[!Note]
 >雖然您最多可以在每個雲端新增 100 個授權，但建立 Active Directory 使用者群組並在「主體識別碼」中指定其識別碼通常會比較容易。 這可讓您在部署方案之後，將更多使用者新增至管理群組，並減少更新方案的需求，僅新增更多授權。

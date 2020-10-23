@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 8/13/2020
-ms.openlocfilehash: 9e1bd3f555873503aa1f6ed9c804aced3620fb9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 4589687593abbe5667aa4b21b1361b68e4bed07f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627511"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428130"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>在適用於 MySQL 的 Azure 資料庫中監視
 監視伺服器的相關資料，可協助您疑難排解並最佳化您的工作負載。 適用於 MySQL 的 Azure 資料庫提供多種計量，可讓您深入了解您伺服器的行為。
@@ -42,7 +42,7 @@ ms.locfileid: "91627511"
 |backup_storage_used|已使用的備份儲存體|位元組|已使用的備份儲存體數量。 此計量代表所有完整資料庫備份、差異備份和記錄備份所使用的儲存體總和（根據針對伺服器所設定的備份保留期限而定）。 備份的頻率是服務管理的，而且會在 [概念文章](concepts-backup.md)中說明。 針對異地複寫儲存體，備份儲存體使用量會是本機冗余儲存體的兩倍。|
 
 ## <a name="server-logs"></a>伺服器記錄
-您可以在伺服器上啟用慢速查詢和審核記錄。 您也可以透過 Azure 監視器記錄、事件中樞和儲存體帳戶中的 Azure 診斷記錄來取得這些記錄檔。 若要深入瞭解記錄，請造訪 [audit 記錄](concepts-audit-logs.md) 和 [慢速查詢記錄](concepts-server-logs.md) 檔文章。
+您可以在伺服器上啟用慢速查詢和審核記錄。 您也可以透過 Azure 監視器記錄、事件中樞和儲存體帳戶中的 Azure 診斷記錄來取得這些記錄檔。 若要深入瞭解記錄，請造訪 [audit 記錄](concepts-audit-logs.md) 和 [慢速查詢記錄](concepts-server-logs.md) 檔文章。
 
 ## <a name="query-store"></a>查詢存放區
 [查詢存放區](concepts-query-store.md) 是一種功能，可在一段時間內持續追蹤查詢效能，包括查詢執行時間統計資料和等候事件。 這項功能會保存 **mysql** 架構中的查詢執行時間效能資訊。 您可以透過各種設定旋鈕控制資料的收集和儲存。
@@ -55,30 +55,12 @@ ms.locfileid: "91627511"
 
 ## <a name="planned-maintenance-notification"></a>規劃的維護通知
 
-**預定進行的維護通知** 可讓您收到即將進行的規劃維護至您適用於 MySQL 的 Azure 資料庫的警示。 這些通知會與 [服務健康狀態的](../service-health/overview.md) 規劃維護整合，並可讓您在單一位置查看訂用帳戶的所有排程維護。 它也有助於將通知擴充至不同資源群組的適當物件，因為您可能會有不同的連絡人負責不同的資源。 您將會收到關於活動即將進行之維護72小時的通知。
+[預定進行的維護通知](./concepts-planned-maintenance-notification.md) 可讓您收到即將進行的規劃維護至您適用於 MySQL 的 Azure 資料庫的警示。 這些通知會與 [服務健康狀態的](../service-health/overview.md) 規劃維護整合，並可讓您在單一位置查看訂用帳戶的所有排程維護。 它也有助於將通知擴充至不同資源群組的適當物件，因為您可能會有不同的連絡人負責不同的資源。 您將會收到關於活動即將進行之維護72小時的通知。
 
-在規劃的維護期間，您可能會預期伺服器會重新開機，而且可能發生 [暫時性錯誤](concepts-connectivity.md#transient-errors) 。 這些事件大多數都會由系統在 60 秒內自動解決。
-
-> [!IMPORTANT]
-> 規劃的維護通知目前可在所有區域的公開預覽中使用， **但** 美國中西部
-
-### <a name="to-receive-planned-maintenance-notification"></a>若要接收預定的維修通知
-
-1. 在[入口網站](https://portal.azure.com)中，選取 [服務健康情況]****。
-2. 在 [警示]**** 區段中，選取 [健康情況警示]****。
-3. 選取 [ **+ 新增服務健康情況警示** ]，然後填入欄位。
-4. 填寫必要的欄位。 
-5. 選擇 [**事件種類**]，選取 [**預定維修**] 或 [全**選**]
-6. 在 [ **動作群組** ] 中，定義您想要如何接收警示 (取得電子郵件、觸發邏輯應用程式等 )   
-7. 確認 [建立時啟用規則] 設為 [是]。
-8. 選取 [ **建立警示規則** ] 以完成您的警示
-
-如需有關如何建立 **服務健康狀態警示**的詳細步驟，請參閱 [建立服務通知的活動記錄警示](../service-health/alerts-activity-log-service-notifications.md)。
-
-> [!Note]
-> 我們會每次嘗試針對所有事件提供 **預定的維護通知** 72 小時通知。 不過，在重大或安全性修補程式的情況下，可能會在較接近事件的情況下傳送通知，或將其省略。
+深入瞭解如何在 [規劃的維護通知](./concepts-planned-maintenance-notification.md) 檔中設定通知。
 
 ## <a name="next-steps"></a>後續步驟
 - 請參閱[如何設定警示](howto-alert-on-metric.md)，取得根據計量來建立警示的指引。
 - 如需如何使用 Azure 入口網站、REST API 或 CLI 存取及匯出計量的詳細資訊，請參閱 [Azure 計量概觀](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
 - 請參閱有關[監視伺服器的最佳做法](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-mysql-monitoring/) \(英文\) 的部落格。
+- 深入瞭解適用於 MySQL 的 Azure 資料庫-單一伺服器中的[規劃維護通知](./concepts-planned-maintenance-notification.md)

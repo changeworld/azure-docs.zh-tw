@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: aa33319f146ac57ab4d253696c94308a43b5db2e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 50a0fe0fa5dece41ac9e343d5a8939e8d9dc634e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019608"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426882"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>媒體服務 v3 的常見問題
 
@@ -34,7 +34,7 @@ ms.locfileid: "92019608"
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>哪些 Azure 角色可對 Azure 媒體服務資源執行動作？ 
 
-請參閱 [媒體服務帳戶 (RBAC) 的角色型存取控制](rbac-overview.md)。
+請參閱 [azure 角色型存取控制 (適用于媒體服務帳戶的 AZURE RBAC) ](rbac-overview.md)。
 
 ### <a name="how-do-i-stream-to-apple-ios-devices"></a>如何? 串流至 Apple iOS 裝置？
 

@@ -4,19 +4,19 @@ titleSuffix: Azure Digital Twins
 description: 瞭解如何取得、更新和刪除個別的 twins 和關聯性。
 author: baanders
 ms.author: baanders
-ms.date: 4/10/2020
+ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c522ac9e1aedbcdfdb4564d17b506b1b490da0c3
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 58ee064d4946442bff70e97d56a68080333e2197
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150406"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426139"
 ---
 # <a name="manage-digital-twins"></a>管理 Digital Twins
 
-您環境中的實體會以 [數位 twins](concepts-twins-graph.md)表示。 管理您的數位 twins 可能包括建立、修改和移除。 若要執行這些作業，您可以使用 [**DigitalTwins api**](how-to-use-apis-sdks.md)、 [.Net (c # ) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或 [Azure 數位 Twins CLI](how-to-use-cli.md)。
+您環境中的實體會以 [數位 twins](concepts-twins-graph.md)表示。 管理您的數位 twins 可能包括建立、修改和移除。 若要執行這些作業，您可以使用 [**DigitalTwins api**](how-to-use-apis-sdks.md)、 [.Net (c # ) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)或 [Azure 數位 Twins CLI](how-to-use-cli.md)。
 
 本文著重于管理數位 twins;若要以整體方式使用關聯性和對應項 [圖形](concepts-twins-graph.md) ，請參閱 [*如何：使用關聯性管理*](how-to-manage-graph.md)對應項圖形。
 
@@ -25,29 +25,32 @@ ms.locfileid: "92150406"
 
 ## <a name="create-a-digital-twin"></a>建立數位對應項
 
-若要建立對應項，請在 `CreateDigitalTwin` 服務用戶端上使用方法，如下所示：
+若要建立對應項，請在 `CreateDigitalTwin()` 服務用戶端上使用方法，如下所示：
 
 ```csharp
-await client.CreateDigitalTwinAsync("myNewTwinID", initData);
+await client.CreateDigitalTwinAsync("myTwinId", initData);
 ```
 
 若要建立數位對應項，您需要提供：
 * 數位對應項所需的識別碼
-* 您要使用的[模型](concepts-models.md) 
+* 您要使用的[模型](concepts-models.md)
 
 （選擇性）您可以提供數位對應項之所有屬性的初始值。 
 
 模型和初始屬性值是透過參數提供的 `initData` ，這是包含相關資料的 JSON 字串。 如需結構化此物件的詳細資訊，請繼續下一節。
 
 > [!TIP]
-> 建立或更新對應項之後，最多可能會有10秒的延遲時間，變更才會反映在 [查詢](how-to-query-graph.md)中。 本文 `GetDigitalTwin` [稍後](#get-data-for-a-digital-twin) 所述的 api () 不會遇到這種延遲，因此，如果您需要立即回應，請使用 api 呼叫而不是查詢來查看您新建立的 twins。 
+> 建立或更新對應項之後，最多可能會有10秒的延遲時間，變更才會反映在 [查詢](how-to-query-graph.md)中。 本文 `GetDigitalTwin` 稍後所述的 API () 不會遇到這 [種](#get-data-for-a-digital-twin) 延遲，因此如果您需要立即回應，請使用 api 呼叫而不是查詢來查看您新建立的 twins。 
 
 ### <a name="initialize-model-and-properties"></a>初始化模型和屬性
 
 對應項建立 API 會接受序列化為對應項屬性之有效 JSON 描述的物件。 請參閱 [*概念：數位 twins 和*](concepts-twins-graph.md) 對應項圖表，以取得對應項的 JSON 格式描述。 
 
-首先，您將建立資料物件來代表對應項及其屬性資料。 然後，您可以使用 `JsonSerializer` 將此的序列化版本傳遞至參數的 API 呼叫 `initdata` 。
+首先，您可以建立資料物件來代表對應項及其屬性資料。 然後，您可以使用，將 `JsonSerializer` 這個物件的序列化版本傳遞至參數的 API 呼叫 `initdata` ，如下所示：
 
+```csharp
+await client.CreateDigitalTwinAsync(srcId, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+```
 您可以手動或使用所提供的 helper 類別來建立參數物件。 以下是每個範例。
 
 #### <a name="create-twins-using-manually-created-data"></a>使用手動建立的資料建立 twins
@@ -58,7 +61,7 @@ await client.CreateDigitalTwinAsync("myNewTwinID", initData);
 
 #### <a name="create-twins-with-the-helper-class"></a>使用 helper 類別建立 twins
 
-的 helper 類別 `BasicDigitalTwin` 可讓您更直接將屬性欄位儲存在「對應項」物件中。 您仍可能會想要使用建立屬性清單 `Dictionary<string, object>` ，然後直接將其新增至對應項物件 `CustomProperties` 。
+的 helper 類別 `BasicDigitalTwin` 可讓您直接將屬性欄位儲存在 "對應項" 物件中。 您仍可能會想要使用建立屬性清單 `Dictionary<string, object>` ，然後直接將其新增至對應項物件 `CustomProperties` 。
 
 ```csharp
 BasicDigitalTwin twin = new BasicDigitalTwin();
@@ -70,27 +73,37 @@ props.Add("Temperature", 25.0);
 props.Add("Humidity", 50.0);
 twin.CustomProperties = props;
 
-client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+client.CreateDigitalTwinAsync("myRoomId", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+Console.WriteLine("The twin is created successfully");
 ```
 
 >[!NOTE]
-> `BasicDigitalTwin` 物件會隨附一個 `Id` 欄位。 您可以將此欄位保留為空白，但如果您新增了識別碼值，它必須符合傳遞至呼叫的 ID 參數 `CreateDigitalTwin` 。 在上述範例中，這看起來像這樣：
+> `BasicDigitalTwin` 物件會隨附一個 `Id` 欄位。 您可以將此欄位保留為空白，但如果您新增了識別碼值，它必須符合傳遞至呼叫的 ID 參數 `CreateDigitalTwin()` 。 例如：
 >
 >```csharp
->twin.Id = "myNewRoomID";
+>twin.Id = "myRoomId";
 >```
 
 ## <a name="get-data-for-a-digital-twin"></a>取得數位對應項的資料
 
-您可以藉由呼叫下列方法，存取任何數位對應項的完整資料：
+您可以藉由呼叫方法來存取任何數位對應項的詳細資料， `GetDigitalTwin()` 如下所示：
 
 ```csharp
 object result = await client.GetDigitalTwin(id);
 ```
+此呼叫會以 JSON 字串的形式傳回對應項資料。 以下是如何使用此方法來查看對應項詳細資料的範例：
 
-此呼叫會以 JSON 字串的形式傳回對應項資料。 
-
-當您使用取得對應項時，只會傳回至少已設定一次的屬性 `GetDigitalTwin` 。
+```csharp
+Response<string> res = client.GetDigitalTwin("myRoomId");
+twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
+foreach (string prop in twin.CustomProperties.Keys)
+{
+  if (twin.CustomProperties.TryGetValue(prop, out object value))
+  Console.WriteLine($"Property '{prop}': {value}");
+}
+```
+當您使用方法取得對應項時，只會傳回至少已設定一次的屬性 `GetDigitalTwin()` 。
 
 >[!TIP]
 >`displayName`對應項的是其模型中繼資料的一部分，因此在取得對應項實例的資料時，不會顯示它。 若要查看此值，您可以 [從模型中取出](how-to-manage-model.md#retrieve-models)。
@@ -101,7 +114,7 @@ object result = await client.GetDigitalTwin(id);
 
 ```json
 {
-    "@id": " dtmi:com:contoso:Moon;1",
+    "@id": "dtmi:example:Moon;1",
     "@type": "Interface",
     "@context": "dtmi:dtdl:context;2",
     "contents": [
@@ -120,8 +133,7 @@ object result = await client.GetDigitalTwin(id);
     ]
 }
 ```
-
-在月亮型別對應項上呼叫的結果 `object result = await client.DigitalTwins.GetByIdAsync("my-moon");` 可能如下所示： *Moon*
+在月亮型別對應項上呼叫的結果 `object result = await client.GetDigitalTwinAsync("my-moon");` 可能如下所示： *Moon*
 
 ```json
 {
@@ -130,7 +142,7 @@ object result = await client.GetDigitalTwin(id);
   "radius": 1737.1,
   "mass": 0.0734,
   "$metadata": {
-    "$model": "dtmi:com:contoso:Moon;1",
+    "$model": "dtmi:example:Moon;1",
     "radius": {
       "desiredValue": 1737.1,
       "desiredVersion": 5,
@@ -151,7 +163,7 @@ object result = await client.GetDigitalTwin(id);
 
 數位對應項的已定義屬性會傳回為數字對應項上的最上層屬性。 不是 DTDL 定義一部分的中繼資料或系統資訊會以前置詞傳回 `$` 。 中繼資料屬性包括：
 * 此 Azure 數位 Twins 實例中數位對應項的識別碼，如下所示 `$dtId` 。
-* `$etag`，由 web 伺服器指派的標準 HTTP 欄位
+* `$etag`，由 web 伺服器指派的標準 HTTP 欄位。
 * 區段中的其他屬性 `$metadata` 。 它們包括：
     - 數位對應項之模型的 DTMI。
     - 每個可寫入屬性的同步處理狀態。 這最適用于裝置，在這種情況下，服務和裝置有可能具有發散狀態 (例如，當裝置離線時) 。 此屬性目前僅適用于連線到 IoT 中樞的實體裝置。 有了中繼資料區段中的資料之後，就可以瞭解屬性的完整狀態，以及上次修改的時間戳記。 如需同步處理狀態的詳細資訊，請參閱關於同步處理裝置狀態的 [IoT 中樞教學](../iot-hub/tutorial-device-twins.md) 課程。
@@ -162,7 +174,7 @@ object result = await client.GetDigitalTwin(id);
 您也可以使用 SDK 隨附的序列化 helper 類別 `BasicDigitalTwin` ，這會以預先剖析的表單傳回核心對應項中繼資料和屬性。 範例如下：
 
 ```csharp
-Response<string> res = client.GetDigitalTwin(twin_id);
+Response<string> res = client.GetDigitalTwin(twin_Id);
 BasicDigitalTwin twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
 Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
 foreach (string prop in twin.CustomProperties.Keys)
@@ -176,7 +188,7 @@ foreach (string prop in twin.CustomProperties.Keys)
 
 ## <a name="update-a-digital-twin"></a>更新數位分身
 
-若要更新數位對應項的屬性，您可以使用 [JSON 修補程式](http://jsonpatch.com/) 格式來撰寫要取代的資訊。 如此一來，您就可以一次取代多個屬性。 然後，您可以將 JSON 修補檔傳遞給 `Update` 方法：
+若要更新數位對應項的屬性，請使用 [JSON 修補程式](http://jsonpatch.com/) 格式來撰寫要取代的資訊。 如此一來，您就可以一次取代多個屬性。 然後，您可以將 JSON 修補檔傳遞給 `UpdateDigitalTwin()` 方法：
 
 ```csharp
 await client.UpdateDigitalTwin(id, patch);
@@ -203,7 +215,6 @@ Patch 呼叫可以依您想要的方式，在單一對應項上更新多個屬�
   }
 ]
 ```
-
 您可以手動建立修補程式，也可以使用 [SDK](how-to-use-apis-sdks.md)中的序列化 helper 類別來建立。 以下是每個範例。
 
 #### <a name="create-patches-manually"></a>手動建立修補程式
@@ -216,7 +227,10 @@ twinData.Add(new Dictionary<string, object>() {
     { "value", 25.0}
 });
 
-await client.UpdateDigitalTwinAsync(twinId, JsonConvert.SerializeObject(twinData));
+await client.UpdateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize(twinData));
+Console.WriteLine("Updated twin properties");
+FetchAndPrintTwin(twin_Id, client);
+}
 ```
 
 #### <a name="create-patches-using-the-helper-class"></a>使用 helper 類別建立修補程式
@@ -224,14 +238,14 @@ await client.UpdateDigitalTwinAsync(twinId, JsonConvert.SerializeObject(twinData
 ```csharp
 UpdateOperationsUtility uou = new UpdateOperationsUtility();
 uou.AppendAddOp("/Temperature", 25.0);
-await client.UpdateDigitalTwinAsync(twinId, uou.Serialize());
+await client.UpdateDigitalTwinAsync(twin_Id, uou.Serialize());
 ```
 
 ### <a name="update-properties-in-digital-twin-components"></a>更新數位對應項元件中的屬性
 
 回想一下，模型可能包含元件，使其可由其他模型組成。 
 
-若要修補數位對應項元件中的屬性，您將使用 JSON 修補程式中的路徑語法：
+若要修補數位對應項元件中的屬性，您可以使用 JSON 修補程式中的路徑語法：
 
 ```json
 [
@@ -245,7 +259,7 @@ await client.UpdateDigitalTwinAsync(twinId, uou.Serialize());
 
 ### <a name="update-a-digital-twins-model"></a>更新數位對應項的模型
 
-`Update`函數也可以用來將數位對應項遷移至不同的模型。 
+`UpdateDigitalTwin()`函數也可以用來將數位對應項遷移至不同的模型。 
 
 例如，請考慮下列會取代數位對應項之元資料欄位的 JSON 修補檔 `$model` ：
 
@@ -254,7 +268,7 @@ await client.UpdateDigitalTwinAsync(twinId, uou.Serialize());
   {
     "op": "replace",
     "path": "/$metadata/$model",
-    "value": "dtmi:com:contoso:foo;1"
+    "value": "dtmi:example:foo;1"
   }
 ]
 ```
@@ -273,7 +287,7 @@ await client.UpdateDigitalTwinAsync(twinId, uou.Serialize());
   {
     "op": "replace",
     "path": "$metadata.$model",
-    "value": "dtmi:com:contoso:foo_new"
+    "value": "dtmi:example:foo_new"
   },
   {
     "op": "add",
@@ -298,9 +312,9 @@ Azure 數位 Twins 可確保所有連入要求都會在另一個之後處理。 
 
 ## <a name="delete-a-digital-twin"></a>刪除數位對應項
 
-您可以使用刪除 twins `DeleteDigitalTwin(ID)` 。 不過，當對應項沒有其他關聯性時，您只能刪除對應項。 您必須先刪除所有關聯性。 
+您可以使用方法來刪除 twins `DeleteDigitalTwin()` 。 不過，當對應項沒有其他關聯性時，您只能刪除對應項。 因此，請先刪除對應項的傳入和傳出關聯性。
 
-以下是此程式碼的範例：
+以下是用來刪除 twins 和其關聯性的程式碼範例：
 
 ```csharp
 static async Task DeleteTwin(string id)
@@ -334,7 +348,7 @@ public async Task FindAndDeleteOutgoingRelationshipsAsync(string dtId)
     }
     catch (RequestFailedException ex)
     {
-        Log.Error($"*** Error {ex.Status}/{ex.ErrorCode} retrieving or deleting relationships for {dtId} due to {ex.Message}");
+        Log.Error($"**_ Error {ex.Status}/{ex.ErrorCode} retrieving or deleting relationships for {dtId} due to {ex.Message}");
     }
 }
 
@@ -344,7 +358,7 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 
     try
     {
-        // GetRelationshipssAsync will throw an error if a problem occurs
+        // GetRelationshipsAsync will throw an error if a problem occurs
         AsyncPageable<IncomingRelationship> incomingRels = client.GetIncomingRelationshipsAsync(dtId);
 
         await foreach (IncomingRelationship incomingRel in incomingRels)
@@ -355,18 +369,162 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
     }
     catch (RequestFailedException ex)
     {
-        Log.Error($"*** Error {ex.Status}/{ex.ErrorCode} retrieving or deleting incoming relationships for {dtId} due to {ex.Message}");
+        Log.Error($"_*_ Error {ex.Status}/{ex.ErrorCode} retrieving or deleting incoming relationships for {dtId} due to {ex.Message}");
     }
 }
 ```
-
 ### <a name="delete-all-digital-twins"></a>刪除所有數位 twins
 
-如需如何一次刪除所有 twins 的範例，請下載教學課程中使用的範例應用程式 [*：使用範例用戶端應用程式探索基本概念*](tutorial-command-line-app.md)。 *CommandLoop.cs*檔案會在函式中執行此 `CommandDeleteAllTwins` 工作。
+如需如何一次刪除所有 twins 的範例，請下載 _Tutorial 中使用的範例應用程式 [：探索範例用戶端應用程式的基本概念 *](tutorial-command-line-app.md)。 *CommandLoop.cs*檔案會在函式中執行此 `CommandDeleteAllTwins()` 工作。
+
+## <a name="manage-twins-using-runnable-code-sample"></a>使用可執行檔程式碼範例來管理 twins
+
+您可以使用下列可執行檔程式碼範例來建立對應項、更新其詳細資料，以及刪除對應項。 
+
+程式碼片段會使用教學課程中的模型定義 [Room.js](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) [*：探索 Azure 數位 Twins 與範例用戶端應用程式*](tutorial-command-line-app.md)。 您可以使用此連結直接移至檔案，或將它下載為完整的端對端 [範例專案的](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)一部分。
+
+將預留位置取代 `<your-instance-hostname>` 為您的 Azure 數位 Twins 實例詳細資料，然後執行範例。
+
+```csharp
+using System;
+using Azure.DigitalTwins.Core;
+using Azure.Identity;
+using System.Threading.Tasks;
+using System.IO;
+using System.Collections.Generic;
+using Azure;
+using Azure.DigitalTwins.Core.Serialization;
+using System.Text.Json;
+
+namespace minimal
+{
+    class Program
+    {
+
+        static async Task Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+            string adtInstanceUrl = "https://<your-instance-hostname>";
+            var credentials = new DefaultAzureCredential();
+            Console.WriteLine();
+            Console.WriteLine($"Upload a model");
+            BasicDigitalTwin twin = new BasicDigitalTwin();
+            var typeList = new List<string>();
+            string twin_Id = "myRoomId";
+            string dtdl = File.ReadAllText("Room.json");
+            typeList.Add(dtdl);
+            // Upload the model to the service
+            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+            Console.WriteLine($"Service client created – ready to go");
+            await client.CreateModelsAsync(typeList);
+            twin.Metadata = new DigitalTwinMetadata();
+            twin.Metadata.ModelId = "dtmi:example:Room;1";
+            // Initialize properties
+            Dictionary<string, object> props = new Dictionary<string, object>();
+            props.Add("Temperature", 35.0);
+            props.Add("Humidity", 55.0);
+            twin.CustomProperties = props;
+            await client.CreateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
+            Console.WriteLine("Twin created successfully");
+            twin = FetchAndPrintTwin(twin_Id, client);
+            List<object> twinData = new List<object>();
+            twinData.Add(new Dictionary<string, object>() 
+            {
+                { "op", "add"},
+                { "path", "/Temperature"},
+                { "value", 25.0}
+            });
+
+            await client.UpdateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize(twinData));
+            Console.WriteLine("Updated Twin Properties");
+            FetchAndPrintTwin(twin_Id, client);
+            await DeleteTwin(client, twin_Id);
+        }
+
+        private static BasicDigitalTwin FetchAndPrintTwin(string twin_Id, DigitalTwinsClient client)
+        {
+            BasicDigitalTwin twin;
+            Response<string> res = client.GetDigitalTwin(twin_Id);
+            twin = JsonSerializer.Deserialize<BasicDigitalTwin>(res.Value);
+            Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
+            foreach (string prop in twin.CustomProperties.Keys)
+            {
+                if (twin.CustomProperties.TryGetValue(prop, out object value))
+                    Console.WriteLine($"Property '{prop}': {value}");
+            }
+
+            return twin;
+        }
+        static async Task DeleteTwin(DigitalTwinsClient client, string id)
+        {
+            await FindAndDeleteOutgoingRelationshipsAsync(client, id);
+            await FindAndDeleteIncomingRelationshipsAsync(client, id);
+            try
+            {
+                await client.DeleteDigitalTwinAsync(id);
+                Console.WriteLine("Twin deleted successfully");
+                FetchAndPrintTwin(id, client);
+            }
+            catch (RequestFailedException exc)
+            {
+                Console.WriteLine($"*** Error:{exc.Message}");
+            }
+        }
+
+        public static async Task FindAndDeleteOutgoingRelationshipsAsync(DigitalTwinsClient client, string dtId)
+        {
+            // Find the relationships for the twin
+
+            try
+            {
+                // GetRelationshipsAsync will throw an error if a problem occurs
+                AsyncPageable<string> relsJson = client.GetRelationshipsAsync(dtId);
+
+                await foreach (string relJson in relsJson)
+                {
+                    var rel = System.Text.Json.JsonSerializer.Deserialize<BasicRelationship>(relJson);
+                    await client.DeleteRelationshipAsync(dtId, rel.Id).ConfigureAwait(false);
+                    Console.WriteLine($"Deleted relationship {rel.Id} from {dtId}");
+                }
+            }
+            catch (RequestFailedException ex)
+            {
+                Console.WriteLine($"**_ Error {ex.Status}/{ex.ErrorCode} retrieving or deleting relationships for {dtId} due to {ex.Message}");
+            }
+        }
+
+       static async Task FindAndDeleteIncomingRelationshipsAsync(DigitalTwinsClient client, string dtId)
+        {
+            // Find the relationships for the twin
+
+            try
+            {
+                // GetRelationshipsAsync will throw an error if a problem occurs
+                AsyncPageable<IncomingRelationship> incomingRels = client.GetIncomingRelationshipsAsync(dtId);
+
+                await foreach (IncomingRelationship incomingRel in incomingRels)
+                {
+                    await client.DeleteRelationshipAsync(incomingRel.SourceId, incomingRel.RelationshipId).ConfigureAwait(false);
+                    Console.WriteLine($"Deleted incoming relationship {incomingRel.RelationshipId} from {dtId}");
+                }
+            }
+            catch (RequestFailedException ex)
+            {
+                Console.WriteLine($"_*_ Error {ex.Status}/{ex.ErrorCode} retrieving or deleting incoming relationships for {dtId} due to {ex.Message}");
+            }
+        }
+
+    }
+}
+
+```
+以下是上述程式的主控台輸出： 
+
+:::image type="content" source="./media/how-to-manage-twin/console-output-manage-twins.png" alt-text="顯示對應項已建立、更新及刪除的主控台輸出" lightbox="./media/how-to-manage-twin/console-output-manage-twins.png":::
 
 ## <a name="manage-twins-with-cli"></a>使用 CLI 管理 twins
 
-您也可以使用 Azure 數位 Twins CLI 來管理 Twins。 您可以在 how [*to：使用 Azure 數位 TWINS CLI*](how-to-use-cli.md)中找到這些命令。
+您也可以使用 Azure 數位 Twins CLI 來管理 Twins。 您可以在 [_How：使用 Azure 數位 TWINS CLI *](how-to-use-cli.md)中找到這些命令。
 
 [!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 

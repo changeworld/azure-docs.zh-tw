@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: cb6c49ce779fe8b1e764471c31b392e31d6572ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd6fc3ee88d63c1d933d3405437ec1bf49e0432e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631200"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426357"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 建立 Azure Machine Learning 的工作區
 
@@ -359,7 +359,7 @@ az ml workspace update -w <workspace-name> -g <resource-group-name>
 az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user> --role <role>
 ```
 
-如需角色型存取控制 (RBAC) 搭配 Azure Machine Learning 的詳細資訊，請參閱[管理使用者和角色](how-to-assign-roles.md)。
+如需 Azure 角色型存取控制 (Azure RBAC) 搭配 Azure Machine Learning 的詳細資訊，請參閱 [管理使用者和角色](how-to-assign-roles.md)。
 
 如需詳細資訊，請參閱 [az ml workspace share](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-share) 文件。
 

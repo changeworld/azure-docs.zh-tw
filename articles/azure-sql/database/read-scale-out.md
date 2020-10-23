@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: bd393a897052dd0bd49851eee424c99ad1fcfb1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbde77de0ad8698ff82b80b440ae1d4bdcae1f36
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319420"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426989"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>使用唯讀複本來卸載唯讀查詢工作負載
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-在 [高可用性架構](high-availability-sla.md#premium-and-business-critical-service-tier-availability)中，每個單一資料庫、彈性集區資料庫，以及 Premium 和業務關鍵服務層級中的受控實例，都會自動布建主要讀寫複本和數個次要唯讀複本。 次要複本會以與主要複本相同的計算大小進行布建。 *讀取*相應放大功能可讓您使用其中一個唯讀複本的計算容量來卸載唯讀工作負載，而不是在讀寫複本上執行。 如此一來，某些唯讀工作負載可以與讀寫工作負載隔離，而且不會影響其效能。 這項功能適用于包含邏輯上分隔唯讀工作負載（例如分析）的應用程式。 在 Premium 和業務關鍵服務層級中，應用程式可以使用此額外容量獲得效能優勢，而不需額外費用。
+在 [高可用性架構](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability)中，每個單一資料庫、彈性集區資料庫，以及 Premium 和業務關鍵服務層級中的受控實例，都會自動布建主要讀寫複本和數個次要唯讀複本。 次要複本會以與主要複本相同的計算大小進行布建。 *讀取*相應放大功能可讓您使用其中一個唯讀複本的計算容量來卸載唯讀工作負載，而不是在讀寫複本上執行。 如此一來，某些唯讀工作負載可以與讀寫工作負載隔離，而且不會影響其效能。 這項功能適用于包含邏輯上分隔唯讀工作負載（例如分析）的應用程式。 在 Premium 和業務關鍵服務層級中，應用程式可以使用此額外容量獲得效能優勢，而不需額外費用。
 
 當至少有一個次要複本建立時，超大規模服務層級也會提供 *讀取* 相應放大功能。 多個次要複本可用於負載平衡唯讀工作負載，而這些工作負載需要的資源比一個次要複本上提供的多。
 

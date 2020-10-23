@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: caaf8e25cdf43602fda8fc72caf7d16b7b56c06a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc9da659e7e55e8b15071f957d6a51e3b4673244
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361886"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427566"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>使用 Azure Machine Learning Studio (傳統) Web 服務入口網站管理 web 服務
 
@@ -44,7 +44,7 @@ ms.locfileid: "91361886"
 
 如需建立工作區的詳細資訊，請參閱 [建立和共用 Azure Machine Learning Studio (傳統) 工作區](create-workspace.md)。
 
-如需如何設定存取權限的詳細資訊，請參閱[使用 RBAC 和 Azure 入口網站來管理存取權](../../role-based-access-control/role-assignments-portal.md)。
+如需有關設定存取權限的詳細資訊，請參閱 [使用 Azure 入口網站新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)。
 
 
 ## <a name="manage-new-web-services"></a>管理新式 Web 服務

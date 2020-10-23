@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5ce2c866954f46e3a01cabb23033ea2dae77ead6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fed376eae1c3dadb17f5ecf8e7f1c3422e07b9f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757433"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426421"
 ---
 # <a name="tutorial-configure-apple-school-manager-for-automatic-user-provisioning"></a>教學課程：設定 Apple School Manager 來自動布建使用者
 
@@ -34,7 +34,7 @@ ms.locfileid: "91757433"
 > * 若不再需要存取權，請在 Apple School Manager 中移除使用者
 > * 讓特定的使用者屬性在 Azure AD 與 Apple School Manager 之間保持同步
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -99,11 +99,11 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 > [!NOTE]
 >如果連接成功，Apple School Manager 會將 SCIM 連線顯示為使用中。 此程式最多可能需要60秒，Apple School Manager 才能反映最新的連接狀態。
 
-6. 在 [通知電子郵件]**** 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知]**** 核取方塊。
+6. 在 [通知電子郵件]  欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知]  核取方塊。
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 **[儲存]** 。
+7. 按一下 [檔案]  。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者到 Apple School Manager**]。
 
@@ -134,11 +134,11 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![佈建範圍](common/provisioning-scope.png)
 
-13. 當您準備好要佈建時，按一下 [儲存]。
+13. 當您準備好要佈建時，按一下 [儲存]  。
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
-此作業會對在 [設定]**** 區段的 [範圍]**** 中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。
+此作業會對在 [設定]  區段的 [範圍]  中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。
 
 ## <a name="step-6-monitor-your-deployment"></a>步驟 6. 監視您的部署
 
@@ -160,7 +160,6 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 * [在 Apple School Manager 中查看 SCIM 活動](https://support.apple.com/guide/apple-school-manager/apd1bfd8dfde)
 * [在 Apple School Manager 中管理現有的 SCIM token 和連接](https://support.apple.com/guide/apple-school-manager/apdc9a823611)
 * [中斷 Apple School Manager 中的 SCIM 連接](https://support.apple.com/guide/apple-school-manager/apd609be3a61)
-* [在 Apple School Manager 中管理現有的 SCIM token 和連接](https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)
 * [在 Apple School Manager 中針對 SCIM 連接進行疑難排解](https://support.apple.com/guide/apple-school-manager/apd403a0f3bd)
 
 ## <a name="next-steps"></a>後續步驟

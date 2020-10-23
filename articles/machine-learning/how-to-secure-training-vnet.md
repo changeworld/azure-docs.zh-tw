@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 6e7499d8402bf31d5ecc4d1b212c08b7064d0446
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59e8c836a796a46cbf5a45c6ad4440e4b80d476d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629721"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425107"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 定型環境
 
@@ -36,18 +36,18 @@ ms.locfileid: "91629721"
 > - 虛擬機器
 > - HDInsight 叢集
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 + 閱讀 [網路安全性總覽](how-to-network-security-overview.md) 文章，以瞭解常見的虛擬網路案例和整體虛擬網路架構。
 
 + 要搭配您的計算資源使用的現有虛擬網路和子網。
 
-+ 若要將資源部署到虛擬網路或子網，您的使用者帳戶必須具有 Azure 角色型存取控制 (RBAC) 中下列動作的許可權：
++ 若要將資源部署到虛擬網路或子網，您的使用者帳戶必須具有 Azure 角色型存取控制 (Azure RBAC) 中下列動作的許可權：
 
     - 虛擬網路資源上的「Microsoft. Network/virtualNetworks/join/action」。
     - 子網資源上的「Microsoft. Network/virtualNetworks/subnet/join/action」。
 
-    如需具有網路功能之 RBAC 的詳細資訊，請參閱[網路功能內建角色](/azure/role-based-access-control/built-in-roles#networking)。
+    如需有關具有網路功能的 Azure RBAC 的詳細資訊，請參閱 [網路內建角色](/azure/role-based-access-control/built-in-roles#networking)
 
 
 ## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>計算叢集和執行個體 

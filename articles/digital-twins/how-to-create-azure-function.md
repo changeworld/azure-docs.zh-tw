@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d81d26c4cf975a20f31b4b4546c1477ed1a630e0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: acbccd09fc8bc765083fea7b3a8d6ad749003ae9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048316"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428001"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>連接 Azure Functions apps 以處理資料
 
@@ -50,7 +50,7 @@ ms.locfileid: "92048316"
 
 ## <a name="write-an-azure-function-with-an-event-grid-trigger"></a>使用事件方格觸發程式撰寫 Azure 函數
 
-您可以藉由將 SDK 新增至函式應用程式來撰寫 Azure 函式。 函數應用程式會使用 [適用于 .net (c # ) 的 Azure IoT 數位對應項用戶端程式庫 ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)，與 Azure 數位 Twins 互動。 
+您可以藉由將 SDK 新增至函式應用程式來撰寫 Azure 函式。 函數應用程式會使用 [適用于 .net 的 Azure 數位 TWINS SDK (c # ) ](https://www.nuget.org/packages/Azure.DigitalTwins.Core)來與 Azure 數位 Twins 互動。 
 
 若要使用 SDK，您必須將下列套件包含在您的專案中。 您可以使用 visual studio NuGet 套件管理員來安裝套件，或使用 `dotnet` 命令列工具新增套件。 選擇下列其中一種方法： 
 

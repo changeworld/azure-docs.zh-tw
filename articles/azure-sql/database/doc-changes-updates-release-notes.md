@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 027a816e846996aa7c61a1747327128f9a0feed0
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 01126a1ca8590d02d0cd0aa1c8554b34161dbac5
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079202"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426272"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database & SQL 受控執行個體有哪些新功能？
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -100,7 +100,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 |---------|---------|---------|---------|
 |[從伺服器信任群組移除受控執行個體之後，可以執行分散式交易](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|10月2020|有因應措施||
 |[受控執行個體調整作業之後，無法執行分散式交易](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|10月2020|有因應措施||
-|[BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql)在 azure SQL 中， `BACKUP` / `RESTORE` 受控執行個體中的語句無法使用 Azure AD 管理身分識別來向 Azure 儲存體進行驗證|Sep 2020|有因應措施||
+|[BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) /Azure SQL 中的[OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15)和 `BACKUP` / `RESTORE` 受控執行個體中的語句無法使用 Azure AD 管理身分識別來向 Azure 儲存體進行驗證|Sep 2020|有因應措施||
 |[服務主體無法存取 Azure AD 和 AKV](#service-principal-cannot-access-azure-ad-and-akv)|2020年8月|有因應措施||
 |[還原沒有總和檢查碼的手動備份可能會失敗](#restoring-manual-backup-without-checksum-might-fail)|2020 年 5 月|已解決|2020 年 6 月|
 |[在修改、停用或啟用現有的作業時，代理程式變成沒有回應](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020 年 5 月|已解決|2020 年 6 月|
@@ -139,7 +139,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 
 ### <a name="bulk-insert-and-backuprestore-statements-cannot-use-managed-identity-to-access-azure-storage"></a>BULK INSERT 和備份/還原語句無法使用受控識別來存取 Azure 儲存體
 
-Bulk insert 語句無法使用 `DATABASE SCOPED CREDENTIAL` With 受控識別來向 Azure 儲存體進行驗證。 若要解決此問題，請切換到共用存取簽章驗證。 下列範例將無法在 Azure SQL (資料庫和受控執行個體) 上運作：
+Bulk insert、BACKUP 和 RESTORE 語句和 OPENROWSET 函數無法搭配 `DATABASE SCOPED CREDENTIAL` 受控識別使用，以向 Azure 儲存體進行驗證。 若要解決此問題，請切換到共用存取簽章驗證。 下列範例將無法在 Azure SQL (資料庫和受控執行個體) 上運作：
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Identity';

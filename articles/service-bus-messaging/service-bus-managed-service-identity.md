@@ -2,13 +2,13 @@
 title: 搭配服務匯流排之 Azure 資源的受控識別
 description: 本文說明如何使用受控識別來存取 Azure 服務匯流排實體 (佇列、主題和訂用帳戶) 。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 1deb3bdf823f1554e302bb35baabe444223f9008
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 1efcd3c48e7e4a431a0c72c4b3b84531b44e973e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88079853"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425527"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>使用 Azure Active Directory 來驗證受控識別，以存取 Azure 服務匯流排資源
 [Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/overview.md)是一個跨 Azure 功能，可讓您建立與應用程式程式碼執行所在之部署相關聯的安全識別。 然後您可以將該識別與存取控制角色產生關連，該角色會授與用來存取應用程式所需之特定 Azure 資源的自訂權限。
@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) 透過 [AZURE RBAC (的 azure 角色型存取�
 
 下列清單描述從最小範圍開始，您可以範圍存取服務匯流排資源的層級：
 
-- **佇列**、 **主題**或 **訂**用帳戶：角色指派會套用至特定的服務匯流排實體。 目前，Azure 入口網站不支援將使用者/群組/受控識別指派給訂用帳戶層級的服務匯流排 Azure 角色。 以下是使用 Azure CLI 命令的範例： [az-角色-指派-建立](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) 以將身分識別指派給服務匯流排 Azure 角色： 
+- **佇列**、 **主題**或 **訂**用帳戶：角色指派會套用至特定的服務匯流排實體。 目前，Azure 入口網站不支援將使用者/群組/受控識別指派給訂用帳戶層級的服務匯流排 Azure 角色。 以下是使用 Azure CLI 命令的範例： [az-角色-指派-建立](/cli/azure/role/assignment?#az-role-assignment-create) 以將身分識別指派給服務匯流排 Azure 角色： 
 
     ```azurecli
     az role assignment create \
@@ -91,6 +91,9 @@ Azure Active Directory (Azure AD) 透過 [AZURE RBAC (的 azure 角色型存取�
 
 一旦您啟用此設定，就會在 Azure Active Directory (Azure AD) 中建立新的服務識別，並將其設定為 App Service 主機。
 
+> [!NOTE]
+> 當您使用受控識別時，連接字串的格式應為： `Endpoint=sb://<NAMESPACE NAME>.servicebus.windows.net/;Authentication=Managed Identity` 。
+
 現在，將此服務識別指派給您服務匯流排資源中所需範圍內的角色。
 
 ### <a name="to-assign-azure-roles-using-the-azure-portal"></a>使用 Azure 入口網站指派 Azure 角色
@@ -108,14 +111,16 @@ Azure Active Directory (Azure AD) 透過 [AZURE RBAC (的 azure 角色型存取�
 4.  在 [ **新增角色指派** ] 頁面上，選取您要指派的 Azure 服務匯流排角色。 然後搜尋以找出您已註冊的服務身分識別，以指派角色。
     
     ![[新增角色指派] 頁面](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
-5.  選取 [儲存]****。 您對其指派角色的身分識別會出現在該角色下方。 例如，下圖顯示服務識別有 Azure 服務匯流排資料擁有者。
+5.  選取 [儲存]。 您對其指派角色的身分識別會出現在該角色下方。 例如，下圖顯示服務識別有 Azure 服務匯流排資料擁有者。
     
     ![指派給角色的身分識別](./media/service-bus-managed-service-identity/role-assigned.png)
 
 一旦您指派角色之後，web 應用程式就可以存取定義範圍下的服務匯流排實體。 
 
-### <a name="run-the-app"></a>執行應用程式
 
+
+
+### <a name="run-the-app"></a>執行應用程式
 現在修改您建立之 ASP.NET 應用程式的預設分頁。 您可以使用來自[這個 GitHub 存放庫](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet)的 Web 應用程式程式碼。  
 
 Default.aspx 頁面是您的登陸頁面。 您可以在 Default.aspx.cs 檔案中找到程式碼。 結果是最小的 Web 應用程式，具有數個項目欄位，以及具有連線到服務匯流排的 [傳送]**** 和 [接收]**** 按鈕，以傳送或接收訊息。

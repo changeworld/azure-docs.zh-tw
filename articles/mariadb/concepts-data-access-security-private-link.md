@@ -6,18 +6,18 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 20add4859b272b6d121666cde9c56296119d41e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80bc77de30073b2872412f907251b1aad7e334d3
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836525"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425618"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫的 Private Link
 
 Private Link 可讓您為適用於 MariaDB 的 Azure 資料庫建立私人端點，因此會將 Azure 服務放在您的私人虛擬網路內 (VNet) 。 私人端點會公開私人 IP，您可用來連線到適用於 MariaDB 的 Azure 資料庫資料庫伺服器，就像 VNet 中的任何其他資源一樣。
 
-如需支援 Private Link 功能的 PaaS 服務清單，請參閱 Private Link [檔](https://docs.microsoft.com/azure/private-link/index)。 私人端點是特定 [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) 和子網內的私人 IP 位址。
+如需支援 Private Link 功能的 PaaS 服務清單，請參閱 Private Link [檔](../private-link/index.yml)。 私人端點是特定 [VNet](../virtual-network/virtual-networks-overview.md) 和子網內的私人 IP 位址。
 
 > [!NOTE]
 > 私人連結功能僅適用于一般用途或記憶體優化定價層中的適用於 MariaDB 的 Azure 資料庫伺服器。 確定資料庫伺服器是在其中一個定價層。
@@ -28,7 +28,7 @@ Private Link 可讓您為適用於 MariaDB 的 Azure 資料庫建立私人端點
 
 請考慮在連接至適用於 MariaDB 的 Azure 資料庫實例的 Azure VM 內執行適用于 mariadb 工作臺的使用者案例。 這個適用于 mariadb 實例位於「美國西部」資料中心。 下列範例顯示如何使用網路存取控制來限制適用於 MariaDB 的 Azure 資料庫上的公用端點存取。
 
-* 藉由將 [允許 Azure 服務] 設為 [關閉]，以停用所有 Azure 服務流量，以透過公用端點適用於 MariaDB 的 Azure 資料庫。 請確定不允許任何 IP 位址或範圍透過 [防火牆規則](https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules) 或 [虛擬網路服務端點](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)來存取伺服器。
+* 藉由將 [允許 Azure 服務] 設為 [關閉]，以停用所有 Azure 服務流量，以透過公用端點適用於 MariaDB 的 Azure 資料庫。 請確定不允許任何 IP 位址或範圍透過 [防火牆規則](concepts-firewall-rules.md) 或 [虛擬網路服務端點](concepts-data-access-security-vnet.md)來存取伺服器。
 
 * 使用 VM 的私人 IP 位址，只允許流向適用於 MariaDB 的 Azure 資料庫的流量。 如需詳細資訊，請參閱[服務端點](concepts-data-access-security-vnet.md)和 [VNet 防火牆規則](howto-manage-vnet-portal.md)的相關文章。
 
@@ -45,7 +45,7 @@ Private Link 可讓您為適用於 MariaDB 的 Azure 資料庫建立私人端點
 
 當您從內部部署電腦連線至公用端點時，您的 IP 位址必須使用伺服器層級防火牆規則新增至以 IP 為基礎的防火牆。 雖然此模型可針對開發或測試工作負載來允許個別機器的存取，但難以在生產環境中進行管理。
 
-使用 Private Link 時，您可以使用 [Express Route](https://azure.microsoft.com/services/expressroute/) (ER) 、私用對等互連或 [VPN](https://docs.microsoft.com/azure/vpn-gateway/)通道來啟用私人端點的跨單位存取。 他們接著可以停用透過公用端點的所有存取，而不使用以 IP 為基礎的防火牆。
+使用 Private Link 時，您可以使用 [Express Route](https://azure.microsoft.com/services/expressroute/) (ER) 、私用對等互連或 [VPN](../vpn-gateway/index.yml)通道來啟用私人端點的跨單位存取。 他們接著可以停用透過公用端點的所有存取，而不使用以 IP 為基礎的防火牆。
 
 > [!NOTE]
 > 在某些案例中，適用於 MariaDB 的 Azure 資料庫和 VNet 子網路是位於不同的訂用帳戶。 在這些情況下，您必須確保下列設定：
@@ -57,8 +57,8 @@ Private Link 可讓您為適用於 MariaDB 的 Azure 資料庫建立私人端點
 
 需要私人端點才能啟用 Private Link。 您可以使用下列操作指南來完成這項操作。
 
-* [Azure 入口網站](https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal)
-* [CLI](https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-cli)
+* [Azure 入口網站](howto-configure-privatelink-portal.md)
+* [CLI](howto-configure-privatelink-cli.md)
 
 ### <a name="approval-process"></a>核准流程
 
@@ -90,17 +90,17 @@ Private Link 可讓您為適用於 MariaDB 的 Azure 資料庫建立私人端點
 ![選取私人端點總覽](media/concepts-data-access-and-security-private-link/show-private-link-overview.png)
 
 ### <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>從對等互連虛擬網路 (VNet) 中的 Azure VM 進行連線
-設定 [vnet 對等互連](https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-powershell) ，以從對等互連 VNet 中的 Azure VM 建立對適用於 MariaDB 的 Azure 資料庫的連線能力。
+設定 [vnet 對等互連](../virtual-network/tutorial-connect-virtual-networks-powershell.md) ，以從對等互連 VNet 中的 Azure VM 建立對適用於 MariaDB 的 Azure 資料庫的連線能力。
 
 ### <a name="connecting-from-an-azure-vm-in-vnet-to-vnet-environment"></a>從 VNet 對 VNet 環境中的 Azure VM 進行連線
-設定 [VNet 對 VNET VPN 閘道聯](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) 機，以從不同區域或訂用帳戶中的 Azure VM 建立對適用於 MariaDB 的 Azure 資料庫的連線能力。
+設定 [VNet 對 VNET VPN 閘道聯](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) 機，以從不同區域或訂用帳戶中的 Azure VM 建立對適用於 MariaDB 的 Azure 資料庫的連線能力。
 
 ### <a name="connecting-from-an-on-premises-environment-over-vpn"></a>透過 VPN 從內部部署環境連線
 若要建立從內部部署環境到適用於 MariaDB 的 Azure 資料庫的連接，請選擇並執行其中一個選項：
 
-* [點對站連線](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
-* [站對站 VPN 連線](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)
-* [ExpressRoute 線路](https://docs.microsoft.com/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager)
+* [點對站連線](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+* [站對站 VPN 連線](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
+* [ExpressRoute 線路](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
 ## <a name="private-link-combined-with-firewall-rules"></a>Private Link 搭配防火牆規則
 
@@ -129,11 +129,11 @@ Private Link 可讓您為適用於 MariaDB 的 Azure 資料庫建立私人端點
 
 若要深入瞭解適用於 MariaDB 的 Azure 資料庫安全性功能，請參閱下列文章：
 
-* 若要設定適用於 MariaDB 的 Azure 資料庫的防火牆，請參閱 [防火牆支援](https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules)。
+* 若要設定適用於 MariaDB 的 Azure 資料庫的防火牆，請參閱 [防火牆支援](concepts-firewall-rules.md)。
 
-* 若要瞭解如何為您的適用於 MariaDB 的 Azure 資料庫設定虛擬網路服務端點，請參閱 [設定從虛擬網路存取](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)。
+* 若要瞭解如何為您的適用於 MariaDB 的 Azure 資料庫設定虛擬網路服務端點，請參閱 [設定從虛擬網路存取](concepts-data-access-security-vnet.md)。
 
-* 如需適用於 MariaDB 的 Azure 資料庫連接的總覽，請參閱 [適用於 MariaDB 的 Azure 資料庫連線架構](https://docs.microsoft.com/azure/MariaDB/concepts-connectivity-architecture)
+* 如需適用於 MariaDB 的 Azure 資料庫連接的總覽，請參閱 [適用於 MariaDB 的 Azure 資料庫連線架構](concepts-connectivity-architecture.md)
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

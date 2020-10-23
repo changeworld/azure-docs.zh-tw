@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 87d26e18ff97416ff8cb0eda08f7beb81005c627
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: d18962e097358b8e80ac93b4d8419f7cd4f77ee0
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015697"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426817"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒體服務 v3 版本資訊
 
@@ -335,9 +335,9 @@ Azure 資源管理支援可提供統一的管理和作業 API (現在所有項�
 
 新的**轉換**物件會簡化編碼模型。 新的物件可讓您輕鬆地建立及共用編碼 Resource Manager 範本和預設值。 
 
-#### <a name="azure-active-directory-authentication-and-rbac"></a>Azure Active Directory 驗證和 RBAC
+#### <a name="azure-active-directory-authentication-and-azure-rbac"></a>Azure Active Directory authentication 和 Azure RBAC
 
-Azure AD 驗證和角色型存取控制 (RBAC) 會啟用 Azure AD 中的安全轉換、即時事件、內容金鑰原則，或是依角色或使用者的資產。
+Azure AD 驗證和 Azure 角色型存取控制 (Azure RBAC) 依 Azure AD 的角色或使用者啟用安全轉換、Liveevent、內容金鑰原則或資產。
 
 #### <a name="client-sdks"></a>用戶端 SDK  
 

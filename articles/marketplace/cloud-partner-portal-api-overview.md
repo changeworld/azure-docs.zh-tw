@@ -7,19 +7,19 @@ ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: bfb6e9cb510f5fe887f108dfdea5932406aafe0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57d3d1c6bb14db3eb2ca499069934a628d2f7fea
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292927"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425783"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Cloud Partner 入口網站 API 參考
 
 > [!NOTE]
 > Cloud Partner 入口網站 Api 已與整合，並且將繼續在合作夥伴中心中運作。 轉換導入了少量的變更。 請參閱本檔中所列的 [CPP Api 變更](#changes-to-cpp-apis-after-the-migration-to-partner-center) ，以確保您的程式碼在轉換至合作夥伴中心之後仍繼續運作。 CPP Api 應該僅用於已整合的現有產品，然後轉換為合作夥伴中心;新產品應使用合作夥伴中心提交 Api。
 
-Cloud Partner 入口網站 REST API 允許對工作負載、供應項目及發行設定檔進行以程式設計方式達成的擷取和操作。 這些 API 會使用角色型存取控制 (RBAC) 來在處理期間強制執行正確的權限。
+Cloud Partner 入口網站 REST API 允許對工作負載、供應項目及發行設定檔進行以程式設計方式達成的擷取和操作。 Api 會使用 Azure 角色型存取控制 (Azure RBAC) 在處理階段強制執行正確的許可權。
 
 本參考能提供 Cloud Partner 入口網站 REST API 的技術詳細資料。 本文件中的承載範例僅供參考，並會隨新功能的加入而變更。
 
@@ -50,7 +50,7 @@ Cloud Partner 入口網站 REST API 允許對工作負載、供應項目及發�
 - [建立供應項目](./cloud-partner-portal-api-creating-offer.md)
 - [發佈供應項目](./cloud-partner-portal-api-publish-offer.md)
 
-### <a name="operations"></a>作業
+### <a name="operations"></a>Operations
 
 - [擷取作業](./cloud-partner-portal-api-retrieve-operations.md)
 - [取消作業](./cloud-partner-portal-api-cancel-operations.md)

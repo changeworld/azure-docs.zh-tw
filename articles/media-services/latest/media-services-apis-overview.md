@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 5d57a6705973fbd5ee39042404015347d75b49b3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b01208c67610ff220df1654d10211472e0eed61f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019761"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426848"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>使用媒體服務 v3 API 開發
 
@@ -35,7 +35,7 @@ ms.locfileid: "92019761"
 * **服務主體驗證**：用以驗證服務 (例如：Web Apps、函數應用程式、Logic Apps、API 與微服務)。 通常使用這種驗證方法的應用程式有執行精靈服務、中介層服務或排程的工作的應用程式。 例如，Web Apps 應該一律有連線到具有服務主體之媒體服務的中介層。
 * **使用者驗證**：用以驗證使用應用程式與媒體服務資源互動的人員。 互動式應用程式應該先提示使用者輸入使用者的認證。 例如，授權的使用者用來監控編碼工作或即時串流的管理主控台應用程式。
 
-媒體服務 API 需要讓提出 REST API 要求的使用者或應用程式能夠存取媒體服務帳戶資源，並使用**參與者**或**擁有者**角色。 您可以使用**讀取者**角色來存取 API，但只能使用 **Get** 或 **List** 作業。 如需詳細資訊，請參閱[媒體服務帳戶的角色型存取控制](rbac-overview.md)。
+媒體服務 API 需要讓提出 REST API 要求的使用者或應用程式能夠存取媒體服務帳戶資源，並使用**參與者**或**擁有者**角色。 您可以使用**讀取者**角色來存取 API，但只能使用 **Get** 或 **List** 作業。 如需詳細資訊，請參閱 [azure 角色型存取控制 (適用于媒體服務帳戶的 AZURE RBAC) ](rbac-overview.md)。
 
 請考慮使用 Azure 資源受控識別，透過 Azure Resource Manager 存取媒體服務 API，而不是建立服務主體。 若要深入了解 Azure 資源受控識別，請參閱[什麼是 Azure 資源受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。
 

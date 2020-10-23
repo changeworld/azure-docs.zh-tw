@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 9c2f8ea55f99ac893dca0fa380729b7cc866812e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f61fef58485a905b96bdada32b915106e60d1a8
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88871273"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425139"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>如何使用 Java 的佇列儲存體
 
@@ -596,7 +596,7 @@ catch (Exception e)
 
 [!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 了解佇列儲存體的基礎概念之後，請參考下列連結以了解有關更複雜的儲存工作。
 
@@ -608,5 +608,5 @@ catch (Exception e)
 [Azure SDK for Java]: https://github.com/azure/azure-sdk-for-java
 [Azure Storage SDK for Java]: https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage
 [Azure 儲存體用戶端 SDK 參考]: https://azure.github.io/azure-sdk-for-java/storage.html
-[Azure Storage Services REST API]: https://docs.microsoft.com/rest/api/storageservices/
+[Azure Storage Services REST API]: /rest/api/storageservices/
 [Azure Storage Team Blog]: https://techcommunity.microsoft.com/t5/azure-storage/bg-p/AzureStorageBlog

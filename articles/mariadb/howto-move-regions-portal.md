@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: b2e4bc71a0883c6fef6f0115080a79a74ced92b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75fabeeb7fa879a0f2843538d34f85e5ccec40e4
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542422"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425899"
 ---
 # <a name="move-an-azure-database-for-mariadb-server-to-another-region-by-using-the-azure-portal"></a>使用 Azure 入口網站將適用於 MariaDB 的 Azure 資料庫伺服器移至另一個區域
 
@@ -21,9 +21,9 @@ ms.locfileid: "91542422"
 您可以使用適用於 MariaDB 的 Azure 資料庫的 [跨區域讀取複本](concepts-read-replicas.md#cross-region-replication) 來完成移至另一個區域的工作。 若要這樣做，請先在目的地區域中建立讀取複本。 接下來，停止複寫到讀取複本伺服器，使其成為同時接受讀取和寫入流量的獨立伺服器。 
 
 > [!NOTE]
-> 本文著重于將您的伺服器移至不同的區域。 如果您想要將您的伺服器移至不同的資源群組或訂用帳戶，請參閱 [移動](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) 文章。 
+> 本文著重于將您的伺服器移至不同的區域。 如果您想要將您的伺服器移至不同的資源群組或訂用帳戶，請參閱 [移動](../azure-resource-manager/management/move-resource-group-and-subscription.md) 文章。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 讀取複本功能僅適用于一般用途或記憶體優化定價層中的適用於 MariaDB 的 Azure 資料庫伺服器。 確定來源伺服器是在其中一個定價層。
 
@@ -33,7 +33,7 @@ ms.locfileid: "91542422"
 
 若要使用 Azure 入口網站在目的地區域中建立跨區域讀取複本伺服器，請使用下列步驟：
 
-1. 登入[Azure 入口網站](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 1. 選取您要用來作為來源伺服器的現有適用於 MariaDB 的 Azure 資料庫伺服器。 這個動作會開啟 [概觀] 頁面。
 1. 選取 [設定] 下方功能表中的 [複寫]。
 1. 選取 [新增複本]。
@@ -65,7 +65,7 @@ ms.locfileid: "91542422"
 1. 建立複本之後，請找出並選取您的適用於 MariaDB 的 Azure 資料庫來源伺服器。
 1. 在 [ **總覽** ] 視窗中，選取 [ **刪除**]。
 1. 輸入來源伺服器的名稱，以確認您想要刪除。
-1. 選取 [刪除]  。
+1. 選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 

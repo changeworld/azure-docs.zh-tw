@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
-ms.openlocfilehash: 3a294368e82bcd00f98c26504b3141e8f39fe0c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e492ebf70f69c985691852a1c1f2351d1e09578e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261595"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425018"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>連線處理站 IoT 解決方案加速器是什麼？
 
@@ -58,7 +58,7 @@ ms.locfileid: "91261595"
 
 ## <a name="end-to-end-security"></a>端對端安全性
 
-- 使用角色型存取控制 (RBAC) 設定使用者的安全性權限。
+- 使用角色型存取控制 (RBAC) 來設定使用者的安全性許可權。
 - 端對端加密是使用 OPC UA 驗證 (使用 X.509 憑證) 及安全性權杖來加以實作。
 
 ## <a name="customizability"></a>自訂能力

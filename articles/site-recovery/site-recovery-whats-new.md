@@ -2,13 +2,13 @@
 title: Azure Site Recovery 的新功能
 description: 提供新功能的摘要，以及 Azure Site Recovery 服務中的最新更新。
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 1bf051afaeb61c80e3708a72a4a0605b68533977
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 0c35c8e041e47f02d53c680b5812b10d25d75a67
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90527338"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425715"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 最新功能
 
@@ -22,14 +22,24 @@ ms.locfileid: "90527338"
 
 **更新** |  **統一安裝** | **設定伺服器 ova** | **行動服務代理程式** | **站台復原提供者** | **復原服務代理程式**
 --- | --- | --- | --- | --- | ---
+[匯總套件51](https://support.microsoft.com/help/4590304)  | 9.38.5761.1 | 5.1.6400.0 | 9.38.5761.1 | 5.1.6400.0  | 2.0.9193.0
 [匯總套件50](https://support.microsoft.com/help/4582666/) | 9.37.5724.1 | 5.1.6347.0 | 9.37.5724.1 | 5.1.6347.0  | 2.0.9192.0
 [匯總套件49](https://support.microsoft.com/help/4578241/) | 9.36.5696.1 | 5.1.6315.0 | 9.36.5696.1 | 5.1.6315.0 | 2.0.9188.0
 [匯總套件48](https://support.microsoft.com/help/4573888/) | 9.35.5659.1 | 5.1.6200.0 | 9.35.5659.1 | 5.1.6200.0 | 2.0.9186.0
 [匯總套件47](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | HyperV 電腦-2.0.9183。0 <br> VMware 機器-2.0.9177。0
-[匯總套件46](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
 
 
 [深入瞭解](service-updates-how-to.md) 更新的安裝與支援。
+
+
+### <a name="update-rollup-51"></a>更新彙總套件51
+
+[更新彙總套件 51](https://support.microsoft.com/help/4590304/update-rollup-51-for-azure-site-recovery) 提供下列更新：
+
+**更新** | **詳細資料**
+--- | ---
+**提供者和代理程式** | Site Recovery 代理程式和提供者的更新，如匯總中所述。
+**問題修正/改善** | 匯總中詳述的一些修正和改進，包括行動服務的新 Linux 支援。
 
 ## <a name="update-september-2020"></a>更新 (2020 年 9 月)
 

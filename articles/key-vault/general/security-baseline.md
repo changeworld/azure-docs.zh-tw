@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 34036388ce9243c082cf79eb4be9251957eafc01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd6a907ce855fbb7c1ef96236766beef9b25b2ac
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400461"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428365"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>適用於 Key Vault 的 Azure 安全性基準
 
@@ -566,7 +566,9 @@ Azure Key Vault 記錄： https://docs.microsoft.com/azure/key-vault/key-vault-l
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有敏感性資訊
 
-**指導**方針：驗證、管理和資料平面存取 Azure Key Vault 的所有流量都會經過加密，並透過 HTTPS：埠443進行加密。  (不過，CRL 偶爾會有 HTTP [埠 80] 流量。 )  
+**指導**方針：驗證、管理和資料平面存取 Azure Key Vault 的所有流量都會經過加密，並透過 HTTPS：埠443進行加密。  (不過，CRL 偶爾會有 HTTP [埠 80] 流量。 ) Azure Key Vault 繼續允許內嵌 TLS 1.1 和 TLS 1.0 資料。 資料可能會透過用戶端上的設定限制為 TLS 1.2。
+
+
 
 存取防火牆後方的 Azure Key Vault： https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall
 

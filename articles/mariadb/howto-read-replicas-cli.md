@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f6b53efdf49538476821ddeaed9bbf4278af0728
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e48d14fae4f62b92b5a8d08f83fea6d2e2ed3fe
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542405"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424946"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>如何使用 Azure CLI 和 REST API，在適用於 MariaDB 的 Azure 資料庫中建立及管理讀取複本
 
@@ -21,9 +21,9 @@ ms.locfileid: "91542405"
 ## <a name="azure-cli"></a>Azure CLI
 您可以使用 Azure CLI 來建立及管理讀取複本。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
-- [安裝 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [安裝 Azure CLI 2.0](/cli/azure/install-azure-cli?view=azure-cli-latest)
 - 將作為來源伺服器使用的 [適用於 MariaDB 的 Azure 資料庫伺服器](quickstart-create-mariadb-server-database-using-azure-portal.md) 。 
 
 > [!IMPORTANT]
@@ -42,9 +42,9 @@ az mariadb server replica create --name mydemoreplicaserver --source-server myde
 
 `az mariadb server replica create` 命令需要下列參數：
 
-| 設定 | 範例值 | 描述  |
+| 設定 | 範例值 | 描述  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  複本伺服器會建立於其中的資源群組。  |
+| resource-group |  myresourcegroup |  複本伺服器會建立於其中的資源群組。  |
 | NAME | mydemoreplicaserver | 所建立的新複本伺服器名稱。 |
 | source-server | mydemoserver | 要從中複寫之現有來源伺服器的名稱或識別碼。 |
 
@@ -72,9 +72,9 @@ az mariadb server replica list --server-name mydemoserver --resource-group myres
 
 `az mariadb server replica list` 命令需要下列參數：
 
-| 設定 | 範例值 | 描述  |
+| 設定 | 範例值 | 描述  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  複本伺服器會建立於其中的資源群組。  |
+| resource-group |  myresourcegroup |  複本伺服器會建立於其中的資源群組。  |
 | server-name | mydemoserver | 來源伺服器的名稱或識別碼。 |
 
 ### <a name="stop-replication-to-a-replica-server"></a>停止複寫至複本伺服器
@@ -90,9 +90,9 @@ az mariadb server replica stop --name mydemoreplicaserver --resource-group myres
 
 `az mariadb server replica stop` 命令需要下列參數：
 
-| 設定 | 範例值 | 描述  |
+| 設定 | 範例值 | 描述  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  複本伺服器所在的資源群組。  |
+| resource-group |  myresourcegroup |  複本伺服器所在的資源群組。  |
 | NAME | mydemoreplicaserver | 要停止複寫的複本伺服器名稱。 |
 
 ### <a name="delete-a-replica-server"></a>刪除複本伺服器

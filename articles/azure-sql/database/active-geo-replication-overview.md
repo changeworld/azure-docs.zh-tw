@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: bc5bfb7c9cadea7aaa9cdedb2a17943014c6ef59
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 344d4e6b57082eb9ccfcd0642732d05216ad3978
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124753"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426315"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>建立和使用主動式異地複寫-Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -83,14 +83,14 @@ ms.locfileid: "92124753"
 > 如果主要資料庫上有結構描述更新，次要資料庫上的記錄重播會延遲， 因為後者需要次要資料庫上的結構描述鎖定。
 
 > [!IMPORTANT]
-> 您可以使用「異地複寫」在與主要複本相同的區域中建立次要資料庫。 您可以使用此次要資料庫來對相同區域中的唯讀工作負載進行負載平衡。 不過，相同區域中的次要資料庫不會提供額外的錯誤復原，因此不適合用于嚴重損壞修復的容錯移轉目標。 它也不保證可用性區域的隔離。 使用業務關鍵或 Premium 服務層搭配 [區域冗余](high-availability-sla.md#zone-redundant-configuration) 設定，以達成可用性區域隔離。
+> 您可以使用「異地複寫」在與主要複本相同的區域中建立次要資料庫。 您可以使用此次要資料庫來對相同區域中的唯讀工作負載進行負載平衡。 不過，相同區域中的次要資料庫不會提供額外的錯誤復原，因此不適合用于嚴重損壞修復的容錯移轉目標。 它也不保證可用性區域的隔離。 使用業務關鍵或 Premium 服務層搭配 [區域冗余](high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) 設定或一般用途服務層級 [區域冗余](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) 設定，以達成可用性區域隔離。
 >
 
 - **規劃的容錯移轉**
 
   規劃的容錯移轉會在完整同步處理完成之後，切換主要和次要資料庫的角色。 這是不會導致資料遺失的線上操作。 作業的時間取決於主資料庫上需要同步處理的交易記錄大小。 規劃的容錯移轉是針對下列案例所設計：當資料遺失無法接受時， () 在生產環境中執行 DR 演練; (b) 將資料庫重新放置到不同的區域;和 (c) 在中斷之後，將資料庫還原到主要區域， (容錯回復) 。
 
-- **未計畫的容錯移轉**
+- **未規劃的容錯移轉**
 
   非計劃性或強制容錯移轉會立即將次要資料庫切換為主要角色，而不會與主要資料庫進行任何同步處理。 認可至主要但未複寫至次要複本的任何交易都會遺失。 當主要複本無法存取時，這項作業會在中斷期間設計為復原方法，但是必須快速還原資料庫可用性。 當原始的主要複本重新上線時，它會自動重新連線，並成為新的次要資料庫。 在容錯移轉之前，所有未同步處理的交易都會保留在備份檔案中，但是不會與新的主要複本同步處理，以避免發生衝突。 這些交易必須與主資料庫的最新版本手動合併。
 
@@ -293,7 +293,7 @@ ms.locfileid: "92124753"
 | [刪除複寫連結](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | 刪除資料庫複寫連結。 無法在容錯移轉期間進行。 |
 |  | |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 如需範例指令碼，請參閱：
   - [使用作用中異地複寫設定單一資料庫並進行容錯移轉](scripts/setup-geodr-and-failover-database-powershell.md)

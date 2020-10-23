@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/28/2020
-ms.openlocfilehash: aef29eef7eb53c4cc4ffcc4926f9efe533374178
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5760d3daaa13a5ed16230e1ffb7fe3691455e09
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319447"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427033"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>選擇 vCore 和 DTU 購買模型-Azure SQL Database 和 SQL 受控執行個體
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -72,7 +72,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體可讓您輕鬆地購買完�
 
 虛擬核心 (vCore) 代表邏輯 CPU，並可讓您選擇硬體世代和 (硬體的實體特性，例如，核心數目、記憶體和儲存體大小) 。 VCore 為基礎的購買模型為您提供彈性、控制、透明的個別資源耗用量，以及將內部部署工作負載需求轉譯至雲端的簡單方式。 此模型可讓您根據您的工作負載需求，選擇計算、記憶體和儲存體資源。
 
-在以 vCore 為基礎的購買模型中，您可以選擇 SQL Database 和 SQL 受控執行個體的 [一般用途](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability) 和 [業務關鍵](high-availability-sla.md#premium-and-business-critical-service-tier-availability) 服務層級。  若為單一資料庫，您也可以選擇 [超大規模服務層級](service-tier-hyperscale.md)。
+在以 vCore 為基礎的購買模型中，您可以選擇 SQL Database 和 SQL 受控執行個體的 [一般用途](high-availability-sla.md#basic-standard-and-general-purpose-service-tier-locally-redundant-availability) 和 [業務關鍵](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability) 服務層級。  若為單一資料庫，您也可以選擇 [超大規模服務層級](service-tier-hyperscale.md)。
 
 VCore 為基礎的購買模型可讓您獨立地選擇計算和儲存體資源、符合內部部署效能，並將價格優化。 在以 vCore 為基礎的購買模型中，您需要支付：
 

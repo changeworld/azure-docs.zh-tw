@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 6ed890fca9dddcbc7f04914a6f920d530d18ed0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c972bd3b770f42353d285d0c69aacef56d6e04d5
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742837"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426126"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>使用 Azure 入口網站來設定適用於 MariaDB 之 Azure 資料庫的計量警示
 
@@ -27,7 +27,7 @@ ms.locfileid: "91742837"
 您可以透過下列方式，來設定及取得警示規則的相關資訊：
 * [Azure 入口網站](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
-* [Azure 監視器 REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
+* [Azure 監視器 REST API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric"></a>建立計量的警示規則
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您想要監視的「適用於 MariaDB 的 Azure 資料庫」伺服器。
@@ -85,5 +85,5 @@ ms.locfileid: "91742837"
 
 
 ## <a name="next-steps"></a>後續步驟
-* 深入了解 [在警示中設定 webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md)。
-* 依照 [計量集合概觀](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) 中的做法，確保您的服務可使用且有回應。
+* 深入了解 [在警示中設定 webhook](../azure-monitor/platform/alerts-webhooks.md)。
+* 依照 [計量集合概觀](../azure-monitor/platform/data-platform.md) 中的做法，確保您的服務可使用且有回應。

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/12/2020
-ms.openlocfilehash: 7072adfcfd276d6420d8ffd7331c59ead7edd288
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: fa994525285ffe363f734e9b706252105b05ff26
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952041"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428440"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure SQL Database 中複製和轉換資料
 
@@ -112,12 +112,12 @@ ms.locfileid: "91952041"
         "typeProperties": {
             "connectionString": "Data Source=tcp:<servername>.database.windows.net,1433;Initial Catalog=<databasename>;User ID=<username>@<servername>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30",
             "password": {
-                "type": "AzureKeyVaultSecret",
+                "type": "AzureKeyVaultSecret",
                 "store": {
-                    "referenceName": "<Azure Key Vault linked service name>",
-                    "type": "LinkedServiceReference"
+                    "referenceName": "<Azure Key Vault linked service name>",
+                    "type": "LinkedServiceReference"
                 },
-                "secretName": "<secretName>"
+                "secretName": "<secretName>"
             }
         },
         "connectVia": {
@@ -272,8 +272,8 @@ ms.locfileid: "91952041"
 | isolationLevel | 指定 SQL 來源的異動鎖定行為。 允許的值為： **ReadCommitted**、 **ReadUncommitted**、 **RepeatableRead**、 **Serializable**、 **Snapshot**。 如果未指定，則會使用資料庫的預設隔離等級。 如需詳細資訊，請參閱[這篇文件](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)。 | 否 |
 | partitionOptions | 指定用來從 Azure SQL Database 載入資料的資料分割選項。 <br>允許的值為： **無** (預設值) 、 **PhysicalPartitionsOfTable**和 **DynamicRange**。<br>當您啟用分割區選項時 (也就是不 `None`) ，從 Azure SQL Database 並行載入資料的平行處理原則程度，是由 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 複製活動上的設定所控制。 | 否 |
 | partitionSettings | 指定資料分割的設定群組。 <br>當資料分割選項不適用時套用 `None` 。 | 否 |
-| ***在 `partitionSettings` 下列情況下：*** | | |
-| partitionColumnName | **以整數或日期/日期時間類型**指定來源資料行的名稱，此名稱將由範圍資料分割用於平行複製。 如果未指定，則會自動偵測資料表的索引或主鍵，並將其當做資料分割資料行使用。<br>當分割選項是 `DynamicRange` 時套用。 如果您使用查詢來取出來源資料，請  `?AdfDynamicRangePartitionCondition ` 在 WHERE 子句中掛上。 如需範例，請參閱 [SQL database 的平行複製](#parallel-copy-from-sql-database) 一節。 | 否 |
+| **_在 `partitionSettings` ：_*_ | | |
+| partitionColumnName | *以 [整數] 或 [日期/日期/日期/日期/時間類型**] 中的來源資料行名稱，指定將用於平行複製的範圍分割。 如果未指定，則會自動偵測資料表的索引或主鍵，並將其當做資料分割資料行使用。<br>當分割選項是 `DynamicRange` 時套用。 如果您使用查詢來取出來源資料，請  `?AdfDynamicRangePartitionCondition ` 在 WHERE 子句中掛上。 如需範例，請參閱 [SQL database 的平行複製](#parallel-copy-from-sql-database) 一節。 | 否 |
 | partitionUpperBound | 分割區範圍分割之分割區資料行的最大值。 這個值是用來決定資料分割 stride，而不是用來篩選資料表中的資料列。 資料表或查詢結果中的所有資料列都會進行分割和複製。 如果未指定，複製活動會自動偵測該值。  <br>當分割選項是 `DynamicRange` 時套用。 如需範例，請參閱 [SQL database 的平行複製](#parallel-copy-from-sql-database) 一節。 | 否 |
 | partitionLowerBound | 分割區範圍分割之分割區資料行的最小值。 這個值是用來決定資料分割 stride，而不是用來篩選資料表中的資料列。 資料表或查詢結果中的所有資料列都會進行分割和複製。 如果未指定，複製活動會自動偵測該值。<br>當分割選項是 `DynamicRange` 時套用。 如需範例，請參閱 [SQL database 的平行複製](#parallel-copy-from-sql-database) 一節。 | 否 |
 
@@ -671,6 +671,8 @@ Azure SQL Database 的特定設定可在來源轉換的 [ **來源選項** ] 索
 
 ADF 將會在後續的 update、upsert、delete 中使用您選擇做為金鑰的資料行名稱。 因此，您必須挑選存在於接收對應中的資料行。 如果您不想將值寫入此索引鍵資料行，請按一下 [略過寫入索引鍵資料行]。
 
+您可以將此處使用的索引鍵資料行參數化，以更新您的目標 Azure SQL Database 資料表。 如果您有多個資料行的複合索引鍵，請按一下 [自訂表格達式]，然後您就可以使用 ADF 資料流程運算式語言來加入動態內容，它可以包含一個字串陣列，其中包含複合索引鍵的資料行名稱。
+
 **資料表動作：** 決定在寫入之前，是否要重新建立或移除目的地資料表中的所有資料列。
 
 - 無：資料表不會執行任何動作。
@@ -713,14 +715,14 @@ ADF 將會在後續的 update、upsert、delete 中使用您選擇做為金鑰�
 | SMALLINT |Int16 |
 | SMALLMONEY |Decimal |
 | sql_variant |Object |
-| text |String, Char[] |
+| 文字 |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | TINYINT |Byte |
 | UNIQUEIDENTIFIER |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
-| Xml |字串 |
+| Xml |String |
 
 >[!NOTE]
 > 針對對應至 Decimal 過渡型別的資料類型，目前的複製活動最多可支援28個精確度。 如果您有有效位數大於28的資料，請考慮在 SQL 查詢中轉換成字串。
