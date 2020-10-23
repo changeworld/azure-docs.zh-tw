@@ -37,6 +37,8 @@
           href: onboard-service-principal.md
         - name: 使用 PowerShell DSC 將機器連線至 Azure Arc
           href: onboard-dsc.md
+        - name: 使用 PowerShell 將機器連線至 Azure Arc
+          href: onboard-powershell.md
     - name: 管理
       items:
         - name: 管理和使用 Azure VM 擴充功能
@@ -49,7 +51,7 @@
           href: troubleshoot-agent-onboard.md
         - name: VM 擴充功能問題
           href: troubleshoot-vm-extensions.md
-- name: 參考資料
+- name: 參考
   items:
     - name: 資料存留處
       href: data-residency.md

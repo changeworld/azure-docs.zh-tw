@@ -12,12 +12,12 @@ metadata:
   ms.author: mtillman
   manager: daveba
   ms.date: 05/29/2020
-  ms.openlocfilehash: 13e69e5f45244be79d06b0014d32e5c8192c777c
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 33bba82d473d6c9c39e78e2e3587fc4f886fd1ba
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "86038067"
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92359538"
 highlightedContent:
   items:
   - title: 什麼是 Azure AD？
@@ -140,17 +140,17 @@ conceptualContent:
       text: 查看更多
   - title: 企業使用者
     links:
-    - url: ./users-groups-roles/groups-create-rule.md
+    - url: ./enterprise-users/groups-create-rule.md
       itemType: how-to-guide
       text: 建立動態群組
-    - url: ./users-groups-roles/groups-settings-v2-cmdlets.md
+    - url: ./enterprise-users/groups-settings-v2-cmdlets.md
       itemType: how-to-guide
       text: 適用於 Azure AD 群組的 PowerShell
-    - url: ./users-groups-roles/directory-service-limits-restrictions.md
+    - url: ./enterprise-users/directory-service-limits-restrictions.md
       itemType: reference
       text: Azure Active Directory 服務限制
     footerLink:
-      url: ./users-groups-roles/index.yml
+      url: ./enterprise-users/index.yml
       text: 查看更多
   - title: 外部身分識別
     links:
@@ -263,6 +263,20 @@ conceptualContent:
       text: 登入錯誤碼參考
     footerLink:
       url: ./reports-monitoring/index.yml
+      text: 查看更多
+  - title: 角色
+    links:
+    - url: ./roles/groups-assign-role.md
+      itemType: how-to-guide
+      text: 將角色指派給雲端群組
+    - url: ./roles/custom-create.md
+      itemType: how-to-guide
+      text: 建立自訂角色
+    - url: ./roles/groups-view-assignments.md
+      itemType: reference
+      text: 檢視指派給群組的角色
+    footerLink:
+      url: ./roles/index.yml
       text: 查看更多
 additionalContent:
   sections:

@@ -1,0 +1,85 @@
+### YamlMime:Landing
+title: Azure AD 角色文件 - Azure AD
+summary: Azure AD 角色型存取控制可管理 Azure AD 資源的存取。 建立自訂角色、指派可使用管理單位來限制控制範圍的角色、將應用程式存取權指派給群組或使用者、使用 Privileged Identity Management (PIM) 來管理資格，或委派可散發身分識別管理工作的權限。
+metadata:
+  title: Azure Active Directory 角色文件
+  description: 了解如何使用 Azure AD 角色來管理組織中的存取權。
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: roles
+  manager: daveba
+  ms.topic: landing-page
+  ms.date: 10/19/2020
+  author: curtand
+  ms.author: curtand
+  ms.openlocfilehash: 16a64fd66ab391436f991b5f92f306f7ecf2eb58
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92372713"
+landingContent:
+- title: 關於 Azure AD 角色
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 自訂角色概觀
+      url: custom-overview.md
+  - linkListType: concept
+    links:
+    - text: 委派系統管理
+      url: concept-delegation.md
+    - text: 了解 Azure AD 中的管理單位
+      url: administrative-units.md
+    - text: 使用雲端群組來管理角色指派
+      url: groups-concept.md
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 授與建立無限制應用程式註冊的權限
+      url: quickstart-app-registration-limits.md
+- title: 委派角色
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 依工作委派角色
+      url: delegate-by-task.md
+    - text: 委派應用程式管理
+      url: delegate-app-roles.md
+- title: 將角色指派給使用者
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 建立自訂角色
+      url: custom-create.md
+    - text: 使用圖形 API 指派角色
+      url: custom-assign-graph.md
+    - text: 使用 PowerShell 進行指派
+      url: custom-assign-powershell.md
+    - text: 使用圖形 API 指派角色
+      url: custom-assign-graph.md
+- title: 將角色指派給群組
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 建立可指派角色的群組
+      url: groups-create-eligible.md
+    - text: 將角色指派給雲端群組
+      url: groups-assign-role.md
+    - text: 讓群組符合 PIM 的資格
+      url: groups-pim-eligible.md
+    - text: 檢視群組的指派
+      url: groups-view-assignments.md
+- title: 管理具有管理單位的範圍
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 新增和移除管理單位
+      url: admin-units-manage.md
+    - text: 將使用者指派給單位
+      url: admin-units-add-manage-users.md
+    - text: 將群組指派給單位
+      url: admin-units-add-manage-groups.md
+    - text: 指派具有範圍的群組
+      url: admin-units-assign-roles.md

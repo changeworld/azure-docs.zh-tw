@@ -1,0 +1,71 @@
+### YamlMime:Landing
+title: 企業使用者管理文件 - Azure AD
+summary: Azure AD 提供使用者管理服務 (例如群組和授權)，協助您更快速地完成重要的使用者管理工作。 指派授權、將應用程式存取權指派給群組或使用者，以及新增或管理網域名稱。
+metadata:
+  title: Azure Active Directory 使用者、群組、角色和網域文件
+  description: 了解如何使用群組、網域名稱和授權來管理 Azure AD 組織中的使用者驗證。
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: enterprise-users
+  manager: daveba
+  ms.topic: landing-page
+  ms.date: 10/19/2020
+  author: curtand
+  ms.author: curtand
+  ms.openlocfilehash: 3918c28d9657b077eefd5226be656ab6ad5a7dbf
+  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 10/22/2020
+  ms.locfileid: "92372681"
+landingContent:
+- title: 關於企業使用者管理
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 使用者、群組、網域和授權
+      url: directory-overview-user-model.md
+    - text: 自訂角色概觀
+      url: ../roles/custom-overview.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+  - linkListType: concept
+    links:
+    - text: Azure AD 組織獨立性
+      url: licensing-directory-independence.md
+    - text: 使用群組來管理存取權
+      url: ../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 新增使用者
+      url: ../fundamentals/add-users-azure-active-directory.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - text: 設定群組的到期原則
+      url: groups-quickstart-expiration.md
+    - text: 將授權指派給使用者
+      url: ../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+- title: 管理 Azure AD 網域名稱
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 新增自訂網域名稱
+      url: ../fundamentals/add-custom-domain.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - text: 管理自訂網域名稱
+      url: domains-manage.md
+- title: 管理群組
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 建立動態群組
+      url: groups-create-rule.md
+    - text: PowerShell 中的群組設定
+      url: groups-settings-v2-cmdlets.md
+    - text: 為群組設定命名原則
+      url: groups-naming-policy.md
+- title: 新增網域
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 新增自訂網域名稱
+      url: ../fundamentals/add-custom-domain.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+    - text: 管理自訂網域名稱
+      url: domains-manage.md

@@ -4,93 +4,13 @@
   items:
     - name: 歡迎使用 Azure Cosmos DB
       href: introduction.md
-- name: 快速入門
-  expanded: true
-  items:
-    - name: 建立 Cosmos DB 資源
-      expanded: true
-      items:
-        - name: Azure 入口網站
-          href: create-cosmosdb-resources-portal.md
-        - name: ARM 範本
-          displayName: Resource Manager
-          href: quick-create-template.md
-        - name: .NET 應用程式 - V4 SDK
-          href: create-sql-api-dotnet-v4.md
-        - name: .NET 應用程式 - V3 SDK
-          href: create-sql-api-dotnet.md
-        - name: JAVA 應用程式
-          href: create-sql-api-java.md
-        - name: Spring Data 應用程式
-          href: create-sql-api-spring-data.md
-        - name: Node.js 應用程式
-          href: create-sql-api-nodejs.md
-        - name: Python 應用程式
-          href: create-sql-api-python.md
-        - name: Xamarin 應用程式
-          href: create-sql-api-xamarin-dotnet.md
-- name: 教學課程
-  items:
-    - name: 1 - 建立和管理資料
-      items:
-        - name: 建置主控台應用程式
-          items:
-            - name: .NET
-              href: sql-api-get-started.md
-            - name: Java
-              href: sql-api-java-get-started.md
-            - name: 非同步 Java
-              href: sql-api-async-java-get-started.md
-            - name: Node.js
-              href: sql-api-nodejs-get-started.md
-        - name: 建置 Web 應用程式
-          items:
-            - name: .NET
-              href: sql-api-dotnet-application.md
-            - name: Java
-              href: sql-api-java-application.md
-            - name: Node.js
-              href: sql-api-nodejs-application.md
-        - name: 建置行動應用程式
-          items:
-            - name: Xamarin
-              href: mobile-apps-with-xamarin.md
-    - name: 2 - 遷移資料
-      items:
-        - name: 使用資料移轉工具
-          href: import-data.md
-        - name: 使用 .NET 大量支援
-          href: tutorial-sql-api-dotnet-bulk-import.md
-    - name: 3 - 查詢資料
-      href: tutorial-query-sql-api.md
-    - name: 4 - 建立 notebook
-      href: create-notebook-visualize-data.md
-    - name: 5 - 全域散發資料
-      href: tutorial-global-distribution-sql-api.md
-- name: 範例
-  items:
-    - name: .NET V2 SDK 範例
-      href: sql-api-dotnet-samples.md
-    - name: .NET V3 SDK 範例
-      href: sql-api-dotnet-v3sdk-samples.md
-    - name: Java SDK v4 範例
-      href: sql-api-java-sdk-samples.md
-    - name: Spring Data v3 範例
-      href: sql-api-spring-data-sdk-samples.md
-    - name: Node.js 範例
-      href: sql-api-nodejs-samples.md
-    - name: Python 範例
-      href: sql-api-python-samples.md
-    - name: PowerShell
-      href: powershell-samples.md
-    - name: Azure CLI
-      href: cli-samples.md
-    - name: Azure Resource Manager
-      href: templates-samples-sql.md
-- name: 概念
-  items:
     - name: NoSQL 與關聯式資料庫
       href: relational-nosql.md
+- name: 概念
+  items:
+    - name: Azure Cosmos DB 資源模型
+      displayName: 'collection, document'
+      href: account-databases-containers-items.md
     - name: 全球發佈
       items:
         - name: 全球發佈概觀
@@ -106,415 +26,46 @@
           href: conflict-resolution-policies.md
         - name: 全域散發 - 運作原理
           href: global-dist-under-the-hood.md
-    - name: 資料分割
-      items:
-        - name: 資料分割與水平放大
-          href: partitioning-overview.md
-        - name: 綜合磁碟分割索引鍵
-          href: synthetic-partition-keys.md
+    - name: 資料分割與水平放大
+      href: partitioning-overview.md
     - name: Capacity
       items:
         - name: 要求單位
           displayName: 'RUs, RU'
           href: request-units.md
         - name: 佈建的輸送量
+          displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
+          href: set-throughput.md
+        - name: 自動調整輸送量
           items:
-            - name: 佈建的輸送量簡介
-              displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
-              href: set-throughput.md
-            - name: 佈建自動調整輸送量
+            - name: 自動調整簡介
               href: provision-throughput-autoscale.md
-            - name: 在自動調整和標準 (手動) 輸送量之間進行選擇
-              href: how-to-choose-offer.md
             - name: 自動調整常見問題集
               href: autoscale-faq.md
         - name: 無伺服器
           href: serverless.md
+        - name: 在自動調整和標準 (手動) 輸送量之間進行選擇
+          href: how-to-choose-offer.md
         - name: 在佈建的輸送量和無伺服器之間選擇
           href: throughput-serverless.md
-    - name: SQL 查詢
+    - name: 安全性
       items:
-        - name: 開始使用
-          displayName: 'sql query, query basics'
-          href: sql-query-getting-started.md
-        - name: 子句
-          items:
-            - name: SELECT
-              displayName: 'select, select clause'
-              href: sql-query-select.md
-            - name: FROM
-              displayName: 'from, from clause'
-              href: sql-query-from.md
-            - name: WHERE
-              displayName: 'where, where clause'
-              href: sql-query-where.md
-            - name: 排序依據
-              displayName: 'order by, order by clause'
-              href: sql-query-order-by.md
-            - name: GROUP BY
-              displayName: group by clause
-              href: sql-query-group-by.md
-            - name: 位移限制
-              displayName: offset limit
-              href: sql-query-offset-limit.md
-        - name: 使用 JSON
-          displayName: 'alias, JSON, projection'
-          href: sql-query-working-with-json.md
-        - name: 子查詢
-          displayName: 'subquery, exists'
-          href: sql-query-subquery.md
-        - name: 聯結
-          displayName: join
-          href: sql-query-join.md
-        - name: 陣列和物件
-          displayName: 'object and array creation, object and array'
-          href: sql-query-object-array.md
-        - name: 關鍵字
-          displayName: 'keywords, distinct, between, in, top'
-          href: sql-query-keywords.md
-        - name: 常數
-          displayName: 'object, number,array'
-          href: sql-query-constants.md
-        - name: 操作員
-          displayName: 'operators, operator, logical operators, equality, comparison'
-          href: sql-query-operators.md
-        - name: 純量運算式
-          displayName: 'scalar expressions, scalar'
-          href: sql-query-scalar-expressions.md
-        - name: 函式
-          items:
-            - name: 使用者自訂函數
-              displayName: 'functions, udf'
-              href: sql-query-udfs.md
-            - name: 彙總
-              displayName: 'functions, aggregate, count, sum, min, minimum, max, maximum, avg, average'
-              href: sql-query-aggregates.md
-            - name: 系統函式
-              items:
-                - name: 系統函式
-                  displayName: 'functions, system functions, built-in functions'
-                  href: sql-query-system-functions.md
-                - name: 陣列函數
-                  items:
-                    - name: 陣列函數
-                      displayName: 'array functions, array, system functions, built-in functions'
-                      href: sql-query-array-functions.md
-                    - name: ARRAY_CONCAT
-                      displayName: 'ARRAY_CONCAT, array concat, array functions'
-                      href: sql-query-array-concat.md
-                    - name: ARRAY_CONTAINS
-                      displayName: 'ARRAY_CONTAINS, array contains, array functions'
-                      href: sql-query-array-contains.md
-                    - name: ARRAY_LENGTH
-                      displayName: 'ARRAY_LENGTH, array length, array functions'
-                      href: sql-query-array-length.md
-                    - name: ARRAY_SLICE
-                      displayName: 'ARRAY_SLICE, array slice, array functions'
-                      href: sql-query-array-slice.md
-                - name: 日期和時間函式
-                  items:
-                    - name: 日期和時間函式
-                      displayName: 'date and time functions, date and time, datetime, system functions, built-in functions'
-                      href: sql-query-date-time-functions.md
-                    - name: DateTimeAdd
-                      displayName: 'DateTimeAdd, date time add, timestamp, date and time functions, datetime'
-                      href: sql-query-datetimeadd.md
-                    - name: DateTimeDiff
-                      displayName: 'DateTimeDiff, date time diff, date and time functions, datetime'
-                      href: sql-query-datetimediff.md
-                    - name: DateTimeFromParts
-                      displayName: 'DateTimeFromParts, date time from parts, date and time functions, datetime'
-                      href: sql-query-datetimefromparts.md
-                    - name: DateTimePart
-                      displayName: 'DateTimePart, date time part, date and time functions, datetime'
-                      href: sql-query-datetimepart.md
-                    - name: DateTimeToTicks
-                      displayName: 'DateTimeToTicks, date time to ticks, date and time functions, datetime, ticks'
-                      href: sql-query-datetimetoticks.md
-                    - name: DateTimeToTimestamp
-                      displayName: 'DateTimeToTimestamp, date time to timestamp, date and time functions, datetime, timestamp'
-                      href: sql-query-datetimetotimestamp.md
-                    - name: GetCurrentDateTime
-                      displayName: 'GetCurrentDateTime, get current date time, date and time functions, datetime'
-                      href: sql-query-getcurrentdatetime.md
-                    - name: GetCurrentTicks
-                      displayName: 'GetCurrentTicks, get current ticks, date and time functions, datetime, ticks'
-                      href: sql-query-getcurrentticks.md
-                    - name: GetCurrentTimestamp
-                      displayName: 'GetCurrentTimestamp, get current timestamp, timestamp, date and time functions, datetime'
-                      href: sql-query-getcurrenttimestamp.md
-                    - name: TicksToDateTime
-                      displayName: 'TicksToDateTime, ticks to date time, date and time functions, datetime, ticks'
-                      href: sql-query-tickstodatetime.md
-                    - name: TimestampToDateTime
-                      displayName: 'TimestampToDateTime, timestamp to date time, date and time functions, datetime, timestamp'
-                      href: sql-query-timestamptodatetime.md
-                - name: 數學函數
-                  items:
-                    - name: 數學函數
-                      displayName: 'mathematical, mathematical functions, system functions, built-in functions'
-                      href: sql-query-mathematical-functions.md
-                    - name: ABS
-                      displayName: 'ABS, absolute value, built-in functions'
-                      href: sql-query-abs.md
-                    - name: ACOS
-                      displayName: 'ACOS, arccosine, built-in functions'
-                      href: sql-query-acos.md
-                    - name: ASIN
-                      displayName: 'ASIN, asine, built-in functions'
-                      href: sql-query-asin.md
-                    - name: ATAN
-                      displayName: 'ATAN, arctangent, built-in functions'
-                      href: sql-query-atan.md
-                    - name: ATN2
-                      displayName: 'ATN2, built-in functions'
-                      href: sql-query-atn2.md
-                    - name: CEILING
-                      displayName: 'CEILING, built-in functions'
-                      href: sql-query-ceiling.md
-                    - name: COS
-                      displayName: 'COS, cosine, built-in functions'
-                      href: sql-query-cos.md
-                    - name: COT
-                      displayName: 'COT, cotangent, built-in functions'
-                      href: sql-query-cot.md
-                    - name: DEGREES
-                      displayName: 'DEGREES, built-in functions'
-                      href: sql-query-degrees.md
-                    - name: EXP
-                      displayName: 'EXP, exponential value, built-in functions'
-                      href: sql-query-exp.md
-                    - name: FLOOR
-                      displayName: 'FLOOR, built-in functions'
-                      href: sql-query-floor.md
-                    - name: 記錄
-                      displayName: 'LOG, logarithm, built-in functions'
-                      href: sql-query-log.md
-                    - name: LOG10
-                      displayName: 'LOG10, log base 10, built-in functions'
-                      href: sql-query-log10.md
-                    - name: PI
-                      displayName: 'PI, built-in functions'
-                      href: sql-query-pi.md
-                    - name: POWER
-                      displayName: 'POWER, exponent, built-in functions'
-                      href: sql-query-power.md
-                    - name: RADIANS
-                      displayName: 'RADIANS, built-in functions'
-                      href: sql-query-radians.md
-                    - name: RAND
-                      displayName: 'RAND, random, built-in functions'
-                      href: sql-query-rand.md
-                    - name: ROUND
-                      displayName: 'ROUND, built-in functions'
-                      href: sql-query-round.md
-                    - name: SIGN
-                      displayName: 'SIGN, built-in functions'
-                      href: sql-query-sign.md
-                    - name: SIN
-                      displayName: 'SIN, sine, built-in functions'
-                      href: sql-query-sin.md
-                    - name: SQRT
-                      displayName: 'SQRT, square root, built-in functions'
-                      href: sql-query-sqrt.md
-                    - name: SQUARE
-                      displayName: 'SQUARE, built-in functions'
-                      href: sql-query-square.md
-                    - name: TAN
-                      displayName: 'TAN, built-in functions'
-                      href: sql-query-tan.md
-                    - name: TRUNC
-                      displayName: 'TRUNC, truncate, built-in functions'
-                      href: sql-query-trunc.md
-                - name: 空間函數
-                  items:
-                    - name: 空間函數
-                      displayName: 'spatial functions, spatial, system functions, built-in functions'
-                      href: sql-query-spatial-functions.md
-                    - name: ST_DISTANCE
-                      displayName: 'ST_DISTANCE, st distance, distance, built-in functions'
-                      href: sql-query-st-distance.md
-                    - name: ST_WITHIN
-                      displayName: 'ST_WITHIN, st within, within, built-in functions'
-                      href: sql-query-st-within.md
-                    - name: ST_INTERSECTS
-                      displayName: 'ST_INTERSECTS, st intersects, intersects, built-in functions'
-                      href: sql-query-st-intersects.md
-                    - name: ST_ISVALID
-                      displayName: 'ST_ISVALID, st isvalid, is valid, built-in functions'
-                      href: sql-query-st-isvalid.md
-                    - name: ST_ISVALIDDETAILED
-                      displayName: 'ST_ISVALIDDETAILED, st isvaliddetailed, is valid detailed, built-in functions'
-                      href: sql-query-st-isvaliddetailed.md
-                - name: 字串函數
-                  items:
-                    - name: 字串函數
-                      displayName: 'string functions, string, system functions, built-in functions'
-                      href: sql-query-string-functions.md
-                    - name: CONCAT
-                      displayName: 'CONCAT, concatenate, built-in functions'
-                      href: sql-query-concat.md
-                    - name: CONTAINS
-                      displayName: 'CONTAINS, built-in functions'
-                      href: sql-query-contains.md
-                    - name: ENDSWITH
-                      displayName: 'ENDSWITH, built-in functions'
-                      href: sql-query-endswith.md
-                    - name: INDEX_OF
-                      displayName: 'INDEX_OF, index of, built-in functions'
-                      href: sql-query-index-of.md
-                    - name: LEFT
-                      displayName: 'LEFT, built-in functions'
-                      href: sql-query-left.md
-                    - name: LENGTH
-                      displayName: 'LENGTH, built-in functions'
-                      href: sql-query-length.md
-                    - name: LOWER
-                      displayName: 'LOWER, built-in functions'
-                      href: sql-query-lower.md
-                    - name: LTRIM
-                      displayName: 'LTRIM, left trim, built-in functions'
-                      href: sql-query-ltrim.md
-                    - name: REGEXMATCH
-                      displayName: 'REGEXMATCH, built-in functions'
-                      href: sql-query-regexmatch.md
-                    - name: REPLACE
-                      displayName: 'REPLACE, built-in functions'
-                      href: sql-query-replace.md
-                    - name: REPLICATE
-                      displayName: 'REPLICATE, built-in functions'
-                      href: sql-query-replicate.md
-                    - name: REVERSE
-                      displayName: 'REVERSE, built-in functions'
-                      href: sql-query-reverse.md
-                    - name: RIGHT
-                      displayName: 'RIGHT, built-in functions'
-                      href: sql-query-right.md
-                    - name: RTRIM
-                      displayName: 'RTRIM, right trim, built-in functions'
-                      href: sql-query-rtrim.md
-                    - name: STARTSWITH
-                      displayName: 'STARTSWITH, starts with, built-in functions'
-                      href: sql-query-startswith.md
-                    - name: STRINGEQUALS
-                      displayName: 'STRINGEQUALS, equals, case-insensitive'
-                      href: sql-query-stringequals.md
-                    - name: StringToArray
-                      displayName: 'StringToArray, string to array, built-in functions'
-                      href: sql-query-stringtoarray.md
-                    - name: StringToBoolean
-                      displayName: 'StringToBoolean, string to boolean, built-in functions'
-                      href: sql-query-stringtoboolean.md
-                    - name: StringToNull
-                      displayName: 'StringToNull, string to null, built-in functions'
-                      href: sql-query-stringtonull.md
-                    - name: StringToNumber
-                      displayName: 'StringToNumber, string to number, built-in functions'
-                      href: sql-query-stringtonumber.md
-                    - name: StringToObject
-                      displayName: 'StringToObject, string to object, built-in functions'
-                      href: sql-query-stringtoobject.md
-                    - name: SUBSTRING
-                      displayName: 'SUBSTRING, built-in functions'
-                      href: sql-query-substring.md
-                    - name: ToString
-                      displayName: 'ToString, to sting, built-in functions'
-                      href: sql-query-tostring.md
-                    - name: TRIM
-                      displayName: 'TRIM, built-in functions'
-                      href: sql-query-trim.md
-                    - name: UPPER
-                      displayName: 'UPPER, built-in functions'
-                      href: sql-query-upper.md
-                - name: 類型檢查函數
-                  items:
-                    - name: 類型檢查函數
-                      displayName: 'type checking functions, type checking, type, system functions, built-in functions'
-                      href: sql-query-type-checking-functions.md
-                    - name: IS_ARRAY
-                      displayName: 'IS_ARRAY, is array, built-in functions'
-                      href: sql-query-is-array.md
-                    - name: IS_BOOL
-                      displayName: 'IS_BOOL, IsBool, is bool, built-in functions'
-                      href: sql-query-is-bool.md
-                    - name: IS_DEFINED
-                      displayName: 'IS_DEFINED, IsDefined, is defined, built-in functions'
-                      href: sql-query-is-defined.md
-                    - name: IS_NULL
-                      displayName: 'IS_NULL, IsNull, is null, built-in functions'
-                      href: sql-query-is-null.md
-                    - name: IS_NUMBER
-                      displayName: 'IS_NUMBER, IsNumber, is number, built-in functions'
-                      href: sql-query-is-number.md
-                    - name: IS_OBJECT
-                      displayName: 'IS_OBJECT, IsObject, is object, built-in functions'
-                      href: sql-query-is-object.md
-                    - name: IS_PRIMITIVE
-                      displayName: 'IS_PRIMITIVE, IsPrimitive, is primitive, built-in functions'
-                      href: sql-query-is-primitive.md
-                    - name: IS_STRING
-                      displayName: 'IS_STRING, IsString, is string, built-in functions'
-                      href: sql-query-is-string.md
-        - name: 地理空間資料
-          items:
-            - name: 地理空間概觀
-              displayName: 'geospatial, spatial'
-              href: sql-query-geospatial-intro.md
-            - name: 查詢地理空間資料
-              displayName: 'geospatial, spatial, query'
-              href: sql-query-geospatial-query.md
-            - name: 為地理空間資料編製索引
-              displayName: 'geospatial, spatial, index'
-              href: sql-query-geospatial-index.md
-        - name: Datetime
-          displayName: 'datetime, date, time'
-          href: working-with-dates.md
-        - name: 參數化查詢
-          displayName: 'parameterized query, parameterized, parameter, parameters'
-          href: sql-query-parameterized-queries.md
-        - name: LINQ to SQL
-          displayName: 'linq, .NET'
-          href: sql-query-linq-to-sql.md
-    - name: Azure Cosmos DB 資源模型
-      displayName: 'collection, document'
-      href: account-databases-containers-items.md
-    - name: 容器和項目
-      items:
-        - name: 模型文件資料
-          displayName: document
-          href: modeling-data.md
-        - name: 編製索引
-          items:
-            - name: 編製索引概觀
-              displayName: 'range, spatial'
-              href: index-overview.md
-            - name: 編製索引原則
-              displayName: 'consistent, none'
-              href: index-policy.md
-        - name: 存留時間
-          displayName: 'delete, delete data, ttl'
-          href: time-to-live.md
-        - name: 唯一金鑰條件約束
-          href: unique-keys.md
-        - name: 交易和開放式並行存取控制
-          href: database-transactions-optimistic-concurrency.md
-        - name: 附件
-          href: attachments.md
-    - name: 變更摘要
-      items:
-        - name: 變更摘要概觀
-          href: change-feed.md
-        - name: 變更摘要設計模式
-          href: change-feed-design-patterns.md
-        - name: 讀取變更摘要
-          href: read-change-feed.md
-        - name: 變更摘要處理器
-          href: change-feed-processor.md
-        - name: 觸發 Azure Functions
-          displayName: change feed
-          href: change-feed-functions.md
-        - name: 變更摘要提取模型
-          href: change-feed-pull-model.md
+        - name: 安全性概觀
+          href: database-security.md
+        - name: 資料加密
+          href: database-encryption-at-rest.md
+        - name: 服務標籤
+          href: ../virtual-network/service-tags-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: 角色型存取控制
+          displayName: rbac
+          href: role-based-access-control.md
+        - name: Azure 原則的安全性控制
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
+        - name: 安全性基準
+          href: security-baseline.md
+        - name: Azure 原則支援
+          href: policy.md
     - name: 使用 Azure Synapse Link 進行分析
       items:
         - name: 適用於 Cosmos DB 的 Azure Synapse Link
@@ -527,16 +78,6 @@
           href: synapse-link-use-cases.md
         - name: Synapse Link 常見問題集
           href: synapse-link-frequently-asked-questions.md
-    - name: 內建 Jupyter 筆記本
-      items:
-        - name: Jupyter 筆記本概觀
-          href: cosmosdb-jupyter-notebooks.md
-    - name: 伺服器端程式設計
-      items:
-        - name: 預存程序、觸發程序和 UDF
-          href: stored-procedures-triggers-udfs.md
-        - name: JavaScript 查詢 API
-          href: javascript-query-api.md
     - name: 最佳化您的 Azure Cosmos DB 成本
       items:
         - name: 規劃和管理成本
@@ -563,577 +104,1191 @@
           href: optimize-dev-test.md
         - name: 使用保留容量最佳化成本
           href: cosmos-db-reserved-capacity.md
-    - name: 安全性
-      items:
-        - name: 安全性概觀
-          href: database-security.md
-        - name: 資料加密
-          href: database-encryption-at-rest.md
-        - name: 安全存取資料
-          displayName: 'primary key, resource token, users, roles'
-          href: secure-access-to-data.md
-        - name: 服務標籤
-          href: ../virtual-network/service-tags-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-        - name: 角色型存取控制
-          displayName: rbac
-          href: role-based-access-control.md
-        - href: cosmos-db-advanced-threat-protection.md
-          name: 進階威脅防護
-        - name: Azure 原則的安全性控制
-          displayName: 'regulatory, compliance, standards, domains'
-          href: ./security-controls-policy.md
-        - name: 安全性基準
-          href: security-baseline.md
-    - name: 企業整備
-      items:
-        - name: 法規遵循
-          href: compliance.md
-        - name: Azure 原則支援
-          href: policy.md
+    - name: 變更摘要概觀
+      href: change-feed.md
+    - name: 內建 Jupyter 筆記本
+      href: cosmosdb-jupyter-notebooks.md
     - name: 服務配額
       href: concepts-limits.md
+    - name: 企業整備 - 合規性
+      href: compliance.md
     - name: 自動建議
       href: automated-recommendations.md
-- name: Cassandra、MongoDB 及其他 API
+- name: SQL/Core API
   expanded: true
   items:
-    - name: Cassandra API
+    - name: 快速入門
+      expanded: true
       items:
-        - name: 概觀
+        - name: 建立 Cosmos DB 資源
+          expanded: true
           items:
-            - name: 什麼是 Cosmos DB 中的 Cassandra API？
-              href: cassandra-introduction.md
-            - name: 連線通訊協定支援
-              href: cassandra-support.md
-        - name: 快速入門
-          items:
-            - name: .NET
-              href: create-cassandra-dotnet.md
-            - name: .NET Core
-              href: create-cassandra-dotnet-core.md
-            - name: Java v3
-              href: create-cassandra-java.md
-            - name: Java v4
-              href: create-cassandra-java-v4.md
-            - name: Node.js
-              href: create-cassandra-nodejs.md
-            - name: Python
-              href: create-cassandra-python.md
-            - name: Golang
-              href: create-cassandra-go.md
-        - name: 教學課程
-          items:
-            - name: 1 - 建立和管理資料
-              href: create-cassandra-api-account-java.md
-            - name: 2 - 載入資料
-              href: cassandra-api-load-data.md
-            - name: 3 - 查詢資料
-              href: cassandra-api-query-data.md
-            - name: 4 - 遷移資料
-              displayName: import
-              href: cassandra-import-data.md
-        - name: 概念
-          items:
-            - name: 常見問題集
-              href: cassandra-faq.md
-            - name: 彈性擴縮
-              href: manage-scale-cassandra.md
-            - name: 資料分割
-              href: cassandra-partitioning.md
-            - name: 次要索引
-              href: cassandra-secondary-index.md
-            - name: 對應一致性層級
-              href: cassandra-consistency.md
-        - name: 操作指南
-          items:
-            - name: 遷移到 Cassandra API
-              items:
-                - name: 遷移 - 使用 Striim 將 Oracle DB 遷移至 Cassandra API
-                  href: cosmosdb-cassandra-api-migrate-data-striim.md
-                - name: 遷移 - 使用 Blitzz 將 Oracle DB 遷移至 Cassandra API
-                  href: oracle-migrate-cosmos-db-blitzz.md
-                - name: 遷移 - 使用 Blitzz 將 Apache Cassandra 遷移至 Cassandra API
-                  href: cassandra-migrate-cosmos-db-blitzz.md
-            - name: 變更摘要
-              href: cassandra-change-feed.md
-            - name: 建立容器 - Cassandra API
-              href: how-to-create-container-cassandra.md
-            - name: 佈建輸送量 - Cassandra API
-              displayName: 'request units, RUs, RU, collection level'
-              href: how-to-provision-throughput-cassandra.md
-            - name: 尋找要求單位費用
-              displayName: 'request units, RUs, RU, charge, consumption'
-              href: find-request-unit-charge-cassandra.md
-            - name: 儲存和管理 Spring 資料
-              href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=/azure/cosmos-db/context/context'
-            - name: Cassandra 和 Spark
-              items:
-                - name: 簡介
-                  href: cassandra-spark-generic.md
-                - name: 使用 Databrickss 連線
-                  href: cassandra-spark-databricks.md
-                - name: 使用 HDInsight 連線
-                  href: cassandra-spark-hdinsight.md
-                - name: 建立 Keyspace 和資料表
-                  href: cassandra-spark-ddl-ops.md
-                - name: 插入資料
-                  href: cassandra-spark-create-ops.md
-                - name: 讀取資料
-                  href: cassandra-spark-read-ops.md
-                - name: 更新插入資料
-                  href: cassandra-spark-upsert-ops.md
-                - name: 刪除資料
-                  href: cassandra-spark-delete-ops.md
-                - name: 彙總作業
-                  href: cassandra-spark-aggregation-ops.md
-                - name: 複製資料表資料
-                  href: cassandra-spark-table-copy-ops.md
-            - name: 使用 Resource Manager 範本進行管理
-              href: templates-samples-cassandra.md
-              displayName: ARM
-            - name: 使用 Powershell 管理
-              href: powershell-samples-cassandra.md
-            - name: 使用 Azure CLI 管理
-              href: cli-samples-cassandra.md
-    - name: MongoDB API
+            - name: Azure 入口網站
+              href: create-cosmosdb-resources-portal.md
+            - name: ARM 範本
+              displayName: Resource Manager
+              href: quick-create-template.md
+            - name: .NET 應用程式 - V4 SDK
+              href: create-sql-api-dotnet-v4.md
+            - name: .NET 應用程式 - V3 SDK
+              href: create-sql-api-dotnet.md
+            - name: JAVA 應用程式
+              href: create-sql-api-java.md
+            - name: Spring Data 應用程式
+              href: create-sql-api-spring-data.md
+            - name: Node.js 應用程式
+              href: create-sql-api-nodejs.md
+            - name: Python 應用程式
+              href: create-sql-api-python.md
+            - name: Xamarin 應用程式
+              href: create-sql-api-xamarin-dotnet.md
+    - name: 教學課程
       items:
-        - name: 概觀
+        - name: 1 - 建立和管理資料
           items:
-            - name: 什麼是 Cosmos DB 中的 MongoDB API？
-              href: mongodb-introduction.md
-        - name: 快速入門
-          items:
-            - name: .NET
-              href: create-mongodb-dotnet.md
-            - name: Java
-              href: create-mongodb-java.md
-            - name: Node.js
-              href: create-mongodb-nodejs.md
-            - name: Python
-              href: create-mongodb-flask.md
-            - name: Xamarin
-              href: create-mongodb-xamarin.md
-            - name: Golang
-              href: create-mongodb-go.md
-        - name: 教學課程
-          items:
-            - name: 1 - 建立和管理資料
+            - name: 建置主控台應用程式
               items:
-                - name: Node.js 主控台應用程式
-                  href: mongodb-samples.md
-                - name: Node.js 和 Angular 應用程式
+                - name: .NET
+                  href: sql-api-get-started.md
+                - name: Java
+                  href: sql-api-java-get-started.md
+                - name: 非同步 Java
+                  href: sql-api-async-java-get-started.md
+                - name: Node.js
+                  href: sql-api-nodejs-get-started.md
+            - name: 建置 Web 應用程式
+              items:
+                - name: .NET
+                  href: sql-api-dotnet-application.md
+                - name: Java
+                  href: sql-api-java-application.md
+                - name: Node.js
+                  href: sql-api-nodejs-application.md
+            - name: 建置行動應用程式
+              items:
+                - name: Xamarin
+                  href: mobile-apps-with-xamarin.md
+        - name: 2 - 遷移資料
+          items:
+            - name: 使用資料移轉工具
+              href: import-data.md
+            - name: 使用 .NET 大量支援
+              href: tutorial-sql-api-dotnet-bulk-import.md
+        - name: 3 - 查詢資料
+          href: tutorial-query-sql-api.md
+        - name: 4 - 建立 notebook
+          href: create-notebook-visualize-data.md
+        - name: 5 - 全域散發資料
+          href: tutorial-global-distribution-sql-api.md
+    - name: 範例
+      items:
+        - name: .NET V2 SDK 範例
+          href: sql-api-dotnet-samples.md
+        - name: .NET V3 SDK 範例
+          href: sql-api-dotnet-v3sdk-samples.md
+        - name: Java SDK v4 範例
+          href: sql-api-java-sdk-samples.md
+        - name: Spring Data v3 範例
+          href: sql-api-spring-data-sdk-samples.md
+        - name: Node.js 範例
+          href: sql-api-nodejs-samples.md
+        - name: Python 範例
+          href: sql-api-python-samples.md
+        - name: PowerShell
+          href: powershell-samples.md
+        - name: Azure CLI
+          href: cli-samples.md
+        - name: Azure Resource Manager
+          href: templates-samples-sql.md
+    - name: 概念
+      items:
+        - name: 模型文件資料
+          displayName: document
+          href: modeling-data.md
+        - name: 資料分割
+          items:
+            - name: 綜合磁碟分割索引鍵
+              href: synthetic-partition-keys.md
+        - name: SQL 查詢
+          items:
+            - name: 開始使用
+              displayName: 'sql query, query basics'
+              href: sql-query-getting-started.md
+            - name: 子句
+              items:
+                - name: SELECT
+                  displayName: 'select, select clause'
+                  href: sql-query-select.md
+                - name: FROM
+                  displayName: 'from, from clause'
+                  href: sql-query-from.md
+                - name: WHERE
+                  displayName: 'where, where clause'
+                  href: sql-query-where.md
+                - name: 排序依據
+                  displayName: 'order by, order by clause'
+                  href: sql-query-order-by.md
+                - name: GROUP BY
+                  displayName: group by clause
+                  href: sql-query-group-by.md
+                - name: 位移限制
+                  displayName: offset limit
+                  href: sql-query-offset-limit.md
+            - name: 使用 JSON
+              displayName: 'alias, JSON, projection'
+              href: sql-query-working-with-json.md
+            - name: 子查詢
+              displayName: 'subquery, exists'
+              href: sql-query-subquery.md
+            - name: 聯結
+              displayName: join
+              href: sql-query-join.md
+            - name: 陣列和物件
+              displayName: 'object and array creation, object and array'
+              href: sql-query-object-array.md
+            - name: 關鍵字
+              displayName: 'keywords, distinct, between, in, top'
+              href: sql-query-keywords.md
+            - name: 常數
+              displayName: 'object, number,array'
+              href: sql-query-constants.md
+            - name: 操作員
+              displayName: 'operators, operator, logical operators, equality, comparison'
+              href: sql-query-operators.md
+            - name: 純量運算式
+              displayName: 'scalar expressions, scalar'
+              href: sql-query-scalar-expressions.md
+            - name: 函式
+              items:
+                - name: 使用者自訂函數
+                  displayName: 'functions, udf'
+                  href: sql-query-udfs.md
+                - name: 彙總
+                  displayName: 'functions, aggregate, count, sum, min, minimum, max, maximum, avg, average'
+                  href: sql-query-aggregates.md
+                - name: 系統函式
                   items:
-                    - name: 第 1 部分 - 簡介
-                      href: tutorial-develop-mongodb-nodejs.md
-                    - name: 第 2 部份 - 建立節點應用程式
-                      href: tutorial-develop-mongodb-nodejs-part2.md
-                    - name: 第 3 部份 - 使用 Angular 新增 UI
-                      href: tutorial-develop-mongodb-nodejs-part3.md
-                    - name: 第 4 部份 - 建立帳戶
-                      href: tutorial-develop-mongodb-nodejs-part4.md
-                    - name: 第 5 部份 - 連線至 Cosmos DB
-                      href: tutorial-develop-mongodb-nodejs-part5.md
-                    - name: 第 6 部份 - 執行 CRUD 作業
-                      href: tutorial-develop-mongodb-nodejs-part6.md
-                - name: Node.js 和 React 應用程式
-                  href: tutorial-develop-mongodb-react.md
-            - name: 2 - 查詢資料
-              href: tutorial-query-mongodb.md
-            - name: 3 - 全域散發資料
-              href: tutorial-global-distribution-mongodb.md
-        - name: 概念
-          items:
-            - name: 連線通訊協定支援 (3.6)
-              href: mongodb-feature-support-36.md
-            - name: 連線通訊協定支援 (3.2)
-              href: mongodb-feature-support.md
-            - name: 常見問題集
-              href: mongodb-api-faq.md
-            - name: 對應一致性層級
-              href: mongodb-consistency.md
-        - name: 操作指南
-          items:
-            - name: 遷移至 MongoDB API
+                    - name: 系統函式
+                      displayName: 'functions, system functions, built-in functions'
+                      href: sql-query-system-functions.md
+                    - name: 陣列函數
+                      items:
+                        - name: 陣列函數
+                          displayName: 'array functions, array, system functions, built-in functions'
+                          href: sql-query-array-functions.md
+                        - name: ARRAY_CONCAT
+                          displayName: 'ARRAY_CONCAT, array concat, array functions'
+                          href: sql-query-array-concat.md
+                        - name: ARRAY_CONTAINS
+                          displayName: 'ARRAY_CONTAINS, array contains, array functions'
+                          href: sql-query-array-contains.md
+                        - name: ARRAY_LENGTH
+                          displayName: 'ARRAY_LENGTH, array length, array functions'
+                          href: sql-query-array-length.md
+                        - name: ARRAY_SLICE
+                          displayName: 'ARRAY_SLICE, array slice, array functions'
+                          href: sql-query-array-slice.md
+                    - name: 日期和時間函式
+                      items:
+                        - name: 日期和時間函式
+                          displayName: 'date and time functions, date and time, datetime, system functions, built-in functions'
+                          href: sql-query-date-time-functions.md
+                        - name: DateTimeAdd
+                          displayName: 'DateTimeAdd, date time add, timestamp, date and time functions, datetime'
+                          href: sql-query-datetimeadd.md
+                        - name: DateTimeDiff
+                          displayName: 'DateTimeDiff, date time diff, date and time functions, datetime'
+                          href: sql-query-datetimediff.md
+                        - name: DateTimeFromParts
+                          displayName: 'DateTimeFromParts, date time from parts, date and time functions, datetime'
+                          href: sql-query-datetimefromparts.md
+                        - name: DateTimePart
+                          displayName: 'DateTimePart, date time part, date and time functions, datetime'
+                          href: sql-query-datetimepart.md
+                        - name: DateTimeToTicks
+                          displayName: 'DateTimeToTicks, date time to ticks, date and time functions, datetime, ticks'
+                          href: sql-query-datetimetoticks.md
+                        - name: DateTimeToTimestamp
+                          displayName: 'DateTimeToTimestamp, date time to timestamp, date and time functions, datetime, timestamp'
+                          href: sql-query-datetimetotimestamp.md
+                        - name: GetCurrentDateTime
+                          displayName: 'GetCurrentDateTime, get current date time, date and time functions, datetime'
+                          href: sql-query-getcurrentdatetime.md
+                        - name: GetCurrentTicks
+                          displayName: 'GetCurrentTicks, get current ticks, date and time functions, datetime, ticks'
+                          href: sql-query-getcurrentticks.md
+                        - name: GetCurrentTimestamp
+                          displayName: 'GetCurrentTimestamp, get current timestamp, timestamp, date and time functions, datetime'
+                          href: sql-query-getcurrenttimestamp.md
+                        - name: TicksToDateTime
+                          displayName: 'TicksToDateTime, ticks to date time, date and time functions, datetime, ticks'
+                          href: sql-query-tickstodatetime.md
+                        - name: TimestampToDateTime
+                          displayName: 'TimestampToDateTime, timestamp to date time, date and time functions, datetime, timestamp'
+                          href: sql-query-timestamptodatetime.md
+                    - name: 數學函數
+                      items:
+                        - name: 數學函數
+                          displayName: 'mathematical, mathematical functions, system functions, built-in functions'
+                          href: sql-query-mathematical-functions.md
+                        - name: ABS
+                          displayName: 'ABS, absolute value, built-in functions'
+                          href: sql-query-abs.md
+                        - name: ACOS
+                          displayName: 'ACOS, arccosine, built-in functions'
+                          href: sql-query-acos.md
+                        - name: ASIN
+                          displayName: 'ASIN, asine, built-in functions'
+                          href: sql-query-asin.md
+                        - name: ATAN
+                          displayName: 'ATAN, arctangent, built-in functions'
+                          href: sql-query-atan.md
+                        - name: ATN2
+                          displayName: 'ATN2, built-in functions'
+                          href: sql-query-atn2.md
+                        - name: CEILING
+                          displayName: 'CEILING, built-in functions'
+                          href: sql-query-ceiling.md
+                        - name: COS
+                          displayName: 'COS, cosine, built-in functions'
+                          href: sql-query-cos.md
+                        - name: COT
+                          displayName: 'COT, cotangent, built-in functions'
+                          href: sql-query-cot.md
+                        - name: DEGREES
+                          displayName: 'DEGREES, built-in functions'
+                          href: sql-query-degrees.md
+                        - name: EXP
+                          displayName: 'EXP, exponential value, built-in functions'
+                          href: sql-query-exp.md
+                        - name: FLOOR
+                          displayName: 'FLOOR, built-in functions'
+                          href: sql-query-floor.md
+                        - name: 記錄
+                          displayName: 'LOG, logarithm, built-in functions'
+                          href: sql-query-log.md
+                        - name: LOG10
+                          displayName: 'LOG10, log base 10, built-in functions'
+                          href: sql-query-log10.md
+                        - name: PI
+                          displayName: 'PI, built-in functions'
+                          href: sql-query-pi.md
+                        - name: POWER
+                          displayName: 'POWER, exponent, built-in functions'
+                          href: sql-query-power.md
+                        - name: RADIANS
+                          displayName: 'RADIANS, built-in functions'
+                          href: sql-query-radians.md
+                        - name: RAND
+                          displayName: 'RAND, random, built-in functions'
+                          href: sql-query-rand.md
+                        - name: ROUND
+                          displayName: 'ROUND, built-in functions'
+                          href: sql-query-round.md
+                        - name: SIGN
+                          displayName: 'SIGN, built-in functions'
+                          href: sql-query-sign.md
+                        - name: SIN
+                          displayName: 'SIN, sine, built-in functions'
+                          href: sql-query-sin.md
+                        - name: SQRT
+                          displayName: 'SQRT, square root, built-in functions'
+                          href: sql-query-sqrt.md
+                        - name: SQUARE
+                          displayName: 'SQUARE, built-in functions'
+                          href: sql-query-square.md
+                        - name: TAN
+                          displayName: 'TAN, built-in functions'
+                          href: sql-query-tan.md
+                        - name: TRUNC
+                          displayName: 'TRUNC, truncate, built-in functions'
+                          href: sql-query-trunc.md
+                    - name: 空間函數
+                      items:
+                        - name: 空間函數
+                          displayName: 'spatial functions, spatial, system functions, built-in functions'
+                          href: sql-query-spatial-functions.md
+                        - name: ST_DISTANCE
+                          displayName: 'ST_DISTANCE, st distance, distance, built-in functions'
+                          href: sql-query-st-distance.md
+                        - name: ST_WITHIN
+                          displayName: 'ST_WITHIN, st within, within, built-in functions'
+                          href: sql-query-st-within.md
+                        - name: ST_INTERSECTS
+                          displayName: 'ST_INTERSECTS, st intersects, intersects, built-in functions'
+                          href: sql-query-st-intersects.md
+                        - name: ST_ISVALID
+                          displayName: 'ST_ISVALID, st isvalid, is valid, built-in functions'
+                          href: sql-query-st-isvalid.md
+                        - name: ST_ISVALIDDETAILED
+                          displayName: 'ST_ISVALIDDETAILED, st isvaliddetailed, is valid detailed, built-in functions'
+                          href: sql-query-st-isvaliddetailed.md
+                    - name: 字串函數
+                      items:
+                        - name: 字串函數
+                          displayName: 'string functions, string, system functions, built-in functions'
+                          href: sql-query-string-functions.md
+                        - name: CONCAT
+                          displayName: 'CONCAT, concatenate, built-in functions'
+                          href: sql-query-concat.md
+                        - name: CONTAINS
+                          displayName: 'CONTAINS, built-in functions'
+                          href: sql-query-contains.md
+                        - name: ENDSWITH
+                          displayName: 'ENDSWITH, built-in functions'
+                          href: sql-query-endswith.md
+                        - name: INDEX_OF
+                          displayName: 'INDEX_OF, index of, built-in functions'
+                          href: sql-query-index-of.md
+                        - name: LEFT
+                          displayName: 'LEFT, built-in functions'
+                          href: sql-query-left.md
+                        - name: LENGTH
+                          displayName: 'LENGTH, built-in functions'
+                          href: sql-query-length.md
+                        - name: LOWER
+                          displayName: 'LOWER, built-in functions'
+                          href: sql-query-lower.md
+                        - name: LTRIM
+                          displayName: 'LTRIM, left trim, built-in functions'
+                          href: sql-query-ltrim.md
+                        - name: REGEXMATCH
+                          displayName: 'REGEXMATCH, built-in functions'
+                          href: sql-query-regexmatch.md
+                        - name: REPLACE
+                          displayName: 'REPLACE, built-in functions'
+                          href: sql-query-replace.md
+                        - name: REPLICATE
+                          displayName: 'REPLICATE, built-in functions'
+                          href: sql-query-replicate.md
+                        - name: REVERSE
+                          displayName: 'REVERSE, built-in functions'
+                          href: sql-query-reverse.md
+                        - name: RIGHT
+                          displayName: 'RIGHT, built-in functions'
+                          href: sql-query-right.md
+                        - name: RTRIM
+                          displayName: 'RTRIM, right trim, built-in functions'
+                          href: sql-query-rtrim.md
+                        - name: STARTSWITH
+                          displayName: 'STARTSWITH, starts with, built-in functions'
+                          href: sql-query-startswith.md
+                        - name: STRINGEQUALS
+                          displayName: 'STRINGEQUALS, equals, case-insensitive'
+                          href: sql-query-stringequals.md
+                        - name: StringToArray
+                          displayName: 'StringToArray, string to array, built-in functions'
+                          href: sql-query-stringtoarray.md
+                        - name: StringToBoolean
+                          displayName: 'StringToBoolean, string to boolean, built-in functions'
+                          href: sql-query-stringtoboolean.md
+                        - name: StringToNull
+                          displayName: 'StringToNull, string to null, built-in functions'
+                          href: sql-query-stringtonull.md
+                        - name: StringToNumber
+                          displayName: 'StringToNumber, string to number, built-in functions'
+                          href: sql-query-stringtonumber.md
+                        - name: StringToObject
+                          displayName: 'StringToObject, string to object, built-in functions'
+                          href: sql-query-stringtoobject.md
+                        - name: SUBSTRING
+                          displayName: 'SUBSTRING, built-in functions'
+                          href: sql-query-substring.md
+                        - name: ToString
+                          displayName: 'ToString, to sting, built-in functions'
+                          href: sql-query-tostring.md
+                        - name: TRIM
+                          displayName: 'TRIM, built-in functions'
+                          href: sql-query-trim.md
+                        - name: UPPER
+                          displayName: 'UPPER, built-in functions'
+                          href: sql-query-upper.md
+                    - name: 類型檢查函數
+                      items:
+                        - name: 類型檢查函數
+                          displayName: 'type checking functions, type checking, type, system functions, built-in functions'
+                          href: sql-query-type-checking-functions.md
+                        - name: IS_ARRAY
+                          displayName: 'IS_ARRAY, is array, built-in functions'
+                          href: sql-query-is-array.md
+                        - name: IS_BOOL
+                          displayName: 'IS_BOOL, IsBool, is bool, built-in functions'
+                          href: sql-query-is-bool.md
+                        - name: IS_DEFINED
+                          displayName: 'IS_DEFINED, IsDefined, is defined, built-in functions'
+                          href: sql-query-is-defined.md
+                        - name: IS_NULL
+                          displayName: 'IS_NULL, IsNull, is null, built-in functions'
+                          href: sql-query-is-null.md
+                        - name: IS_NUMBER
+                          displayName: 'IS_NUMBER, IsNumber, is number, built-in functions'
+                          href: sql-query-is-number.md
+                        - name: IS_OBJECT
+                          displayName: 'IS_OBJECT, IsObject, is object, built-in functions'
+                          href: sql-query-is-object.md
+                        - name: IS_PRIMITIVE
+                          displayName: 'IS_PRIMITIVE, IsPrimitive, is primitive, built-in functions'
+                          href: sql-query-is-primitive.md
+                        - name: IS_STRING
+                          displayName: 'IS_STRING, IsString, is string, built-in functions'
+                          href: sql-query-is-string.md
+            - name: 地理空間資料
               items:
-                - name: 預先移轉指南
-                  href: mongodb-pre-migration.md
-                - name: 資料庫移轉服務 (上線)
-                  href: ../dms/tutorial-mongodb-cosmos-db-online.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-                - name: 資料庫移轉服務 (上線)
-                  href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-                - name: 後續移轉指南
-                  href: mongodb-post-migration.md
-            - name: 從 MongoDB 3.2 升級至 3.6
-              href: mongodb-version-upgrade.md
-            - name: 取得連接字串
-              href: connect-mongodb-account.md
-            - name: 使用 Studio 3T 連線
-              href: mongodb-mongochef.md
-            - name: 使用 Compass 連線
-              href: mongodb-compass.md
-            - name: 使用 Robo 3T 連線
-              href: mongodb-robomongo.md
-            - name: 使用 Mongoose 連線
-              href: mongodb-mongoose.md
-            - name: 全域散發讀取
-              displayName: read preference
-              href: mongodb-readpreference.md
-            - name: 存留時間 - MongoDB
-              href: mongodb-time-to-live.md
-            - name: 變更資料流
-              href: mongodb-change-streams.md
-            - name: 管理資料索引
-              href: mongodb-indexing.md
-            - name: 建立容器 - MongoDB API
-              href: how-to-create-container-mongodb.md
-            - name: 佈建輸送量 - MongoDB API
-              displayName: 'request units, RUs, RU, collection level'
-              href: how-to-provision-throughput-mongodb.md
-            - name: 尋找要求單位費用
-              displayName: 'request units, RUs, RU, charge, consumption'
-              href: find-request-unit-charge-mongodb.md
-            - name: 針對查詢效能進行疑難排解
-              href: mongodb-troubleshoot-query.md
-            - name: 儲存和管理 Spring 資料
-              href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=/azure/cosmos-db/context/context'
-            - name: MongoDB 擴充功能命令
-              href: mongodb-custom-commands.md
-              displayName: custom commands
-            - name: 使用 Resource Manager 範本進行管理
-              href: templates-samples-mongodb.md
-              displayName: ARM
-            - name: 使用 Powershell 管理
-              href: powershell-samples-mongodb.md
-            - name: 使用 Azure CLI 管理
-              href: cli-samples-mongodb.md
-            - name: 針對常見問題進行疑難排解
-              href: mongodb-troubleshoot.md
-    - name: Gremlin API
-      displayName: 'graph, graph database'
-      items:
-        - name: 概觀
+                - name: 地理空間概觀
+                  displayName: 'geospatial, spatial'
+                  href: sql-query-geospatial-intro.md
+                - name: 查詢地理空間資料
+                  displayName: 'geospatial, spatial, query'
+                  href: sql-query-geospatial-query.md
+                - name: 為地理空間資料編製索引
+                  displayName: 'geospatial, spatial, index'
+                  href: sql-query-geospatial-index.md
+            - name: Datetime
+              displayName: 'datetime, date, time'
+              href: working-with-dates.md
+            - name: 參數化查詢
+              displayName: 'parameterized query, parameterized, parameter, parameters'
+              href: sql-query-parameterized-queries.md
+            - name: LINQ to SQL
+              displayName: 'linq, .NET'
+              href: sql-query-linq-to-sql.md
+        - name: 容器和項目
           items:
-            - name: 什麼是 Cosmos DB 中的 Gremlin API？
-              href: graph-introduction.md
-            - name: 連線通訊協定支援
-              href: gremlin-support.md
-        - name: 快速入門
+            - name: 編製索引
+              items:
+                - name: 編製索引概觀
+                  displayName: 'range, spatial'
+                  href: index-overview.md
+                - name: 編製索引原則
+                  displayName: 'consistent, none'
+                  href: index-policy.md
+            - name: 存留時間
+              displayName: 'delete, delete data, ttl'
+              href: time-to-live.md
+            - name: 唯一金鑰條件約束
+              href: unique-keys.md
+            - name: 交易和開放式並行存取控制
+              href: database-transactions-optimistic-concurrency.md
+            - name: 附件
+              href: attachments.md
+        - name: 變更摘要
           items:
-            - name: Gremlin 主控台
-              href: create-graph-gremlin-console.md
-            - name: .NET
-              href: create-graph-dotnet.md
-            - name: Java
-              href: create-graph-java.md
-            - name: Node.js
-              href: create-graph-nodejs.md
-            - name: Python
-              href: create-graph-python.md
-            - name: PHP
-              href: create-graph-php.md
-        - name: 教學課程
+            - name: 變更摘要設計模式
+              href: change-feed-design-patterns.md
+            - name: 讀取變更摘要
+              href: read-change-feed.md
+            - name: 變更摘要處理器
+              href: change-feed-processor.md
+            - name: 觸發 Azure Functions
+              displayName: change feed
+              href: change-feed-functions.md
+            - name: 變更摘要提取模型
+              href: change-feed-pull-model.md
+        - name: 伺服器端程式設計
           items:
-            - name: 1 - 查詢資料
-              href: tutorial-query-graph.md
-        - name: 概念
+            - name: 預存程序、觸發程序和 UDF
+              href: stored-procedures-triggers-udfs.md
+            - name: JavaScript 查詢 API
+              href: javascript-query-api.md
+        - name: 安全性
           items:
-            - name: 常見問題集
-              href: gremlin-api-faq.md
-            - name: 回應標頭
-              href: gremlin-headers.md
-            - name: 限制
-              href: gremlin-limits.md
-        - name: 操作指南
-          items:
-            - name: 圖表資料模型
-              href: graph-modeling.md
-            - name: 圖表資料分割
-              href: graph-partitioning.md
-            - name: 匯出圖形資料
-              href: bulk-executor-graph-dotnet.md
-            - name: 最佳化 Gremlin 查詢
-              href: graph-execution-profile.md
-            - name: 建立容器 - Gremlin API
-              href: how-to-create-container-gremlin.md
-            - name: 佈建輸送量 - Gremlin API
-              displayName: 'request units, RUs, RU, collection level'
-              href: how-to-provision-throughput-gremlin.md
-            - name: 尋找要求單位費用
-              displayName: 'request units, RUs, RU, charge, consumption'
-              href: find-request-unit-charge-gremlin.md
-            - name: 使用資源權杖
-              href: how-to-use-resource-tokens-gremlin.md
-            - name: 使用區域端點
-              href: how-to-use-regional-gremlin.md
-            - name: 存取系統文件內容
-              href: how-to-access-system-properties-gremlin.md
-            - name: 圖表資料視覺化
-              href: graph-visualization.md
-            - name: 儲存和管理 Spring 資料
-              href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
-            - name: 使用 Resource Manager 範本進行管理
-              href: templates-samples-gremlin.md
-              displayName: ARM
-            - name: 使用 Powershell 管理
-              href: powershell-samples-gremlin.md
-            - name: 使用 Azure CLI 管理
-              href: cli-samples-gremlin.md
-        - name: 參考
-          items:
-            - name: 回應標頭
-              href: gremlin-headers.md
-            - name: 限制
-              href: gremlin-limits.md
-            - name: 相容性
-              href: gremlin-compatibility.md
-    - name: 資料表 API
-      items:
-        - name: 概觀
-          items:
-            - name: 什麼是 Cosmos DB 中的資料表 API？
-              href: table-introduction.md
-        - name: 快速入門
-          items:
-            - name: .NET
-              href: create-table-dotnet.md
-            - name: Java
-              href: create-table-java.md
-            - name: Node.js
-              href: create-table-nodejs.md
-            - name: Python
-              href: create-table-python.md
-        - name: 教學課程
-          items:
-            - name: 1 - 建立和管理資料
-              href: tutorial-develop-table-dotnet.md
-            - name: 2 - 遷移資料
-              displayName: import
-              href: table-import.md
-            - name: 3 - 查詢資料
-              href: tutorial-query-table.md
-            - name: 4 - 全域散發資料
-              href: tutorial-global-distribution-table.md
-        - name: 範例
-          items:
-            - name: .NET
-              href: table-storage-how-to-use-dotnet.md
-            - name: Java
-              href: table-storage-how-to-use-java.md
-            - name: Node.js
-              href: table-storage-how-to-use-nodejs.md
-            - name: Python
-              href: table-storage-how-to-use-python.md
-            - name: PHP
-              href: table-storage-how-to-use-php.md
-            - name: C++
-              href: table-storage-how-to-use-c-plus.md
-            - name: Ruby
-              href: table-storage-how-to-use-ruby.md
-            - name: F#
-              href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
-              maintainContext: true
-        - name: 概念
-          items:
-            - name: 常見問題集
-              href: table-api-faq.md
-        - name: 操作指南
-          items:
-            - name: 使用表格 API 建置應用程式
-              href: table-support.md
-            - name: 建立容器 - 資料表 API
-              href: how-to-create-container-table.md
-            - name: 尋找要求單位費用
-              displayName: 'request units, RUs, RU, charge, consumption'
-              href: find-request-unit-charge-table.md
-            - name: 表格儲存體設計指南
-              href: table-storage-design-guide.md
-            - name: 使用 Resource Manager 範本進行管理
-              href: templates-samples-table.md
-              displayName: ARM
-            - name: 使用 Powershell 管理
-              href: powershell-samples-table.md
-            - name: 使用 Azure CLI 管理
-              href: cli-samples-table.md
-        - name: 參考
-          items:
-            - name: .NET
-              href: table-sdk-dotnet.md
-            - name: .NET Standard
-              href: table-sdk-dotnet-standard.md
-            - name: Java
-              href: table-sdk-java.md
-            - name: Node.js
-              href: table-sdk-nodejs.md
-            - name: Python
-              href: table-sdk-python.md
-            - name: 表格儲存體 REST API
-              href: /rest/api/storageservices/table-service-rest-api
-    - name: etcd API
-      items:
-        - name: 概觀
-          items:
-            - name: 什麼是 Cosmos DB 中的 Etcd API？
-              href: etcd-api-introduction.md
-        - name: 操作指南
-          items:
-            - name: 採用 Azure Cosmos DB 的 Azure Kubernetes
-              href: bootstrap-kubernetes-cluster.md
-- name: 操作指南
-  items:
-    - name: 使用 Azure Cosmos 帳戶
-      href: how-to-manage-database-account.md
-    - name: 使用 Azure Cosmos DB 資源
-      items:
-        - name: 使用 PowerShell
-          href: manage-with-powershell.md
-        - name: 使用 Azure CLI
-          href: manage-with-cli.md
-        - name: 使用 Resource Manager 範本
-          href: manage-with-templates.md
-          displayName: ARM
-        - name: 在區域間移動
-          href: how-to-move-regions.md
-        - name: 防止變更或刪除
-          href: resource-locks.md
-    - name: 全球發佈
-      items:
-        - name: 設定多重區域寫入
-          href: how-to-multi-master.md
-        - name: 管理一致性層級
-          displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
-          href: how-to-manage-consistency.md
-        - name: 設定衝突解決原則
-          href: how-to-manage-conflicts.md
-        - name: 轉換工作階段權杖格式
-          href: how-to-convert-session-token.md
-    - name: Capacity
-      items:
-        - name: 尋找要求單位費用
-          displayName: 'request units, RUs, RU, charge, consumption'
-          href: find-request-unit-charge.md
-        - name: 佈建的輸送量
-          items:
-            - name: 在容器上佈建標準 (手動) 輸送量
-              displayName: 'request units, RUs, RU, collection level'
-              href: how-to-provision-container-throughput.md
-            - name: 在資料庫上佈建標準 (手動) 輸送量
-              displayName: 'request units, RUs, RU, shared throughput, database level'
-              href: how-to-provision-database-throughput.md
-            - name: 在資料庫或容器上佈建自動調整輸送量
-              displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
-              href: how-to-provision-autoscale-throughput.md
-            - name: 使用 Cosmos 容量規劃來估計每秒要求單位
-              displayName: 'request units, RUs, RU, capacity'
-              href: estimate-ru-with-capacity-planner.md
-            - name: 使用 Azure Functions 計時器進行調整
-              displayName: 'request units, RUs, RU, timer'
-              href: scale-on-schedule.md
-    - name: 使用容器和項目
-      items:
-        - name: 使用 Cosmos DB 資料
-          items:
-            - name: 使用 Azure 儲存體總管處理資料
-              href: storage-explorer.md
-            - name: 使用 Azure Cosmos 總管處理資料
-              href: data-explorer.md
-        - name: 建立容器 - SQL API
-          href: how-to-create-container.md
-        - name: 使用大型分割區索引鍵建立容器
-          href: large-partition-keys.md
-        - name: 查詢容器
-          href: how-to-query-container.md
-        - name: 資料模型和資料分割 - 實際範例
-          displayName: 'model, partition, example'
-          href: how-to-model-partition-example.md
-        - name: 遷移至資料分割容器
-          href: migrate-containers-partitioned-to-nonpartitioned.md
-        - name: 設定存留時間
-          displayName: 'delete, delete data, ttl'
-          href: how-to-time-to-live.md
-        - name: 管理編製索引原則
-          href: how-to-manage-indexing-policy.md
-        - name: 定義唯一索引鍵
-          href: how-to-define-unique-keys.md
-    - name: 效能
-      items:
+            - name: 安全存取資料
+              displayName: 'primary key, resource token, users, roles'
+              href: secure-access-to-data.md
+            - name: 進階威脅防護
+              href: cosmos-db-advanced-threat-protection.md
         - name: 連線模式
           href: sql-sdk-connection-modes.md
-        - name: 查詢
+    - name: 操作指南
+      items:
+        - name: 管理 Azure Cosmos DB 資源
           items:
-            - name: 取得查詢執行計量
-              href: profile-sql-api-query.md
-            - name: 微調查詢效能
-              href: sql-api-query-metrics.md
-        - name: .NET
+            - name: 管理 Azure Cosmos 帳戶
+              href: how-to-manage-database-account.md
+            - name: 使用 PowerShell
+              href: manage-with-powershell.md
+            - name: 使用 Azure CLI
+              href: manage-with-cli.md
+            - name: 使用 Resource Manager 範本
+              href: manage-with-templates.md
+              displayName: ARM
+            - name: 在區域間移動
+              href: how-to-move-regions.md
+            - name: 防止變更或刪除
+              href: resource-locks.md
+        - name: 全球發佈
           items:
-            - name: .NET SDK v3 的效能秘訣
-              href: performance-tips-dotnet-sdk-v3-sql.md
-            - name: .NET SDK v2 的效能秘訣
-              href: performance-tips.md
-        - name: Java
+            - name: 設定多重區域寫入
+              href: how-to-multi-master.md
+            - name: 管理一致性層級
+              displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
+              href: how-to-manage-consistency.md
+            - name: 設定衝突解決原則
+              href: how-to-manage-conflicts.md
+            - name: 轉換工作階段權杖格式
+              href: how-to-convert-session-token.md
+        - name: Capacity
           items:
-            - name: Java SDK v4 的效能秘訣
-              href: performance-tips-java-sdk-v4-sql.md
+            - name: 佈建的輸送量
+              items:
+                - name: 在容器上佈建標準 (手動) 輸送量
+                  displayName: 'request units, RUs, RU, collection level'
+                  href: how-to-provision-container-throughput.md
+                - name: 在資料庫上佈建標準 (手動) 輸送量
+                  displayName: 'request units, RUs, RU, shared throughput, database level'
+                  href: how-to-provision-database-throughput.md
+                - name: 在資料庫或容器上佈建自動調整輸送量
+                  displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
+                  href: how-to-provision-autoscale-throughput.md
+                - name: 使用 Cosmos 容量規劃來估計每秒要求單位
+                  displayName: 'request units, RUs, RU, capacity'
+                  href: estimate-ru-with-capacity-planner.md
+                - name: 使用 Azure Functions 計時器進行調整
+                  displayName: 'request units, RUs, RU, timer'
+                  href: scale-on-schedule.md
+            - name: 尋找要求單位費用
+              displayName: 'request units, RUs, RU, charge, consumption'
+              href: find-request-unit-charge.md
+        - name: 容器和項目上的作業
+          items:
+            - name: 建立容器 - SQL API
+              href: how-to-create-container.md
+            - name: 使用大型分割區索引鍵建立容器
+              href: large-partition-keys.md
+            - name: 查詢容器
+              href: how-to-query-container.md
+            - name: 資料模型和資料分割 - 實際範例
+              displayName: 'model, partition, example'
+              href: how-to-model-partition-example.md
+            - name: 遷移至資料分割容器
+              href: migrate-containers-partitioned-to-nonpartitioned.md
+            - name: 設定存留時間
+              displayName: 'delete, delete data, ttl'
+              href: how-to-time-to-live.md
+            - name: 管理編製索引原則
+              href: how-to-manage-indexing-policy.md
+            - name: 定義唯一索引鍵
+              href: how-to-define-unique-keys.md
+        - name: 效能
+          items:
+            - name: 查詢
+              items:
+                - name: 取得查詢執行計量
+                  href: profile-sql-api-query.md
+                - name: 微調查詢效能
+                  href: sql-api-query-metrics.md
+            - name: .NET
+              items:
+                - name: .NET SDK v3 的效能秘訣
+                  href: performance-tips-dotnet-sdk-v3-sql.md
+                - name: .NET SDK v2 的效能秘訣
+                  href: performance-tips.md
+            - name: Java
+              items:
+                - name: Java SDK v4 的效能秘訣
+                  href: performance-tips-java-sdk-v4-sql.md
+                - name: 非同步 Java SDK v2
+                  href: performance-tips-async-java.md
+                - name: 同步處理 Java SDK v2
+                  href: performance-tips-java.md
+            - name: 效能測試 - 範例應用程式
+              href: performance-testing.md
+            - name: 符合成本效益的讀取和寫入
+              href: key-value-store-cost.md
+        - name: 遷移至較新的 SDK
+          items:
+            - name: 遷移至 JAVA V4 SDK
+              href: migrate-java-v4-sdk.md
+            - name: 遷移至 .NET V3 SDK
+              href: migrate-dotnet-v3.md
+        - name: 疑難排解
+          items:
+            - name: 常見錯誤
+              items:
+                - name: 針對查詢效能進行疑難排解
+                  href: troubleshoot-query-performance.md
+                - name: 針對服務要求逾時進行疑難排解
+                  href: troubleshoot-request-timeout.md
+                - name: 針對要求率太大進行疑難排解
+                  href: troubleshoot-request-rate-too-large.md
+                - name: 針對找不到問題進行疑難排解
+                  href: troubleshoot-not-found.md
+                - name: 針對未經授權進行疑難排解
+                  href: troubleshoot-unauthorized.md
+                - name: 在多區域環境中的可用性問題
+                  href: troubleshoot-sdk-availability.md
+            - name: .NET
+              items:
+                - name: 針對一般 .NET SDK 進行疑難排解
+                  href: troubleshoot-dot-net-sdk.md
+                - name: 針對要求標頭太大進行疑難排解
+                  href: troubleshoot-dot-net-sdk-request-header-too-large.md
+                - name: 針對要求逾時進行疑難排解
+                  href: troubleshoot-dot-net-sdk-request-timeout.md
+                - name: 針對服務無法使用進行疑難排解
+                  href: troubleshoot-service-unavailable.md
+            - name: .Java
+              items:
+                - name: 針對 Java SDK v4 進行疑難排解
+                  href: troubleshoot-java-sdk-v4-sql.md
+                - name: 疑難排解 - 非同步 Java SDK v2
+                  href: troubleshoot-java-async-sdk.md
+        - name: 變更摘要
+          items:
+            - name: Azure Cosmos DB 觸發程序進階組態
+              href: how-to-configure-cosmos-db-trigger.md
+            - name: 多個 Azure Cosmos DB 觸發程序
+              href: how-to-create-multiple-cosmos-db-triggers.md
+            - name: 針對 Azure Cosmos DB 觸發程序進行疑難排解
+              href: troubleshoot-changefeed-functions.md
+            - name: 使用變更摘要估算器
+              href: how-to-use-change-feed-estimator.md
+            - name: 從變更摘要處理器程式庫遷移
+              href: how-to-migrate-from-change-feed-library.md
+            - name: 變更摘要 - 非同步 Java 範例
+              href: create-sql-api-java-changefeed.md
+        - name: 伺服器端程式設計
+          items:
+            - name: 寫入預存程序、觸發程序和 UDF
+              href: how-to-write-stored-procedures-triggers-udfs.md
+            - name: 使用 JavaScript 查詢 API 寫入預存程序和觸發程序
+              href: how-to-write-javascript-query-api.md
+            - name: 使用預存程序、觸發程序和 UDF
+              href: how-to-use-stored-procedures-triggers-udfs.md
+        - name: 內建 Jupyter 筆記本
+          items:
+            - name: 啟用筆記本
+              href: enable-notebooks.md
+            - name: 從 GitHub 匯入筆記本
+              href: import-github-notebooks.md
+            - name: 使用內建的 Python 筆記本命令
+              href: use-python-notebook-features-and-commands.md
+            - name: 使用內建的 C# 筆記本命令
+              href: use-csharp-notebook-features-and-commands.md
+        - name: 大量執行程式文件庫
+          items:
+            - name: 關於大量執行程式程式庫
+              href: bulk-executor-overview.md
+            - name: 大量執行程式 - .NET 程式庫
+              href: bulk-executor-dot-net.md
+            - name: 從大量執行程式遷移至 .NET SDK
+              href: how-to-migrate-from-bulk-executor-library.md
+            - name: 大量執行程式 - Java 程式庫
+              href: bulk-executor-java.md
+        - name: Cosmos DB 資料視覺化
+          items:
+            - name: 使用 Power BI
+              href: powerbi-visualize.md
+            - name: 建立即時氣象儀表板
+              href: create-real-time-weather-dashboard-powerbi.md
+            - name: 使用 Qlik Sense
+              href: visualize-qlik-sense.md
+        - name: 內建分析搭配 Apache Spark
+          items:
+            - name: Azure Databricks Spark 連接器
+              href: spark-connector.md
+            - name: 使用 Apache Kafka 和 Cosmos DB 進行串流
+              href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: 將資料遷移到 Cosmos DB
+          items:
+            - name: 使用 Striim 遷移到 SQL API
+              href: cosmosdb-sql-api-migrate-data-striim.md
+            - name: 遷移一對多關聯式資料
+              href: migrate-relational-to-cosmos-db-sql-api.md
+            - name: 遷移 - Couchbase 至 SQL API
+              href: couchbase-cosmos-migration.md
+            - name: 遷移 - DynamoDB 至 SQL API
+              href: dynamo-to-cosmos.md
+        - name: 安全性
+          items:
+            - name: 設定跨原始資源共用 (CORS)
+              href: how-to-configure-cross-origin-resource-sharing.md
+            - name: 使用受控識別來存取資料
+              href: managed-identity-based-authentication.md
+              displayName: 'msi, managed service identity, aad, azure active directory, identity'
+            - name: 使用憑證來存取資料
+              href: certificate-based-authentication.md
+        - name: 與其他 Azure 服務整合
+          items:
+            - name: 變更摘要電子商務解決方案
+              href: changefeed-ecommerce-solution.md
+            - name: Azure App Service
+              href: create-website.md
+            - name: Azure 認知搜尋索引子
+              href: ../search/search-howto-index-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+            - name: Azure Functions
+              items:
+                - name: 無伺服器運算
+                  href: serverless-computing-database.md
+                - name: Azure Functions 繫結
+                  href: ../azure-functions/functions-bindings-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+            - name: Azure Data Factory
+              href: ../data-factory/connector-azure-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+            - name: Azure 串流分析
+              href: ../stream-analytics/stream-analytics-documentdb-output.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+            - name: Azure 資料總管
+              href: 'https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration'
+            - name: Azure 事件中樞與 Azure 儲存體
+              href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
+            - name: 使用 Spring Boot Starter
+              href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
+            - name: Spring Data 開發人員指南
+              href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb?context=/azure/cosmos-db/context/context'
+            - name: ODBC 驅動程式
+              href: odbc-driver.md
+    - name: 參考
+      items:
+        - name: .NET SDK
+          items:
+            - name: .NET SDK v3
+              href: sql-api-sdk-dotnet-standard.md
+            - name: .NET SDK v2
+              href: sql-api-sdk-dotnet.md
+            - name: .NET Core SDK v2
+              href: sql-api-sdk-dotnet-core.md
+            - name: .NET 變更摘要程式庫 v2
+              href: sql-api-sdk-dotnet-changefeed.md
+            - name: .NET 大量執行程式程式庫 v2
+              href: sql-api-sdk-bulk-executor-dot-net.md
+        - name: Java SDK 和連接器
+          items:
+            - name: Java SDK v4
+              href: sql-api-sdk-java-v4.md
             - name: 非同步 Java SDK v2
-              href: performance-tips-async-java.md
+              href: sql-api-sdk-async-java.md
             - name: 同步處理 Java SDK v2
-              href: performance-tips-java.md
-        - name: 效能測試 - 範例應用程式
-          href: performance-testing.md
-        - name: 符合成本效益的讀取和寫入
-          href: key-value-store-cost.md
-    - name: 遷移至較新的 SDK
+              href: sql-api-sdk-java.md
+            - name: Spring Data 連接器 v2
+              href: sql-api-sdk-java-spring-v2.md
+            - name: Spring Data 連接器 v3
+              href: sql-api-sdk-java-spring-v3.md
+            - name: Spark 連接器
+              href: sql-api-sdk-java-spark.md
+            - name: Java 大量執行程式程式庫 v2
+              href: sql-api-sdk-bulk-executor-java.md
+        - name: Node.js
+          href: sql-api-sdk-node.md
+        - name: Python
+          href: sql-api-sdk-python.md
+        - name: REST (資料平面)
+          href: /rest/api/cosmos-db/
+        - name: REST (管理平面)
+          href: /rest/api/cosmos-db-resource-provider/2020-04-01/sqlresources
+        - name: Resource Manager 範本
+          href: /azure/templates/microsoft.documentdb/allversions
+          displayName: ARM
+        - name: 模擬器版本資訊
+          href: local-emulator-release-notes.md
+        - name: Azure 原則內建
+          displayName: 'samples, policies, definitions'
+          href: ./policy-reference.md
+- name: Cassandra API
+  items:
+    - name: 概觀
       items:
-        - name: 遷移至 JAVA V4 SDK
-          href: migrate-java-v4-sdk.md
-        - name: 遷移至 .NET V3 SDK
-          href: migrate-dotnet-v3.md
-    - name: 疑難排解
+        - name: 什麼是 Cosmos DB 中的 Cassandra API？
+          href: cassandra-introduction.md
+        - name: 連線通訊協定支援
+          href: cassandra-support.md
+    - name: 快速入門
       items:
-        - name: 常見錯誤
-          items:
-            - name: 針對查詢效能進行疑難排解
-              href: troubleshoot-query-performance.md
-            - name: 針對服務要求逾時進行疑難排解
-              href: troubleshoot-request-timeout.md
-            - name: 針對要求率太大進行疑難排解
-              href: troubleshoot-request-rate-too-large.md
-            - name: 針對找不到問題進行疑難排解
-              href: troubleshoot-not-found.md
-            - name: 針對未經授權進行疑難排解
-              href: troubleshoot-unauthorized.md
-            - name: 在多區域環境中的可用性問題
-              href: troubleshoot-sdk-availability.md
         - name: .NET
-          items:
-            - name: 針對一般 .NET SDK 進行疑難排解
-              href: troubleshoot-dot-net-sdk.md
-            - name: 針對要求標頭太大進行疑難排解
-              href: troubleshoot-dot-net-sdk-request-header-too-large.md
-            - name: 針對要求逾時進行疑難排解
-              href: troubleshoot-dot-net-sdk-request-timeout.md
-            - name: 針對服務無法使用進行疑難排解
-              href: troubleshoot-service-unavailable.md
-        - name: .Java
-          items:
-            - name: 針對 Java SDK v4 進行疑難排解
-              href: troubleshoot-java-sdk-v4-sql.md
-            - name: 疑難排解 - 非同步 Java SDK v2
-              href: troubleshoot-java-async-sdk.md
-    - name: 變更摘要
+          href: create-cassandra-dotnet.md
+        - name: .NET Core
+          href: create-cassandra-dotnet-core.md
+        - name: Java v3
+          href: create-cassandra-java.md
+        - name: Java v4
+          href: create-cassandra-java-v4.md
+        - name: Node.js
+          href: create-cassandra-nodejs.md
+        - name: Python
+          href: create-cassandra-python.md
+        - name: Golang
+          href: create-cassandra-go.md
+    - name: 教學課程
       items:
-        - name: Azure Cosmos DB 觸發程序進階組態
-          href: how-to-configure-cosmos-db-trigger.md
-        - name: 多個 Azure Cosmos DB 觸發程序
-          href: how-to-create-multiple-cosmos-db-triggers.md
-        - name: 針對 Azure Cosmos DB 觸發程序進行疑難排解
-          href: troubleshoot-changefeed-functions.md
-        - name: 使用變更摘要估算器
-          href: how-to-use-change-feed-estimator.md
-        - name: 從變更摘要處理器程式庫遷移
-          href: how-to-migrate-from-change-feed-library.md
-        - name: 變更摘要 - 非同步 Java 範例
-          href: create-sql-api-java-changefeed.md
+        - name: 1 - 建立和管理資料
+          href: create-cassandra-api-account-java.md
+        - name: 2 - 載入資料
+          href: cassandra-api-load-data.md
+        - name: 3 - 查詢資料
+          href: cassandra-api-query-data.md
+        - name: 4 - 遷移資料
+          displayName: import
+          href: cassandra-import-data.md
+    - name: 概念
+      items:
+        - name: 常見問題集
+          href: cassandra-faq.md
+        - name: 彈性擴縮
+          href: manage-scale-cassandra.md
+        - name: 資料分割
+          href: cassandra-partitioning.md
+        - name: 次要索引
+          href: cassandra-secondary-index.md
+        - name: 對應一致性層級
+          href: cassandra-consistency.md
+    - name: 操作指南
+      items:
+        - name: 遷移到 Cassandra API
+          items:
+            - name: 遷移 - 使用 Striim 將 Oracle DB 遷移至 Cassandra API
+              href: cosmosdb-cassandra-api-migrate-data-striim.md
+            - name: 遷移 - 使用 Blitzz 將 Oracle DB 遷移至 Cassandra API
+              href: oracle-migrate-cosmos-db-blitzz.md
+            - name: 遷移 - 使用 Blitzz 將 Apache Cassandra 遷移至 Cassandra API
+              href: cassandra-migrate-cosmos-db-blitzz.md
+        - name: 變更摘要
+          href: cassandra-change-feed.md
+        - name: 建立容器 - Cassandra API
+          href: how-to-create-container-cassandra.md
+        - name: 佈建輸送量 - Cassandra API
+          displayName: 'request units, RUs, RU, collection level'
+          href: how-to-provision-throughput-cassandra.md
+        - name: 尋找要求單位費用
+          displayName: 'request units, RUs, RU, charge, consumption'
+          href: find-request-unit-charge-cassandra.md
+        - name: 儲存和管理 Spring 資料
+          href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=/azure/cosmos-db/context/context'
+        - name: Cassandra 和 Spark
+          items:
+            - name: 簡介
+              href: cassandra-spark-generic.md
+            - name: 使用 Databrickss 連線
+              href: cassandra-spark-databricks.md
+            - name: 使用 HDInsight 連線
+              href: cassandra-spark-hdinsight.md
+            - name: 建立 Keyspace 和資料表
+              href: cassandra-spark-ddl-ops.md
+            - name: 插入資料
+              href: cassandra-spark-create-ops.md
+            - name: 讀取資料
+              href: cassandra-spark-read-ops.md
+            - name: 更新插入資料
+              href: cassandra-spark-upsert-ops.md
+            - name: 刪除資料
+              href: cassandra-spark-delete-ops.md
+            - name: 彙總作業
+              href: cassandra-spark-aggregation-ops.md
+            - name: 複製資料表資料
+              href: cassandra-spark-table-copy-ops.md
+        - name: 使用 Resource Manager 範本進行管理
+          href: templates-samples-cassandra.md
+          displayName: ARM
+        - name: 使用 Powershell 管理
+          href: powershell-samples-cassandra.md
+        - name: 使用 Azure CLI 管理
+          href: cli-samples-cassandra.md
+    - name: 參考
+      items:
+        - name: REST 資源提供者
+          href: /rest/api/cosmos-db-resource-provider/2020-04-01/cassandraresources
+        - name: Resource Manager 範本
+          href: /azure/templates/microsoft.documentdb/allversions
+- name: MongoDB API
+  items:
+    - name: 概觀
+      items:
+        - name: 什麼是 Cosmos DB 中的 MongoDB API？
+          href: mongodb-introduction.md
+    - name: 快速入門
+      items:
+        - name: .NET
+          href: create-mongodb-dotnet.md
+        - name: Java
+          href: create-mongodb-java.md
+        - name: Node.js
+          href: create-mongodb-nodejs.md
+        - name: Python
+          href: create-mongodb-flask.md
+        - name: Xamarin
+          href: create-mongodb-xamarin.md
+        - name: Golang
+          href: create-mongodb-go.md
+    - name: 教學課程
+      items:
+        - name: 1 - 建立和管理資料
+          items:
+            - name: Node.js 主控台應用程式
+              href: mongodb-samples.md
+            - name: Node.js 和 Angular 應用程式
+              items:
+                - name: 第 1 部分 - 簡介
+                  href: tutorial-develop-mongodb-nodejs.md
+                - name: 第 2 部份 - 建立節點應用程式
+                  href: tutorial-develop-mongodb-nodejs-part2.md
+                - name: 第 3 部份 - 使用 Angular 新增 UI
+                  href: tutorial-develop-mongodb-nodejs-part3.md
+                - name: 第 4 部份 - 建立帳戶
+                  href: tutorial-develop-mongodb-nodejs-part4.md
+                - name: 第 5 部份 - 連線至 Cosmos DB
+                  href: tutorial-develop-mongodb-nodejs-part5.md
+                - name: 第 6 部份 - 執行 CRUD 作業
+                  href: tutorial-develop-mongodb-nodejs-part6.md
+            - name: Node.js 和 React 應用程式
+              href: tutorial-develop-mongodb-react.md
+        - name: 2 - 查詢資料
+          href: tutorial-query-mongodb.md
+        - name: 3 - 全域散發資料
+          href: tutorial-global-distribution-mongodb.md
+    - name: 概念
+      items:
+        - name: 連線通訊協定支援 (3.6)
+          href: mongodb-feature-support-36.md
+        - name: 連線通訊協定支援 (3.2)
+          href: mongodb-feature-support.md
+        - name: 常見問題集
+          href: mongodb-api-faq.md
+        - name: 對應一致性層級
+          href: mongodb-consistency.md
+    - name: 操作指南
+      items:
+        - name: 遷移至 MongoDB API
+          items:
+            - name: 預先移轉指南
+              href: mongodb-pre-migration.md
+            - name: 資料庫移轉服務 (上線)
+              href: ../dms/tutorial-mongodb-cosmos-db-online.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+            - name: 資料庫移轉服務 (上線)
+              href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+            - name: 後續移轉指南
+              href: mongodb-post-migration.md
+        - name: 從 MongoDB 3.2 升級至 3.6
+          href: mongodb-version-upgrade.md
+        - name: 取得連接字串
+          href: connect-mongodb-account.md
+        - name: 使用 Studio 3T 連線
+          href: mongodb-mongochef.md
+        - name: 使用 Compass 連線
+          href: mongodb-compass.md
+        - name: 使用 Robo 3T 連線
+          href: mongodb-robomongo.md
+        - name: 使用 Mongoose 連線
+          href: mongodb-mongoose.md
+        - name: 全域散發讀取
+          displayName: read preference
+          href: mongodb-readpreference.md
+        - name: 存留時間 - MongoDB
+          href: mongodb-time-to-live.md
+        - name: 變更資料流
+          href: mongodb-change-streams.md
+        - name: 管理資料索引
+          href: mongodb-indexing.md
+        - name: 建立容器 - MongoDB API
+          href: how-to-create-container-mongodb.md
+        - name: 佈建輸送量 - MongoDB API
+          displayName: 'request units, RUs, RU, collection level'
+          href: how-to-provision-throughput-mongodb.md
+        - name: 尋找要求單位費用
+          displayName: 'request units, RUs, RU, charge, consumption'
+          href: find-request-unit-charge-mongodb.md
+        - name: 針對查詢效能進行疑難排解
+          href: mongodb-troubleshoot-query.md
+        - name: 儲存和管理 Spring 資料
+          href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=/azure/cosmos-db/context/context'
+        - name: MongoDB 擴充功能命令
+          href: mongodb-custom-commands.md
+          displayName: custom commands
+        - name: 使用 Resource Manager 範本進行管理
+          href: templates-samples-mongodb.md
+          displayName: ARM
+        - name: 使用 Powershell 管理
+          href: powershell-samples-mongodb.md
+        - name: 使用 Azure CLI 管理
+          href: cli-samples-mongodb.md
+        - name: 針對常見問題進行疑難排解
+          href: mongodb-troubleshoot.md
+    - name: 參考
+      items:
+        - name: REST 資源提供者
+          href: /rest/api/cosmos-db-resource-provider/2020-04-01/mongodbresources
+        - name: Resource Manager 範本
+          href: /azure/templates/microsoft.documentdb/allversions
+- name: Gremlin API
+  displayName: 'graph, graph database'
+  items:
+    - name: 概觀
+      items:
+        - name: 什麼是 Cosmos DB 中的 Gremlin API？
+          href: graph-introduction.md
+        - name: 連線通訊協定支援
+          href: gremlin-support.md
+    - name: 快速入門
+      items:
+        - name: Gremlin 主控台
+          href: create-graph-gremlin-console.md
+        - name: .NET
+          href: create-graph-dotnet.md
+        - name: Java
+          href: create-graph-java.md
+        - name: Node.js
+          href: create-graph-nodejs.md
+        - name: Python
+          href: create-graph-python.md
+        - name: PHP
+          href: create-graph-php.md
+    - name: 教學課程
+      items:
+        - name: 1 - 查詢資料
+          href: tutorial-query-graph.md
+    - name: 概念
+      items:
+        - name: 常見問題集
+          href: gremlin-api-faq.md
+        - name: 回應標頭
+          href: gremlin-headers.md
+        - name: 限制
+          href: gremlin-limits.md
+    - name: 操作指南
+      items:
+        - name: 圖表資料模型
+          href: graph-modeling.md
+        - name: 圖表資料分割
+          href: graph-partitioning.md
+        - name: 匯出圖形資料
+          href: bulk-executor-graph-dotnet.md
+        - name: 最佳化 Gremlin 查詢
+          href: graph-execution-profile.md
+        - name: 建立容器 - Gremlin API
+          href: how-to-create-container-gremlin.md
+        - name: 佈建輸送量 - Gremlin API
+          displayName: 'request units, RUs, RU, collection level'
+          href: how-to-provision-throughput-gremlin.md
+        - name: 尋找要求單位費用
+          displayName: 'request units, RUs, RU, charge, consumption'
+          href: find-request-unit-charge-gremlin.md
+        - name: 使用資源權杖
+          href: how-to-use-resource-tokens-gremlin.md
+        - name: 使用區域端點
+          href: how-to-use-regional-gremlin.md
+        - name: 存取系統文件內容
+          href: how-to-access-system-properties-gremlin.md
+        - name: 圖表資料視覺化
+          href: graph-visualization.md
+        - name: 儲存和管理 Spring 資料
+          href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
+        - name: 使用 Resource Manager 範本進行管理
+          href: templates-samples-gremlin.md
+          displayName: ARM
+        - name: 使用 Powershell 管理
+          href: powershell-samples-gremlin.md
+        - name: 使用 Azure CLI 管理
+          href: cli-samples-gremlin.md
+    - name: 參考
+      items:
+        - name: 回應標頭
+          href: gremlin-headers.md
+        - name: 限制
+          href: gremlin-limits.md
+        - name: REST 資源提供者
+          href: /rest/api/cosmos-db-resource-provider/2020-04-01/gremlinresources
+        - name: Resource Manager 範本
+          href: /azure/templates/microsoft.documentdb/allversions
+- name: 資料表 API
+  items:
+    - name: 概觀
+      items:
+        - name: 什麼是 Cosmos DB 中的資料表 API？
+          href: table-introduction.md
+    - name: 快速入門
+      items:
+        - name: .NET
+          href: create-table-dotnet.md
+        - name: Java
+          href: create-table-java.md
+        - name: Node.js
+          href: create-table-nodejs.md
+        - name: Python
+          href: create-table-python.md
+    - name: 教學課程
+      items:
+        - name: 1 - 建立和管理資料
+          href: tutorial-develop-table-dotnet.md
+        - name: 2 - 遷移資料
+          displayName: import
+          href: table-import.md
+        - name: 3 - 查詢資料
+          href: tutorial-query-table.md
+        - name: 4 - 全域散發資料
+          href: tutorial-global-distribution-table.md
+    - name: 範例
+      items:
+        - name: .NET
+          href: table-storage-how-to-use-dotnet.md
+        - name: Java
+          href: table-storage-how-to-use-java.md
+        - name: Node.js
+          href: table-storage-how-to-use-nodejs.md
+        - name: Python
+          href: table-storage-how-to-use-python.md
+        - name: PHP
+          href: table-storage-how-to-use-php.md
+        - name: C++
+          href: table-storage-how-to-use-c-plus.md
+        - name: Ruby
+          href: table-storage-how-to-use-ruby.md
+        - name: F#
+          href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
+          maintainContext: true
+    - name: 概念
+      items:
+        - name: 常見問題集
+          href: table-api-faq.md
+    - name: 操作指南
+      items:
+        - name: 使用表格 API 建置應用程式
+          href: table-support.md
+        - name: 建立容器 - 資料表 API
+          href: how-to-create-container-table.md
+        - name: 尋找要求單位費用
+          displayName: 'request units, RUs, RU, charge, consumption'
+          href: find-request-unit-charge-table.md
+        - name: 表格儲存體設計指南
+          href: table-storage-design-guide.md
+        - name: 使用 Resource Manager 範本進行管理
+          href: templates-samples-table.md
+          displayName: ARM
+        - name: 使用 Powershell 管理
+          href: powershell-samples-table.md
+        - name: 使用 Azure CLI 管理
+          href: cli-samples-table.md
+    - name: 參考
+      items:
+        - name: .NET
+          href: table-sdk-dotnet.md
+        - name: .NET Standard
+          href: table-sdk-dotnet-standard.md
+        - name: Java
+          href: table-sdk-java.md
+        - name: Node.js
+          href: table-sdk-nodejs.md
+        - name: Python
+          href: table-sdk-python.md
+        - name: 表格儲存體 REST API
+          href: /rest/api/storageservices/table-service-rest-api
+- name: 操作指南
+  items:
+    - name: 使用開發人員工具
+      items:
+        - name: 使用模擬器在本機進行開發
+          items:
+            - name: 安裝及使用模擬器
+              href: local-emulator.md
+            - name: 匯出模擬器憑證
+              href: local-emulator-export-ssl-certificates.md
+            - name: 模擬器命令列參數
+              href: emulator-command-line-parameters.md
+            - name: 模擬器疑難排解
+              href: troubleshoot-local-emulator.md
+            - name: Visual Studio Code 擴充功能
+              href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
+        - name: 設定 Azure DevOps 的 CI/CD 管線
+          href: tutorial-setup-ci-cd.md
+        - name: 使用 Azure 儲存體總管
+          href: storage-explorer.md
+        - name: 使用 Azure Cosmos 總管
+          href: data-explorer.md
     - name: 具有 Azure Synapse Link 的 Analytics 和 BI
       items:
         - name: 設定 Azure Synapse Link
@@ -1146,30 +1301,6 @@
           href: ../synapse-analytics/sql/query-cosmos-db-analytical-store.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 搭配使用 Power BI 與 Synapse Link
           href: synapse-link-power-bi.md
-    - name: 內建分析搭配 Apache Spark
-      items:
-        - name: Azure Databricks Spark 連接器
-          href: spark-connector.md
-        - name: 使用 Apache Kafka 和 Cosmos DB 進行串流
-          href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-    - name: 內建 Jupyter 筆記本
-      items:
-        - name: 啟用筆記本
-          href: enable-notebooks.md
-        - name: 從 GitHub 匯入筆記本
-          href: import-github-notebooks.md
-        - name: 使用內建的 Python 筆記本命令
-          href: use-python-notebook-features-and-commands.md
-        - name: 使用內建的 C# 筆記本命令
-          href: use-csharp-notebook-features-and-commands.md
-    - name: 伺服器端程式設計
-      items:
-        - name: 寫入預存程序、觸發程序和 UDF
-          href: how-to-write-stored-procedures-triggers-udfs.md
-        - name: 使用 JavaScript 查詢 API 寫入預存程序和觸發程序
-          href: how-to-write-javascript-query-api.md
-        - name: 使用預存程序、觸發程序和 UDF
-          href: how-to-use-stored-procedures-triggers-udfs.md
     - name: 安全性
       items:
         - name: 設定 IP 防火牆
@@ -1181,13 +1312,6 @@
           href: how-to-configure-private-endpoints.md
         - name: 私下連線至 Cosmos DB 帳戶
           href: ../private-link/create-private-endpoint-cosmosdb-portal.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-        - name: 設定跨原始資源共用 (CORS)
-          href: how-to-configure-cross-origin-resource-sharing.md
-        - name: 使用受控識別來存取資料
-          href: managed-identity-based-authentication.md
-          displayName: 'msi, managed service identity, aad, azure active directory, identity'
-        - name: 使用憑證來存取資料
-          href: certificate-based-authentication.md
         - name: 使用 Azure Key Vault 來存取資料
           href: access-secrets-from-keyvault.md
         - name: 限制使用者只能存取資料作業
@@ -1228,128 +1352,12 @@
           href: monitor-cosmos-db-reference.md
         - name: 使用 Logic Apps 進行應用程式記錄
           href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-    - name: 使用模擬器在本機進行開發
-      items:
-        - name: 安裝及使用模擬器
-          href: local-emulator.md
-        - name: 匯出模擬器憑證
-          href: local-emulator-export-ssl-certificates.md
-        - name: 模擬器命令列參數
-          href: emulator-command-line-parameters.md
-        - name: 模擬器疑難排解
-          href: troubleshoot-local-emulator.md
-        - name: Visual Studio Code 擴充功能
-          href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
-    - name: 設定 Azure DevOps 的 CI/CD 管線
-      href: tutorial-setup-ci-cd.md
-    - name: Cosmos DB 資料視覺化
-      items:
-        - name: 使用 Power BI
-          href: powerbi-visualize.md
-        - name: 建立即時氣象儀表板
-          href: create-real-time-weather-dashboard-powerbi.md
-        - name: 使用 Qlik Sense
-          href: visualize-qlik-sense.md
-    - name: 與其他 Azure 服務整合
-      items:
-        - name: 變更摘要電子商務解決方案
-          href: changefeed-ecommerce-solution.md
-        - name: Azure App Service
-          href: create-website.md
-        - name: Azure 認知搜尋索引子
-          href: ../search/search-howto-index-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-        - name: Azure Functions
-          items:
-            - name: 無伺服器運算
-              href: serverless-computing-database.md
-            - name: Azure Functions 繫結
-              href: ../azure-functions/functions-bindings-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-        - name: Azure Data Factory
-          href: ../data-factory/connector-azure-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-        - name: Azure 串流分析
-          href: ../stream-analytics/stream-analytics-documentdb-output.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-        - name: Azure 資料總管
-          href: 'https://github.com/Azure/azure-kusto-labs/tree/master/cosmosdb-adx-integration'
-        - name: Azure 事件中樞與 Azure 儲存體
-          href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
-        - name: 使用 Spring Boot Starter
-          href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?context=/azure/cosmos-db/context/context'
-        - name: Spring Data 開發人員指南
-          href: 'https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb?context=/azure/cosmos-db/context/context'
-        - name: ODBC 驅動程式
-          href: odbc-driver.md
     - name: 將資料遷移到 Cosmos DB
       items:
         - name: 移轉資料到 Cosmos DB 的選項
           href: cosmosdb-migrationchoices.md
-        - name: 使用 Striim 遷移到 SQL API
-          href: cosmosdb-sql-api-migrate-data-striim.md
         - name: 將數百 TB 的資料遷移至 Azure Cosmos DB
           href: migrate-cosmosdb-data.md
-        - name: 遷移一對多關聯式資料
-          href: migrate-relational-to-cosmos-db-sql-api.md
-        - name: 遷移 - Couchbase 至 SQL API
-          href: couchbase-cosmos-migration.md
-        - name: 遷移 - DynamoDB 至 SQL API
-          href: dynamo-to-cosmos.md
-    - name: 大量執行程式文件庫
-      items:
-        - name: 關於大量執行程式程式庫
-          href: bulk-executor-overview.md
-        - name: 大量執行程式 - .NET 程式庫
-          href: bulk-executor-dot-net.md
-        - name: 從大量執行程式遷移至 .NET SDK
-          href: how-to-migrate-from-bulk-executor-library.md
-        - name: 大量執行程式 - Java 程式庫
-          href: bulk-executor-java.md
-- name: SQL API SDK 的參考
-  items:
-    - name: .NET SDK
-      items:
-        - name: .NET SDK v3
-          href: sql-api-sdk-dotnet-standard.md
-        - name: .NET SDK v2
-          href: sql-api-sdk-dotnet.md
-        - name: .NET Core SDK v2
-          href: sql-api-sdk-dotnet-core.md
-        - name: .NET 變更摘要程式庫 v2
-          href: sql-api-sdk-dotnet-changefeed.md
-        - name: .NET 大量執行程式程式庫 v2
-          href: sql-api-sdk-bulk-executor-dot-net.md
-    - name: Java SDK 和連接器
-      items:
-        - name: Java SDK v4
-          href: sql-api-sdk-java-v4.md
-        - name: 非同步 Java SDK v2
-          href: sql-api-sdk-async-java.md
-        - name: 同步處理 Java SDK v2
-          href: sql-api-sdk-java.md
-        - name: Spring Data 連接器 v2
-          href: sql-api-sdk-java-spring-v2.md
-        - name: Spring Data 連接器 v3
-          href: sql-api-sdk-java-spring-v3.md
-        - name: Spark 連接器
-          href: sql-api-sdk-java-spark.md
-        - name: Java 大量執行程式程式庫 v2
-          href: sql-api-sdk-bulk-executor-java.md
-    - name: Node.js
-      href: sql-api-sdk-node.md
-    - name: Python
-      href: sql-api-sdk-python.md
-    - name: REST
-      href: /rest/api/cosmos-db/
-    - name: REST 資源提供者
-      href: /rest/api/cosmos-db-resource-provider/
-    - name: Resource Manager 範本
-      href: /azure/templates/microsoft.documentdb/allversions
-      displayName: ARM
-    - name: 模擬器版本資訊
-      href: local-emulator-release-notes.md
-- name: 參考
-  items:
-    - name: Azure 原則內建
-      displayName: 'samples, policies, definitions'
-      href: ./policy-reference.md
 - name: 資源
   items:
     - name: 透過 Microsoft Learn 增進您的技巧
@@ -1369,7 +1377,7 @@
     - name: 影片
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cosmos-db'
     - name: Azure 藍圖
-      href: 'https://azure.microsoft.com/roadmap/'
+      href: 'https://azure.microsoft.com/updates/?query=Cosmos%20DB'
     - name: 免費試用 Azure Cosmos DB
       href: 'https://azure.microsoft.com/try/cosmosdb/'
     - name: 定價

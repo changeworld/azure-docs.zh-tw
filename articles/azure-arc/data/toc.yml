@@ -66,8 +66,16 @@
       items:
         - name: 使用 Grafana 和 Kibana 來監視
           href: monitor-grafana-kibana.md
-        - name: 上傳計量和記錄
-          href: upload-metrics-and-logs-to-azure-monitor.md
+        - name: 上傳至 Azure 監視器
+          items:
+            - name: 上傳必要條件
+              href: upload-metrics-and-logs-to-azure-monitor.md
+            - name: 上傳記錄
+              href: upload-logs.md
+            - name: 上傳計量
+              href: upload-metrics.md
+            - name: 上傳使用量資料
+              href: upload-usage-data.md
         - name: 詳細目錄資料庫執行個體
           href: view-arc-data-services-inventory-in-azure-portal.md
         - name: 取得資料控制器的使用者名稱和密碼

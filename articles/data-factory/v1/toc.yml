@@ -139,9 +139,9 @@
           href: data-factory-hadoop-streaming-activity.md
         - name: HDInsight Spark 活動
           href: data-factory-spark.md
-        - name: Machine Learning 批次執行活動
+        - name: Azure Machine Learning Studio (傳統版) 批次執行活動
           href: data-factory-azure-ml-batch-execution-activity.md
-        - name: Machine Learning 更新資源活動
+        - name: Azure Machine Learning Studio (傳統版) 更新資源活動
           href: data-factory-azure-ml-update-resource-activity.md
         - name: 預存程序活動
           href: data-factory-stored-proc-activity.md
@@ -211,7 +211,7 @@
       href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=data-factory'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=data-factory'
