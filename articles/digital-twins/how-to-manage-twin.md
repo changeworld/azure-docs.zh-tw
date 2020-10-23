@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 58ee064d4946442bff70e97d56a68080333e2197
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: ede358cdbe533a32ff99fbd736e171463472e45c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426139"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461308"
 ---
 # <a name="manage-digital-twins"></a>管理 Digital Twins
 
-您環境中的實體會以 [數位 twins](concepts-twins-graph.md)表示。 管理您的數位 twins 可能包括建立、修改和移除。 若要執行這些作業，您可以使用 [**DigitalTwins api**](how-to-use-apis-sdks.md)、 [.Net (c # ) SDK](https://www.nuget.org/packages/Azure.DigitalTwins.Core)或 [Azure 數位 Twins CLI](how-to-use-cli.md)。
+您環境中的實體會以 [數位 twins](concepts-twins-graph.md)表示。 管理您的數位 twins 可能包括建立、修改和移除。 若要執行這些作業，您可以使用 [**DigitalTwins api**](/rest/api/digital-twins/dataplane/twins)、 [.Net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)或 [Azure 數位 Twins CLI](how-to-use-cli.md)。
 
 本文著重于管理數位 twins;若要以整體方式使用關聯性和對應項 [圖形](concepts-twins-graph.md) ，請參閱 [*如何：使用關聯性管理*](how-to-manage-graph.md)對應項圖形。
 
@@ -383,7 +383,16 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 
 程式碼片段會使用教學課程中的模型定義 [Room.js](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) [*：探索 Azure 數位 Twins 與範例用戶端應用程式*](tutorial-command-line-app.md)。 您可以使用此連結直接移至檔案，或將它下載為完整的端對端 [範例專案的](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)一部分。
 
-將預留位置取代 `<your-instance-hostname>` 為您的 Azure 數位 Twins 實例詳細資料，然後執行範例。
+執行範例之前，請執行下列動作：
+1. 下載模型檔案，將它放在您的專案中，並取代 `<path-to>` 下列程式碼中的預留位置，告訴您的程式要在哪裡尋找它。
+2. 將預留位置取代 `<your-instance-hostname>` 為您的 Azure 數位 Twins 實例的主機名稱。
+3. 將這些套件新增至您的專案：
+    ```cmd/sh
+    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
+    dotnet add package Azure.identity
+    ```
+
+然後，執行範例。
 
 ```csharp
 using System;
@@ -401,22 +410,29 @@ namespace minimal
     class Program
     {
 
-        static async Task Main(string[] args)
+        public static async Task Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            //Create the Azure Digital Twins client for API calls
             string adtInstanceUrl = "https://<your-instance-hostname>";
             var credentials = new DefaultAzureCredential();
-            Console.WriteLine();
-            Console.WriteLine($"Upload a model");
-            BasicDigitalTwin twin = new BasicDigitalTwin();
-            var typeList = new List<string>();
-            string twin_Id = "myRoomId";
-            string dtdl = File.ReadAllText("Room.json");
-            typeList.Add(dtdl);
-            // Upload the model to the service
             DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
             Console.WriteLine($"Service client created – ready to go");
+            Console.WriteLine();
+
+            //Upload models
+            Console.WriteLine($"Upload a model");
+            Console.WriteLine();
+            string dtdl = File.ReadAllText("<path-to>/Room.json");
+            var typeList = new List<string>();
+            typeList.Add(dtdl);
+            // Upload the model to the service
             await client.CreateModelsAsync(typeList);
+
+            //Create new digital twin
+            BasicDigitalTwin twin = new BasicDigitalTwin();
+            string twin_Id = "myRoomId";
             twin.Metadata = new DigitalTwinMetadata();
             twin.Metadata.ModelId = "dtmi:example:Room;1";
             // Initialize properties
@@ -426,7 +442,15 @@ namespace minimal
             twin.CustomProperties = props;
             await client.CreateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize<BasicDigitalTwin>(twin));
             Console.WriteLine("Twin created successfully");
+            Console.WriteLine();
+
+            //Print twin
+            Console.WriteLine("--- Printing twin details:");
             twin = FetchAndPrintTwin(twin_Id, client);
+            Console.WriteLine("--------");
+            Console.WriteLine();
+
+            //Update twin data
             List<object> twinData = new List<object>();
             twinData.Add(new Dictionary<string, object>() 
             {
@@ -434,10 +458,17 @@ namespace minimal
                 { "path", "/Temperature"},
                 { "value", 25.0}
             });
-
             await client.UpdateDigitalTwinAsync(twin_Id, JsonSerializer.Serialize(twinData));
-            Console.WriteLine("Updated Twin Properties");
+            Console.WriteLine("Twin properties updated");
+            Console.WriteLine();
+
+            //Print twin again
+            Console.WriteLine("--- Printing twin details (after update):");
             FetchAndPrintTwin(twin_Id, client);
+            Console.WriteLine("--------");
+            Console.WriteLine();
+
+            //Delete twin
             await DeleteTwin(client, twin_Id);
         }
 
@@ -455,7 +486,7 @@ namespace minimal
 
             return twin;
         }
-        static async Task DeleteTwin(DigitalTwinsClient client, string id)
+        private static async Task DeleteTwin(DigitalTwinsClient client, string id)
         {
             await FindAndDeleteOutgoingRelationshipsAsync(client, id);
             await FindAndDeleteIncomingRelationshipsAsync(client, id);
@@ -463,7 +494,6 @@ namespace minimal
             {
                 await client.DeleteDigitalTwinAsync(id);
                 Console.WriteLine("Twin deleted successfully");
-                FetchAndPrintTwin(id, client);
             }
             catch (RequestFailedException exc)
             {
@@ -471,7 +501,7 @@ namespace minimal
             }
         }
 
-        public static async Task FindAndDeleteOutgoingRelationshipsAsync(DigitalTwinsClient client, string dtId)
+        private static async Task FindAndDeleteOutgoingRelationshipsAsync(DigitalTwinsClient client, string dtId)
         {
             // Find the relationships for the twin
 
@@ -493,7 +523,7 @@ namespace minimal
             }
         }
 
-       static async Task FindAndDeleteIncomingRelationshipsAsync(DigitalTwinsClient client, string dtId)
+       private static async Task FindAndDeleteIncomingRelationshipsAsync(DigitalTwinsClient client, string dtId)
         {
             // Find the relationships for the twin
 
@@ -530,7 +560,7 @@ namespace minimal
 
 ## <a name="view-all-digital-twins"></a>查看所有數位 twins
 
-若要在您的實例中查看所有數位 twins，請使用 [查詢](how-to-query-graph.md)。 您可以使用 [查詢 api](how-to-use-apis-sdks.md) 或 [CLI 命令](how-to-use-cli.md)來執行查詢。
+若要在您的實例中查看所有數位 twins，請使用 [查詢](how-to-query-graph.md)。 您可以使用 [查詢 api](/rest/api/digital-twins/dataplane/query) 或 [CLI 命令](how-to-use-cli.md)來執行查詢。
 
 以下是基本查詢的主體，會傳回實例中所有數位 twins 的清單：
 

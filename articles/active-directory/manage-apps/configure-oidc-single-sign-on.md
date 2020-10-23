@@ -11,12 +11,13 @@ ms.workload: identity
 ms.date: 10/19/2020
 ms.author: kenwith
 ms.reviewer: arajpathak7
-ms.openlocfilehash: 825f79b0a1c132fb7a15d643c3487dfb7d6a9abd
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.custom: contperfq2
+ms.openlocfilehash: e819073c3bc723a66f8beb2f9b2a094a07233ca9
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209871"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427682"
 ---
 # <a name="understand-oidc-based-single-sign-on"></a>瞭解 OIDC 為基礎的單一登入
 在應用程式管理的 [快速入門系列](view-applications-portal.md) 中，您已瞭解如何使用 Azure AD 作為應用程式 (IdP) 的身分識別提供者。 本文將詳細說明使用 OpenID Connect 標準來執行單一登入的應用程式。 

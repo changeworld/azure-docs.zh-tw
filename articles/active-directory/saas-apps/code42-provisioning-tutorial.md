@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: Zhchia
-ms.openlocfilehash: 57c4cff4e7a35d934a0c5105fa359d440c02db38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19e4a6b15f32ea9854801bcf6024577a1697c563
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342038"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455658"
 ---
 # <a name="tutorial-configure-code42-for-automatic-user-provisioning"></a>教學課程：設定 Code42 來自動布建使用者
 
-本教學課程說明在 Code42 和 Azure Active Directory (Azure AD) 設定自動使用者布建時所需執行的步驟。 當設定時，Azure AD 會使用 Azure AD 布建服務，自動將使用者和群組布建和取消布建至 [Code42](https://www.crashplan.com/) 。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。
+本教學課程說明在 Code42 和 Azure Active Directory (Azure AD) 設定自動使用者布建時所需執行的步驟。 當設定時，Azure AD 會使用 Azure AD 布建服務，自動將使用者和群組布建和取消布建至 [Code42](https://www.crashplan.com/) 。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 
 
 ## <a name="capabilities-supported"></a>支援的功能
@@ -33,21 +33,21 @@ ms.locfileid: "91342038"
 > * 當使用者不再需要存取權時，請移除 Code42 中的使用者
 > * Azure AD 與 Code42 之間保持使用者屬性同步
 > * 在 Code42 中布建群組和群組成員資格
-> * Code42 (建議的[單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/code42-tutorial)) 
+> * Code42 (建議的[單一登入](./code42-tutorial.md)) 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
-* [Azure AD 租用戶](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)
-* Azure AD 中具有設定佈建[權限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。
+* [Azure AD 租用戶](../develop/quickstart-create-new-tenant.md)
+* Azure AD 中具有設定佈建[權限](../users-groups-roles/directory-assign-admin-roles.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。
 * 已啟用身分識別管理的 Code42 租使用者。
 * 具有 [客戶雲端系統管理員](https://support.code42.com/Administrator/Cloud/Monitoring_and_managing/Roles_reference#Customer_Cloud_Admin) 許可權的 Code42 使用者帳戶。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步驟 1： 規劃佈建部署
-1. 了解[佈建服務的運作方式](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) \(部分機器翻譯\)。
-2. 判斷誰會在[佈建範圍](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)內。
-3. 判斷要 [在 Azure AD 與 Code42 之間對應](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的資料。
+1. 了解[佈建服務的運作方式](../app-provisioning/user-provisioning.md) \(部分機器翻譯\)。
+2. 判斷誰會在[佈建範圍](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)內。
+3. 判斷要 [在 Azure AD 與 Code42 之間對應](../app-provisioning/customize-application-attributes.md)的資料。
 
 ## <a name="step-2-configure-code42-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 Code42 以支援 Azure AD 的布建
 
@@ -65,15 +65,15 @@ ms.locfileid: "91342038"
 
 ## <a name="step-3-add-code42-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式資源庫新增 Code42
 
-從 Azure AD 應用程式資源庫新增 Code42，以開始管理布建至 Code42。 如果您先前已設定 SSO 的 Code42，您可以使用相同的應用程式。 不過，建議您在一開始測試整合時，建立個別的應用程式。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)深入了解從資源庫新增應用程式。
+從 Azure AD 應用程式資源庫新增 Code42，以開始管理布建至 Code42。 如果您先前已設定 SSO 的 Code42，您可以使用相同的應用程式。 不過，建議您在一開始測試整合時，建立個別的應用程式。 [在此](../manage-apps/add-application-portal.md)深入了解從資源庫新增應用程式。
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步驟 4： 定義將在佈建範圍內的人員
 
-Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的範圍篩選條件。
+Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的範圍篩選條件。
 
-* 將使用者和群組指派給 Code42 時，您必須選取 **預設存取**以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) \(部分機器翻譯\) 以新增其他角色。
+* 將使用者和群組指派給 Code42 時，您必須選取 **預設存取**以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](../develop/howto-add-app-roles-in-azure-ad-apps.md) \(部分機器翻譯\) 以新增其他角色。
 
-* 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可將一或兩個使用者或群組指派給應用程式來控制這點。 當範圍設為所有使用者和群組時，您可指定[以屬性為基礎的範圍篩選條件](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。
+* 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可將一或兩個使用者或群組指派給應用程式來控制這點。 當範圍設為所有使用者和群組時，您可指定[以屬性為基礎的範圍篩選條件](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。
 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-code42"></a>步驟 5。 設定自動使用者布建至 Code42
@@ -110,7 +110,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Code42**]。
 
-9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Code42 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Code42 中的使用者帳戶以進行更新作業。 如果您選擇變更相符的 [目標屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，您將必須確定 Code42 API 支援根據該屬性篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
+9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Code42 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Code42 中的使用者帳戶以進行更新作業。 如果您選擇變更相符的 [目標屬性](../app-provisioning/customize-application-attributes.md)，您將必須確定 Code42 API 支援根據該屬性篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
 
    |屬性|類型|
    |---|---|
@@ -139,7 +139,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
       |externalId|String|
       |members|參考|
 
-12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
+12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
 13. 若要啟用 Code42 Azure AD 的布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
 
@@ -149,7 +149,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![佈建範圍](common/provisioning-scope.png)
 
-15. 當您準備好要佈建時，按一下 [儲存]。
+15. 當您準備好要佈建時，按一下 [儲存]  。
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
@@ -158,17 +158,17 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 ## <a name="step-6-monitor-your-deployment"></a>步驟 6. 監視您的部署
 設定佈建後，請使用下列資源來監視您的部署：
 
-1. 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
-2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
-3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)深入了解隔離狀態。
+1. 使用[佈建記錄](../reports-monitoring/concept-provisioning-logs.md) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
+2. 檢查[進度列](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
+3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](../app-provisioning/application-provisioning-quarantine-status.md)深入了解隔離狀態。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶佈建](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 * [根據 Code42 中的 SCIM 群組設定組織指派](https://support.code42.com/Administrator/Cloud/Configuring/Introduction_to_SCIM_provisioning/How_to_provision_users_to_Code42_from_Azure_AD#Step_6:_Choose_an_organization_mapping_method)
 * [設定以 Code42 中的 SCIM 群組為基礎的角色指派](https://support.code42.com/Administrator/Cloud/Configuring/Introduction_to_SCIM_provisioning/How_to_provision_users_to_Code42_from_Azure_AD#Step_7:_Configure_role_mapping)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解如何針對佈建活動檢閱記錄和取得報告](../manage-apps/check-status-user-account-provisioning.md)
+* [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)

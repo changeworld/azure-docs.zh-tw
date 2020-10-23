@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa2ac203f92d401095194bb3f1b5f3ef3c52093b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b87650f364f8ccfd3a531d710bfbdc4715f0ac5a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87908782"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442179"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>允許或封鎖對特定組織的 B2B 使用者的邀請
 
@@ -126,7 +126,7 @@ ms.locfileid: "87908782"
 
 ### <a name="use-the-azureadpolicy-cmdlets-to-configure-the-policy"></a>使用 AzureADPolicy Cmdlet 設定原則
 
-若要建立允許或拒絕清單，請使用 [New-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview) Cmdlet。 下列範例說明如何設定會封鎖 "live.com" 網域的拒絕清單。
+若要建立允許或拒絕清單，請使用 [New-AzureADPolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview) Cmdlet。 下列範例說明如何設定會封鎖 "live.com" 網域的拒絕清單。
 
 ```powershell 
 $policyValue = @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}")
@@ -140,19 +140,19 @@ New-AzureADPolicy -Definition $policyValue -DisplayName B2BManagementPolicy -Typ
 New-AzureADPolicy -Definition @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}") -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true 
 ```
 
-若要設定允許或拒絕清單原則，請使用 [Set-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview) Cmdlet。 例如：
+若要設定允許或拒絕清單原則，請使用 [Set-AzureADPolicy](/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview) Cmdlet。 例如：
 
 ```powershell   
 Set-AzureADPolicy -Definition $policyValue -Id $currentpolicy.Id 
 ```
 
-若要取得原則，請使用 [Get-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) Cmdlet。 例如：
+若要取得原則，請使用 [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) Cmdlet。 例如：
 
 ```powershell
 $currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy'} | select -First 1 
 ```
 
-若要移除原則，請使用 [Remove-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview) Cmdlet。 例如：
+若要移除原則，請使用 [Remove-AzureADPolicy](/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview) Cmdlet。 例如：
 
 ```powershell
 Remove-AzureADPolicy -Id $currentpolicy.Id 
@@ -162,6 +162,3 @@ Remove-AzureADPolicy -Id $currentpolicy.Id
 
 - 如需 Azure AD B2B 的概觀，請參閱[何謂 Azure AD B2B 共同作業？](what-is-b2b.md)
 - 如需條件式存取和 B2B 共同作業的相關資訊，請參閱 B2B 共同作業 [使用者的條件式存取](conditional-access.md)。
-
-
-

@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: d0b9e2301a8bb9990f88db8d4d55ef7f97946174
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7e971b4afe0719d74c8aa32c5f5103c4be971d9b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072164"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426442"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支援適用於 Azure 資源的受控識別服務
 
@@ -41,6 +41,16 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 - [Azure Resource Manager 範本](../../api-management/api-management-howto-use-managed-service-identity.md)
 
+### <a name="azure-app-configuration"></a>Azure 應用程式組態
+
+| 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| 系統指派 | ![可用][check] | ![可用][check] | 無法使用 | 無法使用 |
+| 使用者指派 | ![可用][check] | ![可用][check]  | 無法使用  | 無法使用 |
+
+請參閱下列清單，以在可用) 的區域中設定 Azure 應用程式組態 (的受控識別：
+
+- [Azure CLI](../../azure-app-configuration/overview-managed-identity.md)
 
 ### <a name="azure-app-service"></a>Azure App Service
 

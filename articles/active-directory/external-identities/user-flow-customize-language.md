@@ -11,12 +11,12 @@ ms.date: 05/06/2020
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93b2b5538df894e17449e173baa3e402d6c59654
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c73a5491c0ad543d57a6721f37d81ae661c0a653
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91354984"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441431"
 ---
 # <a name="language-customization-in-azure-active-directory-preview"></a>Azure Active Directory 中的語言自訂 (預覽)
 
@@ -146,7 +146,7 @@ Chrome 和 Firefox 都會要求使用其設定的語言。 如果該語言受到
 
 ## <a name="supported-languages"></a>支援的語言
 
-Azure AD 支援下列語言。 Azure AD 提供使用者流程語言。 多重要素驗證 (MFA} 通知語言是由 [Azure MFA](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) 提供。
+Azure AD 支援下列語言。 Azure AD 提供使用者流程語言。 多重要素驗證 (MFA} 通知語言是由 [Azure MFA](../authentication/concept-mfa-howitworks.md) 提供。
 
 | Language              | 語言代碼 | 使用者流程         | MFA 通知  |
 |-----------------------| :-----------: | :----------------: | :----------------: |

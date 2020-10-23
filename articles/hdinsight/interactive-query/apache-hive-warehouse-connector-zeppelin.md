@@ -7,16 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 6ee1c70ec02af2a24f7867a6e6b06593361612b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bccf2b9a3dfe42ca439a45eb1e35cfaff58d0208
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083112"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426952"
 ---
 # <a name="integrate-apache-zeppelin-with-hive-warehouse-connector-in-azure-hdinsight"></a>在 Azure HDInsight 上將 Apache Zeppelin 與 Hive Warehouse Connector 整合起來
 
 HDInsight Spark 叢集包含具有不同解譯器的 Apache Zeppelin 筆記本。 在本文中，我們只將焦點放在使用 Hive Warehouse Connector 從 Spark 存取 Hive 資料表的 Livy 解譯器。
+
+> [!NOTE]
+> 本文包含「詞彙 *白名單*」的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
 
 ## <a name="prerequisite"></a>必要條件
 
@@ -82,8 +85,8 @@ HDInsight Spark 叢集包含具有不同解譯器的 Apache Zeppelin 筆記本�
     | livy.spark.sql.hive.llap | true |
     | livy.spark.yarn.security.credentials.hiveserver2.enabled | true |
     | livy.superusers | livy,zeppelin |
-    | livy.spark.jars | 第 1 課：建立 Windows Azure 儲存體物件`file:///usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-VERSION.jar`。<br>使用先前從[開始使用](#getting-started)取得的值取代 VERSION。 |
-    | livy.spark.submit.pyFiles | 第 1 課：建立 Windows Azure 儲存體物件`file:///usr/hdp/current/hive_warehouse_connector/pyspark_hwc-VERSION.zip`。<br>使用先前從[開始使用](#getting-started)取得的值取代 VERSION。 |
+    | livy.spark.jars | `file:///usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-VERSION.jar`.<br>使用先前從[開始使用](#getting-started)取得的值取代 VERSION。 |
+    | livy.spark.submit.pyFiles | `file:///usr/hdp/current/hive_warehouse_connector/pyspark_hwc-VERSION.zip`.<br>使用先前從[開始使用](#getting-started)取得的值取代 VERSION。 |
     | livy.spark.sql.hive.hiveserver2.jdbc.url | 將其設為互動式查詢叢集的 HiveServer2 互動式 JDBC URL。 |
     | spark.security.credentials.hiveserver2.enabled | true |
 

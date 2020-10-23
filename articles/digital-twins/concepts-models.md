@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7b404d05f512449c99e60c0bfdc93aab22c399ef
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: c71a7d4737ad34c43df1aa302d9517c61ed400b2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019013"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440785"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>瞭解 Azure 數位 Twins 中的對應項模型
 
@@ -230,7 +230,7 @@ Azure 數位 Twins 也不會觀察 `writable` 屬性或關聯性的屬性。 雖
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱如何使用 DigitalTwinsModels Api 管理模型：
+請參閱如何使用 DigitalTwinModels Api 管理模型：
 * [操作說明：管理自訂模型](how-to-manage-model.md)
 
 或者，您也可以瞭解如何根據模型建立數位 twins：

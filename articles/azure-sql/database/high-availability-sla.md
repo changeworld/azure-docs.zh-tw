@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: sstein, sashan
 ms.date: 08/12/2020
-ms.openlocfilehash: fd470180e17bd64990c1e657a6614fc2e0ef71d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93e9ad28b14a51432fd9ccd32d1a155eaff2e190
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335019"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427123"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database 和 SQL 受控執行個體的高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "91335019"
 
 SQL Database 和 SQL 受控執行個體都是在最新穩定版本的 SQL Server Database engine 和 Windows 作業系統上執行，大部分的使用者都不會注意到升級會持續執行。
 
-## <a name="basic-standard-and-general-purpose-service-tier-availability"></a>基本、標準和一般目的服務層級可用性
+## <a name="basic-standard-and-general-purpose-service-tier-locally-redundant-availability"></a>基本、標準和一般用途服務層級本機冗余可用性
 
 基本、標準和一般用途服務層級會利用適用于無伺服器和已布建計算的標準可用性架構。 下圖顯示具有個別計算和儲存層的四個不同節點。
 
@@ -46,7 +46,26 @@ SQL Database 和 SQL 受控執行個體都是在最新穩定版本的 SQL Server
 
 每次升級資料庫引擎或作業系統，或偵測到失敗時，Azure Service Fabric 都會將無狀態 `sqlservr.exe` 進程移至具有足夠可用容量的另一個無狀態計算節點。 Azure Blob 儲存體中的資料不會受到移動影響，且資料/記錄檔會附加到新初始化的 `sqlservr.exe` 進程。 此程式可保證99.99% 的可用性，但繁重的工作負載可能會在轉換期間發生效能降低的情況，因為新的進程是以 `sqlservr.exe` 冷快取啟動。
 
-## <a name="premium-and-business-critical-service-tier-availability"></a>進階與商務關鍵性服務層級可用性
+## <a name="general-purpose-service-tier-zone-redundant-availability-preview"></a>一般用途服務層區域冗余可用性 (預覽) 
+
+一般用途服務層的區域冗余設定會利用 [Azure 可用性區域](../../availability-zones/az-overview.md)   來跨 Azure 區域內的多個實體位置複寫資料庫。藉由選取 [區域冗余]，您可以讓新的和現有的一般用途單一資料庫和彈性集區復原到較大的一組失敗，包括重大的資料中心中斷，而不需要變更應用程式邏輯。
+
+一般用途層的區域冗余設定有兩個層級：  
+
+- 具有資料庫檔案的具狀態資料層 ( .mdf/.ldf) 儲存在 ZRS PFS (區域冗余 [儲存體 premium 檔案共用](../../storage/files/storage-how-to-create-premium-fileshare.md)。 使用 [區域多餘的儲存體](../../storage/common/storage-redundancy.md) 時，資料和記錄檔會在三個實際隔離的 Azure 可用性區域間同步複製。
+- 執行 sqlservr.exe 進程的無狀態計算層，其中只包含暫時性和快取的資料，例如 TempDB、附加 SSD 上的模型資料庫，以及記憶體中的計畫快取、緩衝集區和資料行存放區集區。 此無狀態節點是由 Azure Service Fabric 所操作，可初始化 sqlservr.exe、控制節點的健康情況，並在必要時執行容錯移轉至另一個節點。 針對區域冗余的一般用途資料庫，具有備用容量的節點可立即在其他可用性區域進行容錯移轉。
+
+下圖說明一般用途服務層級的高可用性架構的區域冗余版本：
+
+![適用于一般用途的區域冗余設定](./media/high-availability-sla/zone-redundant-for-general-purpose.png)
+
+> [!IMPORTANT]
+> 如需支援區域重複資料庫之區域的最新資訊，請參閱 [依區域的服務支援](../../availability-zones/az-region.md)。 只有在選取第5代計算硬體時，才可使用區域冗余設定。 SQL 受控執行個體中無法使用此功能。
+
+> [!NOTE]
+> 大小為 80 vcore 的一般用途資料庫，可能會在區域冗余設定時遇到效能降低的情況。 備份、還原、資料庫複製及設定異地 DR 關聯性之類的作業，可能會針對大於 1 TB 的單一資料庫體驗較慢的效能。 
+
+## <a name="premium-and-business-critical-service-tier-locally-redundant-availability"></a>Premium 和業務關鍵服務層級本機冗余可用性
 
 Premium 和業務關鍵服務層級會利用高階可用性模型，將計算資源整合 (`sqlservr.exe` 進程) 和儲存體 (本機連接的 SSD) 在單一節點上。 藉由將計算和儲存體複寫至建立三到四個節點叢集的其他節點，即可達到高可用性。
 
@@ -55,6 +74,23 @@ Premium 和業務關鍵服務層級會利用高階可用性模型，將計算資
 基礎資料庫檔案 ( .mdf/.ldf) 放置在附加的 SSD 儲存體上，以提供非常低的延遲 IO 給您的工作負載。 高可用性是使用類似 SQL Server [Always On 可用性群組](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)的技術來實行。 叢集包含可供讀寫客戶工作負載存取的單一主要複本，以及最多三個次要複本 (計算和儲存體) 包含資料複本。 主要節點會依序不斷地將變更推送至次要節點，並確保在認可每個交易之前，資料會同步處理至至少一個次要複本。 此程式可保證如果主要節點因為任何原因而損毀，一律會有完全同步處理的節點以進行容錯移轉。 Azure Service Fabric 會起始容錯移轉。 次要複本變成新的主要節點之後，就會建立另一個次要複本，以確保叢集有足夠的節點 (仲裁集) 。 完成容錯移轉之後，Azure SQL 連接會自動重新導向至新的主要節點。
 
 額外的好處是，premium 可用性模型包含將唯讀 Azure SQL 連接重新導向至其中一個次要複本的能力。 這項功能稱為「 [讀取相應](read-scale-out.md)放大」。它提供100% 的額外計算容量，不需額外費用，就能從主要複本關閉並載入唯讀作業，例如分析工作負載。
+
+## <a name="premium-and-business-critical-service-tier-zone-redundant-availability"></a>Premium 和業務關鍵服務層級區域冗余可用性 
+
+依預設，會在相同的資料中心內建立高階可用性模型的節點叢集。 隨著 [Azure 可用性區域](../../availability-zones/az-overview.md)的推出，SQL Database 可以將業務關鍵資料庫的不同複本放置到相同區域中的不同可用性區域。 為了避免發生單點失敗，系統也會跨多個區域將控制環複寫成三個閘道環 (GW)。 [Azure 流量管理員](../../traffic-manager/traffic-manager-overview.md) (ATM) 會控制特定閘道的路由。 因為 Premium 或業務關鍵服務層中的區域多餘設定不會建立額外的資料庫冗余，所以您可以不需要額外的成本來啟用它。 藉由選取區域冗余設定，您可以讓高階或業務關鍵資料庫復原到較大的一組失敗，包括重大的資料中心中斷，而不會變更應用程式邏輯。 您也可以將任何現有的進階或業務關鍵資料庫或彈性集區轉換成區域備援組態。
+
+因為區域冗余資料庫在不同的資料中心內有複本之間有一些距離，所以增加的網路延遲可能會增加認可時間，因而影響某些 OLTP 工作負載的效能。 您一律可以停用區域備援設定來回到單一區域設定。 此程式是與一般服務層級升級類似的線上操作。 在此程序結束時，資料庫或集區會從區域備援環移轉成單一區域環，或反之亦然。
+
+> [!IMPORTANT]
+> 區域冗余資料庫和彈性集區目前僅在精選區域中的 Premium 和業務關鍵服務層級支援。 使用業務關鍵層時，只有在選取第5代計算硬體時，才可使用區域冗余設定。 如需支援區域重複資料庫之區域的最新資訊，請參閱 [依區域的服務支援](../../availability-zones/az-region.md)。
+
+> [!NOTE]
+> SQL 受控執行個體中無法使用此功能。
+
+下圖說明區域備援版的高可用性架構：
+
+![高可用性架構區域備援](./media/high-availability-sla/zone-redundant-business-critical-service-tier.png)
+
 
 ## <a name="hyperscale-service-tier-availability"></a>超大規模服務層級可用性
 
@@ -73,21 +109,6 @@ Premium 和業務關鍵服務層級會利用高階可用性模型，將計算資
 
 如需超大規模中高可用性的詳細資訊，請參閱 [超大規模中的資料庫高可用性](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#database-high-availability-in-hyperscale)。
 
-## <a name="zone-redundant-configuration"></a>區域備援設定
-
-依預設，會在相同的資料中心內建立高階可用性模型的節點叢集。 隨著 [Azure 可用性區域](../../availability-zones/az-overview.md)的推出，SQL Database 可以將業務關鍵資料庫的不同複本放置到相同區域中的不同可用性區域。 為了避免發生單點失敗，系統也會跨多個區域將控制環複寫成三個閘道環 (GW)。 [Azure 流量管理員](../../traffic-manager/traffic-manager-overview.md) (ATM) 會控制特定閘道的路由。 因為 Premium 或業務關鍵服務層中的區域多餘設定不會建立額外的資料庫冗余，所以您可以不需要額外的成本來啟用它。 藉由選取區域冗余設定，您可以讓高階或業務關鍵資料庫復原到較大的一組失敗，包括重大的資料中心中斷，而不會變更應用程式邏輯。 您也可以將任何現有的進階或業務關鍵資料庫或彈性集區轉換成區域備援組態。
-
-因為區域冗余資料庫在不同的資料中心內有複本之間有一些距離，所以增加的網路延遲可能會增加認可時間，因而影響某些 OLTP 工作負載的效能。 您一律可以停用區域備援設定來回到單一區域設定。 此程式是與一般服務層級升級類似的線上操作。 在此程序結束時，資料庫或集區會從區域備援環移轉成單一區域環，或反之亦然。
-
-> [!IMPORTANT]
-> 區域冗余資料庫和彈性集區目前僅在精選區域中的 Premium 和業務關鍵服務層級支援。 使用業務關鍵層時，只有在選取第5代計算硬體時，才可使用區域冗余設定。 如需支援區域重複資料庫之區域的最新資訊，請參閱 [依區域的服務支援](../../availability-zones/az-region.md)。
-
-> [!NOTE]
-> SQL 受控執行個體中無法使用此功能。
-
-下圖說明區域備援版的高可用性架構：
-
-![高可用性架構區域備援](./media/high-availability-sla/zone-redundant-business-critical-service-tier.png)
 
 ## <a name="accelerated-database-recovery-adr"></a>加速資料庫復原 (ADR)
 

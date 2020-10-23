@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 6b179dd2662bf6fa545ea44b723671f1499b9e35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9195bb59264731914740e1cca902707603e3502d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589005"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427026"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault 的監視和警示
 
@@ -53,7 +53,7 @@ ms.locfileid: "88589005"
 3. 選取**監視**下的**計量** 
 
 > [!div class="mx-imgBorder"]
-> ![Azure 入口網站的螢幕擷取畫面](../media/alert-1.png)
+> ![醒目顯示 [監視] 區段下 [計量] 選項的螢幕擷取畫面。](../media/alert-1.png)
 
 4. 將圖表的標題更新為您想要在儀表板上看到的內容。 
 5. 選取範圍。 在此範例中，我們會選取單一金鑰保存庫。 
@@ -61,7 +61,7 @@ ms.locfileid: "88589005"
 7. 將時間範圍更新為過去24小時，並將時間細微性更新為1分鐘。 
 
 > [!div class="mx-imgBorder"]
-> ![Azure 入口網站的螢幕擷取畫面](../media/alert-2.png)
+> ![顯示整體保存庫可用性計量的螢幕擷取畫面。](../media/alert-2.png)
 
 8. 針對保存庫飽和度和服務 API 延遲計量重複上述步驟。 選取 [ **釘選到儀表板** ]，將您的計量儲存至儀表板。 
 
@@ -71,19 +71,19 @@ ms.locfileid: "88589005"
 9. 若要監視金鑰保存庫上的所有作業類型，請使用**服務 API 點擊計量總計**，然後選取 [**依活動類型套用分割**]
 
 > [!div class="mx-imgBorder"]
-> ![Azure 入口網站的螢幕擷取畫面](../media/alert-3.png)
+> ![顯示 [套用分割] 按鈕的螢幕擷取畫面。](../media/alert-3.png)
 
 10. 若要監視金鑰保存庫的錯誤碼，請使用**服務 API 結果計量總計**，然後選取 [套用**依活動類型套用分割**]
 
 > [!div class="mx-imgBorder"]
-> ![Azure 入口網站的螢幕擷取畫面](../media/alert-4.png)
+> ![顯示所選服務 API 結果計量總計的螢幕擷取畫面。](../media/alert-4.png)
 
 現在您會有一個看起來像這樣的儀表板。 您可以按一下每個圖格右上角的三個點，您可以視需要重新排列和調整磚大小。 
 
 一旦您儲存併發布儀表板，它會在您的 Azure 訂用帳戶中建立新的資源。 您可以藉由搜尋「共用儀表板」隨時查看。 
 
 > [!div class="mx-imgBorder"]
-> ![Azure 入口網站的螢幕擷取畫面](../media/alert-5.png)
+> ![顯示已發佈儀表板的螢幕擷取畫面。](../media/alert-5.png)
 
 ## <a name="how-to-configure-alerts-on-your-key-vault"></a>如何在您的 Key Vault 上設定警示 
 
@@ -101,20 +101,20 @@ ms.locfileid: "88589005"
 3. 選取 [**管理動作**]
 
 > [!div class="mx-imgBorder"]
-> ![Azure 入口網站的螢幕擷取畫面](../media/alert-6.png)
+> ![醒目顯示 [管理動作] 按鈕的螢幕擷取畫面。](../media/alert-6.png)
 
 4. 選取 [ **+ 新增動作群組**]
 
 > [!div class="mx-imgBorder"]
-> ![Azure 入口網站的螢幕擷取畫面](../media/alert-7.png)
+> ![醒目顯示 [+ 新增動作群組] 按鈕的螢幕擷取畫面。](../media/alert-7.png)
 
 5. 選擇動作群組的 **動作類型** 。 在此範例中，我們將建立電子郵件警示。
 
 > [!div class="mx-imgBorder"]
-> ![Azure 入口網站的螢幕擷取畫面](../media/alert-8.png)
+> ![醒目顯示新增動作群組所需欄位的螢幕擷取畫面。](../media/alert-8.png)
 
 > [!div class="mx-imgBorder"]
-> ![Azure 入口網站的螢幕擷取畫面](../media/alert-9.png)
+> ![顯示新增電子郵件或 SMS 訊息警示所需內容的螢幕擷取畫面。](../media/alert-9.png)
 
 6. 按一下頁面底部的 [確定]****。 您已成功建立動作群組。 
 
@@ -125,12 +125,12 @@ ms.locfileid: "88589005"
 1. 在 Azure 入口網站中選取您的金鑰保存庫資源，然後選取 [**監視**] 底下的 [**警示**]
 
 > [!div class="mx-imgBorder"]
-> ![Azure 入口網站的螢幕擷取畫面](../media/alert-10.png)
+> ![在 [監視] 區段下顯示 [警示] 功能表選項的螢幕擷取畫面。](../media/alert-10.png)
 
 2. 選取 **新的警示規則**
 
 > [!div class="mx-imgBorder"]
-> ![Azure 入口網站的螢幕擷取畫面](../media/alert-11.png)
+> ![顯示 [+ 新增警示規則] 按鈕的螢幕擷取畫面。](../media/alert-11.png)
 
 3. 選取警示規則的範圍。 您可以選取單一保存庫或多個保存庫。 
 
@@ -138,7 +138,7 @@ ms.locfileid: "88589005"
 > 請注意，當您針對警示範圍選取多個保存庫時，所有選取的保存庫都必須位於相同的區域中。 您必須為不同區域中的保存庫設定個別的警示規則。 
 
 > [!div class="mx-imgBorder"]
-> ![Azure 入口網站的螢幕擷取畫面](../media/alert-12.png)
+> ![顯示如何選取保存庫的螢幕擷取畫面。](../media/alert-12.png)
 
 4. 選取警示的條件。 您可以選擇下列任何信號，並定義警示的邏輯。 Key Vault 團隊建議設定下列警示閾值。 
 
@@ -149,13 +149,13 @@ ms.locfileid: "88589005"
     + 高於平均 (動態閾值) 的錯誤碼總數 
 
 > [!div class="mx-imgBorder"]
-> ![Azure 入口網站的螢幕擷取畫面](../media/alert-13.png)
+> ![顯示您選取警示條件之位置的螢幕擷取畫面。](../media/alert-13.png)
 
 ### <a name="example-1-configuring-a-static-alert-threshold-for-latency"></a>範例1：設定延遲的靜態警示閾值
 
 選取 **整體服務 API 延遲** 作為信號名稱
 > [!div class="mx-imgBorder"]
-> ![Azure 入口網站的螢幕擷取畫面](../media/alert-14.png)
+> ![顯示整體服務 API 延遲信號名稱的螢幕擷取畫面。](../media/alert-14.png)
 
 請參閱下列設定參數。
 
@@ -168,14 +168,14 @@ ms.locfileid: "88589005"
 + 選取 [完成]   
 
 > [!div class="mx-imgBorder"]
-> ![Azure 入口網站的螢幕擷取畫面](../media/alert-15.png)
+> ![反白顯示已設定警示邏輯的螢幕擷取畫面。](../media/alert-15.png)
 
 ### <a name="example-2-configuring-a-dynamic-alert-threshold-for-vault-saturation"></a>範例2：設定保存庫飽和度的動態警示閾值 
 
 當您使用動態警示時，您將能夠看到您所選取的金鑰保存庫的歷程記錄資料。 藍色區域表示金鑰保存庫的平均使用量。 紅色區域會顯示可能已觸發警示設定中其他準則的尖峰。 紅點會顯示在匯總時間範圍內符合警示準則的違規實例。 您可以設定警示，以在設定的時間內經過特定數目的違規之後引發。 如果您不想要包含過去的資料，可以選擇在 [advanced settings] 中排除舊的資料。 
 
 > [!div class="mx-imgBorder"]
-> ![Azure 入口網站的螢幕擷取畫面](../media/alert-16.png)
+> ![顯示整體保存庫飽和度圖表的螢幕擷取畫面。](../media/alert-16.png)
 
 請參閱下列設定參數。
 
@@ -194,21 +194,21 @@ ms.locfileid: "88589005"
 5. 新增您已設定的動作群組
 
 > [!div class="mx-imgBorder"]
-> ![Azure 入口網站的螢幕擷取畫面](../media/alert-18.png)
+> ![顯示如何新增動作群組的螢幕擷取畫面。](../media/alert-18.png)
 
 6. 啟用警示並指派嚴重性
 
 > [!div class="mx-imgBorder"]
-> ![Azure 入口網站的螢幕擷取畫面](../media/alert-19.png)
+> ![顯示啟用警示並指派嚴重性的螢幕擷取畫面。](../media/alert-19.png)
 
 7. 建立警示 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 恭喜，您現在已成功建立監視儀表板，並已為您的金鑰保存庫設定警示！ 當您遵循上述所有步驟之後，您應該會在金鑰保存庫符合您設定的警示準則時收到電子郵件警示。 範例如下所示。 使用您在本文中設定的工具，主動監視金鑰保存庫的健康情況。 
 
 ### <a name="example-email-alert"></a>範例電子郵件警示 
 
 > [!div class="mx-imgBorder"]
-> ![Azure 入口網站的螢幕擷取畫面](../media/alert-20.png)
+> ![強調設定電子郵件警示所需資訊的螢幕擷取畫面。](../media/alert-20.png)

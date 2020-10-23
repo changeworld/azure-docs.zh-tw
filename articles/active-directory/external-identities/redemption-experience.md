@@ -11,16 +11,16 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6bf5d40262c5991504d3dc62490fb50f6a20592
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2427d974f96c0905ea2eb33daea7c89de277ec9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87908183"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441805"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B 共同作業邀請兌換
 
-本文說明來賓使用者如何存取您的資源，以及他們將會遇到的同意程序。 如果您將邀請電子郵件傳送給來賓，邀請會包含一個連結，讓來賓可兌換以存取您的應用程式或入口網站。 邀請電子郵件只是來賓可存取您資源的其中一種方式。 或者，您可將來賓新增至您的目錄，並為他們提供所要共用入口網站或應用程式的直接連結。 無論來賓使用何種方法，系統都會引導他們進行第一次的同意程序。 此程式可確保您的來賓同意隱私權條款，並接受您已設定的任何[使用規定](https://docs.microsoft.com/azure/active-directory/governance/active-directory-tou)。
+本文說明來賓使用者如何存取您的資源，以及他們將會遇到的同意程序。 如果您將邀請電子郵件傳送給來賓，邀請會包含一個連結，讓來賓可兌換以存取您的應用程式或入口網站。 邀請電子郵件只是來賓可存取您資源的其中一種方式。 或者，您可將來賓新增至您的目錄，並為他們提供所要共用入口網站或應用程式的直接連結。 無論來賓使用何種方法，系統都會引導他們進行第一次的同意程序。 此程式可確保您的來賓同意隱私權條款，並接受您已設定的任何[使用規定](../conditional-access/terms-of-use.md)。
 
 當您將來賓使用者新增到您的目錄時，來賓使用者帳戶的同意狀態 (可在 PowerShell 中檢視) 最初會設定為 **PendingAcceptance**。 此設定會保留到來賓接受您的邀請並同意您的隱私權原則和使用條款為止。 之後，同意狀態會變更為 [已接受]，而不再對來賓呈現同意頁面。
 
@@ -29,16 +29,16 @@ ms.locfileid: "87908183"
 
 ## <a name="redemption-through-the-invitation-email"></a>透過邀請電子郵件兌換
 
-當您[使用 Azure 入口網站](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal)將來賓使用者新增至您的目錄時，系統會將邀請電子郵件傳送給處理中的來賓。 當您[使用 PowerShell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell)將來賓使用者新增到您的目錄時，也可選擇傳送邀請電子郵件。 以下說明來賓在兌換電子郵件中的連結時的體驗。
+當您[使用 Azure 入口網站](./b2b-quickstart-add-guest-users-portal.md)將來賓使用者新增至您的目錄時，系統會將邀請電子郵件傳送給處理中的來賓。 當您[使用 PowerShell](./b2b-quickstart-invite-powershell.md)將來賓使用者新增到您的目錄時，也可選擇傳送邀請電子郵件。 以下說明來賓在兌換電子郵件中的連結時的體驗。
 
-1. 來賓會收到從 **Microsoft Invitations** 傳送的[邀請電子郵件](https://docs.microsoft.com/azure/active-directory/b2b/invitation-email-elements)。
+1. 來賓會收到從 **Microsoft Invitations** 傳送的[邀請電子郵件](./invitation-email-elements.md)。
 2. 來賓會在電子郵件中選取 [接受邀請]。
-3. 來賓會使用自己的認證來登入您的目錄。 如果來賓沒有可與您的目錄同盟的帳戶，且未啟用[電子郵件一次性密碼 (OTP)](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode) 功能，則系統會提示來賓建立個人 [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) 或 [Azure AD 自助式帳戶](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-self-service-signup)。 如需詳細資訊，請參閱[邀請兌換流程](#invitation-redemption-flow)。
+3. 來賓會使用自己的認證來登入您的目錄。 如果來賓沒有可與您的目錄同盟的帳戶，且未啟用[電子郵件一次性密碼 (OTP)](./one-time-passcode.md) 功能，則系統會提示來賓建立個人 [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) 或 [Azure AD 自助式帳戶](../users-groups-roles/directory-self-service-signup.md)。 如需詳細資訊，請參閱[邀請兌換流程](#invitation-redemption-flow)。
 4. 系統會引導來賓進行[同意體驗](#consent-experience-for-the-guest)，如下所述。
 
 ## <a name="redemption-through-a-direct-link"></a>透過直接連結兌換
 
-除了邀請電子郵件以外，您也可以為來賓提供應用程式或入口網站的直接連結。 您必須先透過 [Azure 入口網站](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal)或 [PowerShell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell)，將來賓使用者新增至您的目錄。 接著，您可使用任何[可自訂的方式將應用程式部署至使用者](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences)，包括直接登入連結。 當來賓使用直接連結而不是邀請電子郵件時，系統仍會引導他們進行第一次的同意體驗。
+除了邀請電子郵件以外，您也可以為來賓提供應用程式或入口網站的直接連結。 您必須先透過 [Azure 入口網站](./b2b-quickstart-add-guest-users-portal.md)或 [PowerShell](./b2b-quickstart-invite-powershell.md)，將來賓使用者新增至您的目錄。 接著，您可使用任何[可自訂的方式將應用程式部署至使用者](../manage-apps/end-user-experiences.md)，包括直接登入連結。 當來賓使用直接連結而不是邀請電子郵件時，系統仍會引導他們進行第一次的同意體驗。
 
 > [!IMPORTANT]
 > 直接連結必須是租用戶專用的。 換句話說，其必須包含租用戶識別碼或已驗證的網域，才能在您的租用戶 (共用應用程式所在的位置) 中驗證來賓。 一般 URL (例如 https://myapps.microsoft.com ) 不適用於來賓，因為其會重新導向至其主租用戶進行驗證。 以下是一些具有租用戶內容的直接連結範例：
@@ -60,29 +60,29 @@ ms.locfileid: "87908183"
 
 **如果使用者的使用者主體名稱 (UPN) 與現有 Azure AD 和個人 MSA 帳戶相符，則會提示使用者選擇他們想要進行兌換的帳戶。*
 
-1. Azure AD 會執行以使用者為基礎的探索，以判斷使用者是否存在於 [現有的 Azure AD 租用戶](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b#easily-add-guest-users-in-the-azure-ad-portal)中。
+1. Azure AD 會執行以使用者為基礎的探索，以判斷使用者是否存在於 [現有的 Azure AD 租用戶](./what-is-b2b.md#easily-invite-guest-users-from-the-azure-ad-portal)中。
 
-2. 如果系統管理員已啟用[直接同盟](https://docs.microsoft.com/azure/active-directory/b2b/direct-federation)，Azure AD 會檢查使用者的網域尾碼是否符合所設定 SAML/WS-同盟識別提供者的網域，並將使用者重新導向至預先設定的識別提供者。
+2. 如果系統管理員已啟用[直接同盟](./direct-federation.md)，Azure AD 會檢查使用者的網域尾碼是否符合所設定 SAML/WS-同盟識別提供者的網域，並將使用者重新導向至預先設定的識別提供者。
 
-3. 如果系統管理員已啟用 [Google 同盟](https://docs.microsoft.com/azure/active-directory/b2b/google-federation)，Azure AD 會檢查使用者的網域尾碼是否為 gmail.com 或 googlemail.com，並將使用者重新導向至 Google。
+3. 如果系統管理員已啟用 [Google 同盟](./google-federation.md)，Azure AD 會檢查使用者的網域尾碼是否為 gmail.com 或 googlemail.com，並將使用者重新導向至 Google。
 
 4. 兌換程序會檢查使用者是否有現有的個人 [Microsoft 帳戶 (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)。
 
 5. 一旦識別出使用者的**主目錄**，使用者就會被傳送至對應的識別提供者以進行登入。  
 
-6. 如果步驟 1 到 4 找不到受邀使用者的主目錄，則 Azure AD 會判斷邀請租用戶是否已啟用來賓的[電子郵件一次性密碼 (OTP)](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode) 功能。
+6. 如果步驟 1 到 4 找不到受邀使用者的主目錄，則 Azure AD 會判斷邀請租用戶是否已啟用來賓的[電子郵件一次性密碼 (OTP)](./one-time-passcode.md) 功能。
 
-7. 如果[已啟用來賓的電子郵件一次性密碼](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode#when-does-a-guest-user-get-a-one-time-passcode)，則會透過受邀的電子郵件將密碼傳送給使用者。 使用者將會在 Azure AD 登入頁面中，擷取並輸入此密碼。
+7. 如果[已啟用來賓的電子郵件一次性密碼](./one-time-passcode.md#when-does-a-guest-user-get-a-one-time-passcode)，則會透過受邀的電子郵件將密碼傳送給使用者。 使用者將會在 Azure AD 登入頁面中，擷取並輸入此密碼。
 
-8. 如果已停用來賓的電子郵件一次性密碼，Azure AD 會檢查網域尾碼，以判斷其是否屬於取用者帳戶。 若是如此，系統會提示使用者建立個人 [Microsoft 帳戶](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)。 若非如此，系統會提示使用者建立 [Azure AD 自助式帳戶](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-self-service-signup)。
+8. 如果已停用來賓的電子郵件一次性密碼，Azure AD 會檢查網域尾碼，以判斷其是否屬於取用者帳戶。 若是如此，系統會提示使用者建立個人 [Microsoft 帳戶](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)。 若非如此，系統會提示使用者建立 [Azure AD 自助式帳戶](../users-groups-roles/directory-self-service-signup.md)。
 
-9. Azure AD 藉由驗證電子郵件的存取權，嘗試建立 [Azure AD 自助式帳戶](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-self-service-signup)。 將程式碼傳送至電子郵件，並且讓使用者擷取並提交給 Azure AD，即可驗證帳戶是否已完成。 不過，如果受邀使用者的租用戶已同盟，或 AllowEmailVerifiedUsers 欄位在受邀使用者的租用戶中設定為 False，則使用者無法完成兌換，且流程會產生錯誤。 如需詳細資訊，請參閱 [Azure Active Directory B2B 共同作業疑難排解](https://docs.microsoft.com/azure/active-directory/b2b/troubleshoot#the-user-that-i-invited-is-receiving-an-error-during-redemption)。
+9. Azure AD 藉由驗證電子郵件的存取權，嘗試建立 [Azure AD 自助式帳戶](../users-groups-roles/directory-self-service-signup.md)。 將程式碼傳送至電子郵件，並且讓使用者擷取並提交給 Azure AD，即可驗證帳戶是否已完成。 不過，如果受邀使用者的租用戶已同盟，或 AllowEmailVerifiedUsers 欄位在受邀使用者的租用戶中設定為 False，則使用者無法完成兌換，且流程會產生錯誤。 如需詳細資訊，請參閱 [Azure Active Directory B2B 共同作業疑難排解](./troubleshoot.md#the-user-that-i-invited-is-receiving-an-error-during-redemption)。
 
 10. 系統會提示使用者建立個人 [Microsoft 帳戶 (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)。
 
-11. 向適當的識別提供者進行驗證後，使用者會被重新導向至 Azure AD 以進行[同意體驗](https://docs.microsoft.com/azure/active-directory/b2b/redemption-experience#consent-experience-for-the-guest)。  
+11. 向適當的識別提供者進行驗證後，使用者會被重新導向至 Azure AD 以進行[同意體驗](#consent-experience-for-the-guest)。  
 
-若為 Just-In-Time (JIT) 兌換 (透過租用戶應用程式連結兌換)，則無法使用步驟 8 到 10。 如果使用者到達步驟 6，且未啟用電子郵件一次性密碼功能，則使用者會收到錯誤訊息，且無法兌換邀請。 若要避免此錯誤，系統管理員應該[啟用電子郵件一次性密碼](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode#when-does-a-guest-user-get-a-one-time-passcode)或確保使用者按一下邀請連結。
+若為 Just-In-Time (JIT) 兌換 (透過租用戶應用程式連結兌換)，則無法使用步驟 8 到 10。 如果使用者到達步驟 6，且未啟用電子郵件一次性密碼功能，則使用者會收到錯誤訊息，且無法兌換邀請。 若要避免此錯誤，系統管理員應該[啟用電子郵件一次性密碼](./one-time-passcode.md#when-does-a-guest-user-get-a-one-time-passcode)或確保使用者按一下邀請連結。
 
 ## <a name="consent-experience-for-the-guest"></a>來賓的同意體驗
 
@@ -93,13 +93,13 @@ ms.locfileid: "87908183"
    ![顯示 [檢閱權限] 頁面的螢幕擷取畫面](media/redemption-experience/review-permissions.png) 
 
    > [!NOTE]
-   > 有關身為租用戶管理員的您如何連結至貴組織隱私權聲明的詳細資訊，請參閱[操作說明：在 Azure Active Directory 中新增貴組織的隱私權資訊](https://aka.ms/adprivacystatement)。
+   > 有關身為租用戶管理員的您如何連結至貴組織隱私權聲明的詳細資訊，請參閱[操作說明：在 Azure Active Directory 中新增貴組織的隱私權資訊](../fundamentals/active-directory-properties-area.md)。
 
 2. 如果已設定使用規定，則來賓會開啟並檢閱使用規定，然後選取 [接受]。 
 
    ![顯示新增使用規定的螢幕擷取畫面](media/redemption-experience/terms-of-use-accept.png) 
 
-   您可以在 [外部身分識別] > [使用規定] 中，設定[使用規定](../governance/active-directory-tou.md)。
+   您可以在 [外部身分識別] > [使用規定] 中，設定[使用規定](../conditional-access/terms-of-use.md)。
 
 3. 除非另有指定，否則會將來賓重新導向至應用程式存取面板，其中會列出來賓可以存取的應用程式。
 

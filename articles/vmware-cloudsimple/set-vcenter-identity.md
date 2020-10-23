@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f6f3b10219775adb02d47a91da2573ea99f30ac0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60090dec56a177fac6ddad946d97142b484355af
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212257"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425751"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>設定要使用的 vCenter 身分識別來源 Active Directory
 
@@ -61,9 +61,9 @@ VMware vCenter 支援不同的身分識別來源，以供存取 vCenter 的使�
 | **網域名稱** | 網域的 FQDN，例如，example.com。 請勿在此文字方塊中提供 IP 位址。 |
 | **網域別名** | 網域 NetBIOS 名稱。 如果您使用 SSPI 驗證，請將 Active Directory 網域的 NetBIOS 名稱新增為身分識別來源的別名。 |
 | **群組的基底 DN** | 群組的基底分辨名稱。 |
-| **主伺服器 URL** | 網域的網域主控站 LDAP 伺服器。<br><br>使用格式  `ldap://hostname:port`   或  `ldaps://hostname:port` 。 埠通常是389（適用于 LDAP 連線）和636（適用于 LDAPS 連接）。 針對 Active Directory 多網域控制站部署，LDAP 的埠通常是3268，而針對 LDAPS 則是3269。<br><br>當您  `ldaps://`   在主要或次要 LDAP URL 中使用時，需要為 Active Directory 伺服器的 LDAPS 端點建立信任的憑證。 |
+| **主伺服器 URL** | 網域的網域主控站 LDAP 伺服器。<br><br>使用格式 `ldap://hostname:port` 或 `ldaps://hostname:port` 。 埠通常是389（適用于 LDAP 連線）和636（適用于 LDAPS 連接）。 針對 Active Directory 多網域控制站部署，LDAP 的埠通常是3268，而針對 LDAPS 則是3269。<br><br>當您 `ldaps://` 在主要或次要 LDAP URL 中使用時，需要為 Active Directory 伺服器的 LDAPS 端點建立信任的憑證。 |
 | **次要伺服器 URL** | 用於容錯移轉的次要網域控制站 LDAP 伺服器位址。 |
-| **選擇憑證** | 如果您想要搭配 Active Directory LDAP 伺服器或 OpenLDAP 伺服器身分識別來源使用 LDAPS，在  `ldaps://` [URL] 文字方塊中輸入之後，會出現 [選擇憑證] 按鈕   。 不需要次要 URL。 |
+| **選擇憑證** | 如果您想要搭配 Active Directory LDAP 伺服器或 OpenLDAP 伺服器身分識別來源使用 LDAPS，在 [URL] 文字方塊中輸入之後，會出現 [選擇憑證] 按鈕 `ldaps://` 。 不需要次要 URL。 |
 | **使用者名稱** | 網域中使用者的識別碼，其具有使用者和群組的基本 DN 的最小唯讀存取權。 |
 | **密碼** | 使用者名稱所指定之使用者的密碼。 |
 
@@ -127,7 +127,7 @@ VMware vCenter 支援不同的身分識別來源，以供存取 vCenter 的使�
 
 6. 選取 **Active Directory 為 LDAP 伺服器** ，然後按 **[下一步]**。
 
-    ![Active Directory](media/OnPremAD04.png)
+    ![以 LDAP 伺服器選項強調 Active Directory 的螢幕擷取畫面。](media/OnPremAD04.png)
 
 7. 指定環境的身分識別來源參數，然後按 **[下一步]**。
 

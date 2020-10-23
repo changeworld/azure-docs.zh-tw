@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 44f2195fb68b5a17eab3980f72cbc5374e1c033a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dde22fe9997e41d6d17fba94e6b9523d82c7b910
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91312901"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456818"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>教學課程︰設定 Box 來自動佈建使用者
 
@@ -24,7 +24,7 @@ ms.locfileid: "91312901"
 > [!NOTE]
 > 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要設定 Azure AD 與 Box 整合，您需要下列項目：
 
@@ -48,7 +48,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 在設定並啟用佈建服務之前，您必須決定 Azure AD 中的哪些使用者及/或群組代表需要 Box 應用程式存取權的使用者。 一旦決定後，您可以依照此處的指示，將這些使用者指派給 Box 應用程式︰
 
-[將使用者或群組指派給企業應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[將使用者或群組指派給企業應用程式](../manage-apps/assign-user-or-group-access-portal.md)
 
 ## <a name="assign-users-and-groups"></a>指派使用者和群組
 Azure 入口網站的 [Box] > [使用者和群組]**** 索引標籤可讓您指定應該授與哪些使用者和群組 Box 的存取權。 指派使用者或群組會導致下列事項發生︰
@@ -91,7 +91,7 @@ Azure 入口網站的 [Box] > [使用者和群組]**** 索引標籤可讓您指�
 
 3. 選取您的 Box 執行個體，然後選取 [佈建]**** 索引標籤。
 
-4. 將 [佈建模式] 設定為 [自動]。 
+4. 將 [佈建模式]  設定為 [自動]  。 
 
     ![Azure 入口網站中 Box [布建] 索引標籤的螢幕擷取畫面。 布建模式設定為 [自動]，[授權] 會在 [管理員認證] 中醒目提示。](./media/box-userprovisioning-tutorial/provisioning.png)
 

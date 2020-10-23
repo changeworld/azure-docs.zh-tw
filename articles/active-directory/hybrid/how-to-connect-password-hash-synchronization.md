@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c16882f35c9ca79644cd2b51ce4cd88bba516ed2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ee8c7cf2b34d5923f84bf9b9ba3cf5b10034e3e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89652080"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458046"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步來實作密碼雜湊同步處理
 本文提供您所需資訊，以讓您將使用者密碼從內部部署 Active Directory 執行個體同步處理至雲端式 Azure Active Directory (Azure AD) 執行個體。
@@ -109,7 +109,7 @@ Continue with this operation?
 [Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y
 ```
 
-啟用之後，Azure AD 不會移至每個同步處理的使用者，以移除 `DisablePasswordExpiration` >passwordpolicies 屬性中的值。 相反地， `None` 當每位使用者下次變更內部部署 AD 中的密碼時，此值會設定為每位使用者的下一個密碼同步處理期間。  
+啟用之後，Azure AD 不會移至每個同步處理的使用者，以移除 `DisablePasswordExpiration` >passwordpolicies 屬性中的值。 相反地，在 `DisablePasswordExpiration` 每位使用者的下一個密碼雜湊同步處理期間，會從 >passwordpolicies 中移除此值，其會在內部部署 AD 中的下一個密碼變更時移除。
 
 建議您先啟用 EnforceCloudPasswordPolicyForPasswordSyncedUsers，然後再啟用密碼雜湊同步處理，如此一來，密碼雜湊的初始同步處理就不會將 `DisablePasswordExpiration` 值新增至使用者的 >passwordpolicies 屬性。
 

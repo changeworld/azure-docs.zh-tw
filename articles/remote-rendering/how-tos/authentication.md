@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: how-to
-ms.openlocfilehash: e61767b9b8d904eae9a247f48d2d781fd0c95192
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: dc325fdf68c5afbb122f9e77c5509a6a8053a12e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202713"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427454"
 ---
 # <a name="configure-authentication"></a>設定驗證
 
@@ -48,7 +48,7 @@ Azure 遠端轉譯使用與 [Azure 空間錨點 ](../../spatial-anchors/concepts
 
  如需詳細資訊，請參閱 [教學課程：保護 Azure 遠端轉譯和模型儲存體-Azure Active Directory 驗證](../tutorials/unity/security/security.md#azure-active-directory-azure-ad-authentication)
 
-## <a name="role-based-access-control"></a>角色型存取控制
+## <a name="azure-role-based-access-control"></a>Azure 角色型存取控制
 
 若要協助控制授與服務的存取層級，請在授與以角色為基礎的存取權時，使用下列角色：
 

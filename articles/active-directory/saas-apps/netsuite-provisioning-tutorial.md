@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: b428ffc0122f13ef15f870ce734b54fe6707f582
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bdee884990dfadec444fae919a715c7dc3428f77
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983964"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428406"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>教學課程︰設定 Netsuite 來自動佈建使用者
 
@@ -28,6 +28,7 @@ ms.locfileid: "90983964"
 *   Azure Active Directory 租用戶。
 *   Netsuite OneWorld 訂用帳戶。 請注意，自動使用者佈建目前只透過 NetSuite OneWorld 提供支援。
 *   Netsuite 中具有系統管理員權限的使用者帳戶。
+*   與 Azure AD 的整合需要2FA 豁免。 請聯絡 Netsuite 支援小組，以瞭解此例外狀況。
 
 ## <a name="assigning-users-to-netsuite-oneworld"></a>將使用者指派給 Netsuite OneWorld
 
@@ -60,7 +61,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 1. 選取您的 Netsuite 執行個體，然後選取 [佈建]**** 索引標籤。
 
-1. 將 [佈建模式] 設定為 [自動]。 
+1. 將 [佈建模式]  設定為 [自動]  。 
 
     ![螢幕擷取畫面顯示 [Netsuite 布建] 頁面，其中布建模式設定為 [自動] 和其他您可以設定的值。](./media/netsuite-provisioning-tutorial/provisioning.png)
 

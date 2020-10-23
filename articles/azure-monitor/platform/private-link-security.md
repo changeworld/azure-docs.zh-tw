@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 9eac64eff8c87046fd1ce76ee71475fda79ac6f7
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 42419247de537f9a166c3cdca2fd5a832ade6a5f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329248"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461425"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 私人連結將網路安全地連線到 Azure 監視器
 
@@ -235,7 +235,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-若要使用 Azure 監視器的入口網站體驗，例如 Application Insights 和 Log Analytics，您必須允許在私人網路上存取 Azure 入口網站和 Azure 監視器擴充功能。 將**AzureActiveDirectory**、 **AzureResourceManager**、 **AzureFrontDoor. FirstParty**和**AzureFrontDoor. 前端**[服務標記](../../firewall/service-tags.md)新增至您的防火牆。
+若要使用 Azure 監視器的入口網站體驗，例如 Application Insights 和 Log Analytics，您必須允許在私人網路上存取 Azure 入口網站和 Azure 監視器擴充功能。 將**AzureActiveDirectory**、 **AzureResourceManager**、 **AzureFrontDoor. FirstParty**和**AzureFrontDoor. 前端**[服務標記](../../firewall/service-tags.md)新增至您的網路安全性群組。
 
 ### <a name="programmatic-access"></a>以程式設計方式存取
 

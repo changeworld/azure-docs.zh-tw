@@ -1,25 +1,28 @@
 ---
-title: 在 Azure 監視器中收集並分析效能計數器 | Microsoft Docs
+title: 在 Azure 監視器中使用 Log Analytics 代理程式收集 Windows 和 Linux 效能資料來源
 description: Azure 監視器會收集效能計數器以分析 Windows 和 Linux 代理程式的效能。  本文說明如何設定 Windows 和 Linux 代理程式的效能計數器收集、儲存在工作區中的相關詳細資料，以及如何在 Azure 入口網站中分析這些資料。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/28/2018
-ms.openlocfilehash: bf744e4edc9e631ce1efd04688611fb78fb6fce2
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.date: 10/21/2020
+ms.openlocfilehash: 71fc3f457338796289c2f6ac54f3bc713a91cc29
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131185"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461357"
 ---
-# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure 監視器中的 Windows 和 Linux 效能資料來源
-Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業系統及應用程式的效能。  Azure 監視器可收集效能計數器，以頻繁間隔進行接近即時 (NRT) 的分析，並彙總較長期分析和報告所需的效能資料。
+# <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>使用 Log Analytics 代理程式收集 Windows 和 Linux 效能資料來源
+Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業系統及應用程式的效能。  Azure 監視器可以頻繁地收集 Log Analytics 代理程式的效能計數器，以近乎即時的方式 (NRT) 分析，並匯總較長期分析和報告的效能資料。
+
+> [!IMPORTANT]
+> 本文涵蓋使用 [Log Analytics 代理程式](log-analytics-agent.md) 收集效能資料，此代理程式是 Azure 監視器所使用的其中一個代理程式。 其他代理程式會收集不同的資料，並以不同的方式進行設定。 如需可用的代理程式清單和可收集的資料，請參閱 [Azure 監視器代理](agents-overview.md) 程式的總覽。
 
 ![效能計數器](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>設定效能計數器
-從 [[進階]\ 設定的 \[資料\] 功能表](agent-data-sources.md#configuring-data-sources)設定效能計數器。
+從 Log Analytics 工作區的 [ [設定] 功能表中](agent-data-sources.md#configuring-data-sources) 的 [資料] 功能表設定效能計數器。
 
 當您第一次為新的工作區設定 Windows 或 Linux 效能計數器時，系統會提供選項，讓您快速建立數個常用的計數器。  這些計數器旁邊皆會列出核取方塊。  確認已核取所有想一開始就建立的計數器，然後按一下 **[Add the selected performance counters]** \ (加入選取的效能計數器) 。
 
@@ -121,10 +124,10 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 | Physical Disk | Avg.Disk sec/Transfer |
 | Physical Disk | Avg.Disk sec/Write |
 | Physical Disk | Physical Disk Bytes/sec |
-| 處理序 | Pct Privileged Time |
-| 處理序 | Pct User Time |
-| 處理序 | Used Memory kBytes |
-| 處理序 | Virtual Shared Memory |
+| 程序 | Pct Privileged Time |
+| 程序 | Pct User Time |
+| 程序 | Used Memory kBytes |
+| 程序 | Virtual Shared Memory |
 | 處理器 | % DPC Time |
 | 處理器 | % Idle Time |
 | 處理器 | % Interrupt Time |
@@ -136,7 +139,7 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 | 系統 | Free Physical Memory |
 | 系統 | Free Space in Paging Files |
 | 系統 | Free Virtual Memory |
-| 系統 | 處理序 |
+| 系統 | 處理程序 |
 | 系統 | Size Stored In Paging Files |
 | 系統 | Uptime |
 | 系統 | 使用者 |
@@ -178,7 +181,7 @@ Windows 和 Linux 的效能計數器可讓您深入了解硬體元件、作業�
 </source>
 ```
 
-## <a name="data-collection"></a>資料收集
+## <a name="data-collection"></a>資料集合
 只要代理程式有安裝相關計數器，Azure 監視器就會依照其指定的取樣間隔時間，收集全部代理程式上所有指定的效能計數器。  資料不會匯總，且記錄分析工作區所指定的持續時間內，所有記錄查詢檢視中都會提供原始資料。
 
 ## <a name="performance-record-properties"></a>效能記錄屬性

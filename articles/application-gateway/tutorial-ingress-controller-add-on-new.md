@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: ab917fe476a40eb8ea559bc08e52d4bbf16a8436
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a93ef47d4a7ecc136f66cf54a08f7ed23bec2cc0
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285582"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427973"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>教學課程：使用新的應用程式閘道執行個體來啟用新 AKS 叢集的輸入控制器附加元件 (預覽)
 
@@ -87,7 +87,7 @@ az group create --name myResourceGroup --location canadacentral
 在未指定現有應用程式閘道執行個體的情況下，若要部署已啟用 AGIC 附加元件的新 AKS 叢集，就表示系統會自動建立 Standard_v2 SKU 應用程式閘道執行個體。 因此，您也會指定應用程式閘道執行個體的名稱和子網路位址空間。 應用程式閘道執行個體的名稱會是 myApplicationGateway，而我們所使用的子網路位址空間則是 10.2.0.0/16。 請確定您已在本教學課程的開頭新增或更新 aks-preview 擴充功能。 
 
 ```azurecli-interactive
-az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-prefix "10.2.0.0/16" 
+az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity -a ingress-appgw --appgw-name myApplicationGateway --appgw-subnet-prefix "10.2.0.0/16" --generate-ssh-keys
 ```
 
 若要設定 `az aks create` 命令的其他參數，請參閱[這些參考](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create)。 

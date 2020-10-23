@@ -1,21 +1,24 @@
 ---
-title: 收集 Azure 監視器中的自訂記錄 | Microsoft Docs
+title: 在 Azure 監視器中使用 Log Analytics 代理程式收集自訂記錄
 description: Azure 監視器可以從 Windows 和 Linux 電腦上的文字檔收集事件。  本文說明如何定義新的自訂記錄檔，以及它們在 Azure 監視器中建立的記錄詳細資料。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/26/2019
-ms.openlocfilehash: 4f8ef04343d873bcb94ccee599ecbc7c2a1ef94c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 406371325ddf8b555ede481582e19635b85abe49
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269483"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461561"
 ---
-# <a name="custom-logs-in-azure-monitor"></a>Azure 監視器中的自訂記錄
+# <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>在 Azure 監視器中使用 Log Analytics 代理程式收集自訂記錄
 
-Azure 監視器中的「自訂記錄」資料來源可讓您從 Windows 和 Linux 電腦上的文字檔案收集事件。 許多應用程式會將資訊記錄到文字檔而非標準的記錄服務，例如 Windows 事件記錄檔或 Syslog。 收集之後，您可以在查詢中，將資料剖析成個別的欄位，或將收集期間的資料擷取至個別的欄位。
+Azure 監視器中的 Log Analytics 代理程式的自訂記錄資料來源，可讓您從 Windows 和 Linux 電腦上的文字檔收集事件。 許多應用程式會將資訊記錄到文字檔而非標準的記錄服務，例如 Windows 事件記錄檔或 Syslog。 收集之後，您可以在查詢中，將資料剖析成個別的欄位，或將收集期間的資料擷取至個別的欄位。
+
+> [!IMPORTANT]
+> 本文說明如何使用 [Log Analytics 代理程式](log-analytics-agent.md) 收集自訂記錄，這是 Azure 監視器所使用的其中一個代理程式。 其他代理程式會收集不同的資料，並以不同的方式進行設定。 如需可用的代理程式清單和可收集的資料，請參閱 [Azure 監視器代理](agents-overview.md) 程式的總覽。
 
 ![自訂記錄檔收集](media/data-sources-custom-logs/overview.png)
 
@@ -62,10 +65,10 @@ Azure 監視器中的「自訂記錄」資料來源可讓您從 Windows 和 Linu
 如果使用時間戳記分隔符號，則儲存在 Azure 監視器中的每一筆記錄的 TimeGenerated 屬性將會填入針對記錄檔中的該項目指定的日期/時間。  如果使用新行字元分隔符號，則 TimeGenerated 會填入 Azure 監視器收集項目的日期和時間。
 
 1. 按一下 [瀏覽] **** 並瀏覽至範例檔案。  請注意，在某些瀏覽器中，這個按鈕可能標示為 [選擇檔案] **** 。
-2. 按一下 [下一步]。
+2. 按 [下一步]  。
 3. 自訂記錄檔精靈會上傳檔案並列出其識別的記錄。
 4. 變更用來識別新記錄的分隔符號，並選取最能識別記錄檔中的記錄的分隔符號。
-5. 按一下 [下一步]。
+5. 按 [下一步]  。
 
 ### <a name="step-3-add-log-collection-paths"></a>步驟 3： 新增記錄檔收集路徑
 您必須在代理程式上定義一個或多個它可以在其中找到自訂記錄檔的路徑。  您可以提供該記錄檔的特定路徑和名稱，或者您可以使用萬用字元為該名稱指定路徑。 這可支援每天會建立一個新檔案的應用程式或在一個檔案到達特定大小時提供支援。 您也可以為單一記錄檔提供多個路徑。
@@ -74,7 +77,7 @@ Azure 監視器中的「自訂記錄」資料來源可讓您從 Windows 和 Linu
 
 下表提供可用來指定不同記錄檔的有效模式範例。
 
-| 描述 | Path |
+| 描述 | 路徑 |
 |:--- |:--- |
 | Windows 代理程式上的 *C:\Logs* 中，副檔名為 .txt 的所有檔案 |C:\Logs\\\*.txt |
 | Windows 代理程式上的 *C:\Logs* 中，名稱開頭為 log 且副檔名為 .txt 的所有檔案 |C:\Logs\log\*.txt |
@@ -109,7 +112,7 @@ Azure 監視器中的「自訂記錄」資料來源可讓您從 Windows 和 Linu
 1. 從工作區 [進階設定]**** 的 [資料]**** 功能表中，選取 [自訂記錄]**** 以列出所有自訂記錄。
 2. 按一下要移除之自訂記錄旁邊的 [移除]****。
 
-## <a name="data-collection"></a>資料收集
+## <a name="data-collection"></a>資料集合
 Azure 監視器會從每個自訂記錄檔收集新的項目，間隔大約為每 5 分鐘一次。  代理程式會記錄它在從中收集項目的每個記錄檔中的位置。  如果代理程式離線一段時間，Azure 監視器即會從上次停止的地方收集項目，即使這些項目是在代理程式離線時所建立亦同。
 
 整個記錄檔項目的內容會寫入到稱為 **RawData**的單一屬性。  請參閱[在 Azure 監視器中剖析文字資料](../log-query/parse-text.md)以了解將每個匯入的記錄項目剖析成多個屬性的方法。

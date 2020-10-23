@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 715e99f07d0fcbc77fd1769e5da1cae6b46ac97e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dc4087d1a10b4c4af7477a02f397c5a2bc547c2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850729"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459385"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>教學課程：Azure Active Directory 與 Jobscience 整合
 
@@ -29,7 +29,7 @@ Jobscience 與 Azure AD 整合提供下列優點：
 
 如果您想要瞭解有關 SaaS 應用程式與 Azure AD 整合的更多詳細資料，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要設定 Azure AD 與 Jobscience 整合，您需要下列項目：
 
@@ -42,7 +42,7 @@ Jobscience 與 Azure AD 整合提供下列優點：
 若要測試本教學課程中的步驟，您應該遵循這些建議：
 
 - 除非必要，否則請勿使用生產環境。
-- 如果您沒有 Azure AD 試用環境，您可以在這裡取得一個月試用： [試用版供應](https://azure.microsoft.com/pricing/free-trial/)專案。
+- 如果您沒有 Azure AD 試用環境，您可以在這裡取得一個月試用：[試用供應項目](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>案例描述
 在本教學課程中，您會在測試環境中測試 Azure AD 單一登入。 本教學課程中說明的案例由二項主要的基本工作組成：
@@ -115,9 +115,9 @@ Jobscience 與 Azure AD 整合提供下列優點：
  
 1. 在 [ **SAML 簽署憑證** ] 區段上，按一下 [ **Certificate (Base64) ** 然後將憑證檔案儲存在您的電腦上。
 
-    ![螢幕擷取畫面顯示 [SAML 簽署憑證] 窗格，您可以在其中下載憑證。](./media/jobscience-tutorial/tutorial_jobscience_certificate.png) 
+    ![此螢幕擷取畫面顯示您可以在其中下載憑證的 [SAML 簽署憑證] 窗格。](./media/jobscience-tutorial/tutorial_jobscience_certificate.png) 
 
-1. 按一下 [儲存] **** 按鈕。
+1. 按一下 [儲存]  按鈕。
 
     ![螢幕擷取畫面：顯示 [儲存] 按鈕。](./media/jobscience-tutorial/tutorial_general_400.png)
 
@@ -171,7 +171,7 @@ Jobscience 與 Azure AD 整合提供下列優點：
 
     h. 在 [識別提供者登出 URL]**** 文字方塊中，貼上您從 Azure 入口網站複製的 [登出 URL]**** 值。
 
-    i. 按一下 [檔案] 。
+    i. 按一下 [檔案]  。
 
 1. 在 [系統管理員]**** 區段的左方導覽窗格中，按一下 [網域管理]**** 展開相關的區段，然後按一下 [我的網域]**** 來開啟 [我的網域]**** 頁面。 
     
@@ -257,13 +257,13 @@ Jobscience 與 Azure AD 整合提供下列優點：
    
    c. 在 [別名]**** 文字方塊中，輸入使用者的別名，例如 brittas。
 
-   d. 在 [電子郵件] 文字方塊中，輸入像是 Brittasimon@contoso.com 的使用者電子郵件地址。
+   d. 在 [電子郵件]  文字方塊中，輸入像是 Brittasimon@contoso.com 的使用者電子郵件地址。
 
    e. 在 [使用者名稱]**** 文字方塊中，輸入使用者的使用者名稱，例如 Brittasimon@contoso.com。
 
    f. 在 [暱稱]**** 文字方塊中，輸入使用者的暱稱，例如 Simon。
 
-   g. 按一下 [檔案] 。
+   g. 按一下 [檔案]  。
 
     
 > [!NOTE]
@@ -289,7 +289,7 @@ Jobscience 與 Azure AD 整合提供下列優點：
 
     ![螢幕擷取畫面：顯示從 Azure 入口網站] 功能表選取的使用者和群組。][202] 
 
-1. 按一下 [新增] 按鈕。 然後選取 [新增指派]**** 對話方塊上的 [使用者和群組]****。
+1. 按一下 [新增]  按鈕。 然後選取 [新增指派]**** 對話方塊上的 [使用者和群組]****。
 
     ![螢幕擷取畫面顯示用來新增指派的 [新增] 按鈕。][203]
 
@@ -304,7 +304,7 @@ Jobscience 與 Azure AD 整合提供下列優點：
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
 當您在存取面板中按一下 Jobscience 圖格時，應該會自動登入您的 Jobscience 應用程式。
-如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/active-directory-saas-access-panel-introduction.md)。
+如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -324,4 +324,3 @@ Jobscience 與 Azure AD 整合提供下列優點：
 [201]: ./media/jobscience-tutorial/tutorial_general_201.png
 [202]: ./media/jobscience-tutorial/tutorial_general_202.png
 [203]: ./media/jobscience-tutorial/tutorial_general_203.png
-

@@ -7,12 +7,13 @@ ms.date: 08/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 9ebf07a5125995e66297d89643845b54aad246b8
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.custom: device-developer
+ms.openlocfilehash: c2af331304decd7955892ef4911d1644518f57b8
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170315"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427895"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>如何使用適用于 IoT Central 應用程式 Node.js 裝置 SDK，將裝置與 x.509 憑證連線
 
@@ -20,7 +21,7 @@ IoT Central 支援共用存取簽章 (SAS) 和 x.509 憑證來保護裝置與應
 
 本文說明兩種使用 x.509 的方式：通常用於生產環境中的 [群組註冊](how-to-connect-devices-x509.md#use-a-group-enrollment) ，以及 [個別註冊](how-to-connect-devices-x509.md#use-an-individual-enrollment) 適用于測試。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 完成 [建立用戶端應用程式，並將其連接到您的 Azure IoT Central 應用程式 ( # A0) ](./tutorial-connect-device-nodejs.md) 教學課程。
 - [Git](https://git-scm.com/download/)。

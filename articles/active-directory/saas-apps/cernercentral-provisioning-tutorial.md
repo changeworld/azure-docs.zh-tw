@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: 58b991f5b229d924bc933ff34987db24bc895e10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d82aca50ce57a09697d389197bf2b102bb5df457
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88529860"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456331"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>教學課程︰設定 Cerner Central 來自動佈建使用者
 
@@ -88,7 +88,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 7. 選取您的 Cerner Central 執行個體，然後選取 [佈建]**** 索引標籤。
 
-8. 將 [佈建模式] 設定為 [自動]。
+8. 將 [佈建模式]  設定為 [自動]  。
 
    ![Cerner Central 佈建](./media/cernercentral-provisioning-tutorial/Cerner.PNG)
 
@@ -106,13 +106,13 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 1. 在 [通知電子郵件]**** 欄位中輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選下列核取方塊。
 
-1. 按一下 **[儲存]** 。
+1. 按一下 [檔案]  。
 
 1. 在 [屬性對應]**** 區段中，檢閱將從 Azure AD 同步處理至 Cerner Central 的使用者和群組屬性。 選取為 [比對]**** 屬性的屬性會用來比對 Cerner Central 中的使用者帳戶和群組以進行更新作業。 選取 [儲存] 按鈕以認可任何變更。
 
 1. 若要啟用 Cerner Central 的 Azure AD 佈建服務，在 [設定]**** 區段中，將 [佈建狀態]**** 變更為 [開啟]****
 
-1. 按一下 **[儲存]** 。
+1. 按一下 [檔案]  。
 
 這會啟動在 [使用者和群組] 區段中指派給 Cerner Central 的任何使用者和/或群組之首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料]**** 區段來監視進度，並依循連結前往佈建活動記錄，此記錄會表描述您 Cerner Central 應用程式上佈建服務所執行的所有動作。
 
@@ -127,4 +127,4 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解如何查看記錄並取得布建活動的報告](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)。
+* [瞭解如何查看記錄並取得布建活動的報告](../app-provisioning/check-status-user-account-provisioning.md)。

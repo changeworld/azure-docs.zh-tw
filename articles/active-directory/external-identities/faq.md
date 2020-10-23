@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 158caf3a6c4cc0efc2f89e18d065a0112b481ee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ceb1a299fe09afd0551bdade5526a4aeefebaba
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274039"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441839"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B 共同作業常見問題集
 
@@ -51,7 +51,7 @@ ms.locfileid: "91274039"
 組織可能想要新增 B2B 共同作業使用者，依需要將他們佈建至應用程式，然後送出邀請。 您可以使用 B2B 共同作業邀請 API 自訂登入工作流程。
 
 ### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>能否在 Exchange 全域通訊清單中顯示來賓使用者？
-是。 根據預設，來賓物件不會顯示在您組織的全域通訊清單中 (GAL) ，但您可以使用 Azure Active Directory PowerShell 來讓它們顯示。 [我可以在全域通訊清單中看到來賓物件嗎？](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
+是。 根據預設，來賓物件不會顯示在您組織的全域通訊清單中 (GAL) ，但您可以使用 Azure Active Directory PowerShell 來讓它們顯示。 [我可以在全域通訊清單中看到來賓物件嗎？](/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>我是否可以將來賓使用者設為受限的管理員？
 當然。 如需詳細資訊，請參閱[將來賓使用者新增至角色](add-guest-to-role.md)。
@@ -80,16 +80,16 @@ ms.locfileid: "91274039"
 是。 Azure AD B2B 共同作業支援多重要素驗證和取用者電子郵件帳戶。
 
 ### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>您是否支援 Azure AD B2B 共同作業使用者的密碼重設？
-如果您的 Azure AD 租用戶是使用者的主目錄，您可以從 Azure 入口網站[重設使用者密碼](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal)。 但您無法直接重設使用由其他 Azure AD 目錄或外部身分識別提供者所管理的帳戶進行登入的來賓使用者的密碼。 只有來賓使用者或使用者主目錄中的系統管理員可以重設密碼。 以下是一些如何重設來賓使用者密碼的範例：
+如果您的 Azure AD 租用戶是使用者的主目錄，您可以從 Azure 入口網站[重設使用者密碼](../fundamentals/active-directory-users-reset-password-azure-portal.md)。 但您無法直接重設使用由其他 Azure AD 目錄或外部身分識別提供者所管理的帳戶進行登入的來賓使用者的密碼。 只有來賓使用者或使用者主目錄中的系統管理員可以重設密碼。 以下是一些如何重設來賓使用者密碼的範例：
  
 * 使用 Microsoft 帳戶 (例如guestuser@live.com) 登入的來賓使用者，可以使用 Microsoft 帳戶自助式密碼重設 (SSPR) 功能重設自己的密碼。 請參閱[如何重設 Microsoft 帳戶密碼](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password)。
 * 使用 Google 帳戶或其他外部身分識別提供者登入的來賓使用者，可以使用其身分識別提供者的 SSPR 方法重設自己的密碼。 例如，使用 Google 帳戶 guestuser@gmail.com 的來賓使用者可以依照[變更或重設密碼](https://support.google.com/accounts/answer/41078)中的指示重設自己的密碼。
-* 如果身分識別租用戶是 Just-in-time (JIT) 或 「病毒式」租用戶 (表示它是獨立、非受控的 Azure 租用戶)，只有來賓使用者才能重設自己的密碼。 組織有時會[接管病毒式租用戶的管理](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)，這些是員工使用其工作電子郵件地址來註冊服務時所建立的租用戶。 在組織接管病毒式租用戶之後，只有該組織的系統管理員可以重設使用者的密碼或啟用 SSPR。 如有必要，作為發出邀請的組織，您可以從目錄中移除來賓使用者帳戶，並重新傳送邀請。
+* 如果身分識別租用戶是 Just-in-time (JIT) 或 「病毒式」租用戶 (表示它是獨立、非受控的 Azure 租用戶)，只有來賓使用者才能重設自己的密碼。 組織有時會[接管病毒式租用戶的管理](../users-groups-roles/domains-admin-takeover.md)，這些是員工使用其工作電子郵件地址來註冊服務時所建立的租用戶。 在組織接管病毒式租用戶之後，只有該組織的系統管理員可以重設使用者的密碼或啟用 SSPR。 如有必要，作為發出邀請的組織，您可以從目錄中移除來賓使用者帳戶，並重新傳送邀請。
 
 * 如果來賓使用者的主目錄是您的 Azure AD 租用戶，您可以重設使用者的密碼。 例如，您可能已建立使用者或從您的內部部署 Active Directory 同步使用者，並將他們的 UserType 設為 Guest。 因為這位使用者位於您的主目錄中，所以您可以從 Azure 入口網站重設其密碼。
 
 ### <a name="does-microsoft-dynamics-365-provide-online-support-for-azure-ad-b2b-collaboration"></a>Microsoft Dynamics 365 是否提供 Azure AD B2B 共同作業的線上支援？
-是，Dynamics 365 提供 Azure AD B2B 共同作業的線上支援。 如需詳細資訊，請參閱 Dynamics 365 文章[透過 Azure Active Directory B2B 共同作業邀請使用者](https://docs.microsoft.com/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration)。
+是，Dynamics 365 提供 Azure AD B2B 共同作業的線上支援。 如需詳細資訊，請參閱 Dynamics 365 文章[透過 Azure Active Directory B2B 共同作業邀請使用者](/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration)。
 
 ### <a name="what-is-the-lifetime-of-an-initial-password-for-a-newly-created-b2b-collaboration-user"></a>什麼是新建立的 B2B 共同作業使用者之初始密碼存留期？
 Azure AD 有一組固定的字元、密碼強度，以及帳戶鎖定需求，可同樣適用於所有 Azure AD 雲端使用者帳戶。 雲端使用者帳戶是不與其他身分識別提供者聯盟的帳戶，例如 
@@ -135,4 +135,3 @@ Azure AD 有一組固定的字元、密碼強度，以及帳戶鎖定需求，�
 ### <a name="next-steps"></a>後續步驟
 
 - [何謂 Azure AD B2B 共同作業？](what-is-b2b.md)
-
