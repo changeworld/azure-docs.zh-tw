@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 73028c10c7e7308ee16bd8fb27ca6c3a6661c411
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c41ffcd552cddf981c2ed54d1d78c7cb2e8698c5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145954"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440822"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>瞭解數位 twins 及其對應項圖表
 
@@ -39,11 +39,11 @@ Twins 會依關聯性連接到對應項圖形。 對應項可以有的關聯性�
 
 ## <a name="create-with-the-apis"></a>使用 Api 建立
 
-本節說明從用戶端應用程式建立數位 twins 和關聯性的外觀。 它包含使用 [DigitalTwins api](how-to-use-apis-sdks.md)的 .net 程式碼範例，以提供有關每個概念內各項功能的其他內容。
+本節說明從用戶端應用程式建立數位 twins 和關聯性的外觀。 它包含使用 [DigitalTwins api](/rest/api/digital-twins/dataplane/twins)的 .net 程式碼範例，以提供有關每個概念內各項功能的其他內容。
 
 ### <a name="create-digital-twins"></a>建立數位分身
 
-以下是使用 [DigitalTwins api](how-to-use-apis-sdks.md) 來具現化類型 *空間*對應項的用戶端程式代碼程式碼片段。
+以下是使用 [DigitalTwins api](/rest/api/digital-twins/dataplane/twins) 來具現化類型 *空間*對應項的用戶端程式代碼程式碼片段。
 
 在目前的 Azure 數位 Twins 預覽中，對應項的所有屬性都必須先初始化，才能建立對應項。 這是藉由建立提供必要初始化值的 JSON 檔來完成。
 
@@ -53,7 +53,7 @@ Twins 會依關聯性連接到對應項圖形。 對應項可以有的關聯性�
 
 ### <a name="create-relationships"></a>建立關聯性
 
-以下是使用[DigitalTwins api](how-to-use-apis-sdks.md)的一些範例用戶端程式代碼，以建立名為*GroundFloor*的*樓層*型數位對應項和名為*咖啡廳*的*房間*型數位對應項之間的關聯性。
+以下是使用[DigitalTwins api](/rest/api/digital-twins/dataplane/twins)的一些範例用戶端程式代碼，以建立名為*GroundFloor*的*樓層*型數位對應項和名為*咖啡廳*的*房間*型數位對應項之間的關聯性。
 
 ```csharp
 // Create Twins, using functions similar to the previous sample

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/15/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 7afaa057ecc94cf67d4fd5b041d95210fcf26717
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52615a968ce831a9a5a487f7422ad13bc58ecf6d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707589"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426468"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>針對 Azure 檔案儲存體效能問題進行疑難排解
 
@@ -45,7 +45,7 @@ ms.locfileid: "90707589"
 > [!NOTE]
 > 若要在檔案共用受到節流時收到警示，請參閱如何在檔案 [共用受到節流時建立警示](#how-to-create-an-alert-if-a-file-share-is-throttled)。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 - 如果您使用標準檔案共用，請在儲存體帳戶上啟用 [大型檔案共用](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share?tabs=azure-portal) 。 大型檔案共用支援每個共用最高 10000 IOPS。
 - 如果您使用 premium 檔案共用，請增加布建的檔案共用大小，以增加 IOPS 限制。 若要深入瞭解，請參閱《 Azure 檔案儲存體規劃指南》中的 [瞭解 premium 檔案共用](https://docs.microsoft.com/azure/storage/files/storage-files-planning#understanding-provisioning-for-premium-file-shares) 的布建一節。
@@ -67,7 +67,7 @@ ms.locfileid: "90707589"
 
 如果客戶使用的應用程式是單一執行緒，這可能會導致 IOPS/輸送量明顯低於根據您布建的共用大小的最大可能值。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 - 藉由增加執行緒數目來提高應用程式平行處理原則。
 - 切換至可以平行處理的應用程式。 例如，針對複製作業，客戶可以從 Windows 用戶端使用 AzCopy 或 RoboCopy，或在 Linux 用戶端上使用 **parallel** 命令。
@@ -78,7 +78,7 @@ ms.locfileid: "90707589"
 
 用戶端 VM 可能位於與檔案共用不同的區域。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 - 從與檔案共用位於相同區域的 VM 執行應用程式。
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: d0ee9680a6b1b7c3e145137c73dda84d1a755b06
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a5e4b8bbae67e32a5a0c951de583688836eb014b
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147911"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426391"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>使用 Private Link (preview 保護和隔離 Azure HDInsight 叢集) 
 
@@ -59,6 +59,8 @@ Private Link （預設為停用）需要廣泛的網路知識，才能在建立�
 標準負載平衡器不會自動提供 [公用輸出 NAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) ，例如基本負載平衡器。 您必須提供自己的 NAT 解決方案，例如 [虛擬網路 NAT](../virtual-network/nat-overview.md) 或 [防火牆](./hdinsight-restrict-outbound-traffic.md)，以提供輸出相依性。 您的 HDInsight 叢集仍然需要存取其輸出相依性。 如果不允許這些輸出相依性，叢集建立可能會失敗。
 
 ### <a name="prepare-your-environment"></a>準備您的環境
+
+針對私人連結服務的 successgfull 建立，您必須明確 [停用私人連結服務的網路原則](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy)。
 
 下圖顯示建立叢集之前所需的網路設定範例。 在此範例中，會使用 UDR 將所有輸出流量 [強制](../firewall/forced-tunneling.md) 傳送至 Azure 防火牆，並在建立叢集之前，在防火牆上應「允許」所需的輸出相依性。 針對企業安全性套件叢集，可透過 VNet 對等互連來提供 Azure Active Directory Domain Services 的網路連線能力。
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 10b74f7b795df2cf8c19d044fce44da3f798af7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22bedcf7921e3c8d4f2566a70515eef3e3b136b6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88587628"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461017"
 ---
 # <a name="understand-event-data"></a>瞭解事件資料
 
@@ -103,7 +103,7 @@ Azure 數位 Twins 中的不同事件會產生 **通知**，這可讓解決方�
 
 以下是生命週期通知主體中的欄位。
 
-| 名稱 | 值 |
+| Name | 值 |
 | --- | --- |
 | `id` | 通知的識別碼，例如 UUID 或服務所維護的計數器。 `source` + `id` 對每個相異事件而言是唯一的。 |
 | `source` | IoT 中樞或 Azure 數位 Twins 實例的名稱，例如 *myhub.azure-devices.net* 或 *mydigitaltwins.westus2.azuredigitaltwins.net* |
@@ -189,7 +189,7 @@ Azure 數位 Twins 中的不同事件會產生 **通知**，這可讓解決方�
 
 以下是 edge 變更通知主體中的欄位。
 
-| 名稱    | 值 |
+| Name    | 值 |
 | --- | --- |
 | `id` | 通知的識別碼，例如 UUID 或服務所維護的計數器。 `source` + `id` 對每個相異事件而言都是唯一的 |
 | `source` | Azure 數位 Twins 實例的名稱，例如 *mydigitaltwins.westus2.azuredigitaltwins.net* |
@@ -202,7 +202,7 @@ Azure 數位 Twins 中的不同事件會產生 **通知**，這可讓解決方�
 
 #### <a name="body-details"></a>主體詳細資料
 
-主體是關聯性的裝載，也是 JSON 格式。 它會使用與透過 `GET` [DigitalTwins API](how-to-use-apis-sdks.md)的關聯性要求相同的格式。 
+主體是關聯性的裝載，也是 JSON 格式。 它會使用與透過 `GET` [DigitalTwins API](/rest/api/digital-twins/dataplane/twins)的關聯性要求相同的格式。 
 
 「更新關聯性」表示關聯性的屬性已變更。 
 
@@ -245,7 +245,7 @@ Azure 數位 Twins 中的不同事件會產生 **通知**，這可讓解決方�
 
 以下是數位對應項變更通知主體中的欄位。
 
-| 名稱    | 值 |
+| Name    | 值 |
 | --- | --- |
 | `id` | 通知的識別碼，例如 UUID 或服務所維護的計數器。 `source` + `id` 對每個相異事件而言都是唯一的 |
 | `source` | IoT 中樞或 Azure 數位 Twins 實例的名稱，例如 *myhub.azure-devices.net* 或 *mydigitaltwins.westus2.azuredigitaltwins.net*

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: c28a3b0f445ca905a882a7ede3fcfed2c1e673a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e87331cb2bbfb11a9d49888462b8be3b55e18118
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531185"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460864"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何針對 Log Analytics Linux 代理程式的問題進行疑難排解 
 
@@ -23,7 +23,37 @@ ms.locfileid: "91531185"
 * 具有 Azure 支援合約的客戶可以在 [Azure 入口網站](https://manage.windowsazure.com/?getsupport=true)開啟支援要求。
 * 使用 [OMI 疑難排解指南](https://github.com/Microsoft/omi/blob/master/Unix/doc/diagnose-omi-problems.md)來診斷 OMI 問題。
 * 提出 [GitHub 問題](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)。
-* 造訪 Log Analytics 意見反應頁面，以審查提交的想法和 bug， [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) 或提出新的 bug。  
+* 造訪 Log Analytics 意見反應頁面，以審查提交的想法和 bug， [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) 或提出新的 bug。 
+
+## <a name="log-analytics-troubleshooting-tool"></a>Log Analytics 疑難排解工具
+
+Log Analytics 代理程式 Linux 疑難排解工具是設計用來協助找出並診斷 Log Analytics 代理程式問題的腳本。 它會在安裝時自動隨附于代理程式。 執行工具應該是診斷問題的第一個步驟。
+
+### <a name="how-to-use"></a>如何使用
+您可以使用 Log Analytics 代理程式，將下列命令貼到電腦上的終端機視窗中，以執行疑難排解工具： `sudo /opt/microsoft/omsagent/bin/troubleshooter`
+
+### <a name="manual-installation"></a>手動安裝
+安裝 Log Analytics 代理程式時，會自動包含疑難排解工具。 但是，如果安裝是以任何方式失敗，也可以遵循下列步驟手動安裝。
+
+1. 將疑難排解員配套複製到您的電腦： `wget https://raw.github.com/microsoft/OMS-Agent-for-Linux/master/source/code/troubleshooter/omsagent_tst.tar.gz`
+2. 解壓縮套件組合： `tar -xzvf omsagent_tst.tar.gz`
+3. 執行手動安裝： `sudo ./install_tst`
+
+### <a name="scenarios-covered"></a>涵蓋的案例
+以下是疑難排解工具所檢查的案例清單：
+
+1. 代理程式狀況不良，心跳無法正常運作
+2. 代理程式無法啟動，無法連接到記錄分析服務
+3. 代理程式 syslog 無法運作
+4. 代理程式具有高 CPU/記憶體使用量
+5. 代理程式發生安裝問題
+6. 代理程式自訂記錄無法運作
+7. 收集代理程式記錄檔
+
+如需詳細資料，請參閱我們的 [Github 檔](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting-Tool.md)。
+
+ >[!NOTE]
+ >當您遇到問題時，請執行記錄檔收集器工具。 一開始就能提供記錄，讓我們的支援小組能更快地針對您的問題進行疑難排解。
 
 ## <a name="important-log-locations-and-log-collector-tool"></a>重要記錄位置和記錄收集器工具
 
@@ -405,7 +435,7 @@ Nss 套件 [v 1.0.3-5](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.e
 ```
 sudo sh ./omsagent-*.universal.x64.sh --purge
 ```
-或者
+Or
 
 ```
 sudo sh ./onboard_agent.sh --purge

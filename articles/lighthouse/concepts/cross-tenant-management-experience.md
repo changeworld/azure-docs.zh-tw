@@ -1,14 +1,14 @@
 ---
 title: 跨租用戶管理體驗
 description: Azure 委派的資源管理能提供跨租用戶管理體驗。
-ms.date: 10/20/2020
+ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: c9b47dd720271fe782ce9562d2216eca881756ae
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 5443c3b5a34cd493e0956f2a0d6ed7d6fecd603d
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424144"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460660"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租用戶管理體驗
 
@@ -81,6 +81,10 @@ Azure PowerShell [>select-azsubscription 指令程式](/powershell/module/Az.Acc
 [Azure Kubernetes Service (AKS)](../../aks/index.yml)：
 
 - 管理託管的 Kubernetes 環境並部署及管理客戶租用戶內的容器化應用程式
+
+[Azure Migrate](../../migrate/index.yml)：
+
+- 在客戶租使用者中建立遷移專案並遷移 Vm
 
 [Azure 監視器](../../azure-monitor/index.yml)：
 

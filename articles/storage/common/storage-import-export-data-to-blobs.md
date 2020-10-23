@@ -5,21 +5,21 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 10/20/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 6d12c0ce0df44c37f4e7df49df2c11301513917c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3be13dade9cae45994b5f7a9d6f7479e2de6256
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514208"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460728"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>使用 Azure 匯入/匯出服務將資料匯入 Azure Blob 儲存體
 
 本文提供的逐步指示會說明如何使用 Azure 匯入/匯出服務，安全地將大量資料匯入 Azure Blob 儲存體。 若要將資料匯入到 Azure Blob，服務會要求您將包含資料的加密磁碟機寄送到 Azure 資料中心。  
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 在建立匯入作業來將資料傳入 Azure Blob 儲存體之前，請仔細檢閱並完成此服務的下列必要條件清單。
 您必須：
@@ -33,13 +33,13 @@ ms.locfileid: "85514208"
 * 在 Windows 系統上啟用 BitLocker。 請參閱[如何啟用 BitLocker](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)。
 * 下載 Windows 系統上[最新的 WAImportExport 第1版](https://www.microsoft.com/download/details.aspx?id=42659)。 此工具的最新版本具有安全性更新，可允許適用于 BitLocker 金鑰的外部保護裝置，以及更新的解除鎖定模式功能。
 
-  * 將檔案解壓縮至預設資料夾 `waimportexportv1`。 例如： `C:\WaImportExportV1` 。
+  * 將檔案解壓縮至預設資料夾 `waimportexportv1`。 例如： `C:\WaImportExportV1`。
 * 擁有 FedEx/DHL 帳戶。 如果您想要使用 FedEx/DHL 以外的電訊廠商，請聯絡 Azure 資料箱營運團隊 `adbops@microsoft.com` 。  
   * 帳戶必須是有效的、需要有餘額，且必須有退貨運送功能。
   * 產生匯出作業的追蹤號碼。
   * 每個作業都應該具有個別的追蹤號碼。 不支援多個作業使用相同的追蹤號碼。
   * 如果您沒有貨運公司帳戶，請移至：
-    * [建立 FedEX 帳戶](https://www.fedex.com/en-us/create-account.html) \(英文\)，或
+    * [建立 FedEx 帳戶](https://www.fedex.com/en-us/create-account.html)，或
     * [建立 DHL 帳戶](http://www.dhl-usa.com/en/express/shipping/open_account.html) \(英文\)。
 
 ## <a name="step-1-prepare-the-drives"></a>步驟 1：準備磁碟機
@@ -77,13 +77,13 @@ ms.locfileid: "85514208"
 
     下表會說明使用的參數：
 
-    |選項  |說明  |
+    |選項  |描述  |
     |---------|---------|
     |/j:     |日誌檔案的名稱 (具有 .jrn 副檔名)。 每個磁碟機都會產生日誌檔案。 我們建議您使用磁碟序號作為日誌檔案名稱。         |
     |/id:     |工作階段識別碼。 針對命令的每個執行個體使用唯一的工作階段號碼。      |
     |/t:     |要寄送之磁碟的磁碟機代號。 例如，磁碟機 `D`。         |
     |/bk:     |磁碟機的 BitLocker 金鑰。 其數字密碼來自 `manage-bde -protectors -get D:` 的輸出      |
-    |/srcdir:     |要寄送之磁碟的磁碟機代號，其後緊接著 `:\`。 例如： `D:\` 。         |
+    |/srcdir:     |要寄送之磁碟的磁碟機代號，其後緊接著 `:\`。 例如： `D:\`。         |
     |/dstdir:     |Azure 儲存體中目的地容器的名稱。         |
     |/blobtype     |此選項會指定您想要匯入資料的 blob 類型。 針對區塊 blob，這是 `BlockBlob` 分頁 blob 的和 `PageBlob` 。         |
     |/skipwrite：     |此選項表示不需要複製新資料，且即將準備磁碟上的現有資料。          |
@@ -94,6 +94,8 @@ ms.locfileid: "85514208"
     > * 與日誌檔案一起，`<Journal file name>_DriveInfo_<Drive serial ID>.xml` 檔案也會建立在工具所在的相同資料夾中。 如果日誌檔案太大，建立作業時會使用 .xml 檔案代替日誌檔案。
 
 ## <a name="step-2-create-an-import-job"></a>步驟 2：建立匯入作業
+
+### <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 在 Azure 入口網站中執行下列步驟，以建立匯入作業。
 
@@ -143,6 +145,85 @@ ms.locfileid: "85514208"
 
      ![建立匯入作業 - 步驟 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+使用下列步驟，在 Azure CLI 中建立匯入作業。
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+### <a name="create-a-job"></a>建立作業
+
+1. 使用 [az extension add](/cli/azure/extension#az_extension_add) 命令新增 [az 匯入匯出](/cli/azure/ext/import-export/import-export) 延伸模組：
+
+    ```azurecli
+    az extension add --name import-export
+    ```
+
+1. 您可以使用現有的資源群組，或建立一個群組。 若要建立資源群組，請執行 [az group create](/cli/azure/group#az_group_create) 命令：
+
+    ```azurecli
+    az group create --name myierg --location "West US"
+    ```
+
+1. 您可以使用現有的儲存體帳戶或建立一個帳戶。 若要建立儲存體帳戶，請執行 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 命令：
+
+    ```azurecli
+    az storage account create --resource-group myierg --name myssdocsstorage --https-only
+    ```
+
+1. 若要取得您可以寄送磁片的位置清單，請使用 az 匯 [入-匯出位置清單](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list) 命令：
+
+    ```azurecli
+    az import-export location list
+    ```
+
+1. 使用 [az 匯入-匯出位置 show](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_show) 命令來取得您區域的位置：
+
+    ```azurecli
+    az import-export location show --location "West US"
+    ```
+
+1. 執行下列 [az import-export create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) 命令來建立匯入作業：
+
+    ```azurecli
+    az import-export create \
+        --resource-group myierg \
+        --name MyIEjob1 \
+        --location "West US" \
+        --backup-drive-manifest true \
+        --diagnostics-path waimportexport \
+        --drive-list bit-locker-key=439675-460165-128202-905124-487224-524332-851649-442187 \
+            drive-header-hash= drive-id=AZ31BGB1 manifest-file=\\DriveManifest.xml \
+            manifest-hash=69512026C1E8D4401816A2E5B8D7420D \
+        --type Import \
+        --log-level Verbose \
+        --shipping-information recipient-name="Microsoft Azure Import/Export Service" \
+            street-address1="3020 Coronado" city="Santa Clara" state-or-province=CA postal-code=98054 \
+            country-or-region=USA phone=4083527600 \
+        --return-address recipient-name="Gus Poland" street-address1="1020 Enterprise way" \
+            city=Sunnyvale country-or-region=USA state-or-province=CA postal-code=94089 \
+            email=gus@contoso.com phone=4085555555" \
+        --return-shipping carrier-name=FedEx carrier-account-number=123456789 \
+        --storage-account myssdocsstorage
+    ```
+
+   > [!TIP]
+   > 請提供群組電子郵件，而不是指定單一使用者的電子郵件地址。 這樣可以確保即使當系統管理員不在時，您也可以收到通知。
+
+1. 使用 [az 匯入-匯出清單](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_list) 命令來查看 myierg 資源群組的所有工作：
+
+    ```azurecli
+    az import-export list --resource-group myierg
+    ```
+
+1. 若要更新您的作業或取消作業，請執行 [az 匯入-匯出更新](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_update) 命令：
+
+    ```azurecli
+    az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true
+    ```
+
+---
+
 ## <a name="step-3-optional-configure-customer-managed-key"></a>步驟 3 (選用) ：設定客戶管理的金鑰
 
 如果您想要使用 Microsoft 管理的金鑰來保護磁片磁碟機的 BitLocker 金鑰，請略過此步驟，並移至下一個步驟。 若要設定您自己的金鑰來保護 BitLocker 金鑰，請依照 Azure 入口網站中的[使用 Azure 匯入/匯出的 Azure Key Vault 設定客戶管理的金鑰](storage-import-export-encryption-key-portal.md)中的指示
@@ -159,7 +240,7 @@ ms.locfileid: "85514208"
 
 追蹤作業到完成為止。 作業完成之後，請確認您的資料已上傳至 Azure。 確認上傳成功之後才刪除內部部署的資料。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [檢視作業和磁碟機狀態](storage-import-export-view-drive-status.md)
 * [檢閱匯入/匯出的需求](storage-import-export-requirements.md)

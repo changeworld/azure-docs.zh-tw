@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: f114dd4d4f0a9a26a8aab1f8aeecd4d29678a8d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dba6b3f2137230ebe95f1bc89156cf6b127c8f52
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90896291"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428142"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>針對適用於 MySQL 的 Azure 資料庫使用虛擬網路服務端點和規則
 
@@ -88,7 +88,7 @@ ms.locfileid: "90896291"
 - **網路管理員：** &nbsp;開啟端點。
 - **資料庫管理員：** &nbsp;更新存取控制清單 (ACL) 以將指定的子網路新增至適用於 MySQL 的 Azure 資料庫伺服器。
 
-RBAC 替代方案：**
+*Azure RBAC 替代方案：*
 
 「網路管理員」和「資料庫管理員」角色的能力已超過管理虛擬網路規則所需。 只需要其中一部分能力。
 
@@ -152,7 +152,7 @@ RBAC 替代方案：**
 
 [vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]: ../virtual-network/virtual-networks-static-private-ip-arm-pportal.md
 
-[rbac-what-is-813s]: ../active-directory/role-based-access-control-what-is.md
+[rbac-what-is-813s]: ../role-based-access-control/overview.md
 
 [vpn-gateway-indexmd-608y]: ../vpn-gateway/index.yml
 

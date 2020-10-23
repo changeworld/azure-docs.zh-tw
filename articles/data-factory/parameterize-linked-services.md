@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 10/22/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 1bb523c1b5aa595a714930962bbbe4e7e04de517
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: e6c00a0d2b6ff8bbb4ba9e51110e995e93d6b558
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131389"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426964"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>在 Azure Data Factory 中將連結服務參數化
 
@@ -32,16 +32,18 @@ ms.locfileid: "92131389"
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Parameterize-connections-to-your-data-stores-in-Azure-Data-Factory/player]
 
-## <a name="supported-data-stores"></a>支援的資料存放區
+## <a name="supported-linked-service-types"></a>支援的連結服務類型
 
 您可以將任何類型的連結服務參數化。
-在 UI 上撰寫連結服務時，Data Factory 會針對下列類型的連接器提供內建的參數化體驗。 在 [連結服務建立/編輯] 分頁中，您可以找到新參數的選項，並新增動態內容。
+在 UI 上撰寫連結服務時，Data Factory 會針對下列類型的連結服務提供內建的參數化體驗。 在 [連結服務建立/編輯] 分頁中，您可以找到新參數的選項，並新增動態內容。
 
 - Amazon Redshift
 - Amazon S3
 - Azure Cosmos DB (SQL API) 
 - 適用於 MySQL 的 Azure 資料庫
+- Azure Databricks
 - Azure SQL Database
+- Azure SQL 受控執行個體
 - Azure Synapse Analytics (先前為 SQL DW)
 - MySQL
 - Oracle
@@ -49,7 +51,7 @@ ms.locfileid: "92131389"
 - 一般 HTTP
 - 一般 REST
 
-針對其他類型，您可以在 UI 上編輯 JSON，以將連結的服務參數化：
+針對不在上述清單中的其他連結服務類型，您可以在 UI 上編輯 JSON，以將連結的服務參數化：
 
 - 在 [已連結的服務建立/編輯] 分頁-> 展開底部 > 核取 [以 JSON 格式指定動態內容] 核取方塊-> 指定連結服務 JSON 承載。 
 - 或者，在您建立未參數化的連結服務之後，請在 [ [管理中樞](author-visually.md#management-hub) -> 連結的服務] 中，> 尋找特定的連結服務-> 按一下 [程式碼] (按鈕 " {} " ) 編輯 JSON。 

@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.author: jlian
-ms.openlocfilehash: 3deffe6f1dbffcaae5676b8ddf3c0fc2dc934401
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cb6e4b2b10b6b44a544416ad5d57808c7ad4d83f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149095"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427853"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT 中樞利用 Private Link 和受控識別支援虛擬網路
 
@@ -170,7 +170,7 @@ az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resou
 
 ### <a name="egress-connectivity-to-storage-account-endpoints-for-routing"></a>輸出連線到儲存體帳戶端點以進行路由
 
-IoT 中樞可將訊息路由傳送至客戶擁有的儲存體帳戶。 若要在有防火牆限制時允許路由功能存取儲存體帳戶， IoT 中樞必須具有[受控識別](#turn-on-managed-identity-for-iot-hub)。 佈建受控識別之後，請遵循下列步驟，將 RBAC 權限提供給中樞的資源身分識別，以存取儲存體帳戶。
+IoT 中樞可將訊息路由傳送至客戶擁有的儲存體帳戶。 若要在有防火牆限制時允許路由功能存取儲存體帳戶， IoT 中樞必須具有[受控識別](#turn-on-managed-identity-for-iot-hub)。 布建受控識別之後，請遵循下列步驟，將 Azure RBAC 許可權授與您中樞的資源身分識別，以存取您的儲存體帳戶。
 
 1. 在 Azure 入口網站中，巡覽至儲存體帳戶的 [存取控制 (IAM)] 索引標籤，然後按一下 [新增角色指派] 區段下的 [新增]。
 
@@ -188,7 +188,7 @@ IoT 中樞可將訊息路由傳送至客戶擁有的儲存體帳戶。 若要在
 
 ### <a name="egress-connectivity-to-event-hubs-endpoints-for-routing"></a>輸出連線到事件中樞端點以進行路由
 
-IoT 中樞可設定為將訊息路由傳送至客戶擁有的事件中樞命名空間。 若要在有防火牆限制時允許路由功能存取事件中樞資源， IoT 中樞必須具有受控識別。 建立受控識別之後，請遵循下列步驟，將 RBAC 權限提供給中樞的資源身分識別，以存取事件中樞。
+IoT 中樞可設定為將訊息路由傳送至客戶擁有的事件中樞命名空間。 若要在有防火牆限制時允許路由功能存取事件中樞資源， IoT 中樞必須具有受控識別。 一旦建立受控識別之後，請遵循下列步驟，將 Azure RBAC 許可權授與您中樞的資源身分識別，以存取您的事件中樞。
 
 1. 在 Azure 入口網站中，巡覽至事件中樞的 [存取控制 (IAM)] 索引標籤，然後按一下 [新增角色指派] 區段下的 [新增]。
 
@@ -206,7 +206,7 @@ IoT 中樞可設定為將訊息路由傳送至客戶擁有的事件中樞命名�
 
 ### <a name="egress-connectivity-to-service-bus-endpoints-for-routing"></a>輸出連線到服務匯流排端點以進行路由
 
-IoT 中樞可設定為將訊息路由傳送至客戶擁有的服務匯流排命名空間。 若要在有防火牆限制時，允許路由功能存取服務匯流排資源， IoT 中樞必須具有受控識別。 佈建受控識別之後，請遵循下列步驟，將 RBAC 權限提供給中樞的資源身分識別，以存取服務匯流排。
+IoT 中樞可設定為將訊息路由傳送至客戶擁有的服務匯流排命名空間。 若要在有防火牆限制時，允許路由功能存取服務匯流排資源， IoT 中樞必須具有受控識別。 布建受控識別之後，請遵循下列步驟，將 Azure RBAC 許可權授與您中樞的資源身分識別，以存取您的服務匯流排。
 
 1. 在 Azure 入口網站中，巡覽至服務匯流排的 [存取控制 (IAM)] 索引標籤，然後按一下 [新增角色指派] 區段下的 [新增]。
 
@@ -224,7 +224,7 @@ IoT 中樞可設定為將訊息路由傳送至客戶擁有的服務匯流排命�
 
 ### <a name="egress-connectivity-to-storage-accounts-for-file-upload"></a>輸出連線到儲存體帳戶以進行檔案上傳
 
-IoT 中樞的檔案上傳功能可讓裝置將檔案上傳至客戶所擁有儲存體帳戶。 若要讓檔案上傳正常運作，裝置和 IoT 中樞都必須具有與儲存體帳戶的連線。 如果儲存體帳戶上有防火牆限制，裝置就必須使用任何支援的儲存體帳戶機制 (包括[私人端點](../private-link/tutorial-private-endpoint-storage-portal.md)、[服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)或[直接防火牆設定](../storage/common/storage-network-security.md)) 來取得連線。 同樣地，如果儲存體帳戶上有防火牆限制，IoT 中樞就必須設定為透過信任的 Microsoft 服務例外來存取儲存體資源。 基於此目的， IoT 中樞必須具有受控識別。 佈建受控識別之後，請遵循下列步驟，將 RBAC 權限提供給中樞的資源身分識別，以存取儲存體帳戶。
+IoT 中樞的檔案上傳功能可讓裝置將檔案上傳至客戶所擁有儲存體帳戶。 若要讓檔案上傳正常運作，裝置和 IoT 中樞都必須具有與儲存體帳戶的連線。 如果儲存體帳戶上有防火牆限制，裝置就必須使用任何支援的儲存體帳戶機制 (包括[私人端點](../private-link/tutorial-private-endpoint-storage-portal.md)、[服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)或[直接防火牆設定](../storage/common/storage-network-security.md)) 來取得連線。 同樣地，如果儲存體帳戶上有防火牆限制，IoT 中樞就必須設定為透過信任的 Microsoft 服務例外來存取儲存體資源。 基於此目的， IoT 中樞必須具有受控識別。 布建受控識別之後，請遵循下列步驟，將 Azure RBAC 許可權授與您中樞的資源身分識別，以存取您的儲存體帳戶。
 
 [!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
@@ -244,7 +244,7 @@ IoT 中樞的檔案上傳功能可讓裝置將檔案上傳至客戶所擁有儲�
 
 IoT 中樞支援在客戶提供的儲存體 blob 中大量[匯入/匯出](./iot-hub-bulk-identity-mgmt.md)裝置資訊的功能。 若要讓大量匯入/匯出功能正常運作，裝置和 IoT 中樞都必須具有與儲存體帳戶的連線。
 
-這項功能需要從 IoT 中樞連線到儲存體帳戶。 若要在有防火牆限制時存取服務匯流排資源， IoT 中樞必須具有受控識別。 佈建受控識別之後，請遵循下列步驟，將 RBAC 權限提供給中樞的資源身分識別，以存取服務匯流排。
+這項功能需要從 IoT 中樞連線到儲存體帳戶。 若要在有防火牆限制時存取服務匯流排資源， IoT 中樞必須具有受控識別。 布建受控識別之後，請遵循下列步驟，將 Azure RBAC 許可權授與您中樞的資源身分識別，以存取您的服務匯流排。
 
 1. 在 Azure 入口網站中，巡覽至儲存體帳戶的 [存取控制 (IAM)] 索引標籤，然後按一下 [新增角色指派] 區段下的 [新增]。
 

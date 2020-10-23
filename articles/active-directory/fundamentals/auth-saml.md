@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Active Directory 的 SAML 驗證
-description: 達到此驗證模式的架構指引
+description: 使用 Azure Active Directory 達到 SAML 驗證的架構指引
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05b13e04db8e83a8a10c2d7fe0aea202dfa3b69c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 1ab14413de1f999747e5b3fb58b505e0a9258a55
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114157"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441210"
 ---
 # <a name="saml-authentication-with-azure-active-directory"></a>使用 Azure Active Directory 的 SAML 驗證
 
@@ -37,7 +37,7 @@ SAML 規格會定義三個角色：
 
 SAML 定址為 SSO 的其中一個最重要的使用案例，特別是在安全性網域之間擴充 SSO，也有其他使用案例 (稱為設定檔) 。 
 
-![架構圖](./media/authentication-patterns/saml-auth.png)
+![SAML 的架構圖](./media/authentication-patterns/saml-auth.png)
 
 ## <a name="components-of-system"></a>系統的元件
 

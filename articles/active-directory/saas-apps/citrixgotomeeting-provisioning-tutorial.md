@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 6cb2c90658a69f3e63e9ebe08db41eea0a9bc7fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4abd16d6b5c9593cb1a4df52a7135a658c513410
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299692"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455932"
 ---
 # <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>教學課程︰設定 GoToMeeting 來自動佈建使用者
 
@@ -35,7 +35,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 在設定並啟用佈建服務之前，您必須決定 Azure AD 中的哪些使用者及/或群組代表需要 GoToMeeting 應用程式存取權的使用者。 一旦決定後，您可以依照此處的指示，將這些使用者指派給 GoToMeeting 應用程式︰
 
-[將使用者或群組指派給企業應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[將使用者或群組指派給企業應用程式](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-gotomeeting"></a>將使用者指派給 GoToMeeting 的重要秘訣
 
@@ -90,6 +90,4 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 * [管理企業應用程式的使用者帳戶佈建](tutorial-list.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
-* [設定單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-saas-citrix-gotomeeting-tutorial)
-
-
+* [設定單一登入](./citrix-gotomeeting-tutorial.md)

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a530a6f656f37657a198af85d93d5404ac88d0e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f524bf6af66d44bc13b7c0957de7977968cbef28
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83651019"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427265"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>使用第 2 層延伸網路遷移工作負載
 
@@ -118,7 +118,7 @@ ms.locfileid: "83651019"
 
 3. 開啟 Edge VM 管理 IP 位址的 SSH 工作階段。 使用使用者名稱 **admin** 與密碼 **CloudSimple 123!** 執行 ```get logical-router``` 命令。
 
-    ![取得邏輯路由器輸出](media/l2vpn-fetch03.png)
+    ![顯示開啟的 SSH 會話的螢幕擷取畫面。](media/l2vpn-fetch03.png)
 
 4. 如果您沒有看到項目「DR-提供者-LR」，請完成下列步驟。
 
@@ -132,7 +132,7 @@ ms.locfileid: "83651019"
 
 7. 在 Edge VM 的 SSH 工作階段上，再次執行 `get logical-router` 命令。 隨即顯示「DR-提供者-LR」邏輯路由器的 UUID。 記下 UUID，這是設定 L2VPN 時的必要項。
 
-    ![取得邏輯路由器輸出](media/l2vpn-fetch06.png)
+    ![顯示邏輯路由器 UUID 的螢幕擷取畫面。](media/l2vpn-fetch06.png)
 
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>擷取 L2VPN 所需的邏輯交換器識別碼
 
@@ -430,7 +430,7 @@ GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 
 2. 移至包含所有解壓縮檔案的資料夾。 選取所有的 vmdk (大型設備大小的 NSX-l2t-client-large.mf 與 NSX-l2t-client-large.ovf 或超大型設備大小的 NSX-l2t-client-Xlarge.mf 與 NSX-l2t-client-Xlarge.ovf)。 按 [下一步] 。
 
-    ![選取範本](media/l2vpn-deploy-client02.png) ![選取範本](media/l2vpn-deploy-client03.png)
+    ![選取 ](media/l2vpn-deploy-client02.png) ![ 可顯示所選 vmdk 檔案的範本螢幕擷取畫面。](media/l2vpn-deploy-client03.png)
 
 3. 輸入 NSX-T 獨立用戶端的名稱，然後按一下 [下一步]。
 

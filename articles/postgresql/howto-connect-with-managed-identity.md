@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1b9603e43541ec1a364e4653caeeafc751f7e4f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d801499360bd05cee4c01aefd873337303017f3
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012087"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427505"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>使用受控識別連線到適用於 PostgreSQL 的 Azure 資料庫
 
@@ -27,7 +27,7 @@ ms.locfileid: "89012087"
 ## <a name="prerequisites"></a>Prerequisites
 
 - 如果您不熟悉適用於 Azure 資源的受控識別功能，請參閱此[概觀](../../articles/active-directory/managed-identities-azure-resources/overview.md)。 如果您沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
-- 若要執行所需的資源建立和角色管理，您的帳戶必須在適當的範圍 (您的訂用帳戶或資源群組) 上具備「擁有者」權限。 如果您需要角色指派的協助，請參閱[使用角色型存取控制來管理 Azure 訂用帳戶資源的存取權](../../articles/role-based-access-control/role-assignments-portal.md)。
+- 若要執行所需的資源建立和角色管理，您的帳戶必須在適當的範圍 (您的訂用帳戶或資源群組) 上具備「擁有者」權限。 如果您需要角色指派的協助，請參閱 [使用 azure 角色型存取控制 (AZURE RBAC) 來管理 azure 訂用帳戶資源的存取權](../../articles/role-based-access-control/role-assignments-portal.md)。
 - 您需要 Azure VM (例如執行 Ubuntu Linux)，以供您使用受控識別來存取資料庫
 - 您需要已設定 [Azure AD 驗證](howto-configure-sign-in-aad-authentication.md)的適用於 PostgreSQL 的 Azure 資料庫資料庫伺服器
 - 若要遵循此 C# 範例，請先完成如何[與 C# 連線](connect-csharp.md)的指南

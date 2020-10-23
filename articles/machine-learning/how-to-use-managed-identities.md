@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
-ms.date: 10/08/2020
-ms.openlocfilehash: 6bcc4ac5561a8bdb721018aa05bf2376579b627b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/22/2020
+ms.openlocfilehash: c4ea7609c343532f17144e388be7583eab427eee
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079644"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440445"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>使用受控識別搭配 Azure Machine Learning (preview) 
 
@@ -29,7 +29,6 @@ ms.locfileid: "92079644"
 
  * 針對您的 Azure Machine Learning 工作區設定和使用 ACR，而不需要讓系統管理員使用者存取 ACR。
  * 存取工作區外部的私用 ACR，以提取用於定型或推斷的基底映射。
- * 使用受控識別（而非儲存體存取金鑰）來存取用於定型的資料集。
 
 > [!IMPORTANT]
 > 使用受控識別來控制具有 Azure Machine Learning 之資源的存取權目前為預覽狀態。 預覽功能是以「原樣」提供，不保證支援或服務等級協定。 如需詳細資訊，請參閱 [Microsoft Azure 預覽的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -222,31 +221,6 @@ identity.client_id="<UAI client ID>”
 env.docker.base_image_registry.registry_identity=identity
 env.docker.base_image = "my-acr.azurecr.io/my-repo/my-image:latest"
 ```
-
-## <a name="access-training-data"></a>存取訓練資料
-
-如先前所述，建立具有受控識別的 machine learning compute 叢集之後，您可以使用該身分識別來存取沒有儲存體帳戶金鑰的定型資料。 您可以在此案例中使用系統或使用者指派的受控識別。
-
-### <a name="grant-compute-managed-identity-access-to-storage-account"></a>將計算受控識別存取權授與儲存體帳戶
-
-在您儲存定型資料的儲存體帳戶上，將「讀取者」[角色授與受控識別](https://docs.microsoft.com/azure/storage/common/storage-auth-aad#assign-azure-roles-for-access-rights)。
-
-### <a name="register-data-store-with-workspace"></a>使用工作區註冊資料存放區
-
-指派受控識別之後，您可以建立資料存放區，而不需要指定儲存體認證。
-
-```python
-from azureml.core import Datastore
-
-blob_dstore = Datastore.register_azure_blob_container(workspace=workspace,
-                                                      datastore_name='my-datastore',
-                                                      container_name='my-container',
-                                                      account_name='my-storage-account')
-```
-
-### <a name="submit-training-run"></a>提交定型回合
-
-當您使用資料存放區提交定型回合時，machine learning compute 會使用其受控識別來存取資料。
 
 ## <a name="use-docker-images-for-inference"></a>使用 Docker 映射進行推斷
 

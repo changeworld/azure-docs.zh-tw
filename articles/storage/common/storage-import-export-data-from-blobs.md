@@ -5,21 +5,21 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/17/2020
+ms.date: 10/20/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d9f7778d1dda159f3ab0c4548912370c85f94eff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfbef5ce3ba7675aff88df654a5ba6572c38adbe
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441881"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440720"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>使用 Azure 匯入/匯出服務匯出 Azure Blob 儲存體中的資料
 
 本文提供的逐步指示會說明如何使用 Azure 匯入/匯出服務，安全地從 Azure Blob 儲存體匯出大量資料。 此服務需要您將空磁碟機寄送至 Azure 資料中心。 此服務會將您儲存體帳戶的資料匯出至磁碟機，然後將磁碟機寄回給您。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在建立匯出作業來轉送 Azure Blob 儲存體中的資料之前，請仔細檢閱並完成此服務的下列必要條件清單。
 您必須：
@@ -36,6 +36,8 @@ ms.locfileid: "91441881"
     - [建立 DHL 帳戶](http://www.dhl-usa.com/en/express/shipping/open_account.html) \(英文\)。
 
 ## <a name="step-1-create-an-export-job"></a>步驟 1：建立匯出作業
+
+### <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 在 Azure 入口網站中執行下列步驟，以建立匯出作業。
 
@@ -57,7 +59,7 @@ ms.locfileid: "91441881"
     - 選取一個訂用帳戶。
     - 輸入或選取資源群組。
 
-        ![基本概念](./media/storage-import-export-data-from-blobs/export-from-blob3.png)
+        ![基本](./media/storage-import-export-data-from-blobs/export-from-blob3.png)
 
 5. 在 [作業詳細資料]**** 中：
 
@@ -99,6 +101,83 @@ ms.locfileid: "91441881"
         > 請一律將磁碟機寄送到在 Azure 入口網站中記下的資料中心。 如果磁碟機寄送到錯誤的資料中心，作業將不會被處理。
 
     - 按一下 [確定]****，完成建立匯出作業。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+使用下列步驟，在 Azure 入口網站中建立匯出工作。
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+### <a name="create-a-job"></a>建立作業
+
+1. 使用 [az extension add](/cli/azure/extension#az_extension_add) 命令新增 [az 匯入匯出](/cli/azure/ext/import-export/import-export) 延伸模組：
+
+    ```azurecli
+    az extension add --name import-export
+    ```
+
+1. 若要取得可從中接收磁片的位置清單，請使用 [az 匯入-匯出位置清單](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list) 命令：
+
+    ```azurecli
+    az import-export location list
+    ```
+
+1. 執行下列 [az import export create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) 命令，以建立使用您現有儲存體帳戶的匯出作業：
+
+    ```azurecli
+    az import-export create \
+        --resource-group myierg \
+        --name Myexportjob1 \
+        --location "West US" \
+        --backup-drive-manifest true \
+        --diagnostics-path waimportexport \
+        --export blob-path=/ \
+        --type Export \
+        --log-level Verbose \
+        --shipping-information recipient-name="Microsoft Azure Import/Export Service" \
+            street-address1="3020 Coronado" city="Santa Clara" state-or-province=CA postal-code=98054 \
+            country-or-region=USA phone=4083527600 \
+        --return-address recipient-name="Gus Poland" street-address1="1020 Enterprise way" \
+            city=Sunnyvale country-or-region=USA state-or-province=CA postal-code=94089 \
+            email=gus@contoso.com phone=4085555555" \
+        --storage-account myssdocsstorage
+    ```
+
+    > [!TIP]
+    > 請提供群組電子郵件，而不是指定單一使用者的電子郵件地址。 這樣可以確保即使當系統管理員不在時，您也可以收到通知。
+
+   這項作業會匯出儲存體帳戶中的所有 blob。 您可以藉由將此值取代為 **--export**來指定要匯出的 blob：
+
+    ```azurecli
+    --export blob-path=$root/logo.bmp
+    ```
+
+   此參數值會將根容器中名為 *logo.bmp* 的 blob 匯出。
+
+   您也可以選擇使用前置詞來選取容器中的所有 blob。 將此值取代為 **--export**：
+
+    ```azurecli
+    blob-path-prefix=/myiecontainer
+    ```
+
+   如需詳細資訊，請參閱[有效 Blob 路徑的範例](#examples-of-valid-blob-paths)。
+
+   > [!NOTE]
+   > 如果要匯出的 Blob 在資料複製期間為使用中狀態，則 Azure 匯入/匯出服務會擷取 Blob 的快照集，並複製此快照集。
+
+1. 使用 [az 匯入-匯出清單](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_list) 命令來查看資源群組 myierg 的所有工作：
+
+    ```azurecli
+    az import-export list --resource-group myierg
+    ```
+
+1. 若要更新您的作業或取消作業，請執行 [az 匯入-匯出更新](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_update) 命令：
+
+    ```azurecli
+    az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true
+    ```
+
+---
 
 <!--## (Optional) Step 2: -->
 
@@ -142,7 +221,7 @@ ms.locfileid: "91441881"
 此「選擇性」** 步驟可協助您判斷匯出作業所需的磁碟機數目。 執行此步驟的 Windows 系統必須執行[受支援的 OS 版本](storage-import-export-requirements.md#supported-operating-systems)。
 
 1. 請在 Windows 系統上[下載 WAImportExport 第 1 版](https://www.microsoft.com/download/details.aspx?id=42659)。
-2. 將檔案解壓縮至預設資料夾 `waimportexportv1`。 例如： `C:\WaImportExportV1` 。
+2. 將檔案解壓縮至預設資料夾 `waimportexportv1`。 例如： `C:\WaImportExportV1`。
 3. 以系統管理權限開啟 PowerShell 或命令列視窗。 若要將目錄變更為解壓縮的資料夾，請執行下列命令：
 
    `cd C:\WaImportExportV1`

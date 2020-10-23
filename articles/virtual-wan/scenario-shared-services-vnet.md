@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b8cc59b805cd757edce79a14d124ea244b4652a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03c71664769f1518ba80d36867c71ef35b2ca026
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267477"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461459"
 ---
 # <a name="scenario-route-to-shared-services-vnets"></a>案例：路由至共用服務 Vnet
 
@@ -24,17 +24,19 @@ ms.locfileid: "91267477"
 
 ## <a name="design"></a><a name="design"></a>設計
 
-我們可以使用連接矩陣來摘要說明此案例的需求。 在矩陣中，每個資料格都會描述虛擬 WAN 連線是否 (流程的「來源」端、資料表中的資料列標頭) 學習目的地前置詞 (流程的「到」端，而資料表中的資料行標頭則是針對特定流量進行) 。 「X」表示虛擬 WAN 會提供連線能力：
+我們可以使用連接矩陣來摘要說明此案例的需求：
 
 **連接矩陣**
 
 | 來自             | 變更為：   |*隔離 Vnet*|*共用的 VNet*|*分支*|
 |---|---|---|---|---|
-|**隔離 Vnet**|&#8594;|                |        X        |       X      |
-|**共用 Vnet**  |&#8594;|       X        |        X        |       X      |
-|**分支**      |&#8594;|       X        |        X        |       X      |
+|**隔離 Vnet**|&#8594;|        | 直接 | 直接 |
+|**共用 Vnet**  |&#8594;| 直接 | 直接 | 直接 |
+|**分支**      |&#8594;| 直接 | 直接 | 直接 |
 
-類似于 [隔離式 VNet 案例](scenario-isolate-vnets.md)，此連接矩陣提供兩種不同的資料列模式，可轉譯為兩個路由表 (共用服務 vnet，而分支的連線需求) 相同。 虛擬 WAN 已經有預設路由表，因此我們將需要另一個自訂路由表，我們會在此範例中呼叫 **RT_SHARED** 。
+上表中的每個資料格都會描述虛擬 WAN 連線是否 (流程的「來源」端，而資料列標頭) 與目的地 (「到」流程的「到」端（斜體) 中的資料行標頭）通訊。 在此案例中，沒有任何防火牆或網路虛擬裝置，因此通訊會直接透過虛擬 WAN (因此，資料表中的「直接」一字) 。
+
+類似于 [隔離式 VNet 案例](scenario-isolate-vnets.md)，此連接矩陣提供兩種不同的資料列模式，可轉譯為兩個路由表 (共用服務 vnet，而分支的連接需求) 相同。 虛擬 WAN 已經有預設路由表，因此我們將需要另一個自訂路由表，我們會在此範例中呼叫 **RT_SHARED** 。
 
 Vnet 會與 **RT_SHARED** 路由表建立關聯。 因為它們需要與分支的連線以及共用的服務 Vnet，所以共用服務 VNet 和分支必須傳播至 **RT_SHARED** (否則，vnet 將不會瞭解) 的分支和共用的 VNet 首碼。 由於分支一律會與預設路由表相關聯，而且共用服務 Vnet 的連線需求相同，因此我們也會將共用服務 Vnet 關聯至預設路由表。
 
