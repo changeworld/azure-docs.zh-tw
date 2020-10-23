@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: fd23dff3f60ab52a82633b9876b67c628a8e2dc7
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 4ba35d91d286cb43a763887d104e21ae0d537c8e
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123522"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424135"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>有關 Azure 網路監看員 (常見問題) 的常見問題
 [Azure 網路](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)監看員服務提供一套工具，可用來監視、診斷、查看計量，以及啟用或停用 Azure 虛擬網路中的資源記錄。 本文將回答有關此服務的常見問題。
@@ -55,7 +55,7 @@ ms.locfileid: "92123522"
 您可以在[Azure 服務可用性頁面](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher)上查看最新的區域可用性
 
 ### <a name="which-permissions-are-needed-to-use-network-watcher"></a>使用網路監看員需要哪些許可權？
-請參閱使用網路監看員 [所需的 RBAC 許可權](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)清單。 若要部署資源，您需要 NetworkWatcherRG 的參與者許可權 (請參閱以下) 。
+請參閱使用網路監看員 [所需的 AZURE RBAC 許可權](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions)清單。 若要部署資源，您需要 NetworkWatcherRG 的參與者許可權 (請參閱以下) 。
 
 ### <a name="how-do-i-enable-network-watcher"></a>如何啟用網路監看員？
 每個訂用帳戶都會 [自動啟用](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/) 網路監看員服務。

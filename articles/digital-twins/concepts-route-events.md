@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 49fe4f2d0a31918dec94163b4ebb5c45af53cfe7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f124eb24dcdc9e6437c803d1066d6ca86d5c32ab
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282255"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440802"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>在 Azure 數位 Twins 內外路由傳送事件
 
@@ -73,7 +73,7 @@ Azure 數位 twins 會使用 **事件路由** 將資料傳送給服務外的取�
  
 若要建立事件路由，您可以使用 Azure 數位 Twins [**資料平面 api**](how-to-manage-routes-apis-cli.md#create-an-event-route)、 [**CLI 命令**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)或 [**Azure 入口網站**](how-to-manage-routes-portal.md#create-an-event-route)。 
 
-以下範例示範如何使用 `CreateEventRoute` [.Net (c # ) SDK](how-to-use-apis-sdks.md) 呼叫，在用戶端應用程式中建立事件路由： 
+以下範例示範如何使用 `CreateEventRoute` [.Net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview) 呼叫，在用戶端應用程式中建立事件路由： 
 
 ```csharp
 EventRoute er = new EventRoute("endpointName");

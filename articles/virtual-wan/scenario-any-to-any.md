@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6115ca375c3e5bf2be3335fe2231628ec7bf309f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09dddad24794491b53a11f7b0e4347f43f11598b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267732"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440479"
 ---
 # <a name="scenario-any-to-any"></a>案例：任何對任意
 
@@ -22,14 +22,14 @@ ms.locfileid: "91267732"
 
 ## <a name="design"></a><a name="design"></a>設計
 
-為了瞭解虛擬 WAN 案例中需要多少個路由表，您可以建立一個連接矩陣，其中每個資料格都代表來源 (資料列) 是否可以與目的地 (資料行) 進行通訊。 此案例中的連線矩陣很簡單，但我們已將其加入，以便與其他案例保持一致。
+為了瞭解虛擬 WAN 案例中需要多少個路由表，您可以建立一個連接矩陣，其中每個資料格都代表來源 (資料列) 是否可以與目的地 (資料行) 進行通訊。
 
 | 寄件者 |   收件者 |  *Vnet* | *分支* |
 | -------------- | -------- | ---------- | ---|
-| VNets     | &#8594;|      X     |     X    |
-| 分支   | &#8594;|    X     |     X    |
+| VNets     | &#8594;| 直接 | 直接 |
+| 分支   | &#8594;| 直接  | 直接 |
 
-上表中的每個資料格都會描述虛擬 WAN 連線是否 (流程的「來源」端、資料表中的資料列標頭) 學習目的地前置詞 (流程的「到」端、在資料表中為斜體的資料行標頭) 特定的流量，其中「X」表示連線是由虛擬 WAN 提供。
+上表中的每個資料格都會描述虛擬 WAN 連線是否 (流程的「來源」端，而資料列標頭) 與目的地前置詞通訊 (流程的「到」端，也就是斜體) 中的資料行標頭。 在此案例中，沒有任何防火牆或網路虛擬裝置，因此通訊會直接透過虛擬 WAN (因此，資料表中的「直接」一字) 。
 
 因為 Vnet 和分支 (VPN、ExpressRoute 和使用者 VPN) 的所有連線都有相同的連線需求，所以需要單一路由表。 如此一來，所有連接都會相關聯並傳播至相同的路由表，也就是預設的路由表：
 

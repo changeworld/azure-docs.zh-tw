@@ -11,12 +11,12 @@ ms.date: 06/16/2020
 ms.author: mimart
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a186b682a3a506f0f373776dd66e6592bc6036ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e64ab70fed13d4ca907b2bfb3aa448acdedc39e9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87908141"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92441448"
 ---
 # <a name="define-custom-attributes-for-user-flows-preview"></a>定義使用者流程的自訂屬性 (預覽)
 
@@ -25,7 +25,7 @@ ms.locfileid: "87908141"
 
 對於各個應用程式，您要在註冊期間收集的資訊可能會有不同的需求。 Azure AD 隨附一組儲存在屬性中的內建資訊，例如名字、姓氏、城市及郵遞區號。 使用 Azure AD，您可以擴充在外部使用者透過使用者流程註冊時儲存在來賓帳戶上的屬性集。
 
-您可以在 Azure 入口網站中建立自訂屬性，並在您的自助式註冊使用者流程中加以使用。 您也可以使用 [Microsoft Graph API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api) 來讀取和寫入這些屬性。 Microsoft Graph API 支援以擴充屬性建立和更新使用者。 圖形 API 中的擴充屬性會使用 `extension_<extensions-app-id>_attributename` 慣例來命名。 例如：
+您可以在 Azure 入口網站中建立自訂屬性，並在您的自助式註冊使用者流程中加以使用。 您也可以使用 [Microsoft Graph API](../../active-directory-b2c/manage-user-accounts-graph-api.md) 來讀取和寫入這些屬性。 Microsoft Graph API 支援以擴充屬性建立和更新使用者。 圖形 API 中的擴充屬性會使用 `extension_<extensions-app-id>_attributename` 慣例來命名。 例如：
 
 ```JSON
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: c4c040c6d5b8eb4041db3ffaaab58657a9f9c7da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82cd39fdefef477e3761d8d7ab771301cea962e2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358044"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92443216"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>教學課程：設定 Hootsuite 來自動佈建使用者
 
-此教學課程說明您需要在 Hootsuite 與 Azure Active Directory (Azure AD) 中執行的步驟，以設定自動使用者佈建。 設定後，Azure AD 就會使用 Azure AD 佈建服務，自動對 [Hootsuite](https://hootsuite.com/) \(英文\) 佈建及取消佈建使用者和群組。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。
+此教學課程說明您需要在 Hootsuite 與 Azure Active Directory (Azure AD) 中執行的步驟，以設定自動使用者佈建。 設定後，Azure AD 就會使用 Azure AD 佈建服務，自動對 [Hootsuite](https://hootsuite.com/) \(英文\) 佈建及取消佈建使用者和群組。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 
 ## <a name="capabilities-supported"></a>支援的功能
 > [!div class="checklist"]
@@ -28,20 +28,20 @@ ms.locfileid: "91358044"
 > * 當使用者不再需要存取權時，將其從 Hootsuite 中移除
 > * 讓 Azure AD 與 Hootsuite 之間的使用者屬性保持同步
 > * 在 Hootsuite 中佈建群組和群組成員資格
-> * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/hootsuite-tutorial)至 Hootsuite (建議)
+> * [單一登入](./hootsuite-tutorial.md)至 Hootsuite (建議)
 
 ## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
-* [Azure AD 租用戶](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Azure AD 中具有設定佈建[權限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
+* [Azure AD 租用戶](../develop/quickstart-create-new-tenant.md) 
+* Azure AD 中具有設定佈建[權限](../users-groups-roles/directory-assign-admin-roles.md)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
 * 具有組織**管理成員**權限的 [Hootsuite](http://www.hootsuite.com/) \(英文\) 使用者帳戶。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步驟 1： 規劃您的佈建部署
-1. 了解[佈建服務的運作方式](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) \(部分機器翻譯\)。
-2. 判斷誰會在[佈建範圍](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) \(部分機器翻譯\) 內。
-3. 判斷哪些資料要[在 Azure AD 與 Hootsuite 之間對應](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)。 
+1. 了解[佈建服務的運作方式](../app-provisioning/user-provisioning.md) \(部分機器翻譯\)。
+2. 判斷誰會在[佈建範圍](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) \(部分機器翻譯\) 內。
+3. 判斷哪些資料要[在 Azure AD 與 Hootsuite 之間對應](../app-provisioning/customize-application-attributes.md)。 
 
 ## <a name="step-2-configure-hootsuite-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 Hootsuite 以支援使用 Azure AD 進行佈建
 
@@ -49,15 +49,15 @@ ms.locfileid: "91358044"
 
 ## <a name="step-3-add-hootsuite-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫新增 Hootsuite
 
-從 Azure AD 應用程式庫新增 Hootsuite，以開始管理對 Hootsuite 的佈建。 如果您先前已針對 SSO 設定 Hootsuite，則可使用相同的應用程式。 不過，建議在一開始測試整合時，建立個別的應用程式。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)深入了解從資源庫新增應用程式。 
+從 Azure AD 應用程式庫新增 Hootsuite，以開始管理對 Hootsuite 的佈建。 如果您先前已針對 SSO 設定 Hootsuite，則可使用相同的應用程式。 不過，建議在一開始測試整合時，建立個別的應用程式。 [在此](../manage-apps/add-application-portal.md)深入了解從資源庫新增應用程式。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步驟 4： 定義將在佈建範圍內的人員 
 
-Azure AD 佈建服務可讓您根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) \(部分機器翻譯\) 所述的範圍篩選條件。 
+Azure AD 佈建服務可讓您根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) \(部分機器翻譯\) 所述的範圍篩選條件。 
 
-* 將使用者和群組指派給 Hootsuite 時，您必須選取 [預設存取] 以外的角色。 具有 [預設存取] 角色的使用者會從佈建中排除，而且會在佈建記錄中標示為不具有效權限。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) \(部分機器翻譯\) 以新增其他角色。 
+* 將使用者和群組指派給 Hootsuite 時，您必須選取 [預設存取] 以外的角色。 具有 [預設存取] 角色的使用者會從佈建中排除，而且會在佈建記錄中標示為不具有效權限。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](../develop/howto-add-app-roles-in-azure-ad-apps.md) \(部分機器翻譯\) 以新增其他角色。 
 
-* 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可以將一或兩個使用者或群組指派給應用程式來控制這點。 當範圍設為所有使用者和群組時，您可以指定[以屬性為基礎的範圍篩選條件](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) \(部分機器翻譯\)。 
+* 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可以將一或兩個使用者或群組指派給應用程式來控制這點。 當範圍設為所有使用者和群組時，您可以指定[以屬性為基礎的範圍篩選條件](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) \(部分機器翻譯\)。 
 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-hootsuite"></a>步驟 5。 設定使用者自動佈建至 Hootsuite 
@@ -98,7 +98,7 @@ Azure AD 佈建服務可讓您根據對應用程式的指派，或根據使用�
 
 8. 在 [對應] 區段底下，選取 [佈建 Azure Active Directory 使用者]。
 
-9. 在 [屬性對應] 區段中，檢閱從 Azure AD 同步處理至 Hootsuite 的使用者屬性。 選取為 [比對] 屬性 (Property) 的屬性 (Attribute) 會用來比對 Hootsuite 中的使用者帳戶，以進行更新作業。 如果您選擇變更[比對目標屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，則必須確保 Hootsuite API 支援根據該屬性來篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
+9. 在 [屬性對應] 區段中，檢閱從 Azure AD 同步處理至 Hootsuite 的使用者屬性。 選取為 [比對] 屬性 (Property) 的屬性 (Attribute) 會用來比對 Hootsuite 中的使用者帳戶，以進行更新作業。 如果您選擇變更[比對目標屬性](../app-provisioning/customize-application-attributes.md)，則必須確保 Hootsuite API 支援根據該屬性來篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
 
    |屬性|類型|
    |---|---|
@@ -128,16 +128,16 @@ Azure AD 佈建服務可讓您根據對應用程式的指派，或根據使用�
 ## <a name="step-6-monitor-your-deployment"></a>步驟 6. 監視您的部署
 設定佈建後，請使用下列資源來監視您的部署：
 
-* 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
-* 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
-* 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) \(部分機器翻譯\) 深入了解隔離狀態。  
+* 使用[佈建記錄](../reports-monitoring/concept-provisioning-logs.md) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
+* 檢查[進度列](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
+* 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](../app-provisioning/application-provisioning-quarantine-status.md) \(部分機器翻譯\) 深入了解隔離狀態。  
 
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶佈建](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解如何針對佈建活動檢閱記錄和取得報告](../manage-apps/check-status-user-account-provisioning.md)
+* [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)

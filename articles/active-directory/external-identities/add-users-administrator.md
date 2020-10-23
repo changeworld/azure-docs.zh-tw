@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 969294f264e6744e893322864eed85e02c615126
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b503c7494d1b5e1821718fab5577bca88be65169
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87908812"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442281"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>在 Azure 入口網站中新增 Azure Active Directory B2B 共同作業使用者
 
@@ -25,7 +25,7 @@ ms.locfileid: "87908812"
 將來賓使用者新增至目錄之後，您就可以將共用應用程式的直接連結傳送給來賓使用者，或者來賓使用者可以按一下邀請電子郵件中的兌換 URL。 如需關於兌換程序的詳細資訊，請參閱 [B2B 共同作業邀請兌換](redemption-experience.md)。
 
 > [!IMPORTANT]
-> 請按照[操作說明：在 Azure Active Directory 中新增組織的隱私權資訊](https://aka.ms/adprivacystatement)中的步驟，新增貴組織隱私權聲明的 URL。 在第一次邀請兌換程序中，受邀的使用者必須同意您的隱私權條款才能繼續進行。 
+> 請按照[操作說明：在 Azure Active Directory 中新增組織的隱私權資訊](../fundamentals/active-directory-properties-area.md)中的步驟，新增貴組織隱私權聲明的 URL。 在第一次邀請兌換程序中，受邀的使用者必須同意您的隱私權條款才能繼續進行。 
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -124,4 +124,3 @@ ms.locfileid: "87908812"
 
 - 若要了解非 Azure AD 系統管理員要如何新增 B2B 來賓使用者，請參閱[資訊工作者如何新增 B2B 共同作業使用者？](add-users-information-worker.md)
 - 如需關於邀請電子郵件的資訊，請參閱[B2B 共同作業邀請電子郵件的元素](invitation-email-elements.md)。
-

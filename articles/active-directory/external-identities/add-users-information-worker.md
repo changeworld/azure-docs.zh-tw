@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bc3175017e5b26251d1a12d0d1e2c51c4e5f9c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba9a227956e7879a7c0f49e0534146fa01a49759
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87908793"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442213"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>組織中的使用者如何將來賓使用者邀請到應用程式
 
@@ -28,7 +28,7 @@ ms.locfileid: "87908793"
  - 設定應用程式以進行自助服務，並將群組指派給應用程式
 
 > [!NOTE]
-> 本文描述如何設定自助管理，來管理資源庫及新增至 Azure AD 租用戶的 SAML 應用程式。 您也可以 [設定自助 Microsoft 365 群組](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management) ，讓使用者可以管理自己的 Microsoft 365 群組的存取權。 如需更多使用者可以與來賓使用者共用 Office 檔案和應用程式的方式，請參閱 [Microsoft 365 群組中的來賓存取權](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) ，以及 [共用 SharePoint 檔案或資料夾](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)。
+> 本文描述如何設定自助管理，來管理資源庫及新增至 Azure AD 租用戶的 SAML 應用程式。 您也可以 [設定自助 Microsoft 365 群組](../users-groups-roles/groups-self-service-management.md) ，讓使用者可以管理自己的 Microsoft 365 群組的存取權。 如需更多使用者可以與來賓使用者共用 Office 檔案和應用程式的方式，請參閱 [Microsoft 365 群組中的來賓存取權](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) ，以及 [共用 SharePoint 檔案或資料夾](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)。
 
 ## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>從存取面板將來賓使用者邀請到應用程式
 
@@ -73,9 +73,9 @@ ms.locfileid: "87908793"
 7. 選取 [新增]**** 即可自動傳送邀請給來賓使用者。 在傳送邀請之後，系統就會自動將使用者帳戶以來賓身分新增至目錄。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-自助應用程式管理需要由全域系統管理員和 Azure AD 系統管理員進行一些初始設定。 在此設定過程中，您將會設定應用程式來進行自助服務，並將群組指派給應用程式擁有者可管理的應用程式。 您也可以設定群組以允許每個人都可要求成員資格，但需要群組擁有者的核准 (深入了解[自助群組管理](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management))。 
+自助應用程式管理需要由全域系統管理員和 Azure AD 系統管理員進行一些初始設定。 在此設定過程中，您將會設定應用程式來進行自助服務，並將群組指派給應用程式擁有者可管理的應用程式。 您也可以設定群組以允許每個人都可要求成員資格，但需要群組擁有者的核准 (深入了解[自助群組管理](../users-groups-roles/groups-self-service-management.md))。 
 
 > [!NOTE]
 > 您無法將來賓使用者新增到動態群組或已與內部部署 Active Directory 同步的群組。
@@ -86,7 +86,7 @@ ms.locfileid: "87908793"
 3. 選取 [群組]。
 4. 在 [設定]**** 下，選取 [一般]****。
 5. 在 [自助群組管理]**** 下的 [擁有者可在存取面板管理群組成員資格要求]**** 旁，選取 [是]****。
-6. 選取 [儲存]****。
+6. 選取 [儲存]。
 
 ### <a name="create-a-group-to-assign-to-the-app-and-make-the-user-an-owner"></a>建立要指派給應用程式的群組，並讓使用者成為擁有者
 1. 以 Azure AD 系統管理員或全域系統管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
@@ -105,8 +105,8 @@ ms.locfileid: "87908793"
 2. 在導覽窗格中，選取 [Azure Active Directory]。
 3. 在 [管理] 下選取 [企業應用程式] > [所有應用程式]。
 4. 在應用程式清單中，尋找並開啟應用程式。
-5. 在 [管理]**** 下，選取 [單一登入]****，然後設定應用程式以進行單一登入 (如需詳細資訊，請參閱[管理企業應用程式的單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications))。
-6. 在 [管理]**** 下，選取 [自助]****，然後設定自助應用程式存取 (如需詳細資訊，請參閱[如何使用自助應用程式存取](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to))。 
+5. 在 [管理]**** 下，選取 [單一登入]****，然後設定應用程式以進行單一登入 (如需詳細資訊，請參閱[管理企業應用程式的單一登入](../manage-apps/view-applications-portal.md))。
+6. 在 [管理]**** 下，選取 [自助]****，然後設定自助應用程式存取 (如需詳細資訊，請參閱[如何使用自助應用程式存取](../manage-apps/access-panel-manage-self-service-access.md))。 
 
     > [!NOTE]
     > 針對 [要將指派的使用者新增至哪個群組呢?]**** 設定，選取您在上一節中建立的群組。

@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
-ms.date: 03/17/2020
-ms.openlocfilehash: 81d0731f6ea77325b3f33f91bf8d5d1386dab2fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 88849e6b915128394546c01698ecee34d6206043
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91283372"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461714"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Azure SQL 受控執行個體的連線架構
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -128,7 +128,7 @@ Azure 會使用管理端點來管理 SQL 受控執行個體。 此端點位於�
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>具有服務輔助子網設定的使用者定義路由
 
-|名稱|位址首碼|下一個躍點|
+|Name|位址首碼|下一個躍點|
 |----|--------------|-------|
 |子網對 vnetlocal|MI SUBNET|虛擬網路|
 |mi-13-64-11-nexthop-網際網路|13.64.0.0/11|Internet|
@@ -312,7 +312,7 @@ Azure 會使用管理端點來管理 SQL 受控執行個體。 此端點位於�
 SQL 受控執行個體目前不支援下列虛擬網路功能：
 
 - **Microsoft 對等互連**：在 ExpressRoute 線路上啟用 [microsoft 對等互連](../../expressroute/expressroute-faqs.md#microsoft-peering) 對等互連直接或透過 sql 受控執行個體所在的虛擬網路，對虛擬網路內的 sql 受控執行個體元件與其相依的服務之間的流量產生影響，進而造成可用性問題。 已啟用 Microsoft 對等互連之虛擬網路的 SQL 受控執行個體部署預期會失敗。
-- **全域虛擬網路對等互連**：跨 Azure 區域的 [虛擬網路對等互連](../../virtual-network/virtual-network-peering-overview.md) 連線不適用於 SQL 受控執行個體，因為有 [記載的負載平衡器條件約束](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
+- **全域虛擬網路對等互連**：跨 Azure 區域的 [虛擬網路對等互連](../../virtual-network/virtual-network-peering-overview.md) 連線不適用於在9/22/2020 之前建立的子網中的 SQL 受控實例。
 - **AzurePlatformDNS**：使用 AzurePlatformDNS [服務標記](../../virtual-network/service-tags-overview.md) 來封鎖平臺 DNS 解析會導致 SQL 受控執行個體無法使用。 雖然 SQL 受控執行個體支援客戶定義的 DNS 解析引擎內的 DNS，但平臺作業的平臺 DNS 有相依性。
 - **NAT 閘道**：使用 [AZURE 虛擬網路 NAT](../../virtual-network/nat-overview.md) 來控制特定公用 IP 位址的輸出連線能力，會導致 SQL 受控執行個體無法使用。 SQL 受控執行個體服務目前僅限使用基本負載平衡器，不會提供使用虛擬網路 NAT 的輸入和輸出流量共存。
 
@@ -357,7 +357,7 @@ SQL 受控執行個體目前不支援下列虛擬網路功能：
 
 ### <a name="user-defined-routes"></a>使用者定義的路由
 
-|名稱|位址首碼|下一個躍點|
+|Name|位址首碼|下一個躍點|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI SUBNET|虛擬網路|
 |mi-13-64-11-nexthop-網際網路|13.64.0.0/11|Internet|

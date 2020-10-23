@@ -8,12 +8,12 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ms.openlocfilehash: 60aa6ed3f1b66d88d05751fdee2444120705f8d2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 9942056e59a46c61b4e9da32aab191d4b72db968
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047687"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461754"
 ---
 # <a name="azure-digital-twins-customer-data-request-features"></a>Azure 數位 Twins 客戶資料要求功能
 
@@ -25,7 +25,7 @@ Azure 數位 Twins 中稱為 *數位 twins* 的數位標記法代表真實世界
 
 Azure 數位 Twins 中的許多數位 twins 不會直接代表個人實體，代表的典型物件可能是辦公室會議室或工廠樓層。 不過，使用者可能會將某些實體視為個人標識，並自行決定是否可維護自己的資產或將數位 twins 與個人結合的清查追蹤方法。 Azure 數位 Twins 會管理和儲存與數位 Twins 相關聯的所有資料，如同個人資料一樣。
 
-若要查看、匯出及刪除資料主體要求中可能參考的個人資料，Azure 數位 Twins 系統管理員可以使用使用者和角色的 [**Azure 入口網站**](https://portal.azure.com/) ，或適用于數位 Twins 的 [**AZURE 數位 Twins REST api**](how-to-use-apis-sdks.md) 。 Azure 入口網站和 REST Api 提供不同的方法，讓使用者可以服務這類資料主體要求。
+若要查看、匯出及刪除資料主體要求中可能參考的個人資料，Azure 數位 Twins 系統管理員可以使用使用者和角色的 [**Azure 入口網站**](https://portal.azure.com/) ，或適用于數位 Twins 的 [**AZURE 數位 Twins REST api**](/rest/api/azure-digitaltwins/) 。 Azure 入口網站和 REST Api 提供不同的方法，讓使用者可以服務這類資料主體要求。
 
 ## <a name="identifying-customer-data"></a>識別客戶資料
 

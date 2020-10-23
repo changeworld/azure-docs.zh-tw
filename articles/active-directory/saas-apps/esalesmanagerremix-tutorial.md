@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: efcf634c9f34fd2b479140af800bb650f66bd821
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df993aae4e6c572c8f99688fd0053bdd07aefd56
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826752"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453923"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>整合 Azure Active Directory 與 E Sales Manager Remix
 
@@ -30,7 +30,7 @@ ms.locfileid: "91826752"
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 E Sales Manager Remix 整合，您需要下列項目：
 
@@ -127,7 +127,7 @@ ms.locfileid: "91826752"
 
 1. 在 [快速參考]**** 區段中，複製登出 URL 和 SAML 單一登入服務 URL。
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]。
 
     ![[儲存] 按鈕](./media/esalesmanagerremix-tutorial/tutorial_general_400.png)
 
@@ -199,7 +199,7 @@ ms.locfileid: "91826752"
 
     c. 選取 [ **顯示密碼** ] 核取方塊，然後記下 [ **密碼** ] 方塊中顯示的值。
 
-    d. 選取 [建立]  。
+    d. 選取 [建立]。
  
 ### <a name="create-an-e-sales-manager-remix-test-user"></a>建立 E Sales Manager Remix 測試使用者
 
@@ -263,7 +263,7 @@ ms.locfileid: "91826752"
 
 當您選取存取面板中的 [E Sales Manager Remix] 圖格時，應該會自動登入您的 E Sales Manager Remix 應用程式。
 
-如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/active-directory-saas-access-panel-introduction.md)。 
+如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。 
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -283,4 +283,3 @@ ms.locfileid: "91826752"
 [201]: ./media/esalesmanagerremix-tutorial/tutorial_general_201.png
 [202]: ./media/esalesmanagerremix-tutorial/tutorial_general_202.png
 [203]: ./media/esalesmanagerremix-tutorial/tutorial_general_203.png
-
