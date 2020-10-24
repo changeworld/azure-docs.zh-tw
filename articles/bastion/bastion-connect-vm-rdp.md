@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 10/21/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8ffb2d2f52e1bdfece7fe1bdcd04dcf9b1b600f3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 708bd1f61da2f3973333f8e68cabdceee0717bee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077638"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521524"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>使用 Azure 防禦連接到 Windows 虛擬機器
 
@@ -28,12 +28,12 @@ Azure 防禦可為布建所在的虛擬網路中的所有 Vm 提供安全的連�
 
    請確定您已為 VM 所在的虛擬網路設定 Azure 堡壘主機。 在您的虛擬網路中布建並部署防禦服務之後，您就可以使用它來連線到虛擬網路中的任何 VM。 若要設定 Azure 堡壘主機，請參閱 [建立防禦主機](tutorial-create-host-portal.md#createhost)。
 * 虛擬網路中的 Windows 虛擬機器。
-* 下列是必要的角色：
+* 下列是必要角色：
   * 虛擬機器上的讀取者角色。
-  * 具有虛擬機器之私人 IP 的 NIC 上的「讀取者」角色。
-  * Azure 防禦資源上的讀取者角色。
-* 埠：若要連接到 Windows VM，您必須在 Windows VM 上開啟下列埠：
-  * 輸入埠： RDP (3389) 
+  * 虛擬機器的私人 IP 位址與 NIC 上的讀取者角色。
+  * Azure Bastion 資源上的讀者角色。
+* 連接埠：若要連線至 Windows VM，您必須在 Windows VM 上開啟下列連接埠：
+  * 輸入連接埠：RDP (3389)
 
 ## <a name="connect"></a><a name="rdp"></a>連線
 
