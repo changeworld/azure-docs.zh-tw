@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 2fb94faacc2bc7d6c3b1e166e617f3f675594cef
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: bcb6e91bba367363385214806077146b1a24fe7b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101251"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503482"
 ---
 # <a name="indexer-access-to-content-protected-by-azure-network-security-features-azure-cognitive-search"></a>索引子存取受 Azure 網路安全性功能保護的內容 (Azure 認知搜尋) 
 
@@ -87,7 +87,7 @@ Azure 認知搜尋索引子可以有效地從資料來源提取內容、將擴�
 
 客戶應該在**共用的私人連結資源**上呼叫搜尋管理作業（ [CreateOrUpdate API](/rest/api/searchmanagement/sharedprivatelinkresources/createorupdate) ），以建立其安全資源的私人端點連線 (例如儲存體帳戶) 。 超過此 (輸出) 私人端點連線的流量，只會源自搜尋服務特定「私用」索引子執行環境中的虛擬網路。
 
-Azure 認知搜尋將會驗證此 API 的呼叫端是否具有 RBAC 許可權，以核准對安全資源的私人端點連線要求。 例如，如果您要求具有唯讀許可權之儲存體帳戶的私人端點連線，此呼叫將會遭到拒絕。
+Azure 認知搜尋將會驗證此 API 的呼叫端是否具有 Azure RBAC 許可權，以核准對安全資源的私人端點連線要求。 例如，如果您要求具有唯讀許可權之儲存體帳戶的私人端點連線，此呼叫將會遭到拒絕。
 
 ### <a name="step-2-approve-the-private-endpoint-connection"></a>步驟2：核准私人端點連接
 

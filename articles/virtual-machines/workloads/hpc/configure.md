@@ -4,15 +4,15 @@ description: 瞭解如何設定和優化適用于 HPC 的已啟用已啟用 H �
 author: vermagit
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 08/07/2020
+ms.date: 10/23/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 9ecfe1df273834ae38bd6bb94980444f5e34f786
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: a1bfb5988169ba79a6e3e8416804d7d4c896c758
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994820"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516845"
 ---
 # <a name="configure-and-optimize-vms"></a>設定和最佳化 VM
 
@@ -36,11 +36,24 @@ ms.locfileid: "91994820"
   若為 SR-IOV 啟用 [RDMA 的 vm](../../sizes-hpc.md#rdma-capable-instances)，則適用于 Marketplace 中的 [CentOS-HPC 7.6 版或更新](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557) 版本 VM 映射。 這些 VM 映射經過優化，並預先載入適用于 RDMA 的 OFED 驅動程式，以及各種常用的 MPI 程式庫和科學計算套件，且是開始使用的最簡單方式。
 
   從基底 CentOS Marketplace 映射建立 CentOS-HPC 7.6 版和更新版本 VM 映射時所使用的腳本範例，位於 [azhpc 映射](https://github.com/Azure/azhpc-images/tree/master/centos)存放庫中。
+  
+  > [!NOTE] 
+  > 最新的 Azure HPC marketplace 映射具有 Mellanox OFED 5.1 （含）以上版本，不支援 ConnectX3-Pro 的新智慧卡。 SR-IOV 已啟用 N 系列 VM 大小與 FDR 的 (，例如 NCv3) 將能夠使用下列 CentOS-HPC VM 映射版本或更舊版本：
+  >- OpenLogic： CentOS-HPC：7.6：7.6.2020062900
+  >- OpenLogic： CentOS-HPC：7_6gen2：7.6.2020062901
+  >- OpenLogic： CentOS-HPC：7.7：7.7.2020062600
+  >- OpenLogic： CentOS-HPC： 7_7-gen2：7.7.2020062601
+  >- OpenLogic： CentOS-HPC：8_1：8.1.2020062400
+  >- OpenLogic： CentOS-HPC： 8_1-gen2：8.1.2020062401
+
 
 ### <a name="rhelcentos-vm-images"></a>RHEL/CentOS VM 映射
 您可以在 Marketplace 上設定 RHEL 或 CentOS 為基礎的非 HPC VM 映射，以便在啟用 SR-IOV 的支援 [虛擬機器](../../sizes-hpc.md#rdma-capable-instances)上使用。 深入瞭解如何在 Vm 上 [啟用](enable-infiniband.md) 「不會」和「 [設定 MPI](setup-mpi.md) 」。
 
   從基底 CentOS Marketplace 映射建立 CentOS-HPC 7.6 版和更新版本 VM 映射時所使用的腳本範例，位於 [azhpc 映射](https://github.com/Azure/azhpc-images/tree/master/centos)存放庫中。
+  
+  > [!NOTE]
+  > Mellanox OFED 5.1 和更新版本不支援在 SR-IOV 啟用 N 系列 VM 大小上的 ConnectX3-Pro 的非等量卡，並具有 FDR 的 (，例如 NCv3) 。 請在 N 系列 VM 上使用 LTS Mellanox OFED 4.9-0.1.7.0 版或更舊版本的 ConnectX3-Pro 卡。 請參閱 [這裡](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed)的詳細資料。
 
 ### <a name="ubuntu-vm-images"></a>Ubuntu VM 映射
 適用于 SR-IOV 和非 SR-IOV [RDMA 的 vm](../../sizes-hpc.md#rdma-capable-instances)都支援 Ubuntu SERVER 16.04 LTS、18.04 LTS 和 20.04 LTS vm 映射。 深入瞭解如何在 Vm 上 [啟用](enable-infiniband.md) 「不會」和「 [設定 MPI](setup-mpi.md) 」。
@@ -108,7 +121,7 @@ sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
 （選擇性） WALinuxAgent 可能會被停用為預先作業步驟，並針對 HPC 工作負載的最大 VM 資源可用性啟用後置作業。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解如何在已啟用支援的[H 系列](../../sizes-hpc.md)和[N 系列](../../sizes-gpu.md)vm 上[啟用](enable-infiniband.md)「全像」。
 - 深入瞭解如何在 Vm 上安裝各種 [支援的 MPI 程式庫](setup-mpi.md) 及其最佳設定。

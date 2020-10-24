@@ -11,23 +11,23 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: f908e37c7785744c2f26b6a9cd542ccde228eb38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 881be102a00badf1e03188b26514ad0eb1a9bd90
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255723"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520771"
 ---
 # <a name="tutorial-configure-reward-gateway-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的獎勵閘道
 
 本教學課程的目的是示範在獎勵閘道中執行的步驟，以及 Azure Active Directory (Azure AD) 將 Azure AD 設定為自動布建及取消布建使用者和/或群組至獎勵閘道。
 
 > [!NOTE]
-> 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
+> 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 >
 > 此連接器目前為公開預覽狀態。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -102,11 +102,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![應用程式清單中的 Reward Gateway 連結](common/all-applications.png)
 
-3. 選取 [佈建] 索引標籤。
+3. 選取 [佈建]  索引標籤。
 
     ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
-4. 將 [佈建模式] 設定為 [自動]。
+4. 將 [佈建模式]  設定為 [自動]  。
 
     ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
@@ -114,17 +114,17 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![租用戶 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
 
-6. 在 [通知電子郵件]**** 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知]**** 核取方塊。
+6. 在 [通知電子郵件]  欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知]  核取方塊。
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 **[儲存]** 。
+7. 按一下 [檔案]  。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至獎勵閘道**]。
 
     ![[對應] 區段的螢幕擷取畫面，其中包含 [同步處理 Azure Active Directory 使用者與獎勵閘道] 選項。](media/reward-gateway-provisioning-tutorial/user-mappings.png)
 
-9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步至獎勵閘道的使用者屬性。 選取為 [比對] 屬性 **的屬性會** 用來比對獎勵閘道中的使用者帳戶，以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
+9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步至獎勵閘道的使用者屬性。 選取為 [比對] 屬性 **的屬性會** 用來比對獎勵閘道中的使用者帳戶，以進行更新作業。 選取 [儲存]  按鈕以認可所有變更。
 
     ![顯示六個對應的 [屬性對應] 區段螢幕擷取畫面。](media/reward-gateway-provisioning-tutorial/user-attributes.png)
 
@@ -138,11 +138,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![佈建範圍](common/provisioning-scope.png)
 
-13. 當您準備好要佈建時，按一下 [儲存]。
+13. 當您準備好要佈建時，按一下 [儲存]  。
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
-此作業會對在 [設定]**** 區段的 [範圍]**** 中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [ **同步處理詳細資料** ] 區段來監視進度，並遵循連結來布建活動報告，其中會描述獎勵閘道上的 Azure AD 布建服務所執行的所有動作。
+此作業會對在 [設定]  區段的 [範圍]  中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [ **同步處理詳細資料** ] 區段來監視進度，並遵循連結來布建活動報告，其中會描述獎勵閘道上的 Azure AD 布建服務所執行的所有動作。
 
 如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
 

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 38986c3f93856981e903ae93ed7788ae01fc6d5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea8881adf39a315df7746dbce14dedcbee18ccf6
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823587"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521045"
 ---
 # <a name="unpivot-transformation-in-mapping-data-flow"></a>對應資料流程中的 Unpivot 轉換
 
@@ -28,27 +28,27 @@ ms.locfileid: "91823587"
 
 ![取消樞紐轉換](media/data-flow/unpivot5.png "Unpivot 選項2")
 
-首先，設定您想要對於樞紐彙總分組所依據的資料行。 使用資料行清單旁邊的 [+] 號，設定要取消群組的一或多個資料行。
+首先，設定您想要針對 unpivot 匯總進行取消群組的資料行。 使用資料行清單旁邊的 [+] 號，設定要取消群組的一或多個資料行。
 
 ## <a name="unpivot-key"></a>取消樞紐索引鍵
 
 ![取消樞紐轉換](media/data-flow/unpivot6.png "Unpivot 選項3")
 
-樞紐索引鍵是 ADF 從資料列樞紐處理為資料行的資料行。 根據預設，此欄位的資料集之內的每個唯一值都會樞紐處理為資料行。 不過，您可以選擇從資料集輸入您想要樞紐處理為資料行值的數值。
+Unpivot 索引鍵是 ADF 將從資料行切換到資料列的資料行。 依預設，此欄位之資料集中的每個唯一值都將會切換到資料列。 不過，您可以選擇性地輸入您想要將樞紐分析表轉換成資料列值的資料集值。
 
 ## <a name="unpivoted-columns"></a>取消資料行樞紐
 
 ![取消樞紐轉換](media/data-flow//unpivot7.png "Unpivot 選項4")
 
-最後，選擇您想要對已樞紐的值所使用的彙總，以及您要如何在轉換的新輸出投影中顯示資料行。
+最後，選擇資料行名稱，以儲存轉換成資料列的取消樞紐資料行值。
 
-(選擇性) 您可以設定對於每個新資料行名稱從資料列值新增前置詞、中置詞及後置詞的命名模式。
+ (選擇性) 您可以卸載具有 Null 值的資料列。
 
-比方說，根據 "Region" 對 "Sales" 進行樞紐處理，就會得到來自每個銷售值的新資料行值。 例如： "25"、"50"、"1000"、.。。但是，如果您設定 "Sales" 的前置詞值，則 "Sales" 將會加上值的前置詞。
+例如，SumCost 是在上述共用範例中選擇的資料行名稱。
 
 ![顯示使用水果資料行作為 unipivot 索引鍵的 unipivot 轉換之前和之後的 PO、供應商和水果資料行的影像。](media/data-flow/unpivot3.png)
 
-設定為「一般」資料行的排列方式，會使用彙總值將已樞紐的資料行分組在一起。 將資料行排列方式設定為「橫向」會在資料行和值之間交替。
+將資料行相片順序設定為 [正常]，會將所有新的取消樞紐資料行從單一值群組在一起。 將資料行相片順序設定為「橫向」會將從現有資料行產生的新取消樞紐資料行群組在一起。
 
 ![取消樞紐轉換](media/data-flow//unpivot7.png "Unpivot 選項5")
 

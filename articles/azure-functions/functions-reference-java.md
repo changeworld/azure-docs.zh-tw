@@ -4,12 +4,12 @@ description: 了解如何使用 Java 開發函式。
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: 346dbb962e05519153537e3edb90763f5fd8da03
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 2dfd00484e84f4b2c31e52392df43bb07a800f73
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996500"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519617"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 開發人員指南
 
@@ -134,8 +134,6 @@ public class Function {
 
 ## <a name="java-versions"></a>Java 版本
 
-_JAVA 11 的支援目前為預覽狀態_
-
 建立函式應用程式時所使用的 JAVA 版本，在 Azure 中執行的函式是在 pom.xml 檔案中指定。 Maven 原型目前會產生 JAVA 8 的 pom.xml，您可以在發佈之前變更。 pom.xml 中的 JAVA 版本應該符合您在本機開發及測試應用程式的版本。 
 
 ### <a name="supported-versions"></a>支援的版本
@@ -144,18 +142,18 @@ _JAVA 11 的支援目前為預覽狀態_
 
 | Functions 版本 | Windows)  (JAVA 版本 | Linux)  (JAVA 版本 |
 | ----- | ----- | --- |
-| 3.x | 11 (preview) <br/>8 | 11 (preview) <br/>8 |
+| 3.x | 11 <br/>8 | 11 <br/>8 |
 | 2.x | 8 | n/a |
 
 除非您為部署指定 JAVA 版本，否則 Maven 原型會在部署至 Azure 期間預設為 JAVA 8。
 
 ### <a name="specify-the-deployment-version"></a>指定部署版本
 
-您可以使用參數來控制 Maven 原型設為目標的 JAVA 版本 `-DjavaVersion` 。 此參數的值可以是 `8` 或 `11` 。 JAVA 11 支援目前為預覽狀態。 
+您可以使用參數來控制 Maven 原型設為目標的 JAVA 版本 `-DjavaVersion` 。 此參數的值可以是 `8` 或 `11` 。 
 
 Maven 原型會產生以指定的 JAVA 版本為目標的 pom.xml。 pom.xml 中的下列元素指出要使用的 JAVA 版本：
 
-| 元素 |  JAVA 8 值 | JAVA 11 值 | 說明 |
+| 項目 |  JAVA 8 值 | JAVA 11 值 | 說明 |
 | ---- | ---- | ---- | --- |
 | **`Java.version`** | 1.8 | 11 | Maven 編譯器-外掛程式所使用的 JAVA 版本。 |
 | **`JavaVersion`** | 8 | 11 | Azure 中函數應用程式所裝載的 JAVA 版本。 |
@@ -175,7 +173,7 @@ Maven 原型會產生以指定的 JAVA 版本為目標的 pom.xml。 pom.xml 中
 
 Maven 也可讓您指定在 Azure 中執行函數應用程式的作業系統。 使用 `os` 元素選擇作業系統。 
 
-| 元素 |  Windows | Linux | Docker |
+| 項目 |  Windows | Linux | Docker |
 | ---- | ---- | ---- | --- |
 | **`os`** | windows | Linux | docker |
 

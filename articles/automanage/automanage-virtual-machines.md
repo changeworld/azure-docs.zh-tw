@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 338fe463cec4c44b1ddf019d9ecb435736e46826
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f6786ad8b7a9a635770be378e3efd0716be2428
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91816820"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519651"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>適用于虛擬機器的 Azure Automanage
 
@@ -58,7 +58,7 @@ ms.locfileid: "91816820"
 
 請參閱適用于 [虛擬機器的 Azure Automanage 最佳作法](virtual-machines-best-practices.md) ，以取得參與的 azure 服務完整清單，以及其支援的設定設定檔。
 
- 我們會自動將您帶到這些參與的服務。 這些是我們的最佳作法白皮書，您可以在我們的 [雲端採用架構](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/azure-server-management)中找到這份白皮書。
+ 我們會自動將您帶到這些參與的服務。 這些是我們的最佳作法白皮書，您可以在我們的 [雲端採用架構](/azure/cloud-adoption-framework/manage/azure-server-management)中找到這份白皮書。
 
 針對這些服務，我們將會自動上架、autoconfigure、監視漂移，以及在偵測到漂移時進行監看。
 

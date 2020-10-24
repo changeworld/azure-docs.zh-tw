@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: e3ec25504decca0747c8a853bb88ab3e7a10966a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76b5f279294dda0d2b1c01bf8cdd803390b04cec
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546316"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520025"
 ---
 # <a name="tutorial-configure-wrike-for-automatic-user-provisioning"></a>教學課程：設定 Wrike 來自動布建使用者
 
 本教學課程的目的是要示範您在 Wrike 和 Azure Active Directory (中執行的步驟，Azure AD) 將 Azure AD 設定為自動布建和取消布建要 Wrike 的使用者或群組。
 
 > [!NOTE]
-> 本教學課程說明建立在 Azure AD 使用者布建服務之上的連接器。 如需此服務的用途、運作方式和常見問題的重要詳細資訊，請參閱 [使用 Azure Active Directory 將使用者布建和解除布建至軟體即服務 (SaaS) 應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
+> 本教學課程說明建立在 Azure AD 使用者布建服務之上的連接器。 如需此服務的用途、運作方式和常見問題的重要詳細資訊，請參閱 [使用 Azure Active Directory 將使用者布建和解除布建至軟體即服務 (SaaS) 應用程式](../app-provisioning/user-provisioning.md)。
 >
 > 此連接器目前為公開預覽版。 如需預覽功能的一般 Microsoft Azure 使用條款的詳細資訊，請參閱 [Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。
 
@@ -133,13 +133,13 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-8. 選取 [儲存]****。
+8. 選取 [儲存]。
 
 9. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Wrike**]。
 
     ![Wrike 使用者對應](media/Wrike-provisioning-tutorial/Wrike-user-mappings.png)
 
-10. 在 [ **屬性** 對應] 區段中，檢查從 Azure AD 同步處理到 Wrike 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Wrike 中的使用者帳戶以進行更新作業。 選取 [儲存]  認可任何變更。
+10. 在 [ **屬性** 對應] 區段中，檢查從 Azure AD 同步處理到 Wrike 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Wrike 中的使用者帳戶以進行更新作業。 選取 [儲存] 認可任何變更。
 
     ![Wrike 使用者屬性](media/Wrike-provisioning-tutorial/Wrike-user-attributes.png)
 

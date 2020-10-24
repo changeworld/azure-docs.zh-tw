@@ -8,23 +8,23 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c31ebfedeee0fe208f68c190402796b98c73ea1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 000e43a7861bd155ebbd7175db96dd323731464b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85829868"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518206"
 ---
 # <a name="how-to-secure-your-private-cloud-environment"></a>如何保護您的私用雲端環境
 
 針對 CloudSimple Service、CloudSimple 入口網站和 Azure 中的私人雲端，定義角色型存取控制 (RBAC) 。  存取私人雲端 vCenter 的使用者、群組和角色是使用 VMware SSO 指定的。  
 
-## <a name="rbac-for-cloudsimple-service"></a>CloudSimple 服務的 RBAC
+## <a name="azure-rbac-for-cloudsimple-service"></a>適用于 CloudSimple 服務的 Azure RBAC
 
 建立 CloudSimple 服務需要 Azure 訂用帳戶的 **擁有** 者或 **參與者** 角色。  依預設，所有擁有者和參與者都可以建立 CloudSimple 服務，並存取 CloudSimple 入口網站來建立和管理私人雲端。  每個區域只可建立一個 CloudSimple 服務。  若要限制特定系統管理員的存取權，請依照下列程式進行操作。
 
 1. 在 Azure 入口網站上的新 **資源群組** 中建立 CloudSimple 服務
-2. 指定資源群組的 RBAC。
+2. 指定資源群組的 Azure RBAC。
 3. 購買節點並使用與 CloudSimple 服務相同的資源群組
 
 只有擁有資源 **群組擁有者** 或 **參與者** 許可權的使用者，才會看到 CloudSimple 服務和啟動 CloudSimple 入口網站。

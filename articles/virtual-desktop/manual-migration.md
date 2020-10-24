@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 74527f57340f850b60dd00dcd054992c423a49c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd292fa6b4f613e0a5f5a80e0cd87675f529baf5
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90039001"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516166"
 ---
 # <a name="migrate-manually-from-windows-virtual-desktop-classic"></a>從 Windows 虛擬桌面手動遷移 (傳統) 
 
@@ -35,7 +35,7 @@ Windows 虛擬桌面最新的重大更新，會將服務中的轉移標示為完
 - 透過 Azure 入口網站管理 Windows 虛擬桌面。
 - 將 Azure Active Directory (AD) 使用者群組指派給應用程式群組。
 - 使用改良的 Log Analytics 功能來疑難排解您的部署。
-- 使用 Azure 原生 Role-Based 存取控制來管理系統管理存取權。
+- 使用 Azure 原生角色型存取控制 (Azure RBAC) 來管理系統管理存取權。
 
 ## <a name="when-should-i-migrate"></a>我應該在何時遷移？
 

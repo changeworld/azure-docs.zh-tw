@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: def394369ebcb8b457d78ad6537830487e8049f7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 6fd20cd9e3172d6ce80d2c18c2cfa41fcc044929
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277517"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92508024"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什麼是 Azure 私人端點？
 
@@ -22,7 +22,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
  私人端點指定了下列屬性： 
 
 
-|屬性  |描述 |
+|屬性  |說明 |
 |---------|---------|
 |名稱    |    資源群組內的唯一名稱。      |
 |子網路    |  要從虛擬網路部署和配置私人 IP 位址的子網路。 如需子網路需求，請參閱此文章的＜限制＞一節。         |
@@ -133,15 +133,16 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 
 
 ## <a name="next-steps"></a>後續步驟
-- [使用入口網站建立 SQL Database 的私人端點 ](create-private-endpoint-portal.md)
-- [使用 PowerShell 建立 SQL Database 的私人端點 ](create-private-endpoint-powershell.md)
-- [使用 CLI 建立 SQL Database 的私人端點 ](create-private-endpoint-cli.md)
-- [使用入口網站建立適用於儲存體帳戶的私人端點](create-private-endpoint-storage-portal.md)
-- [使用入口網站建立適用於 Azure Cosmos 帳戶的私人端點](../cosmos-db/how-to-configure-private-endpoints.md)
+- [使用入口網站建立 SQL Database 的私人端點](create-private-endpoint-portal.md)
+- [使用 PowerShell 建立 SQL Database 的私人端點](create-private-endpoint-powershell.md)
+- [使用 CLI 建立 SQL Database 的私人端點](create-private-endpoint-cli.md)
+- [使用入口網站建立儲存體帳戶的私人端點](create-private-endpoint-storage-portal.md)
+- [使用入口網站建立 Azure Cosmos 帳戶的私人端點](../cosmos-db/how-to-configure-private-endpoints.md)
 - [使用 Azure PowerShell 建立您自己的 Private Link 服務](create-private-link-service-powershell.md)
-- [針對適用於 PostgreSQL 的 Azure 資料庫建立您自己的 Private Link - 使用入口網站的單一伺服器](../postgresql/howto-configure-privatelink-portal.md)
+- [使用入口網站為適用於 PostgreSQL 的 Azure 資料庫單一伺服器建立您自己的 Private Link](../postgresql/howto-configure-privatelink-portal.md)
 - [針對適用於 PostgreSQL 的 Azure 資料庫建立您自己的 Private Link - 使用 CLI 的單一伺服器](../postgresql/howto-configure-privatelink-cli.md)
-- [使用入口網站針對適用於 MySQL 的 Azure 資料庫建立您自己的 Private Link](../mysql/howto-configure-privatelink-portal.md)
+- [使用入口網站為適用於 MySQL 的 Azure 資料庫建立您自己的 Private Link](../mysql/howto-configure-privatelink-portal.md)
 - [使用 CLI 針對適用於 MySQL 的 Azure 資料庫建立您自己的 Private Link](../mysql/howto-configure-privatelink-cli.md)
-- [使用入口網站針對適用於 MariaDB 的 Azure 資料庫建立您自己的 Private Link](../mariadb/howto-configure-privatelink-portal.md)
+- [使用入口網站為適用於 MariaDB 的 Azure 資料庫建立您自己的 Private Link](../mariadb/howto-configure-privatelink-portal.md)
 - [使用 CLI 針對適用於 MariaDB 的 Azure 資料庫建立您自己的 Private Link](../mariadb/howto-configure-privatelink-cli.md)
+- [使用入口網站和 CLI 為 Azure Key Vault 建立您自己的 Private Link](../key-vault/general/private-link-service.md)

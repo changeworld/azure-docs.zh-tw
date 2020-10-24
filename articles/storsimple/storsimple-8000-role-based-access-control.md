@@ -1,5 +1,5 @@
 ---
-title: 使用適用於 StorSimple 的角色型存取控制 | Microsoft Docs
+title: 使用適用于 StorSimple 的 Azure 角色型存取控制 |Microsoft Docs
 description: 說明如何在 StorSimple 內容中使用 Azure 角色型存取控制 (Azure RBAC) 。
 services: storsimple
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: 38500edeca2241bfa9ab093e037af18159994b02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49c38e23ddbbfe983ff82ad25363c744292d4d69
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87920394"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518971"
 ---
-# <a name="role-based-access-control-for-storsimple"></a>適用於 StorSimple 的角色型存取控制
+# <a name="azure-role-based-access-control-for-storsimple"></a>適用于 StorSimple 的 Azure 角色型存取控制
 
-本文提供 Azure 角色型存取控制 (Azure RBAC) 如何用於 StorSimple 裝置的簡短描述。 RBAC 可提供細部的 Azure 存取管理能力。 使用 RBAC 授與 StorSimple 使用者適量的存取權以執行其工作，而非讓所有人不受限制地存取。 如需有關 Azure 存取權管理的基本資訊，請參閱[在 Azure 入口網站中開始使用角色型存取控制](../role-based-access-control/overview.md)。
+本文提供 Azure 角色型存取控制 (Azure RBAC) 如何用於 StorSimple 裝置的簡短描述。 Azure RBAC 可為 Azure 提供更細緻的存取管理。 使用 Azure RBAC 來授與 StorSimple 使用者執行其工作所需的正確存取權，而不是讓所有人都不受限制的存取。 如需 Azure 中存取管理的基本概念詳細資訊，請參閱 [什麼是 azure (AZURE RBAC) 的 azure 角色型存取控制 ](../role-based-access-control/overview.md)。
 
 本文僅適用於 Azure 入口網站中執行 3.0 更新版本或以上版本的 StorSimple 8000 系列裝置。
 
@@ -31,7 +31,7 @@ ms.locfileid: "87920394"
 
 ## <a name="azure-roles-for-storsimple"></a>適用于 StorSimple 的 Azure 角色
 
-您可以根據角色指派 RBAC。 該角色會以環境中可用的資源作為基礎來確保特定權限等級。 StorSimple 使用者可以選擇兩種角色類型：內建或自訂。
+您可以根據角色指派 Azure RBAC。 該角色會以環境中可用的資源作為基礎來確保特定權限等級。 StorSimple 使用者可以選擇兩種角色類型：內建或自訂。
 
 * **內建角色** - 內建角包可能是擁有者、參與者、讀者或使用者存取管理員。 如需詳細資訊，請參閱 [Azure 角色型存取控制的內建角色](../role-based-access-control/built-in-roles.md)。
 

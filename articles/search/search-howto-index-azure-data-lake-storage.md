@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: b1a88398d657e6bc242c7db12f3c0ddc1af828ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a585fa1c3c56d285859171e6b5673fe57beffb3
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935852"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517316"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>在 Azure Data Lake Storage Gen2 中編制檔索引
 
@@ -44,7 +44,7 @@ ms.locfileid: "88935852"
 
 ## <a name="access-control"></a>存取控制
 
-Azure Data Lake Storage Gen2 會實作為 [存取控制模型](../storage/blobs/data-lake-storage-access-control.md) ，以支援 azure 角色型存取控制 (azure RBAC) 和類似 POSIX 的存取控制清單 (acl) 。 從 Data Lake Storage Gen2 編制內容索引時，Azure 認知搜尋不會從內容中解壓縮 RBAC 和 ACL 資訊。 因此，此資訊不會包含在您的 Azure 認知搜尋索引中。
+Azure Data Lake Storage Gen2 會實作為 [存取控制模型](../storage/blobs/data-lake-storage-access-control.md) ，以支援 azure 角色型存取控制 (azure RBAC) 和類似 POSIX 的存取控制清單 (acl) 。 從 Data Lake Storage Gen2 編制內容索引時，Azure 認知搜尋不會從內容中解壓縮 Azure RBAC 和 ACL 資訊。 因此，此資訊不會包含在您的 Azure 認知搜尋索引中。
 
 如果在索引中維護每個檔的存取控制是很重要的，應用程式開發人員必須負責執行 [安全性](./search-security-trimming-for-azure-search.md)調整。
 

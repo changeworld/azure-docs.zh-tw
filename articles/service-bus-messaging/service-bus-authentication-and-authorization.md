@@ -3,18 +3,18 @@ title: Azure 服務匯流排驗證和授權 | Microsoft Docs
 description: 使用共用存取簽章 (SAS) 驗證向服務匯流排驗證應用程式。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: d5d0ed03c869bd574e4cfaa52ac7b62e8cb7fb98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a71cef6aad973f3c39ef61a8dbab313ebfca44ef
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88066855"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517275"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>服務匯流排驗證和授權
 有兩種方式可以驗證和授權 Azure 服務匯流排資源的存取權： Azure 活動目錄 (Azure AD) 和共用存取簽章 (SAS) 。 本文將詳細說明如何使用這兩種類型的安全性機制。 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-服務匯流排資源的 Azure AD 整合會提供角色型存取控制 (RBAC) 以精細控制用戶端對資源的存取。 您可以使用角色型存取控制 (RBAC) 將許可權授與安全性主體，該安全性主體可能是使用者、群組或應用程式服務主體。 安全性主體會由 Azure AD 進行驗證，以傳回 OAuth 2.0 權杖。 權杖可以用來授權要求存取服務匯流排資源 (佇列、主題等 ) 。
+服務匯流排資源的 Azure AD 整合可提供 Azure 角色型存取控制 (Azure RBAC) ，以精細控制用戶端對資源的存取。 您可以使用 Azure RBAC 將許可權授與安全性主體，該安全性主體可能是使用者、群組或應用程式服務主體。 安全性主體會由 Azure AD 進行驗證，以傳回 OAuth 2.0 權杖。 權杖可以用來授權要求存取服務匯流排資源 (佇列、主題等 ) 。
 
 如需有關使用 Azure AD 進行驗證的詳細資訊，請參閱下列文章：
 

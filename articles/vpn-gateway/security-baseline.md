@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7604e8519e7ae8db255a0e033ca3df0bb941a845
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: df3ae57652737acc2b23cda75ace361f0bb40340
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626253"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518180"
 ---
 # <a name="azure-security-baseline-for-vpn-gateway"></a>適用于 VPN 閘道的 Azure 安全性基準
 
@@ -178,7 +178,7 @@ ms.locfileid: "91626253"
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
-**指導**方針： Azure 角色型存取控制 (RBAC) 可讓您透過角色指派來管理 azure 資源的存取權。 您可以將這些角色指派給使用者、群組服務主體和受控識別。 某些資源有預先定義的內建角色，而這些角色可透過 Azure CLI、Azure PowerShell 或 Azure 入口網站等工具進行清查或查詢。
+**指導**方針： azure 角色型存取控制 (azure RBAC) 可讓您透過角色指派來管理 Azure 資源的存取權。 您可以將這些角色指派給使用者、群組服務主體和受控識別。 某些資源有預先定義的內建角色，而這些角色可透過 Azure CLI、Azure PowerShell 或 Azure 入口網站等工具進行清查或查詢。
 
 - [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0) 
 
@@ -310,7 +310,7 @@ ms.locfileid: "91626253"
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
-**指導**方針： VPN 閘道針對每個客戶虛擬網路都有專用的 VM 實例。 使用個別的虛擬網路、訂用帳戶和管理群組針對個別的安全性網域（例如環境類型和資料敏感度層級）來執行隔離。 您可以限制您的應用程式和企業環境所需的 Azure 資源存取層級。 您可以透過 Azure Active Directory 角色型存取控制，來控制 Azure 資源的存取權。
+**指導**方針： VPN 閘道針對每個客戶虛擬網路都有專用的 VM 實例。 使用個別的虛擬網路、訂用帳戶和管理群組針對個別的安全性網域（例如環境類型和資料敏感度層級）來執行隔離。 您可以限制您的應用程式和企業環境所需的 Azure 資源存取層級。 您可以透過 Azure 角色型存取控制 (Azure RBAC) 來控制 Azure 資源的存取權。
 
 - [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription)
 
@@ -362,11 +362,11 @@ ms.locfileid: "91626253"
 
 **責任**：客戶
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用角色型存取控制來控制資源的存取權
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指導**方針：使用 Azure AD RBAC 來控制資料和資源的存取權，否則請使用服務特定的存取控制方法。 使用內建的角色型存取控制角色，例如擁有者、參與者或網路參與者，然後將角色指派給適當的範圍。 藉由建立自訂角色，並將虛擬網路、子網、VPN 閘道、網路介面、網路安全性群組和路由表所需的特定許可權指派給角色，為虛擬網路功能的子集指派特定許可權。
+**指導**方針：使用 azure 角色型存取控制 (azure RBAC) 來控制資料和資源的存取權，否則請使用服務特定的存取控制方法。 使用內建角色，例如擁有者、參與者或網路參與者，然後將角色指派給適當的範圍。 藉由建立自訂角色，並將虛擬網路、子網、VPN 閘道、網路介面、網路安全性群組和路由表所需的特定許可權指派給角色，為虛擬網路功能的子集指派特定許可權。
 
-- [如何在 Azure 中設定 RBAC](../role-based-access-control/role-assignments-portal.md)
+- [如何設定 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 - [規劃虛擬網路](../virtual-network/virtual-network-vnet-plan-design-arm.md#permissions)
 

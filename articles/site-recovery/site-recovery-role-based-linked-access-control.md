@@ -1,21 +1,21 @@
 ---
 title: 在 Azure Site Recovery 中管理 Azure 角色型存取控制
-description: 此文章說明如何套用角色型存取控制 (RBAC) 來管理 Azure Site Recovery 存取。
+description: 本文說明如何將 Azure 角色型存取控制 (Azure RBAC) ，以管理 Azure Site Recovery 存取。
 ms.service: site-recovery
 ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 95ea8b61b01b17512d99d0316073835326e6d7bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3e1334f513e8ac587d639758d83ce080c5b4ab9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927159"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516897"
 ---
-# <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>使用角色型存取控制 (RBAC) 管理 Site Recovery 存取
+# <a name="manage-site-recovery-access-with-azure-role-based-access-control-azure-rbac"></a>使用 Azure RBAC) 的 Azure 角色型存取控制來管理 Site Recovery 存取 (
 
-Azure 角色型存取控制 (Azure RBAC) 可讓您對 Azure 進行更細緻的存取管理。 您可以使用 RBAC 劃分小組責任，並只將特定存取權限授與需要執行特定工作的使用者。
+Azure 角色型存取控制 (Azure RBAC) 可讓您對 Azure 進行更細緻的存取管理。 您可以使用 Azure RBAC 來隔離小組內的責任，並視需要授與使用者特定的存取權限，以執行特定工作。
 
 Azure Site Recovery 提供 3 種內建角色，以控制 Site Recovery 管理作業。 深入瞭解 [Azure 內建角色](../role-based-access-control/built-in-roles.md)
 
@@ -23,7 +23,7 @@ Azure Site Recovery 提供 3 種內建角色，以控制 Site Recovery 管理作
 * [Site Recovery 操作員](../role-based-access-control/built-in-roles.md#site-recovery-operator) - 此角色具有執行和管理容錯移轉和容錯回復作業的權限。 具有此角色的使用者無法啟用或停用複寫、建立或刪除保存庫、註冊新的基礎結構，也無法為其他使用者指派存取權限。 此角色最適合災害復原操作員，當應用程式擁有者和 IT 系統管理員在實際或模擬災害情況 (例如災害復原演習) 中指示時，操作員可以對虛擬機器或應用程式進行容錯移轉。 災害解決後，災害復原操作員可以重新保護和容錯回復虛擬機器。
 * [Site Recovery 讀者](../role-based-access-control/built-in-roles.md#site-recovery-reader)：此角色擁有可檢視所有 Site Recovery 管理作業的權限。 此角色最適合 IT 監督主管，以便監控目前的保護狀態，並在需要時提出支援票證。
 
-如果您想要定義自己的角色以獲得更進一步控制，請參閱如何在 Azure 中[建立自訂角色](../role-based-access-control/custom-roles.md)。
+如果您想要定義您自己的角色以進行更多的控制，請參閱如何在 Azure 中 [建立自訂角色](../role-based-access-control/custom-roles.md) 。
 
 ## <a name="permissions-required-to-enable-replication-for-new-virtual-machines"></a>啟用新虛擬機器複寫所需的權限
 當使用 Azure Site Recovery 將新的虛擬機器複寫至 Azure 時，系統會驗證相關聯使用者的存取層級，以確定使用者擁有使用提供給 Site Recovery 的 Azure 資源所需的權限。
@@ -72,9 +72,9 @@ Azure Site Recovery 提供 3 種內建角色，以控制 Site Recovery 管理作
 請考慮分別為 Resource Manager 與傳統部署模型使用「虛擬機器參與者」與「傳統虛擬機器參與者」[內建角色](../role-based-access-control/built-in-roles.md)。
 
 ## <a name="next-steps"></a>後續步驟
-* [Azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/role-assignments-portal.md)：開始使用 Azure 入口網站中的 RBAC。
+* [Azure 角色型存取控制 (AZURE rbac) ](../role-based-access-control/role-assignments-portal.md)：開始使用 Azure 入口網站中的 azure rbac。
 * 了解如何使用下列各項管理存取權：
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
-* [角色型存取控制疑難排解](../role-based-access-control/troubleshooting.md)︰取得修正常見問題的建議。
+* [AZURE RBAC 疑難排解](../role-based-access-control/troubleshooting.md)：取得修正常見問題的建議。

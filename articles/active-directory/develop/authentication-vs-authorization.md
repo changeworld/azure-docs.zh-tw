@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 095bc5594cf9b6eaf0df7929ea83c25a401793e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 320debcf2b744e949faf7b29dd72ed334fe0feea
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86252108"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503720"
 ---
 # <a name="authentication-vs-authorization"></a>驗證與授權
 
@@ -35,6 +35,8 @@ ms.locfileid: "86252108"
 ## <a name="authentication-and-authorization-using-microsoft-identity-platform"></a>使用 Microsoft 身分識別平台的驗證與授權
 
 應用程式不是建立應用程式，需要個別維護自己的使用者名稱和密碼資訊，因為這樣當您需要跨多個應用程式新增或移除使用者時，會產生高系統管理負擔，而是應用程式可以將該責任委派給集中式識別提供者。
+
+> [!VIDEO https://www.youtube.com/embed/tkQJSHFsduY]
 
 Azure Active Directory (Azure AD) 是雲端中的集中式識別提供者。 將驗證與授權委派給識別提供者可啟用例如條件式存取原則的案例，該原則會要求使用者位於特定位置、使用[多重要素驗證](../authentication/concept-mfa-howitworks.md) (有時稱為雙因素驗證或 2FA)，以及讓使用者登入一次，然後自動登入共用相同集中式目錄的所有 Web 應用程式。 這項功能稱為**單一登入 (SSO)** 。
 

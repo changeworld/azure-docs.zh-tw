@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 583384d6f0ec71dc724868db61ee07ead7269607
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aad5ebaf7eef5b404f7849b79694facf1efd01b4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287316"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519434"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>使用 Azure 檔案儲存體和 AD DS 建立設定檔容器
 
@@ -60,7 +60,7 @@ ms.locfileid: "91287316"
 
 3. 選取 [ **+ 檔案共用**]，建立名為 **設定檔**的新檔案共用，然後輸入適當的配額，或將欄位保留空白表示無配額。
 
-4. 選取 [建立]****。
+4. 選取 [建立]。
 
 ## <a name="enable-active-directory-authentication"></a>啟用 Active Directory authentication
 
@@ -86,7 +86,7 @@ ms.locfileid: "91287316"
 >[!NOTE]
 >您為其指派權限的帳戶或群組應已建立在網域中，並且與 Azure AD 同步。 在 Azure AD 中建立的帳戶將無法運作。
 
-若要指派角色型存取控制 (RBAC) 許可權：
+若要將 Azure 角色型存取控制指派 (Azure RBAC) 許可權：
 
 1. 開啟 Azure 入口網站。
 
@@ -102,11 +102,11 @@ ms.locfileid: "91287316"
 
      若要為使用者指派其 FSLogix 設定檔的權限，請依照相同的指示操作。 但是，當您進入步驟5時，請改為選取 **儲存體檔案資料 SMB 共用參與者** 。
 
-7. 選取 [儲存]****。
+7. 選取 [儲存]。
 
 ## <a name="assign-users-permissions-on-the-azure-file-share"></a>在 Azure 檔案共用上指派使用者的許可權
 
-將 RBAC 權限指派給使用者之後，接下來您必須設定 NTFS 權限。
+當您將 Azure RBAC 許可權指派給使用者之後，接下來您必須設定 NTFS 許可權。
 
 您必須知道 Azure 入口網站的兩個專案，才能開始使用：
 
@@ -131,7 +131,7 @@ ms.locfileid: "91287316"
     - 將正斜線取代為 `/` 反斜線 `\` 。
     - 將您在 [建立 Azure 檔案共用](#create-an-azure-file-share) 時所建立的檔案共用名稱新增至 UNC 結尾。
 
-        例如： `\\customdomain.file.core.windows.net\<fileshare-name>`
+        例如：`\\customdomain.file.core.windows.net\<fileshare-name>`
 
 ### <a name="get-the-storage-account-key"></a>取得儲存體帳戶金鑰
 

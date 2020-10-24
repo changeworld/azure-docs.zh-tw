@@ -5,12 +5,12 @@ author: macolso
 ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 1cedfb7464fd97249c5cd3fae73c9290365da6cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4760463a4d71e4c097b082aa6b93d8b339f94ca
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91818490"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516965"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>關於 Azure 容器實例的常見問題
 
@@ -61,7 +61,7 @@ Azure 容器實例上可部署容器映射的大小上限為 15 GB。 您可以�
 
 這真的取決於您的工作負載。 啟動小規模和測試效能，以查看容器的執行方式。 [監視 CPU 和記憶體資源使用量](container-instances-monitor.md)，然後根據您在容器中部署的進程類型來新增核心或記憶體。
 
-請務必檢查您正在部署之區域的 [資源可用性](container-instances-region-availability.md#availability---general) ，以瞭解每個容器群組可用的 CPU 核心和可用記憶體上限。 
+請務必檢查您正在部署之區域的 [資源可用性](container-instances-region-availability.md) ，以瞭解每個容器群組可用的 CPU 核心和可用記憶體上限。 
 
 > [!NOTE]
 > 服務的基礎結構會使用少量的容器群組資源。 您的容器將能存取大部分的資源，而不是所有配置給該群組的資源。 基於這個理由，在要求群組中容器的資源時，請規劃小型資源緩衝區。
@@ -80,7 +80,7 @@ Azure 容器實例的目標是無伺服器的容器隨選服務，因此我們�
 
 ### <a name="when-will-aci-be-in-a-specific-region"></a>ACI 何時會在特定區域中？
 
-目前的區域可用性發佈 [位置](container-instances-region-availability.md#availability---general)。 如果您有特定區域的需求，請聯絡 Azure 支援。
+目前的區域可用性發佈 [位置](container-instances-region-availability.md)。 如果您有特定區域的需求，請聯絡 Azure 支援。
 
 ## <a name="features-and-scenarios"></a>功能和案例
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 82cd39fdefef477e3761d8d7ab771301cea962e2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b81dfec5e8ee828fba202f14967a4583bde32ed3
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92443216"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503754"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>教學課程：設定 Hootsuite 來自動佈建使用者
 
@@ -49,7 +49,7 @@ ms.locfileid: "92443216"
 
 ## <a name="step-3-add-hootsuite-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫新增 Hootsuite
 
-從 Azure AD 應用程式庫新增 Hootsuite，以開始管理對 Hootsuite 的佈建。 如果您先前已針對 SSO 設定 Hootsuite，則可使用相同的應用程式。 不過，建議在一開始測試整合時，建立個別的應用程式。 [在此](../manage-apps/add-application-portal.md)深入了解從資源庫新增應用程式。 
+從 Azure AD 應用程式庫新增 Hootsuite，以開始管理對 Hootsuite 的佈建。 如果您先前已設定 SSO 的 Hootsuite，您可以使用相同的應用程式。 不過，建議在一開始測試整合時，建立個別的應用程式。 [在此](../manage-apps/add-application-portal.md)深入了解從資源庫新增應用程式。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步驟 4： 定義將在佈建範圍內的人員 
 
@@ -108,30 +108,46 @@ Azure AD 佈建服務可讓您根據對應用程式的指派，或根據使用�
    |displayName|String|
    |preferredLanguage|String|
    |timezone|String|
-   |urn:ietf:params:scim:schemas:extension:Hootsuite:2.0:User:organizationIds|String|
-   |urn:ietf:params:scim:schemas:extension:Hootsuite:2.0:User:teamIds|String|
+   |name.givenName|String|
+   |name.familyName|String|
 
-10. 若要對 Hootsuite 啟用 Azure AD 佈建服務，請在 [設定] 區段中，將 [佈建狀態] 變更為 [開啟]。
+10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組**]。
+
+11. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Hootsuite 的群組屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Hootsuite 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
+
+      |屬性|類型|
+      |---|---|
+      |displayName|String|
+      |externalId|String|
+      |members|參考|
+
+12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
+
+13. 若要對 Hootsuite 啟用 Azure AD 佈建服務，請在 [設定] 區段中，將 [佈建狀態] 變更為 [開啟]。
 
     ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-11. 透過在 [設定] 區段的 [範圍] 中選擇需要的值，可定義要佈建到 Hootsuite 的使用者和/或群組。
+14. 透過在 [設定] 區段的 [範圍] 中選擇需要的值，可定義要佈建到 Hootsuite 的使用者和/或群組。
 
     ![佈建範圍](common/provisioning-scope.png)
 
-12. 當您準備好要佈建時，按一下 [儲存]。
+15. 當您準備好要佈建時，按一下 [儲存]  。
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
-此作業會對在 [設定] 區段的 [範圍] 中定義的所有使用者和群組，啟動初始同步處理週期。 初始週期會比後續週期花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 
+此作業會對在 [設定] 區段的 [範圍] 中所定義所有使用者和群組啟動首次同步處理週期。 初始週期會比後續週期花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 
 
 ## <a name="step-6-monitor-your-deployment"></a>步驟 6. 監視您的部署
 設定佈建後，請使用下列資源來監視您的部署：
 
 * 使用[佈建記錄](../reports-monitoring/concept-provisioning-logs.md) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
 * 檢查[進度列](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
-* 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](../app-provisioning/application-provisioning-quarantine-status.md) \(部分機器翻譯\) 深入了解隔離狀態。  
+* 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](../app-provisioning/application-provisioning-quarantine-status.md)深入了解隔離狀態。  
 
+## <a name="change-log"></a>變更記錄
+
+* 10/22/2020-已新增對使用者屬性 "givenName" 和 "name. familyName" 的支援。 已移除使用者的自訂延伸模組屬性 "organizationIds" 和 "teamIds"。
+新增對群組屬性 "displayName"、"members" 和 "externalId" 的支援。
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -3,12 +3,12 @@ title: 驗證應用程式以存取 Azure 服務匯流排實體
 description: '本文提供的資訊說明如何使用 Azure Active Directory 來驗證應用程式，以存取 (佇列、主題等 Azure 服務匯流排實體 ) '
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: b12f2f294a66159a7035240c361ab93f9f84718e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4e19c0ab26d491ba0b95159e274383431aefaee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88064820"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518223"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>使用 Azure Active Directory 來驗證和授權應用程式，以存取 Azure 服務匯流排實體
 Azure 服務匯流排支援使用 Azure Active Directory (Azure AD) 來授權 (佇列、主題、訂用帳戶或篩選) 的服務匯流排實體的要求。 使用 Azure AD 時，您可以使用 Azure 角色型存取控制 (Azure RBAC) 來授與許可權給安全性主體，該安全性主體可能是使用者、群組或應用程式服務主體。 若要深入瞭解角色和角色指派，請參閱 [瞭解不同的角色](../role-based-access-control/overview.md)。
@@ -131,7 +131,7 @@ Azure Active Directory (Azure AD) 透過 [AZURE RBAC](../role-based-access-contr
 如需支援取得權杖的案例清單，請參閱[Microsoft 驗證程式庫 (MSAL) 中的「適用于 .Net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) GitHub 存放庫的[案例](https://aka.ms/msal-net-scenarios)」一節。
 
 ## <a name="sample-on-github"></a>GitHub 上的範例
-請參閱 GitHub 上的下列範例： [服務匯流排的角色-基底存取控制](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)。 
+請參閱 GitHub 上的下列範例： [適用于服務匯流排的 Azure 角色型存取控制](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)。 
 
 使用 **用戶端密碼登** 入選項，而非 **互動式使用者登** 入選項。 當您使用 [用戶端密碼] 選項時，您不會看到快顯視窗。 應用程式會利用租使用者識別碼和應用程式識別碼進行驗證。 
 

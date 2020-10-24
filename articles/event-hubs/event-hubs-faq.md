@@ -3,12 +3,12 @@ title: 常見問題集 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供 Azure 事件中樞的常見問題集 (FAQ) 清單及其答案。
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 511706e0de2737feb259c0ff9529373ab8b6d026
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: c95016064ecc9bbfc091138863c8215feeec50b4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495225"
+ms.locfileid: "92518019"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中樞常見問題集
 
@@ -42,13 +42,13 @@ Azure 事件中樞的標準層提供比基本層更多的功能。 標準層包�
 
 在所有支援的 Azure 區域皆提供 Azure 事件中樞。 如需清單，請瀏覽 [Azure 區域](https://azure.microsoft.com/regions/)頁面。  
 
-### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>我是否可以使用單一 AMQP 連線，從多個事件中樞進行傳送及接收？
+### <a name="can-i-use-a-single-advanced-message-queuing-protocol-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>我可以使用單一 Advanced Message AMQP 通訊協定 () 連線，以從多個事件中樞進行傳送和接收嗎？
 
 是。只要所有事件中樞都位於相同的命名空間內即可。
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>事件的最大保留期間是多少？
 
-事件中樞標準層目前支援的最大保留期間為七天。 事件中樞不適合用來作為永久資料存放區。 大於 24 小時的保留期間乃專為方便地在同一系統上重新執行事件串流的案例而設計。例如，根據現有資料來訓練或驗證新機器學習模型。 如果您需要保留訊息七天以上，在事件中樞上啟用[事件中樞擷取](event-hubs-capture-overview.md)，會將資料從事件中樞提取到您選擇的儲存體帳戶或 Azure Data Lake 服務帳戶。 啟用擷取將會產生費用，費用根據您購買的輸送量單位而定。
+事件中樞標準層目前支援的最大保留期間為七天。 事件中樞不適合用來作為永久資料存放區。 超過24小時的保留期限適用于將事件串流重新執行至相同系統的情況。 例如，在現有的資料上定型或驗證新的機器學習模型。 如果您需要保留訊息七天以上，在事件中樞上啟用[事件中樞擷取](event-hubs-capture-overview.md)，會將資料從事件中樞提取到您選擇的儲存體帳戶或 Azure Data Lake 服務帳戶。 啟用擷取將會產生費用，費用根據您購買的輸送量單位而定。
 
 您可以在儲存體帳戶上設定已擷取資料的保留期限。 Azure 儲存體**生命週期管理**功能針對一般用途 v2 與 Blob 儲存體帳戶提供了豐富且以規則為基礎的原則。 使用原則可將資料轉換到適當的存取層，或在資料的生命週期結束時過期。 如需詳細資訊，請參閱[管理 Azure Blob 儲存體生命週期](../storage/blobs/storage-lifecycle-management-concepts.md)。 
 
@@ -56,12 +56,12 @@ Azure 事件中樞的標準層提供比基本層更多的功能。 標準層包�
 事件中樞會發出詳盡的計量，以便將您的資源狀態提供給 [Azure 監視器](../azure-monitor/overview.md)。 它們也可以讓您存取事件中樞服務的整體健康情況 (不僅是在命名空間層級，還包括在實體層級)。 了解針對 [Azure 事件中樞](event-hubs-metrics-azure-monitor.md)所提供的監視功能。
 
 ### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Azure 事件中樞儲存客戶資料的位置為何？
-Azure 事件中樞儲存客戶資料。 事件中樞會自動將此資料儲存在單一區域中，因此這項服務會自動滿足區域資料落地需求（包括 [信任中心](https://azuredatacentermap.azurewebsites.net/)內指定的需求）。
+Azure 事件中樞儲存客戶資料。 事件中樞會自動將此資料儲存在單一區域中，因此這項服務會自動滿足區域資料落地需求，包括 [信任中心](https://azuredatacentermap.azurewebsites.net/)內指定的需求。
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>我需要在防火牆上開啟哪些連接埠？ 
 您可以使用下列通訊協定搭配 Azure 服務匯流排來傳送和接收訊息：
 
-- 進階訊息佇列通訊協定 (AMQP)
+- AMQP
 - HTTP
 - Apache Kafka
 
@@ -128,12 +128,23 @@ Azure 事件中樞儲存客戶資料。 事件中樞會自動將此資料儲存�
 ### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>需要針對我現有的應用程式進行哪些設定變更，才能與事件中樞通訊？
 若要連線至事件中樞，您將需要更新 Kafka 用戶端組態。 作法是建立事件中樞命名空間並取得[連接字串](event-hubs-get-connection-string.md)。 變更 bootstrap.servers 以指向事件中樞 FQDN，並將連接埠變更為 9093。 更新 sasl.jaas.config，透過正確的驗證來將 Kafka 用戶端導向到您的事件中樞端點 (此為您取得的連接字串)，如下所示：
 
-bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
+```properties
+bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
+request.timeout.ms=60000
+security.protocol=SASL_SSL
+sasl.mechanism=PLAIN
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
+```
 
 範例：
 
-啟動安裝程式。 servers = dummynamespace。 windows. net： 9093 request.timeout.ms request. timeout. ms = 60000 security. protocol = SASL_SSL SASL。 protocol = 純 sasl.jaas.config= kafka。一般. Required 需要 username = "$ConnectionString" password = "Endpoint = sb：//dummynamespace.servicebus.windows.net/;SharedAccessKeyName = DummyAccessKeyName;SharedAccessKey = XXXXXXXXXXXXXXXXXXXXX ";
-
+```properties
+bootstrap.servers=dummynamespace.servicebus.windows.net:9093
+request.timeout.ms=60000
+security.protocol=SASL_SSL
+sasl.mechanism=PLAIN
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXX";
+```
 注意:如果 sasl.jaas.config 不是您架構中支援的設定，請尋找用來設定 SASL 使用者名稱和密碼的設定，並改用那些設定。 將使用者名稱設定為 $ConnectionString，並將密碼設定為您的事件中樞連接字串。
 
 ### <a name="what-is-the-messageevent-size-for-event-hubs"></a>適用於事件中樞的訊息/事件大小為何？
@@ -259,9 +270,9 @@ bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093 request.timeout.ms=60000 security.p
 ## <a name="azure-stack-hub"></a>Azure Stack Hub
 
 ### <a name="how-can-i-target-a-specific-version-of-azure-storage-sdk-when-using-azure-blob-storage-as-a-checkpoint-store"></a>使用 Azure Blob 儲存體做為檢查點存放區時，如何以特定版本的 Azure 儲存體 SDK 為目標？
-如果您在 Azure Stack Hub 上執行此程式碼，除非您以特定的儲存體 API 版本為目標，否則會遇到執行階段錯誤。 這是因為事件中樞 SDK 會使用 Azure 中可用的最新可用 Azure 儲存體 API，而這可能無法在您的 Azure Stack Hub 平台上使用。 Azure Stack Hub 可能支援不同版本的儲存體 Blob SDK，而不是 Azure 上一般可用的版本。 如果您使用 Azure Blog 儲存體作為檢查點存放區，請檢查 [Azure Stack Hub 組建所支援的 Azure 儲存體 API 版本](/azure-stack/user/azure-stack-acs-differences?#api-version)，並在您的程式碼中以該版本作為目標。 
+如果您在 Azure Stack Hub 上執行此程式碼，除非您以特定的儲存體 API 版本為目標，否則會遇到執行階段錯誤。 這是因為事件中樞 SDK 會使用 Azure 中可用的最新可用 Azure 儲存體 API，而這可能無法在您的 Azure Stack Hub 平台上使用。 Azure Stack Hub 支援的儲存體 Blob SDK 版本可能與 Azure 上通常有的不同。 如果您使用 Azure Blog 儲存體作為檢查點存放區，請檢查 [Azure Stack Hub 組建所支援的 Azure 儲存體 API 版本](/azure-stack/user/azure-stack-acs-differences?#api-version)，並在您的程式碼中以該版本作為目標。 
 
-例如，如果您在 Azure Stack Hub 2005 版上執行，儲存體服務的最高可用版本為 2019-02-02。 根據預設，事件中樞 SDK 用戶端程式庫會使用 Azure 上的最高可用版本 (在 SDK 發行時為 2019-07-07)。 在此情況下，除了本節中的以下步驟外，您還需要新增程式碼，以將儲存體服務 API 版本設為 2019-02-02 為目標。 如需如何以特定儲存體 API 版本為目標的範例，請參閱下列 c #、JAVA、Python 和 JavaScript/TypeScript 範例。  
+例如，如果您是在 Azure Stack Hub 2005 版上執行，則儲存體服務的最高可用版本是2019-02-02 版。 根據預設，事件中樞 SDK 用戶端程式庫會使用 Azure 上的最高可用版本 (在 SDK 發行時為 2019-07-07)。 在此情況下，除了本節中的以下步驟外，您還需要新增程式碼，以將儲存體服務 API 版本設為 2019-02-02 為目標。 如需如何以特定儲存體 API 版本為目標的範例，請參閱下列 c #、JAVA、Python 和 JavaScript/TypeScript 範例。  
 
 如需如何從程式碼將特定儲存體 API 版本設為目標的範例，請參閱 GitHub 上的下列範例： 
 

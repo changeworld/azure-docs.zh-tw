@@ -12,12 +12,12 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: celested
-ms.openlocfilehash: 14a25559b1eddd4adb58ae2106e8c9e92873ea48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eeddecbec31ec1bfa73cf956deb4c50809c50e7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88751228"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521941"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>整合 SaaS 應用程式與 Azure Active Directory 的教學課程
 
@@ -25,7 +25,7 @@ ms.locfileid: "88751228"
 
 如需已預先整合到 Azure AD 的所有 SaaS 應用程式清單，請參閱 [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)。
 
-使用 [應用程式網路入口網站](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing) ，要求將啟用 [SCIM](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups) 的應用程式新增至資源庫以進行自動布建，或將啟用 SAML/OIDC 的應用程式新增至 SSO 的資源庫。
+使用 [應用程式網路入口網站](../azuread-dev/howto-app-gallery-listing.md) ，要求將啟用 [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 的應用程式新增至資源庫以進行自動布建，或將啟用 SAML/OIDC 的應用程式新增至 SSO 的資源庫。
 
 ## <a name="quick-links"></a>快速連結
 
@@ -34,7 +34,7 @@ ms.locfileid: "88751228"
 | ![標誌-Atlassian 雲端](./media/tutorial-list/active-directory-saas-atlassian-cloud-tutorial.png)| [Atlassian Cloud](atlassian-cloud-tutorial.md)| [Atlassian 雲端使用者布建](atlassian-cloud-provisioning-tutorial.md)|
 | ![標誌-ServiceNow](./media/tutorial-list/active-directory-saas-servicenow-tutorial.png)| [ServiceNow](servicenow-tutorial.md)|[ServiceNow - 使用者佈建](servicenow-provisioning-tutorial.md)|
 | ![標誌-空隙](./media/tutorial-list/active-directory-saas-slack-tutorial.png)| [Slack](slack-tutorial.md)|[Slack - 使用者佈建](slack-provisioning-tutorial.md)|
-| ![標誌-SuccessFactors](./media/tutorial-list/active-directory-saas-successfactors-tutorial.png)| [SuccessFactors](successfactors-tutorial.md)| [SuccessFactors-使用者布建](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-tutorial) |
+| ![標誌-SuccessFactors](./media/tutorial-list/active-directory-saas-successfactors-tutorial.png)| [SuccessFactors](successfactors-tutorial.md)| [SuccessFactors-使用者布建](./sap-successfactors-inbound-provisioning-tutorial.md) |
 | ![標誌-Workday](./media/tutorial-list/active-directory-saas-workday-tutorial.png)| [Workday](workday-tutorial.md)| [Workday - 使用者佈建](workday-inbound-tutorial.md)|
 
 若要尋找更多教學課程，請使用左邊的目錄。
@@ -47,7 +47,7 @@ ms.locfileid: "88751228"
 | ![標誌-Alibaba 雲端服務 (角色基底 SSO) ](./media/tutorial-list/active-directory-saas-alibaba-tutorial.png)| [Alibaba Cloud Service (角色基底 SSO) ](alibaba-cloud-service-role-based-sso-tutorial.md)| |
 | ![標誌-Google Cloud Platform](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [Google Cloud Platform](google-apps-tutorial.md)| [Google Cloud Platform-使用者布建](google-apps-provisioning-tutorial.md) |
 | ![標誌-Salesforce](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)| [Salesforce - 使用者佈建](salesforce-provisioning-tutorial.md) |
-| ![標誌-SAP 雲端身分識別平臺](./media/tutorial-list/active-directory-saas-sapboc-tutorial.png)| [SAP 雲端身分識別平臺](saphana-tutorial.md)|[SAP 雲端身分識別平臺-布建](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial) |
+| ![標誌-SAP 雲端身分識別平臺](./media/tutorial-list/active-directory-saas-sapboc-tutorial.png)| [SAP 雲端身分識別平臺](saphana-tutorial.md)|[SAP 雲端身分識別平臺-布建](./sap-cloud-platform-identity-authentication-provisioning-tutorial.md) |
 
 ## <a name="oneclick-sso"></a>OneClick SSO
 
@@ -119,6 +119,6 @@ ms.locfileid: "88751228"
 | ![標誌-Zscaler 二](./media/tutorial-list/active-directory-saas-zscaler-two-tutorial.png)| [Zscaler Two](zscaler-two-tutorial.md)|  
 | ![標誌-Zscaler ZSCloud](./media/tutorial-list/active-directory-saas-zscaler-zscloud-tutorial.png)| [Zscaler ZSCloud](zscaler-zscloud-tutorial.md)|
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解應用程式管理，請參閱[什麼是應用程式管理](../manage-apps/what-is-application-management.md)。
