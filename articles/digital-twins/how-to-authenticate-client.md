@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d4e150eddee947aa4ed6f88c122c0fa6d01a0bae
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 84cb7e7e98e81e242ec1cac554fe073370e45645
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460643"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495786"
 ---
 # <a name="write-client-app-authentication-code"></a>撰寫用戶端應用程式驗證碼
 
@@ -84,6 +84,10 @@ try
 }
 ```
 
+#### <a name="set-up-local-azure-credentials"></a>設定本機 Azure 認證
+
+[!INCLUDE [Azure Digital Twins: local credentials prereq (inner)](../../includes/digital-twins-local-credentials-inner.md)]
+
 ### <a name="managedidentitycredential-method"></a>ManagedIdentityCredential 方法
 
 [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?preserve-view=true&view=azure-dotnet)方法適用于您需要[受控識別 (MSI) ](../active-directory/managed-identities-azure-resources/overview.md)的情況，例如，使用 Azure Functions 時。
@@ -150,7 +154,7 @@ try
 
 如果上述的醒目提示驗證案例並未涵蓋您應用程式的需求，您可以探索 [**Microsoft 身分識別平臺**](../active-directory/develop/v2-overview.md#getting-started)所提供的其他驗證類型。 此平臺的檔涵蓋其他驗證案例，依應用程式類型進行組織。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解 Azure 數位 Twins 中的安全性運作方式：
 * [*概念： Azure 數位 Twins 解決方案的安全性*](concepts-security.md)

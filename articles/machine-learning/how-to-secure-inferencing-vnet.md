@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 10/12/2020
+ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 0eb4f8a7994e7c1d04013e9c9cf92e604ef6a1a7
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: eb7439bc84eaa4bfba58be1059a19ddadfc6a93e
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424453"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496015"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 推斷環境
 
@@ -36,7 +36,7 @@ ms.locfileid: "92424453"
 > - Azure 容器執行個體 (ACI)
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 + 閱讀 [網路安全性總覽](how-to-network-security-overview.md) 文章，以瞭解常見的虛擬網路案例和整體虛擬網路架構。
 
@@ -123,7 +123,7 @@ aks_target = ComputeTarget.create(workspace=ws,
 * __內部 AKS 負載平衡器__：此方法會將您部署的端點設定為 AKS，以使用虛擬網路內的私人 IP。
 
 > [!WARNING]
-> **使用私用 AKS 或內部負載平衡器，但不能同時使用兩者**。
+> 內部負載平衡器無法與使用 kubenet 的 AKS 叢集搭配使用。 如果您想要同時使用內部負載平衡器和私人 AKS 叢集，請使用 Azure 容器網路介面設定私人 AKS 叢集 (CNI) 。 如需詳細資訊，請參閱 [Azure Kubernetes Service 中的設定 AZURE CNI 網路](../aks/configure-azure-cni.md)。
 
 ### <a name="private-aks-cluster"></a>私用 AKS 叢集
 
@@ -134,7 +134,7 @@ aks_target = ComputeTarget.create(workspace=ws,
 > [!IMPORTANT]
 > 在搭配 Azure Machine Learning 使用啟用私人連結的 AKS 叢集之前，您必須開啟支援事件以啟用此功能。 如需詳細資訊，請參閱 [管理和增加配額](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
 
-## <a name="internal-aks-load-balancer"></a>內部 AKS 負載平衡器
+### <a name="internal-aks-load-balancer"></a>內部 AKS 負載平衡器
 
 根據預設，AKS 部署會使用 [公用負載平衡器](../aks/load-balancer-standard.md)。 在本節中，您將瞭解如何設定 AKS 以使用內部負載平衡器。 內部 (或私用) 負載平衡器會在只允許私人 Ip 作為前端時使用。 內部負載平衡器可用來對虛擬網路內的流量進行負載平衡
 

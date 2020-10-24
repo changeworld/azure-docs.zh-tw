@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 7f0a8fcb841399eb910f5f043cc75ddad037ee30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 278603887fe7d47b4be52b04f9f0864be1a1b75b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88606857"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482242"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>規劃和管理 Azure Cosmos DB 的成本
 
@@ -25,7 +25,7 @@ ms.locfileid: "88606857"
 
 瞭解 Azure Cosmos DB 的成本只是您 Azure 帳單中的每月成本的一部分。 如果您使用其他 Azure 服務，您必須針對 Azure 訂用帳戶中使用的所有 Azure 服務和資源（包括協力廠商服務）支付費用。 本文說明如何規劃和管理 Azure Cosmos DB 的成本。 在您熟悉 Azure Cosmos DB 的管理成本之後，您可以套用類似的方法來管理訂用帳戶中所使用之所有 Azure 服務的成本。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 成本分析支援不同的 Azure 帳戶類型。 若要檢視所支援帳戶類型的完整清單，請參閱[了解成本管理資料](../cost-management-billing/costs/understand-cost-mgt-data.md)。 若要檢視成本資料，您至少需要 Azure 帳戶的讀取存取。 如需 Azure 成本管理資料的存取權指派相關資訊，請參閱[指派資料的存取權](../cost-management-billing/costs/assign-access-acm-data.md)。
 
@@ -45,7 +45,7 @@ Azure Cosmos DB 支援兩種類型的容量模式：布 [建的輸送量](set-th
 
 如果您打算在無伺服器模式中使用 Azure Cosmos DB，您需要預估每月可能耗用的 [要求單位](request-units.md) 和 GB 儲存體數量。 您可以評估每個月發出的資料庫作業數目，並將其數量乘以對應的 RU 成本，以估計所需的要求單位數量。 下表列出一般資料庫作業的估計 RU 費用：
 
-| 作業 | 估計成本 | 注意 |
+| 作業 | 估計成本 | 附註 |
 | --- | --- | --- |
 | 建立項目 | 5 RU | 1 KB 專案中索引小於5個屬性的平均成本 |
 | 更新項目 | 10 RU | 1 KB 專案中索引小於5個屬性的平均成本 |
@@ -75,17 +75,17 @@ Azure Cosmos DB 支援兩種類型的容量模式：布 [建的輸送量](set-th
 
 ## <a name="use-budgets-and-cost-alerts"></a>使用預算和成本警示
 
-您可以建立[預算](../cost-management/tutorial-acm-create-budgets.md)來管理成本，以及建立警示，以便在出現異常消費和超支風險時自動通知利害關係人。 警示是以支出為基礎 (相較於預算和成本閾值)。 系統會為 Azure 訂用帳戶和資源群組建立預算和警示，使其在整體成本監視策略中很有用。 不過，它們可能會有有限的功能來管理個別的 Azure 服務成本，例如 Azure Cosmos DB 成本，因為它們是設計用來追蹤較高層級的成本。
+您可以建立[預算](../cost-management-billing/costs/tutorial-acm-create-budgets.md)來管理成本，以及建立警示，以便在出現異常消費和超支風險時自動通知利害關係人。 警示是以支出為基礎 (相較於預算和成本閾值)。 系統會為 Azure 訂用帳戶和資源群組建立預算和警示，使其在整體成本監視策略中很有用。 不過，它們可能會有有限的功能來管理個別的 Azure 服務成本，例如 Azure Cosmos DB 成本，因為它們是設計用來追蹤較高層級的成本。
 
-如果您的 Azure 訂用帳戶有消費限制，Azure 會讓您無法消費于您的點數金額。 當您建立和使用 Azure 資源時，會使用您的點數。 達到您的點數限制時，您部署的資源會在該計費期間的剩餘時間內停用。 您無法變更點數限制，但可以將它移除。 如需消費限制的詳細資訊，請參閱 [Azure 消費限制](../billing/billing-spending-limit.md)。
+如果您的 Azure 訂用帳戶有消費限制，Azure 會讓您無法消費于您的點數金額。 當您建立和使用 Azure 資源時，會使用您的點數。 達到您的點數限制時，您部署的資源會在該計費期間的剩餘時間內停用。 您無法變更點數限制，但可以將它移除。 如需消費限制的詳細資訊，請參閱 [Azure 消費限制](../cost-management-billing/manage/spending-limit.md)。
 
 ## <a name="monitor-costs"></a>監視成本
 
-當您搭配 Azure Cosmos DB 使用資源時，會產生成本。 資源使用量單位成本會隨著時間間隔而有所不同， (秒、分鐘、小時和日) 或依要求單位使用量而有所不同。 一旦 Azure Cosmos DB 開始使用，就會產生成本，而您可以在 Azure 入口網站的 [ [成本分析](../cost-management/quick-acm-cost-analysis.md) ] 窗格中看到成本。
+當您搭配 Azure Cosmos DB 使用資源時，會產生成本。 資源使用量單位成本會隨著時間間隔而有所不同， (秒、分鐘、小時和日) 或依要求單位使用量而有所不同。 一旦 Azure Cosmos DB 開始使用，就會產生成本，而您可以在 Azure 入口網站的 [ [成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md) ] 窗格中看到成本。
 
 當您使用成本分析時，可以在不同時間間隔的圖表和資料表中查看 Azure Cosmos DB 成本。 某些範例是依日、目前、上個月和年。 您也可以根據預算和預測成本來查看成本。 在一段時間內切換至更長的觀點，可協助您找出花費趨勢，並查看可能發生超支的位置。 如果您已建立預算，也可以輕鬆地查看其超出的位置。若要查看成本分析中的 Azure Cosmos DB 成本：
 
-1. 登入[Azure 入口網站](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
 1. 開啟 [ **成本管理 + 計費** ] 視窗，從功能表中選取 [ **成本管理** ]，然後選取 [ **成本分析**]。 然後，您可以從 [ **領域** ] 下拉式清單中變更特定訂用帳戶的範圍。
 
@@ -97,11 +97,11 @@ Azure Cosmos DB 支援兩種類型的容量模式：布 [建的輸送量](set-th
 
 在上述範例中，您會看到二月的目前 Azure Cosmos DB 成本。這些圖表也包含依位置和依資源群組 Azure Cosmos DB 的成本。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請參閱下列文章，以深入瞭解定價在 Azure Cosmos DB 中的運作方式：
 
 * [Azure Cosmos DB 中的計價模式](how-pricing-works.md)
 * [在 Azure Cosmos DB 中最佳化已佈建的輸送量成本](optimize-cost-throughput.md)
-* [在 Azure Cosmos DB 中最佳化查詢成本](optimize-cost-queries.md)
+* [在 Azure Cosmos DB 中最佳化查詢成本](./optimize-cost-reads-writes.md)
 * [在 Azure Cosmos DB 中最佳化儲存體成本](optimize-cost-storage.md)

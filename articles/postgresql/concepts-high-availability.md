@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 075f5fde272d4ee2e932e5f6c1f0e34324c38837
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa9f38b2cefa60a0c3341c1317cf45fbcb735301
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707926"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485438"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的高可用性–單一伺服器
 適用於 PostgreSQL 的 Azure 資料庫–單一伺服器服務可透過 [99.99%](https://azure.microsoft.com/support/legal/sla/postgresql) 執行時間的 SLA) ，提供保證的高可用性服務等級協定 (SLA。 適用於 PostgreSQL 的 Azure 資料庫在規劃的事件（例如，使用者初始化規模計算作業）期間提供高可用性，而且也會在發生非計畫的事件（例如基礎硬體、軟體或網路失敗）時提供高可用性。 適用於 PostgreSQL 的 Azure 資料庫可以從最重要的情況快速復原，以確保在使用此服務時幾乎不會有任何應用程式停機時間。
@@ -36,12 +36,12 @@ ms.locfileid: "91707926"
 3. 您可以在不停機的情況下執行擴充儲存體。 遠端存放可讓您在容錯移轉之後快速卸離/重新連接。
 以下是一些規劃的維護案例：
 
-| **案例** | **說明**|
+| **案例** | **描述**|
 | ------------ | ----------- |
 | <b>計算擴大/縮小 | 當使用者執行計算擴大/減少作業時，會使用調整的計算設定來布建新的資料庫伺服器。 在舊的資料庫伺服器中，允許使用中的檢查點完成，用戶端連接已清空，任何未認可的交易都會取消，然後關閉。 然後，存放裝置會從舊的資料庫伺服器卸離，並附加至新的資料庫伺服器。 當用戶端應用程式重試連線，或嘗試建立新的連線時，閘道會將連接要求導向至新的資料庫伺服器。|
 | <b>擴充儲存體 | 相應增加儲存體是一項線上作業，不會中斷資料庫伺服器。|
-| <b> (Azure) 的新軟體部署 | 新推出的功能或 bug 修正會在服務的規劃維護期間自動發生。 如需詳細資訊，請參閱 [檔](https://docs.microsoft.com/azure/postgresql/concepts-monitoring#planned-maintenance-notification)集，也請檢查您的 [入口網站](https://aka.ms/servicehealthpm)。|
-| <b>次要版本升級 | 適用於 PostgreSQL 的 Azure 資料庫會自動將資料庫伺服器修補為 Azure 所決定的次要版本。 它會在服務的已規劃維護過程中發生。 這會導致短暫的停機時間（以秒為單位），而且資料庫伺服器會自動以新的次要版本重新開機。 如需詳細資訊，請參閱 [檔](https://docs.microsoft.com/azure/postgresql/concepts-monitoring#planned-maintenance-notification)集，也請檢查您的 [入口網站](https://aka.ms/servicehealthpm)。|
+| <b> (Azure) 的新軟體部署 | 新推出的功能或 bug 修正會在服務的規劃維護期間自動發生。 如需詳細資訊，請參閱 [檔](./concepts-monitoring.md#planned-maintenance-notification)集，也請檢查您的 [入口網站](https://aka.ms/servicehealthpm)。|
+| <b>次要版本升級 | 適用於 PostgreSQL 的 Azure 資料庫會自動將資料庫伺服器修補為 Azure 所決定的次要版本。 它會在服務的已規劃維護過程中發生。 這會導致短暫的停機時間（以秒為單位），而且資料庫伺服器會自動以新的次要版本重新開機。 如需詳細資訊，請參閱 [檔](./concepts-monitoring.md#planned-maintenance-notification)集，也請檢查您的 [入口網站](https://aka.ms/servicehealthpm)。|
 
 
 ##  <a name="unplanned-downtime-mitigation"></a>非計畫的停機風險降低
@@ -68,8 +68,8 @@ ms.locfileid: "91707926"
 
 | **案例** | **復原方案** |
 | ---------- | ---------- |
-| <b> 區域失敗 | 區域失敗是罕見的事件。 但是，如果您需要防止區域失敗，則可以在其他區域中設定一或多個讀取複本，以進行嚴重損壞修復 (DR) 。  (請參閱 [這篇文章](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) ，瞭解如何建立及管理讀取複本，以取得詳細資料) 。 發生區域層級失敗時，您可以手動將另一個區域上設定的讀取複本升級為生產資料庫伺服器。 |
-| <b> 邏輯/使用者錯誤 | 從使用者錯誤（例如不小心卸載的資料表或不正確的資料）復原，牽涉到在發生錯誤之前的時間之前，藉由還原和復原資料，來執行 [時間點恢復](https://docs.microsoft.com/azure/postgresql/concepts-backup) (PITR) 。<br> <br>  如果您只想要還原一部分的資料庫或特定的資料表，而不是資料庫伺服器中的所有資料庫，您可以在新的實例中還原資料庫伺服器，) 透過 [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html)將資料表匯出 (s，然後使用 [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) 將這些資料表還原至您的資料庫。 |
+| <b> 區域失敗 | 區域失敗是罕見的事件。 但是，如果您需要防止區域失敗，則可以在其他區域中設定一或多個讀取複本，以進行嚴重損壞修復 (DR) 。  (請參閱 [這篇文章](./howto-read-replicas-portal.md) ，瞭解如何建立及管理讀取複本，以取得詳細資料) 。 發生區域層級失敗時，您可以手動將另一個區域上設定的讀取複本升級為生產資料庫伺服器。 |
+| <b> 邏輯/使用者錯誤 | 從使用者錯誤（例如不小心卸載的資料表或不正確的資料）復原，牽涉到在發生錯誤之前的時間之前，藉由還原和復原資料，來執行 [時間點恢復](./concepts-backup.md) (PITR) 。<br> <br>  如果您只想要還原一部分的資料庫或特定的資料表，而不是資料庫伺服器中的所有資料庫，您可以在新的實例中還原資料庫伺服器，) 透過 [pg_dump](https://www.postgresql.org/docs/11/app-pgdump.html)將資料表匯出 (s，然後使用 [pg_restore](https://www.postgresql.org/docs/11/app-pgrestore.html) 將這些資料表還原至您的資料庫。 |
 
 
 

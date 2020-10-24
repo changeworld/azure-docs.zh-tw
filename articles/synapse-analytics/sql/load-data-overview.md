@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: d96604cd23f49ff61dce2087fde2c13b8fa2069d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dbbed2ccaa62a99bb54a6d3d2eecf0c644281404
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89483723"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474660"
 ---
 # <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>設計 Azure Synapse SQL 集區的 PolyBase 資料載入策略
 
-傳統的 SMP 資料倉儲會使用擷取、轉換和下載 (ETL) 進程來載入資料。 Azure SQL 集區是大量平行處理， (MPP) 架構，利用計算和儲存體資源的擴充性和彈性。 使用「解壓縮」、「載入」和「轉換」 (ELT) 進程可利用 MPP，並消除在載入之前轉換資料所需的資源。
+傳統的 SMP 資料倉儲會使用擷取、轉換和下載 (ETL) 進程來載入資料。 Azure SQL 集區是大量平行處理， (MPP) 架構，利用計算和儲存體資源的擴充性和彈性。 使用「解壓縮」、「載入」和「轉換」 (ELT) 進程可利用內建的分散式查詢處理功能，並在載入前消除轉換資料所需的資源。
 
 雖然 SQL 集區支援許多載入方法，包括 BCP 和 SQL BulkCopy API 之類的非 Polybase 選項，但是最快且最可擴充的載入日期方法是透過 PolyBase。  PolyBase 是一種技術，能夠透過 T-SQL 語言存取在 Azure Blob 儲存體或 Azure Data Lake Store 中儲存的外部資料。
 
@@ -112,7 +112,7 @@ PolyBase 會從 UTF-8 和 UTF-16 編碼分隔符號文字檔載入資料。 除�
 
 ## <a name="4-load-the-data-into-sql-pool-staging-tables-using-polybase"></a>4. 使用 PolyBase 將資料載入 SQL 集區臨時表
 
-這是將資料載入暫存資料表的最佳做法。 暫存資料表可讓您處理錯誤，而不會干擾生產資料表。 臨時表也可讓您在將資料插入生產資料表之前，先使用 SQL 集區 MPP 進行資料轉換。
+這是將資料載入暫存資料表的最佳做法。 暫存資料表可讓您處理錯誤，而不會干擾生產資料表。 臨時表也可讓您在將資料插入生產資料表之前，使用 SQL 集區內建的分散式查詢處理功能來轉換資料。
 
 ### <a name="options-for-loading-with-polybase"></a>以 PolyBase 載入的選項
 

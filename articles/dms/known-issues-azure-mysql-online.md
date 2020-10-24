@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 673480d1b5171e03b701cd2102c7a640aae58ad0
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 3b9a94f7f9f64426374a5ea349b3653d837fc1ac
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893742"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494442"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>使用 Azure 資料庫移轉服務，對適用于 MySQL 的 Azure DB 進行線上遷移問題 & 限制
 
@@ -32,7 +32,7 @@ ms.locfileid: "91893742"
 - 適用於 MySQL 的 Azure 資料庫支援：
   - MySQL 社群版
   - InnoDB 引擎
-- 相同版本移轉。 不支援將 MySQL 5.6 移轉到適用於 MySQL 5.7 的 Azure 資料庫。
+- 相同版本移轉。 不支援將 MySQL 5.6 移轉到適用於 MySQL 5.7 的 Azure 資料庫。 不支援從 MySQL 8.0 進行遷移。
 - 在 my.ini (Windows) 或 my.cnf (Unix) 中啟用二進位記錄
   - 將 Server_id 設為大於或等於 1 的任何數字，例如，Server_id=1 (僅適用於 MySQL 5.6)
   - 設定 log-bin = \<path> (僅適用於 MySQL 5.6)
@@ -136,7 +136,7 @@ ms.locfileid: "91893742"
 
 - 在 Azure 資料庫移轉服務中，單一遷移活動中要遷移的資料庫限制為四個。
 
-- Azure DMS 不支援串聯參考動作，這有助於在父資料表中的資料列遭到刪除或更新時，自動刪除或更新子資料工作表中相符的資料列。 如需詳細資訊，請參閱 MySQL 檔中的 [外鍵條件約束](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)的參考動作一節。 Azure DMS 要求您在初始資料載入期間，于目標資料庫伺服器中卸載外鍵條件約束，而且無法使用參考動作。 如果您的工作負載相依于透過這個參考動作更新相關的子資料工作表，我們建議您改為執行傾印 [和還原](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore) 。 
+- Azure DMS 不支援 CASCADE 參考動作，這有助於在父資料表中刪除或更新資料列時，自動刪除或更新子資料表中相符的資料列。 如需詳細資訊，請參閱 MySQL 文件中[外部索引鍵條件約束](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)一文的「參考動作」一節。 Azure DMS 會要求您在初始資料載入期間，將外部索引鍵條件約束放在目標資料庫伺服器中，而且您不能使用參考動作。 如果您的工作負載相依於透過此參考動作來更新相關的子資料表，我們建議您改為執行[傾印並還原](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore)。 
 
 - **錯誤：** 資料列大小太大 ( # A0 8126) 。 將某些資料行變更為文字或 BLOB 可能會有所説明。 在目前的資料列格式中，BLOB 前置詞0位元組是以內嵌方式儲存。
 

@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: d1c3ad9aa034e6eace5323dd80c5275699a6e728
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: d821d6dacc2620988c32e63439ec2e039819e0a5
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331493"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495895"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>服務要求失敗。 狀態： 403 (禁止的) 
 
@@ -25,7 +25,9 @@ ms.locfileid: "92331493"
 
 ### <a name="cause-1"></a>原因 #1
 
-最常見的情況是，此錯誤表示您的 Azure 角色型存取控制 (Azure RBAC) 服務的許可權未正確設定。 Azure 數位 Twins 實例的許多動作都需要您在**嘗試管理的實例上**擁有*Azure 數位 Twins 擁有者 (預覽版) *角色。 
+最常見的情況是，此錯誤表示您的 Azure 角色型存取控制 (Azure RBAC) 服務的許可權未正確設定。 Azure 數位 Twins 實例的許多動作都要求您在**嘗試管理的實例上**擁有*Azure 數位 Twins 資料擁有*者角色。 
+
+[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
 ### <a name="cause-2"></a>原因 #2
 
@@ -37,11 +39,12 @@ ms.locfileid: "92331493"
 
 ### <a name="solution-1"></a>方案 #1
 
-第一個解決方案是確認您的 Azure 使用者在您嘗試管理的實例上具有 _**Azure 數位 Twins 擁有者 (預覽版) **_ 角色。 如果您沒有此角色，請進行設定。
+第一個解決方案是確認您的 Azure 使用者在您嘗試管理的實例上具有 _**Azure 數位 Twins 資料擁有**_ 者角色。 如果您沒有此角色，請進行設定。
 
 請注意，此角色不同于 .。。
-* 整個 Azure 訂用帳戶的 *擁有* 者角色。 *Azure 數位 Twins 擁有者 (預覽版) * 是 Azure 數位 Twins 內的角色，而且範圍限定為此個別 Azure 數位 Twins 實例。
-* Azure 數位 Twins 中的 *擁有* 者角色。 這些是兩個不同的 Azure 數位 Twins 管理角色，而 *Azure 數位 Twins 擁有者 (預覽版) * 是在預覽期間應用於管理的角色。
+* 此角色先前的名稱在預覽期間， *Azure 數位 Twins 擁有者 (預覽版) * (角色相同，但名稱已變更) 
+* 整個 Azure 訂用帳戶的 *擁有* 者角色。 *Azure 數位 Twins 資料擁有* 者是 Azure 數位 Twins 內的角色，其範圍為此個別 Azure 數位 Twins 實例。
+* Azure 數位 Twins 中的 *擁有* 者角色。 這些是兩個不同的 Azure 數位 Twins 管理角色，而 *Azure 數位 Twins 資料擁有* 者是在預覽期間用於管理的角色。
 
 #### <a name="check-current-setup"></a>檢查目前的設定
 
@@ -49,12 +52,12 @@ ms.locfileid: "92331493"
 
 #### <a name="fix-issues"></a>修正問題 
 
-如果您沒有此角色指派，則您的**azure 訂**用帳戶中具有「擁有者」角色的使用者應該執行下列命令，為您的 azure 使用者授與 Azure 數位 Twins 擁有者在**azure 數位 Twins 實例**上的* (預覽版) *角色。 
+如果您沒有此角色指派，則您的**azure 訂**用帳戶中具有「擁有者」角色的使用者應該執行下列命令，為您的 azure 使用者提供 Azure**數位 Twins 實例**上的*azure 數位 Twins 資料擁有*者角色。 
 
 如果您是訂用帳戶的擁有者，您可以自行執行此命令。 如果不是，請洽詢擁有者，以代表您執行此命令。
 
-```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Owner (Preview)"
+```azurecli-interactive
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Data Owner"
 ```
 
 如需有關此角色需求和指派程式的詳細資訊，請參閱 how *to：設定實例和驗證 (CLI 或入口網站) *的「 [*設定使用者的存取權限*」一節](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)。

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2da6fcb82b1ec14d6f57931709321871fa575d38
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 377165c94303a4a44d481009700cdef9169b3d78
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277033"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475799"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 中的變更摘要處理器
 
@@ -125,10 +125,10 @@ ms.locfileid: "92277033"
 
 變更摘要處理器可以裝載于任何支援長時間執行之進程或工作的平臺上：
 
-* 持續執行的 [Azure WebJob](https://docs.microsoft.com/learn/modules/run-web-app-background-task-with-webjobs/)。
-* [Azure 虛擬機器](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-virtual-machines)中的進程。
-* [Azure Kubernetes Service](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-kubernetes-service)中的背景工作。
-* [ASP.NET 託管服務](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services)。
+* 持續執行的 [Azure WebJob](/learn/modules/run-web-app-background-task-with-webjobs/)。
+* [Azure 虛擬機器](/azure/architecture/best-practices/background-jobs#azure-virtual-machines)中的進程。
+* [Azure Kubernetes Service](/azure/architecture/best-practices/background-jobs#azure-kubernetes-service)中的背景工作。
+* [ASP.NET 託管服務](/aspnet/core/fundamentals/host/hosted-services)。
 
 雖然變更摘要處理器可以在短期的環境中執行，因為租用容器會維護狀態，而這些環境的啟動週期將會增加接收通知的延遲， (因為每次啟動環境時啟動處理器的額外負荷) 。
 
@@ -147,4 +147,4 @@ ms.locfileid: "92277033"
 * [變更摘要提取模型](change-feed-pull-model.md)
 * [如何從變更摘要處理器程式庫遷移](how-to-migrate-from-change-feed-library.md)
 * [使用變更摘要估算器](how-to-use-change-feed-estimator.md)
-* [變更摘要處理器開始時間](how-to-configure-change-feed-start-time.md)
+* [變更摘要處理器開始時間](#starting-time)

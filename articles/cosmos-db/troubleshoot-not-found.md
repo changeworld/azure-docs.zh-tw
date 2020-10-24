@@ -7,12 +7,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f32a37d5d08e8b20e59455393c70e4e4d288eb11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83b28c562dca0c20b6f78058f1c7f7def60416ee
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802391"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496085"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>針對找不到 Azure Cosmos DB 找不到例外狀況進行診斷和疑難排解
 HTTP 狀態碼 404 表示資源已不存在。
@@ -28,7 +28,7 @@ HTTP 狀態碼 404 表示資源已不存在。
 
 #### <a name="solution"></a>解決方案：
 1. Azure Cosmos DB 的預設帳戶一致性是會話一致性。 建立或更新專案時，回應會傳回可在 SDK 實例之間傳遞的會話權杖，以保證讀取要求會從具有該變更的複本讀取。
-1. 將 [一致性層級](consistency-levels-choosing.md) 變更為較 [強的層級](consistency-levels-tradeoffs.md)。
+1. 將 [一致性層級](./consistency-levels.md) 變更為較 [強的層級](./consistency-levels.md)。
 
 ### <a name="invalid-partition-key-and-id-combination"></a>不正確資料分割索引鍵和識別碼組合
 分割區索引鍵和識別碼組合無效。
@@ -37,7 +37,7 @@ HTTP 狀態碼 404 表示資源已不存在。
 修正導致不正確組合的應用程式邏輯。 
 
 ### <a name="invalid-character-in-an-item-id"></a>專案識別碼中有不正確字元
-專案會插入 Azure Cosmos DB 中，並在專案識別碼中包含 [不正確字元](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet&preserve-view=true#remarks) 。
+專案會插入 Azure Cosmos DB 中，並在專案識別碼中包含 [不正確字元](/dotnet/api/microsoft.azure.documents.resource.id?preserve-view=true&view=azure-dotnet#remarks) 。
 
 #### <a name="solution"></a>解決方案：
 將識別碼變更為不包含特殊字元的其他值。 如果無法變更識別碼，您可以使用 Base64 編碼此識別碼以將特殊字元換用。
@@ -79,7 +79,7 @@ while (invalidItemsIterator.HasMoreResults)
 ```
 
 ### <a name="time-to-live-purge"></a>存留時間清除
-專案具有 [存留時間 (TTL) ](https://docs.microsoft.com/azure/cosmos-db/time-to-live) 屬性集。 已清除此專案，因為 TTL 屬性已過期。
+專案具有 [存留時間 (TTL) ](./time-to-live.md) 屬性集。 已清除此專案，因為 TTL 屬性已過期。
 
 #### <a name="solution"></a>解決方案：
 變更 TTL 屬性以防止專案被清除。
@@ -94,11 +94,11 @@ while (invalidItemsIterator.HasMoreResults)
 專案所在的資料庫或容器已刪除。
 
 #### <a name="solution"></a>解決方案：
-1. [還原](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore#backup-retention-period) 父資源，或重新建立資源。
+1. [還原](./online-backup-and-restore.md#request-data-restore-from-a-backup) 父資源，或重新建立資源。
 1. 建立新的資源以取代已刪除的資源。
 
 ### <a name="7-containercollection-names-are-case-sensitive"></a>7. 容器/集合名稱區分大小寫
-容器/集合名稱是 Cosmos DB 中的大小寫 sesnsitive。
+容器/集合名稱在 Cosmos DB 中區分大小寫。
 
 #### <a name="solution"></a>解決方案：
 連接到 Cosmos DB 時，請務必使用確切的名稱。

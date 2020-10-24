@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ef0462b849210bc9b6963ab25e7a216c978f0568
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d7d77bdb223e8c3b71ef03febd4081d1f63bd1a3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281068"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475459"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中最佳化已佈建的輸送量成本
 
@@ -80,7 +80,7 @@ HTTP Status 429,
 
 如果您有多個用戶端的累積作業高於要求速率，則預設的重試計數（目前設定為9）可能還不夠。 在這種情況下，用戶端會對 `RequestRateTooLargeException` 應用程式擲回狀態碼429。 在 ConnectionPolicy 執行個體上設定 `RetryOptions`，即可變更預設重試次數。 根據預設， `RequestRateTooLargeException` 如果要求繼續以要求速率以上的方式運作，則在30秒的累計等候時間之後，會傳回 with 狀態碼429。 即使目前的重試計數小於最大重試計數 (預設值 9 或使用者定義的值)，也會發生這種情況。 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet&preserve-view=true) 設定為3，因此在此情況下，如果要求作業的速率限制超過容器的保留輸送量，則在將例外狀況擲回應用程式之前，要求作業會重試三次。 [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 設定為60，因此在此情況下，如果第一個要求之後的累計重試等候時間（以秒為單位）超過60秒，則會擲回例外狀況。
+[MaxRetryAttemptsOnThrottledRequests](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?preserve-view=true&view=azure-dotnet) 設定為3，因此在此情況下，如果要求作業的速率限制超過容器的保留輸送量，則在將例外狀況擲回應用程式之前，要求作業會重試三次。 [MaxRetryWaitTimeInSeconds](/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) 設定為60，因此在此情況下，如果第一個要求之後的累計重試等候時間（以秒為單位）超過60秒，則會擲回例外狀況。
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
@@ -112,7 +112,7 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 ## <a name="optimize-by-changing-indexing-policy"></a>變更索引編製原則以便最佳化 
 
-根據預設，Azure Cosmos DB 會自動地對每一筆記錄的每個屬性編製索引。 這是為了簡化開發，並確保各種不同類型的臨機操作查詢都能有絕佳的效能。 如果您的大型記錄有數千個屬性，支付輸送量成本來對每個屬性編製索引可能不是實用的方法，當您只是要針對其中的 10 個或 20 個屬性進行查詢時更是如此。 隨著您快要進行到處理特定工作負載的階段，我們的指導是您要微調索引原則。 如需 Azure Cosmos DB 索引編製原則的完整詳細資料，請至[此處](indexing-policies.md)尋找。 
+根據預設，Azure Cosmos DB 會自動地對每一筆記錄的每個屬性編製索引。 這是為了簡化開發，並確保各種不同類型的臨機操作查詢都能有絕佳的效能。 如果您的大型記錄有數千個屬性，支付輸送量成本來對每個屬性編製索引可能不是實用的方法，當您只是要針對其中的 10 個或 20 個屬性進行查詢時更是如此。 隨著您快要進行到處理特定工作負載的階段，我們的指導是您要微調索引原則。 如需 Azure Cosmos DB 索引編製原則的完整詳細資料，請至[此處](index-policy.md)尋找。 
 
 ## <a name="monitoring-provisioned-and-consumed-throughput"></a>監視佈建和取用的輸送量 
 
@@ -156,7 +156,7 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 1. 如果您在容器和資料庫上明顯過度佈建輸送量，請檢閱已佈建的 RU 與已取用的 RU，然後微調工作負載。  
 
-2. 若要估計您的應用程式所需的保留輸送量，其中一個方法為對照應用程式使用的代表性 Azure Cosmos 容器或資料庫，記錄與執行一般作業相關聯的要求單位 RU 費用，然後估計您預期每秒會執行的作業數目。 此外，請務必測量並包含一般查詢和其使用量。 若要了解如何以程式設計方式或使用入口網站來預估查詢的 RU 費用，請參閱[最佳化查詢成本](optimize-cost-queries.md)。 
+2. 若要估計您的應用程式所需的保留輸送量，其中一個方法為對照應用程式使用的代表性 Azure Cosmos 容器或資料庫，記錄與執行一般作業相關聯的要求單位 RU 費用，然後估計您預期每秒會執行的作業數目。 此外，請務必測量並包含一般查詢和其使用量。 若要了解如何以程式設計方式或使用入口網站來預估查詢的 RU 費用，請參閱[最佳化查詢成本](./optimize-cost-reads-writes.md)。 
 
 3. 取得作業的另一種方式，也就是在 ru 中取得成本的方式，就是啟用 Azure 監視器記錄，讓您能夠細分作業/持續時間和要求費用。 Azure Cosmos DB 會提供每一項作業的要求費用，以便您可以從回應回存每個作業費用，然後用於分析。 
 
@@ -182,6 +182,5 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 * 深入了解 [Azure Cosmos DB 帳單](understand-your-bill.md)
 * 深入了解[最佳化儲存體成本](optimize-cost-storage.md)
 * 深入了解[最佳化讀取和寫入的成本](optimize-cost-reads-writes.md)
-* 深入了解[最佳化查詢成本](optimize-cost-queries.md)
+* 深入了解[最佳化查詢成本](./optimize-cost-reads-writes.md)
 * 深入了解[最佳化多重區域 Azure Cosmos 帳戶的成本](optimize-cost-regions.md)
-

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3367a20ca5e2dc59880ed66939413606ff83963b
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 99fcdd0232e2991acaceb6838bff0b00c6824dfb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122716"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474898"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>使用 Azure Synapse 連結中的無伺服器 SQL 集區來查詢 Azure Cosmos DB 資料 (預覽) 
 
@@ -277,5 +277,6 @@ SQL (Core) API 的 Azure Cosmos DB 帳戶支援數位、字串、布林值、nul
 
 如需詳細資訊，請參閱下列文章：
 
+- [使用 Power BI 和無伺服器 Synapse SQL 集區搭配 Azure Synapse 連結](../../cosmos-db/synapse-link-power-bi.md)
 - [如何在 SQL 中依需求建立和使用視圖](create-use-views.md) 
 - [在 Azure Cosmos DB 上建立 SQL 隨選視圖的教學課程，並透過 DirectQuery 將它們連接至 Power BI 模型](./tutorial-data-analyst.md)

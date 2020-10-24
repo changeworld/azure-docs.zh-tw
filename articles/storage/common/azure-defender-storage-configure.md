@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: c7e0c9aee1ce6b4a2524ac756673784b63be3b31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb71c5eda66d3d11385577da7142970f4fbcbad2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289764"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474847"
 ---
 # <a name="configure-azure-defender-for-storage"></a>設定適用于儲存體的 Azure Defender
 
@@ -37,7 +37,7 @@ ms.locfileid: "91289764"
 
 - 版本狀態：
   - [Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/) (公開上市) 
-  - [Azure 檔案儲存體](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (正式推出) 
+  - [Azure 檔案儲存體](/azure/storage/files/storage-files-introduction) (正式推出) 
   - Azure Data Lake Storage Gen2 (正式推出) 
 - 雲端：<br>
     ✔ 商用雲端<br>
@@ -57,7 +57,7 @@ ms.locfileid: "91289764"
 1. 選取您要啟用或停用 Azure Defender 的訂用帳戶。
 1. 選取 [ **Azure defender 開啟** ] 以啟用訂用帳戶的 azure defender。
 1. 在 [**依資源類型選取 Azure Defender 方案**] 底下，找出 [**儲存體**] 資料列，然後在 [**方案**] 資料行中選取 [**啟用**]
-1. 儲存您的變更。
+1. 儲存變更。
 
     :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-security-center.png" alt-text="顯示如何在安全中心啟用 Azure Defender 儲存的螢幕擷取畫面":::
 
@@ -98,16 +98,16 @@ ms.locfileid: "91289764"
 
 使用 Rest API 命令來建立、更新或取得特定儲存體帳戶的 Azure Defender 設定。
 
-- [Advanced 威脅防護-建立](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
-- [先進的威脅防護-取得](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
+- [Advanced 威脅防護-建立](/rest/api/securitycenter/advancedthreatprotection/create)
+- [先進的威脅防護-取得](/rest/api/securitycenter/advancedthreatprotection/get)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用下列 PowerShell Cmdlet：
 
-- [啟用先進的威脅防護](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
-- [取得 advanced 威脅防護](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
-- [停用 advanced 威脅防護](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+- [啟用先進的威脅防護](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+- [取得 advanced 威脅防護](/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
+- [停用 advanced 威脅防護](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 
 ---
 

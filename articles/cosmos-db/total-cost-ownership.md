@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 1e6d0343a68d502fb567f6010b8c8b3043e282a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a058e7a23c36dcaca16c3cce1be1ca826d472bc0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569492"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476989"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>擁有權 (TCO) 的擁有權總成本 Azure Cosmos DB
 
@@ -40,7 +40,7 @@ Azure Cosmos DB 的無伺服器佈建模型不需要過度佈建的資料庫基�
 
 * **您可以用小時支付：** 針對大規模的工作負載，需要在任何時間點進行調整，您只需支付該小時的費用。 應用程式上的工作負載通常在一年中的不同時間，以及查詢的資料上有所不同。 使用 Azure Cosmos DB，您可以根據需要相應增加或減少，並僅依需求支付。 使用內部部署或 IaaS 裝載的系統時，您無法符合此模型，因為沒有任何方法可將硬體解除委任。 在這種情況下，Azure Cosmos DB 平均可以節省 10 至 14 倍。
 
-* **您可免費取得許多功能：** 在 Azure Cosmos DB 中，相較于替代資料庫服務，寫入工作負載的成本相當實惠。 此外，Azure Cosmos DB 還提供諸如[自動編製索引](indexing-policies.md)、[存留時間 (TTL)](time-to-live.md)、[變更摘要](change-feed.md)等功能，而不需要任何額外的費用，其他資料庫服務通常會收費。
+* **您可免費取得許多功能：** 在 Azure Cosmos DB 中，相較于替代資料庫服務，寫入工作負載的成本相當實惠。 此外，Azure Cosmos DB 還提供諸如[自動編製索引](index-policy.md)、[存留時間 (TTL)](time-to-live.md)、[變更摘要](change-feed.md)等功能，而不需要任何額外的費用，其他資料庫服務通常會收費。
 
 * **針對各種工作負載使用統一的貨幣：** 不同于替代供應專案，在 Azure Cosmos DB 中，您不需要將工作負載分割（例如，在讀取和寫入中）。 或者為每個工作負載類型佈建輸送量，即讀取輸送量與寫入輸送量。 在 Azure Cosmos DB 中，使用統一且標準化的貨幣 (要求單位或 RU/秒) 保留佈建的輸送量。Azure Cosmos DB 不會強制您為工作負載指派優先順序、執行容量計劃或單獨為每種類型的容量支付。 這種方法可讓您在不同的作業和工作負載類型之間輕鬆地交換相同的 RU/秒。
 
@@ -63,6 +63,6 @@ Azure Cosmos DB 的無伺服器佈建模型不需要過度佈建的資料庫基�
 * 深入了解[最佳化輸送量成本](optimize-cost-throughput.md)
 * 深入了解[最佳化儲存體成本](optimize-cost-storage.md)
 * 深入了解[最佳化讀取和寫入的成本](optimize-cost-reads-writes.md)
-* 深入了解[最佳化查詢成本](optimize-cost-queries.md)
+* 深入了解[最佳化查詢成本](./optimize-cost-reads-writes.md)
 * 深入了解[最佳化多重區域 Cosmos 帳戶的成本](optimize-cost-regions.md)
 * 深入了解 [NoSQL 資料庫雲端服務的擁有權總成本](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf)

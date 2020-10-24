@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: dfa8227f319a818efee20f26c1f2bebf72ad7cf9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4b0e0bd38c8bb9ea1d2331a65fc891e157971eef
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367647"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495844"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>整合 Azure 數位 Twins 與 Azure SignalR Service
 
@@ -20,7 +20,7 @@ ms.locfileid: "92367647"
 
 本文所述的解決方案可讓您將數位對應項遙測資料推送至連線的用戶端，例如單一網頁或行動應用程式。 如此一來，用戶端就會從 IoT 裝置以即時計量和狀態進行更新，而不需要輪詢伺服器或提交新的 HTTP 要求以進行更新。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 以下是您在繼續之前應完成的必要條件：
 
@@ -147,7 +147,7 @@ ms.locfileid: "92367647"
 
 1. 最後，使用下列 Azure CLI 命令，將您先前的 Azure SignalR **連接字串** 新增至函式的應用程式設定。 如果您的[電腦上已安裝](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)Azure CLI，命令可以在[Azure Cloud Shell](https://shell.azure.com)中執行，或在本機執行：
  
-    ```azurecli
+    ```azurecli-interactive
     az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "AzureSignalRConnectionString=<your-Azure-SignalR-ConnectionString>"
     ```
 
@@ -242,7 +242,7 @@ npm start
 > [!IMPORTANT]
 > 刪除資源群組是無法回復的動作。 資源群組和其中包含的所有資源都將永久刪除。 請確定您不會不小心刪除錯誤的資源群組或資源。 
 
-```azurecli
+```azurecli-interactive
 az group delete --name <your-resource-group>
 ```
 

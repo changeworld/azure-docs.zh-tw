@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 08/26/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 82e2a484e23d55b91ff0c7820302b2cc83537cb8
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: b6c6d15b553e8b19fff2c464dfb856550f7bcbf0
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057700"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494918"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>在 Python 中的 Azure Machine Learning 管線中使用自動化 ML
 
@@ -73,7 +73,7 @@ if not 'titanic_ds' in ws.datasets.keys() :
 titanic_ds = Dataset.get_by_name(ws, 'titanic_ds')
 ```
 
-程式碼會先登入config.js的 (** 上** 定義的 Azure Machine Learning 工作區以取得說明，請參閱 [教學課程：開始使用 Python SDK 建立您的第一個 ML 實驗](tutorial-1st-experiment-sdk-setup.md)) 。 如果沒有名為 [已註冊] 的資料集 `'titanic_ds'` ，則會建立一個。 程式碼會從 Web 下載 CSV 資料、使用它們來具現化，然後向 `TabularDataset` 工作區註冊資料集。 最後，函式會將 `Dataset.get_by_name()` 指派 `Dataset` 給 `titanic_ds` 。 
+程式碼會先登入 (中 **config.js** 所定義 Azure Machine Learning 工作區以取得說明，請參閱 [建立工作區設定檔](how-to-configure-environment.md#workspace)案。 如果沒有名為 [已註冊] 的資料集 `'titanic_ds'` ，則會建立一個。 程式碼會從 Web 下載 CSV 資料、使用它們來具現化，然後向 `TabularDataset` 工作區註冊資料集。 最後，函式會將 `Dataset.get_by_name()` 指派 `Dataset` 給 `titanic_ds` 。 
 
 ### <a name="configure-your-storage-and-compute-target"></a>設定您的儲存體和計算目標
 

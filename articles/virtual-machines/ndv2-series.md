@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 74c8924116cf9b565ea63e3b72a409686a4d725c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ff828024610ce498d40a4039d8116e28366aebb9
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975715"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494432"
 ---
 # <a name="updated-ndv2-series"></a>已更新 NDv2 系列
 
@@ -37,7 +37,7 @@ NDv2 實例可為使用 CUDA GPU 優化計算核心的 HPC 和 AI 工作負載�
 [進階儲存體](premium-storage-performance.md)快取：支援<br>
 [即時移轉](maintenance-and-updates.md)：不支援<br>
 [記憶體保留更新](maintenance-and-updates.md)：不支援<br>
-[VM 世代支援](generation-2.md)：第1代<br>
+[VM 世代支援](generation-2.md)：第2代<br>
 未受支援：支援<br>
 <br>
 

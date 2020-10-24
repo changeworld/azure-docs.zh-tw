@@ -8,12 +8,12 @@ ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 9d17ce5b3409d8b6bb24d42c2857ba22699e1364
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b7e57656a6749f600d07b679aad6b8c77ac96551
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277173"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476700"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>針對使用 Azure Cosmos DB 時發生的查詢問題進行疑難排解
 
@@ -191,7 +191,7 @@ WHERE c.description = "Malabar spinach, cooked"
 
 **RU 費用：** 2.98 RU
 
-您可以隨時將屬性新增至索引編制原則，而不會影響寫入或讀取可用性。 您可以[追蹤索引轉換進度](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3)。
+您可以隨時將屬性新增至索引編制原則，而不會影響寫入或讀取可用性。 您可以[追蹤索引轉換進度](./how-to-manage-indexing-policy.md#dotnet-sdk)。
 
 ### <a name="understand-which-system-functions-use-the-index"></a>了解哪些系統函數會使用索引
 
@@ -491,5 +491,5 @@ WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts > 1575503264
 如需如何測量每個查詢的 RU 和取得執行統計資料來微調查詢等等的詳細資訊，請參閱下列文章：
 
 * [使用 .NET SDK 取得 SQL 查詢執行計量](profile-sql-api-query.md)
-* [使用 Azure Cosmos DB 調整查詢效能](sql-api-sql-query-metrics.md)
+* [使用 Azure Cosmos DB 調整查詢效能](./sql-api-query-metrics.md)
 * [.NET SDK 的效能秘訣](performance-tips.md)

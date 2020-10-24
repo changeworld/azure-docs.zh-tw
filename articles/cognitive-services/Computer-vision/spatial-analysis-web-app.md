@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: aahi
-ms.openlocfilehash: 8032c3607dd74cddbaa5fd6690a95ebdf218809a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bc03cf03f8a8e0f2a222ca1089618eaade9485d
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628189"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496070"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>How to：部署人員計數 web 應用程式
 
@@ -63,10 +63,10 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 
 ### <a name="deploy-the-container-on-azure-iot-edge-on-the-host-computer"></a>在主機電腦上 Azure IoT Edge 部署容器
 
-使用 Azure CLI 將空間分析容器部署為主電腦上的 IoT 模組。 部署程式需要部署資訊清單檔案，其中會列出您的部署所需的容器、變數和設定。 您可以在 GitHub 上找到範例 [部署資訊清單](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/) ，其中包含 *空間分析* 容器的基本部署設定。 
+使用 Azure CLI 將空間分析容器部署為主電腦上的 IoT 模組。 部署程式需要部署資訊清單檔案，其中會列出您的部署所需的容器、變數和設定。 您可以在 GitHub 上找到 [Azure Stack Edge 特定部署資訊清單](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/) 以及 [非 Azure Stack Edge 特定部署資訊清單](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) 的範例，其中包含 *空間分析* 容器的基本部署設定。 
 
 > [!NOTE] 
-> *空間分析-telegraf*和*空間分析-診斷*容器是選擇性的。 您可以決定將它們從 *DeploymentManifest.js* 檔案中移除。 如需詳細資訊，請參閱 [遙測和疑難排解](./spatial-analysis-logging.md) 文章。 您可以在[Github](https://go.microsoft.com/fwlink/?linkid=2142179)上找到檔案的範例*DeploymentManifest.js* 
+> *空間分析-telegraf*和*空間分析-診斷*容器是選擇性的。 您可以決定將它們從 *DeploymentManifest.js* 檔案中移除。 如需詳細資訊，請參閱 [遙測和疑難排解](./spatial-analysis-logging.md) 文章。 您可以在 Github 上的檔案中找到兩個範例 *DeploymentManifest.js* ，適用于 [Azure Stack Edge 裝置](https://go.microsoft.com/fwlink/?linkid=2142179) 或其他 [桌上型電腦](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)
 
 ### <a name="set-environment-variables"></a>設定環境變數
 
@@ -89,7 +89,7 @@ IoT Edge 模組的大部分 **環境變數** 都已在上述連結之檔案的�
 
 現在 *空間分析* 容器的初始設定完成後，下一個步驟是設定作業參數，並將其新增至部署。 
 
-第一個步驟是更新範例 [部署資訊清單](https://go.microsoft.com/fwlink/?linkid=2142179) ，並設定的 operationId， `cognitiveservices.vision.spatialanalysis-personcount` 如下所示：
+第一個步驟是更新上面連結的範例部署資訊清單，並設定的 operationId， `cognitiveservices.vision.spatialanalysis-personcount` 如下所示：
 
 
 ```json
@@ -107,7 +107,7 @@ IoT Edge 模組的大部分 **環境變數** 都已在上述連結之檔案的�
 },
 ```
 
-更新 [部署資訊清單](https://go.microsoft.com/fwlink/?linkid=2142179) 之後，請遵循攝影機製造商的指示來安裝相機、設定相機 url，以及設定使用者名稱和密碼。 
+更新部署資訊清單之後，請遵循攝影機製造商的指示來安裝相機、設定相機 url，以及設定使用者名稱和密碼。 
 
 接下來，設定 `VIDEO_URL` 為相機的 RTSP url，以及用來連接到相機的認證。
 
@@ -122,7 +122,7 @@ IoT Edge 模組的大部分 **環境變數** 都已在上述連結之檔案的�
 
 ### <a name="execute-the-deployment"></a>執行部署
 
-現在 [部署資訊清單](https://go.microsoft.com/fwlink/?linkid=2142179) 已完成，請使用 Azure CLI 中的此命令，將主機電腦上的容器部署為 IoT Edge 模組。
+現在部署資訊清單已完成，請使用 Azure CLI 中的此命令，將主機電腦上的容器部署為 IoT Edge 模組。
 
 ```azurecli
 az login
@@ -145,7 +145,7 @@ az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge devic
 
 ![部署驗證範例](./media/spatial-analysis/deployment-verification.png)
 
-此時，空間分析容器正在執行操作。 它會發出作業的 AI 見解 `cognitiveservices.vision.spatialanalysis-personcount` ，並將這些深入解析作為遙測路由傳送到您的 Azure IoT 中樞實例。 若要設定其他攝影機，可以更新 [部署資訊清單](https://go.microsoft.com/fwlink/?linkid=2142179) 檔，然後再次執行部署。
+此時，空間分析容器正在執行操作。 它會發出作業的 AI 見解 `cognitiveservices.vision.spatialanalysis-personcount` ，並將這些深入解析作為遙測路由傳送到您的 Azure IoT 中樞實例。 若要設定其他攝影機，可以更新部署資訊清單檔，然後再次執行部署。
 
 ## <a name="person-counting-web-application"></a>計算 Web 應用程式的人員
 
@@ -156,7 +156,7 @@ az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge devic
 此應用程式的容器形式可在 Azure Container Registry 上取得。 使用下列 docker pull 命令下載它。 請聯絡 Microsoft， projectarchon@microsoft.com 以取得存取權杖。
 
 ```bash
-docker login rtvsofficial.azurecr.io -u <token name> -p <password>
+docker login rtvsofficial.azurecr.io -u <token name> -p <password>
 docker pull rtvsofficial.azurecr.io/acceleratorapp.personcount:1.0
 ```
 

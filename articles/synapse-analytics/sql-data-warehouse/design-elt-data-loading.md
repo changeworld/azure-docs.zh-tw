@@ -11,18 +11,18 @@ ms.date: 05/13/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fecdd65ae0dbf9faeb0e74e6446a9deaf8273106
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 2f3433075a1fddf116aae28666feb62473c6dbfb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075020"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476088"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Synapse SQL 集區的資料載入策略
 
-傳統 SMP SQL 集區會使用擷取、轉換和載入 (ETL) 程序來載入資料。 Azure Synapse Analytics 中的 Synapse SQL 集區具有大量平行處理 (MPP) 架構，可利用計算和儲存體資源的延展性和彈性。
+傳統 SMP SQL 集區會使用擷取、轉換和載入 (ETL) 程序來載入資料。 在 Azure Synapse Analytics 內的 Synapse SQL 會使用分散式查詢處理架構，以利用計算和儲存體資源的擴充性和彈性。
 
-使用擷取、載入及轉換 (ELT) 程序可以利用 MPP，而且不需要載入之前轉換資料的資源。
+使用「解壓縮」、「載入」和「轉換」 (ELT) 進程會利用內建的分散式查詢處理功能，並在載入前消除資料轉換所需的資源。
 
 雖然 SQL 集區支援許多載入方法，包括廣泛的 SQL Server 選項（例如 [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 和 [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)），但載入資料最快且可調整的方式是透過 PolyBase 外部資料表和 [COPY 語句](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 

@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 4de3ec79b94969e45553857f1179a1104e090347
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2e899e76a1e68e120e0419926f8169785146bbfc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276105"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485030"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分頁
 
@@ -56,7 +56,7 @@ ms.locfileid: "92276105"
 
 在 Azure Cosmos DB 的 REST API 中，您可以使用標頭來管理接續權杖 `x-ms-continuation` 。 如同使用 .NET 或 JAVA SDK 進行查詢，如果 `x-ms-continuation` 回應標頭不是空的，則表示查詢具有其他結果。
 
-只要您使用相同的 SDK 版本，接續權杖永遠不會過期。 您可以選擇性地 [限制接續 token 的大小](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions.responsecontinuationtokenlimitinkb?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Documents_Client_FeedOptions_ResponseContinuationTokenLimitInKb)。 無論您容器中的資料量或實體分割區數目為何，查詢都會傳回單一的接續 token。
+只要您使用相同的 SDK 版本，接續權杖永遠不會過期。 您可以選擇性地 [限制接續 token 的大小](/dotnet/api/microsoft.azure.documents.client.feedoptions.responsecontinuationtokenlimitinkb?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Documents_Client_FeedOptions_ResponseContinuationTokenLimitInKb)。 無論您容器中的資料量或實體分割區數目為何，查詢都會傳回單一的接續 token。
 
 您無法針對具有 [GROUP BY](sql-query-group-by.md) 或 [DISTINCT](sql-query-keywords.md#distinct) 的查詢使用接續 token，因為這些查詢需要儲存相當大量的狀態。 針對使用的查詢 `DISTINCT` ，您可以在加入至查詢時使用接續標記 `ORDER BY` 。
 

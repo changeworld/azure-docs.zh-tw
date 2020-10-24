@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 98bc108af22491c6ea0b64bc2e278b6b32f43a5b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 66008012dd9b3eb6000e96f251d18cf14a9c8dc1
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203087"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495236"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>設定 Azure Machine Learning 的開發環境
 
@@ -139,10 +139,10 @@ Azure Machine Learning [計算實例](concept-compute-instance.md) 是安全的�
 
 您隨時都能從 Azure Machine Learning 工作區中建立一個。 只提供名稱並指定 Azure VM 類型。 請在此教學課程中立即試用 [：設定環境和工作區](tutorial-1st-experiment-sdk-setup.md)。
 
-若要深入瞭解計算實例（包括如何安裝封裝），請參閱 [計算實例](concept-compute-instance.md)。
+若要深入瞭解計算實例，包括如何安裝套件，請參閱 [建立和管理 Azure Machine Learning 計算實例](how-to-create-manage-compute-instance.md)。
 
 > [!TIP]
-> 若要避免未使用的計算實例產生費用，請 [停止計算實例](tutorial-1st-experiment-bring-data.md#clean-up-resources)。
+> 若要避免未使用的計算實例產生費用，請 [停止計算實例](how-to-create-manage-compute-instance.md#manage)。
 
 除了 Jupyter Notebook server 和 JupyterLab 之外，您還可以在 [Azure Machine Learning studio 內的整合式筆記本功能](how-to-run-jupyter-notebooks.md)中使用計算實例。
 

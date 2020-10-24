@@ -6,18 +6,18 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: f6c73362d554ada6c4845ab8dca2093d3dcbf173
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78395873457f9fe53d45dfbfd94aa9ccdccd614d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707943"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485455"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的 PostgreSQL 延伸模組 - 單一伺服器
 PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能。 延伸模組會將多個相關 SQL 物件統合在同一個套件之中，而且只要一個命令，就能載入或從資料庫移除。 載入到資料庫之後，延伸模組就像內建功能一樣。
 
 ## <a name="how-to-use-postgresql-extensions"></a>如何使用 PostgreSQL 擴充功能
-您必須先在資料庫中安裝 PostgreSQL 擴充功能，然後才能使用它們。 若要安裝特定的擴充功能，請從 psql 工具執行 [CREATE extension](https://www.postgresql.org/docs/current/sql-createextension.html)   命令，以將封裝的物件載入至您的資料庫。
+您必須先在資料庫中安裝 PostgreSQL 擴充功能，然後才能使用它們。 若要安裝特定的擴充功能，請從 psql 工具執行 [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) 命令，以將封裝的物件載入至您的資料庫。
 
 適用於 PostgreSQL 的 Azure 資料庫支援如下所示的金鑰擴充功能子集。 此資訊也可以藉由執行 `SELECT * FROM pg_available_extensions;` 來取得。 不支援所列的延伸模組以外的副檔名。 您無法在適用於 PostgreSQL 的 Azure 資料庫中建立自己的擴充功能。
 
@@ -26,7 +26,7 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 下列擴充功能可在 Postgres 11 版的適用於 PostgreSQL 的 Azure 資料庫伺服器中使用。 
 
 > [!div class="mx-tableFixed"]
-> | **分機**| **延伸模組版本** | **說明** |
+> | **分機**| **延伸模組版本** | **描述** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 用來將位址剖析為組成項目。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address >standardizer US 資料集範例|
@@ -71,7 +71,7 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 下列擴充功能可在 Postgres 第10版的適用於 PostgreSQL 的 Azure 資料庫伺服器中使用。
 
 > [!div class="mx-tableFixed"]
-> | **分機**| **延伸模組版本** | **說明** |
+> | **分機**| **延伸模組版本** | **描述** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 用來將位址剖析為組成項目。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address >standardizer US 資料集範例|
@@ -117,7 +117,7 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 下列擴充功能可在 Postgres 9.6 版的適用於 PostgreSQL 的 Azure 資料庫伺服器中使用。
 
 > [!div class="mx-tableFixed"]
-> | **分機**| **延伸模組版本** | **說明** |
+> | **分機**| **延伸模組版本** | **描述** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.2           | 用來將位址剖析為組成項目。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.2           | Address >standardizer US 資料集範例|
@@ -163,7 +163,7 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 下列擴充功能可在 Postgres 9.5 版的適用於 PostgreSQL 的 Azure 資料庫伺服器中使用。
 
 > [!div class="mx-tableFixed"]
-> | **分機**| **延伸模組版本** | **說明** |
+> | **分機**| **延伸模組版本** | **描述** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.0           | 用來將位址剖析為組成項目。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.0           | Address >standardizer US 資料集範例|
@@ -205,7 +205,7 @@ PostgreSQL 提供下列功能：使用擴充功能來擴充您的資料庫功能
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements
 [Pg_stat_statements 的延伸](https://www.postgresql.org/docs/current/pgstatstatements.html)模組會在每個適用於 PostgreSQL 的 Azure 資料庫伺服器上預先載入，以提供您追蹤 SQL 語句執行統計資料的方法。
-控制延伸模組計入哪些陳述式的設定 `pg_stat_statements.track` 預設為 `top`，這表示會追蹤用戶端直接發出的所有陳述式。 其他兩個會追蹤層級 `none` 和 `all`。 這項設定是可透過 [Azure 入口網站](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal)或 [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli) 設定的伺服器參數。
+控制延伸模組計入哪些陳述式的設定 `pg_stat_statements.track` 預設為 `top`，這表示會追蹤用戶端直接發出的所有陳述式。 其他兩個會追蹤層級 `none` 和 `all`。 這項設定是可透過 [Azure 入口網站](./howto-configure-server-parameters-using-portal.md)或 [Azure CLI](./howto-configure-server-parameters-using-cli.md) 設定的伺服器參數。
 
 pg_stat_statements 提供查詢執行資訊，不過會對於伺服器效能造成影響，因為它會記錄每個 SQL 陳述式。 如果您不主動使用 pg_stat_statements 延伸模組，我們建議您將 `pg_stat_statements.track` 設定為 `none`。 請注意，某些協力廠商監視服務可能會需要 pg_stat_statements 傳遞查詢效能深入解析，因此請確認這是否為您的情況。
 

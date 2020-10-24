@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 34b4a7395102549dfea6f9d51ef8d1216bacddba
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ebc0398eeb7679ffd57e0aa5aae642f6303aaa35
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327700"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484605"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>適用于 HDInsight 的 Azure 安全性基準
 
@@ -146,9 +146,7 @@ https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags
 
 如何檢視可用的 Azure 原則別名： 
 
-https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
-
-如何設定和管理 Azure 原則： 
+https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias 如何設定和管理 Azure 原則：
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -346,11 +344,11 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificat
 
 如何使用 PowerShell 在 Azure AD 中取得目錄角色：
 
-https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole
 
 如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員：
 
-https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember
 
 如何使用 Azure 資訊安全中心監視身分識別和存取：
 
@@ -780,7 +778,7 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 如何檢視 Azure 訂用帳戶： 
 
-https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription
 
 了解 Azure RBAC： 
 
@@ -942,7 +940,7 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 如何檢視可用的 Azure 原則別名： 
 
-https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias
 
 如何設定和管理 Azure 原則： 
 
@@ -990,13 +988,9 @@ https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 **指導**方針：如果使用自訂 Azure 原則定義，請使用 Azure DevOps 或 Azure Repos 安全地儲存和管理您的程式碼。
 
-如何在 Azure DevOps 中儲存程式碼： 
+[如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
-https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
-
-Azure Repos 檔：
-
-https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+[Azure Repos 文件](/azure/devops/repos/index?view=azure-devops&preserve-view=true)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -1034,13 +1028,9 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **指導**方針：使用 "Microsoft. HDInsight" 命名空間中 Azure 原則別名來建立自訂原則，以審核或強制執行 HDInsight 叢集的設定。
 
-如何檢視可用的 Azure 原則別名： 
+[如何查看可用 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias)
 
-https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
-
-如何設定和管理 Azure 原則： 
-
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+[如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -1174,7 +1164,7 @@ https://docs.microsoft.com/azure/storage/common/storage-redundancy
 
 如何在 Azure 中備份 Key Vault 金鑰：
 
-https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
+https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -1190,7 +1180,7 @@ https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok
 
 如何在 Azure 中還原金鑰保存庫金鑰：
 
-https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -1234,7 +1224,7 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 ### <a name="103-test-security-response-procedures"></a>10.3：測試安全性回應程序
 
-**指引**：進行練習以定期測試系統的事件回應功能。 視需要找出弱式點和間隙和修訂計畫。請參閱 NIST 的發行：適用于 IT 方案和功能的測試、訓練和練習程式指南：https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+**指導**方針：進行練習以定期測試系統的事件回應功能。 視需要找出弱式點和間隙和修訂計畫。請參閱 NIST 的發行：適用于 IT 方案和功能的測試、訓練和練習程式指南：https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
 **Azure 資訊安全中心監視**：不適用
 

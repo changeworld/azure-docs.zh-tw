@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 10/23/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: 內部部署、Docker、容器
-ms.openlocfilehash: c26c69a0f6cbf0f9f658d3b7a32cce99319767b4
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 6f04e40b0b2baa496faf8001684304c5df78ec20
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930436"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496145"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>安裝和執行適用于語音服務 Api 的 Docker 容器 
 
@@ -107,7 +107,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 以下 Container Registry 提供適用于語音的容器映射。
 
-# <a name="speech-to-text"></a>[語音轉換文字](#tab/stt)
+# <a name="speech-to-text"></a>[語音轉文字](#tab/stt)
 
 | 容器 | Repository |
 |-----------|------------|
@@ -152,7 +152,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 ### <a name="docker-pull-for-the-speech-containers"></a>適用于語音容器的 Docker pull
 
-# <a name="speech-to-text"></a>[語音轉換文字](#tab/stt)
+# <a name="speech-to-text"></a>[語音轉文字](#tab/stt)
 
 #### <a name="docker-pull-for-the-speech-to-text-container"></a>適用于語音轉換文字容器的 Docker pull
 
@@ -294,7 +294,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/language-d
 
 將 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令執行容器。 如需如何取得和值的詳細資訊，請參閱 [收集必要參數](#gathering-required-parameters) `{Endpoint_URI}` `{API_Key}` 。 [examples](speech-container-configuration.md#example-docker-run-commands) `docker run` 也可以使用命令的其他範例。
 
-# <a name="speech-to-text"></a>[語音轉換文字](#tab/stt)
+# <a name="speech-to-text"></a>[語音轉文字](#tab/stt)
 
 若要執行標準 *語音轉換文字* 容器，請執行下列 `docker run` 命令。
 
@@ -363,7 +363,7 @@ CloudAI:SentimentAnalysisSettings:SentimentAnalysisApiKey={SENTIMENT_APIKEY}
 
 下表表示各種 `docker run` 參數及其對應的描述：
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 |---------|---------|
 | `{VOLUME_MOUNT}` | 主機電腦 [磁片區掛接](https://docs.docker.com/storage/volumes/)，docker 會使用它來保存自訂模型。 例如， *C:\CustomSpeech* ，其中 *C 磁片磁碟機* 位於主機電腦上。 |
 | `{MODEL_ID}` | 自訂語音入口網站的 [**定型**] 頁面中的自訂語音**模型識別碼**。 |
@@ -444,7 +444,7 @@ ApiKey={API_KEY}
 
 下表表示各種 `docker run` 參數及其對應的描述：
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 |---------|---------|
 | `{VOLUME_MOUNT}` | 主機電腦 [磁片區掛接](https://docs.docker.com/storage/volumes/)，docker 會使用它來保存自訂模型。 例如， *C:\CustomSpeech* ，其中 *C 磁片磁碟機* 位於主機電腦上。 |
 | `{MODEL_ID}` | 自訂語音入口網站的 [**定型**] 頁面中的自訂語音**模型識別碼**。 |
@@ -491,6 +491,16 @@ ApiKey={API_KEY}
 * 配置1個 CPU 核心和 1 gb (GB) 的記憶體。
 * 公開 TCP 通訊埠5003，並為容器配置虛擬 TTY。
 * 在容器結束之後自動將其移除。 容器映像仍可在主機電腦上使用。
+
+如果您只是傳送語音語言偵測要求，則必須將語音用戶端的值設定 `phraseDetection` 為 `None` 。  
+
+```python
+speech_config.set_service_property(
+      name='speechcontext-phraseDetection.Mode',
+      value='None',
+      channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+   )
+```
 
 如果您想要使用語音轉換文字容器來執行此容器，您可以使用此 [Docker 映射](https://hub.docker.com/r/antsu/on-prem-client)。 這兩個容器都啟動之後，請使用此 Docker Run 命令來執行 `speech-to-text-with-languagedetection-client` 。
 
@@ -673,12 +683,12 @@ speech_config.set_service_property(
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 在本文中，您已瞭解下載、安裝及執行語音容器的概念和工作流程。 摘要說明：
 
 * 語音提供四個適用于 Docker 的 Linux 容器，封裝各種功能：
-  * *語音轉換文字*
+  * *語音轉文字*
   * *自訂語音轉換文字*
   * *文字轉換語音*
   * *自訂文字轉換語音*

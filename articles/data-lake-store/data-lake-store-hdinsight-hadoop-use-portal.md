@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 420efd653ef6218b5a1d5a8c70ca268b7185fc30
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 41ba9d9e66fa1d7f622550bde68951573af4bb96
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103538"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484979"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>使用 Azure 入口網站建立搭配 Azure Data Lake Storage Gen1 的 HDInsight 叢集
 
@@ -85,18 +85,11 @@ ms.locfileid: "92103538"
 從 Azure 入口網站中，您可以使用現有的服務主體或建立一個新的服務主體。
 
 若要從 Azure 入口網站建立服務主體：
-
-1. 從儲存體分頁選取 **Data Lake Store 存取** 。
-1. 在 [ **Data Lake Storage Gen1 存取** ] 分頁上，選取 [ **建立新**的]。
-1. 選取 [ **服務主體**]，然後依照指示來建立服務主體。
-1. 如果您決定要在未來再次使用它，請下載憑證。 如果您想要在建立其他 HDInsight 叢集時使用相同的服務主體，下載憑證非常實用。
-
-    ![將服務主體新增至 HDInsight 叢集](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.2.png)
-
-1. 選取 [ **存取** ] 以設定資料夾存取。  請參閱[設定檔案權限](#configure-file-permissions)。
+1. 請參閱使用 Azure Active Directory [建立服務主體和憑證](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) 。
 
 若要從 Azure 入口網站使用現有的服務主體：
 
+1. 服務主體應該具有儲存體帳戶的擁有者許可權。 請參閱 [設定服務主體的許可權，使其成為儲存體帳戶的擁有者](#configure-serviceprincipal-permissions)。
 1. 選取 [ **Data Lake Store 存取**]。
 1. 在 [ **Data Lake Storage Gen1 存取** ] 分頁上，選取 [ **使用現有**的]。
 1. 選取 [ **服務主體**]，然後選取服務主體。
@@ -105,6 +98,10 @@ ms.locfileid: "92103538"
 [將服務主體新增至 HDInsight 叢集](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.png)
 
 1. 選取 [ **存取** ] 以設定資料夾存取。  請參閱[設定檔案權限](#configure-file-permissions)。
+
+### <a name="set-up-permissions-for-the-service-principal-to-be-owner-on-the-storage-account"></a><a name="configure-serviceprincipal-permissions"></a>設定服務主體的許可權，使其成為儲存體帳戶的擁有者
+1. 在 [儲存體帳戶] 的 [存取控制] (IAM) 分頁上，按一下 [新增角色指派]。 
+2. 在 [新增角色指派] 分頁上，選取 [角色] 作為 [擁有者]，並選取 SPN，然後按一下 [儲存]。
 
 ### <a name="configure-file-permissions"></a><a name="configure-file-permissions"></a>設定檔案權限
 
