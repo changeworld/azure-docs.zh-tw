@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 71b7217a1a3d79db67e1649ce33d441f0c2c2da2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 86336ddb557613d42117480a5793e8b0ecbc7bae
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489399"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495833"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虛擬網路的常見問題 (FAQ)
 
@@ -283,7 +283,7 @@ VNet 對等互連 (或虛擬網路對等互連) 可讓您將虛擬網路連線�
 建立 VNet 對等互連連線無需收費。 透過對等互連連線的資料傳輸才會收費。 [請參閱這裡](https://azure.microsoft.com/pricing/details/virtual-network/)。
 
 ### <a name="is-vnet-peering-traffic-encrypted"></a>VNet 對等互連流量是否會加密？
-當 Vnet 對等互連流量在資料中心之間移動時（不是由 (所控制或代表 Microsoft [MACsec 資料連結層加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit) 的外部實體界限），會在基礎網路硬體上使用。
+當 Azure 流量在資料中心之間移動 (不是由 Microsoft 或代表 Microsoft) 所控制的實體界限之外，就會在基礎網路硬體上使用 [MACsec 資料連結層加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit) 。  這適用于 VNet 對等互連流量。
 
 ### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>為什麼我的對等互連連線處於 *中斷* 線上狀態？
 一個 VNet 對等互連連結遭到刪除時，VNet 對等互連連線即會進入「中斷連線」** 狀態。 您必須將兩個連結都刪除，以重新建立成功的對等互連連線。

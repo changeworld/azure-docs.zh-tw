@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 9ffa35e158d34a1fc6945ee2730dcf136d13edb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09498587ad65a8de0935a3a4455bb3b66ed6c3ec
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85504332"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491252"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>適用於定期資料轉送的解決方案
  
@@ -57,17 +57,17 @@ ms.locfileid: "85504332"
 | 板型規格                                   | 虛擬裝置             | 實體裝置          | Azure 入口網站中的服務、內部部署代理程式                                                            |
 | 硬體                                      | 您的 Hypervisor            | 由 Microsoft 提供    | NA                                                            |
 | 初始設定投入量                          | 低 (<30 分鐘)。            | 中 (~數小時) | 大 (~數天)                                                 |
-| 資料格式                                   | Azure Blob、Azure 檔案   | Azure Blob、Azure 檔案 | [支援 70 種以上的資料存放區和格式化資料連接器](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
+| 資料格式                                   | Azure Blob、Azure 檔案   | Azure Blob、Azure 檔案 | [支援 70 種以上的資料存放區和格式化資料連接器](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
 | 資料預先處理                           | 否                         | 是，透過 Edge 計算    | 是                                                           |
 | 本機快取<br>(儲存內部部署資料)    | 是                        | 是                      | 否                                                            |
 | 從其他雲端轉送                    | 否                         | 否                       | 是                                                           |
 | 定價                                       | [定價](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [定價](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [定價](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [使用 AzCopy 傳輸資料](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
-- [使用 Azure 儲存體 REST API 轉送資料的詳細資訊](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)。
+- [使用 Azure 儲存體 REST API 轉送資料的詳細資訊](/dotnet/api/overview/azure/storage)。
 - 了解如何：
-    - [使用資料箱閘道傳輸資料](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares)。
-    - [先使用 Azure Data Box Edge 轉換資料再傳送至 Azure](https://docs.microsoft.com/azure/databox-online/data-box-edge-deploy-configure-compute)。
-- [了解如何使用 Azure Data Factory 轉送資料](https://docs.microsoft.com/azure/data-factory/tutorial-bulk-copy-portal)。
+    - [使用資料箱閘道傳輸資料](/azure/databox-online/data-box-gateway-deploy-add-shares)。
+    - [先使用 Azure Data Box Edge 轉換資料再傳送至 Azure](/azure/databox-online/data-box-edge-deploy-configure-compute)。
+- [了解如何使用 Azure Data Factory 轉送資料](/azure/data-factory/tutorial-bulk-copy-portal)。

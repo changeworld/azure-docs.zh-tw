@@ -9,16 +9,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: c6a5f69a5a32ed1279b367c93b5246eb77ef0208
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1dc0c7f37dc848ecd361848934cbcc5640afc66
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802832"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490759"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>轉換至 Azure 監視器中的計量
 
-**2023 年8月 31**日儲存體分析計量，也稱為*傳統計量*將會淘汰。 如需詳細資訊，請參閱 [官方公告](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/)。 如果您使用傳統計量，請務必在該日期之前轉換成 Azure 監視器中的計量。 本文可協助您進行轉換。 
+**2023 年8月 31**日儲存體分析計量，也稱為*傳統計量*將會淘汰。 如需詳細資訊，請參閱[官方公告](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/)。 如果您使用傳統計量，請務必在該日期之前轉換到 Azure 監視器中的計量。 本文可協助您進行轉換。 
 
 ## <a name="steps-to-complete-the-transition"></a>完成轉換的步驟
 
@@ -30,12 +30,12 @@ ms.locfileid: "91802832"
 
 3. 識別 [Azure 監視器中的哪些計量](#metrics-mapping-between-old-metrics-and-new-metrics) 提供與您目前使用的計量相同的資料。 
    
-4. 建立 [圖表](https://docs.microsoft.com/learn/modules/gather-metrics-blob-storage/2-viewing-blob-metrics-in-azure-portal) 或 [儀表板](https://docs.microsoft.com/learn/modules/gather-metrics-blob-storage/4-using-dashboards-in-the-azure-portal) 來查看度量資料。
+4. 建立 [圖表](/learn/modules/gather-metrics-blob-storage/2-viewing-blob-metrics-in-azure-portal) 或 [儀表板](/learn/modules/gather-metrics-blob-storage/4-using-dashboards-in-the-azure-portal) 來查看度量資料。
 
    > [!NOTE]
    > 預設會啟用 Azure 監視器中的計量，因此您不需要執行任何動作來開始捕獲計量。 不過，您必須建立圖表或儀表板來查看這些計量。 
  
-5. 如果您已建立以傳統儲存體計量為基礎的警示規則，則根據 Azure 監視器中的計量 [建立警示規則](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview) 。 
+5. 如果您已建立以傳統儲存體計量為基礎的警示規則，則根據 Azure 監視器中的計量 [建立警示規則](/azure/azure-monitor/platform/alerts-overview) 。 
 
 6. 當您可以在 Azure 監視器中看到所有計量之後，您可以關閉傳統記錄。 
 
@@ -53,7 +53,7 @@ ms.locfileid: "91802832"
 
 如果您帳戶中的活動不會觸發計量，則傳統計量會顯示該計量的值為零 (0) 。 Azure 監視器中的計量會完全略過資料，而這會導致清除報表。 例如，使用傳統計量時，如果未報告任何伺服器逾時錯誤，則 `ServerTimeoutError` 度量資料表中的值會設定為0。 當您查詢維度等於的度量值時，Azure 監視器不會傳回任何資料 `Transactions` `ResponseType` `ServerTimeoutError` 。 
 
-若要深入瞭解 Azure 監視器中的計量，請參閱 [Azure 監視器中的計量](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)。
+若要深入瞭解 Azure 監視器中的計量，請參閱 [Azure 監視器中的計量](/azure/azure-monitor/platform/data-platform-metrics)。
 
 <a id="metrics-mapping-between-old-metrics-and-new-metrics"></a>
 

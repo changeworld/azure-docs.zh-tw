@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: d6fabd58baf8fb3dc30c2468efd5bdc8179d5f95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a0aebc727233cdd838f3e1bf8eeb5cd247b9836
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84709193"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489671"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>在 Azure DNS 中託管反向 DNS 對應區域
 
@@ -48,7 +48,7 @@ IPv4 反向對應區域的名稱是以其所代表的 IP 範圍為基礎。 格�
 
 下例示範如何透過 Azure 入口網站，在 Azure DNS 中建立名為 `2.0.192.in-addr.arpa` 的「類別 C」反向 DNS 區域：
 
- ![[建立 DNS 區域] 窗格，並填滿方塊](./media/dns-reverse-dns-hosting/figure2.png)
+ ![顯示如何透過 Azure 入口網站在 Azure DNS 中建立名為 2.0.192.in-addr. arpa 的類別 C 反向 DNS 區域的螢幕擷取畫面。](./media/dns-reverse-dns-hosting/figure2.png)
 
 [資源群組位置]**** 會定義資源群組的位置。 它對於 DNS 區域沒有任何影響。 DNS 區域一定是「全域」位置，且不會顯示出來。
 
@@ -117,7 +117,7 @@ az network dns zone create -g MyResourceGroup -n 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2
 
 1. 在 [DNS 區域]**** 窗格頂端，選取 [+ 記錄集]**** 以開啟 [新增記錄集]**** 窗格。
 
-   ![建立記錄集的按鈕](./media/dns-reverse-dns-hosting/figure4.png)
+   ![[DNS 區域] 窗格的螢幕擷取畫面，其中箭號指向 [+ 記錄集] 按鈕。](./media/dns-reverse-dns-hosting/figure4.png)
 
 1. PTR 記錄的記錄集名稱必須是反向順序的其餘 IPv4 位址。 
 
@@ -162,7 +162,7 @@ az network dns record-set ptr add-record -g MyResourceGroup -z 2.0.192.in-addr.a
 4. 在 [網域名稱]**** 中，輸入使用 IP 之資源的 FQDN。
 5. 選取窗格底部的 [確定]****，建立 DNS 記錄。
 
-![[新增記錄集] 窗格，並填滿方塊](./media/dns-reverse-dns-hosting/figure7.png)
+![顯示 [新增記錄集] 窗格的螢幕擷取畫面，其中的箭號指向 [類型] 欄位中的值。](./media/dns-reverse-dns-hosting/figure7.png)
 
 下列範例示範如何使用 PowerShell 或 Azure CLI 完成這項工作。
 
@@ -262,7 +262,7 @@ az network dns record-set list -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0
 
 如需詳細資訊，請參閱[使用 Azure CLI 匯入及匯出 DNS 區域檔案](dns-import-export.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需反向 DNS 的詳細資訊，請參閱維基百科的 [reverse DNS lookup](https://en.wikipedia.org/wiki/Reverse_DNS_lookup) (反向 DNS 對應)。
 <br>

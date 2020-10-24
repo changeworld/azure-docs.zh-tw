@@ -8,12 +8,12 @@ author: sabbour
 ms.author: asabbour
 keywords: aro, openshift, az aro, red hat, cli
 ms.custom: mvc
-ms.openlocfilehash: 2cb54c202af04996080cda970b3d327145f0e72b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4eab701d22f579a816aa95bd43a74fd9ea07d9e4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469876"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490232"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>設定 Azure Red Hat OpenShift 4 叢集 (入口網站的 Azure Active Directory authentication) 
 
@@ -62,7 +62,7 @@ echo "OAuth callback URL: https://oauth-openshift.apps.$domain.$location.aroapp.
 
 流覽至 [ **權杖設定 (預覽]) ** 然後按一下 [ **新增選擇性**宣告]。 選取 [ **識別碼** ]，然後檢查 **電子郵件** 和 **upn** 宣告。
 
-![建立祕密](media/aro4-ad-tokens.png)
+![顯示已新增之電子郵件和 upn 宣告的螢幕擷取畫面。](media/aro4-ad-tokens.png)
 
 ## <a name="assign-users-and-groups-to-the-cluster-optional"></a>將使用者和群組指派給叢集 (選擇性) 
 

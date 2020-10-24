@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: ac093f707167160e916c15b935cb3d8ff6bbc748
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 022b6eb6595f25af4189d783a6a91031f95c7216
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037111"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479352"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>使用 AzCopy 將資料從 Amazon S3 複製到 Azure 儲存體
 
@@ -34,7 +34,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 >
 > 如果您想要使用 SAS 權杖來授與 blob 資料的存取權，您可以將該權杖附加至每個 AzCopy 命令中的資源 URL。
 >
-> 例如： `https://mystorageaccount.blob.core.windows.net/mycontainer?<SAS-token>` 。
+> 例如：`https://mystorageaccount.blob.core.windows.net/mycontainer?<SAS-token>`。
 
 ### <a name="authorize-with-aws-s3"></a>使用 AWS S3 授權
 
@@ -48,7 +48,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 
 ## <a name="copy-objects-directories-and-buckets"></a>複製物件、目錄和 bucket
 
-AzCopy 會使用 [URL API 的 Put 區塊](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) ，因此會直接在 AWS S3 與儲存體伺服器之間複製資料。 這些複製作業不會使用您電腦的網路頻寬。
+AzCopy 會使用 [URL API 的 Put 區塊](/rest/api/storageservices/put-block-from-url) ，因此會直接在 AWS S3 與儲存體伺服器之間複製資料。 這些複製作業不會使用您電腦的網路頻寬。
 
 > [!TIP]
 > 本章節中的範例會以單引號括住路徑引數 ( ' ' ) 。 在所有命令 shell 中使用單引號，除了 Windows 命令 Shell ( # A0) 之外。 如果您使用 Windows 命令 Shell ( # A0) ，請使用雙引號括住路徑引數 ( "" ) 而不是單引號 ( ' ' ) 。
@@ -135,11 +135,11 @@ AzCopy 會處理可能發生的兩個最常見問題;包含句點和值區的值
 
 ## <a name="handle-differences-in-object-metadata"></a>處理物件中繼資料的差異
 
-AWS S3 和 Azure 允許在物件索引鍵的名稱中有不同組的字元。 您可以閱讀 AWS S3 在 [此](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)使用的字元。 在 Azure 端，blob 物件索引鍵會遵守 [c # 識別碼](https://docs.microsoft.com/dotnet/csharp/language-reference/)的命名規則。
+AWS S3 和 Azure 允許在物件索引鍵的名稱中有不同組的字元。 您可以閱讀 AWS S3 在 [此](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)使用的字元。 在 Azure 端，blob 物件索引鍵會遵守 [c # 識別碼](/dotnet/csharp/language-reference/)的命名規則。
 
 作為 AzCopy 命令的一部分 `copy` ，您可以為選擇性的旗標提供一個值，以 `s2s-handle-invalid-metadata` 指定您要如何處理檔案的中繼資料包含不相容的索引鍵名稱。 下表描述每個旗標值。
 
-| 旗標值 | 描述  |
+| 旗標值 | 說明  |
 |--------|-----------|
 | **ExcludeIfInvalid** |  (預設選項) 中繼資料不會包含在傳送的物件中。 AzCopy 會記錄警告。 |
 | **FailIfInvalid** | 不會複製物件。 AzCopy 會記錄錯誤，並將該錯誤包含在「傳輸摘要」中的失敗計數。  |
@@ -169,6 +169,6 @@ AzCopy 執行下列步驟：
 
 - [使用 AzCopy 和 Blob 儲存體轉送資料](storage-use-azcopy-blobs.md)
 
-- [使用 AzCopy 和檔案儲存體傳輸資料](storage-use-azcopy-files.md) (機器翻譯)
+- [使用 AzCopy 和檔案儲存體轉送資料](storage-use-azcopy-files.md)
 
 - [對 AzCopy 進行設定、最佳化及疑難排解](storage-use-azcopy-configure.md)

@@ -9,12 +9,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: f90160ba58983414b5421542c6292f4570f1e10a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 708a7139aec7b8d3fe9e5f08df2c5e93b99d0668
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92142836"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476785"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>針對搭配使用 Azure Cosmos DB Java SDK v4 和 SQL API 帳戶時所發生的問題進行疑難排解
 
@@ -46,7 +46,7 @@ Azure Cosmos DB Java SDK v4 提供用戶端邏輯表示法來存取 Azure Cosmos
 若要獲得最佳效能︰
 * 確定應用程式會在與您 Azure Cosmos DB 帳戶相同的區域上執行。 
 * 在應用程式執行所在的主機上檢查 CPU 使用量。 如果 CPU 使用量為 50% 或更高，請在具有更高組態的主機上執行您的應用程式。 或者，您可將負載分散於更多電腦上。
-    * 如果您是在 Azure Kubernetes Service 上執行應用程式，您可以[使用 Azure 監視器來監視 CPU 使用率](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-analyze)。
+    * 如果您是在 Azure Kubernetes Service 上執行應用程式，您可以[使用 Azure 監視器來監視 CPU 使用率](../azure-monitor/insights/container-insights-analyze.md)。
 
 #### <a name="connection-throttling"></a>連線節流
 連線節流的發生原因可能是因為[主機電腦上的連線限制]或 [Azure SNAT (PAT) 連接埠耗盡]。
@@ -62,13 +62,13 @@ ulimit -a
 
 ##### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT (PAT) 連接埠耗盡
 
-如果您的應用程式部署於不具公用 IP 位址的 Azure 虛擬機器上，則 [Azure SNAT 連接埠](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)預設會建立與您 VM 外部任何端點的連線。 從 VM 到 Azure Cosmos DB 端點所允許的連線數目會受到 [Azure SNAT 設定](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports)所限制。
+如果您的應用程式部署於不具公用 IP 位址的 Azure 虛擬機器上，則 [Azure SNAT 連接埠](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)預設會建立與您 VM 外部任何端點的連線。 從 VM 到 Azure Cosmos DB 端點所允許的連線數目會受到 [Azure SNAT 設定](../load-balancer/load-balancer-outbound-connections.md#preallocatedports)所限制。
 
  只有在您的 VM 具有私人 IP 位址，而且來自 VM 的程序嘗試連線到公用 IP 位址時，才會使用 Azure SNAT 連接埠。 有兩種因應措施可避免 Azure SNAT 限制：
 
-* 將 Azure Cosmos DB 服務端點新增至您的 Azure 虛擬機器虛擬網路。 如需詳細資訊，請參閱 [Azure 虛擬網路服務端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)。 
+* 將 Azure Cosmos DB 服務端點新增至您的 Azure 虛擬機器虛擬網路。 如需詳細資訊，請參閱 [Azure 虛擬網路服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)。 
 
-    啟用服務端點時，要求不再會從公用 IP 傳送到 Azure Cosmos DB。 改為傳送虛擬網路和子網路身分識別。 如果只允許公用 IP，此變更可能會導致防火牆卸除。 如果您使用防火牆，當您啟用服務端點時，請使用[虛擬網路 ACL](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl) 將子網路新增至防火牆。
+    啟用服務端點時，要求不再會從公用 IP 傳送到 Azure Cosmos DB。 改為傳送虛擬網路和子網路身分識別。 如果只允許公用 IP，此變更可能會導致防火牆卸除。 如果您使用防火牆，當您啟用服務端點時，請使用[虛擬網路 ACL](/previous-versions/azure/virtual-network/virtual-networks-acl) 將子網路新增至防火牆。
 * 將公用 IP 指派給您的 Azure VM。
 
 ##### <a name="cant-reach-the-service---firewall"></a><a name="cant-connect"></a>無法連線服務 - 防火牆
@@ -217,5 +217,3 @@ netstat -abn
 [Enable client SDK logging]: #enable-client-sice-logging
 [主機電腦上的連線限制]: #connection-limit-on-host
 [Azure SNAT (PAT) 連接埠耗盡]: #snat
-
-

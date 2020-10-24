@@ -1,14 +1,14 @@
 ---
 title: 使用 Azure Resource Manager 範本啟用 VM 擴充功能
 description: 本文說明如何使用 Azure Resource Manager 範本，將虛擬機器擴充功能部署到在混合式雲端環境中執行的 Azure Arc 啟用的伺服器。
-ms.date: 10/15/2020
+ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 23cb1e85b9560b7033dc5bdce672ee8718ed326b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 935fa38fbb98622f2da7d2ce9e1d166b12a32e44
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/23/2020
-ms.locfileid: "92462890"
+ms.locfileid: "92491201"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>使用 ARM 範本啟用 Azure VM 擴充功能
 
@@ -145,7 +145,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 * 如果您的電腦需要在外部下載腳本，而且只能透過 proxy 伺服器進行通訊，則您需要設定 [連線的機器代理程式](manage-agent.md#update-or-remove-proxy-settings) 來設定 proxy 伺服器的環境變數。
 
-「自訂指令碼擴充功能」組態會指定指令碼位置和要執行命令等項目。 這項設定是在 Azure Resource Manager 範本中指定，適用于 Linux 和 Windows 混合式電腦。
+自訂腳本延伸模組設定會指定腳本位置和要執行的命令等專案。 這項設定是在 Azure Resource Manager 範本中指定，適用于 Linux 和 Windows 混合式電腦。
 
 ### <a name="template-file-for-linux"></a>適用于 Linux 的範本檔案
 
@@ -543,7 +543,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 }
 ```
 
-## <a name="deploy-the-dependency-agent"></a>部署相依性代理程式
+## <a name="deploy-the-dependency-agent-extension"></a>部署相依性代理程式擴充功能
 
 若要使用 Azure 監視器相依性代理程式延伸模組，您可以在 Windows 和 Linux 上執行下列範例。 如果您不熟悉相依性代理程式，請參閱 [Azure 監視器代理程式的總覽](../../azure-monitor/platform/agents-overview.md#dependency-agent)。
 

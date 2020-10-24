@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2020
 ms.author: rolyon
-ms.openlocfilehash: 91d2605dddd6107d09e635969f5e5d98c2a02d60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ab6561b1dc0e8b977fc69d259c5f26366f355ce
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511716"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481324"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>使用 Azure 入口網站建立或更新 Azure 自訂角色 (機器翻譯)
 
 如果 [Azure 內建角色](built-in-roles.md) 不符合您組織的特定需求，您可以建立自己的 Azure 自訂角色。 就像內建角色一樣，您可以將自訂角色指派給訂用帳戶和資源群組範圍的使用者、群組和服務主體。 自訂角色是存放在 Azure Active Directory (Azure AD) 目錄中，而且可以跨訂用帳戶共用。 每個目錄最多可有5000個自訂角色。 您可以使用 Azure 入口網站、Azure PowerShell、Azure CLI 或 REST API 來建立自訂角色。 本文說明如何使用 Azure 入口網站建立自訂角色。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要建立自訂角色，您需要：
 
@@ -331,11 +331,11 @@ Microsoft.CostManagement/exports/delete
 
 1. 按一下您要刪除之自訂角色的省略號 (**...**) ，然後按一下 [ **刪除**]。
 
-    ![自訂角色功能表](./media/custom-roles-portal/delete-menu.png)
+    ![螢幕擷取畫面，顯示可選取要刪除的自訂角色清單。](./media/custom-roles-portal/delete-menu.png)
 
     可能需要幾分鐘的時間，您的自訂角色才能完全刪除。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [教學課程：使用 Azure PowerShell 建立 Azure 自訂角色](tutorial-custom-role-powershell.md)
 - [Azure 自訂角色](custom-roles.md) (機器翻譯)

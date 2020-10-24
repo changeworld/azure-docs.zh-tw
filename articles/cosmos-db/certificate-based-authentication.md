@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 0b1fdec12b99edc952d24b0b3cc21bad24ec7554
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f787840422e61d6f43081d991ffc3ef28da6976
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569727"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486526"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Azure AD 身分識別的憑證型驗證，以從 Azure Cosmos DB 帳戶存取金鑰
 
@@ -22,13 +22,13 @@ ms.locfileid: "91569727"
 
 * 安裝 [最新版本](/powershell/azure/install-az-ps) 的 Azure PowerShell。
 
-* 如果您沒有 [Azure 訂用帳戶](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+* 如果您沒有 [Azure 訂用帳戶](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 ## <a name="register-an-app-in-azure-ad"></a>在 Azure AD 中註冊應用程式
 
 在此步驟中，您將在 Azure AD 帳戶中註冊範例 web 應用程式。 稍後會使用此應用程式從您的 Azure Cosmos DB 帳戶讀取金鑰。 使用下列步驟來註冊應用程式： 
 
-1. 登入[Azure 入口網站](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
 1. 開啟 Azure **Active Directory** 窗格，移至 **應用程式註冊** 窗格，然後選取 [ **新增註冊**]。 
 
@@ -103,7 +103,7 @@ New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyId
 
 ## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>將您的 Azure Cosmos 帳戶設定為使用新的身分識別
 
-1. 登入[Azure 入口網站](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
 1. 流覽至您的 Azure Cosmos 帳戶，開啟 ** (IAM) 分頁的存取控制 ** 。
 
@@ -119,7 +119,7 @@ New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyId
 
 在用戶端應用程式的 Azure 應用程式註冊中：
 
-1. 登入[Azure 入口網站](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
 1. 開啟 Azure **Active Directory** 窗格，移至 [ **應用程式註冊** ] 窗格，然後開啟您在上一個步驟中建立的範例應用程式。 
 

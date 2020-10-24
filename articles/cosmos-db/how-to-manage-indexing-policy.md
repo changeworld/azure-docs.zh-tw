@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: f006f249fce56171f8bbf471de013e015b5c4f92
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 67d542ffe0279abe72bc74ab207cd5fddd1a4362
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207770"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491031"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引編製原則
 
@@ -347,7 +347,7 @@ WHERE c.name = "Tim" AND c.age > 18
 [更新索引編製原則](index-policy.md#modifying-the-indexing-policy)將會觸發索引的轉換。 您也可以從 SDK 追蹤此轉換的進度。
 
 > [!NOTE]
-> 更新索引編制原則時，寫入 Azure Cosmos DB 將不會中斷。 深入瞭解 [編制索引轉換](indexing-policy.md#modifying-the-indexing-policy)
+> 更新索引編制原則時，寫入 Azure Cosmos DB 將不會中斷。 深入瞭解 [編制索引轉換](index-policy.md#modifying-the-indexing-policy)
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 

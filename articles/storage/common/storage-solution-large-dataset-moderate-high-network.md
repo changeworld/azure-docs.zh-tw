@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 900221bd27fe4020a927b3155c91aa8e494ca890
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c88da1c7fba5d7cb51863a580ae420eb6b3298a2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86203849"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491269"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>在有中速至高速的網路頻寬之情況下進行大型資料集的資料轉送
  
@@ -93,19 +93,19 @@ ms.locfileid: "86203849"
 |    **使用者類型**                    |    IT 專業人員或開發人員                                       |    Dev                                       |    IT 專業人員                                                |    IT 專業人員                                                             |
 |    **定價**                      |    適用免費資料輸出費用         |    適用免費資料輸出費用         |    [定價](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [定價](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [了解如何使用匯入/匯出轉送資料](/azure/storage/common/storage-import-export-data-to-blobs)。
 - 了解如何
 
-    - [使用資料箱磁碟轉送資料](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal)。
-    - [使用資料箱轉送資料](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)。
+    - [使用資料箱磁碟轉送資料](/azure/databox/data-box-disk-quickstart-portal)。
+    - [使用資料箱轉送資料](/azure/databox/data-box-quickstart-portal)。
 - [使用 AzCopy 傳輸資料](/azure/storage/common/storage-use-azcopy-v10)。
 - 了解如何：
-    - [使用資料箱閘道傳輸資料](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares)。
-    - [先使用 Azure Data Box Edge 轉換資料再傳送至 Azure](https://docs.microsoft.com/azure/databox-online/data-box-edge-deploy-configure-compute)。
-- [了解如何使用 Azure Data Factory 轉送資料](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal)。
+    - [使用資料箱閘道傳輸資料](/azure/databox-online/data-box-gateway-deploy-add-shares)。
+    - [先使用 Azure Data Box Edge 轉換資料再傳送至 Azure](/azure/databox-online/data-box-edge-deploy-configure-compute)。
+- [了解如何使用 Azure Data Factory 轉送資料](/azure/data-factory/quickstart-create-data-factory-portal)。
 - 使用 REST API 轉送資料
 
-    - [在 .NET 中](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [使用 Java](https://docs.microsoft.com/java/api/overview/azure/storage)
+    - [在 .NET 中](/dotnet/api/overview/azure/storage)
+    - [使用 Java](/java/api/overview/azure/storage)

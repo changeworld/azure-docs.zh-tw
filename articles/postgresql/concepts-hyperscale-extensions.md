@@ -7,20 +7,20 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: fda40e58231b849f1e63f53f7bb268375ffe7fec
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 2e4a09ba07a5fa5eb3a5af7aa88e092feb3e7efc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996450"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487971"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>適用於 PostgreSQL 的 Azure 資料庫中的于 postgresql 延伸模組-超大規模 (Citus) 
 
-于 postgresql 可讓您使用擴充功能來擴充資料庫的功能。 擴充功能可在單一封裝中一併統合多個相關的 SQL 物件，其可使用單一命令從您的資料庫加以載入或移除。 在資料庫中載入之後，擴充功能可以像內建功能一樣運作。 如需于 postgresql 擴充功能的詳細資訊，請參閱 [將相關物件封裝成擴充](https://www.postgresql.org/docs/current/static/extend-extensions.html)功能。
+于 postgresql 可讓您使用擴充功能來擴充資料庫的功能。 擴充功能可在單一封裝中一併統合多個相關的 SQL 物件，其可使用單一命令從您的資料庫加以載入或移除。 在資料庫中載入之後，擴充功能可以像內建功能一樣運作。 如需于 postgresql 擴充功能的詳細資訊，請參閱 [將相關物件封裝成擴充](https://www.postgresql.org/docs/current/static/extend-extensions.html)功能。
 
 ## <a name="use-postgresql-extensions"></a>使用於 postgresql 延伸模組
 
-您必須先在資料庫中安裝 PostgreSQL 擴充功能，然後才能使用它們。 若要安裝特定的擴充功能，請從 psql 工具執行 [CREATE extension](https://www.postgresql.org/docs/current/static/sql-createextension.html)   命令，以將封裝的物件載入至您的資料庫。
+您必須先在資料庫中安裝 PostgreSQL 擴充功能，然後才能使用它們。 若要安裝特定的擴充功能，請從 psql 工具執行 [CREATE extension](https://www.postgresql.org/docs/current/static/sql-createextension.html) 命令，以將封裝的物件載入至您的資料庫。
 
 適用於 PostgreSQL 的 Azure 資料庫超大規模 (Citus) 目前支援如下所示的金鑰擴充功能子集。 不支援列出的延伸模組除外。 您無法使用適用於 PostgreSQL 的 Azure 資料庫建立自己的擴充功能。
 
@@ -31,7 +31,7 @@ ms.locfileid: "91996450"
 ### <a name="data-types-extensions"></a>資料類型擴充功能
 
 > [!div class="mx-tableFixed"]
-> | **副檔名** | **說明** |
+> | **分機** | **描述** |
 > |---|---|
 > | [citext](https://www.postgresql.org/docs/current/static/citext.html) | 提供不區分大小寫的字元字串類型。 |
 > | [立方體](https://www.postgresql.org/docs/current/static/cube.html) | 提供多維度 Cube 的資料類型。 |
@@ -47,7 +47,7 @@ ms.locfileid: "91996450"
 ### <a name="full-text-search-extensions"></a>全文檢索搜尋擴充功能
 
 > [!div class="mx-tableFixed"]
-> | **副檔名** | **說明** |
+> | **分機** | **描述** |
 > |---|---|
 > | [dict\_int](https://www.postgresql.org/docs/current/static/dict-int.html) | 提供整數的文字搜尋字典範本。 |
 > | [dict \_ xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | 用於擴充同義文書處理的文字搜尋字典範本。 |
@@ -56,7 +56,7 @@ ms.locfileid: "91996450"
 ### <a name="functions-extensions"></a>函數擴充功能
 
 > [!div class="mx-tableFixed"]
-> | **副檔名** | **說明** |
+> | **分機** | **描述** |
 > |---|---|
 > | [autoinc](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | 自動遞增欄位的功能。 |
 > | [earthdistance](https://www.postgresql.org/docs/current/static/earthdistance.html) | 提供方法來計算地球表面上的大圓距離。 |
@@ -78,7 +78,7 @@ ms.locfileid: "91996450"
 ### <a name="hyperscale-citus-extensions"></a>超大規模 (Citus) 擴充功能
 
 > [!div class="mx-tableFixed"]
-> | **副檔名** | **說明** |
+> | **分機** | **描述** |
 > |---|---|
 > | [citus](https://github.com/citusdata/citus) | Citus 分散式資料庫。 |
 > | 分區 \_ rebalancer | 在新增或移除節點時，安全地重新平衡伺服器群組中的資料。 |
@@ -86,7 +86,7 @@ ms.locfileid: "91996450"
 ### <a name="index-types-extensions"></a>索引類型延伸模組
 
 > [!div class="mx-tableFixed"]
-> | **副檔名** | **說明** |
+> | **分機** | **描述** |
 > |---|---|
 > | [綻放](https://www.postgresql.org/docs/current/bloom.html) | Bloom 存取方法-以檔案為基礎的特徵標記索引。 |
 > | [btree\_gin](https://www.postgresql.org/docs/current/static/btree-gin.html) | 提供範例 GIN 運算子類別，這些類別會針對某些資料類型執行 B 型樹狀結構的行為。 |
@@ -95,14 +95,14 @@ ms.locfileid: "91996450"
 ### <a name="language-extensions"></a>語言延伸模組
 
 > [!div class="mx-tableFixed"]
-> | **副檔名** | **說明** |
+> | **分機** | **描述** |
 > |---|---|
 > | [plpgsql](https://www.postgresql.org/docs/current/static/plpgsql.html) | PL/pgSQL 可載入的程序性語言。 |
 
 ### <a name="miscellaneous-extensions"></a>其他擴充功能
 
 > [!div class="mx-tableFixed"]
-> | **副檔名** | **說明** |
+> | **分機** | **描述** |
 > |---|---|
 > | [adminpack](https://www.postgresql.org/docs/current/adminpack.html) | 于 postgresql 的系統管理功能。 |
 > | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | 用於驗證關聯性完整性的函數。 |
@@ -128,7 +128,7 @@ ms.locfileid: "91996450"
 ### <a name="postgis-extensions"></a>PostGIS 擴充功能
 
 > [!div class="mx-tableFixed"]
-> | **副檔名** | **說明** |
+> | **分機** | **描述** |
 > |---|---|
 > | [PostGIS](https://www.postgis.net/)、postgis\_topology、postgis\_tiger\_geocoder、postgis\_sfcgal | 適用於 PostgreSQL 的空間與地理物件。 |
 > | address\_standardizer、address\_standardizer\_data\_us | 用來將位址剖析為組成項目。 用來支援對位址進行地理編碼的正規化步驟。 |
@@ -140,7 +140,7 @@ ms.locfileid: "91996450"
 ## <a name="pg_stat_statements"></a>pg_stat_statements
 每適用於 PostgreSQL 的 Azure 資料庫部伺服器上都會預先載入 [pg \_ stat \_ 語句延伸](https://www.postgresql.org/docs/current/pgstatstatements.html) 模組，以提供您追蹤 SQL 語句執行統計資料的方法。
 
-此設定 `pg_stat_statements.track` 會控制延伸模組所計算的語句。 它會預設為 `top` ，這表示會追蹤用戶端直接發出的所有語句。 其他兩個會追蹤層級 `none` 和 `all`。 這項設定是可透過 [Azure 入口網站](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal)或 [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli) 設定的伺服器參數。
+此設定 `pg_stat_statements.track` 會控制延伸模組所計算的語句。 它會預設為 `top` ，這表示會追蹤用戶端直接發出的所有語句。 其他兩個會追蹤層級 `none` 和 `all`。 這項設定是可透過 [Azure 入口網站](./howto-configure-server-parameters-using-portal.md)或 [Azure CLI](./howto-configure-server-parameters-using-cli.md) 設定的伺服器參數。
 
 Pg_stat_statements 提供的查詢執行資訊與記錄每個 SQL 語句的伺服器效能的影響之間有取捨。 如果您未主動使用 pg_stat_statements 擴充功能，建議您將設定 `pg_stat_statements.track` 為 `none` 。 某些協力廠商監視服務可能依賴 pg_stat_statements 來提供查詢效能深入解析，因此請確認您是否為這種情況。
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 1b49ac357fd021b23272112a24ae9371d12bc042
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 18e32a0387119d235294d1126d869186ae28d2b2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331578"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488974"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Front Door 的常見問題
 
@@ -92,7 +92,6 @@ Azure Front Door 是全域散發的多租使用者服務。 因此，Front Door 
 - 為您的後端設定 IP 執行 acl，以接受來自 Azure Front Door 後端 IP 位址空間和 Azure 基礎結構服務的流量。 請參閱下面的 IP 詳細資料，以執行 acl 您的後端：
  
     - 請參閱[AZURE IP 範圍](https://www.microsoft.com/download/details.aspx?id=56519)中的*AzureFrontDoor 後端*區段和 Front Door 的 IPv4 後端 IP 位址範圍的服務標籤，或者您也可以使用[網路安全性群組](../virtual-network/network-security-groups-overview.md#security-rules)中的服務標記*AzureFrontDoor。*
-    - 在服務標籤中所涵蓋的 Front Door 的 **IPv6** 後端 IP 空間未列在 Azure IP 範圍的 JSON 檔案中。 如果您要尋找明確的 IPv6 位址範圍，它目前的限制為 `2a01:111:2050::/44`
     - 透過虛擬化主機 IP 位址的 Azure [基本基礎結構服務](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) ： `168.63.129.16` 和 `169.254.169.254`
 
     > [!WARNING]
@@ -255,7 +254,7 @@ Front Door 受控選項會透過 Digicert 布建標準的 TLS/SSL 憑證，並�
 
 ### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>我可以搭配 Azure Front Door 使用用戶端/相互驗證嗎？
 
-否。 雖然 Azure Front Door 支援在 [RFC 5246](https://tools.ietf.org/html/rfc5246)中引入用戶端/相互驗證的 TLS 1.2，但目前 Azure Front Door 不支援用戶端/相互驗證。
+不可以。 雖然 Azure Front Door 支援在 [RFC 5246](https://tools.ietf.org/html/rfc5246)中引入用戶端/相互驗證的 TLS 1.2，但目前 Azure Front Door 不支援用戶端/相互驗證。
 
 ## <a name="diagnostics-and-logging"></a>診斷和記錄
 

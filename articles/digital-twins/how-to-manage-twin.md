@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ede358cdbe533a32ff99fbd736e171463472e45c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4945e89232ee9a15b2700dac49ccd829b7a52dac
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461308"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494788"
 ---
 # <a name="manage-digital-twins"></a>管理 Digital Twins
 
@@ -381,6 +381,8 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 
 您可以使用下列可執行檔程式碼範例來建立對應項、更新其詳細資料，以及刪除對應項。 
 
+### <a name="set-up-the-runnable-sample"></a>設定可執行檔範例
+
 程式碼片段會使用教學課程中的模型定義 [Room.js](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) [*：探索 Azure 數位 Twins 與範例用戶端應用程式*](tutorial-command-line-app.md)。 您可以使用此連結直接移至檔案，或將它下載為完整的端對端 [範例專案的](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)一部分。
 
 執行範例之前，請執行下列動作：
@@ -392,7 +394,12 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
     dotnet add package Azure.identity
     ```
 
-然後，執行範例。
+如果您想要直接執行範例，您也必須設定本機認證。 下一節將逐步解說這一點。
+[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
+
+### <a name="run-the-sample"></a>執行範例
+
+完成上述步驟之後，您可以直接執行下列範例程式碼。
 
 ```csharp
 using System;
@@ -555,8 +562,6 @@ namespace minimal
 ## <a name="manage-twins-with-cli"></a>使用 CLI 管理 twins
 
 您也可以使用 Azure 數位 Twins CLI 來管理 Twins。 您可以在 [_How：使用 Azure 數位 TWINS CLI *](how-to-use-cli.md)中找到這些命令。
-
-[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 ## <a name="view-all-digital-twins"></a>查看所有數位 twins
 

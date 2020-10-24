@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 6101e80131aca94e44bb4e85ee51fe607f47c10f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebd1c4f71d71ca70f6d10763d538b1877b0c3539
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85118945"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489348"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>變更 Azure Cosmos DB 中的摘要設計模式
 
@@ -52,7 +52,7 @@ Azure Cosmos DB 變更摘要可用於 IoT 的即時串流處理，或在操作�
 
 ### <a name="high-availability"></a>高可用性
 
-Azure Cosmos DB 最多可提供 99.999% 的讀取和寫入可用性。 不同於許多訊息佇列，Azure Cosmos DB 資料可以透過 [RTO (復原時間目標)](consistency-levels-tradeoffs.md#rto) 為零，輕鬆地進行全域散發和設定。
+Azure Cosmos DB 最多可提供 99.999% 的讀取和寫入可用性。 不同於許多訊息佇列，Azure Cosmos DB 資料可以透過 [RTO (復原時間目標)](./consistency-levels.md#rto) 為零，輕鬆地進行全域散發和設定。
 
 在處理變更摘要中的項目之後，您可以建置具體化檢視，並在 Azure Cosmos DB 中保存彙總的值。 例如，如果您使用 Azure Cosmos DB 來建置遊戲，就可以根據完成遊戲的分數，使用變更摘要來實作即時排行榜。
 
@@ -73,7 +73,7 @@ Azure Cosmos DB 最多可提供 99.999% 的讀取和寫入可用性。 不同於
 
 ## <a name="event-sourcing"></a>事件來源
 
-[事件來源模式](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)牽涉到使用附加專用存放區來記錄該資料的完整系列動作。 Azure Cosmos DB 的變更摘要是一個絕佳的選擇，做為事件來源架構中的中央資料存放區，其中所有的資料擷取都會模型化為寫入 (無更新或刪除)。 在此情況下，每次寫入 Azure Cosmos DB 都是「事件」，且您在變更摘要中會有過去事件的完整記錄。 中央事件存放區所發佈事件的一般用法，是用來維護具體化檢視或與外部系統整合。 由於變更摘要中沒有保留時間限制，因此您可以從 Cosmos 容器的變更摘要開頭進行讀取，藉此重新執行所有過去的事件。
+[事件來源模式](/azure/architecture/patterns/event-sourcing)牽涉到使用附加專用存放區來記錄該資料的完整系列動作。 Azure Cosmos DB 的變更摘要是一個絕佳的選擇，做為事件來源架構中的中央資料存放區，其中所有的資料擷取都會模型化為寫入 (無更新或刪除)。 在此情況下，每次寫入 Azure Cosmos DB 都是「事件」，且您在變更摘要中會有過去事件的完整記錄。 中央事件存放區所發佈事件的一般用法，是用來維護具體化檢視或與外部系統整合。 由於變更摘要中沒有保留時間限制，因此您可以從 Cosmos 容器的變更摘要開頭進行讀取，藉此重新執行所有過去的事件。
 
 您可以讓[多個變更摘要取用者訂閱相同容器的變更摘要](how-to-create-multiple-cosmos-db-triggers.md#optimizing-containers-for-multiple-triggers)。 除了[租用容器的](change-feed-processor.md#components-of-the-change-feed-processor)佈建輸送量以外，利用變更摘要也不會產生任何費用。 變更摘要適用於每個容器，不論是否已使用。
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 7a76ac3bbe62d48de67815d09e1c8d75f03caa36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d560a415aa6ee0da5304a1a9900c30b32e3be18
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86077893"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488923"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>將內部部署 Apache Hadoop 叢集遷移到 Azure HDInsight - 架構最佳作法
 
@@ -43,9 +43,9 @@ Azure HDInsight 叢集專為特定的計算使用類型而設計。 因為儲存
 |[Azure CLI (1.0 版)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
 |[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
-|[.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)||||X|
-|[Python SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||X|
-|[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
+|[.NET SDK](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true)||||X|
+|[Python SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight)||||X|
+|[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight)||||X|
 |[Azure 資源管理員範本](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
 
 如需詳細資訊，請參閱 [HDInsight 中的叢集類型](../hadoop/apache-hadoop-introduction.md)一文。
@@ -103,11 +103,11 @@ HDInsight 會使用 Azure SQL Database 作為 Hive 和 Oozie 中繼存放區。 
 - 定期備份自訂中繼存放區。
 - 將中繼存放區與 HDInsight 叢集保存在相同區域。
 - 使用 Azure SQL Database 監視工具（例如 Azure 入口網站或 Azure 監視器記錄）監視中繼存放區的效能和可用性。
-- `ANALYZE TABLE`視需要執行命令，以產生資料表和資料行的統計資料。 例如： `ANALYZE TABLE [table_name] COMPUTE STATISTICS` 。
+- `ANALYZE TABLE`視需要執行命令，以產生資料表和資料行的統計資料。 例如，`ANALYZE TABLE [table_name] COMPUTE STATISTICS`。
 
 ## <a name="best-practices-for-different-workloads"></a>不同工作負載的最佳做法
 
-- 請考慮使用 LLAP 叢集進行互動式 Hive 查詢，並縮短回應時間[LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP)   是 Hive 2.0 中的新功能，可讓您進行查詢的記憶體內部快取。 LLAP 讓 Hive 查詢的速讀變快，在某些情況下可達到 [比 Hive 1.x 快 26 倍](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)。
+- 請考慮使用 LLAP 叢集進行互動式 Hive 查詢，並縮短回應時間 [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) 是 Hive 2.0 中的新功能，可讓您進行查詢的記憶體內部快取。 LLAP 讓 Hive 查詢的速讀變快，在某些情況下可達到[比 Hive 1.x 快 26 倍](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)。
 - 請考慮使用 Spark 作業取代 Hive 作業。
 - 請考慮將以 impala 為基礎的查詢取代為 LLAP 查詢。
 - 請考慮將 MapReduce 作業取代為 Spark 作業。
@@ -118,7 +118,7 @@ HDInsight 會使用 Azure SQL Database 作為 Hive 和 Oozie 中繼存放區。 
 - 請考慮在 Hive 資料表和稽核上使用 Ranger RBAC。
 - 請考慮使用 CosmosDB 取代 MongoDB 或 Cassandra。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 閱讀此系列中的下一篇文章：
 

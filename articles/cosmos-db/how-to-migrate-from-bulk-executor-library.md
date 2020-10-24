@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 8f573a3e851fe428c66066e36a913d6580cabd51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62a31750fe0c058624c4f69848abb56e7b5095b4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022474"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491014"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>從大量執行程式程式庫遷移至 Azure Cosmos DB .NET V3 SDK 的大量支援
 
@@ -20,13 +20,13 @@ ms.locfileid: "89022474"
 
 ## <a name="enable-bulk-support"></a>啟用大量支援
 
-透過 AllowBulkExecution 設定在實例上啟用大量支援 `CosmosClient` ： [AllowBulkExecution](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.allowbulkexecution)
+透過 AllowBulkExecution 設定在實例上啟用大量支援 `CosmosClient` ： [AllowBulkExecution](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.allowbulkexecution)
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="Initialization":::
 
 ## <a name="create-tasks-for-each-operation"></a>為每個作業建立工作
 
-.NET SDK 的大量支援的運作方式是利用工作 [平行程式庫](https://docs.microsoft.com/dotnet/standard/parallel-programming/task-parallel-library-tpl) 和同時進行的群組作業。 
+.NET SDK 的大量支援的運作方式是利用工作 [平行程式庫](/dotnet/standard/parallel-programming/task-parallel-library-tpl) 和同時進行的群組作業。 
 
 SDK 中沒有任何單一方法可將您的檔或作業清單做為輸入參數，但您必須為您想要大量執行的每個作業建立工作，然後等候它們完成。
 
@@ -38,11 +38,11 @@ SDK 中沒有任何單一方法可將您的檔或作業清單做為輸入參數�
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkImport":::
 
-如果您想要進行大量 *更新* (類似于使用 [BulkExecutor. BulkUpdateAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)) ，則在 `ReplaceItemAsync` 更新專案值之後，您必須有對方法的並行呼叫。 例如：
+如果您想要進行大量 *更新* (類似于使用 [BulkExecutor. BulkUpdateAsync](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)) ，則在 `ReplaceItemAsync` 更新專案值之後，您必須有對方法的並行呼叫。 例如：
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkUpdate":::
 
-而且，如果您想要進行大量 *刪除* (類似于使用 [BulkExecutor. BulkDeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)) ，您必須具有的並行呼叫 `DeleteItemAsync` ，以及 `id` 每個專案的和分割區索引鍵。 例如：
+而且，如果您想要進行大量 *刪除* (類似于使用 [BulkExecutor. BulkDeleteAsync](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)) ，您必須具有的並行呼叫 `DeleteItemAsync` ，以及 `id` 每個專案的和分割區索引鍵。 例如：
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkDelete":::
 
@@ -68,7 +68,7 @@ SDK 中沒有任何單一方法可將您的檔或作業清單做為輸入參數�
 
 ## <a name="capture-statistics"></a>捕獲統計資料
 
-先前的程式碼會等候所有作業完成，並計算所需的統計資料。 這些統計資料類似于大量執行程式程式庫的 [BulkImportResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkimport.bulkimportresponse)。
+先前的程式碼會等候所有作業完成，並計算所需的統計資料。 這些統計資料類似于大量執行程式程式庫的 [BulkImportResponse](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkimport.bulkimportresponse)。
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="ResponseType":::
 
@@ -81,9 +81,9 @@ SDK 中沒有任何單一方法可將您的檔或作業清單做為輸入參數�
 
 ## <a name="retry-configuration"></a>重試設定
 
-大量執行程式程式庫的 [指引](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account) ，是為了 `MaxRetryWaitTimeInSeconds` 將 `MaxRetryAttemptsOnThrottledRequests` 控制項委派給程式庫，而將 [RetryOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) 設定為 `0` 。
+大量執行程式程式庫的 [指引](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account) ，是為了 `MaxRetryWaitTimeInSeconds` 將 `MaxRetryAttemptsOnThrottledRequests` 控制項委派給程式庫，而將 [RetryOptions](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) 設定為 `0` 。
 
-若要在 .NET SDK 中進行大量支援，則不會有隱藏的行為。 您可以直接透過 [CosmosClientOptions. MaxRetryAttemptsOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretryattemptsonratelimitedrequests) 和 [CosmosClientOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretrywaittimeonratelimitedrequests)設定重試選項。
+若要在 .NET SDK 中進行大量支援，則不會有隱藏的行為。 您可以直接透過 [CosmosClientOptions. MaxRetryAttemptsOnRateLimitedRequests](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretryattemptsonratelimitedrequests) 和 [CosmosClientOptions](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretrywaittimeonratelimitedrequests)設定重試選項。
 
 > [!NOTE]
 > 如果布建的要求單位遠低於預期的資料量，您可能會想要考慮將這些單位設定為高值。 大量作業需要較長的時間，但由於重試次數較高，所以會有較高的機率。

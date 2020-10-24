@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: 4f21e7f64338b7d50ca401081bf73ca0c1a1c88f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a95361dda74c145e435a7e122339fb5945fed0f6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85504298"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491218"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>使用低速至中速網路頻寬進行小型資料集資料轉送
  
@@ -61,8 +61,8 @@ ms.locfileid: "85504298"
 | 允許的佇列儲存體 | 管理 | 否  |否 | 是，可自訂|
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-- 了解如何[使用 Azure 儲存體總管轉送資料](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer)。
-- [使用 AzCopy 轉送資料](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
+- 了解如何[使用 Azure 儲存體總管轉送資料](/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer)。
+- [使用 AzCopy 轉送資料](/azure/storage/common/storage-use-azcopy-v10)
 

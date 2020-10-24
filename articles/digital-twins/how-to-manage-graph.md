@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a3c37143154a6e701c4308903c46f4e68ac1b604
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3b8dafd6d2347cf7cca4100f577476b8dfdf6c81
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458095"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495772"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>使用關聯性管理數位 twins 的圖形
 
@@ -221,6 +221,8 @@ await DeleteRelationship(client, srcId, relId);
 
 下列可執行檔程式碼片段會使用本文中的關聯性作業，從數位 twins 和關聯性建立對應項圖形。
 
+### <a name="set-up-the-runnable-sample"></a>設定可執行檔範例
+
 此程式碼片段會在教學課程中使用模型定義上的 [*Room.json*](https://github.com/Azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Room.json) 和 [*Floor.js*](https://github.com/azure-Samples/digital-twins-samples/blob/master/AdtSampleApp/SampleClientApp/Models/Floor.json) [*：探索 Azure 數位 Twins 與範例用戶端應用程式*](tutorial-command-line-app.md)。 您可以使用這些連結直接移至檔案，或在 [這裡](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)將其下載為完整的端對端範例專案的一部分。 
 
 執行範例之前，請執行下列動作：
@@ -232,7 +234,12 @@ await DeleteRelationship(client, srcId, relId);
     dotnet add package Azure.identity
     ```
 
-然後，執行範例。
+如果您想要直接執行範例，您也必須設定本機認證。 下一節將逐步解說這一點。
+[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
+
+### <a name="run-the-sample"></a>執行範例
+
+完成上述步驟之後，您可以直接執行下列範例程式碼。
 
 ```csharp 
 using System;

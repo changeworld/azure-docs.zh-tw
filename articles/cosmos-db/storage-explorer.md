@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/24/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 938968599f1824416666818a46cc73a1d33c5341
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b5886984d6e3830549e86a7c1ee46cd2483e4b4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987739"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480593"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>使用 Azure 儲存體總管管理 Azure Cosmos DB 資源
 
@@ -20,7 +20,7 @@ ms.locfileid: "90987739"
 
 使用相同的工具，在同一個位置管理不同的 Azure 實體。 您可以管理 Azure Cosmos DB 實體、運算元據、更新預存程式和觸發程式，以及其他 Azure 實體（例如儲存體 blob 和佇列）。
 
-Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設定的 Cosmos 帳戶。 如需詳細資訊，請移至 [Azure 儲存體總管中的 Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/storage-explorer) 。
+Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設定的 Cosmos 帳戶。 如需詳細資訊，請移至 [Azure 儲存體總管中的 Azure Cosmos DB]() 。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -74,7 +74,7 @@ Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設�
 
 使用下列步驟，透過模擬器連接到 Azure Cosmos DB。 此方法僅支援 SQL 帳戶。
 
-1. 安裝 Cosmos DB 模擬器，然後開啟它。 如需如何安裝模擬器的詳細說明，請參閱 [Cosmos DB 模擬器](https://docs.microsoft.com/azure/cosmos-db/local-emulator)。
+1. 安裝 Cosmos DB 模擬器，然後開啟它。 如需如何安裝模擬器的詳細說明，請參閱 [Cosmos DB 模擬器](./local-emulator.md)。
 
 1. 在左側樹狀目錄中尋找 [ **本機] 和** [已連接]，以滑鼠右鍵按一下 **Cosmos DB 帳戶**]，然後選取 **[連接到 Cosmos DB 模擬器]**。
 
@@ -173,7 +173,7 @@ Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設�
 
 #### <a name="query-for-documents"></a>查詢文件
 
-* 若要編輯檔篩選器，請輸入 [SQL 查詢](how-to-sql-query.md)， **然後選取**[套用]。
+* 若要編輯檔篩選器，請輸入 [SQL 查詢](./sql-query-getting-started.md)， **然後選取**[套用]。
 
   :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
 
@@ -353,4 +353,4 @@ Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設�
 ## <a name="next-steps"></a>後續步驟
 
 * 觀看這段影片以瞭解如何在 Azure 儲存體總管中使用 Azure Cosmos DB： [在 Azure 儲存體總管中使用 Azure Cosmos DB](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be)。
-* 在[開始使用儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)中深入了解儲存體總管並連線更多服務。
+* 在[開始使用儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md)中深入了解儲存體總管並連線更多服務。
