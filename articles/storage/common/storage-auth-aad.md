@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f681a271dcd64468cb471c81496e489f0ce8413f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 391cbbca79560ba57ae2be62accdad8451446227
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713665"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488719"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>使用 Azure Active Directory 授權存取 blob 和佇列
 
@@ -61,7 +61,7 @@ Azure Active Directory (Azure AD) 透過 [AZURE RBAC (的 azure 角色型存取�
 
 ### <a name="access-permissions-for-data-operations"></a>資料作業的存取權限
 
-如需呼叫特定 Blob 或佇列服務作業所需許可權的詳細資訊，請參閱 [呼叫 Blob 和佇列資料作業的許可權](https://docs.microsoft.com/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。
+如需呼叫特定 Blob 或佇列服務作業所需許可權的詳細資訊，請參閱 [呼叫 Blob 和佇列資料作業的許可權](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。
 
 ## <a name="resource-scope"></a>資源範圍
 

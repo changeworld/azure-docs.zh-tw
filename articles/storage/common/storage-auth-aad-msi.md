@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4b37e2530d8716f48eae696fef8f856e8334e24b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2914a0e9b4c38cff01222ac9a9bffc99827d7162
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713676"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488736"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>使用適用于 Azure 資源的受控識別來授權 blob 和佇列資料的存取
 
@@ -28,7 +28,7 @@ Azure Blob 和佇列儲存體支援使用 [Azure 資源的受控識別](../../ac
 
 您必須先在 VM 上啟用 Azure 資源的受控識別，才能使用 Azure 資源的受控識別來授權從您的 VM 存取 blob 和佇列。 若要了解如何啟用 Azure 資源的受控識別，請參閱下列其中一篇文章：
 
-- [Azure 入口網站](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
+- [Azure 入口網站](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager 範本](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)

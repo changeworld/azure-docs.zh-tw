@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 0affd1660a88421f6df24bc5ef2e00497dae32a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57d319d54d15b72747da029d365137f5b5bb384c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85119264"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489246"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB 的進階威脅防護 (預覽)
 
@@ -26,7 +26,7 @@ Azure Cosmos DB 提供「進階威脅防護」來增加額外的安全智慧層�
 > * Azure Cosmos DB 的進階威脅防護目前僅適用於 SQL API。
 > * Azure Cosmos DB 進階威脅防護目前不適用於 Azure 政府和主權雲端區域。
 
-如需安全性警示的完整調查體驗，建議啟用 [Azure Cosmos DB 中的診斷記錄](https://docs.microsoft.com/azure/cosmos-db/logging)，這會記錄資料庫本身的作業，包含所有文件、容器和資料庫上的 CRUD 作業。
+如需安全性警示的完整調查體驗，建議啟用 [Azure Cosmos DB 中的診斷記錄](./monitor-cosmos-db.md)，這會記錄資料庫本身的作業，包含所有文件、容器和資料庫上的 CRUD 作業。
 
 ## <a name="threat-types"></a>威脅類型
 
@@ -59,16 +59,16 @@ Azure Cosmos DB 進階威脅防護會偵測異常活動，這些活動表示有�
 
 使用 Rest API 命令以建立、更新或取得特定 Azure Cosmos DB 帳戶的「進階威脅防護」設定。
 
-* [進階威脅防護-建立](https://go.microsoft.com/fwlink/?linkid=2099745) (機器翻譯)
-* [進階威脅防護-取得](https://go.microsoft.com/fwlink/?linkid=2099643) (機器翻譯)
+* [進階威脅防護-建立](/rest/api/securitycenter/advancedthreatprotection/create) (機器翻譯)
+* [進階威脅防護-取得](/rest/api/securitycenter/advancedthreatprotection/get) (機器翻譯)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用下列 PowerShell Cmdlet：
 
-* [啟用進階威脅防護](https://go.microsoft.com/fwlink/?linkid=2099607&clcid=0x409) (英文)
-* [取得進階威脅防護](https://go.microsoft.com/fwlink/?linkid=2099608&clcid=0x409) (英文)
-* [停用進階威脅防護](https://go.microsoft.com/fwlink/?linkid=2099709&clcid=0x409) (英文)
+* [啟用進階威脅防護](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0) (英文)
+* [取得進階威脅防護](/powershell/module/az.security/get-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0) (英文)
+* [停用進階威脅防護](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection?viewFallbackFrom=azps-2.4.0) (英文)
 
 ### <a name="arm-template"></a>[ARM 範本](#tab/arm-template)
 
@@ -112,9 +112,9 @@ Azure Cosmos DB 進階威脅防護會偵測異常活動，這些活動表示有�
 
 ## <a name="cosmos-db-atp-alerts"></a>Cosmos DB ATP 警示
 
- 若要查看監視 Azure Cosmos DB 帳戶時所產生的警示清單，請參閱 Azure 資訊安全中心文件中的 [Cosmos DB 警示](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos)一節 (機器翻譯)。
+ 若要查看監視 Azure Cosmos DB 帳戶時所產生的警示清單，請參閱 Azure 資訊安全中心文件中的 [Cosmos DB 警示](../security-center/alerts-reference.md#alerts-azurecosmos)一節 (機器翻譯)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 深入了解 [Azure Cosmos DB 中的診斷記錄](cosmosdb-monitor-resource-logs.md) (機器翻譯)
-* 深入了解 [Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* 深入了解 [Azure 資訊安全中心](../security-center/security-center-introduction.md)

@@ -1,17 +1,18 @@
 ---
-title: 如何使用 Azure 磁碟加密來調整加密邏輯磁片區管理磁片的大小
+title: 如何調整使用 Azure 磁碟加密加密的磁片大小
 description: 本文提供使用邏輯磁片區管理來調整 ADE 加密磁片大小的指示。
 author: jofrance
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
 ms.author: jofrance
 ms.date: 09/21/2020
-ms.openlocfilehash: 8e32e4960776084669c8f2f7743b66b9d0f9a6ae
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ddd6097fffbc02c9b7b027bcb712e20cc47f2f96
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978470"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487954"
 ---
 # <a name="how-to-resize-logical-volume-management-devices-that-use-azure-disk-encryption"></a>如何調整使用 Azure 磁碟加密的邏輯磁片區管理裝置大小
 

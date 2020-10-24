@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 7/13/2019
 ms.author: rohink
-ms.openlocfilehash: f4eb26678dee161451ff10144c2eaa3321ecc011
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d8af5815e544698ab833001e5ce6d0f4a30a264
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84693107"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487393"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>使用 Azure DNS 為 Azure 服務提供自訂網域設定
 
 Azure DNS 提供自訂網域的 DNS，可用於任何支援自訂網域或具有完整網域名稱 (FQDN) 的 Azure 資源。 例如，您有一個 Azure web 應用程式，而您希望使用者使用 contoso.com 或 www contoso.com 作為 FQDN 來存取它 \. 。 本文章會引導您使用 Azure DNS 設定您的 Azure 服務，以便使用自訂網域。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 為了在您的自訂網域 Azure DNS，您必須先將您的網域委派給 Azure DNS。 如需如何設定名稱伺服器以便進行委派的指示，請參閱[將網域委派給 Azure DNS](./dns-delegate-domain-azure-dns.md)。 一旦將您的網域委派給您的 Azure DNS 區域，您就能夠設定所需的 DNS 記錄。
 
@@ -103,7 +103,7 @@ Azure DNS 提供自訂網域的 DNS，可用於任何支援自訂網域或具有
 
 瀏覽回到設定自訂網域名稱的 App Service。 按一下 [自訂網域] ****，然後按一下 [主機名稱]****。 若要新增您所建立的 CNAME 記錄，按一下 [+ 新增主機名稱]****。
 
-![圖 1](./media/dns-custom-domain/figure1.png)
+![醒目顯示 [+ 新增主機名稱] 按鈕的螢幕擷取畫面。](./media/dns-custom-domain/figure1.png)
 
 處理程序完成之後，執行**nslookup** 驗證名稱解析的運作。
 
@@ -136,7 +136,7 @@ Azure DNS 提供自訂網域的 DNS，可用於任何支援自訂網域或具有
 
 按一下 [**儲存體**  >  **儲存體帳戶**]，並選取您的儲存體帳戶，然後按一下 [**自訂網域**]，以流覽回到您的儲存體帳戶。 在文字方塊中輸入您建立的別名，而不使用 >asverify 前置詞，勾選 [ **使用間接 CNAME 驗證**]，然後按一下 [ **儲存**]。 一旦完成這個步驟，返回您的 DNS 區域，建立不含 asverify 前置詞的 CNAME 記錄。  此時，您就可以放心刪除具有 cdnverify 前置詞的 CNAME 記錄。
 
-![Blob 儲存體自訂網域](./media/dns-custom-domain/indirectvalidate.png)
+![顯示自訂網域頁面的螢幕擷取畫面。](./media/dns-custom-domain/indirectvalidate.png)
 
 執行 `nslookup` 驗證 DNS 解析
 
@@ -166,6 +166,6 @@ Azure DNS 提供自訂網域的 DNS，可用於任何支援自訂網域或具有
 
 一旦完成這個步驟，返回您的 DNS 區域，建立不含 asverify 前置詞的 CNAME 記錄。  此時，您就可以放心刪除具有 cdnverify 前置詞的 CNAME 記錄。 針對 CDN 以及如何設定自訂網域，而不經過中間註冊步驟，如需詳細資訊請造訪[將 Azure CDN 內容對應至自訂網域](../cdn/cdn-map-content-to-custom-domain.md?toc=%dns%2ftoc.json)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 了解如何[為 Azure 裝載的服務設定反向 DNS](dns-reverse-dns-for-azure-services.md)。

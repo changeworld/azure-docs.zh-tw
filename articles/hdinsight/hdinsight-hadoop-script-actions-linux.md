@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: 08354e212b8ca3cae642b599f25ed318e79f581c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa0ae0137064cc14d6d8f2adfe085ca255da73af
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86082245"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486305"
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 開發指令碼動作
 
@@ -365,5 +365,5 @@ awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 ## <a name="next-steps"></a><a name="seeAlso"></a>後續步驟
 
 * 深入了解 [使用指令碼動作來自訂 HDInsight 叢集](hdinsight-hadoop-customize-cluster-linux.md)
-* 使用 [HDInsight.NET SDK 參考](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight) ，深入了解如何建立 .NET 應用程式來管理 HDInsight
+* 使用 [HDInsight.NET SDK 參考](/dotnet/api/overview/azure/hdinsight) ，深入了解如何建立 .NET 應用程式來管理 HDInsight
 * 使用 [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) ，以了解如何使用 REST 在 HDInsight 叢集上執行管理動作。

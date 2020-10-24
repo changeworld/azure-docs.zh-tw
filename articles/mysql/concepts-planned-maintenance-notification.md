@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 3a5a4b3997a9286901fc24173e57563c5abe68a1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: bd2f91a697fffa1ef83f5173a394686245cf9826
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428859"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488906"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mysql---single-server"></a>適用於 MySQL 的 Azure 資料庫-單一伺服器中規劃的維護通知
 
@@ -63,7 +63,7 @@ ms.locfileid: "92428859"
 
 如需有關如何建立 **服務健康狀態警示**的詳細步驟，請參閱 [建立服務通知的活動記錄警示](../service-health/alerts-activity-log-service-notifications.md)。
 
-## <a name="can-i-control-or-change-planned-maintenance-for-my-servers-after-i-receive-a-notification-event"></a>我可以在收到通知事件之後，控制或變更伺服器的規劃維護嗎？
+## <a name="can-i-cancel-or-postpone-planned-maintenance"></a>我可以取消或延後預定的維護嗎？
 
 需要維護，才能讓您的伺服器保持安全、穩定且最新。 規劃的維護事件無法取消或延後。 一旦通知傳送至指定的 Azure 區域，就無法針對該區域中的任何個別伺服器進行修補排程變更。 修補程式會一次針對整個區域推出。 適用於 MySQL 的 Azure 資料庫-單一伺服器服務是針對雲端原生應用程式所設計，不需要細微地控制或自訂服務。 如果您想要能夠為您的伺服器排程維護，建議您考慮有彈性的 [伺服器](./flexible-server/overview.md)。
 

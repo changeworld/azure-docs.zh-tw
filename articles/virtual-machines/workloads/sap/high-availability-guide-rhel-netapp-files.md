@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/16/2020
+ms.date: 10/22/2020
 ms.author: radeltch
-ms.openlocfilehash: 14c5cd480f17e137965ae4bbf6700a36eb92cc3e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 040220bfac2a3ac1ef54965ba9be35755b9b787b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167826"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487614"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>適用于 sap Red Hat Enterprise Linux NetWeaver 的 azure 虛擬機器高可用性，適用于 SAP 應用程式的 Azure NetApp Files
 
@@ -614,11 +614,11 @@ Azure NetApp files 可在數個 [azure 區域](https://azure.microsoft.com/globa
 
 1. **[A]** 設定保持運作
 
-   SAP NetWeaver 應用程式伺服器和 ASCS/SCS 之間的通訊是透過軟體負載平衡器來路由傳送。 在逾時時間 (可設定) 過後，負載平衡器就會將非作用中的連線中斷。 若要避免這種情況，您必須在 SAP NetWeaver ASCS/SCS 設定檔中設定參數，並變更 Linux 系統設定。 如需詳細資訊，請閱讀 [SAP Note 1410736][1410736]。
+   SAP NetWeaver 應用程式伺服器和 ASCS/SCS 之間的通訊是透過軟體負載平衡器來路由傳送。 在逾時時間 (可設定) 過後，負載平衡器就會將非作用中的連線中斷。 若要避免這種情況，您必須在 SAP NetWeaver ASCS/SCS 設定檔中設定參數（如果使用 ENSA1），並變更 `keepalive` ENSA1/ENSA2 所有 SAP 伺服器的 Linux 系統設定。 如需詳細資訊，請閱讀 [SAP Note 1410736][1410736]。
 
    ```
    # Change the Linux system configuration
-   sudo sysctl net.ipv4.tcp_keepalive_time=120
+   sudo sysctl net.ipv4.tcp_keepalive_time=300
    ```
 
 1. **[A]** 更新 /usr/sap/sapservices 檔案

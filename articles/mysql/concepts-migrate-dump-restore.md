@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
-ms.openlocfilehash: a0171481b97cff2ea085a80b387bff13590529a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7cc18980d1dddc33ddf98f06de70449dee22e2ac
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905905"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484588"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>使用傾印和還原來將 MySQL 資料庫移轉至適用於 MySQL 的 Azure 資料庫
 
@@ -30,11 +30,15 @@ ms.locfileid: "90905905"
 > [!TIP]
 > 如果您想要遷移資料庫大小超過 1 Tb 的大型資料庫，您可能會想要考慮使用支援平行匯出和匯入的 **mydumper/myloader** 之類的工具。 瞭解 [如何遷移大型 MySQL 資料庫](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699)。
 
-## <a name="common-use-cases-for-dump-and-restore"></a>傾印和還原的常見使用案例
-在幾個常見案例中，您可以使用 MySQL 公用程式（例如 **mysqldump** 和 **mysqlpump) ** ），將資料庫傾印並載入至 Azure MySQL 資料庫。 在其他案例中，您可以改為使用[匯入和匯出](concepts-migrate-import-export.md)方法。
 
-- **當您遷移整個資料庫時，請使用資料庫**傾印。 這項建議在您移動大量 MySQL 資料，或當您想要將即時網站或應用程式的服務中斷時間降到最低時會保留。
--  **如果資料庫中的所有資料表都使用 InnoDB 儲存引擎，請使用資料庫**傾印。 適用於 MySQL 的 Azure 資料庫僅支援 InnoDB 儲存引擎，因此不支援其他儲存引擎。 如果您的資料表是使用其他儲存引擎設定，請將它們轉換成 InnoDB 引擎格式，然後再移轉至適用於 MySQL 的 Azure 資料庫。
+## <a name="common-use-cases-for-dump-and-restore"></a>傾印和還原的常見使用案例
+
+最常見的使用案例包括：
+
+- **從其他受管理的服務提供者移動** -最受管理的服務提供者可能無法基於安全性理由提供實體儲存體檔案的存取權，因此邏輯備份和還原是唯一可遷移的選項。
+- **從內部部署環境或虛擬機器進行遷移** -適用於 MySQL 的 Azure 資料庫不支援還原實體備份，這會將邏輯備份和還原做為唯一的方法。
+- 將**您的備份儲存體從本機冗余移至異地冗余儲存體**-適用於 MySQL 的 Azure 資料庫可讓您在伺服器建立期間，為備份設定本機冗余或異地多餘的儲存體。 伺服器佈建完成之後，您無法變更備份儲存體備援選項。 為了將您的備份儲存體從本機多餘的儲存體移至異地冗余儲存體，傾印和還原是唯一的選項。 
+-  **從替代儲存引擎遷移至 InnoDB** -適用於 MySQL 的 Azure 資料庫僅支援 InnoDB 儲存引擎，因此不支援替代的儲存引擎。 如果您的資料表是使用其他儲存引擎設定，請將它們轉換成 InnoDB 引擎格式，然後再移轉至適用於 MySQL 的 Azure 資料庫。
 
     例如，如果您的 WordPress 或 WebApp 使用 MyISAM 資料表，請先藉由移轉至 InnoDB 格式來轉換這些資料表，然後再還原至適用於 MySQL 的 Azure 資料庫。 使用子句 `ENGINE=InnoDB` 以設定建立新資料表時使用的引擎，然後在還原之前將資料傳送到相容的資料表。
 
@@ -165,3 +169,4 @@ $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin -p testdb < testdb_b
 ## <a name="next-steps"></a>後續步驟
 - [將應用程式連線至適用於 MySQL 的 Azure 資料庫](./howto-connection-string.md)。
 - 若要深入了解如何將資料庫移轉至適用於 MySQL 的 Azure 資料庫，請參閱[資料庫移轉指南](https://aka.ms/datamigration)。
+- 如果您想要遷移資料庫大小超過 1 Tb 的大型資料庫，您可能會想要考慮使用支援平行匯出和匯入的 **mydumper/myloader** 之類的工具。 瞭解 [如何遷移大型 MySQL 資料庫](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/best-practices-for-migrating-large-databases-to-azure-database/ba-p/1362699)。

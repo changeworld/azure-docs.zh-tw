@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 9a081a28d4c96e3c38986cbb3c0990bc89c5ab99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe1b685a0209643332d798b875b9e62b02aa02da
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83684475"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488770"
 ---
 # <a name="storage-analytics"></a>儲存體分析
 
@@ -41,7 +41,7 @@ Azure 儲存體分析會執行記錄，並提供儲存體帳戶的度量資料�
 
 ### <a name="understanding-billable-requests"></a>了解計費要求
 
-對帳戶的儲存體服務所提出的每個要求，都會被歸類為計費或不計費。 儲存體分析會記錄對服務所做的每個個別要求，包括表示如何處理要求的狀態訊息。 同樣地，儲存體分析會儲存服務及該服務之 API 作業的度量，包括特定狀態訊息的百分比和計數。 這些功能可共同協助您分析計費要求、改善您的應用程式，以及診斷服務要求的問題。 如需計費的詳細資訊，請參閱 [了解 Azure 儲存體計費 - 頻寬、交易和容量](https://docs.microsoft.com/archive/blogs/windowsazurestorage/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)。
+對帳戶的儲存體服務所提出的每個要求，都會被歸類為計費或不計費。 儲存體分析會記錄對服務所做的每個個別要求，包括表示如何處理要求的狀態訊息。 同樣地，儲存體分析會儲存服務及該服務之 API 作業的度量，包括特定狀態訊息的百分比和計數。 這些功能可共同協助您分析計費要求、改善您的應用程式，以及診斷服務要求的問題。 如需計費的詳細資訊，請參閱 [了解 Azure 儲存體計費 - 頻寬、交易和容量](/archive/blogs/windowsazurestorage/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)。
 
 檢視儲存體分析資料時，您可以使用 [儲存體分析記錄作業和狀態訊息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) 主題中的資料表，來判斷哪些要求需要計費。 然後，您可以將記錄和度量資料與狀態訊息進行比較，以查看您是否需為特定要求支付費用。 您也可以使用上述主題中的資料表，來調查儲存體服務或個別 API 作業的可用性。
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: f24fb6c4d83da0d443702afaf673079363a9ffb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83b71d46c3d6b1612728b2bd81c6acede6d0559b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714450"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488617"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 儲存體總管疑難排解指南
 
@@ -23,7 +23,7 @@ Microsoft Azure 儲存體總管是一個獨立應用程式，可讓您在 Window
 
 ## <a name="azure-rbac-permissions-issues"></a>Azure RBAC 許可權問題
 
-Azure 角色型存取控制 [AZURE RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) 藉由將許可權集合合併為 _角色_，啟用對 Azure 資源的高度細微存取管理。 以下是讓 Azure RBAC 在儲存體總管中以最佳方式運作的一些策略。
+Azure 角色型存取控制 [AZURE RBAC](/azure/role-based-access-control/overview) 藉由將許可權集合合併為 _角色_，啟用對 Azure 資源的高度細微存取管理。 以下是讓 Azure RBAC 在儲存體總管中以最佳方式運作的一些策略。
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>如何? 在儲存體總管中存取我的資源？
 
@@ -65,7 +65,7 @@ Azure 角色可授與您管理或資料層存取權的許可權。 例如，讀�
 3. 選取與您要附加之資源相關聯的使用者帳戶和租使用者。 按一下 [下一步]。
 4. 選取資源類型、輸入資源的 URL，然後輸入唯一的連接顯示名稱。 按一下 [下一步]。 按一下 [連線]。
 
-針對其他資源類型，我們目前沒有 Azure RBAC 相關的解決方案。 因應措施是，您可以要求 SAS URI 以 [附加至您的資源](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)。
+針對其他資源類型，我們目前沒有 Azure RBAC 相關的解決方案。 因應措施是，您可以要求 SAS URI 以 [附加至您的資源](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)。
 
 ### <a name="recommended-azure-built-in-roles"></a>建議的 Azure 內建角色
 
@@ -332,7 +332,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 # <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
 
 1. 下載儲存體總管 gz 檔案。
-2. 安裝 [.Net Core 運行](https://docs.microsoft.com/dotnet/core/install/linux)時間：
+2. 安裝 [.Net Core 運行](/dotnet/core/install/linux)時間：
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
@@ -345,7 +345,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 # <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. 下載儲存體總管 gz 檔案。
-2. 安裝 [.Net Core 運行](https://docs.microsoft.com/dotnet/core/install/linux)時間：
+2. 安裝 [.Net Core 運行](/dotnet/core/install/linux)時間：
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
@@ -358,7 +358,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 # <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. 下載儲存體總管 gz 檔案。
-2. 安裝 [.Net Core 運行](https://docs.microsoft.com/dotnet/core/install/linux)時間：
+2. 安裝 [.Net Core 運行](/dotnet/core/install/linux)時間：
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \

@@ -7,22 +7,22 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: chuye
-ms.openlocfilehash: d318983cec1365b71d14731395e71528621659d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55fff7e4e36f066ba8ae5734e483df393fbd72cd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051910"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488651"
 ---
 # <a name="azure-storage-explorer-blob-versioning-guide"></a>Azure 儲存體總管 blob 版本設定指南
 
-Microsoft Azure 儲存體總管提供簡單的 blob 版本存取和管理。 本指南將協助您瞭解 blob 版本設定在儲存體總管中的運作方式。 繼續之前，建議您先閱讀 [blob 版本](https://docs.microsoft.com/azure/storage/blobs/versioning-overview)設定的詳細資訊。
+Microsoft Azure 儲存體總管提供簡單的 blob 版本存取和管理。 本指南將協助您瞭解 blob 版本設定在儲存體總管中的運作方式。 繼續之前，建議您先閱讀 [blob 版本](/azure/storage/blobs/versioning-overview)設定的詳細資訊。
 
 ## <a name="terminology"></a>詞彙
 
 本節提供一些定義，以協助您瞭解其在本文中的使用方式。
 
-- 虛刪除：替代的自動資料保護功能。 您可以在 [這裡](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview)深入瞭解虛刪除。
+- 虛刪除：替代的自動資料保護功能。 您可以在 [這裡](/azure/storage/blobs/soft-delete-blob-overview)深入瞭解虛刪除。
 - 作用中的 blob： blob 或 blob 版本是以主動狀態建立。 您只能在處於作用中狀態的 blob 或 blob 版本上運作。
 - 虛刪除的 blob：標示為虛刪除的 blob 或 blob 版本。 虛刪除的 blob 只會保留保留期限。
 - Blob 版本：已啟用 blob 版本設定所建立的 blob。 每個 blob 版本都與版本識別碼相關聯。
@@ -117,5 +117,5 @@ Blob 版本受限於您的虛刪除原則。 如果已啟用虛刪除，則會�
 
 ## <a name="see-also"></a>另請參閱
 
-* [Blob 版本設定](https://docs.microsoft.com/azure/storage/blobs/versioning-overview)
-* [Blob 的虛刪除](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview)
+* [Blob 版本設定](/azure/storage/blobs/versioning-overview)
+* [Blob 的虛刪除](/azure/storage/blobs/soft-delete-blob-overview)

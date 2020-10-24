@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0138b4dcc547b961f941522abd03cd351d4d3737
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7973c85c7ca8051cae2ab7155dda94bec43ebd59
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460542"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486934"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>在 Synapse SQL 集區中設計資料表
 
@@ -46,7 +46,7 @@ CREATE SCHEMA wwi;
 
 | WideWorldImportersDW 資料表  | 資料表類型 | SQL 集區 |
 |:-----|:-----|:------|:-----|
-| City | 尺寸 | wwi.DimCity |
+| City | 維度 | wwi.DimCity |
 | 單 | 事實 | wwi.FactOrder |
 
 ## <a name="table-persistence"></a>資料表持續性
@@ -79,7 +79,7 @@ SQL 集區支援最常使用的資料類型。 如需支援的資料類型清單
 
 ## <a name="distributed-tables"></a>分散式資料表
 
-SQL 集區的基本功能，是它 [可以跨散發](massively-parallel-processing-mpp-architecture.md#distributions)套件儲存及運算元據表的方式。  SQL 集區支援三種散發資料的方法：迴圈配置資源 (預設) 、雜湊和已複寫。
+Synapse SQL 的基本功能，是它 [可以跨散發](massively-parallel-processing-mpp-architecture.md#distributions)套件儲存及運算元據表的方式。 Synapse SQL 支援三種散發資料的方法：迴圈配置資源 (預設) 、雜湊和已複寫。
 
 ### <a name="hash-distributed-tables"></a>雜湊分散式資料表
 
@@ -106,7 +106,7 @@ SQL 集區的基本功能，是它 [可以跨散發](massively-parallel-processi
 | 資料表類別 | 建議的散發選項 |
 |:---------------|:--------------------|
 | 事實           | 使用具有叢集資料行存放區索引的雜湊散發。 在相同的散發資料行上聯結兩個雜湊資料表時，可以改善效能。 |
-| 尺寸      | 對較小的資料表使用複寫。 如果資料表太大而無法儲存在每個計算節點上，請使用雜湊散發。 |
+| 維度      | 對較小的資料表使用複寫。 如果資料表太大而無法儲存在每個計算節點上，請使用雜湊散發。 |
 | 預備        | 對暫存資料表使用循環配置資源。 使用 CTAS 的載入速度較快。 一旦資料位於臨時表中，請使用 INSERT .。。選取即可將資料移至生產資料表。 |
 
 ## <a name="table-partitions"></a>資料表的資料分割
@@ -144,7 +144,7 @@ ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION
 
 您可以將資料表建立為新的空資料表。 您也可以在建立資料表後填入 Select 陳述式的結果。 以下是用來建立資料表的 T-SQL 命令。
 
-| T-SQL 陳述式 | 描述 |
+| T-SQL 陳述式 | 說明 |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | 藉由定義所有的資料表資料行和選項，建立空的資料表。 |
 | [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | 建立外部資料表。 資料表的定義會儲存在 SQL 集區中。 資料表的資料會儲存在 Azure 儲存體或 Azure Data Lake Store 中。 |

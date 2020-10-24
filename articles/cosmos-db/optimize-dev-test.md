@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 9390f8a2ab9372927b434ea94d7545c9ec540c58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c2194476dc6e640f9c4b93d564728478de41ef7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88606265"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475527"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中最佳化開發與測試成本
 
@@ -28,7 +28,7 @@ Azure Cosmos DB 免費層可讓您輕鬆地開始使用、開發及測試應用�
 > [!NOTE]
 > 免費層只適用于布建的輸送量模式。
 
-免費層會在帳戶的存留期內無限期地持續，並隨附一般 Azure Cosmos DB 帳戶的所有 [權益和功能](introduction.md#key-benefits) ，包括無限制的儲存體和輸送量 (RU/秒) 、sla、高可用性、所有 Azure 區域中的「主要」全域散發等。 每個 Azure 訂用帳戶最多可以有一個免費層帳戶，而且必須在建立帳戶時加入宣告。 若要開始使用，請 [在已啟用免費層的 Azure 入口網站中建立新的帳戶](create-cosmosdb-resources-portal.md) ，或使用 [ARM 範本](manage-sql-with-resource-manager.md#free-tier)。 請參閱[定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)，以取得詳細資料。
+免費層會在帳戶的存留期內無限期地持續，並隨附一般 Azure Cosmos DB 帳戶的所有 [權益和功能](introduction.md#key-benefits) ，包括無限制的儲存體和輸送量 (RU/秒) 、sla、高可用性、所有 Azure 區域中的「主要」全域散發等。 每個 Azure 訂用帳戶最多可以有一個免費層帳戶，而且必須在建立帳戶時加入宣告。 若要開始使用，請 [在已啟用免費層的 Azure 入口網站中建立新的帳戶](create-cosmosdb-resources-portal.md) ，或使用 [ARM 範本](./manage-with-templates.md#free-tier)。 請參閱[定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)，以取得詳細資料。
 
 ## <a name="try-azure-cosmos-db-for-free"></a>免費試用 Azure Cosmos DB
 
@@ -48,7 +48,7 @@ Azure Cosmos DB 已包含在 [Azure 免費帳戶](https://azure.microsoft.com/fr
 
 例如，假設您的開發或測試帳戶有四個容器。 如果您建立具有專用輸送量的四個容器 (最少 400 RU/秒) ，則 RU/秒總數將會是 1600 RU/秒。 相反地，如果您建立共用輸送量資料庫 (最小 400 RU/秒) 並將容器放在該處，則 RU/秒總數將只會是 400 RU/秒。 一般情況下，共用輸送量資料庫很適合用於您不需要在任何個別容器上保證輸送量的案例。  深入瞭解 [共用輸送量資料庫。](set-throughput.md#set-throughput-on-a-database)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 您可以透過下列文章來開始使用模擬器或免費的 Azure Cosmos DB 帳戶：
 
@@ -57,5 +57,5 @@ Azure Cosmos DB 已包含在 [Azure 免費帳戶](https://azure.microsoft.com/fr
 * 深入了解[最佳化輸送量成本](optimize-cost-throughput.md)
 * 深入了解[最佳化儲存體成本](optimize-cost-storage.md)
 * 深入了解[最佳化讀取和寫入的成本](optimize-cost-reads-writes.md)
-* 深入了解[最佳化查詢成本](optimize-cost-queries.md)
+* 深入了解[最佳化查詢成本](./optimize-cost-reads-writes.md)
 * 深入了解[最佳化多重區域 Azure Cosmos 帳戶的成本](optimize-cost-regions.md)

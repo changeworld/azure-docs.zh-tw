@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: b1de0fa2e6601e4350b52caea32f8bc379909f85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a39ade902bd22d67e9b3a7d40b392bfd83dfd3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356361"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475910"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>使用 Azure Cosmos DB 變更摘要以視覺方式呈現即時資料分析
 
@@ -50,7 +50,7 @@ Azure Cosmos DB 變更摘要是一種機制，可在建立或修改這些記錄�
 
 5. **事件中樞：** Azure 事件中樞會儲存這些事件，並將其傳送至 [Azure 串流分析](../stream-analytics/stream-analytics-introduction.md)以執行進一步的分析。  
 
-6. **Azure 串流分析：** Azure 串流分析會定義用來處理事件以及執行即時資料分析的查詢。 此資料接著會傳送至 [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop)。  
+6. **Azure 串流分析：** Azure 串流分析會定義用來處理事件以及執行即時資料分析的查詢。 此資料接著會傳送至 [Microsoft Power BI](/power-bi/desktop-what-is-desktop)。  
 
 7. **Power BI：** Power BI 可以視覺方式呈現 Azure 串流分析所傳送的資料。 您可以建置儀表板，以即時查看計量的變化。  
 
@@ -209,7 +209,7 @@ Azure 串流分析是一項完全受控、可即時處理串流資料的雲端�
 
 5. 瀏覽回串流分析作業頁面，並選取 [輸出]****。  
 
-6. 選取 [+ 新增] 。 然後，從下拉式功能表中選取 [Power BI]****。  
+6. 選取 [+ 新增]。 然後，從下拉式功能表中選取 [Power BI]****。  
 
 7. 若要建立新的 Power BI 輸出並以視覺方式呈現平均價格，請執行下列動作：
 
@@ -395,4 +395,4 @@ Power BI 是一套商務分析工具，用來分析資料及分享見解。 它�
 
 ## <a name="next-steps"></a>後續步驟 
   
-* 若要深入了解變更摘要，請參閱[使用 Azure Cosmos DB 中的變更摘要支援](change-feed.md) 
+* 若要深入了解變更摘要，請參閱[使用 Azure Cosmos DB 中的變更摘要支援](change-feed.md)

@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: be308a91b5b583f96406f10675344ab263150a81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48e9fc4c1efa3517f5de46b7198c868a22331c79
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716069"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486384"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>瞭解 SMB 存取 Azure 檔案儲存體身分識別型驗證選項
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -104,7 +104,7 @@ Azure 檔案共用會利用 Kerberos 通訊協定，以內部部署 AD DS 或 Az
 
 下圖說明透過 SMB 進行 Azure 檔案共用的內部部署 AD DS 驗證。 您必須使用 Azure AD Connect 同步，將內部內部部署 AD DS 同步處理到 Azure AD。只有存在於內部部署 AD DS 和 Azure AD 的混合式使用者，才能進行驗證和授權，以存取 Azure 檔案共用。 這是因為共用層級許可權是針對 Azure AD 中所表示的身分識別而設定的，在這種情況下，會在 AD DS 中強制執行目錄/檔案層級許可權。 請確定您已針對相同的混合式使用者正確設定許可權。
 
-:::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="圖表":::
+:::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="描繪 Azure 檔案共用透過 SMB 進行內部部署 AD DS 驗證的圖表。":::
 
 ### <a name="azure-ad-ds"></a>Azure AD DS
 
@@ -116,7 +116,7 @@ Azure 檔案共用會利用 Kerberos 通訊協定，以內部部署 AD DS 或 Az
 
 - 其次，存在於 Azure AD 中的所有使用者都可以進行驗證和授權。 使用者可以是僅限雲端或混合式。 從 Azure AD 到 Azure AD DS 的同步處理是由平臺所管理，不需要任何使用者設定。 不過，用戶端必須已加入網域 Azure AD DS，才能 Azure AD 加入或註冊。 
 
-:::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="圖表":::
+:::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="描繪 Azure 檔案共用透過 SMB 進行內部部署 AD DS 驗證的圖表。":::
 
 ### <a name="enable-identity-based-authentication"></a>啟用以身分識別為基礎的驗證
 
@@ -147,7 +147,7 @@ Azure 檔案儲存體支援在將資料複製到 Azure 檔案共用時保留目�
 ## <a name="next-steps"></a>後續步驟
 如需有關透過 SMB Azure 檔案儲存體和以身分識別為基礎之驗證的詳細資訊，請參閱下列資源：
 
-- [規劃 Azure 檔案部署](storage-files-planning.md)
+- [規劃 Azure 檔案服務部署](storage-files-planning.md) (機器翻譯)
 - [針對 Azure 檔案共用啟用透過 SMB 進行內部部署 Active Directory Domain Services 驗證](storage-files-identity-auth-active-directory-enable.md)
 - [在 Azure 檔案儲存體上啟用 Azure Active Directory Domain Services authentication](storage-files-identity-auth-active-directory-domain-service-enable.md)
 - [常見問題集](storage-files-faq.md)

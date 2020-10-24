@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: 03c8f5acfc10738401f61de099f946c33497d705
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d784e8bfb0841570f63d8433fa74059eb9e22758
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569812"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487733"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>適用於 SQL API 的 Azure Cosmos DB Python SDK：版本資訊和資源
 
@@ -27,20 +27,20 @@ ms.locfileid: "91569812"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [非同步 Java SDK v2](sql-api-sdk-async-java.md)
 > * [同步 Java SDK v2](sql-api-sdk-java.md)
-> * [春季資料 v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
 > * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark 連接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST 資源提供者](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
+> * [SQL](./sql-query-getting-started.md)
 > * [大量執行程式-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [大量執行程式 - Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
 |**下載 SDK**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API 文件**|[Python API 參考文件](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python&preserve-view=true)|
+|**API 文件**|[Python API 參考文件](/python/api/azure-cosmos/?preserve-view=true&view=azure-python)|
 |**SDK 安裝指示**|[SDK 安裝指示](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**開始使用**|[開始使用 Python SDK](create-sql-api-python.md)|
 |**目前支援的平台**|[Python 2.7](https://www.python.org/downloads/) 和 [Python 3.5.3+](https://www.python.org/downloads/)|
@@ -359,4 +359,4 @@ Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供�
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解 Cosmos DB，請參閱 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服務頁面。 
+若要深入了解 Cosmos DB，請參閱 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服務頁面。

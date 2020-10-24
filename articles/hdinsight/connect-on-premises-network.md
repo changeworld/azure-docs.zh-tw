@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: 3ab706b9cdf3c071fd5d3ceca732cff6b660db6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 542e4e09949aa3d673f632890bd7ee99adf431d5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87086552"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487274"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>將 HDInsight 連線至內部部署網路
 
@@ -46,7 +46,7 @@ ms.locfileid: "87086552"
 
 * SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](./hdinsight-hadoop-linux-use-ssh-unix.md)。
 * 如果使用 PowerShell，您將需要 [AZ 模組](https://docs.microsoft.com/powershell/azure/)。
-* 如果您想要使用 Azure CLI，但尚未安裝，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+* 如果您想要使用 Azure CLI，但尚未安裝，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-virtual-network-configuration"></a>建立虛擬網路設定
 
@@ -82,7 +82,7 @@ ms.locfileid: "87086552"
     |可用性選項 |  選取所需的可用性層級。  Azure 提供各種選項以管理應用程式的可用性和復原。  建立解決方案的架構，以在「可用性區域」或「可用性設定組」中使用複寫的虛擬機器來保護您的應用程式和資料避免發生資料中心中斷，並維護事件。 此範例使用 [不需要基礎結構備援]****。 |
     |映像 | 離開 **Ubuntu Server 18.04 LTS**。 |
     |驗證類型 | __密碼__ 或 __SSH 公開金鑰__： ssh 帳戶的驗證方法。 我們建議使用公開金鑰，因為它們更為安全。 此範例會使用 **密碼**。  如需詳細資訊，請參閱[建立及使用適用於 Linux VM 的 SSH 金鑰](../virtual-machines/linux/mac-create-ssh-keys.md)文件。|
-    |[使用者名稱] |輸入虛擬機器的系統管理員使用者名稱。  此範例使用 **sshuser**。|
+    |使用者名稱 |輸入虛擬機器的系統管理員使用者名稱。  此範例使用 **sshuser**。|
     |密碼或 SSH 公開金鑰 | 可用的欄位取決於您選擇的**驗證類型**而定。  輸入適當的值。|
     |公用輸入連接埠|選取 [允許選取的連接埠]。 然後從 [**選取輸入埠**] 下拉式清單中選取**SSH (22) ** 。|
 
@@ -246,7 +246,7 @@ ms.locfileid: "87086552"
 
 4. 選取 [自訂]____，並輸入自訂 DNS 伺服器的**私人 IP 位址**。
 
-5. 選取 [儲存]____。  <br />  
+5. 選取 [儲存]。  <br />  
 
     ![設定網路的自訂 DNS 伺服器](./media/connect-on-premises-network/configure-custom-dns.png)
 
@@ -341,7 +341,7 @@ HDInsight 上大部分的文件都假設您透過網際網路擁有叢集存取�
     >
     > 例如，Apache Ambari 一次只在一個前端節點上作用。 如果您嘗試在一個前端節點上存取 Ambari 而傳回 404 錯誤，表示它正在其他前端節點上執行中。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 如需在虛擬網路中使用 HDInsight 的詳細資訊，請參閱 [規劃 Azure HDInsight 叢集的虛擬網路部署](./hdinsight-plan-virtual-network-deployment.md)。
 

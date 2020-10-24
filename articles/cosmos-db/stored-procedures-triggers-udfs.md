@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: af17e37e5acb1e3552dd92b82eaf8d6397e4bc5e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e12bae14ede90a3b93a69d963981f097818e65ab
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279900"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480219"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>預存程序、觸發程序和使用者定義函式
 
@@ -63,7 +63,7 @@ Azure Cosmos DB 提供 JavaScript 的語言整合式、交易式執行。 使用
 
 ### <a name="data-consistency"></a>資料一致性
 
-預存程序和觸發程序一律會在 Azure Cosmos 容器的主要複本上執行。 此功能確保從預存程序讀取的資料有[強式一致性](consistency-levels-tradeoffs.md)。 使用「使用者定義函數」的查詢可以在主要或任何次要複本上執行。 預存程序和觸發程序的目的是支援交易式寫入 – 而唯讀邏輯最適合做為應用程式端邏輯，而使用 [Azure Cosmos DB SQL API Sdk](sql-api-dotnet-samples.md) 查詢可幫助您將資料庫輸送量達成飽和。 
+預存程序和觸發程序一律會在 Azure Cosmos 容器的主要複本上執行。 此功能確保從預存程序讀取的資料有[強式一致性](./consistency-levels.md)。 使用「使用者定義函數」的查詢可以在主要或任何次要複本上執行。 預存程序和觸發程序的目的是支援交易式寫入 – 而唯讀邏輯最適合做為應用程式端邏輯，而使用 [Azure Cosmos DB SQL API Sdk](sql-api-dotnet-samples.md) 查詢可幫助您將資料庫輸送量達成飽和。 
 
 > [!TIP]
 > 在預存程式或觸發程式內執行的查詢可能不會看到相同腳本交易所做之專案的變更。 此語句適用于 SQL 查詢（例如 `getContent().getCollection.queryDocuments()` ），以及整合式語言查詢（例如） `getContext().getCollection().filter()` 。

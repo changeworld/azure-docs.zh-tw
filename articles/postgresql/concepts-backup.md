@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 0c1b0b5ac0c5c71dc5c98cb91d86f879a82809bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b267a97b640c9d069f83223206200fc4814c86b9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708449"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488005"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的備份與還原-單一伺服器
 
@@ -32,11 +32,11 @@ ms.locfileid: "91708449"
 
 #### <a name="servers-with-up-to-16-tb-storage"></a>最多 16 TB 儲存體的伺服器
 
-在 [Azure 區域](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage)的子集中，所有新布建的伺服器最多可支援 16 TB 的儲存體。 這些大型儲存體伺服器上的備份是以快照集為基礎。 建立伺服器之後，會立即排程第一次完整快照集備份。 第一次完整快照集備份會保留為伺服器的基礎備份。 後續的快照集備份只是差異備份。 差異快照集備份不會依固定排程執行。 一天會執行三個差異快照集備份。 交易記錄備份會每五分鐘執行一次。 
+在 [Azure 區域](./concepts-pricing-tiers.md#storage)的子集中，所有新布建的伺服器最多可支援 16 TB 的儲存體。 這些大型儲存體伺服器上的備份是以快照集為基礎。 建立伺服器之後，會立即排程第一次完整快照集備份。 第一次完整快照集備份會保留為伺服器的基礎備份。 後續的快照集備份只是差異備份。 差異快照集備份不會依固定排程執行。 一天會執行三個差異快照集備份。 交易記錄備份會每五分鐘執行一次。 
 
 ### <a name="backup-retention"></a>備份保留
 
-備份會根據伺服器上的備份保留期限設定來保留。 您可以選取7到35天的保留期間。 預設保留期間為7天。 您可以使用 [Azure 入口網站](https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal#set-backup-configuration) 或 [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-restore-server-cli#set-backup-configuration)更新備份設定，在伺服器建立或更新版本期間設定保留期限。 
+備份會根據伺服器上的備份保留期限設定來保留。 您可以選取7到35天的保留期間。 預設保留期間為7天。 您可以使用 [Azure 入口網站](./howto-restore-server-portal.md#set-backup-configuration) 或 [Azure CLI](./howto-restore-server-cli.md#set-backup-configuration)更新備份設定，在伺服器建立或更新版本期間設定保留期限。 
 
 備份保留期限會控制可往回多少時間來擷取時間點還原，因為這會以可用的備份為基礎。 您也可以從還原的觀點，將備份保留期限視為修復時段。 在備份保留期限內執行時間點還原所需的所有備份都會保留在備份儲存體中。 例如-如果備份保留期限設定為7天，則會將修復視窗視為過去7天。 在此案例中，會保留在過去7天還原伺服器所需的所有備份。 備份保留期間為七天：
 - 具有最多 4 TB 儲存體的伺服器最多可保留2個完整的資料庫備份、所有差異備份，以及自最早的完整資料庫備份之後所執行的交易記錄備份。
@@ -44,7 +44,7 @@ ms.locfileid: "91708449"
 
 ### <a name="backup-redundancy-options"></a>備份備援選項
 
-適用於 PostgreSQL 的 Azure 資料庫可讓您在一般用途和記憶體最佳化層中，彈性地選擇本地備援或異地備援備份儲存體。 當備份儲存在異地備援備份儲存體中時，這些備份不會只儲存在裝載您伺服器的區域內，也會複寫至[配對的資料中心](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 這樣能提供更好的保護性和功能，當發生災害時，您就可以在不同區域中還原伺服器。 「基本」層只會提供本地備援的備份儲存體。
+適用於 PostgreSQL 的 Azure 資料庫可讓您在一般用途和記憶體最佳化層中，彈性地選擇本地備援或異地備援備份儲存體。 當備份儲存在異地備援備份儲存體中時，這些備份不會只儲存在裝載您伺服器的區域內，也會複寫至[配對的資料中心](../best-practices-availability-paired-regions.md)。 這樣能提供更好的保護性和功能，當發生災害時，您就可以在不同區域中還原伺服器。 「基本」層只會提供本地備援的備份儲存體。
 
 > [!IMPORTANT]
 > 您只可在伺服器建立期間，為備份設定本地備援或異地備援儲存體。 伺服器佈建完成之後，您無法變更備份儲存體備援選項。
@@ -69,7 +69,7 @@ ms.locfileid: "91708449"
 預估的復原時間取決於數個因素，包括資料庫大小、交易記錄大小、網路頻寬，以及在相同區域中同時進行復原的資料庫總數。 復原時間通常不到 12 小時。
 
 > [!IMPORTANT]
-> 已刪除的伺服器**無法**還原。 如果您刪除伺服器，所有屬於該伺服器的資料庫也會一併刪除，且無法復原。 若要在部署後避免伺服器資源遭到意外刪除或非預期的變更，系統管理員可以利用[管理鎖定](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)。
+> 已刪除的伺服器**無法**還原。 如果您刪除伺服器，所有屬於該伺服器的資料庫也會一併刪除，且無法復原。 若要在部署後避免伺服器資源遭到意外刪除或非預期的變更，系統管理員可以利用[管理鎖定](../azure-resource-manager/management/lock-resources.md)。
 
 ### <a name="point-in-time-restore"></a>時間點還原
 

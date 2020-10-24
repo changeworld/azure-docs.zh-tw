@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 3903500e87dd162779d1732a4cfe405ba34e702c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d91161127b3fd3b63d7a5cc76df2fbeb33b62f34
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87074735"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479828"
 ---
 # <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>使用您的瀏覽器、PowerShell 或 Azure CLI 刪除 HDInsight 叢集
 
-HDInsight 叢集的計費起自叢集建立時，終至叢集刪除時。 計費依每分鐘按比例計費，因此當您不再使用您的叢集時，您應該一律刪除該叢集。 在本檔中，您將瞭解如何使用 [Azure 入口網站](https://portal.azure.com)、 [Azure PowerShell Az 模組](https://docs.microsoft.com/powershell/azure/)和 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)來刪除叢集。
+HDInsight 叢集的計費起自叢集建立時，終至叢集刪除時。 計費依每分鐘按比例計費，因此當您不再使用您的叢集時，您應該一律刪除該叢集。 在本檔中，您將瞭解如何使用 [Azure 入口網站](https://portal.azure.com)、 [Azure PowerShell Az 模組](https://docs.microsoft.com/powershell/azure/)和 [Azure CLI](/cli/azure/)來刪除叢集。
 
 > [!IMPORTANT]  
 > 刪除 HDInsight 叢集並不會刪除與叢集建立關聯的 Azure 儲存體帳戶或 Data Lake Storage。 您可以在日後重複使用這些服務中儲存的資料。

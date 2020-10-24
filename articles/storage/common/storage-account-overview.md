@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c93508bebdcfce35a89b3d5e2a8abecc7ac84722
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 429883a1bd9bc4df270e6a9f2965087fa3fba2dc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91280142"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488855"
 ---
 # <a name="storage-account-overview"></a>儲存體帳戶概觀
 
@@ -32,7 +32,7 @@ Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔
 
 - Blob (所有類型：區塊、附加、分頁)
 - Data Lake Gen2
-- 檔案儲存體
+- 檔案
 - 磁碟
 - 佇列
 - 資料表
@@ -49,7 +49,7 @@ Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔
 一般用途 v1 儲存體帳戶提供所有 Azure 儲存體服務的存取權，但可能沒有最新的功能或每 gb 的最低定價。 一般用途 v1 儲存體帳戶支援這些 Azure 儲存體服務：
 
 - Blobs (所有類型)
-- 檔案儲存體
+- 檔案
 - 磁碟
 - 佇列
 - 資料表
@@ -133,7 +133,7 @@ Azure 儲存體提供不同的選項，以便根據使用量模式來存取區�
 - 資料表儲存體： `https://*mystorageaccount*.table.core.windows.net`
 - 佇列儲存體： `https://*mystorageaccount*.queue.core.windows.net`
 - Azure 檔案儲存體： `https://*mystorageaccount*.file.core.windows.net`
-- Azure Data Lake Storage Gen2： `https://*mystorageaccount*.dfs.core.windows.net` (使用 [專門針對大型資料優化的 ABFS 驅動程式](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction#key-features-of-data-lake-storage-gen2)。 ) 
+- Azure Data Lake Storage Gen2： `https://*mystorageaccount*.dfs.core.windows.net` (使用 [專門針對大型資料優化的 ABFS 驅動程式](/azure/storage/blobs/data-lake-storage-introduction#key-features-of-data-lake-storage-gen2)。 ) 
 
 > [!NOTE]
 > 區塊 blob 和 blob 儲存體帳戶只會公開 Blob 服務端點。
@@ -177,7 +177,7 @@ AzCopy 為 Windows 命令列公用程式，可以極高效能將資料複製到 
 
 您可以建立自訂應用程式，將您的資料從一般用途 v1 儲存體帳戶遷移至 Blob 儲存體帳戶。 使用其中一個 Azure 用戶端程式庫或 Azure 儲存體服務 REST API。 Azure 儲存體針對以下多種語言和平台提供豐富的用戶端程式庫：例如 .NET、Java、C++、Node.JS、PHP、Ruby 和 Python。 這些用戶端程式庫提供多種進階功能，例如大重試邏輯、記錄與並行上傳等等。 您也可以直接透過 REST API 開發，它可以透過提出 HTTP/HTTPS 要求的任何語言進行呼叫。
 
-如需 Azure 儲存體 REST API 的詳細資訊，請參閱 [Azure 儲存體服務 REST API 參考](https://docs.microsoft.com/rest/api/storageservices/)。
+如需 Azure 儲存體 REST API 的詳細資訊，請參閱 [Azure 儲存體服務 REST API 參考](/rest/api/storageservices/)。
 
 > [!IMPORTANT]
 > 使用用戶端加密來加密的 Blob 會儲存 Blob 加密相關中繼資料。 如果您複製使用用戶端加密來加密的 blob，請確定複製作業會保留 blob 中繼資料，特別是加密相關中繼資料。 如果您複製不含加密中繼資料的 Blob，便無法再次擷取 Blob 內容。 若想進一步了解與加密有關的中繼資料，請參閱 [Azure 儲存體用戶端加密](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。

@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: how-to
 ms.date: 02/26/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: a0bc2118c1a7e719c5ac45cb4d253a0708acefdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e86c48695c732b27f5032c1e3780cc24c8d3dc39
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292333"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482259"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>如何使用 Azure Cosmos DB 適用於 MongoDB 的 API 來設定全域散發讀取
 
@@ -171,6 +171,6 @@ MongoClient.connect(url, function(err, client) {
 
 ## <a name="next-steps"></a>後續步驟
 
-* [將 MongoDB 資料匯入到 Azure Cosmos DB](mongodb-migrate.md)
+* [將 MongoDB 資料匯入到 Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)
 * [使用 Azure Cosmos DB 適用於 MongoDB 的 API 來設定全域散發的資料庫](tutorial-global-distribution-mongodb.md)
 * [使用 Azure Cosmos DB 模擬器在本機進行開發](local-emulator.md)

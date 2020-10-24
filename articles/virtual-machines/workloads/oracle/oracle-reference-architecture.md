@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: f9765f4ce47e6e698daf1680aecf059241c58382
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: d2a6954ffdb9f992ada7fc24dbcc161658b21d23
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993569"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480423"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上 Oracle Database Enterprise Edition 的參考架構
 
@@ -72,7 +72,7 @@ Oracle Data Guard 可確保企業資料的高可用性、資料保護和嚴重�
 
 下圖是在 Azure 上搭配可用性區域使用 Oracle Data Guard 的建議架構。 此架構可讓您取得99.99% 的 VM 執行時間 SLA。
 
-![Oracle Database 搭配使用可用性區域與 Data Guard Broker-FSFO](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
+![此圖顯示在 Azure 上搭配可用性區域使用 Oracle Data Guard 的建議架構。](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
 
 在上圖中，用戶端系統會透過 web 存取具有 Oracle 後端的自訂應用程式。 Web 前端是在負載平衡器中設定。 Web 前端會呼叫適當的應用程式伺服器來處理工作。 應用程式伺服器會查詢主要 Oracle 資料庫。 Oracle 資料庫已設定為使用超執行緒 [記憶體優化的虛擬機器](../../sizes-memory.md) ，具有 [受限的核心個 vcpu](../../../virtual-machines/constrained-vcpu.md) ，以節省授權成本並將效能最大化。  (受控磁碟) 的多重 premium 或 ultra 磁片，用於效能和高可用性。
 
@@ -221,7 +221,7 @@ Oracle Data Guard 可以用來分區化具有系統管理、使用者定義和�
 - 使用 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) 來管理資料庫的修補和更新，而不需要停機。
 - 調整您的應用程式程式碼，以新增雲端原生模式，例如 [重試模式](/azure/architecture/patterns/retry)、斷路器 [模式](/azure/architecture/patterns/circuit-breaker)，以及 [雲端設計模式指南](/azure/architecture/patterns/) 中所定義的其他模式，可能有助於您的應用程式更具復原性。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請參閱下列適用于您案例的 Oracle 參考文章。
 

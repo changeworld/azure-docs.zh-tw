@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: a5b9b4c7d3bdd0c68d3a91a39972389e48ed910d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c372dafdbfa5e9cafb208673128038dc23b30f5a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515018"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488821"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>將 Azure 儲存體帳戶移至另一個區域
 
@@ -31,7 +31,7 @@ ms.locfileid: "85515018"
 > * 將資料移至新的儲存體帳戶。
 > * 刪除來源區域中的資源。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 確定目的地區域中支援您帳戶所使用的服務和功能。
 
@@ -67,7 +67,7 @@ ms.locfileid: "85515018"
 
 使用 PowerShell 匯出範本：
 
-1. 使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) 命令登入 Azure 訂用帳戶，並遵循畫面上的指示操作：
+1. 使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 命令登入 Azure 訂用帳戶，並遵循畫面上的指示操作：
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -109,7 +109,7 @@ ms.locfileid: "85515018"
 
     ![Azure Resource Manager 範本程式庫](./media/storage-account-move/azure-resource-manager-template-library.png)
 
-4. 選取 [建立]****。
+4. 選取 [建立]。
 
 5. 選取 [在編輯器中組建您自己的範本]。
 
@@ -167,7 +167,7 @@ ms.locfileid: "85515018"
          }]          
     ```
 
-    您可以執行 [>get-azlocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) 命令來取得區域程式碼。
+    您可以執行 [>get-azlocation](/powershell/module/az.resources/get-azlocation) 命令來取得區域程式碼。
 
     ```azurepowershell-interactive
     Get-AzLocation | format-table 
@@ -196,7 +196,7 @@ ms.locfileid: "85515018"
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. 取得您想要使用 [>select-azsubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0)部署目標公用 IP 的訂用帳戶識別碼：
+1. 取得您想要使用 [>select-azsubscription](/powershell/module/az.accounts/get-azsubscription)部署目標公用 IP 的訂用帳戶識別碼：
 
    ```azurepowershell-interactive
    Get-AzSubscription
@@ -232,14 +232,14 @@ ms.locfileid: "85515018"
 
 ### <a name="move-data-to-the-new-storage-account"></a>將資料移至新的儲存體帳戶
 
-AzCopy 是移動資料的慣用工具。 已針對效能最佳化。  其中一個較快的方法是，資料會直接在儲存體伺服器間複製，因此 AzCopy 不會使用電腦的網路頻寬。 在命令列或自訂指令碼中使用 AzCopy。 請參閱[開始使用 AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+AzCopy 是移動資料的慣用工具。 已針對效能最佳化。  其中一個較快的方法是，資料會直接在儲存體伺服器間複製，因此 AzCopy 不會使用電腦的網路頻寬。 在命令列或自訂指令碼中使用 AzCopy。 請參閱[開始使用 AzCopy](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 您也可以使用 Azure Data Factory 來移動您的資料。 它提供直覺的使用者介面。 若要使用 Azure Data Factory，請參閱下列任一連結：。 
 
-  - [使用 Azure Data Factory 將資料複製到 Azure Blob 儲存體或從該處複製資料](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-  - [使用 Azure Data Factory 從 Azure Data Lake Storage Gen2 來回複製資料](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-  - [使用 Azure Data Factory 從 Azure File Storage 複製資料，或將資料複製到 Azure File Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)
-  - [使用 Azure Data Factory 將資料複製到 Azure 資料表儲存體或從該處複製資料](https://docs.microsoft.com/azure/data-factory/connector-azure-table-storage)
+  - [使用 Azure Data Factory 將資料複製到 Azure Blob 儲存體或從該處複製資料](/azure/data-factory/connector-azure-blob-storage)
+  - [使用 Azure Data Factory 從 Azure Data Lake Storage Gen2 來回複製資料](/azure/data-factory/connector-azure-data-lake-storage)
+  - [使用 Azure Data Factory 從 Azure File Storage 複製資料，或將資料複製到 Azure File Storage](/azure/data-factory/connector-azure-file-storage)
+  - [使用 Azure Data Factory 將資料複製到 Azure 資料表儲存體或從該處複製資料](/azure/data-factory/connector-azure-table-storage)
 
 ---
 
@@ -268,10 +268,10 @@ Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storage
 ```
 ---
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本教學課程中，您已將 Azure 儲存體帳戶從一個區域移至另一個區域，並清除了來源資源。  若要深入了解如何在 Azure 中的區域之間移動資源和災害復原，請參閱：
 
 
-- [將資源移至新的資源群組或訂用帳戶](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [將 Azure VM 移至其他區域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [將資源移至新的資源群組或訂用帳戶](/azure/azure-resource-manager/resource-group-move-resources)
+- [將 Azure VM 移至其他區域](/azure/site-recovery/azure-to-azure-tutorial-migrate)

@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: efd4cb7c0c5db50729539373938ebccd689dee42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 615297a4bf47d80c9313f011b90d343b7ae680e3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708980"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488039"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的 Audit 記錄-單一伺服器
 
@@ -88,7 +88,7 @@ t=%m u=%u db=%d pid=[%p]:
 ## <a name="viewing-audit-logs"></a>查看 audit 記錄
 如果您使用的是 .log 檔案，則您的 audit 記錄檔將會包含在於 postgresql 錯誤記錄檔的相同檔案中。 您可以從 Azure [入口網站](howto-configure-server-logs-in-portal.md) 或 [CLI](howto-configure-server-logs-using-cli.md)下載記錄檔。 
 
-如果您使用 Azure 資源記錄，您存取記錄的方式取決於您選擇的端點。 如 Azure 儲存體，請參閱 [記錄儲存體帳戶](../azure-monitor/platform/resource-logs-collect-storage.md) 的相關文章。 針對事件中樞，請參閱「 [串流 Azure 記錄](../azure-monitor/platform/resource-logs-stream-event-hubs.md) 」一文。
+如果您使用 Azure 資源記錄，您存取記錄的方式取決於您選擇的端點。 如 Azure 儲存體，請參閱 [記錄儲存體帳戶](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) 的相關文章。 針對事件中樞，請參閱「 [串流 Azure 記錄](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) 」一文。
 
 針對 Azure 監視器記錄，會將記錄傳送至您選取的工作區。 Postgres 記錄會使用 **AzureDiagnostics** 收集模式，因此可以從 AzureDiagnostics 資料表進行查詢。 下表說明資料表中的欄位。 在 [Azure 監視器記錄查詢](../azure-monitor/log-query/log-query-overview.md) 總覽中深入瞭解查詢和警示。
 

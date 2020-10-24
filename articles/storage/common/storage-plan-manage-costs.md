@@ -9,12 +9,12 @@ ms.date: 08/03/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 75b464c140bfda6c3f3559d3bfdbe1e6bc2e7f24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0f5069ca063f95cb845921c0d716b6c013c9e83
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87760731"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479743"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>規劃和管理 Azure Blob 儲存體的成本
 
@@ -32,9 +32,9 @@ ms.locfileid: "87760731"
 
 3. 從下拉式清單中選擇 [選項]。 
 
-   當您修改這些下拉式清單的值時，成本預估會變更。 該預估值會出現在右上角以及預估的底部。 
-    
-   ![使用成本分析窗格來監視成本](media/storage-plan-manage-costs/price-calculator-storage-type.png)
+   當您修改這些下拉式清單的值時，成本預估會變更。 該預估值會出現在右上角以及預估的底部。
+
+   ![顯示估計值的螢幕擷取畫面](media/storage-plan-manage-costs/price-calculator-storage-type.png)
 
    當您變更 [ **類型** ] 下拉式清單的值時，也會變更此工作表上顯示的其他選項。 您可以使用 [ **詳細資訊** ] 區段中的連結，深入瞭解每個選項的意義，以及這些選項如何影響儲存體相關作業的價格。 
 
@@ -56,19 +56,19 @@ ms.locfileid: "87760731"
 
 您可以節省具有 Azure 儲存體保留容量之 blob 資料的儲存體成本費用。 當您認可一年或三年的保留時，Azure 儲存體保留容量可提供區塊 blob 容量的折扣以及標準儲存體帳戶中 Azure Data Lake Storage Gen2 資料的折扣。 保留會針對保留期限提供固定的儲存容量量。 Azure 儲存體保留容量可以大幅降低區塊 blob 和 Azure Data Lake Storage Gen2 資料的容量成本。 
 
-若要深入瞭解，請參閱 [使用保留容量將 Blob 儲存體的成本優化](https://docs.microsoft.com/azure/storage/blobs/storage-blob-reserved-capacity)。
+若要深入瞭解，請參閱 [使用保留容量將 Blob 儲存體的成本優化](/azure/storage/blobs/storage-blob-reserved-capacity)。
 
 #### <a name="organize-data-into-access-tiers"></a>將資料組織成存取層
 
 您可以藉由將 blob 資料放入最符合成本效益的存取層，來降低成本。 從三個階層中選擇，其設計目的是要將您的資料使用成本優化。 例如，經常性存取 *層的* 儲存成本較高，但存取成本較低。 因此，如果您打算經常存取資料，經常性存取層可能是最符合成本效益的選擇。 如果您打算較不頻繁地存取資料，非經常性存取*層或封存**層可能*最合理，因為它會提高存取資料的成本，同時減少儲存資料的成本。    
 
-若要深入瞭解，請參閱 [Azure Blob 儲存體：經常性存取、非經常性存取層和封存存取層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal)。
+若要深入瞭解，請參閱 [Azure Blob 儲存體：經常性存取、非經常性存取層和封存存取層](/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal)。
 
 #### <a name="automatically-move-data-between-access-tiers"></a>在存取層之間自動移動資料
 
 使用生命週期管理原則，定期在各層之間移動資料，以節省最多成本。 這些原則可以使用您指定的規則，將資料移至。 例如，您可以建立一個規則，將 blob 移至封存層（如果該 blob 在90天內未修改）。 藉由建立可調整資料存取層的原則，您可以為您的需求設計最便宜的儲存體選項。
 
-若要深入瞭解，請參閱 [管理 Azure Blob 儲存體生命週期](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)
+若要深入瞭解，請參閱 [管理 Azure Blob 儲存體生命週期](/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)
 
 ## <a name="create-budgets"></a>建立預算
 
@@ -85,17 +85,17 @@ ms.locfileid: "87760731"
 
 若要查看成本分析中的 Azure 儲存體成本：
 
-1. 登入[Azure 入口網站](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
 2. 開啟 [ **成本管理 + 計費** ] 視窗，從功能表中選取 [ **成本管理** ]，然後選取 [ **成本分析**]。 然後，您可以從 [ **領域** ] 下拉式清單中變更特定訂用帳戶的範圍。
 
-   ![使用成本分析窗格來監視成本](./media/storage-plan-manage-costs/cost-analysis-pane.png)
+   ![顯示範圍的螢幕擷取畫面](./media/storage-plan-manage-costs/cost-analysis-pane.png)
 
 4. 若只要查看 Azure 儲存體的成本，請選取 [ **加入篩選** ]，然後選取 [ **服務名稱**]。 然後，從清單中選擇 [ **儲存體** ]。 
 
    以下範例顯示只 Azure 儲存體的成本：
 
-   ![使用成本分析窗格監視儲存體成本](./media/storage-plan-manage-costs/cost-analysis-pane-storage.png)
+   ![顯示依儲存體篩選的螢幕擷取畫面](./media/storage-plan-manage-costs/cost-analysis-pane-storage.png)
 
 在上述範例中，您會看到服務的目前成本。 依 Azure 區域 (位置) 和資源群組的成本也會出現。 您也可以新增其他篩選 (例如：查看特定儲存體帳戶成本的篩選) 。
 

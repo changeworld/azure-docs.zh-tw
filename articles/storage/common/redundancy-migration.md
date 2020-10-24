@@ -1,5 +1,5 @@
 ---
-title: 變更儲存體帳戶的複寫方式
+title: 變更儲存體帳戶的複寫方式 \(部分機器翻譯\)
 titleSuffix: Azure Storage
 description: 瞭解如何變更現有儲存體帳戶中的資料複寫方式。
 services: storage
@@ -11,14 +11,14 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c305292e915e02a1b53eb140ccd052990efbd315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a16199891c00e2b8133aebebd1eaa6488423896c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827316"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487886"
 ---
-# <a name="change-how-a-storage-account-is-replicated"></a>變更儲存體帳戶的複寫方式
+# <a name="change-how-a-storage-account-is-replicated"></a>變更儲存體帳戶的複寫方式 \(部分機器翻譯\)
 
 Azure 儲存體會一律儲存資料的多個複本，以保護該資料不受計劃性和非計劃性事件影響，包括暫時性硬體故障、網路或電力中斷和大規模天然災害。 備援可確保儲存體帳戶符合 [Azure 儲存體的服務等級協定 (SLA)](https://azure.microsoft.com/support/legal/sla/storage/)，即使遇到失敗時也一樣。
 
@@ -137,16 +137,16 @@ ZRS 僅支援一般用途 v2 帳戶，因此請務必先升級您的儲存體帳
     - **詳細資料**：在 [**詳細資料**] 方塊中輸入其他詳細資料，例如，我想要從區域中的 [LRS，GRS] 遷移至 ZRS \_ \_ 。
 5. 選取 [下一步]  。
 6. 確認 [連絡人資訊]**** 刀鋒視窗上的連絡人資訊正確。
-7. 選取 [建立]****。
+7. 選取 [建立]。
 
 支援人員將會與您連絡，並提供您所需的一切協助。
 
 > [!NOTE]
 > Premium 檔案共用目前不支援即時移轉。 目前只支援手動複製或移動資料。
 >
-> GZRS 儲存體帳戶目前不支援封存層。 如需詳細資訊，請參閱 [Azure Blob 儲存體：經常性存取層、非經常性存取層和封存存取層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) 。
+> GZRS 儲存體帳戶目前不支援封存層。 如需詳細資訊，請參閱 [Azure Blob 儲存體：經常性存取層、非經常性存取層和封存存取層](/azure/storage/blobs/storage-blob-storage-tiers) 。
 >
-> 受控磁片僅供 LRS 使用，無法遷移至 ZRS。 您可以在標準 HDD 儲存體上儲存標準 SSD 受控磁片的快照集和映射，並在 [LRS 和 ZRS 選項之間選擇](https://azure.microsoft.com/pricing/details/managed-disks/)。 如需與可用性設定組整合的詳細資訊，請參閱 [Azure 受控磁片簡介](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)。
+> 受控磁片僅供 LRS 使用，無法遷移至 ZRS。 您可以在標準 HDD 儲存體上儲存標準 SSD 受控磁片的快照集和映射，並在 [LRS 和 ZRS 選項之間選擇](https://azure.microsoft.com/pricing/details/managed-disks/)。 如需與可用性設定組整合的詳細資訊，請參閱 [Azure 受控磁片簡介](/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)。
 
 ## <a name="switch-from-zrs-classic"></a>從傳統 ZRS 切換
 
@@ -167,7 +167,7 @@ ZRS 僅支援一般用途 v2 帳戶，因此請務必先升級您的儲存體帳
 
 若要在 Azure 入口網站中升級至 ZRS，請流覽至帳戶 **的設定，然後選擇 [** **升級**]：
 
-![在入口網站中將 ZRS 傳統升級至 ZRS](media/redundancy-migration/portal-zrs-classic-upgrade.png)
+![在入口網站中將傳統 ZRS 升級至 ZRS](media/redundancy-migration/portal-zrs-classic-upgrade.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: sngun
-ms.openlocfilehash: 65f276662ac4837003c7a7078b6197ba155eadc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77e74a36d7b353d0713a7bf17f7a6341558f0739
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167584"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484996"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>關於 Azure Cosmos DB 中資料表 API 的常見問題集
 
@@ -97,7 +97,7 @@ DefaultEndpointsProtocol=https;AccountName=<AccountNamefromCosmosDB;AccountKey=<
 
 ### <a name="which-tools-work-with-the-table-api"></a>哪些工具可與資料表 API 搭配使用？
 
-您可以使用 [Azure 儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)。
+您可以使用 [Azure 儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md)。
 
 能夠彈性地以先前指定之格式採用連接字串的工具，均可支援新的資料表 API。 [Azure 儲存體用戶端工具](../storage/common/storage-explorers.md)頁面上提供一份資料表工具清單。
 
@@ -115,7 +115,7 @@ DefaultEndpointsProtocol=https;AccountName=<AccountNamefromCosmosDB;AccountKey=<
 
 ### <a name="how-do-i-migrate-an-existing-azure-table-storage-application-to-this-offering"></a>如何將現有的 Azure 資料表儲存體應用程式移轉到這個供應項目？
 
-[AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) 和 [Azure Cosmos DB 資料移轉工具](import-data.md)皆有受到支援。
+[AzCopy](../storage/common/storage-use-azcopy-v10.md) 和 [Azure Cosmos DB 資料移轉工具](import-data.md)皆有受到支援。
 
 ### <a name="how-is-expansion-of-the-storage-size-done-for-this-service-if-for-example-i-start-with-n-gb-of-data-and-my-data-will-grow-to-1-tb-over-time"></a>假設我一開始就有 n GB 的資料，而我的資料將隨著時間過去成長為 1 TB，我該如何針對此服務完成儲存體大小的擴充？
 
@@ -231,7 +231,7 @@ Azure Cosmos DB 會在當地區域持久認可資料，並在幾毫秒內立即�
 
 ### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-sorting-aggregates-hierarchy-and-other-functionality-will-you-be-adding-these-capabilities-to-the-table-api"></a>Azure Cosmos DB 做為平台時似乎還有很多功能，例如排序、彙總、階層及其他功能。 你們會將這些功能加入資料表 API 嗎？
 
-資料表 API 提供的查詢功能與 Azure 資料表儲存體相同。 Azure Cosmos DB 也支援排序、彙總、地理空間查詢、階層及各種不同的內建函式。 如需詳細資訊，請參閱 [SQL 查詢](how-to-sql-query.md)。
+資料表 API 提供的查詢功能與 Azure 資料表儲存體相同。 Azure Cosmos DB 也支援排序、彙總、地理空間查詢、階層及各種不同的內建函式。 如需詳細資訊，請參閱 [SQL 查詢](./sql-query-getting-started.md)。
 
 ### <a name="when-should-i-change-tablethroughput-for-the-table-api"></a>我何時應該變更資料表 API 的 TableThroughput？
 
@@ -293,7 +293,7 @@ Azure Cosmos DB 是 SLA 型系統，可提供延遲、輸送量、可用性及�
 您可以使用以下任何方式來分享意見反應：
 
 * [User Voice](https://feedback.azure.com/forums/263030-azure-cosmos-db)
-* [Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
+* [Microsoft 問與答頁面](/answers/topics/azure-cosmos-db.html)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb)。 Stack Overflow 最適合用於詢問程式設計問題。 確保您的問題[契合主題](https://stackoverflow.com/help/on-topic)且[盡可能提供愈多的詳細資料，讓問題更加清楚並可得到答覆](https://stackoverflow.com/help/how-to-ask)。
 
 ## <a name="next-steps"></a>後續步驟

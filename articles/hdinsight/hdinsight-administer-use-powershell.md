@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/13/2020
-ms.openlocfilehash: 1839cfe0f7295af583b7bd5397957a223e888d3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fbafd81fac1982f624adae9286000fb61db62c5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87086484"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474915"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 HDInsight 上的 Apache Hadoop 叢集
 
@@ -21,7 +21,7 @@ ms.locfileid: "87086484"
 
 Azure PowerShell 可讓您在 Azure 中用來控制和自動化工作負載的部署及管理。 在本文中，您將瞭解如何使用 Azure PowerShell Az 模組，在 Azure HDInsight 中管理 [Apache Hadoop](https://hadoop.apache.org/) 叢集。 如需 HDInsight PowerShell Cmdlet 的清單，請參閱 [Az 參考](https://docs.microsoft.com/powershell/module/az.hdinsight)。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -146,7 +146,7 @@ $resourceGroupName = $cluster.ResourceGroup
 
 ## <a name="see-also"></a>另請參閱
 
-* [Az Cmdlet](https://docs.microsoft.com/powershell/module/az.hdinsight/?view=azps-3.1.0#hdinsight)
+* [Az Cmdlet](https://docs.microsoft.com/powershell/module/az.hdinsight/#hdinsight)
 * [使用 Azure 入口網站管理 HDInsight 中的 Apache Hadoop 叢集](hdinsight-administer-use-portal-linux.md)
 * [使用命令列介面管理 HDInsight](hdinsight-administer-use-command-line.md)
 * [建立 HDInsight 叢集](hdinsight-hadoop-provision-linux-clusters.md)

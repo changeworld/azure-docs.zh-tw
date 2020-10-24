@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: ee88b980c448bfbf581537aef4653fde5354623a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b874ad4ce566cfca3b0dbd28bdfe48bf30272121
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302926"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482820"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB 中的地理空間和 GeoJSON 位置資料
 
@@ -210,7 +210,7 @@ await container.CreateItemAsync( new UserProfile
     });
 ```
 
-如果您沒有緯度和經度資訊，但具有實體位址或位置名稱（例如城市或國家/地區），您可以使用地理編碼服務（例如 Bing 地圖服務 REST 服務）來查閱實際的座標。 在 [這裡](https://msdn.microsoft.com/library/ff701713.aspx)深入了解 Bing Maps 地理編碼。
+如果您沒有緯度和經度資訊，但具有實體位址或位置名稱（例如城市或國家/地區），您可以使用地理編碼服務（例如 Bing 地圖服務 REST 服務）來查閱實際的座標。 在 [這裡](/bingmaps/rest-services/)深入了解 Bing Maps 地理編碼。
 
 ## <a name="next-steps"></a>後續步驟
 

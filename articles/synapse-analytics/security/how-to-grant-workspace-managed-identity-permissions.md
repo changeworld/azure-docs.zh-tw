@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c07943d517f893e67eed5103660a953b508cc87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08ead12c99ae4919a2daf523065cfe332c644df1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87535037"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487189"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>將許可權授與工作區受控識別 (預覽) 
 
@@ -70,7 +70,7 @@ ms.locfileid: "87535037"
 
 
 選取相同的容器或檔案系統，以將「 *儲存體 Blob 資料參與者* 」角色授與受控識別。
-![ADLS Gen2 儲存體帳戶容器選取專案](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
+![顯示您應該選取之容器或檔案系統的螢幕擷取畫面。](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
 
 #### <a name="step-3-navigate-to-access-control"></a>步驟3：流覽至存取控制
 
@@ -80,7 +80,7 @@ ms.locfileid: "87535037"
 
 #### <a name="step-4-add-a-new-role-assignment"></a>步驟4：新增角色指派
 
-選取 [+ 新增] 。
+選取 [+ 新增]。
 
 ![新增角色指派](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-9.png)
 

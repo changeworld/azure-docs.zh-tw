@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: 23811f379f8738e3fe9f162e23627d0c3c457621
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8ae16e6799d1253b8b070d59414beaee3c7ff332
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367494"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479777"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>移轉至叢集組態中以角色為基礎的細微存取
 
@@ -26,7 +26,7 @@ ms.locfileid: "92367494"
 
 我們也引進了一個新的 [HDInsight 叢集操作員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) 角色，此角色將能夠在不授與參與者或擁有者的系統管理許可權的情況下，取得秘密。 總括來說：
 
-| [角色]                                  | 先前是                                                                                        | 往後       |
+| 角色                                  | 先前是                                                                                        | 往後       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
 | 讀取者                                | -讀取存取權，包括秘密。                                                                   | -讀取存取權， **排除** 秘密 |           |   |   |
 | HDInsight 叢集操作員<br> (新的角色)  | N/A                                                                                              | -讀取/寫入存取權，包括秘密         |   |   |
@@ -112,11 +112,11 @@ ms.locfileid: "92367494"
 
 更新為適用于 .NET 的 HDInsight SDK 第 [5.0.0 版](https://www.nuget.org/packages/Microsoft.Azure.Management.HDInsight/5.0.0) 或更新版本。 如果您使用受這些變更影響的方法，則可能需要進行少量的程式碼修改：
 
-- [`ConfigurationOperationsExtensions.Get`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get?view=azure-dotnet) 將 **不會再傳回機密參數** ，例如 (核心) 的儲存體金鑰，或 (閘道) 的 HTTP 認證。
-    - 若要抓取所有設定，包括敏感性參數，請 [`ConfigurationOperationsExtensions.List`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list?view=azure-dotnet) 繼續使用。請注意，具有「讀者」角色的使用者將無法使用此方法。 這可讓您更精確地控制哪些使用者可以存取叢集的機密資訊。 
-    - 若只取出 HTTP 閘道認證，請使用 [`ClusterOperationsExtensions.GetGatewaySettings`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.getgatewaysettings?view=azure-dotnet) 。 
-- [`ConfigurationsOperationsExtensions.Update`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update?view=azure-dotnet) 現在已被取代，並已由取代 [`ClusterOperationsExtensions.UpdateGatewaySettings`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings?view=azure-dotnet) 。 
-- [`ConfigurationsOperationsExtensions.EnableHttp`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.enablehttp?view=azure-dotnet) 和 [`DisableHttp`](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.disablehttp?view=azure-dotnet) 現在已被取代。 現在一律會啟用 HTTP，因此不再需要這些方法。
+- [`ConfigurationOperationsExtensions.Get`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get?view=azure-dotnet&preserve-view=true) 將 **不會再傳回機密參數** ，例如 (核心) 的儲存體金鑰，或 (閘道) 的 HTTP 認證。
+    - 若要抓取所有設定，包括敏感性參數，請 [`ConfigurationOperationsExtensions.List`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list?view=azure-dotnet&preserve-view=true) 繼續使用。請注意，具有「讀者」角色的使用者將無法使用此方法。 這可讓您更精確地控制哪些使用者可以存取叢集的機密資訊。 
+    - 若只取出 HTTP 閘道認證，請使用 [`ClusterOperationsExtensions.GetGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.getgatewaysettings?view=azure-dotnet&preserve-view=true) 。 
+- [`ConfigurationsOperationsExtensions.Update`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update?view=azure-dotnet&preserve-view=true) 現在已被取代，並已由取代 [`ClusterOperationsExtensions.UpdateGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings?view=azure-dotnet&preserve-view=true) 。 
+- [`ConfigurationsOperationsExtensions.EnableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.enablehttp?view=azure-dotnet&preserve-view=true) 和 [`DisableHttp`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.disablehttp?view=azure-dotnet&preserve-view=true) 現在已被取代。 現在一律會啟用 HTTP，因此不再需要這些方法。
 
 ### <a name="sdk-for-python"></a>適用於 Python 的 SDK
 
@@ -193,7 +193,7 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 
 ### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>當執行 Azure CLI 命令將 HDInsight 叢集操作員角色指派給其他使用者或服務主體時，為什麼會看到「沒有足夠的許可權可完成作業」？
 
-除了擁有擁有者角色之外，執行命令的使用者或服務主體也必須有足夠的 Azure AD 許可權，才能查閱受託人的物件識別碼。 此訊息表示 Azure AD 許可權不足。 請嘗試 `-–assignee` 使用取代引數， `–assignee-object-id` 並在受控識別) 的情況下，提供受託人的物件識別碼做為參數，而不是名稱 (或主體識別碼。 如需詳細資訊，請參閱 [az 角色指派建立檔](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) 的選擇性參數一節。
+除了擁有擁有者角色之外，執行命令的使用者或服務主體也必須有足夠的 Azure AD 許可權，才能查閱受託人的物件識別碼。 此訊息表示 Azure AD 許可權不足。 請嘗試 `-–assignee` 使用取代引數， `–assignee-object-id` 並在受控識別) 的情況下，提供受託人的物件識別碼做為參數，而不是名稱 (或主體識別碼。 如需詳細資訊，請參閱 [az 角色指派建立檔](/cli/azure/role/assignment#az-role-assignment-create) 的選擇性參數一節。
 
 如果仍然無法運作，請洽詢您的 Azure AD 系統管理員，以取得正確的許可權。
 

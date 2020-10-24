@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 70234c9bf6be8b9c2fbb5750fa1dba718ac2690d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 43c8f3dc0df41d9322edbe2e0c763de12b787ed6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370469"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479794"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>監視、診斷與疑難排解 Microsoft Azure 儲存體
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -131,7 +131,7 @@ ms.locfileid: "92370469"
 >
 >
 
-如需估計 Blob 等各種儲存體物件大小的說明，請參閱部落格文章 [了解 Winidows Azure 儲存體計費 - 頻寬、交易與容量](https://docs.microsoft.com/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)。
+如需估計 Blob 等各種儲存體物件大小的說明，請參閱部落格文章 [了解 Winidows Azure 儲存體計費 - 頻寬、交易與容量](/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)。
 
 ### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>監視可用性
 您應該監視儲存體帳戶中的儲存體服務可用性，方法是監視每小時或每分鐘度量表內的 [可用性] 資料欄，亦即 — **$MetricsHourPrimaryTransactionsBlob**、 **$MetricsHourPrimaryTransactionsTable**、 **$MetricsHourPrimaryTransactionsQueue**、 **$MetricsMinutePrimaryTransactionsBlob**、 **$MetricsMinutePrimaryTransactionsTable**、 **$MetricsMinutePrimaryTransactionsQueue**、 **$MetricsCapacityBlob**。 [可用性] 資料欄內含的百分比值代表服務的可用性，或是由資料列所代表的 API 操作 (如果資料列內含整體服務度量或是特定 API 操作度量，則會顯示 **RowKey**)。
@@ -362,7 +362,7 @@ catch (StorageException storageException)
 #### <a name="investigating-client-performance-issues"></a>調查用戶端效能問題
 用戶端回應速度較慢的可能原因包括可用的連線或執行緒數量有限或資源 (例如 CPU、記憶體或網路頻寬) 不足。 您可以試著將用戶端程式碼修改得更有效率 (例如對儲存體服務使用非同步呼叫) 或是使用較大型的虛擬機器 (核心數量增加，記憶體容量加大) 來解決這個問題。
 
-對於資料表和佇列服務，Nagle 演算法也可能導致相較於 **AverageServerLatency** 的高 **AverageE2ELatency**。如需詳細資訊，請參閱 [Nagle 演算法不適用於小型要求](https://docs.microsoft.com/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests)一文。 您可以在 **System.Net** 命名空間中使用 **ServicePointManager** 類別，來停用程式碼中的 Nagle 演算法。 由於這麼做會影響已經開啟的連線，因此在對應用程式裡的資料表或佇列服務進行任何呼叫之前，請先完成這個動作。 以下範例來自背景工作角色裡的 **Application_Start** 方法。
+對於資料表和佇列服務，Nagle 演算法也可能導致相較於 **AverageServerLatency** 的高 **AverageE2ELatency**。如需詳細資訊，請參閱 [Nagle 演算法不適用於小型要求](/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests)一文。 您可以在 **System.Net** 命名空間中使用 **ServicePointManager** 類別，來停用程式碼中的 Nagle 演算法。 由於這麼做會影響已經開啟的連線，因此在對應用程式裡的資料表或佇列服務進行任何呼叫之前，請先完成這個動作。 以下範例來自背景工作角色裡的 **Application_Start** 方法。
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 

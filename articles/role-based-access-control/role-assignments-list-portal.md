@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/16/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 280e5012f7c41a906b5b2e266840ea3c0cc315ba
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a5b019068368f1c0c076f5a1ed157c288bb7169c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151688"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479913"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>使用 Azure 入口網站列出 Azure 角色指派
 
@@ -126,7 +126,7 @@ ms.locfileid: "92151688"
 
     您會在不同範圍（例如管理群組、訂用帳戶、資源群組或資源）上看到指派給所選使用者指派受控識別的角色清單。 這份清單包含您有權讀取的所有角色指派。
 
-    ![系統指派的受控識別的角色指派](./media/shared/role-assignments-user-assigned.png)
+    ![顯示使用者指派的受控識別之角色指派的螢幕擷取畫面。](./media/shared/role-assignments-user-assigned.png)
 
 1. 若要變更訂用帳戶，請按一下 **訂** 用帳戶清單。
 
@@ -178,7 +178,7 @@ ms.locfileid: "92151688"
 
     ![將角色指派下載為 CSV](./media/role-assignments-list-portal/download-role-assignments-csv.png)
 
-    ![將角色指派下載為 CSV](./media/role-assignments-list-portal/download-role-assignments-json.png)
+    ![以 JSON 格式下載的角色指派螢幕擷取畫面。](./media/role-assignments-list-portal/download-role-assignments-json.png)
 
 ## <a name="next-steps"></a>後續步驟
 

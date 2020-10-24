@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 19f0027b506b78ef81f9acc25a94ef9ab74643e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f56da93d0ea0f346e73b34990d8ec4c222bb8813
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90985752"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488566"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>待用資料的 Azure 儲存體加密
 
@@ -30,7 +30,7 @@ Azure 儲存體中的資料會以透明的方式使用256位 [AES 加密](https:
 
 2017年10月20日之後，寫入至 Azure 儲存體的每個區塊 blob、附加 blob 或分頁 blob 都會加密。 在此日期之前建立的 blob 將繼續由背景進程加密。 若要強制加密于2017年10月20日之前建立的 blob，您可以重寫 blob。 若要瞭解如何檢查 blob 的加密狀態，請參閱 [檢查 blob 的加密狀態](../blobs/storage-blob-encryption-status.md)。
 
-如需基礎 Azure 儲存體加密的密碼編譯模組的詳細資訊，請參閱 [密碼編譯 API：新一代](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)。
+如需基礎 Azure 儲存體加密的密碼編譯模組的詳細資訊，請參閱 [密碼編譯 API：新一代](/windows/desktop/seccng/cng-portal)。
 
 如需 Azure 受控磁片的加密和金鑰管理的相關資訊，請參閱適用于 Windows Vm 的 [azure 受控磁片的伺服器端加密](../../virtual-machines/windows/disk-encryption.md) ，或適用于 Linux Vm [之 azure 受控磁片的伺服器端加密](../../virtual-machines/linux/disk-encryption.md) 。
 

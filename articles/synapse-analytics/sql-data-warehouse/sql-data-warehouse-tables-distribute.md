@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 98a3b8d30bcb358a0aaa0f7b124b8399a286d6cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10d37dd5fd9703246913959b9eeec3e1fbc2e913
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85214004"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487002"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>在 Synapse SQL 集區中設計分散式資料表的指引
 
 在 Synapse SQL 集區中設計雜湊分散式資料表和循環配置資源分散式資料表的建議。
 
-本文假設您已熟悉 Synapse SQL 集區中的資料散發和資料移動概念。  如需詳細資訊，請參閱 [Azure Synapse Analytics 大量平行處理 (MPP) 架構](massively-parallel-processing-mpp-architecture.md)。
+本文假設您已熟悉 Synapse SQL 中的資料散發和資料移動概念。  如需詳細資訊，請參閱 [Azure Synapse Analytics 架構](massively-parallel-processing-mpp-architecture.md)。
 
 ## <a name="what-is-a-distributed-table"></a>什麼是分散式資料表？
 
@@ -32,7 +32,7 @@ ms.locfileid: "85214004"
 
 另一個資料表儲存體選項是將小型資料表複寫到所有計算節點。 如需詳細資訊，請參閱[複寫資料表的設計指引](design-guidance-for-replicated-tables.md)。 若要在三個選項中快速做選擇，請參閱[資料表概觀](sql-data-warehouse-tables-overview.md)中的分散式資料表。
 
-在資料表設計過程中，請儘可能了解您的資料及查詢資料的方式。  例如，請思考一下下列問題：
+在資料表設計過程中，請儘可能了解您的資料及查詢資料的方式。    例如，請思考一下下列問題：
 
 - 資料表的大小為何？
 - 資料表的重新整理頻率為何？

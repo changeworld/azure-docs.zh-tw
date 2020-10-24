@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 726be3f0f8402404d0154336aaf7d5f09fefec10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ac76387f32b333d6d17d8d6f71ab0bc7de07ec0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90967464"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474745"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>建立支援資料表和佇列之客戶管理金鑰的帳戶
 
@@ -252,4 +252,4 @@ N/A
 
 - [待用資料的 Azure 儲存體加密](storage-service-encryption.md)
 - [Azure 儲存體加密的客戶管理金鑰](customer-managed-keys-overview.md)
-- [什麼是 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)？
+- [什麼是 Azure Key Vault](/azure/key-vault/key-vault-overview)？

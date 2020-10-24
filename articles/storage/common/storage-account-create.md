@@ -10,18 +10,18 @@ ms.date: 09/24/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 9b993e5a7c5b3ee2327fe26437414d8ce74f7369
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1cdd04be4b5774944f70e551221a08261aef22d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333574"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488889"
 ---
 # <a name="create-a-storage-account"></a>建立儲存體帳戶
 
 Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔案、佇列、資料表和磁碟。 儲存體帳戶會為您的 Azure 儲存體資料提供唯一的命名空間，此命名空間可透過 HTTP 或 HTTPS 從世界各地存取。 您 Azure 儲存體帳戶中的資料具有持久性、高度可用、安全且可大規模調整。
 
-在此操作說明文章中，您將瞭解如何使用 [Azure 入口網站](https://portal.azure.com/)、 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)、 [Azure CLI](https://docs.microsoft.com/cli/azure)或 [Azure Resource Manager 範本](../../azure-resource-manager/management/overview.md)來建立儲存體帳戶。  
+在此操作說明文章中，您將瞭解如何使用 [Azure 入口網站](https://portal.azure.com/)、 [Azure PowerShell](/powershell/azure/)、 [Azure CLI](/cli/azure)或 [Azure Resource Manager 範本](../../azure-resource-manager/management/overview.md)來建立儲存體帳戶。  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
