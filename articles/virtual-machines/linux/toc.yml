@@ -1024,8 +1024,6 @@
               href: disks-benchmarks.md
             - name: 最佳化效能
               href: optimization.md
-            - name: 設定軟體 RAID
-              href: configure-raid.md
             - name: 設定 LVM
               href: configure-lvm.md
         - name: 尋找未連接的磁碟 - CLI
@@ -1182,7 +1180,7 @@
       href: 'https://azure.microsoft.com/pricing/details/#Linux'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-machine'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'

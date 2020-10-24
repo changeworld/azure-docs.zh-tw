@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 2f3fa755f61d398ce7f0965fba86262c3e3ec863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef38e36ce1d2c7968e3eb7079270626629523334
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021148"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518730"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure 儲存體分析計量 (傳統)
 
@@ -146,7 +146,7 @@ queueClient.SetServiceProperties(serviceProperties);
 
 如果要下載長期儲存體的計量，或在本機加以分析，您必須使用工具或撰寫程式碼來讀取資料表。 您必須下載每分鐘度量以進行分析。 如果您在儲存體帳戶中列出所有資料表，則資料表就不會出現，但您可以直接依名稱存取它們。 許多儲存體瀏覽工具可以感知這些資料表，讓您能夠直接檢視它們。 如需可用工具的清單，請參閱 [Azure 儲存體用戶端工具](/azure/storage/storage-explorers)。
 
-|計量|資料表名稱|注意| 
+|計量|資料表名稱|附註| 
 |-|-|-|  
 |每小時度量|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|在 2013 年 8 月 15 日前的版本中，這些資料表也稱為：<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> 從 2015 年 4 月 5 日的版本開始，提供檔案服務的計量。|  
 |每分鐘度量|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|只能使用 PowerShell 或以程式設計方式啟用。<br /><br /> 從 2015 年 4 月 5 日的版本開始，提供檔案服務的計量。|  
@@ -176,7 +176,10 @@ queueClient.SetServiceProperties(serviceProperties);
 >
 
 ## <a name="access-metrics-data-programmatically"></a>以程式設計方式存取計量資料  
-下列清單顯示 C# 程式碼範例，其會針對某個分鐘範圍存取每分鐘計量，並將結果顯示在主控台視窗中。 程式碼範例會使用 Azure 儲存體用戶端程式庫 4.x 版或更高的版本，其中包含可簡化存取儲存體中之計量資料表的 **CloudAnalyticsClient** 類別。  
+下列清單顯示 C# 程式碼範例，其會針對某個分鐘範圍存取每分鐘計量，並將結果顯示在主控台視窗中。 程式碼範例會使用 Azure 儲存體用戶端程式庫 4.x 版或更高的版本，其中包含可簡化存取儲存體中之計量資料表的 **CloudAnalyticsClient** 類別。 
+
+> [!NOTE]
+> **CloudAnalyticsClient**類別未包含在適用于 .Net 的 Azure Blob 儲存體用戶端程式庫 v12 中。 **2023 年8月 31**日儲存體分析計量，也稱為*傳統計量*將會淘汰。 如需詳細資訊，請參閱[官方公告](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/)。 如果您使用傳統計量，建議您在該日期之前轉換成 Azure 監視器的計量。 
 
 ```csharp
 private static void PrintMinuteMetrics(CloudAnalyticsClient analyticsClient, DateTimeOffset startDateTime, DateTimeOffset endDateTime)  

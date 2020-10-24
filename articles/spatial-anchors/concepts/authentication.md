@@ -9,16 +9,16 @@ ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 715e09eaf6ca379261d619fe02ad81a69a519d3e
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 5f59f626d9edbf30f61935c026ac965dbbe946f8
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328533"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516914"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure 空間錨點的驗證和授權
 
-在本文中，您將瞭解可從應用程式或 web 服務向 Azure 空間錨點進行驗證的各種方式。 您也將瞭解如何在 Azure Active Directory (Azure AD) 中使用角色型存取控制的方式，來控制空間錨點帳戶的存取權。
+在本文中，您將瞭解可從應用程式或 web 服務向 Azure 空間錨點進行驗證的各種方式。 您也會瞭解如何使用 Azure 角色型存取控制 (Azure RBAC) Azure Active Directory (Azure AD) 來控制空間錨點帳戶的存取權。
 
 ## <a name="overview"></a>概觀
 
@@ -108,7 +108,7 @@ configuration.AccountKey(LR"(MyAccountKey)");
    1.    移至 Azure 入口網站中的空間錨點資源。
    2.    移至 [ **存取控制] (IAM) ** 索引標籤。
    3.    選取 [新增角色指派]。
-   1.    [選取角色](#role-based-access-control)。
+   1.    [選取角色](#azure-role-based-access-control)。
    2.    在 [ **選取** ] 方塊中，輸入您要指派存取權的使用者、群組和/或應用程式的名稱。
    3.    選取 [儲存]。
 
@@ -182,7 +182,7 @@ Azure AD 存取權杖是透過 [MSAL](../../active-directory/develop/msal-overvi
         1.    移至 Azure 入口網站中的空間錨點資源。
         2.    移至 [ **存取控制] (IAM) ** 索引標籤。
         3.    選取 [新增角色指派]。
-        1.    [選取角色](#role-based-access-control)。
+        1.    [選取角色](#azure-role-based-access-control)。
         2.    在 [ **選取** ] 方塊中，輸入您要指派存取權的應用程式名稱或名稱。 如果您想要讓應用程式的使用者針對空間錨點帳戶使用不同的角色，請在 Azure AD 中註冊多個應用程式，並為每個應用程式指派個別的角色。 然後執行您的授權邏輯，為您的使用者使用正確的角色。
         
               > [!NOTE] 
@@ -262,7 +262,7 @@ configuration.AccessToken(LR"(MyAccessToken)");
 
 ---
 
-## <a name="role-based-access-control"></a>角色型存取控制
+## <a name="azure-role-based-access-control"></a>Azure 角色型存取控制
 
 為了協助您控制授與服務的應用程式、服務或 Azure AD 使用者的存取層級，您可以視需要為您的 Azure 空間錨點帳戶指派這些預先存在的角色：
 

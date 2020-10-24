@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: Zhchia
-ms.openlocfilehash: 164b2915d3085ff765635b10e97f7552df1bf4c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 786e99cec4999eef0af92fe2be18bcf0e48ed379
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91256353"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518988"
 ---
 # <a name="tutorial-configure-miro-for-automatic-user-provisioning"></a>教學課程：設定 Miro 來自動布建使用者
 
@@ -27,7 +27,7 @@ ms.locfileid: "91256353"
 >
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -79,7 +79,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 本節將引導您逐步設定 Azure AD 布建服務，以根據 Azure AD 中的使用者和/或群組指派，在 Miro 中建立、更新及停用使用者和/或群組。
 
 > [!TIP]
-> 您也可以選擇啟用 Miro 的 SAML 型單一登入，請遵循 [Miro 單一登入教學](https://docs.microsoft.com/azure/active-directory/saas-apps/miro-tutorial)課程中提供的指示。 雖然自動使用者佈建和單一登入這兩個功能互相補充，您還是可以將它們分開設定。
+> 您也可以選擇啟用 Miro 的 SAML 型單一登入，請遵循 [Miro 單一登入教學](./miro-tutorial.md)課程中提供的指示。 雖然自動使用者佈建和單一登入這兩個功能互相補充，您還是可以將它們分開設定。
 
 > [!NOTE]
 > 若要深入瞭解 Miro 的 SCIM 端點，請[參閱。](https://help.miro.com/hc/en-us/articles/360036777814)
@@ -94,11 +94,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![應用程式清單中的 Miro 連結](common/all-applications.png)
 
-3. 選取 [佈建] 索引標籤。
+3. 選取 [佈建]  索引標籤。
 
     ![已呼叫 [布建] 選項的 [管理選項] 螢幕擷取畫面。](common/provisioning.png)
 
-4. 將 [佈建模式] 設定為 [自動]。
+4. 將 [佈建模式]  設定為 [自動]  。
 
     ![[布建模式] 下拉式清單的螢幕擷取畫面，其中已呼叫 [自動] 選項。](common/provisioning-automatic.png)
 
@@ -106,17 +106,17 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![租用戶 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
 
-6. 在 [通知電子郵件]**** 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知]**** 核取方塊。
+6. 在 [通知電子郵件]  欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知]  核取方塊。
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 **[儲存]** 。
+7. 按一下 [檔案]  。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Miro**]。
 
     ![Miro 使用者對應](media/miro-provisioning-tutorial/usermappings.png)
 
-9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Miro 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Miro 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
+9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Miro 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Miro 中的使用者帳戶以進行更新作業。 選取 [儲存]  按鈕以認可所有變更。
 
     ![Miro 使用者屬性](media/miro-provisioning-tutorial/userattributes.png)
 
@@ -124,7 +124,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![Miro 群組對應](media/miro-provisioning-tutorial/groupmappings.png)
 
-11. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Miro 的群組屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Miro 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。 取消核取 [**目標物件動作**] 下的 [**建立**] 和 [**刪除**]，因為 Miro SCIM API 不支援建立和刪除群組。
+11. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Miro 的群組屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Miro 中的群組以進行更新作業。 選取 [儲存]  按鈕以認可所有變更。 取消核取 [**目標物件動作**] 下的 [**建立**] 和 [**刪除**]，因為 Miro SCIM API 不支援建立和刪除群組。
 
     ![Miro 群組屬性](media/miro-provisioning-tutorial/groupattributes.png)
 
@@ -138,11 +138,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![佈建範圍](common/provisioning-scope.png)
 
-15. 當您準備好要佈建時，按一下 [儲存]。
+15. 當您準備好要佈建時，按一下 [儲存]  。
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
-此作業會對在 [設定]**** 區段的 [範圍]**** 中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [ **同步處理詳細資料** ] 區段來監視進度，並遵循連結來布建活動報告，該報告描述 Miro 上的 Azure AD 布建服務所執行的所有動作。
+此作業會對在 [設定]  區段的 [範圍]  中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [ **同步處理詳細資料** ] 區段來監視進度，並遵循連結來布建活動報告，該報告描述 Miro 上的 Azure AD 布建服務所執行的所有動作。
 
 如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
 
@@ -158,4 +158,3 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 ## <a name="next-steps"></a>後續步驟
 
 * [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)
-

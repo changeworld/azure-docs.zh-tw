@@ -6,13 +6,14 @@ ms.topic: reference
 author: cynthn
 ms.author: cynthn
 ms.service: virtual-machines
+ms.subservice: security
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 8005b8d804dbe78b98ff0f9d3e86f833c869a406
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 4488d2b851b388dcd37df1f7322f23837a78b5a7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331629"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518665"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-virtual-machines"></a>適用於 Azure 虛擬機器的 Azure 原則內建定義
 

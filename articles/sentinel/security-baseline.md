@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 25571db967608c238bccb1ab44f75a0a163803d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4c6bf8b203f9721436ab3dde1f80837df92234d
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90020278"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518257"
 ---
 # <a name="azure-security-baseline-for-azure-sentinel"></a>適用于 Azure Sentinel 的 Azure 安全性基準
 
@@ -325,7 +325,7 @@ Log Analytics 角色包含 Log Analytics 參與者和 Log Analytics 讀取程式
 
 此外，每個 Sentinel 活頁簿都是 Azure 資源，您可以將角色指派給使用者來管理存取權。
 
-- [如何在 Azure 中設定 RBAC](../role-based-access-control/role-assignments-portal.md)
+- [如何設定 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 - [瞭解自訂角色](../role-based-access-control/custom-roles.md)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 10/19/2020
-ms.openlocfilehash: 96df9610f0da94cfe7d3a82fc8ef72aeb539b2d0
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 343a6c92c9d77b5ef589477802015c6346a95ea9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207697"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520979"
 ---
 # <a name="co-sell-partner-engagement"></a>共同銷售合作夥伴參與
 
@@ -42,7 +42,7 @@ ms.locfileid: "92207697"
 
 下表列出讓 marketplace 供應專案共同銷售準備就緒或共同銷售受到激勵的步驟和需求。 並非所有的商業 marketplace 供應專案類型都可在合作夥伴中心中進行共同銷售。 您可以參考 [合作夥伴中心中的共同銷售選項](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell) ，取得最新資訊。 
 
-|步驟    |供應項目類型    |規格需求    |共同銷售狀態    |
+|步驟    |供應項目類型    |需求    |共同銷售狀態    |
 |----    |-------------    |------------    |---------------   |
 |<ol start=1><li> 在合作夥伴中心中建立帳戶，並在商業 marketplace 中發佈您的供應專案。</li>|全部|<li>供應專案符合商業 marketplace 發佈需求。</li><li>您在合作夥伴中心中有完整的商務設定檔。</li>|未就緒|
 |<ol start=2><li>提交所需的共同銷售教材。</li>|合作夥伴中心中*具有*[共同銷售選項](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-co-sell)的 IP 供應專案|[在合作夥伴中心上傳所需的材質](#how-to-submit-co-sell-materials-in-partner-center)|共同銷售準備就緒|
@@ -79,7 +79,16 @@ ms.locfileid: "92207697"
 
 1. 請先儲存草稿，再繼續進行操作。
 1. 完成供應項目的所有必要區段之後，您可加以提交以檢閱並發佈。 選取右上方的 [ **審核併發布**]。 請參閱供應專案詳細資料，然後選取 [ **發佈**]。
-1. 我們將複習您上傳的資料，並判斷您的供應專案是否符合共同銷售計畫的資格。
+1. 確定您符合您所要 [的共同銷售狀態準則](#co-sell-publishing-steps-and-requirements)之後，請遵循下列指導方針來提名您的供應專案以進行共同銷售：
+    1. **如果您有 Microsoft 合作夥伴經理 (例如，PDM) ：** 與您的合作夥伴經理聯繫以取得協助。 他們將引導您完成共同銷售就緒狀態的提名程式，以及 Azure IP 共同銷售或 Business Applications 共同銷售受到激勵 (（如果適用) ）。
+    
+    1. **如果您沒有 Microsoft 夥伴管理員 (例如，PDM) ：** 透過 [雲端支援中心自行提名 (CED) ](https://aka.ms/cednominate)。 在 [所需的 CED 服務] 下拉式清單中，選取 [變成共同銷售就緒]：
+<ul><ul>
+
+:::image type="content" source="media/co-sell/co-sell-request-review.png" alt-text="此影像顯示 [與 Microsoft 共同銷售] 索引標籤的位置。":::
+
+CED 會與您聯繫，以完成此程式。
+</ul></ul>
 
 ## <a name="next-steps"></a>後續步驟
 

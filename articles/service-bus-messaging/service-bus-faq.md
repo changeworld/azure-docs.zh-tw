@@ -3,12 +3,12 @@ title: Azure 服務匯流排常見問題集 (FAQ) | Microsoft Docs
 description: 本文提供一些常見問題的解答 (常見問題) Azure 服務匯流排。
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: addd629f137c5f638cd32a639f79cdbbafc4a94d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec79b6988fdbc78dc4f45e504f84179e617589cc
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90894521"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518750"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服務匯流排-常見問題 (常見問題) 
 
@@ -83,7 +83,7 @@ Azure 服務匯流排儲存客戶資料。 服務匯流排會自動將此資料�
     > 命令傳回的 IP 位址 `nslookup` 不是靜態 ip 位址。 不過，它會保持不變，直到基礎部署被刪除或移至不同的叢集為止。
 
 ### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>哪裡可以找到用戶端在命名空間中傳送/接收訊息的 IP 位址？ 
-我們不會記錄在您的命名空間中傳送或接收訊息之用戶端的 IP 位址。 重新產生金鑰，如此一來，所有現有的用戶端就無法驗證及檢查角色型存取控制 ([RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)) 設定，以確保只有允許的使用者或應用程式可以存取命名空間。 
+我們不會記錄在您的命名空間中傳送或接收訊息之用戶端的 IP 位址。 重新產生金鑰，如此一來，所有現有的用戶端就無法驗證及審核 [azure 角色型存取控制 (AZURE RBAC) ](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)) 設定，以確保只有允許的使用者或應用程式可以存取命名空間。 
 
 如果您使用 **premium** 命名空間，請使用 [IP 篩選](service-bus-ip-filtering.md)、 [虛擬網路服務端點](service-bus-service-endpoints.md)和 [私人端點](private-link-service.md) 來限制對命名空間的存取。 
 
@@ -113,7 +113,7 @@ Azure 服務匯流排儲存客戶資料。 服務匯流排會自動將此資料�
 指定的 Azure 區域內的任何資料傳輸都是免費提供，以及任何輸入的資料傳輸。 區域外部的資料傳送需要出口流量費用，可以在[這裡](https://azure.microsoft.com/pricing/details/bandwidth/)找到。
 
 ### <a name="does-service-bus-charge-for-storage"></a>服務匯流排是否會收取儲存體費用？
-否。 服務匯流排不會收取儲存體費用。 不過，配額會限制每個佇列/主題可保存的最大資料量。 請參閱下一個常見問題。
+不可以。 服務匯流排不會收取儲存體費用。 不過，配額會限制每個佇列/主題可保存的最大資料量。 請參閱下一個常見問題。
 
 ### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>我有服務匯流排標準命名空間。 為什麼我會在資源群組 ' $system ' 下看見費用？
 Azure 服務匯流排最近升級計費元件。 由於這項變更，如果您有服務匯流排標準命名空間，您可能會在資源群組 ' $system ' 下看到資源 '/subscriptions/<azure_subscription_id>/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system ' 的明細專案。

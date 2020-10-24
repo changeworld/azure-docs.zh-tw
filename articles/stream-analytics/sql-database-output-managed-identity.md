@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 26644d42e0e51d59c6c28daaba5447a65a43b6a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b5c106c1464ec6d77305b1985cc8dbd51e2b4db
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460636"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519472"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>使用受控識別從 Azure 串流分析作業 (預覽) 存取 Azure SQL Database
 
@@ -60,7 +60,7 @@ Azure 串流分析支援 Azure SQL Database 輸出接收的[受控識別驗證](
 
    ![新增 Active Directory 管理員](./media/sql-db-output-managed-identity/add-admin.png)
 
-   [Active Directory 系統管理員] 頁面會顯示您 Active Directory 的所有成員和群組。 無法選取灰色的使用者或群組，因為這些使用者或群組不受 Azure Active Directory 系統管理員的支援。 請參閱 **Azure Active Directory Features and Limitations**    [使用 Azure Active Directory 驗證 SQL Database 或 Azure Synapse 的驗證](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)Azure Active Directory 功能和限制一節中支援的系統管理員清單。 以角色為基礎的存取控制 (RBAC) 只會套用至入口網站，並且不會傳播至 SQL Server。 此外，選取的使用者或群組就是在下一節中能夠建立**自主資料庫使用者**的使用者。
+   [Active Directory 系統管理員] 頁面會顯示您 Active Directory 的所有成員和群組。 無法選取灰色的使用者或群組，因為這些使用者或群組不受 Azure Active Directory 系統管理員的支援。 請參閱 **Azure Active Directory Features and Limitations**    [使用 Azure Active Directory 驗證 SQL Database 或 Azure Synapse 的驗證](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)Azure Active Directory 功能和限制一節中支援的系統管理員清單。 Azure 角色型存取控制 (Azure RBAC) 只適用于入口網站，不會傳播至 SQL Server。 此外，選取的使用者或群組就是在下一節中能夠建立**自主資料庫使用者**的使用者。
 
 1. 在 [Active Directory 管理員] 頁面上選取 [儲存]。 變更管理員的程序需要幾分鐘的時間。
 

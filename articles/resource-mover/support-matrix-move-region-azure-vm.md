@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: d71181c5f45ab63febae7288f07189dc52ea12fd
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 4ee442d1983e4f7c1825690e1c780454272971aa
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945908"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521300"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>支援在 Azure 區域之間移動 Azure Vm
 
@@ -107,7 +107,7 @@ Microsoft)  (發佈的 Azure 資源庫影像 | 支援 | 只要 VM 在支援的�
 協力廠商)  (發佈的 Azure 資源庫影像  | 支援 | 只要 VM 在支援的作業系統上執行即支援。
 協力廠商)  (發佈的自訂映射| 支援 | 只要 VM 在支援的作業系統上執行即支援。
 使用 Site Recovery 的 Vm | 不支援 | 使用後端上的 Site Recovery，跨區域為 Vm 移動資源。 如果您已經在使用 Site Recovery，請停用複寫，然後開始準備程式。
-RBAC 原則 | 不支援 | 在 Vm 上 (RBAC) 原則的角色型存取控制不會複製到目的地區域中的 VM。
+Azure RBAC 原則 | 不支援 | Azure 角色型存取控制 (Vm 上的 Azure RBAC) 原則不會複製到目的地區域中的 VM。
 延伸模組 | 不支援 | 延伸模組不會複製到目的地區域中的 VM。 在移動完成之後，手動安裝這些專案。
 
 

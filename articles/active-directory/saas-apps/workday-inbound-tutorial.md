@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 53132cc21b8298f951f2daa979ed433103ad0ac0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e22252ea3e132aee39075d986d7f5a979e14c0a3
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541283"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520229"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教學課程：設定 Workday 來自動佈建使用者
 
@@ -258,7 +258,7 @@ ms.locfileid: "91541283"
 > 如果您想要將布建代理程式限制為只基於測試目的而從特定 OU 建立和讀取使用者，建議您在測試執行期間，于適當的 OU 層級委派控制項。
 
 4. 按一下 [歡迎使用] 畫面上的 **[下一步]** 。 
-5. 在 [ **選取使用者或群組** ] 畫面上，新增您在步驟2中建立的網域使用者。 按一下 [下一步]。
+5. 在 [ **選取使用者或群組** ] 畫面上，新增您在步驟2中建立的網域使用者。 按 [下一步]  。
    >[!div class="mx-imgBorder"]
    >![新增畫面](./media/workday-inbound-tutorial/delegation-wizard-01.png "新增畫面")
 
@@ -311,7 +311,7 @@ ms.locfileid: "91541283"
 若要佈建至內部部署的 Active Directory，必須在具有 .NET 4.7.1+ Framework 且可存取所需 Active Directory 網域的伺服器上，安裝佈建代理程式。
 
 > [!TIP]
-> 您可以使用[這裡](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)提供的指示，檢查您伺服器上的 .NET Framework 版本。
+> 您可以使用[這裡](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)提供的指示，檢查您伺服器上的 .NET Framework 版本。
 > 如果伺服器未安裝 .NET 4.7.1 或更新版本，您可以從[這裡](https://support.microsoft.com/help/4033342/the-net-framework-4-7-1-offline-installer-for-windows)下載。  
 
 將下載的代理程式安裝程式傳輸到伺服器主機，並遵循下面提供的步驟來完成代理程式設定。
@@ -410,7 +410,7 @@ ms.locfileid: "91541283"
    * **通知電子郵件** – 輸入您的電子郵件地址，然後勾選 [發生失敗時傳送電子郵件] 核取方塊。
 
      > [!NOTE]
-     > 如果佈建作業進入[隔離](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)狀態，Azure AD 佈建服務會傳送電子郵件通知。
+     > 如果佈建作業進入[隔離](../app-provisioning/application-provisioning-quarantine-status.md)狀態，Azure AD 佈建服務會傳送電子郵件通知。
 
    * 按一下 [測試連線] 按鈕。 如果連線測試成功，請按一下頂端的 [儲存] 按鈕。 如果失敗，請仔細檢查代理程式上設定的 Workday 認證和 AD 認證是否有效。
 
@@ -594,7 +594,7 @@ ms.locfileid: "91541283"
 
 #### <a name="does-the-solution-support-assigning-on-premises-ad-groups-to-the-user"></a>解決方案是否支援將內部部署 AD 群組指派給使用者？
 
-目前不支援此功能。 建議的因應措施是部署 PowerShell 指令碼，以查詢 Microsoft Graph API 端點的[稽核記錄資料](https://docs.microsoft.com/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-beta)，然後使用該資料來觸發情節，例如群組指派。 此 PowerShell 指令碼可以連結至工作排程器，並部署在執行佈建代理程式的相同主機上。  
+目前不支援此功能。 建議的因應措施是部署 PowerShell 指令碼，以查詢 Microsoft Graph API 端點的[稽核記錄資料](/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-beta)，然後使用該資料來觸發情節，例如群組指派。 此 PowerShell 指令碼可以連結至工作排程器，並部署在執行佈建代理程式的相同主機上。  
 
 #### <a name="which-workday-apis-does-the-solution-use-to-query-and-update-workday-worker-profiles"></a>解決方案使用哪些 Workday API 來查詢和更新 Workday 人員設定檔？
 
@@ -679,7 +679,7 @@ ms.locfileid: "91541283"
 
 #### <a name="how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent"></a>如何確保佈建代理程式能夠與 Azure AD 租用戶進行通訊，而沒有任何防火牆封鎖代理程式所需的連接埠？
 
-您也可以檢查是否已開啟所有 [必要的埠](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#open-ports) 。
+您也可以檢查是否已開啟所有 [必要的埠](../manage-apps/application-proxy-add-on-premises-application.md#open-ports) 。
 
 #### <a name="can-one-provisioning-agent-be-configured-to-provision-multiple-ad-domains"></a>是否可以設定讓一個佈建代理程式佈建多個 AD 網域？
 
@@ -1157,4 +1157,4 @@ Azure AD 佈建服務會歸類到 GDPR 分類的**資料處理器**類別。 作
 * [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)
 * [了解如何設定 Workday 與 Azure Active Directory 之間的單一登入](workday-tutorial.md)
 * [了解如何將其他 SaaS 應用程式與 Azure Active Directory 整合](tutorial-list.md)
-* [了解如何使用 Microsoft Graph API 來管理佈建設定](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) \(英文\)
+* [了解如何使用 Microsoft Graph API 來管理佈建設定](/graph/api/resources/synchronization-overview) \(英文\)

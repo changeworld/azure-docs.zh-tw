@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 770ded494f050631cd1c373f4b3fa5846c65e01a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b877ff912470cc19082410fddab64c84824eb269
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275127"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519549"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>使用受控識別來設定與 Azure 儲存體帳戶的連線
 
@@ -30,7 +30,7 @@ ms.locfileid: "91275127"
 
 ### <a name="1---turn-on-system-assigned-managed-identity"></a>1 - 開啟系統指派的受控識別
 
-當系統指派的受控識別啟用時，Azure 會為您的搜尋服務建立身分識別，以便用來向相同租用戶和訂用帳戶內的其他 Azure 服務進行驗證。 接著，您可以在角色型存取控制 (RBAC) 指派中使用此身分識別，以允許在編制索引期間存取資料。
+當系統指派的受控識別啟用時，Azure 會為您的搜尋服務建立身分識別，以便用來向相同租用戶和訂用帳戶內的其他 Azure 服務進行驗證。 然後，您可以在 Azure 角色型存取控制中使用此身分識別， (Azure RBAC) 指派，在編制索引期間允許存取資料。
 
 ![開啟系統指派的受控識別](./media/search-managed-identities/turn-on-system-assigned-identity.png "開啟系統指派的受控識別")
 

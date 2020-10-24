@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 52c18f8d51f18b9bc167a99fbafda2365824dfc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5858e785b2105d8357ebd478699e2d17768fc25f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91312068"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519719"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>教學課程：設定 Zscaler 來自動布建使用者
 
 本教學課程的目的是要示範在 Zscaler 中執行的步驟，以及 Azure Active Directory (Azure AD) 將 Azure AD 設定為自動布建和解除布建使用者和/或群組至 Zscaler。
 
 > [!NOTE]
-> 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../active-directory-saas-app-provisioning.md)。
+> 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 >
 
 ## <a name="prerequisites"></a>必要條件
@@ -65,7 +65,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 在設定並啟用自動使用者布建之前，您應該決定 Azure AD 中的哪些使用者和/或群組需要存取 Zscaler。 一旦決定後，您可以遵循此處的指示，將這些使用者和/或群組指派給 Zscaler：
 
-* [將使用者或群組指派給企業應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+* [將使用者或群組指派給企業應用程式](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-zscaler"></a>將使用者指派給 Zscaler 的重要秘訣
 
@@ -90,11 +90,11 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![應用程式清單中的 Zscaler 連結](common/all-applications.png)
 
-3. 選取 [佈建] 索引標籤。
+3. 選取 [佈建]  索引標籤。
 
     ![已反白顯示布建選項的 [Zscaler-布建企業應用程式] 提要欄位螢幕擷取畫面。](./media/zscaler-provisioning-tutorial/provisioning-tab.png)
 
-4. 將 [佈建模式] 設定為 [自動]。
+4. 將 [佈建模式]  設定為 [自動]  。
 
     ![布建模式設定為 [自動] 的 [布建] 頁面螢幕擷取畫面。](./media/zscaler-provisioning-tutorial/provisioning-credentials.png)
 
@@ -124,7 +124,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![反白顯示 [同步處理 Azure Active Directory 使用者至 Zscaler] 選項的 [對應] 區段螢幕擷取畫面。](./media/zscaler-provisioning-tutorial/user-mappings.png)
 
-11. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Zscaler 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Zscaler 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
+11. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Zscaler 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Zscaler 中的使用者帳戶以進行更新作業。 選取 [儲存]  按鈕以認可所有變更。
 
     ![[屬性對應] 區段的螢幕擷取畫面，其中顯示七個對應。](./media/zscaler-provisioning-tutorial/user-attribute-mappings.png)
 
@@ -132,11 +132,11 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![醒目提示 [同步處理 Azure Active Directory 群組至 Zscaler] 選項的 [對應] 區段螢幕擷取畫面。](./media/zscaler-provisioning-tutorial/group-mappings.png)
 
-13. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Zscaler 的群組屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Zscaler 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
+13. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Zscaler 的群組屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 Zscaler 中的群組以進行更新作業。 選取 [儲存]  按鈕以認可所有變更。
 
     ![[屬性對應] 區段的螢幕擷取畫面，其中顯示三個對應。](./media/zscaler-provisioning-tutorial/group-attribute-mappings.png)
 
-14. 若要設定範圍篩選，請參閱[範圍篩選教學課程](./../active-directory-saas-scoping-filters.md)中提供的下列指示。
+14. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
 15. 若要啟用 Zscaler Azure AD 的布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
 
@@ -146,13 +146,13 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![醒目提示 [僅同步已指派的使用者和群組] 選項之 [領域] 設定的螢幕擷取畫面。](./media/zscaler-provisioning-tutorial/scoping.png)
 
-17. 當您準備好要佈建時，按一下 [儲存]。
+17. 當您準備好要佈建時，按一下 [儲存]  。
 
     ![[Zscaler-布建企業應用程式] 提要欄位的螢幕擷取畫面，其中已呼叫 [儲存] 選項。](./media/zscaler-provisioning-tutorial/save-provisioning.png)
 
-此作業會對在 [設定]**** 區段的 [範圍]**** 中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [ **同步處理詳細資料** ] 區段來監視進度，並遵循連結來布建活動報告，該報告描述 Zscaler 上的 Azure AD 布建服務所執行的所有動作。
+此作業會對在 [設定]  區段的 [範圍]  中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [ **同步處理詳細資料** ] 區段來監視進度，並遵循連結來布建活動報告，該報告描述 Zscaler 上的 Azure AD 布建服務所執行的所有動作。
 
-如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../active-directory-saas-provisioning-reporting.md)。
+如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -161,7 +161,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解如何針對佈建活動檢閱記錄和取得報告](../active-directory-saas-provisioning-reporting.md)
+* [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/zscaler-provisioning-tutorial/tutorial-general-01.png

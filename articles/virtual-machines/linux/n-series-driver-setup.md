@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: c0f05bd9ebd100956cfb7b2b6188e18616368dd0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 9b6e752f8352db565239aba4a990752b1c397f5f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168472"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517254"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在執行 Linux 的 N 系列 VM 上安裝 NVIDIA GPU 驅動程式
 
@@ -161,6 +161,23 @@ sudo reboot
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
 * **CentOS 型 7.4 HPC** - 已在 VM 上安裝 RDMA 驅動程式和 Intel MPI 5.1。
+
+* 以**CentOS 為基礎的 hpc** -CENTOS-hpc 7.6 和更新版本的 (，適用于透過 sr-iov) 支援不受支援的 sku。 這些映射已預先安裝了 Mellanox OFED 和 MPI 程式庫。
+
+> [!NOTE]
+> 只有 LTS 版本的 Mellanox OFED 才支援 CX3-Pro 卡。 在具有 ConnectX3-Pro 卡片的 N 系列 Vm 上使用 LTS Mellanox OFED 版本 (4.9-0.1.7.0) 。 如需詳細資訊，請參閱 [Linux 驅動程式](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed)。
+>
+> 此外，某些最新的 Azure Marketplace HPC 映射具有 Mellanox OFED 5.1 及更新版本，因此不支援 ConnectX3-Pro 卡。 先檢查 HPC 映射中的 Mellanox OFED 版本，再將其用於具有 ConnectX3-Pro 卡的 Vm。
+>
+> 以下影像是支援 ConnectX3-Pro 卡的最新 CentOS HPC 映射：
+>
+> - OpenLogic： CentOS-HPC：7.6：7.6.2020062900
+> - OpenLogic： CentOS-HPC：7_6gen2：7.6.2020062901
+> - OpenLogic： CentOS-HPC：7.7：7.7.2020062600
+> - OpenLogic： CentOS-HPC： 7_7-gen2：7.7.2020062601
+> - OpenLogic： CentOS-HPC：8_1：8.1.2020062400
+> - OpenLogic： CentOS-HPC： 8_1-gen2：8.1.2020062401
+>
 
 ## <a name="install-grid-drivers-on-nv-or-nvv3-series-vms"></a>在 NV 或 NVv3 系列 VM 上安裝 GRID 驅動程式
 
