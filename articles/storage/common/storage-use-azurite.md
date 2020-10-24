@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f18746242ef9f680f44be1fd614c6c769289aadb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5051a5e29f9e34c43963a9a264ee47e2ad7b04a
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331568"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490776"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>使用 Azurite 模擬器進行本機 Azure 儲存體開發
 
@@ -282,7 +282,7 @@ azurite --version
 
 ### <a name="certificate-configuration-https"></a>憑證設定 (HTTPS) 
 
-**選用** -根據預設，Azurite 會使用 HTTP 通訊協定。 提供隱私權增強郵件 ( pem) 或[個人資訊交換 ( .pfx) ](https://docs.microsoft.com/windows-hardware/drivers/install/personal-information-exchange---pfx--files)憑證檔案的路徑，以啟用 HTTPS 模式。 `--cert`
+**選用** -根據預設，Azurite 會使用 HTTP 通訊協定。 提供隱私權增強郵件 ( pem) 或[個人資訊交換 ( .pfx) ](/windows-hardware/drivers/install/personal-information-exchange---pfx--files)憑證檔案的路徑，以啟用 HTTPS 模式。 `--cert`
 
 當 `--cert` 提供 PEM 檔案的時，您必須提供對應的 `--key` 參數。
 

@@ -7,12 +7,12 @@ ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
 ms.custom: devx-track-python, devx-track-java, contperfq1
-ms.openlocfilehash: 068b316eaa92a1e781df0b9945133a26fa0b88a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f747cc6405cef07510766bcfa4c826aec9d9857b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445278"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490402"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>匯出 Azure Cosmos DB 模擬器憑證以與 JAVA、Python 和 Node.js 應用程式搭配使用
 
@@ -42,7 +42,7 @@ Azure Cosmos DB 模擬器提供了一個模擬 Azure Cosmos DB 服務的本機�
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 1":::
 
-1. 按一下 [下一步]。
+1. 按 [下一步]  。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 1":::
 
@@ -66,7 +66,7 @@ Azure Cosmos DB 模擬器提供了一個模擬 Azure Cosmos DB 服務的本機�
 
 執行 JAVA 應用程式或使用以 JAVA 為基礎的用戶端應用程式時，將憑證安裝到 JAVA 預設憑證存放區比傳遞 `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` 旗標更容易。 例如，包含的 JAVA 示範應用程式 (`https://localhost:8081/_explorer/index.html`) 取決於預設的憑證存放區。
 
-遵循將 [憑證新增至 JAVA 憑證存放區](https://docs.microsoft.com/azure/java-add-certificate-ca-store) 中的指示，將 x.509 憑證匯入至預設的 java 憑證存放區。 請記住，當您執行 keytool 時，將會在 *% JAVA_HOME%* 目錄中工作。 將憑證匯入憑證存放區之後，適用于 MongoDB 的 SQL 和 Azure Cosmos DB 的 API 用戶端將能夠連線至 Azure Cosmos 模擬器。
+遵循將 [憑證新增至 JAVA 憑證存放區](/azure/developer/java/sdk/java-sdk-add-certificate-ca-store) 中的指示，將 x.509 憑證匯入至預設的 java 憑證存放區。 請記住，當您執行 keytool 時，將會在 *% JAVA_HOME%* 目錄中工作。 將憑證匯入憑證存放區之後，適用于 MongoDB 的 SQL 和 Azure Cosmos DB 的 API 用戶端將能夠連線至 Azure Cosmos 模擬器。
 
 或者，您可以執行下列 bash 腳本來匯入憑證：
 
@@ -106,4 +106,3 @@ sudo $JAVA_HOME/bin/keytool -cacerts -importcert -alias cosmos_emulator -file $E
 
 * [使用命令列參數和 PowerShell 命令來控制模擬器](emulator-command-line-parameters.md)
 * [模擬器的偵錯工具問題](troubleshoot-local-emulator.md)
-

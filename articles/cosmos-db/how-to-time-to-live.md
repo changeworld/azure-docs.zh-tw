@@ -7,18 +7,18 @@ ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 56cf360dd8d015d797b4974aab667bb89edcce4b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 340ec7c16c5ed3e477cc2c4505c8b018d2d39a06
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951922"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485999"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中設定存留時間
 
 在 Azure Cosmos DB 中，您可以選擇在容器層級設定存留時間 (TTL)，也可以在為容器設定後於項目層級加以覆寫。 您可以使用 Azure 入口網站或語言專屬 SDK，來為容器設定 TTL。 項目層級的 TTL 覆寫可使用 SDK 來加以設定。
 
-> 此內容與 Azure Cosmos DB 的交易式存放區 TTL 相關。 如果您要尋找 analitycal store TTL，可透過 [Azure Synapse 連結](https://docs.microsoft.com/azure/cosmos-db/synapse-link)啟用 NoETL HTAP 案例，請按一下 [這裡](https://docs.microsoft.com/azure/cosmos-db/analytical-store-introduction#analytical-ttl)。
+> 此內容與 Azure Cosmos DB 的交易式存放區 TTL 相關。 如果您要尋找 analitycal store TTL，可透過 [Azure Synapse 連結](./synapse-link.md)啟用 NoETL HTAP 案例，請按一下 [這裡](./analytical-store-introduction.md#analytical-ttl)。
 
 ## <a name="enable-time-to-live-on-a-container-using-azure-portal"></a>使用 Azure 入口網站在容器上啟用存留時間
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/15/2020
-ms.openlocfilehash: 3de7101eb998d0f9b3b57afba6d19595738cbb63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddb14c321962c65d09be420d8da15f1e547aa282
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020400"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489535"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>使用 HDInsight .NET SDK 執行 MapReduce 作業
 
@@ -174,5 +174,5 @@ HDInsight .NET SDK 提供 .NET 用戶端程式庫，可讓您更輕鬆地從 .NE
 * 對於提交 Hive 作業，請參閱[使用 HDInsight.NET SDK 執行 Apache Hive 查詢](apache-hadoop-use-hive-dotnet-sdk.md)。
 * 如需建立 HDInsight 叢集，請參閱[在 HDInsight 中建立 Linux 型 Apache Hadoop 叢集](../hdinsight-hadoop-provision-linux-clusters.md)。
 * 如需管理 HDInsight 叢集，請參閱[在 HDInsight 中管理 Apache Hadoop 叢集](../hdinsight-administer-use-portal-linux.md)。
-* 如需了解 HDInsight .NET SDK，請參閱 [HDInsight .NET SDK 參考](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)。
+* 如需了解 HDInsight .NET SDK，請參閱 [HDInsight .NET SDK 參考](/dotnet/api/overview/azure/hdinsight)。
 * 若要向 Azure 進行非互動式驗證，請參閱[建立非互動式驗證 .NET HDInsight 應用程式](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)。

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: 10713b264429b5588826421231e45194ebed33f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9a29a34b25b6834c2c343bd568f3dd3548ceff3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569187"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474932"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB 中的角色型存取控制
 
@@ -21,7 +21,7 @@ Azure Cosmos DB 針對 Azure Cosmos DB 中常見的管理案例，提供內建�
 
 以下是 Azure Cosmos DB 支援的內建角色：
 
-|**內建角色**  |**說明**  |
+|**內建角色**  |**描述**  |
 |---------|---------|
 |[DocumentDB 帳戶參與者](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|可以管理 Azure Cosmos DB 帳戶。|
 |[Cosmos DB 帳戶讀取者](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|可以讀取 Azure Cosmos DB 帳戶資料。|
@@ -67,7 +67,7 @@ Azure 入口網站中的 **存取控制 (IAM) ** 窗格可用來設定 Azure Cos
 
 - 修改預存程式、觸發程式或使用者定義函數。
 
-如果您的應用程式 (或使用者透過 Azure 入口網站) 執行上述任何一項動作，就必須將它們遷移至透過 [ARM 範本](manage-sql-with-resource-manager.md)、 [PowerShell](manage-with-powershell.md)、 [Azure CLI](manage-with-cli.md)、REST 或 [Azure 管理程式庫](https://github.com/Azure-Samples/cosmos-management-net)來執行。 請注意，Azure 管理提供 [多種語言](https://docs.microsoft.com/azure/?product=featured#languages-and-tools)。
+如果您的應用程式 (或使用者透過 Azure 入口網站) 執行上述任何一項動作，就必須將它們遷移至透過 [ARM 範本](./manage-with-templates.md)、 [PowerShell](manage-with-powershell.md)、 [Azure CLI](manage-with-cli.md)、REST 或 [Azure 管理程式庫](https://github.com/Azure-Samples/cosmos-management-net)來執行。 請注意，Azure 管理提供 [多種語言](/azure/?product=featured#languages-and-tools)。
 
 ### <a name="set-via-arm-template"></a>透過 ARM 範本設定
 

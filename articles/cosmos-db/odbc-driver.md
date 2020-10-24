@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: 1bda235e5f3f867762457d0dc8214bbadc88059e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7f9573769beb5bf1f6ebe47e6e0a277185ac42b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87084818"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488413"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>使用 BI 分析工具搭配 ODBC 驅動程式連線到 Azure Cosmos DB
 
@@ -120,7 +120,7 @@ Azure Cosmos DB 是無結構描述的資料庫，可以快速開發應用程式�
 
     例如，如果您包含「City」的**屬性**值，而您想要限制資料表只包含含有「New York」和「Dubai」之城市值的資料列，可在 [屬性] 方塊中輸入「City」，而在 [值]**** 方塊中輸入「New York」和「Dubai」。
 
-1. 按一下 [確定]  。 
+1. 按一下 [確定]。 
 
 1. 完成您想要取樣之容器的對應定義之後，請在 [ **架構編輯器** ] 視窗中，按一下 [ **範例**]。
      針對每個資料行，您可以修改資料行「SQL 名稱」、「SQL 類型」、「SQL 長度」(如果適用的話)、「小數位數」(如果適用的話)、「精確度」(如果適用的話)，以及「可為 Null」。
@@ -137,7 +137,7 @@ Azure Cosmos DB 是無結構描述的資料庫，可以快速開發應用程式�
 
 1. 如[步驟 2](#connect) 所述，建立系統資料來源，例如命名為 `SDS Name`。
 
-1. [安裝 SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 並連線至伺服器。 
+1. [安裝 SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) 並連線至伺服器。 
 
 1. 在 SSMS 查詢編輯器中，使用下列命令為資料來源建立連結的伺服器物件 `DEMOCOSMOS`。 將 `DEMOCOSMOS` 取代成所連結伺服器的名稱，並將 `SDS Name` 取代成系統資料來源的名稱。
 
@@ -195,7 +195,7 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
 1. 按一下 [新增]****，輸入檢視的名稱 (例如 EmployeesfromSeattleView)，然後按一下 [確定]****。
 
-1. 在 [編輯檢視]**** 視窗中，輸入 Azure Cosmos DB 查詢。 這必須是 [Azure Cosmos DB SQL 查詢](how-to-sql-query.md) (例如 `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"`)，然後按一下 [確定]****。
+1. 在 [編輯檢視]**** 視窗中，輸入 Azure Cosmos DB 查詢。 這必須是 [Azure Cosmos DB SQL 查詢](./sql-query-getting-started.md) (例如 `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"`)，然後按一下 [確定]****。
 
     :::image type="content" source="./media/odbc-driver/odbc-driver-create-view-2.png" alt-text="Azure Cosmos DB ODBC 資料來源管理員":::
 
@@ -241,6 +241,6 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 ```
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解 Azure Cosmos DB，請參閱[歡迎使用 Azure Cosmos DB](introduction.md)。

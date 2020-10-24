@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: jasonh
-ms.openlocfilehash: 841d2bcc50b62554fac8643048a3b3534e82dfa3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d34c91cab157fcd51d58521d739fcb081fe03ea
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408227"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490589"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>如何使用執行設定檔步驟來評估您的 Gremlin 查詢
 
@@ -155,7 +155,7 @@ ExecutionProfile ( # A1 函數的回應會產生具有下列結構的 JSON 物�
     - `storeOps.count`：表示此儲存體作業傳回的結果數目。
     - `storeOps.size`：表示給定儲存體作業結果的大小（以位元組為單位）。
 
-Cosmos DB Gremlin 執行時間運算子|描述
+Cosmos DB Gremlin 執行時間運算子|說明
 ---|---
 `GetVertices`| 此步驟會從持續性層取得一組前提的物件。 
 `GetEdges`| 此步驟會取得與一組頂點連續的邊緣。 此步驟可能會導致一或多個儲存體作業。
@@ -220,8 +220,8 @@ Cosmos DB Gremlin 執行時間運算子|描述
 
 您可以從它進行下列結論：
 - 此查詢是單一識別碼查閱，因為 Gremlin 語句會遵循此模式 `g.V('id')` 。
-- 從計量中判斷出 `time` ，此查詢的延遲似乎很高，因為它的 [單一點讀取作業10毫秒超過](https://docs.microsoft.com/azure/cosmos-db/introduction#guaranteed-low-latency-at-99th-percentile-worldwide)此值。
-- 如果要查看 `storeOps` 物件，我們可以看到 `fanoutFactor` ，這表示這項作業 `5` 已存取 [5 個](https://docs.microsoft.com/azure/cosmos-db/partition-data) 資料分割。
+- 從計量中判斷出 `time` ，此查詢的延遲似乎很高，因為它的 [單一點讀取作業10毫秒超過](./introduction.md#guaranteed-low-latency-at-99th-percentile-worldwide)此值。
+- 如果要查看 `storeOps` 物件，我們可以看到 `fanoutFactor` ，這表示這項作業 `5` 已存取 [5 個](./partitioning-overview.md) 資料分割。
 
 在這項分析結束時，我們可以判斷第一個查詢所存取的資料分割是否比所需的還多。 將查詢中的分割索引鍵指定為述詞，即可解決此問題。 這會導致較低的延遲，而且每個查詢的成本較低。 深入了解[圖表分割](graph-partitioning.md)。 更理想的查詢就是 `g.V('tt0093640').has('partitionKey', 't1001')` 。
 

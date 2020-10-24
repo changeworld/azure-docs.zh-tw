@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: vitrinh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 787c39681d0e9aff25d205c7b195be00b8c0bc9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff66c2cb355e2070cdf30444c52d1accacac8964
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020009"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490436"
 ---
 # <a name="convert-session-token-formats-in-net-sdk"></a>在 .NET SDK 中轉換會話權杖格式
 
@@ -111,6 +111,6 @@ else
 請閱讀下列文章：
 
 * [使用工作階段權杖在 Azure Cosmos DB 中管理一致性](how-to-manage-consistency.md#utilize-session-tokens)
-* [在 Azure Cosmos DB 中選擇正確的一致性層級](consistency-levels-choosing.md)
-* [Azure Cosmos DB 中的一致性、可用性和效能權衡取捨](consistency-levels-tradeoffs.md)
-* [各種一致性層級的可用性和效能權衡取捨](consistency-levels-tradeoffs.md)
+* [在 Azure Cosmos DB 中選擇正確的一致性層級](./consistency-levels.md)
+* [Azure Cosmos DB 中的一致性、可用性和效能權衡取捨](./consistency-levels.md)
+* [各種一致性層級的可用性和效能權衡取捨](./consistency-levels.md)

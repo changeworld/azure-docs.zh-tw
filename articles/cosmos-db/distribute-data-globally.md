@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 5ea5ee2dfe89b36fce78c369100224718eb5864f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ddb6bc297a32be856172707a220fe1dfaefb9f6d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278775"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487444"
 ---
 # <a name="distribute-your-data-globally-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 來全域散發資料
 
@@ -55,7 +55,6 @@ Azure Cosmos DB 是一個全域散發的資料庫服務，旨在提供低延遲�
 * [從您的 Azure Cosmos 帳戶新增或移除區域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [建立 SQL API 帳戶的自訂衝突解決原則](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)
 * [Cosmos DB 中的可程式化一致性模型](consistency-levels.md)
-* [為應用程式選擇正確的一致性層級](consistency-levels-choosing.md)
-* [Azure Cosmos DB API 間的一致性層級](consistency-levels-across-apis.md)
-* [各種一致性層級的可用性和效能權衡取捨](consistency-levels-tradeoffs.md)
-
+* [為應用程式選擇正確的一致性層級](./consistency-levels.md)
+* [Azure Cosmos DB API 間的一致性層級](./consistency-levels.md)
+* [各種一致性層級的可用性和效能權衡取捨](./consistency-levels.md)

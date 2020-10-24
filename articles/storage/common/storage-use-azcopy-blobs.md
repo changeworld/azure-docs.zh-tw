@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 7ff8f3d18564140b4654b1591eec5c0e1f40b7cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24c850b9a5302fd0ac684df6e6f1cc319118a75d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077903"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488515"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>使用 AzCopy 和 Blob 儲存體傳輸資料
 
@@ -31,7 +31,7 @@ AzCopy 是一種命令列公用程式，可讓您用來在儲存體帳戶之間�
 >
 > 如果您想要使用 SAS 權杖來授與 blob 資料的存取權，您可以將該權杖附加至每個 AzCopy 命令中的資源 URL。
 >
-> 例如： `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'` 。
+> 例如：`'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`。
 
 ## <a name="create-a-container"></a>建立容器
 
@@ -60,7 +60,7 @@ AzCopy 是一種命令列公用程式，可讓您用來在儲存體帳戶之間�
 > [!TIP]
 > 您可以使用選擇性旗標來調整上傳作業。 以下是一些範例。
 >
-> |狀況|旗標|
+> |案例|旗標|
 > |---|---|
 > |以附加 Blob 或分頁 Blob 的形式上傳檔案。|**--blob 類型** = \[BlockBlob \| PageBlob \| AppendBlob\]|
 > |上傳至特定存取層 (例如封存層)。|**--區塊-blob 層** = \[無 \| 熱 \| 冷 \| 封存\]|
@@ -168,7 +168,7 @@ AzCopy 是一種命令列公用程式，可讓您用來在儲存體帳戶之間�
 > [!TIP]
 > 您可以使用選擇性旗標來調整您的下載作業。 以下是一些範例。
 >
-> |狀況|旗標|
+> |案例|旗標|
 > |---|---|
 > |自動解壓縮檔案。|**--解壓縮**|
 > |指定您希望複製相關記錄專案的詳細程度。|**--記錄層級** = \[警告 \| 錯誤 \| 資訊 \| 無\]|
@@ -282,7 +282,7 @@ AzCopy 是一種命令列公用程式，可讓您用來在儲存體帳戶之間�
 
 您可以使用 AzCopy 將Bblob 複製到其他儲存體帳戶。 複製作業是同步的，因此當命令傳回時，表示已複製所有檔案。 
 
-AzCopy 會使用 [伺服器對伺服器](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) [api](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)，因此會直接在儲存體伺服器之間複製資料。 這些複製作業不會使用您電腦的網路頻寬。 您可以藉由設定環境變數的值，來增加這些作業的輸送量 `AZCOPY_CONCURRENCY_VALUE` 。 若要深入瞭解，請參閱 [優化輸送量](storage-use-azcopy-configure.md#optimize-throughput)。
+AzCopy 會使用 [伺服器對伺服器](/rest/api/storageservices/put-block-from-url) [api](/rest/api/storageservices/put-page-from-url)，因此會直接在儲存體伺服器之間複製資料。 這些複製作業不會使用您電腦的網路頻寬。 您可以藉由設定環境變數的值，來增加這些作業的輸送量 `AZCOPY_CONCURRENCY_VALUE` 。 若要深入瞭解，請參閱 [優化輸送量](storage-use-azcopy-configure.md#optimize-throughput)。
 
 > [!NOTE]
 > 此案例在目前的版本中有下列限制。
@@ -303,7 +303,7 @@ AzCopy 會使用 [伺服器對伺服器](https://docs.microsoft.com/rest/api/sto
 > [!TIP]
 > 您可以使用選擇性旗標來調整複製操作。 以下是一些範例。
 >
-> |狀況|旗標|
+> |案例|旗標|
 > |---|---|
 > |將 blob 複製為區塊、分頁或附加 Blob。|**--blob 類型** = \[BlockBlob \| PageBlob \| AppendBlob\]|
 > |複製到特定的存取層 (例如封存層) 。|**--區塊-blob 層** = \[無 \| 熱 \| 冷 \| 封存\]|
@@ -363,12 +363,12 @@ AzCopy 會使用 [伺服器對伺服器](https://docs.microsoft.com/rest/api/sto
 如果您將旗標設定 `--delete-destination` 為 `true` AzCopy 刪除檔案，而不提供提示。 如果您想要在 AzCopy 刪除檔案之前出現提示，請將旗標設定 `--delete-destination` 為 `prompt` 。
 
 > [!NOTE]
-> 若要防止意外刪除，請務必先啟用虛 [刪除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) 功能，然後再使用 `--delete-destination=prompt|true` 旗標。
+> 若要防止意外刪除，請務必先啟用虛 [刪除](/azure/storage/blobs/storage-blob-soft-delete) 功能，然後再使用 `--delete-destination=prompt|true` 旗標。
 
 > [!TIP]
 > 您可以使用選擇性旗標來調整同步處理作業。 以下是一些範例。
 >
-> |狀況|旗標|
+> |案例|旗標|
 > |---|---|
 > |指定在下載時，應如何驗證嚴格的 MD5 雜湊。|**--check-md5** = \[NoCheck \| LogOnly \| FailIfDifferent \| FailIfDifferentOrMissing\]|
 > |根據模式排除檔案。|**--排除-路徑**|
@@ -420,7 +420,7 @@ AzCopy 會使用 [伺服器對伺服器](https://docs.microsoft.com/rest/api/sto
 
 - [教學課程：使用 AzCopy 將內部部署資料移轉至雲端儲存體](storage-use-azcopy-migrate-on-premises-data.md)
 
-- [使用 AzCopy 和檔案儲存體傳輸資料](storage-use-azcopy-files.md) (機器翻譯)
+- [使用 AzCopy 和檔案儲存體轉送資料](storage-use-azcopy-files.md)
 
 - [使用 AzCopy 和 Amazon S3 貯體轉送資料](storage-use-azcopy-s3.md)
 

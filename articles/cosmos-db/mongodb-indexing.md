@@ -9,12 +9,12 @@ ms.date: 10/21/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 6f7114188a7a996ee80346ec48a51f0cce8bba54
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 6e084a890dd5c772fbf576ddc50fd26b2d1774f0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425026"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487376"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>管理 Azure Cosmos DB 的 MongoDB API 中的編制索引
 
@@ -78,7 +78,7 @@ Azure Cosmos DB 建立 multikey 索引來索引儲存在陣列中的內容。 �
 
 ### <a name="text-indexes"></a>文字索引
 
-Azure Cosmos DB 適用于 MongoDB 的 API 目前不支援文字索引。 針對字串的文字搜尋查詢，您應該使用 [Azure 認知搜尋](https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb) 與 Azure Cosmos DB 整合。 
+Azure Cosmos DB 適用于 MongoDB 的 API 目前不支援文字索引。 針對字串的文字搜尋查詢，您應該使用 [Azure 認知搜尋](../search/search-howto-index-cosmosdb.md) 與 Azure Cosmos DB 整合。 
 
 ## <a name="wildcard-indexes"></a>萬用字元索引
 

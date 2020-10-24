@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: 59e00d2bb47826bb4bfa381c42db551f44d84b71
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: edcfa19ed93733c4d6b060ebcb5ff179708195aa
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427605"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486917"
 ---
 # <a name="manage-app-consent-policies"></a>管理應用程式同意原則
 
@@ -57,14 +57,14 @@ ms.locfileid: "92427605"
 1. 查看原則的「包含」條件集：
 
     ```powershell
-    Get-AzureADMSPermissionGrantConditionSet -Id "microsoft-application-admin" `
+    Get-AzureADMSPermissionGrantConditionSet -PolicyId "microsoft-application-admin" `
                                              -ConditionSetType "includes"
     ```
 
 1. 請參閱「排除」條件集：
 
     ```powershell
-    Get-AzureADMSPermissionGrantConditionSet -Id "microsoft-application-admin" `
+    Get-AzureADMSPermissionGrantConditionSet -PolicyId "microsoft-application-admin" `
                                              -ConditionSetType "excludes"
     ```
 
@@ -130,7 +130,7 @@ ms.locfileid: "92427605"
 
 下表提供應用程式同意原則的支援條件清單。
 
-| 條件 | 描述|
+| 條件 | 說明|
 |:---------------|:----------|
 | PermissionClassification | 所授與之許可權的 [許可權分類](configure-permission-classifications.md) ，或「全部」符合任何許可權分類 (包括未分類) 的許可權。 預設值為 "all"。 |
 | PermissionType | 所授與之許可權的許可權類型。 使用「應用程式」以取得應用程式許可權 (例如) 的應用程式角色或委派許可權的「委派」。 <br><br>**注意**： "delegatedUserConsentable" 值指出 API 發行者尚未設定為需要系統管理員同意的委派許可權，此值可用於內建許可權授與原則，但不能用於自訂許可權授與原則。 必要。 |

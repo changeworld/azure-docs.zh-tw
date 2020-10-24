@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: 1e48b2ff6e469a5f792b64c20631e4bd64fb9fd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2228c99dba2dd99c0afa44457642235e08ac011
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85263539"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480916"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>將數百 TB 的資料遷移至 Azure Cosmos DB 
 
@@ -38,7 +38,7 @@ Azure Cosmos DB 的遷移策略目前會根據 API 選擇和資料大小而有�
 
 ## <a name="custom-tool-with-bulk-executor-library"></a>使用大量執行程式程式庫的自訂工具 
 
-上一節所述的挑戰，可透過使用可在多個實例之間輕鬆擴充的自訂工具來解決，並可在暫時性失敗時復原。 此外，自訂工具可以暫停和繼續在不同的檢查點上進行遷移。 Azure Cosmos DB 已經提供包含其中一些功能的 [大量執行](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) 程式程式庫。 例如，大量執行程式程式庫已經有處理暫時性錯誤的功能，而且可以在單一節點中相應放大執行緒，以針對每個節點耗用大約 500 K 個 ru。 大量執行程式程式庫也會將源資料集分割成以一種檢查點形式獨立運作的微批次。  
+上一節所述的挑戰，可透過使用可在多個實例之間輕鬆擴充的自訂工具來解決，並可在暫時性失敗時復原。 此外，自訂工具可以暫停和繼續在不同的檢查點上進行遷移。 Azure Cosmos DB 已經提供包含其中一些功能的 [大量執行](./bulk-executor-overview.md) 程式程式庫。 例如，大量執行程式程式庫已經有處理暫時性錯誤的功能，而且可以在單一節點中相應放大執行緒，以針對每個節點耗用大約 500 K 個 ru。 大量執行程式程式庫也會將源資料集分割成以一種檢查點形式獨立運作的微批次。  
 
 自訂工具會使用大量執行程式程式庫，並支援跨多個用戶端相應放大，並在內嵌進程期間追蹤錯誤。 若要使用此工具，來源資料應該分割成 Azure Data Lake Storage (ADLS) 中的不同檔案，讓不同的遷移工作者可以挑選每個檔案，並將其內嵌到 Azure Cosmos DB。 自訂工具會使用個別的集合，該集合會儲存 ADLS 中每個個別原始程式檔之遷移進度的相關中繼資料，並追蹤任何與其相關聯的錯誤。  
 
@@ -152,4 +152,4 @@ Azure Cosmos DB 的遷移策略目前會根據 API 選擇和資料大小而有�
 
 * 試用使用 [.net](bulk-executor-dot-net.md) 和 [JAVA](bulk-executor-java.md)大量執行程式程式庫的範例應用程式，以深入瞭解。 
 * 大量執行程式程式庫已整合到 Cosmos DB Spark 連接器中，若要深入瞭解，請參閱 [Azure Cosmos DB Spark 連接器](spark-connector.md) 文章。  
-* 若要取得大規模遷移的額外說明，請在「一般諮詢」問題類型和「大型 (TB +) 遷移」問題子類別中開啟支援票證，以與 Azure Cosmos DB 產品小組聯繫。 
+* 若要取得大規模遷移的額外說明，請在「一般諮詢」問題類型和「大型 (TB +) 遷移」問題子類別中開啟支援票證，以與 Azure Cosmos DB 產品小組聯繫。

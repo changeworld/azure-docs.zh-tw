@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dca046df68b10853752b0de65c48c2b8f83afb31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5af62cd8c110e38ffd2a72ef2441a8e548e1ece
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020893"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475476"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中最佳化儲存體成本
 
@@ -20,7 +20,7 @@ Azure Cosmos DB 能提供無限制的儲存體和輸送量。 不同於輸送量
 
 ## <a name="storage-cost"></a>儲存成本
 
-儲存體是以 GB 為單位進行計費。 SSD 本機儲存體是用於您的資料和編制索引。 所使用的總儲存體等於用在您使用 Azure Cosmos DB 之所有區域上所需的儲存體。 如果您以全域方式將 Azure Cosmos 帳戶跨越三個區域進行複寫，您將需個別支付那三個區域中的總儲存體成本。 若要預估您的儲存體需求，請參閱 [Capacity Planner](https://www.documentdb.com/capacityplanner) \(英文\) 工具。 Azure Cosmos DB 中儲存體的成本為每月每 GB 0.25 美元，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)以取得最新更新。 您可以設定警示以判斷您 Azure Cosmos 容器所使用的儲存體；若要監視您的儲存體，請參閱[監視 Azure Cosmos DB](monitor-accounts.md) 一文。
+儲存體是以 GB 為單位進行計費。 SSD 本機儲存體是用於您的資料和編制索引。 所使用的總儲存體等於用在您使用 Azure Cosmos DB 之所有區域上所需的儲存體。 如果您以全域方式將 Azure Cosmos 帳戶跨越三個區域進行複寫，您將需個別支付那三個區域中的總儲存體成本。 若要預估您的儲存體需求，請參閱 [Capacity Planner](https://www.documentdb.com/capacityplanner) \(英文\) 工具。 Azure Cosmos DB 中儲存體的成本為每月每 GB 0.25 美元，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)以取得最新更新。 您可以設定警示以判斷您 Azure Cosmos 容器所使用的儲存體；若要監視您的儲存體，請參閱[監視 Azure Cosmos DB](./monitor-cosmos-db.md) 一文。
 
 ## <a name="optimize-cost-with-item-size"></a>搭配項目大小以最佳化成本
 
@@ -28,7 +28,7 @@ Azure Cosmos DB 能提供無限制的儲存體和輸送量。 不同於輸送量
 
 ## <a name="optimize-cost-with-indexing"></a>搭配編製索引以最佳化成本
 
-根據預設，系統會自動對資料編製索引，而這可能會增加所耗用的總儲存體。 不過，您可以套用自訂索引原則來減少此額外負荷。 沒有透過原則進行調整的自動編製索引，大約為項目大小的 10-20%。 透過移除或自訂索引原則，您便不需要支付寫入的額外費用，也不需要額外的輸送量容量。 請參閱[在 Azure Cosmos DB 中編製索引](indexing-policies.md)以設定自訂編製索引原則。 如果您曾使用過關聯式資料庫，您可能會認為「對所有項目編製索引」會讓所使用的儲存體變成兩倍或是更多。 不過，在 Azure Cosmos DB 中，就中間值來說，其使用量相對低許多。 在 Azure Cosmos DB 中，就算是搭配自動編製索引，儲存體的索引額外負荷通常很低 (10-20%)，因為它具有低儲存體耗用量的設計。 透過管理編制索引原則，您可以更精細地控制索引耗用量和查詢效能之間的取捨。
+根據預設，系統會自動對資料編製索引，而這可能會增加所耗用的總儲存體。 不過，您可以套用自訂索引原則來減少此額外負荷。 沒有透過原則進行調整的自動編製索引，大約為項目大小的 10-20%。 透過移除或自訂索引原則，您便不需要支付寫入的額外費用，也不需要額外的輸送量容量。 請參閱[在 Azure Cosmos DB 中編製索引](index-policy.md)以設定自訂編製索引原則。 如果您曾使用過關聯式資料庫，您可能會認為「對所有項目編製索引」會讓所使用的儲存體變成兩倍或是更多。 不過，在 Azure Cosmos DB 中，就中間值來說，其使用量相對低許多。 在 Azure Cosmos DB 中，就算是搭配自動編製索引，儲存體的索引額外負荷通常很低 (10-20%)，因為它具有低儲存體耗用量的設計。 透過管理編制索引原則，您可以更精細地控制索引耗用量和查詢效能之間的取捨。
 
 ## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>搭配存留時間和變更摘要以最佳化成本
 
@@ -40,7 +40,7 @@ Azure Cosmos DB 能提供無限制的儲存體和輸送量。 不同於輸送量
 
 ## <a name="check-storage-consumed"></a>檢查已耗用的儲存體
 
-若要檢查 Azure Cosmos 容器的儲存體耗用量，您可以在容器上執行 HEAD 或 GET 要求，然後檢查 `x-ms-request-quota` 和 `x-ms-request-usage` 標頭。 或者，在使用 .NET SDK 時，您可以使用 [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100))和 [>documentsizeusage](https://msdn.microsoft.com/library/azure/dn850324.aspx) 屬性來取得所耗用的儲存體。
+若要檢查 Azure Cosmos 容器的儲存體耗用量，您可以在容器上執行 HEAD 或 GET 要求，然後檢查 `x-ms-request-quota` 和 `x-ms-request-usage` 標頭。 或者，在使用 .NET SDK 時，您可以使用 [DocumentSizeQuota](/previous-versions/azure/dn850325(v%3Dazure.100))和 [>documentsizeusage](/previous-versions/azure/dn850324(v=azure.100)) 屬性來取得所耗用的儲存體。
 
 ## <a name="using-sdk"></a>使用 SDK
 
@@ -59,6 +59,5 @@ Console.WriteLine("Item size quota: {0}, usage: {1}", collectionInfo.DocumentQuo
 * 深入了解 [Azure Cosmos DB 帳單](understand-your-bill.md)
 * 深入了解[最佳化輸送量成本](optimize-cost-throughput.md)
 * 深入了解[最佳化讀取和寫入的成本](optimize-cost-reads-writes.md)
-* 深入了解[最佳化查詢成本](optimize-cost-queries.md)
+* 深入了解[最佳化查詢成本](./optimize-cost-reads-writes.md)
 * 深入了解[最佳化多重區域 Azure Cosmos 帳戶的成本](optimize-cost-regions.md)
-

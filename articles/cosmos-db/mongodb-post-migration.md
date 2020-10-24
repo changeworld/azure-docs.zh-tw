@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: jasonh
-ms.openlocfilehash: f21aa30de2b2dfcf85e45c7ed4d5c485fe45eed7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6733e0f6447d055da8d349940bc7c7665e003e33
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409692"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475595"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 適用于 MongoDB 的 API 時的遷移後優化步驟
 
@@ -53,12 +53,12 @@ ms.locfileid: "91409692"
 
 ## <a name="set-consistency-level"></a>設定一致性層級
 
-Azure Cosmos DB 提供五個定義完善的 [一致性層級](consistency-levels.md)。 若要閱讀 MongoDB 與 Azure Cosmos DB 一致性層級之間對應的相關資訊，請參閱 [一致性層級和 Azure Cosmos DB api](consistency-levels-across-apis.md)。 預設一致性層級是會話一致性層級。 變更一致性層級是選擇性的，您可以針對您的應用程式進行優化。 若要使用 Azure 入口網站來變更一致性層級：
+Azure Cosmos DB 提供五個定義完善的 [一致性層級](consistency-levels.md)。 若要閱讀 MongoDB 與 Azure Cosmos DB 一致性層級之間對應的相關資訊，請參閱 [一致性層級和 Azure Cosmos DB api](./consistency-levels.md)。 預設一致性層級是會話一致性層級。 變更一致性層級是選擇性的，您可以針對您的應用程式進行優化。 若要使用 Azure 入口網站來變更一致性層級：
 
 1. 移至 [設定] 下的 [ **預設一致性** ] 分頁。
 2. 選取您的 [一致性層級](consistency-levels.md)
 
-大部分的使用者會將其一致性層級保留在預設的會話一致性設定中。 不過，有 [各種一致性層級的可用性和效能權衡取捨](consistency-levels-tradeoffs.md)。
+大部分的使用者會將其一致性層級保留在預設的會話一致性設定中。 不過，有 [各種一致性層級的可用性和效能權衡取捨](./consistency-levels.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

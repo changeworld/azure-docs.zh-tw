@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 3b660875288db1f16f13d58b1538a876e2ff2666
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 7f81e6182209e29e41a21abadbaf05518844d201
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123284"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490164"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>讀取適用於 PostgreSQL 的 Azure 資料庫中的複本-單一伺服器
 
@@ -143,7 +143,7 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 
 ### <a name="disaster-recovery"></a>災害復原
 
-當發生重大的災難事件（例如可用性區域層級或區域性失敗）時，您可以藉由升級讀取複本來執行嚴重損壞修復作業。 您可以從 UI 入口網站流覽至讀取複本伺服器。 然後按一下 [複寫] 索引標籤，您可以停止複本將它升階為獨立的伺服器。 或者，您可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/postgres/server/replica?view=azure-cli-latest#az_postgres_server_replica_stop) 來停止及升級複本伺服器。
+當發生重大的災難事件（例如可用性區域層級或區域性失敗）時，您可以藉由升級讀取複本來執行嚴重損壞修復作業。 您可以從 UI 入口網站流覽至讀取複本伺服器。 然後按一下 [複寫] 索引標籤，您可以停止複本將它升階為獨立的伺服器。 或者，您可以使用 [Azure CLI](/cli/azure/postgres/server/replica#az_postgres_server_replica_stop) 來停止及升級複本伺服器。
 
 ## <a name="considerations"></a>考量
 
@@ -192,6 +192,6 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 ### <a name="deleted-primary-and-standalone-servers"></a>已刪除主要和獨立伺服器
 刪除主伺服器時，其所有讀取複本都會變成獨立伺服器。 這些複本將會重新啟動以反映此變更。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * 了解如何[在 Azure 入口網站中建立及管理讀取複本](howto-read-replicas-portal.md)。
 * 瞭解如何 [在 Azure CLI 和 REST API 中建立及管理讀取複本](howto-read-replicas-cli.md)。

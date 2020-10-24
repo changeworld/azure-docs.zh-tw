@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: fcbce9e7a5b24cbbe695b2ad664137875464b705
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 32ff5a73494bac2cabcb9488f946673435173dd0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107924"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489433"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>建立診斷設定以將平台記錄和計量傳送至不同目的地
 Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記錄和資源記錄，可針對 azure 資源及其相依的 azure 平臺提供詳細的診斷和審核資訊。 預設會收集[平臺計量](data-platform-metrics.md)，並通常儲存在 Azure 監視器計量資料庫中。 本文提供有關建立及設定診斷設定，以將平臺計量和平臺記錄傳送至不同目的地的詳細資料。
@@ -63,6 +63,8 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 > [!NOTE]
 > Azure Data Lake Storage Gen2 帳戶目前不支援做為診斷設定的目的地，即使其在 Azure 入口網站中可能列為有效的選項。
 
+> [!NOTE]
+> 當虛擬網路啟用時，) 無法存取事件中樞資源的 Azure 監視器 (診斷設定。 您必須在事件中樞啟用 [允許信任的 Microsoft 服務略過此防火牆] 設定，讓 Azure 監視器 (診斷設定) 服務獲得事件中樞資源的存取權。 
 
 
 ## <a name="create-in-azure-portal"></a>在 Azure 入口網站中建立
@@ -128,7 +130,7 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
         >
         > 例如，如果您將 *WorkflowRuntime* 的保留原則設定為180天，然後將其設定為365天，則在這前24小時內儲存的記錄將會在180天后自動刪除，而該類型的所有後續記錄將會在365天后自動刪除。 稍後變更保留原則時，不會讓前24小時的記錄保留大約365天。
 
-6. 按一下 [檔案] 。
+6. 按一下 **[儲存]** 。
 
 經過幾分鐘之後，新的設定就會出現在此資源的設定清單中，並在產生新的事件資料時，將記錄串流處理至指定的目的地。 當事件發出和 [記錄在 Log Analytics 工作區中出現](data-ingestion-time.md)時，最多可能需要15分鐘的時間。
 

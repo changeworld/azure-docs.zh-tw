@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: 5c82c7a3fbe931042c1ae817d2f5b6c9ae6989ff
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d452070619a8e6284b976ff202d2a86f1ff9312b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427750"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480729"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>在適用於 MariaDB 的 Azure 資料庫中備份與還原
 
@@ -44,12 +44,15 @@ ms.locfileid: "92427750"
 - 具有最多 4 TB 儲存體的伺服器最多可保留2個完整的資料庫備份、所有差異備份，以及自最早的完整資料庫備份之後所執行的交易記錄備份。
 -   具有最多 16 TB 儲存體的伺服器會保留完整的資料庫快照集、所有差異快照集，以及過去8天內的交易記錄備份。
 
+#### <a name="long-term-retention-of-backups"></a>長期保留備份
+服務目前不支援長期保留超過35天的備份。 您可以選擇使用 mysqldump 來取得備份，並加以儲存，以長期保留。 我們的支援小組已網友一篇逐步解說 [文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157) 來分享您的達成方式。 
+
 ### <a name="backup-redundancy-options"></a>備份備援選項
 
 適用於 MariaDB 的 Azure 資料庫可讓您在一般用途和記憶體最佳化層中，彈性地選擇本地備援或異地備援備份儲存體。 當備份儲存在異地備援備份儲存體中時，這些備份不會只儲存在裝載您伺服器的區域內，也會複寫至[配對的資料中心](../best-practices-availability-paired-regions.md)。 這樣能提供更好的保護性和功能，當發生災害時，您就可以在不同區域中還原伺服器。 「基本」層只會提供本地備援的備份儲存體。
 
-> [!IMPORTANT]
-> 您只可在伺服器建立期間，為備份設定本地備援或異地備援儲存體。 伺服器佈建完成之後，您無法變更備份儲存體備援選項。
+#### <a name="moving-from-locally-redundant-to-geo-redundant-backup-storage"></a>從本機冗余移至異地冗余備份儲存體
+您只可在伺服器建立期間，為備份設定本地備援或異地備援儲存體。 伺服器佈建完成之後，您無法變更備份儲存體備援選項。 為了將您的備份儲存體從本機多餘的儲存體移至異地多餘的儲存體，使用傾印 [和還原](howto-migrate-dump-restore.md) 來建立新的伺服器並遷移資料是唯一支援的選項。
 
 ### <a name="backup-storage-cost"></a>備份儲存體成本
 

@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cf15898a7077f08ff4ab337cf5ad77ebcd2f3f1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63fffb5998b0b6a245db3f1c8fcf16f2d576936e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708096"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489756"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-postgresql-server-using-powershell"></a>如何使用 PowerShell 備份和還原適用於 PostgreSQL 的 Azure 資料庫伺服器
 
@@ -23,14 +23,14 @@ ms.locfileid: "91708096"
 
 若要完成本操作說明指南，您需要：
 
-- [Az PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)安裝在本機或[Azure Cloud Shell](https://shell.azure.com/)于瀏覽器中
+- [Az PowerShell 模組](/powershell/azure/install-az-ps)安裝在本機或[Azure Cloud Shell](https://shell.azure.com/)于瀏覽器中
 - [適用於 PostgreSQL 的 Azure 資料庫伺服器](quickstart-create-postgresql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
 > 雖然 Az.PostgreSql PowerShell 模組處於預覽狀態，但您仍必須使用下列命令，將其與 Az PowerShell 模組分開安裝：`Install-Module -Name Az.PostgreSql -AllowPrerelease`。
 > 在 Az.PostgreSql PowerShell 模組正式推出後，其會成為未來 Az PowerShell 模組版本的一部分，並可從 Azure Cloud Shell 內以原生方式使用。
 
-如果您選擇在本機使用 PowerShell，請使用 [disconnect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) Cmdlet 連接到您的 Azure 帳戶。
+如果您選擇在本機使用 PowerShell，請使用 [disconnect-azaccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet 連接到您的 Azure 帳戶。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -75,9 +75,9 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 Cmdlet 的 **PointInTimeRestore** 參數集 `Restore-AzPostgreSqlServer` 需要下列參數：
 
-| 設定 | 建議的值 | 描述  |
+| 設定 | 建議的值 | 描述  |
 | --- | --- | --- |
-| resourceGroupName |  myresourcegroup |  來源伺服器所在的資源群組。  |
+| resourceGroupName |  myresourcegroup |  來源伺服器所在的資源群組。  |
 | 名稱 | mydemoserver-restored | 還原命令所建立之新伺服器的名稱。 |
 | RestorePointInTime | 2020-03-13T13：59：00Z | 請選取要還原的時間點。 這個日期和時間必須在來源伺服器的備份保留期限內。 請使用 ISO8601 日期和時間格式。 例如，您可以使用自己的當地時區，例如 **2020-03-13T05：59： 00-08： 00**。 您也可以使用 UTC 祖魯文格式，例如 **2018-03-13T13：59： 00Z**。 |
 | UsePointInTimeRestore | `<SwitchParameter>` | 使用時間點模式來還原。 |
@@ -117,11 +117,11 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 Cmdlet 的 **GeoRestore** 參數集 `Restore-AzPostgreSqlServer` 需要下列參數：
 
-| 設定 | 建議的值 | 描述  |
+| 設定 | 建議的值 | 描述  |
 | --- | --- | --- |
 |resourceGroupName | myresourcegroup | 新伺服器所屬的資源組名。|
 |名稱 | mydemoserver-georestored | 新伺服器的名稱。 |
-|Location | eastus | 新伺服器的位置。 |
+|位置 | eastus | 新伺服器的位置。 |
 |UseGeoRestore | `<SwitchParameter>` | 使用地理模式來還原。 |
 
 使用異地還原建立新的伺服器時，除非指定了 **Sku** 參數，否則它會繼承與來源伺服器相同的儲存體大小和定價層。

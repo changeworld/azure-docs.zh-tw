@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: fb080858ff6be98846c542844810cf976eb3f264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5683fb64c9b5df027ff8b0f50cec49e9bce5808
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85117976"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475119"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB 查詢速查表
 
@@ -32,7 +32,7 @@ ms.locfileid: "85117976"
 
 ## <a name="next-steps"></a>後續步驟
 如需有關撰寫查詢的更多說明，請參閱下列文章：
-* 針對 SQL API 查詢，請參閱[使用 SQL API 進行查詢](tutorial-query-sql-api.md)、[適用於 Azure Cosmos DB 的 SQL 查詢](how-to-sql-query.md)及 [SQL 語法參考](sql-api-query-reference.md)
+* 針對 SQL API 查詢，請參閱[使用 SQL API 進行查詢](tutorial-query-sql-api.md)、[適用於 Azure Cosmos DB 的 SQL 查詢](./sql-query-getting-started.md)及 [SQL 語法參考](./sql-query-getting-started.md)
 * 針對 MongoDB 查詢，請參閱[使用適用於 MongoDB 的 Azure Cosmos DB API 進行查詢](tutorial-query-mongodb.md)和[適用於 MongoDB 的 Azure Cosmos DB API 支援及語法](mongodb-feature-support.md)
 * 針對 Gremlin API 查詢，請參閱[使用 Gremlin API 進行查詢](tutorial-query-graph.md)和 [Azure Cosmos DB Gremlin 圖形支援](gremlin-support.md)
 * 針對「資料表 API」查詢，請參閱[使用資料表 API 進行查詢](tutorial-query-table.md)

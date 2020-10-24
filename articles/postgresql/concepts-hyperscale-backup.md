@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 2d781ca7293d4bd95ae62eadc50295ca14c2d381
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9656e6ab608665e325ac5f772e06df9ac296c521
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314925"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485370"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>適用於 PostgreSQL 的 Azure 資料庫-超大規模 (Citus) 中的備份與還原
 
@@ -39,7 +39,7 @@ ms.locfileid: "91314925"
 
 
 > [!IMPORTANT]
-> 無法還原已刪除的超大規模 (Citus) 叢集。 如果您刪除叢集，所有屬於該叢集的節點都會刪除，而且無法復原。 為了保護叢集資源、部署後、意外刪除或非預期的變更，系統管理員可以利用 [管理鎖定](/azure/azure-resource-manager/management/lock-resources)。
+> 無法還原已刪除的超大規模 (Citus) 叢集。 如果您刪除叢集，所有屬於該叢集的節點都會刪除，而且無法復原。 為了保護叢集資源、部署後、意外刪除或非預期的變更，系統管理員可以利用 [管理鎖定](../azure-resource-manager/management/lock-resources.md)。
 
 ### <a name="point-in-time-restore-pitr"></a>時間點還原 (PITR) 
 
@@ -65,5 +65,5 @@ ms.locfileid: "91314925"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解 [Azure 可用性區域](/azure/availability-zones/az-overview)。
-* 在超大規模 (Citus) 伺服器群組上設定 [建議的警示](/azure/postgresql/howto-hyperscale-alert-on-metric#suggested-alerts) 。
+* 深入瞭解 [Azure 可用性區域](../availability-zones/az-overview.md)。
+* 在超大規模 (Citus) 伺服器群組上設定 [建議的警示](./howto-hyperscale-alert-on-metric.md#suggested-alerts) 。

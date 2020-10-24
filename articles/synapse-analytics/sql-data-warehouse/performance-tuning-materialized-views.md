@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 7c7109999d478121ba0251de8e7470bc0f38d64c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e807a01f575615967a039d360505a4f090cd1fd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984105"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478315"
 ---
 # <a name="performance-tune-with-materialized-views"></a>使用具體化視圖進行效能調整
 
@@ -79,7 +79,7 @@ SQL 集區中結構描述和查詢變更通常保持在最低的狀況下，以�
 
 **需要不同的資料散發策略，以提供更快的查詢效能**
 
-SQL 集區是分散式大量平行處理 (MPP) 系統。   SQL 集區資料表中的資料會使用三個[散發策略](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (雜湊、round_robin 或複寫) 中的其中一種，散發在 60 個節點之間。  
+Synapse SQL 是一種分散式查詢處理系統。  SQL 資料表中的資料會使用三個 [散發策略](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 的其中一種，在60節點之間散發 (雜湊、round_robin 或複寫) 。   
 
 資料散發是在資料表建立時指定的，並保持不變，直到卸載資料表為止。 具體化檢視在磁碟上是虛擬資料表，支援雜湊和 round_robin 資料散發。  使用者可以選擇與基底資料表不同但已針對使用檢視最多的查詢效能最佳化的資料散發。  
 

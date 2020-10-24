@@ -8,12 +8,12 @@ ms.author: jehollan
 ms.custom:
 - references_regions
 - fasttrack-edit
-ms.openlocfilehash: a037c903a72ba79b79c7e6b011fe025aefd7b51d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaf5cb70e3099d84a54a22fa291f8f3ab9e0daa6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578031"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490742"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions Premium 方案
 
@@ -104,7 +104,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 您也可以從 Azure CLI 增加最大的高載限制：
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <premium_plan_name> --set properties.maximumElasticWorkerCount=<desired_max_burst> --resource-type Microsoft.Web/serverfarms 
+az functionapp plan update -g <resource_group> -n <premium_plan_name> --max-burst <desired_max_burst>
 ```
 
 每個方案的最小值至少會有一個實例。  系統會根據方案中的應用程式所要求的 always ready 實例，自動為您自動設定實例的實際最小數目。  例如，如果應用程式 A 要求五個永遠就緒的實例，而應用程式 B 要求相同方案中有兩個永遠可用的實例，則最小的方案大小將會計算為五個。  應用程式 A 會在所有5上執行，而且應用程式 B 只會在2上執行。
@@ -117,14 +117,14 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 您可以使用 Azure CLI 來增加為方案計算的最小值。
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <premium_plan_name> --set sku.capacity=<desired_min_instances> --resource-type Microsoft.Web/serverfarms 
+az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-instances <desired_min_instances>
 ```
 
 ### <a name="available-instance-skus"></a>可用的實例 Sku
 
 建立或調整您的方案時，您可以選擇三種實例大小。  您將會依每秒配置給您的核心和記憶體總數來計費。  您的應用程式可以視需要自動相應放大至多個實例。  
 
-|SKU|核心|Memory|儲存體|
+|SKU|核心|記憶體|儲存體|
 |--|--|--|--|
 |EP1|1|3.5 GB|250GB|
 |EP2|2|7 GB|250GB|

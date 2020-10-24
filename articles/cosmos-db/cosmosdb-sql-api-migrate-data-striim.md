@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 5ce805fb302264a0c3907c006983f9d939a2908e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e190c9f06dc2c662760421b7240eafdf22986b0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85262067"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491303"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>使用 Striim 將資料移轉至 Azure Cosmos DB SQL API 帳戶
  
@@ -22,13 +22,13 @@ Azure marketplace 中的 Striim 映射提供從資料倉儲和資料庫到 Azure
 
 ## <a name="prerequisites"></a>必要條件
 
-* 如果您沒有 [Azure 訂用帳戶](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+* 如果您沒有 [Azure 訂用帳戶](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 * 在內部部署執行且有一些資料的 Oracle 資料庫。
 
 ## <a name="deploy-the-striim-marketplace-solution"></a>部署 Striim marketplace 解決方案
 
-1. 登入[Azure 入口網站](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
 1. 選取 [ **建立資源** ]，並在 Azure marketplace 中搜尋 **Striim** 。 選取第一個選項，然後 **建立**。
 
@@ -40,7 +40,7 @@ Azure marketplace 中的 Striim 映射提供從資料倉儲和資料庫到 Azure
 
 1. 在 [ **Striim 叢集設定** ] 窗格中，選擇 Striim 部署的類型和虛擬機器大小。
 
-   |設定 | 值 | 描述 |
+   |設定 | 值 | 說明 |
    | ---| ---| ---|
    |Striim 部署類型 |獨立 | Striim 可在**獨立****或叢集**部署類型中執行。 獨立模式會將 Striim 伺服器部署在單一虛擬機器上，而且您可以根據您的資料量來選取 Vm 的大小。 叢集模式會將 Striim 伺服器部署在具有所選大小的兩部或多部 Vm 上。 具有2個以上節點的叢集環境提供自動高可用性和容錯移轉。</br></br> 在本教學課程中，您可以選取 [獨立] 選項。 使用預設的「Standard_F4s」大小的 VM。  | 
    | Striim 叢集的名稱|    <Striim_cluster_Name>|  Striim 叢集的名稱。|

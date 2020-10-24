@@ -10,12 +10,12 @@ ms.date: 08/26/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: a9501df45d598c85f8c694c5d07db4f959615c00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03ef816632b73f46acaf1efdf2ddec28459fc9b8
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90968178"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489331"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>在 Azure Cosmos DB 資料上使用大量執行程式 Java 程式庫執行大量作業
 
@@ -27,7 +27,7 @@ ms.locfileid: "90968178"
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。  
 
-* 您可以免費 [試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) ，無須 Azure 訂用帳戶，也無須任何費用和承諾用量。 或者，您也可以搭配使用 [Azure Cosmos DB 模擬器](/azure/cosmos-db/local-emulator)與 `https://localhost:8081` 端點。 [驗證要求](local-emulator.md#authenticate-requests)中會提供主索引鍵。  
+* 您可以免費 [試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) ，無須 Azure 訂用帳戶，也無須任何費用和承諾用量。 或者，您也可以搭配使用 [Azure Cosmos DB 模擬器](./local-emulator.md)與 `https://localhost:8081` 端點。 [驗證要求](local-emulator.md#authenticate-requests)中會提供主索引鍵。  
 
 * [JAVA 開發工具組 (JDK) 1.7 +](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)  
   - 在 Ubuntu 上，執行 `apt-get install default-jdk` 來安裝 JDK。  
@@ -215,5 +215,3 @@ ms.locfileid: "90968178"
     
 ## <a name="next-steps"></a>後續步驟
 * 若要深入了解 maven 套件及大量執行程式 Java 程式庫的版本資訊，請參閱[大量執行程式 SDK 詳細資料](sql-api-sdk-bulk-executor-java.md)。
-
-

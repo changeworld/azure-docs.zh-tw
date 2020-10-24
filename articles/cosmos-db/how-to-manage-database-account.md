@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 98210f26072504c129ba32f765cf6bab74fef604
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a8351b8c74f9219cf14575cc326fa8049264ed7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570710"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491116"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>管理 Azure Cosmos 帳戶
 
@@ -33,7 +33,7 @@ ms.locfileid: "91570710"
 
 ### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager 範本
 
-請參閱 [使用 Azure Resource Manager 範本建立 Azure Cosmos DB 帳戶](manage-sql-with-resource-manager.md)
+請參閱 [使用 Azure Resource Manager 範本建立 Azure Cosmos DB 帳戶](./manage-with-templates.md)
 
 ## <a name="addremove-regions-from-your-database-account"></a>在資料庫帳戶中新增/移除區域
 
@@ -153,7 +153,7 @@ ms.locfileid: "91570710"
 
 3. 在 [自動容錯移轉]**** 窗格中，確定 [啟用自動容錯移轉]**** 設定為 [開啟]****。 
 
-4. 選取 [儲存]****。
+4. 選取 [儲存]。
 
    :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="新增或移除區域功能表":::
 
@@ -184,7 +184,7 @@ Cosmos 帳戶設定自動容錯移轉後，可以變更區域的容錯移轉優�
 
 4. 若要修改容錯移轉優先順序，請透過當您暫留其上時出現在資料列左側的三個點拖曳讀取區域。
 
-5. 選取 [儲存]****。
+5. 選取 [儲存]。
 
    :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="新增或移除區域功能表":::
 

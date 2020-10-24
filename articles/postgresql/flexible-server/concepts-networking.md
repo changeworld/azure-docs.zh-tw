@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 38dd103189446e287f3d62d93344ed89a364d238
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4280932787cfb2220dab1da84dca41ca0c40e302
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708776"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485251"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>網路功能總覽-適用於 PostgreSQL 的 Azure 資料庫-彈性的伺服器
 
@@ -72,6 +72,9 @@ ms.locfileid: "91708776"
 * 不支援跨區域的對等互連 Vnet
 
 瞭解如何在 [Azure 入口網站](how-to-manage-virtual-network-portal.md) 或 [Azure CLI](how-to-manage-virtual-network-cli.md)中使用私人存取 (VNet 整合) 來建立具彈性的伺服器。
+
+> [!NOTE]
+> 如果您使用自訂的 DNS 伺服器，則必須使用 DNS 轉寄站來解析適用於 MySQL 的 Azure 資料庫彈性伺服器的 FQDN。 若要深入瞭解，請參閱 [使用您自己的 DNS 伺服器的名稱解析](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) 。
 
 ## <a name="public-access-allowed-ip-addresses"></a>公用存取 (允許的 IP 位址)
 公用存取方法的特性包括：

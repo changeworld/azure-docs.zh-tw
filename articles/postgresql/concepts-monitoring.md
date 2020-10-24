@@ -6,23 +6,23 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 9424a56eeda5750afc00dd996be957e67850c30c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 4d4287b877f5327b7fd485358b26148686b9515b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426684"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487920"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>監視和調整「適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器」
 監視伺服器的相關資料，可協助您疑難排解並最佳化您的工作負載。 「適用於 PostgreSQL 的 Azure 資料庫」提供各種監視選項，可讓您深入了解伺服器的行為。
 
 ## <a name="metrics"></a>計量
-適用於 PostgreSQL 的 Azure 資料庫提供多種計量，可讓您深入了解支援 PostgreSQL 伺服器資源的行為。 每個計量都會以一分鐘的頻率發出，最多可達 [93 天的歷程記錄](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#retention-of-metrics)。 您可以在計量上設定警示。 如需逐步指引，請參閱[如何設定警示](howto-alert-on-metric.md)。 其他工作包含設定自動化動作、執行進階分析，以及封存記錄。 如需詳細資訊，請參閱 [Azure 計量概觀](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
+適用於 PostgreSQL 的 Azure 資料庫提供多種計量，可讓您深入了解支援 PostgreSQL 伺服器資源的行為。 每個計量都會以一分鐘的頻率發出，最多可達 [93 天的歷程記錄](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics)。 您可以在計量上設定警示。 如需逐步指引，請參閱[如何設定警示](howto-alert-on-metric.md)。 其他工作包含設定自動化動作、執行進階分析，以及封存記錄。 如需詳細資訊，請參閱 [Azure 計量概觀](../azure-monitor/platform/data-platform.md)。
 
 ### <a name="list-of-metrics"></a>計量清單
 這些計量可供適用於 PostgreSQL 的 Azure 資料庫使用：
 
-|計量|計量顯示名稱|Unit|描述|
+|計量|計量顯示名稱|Unit|說明|
 |---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|使用中的 CPU 百分比。|
 |memory_percent|記憶體百分比|百分比|使用中記憶體的百分比。|
@@ -61,6 +61,6 @@ ms.locfileid: "92426684"
 
 ## <a name="next-steps"></a>後續步驟
 - 瞭解 [如何設定警示](howto-alert-on-metric.md) ，以取得有關在計量上建立警示的指引。
-- 如需如何使用 Azure 入口網站、REST API 或 CLI 來存取和匯出計量的詳細資訊，請參閱 [Azure 計量總覽](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
+- 如需如何使用 Azure 入口網站、REST API 或 CLI 來存取和匯出計量的詳細資訊，請參閱 [Azure 計量總覽](../azure-monitor/platform/data-platform.md)
 - 請參閱有關[監視伺服器的最佳做法](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-postgresql-monitoring/) \(英文\) 的部落格。
 - 深入瞭解適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中的 [規劃維護通知](./concepts-planned-maintenance-notification.md) 。

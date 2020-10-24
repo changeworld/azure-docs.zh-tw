@@ -1,26 +1,26 @@
 ---
 title: 在 Azure VM 中執行 SQL Server 的 Azure 備份
 description: 在本文中，您將瞭解如何在 Azure 虛擬機器中執行 SQL Server 註冊 Azure 備份。
-services: backup
 author: dcurwin
 manager: carmonm
-ms.service: backup
+ms.service: virtual-machines
+ms.subservice: extensions
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 84ff3e18cf488f5536d5945d7b8fc8d78882424e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66675f77d480ce8d9f21e5ffb507c475337c9dab
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511172"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490725"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>在 Azure VM 中執行 SQL Server 的 Azure 備份
 
 在其他供應專案之間 Azure 備份，可支援備份工作負載，例如在 Azure Vm 中執行的 SQL Server。 由於 SQL 應用程式是在 Azure VM 中執行，因此備份服務需要存取應用程式的許可權，並提取必要的詳細資料。
 若要這樣做，Azure 備份在使用者所觸發的註冊程式期間，于執行 SQL Server 的 VM 上安裝 **AzureBackupWindowsWorkload** 擴充功能。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 如需支援的案例清單，請參閱 Azure 備份所支援的支援 [矩陣](../../backup/sql-support-matrix.md#scenario-support) 。
 
@@ -111,7 +111,7 @@ Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagemen
 
 此命令會傳回此資源的 **備份容器** ，且狀態將會 **註冊**。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [深入瞭解](../../backup/backup-sql-server-azure-troubleshoot.md) AZURE SQL Server VM 備份疑難排解指導方針
 - 有關備份在 Azure 虛擬機器上執行的 SQL Server 資料庫 (Vm) 以及使用 Azure 備份服務[的相關常見問題](../../backup/faq-backup-sql-server.md)。

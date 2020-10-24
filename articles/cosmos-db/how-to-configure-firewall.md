@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3ad53a90586ccf88c5c74326103997ca0a53cdf9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: fb97f9ee822c808057139bd25b2e4f43c48a2e48
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279758"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490504"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中設定 IP 防火牆
 
@@ -22,7 +22,7 @@ ms.locfileid: "92279758"
 
 根據預設，只要要求伴隨有效的授權權杖，就可以從網際網路存取 Azure Cosmos 帳戶。 若要設定 IP 原則型存取控制，使用者必須以 CIDR (無類別網域間路由) 形式提供這組 IP 位址或 IP 位址範圍，以作為允許存取指定 Azure Cosmos 帳戶的用戶端 IP 清單。 套用此組態之後，任何源自此允許清單外部機器的要求都會收到 403 (禁止) 回應。 使用 IP 防火牆時，建議允許 Azure 入口網站存取您的帳戶。 需具備存取權，才能使用資料總管，以及為您的帳戶擷取 Azure 入口網站上顯示的計量。 使用資料瀏覽器時，除了允許 Azure 入口網站存取您的帳戶之外，您還需要更新防火牆設定，以將目前的 IP 位址新增至防火牆規則。 請注意，防火牆變更可能需要15分鐘才能傳播。
 
-您可以結合具有子網路的 IP 型防火牆與 VNET 存取控制。 結合它們，即可將存取權限制為任何具有公用 IP 和/或來自 VNET 內特定子網路的來源。 若要深入了解如何使用子網路和 VNET 型存取控制，請參閱[從虛擬網路存取 Azure Cosmos DB 資源](vnet-service-endpoint.md)。
+您可以結合具有子網路的 IP 型防火牆與 VNET 存取控制。 結合它們，即可將存取權限制為任何具有公用 IP 和/或來自 VNET 內特定子網路的來源。 若要深入了解如何使用子網路和 VNET 型存取控制，請參閱[從虛擬網路存取 Azure Cosmos DB 資源](./how-to-configure-vnet-service-endpoint.md)。
 
 總括起來，一律需有授權權杖才能存取 Azure Cosmos 帳戶。 如果未設定 IP 防火牆和 VNET 存取控制清單 (ACL)，則可使用授權權杖來存取 Azure Cosmos 帳戶。 在 IP 防火牆或 VNET ACL 或兩者皆已設定於 Azure Cosmos 帳戶之後，只有源自您所指定來源 (且具有授權權杖) 的要求會得到有效回應。 
 
@@ -91,7 +91,7 @@ ms.locfileid: "92279758"
 
 ### <a name="requests-from-virtual-machines"></a>來自虛擬機器的要求
 
-您也可以使用[虛擬機器](https://azure.microsoft.com/services/virtual-machines/)或[虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)，透過 Azure Cosmos DB 裝載中介層服務。 若要將您的 Cosmos DB 帳戶設定為允許來自虛擬機器的存取，您必須[設定 IP 存取控制原則](#configure-ip-policy)，以將虛擬機器和 (或) 虛擬機器擴展集的公用 IP 位址設定為 Azure Cosmos DB 帳戶的其中一個允許 IP 位址。
+您也可以使用[虛擬機器](https://azure.microsoft.com/services/virtual-machines/)或[虛擬機器擴展集](../virtual-machine-scale-sets/overview.md)，透過 Azure Cosmos DB 裝載中介層服務。 若要將您的 Cosmos DB 帳戶設定為允許來自虛擬機器的存取，您必須[設定 IP 存取控制原則](#configure-ip-policy)，以將虛擬機器和 (或) 虛擬機器擴展集的公用 IP 位址設定為 Azure Cosmos DB 帳戶的其中一個允許 IP 位址。
 
 您可以在 Azure 入口網站中擷取虛擬機器的 IP 位址，如下列螢幕擷取畫面所示：
 
@@ -105,7 +105,7 @@ ms.locfileid: "92279758"
 
 ## <a name="configure-an-ip-firewall-by-using-a-resource-manager-template"></a><a id="configure-ip-firewall-arm"></a>使用 Resource Manager 範本設定 IP 防火牆
 
-若要設定 Azure Cosmos DB 帳戶的存取控制，請確定 Resource Manager 範本指定 **ipRules** 屬性，其中包含允許的 IP 範圍陣列。 如果將 IP 防火牆設定為已部署的 Cosmos 帳戶，請確保 `locations` 陣列符合目前所部署的項目。 您無法同時修改 `locations` 陣列和其他屬性。 如需 Azure Cosmos DB 的 Azure Resource Manager 範本的詳細資訊和範例，請參閱 [Azure Resource Manager Azure Cosmos DB 的範本](resource-manager-samples.md)
+若要設定 Azure Cosmos DB 帳戶的存取控制，請確定 Resource Manager 範本指定 **ipRules** 屬性，其中包含允許的 IP 範圍陣列。 如果將 IP 防火牆設定為已部署的 Cosmos 帳戶，請確保 `locations` 陣列符合目前所部署的項目。 您無法同時修改 `locations` 陣列和其他屬性。 如需 Azure Cosmos DB 的 Azure Resource Manager 範本的詳細資訊和範例，請參閱 [Azure Resource Manager Azure Cosmos DB 的範本](./templates-samples-sql.md)
 
 > [!IMPORTANT]
 > **IpRules**屬性已在 API 版本2020-04-01 中引進。 先前的版本會改為公開 **ipRangeFilter** 屬性，這是以逗號分隔的 IP 位址清單。
@@ -221,7 +221,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a name="source-ips-in-blocked-requests"></a>已封鎖要求中的來源 IP
 
-啟用 Azure Cosmos DB 帳戶的診斷記錄。 這些記錄會顯示每個要求和回應。 防火牆相關的訊息會以 403 傳回碼進行記錄。 藉由篩選這些訊息，您就能看到已封鎖要求的來源 IP。 請參閱 [Azure Cosmos DB 診斷記錄](logging.md)。
+啟用 Azure Cosmos DB 帳戶的診斷記錄。 這些記錄會顯示每個要求和回應。 防火牆相關的訊息會以 403 傳回碼進行記錄。 藉由篩選這些訊息，您就能看到已封鎖要求的來源 IP。 請參閱 [Azure Cosmos DB 診斷記錄](./monitor-cosmos-db.md)。
 
 ### <a name="requests-from-a-subnet-with-a-service-endpoint-for-azure-cosmos-db-enabled"></a>要求來自具有已啟用 Azure Cosmos DB 之服務端點的子網路
 

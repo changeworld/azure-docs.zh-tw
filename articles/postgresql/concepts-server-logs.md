@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 8d249cdabcbfd82fc555c486f29bbdba200e1da1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ae3c538c78be8af0fa4569592ac60547e7f5912
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710493"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481290"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中的記錄
 
@@ -72,7 +72,7 @@ ms.locfileid: "91710493"
 
 ### <a name="access-resource-logs"></a>存取資源記錄
 
-您存取記錄的方式取決於您選擇的端點。 如 Azure 儲存體，請參閱 [記錄儲存體帳戶](../azure-monitor/platform/resource-logs-collect-storage.md) 的相關文章。 針對事件中樞，請參閱「 [串流 Azure 記錄](../azure-monitor/platform/resource-logs-stream-event-hubs.md) 」一文。
+您存取記錄的方式取決於您選擇的端點。 如 Azure 儲存體，請參閱 [記錄儲存體帳戶](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) 的相關文章。 針對事件中樞，請參閱「 [串流 Azure 記錄](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) 」一文。
 
 針對 Azure 監視器記錄，會將記錄傳送至您選取的工作區。 Postgres 記錄會使用 **AzureDiagnostics** 收集模式，因此可以從 AzureDiagnostics 資料表進行查詢。 下表說明資料表中的欄位。 在 [Azure 監視器記錄查詢](../azure-monitor/log-query/log-query-overview.md) 總覽中深入瞭解查詢和警示。
 
@@ -98,7 +98,7 @@ AzureDiagnostics
 
 下表說明 **PostgreSQLLogs** 類型的欄位。 視您選擇的輸出端點而定，所含欄位及其出現順序可能會有所不同。 
 
-|**欄位** | **說明** |
+|**欄位** | **描述** |
 |---|---|
 | TenantId | 您的租用戶識別碼 |
 | SourceSystem | `Azure` |

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: jasonwhowell
 ms.author: jasonh
-ms.openlocfilehash: f39b93058f3f96d37683ec1f3ae3de0f8c1cb786
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b082c89684bc06346fa933aad6be97dc371bc3f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409522"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490572"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin 伺服器回應標頭
 本文涵蓋 Cosmos DB Gremlin 伺服器在要求執行時傳回給呼叫者的標頭。 這些標頭有助於針對要求效能進行疑難排解、建立與 Cosmos DB 服務原生整合的應用程式，以及簡化客戶支援。
@@ -29,7 +29,7 @@ ms.locfileid: "91409522"
 | **x-毫秒-總伺服器時間-毫秒** | double | 130.512 | 成功和失敗 | Cosmos DB Gremlin 伺服器執行整個遍歷所花費的時間總計（以毫秒為單位）。 此標頭會包含在每個部分回應中。 它代表自要求開始之後的累計執行時間。 最後一個回應表示總執行時間。 此標頭很適合用來區分用戶端和伺服器，以作為延遲來源。 您可以比較用戶端上的「遍歷」執行時間與這個標頭的值。 |
 | **x-毫秒-狀態碼** | long | 200 | 成功和失敗 | 標頭表示要求完成或終止的內部原因。 建議應用程式查看此標頭的值，並採取更正動作。 |
 | **x-ms-子狀態-代碼** | long | 1003 | 僅失敗 | Cosmos DB 是建立在整合儲存層之上的多模型資料庫。 此標頭包含在高可用性堆疊較低層內失敗時的失敗原因的其他深入解析。 建議應用程式儲存此標頭，並在聯絡 Cosmos DB 客戶支援時使用它。 此標頭的值適用于 Cosmos DB 工程師進行快速疑難排解。 |
-| **x-毫秒-重試-毫秒** | 字串 (TimeSpan)  | "00：00： 03.9500000" | 僅失敗 | 此標頭是 .NET [TimeSpan](https://docs.microsoft.com/dotnet/api/system.timespan) 型別的字串表示。 由於布建的輸送量耗盡，此值只會包含在要求失敗。 應用程式應該在經過指示的一段時間之後重新提交遍歷。 |
+| **x-毫秒-重試-毫秒** | 字串 (TimeSpan)  | "00：00： 03.9500000" | 僅失敗 | 此標頭是 .NET [TimeSpan](/dotnet/api/system.timespan) 型別的字串表示。 由於布建的輸送量耗盡，此值只會包含在要求失敗。 應用程式應該在經過指示的一段時間之後重新提交遍歷。 |
 | **x-ms-活動-識別碼** | 字串 (Guid)  | "A9218E01-3A3A-4716-9636-5BD86B056613" | 成功和失敗 | 標頭包含要求的唯一伺服器端識別碼。 伺服器會為每個要求指派唯一識別碼，以供追蹤之用。 應用程式應該記錄伺服器傳回的活動識別碼，以提出客戶可能想要聯絡客戶支援的要求。 Cosmos DB 支援人員可以在 Cosmos DB 服務遙測中找到這些識別碼的特定要求。 |
 
 ## <a name="status-codes"></a>狀態碼

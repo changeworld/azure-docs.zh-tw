@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 7a15e5135cd89d7360a1357e3518b1253e80ee65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1c54c2e486f935b3c3ba1b13207caaa67099459
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019516"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490980"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>從變更摘要處理器程式庫遷移至 Azure Cosmos DB .NET V3 SDK
 
@@ -23,7 +23,7 @@ ms.locfileid: "89019516"
 .NET V3 SDK 有幾個重大變更，以下是遷移您的應用程式的主要步驟：
 
 1. 將 `DocumentCollectionInfo` 實例轉換成 `Container` 受監視和租用容器的參考。
-1. 使用的自訂 `WithProcessorOptions` 應該更新為使用 `WithLeaseConfiguration` 和（ `WithPollInterval` 適用于 `WithStartTime` [開始時間](how-to-configure-change-feed-start-time.md)），以及 `WithMaxItems` 定義最大專案計數。
+1. 使用的自訂 `WithProcessorOptions` 應該更新為使用 `WithLeaseConfiguration` 和（ `WithPollInterval` 適用于 `WithStartTime` [開始時間](./change-feed-processor.md#starting-time)），以及 `WithMaxItems` 定義最大專案計數。
 1. 將設 `processorName` `GetChangeFeedProcessorBuilder` 為，以符合所設定的值 `ChangeFeedProcessorOptions.LeasePrefix` ，或使用 `string.Empty` 其他方式。
 1. 這些變更不再以的形式傳遞 `IReadOnlyList<Document>` ，而是 `IReadOnlyCollection<T>` `T` 您需要定義的類型，沒有基底專案類別。
 1. 若要處理這些變更，您不再需要執行程式，而是必須 [定義委派](change-feed-processor.md#implementing-the-change-feed-processor)。 委派可以是靜態函式，或者，如果您需要維護跨執行的狀態，您可以建立自己的類別，並將實例方法傳遞為委派。
@@ -60,4 +60,4 @@ SDK V3 變更摘要處理器會偵測到任何舊的程式庫狀態，並在第�
 
 * [變更摘要處理器的概觀](change-feed-processor.md)
 * [使用變更摘要估算器](how-to-use-change-feed-estimator.md)
-* [變更摘要處理器開始時間](how-to-configure-change-feed-start-time.md)
+* [變更摘要處理器開始時間](./change-feed-processor.md#starting-time)

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 1a8d375519ed4c7d252afe60d71aad4c5244cd1c
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0fa7f122c5a9957db0800d2ccf4e5c1f8effd574
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283821"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491167"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-api-for-mongodb"></a>在適用于 MongoDB 的 Azure Cosmos DB API 中建立容器
 
@@ -36,7 +36,7 @@ ms.locfileid: "92283821"
    * 輸入容器識別碼。
    * 輸入分區索引鍵。
    * 輸入要佈建的輸送量 (例如 1000 RU)。
-   * 選取 [確定]  。
+   * 選取 [確定]。
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-mongodb.png" alt-text="適用于 MongoDB 的 Azure Cosmos DB API [新增容器] 對話方塊的螢幕擷取畫面":::
 
@@ -62,12 +62,11 @@ db.runCommand( { shardCollection: "myDatabase.myCollection", key: { myShardKey: 
 
 ## <a name="create-a-container-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本建立容器
 
-[使用 Resource Manager 範本建立適用于 MONGODB API 的 Azure Cosmos DB 集合](manage-sql-with-resource-manager.md#azure-cosmos-account-with-standard-provisioned-throughput)。
+[使用 Resource Manager 範本建立適用于 MONGODB API 的 Azure Cosmos DB 集合](./manage-with-templates.md#azure-cosmos-account-with-standard-provisioned-throughput)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Cosmos DB 中的資料分割](partitioning-overview.md)
 * [Azure Cosmos DB 中的要求單位](request-units.md)
 * [在容器和資料庫中佈建輸送量](set-throughput.md)
-* [使用 Azure Cosmos 帳戶](account-overview.md)
-
+* [使用 Azure Cosmos 帳戶](./account-databases-containers-items.md)

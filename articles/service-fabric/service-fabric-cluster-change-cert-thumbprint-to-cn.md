@@ -1,64 +1,103 @@
 ---
 title: 將叢集更新為使用憑證一般名稱
-description: 瞭解如何將 Service Fabric 叢集憑證從以指紋為基礎的宣告轉換成一般名稱。
+description: 瞭解如何將 Azure Service Fabric 叢集憑證從以指紋為基礎的宣告轉換成一般名稱。
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 224798565921593d3c91dfcc187efa71a71b1fdd
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 013b8190390a4b05791b0a56072487f249956ec5
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368055"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495211"
 ---
 # <a name="convert-cluster-certificates-from-thumbprint-based-declarations-to-common-names"></a>將叢集憑證從以指紋為基礎的宣告轉換為一般名稱
-憑證 (堆疊的簽章稱為「指紋」 ) 是唯一的，這表示指紋所宣告的叢集憑證會參考特定的憑證實例。 接著，這會讓憑證變換和管理更為普遍且明確：每項變更都需要協調叢集和基礎運算主機的升級。 將 Service Fabric 叢集的憑證宣告從以指紋為基礎的憑證宣告轉換成以憑證的主體一般名稱為基礎的宣告，就能大幅簡化管理，尤其是在憑證上輪流，不再需要叢集升級。 本文說明如何將現有的叢集轉換為一般以名稱為基礎的宣告，而不需要停機。
+
+憑證的簽章 (通常稱為指紋) 是唯一的。 指紋所宣告的叢集憑證會參考特定的憑證實例。 這項明確的功能使得憑證變換和一般管理、困難且明確的管理。 每項變更都需要協調叢集和基礎運算主機的升級。
+
+將 Azure Service Fabric 叢集的憑證宣告從以指紋為基礎的憑證宣告轉換成以憑證的主體一般名稱為基礎的宣告 (CN) 可大幅簡化管理。 尤其是，在憑證上輪流，不再需要叢集升級。 本文說明如何將現有的叢集轉換成以 CN 為基礎的宣告，而不需要停機。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="moving-to-certificate-authority-ca-signed-certificates"></a>移至憑證授權單位單位 (CA) 簽署的憑證
-如果叢集的安全性是由指紋宣告，則在不可能的情況下，或在不可行與另一個簽章相同的憑證的情況下進行計算。 在此情況下，憑證的來源比較不重要，因此自我簽署的憑證已足夠。 相反地，具有一般名稱所宣告之憑證的叢集安全性，會從公開金鑰基礎結構服務 (PKI) 發出該憑證，並包含其認證實務等層面，包括其運作安全性是否經過審核和其他許多方面。 基於這個理由，PKI 的選擇很重要、對簽發者 (憑證授權單位單位或 CA) 有深入的瞭解，而且自我簽署的憑證基本上是毫無價值。 一般名稱 (CN) 所宣告的憑證通常會被視為有效，如果它的鏈可以成功建立、主體具有預期的 CN 元素，而且其簽發者 (在) 鏈中的「立即」或「更高」，則會由執行驗證的代理程式信任。 Service Fabric 支援透過具有 ' 隱含 ' 簽發者的 CN 宣告憑證 (鏈必須以信任錨點結尾) ，或使用指紋宣告的簽發者 ( 「簽發者釘選」 ) ;如需詳細資訊，請參閱這  [篇文章](cluster-security-certificates.md#common-name-based-certificate-validation-declarations) 。 若要使用指紋所宣告的自我簽署憑證將叢集轉換為一般名稱，則必須先將目標、CA 簽署的憑證依指紋導入到叢集中;只有這樣才可以從 TP 轉換成 CN。
+## <a name="move-to-certificate-authority-signed-certificates"></a>移至憑證授權單位單位簽署的憑證
 
-基於測試目的，可透過 CN 宣告自我簽署憑證，將簽發者釘選到自己的指紋;從安全性的觀點來看，這幾乎等同于以 TP 宣告相同的憑證。 不過請注意，這種類型的成功轉換並不保證成功地從 TP 轉換為具有 CA 簽署憑證的 CN。 因此，建議使用適當的 CA 簽署憑證來測試轉換 () 中有可用的免費選項。
+其憑證由指紋宣告的叢集安全性，會在不可能或計算不可行的情況下，將憑證與另一個簽章偽造。 在此情況下，憑證的來源比較不重要，因此自我簽署的憑證已足夠。
+
+相反地，由 CN 流程宣告其憑證的叢集安全性，會來自叢集擁有者在其憑證提供者中的隱含信任。 提供者是發行憑證 (PKI) 服務的公開金鑰基礎結構。 在 PKI 的憑證實務上，信任是以其他因素為基礎，也就是他們的營運安全性是否由其他受信任的當事人進行審核及核准等等。
+
+叢集擁有者也必須詳細瞭解 (Ca) 發出憑證的憑證授權單位單位，因為這是依主旨驗證憑證的基本層面。 這也表示自我簽署憑證完全不適合此用途。 任何人都可以產生具有指定主旨的憑證。
+
+在下列情況下，CN 所宣告的憑證通常會視為有效：
+
+* 其鏈可以成功建立。
+* 主體具有預期的 CN 元素。
+* 其簽發者 (在鏈中的直屬或更高，) 由執行驗證的代理程式所信任。
+
+Service Fabric 支援以兩種方式透過 CN 宣告憑證：
+
+* 使用 *隱含* 簽發者，這表示鏈必須以信任錨點結尾。
+* 使用指紋宣告的簽發者，這稱為「簽發者釘選」。
+
+如需詳細資訊，請參閱以 [名稱為基礎的一般憑證驗證聲明](cluster-security-certificates.md#common-name-based-certificate-validation-declarations)。
+
+若要使用憑證指紋所宣告的自我簽署憑證來轉換叢集，必須先依指紋將目標、CA 簽署的憑證引進到叢集。 只有這樣才可以從指紋轉換成 CN。
+
+基於測試目的，CN *可以* 宣告自我簽署的憑證，但只有在簽發者已釘選到自己的指紋時才能使用。 從安全性的觀點來看，這個動作幾乎等同于依指紋宣告相同的憑證。 此類型的成功轉換並不保證成功地從指紋轉換為具有 CA 簽署憑證的 CN。 建議您使用適當的 CA 簽署憑證來測試轉換。 這種測試有免費的選項。
 
 ## <a name="upload-the-certificate-and-install-it-in-the-scale-set"></a>上傳憑證並安裝在擴展集
-在 Azure 中，取得和布建憑證的建議機制包含 Azure Key Vault 服務和其工具。 符合叢集憑證宣告的憑證必須布建到組成您叢集的虛擬機器擴展集的每個節點;如需進一步的詳細資料，請參閱 [虛擬機器擴展集上的密碼](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-securely-ship-a-certificate-to-the-vm) 。 在叢集的憑證宣告進行變更之前，必須先在叢集的每個節點類型的 Vm 上安裝目前的和目標叢集憑證。 從憑證發行到布建至 Service fabric 節點的旅程將在 [這裡](cluster-security-certificate-management.md#the-journey-of-a-certificate)深入討論。
 
-## <a name="bring-cluster-to-an-optimal-starting-state"></a>將叢集帶入最佳的啟動狀態
-將憑證宣告從指紋式轉換成以一般名稱為基礎的影響兩者：
+在 Azure 中，取得和布建憑證的建議機制包含 Azure Key Vault 和其工具。 符合叢集憑證宣告的憑證必須布建至組成叢集的虛擬機器擴展集的每個節點。 如需詳細資訊，請參閱 [虛擬機器擴展集上的密碼](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-securely-ship-a-certificate-to-the-vm)。
 
-- 叢集中的每個節點如何找到並將其認證提供給其他節點
-- 當每個節點建立安全連線時，如何驗證其對應的認證  
+在叢集的憑證宣告中進行變更之前，請務必在叢集的每個節點類型的虛擬機器上安裝目前的和目標叢集憑證。 憑證發佈到 Service Fabric 節點的進行布建的旅程，將在 [憑證旅程](cluster-security-certificate-management.md#the-journey-of-a-certificate)中深入討論。
 
-請檢查 [這兩個設定的簡報和驗證規則](cluster-security-certificates.md#certificate-configuration-rules) ，再繼續進行。 執行指紋轉換一般名稱轉換時，最重要的考慮是升級和尚未升級的節點 (也就是屬於不同升級網域的節點) 必須能夠在升級期間隨時執行成功的相互驗證。 若要達到此目的，建議您在初始升級中依指紋宣告目標/目標憑證，並在後續的程式中完成轉換為一般名稱。 如果叢集已處於建議的啟動狀態，則可以略過此區段。
+## <a name="bring-the-cluster-to-an-optimal-starting-state"></a>讓叢集進入最佳的啟動狀態
 
-轉換有多個有效的啟動狀態;非變異是叢集已經使用目標憑證 (在升級至一般名稱開始時由指紋) 宣告。 我們考慮 `GoalCert` `OldCert1` `OldCert2` ：
+將憑證宣告從以指紋為基礎的轉換成以 CN 為基礎的影響：
+
+- 叢集中的每個節點如何尋找並將其認證提供給其他節點。
+- 每個節點在建立安全連線時，如何驗證其對應的認證。
+
+在您繼續之前，請先檢查 [這兩項設定的簡報與驗證規則](cluster-security-certificates.md#certificate-configuration-rules) 。 當您執行指紋對 CN 轉換時，最重要的考慮是升級和尚未升級的節點 (也就是屬於不同升級網域的節點) 必須能夠在升級期間隨時執行成功的相互驗證。 若要達到這種行為，建議的方法是在初始升級中依指紋宣告目標或目標憑證。 然後完成轉換至後續的 CN。 如果叢集已處於建議的啟動狀態，您可以略過本節。
+
+轉換有多個有效的啟動狀態。 非變異是叢集已經使用目標憑證 (在升級到 CN 開始時由指紋) 宣告。 我們 `GoalCert` `OldCert1` `OldCert2` 在本文中考慮、和。
 
 #### <a name="valid-starting-states"></a>有效的啟動狀態
+
 - `Thumbprint: GoalCert, ThumbprintSecondary: None`
 - `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`，其中的 `GoalCert` 日期晚 `NotAfter` 于 `OldCert1`
 - `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`，其中的 `GoalCert` 日期晚 `NotAfter` 于 `OldCert1`
 
-如果您的叢集不是上述的其中一個有效狀態，請參閱本文結尾的 < 關於如何達成該狀態的附錄。
+如果您的叢集不是先前所述的其中一個有效狀態，請參閱本文結尾一節中有關達到該狀態的資訊。
 
-## <a name="select-the-desired-common-name-based-certificate-validation-scheme"></a>選取所需的一般名稱型憑證驗證配置
-如先前所述，Service Fabric 支援透過具有隱含信賴起點的 CN 宣告憑證，或是明確地釘選簽發者指紋。 請參閱 [這篇文章](cluster-security-certificates.md#common-name-based-certificate-validation-declarations) 以取得詳細資訊，並確定您已充分瞭解差異，以及選擇任一種機制的含意。 在語法上，此差異/選擇取決於參數的值 `certificateIssuerThumbprintList` ：空白表示依賴信任的根 CA (信賴起點) ，而一組指紋會限制允許的叢集憑證直接簽發者。
+## <a name="select-the-desired-cn-based-certificate-validation-scheme"></a>選取想要的以 CN 為基礎的憑證驗證配置
+
+如先前所述，Service Fabric 支援透過具有隱含信賴起點的 CN 宣告憑證，或是明確地釘選簽發者指紋。 如需詳細資訊，請參閱以 [名稱為基礎的一般憑證驗證聲明](cluster-security-certificates.md#common-name-based-certificate-validation-declarations)。
+
+確定您已充分瞭解這些差異，以及選擇任一機制的含意。 在語法上，此差異或選擇取決於參數的值 `certificateIssuerThumbprintList` 。 空白表示依賴信任的根 CA (信賴起點) ，而一組指紋會限制叢集憑證允許的直接簽發者。
 
    > [!NOTE]
-   > ' CertificateIssuerThumbprint ' 欄位允許指定主體一般名稱所宣告之憑證的預期直接簽發者。 可接受的值為一或多個逗點分隔的 SHA1 指紋。 請注意，這是憑證驗證的增強-如果未指定簽發者/清單是空的，則會接受憑證進行驗證（如果可以建立憑證鏈），並在驗證程式信任的根目錄中結束。 如果指定了一或多個簽發者指紋，當其直接簽發者的指紋（從鏈中解壓縮）符合此欄位中指定的任何值時，就會接受憑證，不論根是否受信任。 請注意，PKI 可能會使用不同的憑證授權單位單位 ( 「簽發者」 ) 來簽署具有特定主旨的憑證，因此請務必為該主體指定所有預期的簽發者指紋。 換句話說，憑證的更新並不保證是由與要更新之憑證相同的簽發者所簽署。
+   > 此 `certificateIssuerThumbprint` 欄位可讓您指定主旨 CN 所宣告之憑證的預期直接簽發者。 可接受的值為一或多個逗點分隔的 SHA1 指紋。 此動作會增強憑證驗證。
    >
-   > 指定簽發者是最佳的做法；雖然省略它仍然可以運作 (針對鏈結至受信任根目錄的憑證)，此行為仍具有限制，並可能會在不久的將來被移除。 此外，請注意到在 Azure 中部署、受到由私人 PKI 簽發的 X509 憑證所保護，並由主體所宣告的叢集，在該 PKI 的憑證原則不可探索、不可用且不可存取的情況下，該叢集可能會無法由 Azure Service Fabric 服務進行驗證 (針對叢集對服務通訊)。 
+   > 如果未指定簽發者或清單是空的，則會接受憑證以進行驗證（如果可以建立憑證鏈）。 憑證接著會在驗證程式信任的根目錄中結束。 如果指定了一或多個簽發者指紋，當其直接簽發者的指紋（從鏈中解壓縮）符合此欄位中指定的任何值時，就會接受憑證。 無論根是否受信任，都會接受憑證。
+   >
+   > PKI 可能會使用不同的憑證授權單位單位 (也稱為簽發 *者) 來* 簽署具有指定主旨的憑證。 基於這個理由，請務必為該主體指定所有預期的簽發者指紋。 換句話說，憑證的更新並不保證是由與要更新之憑證相同的簽發者所簽署。
+   >
+   > 指定簽發者被視為最佳做法。 略過簽發者將可繼續用於連結至受根信任的憑證，但這種行為有一些限制，可能會在不久的將來淘汰。 在 Azure 中部署的叢集，會使用私人 PKI 所發行的 X509 憑證來保護，而且可能無法透過叢集對服務通訊) 的 Service Fabric (進行驗證。 驗證需要 PKI 的憑證原則可以探索、可用且可供存取。
 
-## <a name="update-the-clusters-azure-resource-management-arm-template-and-deploy"></a>更新叢集的 Azure 資源管理 (ARM) 範本和部署
-建議您使用 ARM 範本來管理 Azure Service Fabric 叢集;另一種方法是使用 json 成品，也就是 [Azure 資源總管 (preview) ](https://resources.azure.com)。 Azure 入口網站目前無法使用相同的體驗。 如果無法使用對應至現有叢集的原始範本，則可以在 Azure 入口網站中取得對等的範本，方法是流覽至包含該叢集的資源群組，選取 [**自動化**] 左側功能表中的 [**匯出範本**]，然後再選取所需的資源;至少應該匯出虛擬機器擴展集和叢集資源。 也可以下載產生的範本。 請注意，此範本可能需要在完整部署之前變更，而且可能不符合原始的變更-它會反映叢集資源的目前狀態。
+## <a name="update-the-clusters-azure-resource-manager-template-and-deploy"></a>更新叢集的 Azure Resource Manager 範本並部署
+
+使用 Azure Resource Manager (ARM) 範本管理您的 Service Fabric 叢集。 另一種方法是使用 JSON 成品，也就是 [Azure 資源總管 (preview) ](https://resources.azure.com)。 Azure 入口網站目前無法使用相同的體驗。
+
+如果無法使用對應至現有叢集的原始範本，則可以在 Azure 入口網站中取得對等的範本。 移至包含叢集的資源群組，然後從左側的 [**自動化**] 功能表選取 [**匯出範本**]。 然後選取您想要的資源。 至少應該匯出虛擬機器擴展集和叢集資源。 也可以下載產生的範本。 此範本可能需要在完整部署之前進行變更。 此範本也可能完全不符合原始範本。 它會反映叢集資源的目前狀態。
 
 必要的變更如下所示：
-    - 更新虛擬機器資源) 下 (Service Fabric 節點擴充功能的定義;如果叢集定義了多個節點類型，您將需要更新每個對應虛擬機器擴展集的定義
-    - 更新叢集資源定義
 
-以下提供詳細的範例。
+- 更新虛擬機器資源) 下 (Service Fabric 節點擴充功能的定義。 如果叢集定義了多個節點類型，您必須更新每個對應的虛擬機器擴展集的定義。
+- 正在更新叢集資源定義。
 
-### <a name="updating-the-virtual-machine-scale-set-resources"></a>正在更新虛擬機器擴展集資源 (s) 
-寄件者
+這裡包含詳細的範例。
+
+### <a name="update-the-virtual-machine-scale-set-resources"></a>更新虛擬機器擴展集資源
+寄件者: 
 ```json
 "virtualMachineProfile": {
         "extensionProfile": {
@@ -83,7 +122,7 @@ ms.locfileid: "92368055"
                     }
                 },
 ```
-收件者
+變更為：
 ```json
 "virtualMachineProfile": {
         "extensionProfile": {
@@ -111,10 +150,11 @@ ms.locfileid: "92368055"
                 },
 ```
 
-### <a name="updating-the-cluster-resource"></a>正在更新叢集資源
-在**ServiceFabric/** 叢集資源中，新增具有**CommonNames**設定的 **>certificatecommonnames**屬性，並將 [**憑證**] 屬性全部移除 (其所有設定) ：
+### <a name="update-the-cluster-resource"></a>更新叢集資源
 
-寄件者
+在**ServiceFabric/** 叢集資源中，新增具有**CommonNames**設定的 **>certificatecommonnames**屬性，並) 所有的設定中 (完全移除**憑證**屬性。
+
+寄件者: 
 ```json
     {
         "apiVersion": "2018-02-01",
@@ -134,7 +174,7 @@ ms.locfileid: "92368055"
             },
         ...
 ```
-收件者
+變更為：
 ```json
     {
         "apiVersion": "2018-02-01",
@@ -160,10 +200,11 @@ ms.locfileid: "92368055"
         ...
 ```
 
-如需詳細資訊，請參閱 [部署使用憑證一般名稱而非指紋的 Service Fabric 叢集。](./service-fabric-create-cluster-using-cert-cn.md)
+如需詳細資訊，請參閱 [部署使用憑證一般名稱而非指紋的 Service Fabric](./service-fabric-create-cluster-using-cert-cn.md)叢集。
 
 ## <a name="deploy-the-updated-template"></a>部署更新的範本
-完成變更之後，重新部署更新的範本。
+
+進行變更之後，請重新部署更新的範本。
 
 ```powershell
 $groupname = "sfclustertutorialgroup"
@@ -172,7 +213,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
     -TemplateParameterFile "C:\temp\cluster\parameters.json" -TemplateFile "C:\temp\cluster\template.json" 
 ```
 
-## <a name="appendix-achieve-a-valid-starting-state-for-converting-a-cluster-to-cn-based-certificate-declarations"></a>附錄：達成將叢集轉換為以 CN 為基礎之憑證宣告的有效啟動狀態
+## <a name="achieve-a-valid-starting-state-for-converting-a-cluster-to-cn-based-certificate-declarations"></a>達成將叢集轉換為以 CN 為基礎之憑證宣告的有效啟動狀態
 
 | 開始狀態 | 升級 1 | 升級 2 |
 | :--- | :--- | :--- |
@@ -182,12 +223,12 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
 | `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`，其中的 `OldCert1` 日期晚 `NotAfter` 于 `GoalCert` | 升級至 `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
 | `Thumbprint: OldCert1, ThumbprintSecondary: OldCert2` | 移除其中一個 `OldCert1` 或 `OldCert2` 以進入狀態 `Thumbprint: OldCertx, ThumbprintSecondary: None` | 從新的啟動狀態繼續 |
 
-如需有關如何執行這些升級的指示，請參閱 [這份檔](service-fabric-cluster-security-update-certs-azure.md)。
-
+如需如何執行任何這些升級的指示，請參閱 [管理 Azure Service Fabric](service-fabric-cluster-security-update-certs-azure.md)叢集中的憑證。
 
 ## <a name="next-steps"></a>後續步驟
+
 * 瞭解叢集 [安全性](service-fabric-cluster-security.md)。
-* 瞭解如何依照 [一般名稱來變換叢集憑證](service-fabric-cluster-rollover-cert-cn.md)
-* 瞭解如何[設定 touchless autorollover 的](cluster-security-certificate-management.md)叢集
+* 瞭解如何依照 [一般名稱](service-fabric-cluster-rollover-cert-cn.md)變換叢集憑證。
+* 瞭解如何 [設定 touchless autorollover](cluster-security-certificate-management.md)的叢集。
 
 [image1]: ./media/service-fabric-cluster-change-cert-thumbprint-to-cn/PortalViewTemplates.png

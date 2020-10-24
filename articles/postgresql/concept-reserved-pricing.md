@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 81180cc0d9cc7754e5a3e935c09441995f16c56a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca2e988067add1513036e2f314e84a7ba6908cdd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907563"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488056"
 ---
 # <a name="prepay-for-azure-database-for-postgresql---single-server-compute-resources-with-reserved-capacity"></a>預付適用於 PostgreSQL 的 Azure 資料庫-具有保留容量的單一伺服器計算資源
 
@@ -20,15 +20,15 @@ ms.locfileid: "90907563"
 您不需要將保留指派給特定的適用於 PostgreSQL 的 Azure 資料庫伺服器。 已在執行的適用於 PostgreSQL 的 Azure 資料庫 (或剛部署的) 將會自動獲得保留定價的優點。 購買保留之後，您就可以預先支付一年或三年期的計算成本。 當您購買保留專案時，與保留屬性相符的 Azure database for 于 postgresql 計算費用就不會再以隨用隨付費率計費。 保留並未涵蓋與于 postgresql 資料庫伺服器相關聯的軟體、網路或儲存體費用。 在保留期限結束時，帳單權益會過期，而適用於 PostgreSQL 的 Azure 資料庫會以隨用隨付價格計費。 保留不會自動更新。 如需定價資訊，請參閱 [適用於 PostgreSQL 的 Azure 資料庫保留容量](https://azure.microsoft.com/pricing/details/postgresql/)供應專案。 </br>
 
 > [!IMPORTANT]
-> 您可以在 [單一伺服器](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) 和 [超大規模 Citus](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus) 部署選項中取得適用於 PostgreSQL 的 Azure 資料庫的保留容量定價。 如需超大規模 (Citus) RI 定價的相關資訊，請參閱 [此頁面](concepts-hyperscale-reserved-pricing.md)。
+> 您可以在 [單一伺服器](./overview.md#azure-database-for-postgresql---single-server) 和 [超大規模 Citus](./overview.md#azure-database-for-postgresql--hyperscale-citus) 部署選項中取得適用於 PostgreSQL 的 Azure 資料庫的保留容量定價。 如需超大規模 (Citus) RI 定價的相關資訊，請參閱 [此頁面](concepts-hyperscale-reserved-pricing.md)。
 
-您可以在 [Azure 入口網站](https://portal.azure.com/)中購買適用於 PostgreSQL 的 Azure 資料庫的保留容量。 保留的付款方式可為[預先付款或每月付款](../cost-management-billing/reservations/monthly-payments-reservations.md)。 若要購買保留容量：
+您可以在 [Azure 入口網站](https://portal.azure.com/)中購買適用於 PostgreSQL 的 Azure 資料庫的保留容量。 保留的付款方式可為[預先付款或每月付款](../cost-management-billing/reservations/prepare-buy-reservation.md)。 若要購買保留容量：
 
 * 您必須是至少一個具有隨用隨付費率的企業或個別訂用帳戶的擁有者角色。
 * 針對企業訂用帳戶，必須在 [EA 入口網站](https://ea.azure.com/)中啟用**新增保留執行個體**。 或者，如果該設定已停用，則您必須是訂用帳戶上的 EA 系統管理員。
 * 針對雲端解決方案提供者 (CSP) 方案，只有系統管理員專員或銷售專員可以購買適用於 PostgreSQL 的 Azure 資料庫保留容量。 </br>
 
-如需企業客戶和隨用隨付客戶的計費方式的詳細資訊，請參閱針對您的 [enterprise 註冊瞭解 azure 保留使用量](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) ，並 [瞭解您的隨用隨付訂用帳戶的 azure 保留使用量](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)。
+如需企業客戶和隨用隨付客戶的計費方式的詳細資訊，請參閱針對您的 [enterprise 註冊瞭解 azure 保留使用量](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) ，並 [瞭解您的隨用隨付訂用帳戶的 azure 保留使用量](../cost-management-billing/reservations/understand-reserved-instance-usage.md)。
 
 
 ## <a name="determine-the-right-server-size-before-purchase"></a>在購買前判斷正確的伺服器大小
@@ -63,7 +63,7 @@ ms.locfileid: "90907563"
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>取消、交換保留或進行退費
 
-您可以取消、交換保留或進行退費，但有某些限制。 如需詳細資訊，請參閱 [Azure 保留的自助式交換和退費](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)。
+您可以取消、交換保留或進行退費，但有某些限制。 如需詳細資訊，請參閱 [Azure 保留的自助式交換和退費](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)。
 
 ## <a name="vcore-size-flexibility"></a>vCore 大小彈性
 
@@ -79,9 +79,9 @@ VCore 保留折扣會自動套用至符合適用於 PostgreSQL 的 Azure 資料�
 
 若要深入了解 Azure 保留項目，請參閱下列文章：
 
-* [什麼是 Azure 保留](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)？
-* [管理 Azure 保留項目](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
-* [了解 Azure 保留折扣](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
-* [了解隨用隨付訂用帳戶的保留使用量](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-postgresql)
-* [了解 Enterprise 註冊的保留項目使用量](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-* [合作夥伴中心雲端解決方案提供者 (CSP) 計畫中的 Azure 保留項目](https://docs.microsoft.com/partner-center/azure-reservations)
+* [什麼是 Azure 保留](../cost-management-billing/reservations/save-compute-costs-reservations.md)？
+* [管理 Azure 保留項目](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+* [了解 Azure 保留折扣](../cost-management-billing/reservations/understand-reservation-charges.md)
+* [了解隨用隨付訂用帳戶的保留使用量](../cost-management-billing/reservations/understand-reservation-charges-postgresql.md)
+* [了解 Enterprise 註冊的保留項目使用量](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+* [合作夥伴中心雲端解決方案提供者 (CSP) 計畫中的 Azure 保留項目](/partner-center/azure-reservations)

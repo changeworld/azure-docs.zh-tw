@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0fe56a8173a4cfe8836a078a62c7bc9015c83324
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1d524e34623d5fde3d6f22afbdd63ce95699fe6f
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461255"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494486"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure Digital Twins API 和 SDK
 
@@ -32,10 +32,10 @@ Azure 數位 Twins 隨附 **控制平面 api** 和 **資料平面 api** ，可�
 * 您可以參考 [控制平面 Swagger 資料夾](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)中最新的 Swagger，直接呼叫 api。 此存放庫也包含顯示使用方式的範例資料夾。
 * 您目前可以在中存取控制項 Api 的 Sdk .。。
   - [.Net (c # ) ](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([來源](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))  ([參考 [自動產生]](/dotnet/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-dotnet-preview)) 
-  - [JAVA](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_03_01_preview/azure-mgmt-digitaltwins) ([來源](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins))  ([參考 [自動產生]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview)) 
+  - [JAVA](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([來源](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins))  ([參考 [自動產生]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview)) 
   - [JavaScript](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([來源](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins)) 
   - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([來源](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-mgmt-digitaltwins)) 
-  - [Go-來源](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/digitaltwins/mgmt/2020-03-01-preview/digitaltwins)
+  - [Go](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins)
 
 您也可以透過 [Azure 入口網站](https://portal.azure.com) 和 [CLI](how-to-use-cli.md)與 Azure 數位 Twins 互動，來練習控制項平面 api。
 
@@ -56,7 +56,7 @@ Azure 數位 Twins 隨附 **控制平面 api** 和 **資料平面 api** ，可�
 * 您可以使用 **.net (c # ) ** SDK。 若要使用 .NET SDK .。。
    - 您可以從 NuGet： [DigitalTwins](https://www.nuget.org/packages/Azure.DigitalTwins.Core)來查看和新增套件。 
    - 您可以在 GitHub： [適用于 .net 的 Azure IoT 數位 Twins 用戶端程式庫](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)中找到 SDK 來源，包括範例的資料夾。 
-   - 您可以查看 [SDK 參考檔](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview)。
+   - 您可以查看 [SDK 參考檔](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)。
    - 您可以繼續閱讀本文的 [.net (c # ) SDK (資料平面) ](#net-c-sdk-data-plane) 一節，以查看詳細的資訊和使用範例。
 * 您可以使用 **JAVA** SDK。 使用 JAVA SDK .。。
    - 您可以從 Maven 查看並安裝套件： [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)
@@ -65,6 +65,8 @@ Azure 數位 Twins 隨附 **控制平面 api** 和 **資料平面 api** ，可�
 * 您可以使用 **JavaScript** SDK。 使用 JavaScript SDK .。。
    - 您可以從 npm： [適用于 JavaScript 的 Azure Azure 數位 Twins 用戶端程式庫](https://www.npmjs.com/package/@azure/digital-twins)，查看並安裝套件。
    - 您可以查看 [SDK 參考檔](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest)。
+* 您可以使用 **Python** SDK。 使用 Python SDK .。。
+   - 您可以查看並安裝套件： [適用于 Python 的 Azure Azure 數位 Twins Core 用戶端程式庫](https://pypi.org/project/azure-digitaltwins-core/1.0.0b1/)。
 * 您可以使用 AutoRest 來產生另一種語言的 SDK。 遵循 how [*to：使用 AutoRest 建立 Azure 數位 Twins 的自訂 sdk*](how-to-create-custom-sdks.md)中的指示。
 
 您也可以透過 [CLI](how-to-use-cli.md)與 Azure 數位 Twins 互動，來練習日期平面 api。
@@ -100,6 +102,8 @@ string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
 var credential = new DefaultAzureCredential();
 DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
 ```
+
+[!INCLUDE [Azure Digital Twins: local credentials note](../../includes/digital-twins-local-credentials-note.md)] 
 
 上傳模型和清單模型：
 

@@ -4,15 +4,15 @@ description: 瞭解如何使用 Azure 入口網站、PowerShell 或 Azure CLI，
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/14/2020
+ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 012b5c76a025e6dc6ae1fbd5aedddf9ea3d2a4f0
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: a57956de574f74308747edd463851eb1ea4dbb42
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057819"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489484"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 檔案同步
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
@@ -418,7 +418,6 @@ az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup
 - **路徑**：要同步處理為同步群組一部分的 Windows Server 路徑。
 - **雲端階層處理**：啟用或停用雲端階層處理的開關。 透過雲端階層處理，可將不常使用或存取的檔案分層處理至 Azure 檔案服務。
 - **磁碟區可用空間**：在伺服器端點所在磁碟區上要保留的可用空間數量。 例如，如果具有單一伺服器端點之磁碟區上的磁碟區可用空間是設定為 50%，則大約有一半的資料量會分層處理至 Azure 檔案服務。 無論雲端階層處理是否啟用，您的 Azure 檔案共用在同步群組中一律會有完整的資料複本。
-- **初始下載模式**：這是選用的選項，從代理程式版本11開始，在 Azure 檔案共用中有檔案，但在伺服器上沒有檔案時，這會很有説明。 比方說，如果您建立伺服器端點，將另一個分公司伺服器新增至同步處理群組，或是當您容錯移轉失敗的伺服器時，就可能存在這樣的情況。 如果啟用雲端階層處理，預設值是只重新叫用命名空間，一開始不會有檔案內容。 如果您認為使用者存取要求應該決定要將哪些檔案內容重新叫用至伺服器，這就很有用。 如果已停用雲端階層處理，則預設會先下載命名空間，然後根據上次修改的時間戳記重新叫用檔案，直到達到本機容量為止。 不過，您可以將初始下載模式變更為僅限命名空間。 只有當此伺服器端點的雲端階層處理已停用時，才可以使用第三個模式。 這種模式可避免先重新叫用命名空間。 檔案只會在本機伺服器上出現，如果有機會進行完整下載。 如果應用程式需要完整的檔案存在，而且無法容忍其命名空間中的階層式檔案，這個模式就很有用。
 
 若要新增伺服器端點，請選取 [建立]****。 您的檔案現在會在 Azure 檔案共用和 Windows Server 之間保持同步。 
 
@@ -429,8 +428,6 @@ az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup
 $serverEndpointPath = "<your-server-endpoint-path>"
 $cloudTieringDesired = $true
 $volumeFreeSpacePercentage = <your-volume-free-space>
-# Optional property. Choose from: [NamespaceOnly] default when cloud tiering is enabled. [NamespaceThenModifiedFiles] default when cloud tiering is disabled. [AvoidTieredFiles] only available when cloud tiering is disabled.
-$initialDownloadPolicy = NamespaceOnly
 
 if ($cloudTieringDesired) {
     # Ensure endpoint path is not the system volume
@@ -447,16 +444,14 @@ if ($cloudTieringDesired) {
         -ServerResourceId $registeredServer.ResourceId `
         -ServerLocalPath $serverEndpointPath `
         -CloudTiering `
-        -VolumeFreeSpacePercent $volumeFreeSpacePercentage `
-        -InitialDownloadPolicy $initialDownloadPolicy
+        -VolumeFreeSpacePercent $volumeFreeSpacePercentage
 } else {
     # Create server endpoint
     New-AzStorageSyncServerEndpoint `
         -Name $registeredServer.FriendlyName `
         -SyncGroup $syncGroup `
         -ServerResourceId $registeredServer.ResourceId `
-        -ServerLocalPath $serverEndpointPath `
-        -InitialDownloadPolicy $initialDownloadPolicy
+        -ServerLocalPath $serverEndpointPath
 }
 ```
 
@@ -483,7 +478,6 @@ az storagesync sync-group server-endpoint create --resource-group myResourceGrou
                                                  --cloud-tiering on \
                                                  --volume-free-space-percent 85 \
                                                  --tier-files-older-than-days 15 \
-                                                 --initial-download-policy NamespaceOnly [OR] NamespaceThenModifiedFiles [OR] AvoidTieredFiles
                                                  --offline-data-transfer on \
                                                  --offline-data-transfer-share-name myfilesharename \
 
@@ -575,40 +569,6 @@ Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
 
 如果每個磁片區的最大 64 VSS 快照集不是正確的設定，您可以透過登錄機 [碼來變更](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies)該值。
 若要讓新的限制生效，您必須重新執行 Cmdlet，以在先前啟用的每個磁片區上啟用先前的版本相容性，並使用-Force 旗標，將每個磁片區的最大 VSS 快照集數目帶到帳戶。 這會導致新計算的相容天數。 請注意，這項變更只會在新階層的檔案上生效，並覆寫您可能進行的 VSS 排程上的任何自訂。
-
-<a id="proactive-recall"></a>
-## <a name="proactively-recall-new-and-changed-files-from-an-azure-file-share"></a>主動重新叫用 Azure 檔案共用中新的和變更的檔案
-
-使用代理程式第11版時，伺服器端點上會出現新的模式。 這種模式可讓分散在世界各地的公司在本機使用者存取任何檔案之前，預先填入遠端區域中的伺服器快取。 在伺服器端點上啟用時，此模式會導致此伺服器重新叫用在 Azure 檔案共用中建立或變更的檔案。
-
-### <a name="scenario"></a>狀況
-
-全球各地的公司在美國和印度都有分公司。 早上 (US 時間) 資訊工作者為全新的專案建立新的資料夾和新的檔案，並在每日工作。 Azure 檔案同步會將資料夾和檔案同步至 Azure 檔案共用 (雲端端點) 。 印度的資訊工作者將繼續以其時區處理專案。 當他們抵達早上，印度的本機 Azure 檔案同步啟用的伺服器必須在本機提供這些新檔案，以便印度的團隊可以有效率地使用本機快取。 啟用此模式可讓初始檔案存取速度變慢，因為視需要重新叫用，並可讓伺服器在檔案于 Azure 檔案共用中變更或建立時，主動地重新叫用檔案。
-
-> [!IMPORTANT]
-> 請務必瞭解，在伺服器上緊密地追蹤 Azure 檔案共用中的變更，可能會增加您的輸出流量和 Azure 帳單。 如果在本機不需要重新叫用至伺服器的檔案，則不需要重新叫用伺服器可能會產生負面的後果。 如果您知道在伺服器上預先填入快取，且雲端中最近的變更，將會對使用該伺服器上之檔案的使用者或應用程式造成正面的影響，請使用此模式。
-
-### <a name="enable-a-server-endpoint-to-proactively-recall-what-changed-in-an-azure-file-share"></a>讓伺服器端點主動召回 Azure 檔案共用中變更的內容
-
-# <a name="portal"></a>[入口網站](#tab/proactive-portal)
-
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，移至您的儲存體同步服務，選取正確的同步群組，然後識別您想要在 Azure 檔案共用中密切追蹤變更的伺服器端點， (雲端端點) 。
-1. 在 [雲端階層處理] 區段中，尋找「Azure 檔案共用下載」主題。 您將會看到目前選取的模式，並可將其變更為更緊密地追蹤 Azure 檔案共用變更，並主動將它們重新叫用至伺服器。
-
-:::image type="content" source="media/storage-sync-files-deployment-guide/proactive-download.png" alt-text="顯示目前作用中之伺服器端點的 Azure 檔案共用下載行為的影像，以及開啟允許變更之功能表的按鈕。":::
-
-# <a name="powershell"></a>[PowerShell](#tab/proactive-powershell)
-
-您可以透過 [AzStorageSyncServerEndpoint](https://docs.microsoft.com/powershell/module/az.storagesync/set-azstoragesyncserverendpoint) 指令 Cmdlet 修改 PowerShell 中的伺服器端點屬性。
-
-```powershell
-# Optional parameter. Default: "UpdateLocallyCachedFiles", alternative behavior: "DownloadNewAndModifiedFiles"
-$recallBehavior = "DownloadNewAndModifiedFiles"
-
-Set-AzStorageSyncServerEndpoint -InputObject <PSServerEndpoint> -LocalCacheMode $recallBehavior
-```
-
----
 
 ## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>將 DFS 複寫 (DFS-R) 部署移轉至 Azure 檔案同步
 若要將 DFS-R 部署移轉至 Azure 檔案同步處理：

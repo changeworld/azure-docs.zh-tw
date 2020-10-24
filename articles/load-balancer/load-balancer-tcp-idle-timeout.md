@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/09/2020
 ms.author: allensu
-ms.openlocfilehash: 26c4c01aaf6abe6b9c9ac6daf6836d7b660ba21e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b507fbad4d9089d918ae7a85c07f30efcb118476
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91649809"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487240"
 ---
 # <a name="configure-tcp-idle-timeout-for-azure-load-balancer"></a>設定 Azure Load Balancer 的 TCP 閒置超時
 
@@ -28,7 +28,11 @@ ms.locfileid: "91649809"
 
 如果您選擇在本機安裝和使用 PowerShell，本文會要求使用 Azure PowerShell 模組版本 5.4.1 或更新版本。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 
-Azure Load Balancer 的閒置 timeout 設定為4分鐘到120分鐘。 根據預設，設定為 4 分鐘。 如果閒置期間超過逾時值，即無法保證仍能維持用戶端與雲端服務之間的 TCP 或 HTTP 工作階段。 深入瞭解 [TCP 閒置超時](load-balancer-tcp-reset.md)。
+Azure Load Balancer 具有下列閒置超時範圍：
+
+針對 Load Balancer 規則和輸入 NAT 規則，4分鐘至100分鐘的輸出規則為4分鐘到30分鐘
+
+根據預設，設定為 4 分鐘。 如果閒置期間超過逾時值，即無法保證仍能維持用戶端與雲端服務之間的 TCP 或 HTTP 工作階段。 深入瞭解 [TCP 閒置超時](load-balancer-tcp-reset.md)。
 
 下列各節說明如何變更公用 IP 和負載平衡器資源的閒置逾時設定。
 
@@ -41,7 +45,7 @@ $publicIP.IdleTimeoutInMinutes = "15"
 Set-AzPublicIpAddress -PublicIpAddress $publicIP
 ```
 
-`IdleTimeoutInMinutes` 是選擇性的。 若未設定，則預設的逾時為 4 分鐘。 可接受的超時範圍為4到120分鐘。
+`IdleTimeoutInMinutes` 是選擇性的。 若未設定，則預設的逾時為 4 分鐘。 
 
 ## <a name="set-the-tcp-idle-timeout-on-rules"></a>設定規則的 TCP 閒置超時
 

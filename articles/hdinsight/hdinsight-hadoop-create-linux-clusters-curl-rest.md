@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: 75eda1720e80a886ca0efb2d1f4204416a5b55f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2b3810afab86b2f81a18bac442ef361404f2309
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083333"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490351"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>使用 Azure REST API 建立 Apache Hadoop 叢集
 
@@ -214,7 +214,7 @@ Azure Resource Manager 範本是描述 **資源群組** 的 JSON 檔，以及其
 
 ## <a name="sign-in-to-your-azure-subscription"></a>登入您的 Azure 訂用帳戶：
 
-請依照[開始使用 Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) 所述的步驟操作，並使用 `az login` 命令連接到您的訂用帳戶。
+請依照[開始使用 Azure CLI](/cli/azure/get-started-with-az-cli2) 所述的步驟操作，並使用 `az login` 命令連接到您的訂用帳戶。
 
 ## <a name="create-a-service-principal"></a>建立服務主體
 
@@ -345,7 +345,7 @@ curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 
 如果您在建立 HDInsight 叢集時遇到問題，請參閱[存取控制需求](./hdinsight-hadoop-customize-cluster-linux.md#access-control)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 既然您已成功建立 HDInsight 叢集，請使用下列各項來瞭解如何使用您的叢集。
 
