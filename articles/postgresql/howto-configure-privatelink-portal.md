@@ -6,18 +6,18 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 7d2bdb96485a811ea9b3dde5320084f666508622
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4da1c1e142c5d70bea342fd9513061710228e61d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907497"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489926"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>使用入口網站建立和管理適用於 PostgreSQL 的 Azure 資料庫單一伺服器的 Private Link
 
 私人端點是 Azure 中私人連結的基本要素。 其可讓 Azure 資源 (例如虛擬機器 (VM)) 與私人連結資源進行私密通訊。  在本文中，您將瞭解如何使用 Azure 入口網站在 Azure 虛擬網路中建立 VM，以及使用 Azure 私人端點在適用於 PostgreSQL 的 Azure 資料庫單一伺服器中建立 VM。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如尚未擁有 Azure 訂用帳戶，請在開始之前先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
 > 私人連結功能僅適用于一般用途或記憶體優化定價層中的適用於 PostgreSQL 的 Azure 資料庫伺服器。 確定資料庫伺服器是在其中一個定價層。
@@ -41,7 +41,7 @@ ms.locfileid: "90907497"
     | 位址空間 | 輸入 *10.1.0.0/16*。 |
     | 訂用帳戶 | 選取您的訂用帳戶。|
     | 資源群組 | 選取 [新建]，輸入 *myResourceGroup*，然後選取 [確定]。 |
-    | Location | 選取 [西歐]  。|
+    | 位置 | 選取 [西歐]。|
     | 子網路 - 名稱 | 輸入 *>mysubnet*。 |
     | 子網路 - 位址範圍 | 輸入 *10.1.0.0/24*。 |
     |||
@@ -60,7 +60,7 @@ ms.locfileid: "90907497"
     | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。  |
     | **執行個體詳細資料** |  |
     | 虛擬機器名稱 | 輸入 myVm。 |
-    | 區域 | 選取 [西歐]  。 |
+    | 區域 | 選取 [西歐]。 |
     | 可用性選項 | 保留預設值 [不需要基礎結構備援]。 |
     | 映像 | 選取 [Windows Server 2019 Datacenter]。 |
     | 大小 | 保留預設值 [標準 DS1 v2]。 |
@@ -121,7 +121,7 @@ ms.locfileid: "90907497"
     | 計算 + 儲存體| 根據工作負載選取伺服器所需的定價層。 |
     |||
  
-7. 選取 [確定]  。 
+7. 選取 [確定]。 
 8. 選取 [檢閱 + 建立]。 您會移至 [檢閱 + 建立] 頁面，其中 Azure 會驗證您的設定。 
 9. 當您看到 [通過驗證] 訊息時，請選取 [ **建立**]。 
 10. 當您看到 [驗證成功] 訊息時，請選取 [建立]。 
@@ -144,7 +144,7 @@ ms.locfileid: "90907497"
     | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。|
     | **實例詳細資料** |  |
     | 名稱 | 輸入 myPrivateEndpoint。 如果此名稱已被使用，請建立唯一名稱。 |
-    |區域|選取 [西歐]  。|
+    |區域|選取 [西歐]。|
     |||
 5. 完成時，選取 [下一步:資源]。
 6. 在 [建立私人端點 - 資源] 中，輸入或選取這項資訊：
@@ -194,14 +194,14 @@ ms.locfileid: "90907497"
 
 1. 開啟 *downloaded.rdp* 檔案。
 
-    1. 如果出現提示，請選取 [連接]。
+    1. 如果出現提示，請選取 [連接]  。
 
     1. 輸入您在建立 VM 時指定的使用者名稱和密碼。
 
         > [!NOTE]
         > 您可能需要選取 [其他選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。
 
-1. 選取 [確定]  。
+1. 選取 [確定]。
 
 1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是] 或 [繼續]。
 
@@ -222,7 +222,7 @@ ms.locfileid: "90907497"
     Address:  10.1.3.4
     ```
 
-3. 使用任何可用的用戶端來測試于 postgresql 伺服器的私人連結連線。 在下列範例中，我使用了 [Azure Data studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) 來進行操作。
+3. 使用任何可用的用戶端來測試于 postgresql 伺服器的私人連結連線。 在下列範例中，我使用了 [Azure Data studio](/sql/azure-data-studio/download?view=sql-server-ver15) 來進行操作。
 
 4. 在 [ **新增連接**] 中，輸入或選取這項資訊：
 
@@ -230,7 +230,7 @@ ms.locfileid: "90907497"
     | ------- | ----- |
     | 伺服器類型| 選取 [ **于 postgresql**]。|
     | 伺服器名稱| 選取 *mydemopostgresserver.privatelink.postgres.database.azure.com* |
-    | [使用者名稱] | 輸入 username@servername 在於 postgresql 伺服器建立期間提供的使用者名稱。 |
+    | 使用者名稱 | 輸入 username@servername 在於 postgresql 伺服器建立期間提供的使用者名稱。 |
     |密碼 |輸入在於 postgresql 伺服器建立期間提供的密碼。 |
     |SSL|選取 [ **必要**]。|
     ||
@@ -252,7 +252,7 @@ ms.locfileid: "90907497"
 
 ## <a name="next-steps"></a>後續步驟
 
-在此操作說明中，您已在虛擬網路、適用於 PostgreSQL 的 Azure 資料庫單一伺服器和私人端點上建立 VM 以進行私人存取。 您已從網際網路連線到其中一個 VM，並使用 Private Link 安全地與于 postgresql 伺服器通訊。 若要深入瞭解私人端點，請參閱 [什麼是 Azure 私人端點](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)。
+在此操作說明中，您已在虛擬網路、適用於 PostgreSQL 的 Azure 資料庫單一伺服器和私人端點上建立 VM 以進行私人存取。 您已從網際網路連線到其中一個 VM，並使用 Private Link 安全地與于 postgresql 伺服器通訊。 若要深入瞭解私人端點，請參閱 [什麼是 Azure 私人端點](../private-link/private-endpoint-overview.md)。
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

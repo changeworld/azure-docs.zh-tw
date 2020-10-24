@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 1f1af53388f177dc348c5cb805ef8e6fbe9f9436
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27da5f1b731b2cdb0604f91f7f9e78b19ee2908b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710816"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489790"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-postgresql---single-server"></a>將停機時間降至適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 [!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server-hyperscale.md)]
@@ -25,4 +25,4 @@ Azure DMS 會執行「適用於 PostgreSQL 的 Azure 資料庫」內部部署的
 
 ## <a name="next-steps"></a>後續步驟
 - 檢視[使用 Microsoft Azure 將應用程式現代化](https://medius.studios.ms/Embed/Video/BRK2102?sid=BRK2102)影片，影片中會示範如何將 PostgreSQL 應用程式移轉至適用於 PostgreSQL 的 Azure 資料庫。
-- 請參閱[在線上使用 DMS 將 PostgreSQL 遷移至適用於 PostgreSQL 的 Azure 資料庫](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)教學課程。
+- 請參閱[在線上使用 DMS 將 PostgreSQL 遷移至適用於 PostgreSQL 的 Azure 資料庫](../dms/tutorial-postgresql-azure-postgresql-online.md)教學課程。

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: aaff5adf358c31d99df7a51305c4e3554c3259c1
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 3aec6cf2fa515d71b93d84cf8c4fc901fc847162
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166245"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487427"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>將一對多關聯性型資料移轉至 Azure Cosmos DB SQL API 帳戶
 
@@ -336,5 +336,5 @@ pool.map(writeOrder, orderids)
 :::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="顯示 SQL 資料庫中 Orders 和 OrderDetails 資料表的螢幕擷取畫面。":::
 
 ## <a name="next-steps"></a>後續步驟
-* 瞭解 [Azure Cosmos DB 中的資料模型](https://docs.microsoft.com/azure/cosmos-db/modeling-data)
-* 瞭解 [如何在 Azure Cosmos DB 上建立資料模型和資料分割](https://docs.microsoft.com/azure/cosmos-db/how-to-model-partition-example)
+* 瞭解 [Azure Cosmos DB 中的資料模型](./modeling-data.md)
+* 瞭解 [如何在 Azure Cosmos DB 上建立資料模型和資料分割](./how-to-model-partition-example.md)

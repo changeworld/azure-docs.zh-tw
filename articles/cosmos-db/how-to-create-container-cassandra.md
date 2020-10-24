@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: d485e90036f03c13ad8c9d52781486151009e14c
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 54b58a07e3d6d4b330b6f97ef0f4a7bdd10293da
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283822"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490453"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-cassandra-api"></a>在 Azure Cosmos DB Cassandra API 中建立容器
 
@@ -36,7 +36,7 @@ ms.locfileid: "92283822"
    * 輸入資料表名稱。
    * 輸入屬性並指定主索引鍵。
    * 輸入要佈建的輸送量 (例如 1000 RU)。
-   * 選取 [確定]  。
+   * 選取 [確定]。
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="Cassandra API 中 [新增資料表] 對話方塊的螢幕擷取畫面":::
 
@@ -68,5 +68,4 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
 * [Azure Cosmos DB 中的資料分割](partitioning-overview.md)
 * [Azure Cosmos DB 中的要求單位](request-units.md)
 * [在容器和資料庫中佈建輸送量](set-throughput.md)
-* [使用 Azure Cosmos 帳戶](account-overview.md)
-
+* [使用 Azure Cosmos 帳戶](./account-databases-containers-items.md)

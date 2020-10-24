@@ -10,12 +10,12 @@ ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b2fb3e2031d5656668b9971fdf357f66824179fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31baad997733c46cf3e9aa8dc92ac0613468f72f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975889"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489382"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>使用大量執行程式 .NET 程式庫，在 Azure Cosmos DB 中執行大量作業
 
@@ -32,9 +32,9 @@ ms.locfileid: "90975889"
 
 * 如果您還沒有安裝 Visual Studio 2019，可以下載並使用 [Visual Studio 2019 社區版](https://www.visualstudio.com/downloads/)。 請確定您在 Visual Studio 設定期間啟用「Azure 開發」。
 
-* 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+* 如尚未擁有 Azure 訂用帳戶，請在開始之前先建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* 您可以[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，無須 Azure 訂用帳戶，也無須任何費用和約定付款。 或者，您可以使用 [Azure Cosmos DB 模擬器](/azure/cosmos-db/local-emulator) 搭配 `https://localhost:8081` 端點。 [驗證要求](local-emulator.md#authenticate-requests)中會提供主索引鍵。
+* 您可以[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，無須 Azure 訂用帳戶，也無須任何費用和約定付款。 或者，您可以使用 [Azure Cosmos DB 模擬器](./local-emulator.md) 搭配 `https://localhost:8081` 端點。 [驗證要求](local-emulator.md#authenticate-requests)中會提供主索引鍵。
 
 * 使用 .NET 快速入門文章中＜[建立資料庫帳戶](create-sql-api-dotnet.md#create-account)＞一節所述的步驟，建立 Azure Cosmos DB SQL API 帳戶。
 

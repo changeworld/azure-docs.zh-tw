@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: 0eaac8ac65b490e1b8de716d79bd36d2f7a7567c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d237d5709f8d2bb47de3e89b0b7103b195376e11
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707654"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489739"
 ---
 # <a name="move-an-azure-database-for-azure-database-for-postgresql---single-server-to-another-region-by-using-the-azure-portal"></a>使用 Azure 入口網站將適用於 PostgreSQL 的 Azure 資料庫單一伺服器的 Azure 資料庫移至另一個區域
 
@@ -21,7 +21,7 @@ ms.locfileid: "91707654"
 您可以使用適用於 PostgreSQL 的 Azure 資料庫的 [跨區域讀取複本](concepts-read-replicas.md#cross-region-replication) 來完成移至另一個區域的工作。 若要這樣做，請先在目的地區域中建立讀取複本。 接下來，停止複寫到讀取複本伺服器，使其成為同時接受讀取和寫入流量的獨立伺服器。 
 
 > [!NOTE]
-> 本文著重于將您的伺服器移至不同的區域。 如果您想要將您的伺服器移至不同的資源群組或訂用帳戶，請參閱 [移動](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) 文章。 
+> 本文著重于將您的伺服器移至不同的區域。 如果您想要將您的伺服器移至不同的資源群組或訂用帳戶，請參閱 [移動](../azure-resource-manager/management/move-resource-group-and-subscription.md) 文章。 
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -33,10 +33,10 @@ ms.locfileid: "91707654"
 
 若要使用 Azure 入口網站準備來源伺服器以進行複寫，請使用下列步驟： 
 
-1. 登入[Azure 入口網站](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 1. 選取您要用來作為來源伺服器的現有適用於 PostgreSQL 的 Azure 資料庫伺服器。 這個動作會開啟 [概觀] 頁面。
 1. 從伺服器的功能表中 **，選取 [** 複寫]。 如果 Azure 複寫支援至少設定為 **複本**，則您可以建立讀取複本。 
-1. 如果 Azure 複寫支援未設定為至少 **複本**，請加以設定。 選取 [儲存]****。
+1. 如果 Azure 複寫支援未設定為至少 **複本**，請加以設定。 選取 [儲存]。
 1. 選取 **[是]**，重新開機伺服器以套用變更。
 1. 當作業完成時，您會收到兩個 Azure 入口網站通知。 有一個補救伺服器參數的通知。 接下來會有另一個伺服器重新開機通知。
 1. 重新整理 Azure 入口網站頁面，以更新複寫工具列。 您現在可以建立此伺服器的讀取複本。
@@ -74,7 +74,7 @@ ms.locfileid: "91707654"
 1. 建立複本之後，請找出並選取您的適用於 PostgreSQL 的 Azure 資料庫來源伺服器。
 1. 在 [ **總覽** ] 視窗中，選取 [ **刪除**]。
 1. 輸入來源伺服器的名稱，以確認您想要刪除。
-1. 選取 [刪除]  。
+1. 選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 

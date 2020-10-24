@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a6146a2d961a40f0882a3bbd1779bb0c83851dec
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 297190a99f9231cd07cffe1364202a1acbe75323
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126853"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489994"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>使用 CLI 建立和管理適用於 PostgreSQL 的 Azure 資料庫單一伺服器的 Private Link
 
@@ -50,7 +50,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>停用子網路的私人端點原則 
-Azure 會將資源部署到虛擬網路內的子網，因此您必須建立或更新子網，以停用私人端點 [網路原則](../private-link/disable-private-endpoint-network-policy.md)。 使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 來更新名為 mySubnet 的子網路設定：
+Azure 會將資源部署到虛擬網路內的子網，因此您必須建立或更新子網，以停用私人端點 [網路原則](../private-link/disable-private-endpoint-network-policy.md)。 使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) 來更新名為 mySubnet 的子網路設定：
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -147,7 +147,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
         > [!NOTE]
         > 您可能需要選取 [其他選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。
 
-1. 選取 [確定]  。
+1. 選取 [確定]。
 
 1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是] 或 [繼續]。
 
@@ -168,7 +168,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
     Address:  10.1.3.4
     ```
 
-3. 使用任何可用的用戶端來測試于 postgresql 伺服器的私人連結連線。 在下列範例中，我使用了 [Azure Data studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) 來進行操作。
+3. 使用任何可用的用戶端來測試于 postgresql 伺服器的私人連結連線。 在下列範例中，我使用了 [Azure Data studio](/sql/azure-data-studio/download?view=sql-server-ver15) 來進行操作。
 
 4. 在 [ **新增連接**] 中，輸入或選取這項資訊：
 
@@ -176,7 +176,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
     | ------- | ----- |
     | 伺服器類型| 選取 [ **于 postgresql**]。|
     | 伺服器名稱| 選取 *mydemopostgresserver.privatelink.postgres.database.azure.com* |
-    | [使用者名稱] | 輸入 username@servername 在於 postgresql 伺服器建立期間提供的使用者名稱。 |
+    | 使用者名稱 | 輸入 username@servername 在於 postgresql 伺服器建立期間提供的使用者名稱。 |
     |密碼 |輸入在於 postgresql 伺服器建立期間提供的密碼。 |
     |SSL|選取 [ **必要**]。|
     ||
@@ -197,7 +197,7 @@ az group delete --name myResourceGroup --yes
 ```
 
 ## <a name="next-steps"></a>後續步驟
-- 深入瞭解 [什麼是 Azure 私人端點](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)
+- 深入瞭解 [什麼是 Azure 私人端點](../private-link/private-endpoint-overview.md)
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

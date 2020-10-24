@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 08/05/2020
 ms.author: thweiss
-ms.openlocfilehash: 9fa899e0f0de3b263baad7e44ed24d32d735b001
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3a5106fcc7f1b55db22ee13ced34328cc38096d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836504"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486203"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>使用 Azure Key Vault 為您的 Azure Cosmos 帳戶設定客戶管理的金鑰
 
@@ -279,7 +279,7 @@ az cosmosdb show \
 
 儲存在 Azure Cosmos 帳戶中的所有資料都會使用客戶管理的金鑰進行加密，但下列中繼資料除外：
 
-- Azure Cosmos DB [帳戶、資料庫和容器](./account-overview.md#elements-in-an-azure-cosmos-account)的名稱
+- Azure Cosmos DB [帳戶、資料庫和容器](./account-databases-containers-items.md#elements-in-an-azure-cosmos-account)的名稱
 
 - [預存程序](./stored-procedures-triggers-udfs.md)的名稱
 

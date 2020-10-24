@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 2f7ef27ea5cc19c60e05fddfe4d00cd4ff234bc2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b016468d858162123e2796e0d76b83b0a1bbf33
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568041"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480049"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>適用於 Azure Cosmos DB 的 Synapse Link：近即時分析的使用案例
 
@@ -118,7 +118,7 @@ Azure Synapse Link 可讓 Azure Cosmos DB 不只支援交易工作負載，也�
 
   * 交易存放區中[即時索引](index-policy.md)的批次和串流資料摘要的高輸送量內嵌。
 
-  * 除了強式和最終一致性這兩個極端，Azure Cosmos DB 的交易存放區還多提供三個選項，來達成最接近商務需求的[可用性與效能權衡取捨](consistency-levels-tradeoffs.md)情況。
+  * 除了強式和最終一致性這兩個極端，Azure Cosmos DB 的交易存放區還多提供三個選項，來達成最接近商務需求的[可用性與效能權衡取捨](./consistency-levels.md)情況。
 
 * CompanyXYZ 的供應鏈合作夥伴有高度變動的流量模式，從每秒數百個到數百萬個要求不等，因此庫存管理平台必須處理流量中非預期的高載。  使用 Azure Cosmos DB 的優點：
 

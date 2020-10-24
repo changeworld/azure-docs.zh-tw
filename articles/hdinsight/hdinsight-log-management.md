@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: e279f0ba5186ae4e4ad4b403ad823a59ee085170
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95472d53045e23741286188da004eb649570a965
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88997552"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487223"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>管理 HDInsight 叢集的記錄
 
@@ -42,7 +42,7 @@ HDInsight 叢集會產生各式各樣的記錄檔。 例如 Apache Hadoop 及相
 * 叢集狀態，包括上次狀態變更的詳細資料
 * 為主要、核心及工作節點指定的 HDInsight 執行個體類型和數目
 
-您可以使用 Azure 入口網站來取得此最上層資訊的大部分。  或者，您可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 來取得 HDInsight 叢集 () 的相關資訊：
+您可以使用 Azure 入口網站來取得此最上層資訊的大部分。  或者，您可以使用 [Azure CLI](/cli/azure/) 來取得 HDInsight 叢集 () 的相關資訊：
 
 ```azurecli
 az hdinsight list --resource-group <ResourceGroup>

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: dee5a56f309dab8f09a598219f6302c88f4308e7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d3e7eca546adbcac8af882ff4cd5b09d3d643d4c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370707"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489263"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>設定及使用適用於 Azure Cosmos DB 的 Azure Synapse Link (預覽)
 
@@ -225,7 +225,7 @@ Synapse SQL 無伺服器 (一項預覽功能，先前稱為 SQL 隨 **選**) 可
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager 範本
 
-[Azure Resource Manager 範本](manage-sql-with-resource-manager.md#azure-cosmos-account-with-analytical-store)會為 SQL API 建立已啟用 Synapse Link Azure Cosmos DB 帳戶。 此範本會在一個區域中建立 Core (SQL) API 帳戶，以及已啟用並設定分析 TTL、並且有選項可使用手動或自動調整輸送量的容器。 若要部署此範本，請在讀我檔案頁面中，按一下 [部署至 Azure]。
+[Azure Resource Manager 範本](./manage-with-templates.md#azure-cosmos-account-with-analytical-store)會為 SQL API 建立已啟用 Synapse Link Azure Cosmos DB 帳戶。 此範本會在一個區域中建立 Core (SQL) API 帳戶，以及已啟用並設定分析 TTL、並且有選項可使用手動或自動調整輸送量的容器。 若要部署此範本，請在讀我檔案頁面中，按一下 [部署至 Azure]。
 
 ## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> 開始使用 Azure Synpase 連結 - 範例
 

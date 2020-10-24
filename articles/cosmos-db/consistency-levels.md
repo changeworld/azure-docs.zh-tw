@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 70077f8f0e7a951b6da8cf65c874b17eb98b416c
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0f69b30f477f99e2a4cae10edc7443b0630175c9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276390"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487801"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中的一致性層級
 
@@ -191,8 +191,8 @@ Azure Cosmos DB 可保證100% 的讀取要求符合所選一致性層級的一�
 
 若要深入了解 Azure Cosmos DB 中的一致性，請閱讀下列文章：
 
-- [為應用程式選擇正確的一致性層級](consistency-levels-choosing.md)
-- [Azure Cosmos DB API 間的一致性層級](consistency-levels-across-apis.md)
+- [為應用程式選擇正確的一致性層級]()
+- [Azure Cosmos DB API 間的一致性層級]()
 - [設定預設一致性層級](how-to-manage-consistency.md#configure-the-default-consistency-level)
 - [覆寫預設一致性層級](how-to-manage-consistency.md#override-the-default-consistency-level)
 - [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)

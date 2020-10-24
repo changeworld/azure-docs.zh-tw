@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: trbye
-ms.openlocfilehash: dcc7721aec067c4de309e3fdd926245a9d240f0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d95525c7dfecd44758c86903ca4a96c2290df52
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81402504"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487769"
 ---
 # <a name="what-is-conversation-transcription-in-meetings-preview"></a>什麼是會議中的交談轉譯 (Preview) ？
 
@@ -34,9 +34,11 @@ ms.locfileid: "81402504"
 > [!NOTE]
 > 雖然交談轉譯不會限制房間內的喇叭數目，但它已針對每個會話2-10 的喇叭進行優化。
 
-## <a name="use-cases"></a>使用案例
+## <a name="get-started"></a>開始使用
 
-### <a name="inclusive-meetings"></a>內含會議
+若要開始使用，請參閱即時對話轉譯 [快速入門](how-to-use-conversation-transcription.md) 。
+
+## <a name="use-cases"></a>使用案例
 
 若要讓所有人都能參與會議，例如失聰和聽力很難的參與者，請務必即時轉譯。 即時模式的對話轉譯會接受音訊，並決定誰說什麼，讓所有會議參與者都能遵循文字記錄並參與會議，而不會有延遲。
 
@@ -54,6 +56,10 @@ ms.locfileid: "81402504"
 
 - **多頻道音訊串流** –如需規格和設計詳細資料，請參閱 [MICROSOFT 語音裝置 SDK 麥克風](https://aka.ms/cts/microphone)。 若要深入瞭解或購買開發工具組，請參閱 [取得 Microsoft 語音裝置 SDK](https://aka.ms/cts/getsdk)。
 - **User voice 範例** –對話轉譯在交談之前需要使用者設定檔。 您必須從每位使用者收集音訊錄製，然後將記錄傳送到簽章 [產生服務](https://aka.ms/cts/signaturegenservice) ，以驗證音訊並產生使用者設定檔。
+
+> [!NOTE]
+> 使用者語音範例是選擇性的。 若沒有此輸入，轉譯將會顯示不同的喇叭，但會顯示為 "Speaker1"、"Speaker2" 等，而不是辨識為預先註冊的特定說話者名稱。
+
 
 ## <a name="real-time-vs-asynchronous"></a>即時與非同步
 
@@ -73,9 +79,9 @@ ms.locfileid: "81402504"
 
 ## <a name="language-support"></a>語言支援
 
-目前，對話轉譯支援下欄區域中的 "en-us" 和 "zh-CN"： *centralus* 和 *eastasia*。 如果您需要其他地區設定支援，請洽詢 [交談轉譯功能](mailto:CTSFeatureCrew@microsoft.com)小組。
+目前，對話轉譯支援下欄區域中的 [所有語音轉換文字語言](language-support.md#speech-to-text) ：  `centralus` 、 `eastasia` 、 `eastus` 、 `westeurope` 。 如果您需要其他地區設定支援，請洽詢 [交談轉譯功能](mailto:CTSFeatureCrew@microsoft.com)小組。
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [即時轉譯對話](how-to-use-conversation-transcription-service.md)
+> [即時轉譯對話](how-to-use-conversation-transcription.md)

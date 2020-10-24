@@ -10,12 +10,12 @@ ms.date: 09/21/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a0ce2c17586e5437047ff27cb67577b0480a83af
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 20ebfc571d72b79b61a61fb633feb63c4cc58fdd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939336"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488804"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>從 Azure AD 取得權杖，以授權用戶端應用程式的要求
 
@@ -81,7 +81,7 @@ ms.locfileid: "91939336"
 
 ### <a name="enable-implicit-grant-flow"></a>啟用隱含授與流程
 
-接下來，為您的應用程式設定隱含授與流程。 請遵循下列步驟：
+接下來，為您的應用程式設定隱含授與流程。 請遵循這些步驟：
 
 1. 在 Azure 入口網站中，流覽至您的應用程式註冊。
 1. 在 [ **管理** ] 區段中，選取 **驗證** 設定。
@@ -290,6 +290,6 @@ https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Microsoft 身分識別平台](https://docs.microsoft.com/azure/active-directory/develop/)
+- [Microsoft 身分識別平台](/azure/active-directory/develop/)
 - [使用 Azure RBAC 管理儲存體資料的存取權限](storage-auth-aad-rbac.md)
 - [使用 Azure 資源的 Azure Active Directory 和受控識別來驗證 blob 和佇列的存取權](storage-auth-aad-msi.md)

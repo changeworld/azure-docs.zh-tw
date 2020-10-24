@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: best-practice
 ms.date: 07/30/2020
 ms.author: cralvord
-ms.openlocfilehash: e3bbe39077cf6d7781f7e11fde044cf272aa83e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b403a960016be3795857ddd5645eb73e53e83bd6
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714372"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488600"
 ---
 # <a name="azure-storage-explorer-security-guide"></a>Azure 儲存體總管安全性指南
 
@@ -44,13 +44,13 @@ Microsoft Azure 儲存體總管可讓您輕鬆地在 Windows、macOS 和 Linux �
 
 #### <a name="azure-role-based-access-control-azure-rbac"></a>Azure 角色型存取控制 (Azure RBAC)
 
-[Azure 角色型存取控制 (AZURE RBAC) ](https://docs.microsoft.com/azure/role-based-access-control/overview) 可讓您對 azure 資源進行更細緻的存取控制。 您可以從 Azure 入口網站管理 Azure 角色和許可權。
+[Azure 角色型存取控制 (AZURE RBAC) ](/azure/role-based-access-control/overview) 可讓您對 azure 資源進行更細緻的存取控制。 您可以從 Azure 入口網站管理 Azure 角色和許可權。
 
 儲存體總管支援 Azure RBAC 對儲存體帳戶、Blob 和佇列的存取。 如果您需要存取檔案共用或資料表，您必須指派 Azure 角色來授與許可權，以列出儲存體帳戶金鑰。
 
 #### <a name="access-control-lists-acls"></a>存取控制清單 (ACL)
 
-[ (acl 的存取控制清單) ](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control) 可讓您控制 ADLS Gen2 blob 容器中的檔案和資料夾層級存取。 您可以使用儲存體總管來管理 Acl。
+[ (acl 的存取控制清單) ](/azure/storage/blobs/data-lake-storage-access-control) 可讓您控制 ADLS Gen2 blob 容器中的檔案和資料夾層級存取。 您可以使用儲存體總管來管理 Acl。
 
 ### <a name="shared-access-signatures-sas"></a>共用存取簽章 (SAS)
 
@@ -102,4 +102,4 @@ Microsoft Azure 儲存體總管可讓您輕鬆地在 Windows、macOS 和 Linux �
 
 ## <a name="next-steps"></a>後續步驟
 
-- [安全性建議](https://docs.microsoft.com/azure/storage/blobs/security-recommendations)
+- [安全性建議](/azure/storage/blobs/security-recommendations)

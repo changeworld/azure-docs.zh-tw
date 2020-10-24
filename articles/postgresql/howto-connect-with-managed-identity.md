@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2d801499360bd05cee4c01aefd873337303017f3
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 682a580d15af44ca69d9cb12a5349beaca2d28b2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427505"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489909"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>使用受控識別連線到適用於 PostgreSQL 的 Azure 資料庫
 
@@ -34,13 +34,13 @@ ms.locfileid: "92427505"
 
 ## <a name="creating-a-user-assigned-managed-identity-for-your-vm"></a>為您的 VM 建立使用者指派的受控識別
 
-使用 [az identity create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) 命令，在您的訂用帳戶中建立身分識別。 您可以使用您的虛擬機器執行所在的相同資源群組，或使用不同的資源群組。
+使用 [az identity create](/cli/azure/identity#az-identity-create) 命令，在您的訂用帳戶中建立身分識別。 您可以使用您的虛擬機器執行所在的相同資源群組，或使用不同的資源群組。
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myManagedIdentity
 ```
 
-若要在接下來的步驟中設定身分識別，請使用 [az identity show](/cli/azure/identity?view=azure-cli-latest#az-identity-show) 命令，以將身分識別的資源識別碼與用戶端識別碼儲存在變數中。
+若要在接下來的步驟中設定身分識別，請使用 [az identity show](/cli/azure/identity#az-identity-show) 命令，以將身分識別的資源識別碼與用戶端識別碼儲存在變數中。
 
 ```azurecli
 # Get resource ID of the user-assigned identity
@@ -50,7 +50,7 @@ resourceID=$(az identity show --resource-group myResourceGroup --name myManagedI
 clientID=$(az identity show --resource-group myResourceGroup --name myManagedIdentity --query clientId --output tsv)
 ```
 
-我們現在可以使用 [az vm identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) 命令，將使用者指派的身分識別指派至 VM：
+我們現在可以使用 [az vm identity assign](/cli/azure/vm/identity#az-vm-identity-assign) 命令，將使用者指派的身分識別指派至 VM：
 
 ```azurecli
 az vm identity assign --resource-group myResourceGroup --name myVM --identities $resourceID

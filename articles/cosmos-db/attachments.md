@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/07/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 56e8212d60494d469e225c25edbbd331c601ea6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 847ae3688fb713ddbd2dbf196ad1b89a6bb472a1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804155"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486628"
 ---
 # <a name="azure-cosmos-db-attachments"></a>Azure Cosmos DB 附件
 
@@ -32,7 +32,7 @@ Azure Cosmos DB 支援兩種類型的附件：
 > 
 > Microsoft 致力於在完整淘汰附件之前，提供至少36個月的通知，這會在日後宣佈。
 
-## <a name="known-limitations"></a>已知限制
+## <a name="known-limitations"></a>已知的限制
 
 Azure Cosmos DB 的受控附件與其對標準專案的支援不同-其提供無限制的擴充性、全域散發，以及與其他 Azure 服務的整合。
 
@@ -160,7 +160,7 @@ namespace attachments
 
 ## <a name="next-steps"></a>後續步驟
 
-- 開始使用 [Azure Blob 儲存體](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet)
-- 取得透過[Azure Cosmos DB 的 .NET SDK v2](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.attachment?view=azure-dotnet&preserve-view=true)使用附件的參考
-- 取得透過[Azure Cosmos DB 的 JAVA SDK v2](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.attachment?view=azure-java-stable&preserve-view=true)使用附件的參考
-- 取得透過[Azure Cosmos DB 的 REST API](https://docs.microsoft.com/rest/api/cosmos-db/attachments)使用附件的參考
+- 開始使用 [Azure Blob 儲存體](../storage/blobs/storage-quickstart-blobs-dotnet.md)
+- 取得透過[Azure Cosmos DB 的 .NET SDK v2](/dotnet/api/microsoft.azure.documents.attachment?preserve-view=true&view=azure-dotnet)使用附件的參考
+- 取得透過[Azure Cosmos DB 的 JAVA SDK v2](/java/api/com.microsoft.azure.documentdb.attachment?preserve-view=true&view=azure-java-stable)使用附件的參考
+- 取得透過[Azure Cosmos DB 的 REST API](/rest/api/cosmos-db/attachments)使用附件的參考

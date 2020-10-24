@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9a6d8843acf27a53e261d9c7180906b15d05cc33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30be9cbba7fe702d12285fe13794290c4820fd53
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314805"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487988"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>監視和微調適用於 PostgreSQL 的 Azure 資料庫-超大規模 (Citus) 
 
@@ -22,13 +22,13 @@ ms.locfileid: "91314805"
 
 超大規模 (Citus) 為伺服器群組中的每個節點提供度量。 這些計量讓您深入瞭解支援資源的行為。 每個計量都會以一分鐘的頻率發出，而且可保留最多 30 天的歷程記錄。
 
-除了查看計量的圖表之外，您還可以設定警示。 如需逐步指引，請參閱[如何設定警示](howto-hyperscale-alert-on-metric.md)。  其他工作包括設定自動化動作、執行 advanced analytics，以及封存歷程記錄。 如需詳細資訊，請參閱 [Azure 計量概觀](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
+除了查看計量的圖表之外，您還可以設定警示。 如需逐步指引，請參閱[如何設定警示](howto-hyperscale-alert-on-metric.md)。  其他工作包括設定自動化動作、執行 advanced analytics，以及封存歷程記錄。 如需詳細資訊，請參閱 [Azure 計量概觀](../azure-monitor/platform/data-platform.md)。
 
 ### <a name="list-of-metrics"></a>計量清單
 
 這些計量適用于超大規模 (Citus) 節點：
 
-|計量|計量顯示名稱|Unit|描述|
+|計量|計量顯示名稱|Unit|說明|
 |---|---|---|---|
 |active_connections|作用中的連線|Count|伺服器的使用中連線數量。|
 |cpu_percent|CPU 百分比|百分比|使用中的 CPU 百分比。|

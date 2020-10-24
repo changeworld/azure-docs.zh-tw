@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: fba5c868a146529a981e23cd88b413f2eb441896
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a221e3c32d458135111583885a0b9f97743d36ce
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708929"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490028"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>使用 Azure 入口網站設定適用於 PostgreSQL 的 Azure 資料庫單一伺服器的計量警示
 
@@ -27,7 +27,7 @@ ms.locfileid: "91708929"
 您可以透過下列方式，來設定及取得警示規則的相關資訊：
 * [Azure 入口網站](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
-* [Azure 監視器 REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
+* [Azure 監視器 REST API](/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>從 Azure 入口網站建立計量的警示規則
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您想要監視的「適用於 PostgreSQL 的 Azure 資料庫」伺服器。
@@ -85,4 +85,4 @@ ms.locfileid: "91708929"
 
 ## <a name="next-steps"></a>後續步驟
 * 深入了解 [在警示中設定 webhook](../azure-monitor/platform/alerts-webhooks.md)。
-* 依照 [計量集合概觀](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) 中的做法，確保您的服務可使用且有回應。
+* 依照 [計量集合概觀](../azure-monitor/platform/data-platform.md) 中的做法，確保您的服務可使用且有回應。

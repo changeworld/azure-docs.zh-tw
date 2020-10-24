@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: 35d81d0076c4b29a8b1399331aa0254178720931
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: fcb6e004c86289e2efa89a988b362e76145a9538
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277823"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490419"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>在 Azure Cosmos DB 中編製索引 - 概觀
 
@@ -144,7 +144,7 @@ Azure Cosmos DB 目前支援三種索引。
    SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
    ```
 
-空間索引可用於格式正確的 [GeoJSON](geospatial.md) 物件。 目前支援點、LineString、多邊形和多多邊形。
+空間索引可用於格式正確的 [GeoJSON](./sql-query-geospatial-intro.md) 物件。 目前支援點、LineString、多邊形和多多邊形。
 
 ### <a name="composite-indexes"></a>複合式索引
 

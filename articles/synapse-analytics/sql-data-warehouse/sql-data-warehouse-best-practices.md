@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 6978855e9b32a3842e76d02ef543d86cf0673019
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf841da85dc929366991d6aed8f3d400ab3b31cc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85206643"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489637"
 ---
 # <a name="best-practices-for-synapse-sql-pool-in-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics (先前稱為 SQL DW) 中 Synapse SQL 集區的最佳做法
 
@@ -64,7 +64,7 @@ SQL 集區有數個 DMV 可用來監視查詢執行。  「使用 DMV 監視工�
 
 SQL 集區支援透過數種工具 (包括 Azure Data Factory、PolyBase、BCP) 來載入及匯出資料。  若是小量的資料，效能不是那麼重要，任何工具都可以滿足您的需求。  不過，當您要載入或匯出大量資料，或者需要快速的效能時，PolyBase 是最佳選擇。  
 
-PolyBase 利用 MPP (大量平行處理) 架構，因此載入及匯出巨量資料的速度比其他任何工具更快。  您可使用 CTAS 或 INSERT INTO 來執行 PolyBase 載入。  
+PolyBase 的設計目的是要利用系統的分散式本質，並以比其他任何工具更快的速度載入和匯出資料巨量。  您可使用 CTAS 或 INSERT INTO 來執行 PolyBase 載入。   
 
 > [!TIP]
 > 使用 CTAS 可以減少交易記錄，是載入資料最快的方法。

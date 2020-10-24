@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 736746cc710e4e22f61edaa7b2dfd1ceef3d90eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3d691692553a8201b3e3eccfaead82a2cbb9ca0
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89645475"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479692"
 ---
 # <a name="azcopy-copy"></a>azcopy 複製
 
@@ -292,7 +292,7 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 
 **--s2s-控制碼-無效-中繼資料** 字串指定如何處理不正確中繼資料索引鍵。 可用的選項： ExcludeIfInvalid、FailIfInvalid、RenameIfInvalid。  (預設 `ExcludeIfInvalid`) 。  (預設值 "ExcludeIfInvalid" ) 
 
-**--s2s-保留-存取層**   保留服務至服務複製期間的存取層。 請參閱 [Azure Blob 儲存體：經常性存取、非經常性存取和封存存取層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) ，以確保目的地儲存體帳戶支援設定存取層。 在不支援設定存取層的情況下，請使用 s2sPreserveAccessTier = false 來略過複製存取層。  (預設 `true`) 。   (預設值為 "true" ) 
+**--s2s-保留-存取層**   保留服務至服務複製期間的存取層。 請參閱 [Azure Blob 儲存體：經常性存取、非經常性存取和封存存取層](/azure/storage/blobs/storage-blob-storage-tiers) ，以確保目的地儲存體帳戶支援設定存取層。 在不支援設定存取層的情況下，請使用 s2sPreserveAccessTier = false 來略過複製存取層。  (預設 `true`) 。   (預設值為 "true" ) 
 
 **--s2s-保留-屬性**   保留服務至服務複製期間的完整屬性。 針對 AWS S3 和 Azure 檔案非單一檔案來源，清單作業不會傳回物件和檔案的完整屬性。 為了保留完整的屬性，AzCopy 需要為每個物件或檔案傳送一個額外的要求。  (預設值為 true) 
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: fe93ada343e83d61526b6b899429d9e2b7b745d3
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 9736c4d2b048aa18f283689247f5597d7526f1df
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996174"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480355"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Azure 環境中 Oracle Database 12c 資料庫的災害復原
 
@@ -42,7 +42,7 @@ ms.locfileid: "91996174"
 - Jumpbox、應用程式服務、資料庫和 VPN 閘道位於不同的子網路
 - 對應用程式和資料庫子網路強制執行 NSG
 
-![DR 拓撲頁面的螢幕擷取畫面](./media/oracle-disaster-recovery/oracle_topology_01.png)
+![此圖顯示 Azure 上的主要和 DR 網站。](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
 ## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>案例 2：內部部署環境的主要站台和 Azure 上的 DR 站台
 
@@ -68,7 +68,7 @@ ms.locfileid: "91996174"
 - NSG 原則/規則，以允許輸入 TCP 連接埠 1521 (或使用者定義的連接埠)
 - NSG 原則/規則，以便限制只有內部部署 IP 位址 (DB 或應用程式) 可以存取虛擬網路
 
-![DR 拓撲頁面的螢幕擷取畫面](./media/oracle-disaster-recovery/oracle_topology_02.png)
+![此圖顯示內部部署與 Azure 之間的直接連接，需要防火牆上的開啟 TCP 埠。](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
 ### <a name="approach-2-site-to-site-vpn"></a>方法 2：站對站 VPN
 站對站 VPN 是更好的方法。 如需設定 VPN 的詳細資訊，請參閱[使用 CLI 建立具有站對站 VPN 連線的虛擬網路](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)。
@@ -96,7 +96,7 @@ ms.locfileid: "91996174"
 - [Oracle 備份和復原](./oracle-overview.md)
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [教學課程︰建立高可用性 VM](../../linux/create-cli-complete.md)
 - [瀏覽 VM 部署 Azure CLI 範例](../../linux/cli-samples.md)

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive, devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: faf13f580f6600e761cdaa9927fee4efa2b5995f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f157cc7ac2331f948a562dc12e99acc60e979ada
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500175"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488158"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>移轉至以 Azure Resource Manager 為基礎的開發工具 (適用於 HDInsight 叢集)
 
@@ -232,7 +232,7 @@ Get-AzHDInsightCluster -ResourceGroupName $resourceGroupName -clusterName $clust
 * [提交 Apache Sqoop 作業](hadoop/apache-hadoop-use-sqoop-powershell.md)
 
 ## <a name="migrating-to-the-new-hdinsight-net-sdk"></a>移轉至新的 HDInsight .NET SDK
-以 Azure Service Management (ASM) 為基礎的 [HDInsight.NET SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) 現在已被取代。 建議您使用以 Azure Resource Management 的[以資源管理員為基礎的 HDInsight.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)。 下列以 ASM 為基礎的 HDInsight 封裝會被取代。
+以 Azure Service Management (ASM) 為基礎的 [HDInsight.NET SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) 現在已被取代。 建議您使用以 Azure Resource Management 的[以資源管理員為基礎的 HDInsight.NET SDK](/dotnet/api/overview/azure/hdinsight)。 下列以 ASM 為基礎的 HDInsight 封裝會被取代。
 
 * `Microsoft.WindowsAzure.Management.HDInsight`
 * `Microsoft.Hadoop.Client`
@@ -241,7 +241,7 @@ Get-AzHDInsightCluster -ResourceGroupName $resourceGroupName -clusterName $clust
 
 | 如何...使用以資源管理員為基礎的 HDInsight SDK | 連結 |
 | --- | --- |
-| 適用於.NET 的 Azure HDInsight SDK|請參閱 [適用于 .net 的 AZURE HDINSIGHT SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet) |
+| 適用於.NET 的 Azure HDInsight SDK|請參閱 [適用于 .net 的 AZURE HDINSIGHT SDK](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true) |
 | 搭配使用 Azure Active Directory 與 .NET SDK，以互動方式驗證應用程式 |請參閱[使用 .NET SDK 執行 Apache Hive 查詢](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)。 在本文中的程式碼片段會使用互動式驗證方法。 |
 | 搭配使用 Azure Active Directory 與 .NET SDK，以非互動方式驗證應用程式 |請參閱 [建立 HDInsight 的非互動式應用程式](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
 | 使用 .NET SDK 提交 Apache Hive 作業 |請參閱[提交 Apache Hive 作業](hadoop/apache-hadoop-use-hive-dotnet-sdk.md) |

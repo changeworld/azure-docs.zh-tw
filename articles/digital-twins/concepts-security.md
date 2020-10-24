@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0b99b9034dc382552d292cef95a3790bb27eba89
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: f438f4393538478f2960e709d8e23beb6106510d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331748"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485744"
 ---
 # <a name="secure-azure-digital-twins"></a>保護 Azure 數位 Twins
 
@@ -48,11 +48,13 @@ Azure RBAC 透過整合 [Azure Active Directory](../active-directory/fundamental
 #### <a name="authorization-azure-roles-for-azure-digital-twins"></a>授權：適用于 Azure 數位 Twins 的 Azure 角色
 
 Azure 提供下列 Azure 內建角色，以授權存取 Azure 數位 Twins 資源：
-* *Azure 數位 Twins 擁有者 (預覽版) * –使用此角色可提供 Azure 數位 Twins 資源的完整存取權。
-* *Azure 數位 Twins 讀者 (預覽版) * –使用此角色可提供 Azure 數位 Twins 資源的唯讀存取權。
+* *Azure 數位 Twins 資料擁有* 者–使用此角色可提供 Azure 數位 Twins 資源的完整存取權。
+* *Azure 數位 Twins 資料讀取器* –使用此角色可提供 Azure 數位 Twins 資源的唯讀存取權。
 
-> [!TIP]
-> *Azure 數位 Twins 讀者 (預覽版) *角色現在也支援流覽關聯性。
+>[!NOTE]
+> 這些角色最近在預覽版中已重新命名為先前的名稱：
+> * *Azure 數位 Twins 資料擁有* 者先前為 *Azure 數位 Twins 擁有者 (預覽版) *。
+> * *Azure 數位 Twins 資料讀取器* 先前為 *Azure 數位 Twins 讀者 (預覽版) *。
 
 如需如何定義內建角色的詳細資訊，請參閱瞭解 Azure RBAC 檔中的 [*角色定義*](../role-based-access-control/role-definitions.md) 。 如需建立 Azure 自訂角色的詳細資訊，請參閱 [*azure 自訂角色*](../role-based-access-control/custom-roles.md)。
 

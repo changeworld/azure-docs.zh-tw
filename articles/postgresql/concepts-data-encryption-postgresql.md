@@ -6,20 +6,20 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 7361355a81de019af90e908f11c4d283b7f16cc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c07f59ae183c2d4ac920c6b3773fc6d177622ad2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542116"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490181"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>適用於 PostgreSQL 的 Azure 資料庫單一伺服器會使用客戶管理的金鑰進行資料加密
 
 適用於 PostgreSQL 單一伺服器的 Azure 資料庫會使用客戶管理金鑰的資料加密，可讓您攜帶自己的金鑰 (BYOK) 來保護待用資料。 此外也可讓組織在金鑰和資料的管理中實作職責區分。 使用客戶管理的加密時，您將負責處理並全權掌控金鑰的生命週期、金鑰使用權限，以及金鑰的作業稽核。
 
-適用於 PostgreSQL 單一伺服器的 Azure 資料庫會使用客戶管理金鑰加密資料，定設定於伺服器層級。 針對指定的伺服器，系統會使用客戶管理的金鑰 (稱為「金鑰加密金鑰」(KEK)) 來加密服務所使用的資料加密金鑰 (DEK)。 KEK 是儲存在客戶擁有及客戶所管理 [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) 執行個體中的非對稱金鑰。 金鑰加密金鑰 (KEK) 和資料加密金鑰 (DEK) 稍後會在此文章中詳細說明。
+適用於 PostgreSQL 單一伺服器的 Azure 資料庫會使用客戶管理金鑰加密資料，定設定於伺服器層級。 針對指定的伺服器，系統會使用客戶管理的金鑰 (稱為「金鑰加密金鑰」(KEK)) 來加密服務所使用的資料加密金鑰 (DEK)。 KEK 是儲存在客戶擁有及客戶所管理 [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) 執行個體中的非對稱金鑰。 金鑰加密金鑰 (KEK) 和資料加密金鑰 (DEK) 稍後會在此文章中詳細說明。
 
-Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為 RSA 密碼編譯金鑰提供可調整且安全的儲存體，並可選擇由 FIPS 140-2 層級 2 驗證的硬體安全性模組 (HSM) 加以支援。 它不允許直接存取儲存的金鑰，但會提供加密和解密服務給已授權的實體。 Key Vault 可以產生金鑰、將其匯入，或[從內部部署 HSM 裝置進行傳輸](../key-vault/key-Vault-hsm-protected-keys.md)。
+Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為 RSA 密碼編譯金鑰提供可調整且安全的儲存體，並可選擇由 FIPS 140-2 層級 2 驗證的硬體安全性模組 (HSM) 加以支援。 它不允許直接存取儲存的金鑰，但會提供加密和解密服務給已授權的實體。 Key Vault 可以產生金鑰、將其匯入，或[從內部部署 HSM 裝置進行傳輸](../key-vault/keys/hsm-protected-keys.md)。
 
 > [!NOTE]
 > 「適用於 PostgreSQL 單一伺服器的 Azure 資料庫」支援「一般用途」和「記憶體最佳化」定價層，其中所有 Azure 區域都可使用此功能。 如需其他限制，請參閱「 [限制](concepts-data-encryption-postgresql.md#limitations) 」一節。
@@ -68,7 +68,7 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 * 用來加密 DEK 的客戶管理金鑰，只能是非對稱的 RSA 2048。
 * 金鑰啟用日期 (若已設定) 必須是過去的日期和時間。 到期日 (若已設定) 必須是未來的日期和時間。
 * 金鑰必須處於「已啟用」狀態。
-* 如果您要將 [現有金鑰匯入](https://docs.microsoft.com/rest/api/keyvault/ImportKey/ImportKey) 至金鑰保存庫，請務必以支援的檔案格式提供， (`.pfx` 、 `.byok` `.backup`) 。
+* 如果您要將 [現有金鑰匯入](/rest/api/keyvault/ImportKey/ImportKey) 至金鑰保存庫，請務必以支援的檔案格式提供， (`.pfx` 、 `.byok` `.backup`) 。
 
 ## <a name="recommendations"></a>建議
 
@@ -85,7 +85,7 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 
 * 將客戶管理的金鑰複本置於安全的位置，或將其提供給委付服務。
 
-* 如果 Key Vault 產生金鑰，請在第一次使用該金鑰之前，先建立金鑰備份。 您只能將備份還原到 Key Vault。 如需備份命令的詳細資訊，請參閱 [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyVault/backup-azkeyVaultkey) \(英文\)。
+* 如果 Key Vault 產生金鑰，請在第一次使用該金鑰之前，先建立金鑰備份。 您只能將備份還原到 Key Vault。 如需備份命令的詳細資訊，請參閱 [Backup-AzKeyVaultKey](/powershell/module/az.keyVault/backup-azkeyVaultkey) \(英文\)。
 
 ## <a name="inaccessible-customer-managed-key-condition"></a>無法存取客戶管理金鑰的狀況
 
@@ -95,7 +95,7 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 * 如果我們為您的適用於 PostgreSQL 單一伺服器的 Azure 資料庫 (且已啟用資料加密) 建立讀取複本，則複本伺服器將會處於「無法存取」的狀態。 您可以透過 [Azure 入口網站](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) 或 [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) 來修正伺服器狀態。
 * 如果您刪除 KeyVault，適用於 PostgreSQL 單一伺服器的 Azure 資料庫將無法存取該金鑰，且會移至「無法存取」狀態。 復原 [Key Vault](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) 並重新驗證資料加密，讓伺服器呈現「可用狀態」。
 * 如果我們從 KeyVault 刪除金鑰，適用於 PostgreSQL 單一伺服器的 Azure 資料庫將無法存取該金鑰，且會移至「無法存取」的狀態。 復原該[金鑰](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects)並重新驗證資料加密，讓伺服器呈現「可用狀態」。
-* 如果儲存在 Azure KeyVault 中的金鑰過期，則會變成無效金鑰，且適用於 PostgreSQL 單一伺服器的 Azure 資料庫會轉換成「無法存取」的狀態。 使用 [CLI](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-set-attributes) 延長金鑰到期日，然後重新驗證資料加密，讓伺服器呈現「可用狀態」。
+* 如果儲存在 Azure KeyVault 中的金鑰過期，則會變成無效金鑰，且適用於 PostgreSQL 單一伺服器的 Azure 資料庫會轉換成「無法存取」的狀態。 使用 [CLI](/cli/azure/keyvault/key#az-keyvault-key-set-attributes) 延長金鑰到期日，然後重新驗證資料加密，讓伺服器呈現「可用狀態」。
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>從 Key Vault 意外撤銷金鑰存取權限
 
@@ -113,7 +113,7 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 若要監視資料庫狀態，以及啟用透明資料加密保護裝置存取的遺失警示，請設定 Azure 的下列功能：
 
 * [Azure 資源健康狀態](../service-health/resource-health-overview.md)：一個無法存取且其已失去客戶金鑰存取權的資料庫，會在首次連線至資料庫遭拒後顯示為「無法存取」。
-* [活動記錄](../service-health/alerts-activity-log-service-notifications.md)：當客戶管理的 Key Vault 中的客戶金鑰存取失敗時，系統會將這些項目新增至活動記錄中。 如果您為這些事件建立警示，則可以盡快恢復存取。
+* [活動記錄](../service-health/alerts-activity-log-service-notifications-portal.md)：當客戶管理的 Key Vault 中的客戶金鑰存取失敗時，系統會將這些項目新增至活動記錄中。 如果您為這些事件建立警示，則可以盡快恢復存取。
 
 * [動作群組](../azure-monitor/platform/action-groups.md)：定義這些群組，並依據您的偏好設定傳送通知和警示。
 
@@ -143,4 +143,3 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 ## <a name="next-steps"></a>後續步驟
 
 了解如何[使用 Azure 入口網站，針對適用於 PostgreSQL 單一伺服器的 Azure 資料庫使用客戶管理的金鑰設定資料加密](howto-data-encryption-portal.md) (機器翻譯)。
-

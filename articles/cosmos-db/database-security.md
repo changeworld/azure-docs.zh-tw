@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: mjbrown
-ms.openlocfilehash: 6236b34c76ccd9e4688b97e7844cbadf9f515213
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 35bfc45ffffac17a2eca40cb51c2db5d94c140a2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372237"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487461"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 的安全性 - 概觀
 
@@ -69,7 +69,7 @@ ms.locfileid: "92372237"
 |自動化線上備份|Azure Cosmos 資料庫會定期備份，並儲存在異地冗余存放區中。 <br><br>請參閱[使用 Azure Cosmos DB 進行自動線上備份及還原](online-backup-and-restore.md)以深入了解。|
 |還原已刪除的資料|自動化線上備份可用來復原您不小心刪除的資料，最多可還原意外發生後 30 天內的資料。 <br><br>[使用 Azure Cosmos DB 深入瞭解自動線上備份和還原](online-backup-and-restore.md)|
 |保護並隔離機密資料|新功能中所列的區域中的所有資料均已加密靜止。<br><br>個人資料和其他機密資料可隔離至特定容器來進行讀寫，或限制為只對特定使用者提供唯讀存取權。|
-|監視攻擊|您可以使用[稽核記錄和活動記錄](logging.md)，以監視帳戶的正常和異常活動。 您可以檢視資源上執行的作業、誰起始作業、作業何時發生、作業的狀態等等，如本表格之後的螢幕擷取畫面所示。|
+|監視攻擊|您可以使用[稽核記錄和活動記錄](./monitor-cosmos-db.md)，以監視帳戶的正常和異常活動。 您可以檢視資源上執行的作業、誰起始作業、作業何時發生、作業的狀態等等，如本表格之後的螢幕擷取畫面所示。|
 |回應攻擊|一旦您連絡 Azure 支援來報告潛在的攻擊，就會展開 5 步驟的事件回應程序。 5 步驟程序的目標是在偵測到問題並展開調查之後，儘快恢復正常的服務安全性和作業。<br><br>請參閱[雲端的 Microsoft Azure 安全性回應](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)以深入了解。|
 |異地隔離|Azure Cosmos DB 可確保主權區域 (例如，德國、中國、US Gov) 的資料控管。|
 |受保護的設施|Azure Cosmos DB 中的資料儲存在 Azure 受保護資料中心內的 SSD 上。<br><br>請參閱 [Microsoft 全球資料中心](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)以深入了解|
@@ -104,6 +104,6 @@ ms.locfileid: "92372237"
 
 如需主要金鑰和資源權杖的詳細資訊，請參閱 [保護 Azure Cosmos DB 資料的存取](secure-access-to-data.md)。
 
-如需有關審核記錄的詳細資訊，請參閱 [Azure Cosmos DB 診斷記錄](logging.md)。
+如需有關審核記錄的詳細資訊，請參閱 [Azure Cosmos DB 診斷記錄](./monitor-cosmos-db.md)。
 
 如需 Microsoft 認證的詳細資訊，請參閱 [Azure 信任中心](https://azure.microsoft.com/support/trust-center/)。

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: 97bd71dd5a70a867f45915a5a5f95f6513f2a824
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d8d2c7d48dc0b77d3be0b9019d4bbf1da8a40c4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541725"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490266"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>使用 REST Proxy 與 Azure HDInsight 中的 Apache Kafka 叢集互動
 
@@ -97,7 +97,7 @@ Kafka REST Proxy 的存取權會以 Azure Active Directory 安全性群組進行
 1. 從 Azure AD 擷取 OAuth 權杖。
 1. 示範如何對 Kafka REST Proxy 提出要求。
 
-如需有關在 Python 中取得 OAuth 權杖的詳細資訊，請參閱 [Python AuthenticationContext class 類別](https://docs.microsoft.com/python/api/adal/adal.authentication_context.authenticationcontext?view=azure-python)。 當未透過 Kafka REST Proxy 建立或刪除的 `topics` 反映在該處時，您可能會看到延遲。 此延遲是因為快取重新整理所造成。
+如需有關在 Python 中取得 OAuth 權杖的詳細資訊，請參閱 [Python AuthenticationContext class 類別](/python/api/adal/adal.authentication_context.authenticationcontext)。 當未透過 Kafka REST Proxy 建立或刪除的 `topics` 反映在該處時，您可能會看到延遲。 此延遲是因為快取重新整理所造成。
 
 ```python
 #Required python packages

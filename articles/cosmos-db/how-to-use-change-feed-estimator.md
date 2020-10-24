@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/15/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 442e1c4facce076ce9eeacee772df9381fee6f71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40a909b111d5e667f7554cf727ab26bf9bc39650
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88997212"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485846"
 ---
 # <a name="use-the-change-feed-estimator"></a>使用變更摘要估算器
 
@@ -64,4 +64,4 @@ ms.locfileid: "88997212"
 您現在可以在下列文章中繼續深入了解變更摘要處理器：
 
 * [變更摘要處理器的概觀](change-feed-processor.md)
-* [變更摘要處理器開始時間](how-to-configure-change-feed-start-time.md)
+* [變更摘要處理器開始時間](./change-feed-processor.md#starting-time)

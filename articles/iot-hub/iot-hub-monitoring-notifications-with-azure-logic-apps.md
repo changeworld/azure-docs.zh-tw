@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: 37f8016e087642ae0a7455e35f3ce18d7229e169
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cd14ff0688f4230aeedac748ca4b32609bdd2938
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146636"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490317"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>搭配連接 IoT 中樞和信箱的 Azure Logic Apps 進行 IoT 遠端監視和通知
 
@@ -84,7 +84,7 @@ ms.locfileid: "92146636"
 
    ![在 Azure 入口網站中建立服務匯流排命名空間](media/iot-hub-monitoring-notifications-with-azure-logic-apps/1-create-service-bus-namespace-azure-portal.png)
 
-1. 選取 [建立]****。 等候部署完成，再繼續進行下一個步驟。
+1. 選取 [建立]。 等候部署完成，再繼續進行下一個步驟。
 
 ### <a name="add-a-service-bus-queue-to-the-namespace"></a>將服務匯流排佇列新增至命名空間
 
@@ -112,7 +112,7 @@ ms.locfileid: "92146636"
 
 1. 在 [ **訊息**] 底下，選取 [ **訊息路由**]。 在 [ **訊息路由** ] 窗格中，選取 [ **自訂端點** ] 索引標籤，然後選取 [ **+ 新增**]。 從下拉式清單中選取 [ **服務匯流排佇列**]。
 
-   ![將端點新增至 Azure 入口網站的 IoT 中樞](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-iot-hub-custom-endpoint.png)
+   ![醒目顯示 [服務匯流排佇列] 選項的螢幕擷取畫面。](media/iot-hub-monitoring-notifications-with-azure-logic-apps/select-iot-hub-custom-endpoint.png)
 
 1. 在 [ **新增服務匯流排端點** ] 窗格中，輸入下列資訊：
 
@@ -124,7 +124,7 @@ ms.locfileid: "92146636"
 
    ![將端點新增至 Azure 入口網站的 IoT 中樞](media/iot-hub-monitoring-notifications-with-azure-logic-apps/3-add-iot-hub-endpoint-azure-portal.png)
 
-1. 選取 [建立]****。 成功建立端點之後，請繼續進行下一個步驟。
+1. 選取 [建立]。 成功建立端點之後，請繼續進行下一個步驟。
 
 ### <a name="add-a-routing-rule"></a>新增路由規則
 
@@ -162,7 +162,7 @@ ms.locfileid: "92146636"
 
    ![在 Azure 入口網站中建立邏輯應用程式](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-a-logic-app.png)
 
-1. 選取 [建立]****。
+1. 選取 [建立]。
 
 ### <a name="configure-the-logic-app-trigger"></a>設定邏輯應用程式觸發程式
 
@@ -183,7 +183,7 @@ ms.locfileid: "92146636"
 1. 建立服務匯流排連接。
    1. 輸入連接名稱，然後從清單中選取您的服務匯流排命名空間。 下一個畫面隨即開啟。
 
-      ![在 Azure 入口網站中建立邏輯應用程式的服務匯流排連接](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-connection-1.png)
+      ![當一或多個訊息抵達佇列 (自動完成) 選項時，會反白顯示的螢幕擷取畫面。](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-connection-1.png)
 
    1. 選取 (RootManageSharedAccessKey) 的服務匯流排原則。 然後選取 [  **建立**]。
 

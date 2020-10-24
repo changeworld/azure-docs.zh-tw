@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
-ms.openlocfilehash: eaddae04c198742007947831046139d80828534b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd81a15853f1c3b0eb1b1cdd40cc4c7ebf713308
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87006580"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490300"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>使用 Bootstrap 自訂 HDInsight 叢集
 
@@ -46,7 +46,7 @@ ms.locfileid: "87006580"
 
 如需在建立期間于 HDInsight 叢集上安裝其他元件的相關資訊，請參閱 [使用腳本動作自訂 hdinsight 叢集 (Linux) ](hdinsight-hadoop-customize-cluster-linux.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 如果使用 PowerShell，您將需要 [Az 模組](https://docs.microsoft.com/powershell/azure/) \(部分機器翻譯\)。
 
@@ -108,7 +108,7 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 
 ## <a name="use-net-sdk"></a>使用 .NET SDK
 
-請參閱 [AZURE HDINSIGHT SDK for .net](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)。
+請參閱 [AZURE HDINSIGHT SDK for .net](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true)。
 
 ## <a name="use-resource-manager-template"></a>使用 Resource Manager 範本
 

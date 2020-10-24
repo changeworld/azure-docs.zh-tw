@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d750e1f287ff7dfc5259b704355e026011fa872a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19262441df87b96bbb43a010ca47861ec2b236d3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715803"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488753"
 ---
 # <a name="use-powershell-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>使用 PowerShell 指派 Azure 角色以存取 blob 和佇列資料
 
@@ -24,7 +24,7 @@ Azure Active Directory (Azure AD) 透過 [AZURE RBAC (的 azure 角色型存取�
 
 當 Azure 角色指派給 Azure AD 安全性主體時，Azure 會為該安全性主體授與這些資源的存取權。 存取權的範圍可以包括訂用帳戶、資源群組、儲存體帳戶或個別的容器或佇列層級。 Azure AD 的安全性主體可能是使用者、群組、應用程式服務主體，或 [適用于 Azure 資源的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。
 
-本文說明如何使用 Azure PowerShell 來列出 Azure 內建角色，並將其指派給使用者。 如需使用 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 的總覽](https://docs.microsoft.com/powershell/azure/)。
+本文說明如何使用 Azure PowerShell 來列出 Azure 內建角色，並將其指派給使用者。 如需使用 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 的總覽](/powershell/azure/)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

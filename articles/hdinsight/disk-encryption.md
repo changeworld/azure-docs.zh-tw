@@ -8,12 +8,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 97d899d73359cc45daf88940b815ed262c3b4766
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d37f1c52157d2038d216873150b1d68e669e3392
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89290832"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487308"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>靜態資料的 Azure HDInsight 雙重加密
 
@@ -101,7 +101,7 @@ HDInsight 僅支援 Azure Key Vault。 如果您有自己的金鑰保存庫，�
 
 1. 在 [ **新增存取原則** ] 頁面中，提供下列資訊：
 
-    |屬性 |描述|
+    |屬性 |說明|
     |---|---|
     |金鑰許可權|選取 [ **取得**]、[解除包裝 **金鑰**] 和 [ **包裝金鑰**]。|
     |秘密許可權|選取 [ **取得**]、[ **設定**] 和 [ **刪除**]。|
@@ -121,13 +121,13 @@ HDInsight 僅支援 Azure Key Vault。 如果您有自己的金鑰保存庫，�
 
 #### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
 
-在叢集建立期間，請提供完整的 **金鑰識別碼**，包括金鑰版本。 例如： `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 。 您也需要將受控識別指派給叢集，並提供金鑰 URI。
+在叢集建立期間，請提供完整的 **金鑰識別碼**，包括金鑰版本。 例如，`https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`。 您也需要將受控識別指派給叢集，並提供金鑰 URI。
 
 ![建立新的叢集](./media/disk-encryption/create-cluster-portal.png)
 
 #### <a name="using-azure-cli"></a>使用 Azure CLI
 
-下列範例示範如何使用 Azure CLI 來建立啟用磁片加密的新 Apache Spark 叢集。 如需詳細資訊，請參閱 [Azure CLI az hdinsight create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)。
+下列範例示範如何使用 Azure CLI 來建立啟用磁片加密的新 Apache Spark 叢集。 如需詳細資訊，請參閱 [Azure CLI az hdinsight create](/cli/azure/hdinsight#az-hdinsight-create)。
 
 ```azurecli
 az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
@@ -365,7 +365,7 @@ New-AzResourceGroupDeployment `
 
 #### <a name="using-azure-cli"></a>使用 Azure CLI
 
-下列範例顯示如何輪替現有 HDInsight 叢集的磁片加密金鑰。 如需詳細資訊，請參閱 [Azure CLI az hdinsight 旋轉-磁片-加密金鑰](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-rotate-disk-encryption-key)。
+下列範例顯示如何輪替現有 HDInsight 叢集的磁片加密金鑰。 如需詳細資訊，請參閱 [Azure CLI az hdinsight 旋轉-磁片-加密金鑰](/cli/azure/hdinsight#az-hdinsight-rotate-disk-encryption-key)。
 
 ```azurecli
 az hdinsight rotate-disk-encryption-key \
@@ -398,7 +398,7 @@ HDInsight 會使用您與 HDInsight 叢集相關聯的受控識別來存取您�
 
 **如果金鑰已刪除，要如何復原叢集？**
 
-因為只支援「虛刪除」啟用的金鑰，所以如果金鑰已在金鑰保存庫中復原，則叢集應該會重新取得金鑰的存取權。 若要復原 Azure Key Vault 金鑰，請參閱 [復原-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) 或 [az-keyvault-Key-recover](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-recover)。
+因為只支援「虛刪除」啟用的金鑰，所以如果金鑰已在金鑰保存庫中復原，則叢集應該會重新取得金鑰的存取權。 若要復原 Azure Key Vault 金鑰，請參閱 [復原-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) 或 [az-keyvault-Key-recover](/cli/azure/keyvault/key#az-keyvault-key-recover)。
 
 
 **如果相應增加叢集，新的節點是否能順暢地支援客戶管理的金鑰？**

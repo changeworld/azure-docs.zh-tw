@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
-ms.openlocfilehash: 6e768c1e938006afd62fc097a80f8ebc3ea0f3e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4a4af81c6a216119ae2e1b0221c06ddc349452f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88115470"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478128"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>了解 Azure AD 應用程式同意體驗
 
@@ -65,13 +65,13 @@ ms.locfileid: "88115470"
     
     2. 使用者會看到傳統的同意提示。
 
-        ![案例 1b 的同意提示](./media/application-consent-experience/consent_prompt_1b.png)
+        ![顯示傳統同意提示的螢幕擷取畫面。](./media/application-consent-experience/consent_prompt_1b.png)
 
 2. 人員存取需要至少一個授權範圍之外權限應用程式。
     1. 管理員會看到與上述 1.i 相同的提示。
     2. 使用者無法同意應用程式，並需要求管理員存取應用程式。 
                 
-        ![案例 1b 的同意提示](./media/application-consent-experience/consent_prompt_2b.png)
+        ![通知使用者要求系統管理員存取應用程式的同意提示螢幕擷取畫面。](./media/application-consent-experience/consent_prompt_2b.png)
 
 3. 人員瀏覽或導向管理員同意流程。
     1. 管理使用者會看到管理員同意提示。 此提示的標題和權限說明有所變更，該變更指出，接受此提示將代表整個租用戶將應用程式存取權授與要求的資料。

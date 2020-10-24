@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: bb47dde8813f31f4a6acceb696a8b7c7eb0095be
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b7d54dfe2efa82aaa650168c476da03d89fe4527
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281531"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490487"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Azure Cosmos DB 的計價模式
 
@@ -36,7 +36,7 @@ Azure Cosmos DB 的計價模式在所有 API 之間都是一致的。 如需詳�
 
 Azure Cosmos DB 為開發人員提供許多免費的選項。 這些選項包含︰
 
-* **Azure Cosmos DB 免費層**： Azure Cosmos DB 免費層可讓您輕鬆地開始使用、開發及測試應用程式，或甚至免費執行小型生產工作負載。 在帳戶上啟用免費層時，您會在帳戶的存留期內，免費取得前 400 RU/秒和 5 GB 的儲存體。 每個 Azure 訂用帳戶最多可以有一個免費層帳戶，而且必須在建立帳戶時加入宣告。 若要開始使用，請 [在已啟用免費層的 Azure 入口網站中建立新的帳戶](create-cosmosdb-resources-portal.md) ，或使用 [ARM 範本](manage-sql-with-resource-manager.md#free-tier)。
+* **Azure Cosmos DB 免費層**： Azure Cosmos DB 免費層可讓您輕鬆地開始使用、開發及測試應用程式，或甚至免費執行小型生產工作負載。 在帳戶上啟用免費層時，您會在帳戶的存留期內，免費取得前 400 RU/秒和 5 GB 的儲存體。 每個 Azure 訂用帳戶最多可以有一個免費層帳戶，而且必須在建立帳戶時加入宣告。 若要開始使用，請 [在已啟用免費層的 Azure 入口網站中建立新的帳戶](create-cosmosdb-resources-portal.md) ，或使用 [ARM 範本](./manage-with-templates.md#free-tier)。
 
 * **Azure 免費帳戶**： azure 提供 [免費層](https://azure.microsoft.com/free/) ，可讓您在前30天內享有 $200 的 Azure 點數，以及12個月的免費服務數量有限。 如需詳細資訊，請參閱 [Azure 免費帳戶](../cost-management-billing/manage/avoid-charges-free-account.md)。 Azure Cosmos DB 屬於 Azure 免費帳戶。 具體而言，此免費帳戶為 Azure Cosmos DB 提供 5 GB 的儲存空間和 400 RU/秒的布建輸送量供整個年度之用。
 
@@ -59,7 +59,7 @@ Azure Cosmos DB [保留容量](cosmos-db-reserved-capacity.md) 可協助您透�
 * 深入了解[最佳化輸送量成本](optimize-cost-throughput.md)
 * 深入了解[最佳化儲存體成本](optimize-cost-storage.md)
 * 深入了解[最佳化讀取和寫入的成本](optimize-cost-reads-writes.md)
-* 深入了解[最佳化查詢成本](optimize-cost-queries.md)
+* 深入了解[最佳化查詢成本](./optimize-cost-reads-writes.md)
 * 深入了解[最佳化多重區域 Cosmos 帳戶的成本](optimize-cost-regions.md)
 * 深入了解 [Azure Cosmos DB 保留容量](cosmos-db-reserved-capacity.md)
 * 了解 [Azure Cosmos DB 模擬器](local-emulator.md)

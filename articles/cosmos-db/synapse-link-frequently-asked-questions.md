@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: ebd3893f6443edda276bfb3b1e39ae0fe093acb2
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f6a348ceb30806259035cb71bb4165b736949272
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104099"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480066"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>關於適用於 Azure Cosmos DB 的 Azure Synapse Link 常見問題
 
@@ -37,13 +37,13 @@ ms.locfileid: "92104099"
 
 針對已開啟分析存放區的容器，目前不支援在分析存放區中自動備份及還原您的資料。 
 
-在資料庫帳戶上啟用 Synapse 連結時，Azure Cosmos DB 將繼續在交易式存放區中自動 [備份](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore) 您的資料， (只依排程備份間隔的容器) ，一律如此。 請務必注意，當已開啟分析存放區的容器還原至新的帳戶時，只會使用交易式存放區還原容器，而不會啟用任何分析存放區。 
+在資料庫帳戶上啟用 Synapse 連結時，Azure Cosmos DB 將繼續在交易式存放區中自動 [備份](./online-backup-and-restore.md) 您的資料， (只依排程備份間隔的容器) ，一律如此。 請務必注意，當已開啟分析存放區的容器還原至新的帳戶時，只會使用交易式存放區還原容器，而不會啟用任何分析存放區。 
 
 ### <a name="can-i-disable-the-azure-synapse-link-feature-for-my-azure-cosmos-db-account"></a>我可以停用 Azure Cosmos DB 帳戶的 Azure Synapse Link 功能嗎？
 
 目前，在帳戶層級啟用 Synapse Link 功能之後，您就無法將其停用。 請了解，如果已在帳戶層級啟用 Synapse Link 功能，且分析存放區沒有啟用容器，您就不會有任何隱含計費。 
 
-如果您需要關閉此功能，您有2個選項。 第一個是刪除並重新建立新的 Azure Cosmos DB 帳戶，視需要將資料移轉。 第二個選項是開啟支援票證，以取得將資料移轉至其他帳戶的協助。
+如果您需要關閉此功能，有 2 個選項可供使用。 第一個是刪除並重新建立新的 Azure Cosmos DB 帳戶，並視需要遷移資料。 第二個是開啟支援票證，以取得將資料遷移至另一個帳戶的說明。
 
 ## <a name="azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析存放區
 
@@ -98,9 +98,9 @@ Azure Cosmos DB 保證會將交易和分析的工作負載效能隔離。 在容
 
 目前您無法在資料項目從交易存放區自動傳播到分析存放區時，轉換這些資料項目。 如果您有被此限制所封鎖的案例，請傳送電子郵件至 [Azure Cosmos DB 小組](mailto:cosmosdbsynapselink@microsoft.com)。
 
-### <a name="is-analytical-store-supported-by-terraform"></a>Terraform 是否支援分析存放區？
+### <a name="is-analytical-store-supported-by-terraform"></a>Terraform 支援分析存放區嗎？
 
-目前 Terraform 不支援分析存放區容器。 如需詳細資訊，請參閱 [Terraform GitHub 問題](https://github.com/hashicorp/terraform/issues) 。
+目前 Terraform 不支援分析存放區容器。 如需詳細資訊，請參閱 [Terraform GitHub 問題](https://github.com/hashicorp/terraform/issues)。
 
 ## <a name="analytical-time-to-live-ttl"></a>分析存留時間 (TTL)
 

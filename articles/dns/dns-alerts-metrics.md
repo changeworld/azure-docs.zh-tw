@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: rohink
-ms.openlocfilehash: 42acbc0d32b3ce5de4befcf112b68f611ad70542
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a27c4519024d6d3d2f3852534619b5f8c2bb5e43
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76937446"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489603"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS 計量與警示
 Azure DNS 是 DNS 網域的主機服務，採用 Microsoft Azure 基礎結構來提供名稱解析。 本文說明 Azure DNS 服務的計量與警示。
@@ -57,7 +57,7 @@ Azure DNS 為客戶提供度量，讓他們能夠監視服務中裝載之 DNS �
 ### <a name="record-set-capacity-utilization"></a>記錄集容量使用率
 ** Azure DNS 中的「記錄集容量使用率」顯示 DNS 區域的記錄集容量使用率百分比。 Azure DNS 中的每個 DNS 區域有一個記錄集限制，定義區域允許的記錄集最大數目 (請參閱 [DNS 限制](dns-zones-records.md#limits))。 因此，此計量會顯示接近記錄集限制的程度。 例如，如果您的 DNS 區域設定了 500 個記錄集，而區域的預設記錄集限制為 5000，RecordSetCapacityUtilization 計量將顯示 10% 的值 (以 500 除以 5000 所得)。 度量單位是「百分比」****，「彙總」**** 類型是「最大值」****。 若要檢視此計量，請從 Azure 入口網站中的 [監視器] 索引標籤選取 [計量] (預覽) 瀏覽器體驗。 從 [資源] 下拉式清單中選取您的 DNS 區域，選取 [記錄集容量使用率] 計量，然後選取 [最大值] 作為 [彙總]。 其範例如下列螢幕擷取畫面所示。 如需計量瀏覽器體驗和圖表的詳細資訊，請參閱 [Azure 監視器計量瀏覽器](../azure-monitor/platform/metrics-charts.md)。 
 
-![記錄集計數](./media/dns-alerts-metrics/dns-metrics-record-set-capacity-uitlization.png)
+![Whows 範例以瞭解如何查看計量的螢幕擷取畫面。](./media/dns-alerts-metrics/dns-metrics-record-set-capacity-uitlization.png)
 
 *圖：Azure DNS 記錄集容量使用率計量*
 

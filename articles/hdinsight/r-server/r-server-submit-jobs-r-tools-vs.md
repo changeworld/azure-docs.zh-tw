@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 73d1478ec2d6c90428f22a30ec82634df115d2f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 402092f1667abb49da4521b91ba1f0e7d471f0d1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75435261"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490249"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>從 Visual Studio R 工具提交作業
 
-[Visual Studio R 工具](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) 是免費、開放來源的擴充功能，適用於 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 和 [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) 或更新版本的 Community (免費)、Professional 及 Enterprise 版本。 [Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019)無法使用 RTVS。
+[Visual Studio R 工具](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) 是免費、開放來源的擴充功能，適用於 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 和 [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) 或更新版本的 Community (免費)、Professional 及 Enterprise 版本。 [Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019&preserve-view=true)無法使用 RTVS。
 
 RTVS 會增強您的 R 工作流程，方法是提供例如 [R 互動視窗](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL)、IntelliSense (程式碼完成)、[繪圖視覺效果](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data) 等工具，透過例如 ggplot2 和 ggviz、[R 程式碼偵錯](https://docs.microsoft.com/visualstudio/rtvs/debugging) 等程式庫。
 
-## <a name="set-up-your-environment"></a>設定環境
+## <a name="set-up-your-environment"></a>設定您的環境
 
 1. 安裝 [Visual Studio R 工具](/visualstudio/rtvs/installing-r-tools-for-visual-studio)。
 

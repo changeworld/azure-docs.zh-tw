@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/03/2020
-ms.openlocfilehash: 04def98108bf996a8f8cabe0ad36c022011aa533
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf292ccd185ad2c6a85cb6d2f097bb8a7fa9e173
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86080681"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489654"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>使用 Azure CLI 建立 HDInsight 叢集
 
@@ -25,9 +25,9 @@ ms.locfileid: "86080681"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-Azure CLI。 如果您尚未安裝 Azure CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 以取得相關步驟。
+Azure CLI。 如果您尚未安裝 Azure CLI，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli) 以取得相關步驟。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -42,7 +42,7 @@ Azure CLI。 如果您尚未安裝 Azure CLI，請參閱[安裝 Azure CLI](https
     # az account set --subscription "SUBSCRIPTIONID"
     ```
 
-2. 設定環境變數。 本文中使用的變數是以 Bash 為基礎。 針對其他環境，會需要一點變化。 請參閱 [az-hdinsight-建立](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) 以取得建立叢集的可能參數完整清單。
+2. 設定環境變數。 本文中使用的變數是以 Bash 為基礎。 針對其他環境，會需要一點變化。 請參閱 [az-hdinsight-建立](/cli/azure/hdinsight#az-hdinsight-create) 以取得建立叢集的可能參數完整清單。
 
     |參數 | 說明 |
     |---|---|
@@ -68,7 +68,7 @@ Azure CLI。 如果您尚未安裝 Azure CLI，請參閱[安裝 Azure CLI](https
     export componentVersion=Hadoop=2.7
     ```
 
-3. 輸入下列命令來[建立資源群組](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create)：
+3. 輸入下列命令來[建立資源群組](/cli/azure/group#az-group-create)：
 
     ```azurecli-interactive
     az group create \
@@ -78,7 +78,7 @@ Azure CLI。 如果您尚未安裝 Azure CLI，請參閱[安裝 Azure CLI](https
 
     如需有效位置的清單，請使用 `az account list-locations` 命令，然後使用值中的其中一個位置 `name` 。
 
-4. 輸入下列命令來[建立 Azure 儲存體帳戶](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)：
+4. 輸入下列命令來[建立 Azure 儲存體帳戶](/cli/azure/storage/account#az-storage-account-create)：
 
     ```azurecli-interactive
     # Note: kind BlobStorage is not available as the default storage account.
@@ -91,7 +91,7 @@ Azure CLI。 如果您尚未安裝 Azure CLI，請參閱[安裝 Azure CLI](https
         --sku Standard_LRS
     ```
 
-5. 藉由輸入下列命令，將[Azure 儲存體帳戶中的主要金鑰解壓縮](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list)，並將其儲存在變數中：
+5. 藉由輸入下列命令，將[Azure 儲存體帳戶中的主要金鑰解壓縮](/cli/azure/storage/account/keys#az-storage-account-keys-list)，並將其儲存在變數中：
 
     ```azurecli-interactive
     export AZURE_STORAGE_KEY=$(az storage account keys list \
@@ -100,7 +100,7 @@ Azure CLI。 如果您尚未安裝 Azure CLI，請參閱[安裝 Azure CLI](https
         --query [0].value -o tsv)
     ```
 
-6. 輸入下列命令來[建立 Azure 儲存體容器](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create)：
+6. 輸入下列命令來[建立 Azure 儲存體容器](/cli/azure/storage/container#az-storage-container-create)：
 
     ```azurecli-interactive
     az storage container create \
@@ -109,7 +109,7 @@ Azure CLI。 如果您尚未安裝 Azure CLI，請參閱[安裝 Azure CLI](https
         --account-name $AZURE_STORAGE_ACCOUNT
     ```
 
-7. 輸入下列命令以[建立 HDInsight](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)叢集：
+7. 輸入下列命令以[建立 HDInsight](/cli/azure/hdinsight#az-hdinsight-create)叢集：
 
     ```azurecli-interactive
     az hdinsight create \
@@ -165,7 +165,7 @@ az group delete \
 
 如果您在建立 HDInsight 叢集時遇到問題，請參閱[存取控制需求](./hdinsight-hadoop-customize-cluster-linux.md#access-control)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 既然您已使用 Azure CLI 成功建立 HDInsight 叢集，請使用下列內容來瞭解如何使用您的叢集：
 

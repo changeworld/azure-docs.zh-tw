@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/18/2019
-ms.openlocfilehash: 0a2e69a220f6752e5f0392c345b02967e2e76beb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20045ce914a340ac36e4df8cbd0df38e872a1d38
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86203465"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487325"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>搭配 Apache Kafka 和 Azure Cosmos DB 使用 Apache Spark 結構化串流
 
@@ -86,7 +86,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
 此文件中使用的專案會將資料儲存在 Cosmos DB 中。 執行程式碼之前，您必須先在您的 Cosmos DB 執行個體中建立「資料庫」__ 與「集合」 __。 您也必須擷取用於向 Cosmos DB 驗證要求的文件端點與「索引鍵」__。
 
-執行此動作的其中一種方式是使用 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。 下列指令碼將會建立名為 `kafkadata` 的資料庫與名為 `kafkacollection` 的集合。 接著，它會傳回主索引鍵。
+執行此動作的其中一種方式是使用 [Azure CLI](/cli/azure/)。 下列指令碼將會建立名為 `kafkadata` 的資料庫與名為 `kafkacollection` 的集合。 接著，它會傳回主索引鍵。
 
 ```azurecli
 #!/bin/bash
@@ -156,7 +156,7 @@ az cosmosdb keys list --name $name --resource-group $resourceGroupName --type ke
 
 從 [Jupyter Notebook](https://jupyter.org/) 首頁，選取 __Stream-data-from-Kafka-to-Cosmos-DB.ipynb__ 項目。 請依照 Notebook 中的步驟，使用「Spark 結構化串流」將資料從 Kafka 串流至 Azure Cosmos DB。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 現在您已瞭解如何使用 Apache Spark 結構化串流，請參閱下列檔，以深入瞭解如何使用 Apache Spark、Apache Kafka 和 Azure Cosmos DB：
 

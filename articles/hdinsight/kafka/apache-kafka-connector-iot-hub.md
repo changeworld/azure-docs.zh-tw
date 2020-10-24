@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/26/2019
-ms.openlocfilehash: ea7aa7758b5ccf7be02fa8d450ce710dcbef86a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4f390e6d362895d58be0e8695e72d058a021b34
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087379"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485540"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>搭配使用 HDInsight 上的 Apache Kafka 與 Azure IoT 中樞
 
@@ -29,7 +29,7 @@ Kafka Connect API 可讓您實作持續將資料提取到 Kafka 中，或將資�
 
 如需 Connect API 的詳細資訊，請參閱 [https://kafka.apache.org/documentation/#connect](https://kafka.apache.org/documentation/#connect) 。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * HDInsight 上的 Apache Kafka 叢集。 如需詳細資訊，請參閱 [HDInsight 上的 Kafka 快速入門](apache-kafka-get-started.md)文件。
 
@@ -162,7 +162,7 @@ Kafka Connect API 可讓您實作持續將資料提取到 Kafka 中，或將資�
         > [!IMPORTANT]  
         > 入口網站中的端點值可能包含在此範例中不需要的多餘文字。 請擷取符合 `sb://<randomnamespace>.servicebus.windows.net/` 模式的文字。
 
-   * __在 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 中__，使用下列命令：
+   * __在 [Azure CLI](/cli/azure/get-started-with-azure-cli) 中__，使用下列命令：
 
        ```azurecli
        az iot hub show --name myhubname --query "{EventHubCompatibleName:properties.eventHubEndpoints.events.path,EventHubCompatibleEndpoint:properties.eventHubEndpoints.events.endpoint,Partitions:properties.eventHubEndpoints.events.partitionCount}"
@@ -184,7 +184,7 @@ Kafka Connect API 可讓您實作持續將資料提取到 Kafka 中，或將資�
         2. 複製 __主要金鑰__ 值。
         3. 複製 [連接字串 – 主要金鑰]____ 的值。
 
-    * __在 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 中__，使用下列命令：
+    * __在 [Azure CLI](/cli/azure/get-started-with-azure-cli) 中__，使用下列命令：
 
         1. 若要取得主要金鑰值，請使用下列命令：
 
@@ -354,7 +354,7 @@ IotHubSinkTask:47)
 
 如需使用接收器連接器的詳細資訊，請參閱 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文件中，您已了解如何使用 Apache Kafka Connect API 在 HDInsight 上啟動 IoT Kafka Connector。 使用下列連結來探索使用 Kafka 的其他方式︰
 

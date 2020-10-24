@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 0e0bcde44ba28751761b7db3f6d6fcae8f7bd49c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08f677c23cce6eb840a1caee15dcddf6c8311517
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400534"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488685"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>選擇適合資料轉送的 Azure 解決方案
 
@@ -71,15 +71,15 @@ ms.locfileid: "91400534"
 ## <a name="next-steps"></a>後續步驟
 
 - [取得 Azure 儲存體總管簡介](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/) \(英文\)。
-- [閱讀 AzCopy 的概觀](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)。
+- [閱讀 AzCopy 的概觀](/azure/storage/common/storage-use-azcopy-v10)。
 - [快速入門：使用 PowerShell 上傳、下載及列出 Blob](../blobs/storage-quickstart-blobs-powershell.md)
 - [快速入門：使用 Azure CLI 建立、下載及列出 Blob](../blobs/storage-quickstart-blobs-cli.md)
 - 了解：
 
-    - [適用於離線轉送的 Azure 資料箱、Azure 資料箱磁碟和 Azure Data Box Heavy ](https://docs.microsoft.com/azure/databox/)。
-    - [Azure 資料箱閘道和 Azure Stack Edge 以進行線上傳送](https://docs.microsoft.com/azure/databox-online/)。
-- [了解 Azure Data Factory 是什麼](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)。
+    - [適用於離線轉送的 Azure 資料箱、Azure 資料箱磁碟和 Azure Data Box Heavy ](/azure/databox/)。
+    - [Azure 資料箱閘道和 Azure Stack Edge 以進行線上傳送](/azure/databox-online/)。
+- [了解 Azure Data Factory 是什麼](/azure/data-factory/copy-activity-overview)。
 - 使用 REST API 轉送資料
 
-    - [在 .NET 中](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [使用 Java](https://docs.microsoft.com/java/api/overview/azure/storage)
+    - [在 .NET 中](/dotnet/api/overview/azure/storage)
+    - [使用 Java](/java/api/overview/azure/storage)

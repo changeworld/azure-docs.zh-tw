@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 828be8e790803e53b0434a71fb32a29a4a0c17bc
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: f8aa38cf5d1667e2413f30025b554e379bd76b07
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428080"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478570"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---single-server"></a>適用于適用於 PostgreSQL 的 Azure 資料庫的 Azure 安全性基準-單一伺服器
 
@@ -134,7 +134,7 @@ ms.locfileid: "92428080"
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [適用于網路的 Azure 原則範例](/azure/governance/policy/samples)
+- [適用于網路的 Azure 原則範例](../governance/policy/samples/index.md)
 
 - [如何建立 Azure 藍圖](../governance/blueprints/create-blueprint-portal.md)
 
@@ -150,7 +150,7 @@ ms.locfileid: "92428080"
 
 您可使用 Azure PowerShell 或 Azure CLI，根以據資源的標籤對資源進行查詢或執行動作。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -160,7 +160,7 @@ ms.locfileid: "92428080"
 
 **指引**：使用 Azure 活動記錄來監視網路資源設定，並偵測與適用於 PostgreSQL 的 Azure 資料庫執行個體相關的網路資源變更。 在 Azure 監視器中建立警示，以在重要網路資源發生變更時觸發。
 
-- [如何檢視及擷取 Azure 活動記錄事件](/azure/azure-monitor/platform/activity-log-view)
+- [如何檢視及擷取 Azure 活動記錄事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [如何在 Azure 監視器中建立警示](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -202,7 +202,7 @@ ms.locfileid: "92428080"
 
 - [如何設定和存取適用於 PostgreSQL 的 Azure 資料庫的 audit 記錄](concepts-audit.md)
 
-- [如何設定 Azure 活動記錄的診斷設定](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [如何設定 Azure 活動記錄的診斷設定](../azure-monitor/platform/activity-log.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -222,7 +222,7 @@ ms.locfileid: "92428080"
 
 - [如何設定 Log Analytics 工作區的記錄保留期參數](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-- [在 Azure 儲存體帳戶中儲存資源記錄](/azure/azure-monitor/platform/resource-logs-collect-storage)
+- [在 Azure 儲存體帳戶中儲存資源記錄](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -254,7 +254,7 @@ ms.locfileid: "92428080"
 
 - [如何設定和存取適用於 PostgreSQL 的 Azure 資料庫的 audit 記錄](concepts-audit.md)
 
-- [如何設定 Azure 活動記錄的診斷設定](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [如何設定 Azure 活動記錄的診斷設定](../azure-monitor/platform/activity-log.md)
 
 - [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
@@ -386,7 +386,7 @@ ms.locfileid: "92428080"
 
 - [如何部署 Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [了解 Azure AD 風險偵測](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [了解 Azure AD 風險偵測](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -420,7 +420,7 @@ Azure AD 認證也可用於管理平面層級 (例如 Azure 入口網站) 的管
 
 **指引**：請檢閱 Azure Active Directory 記錄，以協助探索過時的帳戶，其中有些帳戶可能具有適用於 PostgreSQL 的 Azure 資料庫系統管理角色。 此外，使用 Azure 身分識別存取權檢閱，可有效管理群組成員資格、可能會用於存取適用於 PostgreSQL 的 Azure 資料庫其企業應用程式存取權，以及角色指派。 請定期檢閱使用者的存取權 (例如每 90 天)，以確定只有適當的使用者具有持續存取權。
 
-- [瞭解 Azure AD 報告](/azure/active-directory/reports-monitoring/)
+- [瞭解 Azure AD 報告](../active-directory/reports-monitoring/index.yml)
 
 - [如何使用 Azure 身分識別存取權檢閱](../active-directory/governance/access-reviews-overview.md)
 
@@ -438,7 +438,7 @@ Azure AD 認證也可用於管理平面層級 (例如 Azure 入口網站) 的管
 
 - [如何設定和存取適用於 PostgreSQL 的 Azure 資料庫的 audit 記錄](concepts-audit.md)
 
-- [如何將 Azure 活動記錄整合到 Azure 監視器中](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何將 Azure 活動記錄整合到 Azure 監視器中](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -456,7 +456,7 @@ Azure AD 認證也可用於管理平面層級 (例如 Azure 入口網站) 的管
 
 - [Azure AD Identity Protection 概觀](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [如何檢視有風險的 Azure AD 登入](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [如何檢視有風險的 Azure AD 登入](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
@@ -482,7 +482,7 @@ Azure AD 認證也可用於管理平面層級 (例如 Azure 入口網站) 的管
 
 **指引**：針對適用於 PostgreSQL 的 Azure 資料庫執行個體或相關資源 (其可儲存或處理敏感性資訊) 使用標籤來協助追蹤。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -492,9 +492,9 @@ Azure AD 認證也可用於管理平面層級 (例如 Azure 入口網站) 的管
 
 **指引**：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 請搭配使用 Private Link、服務端點及/或防火牆規則，以隔離並限制對適用於 PostgreSQL 的 Azure 資料庫執行個體的網路存取。
 
-- [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](/azure/governance/management-groups/create)
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
 - [如何設定適用於 PostgreSQL 的 Azure 資料庫的 Private Link](howto-configure-privatelink-portal.md)
 
@@ -654,7 +654,7 @@ Microsoft 會在支援適用於 PostgreSQL 的 Azure 資料庫的基礎系統上
 
 - [如何使用 Azure Resource Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-- [如何檢視您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -666,7 +666,7 @@ Microsoft 會在支援適用於 PostgreSQL 的 Azure 資料庫的基礎系統上
 
 **指引**：將標籤套用至適用於 PostgreSQL 的 Azure 資料庫執行個體和其他相關資源，讓中繼資料可透過邏輯方式將其組織成分類法。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -676,11 +676,11 @@ Microsoft 會在支援適用於 PostgreSQL 的 Azure 資料庫的基礎系統上
 
 **指引**：在適當的情況下，使用標記、管理群組和個別的訂用帳戶，以組織和追蹤適用於 PostgreSQL 的 Azure 資料庫執行個體和相關資源。 請定期調節清查，並確保會及時刪除訂用帳戶中未經授權的資源。
 
-- [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](/azure/governance/management-groups/create)
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -746,7 +746,7 @@ Microsoft 會在支援適用於 PostgreSQL 的 Azure 資料庫的基礎系統上
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure 原則拒絕特定的資源類型](/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure 原則拒絕特定的資源類型](../governance/policy/samples/index.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -798,7 +798,7 @@ Microsoft 會在支援適用於 PostgreSQL 的 Azure 資料庫的基礎系統上
 
 - 應為 PostgreSQL 資料庫伺服器啟用記錄連線
 
-- [如何查看可用 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何查看可用 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
@@ -838,9 +838,9 @@ Microsoft 會在支援適用於 PostgreSQL 的 Azure 資料庫的基礎系統上
 
 **指引**：如果針對適用於 PostgreSQL 的 Azure 資料庫執行個體及相關資源使用自訂 Azure 原則，請使用 Azure Repos 以安全地儲存和管理程式碼。
 
-- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Azure Repos 文件](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos 文件](/azure/devops/repos/index?view=azure-devops)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -898,7 +898,7 @@ Microsoft 會在支援適用於 PostgreSQL 的 Azure 資料庫的基礎系統上
 
 - [如何建立 Key Vault](../key-vault/general/quick-create-portal.md)
 
-- [如何使用受控識別來提供 Key Vault authentication](/azure/key-vault/general/managed-identity)
+- [如何使用受控識別來提供 Key Vault authentication](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -1106,5 +1106,5 @@ Microsoft 會在支援適用於 PostgreSQL 的 Azure 資料庫的基礎系統上
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

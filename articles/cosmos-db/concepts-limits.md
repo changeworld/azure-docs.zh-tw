@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 06821b62fa05a4fd772b15aa5a57bd1e3de5dbb2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 7dface648f7bf219d4c66b038af62e3307560650
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329367"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489280"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服務配額
 
@@ -144,7 +144,7 @@ Azure Cosmos 項目可根據所使用的 API，分別代表集合中的文件、
 
 ## <a name="per-request-limits"></a>每個要求的限制
 
-Azure Cosmos DB 支援針對容器、項目及資料庫等資源執行 [CRUD 和查詢作業](/rest/api/cosmos-db/)。 其也支援針對容器中具有相同分割區索引鍵的多個項目執行[交易式批次要求](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch)。
+Azure Cosmos DB 支援針對容器、項目及資料庫等資源執行 [CRUD 和查詢作業](/rest/api/cosmos-db/)。 其也支援針對容器中具有相同分割區索引鍵的多個項目執行[交易式批次要求](/dotnet/api/microsoft.azure.cosmos.transactionalbatch)。
 
 | 資源 | 預設限制 |
 | --- | --- |
@@ -191,7 +191,7 @@ Azure Cosmos DB 會維護每個帳戶的系統中繼資料。 此中繼資料可
 
 ## <a name="sql-query-limits"></a>SQL 查詢限制
 
-Cosmos DB 支援使用 [SQL](how-to-sql-query.md) 來查詢項目。 下表描述查詢陳述式中的限制，例如在子句數目或查詢長度方面。
+Cosmos DB 支援使用 [SQL](./sql-query-getting-started.md) 來查詢項目。 下表描述查詢陳述式中的限制，例如在子句數目或查詢長度方面。
 
 | 資源 | 預設限制 |
 | --- | --- |

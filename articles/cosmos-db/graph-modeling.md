@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: jasonh
-ms.openlocfilehash: 6526119a8b20a7c60879fe690aefe96159b062a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2176708d3b5371a9bb66a59a7c6c0af56c337e28
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409760"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490623"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 的圖表資料模型
 
@@ -37,7 +37,7 @@ ms.locfileid: "91409760"
 
 如果符合上述準則，圖形資料庫方法就很有可能可提供**查詢複雜度**、**資料模型延展性**和**查詢效能**等優點。
 
-下一個步驟是決定圖形將要用於分析或交易用途。 如果圖形要用於大量計算和資料處理工作負載，就值得探索 [Cosmos DB Spark 連接器](https://docs.microsoft.com/azure/cosmos-db/spark-connector)及使用 [GraphX 程式庫](https://spark.apache.org/graphx/)。 
+下一個步驟是決定圖形將要用於分析或交易用途。 如果圖形要用於大量計算和資料處理工作負載，就值得探索 [Cosmos DB Spark 連接器](./spark-connector.md)及使用 [GraphX 程式庫](https://spark.apache.org/graphx/)。 
 
 ## <a name="how-to-use-graph-objects"></a>如何使用圖形物件
 
@@ -47,12 +47,12 @@ ms.locfileid: "91409760"
 
 | Object | 屬性 | 類型 | 注意 |
 | --- | --- | --- |  --- |
-| 頂點 | 識別碼 | 字串 | 每個分割區唯一強制執行。 如果沒有在插入時提供值，將會儲存自動產生的 GUID。 |
-| 頂點 | label | 字串 | 這個屬性是用來定義頂點所代表的實體類型。 如果未提供值，將會使用預設值「頂點」。 |
+| 頂點 | ID | String | 每個分割區唯一強制執行。 如果沒有在插入時提供值，將會儲存自動產生的 GUID。 |
+| 頂點 | label | String | 這個屬性是用來定義頂點所代表的實體類型。 如果未提供值，將會使用預設值「頂點」。 |
 | 頂點 | properties | 字串、布林值、數值 | 個別屬性的清單會以索引鍵/值組的方式儲存在每個頂點中。 |
 | 頂點 | 分割區索引鍵 | 字串、布林值、數值 | 這個屬性會定義頂點和其傳出邊緣的儲存位置。 深入了解[資料分割](graph-partitioning.md)。 |
-| Edge | 識別碼 | 字串 | 每個分割區唯一強制執行。 預設會自動產生。 邊緣通常不需要透過識別碼進行唯一擷取。 |
-| Edge | label | 字串 | 這個屬性是用來定義兩個頂點之間的關聯性類型。 |
+| Edge | ID | String | 每個分割區唯一強制執行。 預設會自動產生。 邊緣通常不需要透過識別碼進行唯一擷取。 |
+| Edge | label | String | 這個屬性是用來定義兩個頂點之間的關聯性類型。 |
 | Edge | properties | 字串、布林值、數值 | 個別屬性的清單會以索引鍵/值組的方式儲存在每個邊緣中。 |
 
 > [!NOTE]

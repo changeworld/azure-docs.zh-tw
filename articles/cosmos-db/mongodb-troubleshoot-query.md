@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/12/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 615bd423296fb9ed2ee28cab9e362873a30ee7b9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 7a34b4a3a0f9fe75b5e252f20a8b0924b0ce01d7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283837"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488379"
 ---
 # <a name="troubleshoot-query-issues-when-using-the-azure-cosmos-db-api-for-mongodb"></a>針對使用適用于 MongoDB 的 Azure Cosmos DB API 時的查詢問題進行疑難排解
 
@@ -116,7 +116,7 @@ db.coll.find({foodGroup: "Baby Foods"}).explain({"executionStatistics": true })
 | `timeInclusiveMS` | 後端查詢延遲 |
 | `pathsIndexed` | 顯示查詢使用的索引 | 
 | `pathsNotIndexed` | 顯示查詢可能已使用的索引（如果有的話） | 
-| `shardInformation` | 特定[實體資料分割](partition-data.md#physical-partitions)的查詢效能摘要 | 
+| `shardInformation` | 特定[實體資料分割](./partitioning-overview.md#physical-partitions)的查詢效能摘要 | 
 | `retrievedDocumentCount` | 查詢引擎載入的檔數目 | 
 | `outputDocumentCount` | 查詢結果中傳回的檔數目 | 
 | `estimatedDelayFromRateLimitingInMilliseconds` | 由於速率限制而預估額外的查詢延遲 | 
@@ -256,13 +256,13 @@ Azure Cosmos DB 的 MongoDB API 中編制索引的最佳作法與 MongoDB 不同
 
 [萬用字元索引](mongodb-indexing.md#wildcard-indexes) 可以簡化索引編制。 與 MongoDB 不同的是，萬用字元索引可以支援查詢述詞中的多個欄位。 如果您使用一個單一萬用字元索引，而不是為每個屬性建立個別的索引，則查詢效能不會有差異。 為所有屬性新增萬用字元索引是優化所有查詢最簡單的方式。
 
-您可以隨時加入新的索引，而不會影響寫入或讀取可用性。 您可以[追蹤索引轉換進度](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3)。
+您可以隨時加入新的索引，而不會影響寫入或讀取可用性。 您可以[追蹤索引轉換進度](./how-to-manage-indexing-policy.md#dotnet-sdk)。
 
 ### <a name="understand-which-aggregation-operations-use-the-index"></a>瞭解哪些匯總作業使用索引
 
 在大部分的情況下，Azure Cosmos DB 適用于 MongoDB 的 API 中的匯總作業將會部分使用索引。 通常，查詢引擎會先套用相等和範圍篩選，並使用索引。 套用這些篩選之後，查詢引擎就可以評估其他篩選條件，並在有需要時，藉由載入其餘文件來計算彙總。 
 
-以下是範例：
+以下為範例：
 
 ```
 db.coll.aggregate( [

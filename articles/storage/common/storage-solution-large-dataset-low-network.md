@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 6514b149b057d690d37551bd0489c63852addb1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60b322cc0c1a50df7f8946fa1047bdc58ea92d77
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207503"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488532"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>在低速或無網路頻寬之情況下進行大型資料集的資料轉送
  
@@ -62,10 +62,10 @@ ms.locfileid: "86207503"
 |    **定價**                      |    [定價](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [定價](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [定價](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [定價](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 了解如何
 
-    - [使用資料箱磁碟轉送資料](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal)。
-    - [使用資料箱轉送資料](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)。
+    - [使用資料箱磁碟轉送資料](/azure/databox/data-box-disk-quickstart-portal)。
+    - [使用資料箱轉送資料](/azure/databox/data-box-quickstart-portal)。
     - [使用匯入/匯出轉送資料](/azure/storage/common/storage-import-export-data-to-blobs)。
