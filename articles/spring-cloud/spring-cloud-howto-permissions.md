@@ -7,15 +7,15 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 635f1e03596d55101b6158353ed8cdc278212ceb
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: edd9898580c60199b761b24b172a366069f09cb2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92155437"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516183"
 ---
 # <a name="how-to-use-permissions-in-azure-spring-cloud"></a>如何在 Azure 春季雲端中使用許可權
-本文說明如何建立自訂角色，以將許可權委派給 Azure 春季雲端資源。 自訂角色會以各種股票許可權延伸 [內建的 Azure 角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) 。
+本文說明如何建立自訂角色，以將許可權委派給 Azure 春季雲端資源。 自訂角色會以各種股票許可權擴充 [Azure 內建角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) 。
 
 我們將會執行下列自訂角色：
 

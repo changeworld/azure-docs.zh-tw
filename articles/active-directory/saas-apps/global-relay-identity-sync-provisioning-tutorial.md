@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2020
+ms.date: 10/22/2020
 ms.author: Zhchia
-ms.openlocfilehash: f0e34c8a331c475b103922789a9d1983f1c84cac
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c1e2d64bb30b6451e232c85a5892771157d32928
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92492168"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514379"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的全域轉送身分識別同步處理
 
@@ -52,7 +52,7 @@ ms.locfileid: "92492168"
 
 ## <a name="step-3-add-global-relay-identity-sync-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式資源庫新增全域轉送身分識別同步
 
-從 Azure AD 應用程式資源庫新增全域轉送身分識別同步處理，以開始管理布建至全域轉送身分識別同步。如果您先前已設定 SSO 的全域轉送身分識別同步處理，則可以使用相同的應用程式。 不過，建議您在一開始測試整合時，建立個別的應用程式。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)深入了解從資源庫新增應用程式。 
+從 Azure AD 應用程式資源庫新增全域轉送身分識別同步處理，以開始管理布建至全域轉送身分識別同步。在 [這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)深入瞭解如何從資源庫新增應用程式。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步驟 4： 定義將在佈建範圍內的人員 
 
@@ -63,7 +63,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-global-relay-identity-sync"></a>步驟 5。 設定自動使用者布建至全域轉送身分識別同步處理 
 
-此節將引導您逐步設定 Azure AD 佈建服務，以根據 Azure AD 中的使用者和/或群組指派，在 TestApp 中建立、更新和停用使用者和/或群組。
+本節將引導您完成設定 Azure AD 布建服務，以根據 Azure AD 中的使用者和/或群組指派，在全域轉送身分識別同步應用程式中建立、更新及停用使用者和/或群組的步驟。
 
 ### <a name="to-configure-automatic-user-provisioning-for-global-relay-identity-sync-in-azure-ad"></a>若要在 Azure AD 中設定全域轉送身分識別同步的自動使用者布建：
 

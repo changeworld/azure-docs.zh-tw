@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: edb184fa286eb6212f714c18830540e105ea3305
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5ecfd5e5ff29b2eade4391976947062d6e8f186f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92021172"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516149"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>適用于 Azure Web 應用程式防火牆的 azure 安全性基準
 
@@ -355,7 +355,7 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 **指導**方針：針對個別的安全性網域（例如，開發、測試和生產環境）使用不同的訂用帳戶和管理群組來執行隔離。 
 
-使用 Azure Active Directory (Azure AD) 以角色為基礎的存取控制 (Azure RBAC) 來控制 Azure 資源的存取權。
+使用 azure 角色型存取控制 (Azure RBAC) 來控制 Azure 資源的存取權。
 
 - [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription)
 
@@ -379,10 +379,10 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 **責任**：共用
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用角色型存取控制來控制資源的存取權
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指導**方針：使用 Azure Active Directory (Azure AD) 以角色為基礎的存取控制 (azure RBAC) 來控制 azure 資源的存取權。
-- [如何在 Azure 中設定 RBAC](../role-based-access-control/role-assignments-portal.md)
+**指導**方針：使用 azure 角色型存取控制 (azure RBAC) 來控制 azure 資源的存取權。
+- [如何設定 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 **Azure 資訊安全中心監視**：不適用
 

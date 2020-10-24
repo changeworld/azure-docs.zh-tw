@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: f438f4393538478f2960e709d8e23beb6106510d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 6784ca9dbc32811a02f4454be94d220c634318f5
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485744"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503312"
 ---
 # <a name="secure-azure-digital-twins"></a>保護 Azure 數位 Twins
 
@@ -20,7 +20,7 @@ ms.locfileid: "92485744"
 
 Azure 數位 Twins 也支援靜態資料的加密。
 
-## <a name="granting-permissions-with-azure-rbac"></a>使用 Azure RBAC 授與許可權
+## <a name="roles-and-permissions-with-azure-rbac"></a>Azure RBAC 的角色和許可權
 
 Azure RBAC 透過整合 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) ，提供給 Azure 數位 Twins。
 
@@ -47,22 +47,32 @@ Azure RBAC 透過整合 [Azure Active Directory](../active-directory/fundamental
 
 #### <a name="authorization-azure-roles-for-azure-digital-twins"></a>授權：適用于 Azure 數位 Twins 的 Azure 角色
 
-Azure 提供下列 Azure 內建角色，以授權存取 Azure 數位 Twins 資源：
-* *Azure 數位 Twins 資料擁有* 者–使用此角色可提供 Azure 數位 Twins 資源的完整存取權。
-* *Azure 數位 Twins 資料讀取器* –使用此角色可提供 Azure 數位 Twins 資源的唯讀存取權。
+Azure 提供 **兩個 azure 內建角色** ，以授權存取 Azure 數位 Twins [資料平面 api](how-to-use-apis-sdks.md#overview-data-plane-apis)。 您可以依名稱或識別碼來參考角色：
+
+| 內建角色 | 描述 | ID | 
+| --- | --- | --- |
+| Azure 數位 Twins 資料擁有者 | 提供 Azure 數位 Twins 資源的完整存取權 | bcd981a7-7f74-457b-83e1-cceb9e632ffe |
+| Azure 數位 Twins 資料讀者 | 提供 Azure 數位 Twins 資源的唯讀存取權 | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
 
 >[!NOTE]
 > 這些角色最近在預覽版中已重新命名為先前的名稱：
 > * *Azure 數位 Twins 資料擁有* 者先前為 *Azure 數位 Twins 擁有者 (預覽版) *。
 > * *Azure 數位 Twins 資料讀取器* 先前為 *Azure 數位 Twins 讀者 (預覽版) *。
 
-如需如何定義內建角色的詳細資訊，請參閱瞭解 Azure RBAC 檔中的 [*角色定義*](../role-based-access-control/role-definitions.md) 。 如需建立 Azure 自訂角色的詳細資訊，請參閱 [*azure 自訂角色*](../role-based-access-control/custom-roles.md)。
-
 您可以透過兩種方式來指派角色：
 * 透過 Azure 入口網站 (中 Azure 數位 Twins 的 [存取控制] (IAM) 窗格，請參閱 [*使用 Azure 入口網站新增或移除 azure 角色指派*](../role-based-access-control/role-assignments-portal.md)) 
 * via CLI 命令以新增或移除角色
 
 如需如何執行這項作業的詳細步驟，請在 Azure 數位 Twins 教學課程 [*：連接端對端解決方案*](tutorial-end-to-end.md)中試用。
+
+如需如何定義內建角色的詳細資訊，請參閱瞭解 Azure RBAC 檔中的 [*角色定義*](../role-based-access-control/role-definitions.md) 。 如需建立 Azure 自訂角色的詳細資訊，請參閱 [*azure 自訂角色*](../role-based-access-control/custom-roles.md)。
+
+##### <a name="automating-roles"></a>自動化角色
+
+在自動化案例中參考角色時，建議您依 **識別碼** 來參考它們，而非其名稱。 版本之間的名稱可能會變更，但識別碼則不會變更，因此在自動化中會有更穩定的參考。
+
+> [!TIP]
+> 如果您要使用 Cmdlet 指派角色，例如 `New-AzRoleAssignment` ([參考](/powershell/module/az.resources/new-azroleassignment?view=azps-4.8.0)) ，您可以使用 `-RoleDefinitionId` 參數（而非） `-RoleDefinitionName` 來傳遞識別碼，而不是角色的名稱。
 
 ### <a name="permission-scopes"></a>權限範圍
 

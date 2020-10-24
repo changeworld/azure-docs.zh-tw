@@ -9,22 +9,23 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/29/2020
+ms.date: 10/23/2020
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: f70a11165f6433e580fd857f2d5a620deb6640c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2815041f32ebd7c2dae235229d1ca19aad253f7d
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604242"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503616"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a> (預覽版設定權杖存留期原則) 
-當您為應用程式、服務主體及您整體組織建立及管理權杖存留期時，在 Azure AD 中許多案例都是可能的。 若要深入瞭解，請閱讀 [Microsoft 身分識別平臺中可設定的權杖存留期](active-directory-configurable-token-lifetimes.md)。 
+當您為應用程式、服務主體及您整體組織建立及管理權杖存留期時，在 Azure AD 中許多案例都是可能的。  
 
 > [!IMPORTANT]
-> 在預覽期間收到客戶的意見之後，我們已在 Azure AD 條件式存取中實行 [驗證會話管理功能](../conditional-access/howto-conditional-access-session-lifetime.md) 。 您可以使用這項新功能，藉由設定 [登入頻率] 來設定重新整理權杖存留期。 2020 5 月30日之後，沒有新的租使用者可以使用可設定的權杖存留期原則來設定會話和重新整理權杖。 淘汰將在這之後的幾個月內發生，這表示我們將停止接受現有的會話和重新整理權杖原則。 您仍然可以在淘汰之後設定存取權杖存留期。
+> 2021年1月30日之後，租使用者將無法再設定重新整理和會話權杖存留期，且 Azure AD 將會在該日期之後的原則中停止接受現有的重新整理和會話權杖設定。 您仍然可以在淘汰之後設定存取權杖存留期。  若要深入瞭解，請閱讀 [Microsoft 身分識別平臺中可設定的權杖存留期](active-directory-configurable-token-lifetimes.md)。
+> 我們已在 Azure AD 條件式存取中實行 [驗證會話管理功能](../conditional-access/howto-conditional-access-session-lifetime.md)   。 您可以使用這項新功能，藉由設定 [登入頻率] 來設定重新整理權杖存留期。
 
 
 在本節中，我們將逐步解說一些常見的原則案例，這些案例可以協助您強制實行下列各項的新規則：

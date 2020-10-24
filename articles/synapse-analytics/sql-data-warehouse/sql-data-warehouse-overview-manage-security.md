@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 06f62fd656357e16396a0458a9afee12dcfa507f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c94924c973a1095a4bebf6231d9853968facc1b2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629364"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516878"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>保護 Azure Synapse 中的資料庫
 
@@ -92,7 +92,7 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
 ```
 
-從 Azure 入口網站或使用 Azure Resource Manager API 管理資料庫和伺服器，是由入口網站使用者帳戶的角色指派所控制。 如需詳細資訊，請參閱 [Azure 入口網站中的角色型存取控制](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+從 Azure 入口網站或使用 Azure Resource Manager API 管理資料庫和伺服器，是由入口網站使用者帳戶的角色指派所控制。 如需詳細資訊，請參閱[使用 Azure 入口網站新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ## <a name="encryption"></a>加密
 

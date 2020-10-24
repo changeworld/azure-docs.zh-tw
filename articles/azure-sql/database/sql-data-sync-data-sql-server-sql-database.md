@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: bc0286dc509acd4afba7f1660b65e49b25378496
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 194625ab43dbb161d2b04352d715a44a1328a888
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371746"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503329"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>什麼是適用于 Azure 的 SQL 資料同步？
 
@@ -135,7 +135,7 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您同步�
 - 主鍵不能有下列資料類型： SQL_variant、binary、Varbinary、image、xml。
 - 當您使用下列資料類型作為主要索引鍵時請務必謹慎，原因是支援的有效位數只到秒：time、datetime、datetime2、datetimeoffset。
 - [資料庫]、[資料表] 和 [資料行] (的物件名稱) 不能包含可列印的字元期間 (. ) 、左方括弧 ( [) ] 或右方括弧 (] ) 。
-- 資料表名稱不能包含可列印的字元：！ " # $ % ' ( ) * + -
+- 資料表名稱不能包含可列印的字元：！ "# $% ' ( ) * +-空格
 - 不支援 Azure Active Directory 驗證。
 - 如果有相同名稱但架構不同的資料表 (例如 dbo. customers 和 sales。客戶) 只有其中一個資料表可以加入同步。
 - 不支援具有 User-Defined 資料類型的資料行

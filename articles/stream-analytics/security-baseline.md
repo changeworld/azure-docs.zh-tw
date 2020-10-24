@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 72a2b24ad8e05943f975f0819d8b2a872b0ab829
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5a7f27ff20a4770caea44e73d91001d9785c015
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89228999"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517220"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>適用于串流分析的 Azure 安全性基準
 
@@ -248,7 +248,7 @@ ms.locfileid: "89228999"
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在適用的情況下變更預設密碼
 
-**指導**方針：串流分析沒有預設密碼的概念，因為 Azure Active Directory 提供驗證，並受到角色型存取控制 (RBAC) 的保護，以管理服務。 視插入資料流程服務和輸出服務而定，您需要輪替在作業中設定的認證。
+**指導**方針：串流分析沒有預設密碼的概念，因為 Azure Active Directory 提供驗證，並受到 azure 角色型存取控制的保護， (azure RBAC) 來管理服務。 視插入資料流程服務和輸出服務而定，您需要輪替在作業中設定的認證。
 
 * [針對串流分析作業的輸入和輸出輪替登入認證](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-login-credentials-inputs-outputs)
 
@@ -324,7 +324,7 @@ ms.locfileid: "89228999"
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指導**方針：使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure AD 提供角色型存取控制 (RBAC) ，以針對用戶端對串流分析資源的存取進行細微的控制。
+**指導**方針：使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure AD 提供 Azure 角色型存取控制 (Azure RBAC) ，以精細控制用戶端對串流分析資源的存取。
 
 * [如何建立和設定 Azure AD 實例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 

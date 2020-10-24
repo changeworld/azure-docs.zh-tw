@@ -4,12 +4,12 @@ description: 在本文中，當您使用 Azure 備份在 Azure Vm 上備份 SAP 
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.custom: references_regions
-ms.openlocfilehash: a3ad68fcaaa820daca842d567ecd40f011df729f
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 641bba6b947731e0f55bc79828101f84d5b780fd
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946360"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515775"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure VM 上 SAP Hana 資料庫 備份的支援矩陣
 
@@ -24,7 +24,7 @@ Azure 備份支援將 SAP HANA 資料庫備份至 Azure。 此文章摘要說明
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **拓撲**               | 僅在 Azure Linux VM 中執行的 SAP HANA                    | HANA 大型執行個體 (HLI)                                   |
 | **區域**                   | **GA：**<br> **美洲** – 美國中部、美國東部 2、美國東部、美國中北部、美國中南部、美國西部 2、美國中西部、美國西部、加拿大中部、加拿大東部、巴西南部 <br> **亞太地區** – 澳大利亞中部、澳大利亞中部 2、澳大利亞東部、澳大利亞東南部、日本東部、日本西部、韓國中部、韓國南部、東亞、東南亞、印度中部、印度南部、印度西部、中國東部、中國北部、中國東部 2、中國北部 2 <br> **歐洲** –西歐、北歐、法國中部、英國南部、英國西部、德國北部、德國中西部、瑞士北部、瑞士西部、中央瑞士北部、挪威東部、挪威西部 <br> **非洲/ME** - 南非北部、南非西部、阿拉伯聯合大公國北部、阿拉伯聯合大公國中部  <BR>  **Azure Government 區域** | 法國南部、德國中部、德國東北部、US Gov 愛荷華州 |
-| **作業系統版本**            | SLES 12 SP2、SP3 和 SP4;SLES 15 含 SP0 和 SP1 <br><br>  從 2020 年 8 月 1 日起，適用於 RHEL 的 SAP Hana 備份 (7.4、7.6、7.7 和 8.1) 已正式推出。                |                                             |
+| **作業系統版本**            | SLES 12 SP2、SP3、SP4 和 SP5;SLES 15 含 SP0 和 SP1 <br><br>  從 2020 年 8 月 1 日起，適用於 RHEL 的 SAP Hana 備份 (7.4、7.6、7.7 和 8.1) 已正式推出。                |                                             |
 | **HANA 版本**          | Hana 2.x 上的 SDC、HANA 2.x 上的 MDC <= SPS04 Rev 48、SPS05 (尚未針對啟用加密的案例進行驗證)       |                                                            |
 | **HANA 部署**       | 單一 Azure VM 上一個 SAP HANA - 僅限擴大。 <br><br> 針對高可用性部署，系統會將兩部不同電腦上的兩個節點視為具有不同資料鏈的個別節點。               | 向外延展 <br><br> 在高可用性部署中，備份不會自動容錯移轉至次要節點。 應分別針對每個節點來設定備份。                                           |
 | **HANA 執行個體**         | 單一 Azure VM 上一個 SAP HANA 執行個體 - 僅限擴大 | 單一 VM 上多個 SAP HANA 執行個體                  |
