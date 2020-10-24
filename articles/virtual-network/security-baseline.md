@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c34ace92fffee3c135cb05e07f06d885751bbce5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36be61fd65db7ea02a3baec4b519a13231c420ec
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629738"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514436"
 ---
 # <a name="azure-security-baseline-for-virtual-network"></a>虛擬網路的 Azure 安全性基準
 
@@ -118,7 +118,7 @@ ms.locfileid: "91629738"
 
 請參閱安全中心的預設原則，其中包含與您虛擬網路相關的可用安全性建議。
 
-使用 Azure 藍圖藉由在單一藍圖定義中封裝關鍵環境成品（例如 Azure Resource Manager 範本、角色型存取控制 (Azure RBAC) 指派和原則）來簡化大規模的 Azure 部署。 您可以將 Azure 藍圖套用至新的訂用帳戶，以透過版本控制進行微調控制和管理。 
+使用 Azure 藍圖來藉由在單一藍圖定義中封裝關鍵環境成品（例如 Azure Resource Manager 範本、Azure 角色型存取控制 (Azure RBAC) 指派和原則）來簡化大規模的 Azure 部署。 您可以將 Azure 藍圖套用至新的訂用帳戶，以透過版本控制進行微調控制和管理。 
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
@@ -408,13 +408,13 @@ Microsoft 提供數個選項，可讓客戶利用這些選項來保護 Azure 網
 
 **責任**：共用
 
-### <a name="46-use-role-based-access-control-to-manage-access-to-resources"></a>4.6：使用角色型存取控制來管理資源的存取權 
+### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4.6：使用 Azure RBAC 來管理資源的存取權 
 
 **指導**方針：使用 azure 角色型存取控制 (azure RBAC) 來管理對資料和資源的存取。 否則，請使用服務特定的存取控制方法。 
 
 選擇內建角色，例如擁有者、參與者或網路參與者，並將角色指派給適當的範圍。 例如，您可以使用虛擬網路對任何這些角色所需的特定許可權，指派虛擬網路功能的子集。 
 
-- [如何在 Azure 中設定 RBAC](../role-based-access-control/role-assignments-portal.md)
+- [如何設定 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 - [規劃虛擬網路](virtual-network-vnet-plan-design-arm.md#permissions)
 

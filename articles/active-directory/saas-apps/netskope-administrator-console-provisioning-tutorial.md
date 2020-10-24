@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: 173ca296689bbdb8d574930ec2549e82839c47e9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 5e71566ea7cd2e8953c84d58128e3380a782ba40
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428471"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516710"
 ---
 # <a name="tutorial-configure-netskope-user-authentication-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的 Netskope 使用者驗證
 
@@ -97,7 +97,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 本節將引導您逐步設定 Azure AD 布建服務，以根據 Azure AD 中的使用者和/或群組指派，在 Netskope 使用者驗證中建立、更新及停用使用者和/或群組。
 
 > [!TIP]
-> 您也可以遵循 [Netskope 使用者驗證單一登入教學](https://docs.microsoft.com/azure/active-directory/saas-apps/netskope-cloud-security-tutorial)課程中提供的指示，選擇啟用 SAML 型單一登入以進行 Netskope 使用者驗證。 您可以獨立設定自動使用者布建的單一登入，雖然這兩個功能彼此互補。
+> 您也可以遵循 [Netskope 使用者驗證單一登入教學](./netskope-cloud-security-tutorial.md)課程中提供的指示，選擇啟用 SAML 型單一登入以進行 Netskope 使用者驗證。 您可以獨立設定自動使用者布建的單一登入，雖然這兩個功能彼此互補。
 
 > [!NOTE]
 > 若要深入瞭解 Netskope 使用者驗證的 SCIM 端點[，請參閱。](https://docs.google.com/document/d/1n9P_TL98_kd1sx5PAvZL2HS6MQAqkQqd-OSkWAAU6ck/edit#heading=h.prxq74iwdpon)
@@ -172,4 +172,3 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 ## <a name="next-steps"></a>後續步驟
 
 * [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)
-

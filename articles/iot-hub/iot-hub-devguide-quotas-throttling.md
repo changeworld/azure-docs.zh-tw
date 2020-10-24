@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: ec8d277de177942386d9f3becdf329cdff1ca812
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f2ab3c55c5532b76c45a18054fd653dd8fe8137
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797797"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504069"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>參考 - IoT 中樞配額和節流
 
@@ -59,7 +59,7 @@ IoT 隨插即用裝置會針對每個介面至少傳送一個遙測訊息（包�
 | 同時連線的裝置資料流程數目上限<sup>1</sup> | 50 | 50 | 50 |
 | 最大裝置串流資料傳輸<sup>1</sup> (每日匯總磁片區)  | 300 MB | 300 MB | 300 MB |
 
-<sup>1</sup>「IoT 中樞」的基本層中不提供此功能。 如需詳細資訊，請參閱[如何選擇適合的 IoT 中樞](iot-hub-scaling.md)。 <br/><sup>2</sup>節流計量大小為 4 KB。
+<sup>1</sup>「IoT 中樞」的基本層中不提供此功能。 如需詳細資訊，請參閱[如何選擇適合的 IoT 中樞](iot-hub-scaling.md)。 <br/><sup>2</sup>節流計量大小為 4 KB。 節流是根據要求承載大小而定。
 
 ### <a name="throttling-details"></a>節流詳細資料
 
@@ -132,7 +132,7 @@ IoT 中樞會努力地為所有作業提供低延遲的服務。 不過，由於
 
 如果您注意到作業的延遲時間莫名其妙增加，請連絡 [Microsoft 支援服務](https://azure.microsoft.com/support/options/)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需有關 IoT 中樞節流行為的深入討論，請參閱 [IoT Hub throttling and you (IoT 中樞節流和您)](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/) 部落格文章。
 

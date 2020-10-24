@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 07bd9353f08e9440e495dfa92c608b4d6f70f5cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b0d2c6c3d70e73be25038c763f05ef572b56ebe
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543977"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515674"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>適用於 Azure Active Directory 的 Atlassian Jira 和 Confluence 管理員指南
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) 單一登入 (SSO) 外掛程式可讓 Microsof
 > [!NOTE]
 > 使用者佈建不是透過此外掛程式進行。
 
-## <a name="audience"></a>對象
+## <a name="audience"></a>適用對象
 
 可使用此外掛程式啟用 Azure AD SSO 的 Jira 和 Confluence 管理員。
 
@@ -67,7 +67,7 @@ Azure Active Directory (Azure AD) 單一登入 (SSO) 外掛程式可讓 Microsof
 
 * JIRA Core 和 JIRA Software：6.0 到 7.12
 * JIRA Service Desk：3.0.0 到 3.5.0
-* JIRA 也支援 5.2。 如需詳細資訊，請按一下[適用於 JIRA 5.2 的 Microsoft Azure Active Directory 單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
+* JIRA 也支援 5.2。 如需詳細資訊，請按一下[適用於 JIRA 5.2 的 Microsoft Azure Active Directory 單一登入](./jira52microsoft-tutorial.md)
 * Confluence：5.0 到 5.10
 * Confluence：6.0.1
 * Confluence：6.1.1
@@ -177,7 +177,7 @@ Azure Active Directory (Azure AD) 單一登入 (SSO) 外掛程式可讓 Microsof
 
 ### <a name="does-the-plug-in-work-on-cloud-versions"></a>此外掛程式可否在雲端版本上運作？
 
-否。 此外掛程式僅支援內部部署版本的 Jira 和 Confluence。
+不可以。 此外掛程式僅支援內部部署版本的 Jira 和 Confluence。
 
 ### <a name="which-versions-of-jira-and-confluence-does-the-plug-in-support"></a>此外掛程式支援哪些 Jira 和 Confluence 版本？
 
@@ -185,7 +185,7 @@ Azure Active Directory (Azure AD) 單一登入 (SSO) 外掛程式可讓 Microsof
 
 * JIRA Core 和 JIRA Software：6.0 到 7.12
 * JIRA Service Desk：3.0.0 到 3.5.0
-* JIRA 也支援 5.2。 如需詳細資訊，請按一下[適用於 JIRA 5.2 的 Microsoft Azure Active Directory 單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
+* JIRA 也支援 5.2。 如需詳細資訊，請按一下[適用於 JIRA 5.2 的 Microsoft Azure Active Directory 單一登入](./jira52microsoft-tutorial.md)
 * Confluence：5.0 到 5.10
 * Confluence：6.0.1
 * Confluence：6.1.1
@@ -221,7 +221,7 @@ Azure Active Directory (Azure AD) 單一登入 (SSO) 外掛程式可讓 Microsof
 
 ### <a name="does-the-plug-in-work-with-idps-other-than-azure-ad"></a>此外掛程式是否可與 Azure AD 以外的 IdP 搭配運作？
 
-否。 它只能與 Azure AD 搭配運作。
+不可以。 它只能與 Azure AD 搭配運作。
 
 ### <a name="what-version-of-saml-does-the-plug-in-work-with"></a>此外掛程式可以與哪個版本的 SAML 搭配運作？
 
@@ -229,12 +229,12 @@ Azure Active Directory (Azure AD) 單一登入 (SSO) 外掛程式可讓 Microsof
 
 ### <a name="does-the-plug-in-do-user-provisioning"></a>此外掛程式會進行使用者佈建嗎？
 
-否。 此外掛程式只提供以 SAML 2.0 為基礎的 SSO。 必須在使用 SSO 登入之前，於應用程式中佈建使用者。
+不可以。 此外掛程式只提供以 SAML 2.0 為基礎的 SSO。 必須在使用 SSO 登入之前，於應用程式中佈建使用者。
 
 ### <a name="does-the-plug-in-support-cluster-versions-of-jira-and-confluence"></a>此外掛程式支援叢集版本的 Jira 和 Confluence 嗎？
 
-否。 此外掛程式與內部部署版本的 Jira 和 Confluence 搭配使用。
+不可以。 此外掛程式與內部部署版本的 Jira 和 Confluence 搭配使用。
 
 ### <a name="does-the-plug-in-work-with-http-versions-of-jira-and-confluence"></a>此外掛程式能與 HTTP 版本的 Jira 和 Confluence 搭配使用嗎？
 
-否。 此外掛程式只能與已啟用 HTTPS 的安裝搭配運作。
+不可以。 此外掛程式只能與已啟用 HTTPS 的安裝搭配運作。

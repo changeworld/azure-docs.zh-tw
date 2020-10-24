@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: a38816f00c0e05c3bde1760e39ba00d745f12a44
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3aaa666ac6b7ddffcf5e0d2f5b62d26bd0f96004
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460949"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516200"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>在 Azure SQL Database 中複製資料庫的交易一致性複本
 
@@ -108,7 +108,7 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
 
 此命令會將 Database1 複製到名為 pool1 的彈性集區中名為 Database2 的新資料庫。 視資料庫大小而定，複製作業可能需要一些時間才能完成。
 
-Database1 可以是單一或集區資料庫，但 pool1 必須是與 Database1 相同的服務層級。 
+Database1 可以是單一或集區資料庫。 支援在不同的層集區之間進行複製，但某些跨層複本將不會成功。 例如，您可以將單一或彈性標準 db 複製到一般用途集區，但無法將標準彈性 db 複製到高階集區。 
 
    ```sql
    -- execute on the master database to start copying
@@ -192,7 +192,7 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 
 在 Azure SQL Database 中複製資料庫時，可能會發生下列錯誤。 如需詳細資訊，請參閱 [複製 Azure SQL Database](database-copy.md)。
 
-| 錯誤碼 | 嚴重性 | 描述 |
+| 錯誤碼 | 嚴重性 | 說明 |
 | ---:| ---:|:--- |
 | 40635 |16 |IP 位址 '%.&#x2a;ls' 的用戶端已暫時停用。 |
 | 40637 |16 |建立資料庫副本目前已停用。 |

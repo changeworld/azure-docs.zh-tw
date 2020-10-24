@@ -80,6 +80,8 @@
               href: ../../service-fabric/quickstart-cluster-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 資料庫
           items:
+            - name: Cache for Redis
+              href: ../../azure-cache-for-redis/cache-redis-cache-arm-provision.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Cosmos DB
               href: ../../cosmos-db/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 適用於 MariaDB 的資料庫
@@ -98,7 +100,7 @@
               href: ../../azure-sql/virtual-machines/windows/create-sql-vm-resource-manager-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: DevOps
           items:
-            - name: 應用程式設定
+            - name: 應用程式組態
               href: ../../azure-app-configuration/quickstart-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: DevTest Labs
               href: ../../devtest-labs/create-lab-windows-vm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
@@ -172,6 +174,8 @@
               href: ../../key-vault/secrets/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 儲存體
           items:
+            - name: Data Share
+              href: ../../data-share/share-your-data-arm.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 儲存體帳戶
               href: ../../storage/common/storage-account-create.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Web
@@ -180,6 +184,8 @@
               href: ../../app-service/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 通知中樞
               href: ../../notification-hubs/create-notification-hub-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: SignalR Service
+              href: ../../azure-signalr/signalr-quickstart-azure-signalr-service-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
 - name: 教學課程
   items:
     - name: 初學者範本
@@ -479,7 +485,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=azure-resource-manager'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-resource-manager'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager'

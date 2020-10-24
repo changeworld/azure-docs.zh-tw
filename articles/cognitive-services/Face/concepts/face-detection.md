@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 15e39eb9f5b8dd3556ea9ff8240bc2c9d252cd31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92b19941f34b9bf5656c9beb188a68d2cf01f674
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73743063"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504124"
 ---
 # <a name="face-detection-and-attributes"></a>臉部偵測和屬性
 
@@ -47,7 +47,7 @@ ms.locfileid: "73743063"
 * **性別**。 指定臉部的估計性別。 可能的值為男性、女性和 genderless。
 * **眼鏡**。 指定的臉部是否有眼鏡。 可能的值為 NoGlasses、ReadingGlasses、太陽眼鏡和游泳 Goggles。
 * **頭髮**。 臉部的頭髮型別。 這個屬性會顯示是否會顯示頭髮、是否偵測到 baldness，以及偵測到哪些頭髮色。
-* **頭部姿勢**。 臉部在3D 空間中的方向。 這個屬性是以度為單位的音調、變換和偏擺角度來描述。 值範圍為-90 度到90度、-180 度至180度，以及-90 度為90度。 請參閱下圖以瞭解角度對應：
+* **頭部姿勢**。 臉部在3D 空間中的方向。 這個屬性是以度為單位的音調、變換和偏擺角度來描述。 值範圍為-90 度到90度、-90 度至90度，以及-90 度為90度。 請參閱下圖以瞭解角度對應：
 
     ![標示了音調、變換和偏擺軸的標頭](../Images/headpose.1.jpg)
 * **構成**。 臉部是否有其構成。 這個屬性會傳回 eyeMakeup 和 lipMakeup 的布林值。
@@ -63,7 +63,7 @@ ms.locfileid: "73743063"
 使用下列秘訣，確定您的輸入影像提供最精確的偵測結果：
 
 * 支援的輸入影像格式包括 JPEG、PNG、第一個框架的 GIF 和 BMP。
-* 影像檔案大小不得超過 4 MB。
+* 影像檔案大小應大於 6 MB。
 * 可偵測的臉部大小範圍為 36 x 36 至 4096 x 4096 像素。 未偵測到此範圍之外的臉部。
 * 某些臉部可能因技術挑戰而無法偵測到。 極端臉部 (頭部姿勢) 或臉部遮蔽 (物件（例如太陽眼鏡或臉部部分) 的或手）可能會影響偵測。 正面和近正面的臉部能提供最佳結果。
 

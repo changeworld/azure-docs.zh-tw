@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 303720cf50b5eabf22319e1eeae7423c4f1d94bb
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a9410215abeb6fdb413866cbff12cf5f826c0fee
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201693"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504366"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>適用于 Azure Kubernetes Service 的 Azure 安全性基準
 
@@ -949,7 +949,7 @@ Microsoft 會管理基礎平臺，並將所有客戶內容視為機密資料，�
 
 在 Kubernetes 中執行命名空間，以建立邏輯隔離界限。 使用 ">microsoft.containerservice" 命名空間中 Azure 原則別名來建立自訂原則，以對 Azure Kubernetes Service (AKS) 實例的設定進行審核或強制執行。 
 
-檢查和執行隔離和多租使用者的其他 Kubernetes 功能與考慮，包括下列領域：排程、網路、驗證/授權和容器。 也請使用不同的訂用帳戶和/或管理群組進行開發、測試和生產環境。 將 AKS 叢集與虛擬網路、子網適當標記，並使用 Web 應用程式防火牆保護 (WAF) 。
+檢查並執行隔離和多租使用者的其他 Kubernetes 功能和考慮，以包含下列各項：排程、網路、驗證/授權和容器。 也請使用不同的訂用帳戶和/或管理群組進行開發、測試和生產環境。 將 AKS 叢集與虛擬網路、子網適當標記，並使用 Web 應用程式防火牆保護 (WAF) 。
 
 - [瞭解 AKS 中群集隔離的最佳作法](operator-best-practices-cluster-isolation.md)
 

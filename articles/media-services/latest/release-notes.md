@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 08/31/2020
+ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: d18962e097358b8e80ac93b4d8419f7cd4f77ee0
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 4a741834637900ec0c78105790bac2453d759e2f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426817"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514481"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒體服務 v3 版本資訊
 
@@ -37,6 +37,15 @@ ms.locfileid: "92426817"
 > 您可以使用 [Azure 入口網站](https://portal.azure.com/) 來管理 v3 [實況活動](live-events-outputs-concept.md)、查看 v3 [資產](assets-concept.md) 和作業、取得存取 api、加密內容的相關資訊。 針對其他所有管理工作 (例如，管理) 的轉換和作業，請使用 [REST API](/rest/api/media/accountfilters)、 [CLI](/cli/azure/ams)或其中一個支援的 [sdk](media-services-apis-overview.md#sdks)。
 >
 > 如需詳細資訊，請參閱： [媒體服務 v3 的 Azure 入口網站限制](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)。
+
+## <a name="october-2020"></a>2020 年 10 月
+
+### <a name="basic-audio-analysis"></a>基本音訊分析
+音訊分析預設值包含基本模式定價層。 新的基本音訊分析器模式提供低成本的選項，可將語音轉譯解壓縮，並格式化輸出字幕和子字幕。 此模式會執行語音轉換文字轉譯和產生 VTT 副標題/字幕檔案。 此模式的輸出包含深入解析 JSON 檔案，其中只包含關鍵字、轉譯和計時資訊。 自動語言偵測和說話者 diarization 不會包含在此模式中。 請參閱支援的 [語言清單。](analyzing-video-audio-files-concept.md#built-in-presets)
+
+使用索引子 v1 和索引子 v2 的客戶應該遷移至基本音訊分析預設值。
+
+如需基本音訊分析器模式的詳細資訊，請參閱 [分析影片和音訊](analyzing-video-audio-files-concept.md)檔案。  若要瞭解如何使用基本的音訊分析器模式搭配 REST API，請參閱 [如何建立基本音訊轉換](how-to-create-basic-audio-transform.md)。
 
 ## <a name="august-2020"></a>2020 年 8 月
 

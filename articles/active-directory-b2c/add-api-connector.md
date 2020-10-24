@@ -5,19 +5,22 @@ services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 10/15/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: a9e300a0e6f1b847c49ced7ded94db8e24016b32
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 857429ab5fd2e2ea9a0cb0173015ceba4bb0bacb
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102267"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504106"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>將 API 連接器新增至註冊使用者流程 (預覽版) 
+
+> [!IMPORTANT]
+> 適用于註冊的 API 連接器是 Azure AD B2C 的公開預覽功能。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 若要使用 [api 連接器](api-connectors-overview.md)，請先建立 api 連接器，然後在使用者流程中啟用它。
 
@@ -48,7 +51,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -80,7 +83,7 @@ Content-type: application/json
 > 如果宣告在呼叫 API 端點時沒有值，則不會將宣告傳送至 API。 您的 API 應設計成明確檢查並處理要求中不會有宣告的情況。
 
 > [!TIP] 
-> 身分識別 ( 「身分識別」 [**) **](https://docs.microsoft.com/graph/api/resources/objectidentity)和**電子郵件地址 ( 「電子郵件」 ) **宣告可供您的 API 用來識別使用者，然後他們在您的租使用者中具有帳戶。 當使用者使用身分識別提供者（例如 Google 或 Facebook）進行驗證時，會傳送「身分識別」宣告。 一律會傳送「電子郵件」。
+> 身分識別 ( 「身分識別」 [**) **](https://docs.microsoft.com/graph/api/resources/objectidentity)和**電子郵件地址 ( 「電子郵件」 ) **宣告可供您的 API 用來識別使用者，然後他們在您的租使用者中具有帳戶。 
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>在使用者流程中啟用 API 連接器
 
@@ -100,7 +103,7 @@ Content-type: application/json
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>使用身分識別提供者登入之後
 
-在使用者向身分識別 (提供者（例如 Google、Facebook、& Azure AD) ）進行驗證之後，會立即叫用註冊程式中這個步驟的 API 連接器。 此步驟會在 [ ***屬性集合] 頁面***的前面，也就是向使用者呈現的表單，以收集使用者屬性。 如果使用者正在使用本機帳戶註冊，就不會叫用這個步驟。
+在使用者向身分識別 (提供者（例如 Google、Facebook、& Azure AD) ）進行驗證之後，會立即叫用註冊程式中這個步驟的 API 連接器。 此步驟位於 **_屬性集合頁面_*_ 上方，這是向使用者顯示的表單，以收集使用者屬性。 如果使用者正在使用本機帳戶註冊，就不會叫用這個步驟。
 
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>範例要求會在此步驟傳送至 API
 ```http
@@ -109,7 +112,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [ 
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -167,7 +170,7 @@ Content-type: application/json
 
 {
  "email": "johnsmith@fabrikam.onmicrosoft.com",
- "identities": [ //Sent for Google and Facebook identity providers
+ "identities": [
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -238,7 +241,7 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | version                                            | String            | 是      | API 的版本。                                                                                                                                                                                                                                                                |
 | 動作                                             | String            | 是      | 值必須為 `Continue`。                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | 否       | 傳回的值會覆寫從使用者收集的值。 如果選取做為 **應用程式**宣告，也可以在權杖中傳回。                                              |
+| \<builtInUserAttribute>                            | \<attribute-type> | 否       | 傳回的值會覆寫從使用者收集的值。 如果選取為 _ * 應用程式宣告 * *，也可以在權杖中傳回。                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | 否       | 宣告不需要包含 `_<extensions-app-id>_` 。 傳回的值會覆寫從使用者收集的值。 如果選取做為 **應用程式**宣告，也可以在權杖中傳回。  |
 
 ### <a name="example-of-a-blocking-response"></a>封鎖回應的範例
@@ -288,7 +291,8 @@ Content-type: application/json
 | status      | 整數 | 是      | 必須是 `400` ValidationError 回應的值。                        |
 | userMessage | String  | 是      | 要向使用者顯示的訊息。                                            |
 
-*注意：* 除了回應主體中的「狀態」值之外，HTTP 狀態碼必須是 "400"。
+> [!NOTE]
+> 除了回應主體中的「狀態」值之外，HTTP 狀態碼必須是 "400"。
 
 **使用驗證錯誤回應的使用者體驗**
 
@@ -318,4 +322,4 @@ Content-type: application/json
 
 ## <a name="next-steps"></a>後續步驟
 <!-- - Learn how to [add a custom approval workflow to sign-up](add-approvals.md) -->
-- 開始使用我們的 [Azure 函數快速入門範例](code-samples.md#api-connectors)。
+- 開始使用我們的 [範例](code-samples.md#api-connectors)。
