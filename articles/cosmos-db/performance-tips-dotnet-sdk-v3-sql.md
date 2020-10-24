@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: c869f80eba5a6bdff4b952c62b0d964401f904d2
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 05fe22ed0dc7d03148f66fd02aa648e1b63ab319
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277298"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475323"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB 和 .NET 的效能祕訣
 
@@ -39,7 +39,7 @@ Azure Cosmos DB 是快速、彈性的分散式資料庫，可透過保證的延�
 
 此處列出的四個應用程式類型預設使用32位主機處理。 若要針對您的應用程式類型將主機處理變更為64位處理，請執行下列動作：
 
-- **針對可執行檔應用程式**：在 [ **專案屬性** ] 視窗的 [ **組建** ] 窗格中，將 [ [平臺目標](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) ] 設定為 [ **x64**]。
+- **針對可執行檔應用程式**：在 [ **專案屬性** ] 視窗的 [ **組建** ] 窗格中，將 [ [平臺目標](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) ] 設定為 [ **x64**]。
 
 - **針對以 VSTest 為基礎的測試專案**：在 [Visual Studio**測試**] 功能表上，選取 [**測試**  >  **測試設定**]，然後將 [**預設處理器架構**] 設定為 [ **X64**]。
 
@@ -53,7 +53,7 @@ Azure Cosmos DB 是快速、彈性的分散式資料庫，可透過保證的延�
     
 **開啟伺服器端垃圾收集**
 
-在某些情況下，降低垃圾收集的頻率可能會有所説明。 在 .NET 中，將 [>gcserver>](https://docs.microsoft.com/dotnet/core/run-time-config/garbage-collector#flavors-of-garbage-collection) 設定為 `true` 。
+在某些情況下，降低垃圾收集的頻率可能會有所説明。 在 .NET 中，將 [>gcserver>](/dotnet/core/run-time-config/garbage-collector#flavors-of-garbage-collection) 設定為 `true` 。
 
 **擴充您的用戶端工作負載**
 
@@ -86,8 +86,8 @@ new CosmosClientOptions
 
 在您有稀疏存取的情況下，如果您在與閘道模式存取相較之下發現連接計數較高，您可以：
 
-* 將 [CosmosClientOptions. PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode) 屬性設定為 `PrivatePortPool` (使用 framework 版本4.6.1 和更新版本，以及 .net Core 2.0 版和更新版本的) 。 此屬性可讓 SDK 針對各種 Azure Cosmos DB 目的地端點，使用一小部分的暫時埠。
-* 將 [CosmosClientOptions. IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.idletcpconnectiontimeout) 屬性設定為大於或等於10分鐘。 建議的值是20分鐘到24小時。
+* 將 [CosmosClientOptions. PortReuseMode](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode) 屬性設定為 `PrivatePortPool` (使用 framework 版本4.6.1 和更新版本，以及 .net Core 2.0 版和更新版本的) 。 此屬性可讓 SDK 針對各種 Azure Cosmos DB 目的地端點，使用一小部分的暫時埠。
+* 將 [CosmosClientOptions. IdleConnectionTimeout](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.idletcpconnectiontimeout) 屬性設定為大於或等於10分鐘。 建議的值是20分鐘到24小時。
 
 <a id="same-region"></a>
 
@@ -103,7 +103,7 @@ new CosmosClientOptions
 
 **增加執行緒/工作數目**
 
-由於對 Azure Cosmos DB 的呼叫是透過網路進行，因此您可能需要改變要求的並行程度，讓用戶端應用程式花費最短時間在要求之間等待。 例如，如果您使用的是 .NET 工作 [平行程式庫](https://msdn.microsoft.com//library/dd460717.aspx)，請建立從 Azure Cosmos DB 讀取或寫入的數百個工作的順序。
+由於對 Azure Cosmos DB 的呼叫是透過網路進行，因此您可能需要改變要求的並行程度，讓用戶端應用程式花費最短時間在要求之間等待。 例如，如果您使用的是 .NET 工作 [平行程式庫](/dotnet/standard/parallel-programming/task-parallel-library-tpl)，請建立從 Azure Cosmos DB 讀取或寫入的數百個工作的順序。
 
 **啟用加速網路**
  
@@ -146,7 +146,7 @@ itemResponse.Resource
 
 **當您使用閘道模式時，每一主機增加 System.Net MaxConnections**
 
-當您使用閘道模式時，會透過 HTTPS/REST 發出 Azure Cosmos DB 要求。 它們受限於每個主機名稱或 IP 位址的預設連線限制。 您可能需要將設定 `MaxConnections` 為較高的值 (從100到 1000) ，如此用戶端程式庫才能使用多個同時連線來 Azure Cosmos DB。 在 .NET SDK 1.8.0 和更新版本中， [ServicePointManager >servicepointmanager.defaultconnectionlimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) 的預設值是50。 若要變更此值，您可以將設定 [`Documents.Client.ConnectionPolicy.MaxConnectionLimit`](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) 為較高的值。
+當您使用閘道模式時，會透過 HTTPS/REST 發出 Azure Cosmos DB 要求。 它們受限於每個主機名稱或 IP 位址的預設連線限制。 您可能需要將設定 `MaxConnections` 為較高的值 (從100到 1000) ，如此用戶端程式庫才能使用多個同時連線來 Azure Cosmos DB。 在 .NET SDK 1.8.0 和更新版本中， [ServicePointManager >servicepointmanager.defaultconnectionlimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) 的預設值是50。 若要變更此值，您可以將設定 [`Documents.Client.ConnectionPolicy.MaxConnectionLimit`](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit) 為較高的值。
 
 **調整資料分割集合的平行查詢**
 
@@ -170,7 +170,7 @@ SQL .NET SDK 支援平行查詢，可讓您以平行方式查詢分割的容器�
 
 在效能測試期間，您應該增加負載，直到低比率的要求受到節流。 如果要求受到節流處理，用戶端應用程式應該會在伺服器指定的重試間隔後關閉節流。 遵循輪詢有助於確保您在重試之間花費最少的等待時間。 
 
-如需詳細資訊，請參閱 [RetryAfter](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_CosmosException_RetryAfter)。
+如需詳細資訊，請參閱 [RetryAfter](/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Cosmos_CosmosException_RetryAfter)。
     
 有一種機制可記錄其他診斷資訊和針對延遲問題進行疑難排解，如下列範例所示。 您可以記錄讀取延遲較高之要求的診斷字串。 所捕獲的診斷字串將協助您瞭解在指定的要求中收到 *429* 錯誤的次數。
 

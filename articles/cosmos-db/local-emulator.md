@@ -7,12 +7,12 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: e846f00388ce21690729f62592c86b73cc42c3f3
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 9455ac3520192274e80f2d9e0fdfd1c8f8a238a3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173786"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482616"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>安裝和使用 Azure Cosmos 模擬器進行本機開發和測試
 
@@ -309,7 +309,7 @@ services:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard20)]
 
-# <a name="nodejs"></a>[Node.js](#tab/ssl-nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/ssl-nodejs) \(英文\)
 
 針對 Node.js 的應用程式，您可以在 `package.json` `NODE_TLS_REJECT_UNAUTHORIZED` 啟動應用程式時修改您的檔案，以設定：
 
@@ -365,7 +365,7 @@ mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mG
 
 ### <a name="table-api"></a>資料表 API
 
-當您在桌面上執行 Azure Cosmos 模擬器之後，就可以使用 [Azure Cosmos DB 資料表 API SDK](table-storage-how-to-use-dotnet.md) 來與模擬器互動。 以具有 "/EnableTableEndpoint" 的系統管理員身分從 [命令提示](emulator-command-line-parameters.md) 字元啟動模擬器。 接著，執行下列程式碼以連線到資料表 API 帳戶：
+當您在桌面上執行 Azure Cosmos 模擬器之後，就可以使用 [Azure Cosmos DB 資料表 API SDK](./tutorial-develop-table-dotnet.md) 來與模擬器互動。 以具有 "/EnableTableEndpoint" 的系統管理員身分從 [命令提示](emulator-command-line-parameters.md) 字元啟動模擬器。 接著，執行下列程式碼以連線到資料表 API 帳戶：
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;

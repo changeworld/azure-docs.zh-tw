@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8079fb3ab04d5f613566816735491203d7df951a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95337f88133c9493250e9197654288dc0af59ed1
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570666"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486135"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>在您的應用程式中設定使用 Azure Cosmos DB 的多重區域寫入
 
@@ -129,8 +129,8 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
 * [Azure Cosmos DB 中的衝突類型和解決原則](conflict-resolution-policies.md)
 * [Azure Cosmos DB 中的高可用性](high-availability.md)
 * [Azure Cosmos DB 中的一致性層級](consistency-levels.md)
-* [在 Azure Cosmos DB 中選擇正確的一致性層級](consistency-levels-choosing.md)
-* [Azure Cosmos DB 中的一致性、可用性和效能權衡取捨](consistency-levels-tradeoffs.md)
-* [各種一致性層級的可用性和效能權衡取捨](consistency-levels-tradeoffs.md)
-* [全域調整佈建的輸送量](scaling-throughput.md)
+* [在 Azure Cosmos DB 中選擇正確的一致性層級](./consistency-levels.md)
+* [Azure Cosmos DB 中的一致性、可用性和效能權衡取捨](./consistency-levels.md)
+* [各種一致性層級的可用性和效能權衡取捨](./consistency-levels.md)
+* [全域調整佈建的輸送量](./request-units.md)
 * [全域散發：本質上](global-dist-under-the-hood.md)

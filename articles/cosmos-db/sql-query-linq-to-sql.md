@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 7/29/2020
 ms.author: tisande
-ms.openlocfilehash: f2a7570b7ebed26a06e1bd075c2904bc29061c21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f5e88e7201c4097e2f8d654b8780ea12816b15d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87498849"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485098"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ 至 SQL 轉譯
 
-Azure Cosmos DB 查詢提供者會執行從 LINQ 查詢到 Cosmos DB SQL 查詢的最佳對應。 如果您想要取得從 LINQ 轉譯的 SQL 查詢，請 `ToString()` 在產生的物件上使用方法 `IQueryable` 。 下列說明假設您已對 [LINQ](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)有基本的熟悉度。
+Azure Cosmos DB 查詢提供者會執行從 LINQ 查詢到 Cosmos DB SQL 查詢的最佳對應。 如果您想要取得從 LINQ 轉譯的 SQL 查詢，請 `ToString()` 在產生的物件上使用方法 `IQueryable` 。 下列說明假設您已對 [LINQ](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)有基本的熟悉度。
 
 查詢提供者類型系統僅支援 JSON 基本類型：數值、布林值、字串和 null。
 
@@ -342,7 +342,7 @@ SQL .NET SDK 隨附的 LINQ 提供者支援下列運算子：
       WHERE c.familyName = f.parents[0].familyName
   ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [Azure Cosmos DB .NET 範例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [模型文件資料](modeling-data.md)

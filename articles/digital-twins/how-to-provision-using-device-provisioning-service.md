@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f9dd69c147dff1bf0bd10ca070e023bb6f7692a5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b6dbcaf317efb8589a92275527f992029b7eb8a6
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368429"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494755"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>使用裝置布建服務 (DPS) 自動管理 Azure 數位 Twins 中的裝置
 
@@ -22,7 +22,7 @@ ms.locfileid: "92368429"
 
 如需有關布建和_淘汰__階段的詳細_資訊，並進一步瞭解所有企業 IoT 專案通用的一般裝置管理階段，請參閱 IoT 中樞裝置管理檔的[*裝置生命週期*一節](../iot-hub/iot-hub-device-management-overview.md#device-lifecycle)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在您可以設定布建之前，您必須擁有包含模型和 Twins 的 **Azure 數位 Twins 實例** 。 此實例也應該設定為根據資料更新數位對應項資訊。 
 
@@ -71,7 +71,7 @@ ms.locfileid: "92368429"
 
 下列 Azure CLI 命令會建立裝置布建服務。 您將需要指定名稱、資源群組和區域。 如果您的[電腦上已安裝](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)Azure CLI，命令可以在[Cloud Shell](https://shell.azure.com)中執行，或在本機執行。
 
-```azurecli
+```azurecli-interactive
 az iot dps create --name <Device Provisioning Service name> --resource-group <resource group name> --location <region; for example, eastus>
 ```
 
@@ -237,7 +237,7 @@ namespace Samples.AdtIothub
 
 使用這個 Azure CLI 命令新增設定：
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
 ```
 
@@ -246,7 +246,7 @@ az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure
 <!-- 
 * Azure AD app registration **_Application (client) ID_** ([find in portal](../articles/digital-twins/how-to-set-up-instance-portal.md#collect-important-values))
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "AdtAppId=<Application (client)" ID> -g <resource group> -n <your App Service (function app) name> 
 ``` -->
 
@@ -293,7 +293,7 @@ node .\adt_custom_register.js
 
 由於您在本文中設定的流程，將會在 Azure 數位 Twins 中自動註冊裝置。 使用下列 [Azure 數位 TWINS CLI](how-to-use-cli.md) 命令，在您建立的 Azure 數位 Twins 實例中尋找裝置的對應項。
 
-```azurecli
+```azurecli-interactive
 az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration ID>"
 ```
 
@@ -449,13 +449,13 @@ namespace Samples.AdtIothub
 
 使用這個 Azure CLI 命令新增設定。 如果您的[電腦上已安裝](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)Azure CLI，命令可以在[Cloud Shell](https://shell.azure.com)中執行，或在本機執行。
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure Digital Twins instance _host name_>" -g <resource group> -n <your App Service (function app) name>
 ```
 
 接下來，您必須設定函數環境變數，以連接到新建立的事件中樞。
 
-```azurecli
+```azurecli-interactive
 az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event Hubs SAS connection string Listen>" -g <resource group> -n <your App Service (function app) name>
 ```
 
@@ -486,7 +486,7 @@ az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Eve
 
 使用下列 [Azure 數位 TWINS CLI](how-to-use-cli.md) 命令，確認已刪除 Azure 數位 Twins 實例中的裝置對應項。
 
-```azurecli
+```azurecli-interactive
 az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration ID>"
 ```
 
@@ -502,7 +502,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 > [!IMPORTANT]
 > 刪除資源群組是無法回復的動作。 資源群組和其中包含的所有資源都將永久刪除。 請確定您不會不小心刪除錯誤的資源群組或資源。 
 
-```azurecli
+```azurecli-interactive
 az group delete --name <your-resource-group>
 ```
 

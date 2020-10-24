@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: d4fbadd03f443d28376a122c7ecb06c475c2247d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7118a12a5a92912c51bb35d8b516d5b8e2f45388
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85850700"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478145"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 跨足社交
 
@@ -216,9 +216,9 @@ Azure Cosmos DB 可利用自身的自動索引編製作業，確保所有屬性�
 
 為什麼這個程序這麼簡單？
 
-Azure 認知搜尋會執行其呼叫 [索引子](https://msdn.microsoft.com/library/azure/dn946891.aspx)的內容、在您資料存放庫中攔截的背景進程，以及自動新增、更新或移除索引中的物件。 它們支援 [Azure SQL Database 索引子](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)、[Azure Blob 索引子](../search/search-howto-indexing-azure-blob-storage.md)，甚至也支援 [Azure Cosmos DB 索引子](../search/search-howto-index-documentdb.md)。 從 Cosmos DB 到 Azure 認知搜尋的資訊轉換很簡單。 因為這兩項計數皆是以 JSON 格式來儲存資訊，您只需要[建立索引](../search/search-create-index-portal.md)，並從要編製索引的文件來對應屬性即可。 這樣就大功告成了！ 視資料大小而定，所有內容將可在短短幾分鐘內透過雲端基礎結構中的最佳搜尋即服務解決方案來搜尋。
+Azure 認知搜尋會執行其呼叫 [索引子](/rest/api/searchservice/Indexer-operations)的內容、在您資料存放庫中攔截的背景進程，以及自動新增、更新或移除索引中的物件。 它們支援 [Azure SQL Database 索引子](/archive/blogs/kaevans/indexing-azure-sql-database-with-azure-search)、[Azure Blob 索引子](../search/search-howto-indexing-azure-blob-storage.md)，甚至也支援 [Azure Cosmos DB 索引子](../search/search-howto-index-cosmosdb.md)。 從 Cosmos DB 到 Azure 認知搜尋的資訊轉換很簡單。 因為這兩項計數皆是以 JSON 格式來儲存資訊，您只需要[建立索引](../search/search-what-is-an-index.md)，並從要編製索引的文件來對應屬性即可。 這樣就大功告成了！ 視資料大小而定，所有內容將可在短短幾分鐘內透過雲端基礎結構中的最佳搜尋即服務解決方案來搜尋。
 
-如需有關 Azure 認知搜尋的詳細資訊，您可以造訪 [Hitchhiker 的指南來進行搜尋](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)。
+如需有關 Azure 認知搜尋的詳細資訊，您可以造訪 [Hitchhiker 的指南來進行搜尋](/archive/blogs/mvpawardprogram/a-hitchhikers-guide-to-search)。
 
 ## <a name="the-underlying-knowledge"></a>基礎知識
 
@@ -268,6 +268,6 @@ Cosmos DB 可讓您按幾下就能透明地[將資料複寫至全球](../cosmos-
 
 事實上，這類案例並沒有萬靈丹。 它是由絕佳服務組合所建立的協力，可讓我們建立絕佳的體驗： Azure Cosmos DB 的速度和自由，提供絕佳的社交應用程式、頂級搜尋解決方案背後的情報（例如 Azure 認知搜尋）、Azure App 服務的彈性，不僅能裝載不受語言限制的應用程式，還能提供強大的背景程式，以及可展開的 Azure 儲存體與 Azure SQL Database，以儲存大量資料和 Azure Machine 的分析能力學習如何建立可提供意見反應給您流程的知識和智慧，並協助我們將正確的內容傳遞給正確的使用者。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解 Cosmos DB 的使用案例，請參閱[常見 Cosmos DB 使用案例](use-cases.md)。

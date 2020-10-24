@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: 633baafa7f6cb1bc134f07ce64ba98ebd4cb626c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50884a45e60826f09fffcc9f86992563e473424d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90603045"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478043"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>使用 Apache Spark 至 Azure Cosmos DB 連接器來加速巨量資料分析
 
@@ -33,8 +33,8 @@ ms.locfileid: "90603045"
 
 ## <a name="quickstart"></a>快速入門
 
-* 遵循「 [開始使用 JAVA SDK](sql-api-async-java-get-started.md) 」中的步驟來設定 Cosmos DB 帳戶，並填入一些資料。
-* 遵循 [Azure Databricks 開始](/azure/azure-databricks/quickstart-create-databricks-workspace-portal) 設定 Azure Databricks 工作區和叢集的步驟。
+* 遵循「 [開始使用 JAVA SDK](./create-sql-api-java.md) 」中的步驟來設定 Cosmos DB 帳戶，並填入一些資料。
+* 遵循 [Azure Databricks 開始](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal) 設定 Azure Databricks 工作區和叢集的步驟。
 * 您現在可以建立新的筆記本，並匯入 Cosmos DB 連接器程式庫。 如需如何設定工作區的詳細資訊，請跳至使用 [Cosmos DB 連接器](#bk_working_with_connector) 。
 * 下一節包含如何使用連接器讀取和寫入的程式碼片段。
 

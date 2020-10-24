@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 16ee2f01e1b7771e71afe49c4b69b1fb39e43f37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13d2633576454ea6445deb4d2b0b11c2bbb1514e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88869434"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478366"
 ---
 # <a name="azcopy-sync"></a>azcopy 同步
 
@@ -137,33 +137,33 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--delete-destination** 字串定義是否要刪除來源不存在之目的地的額外檔案。 可以設定為 `true` 、 `false` 或 `prompt` 。 如果設定為 `prompt` ，就會在排程要刪除的檔案和 blob 之前，先詢問使用者問題。  (預設 `false`) 。  (預設 `false`) 
 
-**--排除-** 僅限 Windows 的屬性字串 () 排除屬性符合屬性清單的檔案。 例如： `A;S;R`
+**--排除-** 僅限 Windows 的屬性字串 () 排除屬性符合屬性清單的檔案。 例如：`A;S;R`
 
 **--** 在比較來源與目的地時，排除路徑字串會排除這些路徑。 此選項不支援萬用字元字元 ( * ) 。 檢查相對路徑首碼 (例如： `myFolder;myFolder/subDirName/file.pdf`) 。
 
-**--排除-模式** 字串排除名稱符合模式清單的檔案。 例如： `*.jpg;*.pdf;exactName`
+**--排除-模式** 字串排除名稱符合模式清單的檔案。 例如：`*.jpg;*.pdf;exactName`
 
 **--**    說明如何進行同步處理。
 
-**--include-** attribute 字串 (僅限 Windows) 只包含其屬性符合屬性清單的檔案。 例如： `A;S;R`
+**--include-** attribute 字串 (僅限 Windows) 只包含其屬性符合屬性清單的檔案。 例如：`A;S;R`
 
-**--include-模式** 字串只包含名稱符合模式清單的檔案。 例如： `*.jpg;*.pdf;exactName`
+**--include-模式** 字串只包含名稱符合模式清單的檔案。 例如：`*.jpg;*.pdf;exactName`
 
 **--記錄層級** 字串會定義記錄檔的記錄詳細資訊，可用層級： `INFO` (所有要求和回應) 、 `WARNING` (回應緩慢的) 回應、 `ERROR` (僅) 失敗的要求，以及 (不) 的 `NONE` 輸出記錄。  (預設 `INFO`) 。 
 
-**--preserve-smb-資訊**    預設為 False。保留 SMB 屬性資訊 (上次寫入時間、建立時間、在 SMB 感知資源 (Windows 和 Azure 檔案儲存體) 之間) 屬性位。此旗標適用于檔案和資料夾，除非已指定僅限檔案的篩選 (例如，包含模式) 。針對資料夾所傳送的資訊與檔案的資訊相同，但不會保留給資料夾的最後寫入時間除外。
+**--preserve-smb-資訊**   預設為 False。 保留 SMB 屬性資訊 (上次寫入時間、建立時間、在 SMB 感知資源 (Windows 和 Azure 檔案儲存體) 之間) 屬性位。 此旗標適用于檔案和資料夾，除非已指定僅限檔案的篩選 (例如，包含模式) 。 針對資料夾所傳送的資訊與檔案的資訊相同，但不會保留給資料夾的最後寫入時間除外。
 
-**--preserve-smb-許可權**    預設為 False。在感知資源之間保留 SMB Acl (Windows 和 Azure 檔案儲存體) 。此旗標適用于檔案和資料夾，除非已指定僅限檔案的篩選 (例如  `include-pattern`) 。
+**--preserve-smb-許可權**   預設為 False。 在感知資源之間保留 SMB Acl (Windows 和 Azure 檔案儲存體) 。 此旗標適用于檔案和資料夾，除非已指定僅限檔案的篩選 (例如 `include-pattern`) 。
 
 **--put-md5**     建立每個檔案的 MD5 雜湊，並將雜湊儲存為目的地 blob 或檔案的 Content-type-MD5 屬性。  (預設不會建立雜湊。只有在上傳時才能使用 ) 。
 
 **--遞迴** `True`依預設，會在目錄之間進行同步處理時，以遞迴方式查看子目錄。      (預設 `True`) 。 
 
-**--s2s-保留-存取層**  保留服務至服務複製期間的存取層。 請參閱 [Azure Blob 儲存體：經常性存取、非經常性存取和封存存取層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) ，以確保目的地儲存體帳戶支援設定存取層。 在不支援設定存取層的情況下，請使用 s2sPreserveAccessTier = false 來略過複製存取層。  (預設 `true`) 。 
+**--s2s-保留-存取層**  保留服務至服務複製期間的存取層。 請參閱 [Azure Blob 儲存體：經常性存取、非經常性存取和封存存取層](/azure/storage/blobs/storage-blob-storage-tiers) ，以確保目的地儲存體帳戶支援設定存取層。 在不支援設定存取層的情況下，請使用 s2sPreserveAccessTier = false 來略過複製存取層。  (預設 `true`) 。 
 
 ## <a name="options-inherited-from-parent-commands"></a>繼承自父命令的選項
 
-|選項|描述|
+|選項|說明|
 |---|---|
 |--cap-mbps uint32|以每秒 mb 數為單位的傳輸速率上限。 時間的輸送量可能會與端點稍有不同。 如果此選項設定為零，或省略，則輸送量不會有上限。|
 |--output 類型字串|命令輸出的格式。 選項包括： text、json。 預設值為 "text"。|

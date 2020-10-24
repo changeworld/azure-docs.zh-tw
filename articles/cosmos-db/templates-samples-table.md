@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: c77c917cf6063b787dc2972f5ee7db3329e0e743
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ef7749a2fa9c7a45cc4e2854e2eb4fcdc9792425
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283977"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477023"
 ---
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本管理 Azure Cosmos DB 資料表 API 資源
 
 在本文中，您會了解如何利用 Azure Resource Manager 範本來部署和管理 Azure Cosmos DB 帳戶、資料庫和容器。
 
-本文僅提供資料表 API 帳戶的範例，若要尋找其他 API 類型帳戶的範例，請參閱：搭配使用 Azure Resource Manager 範本與適用於 [Cassandra](manage-cassandra-with-resource-manager.md)、[Gremlin](manage-gremlin-with-resource-manager.md)、[MongoDB](manage-mongodb-with-resource-manager.md)、[SQL](manage-sql-with-resource-manager.md) 的 Azure Cosmos DB API 文章。
+本文僅提供資料表 API 帳戶的範例，若要尋找其他 API 類型帳戶的範例，請參閱：搭配使用 Azure Resource Manager 範本與適用於 [Cassandra](./templates-samples-cassandra.md)、[Gremlin](./templates-samples-gremlin.md)、[MongoDB](./templates-samples-mongodb.md)、[SQL](./manage-with-templates.md) 的 Azure Cosmos DB API 文章。
 
 > [!IMPORTANT]
 >
@@ -54,7 +54,7 @@ ms.locfileid: "92283977"
 
 以下是一些其他資源：
 
-* [Azure Resource Manager 文件](/azure/azure-resource-manager/)
+* [Azure Resource Manager 文件](../azure-resource-manager/index.yml)
 * [Azure Cosmos DB 資源提供者結構描述](/azure/templates/microsoft.documentdb/allversions)
 * [Azure Cosmos DB 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
 * [對常見的 Azure Resource Manager 部署錯誤進行疑難排解](../azure-resource-manager/templates/common-deployment-errors.md)

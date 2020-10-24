@@ -8,16 +8,16 @@ ms.date: 05/07/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: 1e8e1aa9d8e582644d1d625fc8a97cc0e0c790df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f16498f0661ba918acd42b7964b649d0bbdf5841
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334390"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495891"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 JavaScript 查詢 API
 
-除了使用 Azure Cosmos DB 中的 SQL API 發出查詢以外， [Cosmos DB 伺服器端 SDK](https://azure.github.io/azure-cosmosdb-js-server/) 還提供 JavaScript 介面，可在 Cosmos DB 預存程式和觸發程式中執行優化的查詢。 不必一定要懂得 SQL 語言才能使用此 JavaScript 介面。 JavaScript 的查詢 API 使用 ECMAScript5 陣列內建和受歡迎的 JavaScript 程式庫如 lodash 所熟悉的語法，將述詞函式依序傳遞至函式呼叫，藉此以程式設計方式建立查詢。 JavaScript 執行階段會剖析查詢，並使用 Azure Cosmos DB 的索引，有效執行該查詢。
+除了使用 Azure Cosmos DB 中的 SQL API 發出查詢以外， [Cosmos DB 伺服器端 SDK](https://github.com/Azure/azure-cosmosdb-js-server/) 還提供 JavaScript 介面，可在 Cosmos DB 預存程式和觸發程式中執行優化的查詢。 不必一定要懂得 SQL 語言才能使用此 JavaScript 介面。 JavaScript 的查詢 API 使用 ECMAScript5 陣列內建和受歡迎的 JavaScript 程式庫如 lodash 所熟悉的語法，將述詞函式依序傳遞至函式呼叫，藉此以程式設計方式建立查詢。 JavaScript 執行階段會剖析查詢，並使用 Azure Cosmos DB 的索引，有效執行該查詢。
 
 ## <a name="supported-javascript-functions"></a>支援的 JavaScript 函式
 
@@ -43,7 +43,7 @@ ms.locfileid: "91334390"
 - 控制流程 (例如 if、for、while)
 - 函式呼叫
 
-如需詳細資料，請參閱 [Cosmos DB 伺服器端 JavaScript 文件](https://azure.github.io/azure-cosmosdb-js-server/) (英文)。
+如需詳細資料，請參閱 [Cosmos DB 伺服器端 JavaScript 文件](https://github.com/Azure/azure-cosmosdb-js-server/) (英文)。
 
 ## <a name="sql-to-javascript-cheat-sheet"></a>SQL 到 JavaScript 的速查表
 
@@ -52,7 +52,7 @@ ms.locfileid: "91334390"
 > [!NOTE]
 > 使用 JavaScript 查詢 API 時，`__` (雙底線) 是 `getContext().getCollection()` 的別名。
 
-|**SQL**|**JavaScript 查詢 API**|**說明**|
+|**SQL**|**JavaScript 查詢 API**|**描述**|
 |---|---|---|
 |SELECT *<br>FROM docs| __.map(function(doc) { <br>&nbsp;&nbsp;&nbsp;&nbsp;return doc;<br>});|所有文件中的結果 (使用連續權杖分頁)。|
 |SELECT <br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs.message AS msg,<br>&nbsp;&nbsp;&nbsp;docs.actions <br>FROM docs|__.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;return {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg: doc.message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actions:doc.actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|投射識別碼、訊息 (別名為 msg)，和所有文件中的動作。|

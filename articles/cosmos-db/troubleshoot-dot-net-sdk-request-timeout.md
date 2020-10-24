@@ -8,12 +8,12 @@ ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 0c760a3a2f6300108c1739f18ef9fa97a40dd833
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 211121e21502e9cd4929169053a8ad58a9d7b21b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021930"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476921"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout-exceptions"></a>診斷和疑難排解 Azure Cosmos DB .NET SDK 要求超時例外狀況
 如果 SDK 無法在發生超時限制之前完成要求，就會發生 HTTP 408 錯誤。
@@ -28,7 +28,7 @@ SDK 有兩種不同的替代方式來控制超時，每個都有不同的範圍�
 
 ### <a name="cancellationtoken"></a>CancellationToken
 
-SDK 中的所有非同步作業都有選擇性的 CancellationToken 參數。 整個作業都會使用這個 [CancellationToken](https://docs.microsoft.com/dotnet/standard/threading/how-to-listen-for-cancellation-requests-by-polling) 參數，跨所有網路要求。 在網路要求之間，如果相關的權杖已過期，則可能會檢查取消權杖，並取消作業。 解除標記應該用來定義作業範圍的大約預期超時。
+SDK 中的所有非同步作業都有選擇性的 CancellationToken 參數。 整個作業都會使用這個 [CancellationToken](/dotnet/standard/threading/how-to-listen-for-cancellation-requests-by-polling) 參數，跨所有網路要求。 在網路要求之間，如果相關的權杖已過期，則可能會檢查取消權杖，並取消作業。 解除標記應該用來定義作業範圍的大約預期超時。
 
 > [!NOTE]
 > `CancellationToken`參數是一種機制，當程式庫[不會造成無效狀態](https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancellationtoken/)時，它會檢查取消。 當取消中定義的時間已啟動時，作業可能不會完全取消。 相反地，在這段時間之後，它會在安全時取消。

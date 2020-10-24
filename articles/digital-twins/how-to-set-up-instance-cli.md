@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 081eb10166ff681990af15110829030176efa3fa
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 26302fa67394e6c3122b159866c3814fb5677ba6
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207762"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92494966"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>設定 Azure 數位 Twins 實例和驗證 (CLI) 
 
@@ -36,7 +36,7 @@ ms.locfileid: "92207762"
 
 在本節中，您將使用 Cloud Shell 命令 **建立 Azure 數位 Twins 的新實例** 。 您將需要提供：
 * 要在其中部署的資源群組。 如果您還沒有現有的資源群組，您可以使用下列命令立即建立一個：
-    ```azurecli
+    ```azurecli-interactive
     az group create --location <region> --name <name-for-your-resource-group>
     ```
 * 部署的區域。 若要查看哪些區域支援 Azure 數位 Twins，請造訪 [*依區域提供的 azure 產品*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)。
@@ -44,7 +44,7 @@ ms.locfileid: "92207762"
 
 在下列命令中使用這些值來建立實例：
 
-```azurecli
+```azurecli-interactive
 az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-resource-group> -l <region>
 ```
 
@@ -67,8 +67,8 @@ az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-res
 
 使用下列命令來指派角色 (必須由具有 Azure 訂用帳戶) 中 [足夠許可權](#prerequisites-permission-requirements) 的使用者執行。 此命令會要求您在應指派角色的使用者 Azure AD 帳戶上傳入 *使用者主體名稱* 。 在大部分的情況下，這會比對使用者在 Azure AD 帳戶的電子郵件。
 
-```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-user-principal-name-of-user-to-assign>" --role "Azure Digital Twins Owner (Preview)"
+```azurecli-interactive
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-user-principal-name-of-user-to-assign>" --role "Azure Digital Twins Data Owner"
 ```
 
 此命令的結果會輸出已建立之角色指派的相關資訊。

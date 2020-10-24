@@ -8,12 +8,12 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: dc140553cbca2347678c376cc9420cfddef22b07
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 94aa699d8daab7e5e7ff4ae82e5d09ab1475c07e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428064"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477584"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure 表格儲存體資料表設計指南：可擴充的高效能資料表
 
@@ -24,7 +24,7 @@ ms.locfileid: "92428064"
 表格儲存體旨在支援雲端規模的應用程式，這種應用程式可能包含數十億個資料實體 (以關聯式資料庫術語來說，即「資料列」)，或針對必須支援大量交易的資料集而設計。 因此，您必須從不同的角度思考如何儲存資料，並了解表格儲存體的運作方式。 相較於使用關聯式資料庫的解決方案，設計良好的 NoSQL 資料存放區可讓您的解決方案更進一步縮放 (以較低的成本)。 本指南針對這些主題為您提供協助。  
 
 ## <a name="about-azure-table-storage"></a>關於 Azure 表格儲存體
-本節著重於表格儲存體的一些主要特性，與效能和可擴縮性的設計特別有關。 如果您不熟悉 Azure 儲存體和表格儲存體，請先參閱 [Microsoft Azure 儲存體簡介](../storage/common/storage-introduction.md)和[透過 .NET 開始使用 Azure 表格儲存體](table-storage-how-to-use-dotnet.md)，再閱讀本文的其餘部分。 雖然本指南著重於表格儲存體，但仍論及 Azure 佇列儲存體和 Azure Blob 儲存體，以及如何與表格儲存體一起運用在解決方案中。  
+本節著重於表格儲存體的一些主要特性，與效能和可擴縮性的設計特別有關。 如果您不熟悉 Azure 儲存體和表格儲存體，請先參閱 [Microsoft Azure 儲存體簡介](../storage/common/storage-introduction.md)和[透過 .NET 開始使用 Azure 表格儲存體](./tutorial-develop-table-dotnet.md)，再閱讀本文的其餘部分。 雖然本指南著重於表格儲存體，但仍論及 Azure 佇列儲存體和 Azure Blob 儲存體，以及如何與表格儲存體一起運用在解決方案中。  
 
 表格儲存體以表格形式來儲存資料。 在標準術語中，資料表的每個資料列都代表一個實體，而資料行儲存該實體的各種屬性。 每個實體都有一組索引鍵當作唯一識別，還有時間戳記資料行供表格儲存體追蹤實體上次更新的時間。 系統會自動新增時間戳記，您無法以任意值來手動覆寫時間戳記。 表格儲存體使用這個上次修改時間戳記 (LMT) 來管理開放式同步存取。  
 
@@ -123,7 +123,7 @@ ms.locfileid: "92428064"
 </table>
 
 
-到目前為止，這項設計看起來類似關聯式資料庫中的資料表。 主要差異在於必要的資料行，以及能夠在相同資料表中儲存多個實體類型。 此外，每個使用者定義屬性 (例如 **FirstName** 或 **Age**) 都具有資料類型，例如整數或字串，就像關聯式資料庫中的資料行一樣。 然而，不同於關聯式資料庫，表格儲存體的無結構描述本質意味著，一個屬性在每個實體上不一定是相同的資料類型。 若要將複雜資料類型儲存在單一屬性中，您必須使用序列化格式，例如 JSON 或 XML。 如需詳細資訊，請參閱[了解表格儲存體資料模型](https://msdn.microsoft.com/library/azure/dd179338.aspx)。
+到目前為止，這項設計看起來類似關聯式資料庫中的資料表。 主要差異在於必要的資料行，以及能夠在相同資料表中儲存多個實體類型。 此外，每個使用者定義屬性 (例如 **FirstName** 或 **Age**) 都具有資料類型，例如整數或字串，就像關聯式資料庫中的資料行一樣。 然而，不同於關聯式資料庫，表格儲存體的無結構描述本質意味著，一個屬性在每個實體上不一定是相同的資料類型。 若要將複雜資料類型儲存在單一屬性中，您必須使用序列化格式，例如 JSON 或 XML。 如需詳細資訊，請參閱[了解表格儲存體資料模型](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)。
 
 您選擇的 `PartitionKey` 和 `RowKey` 極為重要，攸關資料表設計是否良好。 儲存在資料表中的每個實體，都必須有獨一無二的 `PartitionKey` 和 `RowKey` 組合。 如同關聯式資料庫資料表中的索引鍵，`PartitionKey` 和 `RowKey` 值會進行索引編製，以建立可啟用快速查閱的叢集索引。 不過，表格儲存體不會建立任何次要索引，因此這些是僅有的兩個索引屬性 (稍後描述的一些模式將說明如何解決這種明顯的限制)。  
 
@@ -134,7 +134,7 @@ ms.locfileid: "92428064"
 
 在表格儲存體中，個別節點提供一或多個完整分割區，此服務的縮放作法是在節點之間動態平衡分割區的負載。 如果節點承受負載，表格儲存體可以將該節點使用的分割區範圍，分割給不同的節點。 當流量消退時，表格儲存體可以將靜止節點的分割區範圍，合併回到單一節點。  
 
-如需表格儲存體內部細節的詳細資訊，特別是其管理分割區的方式，請參閱 [Microsoft Azure 儲存體：一致性很強的高可用性雲端儲存體服務](https://docs.microsoft.com/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency)。  
+如需表格儲存體內部細節的詳細資訊，特別是其管理分割區的方式，請參閱 [Microsoft Azure 儲存體：一致性很強的高可用性雲端儲存體服務](/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency)。  
 
 ### <a name="entity-group-transactions"></a>實體群組交易
 在表格儲存體中，需要跨多個實體執行不可部分完成的更新時，實體群組交易 (EGT) 是唯一的內建機制。 EGT 也稱為「批次交易」。 EGT 只能處理儲存在相同分割區中的實體 (在特定資料表中共用相同分割區索引鍵)，每當您在多個實體之間需要有不可部分完成的交易行為時，請確定這些實體位於相同的分割區。 通常就是因為這樣，才需要將多個實體類型放在相同的資料表 (和分割區)，而不是針對不同的實體類型使用多個資料表。 單一 EGT 最多可以操作 100 個實體。  如果您送出多個同時的 EGT 來處理，務必確保這些 EGT 不影響跨 EGT 通用的實體。 否則會招致延遲處理的風險。
@@ -156,7 +156,7 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用越多分割區
 | `RowKey` 的大小 |最大 1 KB 的字串。 |
 | 實體群組交易的大小 |交易最多可包含 100 個實體，承載大小必須小於 4 MB。 一個 EGT 只能更新實體一次。 |
 
-如需詳細資訊，請參閱[了解表格服務資料模型](https://msdn.microsoft.com/library/azure/dd179338.aspx)。  
+如需詳細資訊，請參閱[了解表格服務資料模型](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)。  
 
 ### <a name="cost-considerations"></a>成本考量
 雖然表格儲存體相對便宜，但您在評估任何使用表格儲存體的解決方案時，應該將容量使用量和交易數量的成本預估納入考量。 不過，在許多情況下，為了改善解決方案的效能或可擴縮性，儲存反正規化或重複的資料是可行的作法。 如需定價的詳細資訊，請參閱 [Azure 儲存體定價](https://azure.microsoft.com/pricing/details/storage/)。  
@@ -202,7 +202,7 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用越多分割區
 | `Age` |整數 |
 | `EmailAddress` |String |
 
-以下是設計表格儲存體查詢時的幾個一般指導方針。 下列範例中使用的篩選語法來自於表格儲存體 REST API。 如需詳細資訊，請參閱[查詢實體](https://msdn.microsoft.com/library/azure/dd179421.aspx)。  
+以下是設計表格儲存體查詢時的幾個一般指導方針。 下列範例中使用的篩選語法來自於表格儲存體 REST API。 如需詳細資訊，請參閱[查詢實體](/rest/api/storageservices/Query-Entities)。  
 
 * 「點查詢」是最有效率的查閱，建議用於大量查閱，或需要最低延遲的查閱。 這類查詢可同時指定 `PartitionKey` 和 `RowKey` 值，以利用索引有效率地尋找個別實體。 例如： `$filter=(PartitionKey eq 'Sales') and (RowKey eq '2')` 。  
 * 「範圍查詢」次佳。 採用 `PartitionKey`，並依 `RowKey` 值範圍來篩選，以傳回一個以上的實體。 `PartitionKey` 值識別特定的分割區，`RowKey` 值識別該分割區中的實體子集。 例如： `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'` 。  
@@ -410,7 +410,7 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用越多分割區
 
 :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE05.png" alt-text="此圖顯示部門實體和員工實體":::
 
-此模式圖突顯本指南提及的模式 (藍色) 與反模式 (橘色) 之間的一些關聯性。 當然還有許多其他模式也值得考量。 例如，表格儲存體的主要案例之一是使用[命令查詢責任分離](https://msdn.microsoft.com/library/azure/jj554200.aspx)模式中的[具體化檢視模式](https://msdn.microsoft.com/library/azure/dn589782.aspx)。  
+此模式圖突顯本指南提及的模式 (藍色) 與反模式 (橘色) 之間的一些關聯性。 當然還有許多其他模式也值得考量。 例如，表格儲存體的主要案例之一是使用[命令查詢責任分離](/previous-versions/msp-n-p/jj554200(v=pandp.10))模式中的[具體化檢視模式](/previous-versions/msp-n-p/dn589782(v=pandp.10))。  
 
 ### <a name="intra-partition-secondary-index-pattern"></a>內部資料分割次要索引模式
 使用不同的 `RowKey` 值 (在相同的分割區) 儲存每個實體的多個複本。 這有助於快速有效率地查閱，還可使用不同的 `RowKey` 值來替換排序次序。 使用 EGT 可讓複本之間的更新保持一致。  
@@ -437,7 +437,7 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用越多分割區
 * 若要在 Sales 部門中，找出員工識別碼範圍從 000100 至 000199 的所有員工，請使用：$filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000100') and (RowKey le 'empid_000199')  
 * 若要在 Sales 部門中，找出電子郵件地址開頭為字母 'a' 的所有員工，請使用：$filter=(PartitionKey eq 'Sales') and (RowKey ge 'email_a') and (RowKey lt 'email_b')  
   
-前述範例中使用的篩選語法來自於表格儲存體 REST API。 如需詳細資訊，請參閱[查詢實體](https://msdn.microsoft.com/library/azure/dd179421.aspx)。  
+前述範例中使用的篩選語法來自於表格儲存體 REST API。 如需詳細資訊，請參閱[查詢實體](/rest/api/storageservices/Query-Entities)。  
 
 #### <a name="issues-and-considerations"></a>問題和考量
 當您決定如何實作此模式時，請考慮下列幾點：  
@@ -497,7 +497,7 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用越多分割區
 * 若要在 Sales 部門中，找出員工識別碼範圍從 **000100** 至 **000199** 的所有員工，並依員工識別碼順序排序，請使用：$filter=(PartitionKey eq 'empid_Sales') and (RowKey ge '000100') and (RowKey le '000199')  
 * 若要在 Sales 部門中，找出電子郵件地址以 'a' 開頭的所有員工，並依電子郵件地址順序排序，請使用：$filter=(PartitionKey eq 'email_Sales') and (RowKey ge 'a') and (RowKey lt 'b')  
 
-請注意，前述範例中使用的篩選語法來自於表格儲存體 REST API。 如需詳細資訊，請參閱[查詢實體](https://msdn.microsoft.com/library/azure/dd179421.aspx)。  
+請注意，前述範例中使用的篩選語法來自於表格儲存體 REST API。 如需詳細資訊，請參閱[查詢實體](/rest/api/storageservices/Query-Entities)。  
 
 #### <a name="issues-and-considerations"></a>問題和考量
 當您決定如何實作此模式時，請考慮下列幾點：  
@@ -557,7 +557,7 @@ EGT 可讓您在共用相的資料分割索引鍵的多個實體之間執行不�
 #### <a name="recover-from-failures"></a>從失敗中復原
 在圖表中，步驟 4-5 中的作業必須是「等冪」，以防萬一背景工作角色需要重新啟動封存作業。 如果您使用表格儲存體，請在步驟 4 中使用「插入或取代」作業 (在您使用的用戶端程式庫中)；在步驟 5 中，請使用「如果存在即刪除」作業。 如果您使用其他儲存體系統，則必須使用適當的等冪作業。  
 
-如果背景工作角色從未完成圖表中的步驟 6，則在逾時之後，訊息會重新出現在佇列上，讓背景工作角色嘗試重新處理。 背景工作角色可以檢查佇列上某個訊息的讀取次數，如有必要，就將訊息標示為「有害」訊息，以傳送至另一個佇列進行調查。 如需讀取佇列訊息及檢查清除佇列計數的詳細資訊，請參閱[取得訊息](https://msdn.microsoft.com/library/azure/dd179474.aspx)。  
+如果背景工作角色從未完成圖表中的步驟 6，則在逾時之後，訊息會重新出現在佇列上，讓背景工作角色嘗試重新處理。 背景工作角色可以檢查佇列上某個訊息的讀取次數，如有必要，就將訊息標示為「有害」訊息，以傳送至另一個佇列進行調查。 如需讀取佇列訊息及檢查清除佇列計數的詳細資訊，請參閱[取得訊息](/rest/api/storageservices/Get-Messages)。  
 
 表格儲存體和佇列儲存體的某些錯誤是暫時性，用戶端應用程式要有適當的重試邏輯來處理這些錯誤。  
 
@@ -1009,7 +1009,7 @@ var employees = employeeTable.ExecuteQuery(employeeQuery);
 - 查詢未於五秒內完成。
 - 查詢跨越分割區界限。 
 
-如需接續 Token 如何運作的詳細資訊，請參閱[查詢逾時和分頁](https://msdn.microsoft.com/library/azure/dd135718.aspx)。  
+如需接續 Token 如何運作的詳細資訊，請參閱[查詢逾時和分頁](/rest/api/storageservices/Query-Timeout-and-Pagination)。  
 
 如果您使用儲存體用戶端程式庫，則從表格儲存體傳回實體時，將自動為您處理接續 Token。 例如，下列程式 C# 程式碼範例會自動處理表格儲存體在回應中傳回的接續 Token：  
 
@@ -1415,7 +1415,7 @@ employeeTable.Execute(TableOperation.Merge(department));
 * 您可以卸載 web 角色和背景工作角色在管理實體時所執行的一些工作。 您可以卸載至用戶端裝置，例如終端使用者電腦和行動裝置。  
 * 您可以將一組受條件約束和限時的權限指派給用戶端 (例如允許唯讀存取特定的資源)。  
 
-如需對表格儲存體使用 SAS 權杖的詳細資訊，請參閱[使用共用存取簽章 (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。  
+如需對表格儲存體使用 SAS 權杖的詳細資訊，請參閱[使用共用存取簽章 (SAS)](../storage/common/storage-sas-overview.md)。  
 
 不過，您仍然必須產生 SAS 權杖，以授權用戶端應用程式存取表格儲存體中的實體。 請在可安全存取儲存體帳戶金鑰的環境中這樣做。 一般而言，您可以使用 Web 或背景工作角色來產生 SAS 權杖，並將其傳送至需要存取您的實體的用戶端應用程式。 由於產生 SAS 權杖並將其傳遞至用戶端仍會產生額外負荷，因此您應考量怎樣最能降低此負荷，尤其是在大量的案例中。  
 
@@ -1512,5 +1512,4 @@ private static async Task SimpleEmployeeUpsertAsync(CloudTable employeeTable,
 * 方法特徵標記現在包含 `async` 修飾元，並且傳回 `Task` 執行個體。  
 * 此方法現在會呼叫 `ExecuteAsync` 方法，而不是呼叫 `Execute` 方法來更新實體。 此方法使用 `await` 修飾元，以非同步方式取出結果。  
 
-用戶端應用程式可以呼叫多個像這樣的非同步方法，而每個方法引動過程都在個別的執行緒上執行。  
-
+用戶端應用程式可以呼叫多個像這樣的非同步方法，而每個方法引動過程都在個別的執行緒上執行。

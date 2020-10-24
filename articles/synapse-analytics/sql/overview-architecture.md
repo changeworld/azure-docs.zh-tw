@@ -1,6 +1,6 @@
 ---
 title: Synapse SQL 架構
-description: 了解 Azure Synapse SQL 如何將大量平行處理 (MPP) 與 Azure 儲存體結合，以達到高效能和延展性。
+description: 瞭解 Azure Synapse SQL 如何結合分散式查詢處理功能與 Azure 儲存體，以達到高效能和擴充性。
 services: synapse-analytics
 author: mlee3gsd
 manager: rothja
@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9f2f3eee12bb8741f6d079f6f081a08f4e2db9b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae3b54ca72c92722dffa370b0b8be1ca2c490f97
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87046868"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476003"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL 架構 
 
@@ -35,7 +35,7 @@ Synapse SQL 會利用擴增架構，將資料的計算處理散發到多個節�
 
 Synapse SQL 使用以節點為基礎的架構。 應用程式會連線到控制節點並發出 T-SQL 命令，這是 Synapse SQL 的單一進入點。 
 
-SQL 集區控制節點會利用 MPP 引擎，將查詢最佳化以進行平行處理，然後將作業傳遞到計算節點，以平行方式執行其工作。 
+Azure Synapse SQL 控制節點會利用分散式查詢引擎，將查詢優化以進行平行處理，然後將作業傳遞到計算節點，以平行方式執行其工作。 
 
 SQL 隨選控制節點會利用分散式查詢處理 (DQP) 引擎，將使用者查詢分割成較小的查詢 (在計算節點上執行)，以最佳化和協調使用者查詢的分散式執行。 每個小型查詢稱為工作，代表分散式執行單位。 會從儲存體讀取檔案、從其他工作聯結結果，將從其他工作擷取的資料分組或排序。 
 
@@ -61,7 +61,7 @@ SQL 隨選可讓您以唯讀方式查詢資料湖中的檔案，而 SQL 集區�
 
 控制節點是架構的大腦。 它是與所有應用程式與連接互動的前端。 
 
-在 SQL 集區中，MPP 引擎會在控制節點上執行，以便將平行查詢最佳化並加以協調。 當您將 T-SQL 查詢提交到 SQL 集區時，控制節點會將其轉換為要根據每個散發平行執行的查詢。
+在 Synapse SQL 中，分散式查詢引擎會在控制節點上執行，以優化和協調平行查詢。 當您將 T-SQL 查詢提交到 SQL 集區時，控制節點會將其轉換為要根據每個散發平行執行的查詢。
 
 在 SQL 隨選中，DQP 引擎會在控制節點上執行，藉由將使用者查詢分割成較小的查詢 (在計算節點上執行)，以最佳化和協調使用者查詢的分散式執行。 也會指派每個節點要處理的檔案集合。
 
@@ -69,7 +69,7 @@ SQL 隨選可讓您以唯讀方式查詢資料湖中的檔案，而 SQL 集區�
 
 計算節點提供計算能力。 
 
-在 SQL 集區中，散發會對應到計算節點以進行處理。 當您需要支付更多計算資源的費用時，集區會將散發重新對應到可用的計算節點。 計算節點數目範圍是從 1 到 60，取決於 SQL 集區的服務等級。 每個計算節點都有會在系統檢視中顯示的節點識別碼。 您可以在名稱開頭為 sys.pdw_nodes 的系統檢視中尋找 node_id 資料行，以查看計算節點識別碼。 如需這些系統檢視的清單，請參閱 [MPP 系統檢視](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest)。
+在 SQL 集區中，散發會對應到計算節點以進行處理。 當您需要支付更多計算資源的費用時，集區會將散發重新對應到可用的計算節點。 計算節點數目範圍是從 1 到 60，取決於 SQL 集區的服務等級。 每個計算節點都有會在系統檢視中顯示的節點識別碼。 您可以在名稱開頭為 sys.pdw_nodes 的系統檢視中尋找 node_id 資料行，以查看計算節點識別碼。 如需這些系統檢視的清單，請參閱 [SYNAPSE SQL 系統檢視](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest)。
 
 在 SQL 隨選中，會為每個計算節點指派工作和一組要在其上執行工作的檔案。 工作是分散式查詢執行單位，實際上是使用者已提交查詢的一部分。 自動調整會生效，以確保使用足夠的計算節點來執行使用者查詢。
 

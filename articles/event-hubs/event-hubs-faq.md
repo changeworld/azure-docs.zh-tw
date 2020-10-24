@@ -2,13 +2,13 @@
 title: 常見問題集 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供 Azure 事件中樞的常見問題集 (FAQ) 清單及其答案。
 ms.topic: article
-ms.date: 09/16/2020
-ms.openlocfilehash: 2c58f67fed880b8aad60ff1a46a587dcf514102e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.date: 10/23/2020
+ms.openlocfilehash: 511706e0de2737feb259c0ff9529373ab8b6d026
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424174"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495225"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中樞常見問題集
 
@@ -181,27 +181,12 @@ bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093 request.timeout.ms=60000 security.p
 ### <a name="what-are-event-hubs-dedicated-clusters"></a>事件中樞專用叢集有哪些？
 事件中樞專用叢集可為需求最高的客戶提供單一租用戶部署。 此供應項目會建置未透過輸送量單位繫結的容量型叢集。 這表示您可以使用該叢集，依照叢集的 CPU 和記憶體使用量所指定，來擷取和串流您的資料。 如需詳細資訊，請參閱[事件中樞專用叢集](event-hubs-dedicated-overview.md)。
 
-### <a name="how-much-does-a-single-capacity-unit-let-me-achieve"></a>單一容量單位可讓我達成哪些目標？
-針對專用叢集，您可擷取和串流的數量取決於各種因素，例如，您的生產者、客戶、您擷取與處理的速率，以及其他更多因素。 
-
-下表顯示我們在測試期間達成的基準測試結果：
-
-| 承載圖形 | 接收者 | 輸入頻寬| 輸入訊息 | 輸出頻寬 | 輸出訊息 | TU 總計 | 每個 CU 的 TU |
-| ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| 100x1KB 的批次 | 2 | 400 MB/秒 | 400000 則訊息/秒 | 800 MB/秒 | 800000 則訊息/秒 | 400 個 TU | 100 個 TU | 
-| 10x10KB 的批次 | 2 | 666 MB/秒 | 66600 則訊息/秒 | 1.33 GB/秒 | 133000 則訊息/秒 | 666 個 TU | 166 個 TU |
-| 6x32KB 的批次 | 1 | 1.05 GB/秒 | 34000 則訊息/秒 | 1.05 GB/秒 | 34000 則訊息/秒 | 1000 個 TU | 250 個 TU |
-
-測試期間使用了下列準則：
-
-- 使用了含四個容量單位 (CU) 的專用事件中樞叢集。 
-- 用於擷取的事件中樞具有 200 個分割區。 
-- 已擷取的資料會透過接收自所有分割區的兩個接收者應用程式來接收。
-
-結果讓您了解可透過專用事件中樞叢集來達成的目標。 此外，專用叢集隨附已針對您的微批次和長期保留案例啟用的事件中樞擷取。
-
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>如何建立事件中樞專用叢集？
-您可以藉由提交[加大配額支援要求](https://portal.azure.com/#create/Microsoft.Support)或連絡[事件中樞小組](mailto:askeventhubs@microsoft.com)，來建立事件中樞專用叢集。 通常需要大約兩週的時間，才能部署該叢集並將控制權移交給您以供使用。 這個流程是暫時的，直到透過 Azure 入口網站提供完整的自助服務為止。
+如需逐步指示及設定事件中樞專用叢集的詳細資訊，請參閱 [快速入門：使用 Azure 入口網站建立專用事件中樞](event-hubs-dedicated-cluster-create-portal.md)叢集。 
+
+
+[!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-dedicated-clusters-faq.md)]
+
 
 ## <a name="best-practices"></a>最佳作法
 

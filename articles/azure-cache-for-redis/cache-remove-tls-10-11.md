@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 69df5a65df99a7497099e71e9f41701458370c87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7be987b99c60185647ab976691d42b72236c6364
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84423916"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496054"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>在與 Azure Cache for Redis 搭配使用時移除 TLS 1.0 和 1.1
 
@@ -19,10 +19,14 @@ ms.locfileid: "84423916"
 
 作為此工作的一部分，我們將對 Azure Cache for Redis 進行下列變更：
 
-* **第 1 階段：** 我們會針對新建立的快取執行個體，將預設的最低 TLS 版本設定為 1.2 (以前是 TLS 1.0)。  此時將不會更新現有的快取執行個體。 系統允許您可以基於回溯相容性，視需要[變更最低 TLS 版本](cache-configure.md#access-ports)回到 1.0 或 1.1。 此變更可透過 Azure 入口網站或其他管理 API 來完成。
-* **第 2 階段：** 我們將停止支援 TLS 版本 1.0 和 1.1。 在此變更之後，您的應用程式就必須使用 TLS 1.2 或更新版本來與您的快取通訊。
+* **第1階段：** 針對新建立的快取實例，我們會將預設的最小 TLS 版本設定為1.2， (之前是 TLS 1.0) 。 此時將不會更新現有的快取執行個體。 如有需要，您仍然可以使用 Azure 入口網站或其他管理 Api，將 [最低的 TLS 版本變更](cache-configure.md#access-ports) 為1.0 或1.1，以提供回溯相容性。
+* **第2階段：** 我們將停止支援 TLS 1.1 和 TLS 1.0。 在此變更之後，您的應用程式必須使用 TLS 1.2 或更新版本來與您的快取通訊。 當我們將 Azure Cache for Redis 服務遷移為僅支援 TLS 1.2 或更新版本時，就會提供此服務。
 
-此外，作為此變更的一部分，我們將移除對較舊且不安全之密碼套件的支援。  當快取是透過最低 TLS 版本 1.2 來設定時，我們支援的密碼套件將受限於下列各項。
+  > [!NOTE]
+  > 階段2的計畫將于2020年12月31日之前開始。 不過，我們強烈建議您立即開始規劃此變更，並主動更新用戶端以支援 TLS 1.2 或更新版本。 
+  >
+
+作為這項變更的一部分，我們也會移除對較不安全的舊版 cypher 套件的支援。 當您以最少的 TLS 1.2 設定快取時，支援的 cypher 套件將會限制為下列套件：
 
 * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
@@ -33,12 +37,14 @@ ms.locfileid: "84423916"
 
 | Cloud                | 第 1 階段開始日期 | 第 2 階段開始日期         |
 |----------------------|--------------------|----------------------------|
-| Azure (全域)       |  2020 年 1 月 13 日  | 因為 COVID-19 19 而延後  |
-| Azure Government     |  2020 年 3 月 13 日    | 因為 COVID-19 19 而延後  |
-| Azure Germany        |  2020 年 3 月 13 日    | 因為 COVID-19 19 而延後  |
-| Azure China 21Vianet |  2020 年 3 月 13 日    | 因為 COVID-19 19 而延後  |
+| Azure (全域)       |  2020 年 1 月 13 日  | 因為 COVID-19-19 而延後  |
+| Azure Government     |  2020 年 3 月 13 日    | 因為 COVID-19-19 而延後  |
+| Azure Germany        |  2020 年 3 月 13 日    | 因為 COVID-19-19 而延後  |
+| Azure China 21Vianet |  2020 年 3 月 13 日    | 因為 COVID-19-19 而延後  |
 
-注意：尚未判斷階段2的新日期
+> [!NOTE]
+> 階段2的計畫將于2020年12月31日之前開始。 當設定特定日期時，將會更新本文。
+>
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>檢查您的應用程式是否已符合規範
 

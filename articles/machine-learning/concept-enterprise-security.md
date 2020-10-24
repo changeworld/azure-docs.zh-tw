@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: 462ecb1fb3f44f3caac8c58bfca169e4eac2a6da
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: fef41a177f653dc67835897a48d734400a37a0d0
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207932"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496012"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning 的企業安全性
 
@@ -183,6 +183,7 @@ Azure Machine Learning 會在 Azure Cosmos DB 執行個體中儲存計量和中�
 如需使用現有 Azure Container Registry 建立工作區的範例，請參閱下列文章：
 
 * [使用 Azure CLI 建立 Azure Machine Learning 的工作區](how-to-manage-workspace-cli.md)。
+* [使用 PYTHON SDK 建立工作區](how-to-manage-workspace.md?tabs=python#create-a-workspace)。
 * [使用 Azure Resource Manager 範本建立 Azure Machine Learning 的工作區](how-to-create-workspace-template.md)
 
 #### <a name="azure-container-instance"></a>Azure 容器執行個體

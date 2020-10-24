@@ -8,14 +8,14 @@ author: ShaneBala-keyvault
 ms.author: sudbalas
 manager: ravijan
 ms.date: 09/30/2020
-ms.openlocfilehash: bea4a5d92309710645dd63e611cd0a5e3b742c34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0fe5c2af42e8d8095963e29149e1338cc064c90
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604246"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495192"
 ---
-# <a name="azure-key-vault-recovery-overview"></a>Azure Key Vault 復原總覽
+# <a name="how-to-enable-soft-delete-and-purge-protection"></a>如何啟用虛刪除和清除保護
 
 本文涵蓋 Azure Key Vault、虛刪除和清除保護的兩項復原功能。 本檔概要說明這些功能，並說明如何透過 Azure 入口網站、Azure CLI 和 Azure PowerShell 來管理它們。
 

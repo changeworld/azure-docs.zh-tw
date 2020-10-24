@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e874e7107af0eac60f16f5494c04905da56f785a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 0dfc93987fb2ca25b9e397e4aa91adcaaafd8a38
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205473"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478815"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>設定 Azure 數位 Twins 實例和驗證 (入口網站) 
 
@@ -75,7 +75,7 @@ ms.locfileid: "92205473"
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="從 Azure 入口網站的首頁中選取 [建立資源]":::
 
 在 [ *新增角色指派* ] 頁面上，填入 [Azure 訂用帳戶) 中具有 [足夠許可權](#prerequisites-permission-requirements) 的使用者必須完成的值 (：
-* **角色**：從下拉式功能表中選取*Azure 數位 Twins 擁有者 (預覽) *
+* **角色**：從下拉式功能表中選取 *Azure 數位 Twins 資料擁有* 者
 * **指派存取權給**：從下拉式功能表選取*Azure AD 使用者、群組或服務主體*
 * **選取**：搜尋要指派之使用者的名稱或電子郵件地址。 當您選取結果時，使用者將會顯示在 [ *選取的成員* ] 區段中。
 
@@ -91,7 +91,7 @@ ms.locfileid: "92205473"
 
 ### <a name="verify-success"></a>確認是否成功
 
-您可以在 [ *存取控制] (IAM) > 角色指派*下，查看您所設定的角色指派。 使用者應該會出現在清單中，其中包含 *Azure 數位 Twins 擁有者 (預覽) *的角色。 
+您可以在 [ *存取控制] (IAM) > 角色指派*下，查看您所設定的角色指派。 使用者應該會顯示在清單中，且具有 *Azure 數位 Twins 資料擁有*者的角色。 
 
 :::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="從 Azure 入口網站的首頁中選取 [建立資源]":::
 

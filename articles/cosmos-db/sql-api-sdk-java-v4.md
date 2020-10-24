@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 686c1e37e093a358bb5122fbfeccdfd98eb301ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2632d5c4fe637222cb6248d35671057430d935e7
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804226"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477312"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for Core (SQL) API：版本資訊與資源
 > [!div class="op_single_selector"]
@@ -26,14 +26,14 @@ ms.locfileid: "91804226"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [非同步 Java SDK v2](sql-api-sdk-async-java.md)
 > * [同步 Java SDK v2](sql-api-sdk-java.md)
-> * [春季資料 v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
 > * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark 連接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST 資源提供者](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](sql-api-query-reference.md)
-> * [大量執行程式-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
+> * [SQL](./sql-query-getting-started.md)
+> * [大量執行工具 - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [大量執行程式 - Java](sql-api-sdk-bulk-executor-java.md)
 
 Azure Cosmos DB Java SDK v4 for Core (SQL) 會將非同步 API 與同步 API 結合成一個 Maven 成品。 V4 SDK 會根據 Project Reactor 和 [Netty 程式庫](https://netty.io/)，提供增強的效能、新的 API 功能和非同步支援。 使用者可以預期 Azure Cosmos DB Java SDK v4 與 [Azure Cosmos DB Async Java SDK v2](sql-api-sdk-async-java.md) 和 [Azure Cosmos DB Sync Java SDK v2](sql-api-sdk-java.md) 的改善效能。
@@ -43,7 +43,7 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) 會將非同步 API 與同步 API 結
 >
 > 以下是快速開始進行的三個步驟！
 > 1. 安裝[最低支援的 JAVA 執行階段，JDK 8](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)，以便您可以使用 SDK。
-> 2. 請逐步執行 [Azure Cosmos DB Java SDK v4 的快速入門手冊](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java)，以取得 Maven 成品的存取權，並逐步解說 Azure Cosmos DB 的基本要求。
+> 2. 請逐步執行 [Azure Cosmos DB Java SDK v4 的快速入門手冊](./create-sql-api-java.md)，以取得 Maven 成品的存取權，並逐步解說 Azure Cosmos DB 的基本要求。
 > 3. 閱讀 Azure Cosmos DB Java SDK v4 [效能秘訣](performance-tips-java-sdk-v4-sql.md)和[疑難排解](troubleshoot-java-sdk-v4-sql.md)指南，以最佳化應用程式的 SDK。
 >
 > [Azure Cosmos DB 的研討會和實驗室](https://aka.ms/cosmosworkshop)是了解如何使用 Azure Cosmos DB Java SDK v4 的另一個絕佳資源！
@@ -54,9 +54,9 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) 會將非同步 API 與同步 API 結
 | Content | 連結 |
 |---|---|
 |**SDK 下載**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
-|**API 文件** | [Java API 參考文件](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable&preserve-view=true) |
+|**API 文件** | [Java API 參考文件](/java/api/overview/azure/cosmosdb/client?preserve-view=true&view=azure-java-stable) |
 |**參與 SDK** | [GitHub 上的 Azure SDK for Java 中央存放庫](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos) | 
-|**開始使用** | [快速入門：建置 JAVA 應用程式來管理 Azure Cosmos DB SQL API 資料](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) <br> [具有快速入門程式碼的 GitHub 存放庫](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
+|**開始使用** | [快速入門：建置 JAVA 應用程式來管理 Azure Cosmos DB SQL API 資料](./create-sql-api-java.md) <br> [具有快速入門程式碼的 GitHub 存放庫](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
 |**基本程式碼範例** | [Azure Cosmos DB：適用於 SQL API 的 Java 範例](sql-api-java-sdk-samples.md) <br> [包含範例程式碼的 GitHub 存放庫](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
 |**具有變更摘要的主控台應用程式**| [變更摘要-JAVA SDK v4 範例](create-sql-api-java-changefeed.md) <br> [包含範例程式碼的 GitHub 存放庫](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 
 |**Web 應用程式範例**| [使用 JAVA SDK v4 建立 web 應用程式](sql-api-java-application.md) <br> [包含範例程式碼的 GitHub 存放庫](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app)|

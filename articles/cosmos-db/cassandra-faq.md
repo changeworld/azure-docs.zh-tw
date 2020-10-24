@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: 9d6cb699ad8a24e4450cbeb4bc1ca3cb6d46d9fe
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e38096a0c5de266be6be6a58e09a251ce28a55df
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278194"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482599"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>關於 Cassandra API 的常見問題 Azure Cosmos DB
 
@@ -75,7 +75,7 @@ Azure Cosmos DB 能提供效能和延遲上的保證，限定作業時的上限�
 
 計量可讓您瞭解如何在數小時、數天內、每七天、跨資料分割或匯總中使用輸送量。 如需詳細資訊，請參閱[使用 Azure Cosmos DB 中的計量監控及偵錯](use-metrics.md)。
 
-診斷記錄的說明請見 [Azure Cosmos DB 診斷記錄](logging.md)一文。
+診斷記錄的說明請見 [Azure Cosmos DB 診斷記錄](./monitor-cosmos-db.md)一文。
 
 ### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>主要索引鍵是否會對應至 Azure Cosmos DB 的資料分割索引鍵概念？
 
@@ -135,9 +135,9 @@ Azure Cosmos DB 可提供讀取、寫入和輸送量的效能保證。 因此您
 
 Azure Cosmos DB 是一種平台服務，可協助您提高產能，而不必擔心如何管理及監視基礎結構。 例如，您不需要使用各種工具來監視節點狀態、複本狀態、gc 和 OS 參數。 您只需要處理入口網站計量中可用的輸送量，就可以查看您是否正在進行節流，然後增加或減少該輸送量。 您可以：
 
-- 監視 [sla](monitor-accounts.md)
+- 監視 [sla](./monitor-cosmos-db.md)
 - 使用 [計量](use-metrics.md)
-- 使用 [診斷記錄](logging.md)
+- 使用 [診斷記錄](./monitor-cosmos-db.md)
 
 ### <a name="which-client-sdks-can-work-with-the-cassandra-api"></a>哪些用戶端 Sdk 可以使用 Cassandra API？
 
@@ -169,7 +169,7 @@ Cassandra API 從 Azure Cosmos DB 的全域分散式平臺借用。 為確保您
 
 ### <a name="does-the-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Cassandra API 預設會為實體的所有屬性編制索引嗎？
 
-不正確。 Cassandra API 支援 [次要索引](cassandra-secondary-index.md)，其行為方式與 Apache Cassandra 類似。 根據預設，API 不會編制每個屬性的索引。  
+不可以。 Cassandra API 支援 [次要索引](cassandra-secondary-index.md)，其行為方式與 Apache Cassandra 類似。 根據預設，API 不會編制每個屬性的索引。  
 
 
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>我可以在本機搭配使用新的 Cassandra API SDK 與模擬器嗎？
@@ -187,7 +187,7 @@ Cassandra API 從 Azure Cosmos DB 的全域分散式平臺借用。 為確保您
 請透過 [UserVoice 意見反應](https://feedback.azure.com/forums/263030-azure-cosmos-db)提供意見反應。
 
 [azure-portal]: https://portal.azure.com
-[query]: sql-api-sql-query.md
+[query]: ./sql-query-getting-started.md
 
 ## <a name="next-steps"></a>後續步驟
 

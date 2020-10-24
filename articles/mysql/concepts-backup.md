@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 51c177af10713dfb35857097b267638156f0cc5d
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 9514d0fb6c9cbc95b82f13ffb576703893f303f2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057530"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92484554"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>在適用於 MySQL 的 Azure 資料庫中備份與還原
 
@@ -38,7 +38,7 @@ ms.locfileid: "92057530"
 一般用途儲存體是支援 [一般用途](concepts-pricing-tiers.md) 和 [記憶體優化層](concepts-pricing-tiers.md) 伺服器的後端儲存體。 針對一般用途儲存體高達 4 TB 的伺服器，完整備份會每週進行一次。 差異備份會一天進行兩次。 交易記錄備份每五分鐘會進行一次。一般用途儲存體上的備份（最多 4 TB 的儲存體）不是以快照集為基礎，而且會在備份時耗用 IO 頻寬。 針對大型資料庫 ( # A0 1TB) 在 4 TB 的儲存體上，建議您考慮 
 
 - 布建更多 IOPs 以考慮備份 IOs 或
-- 或者，如果您偏好的 [Azure 區域](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)中有基礎儲存體 infastructure，則遷移至一般用途的儲存體，以支援多達 16 TB 的儲存體。 一般用途儲存體沒有額外的成本可支援高達 16 TB 的儲存體。 如需遷移至 16 TB 儲存體的協助，請從 Azure 入口網站開啟支援票證。 
+- 或者，如果您偏好的 [Azure 區域](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)中有基礎儲存體基礎結構，則遷移至一般目的儲存體，以支援多達 16 TB 的儲存體。 一般用途儲存體沒有額外的成本可支援高達 16 TB 的儲存體。 如需遷移至 16 TB 儲存體的協助，請從 Azure 入口網站開啟支援票證。 
 
 #### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>一般用途儲存體伺服器，最多可達 16 TB 的儲存空間
 在 [Azure 區域](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)的子集中，所有新布建的伺服器都可支援一般用途儲存體，最多可達 16 TB 的儲存體。 換句話說，儲存體最多可達 16 TB 的儲存空間，是所有支援 [區域](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) 的預設一般用途儲存體。 這些 16 TB 儲存體伺服器上的備份是以快照集為基礎。 建立伺服器之後，會立即排程第一次完整快照集備份。 第一次完整快照集備份會保留為伺服器的基礎備份。 後續的快照集備份只是差異備份。 
@@ -55,12 +55,16 @@ ms.locfileid: "92057530"
 - 具有最多 4 TB 儲存體的伺服器最多可保留2個完整的資料庫備份、所有差異備份，以及自最早的完整資料庫備份之後所執行的交易記錄備份。
 -   具有最多 16 TB 儲存體的伺服器會保留完整的資料庫快照集、所有差異快照集，以及過去8天內的交易記錄備份。
 
+#### <a name="long-term-retention"></a>長期保留
+服務目前不支援長期保留超過35天的備份。 您可以選擇使用 mysqldump 來取得備份，並加以儲存，以長期保留。 我們的支援小組已網友一篇逐步解說 [文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157) 來分享您的達成方式。 
+
+
 ### <a name="backup-redundancy-options"></a>備份備援選項
 
 適用於 MySQL 的 Azure 資料庫可讓您在一般用途和記憶體最佳化層中，彈性地選擇本地備援或異地備援備份儲存體。 當備份儲存在異地備援備份儲存體中時，這些備份不會只儲存在裝載您伺服器的區域內，也會複寫至[配對的資料中心](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 這樣能提供更好的保護性和功能，當發生災害時，您就可以在不同區域中還原伺服器。 「基本」層只會提供本地備援的備份儲存體。
 
-> [!IMPORTANT]
-> 您只可在伺服器建立期間，為備份設定本地備援或異地備援儲存體。 伺服器佈建完成之後，您無法變更備份儲存體備援選項。
+#### <a name="moving-from-locally-redundant-to-geo-redundant-backup-storage"></a>從本機冗余移至異地冗余備份儲存體
+您只可在伺服器建立期間，為備份設定本地備援或異地備援儲存體。 伺服器佈建完成之後，您無法變更備份儲存體備援選項。 為了將您的備份儲存體從本機多餘的儲存體移至異地多餘的儲存體，使用傾印 [和還原](concepts-migrate-dump-restore.md) 來建立新的伺服器並遷移資料是唯一支援的選項。
 
 ### <a name="backup-storage-cost"></a>備份儲存體成本
 

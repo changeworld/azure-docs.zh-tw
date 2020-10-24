@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: e3d6771f841d3a1d403c1c825da3b504b6896d9e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0fb783a6ad65ce17bff14b72e8d94d284769779f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277217"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475153"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Azure Cosmos DB 和 .NET SDK v2 的效能秘訣
 
@@ -42,7 +42,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
 我們建議 Windows 64 位主機處理，以改善效能。 SQL SDK 包含原生 ServiceInterop.dll，可在本機剖析和最佳化查詢。 ServiceInterop.dll 只能在 Windows x64 平台上受到支援。 若為 Linux 和其他不支援 ServiceInterop.dll 的平臺，則會對閘道進行額外的網路呼叫，以取得優化的查詢。 下列類型的應用程式預設會使用32位主機處理。 若要將主機處理變更為64位處理，請根據應用程式的類型，遵循下列步驟：
 
-- 針對可執行檔應用程式，您可以在 [**專案屬性**] 視窗的 [**組建**] 索引標籤中，將 [[平臺目標](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true)] 設定為 [ **x64** ] 來變更主機處理
+- 針對可執行檔應用程式，您可以在 [**專案屬性**] 視窗的 [**組建**] 索引標籤中，將 [[平臺目標](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019)] 設定為 [ **x64** ] 來變更主機處理
 
 - 針對以 VSTest 為基礎的測試專案，您可以在**Test**  >  [Visual Studio 測試] 功能表上選取 [測試**測試設定**  >  **預設處理器架構為 X64** **Test** ] 來變更主處理。
 
@@ -56,7 +56,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
     
 **開啟伺服器端垃圾收集 (GC) **
 
-在某些情況下，降低垃圾收集的頻率可能會有所説明。 在 .NET 中，將 [>gcserver>](https://msdn.microsoft.com/library/ms229357.aspx) 設定為 `true` 。
+在某些情況下，降低垃圾收集的頻率可能會有所説明。 在 .NET 中，將 [>gcserver>](/dotnet/framework/configure-apps/file-schema/runtime/gcserver-element) 設定為 `true` 。
 
 **擴充您的用戶端工作負載**
 
@@ -90,8 +90,8 @@ new ConnectionPolicy
 
 在您有稀疏存取的情況下，如果您在與閘道模式存取相較之下發現連接計數較高，您可以：
 
-* 將 [ConnectionPolicy. PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.portreusemode) 屬性設定為 `PrivatePortPool` (有效的 framework 版本>= 4.6.1 和 .net core 版本 >= 2.0) ：此屬性可讓 SDK 針對不同的 Azure Cosmos DB 目的地端點使用較小的暫時埠集區。
-* 設定 [ConnectionPolicy. IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.idletcpconnectiontimeout) 屬性必須大於或等於10分鐘。 建議的值介於20分鐘到24小時之間。
+* 將 [ConnectionPolicy. PortReuseMode](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.portreusemode) 屬性設定為 `PrivatePortPool` (有效的 framework 版本>= 4.6.1 和 .net core 版本 >= 2.0) ：此屬性可讓 SDK 針對不同的 Azure Cosmos DB 目的地端點使用較小的暫時埠集區。
+* 設定 [ConnectionPolicy. IdleConnectionTimeout](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.idletcpconnectiontimeout) 屬性必須大於或等於10分鐘。 建議的值介於20分鐘到24小時之間。
 
 **呼叫 OpenAsync 以避免第一次要求的啟動延遲**
 
@@ -109,7 +109,7 @@ new ConnectionPolicy
 **增加執行緒/工作數目**
 <a id="increase-threads"></a>
 
-由於呼叫 Azure Cosmos DB 是透過網路進行，因此您可能需要改變要求的平行處理原則程度，以便讓用戶端應用程式花費最短時間在要求之間等待。 例如，如果您使用的是 .NET 工作 [平行程式庫](https://msdn.microsoft.com//library/dd460717.aspx)，請建立從 Azure Cosmos DB 讀取或寫入的數百個工作的順序。
+由於呼叫 Azure Cosmos DB 是透過網路進行，因此您可能需要改變要求的平行處理原則程度，以便讓用戶端應用程式花費最短時間在要求之間等待。 例如，如果您使用的是 .NET 工作 [平行程式庫](/dotnet/standard/parallel-programming/task-parallel-library-tpl)，請建立從 Azure Cosmos DB 讀取或寫入的數百個工作的順序。
 
 **啟用加速網路**
  
@@ -127,7 +127,7 @@ Azure Cosmos DB SDK 會持續改善以提供最佳效能。 請參閱 [Azure Cos
 
 **使用閘道模式時，每一主機增加 System.Net MaxConnections**
 
-當您使用閘道模式時，會透過 HTTPS/REST 發出 Azure Cosmos DB 要求。 它們受限於每個主機名稱或 IP 位址的預設連線限制。 您可能需要將設定 `MaxConnections` 為較高的值 (100 至 1000) 因此，用戶端程式庫可以使用多個同時連線來 Azure Cosmos DB。 在 .NET SDK 1.8.0 和更新版本中， [ServicePointManager >servicepointmanager.defaultconnectionlimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) 的預設值是50。 若要變更此值，您可以將 [ConnectionPolicy. MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) 設定為較高的值。
+當您使用閘道模式時，會透過 HTTPS/REST 發出 Azure Cosmos DB 要求。 它們受限於每個主機名稱或 IP 位址的預設連線限制。 您可能需要將設定 `MaxConnections` 為較高的值 (100 至 1000) 因此，用戶端程式庫可以使用多個同時連線來 Azure Cosmos DB。 在 .NET SDK 1.8.0 和更新版本中， [ServicePointManager >servicepointmanager.defaultconnectionlimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) 的預設值是50。 若要變更此值，您可以將 [ConnectionPolicy. MaxConnectionLimit](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit) 設定為較高的值。
 
 **調整資料分割集合的平行查詢**
 
@@ -135,19 +135,19 @@ SQL .NET SDK 1.9.0 和更新版本支援平行查詢，可讓您以平行方式�
 - `MaxDegreeOfParallelism` 控制可以平行查詢的資料分割數目上限。 
 - `MaxBufferedItemCount` 控制預先提取的結果數目。
 
-***調整平行處理原則的程度***
+**_調整平行處理原則的程度_*_
 
 平行查詢的運作方式是以平行方式查詢多個資料分割。 但是個別分割區中的資料會根據查詢順序提取。 `MaxDegreeOfParallelism`若將[SDK V2](sql-api-sdk-dotnet.md)中的資料分割設定為數據分割數目，就有機會達到最高效能的查詢，但前提是其他所有系統條件維持不變。 如果您不知道資料分割數目，您可以將平行處理原則的程度設定為較高的數位。 系統會選擇最小 (的資料分割數目、使用者提供的輸入) 作為平行處理原則的程度。
 
 如果資料平均分佈在與查詢相關的所有資料分割中，平行查詢會產生最大效益。 如果分割的集合已分割，以便查詢所傳回的所有或大部分資料都集中在少數幾個資料分割中 (一個資料分割是最糟的情況) ，則這些資料分割將會造成查詢的效能瓶頸。
 
-***微調 MaxBufferedItemCount***
+_*_微調 MaxBufferedItemCount_*_
     
 平行查詢的設計是可在用戶端處理目前的結果批次時，先預先擷取結果。 這項預先提取有助於改善查詢的整體延遲。 `MaxBufferedItemCount`參數會限制預先提取的結果數目。 設定 `MaxBufferedItemCount` 為預期傳回的結果數目 (或更高的數目) ，讓查詢能獲得預先提取的最大效益。
 
 不論平行處理原則的程度為何，預先提取的運作方式都相同，而且所有分割區的資料都有一個緩衝區。  
 
-**在 RetryAfter 間隔實作降速**
+_ 依*RetryAfter 間隔執行*輪詢*
 
 在效能測試期間，您應該增加負載，直到低比率的要求受到節流。 如果要求受到節流處理，用戶端應用程式應該會在伺服器指定的重試間隔中，針對伺服器指定的重試間隔關閉。 遵循輪詢可確保您在重試之間花費最少的等候時間。 
 
@@ -156,7 +156,7 @@ SQL .NET SDK 1.9.0 和更新版本支援平行查詢，可讓您以平行方式�
 - [適用于 sql 的Node.js SDK](sql-api-sdk-node.md)版本1.9.0 和更新版本，以及[適用于 SQL 的 Python sdk](sql-api-sdk-python.md)
 - 所有支援的 [.Net Core](sql-api-sdk-dotnet-core.md) sdk 版本 
 
-如需詳細資訊，請參閱 [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx)。
+如需詳細資訊，請參閱 [RetryAfter](/dotnet/api/microsoft.azure.documents.documentclientexception.retryafter)。
     
 在 .NET SDK 1.19 版和更新版本中，有一種機制可記錄其他診斷資訊和針對延遲問題進行疑難排解，如下列範例所示。 您可以針對具有較高讀取延遲的要求記錄診斷字串。 所捕獲的診斷字串將協助您瞭解在指定的要求中收到429錯誤的次數。
 

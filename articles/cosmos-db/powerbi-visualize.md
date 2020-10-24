@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: fc3ca5fdde464ba63671512a6ebecd2c314cb192
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7e5443869efd7f37153b47e4d9c3eaa39f9c41d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570827"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475272"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>使用 Power BI 連接器將 Azure Cosmos DB 資料視覺化
 
@@ -32,7 +32,7 @@ ms.locfileid: "91570827"
 
 * 從 GitHub 下載[範例火山資料](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json)。
 
-* [建立 Azure Cosmos 資料庫帳戶](https://azure.microsoft.com/documentation/articles/create-account/) ，並使用 [Azure Cosmos DB 資料移轉工具](import-data.md)來匯入火山資料。 當匯入資料時，請考慮資料移轉工具中來源與目的地的下列設定：
+* [建立 Azure Cosmos 資料庫帳戶](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account) ，並使用 [Azure Cosmos DB 資料移轉工具](import-data.md)來匯入火山資料。 當匯入資料時，請考慮資料移轉工具中來源與目的地的下列設定：
 
    * **來源參數** 
 
@@ -135,7 +135,7 @@ ms.locfileid: "91570827"
 
 1. 接下來，指定新資料行的自訂公式。  在我們的範例中，我們將依照下列方式使用以下公式，串連以逗號分隔的緯度和經度值： `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 按一下 [確定]。
    
-   如需有關資料分析運算式 (DAX) 包括 DAX 函數的詳細資訊，請造訪 [Power BI Desktop 中的 Dax 基本概念](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics)。
+   如需有關資料分析運算式 (DAX) 包括 DAX 函數的詳細資訊，請造訪 [Power BI Desktop 中的 Dax 基本概念](/power-bi/desktop-quickstart-learn-dax-basics)。
    
    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png" alt-text="Power BI Desktop 報告檢視 - Power BI 連接器":::
 
@@ -226,4 +226,3 @@ For a scheduled refresh, do the following.
 ## <a name="next-steps"></a>後續步驟
 * 若要深入了解 Power BI，請參閱 [開始使用 Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)。
 * 若要深入了解 Azure Cosmos DB，請參閱 [Azure Cosmos DB 文件登陸頁面](https://azure.microsoft.com/documentation/services/cosmos-db/)。
-

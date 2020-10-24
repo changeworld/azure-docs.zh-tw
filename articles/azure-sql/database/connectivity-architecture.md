@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 71bd250cbfb2642a291d495273c4cd66ebb2c350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 711d1cfccb6cdfe4a2fcb48a8ada7b33f744c317
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325380"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92479080"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database 與 Azure Synapse Analytics 連線架構
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "91325380"
 
 下圖提供連線架構的概要說明。
 
-![架構概觀](./media/connectivity-architecture/connectivity-overview.png)
+![此圖顯示連接架構的高階總覽。](./media/connectivity-architecture/connectivity-overview.png)
 
 下列步驟說明如何建立與 Azure SQL Database 的連接：
 
@@ -63,7 +63,7 @@ SQL Database 和 Azure Synapse 中的伺服器支援伺服器連線原則設定�
 
 如果您從 Azure 外部連線，該連線預設的連線原則為 `Proxy`。 `Proxy` 原則代表會透過 Azure SQL Database 閘道建立 TCP 工作階段，且所有後續封包都會流經閘道。 下圖說明此流量。
 
-![架構概觀](./media/connectivity-architecture/connectivity-onprem.png)
+![此圖顯示如何透過 Azure SQL Database 閘道建立 TCP 會話，而所有後續的封包都會流經閘道。](./media/connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
 > 額外的開啟 TCP 通訊埠1434和14000-14999，以啟用 [與 DAC 的連接](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)

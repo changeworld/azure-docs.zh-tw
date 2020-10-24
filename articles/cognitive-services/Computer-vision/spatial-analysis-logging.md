@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: f85a7e2acf911772ecc6562217918352e909fcbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8154ef7a90011da8c15f52870eebb6c80ebaebca
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254069"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92496111"
 ---
 # <a name="telemetry-and-troubleshooting"></a>遙測和疑難排解
 
@@ -23,9 +23,9 @@ ms.locfileid: "91254069"
 
 ## <a name="enable-visualizations"></a>啟用視覺效果
 
-若要啟用影片框架中 AI 見解事件的視覺效果，您需要使用 `.debug` [空間分析](spatial-analysis-operations.md)作業的版本。 有四個可用的調試作業。
+若要啟用影片畫面中 AI 見解事件的視覺效果，您需要在 `.debug` 桌上型電腦上使用 [空間分析](spatial-analysis-operations.md) 作業的版本。 Azure Stack Edge 裝置無法進行視覺效果。 有四個可用的調試作業。
 
-編輯 [部署資訊清單](https://go.microsoft.com/fwlink/?linkid=2142179) ，以使用環境變數的正確值 `DISPLAY` 。 它必須符合 `$DISPLAY` 主機電腦上的變數。 更新部署資訊清單之後，請重新部署容器。
+如果您的裝置不是 Azure Stack Edge 裝置，請編輯 [桌上型電腦](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) 的部署資訊清單檔，以使用正確的 `DISPLAY` 環境變數值。 它必須符合 `$DISPLAY` 主機電腦上的變數。 更新部署資訊清單之後，請重新部署容器。
 
 完成部署之後，您可能必須將該檔案 `.Xauthority` 從主機電腦複製到容器，然後重新開機。 在下列範例中， `peopleanalytics` 是主機電腦上的容器名稱。
 
@@ -39,7 +39,7 @@ xhost +
 
 ## <a name="collect-system-health-telemetry"></a>收集系統健康情況遙測
 
-Telegraf 是可搭配空間分析使用的開放原始碼映射，可在 Microsoft Container Registry 中取得。 它會採用下列輸入，並將其傳送至 Azure 監視器。 您可以使用所需的自訂輸入和輸出來建立 telegraf 模組。 空間分析中的 telegraf 模組設定是 [部署資訊清單](https://go.microsoft.com/fwlink/?linkid=2142179)的一部分。 此模組是選擇性的，如果不需要，您可以從資訊清單中移除它。 
+Telegraf 是可搭配空間分析使用的開放原始碼映射，可在 Microsoft Container Registry 中取得。 它會採用下列輸入，並將其傳送至 Azure 監視器。 您可以使用所需的自訂輸入和輸出來建立 telegraf 模組。 空間分析中的 telegraf 模組設定是部署資訊清單的一部分， (連結) 。 此模組是選擇性的，如果不需要，您可以從資訊清單中移除它。 
 
 輸入： 
 1. 空間分析計量
@@ -51,7 +51,7 @@ Telegraf 是可搭配空間分析使用的開放原始碼映射，可在 Microso
 輸出：
 1. Azure 監視器
 
-提供的空間分析 telegraf 模組會將空間分析容器發出的所有遙測資料發佈至 Azure 監視器。 如需將 Azure 監視器新增至訂用帳戶的相關資訊，請參閱 [Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview) 。
+提供的空間分析 telegraf 模組會將空間分析容器發出的所有遙測資料發佈至 Azure 監視器。 如需有關將 Azure 監視器新增至訂用帳戶的詳細資訊，請參閱 [Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview) 。
 
 設定 Azure 監視器之後，您將需要建立可讓模組傳送遙測的認證。 您可以使用 Azure 入口網站來建立新的服務主體，或使用下面的 Azure CLI 命令建立一個。
 
@@ -68,14 +68,14 @@ az iot hub list
 az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principal name>" --scopes="<resource ID of IoT Hub>"
 ```
 
-在 [部署資訊清單](https://go.microsoft.com/fwlink/?linkid=2142179)中尋找 *telegraf* 模組，並將下列值取代為上一個步驟中的服務主體資訊，然後重新部署。
+在 [Azure Stack Edge 裝置](https://go.microsoft.com/fwlink/?linkid=2142179) 或其他 [桌上型電腦](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)的部署資訊清單中，尋找 *telegraf* 模組，並將下列值取代為上一個步驟中的服務主體資訊，然後重新部署。
 
 ```json
 
 "telegraf": { 
-  "settings": {
-  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/telegraf:1.0",
-  "createOptions":   "{\"HostConfig\":{\"Runtime\":\"nvidia\",\"NetworkMode\":\"azure-iot-edge\",\"Memory\":33554432,\"Binds\":[\"/var/run/docker.sock:/var/run/docker.sock\"]}}"
+  "settings": {
+  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/telegraf:1.0",
+  "createOptions":   "{\"HostConfig\":{\"Runtime\":\"nvidia\",\"NetworkMode\":\"azure-iot-edge\",\"Memory\":33554432,\"Binds\":[\"/var/run/docker.sock:/var/run/docker.sock\"]}}"
 },
 "type": "docker",
 "env": {
@@ -103,21 +103,21 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 
 ### <a name="system-health-events"></a>系統健康情況事件
 
-| 活動名稱 | 描述|
+| 活動名稱 | 說明|
 |------|---------|
-|archon_exit    |當 *使用者將空間* 分析模組狀態從「執行」變更為「 *已停止*」時傳送。  |
-|archon_error   |當容器內的任何進程損毀時傳送。 這是嚴重錯誤。  |
-|InputRate  |圖形處理影片輸入的速率。 每隔5分鐘回報一次。 | 
-|OutputRate     |圖形輸出 AI 見解的速率。 每隔5分鐘回報一次。 |
-|archon_allGraphsStarted | 在所有圖形都完成啟動時傳送。 |
-|archon_configchange    | 在圖形設定變更時傳送。 |
-|archon_graphCreationFailed     |當報告的圖表 `graphId` 無法啟動時傳送。 |
-|archon_graphCreationSuccess    |當報告的圖表 `graphId` 成功啟動時傳送。 |
-|archon_graphCleanup    | 當具有報告的圖形清除並結束時傳送 `graphId` 。 |
-|archon_graphHeartbeat  |每分鐘傳送的每個技能圖表的信號。 |
+|archon_exit    |當 *使用者將空間* 分析模組狀態從「執行」變更為「 *已停止*」時傳送。  |
+|archon_error   |當容器內的任何進程損毀時傳送。 這是嚴重錯誤。  |
+|InputRate  |圖形處理影片輸入的速率。 每隔5分鐘回報一次。 | 
+|OutputRate     |圖形輸出 AI 見解的速率。 每隔5分鐘回報一次。 |
+|archon_allGraphsStarted | 在所有圖形都完成啟動時傳送。 |
+|archon_configchange    | 在圖形設定變更時傳送。 |
+|archon_graphCreationFailed     |當報告的圖表 `graphId` 無法啟動時傳送。 |
+|archon_graphCreationSuccess    |當報告的圖表 `graphId` 成功啟動時傳送。 |
+|archon_graphCleanup    | 當具有報告的圖形清除並結束時傳送 `graphId` 。 |
+|archon_graphHeartbeat  |每分鐘傳送的每個技能圖表的信號。 |
 |archon_apiKeyAuthFail |當電腦視覺資源金鑰因為下列原因而無法驗證容器超過24小時時傳送，原因如下：配額不足、無效、離線。 |
-|VideoIngesterHeartbeat     |每小時傳送一次，表示影片會從影片來源進行串流處理，並顯示該小時的錯誤數目。 針對每個圖表報告。 |
-|VideoIngesterState | *已停止*或*啟動*影片串流的報告。針對每個圖表報告。 |
+|VideoIngesterHeartbeat     |每小時傳送一次，表示影片會從影片來源進行串流處理，並顯示該小時的錯誤數目。 針對每個圖表報告。 |
+|VideoIngesterState | *已停止*或*啟動*影片串流的報告。 針對每個圖表報告。 |
 
 ##  <a name="troubleshooting-an-iot-edge-device"></a>針對 IoT Edge 裝置進行疑難排解
 
@@ -129,22 +129,17 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 
 ## <a name="collect-log-files-with-the-diagnostics-container"></a>使用診斷容器收集記錄檔
 
-空間分析會產生可供您用來診斷執行時間問題或包含在支援票證中的 Docker 偵錯工具記錄。 您可在 Microsoft Container Registry 中取得空間分析診斷模組，以供您下載。 在 [範例部署資訊清單](https://go.microsoft.com/fwlink/?linkid=2142179)中，尋找 *診斷* 模組。
+空間分析會產生可供您用來診斷執行時間問題或包含在支援票證中的 Docker 偵錯工具記錄。 您可在 Microsoft Container Registry 中取得空間分析診斷模組，以供您下載。 在 [Azure Stack Edge 裝置](https://go.microsoft.com/fwlink/?linkid=2142179) 或其他 [桌上型電腦](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)的資訊清單部署檔案中，尋找 *診斷* 模組。
 
 在 [env] 區段中，新增下列設定：
 
 ```json
-"diagnostics": {  
-  "settings": {
-  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/diagnostics:1.0",
-  "createOptions":   "{\"HostConfig\":{\"Mounts\":[{\"Target\":\"/usr/bin/docker\",\"Source\":\"/home/data/docker\",\"Type\":\"bind\"},{\"Target\":\"/var/run\",\"Source\":\"/run\",\"Type\":\"bind\"}],\"LogConfig\":{\"Config\":{\"max-size\":\"500m\"}}}}"
-  }
+"diagnostics": {  
+  "settings": {
+  "image":   "mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis/diagnostics:1.0",
+  "createOptions":   "{\"HostConfig\":{\"Mounts\":[{\"Target\":\"/usr/bin/docker\",\"Source\":\"/home/data/docker\",\"Type\":\"bind\"},{\"Target\":\"/var/run\",\"Source\":\"/run\",\"Type\":\"bind\"}],\"LogConfig\":{\"Config\":{\"max-size\":\"500m\"}}}}"
+  }
 ```    
-
->[!NOTE]
-> 如果您不是在 ASE Kubernetes 環境中執行，請將記錄模組的容器建立選項取代為下列內容：
->
->`"createOptions": "{\"HostConfig\": {\"Binds\": [\"/var/run/docker.sock:/var/run/docker.sock\",\"/usr/bin/docker:/usr/bin/docker\"],\"LogConfig\": {\"Config\": {\"max-size\": \"500m\"}}}}"`
 
 若要將上傳至遠端端點的記錄優化，例如 Azure Blob 儲存體，我們建議您維持小型檔案大小。 請參閱下列範例，以取得建議的 Docker 記錄設定。
 
@@ -193,13 +188,13 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 > 此 `diagnostics` 模組不會影響記錄內容，只有助于收集、篩選和上傳現有的記錄。
 > 您必須擁有 Docker API 1.40 版或更高版本，才能使用此模組。
 
-[範例部署資訊清單](https://go.microsoft.com/fwlink/?linkid=2142179)檔包含一個名為 `diagnostics` 的模組，該模組會收集和上傳記錄。 此模組預設為停用，而且當您需要存取記錄時，應該透過 IoT Edge 模組設定來啟用。 
+[Azure Stack Edge 裝置](https://go.microsoft.com/fwlink/?linkid=2142179)或其他[桌上型電腦](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)的部署資訊清單檔範例包含一個名為 `diagnostics` 的模組，該模組會收集和上傳記錄。 此模組預設為停用，而且當您需要存取記錄時，應該透過 IoT Edge 模組設定來啟用。 
 
 `diagnostics`集合視需要而受到 IoT Edge 直接方法控制，並可將記錄傳送至 Azure Blob 儲存體。
 
 ### <a name="configure-diagnostics-upload-targets"></a>設定診斷上傳目標
 
-在 IoT Edge 入口網站中，選取您的裝置，然後選取 [ **診斷** ] 模組。 在 [*DeploymentManifest.js*](https://go.microsoft.com/fwlink/?linkid=2142179)的範例檔案中，尋找名為 ' env ' 之診斷的 **環境變數** 區段，並新增下列資訊：
+在 IoT Edge 入口網站中，選取您的裝置，然後選取 [ **診斷** ] 模組。 在 [Azure Stack Edge 裝置](https://go.microsoft.com/fwlink/?linkid=2142179) 或其他 [桌上型電腦](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)的部署資訊清單檔範例中，尋找 [診斷] 的 [ **環境變數** ] 區段， `env` 並將其命名為，然後新增下列資訊：
 
 **設定上傳至 Azure Blob 儲存體**
 
@@ -221,9 +216,9 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 
 
 1. 移至您的 IoT 中樞入口網站頁面，選取 [ **Edge 裝置**]，然後選取您的裝置和診斷模組。 
-2. 移至模組的 [詳細資料] 頁面，然後按一下 [ ***直接方法*** ] 索引標籤。
+2. 移至模組的 [詳細資料] 頁面，然後按一下 [*_直接方法_*_] 索引標籤。
 3. 輸入 `getRTCVLogs` 方法名稱，以及裝載中的 json 格式字串。 您可以輸入 `{}` ，這是空的承載。 
-4. 設定連接和方法超時，然後按一下 [叫用 **方法**]。
+4. 設定連接和方法超時，然後按一下 _ * [叫用方法]。
 5. 選取您的目標容器，並使用 **記錄語法** 一節中所述的參數建立承載 json 字串。 按一下 [叫用 **方法** ] 以執行要求。
 
 >[!NOTE]
@@ -244,13 +239,13 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 | ContainerId | 用於提取記錄的目標容器。| `null`，沒有容器識別碼時。 API 會傳回所有可用的容器資訊，並提供識別碼。|
 | DoPost | 執行上傳作業。 當這個設定為時 `false` ，它會執行要求的作業，並傳回上傳大小，而不需執行上傳。 當設定為時 `true` ，會起始所選記錄的非同步上傳 | `false`，請勿上傳。|
 | 節流 | 指出每個批次上傳的記錄行數 | `1000`，請使用此參數來調整 post 速度。 |
-| 篩選器 | 篩選要上傳的記錄 | `null`您可以根據空間分析記錄結構，將篩選指定為索引鍵值組： `[UTC, LocalTime, LOGLEVEL,PID, CLASS, DATA]` 。 例如： `{"TimeFilter":[-1,1573255761112]}, {"TimeFilter":[-1,1573255761112]}, {"CLASS":["myNode"]`|
+| 篩選器 | 篩選要上傳的記錄 | `null`您可以根據空間分析記錄結構，將篩選指定為索引鍵值組： `[UTC, LocalTime, LOGLEVEL,PID, CLASS, DATA]` 。 例如：`{"TimeFilter":[-1,1573255761112]}, {"TimeFilter":[-1,1573255761112]}, {"CLASS":["myNode"]`|
 
 下表列出查詢回應中的屬性。
 
 | 關鍵字 | 描述|
 |--|--|
-|DoPost| 是 *true* 或 *false*。 指出是否已上傳記錄。 當您選擇不上傳記錄時，api 會以 ***同步***方式傳回信息。 當您選擇上傳記錄時，如果要求有效，api 會傳回200，並以 ***非同步方式***開始上傳記錄。|
+|DoPost| 是 *true* 或 *false*。 指出是否已上傳記錄。 當您選擇不上傳記錄時，api 會以**同步**方式傳回信息 *。 當您選擇上傳記錄時，如果要求有效，api 會傳回200，並以 _*_非同步方式_*_ 開始上傳記錄。|
 |TimeFilter| 套用至記錄的時間篩選準則。|
 |ValueFilters| 套用至記錄檔的關鍵字篩選。 |
 |TimeStamp| 方法執行開始時間。 |
@@ -303,7 +298,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 }
 ```
 
-檢查 fetch 記錄行、時間和大小（如果這些設定看起來很不錯，請將 ***DoPost*** 取代為， `true` 並將具有相同篩選的記錄推送至目的地）。 
+檢查 fetch 記錄行、時間和大小（如果這些設定看起來很不錯，請將 _*_DoPost_*_ 取代為， `true` 並將具有相同篩選的記錄推送至目的地）。 
 
 針對問題進行疑難排解時，您可以從 Azure Blob 儲存體匯出記錄。 
 
@@ -319,9 +314,9 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 
 下一節是為了協助您進行 Azure Stack Edge 裝置的狀態的偵測和驗證。
 
-### <a name="access-the-kubernetes-api-endpoint"></a>存取 Kubernetes API 端點。 
+### <a name="access-the-kubernetes-api-endpoint"></a>存取 Kubernetes API 端點。 
 
-1. 在裝置的本機 UI 中，移至 [ **裝置** ] 頁面。 
+1. 在裝置的本機 UI 中，移至 [_*裝置*] 頁面。 
 2. 在 **裝置端點**下，複製 Kubernetes API 服務端點。 此端點的字串為下列格式：`https://compute..[device-IP-address]`。
 3. 儲存端點字串。 您稍後會在設定以存取 Kubernetes 叢集時使用此設定 `kubectl` 。
 
@@ -336,7 +331,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 1. 以系統管理員身分執行 Windows PowerShell 會話。 
     1. 確定您的用戶端上正在執行 Windows 遠端管理服務。 在命令提示字元中，輸入 `winrm quickconfig`。
 
-2. 指派裝置 IP 位址的變數。 例如： `$ip = "<device-ip-address>"` 。
+2. 指派裝置 IP 位址的變數。 例如，`$ip = "<device-ip-address>"`。
 
 3. 使用下列命令將裝置的 IP 位址新增至用戶端的受信任主機清單。 
 
@@ -400,7 +395,7 @@ kubectl logs <pod-name> -n <namespace> --all-containers
 
 ### <a name="useful-commands"></a>有用的命令
 
-|Command  |描述  |
+|Command  |說明  |
 |---------|---------|
 |`Get-HcsKubernetesUserConfig -AseUser`     | 產生 Kubernetes 設定檔。 使用命令時，請將資訊複製到名為 *config*的檔案中。請勿使用副檔名儲存檔案。        |
 | `Get-HcsApplianceInfo` | 傳回您裝置的相關資訊。 |

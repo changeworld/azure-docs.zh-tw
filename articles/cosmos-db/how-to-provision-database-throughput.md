@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: a67a062c06950294ec9e49e2ec69552edc4ee77a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 347da75d8e3f58d3875b02000d74533b36a9b18c
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278603"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486101"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db---sql-api"></a>Azure Cosmos DB SQL API 中的資料庫布建標準 (手動) 輸送量
 
@@ -72,7 +72,7 @@ await client.CreateDatabaseIfNotExistsAsync(
 
 請參閱下列文章，了解如何 Azure Cosmos DB 中佈建的輸送量：
 
-* [全域調整佈建的輸送量](scaling-throughput.md)
+* [全域調整佈建的輸送量](./request-units.md)
 * [在容器和資料庫中佈建輸送量](set-throughput.md)
 * [如何為容器佈建標準 (手動) 輸送量](how-to-provision-container-throughput.md)
 * [如何為容器佈建自動調整輸送量](how-to-provision-autoscale-throughput.md)

@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: d6518767b0148828280071188c086e396401a6fc
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: cbd5dbd81cf8cda117447a15d4a73ae8a546f181
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277679"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482514"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>彈性調整 Azure Cosmos DB Cassandra API 帳戶
 
 有各種不同的選項可用來探索適用於 Cassandra 的 Azure Cosmos DB API 的彈性特質。 若要了解如何在 Azure Cosmos DB 中有效進行調整，請務必了解如何佈建適當數量的要求單位 (RU/秒)，以因應系統中的效能需求。 若要深入了解要求單位，請參閱[要求單位](request-units.md)一文。 
 
-針對 Cassandra API，您可以使用 [.NET 和 Java SDK](https://docs.microsoft.com/azure/cosmos-db/find-request-unit-charge#cassandra-api) 來擷取個別查詢的要求單位費用。 這有助於判斷您需要在服務中佈建的 RU/秒數量。
+針對 Cassandra API，您可以使用 [.NET 和 Java SDK](./find-request-unit-charge-cassandra.md) 來擷取個別查詢的要求單位費用。 這有助於判斷您需要在服務中佈建的 RU/秒數量。
 
 :::image type="content" source="./media/request-units/request-units.png" alt-text="資料庫作業會取用要求單位" border="false":::
 
@@ -46,7 +46,7 @@ ms.locfileid: "92277679"
 
 ## <a name="use-the-control-plane"></a><a id="use-control-plane"></a>使用控制平面
 
-Azure Cosmos DB 的 Cassandra API 可讓您使用我們的各種控制平面功能，以程式設計方式調整輸送量。 如需指引和範例，請參閱 [Azure Resource Manager](manage-cassandra-with-resource-manager.md)、[PowerShell](powershell-samples.md) 和 [Azure CLI](cli-samples.md) 等文章。
+Azure Cosmos DB 的 Cassandra API 可讓您使用我們的各種控制平面功能，以程式設計方式調整輸送量。 如需指引和範例，請參閱 [Azure Resource Manager](./templates-samples-cassandra.md)、[PowerShell](powershell-samples.md) 和 [Azure CLI](cli-samples.md) 等文章。
 
 此方法的優點是，您可以根據計時器來自動擴大或縮小資源，以因應尖峰活動或活動較少的期間。 請參閱[這裡](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler)的範例，以了解如何使用 Azure Functions 和 PowerShell 來完成此操作。
 

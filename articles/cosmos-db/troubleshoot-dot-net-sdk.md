@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 581c8fcad62c40555a90b7455a260259f3a09212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e941c941c7b406be8d6931fd7af4108137220d56
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802408"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476904"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>診斷在使用 Azure Cosmos DB .NET SDK 時的問題並進行疑難排解
 
@@ -34,8 +34,8 @@ ms.locfileid: "91802408"
 *    使用最新的 [SDK](sql-api-sdk-dotnet-standard.md)。 預覽 Sdk 不應該用於生產環境。 這會防止遇到已修正的已知問題。
 *    檢閱[效能祕訣](performance-tips.md)並遵循建議的做法。 這將有助於防止調整、延遲和其他效能問題。
 *    啟用 SDK 記錄以協助您針對問題進行疑難排解。 啟用記錄可能會影響效能，因此最好只有在針對問題進行疑難排解時才啟用。 您可以啟用下列記錄：
-*    使用 Azure 入口網站[記錄計量](monitor-accounts.md)。 入口網站度量會顯示 Azure Cosmos DB 遙測資料，這有助於判斷問題是否對應到 Azure Cosmos DB 或來自用戶端。
-*    從點作業回應記錄 V2 SDK 中的 [診斷字串](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring) 或 V3 sdk 中的 [診斷](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics) 。
+*    使用 Azure 入口網站[記錄計量](./monitor-cosmos-db.md)。 入口網站度量會顯示 Azure Cosmos DB 遙測資料，這有助於判斷問題是否對應到 Azure Cosmos DB 或來自用戶端。
+*    從點作業回應記錄 V2 SDK 中的 [診斷字串](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring) 或 V3 sdk 中的 [診斷](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics) 。
 *    從所有查詢回應記錄[SQL 查詢計量](sql-api-query-metrics.md) 
 *    遵循[SDK 記錄]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md)的設定
 
@@ -51,11 +51,11 @@ ms.locfileid: "91802408"
 * 由於用戶端電腦上的資源不足，您可能會遇到連線能力/可用性問題。 建議您在執行 Azure Cosmos DB 用戶端的節點上監視 CPU 使用率，並在高負載執行時相應增加/相應放大。
 
 ### <a name="check-the-portal-metrics"></a>檢查入口網站計量
-檢查 [入口網站度量](monitor-accounts.md) 將有助於判斷它是否為用戶端問題，或是服務是否有問題。 例如，如果計量包含高比率的速率限制要求 (HTTP 狀態碼 429) 這表示要求正在進行節流處理，然後檢查 [要求率太大](troubleshoot-request-rate-too-large.md) 的區段。 
+檢查 [入口網站度量](./monitor-cosmos-db.md) 將有助於判斷它是否為用戶端問題，或是服務是否有問題。 例如，如果計量包含高比率的速率限制要求 (HTTP 狀態碼 429) 這表示要求正在進行節流處理，然後檢查 [要求率太大](troubleshoot-request-rate-too-large.md) 的區段。 
 
 ## <a name="common-error-status-codes"></a>常見的錯誤狀態碼 <a id="error-codes"></a>
 
-| 狀態碼 | 描述 | 
+| 狀態碼 | 說明 | 
 |----------|-------------|
 | 400 | 錯誤的要求 (取決於錯誤訊息) | 
 | 401 | [未授權](troubleshoot-unauthorized.md) | 
@@ -78,11 +78,11 @@ ms.locfileid: "91802408"
 
 * 將 Azure Cosmos DB 服務端點新增至您的 Azure 虛擬機器虛擬網路。 如需詳細資訊，請參閱 [Azure 虛擬網路服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)。 
 
-    啟用服務端點時，要求不再會從公用 IP 傳送到 Azure Cosmos DB。 改為傳送虛擬網路和子網路身分識別。 如果只允許公用 IP，此變更可能會導致防火牆卸除。 如果您使用防火牆，當您啟用服務端點時，請使用[虛擬網路 ACL](../virtual-network/virtual-networks-acl.md) 將子網路新增至防火牆。
+    啟用服務端點時，要求不再會從公用 IP 傳送到 Azure Cosmos DB。 改為傳送虛擬網路和子網路身分識別。 如果只允許公用 IP，此變更可能會導致防火牆卸除。 如果您使用防火牆，當您啟用服務端點時，請使用[虛擬網路 ACL](/previous-versions/azure/virtual-network/virtual-networks-acl) 將子網路新增至防火牆。
 * 將 [公用 IP 指派給您的 AZURE VM](../load-balancer/troubleshoot-outbound-connection.md#assignilpip)。
 
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>高網路延遲
-您可以使用 V2 SDK 中的 [診斷字串](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet&preserve-view=true) 或 V3 sdk 中的 [診斷](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) ，來識別高網路延遲。
+您可以使用 V2 SDK 中的 [診斷字串](/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?preserve-view=true&view=azure-dotnet) 或 V3 sdk 中的 [診斷](/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?preserve-view=true&view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) ，來識別高網路延遲。
 
 如果沒有任何 [超時](troubleshoot-dot-net-sdk-request-timeout.md) 存在，而且診斷顯示單一要求，其中高延遲在和之間的差異很明顯 `ResponseTime` ，例如 `RequestStartTime` ( # B0 300 毫秒的範例中) ：
 
@@ -94,11 +94,11 @@ ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: r
 此延遲可能有多個原因：
 
 * 您的應用程式未在與 Azure Cosmos DB 帳戶相同的區域中執行。
-* 您的 [PreferredLocations](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations) 或 [ApplicationRegion](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) 設定不正確，且正在嘗試連接到您的應用程式目前執行所在的不同區域。
+* 您的 [PreferredLocations](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations) 或 [ApplicationRegion](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) 設定不正確，且正在嘗試連接到您的應用程式目前執行所在的不同區域。
 * 網路介面上可能會有瓶頸，因為有高流量。 如果應用程式是在 Azure 虛擬機器上執行，則有可能的因應措施：
     * 請考慮使用 [已啟用加速網路的虛擬機器](../virtual-network/create-vm-accelerated-networking-powershell.md)。
     * [在現有的虛擬機器上啟用加速網路](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms)。
-    * 請考慮使用 [較高的終端虛擬機器](../virtual-machines/windows/sizes.md)。
+    * 請考慮使用 [較高的終端虛擬機器](../virtual-machines/sizes.md)。
 
 ### <a name="common-query-issues"></a>常見的查詢問題
 

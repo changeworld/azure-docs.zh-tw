@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 1f04f8b447f07f62561f56722df3b9502ad58d41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f786a791fda1f601df2a94d9f38edcbfe9dc401
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289033"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474762"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>使用具體化檢視進行效能調整
 
@@ -79,7 +79,9 @@ SQL 集區支援標準檢視和具體化檢視。  兩者都是使用 SELECT 運
 
 **需要不同的資料散發策略，以提供更快的查詢效能**
 
-Azure 資料倉儲是分散式的大量平行處理 (MPP) 系統。   資料倉儲資料表中的資料會使用三個[散發策略](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (雜湊、round_robin 或複寫) 中的其中一種，散發在 60 個節點之間。  
+Azure 資料倉儲是分散式的大量平行處理 (MPP) 系統。  
+
+Synapse SQL 是一種分散式查詢系統，可讓企業使用資料工程師熟悉的標準 T-SQL 體驗來實作資料倉儲和資料虛擬化案例。 此系統也可擴充 SQL 的功能，進而處理串流和機器學習案例。 資料倉儲資料表中的資料會使用三個[散發策略](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (雜湊、round_robin 或複寫) 中的其中一種，散發在 60 個節點之間。  
 
 資料散發是在資料表建立時所指定的，直到卸載資料表後才會改變。 具體化檢視在磁碟上是虛擬資料表，支援雜湊和 round_robin 資料散發。  使用者可以選擇與基底資料表不同但已針對頻繁使用檢視的查詢效能最佳化的資料散發方式。  
 

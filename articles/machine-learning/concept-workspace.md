@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: dccdbcb99b32a922d76b29e5896cdf99290758d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b40ce0951e2d9c8933d4f0ea9d24b1673e254d6
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302446"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495708"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什麼是 Azure Machine Learning 工作區？
 
@@ -88,8 +88,8 @@ ms.locfileid: "91302446"
 
 有多種方式可建立工作區：  
 
-* 使用點按一下介面的 [Azure 入口網站](how-to-manage-workspace.md) ，逐步引導您完成每個步驟。
-* 使用 [適用于 python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true#&preserve-view=trueworkspace) ，從 Python 腳本或木星筆記本即時建立工作區
+* 使用點按一下介面的 [Azure 入口網站](how-to-manage-workspace.md?tabs=azure-portal#create-a-workspace) ，逐步引導您完成每個步驟。
+* 使用 [適用于 python 的 AZURE MACHINE LEARNING SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace) ，從 Python 腳本或木星筆記本即時建立工作區
 * 當您需要使用企業安全性標準來自動化或自訂建立時，請使用 [Azure Resource Manager 範本](how-to-create-workspace-template.md) 或 [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) 。
 * 如果您在 Visual Studio Code 中工作，請使用 [VS Code 擴充](how-to-manage-resources-vscode.md#create-a-workspace)功能。
 
@@ -114,7 +114,7 @@ ms.locfileid: "91302446"
 + [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)：儲存計算目標所使用的秘密，以及工作區所需的其他機密資訊。
 
 > [!NOTE]
-> 除了建立新的版本之外，您也可以使用現有的 Azure 服務。
+> 當您使用 [PYTHON SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace)、 [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/create_workspace.html)或 [使用 ARM 範本](how-to-create-workspace-template.md)的 Azure Machine Learning CLI 建立工作區時，可以改為使用現有的 Azure 資源實例。
 
 <a name="wheres-enterprise"></a>
 
@@ -131,9 +131,9 @@ ms.locfileid: "91302446"
 若要開始使用 Azure Machine Learning，請參閱：
 
 + [Azure Machine Learning 總覽](overview-what-is-azure-ml.md)
-+ [建立工作區](how-to-manage-workspace.md)
-+ [管理工作區](how-to-manage-workspace.md)
-+ [教學課程：使用 Python SDK 開始建立您的第一個 ML 實驗](tutorial-1st-experiment-sdk-setup.md)
++ [建立及管理工作區](how-to-manage-workspace.md)
++ [教學課程：開始在開發環境中使用 Azure Machine Learning](tutorial-1st-experiment-sdk-setup-local.md)
++ [教學課程：開始在計算實例上建立您的第一個 ML 實驗](tutorial-1st-experiment-sdk-setup.md)
 + [教學課程：開始使用 R SDK 的 Azure Machine Learning](tutorial-1st-r-experiment.md)
 + [教學課程：使用自動化機器學習建立第一個分類模型](tutorial-first-experiment-automated-ml.md) 
 + [教學課程：使用設計工具預測汽車價格](tutorial-designer-automobile-price-train-score.md)

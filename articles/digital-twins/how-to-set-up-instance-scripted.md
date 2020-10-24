@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 10d4d07a61bc4ebec789d53e4271a3bcdc7ba76b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 5806ea094abd3431cd7e22064c6acd8ad150726a
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205538"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495025"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>設定 Azure 數位 Twins 實例和驗證 (腳本) 
 
@@ -43,7 +43,7 @@ ms.locfileid: "92205538"
 
 以下是在 Cloud Shell 中執行部署腳本的步驟。
 1. 移至瀏覽器中的 [Azure Cloud Shell](https://shell.azure.com/) 視窗。 使用下列命令登入：
-    ```azurecli
+    ```azurecli-interactive
     az login
     ```
     如果 CLI 可以開啟預設瀏覽器，它會執行這項操作，並載入 Azure 登入頁面。 否則，請在 *https://aka.ms/devicelogin* 開啟瀏覽器頁面，並輸入顯示在終端機中的授權碼。
@@ -60,11 +60,11 @@ ms.locfileid: "92205538"
 
 4. `./deploy.ps1`在 Cloud Shell 視窗中傳送命令，以執行腳本。 您可以複製下面的命令 (回想一下要貼到 Cloud Shell，您可以在 Windows 和 Linux 上使用 **Ctrl + shift + v** ，或在 macOS 上使用 **Cmd + shift + v** 。 您也可以使用滑鼠右鍵功能表) 。
 
-    ```azurecli
+    ```azurecli-interactive
     ./deploy.ps1
     ```
 
-    此腳本會建立 Azure 數位 Twins 實例，並將該實例上的 azure *數位 Twins 擁有者 (預覽) * 角色指派給您的 azure 使用者。
+    此腳本會建立 Azure 數位 Twins 實例，並將該實例上的 azure *數位 Twins 資料擁有* 者角色指派給您的 azure 使用者。
 
     當腳本透過自動化安裝步驟執行時，系統會要求您傳入下列值：
     * 針對實例：要使用的 Azure 訂用帳戶的訂用帳戶*識別碼*
@@ -79,10 +79,10 @@ ms.locfileid: "92205538"
 如果腳本順利完成，最後的列印結果將會顯示 `Deployment completed successfully` 。 否則，請解決錯誤訊息，然後重新執行腳本。 它會略過您已完成的步驟，並在您離開的那一點開始再次要求輸入。
 
 > [!NOTE]
-> 腳本目前會將 Azure 數位 Twins 中的必要管理角色指派 (*Azure 數位 Twins 擁有者 (Preview) *) 與從 Cloud Shell 執行腳本的相同使用者。 如果您需要將此角色指派給即將管理實例的其他人，您現在可以透過 Azure 入口網站 ([指示](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) 或 CLI ([指示](how-to-set-up-instance-cli.md#set-up-user-access-permissions)) 。
+> 腳本目前會將 Azure 數位 Twins 中的必要管理角色指派 (*Azure 數位 Twins 資料擁有* 者) 指派給從 Cloud Shell 執行腳本的相同使用者。 如果您需要將此角色指派給即將管理實例的其他人，您現在可以透過 Azure 入口網站 ([指示](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) 或 CLI ([指示](how-to-set-up-instance-cli.md#set-up-user-access-permissions)) 。
 
 >[!NOTE]
->目前已有腳本設定的 **已知問題** ，其中某些使用者 (特別是個人 [Microsoft 帳戶的使用者 (msa) ](https://account.microsoft.com/account)) 可能會發現 **未建立 _Azure 數位 Twins 擁有者 (Preview) _ 的角色指派**。
+>目前已有腳本設定的 **已知問題** ，其中某些使用者 (特別是個人 [Microsoft 帳戶的使用者 (msa) ](https://account.microsoft.com/account)) 可能會發現 **未建立 _Azure 數位 Twins 資料擁有_ 者的角色指派**。
 >
 >您可以使用本文稍後的 [ [*驗證使用者角色指派*](#verify-user-role-assignment) ] 區段來驗證角色指派，並視需要使用 [Azure 入口網站](how-to-set-up-instance-portal.md#set-up-user-access-permissions) 或 [CLI](how-to-set-up-instance-cli.md#set-up-user-access-permissions)手動設定角色指派。
 >

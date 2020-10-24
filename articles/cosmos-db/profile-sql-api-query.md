@@ -8,25 +8,25 @@ ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: girobins
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 71ebc90834083def5b82e16dc387a6e61943206d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d47bd90f7704cd3c55f9e5d64fe6b58946d4568
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021743"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475085"
 ---
 # <a name="get-sql-query-execution-metrics-and-analyze-query-performance-using-net-sdk"></a>使用 .NET SDK 取得 SQL 查詢執行計量及分析查詢效能
 
-本文說明如何在 Azure Cosmos DB 上分析 SQL 查詢效能。 您可以使用從 .NET SDK 取出的方式來完成這項分析 `QueryMetrics` ，在這裡有詳細說明。 [QueryMetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.querymetrics.aspx) 是強型別物件，具有後端查詢執行的相關資訊。 這些計量會在 [微調查詢效能](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics) 文章中更詳細地記載。
+本文說明如何在 Azure Cosmos DB 上分析 SQL 查詢效能。 您可以使用從 .NET SDK 取出的方式來完成這項分析 `QueryMetrics` ，在這裡有詳細說明。 [QueryMetrics](/dotnet/api/microsoft.azure.documents.querymetrics) 是強型別物件，具有後端查詢執行的相關資訊。 這些計量會在 [微調查詢效能](./sql-api-query-metrics.md) 文章中更詳細地記載。
 
 ## <a name="set-the-feedoptions-parameter"></a>設定 FeedOptions 參數
 
-[DocumentClient](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentquery.aspx)的所有多載都採用選擇性的[FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx)參數。 此選項可讓您微調和參數化查詢執行。 
+[DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentquery)的所有多載都採用選擇性的[FeedOptions](/dotnet/api/microsoft.azure.documents.client.feedoptions)參數。 此選項可讓您微調和參數化查詢執行。 
 
-若要收集 Sql 查詢執行計量，您必須將[FeedOptions](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.aspx)中的參數[為 feedoptions.populatequerymetrics](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.populatequerymetrics.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics)設定為 `true` 。 `PopulateQueryMetrics`如果設定為 true，將會使其 `FeedResponse` 包含相關的 `QueryMetrics` 。 
+若要收集 Sql 查詢執行計量，您必須將[FeedOptions](/dotnet/api/microsoft.azure.documents.client.feedoptions)中的參數[為 feedoptions.populatequerymetrics](/dotnet/api/microsoft.azure.documents.client.feedoptions.populatequerymetrics#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics)設定為 `true` 。 `PopulateQueryMetrics`如果設定為 true，將會使其 `FeedResponse` 包含相關的 `QueryMetrics` 。 
 
 ## <a name="get-query-metrics-with-asdocumentquery"></a>使用 AsDocumentQuery 取得查詢計量 ( # A1
-下列程式碼範例示範如何在使用 [AsDocumentQuery ( # B1 ](https://msdn.microsoft.com/library/microsoft.azure.documents.linq.documentqueryable.asdocumentquery.aspx) 方法時取得度量：
+下列程式碼範例示範如何在使用 [AsDocumentQuery ( # B1 ](/dotnet/api/microsoft.azure.documents.linq.documentqueryable.asdocumentquery) 方法時取得度量：
 
 ```csharp
 // Initialize this DocumentClient and Collection
@@ -63,7 +63,7 @@ while (documentQuery.HasMoreResults)
 ```
 ## <a name="aggregating-querymetrics"></a>匯總 QueryMetrics
 
-在上一節中，請注意，有多個 [ExecuteNextAsync](https://msdn.microsoft.com/library/azure/dn850294.aspx) 方法的呼叫。 每個呼叫都會傳回一個 `FeedResponse` 具有字典的物件，也就是 `QueryMetrics` 查詢的每個接續都有一個物件。 下列範例示範如何使用 LINQ 進行匯總 `QueryMetrics` ：
+在上一節中，請注意，有多個 [ExecuteNextAsync](/dotnet/api/microsoft.azure.documents.linq.idocumentquery-1.executenextasync) 方法的呼叫。 每個呼叫都會傳回一個 `FeedResponse` 具有字典的物件，也就是 `QueryMetrics` 查詢的每個接續都有一個物件。 下列範例示範如何使用 LINQ 進行匯總 `QueryMetrics` ：
 
 ```csharp
 List<QueryMetrics> queryMetricsList = new List<QueryMetrics>();
@@ -130,7 +130,7 @@ IReadOnlyDictionary<string, QueryMetrics> queryMetrics = feedResponse.QueryMetri
 
 ## <a name="expensive-queries"></a>佔用大量資源的查詢
 
-您可以捕獲每個查詢所耗用的要求單位，以調查耗用高輸送量的昂貴查詢或查詢。 您可以使用中的 [RequestCharge](https://msdn.microsoft.com/library/azure/dn948712.aspx) 屬性來取得要求費用 `FeedResponse` 。 若要深入瞭解如何使用 Azure 入口網站和不同的 Sdk 取得要求費用，請參閱 [尋找要求單位費用](find-request-unit-charge.md) 一文。
+您可以捕獲每個查詢所耗用的要求單位，以調查耗用高輸送量的昂貴查詢或查詢。 您可以使用中的 [RequestCharge](/dotnet/api/microsoft.azure.documents.client.feedresponse-1.requestcharge) 屬性來取得要求費用 `FeedResponse` 。 若要深入瞭解如何使用 Azure 入口網站和不同的 Sdk 取得要求費用，請參閱 [尋找要求單位費用](find-request-unit-charge.md) 一文。
 
 ```csharp
 string query = "SELECT * FROM c";
@@ -232,11 +232,11 @@ WHERE c.description = "BABYFOOD, DESSERT, FRUIT DESSERT, WITHOUT ASCORBIC ACID, 
 
 您現在可以從索引提供此查詢。
 
-若要深入瞭解微調查詢效能，請參閱 [微調查詢效能](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics) 文章。
+若要深入瞭解微調查詢效能，請參閱 [微調查詢效能](./sql-api-query-metrics.md) 文章。
 
 ## <a name="references"></a><a id="References"></a>參考
 
-- [Azure Cosmos DB SQL 規格](https://go.microsoft.com/fwlink/p/?LinkID=510612)
+- [Azure Cosmos DB SQL 規格](./sql-query-getting-started.md)
 - [ANSI SQL 2011](https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 - [JSON](https://json.org/)
 - [LINQ](/previous-versions/dotnet/articles/bb308959(v=msdn.10)) 

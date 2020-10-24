@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 08/17/2020
-ms.openlocfilehash: 57d24c824782bdc6530b78450fc55a879a511ddc
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 10/21/2020
+ms.openlocfilehash: 2ded60f8c57d8c9db374bf77efe6dfd1a71690bc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367681"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482922"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>使用 Azure SQL 的 Azure Active Directory 服務主體
 
@@ -34,7 +34,7 @@ ms.locfileid: "92367681"
 - 應用程式物件
 - 服務主體物件
 
-如需 Azure AD 應用程式的詳細資訊，請參閱 [Azure Active Directory 中的應用程式和服務主體物件](../../active-directory/develop/app-objects-and-service-principals.md) ，並 [使用 Azure PowerShell 建立 Azure 服務主體](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-4.2.0)。
+如需 Azure AD 應用程式的詳細資訊，請參閱 [Azure Active Directory 中的應用程式和服務主體物件](../../active-directory/develop/app-objects-and-service-principals.md) ，並 [使用 Azure PowerShell 建立 Azure 服務主體](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)。
 
 SQL Database、Azure Synapse 和 SQL 受控執行個體支援下列 Azure AD 物件：
 
@@ -72,14 +72,16 @@ SQL Database、Azure Synapse 和 SQL 受控執行個體支援下列 Azure AD 物
     - 若要檢查伺服器身分識別是否已指派給伺服器，請執行 Get-AzSqlServer 命令。
 
     > [!NOTE]
-    > 您也可以使用 CLI 命令來指派伺服器身分識別。 如需詳細資訊，請參閱 [az sql server create](https://docs.microsoft.com/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) 和 [az sql server update](https://docs.microsoft.com/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-update)。
+    > 您也可以使用 CLI 命令來指派伺服器身分識別。 如需詳細資訊，請參閱 [az sql server create](https://docs.microsoft.com/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create&preserve-view=true) 和 [az sql server update](https://docs.microsoft.com/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-update&preserve-view=true)。
 
 2. 將所建立或指派給伺服器的伺服器身分識別授與 Azure AD [**Directory 讀取器**](../../active-directory/roles/permissions-reference.md#directory-readers) 許可權。
     - 若要授與此許可權，請依照下列文章中提供的 SQL 受控執行個體描述：布建 [Azure AD admin (sql 受控執行個體) ](authentication-aad-configure.md?tabs=azure-powershell#provision-azure-ad-admin-sql-managed-instance)
     - 授與此許可權的 Azure AD 使用者必須是 Azure AD **全域管理員** 或特殊 **許可權角色系統管理員** 角色的一部分。
 
 > [!IMPORTANT]
-> 您必須以上述循序執行步驟1和2。 首先，建立或指派伺服器身分識別，然後再授與 [**目錄讀取**](../../active-directory/roles/permissions-reference.md#directory-readers) 者許可權。 省略上述其中一個步驟，或兩者都會在 Azure SQL 中代表 Azure AD 應用程式建立 Azure AD 物件時，造成執行錯誤。 如需代表 Azure AD 應用程式建立 Azure AD 使用者的逐步指示，請參閱 [教學課程：使用 Azure AD 應用程式建立 Azure AD 的使用者](authentication-aad-service-principal-tutorial.md)。
+> 您必須以上述循序執行步驟1和2。 首先，建立或指派伺服器身分識別，然後再授與 [**目錄讀取**](../../active-directory/roles/permissions-reference.md#directory-readers) 者許可權。 省略上述其中一個步驟，或兩者都會在 Azure SQL 中代表 Azure AD 應用程式建立 Azure AD 物件時，造成執行錯誤。
+>
+> 如果您要使用服務主體來設定或取消設定 Azure AD 系統管理員，應用程式也必須有 Azure AD 中的 [ [所有](https://docs.microsoft.com/graph/permissions-reference#application-permissions-18) 應用程式 API] 許可權。 如 [需設定 Azure AD 系統管理員所需許可權](authentication-aad-service-principal-tutorial.md#permissions-required-to-set-or-unset-the-azure-ad-admin)的詳細資訊，以及代表 Azure AD 應用程式建立 Azure AD 使用者的逐步指示，請參閱 [教學課程：使用 Azure AD 應用程式建立 Azure AD 使用者](authentication-aad-service-principal-tutorial.md)。
 >
 > 在 **公開預覽**中，您可以將 **目錄讀取** 者角色指派給 Azure AD 中的群組。 然後，群組擁有者可以將受控識別新增為此群組的成員，這會略過 **全域管理員** 或特殊 **許可權角色管理員** 授與 **目錄讀取** 者角色的需求。 如需這項功能的詳細資訊，請參閱 [Azure Active Directory 中適用於 Azure SQL 的 Directory 讀者角色](authentication-aad-directory-readers-role.md)。
 
@@ -92,7 +94,7 @@ SQL Database、Azure Synapse 和 SQL 受控執行個體支援下列 Azure AD 物
       - 針對上述錯誤，請遵循下列步驟，將身分 [識別指派給 AZURE sql 邏輯伺服器](authentication-aad-service-principal-tutorial.md#assign-an-identity-to-the-azure-sql-logical-server) ，並 [將目錄讀取者許可權指派給 SQL 邏輯伺服器身分識別](authentication-aad-service-principal-tutorial.md#assign-directory-readers-permission-to-the-sql-logical-server-identity)。
     > [!NOTE]
     > 上述的錯誤訊息將在功能 GA 之前變更，以清楚找出 Azure AD 應用程式支援所缺少的設定需求。
-- 只有使用 CLI 命令以及 [2.9.0 版](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) 或更高版本的 PowerShell 命令，才能將 Azure AD 應用程式設定為 SQL 受控執行個體的 Azure AD 管理員。 如需詳細資訊，請參閱 [az sql mi ad-admin create](https://docs.microsoft.com/cli/azure/sql/mi/ad-admin?view=azure-cli-latest#az-sql-mi-ad-admin-create) 和 [Set-AzSqlInstanceActiveDirectoryAdministrator](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) 命令。 
+- 只有使用 CLI 命令以及 [2.9.0 版](https://www.powershellgallery.com/packages/Az.Sql/2.9.0) 或更高版本的 PowerShell 命令，才能將 Azure AD 應用程式設定為 SQL 受控執行個體的 Azure AD 管理員。 如需詳細資訊，請參閱 [az sql mi ad-admin create](https://docs.microsoft.com/cli/azure/sql/mi/ad-admin?view=azure-cli-latest#az-sql-mi-ad-admin-create&preserve-view=true) 和 [Set-AzSqlInstanceActiveDirectoryAdministrator](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) 命令。 
     - 如果您想要使用 SQL 受控執行個體的 Azure 入口網站設定 Azure AD 系統管理員，可能的因應措施是建立 Azure AD 群組。 然後，將服務主體 (Azure AD 應用程式) 新增至此群組，然後將此群組設定為 SQL 受控執行個體的 Azure AD 管理員。
     - 使用 SQL Database、 [PowerShell](authentication-aad-configure.md?tabs=azure-powershell#powershell-for-sql-database-and-azure-synapse)和 [CLI](authentication-aad-configure.md?tabs=azure-cli#powershell-for-sql-database-and-azure-synapse) 命令，可支援將服務主體 (Azure AD 應用程式) 為 Azure 入口網站的 Azure AD 系統管理員和 Azure Synapse。
 - 存取在不同租使用者中建立的 SQL Database 或 SQL 受控執行個體時，從另一個 Azure AD 租使用者使用具有服務主體的 Azure AD 應用程式將會失敗。 指派給此應用程式的服務主體必須是與 SQL 邏輯伺服器或受控執行個體的相同租使用者。

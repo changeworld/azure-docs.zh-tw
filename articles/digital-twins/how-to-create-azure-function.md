@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 78addb76e2ce7a2679358e241650cc5cc827791f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0cc3a335e5fbe037742767a3b59243e366f094ee
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461612"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495914"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>連接 Azure Functions apps 以處理資料
 
@@ -186,26 +186,28 @@ namespace adtIngestFunctionSample
 
 先前範例中的 Azure 函式基本架構需要將持有人權杖傳遞給它，才能使用 Azure 數位 Twins 進行驗證。 若要確定已通過此持有人權杖，您必須為函數應用程式設定 [ (MSI) 的受控服務識別 ](../active-directory/managed-identities-azure-resources/overview.md) 。 每個函數應用程式只需要執行一次。
 
-您可以建立系統管理的身分識別，並將函式應用程式的身分識別指派給 azure 數位 _Twins 擁有者 (預覽版) _ 角色的 Azure 數位 Twins 實例。 這會提供實例中的函數應用程式許可權，以執行資料平面活動。 然後，藉由設定環境變數，讓您的函式可以存取 Azure 數位 Twins 實例的 URL。
+您可以建立系統管理的身分識別，並將函數應用程式的身分識別指派給 Azure 數位 Twins 實例的 _**Azure 數位 Twins 資料擁有**_ 者角色。 這會提供實例中的函數應用程式許可權，以執行資料平面活動。 然後，藉由設定環境變數，讓您的函式可以存取 Azure 數位 Twins 實例的 URL。
 
- 使用 [Azure Cloud Shell](https://shell.azure.com) 執行命令。
+[!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
+
+使用 [Azure Cloud Shell](https://shell.azure.com) 執行命令。
 
 使用下列命令建立系統管理的身分識別。 記下輸出中的 _principalId_ 欄位。
 
-```azurecli 
+```azurecli-interactive 
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>   
 ```
-使用下列命令中的 _principalId_ 值，將函式應用程式的身分識別指派給 Azure 數位 _Twins 擁有者 (預覽版) _ 角色的 azure 數位 Twins 實例。
+使用下列命令中的 _principalId_ 值，將函數應用程式的身分識別指派給 Azure 數位 Twins 實例的 _Azure 數位 Twins 資料擁有_ 者角色。
 
-```azurecli 
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
+```azurecli-interactive 
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
 ```
 最後，您可以藉由設定環境變數，讓您的 Azure 數位 Twins 實例的 URL 可供您的函式存取。 如需有關設定環境變數的詳細資訊，請參閱 [*環境變數*](/sandbox/functions-recipes/environment-variables)。 
 
 > [!TIP]
 > Azure 數位 Twins 實例的 URL 是藉由將 *HTTPs://* 新增至 Azure 數位 Twins 實例 *主機名稱*的開頭來建立。 若要查看主機名稱，以及實例的所有屬性，您可以執行 `az dt show --dt-name <your-Azure-Digital-Twins-instance>` 。
 
-```azurecli 
+```azurecli-interactive 
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
 ```
 ### <a name="option-2-set-up-security-access-for-the-azure-function-app-using-azure-portal"></a>選項2：使用 Azure 入口網站設定 Azure 函數應用程式的安全性存取
@@ -241,7 +243,7 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 * _範圍_：資源群組
 * _訂_用帳戶：選取您的 Azure 訂用帳戶
 * _資源群組_：從下拉式清單中選取您的資源群組
-* _角色_：從下拉式清單中選取_Azure 數位 Twins 擁有者 (預覽) _
+* _角色_：從下拉式清單中選取 _Azure 數位 Twins 資料擁有_ 者
 
 然後，按下 [ _儲存_ ] 按鈕來儲存您的詳細資料。
 
