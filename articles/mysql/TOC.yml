@@ -515,6 +515,14 @@
               items:
                 - name: 使用 TLS/SSL 來連線
                   href: flexible-server/how-to-connect-tls-ssl.md
+        - name: 設定伺服器參數
+          items:
+            - name: Azure 入口網站
+              href: flexible-server/how-to-configure-server-parameters-portal.md
+              displayName: server parameters
+            - name: Azure CLI
+              href: flexible-server/how-to-configure-server-parameters-cli.md
+              displayName: 'server parameters, cli'
         - name: 監視和記錄
           items:
             - name: 建立計量警示
