@@ -8,19 +8,19 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: e00f7b97b923443cef3b97e0cdeda009ad5c9b03
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a2395eb5f5b40a7e3469292ec7faa68d8942dce9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490861"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535190"
 ---
 # <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure Blob 儲存體共用存取簽章來限制對 HDInsight 中資料的存取
 
 HDInsight 具有與叢集相關聯之 Azure Blob 儲存體帳戶中資料的完整存取權。 您可以在 Blob 容器上使用共用存取簽章來限制對資料的存取。  (SAS) 的共用存取簽章是 Azure Blob 儲存體帳戶的一項功能，可讓您限制資料的存取權。 例如，提供資料的唯讀存取。
 
 > [!IMPORTANT]  
-> 對於使用 Apache Ranger 的解決方案，請考慮使用已加入網域的 HDInsight。 如需詳細資訊，請參閱[設定已加入網域的 HDInsight](./domain-joined/apache-domain-joined-configure.md) 文件。
+> 對於使用 Apache Ranger 的解決方案，請考慮使用已加入網域的 HDInsight。 如需詳細資訊，請參閱[設定已加入網域的 HDInsight](./domain-joined/apache-domain-joined-configure-using-azure-adds.md) 文件。
 
 > [!WARNING]  
 > HDInsight 必須有叢集預設儲存體的完整存取權。
@@ -31,7 +31,7 @@ HDInsight 具有與叢集相關聯之 Azure Blob 儲存體帳戶中資料的完�
 
 * 現有的 [儲存體容器](../storage/blobs/storage-quickstart-blobs-portal.md)。  
 
-* 如果使用 PowerShell，您將需要 [Az 模組](https://docs.microsoft.com/powershell/azure/) \(部分機器翻譯\)。
+* 如果使用 PowerShell，您將需要 [Az 模組](/powershell/azure/) \(部分機器翻譯\)。
 
 * 如果您想要使用 Azure CLI，但尚未安裝，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
@@ -76,7 +76,7 @@ HDInsight 具有與叢集相關聯之 Azure Blob 儲存體帳戶中資料的完�
 
 建議您一律使用預存的存取原則。 使用預存原則時，可以視需求撤銷簽章或延長過期時間。 此文件的步驟使用預存存取原則來產生 SAS。
 
-如需共用存取簽章的詳細資訊，請參閱 [了解 SAS 模型](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
+如需共用存取簽章的詳細資訊，請參閱 [了解 SAS 模型](../storage/common/storage-sas-overview.md)。
 
 ## <a name="create-a-stored-policy-and-sas"></a>建立預存原則和 SAS
 
@@ -207,11 +207,11 @@ Set-AzStorageblobcontent `
 
 1. 在 Visual Studio 中開啟解決方案。
 
-2. 在方案總管中，以滑鼠右鍵按一下 **SASExample** 專案，然後選取 [ **屬性**]。
+2. 在方案總管中，以滑鼠右鍵按一下 **SASExample** 專案，然後選取 [ **屬性** ]。
 
-3. 選取 [設定] **** ，並新增下列項目的值：
+3. 選取 [設定]  ，並新增下列項目的值：
 
-    |項目 |說明 |
+    |項目 |描述 |
     |---|---|
     |StorageConnectionString|您想要為其建立預存原則和 SAS 的儲存體帳戶的連接字串。 其格式應為 `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey`，其中 `myaccount` 是儲存體帳戶名稱，而 `mykey` 是儲存體帳戶金鑰。|
     |ContainerName|您想要限制存取的儲存體帳戶中的容器。|
@@ -353,29 +353,29 @@ Remove-AzResourceGroup `
 
 1. 開啟叢集的 Ambari Web UI。 此頁面的位址是 `https://YOURCLUSTERNAME.azurehdinsight.net`。 出現提示時，使用您建立叢集時所使用的 admin 名稱 (admin) 和密碼來驗證叢集。
 
-1. 流覽至**HDFS**  >  **Configs**  >  **Advanced**  >  **預先定義的自訂核心網站**。
+1. 流覽至 **HDFS**  >  **Configs**  >  **Advanced**  >  **預先定義的自訂核心網站** 。
 
-1. 展開 [ **自訂核心網站** ] 區段，並將它滾動至結尾，然後選取 [ **新增屬性 ...**]。使用下列值作為索引 **鍵** 和 **值**：
+1. 展開 [ **自訂核心網站** ] 區段，並將它滾動至結尾，然後選取 [ **新增屬性 ...** ]。使用下列值作為索引 **鍵** 和 **值** ：
 
-    * 機**碼**：`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
-    * **值**：稍早執行的其中一個方法所傳回的 SAS。
+    * 機 **碼** ：`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **值** ：稍早執行的其中一個方法所傳回的 SAS。
 
     取代 `CONTAINERNAME` 為您搭配 c # 或 SAS 應用程式使用的容器名稱。 `STORAGEACCOUNTNAME`以您使用的儲存體帳戶名稱取代。
 
     選取 [ **新增** ] 以儲存此索引鍵和值
 
-1. 選取 [ **儲存** ] 按鈕以儲存設定變更。 出現提示時，請新增變更的描述 ( [新增 SAS 儲存體存取權]，例如) 然後選取 [ **儲存**]。
+1. 選取 [ **儲存** ] 按鈕以儲存設定變更。 出現提示時，請新增變更的描述 ( [新增 SAS 儲存體存取權]，例如) 然後選取 [ **儲存** ]。
 
     當變更完成時，請選取 **[確定]** 。
 
    > [!IMPORTANT]  
    > 您必須重新啟動數個服務，變更才會生效。
 
-1. [ **重新開機** ] 下拉式清單隨即出現。 從下拉式清單中選取 [ **重新開機所有受影響** 的]，然後 __確認 [全部重新開機__]。
+1. [ **重新開機** ] 下拉式清單隨即出現。 從下拉式清單中選取 [ **重新開機所有受影響** 的]，然後 __確認 [全部重新開機__ ]。
 
-    針對 **MapReduce2** 和 **YARN**重複此程式。
+    針對 **MapReduce2** 和 **YARN** 重複此程式。
 
-1. 這些項目重新啟動之後，選取每一個項目，並從 [服務動作]**** 下拉式清單停用維護模式。
+1. 這些項目重新啟動之後，選取每一個項目，並從 [服務動作]  下拉式清單停用維護模式。
 
 ## <a name="test-restricted-access"></a>測試限制的存取
 
@@ -411,7 +411,7 @@ Remove-AzResourceGroup `
     hdfs dfs -get wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log testfile.txt
     ```
 
-    此命令會將檔案下載到本機檔案，名為 **testfile.txt**。
+    此命令會將檔案下載到本機檔案，名為 **testfile.txt** 。
 
 5. 使用下列命令將本機檔案上傳至 SAS 儲存體上的新檔案，名為 **testupload.txt** ：
 
@@ -433,7 +433,7 @@ Remove-AzResourceGroup `
 
     此時，作業應該已順利完成。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 現在您已瞭解如何將受限存取儲存體新增至您的 HDInsight 叢集，瞭解如何在您的叢集上使用資料的其他方法：
 

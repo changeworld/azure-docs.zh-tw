@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/7/2020
-ms.openlocfilehash: 9212142ff6f43a84b141b0781fbe9828eebcbd40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e84f0c9beaee8a755499467925d28a83ba3139fc
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537152"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544047"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>將資料複寫至適用於 MySQL 的 Azure 資料庫
 
@@ -41,16 +41,16 @@ ms.locfileid: "91537152"
 - 每個資料表都必須有主索引鍵。
 - 來源伺服器應使用 MySQL InnoDB 引擎。
 - 使用者必須有權設定二進位記錄，並在來源伺服器上建立新的使用者。
-- 如果來源伺服器已啟用 SSL，請確定為網域提供的 SSL CA 憑證已包含在 `mysql.az_replication_change_master` 預存程式中。 請參閱下列 [範例](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) 和 `master_ssl_ca` 參數。
-- 確定來源伺服器的 IP 位址已新增至適用於 MySQL 的 Azure 資料庫複本伺服器的防火牆規則。 使用 [Azure 入口網站](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal)或 [Azure CLI](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-cli) 更新防火牆規則。
+- 如果來源伺服器已啟用 SSL，請確定為網域提供的 SSL CA 憑證已包含在 `mysql.az_replication_change_master` 預存程式中。 請參閱下列 [範例](./howto-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication) 和 `master_ssl_ca` 參數。
+- 確定來源伺服器的 IP 位址已新增至適用於 MySQL 的 Azure 資料庫複本伺服器的防火牆規則。 使用 [Azure 入口網站](./howto-manage-firewall-using-portal.md)或 [Azure CLI](./howto-manage-firewall-using-cli.md) 更新防火牆規則。
 - 確定裝載來源伺服器的機器允許埠3306上的輸入和輸出流量。
-- 請確定來源伺服器具有 **公用 IP 位址**、DNS 可公開存取，或具有 (FQDN) 的完整功能變數名稱。
+- 請確定來源伺服器具有 **公用 IP 位址** 、DNS 可公開存取，或具有 (FQDN) 的完整功能變數名稱。
 
 ### <a name="other"></a>其他
 - 資料輸入複寫只適用於一般用途和記憶體最佳化定價層。
 - 不支援全域交易識別碼 (GTID)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - 瞭解如何[設定資料](howto-data-in-replication.md)複寫
 - 了解如何[在 Azure 中使用讀取複本進行複寫](concepts-read-replicas.md)
 - 瞭解如何 [使用 DMS 以短時間來遷移資料](howto-migrate-online.md)

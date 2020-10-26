@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/01/2020
-ms.openlocfilehash: 615e23dc388f36f5ae1cd7e0d846acc14ffa2236
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cfc2abad828a3974c04074a4cde062a479f673f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086410"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533558"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-in-azure-hdinsight"></a>如何在 Azure HDInsight 中使用 Apache Ambari 監視叢集可用性
 
@@ -23,7 +23,7 @@ HDInsight 叢集包含 Apache Ambari，可提供健全狀況資訊一覽和預�
 
 ## <a name="dashboard"></a>儀表板
 
-Ambari 儀表板的存取方式，是在 Azure 入口網站中的 [HDInsight 總覽] 的 [叢集**儀表板**] 區段中選取 [ **Ambari 首頁**] 連結，如下所示。 或者，您也可以藉由 `https://CLUSTERNAME.azurehdinsight.net` 在瀏覽器中流覽至 CLUSTERNAME 是您的叢集名稱來存取它。
+Ambari 儀表板的存取方式，是在 Azure 入口網站中的 [HDInsight 總覽] 的 [叢集 **儀表板** ] 區段中選取 [ **Ambari 首頁** ] 連結，如下所示。 或者，您也可以藉由 `https://CLUSTERNAME.azurehdinsight.net` 在瀏覽器中流覽至 CLUSTERNAME 是您的叢集名稱來存取它。
 
 ![HDInsight 資源入口網站視圖](media/hdinsight-cluster-availability/azure-portal-dashboard-ambari.png)
 
@@ -55,14 +55,13 @@ Ambari 還提供數個可設定的警示，可提供特定事件的通知。 觸
 
 Ambari 提供許多與可用性相關的預先定義警示，包括：
 
-| 警示名稱                        | 說明   |
+| 警示名稱                        | 描述   |
 |---|---|
 | DataNode 健全狀況摘要           | 如果有狀況不良的 [Datanode，則會觸發此服務層級警示|
 | NameNode 高可用性健全狀況 | 如果使用中的 NameNode 或待命 NameNode 未執行，就會觸發此服務層級警示。|
 | 可用的 JournalNodes 百分比    | 如果叢集中的 JournalNodes 數目大於設定的 [重大臨界值]，就會觸發此警示。 它會匯總 JournalNode 流程檢查的結果。 |
 | 可用的 [Datanode 百分比       | 如果叢集中的 [Datanode 數目大於設定的 [重大臨界值]，就會觸發此警示。 它會匯總 DataNode 流程檢查的結果。|
 
-您可以在 [這裡](https://docs.microsoft.com/azure/hdinsight/hdinsight-high-availability-linux#ambari-web-ui)找到有助於監視叢集可用性之 Ambari 警示的完整清單，
 
 若要查看警示的詳細資料或修改準則，請選取警示的 **名稱** 。 以 **DataNode 健全摘要** 作為範例。 您可以看到警示的描述，以及會觸發「警告」或「重大」警示的特定準則，以及準則的檢查間隔。 若要編輯設定，請選取 [設定] 方塊右上角的 [ **編輯** ] 按鈕。
 
@@ -85,9 +84,9 @@ Ambari 提供許多與可用性相關的預先定義警示，包括：
 > [!TIP]
 > 設定 Ambari 電子郵件通知在管理許多 HDInsight 叢集時，可能是在一個地方接收警示的好方法。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
-- [HDInsight 中 Apache Hadoop 叢集的可用性和可靠性](hdinsight-high-availability-linux.md)
+- [HDInsight 中 Apache Hadoop 叢集的可用性和可靠性](./hdinsight-business-continuity.md)
 - [叢集可用性 - Azure 監視器記錄](./cluster-availability-monitor-logs.md)
 - [使用 Azure 監視器記錄](hdinsight-hadoop-oms-log-analytics-tutorial.md)
 - [Apache Ambari 電子郵件通知](apache-ambari-email.md)

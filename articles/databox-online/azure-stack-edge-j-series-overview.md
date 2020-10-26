@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
 ms.openlocfilehash: 11ed87f8cf5aabb86f709d938acc4c31b737ca91
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91318582"
 ---
 # <a name="what-is-the-azure-stack-edge-pro-r"></a>Azure Stack Edge Pro R 是什麼？
@@ -54,7 +54,7 @@ Azure Stack Edge Pro R 具有下列功能：
     - 子集資料可將儲存體和頻寬最佳化，或用於進一步分析。
     - 分析並對 IoT 事件做出反應。
 
-- **透過網路將資料傳輸到 Azure**：使用 Azure Stack Edge Pro R，輕鬆且快速地將資料傳輸到 Azure，以進行進一步的運算和分析，或基於封存目的使用。
+- **透過網路將資料傳輸到 Azure** ：使用 Azure Stack Edge Pro R，輕鬆且快速地將資料傳輸到 Azure，以進行進一步的運算和分析，或基於封存目的使用。
 
 ## <a name="components"></a>元件
 
@@ -73,7 +73,7 @@ Azure Stack Edge Pro R 解決方案由 Azure Stack Edge 資源、Azure Stack Edg
 
 Azure Stack Edge Pro R 實體裝置、Azure 資源，以及您要傳輸資料的目標儲存體帳戶，不需全都位於相同區域。
 
-- **資源可用性**：如需 Azure Stack Edge 適用區域的完整清單，請移至[依區域提供的 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 
+- **資源可用性** ：如需 Azure Stack Edge 適用區域的完整清單，請移至 [依區域提供的 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 
 
 - **裝置可用性** - 如需適用 Azure Stack Edge Pro R 裝置的所有國家/地區的清單，請移至 [Azure Stack Edge Pro R 定價](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgeProR)，參閱 [Azure Stack Edge Pro R] 索引標籤中的 [可用性] 區段。
 

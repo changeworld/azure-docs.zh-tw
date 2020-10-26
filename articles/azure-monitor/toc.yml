@@ -323,7 +323,7 @@
           href: platform/metric-chart-samples.md
         - name: 針對計量圖表進行疑難排解
           href: platform/metrics-troubleshoot.md
-    - name: 資料收集
+    - name: 資料集合
       items:
         - name: 資料收集規則
           href: platform/data-collection-rule-overview.md
@@ -1026,6 +1026,8 @@
           href: ../virtual-network/kubernetes-network-policies.md?toc=/azure/azure-monitor/toc.json#monitor-and-visualize-network-configurations-with-azure-npm
         - name: 監視部署和 HPA
           href: insights/container-insights-deployment-hpa-metrics.md
+        - name: 監視永久性磁碟區 (PV)
+          href: insights/container-insights-persistent-volumes.md
         - name: 檢視即時資料
           items:
             - name: 即時資料 (預覽) 概觀

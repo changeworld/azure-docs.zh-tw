@@ -7,18 +7,18 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
-ms.openlocfilehash: ef85b6f9e4595e7b4ff367da415fad777de68679
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be2e4a002d1daf4da7d042f1fd7d5bf0e9a01377
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88211305"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544506"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>Azure Cache for Redis 開發常見問題
 
 本文提供有關如何針對 Azure Cache for Redis 開發的常見問題的解答。
 
-## <a name="common-questions-and-answers"></a>常見問題和解答
+## <a name="common-questions-and-answers"></a>常見問題與答案
 本節涵蓋下列常見問題：
 
 * [如何開始使用 Azure Redis 快取？](#how-can-i-get-started-with-azure-cache-for-redis)
@@ -55,8 +55,8 @@ StackExchange.Redis 有許多選項。 本節談論一些常見設定。 如需 
 
 * **重試**
   * 對於 ConnectRetry 和 ConnectTimeout，一般指引是快速檢錯，然後再試一次。 此指引是根據您的工作負載，以及用戶端發出 Redis 命令到接收回應所需的平均時間。
-  * 讓 StackExchange.Redis 自動重新連線，而不檢查連線狀態，並自行重新連線。 **避免使用 ConnectionMultiplexer.IsConnected 屬性**。
-  * 滾雪球 - 有時，您可能會遇到問題，但越是重試，問題卻如雪球般越滾越大，不可能解決。 如果出現滾雪球的情況，您應該考慮使用指數輪詢重試演算法 (如 Microsoft Patterns & Practices 群組所發佈的[重試一般指引](../best-practices-retry-general.md)所述)。
+  * 讓 StackExchange.Redis 自動重新連線，而不檢查連線狀態，並自行重新連線。 **避免使用 ConnectionMultiplexer.IsConnected 屬性** 。
+  * 滾雪球 - 有時，您可能會遇到問題，但越是重試，問題卻如雪球般越滾越大，不可能解決。 如果出現滾雪球的情況，您應該考慮使用指數輪詢重試演算法 (如 Microsoft Patterns & Practices 群組所發佈的[重試一般指引](/azure/architecture/best-practices/transient-faults)所述)。
   
 * **逾時值**
   * 請考慮您的工作負載，並據此設定值。 如果您要儲存大的值，請將逾時設定為較高的值。
@@ -109,7 +109,7 @@ public static ConnectionMultiplexer Connection
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Redis 命令列工具未使用 TLS 連接埠，但您可以遵循[如何使用 Redis 命令列工具搭配 Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool)文章中的指示，使用公用程式 (例如 `stunnel`) 將工具安全地連線至 TLS 連接埠。
+> Redis 命令列工具未使用 TLS 連接埠，但您可以遵循[如何使用 Redis 命令列工具搭配 Azure Cache for Redis](./cache-how-to-redis-cli-tool.md)文章中的指示，使用公用程式 (例如 `stunnel`) 將工具安全地連線至 TLS 連接埠。
 >
 >
 
@@ -140,6 +140,6 @@ Redis 資料庫就是相同 Redis 執行個體內的資料邏輯分隔。 所有
 > 
 > 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 瞭解其他 [Azure Cache for Redis 常見問題](cache-faq.md)。

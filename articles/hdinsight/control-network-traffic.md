@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 929956d6f439df2a2e7cb8d1b950f5e68cdeab68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 348b9b80c74f085ce31ecce93753a253782fe3ea
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631710"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543163"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>控制 Azure HDInsight 中的網路流量
 
 Azure 虛擬網路中的網路流量可以使用下列方法進行控制：
 
-* **網路安全性群組** (NSG) 可讓您篩選輸入和輸出網路流量。 如需詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](../virtual-network/security-overview.md)文件。
+* **網路安全性群組** (NSG) 可讓您篩選輸入和輸出網路流量。 如需詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](../virtual-network/network-security-groups-overview.md)文件。
 
 * **網路虛擬裝置** (NVA) 只能與輸出流量搭配使用。 NVA 會複寫裝置的功能，例如防火牆、路由器。 如需詳細資訊，請參閱[網路設備](https://azure.microsoft.com/solutions/network-appliances)文件。
 
@@ -28,7 +28,7 @@ HDInsight 為受控服務，需要不受限制地存取 HDInsight 健康情況�
 
 ## <a name="hdinsight-with-network-security-groups"></a>HDInsight 與網路安全性群組
 
-如果您規劃使用**網路安全性群組**來控制網路流量，請先執行下列動作，再安裝 HDInsight：
+如果您規劃使用 **網路安全性群組** 來控制網路流量，請先執行下列動作，再安裝 HDInsight：
 
 1. 識別您要用於 HDInsight 的 Azure 區域。
 
@@ -40,9 +40,9 @@ HDInsight 為受控服務，需要不受限制地存取 HDInsight 健康情況�
 
 3. 建立或修改您要安裝 HDInsight 之子網路的網路安全性群組。
 
-    * __網路安全性群組__：允許連接埠 __443__ 上來自 IP 位址的「輸入」流量。 這可確保 HDInsight 管理服務可從虛擬網路外部觸達叢集。 在已啟用 __Kafka REST Proxy__ 的叢集上，也允許連接埠 __9400__ 上的__輸入__流量。 這可確保可觸達 Kafka REST Proxy 伺服器。
+    * __網路安全性群組__ ：允許連接埠 __443__ 上來自 IP 位址的「輸入」流量。 這可確保 HDInsight 管理服務可從虛擬網路外部觸達叢集。 在已啟用 __Kafka REST Proxy__ 的叢集上，也允許連接埠 __9400__ 上的 __輸入__ 流量。 這可確保可觸達 Kafka REST Proxy 伺服器。
 
-如需有關網路安全性群組的詳細資訊，請參閱[網路安全性群組概觀](../virtual-network/security-overview.md)。
+如需有關網路安全性群組的詳細資訊，請參閱[網路安全性群組概觀](../virtual-network/network-security-groups-overview.md)。
 
 ## <a name="controlling-outbound-traffic-from-hdinsight-clusters"></a>控制來自 HDInsight 叢集的輸出流量
 
@@ -58,7 +58,7 @@ HDInsight 為受控服務，需要不受限制地存取 HDInsight 健康情況�
 
 ## <a name="required-ports"></a>所需連接埠
 
-如果您打算使用**防火牆**並從從外部透過特定連接埠存取叢集，則可能需要在您案例所需的連接埠上允許流量。 根據預設，只要上一節中所述的 Azure 管理流量允許在埠443上連線到叢集，就不需要特殊的埠篩選。
+如果您打算使用 **防火牆** 並從從外部透過特定連接埠存取叢集，則可能需要在您案例所需的連接埠上允許流量。 根據預設，只要上一節中所述的 Azure 管理流量允許在埠443上連線到叢集，就不需要特殊的埠篩選。
 
 如需特定服務的連接埠清單，請參閱 [HDInsight 上 Apache Hadoop 服務所使用的連接埠](hdinsight-hadoop-port-settings-for-services.md)文件。
 
@@ -69,6 +69,6 @@ HDInsight 為受控服務，需要不受限制地存取 HDInsight 健康情況�
 * 如需建立 Azure 虛擬網路的程式碼範例和範例，請參閱[建立 Azure HDInsight 叢集的虛擬網路](hdinsight-create-virtual-network.md)。
 * 如需設定 HDInsight 連線至內部部署網路的端對端範例，請參閱[將 HDInsight 連線至內部部署網路](./connect-on-premises-network.md)。
 * 如需 Azure 虛擬網路的詳細資訊，請參閱 [Azure 虛擬網路概觀](../virtual-network/virtual-networks-overview.md)。
-* 如需網路安全性群組的詳細資訊，請參閱[網路安全性群組](../virtual-network/security-overview.md)。
+* 如需網路安全性群組的詳細資訊，請參閱[網路安全性群組](../virtual-network/network-security-groups-overview.md)。
 * 如需使用者定義路由的詳細資訊，請參閱[使用者定義路由和 IP 轉送](../virtual-network/virtual-networks-udr-overview.md)。
 * 如需虛擬網路的詳細資訊，請參閱[規劃適用於 HDInsight 的 VNET](./hdinsight-plan-virtual-network-deployment.md)。

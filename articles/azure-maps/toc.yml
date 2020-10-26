@@ -95,6 +95,8 @@
   items:
     - name: 管理地圖服務帳戶
       items:
+        - name: 使用 ARM 範本建立帳戶
+          href: how-to-create-template.md
         - name: 管理帳戶
           href: how-to-manage-account-keys.md
         - name: 管理驗證

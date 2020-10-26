@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 874cea2377d3c0a128894bb67278e8ec2cbe7edc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 22ce91a81964ed52830fc19dbbbd52e7f170b0d4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490963"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535394"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>調整 Azure HDInsight 叢集規模
 
@@ -32,8 +32,8 @@ Microsoft 提供下列公用程式來調整叢集：
 
 |公用程式 | 描述|
 |---|---|
-|[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[`Set-AzHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
-|[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
+|[PowerShell Az](/powershell/azure)|[`Set-AzHDInsightClusterSize`](/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
+|[PowerShell AzureRM](/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[Azure CLI](/cli/azure/) | [`az hdinsight resize`](/cli/azure/hdinsight#az-hdinsight-resize) `--resource-group RESOURCEGROUP --name CLUSTERNAME --workernode-count NEWSIZE`|
 |[Azure 傳統 CLI](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
 |[Azure 入口網站](https://portal.azure.com)|開啟您的 HDInsight 叢集窗格，選取左側功能表上的 [叢集 **大小** ]，然後在 [叢集大小] 窗格中，輸入背景工作節點的數目，然後選取 [儲存]。|  
@@ -44,7 +44,7 @@ Microsoft 提供下列公用程式來調整叢集：
 
 > [!IMPORTANT]  
 > * Azure 傳統 CLI 已被取代，而且只能搭配傳統部署模型使用。 若為所有其他部署，請使用 [Azure CLI](/cli/azure/)。
-> * PowerShell AzureRM 模組已淘汰。  請盡可能使用 [Az 模組](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) 。
+> * PowerShell AzureRM 模組已淘汰。  請盡可能使用 [Az 模組](/powershell/azure/new-azureps-module-az) 。
 
 ## <a name="impact-of-scaling-operations"></a>調整作業的影響
 
@@ -82,7 +82,7 @@ Microsoft 提供下列公用程式來調整叢集：
 
     1. `https://CLUSTERNAME.azurehdinsight.net/stormui`在您的網頁瀏覽器中開啟，其中 `CLUSTERNAME` 是您的風暴叢集的名稱。 出現提示時，輸入建立叢集時所指定的 HDInsight 叢集系統管理員 (管理員) 名稱和密碼。
 
-    1. 選取您要重新平衡的拓撲，然後選取 [重新平衡]**** 按鈕。 輸入重新平衡作業完成之前的延遲。
+    1. 選取您要重新平衡的拓撲，然後選取 [重新平衡]  按鈕。 輸入重新平衡作業完成之前的延遲。
 
         ![HDInsight Storm 調整重新平衡](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
 
@@ -125,12 +125,12 @@ Microsoft 提供下列公用程式來調整叢集：
 1. 手動結束工作。
 1. 在調整作業結束後重新提交作業。
 
-若要查看暫止和執行中的作業清單，您可以使用 YARN **RESOURCE MANAGER UI**，請遵循下列步驟：
+若要查看暫止和執行中的作業清單，您可以使用 YARN **RESOURCE MANAGER UI** ，請遵循下列步驟：
 
 1. 從 [Azure 入口網站](https://portal.azure.com/)中，選取您的叢集。  叢集會在新的入口網站分頁中開啟。
-2. 從主視圖流覽至 [叢集**儀表板**]  >  **Ambari [首頁**]。 輸入您的叢集認證。
+2. 從主視圖流覽至 [叢集 **儀表板** ]  >  **Ambari [首頁** ]。 輸入您的叢集認證。
 3. 從 Ambari UI 中，選取左側功能表上的 [服務] 清單中的 [ **YARN** ]。  
-4. 在 [YARN] 頁面上，選取 [ **快速連結** ] 並將滑鼠停留在作用中前端節點上，然後選取 [ **Resource Manager UI**]。
+4. 在 [YARN] 頁面上，選取 [ **快速連結** ] 並將滑鼠停留在作用中前端節點上，然後選取 [ **Resource Manager UI** ]。
 
     ![Apache Ambari 快速連結 Resource Manager UI](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 
@@ -268,7 +268,7 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
     balancer
     ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [自動調整 Azure HDInsight 叢集規模](hdinsight-autoscale-clusters.md)
 

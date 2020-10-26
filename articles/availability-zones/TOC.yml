@@ -61,8 +61,10 @@
           href: ../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address
         - name: SQL Database
           items:
-            - name: 使用 SQL Database 的可用性區域
-              href: ../azure-sql/database/high-availability-sla.md#zone-redundant-configuration
+            - name: 具有 SQL Database 一般用途層級的可用性區域
+              href: ../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview
+            - name: 具有 SQL Database 進階和業務關鍵層級的可用性區域
+              href: ../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability
         - name: 儲存體
           items:
             - name: 區域備援儲存體

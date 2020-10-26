@@ -41,8 +41,18 @@
           href: onboard-powershell.md
     - name: 管理
       items:
-        - name: 管理和使用 Azure VM 擴充功能
-          href: manage-vm-extensions.md
+        - name: Azure VM 擴充功能
+          items:
+            - name: 概觀
+              href: manage-vm-extensions.md
+            - name: 從入口網站管理擴充功能
+              href: manage-vm-extensions-portal.md
+            - name: 使用 CLI 管理擴充功能
+              href: manage-vm-extensions-cli.md
+            - name: 使用 PowerShell 管理擴充功能
+              href: manage-vm-extensions-powershell.md
+            - name: 使用 ARM 範本部署擴充功能
+              href: manage-vm-extensions-template.md
         - name: 管理代理程式
           href: manage-agent.md
     - name: 疑難排解
@@ -55,8 +65,22 @@
   items:
     - name: 資料存留處
       href: data-residency.md
+    - name: Azure CLI
+      href: /cli/azure/ext/connectedmachine/connectedmachine
+    - name: Azure PowerShell
+      href: /powershell/module/az.connectedmachine
+    - name: .NET
+      href: /dotnet/api/overview/azure/hybridcompute/management
     - name: REST
       href: /rest/api/hybridcompute
+    - name: Go
+      href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/hybridcompute/mgmt/2020-08-02/hybridcompute'
+    - name: Java
+      href: /java/api/overview/azure/hybridcompute/management
+    - name: JavaScript
+      href: /javascript/api/%40azure/arm-hybridcompute
+    - name: Python
+      href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-mgmt-hybridcompute/2.0.0/index.html'
     - name: Azure 原則內建
       displayName: 'samples, policies, definitions'
       href: policy-reference.md

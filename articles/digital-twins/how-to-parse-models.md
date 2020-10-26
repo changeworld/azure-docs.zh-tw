@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2cc60af26754eddbe8699019ae8d906a4c1e9e62
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: f560f16c6437b219dd1e7017d70976ff4650c2c0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057683"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544353"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>使用 DTDL 剖析器程式庫剖析和驗證模型
 
@@ -36,7 +36,7 @@ Azure 數位 Twins 中的[模型](concepts-models.md)是使用以 JSON-LD 為基
 DTDLValidator
 ```
 
-使用預設選項，此範例將會搜尋 `*.json` 目前目錄和所有子目錄中的檔案。 您也可以新增下列選項，以在指定的目錄中搜尋範例，並在副檔名為 *dtdl*的檔案中包含所有子目錄：
+使用預設選項，此範例將會搜尋 `*.json` 目前目錄和所有子目錄中的檔案。 您也可以新增下列選項，以在指定的目錄中搜尋範例，並在副檔名為 *dtdl* 的檔案中包含所有子目錄：
 
 ```cmd/sh
 DTDLValidator -d C:\Work\DTDL -e dtdl 
@@ -77,32 +77,50 @@ DTDLValidator -i
 
 若要支援下列剖析器程式碼範例，請考慮在 Azure 數位 Twins 實例中定義的數個模型：
 
-> [!TIP] 
-> 此 `dtmi:com:contoso:coffeeMaker` 模型會使用 *功能模型* 語法，這表示它已透過連接公開該模型的 PnP 裝置來安裝在服務中。
-
 ```json
-{
-  "@id": " dtmi:com:contoso:coffeeMaker",
-  "@type": "CapabilityModel",
-  "implements": [
-        { "name": "coffeeMaker", "schema": " dtmi:com:contoso:coffeeMakerInterface" }
-  ]    
-}
-{
-  "@id": " dtmi:com:contoso:coffeeMakerInterface",
-  "@type": "Interface",
-  "contents": [
-      { "@type": "Property", "name": "waterTemp", "schema": "double" }  
-  ]
-}
-{
-  "@id": " dtmi:com:contoso:coffeeBar",
-  "@type": "Interface",
-  "contents": [
-        { "@type": "relationship", "contains": " dtmi:com:contoso:coffeeMaker" },
-        { "@type": "property", "name": "capacity", "schema": "integer" }
-  ]    
-}
+[
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:contoso:coffeeMaker;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": "Component",
+        "name": "coffeeMaker",
+        "schema": "dtmi:com:contoso:coffeeMakerInterface;1"
+      }
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:contoso:coffeeMakerInterface;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": "Property",
+        "name": "waterTemp",
+        "schema": "double"
+      }
+    ]
+  },
+  {
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:contoso:coffeeBar;1",
+    "@type": "Interface",
+    "contents": [
+      {
+        "@type": "Relationship",
+        "name": "foo",
+        "target": "dtmi:com:contoso:coffeeMaker;1"
+      },
+      {
+        "@type": "Property",
+        "name": "capacity",
+        "schema": "integer"
+      }
+    ]
+  }
+]
 ```
 
 下列程式碼示範如何在 c # 中使用剖析器程式庫反映這些定義的範例：
@@ -172,7 +190,7 @@ void PrintInterfaceContent(DTInterfaceInfo dtif, IReadOnlyDictionary<Dtmi, DTEnt
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 當您完成撰寫模型之後，請參閱如何將它們上傳 (，以及使用 DigitalTwinsModels Api) 其他管理作業：
 * [操作說明：管理自訂模型](how-to-manage-model.md)

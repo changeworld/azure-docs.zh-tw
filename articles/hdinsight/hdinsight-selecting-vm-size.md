@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: a21e8d6c76c93b3084619c09f6a7664a25c1929c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d347707b0f48314dd872bc3ad34ac624817d2937
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73682213"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535309"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>為您的 Azure HDInsight 叢集選取正確的 VM 大小
 
@@ -32,7 +32,7 @@ VM 大小與類型是由 CPU 處理能力、RAM 大小和網路延遲所決定�
 
 - RAM：VM 大小也會決定 VM 可用的 RAM 數量。 針對將資料儲存在記憶體以進行處理的工作負載，並非從磁碟讀取，請確保背景工作節點有足夠的記憶體來容納資料。
 
-- 網路：對於大部分的叢集類型而言，由叢集處理的資料不在本機磁片上，而是在外部儲存體服務中，例如 Data Lake Storage 或 Azure 儲存體。 請考慮節點 VM 與儲存體服務之間的網路頻寬和輸送量。 可供 VM 使用的網路頻寬通常會隨著較大的大小而增加。 如需詳細資訊，請參閱 [VM 大小概觀](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)。
+- 網路：對於大部分的叢集類型而言，由叢集處理的資料不在本機磁片上，而是在外部儲存體服務中，例如 Data Lake Storage 或 Azure 儲存體。 請考慮節點 VM 與儲存體服務之間的網路頻寬和輸送量。 可供 VM 使用的網路頻寬通常會隨著較大的大小而增加。 如需詳細資訊，請參閱 [VM 大小概觀](../virtual-machines/sizes.md)。
 
 ## <a name="understanding-vm-optimization"></a>瞭解 VM 優化
 
@@ -40,10 +40,10 @@ Azure 中的虛擬機器系列已優化，可符合不同的使用案例。 在�
 
 | 類型                     | 大小           |    描述       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [入門層級](../virtual-machines/linux/sizes-general.md)          | 答： Av2  | 具有最適合專案層級工作負載（例如開發和測試）的 CPU 效能和記憶體設定。 它們是經濟實惠的，可提供低成本的選項來開始使用 Azure。 |
-| [一般用途](../virtual-machines/linux/sizes-general.md)          | D、DSv2、Dv2  | CPU 與記憶體的比例平均。 適用於測試和開發、小型至中型資料庫，以及低至中流量 Web 伺服器。 |
-| [計算最佳化](../virtual-machines/linux/sizes-compute.md)        | F           | CPU 與記憶體的比例高。 適用於中流量 Web 伺服器、網路設備、批次處理，以及應用程式伺服器。        |
-| [記憶體最佳化](../virtual-machines/linux/sizes-memory.md)         | Esv3、Ev3  | 記憶體與 CPU 的比例高。 適用於關聯式資料庫伺服器、中型至大型快取，以及記憶體內部分析。                 |
+| [入門層級](../virtual-machines/sizes-general.md)          | 答： Av2  | 具有最適合專案層級工作負載（例如開發和測試）的 CPU 效能和記憶體設定。 它們是經濟實惠的，可提供低成本的選項來開始使用 Azure。 |
+| [一般用途](../virtual-machines/sizes-general.md)          | D、DSv2、Dv2  | CPU 與記憶體的比例平均。 適用於測試和開發、小型至中型資料庫，以及低至中流量 Web 伺服器。 |
+| [計算最佳化](../virtual-machines/sizes-compute.md)        | F           | CPU 與記憶體的比例高。 適用於中流量 Web 伺服器、網路設備、批次處理，以及應用程式伺服器。        |
+| [記憶體最佳化](../virtual-machines/sizes-memory.md)         | Esv3、Ev3  | 記憶體與 CPU 的比例高。 適用於關聯式資料庫伺服器、中型至大型快取，以及記憶體內部分析。                 |
 
 - 如需有關跨 HDInsight 支援區域之可用 VM 實例價格的詳細資訊，請參閱 [Hdinsight 定價](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
@@ -71,7 +71,7 @@ Azure 中的虛擬機器系列已優化，可符合不同的使用案例。 在�
 
 如需 VM Sku 和叢集大小之效能評定的詳細資訊，請參閱 [Azure HDInsight 中的叢集容量規劃 ](hdinsight-capacity-planning.md#choose-the-vm-size-and-type)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [Azure HDInsight 支援的節點設定](hdinsight-supported-node-configuration.md)
-- [Azure 中的 Linux 虛擬機器大小](../virtual-machines/linux/sizes.md)
+- [Azure 中的 Linux 虛擬機器大小](../virtual-machines/sizes.md)

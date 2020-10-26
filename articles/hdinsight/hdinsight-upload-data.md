@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 45170e9df7082e277c445a2dab6d617eb208cd44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47262e0dc7247e1d514eeb64512c21ff1ae527ab
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855628"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534816"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>在 HDInsight 中上傳 Apache Hadoop 作業的資料
 
@@ -88,7 +88,7 @@ hadoop fs -copyFromLocal <localFilePath> <storageFilePath>
 
 ## <a name="mount-azure-storage-as-local-drive"></a>將 Azure 儲存體掛接為本機磁碟機
 
-請參閱[將 Azure 儲存體掛接為本機磁碟機](https://docs.microsoft.com/archive/blogs/bigdatasupport/mount-azure-blob-storage-as-local-drive)。
+請參閱[將 Azure 儲存體掛接為本機磁碟機](/archive/blogs/bigdatasupport/mount-azure-blob-storage-as-local-drive)。
 
 ## <a name="upload-using-services"></a>使用服務上傳
 
@@ -121,7 +121,7 @@ Azure 儲存體也可以使用 Azure SDK，透過下列程式設計語言進行�
 
 如需安裝 Azure SDK 的詳細資訊，請參閱 [Azure 下載](https://azure.microsoft.com/downloads/)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 現在您已瞭解如何將資料匯入 HDInsight，請閱讀下列文章以瞭解分析：
 

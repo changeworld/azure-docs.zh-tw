@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 2fccf5431666990919faf7e6378b46c41d682437
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf749f3aef10a0c67814722577f79906f447ffdb
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90933865"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532776"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---flexible-server"></a>在適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器中進行 Audit 記錄
 
@@ -57,7 +57,7 @@ pgAudit 可讓您設定會話或物件審核記錄。 [會話審核記錄](https
 若要快速開始使用，請將設定 `pgaudit.log` 為 `WRITE` ，並開啟您的伺服器記錄以檢查輸出。 
 
 ## <a name="viewing-audit-logs"></a>查看 audit 記錄
-您存取記錄的方式取決於您選擇的端點。 如 Azure 儲存體，請參閱 [記錄儲存體帳戶](../../azure-monitor/platform/resource-logs-collect-storage.md) 的相關文章。 針對事件中樞，請參閱「 [串流 Azure 記錄](../../azure-monitor/platform/resource-logs-stream-event-hubs.md) 」一文。
+您存取記錄的方式取決於您選擇的端點。 如 Azure 儲存體，請參閱 [記錄儲存體帳戶](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) 的相關文章。 針對事件中樞，請參閱「 [串流 Azure 記錄](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) 」一文。
 
 針對 Azure 監視器記錄，會將記錄傳送至您選取的工作區。 Postgres 記錄會使用 **AzureDiagnostics** 收集模式，因此可以從 AzureDiagnostics 資料表進行查詢。 下表說明資料表中的欄位。 在 [Azure 監視器記錄查詢](../../azure-monitor/log-query/log-query-overview.md) 總覽中深入瞭解查詢和警示。
 
@@ -71,6 +71,6 @@ AzureDiagnostics
 | where Message contains "AUDIT:"
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - [瞭解如何在適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器中登入](concepts-logging.md)
 - [瞭解如何在適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器中設定記錄，以及如何存取記錄](howto-configure-and-access-logs.md)

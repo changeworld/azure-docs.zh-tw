@@ -297,17 +297,15 @@
           href: index-conversation-scenarios.yml
         - name: 對話轉譯
           items:
-            - name: 概觀
-              items:
-                - name: 什麼是對話轉譯？
-                  href: conversation-transcription.md
+            - name: 對話轉譯概觀
+              href: conversation-transcription.md
+            - name: 即時對話轉譯快速入門
+              href: how-to-use-conversation-transcription.md
             - name: 操作指南
               items:
                 - name: 處理客服中心案例
                   displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
                   href: call-center-transcription.md
-                - name: 即時對話轉譯
-                  href: how-to-use-conversation-transcription.md
                 - name: 非同步對話轉譯
                   href: how-to-async-conversation-transcription.md
             - name: 參考
@@ -341,14 +339,10 @@
                       href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
         - name: 多裝置對話
           items:
-            - name: 概觀
-              items:
-                - name: 什麼是多裝置對話？
-                  href: multi-device-conversation.md
-            - name: 快速入門
-              items:
-                - name: 開始和加入對話
-                  href: quickstarts/multi-device-conversation.md
+            - name: 多裝置對話概觀
+              href: multi-device-conversation.md
+            - name: 多裝置對話快速入門
+              href: quickstarts/multi-device-conversation.md
             - name: 參考
               items:
                 - name: 語音 SDK
@@ -363,12 +357,8 @@
       items:
         - name: 語音助理文件
           href: index-voice-assistants.yml
-        - name: 概觀
-          items:
-            - name: 什麼是語音助理？
-              href: voice-assistants.md
-            - name: 語音助理範例 (GitHub)
-              href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
+        - name: 語音助理概觀
+          href: voice-assistants.md
         - name: 自訂命令
           items:
             - name: 什麼是自訂命令？

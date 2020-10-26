@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 1a6aabe7ef3500a114525fe6c8bc993826295e36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afbf80810f45f616eac40de16889bbebb1cf4964
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275348"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544795"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的伺服器概念
 
@@ -32,7 +32,7 @@ ms.locfileid: "91275348"
 - 提供適用於其資料庫的管理原則範圍︰登入、防火牆、使用者、角色、設定等等。
 - 可在多個版本中使用。 如需詳細資訊，請參閱[支援適用於 MySQL 之 Azure 資料庫的資料庫版本](./concepts-supported-versions.md)。
 
-在適用於 MySQL Server 的 Azure 資料庫內，您可以建立一個或多個資料庫。 您可以選擇在每部伺服器上建立單一資料庫以使用所有資源，或建立多個資料庫來共用資源。 定價結構是依據伺服器，以定價層、虛擬核心及儲存體 (GB) 的設定為基礎來形成的。 如需詳細資訊，請參閱[定價層](./concepts-service-tiers.md)。
+在適用於 MySQL Server 的 Azure 資料庫內，您可以建立一個或多個資料庫。 您可以選擇在每部伺服器上建立單一資料庫以使用所有資源，或建立多個資料庫來共用資源。 定價結構是依據伺服器，以定價層、虛擬核心及儲存體 (GB) 的設定為基礎來形成的。 如需詳細資訊，請參閱[定價層](./concepts-pricing-tiers.md)。
 
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>如何連接及驗證適用於 MySQL 的 Azure 資料庫伺服器？
 
@@ -64,8 +64,8 @@ ms.locfileid: "91275348"
 
 您可以使用 Azure 入口網站或 Azure CLI，來管理適用於 MySQL 的 Azure 資料庫伺服器。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 如需服務的概觀，請參閱[適用於 MySQL 的 Azure 資料庫概觀](./overview.md)
-- 如需以您**服務層級**為依據之特定資源配額和限制的相關資訊，請參閱[服務層級](./concepts-service-tiers.md)
+- 如需根據您的 **定價層** 的特定資源配額和限制的詳細資訊，請參閱 [定價層](./concepts-pricing-tiers.md)。
 - 如需連接到服務的相關資訊，請參閱[適用於 MySQL 的 Azure 資料庫的連線庫](./concepts-connection-libraries.md)。

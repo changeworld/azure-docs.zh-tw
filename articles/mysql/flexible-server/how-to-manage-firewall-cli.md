@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7fe0e91f30930b9aaf0fb484b3b1e74d707d8c21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84fdd3045d5a1d44ff611134d88fc9793ee203de
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307801"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545067"
 ---
 # <a name="create-and-manage-azure-database-for-mysql---flexible-server-firewall-rules-using-the-azure-cli"></a>使用 Azure CLI 建立及管理適用於 MySQL 的 Azure 資料庫具彈性的伺服器防火牆規則
 
@@ -25,7 +25,7 @@ ms.locfileid: "91307801"
 - 公用存取 (允許的 IP 位址)
 - 私人存取 (VNet 整合)
 
-在本文中，我們將著重于建立具有 **公用存取 (允許的 IP 位址) ** 使用 Azure CLI 的 MySQL 伺服器，並提供 Azure CLI 命令的總覽，讓您可以在建立、更新、刪除、列出及顯示在建立伺服器之後，建立、更新、刪除、列出及顯示防火牆規則。 使用 *公用存取 (允許的 ip 位址) *，MySQL 伺服器的連線會限制為僅允許的 ip 位址。 防火牆規則中必須允許用戶端 IP 位址。 若要深入瞭解，請參閱 [公用存取 (允許的 IP 位址) ](./concepts-networking.md#public-access-allowed-ip-addresses)。 您可以在建立伺服器時定義防火牆規則 (建議) 但稍後也可以新增。
+在本文中，我們將著重于建立具有 **公用存取 (允許的 IP 位址)** 使用 Azure CLI 的 MySQL 伺服器，並提供 Azure CLI 命令的總覽，讓您可以在建立、更新、刪除、列出及顯示在建立伺服器之後，建立、更新、刪除、列出及顯示防火牆規則。 使用 *公用存取 (允許的 ip 位址)* ，MySQL 伺服器的連線會限制為僅允許的 ip 位址。 防火牆規則中必須允許用戶端 IP 位址。 若要深入瞭解，請參閱 [公用存取 (允許的 IP 位址) ](./concepts-networking.md#public-access-allowed-ip-addresses)。 您可以在建立伺服器時定義防火牆規則 (建議) 但稍後也可以新增。
 
 ## <a name="launch-azure-cloud-shell"></a>啟動 Azure Cloud Shell
 
@@ -33,17 +33,17 @@ ms.locfileid: "91307801"
 
 若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看]  即可。 您也可以移至 [https://shell.azure.com/bash](https://shell.azure.com/bash)，從另一個瀏覽器索引標籤開啟 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後選取 **Enter** 鍵加以執行。
 
-如果您偏好在本機安裝和使用 CLI，本快速入門需要有 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+如果您偏好在本機安裝和使用 CLI，本快速入門需要有 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="prerequisites"></a>必要條件
 
-您必須使用 [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) 命令登入您的帳戶。 請注意 **id** 屬性，它會參考您 Azure 帳戶的訂用帳戶 **識別碼** 。
+您必須使用 [az login](/cli/azure/reference-index#az-login) 命令登入您的帳戶。 請注意 **id** 屬性，它會參考您 Azure 帳戶的訂用帳戶 **識別碼** 。
 
 ```azurecli-interactive
 az login
 ```
 
-使用 [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set) 命令來選取您帳戶底下的特定訂用帳戶。 記下**az 登**入輸出中的**識別碼**值，以做為命令中**訂閱**引數的值。 如果您有多個訂用帳戶，請選擇資源計費的適當訂用帳戶。 若要取得您的所有訂用帳戶，請使用 [az account list](https://docs.microsoft.com/cli/azure/account#az-account-list)。
+使用 [az account set](/cli/azure/account#az-account-set) 命令來選取您帳戶底下的特定訂用帳戶。 記下 **az 登** 入輸出中的 **識別碼** 值，以做為命令中 **訂閱** 引數的值。 如果您有多個訂用帳戶，請選擇資源計費的適當訂用帳戶。 若要取得您的所有訂用帳戶，請使用 [az account list](/cli/azure/account#az-account-list)。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -51,7 +51,7 @@ az account set --subscription <subscription id>
 
 ## <a name="create-firewall-rule-during-flexible-server-create-using-azure-cli"></a>使用 Azure CLI 在彈性伺服器建立期間建立防火牆規則
 
-您可以使用 `az mysql flexible-server --public access` 命令來建立具有 *公用存取 (允許的 IP 位址) * 的彈性伺服器，並在建立有彈性的伺服器期間設定防火牆規則。 您可以使用 **--public-存取** 切換參數來提供可連接到伺服器的允許 IP 位址。 您可以提供要包含在允許的 ip 清單中的單一或 IP 位址範圍。 IP 位址範圍必須以破折號分隔，而且不包含任何空格。 使用 CLI 建立有彈性的伺服器有各種不同的選項，如下列範例所示。
+您可以使用 `az mysql flexible-server --public access` 命令來建立具有 *公用存取 (允許的 IP 位址)* 的彈性伺服器，並在建立有彈性的伺服器期間設定防火牆規則。 您可以使用 **--public-存取** 切換參數來提供可連接到伺服器的允許 IP 位址。 您可以提供要包含在允許的 ip 清單中的單一或 IP 位址範圍。 IP 位址範圍必須以破折號分隔，而且不包含任何空格。 使用 CLI 建立有彈性的伺服器有各種不同的選項，如下列範例所示。
 
 請參閱 Azure CLI [參考檔](/cli/azure/mysql/flexible-server) ，以取得可設定的 CLI 參數的完整清單。 例如，在下列命令中，您可以選擇性地指定資源群組。
 
@@ -86,14 +86,14 @@ az account set --subscription <subscription id>
     > 我們不建議您建立沒有任何防火牆規則的伺服器。 如果您未新增任何防火牆規則，則用戶端將無法連線至伺服器。
 
 ## <a name="create-and-manage-firewall-rule-after-server-create"></a>在伺服器建立之後建立和管理防火牆規則
-**Az mysql 有彈性的伺服器防火牆規則**命令是從 Azure CLI 用來建立、刪除、列出、顯示及更新防火牆規則。
+**Az mysql 有彈性的伺服器防火牆規則** 命令是從 Azure CLI 用來建立、刪除、列出、顯示及更新防火牆規則。
 
 命令：
-- **建立**：建立彈性的伺服器防火牆規則。
-- **清單**：列出彈性的伺服器防火牆規則。
-- **更新**：更新有彈性的伺服器防火牆規則。
-- **顯示**：顯示有彈性的伺服器防火牆規則的詳細資料。
-- **刪除**：刪除有彈性的伺服器防火牆規則。
+- **建立** ：建立彈性的伺服器防火牆規則。
+- **清單** ：列出彈性的伺服器防火牆規則。
+- **更新** ：更新有彈性的伺服器防火牆規則。
+- **顯示** ：顯示有彈性的伺服器防火牆規則的詳細資料。
+- **刪除** ：刪除有彈性的伺服器防火牆規則。
 
 請參閱 Azure CLI [參考檔](/cli/azure/mysql/flexible-server) ，以取得可設定的 CLI 參數的完整清單。 例如，在下列命令中，您可以選擇性地指定資源群組。
 
@@ -154,7 +154,7 @@ az mysql flexible-server firewall-rule delete --name mydemoserver --rule-name Fi
 ```
 成功時，沒有任何輸出。 發生錯誤時，就會顯示錯誤訊息文字。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - 深入瞭解[適用於 MySQL 的 Azure 資料庫彈性伺服器中的網路](./concepts-networking.md)功能
 - 深入瞭解 [適用於 MySQL 的 Azure 資料庫彈性的伺服器防火牆規則](./concepts-networking.md#public-access-allowed-ip-addresses)
 - [使用 Azure 入口網站建立和管理適用於 MySQL 的 Azure 資料庫彈性伺服器防火牆規則](./how-to-manage-firewall-portal.md)。

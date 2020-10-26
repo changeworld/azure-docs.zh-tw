@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc08adb2f71c49fad3c8574e9cfd5315f13d7f44
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84700360"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532759"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>使用 Azure HDInsight 為 Apache Storm 進行疑難排解
 
@@ -27,8 +27,8 @@ ms.locfileid: "84700360"
 ### <a name="apache-ambari-ui"></a>Apache Ambari UI
 
 1. 移至 Ambari 儀表板。
-2. 在服務清單中，選取 [Storm]****。
-3. 在 [快速連結]**** 功能表中，選取 [Storm UI]****。
+2. 在服務清單中，選取 [Storm]  。
+3. 在 [快速連結]  功能表中，選取 [Storm UI]  。
 
 ### <a name="direct-link"></a>直接連結
 
@@ -95,7 +95,7 @@ lib 資料夾的 .jar 檔案包含匯出/匯入作業的實作。 bash 資料夾
 
 /Usr/hdp 中的特定 HDP 版本可能會有多個二進位檔 (例如 `/usr/hdp/2.5.0.1233/storm`) 。 此 `/usr/hdp/current/storm-client` 資料夾會 symlinked 至叢集中正在執行的最新版本。
 
-如需詳細資訊，請參閱[使用 SSH 連線到 HDInsight 叢集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)和 [Apache Storm](https://storm.apache.org/) \(英文\)。
+如需詳細資訊，請參閱[使用 SSH 連線到 HDInsight 叢集](../hdinsight-hadoop-linux-use-ssh-unix.md)和 [Apache Storm](https://storm.apache.org/) \(英文\)。
 
 ## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>如何判斷 Storm 叢集的部署拓撲？
 
@@ -141,7 +141,7 @@ Storm 背景工作節點執行下列服務：
 
 ### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>C# 型拓撲 (HDInsight 3.4+ Linux Storm 叢集上的 Mono)
 
-[使用 Apache Storm on HDInsight 處理 Azure 事件中樞的事件 (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
+[使用 Apache Storm on HDInsight 處理 Azure 事件中樞的事件 (C#)](./apache-storm-develop-csharp-event-hub-topology.md)
 
 ### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>適用於 HDInsight 3.5+ Linux Storm 叢集的最新 Apache Storm 事件中樞 Spout 二進位檔
 
@@ -186,4 +186,4 @@ Storm 背景工作節點執行下列服務：
 
 - 連線至 [@AzureSupport](https://twitter.com/azuresupport) - 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 將 Azure 社群連線到正確的資源：解答、支援和專家。
 
-- 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。
+- 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

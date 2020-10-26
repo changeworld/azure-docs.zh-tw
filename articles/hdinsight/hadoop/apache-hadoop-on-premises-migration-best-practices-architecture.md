@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 2d560a415aa6ee0da5304a1a9900c30b32e3be18
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: af9b1f42140c5656c5f55a98c2d635d59e130db5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488923"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533728"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>將內部部署 Apache Hadoop 叢集遷移到 Azure HDInsight - 架構最佳作法
 
@@ -44,8 +44,8 @@ Azure HDInsight 叢集專為特定的計算使用類型而設計。 因為儲存
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
 |[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
 |[.NET SDK](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true)||||X|
-|[Python SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight)||||X|
-|[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight)||||X|
+|[Python SDK](/python/api/overview/azure/hdinsight)||||X|
+|[Java SDK](/java/api/overview/azure/hdinsight)||||X|
 |[Azure 資源管理員範本](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
 
 如需詳細資訊，請參閱 [HDInsight 中的叢集類型](../hadoop/apache-hadoop-introduction.md)一文。
@@ -103,7 +103,7 @@ HDInsight 會使用 Azure SQL Database 作為 Hive 和 Oozie 中繼存放區。 
 - 定期備份自訂中繼存放區。
 - 將中繼存放區與 HDInsight 叢集保存在相同區域。
 - 使用 Azure SQL Database 監視工具（例如 Azure 入口網站或 Azure 監視器記錄）監視中繼存放區的效能和可用性。
-- `ANALYZE TABLE`視需要執行命令，以產生資料表和資料行的統計資料。 例如，`ANALYZE TABLE [table_name] COMPUTE STATISTICS`。
+- `ANALYZE TABLE`視需要執行命令，以產生資料表和資料行的統計資料。 例如 `ANALYZE TABLE [table_name] COMPUTE STATISTICS`。
 
 ## <a name="best-practices-for-different-workloads"></a>不同工作負載的最佳做法
 
@@ -118,7 +118,7 @@ HDInsight 會使用 Azure SQL Database 作為 Hive 和 Oozie 中繼存放區。 
 - 請考慮在 Hive 資料表和稽核上使用 Ranger RBAC。
 - 請考慮使用 CosmosDB 取代 MongoDB 或 Cassandra。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 閱讀此系列中的下一篇文章：
 

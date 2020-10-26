@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 689417dd0743b01afd18b57b5336640f11edd044
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19466174faeef20b8ac29882b047d74ad2adc5ff
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504650"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535173"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>將 Azure Active Directory 使用者同步至 HDInsight 叢集
 
-[具有企業安全性套件 (ESP) 的 HDInsight ](hdinsight-domain-joined-introduction.md) 叢集可以搭配 Azure Active Directory (Azure AD 使用者使用增強式驗證，以及使用 *azure 角色型存取控制) azure RBAC (* 原則。 當您將使用者和群組新增至 Azure AD 時，您可以同步處理需要存取叢集的使用者。
+[具有企業安全性套件 (ESP) 的 HDInsight](./domain-joined/hdinsight-security-overview.md) 叢集可以搭配 Azure Active Directory (Azure AD 使用者使用增強式驗證，以及使用 *azure 角色型存取控制) azure RBAC (* 原則。 當您將使用者和群組新增至 Azure AD 時，您可以同步處理需要存取叢集的使用者。
 
 ## <a name="prerequisites"></a>必要條件
 
-如果您尚未這樣做，請[建立有企業安全性套件的 HDInsight 叢集](hdinsight-domain-joined-configure.md)。
+如果您尚未這樣做，請[建立有企業安全性套件的 HDInsight 叢集](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)。
 
 ## <a name="add-new-azure-ad-users"></a>新增 Azure AD 使用者
 
@@ -29,15 +29,15 @@ ms.locfileid: "89504650"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至與您的 ESP 叢集相關聯的 Azure AD 目錄。
 
-2. 從左側功能表中選取 [所有使用者]****，然後選取 [新增使用者]****。
+2. 從左側功能表中選取 [所有使用者]  ，然後選取 [新增使用者]  。
 
     ![Azure 入口網站的使用者和群組](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
 
-3. 完成新增使用者表單。 選取您建立用於指派叢集型權限的群組。 在此範例中，建立名為 "HiveUsers" 的群組，您可以對其指派新使用者。 用於建立 ESP 叢集的[範例指示](hdinsight-domain-joined-configure.md)包含新增兩個群組，分別是 `HiveUsers` 和 `AAD DC Administrators`。
+3. 完成新增使用者表單。 選取您建立用於指派叢集型權限的群組。 在此範例中，建立名為 "HiveUsers" 的群組，您可以對其指派新使用者。 用於建立 ESP 叢集的[範例指示](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)包含新增兩個群組，分別是 `HiveUsers` 和 `AAD DC Administrators`。
 
     ![Azure 入口網站使用者窗格選取群組](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
-4. 選取 [建立]****。
+4. 選取 [建立]。
 
 ## <a name="use-the-apache-ambari-rest-api-to-synchronize-users"></a>使用 Apache Ambari REST API 來同步使用者
 
@@ -120,20 +120,20 @@ ms.locfileid: "89504650"
     }
     ```
 
-1. 此結果顯示狀態為 [已 **完成**]、一個新的使用者已建立，且使用者已獲指派成員資格。 在此範例中，會將使用者指派給 "HiveUsers" 已同步的 LDAP 群組，因為使用者已新增至 Azure AD 中的該相同群組。
+1. 此結果顯示狀態為 [已 **完成** ]、一個新的使用者已建立，且使用者已獲指派成員資格。 在此範例中，會將使用者指派給 "HiveUsers" 已同步的 LDAP 群組，因為使用者已新增至 Azure AD 中的該相同群組。
 
     > [!NOTE]  
-    > 先前的方法只會同步處理叢集建立期間，網域設定的 [ **存取使用者群組** ] 屬性中指定的 Azure AD 群組。 如需詳細資訊，請參閱[建立 HDInsight 叢集](domain-joined/apache-domain-joined-configure.md)。
+    > 先前的方法只會同步處理叢集建立期間，網域設定的 [ **存取使用者群組** ] 屬性中指定的 Azure AD 群組。 如需詳細資訊，請參閱[建立 HDInsight 叢集](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)。
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>確認新增的 Azure AD 使用者
 
 開啟 [Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) 以確認已新增新的 Azure AD 使用者。 藉由流覽至來存取 Ambari Web UI **`https://CLUSTERNAME.azurehdinsight.net`** 。 輸入叢集系統管理員使用者名稱和密碼。
 
-1. 從 Ambari 儀表板中，選取 [管理員]**** 功能表底下的 [管理 Ambari]****。
+1. 從 Ambari 儀表板中，選取 [管理員]  功能表底下的 [管理 Ambari]  。
 
     ![Apache Ambari 儀表板管理 Ambari](./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png)
 
-2. 在分頁左側，選取 [使用者 + 群組管理]**** 功能表群組底下的 [使用者]****。
+2. 在分頁左側，選取 [使用者 + 群組管理]  功能表群組底下的 [使用者]  。
 
     ![HDInsight 使用者和群組功能表](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
 
@@ -148,6 +148,6 @@ ms.locfileid: "89504650"
 
 ## <a name="see-also"></a>另請參閱
 
-* [在有 ESP 的 HDInsight 中設定 Apache Hive 原則](hdinsight-domain-joined-run-hive.md)
-* [管理具有 ESP 的 HDInsight 叢集](hdinsight-domain-joined-manage.md)
+* [在有 ESP 的 HDInsight 中設定 Apache Hive 原則](./domain-joined/apache-domain-joined-run-hive.md)
+* [管理具有 ESP 的 HDInsight 叢集](./domain-joined/apache-domain-joined-manage.md)
 * [授權使用者存取 Apache Ambari](hdinsight-authorize-users-to-ambari.md)
