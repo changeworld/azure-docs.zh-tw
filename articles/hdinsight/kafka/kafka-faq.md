@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: d27c648980338b3a9e12bd618eb4620fe9988fd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84c48f14ae57cfa4aa3290924d3d170c075fe3a6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80436893"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532544"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Kafka 常見問題集
 
@@ -68,7 +68,7 @@ HDInsight Kafka 叢集包含下列資源：
 
 ## <a name="can-a-kafka-cluster-work-with-databricks"></a>Kafka 叢集是否可以與 Databricks 搭配運作？ 
 
-是的，只要 Kafka 叢集在相同的 VNet 中，就可以使用 Databricks。 若要使用具有 Databricks 的 Kafka 叢集，請在其中建立具有 HDInsight Kafka 叢集的 VNet，然後在您建立 Databricks 工作區並使用 VNet 插入時指定該 VNet。 如需詳細資訊，請參閱[在 Azure 虛擬網路中部署 Azure Databricks (VNet 插入)](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)。 建立 Databricks 工作區時，您必須提供 Kafka 叢集的啟動程式 broker 名稱。 如需有關抓取 Kafka broker 名稱的詳細資訊，請參閱 [取得 Apache Zookeeper 和訊息代理程式主機資訊](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started#getkafkainfo)。
+是的，只要 Kafka 叢集在相同的 VNet 中，就可以使用 Databricks。 若要使用具有 Databricks 的 Kafka 叢集，請在其中建立具有 HDInsight Kafka 叢集的 VNet，然後在您建立 Databricks 工作區並使用 VNet 插入時指定該 VNet。 如需詳細資訊，請參閱[在 Azure 虛擬網路中部署 Azure Databricks (VNet 插入)](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)。 建立 Databricks 工作區時，您必須提供 Kafka 叢集的啟動程式 broker 名稱。 如需有關抓取 Kafka broker 名稱的詳細資訊，請參閱 [取得 Apache Zookeeper 和訊息代理程式主機資訊](./apache-kafka-get-started.md#getkafkainfo)。
 
 ## <a name="how-can-i-have-maximum-data-durability"></a>如何擁有最大的資料耐久性？
 
@@ -94,7 +94,7 @@ HDInsight Kafka 叢集包含下列資源：
 
 使用 Azure 監視器來分析您的 [Kafka 記錄](./apache-kafka-log-analytics-operations-management.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [在 Azure HDInsight 中設定適用于 Apache Kafka 的 TLS 加密與驗證](./apache-kafka-ssl-encryption-authentication.md)
 * [使用 MirrorMaker，透過 HDInsight 上的 Kafka 來複寫 Apache Kafka 主題](./apache-kafka-mirroring.md)

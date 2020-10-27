@@ -171,7 +171,7 @@ npx http-server
 
 ### <a name="add-the-blob-storage-client-library"></a>新增 Blob 儲存體用戶端程式庫
 
-若要對 Blob 儲存體 API 啟用呼叫，請先[下載適用於 JavaScript 的 Azure 儲存體 SDK - Blob 用戶端程式庫](https://aka.ms/downloadazurestoragejsblob)、將 zip 內容解壓縮，然後將 *azure-storage-blob.js* 檔案放在 *azure-blobs-javascript* 資料夾中。
+若要對 Blob 儲存體 API 啟用呼叫，請先 [下載適用於 JavaScript 的 Azure 儲存體 SDK - Blob 用戶端程式庫](https://aka.ms/downloadazurestoragejsblob)、將 zip 內容解壓縮，然後將 *azure-storage-blob.js* 檔案放在 *azure-blobs-javascript* 資料夾中。
 
 接下來，將下列 HTML 貼到 index.html  的 `</body>` 結尾標記後面，並取代預留位置註解。
 
@@ -293,7 +293,7 @@ const listFiles = async () => {
 listButton.addEventListener("click", listFiles);
 ```
 
-此程式碼會在迴圈中呼叫 [ContainerURL.listBlobFlatSegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) 函式，以確保擷取所有區段。 該函式會針對每個區段，在所包含的 Blob 項目清單上循環，並更新**檔案**清單。
+此程式碼會在迴圈中呼叫 [ContainerURL.listBlobFlatSegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) 函式，以確保擷取所有區段。 該函式會針對每個區段，在所包含的 Blob 項目清單上循環，並更新 **檔案** 清單。
 
 ### <a name="upload-blobs"></a>上傳 Blob
 
@@ -349,11 +349,11 @@ const deleteFiles = async () => {
 deleteButton.addEventListener("click", deleteFiles);
 ```
 
-此程式碼會呼叫 [BlobURL.delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/BlobURL#delete-aborter--iblobdeleteoptions-) 函式來移除清單中選定的每個檔案。 然後呼叫稍早說明的 `listFiles` 函式，來重新整理**檔案**清單的內容。
+此程式碼會呼叫 [BlobURL.delete](https://docs.microsoft.com/javascript/api/@azure/storage-blob/BlobURL#delete-aborter--iblobdeleteoptions-) 函式來移除清單中選定的每個檔案。 然後呼叫稍早說明的 `listFiles` 函式，來重新整理 **檔案** 清單的內容。
 
 ### <a name="run-and-test-the-web-application"></a>執行並測試 Web 應用程式
 
-此時，您可以啟動頁面及進行實驗，以了解 Blob 儲存體的運作方式。 如果發生任何錯誤 (例如您嘗試在建立容器之前列出檔案)，**狀態**窗格將會顯示收到的錯誤訊息。 您也可以在 JavaScript 程式碼中設定中斷點，以檢查儲存體 API 所傳回的值。
+此時，您可以啟動頁面及進行實驗，以了解 Blob 儲存體的運作方式。 如果發生任何錯誤 (例如您嘗試在建立容器之前列出檔案)， **狀態** 窗格將會顯示收到的錯誤訊息。 您也可以在 JavaScript 程式碼中設定中斷點，以檢查儲存體 API 所傳回的值。
 
 ## <a name="clean-up-resources"></a>清除資源
 

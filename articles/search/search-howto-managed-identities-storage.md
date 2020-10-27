@@ -69,16 +69,16 @@ ms.locfileid: "92519549"
 
 從儲存體帳戶編製索引時，資料來源必須具有下列必要屬性︰
 
-* **名稱**是搜尋服務中資料來源的唯一名稱。
+* **名稱** 是搜尋服務中資料來源的唯一名稱。
 * **type**
     * Azure Blob 儲存體：`azureblob`
     * Azure 資料表儲存體：`azuretable`
-    * Azure Data Lake Storage Gen2：當您使用[此表單](https://aka.ms/azure-cognitive-search/mi-preview-request)註冊預覽版之後，將會提供**類型**。
+    * Azure Data Lake Storage Gen2：當您使用 [此表單](https://aka.ms/azure-cognitive-search/mi-preview-request)註冊預覽版之後，將會提供 **類型** 。
 * **credentials**
-    * 使用受控識別進行驗證時，**credentials** 格式會與未使用受控身分識別時的格式不同。 您將這裡提供沒有帳戶金鑰或密碼的 ResourceId。 ResourceId 必須包含儲存體帳戶的訂用帳戶識別碼、儲存體帳戶的資源群組，以及儲存體帳戶名稱。
+    * 使用受控識別進行驗證時， **credentials** 格式會與未使用受控身分識別時的格式不同。 您將這裡提供沒有帳戶金鑰或密碼的 ResourceId。 ResourceId 必須包含儲存體帳戶的訂用帳戶識別碼、儲存體帳戶的資源群組，以及儲存體帳戶名稱。
     * 受控識別格式： 
-        * *ResourceId=/subscriptions/**您的訂用帳戶識別碼**/resourceGroups/**您的資源群組名稱**/providers/Microsoft.Storage/storageAccounts/**您的儲存體帳戶名稱**/;*
-* **容器**會指定您儲存體帳戶中的容器或資料表名稱。 根據預設，容器內的所有 Blob 都可擷取。 如果您只想要在特定虛擬目錄為 Blob 編製索引，您可以使用選擇性的**查詢**參數指定該目錄。
+        * *ResourceId=/subscriptions/ **您的訂用帳戶識別碼** /resourceGroups/ **您的資源群組名稱** /providers/Microsoft.Storage/storageAccounts/ **您的儲存體帳戶名稱** /;*
+* **容器** 會指定您儲存體帳戶中的容器或資料表名稱。 根據預設，容器內的所有 Blob 都可擷取。 如果您只想要在特定虛擬目錄為 Blob 編製索引，您可以使用選擇性的 **查詢** 參數指定該目錄。
 
 如何使用 [REST API](/rest/api/searchservice/create-data-source) \(部分內容為機器翻譯\) 建立 Blob 資料來源物件的範例：
 

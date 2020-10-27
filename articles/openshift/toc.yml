@@ -18,6 +18,8 @@
   items:
     - name: 建立私人 Azure Red Hat OpenShift 4 叢集
       href: howto-create-private-cluster-4x.md
+    - name: 在 Azure Red Hat OpenShift 4 上建立 Azure 檔案儲存體 StorageClass
+      href: howto-create-a-storageclass.md
     - name: 更新 Azure Red Hat OpenShift 4 叢集的提取祕密
       href: howto-add-update-pull-secret.md
     - name: 設定 Azure Red Hat OpenShift 4 叢集的 DNS 轉送

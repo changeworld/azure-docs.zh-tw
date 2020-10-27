@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/25/2020
 ms.openlocfilehash: fa103c39b540c41536e4f231692b4602afe01a3e
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91361206"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>快速入門：使用 Visual Studio Code 來建立及管理邏輯應用程式工作流程定義
@@ -224,7 +224,7 @@ ms.locfileid: "91361206"
 
 ## <a name="disable-or-enable-logic-app"></a>停用或啟用邏輯應用程式
 
-在 Visual Studio Code 中，如果您編輯已發佈的邏輯應用程式並儲存變更，則會*覆寫*您已部署的應用程式。 若要避免在生產環境中斷邏輯應用程式，並盡可能避免運作中斷，請先停用邏輯應用程式。 之後，您可以在確認邏輯應用程式仍可運作後，再重新啟用邏輯應用程式。
+在 Visual Studio Code 中，如果您編輯已發佈的邏輯應用程式並儲存變更，則會 *覆寫* 您已部署的應用程式。 若要避免在生產環境中斷邏輯應用程式，並盡可能避免運作中斷，請先停用邏輯應用程式。 之後，您可以在確認邏輯應用程式仍可運作後，再重新啟用邏輯應用程式。
 
 1. 如果您未從 Visual Studio Code 中登入 Azure 帳戶和訂用帳戶，請依照[先前的步驟立即登入](#access-azure)。
 
@@ -263,7 +263,7 @@ ms.locfileid: "91361206"
 
 1. 完成後，儲存變更。 ([檔案] 功能表 > [儲存]，或按 Ctrl+S)
 
-1. 當系統提示您上傳變更並*覆寫* Azure 入口網站中現有的邏輯應用程式時，請選取 [上傳]  。
+1. 當系統提示您上傳變更並 *覆寫* Azure 入口網站中現有的邏輯應用程式時，請選取 [上傳]  。
 
    此步驟會將您的更新發佈至 [Azure 入口網站](https://portal.azure.com)中的邏輯應用程式。
 

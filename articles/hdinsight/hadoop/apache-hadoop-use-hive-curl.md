@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
-ms.openlocfilehash: 524c888bb132405f03af44f9c28198be0ac89370
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 956406ec5ac99be5973f1928bbb89db10e68b339
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489586"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533762"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>搭配 HDInsight 中的 Apache Hadoop 使用 REST 來執行 Apache Hive 查詢
 
@@ -25,13 +25,13 @@ ms.locfileid: "92489586"
 
 * HDInsight 上的 Apache Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](./apache-hadoop-linux-tutorial-get-started.md)。
 
-* REST 用戶端。 本檔使用 Windows PowerShell 上的[WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) ，並在[Bash](https://docs.microsoft.com/windows/wsl/install-win10)上[捲曲](https://curl.haxx.se/)。
+* REST 用戶端。 本檔使用 Windows PowerShell 上的[WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) ，並在[Bash](/windows/wsl/install-win10)上[捲曲](https://curl.haxx.se/)。
 
 * 如果您使用 Bash，您也需要 jq，也就是命令列 JSON 處理器。  請參閱 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
 
 ## <a name="base-uri-for-rest-api"></a>Rest API 的基底 URI
 
-HDInsight 上 REST API 的基底統一資源識別項 (URI) 是 `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` ，其中 `CLUSTERNAME` 是您的叢集名稱。  Uri 中的叢集名稱會區分 **大小寫**。  雖然完整功能變數名稱中的叢集名稱 (FQDN) 一部分的 URI (`CLUSTERNAME.azurehdinsight.net`) 不區分大小寫，但 uri 中的其他出現專案會區分大小寫。
+HDInsight 上 REST API 的基底統一資源識別項 (URI) 是 `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` ，其中 `CLUSTERNAME` 是您的叢集名稱。  Uri 中的叢集名稱會區分 **大小寫** 。  雖然完整功能變數名稱中的叢集名稱 (FQDN) 一部分的 URI (`CLUSTERNAME.azurehdinsight.net`) 不區分大小寫，但 uri 中的其他出現專案會區分大小寫。
 
 ## <a name="authentication"></a>驗證
 
@@ -156,7 +156,7 @@ $clusterName
 
    * `ROW FORMAT` - 設定資料格式的方式。 每個記錄中的欄位會以空格分隔。
    * `STORED AS TEXTFILE LOCATION` -資料儲存 (範例/資料目錄) ，而且會儲存為文字。
-   * `SELECT` -選取資料行 **t4** 包含 **[ERROR]** 值的所有資料列計數。 這個陳述式會傳回值 **3**，因為有三個資料列包含此值。
+   * `SELECT` -選取資料行 **t4** 包含 **[ERROR]** 值的所有資料列計數。 這個陳述式會傳回值 **3** ，因為有三個資料列包含此值。
 
      > [!NOTE]  
      > 請注意，在搭配 Curl 使用時，會以 `+` 字元取代 HiveQL 陳述式之間的空格。 加上引號的值若包含空格，例如分隔符號，則不應以 `+`取代。
@@ -181,13 +181,13 @@ $clusterName
     (ConvertFrom-Json $fixDup).status.state
     ```
 
-    如果作業已完成，則狀態會是 **SUCCEEDED**。
+    如果作業已完成，則狀態會是 **SUCCEEDED** 。
 
-1. 工作狀態變更為 [成功]**** 之後，即可從 Azure Blob 儲存體擷取工作結果。 與查詢一起傳遞的 `statusdir` 參數包含輸出檔案的位置；在此案例中為 `/example/rest`。 此位址會將輸出儲存在叢集預設儲存體的 `example/curl` 目錄中。
+1. 工作狀態變更為 [成功]  之後，即可從 Azure Blob 儲存體擷取工作結果。 與查詢一起傳遞的 `statusdir` 參數包含輸出檔案的位置；在此案例中為 `/example/rest`。 此位址會將輸出儲存在叢集預設儲存體的 `example/curl` 目錄中。
 
-    您可以使用 [Azure CLI](/cli/azure/install-azure-cli) 列出並下載這些檔案。 如需搭配 Azure 儲存體使用 Azure CLI 的詳細資訊，請參閱[搭配 Azure 儲存體使用 Azure CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli) 文件。
+    您可以使用 [Azure CLI](/cli/azure/install-azure-cli) 列出並下載這些檔案。 如需搭配 Azure 儲存體使用 Azure CLI 的詳細資訊，請參閱[搭配 Azure 儲存體使用 Azure CLI](../../storage/blobs/storage-quickstart-blobs-cli.md) 文件。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需您可以在 HDInsight 上使用 Hadoop 之其他方式的詳細資訊：
 

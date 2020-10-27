@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 01/03/2020
-ms.openlocfilehash: 162049c12c0618298695e43dae43f16e9fb50260
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d46f20f33e2627525f8f7f5b08bdaa2875626940
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372186"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541973"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>適用于 Go 的 HDInsight SDK (預覽版) 
 
@@ -39,7 +39,7 @@ ms.locfileid: "92372186"
 SDK 必須先使用您的 Azure 訂用帳戶進行驗證。  請依照下列範例建立服務主體，並使用它來驗證。 完成這項作業之後，您將會有一個實例 `ClustersClient` ，其中包含下列各節所述的多個函式 () 可用來執行管理作業。
 
 > [!NOTE]  
-> 除了下列範例以外，還有其他方式可進行驗證，可能更符合您的需求。 此處概述所有函式：[Azure SDK for Go 中的驗證函式](https://docs.microsoft.com/azure/go/azure-sdk-go-authorization)
+> 除了下列範例以外，還有其他方式可進行驗證，可能更符合您的需求。 此處概述所有函式：[Azure SDK for Go 中的驗證函式](/azure/go/azure-sdk-go-authorization)
 
 ### <a name="authentication-example-using-a-service-principal"></a>使用服務主體的驗證範例
 
@@ -365,7 +365,7 @@ extClient.Authorizer, _ = credentials.Authorizer()
 ### <a name="enable-oms-monitoring"></a>啟用 OMS 監視
 
 > [!NOTE]  
-> 若要啟用 OMS 監視，您必須擁有現有的 Log Analytics 工作區。 如果您尚未建立此工作區，您可以參考下列資料了解其建立方式：[在 Azure 入口網站中建立 Log Analytics 工作區](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)。
+> 若要啟用 OMS 監視，您必須擁有現有的 Log Analytics 工作區。 如果您尚未建立此工作區，您可以參考下列資料了解其建立方式：[在 Azure 入口網站中建立 Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace.md)。
 
 若要對您的叢集啟用 OMS 監視：
 
@@ -394,7 +394,7 @@ extClient.DisableMonitoring(context.Background(), "<Resource Group Name", "Clust
 HDInsight 提供稱為指令碼動作的設定函式，此方法會叫用自訂指令碼來自訂叢集。
 
 > [!NOTE]  
-> 如需如何使用指令碼動作的詳細資訊，請參閱：[使用指令碼動作自訂以 Linux 為基礎的 HDInsight 叢集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)
+> 如需如何使用指令碼動作的詳細資訊，請參閱：[使用指令碼動作自訂以 Linux 為基礎的 HDInsight 叢集](./hdinsight-hadoop-customize-cluster-linux.md)
 
 ### <a name="execute-script-actions"></a>執行指令碼動作
 
@@ -489,6 +489,6 @@ for (page.NotDone()) {
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 探索 [GoDoc reference material](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight) (GoDoc 參考資料)。 GoDocs 提供 SDK 中所有函式的參考文件。

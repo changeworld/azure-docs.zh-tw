@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: b9f7e93af61dbcf306f7d6eb105cb113412a423a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e412b82be911f0b4ba2e5cda51495cdcd7826917
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083095"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542296"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>將內部部署 Apache Hadoop 叢集遷移到 Azure HDInsight - 基礎結構最佳做法
 
@@ -27,9 +27,9 @@ ms.locfileid: "86083095"
 Azure 區域會決定叢集實際布建的位置。 若要將讀取和寫入的延遲降至最低，叢集應該與資料位於相同區域。
 
 **儲存位置和大小**  
-預設儲存體必須位於與叢集相同的區域中。若為48節點的叢集，建議使用4到8個儲存體帳戶。 雖然可能已經有足夠的儲存體總計，每個儲存體帳戶都會提供額外的網路頻寬供計算節點使用。 當有多個儲存體帳戶時，請對每個儲存體帳戶使用隨機名稱，不含前置詞。 隨機命名的目的在於減少儲存體瓶頸 (節流) 或所有帳戶發生一般模式失敗的機會。 為提升效能，每個儲存體帳戶僅使用一個容器。
+預設儲存體必須位於與叢集相同的區域中。 若為48節點的叢集，建議使用4到8個儲存體帳戶。 雖然可能已經有足夠的儲存體總計，每個儲存體帳戶都會提供額外的網路頻寬供計算節點使用。 當有多個儲存體帳戶時，請對每個儲存體帳戶使用隨機名稱，不含前置詞。 隨機命名的目的在於減少儲存體瓶頸 (節流) 或所有帳戶發生一般模式失敗的機會。 為提升效能，每個儲存體帳戶僅使用一個容器。
 
-**VM 大小和類型 (現在支援 G 系列) **  
+**VM 大小和類型 (現在支援 G 系列)**  
 每個叢集類型都具有一組節點類型，且每個節點類型都有其 VM 大小和類型的特定選項。 VM 大小與類型是由 CPU 處理能力、RAM 大小和網路延遲所決定。 模擬工作負載可用來決定每個節點類型適用的最佳 VM 大小和類型。
 
 **背景工作節點數目**  
@@ -52,35 +52,35 @@ Azure 區域會決定叢集實際布建的位置。 若要將讀取和寫入的�
 |**應用程式**|**整合**
 |---|---|
 |氣流|IaaS 或 HDInsight 邊緣節點
-|Alluxio|IaaS  
-|Arcadia|IaaS 
+|Alluxio|IaaS  
+|Arcadia|IaaS 
 |Atlas|無 (僅 HDP)
 |Datameer|HDInsight 邊緣節點
-|Datastax (Cassandra)|IaaS (Azure 上的替代方案為 CosmosDB)
-|DataTorrent|IaaS 
-|深入探詢|IaaS 
+|Datastax (Cassandra)|IaaS (Azure 上的替代方案為 CosmosDB)
+|DataTorrent|IaaS 
+|深入探詢|IaaS 
 |Ignite|IaaS
-|Jethro|IaaS 
-|Mapador|IaaS 
+|Jethro|IaaS 
+|Mapador|IaaS 
 |Mongo|IaaS (Azure 上的替代方案為 CosmosDB)
-|NiFi|IaaS 
+|NiFi|IaaS 
 |Presto|IaaS 或 HDInsight 邊緣節點
-|Python 2|PaaS 
-|Python 3|PaaS 
-|R|PaaS 
-|SAS|IaaS 
+|Python 2|PaaS 
+|Python 3|PaaS 
+|R|PaaS 
+|SAS|IaaS 
 |Vertica|IaaS (Azure 上的替代方案為 SQLDW)
-|Tableau|IaaS 
+|Tableau|IaaS 
 |Waterline|HDInsight 邊緣節點
-|StreamSets|HDInsight edge 
-|Palantir|IaaS 
-|Sailpoint|Iaas 
+|StreamSets|HDInsight edge 
+|Palantir|IaaS 
+|Sailpoint|Iaas 
 
 如需詳細資訊，請參閱[可以搭配不同 HDInsight 版本使用的 Apache Hadoop 元件](../hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions)一文
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>使用指令碼動作自訂 HDInsight 叢集
 
-HDInsight 提供稱為**指令碼動作**的叢集設定方法。 指令碼動作是 Bash 指令碼，可在 HDInsight 叢集中的節點上執行，而且可用來安裝其他元件和變更組態設定。
+HDInsight 提供稱為 **指令碼動作** 的叢集設定方法。 指令碼動作是 Bash 指令碼，可在 HDInsight 叢集中的節點上執行，而且可用來安裝其他元件和變更組態設定。
 
 指令碼動作必須儲存在可從 HDInsight 叢集存取的 URI 上。 您可以在建立叢集期間或建立叢集之後使用它們，也可以限制它們只在特定節點類型上執行。
 
@@ -109,7 +109,7 @@ HDInsight 提供預先撰寫的指令碼以在 HDInsight 叢集上安裝下列�
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>使用 Bootstrap 自訂 HDInsight 設定
 
-您可以使用 Bootstrap 針對設定檔 (例如 `core-site.xml`、`hive-site.xml` 和 `oozie-env.xml`) 中的設定進行變更。 下列腳本是使用 PowerShell [AZ module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) Cmdlet [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)的範例：
+您可以使用 Bootstrap 針對設定檔 (例如 `core-site.xml`、`hive-site.xml` 和 `oozie-env.xml`) 中的設定進行變更。 下列腳本是使用 PowerShell [AZ module](/powershell/azure/new-azureps-module-az) Cmdlet [New-AzHDInsightClusterConfig](/powershell/module/az.hdinsight/new-azhdinsightcluster)的範例：
 
 ```powershell
 # hive-site.xml configuration
@@ -196,6 +196,6 @@ HDInsight 可透過使用 Azure 虛擬網路和 VPN 閘道，連線到內部部�
 
 如需詳細資訊，請參閱[將 HDInsight 連線至內部部署網路](../connect-on-premises-network.md)一文
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 閱讀本系列的下一篇文章： [內部部署用來 Azure HDInsight Hadoop 遷移的儲存體最佳做法](apache-hadoop-on-premises-migration-best-practices-storage.md)。

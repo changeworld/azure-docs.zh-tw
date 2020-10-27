@@ -4,12 +4,12 @@ description: 了解如何使用叢集自動調整程式，根據 Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 7368745d3b6bf9731f987d6f4fc36b81d354fed8
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: e644a931152c83a5232c8233d519f7807ab708af
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103861"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542636"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自動調整叢集以符合 Azure Kubernetes Service (AKS) 的應用程式需求
 
@@ -19,14 +19,14 @@ ms.locfileid: "92103861"
 
 ## <a name="before-you-begin"></a>開始之前
 
-本文需要您執行 Azure CLI 2.0.76 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
+本文會要求您執行 Azure CLI 2.0.76 版版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
 
 ## <a name="about-the-cluster-autoscaler"></a>關於叢集自動調整程式
 
 為了適應不斷變化的應用程式需求，例如工作日和晚上之間或在週末，叢集通常需要一種自動調整的方法。 AKS 叢集可以透過下列兩種方式之一進行縮減：
 
-* **叢集自動調整程式**會監看由於資源限制而無法在節點上進行排程的 Pod。 叢集接著會自動增加節點數目。
-* **水平 Pod 自動調整程式**會在 Kubernetes 叢集中使用計量伺服器，以監視 Pod 的資源需求。 如果應用程式需要更多資源，Pod 數目會自動增加以符合需求。
+* **叢集自動調整程式** 會監看由於資源限制而無法在節點上進行排程的 Pod。 叢集接著會自動增加節點數目。
+* **水平 Pod 自動調整程式** 會在 Kubernetes 叢集中使用計量伺服器，以監視 Pod 的資源需求。 如果應用程式需要更多資源，Pod 數目會自動增加以符合需求。
 
 ![叢集自動調整程式和水平 Pod 自動調整程式通常會共同運作，以支援所需的應用程式需求](media/autoscaler/cluster-autoscaler.png)
 
@@ -47,7 +47,7 @@ ms.locfileid: "92103861"
 
 ## <a name="create-an-aks-cluster-and-enable-the-cluster-autoscaler"></a>建立 AKS 叢集並啟用叢集自動調整程式
 
-如果您需要建立 AKS 叢集，請使用 [az aks create][az-aks-create] 命令。 若要在叢集的節點集區上啟用和設定叢集自動調整程式，請使用 --enable-cluster-autoscaler 參數，並指定節點 --min-count 和 --max-count。
+如果您需要建立 AKS 叢集，請使用 [az aks create][az-aks-create] 命令。 若要在叢集的節點集區上啟用和設定叢集自動調整程式，請使用 `--enable-cluster-autoscaler` 參數，並指定節點 `--min-count` 和 `--max-count` 。
 
 > [!IMPORTANT]
 > 叢集自動調整程式是一項 Kubernetes 元件。 雖然 AKS 叢集會將虛擬機器擴展集用於節點，但請勿手動在 Azure 入口網站中或使用 Azure CLI 啟用或編輯擴展集自動調整的設定。 請讓 Kubernetes 叢集自動調整程式管理所需的調整設定。 如需詳細資訊，請參閱[我可以在節點資源群組中修改 AKS 資源嗎？][aks-faq-node-resource-group]
@@ -74,7 +74,7 @@ az aks create \
 
 ## <a name="update-an-existing-aks-cluster-to-enable-the-cluster-autoscaler"></a>更新現有的 AKS 叢集以啟用叢集自動調整程式
 
-使用 [az aks update][az-aks-update] 命令，在節點集區上啟用和設定現有叢集的叢集自動調整程式。 使用 *--enable-自動調整程式* 參數，並指定節點 *--最小計數* 和 *--最大計數*。
+使用 [az aks update][az-aks-update] 命令，在節點集區上啟用和設定現有叢集的叢集自動調整程式。 使用 `--enable-cluster-autoscaler` 參數，並指定節點 `--min-count` 和 `--max-count` 。
 
 > [!IMPORTANT]
 > 叢集自動調整程式是一項 Kubernetes 元件。 雖然 AKS 叢集會將虛擬機器擴展集用於節點，但請勿手動在 Azure 入口網站中或使用 Azure CLI 啟用或編輯擴展集自動調整的設定。 請讓 Kubernetes 叢集自動調整程式管理所需的調整設定。 如需詳細資訊，請參閱[我可以在節點資源群組中修改 AKS 資源嗎？][aks-faq-node-resource-group]
@@ -131,7 +131,14 @@ az aks update \
 | scale-down-unready-time          | 未就緒節點在符合縮小條件前，處於不受需要狀態的時間長度         | 20 分鐘    |
 | scale-down-utilization-threshold | 節點使用率層級 (其定義是所要求資源總和除以容量)，低於此等級可考慮將節點縮小 | 0.5 |
 | max-graceful-termination-sec     | 嘗試縮小節點時，叢集自動調整程式等待 Pod 終止的秒數上限。 | 600 秒   |
-| balance-similar-node-groups | 偵測相似的節點集區，並平衡其間的節點數目 | false |
+| balance-similar-node-groups      | 偵測類似的節點集區，並平衡它們之間的節點數目                 | false         |
+| 膨脹                         | 要在擴大中使用的節點集區 [擴充](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) 器類型。 可能的值： `most-pods` 、 `random` 、 `least-waste` | 隨機 | 
+| skip-具有-本機-儲存體的節點    | 若為 true，叢集自動調整程式將永遠不會刪除具有本機儲存體之 pod 的節點，例如 EmptyDir 或 HostPath | true |
+| skip-具有-系統-pod 的節點      | 若為 true，叢集自動調整程式將永遠不會從 kube 系統 (刪除節點（除了 DaemonSet 或鏡像 pod 以外）)  | true | 
+| 最大-空白-大量刪除            | 可同時刪除的空白節點數目上限。                      | 10個節點      |
+| 新的-pod-擴大延遲           | 針對高載/批次規模（例如，您不希望 CA 在 kubernetes 排程器可以排程所有 pod 之前採取行動的案例），您可以告知 CA 在處於特定時間之前忽略未排程的 pod」。                                                                                                                | 10 秒    |
+| 最大值-總-unready-百分比     | 叢集中 unready 節點的最大百分比。 超過此百分比之後，CA 會停止作業 | 45% | 
+| ok-total-unready-count           | 允許的 unready 節點數目，而不考慮最大值-unready-百分比            | 3個節點       |
 
 > [!IMPORTANT]
 > 叢集自動調整程式設定檔會影響所有使用叢集自動調整程式的節點集區。 無法為每個節點集區設定一個自動調整程式設定檔。
@@ -194,7 +201,7 @@ az aks update \
 
 ## <a name="disable-the-cluster-autoscaler"></a>停用叢集自動調整程式
 
-如果您不想繼續使用叢集自動調整程式，可以使用[az aks update][az-aks-update-preview]命令來停用該程式，並指定 *--disable-cluster-autoscaler*參數。 當叢集自動調整程式停用時，不會移除節點。
+如果您不想再使用叢集自動調整程式，您可以使用 [az aks update][az-aks-update-preview] 命令來停用它，並指定 `--disable-cluster-autoscaler` 參數。 當叢集自動調整程式停用時，不會移除節點。
 
 ```azurecli-interactive
 az aks update \
@@ -207,18 +214,18 @@ az aks update \
 
 ## <a name="re-enable-a-disabled-cluster-autoscaler"></a>重新啟用已停用的叢集自動調整程式
 
-如果您想要在現有叢集上重新啟用叢集自動調整程式，您可以使用 [az aks update][az-aks-update-preview] 命令重新啟用，並指定 --enable-cluster-autoscaler、--min-count 和 --max count 參數。
+如果您想要在現有的叢集上重新啟用叢集自動調整程式，您可以使用 [az aks update][az-aks-update-preview] 命令重新啟用它， `--enable-cluster-autoscaler` 並指定、 `--min-count` 和 `--max-count` 參數。
 
 ## <a name="retrieve-cluster-autoscaler-logs-and-status"></a>取出叢集自動調整程式記錄和狀態
 
 若要診斷自動調整程式事件並偵錯，可以從自動調整程式附加元件擷取記錄和狀態。
 
-AKS 會代表您管理叢集自動調整程式，並在受控控制平面中執行。 主要節點記錄必須設定為可視為結果。
+AKS 會代表您管理叢集自動調整程式，並在受控控制平面中執行。 您可以啟用 [控制平面] 節點，以查看來自 CA 的記錄和操作。
 
 若要將記錄設為從叢集自動調整程式推送至 Log Analytics，請按下列步驟操作。
 
 1. 設定資源記錄規則，將叢集自動調整程式記錄推送至 Log Analytics。 [這裡提供了詳細說明][aks-view-master-logs]，請務必在選取 [記錄] 選項時，勾選 `cluster-autoscaler` 的核取方塊。
-1. 透過 Azure 入口網站，按一下您叢集上的 [記錄] 區段。
+1. 在您的叢集上，透過 Azure 入口網站選取 [記錄] 區段。
 1. 將下列範例查詢輸入至 Log Analytics：
 
 ```
@@ -230,7 +237,7 @@ AzureDiagnostics
 
 ![Log Analytics 記錄](media/autoscaler/autoscaler-logs.png)
 
-叢集自動調整程式也會將健全狀態寫出至名為 `cluster-autoscaler-status` 的 configmap。 若要取出這些記錄，請執行下列 `kubectl` 命令。 以叢集自動調整程式設定的各個節點集區，會報告健全狀況狀態。
+叢集自動調整程式也會將健康狀態寫出至名為的 `configmap` `cluster-autoscaler-status` 。 若要取出這些記錄，請執行下列 `kubectl` 命令。 以叢集自動調整程式設定的各個節點集區，會報告健全狀況狀態。
 
 ```
 kubectl get configmap -n kube-system cluster-autoscaler-status -o yaml
@@ -264,7 +271,7 @@ az aks nodepool update \
   --disable-cluster-autoscaler
 ```
 
-如果您想要在現有叢集上重新啟用叢集自動調整程式，您可以使用 [az aks nodepool update][az-aks-nodepool-update] 命令重新啟用，並指定 --enable-cluster-autoscaler、--min-count和 -max count *-* 參數。
+如果您想要在現有的叢集上重新啟用叢集自動調整程式，您可以使用 [az aks nodepool update][az-aks-nodepool-update] 命令重新啟用它， `--enable-cluster-autoscaler` 並指定、 `--min-count` 和 `--max-count` 參數。
 
 ## <a name="next-steps"></a>後續步驟
 

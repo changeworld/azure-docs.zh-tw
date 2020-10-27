@@ -3,12 +3,12 @@ title: 如何建立 Windows 的客體設定原則
 description: 了解如何建立 Windows 的 Azure 原則客體設定原則。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: ef571857664739c055912cb6460c4638d4cad32b
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 563b178b9ba92125967c779b59a78a8e105ec744
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893113"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542857"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何建立 Windows 的客體設定原則
 
@@ -16,7 +16,7 @@ ms.locfileid: "91893113"
  
 若要了解如何建立 Linux 的客體設定原則，請參閱[如何建立 Linux 的客體設定原則](./guest-configuration-create-linux.md)頁面
 
-在稽核 Windows 時，客體設定會使用[預期狀態設定](/powershell/scripting/dsc/overview/overview) (DSC) 資源模組來建立設定檔。 DSC 設定會定義電腦所應處的條件。 如果設定的評估失敗，則會觸發 **auditIfNotExists** 的原則效果，並將該電腦視為**不符合規範**。
+在稽核 Windows 時，客體設定會使用[預期狀態設定](/powershell/scripting/dsc/overview/overview) (DSC) 資源模組來建立設定檔。 DSC 設定會定義電腦所應處的條件。 如果設定的評估失敗，則會觸發 **auditIfNotExists** 的原則效果，並將該電腦視為 **不符合規範** 。
 
 [Azure 原則客體設定](../concepts/guest-configuration.md)目前只會稽核電腦內的設定， 尚不提供補救電腦內的設定。
 
@@ -56,7 +56,7 @@ ms.locfileid: "91893113"
 
 ### <a name="install-the-module"></a>安裝模組
 
-若要在 PowerShell 中安裝**GuestConfiguration**模組：
+若要在 PowerShell 中安裝 **GuestConfiguration** 模組：
 
 1. 從 PowerShell 提示字元中執行下列命令：
 
@@ -140,7 +140,7 @@ class ResourceName : OMI_BaseResource
 
 ### <a name="scaffolding-a-guest-configuration-project"></a>為客體設定專案建立結構
 
-開發人員若希望加快從範例程式碼開始與工作的流程，則可安裝名為**客體設定專案**的社群專案。 此專案會安裝 [Plaster](https://github.com/powershell/plaster) PowerShell 模組的範本。 這項工具可用來為專案建立結構，包括運作中的設定和範例資源，以及一組 [Pester](https://github.com/pester/pester) 測試來驗證專案。 此範本也包含 Visual Studio Code 的工作執行器，可自動建置及驗證客體設定套件。 如需詳細資訊，請參閱 GitHub 專案[客體設定專案](https://github.com/microsoft/guestconfigurationproject)。
+開發人員若希望加快從範例程式碼開始與工作的流程，則可安裝名為 **客體設定專案** 的社群專案。 此專案會安裝 [Plaster](https://github.com/powershell/plaster) PowerShell 模組的範本。 這項工具可用來為專案建立結構，包括運作中的設定和範例資源，以及一組 [Pester](https://github.com/pester/pester) 測試來驗證專案。 此範本也包含 Visual Studio Code 的工作執行器，可自動建置及驗證客體設定套件。 如需詳細資訊，請參閱 GitHub 專案[客體設定專案](https://github.com/microsoft/guestconfigurationproject)。
 
 如需一般使用設定的詳細資訊，請參閱[撰寫、編譯及套用設定](/powershell/scripting/dsc/configurations/write-compile-apply-configuration)。
 
@@ -198,9 +198,9 @@ AuditBitLocker ./Config
 
 `New-GuestConfigurationPackage` Cmdlet 會建立套件。 設定所需的模組必須在 `$Env:PSModulePath` 中提供。 建立 Windows 內容時所使用的 `New-GuestConfigurationPackage` Cmdlet 參數：
 
-- **Name**：客體設定套件名稱。
-- **設定**：已編譯的 DSC 設定文件完整路徑。
-- **路徑**：輸出資料夾路徑。 這是選擇性參數。 如果未指定，則會在目前的目錄中建立套件。
+- **Name** ：客體設定套件名稱。
+- **設定** ：已編譯的 DSC 設定文件完整路徑。
+- **路徑** ：輸出資料夾路徑。 這是選擇性參數。 如果未指定，則會在目前的目錄中建立套件。
 
 執行下列命令，以使用上一個步驟中指定的設定來建立套件：
 
@@ -216,9 +216,9 @@ New-GuestConfigurationPackage `
 
 `Test-GuestConfigurationPackage` Cmdlet 的參數：
 
-- **Name**：客體設定原則名稱。
-- **參數**：以雜湊表格式提供的原則參數。
-- **路徑**：客體設定套件的完整路徑。
+- **Name** ：客體設定原則名稱。
+- **參數** ：以雜湊表格式提供的原則參數。
+- **路徑** ：客體設定套件的完整路徑。
 
 執行下列命令來測試上一個步驟所建立的套件：
 
@@ -233,74 +233,23 @@ Test-GuestConfigurationPackage `
 New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./Config/AuditBitlocker.mof | Test-GuestConfigurationPackage
 ```
 
-下一步是要將檔案發佈至 Azure Blob 儲存體。 下列指令碼包含可供用來自動執行這項工作的函式。 `publish` 函式中使用的命令需要 `Az.Storage` 模組。
+下一步是要將檔案發佈至 Azure Blob 儲存體。 此命令 `Publish-GuestConfigurationPackage` 需要 `Az.Storage` 模組。
 
 ```azurepowershell-interactive
-function publish {
-    param(
-    [Parameter(Mandatory=$true)]
-    $resourceGroup,
-    [Parameter(Mandatory=$true)]
-    $storageAccountName,
-    [Parameter(Mandatory=$true)]
-    $storageContainerName,
-    [Parameter(Mandatory=$true)]
-    $filePath,
-    [Parameter(Mandatory=$true)]
-    $blobName
-    )
-
-    # Get Storage Context
-    $Context = Get-AzStorageAccount -ResourceGroupName $resourceGroup `
-        -Name $storageAccountName | `
-        ForEach-Object { $_.Context }
-
-    # Upload file
-    $Blob = Set-AzStorageBlobContent -Context $Context `
-        -Container $storageContainerName `
-        -File $filePath `
-        -Blob $blobName `
-        -Force
-
-    # Get url with SAS token
-    $StartTime = (Get-Date)
-    $ExpiryTime = $StartTime.AddYears('3')  # THREE YEAR EXPIRATION
-    $SAS = New-AzStorageBlobSASToken -Context $Context `
-        -Container $storageContainerName `
-        -Blob $blobName `
-        -StartTime $StartTime `
-        -ExpiryTime $ExpiryTime `
-        -Permission rl `
-        -FullUri
-
-    # Output
-    return $SAS
-}
-
-# replace the $storageAccountName value below, it must be globally unique
-$resourceGroup        = 'policyfiles'
-$storageAccountName   = 'youraccountname'
-$storageContainerName = 'artifacts'
-
-$uri = publish `
-  -resourceGroup $resourceGroup `
-  -storageAccountName $storageAccountName `
-  -storageContainerName $storageContainerName `
-  -filePath ./AuditBitlocker.zip `
-  -blobName 'AuditBitlocker'
+Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName myResourceGroupName -StorageAccountName myStorageAccountName
 ```
 
 在完成建立並上傳客體設定自訂原則套件後，請建立客體設定原則定義。 `New-GuestConfigurationPolicy` Cmdlet 會採納自訂原則套件，並建立原則定義。
 
 `New-GuestConfigurationPolicy` Cmdlet 的參數：
 
-- **ContentUri**：客體設定內容套件的公用 http(s) URI。
-- **DisplayName**：原則顯示名稱。
-- **描述**：原則描述。
-- **參數**：以雜湊表格式提供的原則參數。
-- **版本**：原則版本。
-- **路徑**：建立原則定義的目的地路徑。
-- **平台**：客體設定原則和內容套件的目標平台 (Windows/Linux)。
+- **ContentUri** ：客體設定內容套件的公用 http(s) URI。
+- **DisplayName** ：原則顯示名稱。
+- **描述** ：原則描述。
+- **參數** ：以雜湊表格式提供的原則參數。
+- **版本** ：原則版本。
+- **路徑** ：建立原則定義的目的地路徑。
+- **平台** ：客體設定原則和內容套件的目標平台 (Windows/Linux)。
 - **Tag** 會將一或多個標籤篩選新增至原則定義
 - **Category** 會在原則定義中，設定類別中繼資料欄位
 
@@ -320,14 +269,12 @@ New-GuestConfigurationPolicy `
 下列檔案是由 `New-GuestConfigurationPolicy` 所建立：
 
 - **auditIfNotExists.json**
-- **deployIfNotExists.json**
-- **Initiative.json**
 
 Cmdlet 輸出會傳回物件，其中包含原則檔案的方案顯示名稱和路徑。
 
 最後，使用 `Publish-GuestConfigurationPolicy` Cmdlet 來發佈原則定義。 此 Cmdlet 只有 **Path** 參數，該參數會指向由 `New-GuestConfigurationPolicy` 所建立的 JSON 檔案位置。
 
-若要執行發佈命令，則需要在 Azure 中建立原則的存取權。 如需特定的授權需求，請參閱 [Azure 原則概觀](../overview.md)頁面。 最佳的內建角色為**資源原則參與者**。
+若要執行發佈命令，則需要在 Azure 中建立原則的存取權。 如需特定的授權需求，請參閱 [Azure 原則概觀](../overview.md)頁面。 最佳的內建角色為 **資源原則參與者** 。
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPolicy -Path '.\policyDefinitions'
@@ -344,25 +291,7 @@ New-GuestConfigurationPolicy `
  | Publish-GuestConfigurationPolicy
 ```
 
-在 Azure 中建立原則之後，即可指派方案作為最後一步。 請參閱使用[入口網站](../assign-policy-portal.md)、[Azure CLI](../assign-policy-azurecli.md) 以及 [Azure PowerShell](../assign-policy-powershell.md) 來指派方案的方法。
-
-> [!IMPORTANT]
-> 客體設定原則必須**一律**使用結合 _AuditIfNotExists_ 與 _DeployIfNotExists_ 原則的方案來指派。 如果僅指派 _AuditIfNotExists_ 原則，則不會部署先決條件，而原則一律會顯示「0」部伺服器符合規範。
-
-若要搭配 _DeployIfNotExists_ 效果指派原則定義，則需要額外的存取層級。 若要授與最小權限，您可建立自訂角色定義來擴充**資源原則參與者**。 下列範例會建立名為**資源原則參與者 DINE** 的角色，並具有 _Microsoft.Authorization/roleAssignments/write_ 的額外權限。
-
-```azurepowershell-interactive
-$subscriptionid = '00000000-0000-0000-0000-000000000000'
-$role = Get-AzRoleDefinition "Resource Policy Contributor"
-$role.Id = $null
-$role.Name = "Resource Policy Contributor DINE"
-$role.Description = "Can assign Policies that require remediation."
-$role.Actions.Clear()
-$role.Actions.Add("Microsoft.Authorization/roleAssignments/write")
-$role.AssignableScopes.Clear()
-$role.AssignableScopes.Add("/subscriptions/$subscriptionid")
-New-AzRoleDefinition -Role $role
-```
+在 Azure 中建立原則後，最後一個步驟就是指派定義。 瞭解如何使用 [入口網站](../assign-policy-portal.md)、 [Azure CLI](../assign-policy-azurecli.md)和 [Azure PowerShell](../assign-policy-powershell.md)指派定義。
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>使用標籤來篩選客體設定原則
 
@@ -396,7 +325,7 @@ New-AzRoleDefinition -Role $role
 
 客體設定支援在執行階段覆寫設定的屬性。 這項功能表示套件中 MOF 檔案的值不一定要被視為靜態。 覆寫值是透過 Azure 原則提供，且不會影響撰寫或編譯設定的方式。
 
-Cmdlet `New-GuestConfigurationPolicy` 和 `Test-GuestConfigurationPolicyPackage` 包含參數命名 **參數**。 此參數會採納雜湊表定義，包括每個參數的所有詳細資料，並為每個檔案建立必要區段，以用於 Azure 原則定義。
+Cmdlet `New-GuestConfigurationPolicy` 和 `Test-GuestConfigurationPolicyPackage` 包含參數命名 **參數** 。 此參數會採納雜湊表定義，包括每個參數的所有詳細資料，並為每個檔案建立必要區段，以用於 Azure 原則定義。
 
 下列範例會建立原則定義來稽核服務，使用者可在原則指派時從清單中進行選取。
 
@@ -541,10 +470,10 @@ wmi_service -out ./Config
 
 `New-GuestConfigurationPackage` Cmdlet 會建立套件。 針對第三方內容，請使用 **FilesToInclude** 參數，將 InSpec 內容新增至套件。 您不需要為 Linux 套件指定 **ChefProfilePath** 。
 
-- **Name**：客體設定套件名稱。
-- **設定**：已編譯的設定文件完整路徑。
-- **路徑**：輸出資料夾路徑。 這是選擇性參數。 如果未指定，則會在目前的目錄中建立套件。
-- **FilesoInclude**：InSpec 設定檔的完整路徑。
+- **Name** ：客體設定套件名稱。
+- **設定** ：已編譯的設定文件完整路徑。
+- **路徑** ：輸出資料夾路徑。 這是選擇性參數。 如果未指定，則會在目前的目錄中建立套件。
+- **FilesoInclude** ：InSpec 設定檔的完整路徑。
 
 執行下列命令，以使用上一個步驟中指定的設定來建立套件：
 
@@ -560,8 +489,8 @@ New-GuestConfigurationPackage `
 
 如果您想要將更新發行至原則，則需要注意兩個欄位。
 
-- **版本**：當執行 `New-GuestConfigurationPolicy` Cmdlet 時，您必須指定大於目前發佈的版本號碼。 屬性會更新客體設定指派的版本，讓代理程式能夠辨識更新的套件。
-- **contentHash**：`New-GuestConfigurationPolicy` Cmdlet 會自動更新此屬性。 此為 `New-GuestConfigurationPackage` 所建立套件的雜湊值。 針對您發佈的 `.zip` 檔案而言，此屬性必須是正確的。 如果只更新 **contentUri** 屬性，延伸模組就不會接受內容套件。
+- **版本** ：當執行 `New-GuestConfigurationPolicy` Cmdlet 時，您必須指定大於目前發佈的版本號碼。 屬性會更新客體設定指派的版本，讓代理程式能夠辨識更新的套件。
+- **contentHash** ：`New-GuestConfigurationPolicy` Cmdlet 會自動更新此屬性。 此為 `New-GuestConfigurationPackage` 所建立套件的雜湊值。 針對您發佈的 `.zip` 檔案而言，此屬性必須是正確的。 如果只更新 **contentUri** 屬性，延伸模組就不會接受內容套件。
 
 發行更新套件的最簡單方式就是重複本文中所述程序，並提供更新的版本號碼。 此程序可確保所有屬性都已正確更新。
 
@@ -581,8 +510,8 @@ Protect-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindo
 
 `Protect-GuestConfigurationPackage` Cmdlet 的參數：
 
-- **路徑**：客體設定套件的完整路徑。
-- **Certificate**：用來簽署套件的程式碼簽署憑證。 只有在簽署 Windows 的內容時，才支援此參數。
+- **路徑** ：客體設定套件的完整路徑。
+- **Certificate** ：用來簽署套件的程式碼簽署憑證。 只有在簽署 Windows 的內容時，才支援此參數。
 
 GuestConfiguration 代理程式預期憑證公開金鑰會出現在 Windows 電腦上、以及 Linux 電腦路徑 `/usr/local/share/ca-certificates/extra` 的「受信任根憑證授權」中。 若要讓節點驗證已簽署的內容，請先在電腦上安裝憑證公開金鑰，再套用自訂原則。 此流程可使用 VM 內的任何技術、或使用 Azure 原則來完成。 請參閱[這裡](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)的範例範本。
 Key Vault 存取原則必須允許計算資源提供者在部署期間存取憑證。 如需詳細步驟，請參閱[在 Azure Resource Manager 中設定虛擬機器的 Key Vault](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault)。

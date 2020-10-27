@@ -7,29 +7,29 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: 8ae16e6799d1253b8b070d59414beaee3c7ff332
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d2e9c1fe89866511f8eae0b900563471cd6e52e9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479777"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533303"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>移轉至叢集組態中以角色為基礎的細微存取
 
-我們會介紹一些重要的變更，以支援更精細的角色型存取來取得機密資訊。 作為這些變更的一部分，如果您使用其中一個[受影響的實體/案例](#am-i-affected-by-these-changes)，則可能會在**2019 年9月3日**需要某些動作。
+我們會介紹一些重要的變更，以支援更精細的角色型存取來取得機密資訊。 作為這些變更的一部分，如果您使用其中一個 [受影響的實體/案例](#am-i-affected-by-these-changes)，則可能會在 **2019 年9月3日** 需要某些動作。
 
 ## <a name="what-is-changing"></a>變更內容為何？
 
-先前，擁有擁有者、參與者或讀者 [Azure 角色](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)的叢集使用者可以透過 HDInsight API 取得秘密，因為這些使用者可供具有該許可權的任何人使用 `*/read` 。 密碼會定義為值，可用來取得比使用者角色應允許更高的存取權。 這些包括叢集閘道 HTTP 認證、儲存體帳戶金鑰和資料庫認證等值。
+先前，擁有擁有者、參與者或讀者 [Azure 角色](../role-based-access-control/rbac-and-directory-admin-roles.md)的叢集使用者可以透過 HDInsight API 取得秘密，因為這些使用者可供具有該許可權的任何人使用 `*/read` 。 密碼會定義為值，可用來取得比使用者角色應允許更高的存取權。 這些包括叢集閘道 HTTP 認證、儲存體帳戶金鑰和資料庫認證等值。
 
 從2019年9月3日開始，存取這些秘密將需要 `Microsoft.HDInsight/clusters/configurations/action` 許可權，這表示使用者無法再存取具有「讀取者」角色的使用者。 具有此許可權的角色是「參與者」、「擁有者」和「新的 HDInsight 叢集操作員」角色 (詳細資訊) 。
 
-我們也引進了一個新的 [HDInsight 叢集操作員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) 角色，此角色將能夠在不授與參與者或擁有者的系統管理許可權的情況下，取得秘密。 總括來說：
+我們也引進了一個新的 [HDInsight 叢集操作員](../role-based-access-control/built-in-roles.md#hdinsight-cluster-operator) 角色，此角色將能夠在不授與參與者或擁有者的系統管理許可權的情況下，取得秘密。 總括來說：
 
 | 角色                                  | 先前是                                                                                        | 往後       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
 | 讀取者                                | -讀取存取權，包括秘密。                                                                   | -讀取存取權， **排除** 秘密 |           |   |   |
-| HDInsight 叢集操作員<br> (新的角色)  | N/A                                                                                              | -讀取/寫入存取權，包括秘密         |   |   |
+| HDInsight 叢集操作員<br> (新的角色)  | 不適用                                                                                              | -讀取/寫入存取權，包括秘密         |   |   |
 | 參與者                           | -讀取/寫入存取權，包括秘密。<br>-建立和管理所有類型的 Azure 資源。<br>-執行腳本動作。     | 沒有變更 |
 | 擁有者                                 | -讀取/寫入存取權，包括秘密。<br>-所有資源的完整存取權<br>-將存取權委派給其他人。<br>-執行腳本動作。 | 沒有變更 |
 
@@ -57,23 +57,23 @@ ms.locfileid: "92479777"
 
 下列 Api 將會變更或淘汰：
 
-- [**取得/configurations/{configurationName}**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (移除的機密資訊) 
+- [**取得/configurations/{configurationName}**](/rest/api/hdinsight/hdinsight-cluster#get-configuration) (移除的機密資訊) 
     - 之前用來取得個別設定類型 (包括) 的秘密。
     - 從2019年9月3日開始，此 API 呼叫現在會傳回已省略秘密的個別設定類型。 若要取得所有設定，包括秘密，請使用新的 POST/configurations 呼叫。 若要只取得閘道設定，請使用新的 POST/getGatewaySettings 呼叫。
-- [**取得/configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (已淘汰的) 
+- [**取得/configurations**](/rest/api/hdinsight/hdinsight-cluster#get-configuration) (已淘汰的) 
     - 之前用來取得所有設定 (包括秘密) 
     - 從2019年9月3日開始，此 API 呼叫將會被取代，而且不再受到支援。 若要繼續進行所有設定，請使用新的 POST/configurations 通話。 若要取得已省略敏感性參數的設定，請使用 GET/configurations/{configurationName} 呼叫。
-- [**/Configurations/{configurationName} 後**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings) (已淘汰) 
+- [**/Configurations/{configurationName} 後**](/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings) (已淘汰) 
     - 之前用來更新閘道認證。
     - 從2019年9月3日開始，此 API 呼叫將會被取代，不再受到支援。 請改用新的文章/updateGatewaySettings。
 
 已新增下列取代 Api：</span>
 
-- [**張貼/configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#list-configurations)
+- [**張貼/configurations**](/rest/api/hdinsight/hdinsight-cluster#list-configurations)
     - 使用此 API 來取得所有設定，包括秘密。
-- [**張貼/getGatewaySettings**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-gateway-settings)
+- [**張貼/getGatewaySettings**](/rest/api/hdinsight/hdinsight-cluster#get-gateway-settings)
     - 使用此 API 來取得閘道設定。
-- [**張貼/updateGatewaySettings**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings)
+- [**張貼/updateGatewaySettings**](/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings)
     - 使用此 API 來更新 (使用者名稱和/或密碼) 的閘道設定。
 
 ### <a name="azure-hdinsight-tools-for-visual-studio-code"></a>適用于 Visual Studio Code 的 Azure HDInsight 工具
@@ -86,7 +86,7 @@ ms.locfileid: "92479777"
 
 ### <a name="azure-data-lake-and-stream-analytics-tools-for-visual-studio"></a>適用于 Visual Studio 的 Azure Data Lake 和串流分析工具
 
-更新為 Azure Data Lake 的版本2.3.9000.1 或更新版本 [，以及適用于 Visual Studio 的串流分析工具](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools&ssr=false#overview) ，以避免中斷。  如需更新的說明，請參閱我們 [的檔、更新 Data Lake Tools for Visual Studio](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-visual-studio-tools-get-started#update-data-lake-tools-for-visual-studio)。
+更新為 Azure Data Lake 的版本2.3.9000.1 或更新版本 [，以及適用于 Visual Studio 的串流分析工具](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools&ssr=false#overview) ，以避免中斷。  如需更新的說明，請參閱我們 [的檔、更新 Data Lake Tools for Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md#update-data-lake-tools-for-visual-studio)。
 
 ### <a name="azure-toolkit-for-eclipse"></a>適用於 Eclipse 的 Azure 工具組
 
@@ -122,10 +122,10 @@ ms.locfileid: "92479777"
 
 更新至適用于 Python 的 HDInsight SDK [1.0.0 版](https://pypi.org/project/azure-mgmt-hdinsight/1.0.0/) 或更新版本。 如果您使用受這些變更影響的方法，則可能需要進行少量的程式碼修改：
 
-- [`ConfigurationsOperations.get`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-) 將 **不會再傳回機密參數** ，例如 (核心) 的儲存體金鑰，或 (閘道) 的 HTTP 認證。
-    - 若要抓取所有設定，包括敏感性參數，請 [`ConfigurationsOperations.list`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#list-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) 繼續使用。請注意，具有「讀者」角色的使用者將無法使用此方法。 這可讓您更精確地控制哪些使用者可以存取叢集的機密資訊。 
-    - 若只取出 HTTP 閘道認證，請使用 [`ClusterOperations.get_gateway_settings`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#get-gateway-settings-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) 。
-- [`ConfigurationsOperations.update`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#update-resource-group-name--cluster-name--configuration-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) 現在已被取代，並已由取代 [`ClusterOperations.update_gateway_settings`](https://docs.microsoft.com/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) 。
+- [`ConfigurationsOperations.get`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-) 將 **不會再傳回機密參數** ，例如 (核心) 的儲存體金鑰，或 (閘道) 的 HTTP 認證。
+    - 若要抓取所有設定，包括敏感性參數，請 [`ConfigurationsOperations.list`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#list-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) 繼續使用。請注意，具有「讀者」角色的使用者將無法使用此方法。 這可讓您更精確地控制哪些使用者可以存取叢集的機密資訊。 
+    - 若只取出 HTTP 閘道認證，請使用 [`ClusterOperations.get_gateway_settings`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#get-gateway-settings-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) 。
+- [`ConfigurationsOperations.update`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#update-resource-group-name--cluster-name--configuration-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) 現在已被取代，並已由取代 [`ClusterOperations.update_gateway_settings`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) 。
 
 ### <a name="sdk-for-java"></a>適用于 JAVA 的 SDK
 
@@ -154,7 +154,7 @@ ms.locfileid: "92479777"
 
 ## <a name="add-the-hdinsight-cluster-operator-role-assignment-to-a-user"></a>將 HDInsight 叢集操作員角色指派新增至使用者
 
-具有 [擁有](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) 者角色的使用者可以將 [hdinsight 叢集操作員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) 角色指派給您想要具有敏感性 HDInsight 叢集設定值之讀取/寫入存取權的使用者 (例如叢集閘道認證和儲存體帳戶金鑰) 。
+具有 [擁有](../role-based-access-control/built-in-roles.md#owner) 者角色的使用者可以將 [hdinsight 叢集操作員](../role-based-access-control/built-in-roles.md#hdinsight-cluster-operator) 角色指派給您想要具有敏感性 HDInsight 叢集設定值之讀取/寫入存取權的使用者 (例如叢集閘道認證和儲存體帳戶金鑰) 。
 
 ### <a name="using-the-azure-cli"></a>使用 Azure CLI
 
@@ -183,7 +183,7 @@ az role assignment create --role "HDInsight Cluster Operator" --assignee user@do
 
 ### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
 
-您也可以使用 Azure 入口網站，將 HDInsight 叢集操作員角色指派新增至使用者。 請參閱檔、 [使用 Azure 入口網站新增角色指派來新增或移除 Azure 角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)。
+您也可以使用 Azure 入口網站，將 HDInsight 叢集操作員角色指派新增至使用者。 請參閱檔、 [使用 Azure 入口網站新增角色指派來新增或移除 Azure 角色指派](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)。
 
 ## <a name="faq"></a>常見問題集
 

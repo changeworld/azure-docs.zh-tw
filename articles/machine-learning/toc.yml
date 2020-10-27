@@ -235,7 +235,7 @@
           displayName: policy
     - name: 建立和管理工作區
       items:
-        - name: 使用 Azure 入口網站
+        - name: 使用 Azure 入口網站或 Python SDK
           href: how-to-manage-workspace.md
         - name: 使用 Azure CLI
           href: how-to-manage-workspace-cli.md
@@ -585,7 +585,7 @@
       href: resource-known-issues.md
     - name: 使用者論壇
       href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning.html'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: 比較 ML 產品
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/context/ml-context

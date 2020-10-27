@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: cddae0a7115fc2999b52eaba7df2b49db509981b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfb1c0180b50ca95cb2f1fbff62469e63ab5f19d
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449046"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428115"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>將您的 AWS 帳戶連線到 Azure 資訊安全中心
 
@@ -41,7 +41,7 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
 |----|:----|
 |版本狀態：|預覽|
 |定價：|需要[適用於伺服器的 Azure Defender](defender-for-servers-introduction.md)|
-|必要的角色和權限：|相關 Azure 訂用帳戶上的**擁有者**或**參與者**|
+|必要的角色和權限：|相關 Azure 訂用帳戶上的 **擁有者** 或 **參與者**|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
 |||
 
@@ -77,7 +77,7 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
 1. 選取 [另一個 AWS 帳戶]。
 1. 輸入下列詳細資料：
 
-    - **帳戶識別碼** - 輸入 Microsoft 帳戶識別碼 (**158177204117**)，如資訊安全中心的 AWS 連接器頁面中所示。
+    - **帳戶識別碼** - 輸入 Microsoft 帳戶識別碼 ( **158177204117** )，如資訊安全中心的 AWS 連接器頁面中所示。
     - **需要外部識別碼** - 應選取
     - **外部識別碼** - 輸入訂用帳戶識別碼，如資訊安全中心的 AWS 連接器頁面中所示 
 
@@ -106,7 +106,7 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
     
 1. 完成時，選取 [下一步:標籤]。 選擇性地新增標籤。 為使用者新增標籤並不會影響連線。
 1. 選取 [檢閱]。
-1. 儲存自動產生的**存取金鑰識別碼**和**秘密存取金鑰** CSV 檔案，以供後續使用。
+1. 儲存自動產生的 **存取金鑰識別碼** 和 **秘密存取金鑰** CSV 檔案，以供後續使用。
 1. 檢閱摘要，然後按一下 [建立使用者]。
 
 
@@ -118,9 +118,12 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
 - [在 Amazon EC2 Linux 執行個體上安裝和設定 SSM 代理程式](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-ssm-agent.html)
 
 
-### <a name="step-4-create-a-service-principal-for-onboarding-at-scale"></a>步驟 4： 建立服務主體以進行大規模上線
+### <a name="step-4-complete-azure-arc-prerequisites"></a>步驟 4： 完成 Azure Arc 必要條件
+1. 請確定適當的 [Azure 資源提供者](../azure-arc/servers/agent-overview.md#register-azure-resource-providers)：
+    - Microsoft.HybridCompute
+    - Microsoft.GuestConfiguration
 
-以您要用於上線之訂用帳戶的**擁有者**身分，依照[建立服務主體以進行大規模上線](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)中的說明，建立用於 Azure Arc 上線的服務主體
+1. 建立服務主體以進行大規模上線。 以您要用於上線之訂用帳戶的 **擁有者** 身分，依照 [建立服務主體以進行大規模上線](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) 中的說明，建立用於 Azure Arc 上線的服務主體。
 
 
 ### <a name="step-5-connect-aws-to-security-center"></a>步驟 5。 將 AWS 連線至資訊安全中心
@@ -132,18 +135,19 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
     1. 輸入連接器的 [顯示名稱]。
     1. 確認訂用帳戶正確無誤。 這是將包含連接器和 AWS 安全性中樞建議的訂用帳戶。
     1. 根據您在[步驟 2. 在 AWS 中設定資訊安全中心的驗證](#step-2-set-up-authentication-for-security-center-in-aws)中選擇的驗證選項：
-        - 選取 [擔任角色]，並貼上[建立資訊安全中心的 IAM 角色](#create-an-iam-role-for-security-center)中的 ARN :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="資訊安全中心的概觀儀表板上所列的 3 個 GCP 專案":::
+        - 選取 [假設角色]，然後從 [為資訊安全中心建立 IAM 角色](#create-an-iam-role-for-security-center) 貼上 ARN。
+            :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="資訊安全中心的概觀儀表板上所列的 3 個 GCP 專案":::
 
             或者
 
-        - 選取 [認證]，並貼上您在[建立資訊安全中心的 AWS 使用者](#create-an-aws-user-for-security-center)中儲存的 .csv 檔案所包含的**存取金鑰**和**秘密金鑰**。
+        - 選取 [認證]，並貼上您在 [建立資訊安全中心的 AWS 使用者](#create-an-aws-user-for-security-center)中儲存的 .csv 檔案所包含的 **存取金鑰** 和 **秘密金鑰** 。
 1. 選取 [下一步] 。
 1. 設定 [Azure Arc 設定] 索引標籤中的選項：
 
     資訊安全中心會探索已連線 AWS 帳戶中的 EC2 執行個體，並使用 SSM 將其上線至 Azure Arc。 
 
     > [!TIP]
-    > 下方的常見問題集會列出支援的作業系統清單。
+    > 如需支援的作業系統清單，請參閱常見問題中的 [我的 EC2 執行個體支援哪些作業系統？](#what-operating-systems-for-my-ec2-instances-are-supported)。
 
     1. 在選取的訂用帳戶中，選取探索到的 AWS EC2 將會上線到的 [資源群組] 和 [Azure 區域]。
     1. 輸入 Azure Arc 的 [服務主體識別碼] 和 [服務主體用戶端密碼]，如[建立服務主體以進行大規模上線](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)所說明

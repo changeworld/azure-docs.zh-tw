@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: bed196d1be101ffa75affc389d390ec0fa764b05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0e79e42c7c004638336ada23de663bbe74b7e48
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90933859"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532640"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---flexible-server"></a>適用於 PostgreSQL 的 Azure 資料庫-彈性伺服器中的備份與還原
 
@@ -28,7 +28,7 @@ ms.locfileid: "90933859"
 > [!IMPORTANT]
 >備份不會在已停止的伺服器上執行。 不過，當資料庫會在7天后自動啟動或由使用者啟動時，就會繼續執行備份。
 
-備份只能用於彈性伺服器內的還原作業。 如果您想要將資料匯出或匯入至有彈性的伺服器，您可以使用傾印 [和還原](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore)   方法。
+備份只能用於彈性伺服器內的還原作業。 如果您想要將資料匯出或匯入至有彈性的伺服器，您可以使用傾印 [和還原](../howto-migrate-using-dump-and-restore.md) 方法。
 
 
 ### <a name="backup-retention"></a>備份保留
@@ -40,9 +40,9 @@ ms.locfileid: "90933859"
 
 ### <a name="backup-storage-cost"></a>備份儲存體成本
 
-彈性伺服器可提供高達100% 的已布建伺服器儲存體作為備份儲存體，且不會產生額外費用。 使用的任何額外備份儲存體都會依每月 GB 收費。 例如，如果您布建的伺服器具有 250 GiB 的儲存體，則您會有 250 GiB 的備份儲存體容量，且不會產生額外費用。 如果每日備份使用量為 25 GiB，則您最多可以有10天的免費備份儲存體。 超過 250 GiB 的備份儲存體耗用量會依據 [定價模型](https://azure.microsoft.com/pricing/details/postgresql/)收費。
+彈性伺服器可提供高達100% 的已布建伺服器儲存體作為備份儲存體，且不會產生額外費用。 使用的任何額外備份儲存體都會依每月 GB 收費。 例如，如果您布建的伺服器具有 250 GiB 的儲存體，則您會有 250 GiB 的備份儲存體容量，且不會產生額外費用。 如果每日備份使用量為 25 GiB，則您最多可以有10天的免費備份儲存體。 超過 250 GiB 的備份儲存體耗用量會依據 [定價模型](https://azure.microsoft.com/pricing/details/postgresql/)收費。
 
-您可以使用 Azure 入口網站中的 [ [備份儲存體使用](https://docs.microsoft.com/azure/postgresql/concepts-monitoring)的計量]   來監視伺服器所耗用的備份儲存體。 使用的備份儲存體計量代表根據為伺服器設定的備份保留期間，保留的所有資料庫備份和記錄備份所耗用的儲存空間總和。  不論資料庫大小總計，伺服器上頻繁的交易活動可能會導致備份儲存體使用量增加。
+您可以使用 Azure 入口網站中「使用的備份儲存體」計量來監視伺服器所使用的備份儲存體。 使用的備份儲存體計量代表根據為伺服器設定的備份保留期間，保留的所有資料庫備份和記錄備份所耗用的儲存空間總和。  不論資料庫大小總計，伺服器上頻繁的交易活動可能會導致備份儲存體使用量增加。
 
 控制備份儲存體成本的主要方法是設定適當的備份保留期限，然後選擇適當的備份冗余選項，以符合您所需的復原目標。
 
@@ -71,15 +71,15 @@ ms.locfileid: "90933859"
 
 您可以選擇最早的還原點和自訂還原點。
 
--   **最早的還原點**：取決於您的保留期間，這會是您可以還原的最早時間。 將會自動選取最舊的備份時間，並顯示在入口網站上。 如果您想要調查或從該時間點開始進行某些測試，這會很有用。
+-   **最早的還原點** ：取決於您的保留期間，這會是您可以還原的最早時間。 將會自動選取最舊的備份時間，並顯示在入口網站上。 如果您想要調查或從該時間點開始進行某些測試，這會很有用。
 
--   **自訂還原點**：此選項可讓您選擇為此彈性伺服器定義的保留週期內的任何時間點。 根據預設，UTC 時間的最新時間是自動選取的，如果您想要還原到上次認可的交易以供測試之用，則會很有用。 您可以選擇性地選擇其他日期和時間。 
+-   **自訂還原點** ：此選項可讓您選擇為此彈性伺服器定義的保留週期內的任何時間點。 根據預設，UTC 時間的最新時間是自動選取的，如果您想要還原到上次認可的交易以供測試之用，則會很有用。 您可以選擇性地選擇其他日期和時間。 
 
 預估的復原時間取決於數個因素，包括資料庫大小、要處理的交易記錄量、網路頻寬，以及在相同區域中同時復原的資料庫總數。 整體復原時間通常需要幾分鐘的時間才能完成。
 
 
 > [!IMPORTANT]
->  **無法**   還原已刪除的伺服器。 如果您刪除伺服器，所有屬於該伺服器的資料庫也會一併刪除，且無法復原。 為了保護伺服器資源、部署後、意外刪除或非預期的變更，系統管理員可以利用 [管理鎖定](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)。
+> 已刪除的伺服器 **無法** 還原。 如果您刪除伺服器，所有屬於該伺服器的資料庫也會一併刪除，且無法復原。 若要在部署後避免伺服器資源遭到意外刪除或非預期的變更，系統管理員可以利用[管理鎖定](../../azure-resource-manager/management/lock-resources.md)。
 
 ## <a name="perform-post-restore-tasks"></a>執行還原之後的工作
 
@@ -98,9 +98,8 @@ ms.locfileid: "90933859"
 -  如果您已還原設定為高可用性的資料庫，而且您想要設定具有高可用性的還原伺服器，則可以遵循下列 [步驟](./how-to-manage-high-availability-portal.md)。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 -   瞭解 [商務持續性](./concepts-business-continuity.md)
--   深入瞭解 [區域冗余高可用性](./concepts-high-availability.md)
+-   深入瞭解 [區域冗余高可用性](./concepts-high-availability.md)
 -   瞭解 [如何還原](./how-to-restore-server-portal.md)
-

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: d0015868f6b53c2903b83795839e2dbcffd09ce4
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: ea1ac064799b0cede1de82851a514a2b389f20aa
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92116758"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92499196"
 ---
 下表提供 [Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)的特定配額與限制。 如需事件中樞價格的相關資訊，請參閱[事件中樞價格](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
@@ -47,6 +47,8 @@ ms.locfileid: "92116758"
 ### <a name="dedicated-tier"></a>專用層
 事件中樞專用供應項目以每月固定價格計費，最低為 4 小時的使用量。 專用層提供標準方案的所有功能，但可對工作負載需求高的客戶提供企業規模容量和限制。 
 
+請參閱此[文件](https://docs.microsoft.com/azure/event-hubs/event-hubs-dedicated-cluster-create-portal)，以了解如何使用 Azure 入口網站建立專用的事件中樞叢集。
+
 | 功能 | 限制 |
 | --- | ---|
 | 頻寬 |  20 個 CU |
@@ -63,7 +65,7 @@ ms.locfileid: "92116758"
 
 ### <a name="schema-registry-limitations"></a>結構描述登錄限制
 
-#### <a name="limits-that-are-the-same-for-standard-and-dedicated-tiers"></a>**標準**和**專用**層的限制相同 
+#### <a name="limits-that-are-the-same-for-standard-and-dedicated-tiers"></a>**標準** 和 **專用** 層的限制相同 
 | 功能 | 限制 | 
 | --- |  --- | -- |
 | 結構描述群組名稱的長度上限 | 50 |  
@@ -74,7 +76,7 @@ ms.locfileid: "92116758"
 | 每個群組屬性值的大小 (位元組) | 1024 | 
 
 
-#### <a name="limits-that-are-different-for-standard-and-dedicated-tiers"></a>**標準**和**專用**層的限制不同 
+#### <a name="limits-that-are-different-for-standard-and-dedicated-tiers"></a>**標準** 和 **專用** 層的限制不同 
 
 | 限制 | 標準 | 專用 | 
 | --- |  --- | -- | --- |

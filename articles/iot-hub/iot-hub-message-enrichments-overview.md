@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 3fd1ae82450c6203833a1e7b9947d516950c0330
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3975a57c095a8593e392e932bd125308853d3756
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146592"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541514"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>裝置到雲端 IoT 中樞訊息的訊息擴充
 
@@ -35,9 +35,9 @@ Message 擴充有三個主要元素：
 
 * 任何靜態字串。 不允許動態值，例如條件、邏輯、作業和函數。 例如，如果您開發了多個客戶所使用的 SaaS 應用程式，您可以將識別碼指派給每個客戶，並讓該識別碼可在應用程式中使用。 當應用程式執行時，IoT 中樞會使用客戶的識別碼來將裝置遙測訊息加上戳記，讓每個客戶都能以不同的方式處理訊息。
 
-* 傳送訊息的 IoT 中樞名稱。 此值為 *$iothubname*。
+* 傳送訊息的 IoT 中樞名稱。 此值為 *$iothubname* 。
 
-* 來自裝置對應項的資訊，例如它的路徑。 範例會是 *$twin. tag* . tag.*緯度和 $twin。*
+* 來自裝置對應項的資訊，例如它的路徑。 範例會是 *$twin. tag* . tag. *緯度和 $twin。*
 
    > [!NOTE]
    > 目前，只有 $iothubname、$twin 標記、$twin 和 $twin。報告是訊息擴充支援的變數。
@@ -63,7 +63,7 @@ Message 擴充有三個主要元素：
 | **方法** | **命令** |
 | ----- | -----| 
 | 入口網站 | [Azure 入口網站](https://portal.azure.com) | 請參閱[message 擴充教學](tutorial-message-enrichments.md)課程 | 
-| Azure CLI   | [az iot hub message-擴充](/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
+| Azure CLI   | [az iot hub message-擴充](/cli/azure/iot/hub/message-enrichment) |
 | Azure PowerShell | [Add-AzIotHubMessageEnrichment](/powershell/module/az.iothub/add-aziothubmessageenrichment) |
 
 新增 message 擴充不會將延遲新增至訊息路由。
@@ -84,7 +84,7 @@ Message 擴充有三個主要元素：
 
 * 裝置對應項的更新最多可能需要五分鐘的時間，才會反映在對應的擴充值中。
 
-* 訊息大小總計（包括擴充）不能超過 256 KB。 如果訊息大小超過 256 KB，IoT 中樞就會捨棄訊息。 您可以使用 [IoT 中樞計量](iot-hub-metrics.md) ，在訊息卸載時識別及偵測錯誤。 例如，您可以監視 d2c。無效。
+* 訊息大小總計（包括擴充）不能超過 256 KB。 如果訊息大小超過 256 KB，IoT 中樞就會捨棄訊息。 您可以使用 [IoT 中樞計量](monitor-iot-hub-reference.md#metrics) ，在訊息卸載時識別及偵測錯誤。 例如，您可以監視 (d2c *不相容的遙測訊息* 。 [路由計量](monitor-iot-hub-reference.md#routing-metrics)中的) 度量 *無效* 。 若要深入瞭解，請參閱 [監視 IoT 中樞](monitor-iot-hub.md)。
 
 * Message 擴充不會套用到數位對應項變更事件。
 
@@ -92,7 +92,7 @@ Message 擴充有三個主要元素：
 
 訊息擴充可供免費使用。 目前，當您將訊息傳送至 IoT 中樞時，系統會向您收費。 即使訊息傳送至多個端點，您只需針對該訊息支付一次費用。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需將訊息路由傳送至 IoT 中樞的詳細資訊，請參閱下列文章：
 

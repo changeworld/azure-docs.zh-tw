@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 06/16/2020
-ms.openlocfilehash: 462358ab967d4ba26a265d7b5f401b995223815e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92d712aab6dcb52f64af340b3110e475c8da2b10
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85959837"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542602"
 ---
 # <a name="saved-queries-in-azure-monitor-log-analytics"></a>Azure 監視器 Log Analytics 中儲存的查詢
 
@@ -38,7 +38,7 @@ Log Analytics 提供了一組範例查詢，您可以自行執行這些查詢，
 
 ### <a name="example-query-dialog"></a>查詢對話方塊範例
 
-當您第一次進入 Log Analytics 體驗時，會自動顯示 *範例查詢對話方塊* 。  您也可以按一下 [ **範例查詢**] 畫面右上方的方式來存取它。
+當您第一次進入 Log Analytics 體驗時，會自動顯示 *範例查詢對話方塊* 。  您也可以按一下 [ **範例查詢** ] 畫面右上方的方式來存取它。
 
 ![資訊看板](media/saved-queries/sidebar-2.png)
 
@@ -54,7 +54,7 @@ Log Analytics 提供了一組範例查詢，您可以自行執行這些查詢，
 
 您可以從 Log Analytics 左側提要欄位的 [查詢] 窗格存取對話體驗的所有相同功能。 您可以將滑鼠停留在查詢名稱上，以取得查詢描述和其他功能。
 
-![資訊看板](media/saved-queries/sidebar-3.png)
+![顯示 [查詢] 窗格的螢幕擷取畫面。](media/saved-queries/sidebar-3.png)
 
 ## <a name="finding-and-filtering-queries"></a>尋找和篩選查詢
 
@@ -80,13 +80,13 @@ Log Analytics 提供了一組範例查詢，您可以自行執行這些查詢，
 此對話方塊支援分組依據：
 
 - **資源類型** – Azure 中定義的資源，例如虛擬機器。 如需 Azure 監視器 Logs/Log Analytics 資料表與資源類型的完整對應，請參閱 [Azure 監視器資料表參考](/azure/azure-monitor/reference/tables/tables-resourcetype) 。  
-- **Category** – *安全性* 或 *Audit*等資訊類型。 類別與 [資料表] 側邊窗格中定義的類別相同。 如需完整的類別清單，請參閱 [Azure 監視器資料表參考](/azure/azure-monitor/reference/tables/tables-category) 。  
+- **Category** – *安全性* 或 *Audit* 等資訊類型。 類別與 [資料表] 側邊窗格中定義的類別相同。 如需完整的類別清單，請參閱 [Azure 監視器資料表參考](/azure/azure-monitor/reference/tables/tables-category) 。  
 - **解決方案** -與查詢相關聯的 Azure 監視器方案
-- **主題** -範例查詢的主題，例如 *活動記錄* 或 *應用程式記錄*。 主題屬性對範例查詢而言是唯一的，而且可能會根據特定的資源類型而有所不同。
+- **主題** -範例查詢的主題，例如 *活動記錄* 或 *應用程式記錄* 。 主題屬性對範例查詢而言是唯一的，而且可能會根據特定的資源類型而有所不同。
 
 群組值也可作為活動目錄。 按一下畫面左側的其中一個值，就會將查詢檢視向右滾動至按下的專案。
 
-### <a name="filter"></a>Filter
+### <a name="filter"></a>篩選
 
 您也可以根據稍早所述的 groupby 值篩選查詢。 在範例查詢對話方塊中，會在頂端找到篩選。
 
@@ -108,7 +108,7 @@ Log Analytics 提供了一組範例查詢，您可以自行執行這些查詢，
 
 用於儲存及共用使用者所產生查詢的查詢瀏覽器體驗，在當時仍維持不變。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 [開始使用 KQL 查詢](get-started-queries.md)
 

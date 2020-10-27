@@ -7,12 +7,12 @@ author: nisgoel
 ms.author: nisgoel
 ms.reviewer: jasonh
 ms.date: 10/05/2020
-ms.openlocfilehash: a102c9f375b37579cf6f92b08d67f762d3dfd26a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 5554a66927fc70f22ec552b938ae62038a04acb9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220885"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533014"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>案例： Apache Hive 記錄檔將會填滿前端節點上的磁碟空間 Azure HDInsight
 
@@ -23,7 +23,7 @@ ms.locfileid: "92220885"
 在 Apache Hive/LLAP 叢集上，不需要的記錄會佔用前端節點上的整個磁碟空間。 基於此原因，可能會出現下列問題。
 
 1. SSH 存取失敗，因為前端節點上沒有空格。
-2. Ambari 提供 *HTTP 錯誤：503服務無法使用*。
+2. Ambari 提供 *HTTP 錯誤：503服務無法使用* 。
 3. HiveServer2 Interactive 無法重新開機。
 
 `ambari-agent`當問題發生時，記錄檔會顯示下列各項。
@@ -38,7 +38,7 @@ ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckR
 
 在 advanced hive log4j 設定中，會根據上次修改日期，針對超過30天的檔案設定目前的預設刪除排程。
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 1. 流覽至 Ambari 入口網站上的 Hive 元件摘要，然後按一下 [] 索引標籤 `Configs` 。
 
@@ -77,4 +77,4 @@ ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckR
 
 * 與 [@AzureSupport](https://twitter.com/azuresupport) 聯繫 - 專為改善客戶體驗而設的官方 Microsoft Azure 帳戶，協助 Azure 社群連接至適當的資源，例如解答、支援及專家等。
 
-* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) 提交支援要求。 在功能表列選取 [支援] 或開啟 [說明 + 支援] 中心。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) (機器翻譯)。 您可透過 Microsoft Azure 訂用帳戶來存取訂用帳戶管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。
+* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) 提交支援要求。 在功能表列選取 [支援] 或開啟 [說明 + 支援] 中心。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md) (機器翻譯)。 您可透過 Microsoft Azure 訂用帳戶來存取訂用帳戶管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

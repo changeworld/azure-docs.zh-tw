@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: c4ea8db464c7cae57b80837ced9f8886a8b3cf4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76da267ae14a1f58ee2cadbf48f4b2ec419312b4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87093012"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543520"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>預付具有保留容量的 Azure Cache for Redis 計算資源
 
@@ -22,10 +22,10 @@ ms.locfileid: "87093012"
 您可以在 [Azure 入口網站](https://portal.azure.com/)中購買 Azure Cache for Redis 的保留容量。 若要購買保留容量：
 
 * 您必須是至少一個具有隨用隨付費率的企業或個別訂用帳戶的擁有者角色。
-* 針對企業訂用帳戶，必須在 [EA 入口網站](https://ea.azure.com/)中啟用**新增保留執行個體**。 或者，如果該設定已停用，則您必須是訂用帳戶上的 EA 系統管理員。
+* 針對企業訂用帳戶，必須在 [EA 入口網站](https://ea.azure.com/)中啟用 **新增保留執行個體** 。 或者，如果該設定已停用，則您必須是訂用帳戶上的 EA 系統管理員。
 * 針對雲端解決方案提供者 (CSP) 方案，只有系統管理員專員或銷售專員可以購買 Azure Cache for Redis 保留容量。
 
-如需企業客戶和隨用隨付客戶如何針對保留購買收費的詳細資訊，請參閱 [瞭解您企業註冊的 azure 保留使用量](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) ，以及 [瞭解隨用隨付訂用帳戶的 azure 保留使用量](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)。
+如需企業客戶和隨用隨付客戶如何針對保留購買收費的詳細資訊，請參閱 [瞭解您企業註冊的 azure 保留使用量](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) ，以及 [瞭解隨用隨付訂用帳戶的 azure 保留使用量](../cost-management-billing/reservations/understand-reserved-instance-usage.md)。
 
 
 ## <a name="determine-the-right-cache-size-before-purchase"></a>在購買前判斷正確的快取大小
@@ -51,15 +51,15 @@ ms.locfileid: "87093012"
 | 欄位 | 描述 |
 | :------------ | :------- |
 | 訂用帳戶   | 用來支付 Azure Cache for Redis 保留容量保留的訂用帳戶。 訂用帳戶上的付款方法會收取 Azure Cache for Redis 保留容量保留的預付成本。 訂用帳戶類型必須是 enterprise 合約 (供應專案號碼： MS-AZR-0003P->ms-azr-0017p 或 MS-AZR-0003P-Ms-azr-0148p) 或具有隨用隨付定價的個別合約 (供應專案號碼： MS-MS-AZR-0003P-Ms-azr-0003p 或 MS-MS-AZR-0003P-Ms-azr-0023p) 。 針對企業訂用帳戶，費用會從註冊的承諾用量金額餘額扣除或作為超額部分收費。 針對具有隨用隨付定價的個別訂用帳戶，費用會以訂用帳戶的信用卡或發票付款方法計費。
-| 影響範圍 | 保留項目範圍可以涵蓋一個訂用帳戶或多個訂用帳戶 (共用範圍)。 如果您選取： </br></br> **共用**，保留折扣會套用至計費內容內任何訂用帳戶中執行的 Azure Cache for Redis 實例。 針對企業客戶，共用範圍是註冊，並包含註冊中的所有訂用帳戶。 針對隨用隨付客戶，共用範圍是帳戶系統管理員所建立的所有隨用隨付訂用帳戶。</br></br> **單一訂**用帳戶，保留折扣會套用到此訂用帳戶中的 Azure Cache for Redis 實例。 </br></br> **單一資源群組**，保留折扣會套用至所選訂用帳戶中的 Azure Cache for Redis 實例，以及該訂用帳戶內選取的資源群組。
-| 區域 | Azure Cache for Redis 保留容量保留所涵蓋的 Azure 區域。
+| 影響範圍 | 保留項目範圍可以涵蓋一個訂用帳戶或多個訂用帳戶 (共用範圍)。 如果您選取： </br></br> **共用** ，保留折扣會套用至計費內容內任何訂用帳戶中執行的 Azure Cache for Redis 實例。 針對企業客戶，共用範圍是註冊，並包含註冊中的所有訂用帳戶。 針對隨用隨付客戶，共用範圍是帳戶系統管理員所建立的所有隨用隨付訂用帳戶。</br></br> **單一訂** 用帳戶，保留折扣會套用到此訂用帳戶中的 Azure Cache for Redis 實例。 </br></br> **單一資源群組** ，保留折扣會套用至所選訂用帳戶中的 Azure Cache for Redis 實例，以及該訂用帳戶內選取的資源群組。
+| Region | Azure Cache for Redis 保留容量保留所涵蓋的 Azure 區域。
 | 定價層 | Azure Cache for Redis 伺服器的服務層級。
 | 詞彙 | 一年或三年
 | 數量 | Azure Cache for Redis 保留容量保留內所購買的計算資源數量。 數量是所選 Azure 區域和服務層中所要保留的快取數目，將會獲得帳單折扣。 例如，如果您正在執行或計畫在美國東部區域中執行具有總快取容量的 Azure Cache for Redis 伺服器，則您會指定數量等於 26 GB 的數量，以將所有快取的效益最大化。 這可能是1個 P3 或2個 P2 快取。
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>取消、交換保留或進行退費
 
-您可以取消、交換保留或進行退費，但有某些限制。 如需詳細資訊，請參閱 [Azure 保留的自助式交換和退費](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)。
+您可以取消、交換保留或進行退費，但有某些限制。 如需詳細資訊，請參閱 [Azure 保留的自助式交換和退費](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)。
 
 ## <a name="cache-size-flexibility"></a>快取大小彈性
 
@@ -77,10 +77,9 @@ ms.locfileid: "87093012"
 
 * 若要深入了解 Azure 保留項目，請參閱下列文章：
 
-    * [什麼是 Azure 保留項目？](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
-    * [管理 Azure 保留項目](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
-    * [了解 Azure 保留折扣](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
-    * [了解隨用隨付訂用帳戶的保留使用量](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-mysql)
-    * [了解 Enterprise 註冊的保留項目使用量](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-    * [合作夥伴中心雲端解決方案提供者 (CSP) 計畫中的 Azure 保留項目](https://docs.microsoft.com/partner-center/azure-reservations)
-
+    * [什麼是 Azure 保留項目？](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+    * [管理 Azure 保留項目](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+    * [了解 Azure 保留折扣](../cost-management-billing/reservations/understand-reservation-charges.md)
+    * [了解隨用隨付訂用帳戶的保留使用量](../cost-management-billing/reservations/understand-reservation-charges-mysql.md)
+    * [了解 Enterprise 註冊的保留項目使用量](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+    * [合作夥伴中心雲端解決方案提供者 (CSP) 計畫中的 Azure 保留項目](/partner-center/azure-reservations)

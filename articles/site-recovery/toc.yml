@@ -164,7 +164,7 @@
       href: recovery-plan-overview.md
     - name: 關於移轉至 Azure
       href: migrate-overview.md
-    - name: 關於站台復原的角色型存取控制
+    - name: 關於站台復原的 Azure 角色型存取控制
       href: site-recovery-role-based-linked-access-control.md
     - name: 關於移轉至次要內部部署網站的災害復原
       items:

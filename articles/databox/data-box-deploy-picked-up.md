@@ -273,7 +273,7 @@ ms.locfileid: "91631525"
 
 1. 將要送回的裝置包裝到原始外盒內。
 2. 纏繞裝置隨附的電源線，並將其安全地放在裝置背後。
-3. 在上班時間 (星期一到星期五上午 9 點到下午 6 點) 撥打 **Quantium Solutions** 熱線，號碼是 **(852) 2318 1213**。  
+3. 在上班時間 (星期一到星期五上午 9 點到下午 6 點) 撥打 **Quantium Solutions** 熱線，號碼是 **(852) 2318 1213** 。  
 4. 報上送回出貨標籤上的 Microsoft Azure Pickup 和參考編號與追蹤號碼 (位於條碼上方) 以便安排收貨。
 5. 您會獲得排定取貨時間的口頭確認。 如果快遞人員未到府收貨，請撥打 Quantium Solutions 熱線以便尋求替代安排。
 6. 在向 Quantium 預約取貨後，請使用下列範本向 [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com) 進行確認：

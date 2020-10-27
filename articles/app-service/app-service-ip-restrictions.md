@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 782fa75cee5ffb5f9c86082a86e2b3552914c274
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6f1a94ae070419c38efb481e8f3967aec6a212d0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168217"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533949"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service 存取限制
 
@@ -30,7 +30,7 @@ ms.locfileid: "92168217"
 
 ## <a name="adding-and-editing-access-restriction-rules-in-the-portal"></a>在入口網站中新增和編輯存取限制規則 ##
 
-若要將存取限制規則新增至應用程式，請使用功能表來開啟 [**網路** > **存取限制**]，然後按一下 [**設定存取限制**]
+若要將存取限制規則新增至應用程式，請使用功能表來開啟 [ **網路** > **存取限制** ]，然後按一下 [ **設定存取限制** ]
 
 ![App Service 網路功能選項](media/app-service-ip-restrictions/access-restrictions.png)  
 
@@ -61,7 +61,8 @@ ms.locfileid: "92168217"
 透過服務端點，您可以使用應用程式閘道或其他 WAF 裝置來設定應用程式。 您也可以使用安全後端來設定多層式應用程式。 如需有關某些可能性的詳細資訊，請參閱 [網路功能和 App Service](networking-features.md) ，以及 [應用程式閘道與服務端點的整合](networking/app-gateway-with-service-endpoints.md)。
 
 > [!NOTE]
-> 使用 IP SSL 虛擬 IP (VIP) 的 web 應用程式目前不支援服務端點。 
+> - 使用 IP SSL 虛擬 IP (VIP) 的 web 應用程式目前不支援服務端點。
+> - IP 或服務端點限制有512個數據列的限制。 如果您需要超過512列的限制，建議您查看獨立的安全性產品，例如 Azure Front Door、Azure App 閘道，或 (WAF) 的 Web 應用程式防火牆。
 >
 
 ## <a name="managing-access-restriction-rules"></a>管理存取限制規則
@@ -74,7 +75,7 @@ ms.locfileid: "92168217"
 
 ![[編輯 IP 限制] 對話方塊的螢幕擷取畫面，顯示虛擬網路規則的設定 Azure 入口網站。](media/app-service-ip-restrictions/access-restrictions-vnet-edit.png)
 
-若要刪除規則，請按一下規則上的 [ **...** ]，然後按一下 [ **移除**]。
+若要刪除規則，請按一下規則上的 [ **...** ]，然後按一下 [ **移除** ]。
 
 ![刪除存取限制規則](media/app-service-ip-restrictions/access-restrictions-delete.png)
 
@@ -111,7 +112,7 @@ Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName
 
 您可以在資源管理員中的以下位置找到此資訊：
 
-management.azure.com/subscriptions/**subscription ID**/resourceGroups/**resource groups**/providers/Microsoft.Web/sites/**web app name**/config/web?api-version=2018-02-01
+management.azure.com/subscriptions/ **subscription ID** /resourceGroups/ **resource groups** /providers/Microsoft.Web/sites/ **web app name** /config/web?api-version=2018-02-01
 
 先前的 JSON 語法範例為：
 ```json
@@ -133,7 +134,7 @@ management.azure.com/subscriptions/**subscription ID**/resourceGroups/**resource
 
 存取限制也適用于具有 App Service 方案相同功能的函式應用程式。 啟用存取限制將會停用任何不允許的 Ip 的入口網站程式碼編輯器。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 [Azure Functions 的存取限制](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
 
 [應用程式閘道與服務端點的整合](networking/app-gateway-with-service-endpoints.md)

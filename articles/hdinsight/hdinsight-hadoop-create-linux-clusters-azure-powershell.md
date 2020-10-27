@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: b94fb5aba8cc54d9014a01610f467776c3a3784a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23ce0f83e4233837d56ba9045a9a356ebd1cc33f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86075938"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541805"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>使用 Azure PowerShell 在 HDInsight 中建立以 Linux 為基礎的叢集
 
@@ -23,7 +23,7 @@ Azure PowerShell 是功能強大的指令碼環境，可讓您在 Microsoft Azur
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -60,7 +60,7 @@ Azure PowerShell 是功能強大的指令碼環境，可讓您在 Microsoft Azur
 
 ## <a name="create-cluster-configuration-object"></a>建立叢集：設定物件
 
-您也可以使用 Cmdlet 來建立 HDInsight 設定物件 [`New-AzHDInsightClusterConfig`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightclusterconfig) 。 然後，您可以修改此設定物件來啟用叢集的其他設定選項。 最後，使用 `-Config` Cmdlet 的參數 [`New-AzHDInsightCluster`](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) 來使用設定。
+您也可以使用 Cmdlet 來建立 HDInsight 設定物件 [`New-AzHDInsightClusterConfig`](/powershell/module/az.hdinsight/new-azhdinsightclusterconfig) 。 然後，您可以修改此設定物件來啟用叢集的其他設定選項。 最後，使用 `-Config` Cmdlet 的參數 [`New-AzHDInsightCluster`](/powershell/module/az.hdinsight/new-azhdinsightcluster) 來使用設定。
 
 下列指令碼會建立可在 HDInsight 叢集類型上設定 R 伺服器的設定物件。 此設定可啟用邊緣節點、RStudio 和其他儲存體帳戶。
 
@@ -82,7 +82,7 @@ Azure PowerShell 是功能強大的指令碼環境，可讓您在 Microsoft Azur
 
 如果您在建立 HDInsight 叢集時遇到問題，請參閱[存取控制需求](hdinsight-hadoop-create-linux-clusters-portal.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 既然您已成功建立 HDInsight 叢集，請使用下列資源來瞭解如何使用您的叢集。
 
