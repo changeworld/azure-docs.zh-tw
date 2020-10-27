@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: b7757b5204c9b3b32145667367a71a9acc42c230
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ce5de354583da04905f9f889cfabe36e6da6667
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89434651"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546121"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他工具在 HDInsight 中設定叢集
 
@@ -43,7 +43,7 @@ Hadoop 叢集由數個虛擬機器 (節點) 組成，可用於分散處理作業
 
 本文將逐步引導您完成 [Azure 入口網站](https://portal.azure.com)中的安裝程式，您可以在其中建立 HDInsight 叢集。
 
-## <a name="basics"></a>基本概念
+## <a name="basics"></a>基本
 
 ![hdinsight 建立選項自訂快速](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png)
 
@@ -63,16 +63,16 @@ HDInsight 叢集名稱具有下列限制：
 * 叢集命名範圍適用於所有 Azure，橫跨所有訂用帳戶。 因此，叢集名稱在全球必須是唯一的。
 * 前六個字元在虛擬網路中必須是唯一的
 
-#### <a name="region"></a>區域
+#### <a name="region"></a>Region
 
-不需明確指定叢集位置：叢集位於和預設儲存體相同的位置。 如需支援區域的清單，請選取 [ [HDInsight 定價](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)] 上的 [**區域**] 下拉式清單。
+不需明確指定叢集位置：叢集位於和預設儲存體相同的位置。 如需支援區域的清單，請選取 [ [HDInsight 定價](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)] 上的 [ **區域** ] 下拉式清單。
 
 #### <a name="cluster-type"></a>叢集類型
 
 Azure HDInsight 目前提供下列的叢集類型，每種都有一組提供特定功能的元件。
 
 > [!IMPORTANT]  
-> HDInsight 叢集有多種類型，每種類型均適用於單一工作負載或技術。 沒有任何支援方法可建立結合多個類型的叢集，例如在一個叢集上並存 Storm 和 HBase。 如果您的解決方案需要橫跨多個 HDInsight 叢集類型的技術，則 [Azure 虛擬網路](https://docs.microsoft.com/azure/virtual-network) 可以連線至所需的叢集類型。
+> HDInsight 叢集有多種類型，每種類型均適用於單一工作負載或技術。 沒有任何支援方法可建立結合多個類型的叢集，例如在一個叢集上並存 Storm 和 HBase。 如果您的解決方案需要橫跨多個 HDInsight 叢集類型的技術，則 [Azure 虛擬網路](../virtual-network/index.yml) 可以連線至所需的叢集類型。
 
 | 叢集類型 | 功能 |
 | --- | --- |
@@ -92,7 +92,7 @@ Azure HDInsight 目前提供下列的叢集類型，每種都有一組提供特�
 
 使用 HDInsight 叢集，您可以在建立叢集期間設定兩個使用者帳戶：
 
-* 叢集登入使用者名稱：預設的使用者名稱是 *admin*。它會使用 Azure 入口網站上的基本設定。 有時稱為「叢集使用者」或「HTTP 使用者」。
+* 叢集登入使用者名稱：預設的使用者名稱是 *admin* 。它會使用 Azure 入口網站上的基本設定。 有時稱為「叢集使用者」或「HTTP 使用者」。
 * 安全殼層 (SSH) 使用者名稱：用來透過 SSH 連線到叢集。 如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 HTTP 使用者名稱有下列限制：
@@ -120,7 +120,7 @@ HDInsight 叢集可以使用下列儲存體選項：
 * Azure Data Lake Storage Gen1
 * Azure 儲存體一般用途 v2
 * Azure 儲存體一般用途 v1
-* Azure 儲存體區塊 blob (**僅支援作為次要儲存體**) 
+* Azure 儲存體區塊 blob ( **僅支援作為次要儲存體** ) 
 
 如需 HDInsight 儲存體選項的詳細資訊，請參閱 [比較搭配 Azure HDInsight 叢集使用的儲存體選項](hdinsight-hadoop-compare-storage-options.md)。
 
@@ -153,7 +153,7 @@ HDInsight 叢集可以使用下列儲存體選項：
 針對某個 HDInsight 叢集版本建立的 HDInsight 中繼存放區無法在不同的 HDInsight 叢集版本之間共用。 如需 HDInsight 版本清單，請參閱[支援的 HDInsight 版本](hdinsight-component-versioning.md#supported-hdinsight-versions)。
 
 > [!IMPORTANT]
-> 預設中繼存放區會提供具有 **基本層 5 DTU 限制的 Azure SQL Database， (無法升級) **！ 適用于基本測試用途。 針對大型或生產工作負載，建議您遷移至外部中繼存放區。
+> 預設中繼存放區會提供具有 **基本層 5 DTU 限制的 Azure SQL Database， (無法升級)** ！ 適用于基本測試用途。 針對大型或生產工作負載，建議您遷移至外部中繼存放區。
 
 #### <a name="sql-database-for-oozie"></a>適用于 Oozie 的 SQL 資料庫
 
@@ -176,7 +176,7 @@ Ambari 可用來監視 HDInsight 叢集、進行設定變更，以及儲存叢�
 
 企業安全性套件可讓您整合 HDInsight 與 Active Directory 及 Apache Ranger。 使用企業安全性套件可以建立多個使用者。
 
-如需建立已加入網域之 HDInsight 叢集的詳細資訊，請參閱[建立已加入網域的 HDInsight 沙箱環境](./domain-joined/apache-domain-joined-configure.md)。
+如需建立已加入網域之 HDInsight 叢集的詳細資訊，請參閱[建立已加入網域的 HDInsight 沙箱環境](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)。
 
 ### <a name="tls"></a>TLS
 
@@ -184,7 +184,7 @@ Ambari 可用來監視 HDInsight 叢集、進行設定變更，以及儲存叢�
 
 ### <a name="virtual-network"></a>虛擬網路
 
-如果您的解決方案需要橫跨多個 HDInsight 叢集類型的技術，則 [Azure 虛擬網路](https://docs.microsoft.com/azure/virtual-network) 可以連線至所需的叢集類型。 此設定可讓叢集 (以及您對它們部署的任何程式碼) 直接彼此通訊。
+如果您的解決方案需要橫跨多個 HDInsight 叢集類型的技術，則 [Azure 虛擬網路](../virtual-network/index.yml) 可以連線至所需的叢集類型。 此設定可讓叢集 (以及您對它們部署的任何程式碼) 直接彼此通訊。
 
 如需搭配使用 Azure 虛擬網路與 HDInsight 的詳細資訊，請參閱 [規劃 hdinsight 的虛擬網路](hdinsight-plan-virtual-network-deployment.md)。
 
@@ -225,17 +225,17 @@ HDInsight 叢集的成本是由節點數和節點的虛擬機器大小來決定�
 
 不同的叢集類型具有不同的節點類型、節點數目和節點大小：
 * Hadoop 叢集類型的預設值：
-    * 兩個*前端節點*  
+    * 兩個 *前端節點*  
     * 四個背景 *工作節點*
 * Storm 叢集類型的預設值：
     * 兩個 *Nimbus 節點*
     * 三個 *ZooKeeper 節點*
-    * 四個*監督員節點*
+    * 四個 *監督員節點*
 
 如果您只是試用 HDInsight，建議您使用一個背景工作節點。 如需 HDInsight 定價的詳細資訊，請參閱 [hdinsight 定價](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)。
 
 > [!NOTE]  
-> 叢集大小限制會隨著 Azure 訂用帳戶而有所不同。 若要提高限制，請與 [Azure 帳務支援人員](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)連絡。
+> 叢集大小限制會隨著 Azure 訂用帳戶而有所不同。 若要提高限制，請與 [Azure 帳務支援人員](../azure-portal/supportability/how-to-create-azure-support-request.md)連絡。
 
 當您使用 Azure 入口網站設定叢集時，節點大小可透過 [設定 **+ 價格** ] 索引標籤取得。在入口網站中，您也可以查看與不同節點大小相關聯的成本。
 
@@ -243,15 +243,15 @@ HDInsight 叢集的成本是由節點數和節點的虛擬機器大小來決定�
 
 當您部署叢集時，請依據計劃部署的解決方案選擇計算資源。 下列 VM 可用於 HDInsight 叢集：
 
-* A 和 D1-4 系列 VM：[一般用途 Linux VM 大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)
-* D11-14 系列 VM：[記憶體最佳化 Linux VM 大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
+* A 和 D1-4 系列 VM：[一般用途 Linux VM 大小](../virtual-machines/sizes-general.md)
+* D11-14 系列 VM：[記憶體最佳化 Linux VM 大小](../virtual-machines/sizes-memory.md)
 
 如需使用不同的 SDK 或使用 Azure PowerShell 建立叢集時應用來指定 VM 大小的值，請參閱[使用於 HDInsight 叢集的 VM 大小](../cloud-services/cloud-services-sizes-specs.md#size-tables)。 在此連結的文件中，請使用資料表中 **Size (大小)** 資料行的值。
 
 > [!IMPORTANT]  
 > 如果您的叢集中需要32個以上的背景工作節點，則必須選取具有至少8個核心和 14 GB RAM 的前端節點大小。
 
-如需詳細資訊，請參閱 [虛擬機器的大小](../virtual-machines/windows/sizes.md)。 如需各式大小的價格資訊，請參閱 [HDInsight 價格](https://azure.microsoft.com/pricing/details/hdinsight)。
+如需詳細資訊，請參閱 [虛擬機器的大小](../virtual-machines/sizes.md)。 如需各式大小的價格資訊，請參閱 [HDInsight 價格](https://azure.microsoft.com/pricing/details/hdinsight)。
 
 ### <a name="add-application"></a>新增應用程式
 
@@ -261,7 +261,7 @@ HDInsight 應用程式是使用者可以在以 Linux 為基礎的 HDInsight 叢�
 
 ### <a name="script-actions"></a>指令碼動作
 
-您可以在建立期間使用指令碼來安裝其他元件或自訂組態。 這類指令碼可透過 **指令碼動作**叫用，指令碼動作是一個組態選項，其可從 Azure 入口網站、HDInsight Windows PowerShell Cmdlet 或 HDInsight .NET SDK 使用。 如需詳細資訊，請參閱 [使用指令碼動作自訂 HDInsight 叢集](hdinsight-hadoop-customize-cluster-linux.md)。
+您可以在建立期間使用指令碼來安裝其他元件或自訂組態。 這類指令碼可透過 **指令碼動作** 叫用，指令碼動作是一個組態選項，其可從 Azure 入口網站、HDInsight Windows PowerShell Cmdlet 或 HDInsight .NET SDK 使用。 如需詳細資訊，請參閱 [使用指令碼動作自訂 HDInsight 叢集](hdinsight-hadoop-customize-cluster-linux.md)。
 
 您可以使用 JAVA 封存 (JAR) 檔案形式在叢集上執行一些原生 JAVA 元件 (例如 Apache Mahout 和 Cascading)。 這些 JAR 檔案可以配送至 Azure 儲存體，並透過 Hadoop 作業提交機制提交至 HDInsight 叢集。 如需詳細資訊，請參閱[以程式設計方式提交 Apache Hadoop 作業](hadoop/submit-apache-hadoop-jobs-programmatically.md)。
 
@@ -290,7 +290,7 @@ HDInsight 應用程式是使用者可以在以 Linux 為基礎的 HDInsight 叢�
 
 如需詳細資訊，請參閱 [使用 Bootstrap 自訂 HDInsight 叢集](hdinsight-hadoop-customize-cluster-bootstrap.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [使用 Azure HDInsight 針對叢集建立失敗進行疑難排解](./hadoop/hdinsight-troubleshoot-cluster-creation-fails.md)
 * [什麼是 HDInsight、Apache Hadoop 生態系統以及 Hadoop 叢集？](hadoop/apache-hadoop-introduction.md)

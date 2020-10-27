@@ -8,16 +8,16 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 9c32ebef16750954f3df1a1d1b379bf42853f2b3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 20bf72c55a5b6d76a3b214f0a679e28da81e41e2
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056850"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558562"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Azure API for FHIR 的常見問題
 
-## <a name="azure-api-for-fhir"></a>適用於 FHIR 的 Azure API
+## <a name="azure-api-for-fhir-the-basics"></a>Azure API for FHIR：基本概念
 
 ### <a name="what-is-fhir"></a>什麼是 FHIR？
 快速健康照護互通資源 (FHIR 發音「火災」 ) 是一種互通性標準，目的是要在不同的健康情況系統之間交換醫療保健資料。 這項標準是由 HL7 組織所開發，並且是由世界各地的醫療保健組織所採用。 可用的最新 FHIR 版本為 R4 (第4版) 。 Azure API for FHIR 支援 R4，也支援舊版 STU3 (Standard for 試用版使用 3) 。 如需 FHIR 的詳細資訊，請造訪 [HL7.org](http://hl7.org/fhir/summary.html)。
@@ -34,15 +34,25 @@ ms.locfileid: "92056850"
 
 我們在 Azure API for FHIR (PaaS) 和適用于 Azure 的 FHIR 伺服器上支援版本4.0.0 和 3.0.1 (開放原始碼) 。
 
-如需詳細資訊，請參閱 [支援的功能](fhir-features-supported.md)。 閱讀 [HL7 FHIR 版本歷程記錄](https://hl7.org/fhir/R4/history.html)中版本之間的變更內容。
+如需詳細資訊，請參閱 [支援的功能](fhir-features-supported.md)。 閱讀 FHIR 版本之間變更的內容 (例如 STU3 至 R4) [（在 HL7 FHIR 的版本歷程記錄](https://hl7.org/fhir/R4/history.html)中）。
 
-### <a name="whats-the-difference-between-the-open-source-microsoft-fhir-server-for-azure-and-the-azure-api-for-fhir"></a>開放原始碼的 Microsoft FHIR Server for Azure 和 Azure API for FHIR 有何不同？
+適用于 FHIR (preview) 的 Azure IoT Connector 目前僅支援 FHIR 版本 R4，而且只會在 Azure API for FHIR R4 實例上顯示。
+
+### <a name="whats-the-difference-between-microsoft-fhir-server-for-azure-and-the-azure-api-for-fhir"></a>「Microsoft FHIR Server for Azure」與「Azure API for FHIR」之間有何差異？
 
 Azure API for FHIR 是適用于 Azure 的開放原始碼 Microsoft FHIR Server 託管和受控版本。 在受控服務中，Microsoft 會提供所有維護和更新。 
 
-當您執行適用于 Azure 的 FHIR Server 時，您可以直接存取基礎服務。 但是，如果您要儲存 PHI 資料，您也必須負責維護和補救伺服器，以及所有必要的合規性工作。
+當您執行適用于 Azure 的 FHIR 伺服器時，您可以直接存取基礎服務，但如果您要儲存 PHI 資料，則負責維護和補救伺服器以及所有必要的合規性工作。
 
-從開發的觀點來看，每項功能都是先部署到開放原始碼的 Microsoft FHIR Server for Azure。 在開放原始碼中驗證之後，它就會發行至 PaaS Azure API for FHIR 解決方案。 開放原始碼和 PaaS 的發行之間的時間，取決於功能的複雜度和其他藍圖優先權。 
+針對開發的觀點，每項未套用至受管理服務的功能都會先部署到開放原始碼的 Microsoft FHIR Server for Azure。 在開放原始碼中驗證之後，它就會發行至 PaaS Azure API for FHIR 解決方案。 開放原始碼和 PaaS 的發行之間的時間，取決於功能的複雜度和其他藍圖優先權。 這是所有服務的相同程式，例如適用于 FHIR (preview) 的 Azure IoT Connector。
+
+### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>我可以在哪裡看到 Azure API for FHIR 的發行內容？
+
+若要查看 Azure API for FHIR 中發行的部分內容，請參閱開放原始碼 FHIR 伺服器的 [版本](https://github.com/microsoft/fhir-server/releases) 。 自2020年11月起，如果開放原始碼專案將發行至受管理的服務，我們已使用 Azure FHIR 標記專案。 在開放原始碼的發行頁面上，這些功能通常會在兩周內提供。 https://github.com/microsoft/fhir-server/blob/master/docs/Testing-Releases.md)如果您想要在自己的環境中進行測試，我們也包含如何測試組建 [這裡] (的指示。 我們正在評估如何以最佳方式共用額外的受控服務更新。
+
+### <a name="in-which-regions-is-azure-api-for-fhir-available"></a>哪些區域 Azure API for FHIR 可用？
+
+目前，在 [多個地理區域](https://azure.microsoft.com/global-infrastructure/services/?products=azure-api-for-fhir&regions=non-regional,us-east,us-east-2,us-central,us-north-central,us-south-central,us-west-central,us-west,us-west-2,canada-east,canada-central,usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia)中，公用和政府都已正式推出。 如需 Microsoft 政府雲端服務的相關資訊，請參閱 [FedRAMP 的 Azure 服務](https://docs.microsoft.com/azure/azure-government/compliance/azure-services-in-fedramp-auditscope)。
 
 ### <a name="where-can-i-see-what-is-releasing-into-the-azure-api-for-fhir"></a>我可以在哪裡看到 Azure API for FHIR 的發行內容？
 
@@ -52,6 +62,8 @@ Azure API for FHIR 是適用于 Azure 的開放原始碼 Microsoft FHIR Server �
 
 智慧型 (可將醫療應用程式和可重複使用的技術) 在 FHIR 上，是一組開放的規格，可將夥伴應用程式與 FHIR 伺服器和其他健康情況的 IT 系統整合，例如電子健康記錄和健康情況資訊交換。 藉由建立智慧型 on FHIR 應用程式，您可以確定您的應用程式可以透過眾多的不同系統來存取及利用。
 驗證與 Azure API for FHIR。 若要深入瞭解 SMART，請造訪 [Smart Health](https://smarthealthit.org/)。
+
+## <a name="fhir-implementations-and-specifications"></a>FHIR 的實施和規格
 
 ### <a name="can-i-create-a-custom-fhir-resource"></a>我可以建立自訂的 FHIR 資源嗎？
 
@@ -63,7 +75,7 @@ Azure API for FHIR 是適用于 Azure 的開放原始碼 Microsoft FHIR Server �
 
 ### <a name="what-is-the-limit-on-_count"></a>_Count 的限制為何？
 
-目前的計數限制為100。
+_Count 目前的限制為100。 如果您將 _count 設定為100以上，您將會在組合中收到警告，表示只會顯示100筆記錄。
 
 ### <a name="are-there-any-limitations-on-the-group-export-functionality"></a>群組匯出功能是否有任何限制？
 
@@ -83,49 +95,40 @@ Azure API for FHIR 是適用于 Azure 的開放原始碼 Microsoft FHIR Server �
 * 取得患者/ <id> /Observation
 * 取得患者/ <id> /Observation？ code = 8302-2
 
+### <a name="what-is-the-default-sort-when-searching-for-resources-in-azure-api-for-fhir"></a>搜尋 Azure API for FHIR 中的資源時，預設排序為何？
+
+我們支援依上次更新日期排序： _sort = _lastUpdated。 如需其他支援之搜尋參數的詳細資訊，請參閱 [支援的功能頁面](https://docs.microsoft.com/azure/healthcare-apis/fhir-features-supported#search)。
+
+### <a name="how-does-export-work"></a>$Export 如何運作？
+
+$export 是 FHIR 規格的一部分： https://hl7.org/fhir/uv/bulkdata/export/index.html 。 如果已使用受控識別和儲存體帳戶設定 FHIR 服務，而且受控識別可以存取該儲存體帳戶，您只需要在 FHIR API 上呼叫 $export，所有 FHIR 資源都會匯出至儲存體帳戶。 如需詳細資訊，請參閱 [$export 的文章](https://docs.microsoft.com/azure/healthcare-apis/export-data)。
+
+## <a name="using-azure-api-for-fhir"></a>使用 Azure API for FHIR
+
+### <a name="how-do-i-enable-log-analytics-for-azure-api-for-fhir"></a>如何? 啟用 Azure API for FHIR 的 log analytics？
+
+我們會啟用診斷記錄，並允許查看這些記錄的範例查詢。 如需啟用審核記錄和查詢範例的詳細資訊，請參閱 [這一節](https://docs.microsoft.com/azure/healthcare-apis/enable-diagnostic-logging)。 如果您想要在記錄中包含其他資訊，請參閱 [使用自訂 HTTP 標頭](https://docs.microsoft.com/azure/healthcare-apis/use-custom-headers)。
+
 ### <a name="where-can-i-see-some-examples-of-using-the-azure-api-for-fhir-within-a-workflow"></a>哪裡可以查看在工作流程中使用 Azure API for FHIR 的一些範例？
 
 我們在 [健康情況架構 GitHub 頁面](https://github.com/microsoft/health-architectures)上有一組可用的參考架構。
 
-## <a name="azure-iot-connector-for-fhir-preview"></a>Azure IoT Connector for FHIR (預覽)
+### <a name="where-can-i-see-an-example-of-connecting-a-web-application-to-azure-api-for-fhir"></a>我可以在哪裡看到將 web 應用程式連接到 Azure API for FHIR 的範例？
 
-### <a name="what-is-iomt"></a>什麼是 IoMT？
-IoMT 代表的是醫療物聯網，它是一種 IoT 裝置類別，可透過網路與其他醫療保健 IT 系統一起抓住和交換健康情況和福利資料。 IoMT 裝置的一些範例包括健身與臨床穿戴式裝置、監視感應器、活動追蹤器、護理資訊亭，甚至是智慧藥丸。
+我們有一個包含範例應用程式和案例的 [健康情況架構 GitHub 頁面](https://github.com/microsoft/health-architectures) 。 它說明如何將 web 應用程式連線至 Azure API for FHIR。  
 
-### <a name="how-many-azure-iot-connector-for-fhir-preview-do-i-need"></a>我需要多少個適用于 FHIR (preview) 的 Azure IoT Connector？
-適用于 FHIR 的單一 Azure IoT Connector * 可以用來從大量不同類型的裝置內嵌資料。 基於下列原因，您可能仍決定使用不同的連接器：
-- **調整**：針對公開預覽版，FHIR 資源容量的 Azure IoT Connector 是固定的，而且預期會提供大約每秒200個訊息的輸送量。 如果需要較高的輸送量，您可以新增更多 Azure IoT Connector 的 FHIR。
-- **裝置類型**：您可以針對您基於裝置管理考慮的每一種 IoMT 裝置，設定個別的 Azure IoT Connector 以進行 FHIR。
+## <a name="azure-api-for-fhir-features-and-services"></a>Azure API for FHIR 的功能與服務 
 
-### <a name="is-there-a-limit-on-number-of-azure-iot-connector-for-fhir-preview-during-public-preview"></a>在公開預覽期間，FHIR (preview) 的 Azure IoT Connector 數目是否有限制？
-是的，您可以在此功能處於公開預覽狀態時，每個訂用帳戶只能建立兩個 Azure IoT Connector for FHIR。 這項限制是為了避免非預期的費用，因為功能在預覽期間免費提供。 在要求中，此限制最多可能會產生五個 FHIR 的 Azure IoT Connector。
+### <a name="is-there-a-way-to-encrypt-my-data-using-my-personal-key-not-a-default-key"></a>是否有方法可以使用我的個人金鑰來加密我的資料，而不是預設的金鑰？
 
-### <a name="what-azure-regions-azure-iot-connector-for-fhir-preview-feature-is-available-during-public-preview"></a>在公開預覽期間，有哪些 Azure 區域適用于 FHIR 的 azure IoT Connector (preview) 功能？
-適用于 FHIR 的 azure IoT Connector 適用于 Azure API for FHIR 可供使用的所有 Azure 區域。
+是的，Azure API for FHIR 可讓您設定客戶管理的金鑰，並利用 Cosmos DB 的支援。 如需使用個人金鑰加密您的資料的詳細資訊，請參閱 [這一節](https://docs.microsoft.com/azure/healthcare-apis/customer-managed-key)。
+
+## <a name="azure-api-for-fhir-preview-features"></a>Azure API for FHIR：預覽功能
 
 ### <a name="can-i-configure-scaling-capacity-for-azure-iot-connector-for-fhir-preview"></a>是否可以為 Azure IoT Connector 設定 Azure (preview) 的調整容量？
+
 因為 Azure IoT Connector for FHIR 在公開預覽期間免費，所以其調整容量是固定的，而且有限。 適用于 FHIR 的 Azure IoT Connector 設定可在公開預覽中取得，且每秒應提供大約200個訊息的輸送量。 某些形式的資源容量設定將提供正式運作 (GA) 。
 
-### <a name="what-fhir-version-does-azure-iot-connector-for-fhir-preview-support"></a>Azure IoT Connector FHIR (preview) 支援的 FHIR 版本為何？
-適用于 FHIR 的 Azure IoT Connector 目前僅支援 FHIR 版本 R4。 因此，只有 Azure API for FHIR 的 R4 實例上才會顯示這項功能，而且 Microsoft 不打算支援 STU3 版本。
-
 ### <a name="why-cant-i-install-azure-iot-connector-for-fhir-preview-when-private-link-is-enabled-on-azure-api-for-fhir"></a>為什麼在 Azure API for FHIR 上啟用 Private Link 時，無法安裝 Azure IoT Connector for FHIR (preview) ？
+
 Azure IoT Connector for FHIR 目前不支援 Private Link 功能。 因此，如果您已在 Azure API for FHIR 上啟用 Private Link，則無法安裝適用于 FHIR 的 Azure IoT Connector，反之亦然。 當適用于 FHIR 的 Azure IoT Connector 正式運作 (GA) 時，預期會有這項限制。
-
-### <a name="whats-the-difference-between-the-open-source-iomt-fhir-connector-for-azure-and-azure-iot-connector-for-fhir-preview-feature-of-azure-api-for-fhir-service"></a>適用于 Azure 的開放原始碼 IoMT FHIR Connector 與 Azure IoT Connector Azure API for FHIR 服務的 FHIR (preview) 功能有何差異？
-適用于 FHIR 的 azure IoT Connector 是適用于 Azure 的開放原始碼 IoMT FHIR Connector 託管和受控版本。 在受控服務中，Microsoft 會提供所有維護和更新。
-
-當您執行適用于 Azure 的 IoMT FHIR Connector 時，您可以直接存取基礎資源。 但是，如果您要儲存 PHI 資料，您也必須負責維護和補救伺服器，以及所有必要的合規性工作。
-
-從開發的觀點來看，每項功能都是先部署到開放原始碼 IoMT FHIR Connector for Azure。 在開放原始碼中驗證之後，它就會發行至 Azure API for FHIR 服務的 PaaS Azure IoT Connector for FHIR 功能。 開放原始碼和 PaaS 中的發行之間的時間，取決於功能的複雜度和其他的藍圖優先順序。
-
-## <a name="next-steps"></a>後續步驟
-
-在本文中，您已閱讀 Azure API for FHIR 的一些常見問題。 閱讀 FHIR Server for Azure 中支援的功能：
- 
->[!div class="nextstepaction"]
->[支援的 FHIR 功能](fhir-features-supported.md)
-
-*在 Azure 入口網站中，Azure IoT Connector for FHIR 稱為 IoT 連接器 (預覽)。
-
-FHIR 是 HL7 的註冊商標，必須搭配 HL7 權限方可使用。

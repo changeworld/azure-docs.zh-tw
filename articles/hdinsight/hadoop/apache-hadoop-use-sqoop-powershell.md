@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: 3f8a5bdc9e1240303216df1dec31c78a560c55eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 781c19edb9261b13f31bebecb6bc74bf2b616b47
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87086489"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546971"
 ---
 # <a name="run-apache-sqoop-jobs-with-azure-powershell-in-hdinsight"></a>在 HDInsight 中使用 Azure PowerShell 執行 Apache Sqoop 作業
 
@@ -23,7 +23,7 @@ ms.locfileid: "87086489"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* 已安裝 Azure PowerShell [AZ 模組](https://docs.microsoft.com/powershell/azure/)的工作站。
+* 已安裝 Azure PowerShell [AZ 模組](/powershell/azure/)的工作站。
 
 * 透過[搭配使用 Apache Sqoop 與 HDInsight 中的 Hadoop](./hdinsight-use-sqoop.md)完成[設定測試環境](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)。
 

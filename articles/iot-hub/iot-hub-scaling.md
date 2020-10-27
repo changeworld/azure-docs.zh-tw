@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: Operations'
-ms.openlocfilehash: c82f6eb37d542f80b6cb79ffb1fae6fe0cf0c233
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: bd016fcfe377dc610d5918ad8128fff4f6473fe5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144271"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538454"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>選擇適合您解決方案的 IoT 中樞層
 
@@ -47,7 +47,7 @@ Azure IoT 中樞提供基本和標準兩個層級，兩者所支援的功能數�
 | [訊息路由](iot-hub-devguide-messages-read-custom.md)、[訊息擴充](iot-hub-message-enrichments-overview.md)和[事件方格整合](iot-hub-event-grid.md) | 是 | 是 |
 | [HTTP、AMQP 和 MQTT 通訊協定](iot-hub-devguide-protocols.md) | 是 | 是 |
 | [裝置佈建服務](../iot-dps/about-iot-dps.md) | 是 | 是 |
-| [監視和診斷](iot-hub-monitor-resource-health.md) | 是 | 是 |
+| [監視和診斷](monitor-iot-hub.md) | 是 | 是 |
 | [雲端到裝置傳訊](iot-hub-devguide-c2d-guidance.md) |   | 是 |
 | [裝置對應項](iot-hub-devguide-device-twins.md)、[模組對應項](iot-hub-devguide-module-twins.md)和[裝置管理](iot-hub-device-management-overview.md) |   | 是 |
 | [裝置串流 (預覽)](iot-hub-device-streams-overview.md) |   | 是 |

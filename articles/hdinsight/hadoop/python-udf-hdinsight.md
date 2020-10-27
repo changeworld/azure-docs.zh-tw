@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
-ms.openlocfilehash: 9c16b3ff013c2985ea381ed4bb002276b1c3fdb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0179fd10e75af0ced55b4bb41f9525dc26b3efe5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462236"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540375"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>在 HDInsight 上搭配 Apache Hive 和 Apache Pig 使用 Python 使用者定義函數 (UDF)
 
@@ -27,11 +27,11 @@ HDInsight 也包含 Jython (以 Java 撰寫的 Python 實作)。 Jython 會直�
 
 ## <a name="prerequisites"></a>必要條件
 
-* **HDInsight 上的 Hadoop**叢集。 請參閱[開始在 Linux 上使用 HDInsight](apache-hadoop-linux-tutorial-get-started.md)。
-* **SSH 用戶端**。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
+* **HDInsight 上的 Hadoop** 叢集。 請參閱[開始在 Linux 上使用 HDInsight](apache-hadoop-linux-tutorial-get-started.md)。
+* **SSH 用戶端** 。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 * 您叢集主要儲存體的 [URI 配置](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 這適用于 `wasb://` Azure 儲存體，適用于 `abfs://` Azure Data Lake Storage Gen2 或適用于 Azure Data Lake Storage Gen1 的 adl://。 如果已針對 Azure 儲存體啟用安全傳輸，則會 wasbs://URI。  另請參閱[安全傳輸](../../storage/common/storage-require-secure-transfer.md)。
 * **儲存體設定的可能變更。**  如果使用儲存體帳戶種類，請參閱 [儲存體](#storage-configuration) 設定 `BlobStorage` 。
-* 選擇性。  如果打算使用 PowerShell，您將需要安裝 [AZ 模組](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) 。
+* 選擇性。  如果打算使用 PowerShell，您將需要安裝 [AZ 模組](/powershell/azure/new-azureps-module-az) 。
 
 > [!NOTE]  
 > 本文中使用的儲存體帳戶已啟用 [安全傳輸](../../storage/common/storage-require-secure-transfer.md) Azure 儲存體，因此將在 `wasbs` 本文中使用。
@@ -46,7 +46,7 @@ HDInsight 也包含 Jython (以 Java 撰寫的 Python 實作)。 Jython 會直�
 > * 您在本機開發環境中建立 Python 指令碼。
 > * 您可以使用 `scp` 命令或提供的 PowerShell 腳本，將腳本上傳至 HDInsight。
 >
-> 如果您想要使用 [Azure Cloud Shell (bash) ](https://docs.microsoft.com/azure/cloud-shell/overview) 來處理 HDInsight，則必須：
+> 如果您想要使用 [Azure Cloud Shell (bash) ](../../cloud-shell/overview.md) 來處理 HDInsight，則必須：
 >
 > * 建立 Cloud Shell 環境內的指令碼。
 > * 使用 `scp` 將檔案從 Cloud Shell 上傳至 HDInsight。
@@ -100,7 +100,7 @@ while True:
 1. 從 STDIN 讀取資料行。
 2. 使用 `string.strip(line, "\n ")` 移除結尾新行字元。
 3. 執行串流處理時，有一行包含所有的值，而每個值之間是一個定位字元。 因此， `string.split(line, "\t")` 可在每個索引標籤進行分割輸入，並只傳回欄位。
-4. 處理完成時，輸出必須以一行寫入 STDOUT，而每一個欄位之間是一個定位字元。 例如： `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])` 。
+4. 處理完成時，輸出必須以一行寫入 STDOUT，而每一個欄位之間是一個定位字元。 例如 `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`。
 5. `while` 迴圈會一直重複直到沒有 `line` 讀取。
 
 指令碼輸出是 `devicemake` 和 `devicemodel` 的輸入值串連，並且是串連值的雜湊。
@@ -300,8 +300,8 @@ Get-AzHDInsightJobOutput `
 
 若要指定 Python 解譯器，請在參考 Python 指令碼時使用 `register`。 下列範例使用 Pig 將指令碼註冊為 `myfuncs`：
 
-* **若要使用 Jython**： `register '/path/to/pigudf.py' using jython as myfuncs;`
-* **使用 C Python**： `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
+* **若要使用 Jython** ： `register '/path/to/pigudf.py' using jython as myfuncs;`
+* **使用 C Python** ： `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]  
 > 使用 Jython 時，pig_jython 檔案的路徑可以是本機路徑或 WASBS://路徑。 不過，在使用 C Python 時，您必須參考您用來提交 Pig 作業之節點的本機檔案系統上的檔案。
@@ -343,7 +343,7 @@ def create_structure(input):
 
 在 Pig 拉丁範例中， `LINE` 輸入定義為 chararray，因為輸入沒有一致的架構。 Python 指令碼會將資料轉換成一致的結構描述，以便輸出。
 
-1. `@outputSchema` 陳述式定義將傳回給 Pig 的資料格式。 在此案例中，這是一個 **data bag**(一種 Pig 資料類型)。 Bag 包含下列欄位，全部都是 chararray (字串)：
+1. `@outputSchema` 陳述式定義將傳回給 Pig 的資料格式。 在此案例中，這是一個 **data bag** (一種 Pig 資料類型)。 Bag 包含下列欄位，全部都是 chararray (字串)：
 
    * date - 記錄項目的建立日期
    * time - 記錄項目的建立時間
@@ -423,7 +423,7 @@ def create_structure(input):
     #from pig_util import outputSchema
     ```
 
-    這行會修改 Python 指令碼以搭配 C Python 使用，而非 Jython。 變更完成後，請使用 **Ctrl + X** 結束編輯器。 選取 [ **Y**]，然後 **輸入** 以儲存變更。
+    這行會修改 Python 指令碼以搭配 C Python 使用，而非 Jython。 變更完成後，請使用 **Ctrl + X** 結束編輯器。 選取 [ **Y** ]，然後 **輸入** 以儲存變更。
 
 6. 使用 `pig` 命令再次啟動 Shell。 進入 `grunt>` 提示字元後，使用下列命令以使用 C Python 解譯器執行 Python 指令碼。
 
@@ -594,7 +594,7 @@ Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An e
 
 ## <a name="next-steps"></a><a name="next"></a>後續步驟
 
-如果您需要載入非預設提供的 Python 模組，請參閱 [如何將模組部署至 Azure HDInsight](https://docs.microsoft.com/archive/blogs/benjguin/how-to-deploy-a-python-module-to-windows-azure-hdinsight) (英文)。
+如果您需要載入非預設提供的 Python 模組，請參閱 [如何將模組部署至 Azure HDInsight](/archive/blogs/benjguin/how-to-deploy-a-python-module-to-windows-azure-hdinsight) (英文)。
 
 若要了解使用 MapReduce，及Pig、Hive 的其他使用方式，請參閱下列文件：
 

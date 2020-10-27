@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 478b53b78fb72a01ad028c7fb6b7683b34cbca14
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 88e433dbfa87d8ea483789b1fd838c62a6a481c0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370792"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536754"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Cache for Redis
 > [!div class="op_single_selector"]
@@ -22,7 +22,7 @@ ms.locfileid: "92370792"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-本主題說明如何執行一般工作，例如建立、更新及調整 Azure Cache for Redis 執行個體，如何重新產生存取金鑰，以及如何檢視您的快取的相關資訊。 如需 Azure Cache for Redis 的 PowerShell Cmdlet 完整清單，請參閱 [Azure Cache for Redis Cmdlet](https://docs.microsoft.com/powershell/module/az.rediscache)。
+本主題說明如何執行一般工作，例如建立、更新及調整 Azure Cache for Redis 執行個體，如何重新產生存取金鑰，以及如何檢視您的快取的相關資訊。 如需 Azure Cache for Redis 的 PowerShell Cmdlet 完整清單，請參閱 [Azure Cache for Redis Cmdlet](/powershell/module/az.rediscache)。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -94,7 +94,7 @@ ms.locfileid: "92370792"
 * 美國政府維吉尼亞州
 * 美國政府愛荷華州
 
-如需 Azure Government 雲端的詳細資訊，請參閱 [Microsoft Azure Government](https://azure.microsoft.com/features/gov/) 和 [Microsoft Azure Government 開發人員指南](../azure-government-developer-guide.md)。
+如需 Azure Government 雲端的詳細資訊，請參閱 [Microsoft Azure Government](https://azure.microsoft.com/features/gov/) 和 [Microsoft Azure Government 開發人員指南](../azure-government/documentation-government-developer-guide.md)。
 
 ### <a name="to-connect-to-the-azure-china-cloud"></a>連線到 Azure 中國雲端
 如果要連線到 Azure 中國雲端，請使用下列其中一個命令。
@@ -172,7 +172,7 @@ ms.locfileid: "92370792"
 | 資料庫 |設定資料庫數目。 這個屬性僅可以在建立快取時設定。 |標準和進階 |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>建立 Azure Cache for Redis
-建立新的「Azure Redis 快取」執行個體時，會使用 [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) Cmdlet 來建立。
+建立新的「Azure Redis 快取」執行個體時，會使用 [New-AzRedisCache](/powershell/module/az.rediscache/new-azrediscache) Cmdlet 來建立。
 
 > [!IMPORTANT]
 > 您第一次使用 Azure 入口網站在訂用帳戶中建立 Azure Cache for Redis 時，入口網站會為該訂用帳戶註冊 `Microsoft.Cache` 命名空間。 如果您嘗試使用 PowerShell 在訂用帳戶中建立第一個 Azure Cache for Redis，您必須先使用下列命令註冊該命名空間；否則 Cmdlet (例如 `New-AzRedisCache` 和 `Get-AzRedisCache`) 會失敗。
@@ -280,16 +280,16 @@ ms.locfileid: "92370792"
 <a name="databases"></a>
 
 ## <a name="to-configure-the-databases-setting-during-cache-creation"></a>在快取建立期間設定資料庫設定
-`databases` 設定僅可以在快取建立期間設定。 下列範例會使用 [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/New-azRedisCache) Cmdlet 來建立具有 48 個資料庫的進階 P3 (26 GB) 快取。
+`databases` 設定僅可以在快取建立期間設定。 下列範例會使用 [New-AzRedisCache](/powershell/module/az.rediscache/New-azRedisCache) Cmdlet 來建立具有 48 個資料庫的進階 P3 (26 GB) 快取。
 
 ```azurepowershell
     New-AzRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P3 -RedisConfiguration @{"databases" = "48"}
 ```
 
-如需 `databases` 屬性的詳細資訊，請參閱 [預設的 Azure Cache for Redis 伺服器組態](cache-configure.md#default-redis-server-configuration)。 如需有關使用 [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache) Cmdlet 來建立快取的詳細資訊，請參閱先前的＜建立 Azure Redis 快取＞一節。
+如需 `databases` 屬性的詳細資訊，請參閱 [預設的 Azure Cache for Redis 伺服器組態](cache-configure.md#default-redis-server-configuration)。 如需有關使用 [New-AzRedisCache](/powershell/module/az.rediscache/new-azrediscache) Cmdlet 來建立快取的詳細資訊，請參閱先前的＜建立 Azure Redis 快取＞一節。
 
 ## <a name="to-update-an-azure-cache-for-redis"></a>更新 Azure Cache for Redis
-更新「Azure Redis 快取」執行個體時，會使用 [Set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/Set-azRedisCache) Cmdlet 來更新。
+更新「Azure Redis 快取」執行個體時，會使用 [Set-AzRedisCache](/powershell/module/az.rediscache/Set-azRedisCache) Cmdlet 來更新。
 
 若要查看 `Set-AzRedisCache`的可用參數清單及其說明，請執行下列命令。
 
@@ -364,10 +364,10 @@ ms.locfileid: "92370792"
 > 使用 PowerShell 調整快取，和從 Azure 入口網站調整快取有相同的限制和準則。 您可以調整具有下列限制的不同定價層。
 > 
 > * 您無法從較高的定價層調整至較低的定價層。
-> * 您無法從**進階**快取向下調整至**標準**或**基本**快取。
-> * 您無法從**標準**快取向下調整到**基本**快取。
-> * 您可以從**基本**快取調整到**標準**快取，但您無法同時變更大小。 如果您需要不同的大小，您可以進行後續調整作業，調整到您需要的大小。
-> * 您無法直接從**基本**快取調整至**進階**快取。 您必須在單一調整作業中從**基本**調整至**標準**，然後在後續的調整作業中從**標準**調整至**進階**。
+> * 您無法從 **進階** 快取向下調整至 **標準** 或 **基本** 快取。
+> * 您無法從 **標準** 快取向下調整到 **基本** 快取。
+> * 您可以從 **基本** 快取調整到 **標準** 快取，但您無法同時變更大小。 如果您需要不同的大小，您可以進行後續調整作業，調整到您需要的大小。
+> * 您無法直接從 **基本** 快取調整至 **進階** 快取。 您必須在單一調整作業中從 **基本** 調整至 **標準** ，然後在後續的調整作業中從 **標準** 調整至 **進階** 。
 > * 您無法從較大的大小向下調整至 **C0 (250 MB)** 的大小。
 > 
 > 如需詳細資訊，請參閱 [如何調整 Azure Cache for Redis](cache-how-to-scale.md)。
@@ -418,7 +418,7 @@ ms.locfileid: "92370792"
 ```
 
 ## <a name="to-get-information-about-an-azure-cache-for-redis"></a>取得 Azure Cache for Redis 的相關資訊
-您可以使用 [Get-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/get-azrediscache) Cmdlet 來擷取快取的相關資訊。
+您可以使用 [Get-AzRedisCache](/powershell/module/az.rediscache/get-azrediscache) Cmdlet 來擷取快取的相關資訊。
 
 若要查看 `Get-AzRedisCache`的可用參數清單及其說明，請執行下列命令。
 
@@ -502,7 +502,7 @@ ms.locfileid: "92370792"
 ```
 
 ## <a name="to-retrieve-the-access-keys-for-an-azure-cache-for-redis"></a>擷取 Azure Cache for Redis 的存取金鑰
-若要擷取您快取的存取金鑰，您可以使用 [Get-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/Get-azRedisCacheKey) Cmdlet。
+若要擷取您快取的存取金鑰，您可以使用 [Get-AzRedisCacheKey](/powershell/module/az.rediscache/Get-azRedisCacheKey) Cmdlet。
 
 若要查看 `Get-AzRedisCacheKey`的可用參數清單及其說明，請執行下列命令。
 
@@ -546,7 +546,7 @@ ms.locfileid: "92370792"
 ```
 
 ## <a name="to-regenerate-access-keys-for-your-azure-cache-for-redis"></a>重新產生 Azure Cache for Redis 的存取金鑰
-若要重新產生您快取的存取金鑰，您可以使用 [New-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/New-azRedisCacheKey) Cmdlet。
+若要重新產生您快取的存取金鑰，您可以使用 [New-AzRedisCacheKey](/powershell/module/az.rediscache/New-azRedisCacheKey) Cmdlet。
 
 若要查看 `New-AzRedisCacheKey`的可用參數清單及其說明，請執行下列命令。
 
@@ -600,7 +600,7 @@ ms.locfileid: "92370792"
 ```
 
 ## <a name="to-delete-an-azure-cache-for-redis"></a>刪除 Azure Cache for Redis
-若要刪除「Azure Redis 快取」，請使用 [Remove-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/remove-azrediscache) Cmdlet。
+若要刪除「Azure Redis 快取」，請使用 [Remove-AzRedisCache](/powershell/module/az.rediscache/remove-azrediscache) Cmdlet。
 
 若要查看 `Remove-AzRedisCache`的可用參數清單及其說明，請執行下列命令。
 
@@ -848,10 +848,9 @@ ms.locfileid: "92370792"
 ## <a name="next-steps"></a>後續步驟
 若要深入了解如何將 Windows PowerShell 與 Azure 搭配使用，請參閱下列資源：
 
-* [MSDN 上的 Azure Cache for Redis Cmdlet 文件](https://docs.microsoft.com/powershell/module/az.rediscache)
-* [Azure Resource Manager Cmdlet](https://go.microsoft.com/fwlink/?LinkID=394765)：了解如何使用 Azure Resource Manager 模組中的 Cmdlet。
+* [MSDN 上的 Azure Cache for Redis Cmdlet 文件](/powershell/module/az.rediscache)
+* [Azure Resource Manager Cmdlet](/powershell/module/)：了解如何使用 Azure Resource Manager 模組中的 Cmdlet。
 * [使用資源群組來管理您的 Azure 資源](../azure-resource-manager/templates/deploy-portal.md)：了解如何在 Azure 入口網站中建立和管理資源群組。
 * [Azure 部落格](https://azure.microsoft.com/blog/)：了解 Azure 的新功能。
 * [Windows PowerShell 部落格](https://devblogs.microsoft.com/powershell/)：了解 Windows PowerShell 的新功能。
 * ["Hey, Scripting Guy!"部落格](https://devblogs.microsoft.com/scripting/tag/hey-scripting-guy/)：從 Windows PowerShell 社群中取得實際的秘訣及訣竅。
-

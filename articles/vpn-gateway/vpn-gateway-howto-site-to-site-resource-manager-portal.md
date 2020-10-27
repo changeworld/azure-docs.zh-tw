@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 069add9a7e5dd6b19810b8b36a4fca49818bfb02
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b8c12048283cb8cc4220cb325762b272cde4a68f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479543"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541310"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>在 Azure 入口網站中建立站對站連線
 
@@ -100,7 +100,7 @@ ms.locfileid: "92479543"
 內部部署網路的站對站連線需要 VPN 裝置。 在此步驟中，設定 VPN 裝置。 設定 VPN 裝置時，您需要下列值：
 
 * 共用金鑰。 這個共同金鑰與您建立站對站 VPN 連線時指定的共用金鑰相同。 在我們的範例中，我們會使用基本的共用金鑰。 我們建議您產生更複雜的金鑰以供使用。
-* 虛擬網路閘道的公用 IP 位址。 您可以使用 Azure 入口網站、PowerShell 或 CLI 來檢視公用 IP 位址。 若要使用 Azure 入口網站尋找 VPN 閘道的公用 IP 位址，請流覽至 [ **虛擬網路閘道**]，然後選取您的閘道名稱。
+* 虛擬網路閘道的公用 IP 位址。 您可以使用 Azure 入口網站、PowerShell 或 CLI 來檢視公用 IP 位址。 若要使用 Azure 入口網站尋找 VPN 閘道的公用 IP 位址，請流覽至 [ **虛擬網路閘道** ]，然後選取您的閘道名稱。
 
 [!INCLUDE [Configure a VPN device](../../includes/vpn-gateway-configure-vpn-device-include.md)]
 
@@ -122,7 +122,7 @@ ms.locfileid: "92479543"
 
 ## <a name="how-to-connect-to-a-virtual-machine"></a><a name="connectVM"></a>如何連接至虛擬機器
 
-[!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-s2s-include.md)]
+[!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm.md)]
 
 ## <a name="how-to-reset-a-vpn-gateway"></a><a name="reset"></a>如何重設 VPN 閘道
 
@@ -141,7 +141,7 @@ ms.locfileid: "92479543"
 1. 如果您要使用站對站進行連線，且您尚未建立所需連線之站台的區域網路閘道，您可以新建立一個。
 1. 指定您要使用的共用金鑰，然後選取 **[確定]** 以建立連線。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 如需 BGP 的相關資訊，請參閱 [BGP 概觀](vpn-gateway-bgp-overview.md)和[如何設定 BGP](vpn-gateway-bgp-resource-manager-ps.md)。
 * 如需強制通道的相關資訊，請參閱[關於強制通道](vpn-gateway-forced-tunneling-rm.md)。

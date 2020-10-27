@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: 34e4781d1437b34607a6d9e4f99ec5bd2ef9b46d
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: eb70e7cfec4e6f3e7e55fa74bbdd6cee43493576
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999975"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537876"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>如何設定進階 Azure Cache for Redis 的虛擬網路支援
 Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快取大小和功能，包括叢集功能、持續性及虛擬網路支援等「進階」層功能。 VNet 是雲端中的私人網路。 當 Azure Cache for Redis 執行個體是以 VNet 設定時，它將無法公開定址，而只能從 VNet 中的虛擬機器和應用程式存取。 本文說明如何設定進階 Azure Cache for Redis 執行個體的虛擬網路支援。
@@ -26,9 +26,9 @@ Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快�
 [Azure 虛擬網路 (VNet) ](https://azure.microsoft.com/services/virtual-network/) 部署可為您的 Azure Cache for Redis 提供增強的安全性和隔離，以及子網、存取控制原則及其他功能，以進一步限制存取。
 
 ## <a name="virtual-network-support"></a>虛擬網路支援
-虛擬網路 (VNet) 支援是在快取建立期間於 [新的 Azure Cache for Redis]**** 刀鋒視窗中設定的。 
+虛擬網路 (VNet) 支援是在快取建立期間於 [新的 Azure Cache for Redis]  刀鋒視窗中設定的。 
 
-1. 若要建立 premium 快取，請登入 [Azure 入口網站](https://portal.azure.com) ，然後選取 [ **建立資源**]。 請注意，除了在 Azure 入口網站中建立快取，您也可以使用 Resource Manager 範本、PowerShell 或 Azure CLI 來建立它們。 如需如何建立 Azure Cache for Redis 的詳細資訊，請參閱[建立快取](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)。
+1. 若要建立 premium 快取，請登入 [Azure 入口網站](https://portal.azure.com) ，然後選取 [ **建立資源** ]。 請注意，除了在 Azure 入口網站中建立快取，您也可以使用 Resource Manager 範本、PowerShell 或 Azure CLI 來建立它們。 如需如何建立 Azure Cache for Redis 的詳細資訊，請參閱[建立快取](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)。
 
     :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="建立資源。":::
    
@@ -40,7 +40,7 @@ Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快�
    
    | 設定      | 建議的值  | 描述 |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS 名稱** | 輸入全域唯一名稱。 | 快取名稱必須是 1 到 63 個字元的字串，且只能包含數字、字母或連字號。 名稱的開頭和結尾必須是數字或字母，且不可包含連續的連字號。 您的快取執行個體*主機名稱*將是 *\<DNS name>.redis.cache.windows.net*。 | 
+   | **DNS 名稱** | 輸入全域唯一名稱。 | 快取名稱必須是 1 到 63 個字元的字串，且只能包含數字、字母或連字號。 名稱的開頭和結尾必須是數字或字母，且不可包含連續的連字號。 您的快取執行個體 *主機名稱* 將是 *\<DNS name>.redis.cache.windows.net* 。 | 
    | **訂用帳戶** | 下拉式清單，然後選取您的訂用帳戶。 | 這個新的 Azure Cache for Redis 執行個體建立所在的訂用帳戶。 | 
    | **資源群組** | 下拉式清單並選取資源群組，或選取 [ **建立新** 的]，然後輸入新的資源組名。 | 用來建立快取和其他資源的資源群組名稱。 將所有的應用程式資源放在一個資源群組中，您將可輕鬆地一併管理或刪除這些資源。 | 
    | **位置** | 下拉式清單並選取位置。 | 選取其他將使用快取的服務附近的[區域](https://azure.microsoft.com/regions/)。 |
@@ -48,7 +48,7 @@ Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快�
 
 4. 選取 [網路] 索引標籤，或按一下頁面底部的 [網路] 按鈕。
 
-5. 在 [ **網路** ] 索引標籤中，選取 [ **虛擬網路** ] 作為您的連線方法。 若要使用新的虛擬網路，請先遵循 [使用 Azure 入口網站建立虛擬](../virtual-network/manage-virtual-network.md#create-a-virtual-network) 網路中的步驟，或 [使用 Azure 入口網站建立虛擬網路 (傳統) ](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) ，然後返回 **新的 Azure Cache for Redis** blade 來建立和設定您的 premium 快取，以先建立虛擬網路。
+5. 在 [ **網路** ] 索引標籤中，選取 [ **虛擬網路** ] 作為您的連線方法。 若要使用新的虛擬網路，請先遵循 [使用 Azure 入口網站建立虛擬](../virtual-network/manage-virtual-network.md#create-a-virtual-network) 網路中的步驟，或 [使用 Azure 入口網站建立虛擬網路 (傳統)](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal) ，然後返回 **新的 Azure Cache for Redis** blade 來建立和設定您的 premium 快取，以先建立虛擬網路。
 
 > [!IMPORTANT]
 > 將 Azure Cache for Redis 部署到 Resource Manager VNet 時，快取必須位於專用子網路中，其中只能包含 Azure Cache for Redis 執行個體，不含其他任何資源。 如果嘗試將 Azure Cache for Redis 部署到含有其他資源的 Resource Manager VNet 子網路，部署將會失敗。
@@ -76,11 +76,11 @@ Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快�
 
 9. 在 [標記] 索引標籤中，如果您想要分類資源，可以選擇性地輸入名稱和值。 
 
-10. 選取 [檢閱 + 建立] ****。 您會移至 [檢閱 + 建立] 索引標籤，其中 Azure 會驗證您的組態。
+10. 選取 [檢閱 + 建立]。 您會移至 [檢閱 + 建立] 索引標籤，其中 Azure 會驗證您的組態。
 
 11. 出現綠色的「通過驗證」訊息之後，請選取 [建立]。
 
-建立快取需要一些時間。 您可以在 Azure Cache for Redis 的 [概觀] ****   頁面上監視進度。 當 [狀態] **** 顯示為 [執行中]  **** 時，表示快取已可供使用。 建立快取之後，您可以從 [資源]**** 功能表中按一下 [虛擬網路]****，以檢視 VNet 的設定。
+建立快取需要一些時間。 您可以在 Azure Cache for Redis 的 [概觀] 頁面上監視進度。 當 [狀態] 顯示為 [執行中] 時，表示快取已可供使用。 建立快取之後，您可以從 [資源]  功能表中按一下 [虛擬網路]  ，以檢視 VNet 的設定。
 
 ![虛擬網路][redis-cache-vnet-info]
 
@@ -128,7 +128,7 @@ Azure Cache for Redis 裝載在 VNet 時，會使用下表中的連接埠。
 
 有九個輸出埠需求。 這些範圍內的輸出要求可能會輸出至快取運作所需的其他服務，或 Redis 子網內部的其他服務，以進行節點間通訊。 針對異地複寫，主要和複本快取的子網之間的通訊存在額外的輸出需求。
 
-| 連接埠 | Direction | 傳輸通訊協定 | 目的 | 本機 IP | 遠端 IP |
+| 連接埠 | 方向 | 傳輸通訊協定 | 目的 | 本機 IP | 遠端 IP |
 | --- | --- | --- | --- | --- | --- |
 | 80、443 |輸出 |TCP |Azure 儲存體/PKI 上 Redis 的相依項目 (網際網路) | (Redis 子網路) |* |
 | 443 | 輸出 | TCP | Azure Key Vault 的相依性 Redis | (Redis 子網路) | AzureKeyVault <sup>1</sup> |
@@ -154,15 +154,15 @@ Azure Cache for Redis 裝載在 VNet 時，會使用下表中的連接埠。
 
 有八項輸入連接埠範圍需求。 在這些範圍的輸入要求如下：從相同 VNET 中裝載的其他服務輸入，或是 Redis 子網路內部通訊。
 
-| 連接埠 | Direction | 傳輸通訊協定 | 目的 | 本機 IP | 遠端 IP |
+| 連接埠 | 方向 | 傳輸通訊協定 | 目的 | 本機 IP | 遠端 IP |
 | --- | --- | --- | --- | --- | --- |
 | 6379, 6380 |輸入 |TCP |對 Redis 進行的用戶端通訊，Azure 負載平衡 | (Redis 子網路) |  (Redis 子網) 、虛擬網路、Azure Load Balancer <sup>1</sup> |
 | 8443 |輸入 |TCP |Redis 內部通訊 | (Redis 子網路) |(Redis 子網路) |
-| 8500 |輸入 |TCP/UDP |Azure 負載平衡 | (Redis 子網路) |Azure Load Balancer |
+| 8500 |連入 |TCP/UDP |Azure 負載平衡 | (Redis 子網路) |Azure Load Balancer |
 | 10221-10231 |輸入 |TCP |Redis 內部通訊 | (Redis 子網路) |(Redis 子網路)，Azure Load Balancer |
 | 13000-13999 |輸入 |TCP |對 Redis 叢集的用戶端通訊，Azure 負載平衡 | (Redis 子網路) |虛擬網路，Azure Load Balancer |
 | 15000-15999 |輸入 |TCP |Redis 叢集的用戶端通訊，Azure 負載平衡，以及 Geo-Replication | (Redis 子網路) |虛擬網路、Azure Load Balancer、 (異地複本對等子網)  |
-| 16001 |輸入 |TCP/UDP |Azure 負載平衡 | (Redis 子網路) |Azure Load Balancer |
+| 16001 |連入 |TCP/UDP |Azure 負載平衡 | (Redis 子網路) |Azure Load Balancer |
 | 20226 |輸入 |TCP |Redis 內部通訊 | (Redis 子網路) |(Redis 子網路) |
 
 <sup>1</sup> 您可以使用服務標記 ' AzureLoadBalancer ' (Resource Manager)  (或為傳統 AZURE_LOADBALANCER 撰寫 NSG 規則的 ') '。
@@ -171,8 +171,8 @@ Azure Cache for Redis 裝載在 VNet 時，會使用下表中的連接埠。
 
 在虛擬網路中，可能一開始就不符合 Azure Cache for Redis 的一些網路連線需求。 Azure Cache for Redis 需要下列所有項目，在虛擬網路內使用時才能正確運作。
 
-* 全球 Azure 儲存體端點的輸出網路連線。 這包括位於與 Azure Cache for Redis 執行個體相同區域中的端點，以及位於 **其他** Azure 區域的儲存體端點。 Azure 儲存體端點會在下列 DNS 網域下解析： *table.core.windows.net*、 *blob.core.windows.net*、 *queue.core.windows.net*和 *file.core.windows.net*。 
-* *ocsp.msocsp.com*、*mscrl.microsoft.com* 和 *crl.microsoft.com* 的輸出網路連線。 這是支援 TLS/SSL 功能所需的連線能力。
+* 全球 Azure 儲存體端點的輸出網路連線。 這包括位於與 Azure Cache for Redis 執行個體相同區域中的端點，以及位於 **其他** Azure 區域的儲存體端點。 Azure 儲存體端點會在下列 DNS 網域下解析： *table.core.windows.net* 、 *blob.core.windows.net* 、 *queue.core.windows.net* 和 *file.core.windows.net* 。 
+* *ocsp.msocsp.com* 、 *mscrl.microsoft.com* 和 *crl.microsoft.com* 的輸出網路連線。 這是支援 TLS/SSL 功能所需的連線能力。
 * 虛擬網路的 DNS 設定必須能夠解析前面幾點所提到的所有端點和網域。 確定已針對虛擬網路設定及維護有效的 DNS 基礎結構，即可符合 DNS 需求。
 * 在下列 DNS 網域下解析之下列 Azure 監視端點的輸出網路連線︰shoebox2-black.shoebox2.metrics.nsatc.net、north-prod2.prod2.metrics.nsatc.net、azglobal-black.azglobal.metrics.nsatc.net、shoebox2-red.shoebox2.metrics.nsatc.net、east-prod2.prod2.metrics.nsatc.net、azglobal-red.azglobal.metrics.nsatc.net。
 
@@ -256,14 +256,14 @@ Azure 會在每個子網路中保留一些 IP 位址，但這些位址無法使�
 >UDR 中定義的路由 **必須** 足夠明確，才能優先于 ExpressRoute 設定所通告的任何路由。 下列範例使用廣泛 0.0.0.0/0 位址範圍，因此使用更明確的位址範圍，有可能會不小心由路由通告所覆寫。
 
 >[!WARNING]  
->**錯誤地針對從公用對等互連路徑至私人對等互連路徑的路由進行交叉通告**的 ExpressRoute 組態，不支援 Azure Cache for Redis。 已設定公用對等互連的 ExpressRoute 組態，會收到來自 Microsoft 的一大組 Microsoft Azure IP 位址範圍的路由通告。 如果這些位址範圍在私人對等互連路徑上錯誤地交叉通告，結果會是來自 Azure Cache for Redis 執行個體子網路的所有輸出網路封包，都會不正確地使用強制通道傳送至客戶的內部部署網路基礎結構。 此網路流量會中斷 Azure Cache for Redis。 此問題的解決方案是停止從公用對等互連路徑至私人對等互連路徑的交叉通告路由。
+>**錯誤地針對從公用對等互連路徑至私人對等互連路徑的路由進行交叉通告** 的 ExpressRoute 組態，不支援 Azure Cache for Redis。 已設定公用對等互連的 ExpressRoute 組態，會收到來自 Microsoft 的一大組 Microsoft Azure IP 位址範圍的路由通告。 如果這些位址範圍在私人對等互連路徑上錯誤地交叉通告，結果會是來自 Azure Cache for Redis 執行個體子網路的所有輸出網路封包，都會不正確地使用強制通道傳送至客戶的內部部署網路基礎結構。 此網路流量會中斷 Azure Cache for Redis。 此問題的解決方案是停止從公用對等互連路徑至私人對等互連路徑的交叉通告路由。
 
 
 如需使用者定義路由的背景資訊，請參閱此 [概觀](../virtual-network/virtual-networks-udr-overview.md)。
 
 如需 ExpressRoute 的詳細資訊，請參閱 [ExpressRoute 技術概觀](../expressroute/expressroute-introduction.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 深入瞭解 Azure Cache for Redis 功能。
 
 * [Azure Cache for Redis Premium 服務層級](cache-overview.md#service-tiers)

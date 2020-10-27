@@ -8,12 +8,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: d37f1c52157d2038d216873150b1d68e669e3392
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 9afab87e0d7f0e7a9e5c05b36ace1dfc09c9aa9f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487308"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548025"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>靜態資料的 Azure HDInsight 雙重加密
 
@@ -23,7 +23,7 @@ ms.locfileid: "92487308"
 
 ## <a name="introduction"></a>簡介
 
-Azure 中有三個主要受控磁片角色：資料磁片、OS 磁片和暫存磁片。 如需不同類型受控磁片的詳細資訊，請參閱 [Azure 受控磁片簡介](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)。 
+Azure 中有三個主要受控磁片角色：資料磁片、OS 磁片和暫存磁片。 如需不同類型受控磁片的詳細資訊，請參閱 [Azure 受控磁片簡介](../virtual-machines/managed-disks-overview.md)。 
 
 HDInsight 支援兩種不同層級的多種加密類型：
 
@@ -35,8 +35,8 @@ HDInsight 支援兩種不同層級的多種加密類型：
 
 |叢集類型 |OS 磁片 (受控磁片)  |資料磁片 (受控磁片)  |暫存資料磁片 (本機 SSD)  |
 |---|---|---|---|
-|Kafka，具有加速寫入的 HBase|Layer1：預設的[SSE 加密](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption)|Layer1：預設的 [SSE 加密](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption) ，l2：使用 CMK 的選擇性靜態加密|Layer1：使用 PMK 的主機選擇性加密，L2：使用 CMK 的選擇性靜態加密|
-|所有其他叢集 (Spark、互動式、Hadoop、HBase，而不需要加速寫入) |Layer1：預設的[SSE 加密](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption)|N/A|Layer1：使用 PMK 的主機選擇性加密，L2：使用 CMK 的選擇性靜態加密|
+|Kafka，具有加速寫入的 HBase|Layer1：預設的[SSE 加密](../virtual-machines/managed-disks-overview.md#encryption)|Layer1：預設的 [SSE 加密](../virtual-machines/managed-disks-overview.md#encryption) ，l2：使用 CMK 的選擇性靜態加密|Layer1：使用 PMK 的主機選擇性加密，L2：使用 CMK 的選擇性靜態加密|
+|所有其他叢集 (Spark、互動式、Hadoop、HBase，而不需要加速寫入) |Layer1：預設的[SSE 加密](../virtual-machines/managed-disks-overview.md#encryption)|不適用|Layer1：使用 PMK 的主機選擇性加密，L2：使用 CMK 的選擇性靜態加密|
 
 ## <a name="encryption-at-rest-using-customer-managed-keys"></a>使用客戶管理的金鑰進行待用加密
 
@@ -73,15 +73,15 @@ HDInsight 支援兩種不同層級的多種加密類型：
 
 建立金鑰保存庫。 如需特定步驟，請參閱 [建立 Azure Key Vault](../key-vault/secrets/quick-create-portal.md) 。
 
-HDInsight 僅支援 Azure Key Vault。 如果您有自己的金鑰保存庫，則可以將自己的金鑰匯入 Azure Key Vault 中。 請記住，金鑰保存庫必須啟用虛 **刪除** 。 如需如何匯入現有金鑰的詳細資訊，請瀏覽[關於金鑰、祕密和憑證](../key-vault/about-keys-secrets-and-certificates.md)。
+HDInsight 僅支援 Azure Key Vault。 如果您有自己的金鑰保存庫，則可以將自己的金鑰匯入 Azure Key Vault 中。 請記住，金鑰保存庫必須啟用虛 **刪除** 。 如需如何匯入現有金鑰的詳細資訊，請瀏覽[關於金鑰、祕密和憑證](../key-vault/general/about-keys-secrets-certificates.md)。
 
 ### <a name="create-key"></a>建立金鑰
 
-1. 在新的金鑰保存庫中，流覽至 [**設定**機  >  **碼**  >  **+ 產生/匯入**]。
+1. 在新的金鑰保存庫中，流覽至 [ **設定** 機  >  **碼**  >  **+ 產生/匯入** ]。
 
     ![在 Azure Key Vault 中產生新的金鑰](./media/disk-encryption/create-new-key.png "在 Azure Key Vault 中產生新的金鑰")
 
-1. 提供名稱，然後選取 [ **建立**]。 維護**RSA**的預設**金鑰類型**。
+1. 提供名稱，然後選取 [ **建立** ]。 維護 **RSA** 的預設 **金鑰類型** 。
 
     ![產生金鑰名稱](./media/disk-encryption/create-key.png "產生金鑰名稱")
 
@@ -89,22 +89,22 @@ HDInsight 僅支援 Azure Key Vault。 如果您有自己的金鑰保存庫，�
 
     ![key vault 金鑰清單](./media/disk-encryption/key-vault-key-list.png)
 
-1. 選取版本以開啟 [ **金鑰版本** ] 頁面。 當您使用自己的金鑰進行 HDInsight 叢集加密時，您需要提供金鑰 URI。 複製**金鑰識別碼**並將其儲存到某處，直到您準備好建立叢集為止。
+1. 選取版本以開啟 [ **金鑰版本** ] 頁面。 當您使用自己的金鑰進行 HDInsight 叢集加密時，您需要提供金鑰 URI。 複製 **金鑰識別碼** 並將其儲存到某處，直到您準備好建立叢集為止。
 
     ![取得金鑰識別碼](./media/disk-encryption/get-key-identifier.png)
 
 ### <a name="create-access-policy"></a>建立存取原則
 
-1. 在新的金鑰保存庫中，流覽至 [**設定**  >  **存取**原則]  >  **+ [新增存取原則**]。
+1. 在新的金鑰保存庫中，流覽至 [ **設定**  >  **存取** 原則]  >  **+ [新增存取原則** ]。
 
     ![建立新的 Azure Key Vault 存取原則](./media/disk-encryption/key-vault-access-policy.png)
 
 1. 在 [ **新增存取原則** ] 頁面中，提供下列資訊：
 
-    |屬性 |說明|
+    |屬性 |描述|
     |---|---|
-    |金鑰許可權|選取 [ **取得**]、[解除包裝 **金鑰**] 和 [ **包裝金鑰**]。|
-    |秘密許可權|選取 [ **取得**]、[ **設定**] 和 [ **刪除**]。|
+    |金鑰許可權|選取 [ **取得** ]、[解除包裝 **金鑰** ] 和 [ **包裝金鑰** ]。|
+    |秘密許可權|選取 [ **取得** ]、[ **設定** ] 和 [ **刪除** ]。|
     |選取主體|選取您稍早建立的使用者指派受控識別。|
 
     ![為 Azure Key Vault 存取原則設定 [選取主體]](./media/disk-encryption/azure-portal-add-access-policy.png)
@@ -121,7 +121,7 @@ HDInsight 僅支援 Azure Key Vault。 如果您有自己的金鑰保存庫，�
 
 #### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
 
-在叢集建立期間，請提供完整的 **金鑰識別碼**，包括金鑰版本。 例如，`https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`。 您也需要將受控識別指派給叢集，並提供金鑰 URI。
+在叢集建立期間，請提供完整的 **金鑰識別碼** ，包括金鑰版本。 例如 `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`。 您也需要將受控識別指派給叢集，並提供金鑰 URI。
 
 ![建立新的叢集](./media/disk-encryption/create-cluster-portal.png)
 
@@ -141,7 +141,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
 
 #### <a name="using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本
 
-下列範例示範如何使用 Azure Resource Manager 範本，建立已啟用磁片加密的新 Apache Spark 叢集。 如需詳細資訊，請參閱 [什麼是 ARM 範本？](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)。
+下列範例示範如何使用 Azure Resource Manager 範本，建立已啟用磁片加密的新 Apache Spark 叢集。 如需詳細資訊，請參閱 [什麼是 ARM 範本？](../azure-resource-manager/templates/overview.md)。
 
 此範例會使用 PowerShell 來呼叫範本。
 
@@ -359,7 +359,7 @@ New-AzResourceGroupDeployment `
 
 #### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
 
-若要輪替金鑰，您需要基底金鑰保存庫 URI。 完成之後，請移至入口網站中的 [HDInsight 叢集屬性] 區段，然後按一下 [**磁片加密金鑰 URL**] 下的 [**變更金鑰**]。 輸入新的金鑰 url，並提交以旋轉金鑰。
+若要輪替金鑰，您需要基底金鑰保存庫 URI。 完成之後，請移至入口網站中的 [HDInsight 叢集屬性] 區段，然後按一下 [ **磁片加密金鑰 URL** ] 下的 [ **變更金鑰** ]。 輸入新的金鑰 url，並提交以旋轉金鑰。
 
 ![輪替磁片加密金鑰](./media/disk-encryption/change-key.png)
 
@@ -420,7 +420,7 @@ HDInsight 客戶管理的金鑰適用于所有公用雲端和國家雲端。
 
 :::image type="content" source="media/disk-encryption/encryption-at-host.png" alt-text="在主機上啟用加密。":::
 
-此選項會使用 PMK 啟用 HDInsight Vm 暫存資料磁片的 [主機加密](../virtual-machines/linux/disks-enable-host-based-encryption-portal.md) 。 在 [有限區域中的特定 VM sku 上僅支援](../virtual-machines/linux/disks-enable-host-based-encryption-portal.md) 在主機上進行加密，且 HDInsight 支援 [下列節點設定和 sku](./hdinsight-supported-node-configuration.md)。
+此選項會使用 PMK 啟用 HDInsight Vm 暫存資料磁片的 [主機加密](../virtual-machines/disks-enable-host-based-encryption-portal.md) 。 在 [有限區域中的特定 VM sku 上僅支援](../virtual-machines/disks-enable-host-based-encryption-portal.md) 在主機上進行加密，且 HDInsight 支援 [下列節點設定和 sku](./hdinsight-supported-node-configuration.md)。
 
 若要瞭解 HDInsight 叢集的正確 VM 大小，請參閱為 [您的 Azure HDInsight 叢集選取適當的 vm 大小](hdinsight-selecting-vm-size.md)。 當啟用主機上的加密時，Zookeeper 節點的預設 VM SKU 將會 DS2V2。
 
@@ -467,7 +467,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \\
 --storage-account MyStorageAccount --encryption-at-host true
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 如需 Azure Key Vault 的詳細資訊，請參閱 [Azure Key Vault 是什麼](../key-vault/general/overview.md)。
 * [Azure HDInsight 中的企業安全性總覽](./domain-joined/hdinsight-security-overview.md)。

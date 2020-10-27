@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, devx-track-azurepowershell
 ms.date: 05/13/2020
-ms.openlocfilehash: 5524c7625678d3bacc5fdbe3c295d8392da2280f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 775e2fad573832dd29fc45985c6d6bd0a50fdf3c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490997"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546087"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>使用 Azure 監視器記錄來監視 HDInsight 叢集
 
 了解如何啟用 Azure 監視器記錄來監視 HDInsight 中的 Hadoop 叢集作業。 以及如何新增 HDInsight 監視解決方案。
 
-[Azure 監視器記錄](../log-analytics/log-analytics-overview.md)是監視您的雲端和內部部署環境的 Azure 監視器服務。 監視是要維護其可用性和效能。 其會收集您的雲端、內部部署環境，以及從其他監視工具中的資源所產生的資料。 該資料可用來提供跨多個來源的分析。
+[Azure 監視器記錄](../azure-monitor/log-query/log-query-overview.md)是監視您的雲端和內部部署環境的 Azure 監視器服務。 監視是要維護其可用性和效能。 其會收集您的雲端、內部部署環境，以及從其他監視工具中的資源所產生的資料。 該資料可用來提供跨多個來源的分析。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -40,7 +40,7 @@ ms.locfileid: "92490997"
 
   如需如何建立 HDInsight 叢集的指示，請參閱[開始使用 Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)。  
 
-* 如果使用 PowerShell，您將需要 [Az 模組](https://docs.microsoft.com/powershell/azure/) \(部分機器翻譯\)。 確認您擁有最新版本。 如有必要，請執行 `Update-Module -Name Az`。
+* 如果使用 PowerShell，您將需要 [Az 模組](/powershell/azure/) \(部分機器翻譯\)。 確認您擁有最新版本。 如有必要，請執行 `Update-Module -Name Az`。
 
 * 如果您想要使用 Azure CLI，但尚未安裝，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
@@ -65,7 +65,7 @@ ms.locfileid: "92490997"
 
 ## <a name="enable-azure-monitor-using-azure-powershell"></a>使用 Azure PowerShell 啟用 Azure 監視器
 
-您可以使用 Azure PowerShell Az 模組 [Enable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/enable-azhdinsightmonitoring) Cmdlet 來啟用 Azure 監視器記錄。
+您可以使用 Azure PowerShell Az 模組 [Enable-AzHDInsightMonitoring](/powershell/module/az.hdinsight/enable-azhdinsightmonitoring) Cmdlet 來啟用 Azure 監視器記錄。
 
 ```powershell
 # Enter user information
@@ -97,7 +97,7 @@ Get-AzHDInsightMonitoring `
     -Name $cluster
 ```
 
-若要停用，請使用 [Disable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) Cmdlet：
+若要停用，請使用 [Disable-AzHDInsightMonitoring](/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) Cmdlet：
 
 ```powershell
 Disable-AzHDInsightMonitoring -Name "<your-cluster>"
@@ -128,7 +128,7 @@ az hdinsight monitor disable --name $cluster --resource-group $resourceGroup
 
 ## <a name="install-hdinsight-cluster-management-solutions"></a>安裝 HDInsight 叢集管理解決方案
 
-HDInsight 提供叢集特定的管理解決方案，您可以為 Azure 監視器記錄新增。 [管理解決方案](../log-analytics/log-analytics-add-solutions.md)可將功能新增至 Azure 監視器記錄，以提供其他資料和分析工具。 這些解決方案會從您的 HDInsight 叢集收集重要效能計量。 並且提供工具以搜尋計量。 這些解決方案也會針對 HDInsight 中支援的大部分叢集類型，提供視覺效果和儀表板。 藉由使用您以解決方案收集的計量，您可以建立自訂的監視規則和警示。
+HDInsight 提供叢集特定的管理解決方案，您可以為 Azure 監視器記錄新增。 [管理解決方案](../azure-monitor/insights/solutions.md)可將功能新增至 Azure 監視器記錄，以提供其他資料和分析工具。 這些解決方案會從您的 HDInsight 叢集收集重要效能計量。 並且提供工具以搜尋計量。 這些解決方案也會針對 HDInsight 中支援的大部分叢集類型，提供視覺效果和儀表板。 藉由使用您以解決方案收集的計量，您可以建立自訂的監視規則和警示。
 
 可用的 HDInsight 解決方案：
 
@@ -147,7 +147,7 @@ HDInsight 提供叢集特定的管理解決方案，您可以為 Azure 監視器
 
 ## <a name="configuring-performance-counters"></a>設定效能計數器
 
-Azure 監視器支援收集和分析叢集中節點的效能計量。 如需詳細資訊，請參閱 [Azure 監視器中的 Linux 效能資料來源](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#linux-performance-counters) \(部分機器翻譯\)。
+Azure 監視器支援收集和分析叢集中節點的效能計量。 如需詳細資訊，請參閱 [Azure 監視器中的 Linux 效能資料來源](../azure-monitor/platform/data-sources-performance-counters.md#linux-performance-counters) \(部分機器翻譯\)。
 
 ## <a name="cluster-auditing"></a>叢集稽核
 

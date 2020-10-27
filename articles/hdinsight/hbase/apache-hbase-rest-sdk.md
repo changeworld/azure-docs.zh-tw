@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/02/2019
-ms.openlocfilehash: e8bce1ca10e9175b699bd548d9241b78bce3b5cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17c3f07fe553e363d1eb2a997287feb77296a621
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504854"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540307"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>使用適用于 Apache HBase 的 .NET SDK
 
@@ -23,7 +23,7 @@ ms.locfileid: "89504854"
 
 ## <a name="install-the-sdk"></a>安裝 SDK
 
-HBase .NET SDK 以 NuGet 封裝的形式提供，能以 Visual Studio **NuGet 套件管理員主控台**使用下列命令來安裝：
+HBase .NET SDK 以 NuGet 封裝的形式提供，能以 Visual Studio **NuGet 套件管理員主控台** 使用下列命令來安裝：
 
 ```console
 Install-Package Microsoft.HBase.Client
@@ -38,13 +38,13 @@ var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdins
 client = new HBaseClient(credentials);
 ```
 
-將 CLUSTERNAME 更改為您的 HDInsight HBase 叢集名稱，並將 USERNAME 和 PASSWORD 更改為建立叢集時指定的 Apache Hadoop 認證。 預設 Hadoop 使用者名稱為 **admin**。
+將 CLUSTERNAME 更改為您的 HDInsight HBase 叢集名稱，並將 USERNAME 和 PASSWORD 更改為建立叢集時指定的 Apache Hadoop 認證。 預設 Hadoop 使用者名稱為 **admin** 。
 
 ## <a name="create-a-new-table"></a>建立新的資料表
 
-HBase 會將資料儲存在資料表中。 資料表包含 *Rowkey*、主索引鍵，以及名為*資料行系列*的一或多個資料行群組。 每個資料表中的資料會根據 Rowkey 範圍水平均分至*區域*。 每個區域都有開始和結束索引鍵。 一個資料表可以有一或多個區域。 隨著資料表中的資料成長，HBase 會將大型區域分割成較小的區域。 區域會儲存在*區域伺服器*中，一個區域伺服器可儲存多個區域。
+HBase 會將資料儲存在資料表中。 資料表包含 *Rowkey* 、主索引鍵，以及名為 *資料行系列* 的一或多個資料行群組。 每個資料表中的資料會根據 Rowkey 範圍水平均分至 *區域* 。 每個區域都有開始和結束索引鍵。 一個資料表可以有一或多個區域。 隨著資料表中的資料成長，HBase 會將大型區域分割成較小的區域。 區域會儲存在 *區域伺服器* 中，一個區域伺服器可儲存多個區域。
 
-資料實際儲存在 *HFiles*。 單一 HFile 包含一個資料表、一個區域和一個資料行系列的資料。 HFile 中的資料列會在 Rowkey 上依序儲存。 每個 HFile 都具有 *B+ 樹狀結構*索引，以利快速擷取資料列。
+資料實際儲存在 *HFiles* 。 單一 HFile 包含一個資料表、一個區域和一個資料行系列的資料。 HFile 中的資料列會在 Rowkey 上依序儲存。 每個 HFile 都具有 *B+ 樹狀結構* 索引，以利快速擷取資料列。
 
 若要建立新的資料表，請指定 `TableSchema` 和資料行。 下列程式碼會檢查資料表「RestSDKTable」是否已經存在，如果不存在，即會建立資料表。
 
@@ -187,7 +187,7 @@ finally
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [開始使用 HDInsight 中的 Apache HBase 範例](apache-hbase-tutorial-get-started-linux.md)
-* 透過[使用 Apache HBase 分析即時 Twitter 情感](../hdinsight-hbase-analyze-twitter-sentiment.md)建立端對端應用程式
+* 透過[使用 Apache HBase 分析即時 Twitter 情感](./apache-hbase-tutorial-get-started-linux.md)建立端對端應用程式

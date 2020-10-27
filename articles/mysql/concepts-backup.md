@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 9514d0fb6c9cbc95b82f13ffb576703893f303f2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ef53fc3de87eeaa41d3859fd8b10dd3cc942afc7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92484554"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547209"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>在適用於 MySQL 的 Azure 資料庫中備份與還原
 
@@ -29,48 +29,53 @@ ms.locfileid: "92484554"
 
 #### <a name="basic-storage-servers"></a>基本儲存體伺服器
 
-基本儲存體是支援 [基本層伺服器](concepts-pricing-tiers.md)的後端儲存體。 基本儲存體伺服器上的備份是以快照集為基礎。 每日會執行完整的資料庫快照集。 基本儲存體伺服器不會執行任何差異備份，而且所有快照集備份都只會進行完整資料庫備份。 
+基本儲存體是支援 [基本層伺服器](concepts-pricing-tiers.md)的後端儲存體。 基本儲存體伺服器上的備份是以快照集為基礎。 每日會執行完整的資料庫快照集。 基本儲存體伺服器不會執行任何差異備份，而且所有快照集備份都只會進行完整資料庫備份。
 
-交易記錄備份會每五分鐘執行一次。 
+交易記錄備份會每五分鐘執行一次。
 
 #### <a name="general-purpose-storage-servers-with-up-to-4-tb-storage"></a>一般用途儲存體伺服器，最多可達 4 TB 的儲存體
 
-一般用途儲存體是支援 [一般用途](concepts-pricing-tiers.md) 和 [記憶體優化層](concepts-pricing-tiers.md) 伺服器的後端儲存體。 針對一般用途儲存體高達 4 TB 的伺服器，完整備份會每週進行一次。 差異備份會一天進行兩次。 交易記錄備份每五分鐘會進行一次。一般用途儲存體上的備份（最多 4 TB 的儲存體）不是以快照集為基礎，而且會在備份時耗用 IO 頻寬。 針對大型資料庫 ( # A0 1TB) 在 4 TB 的儲存體上，建議您考慮 
+一般用途儲存體是支援 [一般用途](concepts-pricing-tiers.md) 和 [記憶體優化層](concepts-pricing-tiers.md) 伺服器的後端儲存體。 針對一般用途儲存體最多 4 TB 的伺服器，完整備份會每週進行一次。 差異備份會一天進行兩次。 交易記錄備份會每五分鐘執行一次。 一般用途儲存體上的備份（最多 4 TB 的儲存體）不是以快照集為基礎，而且會在備份時耗用 IO 頻寬。 針對大型資料庫 ( # A0 1 TB) 在 4 TB 的儲存體上，建議您考慮
 
 - 布建更多 IOPs 以考慮備份 IOs 或
-- 或者，如果您偏好的 [Azure 區域](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)中有基礎儲存體基礎結構，則遷移至一般目的儲存體，以支援多達 16 TB 的儲存體。 一般用途儲存體沒有額外的成本可支援高達 16 TB 的儲存體。 如需遷移至 16 TB 儲存體的協助，請從 Azure 入口網站開啟支援票證。 
+- 或者，如果您偏好的 [Azure 區域](./concepts-pricing-tiers.md#storage)中有基礎儲存體基礎結構，則遷移至一般目的儲存體，以支援多達 16 TB 的儲存體。 一般用途儲存體沒有額外的成本可支援高達 16 TB 的儲存體。 如需遷移至 16 TB 儲存體的協助，請從 Azure 入口網站開啟支援票證。
 
 #### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>一般用途儲存體伺服器，最多可達 16 TB 的儲存空間
-在 [Azure 區域](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)的子集中，所有新布建的伺服器都可支援一般用途儲存體，最多可達 16 TB 的儲存體。 換句話說，儲存體最多可達 16 TB 的儲存空間，是所有支援 [區域](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) 的預設一般用途儲存體。 這些 16 TB 儲存體伺服器上的備份是以快照集為基礎。 建立伺服器之後，會立即排程第一次完整快照集備份。 第一次完整快照集備份會保留為伺服器的基礎備份。 後續的快照集備份只是差異備份。 
 
-差異快照集備份一天至少會執行一次。 差異快照集備份不會依固定排程執行。 差異快照集備份會每隔24小時執行一次，除非 MySQL 中的交易記錄 (binlog) 超過上次差異備份之後的 50 GB。 一天內最多允許六個差異快照集。 
+在 [Azure 區域](./concepts-pricing-tiers.md#storage)的子集中，所有新布建的伺服器都可支援一般用途儲存體，最多可達 16 TB 的儲存體。 換句話說，儲存體最多可達 16 TB 的儲存空間，是所有支援 [區域](./concepts-pricing-tiers.md#storage) 的預設一般用途儲存體。 這些 16 TB 儲存體伺服器上的備份是以快照集為基礎。 建立伺服器之後，會立即排程第一次完整快照集備份。 第一次完整快照集備份會保留為伺服器的基礎備份。 後續的快照集備份只是差異備份。
 
-交易記錄備份會每五分鐘執行一次。 
+在 [Azure 區域](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)的子集中，所有新布建的伺服器都可支援一般用途儲存體，最多可達 16 TB 的儲存體。 換句話說，儲存體最多可達 16 TB 的儲存空間，是所有支援 [區域](/concepts-pricing-tiers.md#storage) 的預設一般用途儲存體。 這些 16 TB 儲存體伺服器上的備份是以快照集為基礎。 建立伺服器之後，會立即排程第一次完整快照集備份。 第一次完整快照集備份會保留為伺服器的基礎備份。 後續的快照集備份只是差異備份。
+
+差異快照集備份一天至少會執行一次。 差異快照集備份不會依固定排程執行。 差異快照集備份會每隔24小時執行一次，除非 MySQL 中的交易記錄 (binlog) 自上次差異備份起算超過 50 GB。 一天內最多允許六個差異快照集。
+
+交易記錄備份會每五分鐘執行一次。
 
 ### <a name="backup-retention"></a>備份保留
 
-備份會根據伺服器上的備份保留期限設定來保留。 您可以選取7到35天的保留期間。 預設保留期間為7天。 您可以使用 [Azure 入口網站](https://docs.microsoft.com/azure/mysql/howto-restore-server-portal#set-backup-configuration) 或 [Azure CLI](https://docs.microsoft.com/azure/mysql/howto-restore-server-cli#set-backup-configuration)更新備份設定，在伺服器建立或更新版本期間設定保留期限。 
+備份會根據伺服器上的備份保留期限設定來保留。 您可以選取7到35天的保留期間。 預設保留期間為7天。 您可以使用 [Azure 入口網站](./howto-restore-server-portal.md#set-backup-configuration) 或 [Azure CLI](./howto-restore-server-cli.md#set-backup-configuration)更新備份設定，在伺服器建立或更新版本期間設定保留期限。
 
 備份保留期限會控制可往回多少時間來擷取時間點還原，因為這會以可用的備份為基礎。 您也可以從還原的觀點，將備份保留期限視為修復時段。 在備份保留期限內執行時間點還原所需的所有備份都會保留在備份儲存體中。 例如，如果備份保留期限設定為7天，則會將修復時間範圍視為過去7天。 在此案例中，會保留在過去7天還原伺服器所需的所有備份。 備份保留期間為七天：
+
 - 具有最多 4 TB 儲存體的伺服器最多可保留2個完整的資料庫備份、所有差異備份，以及自最早的完整資料庫備份之後所執行的交易記錄備份。
--   具有最多 16 TB 儲存體的伺服器會保留完整的資料庫快照集、所有差異快照集，以及過去8天內的交易記錄備份。
+- 具有最多 16 TB 儲存體的伺服器會保留完整的資料庫快照集、所有差異快照集，以及過去8天內的交易記錄備份。
 
 #### <a name="long-term-retention"></a>長期保留
-服務目前不支援長期保留超過35天的備份。 您可以選擇使用 mysqldump 來取得備份，並加以儲存，以長期保留。 我們的支援小組已網友一篇逐步解說 [文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157) 來分享您的達成方式。 
 
+服務目前不支援長期保留超過35天的備份。 您可以選擇使用 mysqldump 來取得備份，並加以儲存以進行長期保留。 我們的支援小組已網友一篇逐步解說 [文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/automate-backups-of-your-azure-database-for-mysql-server-to/ba-p/1791157) 來分享您的達成方式。
 
 ### <a name="backup-redundancy-options"></a>備份備援選項
 
-適用於 MySQL 的 Azure 資料庫可讓您在一般用途和記憶體最佳化層中，彈性地選擇本地備援或異地備援備份儲存體。 當備份儲存在異地備援備份儲存體中時，這些備份不會只儲存在裝載您伺服器的區域內，也會複寫至[配對的資料中心](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 這樣能提供更好的保護性和功能，當發生災害時，您就可以在不同區域中還原伺服器。 「基本」層只會提供本地備援的備份儲存體。
+適用於 MySQL 的 Azure 資料庫可讓您在一般用途和記憶體最佳化層中，彈性地選擇本地備援或異地備援備份儲存體。 當備份儲存在異地備援備份儲存體中時，這些備份不會只儲存在裝載您伺服器的區域內，也會複寫至[配對的資料中心](../best-practices-availability-paired-regions.md)。 此異地複寫可提供更佳的保護，並在發生嚴重損壞的情況下，將您的伺服器還原到不同的區域。 「基本」層只會提供本地備援的備份儲存體。
 
 #### <a name="moving-from-locally-redundant-to-geo-redundant-backup-storage"></a>從本機冗余移至異地冗余備份儲存體
+
 您只可在伺服器建立期間，為備份設定本地備援或異地備援儲存體。 伺服器佈建完成之後，您無法變更備份儲存體備援選項。 為了將您的備份儲存體從本機多餘的儲存體移至異地多餘的儲存體，使用傾印 [和還原](concepts-migrate-dump-restore.md) 來建立新的伺服器並遷移資料是唯一支援的選項。
 
 ### <a name="backup-storage-cost"></a>備份儲存體成本
 
-適用於 MySQL 的 Azure 資料庫可提供高達 100% 的已佈建伺服器儲存體作為備份儲存體，且不須支付額外費用。 使用的任何額外備份儲存體都會依每月 GB 收費。 例如，如果您布建的伺服器具有 250 GB 的儲存體，您可以免費使用 250 GB 的額外儲存體來進行伺服器備份。 超過 250 GB 的備份所耗用的儲存體會依 [定價模式](https://azure.microsoft.com/pricing/details/mysql/)收費。 
+適用於 MySQL 的 Azure 資料庫可提供高達 100% 的已佈建伺服器儲存體作為備份儲存體，且不須支付額外費用。 使用的任何額外備份儲存體都會依每月 GB 收費。 例如，如果您布建的伺服器具有 250 GB 的儲存體，您可以免費使用 250 GB 的額外儲存體來進行伺服器備份。 超過 250 GB 的備份所耗用的儲存體會依 [定價模式](https://azure.microsoft.com/pricing/details/mysql/)收費。
 
-您可以在 Azure 監視器中使用的 [備份儲存體](concepts-monitoring.md) 使用計量，透過 Azure 入口網站來監視伺服器所耗用的備份儲存體。 [備份儲存體使用的計量] 代表所有完整資料庫備份、差異備份和記錄備份所使用的儲存體總和（根據針對伺服器所設定的備份保留期限而定）。 備份的頻率是服務管理的，而且稍早說明。 不論資料庫大小總計，伺服器上頻繁的交易活動可能會導致備份儲存體使用量增加。 針對異地複寫儲存體，備份儲存體使用量會是本機冗余儲存體的兩倍。 
+您可以在 Azure 監視器中使用的 [備份儲存體](concepts-monitoring.md) 使用計量，透過 Azure 入口網站來監視伺服器所耗用的備份儲存體。 [備份儲存體使用的計量] 代表所有完整資料庫備份、差異備份和記錄備份所使用的儲存體總和（根據針對伺服器所設定的備份保留期限而定）。 備份的頻率是服務管理的，而且稍早說明。 不論資料庫大小總計，伺服器上頻繁的交易活動可能會導致備份儲存體使用量增加。 針對異地複寫儲存體，備份儲存體使用量會是本機冗余儲存體的兩倍。
 
 控制備份儲存體成本的主要方法是設定適當的備份保留期限，然後選擇適當的備份冗余選項，以符合您所需的復原目標。 您可以從7到35天的範圍內選取保留期限。 一般用途和經記憶體優化的伺服器可以選擇要備份的異地多餘儲存體。
 
@@ -81,12 +86,12 @@ ms.locfileid: "92484554"
 有兩種類型的還原可使用：
 
 - **時間點還原** 適用于備份冗余選項，並且會在與您的源伺服器相同的區域中建立新的伺服器，並使用完整和交易記錄備份的組合。
-- 只有當您將伺服器設定為異地多餘的儲存體，並可讓您將伺服器還原至採用最近建立之備份的不同區域時，才可使用**異地還原**。
+- 只有當您將伺服器設定為異地多餘的儲存體，並可讓您將伺服器還原至採用最近建立之備份的不同區域時，才可使用 **異地還原** 。
 
 預估的復原時間取決於數個因素，包括資料庫大小、交易記錄大小、網路頻寬，以及在相同區域中同時進行復原的資料庫總數。 復原時間通常不到 12 小時。
 
 > [!IMPORTANT]
-> 刪除的伺服器只能在刪除備份的 **五天** 內還原。 您只能從主控伺服器的 Azure 訂用帳戶存取及還原資料庫備份。 若要還原已卸載的伺服器，請參閱 [記載的步驟](howto-restore-dropped-server.md)。 若要在部署後避免伺服器資源遭到意外刪除或非預期的變更，系統管理員可以利用[管理鎖定](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)。
+> 刪除的伺服器只能在刪除備份的 **五天** 內還原。 您只能從主控伺服器的 Azure 訂用帳戶存取及還原資料庫備份。 若要還原已卸載的伺服器，請參閱 [記載的步驟](howto-restore-dropped-server.md)。 若要在部署後避免伺服器資源遭到意外刪除或非預期的變更，系統管理員可以利用[管理鎖定](../azure-resource-manager/management/lock-resources.md)。
 
 ### <a name="point-in-time-restore"></a>時間點還原
 
@@ -94,8 +99,9 @@ ms.locfileid: "92484554"
 
 > [!NOTE]
 > 有兩個伺服器參數會重設為預設值 (而不會從主伺服器複製到還原作業之後) 
-> * time_zone-此值會設定為預設值 **系統**
-> * event_scheduler-已還原伺服器上的 event_scheduler 設定為**OFF**
+>
+> - time_zone-此值會設定為預設值 **系統**
+> - event_scheduler-已還原伺服器上的 event_scheduler 設定為 **OFF**
 >
 > 您必須重新設定[伺服器參數](howto-server-parameters.md)來設定這些伺服器參數
 
@@ -105,7 +111,7 @@ ms.locfileid: "92484554"
 
 ### <a name="geo-restore"></a>異地復原
 
-如果您已將伺服器設定為使用異地備援備份，您可以將伺服器還原到另一個可使用服務的 Azure 區域中。 最多可支援 4 TB 儲存體的伺服器可以還原至異地配對區域，或最多支援 16 TB 儲存體的任何區域。 對於支援高達 16 TB 儲存體的伺服器，您也可以在支援 16 TB 伺服器的任何區域中還原異地備份。 如需支援的區域清單，請參閱 [適用於 MySQL 的 Azure 資料庫定價層](concepts-pricing-tiers.md) 。
+如果您已將伺服器設定為使用異地備援備份，您可以將伺服器還原到另一個可使用服務的 Azure 區域中。 最多可支援 4 TB 儲存體的伺服器可以還原至異地配對區域，或最多支援 16 TB 儲存體的任何區域。 對於支援高達 16 TB 存放裝置的伺服器，您也可以在支援 16 TB 伺服器的任何區域中還原異地備份。 如需支援的區域清單，請參閱 [適用於 MySQL 的 Azure 資料庫定價層](concepts-pricing-tiers.md) 。
 
 當您的伺服器因為裝載伺服器區域中的事件而無法使用時，異地還原就是預設的復原選項。 如果區域中的大規模意外導致您無法使用資料庫應用程式，則您可以從異地備援備份，將伺服器還原到任何其他區域中的伺服器。 異地還原會利用伺服器的最新備份。 在建立備份及將它複寫至不同區域之間會有延遲。 此延遲可能最長達一小時，因此當發生災害時，最多可能會遺失最長達一小時的資料。
 
@@ -120,7 +126,7 @@ ms.locfileid: "92484554"
 - 確定有適當的登入和資料庫層級權限
 - 依適當情況設定警示
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 若要深入了解商務持續性，請參閱 [商務持續性概觀](concepts-business-continuity.md)。
 - 若要使用 Azure 入口網站還原到某個時間點，請參閱 [使用 Azure 入口網站將伺服器還原至某個時間點](howto-restore-server-portal.md)。

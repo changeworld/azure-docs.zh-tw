@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/26/2019
-ms.openlocfilehash: b4f390e6d362895d58be0e8695e72d058a021b34
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c4efb8b4835b7dc828caa49eaf6013a2f58bb081
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485540"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534544"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>搭配使用 HDInsight 上的 Apache Kafka 與 Azure IoT 中樞
 
@@ -21,7 +21,7 @@ ms.locfileid: "92485540"
 
 Kafka Connect API 可讓您實作持續將資料提取到 Kafka 中，或將資料從 Kafka 推送至另一個系統的連接器。 [Apache Kafka Connect Azure IoT 中樞](https://github.com/Azure/toketi-kafka-connect-iothub)是會將資料從 Azure IoT 中樞提取到 Kafka 中的連接器。 它也可以將資料從 Kafka 推送到 IoT 中樞。
 
-從 IoT 中樞提取時，您會使用__來源__連接器。 推送至 IoT 中樞時，您會使用__接收__連接器。 IoT 中樞連接器同時提供來源和接收連接器。
+從 IoT 中樞提取時，您會使用 __來源__ 連接器。 推送至 IoT 中樞時，您會使用 __接收__ 連接器。 IoT 中樞連接器同時提供來源和接收連接器。
 
 下圖顯示在使用連接器時，Azure IoT 中樞與 HDInsight 上的 Kafka 之間的資料流程。
 
@@ -37,7 +37,7 @@ Kafka Connect API 可讓您實作持續將資料提取到 Kafka 中，或將資�
 
 * SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-* Azure IoT 中樞和裝置。 在本文中，請考慮使用 [Connect Raspberry Pi 線上模擬器來 Azure IoT 中樞](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started)。
+* Azure IoT 中樞和裝置。 在本文中，請考慮使用 [Connect Raspberry Pi 線上模擬器來 Azure IoT 中樞](../../iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md)。
 
 * [Scala build tool](https://www.scala-sbt.org/)。
 
@@ -123,9 +123,9 @@ Kafka Connect API 可讓您實作持續將資料提取到 Kafka 中，或將資�
     |`bootstrap.servers=localhost:9092`|將值取代為 `localhost:9092` 上一個步驟中的訊息代理程式主機|設定邊緣節點的獨立設定，以尋找 Kafka 訊息代理程式。|
     |`key.converter=org.apache.kafka.connect.json.JsonConverter`|`key.converter=org.apache.kafka.connect.storage.StringConverter`|此變更可讓您使用隨附於 Kafka 的主控台產生者進行測試。 對於其他產生者和取用者，您可能需要不同的轉換器。 如需使用其他轉換器值的詳細資訊，請參閱 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) 。|
     |`value.converter=org.apache.kafka.connect.json.JsonConverter`|`value.converter=org.apache.kafka.connect.storage.StringConverter`|同上。|
-    |N/A|`consumer.max.poll.records=10`|新增至檔案結尾。 此變更可將接收連接器限定為一次 10 筆記錄以內，以防止連接器逾時。 如需詳細資訊，請參閱 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。|
+    |不適用|`consumer.max.poll.records=10`|新增至檔案結尾。 此變更可將接收連接器限定為一次 10 筆記錄以內，以防止連接器逾時。 如需詳細資訊，請參閱 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。|
 
-1. 若要儲存檔案，請使用 __Ctrl + X__、__Y__ 和 __Enter__ 鍵。
+1. 若要儲存檔案，請使用 __Ctrl + X__ 、 __Y__ 和 __Enter__ 鍵。
 
 1. 若要建立連接器所使用的主題，請使用下列命令：
 
@@ -149,11 +149,11 @@ Kafka Connect API 可讓您實作持續將資料提取到 Kafka 中，或將資�
 
 1. 取得 IoT 中樞的事件中樞相容端點和事件中樞相容端點名稱。 若要取得這項資訊，請使用下列其中一個方法：
 
-   * __在 [Azure 入口網站](https://portal.azure.com/)中__，使用下列步驟：
+   * __在 [Azure 入口網站](https://portal.azure.com/)中__ ，使用下列步驟：
 
-     1. 瀏覽至您的 IoT 中樞，並選取 [端點]____。
-     2. 在 [內建端點]____ 中，選取 [事件]____。
-     3. 在 [屬性]____ 中，複製下列欄位的值：
+     1. 瀏覽至您的 IoT 中樞，並選取 [端點]  。
+     2. 在 [內建端點]  中，選取 [事件]  。
+     3. 在 [屬性]  中，複製下列欄位的值：
 
          * __事件中樞相容名稱__
          * __事件中樞相容端點__
@@ -162,7 +162,7 @@ Kafka Connect API 可讓您實作持續將資料提取到 Kafka 中，或將資�
         > [!IMPORTANT]  
         > 入口網站中的端點值可能包含在此範例中不需要的多餘文字。 請擷取符合 `sb://<randomnamespace>.servicebus.windows.net/` 模式的文字。
 
-   * __在 [Azure CLI](/cli/azure/get-started-with-azure-cli) 中__，使用下列命令：
+   * __在 [Azure CLI](/cli/azure/get-started-with-azure-cli) 中__ ，使用下列命令：
 
        ```azurecli
        az iot hub show --name myhubname --query "{EventHubCompatibleName:properties.eventHubEndpoints.events.path,EventHubCompatibleEndpoint:properties.eventHubEndpoints.events.endpoint,Partitions:properties.eventHubEndpoints.events.partitionCount}"
@@ -176,15 +176,15 @@ Kafka Connect API 可讓您實作持續將資料提取到 Kafka 中，或將資�
        "Partitions": 2
        ```
 
-2. 取得__共用存取原則__和__金鑰__。 在此範例中，請使用__服務__金鑰。 若要取得這項資訊，請使用下列其中一個方法：
+2. 取得 __共用存取原則__ 和 __金鑰__ 。 在此範例中，請使用 __服務__ 金鑰。 若要取得這項資訊，請使用下列其中一個方法：
 
-    * __在 [Azure 入口網站](https://portal.azure.com/)中__，使用下列步驟：
+    * __在 [Azure 入口網站](https://portal.azure.com/)中__ ，使用下列步驟：
 
-        1. 選取 [共用存取原則]____，然後選取 [服務]____。
+        1. 選取 [共用存取原則]  ，然後選取 [服務]  。
         2. 複製 __主要金鑰__ 值。
-        3. 複製 [連接字串 – 主要金鑰]____ 的值。
+        3. 複製 [連接字串 – 主要金鑰]  的值。
 
-    * __在 [Azure CLI](/cli/azure/get-started-with-azure-cli) 中__，使用下列命令：
+    * __在 [Azure CLI](/cli/azure/get-started-with-azure-cli) 中__ ，使用下列命令：
 
         1. 若要取得主要金鑰值，請使用下列命令：
 
@@ -233,7 +233,7 @@ Kafka Connect API 可讓您實作持續將資料提取到 Kafka 中，或將資�
 
     如需範例設定，請參閱 [Azure IoT 中樞的 Kafka Connect 來源連接器](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md)。
 
-1. 若要儲存變更，請使用 __Ctrl + X__、__Y__ 和 __Enter__ 鍵。
+1. 若要儲存變更，請使用 __Ctrl + X__ 、 __Y__ 和 __Enter__ 鍵。
 
 如需設定連接器來源的詳細資訊，請參閱 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md) 。
 
@@ -262,7 +262,7 @@ Kafka Connect API 可讓您實作持續將資料提取到 Kafka 中，或將資�
 
     如需範例設定，請參閱 [Azure IoT 中樞的 Kafka Connect 接收器連接器](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。
 
-1. 若要儲存變更，請使用 __Ctrl + X__、__Y__ 和 __Enter__ 鍵。
+1. 若要儲存變更，請使用 __Ctrl + X__ 、 __Y__ 和 __Enter__ 鍵。
 
 如需設定連接器接收的詳細資訊，請參閱 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) 。
 
@@ -354,7 +354,7 @@ IotHubSinkTask:47)
 
 如需使用接收器連接器的詳細資訊，請參閱 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在本文件中，您已了解如何使用 Apache Kafka Connect API 在 HDInsight 上啟動 IoT Kafka Connector。 使用下列連結來探索使用 Kafka 的其他方式︰
 

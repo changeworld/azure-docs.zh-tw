@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
-ms.openlocfilehash: b5ea227ba75a9ecf6666883603dad97d02385b5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddd1a6fa2fc25add30664da5b739338e87e7e74f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086478"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547838"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 叢集上使用空白邊緣節點
 
@@ -61,13 +61,13 @@ ms.locfileid: "86086478"
 > [!WARNING]
 > 邊緣節點上安裝的自訂元件會收到來自 Microsoft 的商業上合理支援。 可能可以解決您遇到的問題。 或者，您可能需要參考社群資源以取得進一步協助。 以下是從社群取得協助的一些最活躍網站：
 >
-> * [適用於 HDInsight 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-hdinsight.html
+> * [Microsoft Q&HDInsight 的問題頁面] (/answers/topics/azure-hdinsight.html
 > * [https://stackoverflow.com](https://stackoverflow.com)＞。
 >
 > 如果您使用 Apache 技術，您可以透過位於 [https://apache.org](https://apache.org) 的 Apache 專案網站 (例如 [Apache Hadoop](https://hadoop.apache.org/) 網站) 尋求協助。
 
 > [!IMPORTANT]
-> Ubuntu 映像在發行後的 3 個月內就會變成可用於建立新的 HDInsight 叢集。 截至 2019 年 1 月為止，執行中的叢集 (包括邊緣節點) 都**不會**自動修補。 客戶必須使用指令碼動作或其他機制修補執行中的叢集。  如需詳細資訊，請參閱 [HDInsight 的作業系統修補](./hdinsight-os-patching.md)。
+> Ubuntu 映像在發行後的 3 個月內就會變成可用於建立新的 HDInsight 叢集。 截至 2019 年 1 月為止，執行中的叢集 (包括邊緣節點) 都 **不會** 自動修補。 客戶必須使用指令碼動作或其他機制修補執行中的叢集。  如需詳細資訊，請參閱 [HDInsight 的作業系統修補](./hdinsight-os-patching.md)。
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>將邊緣節點新增至現有叢集
 
@@ -109,9 +109,9 @@ ms.locfileid: "86086478"
     |資源群組|建立用於叢集的新資源群組。|
     |Location|選取資源群組的位置。|
     |叢集名稱|輸入要建立之新叢集的名稱。|
-    |叢集登入使用者名稱|輸入 Hadoop HTTP 使用者名稱。  預設名稱為 **admin**。|
+    |叢集登入使用者名稱|輸入 Hadoop HTTP 使用者名稱。  預設名稱為 **admin** 。|
     |叢集登入密碼|輸入 Hadoop HTTP 使用者密碼。|
-    |SSH 使用者名稱|輸入 SSH 使用者名稱。 預設名稱為 **sshuser**。|
+    |SSH 使用者名稱|輸入 SSH 使用者名稱。 預設名稱為 **sshuser** 。|
     |SSH 密碼|輸入 SSH 使用者密碼。|
     |安裝指令碼動作|請保留預設值以便完成本文章。|
 
@@ -121,7 +121,7 @@ ms.locfileid: "86086478"
 
 ## <a name="add-multiple-edge-nodes"></a>新增多個邊緣節點
 
-您可以將多個邊緣節點新增至 HDInsight 叢集。  多個邊緣節點的設定只能使用 Azure Resource Manager 範本來執行。  請參閱本文開頭處的範本範例。  更新 **targetInstanceCount**，以反映想要建立的邊緣節點數目。
+您可以將多個邊緣節點新增至 HDInsight 叢集。  多個邊緣節點的設定只能使用 Azure Resource Manager 範本來執行。  請參閱本文開頭處的範本範例。  更新 **targetInstanceCount** ，以反映想要建立的邊緣節點數目。
 
 ## <a name="access-an-edge-node"></a>存取邊緣節點
 
@@ -133,7 +133,7 @@ ms.locfileid: "86086478"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 開啟具有邊緣節點的 HDInsight 叢集。
-3. 選取**應用程式**。 您應該會看到邊緣節點。  預設名稱為 **new-edgenode**中找到。
+3. 選取 **應用程式** 。 您應該會看到邊緣節點。  預設名稱為 **new-edgenode** 中找到。
 4. 選取邊緣節點。 您應該會看到 SSH 端點。
 
 **在邊緣節點上使用 Hive**
@@ -158,7 +158,7 @@ ms.locfileid: "86086478"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 開啟具有邊緣節點的 HDInsight 叢集。
-3. 選取**應用程式**。 您應該會看到邊緣節點清單。  
+3. 選取 **應用程式** 。 您應該會看到邊緣節點清單。  
 4. 以滑鼠右鍵按一下想要刪除的邊緣節點，然後選取 [刪除] 。
 5. 選取 [是]  加以確認。
 
@@ -169,6 +169,6 @@ ms.locfileid: "86086478"
 * [安裝 HDInsight 應用程式](hdinsight-apps-install-applications.md)：了解如何將 HDInsight 應用程式安裝到您的叢集。
 * [安裝自訂 HDInsight 應用程式](hdinsight-apps-install-custom-applications.md)︰了解如何將未發佈的 HDInsight 應用程式部署到 HDInsight。
 * [發佈 HDInsight 應用程式](hdinsight-apps-publish-applications.md)：了解如何將自訂 HDInsight 應用程式發佈到 Azure Marketplace。
-* [MSDN：安裝 HDInsight 應用程式](https://msdn.microsoft.com/library/mt706515.aspx)：了解如何定義 HDInsight 應用程式。
+* [MSDN：安裝 HDInsight 應用程式](/rest/api/hdinsight/hdinsight-application)：了解如何定義 HDInsight 應用程式。
 * [使用指令碼動作自訂以 Linux 為基礎的 HDInsight 叢集](hdinsight-hadoop-customize-cluster-linux.md)：了解如何使用指令碼動作來安裝其他應用程式。
 * [使用 Resource Manager 範本在 HDInsight 中建立以 Linux 為基礎的 Apache Hadoop 叢集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)︰了解如何呼叫 Resource Manager 範本來建立 HDInsight 叢集。

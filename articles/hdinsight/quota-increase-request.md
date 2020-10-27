@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: 999be38e413288d2eb2f6342874e692972f300ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93c07b47e03bde20d494feb1c86179cd9a24ba26
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409709"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539406"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>要求增加 Azure HDInsight 的配額
 
@@ -42,9 +42,9 @@ CPU 核心配額有助於確保特定 Azure 區域中的所有客戶之間能夠
 1. 選取 [新增支援要求]。
 1. 在 [新增支援要求] 頁面的 [基本] 索引標籤上，選取下列選項：
 
-   - **問題類型**：**服務與訂用帳戶限制 (配額)**
-   - **訂用帳戶**：您需要修改的訂用帳戶
-   - **配額類型**：**HDInsight**
+   - **問題類型** ： **服務與訂用帳戶限制 (配額)**
+   - **訂用帳戶** ：您需要修改的訂用帳戶
+   - **配額類型** ： **HDInsight**
 
      ![建立支援要求以提高 HDInsight 核心配額](./media/quota-increase-request/hdinsight-quota-support-request.png)
 
@@ -67,9 +67,9 @@ CPU 核心配額有助於確保特定 Azure 區域中的所有客戶之間能夠
 > [!NOTE]  
 > 如果您需要增加私人區域中的 HDInsight 核心配額，請 [提交核准清單要求](https://aka.ms/canaryintwhitelist)。
 
-您可以[連絡支援人員以要求增加配額](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。
+您可以[連絡支援人員以要求增加配額](../azure-portal/supportability/resource-manager-core-quotas-request.md)。
 
-目前有一些固定的配額限制。 例如，單一 Azure 訂用帳戶最多可以有 10,000 個核心。 如需這些限制的詳細資料，請參閱 [Azure 訂用帳戶和服務限制、配額及條件約束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
+目前有一些固定的配額限制。 例如，單一 Azure 訂用帳戶最多可以有 10,000 個核心。 如需這些限制的詳細資料，請參閱 [Azure 訂用帳戶和服務限制、配額及條件約束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: c3a6f9b5831d4fed377d3f8702dbc0af0663b3a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58df34ae6a6ff3304304da192b429ac83c1b55c3
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596496"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544030"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何為適用於 MySQL 的 Azure 資料庫設定複寫中的資料
 
@@ -20,7 +20,7 @@ ms.locfileid: "91596496"
 > [!NOTE]
 > 無偏差通訊
 >
-> Microsoft 支援多樣化且 inclusionary 的環境。 本文包含單字 _從屬_的參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)會將此視為排他性行為單字。 本文中會使用這個字來保持一致性，因為它目前是出現在軟體中的單字。 當軟體更新為移除該字時，將會更新本文以進行調整。
+> Microsoft 支援多元和包容性的環境。 本文包含 _slave_ 單字的參考。 Microsoft [無偏差通訊的樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)會將這個單字辨識為排他性的單字。 本文中會使用這個單字來保持一致性，因為這個單字是目前出現在軟體中的單字。 當軟體更新為移除此單字時，此文章將會更新以保持一致。
 >
 
 若要在適用於 MySQL 的 Azure 資料庫服務中建立複本， [資料輸入複寫](concepts-data-in-replication.md)  在虛擬機器 (vm) 或雲端資料庫服務中，同步處理來源 MySQL 伺服器內部部署的資料。 資料帶入複寫是建立在以二進位記錄 (binlog) 檔案位置為基礎的 MySQL 原生複寫之上。 若要深入了解 binlog 複寫，請參閱 [MySQL binlog 複寫概觀](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html) \(英文\)。
@@ -51,9 +51,9 @@ ms.locfileid: "91596496"
 
 1. 繼續之前，請先檢查 [主伺服器需求](concepts-data-in-replication.md#requirements) 。 
 
-2. 請確定來源伺服器允許埠3306上的輸入和輸出流量，且來源伺服器具有 **公用 IP 位址**、可公開存取 DNS，或具有 (FQDN) 的完整功能變數名稱。 
+2. 請確定來源伺服器允許埠3306上的輸入和輸出流量，且來源伺服器具有 **公用 IP 位址** 、可公開存取 DNS，或具有 (FQDN) 的完整功能變數名稱。 
    
-   藉由嘗試從另一部電腦上裝載的 MySQL 命令列，或從 Azure 入口網站提供的 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) ，來測試來源伺服器的連線能力。
+   藉由嘗試從另一部電腦上裝載的 MySQL 命令列，或從 Azure 入口網站提供的 [Azure Cloud Shell](../cloud-shell/overview.md) ，來測試來源伺服器的連線能力。
 
    如果您的組織具有嚴格的安全性原則，且不允許來源伺服器上的所有 IP 位址啟用從 Azure 到來源伺服器的通訊，您可能會使用下列命令來判斷 MySQL 伺服器的 IP 位址。
 
@@ -134,15 +134,15 @@ ms.locfileid: "91596496"
 
    **MySQL Workbench**
 
-   若要在 MySQL Workbench 中建立複寫角色，請從 [管理]**** 面板開啟 [使用者和權限]**** 面板。 接著，按一下 [新增帳戶]****。 
+   若要在 MySQL Workbench 中建立複寫角色，請從 [管理]  面板開啟 [使用者和權限]  面板。 接著，按一下 [新增帳戶]  。 
  
    :::image type="content" source="./media/howto-data-in-replication/users_privileges.png" alt-text="使用者和權限":::
 
-   在 [登入名稱]**** 欄位中輸入使用者名稱。 
+   在 [登入名稱]  欄位中輸入使用者名稱。 
 
    :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="使用者和權限":::
  
-   按一下 [管理角色]**** 面板，然後從 [全域權限]**** 清單選取 [複寫從屬]****。 然後按一下 [套用]**** 以建立複寫角色。
+   按一下 [管理角色]  面板，然後從 [全域權限]  清單選取 [複寫從屬]  。 然後按一下 [套用]  以建立複寫角色。
 
    :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="使用者和權限":::
 
@@ -189,7 +189,7 @@ ms.locfileid: "91596496"
 
 1. 設定來源伺服器
 
-   所有「複寫中的資料」功能都可由已儲存的程序執行完成。 您可在[複寫中的資料已儲存的程序](reference-data-in-stored-procedures.md)中找到所有程序。 已儲存的程序可在 MySQL Shell 或 MySQL Workbench 中執行。 
+   所有「複寫中的資料」功能都可由已儲存的程序執行完成。 您可在[複寫中的資料已儲存的程序](./reference-stored-procedures.md)中找到所有程序。 已儲存的程序可在 MySQL Shell 或 MySQL Workbench 中執行。 
 
    若要連結兩個伺服器並啟動複寫，請在適用于 MySQL 的 Azure DB 服務中登入目標複本伺服器，然後將外部實例設定為來源伺服器。 在適用於 MySQL 伺服器的 Azure DB 中使用 `mysql.az_replication_change_master` 已儲存的程序，即可執行此作業。
 
@@ -206,7 +206,7 @@ ms.locfileid: "91596496"
        - 建議將此參數以變數形式傳遞。 請參閱下列範例，以取得詳細資訊。
 
    > [!NOTE]
-   > 如果來源伺服器是裝載于 Azure VM，請將「允許存取 Azure 服務」設定為「開啟」，讓來源和複本伺服器能夠彼此通訊。 於**連線安全性**選項可以變更此項設定。 請參閱[使用入口網站管理防火牆規則](howto-manage-firewall-using-portal.md)取得更多資訊。
+   > 如果來源伺服器是裝載于 Azure VM，請將「允許存取 Azure 服務」設定為「開啟」，讓來源和複本伺服器能夠彼此通訊。 於 **連線安全性** 選項可以變更此項設定。 請參閱[使用入口網站管理防火牆規則](howto-manage-firewall-using-portal.md)取得更多資訊。
       
    **範例**
    
@@ -285,5 +285,5 @@ CALL mysql.az_replication_remove_master;
 CALL mysql.az_replication_skip_counter;
 ```
 
-## <a name="next-steps"></a>後續步驟
-- 深入了解「適用於 MySQL 的 Azure 資料庫」的[資料帶入複寫](concepts-data-in-replication.md)。 
+## <a name="next-steps"></a>下一步
+- 深入了解「適用於 MySQL 的 Azure 資料庫」的[資料帶入複寫](concepts-data-in-replication.md)。

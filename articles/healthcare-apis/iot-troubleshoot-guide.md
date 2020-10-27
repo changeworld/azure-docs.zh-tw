@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: troubleshooting
 ms.date: 09/16/2020
 ms.author: jasteppe
-ms.openlocfilehash: 64056ef2f63331686553c52040af9e10ee0ac468
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a1a23ca2d0b30a192c30b331c588d13a2a261a7
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90982986"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558511"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>適用于 FHIR 的 Azure IoT Connector (preview) 疑難排解指南
 
@@ -93,7 +93,7 @@ ms.locfileid: "90982986"
 > [!TIP]
 > 深入瞭解適用于 FHIR 裝置的 Azure IoT Connector [以及 FHIR 的轉換對應 JSON](https://docs.microsoft.com/azure/healthcare-apis/iot-mapping-templates)
 
-1. 在 [**增益集]** 區段中，選取 Azure API for FHIR 資源儀表板左下方的 **[IoT Connector (預覽) ]** 。
+1. 在 [ **增益集]** 區段中，選取 Azure API for FHIR 資源儀表板左下方的 **[IoT Connector (預覽) ]** 。
 
    :::image type="content" source="media/iot-troubleshoot/map-files-main-with-box.png" alt-text="IoT Connector1" lightbox="media/iot-troubleshoot/map-files-main-with-box.png":::
 
@@ -104,7 +104,7 @@ ms.locfileid: "90982986"
 > [!NOTE]
 > 此程式也可以用來複製和儲存「 **設定 FHIR 對應** 」的 JSON 內容。
 
-3. 選取 **[設定裝置對應]**。
+3. 選取 **[設定裝置對應]** 。
 
     :::image type="content" source="media/iot-troubleshoot/map-files-select-device-with-box.png" alt-text="IoT Connector1" lightbox="media/iot-troubleshoot/map-files-select-device-with-box.png":::
 
@@ -117,12 +117,12 @@ ms.locfileid: "90982986"
 > [!TIP]
 > 如果您將針對 Azure IoT Connector for FHIR 開啟 [Azure 技術支援](https://azure.microsoft.com/support/create-ticket/) 票證，請務必包含轉換對應 JSON 的複本，以協助進行疑難排解程式。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 查看 Azure IoT Connector for FHIR 的常見問題。
 
 >[!div class="nextstepaction"]
->[適用于 FHIR 的 Azure IoT Connector 常見問題](fhir-faq.md#azure-iot-connector-for-fhir-preview)
+>[適用于 FHIR 的 Azure IoT Connector 常見問題](fhir-faq.md)
 
 *在 Azure 入口網站中，Azure IoT Connector for FHIR 稱為 IoT 連接器 (預覽)。
 

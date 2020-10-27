@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: a9f050bb25873e4b6ede234c800b00f2c34085d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3e2ca2eca0d258a14365edc97b98d0c827b0b6f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085271"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546053"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上 Apache Hadoop 服務所使用的連接埠
 
@@ -158,11 +158,11 @@ HDInsight 叢集中的所有節點都位於 Azure 虛擬網路中。 節點無�
 | --- | --- | --- | --- | --- |
 | Broker |背景工作節點 |9092 |Kafka Wire Protocol (Kafka 有線通訊協定) |用於用戶端通訊 |
 | &nbsp; |Zookeeper 節點 |2181 |&nbsp; |用戶端用於連接至 ZooKeeper 的連接埠 |
-| REST proxy | Kafka 管理節點 |9400 |HTTPS |[Kafka REST 規格](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/) |
+| REST proxy | Kafka 管理節點 |9400 |HTTPS |[Kafka REST 規格](/rest/api/hdinsight-kafka-rest-proxy/) |
 
 ### <a name="spark-ports"></a>Spark 連接埠
 
-| 服務 | 節點 | 連接埠 | 通訊協定 | URL 路徑 | 說明 |
+| 服務 | 節點 | 連接埠 | 通訊協定 | URL 路徑 | 描述 |
 | --- | --- | --- | --- | --- | --- |
 | Spark Thrift 伺服器 |前端節點 |10002 |Thrift | &nbsp; | 要連接到 Spark SQL 的服務 (Thrift/JDBC) |
 | Livy 伺服器 | 前端節點 | 8998 | HTTP | &nbsp; | 要執行陳述式、作業和應用程式的服務 |

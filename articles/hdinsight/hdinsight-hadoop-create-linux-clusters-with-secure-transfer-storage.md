@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
-ms.openlocfilehash: 8c1ff1eebabd94c5e6b1241b33ca83960e8eedbb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 69844a392aa03dc962f8af456996ab51f1adf561
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490283"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547464"
 ---
 # <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>在 Azure HDInsight 中使用安全傳輸儲存體帳戶的 Apache Hadoop 叢集
 
@@ -32,7 +32,7 @@ ms.locfileid: "92490283"
 
 ### <a name="powershell"></a>PowerShell
 
-針對 PowerShell Cmdlet [New-new-azstorageaccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)，請確定參數 `-EnableHttpsTrafficOnly` 設定為 `1` 。
+針對 PowerShell Cmdlet [New-new-azstorageaccount](/powershell/module/az.storage/new-azstorageaccount)，請確定參數 `-EnableHttpsTrafficOnly` 設定為 `1` 。
 
 若要使用 PowerShell 來更新現有的儲存體帳戶，請參閱 [使用 Powershell 要求安全傳輸](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-powershell)。
 
@@ -50,7 +50,7 @@ ms.locfileid: "92490283"
 * 使用 [Azure 入口網站](https://portal.azure.com)建立叢集並指定連結的儲存體帳戶。
 * 使用指令碼動作，將其他已啟用安全傳輸的儲存體帳戶新增至現有的 HDInsight 叢集。 如需詳細資訊，請參閱[將其他儲存體帳戶新增至 HDInsight](hdinsight-hadoop-add-storage.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 如何使用「Azure 儲存體」(WASB) (而非 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html))作為預設資料存放區
 * 如需有關 HDInsight 如何使用 Azure 儲存體的資訊，請參閱 [搭配 HDInsight 使用 Azure 儲存體](hdinsight-hadoop-use-blob-storage.md)。

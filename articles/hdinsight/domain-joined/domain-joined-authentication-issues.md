@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/24/2020
-ms.openlocfilehash: 6473b6b69ba45138c30e4f2c8a7f1ba1a7f2ae7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 633b6b33bc044b28628cc444227021cd0b4ff377
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816842"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544897"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Azure HDInsight 中的驗證問題
 
@@ -154,7 +154,7 @@ Kinit 若要成功，您必須知道您 `sAMAccountName` 的 (這是沒有領域
 
 * 如果您可以使用本機 Ambari 系統管理員登入 Ambari，請查看使用者清單。
 
-* 如果您已 [加入網域的 windows 電腦](../../active-directory-domain-services/manage-domain.md)，您可以使用標準 windows AD 工具來流覽。 這需要網域中的工作帳戶。
+* 如果您已 [加入網域的 windows 電腦](../../active-directory-domain-services/tutorial-create-management-vm.md)，您可以使用標準 windows AD 工具來流覽。 這需要網域中的工作帳戶。
 
 * 從前端節點中，您可以使用 SAMBA 命令來搜尋。 這需要有效的 Kerberos 會話， (成功的 kinit) 。 net ads 搜尋 " (userPrincipalName = bob * ) "
 
@@ -220,4 +220,4 @@ Kinit 失敗， `Preauthentication` 發生失敗。
 
 * 連線至 [@AzureSupport](https://twitter.com/azuresupport) - 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 將 Azure 社群連線到正確的資源：解答、支援和專家。
 
-* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。
+* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。
