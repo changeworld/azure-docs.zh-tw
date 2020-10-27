@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: 92ec7c0a1469c9f02855cd6191faa8514e54c8f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff97aa6c6f04ad41ba6e1b986f3cc0734ec7a326
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91829185"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92526118"
 ---
 | 資源 | 限制 | 注意 |
 | --- | --- | --- |
@@ -39,6 +39,6 @@ ms.locfileid: "91829185"
 | WAF 檔案上傳大小上限 |V1 中型 WAF 閘道：100 MB<br>V1 大型 WAF 閘道：500 MB<br>V2 WAF：750 MB| |
 | WAF 主體大小上限 (不含檔案)|128 KB||
 | WAF 自訂規則上限|100||
-| WAF 排除項上限|100||
+| 每個應用程式閘道的 WAF 排除項目上限|40||
 
 <sup>1</sup> 若 SKU 啟用了 WAF，您必須將資源數限制為 40。
