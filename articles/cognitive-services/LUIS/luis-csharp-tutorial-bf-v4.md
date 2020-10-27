@@ -98,7 +98,7 @@ Bot 服務建立流程也會以意圖和語句範例來建立新 LUIS 應用程�
 
     [![下載基本 Bot 的 Web 應用程式 Bot 原始程式碼](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
-1. 當快顯對話方塊詢問**在下載的 ZIP 檔案中包含應用程式設定嗎？** ，選取 [是]。
+1. 當快顯對話方塊詢問 **在下載的 ZIP 檔案中包含應用程式設定嗎？** ，選取 [是]。
 
 1. 如果原始程式碼已壓縮為 zip 檔，將會有提供程式碼下載連結的訊息。 選取連結。
 
@@ -318,9 +318,9 @@ Bot 服務建立流程也會以意圖和語句範例來建立新 LUIS 應用程�
 
 1. 啟動 Bot Framework Emulator，然後選取 [開啟 Bot]。
 1. 在 [開啟 Bot] 快顯對話方塊中，輸入 Bot 的 URL，例如 `http://localhost:3978/api/messages`。 `/api/messages` 路由是 Bot 的網址。
-1. 輸入在您下載的 Bot 程式碼根目錄中 **appsettings.json** 檔案中所找到的 **Microsoft 應用程式識別碼**和 **Microsoft 應用程式密碼**，然後選取 [連線]。
+1. 輸入在您下載的 Bot 程式碼根目錄中 **appsettings.json** 檔案中所找到的 **Microsoft 應用程式識別碼** 和 **Microsoft 應用程式密碼** ，然後選取 [連線]。
 
-1. 在 Bot Framework Emulator 中，輸入 `Book a flight from Seattle to Berlin tomorrow` 並取得基本 Bot 的相同回應，如同您在上一節的**在網路聊天中測試**中所收到的。
+1. 在 Bot Framework Emulator 中，輸入 `Book a flight from Seattle to Berlin tomorrow` 並取得基本 Bot 的相同回應，如同您在上一節的 **在網路聊天中測試** 中所收到的。
 
     [![此螢幕擷取畫面顯示具有基本 Bot 回應的 Bot Framework Emulator。](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 

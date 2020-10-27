@@ -29,6 +29,6 @@ Azure Cloud Shell 是裝載於 Azure 中的互動式殼層環境，可在瀏覽�
 
 1. 選取程式碼區塊上的 [複製] 按鈕，複製程式碼。
 
-1. 在 Windows 和 Linux 上選取 **Ctrl**+**Shift**+**V**；或在 macOS 上選取 **Cmd**+**Shift**+**V**，將程式碼貼到 Cloud Shell 工作階段中。
+1. 在 Windows 和 Linux 上選取 **Ctrl**+**Shift**+**V** ；或在 macOS 上選取 **Cmd**+**Shift**+**V** ，將程式碼貼到 Cloud Shell 工作階段中。
 
 1. 選取 **Enter** 鍵執行程式碼。
