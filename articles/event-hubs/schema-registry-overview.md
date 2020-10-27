@@ -4,21 +4,21 @@ description: 本文提供 Azure 事件中樞所支援結構描述登錄的概觀
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 30ef2f102a4b8d9f9908ba915f179889710bafd0
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: a876651b76aa259754623854b8fc4a7c6c8a939e
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938792"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330490"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>事件中樞中的 Azure 結構描述登錄 (預覽)
 在許多事件串流處理和訊息傳遞案例中，事件或訊息承載都包含使用結構描述驅動格式 (例如 Apache Avro) 進行序列化或還原序列化的結構化資料。 傳送者和接收者都可能需要使用與 JSON 結構描述相同的結構描述文件來驗證資料的完整性。 針對結構描述驅動格式，讓訊息取用者可以使用的結構描述是取用者能夠將資料還原序列化的必要條件。 
 
-**Azure 結構描述登錄**是事件中樞的一項功能，可為事件驅動和以訊息為中心的應用程式，提供結構描述文件的中央存放庫。 其可讓您的生產者和取用者應用程式彈性地交換資料，而不需要管理及共用它們之間的結構描述，也能以不同的費率發展。 結構描述登錄也為可重複使用的結構描述提供簡單的治理架構，並透過群組結構 (結構描述群組) 定義結構描述之間的關聯性。
+**Azure 結構描述登錄** 是事件中樞的一項功能，可為事件驅動和以訊息為中心的應用程式，提供結構描述文件的中央存放庫。 其可讓您的生產者和取用者應用程式彈性地交換資料，而不需要管理及共用它們之間的結構描述，也能以不同的費率發展。 結構描述登錄也為可重複使用的結構描述提供簡單的治理架構，並透過群組結構 (結構描述群組) 定義結構描述之間的關聯性。
 
 > [!NOTE]
-> - **結構描述登錄**功能目前處於**預覽**狀態，不建議用於生產工作負載。
-> - 此功能僅適用於**標準**和**專用**階層，而不適用於**基本**階層。
+> - **結構描述登錄** 功能目前處於 **預覽** 狀態，不建議用於生產工作負載。
+> - 此功能僅適用於 **標準** 和 **專用** 階層，而不適用於 **基本** 階層。
 
 透過 Apache Avro 這類結構描述驅動的序列化架構，將序列化中繼資料外部化至共用結構描述也有助於大幅降低每個資料集所包含類型資訊和欄位名稱的每一訊息額外負荷，如同 JSON 之類的標記格式。 將結構描述連同事件一起儲存在事件基礎結構內，可確保序列化/還原序列化所需的中繼資料一律會觸達，且結構描述不能錯置。 
 
@@ -50,8 +50,8 @@ ms.locfileid: "91938792"
 ## <a name="standard-vs-dedicated-limits"></a>標準與專用限制
 如需標準和專用層級事件中樞的相同和不同限制 (例如：命名空間中的結構描述群組數目)，請參閱[結構描述登錄限制](../azure-resource-manager/management/azure-subscription-service-limits.md#schema-registry-limitations)
 
-## <a name="role-based-access-control"></a>角色型存取控制
-以程式設計方式存取結構描述登錄時，您需要在 Azure Active Directory (Azure AD) 中註冊應用程式，並將應用程式的安全性主體新增至其中一個角色型存取控制 (RBAC) 角色：
+## <a name="azure-role-based-access-control"></a>Azure 角色型存取控制
+以程式設計方式存取結構描述登錄時，您需要在 Azure Active Directory (Azure AD) 中註冊應用程式，並將應用程式的安全性主體新增至其中一個 Azure 角色型存取控制 (Azure RBAC) 角色：
 
 | 角色 | 描述 | 
 | ---- | ----------- | 
@@ -65,7 +65,7 @@ ms.locfileid: "91938792"
 ## <a name="next-steps"></a>後續步驟
 
 - 若要了解如何使用 Azure 入口網站建立結構描述登錄，請參閱[使用 Azure 入口網站建立事件中樞結構描述登錄](create-schema-registry.md)。
-- 請參閱下列**結構描述登錄 Avro 用戶端程式庫**範例。
+- 請參閱下列 **結構描述登錄 Avro 用戶端程式庫** 範例。
     - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/schemaregistry/Microsoft.Azure.Data.SchemaRegistry.ApacheAvro/tests/Samples)
     - [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/schemaregistry/azure-data-schemaregistry-avro/src/samples)
     - [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/schemaregistry/schema-registry-avro/samples )

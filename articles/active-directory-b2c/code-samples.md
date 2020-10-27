@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 63a79df8e540e88d0f1e3f4c5b8d339ff03c877f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2db64a950569e4a96a9a87bb86a5397a17b4f2ba
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854285"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92214935"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C 程式碼範例
 
@@ -47,7 +47,8 @@ ms.locfileid: "91854285"
 
 | 範例 | 描述 |
 |--------| ----------- |
-| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | 呼叫 Web API 的單頁應用程式 (SPA)。 運用 MSAL.js 完成 Azure AD B2C 驗證。 |
+| [ms-identity-b2c-javascript-spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) | 呼叫 Web API 的單頁應用程式 (SPA)。 運用 MSAL.js 完成 Azure AD B2C 驗證。 此範例使用授權碼流程搭配 PKCE。 |
+| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | 呼叫 Web API 的單頁應用程式 (SPA)。 運用 MSAL.js 完成 Azure AD B2C 驗證。 這個範例會使用隱含流程。|
 
 ## <a name="saml-test-application"></a>SAML 測試應用程式
 

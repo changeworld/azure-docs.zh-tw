@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 50dd6038a8642f13cea7840fff723a5cf12ce2dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a15ccd6d67b4819ba5dd6233a2a001015037c404
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80999778"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92165667"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>教學課程：在 Azure IoT Central 中建立店內分析應用程式
 
@@ -36,7 +36,7 @@ ms.locfileid: "80999778"
 
 在本教學課程中，您會了解如何：
 > [!div class="checklist"]
-> * 使用 Azure IoT Central **店內分析 - 結帳**範本來建立零售商店應用程式
+> * 使用 Azure IoT Central **店內分析 - 結帳** 範本來建立零售商店應用程式
 > * 自訂應用程式設定
 > * 建立和自訂 IoT 裝置範本
 > * 將裝置連線到應用程式
@@ -71,7 +71,7 @@ ms.locfileid: "80999778"
 1. (選擇性) 選擇易記的 [應用程式名稱]  。 此應用程式的建置基礎是名為 Contoso 的虛構零售商店。 本教學課程會使用「Contoso 結帳」  作為 [應用程式名稱]  。 應用程式範本的製作基礎則是虛構公司 Northwind。 在本教學課程中，您會使用 Contoso 來了解如何自訂應用程式。
 
     > [!NOTE]
-    > 如果您使用易記的**應用程式名稱**，您仍然必須針對應用程式的 **URL** 使用唯一值。
+    > 如果您使用易記的 **應用程式名稱** ，您仍然必須針對應用程式的 **URL** 使用唯一值。
 
 1. 如果您有 Azure 訂用帳戶，請輸入您的 [目錄]、[Azure 訂用帳戶] 和 [區域]  。 如果您沒有訂用帳戶，則可以啟用 [7 天免費試用]  並填妥必要的連絡人資訊。  
 
@@ -107,9 +107,9 @@ ms.locfileid: "80999778"
 
 1. 選取 [系統管理] > [自訂應用程式]  。
 
-1. 使用 [變更]  按鈕來選擇要上傳作為**應用程式標誌**的影像。 (選擇性) 指定 [標誌替代文字]  的值。 
+1. 使用 [變更]  按鈕來選擇要上傳作為 **應用程式標誌** 的影像。 (選擇性) 指定 [標誌替代文字]  的值。 
 
-1. 使用 [變更]  按鈕，以選擇將會出現在瀏覽器索引標籤上的**瀏覽器圖示**影像。
+1. 使用 [變更]  按鈕，以選擇將會出現在瀏覽器索引標籤上的 **瀏覽器圖示** 影像。
 
 1. (選擇性) 藉由新增 HTML 十六進位色彩代碼來取代預設的 [瀏覽器色彩]  。 針對 [標頭]  ，新增 [#008575]  。  針對 [輔色]  ，新增 [#A1F3EA]  。 
 
@@ -136,7 +136,7 @@ ms.locfileid: "80999778"
 ## <a name="create-device-templates"></a>建立裝置範本
 身為建置者，您可以建立裝置範本，以便讓您自己和應用程式操作員能夠設定和管理裝置。 藉由建置自訂範本、匯入現有範本檔案或從 Azure IoT 裝置目錄匯入範本，即可建立範本。 在建立並自訂裝置範本後，請使用該範本將實際裝置連線到應用程式。 (選擇性) 使用裝置範本來產生用於測試的模擬裝置。
 
-**店內分析 - 結帳**應用程式範本有適用於數個裝置的裝置範本。  在您於應用程式中所使用的三個裝置之中，其中兩個有適用的裝置範本。 RuuviTag 裝置範本則未包含在**店內分析 - 結帳**應用程式範本中。 在本節中，您要將 RuuviTag 感應器的裝置範本新增至應用程式。
+**店內分析 - 結帳** 應用程式範本有適用於數個裝置的裝置範本。  在您於應用程式中所使用的三個裝置之中，其中兩個有適用的裝置範本。 RuuviTag 裝置範本則未包含在 **店內分析 - 結帳** 應用程式範本中。 在本節中，您要將 RuuviTag 感應器的裝置範本新增至應用程式。
 
 若要將 RuuviTag 裝置範本新增至應用程式：
 
@@ -148,7 +148,7 @@ ms.locfileid: "80999778"
 
 1. 完成時，選取 [下一步:  自訂]。
 
-    ![Azure IoT Central RuuviTag 感應器裝置範本](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template.png)
+    ![醒目提示 [下一步: 自訂] 按鈕的螢幕擷取畫面。](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template.png)
 
 1. 選取 [建立]  。 應用程式便會新增 RuuviTag 裝置範本。
 
@@ -191,7 +191,7 @@ ms.locfileid: "80999778"
 
 1. 選取 [儲存]  來儲存變更。
 
-    ![Azure IoT Central RuuviTag 裝置範本自訂](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template-customize.png)
+    ![顯示 [自訂] 畫面並醒目提示 [儲存] 按鈕的螢幕擷取畫面。](./media/tutorial-in-store-analytics-create-app/ruuvitag-device-template-customize.png)
 
 若要將雲端屬性新增至應用程式中的裝置範本：
 
@@ -223,7 +223,7 @@ ms.locfileid: "80999778"
 在本教學課程中，您會使用下面這組實際裝置和模擬裝置來建置應用程式：
 - 一個實際的 Rigado C500 閘道
 - 兩個實際的 RuuviTag 感應器
-- 一個模擬的**佔用量**感應器。 模擬感應器會包含在應用程式範本中，因此不需要建立。 
+- 一個模擬的 **佔用量** 感應器。 模擬感應器會包含在應用程式範本中，因此不需要建立。 
 
 > [!NOTE]
 > 如果您沒有實際裝置，仍可藉由建立模擬的 RuuviTag 感應器來完成本教學課程。 下列指示包含用來建立模擬 RuuviTag 的步驟。 您不需要建立模擬閘道。
@@ -234,7 +234,7 @@ ms.locfileid: "80999778"
 - 若要與 RuuviTag 感應器連線，請參閱[將 RuuviTag 感應器連線到 Azure IoT Central 應用程式](../core/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)。 如有需要，您也可以使用這兩個指示來建立兩個模擬感應器。
 
 ## <a name="add-rules-and-actions"></a>新增規則和動作
-在使用 Azure IoT Central 應用程式中的感應器來監視狀況的過程中，您可以建立規則以在符合特定狀況時執行動作。 規則會與裝置範本以及一或多個裝置相關聯，並包含根據裝置的遙測資料或事件所必須符合的狀況。 規則也會有一或多個相關聯的動作。 這些動作可能包括傳送電子郵件通知，或觸發 Webhook 動作以將資料傳送到其他服務。 **店內分析 - 結帳**應用程式範本包含應用程式裝置的一些預先定義規則。
+在使用 Azure IoT Central 應用程式中的感應器來監視狀況的過程中，您可以建立規則以在符合特定狀況時執行動作。 規則會與裝置範本以及一或多個裝置相關聯，並包含根據裝置的遙測資料或事件所必須符合的狀況。 規則也會有一或多個相關聯的動作。 這些動作可能包括傳送電子郵件通知，或觸發 Webhook 動作以將資料傳送到其他服務。 **店內分析 - 結帳** 應用程式範本包含應用程式裝置的一些預先定義規則。
 
 在本節中，您會建立新的規則，以根據 RuuviTag 感應器的遙測資料來檢查最大相對濕度程度。 您會在規則中新增動作，以便在濕度超過最大值時，讓應用程式傳送電子郵件。 
 
@@ -279,7 +279,7 @@ ms.locfileid: "80999778"
 ## <a name="next-steps"></a>後續步驟
 在本教學課程中，您已了解如何：
 
-* 使用 Azure IoT Central **店內分析 - 結帳**範本來建立零售商店應用程式
+* 使用 Azure IoT Central **店內分析 - 結帳** 範本來建立零售商店應用程式
 * 自訂應用程式設定
 * 建立和自訂 IoT 裝置範本
 * 將裝置連線到應用程式

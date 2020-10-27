@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: baf80e3d543bee455dd8dfa5bc09bc5bf43c3453
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b3ad0da1f910556c172c519faf953d4075647955
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943639"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92109046"
 ---
 # <a name="create-and-delete-private-endpoints-in-an-azure-stream-analytics-cluster"></a>在 Azure 串流分析叢集中建立和刪除私人端點
 
@@ -27,9 +27,9 @@ ms.locfileid: "90943639"
 
 1. 在 Azure 入口網站中，找出並選取您的串流分析叢集。
 
-1. 在 **設定**下，選取 [私人端點]。
+1. 在 **設定** 下，選取 [私人端點]。
 
-1. 選取 **新增私人端點**然後輸入下列資訊，選擇要透過私人端點安全存取的資源。
+1. 選取 **新增私人端點** 然後輸入下列資訊，選擇要透過私人端點安全存取的資源。
 
    |設定|值|
    |---|---|
@@ -46,13 +46,13 @@ ms.locfileid: "90943639"
 
     ![核准私人端點](./media/private-endpoints/approve-private-endpoint.png)
 
-1. 您可以回到您的串流分析叢集，查看狀態在數分鐘內由**擱置中客戶核准**、**擱置中 DNS 安裝**變更為**設定完成**。
+1. 您可以回到您的串流分析叢集，查看狀態在數分鐘內由 **擱置中客戶核准** 、 **擱置中 DNS 安裝** 變更為 **設定完成** 。
 
 ## <a name="delete-a-private-endpoint-in-a-stream-analytics-cluster"></a>在串流分析叢集中刪除私人端點
 
 1. 在 Azure 入口網站中，找出並選取您的串流分析叢集。
 
-1. 在 **設定**下，選取 [私人端點]。
+1. 在 **設定** 下，選取 [私人端點]。
 
 1. 選取您要刪除的私人端點，然後選取 [刪除]。
 

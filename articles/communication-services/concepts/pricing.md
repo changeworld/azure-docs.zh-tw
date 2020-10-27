@@ -9,24 +9,19 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4eec258cf642688c87b363ff467f1f368727a013
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 779fa577b25bd4f2aa92aa8b8cc1244a58bdf1ae
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761221"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126185"
 ---
 # <a name="pricing-scenarios"></a>定價案例
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-<!--
-> [!WARNING]
-> This document is under construction and needs the following items to be addressed:
-> - Looks like other resources point to a /pricing page that is managed by Commerce or Marketing? https://azure.microsoft.com/pricing/details/functions/ Should we? FOLLOWING UP WITH KRISTIN TO FIND THE RIGHT ACS PAGE
--->
 
-Azure 通訊服務的價格是以隨用隨付模型為基礎，無預付費用。 您只需支付耗用量和使用服務的費用。
+Azure 通訊服務的價格一般會以隨用隨付模型為基礎。
 
 ## <a name="voicevideo-calling-and-screen-sharing"></a>語音/視訊通話和螢幕畫面分享
 
@@ -51,7 +46,7 @@ Alice 與同事 Bob 和 Charlie 進行群組通話。 Alice 和 Bob 使用 JS �
 - 2 位參與者 x 60 分鐘 x 每個參與者每分鐘 $0.004 = $0.48 [視訊和音訊都是以相同的費率收費]
 - 1 位參與者 x 43 分鐘 x 每個參與者每分鐘 $0.004 = $0.172 [視訊和音訊都是以相同的費率收費]
 
-**群組通話的總成本**：$0.48 + $0.172 = $0.652
+**群組通話的總成本** ：$0.48 + $0.172 = $0.652
 
 ## <a name="chat"></a>聊天
 
@@ -84,6 +79,16 @@ Rose 看到訊息並且開始聊天。 此時 Casey 有來電，因此決定稍�
 ## <a name="price"></a>價格 
 
 電話語音服務的定價是以每分鐘為基礎，而 SMS 的定價則是以每個訊息為基礎。 定價取決於您所使用號碼的類型和位置，以及通話和 SMS 訊息的目的地。
+
+### <a name="telephone-number-leasing"></a>電話號碼租用
+
+電話號碼租用的費用會事先收費，然後再每月收取：
+
+|數字類型   |月費   |
+|--------------|-----------|
+|本機 (美國)     |每月 1 美元        |
+|免付費電話 (美國) |每月 2 美元 |
+
 
 ### <a name="telephone-calling"></a>電話通話
 

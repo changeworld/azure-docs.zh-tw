@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: bf80a15131a8808359d21d5a9655ef04db236178
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 80b0c357bbad79a31d8b7153248b73c1231629c8
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613487"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92145046"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 ASP.NET Core Web 應用程式
 
@@ -46,7 +46,7 @@ ms.locfileid: "91613487"
 > 若要註冊您的應用程式，並手動將應用程式註冊資訊新增到您的解決方案，請執行下列步驟：
 >
 > 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-> 1. 如果您有多個租用的存取權，請使用頂端功能表中的**目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
+> 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
 > 1. 搜尋並選取 [Azure Active Directory]  。
 > 1. 在 [管理]下選取 [應用程式註冊]，再選取 [新增註冊]。
 > 1. 輸入應用程式的 [名稱]，例如 `AspNetCore-Quickstart`。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
@@ -86,7 +86,7 @@ ms.locfileid: "91613487"
 > > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-aspnet-core-project"></a>步驟 3：設定 ASP.NET Core 專案
-> 1. 將 .zip 封存檔解壓縮至磁碟機根目錄附近的本機資料夾。 例如，解壓縮至 *C:\Azure-Samples*。
+> 1. 將 .zip 封存檔解壓縮至磁碟機根目錄附近的本機資料夾。 例如，解壓縮至 *C:\Azure-Samples* 。
 > 1. 在 Visual Studio 2019 中開啟解決方案。
 > 1. 開啟 *appsettings.json* 檔案，然後修改下列內容：
 >
@@ -95,9 +95,9 @@ ms.locfileid: "91613487"
 >    "TenantId": "common",
 >    ```
 >
->    - 將 `Enter_the_Application_Id_here` 取代為您在 Azure 入口網站中註冊的應用程式的**應用程式 (用戶端) 識別碼**。 您可以在應用程式的 [概觀] 頁面中找到**應用程式 (用戶端) 識別碼**。
+>    - 將 `Enter_the_Application_Id_here` 取代為您在 Azure 入口網站中註冊的應用程式的 **應用程式 (用戶端) 識別碼** 。 您可以在應用程式的 [概觀] 頁面中找到 **應用程式 (用戶端) 識別碼** 。
 >    - 將 `common` 取代為下列其中一項：
->       - 如果您的應用程式支援 [僅此組織目錄中的帳戶]，請將此值取代為**目錄 (租用戶) 識別碼** (即 GUID) 或**租用戶名稱** (例如 `contoso.onmicrosoft.com`)。 您可以在應用程式的 [概觀] 頁面上找到**目錄 (租用戶) 識別碼**。
+>       - 如果您的應用程式支援 [僅此組織目錄中的帳戶]，請將此值取代為 **目錄 (租用戶) 識別碼** (即 GUID) 或 **租用戶名稱** (例如 `contoso.onmicrosoft.com`)。 您可以在應用程式的 [概觀] 頁面上找到 **目錄 (租用戶) 識別碼** 。
 >       - 如果您的應用程式支援 [任何組織目錄中的帳戶]，請將此值取代為 `organizations`
 >       - 如果您的應用程式支援 [所有 Microsoft 帳戶使用者]，請讓此值保持為 `common`
 >
@@ -150,21 +150,26 @@ ms.locfileid: "91613487"
 
 | *appsettings.json* 金鑰 | 描述                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `ClientId`             | 於 Azure 入口網站中註冊的應用程式的**應用程式 (用戶端) 識別碼**。                                                                                       |
+| `ClientId`             | 於 Azure 入口網站中註冊的應用程式的 **應用程式 (用戶端) 識別碼** 。                                                                                       |
 | `Instance`             | 使用者進行驗證的 Security Token Service (STS) 端點。 此值通常為 `https://login.microsoftonline.com/`，代表 Azure 公用雲端。 |
 | `TenantId`             | 租用戶名稱或其租用戶識別碼 (即 GUID)，或 *common* (使用公司或學校帳戶或 Microsoft 個人帳戶來登入使用者)。                             |
 
-`Configure()` 方法包含兩個重要方法：`app.UseCookiePolicy()` 和 `app.UseAuthentication()`，可啟用其各自的具名功能。
+`Configure()` 方法包含兩個重要方法：`app.UseAuthentication()` 和 `app.UseAuthorization()`，可啟用其各自的具名功能。 此外，在 `Configure()` 方法中，您必須使用至少一個 `endpoints.MapControllerRoute()` 呼叫或 `endpoints.MapControllers()` 呼叫來註冊 Microsoft 身分識別 Web 的路由。
 
 ```csharp
-// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.UseEndpoints(endpoints =>
 {
-    // more code
-    app.UseAuthentication();
-    app.UseAuthorization();
-    // more code
-}
+
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+    endpoints.MapRazorPages();
+});
+
+// endpoints.MapControllers(); // REQUIRED if MapControllerRoute() isn't called.
 ```
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>保護控制器或控制器的方法

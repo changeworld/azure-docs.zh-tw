@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: d148bc81e81c4afa32682fa1462ecfbf5427f164
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3db7112516941e53c07e1521f15140a8b9c28e47
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079217"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147974"
 ---
 # <a name="tutorial-copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>教學課程：將資料從 SQL Server 資料庫複製到 Azure Blob 儲存體
 
@@ -45,7 +45,7 @@ ms.locfileid: "89079217"
 ### <a name="azure-roles"></a>Azure 角色
 若要建立資料處理站執行個體，您用來登入 Azure 的使用者帳戶必須具備「參與者」或「擁有者」角色，或必須是 Azure 訂用帳戶的「管理員」。
 
-若要檢視您在訂用帳戶中所擁有的權限，請移至 Azure 入口網站，選取右上角的使用者名稱，然後選取 [權限]。 如果您有多個訂用帳戶的存取權，請選取適當的訂用帳戶。 如需將使用者新增至角色的範例指示，請參閱[使用 RBAC 和 Azure 入口網站來管理存取權](../role-based-access-control/role-assignments-portal.md)文章。
+若要檢視您在訂用帳戶中所擁有的權限，請移至 Azure 入口網站，選取右上角的使用者名稱，然後選取 [權限]。 如果您有多個訂用帳戶的存取權，請選取適當的訂用帳戶。 如需將使用者新增至角色的範例指示，請參閱[使用 Azure 入口網站來新增或移除 Azure 角色指派](../role-based-access-control/role-assignments-portal.md)一文。
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014、2016 和 2017
 在此教學課程中，您會使用 SQL Server 資料庫作為「來源」資料存放區。 您在此教學課程中於資料處理站中建立的管線會將資料從此 SQL Server 資料庫 (來源) 複製到 Azure Blob 儲存體 (接收)。 然後在 SQL Server 資料庫中建立名為 **emp** 的資料表，並在資料表中插入幾個範例項目。
@@ -102,7 +102,7 @@ ms.locfileid: "89079217"
 
 1. 在 [Blob 服務] 視窗中，選取 [容器]。
 
-1. 在 [新容器] 視窗的 [名稱] 方塊中，輸入 **adftutorial**，然後選取 [確定]。
+1. 在 [新容器] 視窗的 [名稱] 方塊中，輸入 **adftutorial** ，然後選取 [確定]。
 
     ![輸入容器名稱](media/tutorial-hybrid-copy-powershell/new-container-dialog.png)
 
@@ -129,7 +129,7 @@ ms.locfileid: "89079217"
     Connect-AzAccount
     ```        
 
-1. 如果您有多個 Azure 訂用帳戶，請執行下列命令來選取您需要使用的訂用帳戶。 以您的 Azure 訂用帳戶識別碼取代 **SubscriptionId**：
+1. 如果您有多個 Azure 訂用帳戶，請執行下列命令來選取您需要使用的訂用帳戶。 以您的 Azure 訂用帳戶識別碼取代 **SubscriptionId** ：
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
@@ -239,7 +239,7 @@ ms.locfileid: "89079217"
     Id                        : /subscriptions/<subscription ID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>/integrationruntimes/<integrationRuntimeName>
     ```
 
-1. 若要擷取*驗證金鑰*，用以向雲端中的 Data Factory 服務註冊自我裝載整合執行階段，請執行下列命令。 複製其中一個金鑰 (不含引號)，以註冊您在下一個步驟中安裝於電腦上的自我裝載整合執行階段。
+1. 若要擷取 *驗證金鑰* ，用以向雲端中的 Data Factory 服務註冊自我裝載整合執行階段，請執行下列命令。 複製其中一個金鑰 (不含引號)，以註冊您在下一個步驟中安裝於電腦上的自我裝載整合執行階段。
 
     ```powershell
     Get-AzDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
@@ -435,7 +435,7 @@ ms.locfileid: "89079217"
 在此步驟中，您會建立輸入和輸出資料集。 其代表複製作業的輸入與輸出資料，而複製作業會將資料從 SQL Server 資料庫複製到 Azure Blob 儲存體。
 
 ### <a name="create-a-dataset-for-the-source-sql-server-database"></a>建立來源 SQL Server 資料庫的資料集
-在此步驟中，您要定義代表 SQL Server 資料庫執行個體中資料的資料集。 資料集的類型為 SqlServerTable。 它會參考您在前一個步驟中建立的 SQL Server 連結服務。 此連結服務具有連線資訊，可供 Data Factory 服務在執行階段用來連線到您的 SQL Server 執行個體。 此資料集會指定包含資料的資料庫中的 SQL 資料表。 在本教學課程中，**emp** 資料表包含來源資料。
+在此步驟中，您要定義代表 SQL Server 資料庫執行個體中資料的資料集。 資料集的類型為 SqlServerTable。 它會參考您在前一個步驟中建立的 SQL Server 連結服務。 此連結服務具有連線資訊，可供 Data Factory 服務在執行階段用來連線到您的 SQL Server 執行個體。 此資料集會指定包含資料的資料庫中的 SQL 資料表。 在本教學課程中， **emp** 資料表包含來源資料。
 
 1. 使用下列程式碼，在 C:\ADFv2Tutorial 資料夾中建立名為 SqlServerDataset.json 的 JSON 檔案：  
     ```json

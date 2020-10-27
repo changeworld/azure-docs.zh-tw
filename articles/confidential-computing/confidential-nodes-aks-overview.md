@@ -7,21 +7,20 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 2aa30f86b32005b9c85664b5bb2d0772a6e5f443
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: a009cd7763b4a4dc0c502d4c47a20d6fdffe61d7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940764"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125436"
 ---
 # <a name="confidential-computing-nodes-on-azure-kubernetes-service-public-preview"></a>Azure Kubernetes Service 上的機密運算節點 (公開預覽)
 
-[Azure 機密運算](overview.md)可讓您保護使用中的敏感資料。 基礎結構會保護此資料，使其不受其他應用程式、管理員和雲端提供者的影響。 
+[Azure 機密運算](overview.md)可讓您保護使用中的敏感資料。 基礎結構會使用受硬體支援的信任執行容器環境，來保護此資料不為其他應用程式、系統管理員和雲端提供者使用。
 
 ## <a name="overview"></a>概觀
 
-Azure Kubernetes Service (AKS) 支援在 Intel SGX 上新增 [DCsv2 的機密運算節點](confidential-computing-enclaves.md)。 這些節點會允許使用者層級程式碼配置私人記憶體區域，藉以在硬體型的受信任執行環境 (TEE) 內執行敏感的工作負載。 這些私人記憶體區域稱為記憶體保護區。 記憶體保護區可用來保護程式碼和資料，讓以較高權限執行的程序不會對其造成影響。 SGX 執行模型移除了客體作業系統和 Hypervisor 的中繼層。 這可讓您直接在 CPU 上執行容器應用程式，同時將特殊的記憶體區塊保持為加密。 
-
+Azure Kubernetes Service (AKS) 支援新增由 Intel SGX 提供技術支援的 [DCsv2 的機密運算節點](confidential-computing-enclaves.md)。 這些節點執行可允許使用者層級程式碼配置私人記憶體區域，藉以在硬體型的受信任執行環境 (TEE) 內執行敏感的工作負載。 這些私人記憶體區域稱為記憶體保護區。 記憶體保護區可用來保護程式碼和資料，讓以較高權限執行的程序不會對其造成影響。 SGX 執行模型移除了客體作業系統、主機作業系統和 Hypervisor 的中繼層。 *硬體型每一容器獨立執行* 模型可讓應用程式直接與 CPU 一起執行，同時讓特殊的記憶體區塊保持加密。 機密計算節點可協助 AKS 上容器應用程式的整體安全性狀態，並另外提供深度防禦容器策略。 
 
 ![SGX 節點概觀](./media/confidential-nodes-aks-overview/sgxaksnode.jpg)
 
@@ -36,7 +35,7 @@ Azure Kubernetes Service (AKS) 支援在 Intel SGX 上新增 [DCsv2 的機密運
 - 透過 AKS daemonSet 的處理序外證明協助程式
 - 透過 Ubuntu 18.04 Gen 2 VM 背景工作節點的 Linux 容器支援
 
-## <a name="aks-provided-daemon-sets"></a>AKS 提供的精靈集
+## <a name="aks-provided-daemon-sets-addon"></a>AKS 提供的精靈集 (附加元件)
 
 #### <a name="sgx-device-plugin"></a>SGX 裝置外掛程式 <a id="sgx-plugin"></a>
 
@@ -50,11 +49,11 @@ SGX 裝置外掛程式會實作 EPC 記憶體的 Kubernetes 裝置外掛程式�
 
 ### <a name="confidential-containers"></a>機密容器
 
-[機密容器](confidential-containers.md)可在未修改或重新編譯任何原始程式碼的情況下，執行現有的程式和最**常用的程式設計語言**執行階段 (Python、Node、Java 等)，及其現有的程式庫相依性。 若要透過開放原始碼專案和 Azure 合作夥伴啟用機密性，此模型將是最快速的模型。 準備好要在安全記憶體保護區中執行的容器映像，稱為機密容器。
+[機密容器](confidential-containers.md)可在未修改或重新編譯任何原始程式碼的情況下，執行現有的程式和最 **常用的程式設計語言** 執行階段 (Python、Node、Java 等)，及其現有的程式庫相依性。 若要透過開放原始碼專案和 Azure 合作夥伴啟用機密性，此模型將是最快速的模型。 準備好要在安全記憶體保護區中執行的容器映像，稱為機密容器。
 
 ### <a name="enclave-aware-containers"></a>記憶體保護區感知容器
 
-AKS 支援透過程式設計成在機密節點上執行，並使用透過 SDK 和架構提供的**特殊指令集**的應用程式。 此應用程式模型以最低的信賴運算基礎 (TCB) 為應用程式提供最大程度的控制。 [深入了解](enclave-aware-containers.md)記憶體保護區感知容器。
+AKS 支援透過程式設計成在機密節點上執行，並使用透過 SDK 和架構提供的 **特殊指令集** 的應用程式。 此應用程式模型以最低的信賴運算基礎 (TCB) 為應用程式提供最大程度的控制。 [深入了解](enclave-aware-containers.md)記憶體保護區感知容器。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 041b1766ae6a64f51d922de128ef316cc0ed8260
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af0fafe98c3ca48ecced46cef6fb5fe8876c7f50
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87922164"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92215989"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>教學課程：在 Azure Active Directory B2C 中建立使用者流程
 
@@ -33,7 +33,7 @@ ms.locfileid: "87922164"
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!IMPORTANT]
-> 我們已變更使用者流程版本的參考方式。 以前，我們提供了 V1 (可用於生產環境) 版本，以及 V1.1 和 V2 (預覽) 版本。 現在，我們已將使用者流程合併到**建議** (新一代預覽) 和**標準** (正式推出) 版本。 所有 V1.1 和 V2 的舊版預覽使用者流程都即將於 **2021 年 8 月 1 日**淘汰。 如需詳細資訊，請參閱 [Azure AD B2C 中的使用者流程版本](user-flow-versions.md)。
+> 我們已變更使用者流程版本的參考方式。 以前，我們提供了 V1 (可用於生產環境) 版本，以及 V1.1 和 V2 (預覽) 版本。 現在，我們已將使用者流程合併到 **建議** (新一代預覽) 和 **標準** (正式推出) 版本。 所有 V1.1 和 V2 的舊版預覽使用者流程都即將於 **2021 年 8 月 1 日** 淘汰。 如需詳細資訊，請參閱 [Azure AD B2C 中的使用者流程版本](user-flow-versions.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -44,7 +44,7 @@ ms.locfileid: "87922164"
 註冊和登入使用者流程會透過單一組態來處理註冊與登入體驗。 系統會視內容而定，將您應用程式的使用者引導到正確的路徑。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在入口網站工具列中選取**目錄 + 訂用帳戶**圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
+1. 在入口網站工具列中選取 **目錄 + 訂用帳戶** 圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
 
     ![B2C 租用戶、[目錄和訂用帳戶] 窗格、Azure 入口網站](./media/tutorial-create-user-flows/directory-subscription-pane.png)
 
@@ -61,13 +61,13 @@ ms.locfileid: "87922164"
 
     ![Azure 入口網站中的 [建立使用者流程] 頁面，已醒目提示屬性](./media/tutorial-create-user-flows/select-version.png)
 
-1. 輸入使用者流程的 [名稱]。 例如，*signupsignin1*。
+1. 輸入使用者流程的 [名稱]。 例如， *signupsignin1* 。
 1. 針對 [識別提供者]，選取 [電子郵件註冊]。
 1. 針對 [使用者屬性與宣告]，選擇在註冊期間您要收集和從使用者傳送的宣告和屬性。 例如，選取 [顯示更多]，然後選擇 [國家/地區]、[顯示名稱]，及 [郵遞區號] 的屬性和宣告。 按一下 [確定]。
 
     ![已選取三個宣告的 [屬性和宣告選取] 頁面](./media/tutorial-create-user-flows/signup-signin-attributes.png)
 
-1. 按一下 [建立]  新增使用者流程。 名稱前面會自動加上前置詞 *B2C_1*。
+1. 按一下 [建立]  新增使用者流程。 名稱前面會自動加上前置詞 *B2C_1* 。
 
 ### <a name="test-the-user-flow"></a>測試使用者流程
 
@@ -82,6 +82,9 @@ ms.locfileid: "87922164"
 1. 選取您的國家/地區和區域、輸入您想要顯示的名稱、輸入郵遞區號，然後按一下 [建立]。 權杖會傳回到 `https://jwt.ms`，而且應該會向您顯示。
 1. 您現在可以再次執行使用者流程，且您應能夠使用您建立的帳戶登入。 傳回的權杖包含您所選國家/地區、名稱和郵遞區號的宣告。
 
+> [!NOTE]
+> 「執行使用者流程」體驗目前與使用授權碼流程的 SPA 回覆 URL 類型不相容。 若要使用「執行使用者流程」體驗搭配這幾種應用程式，請註冊 Web 類型的回覆 URL，並依照[這裡](tutorial-register-spa.md)所述的方式啟用隱含流程。
+
 ## <a name="create-a-profile-editing-user-flow"></a>建立設定檔編輯使用者流程
 
 如果您要在您的應用程式中允許使用者編輯其設定檔，您可使用設定檔編輯使用者流程。
@@ -89,10 +92,10 @@ ms.locfileid: "87922164"
 1. 在 Azure AD B2C 租用戶 [概觀] 頁面的功能表中，選取 [使用者流程]，然後選取 [新增使用者流程]。
 1. 在 [建立使用者流程] 頁面上，選取 [設定檔編輯] 使用者流程。 
 1. 在 [選取版本] 底下，選取 [建議]，然後選取 [建立]。
-1. 輸入使用者流程的 [名稱]。 例如，*profileediting1*。
+1. 輸入使用者流程的 [名稱]。 例如， *profileediting1* 。
 1. 針對 [識別提供者] 選取 [本機帳戶登入]。
 2. 針對 [使用者屬性]，選擇您要客戶能夠在其設定檔中編輯的屬性。 例如，選取 [顯示更多]，然後選擇 [顯示名稱] 和 [職稱] 的屬性和宣告。 按一下 [確定]。
-3. 按一下 [建立]  新增使用者流程。 名稱前面會自動加上前置詞 *B2C_1*。
+3. 按一下 [建立]  新增使用者流程。 名稱前面會自動加上前置詞 *B2C_1* 。
 
 ### <a name="test-the-user-flow"></a>測試使用者流程
 
@@ -108,11 +111,11 @@ ms.locfileid: "87922164"
 1. 在 Azure AD B2C 租用戶的 [概觀] 功能表中，選取 [使用者流程]，然後選取 [新增使用者流程]。
 1. 在 [建立使用者流程] 頁面上，選取 [密碼重設] 使用者流程。 
 1. 在 [選取版本] 底下，選取 [建議]，然後選取 [建立]。
-1. 輸入使用者流程的 [名稱]。 例如，*passwordreset1*。
+1. 輸入使用者流程的 [名稱]。 例如， *passwordreset1* 。
 1. 針對 [識別提供者]啟用 [使用電子郵件地址重設密碼]。
 2. 在 [應用程式宣告] 底下，按一下 [顯示更多]，並選擇您要以傳送回應用程式的授權權杖傳回的宣告。 例如，選取 [使用者的物件識別碼]。
 3. 按一下 [確定]。
-4. 按一下 [建立]  新增使用者流程。 名稱前面會自動加上前置詞 *B2C_1*。
+4. 按一下 [建立]  新增使用者流程。 名稱前面會自動加上前置詞 *B2C_1* 。
 
 ### <a name="test-the-user-flow"></a>測試使用者流程
 

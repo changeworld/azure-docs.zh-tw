@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: 5c12b7d0bf9bed551e54ccb2e54a4674a8323a9c
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 28c3e4ade2c78a1a77ef7263463803e40727ba8f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930912"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315313"
 ---
 # <a name="azure-load-balancer-algorithm"></a>Azure Load Balancer 演算法
 
@@ -57,6 +57,7 @@ ms.locfileid: "91930912"
 
 ## <a name="next-steps"></a>後續步驟
 
+- 了解構成 Azure Load Balancer 的[元件](components.md)。
 - 請參閱[建立公用 Standard Load Balancer](quickstart-load-balancer-standard-public-portal.md)，以開始使用 Load Balancer：先建立 Load Balancer，再建立安裝好自訂 IIS 擴充功能的 VM，並對 VM 之間的 Web 應用程式進行負載平衡。
 - 深入了解 [Azure Load Balancer 輸出連線](load-balancer-outbound-connections.md)。
 - 深入了解 [Azure Load Balancer](load-balancer-overview.md)。

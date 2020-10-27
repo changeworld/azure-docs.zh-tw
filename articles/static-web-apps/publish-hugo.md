@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: ff408f114784fa3f0b8fab49521b5ec7ec2be102
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f511a898b3b2964f954ba150b05f02486456dcf
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797712"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171489"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>教學課程：將 Hugo 網站發佈至 Azure 靜態 Web Apps 預覽版
 
@@ -119,7 +119,7 @@ ms.locfileid: "88797712"
 
 1. 按一下 [以 GitHub 登入] 按鈕。
 
-1. 選取您的存放庫建立所在的**組織**。
+1. 選取您的存放庫建立所在的 **組織** 。
 
 1. 選取 **hugo-static-app** 作為 [存放庫]。
 
@@ -150,6 +150,37 @@ ms.locfileid: "88797712"
 1. 在 Azure 入口網站中，移至新建立的 Azure 靜態 Web Apps 資源的 [概觀] 視窗，然後按一下 [URL] 連結以開啟已部署的應用程式。
 
    :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="在入口網站中建立 Azure 靜態 Web Apps 資源":::
+
+#### <a name="custom-hugo-version"></a>自訂 Hugo 版本
+
+當您產生靜態 Web 應用程式時，[工作流程檔案](./github-actions-workflow.md)會隨之產生，其中包含應用程式的發佈組態設定。 您可以在 `env` 區段中提供 `HUGO_VERSION` 的值，以指定工作流程檔案中的特定 Hugo 版本。 下列範例組態示範如何將 Hugo 設為特定版本。
+
+```yaml
+jobs:
+  build_and_deploy_job:
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    runs-on: ubuntu-latest
+    name: Build and Deploy Job
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Build And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          action: "upload"
+          ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
+          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
+          app_location: "/" # App source code path
+          api_location: "api" # Api source code path - optional
+          app_artifact_location: "public" # Built app content directory - optional
+          ###### End of Repository/Build Configurations ######
+        env:
+          HUGO_VERSION: 0.58.0
+```
 
 ## <a name="clean-up-resources"></a>清除資源
 

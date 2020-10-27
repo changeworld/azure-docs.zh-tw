@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 8e7ad721eba103679f55886053e8ba9e888573c0
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 19ce74046dd86885a01ad5e8dcc4bfda950dd884
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057479"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201338"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>教學課程：使用 Azure Digital Twins API 撰寫程式碼
 
@@ -31,7 +31,7 @@ ms.locfileid: "92057479"
 
 開始前的準備：
 * 任何程式碼編輯器
-* 開發電腦上的 **.NET Core 3.1**。 您可以從[下載 .NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (英文) 下載此適用於多個平台的 .NET Core SDK 版本。
+* 開發電腦上的 **.NET Core 3.1** 。 您可以從[下載 .NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (英文) 下載此適用於多個平台的 .NET Core SDK 版本。
 
 [!INCLUDE [Azure Digital Twins tutorials: instance prereq](../../includes/digital-twins-tutorial-prereq-instance.md)]
 
@@ -39,7 +39,7 @@ ms.locfileid: "92057479"
 
 準備好使用您的 Azure Digital Twins 執行個體之後，請開始設定用戶端應用程式專案。 
 
-在您的電腦上開啟命令提示字元或其他主控台視窗，建立儲存本教學課程工作的空白專案目錄。 將目錄命名為任何您想要的名稱 (例如 *DigitalTwinsCodeTutorial*)。
+在您的電腦上開啟命令提示字元或其他主控台視窗，建立儲存本教學課程工作的空白專案目錄。 將目錄命名為任何您想要的名稱 (例如 *DigitalTwinsCodeTutorial* )。
 
 導覽到新目錄。
 
@@ -104,40 +104,21 @@ using Azure.Identity;
 
 應用程式必須執行的第一項工作，就是驗證 Azure Digital Twins 服務。 接著，您就可以建立服務用戶端類別以存取 SDK 函式。
 
-您必須有三段資訊才能驗證︰
-* 訂用帳戶的「目錄 (租用戶) 識別碼」
-* 稍早設定 Azure Digital Twins 執行個體時所建立的「應用程式 (用戶端) 識別碼」
-* Azure Digital Twins 執行個體的 *hostName*
+為了進行驗證，您需要 Azure Digital Twins 執行個體的 *hostName* 。
 
->[!TIP]
-> 如果不知道自己的「目錄 (租用戶) 識別碼」，您可以在 [Azure Cloud Shell](https://shell.azure.com) 中執行下列命令以取得：
-> 
-> ```azurecli
-> az account show --query tenantId
-> ```
-
-在 *Program.cs* 中，將下列程式碼貼在 `Main` 方法中 "Hello, World!" 列印行下方。 將 `adtInstanceUrl` 值設定為您 Azure Digital Twins 執行個體的「主機名稱」、將 `clientId` 設為您的「應用程式識別碼」，然後將 `tenantId` 設成您的「目錄識別碼」。
+在 *Program.cs* 中，將下列程式碼貼在 `Main` 方法中 "Hello, World!" 列印行下方。 將 `adtInstanceUrl` 的值設定為您的 Azure Digital Twins 執行個體 *hostName* 。
 
 ```csharp
-string clientId = "<your-application-ID>";
-string tenantId = "<your-directory-ID>";
-string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
-var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
+var credential = new DefaultAzureCredential();
+DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
 Console.WriteLine($"Service client created – ready to go");
 ```
 
 儲存檔案。 
 
-請注意，此範例會使用互動式瀏覽器認證：
-```csharp
-var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-```
-
-這種類型的認證會開啟瀏覽器視窗，要求您提供 Azure 認證。 
-
 >[!NOTE]
-> 如需其他認證類型的相關資訊，請參閱 [Microsoft 身分識別平台驗證程式庫](../active-directory/develop/reference-v2-libraries.md)的文件。
+> 這個範例是使用 `DefaultAzureCredential` 進行驗證。 如需其他認證類型的相關資訊，請參閱 [Microsoft 身分識別平台驗證程式庫](../active-directory/develop/reference-v2-libraries.md)的文件，或有關[驗證用戶端應用程式](how-to-authenticate-client.md)的 Azure Digital Twins 文章。
 
 在命令視窗中，使用此命令執行程式碼： 
 
@@ -151,11 +132,11 @@ dotnet run
 
 ### <a name="upload-a-model"></a>上傳模型
 
-Azure Digital Twins 沒有內建的網域詞彙。 您環境中可以在 Azure Digital Twins 表示的元素類型，是由您使用**模型**定義。 [模型](concepts-models.md)類似物件導向程式設計語言中的類別，為[數位分身](concepts-twins-graph.md)提供日後可遵循並具現化的使用者定義範本。 以類似 JSON，稱為**數位分身定義語言 (DTDL)** 的語言所撰寫。
+Azure Digital Twins 沒有內建的網域詞彙。 您環境中可以在 Azure Digital Twins 表示的元素類型，是由您使用 **模型** 定義。 [模型](concepts-models.md)類似物件導向程式設計語言中的類別，為[數位分身](concepts-twins-graph.md)提供日後可遵循並具現化的使用者定義範本。 以類似 JSON，稱為 **數位分身定義語言 (DTDL)** 的語言所撰寫。
 
 建立 Azure Digital Twins 解決方案的第一個步驟，是在 DTDL 檔案中至少定義一個模型。
 
-在您建立專案的目錄中，建立新的 *.json* 檔案，名為 *SampleModel.json*。 貼入下列檔案主體： 
+在您建立專案的目錄中，建立新的 *.json* 檔案，名為 *SampleModel.json* 。 貼入下列檔案主體： 
 
 ```json
 {
@@ -283,7 +264,7 @@ Type name: : dtmi:com:contoso:SampleModel;1
 
 ### <a name="create-digital-twins"></a>建立數位分身
 
-將模型上傳至 Azure Digital Twins 之後，您就可以使用此模型定義來建立**數位分身**。 [數位分身](concepts-twins-graph.md)是模型的執行個體，代表商務環境中的實體，例如伺服陣列上的感應器、建築物中的房間，或汽車的燈。 本節會根據您之前上傳的模型，建立一些數位分身。
+將模型上傳至 Azure Digital Twins 之後，您就可以使用此模型定義來建立 **數位分身** 。 [數位分身](concepts-twins-graph.md)是模型的執行個體，代表商務環境中的實體，例如伺服陣列上的感應器、建築物中的房間，或汽車的燈。 本節會根據您之前上傳的模型，建立一些數位分身。
 
 在頂端新增新的 `using` 陳述式，因為您在 `System.Text.Json` 中需要內建的 .NET Json 序列化程式：
 
@@ -318,15 +299,22 @@ for(int i=0; i<3; i++) {
 
 ### <a name="create-relationships"></a>建立關聯性
 
-接下來，您可以建立已建立對應項之間的**關聯性**，將其連線到**對應項圖形**。 [對應項圖形](concepts-twins-graph.md)用來表示整個環境。
+接下來，您可以建立已建立對應項之間的 **關聯性** ，將其連線到 **對應項圖形** 。 [對應項圖形](concepts-twins-graph.md)用來表示整個環境。
 
-若要能夠建立關聯性，您將需要 `Azure.DigitalTwins.Core.Serialization` 命名空間。 您先前已使用此 `using` 陳述式將此新增至專案：
+為了協助建立關聯性，此程式碼範例會使用 `Azure.DigitalTwins.Core.Serialization` 命名空間。 您先前已使用此 `using` 陳述式將此新增至專案：
 
 ```csharp
 using Azure.DigitalTwins.Core.Serialization;
 ```
 
+>[!NOTE]
+>`Azure.DigitalTwins.Core.Serialization` 不一定要使用數位對應項和關聯性；這是選擇性命名空間，有助於將資料變成正確的格式。 其使用替代方案包括：
+>* 串連字串以形成 JSON 物件
+>* 使用 `System.Text.Json` 之類的 JSON 剖析器，以動態方式建立 JSON 物件
+>* 在 C# 中建立自訂類型的模型、將其具現化，並將其序列化為字串
+
 將新的靜態方法新增至 `Main` 方法下的 `Program` 類別：
+
 ```csharp
 public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
 {
@@ -348,7 +336,8 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 }
 ```
 
-然後，將下列程式碼新增至 `Main` 方法的結尾處，以呼叫 `CreateRelationship` 程式碼：
+接下來，將下列程式碼新增至 `Main` 方法的結尾處，以呼叫 `CreateRelationship` 方法及使用您剛才撰寫的程式碼：
+
 ```csharp
 // Connect the twins with relationships
 await CreateRelationship(client, "sampleTwin-0", "sampleTwin-1");
@@ -455,11 +444,10 @@ namespace minimal
         {
             Console.WriteLine("Hello World!");
             
-            string clientId = "<your-application-ID>";
-            string tenantId = "<your-directory-ID>";
-            string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
-            var credentials = new InteractiveBrowserCredential(tenantId, clientId);
-            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
+            string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>"; 
+            
+            var credential = new DefaultAzureCredential();
+            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
             Console.WriteLine($"Service client created – ready to go");
 
             Console.WriteLine();

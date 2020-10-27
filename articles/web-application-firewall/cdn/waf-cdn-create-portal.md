@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: tutorial
 ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: c5505b9437a4bd8dced6a090817b17d5e29374f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9579d0da3347bdd4ecc627662cee42f909cbfaf7
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327933"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132766"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站建立 Azure CDN 的 WAF 原則
 
@@ -22,7 +22,7 @@ ms.locfileid: "91327933"
 
 > [!div class="checklist"]
 > * 建立 WAF 原則
-> * 將其與 CDN 端點產生關聯。 您只能將 WAF 原則與 **Microsoft SKU 的 Azure CDN 標準**上所裝載的端點建立關聯。
+> * 將其與 CDN 端點產生關聯。 您只能將 WAF 原則與 **Microsoft SKU 的 Azure CDN 標準** 上所裝載的端點建立關聯。
 > * 設定 WAF 規則
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -43,7 +43,7 @@ ms.locfileid: "91327933"
     | 資源群組          |選取您的 Front Door 資源群組名稱。|
     | 原則名稱             |輸入 WAF 原則的唯一名稱。|
 
-   ![建立 WAF 原則](../media/waf-cdn-create-portal/basic.png)
+   :::image type="content" source="../media/waf-cdn-create-portal/basic.png" alt-text="[建立 WAF 原則] 頁面的螢幕擷取畫面，其中包含 [檢閱 + 建立] 按鈕和針對各種設定輸入的值。" border="false":::
 
 3. 在 [建立 WAF 原則]  頁面的 [關聯]  索引標籤中，選取 [新增 CDN 端點]  ，輸入下列設定，然後選取 [新增]  ：
 
@@ -64,25 +64,25 @@ ms.locfileid: "91327933"
 
 若要查看 WAF 的實際效果，您可以將模式設定從 [偵測]  變更為 [預防]  。 在 [預防]  模式中，會封鎖與預設規則集 (DRS) 中定義之規則相符的要求，並記錄在 WAF 記錄檔中。
 
- ![變更 WAF 原則模式](../media/waf-cdn-create-portal/policy.png)
+ :::image type="content" source="../media/waf-cdn-create-portal/policy.png" alt-text="[建立 WAF 原則] 頁面的螢幕擷取畫面，其中包含 [檢閱 + 建立] 按鈕和針對各種設定輸入的值。" border="false":::
 
 ### <a name="custom-rules"></a>自訂規則
 
-若要建立自訂規則，請選取 [自訂規則]  區段底下的 [新增自訂規則]  。 此時會開啟 [自訂規則設定] 頁面。 自訂規則分成兩種類型：**比對規則**和**速率限制**規則。
+若要建立自訂規則，請選取 [自訂規則]  區段底下的 [新增自訂規則]  。 此時會開啟 [自訂規則設定] 頁面。 自訂規則分成兩種類型： **比對規則** 和 **速率限制** 規則。
 
 下列螢幕擷取畫面顯示若查詢字串包含 **blockme** 值即封鎖要求的自訂比對規則。
 
-![新增自訂比對規則](../media/waf-cdn-create-portal/custommatch.png)
+:::image type="content" source="../media/waf-cdn-create-portal/custommatch.png" alt-text="[建立 WAF 原則] 頁面的螢幕擷取畫面，其中包含 [檢閱 + 建立] 按鈕和針對各種設定輸入的值。" border="false":::
 
 速率限制規則需要兩個額外的欄位：[速率限制持續時間]  和 [速率限制閾值 (要求數)]  ，如下列範例所示：
 
-![新增速率限制規則](../media/waf-cdn-create-portal/customrate.png)
+:::image type="content" source="../media/waf-cdn-create-portal/customrate.png" alt-text="[建立 WAF 原則] 頁面的螢幕擷取畫面，其中包含 [檢閱 + 建立] 按鈕和針對各種設定輸入的值。" border="false":::
 
 ### <a name="default-rule-set-drs"></a>預設規則集 (DRS)
 
 依預設會啟用 Azure 受控預設規則集。 若要停用規則群組內的個別規則，請展開該規則群組中的規則、選取規則編號前面的核取方塊，然後選取上方索引標籤上的 [停用]  。 若要變更規則集內個別規則的動作類型，請選取規則編號前面的核取方塊，然後選取上方的 [變更動作]  索引標籤。
 
- ![變更 WAF 規則集](../media/waf-cdn-create-portal/managed2.png)
+ :::image type="content" source="../media/waf-cdn-create-portal/managed2.png" alt-text="[建立 WAF 原則] 頁面的螢幕擷取畫面，其中包含 [檢閱 + 建立] 按鈕和針對各種設定輸入的值。" border="false":::
 
 ## <a name="clean-up-resources"></a>清除資源
 

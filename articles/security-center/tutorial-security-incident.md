@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2020
 ms.author: memildin
-ms.openlocfilehash: a04f94f5ebc7c1fdaf7b95e71dc8549e19863b39
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 02b0ee4d572290436cc45bab73921ae1298bc72f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614126"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92358993"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>教學課程：分級、調查及回應安全性警示
-資訊安全中心會使用進階的分析和威脅情報，持續分析混合式雲端工作負載，提醒您發生惡意活動。 您也可以將警示從其他的安全性產品和服務整合到資訊安全中心，並以您自己的指標或情報來源作為基礎建立自訂警示。 一旦有警示產生，您便需要迅速採取行動來進行調查並加以修復。 
+資訊安全中心會使用進階分析和威脅情報，持續分析混合式雲端工作負載，提醒您有關您的雲端資源中的潛在惡意活動。 您也可以將來自其他安全性產品和服務的警示整合到資訊安全中心。 一旦提出警示，您便需要迅速採取行動來調查和補救潛在的安全性問題。 
 
 在本教學課程中，您將學會如何：
 
@@ -82,7 +82,7 @@ ms.locfileid: "91614126"
 
     :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="安全性警示清單頁面" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
 
-1.  請參閱**降低威脅**一節，以取得減輕問題所需的手動調查步驟。
+1.  請參閱 **降低威脅** 一節，以取得減輕問題所需的手動調查步驟。
 1.  若要強化您的資源並防止未來遭受這種攻擊，請在 [防止未來的攻擊] 區段中補救安全性建議。
 1.  若要使用自動化的回應步驟來觸發邏輯應用程式，請使用 [觸發程式自動化回應] 區段。
 1.  如果偵測到的活動「不是」惡意的，您可以使用 [隱藏類似的警示] 區段，來隱藏此類型的未來警示。
@@ -93,8 +93,8 @@ ms.locfileid: "91614126"
 
     這會從主要警示清單中移除警示。 您可以使用警示清單頁面中的篩選條件，檢視 [已關閉] 狀態的所有警示。
 
-1.  選擇性地將警示的意見反應提供給 Microsoft：
-    1. 將警示標示為 [實用] 或 [不實用] 並且提供
+1.  我們鼓勵您將有關警示的意見反應提供給 Microsoft：
+    1. 將警示標示為 [實用] 或 [不實用]。
     1. 選取原因並新增註解。
 
         :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="安全性警示清單頁面":::

@@ -3,16 +3,16 @@ title: 何謂 Microsoft 商業市集？
 description: 概述 Microsoft 合作夥伴若在 Microsoft 商業市集上列出解決方案，有何好處和選項。
 author: mingshen-ms
 ms.author: mingshen
-ms.reviewer: dannyevers
+ms.reviewer: dsindona
 ms.service: marketplace
 ms.topic: overview
-ms.date: 10/01/2020
-ms.openlocfilehash: 91ae1ce8cb61a0bbc4907c21f0e5e6b869cedb85
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/15/2020
+ms.openlocfilehash: 0b0f290a5f560fa8f6db109422c8790ecef9698e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91654254"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107040"
 ---
 # <a name="what-is-the-microsoft-commercial-marketplace"></a>何謂 Microsoft 商業市集？
 
@@ -26,21 +26,41 @@ Microsoft 商業市集擁有兩家線上商店：[Microsoft AppSource](https://a
 
 當您在合作夥伴中心建立商業市集供應項目時，可能會根據您選取的供應項目類型、類別和其他選項，在其中一家或兩家線上商店中列出此供應項目。 在極少數的情況下，此供應項目會與這兩家線上商店的使用者有關，這時其可以同時出現在兩者中。 若要深入了解，請參閱[選取線上商店](determine-your-listing-type.md#selecting-an-online-store)以及 [Microsoft AppSource 和 Azure Marketplace 的購買者指南](https://aka.ms/MarketplaceBuyerGuide)。
 
-**Microsoft AppSource** 適用於商務解決方案 (例如軟體即服務 (SaaS) 應用程式)，也適用於直接擴充至 Dynamics 365、Microsoft 365 和 Microsoft Power Platform 的應用程式。 AppSource 諮詢服務是專業服務供應項目，協助客戶開始使用或加速使用 Dynamics 365 和 Power BI。
+### <a name="microsoft-appsource"></a>Microsoft AppSource
+
+[Microsoft AppSource](https://appsource.microsoft.com/) 適用於商務解決方案 (例如軟體即服務 (SaaS) 應用程式)，也適用於直接擴充至 Dynamics 365、Microsoft 365 和 Microsoft Power Platform 的應用程式。 AppSource 諮詢服務是專業服務供應項目，協助客戶開始使用或加速使用 Dynamics 365 和 Power BI。
 
 以下是 AppSource 中供應項目清單頁面的範例：
 
 :::image type="content" source="media/overview/example-appsource.png" alt-text="說明 Microsoft AppSource 中的供應項目清單頁面。":::
 
-**Azure Marketplace** 適用於建置 Azure 上或針對 Azure 建置的解決方案，適用對象為 IT 專業人員和開發人員。 這包括諮詢服務和受管理的服務清單。 Azure Marketplace 諮詢服務是專業服務供應項目，可協助客戶開始使用或加速使用 Azure。
+####  <a name="appsource-in-product-experience"></a>AppSource 產品內體驗
+
+客戶也可以透過 Microsoft 365、Dynamics 365、Power Platform 和 Azure 來存取您的 AppSource 供應項目。 下列範例顯示如何從 Power BI [檔案] 功能表存取 AppSource 增益集。
+
+:::image type="content" source="media/overview/power-bi.png" alt-text="說明 Microsoft AppSource 中的供應項目清單頁面。"::: 
+
+此選項會開啟一個視窗，讓客戶可以依名稱或類別搜尋 Power BI 增益集。 
+
+:::image type="content" source="media/overview/power-bi-apps.png" alt-text="說明 Microsoft AppSource 中的供應項目清單頁面。"::: 
+
+### <a name="azure-marketplace"></a>Azure Marketplace
+
+[Azure Marketplace](https://azuremarketplace.microsoft.com/) 適用於建置 Azure 上或針對 Azure 建置的解決方案，適用對象為 IT 專業人員和開發人員。 這包括諮詢服務和受管理的服務清單。 Azure Marketplace 諮詢服務是專業服務供應項目，可協助客戶開始使用或加速使用 Azure。
 
 以下是 Azure Marketplace 中供應項目清單頁面的範例：
 
 :::image type="content" source="media/overview/example-marketplace.png" alt-text="說明 Microsoft AppSource 中的供應項目清單頁面。"::: 
 
-由於 Azure Marketplace 建置於 Azure 上，因此客戶可以透過 [Azure 入口網站](https://portal.azure.com/)中的 [建立資源] 選項來存取解決方案。
+#### <a name="azure-marketplace-in-the-azure-portal"></a>Azure 入口網站中的 Azure Marketplace
+
+Azure 客戶可以透過 [Azure 入口網站](https://portal.azure.com/)中的 [建立資源] 選項來探索和部署 Azure Marketplace 解決方案。
 
 :::image type="content" source="media/overview/create-resource.png" alt-text="說明 Microsoft AppSource 中的供應項目清單頁面。"::: 
+
+此選項會在 Azure 入口網站內開啟 Azure Marketplace，讓客戶可以依名稱或類別搜尋解決方案。
+
+:::image type="content" source="media/overview/search-portal.png" alt-text="說明 Microsoft AppSource 中的供應項目清單頁面。"::: 
 
 ## <a name="benefits-of-selling-with-microsoft"></a>透過 Microsoft 銷售的優點
 

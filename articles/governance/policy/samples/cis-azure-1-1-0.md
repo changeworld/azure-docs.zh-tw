@@ -1,35 +1,35 @@
 ---
 title: CIS Microsoft Azure 基礎基準測試的法規合規性詳細資料
 description: CIS Microsoft Azure 基礎基準測試法規合規性內建方案的詳細資料。 每個控制項都會對應至一或多個可協助評量的 Azure 原則定義。
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 5da46631d0b6cfcd142ab32172de306115a080bd
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 06b74daff584c9df35d4c762c3115b95e4ed3179
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932153"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320598"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-regulatory-compliance-built-in-initiative"></a>CIS Microsoft Azure 基礎基準測試法規合規性內建方案的詳細資料
 
-下列文章詳細說明 Azure 原則法規合規性內建方案定義如何對應至 對應至 CIS Microsoft Azure 基礎基準測試中的**合規性網域**和**控制項**。
-如需關於此合規性標準的詳細資訊，請參閱 [CIS Microsoft Azure基礎基準測試](https://www.cisecurity.org/benchmark/azure/)。 若要了解_擁有權_，請參閱 [Azure 原則原則定義](../concepts/definition-structure.md#type)和[雲端中共同承擔的責任](../../../security/fundamentals/shared-responsibility.md)。
+下列文章詳細說明 Azure 原則法規合規性內建方案定義如何對應至 對應至 CIS Microsoft Azure 基礎基準測試中的 **合規性網域** 和 **控制項** 。
+如需關於此合規性標準的詳細資訊，請參閱 [CIS Microsoft Azure基礎基準測試](https://www.cisecurity.org/benchmark/azure/)。 若要了解 _擁有權_ ，請參閱 [Azure 原則原則定義](../concepts/definition-structure.md#type)和 [雲端中共同承擔的責任](../../../security/fundamentals/shared-responsibility.md)。
 
-以下是 **CIS Microsoft Azure 基礎基準測試**控制項的對應。 使用右側的導覽區可直接跳到特定的**合規性網域**。 許多控制措施都是以 [Azure 原則](../overview.md)方案定義實作的。 若要檢閱完整方案定義，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。
+以下是 **CIS Microsoft Azure 基礎基準測試** 控制項的對應。 使用右側的導覽區可直接跳到特定的 **合規性網域** 。 許多控制措施都是以 [Azure 原則](../overview.md)方案定義實作的。 若要檢閱完整方案定義，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。
 然後，尋找並選取 **CIS Microsoft Azure 基礎基準 1.1.0** 法規合規性內建方案的定義。
 
 此內建方案會部署為 [CIS Microsoft Azure 基礎基準測試藍圖範例](../../blueprints/samples/cis-azure-1-1-0.md)的一部分。
 
 > [!IMPORTANT]
 > 下列每個控制措施都與一或多個 [Azure 原則](../overview.md)定義相關聯。
-> 這些原則可協助您使用工具[存取合規性](../how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是一對一或完整對應。 因此，Azure 原則中的**符合規範**只是指原則定義本身，這不保證您完全符合所有控制措施需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性標準的合規性領域、控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json) \(英文\)。
+> 這些原則可協助您使用工具[存取合規性](../how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是一對一或完整對應。 因此，Azure 原則中的 **符合規範** 只是指原則定義本身，這不保證您完全符合所有控制措施需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性標準的合規性領域、控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json) \(英文\)。
 
 ## <a name="identity-and-access-management"></a>身分識別和存取管理
 
 ### <a name="ensure-that-multi-factor-authentication-is-enabled-for-all-privileged-users"></a>確定已為所有具特殊權限的使用者啟用多重要素驗證
 
-**識別碼**：CIS Azure 1.1 **擁有權**：客戶
+**識別碼** ：CIS Azure 1.1 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -38,7 +38,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-multi-factor-authentication-is-enabled-for-all-non-privileged-users"></a>確定已為所有不具特殊權限的使用者啟用多重要素驗證
 
-**識別碼**：CIS Azure 1.2 **擁有權**：客戶
+**識別碼** ：CIS Azure 1.2 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -46,7 +46,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-there-are-no-guest-users"></a>確定沒有任何來賓使用者
 
-**識別碼**：CIS Azure 1.3 **擁有權**：客戶
+**識別碼** ：CIS Azure 1.3 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -56,7 +56,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-no-custom-subscription-owner-roles-are-created"></a>確定不會建立自訂訂用帳戶擁有者角色
 
-**識別碼**：CIS Azure 1.23 **擁有權**：客戶
+**識別碼** ：CIS Azure 1.23 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -66,7 +66,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-automatic-provisioning-of-monitoring-agent-is-set-to-on"></a>確定 [監視代理程式的自動化佈建] 會設定為 [開啟]
 
-**識別碼**：CIS Azure 2.2 **擁有權**：客戶
+**識別碼** ：CIS Azure 2.2 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -74,7 +74,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-asc-default-policy-setting-monitor-system-updates-is-not-disabled"></a>確定 ASC 預設原則設定 [監視系統更新] 不是 [已停用]
 
-**識別碼**：CIS Azure 2.3 **擁有權**：客戶
+**識別碼** ：CIS Azure 2.3 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -82,7 +82,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-asc-default-policy-setting-monitor-os-vulnerabilities-is-not-disabled"></a>確定 ASC 預設原則設定 [監視 OS 弱點] 不是 [已停用]
 
-**識別碼**：CIS Azure 2.4 **擁有權**：客戶
+**識別碼** ：CIS Azure 2.4 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -90,7 +90,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-asc-default-policy-setting-monitor-endpoint-protection-is-not-disabled"></a>確定 ASC 預設原則設定 [監視端點保護] 不是 [已停用]
 
-**識別碼**：CIS Azure 2.5 **擁有權**：客戶
+**識別碼** ：CIS Azure 2.5 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -98,7 +98,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-asc-default-policy-setting-monitor-disk-encryption-is-not-disabled"></a>確定 ASC 預設原則設定 [監視磁碟加密] 不是 [已停用]
 
-**識別碼**：CIS Azure 2.6 **擁有權**：客戶
+**識別碼** ：CIS Azure 2.6 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -106,7 +106,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-asc-default-policy-setting-monitor-network-security-groups-is-not-disabled"></a>確定 ASC 預設原則設定 [監視網路安全性群組] 不是 [已停用]
 
-**識別碼**：CIS Azure 2.7 **擁有權**：客戶
+**識別碼** ：CIS Azure 2.7 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -114,7 +114,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-asc-default-policy-setting-enable-next-generation-firewallngfw-monitoring-is-not-disabled"></a>確定 ASC 預設原則設定 [啟用新一代防火牆 (NGFW) 監視] 不是 [已停用]
 
-**識別碼**：CIS Azure 2.9 **擁有權**：客戶
+**識別碼** ：CIS Azure 2.9 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -123,7 +123,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-asc-default-policy-setting-monitor-vulnerability-assessment-is-not-disabled"></a>確定 ASC 預設原則設定 [監視弱點評估] 不是 [已停用]
 
-**識別碼**：CIS Azure 2.10 **擁有權**：客戶
+**識別碼** ：CIS Azure 2.10 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -131,7 +131,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-asc-default-policy-setting-monitor-jit-network-access-is-not-disabled"></a>確定 ASC 預設原則設定 [監視 JIT 網路存取] 不是 [已停用]
 
-**識別碼**：CIS Azure 2.12 **擁有權**：客戶
+**識別碼** ：CIS Azure 2.12 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -139,7 +139,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-asc-default-policy-setting-monitor-adaptive-application-whitelisting-is-not-disabled"></a>確定 ASC 預設原則設定 [監視自適性應用程式允許清單] 不是 [已停用]
 
-**識別碼**：CIS Azure 2.13 **擁有權**：客戶
+**識別碼** ：CIS Azure 2.13 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -147,7 +147,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-asc-default-policy-setting-monitor-sql-auditing-is-not-disabled"></a>確定 ASC 預設原則設定 [監視 SQL 稽核] 不是 [已停用]
 
-**識別碼**：CIS Azure 2.14 **擁有權**：客戶
+**識別碼** ：CIS Azure 2.14 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -155,7 +155,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-asc-default-policy-setting-monitor-sql-encryption-is-not-disabled"></a>確定 ASC 預設原則設定 [監視 SQL 加密] 不是 [已停用]
 
-**識別碼**：CIS Azure 2.15 **擁有權**：客戶
+**識別碼** ：CIS Azure 2.15 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -163,7 +163,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-security-contact-emails-is-set"></a>確定已設定 [安全性連絡人電子郵件]
 
-**識別碼**：CIS Azure 2.16 **擁有權**：客戶
+**識別碼** ：CIS Azure 2.16 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -171,7 +171,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-security-contact-phone-number-is-set"></a>確定已設定安全性連絡人的 [電話號碼]
 
-**識別碼**：CIS Azure 2.17 **擁有權**：客戶
+**識別碼** ：CIS Azure 2.17 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -179,7 +179,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-send-email-notification-for-high-severity-alerts-is-set-to-on"></a>確定 [在出現高嚴重性警示時傳送電子郵件通知] 會設定為 [開啟]
 
-**識別碼**：CIS Azure 2.18 **擁有權**：客戶
+**識別碼** ：CIS Azure 2.18 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -187,7 +187,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-send-email-also-to-subscription-owners-is-set-to-on"></a>確定 [同時將電子郵件傳送給訂用帳戶擁有者] 會設定為 [開啟]
 
-**識別碼**：CIS Azure 2.19 **擁有權**：客戶
+**識別碼** ：CIS Azure 2.19 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -197,7 +197,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-secure-transfer-required-is-set-to-enabled"></a>確定 [需要安全傳輸] 設定為 [已啟用]
 
-**識別碼**：CIS Azure 3.1 **擁有權**：客戶
+**識別碼** ：CIS Azure 3.1 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -205,7 +205,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-default-network-access-rule-for-storage-accounts-is-set-to-deny"></a>確定儲存體帳戶的預設網路存取規則設定為拒絕
 
-**識別碼**：CIS Azure 3.7 **擁有權**：客戶
+**識別碼** ：CIS Azure 3.7 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -213,7 +213,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-trusted-microsoft-services-is-enabled-for-storage-account-access"></a>確定已啟用 [信任的 Microsoft 服務] 來進行儲存體帳戶存取
 
-**識別碼**：CIS Azure 3.8 **擁有權**：客戶
+**識別碼** ：CIS Azure 3.8 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -223,7 +223,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-auditing-is-set-to-on"></a>確定 [稽核] 設定為 [開啟]
 
-**識別碼**：CIS Azure 4.1 **擁有權**：客戶
+**識別碼** ：CIS Azure 4.1 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -231,7 +231,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-auditactiongroups-in-auditing-policy-for-a-sql-server-is-set-properly"></a>確定已在 SQL 伺服器的 [稽核] 原則中正確設定了 'AuditActionGroups' 原則
 
-**識別碼**：CIS Azure 4.2 **擁有權**：客戶
+**識別碼** ：CIS Azure 4.2 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -239,7 +239,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-auditing-retention-is-greater-than-90-days"></a>確定 [稽核] 保留期「大於 90 天」
 
-**識別碼**：CIS Azure 4.3 **擁有權**：客戶
+**識別碼** ：CIS Azure 4.3 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -247,7 +247,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-advanced-data-security-on-a-sql-server-is-set-to-on"></a>確定 SQL 伺服器上的 [進階資料安全性] 設定為 [開啟]
 
-**識別碼**：CIS Azure 4.4 **擁有權**：客戶
+**識別碼** ：CIS Azure 4.4 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -256,7 +256,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-azure-active-directory-admin-is-configured"></a>確定已設定 Azure Active Directory 系統管理員
 
-**識別碼**：CIS Azure 4.8 **擁有權**：客戶
+**識別碼** ：CIS Azure 4.8 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -264,7 +264,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-data-encryption-is-set-to-on-on-a-sql-database"></a>確定 SQL Database 上的 [資料加密] 設定為 [開啟]
 
-**識別碼**：CIS Azure 4.9 **擁有權**：客戶
+**識別碼** ：CIS Azure 4.9 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -272,7 +272,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-sql-servers-tde-protector-is-encrypted-with-byok-use-your-own-key"></a>確定 SQL 伺服器的 TDE 保護裝置已使用 BYOK 加密 (使用您自己的金鑰)
 
-**識別碼**：CIS Azure 4.10 **擁有權**：客戶
+**識別碼** ：CIS Azure 4.10 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -281,7 +281,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-enforce-ssl-connection-is-set-to-enabled-for-mysql-database-server"></a>確定會為 MySQL 資料庫伺服器將 [強制執行 SSL 連線] 設定為 [已啟用]
 
-**識別碼**：CIS Azure 4.11 **擁有權**：客戶
+**識別碼** ：CIS Azure 4.11 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -289,7 +289,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-server-parameter-log_checkpoints-is-set-to-on-for-postgresql-database-server"></a>確定會為 PostgreSQL 資料庫伺服器將 [log_checkpoints] 伺服器參數設定為 [開啟]
 
-**識別碼**：CIS Azure 4.12 **擁有權**：客戶
+**識別碼** ：CIS Azure 4.12 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -297,7 +297,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>確定會為 PostgreSQL 資料庫伺服器將 [強制執行 SSL 連線] 設定為 [已啟用]
 
-**識別碼**：CIS Azure 4.13 **擁有權**：客戶
+**識別碼** ：CIS Azure 4.13 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -305,7 +305,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-server-parameter-log_connections-is-set-to-on-for-postgresql-database-server"></a>確定會為 PostgreSQL 資料庫伺服器將 [log_connections] 伺服器參數設定為 [開啟]
 
-**識別碼**：CIS Azure 4.14 **擁有權**：客戶
+**識別碼** ：CIS Azure 4.14 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -313,7 +313,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-server-parameter-log_disconnections-is-set-to-on-for-postgresql-database-server"></a>確定會為 PostgreSQL 資料庫伺服器將 [log_disconnections] 伺服器參數設定為 [開啟]
 
-**識別碼**：CIS Azure 4.15 **擁有權**：客戶
+**識別碼** ：CIS Azure 4.15 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -321,7 +321,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-server-parameter-connection_throttling-is-set-to-on-for-postgresql-database-server"></a>確定會為 PostgreSQL 資料庫伺服器將 [connection_throttling] 設定為 [開啟]
 
-**識別碼**：CIS Azure 4.17 **擁有權**：客戶
+**識別碼** ：CIS Azure 4.17 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -331,7 +331,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-a-log-profile-exists"></a>確定記錄設定檔存在
 
-**識別碼**：CIS Azure 5.1.1 **擁有權**：客戶
+**識別碼** ：CIS Azure 5.1.1 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -339,7 +339,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-activity-log-retention-is-set-365-days-or-greater"></a>確定 [活動記錄保留] 會設定為 365 天或更長天數
 
-**識別碼**：CIS Azure 5.1.2 **擁有權**：客戶
+**識別碼** ：CIS Azure 5.1.2 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -347,7 +347,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-audit-profile-captures-all-the-activities"></a>確定稽核設定檔會擷取所有活動
 
-**識別碼**：CIS Azure 5.1.3 **擁有權**：客戶
+**識別碼** ：CIS Azure 5.1.3 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -355,7 +355,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-the-log-profile-captures-activity-logs-for-all-regions-including-global"></a>確定記錄設定檔會擷取所有區域 (包括全球) 的活動記錄
 
-**識別碼**：CIS Azure 5.1.4 **擁有權**：客戶
+**識別碼** ：CIS Azure 5.1.4 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -363,7 +363,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-the-storage-account-containing-the-container-with-activity-logs-is-encrypted-with-byok-use-your-own-key"></a>確保內含容器且有活動記錄的儲存體帳戶會以 BYOK (使用您自己的金鑰) 加密
 
-**識別碼**：CIS Azure 5.1.6 **擁有權**：客戶
+**識別碼** ：CIS Azure 5.1.6 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -371,7 +371,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-logging-for-azure-keyvault-is-enabled"></a>確定 Azure KeyVault 的記錄是 [已啟用]
 
-**識別碼**：CIS Azure 5.1.7 **擁有權**：客戶
+**識別碼** ：CIS Azure 5.1.7 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -379,7 +379,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-activity-log-alert-exists-for-create-policy-assignment"></a>確定建立原則指派的活動記錄警示是否存在
 
-**識別碼**：CIS Azure 5.2.1 **擁有權**：客戶
+**識別碼** ：CIS Azure 5.2.1 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -387,7 +387,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-activity-log-alert-exists-for-create-or-update-network-security-group"></a>確定建立或更新網路安全性群組的活動記錄警示是否存在
 
-**識別碼**：CIS Azure 5.2.2 **擁有權**：客戶
+**識別碼** ：CIS Azure 5.2.2 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -395,7 +395,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-activity-log-alert-exists-for-delete-network-security-group"></a>確定刪除網路安全性群組的活動記錄警示是否存在
 
-**識別碼**：CIS Azure 5.2.3 **擁有權**：客戶
+**識別碼** ：CIS Azure 5.2.3 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -403,7 +403,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-activity-log-alert-exists-for-create-or-update-network-security-group-rule"></a>確定建立或更新網路安全性群組規則的活動記錄警示是否存在
 
-**識別碼**：CIS Azure 5.2.4 **擁有權**：客戶
+**識別碼** ：CIS Azure 5.2.4 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -411,7 +411,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-activity-log-alert-exists-for-the-delete-network-security-group-rule"></a>確定刪除網路安全性群組規則的活動記錄警示是否存在
 
-**識別碼**：CIS Azure 5.2.5 **擁有權**：客戶
+**識別碼** ：CIS Azure 5.2.5 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -419,7 +419,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-activity-log-alert-exists-for-create-or-update-security-solution"></a>確定建立或更新安全性解決方案的活動記錄警示是否存在
 
-**識別碼**：CIS Azure 5.2.6 **擁有權**：客戶
+**識別碼** ：CIS Azure 5.2.6 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -427,7 +427,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-activity-log-alert-exists-for-delete-security-solution"></a>確定刪除安全性解決方案的活動記錄警示是否存在
 
-**識別碼**：CIS Azure 5.2.7 **擁有權**：客戶
+**識別碼** ：CIS Azure 5.2.7 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -435,7 +435,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-activity-log-alert-exists-for-create-or-update-or-delete-sql-server-firewall-rule"></a>確定建立、更新或刪除 SQL Server 防火牆規則的活動記錄警示是否存在
 
-**識別碼**：CIS Azure 5.2.8 **擁有權**：客戶
+**識別碼** ：CIS Azure 5.2.8 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -443,7 +443,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-activity-log-alert-exists-for-update-security-policy"></a>確定更新安全性原則的活動記錄警示是否存在
 
-**識別碼**：CIS Azure 5.2.9 **擁有權**：客戶
+**識別碼** ：CIS Azure 5.2.9 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -453,7 +453,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-rdp-access-is-restricted-from-the-internet"></a>確定已限制從網際網路進行 RDP 存取
 
-**識別碼**：CIS Azure 6.1 **擁有權**：客戶
+**識別碼** ：CIS Azure 6.1 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -461,7 +461,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-ssh-access-is-restricted-from-the-internet"></a>確定已限制從網際網路進行 SSH 存取
 
-**識別碼**：CIS Azure 6.2 **擁有權**：客戶
+**識別碼** ：CIS Azure 6.2 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -469,7 +469,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-network-watcher-is-enabled"></a>確定網路監看員為 [已啟用]
 
-**識別碼**：CIS Azure 6.5 **擁有權**：客戶
+**識別碼** ：CIS Azure 6.5 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -479,7 +479,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-os-disk-are-encrypted"></a>確定 [OS 磁碟] 已加密
 
-**識別碼**：CIS Azure 7.1 **擁有權**：客戶
+**識別碼** ：CIS Azure 7.1 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -487,7 +487,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-data-disks-are-encrypted"></a>確定 [資料磁碟] 已加密
 
-**識別碼**：CIS Azure 7.2 **擁有權**：客戶
+**識別碼** ：CIS Azure 7.2 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -495,7 +495,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-unattached-disks-are-encrypted"></a>確定 [未連結的磁碟] 已加密
 
-**識別碼**：CIS Azure 7.3 **擁有權**：客戶
+**識別碼** ：CIS Azure 7.3 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -503,7 +503,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-only-approved-extensions-are-installed"></a>確定只安裝核准的擴充功能
 
-**識別碼**：CIS Azure 7.4 **擁有權**：客戶
+**識別碼** ：CIS Azure 7.4 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -511,7 +511,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-the-latest-os-patches-for-all-virtual-machines-are-applied"></a>確定已為所有虛擬機器套用最新 OS 修補程式
 
-**識別碼**：CIS Azure 7.5 **擁有權**：客戶
+**識別碼** ：CIS Azure 7.5 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -519,7 +519,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-the-endpoint-protection-for-all-virtual-machines-is-installed"></a>確定已為所有虛擬機器安裝端點
 
-**識別碼**：CIS Azure 7.6 **擁有權**：客戶
+**識別碼** ：CIS Azure 7.6 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -529,7 +529,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-the-key-vault-is-recoverable"></a>確定金鑰保存庫可復原
 
-**識別碼**：CIS Azure 8.4 **擁有權**：客戶
+**識別碼** ：CIS Azure 8.4 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -537,7 +537,7 @@ ms.locfileid: "91932153"
 
 ### <a name="enable-role-based-access-control-rbac-within-azure-kubernetes-services"></a>在 Azure Kubernetes Services 中啟用角色型存取控制 (RBAC)
 
-**識別碼**：CIS Azure 8.5 **擁有權**：客戶
+**識別碼** ：CIS Azure 8.5 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -547,7 +547,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-app-service-authentication-is-set-on-azure-app-service"></a>確定已在 Azure App Service 上設定 App Service 驗證
 
-**識別碼**：CIS Azure 9.1 **擁有權**：客戶
+**識別碼** ：CIS Azure 9.1 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -557,7 +557,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-web-app-redirects-all-http-traffic-to-https-in-azure-app-service"></a>確定 Web 應用程式在 Azure App Service 中會將所有 HTTP 流量重新導向至 HTTPS
 
-**識別碼**：CIS Azure 9.2 **擁有權**：客戶
+**識別碼** ：CIS Azure 9.2 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -565,7 +565,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-web-app-is-using-the-latest-version-of-tls-encryption"></a>確定 Web 應用程式使用最新版本的 TLS 加密
 
-**識別碼**：CIS Azure 9.3 **擁有權**：客戶
+**識別碼** ：CIS Azure 9.3 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -575,7 +575,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-the-web-app-has-client-certificates-incoming-client-certificates-set-to-on"></a>確定 Web 應用程式已將 [用戶端憑證 (傳入用戶端憑證)] 設定為 [開啟]
 
-**識別碼**：CIS Azure 9.4 **擁有權**：客戶
+**識別碼** ：CIS Azure 9.4 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -585,7 +585,7 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-register-with-azure-active-directory-is-enabled-on-app-service"></a>確定已在 App Service 上啟用 [向 Azure Active Directory 註冊]
 
-**識別碼**：CIS Azure 9.5 **擁有權**：客戶
+**識別碼** ：CIS Azure 9.5 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -595,42 +595,42 @@ ms.locfileid: "91932153"
 
 ### <a name="ensure-that-php-version-is-the-latest-if-used-to-run-the-web-app"></a>確定 'PHP' 在用來執行 Web 應用程式時，版本是最新的
 
-**識別碼**：CIS Azure 9.7 **擁有權**：客戶
+**識別碼** ：CIS Azure 9.7 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[確定 'PHP' 在作為 API 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc1795e-d44a-4d48-9b3b-6fff0fd5f9ba) |PHP 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 API 應用程式的最新 PHP 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_PHP_Latest.json) |
-|[確定 'PHP' 在作為 Web 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7261b898-8a84-4db8-9e04-18527132abb3) |PHP 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 Web 應用程式的最新 PHP 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_PHP_Latest.json) |
+|[確定 'PHP' 在作為 API 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc1795e-d44a-4d48-9b3b-6fff0fd5f9ba) |PHP 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 API 應用程式的最新 PHP 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 此原則目前僅適用於 Linux Web 應用程式。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_PHP_Latest.json) |
+|[確定 'PHP' 在作為 Web 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7261b898-8a84-4db8-9e04-18527132abb3) |PHP 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 Web 應用程式的最新 PHP 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 此原則目前僅適用於 Linux Web 應用程式。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_PHP_Latest.json) |
 
 ### <a name="ensure-that-python-version-is-the-latest-if-used-to-run-the-web-app"></a>確定 'Python' 在用來執行 Web 應用程式時，版本是最新的
 
-**識別碼**：CIS Azure 9.8 **擁有權**：客戶
+**識別碼** ：CIS Azure 9.8 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[確定 'Python' 在作為 API 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F74c3584d-afae-46f7-a20a-6f8adba71a16) |Python 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 API 應用程式的最新 Python 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_python_Latest.json) |
-|[確定 'Python' 在作為函式應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7238174a-fd10-4ef0-817e-fc820a951d73) |Python 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於函式應用程式的最新 Python 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_python_Latest.json) |
-|[確定 'Python' 在作為 Web 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7008174a-fd10-4ef0-817e-fc820a951d73) |Python 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 Web 應用程式的最新 Python 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_python_Latest.json) |
+|[確定 'Python' 在作為 API 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F74c3584d-afae-46f7-a20a-6f8adba71a16) |Python 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 API 應用程式的最新 Python 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 此原則目前僅適用於 Linux Web 應用程式。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_python_Latest.json) |
+|[確定 'Python' 在作為函式應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7238174a-fd10-4ef0-817e-fc820a951d73) |Python 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於函式應用程式的最新 Python 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 此原則目前僅適用於 Linux Web 應用程式。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_python_Latest.json) |
+|[確定 'Python' 在作為 Web 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7008174a-fd10-4ef0-817e-fc820a951d73) |Python 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 Web 應用程式的最新 Python 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 此原則目前僅適用於 Linux Web 應用程式。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_python_Latest.json) |
 
 ### <a name="ensure-that-java-version-is-the-latest-if-used-to-run-the-web-app"></a>確定 'Java' 在用來執行 Web 應用程式時，版本是最新的
 
-**識別碼**：CIS Azure 9.9 **擁有權**：客戶
+**識別碼** ：CIS Azure 9.9 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[確定 'Java' 在作為 API 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F88999f4c-376a-45c8-bcb3-4058f713cf39) |Java 會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 API 應用程式的最新 Python 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_java_Latest.json) |
-|[確定 'Java' 在作為函式應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc) |Java 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於函式應用程式的最新 Java 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 |AuditIfNotExists, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_java_Latest.json) |
-|[確定 'Java' 在作為 Web 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F496223c3-ad65-4ecd-878a-bae78737e9ed) |Java 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 Web 應用程式的最新 Java 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_java_Latest.json) |
+|[確定 'Java' 在作為 API 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F88999f4c-376a-45c8-bcb3-4058f713cf39) |Java 會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 API 應用程式的最新 Python 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 此原則目前僅適用於 Linux Web 應用程式。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_java_Latest.json) |
+|[確定 'Java' 在作為函式應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc) |Java 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於函式應用程式的最新 Java 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 此原則目前僅適用於 Linux Web 應用程式。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_java_Latest.json) |
+|[確定 'Java' 在作為 Web 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F496223c3-ad65-4ecd-878a-bae78737e9ed) |Java 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 Web 應用程式的最新 Java 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 此原則目前僅適用於 Linux Web 應用程式。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_java_Latest.json) |
 
 ### <a name="ensure-that-http-version-is-the-latest-if-used-to-run-the-web-app"></a>確定 'HTTP' 在用來執行 Web 應用程式時，版本是最新的
 
-**識別碼**：CIS Azure 9.10 **擁有權**：客戶
+**識別碼** ：CIS Azure 9.10 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[確定 'HTTP' 在用來執行 API 應用程式時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F991310cd-e9f3-47bc-b7b6-f57b557d07db) |HTTP 會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 請使用適用於 Web 應用程式的最新 HTTP 版本，以利用較新版本的安全性修正 (如果有的話) 及 (或) 新功能。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_HTTP_Latest.json) |
-|[確定 'HTTP' 在用來執行函式應用程式時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe2c1c086-2d84-4019-bff3-c44ccd95113c) |HTTP 會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 請使用適用於 Web 應用程式的最新 HTTP 版本，以利用較新版本的安全性修正 (如果有的話) 及 (或) 新功能。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_HTTP_Latest.json) |
-|[確定 'HTTP' 在用來執行 Web 應用程式時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8c122334-9d20-4eb8-89ea-ac9a705b74ae) |HTTP 會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 請使用適用於 Web 應用程式的最新 HTTP 版本，以利用較新版本的安全性修正 (如果有的話) 及 (或) 新功能。 |AuditIfNotExists, Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_HTTP_Latest.json) |
+|[確定 'HTTP' 在用來執行 API 應用程式時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F991310cd-e9f3-47bc-b7b6-f57b557d07db) |HTTP 會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 請使用適用於 Web 應用程式的最新 HTTP 版本，以利用較新版本的安全性修正 (如果有的話) 及 (或) 新功能。 此原則目前僅適用於 Linux Web 應用程式。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_HTTP_Latest.json) |
+|[確定 'HTTP' 在用來執行函式應用程式時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe2c1c086-2d84-4019-bff3-c44ccd95113c) |HTTP 會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 請使用適用於 Web 應用程式的最新 HTTP 版本，以利用較新版本的安全性修正 (如果有的話) 及 (或) 新功能。 此原則目前僅適用於 Linux Web 應用程式。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_HTTP_Latest.json) |
+|[確定 'HTTP' 在用來執行 Web 應用程式時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8c122334-9d20-4eb8-89ea-ac9a705b74ae) |HTTP 會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 請使用適用於 Web 應用程式的最新 HTTP 版本，以利用較新版本的安全性修正 (如果有的話) 及 (或) 新功能。 此原則目前僅適用於 Linux Web 應用程式。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_HTTP_Latest.json) |
 
 > [!NOTE]
 > 特定 Azure 原則定義的可用性可能因 Azure Government 和其他國家雲端而異。

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/08/2020
-ms.openlocfilehash: f11498812c3923f75ca84e66cab9098e86cc192e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fad9584f663675e9bf534a56bb223094479f39c5
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84661006"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148029"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>將資料從 SQL Server 資料庫複製到 Azure Blob 儲存體
 
@@ -45,7 +45,7 @@ ms.locfileid: "84661006"
 ### <a name="azure-roles"></a>Azure 角色
 若要建立資料處理站執行個體，您用來登入 Azure 的使用者帳戶必須具備「參與者」或「擁有者」角色，或必須是 Azure 訂用帳戶的「管理員」。
 
-若要檢視您在訂用帳戶中擁有的權限，請前往 Azure 入口網站。 在右上角中，選取使用者名稱，然後選取 [權限]。 如果您有多個訂用帳戶的存取權，請選取適當的訂用帳戶。 如需如何將使用者新增至角色的範例指示，請參閱[使用 RBAC 和 Azure 入口網站來管理存取權](../role-based-access-control/role-assignments-portal.md)。
+若要檢視您在訂用帳戶中擁有的權限，請前往 Azure 入口網站。 在右上角中，選取使用者名稱，然後選取 [權限]。 如果您有多個訂用帳戶的存取權，請選取適當的訂用帳戶。 如需有關如何將使用者新增至角色的範例指示，請參閱[使用 Azure 入口網站來新增或移除 Azure 角色指派](../role-based-access-control/role-assignments-portal.md)。
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014、2016 和 2017
 在此教學課程中，您會使用 SQL Server 資料庫作為「來源」資料存放區。 您在此教學課程中於資料處理站中建立的管線會將資料從此 SQL Server 資料庫 (來源) 複製到 Blob 儲存體 (接收)。 然後在 SQL Server 資料庫中建立名為 **emp** 的資料表，並在資料表中插入幾個範例項目。
@@ -100,7 +100,7 @@ ms.locfileid: "84661006"
 
 1. 在 [容器] 視窗中，選取 [+ 容器] 以建立新的容器。
 
-1. 在 [新增容器] 視窗中的 [名稱] 下，輸入 **adftutorial**。 然後選取 [建立]。
+1. 在 [新增容器] 視窗中的 [名稱] 下，輸入 **adftutorial** 。 然後選取 [建立]。
 
 1. 在容器清單中選取您剛才建立的 [adftutorial]。
 
@@ -114,13 +114,13 @@ ms.locfileid: "84661006"
 
    ![在 [新增] 窗格中選取資料處理站](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-1. 在 [新增資料處理站] 頁面的 [名稱] 下，輸入 **ADFTutorialDataFactory**。
+1. 在 [新增資料處理站] 頁面的 [名稱] 下，輸入 **ADFTutorialDataFactory** 。
 
    資料處理站的名稱必須是「全域唯一」的名稱。 如果您在 [名稱] 欄位看到下列錯誤訊息，請變更資料處理站的名稱 (例如 yournameADFTutorialDataFactory)。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
 
    ![新增資料處理站名稱](./media/doc-common-process/name-not-available-error.png)
 
-1. 選取您要在其中建立資料處理站的 Azure **訂用帳戶**。
+1. 選取您要在其中建立資料處理站的 Azure **訂用帳戶** 。
 1. 針對 [資源群組]，採取下列其中一個步驟︰
 
    - 選取 [使用現有的] ，然後從下拉式清單選取現有的資源群組。
@@ -144,22 +144,22 @@ ms.locfileid: "84661006"
 
    ![現在就開始吧頁面](./media/doc-common-process/get-started-page.png)
 
-1. 在 [一般] 面板中的 [屬性] 下，針對 [名稱] 指定 **SQLServerToBlobPipeline**。 然後按一下右上角的 [屬性] 圖示來摺疊面板。
+1. 在 [一般] 面板中的 [屬性] 下，針對 [名稱] 指定 **SQLServerToBlobPipeline** 。 然後按一下右上角的 [屬性] 圖示來摺疊面板。
 
-1. 在 [活動] 工具箱中，展開 [移動和轉換]。 將 [複製] 活動拖放至管線設計介面。 將這個活動的名稱設定為 **CopySqlServerToAzureBlobActivity**。
+1. 在 [活動] 工具箱中，展開 [移動和轉換]。 將 [複製] 活動拖放至管線設計介面。 將這個活動的名稱設定為 **CopySqlServerToAzureBlobActivity** 。
 
 1. 在 [屬性] 視窗中，移至 [來源] 索引標籤，然後選取 [+ 新增]。
 
-1. 在 [新增資料集] 對話方塊中，搜尋 **SQL Server**。 選取 **SQL Server**，然後選取 [繼續]。
+1. 在 [新增資料集] 對話方塊中，搜尋 **SQL Server** 。 選取 **SQL Server** ，然後選取 [繼續]。
     ![新增 SqlServer 資料集](./media/tutorial-hybrid-copy-portal/create-sqlserver-dataset.png)
 
-1. 在 [設定屬性] 對話方塊中，於 [名稱] 底部輸入 **SqlServerDataset**。 在 [連結服務] 底下選取 [+ 新增]。 您會在此步驟中建立來源資料存放區 (SQL Server 資料庫) 的連線。
+1. 在 [設定屬性] 對話方塊中，於 [名稱] 底部輸入 **SqlServerDataset** 。 在 [連結服務] 底下選取 [+ 新增]。 您會在此步驟中建立來源資料存放區 (SQL Server 資料庫) 的連線。
 
 1. 在 [新增連結服務] 對話方塊中，新增 **SqlServerLinkedService** 作為 [名稱]。 在 [透過整合執行階段連線] 下，選取 [+ 新增]。  在本節中，您可以建立自我裝載整合執行階段，並使用 SQL Server 資料庫將它與內部部署電腦產生關聯。 自我裝載的整合執行階段是一項元件，可將資料從您機器上的 SQL Server 資料庫複製到 Blob 儲存體。
 
 1. 在 [整合執行階段設定] 對話方塊中，選取 [自我裝載]，然後選取 [繼續]。
 
-1. 在名稱底下，輸入 **TutorialIntegrationRuntime**。 然後選取 [建立]。
+1. 在名稱底下，輸入 **TutorialIntegrationRuntime** 。 然後選取 [建立]。
 
 1. 在 [設定] 中，選取 [按一下這裡啟動此電腦的快速安裝]。 此動作會在您的機器上安裝整合執行階段，並使用 Data Factory 進行註冊。 或者，您可以使用手動安裝選項來下載安裝檔案、執行它，並使用金鑰來註冊整合執行階段。
     ![整合執行階段設定](./media/tutorial-hybrid-copy-portal/intergration-runtime-setup.png)
@@ -170,7 +170,7 @@ ms.locfileid: "84661006"
 
 1. 在 [新增連結服務 (SQL Server)] 對話方塊中，確認已在 [透過整合執行階段連線] 下選取 [TutorialIntegrationRuntime]。 然後採取下列步驟：
 
-    a. 在 [名稱] 下輸入 **SqlServerLinkedService**。
+    a. 在 [名稱] 下輸入 **SqlServerLinkedService** 。
 
     b. 在 [伺服器名稱] 下，輸入 SQL Server 執行個體的名稱。
 
@@ -188,7 +188,7 @@ ms.locfileid: "84661006"
 
 1. 連結服務建立好之後，您會回到 SqlServerDataset 的 [設定屬性] 頁面。 請執行下列步驟：
 
-    a. 在 [連結服務] 中，確認您有看到 **SqlServerLinkedService**。
+    a. 在 [連結服務] 中，確認您有看到 **SqlServerLinkedService** 。
 
     b. 在 [資料表名稱] 底下，選取 [[dbo].[emp]]。
     
@@ -214,7 +214,7 @@ ms.locfileid: "84661006"
 
     a. 在 [連結服務] 中確認已選取 [AzureStorageLinkedService]。
 
-    b. 在 [檔案路徑] 中，為 [容器/目錄] 部分輸入 **adftutorial/fromonprem**。 如果在 adftutorial 容器中輸出資料夾不存在，Data Factory 會自動建立該輸出資料夾。
+    b. 在 [檔案路徑] 中，為 [容器/目錄] 部分輸入 **adftutorial/fromonprem** 。 如果在 adftutorial 容器中輸出資料夾不存在，Data Factory 會自動建立該輸出資料夾。
 
     c. 為 [檔案] 部分，選取 [新增動態內容]。
     ![解析檔案名稱的動態運算式](./media/tutorial-hybrid-copy-portal/file-name.png)

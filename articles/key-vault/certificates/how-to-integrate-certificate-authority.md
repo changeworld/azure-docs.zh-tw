@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 01383acad9f221e376f814ecf99794eb0431d0cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5370343ac83d75df94e7291d26c87ce0c419d0e
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588920"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327411"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>將 Key Vault 與 DigiCert 憑證授權單位整合
 
@@ -52,15 +52,15 @@ Azure Key Vault 使用者可以直接從其 Key Vault 產生 DigiCert 憑證。 
 
 1.  若要新增 DigiCert 憑證授權單位，請瀏覽至您想要新增 DigiCert 的金鑰保存庫。 
 2.  在 Key Vault 屬性頁面上，選取 [憑證]。
-3.  選取 [憑證授權單位] 索引標籤。![憑證屬性](../media/certificates/how-to-integrate-certificate-authority/select-certificate-authorities.png)
+3.  選取 [憑證授權單位] 索引標籤。![選取憑證授權單位](../media/certificates/how-to-integrate-certificate-authority/select-certificate-authorities.png)
 4.  選取 [新增] 選項。
- ![憑證屬性](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
+ ![新增憑證授權單位](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
 5.  在 [建立憑證授權單位] 畫面上，選擇下列值：
-    -   **Name**：新增可識別的簽發者名稱。 範例 DigicertCA
-    -   **提供者**：從功能表中選取 DigiCert。
-    -   **帳戶識別碼**：輸入您的 DigiCert CertCentral 帳戶識別碼
-    -   **帳戶密碼**：輸入您在 DigiCert CertCentral 帳戶中產生的 API 金鑰
-    -   **組織識別碼**：輸入從 DigiCert CertCentral 帳戶收集的 OrgID 
+    -   **Name** ：新增可識別的簽發者名稱。 範例 DigicertCA
+    -   **提供者** ：從功能表中選取 DigiCert。
+    -   **帳戶識別碼** ：輸入您的 DigiCert CertCentral 帳戶識別碼
+    -   **帳戶密碼** ：輸入您在 DigiCert CertCentral 帳戶中產生的 API 金鑰
+    -   **組織識別碼** ：輸入從 DigiCert CertCentral 帳戶收集的 OrgID 
     -   按一下 [建立]。
    
 6.  您會看到 DigicertCA 現在已加入憑證授權單位清單中。
@@ -76,7 +76,7 @@ Azure PowerShell 可供使用命令列或指令碼來建立和管理 Azure 資�
 Login-AzAccount
 ```
 
-1.  建立**資源群組**
+1.  建立 **資源群組**
 
 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立 Azure 資源群組。 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 
 
@@ -89,7 +89,7 @@ New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
 您必須針對金鑰保存庫使用唯一名稱。 這裡的 "Contoso-Vaultname" 是本指南中 Key Vault 的名稱。
 
 - **保存庫名稱** Contoso-Vaultname。
-- **資源群組名稱**：ContosoResourceGroup。
+- **資源群組名稱** ：ContosoResourceGroup。
 - **位置** EastUS。
 
 ```azurepowershell-interactive
@@ -98,27 +98,25 @@ New-AzKeyVault -Name 'Contoso-Vaultname' -ResourceGroupName 'ContosoResourceGrou
 
 3. 針對從 DigiCert CertCentral 帳戶收集的資訊定義變數。
 
-- 定義**帳戶識別碼**變數
-- 定義**帳戶識別碼**變數
-- 定義 **API 金鑰**變數
-- 定義**簽發者名稱**變數
+- 定義 **帳戶識別碼** 變數
+- 定義 **帳戶識別碼** 變數
+- 定義 **API 金鑰** 變數
 
 ```azurepowershell-interactive
 $accountId = "myDigiCertCertCentralAccountID"
-$org = New-AzKeyVaultCertificateOrganizationDetails -Id OrganizationIDfromDigiCertAccount
+$org = New-AzKeyVaultCertificateOrganizationDetail -Id OrganizationIDfromDigiCertAccount
 $secureApiKey = ConvertTo-SecureString DigiCertCertCentralAPIKey -AsPlainText –Force
-$issuerName = "DigiCertCA"
 ```
 
-4. 設定**簽發者**。 這會將 Digicert 新增為金鑰保存庫中的憑證授權單位。
+4. 設定 **簽發者** 。 這會將 Digicert 新增為金鑰保存庫中的憑證授權單位。 若要深入了解參數，請[閱讀這裡](https://docs.microsoft.com/powershell/module/az.keyvault/Set-AzKeyVaultCertificateIssuer)
 ```azurepowershell-interactive
-Set-AzureKeyVaultCertificateIssuer -VaultName $vaultName -IssuerName $issuerName -IssuerProvider DigiCert -AccountId $accountId -ApiKey $secureApiKey -OrganizationDetails $org
+Set-AzKeyVaultCertificateIssuer -VaultName "Contoso-Vaultname" -Name "TestIssuer01" -IssuerProvider DigiCert -AccountId $accountId -ApiKey $secureApiKey -OrganizationDetails $org -PassThru
 ```
 
-5. **設定憑證的原則，並直接在 Key Vault 內從 DigiCert 發出憑證**。
+5. **設定憑證的原則，並直接在 Key Vault 內從 DigiCert 發出憑證** 。
 
 ```azurepowershell-interactive
-$Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName DigiCertCA -ValidityInMonths 12 -RenewAtNumberOfDaysBeforeExpiry 60
+$Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "TestIssuer01" -ValidityInMonths 12 -RenewAtNumberOfDaysBeforeExpiry 60
 Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertificate" -CertificatePolicy $Policy
 ```
 
@@ -126,9 +124,9 @@ Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertifica
 
 ## <a name="troubleshoot"></a>疑難排解
 
-如果在 Azure 入口網站中發出的憑證處於「已停用」狀態，請繼續檢視**憑證作業**，來檢閱該憑證的 DigiCert 錯誤訊息。
+如果在 Azure 入口網站中發出的憑證處於「已停用」狀態，請繼續檢視 **憑證作業** ，來檢閱該憑證的 DigiCert 錯誤訊息。
 
- ![憑證屬性](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
+ ![憑證作業](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
 
 如需詳細資訊，請參閱 [Key Vault REST API 參考中的憑證作業](/rest/api/keyvault)。 如需建立權限的相關資訊，請參閱[保存庫 - 建立或更新](/rest/api/keyvault/vaults/createorupdate)和[保存庫 - 更新存取原則](/rest/api/keyvault/vaults/updateaccesspolicy)。
 
@@ -136,8 +134,15 @@ Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertifica
 
 - 我可以透過 KeyVault 產生數位憑證的萬用字元憑證嗎？ 
    是。 這會根據您設定數位憑證帳戶的方式而定。
-- 如果要建立 EV 憑證，應該如何指定？ 
-   建立憑證時，請按一下 [進階原則組態]，然後指定憑證類型。 支援的值為：OV-SSL、EV-SSL
+- 如何使用 DigiCert 來建立 **OV-SSL 或 EV-SSL** 憑證？ 
+   金鑰保存庫支援建立 OV 和 EV SSL 憑證。 建立憑證時，請按一下 [進階原則組態]，然後指定憑證類型。 支援的值為：OV-SSL、EV-SSL
+   
+   如果您的 Digicert 帳戶允許，則您可以在金鑰保存庫中建立這種類型的憑證。 對於這種類型的憑證，驗證會由 DigiCert 執行，而且如果驗證失敗，其支援小組能夠透過解決方案為您提供最大協助。 建立憑證時，您可以透過在 subjectName 中進行定義來新增其他資訊。
+
+範例
+    ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
+    ```
+   
 - 相較於直接透過數位憑證取得憑證，透過整合來建立數位憑證是否會有時間上的延遲？
    否。 憑證是一種驗證程序，可能需要一些時間，而且該驗證相依於 DigiCert 遵循的程序。
 

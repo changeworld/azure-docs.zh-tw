@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 6bdbb68e8d8748bc8851720588f8748d788e0cc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8539f3f2a5882f12f131c95b0c17efd3acba3cf
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542576"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105170"
 ---
 # <a name="tutorial-integrate-ringcentral-with-azure-active-directory"></a>教學課程：整合 RingCentral 與 Azure Active Directory
 
@@ -52,7 +52,7 @@ ms.locfileid: "88542576"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **RingCentral**。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **RingCentral** 。
 1. 從結果面板選取 [RingCentral]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
@@ -78,16 +78,16 @@ ms.locfileid: "88542576"
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 如果您有**服務提供者中繼資料檔案**，請在 [基本 SAML 設定] 區段上執行下列步驟：
+1. 如果您有 **服務提供者中繼資料檔案** ，請在 [基本 SAML 設定] 區段上執行下列步驟：
 
     1. 按一下 [上傳中繼資料檔案]。
-    1. 按一下**資料夾圖示**以選取中繼資料檔案，然後按一下 [上傳]。
+    1. 按一下 **資料夾圖示** 以選取中繼資料檔案，然後按一下 [上傳]。
     1. 成功上傳中繼資料檔案後，就會在 [基本 SAML 設定] 區段中自動填入 [識別碼] 和 [回覆 URL] 值。
 
     > [!Note]
-    > 您會在 RingCentral SSO 設定頁面上取得**服務提供者中繼資料檔案**，本教學課程稍後會予以說明。
+    > 您會在 RingCentral SSO 設定頁面上取得 **服務提供者中繼資料檔案** ，本教學課程稍後會予以說明。
 
-1. 如果您沒有**服務提供者中繼資料檔案**，請輸入下列欄位的值：
+1. 如果您沒有 **服務提供者中繼資料檔案** ，請輸入下列欄位的值：
 
     a. 在 [識別碼] 文字方塊中輸入 URL：
   
@@ -133,7 +133,7 @@ ms.locfileid: "88542576"
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組] 對話方塊中，從使用者清單選取 **Britta Simon**，然後按一下畫面底部的 [選取] 按鈕。
+1. 在 [使用者和群組] 對話方塊中，從使用者清單選取 **Britta Simon** ，然後按一下畫面底部的 [選取] 按鈕。
 1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
 1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
@@ -151,19 +151,19 @@ ms.locfileid: "88542576"
 
 1. 在頂端處按一下 [工具]。
 
-    ![image](./media/ringcentral-tutorial/ringcentral1.png)
+    ![此螢幕擷取畫面顯示從 RingCentral 公司網站選取的工具。](./media/ringcentral-tutorial/ringcentral1.png)
 
 1. 瀏覽至 [單一登入]。
 
-    ![image](./media/ringcentral-tutorial/ringcentral2.png)
+    ![此螢幕擷取畫面顯示從 [工具] 功能表選取的 [單一登入]。](./media/ringcentral-tutorial/ringcentral2.png)
 
 1. 在 [單一登入] 頁面的 [SSO 設定] 區段下，從 [步驟 1] 按一下 [編輯] 並執行下列步驟：
 
-    ![image](./media/ringcentral-tutorial/ringcentral3.png)
+    ![此螢幕擷取畫面顯示 [SSO 組態] 頁面，您可以在其中選取 [編輯]。](./media/ringcentral-tutorial/ringcentral3.png)
 
 1. 在 [安裝單一登入] 頁面上，執行下列步驟：
 
-    ![image](./media/ringcentral-tutorial/ringcentral4.png)
+    ![此螢幕擷取畫面顯示 [設定單一登入] 頁面，您可以在其中上傳 IDP 中繼資料。](./media/ringcentral-tutorial/ringcentral4.png)
 
     a. 按一下 [瀏覽] 以上傳您從 Azure 入口網站下載的中繼資料檔案。
 
@@ -173,13 +173,13 @@ ms.locfileid: "88542576"
 
     d. 按一下 [檔案]  。
 
-    e. 從 [步驟 2] 按一下 [下載] 以下載**服務提供者中繼資料檔案**，並在 Azure 入口網站中，上傳至 [基本 SAML 設定] 區段，以自動填入 [識別碼] 及 [回覆 URL] 值。
+    e. 從 [步驟 2] 按一下 [下載] 以下載 **服務提供者中繼資料檔案** ，並在 Azure 入口網站中，上傳至 [基本 SAML 設定] 區段，以自動填入 [識別碼] 及 [回覆 URL] 值。
 
-    ![image](./media/ringcentral-tutorial/ringcentral6.png) 
+    ![此螢幕擷取畫面顯示 [SSO 組態] 頁面，您可以在其中選取 [下載]。](./media/ringcentral-tutorial/ringcentral6.png) 
 
     f. 在同一頁上，瀏覽至 [啟用 SSO] 區段，並執行下列步驟：
 
-    ![image](./media/ringcentral-tutorial/ringcentral5.png)
+    ![此螢幕擷取畫面顯示 [啟用 SSO] 區段，您可以在其中完成設定。](./media/ringcentral-tutorial/ringcentral5.png)
 
     * 選取 [啟用 SSO 服務]。
 

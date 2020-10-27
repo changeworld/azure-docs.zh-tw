@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/14/2020
-ms.openlocfilehash: a19e2c6647f1ff072c61044e8e5777d5d3f8d2db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ce183595ed8e20c4b5cf4afe9ac1174882dc392
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85958356"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370316"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>教學課程：使用 Azure HDInsight 中的 Apache HBase
 
@@ -50,8 +50,8 @@ ms.locfileid: "85958356"
     |資源群組|建立 Azure 資源管理群組，或使用現有的群組。|
     |Location|指定資源群組的位置。 |
     |ClusterName|輸入 HBase 叢集的名稱。|
-    |叢集登入名稱和密碼|預設登入名稱為 **admin**。|
-    |SSH 使用者名稱和密碼|預設的使用者名稱為 **sshuser**。|
+    |叢集登入名稱和密碼|預設登入名稱為 **admin** 。|
+    |SSH 使用者名稱和密碼|預設的使用者名稱為 **sshuser** 。|
 
     其他參數都是選擇性的。  
 
@@ -207,9 +207,51 @@ HBase 包含數個將資料載入資料表的方法。  如需詳細資訊，請
 
 1. 若要結束程式 SSH 連線，請使用 `exit`。
 
+### <a name="separate-hive-and-hbase-clusters"></a>個別的 Hive 和 Hbase 叢集
+
+不需要從 HBase 叢集執行用以存取 HBase 資料的 Hive 查詢。 Hive 隨附的任何叢集 (包括 Spark、Hadoop、HBase 或互動式查詢) 都可用於查詢 HBase 資料，但前提是已完成下列步驟：
+
+1. 這兩個叢集都必須連結到相同的虛擬網路和子網路
+2. 將 `/usr/hdp/$(hdp-select --version)/hbase/conf/hbase-site.xml` 從 HBase 叢集前端節點複製到 Hive 叢集前端節點
+
+### <a name="secure-clusters"></a>安全叢集
+
+您也可使用已啟用 ESP 的 HBase，從 Hive 查詢 HBase 資料： 
+
+1. 當您遵循多叢集模式時，兩個叢集都必須已啟用 ESP。 
+2. 若要允許 Hive 查詢 HBase 資料，請確定已透過 Hbase Apache Ranger 外掛程式授與 `hive` 使用者存取 HBase 資料的權限。
+3. 使用已啟用 ESP 的個別叢集時，必須將來自 HBase 叢集前端節點的 `/etc/hosts` 內容附加至 Hive 叢集前端節點的 `/etc/hosts`。 
+> [!NOTE]
+> 在調整任一叢集之後，必須再次附加 `/etc/hosts`
+
 ## <a name="use-hbase-rest-apis-using-curl"></a>使用 Curl 來使用 HBase REST API
 
 透過 [基本驗證](https://en.wikipedia.org/wiki/Basic_access_authentication)來保護 REST API 的安全。 您應該一律使用安全 HTTP (HTTPS) 提出要求，確保認證安全地傳送至伺服器。
+
+1. 若要在 HDInsight 叢集中啟用 HBase REST API，請將下列自訂啟動指令碼新增至 [指令碼動作] 區段。 您可以在建立叢集時或在建立叢集後新增啟動指令碼。 針對 [節點類型]，選取 [區域伺服器] 以確保指令碼只會在 HBase 區域伺服器中執行。
+
+
+    ```bash
+    #! /bin/bash
+
+    THIS_MACHINE=`hostname`
+
+    if [[ $THIS_MACHINE != wn* ]]
+    then
+        printf 'Script to be executed only on worker nodes'
+        exit 0
+    fi
+
+    RESULT=`pgrep -f RESTServer`
+    if [[ -z $RESULT ]]
+    then
+        echo "Applying mitigation; starting REST Server"
+        sudo python /usr/lib/python2.7/dist-packages/hdinsight_hbrest/HbaseRestAgent.py
+    else
+        echo "Rest server already running"
+        exit 0
+    fi
+    ```
 
 1. 設定方便使用的環境變數。 將 `MYPASSWORD` 取代為叢集登入密碼，以編輯命令。 將 `MYCLUSTERNAME` 取代為您的 HBase 叢集名稱。 然後輸入命令。
 
@@ -307,7 +349,7 @@ HDInsight 中的 HBase 隨附於 Web UI，以供監視叢集。 使用 Web UI，
 為了避免不一致，建議您在刪除叢集之前，先停用 HBase 資料表。 您可以使用 HBase 命令 `disable 'Contacts'`。 如果您不打算繼續使用此應用程式，請使用下列步驟來刪除所建立的 HBase 叢集：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-1. 在頂端的 [搜尋]  方塊中，輸入 **HDInsight**。
+1. 在頂端的 [搜尋]  方塊中，輸入 **HDInsight** 。
 1. 在 [服務]  底下，選取 [HDInsight 叢集]  。
 1. 從出現的 HDInsight 叢集清單中，在您為本教學課程建立的叢集旁按一下 [...]  。
 1. 按一下 **[刪除]** 。 按一下 [是]  。

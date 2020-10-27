@@ -11,16 +11,16 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 42c2ca777a999a4d4387646110ed88af84631183
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86d89dc6973e61f0cff80b5c65a8c5b836485575
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258893"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216518"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>教學課程：在單頁應用程式中透過 Azure AD B2C 啟用驗證
 
-本教學課程將說明如何使用 AAzure Active Directory B2C (Azure AD B2C) 在單頁應用程式 (SPA) 中註冊和登入使用者。
+本教學課程將說明如何使用 Azure Active Directory B2C (Azure AD B2C)，在使用 OAuth 2.0 隱含授與流程的單頁應用程式 (SPA) 中註冊和登入使用者。
 
 在本教學課程中，首先在兩部分系列中要進行第一步為：
 
@@ -39,7 +39,7 @@ ms.locfileid: "91258893"
 您需要先備妥下列 Azure AD B2C 資源，才能繼續本教學課程中的步驟：
 
 * [Azure AD B2C 租用戶](tutorial-create-tenant.md)
-* 您租用戶中[註冊的應用程式](tutorial-register-applications.md)
+* 已在您的租使用者中[註冊應用程式](tutorial-register-spa.md) (使用隱含流程選項)
 * 您租用戶中[建立的使用者流程](tutorial-create-user-flows.md)
 
 此外，您的開發環境中需要下列項目：
@@ -51,7 +51,7 @@ ms.locfileid: "91258893"
 
 在已完成的第二個必要教學課程中，您在 Azure AD B2C 中註冊了 Web 應用程式。 若要啟用本教學課程中範例程式碼的通訊，請在應用程式註冊中新增回覆 URL (也稱為重新導向 URI)。
 
-若要更新 Azure AD B2C 租用戶中的應用程式，您可以使用我們全新整合的**應用程式註冊**體驗，或使用舊版**應用程式 (舊版)** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregtraining)。
+若要更新 Azure AD B2C 租用戶中的應用程式，您可以使用我們全新整合的 **應用程式註冊** 體驗，或使用舊版 **應用程式 (舊版)** 體驗。 [深入了解新的體驗](https://aka.ms/b2cappregtraining)。
 
 #### <a name="app-registrations"></a>[應用程式註冊](#tab/app-reg-ga/)
 
@@ -60,7 +60,7 @@ ms.locfileid: "91258893"
 1. 在左側功能表中，選取 [Azure AD B2C]。 或者，選取 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
 1. 選取 [應用程式註冊]、選取 [擁有的應用程式] 索引標籤，然後選取 [webapp1] 應用程式。
 1. 在 [Web] 底下，選取 [新增 URI] 連結，輸入 `http://localhost:6420`。
-1. 在 [隱含授與] 底下，選取 [存取權杖] 和 [識別碼權杖] 的核取方塊，然後選取 [儲存]。
+1. 在 [隱含授與] 底下，選取 [存取權杖] 和 [識別碼權杖] 的核取方塊 (如果尚未選取)，然後選取 [儲存]。
 1. 選取 [概觀]。
 1. 當您在單頁 Web 應用程式中更新程式碼時，記錄 [應用程式 (用戶端) 識別碼]，以供後續步驟使用。
 
@@ -92,8 +92,8 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 1. 開啟 JavaScriptSPA 資料夾內的 authConfig.js 檔案。
 1. 在 `msalConfig` 物件中，更新：
-    * `clientId`，以您在先前步驟中記錄的**應用程式 (用戶端) 識別碼**作為值
-    * *URI，以具有您 Azure AD B2C 租用戶名稱和建立為一部分必要條件的註冊/登入使用者流程名稱 (例如 `authority`B2C_1_signupsignin1*) 。
+    * `clientId`，以您在先前步驟中記錄的 **應用程式 (用戶端) 識別碼** 作為值
+    * *URI，以具有您 Azure AD B2C 租用戶名稱和建立為一部分必要條件的註冊/登入使用者流程名稱 (例如 `authority`B2C_1_signupsignin1* ) 。
 
     ```javascript
     const msalConfig = {

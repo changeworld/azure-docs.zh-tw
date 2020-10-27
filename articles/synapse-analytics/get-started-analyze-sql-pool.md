@@ -7,14 +7,15 @@ ms.author: saveenr
 manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
+ms.subservice: sql
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 11c11d3e43f15b569a74c282b15a95525cea7e7c
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: c46adf9e9f5c1b2e74c1098ebf137c4556bfc58d
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91620030"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92147563"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>使用專用 SQL 集區來分析資料
 
@@ -23,6 +24,7 @@ Azure Synapse Analytics 可為您提供使用專用 SQL 集區分析資料的功
 ## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>將 NYC 計程車資料載入 SQLDB1
 
 1. 在 Synapse Studio 中，瀏覽至 [開發] 中樞，然後建立新的 SQL 指令碼
+1. 在指令碼的 [連線至] 區段中，選取集區 'SQLDB1' (在本教學課程的[步驟 1](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) 建立的集區)。
 1. 輸入下列程式碼：
     ```
     CREATE TABLE [dbo].[Trip]

@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: victorh
-ms.openlocfilehash: 7c7ea5297276ed9a1d1f2ca8f4190997dcab57c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba344c3b1570c041e1602bdfcde1b3a4055dc396
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602212"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132749"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站在 Azure Front Door 上建立 Web 應用程式防火牆原則
 
@@ -42,7 +42,7 @@ ms.locfileid: "90602212"
     | 資源群組          |選取您的 Front Door 資源群組名稱。|
     | 原則名稱             |輸入 WAF 原則的唯一名稱。|
 
-   ![建立 WAF 原則](../media/waf-front-door-create-portal/basic.png)
+   :::image type="content" source="../media/waf-front-door-create-portal/basic.png" alt-text="[建立 WAF 原則] 頁面的螢幕擷取畫面，其中包含訂用帳戶、資源群組及原則名稱的 [檢閱 + 建立] 按鈕和清單方塊。" border="false":::
 
 3. 在 [建立 WAF 原則]  頁面的 [關聯]  索引標籤中，選取 [新增前端主機]  ，輸入下列設定，然後選取 [新增]  ：
 
@@ -62,19 +62,19 @@ ms.locfileid: "90602212"
 當您建立 WAF 原則時，預設的 WAF 原則會處於 [偵測]  模式。 在 [偵測]  模式中，WAF 不會封鎖任何要求，而是會將符合 WAF 規則的要求記錄在 WAF 記錄檔中。
 若要查看 WAF 的實際效果，您可以將模式設定從 [偵測]  變更為 [預防]  。 在 [預防]  模式中，會封鎖與預設規則集 (DRS) 中定義之規則相符的要求，並記錄在 WAF 記錄檔中。
 
- ![變更 WAF 原則模式](../media/waf-front-door-create-portal/policy.png)
+ :::image type="content" source="../media/waf-front-door-create-portal/policy.png" alt-text="[建立 WAF 原則] 頁面的螢幕擷取畫面，其中包含訂用帳戶、資源群組及原則名稱的 [檢閱 + 建立] 按鈕和清單方塊。" border="false":::
 
 ### <a name="custom-rules"></a>自訂規則
 
 您可以選取 [自訂規則]  區段下的 [新增自訂規則]  來建立自訂規則。 這會啟動 [自訂規則設定] 頁面。 以下範例說明如何設定自訂規則，以在查詢字串包含 **blockme** 時封鎖要求。
 
-![自訂規則](../media/waf-front-door-create-portal/customquerystring2.png)
+:::image type="content" source="../media/waf-front-door-create-portal/customquerystring2.png" alt-text="[建立 WAF 原則] 頁面的螢幕擷取畫面，其中包含訂用帳戶、資源群組及原則名稱的 [檢閱 + 建立] 按鈕和清單方塊。" border="false":::
 
 ### <a name="default-rule-set-drs"></a>預設規則集 (DRS)
 
-預設會啟用 Azure 管理的預設規則集。 若要停用規則群組內的個別規則，請展開該規則群組中的規則、選取規則編號前面的**核取方塊**，然後選取上方索引標籤上的 [停用]  。 若要變更規則集內個別規則的動作類型，請選取規則編號前面的核取方塊，然後選取上方的 [變更動作]  索引標籤。
+預設會啟用 Azure 管理的預設規則集。 若要停用規則群組內的個別規則，請展開該規則群組中的規則、選取規則編號前面的 **核取方塊** ，然後選取上方索引標籤上的 [停用]  。 若要變更規則集內個別規則的動作類型，請選取規則編號前面的核取方塊，然後選取上方的 [變更動作]  索引標籤。
 
- ![變更 WAF 規則集](../media/waf-front-door-create-portal/managed2.png)
+ :::image type="content" source="../media/waf-front-door-create-portal/managed2.png" alt-text="[建立 WAF 原則] 頁面的螢幕擷取畫面，其中包含訂用帳戶、資源群組及原則名稱的 [檢閱 + 建立] 按鈕和清單方塊。" border="false":::
 
 ## <a name="clean-up-resources"></a>清除資源
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 4dbbd3443ec6c455ba9bcb88ff90dd4960aff5d2
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 97b872c5fe0a155bb6e474f327f8d0c65e22b21f
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930946"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92317455"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer 元件
 
@@ -34,7 +34,7 @@ Azure Load Balancer 的 IP 位址。 這是用戶端的連絡點。 這些 IP �
 - **公用 IP 位址**
 - **私人 IP 位址**
 
-IP 位址的性質會決定所建立負載平衡器的**類型**。 選取私人 IP 位址會建立內部負載平衡器。 選取公用 IP 位址會建立公用負載平衡器。
+IP 位址的性質會決定所建立負載平衡器的 **類型** 。 選取私人 IP 位址會建立內部負載平衡器。 選取公用 IP 位址會建立公用負載平衡器。
 
 |  | 公用 Load Balancer  | 內部負載平衡器 |
 | ---------- | ---------- | ---------- |
@@ -70,7 +70,7 @@ Load Balancer 會為以下端點提供不同的健康情況探查類型：TCP、
 
 ## <a name="load-balancing-rules"></a>負載平衡規則
 
-Load Balancer 規則可用來定義要如何將傳入流量散發給後端集區內的**所有**執行個體。 負載平衡規則會將指定的前端 IP 組態和連接埠對應至多個後端 IP 位址和連接埠。
+Load Balancer 規則可用來定義要如何將傳入流量散發給後端集區內的 **所有** 執行個體。 負載平衡規則會將指定的前端 IP 組態和連接埠對應至多個後端 IP 位址和連接埠。
 
 例如，使用連接埠 80 的負載平衡規則，會將來自前端 IP 的流量路由傳送至後端執行個體的連接埠 80。
 
@@ -106,7 +106,7 @@ HA 連接埠負載平衡規則可協助您處理重要的使用案例，例如�
 
 ## <a name="inbound-nat-rules"></a>傳入的 NAT 規則
 
-輸入 NAT 規則會轉寄傳送到前端 IP 位址與連接埠組合的連入流量。 流量會傳送至後端集區中的**特定**虛擬機器或執行個體。 連接埠轉送作業會使用與負載平衡相同的雜湊式分送來完成。
+輸入 NAT 規則會轉寄傳送到前端 IP 位址與連接埠組合的連入流量。 流量會傳送至後端集區中的 **特定** 虛擬機器或執行個體。 連接埠轉送作業會使用與負載平衡相同的雜湊式分送來完成。
 
 例如，如果您想要讓遠端桌面通訊協定 (RDP) 或安全殼層 (SSH) 工作階段分隔後端集區中的 VM 執行個體。 您可以將多個內部端點對應至相同前端 IP 位址的連接埠。 前端 IP 位址可以從遠端管理 VM，而不需要額外的 jumpbox。
 
@@ -128,6 +128,7 @@ HA 連接埠負載平衡規則可協助您處理重要的使用案例，例如�
 
 ## <a name="limitations"></a>限制
 
+- 了解 Load Balancer [限制](https://aka.ms/lblimits) 
 - 負載平衡器提供針對特定 TCP 或 UDP 通訊協定進行負載平衡和連接埠轉送的功能。 負載平衡規則和輸入 NAT 規則支援 TCP 和 UDP，但不支援其他 IP 通訊協定，包括 ICMP。
 - 從後端 VM 至內部負載平衡器前端的輸出流程將會失敗。
 - 負載平衡器規則無法跨越兩個虛擬網路。  前端和其後端執行個體必須位於相同的虛擬網路。  

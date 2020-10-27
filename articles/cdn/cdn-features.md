@@ -1,30 +1,29 @@
 ---
-title: 比較 Azure 內容傳遞網路 (CDN) 產品功能 | Microsoft Docs
+title: 比較 Azure 內容傳遞網路 (CDN) 產品功能
 description: 了解每項 Azure 內容傳遞網路 (CDN) 產品所支援的功能。
 services: cdn
 documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: mdgattuso
-ms.assetid: ''
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 0e57ae691bf4b07b8161bc343929510d6be041a8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c8d8b01e8c5f4ea3054e639ecc9dd8b14bbf048b
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81260508"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148731"
 ---
-# <a name="compare-azure-cdn-product-features"></a>比較 Azure CDN 產品功能
+# <a name="what-are-the-comparisons-between-azure-cdn-product-features"></a>Azure CDN 產品功能之間的比較有哪些？
 
-Azure 內容傳遞網路 (CDN) 包含四項產品：**來自 Microsoft 的標準 Azure CDN**、**來自 Akamai 的標準 Azure CDN**、**來自 Verizon 的標準 Azure CDN** 和 **來自 Verizon 的進階 Azure CDN**。 如需將 [來自 Verizon 的標準 Azure CDN]  設定檔移轉至 [來自 Verizon 的進階 Azure CDN]  的相關資訊，請參閱[將 Azure CDN 設定檔從標準 Verizon 移轉至進階 Verizon](cdn-migrate.md)。 請注意，雖然可以從標準 Verizon 升級到進階 Verizon，但目前在其他產品之間並沒有轉換機制。
+Azure 內容傳遞網路 (CDN) 包含四項產品： 
+
+* **來自 Microsoft 的 Azure CDN 標準**
+* **來自 Akamai 的 Azure CDN 標準**
+* **來自 Verizon 的 Azure CDN 標準**
+* **來自 Verizon 的 Azure CDN 進階** 。 
 
 下表將比較各項產品的可用功能。
 
@@ -41,11 +40,11 @@ Azure 內容傳遞網路 (CDN) 包含四項產品：**來自 Microsoft 的標準
 | [全域伺服器負載平衡 (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [快速清除](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;** 來自 Akamai 的 Azure CDN 目前不支援「全部清除」和「萬用字元清除」。 |**&#x2713;** |**&#x2713;** |
 | [資產預先載入](cdn-preload-endpoint.md)  |  | |**&#x2713;** |**&#x2713;** |
-| 快取/標頭設定 (使用[快取規則](cdn-caching-rules.md))  |**&#x2713;** 使用[標準規則引擎](cdn-standard-rules-engine.md)  |**&#x2713;** |**&#x2713;** | |
-| 可自訂的規則式內容傳遞引擎 |**&#x2713;** 使用[標準規則引擎](cdn-standard-rules-engine.md)  | | |**&#x2713;** 使用[規則引擎](cdn-rules-engine.md) |
-| 快取/標頭設定  |**&#x2713;** 使用[標準規則引擎](cdn-standard-rules-engine.md) | | |**&#x2713;** 使用[進階規則引擎](cdn-rules-engine.md) |
-| URL 重新導向/重寫 |**&#x2713;** 使用[標準規則引擎](cdn-standard-rules-engine.md)  | | |**&#x2713;** 使用[進階規則引擎](cdn-rules-engine.md) |
-| 行動裝置規則  |**&#x2713;** 使用[標準規則引擎](cdn-standard-rules-engine.md) | | |**&#x2713;** 使用[進階規則引擎](cdn-rules-engine.md) |
+| 快取/標頭設定 (使用[快取規則](cdn-caching-rules.md))  |**&#x2713;** 使用 [標準規則引擎](cdn-standard-rules-engine.md)  |**&#x2713;** |**&#x2713;** | |
+| 可自訂的規則式內容傳遞引擎 |**&#x2713;** 使用 [標準規則引擎](cdn-standard-rules-engine.md)  | | |**&#x2713;** 使用 [規則引擎](cdn-rules-engine.md) |
+| 快取/標頭設定  |**&#x2713;** 使用 [標準規則引擎](cdn-standard-rules-engine.md) | | |**&#x2713;** 使用 [進階規則引擎](cdn-rules-engine.md) |
+| URL 重新導向/重寫 |**&#x2713;** 使用 [標準規則引擎](cdn-standard-rules-engine.md)  | | |**&#x2713;** 使用 [進階規則引擎](cdn-rules-engine.md) |
+| 行動裝置規則  |**&#x2713;** 使用 [標準規則引擎](cdn-standard-rules-engine.md) | | |**&#x2713;** 使用 [進階規則引擎](cdn-rules-engine.md) |
 | [查詢字串快取](cdn-query-string.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | IPv4/IPv6 雙重堆疊 | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [HTTP/2 支援](cdn-http2.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
@@ -75,8 +74,16 @@ Azure 內容傳遞網路 (CDN) 包含四項產品：**來自 Microsoft 的標準
 | [壓縮 MIME 類型](https://docs.microsoft.com/azure/cdn/cdn-improve-performance)  |僅限預設值 |可設定 |可設定  |可設定  |
 | 壓縮編碼  |gzip、brotli |gzip |gzip、deflate、bzip2、brotili  |gzip、deflate、bzip2、brotili  |
 
+## <a name="migration"></a>移轉
 
+如需將 [來自 Verizon 的標準 Azure CDN]  設定檔移轉至 [來自 Verizon 的進階 Azure CDN]  的相關資訊，請參閱[將 Azure CDN 設定檔從標準 Verizon 移轉至進階 Verizon](cdn-migrate.md)。 
 
+> [!NOTE]
+> 您可以從標準 Verizon 升級到進階 Verizon，但目前在其他產品之間並沒有轉換機制。
+
+## <a name="next-steps"></a>後續步驟
+
+* 深入了解 [Azure CDN](cdn-overview.md)。
 
 
 

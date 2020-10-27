@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: c960a7b509f365ad7fd6b04267cfec6bf41c4e42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fddf5cb77cbcb1fb061ffd958fba4bf4ab2c9e7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542559"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127466"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>教學課程：Azure Active Directory 與 SmartRecruiters 整合
 
@@ -61,7 +61,7 @@ SmartRecruiters 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **SmartRecruiters**，從結果面板中選取 [SmartRecruiters]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **SmartRecruiters** ，從結果面板中選取 [SmartRecruiters]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 SmartRecruiters](common/search-new-app.png)
 
@@ -99,7 +99,7 @@ SmartRecruiters 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 組態]  區段上，若您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![SmartRecruiters 網域及 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入識別碼、回覆 URL 以及選取 [儲存]。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://www.smartrecruiters.com/web-sso/saml/<companyname>`
 
@@ -107,12 +107,12 @@ SmartRecruiters 與 Azure AD 整合提供下列優點：
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
-    ![SmartRecruiters 網域及 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/metadata-upload-additional-signon.png)
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://www.smartrecruiters.com/web-sso/saml/<companyname>/login`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [SmartRecruiters 用戶端支援小組](https://www.smartrecruiters.com/about-us/contact-us/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [SmartRecruiters 用戶端支援小組](https://www.smartrecruiters.com/about-us/contact-us/)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
@@ -134,23 +134,23 @@ SmartRecruiters 與 Azure AD 整合提供下列優點：
 
 1. 移至 [設定 / 系統管理員]  。
 
-    ![SmartRecruiters 設定](./media/smartrecruiters-tutorial/configure.png)
+    ![此螢幕擷取畫面顯示從功能表選取的 [設定 / 管理員]。](./media/smartrecruiters-tutorial/configure.png)
 
 1. 在 [設定]  區段中，按一下 [Web SSO]  。
 
-    ![SmartRecruiters 設定](./media/smartrecruiters-tutorial/configure1.png)
+    ![此螢幕擷取畫面顯示從 [組態] 選取的 [啟用 SSO]。](./media/smartrecruiters-tutorial/configure1.png)
 
 1. 切換 [啟用 Web SSO]  。
 
-    ![SmartRecruiters 設定](./media/smartrecruiters-tutorial/configure2.png)
+    ![此螢幕擷取畫面顯示 [啟用 Web SSO] 控制項。](./media/smartrecruiters-tutorial/configure2.png)
 
 1. 在 [識別提供者設定]  區段中，執行下列步驟：
 
-    ![SmartRecruiters 設定](./media/smartrecruiters-tutorial/configure4.png)
+    ![此螢幕擷取畫面顯示 [識別提供者組態]，您可以在其中輸入所述的值。](./media/smartrecruiters-tutorial/configure4.png)
 
     a. 在 [Identity Provider UR] \(識別提供者 URL\)  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
 
-    b. 在「記事本」中開啟您從 Azure 入口網站下載的**憑證 (Base64)** ，複製其內容，然後貼到 [Identity Provider certificate] \(識別提供者憑證\)  文字方塊中。
+    b. 在「記事本」中開啟您從 Azure 入口網站下載的 **憑證 (Base64)** ，複製其內容，然後貼到 [Identity Provider certificate] \(識別提供者憑證\)  文字方塊中。
 
 1. 按一下 [儲存 Web SSO 設定]  。
 
@@ -170,7 +170,7 @@ SmartRecruiters 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com

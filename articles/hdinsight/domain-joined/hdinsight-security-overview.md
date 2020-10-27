@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 08/24/2020
-ms.openlocfilehash: 9cfda93cb7f99851109ab7c4a4590517f785c8a1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ea61ca42c345fe9df0436a193fb2adcb00ce6195
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89292974"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92150800"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 中的企業安全性概觀
 
@@ -82,14 +82,16 @@ Azure 合規性供應項目是以各種類型的保證為基礎，包括正式�
 |  | 請確定已啟用[傳輸中加密](./encryption-in-transit.md)功能，以使用 TLS 和 IPSec 進行叢集內部通訊。 | 客戶 |
 |  | 設定[客戶管理的金鑰](../../storage/common/storage-encryption-keys-portal.md)以進行 Azure 儲存體加密 | 客戶 |
 |  | 使用[客戶加密箱](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)，利用 Azure 支援來控制對資料的存取 | 客戶 |
-| 應用程式和中介軟體安全性 | 與 AAD-DS 整合並[設定驗證](apache-domain-joined-configure-using-azure-adds.md) | 客戶 |
+| 應用程式和中介軟體安全性 | 與 AAD-DS 整合並[設定 ESP](apache-domain-joined-configure-using-azure-adds.md) 或使用[適用於 OAuth 驗證的 HIB](identity-broker.md)| 客戶 |
 |  | 設定 [Apache Ranger 授權](apache-domain-joined-run-hive.md)原則 | 客戶 |
 |  | 使用 [Azure 監視器記錄](../hdinsight-hadoop-oms-log-analytics-tutorial.md) | 客戶 |
 | 作業系統安全性 | 使用最新安全基底映射建立叢集 | 客戶 |
 |  | 確保定期進行 [OS 修補](../hdinsight-os-patching.md) | 客戶 |
+|  | 確保 [VM 的 CMK 磁碟加密](../disk-encryption.md) | 客戶 |
 | 網路安全性 | 設定[虛擬網路](../hdinsight-plan-virtual-network-deployment.md) |
-|  | 設定[輸入網路安全性群組 (NSG) 規則](../control-network-traffic.md) | 客戶 |
+|  | 設定[輸入網路安全性群組 (NSG) 規則](../control-network-traffic.md)[私人連結](../hdinsight-private-link.md) | 客戶 |
 |  | 使用防火牆來設定[輸出流量限制](../hdinsight-restrict-outbound-traffic.md) | 客戶 |
+|  | 設定叢集節點之間的 [IPSec 傳輸中加密](encryption-in-transit.md) | 客戶 |
 | 虛擬化基礎結構 | N/A | HDInsight (雲端提供者) |
 | 實體基礎結構安全性 | N/A | HDInsight (雲端提供者) |
 

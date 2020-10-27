@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: c8d0ce5031dc5972cac81b92477d3de049bc1f2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6efb96448cc99df95b8f898c9fb7dd3ef166c5ea
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543103"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126989"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sequr"></a>教學課程：Azure Active Directory 與 Sequr 整合
 
@@ -61,7 +61,7 @@ Sequr 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Sequr**，從結果面板中選取 [Sequr]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Sequr** ，從結果面板中選取 [Sequr]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
     ![結果清單中的 Sequr](common/search-new-app.png)
 
@@ -131,15 +131,15 @@ Sequr 與 Azure AD 整合提供下列優點：
 
 1. 從左邊的導覽面板按一下 [整合]  。
 
-    ![Sequr 組態](./media/sequr-tutorial/configure1.png)
+    ![此螢幕擷取畫面顯示從導覽面板選取的 [整合]。](./media/sequr-tutorial/configure1.png)
 
 1. 向下捲動至 [單一登入]  區段，然後按一下 [管理]  。
 
-    ![Sequr 組態](./media/sequr-tutorial/configure2.png)
+    ![此螢幕擷取畫面顯示已選取 [管理] 按鈕的 [單一登入] 區段。](./media/sequr-tutorial/configure2.png)
 
 1. 在 [管理單一登入]  區段中，執行下列步驟：
 
-    ![Sequr 組態](./media/sequr-tutorial/configure3.png)
+    ![此螢幕擷取畫面顯示 [管理單一登入] 區段，您可以在其中輸入所述的值。](./media/sequr-tutorial/configure3.png)
 
     a. 在 [識別提供者單一登入 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
 
@@ -165,7 +165,7 @@ Sequr 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`。 例如， BrittaSimon@contoso.com
 

@@ -11,24 +11,24 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e08150f5998b71523a986eac1f8a9be993125f5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc2047832f8cfbf31c04c84eb7a70fee6631fa4b
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619146"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330116"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>使用資料庫異地複寫進行多租用戶 SaaS 應用程式的災害復原
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-在本教學課程中，您將針對使用每一租用戶一個資料庫的模型實作的多租用戶 SaaS 應用程式，探索其完整的災害復原案例。 若要防止應用程式中斷，您應使用[_異地複寫_](active-geo-replication-overview.md)，在替代的復原區域中建立目錄和租用戶資料庫的複本。 如果發生中斷的情況，您將可快速地容錯移轉至這些複本，以繼續進行正常的商務作業。 在容錯移轉時，原始區域中的資料庫會成為復原區域中資料庫的次要複本。 這些複本在重新上線後，將會自動更新至復原區域中資料庫的狀態。 中斷的問題解決後，您即可容錯回復至原始生產區域中的資料庫。
+在本教學課程中，您將針對使用每一租用戶一個資料庫的模型實作的多租用戶 SaaS 應用程式，探索其完整的災害復原案例。 若要防止應用程式中斷，您應使用 [_異地複寫_](active-geo-replication-overview.md)，在替代的復原區域中建立目錄和租用戶資料庫的複本。 如果發生中斷的情況，您將可快速地容錯移轉至這些複本，以繼續進行正常的商務作業。 在容錯移轉時，原始區域中的資料庫會成為復原區域中資料庫的次要複本。 這些複本在重新上線後，將會自動更新至復原區域中資料庫的狀態。 中斷的問題解決後，您即可容錯回復至原始生產區域中的資料庫。
 
 本教學課程會探索容錯移轉和容錯回復的工作流程。 您將學習如何：
 > [!div class="checklist"]
 > 
 > * 將資料庫和彈性集區組態資訊同步至租用戶目錄中
 > * 在替代區域中設定由應用程式、伺服器和集區組成的復原環境
-> * 使用_異地複寫_將目錄和租用戶資料庫複寫至復原區域
+> * 使用 _異地複寫_ 將目錄和租用戶資料庫複寫至復原區域
 > * 將應用程式以及目錄和租用戶資料庫容錯移轉至復原區域 
 > * 隨後，在中斷問題解決後將應用程式、目錄和租用戶資料庫重新容錯移轉至原始區域
 > * 在每個租用戶資料庫容錯移轉後更新目錄，以追蹤每個租用戶資料庫的主要位置
@@ -85,7 +85,7 @@ ms.locfileid: "91619146"
 隨後，在個別的回復步驟中，您會將復原區域中的目錄和租用戶資料庫容錯移轉至原始區域。 在整個回復期間，應用程式和資料庫皆可供使用。 完成後，應用程式會在原始區域中正常運作。
 
 > [!Note]
-> 應用程式會復原到部署應用程式所在區域的_配對的區域_中。 如需詳細資訊，請參閱 [Azure 配對區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
+> 應用程式會復原到部署應用程式所在區域的 _配對的區域_ 中。 如需詳細資訊，請參閱 [Azure 配對區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
 
 ## <a name="review-the-healthy-state-of-the-application"></a>檢視應用程式的健康狀態
 
@@ -111,10 +111,10 @@ ms.locfileid: "91619146"
 1. 在 _PowerShell ISE_ 中，開啟 ...\Learning Modules\UserConfig.psm1 檔案。 請將第 10 和 11 行上的 `<resourcegroup>` 與 `<user>` 取代為您部署應用程式時所使用的值。  儲存檔案。
 
 2. 在 *PowerShell ISE* 中，開啟 ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 指令碼，並設定：
-    * **$DemoScenario = 1**，啟動將租用戶伺服器和集區組態同步至目錄中的背景作業
+    * **$DemoScenario = 1** ，啟動將租用戶伺服器和集區組態同步至目錄中的背景作業
 
 3. 按 **F5** 以執行同步指令碼。 新的 PowerShell 工作階段隨即開啟，以同步租用戶資源的組態。
-![同步程序](./media/saas-dbpertenant-dr-geo-replication/sync-process.png)
+![螢幕擷取畫面：顯示開啟以同步租用戶資源設定的新 PowerShell 工作階段。](./media/saas-dbpertenant-dr-geo-replication/sync-process.png)
 
 讓 PowerShell 視窗持續在背景執行，並繼續進行教學課程的其餘部分。 
 
@@ -129,7 +129,7 @@ ms.locfileid: "91619146"
 > 本教學課程會將異地複寫保護新增至 Wingtip Tickets 範例應用程式。 在應用程式使用異地複寫的生產環境中，每個租用戶一開始都會以異地複寫的資料庫進行佈建。 請參閱[使用 Azure SQL Database 設計高可用性服務](designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)
 
 1. 在 *PowerShell ISE* 中，開啟 ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 指令碼，並設定下列值：
-    * **$DemoScenario = 2**，建立鏡像映像復原環境，並複寫目錄和租用戶資料庫
+    * **$DemoScenario = 2** ，建立鏡像映像復原環境，並複寫目錄和租用戶資料庫
 
 2. 按 **F5** 以執行指令碼。 新的 PowerShell 工作階段隨即開啟以建立複本。
 ![同步程序](./media/saas-dbpertenant-dr-geo-replication/replication-process.png)  
@@ -182,11 +182,11 @@ ms.locfileid: "91619146"
 現在，請假設應用程式部署所在的區域發生中斷情況，並執行復原指令碼：
 
 1. 在 *PowerShell ISE* 中，開啟 ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 指令碼，並設定下列值：
-    * **$DemoScenario = 3**，藉由容錯移轉至複本，將應用程式復原到復原區域中
+    * **$DemoScenario = 3** ，藉由容錯移轉至複本，將應用程式復原到復原區域中
 
 2. 按 **F5** 以執行指令碼。  
     * 此指令碼會在新的 PowerShell 視窗中開啟，然後啟動一系列平行執行的 PowerShell 作業。 這些作業會將租用戶資料庫容錯移轉至復原區域。
-    * 復原區域是與您的應用程式部署所在的 Azure 區域相關聯的_配對區域_。 如需詳細資訊，請參閱 [Azure 配對區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 
+    * 復原區域是與您的應用程式部署所在的 Azure 區域相關聯的 _配對區域_ 。 如需詳細資訊，請參閱 [Azure 配對區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 
 
 3. 在 PowerShell 視窗中監視復原程序的狀態。
     ![容錯移轉程序](./media/saas-dbpertenant-dr-geo-replication/failover-process.png)
@@ -213,7 +213,7 @@ ms.locfileid: "91619146"
 即使在所有現有的租用戶資料庫皆完成容錯移轉之前，您也可以在復原區域中佈建新的租用戶。  
 
 1. 在 *PowerShell ISE* 中，開啟 ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 指令碼，並設定下列屬性：
-    * **$DemoScenario = 4**，在復原區域中佈建新租用戶
+    * **$DemoScenario = 4** ，在復原區域中佈建新租用戶
 
 2. 按 **F5** 以執行指令碼，並佈建新的租用戶。 
 
@@ -239,11 +239,11 @@ ms.locfileid: "91619146"
    * 目錄的復原版本和 tenants1 伺服器 (具有 _-recovery_ 尾碼)。  這些伺服器上已還原的目錄和租用戶資料庫都具有在原始區域中使用的名稱。
 
    * _tenants2-dpt-&lt;user&gt;-recovery_ SQL 伺服器。  這是在中斷期間用來佈建新租用戶的伺服器。
-   * 名為 _events-wingtip-dpt-&lt;recoveryregion&gt;-&lt;user&gt_; 的 App Service，這是事件應用程式的復原執行個體。 
+   * 名為 _events-wingtip-dpt-&lt;recoveryregion&gt;-&lt;user&gt_ ; 的 App Service，這是事件應用程式的復原執行個體。 
 
      ![Azure 復原資源](./media/saas-dbpertenant-dr-geo-replication/resources-in-recovery-region.png) 
     
-4. 開啟 _tenants2-dpt-&lt;user&gt;-recovery_ SQL 伺服器。  請留意其中包含資料庫 _hawthornhall_ 和彈性集區 _Pool1_。  _Hawthornhall_ 資料庫設定為 _Pool1_ 彈性集區中的彈性資料庫。
+4. 開啟 _tenants2-dpt-&lt;user&gt;-recovery_ SQL 伺服器。  請留意其中包含資料庫 _hawthornhall_ 和彈性集區 _Pool1_ 。  _Hawthornhall_ 資料庫設定為 _Pool1_ 彈性集區中的彈性資料庫。
 
 5. 往回瀏覽至資源群組，並按一下 _tenants1-dpt-&lt;user&gt;-recovery_ 伺服器上的 Contoso Concert Hall 資料庫。 按一下左側的 [異地複寫]。
     
@@ -254,7 +254,7 @@ ms.locfileid: "91619146"
 
 1. 在瀏覽器中找出 Contoso Concert Hall 的事件清單，並查看最後一個事件名稱。
 2. 在 *PowerShell ISE* 中，進入 ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 指令碼，並設定下列值：
-    * **$DemoScenario = 5**，從復原區域的租用戶中刪除事件
+    * **$DemoScenario = 5** ，從復原區域的租用戶中刪除事件
 3. 按 **F5** 以執行指令碼
 4. 重新整理 Contoso Concert Hall 事件頁面 (http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall - 請將 &lt;user&gt; 替換為部署的使用者值)，並留意系統已刪除最後一個事件。
 
@@ -281,11 +281,11 @@ ms.locfileid: "91619146"
 1. 在 *PowerShell ISE* 中，進入 ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 指令碼。
 
 2. 確認目錄同步程序仍在其 PowerShell 執行個體中執行。  如有必要，請藉由下列設定加以重新啟動：
-    * **$DemoScenario = 1**，開始將租用戶伺服器、集區和資料庫組態資訊同步處理至目錄中
+    * **$DemoScenario = 1** ，開始將租用戶伺服器、集區和資料庫組態資訊同步處理至目錄中
     * 按 **F5** 以執行指令碼。
 
 3.  然後，若要啟動回復程序，請設定：
-    * **$DemoScenario = 6**，將應用程式回復至其原始區域
+    * **$DemoScenario = 6** ，將應用程式回復至其原始區域
     * 按 **F5** 在新的 PowerShell 視窗中執行復原指令碼。  回復需要幾分鐘的時間，您可以在 PowerShell 視窗中加以監視。
     ![回復程序](./media/saas-dbpertenant-dr-geo-replication/repatriation-process.png)
 
@@ -308,7 +308,7 @@ ms.locfileid: "91619146"
 > 
 > * 將資料庫和彈性集區組態資訊同步至租用戶目錄中
 > * 在替代區域中設定由應用程式、伺服器和集區組成的復原環境
-> * 使用_異地複寫_將目錄和租用戶資料庫複寫至復原區域
+> * 使用 _異地複寫_ 將目錄和租用戶資料庫複寫至復原區域
 > * 將應用程式以及目錄和租用戶資料庫容錯移轉至復原區域 
 > * 在中斷問題解決後，將應用程式、目錄和租用戶資料庫容錯回復至原始區域
 

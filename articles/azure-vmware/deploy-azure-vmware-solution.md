@@ -4,12 +4,12 @@ description: 了解如何使用在規劃階段中收集到的資訊來部署 Azu
 ms.topic: tutorial
 ms.author: tredavis
 ms.date: 10/02/2020
-ms.openlocfilehash: c20bf0f4a8c182d5ade1caec0dd66100c4613204
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 0839048c2d0ad5944566a48f54cca07a4daeb754
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776420"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92152034"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>部署及設定 Azure VMware 解決方案
 
@@ -35,7 +35,7 @@ ms.locfileid: "91776420"
 ## <a name="create-the-jump-box"></a>建立跳躍箱
 
 >[!IMPORTANT]
->如果您在 [建立私人雲端] 畫面上的初始佈建步驟期間，將 [虛擬網路] 選項保留空白，請先完成[設定 VMware 私人雲端的網路功能](tutorial-configure-networking.md)教學課程**之後**，再繼續進行本節。  
+>如果您在 [建立私人雲端] 畫面上的初始佈建步驟期間，將 [虛擬網路] 選項保留空白，請先完成 [設定 VMware 私人雲端的網路功能](tutorial-configure-networking.md)教學課程 **之後** ，再繼續進行本節。  
 
 部署 Azure VMware 解決方案之後，您將建立虛擬網路的跳躍箱，以連線至 vCenter 和 NSX。 設定 ExpressRoute 電路和 ExpressRoute Global Reach 之後，就不需要跳躍箱。  但是，在您的 Azure VMware 解決方案中觸達 vCenter 和 NSX 十分方便。  
 
@@ -67,7 +67,7 @@ ms.locfileid: "91776420"
 
 登入您在先前步驟中建立的跳躍箱。 登入之後，請開啟網頁瀏覽器，並瀏覽至及登入 vCenter 和 NSX-T 管理主控台。  
 
-您可以在 Azure 入口網站中識別 vCenter，以及 NSX-T 管理主控台的 IP 位址和認證。  選取您的私人雲端，然後在**概觀**檢視中選取 [識別 > 預設]。 
+您可以在 Azure 入口網站中識別 vCenter，以及 NSX-T 管理主控台的 IP 位址和認證。  選取您的私人雲端，然後在 **概觀** 檢視中選取 [識別 > 預設]。 
 
 ## <a name="create-a-network-segment-on-azure-vmware-solution"></a>在 Azure VMware 解決方案中建立網路區段
 
@@ -82,7 +82,7 @@ ms.locfileid: "91776420"
 
 回到[確認公告的網路路由](#verify-network-routes-advertised)步驟。 您會在清單中看到一個額外的路由，代表您在上一個步驟中建立的網路區段。  
 
-針對虛擬機器，您將指派在[確認已公告的 NSX-T 區段](#verify-advertised-nsx-t-segment)步驟中所建立的區段。  
+針對虛擬機器，您將指派您在「[在 Azure VMware 解決方案上建立網路區段](#create-a-network-segment-on-azure-vmware-solution)」步驟中建立的區段。  
 
 因為需要 DNS，請識別您想要使用的 DNS 伺服器。  
 

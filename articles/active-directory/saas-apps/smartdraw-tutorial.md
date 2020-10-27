@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
-ms.openlocfilehash: f99993792c2d5f4300025f26d8409207382553d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46b4387252be7e0b76f6e0733d6fd4f95d39e2f0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88527591"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125947"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smartdraw"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SmartDraw 整合
 
@@ -50,7 +50,7 @@ ms.locfileid: "88527591"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **SmartDraw**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **SmartDraw** 。
 1. 從結果面板選取 [SmartDraw]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-smartdraw"></a>設定及測試 SmartDraw 的 Azure AD 單一登入
@@ -71,7 +71,7 @@ ms.locfileid: "88527591"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [SmartDraw]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -83,7 +83,7 @@ ms.locfileid: "88527591"
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://cloud.smartdraw.com/sso/saml/login/<domain>`
 
     > [!NOTE]
-    > [登入 URL] 的值不是真正的值。 您將會使用實際的登入 URL 來更新「登入 URL」值，稍後會在本教學課程中說明。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > [登入 URL] 的值不是真正的值。 您將會使用實際的登入 URL 來更新「登入 URL」值，稍後會在本教學課程中說明。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 按一下 [檔案]  。
 
@@ -152,17 +152,17 @@ ms.locfileid: "88527591"
 
 1. 按一下 [Manage your SmartDraw License] \(管理您的 SmartDraw 授權\) 底下的 [Single Sign-On] \(單一登入\)  。
 
-    ![SmartDraw 設定](./media/smartdraw-tutorial/configure01.png)
+    ![此螢幕擷取畫面顯示 [管理您的 SmartDraw 授權] 對話方塊，您可以在其中選取 [單一登入]。](./media/smartdraw-tutorial/configure01.png)
 
 1. 在 [Configuration] \(設定\) 頁面上，執行下列步驟：
 
-    ![SmartDraw 設定](./media/smartdraw-tutorial/configure02.png)
+    ![此螢幕擷取畫面顯示 [組態] 頁面，您可以在其中輸入所述的值。](./media/smartdraw-tutorial/configure02.png)
 
     a. 在 [Your Domain (like acme.com)] \(您的網域 (例如 acme.com)\)  文字方塊中，輸入您的網域。
 
     b. 複製您執行個體的 [Your SP Initiated Login Url will be] \(您 SP 起始的登入 URL 將是\)  ，然後將它貼到 Azure 入口網站上 [基本 SAML 設定]  的 [登入 URL] 文字方塊中。
 
-    c. 在 [Security Groups to Allow SmartDraw Access] \(要允許 SmartDraw 存取權的安全性群組\)  文字方塊中，輸入 **Everyone**。
+    c. 在 [Security Groups to Allow SmartDraw Access] \(要允許 SmartDraw 存取權的安全性群組\)  文字方塊中，輸入 **Everyone** 。
 
     d. 在 [Your SAML Issuer Url] \(您的 SAML 簽發者 URL\)  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
 

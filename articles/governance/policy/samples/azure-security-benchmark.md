@@ -1,35 +1,35 @@
 ---
 title: Azure Security Benchmark 的法規合規性詳細資料
 description: Azure Security Benchmark 法規合規性內建方案的詳細資料。 每個控制措施都會對應至一或多個可協助評量的 Azure 原則定義。
-ms.date: 10/07/2020
+ms.date: 10/20/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 0ac37714aa18806d3eddbb5cf03c922754483f85
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: c4f009b24889f3c855e9cb612fed7bdc1342e313
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932170"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92311468"
 ---
 # <a name="details-of-the-azure-security-benchmark-regulatory-compliance-built-in-initiative"></a>Azure Security Benchmark 法規合規性內建方案的詳細資料
 
-下列文章詳細說明 Azure 原則法規合規性內建方案定義如何對應至 Azure Security Benchmark 中的**合規性領域**與**控制項**。
+下列文章詳細說明 Azure 原則法規合規性內建方案定義如何對應至 Azure Security Benchmark 中的 **合規性領域** 與 **控制項** 。
 如需此合規性標準的詳細資訊，請參閱 [Azure Security Benchmark](../../../security/benchmarks/overview.md)。 若要了解「擁有權」，請參閱 [Azure 原則原則定義](../concepts/definition-structure.md#type)與[雲端中共同承擔的責任](../../../security/fundamentals/shared-responsibility.md)。
 
-以下是 **Azure 安全性效能評定**控制項的對應。 使用右側的導覽區可直接跳到特定的**合規性領域**。 許多控制措施都是以 [Azure 原則](../overview.md)方案定義實作的。 若要檢閱完整方案定義，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。
+以下是 **Azure 安全性效能評定** 控制項的對應。 使用右側的導覽區可直接跳到特定的 **合規性領域** 。 許多控制措施都是以 [Azure 原則](../overview.md)方案定義實作的。 若要檢閱完整方案定義，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。
 然後，尋找並選取 **Azure Security Benchmark** 法規合規性內建方案的定義。
 
 此內建方案會部署為 [Azure Security Benchmark 藍圖範例](../../blueprints/samples/azure-security-benchmark.md)的一部分。
 
 > [!IMPORTANT]
 > 下列每個控制措施都與一或多個 [Azure 原則](../overview.md)定義相關聯。
-> 這些原則可協助您使用工具[存取合規性](../how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是一對一或完整對應。 因此，Azure 原則中的**符合規範**只是指原則定義本身，這不保證您完全符合所有控制措施需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性標準的合規性領域、控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) \(英文\)。
+> 這些原則可協助您使用工具[存取合規性](../how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是一對一或完整對應。 因此，Azure 原則中的 **符合規範** 只是指原則定義本身，這不保證您完全符合所有控制措施需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性標準的合規性領域、控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/Azure/azure-policy/commits/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) \(英文\)。
 
 ## <a name="network-security"></a>網路安全性
 
 ### <a name="protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>在虛擬網路上使用網路安全性群組或 Azure 防火牆來保護資源
 
-**識別碼**：Azure Security Benchmark 1.1 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 1.1 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -58,7 +58,7 @@ ms.locfileid: "91932170"
 
 ### <a name="monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>監視和記錄 VNet、子網路與 NIC 的設定和流量
 
-**識別碼**：Azure Security Benchmark 1.2 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 1.2 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -66,7 +66,7 @@ ms.locfileid: "91932170"
 
 ### <a name="protect-critical-web-applications"></a>保護重要的 Web 應用程式
 
-**識別碼**：Azure Security Benchmark 1.3 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 1.3 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -80,7 +80,7 @@ ms.locfileid: "91932170"
 
 ### <a name="deny-communications-with-known-malicious-ip-addresses"></a>拒絕與已知惡意 IP 位址通訊
 
-**識別碼**：Azure Security Benchmark 1.4 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 1.4 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -91,7 +91,7 @@ ms.locfileid: "91932170"
 
 ### <a name="record-network-packets-and-flow-logs"></a>記錄網路封包和流量記錄
 
-**識別碼**：Azure Security Benchmark 1.5 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 1.5 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -99,7 +99,7 @@ ms.locfileid: "91932170"
 
 ### <a name="use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>使用自動化工具來監視網路資源設定並偵測變更
 
-**識別碼**：Azure Security Benchmark 1.11 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 1.11 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -115,7 +115,7 @@ ms.locfileid: "91932170"
 
 ### <a name="configure-central-security-log-management"></a>設定中央安全性記錄管理
 
-**識別碼**：Azure Security Benchmark 2.2 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 2.2 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -128,7 +128,7 @@ ms.locfileid: "91932170"
 
 ### <a name="enable-audit-logging-for-azure-resources"></a>啟用 Azure 資源的稽核記錄
 
-**識別碼**：Azure Security Benchmark 2.3 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 2.3 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -150,7 +150,7 @@ ms.locfileid: "91932170"
 
 ### <a name="collect-security-logs-from-operating-systems"></a>從作業系統收集安全性記錄
 
-**識別碼**：Azure Security Benchmark 2.4 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 2.4 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -161,7 +161,7 @@ ms.locfileid: "91932170"
 
 ### <a name="configure-security-log-storage-retention"></a>設定安全性記錄儲存體保留期
 
-**識別碼**：Azure Security Benchmark 2.5 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 2.5 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -169,7 +169,7 @@ ms.locfileid: "91932170"
 
 ### <a name="enable-alerts-for-anomalous-activity"></a>啟用異常活動的警示
 
-**識別碼**：Azure Security Benchmark 2.7 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 2.7 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -178,7 +178,7 @@ ms.locfileid: "91932170"
 
 ### <a name="centralize-anti-malware-logging"></a>集中化反惡意程式碼記錄
 
-**識別碼**：Azure Security Benchmark 2.8 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 2.8 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -190,7 +190,7 @@ ms.locfileid: "91932170"
 
 ### <a name="maintain-an-inventory-of-administrative-accounts"></a>維護系統管理帳戶的清查
 
-**識別碼**：Azure Security Benchmark 3.1 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 3.1 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -201,7 +201,7 @@ ms.locfileid: "91932170"
 
 ### <a name="use-dedicated-administrative-accounts"></a>使用專用的系統管理帳戶
 
-**識別碼**：Azure Security Benchmark 3.3 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 3.3 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -213,7 +213,7 @@ ms.locfileid: "91932170"
 
 ### <a name="use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>針對所有以 Azure Active Directory 為基礎的存取使用多重要素驗證
 
-**識別碼**：Azure Security Benchmark 3.5 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 3.5 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -223,7 +223,7 @@ ms.locfileid: "91932170"
 
 ### <a name="use-azure-active-directory"></a>使用 Azure Active Directory
 
-**識別碼**：Azure Security Benchmark 3.9 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 3.9 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -232,7 +232,7 @@ ms.locfileid: "91932170"
 
 ### <a name="regularly-review-and-reconcile-user-access"></a>定期檢閱並協調使用者存取
 
-**識別碼**：Azure Security Benchmark 3.10 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 3.10 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -246,7 +246,7 @@ ms.locfileid: "91932170"
 
 ### <a name="maintain-an-inventory-of-sensitive-information"></a>維護敏感性資訊的清查
 
-**識別碼**：Azure Security Benchmark 4.1 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 4.1 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -254,7 +254,7 @@ ms.locfileid: "91932170"
 
 ### <a name="encrypt-all-sensitive-information-in-transit"></a>加密傳輸中的所有敏感性資訊
 
-**識別碼**：Azure Security Benchmark 4.4 **擁有權**：共用
+**識別碼** ：Azure Security Benchmark 4.4 **擁有權** ：共用
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -274,7 +274,7 @@ ms.locfileid: "91932170"
 
 ### <a name="use-an-active-discovery-tool-to-identify-sensitive-data"></a>使用作用中探索工具來識別敏感性資料
 
-**識別碼**：Azure Security Benchmark 4.5 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 4.5 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -284,7 +284,7 @@ ms.locfileid: "91932170"
 
 ### <a name="use-azure-rbac-to-control-access-to-resources"></a>使用 Azure RBAC 來控制資源的存取權
 
-**識別碼**：Azure Security Benchmark 4.6 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 4.6 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -293,7 +293,7 @@ ms.locfileid: "91932170"
 
 ### <a name="encrypt-sensitive-information-at-rest"></a>加密待用的敏感性資訊
 
-**識別碼**：Azure Security Benchmark 4.8 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 4.8 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -307,7 +307,7 @@ ms.locfileid: "91932170"
 
 ### <a name="log-and-alert-on-changes-to-critical-azure-resources"></a>針對重要 Azure 資源的變更留下記錄和發出警示
 
-**識別碼**：Azure Security Benchmark 4.9 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 4.9 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -317,7 +317,7 @@ ms.locfileid: "91932170"
 
 ### <a name="run-automated-vulnerability-scanning-tools"></a>執行自動化弱點掃描工具
 
-**識別碼**：Azure Security Benchmark 5.1 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 5.1 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -327,7 +327,7 @@ ms.locfileid: "91932170"
 
 ### <a name="deploy-automated-operating-system-patch-management-solution"></a>部署自動化的作業系統修補程式管理解決方案
 
-**識別碼**：Azure Security Benchmark 5.2 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 5.2 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -336,23 +336,23 @@ ms.locfileid: "91932170"
 
 ### <a name="deploy-automated-third-party-software-patch-management-solution"></a>部署自動化的第三方軟體修補程式管理解決方案
 
-**識別碼**：Azure Security Benchmark 5.3 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 5.3 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[確定 'Java' 在作為 API 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F88999f4c-376a-45c8-bcb3-4058f713cf39) |Java 會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 API 應用程式的最新 Python 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_java_Latest.json) |
-|[確定 'Java' 在作為函式應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc) |Java 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於函式應用程式的最新 Java 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 |AuditIfNotExists, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_java_Latest.json) |
-|[確定 'Java' 在作為 Web 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F496223c3-ad65-4ecd-878a-bae78737e9ed) |Java 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 Web 應用程式的最新 Java 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_java_Latest.json) |
-|[確定 'PHP' 在作為 API 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc1795e-d44a-4d48-9b3b-6fff0fd5f9ba) |PHP 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 API 應用程式的最新 PHP 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_PHP_Latest.json) |
-|[確定 'PHP' 在作為 Web 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7261b898-8a84-4db8-9e04-18527132abb3) |PHP 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 Web 應用程式的最新 PHP 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_PHP_Latest.json) |
-|[確定 'Python' 在作為 API 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F74c3584d-afae-46f7-a20a-6f8adba71a16) |Python 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 API 應用程式的最新 Python 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_python_Latest.json) |
-|[確定 'Python' 在作為函式應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7238174a-fd10-4ef0-817e-fc820a951d73) |Python 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於函式應用程式的最新 Python 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_python_Latest.json) |
-|[確定 'Python' 在作為 Web 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7008174a-fd10-4ef0-817e-fc820a951d73) |Python 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 Web 應用程式的最新 Python 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_python_Latest.json) |
+|[確定 'Java' 在作為 API 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F88999f4c-376a-45c8-bcb3-4058f713cf39) |Java 會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 API 應用程式的最新 Python 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 此原則目前僅適用於 Linux Web 應用程式。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_java_Latest.json) |
+|[確定 'Java' 在作為函式應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d0b6ea4-93e2-4578-bf2f-6bb17d22b4bc) |Java 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於函式應用程式的最新 Java 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 此原則目前僅適用於 Linux Web 應用程式。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_java_Latest.json) |
+|[確定 'Java' 在作為 Web 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F496223c3-ad65-4ecd-878a-bae78737e9ed) |Java 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 Web 應用程式的最新 Java 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 此原則目前僅適用於 Linux Web 應用程式。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_java_Latest.json) |
+|[確定 'PHP' 在作為 API 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1bc1795e-d44a-4d48-9b3b-6fff0fd5f9ba) |PHP 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 API 應用程式的最新 PHP 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 此原則目前僅適用於 Linux Web 應用程式。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_PHP_Latest.json) |
+|[確定 'PHP' 在作為 Web 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7261b898-8a84-4db8-9e04-18527132abb3) |PHP 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 Web 應用程式的最新 PHP 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 此原則目前僅適用於 Linux Web 應用程式。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_PHP_Latest.json) |
+|[確定 'Python' 在作為 API 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F74c3584d-afae-46f7-a20a-6f8adba71a16) |Python 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 API 應用程式的最新 Python 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 此原則目前僅適用於 Linux Web 應用程式。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_python_Latest.json) |
+|[確定 'Python' 在作為函式應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7238174a-fd10-4ef0-817e-fc820a951d73) |Python 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於函式應用程式的最新 Python 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 此原則目前僅適用於 Linux Web 應用程式。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_python_Latest.json) |
+|[確定 'Python' 在作為 Web 應用程式的一部分時，版本是最新的](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7008174a-fd10-4ef0-817e-fc820a951d73) |Python 軟體會定期發行較新的版本，以解決安全性缺陷或納入其他功能。 建議使用適用於 Web 應用程式的最新 Python 版本，以利用最新版本的安全性修正 (如果有的話) 及 (或) 新功能。 此原則目前僅適用於 Linux Web 應用程式。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_python_Latest.json) |
 |[Kubernetes 服務應升級為不易受攻擊的 Kubernetes 版本](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb893a29-21bb-418c-a157-e99480ec364c) |將您的 Kubernetes 服務叢集升級為較新的 Kubernetes 版本，以防禦您目前 Kubernetes 版本中的已知弱點。 Kubernetes 版本 1.11.9 +、1.12.7+、1.13.5+ 及 1.14.0+ 中已修補弱點 CVE-2019-9946 |Audit, Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UpgradeVersion_KubernetesService_Audit.json) |
 
 ### <a name="use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>使用風險評等程序來排定所發現弱點的補救優先順序
 
-**識別碼**：Azure Security Benchmark 5.5 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 5.5 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -366,7 +366,7 @@ ms.locfileid: "91932170"
 
 ### <a name="use-only-approved-applications"></a>僅使用已核准的應用程式
 
-**識別碼**：Azure Security Benchmark 6.8 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 6.8 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -374,7 +374,7 @@ ms.locfileid: "91932170"
 
 ### <a name="use-only-approved-azure-services"></a>僅使用已核准的 Azure 服務
 
-**識別碼**：Azure Security Benchmark 6.9 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 6.9 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -383,7 +383,7 @@ ms.locfileid: "91932170"
 
 ### <a name="implement-approved-application-list"></a>實作已核准的應用程式清單
 
-**識別碼**：Azure Security Benchmark 6.10 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 6.10 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -393,7 +393,7 @@ ms.locfileid: "91932170"
 
 ### <a name="maintain-secure-operating-system-configurations"></a>維護安全的作業系統設定
 
-**識別碼**：Azure Security Benchmark 7.4 **擁有權**：共用
+**識別碼** ：Azure Security Benchmark 7.4 **擁有權** ：共用
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -403,7 +403,7 @@ ms.locfileid: "91932170"
 
 ### <a name="implement-automated-configuration-monitoring-for-operating-systems"></a>為作業系統實作自動化的設定監視
 
-**識別碼**：Azure Security Benchmark 7.10 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 7.10 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -413,7 +413,7 @@ ms.locfileid: "91932170"
 
 ### <a name="manage-azure-secrets-securely"></a>安全地管理 Azure 祕密
 
-**識別碼**：Azure Security Benchmark 7.11 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 7.11 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -421,7 +421,7 @@ ms.locfileid: "91932170"
 
 ### <a name="manage-identities-securely-and-automatically"></a>安全且自動地管理身分識別 
 
-**識別碼**：Azure Security Benchmark 7.12 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 7.12 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -433,7 +433,7 @@ ms.locfileid: "91932170"
 
 ### <a name="use-centrally-managed-anti-malware-software"></a>使用集中管理的反惡意程式碼軟體
 
-**識別碼**：Azure Security Benchmark 8.1 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 8.1 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -442,7 +442,7 @@ ms.locfileid: "91932170"
 
 ### <a name="ensure-anti-malware-software-and-signatures-are-updated"></a>確保更新反惡意程式碼軟體和簽章
 
-**識別碼**：Azure Security Benchmark 8.3 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 8.3 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -452,7 +452,7 @@ ms.locfileid: "91932170"
 
 ### <a name="ensure-regular-automated-back-ups"></a>確保會定期自動備份
 
-**識別碼**：Azure Security Benchmark 9.1 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 9.1 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -464,7 +464,7 @@ ms.locfileid: "91932170"
 
 ### <a name="perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>執行完整的系統備份，並備份客戶管理的任何金鑰
 
-**識別碼**：Azure Security Benchmark 9.2 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 9.2 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -476,7 +476,7 @@ ms.locfileid: "91932170"
 
 ### <a name="ensure-protection-of-backups-and-customer-managed-keys"></a>確保備份和客戶管理的金鑰受到保護
 
-**識別碼**：Azure Security Benchmark 9.4 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 9.4 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -486,7 +486,7 @@ ms.locfileid: "91932170"
 
 ### <a name="provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>提供安全性事件連絡人詳細資料，並設定安全性事件的警示通知
 
-**識別碼**：Azure Security Benchmark 10.4 **擁有權**：客戶
+**識別碼** ：Azure Security Benchmark 10.4 **擁有權** ：客戶
 
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|

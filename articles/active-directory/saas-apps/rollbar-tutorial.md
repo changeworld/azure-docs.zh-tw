@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 253621fe257a0b1a1b3bdaa2578fd7df10b03f73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f3eae2a21c902b49b8e76fcb45e45577231e8b9
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88528541"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108553"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>教學課程：Azure Active Directory 與 Rollbar 整合
 
@@ -61,7 +61,7 @@ ms.locfileid: "88528541"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Rollbar**，從結果面板中選取 [Rollbar]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Rollbar** ，從結果面板中選取 [Rollbar]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Rollbar](common/search-new-app.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "88528541"
 
 4. 在 [基本 SAML 設定]  區段上，如果您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![Rollbar 網域及 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入識別碼、回覆 URL 以及選取 [儲存]。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，輸入 URL：`https://saml.rollbar.com`
 
@@ -107,14 +107,14 @@ ms.locfileid: "88528541"
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
-    ![Rollbar 網域及 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/metadata-upload-additional-signon.png)
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://rollbar.com/<accountname>/saml/login/azure/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 使用實際的回覆 URL 與登入 URL 更新這些值。 請連絡 [Rollbar 用戶端支援小組](mailto:support@rollbar.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 使用實際的回覆 URL 與登入 URL 更新這些值。 請連絡 [Rollbar 用戶端支援小組](mailto:support@rollbar.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -134,15 +134,15 @@ ms.locfileid: "88528541"
 
 1. 按一下右上角的 [Profile Settings] \(設定檔設定\)  ，然後按一下 [Account Name settings] \(帳戶名稱設定\)  。
 
-    ![組態](./media/rollbar-tutorial/general.png)
+    ![此螢幕擷取畫面顯示從 [設定檔設定] 選取的帳戶名稱設定。](./media/rollbar-tutorial/general.png)
 
 1. 按一下 [SECURITY] \(安全性\) 底下的 [Identity Provider] \(身分識別提供者\)  。
 
-    ![組態](./media/rollbar-tutorial/configure1.png)
+    ![此螢幕擷取畫面顯示在 [安全性] 底下選取的 [識別提供者]。](./media/rollbar-tutorial/configure1.png)
 
 1. 在 [SAML Identity Providers] \(SAML 身分識別提供者\)  區段中，執行下列步驟：
 
-    ![組態](./media/rollbar-tutorial/configure2.png)
+    ![此螢幕擷取畫面顯示 [SAML 識別提供者]，您可以在其中輸入所述的值。](./media/rollbar-tutorial/configure2.png)
 
     a. 從 [SAML Identity Provider] \(SAML 身分識別提供者\) 下拉式清單中，選取 [AZURE]。
 
@@ -152,7 +152,7 @@ ms.locfileid: "88528541"
 
 1. 按一下 [Save] \(儲存\) 按鈕之後，畫面將會像這樣：
 
-    ![組態](./media/rollbar-tutorial/configure3.png)
+    ![此螢幕擷取畫面顯示 [SAML 識別提供者] 頁面中的結果。](./media/rollbar-tutorial/configure3.png)
 
     > [!NOTE]
     > 為了完成下列步驟，您必須先在 Azure 中新增自己作為 Rollbar 應用成的使用者。
@@ -180,7 +180,7 @@ ms.locfileid: "88528541"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`  
     例如， BrittaSimon@contoso.com
@@ -233,11 +233,11 @@ ms.locfileid: "88528541"
 
 1. 按一下 [Invite Team Members] \(邀請小組成員\)  。
 
-    ![邀請人員](./media/rollbar-tutorial/user2.png)
+    ![此螢幕擷取畫面顯示已選取 [邀請小組成員] 選項。](./media/rollbar-tutorial/user2.png)
 
-1. 在文字方塊中輸入使用者的名稱，例如 **brittasimon\@contoso.com**，然後按一下 [新增/邀請]  。
+1. 在文字方塊中輸入使用者的名稱，例如 **brittasimon\@contoso.com** ，然後按一下 [新增/邀請]  。
 
-    ![邀請人員](./media/rollbar-tutorial/user3.png)
+    ![此螢幕擷取畫面顯示已提供位址的 [新增/邀請成員]。](./media/rollbar-tutorial/user3.png)
 
 1. 使用者會收到邀請，在接受邀請後，系統中就會建立該使用者。
 

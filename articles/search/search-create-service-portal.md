@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 10/05/2020
-ms.openlocfilehash: 3ccc5ab07416f65270a7bd720f1e0884027b1fe7
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.date: 10/14/2020
+ms.openlocfilehash: 1b3804029a4174698ed1e4e4f8d75fbed4fba981
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057717"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102807"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入門：在入口網站中建立 Azure 認知搜尋服務
 
@@ -94,7 +94,7 @@ Azure 認知搜尋可在大部分區域中使用。 支援的區域清單可在[
 
 ### <a name="requirements"></a>需求
 
- 如果您使用 AI 擴充資料，請在與認知服務相同的區域中建立您的搜尋服務。 *將 Azure 認知搜尋與認知服務共置於相同區域中，是 AI 擴充的需求之一*。
+ 如果您使用 AI 擴充資料，請在與認知服務相同的區域中建立您的搜尋服務。 *將 Azure 認知搜尋與認知服務共置於相同區域中，是 AI 擴充的需求之一* 。
 
  具有商務持續性和災害復原 (BCDR) 需求的客戶應在[區域配對](../best-practices-availability-paired-regions.md#azure-regional-pairs) \(部分機器翻譯\) 中建立其服務。 例如，如果您是在北美洲營運，可以針對每個服務選擇美國東部與美國西部，或美國中北部與美國中南部。
 
@@ -102,9 +102,9 @@ Azure 認知搜尋可在大部分區域中使用。 支援的區域清單可在[
 
 如果您使用多個 Azure 服務，請選擇同時裝載您資料或應用程式服務的區域。 這樣做可將輸出資料的頻寬費用降至最低或避免產生費用 (當服務位於相同區域時，輸出資料不會產生費用)。
 
-## <a name="choose-a-pricing-tier-sku"></a>選擇定價層 (SKU)
+## <a name="choose-a-pricing-tier"></a>選擇定價層
 
-[Azure 認知搜尋目前提供多個定價層](https://azure.microsoft.com/pricing/details/search/)︰免費、基本或標準。 每一層都有自己的[容量和限制](search-limits-quotas-capacity.md)。 請參閱[選擇定價層或 SKU](search-sku-tier.md) 以取得指導方針。
+Azure 認知搜尋目前提供[多個定價層](https://azure.microsoft.com/pricing/details/search/)︰免費、基本、標準或儲存體最佳化。 每一層都有自己的[容量和限制](search-limits-quotas-capacity.md)。 請參閱[選擇定價層](search-sku-tier.md)以取得指導方針。
 
 一般對於生產工作負載通常會選擇基本和標準服務，但大部分的客戶一開始都會使用免費服務。 層級之間的主要差異在於分割區大小與速度，以及您可以建立的物件數目限制。
 

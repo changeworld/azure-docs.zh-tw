@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 7d880be6cbc37b273258075e6efc7a98d3478384
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 07053c096ce001b322e5f05556bd041519ca9d2e
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054809"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102471"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>教學課程：使用 Azure 虛擬 WAN 來建立 ExpressRoute 關聯
 
@@ -48,7 +48,7 @@ ms.locfileid: "92054809"
 
 透過瀏覽器瀏覽至 [Azure 入口網站](https://portal.azure.com) ，並使用您的 Azure 帳戶登入。
 
-1. 瀏覽至 [虛擬 WAN] 頁面。 在入口網站中，按一下 [+建立資源]  。 在搜尋方塊中鍵入**虛擬 WAN** 並選取 [輸入]。
+1. 瀏覽至 [虛擬 WAN] 頁面。 在入口網站中，按一下 [+建立資源]  。 在搜尋方塊中鍵入 **虛擬 WAN** 並選取 [輸入]。
 2. 從結果中選取 [虛擬 WAN]  。 在 [虛擬 WAN] 頁面中，按一下 [建立]  ，以開啟 [建立 WAN] 頁面。
 3. 在 [建立 WAN]  頁面的 [基本]  索引標籤中，填寫下列欄位：
 
@@ -105,7 +105,7 @@ ExpressRoute 閘道以 2 Gbps 為單位進行佈建。 1 個縮放單位 = 2 Gbp
 
 ## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>將您的線路連線至中樞閘道
 
-建立閘道之後，即可將 [ExpressRoute 線路](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)連線到該閘道。 ExpressRoute 標準或進階線路若位於 ExpressRoute Global Reach 支援的位置，則可以連線至虛擬 WAN ExpressRoute 閘道，並享用所有虛擬 WAN 傳輸功能 (VPN 至 VPN、VPN 與 ExpressRoute transit)。 ExpressRoute 標準或進階線路若位於非 Global Reach 位置，則可以連線至 Azure 資源，但將無法使用虛擬 WAN 傳輸功能。 Azure 虛擬 WAN 不支援 ExpressRoute 本機。
+建立閘道之後，即可將 [ExpressRoute 線路](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)連線到該閘道。 ExpressRoute 標準或進階線路若位於 ExpressRoute Global Reach 支援的位置，則可以連線至虛擬 WAN ExpressRoute 閘道，並享用所有虛擬 WAN 傳輸功能 (VPN 至 VPN、VPN 與 ExpressRoute transit)。 ExpressRoute 標準或進階線路若位於非 Global Reach 位置，則可以連線至 Azure 資源，但將無法使用虛擬 WAN 傳輸功能。 Azure 虛擬 WAN 中樞支援 ExpressRoute Local，只要連線到虛擬 WAN 中樞的輪輻 VNET 與虛擬 WAN 中樞位於相同區域即可。
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>將線路連線到中樞閘道
 

@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: quickstart
-ms.date: 03/17/2020
+ms.date: 10/19/2020
 ms.author: juliako
-ms.openlocfilehash: f6c3953947e6f7e84f4cf9b565d2f66648b177f7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6b154db25f1f13b60e4110d1b1866308ee952487
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85130750"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92219782"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>快速入門：如何註冊及上傳您的第一支影片
 
@@ -39,20 +39,24 @@ ms.locfileid: "85130750"
 ### <a name="upload-a-video"></a>上傳影片
 
 1. 登入 [Video Indexer](https://www.videoindexer.ai/) 網站。
-2. 若要上傳影片，請按 [上傳]  按鈕或連結。
+1. 若要上傳影片，請按 [上傳]  按鈕或連結。
 
     > [!NOTE]
     > 影片名稱不得超過 80 個字元。
 
-    ![上傳](./media/video-indexer-get-started/video-indexer-upload.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/video-indexer-upload.png" alt-text="上傳":::
+1. 上傳您的影片後，Video Indexer 會開始編製索引及分析影片。 您會看到進度。 
 
-    上傳您的影片後，Video Indexer 會開始編製索引及分析影片。
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="上傳":::
+1. Video Indexer 完成分析後，您會收到電子郵件，內含您的影片連結以及在影片中找到的簡短描述。 例如：人員、讀出和書寫的單字、主題和已命名的實體。
+1. 您稍後可以在媒體庫清單中找到您的影片，並執行不同的作業。 例如：搜尋、重新編制索引、編輯。
 
-    ![已上傳](./media/video-indexer-get-started/video-indexer-uploaded.png) 
-
-    Video Indexer 完成分析後，您會收到通知，內含您的影片連結以及在影片中找到的簡短描述。 例如：人員、主題、OCR。
-
-## <a name="see-also"></a>另請參閱
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/video-indexer-get-started/uploaded.png" alt-text="上傳":::
+ 
+## <a name="see-also"></a>請參閱
 
 如需詳細資訊，請參閱[上傳影片並編製索引](upload-index-videos.md)。
 

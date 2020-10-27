@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 6732857e278285071c9d36c629920ad9e67368f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef8a93ebdc5eb389608ef3340b9707bfd040a295
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88528517"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105714"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>教學課程：Azure Active Directory 與 RFPIO 整合
 
@@ -61,7 +61,7 @@ RFPIO 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **RFPIO**，從結果面板中選取 [RFPIO]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **RFPIO** ，從結果面板中選取 [RFPIO]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
     ![結果清單中的 RFPIO](common/search-new-app.png)
 
@@ -99,7 +99,7 @@ RFPIO 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 設定]  區段上，如果您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![RFPIO 網域與 URL 單一登入資訊](common/idp-identifier.png)
+    ![此螢幕擷取畫面顯示 [基本 SAML 組態]，您可以在其中輸入識別碼。](common/idp-identifier.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://www.rfpio.com`
 
@@ -107,7 +107,7 @@ RFPIO 與 Azure AD 整合提供下列優點：
 
     c. 在 [回覆狀態]  文字方塊中輸入一個字串值。 請連絡 [RFPIO 支援小組](https://www.rfpio.com/contact/)以取得此值。
 
-    ![RFPIO 網域與 URL 單一登入資訊](common/idp-preintegrated-relay.png)
+    ![此螢幕擷取畫面顯示 [設定其他 URL]。](common/idp-preintegrated-relay.png)
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
@@ -116,9 +116,9 @@ RFPIO 與 Azure AD 整合提供下列優點：
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://www.app.rfpio.com`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的識別碼和登入 URL 將這些值更新。 請連絡 [RFPIO 用戶端支援小組](https://www.rfpio.com/contact/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的識別碼和登入 URL 將這些值更新。 請連絡 [RFPIO 用戶端支援小組](https://www.rfpio.com/contact/)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -138,23 +138,23 @@ RFPIO 與 Azure AD 整合提供下列優點：
 
 1. 按一下左上角的下拉式清單。
 
-    ![設定單一登入](./media/rfpio-tutorial/app1.png)
+    ![此螢幕擷取畫面顯示窗格底部的向下箭號。](./media/rfpio-tutorial/app1.png)
 
 1. 按一下 [組織設定]  。 
 
-    ![設定單一登入](./media/rfpio-tutorial/app2.png)
+    ![此螢幕擷取畫面顯示已選取 [組織設定]。](./media/rfpio-tutorial/app2.png)
 
 1. 按一下 [功能和整合]  。
 
-    ![設定單一登入](./media/rfpio-tutorial/app4.png)
+    ![此螢幕擷取畫面顯示從 [設定] 選取的功能和整合。](./media/rfpio-tutorial/app4.png)
 
 1. 在 [SAML SSO 組態]  中按一下 [編輯]  。
 
-    ![設定單一登入](./media/rfpio-tutorial/app3.png)
+    ![此螢幕擷取畫面顯示已標註 [編輯] 按鈕的 [SAML SSO 組態]。](./media/rfpio-tutorial/app3.png)
 
 1. 在本節中執行下列動作：
 
-    ![設定單一登入](./media/rfpio-tutorial/app5.png)
+    ![此螢幕擷取畫面顯示已啟用 SAML 的 [SAML SSO 組態]。](./media/rfpio-tutorial/app5.png)
     
     a. 複製 [下載的中繼資料 XML]  內容，然後貼到 [身分識別組態]  欄位中。
 
@@ -183,7 +183,7 @@ RFPIO 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`。 例如， BrittaSimon@contoso.com
 
@@ -223,23 +223,23 @@ RFPIO 與 Azure AD 整合提供下列優點：
 
 1. 按一下左上角的下拉式清單。
 
-    ![設定單一登入](./media/rfpio-tutorial/app1.png)
+    ![此螢幕擷取畫面顯示窗格底部的向下箭號。](./media/rfpio-tutorial/app1.png)
 
 1. 按一下 [組織設定]  。 
 
-    ![設定單一登入](./media/rfpio-tutorial/app2.png)
+    ![此螢幕擷取畫面顯示已選取 [組織設定]。](./media/rfpio-tutorial/app2.png)
 
 1. 按一下 [小組成員]  。
 
-    ![設定單一登入](./media/rfpio-tutorial/app6.png)
+    ![此螢幕擷取畫面顯示從 [設定] 選取的 [小組成員]。](./media/rfpio-tutorial/app6.png)
 
 1. 按一下 [新增成員]  。
 
-    ![設定單一登入](./media/rfpio-tutorial/app7.png)
+    ![此螢幕擷取畫面顯示 [新增成員] 按鈕。](./media/rfpio-tutorial/app7.png)
 
 1. 在 [新增成員]  區段中。 執行下列動作：
 
-    ![設定單一登入](./media/rfpio-tutorial/app8.png)
+    ![此螢幕擷取畫面顯示 [新增成員]，您可以在其中輸入所述的值。](./media/rfpio-tutorial/app8.png)
 
     a. 在 [每行輸入一個電子郵件] 欄位中輸入[電子郵件地址]。
 

@@ -7,14 +7,14 @@ ms.service: bastion
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: daf3b6c36b191f52f0d7ac7638ef59695325f541
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: a7937745e839b54d9ee7b6f056d10ff627e191d3
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078539"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92327326"
 ---
-# <a name="tutorial-create-an-azure-bastion-host-and-connect-to-a-windows-vm-through-a-browser"></a>教學課程：建立 Azure Bastion 主機並透過瀏覽器連線至 Windows VM
+# <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm-through-a-browser"></a>教學課程：設定 Bastion 主機並透過瀏覽器連線至 Windows VM
 
 本教學課程說明如何使用 Azure Bastion 和 Azure 入口網站，透過瀏覽器連線至虛擬機器。 在 Azure 入口網站中，您可以將 Bastion 部署至您的虛擬網路。 部署 Bastion 之後，您可以使用 Azure 入口網站透過私人 IP 位址連線至 VM。 您的 VM 不需要公用 IP 位址或特殊軟體。 佈建服務後，相同虛擬網路中的所有虛擬機器都將可使用 RDP/SSH 體驗。 如需 Azure Bastion 的詳細資訊，請參閱[什麼是 Azure Bastion？](bastion-overview.md)。
 
@@ -47,27 +47,27 @@ ms.locfileid: "92078539"
 本節將協助您在 VNet 中建立堡壘物件。 必須要有此物件，才能對 VNet 中的 VM 建立安全連線。
 
 1. 在 [首頁] 中，選取 [+ 建立資源]。
-1. 在 [新增] 頁面上的 [搜尋] 方塊中輸入 **Bastion**，然後選取 [輸入] 以取得搜尋結果。 在 **Bastion** 的結果上，確認發行者為 Microsoft。
+1. 在 [新增] 頁面上的 [搜尋] 方塊中輸入 **Bastion** ，然後選取 [輸入] 以取得搜尋結果。 在 **Bastion** 的結果上，確認發行者為 Microsoft。
 1. 選取 [建立]。
 1. 在 [建立 Bastion] 頁面上，設定新的 Bastion 資源。
 
    :::image type="content" source="./media/tutorial-create-host-portal/bastion-basics.png" alt-text="建立 Bastion 主機" lightbox="./media/tutorial-create-host-portal/bastion-basics.png":::
 
     * 訂用帳戶：您要用來建立新 Bastion 資源的 Azure 訂用帳戶。
-    * **資源群組**：將在其中建立新 Bastion 資源的 Azure 資源群組。 如果您沒有現有資源群組，可以建立新的資源群組。
-    * **名稱**：新 Bastion 資源的名稱。
-    * **區域**：將在其中建立資源的 Azure 公用區域。
-    * **虛擬網路**：將在其中建立 Bastion 資源的虛擬網路。 您可以在此程序執行期間於入口網站中建立新的虛擬網路，或使用現有的虛擬網路。 如果您使用現有的虛擬網路，請確定現有的虛擬網路有足夠的可用位址空間來容納 Bastion 子網路需求。 如果您在下拉式清單中看不到您的虛擬網路，請確定您已選取正確的資源群組。
-    * **子網路**：在您建立或選取虛擬網路後，子網路欄位就會出現。 虛擬網路中將部署新 Bastion 主機的子網路。 此子網路將專門用於 Bastion 主機。 選取 [管理子網路設定]，然後建立 Azure Bastion 子網路。 選取 [+ 子網路]，並使用下列指導方針建立子網路：
+    * **資源群組** ：將在其中建立新 Bastion 資源的 Azure 資源群組。 如果您沒有現有資源群組，可以建立新的資源群組。
+    * **名稱** ：新 Bastion 資源的名稱。
+    * **區域** ：將在其中建立資源的 Azure 公用區域。
+    * **虛擬網路** ：將在其中建立 Bastion 資源的虛擬網路。 您可以在此程序執行期間於入口網站中建立新的虛擬網路，或使用現有的虛擬網路。 如果您使用現有的虛擬網路，請確定現有的虛擬網路有足夠的可用位址空間來容納 Bastion 子網路需求。 如果您在下拉式清單中看不到您的虛擬網路，請確定您已選取正確的資源群組。
+    * **子網路** ：在您建立或選取虛擬網路後，子網路欄位就會出現。 虛擬網路中將部署新 Bastion 主機的子網路。 此子網路將專門用於 Bastion 主機。 選取 [管理子網路設定]，然後建立 Azure Bastion 子網路。 選取 [+ 子網路]，並使用下列指導方針建立子網路：
 
-         * 子網路必須命名為 **AzureBastionSubnet**。
+         * 子網路必須命名為 **AzureBastionSubnet** 。
          * 子網路至少必須是 /27 或更大。
 
       您不需要填寫其他欄位。 選取 [確定]，然後在頁面頂端選取 [建立 Bastion]，以返回 [Bastion 設定] 頁面。
-    * **公用 IP 位址**：將存取 RDP/SSH (透過連接埠 443) 之 Bastion 資源的公用 IP。 建立新的公用 IP。 公用 IP 位址必須與您建立的 Bastion 資源位於相同的區域中。 此 IP 位址與您要連線到的任何 VM 都無關。 這是 Bastion 主機資源的公用 IP。
-    * **公用 IP 位址名稱**：公用 IP 位址資源的名稱。 在本教學課程中，您可以保留預設值。
-    * **公用 IP 位址 SKU**：依預設會為此設定預先填入 [標準]。 Azure Bastion 僅使用/支援標準公用 IP SKU。
-    * **指派**：依預設會為此設定預先填入 [靜態]。
+    * **公用 IP 位址** ：將存取 RDP/SSH (透過連接埠 443) 之 Bastion 資源的公用 IP。 建立新的公用 IP。 公用 IP 位址必須與您建立的 Bastion 資源位於相同的區域中。 此 IP 位址與您要連線到的任何 VM 都無關。 這是 Bastion 主機資源的公用 IP。
+    * **公用 IP 位址名稱** ：公用 IP 位址資源的名稱。 在本教學課程中，您可以保留預設值。
+    * **公用 IP 位址 SKU** ：依預設會為此設定預先填入 [標準]。 Azure Bastion 僅使用/支援標準公用 IP SKU。
+    * **指派** ：依預設會為此設定預先填入 [靜態]。
 
 1. 當您完成設定的指定後，請選取 [檢閱 + 建立]。 值會受到驗證。 驗證通過後，您即可建立 Bastion 資源。
 1. 選取 [建立]。

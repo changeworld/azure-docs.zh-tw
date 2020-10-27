@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ea823a16714f9db85c3d5148bc8bb2ba7629b84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 427facaffa277ec44ee99d70681928f49fe31df8
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91565508"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278477"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>教學課程：使用 Xamarin 和 Azure Cosmos DB 建置行動應用程式
 
@@ -36,7 +36,7 @@ Azure Cosmos DB 為行動應用程式開發人員提供了下列重要功能：
 
 * 豐富的無結構描述資料查詢。 Azure Cosmos DB 會將資料以無結構描述 JSON 文件的形式儲存在異質集合中。 它提供[豐富且快速的查詢](how-to-sql-query.md)，不需要擔心結構描述或索引。
 * 快速的輸送量。 只需要幾毫秒就能使用 Azure Cosmos DB 讀取和寫入文件。 開發人員可以指定他們需要的輸送量，Azure Cosmos DB 則以 99.99% 可用性的 SLA 加以實現，適用於一致性很寬鬆的所有單一區域帳戶和所有多重區域帳戶，而所有多重區域資料庫帳戶則有 99.999% 的讀取可用性。
-* 規模無限制。 您的 Azure Cosmos 容器可[隨著應用程式成長](partition-data.md)。 您可以從小型資料大小和每秒數百個要求的輸送量著手。 您的集合或資料庫可以成長至數 PB 的資料以及每秒數億個要求的極大輸送量。
+* 規模無限制。 您的 Azure Cosmos 容器可[隨著應用程式成長](partitioning-overview.md)。 您可以從小型資料大小和每秒數百個要求的輸送量著手。 您的集合或資料庫可以成長至數 PB 的資料以及每秒數億個要求的極大輸送量。
 * 散布世界各地。 行動應用程式使用者總是忙個不停，經常在世界各地奔波。 Azure Cosmos DB 是[分散在世界各地的資料庫](distribute-data-globally.md)。 按一下地圖，讓使用者能夠存取您的資料。
 * 內建豐富授權。 使用 Azure Cosmos DB 就能輕鬆實作熱門模式，例如[每位使用者的資料](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems)或多位使用者共用的資料，而不需要複雜的自訂授權程式碼。
 * 地理空間查詢。 許多行動應用程式目前都有提供地理情境體驗。 透過一流的[地理空間類型](geospatial.md)支援，Azure Cosmos DB 可讓您輕鬆實現這些體驗。
@@ -50,7 +50,7 @@ Azure Cosmos DB 為行動應用程式開發人員提供了下列重要功能：
 
 :::image type="content" source="media/mobile-apps-with-xamarin/cosmos-db-quickstart.png" alt-text="適用於行動應用程式的 Azure Cosmos DB 功能":::
 
-或者，如果您有現有的 Xamarin 應用程式，您可以新增 [Azure Cosmos DB NuGet 套件](sql-api-sdk-dotnet-core.md)。 Azure Cosmos DB 支援 Xamarin.IOS、Xamarin.Android 和 Xamarin Forms 共用程式庫。
+或者，如果您有現有的 Xamarin 應用程式，您可以新增 [Azure Cosmos DB NuGet 套件](sql-api-sdk-dotnet-core.md)。 Azure Cosmos DB 支援 Xamarin.iOS、Xamarin.Android 和 Xamarin Forms 共用程式庫。
 
 ### <a name="work-with-data"></a>使用資料
 您的資料記錄會以無結構描述 JSON 文件的形式儲存在 Azure Cosmos DB 的異質集合中。 您可以在相同的集合中使用不同結構儲存文件：

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: jasonh
-ms.openlocfilehash: 67a2c9537851343e8e5dad4a3654b31082e83d11
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 72f40a980a2f7039d036ca14c549bae8ab45abb2
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409607"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92279835"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 Gremlin API 簡介
 
@@ -48,7 +48,7 @@ Azure Cosmos DB 是一種完全受控的圖表資料庫，提供全域散發、�
 
   Azure Cosmos DB 能消除資料庫和電腦資源的管理需求。 大部分的現有圖形資料庫平台都受制於其基礎結構限制，而且往往需要較高程度的維護，以確保其作業正常運作。 
   
-  作為完全受控的服務，Cosmos DB 可讓您不需要管理虛擬機器、更新執行階段軟體、管理分區化或複寫，或處理複雜的資料層升級。 每個圖表都會自動備份，以防區域性失敗。 這些保證可讓開發人員專注在開發應用程式值，而不是操作和管理圖形資料庫。 
+  作為完全受控的服務，Cosmos DB 可讓您不需要管理虛擬機器、更新執行階段軟體、管理分區化或複寫，或處理複雜的資料層升級。 每個圖表都會自動備份，以防區域性失敗。 這可讓開發人員專注在開發應用程式值，而不是操作和管理圖形資料庫。 
 
 * **自動編製索引**
 
@@ -108,21 +108,21 @@ Azure Cosmos DB 是一種完全受控的圖表資料庫，提供全域散發、�
 
 :::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Azure Cosmos DB 圖表架構" border="false"::: 
 
-此圖形有下列*頂點*類型 (在 Gremlin 中稱為「標籤」)︰
+此圖形有下列 *頂點* 類型 (在 Gremlin 中稱為「標籤」)︰
 
-* **人員**：圖表中有三個人：Robin、Thomas 和 Ben
-* **興趣**：在此範例中他們的興趣是足球比賽
-* **裝置**：人員使用的裝置
-* **作業系統**：執行裝置的作業系統
-* **位置**：從中存取裝置的位置
+* **人員** ：圖表中有三個人：Robin、Thomas 和 Ben
+* **興趣** ：在此範例中他們的興趣是足球比賽
+* **裝置** ：人員使用的裝置
+* **作業系統** ：執行裝置的作業系統
+* **位置** ：從中存取裝置的位置
 
-我們透過下列*邊緣*類型，表示這些實體之間的關聯性︰
+我們透過下列 *邊緣* 類型，表示這些實體之間的關聯性︰
 
-* **認識**：例如，「Thomas 認識 Robin」
-* **有興趣**：在圖表中表示人員的興趣，例如「Ben 對足球有興趣」
-* **執行 OS**︰膝上型電腦執行 Windows OS
-* **使用**：代表某個人使用的裝置。 例如，Robin 使用序號 77 的 Motorola 手機
-* **位於**：代表從中存取裝置的位置
+* **認識** ：例如，「Thomas 認識 Robin」
+* **有興趣** ：在圖表中表示人員的興趣，例如「Ben 對足球有興趣」
+* **執行 OS** ︰膝上型電腦執行 Windows OS
+* **使用** ：代表某個人使用的裝置。 例如，Robin 使用序號 77 的 Motorola 手機
+* **位於** ：代表從中存取裝置的位置
 
 Gremlin 主控台是 Apache TinkerPop 所提供的互動式終端機，此終端機會用來與圖表資料互動。 若要深入了解，請參閱[如何使用 Gremlin 主控台](create-graph-gremlin-console.md)的快速入門文件。 也可以在您選擇的平台 (Java、Node.js、Python 或 .NET) 使用 Gremlin 驅動程式執行這些作業。 下列範例會示範如何使用 Gremlin 主控台對此圖表資料執行查詢。
 

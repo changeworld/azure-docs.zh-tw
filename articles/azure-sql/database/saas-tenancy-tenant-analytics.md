@@ -11,21 +11,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 19c09bd03a3d1eb3b16f69b9a605a4ccb763030a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8076b417c8043a4f6796ccca0e67db79360ede73
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619537"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331663"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>在單一租用戶應用程式中使用擷取的資料執行跨租用戶分析
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
  
 在此教學課程中，您會逐步完成單一租用戶實作的完整分析案例。 案例會示範分析如何讓企業做出智慧的決策。 使用從每個租用戶資料庫擷取的資料，您使用分析來取得租用戶行為的深入解析，包括他們對於範例 Wingtip Tickets SaaS 應用程式的使用。 這個案例牽涉到三個步驟： 
 
-1.  從每個租用戶資料庫**擷取**資料並**載入**至分析存放區。
-2.  針對分析處理**轉換擷取的資料**。
-3.  使用**商業智慧**工具來繪製出有用的深入解析，可以引導決策進行。 
+1.  從每個租用戶資料庫 **擷取** 資料並 **載入** 至分析存放區。
+2.  針對分析處理 **轉換擷取的資料** 。
+3.  使用 **商業智慧** 工具來繪製出有用的深入解析，可以引導決策進行。 
 
 在本教學課程中，您將了解如何：
 
@@ -44,7 +44,7 @@ ms.locfileid: "91619537"
 
 當所有資料都在一個多租用戶資料庫時，存取所有租用戶的資料就相當簡單。 但是當資料散佈在可能是上千個資料庫時，存取就更加複雜。 駕馭複雜性並且將對於交易資料之分析查詢影響降到最低的一個方法是，將資料擷取至專門設計的分析資料庫或資料倉儲。
 
-此教學課程會呈現 Wingtip Tickets SaaS 應用程式的完整分析案例。 首先，彈性作業** 是用來從每個租用戶資料庫擷取資料，並將其載入至分析存放區中的暫存表格。 分析存放區可以是 SQL Database 或 SQL 集區。 針對大規模資料擷取，建議使用 [Azure Data Factory](../../data-factory/introduction.md)。
+此教學課程會呈現 Wingtip Tickets SaaS 應用程式的完整分析案例。 首先，彈性作業  是用來從每個租用戶資料庫擷取資料，並將其載入至分析存放區中的暫存表格。 分析存放區可以是 SQL Database 或 SQL 集區。 針對大規模資料擷取，建議使用 [Azure Data Factory](../../data-factory/introduction.md)。
 
 接下來，彙總的資料會轉換成一組[星狀結構描述](https://www.wikipedia.org/wiki/Star_schema)資料表。 資料表是由一個中央的事實資料表，再加上相關的維度資料表所組成。  針對 Wingtip Tickets：
 
@@ -70,62 +70,62 @@ ms.locfileid: "91619537"
 若要完成本教學課程，請確定符合下列必要條件：
 
 - 已部署 Wingtip Tickets SaaS Database Per Tenant 應用程式。 若要在五分鐘內完成部署，請參閱[部署及探索 Wingtip SaaS 應用程式](../../sql-database/saas-dbpertenant-get-started-deploy.md)
-- Wingtip Tickets SaaS Database Per Tenant 指令碼和應用程式[原始程式碼](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/)是從 GitHub 下載。 請參閱下載指示。 請務必在擷取檔案內容之前解除封鎖 zip 檔案**。 關於下載和解除封鎖 Wingtip Tickets SaaS 指令碼的步驟，請參閱[一般指引](saas-tenancy-wingtip-app-guidance-tips.md)。
+- Wingtip Tickets SaaS Database Per Tenant 指令碼和應用程式[原始程式碼](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/)是從 GitHub 下載。 請參閱下載指示。 請務必在擷取檔案內容之前解除封鎖 zip 檔案  。 關於下載和解除封鎖 Wingtip Tickets SaaS 指令碼的步驟，請參閱[一般指引](saas-tenancy-wingtip-app-guidance-tips.md)。
 - Power BI Desktop 已安裝。 [下載 Power BI Desktop](https://powerbi.microsoft.com/downloads/)
-- 已佈建額外租用戶的批次，請參閱[**佈建租用戶教學課程**](../../sql-database/saas-dbpertenant-provision-and-catalog.md)。
-- 已建立作業帳戶和作業帳戶資料庫。 請參閱[**結構描述管理教學課程**](../../sql-database/saas-tenancy-schema-management.md#create-a-job-agent-database-and-new-job-agent)中的適當步驟。
+- 已佈建額外租用戶的批次，請參閱 [**佈建租用戶教學課程**](../../sql-database/saas-dbpertenant-provision-and-catalog.md)。
+- 已建立作業帳戶和作業帳戶資料庫。 請參閱 [**結構描述管理教學課程**](../../sql-database/saas-tenancy-schema-management.md#create-a-job-agent-database-and-new-job-agent)中的適當步驟。
 
 ### <a name="create-data-for-the-demo"></a>建立資料以供示範
 
-在本教學課程中，分析是在票證銷售資料上執行。 在目前的步驟中，您會為所有租用戶產生票證資料。  稍後會擷取此資料以進行分析。 請確定您已如先前所述佈建租用戶的批次，以便獲得有意義的資料數量**。 足夠數量的資料可以公開不同票證購買模式的範圍。
+在本教學課程中，分析是在票證銷售資料上執行。 在目前的步驟中，您會為所有租用戶產生票證資料。  稍後會擷取此資料以進行分析。 請確定您已如先前所述佈建租用戶的批次，以便獲得有意義的資料數量  。 足夠數量的資料可以公開不同票證購買模式的範圍。
 
-1. 在 PowerShell ISE 中，開啟 …\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1**，然後設定下列值：
+1. 在 PowerShell ISE 中，開啟 …\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1  ，然後設定下列值：
     - **$DemoScenario** = **1** 購買各地事件的票證
 2. 按 **F5** 以執行指令碼並建立各地點中各個事件的票證購買歷程記錄。  指令碼會執行數分鐘以產生數以萬計的票證。
 
 ### <a name="deploy-the-analytics-store"></a>部署分析存放區
 通常會有數個交易式資料庫一起保留所有租用戶資料。 您必須從多個交易式資料庫將租用戶資料彙總至一個分析存放區。 彙總可以有效查詢資料。 在本教學課程中，Azure SQL Database 會用來儲存彙總的資料。
 
-在下列步驟中，您會部署分析存放區，稱為 **tenantanalytics**。 您也可以部署預先定義的資料表，稍後會在本教學課程中填入：
-1. 在 PowerShell ISE 中，開啟 …\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1** 
+在下列步驟中，您會部署分析存放區，稱為 **tenantanalytics** 。 您也可以部署預先定義的資料表，稍後會在本教學課程中填入：
+1. 在 PowerShell ISE 中，開啟 …\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1  
 2. 在指令碼中設定 $DemoScenario 變數，以符合您對於分析存放區的選擇：
     - 若要使用沒有資料行存放區的 SQL Database，請設定 **$DemoScenario** = **2**
     - 若要使用具有資料行存放區的 SQL Database，請設定 **$DemoScenario** = **3**  
-3. 按 **F5** 以執行可建立租用戶分析存放區的示範指令碼 (它會呼叫 Deploy-TenantAnalytics\<XX>.ps1** 指令碼)。 
+3. 按  指令碼)。 
 
-您已經部署應用程式，並且使用感興趣的租用戶資料填入，請使用 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 來連線 **tenants1-dpt-&lt;User&gt;** 和 **catalog-dpt-&lt;User&gt;** 伺服器，使用登入 = developer，密碼 = *P\@ssword1*。 如需詳細指引，請參閱[簡介教學課程](../../sql-database/saas-dbpertenant-wingtip-app-overview.md)。
+您已經部署應用程式，並且使用感興趣的租用戶資料填入，請使用 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 來連線 **tenants1-dpt-&lt;User&gt;** 和 **catalog-dpt-&lt;User&gt;** 伺服器，使用登入 = developer，密碼 = *P\@ssword1* 。 如需詳細指引，請參閱[簡介教學課程](../../sql-database/saas-dbpertenant-wingtip-app-overview.md)。
 
-![architectureOverView](./media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
+![螢幕擷取畫面：顯示要連線到 SQL Server 所需的資訊。](./media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
 在 [物件總管] 中，執行下列步驟：
 
-1. 展開 tenants1-dpt-&lt;User&gt;** 伺服器。
+1. 展開 tenants1-dpt-&lt;User&gt; 伺服器。
 2. 展開 [資料庫] 節點，並查看租用戶資料庫的清單。
-3. 展開 catalog-dpt-&lt;User&gt;** 伺服器。
+3. 展開 catalog-dpt-&lt;User&gt; 伺服器。
 4. 請確認您看到分析存放區和 jobaccount 資料庫。
 
 藉由展開分析存放區節點，查看 SSMS 物件總管中的下列資料庫項目：
 
 - 資料表 **TicketsRawData** 和 **EventsRawData** 會保存來自租用戶資料庫的未經處理擷取資料。
-- 星狀結構描述資料表是 **fact_Tickets**、**dim_Customers**、**dim_Venues**、**dim_Events** 和 **dim_Dates**。
+- 星狀結構描述資料表是 **fact_Tickets** 、 **dim_Customers** 、 **dim_Venues** 、 **dim_Events** 和 **dim_Dates** 。
 - 預存程序是用來從未經處理資料資料表填入星狀結構描述資料表。
 
-![architectureOverView](./media/saas-tenancy-tenant-analytics/tenantAnalytics.png)
+![SSMS 物件總管中所顯示資料庫項目的螢幕擷取畫面。](./media/saas-tenancy-tenant-analytics/tenantAnalytics.png)
 
 ## <a name="data-extraction"></a>資料擷取 
 
 ### <a name="create-target-groups"></a>建立目標群組 
 
-繼續之前，請確定您已部署作業帳戶與 jobaccount 資料庫。 在下一組步驟中，彈性作業是用來從每個租用戶資料庫擷取資料，然後將資料儲存在分析存放區。 然後，第二個作業會切割資料，並將它儲存到星狀結構描述中的資料表。 這兩個作業會針對兩個不同的目標群組執行，也就是 **TenantGroup** 和 **AnalyticsGroup**。 擷取作業會針對 TenantGroup 執行，該群組包含所有租用戶資料庫。 切割作業會針對 AnalyticsGroup 執行，該群組只包含分析存放區。 使用下列步驟建立目標群組：
+繼續之前，請確定您已部署作業帳戶與 jobaccount 資料庫。 在下一組步驟中，彈性作業是用來從每個租用戶資料庫擷取資料，然後將資料儲存在分析存放區。 然後，第二個作業會切割資料，並將它儲存到星狀結構描述中的資料表。 這兩個作業會針對兩個不同的目標群組執行，也就是 **TenantGroup** 和 **AnalyticsGroup** 。 擷取作業會針對 TenantGroup 執行，該群組包含所有租用戶資料庫。 切割作業會針對 AnalyticsGroup 執行，該群組只包含分析存放區。 使用下列步驟建立目標群組：
 
 1. 在 SSMS 中，連線至 catalog-dpt-&lt;User&gt; 中的 **jobaccount** 資料庫。
-2. 在 SSMS 中，開啟 …\Learning Modules\Operational Analytics\Tenant Analytics\ TargetGroups.sql** 
+2. 在 SSMS 中，開啟 …\Learning Modules\Operational Analytics\Tenant Analytics\ TargetGroups.sql  
 3. 在指令碼上方修改 @User 變數，將 `<User>` 取代為您部署 Wingtip SaaS 應用程式時使用的使用者值。
 4. 按下 **F5** 以執行指令碼，該指令碼會建立這兩個目標群組。
 
 ### <a name="extract-raw-data-from-all-tenants"></a>從所有租用戶擷取未經處理資料
 
-票證和客戶** 資料可能會比事件和地點** 資料更常發生大量資料修改。 因此，相較於擷取事件和地點資料，請考慮個別且更頻繁地擷取票證和客戶資料。 在本節中，您會定義及排程兩個個別的作業：
+票證和客戶  資料可能會比事件和地點  資料更常發生大量資料修改。 因此，相較於擷取事件和地點資料，請考慮個別且更頻繁地擷取票證和客戶資料。 在本節中，您會定義及排程兩個個別的作業：
 
 - 擷取票證和客戶資料。
 - 擷取事件和地點資料。
@@ -133,14 +133,14 @@ ms.locfileid: "91619537"
 每個作業都會擷取其資料，並將它張貼至分析存放區。 個別作業會將擷取的資料分割為分析星狀結構描述。
 
 1. 在 SSMS 中，連線至 catalog-dpt-&lt;User&gt; 伺服器中的 **jobaccount** 資料庫。
-2. 在 SSMS 中，開啟 ...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql**。
+2. 在 SSMS 中，開啟 ...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql  。
 3. 在指令碼上方修改 @User，並且將 `<User>` 取代為您部署 Wingtip SaaS 應用程式時使用的使用者名稱 
 4. 按下 F5 以執行指令碼，該指令碼會建立和執行作業，從每個租用戶資料庫擷取票證和客戶資料。 作業會將資料儲存至分析存放區。
 5. 查詢 tenantanalytics 資料庫中的 TicketsRawData 資料表，以確定資料表已填入來自所有租用戶的票證資訊。
 
 ![螢幕擷取畫面顯示在物件總管中選取了 TicketsRawData d b 的 ExtractTickets 資料庫。](./media/saas-tenancy-tenant-analytics/ticketExtracts.png)
 
-重複上述步驟，但是這次在步驟 2 中將 **\ExtractTickets.sql** 取代為 **\ExtractVenuesEvents.sql**。
+重複上述步驟，但是這次在步驟 2 中將 **\ExtractTickets.sql** 取代為 **\ExtractVenuesEvents.sql** 。
 
 已成功使用來自所有租用戶的新事件和地點資訊，執行作業填入分析存放區中的 EventsRawData 資料表。 
 
@@ -153,10 +153,10 @@ ms.locfileid: "91619537"
 在本章節的教學課程中，您會定義和執行作業，合併擷取的未經處理資料與星狀結構描述資料表中的資料。 合併作業完成之後，未經處理資料會遭到刪除，讓資料表準備好由下一個租用戶資料擷取作業填入。
 
 1. 在 SSMS 中，連線至 catalog-dpt-&lt;User&gt; 中的 **jobaccount** 資料庫。
-2. 在 SSMS 中，開啟 …\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.sql**。
+2. 在 SSMS 中，開啟 …\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.sql  。
 3. 按下 **F5** 以執行指令碼，定義會呼叫分析存放區中 sp_ShredRawExtractedData 預存程序的作業。
 4. 允許足夠時間讓作業成功執行。
-    - 請檢查 jobs.jobs_execution 資料表的**生命週期**資料行，以取得作業的狀態。 請確認作業「已成功」****，再繼續作業。 成功的執行會顯示類似下圖的資料：
+    - 請檢查 jobs.jobs_execution 資料表的 **生命週期** 資料行，以取得作業的狀態。 請確認作業「已成功」  ，再繼續作業。 成功的執行會顯示類似下圖的資料：
 
 ![切割](./media/saas-tenancy-tenant-analytics/shreddingJob.PNG)
 
@@ -169,17 +169,17 @@ ms.locfileid: "91619537"
 使用下列步驟以連線至 Power BI，以及匯入您稍早建立的檢視：
 
 1. 啟動 Power BI Desktop。
-2. 從 [常用] 功能區選取 [取得資料]****，然後選取 [更多…]**** 。
-3. 在 [取得資料]**** 視窗中，選取 [Azure SQL Database]。
-4. 在資料庫登入視窗中，輸入您的伺服器名稱 (catalog-dpt-&lt;User&gt;.database.windows.net)。 針對 [資料連線模式]**** 選取 [匯入]****，然後按一下 [確定]。 
+2. 從 [常用] 功能區選取 [取得資料]  ，然後選取 [更多…]  。
+3. 在 [取得資料]  視窗中，選取 [Azure SQL Database]。
+4. 在資料庫登入視窗中，輸入您的伺服器名稱 (catalog-dpt-&lt;User&gt;.database.windows.net)。 針對 [資料連線模式]  選取 [匯入]  ，然後按一下 [確定]。 
 
     ![signinpowerbi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. 在左窗格中選取 [資料庫]，然後輸入使用者名稱 = developer，輸入密碼 = P\@ssword1。 按一下 [ **連接**]。  
+5. 在左窗格中選取 [資料庫]，然後輸入使用者名稱 = developer，輸入密碼 = P\@ssword1。 按一下 [ **連接** ]。  
 
     ![螢幕擷取畫面顯示 [SQL Server 資料庫] 對話方塊，您可以在其中輸入使用者名稱和密碼。](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
-6. 在分析資料庫底下的 [導覽]**** 窗格中，選取星狀結構描述資料表：fact_Tickets dim_Events、dim_Venues、dim_Customers 和 dim_Dates。 然後選取 [載入]****。 
+6. 在分析資料庫底下的 [導覽]  窗格中，選取星狀結構描述資料表：fact_Tickets dim_Events、dim_Venues、dim_Customers 和 dim_Dates。 然後選取 [載入]  。 
 
 恭喜！ 您已成功將資料載入 Power BI。 現在您可以開始探索有趣的視覺效果，協助您深入解析您的租用戶。 接下來您會逐步了解分析如何讓您將資料驅動的建議提供給 Wingtip 票證業務小組。 建議可協助最佳化商務模型和客戶體驗。
 
@@ -209,7 +209,7 @@ Contoso Concert Hall 的上述繪圖顯示並非所有事件都發生搶購熱�
 
 票證銷售模式的深入解析可能會引導 Wingtip Tickets 最佳化其商務模型。 Wingtip 或許應該引進不同計算大小的服務層級，而非對所有租用戶平均收費。 可以為需要每日銷售更多票證的較大地點，提供具有較高服務等級協定 (SLA) 的較高層級。 這些地點可以將其資料庫放在具有較高每個資料庫資源限制的集區中。 每個服務層級可以有每小時銷售配置，針對超過的配置收取額外費用。 具有定期銷售爆發的較大地點可以從較高的層級獲益，Wingtip Tickets 也可以更有效率地從其服務創造營收。
 
-同時，有些 Wingtip Tickets 客戶抱怨，他們在銷售足夠票證以攤平服務成本方面有難處。 或許在這些深入解析中，有機會可以為表現不佳的地點促進票證銷售。 較高的銷售會增加服務的認知值。 以滑鼠右鍵按一下 fact_Tickets，然後選取 [新的量值]****。 針對稱為 **AverageTicketsSold** 的新量值輸入下列運算式：
+同時，有些 Wingtip Tickets 客戶抱怨，他們在銷售足夠票證以攤平服務成本方面有難處。 或許在這些深入解析中，有機會可以為表現不佳的地點促進票證銷售。 較高的銷售會增加服務的認知值。 以滑鼠右鍵按一下 fact_Tickets，然後選取 [新的量值]  。 針對稱為 **AverageTicketsSold** 的新量值輸入下列運算式：
 
 ```
 AverageTicketsSold = AVERAGEX( SUMMARIZE( TableName, TableName[Venue Name] ), CALCULATE( SUM(TableName[Tickets Sold] ) ) )

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 019a9264beddafbd4585810967551e064592e94d
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 4fbfbd1d578eb77d50d91413efb9f9fbf28e115f
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602518"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146313"
 ---
 # <a name="whats-new-in-custom-vision"></a>自訂視覺的新功能
 
@@ -23,9 +23,9 @@ ms.locfileid: "90602518"
 
 ## <a name="july-2020"></a>2020 年 7 月
 
-### <a name="role-based-access-control"></a>角色型存取控制
+### <a name="azure-role-based-access-control"></a>Azure 角色型存取控制
 
-* 自訂視覺支援 Azure 角色型存取控制 (Azure RBAC) 授權系統，可用於管理 Azure 資源的個別存取權。 若要了解如何管理自訂視覺專案的存取權，請參閱[角色型存取控制](./role-based-access-control.md)。
+* 自訂視覺支援 Azure 角色型存取控制 (Azure RBAC) 授權系統，可用於管理 Azure 資源的個別存取權。 若要了解如何管理自訂視覺專案的存取權，請參閱 [Azure 角色型存取控制](./role-based-access-control.md)。
 
 ### <a name="subset-training"></a>子集訓練
 

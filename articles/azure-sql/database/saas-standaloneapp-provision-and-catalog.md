@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: efee261478cdc8b9b5349ef4c69ab5fc250315c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc12d1359ab7b6f664326cd3be448b79809c53e2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619452"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92332173"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>使用每一租用戶一個應用程式 SaaS 模式，佈建新租用戶及編目
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,13 +39,13 @@ ms.locfileid: "91619452"
 
 雖然每個租用戶的應用程式和資料庫均徹底隔離，不過還是有幾個涉及多個租用戶的管理和分析案例。  舉例來說，若要為新版應用程式套用結構描述變更，就必須變更每個租用戶資料庫的結構描述。 報告和分析案例也需要存取所有租用戶資料庫才能完成，無論資料庫部署在何處皆然。
 
-   ![每一租用戶一個應用程式模式](./media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern-with-catalog.png)
+   ![此圖顯示如何將租用戶目錄與每一租用戶的應用程式模式搭配使用。](./media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern-with-catalog.png)
 
 租用戶目錄能保存租用戶識別碼與租用戶資料庫之間的對應，允許將識別碼解析為伺服器和資料庫名稱。  在 Wingtip SaaS 應用程式中，租用戶識別碼採用租用戶名稱雜湊的形式加以計算，不過您也可以使用其他機制。  雖然獨立應用程式不需要目錄來管理連線，不過目錄能針對一組租用戶資料庫界定採取動作時的範圍。 舉例來說，彈性查詢能使用目錄來決定一組資料庫，界定要將跨租用戶報告的查詢要散發到哪些資料庫。
 
 ## <a name="elastic-database-client-library"></a>彈性資料庫用戶端程式庫
 
-在 Wingtip SaaS 範例應用程式中，目錄的實作乃使用[彈性資料庫用戶端程式庫](elastic-database-client-library.md) (EDCL) 的分區管理功能。  此程式庫可讓應用程式建立、管理及使用資料庫中所儲存的分區對應。 在 Wingtip Tickets 範例中，目錄會儲存在「租用戶目錄」** 資料庫中。  分區能讓租用戶索引鍵與儲存租用戶資料的分區 (資料庫) 相對應。  EDCL 函式負責管理儲存在「租用戶目錄」** 資料庫表格中的「全域分區對應」**，以及儲存在每個分區中的「本機分區對應」**。
+在 Wingtip SaaS 範例應用程式中，目錄的實作乃使用[彈性資料庫用戶端程式庫](elastic-database-client-library.md) (EDCL) 的分區管理功能。  此程式庫可讓應用程式建立、管理及使用資料庫中所儲存的分區對應。 在 Wingtip Tickets 範例中，目錄會儲存在「租用戶目錄」  資料庫中。  分區能讓租用戶索引鍵與儲存租用戶資料的分區 (資料庫) 相對應。  EDCL 函式負責管理儲存在「租用戶目錄」  資料庫表格中的「全域分區對應」  ，以及儲存在每個分區中的「本機分區對應」  。
 
 您可以從應用程式或 PowerShell 指令碼叫用 EDCL 函式來建立及管理分區對應中的項目， 也可以使用其他 EDCL 函式來擷取分區集合，或讓特定租用戶索引鍵與正確的資料庫連線。
 
@@ -79,11 +79,11 @@ Azure Resource Manager 範本可用來部署及設定應用程式、建立租用
 
 在這項工作中，您將了解如何佈建用來註冊所有租用戶資料庫的目錄。 您將會：
 
-* 使用 Azure 資源管理範本**佈建目錄資料庫**。 資料庫將會在 bacpac 檔案匯入後初始化。
-* **註冊先前部署的範例租用戶應用程式**。  每個租用戶在註冊時，都會使用從租用戶名稱雜湊建構而成的索引鍵。  租用戶名稱也會儲存在目錄的延伸模組資料表中。
+* 使用 Azure 資源管理範本 **佈建目錄資料庫** 。 資料庫將會在 bacpac 檔案匯入後初始化。
+* **註冊先前部署的範例租用戶應用程式** 。  每個租用戶在註冊時，都會使用從租用戶名稱雜湊建構而成的索引鍵。  租用戶名稱也會儲存在目錄的延伸模組資料表中。
 
-1. 在 PowerShell ISE 中，開啟 *...\Learning Modules\UserConfig.psm*，接著將 **\<user\>** 值更新為部署三個範例應用程式時使用的值。  **儲存檔案**。
-1. 在 PowerShell ISE 中，開啟 *...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1*，並設定 **$Scenario = 1**。 部署租用戶目錄並註冊預先定義的租用戶。
+1. 在 PowerShell ISE 中，開啟 *...\Learning Modules\UserConfig.psm* ，接著將 **\<user\>** 值更新為部署三個範例應用程式時使用的值。  **儲存檔案** 。
+1. 在 PowerShell ISE 中，開啟 *...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* ，並設定 **$Scenario = 1** 。 部署租用戶目錄並註冊預先定義的租用戶。
 
 1. 將游標置於顯示 `& $PSScriptRoot\New-Catalog.ps1` 該行的任意位置，然後按 **F9** 新增中斷點。
 
@@ -98,8 +98,8 @@ Azure Resource Manager 範本可用來部署及設定應用程式、建立租用
 
 現在，請查看您建立的資源。
 
-1. 開啟 [Azure 入口網站](https://portal.azure.com/)，然後瀏覽至資源群組。  開啟**wingtip-sa-catalog-\<user\>** 資源群組，並記下目錄伺服器和資料庫。
-1. 在入口網站中開啟資料庫，再從左側功能表選取 [資料總管]**。  按一下 [登入] 命令，然後輸入密碼 = **P\@ssword1**。
+1. 開啟 [Azure 入口網站](https://portal.azure.com/)，然後瀏覽至資源群組。  開啟 **wingtip-sa-catalog-\<user\>** 資源群組，並記下目錄伺服器和資料庫。
+1. 在入口網站中開啟資料庫，再從左側功能表選取 [資料總管]  。  按一下 [登入] 命令，然後輸入密碼 = **P\@ssword1** 。
 
 
 1. 探索 *tenantcatalog* 資料庫的結構描述。
@@ -118,12 +118,12 @@ Azure Resource Manager 範本可用來部署及設定應用程式、建立租用
 
 在這項工作中，您將了解如何佈建單一租用戶應用程式。 您將會：
 
-* 為租用戶**建立新資源群組**。
-* 使用 Azure 資源管理範本將**應用程式和資料庫**佈建到新資源群組中。  該動作透過匯入 bacpac 檔案，將通用結構描述和參考資料將資料庫初始化。
-* **利用基本租用戶資訊將資料庫初始化**。 此動作包括指定場地類型，決定要在活動網站上當做背景的相片。
-* **在目錄資料庫中註冊資料庫**。
+* 為租用戶 **建立新資源群組** 。
+* 使用 Azure 資源管理範本將 **應用程式和資料庫** 佈建到新資源群組中。  該動作透過匯入 bacpac 檔案，將通用結構描述和參考資料將資料庫初始化。
+* **利用基本租用戶資訊將資料庫初始化** 。 此動作包括指定場地類型，決定要在活動網站上當做背景的相片。
+* **在目錄資料庫中註冊資料庫** 。
 
-1. 在 PowerShell ISE 中，開啟 *...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1*，並設定 **$Scenario = 2**。 部署租用戶目錄及註冊預先定義的租用戶
+1. 在 PowerShell ISE 中，開啟 *...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* ，並設定 **$Scenario = 2** 。 部署租用戶目錄及註冊預先定義的租用戶
 
 1. 將游標置於第 49 行 (顯示 `& $PSScriptRoot\New-TenantApp.ps1`) 的任意位置，然後按 **F9** 在指令碼中新增中斷點。
 1. 按 **F5** 執行指令碼。

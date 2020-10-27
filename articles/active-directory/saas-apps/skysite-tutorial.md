@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 1454be235c98e5348d1b57028d988252191ad270
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c522ae70314a5f9bf691e935f1f171cd66c938b0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88527973"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122376"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-skysite"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SKYSITE 整合
 
@@ -51,7 +51,7 @@ ms.locfileid: "88527973"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **SKYSITE**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **SKYSITE** 。
 1. 從結果面板選取 [SKYSITE]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -79,7 +79,7 @@ ms.locfileid: "88527973"
     * 複製 [使用者存取 URL]  ，而且您必須將其貼到 [設定 SKYSITE SSO]  區段中，本教學課程稍後會說明。
 
 1. 在 [SKYSITE]  應用程式整合頁面上，瀏覽至 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -88,15 +88,15 @@ ms.locfileid: "88527973"
 
 1. SKYSITE 應用程式需要特定格式的 SAML 判斷提示，因此您需要將自訂屬性對應新增至 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。 按一下 [編輯]  圖示，以開啟 [使用者屬性] 對話方塊。
 
-    ![image](common/edit-attribute.png)
+    ![顯示使用者屬性的螢幕擷取畫面，其中已選取 [編輯] 圖示。](common/edit-attribute.png)
 
 1. 除了以上屬性外，SKYSITE 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [群組宣告 (預覽)]  對話方塊的 [使用者屬性與宣告]  區段中，執行下列步驟：
 
-    a. 按一下 [宣告中傳回的群組]  旁的**筆**。
+    a. 按一下 [宣告中傳回的群組]  旁的 **筆** 。
 
-    ![image](./media/skysite-tutorial/config01.png)
+    ![顯示使用者宣告的螢幕擷取畫面，其中具有新增新宣告的選項。](./media/skysite-tutorial/config01.png)
 
-    ![image](./media/skysite-tutorial/config02.png)
+    ![顯示管理使用者宣告對話方塊的螢幕擷取畫面，您可以在其中輸入所述的值。](./media/skysite-tutorial/config02.png)
 
     b. 選取選項按鈕清單中的 [所有群組]  。
 
@@ -148,11 +148,11 @@ ms.locfileid: "88527973"
 
 4. 按一下頁面右上角的 [設定]  ，然後瀏覽至 [帳戶設定]  。
 
-    ![組態](./media/skysite-tutorial/config03.png)
+    ![此螢幕擷取畫面顯示從 [設定] 選取的帳戶設定。](./media/skysite-tutorial/config03.png)
 
 5. 切換至 [單一登入 (SSO)]  索引標籤，執行下列步驟：
 
-    ![組態](./media/skysite-tutorial/config04.png)
+    ![此螢幕擷取畫面顯示 [單一登入] 索引標籤，您可以在其中輸入所述的值。](./media/skysite-tutorial/config04.png)
 
     a. 在 [識別提供者登入 URL]  文字方塊中，貼上您從 Azure 入口網站 [屬性]  索引標籤複製的 [使用者存取 URL]  值。
 

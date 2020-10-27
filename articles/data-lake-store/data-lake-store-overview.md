@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: overview
 ms.date: 04/17/2019
 ms.author: twooley
-ms.openlocfilehash: 2ca6ceb326a1fd6f7aaf5a9871d043377e60de83
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 52c00359fb4e759d9517dee958e31c00feb2b33e
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85508549"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149246"
 ---
 # <a name="what-is-azure-data-lake-storage-gen1"></a>什麼是 Azure Data Lake Storage Gen1？
 
@@ -60,7 +60,7 @@ Data Lake Storage Gen1 會使用 Azure Active Directory (Azure AD) 進行驗證�
 
 | 特徵 | 描述 |
 | --- | --- |
-| 驗證 |Data Lake Storage Gen1 會與 Azure AD 整合，可對 Data Lake Storage Gen1 中儲存的所有資料進行身分識別與存取管理。 由於整合的結果，Data Lake Storage Gen1 受惠於所有 Azure AD 功能，例如多重要素驗證、條件式存取、角色型存取控制、應用程式使用情況監視、安全性監視與警示等等。 Data Lake Storage Gen1 支援 OAuth 2.0 通訊協定以便在 REST 介面中進行驗證。 請參閱 [Data Lake Storage Gen1 驗證](data-lakes-store-authentication-using-azure-active-directory.md)。|
+| 驗證 |Data Lake Storage Gen1 會與 Azure AD 整合，可對 Data Lake Storage Gen1 中儲存的所有資料進行身分識別與存取管理。 由於整合的結果，Data Lake Storage Gen1 受惠於所有 Azure AD 功能，例如多重要素驗證、條件式存取、Azure 角色型存取控制、應用程式使用情況監視、安全性監視與警示等等。 Data Lake Storage Gen1 支援 OAuth 2.0 通訊協定以便在 REST 介面中進行驗證。 請參閱 [Data Lake Storage Gen1 驗證](data-lakes-store-authentication-using-azure-active-directory.md)。|
 | 存取控制 |Data Lake Storage Gen1 透過支援 WebHDFS 通訊協定所公開的 POSIX 樣式權限，以提供存取控制。 您可以在根資料夾、子資料夾和個別檔案上啟用 ACL。 如需 ACL 如何在 Data Lake Storage Gen1 的環境中運作的詳細資訊，請參閱 [Data Lake Storage Gen1 中的存取控制](data-lake-store-access-control.md)。 |
 | 加密 |Data Lake Storage Gen1 也會為帳戶中儲存的資料提供加密功能。 您會在建立 Data Lake Storage Gen1 帳戶時指定加密設定。 您可以選擇將資料加密，或選擇不使用加密。 如需詳細資訊，請參閱 [Data Lake Storage Gen1 的加密](data-lake-store-encryption.md)。 如需如何提供加密相關設定的指示，請參閱[使用 Azure 入口網站開始使用 Data Lake Storage Gen1](data-lake-store-get-started-portal.md)。 |
 

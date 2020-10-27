@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 602ed2cca725814e4f150bc684036d166b8ff45a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 620a5dad7966347667e0a0a50eb30d562ab700b2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618994"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92330099"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>使用異地還原從資料庫備份復原多租用戶 SaaS 應用程式
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -184,7 +184,7 @@ ms.locfileid: "91618994"
 
 3. 在 PowerShell 視窗中監視復原程序的狀態。
 
-    ![復原程序](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
+    ![顯示 PowerShell 視窗的螢幕擷取畫面，您可以在其中監視復原流程的狀態。](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
 
 > [!NOTE]
 > 若要瀏覽復原作業的程式碼，請檢閱 ...\Learning Modules\Business Continuity and Disaster Recovery\DR-RestoreFromBackup\RecoveryJobs 資料夾中的 PowerShell 指令碼。
@@ -202,7 +202,7 @@ ms.locfileid: "91618994"
 
   * 如果您在租用戶離線時直接開啟租用戶的 [事件] 頁面，該頁面會顯示「租用戶離線」通知。 例如，在 Contoso Concert Hall 處於離線狀態時，嘗試開啟 http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall。
 
-    ![復原程序](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
+    ![顯示 [離線事件] 頁面的螢幕擷取畫面。](./media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
 ## <a name="provision-a-new-tenant-in-the-recovery-region"></a>在復原區域中佈建新租用戶
 即使在租用戶資料庫還原之前，您也可以在復原區域中佈建新的租用戶。 在復原區域中佈建的新租用戶資料庫，會在稍後與復原的資料庫一起回復。   

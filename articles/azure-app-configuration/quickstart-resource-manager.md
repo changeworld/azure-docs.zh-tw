@@ -4,24 +4,24 @@ titleSuffix: Azure App Configuration
 description: 了解如何使用 Azure Resource Manager 範本 (ARM 範本) 建立 Azure 應用程式組態存放區。
 author: ZhijunZhao
 ms.author: zhijzhao
-ms.date: 09/21/2020
+ms.date: 10/16/2020
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 840f907015e9673caba46998493b5cb705de5fb7
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: feabac62564729338e41bf30eaf8d9f5a6317126
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824182"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149009"
 ---
 # <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>快速入門：使用 ARM 範本建立 Azure 應用程式組態存放區
 
 本快速入門說明如何：
 
-- 使用 ARM 範本部署應用程式組態存放區
-- 使用 ARM 範本在應用程式組態存放區中建立索引鍵/值
-- 從 ARM 範本讀取應用程式組態存放區中的索引鍵/值
+- 使用 Azure Resource Manager 範本 (ARM 範本) 部署應用程式組態存放區。
+- 使用 ARM 範本在應用程式組態存放區中建立索引鍵/值。
+- 從 ARM 範本讀取應用程式組態存放區中的索引鍵/值。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -35,14 +35,14 @@ ms.locfileid: "91824182"
 
 ## <a name="review-the-template"></a>檢閱範本
 
-本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/en-us/resources/templates/101-app-configuration-store-kv/)。 其會建立具有兩個索引鍵/值的新應用程式組態存放區。 然後，使用 `reference` 函式來輸出兩個索引鍵/值資源的值。 以這種方式讀取索引鍵的值，可讓該值使用於範本中的其他位置。
+本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-app-configuration-store-kv/)。 其會建立具有兩個索引鍵/值的新應用程式組態存放區。 然後，使用 `reference` 函式來輸出兩個索引鍵/值資源的值。 以這種方式讀取索引鍵的值，可讓該值使用於範本中的其他位置。
 
 本快速入門使用 `copy` 元素來建立索引鍵/值資源的多個執行個體。 若要深入了解 `copy` 元素，請參閱 [ARM 範本中的資源反覆運算](../azure-resource-manager/templates/copy-resources.md)。
 
 > [!IMPORTANT]
 > 此範本需要應用程式組態資源提供者版本 `2020-07-01-preview` 或更新版本。 此版本會使用 `reference` 函式來讀取索引鍵/值。 從版本 `2020-07-01-preview` 開始，無法使用先前版本中用來讀取索引鍵/值的 `listKeyValue` 函式。
 
-:::code language="json" source="~/quickstart-templates/101-app-configuration-store-kv/azuredeploy.json" range="1-88" highlight="52-58,61-75,80,84":::
+:::code language="json" source="~/quickstart-templates/101-app-configuration-store-kv/azuredeploy.json":::
 
 範本中定義了兩個 Azure 資源：
 
@@ -83,8 +83,8 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 ## <a name="review-deployed-resources"></a>檢閱已部署的資源
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)
-1. 在 Azure 入口網站搜尋方塊中，鍵入**應用程式組態**。 從清單中選取 [應用程式組態]。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 在 Azure 入口網站搜尋方塊中，鍵入 **應用程式組態** 。 從清單中選取 [應用程式組態]。
 1. 選取新建立的應用程式組態資源。
 1. 在 [作業] 之下，按一下 [組態總管]。
 1. 確認有兩個索引鍵/值存在。

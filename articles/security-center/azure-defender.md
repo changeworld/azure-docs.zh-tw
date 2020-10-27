@@ -7,20 +7,20 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: bfff96666981a522cd6d91828604696a12ecad56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c354447625d58f65615f8d3efb596e7a723e0bbf
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576844"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331680"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender 簡介
 
 Azure 資訊安全中心的功能涵蓋雲端安全性的兩大要素：
 
-- **雲端安全性態勢管理 (CSPM)** - 資訊安全中心對於所有 Azure 使用者都是**免費**提供的。 免費體驗包括 CSPM 功能，例如安全分數、偵測 Azure 機器中的安全性設定錯誤、資產清查等等。 使用這些 CSPM 功能來強化您的混合式雲端態勢，並且追蹤內建原則的合規性。
+- **雲端安全性態勢管理 (CSPM)** - 資訊安全中心對於所有 Azure 使用者都是 **免費** 提供的。 免費體驗包括 CSPM 功能，例如安全分數、偵測 Azure 機器中的安全性設定錯誤、資產清查等等。 使用這些 CSPM 功能來強化您的混合式雲端態勢，並且追蹤內建原則的合規性。
 
-- **雲端工作負載保護 (CWP)** - 資訊安全中心的整合雲端工作負載保護平台 (CWPP)，**Azure Defender**，為您的 Azure 和混合式資源和工作負載提供進階、智慧型的保護。 啟用 Azure Defender 提供了一系列額外的安全性功能，如本頁面所述。 除了內建原則之外，當您啟用任何 Azure Defender 方案時，您可以新增自訂原則和計畫。 您可以新增法規標準 (例如 NIST 和 Azure CI) 和 Azure 安全性效能評定，以取得合規性的真正自訂檢視。
+- **雲端工作負載保護 (CWP)** - 資訊安全中心的整合雲端工作負載保護平台 (CWPP)， **Azure Defender** ，為您的 Azure 和混合式資源和工作負載提供進階、智慧型的保護。 啟用 Azure Defender 提供了一系列額外的安全性功能，如本頁面所述。 除了內建原則之外，當您啟用任何 Azure Defender 方案時，您可以新增自訂原則和計畫。 您可以新增法規標準 (例如 NIST 和 Azure CI) 和 Azure 安全性效能評定，以取得合規性的真正自訂檢視。
 
 資訊安全中心的 Azure Defender 儀表板可為您的環境提供 CWP 功能的可見度和控制權：
 
@@ -36,13 +36,14 @@ Azure Defender 可為虛擬機器、SQL 資料庫、容器、Web 應用程式及
 - [適用於 App Service 的 Azure Defender](defender-for-app-service-introduction.md)
 - [適用於儲存體的 Azure Defender](defender-for-storage-introduction.md)
 - [適用於 SQL 的 Azure Defender](defender-for-sql-introduction.md)
-- [適用於 IoT 的 Azure Defender](defender-for-iot-introduction.md)
 - [適用於 Kubernetes 的 Azure Defender](defender-for-kubernetes-introduction.md)
 - [適用於容器登錄的 Azure Defender](defender-for-container-registries-introduction.md)
 - [適用於 Key Vault 的 Azure Defender](defender-for-key-vault-introduction.md)
 
 這些方案會分別在資訊安全中心文件中說明。
 
+> [!TIP]
+> 適用於 Azure Defender 的 IoT (預覽) 是一種不同的產品。 您可以在[介紹適用於 Azure Defender 的 IoT (預覽)](../defender-for-iot/overview.md) 中找到所有詳細資料。 
 
 ## <a name="hybrid-cloud-protection"></a>混合式雲端保護
 
@@ -50,7 +51,6 @@ Azure Defender 可為虛擬機器、SQL 資料庫、容器、Web 應用程式及
 
 - 保護您的非 Azure 伺服器
 - 保護其他雲端中的虛擬機器 (例如 AWS 和 GCP)
-- 保護您的 IoT 裝置
 
 您將可根據本身的特定環境自訂威脅情報及排定警示的優先順序，以全心處理最重要的事務。
 

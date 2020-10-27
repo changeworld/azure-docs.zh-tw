@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 10cf06a829b991bfe15d7b24c4fc61d0fe22eaaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14ae5f01e23a7922f508c4a2674e1a3f29e354b8
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653710"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166058"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>使用 Jupyter Notebook 探索 Azure Machine Learning
 
@@ -58,6 +58,7 @@ ms.locfileid: "88653710"
 瀏覽[範例 Notebook](https://github.com/Azure/MachineLearningNotebooks) 以探索 Azure Machine Learning 的功用。
 
 如需更多 GitHub 範例專案和範例，請參閱下列存放庫：
++ [Azure/azureml-examples](https://github.com/Azure/azureml-examples)
 + [Microsoft/MLOps](https://github.com/Microsoft/MLOps)
 + [Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)
 

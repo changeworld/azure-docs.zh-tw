@@ -4,16 +4,16 @@ description: 檢視、下載及執行 Azure 儲存體的範例程式碼和應用
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 02/13/2020
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: b0e0588810fcac239a3647f9b750dd036341ab9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e3cd6be0da7c6d9401945293283de874c7cd866
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322222"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359759"
 ---
 # <a name="azure-storage-samples-using-v12-java-client-libraries"></a>使用 v12 Java 用戶端程式庫的 Azure 儲存體範例
 
@@ -453,4 +453,5 @@ ms.locfileid: "87322222"
 * .NET：[使用 .NET 的 Azure 儲存體範例](storage-samples-dotnet.md)
 * Python：[使用 Python 的 Azure 儲存體範例](storage-samples-python.md)
 * JavaScript/Node.js：[使用 JavaScript 的 Azure 儲存體範例](storage-samples-javascript.md)
+* C++：[使用 C++ 的 Azure 儲存體範例](storage-samples-c-plus-plus.md)
 * 所有其他語言：[Azure 儲存體範例](storage-samples.md)

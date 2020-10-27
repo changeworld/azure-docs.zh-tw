@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: 345d4fe218f5eed433204622bd47481628ec810f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d43a72db385d282ee189c179254cfc270929dbbf
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87874056"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92207184"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>開始使用 Azure 監視器中的查詢
 
@@ -74,7 +74,7 @@ search in (SecurityEvent) "Cryptographic"
 > 搜尋查詢的速度通常會比資料表式的查詢慢，因為所需處理的資料更多。 
 
 ## <a name="sort-and-top"></a>Sort 和 top
-雖然 **take** 適合用來取得一些記錄，但所選取和顯示的結果並沒有依特定順序來排列。 若要取得已排序的檢視，您可以依所慣用的資料行來**排序**：
+雖然 **take** 適合用來取得一些記錄，但所選取和顯示的結果並沒有依特定順序來排列。 若要取得已排序的檢視，您可以依所慣用的資料行來 **排序** ：
 
 ```Kusto
 SecurityEvent   
@@ -83,7 +83,7 @@ SecurityEvent
 
 不過，這麼做會傳回太多結果，而且也可能需要一些時間。 上述查詢會依 TimeGenerated 資料行來排序「整個」SecurityEvent 資料表。 Analytics 入口網站接著會將顯示限制為只顯示 10,000 筆記錄。 這當然不是最佳方法。
 
-若要只取得最近 10 筆記錄，最佳方法是使用 **top**，其會在伺服器端排序整個資料表，然後傳回排序在前的記錄：
+若要只取得最近 10 筆記錄，最佳方法是使用 **top** ，其會在伺服器端排序整個資料表，然後傳回排序在前的記錄：
 
 ```Kusto
 SecurityEvent
@@ -114,7 +114,7 @@ SecurityEvent
 | !=、<> | 檢查是否不相等<br>(這兩個運算式同義) | `Level != 4` |
 | and、or | 條件之間必須有此項目| `Level == 16 or CommandLine != ""` |
 
-若要依多個條件進行篩選，您可以使用 **and**：
+若要依多個條件進行篩選，您可以使用 **and** ：
 
 ```Kusto
 SecurityEvent
@@ -171,7 +171,7 @@ SecurityEvent
 您也可以使用 **project** 將資料行重新命名並定義新的資料行。 下列範例會使用 project 來執行下列作業：
 
 * 僅選取 Computer 和 TimeGenerated 原始資料行。
-* 將 Activity 資料行重新命名為 EventDetails。
+* 將 Activity 資料行顯示為 EventDetails。
 * 建立名為 EventCode 的新資料行。 **substring()** 函式可用來僅取得 [活動] 欄位中的前四個字元。
 
 
@@ -190,7 +190,7 @@ SecurityEvent
 ```
 
 ## <a name="summarize-aggregate-groups-of-rows"></a>Summarize：彙總資料列群組
-使用 **summarize** 可識別記錄群組 (根據一或多個資料行)，並對其套用彙總。 **summarize** 最常見的用法是 *count*，其會傳回每個群組中的結果數目。
+使用 **summarize** 可識別記錄群組 (根據一或多個資料行)，並對其套用彙總。 **summarize** 最常見的用法是 *count* ，其會傳回每個群組中的結果數目。
 
 下列查詢會檢閱過去 1 小時的所有 Perf 記錄、依 ObjectName 將這些記錄分組，並計算每個群組中的記錄數目： 
 ```Kusto

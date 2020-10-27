@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e7bae2ad19aaf4f1c93d8d2bdefa7fa9f0414860
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3e5476b01ac78af992f548efbeb87de5104dead0
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88923682"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126768"
 ---
 # <a name="about-azure-key-vault-certificates"></a>關於 Azure Key Vault 憑證
 
@@ -57,14 +57,14 @@ Key Vault 憑證建立後，該憑證將可透過可定址秘密和 PFX 或 PEM 
 
 Key Vault 憑證具有下列屬性：  
 
--   enabled  ：選擇性的布林值，預設值是 **true**。 可指定以指出憑證資料是否可以擷取為秘密，或是否可以作為金鑰執行。 也可再作業發生於 nbf  和 exp  之間時，用來搭配 nbf  和 exp  使用，只有在 enabled 設定為 true 時，才能允許此作業。 在 nbf  和 exp  範圍以外的作業會自動禁止。  
+-   enabled  ：選擇性的布林值，預設值是 **true** 。 可指定以指出憑證資料是否可以擷取為秘密，或是否可以作為金鑰執行。 也可再作業發生於 nbf  和 exp  之間時，用來搭配 nbf  和 exp  使用，只有在 enabled 設定為 true 時，才能允許此作業。 在 nbf  和 exp  範圍以外的作業會自動禁止。  
 
 回應中會包含其他唯讀屬性：
 
--   *created*：IntDate：指出此憑證版本的建立時間。  
--   *updated*：IntDate：指出此憑證版本的更新時間。  
--   *exp*：IntDate：包含 x509 憑證的到期日值。  
--   *nbf*：IntDate：包含 x509 憑證的日期值。  
+-   *created* ：IntDate：指出此憑證版本的建立時間。  
+-   *updated* ：IntDate：指出此憑證版本的更新時間。  
+-   *exp* ：IntDate：包含 x509 憑證的到期日值。  
+-   *nbf* ：IntDate：包含 x509 憑證的日期值。  
 
 > [!Note] 
 > 如果 Key Vault 憑證到期，其可定址金鑰和秘密將變得無法使用。  
@@ -141,42 +141,11 @@ Key Vault 可讓您以不同簽發者的提供者組態，來建立多個簽發�
 
 ## <a name="certificate-contacts"></a>憑證連絡人
 
-憑證連絡人中包含連絡資訊，用來傳送由憑證存留期事件觸發的通知。 連絡人資訊會由金鑰保存庫中的所有憑證共用。 若金鑰保存庫中發生任何憑證事件，系統會將通知傳送給所有指定的連絡人。  
-
-如果將憑證的原則設定為自動更新，則發生下列事件時會傳送通知。  
-
-- 憑證更新之前
-- 在憑證更新之後，指出是否已成功更新憑證，或是如果發生錯誤，需要手動更新憑證。  
-
-  如果憑證的原則設定為以手動方式更新 (僅限電子郵件)，則會在需更新憑證時傳送通知。  
+憑證連絡人中包含連絡資訊，用來傳送由憑證存留期事件觸發的通知。 連絡人資訊會由金鑰保存庫中的所有憑證共用。 若金鑰保存庫中發生任何憑證事件，系統會將通知傳送給所有指定的連絡人。 如需如何設定憑證連絡人的相關資訊，請參閱[這裡](overview-renew-certificate.md#steps-to-set-certificate-notifications)  
 
 ## <a name="certificate-access-control"></a>憑證存取控制
 
- 憑證的存取控制是由 Key Vault 所管理，且在 Key Vault 的層級上提供的，即包含這些憑證的 Key Vault。 在相同 Key Vault 中，憑證的存取控制原則與金鑰及秘密的存取控制原則並不相同。 使用者可建立一或多個保存庫來保存憑證，以及維護適當區分和管理憑證的案例。  
-
- 下列權限可以在金鑰保存庫上的祕密存取控制項目中使用 (以每個主體為基礎)，且密切地對映秘密物件上所允許的作業：  
-
-- 憑證管理作業的權限
-  - *get*：取得目前憑證版本，或任何憑證版本 
-  - *list*：列出目前憑證或憑證版本  
-  - *update*：更新憑證
-  - *create*：建立 Key Vault 憑證
-  - *import*：將憑證內容匯入至 Key Vault 憑證
-  - *delete*：刪除憑證、其原則及其所有版本  
-  - *recover*：復原已刪除的憑證
-  - *backup*：備份金鑰保存庫中的憑證
-  - *restore*：將備份的憑證還原至金鑰保存庫
-  - *managecontacts*：管理 Key Vault 憑證連絡人  
-  - *manageissuers*：管理 Key Vault 憑證授權單位/簽發者
-  - *getissuers*：取得憑證的授權單位/簽發者
-  - *listissuers*：列出憑證的授權單位/簽發者  
-  - *setissuers*：建立或更新 Key Vault 憑證的授權單位/簽發者  
-  - *deleteissuers*：刪除 Key Vault 憑證的授權單位/簽發者  
- 
-- 特殊權限作業的權限
-  - *purge*：清除 (永久刪除) 已刪除的憑證
-
-如需詳細資訊，請參閱 [Key Vault REST API 參考中的憑證作業](/rest/api/keyvault)。 如需建立權限的相關資訊，請參閱[保存庫 - 建立或更新](/rest/api/keyvault/vaults/createorupdate)和[保存庫 - 更新存取原則](/rest/api/keyvault/vaults/updateaccesspolicy)。
+ 憑證的存取控制是由 Key Vault 所管理，且在 Key Vault 的層級上提供的，即包含這些憑證的 Key Vault。 在相同 Key Vault 中，憑證的存取控制原則與金鑰及秘密的存取控制原則並不相同。 使用者可建立一或多個保存庫來保存憑證，以及維護適當區分和管理憑證的案例。  如需憑證存取控制的詳細資訊，請參閱[這裡](certificate-access-control.md)
 
 ## <a name="next-steps"></a>後續步驟
 

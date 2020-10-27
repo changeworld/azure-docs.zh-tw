@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: aee6e6d8ca505bfdcfd4a51e4693779f44b2b0c0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8c0aef1817581e2b09297d8807676cf0049e1d3e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88226571"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92169094"
 ---
 在本快速入門中，您將了解如何使用適用於 Linux 的語音裝置 SDK 建置具備語音功能的產品，或使用它作為[交談轉譯](../conversation-transcription-service.md)裝置。 目前僅支援 [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)。
 
@@ -70,7 +70,7 @@ ms.locfileid: "88226571"
 
 1. 在 [Eclipse Launcher] 中，於 [工作區] 欄位中輸入新工作區目錄的名稱。 然後選取 [啟動]。
 
-   ![Eclipse Launcher 的螢幕擷取畫面](../media/speech-devices-sdk/eclipse-launcher-linux.png)
+   ![顯示 Eclipse Launcher 的螢幕擷取畫面。](../media/speech-devices-sdk/eclipse-launcher-linux.png)
 
 1. 不久之後，Eclipse IDE 的主要視窗隨即出現。 如果出現 [歡迎使用] 畫面，請加以關閉。
 
@@ -107,13 +107,13 @@ ms.locfileid: "88226571"
 
 1. 在 [套件總管] 中，以滑鼠右鍵按一下您的專案。 依序選擇 [屬性]、[執行/偵錯設定] > [新增...] > [Java 應用程式]。 
 
-1. [編輯組態] 視窗隨即出現。 在 [名稱] 欄位中輸入 **Main**，並在 [主要類別] 中使用 [搜尋] 來尋找和選取 [com.microsoft.cognitiveservices.speech.samples.FunctionsList]。
+1. [編輯組態] 視窗隨即出現。 在 [名稱] 欄位中輸入 **Main** ，並在 [主要類別] 中使用 [搜尋] 來尋找和選取 [com.microsoft.cognitiveservices.speech.samples.FunctionsList]。
 
    ![編輯啟動組態的螢幕擷取畫面](../media/speech-devices-sdk/eclipse-edit-launch-configuration-linux.png)
 
 1. 將目標架構的音訊二進位檔從 **Linux-arm** 或 **Linux-x64** 複製到 Java 專案位置，例如 **/home/wcaltest/JRE-Sample-Release**
 
-1. 此外，從 [編輯組態] 視窗中選取 [環境] 頁面和 [新增]。 [新增環境變數] 視窗隨即出現。 在 [名稱] 欄位中輸入 **LD_LIBRARY_PATH**，並在 [值] 欄位中輸入包含 *.so 檔案的資料夾，例如 **/home/wcaltest/JRE-Sample-Release**
+1. 此外，從 [編輯組態] 視窗中選取 [環境] 頁面和 [新增]。 [新增環境變數] 視窗隨即出現。 在 [名稱] 欄位中輸入 **LD_LIBRARY_PATH** ，並在 [值] 欄位中輸入包含 *.so 檔案的資料夾，例如 **/home/wcaltest/JRE-Sample-Release**
 
 1. 將 `kws.table` 和 `participants.properties` 複製到專案資料夾 **target/classes**
 
@@ -147,7 +147,7 @@ ms.locfileid: "88226571"
 
     若要使用新的關鍵字，請更新 `FunctionsList.java` 中的下列行，並將關鍵字複製到您的應用程式。 例如，若要使用來自關鍵字套件 `machine.zip` 的關鍵字「Machine」：
 
-   * 將 `kws.table` 檔案從 zip 套件複製到專案資料夾 **target/classes**。
+   * 將 `kws.table` 檔案從 zip 套件複製到專案資料夾 **target/classes** 。
 
    * 使用關鍵字名稱更新 `FunctionsList.java`：
 
@@ -161,22 +161,22 @@ ms.locfileid: "88226571"
 
 1. 「語音裝置 SDK」範例應用程式會啟動，並顯示下列選項：
 
-   ![「語音裝置 SDK」範例應用程式和選項](../media/speech-devices-sdk/java-sample-app-linux.png)
+   ![顯示語音裝置 SDK 範例應用程式和選項的螢幕擷取畫面。](../media/speech-devices-sdk/java-sample-app-linux.png)
 
 1. 嘗試新的 [交談轉譯] 示範。 透過 [工作階段] > [啟動] 開始轉譯。 根據預設，每個人都是來賓。 不過，如果您有參與者的語音簽章，可以將其放入專案資料夾 **target/classes** 的 `participants.properties` 中。 若要產生語音簽章，請查看[轉譯交談 (SDK)](../how-to-use-conversation-transcription-service.md)。
 
-   ![示範交談轉譯應用程式](../media/speech-devices-sdk/cts-sample-app-linux.png)
+   ![顯示示範交談轉譯應用程式的螢幕擷取畫面。](../media/speech-devices-sdk/cts-sample-app-linux.png)
 
 ## <a name="create-and-run-standalone-the-application"></a>建立及執行獨立應用程式
 
 1. 在 [套件總管] 中，以滑鼠右鍵按一下您的專案。 選擇 [匯出]。 
 1. [匯出] 視窗隨即出現。 展開 [Java]，然後選取 [可執行的 JAR 檔案]，然後選取 [下一步]。
 
-   ![[匯出] 視窗的螢幕擷取畫面](../media/speech-devices-sdk/eclipse-export-linux.png) 
+   ![顯示 [匯出] 視窗的螢幕擷取畫面。](../media/speech-devices-sdk/eclipse-export-linux.png) 
 
 1. [可執行的 JAR 檔案匯出] 視窗隨即出現。 選擇應用程式的 [匯出目的地]，然後選取 [完成]。
  
-   ![可執行的 JAR 檔案匯出的螢幕擷取畫面](../media/speech-devices-sdk/eclipse-export-jar-linux.png)
+   ![顯示可執行 JAR 檔案 [匯出] 視窗的螢幕擷取畫面。](../media/speech-devices-sdk/eclipse-export-jar-linux.png)
 
 1. 請將 `kws.table` 和 `participants.properties` 放入上面所選的目的地資料夾，因為應用程式需要這些檔案。
 

@@ -7,12 +7,12 @@ ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/19/2020
-ms.openlocfilehash: 76ef44d438b9af7ada6c1c464705a22ee10f4c58
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f72fbad579bcb08a36c2dd29c387e18953f26c09
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88654101"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92146151"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-and-resource-manager-templates"></a>快速入門：使用 Azure Data Share 和 Resource Manager 範本共用資料
 
@@ -60,7 +60,7 @@ ms.locfileid: "88654101"
 "Missing permissions for DataShareAcccount on resource 'subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>' (Code: 5006)"
 ```
 
-這是因為在 RBAC 指派完成之前，部署嘗試建立資料集。 儘管出現錯誤訊息，部署還是會成功。  您仍然可以依[檢閱已部署的資源](#review-deployed-resources)來逐步完成。
+這是因為在 Azure 角色指派完成之前，部署就嘗試建立資料集。 儘管出現錯誤訊息，部署還是會成功。  您仍然可以依[檢閱已部署的資源](#review-deployed-resources)來逐步完成。
 
 ## <a name="deploy-the-template"></a>部署範本
 
@@ -69,12 +69,12 @@ ms.locfileid: "88654101"
     [![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-data-share-share-storage-account%2Fazuredeploy.json)
 1. 選取或輸入下列值：
 
-    * **訂用帳戶**：選取用來建立資料共用和其他資源的 Azure 訂用帳戶。
-    * **資源群組**：選取 [新建] 以建立新資源群組或選取現有的資源群組。
-    * **位置**：選取資源群組的位置。
-    * **專案名稱**：輸入專案名稱。  專案名稱可用來產生資源名稱。  請參閱先前範本中的變數定義。
-    * **位置**：選取資源的位置。  您可以讓資源群組使用相同的位置。
-    * **邀請電子郵件**：輸入資料共用收件者的 Azure 登入電子郵件地址。  電子郵件別名無法使用。
+    * **訂用帳戶** ：選取用來建立資料共用和其他資源的 Azure 訂用帳戶。
+    * **資源群組** ：選取 [新建] 以建立新資源群組或選取現有的資源群組。
+    * **位置** ：選取資源群組的位置。
+    * **專案名稱** ：輸入專案名稱。  專案名稱可用來產生資源名稱。  請參閱先前範本中的變數定義。
+    * **位置** ：選取資源的位置。  您可以讓資源群組使用相同的位置。
+    * **邀請電子郵件** ：輸入資料共用收件者的 Azure 登入電子郵件地址。  電子郵件別名無法使用。
 
     其餘設定請使用預設值。
 1. 選取 [我同意上方所述的條款及條件]，然後選取 [購買]。
@@ -84,10 +84,10 @@ ms.locfileid: "88654101"
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 開啟您建立的資料共用帳戶。
 1. 在左側功能表中，選取 [傳送共用]。  您應該會看到系統列出了儲存體帳戶。
-1. 選取 [儲存體帳戶]。  在**詳細資料**下，您應該會看到在範本中設定的同步處理設定。
+1. 選取 [儲存體帳戶]。  在 **詳細資料** 下，您應該會看到在範本中設定的同步處理設定。
 
     ![Azure Data Share 儲存體帳戶同步處理設定](./media/share-your-data-arm/azure-data-share-storage-account-synchronization-settings.png)
-1. 從頂端選取 [邀請]。 您應該會看到在部署範本時所指定的電子郵件地址。 **狀態**應該是**暫止**。
+1. 從頂端選取 [邀請]。 您應該會看到在部署範本時所指定的電子郵件地址。 **狀態** 應該是 **暫止** 。
 
 ## <a name="clean-up-resources"></a>清除資源
 

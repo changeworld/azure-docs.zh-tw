@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: d99355a88a52e318b231d9032ede770ee0ba5208
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe3520597ef8c02bc225e6f8a7625e6a961a7e37
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548672"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126921"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>教學課程：Azure Active Directory 與 Humanity 整合
 
@@ -61,7 +61,7 @@ ms.locfileid: "88548672"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Humanity**，從結果面板中選取 [Humanity]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Humanity** ，從結果面板中選取 [Humanity]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Humanity](common/search-new-app.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "88548672"
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://company.humanity.com/app/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Humanity 用戶端支援小組](https://www.humanity.com/support/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Humanity 用戶端支援小組](https://www.humanity.com/support/)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 4. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
@@ -131,11 +131,11 @@ ms.locfileid: "88548672"
     ![管理員](./media/shiftplanning-tutorial/iC786619.png "管理")
 3. 在 [整合]  下方，按一下 [單一登入]  。
 
-    ![單一登入](./media/shiftplanning-tutorial/iC786620.png "單一登入")
+    ![此螢幕擷取畫面顯示從 [整合] 功能表選取的 [單一登入]。](./media/shiftplanning-tutorial/iC786620.png "單一登入")
 
 4. 在 [單一登入]  區段中，執行下列步驟：
 
-    ![單一登入](./media/shiftplanning-tutorial/iC786905.png "單一登入")
+    ![此螢幕擷取畫面顯示 [單一登入] 區段，您可以在其中輸入所述的值。](./media/shiftplanning-tutorial/iC786905.png "單一登入")
 
     a. 選取 [已啟用 SAML]  。
 
@@ -165,7 +165,7 @@ ms.locfileid: "88548672"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -224,7 +224,7 @@ ms.locfileid: "88548672"
 
     ![儲存員工](./media/shiftplanning-tutorial/iC786625.png "儲存員工")
 
-    a. 在相關的文字方塊中，輸入您想要佈建的有效 Azure AD 帳戶的**名字**、**姓氏**和**電子郵件**。
+    a. 在相關的文字方塊中，輸入您想要佈建的有效 Azure AD 帳戶的 **名字** 、 **姓氏** 和 **電子郵件** 。
 
     b. 按一下 [儲存員工]  。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: a01d4137217aa594d4636f3338d3f33dc03cc836
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01d7d29e9fffff3be2c98c0ec52c01774439e3f7
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91713748"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92341183"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure 資訊安全中心的定價
 Azure 資訊安全中心提供統一的安全性管理和進階的威脅防護，保護 Azure、內部部署和其他雲端中執行的工作負載。 其提供了針對混合式雲端工作負載的可見性和控制能力、可降低威脅曝露度的主動防禦措施、還有智慧型偵測可幫助您跟上網路攻擊快速發展的腳步。
@@ -32,11 +32,12 @@ Azure 資訊安全中心提供統一的安全性管理和進階的威脅防護�
 
 - **開啟 Azure Defender** - 啟用 Azure Defender 會將免費模式的功能擴展到在私人雲端和其他公用雲端中執行的工作負載，為您的混合式雲端工作負載提供統一的安全性管理和威脅防護。 Azure Defender 的一些主要功能：
 
+    - **適用於端點的 Microsoft Defender** - 適用於伺服器的 Azure Defender 包含[適用於端點的 Microsoft Defender](https://www.microsoft.com/microsoft-365/security/endpoint-defender)，可讓您獲得完整的端點偵測和回應 (EDR) 功能。 若要深入了解搭配使用適用於端點的 Microsoft Defender 與 Azure Defender 的優點，請參閱[使用資訊安全中心的整合式 EDR 解決方案](security-center-wdatp.md)。
+    - **虛擬機器和容器登錄的弱點掃描** - 輕鬆地將掃描器部署到您所有的虛擬機器，以提供業界最先進的弱點管理解決方案。 直接在資訊安全中心內檢視、調查和補救結果。 
     - **混合式安全性** – 取得您所有內部部署和雲端工作負載中安全性的統一檢視。 套用安全性原則，並持續評估您混合式雲端工作負載的安全性，以確保符合安全性標準。 從多種來源 (包括防火牆和其他合作夥伴解決方案) 收集、搜尋及分析安全性資料。
     - **威脅防護警示** - 進階的行為分析和 Microsoft Intelligent Security Graph 可勝過不斷演進的網路攻擊。 有效率的調控內建行為分析和機器學習服務，以發現攻擊和零時差惡意探索。 監視網路、機器和雲端服務中是否有傳入攻擊和侵入後活動。 使用互動式工具和內容相關威脅情報來簡化調查。
-    - **虛擬機器和容器登錄的弱點掃描** - 輕鬆地將掃描器部署到您所有的虛擬機器，以提供業界最先進的弱點管理解決方案。 直接在資訊安全中心內檢視、調查和補救結果。 
     - **存取與應用程式控制** - 套用依特定工作負載調整並由機器學習服務提供支援的建議，以建立允許與拒絕清單來封鎖惡意程式碼和其他不想要的應用程式。 使用 Just-In-Time 來控制針對 Azure VM 上管理連接埠的存取，以減少您網路的受攻擊面。 這會大幅減少暴力密碼破解和其他網路攻擊的風險。
-    - **容器安全性功能** - 受益於您容器化環境的弱點管理和即時威脅防護。 啟用**適用於容器登錄的 Azure Defender** 時，最多可能需要 12 小時才能啟用所有功能。 我們會以推送至已連線登錄的唯一容器映像數目來計費。 在映像經過一次掃描之後，您就不需要再向此支付費用，除非進行修改並再推送一次。 
+    - **容器安全性功能** - 受益於您容器化環境的弱點管理和即時威脅防護。 啟用 **適用於容器登錄的 Azure Defender** 時，最多可能需要 12 小時才能啟用所有功能。 我們會以推送至已連線登錄的唯一容器映像數目來計費。 在映像經過一次掃描之後，您就不需要再向此支付費用，除非進行修改並再推送一次。 
 
 ## <a name="try-azure-defender-free-for-30-days"></a>免費試用 Azure Defender 30 天
 
@@ -48,10 +49,10 @@ Azure Defender 在前 30 天免費。 在 30 天結束時，如果您選擇繼�
 
 若要啟用 Azure Defender：
 
-1. 在資訊安全中心的主要功能表中，選取 [定價和設定]****。
+1. 在資訊安全中心的主要功能表中，選取 [定價和設定]  。
 1. 選取您要升級的訂用帳戶。
-1. 選取 [開啟 Azure Defender]**** 以進行升級。
-1. 選取 [儲存]****。
+1. 選取 [開啟 Azure Defender]  以進行升級。
+1. 選取 [儲存]。
 
 以下是範例訂用帳戶的定價頁面。 您會發現，Azure Defender 中的每個方案都是分開定價，而且可以個別設定為開啟或關閉。
 
@@ -60,9 +61,9 @@ Azure Defender 在前 30 天免費。 在 30 天結束時，如果您選擇繼�
 > [!NOTE]
 > 若要啟用所有資訊安全中心功能 (包括威脅防護功能)，您必須在包含適用工作負載的訂用帳戶上啟用 Azure Defender。 在工作區層級上啟用並不會啟用 Just-In-Time VM 存取、自適性應用程式控制，以及 Azure 資源的網路偵測。 此外，在工作區層級可用的唯一 Azure Defender 方案是適用於伺服器的 Azure Defender，以及適用於機器上 SQL 伺服器的 Azure Defender。
 >
-> 您可以在訂用帳戶層級或資源層級啟用**適用於儲存體帳戶的 Azure Defender**。
-> 您可以在訂用帳戶層級或資源層級啟用**適用於 SQL 的 Azure Defender**。
-> 您只能在資源層級為**適用於 MariaDB/MySQL/PostgreSQL 的 Azure 資料庫**啟用威脅防護。
+> 您可以在訂用帳戶層級或資源層級啟用 **適用於儲存體帳戶的 Azure Defender** 。
+> 您可以在訂用帳戶層級或資源層級啟用 **適用於 SQL 的 Azure Defender** 。
+> 您只能在資源層級為 **適用於 MariaDB/MySQL/PostgreSQL 的 Azure 資料庫** 啟用威脅防護。
 
 
 ## <a name="next-steps"></a>後續步驟
@@ -70,4 +71,4 @@ Azure Defender 在前 30 天免費。 在 30 天結束時，如果您選擇繼�
 
 - [如何最佳化您的 Azure 工作負載成本](https://azure.microsoft.com/blog/how-to-optimize-your-azure-workload-costs/)
 - [以所選貨幣和區域為依據的定價詳細資料](https://azure.microsoft.com/pricing/details/security-center/)
-- 您可能會想要管理您的成本，並透過將解決方案限制在一組特定的代理程式，來限制針對該解決方案所收集的資料量。 [解決方案目標](../operations-management-suite/operations-management-suite-solution-targeting.md)可讓您將某個範圍套用至解決方案，並將工作區中的電腦子集設定為目標。 如果您使用解決方案目標鎖定，資訊安全中心會將工作區列為沒有解決方案。
+- 您可能會想要管理您的成本，並透過將解決方案限制在一組特定的代理程式，來限制針對該解決方案所收集的資料量。 [解決方案目標](../azure-monitor/insights/solution-targeting.md)可讓您將某個範圍套用至解決方案，並將工作區中的電腦子集設定為目標。 如果您使用解決方案目標鎖定，資訊安全中心會將工作區列為沒有解決方案。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 75c0542764e94ae57379fa225b4e064a58da3af1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f071a66fef632afe9e54fecfa253e4604679baa2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553354"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105578"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>教學課程：Azure Active Directory 與 Rightscale 整合
 
@@ -61,7 +61,7 @@ Rightscale 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Rightscale**，從結果面板中選取 [Rightscale]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Rightscale** ，從結果面板中選取 [Rightscale]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Rightscale](common/search-new-app.png)
 
@@ -99,11 +99,11 @@ Rightscale 與 Azure AD 整合提供下列優點：
 
 4. 在 [基本 SAML 組態]  區段中，使用者不需要執行任何步驟，因為應用程式已預先與 Azure 整合。
 
-    ![Rightscale 網域與 URL 單一登入資訊](common/preintegrated.png)
+    ![此螢幕擷取畫面顯示 [基本 SAML 組態] 頁面。](common/preintegrated.png)
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
-    ![Rightscale 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/metadata-upload-additional-signon.png)
 
     在 [登入 URL]  文字方塊中，輸入 URL：`https://login.rightscale.com/`
 
@@ -127,32 +127,31 @@ Rightscale 與 Azure AD 整合提供下列優點：
 
 2. 在頂端的功能表中，按一下 [設定]  索引標籤，然後選取 [單一登入]  。
 
-    ![設定單一登入](./media/rightscale-tutorial/tutorial_rightscale_001.png)
+    ![此螢幕擷取畫面顯示從 [設定] 選取的 [單一登入]。](./media/rightscale-tutorial/tutorial_rightscale_001.png)
 
-3. 按一下 [新增]  按鈕來新增**您的 SAML 識別提供者**。
+3. 按一下 [新增]  按鈕來新增 **您的 SAML 識別提供者** 。
 
-    ![設定單一登入](./media/rightscale-tutorial/tutorial_rightscale_002.png)
+    ![此螢幕擷取畫面顯示已選取要新增 [SAML 識別提供者] 的新按鈕。](./media/rightscale-tutorial/tutorial_rightscale_002.png)
 
 4. 在 [顯示名稱]  文字方塊中，輸入您的公司名稱。
 
-    ![設定單一登入](./media/rightscale-tutorial/tutorial_rightscale_003.png)
+    ![此螢幕擷取畫面顯示輸入顯示名稱的位置。](./media/rightscale-tutorial/tutorial_rightscale_003.png)
 
 5. 選取 **Allow RightScale-initiated SSO using a discovery hint** \(允許使用 Discovery Hint 的 RightScale 起始 SSO)，然後在下方文字方塊中輸入您的 **網域名稱** 。
 
-    ![設定單一登入](./media/rightscale-tutorial/tutorial_rightscale_004.png)
+    ![此螢幕擷取畫面顯示您可以指定 [登入方法] 的位置。](./media/rightscale-tutorial/tutorial_rightscale_004.png)
 
 6. 將您從 Azure 入口網站複製的 [登入 URL] 值，貼到 RightScale 的 [SAML SSO 端點] 中。
 
-    ![設定單一登入](./media/rightscale-tutorial/tutorial_rightscale_006.png)
+    ![此螢幕擷取畫面顯示您可以輸入 SAML SSO 端點的位置。](./media/rightscale-tutorial/tutorial_rightscale_006.png)
 
 7. 將您從 Azure 入口網站複製的 [Azure AD 識別碼] 值，貼到 RightScale 的 [SAML 實體識別碼] 中。
 
-    ![設定單一登入](./media/rightscale-tutorial/tutorial_rightscale_008.png)
+    ![此螢幕擷取畫面顯示您可以輸入 SAML 實體識別碼的位置。](./media/rightscale-tutorial/tutorial_rightscale_008.png)
 
 8. 按一下 [瀏覽器]  按鈕來上傳您從 Azure 入口網站下載的憑證。
 
-
-    ![設定單一登入](./media/rightscale-tutorial/tutorial_rightscale_009.png)
+    ![此螢幕擷取畫面顯示您可以指定 SAML 簽署憑證的位置。](./media/rightscale-tutorial/tutorial_rightscale_009.png)
 
 9. 按一下 [檔案]  。
 
@@ -172,7 +171,7 @@ Rightscale 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`  
     例如， BrittaSimon@contoso.com

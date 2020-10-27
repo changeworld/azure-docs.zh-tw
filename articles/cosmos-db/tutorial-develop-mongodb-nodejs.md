@@ -10,18 +10,18 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: d2e7ce959edffdb2e8c929c81837e0ac3fc3da9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 992111f6b28356d5220e27a80068acdaf80b4055
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75444692"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92280496"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 適用於 MongoDB 的 API 建立 Angular 應用程式
 
 這個多部分的教學課程示範如何使用 Express 和 Angular 來建立以 Node.js 撰寫的新應用程式，然後將它連線至[使用適用於 MongoDB 的 Cosmos DB API 設定的 Cosmos 帳戶](mongodb-introduction.md)。
 
-Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 它可讓您快速建立及查詢文件、索引鍵/值，以及圖形資料庫，這些全都受惠於位於 Cosmos DB 核心的全域散發和水平調整功能。 
+Azure Cosmos DB 是 Microsoft 的快速 NoSQL 資料庫，可支援任何規模的開放式 API。 其可讓您使用 SLA 保障的速度和可用性、自動且即時的可擴縮性，以及適用於許多 NoSQL 引擎的開放原始碼 API 來開發現代化應用程式。
 
 此多部分教學課程涵蓋下列工作：
 

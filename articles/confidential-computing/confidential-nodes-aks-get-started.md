@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: quickstart
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: c8c64dadebb092d7f376fd2b6590b26f4dde0ee0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9343d3fa82302711311d8db3672713fa80fab1f7
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90998368"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122166"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-using-azure-cli-preview"></a>快速入門：使用 Azure CLI 部署具有機密運算節點的 Azure Kubernetes Service (AKS) 叢集 (預覽)
 
@@ -118,6 +118,8 @@ kube-system     sgx-device-plugin-xxxx     1/1     Running
 ```azurecli-interactive
 az aks update --enable-addons confcom --resource-group myResourceGroup --name myAKSCluster
 ```
+
+![建立 DCSv2 AKS 叢集](./media/confidential-nodes-aks-overview/CLIAKSProvisioning.gif)
 
 ## <a name="adding-confidential-computing-node-to-existing-aks-cluster"></a>將機密運算節點新增至現有的 AKS 叢集<a id="existing-cluster"></a>
 

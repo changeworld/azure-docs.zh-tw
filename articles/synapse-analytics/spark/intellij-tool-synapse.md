@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: c17addc313954fbca5b81c4594d7317065350c09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be127d4214577e017522aec6a1b61b8f62638ed9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91249564"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368735"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>教學課程：使用 Synapse 工作區搭配 IntelliJ 來建立 Apache Spark 應用程式
 
@@ -40,7 +40,7 @@ ms.locfileid: "91249564"
 - 下列必要條件僅適用於 Windows 使用者：
 
   在 Windows 電腦上執行本機 Spark Scala 應用程式時，可能會發生如 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) 中所述的例外狀況。 發生這個例外狀況是因為 Windows 上遺失 WinUtils.exe。
-  若要解決這個錯誤，請將 [WinUtils 可執行檔](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)下載至 **C:\WinUtils\bin** 之類的位置。 然後，新增環境變數 **HADOOP_HOME**，並將變數的值設為 **C:\WinUtils**。
+  若要解決這個錯誤，請將 [WinUtils 可執行檔](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)下載至 **C:\WinUtils\bin** 之類的位置。 然後，新增環境變數 **HADOOP_HOME** ，並將變數的值設為 **C:\WinUtils** 。
 
 ## <a name="create-a-spark-scala-application-for-a-spark-pool"></a>建立適用於 Spark 集區的 Spark Scala 應用程式
 
@@ -49,8 +49,8 @@ ms.locfileid: "91249564"
 3. 選取主視窗中的 [Spark 專案與範例 (Scala)]。
 4. 從 [建置工具] 下拉式清單中，選取下列其中一種類型：
 
-   - **Maven**：建立 Scala 專案精靈支援。
-   - **SBT**：可供管理相依性並建置 Scala 專案。
+   - **Maven** ：建立 Scala 專案精靈支援。
+   - **SBT** ：可供管理相依性並建置 Scala 專案。
 
     ![IntelliJ IDEA 的新增專案對話方塊](./media/intellij-tool-synapse/create-synapse-application01.png)
 
@@ -62,7 +62,7 @@ ms.locfileid: "91249564"
     |專案名稱| 輸入名稱。 本教學課程使用 `myApp`。|
     |專案&nbsp;位置| 輸入所要的位置以儲存您的專案。|
     |專案 SDK| 您第一次使用 IDEA 時，這可能是空白的。 選取 [新增...] 並瀏覽至您的 JDK。|
-    |Spark 版本|建立精靈會為 Spark SDK 和 Scala SDK 整合正確的版本。 Synapse 僅支援 **Spark 2.4.0**。|
+    |Spark 版本|建立精靈會為 Spark SDK 和 Scala SDK 整合正確的版本。 Synapse 僅支援 **Spark 2.4.0** 。|
     |||
 
     ![選取 Apache Spark SDK](./media/intellij-tool-synapse/create-synapse-application02.png)
@@ -78,7 +78,7 @@ ms.locfileid: "91249564"
 
     ![對話方塊中的成品資訊](./media/intellij-tool-synapse/default-artifact-dialog.png)
 
-9. 從 **myApp** > **src** > **main** > **scala**> **sample**> **LogQuery** 尋找 **LogQuery**。 本教學課程使用 **LogQuery** 來執行。
+9. 從 **myApp** > **src** > **main** > **scala**> **sample**> **LogQuery** 尋找 **LogQuery** 。 本教學課程使用 **LogQuery** 來執行。
 
    ![從專案中建立 Scala 類別的命令](./media/intellij-tool-synapse/select-run-file.png)
 
@@ -145,12 +145,12 @@ ms.locfileid: "91249564"
     |Main class name (主要類別名稱)|預設值是所選取檔案中的主要類別。 您可以選取省略號 ( **...** ) 並選擇另一個類別來變更類別。|
     |作業設定|您可以變更預設的金鑰和值。 如需詳細資訊，請參閱 [Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html)。|
     |命令列引數|如有需要，您可以為主類別輸入以空格隔開的引數。|
-    |參考的 Jar 和參考的檔案|如果有任何要參考的 Jar 或檔案，您可以輸入其路徑。 您也可以在 Azure 虛擬檔案系統中瀏覽檔案；此系統目前僅支援 ADLS Gen2 叢集。 其他資訊：[Apache Spark 設定](https://spark.apache.org/docs/latest/configuration.html#runtime-environment)和[如何將資源上傳至叢集](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。|
+    |參考的 Jar 和參考的檔案|如果有任何要參考的 Jar 或檔案，您可以輸入其路徑。 您也可以在 Azure 虛擬檔案系統中瀏覽檔案；此系統目前僅支援 ADLS Gen2 叢集。 如需詳細資訊：[Apache Spark 組態]https://spark.apache.org/docs/2.4.5/configuration.html#runtime-environment) 和[如何將資源上傳至叢集](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。|
     |作業上傳儲存體|展開以顯示其他選項。|
     |儲存類型|從下拉式清單中選取 [使用 Azure Blob 上傳] 或 [使用叢集預設儲存體帳戶上傳]。|
     |儲存體帳戶|輸入儲存體帳戶。|
     |儲存體金鑰|輸入儲存體金鑰。|
-    |儲存體容器|輸入**儲存體帳戶**和**儲存體金鑰**後，從下拉式清單中選取您的儲存體容器。|
+    |儲存體容器|輸入 **儲存體帳戶** 和 **儲存體金鑰** 後，從下拉式清單中選取您的儲存體容器。|
 
     ![[提交 Spark] 對話方塊 1](./media/intellij-tool-synapse/create-synapse-configuration03.png)
 

@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 10/09/2020
 ms.author: anfeldma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7d8f51b12c16afbb8a0cf71e99b9b357719db4be
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 74ff6983b08b6f19a94384be7c4361d4266d6a20
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319039"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108757"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>快速入門：使用 Azure Cosmos DB SQL API 帳戶透過 Xamarin 建置待辦事項應用程式
 
@@ -38,9 +38,9 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 ## <a name="prerequisites"></a>必要條件
 
-如果您使用 Windows 進行開發，且尚未安裝 Visual Studio 2019，可以下載並使用**免費的** [Visual Studio 2019 Community 版本](https://www.visualstudio.com/downloads/)。 請務必在 Visual Studio 設定期間啟用 **Azure 開發**和**使用 .NET 的行動開發**工作負載。
+如果您使用 Windows 進行開發，且尚未安裝 Visual Studio 2019，可以下載並使用 **免費的** [Visual Studio 2019 Community 版本](https://www.visualstudio.com/downloads/)。 請務必在 Visual Studio 設定期間啟用 **Azure 開發** 和 **使用 .NET 的行動開發** 工作負載。
 
-如果您使用 Mac，您可以下載**免費的** [Visual Studio for Mac](https://www.visualstudio.com/vs/mac/)。
+如果您使用 Mac，您可以下載 **免費的** [Visual Studio for Mac](https://www.visualstudio.com/vs/mac/)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
@@ -68,7 +68,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 1. 開啟命令提示字元，建立名為 git-samples 的新資料夾，然後關閉命令提示字元。
 
     ```bash
-    md "C:\git-samples"
+    mkdir "C:\git-samples"
     ```
 
 2. 開啟 git 終端機視窗 (例如 git bash)，並使用 `cd` 命令變更至要安裝範例應用程式的新資料夾。
@@ -83,7 +83,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
     git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-xamarin-getting-started.git
     ```
 
-4. 然後，從 Visual Studio 中的 samples/xamarin/ToDoItems 資料夾開啟 ToDoItems.sln 檔案。
+4. 在 Visual Studio 中，開啟 **C:\git-samples\azure-cosmos-db-sql-xamarin-getting-started\src\ToDoItems.sln** 
 
 ## <a name="obtain-your-api-keys"></a>取得您的 API 金鑰
 
@@ -93,15 +93,21 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
     :::image type="content" source="./media/create-sql-api-xamarin-dotnet/keys.png" alt-text="在 iOS 上執行的 Xamarin 待辦事項應用程式":::
 
-2. 在 Visual Studio 2019 或 Visual Studio for Mac 中，開啟位於 azure-cosmos-db-sql-xamarin-getting-started/src/ToDoItems.Core/Helpers 資料夾中的 APIKeys.cs 檔案。
+2. 在 Visual Studio 中，開啟 **ToDoItems.Core/Helpers/APIKeys.cs** 。
 
-3. 從入口網站複製您的 URI 值 (使用 [複製] 按鈕)，並使它成為 APIKeys.cs 中的 `CosmosEndpointUrl` 變數值。
+3. 在 Azure 入口網站中，使用 [複製] 按鈕複製 **URI** 值，並將其設為 APIKeys.cs 中 `CosmosEndpointUrl` 變數的值。
 
-    `public static readonly string CosmosEndpointUrl = "";`
+    ```csharp
+    //#error Enter the URL of your Azure Cosmos DB endpoint here
+            public static readonly string CosmosEndpointUrl = "[URI Copied from Azure Portal]";
+    ```
 
-4. 然後，從入口網站複製您的主要金鑰值，並使它成為 APIKeys.cs 中的 `Cosmos Auth Key` 值。
+4. 在 Azure 入口網站中，使用 [複製] 按鈕複製 **主要金鑰** 值，並將其設為 APIKeys.cs 中 `Cosmos Auth Key` 的值。
 
-    `public static readonly string CosmosAuthKey = "";`
+    ```csharp
+    //#error Enter the read/write authentication key of your Azure Cosmos DB endpoint here
+            public static readonly string CosmosAuthKey = "[PRIMARY KEY copied from Azure Portal";
+    ```
 
 [!INCLUDE [cosmos-db-auth-key-info](../../includes/cosmos-db-auth-key-info.md)]
 
@@ -113,15 +119,18 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 ToDoItems 解決方案中的程式碼包含：
 
-* ToDoItems.Core：這是 .NET Standard 專案，其中包含 Xamarin.Forms 專案，以及可在 Azure Cosmos DB 內維護待辦事項項目的共用應用程式邏輯程式碼。
-* ToDoItems.Android：此專案包含 Android 應用程式。
-* ToDoItems.iOS：此專案包含 iOS 應用程式。
+* **ToDoItems.Core**
+   * 這是 .NET Standard 專案，其中包含 Xamarin.Forms 專案，以及可在 Azure Cosmos DB 內維護待辦事項項目的共用應用程式邏輯程式碼。
+* **ToDoItems.Android**
+  * 此專案包含 Android 應用程式。
+* **ToDoItems.iOS**
+  * 此專案包含 iOS 應用程式。
 
 現在，我們將快速回顧應用程式與 Azure Cosmos DB 的通訊方式。
 
 * [Microsoft.Azure.DocumentDb.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/) NuGet 套件必須新增至所有專案。
-* azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Models 資料夾中的 `ToDoItem` 類別是上方建立的**項目**容器中各個文件的模型。 請注意，屬性的命名會區分大小寫。
-* azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Services 資料夾中的 `CosmosDBService` 類別會封裝對 Azure Cosmos DB 的通訊。
+* **ToDoItems.Core/Models** 資料夾中的 `ToDoItem` 類別，會將上面所建立 **項目** 容器中的文件建立模型。 請注意，屬性的命名會區分大小寫。
+* **ToDoItems.Core/Services** 資料夾中的 `CosmosDBService` 類別會將通訊封裝到 Azure Cosmos DB。
 * `CosmosDBService` 類別內有一個 `DocumentClient` 類型變數。 `DocumentClient` 會用來設定和執行對 Azure Cosmos DB 帳戶的要求，且會進行具現化：
 
     ```csharp

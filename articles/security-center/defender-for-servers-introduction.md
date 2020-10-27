@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 8757399329f3a9bd9f4d7b914b12b2a0f7e85603
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 711963a60d5c75031ff676a9c7f1db47f20fe895
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448295"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92275256"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>適用於伺服器的 Azure Defender 簡介
 
@@ -27,11 +27,18 @@ ms.locfileid: "91448295"
 
 適用於伺服器的 Azure Defender 所提供的威脅偵測和保護功能包括：
 
+- **適用於端點的 Microsoft Defender 整合授權 (僅限 Windows)** - 適用於伺服器的 Azure Defender 包括[適用於端點的 Microsoft Defender](https://www.microsoft.com/microsoft-365/security/endpoint-defender)。 兩者搭配運作下，可提供完整的端點偵測和回應 (EDR) 功能。 [深入了解](security-center-wdatp.md)。
+
+    適用於端點的 Microsoft Defender 偵測到威脅時會觸發警示。 警示會顯示在資訊安全中心中。 在資訊安全中心，您也可以切換至適用於端點的 Microsoft Defender 主控台並執行詳細的調查，以找出攻擊的範圍。 深入了解適用於端點的 Microsoft Defender。
+
+    > [!IMPORTANT]
+    > 在使用資訊安全中心的 Windows 伺服器上，會自動啟用 **適用於端點的 Microsoft Defender** 感應器。
+
 - **VM 的弱點評量掃描** - Azure 資訊安全中心隨附的弱點掃描器由 Qualys 提供技術支援。 
 
     Qualys 的掃描器是用來即時識別 Azure 虛擬機器中弱點的頂級工具之一。 您不需要 Qualys 授權或 Qualys 帳戶，一切都可以在資訊安全中心內流暢進行。 [深入了解](deploy-vulnerability-assessment-vm.md)。
 
-- **Just-In-Time (JIT) 存取** - 威脅執行者會利用開啟的管理連接埠 (如 RDP 或 SSH) 主動尋找可存取的機器。 您所有的虛擬機器都是攻擊的潛在目標。 VM 一旦遭到入侵，即會成為進入點，據以進一步攻擊您的環境中其他的資源。
+- **Just-In-Time (JIT) 虛擬機器 (VM) 存取** - 威脅執行者會利用開啟的管理連接埠 (如 RDP 或 SSH) 主動尋找可存取的機器。 您所有的虛擬機器都是攻擊的潛在目標。 VM 一旦遭到入侵，即會成為進入點，據以進一步攻擊您的環境中其他的資源。
 
     啟用適用於伺服器的 Azure Defender 時，您可以使用 Just-In-Time VM 存取來鎖定 VM 的輸入流量，進而降低暴露於攻擊的風險，同時視需要輕鬆地連線至 VM。 [深入了解](just-in-time-explained.md)。
 
@@ -46,13 +53,6 @@ ms.locfileid: "91448295"
 - **自適性網路強化 (ANH)**  - 套用網路安全性群組 (NSG) 以篩選資源的出入流量，從而改善網路安全性態勢。 但在某些情況下，透過 NSG 傳輸的實際流量仍有可能包含在已定義的 NSG 規則中。 在這些情況下，您可以根據實際的流量模式強化 NSG 規則，以進一步改善安全性態勢。
 
     自適性網路強化會提供進一步強化 NSG 規則的建議。 此功能會使用將實際流量、已知的信任設定、威脅情報和其他危害指標等因素納入考量的機器學習演算法，然後提供建議，而僅允許來自特定 IP/連接埠元組的流量。 [深入了解](security-center-adaptive-network-hardening.md)。
-
-- **與 Microsoft Defender 進階威脅防護 (ATP) 整合 (僅限 Windows)** - Azure Defender 可與 Microsoft Defender 進階威脅防護 (ATP) 整合。 兩者搭配運作下，可提供完整的端點偵測和回應 (EDR) 功能。 [深入了解](security-center-wdatp.md)。
-
-    > [!IMPORTANT]
-    > 在使用資訊安全中心的 Windows 伺服器上，會自動啟用 Microsoft Defender ATP 感應器。
-
-    Microsoft Defender ATP 在偵測到威脅時，會觸發警示。 警示會顯示在資訊安全中心中。 在資訊安全中心，您也可以切換至 Microsoft Defender ATP 主控台並執行詳細的調查，以找出攻擊的範圍。 如需 Microsoft Defender ATP 的詳細資訊，請參閱[將伺服器上線至 Microsoft Defender ATP 服務](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)。
 
 - **Docker 主機強化** - Azure 資訊安全中心可識別 IaaS Linux VM 上裝載的非受控容器，或其他執行 Docker 容器的 Linux 機器。 資訊安全中心會持續評估這些容器的設定。 然後與網際網路安全性 (CIS) Docker 基準測試中心進行比較。 資訊安全中心包含 CIS Docker 基準測試的整個規則集，並會在您的容器無法滿足任何控制項時發出警示。 [深入了解](harden-docker-hosts.md)。
 

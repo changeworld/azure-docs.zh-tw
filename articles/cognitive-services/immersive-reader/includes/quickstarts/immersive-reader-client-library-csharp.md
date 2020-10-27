@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 08996d7343ccab4c5d6e688b580a8e6e1ca5bceb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1c7587a4434a84c6934179393baa5ae684f9b1fd
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91376789"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92116764"
 ---
 [沈浸式閱讀程式](https://www.onenote.com/learningtools)是經過全面設計的工具，可實作經實證的技術並針對入門讀者、語言學習者及存在學習差異 (例如讀寫障礙) 的人士改善其閱讀理解程度。 您可以在應用程式中使用沈浸式閱讀程式來隔離文字，以改善焦點、顯示常用單字的圖片、醒目提示語音的部分、朗讀選取的文字、即時轉譯單字和片語等等。
 
@@ -42,7 +42,7 @@ ms.locfileid: "91376789"
 
 ### <a name="configure-authentication-values"></a>設定驗證值
 
-以滑鼠右鍵按一下_方案總管_中的專案，然後選擇 [管理使用者密碼]。 這樣會開啟名稱為 _secrets.json_ 的檔案。 此檔案不會簽入原始檔控制。 [在此](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows&preserve-view=true)深入了解。 以下列內容取代 secrets.json 的內容，並使用您建立沈浸式閱讀程式資源時提供的值。
+以滑鼠右鍵按一下 _方案總管_ 中的專案，然後選擇 [管理使用者密碼]。 這樣會開啟名稱為 _secrets.json_ 的檔案。 此檔案不會簽入原始檔控制。 [在此](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows&preserve-view=true)深入了解。 以下列內容取代 secrets.json 的內容，並使用您建立沈浸式閱讀程式資源時提供的值。
 
 ```json
 {
@@ -53,7 +53,7 @@ ms.locfileid: "91376789"
 }
 ```
 
-### <a name="install-active-directory"></a>安裝 Active Directory
+### <a name="install-active-directory-nuget-package"></a>安裝 Active Directory NuGet 套件
 
 下列程式碼使用 **Microsoft.IdentityModel.Clients.ActiveDirectory** NuGet 套件中的物件，所以您必須在專案中新增該套件的參考。
 

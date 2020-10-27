@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 1bcaaed394d8e802a9660e2fdf0e37994ee795a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d04d29b82ecf09d1ee52986fc40687e5511573da
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617684"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331901"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>快速入門：設定從內部部署到 Azure SQL 受控執行個體的點對站連線
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -67,38 +67,38 @@ ms.locfileid: "91617684"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 開啟您在虛擬網路閘道中所建立的資源群組，然後開啟虛擬網路閘道資源。
-3. 選取 [點對站設定]****，然後選取 [下載 VPN 用戶端]****。
+3. 選取 [點對站設定]  ，然後選取 [下載 VPN 用戶端]  。
 
     ![下載 VPN 用戶端](./media/point-to-site-p2s-configure/download-vpn-client.png)  
 4. 在內部部署用戶端電腦上，從 zip 檔案解壓縮檔案，然後開啟含解壓縮檔案的資料夾。
 5. 開啟 **WindowsAmd64** 資料夾，然後開啟 **VpnClientSetupAmd64.exe** 檔案。
-6. 如果您收到 [Windows 已保護您的電腦]**** 訊息，請按一下 [其他資訊]****，然後按一下 [仍要執行]****。
+6. 如果您收到 [Windows 已保護您的電腦]  訊息，請按一下 [其他資訊]  ，然後按一下 [仍要執行]  。
 
     ![安裝 VPN 用戶端](./media/point-to-site-p2s-configure/vpn-client-defender.png)
-7. 在 [使用者帳戶控制]  對話方塊中，按一下 [是]**** 以繼續。
+7. 在 [使用者帳戶控制]  對話方塊中，按一下 [是]  以繼續。
 8. 在參考您虛擬網路的對話方塊中選取 [是]，為您的虛擬網路安裝 VPN 用戶端。
 
 ## <a name="connect-to-the-vpn-connection"></a>連線到 VPN 連線
 
-1. 移至內部部署用戶端電腦上 [網路與網際網路] 的 [VPN]，並選取您的 SQL 受控執行個體虛擬網路，以建立對此 VNet 的連線。 在下圖中，VNet 的名稱為 **MyNewVNet**。
+1. 移至內部部署用戶端電腦上 [網路與網際網路] 的 [VPN]，並選取您的 SQL 受控執行個體虛擬網路，以建立對此 VNet 的連線。 在下圖中，VNet 的名稱為 **MyNewVNet** 。
 
     ![VPN 連線](./media/point-to-site-p2s-configure/vpn-connection.png)  
 2. 選取 [連接]。
-3. 在對話方塊中，選取 [連線]****。
+3. 在對話方塊中，選取 [連線]  。
 
-    ![VPN 連線](./media/point-to-site-p2s-configure/vpn-connection2.png)  
+    ![醒目提示 [連線] 按鈕的螢幕擷取畫面。](./media/point-to-site-p2s-configure/vpn-connection2.png)  
 4. 出現連線管理員需要較高的權限以更新路由表的提示時，請選擇 [繼續]。
-5. 在 [使用者帳戶控制] 對話方塊中，按選取 [是]**** 以繼續。
+5. 在 [使用者帳戶控制] 對話方塊中，按選取 [是]  以繼續。
 
    您已建立對 SQL 受控執行個體 VNet 的 VPN 連線。
 
-    ![VPN 連線](./media/point-to-site-p2s-configure/vpn-connection-succeeded.png)  
+    ![螢幕擷取畫面：醒目提示建立好連線時的 [已連線] 訊息。](./media/point-to-site-p2s-configure/vpn-connection-succeeded.png)  
 
 ## <a name="connect-with-ssms"></a>使用 SSMS 連線
 
 1. 在內部部署用戶端電腦上，開啟 SQL Server Management Studio。
-2. 在 [連線到伺服器] 對話方塊中，於 [伺服器名稱] 方塊中輸入受控執行個體的完整**主機名稱**。
-3. 選取 [SQL Server 驗證]****，提供您的使用者名稱和密碼，然後選取 [連線]****。
+2. 在 [連線到伺服器] 對話方塊中，於 [伺服器名稱] 方塊中輸入受控執行個體的完整 **主機名稱** 。
+3. 選取 [SQL Server 驗證]  ，提供您的使用者名稱和密碼，然後選取 [連線]  。
 
     ![SSMS 連線](./media/point-to-site-p2s-configure/ssms-connect.png)  
 

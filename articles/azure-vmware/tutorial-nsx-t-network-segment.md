@@ -3,16 +3,16 @@ title: 教學課程 - 在 Azure VMware 解決方案中建立 NSX-T 網路區段
 description: 了解如何建立 vCenter 中的 VM 所使用的 NSX-T 網路區段
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 780cac15efc043b9ae44b77af1234adca3fec5a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f88f186d2af10bcc114d64920a3ac489ef7be54f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91254528"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367664"
 ---
 # <a name="tutorial-create-an-nsx-t-network-segment-in-azure-vmware-solution"></a>教學課程：在 Azure VMware 解決方案中建立 NSX-T 網路區段
 
-在 NSX-T Manager 中建立的網路區段會當作 vCenter 中虛擬機器 (VM) 的網路使用。 在 vCenter 中建立的 VM 會放置在 NSX-T 中建立的網路區段上，並且會在 vCenter 中顯示。
+在 vCenter 中建立的虛擬機器 (VM) 會放置在 NSX-T 中建立的網路區段上，並且會在 vCenter 中顯示。
 
 在本教學課程中，您會了解如何：
 
@@ -23,7 +23,7 @@ ms.locfileid: "91254528"
 
 ## <a name="prerequisites"></a>必要條件
 
-必須有可存取 vCenter 和 NSX-T Manager 管理介面的 Azure VMware 解決方案私人雲端，才能完成本教學課程。 如需詳細資訊，請參閱[在 Azure 中設定 VMware 私人雲端的網路功能](tutorial-configure-networking.md)教學課程。
+您必須具有可存取 vCenter 和 NSX-T Manager 管理介面的 Azure VMware 解決方案私人雲端。 如需詳細資訊，請參閱[設定網路功能](tutorial-configure-networking.md)教學課程。
 
 ## <a name="provision-a-network-segment-in-nsx-t"></a>在 NSX-T 中佈建網路區段
 
@@ -71,7 +71,7 @@ ms.locfileid: "91254528"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已建立用於 vCenter 中 VM 的 NSX-T 網路區段。 現在，您可以[在 Azure VMware 解決方案中建立內容庫以部署 VM](deploy-vm-content-library.md)，並在您於本教學課程中建立的網路上佈建 VM。
+在本教學課程中，您已建立用於 vCenter 中 VM 的 NSX-T 網路區段。 您現在可以[建立內容庫以在 Azure VMware Solution 中部署 VM](deploy-vm-content-library.md)。 您也可以在網路上佈建您在本教學課程中建立的 VM。
 
 否則，請繼續進行下一個教學課程，以了解如何在 Azure VMware 解決方案中建立與私人雲端對等互連的 ExpressRoute Global Reach。
 

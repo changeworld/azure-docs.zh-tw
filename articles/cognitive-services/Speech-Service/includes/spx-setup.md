@@ -5,16 +5,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 3c176f103371bfb1b35231f222b2045f1f4a3ef9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 203ba2988d817e3e396fd8aec3db00eba9832041
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327011"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92324014"
 ---
 ## <a name="download-and-install"></a>下載並安裝
 
 #### <a name="windows-install"></a>[Windows 安裝](#tab/windowsinstall)
+
+> [!NOTE]
+> 在 Windows 上，您需根據平台來選擇[適用於 Visual Studio 2019 的 Microsoft Visual C++ 可轉散發套件](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)。 第一次安裝時可能需要重新啟動 Windows。
 
 請遵循下列步驟，在 Windows 上安裝語音 CLI：
 
