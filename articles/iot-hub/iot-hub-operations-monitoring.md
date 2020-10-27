@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 956a676709322860da7f08d032d370ed66f55b3f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 559dac0f37daf612404fca839e9918e97077029e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92139324"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538488"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT 中樞作業監視 (已淘汰)
 
 IoT 中樞的作業監視可讓您即時監視其 IoT 中樞上的作業狀態。 IoT 中樞可追蹤橫跨數個作業類別的事件。 您可以選擇將一或多個類別的事件傳送至 IoT 中樞的端點進行處理。 您可以監視資料中是否有錯誤，或根據資料模式設定更複雜的處理行為。
 
 >[!NOTE]
->IoT 中樞**作業監視已淘汰，並已於 2019 年 3 月 10 日自 IoT 中樞移除**。 如需監視 IoT 中樞的作業及健康狀態，請參閱[監視 Azure IoT 中樞的健康狀態並快速診斷問題](iot-hub-monitor-resource-health.md)。 如需有關淘汰時間表的詳細資訊，請參閱[使用 Azure 監視器和 Azure 資源健康狀態來監視您的 Azure IoT 解決方案](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)。
+>IoT 中樞 **作業監視已淘汰，並已於 2019 年 3 月 10 日自 IoT 中樞移除** 。 若要監視 IoT 中樞的作業和健全狀況，請參閱 [監視 Iot 中樞](monitor-iot-hub.md)。 如需有關淘汰時間表的詳細資訊，請參閱[使用 Azure 監視器和 Azure 資源健康狀態來監視您的 Azure IoT 解決方案](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health)。
 
 IoT 中樞會監視六個類別的事件：
 
@@ -201,19 +201,19 @@ IoT 中樞上的監視端點是相容於事件中樞的端點。 您可以使用
 
     ![事件中樞相容端點值](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
 
-3. 選擇 [共用存取原則]，然後選擇 [服務]。 記下**主要金鑰**值：
+3. 選擇 [共用存取原則]，然後選擇 [服務]。 記下 **主要金鑰** 值：
 
     ![服務共用存取原則主要金鑰](./media/iot-hub-operations-monitoring/service-key.png)
 
 下列 C# 程式碼範例取自 Visual Studio **Windows 傳統桌面** C# 主控台應用程式。 專案已安裝 **WindowsAzure.ServiceBus** NuGet 套件。
 
-* 以您先前所記下，使用**事件中樞相容端點**和服務**主要金鑰**值的連接字串來取代連接字串預留位置，如下列範例所示：
+* 以您先前所記下，使用 **事件中樞相容端點** 和服務 **主要金鑰** 值的連接字串來取代連接字串預留位置，如下列範例所示：
 
     ```csharp
     "Endpoint={your Event Hub-compatible endpoint};SharedAccessKeyName=service;SharedAccessKey={your service primary key value}"
     ```
 
-* 以您先前記下的**事件中樞相容名稱**值取代監視端點名稱預留位置。
+* 以您先前記下的 **事件中樞相容名稱** 值取代監視端點名稱預留位置。
 
 ```csharp
 class Program

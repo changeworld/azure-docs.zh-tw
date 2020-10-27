@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 1bdec284ccdfca9e13ca227fe1109afe28da14b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40e1fdae5cdb1ec806e67dcacc70510a63093a82
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85851383"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539457"
 ---
 # <a name="azure-storage-overview-in-hdinsight"></a>HDInsight 中的 Azure 儲存體總覽
 
@@ -21,7 +21,7 @@ Azure 儲存體是強大的一般用途儲存體解決方案，其完美整合�
 
 建議您針對預設叢集儲存體和您的商務資料使用不同的儲存體容器。 分隔是將 HDInsight 記錄和暫存檔案與您自己的商務資料隔離。 我們也建議您在每次使用時刪除包含應用程式和系統記錄的預設 blob 容器，以降低儲存成本。 請務必先擷取記錄再刪除容器。
 
-如果您選擇使用**所選網路**上的**防火牆和虛擬網路**限制來保護儲存體帳戶，請務必啟用 [**允許信任的 Microsoft 服務 ...**] 例外狀況。例外狀況是讓 HDInsight 可以存取您的儲存體帳戶。
+如果您選擇使用 **所選網路** 上的 **防火牆和虛擬網路** 限制來保護儲存體帳戶，請務必啟用 [ **允許信任的 Microsoft 服務 ...** ] 例外狀況。例外狀況是讓 HDInsight 可以存取您的儲存體帳戶。
 
 ## <a name="hdinsight-storage-architecture"></a>HDInsight 儲存架構
 
@@ -44,7 +44,7 @@ HDInsight 可以存取本機連接至計算節點的分散式檔案系統。 可
 * **儲存體帳戶中未連線至叢集的公用容器或公用 blob：** 您對容器中的 blob 具有唯讀許可權。
   
   > [!NOTE]  
-  > 公用容器可讓您取得該容器中所有可用的 Blob 清單，並取得容器中繼資料。 公用 Blob 只在您知道確切的 URL 時才可讓您存取 Blob。 如需詳細資訊，請參閱 [管理對容器與 Blob 的匿名讀取權限](../storage/blobs/storage-manage-access-to-resources.md)。
+  > 公用容器可讓您取得該容器中所有可用的 Blob 清單，並取得容器中繼資料。 公用 Blob 只在您知道確切的 URL 時才可讓您存取 Blob。 如需詳細資訊，請參閱 [管理對容器與 Blob 的匿名讀取權限](../storage/blobs/anonymous-read-access-configure.md)。
 
 * **儲存體帳戶中未連線至叢集的私人容器：** 除非您在提交 WebHCat 工作時定義儲存體帳戶，否則無法存取容器中的 blob。
 
@@ -75,7 +75,7 @@ Blob 可使用於結構化和非結構化資料。 Blob 容器會將資料儲存
 > [!NOTE]  
 > 大部分 HDFS 命令 (例如，`ls`、`copyFromLocal` 和 `mkdir`) 可在 Azure 儲存體中正常運作。 只有原生 HDFS 實作 (稱為 DFS) 的特定命令 (例如 `fschk` 和 `dfsadmin`) 才會在 Azure 儲存體上出現不同的行為。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * [Azure Data Lake Storage Gen2 簡介](../storage/blobs/data-lake-storage-introduction.md)
 * [Azure 儲存體簡介](../storage/common/storage-introduction.md)

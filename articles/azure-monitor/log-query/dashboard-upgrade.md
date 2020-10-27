@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 07/01/2020
-ms.openlocfilehash: a029dcbebf6dfe7a2b6cb517641c824a5937ca95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96aea35a4796eae9d31062cedaf917a736f0fe82
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90988250"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547124"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>升級 Log Analytics 儀表板視覺效果
 
@@ -47,7 +47,7 @@ Azure 儀表板可讓您以視覺化方式呈現整個 Azure 介面區的狀態�
  
 ![資訊看板](media/dashboard-upgrade/update-message-1.png)
  
-![資訊看板](media/dashboard-upgrade/update-message-2.png)
+![顯示如何更新磚視覺效果的螢幕擷取畫面。](media/dashboard-upgrade/update-message-2.png)
 
 > [!WARNING]
 > 一旦發行儀表板，升級就無法復原。 但是，如果您離開儀表板而不需要重新發佈，就會捨棄變更。  
@@ -56,7 +56,7 @@ Azure 儀表板可讓您以視覺化方式呈現整個 Azure 介面區的狀態�
 
 升級視覺效果之後，您必須重新發佈儀表板，變更才會生效。
 
-![資訊看板](media/dashboard-upgrade/update-message-3.png)
+![顯示已升級視覺效果的螢幕擷取畫面。](media/dashboard-upgrade/update-message-3.png)
 
 ## <a name="stage-2---migration-of-all-dashboards"></a>階段 2-所有儀表板的遷移
 
@@ -74,12 +74,12 @@ Azure 儀表板可讓您以視覺化方式呈現整個 Azure 介面區的狀態�
 
 儀表板可以視覺效果密集且複雜。 為了在觀看儀表板時減少認知負載，我們會將顯示限制為25個不同的資料類型，以優化視覺效果。 當超過25個時，Log Analytics 會將資料優化。 它會個別顯示25個具有個別資料的類型，然後將其餘的值分組為「其他」值。 下圖顯示這類案例。  
 
-![資訊看板](media/dashboard-upgrade/values-25-limit.png)
+![顯示有25個不同資料類型之儀表板的螢幕擷取畫面。](media/dashboard-upgrade/values-25-limit.png)
 
 ### <a name="dashboard-refresh-on-load"></a>負載時的儀表板重新整理
 
 載入時，會重新整理儀表板。 所有與儀表板固定的 Log Analytics 視覺效果相關的查詢都會執行，而且儀表板會在載入後重新整理。 如果 [儀表板] 頁面保持開啟，儀表板中的資料會每隔60分鐘重新整理一次。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [在 Log Analytics 中建立和共用儀表板](../learn/tutorial-logs-dashboards.md)

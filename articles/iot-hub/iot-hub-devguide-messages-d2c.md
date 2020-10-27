@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: b762b77788c3df05fbd0db349457abadcbe39b51
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 64821819530e142eb207c001d3e3ccfe349cf917
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147705"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547770"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>使用 IoT 中樞訊息路由將裝置到雲端訊息傳送至不同的端點
 
@@ -26,7 +26,7 @@ ms.locfileid: "92147705"
 
 * **傳送裝置遙測訊息以及事件** (也就是裝置生命週期事件和裝置對應項變更事件) 到內建端點和自訂端點。 深入瞭解 [路由端點](#routing-endpoints)。
 
-* 套用多種查詢**篩選資料再將資料傳送到眾多端點**。 訊息路由可讓您對訊息屬性和訊息本文，以及裝置對應項標記和裝置對應項屬性進行查詢。 深入瞭解如何 [在訊息路由中使用查詢](iot-hub-devguide-routing-query-syntax.md)。
+* 套用多種查詢 **篩選資料再將資料傳送到眾多端點** 。 訊息路由可讓您對訊息屬性和訊息本文，以及裝置對應項標記和裝置對應項屬性進行查詢。 深入瞭解如何 [在訊息路由中使用查詢](iot-hub-devguide-routing-query-syntax.md)。
 
 IoT 中樞需要這些服務端點的寫入權限，才能將訊息路由傳送至工作。 如果您透過 Azure 入口網站設定您的端點，則會為您新增必要的權限。 請務必設定您的服務，以支援預期的輸送量。 例如，如果您使用事件中樞作為自訂端點，您必須設定該事件中樞的 **輸送量單位** ，讓它可以處理您打算透過 IoT 中樞訊息路由傳送的事件。 同樣地，使用服務匯流排佇列作為端點時，您必須設定 **大小上限** ，以確保佇列可保存所有資料輸入，直到取用者輸出為止。 當您第一次設定您的 IoT 解決方案時，您可能需要監視其他端點，然後對實際負載進行必要的調整。
 
@@ -34,7 +34,7 @@ IoT 中樞會針對所有裝置到雲端訊息定義[常見格式](iot-hub-devgu
 
 ## <a name="routing-endpoints"></a>路由端點
 
-IoT 中樞都有與事件中樞相容的預設內建端點 (**訊息/事件**)。 您可以將訂用帳戶中的其他服務連結到 IoT 中樞，來建立要路由傳送訊息的目標[自訂端點](iot-hub-devguide-endpoints.md#custom-endpoints)。 
+IoT 中樞都有與事件中樞相容的預設內建端點 ( **訊息/事件** )。 您可以將訂用帳戶中的其他服務連結到 IoT 中樞，來建立要路由傳送訊息的目標[自訂端點](iot-hub-devguide-endpoints.md#custom-endpoints)。 
 
 每則訊息都會路由傳送至其符合路由查詢的所有端點。 換句話說，訊息可以路由傳送至多個端點。
 
@@ -49,17 +49,17 @@ IoT 中樞目前支援下列端點：
 
 ## <a name="built-in-endpoint-as-a-routing-endpoint"></a>作為路由端點的內建端點
 
-您可以使用標準[事件中樞整合和 SDK](iot-hub-devguide-messages-read-builtin.md) 接收內建端點 (**訊息/事件**) 的裝置到雲端訊息。 建立路由之後，除非將路由建立至該端點，否則資料會停止流向內建端點。
+您可以使用標準 [事件中樞整合和 SDK](iot-hub-devguide-messages-read-builtin.md) 接收內建端點 ( **訊息/事件** ) 的裝置到雲端訊息。 建立路由之後，除非將路由建立至該端點，否則資料會停止流向內建端點。
 
 ## <a name="azure-storage-as-a-routing-endpoint"></a>Azure 儲存體為路由端點
 
 有兩個儲存體服務： IoT 中樞可以將訊息路由至 [Azure Blob 儲存體](../storage/blobs/storage-blobs-introduction.md) ，並 [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) (ADLS Gen2) 帳戶。 Azure Data Lake Storage 帳戶是以 blob 儲存體為基礎的已啟用 [階層式命名空間](../storage/blobs/data-lake-storage-namespace.md)的儲存體帳戶。 這兩種都使用 blob 進行儲存。
 
-IoT 中樞支援將資料以 [Apache Avro](https://avro.apache.org/) 格式和 JSON 格式寫入 Azure 儲存體。 預設值為 AVRO。 使用 JSON 編碼時，您必須在訊息[系統屬性](iot-hub-devguide-routing-query-syntax.md#system-properties)中將 contentType 設定為**application/JSON** ，並將 contentEncoding 設定為**utf-8** 。 這兩個值都不區分大小寫。 如果未設定內容編碼，則 IoT 中樞會以基底64編碼格式寫入訊息。
+IoT 中樞支援將資料以 [Apache Avro](https://avro.apache.org/) 格式和 JSON 格式寫入 Azure 儲存體。 預設值為 AVRO。 使用 JSON 編碼時，您必須在訊息 [系統屬性](iot-hub-devguide-routing-query-syntax.md#system-properties)中將 contentType 設定為 **application/JSON** ，並將 contentEncoding 設定為 **utf-8** 。 這兩個值都不區分大小寫。 如果未設定內容編碼，則 IoT 中樞會以基底64編碼格式寫入訊息。
 
 只有在設定 blob 儲存體端點時，才可以設定編碼格式;無法編輯現有的端點。 若要切換現有端點的編碼格式，您必須刪除並重新建立具有所需格式的自訂端點。 其中一個實用的策略可能是使用您想要的編碼格式來建立新的自訂端點，並將平行路由新增至該端點。 如此一來，您就可以在刪除現有的端點之前驗證您的資料。
 
-您可以使用 IoT 中樞的 [建立] 或 [更新] REST API （特別是 [RoutingStorageContainerProperties](/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties)、Azure 入口網站、 [Azure CLI](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest)或 [Azure PowerShell](/powershell/module/az.iothub/add-aziothubroutingendpoint)）來選取編碼格式。 下圖顯示如何在 Azure 入口網站中選取編碼格式。
+您可以使用 IoT 中樞的 [建立] 或 [更新] REST API （特別是 [RoutingStorageContainerProperties](/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties)、Azure 入口網站、 [Azure CLI](/cli/azure/iot/hub/routing-endpoint)或 [Azure PowerShell](/powershell/module/az.iothub/add-aziothubroutingendpoint)）來選取編碼格式。 下圖顯示如何在 Azure 入口網站中選取編碼格式。
 
 ![Blob 儲存體端點編碼](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -89,13 +89,13 @@ public void ListBlobsInContainer(string containerName, string iothub)
 }
 ```
 
-若要建立與 Gen2 相容的 Azure Data Lake 儲存體帳戶，請建立新的 V2 儲存體帳戶，並在 [ **Advanced** ] 索引標籤上的 [*階層命名空間*] 欄位中選取 [*已啟用*]，如下圖所示：
+若要建立與 Gen2 相容的 Azure Data Lake 儲存體帳戶，請建立新的 V2 儲存體帳戶，並在 [ **Advanced** ] 索引標籤上的 [ *階層命名空間* ] 欄位中選取 [ *已啟用* ]，如下圖所示：
 
 ![選取 Azure 日期 Lake Gen2 儲存體](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
 
 ## <a name="service-bus-queues-and-service-bus-topics-as-a-routing-endpoint"></a>作為路由端點的服務匯流排佇列和服務匯流排主題
 
-做為 IoT 中樞端點的服務匯流排佇列和主題不能啟用 [工作階段]**** 或 [重複偵測]****。 如果已啟用其中一個選項，端點會在 Azure 入口網站中顯示為 [無法連線]****。
+做為 IoT 中樞端點的服務匯流排佇列和主題不能啟用 [工作階段]  或 [重複偵測]  。 如果已啟用其中一個選項，端點會在 Azure 入口網站中顯示為 [無法連線]  。
 
 ## <a name="event-hubs-as-a-routing-endpoint"></a>作為路由端點的事件中樞
 
@@ -120,13 +120,13 @@ public void ListBlobsInContainer(string containerName, string iothub)
 
 ## <a name="fallback-route"></a>後援路由
 
-後援路由會將與任何現有路由查詢條件不符的所有訊息，傳送至與[事件中樞](../event-hubs/index.yml)相容的內建事件中樞 (**訊息/事件**)。 如果訊息路由已開啟，您即可啟用後援路由功能。 建立路由之後，除非將路由建立至該端點，否則資料會停止流向內建端點。 如果內建端點沒有路由，而且後援路由已啟用，則與路由的任何查詢條件不符的訊息會傳送至內建端點。 此外，如果刪除所有的現有路由，必須啟用後援路由接收內建端點的所有資料。
+後援路由會將與任何現有路由查詢條件不符的所有訊息，傳送至與 [事件中樞](../event-hubs/index.yml)相容的內建事件中樞 ( **訊息/事件** )。 如果訊息路由已開啟，您即可啟用後援路由功能。 建立路由之後，除非將路由建立至該端點，否則資料會停止流向內建端點。 如果內建端點沒有路由，而且後援路由已啟用，則與路由的任何查詢條件不符的訊息會傳送至內建端點。 此外，如果刪除所有的現有路由，必須啟用後援路由接收內建端點的所有資料。
 
 您可以啟用/停用 Azure 入口網站 >訊息路由分頁中的回溯路由。 您也可以對於 [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) 使用 Azure 資源管理員來使用後援路由的自訂端點。
 
 ## <a name="non-telemetry-events"></a>非遙測事件
 
-除了裝置遙測之外，訊息路由還可讓您傳送裝置對應項變更事件、裝置生命週期事件和數位對應項變更事件。 例如，如果隨同設定為**裝置對應項變更事件**的資料來源建立路由，IoT 中樞會將訊息傳送至包含裝置對應項變更的端點。 同樣地，如果建立的路由會將資料來源設定為 **裝置生命週期事件**，IoT 中樞就會傳送一則訊息，指出裝置是否已刪除或已建立。 最後，在 [IoT 隨插即用](../iot-pnp/overview-iot-plug-and-play.md)過程中，開發人員可以建立資料來源設定為數字對應項 **變更事件** 的路由，而 IoT 中樞會在每次設定或變更數位對應項 [屬性](../iot-pnp/iot-plug-and-play-glossary.md) 時傳送訊息、取代 [數位](../iot-pnp/iot-plug-and-play-glossary.md) 對應項，或在基礎裝置對應項發生變更事件時傳送訊息。
+除了裝置遙測之外，訊息路由還可讓您傳送裝置對應項變更事件、裝置生命週期事件和數位對應項變更事件。 例如，如果隨同設定為 **裝置對應項變更事件** 的資料來源建立路由，IoT 中樞會將訊息傳送至包含裝置對應項變更的端點。 同樣地，如果建立的路由會將資料來源設定為 **裝置生命週期事件** ，IoT 中樞就會傳送一則訊息，指出裝置是否已刪除或已建立。 最後，在 [IoT 隨插即用](../iot-pnp/overview-iot-plug-and-play.md)過程中，開發人員可以建立資料來源設定為數字對應項 **變更事件** 的路由，而 IoT 中樞會在每次設定或變更數位對應項 [屬性](../iot-pnp/iot-plug-and-play-glossary.md) 時傳送訊息、取代 [數位](../iot-pnp/iot-plug-and-play-glossary.md) 對應項，或在基礎裝置對應項發生變更事件時傳送訊息。
 
 [IoT 中樞也會與 Azure 事件方格整合](iot-hub-event-grid.md) ，以發佈裝置事件，以支援以這些事件為基礎的即時整合和自動化工作流程。 請參閱[訊息路由與事件格線之間的關鍵差異](iot-hub-event-grid-routing-comparison.md)了解何者最適合您的情況。
 
@@ -140,19 +140,21 @@ IoT 中樞訊息路由保證會經過排序，且至少會將訊息傳遞至端�
 
 若要處理訊息重複，建議您在來源（通常是裝置或模組）之訊息的應用程式屬性中，標記唯一的識別碼。 取用訊息的服務可以使用此識別碼來處理重複的訊息。
 
-## <a name="latency"></a>延遲
+## <a name="latency"></a>Latency
 
 當您使用內建端點來路由傳送裝置到雲端的遙測訊息時，在建立第一個路由之後，端對端延遲會稍微增加。
 
-在大多數情況下，延遲的平均增加小於500毫秒。 您可以使用**路由：訊息/事件的訊息延遲**或 **d2c.endpoints.latency.builtIn.events** IoT 中樞計量來監視延遲。 建立或刪除第一個之後的任何路由並不會影響端對端延遲。
+在大多數情況下，延遲的平均增加小於500毫秒。 您可以使用 **路由：訊息/事件的訊息延遲** 或 **d2c.endpoints.latency.builtIn.events** IoT 中樞計量來監視延遲。 建立或刪除第一個之後的任何路由並不會影響端對端延遲。
 
 ## <a name="monitoring-and-troubleshooting"></a>監視與疑難排解
 
-IoT 中樞提供數個與路由和端點相關的計量，讓您瞭解中樞的健康情況和傳送的訊息。 [IoT 中樞計量](iot-hub-metrics.md)列出對於 IoT 中樞預設啟用的所有計量。 使用 Azure 監視器[診斷設定](../iot-hub/iot-hub-monitor-resource-health.md)中的**路由**診斷記錄，您可以追蹤在評估路由查詢和端點健全狀況時所發生的錯誤，如 IoT 中樞所察覺。 您可以使用 REST API [取得端點健全狀況](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) 來取得端點的 [健康情況狀態](iot-hub-devguide-endpoints.md#custom-endpoints) 。 
+IoT 中樞提供數個與路由和端點相關的計量，讓您瞭解中樞的健康情況和傳送的訊息。 如需依功能類別細分的所有 IoT 中樞度量清單，請參閱 [監視資料參考中的計量](monitor-iot-hub-reference.md#metrics)。 您可以使用 IoT 中樞 [ **routes** 資源記錄中](monitor-iot-hub-reference.md#routes)的 [路由] 類別，追蹤評估路由查詢和端點健全狀況時所發生的錯誤。 若要深入瞭解如何搭配使用計量和資源記錄與 IoT 中樞，請參閱 [監視 Iot 中樞](monitor-iot-hub.md)。
+
+您可以使用 REST API [取得端點健全狀況](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) 來取得端點的 [健康情況狀態](iot-hub-devguide-endpoints.md#custom-endpoints) 。
 
 如需詳細資料和疑難排解路由的支援，請使用 [疑難排解指南進行路由](troubleshoot-message-routing.md) 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 如需了解如何建立訊息路由，請參閱[使用路由處理 IoT 中樞的裝置到雲端訊息](tutorial-routing.md)。
 

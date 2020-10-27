@@ -4,23 +4,24 @@ description: 了解如何使用 Azure 儲存體總管連接到 Azure Cosmos DB �
 author: deborahc
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 08/24/2020
+ms.date: 10/23/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 3b5886984d6e3830549e86a7c1ee46cd2483e4b4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: be37ab43db9b5b696a619cb1539981c064b4cb0e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480593"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537791"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>使用 Azure 儲存體總管管理 Azure Cosmos DB 資源
 
 您可以使用 Azure 儲存體 explorer 連接到 Azure Cosmos DB。 它可讓您連線到 Azure 上裝載的 Azure Cosmos DB 帳戶，以及從 Windows、macOS 或 Linux 主權雲端。
 
-使用相同的工具，在同一個位置管理不同的 Azure 實體。 您可以管理 Azure Cosmos DB 實體、運算元據、更新預存程式和觸發程式，以及其他 Azure 實體（例如儲存體 blob 和佇列）。
+使用相同的工具，在同一個位置管理不同的 Azure 實體。 您可以管理 Azure Cosmos DB 實體、運算元據、更新預存程式和觸發程式，以及其他 Azure 實體（例如儲存體 blob 和佇列）。 Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設定的 Cosmos 帳戶。
 
-Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設定的 Cosmos 帳戶。 如需詳細資訊，請移至 [Azure 儲存體總管中的 Azure Cosmos DB]() 。
+> [!NOTE]
+> Azure Cosmos DB 與儲存體總管的整合已被取代。 在此版本中，將不會移除任何現有的功能至少一年。 您應改為使用 [Azure 入口網站](https://portal.azure.com/)、 [azure 入口網站的桌面應用程式](https://portal.azure.com/App/Download) 或獨立的 [azure Cosmos explorer](data-explorer.md) 。 替代選項包含儲存體總管目前不支援的許多新功能。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -32,19 +33,19 @@ Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設�
 
 ## <a name="connect-to-an-azure-subscription"></a>連線到 Azure 訂用帳戶
 
-1. 安裝 **Azure 儲存體總管**之後，請選取左窗格 **中的外掛程式** 圖示。
+1. 安裝 **Azure 儲存體總管** 之後，請選取左窗格 **中的外掛程式** 圖示。
 
    :::image type="content" source="./media/storage-explorer/plug-in-icon.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
 
-1. 選取 [新增 Azure 帳戶]****，然後選取 [登入]****。
+1. 選取 [新增 Azure 帳戶]  ，然後選取 [登入]  。
 
    :::image type="content" source="./media/storage-explorer/connect-to-azure-subscription.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
 
-1. 在 [ **Azure 登入** ] 對話方塊中，選取 [登 **入**]，然後輸入您的 Azure 認證。
+1. 在 [ **Azure 登入** ] 對話方塊中，選取 [登 **入** ]，然後輸入您的 Azure 認證。
 
     :::image type="content" source="./media/storage-explorer/sign-in.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
 
-1. 從清單中選取您的訂用帳戶，然後選取 [套用]****。
+1. 從清單中選取您的訂用帳戶，然後選取 [套用]  。
 
     :::image type="content" source="./media/storage-explorer/apply-subscription.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
 
@@ -58,14 +59,14 @@ Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設�
 
 您可以使用連接字串連接到 Azure Cosmos DB。 此方法僅支援 SQL 和資料表 Api。 遵循下列步驟以連接字串：
 
-1. 在左側樹狀目錄中尋找 [ **本機] 和** [已連接]，以滑鼠右鍵按一下 **Cosmos DB 帳戶**]，然後選取 **[連接到 Cosmos DB]**。
+1. 在左側樹狀目錄中尋找 [ **本機] 和** [已連接]，以滑鼠右鍵按一下 **Cosmos DB 帳戶** ]，然後選取 **[連接到 Cosmos DB]** 。
 
     :::image type="content" source="./media/storage-explorer/connect-to-db-by-connection-string.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
 
 2. 在 [ **連接到 Cosmos DB** ] 視窗中：
    1. 從下拉式功能表中選取 API。
    1. 在 [ **連接字串** ] 方塊中貼上您的連接字串。 如需如何取出主要連接字串的詳細說明，請參閱 [取得連接字串](manage-with-powershell.md#list-keys)。
-   1. 輸入 **帳戶標籤**，然後選取 **[下一步]** 以查看摘要。
+   1. 輸入 **帳戶標籤** ，然後選取 **[下一步]** 以查看摘要。
    1. 選取 **[連線] 以** 連接 Azure Cosmos DB 帳戶。
 
       :::image type="content" source="./media/storage-explorer/connection-string.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
@@ -76,13 +77,13 @@ Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設�
 
 1. 安裝 Cosmos DB 模擬器，然後開啟它。 如需如何安裝模擬器的詳細說明，請參閱 [Cosmos DB 模擬器](./local-emulator.md)。
 
-1. 在左側樹狀目錄中尋找 [ **本機] 和** [已連接]，以滑鼠右鍵按一下 **Cosmos DB 帳戶**]，然後選取 **[連接到 Cosmos DB 模擬器]**。
+1. 在左側樹狀目錄中尋找 [ **本機] 和** [已連接]，以滑鼠右鍵按一下 **Cosmos DB 帳戶** ]，然後選取 **[連接到 Cosmos DB 模擬器]** 。
 
     :::image type="content" source="./media/storage-explorer/emulator-entry.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
 
 1. 在 [ **連接到 Cosmos DB** ] 視窗中：
    1. 在 [ **連接字串** ] 方塊中貼上您的連接字串。 如需有關如何取得主要連接字串的詳細資訊，請參閱 [取得連接字串](manage-with-powershell.md#list-keys)。
-   1. 輸入 **帳戶標籤**，然後選取 **[下一步]** 以查看摘要。
+   1. 輸入 **帳戶標籤** ，然後選取 **[下一步]** 以查看摘要。
    1. 選取 **[連線] 以** 連接 Azure Cosmos DB 帳戶。
 
       :::image type="content" source="./media/storage-explorer/emulator-dialog.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
@@ -117,7 +118,7 @@ Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設�
 
 #### <a name="create-a-database"></a>建立資料庫
 
-1. 以滑鼠右鍵按一下 Azure Cosmos DB 帳戶，然後選取 [ **建立資料庫**]。
+1. 以滑鼠右鍵按一下 Azure Cosmos DB 帳戶，然後選取 [ **建立資料庫** ]。
 
    :::image type="content" source="./media/storage-explorer/create-database.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
 
@@ -125,7 +126,7 @@ Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設�
 
 #### <a name="delete-a-database"></a>刪除資料庫
 
-1. 以滑鼠右鍵按一下資料庫，然後選取 [ **刪除資料庫**]。 
+1. 以滑鼠右鍵按一下資料庫，然後選取 [ **刪除資料庫** ]。 
 
    :::image type="content" source="./media/storage-explorer/delete-database1.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
 
@@ -135,11 +136,11 @@ Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設�
 
 #### <a name="create-a-collection"></a>建立集合
 
-1. 以滑鼠右鍵按一下您的資料庫，然後選取 [ **建立集合**]。
+1. 以滑鼠右鍵按一下您的資料庫，然後選取 [ **建立集合** ]。
 
    :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
 
-1. 在 [建立集合] 視窗中，輸入所要求的資訊，例如 **集合識別碼** 和 **儲存容量**等等。 選取 [確定] 來完成。
+1. 在 [建立集合] 視窗中，輸入所要求的資訊，例如 **集合識別碼** 和 **儲存容量** 等等。 選取 [確定] 來完成。
 
    :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
 
@@ -152,7 +153,7 @@ Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設�
 
 #### <a name="delete-a-collection"></a>刪除集合
 
-- 以滑鼠右鍵按一下集合，選取 [ **刪除集合**]，然後在快顯視窗中選取 **[是** ]。
+- 以滑鼠右鍵按一下集合，選取 [ **刪除集合** ]，然後在快顯視窗中選取 **[是** ]。
 
     集合節點隨即刪除，且資料庫會自動重新整理。
 
@@ -162,8 +163,8 @@ Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設�
 
 #### <a name="create-and-modify-documents"></a>建立及修改文件
 
-- 在左窗格中開啟 [ **檔** ]，選取 [ **新增檔**]，在右窗格中編輯內容，然後選取 [ **儲存**]。
-- 您也可以更新現有的檔，然後選取 [ **儲存**]。 若要捨棄變更，請選取 [ **捨棄**]。
+- 在左窗格中開啟 [ **檔** ]，選取 [ **新增檔** ]，在右窗格中編輯內容，然後選取 [ **儲存** ]。
+- 您也可以更新現有的檔，然後選取 [ **儲存** ]。 若要捨棄變更，請選取 [ **捨棄** ]。
 
   :::image type="content" source="./media/storage-explorer/document.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
 
@@ -173,7 +174,7 @@ Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設�
 
 #### <a name="query-for-documents"></a>查詢文件
 
-* 若要編輯檔篩選器，請輸入 [SQL 查詢](./sql-query-getting-started.md)， **然後選取**[套用]。
+* 若要編輯檔篩選器，請輸入 [SQL 查詢](./sql-query-getting-started.md)， **然後選取** [套用]。
 
   :::image type="content" source="./media/storage-explorer/document-filter.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
 
@@ -181,7 +182,7 @@ Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設�
 
 #### <a name="create-and-modify-a-vertex"></a>建立和修改頂點
 
-* 若要建立新的頂點，請從左窗格開啟 **圖表** ，選取 [ **新增頂點**]，編輯內容，然後選取 **[確定]**。
+* 若要建立新的頂點，請從左窗格開啟 **圖表** ，選取 [ **新增頂點** ]，編輯內容，然後選取 **[確定]** 。
 * 若要修改現有頂點，請在右窗格中選取 [畫筆] 圖示。
 
    :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
@@ -192,7 +193,7 @@ Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設�
 
 #### <a name="filter-for-graph"></a>篩選圖表
 
-* 若要編輯圖形篩選，請輸入 [gremlin 查詢](gremlin-support.md)，然後選取 [套用 **篩選**]。
+* 若要編輯圖形篩選，請輸入 [gremlin 查詢](gremlin-support.md)，然後選取 [套用 **篩選** ]。
 
    :::image type="content" source="./media/storage-explorer/graph-filter.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
 
@@ -201,14 +202,14 @@ Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設�
 #### <a name="create-and-modify-a-table"></a>建立和修改資料表
 
 * 若要建立新的資料表：
-   1. 在左窗格中，開啟 [ **實體**]，然後選取 [ **新增**]。
+   1. 在左窗格中，開啟 [ **實體** ]，然後選取 [ **新增** ]。
    1. 在 [ **新增實體** ] 對話方塊中，編輯內容。
    1. 選取 [ **加入屬性** ] 按鈕以加入屬性。
-   1. 選取 [插入]****。
+   1. 選取 [插入]  。
 
       :::image type="content" source="./media/storage-explorer/table.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
 
-* 若要修改資料表，請選取 [ **編輯**]，修改內容，然後選取 [ **更新**]。
+* 若要修改資料表，請選取 [ **編輯** ]，修改內容，然後選取 [ **更新** ]。
 
    
 
@@ -234,15 +235,15 @@ Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設�
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>管理預存程序、觸發程序和 UDF
 
 * 若要建立預存程式：
-  1. 在左側樹狀目錄中，以滑鼠右鍵按一下 [ **預存程式**]，然後選取 [ **建立預存**程式]。
+  1. 在左側樹狀目錄中，以滑鼠右鍵按一下 [ **預存程式** ]，然後選取 [ **建立預存** 程式]。
   
      :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
   
-  1. 在左側輸入名稱，在右窗格中輸入預存程式腳本，然後選取 [ **建立**]。
+  1. 在左側輸入名稱，在右窗格中輸入預存程式腳本，然後選取 [ **建立** ]。
   
 * 若要編輯現有的預存程式，請按兩下程式並進行更新，然後選取 [ **更新** ] 以儲存。 您也可以選取 [ **捨棄** ] 來取消變更。
 
-* **觸發**程式和**UDF**的作業類似于**預存程式**。
+* **觸發** 程式和 **UDF** 的作業類似于 **預存程式** 。
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -256,7 +257,7 @@ Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設�
 
 有幾個原因可能會導致您看到此錯誤，兩個最常見的原因是：
 
-* 您是在 *透明的 proxy*後方。 有人（例如您的 IT 部門）會攔截 HTTPS 流量、將其解密，然後使用自我簽署憑證將它加密。
+* 您是在 *透明的 proxy* 後方。 有人（例如您的 IT 部門）會攔截 HTTPS 流量、將其解密，然後使用自我簽署憑證將它加密。
 
 * 您正在執行軟體，例如防毒軟體。 軟體會將自我簽署的 TLS/SSL 憑證插入您收到的 HTTPS 訊息中。
 
@@ -268,12 +269,12 @@ Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設�
      - macOS 和 Linux：應該包含在您的作業系統中。
 
 1. 執行 OpenSSL：
-    * Windows：移至安裝目錄，然後按一下 [ **/bin/**]，然後按兩下 [ **openssl.exe**]。
+    * Windows：移至安裝目錄，然後按一下 [ **/bin/** ]，然後按兩下 [ **openssl.exe** ]。
     * Mac 和 Linux：從終端機執行 **openssl** 。
 1. 執行 `s_client -showcerts -connect microsoft.com:443`。
 1. 尋找自我簽署憑證。 如果您不確定哪些是自我簽署的，請尋找主體 ( "s：" ) 和簽發者 ( "i：" ) 相同的任何位置。
 1. 如果您找到任何自我簽署的憑證，請複製並貼上所有內容，包括 **-----[開始憑證]-----** **-----[結束** 憑證]-----新增至新的憑證。每一個的 CER 檔案。
-1. 開啟儲存體總管，然後移至 [**編輯**  >  **SSL 憑證**匯  >  **入憑證**]。 使用檔案選擇器來尋找、選取，然後開啟。您建立的 CER 檔案。
+1. 開啟儲存體總管，然後移至 [ **編輯**  >  **SSL 憑證** 匯  >  **入憑證** ]。 使用檔案選擇器來尋找、選取，然後開啟。您建立的 CER 檔案。
 
 如果您找不到任何自我簽署的憑證，您可以傳送意見反應以取得更多協助。
 
@@ -321,7 +322,7 @@ Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設�
   * Linux 是 ~/.config/StorageExplorer
   
   > [!NOTE]
-  > 如果您刪除這些檔案， **則必須重新輸入所有認證**。
+  > 如果您刪除這些檔案， **則必須重新輸入所有認證** 。
 
 ### <a name="httphttps-proxy-issue"></a>HTTP/HTTPS proxy 問題
 
@@ -329,7 +330,7 @@ Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設�
 
 ### <a name="development-node-under-local-and-attached-node-issue"></a>「本機與已連結」節點下的「開發」節點問題
 
-在左側樹狀結構中，選取 [本機] 和 [**附加**] 節點下的 [**開發**] 節點之後，就不會有回應。 這是預期中的行為。
+在左側樹狀結構中，選取 [本機] 和 [ **附加** ] 節點下的 [ **開發** ] 節點之後，就不會有回應。 這是預期中的行為。
 
 :::image type="content" source="./media/storage-explorer/development.png" alt-text="顯示左窗格中外掛程式圖示的螢幕擷取畫面。":::
 
@@ -350,7 +351,7 @@ Azure 儲存體總管支援針對 SQL、MongoDB、Graph 和資料表 Api 所設�
 * 檢查 Azure Cosmos DB 帳戶是否處於布建進度。 成功建立帳戶時，請再試一次。
 * 如果帳戶是在 [ **快速存取** ] 或 [ **本機] 和 [附加** ] 節點底下，請檢查帳戶是否已刪除。 如果是的話，您需要手動移除節點。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 觀看這段影片以瞭解如何在 Azure 儲存體總管中使用 Azure Cosmos DB： [在 Azure 儲存體總管中使用 Azure Cosmos DB](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be)。
 * 在[開始使用儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md)中深入了解儲存體總管並連線更多服務。

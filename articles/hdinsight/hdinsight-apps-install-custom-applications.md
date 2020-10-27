@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 9fd8152b4180d44d3b822feef7e74e267b6b948a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4757ebc61f980a0d035a248940cba0d1824cf153
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086495"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547855"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安裝自訂的 Apache Hadoop 應用程式
 
@@ -27,11 +27,11 @@ HDInsight 應用程式是使用者可以在 HDInsight 叢集上安裝的應用�
 
 ## <a name="install-hdinsight-applications"></a>安裝 HDInsight 應用程式
 
-HDInsight 應用程式可以在您建立叢集時安裝，或安裝至現有的 HDInsight 叢集。 如需定義 Azure Resource Manager 範本，請參閱 [MSDN：安裝 HDInsight 應用程式](https://msdn.microsoft.com/library/mt706515.aspx)。
+HDInsight 應用程式可以在您建立叢集時安裝，或安裝至現有的 HDInsight 叢集。 如需定義 Azure Resource Manager 範本，請參閱 [MSDN：安裝 HDInsight 應用程式](/rest/api/hdinsight/hdinsight-application)。
 
 部署此應用程式 (Hue) 所需的檔案︰
 
-* [azuredeploy.json](https://github.com/hdinsight/Iaas-Applications/blob/master/Hue/azuredeploy.json)：可供安裝 HDInsight 應用程式的 Resource Manager 範本。 如需開發您自己的 Resource Manager 範本，請參閱 [MSDN：安裝 HDInsight 應用程式](https://msdn.microsoft.com/library/mt706515.aspx) 。
+* [azuredeploy.json](https://github.com/hdinsight/Iaas-Applications/blob/master/Hue/azuredeploy.json)：可供安裝 HDInsight 應用程式的 Resource Manager 範本。 如需開發您自己的 Resource Manager 範本，請參閱 [MSDN：安裝 HDInsight 應用程式](/rest/api/hdinsight/hdinsight-application) 。
 * [hue-install_v0.sh](https://github.com/hdinsight/Iaas-Applications/blob/master/Hue/scripts/Hue-install_v0.sh)：Resource Manager 範本為了設定邊緣節點所呼叫的指令碼動作。
 * [hue-binaries.tgz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/hue-binaries-14-04.tgz)︰從 hui-install_v0.sh 呼叫的 Hue 二進位檔。
 * [hue-binaries-14-04.tgz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/hue-binaries-14-04.tgz)︰從 hui-install_v0.sh 呼叫的 Hue 二進位檔。
@@ -43,13 +43,13 @@ HDInsight 應用程式可以在您建立叢集時安裝，或安裝至現有的 
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2FIaas-Applications%2Fmaster%2FHue%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    Resource Manager 範本位於 [https://github.com/hdinsight/Iaas-Applications/tree/master/Hue](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue) 。  若要了解如何撰寫此 Resource Manager 範本，請參閱 [MSDN：安裝 HDInsight 應用程式](https://msdn.microsoft.com/library/mt706515.aspx)。
+    Resource Manager 範本位於 [https://github.com/hdinsight/Iaas-Applications/tree/master/Hue](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue) 。  若要了解如何撰寫此 Resource Manager 範本，請參閱 [MSDN：安裝 HDInsight 應用程式](/rest/api/hdinsight/hdinsight-application)。
 
 1. 從下拉式清單中選取包含您的叢集的現有 **資源群組** 。 您必須使用與叢集相同的資源群組。
 
 1. 輸入您要安裝應用程式的叢集名稱。 此叢集必須是現有的叢集。
 
-1. 選取 [ **我同意上方所述的條款及條件**] 核取方塊。
+1. 選取 [ **我同意上方所述的條款及條件** ] 核取方塊。
 
 1. 選取 [購買]。
 
@@ -61,7 +61,7 @@ HDInsight 應用程式可以在您建立叢集時安裝，或安裝至現有的 
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhdinsightapps%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="./media/hdinsight-apps-install-custom-applications/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    Resource Manager 範本位於 [https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json) 。  若要了解如何撰寫此 Resource Manager 範本，請參閱 [MSDN：安裝 HDInsight 應用程式](https://msdn.microsoft.com/library/mt706515.aspx)。
+    Resource Manager 範本位於 [https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json) 。  若要了解如何撰寫此 Resource Manager 範本，請參閱 [MSDN：安裝 HDInsight 應用程式](/rest/api/hdinsight/hdinsight-application)。
 
 2. 請依照指示來建立叢集和安裝 Hue。 如需建立 HDInsight 叢集的詳細資訊，請參閱 [在 HDInsight 中建立以 Linux 為基礎的 Hadoop 叢集](hdinsight-hadoop-provision-linux-clusters.md)。
 
@@ -73,13 +73,13 @@ HDInsight 應用程式可以在您建立叢集時安裝，或安裝至現有的 
 
 您可以在 Azure 入口網站上檢查應用程式狀態以驗證應用程式安裝。 此外，您也可以驗證所有 HTTP 端點是否如預期般出現，以及網頁（如果有的話）。
 
-針對 **色調**，您可以使用下列步驟：
+針對 **色調** ，您可以使用下列步驟：
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 選取您安裝應用程式的叢集。
-1. 從 [ **設定** ] 功能表中選取 [ **應用程式**]。
+1. 從 [ **設定** ] 功能表中選取 [ **應用程式** ]。
 1. 從清單中選取 [ **色調** ] 以查看屬性。  
 1. 選取 [網頁] 連結來驗證網站。
 
@@ -127,9 +127,9 @@ HDInsight 應用程式可以在您建立叢集時安裝，或安裝至現有的 
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 選取您安裝應用程式的叢集。
-1. 從 [ **設定** ] 功能表中選取 [ **應用程式**]。
-1. 以滑鼠右鍵按一下您要移除的應用程式，然後選取 [ **刪除**]。
-1. 選取 [是]  確認。
+1. 從 [ **設定** ] 功能表中選取 [ **應用程式** ]。
+1. 以滑鼠右鍵按一下您要移除的應用程式，然後選取 [ **刪除** ]。
+1. 選取 [是] 以確認。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -139,9 +139,9 @@ HDInsight 應用程式可以在您建立叢集時安裝，或安裝至現有的 
 az hdinsight application delete --name NAME --cluster-name CLUSTERNAME --resource-group RESOURCEGROUP
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
-* [MSDN：安裝 HDInsight 應用程式](https://msdn.microsoft.com/library/mt706515.aspx)︰了解如何開發 Resource Manager 範本以供部署 HDInsight 應用程式。
+* [MSDN：安裝 HDInsight 應用程式](/rest/api/hdinsight/hdinsight-application)︰了解如何開發 Resource Manager 範本以供部署 HDInsight 應用程式。
 * [安裝 HDInsight 應用程式](hdinsight-apps-install-applications.md)：了解如何將 HDInsight 應用程式安裝到您的叢集。
 * [發佈 HDInsight 應用程式](hdinsight-apps-publish-applications.md)：了解如何將自訂 HDInsight 應用程式發佈到 Azure Marketplace。
 * [使用指令碼動作自訂以 Linux 為基礎的 HDInsight 叢集](hdinsight-hadoop-customize-cluster-linux.md)：了解如何使用指令碼動作來安裝其他應用程式。

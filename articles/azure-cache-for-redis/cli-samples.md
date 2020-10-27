@@ -8,18 +8,18 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/14/2017
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9bfdd2d03b3ab6edd04a641787475930435a9ffc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32530982bc2a9d1b5deb31b3bc71460462352258
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87499597"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536414"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-cli"></a>使用 Azure CLI 管理 Azure Cache for Redis
 
 下表包含使用 Azure CLI 所建置之 Bash 指令碼的連結。
 
-| Create cache | 說明 |
+| Create cache | 描述 |
 | ------------ | ----------- |
 | [建立快取](./scripts/create-cache.md) | 建立資源群組和基本層「Azure Redis 快取」。 |
 | [使用叢集建立高級快取](./scripts/create-premium-cache-cluster.md) | 透過啟用的叢集建立資源群組與高級層快取。|
@@ -30,4 +30,4 @@ ms.locfileid: "87499597"
 |**刪除快取**| **描述** |
 | [刪除快取](./scripts/delete-cache.md) | 刪除 Azure Redis 快取執行個體  |
 
-如需有關 Azure CLI 的詳細資訊，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 與[開始使用 Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)。
+如需有關 Azure CLI 的詳細資訊，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli) 與[開始使用 Azure CLI](/cli/azure/get-started-with-azure-cli)。

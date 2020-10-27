@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 08/06/2020
-ms.openlocfilehash: 78c0526ac750977115a88e96bb5f7d5cb4e9803f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c02f9de5b41d58e40001ba103191f3ef015f5c5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87873087"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534901"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>在 Azure HDInsight 中使用外部中繼資料存放區
 
@@ -41,7 +41,7 @@ HDInsight 中的 Apache Hive 中繼存放區是 Apache Hadoop 架構不可或缺
 * 針對簡單的工作負載，建議使用預設中繼存放區。 不需要多個叢集，且不需要在叢集生命週期之外保留中繼資料的工作負載。
 
 > [!IMPORTANT]
-> 預設中繼存放區會提供具有 **基本層 5 DTU 限制的 Azure SQL Database， (無法升級) **！ 適用于基本測試用途。 針對大型或生產工作負載，建議您遷移至外部中繼存放區。
+> 預設中繼存放區會提供具有 **基本層 5 DTU 限制的 Azure SQL Database， (無法升級)** ！ 適用于基本測試用途。 針對大型或生產工作負載，建議您遷移至外部中繼存放區。
 
 ## <a name="custom-metastore"></a>自訂中繼存放區
 
@@ -63,9 +63,9 @@ HDInsight 也支援自訂中繼存放區，這是針對生產叢集建議的中�
 
 ### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>針對自訂中繼存放區建立和設定 Azure SQL Database
 
-在設定 HDInsight 叢集的自訂 Hive 中繼存放區之前，請先建立或擁有現有的 Azure SQL Database。  如需詳細資訊，請參閱 [快速入門：在 Azure SQL Database 中建立單一資料庫](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)。
+在設定 HDInsight 叢集的自訂 Hive 中繼存放區之前，請先建立或擁有現有的 Azure SQL Database。  如需詳細資訊，請參閱 [快速入門：在 Azure SQL Database 中建立單一資料庫](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal)。
 
-建立叢集時，HDInsight 服務需要連接到外部中繼存放區並驗證您的認證。 設定 Azure SQL Database 防火牆規則，以允許 Azure 服務和資源存取伺服器。 選取 [ **設定伺服器防火牆**]，在 Azure 入口網站中啟用此選項。 然後， **選取** [ **拒絕公用網路存取**] 下方， **[是] 下的 [是]** **可讓 Azure 服務和資源存取此伺服器** 以進行 Azure SQL Database。 如需詳細資訊，請參閱 [建立和管理 IP 防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
+建立叢集時，HDInsight 服務需要連接到外部中繼存放區並驗證您的認證。 設定 Azure SQL Database 防火牆規則，以允許 Azure 服務和資源存取伺服器。 選取 [ **設定伺服器防火牆** ]，在 Azure 入口網站中啟用此選項。 然後， **選取** [ **拒絕公用網路存取** ] 下方， **[是] 下的 [是]** **可讓 Azure 服務和資源存取此伺服器** 以進行 Azure SQL Database。 如需詳細資訊，請參閱 [建立和管理 IP 防火牆規則](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
 
 不支援 SQL 存放區的私人端點。
 
@@ -75,7 +75,7 @@ HDInsight 也支援自訂中繼存放區，這是針對生產叢集建議的中�
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>在叢集建立期間選取自訂中繼存放區
 
-您可以隨時將叢集指向先前建立的 Azure SQL Database。 若要透過入口網站建立叢集，您可以從 **儲存體 > 中繼存放區設定**中指定選項。
+您可以隨時將叢集指向先前建立的 Azure SQL Database。 若要透過入口網站建立叢集，您可以從 **儲存體 > 中繼存放區設定** 中指定選項。
 
 ![HDInsight Hive 中繼資料存放區 Azure 入口網站](./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png)
 
@@ -110,6 +110,6 @@ Apache Oozie 是一個可管理 Hadoop 作業的工作流程協調系統。 Oozi
 
 若要在 HDInsight 上搭配 Apache Ambari 使用您自己的外部資料庫，請參閱 [自訂 Apache Ambari 資料庫](hdinsight-custom-ambari-db.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他工具在 HDInsight 中設定叢集](./hdinsight-hadoop-provision-linux-clusters.md)

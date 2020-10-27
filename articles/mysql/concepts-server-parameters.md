@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: 5415446e0211618cfbee917d0df91213d68b7097
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6a914df9ed277625d3706465fe335e128aeced1
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627341"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545152"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的伺服器參數
 
@@ -57,9 +57,9 @@ MySQL 通常會為每個用戶端連接指派一個執行緒。 當並行使用�
 
 ### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
 
-在適用於 MySQL 的 Azure 資料庫中，二進位記錄一律會啟用 (`log_bin` 也就是在) 上設定為。 如果您想要使用觸發程式，將會收到類似于 *您未啟用超級許可權和二進位記錄的錯誤 (您可能會想要使用較不安全的 `log_bin_trust_function_creators` 變數) *。 
+在適用於 MySQL 的 Azure 資料庫中，二進位記錄一律會啟用 (`log_bin` 也就是在) 上設定為。 如果您想要使用觸發程式，將會收到類似于 *您未啟用超級許可權和二進位記錄的錯誤 (您可能會想要使用較不安全的 `log_bin_trust_function_creators` 變數)* 。 
 
-二進位記錄格式一律是 **row** ，而伺服器的所有連接 **一律** 會使用以資料列為基礎的二進位記錄。 使用以資料列為基礎的二進位記錄時，不會有安全性問題，而且二進位記錄無法中斷，因此您可以安全地設定 [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) 為 **TRUE**。
+二進位記錄格式一律是 **row** ，而伺服器的所有連接 **一律** 會使用以資料列為基礎的二進位記錄。 使用以資料列為基礎的二進位記錄時，不會有安全性問題，而且二進位記錄無法中斷，因此您可以安全地設定 [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) 為 **TRUE** 。
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -67,7 +67,7 @@ MySQL 通常會為每個用戶端連接指派一個執行緒。 當並行使用�
 
 #### <a name="servers-supporting-up-to-4-tb-storage"></a>最多可支援 4 TB 儲存體的伺服器
 
-|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
+|定價層|**vCore(s)**|**預設值 (位元組)**|**最小值 (位元組)**|**最大值 (位元組)**|
 |---|---|---|---|---|
 |基本|1|872415232|134217728|872415232|
 |基本|2|2684354560|134217728|2684354560|
@@ -85,7 +85,7 @@ MySQL 通常會為每個用戶端連接指派一個執行緒。 當並行使用�
 
 #### <a name="servers-support-up-to-16-tb-storage"></a>伺服器最多支援 16 TB 的儲存體
 
-|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
+|定價層|**vCore(s)**|**預設值 (位元組)**|**最小值 (位元組)**|**最大值 (位元組)**|
 |---|---|---|---|---|
 |基本|1|872415232|134217728|872415232|
 |基本|2|2684354560|134217728|2684354560|
@@ -108,13 +108,13 @@ MySQL 通常會為每個用戶端連接指派一個執行緒。 當並行使用�
 
 MySQL 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表儲存在不同的資料表空間中。 [系統資料表空間](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html) \(英文\) 是 InnoDB 資料字典的儲存區域。 [file-per-table 資料表空間](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html) \(英文\) 包含單一 InnoDB 資料表的資料和索引，且會獨自儲存在檔案系統的資料檔中。 這個行為是由 `innodb_file_per_table` 伺服器參數所控制。 將 `innodb_file_per_table` 設定為 `OFF` 會導致 InnoDB 在系統資料表空間中建立資料表。 否則，InnoDB 會在 file-per-table 資料表空間中建立資料表。
 
-適用於 MySQL 的 Azure 資料庫在單一資料檔中支援最大達到 **1 TB**。 如果資料庫大小大於 1 TB，則應該在 [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) \(英文\) 資料表空間中建立資料表。 如果單一資料表大小大於 1 TB，則應該使用分割區資料表。
+適用於 MySQL 的 Azure 資料庫在單一資料檔中支援最大達到 **1 TB** 。 如果資料庫大小大於 1 TB，則應該在 [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) \(英文\) 資料表空間中建立資料表。 如果單一資料表大小大於 1 TB，則應該使用分割區資料表。
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 
 請檢閱 [MySQL 文件](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_join_buffer_size) \(英文\)，以深入了解此參數。
 
-|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
+|定價層|**vCore(s)**|**預設值 (位元組)**|**最小值 (位元組)**|**最大值 (位元組)**|
 |---|---|---|---|---|
 |基本|1|無法在基本層中設定|N/A|N/A|
 |基本|2|無法在基本層中設定|N/A|N/A|
@@ -163,7 +163,7 @@ MySQL 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表
 
 請檢閱 [MySQL 文件](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_max_heap_table_size) \(英文\)，以深入了解此參數。
 
-|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
+|定價層|**vCore(s)**|**預設值 (位元組)**|**最小值 (位元組)**|**最大值 (位元組)**|
 |---|---|---|---|---|
 |基本|1|無法在基本層中設定|N/A|N/A|
 |基本|2|無法在基本層中設定|N/A|N/A|
@@ -188,7 +188,7 @@ MySQL 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表
 > [!NOTE]
 > 查詢快取從 MySQL 5.7.20 開始就已過時，而且已在 MySQL 8.0 中移除
 
-|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|* * 最大值 * *|
+|定價層|**vCore(s)**|**預設值 (位元組)**|**最小值 (位元組)**|* * 最大值 * *|
 |---|---|---|---|---|
 |基本|1|無法在基本層中設定|N/A|N/A|
 |基本|2|無法在基本層中設定|N/A|N/A|
@@ -215,9 +215,9 @@ MySQL 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表
 
 ### <a name="innodb_strict_mode"></a>innodb_strict_mode
 
-如果您收到類似「資料列大小太大 ( # A0 8126) 」的錯誤，則您可能會想要關閉參數 **innodb_strict_mode**。 不允許在伺服器層級全域修改伺服器參數 **innodb_strict_mode** ，因為如果資料列資料大小大於8k，資料將會被截斷而不會造成資料遺失的錯誤。 建議您修改架構，以符合頁面大小的限制。 
+如果您收到類似「資料列大小太大 ( # A0 8126) 」的錯誤，則您可能會想要關閉參數 **innodb_strict_mode** 。 不允許在伺服器層級全域修改伺服器參數 **innodb_strict_mode** ，因為如果資料列資料大小大於8k，資料將會被截斷而不會造成資料遺失的錯誤。 建議您修改架構，以符合頁面大小的限制。 
 
-您可以使用，在工作階段層級設定這個參數 `init_connect` 。 若要在工作階段層級設定 **innodb_strict_mode** ，請參閱 [未列出的設定參數](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed)。
+您可以使用，在工作階段層級設定這個參數 `init_connect` 。 若要在工作階段層級設定 **innodb_strict_mode** ，請參閱 [未列出的設定參數](./howto-server-parameters.md#setting-parameters-not-listed)。
 
 > [!NOTE]
 > 如果您有讀取複本伺服器，請在來源伺服器的工作階段層級將 **innodb_strict_mode** 設定為 OFF，將會中斷複寫。 如果您有讀取的複本，建議您將參數設定為 [關閉]。
@@ -226,7 +226,7 @@ MySQL 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表
 
 請檢閱 [MySQL 文件](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_sort_buffer_size) \(英文\)，以深入了解此參數。
 
-|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
+|定價層|**vCore(s)**|**預設值 (位元組)**|**最小值 (位元組)**|**最大值 (位元組)**|
 |---|---|---|---|---|
 |基本|1|無法在基本層中設定|N/A|N/A|
 |基本|2|無法在基本層中設定|N/A|N/A|
@@ -246,7 +246,7 @@ MySQL 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表
 
 請檢閱 [MySQL 文件](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_tmp_table_size) \(英文\)，以深入了解此參數。
 
-|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
+|定價層|**vCore(s)**|**預設值 (位元組)**|**最小值 (位元組)**|**最大值 (位元組)**|
 |---|---|---|---|---|
 |基本|1|無法在基本層中設定|N/A|N/A|
 |基本|2|無法在基本層中設定|N/A|N/A|
@@ -280,7 +280,7 @@ MySQL 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表
 
 此處未列出的其他變數會設定為預設 MySQL 現成的值。 如需預設值的 [8.0](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html)、 [5.7](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html)和 [5.6](https://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html) 版本，請參閱 MySQL 檔。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 瞭解如何 [使用 Azure 入口網站設定伺服器參數](./howto-server-parameters.md)
 - 瞭解如何 [使用 Azure CLI 設定伺服器參數](./howto-configure-server-parameters-using-cli.md)

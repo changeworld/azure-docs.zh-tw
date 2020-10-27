@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 74e62c39295d36132abdce0abc033162fa22cb64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 747b8bc1abbf19c861e180faf17e2fa1a143a237
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531627"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546308"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>如何使用 Azure CLI 和 REST API，在適用於 MySQL 的 Azure 資料庫中建立及管理讀取複本
 
@@ -23,7 +23,7 @@ ms.locfileid: "91531627"
 
 ### <a name="prerequisites"></a>必要條件
 
-- [安裝 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [安裝 Azure CLI 2.0](/cli/azure/install-azure-cli)
 - 將作為來源伺服器使用的 [適用於 MySQL 的 Azure 資料庫伺服器](quickstart-create-mysql-server-database-using-azure-portal.md) 。 
 
 > [!IMPORTANT]
@@ -42,10 +42,10 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 
 `az mysql server replica create` 命令需要下列參數：
 
-| 設定 | 範例值 | 描述  |
+| 設定 | 範例值 | 描述  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  複本伺服器會建立於其中的資源群組。  |
-| NAME | mydemoreplicaserver | 所建立的新複本伺服器名稱。 |
+| resource-group |  myresourcegroup |  複本伺服器會建立於其中的資源群組。  |
+| name | mydemoreplicaserver | 所建立的新複本伺服器名稱。 |
 | source-server | mydemoserver | 要從中複寫之現有來源伺服器的名稱或識別碼。 |
 
 若要建立跨區域讀取複本，請使用 `--location` 參數。 以下的 CLI 範例會在美國西部建立複本。
@@ -71,9 +71,9 @@ az mysql server replica list --server-name mydemoserver --resource-group myresou
 
 `az mysql server replica list` 命令需要下列參數：
 
-| 設定 | 範例值 | 描述  |
+| 設定 | 範例值 | 描述  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  複本伺服器會建立於其中的資源群組。  |
+| resource-group |  myresourcegroup |  複本伺服器會建立於其中的資源群組。  |
 | server-name | mydemoserver | 來源伺服器的名稱或識別碼。 |
 
 ### <a name="stop-replication-to-a-replica-server"></a>停止複寫至複本伺服器
@@ -89,10 +89,10 @@ az mysql server replica stop --name mydemoreplicaserver --resource-group myresou
 
 `az mysql server replica stop` 命令需要下列參數：
 
-| 設定 | 範例值 | 描述  |
+| 設定 | 範例值 | 描述  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  複本伺服器所在的資源群組。  |
-| NAME | mydemoreplicaserver | 要停止複寫的複本伺服器名稱。 |
+| resource-group |  myresourcegroup |  複本伺服器所在的資源群組。  |
+| name | mydemoreplicaserver | 要停止複寫的複本伺服器名稱。 |
 
 ### <a name="delete-a-replica-server"></a>刪除複本伺服器
 

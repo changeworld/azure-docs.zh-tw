@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
-ms.openlocfilehash: 290b541d9b5e86616373d2e426241fca07e780ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 032c25969bf477e1163b8db2aca631044c457939
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75887201"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539967"
 ---
 # <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Apache HBase Master (HMaster) 無法在 Azure HDInsight 中啟動
 
@@ -83,7 +83,7 @@ HMaster 發生嚴重例外狀況的時間，類似于： `java.io.IOException: T
 
 ### <a name="resolution"></a>解決方案
 
-1. 從 Apache Ambari UI 中，移至**HBase**的 [連線]  >  ** **。 在自訂檔案中 `hbase-site.xml` ，新增下列設定：
+1. 從 Apache Ambari UI 中，移至  。 在自訂檔案中 `hbase-site.xml` ，新增下列設定：
 
     ```
     Key: hbase.master.namespace.init.timeout Value: 2400000  
@@ -113,9 +113,9 @@ HMaster 發生嚴重例外狀況的時間，類似于： `java.io.IOException: T
 
 變更 Zookeeper 會話超時，但不只 `hbase-site` 是設定， `zookeeper.session.timeout` 也 `zoo.cfg` `maxSessionTimeout` 需要變更 Zookeeper 設定。
 
-1. 存取 Ambari UI，移至 **HBase-> 設定-> 設定**，在 [超時] 區段中，變更 [Zookeeper 會話超時] 的值。
+1. 存取 Ambari UI，移至 **HBase-> 設定-> 設定** ，在 [超時] 區段中，變更 [Zookeeper 會話超時] 的值。
 
-1. 存取 Ambari UI，移至 **Zookeeper-> 設定-> 自訂**] `zoo.cfg` ，新增/變更下列設定。 請確定值與 HBase 相同 `zookeeper.session.timeout` 。
+1. 存取 Ambari UI，移至 **Zookeeper-> 設定-> 自訂** ] `zoo.cfg` ，新增/變更下列設定。 請確定值與 HBase 相同 `zookeeper.session.timeout` 。
 
     ```
     Key: maxSessionTimeout Value: 120000  
@@ -149,4 +149,4 @@ wasb://@.blob.core.windows.net/hbase在 Ambari 上設定 rootdir：並重新啟�
 
 * 連線至 [@AzureSupport](https://twitter.com/azuresupport) - 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 將 Azure 社群連線到正確的資源：解答、支援和專家。
 
-* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。
+* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

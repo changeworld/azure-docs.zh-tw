@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 924b1132efeb3ee4211593da190f5b7251029ae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3db411df69a754857220867865522f8e4fa24030
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80586973"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546002"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Hive 的閘道深入探討和最佳作法
 
@@ -44,9 +44,9 @@ HDInsight 閘道是 HDInsight 叢集的唯一部分，可透過網際網路公�
 
 ![結果圖表](./media/gateway-best-practices/result-retrieval-diagram.png "結果圖表")
 
-Apache Hive 是與 HDFS 相容的檔案系統之上的關聯式抽象概念。 此抽象概念表示 Hive 中的 **SELECT** 語句對應至檔案系統上的 **讀取** 作業。 **讀取**作業會在向使用者回報之前，先轉譯成適當的架構。 此進程的延遲會增加，且需要資料大小和觸及使用者所需的總躍點。
+Apache Hive 是與 HDFS 相容的檔案系統之上的關聯式抽象概念。 此抽象概念表示 Hive 中的 **SELECT** 語句對應至檔案系統上的 **讀取** 作業。 **讀取** 作業會在向使用者回報之前，先轉譯成適當的架構。 此進程的延遲會增加，且需要資料大小和觸及使用者所需的總躍點。
 
-當執行大型資料的 **CREATE** 或 **INSERT** 語句時，可能會發生類似的行為，因為這些命令會對應到基礎檔案系統中的 **寫入** 作業。 請考慮將資料（例如 raw ORC）寫入至 filesystem/datalake，而不是使用 **INSERT** 或 **LOAD**載入它。
+當執行大型資料的 **CREATE** 或 **INSERT** 語句時，可能會發生類似的行為，因為這些命令會對應到基礎檔案系統中的 **寫入** 作業。 請考慮將資料（例如 raw ORC）寫入至 filesystem/datalake，而不是使用 **INSERT** 或 **LOAD** 載入它。
 
 在啟用企業安全性套件的叢集中，充分複雜的 Apache Ranger 原則可能會導致查詢編譯時間變慢，這可能會導致閘道超時。 如果 ESP 叢集中已注意到閘道超時，請考慮減少或合併 ranger 原則的數目。
 
@@ -54,11 +54,11 @@ Apache Hive 是與 HDFS 相容的檔案系統之上的關聯式抽象概念。 �
 
 有多個場地可減輕和瞭解在上述行為中符合的效能問題。 當透過 HDInsight 閘道遇到查詢效能降低時，請使用下列檢查清單：
 
-* 執行大型**SELECT**查詢時，請使用**LIMIT**子句。 **LIMIT**子句將會減少回報給用戶端主機的總數據列。 **LIMIT**子句只會影響結果產生，而不會變更查詢計劃。 若要將 **LIMIT** 子句套用至查詢計劃，請使用此設定 `hive.limit.optimize.enable` 。 **限制** 可以與使用引數表單 **限制 x，y**的位移合併。
+* 執行大型 **SELECT** 查詢時，請使用 **LIMIT** 子句。 **LIMIT** 子句將會減少回報給用戶端主機的總數據列。 **LIMIT** 子句只會影響結果產生，而不會變更查詢計劃。 若要將 **LIMIT** 子句套用至查詢計劃，請使用此設定 `hive.limit.optimize.enable` 。 **限制** 可以與使用引數表單 **限制 x，y** 的位移合併。
 
-* 執行**select**查詢時，請為您感興趣的資料行命名，而不是使用**select \* **。 選取較少的資料行將會降低讀取的資料量。
+* 執行 **SELECT** 查詢時，請為您感興趣的資料行命名，而不是使用 * *SELECT \** _。 選取較少的資料行將會降低讀取的資料量。
 
-* 嘗試透過 Apache Beeline 執行感興趣的查詢。 如果透過 Apache Beeline 的結果抓取需要很長一段時間，則會在透過外部工具抓取相同結果時預期會發生延遲。
+_ 嘗試透過 Apache Beeline 執行感興趣的查詢。 如果透過 Apache Beeline 的結果抓取需要很長一段時間，則會在透過外部工具抓取相同結果時預期會發生延遲。
 
 * 測試基本的 Hive 查詢，以確保能夠建立與 HDInsight 閘道的連線。 嘗試從兩個或多個外部工具執行基本查詢，以確定沒有任何個別工具正在發生問題。
 
@@ -78,9 +78,9 @@ Apache Hive 是與 HDFS 相容的檔案系統之上的關聯式抽象概念。 �
 
 * 請考慮使用設定和來啟用壓縮 Hive `hive.exec.compress.output` `hive.exec.compress.intermediate` 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-* [HDInsight 上的 Apache Beeline](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-beeline)
-* [HDInsight 閘道超時疑難排解步驟](https://docs.microsoft.com/azure/hdinsight/interactive-query/troubleshoot-gateway-timeout)
-* [適用于 HDInsight 的虛擬網路](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)
-* [具有 Express Route 的 HDInsight](https://docs.microsoft.com/azure/hdinsight/connect-on-premises-network)
+* [HDInsight 上的 Apache Beeline](../hadoop/apache-hadoop-use-hive-beeline.md)
+* [HDInsight 閘道超時疑難排解步驟](./troubleshoot-gateway-timeout.md)
+* [適用于 HDInsight 的虛擬網路](../hdinsight-plan-virtual-network-deployment.md)
+* [具有 Express Route 的 HDInsight](../connect-on-premises-network.md)

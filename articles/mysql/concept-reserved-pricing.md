@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 86933b324d7216a6097102cf237d0402d9f63234
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27cd1c9085771bd9ac2b18c37b73235d7f18ad5a
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90882681"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538080"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>預付具有保留容量的適用於 MySQL 的 Azure 資料庫計算資源
 
@@ -19,13 +19,13 @@ ms.locfileid: "90882681"
 
 您不需要將保留指派給特定的適用於 MySQL 的 Azure 資料庫伺服器。 已在執行中的適用於 MySQL 的 Azure 資料庫或新部署的，將會自動獲得保留定價的權益。 透過購買保留，您會預付為期一或三年的計算費用。 當您購買保留專案時，與保留屬性相符的「適用于 MySQL 的 Azure 資料庫」計算費用，將不再以隨用隨付費率計費。 保留並未涵蓋與 MySQL 資料庫伺服器相關聯的軟體、網路或儲存體費用。 在保留期限結束時，帳單權益會過期，而適用於 MySQL 的 Azure 資料庫會以隨用隨付價格計費。 保留不會自動更新。 如需定價資訊，請參閱 [適用於 MySQL 的 Azure 資料庫保留容量](https://azure.microsoft.com/pricing/details/mysql/)供應專案。 </br>
 
-您可以在 [Azure 入口網站](https://portal.azure.com/)中購買適用於 MySQL 的 Azure 資料庫的保留容量。 保留的付款方式可為[預先付款或每月付款](../cost-management-billing/reservations/monthly-payments-reservations.md)。 若要購買保留容量：
+您可以在 [Azure 入口網站](https://portal.azure.com/)中購買適用於 MySQL 的 Azure 資料庫的保留容量。 保留的付款方式可為[預先付款或每月付款](../cost-management-billing/reservations/prepare-buy-reservation.md)。 若要購買保留容量：
 
 * 您必須是至少一個具有隨用隨付費率的企業或個別訂用帳戶的擁有者角色。
-* 針對企業訂用帳戶，必須在 [EA 入口網站](https://ea.azure.com/)中啟用**新增保留執行個體**。 或者，如果該設定已停用，則您必須是訂用帳戶上的 EA 系統管理員。
+* 針對企業訂用帳戶，必須在 [EA 入口網站](https://ea.azure.com/)中啟用 **新增保留執行個體** 。 或者，如果該設定已停用，則您必須是訂用帳戶上的 EA 系統管理員。
 * 針對雲端解決方案提供者 (CSP) 方案，只有系統管理員專員或銷售專員可以購買適用於 MySQL 的 Azure 資料庫保留容量。 </br>
 
-如需企業客戶和隨用隨付客戶的計費方式的詳細資訊，請參閱針對您的 [enterprise 註冊瞭解 azure 保留使用量](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) ，並 [瞭解您的隨用隨付訂用帳戶的 azure 保留使用量](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)。
+如需企業客戶和隨用隨付客戶的計費方式的詳細資訊，請參閱針對您的 [enterprise 註冊瞭解 azure 保留使用量](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) ，並 [瞭解您的隨用隨付訂用帳戶的 azure 保留使用量](../cost-management-billing/reservations/understand-reserved-instance-usage.md)。
 
 
 ## <a name="determine-the-right-database-size-before-purchase"></a>在購買前判斷正確的資料庫大小
@@ -51,8 +51,8 @@ ms.locfileid: "90882681"
 | 欄位 | 描述 |
 | :------------ | :------- |
 | 訂用帳戶   | 用來支付適用於 MySQL 的 Azure 資料庫保留容量保留的訂用帳戶。 訂用帳戶上的付款方法會收取適用於 MySQL 的 Azure 資料庫保留容量保留的預付成本。 訂用帳戶類型必須是 enterprise 合約 (供應專案號碼： MS-AZR-0003P->ms-azr-0017p 或 MS-AZR-0003P-Ms-azr-0148p) 或具有隨用隨付定價的個別合約 (供應專案號碼： MS-MS-AZR-0003P-Ms-azr-0003p 或 MS-MS-AZR-0003P-Ms-azr-0023p) 。 針對企業訂用帳戶，費用會從註冊的承諾用量金額餘額扣除或作為超額部分收費。 針對具有隨用隨付定價的個別訂用帳戶，費用會以訂用帳戶的信用卡或發票付款方法計費。
-| 影響範圍 | VCore 保留的範圍可以涵蓋一個訂用帳戶或多個訂用帳戶 (共用範圍) 。 如果您選取： </br></br> **共用**，vCore 保留折扣會套用至計費內容內任何訂用帳戶中執行的適用於 MySQL 的 Azure 資料庫伺服器。 針對企業客戶，共用範圍是註冊，並包含註冊中的所有訂用帳戶。 針對隨用隨付客戶，共用範圍是帳戶系統管理員所建立的所有隨用隨付訂用帳戶。</br></br> **單一訂**用帳戶，vCore 保留折扣會套用到此訂用帳戶中適用於 MySQL 的 Azure 資料庫的伺服器。 </br></br> **單一資源群組**，保留折扣會套用至所選訂用帳戶中的適用於 MySQL 的 Azure 資料庫伺服器，以及該訂用帳戶內選取的資源群組。
-| 區域 | 適用於 MySQL 的 Azure 資料庫保留容量保留所涵蓋的 Azure 區域。
+| 影響範圍 | VCore 保留的範圍可以涵蓋一個訂用帳戶或多個訂用帳戶 (共用範圍) 。 如果您選取： </br></br> **共用** ，vCore 保留折扣會套用至計費內容內任何訂用帳戶中執行的適用於 MySQL 的 Azure 資料庫伺服器。 針對企業客戶，共用範圍是註冊，並包含註冊中的所有訂用帳戶。 針對隨用隨付客戶，共用範圍是帳戶系統管理員所建立的所有隨用隨付訂用帳戶。</br></br> **單一訂** 用帳戶，vCore 保留折扣會套用到此訂用帳戶中適用於 MySQL 的 Azure 資料庫的伺服器。 </br></br> **單一資源群組** ，保留折扣會套用至所選訂用帳戶中的適用於 MySQL 的 Azure 資料庫伺服器，以及該訂用帳戶內選取的資源群組。
+| Region | 適用於 MySQL 的 Azure 資料庫保留容量保留所涵蓋的 Azure 區域。
 | 部署類型 | 您要為其購買保留的適用於 MySQL 的 Azure 資料庫資源類型。
 | 效能層級 | 適用於 MySQL 的 Azure 資料庫伺服器的服務層級。
 | 詞彙 | 一年
@@ -60,7 +60,7 @@ ms.locfileid: "90882681"
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>取消、交換保留或進行退費
 
-您可以取消、交換保留或進行退費，但有某些限制。 如需詳細資訊，請參閱 [Azure 保留的自助式交換和退費](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)。
+您可以取消、交換保留或進行退費，但有某些限制。 如需詳細資訊，請參閱 [Azure 保留的自助式交換和退費](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)。
 
 ## <a name="vcore-size-flexibility"></a>vCore 大小彈性
 
@@ -77,10 +77,9 @@ VCore 保留折扣會自動套用至符合適用於 MySQL 的 Azure 資料庫保
 
 若要深入了解 Azure 保留項目，請參閱下列文章：
 
-* [什麼是 Azure 保留](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)？
-* [管理 Azure 保留項目](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
-* [了解 Azure 保留折扣](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
-* [了解隨用隨付訂用帳戶的保留使用量](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-mysql)
-* [了解 Enterprise 註冊的保留項目使用量](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
-* [合作夥伴中心雲端解決方案提供者 (CSP) 計畫中的 Azure 保留項目](https://docs.microsoft.com/partner-center/azure-reservations)
-
+* [什麼是 Azure 保留](../cost-management-billing/reservations/save-compute-costs-reservations.md)？
+* [管理 Azure 保留項目](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+* [了解 Azure 保留折扣](../cost-management-billing/reservations/understand-reservation-charges.md)
+* [了解隨用隨付訂用帳戶的保留使用量](../cost-management-billing/reservations/understand-reservation-charges-mysql.md)
+* [了解 Enterprise 註冊的保留項目使用量](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+* [合作夥伴中心雲端解決方案提供者 (CSP) 計畫中的 Azure 保留項目](/partner-center/azure-reservations)

@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 17fb1bf8aebe1bd114f970aed997e77ce8a07af1
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b194812ef68820a0c310d0bac3b055360c5b5e4a
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150780"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538420"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>使用 Azure IoT 中樞來監視、診斷和排解連線中斷問題
 
@@ -28,25 +28,25 @@ IoT 裝置的連線問題可能因為有許多可能的失敗點而難以排解�
 
 使用 Azure 監視器，在裝置中斷連線時取得警示並寫入記錄。
 
-### <a name="turn-on-diagnostic-logs"></a>開啟診斷記錄
+### <a name="turn-on-logs"></a>開啟記錄
 
-若要記錄裝置連線事件和錯誤，請開啟 IoT 中樞的診斷功能。 建議您儘早開啟這些記錄檔，因為如果未啟用診斷記錄，當裝置中斷連線時，您將沒有任何資訊可對問題進行疑難排解。
+若要記錄裝置線上活動和錯誤，請建立 [IoT 中樞連線資源記錄](monitor-iot-hub-reference.md#connections)的診斷設定。 建議您儘早建立這項設定，因為這些記錄檔預設不會收集，而且如果沒有這些記錄，您就不會有任何資訊可以針對裝置中斷連線的時間進行疑難排解。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 瀏覽至您的 IoT 中樞。
+1. 瀏覽至您的 IoT 中樞。
 
-3. 選取 [診斷設定]。
+1. 選取 [診斷設定]。
 
-4. 選取 [開啟診斷]。
+1. 選取 [ **新增診斷設定** ]。
 
-5. 讓 [連線] 記錄可供收集。
+1. 選取 [ **連接** 記錄檔]。
 
-6. 若要讓分析變得更容易，您應該開啟 [傳送至 Log Analytics] ([請參閱定價](https://azure.microsoft.com/pricing/details/log-analytics/))。 請參閱[解決連線錯誤](#resolve-connectivity-errors)下方的範例。
+1. 若要更輕鬆地進行分析，請選取 [ **傳送至 Log Analytics** ] ( [查看定價](https://azure.microsoft.com/pricing/details/log-analytics/)) 。 請參閱[解決連線錯誤](#resolve-connectivity-errors)下方的範例。
 
    ![建議的設定](./media/iot-hub-troubleshoot-connectivity/diagnostic-settings-recommendation.png)
 
-若要深入了解，請參閱[監視 Azure IoT 中樞的健康情況並快速診斷問題](iot-hub-monitor-resource-health.md)。
+若要深入瞭解，請參閱 [監視 IoT 中樞](monitor-iot-hub.md)。
 
 ### <a name="set-up-alerts-for-device-disconnect-at-scale"></a>針對裝置中斷連線問題設定大量警示
 
@@ -72,7 +72,7 @@ IoT 裝置的連線問題可能因為有許多可能的失敗點而難以排解�
 
 ## <a name="resolve-connectivity-errors"></a>解決連線錯誤
 
-開啟已連線裝置的診斷記錄和警示後，您會在發生錯誤時收到警示。 本節說明如何在收到警示時尋找常見的問題。 下列步驟假設您已設定 Azure 監視器記錄來啟用您的診斷記錄。
+當您開啟已連線裝置的記錄和警示時，會在發生錯誤時收到警示。 本節說明如何在收到警示時尋找常見的問題。 下列步驟假設您已建立診斷設定，以將 IoT 中樞連接記錄傳送至 Log Analytics 工作區。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 

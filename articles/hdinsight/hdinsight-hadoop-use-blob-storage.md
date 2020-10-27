@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: a97147395d4f877b666f4aa54254c8631400c735
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ead9b775b8c61d0d89abd4821bef2b1aaaea0d76
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855662"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547430"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>搭配 Azure HDInsight 叢集使用 Azure 儲存體
 
@@ -44,23 +44,23 @@ Apache Hadoop 支援預設檔案系統的概念。 預設檔案系統意指預�
 
 ## <a name="access-files-from-within-cluster"></a>從叢集存取檔案
 
-有數種方式可讓您從 HDInsight 叢集存取 Data Lake Storage 中的檔案。 URI 配置提供未加密存取 (使用 *wasb:* 首碼) 和 TLS 加密存取 (使用 *wasbs*)。 建議盡可能使用 wasbs  ，即使存取 Azure 中相同區域內的資料也一樣。
+有數種方式可讓您從 HDInsight 叢集存取 Data Lake Storage 中的檔案。 URI 配置提供未加密存取 (使用 *wasb:* 首碼) 和 TLS 加密存取 (使用 *wasbs* )。 建議盡可能使用 wasbs  ，即使存取 Azure 中相同區域內的資料也一樣。
 
-* **使用完整格式名稱**。 使用這種方法，您可以針對想要存取的檔案提供完整路徑。
+* **使用完整格式名稱** 。 使用這種方法，您可以針對想要存取的檔案提供完整路徑。
 
     ```
     wasb://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     wasbs://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     ```
 
-* **使用簡短路徑格式**。 使用這種方法，您可以利用以下方式取代到叢集根目錄的路徑：
+* **使用簡短路徑格式** 。 使用這種方法，您可以利用以下方式取代到叢集根目錄的路徑：
 
     ```
     wasb:///<file.path>/
     wasbs:///<file.path>/
     ```
 
-* **使用相對路徑**。 使用這種方法，您可以針對想要存取的檔案，只提供相對路徑。
+* **使用相對路徑** 。 使用這種方法，您可以針對想要存取的檔案，只提供相對路徑。
 
     ```
     /<file.path>/
@@ -141,17 +141,17 @@ Microsoft 提供下列工具來使用 Azure 儲存體：
 
 * 若要識別已設定之預設存放區的完整路徑，請瀏覽至：
 
-    **HDFS** > **Configs**，並在篩選輸入方塊中輸入 `fs.defaultFS`。
+    **HDFS** > **Configs** ，並在篩選輸入方塊中輸入 `fs.defaultFS`。
 
 * 若要檢查 wasb 儲存體是否設定為次要儲存體，請瀏覽至：
 
-    **HDFS** > **Configs**，並在篩選輸入方塊中輸入 `blob.core.windows.net`。
+    **HDFS** > **Configs** ，並在篩選輸入方塊中輸入 `blob.core.windows.net`。
 
 若要使用 Ambari REST API 取得路徑，請參閱[取得預設儲存體](./hdinsight-hadoop-manage-ambari-rest-api.md#get-the-default-storage)。
 
 ## <a name="blob-containers"></a>Blob 容器
 
-若要使用 Blob，您必須先建立 [Azure 儲存體帳戶](../storage/common/storage-create-storage-account.md)。 在這個步驟中，您可以指定建立儲存體帳戶所在的 Azure 區域。 叢集與儲存體帳戶必須在相同區域內託管。 Hive 中繼存放區 SQL Server 資料庫和 Apache Oozie 中繼存放區 SQL Server 資料庫必須位在相同的區域內。
+若要使用 Blob，您必須先建立 [Azure 儲存體帳戶](../storage/common/storage-account-create.md)。 在這個步驟中，您可以指定建立儲存體帳戶所在的 Azure 區域。 叢集與儲存體帳戶必須在相同區域內託管。 Hive 中繼存放區 SQL Server 資料庫和 Apache Oozie 中繼存放區 SQL Server 資料庫必須位在相同的區域內。
 
 您所建立的每個 Blob 不論位於何處，都屬於 Azure 儲存體帳戶中的某個容器。 此容器可能是在 HDInsight 外部建立的現有 blob。 或者，其可能是針對 HDInsight 叢集所建立的容器。
 

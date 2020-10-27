@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-python
 ms.date: 12/16/2019
-ms.openlocfilehash: 1f062a8f358ac311b53e657fb5714583458bd9b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e62e2583f8a4d3872a1342f0f702a1913f733e7f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87872577"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545458"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>在 HDInsight 上使用 Python 開發 Apache Storm 拓撲
 
@@ -24,13 +24,13 @@ ms.locfileid: "87872577"
 
 ## <a name="prerequisites"></a>必要條件
 
-* HDInsight 上的 Apache Storm 叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然後選取 [Storm]**** 作為 [叢集類型]****。
+* HDInsight 上的 Apache Storm 叢集。 請參閱  作為 [叢集類型]  。
 
 *  (選用) 的本機風暴開發環境。 只有當您想要在本機執行拓撲時，才需要本機 Storm 環境。 如需詳細資訊，請參閱[設定開發環境](https://storm.apache.org/releases/current/Setting-up-development-environment.html)。
 
 * [Python 2.7 或更新版本](https://www.python.org/downloads/)。
 
-* [JAVA Developer 套件 (JDK) 第8版](https://aka.ms/azure-jdks)。
+* [JAVA Developer 套件 (JDK) 第8版](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
 
 * 根據 Apache 正確[安裝](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是適用於 Java 專案的專案建置系統。
 
@@ -114,7 +114,7 @@ Flux 要求 Python 指令碼位於拓撲所在之 jar 檔案內的 `/resources` 
     storm kill wordcount
     ```
 
-    或者，您也可以使用「風暴 UI」。 在拓撲的 [ **拓撲動作** ] 下，選取 [ **終止**]。
+    或者，您也可以使用「風暴 UI」。 在拓撲的 [ **拓撲動作** ] 下，選取 [ **終止** ]。
 
 ## <a name="run-the-topology-locally"></a>在本機測試拓撲
 
@@ -141,8 +141,8 @@ storm jar WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux -l -R /topology.
 24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=four, count=160}
 ```
 
-若要停止拓撲，請使用 __Ctrl+C__。
+若要停止拓撲，請使用 __Ctrl+C__ 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 請參閱下列檔，以瞭解搭配使用 Python 與 HDInsight 的其他方式： [如何在 Apache Pig 和 Apache Hive 中使用 Python 使用者定義函式 (UDF) ](../hadoop/python-udf-hdinsight.md)。

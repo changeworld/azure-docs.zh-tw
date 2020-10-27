@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: a72552d8654a45d1ff4c1890c8086d43d7bd801d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44cfe9bc6cd357cc0c649cecd022d3955bb5a2ce
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91756529"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545866"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽版備份和還原) 
 
@@ -24,7 +24,7 @@ ms.locfileid: "91756529"
 
 有彈性的伺服器會取得資料檔案的快照集備份，並將它們儲存在本機多餘的儲存體中。 伺服器也會執行交易記錄備份，並將它們儲存在本機多餘的儲存體中。 在您設定的備份保留期限內，這些備份可讓您將伺服器還原至任何時間點。 預設的備份保留期限是七天。 您可以選擇性地將資料庫備份設定為1到35天。 所有備份都會使用 AES 256 位加密來加密待用儲存的資料。
 
-這些備份檔案無法匯出。 備份只能用在彈性伺服器的還原作業。 您也可以使用 [mysqldump](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore)   MySQL 用戶端的 mysqldump 來複製資料庫。
+這些備份檔案無法匯出。 備份只能用在彈性伺服器的還原作業。 您也可以使用 MySQL 用戶端的 [mysqldump](../concepts-migrate-dump-restore.md#dump-and-restore-using-mysqldump-utility) 來複製資料庫。
 
 ## <a name="backup-frequency"></a>備份頻率
 
@@ -40,9 +40,9 @@ ms.locfileid: "91756529"
 
 ## <a name="backup-storage-cost"></a>備份儲存體成本
 
-彈性伺服器可提供高達100% 的已布建伺服器儲存體作為備份儲存體，且不會產生額外費用。 使用的任何額外備份儲存體都會依每月 GB 收費。 例如，如果您布建的伺服器具有 250 GB 的儲存體，您可以免費使用 250 GB 的儲存體進行伺服器備份。 如果每日備份使用量是25GB，則您最多可以有10天的免費備份儲存體。 超過 250 GB 的備份所耗用的儲存體會依 [定價模式](https://azure.microsoft.com/pricing/details/mysql/)收費。
+彈性伺服器可提供高達100% 的已布建伺服器儲存體作為備份儲存體，且不會產生額外費用。 使用的任何額外備份儲存體都會依每月 GB 收費。 例如，如果您布建的伺服器具有 250 GB 的儲存體，您可以免費使用 250 GB 的儲存體進行伺服器備份。 如果每日備份使用量是25GB，則您最多可以有10天的免費備份儲存體。 超過 250 GB 的備份所耗用的儲存體會依 [定價模式](https://azure.microsoft.com/pricing/details/mysql/)收費。
 
-您可以使用 Azure 入口網站中可用 Azure 監視器的「 [備份儲存體](https://docs.microsoft.com/azure/mysql/concepts-monitoring)」計量   來監視伺服器所耗用的備份儲存體。 **備份儲存體**使用的計量代表所有資料庫備份所使用的儲存體總和，以及根據為伺服器設定的備份保留期限保留的記錄備份。 不論資料庫大小總計，伺服器上頻繁的交易活動可能會導致備份儲存體使用量增加。
+您可以使用 Azure 入口網站中可用 Azure 監視器的「 [備份儲存體](../concepts-monitoring.md) 」計量來監視伺服器所耗用的備份儲存體。 **備份儲存體** 使用的計量代表所有資料庫備份所使用的儲存體總和，以及根據為伺服器設定的備份保留期限保留的記錄備份。 不論資料庫大小總計，伺服器上頻繁的交易活動可能會導致備份儲存體使用量增加。
 
 控制備份儲存體成本的主要方法是設定適當的備份保留期限。 您可以選取介於1到35天之間的保留期限。
 
@@ -68,8 +68,8 @@ ms.locfileid: "91756529"
 
 您可以透過 [Azure 入口網站](how-to-restore-server-portal.md)，在最新的還原點和自訂還原點之間進行選擇。
 
--   **最新的還原點**：最新的還原點可協助您將伺服器還原到在來源伺服器上執行的最後一個備份。 還原的時間戳記也會顯示在入口網站上。 此選項適用于將伺服器快速還原為最新的狀態。
--   **自訂還原點**：這可讓您選擇為此彈性伺服器定義的保留週期內的任何時間點。 此選項適用于在從使用者錯誤復原的精確時間點還原伺服器。
+-   **最新的還原點** ：最新的還原點可協助您將伺服器還原到在來源伺服器上執行的最後一個備份。 還原的時間戳記也會顯示在入口網站上。 此選項適用于將伺服器快速還原為最新的狀態。
+-   **自訂還原點** ：這可讓您選擇為此彈性伺服器定義的保留週期內的任何時間點。 此選項適用于在從使用者錯誤復原的精確時間點還原伺服器。
 
 預估的復原時間取決於數個因素，包括資料庫大小、交易記錄備份大小、SKU 的計算大小，以及還原的時間。 交易記錄復原是還原過程中最耗時的一部分。 如果選擇的還原時間較接近完整或差異快照集備份排程，則還原的速度會比較快，因為交易記錄應用程式很基本。 為了估計伺服器的正確復原時間，強烈建議您在環境中進行測試，因為它具有太多環境特定變數。
 
@@ -77,7 +77,7 @@ ms.locfileid: "91756529"
 > 如果您要還原以區域冗余高可用性設定的彈性伺服器，還原的伺服器將會在與主伺服器相同的區域和區域中進行設定，並部署為非 HA 模式中的單一彈性伺服器。 請參閱彈性伺服器的 [區域冗余高可用性](concepts-high-availability.md) 。
 
 > [!IMPORTANT]
->  **無法**   還原已刪除的伺服器。 如果您刪除伺服器，所有屬於該伺服器的資料庫也會一併刪除，且無法復原。 為了保護伺服器資源、部署後、意外刪除或非預期的變更，系統管理員可以利用 [管理鎖定](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)。
+> 已刪除的伺服器 **無法** 還原。 如果您刪除伺服器，所有屬於該伺服器的資料庫也會一併刪除，且無法復原。 若要在部署後避免伺服器資源遭到意外刪除或非預期的變更，系統管理員可以利用[管理鎖定](../../azure-resource-manager/management/lock-resources.md)。
 
 ## <a name="perform-post-restore-tasks"></a>執行還原之後的工作
 
@@ -88,8 +88,8 @@ ms.locfileid: "91756529"
 -   確定已備妥適當的登入和資料庫層級許可權。
 -   適當地設定警示。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 -   瞭解 [商務持續性](./concepts-business-continuity.md)
--   深入瞭解 [區域冗余高可用性](./concepts-high-availability.md)
+-   深入瞭解 [區域冗余高可用性](./concepts-high-availability.md)
 -   瞭解[備份和](./concepts-backup-restore.md)復原

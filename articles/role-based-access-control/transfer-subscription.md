@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: 35c6d94ce69acf59ae6cd8b26b0ad75645eb526a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3289f8a22e5601552ec6d44c7d37195b06913fde
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819714"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545339"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄
 
@@ -75,7 +75,8 @@ ms.locfileid: "91819714"
 | Azure 檔案 | 是 | 是 |  | 您必須重新建立任何 Acl。 |
 | Azure 檔案同步 | 是 | 是 |  |  |
 | Azure 受控磁碟 | 是 | 是 |  |  如果您使用磁片加密集以客戶管理的金鑰來加密受控磁碟，您必須停用並重新啟用與磁片加密集相關聯的系統指派身分識別。 您必須重新建立角色指派，也就是再次將所需的許可權授與金鑰保存庫中的磁片加密集。 |
-| 適用于 Kubernetes 的 Azure Container Service | 是 | 是 |  |  |
+| Azure Kubernetes Service | 是 | 是 |  |  |
+| Azure 原則 | 是 | 否 | 所有 Azure 原則物件，包括自訂定義、指派、豁免和合規性資料。 | 您必須 [匯出](../governance/policy/how-to/export-resources.md)、匯入和重新指派定義。 然後，建立新的原則指派和任何需要的 [原則豁免](../governance/policy/concepts/exemption-structure.md)。 |
 | Azure Active Directory Domain Services | 是 | 否 |  |  |
 | 應用程式註冊 | 是 | 是 |  |  |
 
@@ -108,9 +109,9 @@ ms.locfileid: "91819714"
     az account set --subscription "Marketing"
     ```
 
-### <a name="install-the-resource-graph-extension"></a>安裝 resource graph 延伸模組
+### <a name="install-the-azure-resource-graph-extension"></a>安裝 Azure Resource Graph 擴充功能
 
- Resource graph 延伸模組可讓您使用 [az graph](/cli/azure/ext/resource-graph/graph) 命令來查詢受 Azure Resource Manager 管理的資源。 您將在稍後的步驟中使用此命令。
+ [Azure Resource Graph](../governance/resource-graph/index.yml)的 Azure CLI 擴充 *功能* ，可讓您使用 [az Graph](/cli/azure/ext/resource-graph/graph)命令來查詢 Azure Resource Manager 所管理的資源。 您將在稍後的步驟中使用此命令。
 
 1. 使用 [az 延伸模組清單](/cli/azure/extension#az_extension_list) ，查看是否已安裝 *resource graph* 延伸模組。
 
@@ -377,7 +378,7 @@ ms.locfileid: "91819714"
 
 1. 若為使用憑證的資源，請更新憑證。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [將 Azure 訂用帳戶的帳單擁有權轉移給另一個帳戶](../cost-management-billing/manage/billing-subscription-transfer.md)
 - [在訂閱者與 CSP 之間轉移 Azure 訂用帳戶](../cost-management-billing/manage/transfer-subscriptions-subscribers-csp.md)

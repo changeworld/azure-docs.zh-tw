@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: f6ac02f0bcd9becf5dd1ffcd600f78b848b47cda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 33d5ec89ef7563df16e0fe9b447eca88b1dba7fe
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839685"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536873"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>如何設定 Azure Cache for Redis 的異地複寫
 
@@ -51,7 +51,7 @@ ms.locfileid: "91839685"
 
 ## <a name="add-a-geo-replication-link"></a>新增異地複寫連結
 
-1. 若要將兩個快取連結在一起以進行異地複寫，請第一個從您想要作為主要連結快取的快取的 [資源] 功能表中，按一下 [ **異地** 複寫]。 接著，按一下 [新增**異地**複寫] 分頁的 [新增快取複寫]**連結**。
+1. 若要將兩個快取連結在一起以進行異地複寫，請第一個從您想要作為主要連結快取的快取的 [資源] 功能表中，按一下 [ **異地** 複寫]。 接著，按一下 [新增 **異地** 複寫] 分頁的 [新增快取複寫] **連結** 。
 
     ![新增連結](./media/cache-how-to-geo-replication/cache-geo-location-menu.png)
 
@@ -63,19 +63,19 @@ ms.locfileid: "91839685"
 
     ![異地複寫操作功能表](./media/cache-how-to-geo-replication/cache-geo-location-select-link-context-menu.png)
 
-3. 按一下 [連結]**** 可將兩個快取連結在一起，並開始複寫流程。
+3. 按一下 [連結]  可將兩個快取連結在一起，並開始複寫流程。
 
     ![連結快取](./media/cache-how-to-geo-replication/cache-geo-location-confirm-link.png)
 
-4. 您可以在 [異地複寫]**** 刀鋒視窗上檢視複寫流程的進度。
+4. 您可以在 [異地複寫]  刀鋒視窗上檢視複寫流程的進度。
 
     ![連結狀態](./media/cache-how-to-geo-replication/cache-geo-location-linking.png)
 
-    您也可以在 [概觀]**** 刀鋒視窗上檢視主要和次要快取的連結狀態。
+    您也可以在 [概觀]  刀鋒視窗上檢視主要和次要快取的連結狀態。
 
     ![醒目顯示如何查看主要和次要快取之連結狀態的螢幕擷取畫面。](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
-    一旦複寫程序完成之後，[連結狀態]**** 會變為 [成功]****。
+    一旦複寫程序完成之後，[連結狀態]  會變為 [成功]  。
 
     ![快取狀態](./media/cache-how-to-geo-replication/cache-geo-location-link-successful.png)
 
@@ -145,8 +145,8 @@ ms.locfileid: "91839685"
 
 - 支援在相同 VNET 中多個快取之間的異地複寫。
 - 也支援不同 Vnet 中的快取之間的異地複寫。
-  - 如果 Vnet 位於相同的區域，您可以使用 [vnet 對等互連](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) 或 [VPN 閘道 vnet 對 vnet 連線來](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways#V2V)進行連接。
-  - 如果 Vnet 位於不同的區域，則會支援使用 VNET 對等互連的異地複寫，但是 VNET 1 (區域 1) 的用戶端 VM 將無法透過其 DNS 名稱存取 VNET)  (2 中的快取，因為基本的內部負載平衡器具有條件約束。 如需 VNET 對等互連條件約束的詳細資訊，請參閱 [虛擬網路對等互連-需求和條件約束](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints)。 建議的解決方案是使用 VPN 閘道的 VNET 對 VNET 連線。
+  - 如果 Vnet 位於相同的區域，您可以使用 [vnet 對等互連](../virtual-network/virtual-network-peering-overview.md) 或 [VPN 閘道 vnet 對 vnet 連線來](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)進行連接。
+  - 如果 Vnet 位於不同的區域，則會支援使用 VNET 對等互連的異地複寫，但是 VNET 1 (區域 1) 的用戶端 VM 將無法透過其 DNS 名稱存取 VNET)  (2 中的快取，因為基本的內部負載平衡器具有條件約束。 如需 VNET 對等互連條件約束的詳細資訊，請參閱 [虛擬網路對等互連-需求和條件約束](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)。 建議的解決方案是使用 VPN 閘道的 VNET 對 VNET 連線。
   
 您可以使用 [此 Azure 範本](https://azure.microsoft.com/resources/templates/201-redis-vnet-geo-replication/)，快速地將兩個異地複寫的快取部署到與 VPN 閘道 VNET 對 vnet 連線連線的 VNET 中。
 
@@ -166,7 +166,7 @@ ms.locfileid: "91839685"
 
 ### <a name="can-i-use-powershell-or-azure-cli-to-manage-geo-replication"></a>我可以使用 PowerShell 或 Azure CLI 來管理異地複寫嗎？
 
-是的，您可以使用 Azure 入口網站、PowerShell 或 Azure CLI 來管理異地複寫。 如需詳細資訊，請參閱 [PowerShell](https://docs.microsoft.com/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache) 檔或 [Azure CLI](https://docs.microsoft.com/cli/azure/redis/server-link?view=azure-cli-latest)檔。
+是的，您可以使用 Azure 入口網站、PowerShell 或 Azure CLI 來管理異地複寫。 如需詳細資訊，請參閱 [PowerShell](/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache) 檔或 [Azure CLI](/cli/azure/redis/server-link?view=azure-cli-latest)檔。
 
 ### <a name="how-much-does-it-cost-to-replicate-my-data-across-azure-regions"></a>跨 Azure 區域複寫我的資料需要多少費用？
 
@@ -188,9 +188,9 @@ ms.locfileid: "91839685"
 
 ### <a name="can-i-configure-a-firewall-with-geo-replication"></a>我可以使用異地複寫來設定防火牆嗎？
 
-是，您可以使用異地複寫來設定 [防火牆](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall) 。 若要讓異地複寫與防火牆一起運作，請確定已將次要快取的 IP 位址新增至主要快取的防火牆規則。
+是，您可以使用異地複寫來設定 [防火牆](./cache-configure.md#firewall) 。 若要讓異地複寫與防火牆一起運作，請確定已將次要快取的 IP 位址新增至主要快取的防火牆規則。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 深入瞭解 Azure Cache for Redis 功能。
 
