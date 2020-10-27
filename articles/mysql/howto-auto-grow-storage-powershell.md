@@ -7,23 +7,23 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d355e7557ff38c52872a89941025d33d01bd92d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fa9f9b07eb20c995bc0cf47dd3bf72f236c3112
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503305"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546818"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mysql-server-using-powershell"></a>使用 PowerShell 在適用於 MySQL 的 Azure 資料庫伺服器中自動成長儲存體
 
 本文說明如何設定適用於 MySQL 的 Azure 資料庫 server 儲存體在不影響工作負載的情況下成長。
 
-儲存體自動成長可防止您 [的伺服器達到儲存體限制](/azure/mysql/concepts-pricing-tiers#reaching-the-storage-limit) ，且變成隻讀。 針對具有 100 GB 或更少布建儲存體的伺服器，當可用空間低於10% 時，大小會增加 5 GB。 如果伺服器具有超過 100 GB 的已布建儲存體，則當可用空間低於 10 GB 時，大小會增加5%。 儲存體限制上限適用于 [適用於 MySQL 的 Azure 資料庫定價層](/azure/mysql/concepts-pricing-tiers#storage)的 [儲存體] 區段中所指定。
+儲存體自動成長可防止您 [的伺服器達到儲存體限制](./concepts-pricing-tiers.md#reaching-the-storage-limit) ，且變成隻讀。 針對具有 100 GB 或更少布建儲存體的伺服器，當可用空間低於10% 時，大小會增加 5 GB。 如果伺服器具有超過 100 GB 的已布建儲存體，則當可用空間低於 10 GB 時，大小會增加5%。 儲存體限制上限適用于 [適用於 MySQL 的 Azure 資料庫定價層](./concepts-pricing-tiers.md#storage)的 [儲存體] 區段中所指定。
 
 > [!IMPORTANT]
 > 請記住，儲存體只能相應增加，不能相應減少。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本操作說明指南，您需要：
 
@@ -51,7 +51,7 @@ $Password = Read-Host -Prompt 'Please enter your password' -AsSecureString
 New-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup -Sku GP_Gen5_2 -StorageAutogrow Enabled -Location westus -AdministratorUsername myadmin -AdministratorLoginPassword $Password
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [如何使用 PowerShell 在適用於 MySQL 的 Azure 資料庫中建立及管理讀取複本](howto-read-replicas-powershell.md)。

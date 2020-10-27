@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/06/2020
-ms.openlocfilehash: 14c43e4557275d6a425127acfee7495f68d1d354
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7f3a3b76169b99389fe8222177ddcb713c27713
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77165549"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546580"
 ---
 # <a name="the-account-being-accessed-does-not-support-http-error-in-azure-hdinsight"></a>所存取的帳戶不支援 Azure HDInsight 中的 HTTP 錯誤
 
@@ -32,7 +32,7 @@ com.microsoft.azure.storage.StorageException: The account being accessed does no
 
 * 儲存體帳戶已啟用 [安全傳輸](../../storage/common/storage-require-secure-transfer.md) ，並使用了不正確的 [URI 配置](../hdinsight-hadoop-linux-information.md#URI-and-scheme) 。
 
-* 叢集是使用 *已停*用安全傳輸的儲存體帳戶所建立。 之後，會在儲存體帳戶上啟用安全傳輸。
+* 叢集是使用 *已停* 用安全傳輸的儲存體帳戶所建立。 之後，會在儲存體帳戶上啟用安全傳輸。
 
 ## <a name="resolution"></a>解決方案
 
@@ -48,4 +48,4 @@ com.microsoft.azure.storage.StorageException: The account being accessed does no
 
 * 連線至 [@AzureSupport](https://twitter.com/azuresupport) - 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 將 Azure 社群連線到正確的資源：解答、支援和專家。
 
-* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。
+* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

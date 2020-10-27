@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
-ms.openlocfilehash: 28a97edcbe84ae63a3d3d0cad2b9275c672f5664
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5864a5de8ddec60f2072a28827a870c83ece8b9d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86082270"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546036"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>在 HDInsight 中結合 ScaleR 與 SparkR
 
@@ -25,7 +25,7 @@ ms.locfileid: "86082270"
 
 程式碼原先是針對 Azure HDInsight 叢集中 Spark 上所執行的 ML Server 所編寫。 但是，以一個指令碼混合使用 SparkR 和 ScaleR 的概念在內部部署環境的內容中同樣有效。
 
-本文件中的步驟假設您對於 R 和 ML Server 的 [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) 程式庫有中階了解程度。 在逐步解說此案例時，您將會 [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) 。
+本文件中的步驟假設您對於 R 和 ML Server 的 [ScaleR](/machine-learning-server/r/concept-what-is-revoscaler) 程式庫有中階了解程度。 在逐步解說此案例時，您將會 [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) 。
 
 ## <a name="the-airline-and-weather-datasets"></a>航線和天氣資料集
 
@@ -529,13 +529,13 @@ elapsed <- (proc.time() - t0)[3]
 logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 ```
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 在本文中，我們示範了如何在 Hadoop Spark 中結合使用 SparkR 進行資料操作與 ScaleR 以進行模型開發。 此案例需要維護個別的 Spark 工作階段 (一次僅執行一個工作階段)，並透過 CSV 檔案交換資料。 這雖然已經很單純，但在後續發行的 ML 服務中，SparkR 和 ScaleR 可以共用 Spark 工作階段和 Spark DataFrame，此程序應該還可變得更加容易。
 
 ## <a name="next-steps-and-more-information"></a>後續步驟和更多資訊
 
-- 如需在 Apache Spark 上使用 Machine Learning Server 的詳細資訊，請參閱[快速入門指南](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started) \(英文\)。
+- 如需在 Apache Spark 上使用 Machine Learning Server 的詳細資訊，請參閱[快速入門指南](/machine-learning-server/r/how-to-revoscaler-spark) \(英文\)。
 
 - 如需 HDInsight 上 ML 服務的相關資訊，請參閱 [hdinsight 上的 Ml 服務總覽](r-server/r-server-overview.md)。
 
@@ -543,4 +543,4 @@ logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 
 - [Apache SparkR 檔](https://spark.apache.org/docs/2.1.0/sparkr.html)。
 
-- Databricks 的[SparkR 總覽](https://docs.databricks.com/spark/latest/sparkr/overview.html)。
+- [SparkR 總覽](/azure/databricks/spark/latest/sparkr/overview)

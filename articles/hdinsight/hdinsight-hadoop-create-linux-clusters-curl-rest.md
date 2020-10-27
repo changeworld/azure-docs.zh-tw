@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: f2b3810afab86b2f81a18bac442ef361404f2309
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b67ddd57c3a0787213763253cef5083f420cefe0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490351"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541667"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>使用 Azure REST API 建立 Apache Hadoop 叢集
 
@@ -205,7 +205,7 @@ Azure Resource Manager 範本是描述 **資源群組** 的 JSON 檔，以及其
    }
    ```
 
-本文件中的步驟引用此範例。 使用您叢集的值來取代 **Parameters** 區段中的範例值**。
+本文件中的步驟引用此範例。 使用您叢集的值來取代  。
 
 > [!IMPORTANT]  
 > 本範本使用 HDInsight 叢集的背景工作節點預設數目 (4)。 如果您規劃 32 個以上的背景工作節點，則必須選取具有至少 8 個核心和 14 GB RAM 的前端節點大小。
@@ -219,7 +219,7 @@ Azure Resource Manager 範本是描述 **資源群組** 的 JSON 檔，以及其
 ## <a name="create-a-service-principal"></a>建立服務主體
 
 > [!NOTE]  
-> 以下步驟是[使用 Azure CLI 建立用來存取資源的服務主體](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)文件中*使用密碼建立服務主體*一節的簡易版。 這些步驟會建立用來驗證 Azure REST API 的服務主體。
+> 以下步驟是 [使用 Azure CLI 建立用來存取資源的服務主體](/cli/azure/create-an-azure-service-principal-azure-cli)文件中 *使用密碼建立服務主體* 一節的簡易版。 這些步驟會建立用來驗證 Azure REST API 的服務主體。
 
 1. 從命令列中，使用下列命令列出您的 Azure 訂用帳戶。
 
@@ -240,7 +240,7 @@ Azure Resource Manager 範本是描述 **資源群組** 的 JSON 檔，以及其
    > [!NOTE]  
    > `--home-page` 和 `--identifier-uris` 值不需參考裝載於網際網路上的實際網頁。 它們必須是唯一的 URI。
 
-   此命令傳回的值是新應用程式的 __App ID__。 儲存這個值。
+   此命令傳回的值是新應用程式的 __App ID__ 。 儲存這個值。
 
 3. 使用下列命令以 **App ID** 建立服務主體。
 
@@ -248,9 +248,9 @@ Azure Resource Manager 範本是描述 **資源群組** 的 JSON 檔，以及其
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
-     此命令傳回的值是 __Object ID__。 儲存這個值。
+     此命令傳回的值是 __Object ID__ 。 儲存這個值。
 
-4. 使用 **Object ID** 值將 **Owner** 角色指派給服務主體。 使用稍早取得的**訂用帳戶 ID** 。
+4. 使用 **Object ID** 值將 **Owner** 角色指派給服務主體。 使用稍早取得的 **訂用帳戶 ID** 。
 
    ```azurecli
    az role assignment create --assignee <Object ID> --role Owner --scope /subscriptions/<Subscription ID>/
@@ -345,7 +345,7 @@ curl -X "GET" "https://management.azure.com/subscriptions/$SUBSCRIPTIONID/resour
 
 如果您在建立 HDInsight 叢集時遇到問題，請參閱[存取控制需求](./hdinsight-hadoop-customize-cluster-linux.md#access-control)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 既然您已成功建立 HDInsight 叢集，請使用下列各項來瞭解如何使用您的叢集。
 

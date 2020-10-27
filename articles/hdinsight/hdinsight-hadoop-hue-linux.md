@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: ef30672e250e598688d1b81fd33fe0a995e78c7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e80df5d1c3d2b2195e76622964406cc65c933a63
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087719"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546189"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 叢集上安裝和使用 Hue
 
@@ -33,7 +33,7 @@ Hue 是一組用來與 Apache Hadoop 叢集進行互動的 Web 應用程式。 �
 > [!WARNING]  
 > 透過 HDInsight 叢集提供的元件會受到完整支援，且 Microsoft 支援服務將協助釐清與解決這些元件的相關問題。
 >
-> 自訂元件則獲得商務上合理的支援，協助您進一步疑難排解問題。 如此可能會進而解決問題，或要求您利用可用管道，以找出開放原始碼技術，從中了解該技術的深度專業知識。 例如，有許多社群網站可供使用，例如：[適用於 HDInsight 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-hdinsight.html)，[https://stackoverflow.com](https://stackoverflow.com)。 此外，Apache 專案在 [https://apache.org](https://apache.org) 上也有專案網站，例如：[Hadoop](https://hadoop.apache.org/)。
+> 自訂元件則獲得商務上合理的支援，協助您進一步疑難排解問題。 如此可能會進而解決問題，或要求您利用可用管道，以找出開放原始碼技術，從中了解該技術的深度專業知識。 例如，有許多社群網站可供使用，例如：[適用於 HDInsight 的 Microsoft 問與答頁面](/answers/topics/azure-hdinsight.html)，[https://stackoverflow.com](https://stackoverflow.com)。 此外，Apache 專案在 [https://apache.org](https://apache.org) 上也有專案網站，例如：[Hadoop](https://hadoop.apache.org/)。
 
 ## <a name="install-hue-using-script-actions"></a>使用指令碼動作安裝 Hue
 
@@ -91,7 +91,7 @@ Hue 是一組用來與 Apache Hadoop 叢集進行互動的 Web 應用程式。 �
 
     ![HDInsight Hue 入口網站使用 Hive 編輯器](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "使用 Hive")
 
-2. 在 [協助] 索引標籤中，於 [資料庫] 底下，您應該會看到 **hivesampletable**。 這是 HDInsight 上的所有 Hadoop 叢集隨附的範例資料表。 在右窗格中輸入範例查詢，然後在下方窗格的 [結果]  索引標籤中查看輸出，如螢幕擷取畫面所示。
+2. 在 [協助] 索引標籤中，於 [資料庫] 底下，您應該會看到 **hivesampletable** 。 這是 HDInsight 上的所有 Hadoop 叢集隨附的範例資料表。 在右窗格中輸入範例查詢，然後在下方窗格的 [結果]  索引標籤中查看輸出，如螢幕擷取畫面所示。
 
     ![HDInsight Hue 入口網站 Hive 查詢](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "執行 Hive 查詢")
 
@@ -129,4 +129,4 @@ Hue 是一組用來與 Apache Hadoop 叢集進行互動的 Web 應用程式。 �
 
 ## <a name="next-steps"></a>後續步驟
 
-[在 HDInsight 叢集上安裝 R](hdinsight-hadoop-r-scripts-linux.md)。 在 HDInsight Hadoop 叢集上使用叢集自訂安裝 R。 R 是一個用於統計計算的開放原始碼語言和環境。 它提供數百個內建的統計函式及它自己的程式設計語言，此語言結合了函式型和物件導向程式設計的層面。 它也提供廣泛的圖形功能。
+[在 HDInsight 叢集上安裝 R](./r-server/r-server-overview.md)。 在 HDInsight Hadoop 叢集上使用叢集自訂安裝 R。 R 是一個用於統計計算的開放原始碼語言和環境。 它提供數百個內建的統計函式及它自己的程式設計語言，此語言結合了函式型和物件導向程式設計的層面。 它也提供廣泛的圖形功能。

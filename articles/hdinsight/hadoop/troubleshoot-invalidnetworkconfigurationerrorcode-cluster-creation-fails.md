@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: 1fb5b78f210a9bd817a2987dcb30fa25d156d5d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f30f92df505abeff108f8d1c503cb33162d2e409
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82780431"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533541"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>叢集建立失敗，並在 Azure HDInsight 中 InvalidNetworkConfigurationErrorCode
 
@@ -66,7 +66,7 @@ Azure 儲存體和 SQL 沒有固定的 IP 位址，因此我們需要允許所�
 
     移至 Azure 入口網站並識別與部署叢集的子網相關聯的路由表。 一旦您找到子網的路由表，請檢查其中的 **路由** 區段。
 
-    如果有已定義的路由，請確定已部署叢集的區域有 IP 位址的路由，且每個路由的 **NextHopType** 都是 **網際網路**。 應該會有針對上述文章中記載的每個必要 IP 位址定義的路由。
+    如果有已定義的路由，請確定已部署叢集的區域有 IP 位址的路由，且每個路由的 **NextHopType** 都是 **網際網路** 。 應該會有針對上述文章中記載的每個必要 IP 位址定義的路由。
 
 ---
 
@@ -95,7 +95,7 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. 執行下列命令：
+1. 執行以下命令：
 
     ```bash
     cat /etc/resolv.conf | grep nameserver*
@@ -145,4 +145,4 @@ dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn0-hditest.5h6lujo4
 
 * 與 [@AzureSupport](https://twitter.com/azuresupport) 聯繫 - 專為改善客戶體驗而設的官方 Microsoft Azure 帳戶，協助 Azure 社群連接至適當的資源，例如解答、支援及專家等。
 
-* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) 提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。
+* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) 提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

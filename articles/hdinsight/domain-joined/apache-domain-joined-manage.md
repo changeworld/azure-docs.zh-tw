@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: a4db09c81efcd342d149cb95286aa6ee9cac93a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dcb5d7ed75bda8422ba3bd461b08d3bfb2d974f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595779"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541004"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>使用企業安全性套件管理 HDInsight 叢集
 
@@ -49,7 +49,7 @@ ms.locfileid: "89595779"
 
 安全性和使用者隔離對於使用企業安全性套件的 HDInsight 叢集很重要。 為了符合這些需求，您可以在叢集建立期間選取的本機使用者，以及 AAD (（也就是 Kerberos) ）中所提供的使用者，支援使用企業安全性套件的叢集的 SSH 存取。 下表顯示每個叢集類型的建議存取方法：
 
-|工作負載|狀況|存取方法|
+|工作負載|案例|存取方法|
 |--------|--------|-------------|
 |Apache Hadoop|Hive – 互動式作業/查詢  |<ul><li>[直線](#beeline)</li><li>[Hive 視圖](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
 |Apache Spark|互動式作業/查詢，PySpark 互動式|<ul><li>[直線](#beeline)</li><li>[Zeppelin with Livy](../spark/apache-spark-zeppelin-notebook.md)</li><li>[Hive 視圖](../hadoop/apache-hadoop-use-hive-ambari-view.md)</li><li>[ODBC/JDBC – Power BI](../hadoop/apache-hadoop-connect-hive-power-bi.md)</li><li>[Visual Studio Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)</li></ul>|
@@ -87,13 +87,13 @@ Connection string: -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 
 非 ESP 的 HDInsight 叢集有兩個使用者帳戶，是在叢集建立期間建立的︰
 
-- **Ambari 系統管理員**：此帳戶亦稱為「Hadoop 使用者」** 或「HTTP 使用者」**。 您可以使用此帳戶登入 Ambari `https://CLUSTERNAME.azurehdinsight.net` 。 它也可以用來對 Ambari 的視圖執行查詢、透過外部 (工具（例如 PowerShell、Templeton、Visual Studio) ）執行作業，以及使用 Hive ODBC 驅動程式和 BI (工具（例如 Excel、Power BI 或 Tableau) ）進行驗證。
+-  或「HTTP 使用者」  。 您可以使用此帳戶登入 Ambari `https://CLUSTERNAME.azurehdinsight.net` 。 它也可以用來對 Ambari 的視圖執行查詢、透過外部 (工具（例如 PowerShell、Templeton、Visual Studio) ）執行作業，以及使用 Hive ODBC 驅動程式和 BI (工具（例如 Excel、Power BI 或 Tableau) ）進行驗證。
 
 除了 Ambari 系統管理員之外，使用 ESP 的 HDInsight 叢集有三個新使用者。
 
-- **Ranger 系統管理員**︰此帳戶是本機的 Apache Ranger 系統管理員帳戶。 它不是 active directory 網域使用者。 此帳戶可以用來設定原則、將其他使用者設為系統管理員、或委派系統管理工作 (讓某些使用者可以管理原則)。 預設的使用者名稱是 admin**，密碼則是與 Ambari 系統管理員的密碼相同。 可以在 Ranger 的 [設定] 頁面中更新密碼。
+- **Ranger 系統管理員** ︰此帳戶是本機的 Apache Ranger 系統管理員帳戶。 它不是 active directory 網域使用者。 此帳戶可以用來設定原則、將其他使用者設為系統管理員、或委派系統管理工作 (讓某些使用者可以管理原則)。 預設的使用者名稱是 admin  ，密碼則是與 Ambari 系統管理員的密碼相同。 可以在 Ranger 的 [設定] 頁面中更新密碼。
 
-- **叢集系統管理員網域使用者**︰此帳戶是被指定為 Hadoop 叢集系統管理員 (包括 Ambari 和 Ranger) 的 Active Directory 網域使用者。 您必須在叢集建立期間提供此使用者的認證。 此使用者有下列權限：
+- **叢集系統管理員網域使用者** ︰此帳戶是被指定為 Hadoop 叢集系統管理員 (包括 Ambari 和 Ranger) 的 Active Directory 網域使用者。 您必須在叢集建立期間提供此使用者的認證。 此使用者有下列權限：
     - 在叢集建立期間，將機器加入網域，並將它們放入您指定的 OU 中。
     - 在叢集建立期間，於您指定的 OU 中建立服務主體。
     - 建立反向 DNS 項目。
@@ -102,7 +102,7 @@ Connection string: -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 
     叢集內有一些端點 (例如，不受 Ranger 管理的 Templeton) ，因此不安全。 這些端點會針對所有使用者鎖定，只有叢集系統管理員網域使用者除外。
 
-- **一般**︰在叢集建立期間，您可以提供多個 Active Directory 群組。 這些群組中的使用者都將同步至 Ranger 和 Ambari。 這些使用者是網域使用者，只有存取 Ranger 管理之端點 (例如Hiveserver2) 的權限。 所有 RBAC 原則和稽核皆不適用於這些使用者。
+- **一般** ︰在叢集建立期間，您可以提供多個 Active Directory 群組。 這些群組中的使用者都將同步至 Ranger 和 Ambari。 這些使用者是網域使用者，只有存取 Ranger 管理之端點 (例如Hiveserver2) 的權限。 所有 RBAC 原則和稽核皆不適用於這些使用者。
 
 ## <a name="roles-of-hdinsight-clusters-with-esp"></a>使用 ESP 之 HDInsight 叢集的角色
 
@@ -117,7 +117,7 @@ HDInsight 企業安全性套件有下列角色：
 **若要查看這些角色的權限**
 
 1. 開啟 Ambari 管理 UI。  請參閱[開啟 Ambari 管理 UI](#open-the-ambari-management-ui)。
-2. 從左側功能表中選取 [ **角色**]。
+2. 從左側功能表中選取 [ **角色** ]。
 3. 選取藍色問號來查看許可權：
 
     ![ESP HDInsight 角色權限](./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
@@ -126,7 +126,7 @@ HDInsight 企業安全性套件有下列角色：
 
 1. 流覽至 `https://CLUSTERNAME.azurehdinsight.net/` WHERE CLUSTERNAME 是您的叢集名稱。
 1. 使用叢集系統管理員網域使用者名稱和密碼登入 Ambari。
-1. 選取右上角的 [ **管理] 下拉式功能表** ，然後選取 [ **管理 Ambari**]。
+1. 選取右上角的 [ **管理] 下拉式功能表** ，然後選取 [ **管理 Ambari** ]。
 
     ![ESP HDInsight 管理 Apache Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
 
@@ -137,41 +137,41 @@ HDInsight 企業安全性套件有下列角色：
 ## <a name="list-the-domain-users-synchronized-from-your-active-directory"></a>列出從您的 Active Directory 同步處理的網域使用者
 
 1. 開啟 Ambari 管理 UI。  請參閱[開啟 Ambari 管理 UI](#open-the-ambari-management-ui)。
-2. 從左側功能表中選取 [ **使用者**]。 您應該會看到從您的 Active Directory 同步至 HDInsight 叢集的所有使用者。
+2. 從左側功能表中選取 [ **使用者** ]。 您應該會看到從您的 Active Directory 同步至 HDInsight 叢集的所有使用者。
 
     ![ESP HDInsight Ambari 管理 UI 清單使用者](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png)
 
 ## <a name="list-the-domain-groups-synchronized-from-your-active-directory"></a>列出從您的 Active Directory 同步處理的網域群組
 
 1. 開啟 Ambari 管理 UI。  請參閱[開啟 Ambari 管理 UI](#open-the-ambari-management-ui)。
-2. 從左側功能表中選取 [ **群組**]。 您應該會看到從您的 Active Directory 同步至 HDInsight 叢集的所有群組。
+2. 從左側功能表中選取 [ **群組** ]。 您應該會看到從您的 Active Directory 同步至 HDInsight 叢集的所有群組。
 
     ![ESP HDInsight Ambari 管理 UI 清單群組](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png)
 
 ## <a name="configure-hive-views-permissions"></a>設定 Hive 檢視權限
 
 1. 開啟 Ambari 管理 UI。  請參閱[開啟 Ambari 管理 UI](#open-the-ambari-management-ui)。
-2. 從左側功能表中，選取 [ **視圖**]。
+2. 從左側功能表中，選取 [ **視圖** ]。
 3. 選取 [ **HIVE** ] 以顯示詳細資料。
 
     ![ESP HDInsight Ambari 管理 UI Hive 檢視](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png)
 
 4. 選取 **Hive View** 連結以設定 hive Views。
-5. 向下捲動至 [權限]****。
+5. 向下捲動至 [權限]  。
 
     ![ESP HDInsight Ambari 管理 UI Hive 檢視設定權限](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
 
-6. 選取 [ **新增使用者** ] 或 [ **加入群組**]，然後指定可以使用 Hive 視圖的使用者或群組。
+6. 選取 [ **新增使用者** ] 或 [ **加入群組** ]，然後指定可以使用 Hive 視圖的使用者或群組。
 
 ## <a name="configure-users-for-the-roles"></a>設定角色的使用者
 
  若要查看角色及其權限的清單，請參閱使用 ESP 之 HDInsight 叢集的角色。
 
 1. 開啟 Ambari 管理 UI。  請參閱[開啟 Ambari 管理 UI](#open-the-ambari-management-ui)。
-2. 從左側功能表中選取 [ **角色**]。
+2. 從左側功能表中選取 [ **角色** ]。
 3. 選取 [ **新增使用者** ] 或 [ **新增群組** ]，將使用者和群組指派給不同的角色。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-- 如需設定具有企業安全性套件的 HDInsight 叢集，請參閱[設定具有 ESP 的 HDInsight 叢集](apache-domain-joined-configure.md)。
+- 如需設定具有企業安全性套件的 HDInsight 叢集，請參閱[設定具有 ESP 的 HDInsight 叢集](./apache-domain-joined-configure-using-azure-adds.md)。
 - 如需設定 Hive 原則和執行 Hive 查詢，請參閱[使用 ESP 針對 HDInsight 叢集設定 Apache Hive 原則](apache-domain-joined-run-hive.md)。

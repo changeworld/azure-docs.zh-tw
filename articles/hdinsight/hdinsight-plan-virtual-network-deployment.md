@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/04/2020
-ms.openlocfilehash: e2db6d1d60026a00fa8e766fbaa1c72975fa2e99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71a4f2aa9bebd325b329af335985a37df5cd7263
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82786609"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547396"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>為 Azure HDInsight 規劃虛擬網路
 
@@ -84,7 +84,7 @@ ms.locfileid: "82786609"
         如需詳細資訊，請參閱[為網路安全性群組疑難排解](../virtual-network/diagnose-network-traffic-filter-problem.md)文件。
 
         > [!IMPORTANT]  
-        > 會根據規則優先順序依序套用網路安全性群組規則。 會套用第一個符合流量模式的規則，而且未針對該流量套用其他規則。 排序從最寬鬆到最嚴格權限的規則。 如需詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](../virtual-network/security-overview.md)文件。
+        > 會根據規則優先順序依序套用網路安全性群組規則。 會套用第一個符合流量模式的規則，而且未針對該流量套用其他規則。 排序從最寬鬆到最嚴格權限的規則。 如需詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](../virtual-network/network-security-groups-overview.md)文件。
 
     * 使用者定義的路由
 
@@ -118,14 +118,14 @@ Azure 會針對安裝於虛擬網路中的 Azure 服務提供名稱解析。 這
 
 * 網際網路上的任何可用資源。 例如，microsoft.com、windowsupdate.com。
 
-* 相同 Azure 虛擬網路中的任何資源，方法是使用資源的「內部 DNS 名稱」____。 例如，使用預設名稱解析時，下列是指派給 HDInsight 背景工作節點的內部 DNS 名稱範例：
+* 相同 Azure 虛擬網路中的任何資源，方法是使用資源的「內部 DNS 名稱」  。 例如，使用預設名稱解析時，下列是指派給 HDInsight 背景工作節點的內部 DNS 名稱範例：
 
   * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
   * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
 
     這些節點可以使用內部 DNS 名稱彼此直接通訊，以及與 HDInsight 中的其他節點通訊。
 
-預設名稱解析「不」____ 允許 HDInsight 解析加入虛擬網路之網路中的資源名稱。 例如，將您的內部部署網路加入虛擬網路是很常見的情況。 根據預設名稱解析，HDInsight 無法依名稱存取內部部署網路中的資源。 相反的也是，內部部署網路中的資源無法依名稱存取虛擬網路中的資源。
+預設名稱解析「不」  允許 HDInsight 解析加入虛擬網路之網路中的資源名稱。 例如，將您的內部部署網路加入虛擬網路是很常見的情況。 根據預設名稱解析，HDInsight 無法依名稱存取內部部署網路中的資源。 相反的也是，內部部署網路中的資源無法依名稱存取虛擬網路中的資源。
 
 > [!WARNING]  
 > 您必須建立自訂 DNS 伺服器，並設定虛擬網路使用它，再建立 HDInsight 叢集。
@@ -142,19 +142,19 @@ Azure 會針對安裝於虛擬網路中的 Azure 服務提供名稱解析。 這
 
    * 如果遠端網路是內部部署網路，請設定 DNS，如下所示：
 
-     * 「自訂 DNS」____(在虛擬網路中)：
+     * 「自訂 DNS」  (在虛擬網路中)：
 
          * 將虛擬網路 DNS 尾碼的要求轉送至 Azure 遞迴解析程式 (168.63.129.16)。 Azure 會處理虛擬網路中資源的要求
 
          * 將所有其他要求轉送至內部部署 DNS 伺服器。 內部部署 DNS 會處理所有其他名稱解析要求，即使是網際網路資源 (例如 Microsoft.com) 的要求也是一樣。
 
-     * 內部部署 DNS____：將虛擬網路 DNS 尾碼的要求轉送至自訂 DNS 伺服器。 自訂 DNS 伺服器接著會轉送至 Azure 遞迴解析程式。
+     * 內部部署 DNS  ：將虛擬網路 DNS 尾碼的要求轉送至自訂 DNS 伺服器。 自訂 DNS 伺服器接著會轉送至 Azure 遞迴解析程式。
 
        此設定會將完整網域名稱包含虛擬網路 DNS 尾碼的要求路由傳送至自訂 DNS 伺服器。 內部部署 DNS 伺服器會處理所有其他要求 (即使是針對公用網際網路位址)。
 
    * 如果遠端網路是另一個 Azure 虛擬網路，請設定 DNS，如下所示：
 
-     * 「自訂 DNS」____(在每個虛擬網路中)：
+     * 「自訂 DNS」  (在每個虛擬網路中)：
 
          * 將虛擬網路 DNS 尾碼的要求轉送至自訂 DNS 伺服器。 每個虛擬網路中的 DNS 會負責解析其網路內的資源。
 
@@ -210,6 +210,6 @@ Azure 會針對安裝於虛擬網路中的 Azure 服務提供名稱解析。 這
 * 如需建立 Azure 虛擬網路的程式碼範例和範例，請參閱[建立 Azure HDInsight 叢集的虛擬網路](hdinsight-create-virtual-network.md)。
 * 如需設定 HDInsight 連線至內部部署網路的端對端範例，請參閱[將 HDInsight 連線至內部部署網路](./connect-on-premises-network.md)。
 * 如需 Azure 虛擬網路的詳細資訊，請參閱 [Azure 虛擬網路概觀](../virtual-network/virtual-networks-overview.md)。
-* 如需網路安全性群組的詳細資訊，請參閱[網路安全性群組](../virtual-network/security-overview.md)。
+* 如需網路安全性群組的詳細資訊，請參閱[網路安全性群組](../virtual-network/network-security-groups-overview.md)。
 * 如需使用者定義路由的詳細資訊，請參閱[使用者定義路由和 IP 轉送](../virtual-network/virtual-networks-udr-overview.md)。
 * 如需控制流量的詳細資訊，請參閱 [控制網路流量](./control-network-traffic.md)。

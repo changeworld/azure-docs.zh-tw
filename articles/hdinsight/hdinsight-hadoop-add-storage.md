@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 73b5966bf90d2829456401a25cc5b8ea001397d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51977c00dc8c9932def89d54ec1b6ec34afad652
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856223"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541990"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>將其他儲存體帳戶新增至 HDInsight
 
@@ -26,7 +26,7 @@ ms.locfileid: "91856223"
 
 * HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](./hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 * 儲存體帳戶名稱和金鑰。 請參閱 [管理儲存體帳戶存取金鑰](../storage/common/storage-account-keys-manage.md)。
-* 如果使用 PowerShell，您將需要 AZ 模組。  請參閱 [Azure PowerShell 的總覽](https://docs.microsoft.com/powershell/azure/)。
+* 如果使用 PowerShell，您將需要 AZ 模組。  請參閱 [Azure PowerShell 的總覽](/powershell/azure/)。
 
 ## <a name="how-it-works"></a>運作方式
 
@@ -61,7 +61,7 @@ ms.locfileid: "91856223"
 
 ## <a name="verification"></a>驗證
 
-當您在 Azure 入口網站中查看 HDInsight 叢集時，選取 [__屬性__] 下的 [__儲存體帳戶__] 專案，並不會顯示透過此腳本動作新增的儲存體帳戶。 Azure PowerShell 和 Azure CLI 不會顯示額外的儲存體帳戶。 因為腳本只會修改叢集的設定，所以不會顯示儲存體資訊 `core-site.xml` 。 使用 Azure 管理 Api 來抓取叢集資訊時，不會使用此資訊。
+當您在 Azure 入口網站中查看 HDInsight 叢集時，選取 [ __屬性__ ] 下的 [ __儲存體帳戶__ ] 專案，並不會顯示透過此腳本動作新增的儲存體帳戶。 Azure PowerShell 和 Azure CLI 不會顯示額外的儲存體帳戶。 因為腳本只會修改叢集的設定，所以不會顯示儲存體資訊 `core-site.xml` 。 使用 Azure 管理 Api 來抓取叢集資訊時，不會使用此資訊。
 
 若要確認其他儲存體，請使用下列其中一種方法：
 
@@ -97,7 +97,7 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 1. 從網頁瀏覽器瀏覽至 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是叢集的名稱。
 
-1. 流覽至**HDFS**  >  **Configs**  >  **Advanced**  >  **預先定義的自訂核心網站**。
+1. 流覽至 **HDFS**  >  **Configs**  >  **Advanced**  >  **預先定義的自訂核心網站** 。
 
 1. 觀察開頭為的金鑰 `fs.azure.account.key` 。 帳戶名稱將會是此範例映射中所示的金鑰一部分：
 
@@ -107,7 +107,7 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 1. 從網頁瀏覽器瀏覽至 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是叢集的名稱。
 
-1. 流覽至**HDFS**  >  **Configs**  >  **Advanced**  >  **預先定義的自訂核心網站**。
+1. 流覽至 **HDFS**  >  **Configs**  >  **Advanced**  >  **預先定義的自訂核心網站** 。
 
 1. 移除下列金鑰：
     * `fs.azure.account.key.<STORAGE_ACCOUNT_NAME>.blob.core.windows.net`
@@ -119,7 +119,7 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 ### <a name="storage-firewall"></a>儲存體防火牆
 
-如果您選擇使用**所選網路**上的**防火牆和虛擬網路**限制來保護儲存體帳戶，請務必啟用 [**允許信任的 Microsoft 服務**] 例外狀況，讓 HDInsight 可以存取您的儲存體帳戶`.`
+如果您選擇使用 **所選網路** 上的 **防火牆和虛擬網路** 限制來保護儲存體帳戶，請務必啟用 [ **允許信任的 Microsoft 服務** ] 例外狀況，讓 HDInsight 可以存取您的儲存體帳戶`.`
 
 ### <a name="unable-to-access-storage-after-changing-key"></a>無法在變更金鑰之後存取儲存體
 
@@ -134,6 +134,6 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 > [!IMPORTANT]  
 > 不支援輪替附加至叢集之主要儲存體帳戶的儲存體金鑰。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 您已瞭解如何將其他儲存體帳戶新增至現有的 HDInsight 叢集。 如需指令碼動作的詳細資訊，請參閱[使用指令碼動作自訂以 Linux 為基礎的 HDInsight 叢集](hdinsight-hadoop-customize-cluster-linux.md)

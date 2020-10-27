@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: 9927d4780ea015502151188b61c50ddbd2656819
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 8ae76ca27c8c6f8fed5692b9a2376fff53a52bb6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339538"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536567"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>如何設定進階 Azure Cache for Redis 的資料持續性
 在本文中，您將瞭解如何透過 Azure 入口網站在 premium Azure Cache for Redis 實例中設定持續性。 Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快取大小和功能，包括叢集功能、持續性及虛擬網路支援等「進階」層功能。 
@@ -24,15 +24,15 @@ Azure Cache for Redis 使用下列模型提供 Redis 持續性：
 * **RDB 持續性** - 設定 RDB (Redis 資料庫) 持續性後，Azure Cache for Redis 會依據可設定的備份頻率，在磁碟中保存一份 Redis 二進位格式的 Azure Cache for Redis 快照集。 如果發生同時停用主要和複本快取的災難性事件，即可使用最新的快照重新建構快取。 深入了解 RDB 持續性的[優點](https://redis.io/topics/persistence#rdb-advantages)和[缺點](https://redis.io/topics/persistence#rdb-disadvantages)。
 * **AOF 持續性** - 設定 AOF (僅附加檔案) 持續性後，Azure Cache for Redis 會將每個寫入作業儲存至記錄，而此記錄則會每秒至少一次儲存至 Azure 儲存體帳戶。 如果發生同時停用主要和複本快取的災難性事件，即可使用儲存的寫入作業重新建構快取。 深入了解 AOF 持續性的[優點](https://redis.io/topics/persistence#aof-advantages)和[缺點](https://redis.io/topics/persistence#aof-disadvantages)。
 
-持續性會將 Redis 的資料寫入您所擁有和管理的 Azure 儲存體帳戶。 您可以在快取建立期間，以及在現有 premium 快取的 [**資源] 功能表**上，設定**新的 Azure Cache for Redis**分頁。
+持續性會將 Redis 的資料寫入您所擁有和管理的 Azure 儲存體帳戶。 您可以在快取建立期間，以及在現有 premium 快取的 [ **資源] 功能表** 上，設定 **新的 Azure Cache for Redis** 分頁。
 
 > [!NOTE]
 > 
-> Azure 儲存體會在保存資料時自動將資料加密。 您可以使用自己的金鑰進行加密。 如需詳細資訊，請參閱 [使用 Azure Key Vault 的客戶管理金鑰](/azure/storage/common/storage-service-encryption)。
+> Azure 儲存體會在保存資料時自動將資料加密。 您可以使用自己的金鑰進行加密。 如需詳細資訊，請參閱 [使用 Azure Key Vault 的客戶管理金鑰](../storage/common/storage-service-encryption.md)。
 > 
 > 
 
-1. 若要建立 premium 快取，請登入 [Azure 入口網站](https://portal.azure.com) ，然後選取 [ **建立資源**]。 除了在 Azure 入口網站中建立快取，您也可以使用 Resource Manager 範本、PowerShell 或 Azure CLI 來建立。 如需如何建立 Azure Cache for Redis 的詳細資訊，請參閱[建立快取](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)。
+1. 若要建立 premium 快取，請登入 [Azure 入口網站](https://portal.azure.com) ，然後選取 [ **建立資源** ]。 除了在 Azure 入口網站中建立快取，您也可以使用 Resource Manager 範本、PowerShell 或 Azure CLI 來建立。 如需如何建立 Azure Cache for Redis 的詳細資訊，請參閱[建立快取](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)。
 
     :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="建立資源。":::
    
@@ -44,7 +44,7 @@ Azure Cache for Redis 使用下列模型提供 Redis 持續性：
    
    | 設定      | 建議的值  | 描述 |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS 名稱** | 輸入全域唯一名稱。 | 快取名稱必須是介於1到63個字元之間的字串，其中只包含數位、字母或連字號。 名稱的開頭和結尾必須是數字或字母，且不可包含連續的連字號。 您的快取執行個體*主機名稱*將是 *\<DNS name>.redis.cache.windows.net*。 | 
+   | **DNS 名稱** | 輸入全域唯一名稱。 | 快取名稱必須是介於1到63個字元之間的字串，其中只包含數位、字母或連字號。 名稱的開頭和結尾必須是數字或字母，且不可包含連續的連字號。 您的快取執行個體 *主機名稱* 將是 *\<DNS name>.redis.cache.windows.net* 。 | 
    | **訂用帳戶** | 下拉式清單，然後選取您的訂用帳戶。 | 這個新的 Azure Cache for Redis 執行個體建立所在的訂用帳戶。 | 
    | **資源群組** | 下拉式清單並選取資源群組，或選取 [ **建立新** 的]，然後輸入新的資源組名。 | 用來建立快取和其他資源的資源群組名稱。 將所有的應用程式資源放在一個資源群組中，您將可輕鬆地一併管理或刪除這些資源。 | 
    | **位置** | 下拉式清單並選取位置。 | 選取其他將使用快取的服務附近的[區域](https://azure.microsoft.com/regions/)。 |
@@ -60,22 +60,22 @@ Azure Cache for Redis 使用下列模型提供 Redis 持續性：
 
 8. 若要啟用 RDB 持續性，請按一下 **rdb** 並進行設定。 
    
-   | 設定      | 建議的值  | 說明 |
+   | 設定      | 建議的值  | 描述 |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **備份頻率** | 下拉式清單並選取備份間隔，選項包括 **15 分鐘**、 **30 分鐘**、 **60 分鐘**、 **6 小時**、 **12 小時**和 **24 小時**。 | 在先前的備份作業成功完成後，此間隔便會開始倒數計時，時間過後就會起始新的備份。 | 
+   | **備份頻率** | 下拉式清單並選取備份間隔，選項包括 **15 分鐘** 、 **30 分鐘** 、 **60 分鐘** 、 **6 小時** 、 **12 小時** 和 **24 小時** 。 | 在先前的備份作業成功完成後，此間隔便會開始倒數計時，時間過後就會起始新的備份。 | 
    | **儲存體帳戶** | 下拉式清單，然後選取您的儲存體帳戶。 | 您必須選擇與快取位於相同區域和訂用帳戶中的儲存體帳戶，而且建議使用 **進階儲存體** 帳戶，因為 Premium 儲存體有更高的輸送量。  | 
-   | **儲存體金鑰** | 下拉式清單，並選擇要使用的 **主要金鑰** 或 **次要金鑰** 。 | 如果重新產生了永續性帳戶的儲存體金鑰，您必須從 [儲存體金鑰]**** 下拉式清單中重新設定所需的金鑰。 | 
+   | **儲存體金鑰** | 下拉式清單，並選擇要使用的 **主要金鑰** 或 **次要金鑰** 。 | 如果重新產生了永續性帳戶的儲存體金鑰，您必須從 [儲存體金鑰]  下拉式清單中重新設定所需的金鑰。 | 
 
     當備份頻率間隔過期時，就會起始第一個備份。
 
 9. 若要啟用 AOF 持續性，請按一下 [ **AOF** ] 並進行設定。 
    
-   | 設定      | 建議的值  | 說明 |
+   | 設定      | 建議的值  | 描述 |
    | ------------ |  ------- | -------------------------------------------------- |
    | **第一個儲存體帳戶** | 下拉式清單，然後選取您的儲存體帳戶。 | 此儲存體帳戶必須與快取位於相同的區域和訂用帳戶，而且建議使用 **進階儲存體** 帳戶，因為 Premium 儲存體有更高的輸送量。 | 
-   | **第一個儲存體金鑰** | 下拉式清單，並選擇要使用的 **主要金鑰** 或 **次要金鑰** 。 | 如果重新產生了永續性帳戶的儲存體金鑰，您必須從 [儲存體金鑰]**** 下拉式清單中重新設定所需的金鑰。 | 
+   | **第一個儲存體金鑰** | 下拉式清單，並選擇要使用的 **主要金鑰** 或 **次要金鑰** 。 | 如果重新產生了永續性帳戶的儲存體金鑰，您必須從 [儲存體金鑰]  下拉式清單中重新設定所需的金鑰。 | 
    | **第二個儲存體帳戶** |  (選擇性的) 下拉式清單，然後選取您的次要儲存體帳戶。 | 您可以選擇性地設定額外的儲存體帳戶。 如果設定第二個儲存體帳戶，複本快取的寫入內容會寫入至此第二個儲存體帳戶。 | 
-   | **第二個儲存體金鑰** |  (選擇性) 下拉式清單，並選擇要使用的 **主要金鑰** 或 **次要金鑰** 。 | 如果重新產生了永續性帳戶的儲存體金鑰，您必須從 [儲存體金鑰]**** 下拉式清單中重新設定所需的金鑰。 | 
+   | **第二個儲存體金鑰** |  (選擇性) 下拉式清單，並選擇要使用的 **主要金鑰** 或 **次要金鑰** 。 | 如果重新產生了永續性帳戶的儲存體金鑰，您必須從 [儲存體金鑰]  下拉式清單中重新設定所需的金鑰。 | 
 
     啟用 AOF 持續性時，快取的寫入作業會儲存至指定的儲存體帳戶 (或設定為第二個儲存體帳戶的帳戶)。 如果發生使主要和複本快取離線的災難性失敗，則會使用儲存的 AOF 記錄來重建快取。
 
@@ -160,7 +160,7 @@ AOF 持續性將每筆寫入內容儲存至記錄，因此會對輸送量造成�
 
 ### <a name="how-can-i-remove-the-second-storage-account"></a>我要如何移除第二個儲存體帳戶？
 
-您可以透過將 AOF 持續性的第二個儲存體帳戶設定為與第一個儲存體帳戶相同，來移除第二個儲存體帳戶。 若為現有的快取，則會從快取的 [**資源] 功能表**存取**資料持續**性分頁。 若要停用 AOF 持續性，請按一下 [ **停用**]。
+您可以透過將 AOF 持續性的第二個儲存體帳戶設定為與第一個儲存體帳戶相同，來移除第二個儲存體帳戶。 若為現有的快取，則會從快取的 [ **資源] 功能表** 存取 **資料持續** 性分頁。 若要停用 AOF 持續性，請按一下 [ **停用** ]。
 
 ### <a name="what-is-a-rewrite-and-how-does-it-affect-my-cache"></a>什麼是重寫，其對快取有何影響？
 
@@ -188,7 +188,7 @@ AOF 持續性將每筆寫入內容儲存至記錄，因此會對輸送量造成�
 重寫後，儲存體中會有兩組 AOF 檔案。 重寫會在背景進行並將內容附加至第一組檔案，而當重寫內容附加至第二組檔案期間，會將設定作業傳送至快取。 重寫期間會暫時儲存備份以備失敗之需，但在重寫完成之後則會立即刪除備份。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 深入瞭解 Azure Cache for Redis 功能。
 
 * [Azure Cache for Redis Premium 服務層級](cache-overview.md#service-tiers)

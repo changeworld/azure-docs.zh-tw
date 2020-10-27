@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 4c5c0197ab6cecbba4bac4c0bff5ef76de24b6de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd73ac372a21a32eac0c742a7f0f525db2d1a4fe
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78300992"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92169090"
 ---
 ## <a name="prepare-your-web-app"></a>準備您的 Web 應用程式
 
-若要為您的 App Service 應用程式建立自訂安全性繫結或啟用用戶端憑證，您的[App Service 方案](https://azure.microsoft.com/pricing/details/app-service/)必須使用**基本**、**標準**、**進階**或**隔離**層。 在此步驟中，您要確定 Web 應用程式在支援的定價層。
+若要為您的 App Service 應用程式建立自訂安全性繫結或啟用用戶端憑證，您的 [App Service 方案](https://azure.microsoft.com/pricing/details/app-service/)必須使用 **基本** 、 **標準** 、 **進階** 或 **隔離** 層。 在此步驟中，您要確定 Web 應用程式在支援的定價層。
 
 ### <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -31,7 +31,7 @@ ms.locfileid: "78300992"
 
 在 [應用程式服務]  頁面上，選取您的 Web 應用程式名稱。
 
-![入口網站瀏覽至 Azure 應用程式](./media/app-service-ssl-prepare-app/select-app.png)
+![Azure 入口網站中 [應用程式服務] 頁面的螢幕擷取畫面，其中顯示所有執行中 Web 應用程式的清單並醒目提示清單中的第一個應用程式。](./media/app-service-ssl-prepare-app/select-app.png)
 
 您已經位於 Web 應用程式的管理頁面上。  
 
@@ -49,7 +49,7 @@ ms.locfileid: "78300992"
 
 ### <a name="scale-up-your-app-service-plan"></a>擴大您的 App Service 方案
 
-選取任何非免費層 (**B1**、**B2** **B3**或「生產」類別中的任何一層)。  如需其他選項，請按一下 [查看其他選項]  。
+選取任何非免費層 ( **B1** 、 **B2** **B3** 或「生產」類別中的任何一層)。  如需其他選項，請按一下 [查看其他選項]  。
 
 按一下 [套用]  。
 

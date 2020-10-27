@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-java
 ms.date: 01/16/2020
-ms.openlocfilehash: 84d9253b865ddac6d97395af3d8632e29cc2ea24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b80616806f846951ebbaffcb2bf31ad77b96266
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323803"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546597"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>開發適用於 HDInsight 上 Apache Hadoop 的 Java MapReduce 程式
 
 了解如何使用 Apache Maven 來建立以 Java 為基礎的 MapReduce 應用程式，然後在 Azure HDInsight 上使用 Apache Hadoop 來加以執行。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-* [JAVA Developer 套件 (JDK) 第8版](https://aka.ms/azure-jdks)。
+* [JAVA Developer 套件 (JDK) 第8版](/azure/developer/java/fundamentals/java-jdk-long-term-support)。
 
 * 根據 Apache 正確[安裝](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是適用於 Java 專案的專案建置系統。
 
@@ -38,13 +38,13 @@ cd C:\HDI
 
 ## <a name="create-a-maven-project"></a>建立 Maven 專案
 
-1. 輸入下列命令，以建立名為 **>wordcountjava**的 Maven 專案：
+1. 輸入下列命令，以建立名為 **>wordcountjava** 的 Maven 專案：
 
    ```bash
    mvn archetype:generate -DgroupId=org.apache.hadoop.examples -DartifactId=wordcountjava -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    ```
 
-    此命令會 `artifactID` 在此範例中使用參數 (**>wordcountjava** 所指定的名稱來建立目錄。 ) 此目錄包含下列專案：
+    此命令會 `artifactID` 在此範例中使用參數 ( **>wordcountjava** 所指定的名稱來建立目錄。 ) 此目錄包含下列專案：
 
     * `pom.xml` - [專案物件模型 (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)，包含用來建置專案的資訊和組態詳細資料。
     * src\main\java\org\apache\hadoop\examples：包含您的應用程式程式碼。
@@ -281,7 +281,7 @@ mvn clean package
     zenith  2
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 在本文件中，您已學到如何開發 Java MapReduce 工作。 請參閱下列文件，了解其他的 HDInsight 使用方式。
 

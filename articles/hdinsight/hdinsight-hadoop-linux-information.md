@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 1b3c694b4d6134f30d04ba8bafee9a6ffabdd959
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0f0073c72c28395d89cec74a489cbc36a8f3ffe7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488107"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546104"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>在 Linux 上使用 HDInsight 的相關資訊
 
@@ -24,13 +24,13 @@ Azure HDInsight 叢集可在您熟悉的 Linux 環境中提供於 Azure 雲端�
 本文件中的許多步驟都使用下列公用程式，可能需要安裝在您的系統上。
 
 * [cURL](https://curl.haxx.se/) - 用來與 Web 型服務通訊。
-* **jq**，這是命令列 JSON 處理器。  請參閱 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
+* **jq** ，這是命令列 JSON 處理器。  請參閱 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
 * [Azure CLI](/cli/azure/install-azure-cli) - 用來從遠端管理 Azure 服務。
-* **SSH 用戶端**。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。
+* **SSH 用戶端** 。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 ## <a name="users"></a>使用者
 
-除非[已加入網域](./domain-joined/hdinsight-security-overview.md)，否則應將 HDInsight 視為**單一使用者**系統。 叢集中會建立一個具有系統管理員層級權限的 SSH 使用者帳戶。 您可以建立其他 SSH 帳戶，但這些帳戶也會擁有叢集的系統管理員權限。
+除非 [已加入網域](./domain-joined/hdinsight-security-overview.md)，否則應將 HDInsight 視為 **單一使用者** 系統。 叢集中會建立一個具有系統管理員層級權限的 SSH 使用者帳戶。 您可以建立其他 SSH 帳戶，但這些帳戶也會擁有叢集的系統管理員權限。
 
 已加入網域的 HDInsight 可支援多個使用者和更細微的權限和角色設定。 如需詳細資訊，請參閱[管理已加入網域的 HDInsight 叢集](./domain-joined/apache-domain-joined-manage.md)。
 
@@ -81,7 +81,7 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
     >
     > 驗證是純文字的 - 請一律使用 HTTPS 來協助確保連線的安全性。
 
-* **SSH** - 連接埠 22 或 23 上的 CLUSTERNAME-ssh.azurehdinsight.net。 連接埠 22 用來連接至主要前端節點，而 23 用來連接至次要前端節點。 如需前端節點的詳細資訊，請參閱 [HDInsight 上 Apache Hadoop 叢集的可用性和可靠性](hdinsight-high-availability-linux.md)。
+* **SSH** - 連接埠 22 或 23 上的 CLUSTERNAME-ssh.azurehdinsight.net。 連接埠 22 用來連接至主要前端節點，而 23 用來連接至次要前端節點。 如需前端節點的詳細資訊，請參閱 [HDInsight 上 Apache Hadoop 叢集的可用性和可靠性](./hdinsight-business-continuity.md)。
 
     > [!NOTE]  
     > 您只能從用戶端電腦透過 SSH 存取叢集前端節點。 然後在連線後，再從前端節點使用 SSH 存取背景工作角色節點。
@@ -92,8 +92,8 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 
 Hadoop 相關檔案可以在叢集節點的 `/usr/hdp`上找到。 此目錄包含下列子目錄：
 
-* **2.6.5.3009-43**:目錄名稱是 HDInsight 所使用的 Hadoop 平台版本。 叢集上的數字可能不同於此處所列的數字。
-* **current**︰此目錄包含 **2.6.5.3009-43** 目錄下的子目錄連結。 因為有此目錄，您就不必記住版本號碼。
+* **2.6.5.3009-43** :目錄名稱是 HDInsight 所使用的 Hadoop 平台版本。 叢集上的數字可能不同於此處所列的數字。
+* **current** ︰此目錄包含 **2.6.5.3009-43** 目錄下的子目錄連結。 因為有此目錄，您就不必記住版本號碼。
 
 在 Hadoop 分散式檔案系統的 `/example` 和 `/HdiSamples` 可取得範例資料和 JAR 檔案。
 
@@ -189,7 +189,7 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 
 有各種不同的方式可從 HDInsight 叢集之外存取資料。 以下是幾個可用來處理資料之公用程式和 SDK 的連結︰
 
-如果使用 __Azure Blob 儲存體__，請參閱下列連結以取得您可以存取資料的方式：
+如果使用 __Azure Blob 儲存體__ ，請參閱下列連結以取得您可以存取資料的方式：
 
 * [Azure CLI](/cli/azure/install-az-cli2)：適用於 Azure 的命令列介面命令。 安裝好後，請使用 `az storage` 命令以協助使用儲存體，或是針對 Blob 特有命令使用 `az storage blob`。
 * [blobxfer.py](https://github.com/Azure/blobxfer)：python 指令碼，用於 Azure 儲存體中的 Blob。
@@ -201,9 +201,9 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
     * [Python](https://github.com/Azure/azure-sdk-for-python)
     * [Ruby](https://github.com/Azure/azure-sdk-for-ruby)
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
-    * [儲存體 REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)
+    * [儲存體 REST API](/rest/api/storageservices/Blob-Service-REST-API)
 
-如果使用 __Azure Data Lake Storage Gen1__，請參閱下列連結以取得您可以存取資料的方式：
+如果使用 __Azure Data Lake Storage Gen1__ ，請參閱下列連結以取得您可以存取資料的方式：
 
 * [Web 瀏覽器](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
@@ -245,7 +245,7 @@ HDInsight 是受控服務。 如果 Azure 偵測到叢集問題，它可能會�
 > [!IMPORTANT]
 > 透過 HDInsight 叢集提供的元件會受到完整支援，且 Microsoft 支援服務會協助釐清與解決這些元件的相關問題。
 >
-> 自訂元件則獲得商務上合理的支援，協助您進一步疑難排解問題。 如此可能會進而解決問題，或要求您利用可用管道，以找出開放原始碼技術，從中了解該技術的深度專業知識。 例如，有許多社群網站可供使用，例如：[適用於 HDInsight 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-hdinsight.html)，[https://stackoverflow.com](https://stackoverflow.com)。 此外，Apache 專案在 [https://apache.org](https://apache.org) 上也有專案網站，例如：[Hadoop](https://hadoop.apache.org/)、[Spark](https://spark.apache.org/)。
+> 自訂元件則獲得商務上合理的支援，協助您進一步疑難排解問題。 如此可能會進而解決問題，或要求您利用可用管道，以找出開放原始碼技術，從中了解該技術的深度專業知識。 例如，有許多社群網站可供使用，例如：[適用於 HDInsight 的 Microsoft 問與答頁面](/answers/topics/azure-hdinsight.html)，[https://stackoverflow.com](https://stackoverflow.com)。 此外，Apache 專案在 [https://apache.org](https://apache.org) 上也有專案網站，例如：[Hadoop](https://hadoop.apache.org/)、[Spark](https://spark.apache.org/)。
 
 ## <a name="next-steps"></a>後續步驟
 

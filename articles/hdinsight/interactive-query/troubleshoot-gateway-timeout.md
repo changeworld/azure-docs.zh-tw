@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 12/23/2019
-ms.openlocfilehash: 809b2e383eb57b730fd76ec2194764178aa810c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aeedda5c26a2e9dc0fa2b228285cfda45d880d29
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75895041"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547379"
 ---
 # <a name="exception-when-running-queries-from-apache-ambari-hive-view-in-azure-hdinsight"></a>從 Azure HDInsight 中的 Apache Ambari Hive View 執行查詢時發生例外狀況
 
@@ -54,13 +54,13 @@ Http 處理常式執行緒應該很快：準備作業並傳回 `queryid` 。 不
 
 * 如果使用外部 hive 中繼存放區，請檢查資料庫計量，並確定資料庫未多載。 請考慮調整中繼存放區資料庫層。
 
-* 確定已開啟 parallel ops (如此可讓 HTTP 處理常式執行緒以平行方式執行) 。 若要確認此值，請啟動[Apache Ambari](../hdinsight-hadoop-manage-ambari.md) ，然後流覽至**Hive 配置**的  >  **Configs**  >  **Advanced**  >  **自訂 hive 網站**。 的值 `hive.server2.parallel.ops.in.session` 應該是 `true` 。
+* 確定已開啟 parallel ops (如此可讓 HTTP 處理常式執行緒以平行方式執行) 。 若要確認此值，請啟動 [Apache Ambari](../hdinsight-hadoop-manage-ambari.md) ，然後流覽至 **Hive 配置** 的  >  **Configs**  >  **Advanced**  >  **自訂 hive 網站** 。 的值 `hive.server2.parallel.ops.in.session` 應該是 `true` 。
 
 * 請確定叢集的 VM SKU 不太小而無法載入。 請考慮在多個群集之間分割工作。 如需詳細資訊，請參閱 [選擇叢集類型](../hdinsight-capacity-planning.md#choose-a-cluster-type)。
 
 * 如果叢集上已安裝 Ranger，請檢查是否有太多 Ranger 原則需要針對每個查詢進行評估。 尋找重複或不需要的原則。
 
-* 檢查 Ambari 的 **HiveServer2 堆積大小** 值。 流覽至**Hive**  >  **Configs**  >  **設定**  >  **優化**。 請確定值大於 10 GB。 視需要調整以將效能優化。
+* 檢查 Ambari 的 **HiveServer2 堆積大小** 值。 流覽至 **Hive**  >  **Configs**  >  **設定**  >  **優化** 。 請確定值大於 10 GB。 視需要調整以將效能優化。
 
 * 確定 Hive 查詢經過妥善調整。 如需詳細資訊，請參閱 [Azure HDInsight 中的優化 Apache Hive 查詢](../hdinsight-hadoop-optimize-hive-query.md)。
 
@@ -72,4 +72,4 @@ Http 處理常式執行緒應該很快：準備作業並傳回 `queryid` 。 不
 
 * 連線至 [@AzureSupport](https://twitter.com/azuresupport) - 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 將 Azure 社群連線到正確的資源：解答、支援和專家。
 
-* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。
+* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

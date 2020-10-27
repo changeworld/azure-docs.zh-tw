@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: e5ed8fd2eba175a170c12c032e7c6ecf6a926b64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcb845904216fbe4cb05828877775ea2178c45e9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084608"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539151"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>使用 Apache Spark REST API 將遠端作業提交至 HDInsight Spark 叢集
 
@@ -27,7 +27,7 @@ HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDIns
 
 ## <a name="submit-an-apache-livy-spark-batch-job"></a>提交 Apache Livy Spark 批次作業
 
-在提交批次作業之前，您必須將應用程式 jar 上傳至與叢集相關聯的叢集儲存體。 您可以使用命令列公用程式 [AzCopy](../../storage/common/storage-use-azcopy.md) 來執行此動作。 此外也有各種用戶端可用來上傳資料。 [在 HDInsight 上將 Apache Hadoop 作業的資料上傳](../hdinsight-upload-data.md)中可找到其詳細資訊。
+在提交批次作業之前，您必須將應用程式 jar 上傳至與叢集相關聯的叢集儲存體。 您可以使用命令列公用程式 [AzCopy](../../storage/common/storage-use-azcopy-v10.md) 來執行此動作。 此外也有各種用戶端可用來上傳資料。 [在 HDInsight 上將 Apache Hadoop 作業的資料上傳](../hdinsight-upload-data.md)中可找到其詳細資訊。
 
 ```cmd
 curl -k --user "admin:password" -v -H "Content-Type: application/json" -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches' -H "X-Requested-By: admin"
@@ -97,7 +97,7 @@ Livy 可為在叢集上執行的 Spark 作業提供高可用性。 以下是一�
 * 您已將應用程式 jar 複製到與叢集相關聯的儲存體帳戶。
 * 您已在嘗試執行這些步驟的電腦上安裝了捲曲。
 
-請執行下列步驟：
+執行下列步驟：
 
 1. 為了方便使用，請設定環境變數。 這個範例是以 Windows 環境為基礎，視您的環境需要修訂變數。 `CLUSTERNAME` `PASSWORD` 以適當的值取代和。
 
@@ -126,7 +126,7 @@ Livy 可為在叢集上執行的 Spark 作業提供高可用性。 以下是一�
     {"from":0,"total":0,"sessions":[]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
-    請留意到輸出的最後一行顯示為 **total:0**，這表示沒有執行中的批次。
+    請留意到輸出的最後一行顯示為 **total:0** ，這表示沒有執行中的批次。
 
 1. 現在，我們要提交批次作業。 下列程式碼片段會使用輸入檔案 (input.txt) 傳遞 jar 名稱和類別名稱來作為參數。 如果您是從 Windows 電腦執行這些步驟，則建議使用輸入檔作為建議的方法。
 
@@ -155,7 +155,7 @@ Livy 可為在叢集上執行的 Spark 作業提供高可用性。 以下是一�
     {"id":0,"state":"starting","log":[]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
-    請留意到輸出的最後一行顯示為 **state:starting**。 此外也顯示 **id:0**。 在這裡，批次識別碼是 **0**。
+    請留意到輸出的最後一行顯示為 **state:starting** 。 此外也顯示 **id:0** 。 在這裡，批次識別碼是 **0** 。
 
 1. 現在，您可以使用批次識別碼來擷取此批次的狀態。
 
@@ -177,7 +177,7 @@ Livy 可為在叢集上執行的 Spark 作業提供高可用性。 以下是一�
     {"id":0,"state":"success","log":["\t diagnostics: N/A","\t ApplicationMaster host: 10.0.0.4","\t ApplicationMaster RPC port: 0","\t queue: default","\t start time: 1448063505350","\t final status: SUCCEEDED","\t tracking URL: http://myspar.lpel.jx.internal.cloudapp.net:8088/proxy/application_1447984474852_0002/","\t user: root","15/11/20 23:52:47 INFO Utils: Shutdown hook called","15/11/20 23:52:47 INFO Utils: Deleting directory /tmp/spark-b72cd2bf-280b-4c57-8ceb-9e3e69ac7d0c"]}* Connection #0 to host mysparkcluster.azurehdinsight.net left intact
     ```
 
-    輸出此時顯示 **state:success**，這表示作業已順利完成。
+    輸出此時顯示 **state:success** ，這表示作業已順利完成。
 
 1. 現在，您可以視需要刪除批次。
 
@@ -207,9 +207,9 @@ Livy 可為在叢集上執行的 Spark 作業提供高可用性。 以下是一�
 
 ## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>在 Azure 虛擬網路內提交叢集的 Livy 作業
 
-如果您是從 Azure 虛擬網路內連線到 HDInsight Spark 叢集，可以直接連線到叢集上的 Livy。 在此案例中，Livy 端點的 URL 是 `http://<IP address of the headnode>:8998/batches`。 在這裡，**8998** 是 Livy 在叢集前端節點上執行的連接埠。 如需有關在非公用連接埠上存取服務的詳細資訊，請參閱 [HDInsight 上 Apache Hadoop 服務所使用的連接埠](../hdinsight-hadoop-port-settings-for-services.md)。
+如果您是從 Azure 虛擬網路內連線到 HDInsight Spark 叢集，可以直接連線到叢集上的 Livy。 在此案例中，Livy 端點的 URL 是 `http://<IP address of the headnode>:8998/batches`。 在這裡， **8998** 是 Livy 在叢集前端節點上執行的連接埠。 如需有關在非公用連接埠上存取服務的詳細資訊，請參閱 [HDInsight 上 Apache Hadoop 服務所使用的連接埠](../hdinsight-hadoop-port-settings-for-services.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * [Apache Livy REST API 文件](https://livy.incubator.apache.org/docs/latest/rest-api.html)
 * [在 Azure HDInsight 中管理 Apache Spark 叢集的資源](apache-spark-resource-manager.md)

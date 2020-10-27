@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
-ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5be3f02a80524d9c4b633e1e34d581fc26bfd32d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75887150"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547889"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>針對 Azure HDInsight 上的 Apache HBase 效能問題進行疑難排解
 
@@ -73,9 +73,9 @@ ms.locfileid: "75887150"
 
 - `memstore`將大小從預設值 128 mb 增加至 256 mb。 一般來說，這項設定對於繁重的寫入案例是建議的做法。
 
-- 從預設值 **1** 到 **4**，增加專用於壓縮的執行緒數目。 如果我們發現頻繁的次要 compactions，則這項設定是相關的。
+- 從預設值 **1** 到 **4** ，增加專用於壓縮的執行緒數目。 如果我們發現頻繁的次要 compactions，則這項設定是相關的。
 
-- 避免 `memstore` 因為存放區限制而造成封鎖清除。 若要提供此緩衝區，請將 `Hbase.hstore.blockingStoreFiles` 設定增加為 **100**。
+- 避免 `memstore` 因為存放區限制而造成封鎖清除。 若要提供此緩衝區，請將 `Hbase.hstore.blockingStoreFiles` 設定增加為 **100** 。
 
 - 若要控制排清，請使用下列設定：
 
@@ -104,19 +104,19 @@ ms.locfileid: "75887150"
 - RPC 超時： **3 分鐘**
 
    - RPC timeout 包括 HBase RPC timeout、HBase 用戶端掃描器 timeout 和 Phoenix 查詢 timeout。 
-   - 請確定在 `hbase.client.scanner.caching` 伺服器端和用戶端端都將參數設定為相同的值。 如果兩者不同，此設定會導致與相關的用戶端錯誤 `OutOfOrderScannerException` 。 針對大型掃描，此設定應該設為較低的值。 我們將此值設定為 **100**。
+   - 請確定在 `hbase.client.scanner.caching` 伺服器端和用戶端端都將參數設定為相同的值。 如果兩者不同，此設定會導致與相關的用戶端錯誤 `OutOfOrderScannerException` 。 針對大型掃描，此設定應該設為較低的值。 我們將此值設定為 **100** 。
 
 ## <a name="other-considerations"></a>其他考量
 
 以下是要考慮調整的其他參數：
 
-- `Hbase.rs.cacheblocksonwrite` –根據預設，在 HDI 上，此設定會設定為 **true**。
+- `Hbase.rs.cacheblocksonwrite` –根據預設，在 HDI 上，此設定會設定為 **true** 。
 
 - 允許稍後延遲次要壓縮的設定。
 
 - 實驗性設定，例如調整保留給讀取和寫入要求的佇列百分比。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如果您的問題仍無法解決，請流覽下列其中一個通道以取得更多支援：
 
@@ -124,4 +124,4 @@ ms.locfileid: "75887150"
 
 - 聯繫 [@AzureSupport](https://twitter.com/azuresupport)。 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 它會將 Azure 群體連接到正確的資源：解答、支援及專家。
 
-- 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) 提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您的 Microsoft Azure 訂用帳戶包含訂用帳戶管理和帳單支援的存取權，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)提供技術支援。
+- 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) 提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 您的 Microsoft Azure 訂用帳戶包含訂用帳戶管理和帳單支援的存取權，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)提供技術支援。

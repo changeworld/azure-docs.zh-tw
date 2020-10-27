@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/25/2020
 ms.author: robinsh
-ms.openlocfilehash: a9a95c0151ed6dd3a2ad4a9d548723cdff0bcfb8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 501b609d745e0a86bc1e00bccae54bb4f6e49376
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147082"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545271"
 ---
 # <a name="use-ip-filters"></a>使用 IP 篩選器
 
@@ -37,7 +37,7 @@ IP 篩選器規則會套用在 IoT 中樞服務層級。 因此，IP 篩選器�
 
 ## <a name="default-setting"></a>預設設定
 
-根據預設，IoT 中樞之入口網站中的 **IP 篩選器**方格是空的。 這個預設設定表示您的中樞會接受來自任何 IP 位址的連線。 這項預設設定等同於可接受 0.0.0.0/0 IP 位址範圍的規則。
+根據預設，IoT 中樞之入口網站中的 **IP 篩選器** 方格是空的。 這個預設設定表示您的中樞會接受來自任何 IP 位址的連線。 這項預設設定等同於可接受 0.0.0.0/0 IP 位址範圍的規則。
 
 若要移至 [IP 篩選器設定] 頁面，請選取 [網路]、[公用存取]，然後選擇 [選取的 IP 範圍]：
 
@@ -53,11 +53,11 @@ IP 篩選器規則會套用在 IoT 中樞服務層級。 因此，IP 篩選器�
 
 :::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="IoT 中樞預設 IP 篩選器設定":::
 
-* 提供 IP 篩選器規則的**名稱**。 名稱必須是唯一的、不區分大小寫的英數字元字串，長度上限為 128 個字元。 所能接受的字元只有 ASCII 7 位元英數字元以及 `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`。
+* 提供 IP 篩選器規則的 **名稱** 。 名稱必須是唯一的、不區分大小寫的英數字元字串，長度上限為 128 個字元。 所能接受的字元只有 ASCII 7 位元英數字元以及 `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}`。
 
 * 提供單一 IPv4 位址或以 CIDR 標記法表示的 IP 位址區塊。 例如，在 CIDR 表示法中，192.168.100.0/22 表示從 192.168.100.0 到 192.168.103.255 的 1024 個 IPv4 位址。
 
-* 選取 [允許] 或 [封鎖] 作為 IP 篩選器規則的**動作**。
+* 選取 [允許] 或 [封鎖] 作為 IP 篩選器規則的 **動作** 。
 
 填寫欄位之後，請選取 [儲存] 以儲存規則。 您會看到通知您正在進行更新的警示。
 
@@ -75,7 +75,7 @@ IP 篩選器規則會套用在 IoT 中樞服務層級。 因此，IP 篩選器�
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>使用 Azure CLI 擷取和更新 IP 篩選條件
 
-您可以透過 [Azure CLI](/cli/azure/?view=azure-cli-latest) 擷取和更新 IoT 中樞的 IP 篩選條件。
+您可以透過 [Azure CLI](/cli/azure/) 擷取和更新 IoT 中樞的 IP 篩選條件。
 
 若要擷取 IoT 中樞目前的 IP 篩選條件，請執行：
 
@@ -167,4 +167,4 @@ IP 篩選器規則會依序套用，第一個符合 IP 位址的規則會決定�
 
 若要進一步探索 IoT 中樞的功能，請參閱︰
 
-* [IoT 中樞計量](iot-hub-metrics.md)
+* [監視 IoT 中樞](monitor-iot-hub.md)

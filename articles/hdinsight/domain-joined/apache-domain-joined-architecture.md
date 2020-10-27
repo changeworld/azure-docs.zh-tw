@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/11/2020
-ms.openlocfilehash: 452a3b04637126b40aca907178bebd6f74ec4481
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86d951089e4247d9b959476c812b98e170d92bd8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79365761"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547974"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>在 HDInsight 中使用企業安全性套件
 
@@ -57,7 +57,7 @@ HDInsight 目前僅支援以 Azure AD DS 作為主要網域控制站，讓叢集
 
 如果您有內部部署的 Active Directory 執行個體或網域上有更複雜的 Active Directory 設定，則可以使用 Azure AD Connect 來將那些身分識別同步到 Azure AD。 之後，您可以在該 Active Directory 租用戶上啟用 Azure AD DS。
 
-因為 Kerberos 依賴密碼雜湊，您必須[對 Azure AD DS 啟用密碼雜湊同步](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)。
+因為 Kerberos 依賴密碼雜湊，您必須[對 Azure AD DS 啟用密碼雜湊同步](../../active-directory-domain-services/tutorial-create-instance.md)。
 
 如果您搭配 Active Directory 同盟服務 (AD FS) 使用同盟，則必須啟用密碼雜湊同步處理。 (建議的設定，請參閱 [這段影片](https://youtu.be/qQruArbu2Ew)。 ) 密碼雜湊同步處理有助於在您的 AD FS 基礎結構失敗時進行嚴重損壞修復，而且也有助於提供洩漏的認證保護。 如需詳細資訊，請參閱[透過 Azure AD Connect 同步啟用密碼雜湊同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)。
 
@@ -65,7 +65,7 @@ HDInsight 目前僅支援以 Azure AD DS 作為主要網域控制站，讓叢集
 
 如果正在使用同盟且密碼雜湊已正確同步處理，但您收到驗證失敗，請檢查是否已針對 PowerShell 服務主體啟用雲端密碼驗證。 如果未啟用，您就必須為 Azure AD 租用戶設定[主領域探索 (HRD) 原則](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md)。 檢查並設定 HRD 原則：
 
-1. 安裝預覽版 [Azure AD PowerShell 模組](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2)。
+1. 安裝預覽版 [Azure AD PowerShell 模組](/powershell/azure/active-directory/install-adv2)。
 
    ```powershell
    Install-Module AzureAD
@@ -111,7 +111,7 @@ HDInsight 目前僅支援以 Azure AD DS 作為主要網域控制站，讓叢集
         -refObjectID $policy.ID
    ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [設定具有 ESP 的 HDInsight 叢集](apache-domain-joined-configure-using-azure-adds.md)
 - [為具有 ESP 的 HDInsight 叢集設定 Apache Hive 原則](apache-domain-joined-run-hive.md)

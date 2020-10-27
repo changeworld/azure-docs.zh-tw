@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
-ms.openlocfilehash: 830e72a8de047b0219cfa0be264fad2e1f83beb2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 4dbda13ffe04e0a4214b24ccaca2b8103a39b9f2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92142619"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536057"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>使用 Azure CLI 來設定 IoT 中樞檔案上傳
 
@@ -25,7 +25,7 @@ ms.locfileid: "92142619"
 
 * 使用中的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/) 。
 
-* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* [Azure CLI](/cli/azure/install-azure-cli)。
 
 * Azure IoT 中樞。 如果您沒有 IoT 中樞，您可以使用此[ `az iot hub create` 命令](/cli/azure/iot/hub#az-iot-hub-create)來建立一個，或[使用入口網站建立 iot 中樞](iot-hub-create-through-portal.md)。
 
@@ -35,7 +35,7 @@ ms.locfileid: "92142619"
 
 登入您的 Azure 帳戶並選取您的訂用帳戶。
 
-1. 在命令提示字元中，執行[登入命令](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)：
+1. 在命令提示字元中，執行[登入命令](/cli/azure/get-started-with-azure-cli)：
 
     ```azurecli
     az login
@@ -57,7 +57,7 @@ ms.locfileid: "92142619"
 
 ## <a name="retrieve-your-storage-account-details"></a>擷取您的儲存體帳戶詳細資料
 
-下列步驟假設您使用 [Resource Manager]**** 部署模型，而非 [傳統]**** 部署模型，建立了儲存體帳戶。
+下列步驟假設您使用 [Resource Manager]  部署模型，而非 [傳統]  部署模型，建立了儲存體帳戶。
 
 若要從裝置設定檔案上傳，您需要 Azure 儲存體帳戶的連接字串。 儲存體帳戶必須與您的 IoT 中樞位於相同的訂用帳戶中。 您也需要儲存體帳戶中 blob 容器的名稱。 使用下列命令來擷取儲存體帳戶金鑰：
 
@@ -89,15 +89,15 @@ az storage account show-connection-string --name {your storage account name} \
 
 設定需要下列值：
 
-* **儲存體容器**︰您目前 Azure 訂用帳戶內 Azure 儲存體帳戶中的 blob 容器，會與您的 IoT 中樞產生關聯。 您已在上一節中擷取了必要的儲存體帳戶資訊。 IoT 中樞會自動產生具有此 Blob 容器寫入權限的 SAS URI，以供裝置上傳檔案時使用。
+* **儲存體容器** ︰您目前 Azure 訂用帳戶內 Azure 儲存體帳戶中的 blob 容器，會與您的 IoT 中樞產生關聯。 您已在上一節中擷取了必要的儲存體帳戶資訊。 IoT 中樞會自動產生具有此 Blob 容器寫入權限的 SAS URI，以供裝置上傳檔案時使用。
 
-* **接收已上傳檔案的通知**︰啟用或停用檔案上傳通知。
+* **接收已上傳檔案的通知** ︰啟用或停用檔案上傳通知。
 
-* **SAS TTL**︰這個設定是「IoT 中樞」傳回給裝置之 SAS URI 的存留時間。 預設會設為一小時。
+* **SAS TTL** ︰這個設定是「IoT 中樞」傳回給裝置之 SAS URI 的存留時間。 預設會設為一小時。
 
-* **檔案通知設定預設 TTL**：檔案上傳通知到期前的存留時間。 預設會設為一天。
+* **檔案通知設定預設 TTL** ：檔案上傳通知到期前的存留時間。 預設會設為一天。
 
-* **檔案通知最大傳遞計數**︰IoT 中樞可嘗試傳遞檔案上傳通知的次數。 預設會設為 10。
+* **檔案通知最大傳遞計數** ︰IoT 中樞可嘗試傳遞檔案上傳通知的次數。 預設會設為 10。
 
 使用下列 Azure CLI 命令來設定 IoT 中樞上的檔案上傳設定：
 
@@ -131,15 +131,14 @@ az iot hub update --name {your iot hub name} \
 az iot hub show --name {your iot hub name}
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需 IoT 中樞檔案上傳功能的詳細資訊，請參閱[從裝置上傳檔案](iot-hub-devguide-file-upload.md)。
 
 遵循下列連結以深入了解如何管理 Azure IoT 中樞：
 
 * [大量管理 IoT 裝置](iot-hub-bulk-identity-mgmt.md)
-* [IoT 中樞計量](iot-hub-metrics.md)
-* [作業監視](iot-hub-operations-monitoring.md)
+* [監視您的 IoT 中樞](monitor-iot-hub.md)
 
 若要進一步探索 IoT 中樞的功能，請參閱︰
 

@@ -11,12 +11,12 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f46d41c8287d03cbe9582ed560244cbd85cdeeaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4979405c7675b5eff9f6940cd34e0c974ebad217
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81759589"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538267"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
@@ -26,7 +26,7 @@ ms.locfileid: "81759589"
 
 ### <a name="symptom-1"></a>徵兆1
 
-在診斷記錄中，您會看到裝置與 **401003 IoTHubUnauthorized**中斷連線的模式，後面接著 **404104 DeviceConnectionClosedRemotely**，然後在不久之後成功連接。
+在記錄中，您會看到裝置與 **401003 IoTHubUnauthorized** 中斷連線的模式，後面接著 **404104 DeviceConnectionClosedRemotely** ，然後在不久後立即成功連接。
 
 ### <a name="symptom-2"></a>徵兆2
 
@@ -54,7 +54,7 @@ IoT 中樞的要求失敗，並出現下列其中一個錯誤訊息：
 
 IoT 中樞無法驗證驗證標頭、規則或金鑰。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 ### <a name="solution-1"></a>解決方案 1
 
@@ -70,6 +70,6 @@ IoT 中樞無法驗證驗證標頭、規則或金鑰。
 - 授權認證的格式正確，適用于您所使用的通訊協定。 若要深入瞭解，請參閱 [IoT 中樞存取控制](iot-hub-devguide-security.md)。
 - 使用的授權規則具有所要求作業的許可權。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 若要更輕鬆地向 IoT 中樞進行驗證，我們建議使用 [Azure IoT sdk](iot-hub-devguide-sdks.md)。

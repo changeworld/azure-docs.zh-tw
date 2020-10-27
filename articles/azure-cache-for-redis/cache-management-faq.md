@@ -7,17 +7,17 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
-ms.openlocfilehash: 5c5c7a5adae9891f764f714d1700c6024376de02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15c7ed4ca9d04e4bb314eea8b92bef749d2369b1
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88205388"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537655"
 ---
 # <a name="azure-cache-for-redis-management-faqs"></a>Azure Cache for Redis 管理常見問題
 本文提供有關如何管理 Azure Cache for Redis 的常見問題解答。
 
-## <a name="common-questions-and-answers"></a>常見問題和解答
+## <a name="common-questions-and-answers"></a>常見問題與答案
 本節涵蓋下列常見問題：
 
 * [何時應該啟用非 TLS/SSL 連接埠來連線至 Redis？](#when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis)
@@ -63,7 +63,7 @@ Redis 工具 (例如 `redis-cli`) 未使用 TLS 連接埠，但您可以遵循[�
 * 用來進行測試的用戶端 VM 應該與您的「Azure Redis 快取」執行個體位於相同的區域。
 * 我們建議為您的用戶端使用 Dv2 VM 系列，因為此系列有更好的硬體，能提供最佳的結果。
 * 請確定您選擇的用戶端 VM 與您進行測試的快取至少有一樣多的運算和頻寬能力。
-* 如果您是在 Windows 上，請在用戶端電腦上啟用 VRSS。 [參閱此處了解詳細資訊](https://technet.microsoft.com/library/dn383582.aspx)。
+* 如果您是在 Windows 上，請在用戶端電腦上啟用 VRSS。 [參閱此處了解詳細資訊](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11))。
 * 進階層 Redis 執行個體會有比較好的網路延遲和輸送量，因為是在比較好的硬體 (CPU 和網路) 上執行。
 
 ### <a name="what-are-some-of-the-considerations-when-using-common-redis-commands"></a>使用常見 Redis 命令時的一些考量為何？
@@ -144,7 +144,7 @@ WORKER: (Busy=3,Free=997,Min=4,Max=1000)
     > [!NOTE]
     > 此方法指定的值是全域設定，會影響整個 AppDomain。 舉例來說，如果您有一部 4 核心電腦，而且想要將「minWorkerThreads」 和「minIOThreads」設為執行階段期間每個 CPU 50 個，可以使用 **ThreadPool.SetMinThreads (200, 200)** 。
 
-* 您也可以使用 `Machine.config` (通常位於 `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\`) 中 `<processModel>` 設定元素底下的 [*minIoThreads* 或 *minWorkerThreads* 組態設定](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx)來指定最低執行緒設定。 **我們通常不建議以這種方式設定最低執行緒數，因為它是全系統的設定。**
+* 您也可以使用 `Machine.config` (通常位於 `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\`) 中 `<processModel>` 設定元素底下的 [*minIoThreads* 或 *minWorkerThreads* 組態設定](/previous-versions/dotnet/netframework-4.0/7w2sway1(v=vs.100))來指定最低執行緒設定。 **我們通常不建議以這種方式設定最低執行緒數，因為它是全系統的設定。**
 
   > [!NOTE]
   > 這個組態元素中指定的值是「每一核心」設定。 例如，如果您有 4 核心的電腦，並且想要在執行階段將 *minIOThreads* 設為 200，您會使用 `<processModel minIoThreads="50"/>`。
@@ -163,6 +163,6 @@ WORKER: (Busy=3,Free=997,Min=4,Max=1000)
 
 如需有關每個層級之不同連線限制的詳細資訊，請參閱 [Azure Redis 快取價格](https://azure.microsoft.com/pricing/details/cache/)。 如需有關連線及其他預設組態的詳細資訊，請參閱[預設 Redis 伺服器組態](cache-configure.md#default-redis-server-configuration)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 瞭解其他 [Azure Cache for Redis 常見問題](cache-faq.md)。

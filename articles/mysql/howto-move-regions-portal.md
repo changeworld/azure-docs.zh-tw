@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
-ms.openlocfilehash: e0333c5cabec597261938765298b622bf2fe79a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88f9b82df0ce1fae78f0c9de9c8d7a7b158d151e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542507"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546325"
 ---
 # <a name="move-an-azure-database-for-mysql-server-to-another-region-by-using-the-azure-portal"></a>使用 Azure 入口網站將適用於 MySQL 的 Azure 資料庫伺服器移至另一個區域
 
@@ -21,7 +21,7 @@ ms.locfileid: "91542507"
 您可以使用適用於 MySQL 的 Azure 資料庫的 [跨區域讀取複本](concepts-read-replicas.md#cross-region-replication) 來完成移至另一個區域的工作。 若要這樣做，請先在目的地區域中建立讀取複本。 接下來，停止複寫到讀取複本伺服器，使其成為同時接受讀取和寫入流量的獨立伺服器。 
 
 > [!NOTE]
-> 本文著重于將您的伺服器移至不同的區域。 如果您想要將您的伺服器移至不同的資源群組或訂用帳戶，請參閱 [移動](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription) 文章。 
+> 本文著重于將您的伺服器移至不同的區域。 如果您想要將您的伺服器移至不同的資源群組或訂用帳戶，請參閱 [移動](../azure-resource-manager/management/move-resource-group-and-subscription.md) 文章。 
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -63,9 +63,9 @@ ms.locfileid: "91542507"
 您可能會想要刪除來源適用於 MySQL 的 Azure 資料庫伺服器。 若要這樣做，請使用下列步驟：
 
 1. 建立複本之後，請找出並選取您的適用於 MySQL 的 Azure 資料庫來源伺服器。
-1. 在 [ **總覽** ] 視窗中，選取 [ **刪除**]。
+1. 在 [ **總覽** ] 視窗中，選取 [ **刪除** ]。
 1. 輸入來源伺服器的名稱，以確認您想要刪除。
-1. 選取 [刪除]  。
+1. 選取 [刪除] 。
 
 ## <a name="next-steps"></a>後續步驟
 

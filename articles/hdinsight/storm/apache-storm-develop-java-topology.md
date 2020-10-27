@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020,devx-track-java
 ms.date: 04/27/2020
-ms.openlocfilehash: b928ea8b0d05b9e1eac3c9429ec4c0ce8f88bb22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 881ec4aa36261958b566dc2d7c4d06475a76bad4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322868"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545492"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>在 Java 中建立 Apache Storm 拓撲
 
@@ -24,9 +24,9 @@ ms.locfileid: "87322868"
 > [!NOTE]  
 > 您可以從本檔中所建立的完整版本拓撲範例中取得 [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount) 。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-* [JAVA Developer 套件 (JDK) 第8版](https://aka.ms/azure-jdks)
+* [JAVA Developer 套件 (JDK) 第8版](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 
 * 根據 Apache 正確[安裝](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是適用於 Java 專案的專案建置系統。
 
@@ -43,7 +43,7 @@ cd C:\HDI
 
 ## <a name="create-a-maven-project"></a>建立 Maven 專案
 
-輸入下列命令，以建立名為 **WordCount**的 Maven 專案：
+輸入下列命令，以建立名為 **WordCount** 的 Maven 專案：
 
 ```cmd
 mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=com.microsoft.example -DartifactId=WordCount -DinteractiveMode=false
@@ -149,7 +149,7 @@ Maven 可讓您定義稱為屬性的專案層級值。 在中 `pom.xml` ，于�
 在編譯期間，Maven 會使用此資訊來查閱 Maven 存放庫中的 `storm-core`。 它會先查看本機電腦上的儲存機制。 如果檔案不存在，Maven 會從公用 Maven 存放庫進行下載，並將它們儲存在本機存放庫中。
 
 > [!NOTE]  
-> 請注意此區段中的 `<scope>provided</scope>` 行。 這項設定會指示 Maven 從所建立的任何 JAR 檔案中排除 **storm-core**，因為它是由系統所提供。
+> 請注意此區段中的 `<scope>provided</scope>` 行。 這項設定會指示 Maven 從所建立的任何 JAR 檔案中排除 **storm-core** ，因為它是由系統所提供。
 
 ## <a name="build-configuration"></a>建置組態
 
@@ -199,9 +199,9 @@ Maven 外掛程式可讓您自訂專案的建置階段。 例如，如何編譯�
 
     另一個有用的外掛程式是 [`Apache Maven Compiler Plugin`](https://maven.apache.org/plugins/maven-compiler-plugin/) ，它是用來變更編譯選項。 變更 Maven 用於您應用程式之來源和目標的 JAVA 版本。
 
-  * 針對 HDInsight __3.4 或更早版本__，請將資源和目標 Java 版本設為 __1.7__。
+  * 針對 HDInsight __3.4 或更早版本__ ，請將資源和目標 Java 版本設為 __1.7__ 。
 
-  * 針對 HDInsight __3.5__，請將來源和目標 Java 版本設為 __1.8__。
+  * 針對 HDInsight __3.5__ ，請將來源和目標 Java 版本設為 __1.8__ 。
 
   在 `pom.xml` 檔案的 `<plugins>` 區段中新增下列文件，以包括 Apache Maven 編譯器外掛程式。 這個範例會指定 1.8，使得目標 HDInsight 版本為 3.5。
 
@@ -237,11 +237,11 @@ resources 區段可讓您包含非程式碼資源，例如拓撲中元件所需�
 
 Java 型 Apache Storm 拓撲包含三個您必須編寫 (或參考) 為相依性的元件。
 
-* **Spout**：讀取來自外部來源的資料，並將資料流發出到拓撲。
+* **Spout** ：讀取來自外部來源的資料，並將資料流發出到拓撲。
 
-* **螺栓**：處理 spout 或其他螺栓發出的資料流程，併發出一或多個資料流程。
+* **螺栓** ：處理 spout 或其他螺栓發出的資料流程，併發出一或多個資料流程。
 
-* **拓撲**：定義如何排列 Spout 和 Bolt，並提供拓撲的進入點。
+* **拓撲** ：定義如何排列 Spout 和 Bolt，並提供拓撲的進入點。
 
 ### <a name="create-the-spout"></a>建立 Spout
 
@@ -327,9 +327,9 @@ public class RandomSentenceSpout extends BaseRichSpout {
 
 Bolt 會處理資料的處理。 Bolt 可以包辦任何作業，例如計算、持續性或與外部元件交談。 此拓撲會使用兩個 Bolt：
 
-* **SplitSentence**會將 **RandomSentenceSpout** 所發出的句子分割成個別單字。
+* **SplitSentence** 會將 **RandomSentenceSpout** 所發出的句子分割成個別單字。
 
-* **WordCount**：計算每個單字的出現次數。
+* **WordCount** ：計算每個單字的出現次數。
 
 #### <a name="splitsentence"></a>SplitSentence
 

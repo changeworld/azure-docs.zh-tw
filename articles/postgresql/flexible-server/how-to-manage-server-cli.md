@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 6c088188802590139ee895c45fb26959138db07e
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: eba175eb831ef0c472c2e11d2d03f134a0d3b052
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939795"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547668"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-cli"></a>使用 Azure CLI 管理適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器
 
@@ -23,13 +23,13 @@ ms.locfileid: "91939795"
 ## <a name="prerequisites"></a>必要條件
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。 本文需要您以本機方式執行 Azure CLI 2.0 版或更新版本。 若要查看所安裝的版本，請執行 `az --version` 命令。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
-您必須使用 [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) 命令登入您的帳戶。 請注意 **id** 屬性，這是指您的 Azure 帳戶的**訂用帳戶識別碼**。
+您必須使用 [az login](/cli/azure/reference-index#az-login) 命令登入您的帳戶。 請注意 **id** 屬性，這是指您的 Azure 帳戶的 **訂用帳戶識別碼** 。
 
 ```azurecli-interactive
 az login
 ```
 
-使用 [az account set](/cli/azure/account) 命令來選取您帳戶底下的特定訂用帳戶。 記下 **az login** 輸出中的 **id** 值，作為命令中**訂用帳戶**引數的值。 如果您有多個訂用帳戶，請選擇資源計費的適當訂用帳戶。 若要取得您的所有訂用帳戶，請使用 [az account list](https://docs.microsoft.com/cli/azure/account#az-account-list)。
+使用 [az account set](/cli/azure/account) 命令來選取您帳戶底下的特定訂用帳戶。 記下 **az login** 輸出中的 **id** 值，作為命令中 **訂用帳戶** 引數的值。 如果您有多個訂用帳戶，請選擇資源計費的適當訂用帳戶。 若要取得您的所有訂用帳戶，請使用 [az account list](/cli/azure/account#az-account-list)。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -101,7 +101,7 @@ storage-size | 6144 | 伺服器的儲存體容量 (單位為 MB)。 最小值為
     CREATE DATABASE postgresdb;
     ```
 
-3. 在提示字元中執行下列命令，以將連接切換至新建立的資料庫 **postgresdb**：
+3. 在提示字元中執行下列命令，以將連接切換至新建立的資料庫 **postgresdb** ：
 
     ```bash
     \c postgresdb
@@ -129,7 +129,7 @@ az postgres flexible-server update --resource-group myresourcegroup --name mydem
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [瞭解備份和還原概念](concepts-backup-restore.md)
 - [調整和監視伺服器](concepts-monitoring.md)

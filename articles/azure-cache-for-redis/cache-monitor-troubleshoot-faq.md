@@ -6,17 +6,17 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 2149d069ce9cb0b636e461d19963f413b162bc9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e96c73578a9341f67d90cd4482ed75179c6886d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88010827"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537519"
 ---
 # <a name="azure-cache-for-redis-monitoring-and-troubleshooting-faqs"></a>Azure Cache for Redis 監視和疑難排解常見問題
 本文提供有關如何監視和疑難排解 Azure Cache for Redis 的常見問題解答。
 
-## <a name="common-questions-and-answers"></a>常見問題和解答
+## <a name="common-questions-and-answers"></a>常見問題與答案
 本節涵蓋下列常見問題：
 
 * [如何監視快取的健全狀況和效能？](#how-do-i-monitor-the-health-and-performance-of-my-cache)
@@ -26,10 +26,10 @@ ms.locfileid: "88010827"
 ### <a name="how-do-i-monitor-the-health-and-performance-of-my-cache"></a>如何監視快取的健全狀況和效能？
 您可以在 [Azure 入口網站](https://portal.azure.com)中監視「Microsoft Azure Redis 快取」執行個體。 您可以檢視度量、將度量圖表釘選到「開始面板」、自訂監視圖表的日期和時間範圍、新增和移除圖表中的度量，以及設定符合特定條件時的警示。 如需詳細資訊，請參閱[監視 Azure Redis 快取](cache-how-to-monitor.md)。
 
-「Azure Redis 快取」**資源功能表**也包含數個工具，可對快取進行監控和疑難排解。
+「Azure Redis 快取」 **資源功能表** 也包含數個工具，可對快取進行監控和疑難排解。
 
-* **疑難排解和解決問題**提供常見問題的相關資訊，以及解決問題的策略。
-* **資源健康狀態** 會監看您的資源，並告知您資源是否正如預期般執行。 如需 Azure 資源健康狀態服務的詳細資訊，請參閱 [Azure 資源健康狀態概觀](../resource-health/resource-health-overview.md)。
+* **疑難排解和解決問題** 提供常見問題的相關資訊，以及解決問題的策略。
+* **資源健康狀態** 會監看您的資源，並告知您資源是否正如預期般執行。 如需 Azure 資源健康狀態服務的詳細資訊，請參閱 [Azure 資源健康狀態概觀](../service-health/resource-health-overview.md)。
 * **新增支援要求** 提供選項來提出快取的支援要求。
 
 這些工具可讓您監視 Azure Cache for Redis 執行個體的健康情況，並協助您管理快取應用程式。 如需詳細資訊，請參閱[如何設定 Azure Redis 快取](cache-configure.md)的＜支援和疑難排解設定＞一節。
@@ -54,7 +54,7 @@ ms.locfileid: "88010827"
     * 這可能適用於 Redis 伺服器更新或一般 VM 維護。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需有關監視「Azure Cache for Redis」執行個體和進行疑難排解的詳細資訊，請參閱[如何監視 Azure Cache for Redis](cache-how-to-monitor.md) 和各種疑難排解指南。
 

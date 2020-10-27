@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: amqp
-ms.openlocfilehash: 20d39b1f5a11f20eb5d12f34337787b382c820f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70b9be6fdb500d9f877659a12e6fdc0e206ea964
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81758749"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538216"
 ---
 # <a name="409002-linkcreationconflict"></a>409002 LinkCreationConflict
 
@@ -22,7 +22,7 @@ ms.locfileid: "81758749"
 
 ## <a name="symptoms"></a>徵兆
 
-您會看到錯誤 **409002 LinkCreationConflict** 記錄在診斷記錄中，以及裝置中斷連線或雲端到裝置的訊息失敗。 
+您會在記錄中看到錯誤 **409002 LinkCreationConflict** ，以及裝置中斷連線或雲端到裝置的訊息失敗。
 
 <!-- When using AMQP? -->
 
@@ -38,6 +38,6 @@ ms.locfileid: "81758749"
 
 錯誤的裝置端邏輯會導致裝置在已開啟時建立連接。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 此錯誤通常會顯現為不同暫時性問題的副作用，所以請尋找記錄中的其他錯誤，進一步進行疑難排解。 否則，請務必在連線中斷後才發出新的連線要求。

@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 08/12/2019
+ms.date: 10/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: a1c07432dcf90759662e8f4aaedc760abd18157c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 931aea02d0a3c26bb5c2e7158f9c4360976d3af5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88585928"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92440513"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault 備份
 
@@ -30,6 +30,9 @@ Key Vault 會在發生災害的情況下保有可用性，並會自動將要求�
 如果您想要防止祕密遭到意外或惡意刪除，請在金鑰保存庫上設定虛刪除和清除保護功能。 如需詳細資訊，請參閱 [Azure Key Vault 虛刪除概觀](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)。
 
 ## <a name="limitations"></a>限制
+
+> [!IMPORTANT]
+> Key Vault 不支援備份超過 500 個舊版的金鑰、密碼或憑證物件的功能。 嘗試備份金鑰、密碼或憑證物件可能會導致錯誤。 無法刪除舊版的金鑰、密碼或憑證。
 
 Key Vault 目前不提供在單一作業中備份整個金鑰保存庫的支援方式。 使用本文件所列命令對金鑰保存庫執行自動備份的任何嘗試可能會導致錯誤，且不會受到 Microsoft 或 Azure Key Vault 小組的支援。 
 

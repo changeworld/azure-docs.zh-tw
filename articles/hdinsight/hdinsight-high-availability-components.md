@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 4d0405df1863ee47374242ba4fba5b845711d3a1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1ff7932f0afb128f6e7568ecdae602c6471db0bd
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424521"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539712"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Azure HDInsight 支援的高可用性服務
 
 為了提供您分析元件的最佳可用性層級，HDInsight 是以獨特的架構開發而成，以確保高可用性 (HA) 的重要服務。 此架構的部分元件是由 Microsoft 所開發，以提供自動容錯移轉。 其他元件是部署來支援特定服務的標準 Apache 元件。 本文說明 HDInsight 中 HA 服務模型的架構、HDInsight 如何支援 HA 服務的容錯移轉，以及從其他服務中斷復原的最佳做法。
 
 > [!NOTE]
-> 本文包含詞彙 *從屬*的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
+> 本文包含詞彙 *從屬* 的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
 
 ## <a name="high-availability-infrastructure"></a>高可用性基礎結構
 
@@ -49,7 +49,7 @@ HDInsight 提供自訂的基礎結構，以確保四個主要服務具有自動�
 
 ## <a name="hdinsight-high-availability-services"></a>HDInsight 高可用性服務
 
-Microsoft 會在 HDInsight 叢集的下表中提供四種 Apache 服務的支援。 為了區別它們與 Apache 元件所支援的高可用性服務，它們稱為「 *HDINSIGHT HA 服務*」。
+Microsoft 會在 HDInsight 叢集的下表中提供四種 Apache 服務的支援。 為了區別它們與 Apache 元件所支援的高可用性服務，它們稱為「 *HDINSIGHT HA 服務* 」。
 
 | 服務 | 叢集節點 | 叢集類型 | 目的 |
 |---|---|---|---|
@@ -65,7 +65,7 @@ Microsoft 會在 HDInsight 叢集的下表中提供四種 Apache 服務的支援
 
 每個 HDInsight 叢集會分別有兩個作用中和待命模式的前端節點。 HDInsight HA 服務只會在前端節點上執行。 這些服務應該一律在作用中的前端節點上執行，並在待命前端節點上停止並進入維護模式。
 
-為了維護 HA 服務的正確狀態，並提供快速的容錯移轉，HDInsight 會利用 Apache ZooKeeper （這是分散式應用程式的協調服務）來進行主動前端節點選舉。 HDInsight 也會提供一些背景 JAVA 進程，以協調 HDInsight HA 服務的容錯移轉程式。 這些服務如下：主要容錯移轉控制器、從屬容錯移轉控制器、 *主要-ha 服務*和 *從屬 ha 服務*。
+為了維護 HA 服務的正確狀態，並提供快速的容錯移轉，HDInsight 會利用 Apache ZooKeeper （這是分散式應用程式的協調服務）來進行主動前端節點選舉。 HDInsight 也會提供一些背景 JAVA 進程，以協調 HDInsight HA 服務的容錯移轉程式。 這些服務如下：主要容錯移轉控制器、從屬容錯移轉控制器、 *主要-ha 服務* 和 *從屬 ha 服務* 。
 
 ### <a name="apache-zookeeper"></a>Apache ZooKeeper
 
@@ -78,7 +78,7 @@ Apache ZooKeeper 是適用于分散式應用程式的高效能協調服務。 �
 1. 更新主機設定檔。
 1. 重新開機 Ambari 代理程式。
 
-*從屬 ha 服務*負責停止 HDInsight ha 服務 (除了待命前端節點上的 Ambari 伺服器) 。
+*從屬 ha 服務* 負責停止 HDInsight ha 服務 (除了待命前端節點上的 Ambari 伺服器) 。
 
 ### <a name="master-failover-controller"></a>主要容錯移轉控制器
 
@@ -118,7 +118,7 @@ Apache 提供 HDFS NameNode、YARN ResourceManager 和 HBase Master 的高可用
 
 ### <a name="hadoop-distributed-file-system-hdfs-namenode"></a>Hadoop 分散式檔案系統 (HDFS) NameNode
 
-以 Apache Hadoop 2.0 或更高版本為基礎的 HDInsight 叢集可提供 NameNode 的高可用性。 前端節點上執行兩個 Namenode，其設定為自動容錯移轉。 Namenode 會使用 *ZKFailoverController* 與 Zookeeper 進行通訊，以選擇使用中/待命狀態。 *ZKFailoverController*會在兩個前端節點上執行，並以上述主要容錯移轉控制器的相同方式運作。
+以 Apache Hadoop 2.0 或更高版本為基礎的 HDInsight 叢集可提供 NameNode 的高可用性。 前端節點上執行兩個 Namenode，其設定為自動容錯移轉。 Namenode 會使用 *ZKFailoverController* 與 Zookeeper 進行通訊，以選擇使用中/待命狀態。 *ZKFailoverController* 會在兩個前端節點上執行，並以上述主要容錯移轉控制器的相同方式運作。
 
 第二個 Zookeeper 仲裁與第一個仲裁無關，因此使用中的 NameNode 可能無法在作用中的前端節點上執行。 當作用中的 NameNode 為「無作用」或「狀況不良」時，待命 NameNode 會贏得選舉並變成作用中狀態。
 
@@ -134,7 +134,7 @@ YARN ResourceManager 的高可用性與 NameNode 和其他 HDInsight HA 服務�
 
 HDInsight HBase 叢集支援 HBase Master 高可用性。 不同于在前端節點上執行的其他 HA 服務，HBase 主機會在三個 Zookeeper 節點上執行，其中一個是作用中的主機，而另二個是待命。 如同 NameNode，HBase Master 與 Apache Zookeeper 協調以進行領導人選舉，並在目前作用中的主機發生問題時進行自動容錯移轉。 每次只能有一個作用中的 HBase Master。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-- [HDInsight 中 Apache Hadoop 叢集的可用性和可靠性](hdinsight-high-availability-linux.md)
+- [HDInsight 中 Apache Hadoop 叢集的可用性和可靠性](./hdinsight-business-continuity.md)
 - [Azure HDInsight 虛擬網路架構](hdinsight-virtual-network-architecture.md)

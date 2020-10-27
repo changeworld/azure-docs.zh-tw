@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: 37fdf863d29015bba7015fcff1ae49a34aebd785
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2e59b35a30bd838eab2b05dcacf83d8b2c21236
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462270"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540392"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Azure HDInsight 上的 Apache Hive 和 HiveQL 是什麼？
 
@@ -34,7 +34,7 @@ HDInsight 提供數種已針對特定工作負載進行微調的叢集類型。 
 
 使用下表了解搭配使用 Hive 與 HDInsight 的各種方式︰
 
-| **使用此方法**，如果您想要... | ...**互動式**查詢 | ...**批次處理** | ...從此 **用戶端作業系統** |
+| **使用此方法** ，如果您想要... | ... **互動式** 查詢 | ... **批次處理** | ...從此 **用戶端作業系統** |
 |:--- |:---:|:---:|:--- |:--- |
 | [適用於 Visual Studio Code 的 HDInsight 工具](../hdinsight-for-vscode.md) |✔ |✔ | Linux、Unix、Mac OS X 或 Windows |
 | [HDInsight Tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Windows |
@@ -72,14 +72,14 @@ Hive 也支援自訂複雜或不規則結構化資料的 **序列化/反序列�
 
 您可以使用 Hive 建立兩種類型的資料表：
 
-* __內部__︰資料會儲存在 Hive 資料倉儲中。 資料倉儲位於叢集之預設儲存體上的 `/hive/warehouse/`。
+* __內部__ ︰資料會儲存在 Hive 資料倉儲中。 資料倉儲位於叢集之預設儲存體上的 `/hive/warehouse/`。
 
     符合下列其中一項條件時，請使用內部資料表：
 
     * 資料是暫存的。
     * 您想要 Hive 管理資料表和資料的生命週期。
 
-* __外部__︰資料會儲存在資料倉儲之外。 資料可以儲存在叢集可存取的任何儲存體上。
+* __外部__ ︰資料會儲存在資料倉儲之外。 資料可以儲存在叢集可存取的任何儲存體上。
 
     符合下列其中一項條件時，請使用外部資料表：
 
@@ -88,7 +88,7 @@ Hive 也支援自訂複雜或不規則結構化資料的 **序列化/反序列�
     * 您需要自訂位置，例如非預設儲存體帳戶。
     * Hive 以外的程式會管理資料格式、位置等等。
 
-如需詳細資訊，請參閱 [Hive 內部和外部資料表簡介](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/)部落格文章。
+如需詳細資訊，請參閱 [Hive 內部和外部資料表簡介](/archive/blogs/cindygross/hdinsight-hive-internal-and-external-tables-intro)部落格文章。
 
 ## <a name="user-defined-functions-udf"></a>使用者定義函數 (UDF)
 
@@ -100,7 +100,7 @@ Hive 也可透過 **使用者定義函數 (UDF)** 延伸。 UDF 可讓您在 Hiv
 
 * [搭配使用 C# 使用者定義函式與 Apache Hive](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [How to add a custom Apache Hive user-defined function to HDInsight](https://docs.microsoft.com/archive/blogs/bigdatasupport/how-to-add-custom-hive-udfs-to-hdinsight) (如何將自訂 Apache Hive 使用者定義函式新增至 HDInsight)
+* [How to add a custom Apache Hive user-defined function to HDInsight](/archive/blogs/bigdatasupport/how-to-add-custom-hive-udfs-to-hdinsight) (如何將自訂 Apache Hive 使用者定義函式新增至 HDInsight)
 
 * [可將日期/時間格式轉換成 Hive 時間戳記的範例 Apache Hive 使用者定義函式](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
@@ -137,15 +137,15 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 |CREATE EXTERNAL TABLE|在 Hive 中建立新的 **外部** 資料表。 外部資料表只會將資料表定義儲存在 Hive 中。 資料會留在原來的位置，並保持原始格式。|
 |資料列格式|告訴 Hive 如何設定資料格式。 在此情況下，每個記錄中的欄位會以空格隔開。|
 |儲存為 TEXTFILE 位置|告知 Hive (`example/data` 目錄) 儲存資料，並將其儲存為文字。 資料可以在目錄的一個檔案中，也可以分散在多個檔案中。|
-|SELECT|選取資料行 **t4** 包含 **[ERROR]** 值的所有資料列計數。 這個陳述式會傳回值 **3**，因為有三個資料列包含此值。|
+|SELECT|選取資料行 **t4** 包含 **[ERROR]** 值的所有資料列計數。 這個陳述式會傳回值 **3** ，因為有三個資料列包含此值。|
 |INPUT__FILE__NAME 例如 '% .log '|Hive 嘗試將架構套用至目錄中的所有檔案。 在此情況下，目錄會包含不符合架構的檔案。 若要防止結果中出現亂碼資料，此陳述式會告訴 Hive 我們只應該從檔名以 log 結尾的檔案傳回資料。|
 
 > [!NOTE]  
 > 當您預期會由外部來源來更新基礎資料時，請使用外部資料表。 例如，自動化的資料上傳程序，或 MapReduce 作業。
 >
-> 捨棄外部資料表並「不會」 **** 刪除資料，只會刪除資料表定義。
+> 捨棄外部資料表並「不會」  刪除資料，只會刪除資料表定義。
 
-若要建立**內部**資料表，而不是外部資料表，請使用下列 HiveQL：
+若要建立 **內部** 資料表，而不是外部資料表，請使用下列 HiveQL：
 
 ```hiveql
 CREATE TABLE IF NOT EXISTS errorLogs (
@@ -197,17 +197,17 @@ Azure Data Factory 可讓您使用 HDInsight 作為 Data Factory 管線的一部
 
 您可以使用 SQL Server Integration Services (SSIS) 來執行 Hive 作業。 適用於 SSIS 的 Azure Feature Pack 中提供下列元件可搭配 HDInsight 上的 Hive 工作使用。
 
-* [Azure HDInsight Hive 工作](https://docs.microsoft.com/sql/integration-services/control-flow/azure-hdinsight-hive-task)
+* [Azure HDInsight Hive 工作](/sql/integration-services/control-flow/azure-hdinsight-hive-task)
 
-* [Azure 訂用帳戶連線管理員](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-subscription-connection-manager)
+* [Azure 訂用帳戶連線管理員](/sql/integration-services/connection-manager/azure-subscription-connection-manager)
 
-如需詳細資訊，請參閱 [Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis) 文件。
+如需詳細資訊，請參閱 [Azure Feature Pack](/sql/integration-services/azure-feature-pack-for-integration-services-ssis) 文件。
 
 ### <a name="apache-oozie"></a>Apache Oozie
 
 Apache Oozie 是可管理 Hadoop 作業的工作流程和協調系統。 如需搭配使用 Oozie 與 Hive 的詳細資訊，請參閱[使用 Apache Oozie 來定義並執行工作流程](../hdinsight-use-oozie-linux-mac.md)文件。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 現在您已了解什麼是 Hive 以及如何搭配 HDInsight 中的 Hadoop 使用它，接著請使用下列連結探索 Azure HDInsight 的其他使用方式。
 

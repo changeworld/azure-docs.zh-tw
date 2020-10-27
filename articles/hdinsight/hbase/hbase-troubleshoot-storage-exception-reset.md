@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/08/2019
-ms.openlocfilehash: a7af6407191577112f936bfb9048985e85c868ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82fb0e0ae5722f972cdfe90581c96df2a61f0124
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75887218"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539950"
 ---
 # <a name="scenario-storage-exception-after-connection-reset-in-azure-hdinsight"></a>案例： Azure HDInsight 中的連線重設之後的儲存體例外狀況
 
@@ -32,7 +32,7 @@ ms.locfileid: "75887218"
 
 1. 從 Apache Ambari UI 中，重新開機使用中的 HMaster。 這可讓兩個待命 HMaster 中的其中一個變成作用中的，而新的使用中 HMaster 將會重載中繼資料資料表資訊。 因此，您將不會 `already-deleted` 在 HMASTER UI 中看到資料表。
 
-1. 您可以從像是 Cloud Explorer 或執行命令之類的 UI 工具找到孤立的 blob 檔案 `hdfs dfs -ls /xxxxxx/yyyyy` 。 執行 `hdfs dfs -rmr /xxxxx/yyyy` 以刪除該 blob。 例如： `hdfs dfs -rmr /hbase/data/default/ThatTable/ThatFile` 。
+1. 您可以從像是 Cloud Explorer 或執行命令之類的 UI 工具找到孤立的 blob 檔案 `hdfs dfs -ls /xxxxxx/yyyyy` 。 執行 `hdfs dfs -rmr /xxxxx/yyyy` 以刪除該 blob。 例如 `hdfs dfs -rmr /hbase/data/default/ThatTable/ThatFile`。
 
 現在您可以在 HBase 中建立具有相同名稱的新資料表。
 
@@ -44,4 +44,4 @@ ms.locfileid: "75887218"
 
 * 連線至 [@AzureSupport](https://twitter.com/azuresupport) - 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 將 Azure 社群連線到正確的資源：解答、支援和專家。
 
-* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。
+* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

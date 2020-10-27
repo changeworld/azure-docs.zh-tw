@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
-ms.openlocfilehash: b886f51bcb2bb7308c49c76563dcb70148bbc583
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed12c9629506fa8defb23b987fe672bb3b384418
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75887286"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540086"
 ---
 # <a name="scenario-apache-phoenix-connectivity-issues-in-azure-hdinsight"></a>案例： Apache Phoenix Azure HDInsight 中的連線能力問題
 
@@ -28,7 +28,7 @@ ms.locfileid: "75887286"
 
 ### <a name="resolution"></a>解決方案
 
-您可以遵循**HBase**  >  **快速連結**  >  **ZK (active) **  >  **Zookeeper 資訊**的連結，從 Ambari UI 識別作用中 Zookeeper 節點的 IP。 請視需要更正 IP。
+您可以遵循 **HBase**  >  **快速連結**  >  **ZK (active)**  >  **Zookeeper 資訊** 的連結，從 Ambari UI 識別作用中 Zookeeper 節點的 IP。 請視需要更正 IP。
 
 ---
 
@@ -50,7 +50,7 @@ ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,
 
 從 Apache Ambari UI 中，完成下列步驟，在所有 ZooKeeper 節點上重新開機 HMaster 服務：
 
-1. 從 hbase 的 [**摘要**] 區段中，移至 [ **hbase**  >  **Active HBase Master**]。
+1. 從 hbase 的 [ **摘要** ] 區段中，移至 [ **hbase**  >  **Active HBase Master** ]。
 
 1. 從 [ **元件** ] 區段中，重新開機 HBase Master 服務。
 
@@ -66,4 +66,4 @@ ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,
 
 * 連線至 [@AzureSupport](https://twitter.com/azuresupport) - 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 將 Azure 社群連線到正確的資源：解答、支援和專家。
 
-* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。
+* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

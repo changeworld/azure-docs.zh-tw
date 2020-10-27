@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: 527d2d8cb8086ed6b5e87417e2bc80dd52aa6e63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a47781bcdf60d863d6dcf77d70bc0ee496a51388
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82188407"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538794"
 ---
 # <a name="troubleshoot-resource-creation-failures-in-azure-hdinsight"></a>針對 Azure HDInsight 中的資源建立失敗進行疑難排解
 
@@ -25,7 +25,7 @@ ms.locfileid: "82188407"
 
 若要解決此問題，請使用 Azure 入口網站、CLI 或 PowerShell 來刪除不再需要的部署。
 
-如需詳細資訊，請參閱[解決資源配額的錯誤](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors)。
+如需詳細資訊，請參閱[解決資源配額的錯誤](../azure-resource-manager/templates/error-resource-quota.md)。
 
 ## <a name="error-the-maximum-node-exceeded-the-available-cores-in-this-region"></a>錯誤：節點數上限超過此區域可用的核心數目
 
@@ -33,15 +33,15 @@ ms.locfileid: "82188407"
 
 若要要求增加配額，請遵循下列步驟：
 
-1. 移至 [Azure 入口網站](https://portal.azure.com)，然後選取 [說明 **+ 支援**]。
+1. 移至 [Azure 入口網站](https://portal.azure.com)，然後選取 [說明 **+ 支援** ]。
 
 1. 選取 [新增支援要求]。
 
-1. 在 [**新增支援要求**] 頁面的 [**基本**] 索引標籤上，提供下列資訊：
+1. 在 [ **新增支援要求** ] 頁面的 [ **基本** ] 索引標籤上，提供下列資訊：
 
-   * **問題類型：** 選取 ** (配額) 的服務和訂 **用帳戶限制。
+   * **問題類型：** 選取 **(配額) 的服務和訂** 用帳戶限制。
    * **訂** 用帳戶：選取您要修改的訂用帳戶。
-   * **配額類型：** 選取 [ **HDInsight**]。
+   * **配額類型：** 選取 [ **HDInsight** ]。
 
 如需詳細資訊，請參閱[建立支援票證來增加核心](hdinsight-capacity-planning.md#quotas)。
 
@@ -53,4 +53,4 @@ ms.locfileid: "82188407"
 
 * 連線至 [@AzureSupport](https://twitter.com/azuresupport) - 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 將 Azure 社群連線到正確的資源：解答、支援和專家。
 
-* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。
+* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](../azure-portal/supportability/how-to-create-azure-support-request.md)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

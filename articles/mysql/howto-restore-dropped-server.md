@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/09/2020
-ms.openlocfilehash: 1de11a07bdbac153b6813915cfa52edfa6484aec
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 982747c1a7e093f84daeb63e75cfdf439d3fccf9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876903"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546716"
 ---
 # <a name="restore-a-dropped-azure-database-for-mysql-server"></a>還原已卸載的適用於 MySQL 的 Azure 資料庫伺服器
 
@@ -36,7 +36,7 @@ ms.locfileid: "91876903"
    
  3. 按兩下 [刪除 MySQL 伺服器] 事件，然後按一下 [JSON] 索引標籤，並記下 JSON 輸出中的 "resourceId" 和 "submissionTimestamp" 屬性。 ResourceId 的格式如下：/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TargetResourceGroup/providers/Microsoft.DBforMySQL/servers/deletedserver。
  
- 4. 移至 [ [建立伺服器 REST API] 頁面](https://docs.microsoft.com/rest/api/mysql/servers/create) ，然後按一下 [試用] 索引標籤（以綠色醒目提示），然後使用您的 Azure 帳戶登入。
+ 4. 移至 [ [建立伺服器 REST API] 頁面](/rest/api/mysql/servers/create) ，然後按一下 [試用] 索引標籤（以綠色醒目提示），然後使用您的 Azure 帳戶登入。
  
  5. 提供 resourceGroupName、serverName (已刪除的伺服器名稱) 、subscriptionId、衍生自步驟3中所捕捉的 resourceId 屬性，並預先填入 api 版本，如影像中所示。
  
@@ -63,6 +63,6 @@ ms.locfileid: "91876903"
    - **資源類型** = 適用於 MySQL 的 Azure 資料庫伺服器 (microsoft.dbformysql/伺服器)  
    - **Operation** = 更新 MySQL Server Create
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - 如果您嘗試在五天內還原伺服器，而且在正確遵循先前所討論的步驟之後仍會收到錯誤，請開啟支援事件以取得協助。 如果您嘗試在五天后還原已卸載的伺服器，則預期會發生錯誤，因為找不到備份檔案。 請勿在此案例中開啟支援票證。 如果已從系統中刪除備份，支援小組無法提供任何協助。 
 - 為了避免意外刪除伺服器，我們強烈建議使用 [資源鎖定](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/preventing-the-disaster-of-accidental-deletion-for-your-mysql/ba-p/825222)。

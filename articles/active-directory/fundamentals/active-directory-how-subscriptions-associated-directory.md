@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 747edfdb2a2709a842f767d2ace09662d139c827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ed68211d034a133b923b6a2eec20ad6f1a0ffe2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666427"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541021"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>將 Azure 訂用帳戶關聯或新增至您的 Azure Active Directory 租用戶
 
@@ -35,8 +35,6 @@ Azure 訂用帳戶與 Azure Active Directory (Azure AD) 有信任關係。 訂�
 > [!Important]
 > 當您將訂用帳戶與不同的目錄建立關聯時，已使用 [Azure 角色型存取控制](../../role-based-access-control/role-assignments-portal.md) 指派角色的使用者會失去其存取權。 傳統訂用帳戶管理員 (包括服務管理員和共同管理員) 也會失去存取權。
 >
-> 當訂用帳戶與不同目錄建立關聯時，也會從訂用帳戶移除原則指派。
->
 > 將 Azure Kubernetes Service (AKS) 叢集移至不同的訂用帳戶，或將叢集擁有的訂用帳戶移至新的租使用者，會導致叢集因為遺失角色指派和服務主體的許可權而遺失功能。 如需 AKS 的詳細資訊，請參閱 [Azure Kubernetes Service (AKS) ](../../aks/index.yml)。
 
 ## <a name="before-you-begin"></a>開始之前
@@ -50,7 +48,7 @@ Azure 訂用帳戶與 Azure Active Directory (Azure AD) 有信任關係。 訂�
   - 如果您有任何金鑰保存庫，將無法存取它們，而且您必須在關聯之後修正它們
   - 如果您的資源有任何受控識別，例如虛擬機器或 Logic Apps，則您必須在關聯之後重新啟用或重新建立它們
   - 如果您有已註冊的 Azure Stack，您必須在關聯之後重新註冊它
-  - 如需詳細資訊，請參閱將 [Azure 訂用帳戶轉移至不同的 Azure AD 目錄](../../role-based-access-control/transfer-subscription.md)。
+  - 如需詳細資訊，請參閱[將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄](../../role-based-access-control/transfer-subscription.md)。
 
 - 使用符合下列條件的帳戶登入：
 
@@ -65,11 +63,11 @@ Azure 訂用帳戶與 Azure Active Directory (Azure AD) 有信任關係。 訂�
 
 1. 在 [Azure 入口網站中](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，從 [訂閱] 頁面登入並選取您要使用的訂用帳戶。
 
-1. 選取 [ **變更目錄**]。
+1. 選取 [ **變更目錄** ]。
 
    ![已反白顯示 [變更目錄] 選項的 [訂用帳戶] 頁面](media/active-directory-how-subscriptions-associated-directory/change-directory-in-azure-subscriptions.png)
 
-1. 檢查出現的任何警告，然後選取 [ **變更**]。
+1. 檢查出現的任何警告，然後選取 [ **變更** ]。
 
    ![顯示要變更之目錄的 [變更目錄] 頁面](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
 
@@ -79,7 +77,7 @@ Azure 訂用帳戶與 Azure Active Directory (Azure AD) 有信任關係。 訂�
 
    ![包含範例資訊的目錄切換器頁面](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
-   所有專案可能需要數小時才能正確顯示。 如果似乎花費太長時間，請檢查 **全域訂閱篩選準則**。 請確定移動的訂用帳戶不會隱藏。 您可能需要登出 Azure 入口網站並重新登入，才能看到新的目錄。
+   所有專案可能需要數小時才能正確顯示。 如果似乎花費太長時間，請檢查 **全域訂閱篩選準則** 。 請確定移動的訂用帳戶不會隱藏。 您可能需要登出 Azure 入口網站並重新登入，才能看到新的目錄。
 
 變更訂用帳戶目錄是服務層級作業，因此不會影響訂用帳戶帳單擁有權。 若要刪除原始目錄，您必須將訂用帳戶帳單擁有權轉移給新的帳戶管理員。若要深入瞭解如何轉移帳單擁有權，請參閱將 [Azure 訂用帳戶的擁有權轉移給另一個帳戶](../../cost-management-billing/manage/billing-subscription-transfer.md)。
 
@@ -93,9 +91,9 @@ Azure 訂用帳戶與 Azure Active Directory (Azure AD) 有信任關係。 訂�
 
 - 如果您已使用此訂用帳戶註冊 Azure Stack，則必須重新註冊。 如需詳細資訊，請參閱 [向 Azure 註冊 Azure Stack](/azure-stack/operator/azure-stack-registration)。
 
-- 如需詳細資訊，請參閱將 [Azure 訂用帳戶轉移至不同的 Azure AD 目錄](../../role-based-access-control/transfer-subscription.md)。
+- 如需詳細資訊，請參閱[將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄](../../role-based-access-control/transfer-subscription.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 若要建立新的 Azure AD 租使用者，請參閱 [快速入門：在 Azure Active Directory 中建立新的租](active-directory-access-create-new-tenant.md)使用者。
 

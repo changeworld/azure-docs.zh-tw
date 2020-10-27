@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: b29e4411a104bbcd1d6d5b3320df47a742e2ca84
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: dc1da641ba628cef92250549c1c6b6482cf18b51
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461238"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547328"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用指令碼動作在 Azure HDInsight 上安全地管理 Python 環境
 
@@ -37,7 +37,7 @@ HDInsight 服務中有兩種類型的開放原始碼元件可用：
 > [!IMPORTANT]
 > 對隨 HDInsight 叢集提供的元件會有完整支援。 Microsoft 支援服務可協助隔離和解決這些元件的相關問題。
 >
-> 自訂元件則獲得商務上合理的支援，協助您進一步疑難排解問題。 Microsoft 支援服務可能可以解決問題，也可能要求您利用可用的開放原始碼技術管道，找到該技術的深度專業知識。 例如，有許多社群網站可供使用，例如：[適用於 HDInsight 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-hdinsight.html)，`https://stackoverflow.com`。 此外，Apache 專案在 `https://apache.org` 上也有專案網站。
+> 自訂元件則獲得商務上合理的支援，協助您進一步疑難排解問題。 Microsoft 支援服務可能可以解決問題，也可能要求您利用可用的開放原始碼技術管道，找到該技術的深度專業知識。 例如，有許多社群網站可供使用，例如：[適用於 HDInsight 的 Microsoft 問與答頁面](/answers/topics/azure-hdinsight.html)，`https://stackoverflow.com`。 此外，Apache 專案在 `https://apache.org` 上也有專案網站。
 
 ## <a name="understand-default-python-installation"></a>了解預設 Python 安裝
 

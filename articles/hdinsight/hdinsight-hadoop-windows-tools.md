@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
-ms.openlocfilehash: a663eb65bcd85a1b2e91e6f2ad90dc64b61273ce
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 6482b2ec07a0473ddbea2098d37c5d67c8b68704
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92484758"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539695"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>從 Windows 電腦在 HDInsight 上的 Apache Hadoop 生態系統中作業
 
@@ -31,17 +31,17 @@ Azure PowerShell 是一種指令碼環境，可讓您從 Windows 在 HDInsight �
 * [使用 PowerShell 執行 Apache Hive 查詢](hadoop/apache-hadoop-use-hive-powershell.md)。
 * [使用 PowerShell 管理](hdinsight-administer-use-powershell.md)叢集。
 
-請遵循步驟來[安裝和設定 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) 以取得最新的版本。
+請遵循步驟來[安裝和設定 Azure PowerShell](/powershell/azure/install-az-ps) 以取得最新的版本。
 
 ## <a name="utilities-you-can-run-in-a-browser"></a>您可以在瀏覽器中執行的公用程式
 
 下列公用程式具有可在瀏覽器中執行的 Web UI：
-* **[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)** 是一種互動式的命令列介面，可在您的瀏覽器中執行，並從 Azure 入口網站內執行。
+* **[Azure Cloud Shell](../cloud-shell/overview.md)** 是一種互動式的命令列介面，可在您的瀏覽器中執行，並從 Azure 入口網站內執行。
 
 * **[Ambari Web UI](hdinsight-hadoop-manage-ambari.md)** 是 Azure 入口網站中可用的管理和監視公用程式，可用來管理不同種類的作業，例如︰
     * [使用 Apache Ambari 搭配 REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
     * [Apache Ambari 中的 Apache Hive 檢視](hadoop/apache-hadoop-use-hive-ambari-view.md)
-    * [Apache Ambari 中的 Apache Tez 檢視](hdinsight-debug-ambari-tez-view.md)
+    * [Apache Ambari 中的 Apache Tez 檢視](./index.yml)
 
 ## <a name="data-lake-hadoop-tools-for-visual-studio"></a>Data Lake (Hadoop) Tools for Visual Studio
 
@@ -84,7 +84,7 @@ HDInsight 中的 Apache Spark 叢集包含可與 Jupyter Notebook 搭配使用�
 
 如果您遇到的情況必須使用僅適用于 Linux 的工具或技術，請考慮下列選項：
 
-* **Windows 10 上 Ubuntu 上的 Bash** 會在 Windows 上提供 Linux 子系統。 Bash 可讓您直接執行 Linux 公用程式，而不必維護專用的 Linux 安裝。 如需安裝步驟，請參閱 [Windows 10 適用於 Linux 的 Windows 子系統的安裝指南](https://docs.microsoft.com/windows/wsl/install-win10)。  其他 [Unix 殼層](https://www.gnu.org/software/bash/)也可正常運作。
+* **Windows 10 上 Ubuntu 上的 Bash** 會在 Windows 上提供 Linux 子系統。 Bash 可讓您直接執行 Linux 公用程式，而不必維護專用的 Linux 安裝。 如需安裝步驟，請參閱 [Windows 10 適用於 Linux 的 Windows 子系統的安裝指南](/windows/wsl/install-win10)。  其他 [Unix 殼層](https://www.gnu.org/software/bash/)也可正常運作。
 * **Docker for Windows** 可供存取許多以 Linux 為基礎的工具，並可以直接從 Windows 執行。 例如，您可以使用 Docker 直接從 Windows 執行 Hive 適用的 Beeline 用戶端。 您也可以使用 Docker 來執行本機 Jupyter Notebook，並從遠端連線到 HDInsight 上的 Spark。 [開始使用 Docker for Windows](https://docs.docker.com/docker-for-windows/)
 * **[MobaXTerm](https://mobaxterm.mobatek.net/)** 可讓您透過 SSH 連線，以圖形方式瀏覽叢集檔案系統。
 
@@ -92,7 +92,7 @@ HDInsight 中的 Apache Spark 叢集包含可與 Jupyter Notebook 搭配使用�
 
 Azure 命令列介面 (CLI) 是用來管理 Azure 資源的 Microsoft 跨平台命令列體驗。  如需詳細資訊，請參閱 [ (CLI) 的 Azure Command-Line 介面 ](/cli/azure/)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如果您不熟悉使用以 Linux 為基礎的叢集，請參閱下列文章︰
 * [設定 Apache Hadoop、Apache Kafka、Apache Spark 或其他叢集](hdinsight-hadoop-provision-linux-clusters.md)
