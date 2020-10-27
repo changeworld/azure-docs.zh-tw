@@ -4,12 +4,12 @@ description: 了解如何建立 Linux 的 Azure 原則客體設定原則。
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9ecf798a18f28c490d95b28c6ea8f02c6f22eee8
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 9d80ae44e5cc34ec3b3378f8ed4a68cc02464216
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893232"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542891"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何建立 Linux 的客體設定原則
 
@@ -17,16 +17,14 @@ ms.locfileid: "91893232"
  
 若要了解如何建立 Windows 的客體設定原則，請參閱[如何建立 Windows 的客體設定原則](./guest-configuration-create.md)頁面
 
-在審核 Linux 時，客體設定會使用 [Chef InSpec](https://www.inspec.io/)。 InSpec 設定檔會定義電腦所應處的條件。 如果設定的評估失敗，則會觸發 **auditIfNotExists** 的原則效果，並將該電腦視為**不符合規範**。
+在審核 Linux 時，客體設定會使用 [Chef InSpec](https://www.inspec.io/)。 InSpec 設定檔會定義電腦所應處的條件。 如果設定的評估失敗，則會觸發 **auditIfNotExists** 的原則效果，並將該電腦視為 **不符合規範** 。
 
 [Azure 原則客體設定](../concepts/guest-configuration.md)目前只會稽核電腦內的設定， 尚不提供補救電腦內的設定。
 
 使用下列動作來建立自己的設定，以驗證 Azure 或非 Azure 電腦的狀態。
 
 > [!IMPORTANT]
-> 具有客體設定的自訂原則是一項預覽功能。
->
-> 需要客體設定擴充功能，才能在 Azure 虛擬機器中執行稽核。 若要在所有 Linux 電腦上大規模部署擴充功能，請指派下列原則定義： `Deploy prerequisites to enable Guest Configuration Policy on Linux VMs`
+> 需要「來賓設定」擴充功能，才能在 Azure 虛擬機器中執行稽核。 若要在所有 Linux 電腦上大規模部署擴充功能，請指派下列原則定義： `Deploy prerequisites to enable Guest Configuration Policy on Linux VMs`
 
 ## <a name="install-the-powershell-module"></a>安裝 PowerShell 模組
 
@@ -61,7 +59,7 @@ ms.locfileid: "91893232"
 
 ### <a name="install-the-module"></a>安裝模組
 
-若要在 PowerShell 中安裝**GuestConfiguration**模組：
+若要在 PowerShell 中安裝 **GuestConfiguration** 模組：
 
 1. 從 PowerShell 提示字元中執行下列命令：
 
@@ -157,10 +155,10 @@ AuditFilePathExists -out ./Config
 
 `New-GuestConfigurationPackage` Cmdlet 會建立套件。 建立 Linux 內容時所使用的 `New-GuestConfigurationPackage` Cmdlet 參數：
 
-- **Name**：客體設定套件名稱。
-- **設定**：已編譯的設定文件完整路徑。
-- **路徑**：輸出資料夾路徑。 這是選擇性參數。 如果未指定，則會在目前的目錄中建立套件。
-- **ChefProfilePath**：InSpec 設定檔的完整路徑。 只有在建立用來稽核 Linux 的內容時，才支援此參數。
+- **Name** ：客體設定套件名稱。
+- **設定** ：已編譯的設定文件完整路徑。
+- **路徑** ：輸出資料夾路徑。 這是選擇性參數。 如果未指定，則會在目前的目錄中建立套件。
+- **ChefProfilePath** ：InSpec 設定檔的完整路徑。 只有在建立用來稽核 Linux 的內容時，才支援此參數。
 
 執行下列命令，以使用上一個步驟中指定的設定來建立套件：
 
@@ -177,9 +175,9 @@ New-GuestConfigurationPackage `
 
 `Test-GuestConfigurationPackage` Cmdlet 的參數：
 
-- **Name**：客體設定原則名稱。
-- **參數**：以雜湊表格式提供的原則參數。
-- **路徑**：客體設定套件的完整路徑。
+- **Name** ：客體設定原則名稱。
+- **參數** ：以雜湊表格式提供的原則參數。
+- **路徑** ：客體設定套件的完整路徑。
 
 執行下列命令來測試上一個步驟所建立的套件：
 
@@ -194,73 +192,23 @@ Test-GuestConfigurationPackage `
 New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefProfilePath './' | Test-GuestConfigurationPackage
 ```
 
-下一步是要將檔案發佈至 Azure Blob 儲存體。 下列指令碼包含可供用來自動執行這項工作的函式。 `publish` 函式中使用的命令需要 `Az.Storage` 模組。
+下一步是要將檔案發佈至 Azure Blob 儲存體。  此命令 `Publish-GuestConfigurationPackage` 需要 `Az.Storage` 模組。
 
 ```azurepowershell-interactive
-function publish {
-    param(
-    [Parameter(Mandatory=$true)]
-    $resourceGroup,
-    [Parameter(Mandatory=$true)]
-    $storageAccountName,
-    [Parameter(Mandatory=$true)]
-    $storageContainerName,
-    [Parameter(Mandatory=$true)]
-    $filePath,
-    [Parameter(Mandatory=$true)]
-    $blobName
-    )
-
-    # Get Storage Context
-    $Context = Get-AzStorageAccount -ResourceGroupName $resourceGroup `
-        -Name $storageAccountName | `
-        ForEach-Object { $_.Context }
-
-    # Upload file
-    $Blob = Set-AzStorageBlobContent -Context $Context `
-        -Container $storageContainerName `
-        -File $filePath `
-        -Blob $blobName `
-        -Force
-
-    # Get url with SAS token
-    $StartTime = (Get-Date)
-    $ExpiryTime = $StartTime.AddYears('3')  # THREE YEAR EXPIRATION
-    $SAS = New-AzStorageBlobSASToken -Context $Context `
-        -Container $storageContainerName `
-        -Blob $blobName `
-        -StartTime $StartTime `
-        -ExpiryTime $ExpiryTime `
-        -Permission rl `
-        -FullUri
-
-    # Output
-    return $SAS
-}
-
-# replace the $storageAccountName value below, it must be globally unique
-$resourceGroup        = 'policyfiles'
-$storageAccountName   = 'youraccountname'
-$storageContainerName = 'artifacts'
-
-$uri = publish `
-  -resourceGroup $resourceGroup `
-  -storageAccountName $storageAccountName `
-  -storageContainerName $storageContainerName `
-  -filePath ./AuditFilePathExists.zip `
-  -blobName 'AuditFilePathExists'
+Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName myResourceGroupName -StorageAccountName myStorageAccountName
 ```
+
 在完成建立並上傳客體設定自訂原則套件後，請建立客體設定原則定義。 `New-GuestConfigurationPolicy` Cmdlet 會採納自訂原則套件，並建立原則定義。
 
 `New-GuestConfigurationPolicy` Cmdlet 的參數：
 
-- **ContentUri**：客體設定內容套件的公用 http(s) URI。
-- **DisplayName**：原則顯示名稱。
-- **描述**：原則描述。
-- **參數**：以雜湊表格式提供的原則參數。
-- **版本**：原則版本。
-- **路徑**：建立原則定義的目的地路徑。
-- **平台**：客體設定原則和內容套件的目標平台 (Windows/Linux)。
+- **ContentUri** ：客體設定內容套件的公用 http(s) URI。
+- **DisplayName** ：原則顯示名稱。
+- **描述** ：原則描述。
+- **參數** ：以雜湊表格式提供的原則參數。
+- **版本** ：原則版本。
+- **路徑** ：建立原則定義的目的地路徑。
+- **平台** ：客體設定原則和內容套件的目標平台 (Windows/Linux)。
 - **Tag** 會將一或多個標籤篩選新增至原則定義
 - **Category** 會在原則定義中，設定類別中繼資料欄位
 
@@ -280,14 +228,12 @@ New-GuestConfigurationPolicy `
 下列檔案是由 `New-GuestConfigurationPolicy` 所建立：
 
 - **auditIfNotExists.json**
-- **deployIfNotExists.json**
-- **Initiative.json**
 
 Cmdlet 輸出會傳回物件，其中包含原則檔案的方案顯示名稱和路徑。
 
 最後，使用 `Publish-GuestConfigurationPolicy` Cmdlet 來發佈原則定義。 此 Cmdlet 只有 **Path** 參數，該參數會指向由 `New-GuestConfigurationPolicy` 所建立的 JSON 檔案位置。
 
-若要執行發佈命令，則需要在 Azure 中建立原則的存取權。 如需特定的授權需求，請參閱 [Azure 原則概觀](../overview.md)頁面。 最佳的內建角色為**資源原則參與者**。
+若要執行發佈命令，則需要在 Azure 中建立原則的存取權。 如需特定的授權需求，請參閱 [Azure 原則概觀](../overview.md)頁面。 最佳的內建角色為 **資源原則參與者** 。
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPolicy `
@@ -305,25 +251,7 @@ Publish-GuestConfigurationPolicy `
  | Publish-GuestConfigurationPolicy
  ```
 
-在 Azure 中建立原則之後，即可指派方案作為最後一步。 請參閱使用[入口網站](../assign-policy-portal.md)、[Azure CLI](../assign-policy-azurecli.md) 以及 [Azure PowerShell](../assign-policy-powershell.md) 來指派方案的方法。
-
-> [!IMPORTANT]
-> 客體設定原則必須**一律**使用結合 _AuditIfNotExists_ 與 _DeployIfNotExists_ 原則的方案來指派。 如果僅指派 _AuditIfNotExists_ 原則，則不會部署先決條件，而原則一律會顯示「0」部伺服器符合規範。
-
-若要搭配 _DeployIfNotExists_ 效果指派原則定義，則需要額外的存取層級。 若要授與最小權限，您可建立自訂角色定義來擴充**資源原則參與者**。 下列範例會建立名為**資源原則參與者 DINE** 的角色，並具有 _Microsoft.Authorization/roleAssignments/write_ 的額外權限。
-
-```azurepowershell-interactive
-$subscriptionid = '00000000-0000-0000-0000-000000000000'
-$role = Get-AzRoleDefinition "Resource Policy Contributor"
-$role.Id = $null
-$role.Name = "Resource Policy Contributor DINE"
-$role.Description = "Can assign Policies that require remediation."
-$role.Actions.Clear()
-$role.Actions.Add("Microsoft.Authorization/roleAssignments/write")
-$role.AssignableScopes.Clear()
-$role.AssignableScopes.Add("/subscriptions/$subscriptionid")
-New-AzRoleDefinition -Role $role
-```
+在 Azure 中建立原則後，最後一個步驟就是指派定義。 瞭解如何使用 [入口網站](../assign-policy-portal.md)、 [Azure CLI](../assign-policy-azurecli.md)和 [Azure PowerShell](../assign-policy-powershell.md)指派定義。
 
 ### <a name="using-parameters-in-custom-guest-configuration-policies"></a>在自訂客體設定原則中使用參數
 
@@ -341,7 +269,7 @@ describe file(attr_path) do
 end
 ```
 
-Cmdlet `New-GuestConfigurationPolicy` 和 `Test-GuestConfigurationPolicyPackage` 包含參數命名 **參數**。 此參數會使用雜湊表定義，包括每個參數的所有詳細資料，並為用來建立每個 Azure 原則定義的檔案建立所有必要區段。
+Cmdlet `New-GuestConfigurationPolicy` 和 `Test-GuestConfigurationPolicyPackage` 包含參數命名 **參數** 。 此參數會使用雜湊表定義，包括每個參數的所有詳細資料，並為用來建立每個 Azure 原則定義的檔案建立所有必要區段。
 
 下列範例會建立原則定義來審核檔案路徑，其中使用者會在原則指派時提供路徑。
 
@@ -391,8 +319,8 @@ Configuration AuditFilePathExists
 
 要將更新發行至原則定義，則需要注意兩個欄位。
 
-- **版本**：當執行 `New-GuestConfigurationPolicy` Cmdlet 時，您必須指定大於目前發佈的版本號碼。 屬性會更新客體設定指派的版本，讓代理程式能夠辨識更新的套件。
-- **contentHash**：`New-GuestConfigurationPolicy` Cmdlet 會自動更新此屬性。 此為 `New-GuestConfigurationPackage` 所建立套件的雜湊值。 針對您發佈的 `.zip` 檔案而言，此屬性必須是正確的。 如果只更新 **contentUri** 屬性，延伸模組就不會接受內容套件。
+- **版本** ：當執行 `New-GuestConfigurationPolicy` Cmdlet 時，您必須指定大於目前發佈的版本號碼。 屬性會更新客體設定指派的版本，讓代理程式能夠辨識更新的套件。
+- **contentHash** ：`New-GuestConfigurationPolicy` Cmdlet 會自動更新此屬性。 此為 `New-GuestConfigurationPackage` 所建立套件的雜湊值。 針對您發佈的 `.zip` 檔案而言，此屬性必須是正確的。 如果只更新 **contentUri** 屬性，延伸模組就不會接受內容套件。
 
 發行更新套件的最簡單方式就是重複本文中所述程序，並提供更新的版本號碼。 此程序可確保所有屬性都已正確更新。
 
@@ -436,8 +364,8 @@ Configuration AuditFilePathExists
 
 `Protect-GuestConfigurationPackage` Cmdlet 的參數：
 
-- **路徑**：客體設定套件的完整路徑。
-- **PublicGpgKeyPath**：公用 GPG 金鑰路徑。 只有在簽署 Linux 的內容時，才支援此參數。
+- **路徑** ：客體設定套件的完整路徑。
+- **PublicGpgKeyPath** ：公用 GPG 金鑰路徑。 只有在簽署 Linux 的內容時，才支援此參數。
 
 GitHub 上的[產生新的 GPG 金鑰](https://help.github.com/en/articles/generating-a-new-gpg-key)一文提供了建立 GPG 金鑰以搭配 Linux 機器使用的良好範例。
 

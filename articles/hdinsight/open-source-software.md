@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: f1e1518cce060374f14f1db7d5f4e594e3de8f85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe9ccc50d6196997863fbf228fbb76913a0d0330
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086257"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534374"
 ---
 # <a name="open-source-software-support-in-azure-hdinsight"></a>Azure HDInsight 中的開放原始碼軟體支援
 
-Microsoft Azure HDInsight 服務會使用以 Apache Hadoop 為中心的開放原始碼技術環境。 Microsoft Azure 可為開放原始碼技術提供一般層級的支援。 如需詳細資訊，請參閱 [Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)的**支援範圍**一節。 HDInsight 服務針對內建元件提供額外等級的支援。
+Microsoft Azure HDInsight 服務會使用以 Apache Hadoop 為中心的開放原始碼技術環境。 Microsoft Azure 可為開放原始碼技術提供一般層級的支援。 如需詳細資訊，請參閱 [Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)的 **支援範圍** 一節。 HDInsight 服務針對內建元件提供額外等級的支援。
 
 ## <a name="components"></a>元件
 
@@ -40,7 +40,7 @@ HDInsight 服務中有兩種類型的開放原始碼元件可供使用：
 > [!WARNING]  
 > 對隨 HDInsight 叢集提供的元件會有完整支援。 Microsoft 支援服務可協助隔離和解決這些元件的相關問題。
 >
-> 自訂元件則會獲得商務上合理的支援，以協助您進一步針對問題進行疑難排解。 「Microsoft 支援服務」可能能夠解決問題。 或是可能要求您參與可提供該技術深度專業知識的可用開放原始碼技術管道。 您可以使用許多社群網站。 範例為[適用於 HDInsight 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-hdinsight.html)和 [Stack Overflow](https://stackoverflow.com)。
+> 自訂元件則會獲得商務上合理的支援，以協助您進一步針對問題進行疑難排解。 「Microsoft 支援服務」可能能夠解決問題。 或是可能要求您參與可提供該技術深度專業知識的可用開放原始碼技術管道。 您可以使用許多社群網站。 範例為[適用於 HDInsight 的 Microsoft 問與答頁面](/answers/topics/azure-hdinsight.html)和 [Stack Overflow](https://stackoverflow.com)。
 >
 > 此外，Apache 專案在 [Apache 網站](https://apache.org)上也有專案網站。 例如 [Hadoop](https://hadoop.apache.org/)。
 

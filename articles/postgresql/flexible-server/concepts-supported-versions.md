@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/16/2020
-ms.openlocfilehash: 334eaa88ae927ae61ebb445343494cfdce570563
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: b139e2f14379e0cd52ca72c347d49bcb4512c473
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167486"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542075"
 ---
 # <a name="supported-postgresql-major-versions-in-azure-database-for-postgresql---flexible-server"></a>適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器中支援的于 postgresql 主要版本
 
@@ -30,7 +30,7 @@ ms.locfileid: "92167486"
 
 ## <a name="postgresql-version-10-and-older"></a>于 postgresql 第10版和更舊版本
 
-針對適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器，我們不支援于 postgresql 第10版和更舊版本。 如果您需要較舊的版本，請使用 [單一伺服器](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions) 部署選項。
+針對適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器，我們不支援于 postgresql 第10版和更舊版本。 如果您需要較舊的版本，請使用 [單一伺服器](../concepts-supported-versions.md) 部署選項。
 
 ## <a name="managing-upgrades"></a>管理升級
 

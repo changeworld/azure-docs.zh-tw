@@ -2,7 +2,7 @@
   href: index.yml
 - name: 在 IoT Edge 文件上切換至事件方格
   href: edge/pub-sub-events-webhook-local.md
-- name: 總覽
+- name: 概觀
   items:
     - name: 什麼是事件中樞？
       href: overview.md
@@ -248,13 +248,13 @@
           href: move-partner-namespaces-across-regions.md
     - name: 安全
       items:
-        - name: 設定私人端點
+        - name: 透過私人連結安全地發佈事件
           href: configure-private-endpoints.md
         - name: 設定 IP 防火牆
           href: configure-firewall.md
         - name: 使用 Azure Active Directory 保護 Webhook 的安全
           href: secure-webhook-delivery.md
-        - name: 使用受控識別進行事件傳遞
+        - name: 事件傳遞、受控識別和私人連結
           href: managed-service-identity.md
     - name: 疑難排解
       items:

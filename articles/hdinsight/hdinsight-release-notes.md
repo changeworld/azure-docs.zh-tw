@@ -8,16 +8,16 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 616e3e6c37faa3c085b8531173b557973e09fbf8
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0c14e5537385b7518fd08d9d3599993bc6d82f88
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974561"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535496"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight 版本資訊
 
-本文提供有關**最新** Azure HDInsight 版本更新的資訊。 如需有關較早版本的詳細資訊，請參閱 [HDInsight 版本資訊封存](hdinsight-release-notes-archive.md)。
+本文提供有關 **最新** Azure HDInsight 版本更新的資訊。 如需有關較早版本的詳細資訊，請參閱 [HDInsight 版本資訊封存](hdinsight-release-notes-archive.md)。
 
 ## <a name="summary"></a>摘要
 
@@ -32,11 +32,11 @@ Azure HDInsight 是最受企業客戶歡迎的其中一項服務，可供 Azure 
 HDInsight 現在支援在預覽版中建立叢集，而不使用公用 IP 和私人連結來存取叢集。 客戶可使用新的 advanced 網路設定來建立完全隔離的叢集，而不使用公用 IP，並使用自己的私人端點來存取叢集。 
 
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>移至 Azure 虛擬機器擴展集
-HDInsight 現在會使用 Azure 虛擬機器來佈建叢集。 從這個版本開始，服務會逐漸遷移至 [Azure 虛擬機器擴展集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)。 整個過程可能需要數個月的時間。 遷移您的區域和訂用帳戶之後，新建立的 HDInsight 叢集將會在沒有客戶動作的虛擬機器擴展集上執行。 不需要中斷變更。
+HDInsight 現在會使用 Azure 虛擬機器來佈建叢集。 從這個版本開始，服務會逐漸遷移至 [Azure 虛擬機器擴展集](../virtual-machine-scale-sets/overview.md)。 整個過程可能需要數個月的時間。 遷移您的區域和訂用帳戶之後，新建立的 HDInsight 叢集將會在沒有客戶動作的虛擬機器擴展集上執行。 不需要中斷變更。
 
 ## <a name="deprecation"></a>淘汰
 #### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>淘汰 HDInsight 3.6 ML 服務叢集
-HDInsight 3.6 ML 服務叢集類型將于12月 31 2020 日結束支援。 客戶之後將無法建立新的 3.6 ML 服務叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請在 [此](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#available-versions)檢查 HDInsight 版本和叢集類型的支援期限。
+HDInsight 3.6 ML 服務叢集類型將于12月 31 2020 日結束支援。 客戶之後將無法建立新的 3.6 ML 服務叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請在 [此](./hdinsight-component-versioning.md#available-versions)檢查 HDInsight 版本和叢集類型的支援期限。
 
 ## <a name="behavior-changes"></a>行為變更
 此版本沒有任何行為變更。
@@ -51,4 +51,4 @@ HDInsight today 不支援針對 Spark、Hadoop 和 ML 服務叢集類型自訂 Z
 HDInsight 會持續改善叢集的可靠性和效能。 
 
 ## <a name="component-version-change"></a>元件版本變更
-此發行版本沒有任何元件版本變更。 您可以在 [本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)檔中找到 hdinsight 4.0 和 hdinsight 3.6 目前的元件版本。
+此發行版本沒有任何元件版本變更。 您可以在 [本](./hdinsight-component-versioning.md)檔中找到 hdinsight 4.0 和 hdinsight 3.6 目前的元件版本。

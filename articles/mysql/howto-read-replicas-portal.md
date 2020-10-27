@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: 6b097aa0adb39e1576e8771bbae8707348351a82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63ce078cc80b856fe09f3d2bbad1c6e96615eae8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91740117"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546801"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>如何使用 Azure 入口網站在適用於 MySQL 的 Azure 資料庫中建立與管理讀取複本
 
@@ -55,7 +55,7 @@ ms.locfileid: "91740117"
 7. 選取 [確定] 來確認建立複本。
 
 > [!NOTE]
-> 系統會以與主要伺服器相同的伺服器設定建立讀取複本。 複本伺服器設定在建立後可以變更。 複本伺服器一律會建立在與來源伺服器相同的資源群組和相同的訂用帳戶中。 如果您想要將複本伺服器建立到不同的資源群組或不同的訂閱，您可以在建立後[移動複本伺服器](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription)。 建議將複本伺服器的設定保留為等於或大於來源的值，以確保複本能夠跟上主伺服器。
+> 系統會以與主要伺服器相同的伺服器設定建立讀取複本。 複本伺服器設定在建立後可以變更。 複本伺服器一律會建立在與來源伺服器相同的資源群組和相同的訂用帳戶中。 如果您想要將複本伺服器建立到不同的資源群組或不同的訂閱，您可以在建立後[移動複本伺服器](../azure-resource-manager/management/move-resource-group-and-subscription.md)。 建議將複本伺服器的設定保留為等於或大於來源的值，以確保複本能夠跟上主伺服器。
 
 建立複本伺服器後，可從 [複寫] 刀鋒視窗檢視該伺服器。
 

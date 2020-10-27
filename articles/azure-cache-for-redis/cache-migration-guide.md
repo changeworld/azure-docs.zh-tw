@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: yegu
-ms.openlocfilehash: 4b196818ade1e703e24ed1ced6ebac1b44d0b083
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5de4e1b465cfc3ced59f8fe34a7f397324b4a225
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372063"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537621"
 ---
 # <a name="migrate-to-azure-cache-for-redis"></a>遷移至 Azure Cache for Redis
 本文說明一些方法，可將內部部署或其他雲端服務中執行的現有 Redis 快取遷移至 Azure Cache for Redis。
@@ -19,8 +19,8 @@ ms.locfileid: "91372063"
 ## <a name="migration-scenarios"></a>移轉案例
 開放原始碼 Redis 可以在許多計算環境中執行。 常見範例包括：
 
-- 在私人資料中心內執行**的內部部署**Redis 快取。
-- 以**雲端為基礎的 vm** -Redis 在 Azure vm 上執行的快取、AWS EC2 等等。
+- 在私人資料中心內執行 **的內部部署** Redis 快取。
+- 以 **雲端為基礎的 vm** -Redis 在 Azure vm 上執行的快取、AWS EC2 等等。
 - **裝載服務** 管理的 Redis 服務，例如 AWS ElastiCache。
 - **不同區域** -位於另一個 Azure 區域的 Redis 快取。
 
@@ -64,12 +64,12 @@ ms.locfileid: "91372063"
 2. 儲存現有 Redis 快取的快照。 您可以 [設定 Redis 定期儲存快照](https://redis.io/topics/persistence) 集，或使用 [save](https://redis.io/commands/save) 或 [BGSAVE](https://redis.io/commands/bgsave) 命令手動執行進程。 RDB 檔案預設會命名為 "dump '，而且會位於 *redis* 設定檔中指定的路徑。
 
     > [!NOTE]
-    > 如果您要在 Azure Cache for Redis 中遷移資料，請參閱 [這些指示以瞭解如何匯出 RDB](cache-how-to-import-export-data.md) 檔案，或改用 [PowerShell export Cmdlet](https://docs.microsoft.com/powershell/module/azurerm.rediscache/export-azurermrediscache?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.4.0) 。
+    > 如果您要在 Azure Cache for Redis 中遷移資料，請參閱 [這些指示以瞭解如何匯出 RDB](cache-how-to-import-export-data.md) 檔案，或改用 [PowerShell export Cmdlet](/powershell/module/azurerm.rediscache/export-azurermrediscache?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.4.0) 。
     >
 
 3. 將 RDB 檔案複製到新快取所在區域中的 Azure 儲存體帳戶。 您可以針對這項工作使用 AzCopy。
 
-4. 使用這些匯 [入指示](cache-how-to-import-export-data.md) 或 [PowerShell 匯入 CMDLET](https://docs.microsoft.com/powershell/module/azurerm.rediscache/import-azurermrediscache?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.4.0)，將 RDB 檔案匯入至新的快取。
+4. 使用這些匯 [入指示](cache-how-to-import-export-data.md) 或 [PowerShell 匯入 CMDLET](/powershell/module/azurerm.rediscache/import-azurermrediscache?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.4.0)，將 RDB 檔案匯入至新的快取。
 
 5. 更新您的應用程式以使用新的快取實例。
 
@@ -111,7 +111,7 @@ ms.locfileid: "91372063"
 
 4. 使用上述的開放原始碼工具之類的應用程式，自動將來源快取的資料複製到目標。 請記住，複製程式可能需要一段時間才能完成，視您的資料集大小而定。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 深入瞭解 Azure Cache for Redis 功能。
 
 * [Azure Cache for Redis 服務層級](cache-overview.md#service-tiers)

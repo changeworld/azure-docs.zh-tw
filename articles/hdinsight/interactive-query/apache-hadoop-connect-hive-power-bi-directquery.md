@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
-ms.openlocfilehash: bc84c8ef27b86244a7f467109525bdcb14bd030b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92e94c911acb701b1ccf8e39636d152cc5bfb575
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087532"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534799"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>使用 HDInsight 中的直接查詢，以 Microsoft Power BI 視覺化 Interactive Query Apache Hive 資料
 
@@ -21,13 +21,13 @@ ms.locfileid: "86087532"
 
 ![HDInsight Power BI 地圖報告](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
 
-您可以利用 [Apache Hive ODBC 驅動程式](../hadoop/apache-hadoop-connect-hive-power-bi.md)，透過 Power BI Desktop 中的一般 ODBC 連接器執行匯入作業。 不過，對於 BI 工作負載則不建議使用此方式，因為 Hive 查詢引擎具有非互動式的本質。 為發揮其效能，[HDInsight 互動式查詢連接器](./apache-hadoop-connect-hive-power-bi-directquery.md)和 [HDInsight Apache Spark 連接器](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect)會是較好的選擇。
+您可以利用 [Apache Hive ODBC 驅動程式](../hadoop/apache-hadoop-connect-hive-power-bi.md)，透過 Power BI Desktop 中的一般 ODBC 連接器執行匯入作業。 不過，對於 BI 工作負載則不建議使用此方式，因為 Hive 查詢引擎具有非互動式的本質。 為發揮其效能，[HDInsight 互動式查詢連接器](./apache-hadoop-connect-hive-power-bi-directquery.md)和 [HDInsight Apache Spark 連接器](/power-bi/spark-on-hdinsight-with-direct-connect)會是較好的選擇。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 在閱讀本文之前，您必須有下列各項：
 
-* **HDInsight**叢集。 此叢集可以是含有 Apache Hive 的 HDInsight 叢集或新發行的互動式查詢叢集。 如需建立叢集，請參閱[建立叢集](../hadoop/apache-hadoop-linux-tutorial-get-started.md)。
-* **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)**。 您可以從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=45331)下載一份。
+* **HDInsight** 叢集。 此叢集可以是含有 Apache Hive 的 HDInsight 叢集或新發行的互動式查詢叢集。 如需建立叢集，請參閱[建立叢集](../hadoop/apache-hadoop-linux-tutorial-get-started.md)。
+* **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)** 。 您可以從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=45331)下載一份。
 
 ## <a name="load-data-from-hdinsight"></a>從 HDInsight 載入資料
 
@@ -35,29 +35,29 @@ ms.locfileid: "86087532"
 
 1. 啟動 Power BI Desktop。
 
-2. 從功能表列，流覽至**Home**  >  **Get Data**  >  **更多 ...**
+2. 從功能表列，流覽至 **Home**  >  **Get Data**  >  **更多 ...**
 
     ![HDInsight Power BI 取得資料](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
 
 3. 在 [ **取得資料** ] 視窗中，于 [搜尋] 方塊中輸入 **hdinsight** 。  
 
-4. 從搜尋結果中選取 [ **HDInsight Interactive Query**]，然後選取 **[連線]**。  如果您沒有看到 **HDInsight Interactive Query**，您必須將 Power BI Desktop 更新為最新版本。
+4. 從搜尋結果中選取 [ **HDInsight Interactive Query** ]，然後選取 **[連線]** 。  如果您沒有看到 **HDInsight Interactive Query** ，您必須將 Power BI Desktop 更新為最新版本。
 
 5. 選取 [ **繼續** ] 關閉 [ **連接到協力廠商服務** ] 對話方塊。
 
-6. 在 [ **HDInsight Interactive Query** ] 視窗中，輸入下列資訊，然後選取 **[確定]**：
+6. 在 [ **HDInsight Interactive Query** ] 視窗中，輸入下列資訊，然後選取 **[確定]** ：
 
     |屬性 | 值 |
     |---|---|
-    |伺服器 |輸入叢集名稱，例如 *myiqcluster.azurehdinsight.net*。|
+    |伺服器 |輸入叢集名稱，例如 *myiqcluster.azurehdinsight.net* 。|
     |資料庫 |請輸入本文的 **預設值** 。|
     |資料連線模式 |選取此文章的 **DirectQuery** 。|
 
     ![HDInsight 互動式查詢 Power BI DirectQuery 連線](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png)
 
-7. 輸入 HTTP 認證，然後選取 **[連接]**。 預設的使用者名稱為 **admin**。
+7. 輸入 HTTP 認證，然後選取 **[連接]** 。 預設的使用者名稱為 **admin** 。
 
-8. 從左窗格的 [導覽 **器** ] 視窗中，選取 [ **hivesampletale**]。
+8. 從左窗格的 [導覽 **器** ] 視窗中，選取 [ **hivesampletale** ]。
 
 9. 從主視窗中選取 [ **載入** ]。
 
@@ -67,15 +67,15 @@ ms.locfileid: "86087532"
 
 從上一個程序繼續進行。
 
-1. 從 [視覺效果] 窗格中，選取 [ **地圖**]，地球圖示。 然後，會在主視窗中顯示泛型對應。
+1. 從 [視覺效果] 窗格中，選取 [ **地圖** ]，地球圖示。 然後，會在主視窗中顯示泛型對應。
 
     ![HDInsight Power BI 自訂報告](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-customize.png)
 
-2. 從 [欄位] 窗格選取 **country** 和 **devicemake**。 在幾分鐘之後，會在主視窗中顯示具有資料點的世界地圖。
+2. 從 [欄位] 窗格選取 **country** 和 **devicemake** 。 在幾分鐘之後，會在主視窗中顯示具有資料點的世界地圖。
 
 3. 展開地圖。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 在本文中，您已了解如何使用 Microsoft Power BI 將 HDInsight 中的資料視覺化。  如需資料視覺效果的詳細資訊，請參閱下列文章：
 
 * [使用 Azure HDInsight 中的 ODBC，以 Microsoft Power BI 視覺化 Apache Hive 資料](../hadoop/apache-hadoop-connect-hive-power-bi.md)。 

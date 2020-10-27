@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 05/27/2020
-ms.openlocfilehash: 5495e6c6392ba2e824a0a70717bd19747db9b754
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be33c968499052b2b254754f37e5163012bcadd0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88754951"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547583"
 ---
 # <a name="connect-to-apache-beeline-on-hdinsight-or-install-it-locally"></a>連線到 Apache Beeline on HDInsight 或將其安裝在本機
 
@@ -104,7 +104,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 ## <a name="install-beeline-client"></a>安裝 Beeline 用戶端
 
-雖然 Beeline 包含在前端節點上，但是您可能會想要在本機進行安裝。  本機電腦的安裝步驟是以 [Windows 子系統 Linux 版](https://docs.microsoft.com/windows/wsl/install-win10)為基礎。
+雖然 Beeline 包含在前端節點上，但是您可能會想要在本機進行安裝。  本機電腦的安裝步驟是以 [Windows 子系統 Linux 版](/windows/wsl/install-win10)為基礎。
 
 1. 更新套件清單。 在 bash shell 中輸入下列命令：
 
@@ -128,7 +128,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
         export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
         ```
 
-        然後按下 **Ctrl + X**、 **Y**，然後輸入。
+        然後按下 **Ctrl + X** 、 **Y** ，然後輸入。
 
 1. 下載 Hadoop 和 Beeline 封存，輸入下列命令：
 
@@ -144,7 +144,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
     tar -xvzf apache-hive-1.2.1-bin.tar.gz
     ```
 
-1. 進一步修改 >.bashrc 檔。 您將需要識別封存解壓縮的目的地路徑。 如果使用 [Windows 子系統 Linux 版](https://docs.microsoft.com/windows/wsl/install-win10)，且您完全遵循步驟，則路徑會是 `/mnt/c/Users/user/` ，其中 `user` 是您的使用者名稱。
+1. 進一步修改 >.bashrc 檔。 您將需要識別封存解壓縮的目的地路徑。 如果使用 [Windows 子系統 Linux 版](/windows/wsl/install-win10)，且您完全遵循步驟，則路徑會是 `/mnt/c/Users/user/` ，其中 `user` 是您的使用者名稱。
 
     1. 開啟檔案： `nano ~/.bashrc`
 
@@ -156,13 +156,13 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
         PATH=$PATH:$HIVE_HOME/bin
         ```
 
-    1. 然後按下 **Ctrl + X**、 **Y**，然後輸入。
+    1. 然後按下 **Ctrl + X** 、 **Y** ，然後輸入。
 
 1. 關閉並重新開啟 bash 會話。
 
 1. 測試您的連接。 使用上述的連接格式，透過 [公用或私人端點](#over-public-or-private-endpoints)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * 如需搭配 Apache Hive 使用 Beeline 用戶端的範例，請參閱搭配 [使用 Apache Beeline 與 Apache Hive](apache-hadoop-use-hive-beeline.md)
 * 如需 HDInsight 中 Hive 的一般資訊，請參閱 [在 hdinsight 上搭配使用 Apache Hive 與 Apache Hadoop](hdinsight-use-hive.md)

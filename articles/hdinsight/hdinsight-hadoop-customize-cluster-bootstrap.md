@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
-ms.openlocfilehash: cd81a15853f1c3b0eb1b1cdd40cc4c7ebf713308
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 246c5600da3b554ba65872780f0719a58f3f4be2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490300"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547481"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>使用 Bootstrap 自訂 HDInsight 叢集
 
@@ -48,14 +48,14 @@ ms.locfileid: "92490300"
 
 ## <a name="prerequisites"></a>必要條件
 
-* 如果使用 PowerShell，您將需要 [Az 模組](https://docs.microsoft.com/powershell/azure/) \(部分機器翻譯\)。
+* 如果使用 PowerShell，您將需要 [Az 模組](/powershell/azure/) \(部分機器翻譯\)。
 
 ## <a name="use-azure-powershell"></a>使用 Azure PowerShell
 
 下列 PowerShell 程式碼會自訂 [Apache Hive](https://hive.apache.org/) 組態：
 
 > [!IMPORTANT]  
-> 參數 `Spark2Defaults` 可能需要與 [AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue)搭配使用。 您可以將空值傳遞給參數，如下列程式碼範例所示。
+> 參數 `Spark2Defaults` 可能需要與 [AzHDInsightConfigValue](/powershell/module/az.hdinsight/add-azhdinsightconfigvalue)搭配使用。 您可以將空值傳遞給參數，如下列程式碼範例所示。
 
 ```powershell
 # hive-site.xml configuration
@@ -86,9 +86,9 @@ New-AzHDInsightCluster `
 **若要確認變更：**
 
 1. 導覽至 `https://CLUSTERNAME.azurehdinsight.net/` `CLUSTERNAME` 您叢集的名稱。
-1. 從左側功能表，流覽至**Hive 配置**  >  **Configs**  >  **Advanced**。
-1. 展開 [ **Advanced hive-site**]。
-1. 找出 **中繼存放區** ，並確認此值為 **90 年代**。
+1. 從左側功能表，流覽至 **Hive 配置**  >  **Configs**  >  **Advanced** 。
+1. 展開 [ **Advanced hive-site** ]。
+1. 找出 **中繼存放區** ，並確認此值為 **90 年代** 。
 
 以下是更多自訂其他組態檔的範例：
 
@@ -143,7 +143,7 @@ Resource Manager 範本中，您可以使用啟動程序︰
 * [在 HDInsight 中建立 Apache Hadoop 叢集](hdinsight-hadoop-provision-linux-clusters.md)提供如何使用其他自訂選項建立 HDInsight 叢集的指示。
 * [開發 HDInsight 的腳本動作腳本](hdinsight-hadoop-script-actions-linux.md)
 * [在 HDInsight 叢集上安裝和使用 Apache Spark](spark/apache-spark-jupyter-spark-sql-use-portal.md)
-* [在 HDInsight 叢集上安裝和使用 Apache Giraph](hdinsight-hadoop-giraph-install.md)。
+* [在 HDInsight 叢集上安裝和使用 Apache Giraph](./hdinsight-hadoop-hue-linux.md)。
 
 ## <a name="appendix-powershell-sample"></a>附錄：PowerShell 範例
 

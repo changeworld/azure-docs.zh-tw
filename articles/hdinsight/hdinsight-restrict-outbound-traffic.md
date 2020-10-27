@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: bc90389e9f600f1411699700989e38c78bee99cc
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: dc6412a85beba67551e7683c8127a65730f9218f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103334"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535462"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>使用防火牆設定 Azure HDInsight 叢集的輸出網路流量
 
@@ -23,7 +23,7 @@ ms.locfileid: "92103334"
 
 HDInsight 叢集通常會部署在虛擬網路中。 叢集在該虛擬網路外部的服務上具有相依性。
 
-無法透過防火牆傳送輸入管理流量。 您可以 [針對輸入流量](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags)使用 NSG 服務標籤，如下所述。 
+無法透過防火牆傳送輸入管理流量。 您可以 [針對輸入流量](./hdinsight-service-tags.md)使用 NSG 服務標籤，如下所述。 
 
 HDInsight 輸出流量相依性幾乎完全是以 FQDN 進行定義。 其後面沒有靜態 IP 位址。 缺少靜態位址表示網路安全性群組 (NSG) 無法鎖定來自叢集的輸出流量。 IP 位址的變更通常會有足夠的變更，無法根據目前的名稱解析和使用來設定規則。
 
@@ -45,13 +45,13 @@ HDInsight 輸出流量相依性幾乎完全是以 FQDN 進行定義。 其後面
 
 ### <a name="create-a-new-firewall-for-your-cluster"></a>為叢集建立新的防火牆
 
-使用＜**部署防火牆**＞中的步驟，建立名為 **Test-FW01** 的防火牆，請見[教學課程：使用 Azure 入口網站部署和設定 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall)。
+使用＜ **部署防火牆** ＞中的步驟，建立名為 **Test-FW01** 的防火牆，請見 [教學課程：使用 Azure 入口網站部署和設定 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall)。
 
 ### <a name="configure-the-firewall-with-application-rules"></a>使用應用程式規則設定防火牆
 
 建立應用程式規則集合，讓叢集能夠傳送和接收重要通訊。
 
-1. 從 Azure 入口網站選取新的防火牆 **TEST-FW01**。
+1. 從 Azure 入口網站選取新的防火牆 **TEST-FW01** 。
 
 1. 瀏覽至 [設定] > [規則] > [應用程式規則集合] > [+ 新增應用程式規則集合]。
 
@@ -75,7 +75,7 @@ HDInsight 輸出流量相依性幾乎完全是以 FQDN 進行定義。 其後面
 
     **目標 FQDN 區段**
 
-    | 名稱 | 來源位址 | 通訊協定：埠 | 目標 FQDN | 注意 |
+    | 名稱 | 來源位址 | 通訊協定:連接埠 | 目標 FQDN | 注意 |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | 允許 Windows 登入活動 |
     | Rule_3 | * | https:443 | login.microsoftonline.com | 允許 Windows 登入活動 |
@@ -116,13 +116,13 @@ HDInsight 輸出流量相依性幾乎完全是以 FQDN 進行定義。 其後面
 
 建立包含下列項目的路由表：
 
-* 來自 [健康情況和管理服務](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions) 的所有 IP 位址，下一個躍點類型為 [ **網際網路**]。 其中應該包含四個一般區域的 Ip，以及適用于您特定區域的2個 ip。 只有在 ResourceProviderConnection 設定為 [ *輸入*] 時，才需要此規則。 如果 ResourceProviderConnection 設定為 *輸出* ，則 UDR 中不需要這些 ip。 
+* 來自 [健康情況和管理服務](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions) 的所有 IP 位址，下一個躍點類型為 [ **網際網路** ]。 其中應該包含四個一般區域的 Ip，以及適用于您特定區域的2個 ip。 只有在 ResourceProviderConnection 設定為 [ *輸入* ] 時，才需要此規則。 如果 ResourceProviderConnection 設定為 *輸出* ，則 UDR 中不需要這些 ip。 
 
 * IP 位址 0.0.0.0/0 的其中一個虛擬設備路由，並且以 Azure 防火牆私人IP 位址作為下一個躍點。
 
 例如，如果叢集建立在美國的「美國東部」區域中，請使用使用下列步驟來為該叢集設定路由表：
 
-1. 選取您的 Azure 防火牆 **Test-FW01**。 複製 [概觀] 頁面上所列的**私人 IP 位址**。 在此範例中，我們將使用**範例位址 10.0.2.4**。
+1. 選取您的 Azure 防火牆 **Test-FW01** 。 複製 [概觀] 頁面上所列的 **私人 IP 位址** 。 在此範例中，我們將使用 **範例位址 10.0.2.4** 。
 
 1. 然後瀏覽至 [所有服務] > [網路] > [路由表] 和 [建立路由表]。
 
@@ -144,7 +144,7 @@ HDInsight 輸出流量相依性幾乎完全是以 FQDN 進行定義。 其後面
 
 1. 選取 [+ 關聯]。
 
-1. 在 [關聯子網路] 畫面上，選取其中已建立您叢集的虛擬網路。 以及用於 HDInsight 叢集的**子網路**。
+1. 在 [關聯子網路] 畫面上，選取其中已建立您叢集的虛擬網路。 以及用於 HDInsight 叢集的 **子網路** 。
 
 1. 選取 [確定]。
 
@@ -160,7 +160,7 @@ HDInsight 輸出流量相依性幾乎完全是以 FQDN 進行定義。 其後面
 
 ## <a name="logging-and-scale"></a>記錄與級別
 
-Azure 防火牆可以將記錄傳送到幾個不同的儲存系統。 如需為防火牆設定記錄的指示，請遵循[教學課程：監視 Azure 防火牆記錄和計量](../firewall/tutorial-diagnostics.md)。
+Azure 防火牆可以將記錄傳送到幾個不同的儲存系統。 如需為防火牆設定記錄的指示，請遵循[教學課程：監視 Azure 防火牆記錄和計量](../firewall/firewall-diagnostics.md)。
 
 完成記錄設定後，如果您正在使用 Log Analytics，您可以使用下列查詢來檢視已封鎖的流量：
 

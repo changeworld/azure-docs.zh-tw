@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.openlocfilehash: 26dfe8d134f9f38d8272895583ba2eff614d78e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcc0faa8fdbd61ab3e3e0886256f7c796e5a98e2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308379"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534680"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>將 Azure HDInsight 3.6 Hive 工作負載遷移至 HDInsight 4.0
 
@@ -25,7 +25,7 @@ ms.locfileid: "91308379"
 * 跨 HDInsight 版本保存 Hive 安全性原則
 * 從 HDInsight 3.6 到 HDInsight 4.0 的查詢執行和調試
 
-Hive 的其中一個優點是能夠將中繼資料匯出至外部資料庫， (稱為 Hive 中繼存放區) 。 **Hive 中繼存放區**負責儲存資料表統計資料，包括資料表儲存位置、資料行名稱和資料表索引資訊。 HDInsight 3.6 和 HDInsight 4.0 需要不同的中繼存放區架構，而且無法共用單一中繼存放區。 安全地升級 Hive 中繼存放區的建議方式是在目前的生產環境中升級複本，而不是原始版本。 本檔需要原始和新的叢集才能存取相同的儲存體帳戶。 因此，它不涵蓋將資料移轉到另一個區域。
+Hive 的其中一個優點是能夠將中繼資料匯出至外部資料庫， (稱為 Hive 中繼存放區) 。 **Hive 中繼存放區** 負責儲存資料表統計資料，包括資料表儲存位置、資料行名稱和資料表索引資訊。 HDInsight 3.6 和 HDInsight 4.0 需要不同的中繼存放區架構，而且無法共用單一中繼存放區。 安全地升級 Hive 中繼存放區的建議方式是在目前的生產環境中升級複本，而不是原始版本。 本檔需要原始和新的叢集才能存取相同的儲存體帳戶。 因此，它不涵蓋將資料移轉到另一個區域。
 
 ## <a name="migrate-from-external-metastore"></a>從外部中繼存放區遷移
 
@@ -39,7 +39,7 @@ HDInsight 3.6 和 HDInsight 4.0 ACID 資料表會以不同的方式來瞭解 ACI
 ### <a name="3-upgrade-metastore-schema"></a>3. 升級中繼存放區架構
 中繼存放區 **複製** 完成之後，請在現有 HDInsight 3.6 叢集上的 [腳本動作](../hdinsight-hadoop-customize-cluster-linux.md) 中執行架構升級腳本，以將新的中繼存放區升級為 Hive 3 架構。  (此步驟不需要將新中繼存放區連線到叢集。 ) 這可讓資料庫附加為 HDInsight 4.0 中繼存放區。
 
-使用下表中的值。 將取代為 `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` Hive 中繼存放區 **複製**的適當值，並以空格分隔。 指定 SQL server 名稱時，請勿包含 ". database.windows.net"。
+使用下表中的值。 將取代為 `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` Hive 中繼存放區 **複製** 的適當值，並以空格分隔。 指定 SQL server 名稱時，請勿包含 ". database.windows.net"。
 
 |屬性 | 值 |
 |---|---|
@@ -103,7 +103,7 @@ HDInsight 3.6 和4.0 叢集必須使用相同的儲存體帳戶。
 >
 > * 完成此腳本之後，會假設舊的叢集不再用於存取腳本中所參考的任何資料表或資料庫。
 >
-> * 所有受控資料表在 HDInsight 4.0 中都會變成交易式。 （選擇性）將資料匯出至具有屬性 ' external. table. 清除 ' = ' true ' 的外部資料表，以將資料表保持為非交易式。 例如，
+> * 所有受控資料表在 HDInsight 4.0 中都會變成交易式。 （選擇性）將資料匯出至具有屬性 ' external. table. 清除 ' = ' true ' 的外部資料表，以將資料表保持為非交易式。 例如，套用至物件的
 >
 >    ```SQL
 >    create table tablename_backup like tablename;
@@ -117,7 +117,7 @@ HDInsight 3.6 和4.0 叢集必須使用相同的儲存體帳戶。
 
 1. 使用 [安全殼層 (SSH) 用戶端](../hdinsight-hadoop-linux-use-ssh-unix.md)連接到 HDInsight 3.6 叢集。
 
-1. 從開啟的 SSH 會話中，下載下列腳本檔以產生名為 **alltables.sql**的檔案。
+1. 從開啟的 SSH 會話中，下載下列腳本檔以產生名為 **alltables.sql** 的檔案。
 
     ```bash
     wget https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/exporthive_hdi_3_6.sh
@@ -141,7 +141,7 @@ HDInsight 3.6 和4.0 叢集必須使用相同的儲存體帳戶。
         ./exporthive_hdi_3_6.sh "$BEE_CMD"
         ```
 
-1. 結束您的 SSH 工作階段。 然後輸入 scp 命令以在本機下載**alltables.sql。**
+1. 結束您的 SSH 工作階段。 然後輸入 scp 命令以在本機下載 **alltables.sql。**
 
     ```bash
     scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:alltables.hql c:/hdi
@@ -208,11 +208,11 @@ HDInsight 3.6 和4.0 叢集必須使用相同的儲存體帳戶。
 
 ## <a name="query-execution-across-hdinsight-versions"></a>跨 HDInsight 版本執行查詢
 
-有兩種方式可在 HDInsight 3.6 叢集中執行和偵測 Hive/LLAP 查詢。 HiveCLI 提供命令列體驗，而 [Tez 視圖/Hive 視圖](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-ambari-view) 則提供以 GUI 為基礎的工作流程。
+有兩種方式可在 HDInsight 3.6 叢集中執行和偵測 Hive/LLAP 查詢。 HiveCLI 提供命令列體驗，而 [Tez 視圖/Hive 視圖](../hadoop/apache-hadoop-use-hive-ambari-view.md) 則提供以 GUI 為基礎的工作流程。
 
 在 HDInsight 4.0 中，HiveCLI 已被 Beeline 取代。 Tez view/Hive view 提供以 GUI 為基礎的工作流程。 HiveCLI 是 Hiveserver 1 的 thrift 用戶端，而 Beeline 是 JDBC 用戶端，可提供 Hiveserver 2 的存取權。 Beeline 也可以用來連接到任何其他與 JDBC 相容的資料庫端點。 Beeline 可在 HDInsight 4.0 的現成可用，而不需要任何安裝。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [HDInsight 4.0 公告](../hdinsight-version-release.md)
 * [HDInsight 4.0 深入探討](https://azure.microsoft.com/blog/deep-dive-into-azure-hdinsight-4-0/)

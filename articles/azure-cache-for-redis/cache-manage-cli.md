@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: db55ac4ce868f2e6ce2afbfbf014aac67653ce4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7643f882d5ac330046c169e0a3f2fa4920331d4e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500499"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537689"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>如何使用 Azure 傳統 CLI 來建立及管理 Azure Redis 快取
 > [!div class="op_single_selector"]
@@ -26,13 +26,13 @@ Azure 傳統 CLI 是從任何平台管理 Azure 基礎結構的一個好方法�
 > [!NOTE]
 > 如需最新的 Azure CLI 範例指令碼，請參閱 [Azure CLI Azure Redis 快取範例](cli-samples.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 若要使用 Azure 傳統 CLI 來建立及管理「Azure Redis 快取」執行個體，您必須完成下列步驟。
 
 * 您必須具有 Azure 帳號。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/) 。
-* [安裝 Azure 傳統 CLI](../cli-install-nodejs.md)。
+* [安裝 Azure 傳統 CLI](/cli/azure/install-classic-cli)。
 * 將您的 Azure CLI 安裝連結到個人 Azure 帳戶，或連結到公司或學校 Azure 帳戶，並使用 `azure login` 命令從傳統 CLI 登入。
-* 在執行下列任何命令之前，執行 `azure config mode arm` 命令以將傳統 CLI 切換至資源管理員模式。 如需詳細資訊，請參閱[使用 Azure 傳統 CLI 來管理 Azure 資源與資源群組](../xplat-cli-azure-resource-manager.md)。
+* 在執行下列任何命令之前，執行 `azure config mode arm` 命令以將傳統 CLI 切換至資源管理員模式。 如需詳細資訊，請參閱[使用 Azure 傳統 CLI 來管理 Azure 資源與資源群組](../azure-resource-manager/management/manage-resources-cli.md)。
 
 ## <a name="azure-cache-for-redis-properties"></a>Azure Redis 快取屬性
 建立及更新「Azure Redis 快取」執行個體時會使用下列屬性。
@@ -42,7 +42,7 @@ Azure 傳統 CLI 是從任何平台管理 Azure 基礎結構的一個好方法�
 | NAME |-n, --name |「Azure Redis 快取」的名稱。 |
 | 資源群組 |-g, --resource-group |資源群組的名稱。 |
 | location |-l, --location |要建立快取的位置。 |
-| size |-z, --size |「Azure Redis 快取」的大小。 有效的值：[C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
+| 大小 |-z, --size |「Azure Redis 快取」的大小。 有效的值：[C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
 | sku |-x, --sku |Redis SKU。 應為其中一個：[Basic, Standard, Premium] |
 | EnableNonSslPort |-e, --enable-non-ssl-port |「Azure Redis 快取」的 EnableNonSslPort 屬性。 如果您想要啟用快取的非 TLS/SSL 埠，請新增此旗標 |
 | Redis 組態 |-c, --redis-configuration |Redis 組態。 在這裡輸入組態金鑰和值的 JSON 格式字串。 格式："{"":"","":""}" |

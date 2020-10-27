@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/22/2020
-ms.openlocfilehash: c3a3fae9150b6805e9bb1533f2bb585d8845b253
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f0b059a25cd9fc77a59dc0a78feb18c2c549057
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936627"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546852"
 ---
 # <a name="manage-an-azure-database-for-mysql-single-server-using-the-azure-cli"></a>使用 Azure CLI 管理適用於 MySQL 的 Azure 資料庫單一伺服器
 
@@ -20,13 +20,13 @@ ms.locfileid: "90936627"
 ## <a name="prerequisites"></a>必要條件
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。 本文需要您以本機方式執行 Azure CLI 2.0 版或更新版本。 若要查看所安裝的版本，請執行 `az --version` 命令。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
-您必須使用 [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) 命令登入您的帳戶。 請注意 **id** 屬性，這是指您的 Azure 帳戶的**訂用帳戶識別碼**。
+您必須使用 [az login](/cli/azure/reference-index#az-login) 命令登入您的帳戶。 請注意 **id** 屬性，這是指您的 Azure 帳戶的 **訂用帳戶識別碼** 。
 
 ```azurecli-interactive
 az login
 ```
 
-使用 [az account set](/cli/azure/account) 命令來選取您帳戶底下的特定訂用帳戶。 記下 **az login** 輸出中的 **id** 值，作為命令中**訂用帳戶**引數的值。 如果您有多個訂用帳戶，請選擇資源計費的適當訂用帳戶。 若要取得您的所有訂用帳戶，請使用 [az account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list)。
+使用 [az account set](/cli/azure/account) 命令來選取您帳戶底下的特定訂用帳戶。 記下 **az login** 輸出中的 **id** 值，作為命令中 **訂用帳戶** 引數的值。 如果您有多個訂用帳戶，請選擇資源計費的適當訂用帳戶。 若要取得您的所有訂用帳戶，請使用 [az account list](/cli/azure/account#az-account-list)。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -35,7 +35,7 @@ az account set --subscription <subscription id>
 如果您尚未建立伺服器，請參閱本 [快速入門](quickstart-create-mysql-server-database-using-azure-cli.md) 以建立伺服器。
 
 ## <a name="scale-compute-and-storage"></a>調整計算和儲存體
-您可以使用下列命令，輕鬆地擴大定價層、計算和儲存。 您可以查看您可以執行[az mysql server 總覽](/cli/azure/mysql/server?view=azure-cli-latest)的所有伺服器操作
+您可以使用下列命令，輕鬆地擴大定價層、計算和儲存。 您可以查看您可以執行[az mysql server 總覽](/cli/azure/mysql/server)的所有伺服器操作
 
 ```azurecli-interactive
 az mysql server update --resource-group myresourcegroup --name mydemoserver --sku-name GP_Gen5_4 --storage-size 6144
@@ -82,7 +82,7 @@ az mysql server update --resource-group myresourcegroup --name mydemoserver --ad
 az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - [重新啟動伺服器](howto-restart-server-cli.md)
 - [還原處于不良狀態的伺服器](howto-restore-server-cli.md)
 - [監視和微調伺服器](concepts-monitoring.md)

@@ -6,18 +6,18 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 1a99a91152f8308af122677ad3b8df3fb5005dbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6a2725c6e4d72e8e79e3e45cc60060c02d90cac
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90896171"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544999"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>使用入口網站建立和管理適用於 MySQL 的 Azure 資料庫的 Private Link
 
 私人端點是 Azure 中私人連結的基本要素。 其可讓 Azure 資源 (例如虛擬機器 (VM)) 與私人連結資源進行私密通訊。 在本文中，您將瞭解如何使用 Azure 入口網站來建立 Azure 虛擬網路中的 VM，以及具有 Azure 私人端點的適用於 MySQL 的 Azure 資料庫伺服器。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始進行。
 
 > [!NOTE]
 > 私人連結功能僅適用于一般用途或記憶體優化定價層中的適用於 MySQL 的 Azure 資料庫伺服器。 確定資料庫伺服器是在其中一個定價層。
@@ -32,18 +32,18 @@ ms.locfileid: "90896171"
 ### <a name="create-the-virtual-network"></a>建立虛擬網路
 在本節中，您將建立虛擬網路和子網路，以裝載用來存取 Private Link 資源的 VM。
 
-1. 在畫面的左上方，選取 [**建立資源**  >  **網路**  >  **虛擬網路**]。
+1. 在畫面的左上方，選取 [ **建立資源**  >  **網路**  >  **虛擬網路** ]。
 2. 在 [建立虛擬網路] 中，輸入或選取這項資訊：
 
     | 設定 | 值 |
     | ------- | ----- |
-    | 名稱 | 輸入 *MyVirtualNetwork*。 |
-    | 位址空間 | 輸入 *10.1.0.0/16*。 |
+    | 名稱 | 輸入 *MyVirtualNetwork* 。 |
+    | 位址空間 | 輸入 *10.1.0.0/16* 。 |
     | 訂用帳戶 | 選取您的訂用帳戶。|
-    | 資源群組 | 選取 [新建]，輸入 *myResourceGroup*，然後選取 [確定]。 |
-    | Location | 選取 [西歐]  。|
-    | 子網路 - 名稱 | 輸入 *>mysubnet*。 |
-    | 子網路 - 位址範圍 | 輸入 *10.1.0.0/24*。 |
+    | 資源群組 | 選取 [新建]，輸入 *myResourceGroup* ，然後選取 [確定]。 |
+    | 位置 | 選取 [西歐]。|
+    | 子網路 - 名稱 | 輸入 *>mysubnet* 。 |
+    | 子網路 - 位址範圍 | 輸入 *10.1.0.0/24* 。 |
     |||
 3. 將其他項目保留為預設值，然後選取 [建立]。
 
@@ -57,10 +57,10 @@ ms.locfileid: "90896171"
     | ------- | ----- |
     | **專案詳細資料** | |
     | 訂用帳戶 | 選取您的訂用帳戶。 |
-    | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。  |
+    | 資源群組 | 選取 **myResourceGroup** 。 您已在上一節中建立此項目。  |
     | **執行個體詳細資料** |  |
     | 虛擬機器名稱 | 輸入 myVm。 |
-    | 區域 | 選取 [西歐]  。 |
+    | 區域 | 選取 [西歐]。 |
     | 可用性選項 | 保留預設值 [不需要基礎結構備援]。 |
     | 映像 | 選取 [Windows Server 2019 Datacenter]。 |
     | 大小 | 保留預設值 [標準 DS1 v2]。 |
@@ -99,7 +99,7 @@ ms.locfileid: "90896171"
 
 在本節中，您將在 Azure 中建立適用於 MySQL 的 Azure 資料庫伺服器。 
 
-1. 在 Azure 入口網站畫面的左上方，選取 [**建立資源**  >  **資料庫**]  >  **適用於 MySQL 的 Azure 資料庫**。
+1. 在 Azure 入口網站畫面的左上方，選取 [ **建立資源**  >  **資料庫** ]  >  **適用於 MySQL 的 Azure 資料庫** 。
 
 1. 在 **適用於 MySQL 的 Azure 資料庫** 提供下列資訊：
 
@@ -107,9 +107,9 @@ ms.locfileid: "90896171"
     | ------- | ----- |
     | **專案詳細資料** | |
     | 訂用帳戶 | 選取您的訂用帳戶。 |
-    | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。|
+    | 資源群組 | 選取 **myResourceGroup** 。 您已在上一節中建立此項目。|
     | **伺服器詳細資料** |  |
-    |伺服器名稱  | 輸入 *myServer*。 如果此名稱已被使用，請建立唯一名稱。|
+    |伺服器名稱  | 輸入 *myServer* 。 如果此名稱已被使用，請建立唯一名稱。|
     | 系統管理員使用者名稱| 輸入您所選擇的系統管理員名稱。 |
     | 密碼 | 輸入您選擇的密碼。 密碼長度至少必須有 8 個字元，而且符合定義的需求。 |
     | Location | 選取您想要的 MySQL 伺服器所在的 Azure 區域。 |
@@ -119,7 +119,7 @@ ms.locfileid: "90896171"
  
 7. 選取 [確定]  。 
 8. 選取 [檢閱 + 建立]。 您會移至 [檢閱 + 建立] 頁面，其中 Azure 會驗證您的設定。 
-9. 當您看到 [通過驗證] 訊息時，請選取 [ **建立**]。 
+9. 當您看到 [通過驗證] 訊息時，請選取 [ **建立** ]。 
 10. 當您看到 [驗證成功] 訊息時，請選取 [建立]。 
 
 > [!NOTE]
@@ -130,22 +130,22 @@ ms.locfileid: "90896171"
 
 在本節中，您將建立 MySQL 伺服器，並在其中新增私人端點。 
 
-1. 在 Azure 入口網站畫面的左上方，選取 [**建立資源**  >  **網路**]  >  **Private Link**。
+1. 在 Azure 入口網站畫面的左上方，選取 [ **建立資源**  >  **網路** ]  >  **Private Link** 。
 
 2. 在 [私人連結中心 - 概觀] 中，選取 [與服務建立私人連線] 選項上的 [開始]。
 
     :::image type="content" source="media/concepts-data-access-and-security-private-link/privatelink-overview.png" alt-text="Private Link 總覽":::
 
-1. 在 [ **建立私人端點-基本**] 中，輸入或選取這項資訊：
+1. 在 [ **建立私人端點-基本** ] 中，輸入或選取這項資訊：
 
     | 設定 | 值 |
     | ------- | ----- |
     | **專案詳細資料** | |
     | 訂用帳戶 | 選取您的訂用帳戶。 |
-    | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。|
+    | 資源群組 | 選取 **myResourceGroup** 。 您已在上一節中建立此項目。|
     | **實例詳細資料** |  |
     | 名稱 | 輸入 myPrivateEndpoint。 如果此名稱已被使用，請建立唯一名稱。 |
-    |區域|選取 [西歐]  。|
+    |區域|選取 [西歐]。|
     |||
 
 5. 完成時，選取 [下一步:資源]。
@@ -155,7 +155,7 @@ ms.locfileid: "90896171"
     | ------- | ----- |
     |連線方法  | 選取 [連線到我目錄中的 Azure 資源]。|
     | 訂用帳戶| 選取您的訂用帳戶。 |
-    | 資源類型 | 選取 [ **microsoft.dbformysql]/[伺服器**]。 |
+    | 資源類型 | 選取 [ **microsoft.dbformysql]/[伺服器** ]。 |
     | 資源 |選取 [myServer]|
     |目標子資源 |選取 *mysqlServer*|
     |||
@@ -169,7 +169,7 @@ ms.locfileid: "90896171"
     | 子網路 | 選取 [mySubnet]。 |
     |**私人 DNS 整合**||
     |與私人 DNS 區域整合 |選取 [是]。 |
-    |私人 DNS 區域 |選取 * (新增) privatelink.mysql.database.azure.com* |
+    |私人 DNS 區域 |選取 *(新增) privatelink.mysql.database.azure.com* |
     |||
 
     > [!Note] 
@@ -192,11 +192,11 @@ ms.locfileid: "90896171"
 
 1. 選取 [連線]  按鈕。 選取 [連線] 按鈕之後，隨即會開啟 [連線至虛擬機器]。
 
-1. 選取 [下載 RDP 檔案]。 Azure 會建立一個「遠端桌面通訊協定」( *.rdp*) 檔案，並下載至您的電腦。
+1. 選取 [下載 RDP 檔案]。 Azure 會建立一個「遠端桌面通訊協定」( *.rdp* ) 檔案，並下載至您的電腦。
 
 1. 開啟 *downloaded.rdp* 檔案。
 
-    1. 如果出現提示，請選取 [連接]。
+    1. 如果出現提示，請選取 [連接]  。
 
     1. 輸入您在建立 VM 時指定的使用者名稱和密碼。
 
@@ -226,15 +226,15 @@ ms.locfileid: "90896171"
 
 3. 使用任何可用的用戶端來測試 MySQL 伺服器的私人連結連線。 在下列範例中，我使用了 [MySQL 工作臺](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) 來進行操作。
 
-4. 在 [ **新增連接**] 中，輸入或選取這項資訊：
+4. 在 [ **新增連接** ] 中，輸入或選取這項資訊：
 
     | 設定 | 值 |
     | ------- | ----- |
-    | 伺服器類型| 選取 [ **MySQL**]。|
+    | 伺服器類型| 選取 [ **MySQL** ]。|
     | 伺服器名稱| 選取 *myServer.privatelink.mysql.database.azure.com* |
-    | [使用者名稱] | 輸入 username@servername 在建立 MySQL 伺服器期間所提供的使用者名稱。 |
+    | 使用者名稱 | 輸入 username@servername 在建立 MySQL 伺服器期間所提供的使用者名稱。 |
     |密碼 |輸入在建立 MySQL 伺服器期間所提供的密碼。 |
-    |SSL|選取 [ **必要**]。|
+    |SSL|選取 [ **必要** ]。|
     ||
 
 5. 選取 [連線]。
@@ -248,13 +248,13 @@ ms.locfileid: "90896171"
 ## <a name="clean-up-resources"></a>清除資源
 當您完成使用私人端點、MySQL 伺服器和 VM 時，請刪除資源群組及其包含的所有資源：
 
-1. 在入口網站頂端的 [搜尋] 方塊中輸入 *myResourceGroup*，然後從搜尋結果中選取 [myResourceGroup]。
+1. 在入口網站頂端的 [搜尋] 方塊中輸入 *myResourceGroup* ，然後從搜尋結果中選取 [myResourceGroup]。
 2. 選取 [刪除資源群組]。
-3. 輸入 **資源組名類型的** myResourceGroup，然後選取 [ **刪除**]。
+3. 輸入 **資源組名類型的** myResourceGroup，然後選取 [ **刪除** ]。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-在此操作說明中，您已在虛擬網路、適用於 MySQL 的 Azure 資料庫和私人端點上建立 VM 以進行私人存取。 您已從網際網路連線到其中一個 VM，並使用 Private Link 安全地與 MySQL 伺服器通訊。 若要深入瞭解私人端點，請參閱 [什麼是 Azure 私人端點](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)。
+在此操作說明中，您已在虛擬網路、適用於 MySQL 的 Azure 資料庫和私人端點上建立 VM 以進行私人存取。 您已從網際網路連線到其中一個 VM，並使用 Private Link 安全地與 MySQL 伺服器通訊。 若要深入瞭解私人端點，請參閱 [什麼是 Azure 私人端點](../private-link/private-endpoint-overview.md)。
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

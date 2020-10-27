@@ -8,22 +8,22 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 583a5bcac71265596127c7860c0509963f76b2fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6abdb3cc6981a4fbdd52b88a75457c37709597f5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86080936"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534323"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>使用 HDInsight Spark 叢集分析 Data Lake Storage Gen1 中的資料
 
 在本文中，您將使用 HDInsight Spark 叢集可用的 [Jupyter Notebook](https://jupyter.org/) 來執行從 Data Lake Storage 帳戶讀取資料的作業。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure Data Lake Storage Gen1 帳戶。 請遵循[透過 Azure 入口網站開始使用 Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-get-started-portal.md) 的指示。
 
-* 以 Data Lake Storage Gen1 作為儲存體的 Azure HDInsight Spark 叢集。 請遵循[快速入門：在 HDInsight 中設定叢集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)中的指示。
+* 以 Data Lake Storage Gen1 作為儲存體的 Azure HDInsight Spark 叢集。 請遵循[快速入門：在 HDInsight 中設定叢集](../hdinsight-hadoop-provision-linux-clusters.md)中的指示。
 
 ## <a name="prepare-the-data"></a>準備資料
 
@@ -58,24 +58,24 @@ ms.locfileid: "86080936"
     Copy Completed. 1 file copied.
     ```
 
-    資料檔 (**HVAC.csv**) 將會複製到 Data Lake Storage 帳戶中的 **/hvac** 資料夾底下。
+    資料檔 ( **HVAC.csv** ) 將會複製到 Data Lake Storage 帳戶中的 **/hvac** 資料夾底下。
 
 ## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>搭配 Data Lake Storage Gen1 使用 HDInsight Spark 叢集
 
-1. 從 [Azure 入口網站](https://portal.azure.com/)的開始面板中，按一下 Apache Spark 叢集 (的磚（如果您已將它釘選到開始面板) ）。 您也可以在 **[流覽所有**HDInsight 叢集] 下流覽至您的叢集  >  ** **。
+1. 從 [Azure 入口網站](https://portal.azure.com/)的開始面板中，按一下 Apache Spark 叢集 (的磚（如果您已將它釘選到開始面板) ）。 您也可以在  。
 
-2. 在 Spark 叢集刀鋒視窗中按一下 [快速連結]****，然後在 [叢集儀表板]**** 刀鋒視窗中按一下 [Jupyter Notebook]****。 出現提示時，輸入叢集的系統管理員認證。
+2. 在 Spark 叢集刀鋒視窗中按一下 [快速連結]  ，然後在 [叢集儀表板]  刀鋒視窗中按一下 [Jupyter Notebook]  。 出現提示時，輸入叢集的系統管理員認證。
 
    > [!NOTE]  
    > 您也可以在瀏覽器中開啟下列 URL，來連接到您的叢集的 Jupyter Notebook。 使用您叢集的名稱取代 **CLUSTERNAME** ：
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-3. 建立新的 Notebook。 按一下 [新增]****，然後按一下 [PySpark]****。
+3. 建立新的 Notebook。 按一下 [新增]  ，然後按一下 [PySpark]  。
 
     ![建立新的 Jupyter Notebook](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "建立新的 Jupyter Notebook")
 
-4. 您使用 PySpark 核心建立 Notebook，因此不需要明確建立任何內容。 當您執行第一個程式碼儲存格時，系統會自動為您建立 Spark 和 Hive 內容。 首先，您可以匯入此案例所需的類型。 方法是將下列程式碼片段貼到儲存格中，然後按下 **SHIFT + ENTER**。
+4. 您使用 PySpark 核心建立 Notebook，因此不需要明確建立任何內容。 當您執行第一個程式碼儲存格時，系統會自動為您建立 Spark 和 Hive 內容。 首先，您可以匯入此案例所需的類型。 方法是將下列程式碼片段貼到儲存格中，然後按下 **SHIFT + ENTER** 。
 
     ```scala
     from pyspark.sql.types import *
@@ -105,7 +105,7 @@ ms.locfileid: "86080936"
         adl://<data_lake_store_name>.azuredatalakestore.net/<path_to_file>
         ```
 
-     在空白儲存格中，貼上下列程式碼範例、使用您的 Data Lake Storage 帳戶名稱取代 **MYDATALAKESTORE**，然後按 **SHIFT + ENTER**。 此程式碼範例會將資料註冊到名為 **hvac**的暫存資料表。
+     在空白儲存格中，貼上下列程式碼範例、使用您的 Data Lake Storage 帳戶名稱取代 **MYDATALAKESTORE** ，然後按 **SHIFT + ENTER** 。 此程式碼範例會將資料註冊到名為 **hvac** 的暫存資料表。
 
       ```scala
       # Load the data. The path below assumes Data Lake Storage is   default storage for the Spark cluster
@@ -138,10 +138,10 @@ ms.locfileid: "86080936"
 
      ![查詢結果的區域圖](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "查詢結果的區域圖")
 
-8. 應用程式執行完畢之後，您應該要關閉 Notebook 來釋放資源。 若要這樣做，請從 Notebook 的 [檔案]**** 功能表中，按一下 [關閉並停止]****。 這樣就能夠結束並關閉 Notebook。
+8. 應用程式執行完畢之後，您應該要關閉 Notebook 來釋放資源。 若要這樣做，請從 Notebook 的 [檔案]  功能表中，按一下 [關閉並停止]  。 這樣就能夠結束並關閉 Notebook。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * [建立獨立 Scala 應用程式以在 Apache Spark 叢集上執行](apache-spark-create-standalone-application.md)
 * [使用 Azure Toolkit for IntelliJ 中的 HDInsight 工具建立 HDInsight Spark Linux 叢集的 Apache Spark 應用程式](apache-spark-intellij-tool-plugin.md)

@@ -8,12 +8,12 @@ keywords: hadoop 高可用性
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: c2c5e5d0dc90f8f41882f6a63497a197cd74f0ce
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: c322380d6a41e69baa8f753b84c0bc074f334647
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207575"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547022"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Azure HDInsight 商務持續性架構
 
@@ -54,11 +54,11 @@ ms.locfileid: "92207575"
 
 #### <a name="hive-active-primary-with-standby-secondary"></a>具有待命次要資料庫的 Hive 主動主要
 
-在 *具有待命次要資料庫*的作用中主要區域中，應用程式會寫入至使用中的主要區域，而在唯讀模式中的待命相應減少次要叢集則會在正常作業期間執行。 在正常作業期間，您可以選擇將區域特定的讀取作業卸載至次要。
+在 *具有待命次要資料庫* 的作用中主要區域中，應用程式會寫入至使用中的主要區域，而在唯讀模式中的待命相應減少次要叢集則會在正常作業期間執行。 在正常作業期間，您可以選擇將區域特定的讀取作業卸載至次要。
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="Hive 和互動式查詢架構":::
 
-如需 Hive 複寫和程式碼範例的詳細資訊，請參閱[Azure HDInsight 叢集中的 Apache Hive](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-replication)複寫
+如需 Hive 複寫和程式碼範例的詳細資訊，請參閱[Azure HDInsight 叢集中的 Apache Hive](./interactive-query/apache-hive-replication.md)複寫
 
 ## <a name="apache-spark"></a>Apache Spark
 
@@ -97,7 +97,7 @@ Spark 工作負載不一定會涉及 Hive 元件。 為了讓 Spark SQL 工作�
 
 HBase 匯出和 HBase 複寫是在 HDInsight HBase 叢集之間啟用商務持續性的常見方式。
 
-HBase 匯出是一個批次複寫程式，它會使用 HBase 匯出公用程式，將資料表從主要 HBase 叢集匯出到其基礎 Azure Data Lake Storage Gen 2 儲存體。 然後，您可以從次要 HBase 叢集存取匯出的資料，並將其匯入到必須在次要資料庫中之外的資料表。 雖然 HBase 匯出會提供資料表層級的資料細微性，但是在累加式更新的情況下，匯出自動化引擎會控制每次執行時要包含的遞增資料列範圍。 如需詳細資訊，請參閱 [HDInsight HBase 備份和](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#export-then-import)複寫。
+HBase 匯出是一個批次複寫程式，它會使用 HBase 匯出公用程式，將資料表從主要 HBase 叢集匯出到其基礎 Azure Data Lake Storage Gen 2 儲存體。 然後，您可以從次要 HBase 叢集存取匯出的資料，並將其匯入到必須在次要資料庫中之外的資料表。 雖然 HBase 匯出會提供資料表層級的資料細微性，但是在累加式更新的情況下，匯出自動化引擎會控制每次執行時要包含的遞增資料列範圍。 如需詳細資訊，請參閱 [HDInsight HBase 備份和](./hbase/apache-hbase-backup-replication.md#export-then-import)複寫。
 
 HBase 複寫會使用完全自動化的方式，在 HBase 叢集之間使用近乎即時的複寫。 複寫是在資料表層級進行。 所有資料表或特定資料表都可以做為複寫的目標。 HBase 複寫最終是一致的，這表示對主要區域中的資料表進行最近的編輯，可能無法立即供所有的次要資料庫使用。 次要複本保證最終會與主資料庫一致。 如果有下列情況，可以在兩個以上的 HDInsight HBase 叢集之間設定 HBase 複寫：
 
@@ -105,9 +105,9 @@ HBase 複寫會使用完全自動化的方式，在 HBase 叢集之間使用近�
 * 主要和次要資料庫位於相同區域中的不同對等互連 Vnet。
 * 主要和次要資料庫位於不同區域的不同對等互連 Vnet。
 
-如需詳細資訊，請參閱 [在 Azure 虛擬網路中設定 Apache HBase](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-replication)叢集複寫。
+如需詳細資訊，請參閱 [在 Azure 虛擬網路中設定 Apache HBase](./hbase/apache-hbase-replication.md)叢集複寫。
 
-有一些其他方法可執行 HBase 叢集的備份，例如 [複製 hbase 資料夾](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#copy-the-hbase-folder)、 [複製資料表](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#copy-tables) 和 [快照](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-backup-replication#snapshots)集。
+有一些其他方法可執行 HBase 叢集的備份，例如 [複製 hbase 資料夾](./hbase/apache-hbase-backup-replication.md#copy-the-hbase-folder)、 [複製資料表](./hbase/apache-hbase-backup-replication.md#copy-tables) 和 [快照](./hbase/apache-hbase-backup-replication.md#snapshots)集。
 
 ### <a name="hbase-rpo--rto"></a>HBase RPO & RTO
 
@@ -147,7 +147,7 @@ HBase 複寫會使用完全自動化的方式，在 HBase 叢集之間使用近�
 
 ## <a name="apache-kafka"></a>Apache Kafka
 
-若要啟用跨區域可用性 HDInsight 4.0 支援 Kafka MirrorMaker，可用來維護不同區域中主要 Kafka 叢集的次要複本。 MirrorMaker 可做為高階消費者生產者組，從主要叢集中的特定主題取用，並產生在次要資料庫中具有相同名稱的主題。 使用 MirrorMaker 進行高可用性嚴重損壞修復的跨叢集複寫，會假設生產者和取用者需要容錯移轉至複本叢集。 如需詳細資訊，請參閱 [使用 MirrorMaker 搭配 HDInsight 上的 Kafka 來複寫 Apache Kafka 主題](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-mirroring)
+若要啟用跨區域可用性 HDInsight 4.0 支援 Kafka MirrorMaker，可用來維護不同區域中主要 Kafka 叢集的次要複本。 MirrorMaker 可做為高階消費者生產者組，從主要叢集中的特定主題取用，並產生在次要資料庫中具有相同名稱的主題。 使用 MirrorMaker 進行高可用性嚴重損壞修復的跨叢集複寫，會假設生產者和取用者需要容錯移轉至複本叢集。 如需詳細資訊，請參閱 [使用 MirrorMaker 搭配 HDInsight 上的 Kafka 來複寫 Apache Kafka 主題](./kafka/apache-kafka-mirroring.md)
 
 根據在複寫開始時的主題存留期，MirrorMaker 主題複寫可能會導致來源與複本主題之間有不同的位移。 HDInsight Kafka 叢集也支援主題資料分割複寫，這是在個別叢集層級的高可用性功能。
 
@@ -192,7 +192,7 @@ Active-Active 設定牽涉到兩個地區分隔的 VNet 對等互連 HDInsight K
 
 ## <a name="hdinsight-enterprise-security-package"></a>HDInsight 企業安全性套件
 
-這項設定可用來在主要和次要資料庫中啟用多使用者功能，以及 [AZURE AD DS 複本集](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-replica-set) ，以確保使用者可以同時對兩個叢集進行驗證。 在正常作業期間，必須在次要資料庫中設定 Ranger 原則，以確保使用者只能讀取作業。 下列架構說明啟用 ESP 的 Hive 作用中主要-待命次要資料庫設定的方式。
+這項設定可用來在主要和次要資料庫中啟用多使用者功能，以及 [AZURE AD DS 複本集](../active-directory-domain-services/tutorial-create-replica-set.md) ，以確保使用者可以同時對兩個叢集進行驗證。 在正常作業期間，必須在次要資料庫中設定 Ranger 原則，以確保使用者只能讀取作業。 下列架構說明啟用 ESP 的 Hive 作用中主要-待命次要資料庫設定的方式。
 
 Ranger 中繼存放區 replication：
 
@@ -204,7 +204,7 @@ Ranger 中繼存放區是用來持續儲存和提供 Ranger 原則來控制資�
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/hdinsight-enterprise-security-package.png" alt-text="Hive 和互動式查詢架構":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入瞭解本文中討論的專案，請參閱：
 

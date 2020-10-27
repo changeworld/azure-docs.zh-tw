@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/16/2020
-ms.openlocfilehash: 886e8cb1c5d86c1a61e65fa8cbd54c022f6c1c6b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d4fcf7830250e5e6d2e4255ddb88867023606d0e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92484809"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547549"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>建立 Azure HDInsight 叢集的虛擬網路
 
@@ -27,7 +27,7 @@ ms.locfileid: "92484809"
 
 本文中的範例的其他必要條件包括下列專案：
 
-* 如果您使用的是 PowerShell，則必須安裝 [AZ 模組](https://docs.microsoft.com/powershell/azure/)。
+* 如果您使用的是 PowerShell，則必須安裝 [AZ 模組](/powershell/azure/)。
 * 如果您想要使用 Azure CLI 但尚未安裝，請參閱 [安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 > [!IMPORTANT]  
@@ -289,7 +289,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
     
     * 將 `192.168.0.1` 值取代為內部部署 DNS 伺服器的 IP 位址。 此項目會將所有其他 DNS 要求路由傳送至內部部署 DNS 伺服器。
 
-1. 若要使用設定，請重新啟動 Bind。 例如，`sudo service bind9 restart`。
+1. 若要使用設定，請重新啟動 Bind。 例如 `sudo service bind9 restart`。
 
 1. 將條件式轉寄站新增至內部部署 DNS 伺服器。 設定條件式轉寄站，以將步驟 1 中之 DNS 尾碼的要求傳送至自訂 DNS 伺服器。
 
@@ -331,7 +331,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
     };
     ```
 
-    將 `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` 值取代為「其他」____ 虛擬網路的 DNS 尾碼。 此項目會將遠端網路 DNS 尾碼的要求路由傳送至該網路中的自訂 DNS。
+    將 `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` 值取代為「其他」  虛擬網路的 DNS 尾碼。 此項目會將遠端網路 DNS 尾碼的要求路由傳送至該網路中的自訂 DNS。
 
 3. 在這兩個虛擬網路的自訂 DNS 伺服器上，使用下列文字作為 `/etc/bind/named.conf.options` 檔案的內容：
 
@@ -370,13 +370,13 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
 完成這些步驟之後，您可以使用完整網域名稱 (FQDN) 連線至虛擬網路中的資源。 您現在可以將 HDInsight 安裝至虛擬網路。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 如需將 HDInsight 設定為連線至內部部署網路的完整範例，請參閱 [將 hdinsight 連線到內部部署網路](./connect-on-premises-network.md)。
 * 若要在 Azure 虛擬網路中設定 Apache HBase 叢集，請參閱 [在 Azure 虛擬網路的 HDInsight 上建立 Apache hbase](hbase/apache-hbase-provision-vnet.md)叢集。
 * 如需設定 Apache HBase 異地複寫，請參閱[設定 Azure 虛擬網路中的 Apache HBase 叢集複寫](hbase/apache-hbase-replication.md)。
 * 如需 Azure 虛擬網路的詳細資訊，請參閱 [Azure 虛擬網路概觀](../virtual-network/virtual-networks-overview.md)。
 
-* 如需網路安全性群組的詳細資訊，請參閱[網路安全性群組](../virtual-network/security-overview.md)。
+* 如需網路安全性群組的詳細資訊，請參閱[網路安全性群組](../virtual-network/network-security-groups-overview.md)。
 
 * 如需使用者定義路由的詳細資訊，請參閱[使用者定義路由和 IP 轉送](../virtual-network/virtual-networks-udr-overview.md)。

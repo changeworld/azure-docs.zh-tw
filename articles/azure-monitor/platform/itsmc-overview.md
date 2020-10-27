@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: c163b7325cb4e039ddcfee95a39b82b4cb258b3c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f47a23a3b95975d98d3825bc5b14ed0522102a0c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461289"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547634"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>使用 IT Service Management Connector 將 Azure 連線到 ITSM 工具
 
@@ -50,7 +50,7 @@ ITSMC 支援與下列 ITSM 工具連線：
 
    ![Azure 新增資源](media/itsmc-overview/azure-add-new-resource.png)
 
-2. 在 Marketplace 中搜尋 **IT Service Management Connector**，然後按一下 [建立]。
+2. 在 Marketplace 中搜尋 **IT Service Management Connector** ，然後按一下 [建立]。
 
    ![新增 ITSMC 解決方案](media/itsmc-overview/add-itsmc-solution.png)
 
@@ -90,7 +90,7 @@ ITSMC 支援與下列 ITSM 工具連線：
    ![ITSM 連線](media/itsmc-overview/itsm-connections.png)
 
    此頁面會顯示連線的清單。
-3. 按一下 [ **加入連接**]。
+3. 按一下 [ **加入連接** ]。
 
    ![新增 ITSM 連線](media/itsmc-overview/add-new-itsm-connection.png)
 
@@ -131,8 +131,8 @@ ITSMC 支援與下列 ITSM 工具連線：
 
     ![動作群組詳細資料](media/itsmc-overview/action-groups-details.png)
 
-4. 在 [動作] 清單中，從 [動作類型] 的下拉式功能表選取 [ITSM]。 提供動作的**名稱**，然後按一下 [編輯詳細資料]。
-5. 選取 Log Analytics 工作區所在位置的 [訂用帳戶]。 選取**連線**名稱 (您的 ITSM 連接器名稱)，後面接著您的工作區名稱。 例如，"MyITSMMConnector(MyWorkspace)"。
+4. 在 [動作] 清單中，從 [動作類型] 的下拉式功能表選取 [ITSM]。 提供動作的 **名稱** ，然後按一下 [編輯詳細資料]。
+5. 選取 Log Analytics 工作區所在位置的 [訂用帳戶]。 選取 **連線** 名稱 (您的 ITSM 連接器名稱)，後面接著您的工作區名稱。 例如，"MyITSMMConnector(MyWorkspace)"。
 
     ![ITSM 動作詳細資料](media/itsmc-overview/itsm-action-details.png)
 
@@ -140,7 +140,10 @@ ITSMC 支援與下列 ITSM 工具連線：
 
 7. 如果您想要以固定值填寫方塊欄位，請選取 [使用自訂範本] 的核取方塊，否則請選擇使用下拉式清單中的現有 [範本](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) ，然後以固定值填滿範本欄位。
 
-8. 按一下 [確定]。
+8. 選取 [ **為每個設定專案建立個別的工作專案** ] 核取方塊，每個設定專案都會有自己的工作專案。 這表示每個設定專案都會有一個工作專案，而且會根據將建立的警示進行更新。
+如果您取消選取 [ **為每個設定專案建立個別的工作專案** ] 核取方塊，每個警示都會建立新的工作專案，這表示每個設定專案可能會有1個以上的警示。
+
+9. 按一下 [確定]。
 
 建立/編輯 Azure 警示規則時，請使用具有 ITSM 動作的動作群組。 警示觸發時，會在 ITSM 工具中建立/更新工作項目。
 
@@ -183,7 +186,7 @@ ITSMC 支援與下列 ITSM 工具連線：
 
 > [!NOTE]
 >
-> 根據匯入 Log Analytics 的工作項目類型，**ServiceDesk_CL** 會包含下列欄位︰
+> 根據匯入 Log Analytics 的工作項目類型， **ServiceDesk_CL** 會包含下列欄位︰
 
 **工作項目：** **事件**  
 ServiceDeskWorkItemType_s="Incident"

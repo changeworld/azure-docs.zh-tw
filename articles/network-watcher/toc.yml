@@ -45,7 +45,7 @@
       href: network-watcher-nsg-flow-logging-overview.md
     - name: 網路安全性群組檢視
       href: network-watcher-security-group-view-overview.md
-    - name: 角色型存取控制權限
+    - name: Azure 角色型存取控制權限
       href: required-rbac-permissions.md
     - name: 安全性
       items:

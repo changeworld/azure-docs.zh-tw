@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: a5e4b8bbae67e32a5a0c951de583688836eb014b
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 4948d23af98e267e72e6f0e0efcc1a4037173576
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426391"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547413"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>使用 Private Link (preview 保護和隔離 Azure HDInsight 叢集) 
 
@@ -25,7 +25,7 @@ ms.locfileid: "92426391"
 
 ## <a name="remove-public-ip-addresses"></a>移除公用 IP 位址
 
-根據預設，HDInsight RP 會使用公用 Ip 對叢集的 *輸入* 連線。 當 `resourceProviderConnection` network 屬性設定為 *輸出*時，它會反轉與 HDInsight RP 的連線，如此一來，一律會從叢集內部起始連接至 RP。 若沒有輸入連線，就不需要輸入服務標記或公用 IP 位址。
+根據預設，HDInsight RP 會使用公用 Ip 對叢集的 *輸入* 連線。 當 `resourceProviderConnection` network 屬性設定為 *輸出* 時，它會反轉與 HDInsight RP 的連線，如此一來，一律會從叢集內部起始連接至 RP。 若沒有輸入連線，就不需要輸入服務標記或公用 IP 位址。
 
 預設虛擬網路架構中使用的基本負載平衡器會自動提供公用 NAT (的網路位址轉譯) 來存取必要的輸出相依性，例如 HDInsight RP。 如果您想要限制對公用網際網路的輸出連線能力，您可以 [設定防火牆](./hdinsight-restrict-outbound-traffic.md)，但這不是必要條件。
 
@@ -54,13 +54,13 @@ ms.locfileid: "92426391"
 
 Private Link （預設為停用）需要廣泛的網路知識，才能在建立叢集之前，正確地設定使用者定義的路由 (UDR) 和防火牆規則。 只有在 [ `resourceProviderConnection` 網路] 屬性設定為 [ *輸出* ] （如上一節所述）時，才可使用叢集的 Private Link 存取。
 
-當 `privateLink` 設定為 [ *啟用*] 時，系統就會建立 (SLB) 的內部 [標準負載平衡](../load-balancer/load-balancer-overview.md) 器，並為每個 SLB 布建 Azure Private Link 服務。 Private Link 服務可讓您從私人端點存取 HDInsight 叢集。
+當 `privateLink` 設定為 [ *啟用* ] 時，系統就會建立 (SLB) 的內部 [標準負載平衡](../load-balancer/load-balancer-overview.md) 器，並為每個 SLB 布建 Azure Private Link 服務。 Private Link 服務可讓您從私人端點存取 HDInsight 叢集。
 
-標準負載平衡器不會自動提供 [公用輸出 NAT](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) ，例如基本負載平衡器。 您必須提供自己的 NAT 解決方案，例如 [虛擬網路 NAT](../virtual-network/nat-overview.md) 或 [防火牆](./hdinsight-restrict-outbound-traffic.md)，以提供輸出相依性。 您的 HDInsight 叢集仍然需要存取其輸出相依性。 如果不允許這些輸出相依性，叢集建立可能會失敗。
+標準負載平衡器不會自動提供 [公用輸出 NAT](../load-balancer/load-balancer-outbound-connections.md) ，例如基本負載平衡器。 您必須提供自己的 NAT 解決方案，例如 [虛擬網路 NAT](../virtual-network/nat-overview.md) 或 [防火牆](./hdinsight-restrict-outbound-traffic.md)，以提供輸出相依性。 您的 HDInsight 叢集仍然需要存取其輸出相依性。 如果不允許這些輸出相依性，叢集建立可能會失敗。
 
 ### <a name="prepare-your-environment"></a>準備您的環境
 
-針對私人連結服務的 successgfull 建立，您必須明確 [停用私人連結服務的網路原則](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy)。
+針對私人連結服務的 successgfull 建立，您必須明確 [停用私人連結服務的網路原則](../private-link/disable-private-link-service-network-policy.md)。
 
 下圖顯示建立叢集之前所需的網路設定範例。 在此範例中，會使用 UDR 將所有輸出流量 [強制](../firewall/forced-tunneling.md) 傳送至 Azure 防火牆，並在建立叢集之前，在防火牆上應「允許」所需的輸出相依性。 針對企業安全性套件叢集，可透過 VNet 對等互連來提供 Azure Active Directory Domain Services 的網路連線能力。
 
@@ -99,7 +99,7 @@ networkProperties: {
 
 如需包含許多 HDInsight 企業安全性功能（包括 Private Link）的完整範本，請參閱 [HDInsight 企業安全性範本](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [Azure HDInsight 的企業安全性套件](enterprise-security-package.md)
 * [Azure HDInsight 中的企業安全性一般資訊與指導方針](./domain-joined/general-guidelines.md)

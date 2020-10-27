@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 565e6fb2def64dd594e1b0018f3378ea09bc63cb
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fb3ed4e41125131538957addce5bf935b897b581
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426208"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537213"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>使用 CLI 建立和管理適用於 MariaDB 的 Azure 資料庫的 Private Link
 
@@ -33,7 +33,7 @@ ms.locfileid: "92426208"
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-建立任何資源之前，您必須先建立資源群組來裝載虛擬網路。 使用 [az group create](/cli/azure/group) 來建立資源群組。 此範例會在*westeurope*位置建立名為*myResourceGroup*的資源群組：
+建立任何資源之前，您必須先建立資源群組來裝載虛擬網路。 使用 [az group create](/cli/azure/group) 來建立資源群組。 此範例會在 *westeurope* 位置建立名為 *myResourceGroup* 的資源群組：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
@@ -50,7 +50,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>停用子網路的私人端點原則 
-Azure 會將資源部署到虛擬網路內的子網，因此您必須建立或更新子網，以停用私人端點 [網路原則](../private-link/disable-private-endpoint-network-policy.md)。 使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 來更新名為 mySubnet 的子網路設定：
+Azure 會將資源部署到虛擬網路內的子網，因此您必須建立或更新子網，以停用私人端點 [網路原則](../private-link/disable-private-endpoint-network-policy.md)。 使用 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) 來更新名為 mySubnet 的子網路設定：
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -137,7 +137,7 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
 
 1. 選取 [連線]  按鈕。 選取 [連線] 按鈕之後，隨即會開啟 [連線至虛擬機器]。
 
-1. 選取 [下載 RDP 檔案]。 Azure 會建立一個「遠端桌面通訊協定」( *.rdp*) 檔案，並下載至您的電腦。
+1. 選取 [下載 RDP 檔案]。 Azure 會建立一個「遠端桌面通訊協定」( *.rdp* ) 檔案，並下載至您的電腦。
 
 1. 開啟 *downloaded.rdp* 檔案。
 
@@ -148,7 +148,7 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
         > [!NOTE]
         > 您可能需要選取 [其他選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。
 
-1. 選取 [確定]。
+1. 選取 [確定]  。
 
 1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是] 或 [繼續]。
 
@@ -171,7 +171,7 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
 
 3. 使用任何可用的用戶端來測試適用于 mariadb 伺服器的私人連結連線。 在下列範例中，我使用了 [MySQL 工作臺](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) 來進行操作。
 
-4. 在 [ **新增連接**] 中，輸入或選取這項資訊：
+4. 在 [ **新增連接** ] 中，輸入或選取這項資訊：
 
     | 設定 | 值 |
     | ------- | ----- |
@@ -181,7 +181,7 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
     | 密碼 | 輸入在適用于 mariadb 伺服器建立期間提供的密碼。 |
     ||
 
-5. 選取 [ **測試連接** **] 或 [確定]**。
+5. 選取 [ **測試連接** **] 或 [確定]** 。
 
 6.  (選擇性地) 從左側功能表流覽資料庫，然後從適用于 mariadb 資料庫建立或查詢資訊
 

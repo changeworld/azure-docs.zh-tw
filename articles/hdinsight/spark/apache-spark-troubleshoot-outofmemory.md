@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
-ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 156d3ce4b7f8b6eaa297f2cddd0d5a93f382f78e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84709040"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547277"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError Azure HDInsight 中 Apache Spark 的例外狀況
 
@@ -60,7 +60,7 @@ java.lang.OutOfMemoryError
 
 1. 決定 Spark 應用程式將處理的資料大小上限。 根據輸入資料的大小上限、轉換輸入資料所產生的中繼資料，以及進一步轉換中繼資料所產生的輸出資料，來預估大小。 如果初始估計值不足，請稍微增加大小，然後反覆運算至記憶體錯誤減少。
 
-1. 請確定要使用的 HDInsight 叢集具有足夠的記憶體資源及核心，才能採用 Spark 應用程式。 您可以藉由在叢集的 YARN UI 的 [叢集計量] 區段中，針對 [已使用的**記憶體****總計**] 和 [已**使用的虛擬核心**] 與 [**虛擬核心總計**] 的值，查看叢集計量區段。
+1. 請確定要使用的 HDInsight 叢集具有足夠的記憶體資源及核心，才能採用 Spark 應用程式。 您可以藉由在叢集的 YARN UI 的 [叢集計量] 區段中，針對 [已使用的 **記憶體****總計** ] 和 [已 **使用的虛擬核心** ] 與 [ **虛擬核心總計** ] 的值，查看叢集計量區段。
 
     ![yarn 核心記憶體視圖](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
 
@@ -249,10 +249,10 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 * [Spark 記憶體管理總覽](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview)。
 
-* [在 HDInsight 叢集上將 Spark 應用程式進行偵錯工具](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)。
+* [在 HDInsight 叢集上將 Spark 應用程式進行偵錯工具](/archive/blogs/azuredatalake/spark-debugging-101)。
 
 * 透過 [Azure 社群支援](https://azure.microsoft.com/support/community/)獲得由 Azure 專家所提供的解答。
 
 * 連線至 [@AzureSupport](https://twitter.com/azuresupport) - 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 將 Azure 社群連線到正確的資源：解答、支援和專家。
 
-* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。
+* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

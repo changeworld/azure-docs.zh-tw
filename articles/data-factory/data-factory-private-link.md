@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 2cd9f01404a4e33303356dd3f452cd7dbc47a747
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6faac66edaaf047f5ba025e94a1522c2313f9ed
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328559"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546665"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Data Factory 的 Azure Private Link
 
@@ -53,10 +53,10 @@ Azure Data Factory 服務的通訊會通過 Private Link 並協助提供安全�
 ![Azure Data Factory 架構的 Private Link 圖表。](./media/data-factory-private-link/private-link-architecture.png)
 
 針對上述每個通道啟用 Private Link 服務可提供下列功能：
-- **支援**：
+- **支援** ：
    - 即使您封鎖所有輸出通訊，您也可以在虛擬網路中撰寫和監視資料處理站。
    - 自我裝載整合執行時間和 Azure Data Factory 服務之間的命令通訊可以安全地在私人網路環境中執行。 自我裝載整合執行時間和 Azure Data Factory 服務之間的流量會經歷 Private Link。 
-- **目前不支援**：
+- **目前不支援** ：
    - 使用自我裝載整合執行時間（例如測試連線、流覽資料夾清單和資料表清單、取得架構和預覽資料）的互動式撰寫會經歷 Private Link。
    - 如果您啟用自動更新，則可以從 Microsoft 下載中心自動下載新版的自我裝載整合執行時間。
 
@@ -67,7 +67,7 @@ Azure Data Factory 服務的通訊會通過 Private Link 並協助提供安全�
 > 當您建立連結服務時，請確定您的認證儲存在 Azure key vault 中。 否則，當您在 Azure Data Factory 中啟用 Private Link 時，認證將無法運作。
 
 ## <a name="set-up-private-link-for-azure-data-factory"></a>設定 Azure Data Factory 的 Private Link
-您可以使用 [Azure 入口網站](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)、PowerShell 或 Azure CLI 來建立私人端點。
+您可以使用 [Azure 入口網站](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)來建立私人端點。
 
 您也可以移至 Azure 入口網站中的 Azure data factory，並建立私人端點，如下所示：
 
@@ -84,7 +84,7 @@ Azure Data Factory 服務的通訊會通過 Private Link 並協助提供安全�
 > [!NOTE]
 > 您仍然可以在停用公用網路存取之後，透過公用網路存取 Azure Data Factory 入口網站。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [使用 Azure Data Factory UI 來建立資料處理站](quickstart-create-data-factory-portal.md)
 - [Azure Data Factory 簡介](introduction.md)

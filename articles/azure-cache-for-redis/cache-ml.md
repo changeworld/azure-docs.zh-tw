@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 54109d5889ae2c08f444a3a089386d413bf4262b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9731455edf0afbe4c0768ae40a51316ac71ad94
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650182"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537570"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>使用 Azure Cache for Redis 將機器學習模型部署到 Azure Functions 
 
@@ -24,10 +24,10 @@ Azure Cache for Redis 的效能和可調整性，與 Azure Machine Learning 模�
 >
 
 ## <a name="prerequisites"></a>必要條件
-* Azure 訂用帳戶- [免費建立一個](https://azure.microsoft.com/free/)訂用帳戶。
-* Azure Machine Learning 工作區。 如需詳細資訊，請參閱 [建立工作區](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace) 文章。
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
-* 在您的工作區中註冊的已定型機器學習模型。 如果您沒有模型，請使用 [影像分類教學課程：定型模型](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml) 來定型和註冊模型。
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)。
+* Azure Machine Learning 工作區。 如需詳細資訊，請參閱 [建立工作區](../machine-learning/how-to-manage-workspace.md) 文章。
+* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
+* 在您的工作區中註冊的已定型機器學習模型。 如果您沒有模型，請使用 [影像分類教學課程：定型模型](../machine-learning/tutorial-train-models-with-aml.md) 來定型和註冊模型。
 
 > [!IMPORTANT]
 > 本文中的程式碼片段假設您已設定下列變數：
@@ -36,12 +36,12 @@ Azure Cache for Redis 的效能和可調整性，與 Azure Machine Learning 模�
 > * `model` -即將部署的註冊模型。
 > * `inference_config` -模型的推斷設定。
 >
-> 如需有關設定這些變數的詳細資訊，請參閱 [使用 Azure Machine Learning 部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)。
+> 如需有關設定這些變數的詳細資訊，請參閱 [使用 Azure Machine Learning 部署模型](../machine-learning/how-to-deploy-and-where.md)。
 
 ## <a name="create-an-azure-cache-for-redis-instance"></a>建立 Azure Cache for Redis 執行個體 
 您將能夠使用任何基本、標準或高階快取實例，將機器學習模型部署至 Azure Functions。 若要建立快取實例，請遵循下列步驟。  
 
-1. 移至 Azure 入口網站首頁，或開啟側邊欄功能表，然後選取 [ **建立資源**]。 
+1. 移至 Azure 入口網站首頁，或開啟側邊欄功能表，然後選取 [ **建立資源** ]。 
    
 1. 在 [新增]  頁面上選取 [資料庫]  ，然後選取 [Azure Cache for Redis]  。
 
@@ -51,7 +51,7 @@ Azure Cache for Redis 的效能和可調整性，與 Azure Machine Learning 模�
    
    | 設定      | 建議的值  | 描述 |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS 名稱** | 輸入全域唯一名稱。 | 快取名稱必須是 1 到 63 個字元的字串，且只能包含數字、字母或連字號。 名稱的開頭和結尾必須是數字或字母，且不可包含連續的連字號。 您的快取執行個體*主機名稱*將是 *\<DNS name>.redis.cache.windows.net*。 | 
+   | **DNS 名稱** | 輸入全域唯一名稱。 | 快取名稱必須是 1 到 63 個字元的字串，且只能包含數字、字母或連字號。 名稱的開頭和結尾必須是數字或字母，且不可包含連續的連字號。 您的快取執行個體 *主機名稱* 將是 *\<DNS name>.redis.cache.windows.net* 。 | 
    | **訂用帳戶** | 下拉並選取您的訂用帳戶。 | 這個新的 Azure Cache for Redis 執行個體建立所在的訂用帳戶。 | 
    | **資源群組** | 下拉並選取資源群組，或選取 [新建]  並輸入新的資源群組名稱。 | 用來建立快取和其他資源的資源群組名稱。 將所有的應用程式資源放在一個資源群組中，您將可輕鬆地一併管理或刪除這些資源。 | 
    | **位置** | 下拉並選取位置。 | 選取其他將使用快取的服務附近的[區域](https://azure.microsoft.com/regions/)。 |
@@ -71,24 +71,24 @@ Azure Cache for Redis 的效能和可調整性，與 Azure Machine Learning 模�
 
 1. 在 [標記] 索引標籤中，如果您想要分類資源，可以選擇性地輸入名稱和值。 
 
-1. 選取 [檢閱 + 建立] ****。 您會移至 [檢閱 + 建立] 索引標籤，其中 Azure 會驗證您的組態。
+1. 選取 [檢閱 + 建立]。 您會移至 [檢閱 + 建立] 索引標籤，其中 Azure 會驗證您的組態。
 
 1. 出現綠色的「通過驗證」訊息之後，請選取 [建立]。
 
-建立快取需要一些時間。 您可以在 Azure Cache for Redis 的 [概觀] ****   頁面上監視進度。 當 [狀態] **** 顯示為 [執行中]  **** 時，表示快取已可供使用。 
+建立快取需要一些時間。 您可以在 Azure Cache for Redis 的 [概觀] 頁面上監視進度。 當 [狀態] 顯示為 [執行中] 時，表示快取已可供使用。 
 
 ## <a name="prepare-for-deployment"></a>準備開始部署
 
 在部署之前，您必須定義以 web 服務的形式執行模型所需的內容。 下列清單描述部署所需的核心專案：
 
-* __輸入腳本__。 此腳本會接受要求、使用模型來評分要求，並傳回結果。
+* __輸入腳本__ 。 此腳本會接受要求、使用模型來評分要求，並傳回結果。
 
     > [!IMPORTANT]
     > 專案腳本為您的模型所特有;它必須瞭解傳入要求資料的格式、您的模型所預期的資料格式，以及傳回給用戶端的資料格式。
     >
     > 如果要求資料的格式不能供您的模型使用，腳本就可以將它轉換成可接受的格式。 它也可以在將回應傳回給用戶端之前，先將它轉換。
     >
-    > 依預設，封裝函式時，會將輸入視為文字。 如果您有興趣針對 Blob 觸發程式) 使用輸入 (的原始位元組，您應該使用 [AMLRequest 來接受原始資料](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-advanced-entry-script#binary-data)。
+    > 依預設，封裝函式時，會將輸入視為文字。 如果您有興趣針對 Blob 觸發程式) 使用輸入 (的原始位元組，您應該使用 [AMLRequest 來接受原始資料](../machine-learning/how-to-deploy-advanced-entry-script.md#binary-data)。
 
 針對 run 函式，請確定它會連接到 Redis 端點。
 
@@ -106,12 +106,12 @@ def init():
     model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
     model = joblib.load(model_path)
 
-@input_schema('data', NumpyParameterType(input_sample))
+@input_schema('data', NumpyParameterType(input_sample))
 @output_schema(NumpyParameterType(output_sample))
 def run(data):
     try:
-        input = azrediscache.get(data)
-        result = model.predict(input)
+        input = azrediscache.get(data)
+        result = model.predict(input)
         data = np.array(json.loads(data))
         result = model.predict(data)
         # You can return any data type, as long as it is JSON serializable.
@@ -121,14 +121,14 @@ def run(data):
         return error
 ```
 
-如需輸入腳本的詳細資訊，請參閱 [定義評分程式碼。](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where?tabs=python#define-an-entry-script)
+如需輸入腳本的詳細資訊，請參閱 [定義評分程式碼。](../machine-learning/how-to-deploy-and-where.md?tabs=python#define-an-entry-script)
 
-* 執行輸入腳本或模型所**需的相依性，例如**helper 腳本或 Python/Conda 套件
+* 執行輸入腳本或模型所 **需的相依性，例如** helper 腳本或 Python/Conda 套件
 
-這些實體會封裝成 __推斷__設定。 推斷設定會參考輸入指令碼和其他相依性。
+這些實體會封裝成 __推斷__ 設定。 推斷設定會參考輸入指令碼和其他相依性。
 
 > [!IMPORTANT]
-> 建立用於 Azure Functions 的推斷設定時，您必須使用 [環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true) 物件。 請注意，如果您要定義自訂環境，您必須將 >= 1.0.45 版 azureml-defaults 版的 azureml 預設值新增為 pip 相依性。 此套件包含將模型裝載為 Web 服務所需的功能。 下列範例示範如何建立環境物件，並將它與推斷設定搭配使用：
+> 建立用於 Azure Functions 的推斷設定時，您必須使用 [環境](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py) 物件。 請注意，如果您要定義自訂環境，您必須將 >= 1.0.45 版 azureml-defaults 版的 azureml 預設值新增為 pip 相依性。 此套件包含將模型裝載為 Web 服務所需的功能。 下列範例示範如何建立環境物件，並將它與推斷設定搭配使用：
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -144,12 +144,12 @@ def run(data):
 > inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
 > ```
 
-如需環境的詳細資訊，請參閱 [建立和管理用於定型和部署的環境](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)。
+如需環境的詳細資訊，請參閱 [建立和管理用於定型和部署的環境](../machine-learning/how-to-use-environments.md)。
 
-如需有關推斷設定的詳細資訊，請參閱 [使用 Azure Machine Learning 部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where?tabs=python#define-an-inference-configuration)。
+如需有關推斷設定的詳細資訊，請參閱 [使用 Azure Machine Learning 部署模型](../machine-learning/how-to-deploy-and-where.md?tabs=python#define-an-inference-configuration)。
 
 > [!IMPORTANT]
-> 部署至函式時，您不需要建立 __部署__設定。
+> 部署至函式時，您不需要建立 __部署__ 設定。
 
 ## <a name="install-the-sdk-preview-package-for-functions-support"></a>安裝 SDK preview 套件以取得函數支援
 
@@ -161,10 +161,10 @@ pip install azureml-contrib-functions
 
 ## <a name="create-the-image"></a>建立映像
 
-若要建立部署至 Azure Functions 的 Docker 映射，請使用 [contrib](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true) ，或您想要使用之觸發程式的特定套件函式。 下列程式碼片段示範如何使用來自模型和推斷設定的 HTTP 觸發程式來建立新的封裝：
+若要建立部署至 Azure Functions 的 Docker 映射，請使用 [contrib](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) ，或您想要使用之觸發程式的特定套件函式。 下列程式碼片段示範如何使用來自模型和推斷設定的 HTTP 觸發程式來建立新的封裝：
 
 > [!NOTE]
-> 程式碼片段假設 `model` 包含已註冊的模型，且其中 `inference_config` 包含推斷環境的設定。 如需詳細資訊，請參閱 [使用 Azure Machine Learning 部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)。
+> 程式碼片段假設 `model` 包含已註冊的模型，且其中 `inference_config` 包含推斷環境的設定。 如需詳細資訊，請參閱 [使用 Azure Machine Learning 部署模型](../machine-learning/how-to-deploy-and-where.md)。
 
 ```python
 from azureml.contrib.functions import package
@@ -178,7 +178,7 @@ print(model_package.location)
 若 `show_output=True` 為，則會顯示 Docker 組建進程的輸出。 程式完成後，就會在您工作區的 Azure Container Registry 中建立映射。 建立映射之後，就會顯示 Azure Container Registry 中的位置。 傳回的位置格式為 `<acrinstance>.azurecr.io/package@sha256:<imagename>` 。
 
 > [!NOTE]
-> 函數的封裝目前支援 HTTP 觸發程式、Blob 觸發程式和服務匯流排觸發程式。 如需觸發程式的詳細資訊，請參閱 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob-trigger#blob-name-patterns)系結。
+> 函數的封裝目前支援 HTTP 觸發程式、Blob 觸發程式和服務匯流排觸發程式。 如需觸發程式的詳細資訊，請參閱 [Azure Functions](../azure-functions/functions-bindings-storage-blob-trigger.md#blob-name-patterns)系結。
 
 > [!IMPORTANT]
 > 儲存位置資訊，因為它會在部署映射時使用。
@@ -209,7 +209,7 @@ print(model_package.location)
     }
     ```
 
-    儲存使用者 __名稱__ 和其中一個 __密碼__的值。
+    儲存使用者 __名稱__ 和其中一個 __密碼__ 的值。
 
 1. 如果您還沒有資源群組或 app service 方案可部署服務，則下列命令會示範如何建立兩者：
 
@@ -288,7 +288,7 @@ print(model_package.location)
 我們現在會執行並測試 Azure 函數 HTTP 觸發程式。
 
 1. 在 Azure 入口網站中，移至您的 Azure 函數應用程式。
-1. 在 [開發人員] 底下，選取 [程式 **代碼 + 測試**]。 
+1. 在 [開發人員] 底下，選取 [程式 **代碼 + 測試** ]。 
 1. 選取右側的 [ **輸入** ] 索引標籤。 
 1. 按一下 [ **執行** ] 按鈕以測試 AZURE 函數 HTTP 觸發程式。 
 
@@ -305,18 +305,17 @@ print(model_package.location)
 
 ### <a name="to-delete-a-resource-group"></a>刪除資源群組
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)，然後選取 [資源群組]****。
+1. 登入  。
 
-2. 在 [依名稱篩選...]**** 方塊中，並輸入您的資源群組名稱。 在資源群組的結果清單中，選取 **...**，然後選取 [刪除資源群組]****。
+2. 在 [依名稱篩選...]  方塊中，並輸入您的資源群組名稱。 在資源群組的結果清單中，選取  。
 
-系統將會要求您確認是否刪除資源群組。 輸入您的資源群組名稱以進行確認，然後選取 [刪除]****。
+系統將會要求您確認是否刪除資源群組。 輸入您的資源群組名稱以進行確認，然後選取 [刪除]  。
 
 不久後，系統便會刪除該資源群組及其所有的資源。
 
 ## <a name="next-steps"></a>後續步驟 
 
-* 深入瞭解 [Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-overview)
-* 瞭解如何在 [函數](/azure/azure-functions/functions-create-function-linux-custom-image) 檔中設定函數應用程式。
-* [API 參考](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py&preserve-view=true) 
-* 建立 [使用 Azure Cache for Redis 的 Python 應用程式](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-python-get-started)
-
+* 深入瞭解 [Azure Cache for Redis](./cache-overview.md)
+* 瞭解如何在 [函數](../azure-functions/functions-create-function-linux-custom-image.md) 檔中設定函數應用程式。
+* [API 參考](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) 
+* 建立 [使用 Azure Cache for Redis 的 Python 應用程式](./cache-python-get-started.md)

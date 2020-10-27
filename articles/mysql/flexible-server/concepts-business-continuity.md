@@ -1,17 +1,17 @@
 ---
-title: 使用適用於 MySQL 的 Azure 資料庫彈性伺服器的商務持續性總覽
+title: 商務持續性總覽-適用於 MySQL 的 Azure 資料庫彈性的伺服器
 description: 瞭解適用於 MySQL 的 Azure 資料庫彈性伺服器的商務持續性概念
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 0c1afaa7d2d7971b2570914aa7c69fa7c666ae46
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 833031a787f8571a8f8aea8e536410d4abcca298
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107839"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546410"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql---flexible-server-preview"></a>使用適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽) 來瞭解商務持續性
 
@@ -22,8 +22,7 @@ ms.locfileid: "92107839"
 
 下表說明彈性伺服器所提供的功能。
 
-
-| **功能** | **說明** | **限制** |
+| **功能** | **描述** | **限制** |
 | ---------- | ----------- | ------------ |
 | **備份 & 復原** | 彈性伺服器會自動執行資料庫檔案的每日備份，並持續備份交易記錄。 備份可以保留1到35天之間的任何時間。 您將能夠將資料庫伺服器還原到備份保留期限內的任何時間點。 復原時間會取決於要還原的資料大小，以及執行記錄復原的時間。 如需詳細資料，請參閱 [概念-備份和還原](./concepts-backup-restore.md) 。 |備份資料會保留在區域內 |
 | **本機多餘備份** | 彈性的伺服器備份會自動並安全地儲存在區域和相同可用性區域內的本機多餘儲存體中。 本機多餘的備份會在主要區域中的單一實體位置內，將伺服器備份資料檔案複寫三次。 本地多餘的備份儲存體在指定的一年內提供至少 99.999999999% (11 個九) 物件的持久性。 如需詳細資料，請參閱 [概念-備份和還原](./concepts-backup-restore.md) 。| 適用于所有區域 |
@@ -34,17 +33,18 @@ ms.locfileid: "92107839"
 > 在預覽期間，不會提供任何執行時間、RTO 和 RPO SLA。 本頁面提供的詳細資料僅供您的資訊和規劃之用。
 
 ## <a name="planned-downtime-mitigation"></a>規劃的停機時間緩和
+
 以下是一些會導致停機的規劃維護案例：
 
 | **案例** | **處理**|
 | :------------ | :----------- |
-| **計算調整 (使用者) **| 當您執行計算調整規模作業時，會使用調整的計算設定來布建新的彈性伺服器。 在現有的資料庫伺服器中，允許使用中的檢查點完成，用戶端連接已清空，任何未認可的交易都會取消，然後關閉。 然後，儲存體會附加至新的伺服器，並在接受用戶端連線之前，視需要啟動資料庫以執行復原。 |
-| ** (Azure) 的新軟體部署 ** | 新推出的功能或錯誤修正會在服務的規劃維護期間自動發生，而且您可以排程這些活動發生的時間。 如需詳細資訊，請參閱 [檔](https://aka.ms/servicehealthpm)集，也請檢查您的 [入口網站](https://aka.ms/servicehealthpm) |
-| ** (Azure) 的次要版本升級 ** | 適用於 MySQL 的 Azure 資料庫會自動將資料庫伺服器修補為 Azure 所決定的次要版本。 它會在服務的已規劃維護過程中發生。 這會導致短暫的停機時間（以秒為單位），而且資料庫伺服器會自動以新的次要版本重新開機。 如需詳細資訊，請參閱 [檔](https://docs.microsoft.com/azure/mysql/concepts-monitoring#planned-maintenance-notification)集，也請檢查您的 [入口網站](https://aka.ms/servicehealthpm)。|
+| **計算調整 (使用者)**| 當您執行計算調整規模作業時，會使用調整的計算設定來布建新的彈性伺服器。 在現有的資料庫伺服器中，允許使用中的檢查點完成，用戶端連接已清空，任何未認可的交易都會取消，然後關閉。 然後，儲存體會附加至新的伺服器，並在接受用戶端連線之前，視需要啟動資料庫以執行復原。 |
+| **(Azure) 的新軟體部署** | 新推出的功能或錯誤修正會在服務的規劃維護期間自動發生，而且您可以排程這些活動發生的時間。 如需詳細資訊，請參閱 [檔](https://aka.ms/servicehealthpm)集，也請檢查您的 [入口網站](https://aka.ms/servicehealthpm) |
+| **(Azure) 的次要版本升級** | 適用於 MySQL 的 Azure 資料庫會自動將資料庫伺服器修補為 Azure 所決定的次要版本。 它會在服務的已規劃維護過程中發生。 這會導致短暫的停機時間（以秒為單位），而且資料庫伺服器會自動以新的次要版本重新開機。 如需詳細資訊，請參閱 [檔](../concepts-monitoring.md#planned-maintenance-notification)集，也請檢查您的 [入口網站](https://aka.ms/servicehealthpm)。|
 
-當彈性伺服器設定了 **區域冗余高可用性**時，有彈性的伺服器會先在待命伺服器上執行作業，然後在不進行容錯移轉的主伺服器上執行作業。 如需詳細資訊，請參閱 [概念-高可用性](./concepts-high-availability.md) 。
+當彈性伺服器設定了 **區域冗余高可用性** 時，有彈性的伺服器會先在待命伺服器上執行作業，然後在不進行容錯移轉的主伺服器上執行作業。 如需詳細資訊，請參閱 [概念-高可用性](./concepts-high-availability.md) 。
 
-##  <a name="unplanned-downtime-mitigation"></a>非計畫的停機風險降低
+## <a name="unplanned-downtime-mitigation"></a>非計畫的停機風險降低
 
 未預期的停機時間可能會因未預期的失敗而發生，包括基礎硬體錯誤、網路問題和軟體錯誤。 如果資料庫伺服器意外中斷，且如果設定高可用性 [HA]，則會啟用待命複本。 如果沒有，則會自動布建新的資料庫伺服器。 雖然無法避免非計畫的停機時間，但有彈性的伺服器可在資料庫伺服器和儲存層自動執行復原作業，而不需要人為介入，藉此減少停機時間。
 
@@ -60,12 +60,10 @@ ms.locfileid: "92107839"
 | **可用性區域失敗** | 雖然這是罕見的事件，但如果您想要從區域層級的失敗中復原，您可以使用備份來執行時間點復原，然後選擇 [自訂還原點] 以取得最新的資料。 新的彈性伺服器將會部署在另一個區域中。 還原所需的時間取決於先前的備份和要復原的交易記錄數目。 | 彈性的伺服器會執行自動容錯移轉至待命網站。 如需詳細資訊，請參閱「 [HA 概念」頁面](./concepts-high-availability.md) 。 |
 | **區域失敗** | 預覽版尚未支援跨區域複本和異地還原功能。 | |
 
-
 > [!IMPORTANT]
->  **無法**   還原已刪除的伺服器。 如果您刪除伺服器，所有屬於該伺服器的資料庫也會一併刪除，且無法復原。 使用[Azure 資源鎖定](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)   來協助防止意外刪除您的伺服器。
+> 已刪除的伺服器 **無法** 還原。 如果您刪除伺服器，所有屬於該伺服器的資料庫也會一併刪除，且無法復原。 使用 [Azure 資源鎖定](../../azure-resource-manager/management/lock-resources.md) 來協助防止意外刪除您的伺服器。
 
+## <a name="next-steps"></a>下一步
 
-## <a name="next-steps"></a>後續步驟
-
--   深入瞭解 [區域冗余高可用性](./concepts-high-availability.md)
--   瞭解[備份和](./concepts-backup-restore.md)復原
+- 深入瞭解 [區域冗余高可用性](./concepts-high-availability.md)
+- 瞭解[備份和](./concepts-backup-restore.md)復原

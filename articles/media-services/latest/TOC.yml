@@ -63,6 +63,7 @@
           href: protect-with-drm.md
         - name: 透過 Azure AD 保護內容
           href: azure-ad-content-protection.md
+          displayName: 'AAD, Active Directory'
     - name: REST
       items:
         - name: 編碼和串流遠端檔案 REST
@@ -129,8 +130,8 @@
         - name: 概觀
           href: analyzing-video-audio-files-concept.md
           displayName: 'analyze, analyzing, presets, jobs'
-        - name: 轉換和作業
-          href: transforms-jobs-concept.md
+    - name: 轉換和作業
+      href: transforms-jobs-concept.md
     - name: 即時串流
       items:
         - name: 概觀
@@ -265,6 +266,8 @@
       items:
         - name: 建立轉換
           href: cli-create-transform.md
+        - name: 使用 REST 建立基本的音訊轉換
+          href: how-to-create-basic-audio-transform.md
         - name: 建立作業
           href: cli-create-jobs.md
         - name: 使用本機檔案和 .NET 建立作業輸入

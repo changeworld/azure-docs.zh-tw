@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c011d1dc080bc3aedf0af96297f7d62784394dc4
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 01bfb31577b946de7782812cb0001938e2da0614
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425977"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537094"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-using-azure-cli"></a>使用 Azure CLI 建立及管理適用於 MariaDB 的 Azure 資料庫的 VNet 服務端點
 
@@ -28,7 +28,7 @@ ms.locfileid: "92425977"
 > VNet 服務端點的支援僅適用於一般用途伺服器和記憶體最佳化伺服器。
 
 ## <a name="configure-vnet-service-endpoints"></a>設定 VNet 服務端點
-[az network vnet](/cli/azure/network/vnet?view=azure-cli-latest) \(英文\) 命令會用來設定虛擬網路。
+[az network vnet](/cli/azure/network/vnet) \(英文\) 命令會用來設定虛擬網路。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -36,12 +36,12 @@ ms.locfileid: "92425977"
 
 如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0 版或更新版本。 若要查看所安裝的版本，請執行 `az --version` 命令。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。 
 
-若您在本機上執行 CLI，則需要使用 [az login](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) 命令登入您的帳戶。 請記下命令輸出中的**識別碼**屬性，以取得對應的訂用帳戶名稱。
+若您在本機上執行 CLI，則需要使用 [az login](/cli/azure/authenticate-azure-cli) 命令登入您的帳戶。 請記下命令輸出中的 **識別碼** 屬性，以取得對應的訂用帳戶名稱。
 ```azurecli-interactive
 az login
 ```
 
-如果您有多個訂用帳戶，請選擇資源計費的適當訂用帳戶。 使用 [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) 命令來選取您帳戶底下的特定訂用帳戶 ID。 以訂用帳戶之 **az login** 輸出中的**識別碼**屬性，替代訂用帳戶識別碼的預留位置。
+如果您有多個訂用帳戶，請選擇資源計費的適當訂用帳戶。 使用 [az account set](/cli/azure/account#az-account-set) 命令來選取您帳戶底下的特定訂用帳戶 ID。 以訂用帳戶之 **az login** 輸出中的 **識別碼** 屬性，替代訂用帳戶識別碼的預留位置。
 
 - 該帳戶必須擁有必要的權限，才能建立虛擬網路和服務端點。
 

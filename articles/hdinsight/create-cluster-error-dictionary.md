@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 08/24/2020
-ms.openlocfilehash: cae8647d970020a22d59dc49b058d43fe28dd00c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97cad12ad1854df37b54ff663385fe79ca15b7c2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816451"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543095"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight：叢集建立錯誤
 
@@ -24,7 +24,7 @@ ms.locfileid: "88816451"
 
 ## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>錯誤碼： DeploymentDocument ' CsmDocument_2_0 ' 驗證失敗
 
-**錯誤**：「無法存取腳本動作位置 \<SCRIPT ACTION URL\> URI：」
+**錯誤** ：「無法存取腳本動作位置 \<SCRIPT ACTION URL\> URI：」
 
 ### <a name="error-message-1"></a>錯誤訊息 1
 
@@ -84,9 +84,9 @@ HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL
 
 請確定 **VirtualNetworkId** 和子網值的格式正確。 若要取得 **VirtualNetworkId** 值：
 
-1. 前往 Azure 入口網站。
+1. 移至 Azure 入口網站。
 1. 選取虛擬網路。
-1. 選取 [ **屬性** ] 功能表項目。 **ResourceID**屬性值是**VirtualNetworkId**值。
+1. 選取 [ **屬性** ] 功能表項目。 **ResourceID** 屬性值是 **VirtualNetworkId** 值。
 
 以下是虛擬網路識別碼的範例：
 
@@ -106,7 +106,7 @@ HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL
 
 ### <a name="resolution"></a>解決方案
 
-因為腳本是您的自訂腳本，所以建議您針對問題進行疑難排解，並視需要重新執行腳本。 若要疑難排解腳本失敗，請檢查/var/lib/ambari-agent/* 資料夾中的記錄檔。 或者，在 Ambari UI 中開啟 [作業] 頁面，然後選取**Run_customscriptaction** **作業**以查看錯誤詳細資料。
+因為腳本是您的自訂腳本，所以建議您針對問題進行疑難排解，並視需要重新執行腳本。 若要疑難排解腳本失敗，請檢查/var/lib/ambari-agent/* 資料夾中的記錄檔。 或者，在 Ambari UI 中開啟 [作業] 頁面，然後選取 **Run_customscriptaction** **作業** 以查看錯誤詳細資料。
 
 ---
 
@@ -141,7 +141,7 @@ HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL
 如果您打算使用網路安全性群組來控制網路流量，請在安裝 HDInsight 之前採取下列動作：
 
 - 識別您要用於 HDInsight 的 Azure 區域。
-- 識別 HDInsight 所需的 IP 位址。 如需詳細資訊，請參閱 [HDInsight 管理 IP 位址](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)。
+- 識別 HDInsight 所需的 IP 位址。 如需詳細資訊，請參閱 [HDInsight 管理 IP 位址](./hdinsight-management-ip-addresses.md)。
   - 建立或修改您要安裝 HDInsight 之子網路的網路安全性群組。
   - 針對網路安全性群組，允許埠443上來自 IP 位址的輸入流量。 這種設定可確保 HDInsight 管理服務可以從虛擬網路外部連接到叢集。
 
@@ -161,7 +161,7 @@ HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL
 
 1. 開啟 Azure 入口網站。
 1. 移至您的儲存體帳戶。
-1. 查看 [存取控制] 底下的 [ **存取控制] (IAM) **。
+1. 查看 [存取控制] 底下的 [ **存取控制] (IAM)** 。
 1. 請確定使用者已獲指派「儲存體 Blob 資料參與者」角色或儲存體 Blob 資料擁有者角色。
 
 如需詳細資訊，請參閱在 [Data Lake Storage Gen2 帳戶上設定受控識別的許可權](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
@@ -172,7 +172,7 @@ HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL
 
 ### <a name="error"></a>錯誤
 
-「網路安全性群組的安全性規則/subscriptions/ \<SubscriptionID\> /resourceGroups/<資源組名 \> default/Providers/Microsoft. Network/networkSecurityGroups/ \<Network Security Group Name\> 已設定子網/subscriptions/ \<SubscriptionID\> /resourceGroups/ \<Resource Group name\> RG-westeurope-vnet-tomtom-default/providers/microsoft。 network/virtualNetworks/ \<Virtual Network Name\> /subnets/不 \<Subnet Name\> 允許必要的輸入和/或輸出連線能力。 如需詳細資訊，請造訪 [規劃 Azure HDInsight 的虛擬網路](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)，或聯絡支援人員。」
+「網路安全性群組的安全性規則/subscriptions/ \<SubscriptionID\> /resourceGroups/<資源組名 \> default/Providers/Microsoft. Network/networkSecurityGroups/ \<Network Security Group Name\> 已設定子網/subscriptions/ \<SubscriptionID\> /resourceGroups/ \<Resource Group name\> RG-westeurope-vnet-tomtom-default/providers/microsoft。 network/virtualNetworks/ \<Virtual Network Name\> /subnets/不 \<Subnet Name\> 允許必要的輸入和/或輸出連線能力。 如需詳細資訊，請造訪 [規劃 Azure HDInsight 的虛擬網路](./hdinsight-plan-virtual-network-deployment.md)，或聯絡支援人員。」
 
 ### <a name="cause"></a>原因
 
@@ -182,8 +182,8 @@ HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL
 
 如果您打算使用網路安全性群組來控制網路流量，請在安裝 HDInsight 之前採取下列動作：
 
-- 識別您打算用於 HDInsight 的 Azure 區域，並為您的區域建立 IP 位址的安全清單。 如需詳細資訊，請參閱 [健康情況和管理服務：特定區域](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions)。
-- 識別 HDInsight 所需的 IP 位址。 如需詳細資訊，請參閱 [HDInsight 管理 IP 位址](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)。
+- 識別您打算用於 HDInsight 的 Azure 區域，並為您的區域建立 IP 位址的安全清單。 如需詳細資訊，請參閱 [健康情況和管理服務：特定區域](./hdinsight-management-ip-addresses.md#health-and-management-services-specific-regions)。
+- 識別 HDInsight 所需的 IP 位址。 如需詳細資訊，請參閱 [HDInsight 管理 IP 位址](./hdinsight-management-ip-addresses.md)。
 - 建立或修改您要安裝 HDInsight 之子網路的網路安全性群組。 針對網路安全性群組，允許埠443上來自 IP 位址的輸入流量。 這種設定可確保 HDInsight 管理服務可以從虛擬網路外部連接到叢集。
 
 ---
@@ -216,7 +216,7 @@ HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL
 
 ### <a name="resolution"></a>解決方案
 
-如果您使用自訂的 VNet 網路安全性群組 (Nsg) 和使用者定義的路由 (Udr) ，請確定您的叢集可以與 HDInsight 管理服務進行通訊。 如需其他資訊，請參閱 [HDInsight 管理 IP 位址](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)。
+如果您使用自訂的 VNet 網路安全性群組 (Nsg) 和使用者定義的路由 (Udr) ，請確定您的叢集可以與 HDInsight 管理服務進行通訊。 如需其他資訊，請參閱 [HDInsight 管理 IP 位址](./hdinsight-management-ip-addresses.md)。
 
 ---
 
@@ -238,6 +238,6 @@ HDInsight 服務無法存取您在建立叢集要求中提供的腳本動作 URL
 
 ---
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-如需有關疑難排解叢集建立錯誤的詳細資訊，請參閱 [使用 Azure HDInsight 疑難排解叢集建立失敗](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-troubleshoot-cluster-creation-fails)。
+如需有關疑難排解叢集建立錯誤的詳細資訊，請參閱 [使用 Azure HDInsight 疑難排解叢集建立失敗](./hadoop/hdinsight-troubleshoot-cluster-creation-fails.md)。

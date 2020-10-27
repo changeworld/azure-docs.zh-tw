@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d67d6301137a90d287148131fb4b1be7731e15bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07be83527fa781f87ed1de06fa41bd6d08ee9dc4
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88585826"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426577"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>整合 Key Vault 與 Azure Private Link
 
@@ -51,7 +51,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 1. 在 [網路] 索引標籤中選取 [私人端點] 選項按鈕。
 1. 按一下 [+ 新增] 按鈕以新增私人端點。
 
-    ![映像](../media/private-link-service-1.png)
+    ![建立金鑰保存庫時所顯示第一個畫面的螢幕擷取畫面。](../media/private-link-service-1.png)
  
 1. 在 [建立私人端點] 刀鋒視窗的 [位置] 欄位中，選取您虛擬網路所在的區域。 
 1. 在 [名稱] 欄位中，建立可讓您識別此私人端點的描述性名稱。 
@@ -59,7 +59,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 1. 讓 [與私人區域 DNS 整合] 選項保持不變。  
 1. 選取 [確定]。
 
-    ![映像](../media/private-link-service-8.png)
+    ![顯示設定私人端點之重要欄位的螢幕擷取畫面。](../media/private-link-service-8.png)
  
 您現在能夠看到已設定的私人端點。 您現在可以選擇刪除和編輯此私人端點。 選取 [檢閱 + 建立] 按鈕並建立金鑰保存庫。 需要 5-10 分鐘的時間才能完成部署。 
 
@@ -74,12 +74,10 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 1. 選取頁面頂端的 [私人端點連線] 索引標籤
 1. 選取頁面頂端的 [+ 私人端點] 按鈕。
 
-    ![影像](../media/private-link-service-3.png) ![影像](../media/private-link-service-4.png)
+    ![顯示 [+ 私人端點] 按鈕的螢幕擷取畫面。](../media/private-link-service-3.png)
+    ![顯示建立私人端點之畫面的螢幕擷取畫面。](../media/private-link-service-4.png)
 
 您可以選擇使用此刀鋒視窗為任何 Azure 資源建立私人端點。 您可以使用下拉式功能表來選取資源類型，並選取您目錄中的資源，或者可以使用資源識別碼來連線到任何 Azure 資源。 讓 [與私人區域 DNS 整合] 選項保持不變。  
-
-![影像](../media/private-link-service-3.png)
-![影像](../media/private-link-service-4.png)
 
 ## <a name="establish-a-private-link-connection-to-key-vault-using-cli"></a>使用 CLI 建立 Key Vault 的私人連結連線
 
@@ -272,13 +270,13 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 > [!NOTE]
 > 每個訂閱所啟用私人端點的金鑰保存庫數目屬於可調整的限制。 以下顯示的限制為預設限制。 如果您想要求增加服務的限制，請傳送電子郵件至 akv-privatelink@microsoft.com。 我們會根據個案核准這些要求。
 
-**價格**：如需定價資訊，請參閱 [Azure 私人連結定價](https://azure.microsoft.com/pricing/details/private-link/)。
+**價格** ：如需定價資訊，請參閱 [Azure 私人連結定價](https://azure.microsoft.com/pricing/details/private-link/)。
 
-**限制**：Azure Key Vault 的私人端點僅適用於 Azure 公用區域。
+**限制** ：Azure Key Vault 的私人端點僅適用於 Azure 公用區域。
 
-**每個金鑰保存庫的私人端點數目上限**：64。
+**每個金鑰保存庫的私人端點數目上限** ：64。
 
-**每個訂閱所具有私人端點的金鑰保存庫預設數目**：400。
+**每個訂閱所具有私人端點的金鑰保存庫預設數目** ：400。
 
 如需詳細資訊，請參閱 [Azure Private Link 服務：限制](../../private-link/private-link-service-overview.md#limitations)
 

@@ -6,18 +6,18 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 13ba529dd3067ae16167f0d9c14c8f72b982f52c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 398b567e173691068e6dd932e075d6598dcfe601
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88010819"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537400"
 ---
 # <a name="azure-cache-for-redis-planning-faqs"></a>Azure Cache for Redis 規劃常見問題
 
 本文提供有關如何規劃 Azure Cache for Redis 的常見問題解答。
 
-## <a name="common-questions-and-answers"></a>常見問題和解答
+## <a name="common-questions-and-answers"></a>常見問題與答案
 本節涵蓋下列常見問題：
 
 * [Azure Redis 快取效能](#azure-cache-for-redis-performance)
@@ -84,12 +84,12 @@ Azure Cache for Redis 會將您的應用程式資料儲存在 VM 的 RAM 或 vm 
 
 如需深入了解搭配其他雲端使用「Azure Redis 快取」的考量，請參閱下列連結。
 
-- [Azure Government 資料庫 - Azure Redis 快取](../azure-government/documentation-government-services-database.md#azure-cache-for-redis)
+- [Azure Government 資料庫 - Azure Redis 快取](../azure-government/compare-azure-government-global-azure.md)
 - [Azure China 21Vianet 雲端 - Azure Cache for Redis](https://www.azure.cn/home/features/redis-cache/)
 - [Microsoft Azure (德國)](https://azure.microsoft.com/overview/clouds/germany/)
 
 如需有關在「Azure Government 雲端」、「Azure China 21Vianet 雲端」及「Microsoft Azure 德國」中搭配 PowerShell 使用「Azure Cache for Redis」的資訊，請參閱[如何連線到其他雲端 - Azure Cache for Redis PowerShell](cache-how-to-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 瞭解其他 [Azure Cache for Redis 常見問題](cache-faq.md)。

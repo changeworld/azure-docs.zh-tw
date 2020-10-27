@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 5a40faa1feac20ae096dfe39a5b1d109d4a11d3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31d0d7f3ecb9ddb8a52c8ddda8a076e32283ae16
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563993"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545713"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory 受控虛擬網路 (預覽) 
 
@@ -94,6 +94,7 @@ Azure Data Factory 支援私用連結。 Private link 可讓您存取 Azure (Paa
 - 美國東部
 - 美國東部 2
 - 美國中西部
+- 美國西部
 - 美國西部 2
 - 美國中南部
 - 美國中部
@@ -102,6 +103,7 @@ Azure Data Factory 支援私用連結。 Private link 可讓您存取 Azure (Paa
 - 英國南部
 - 東南亞
 - 澳大利亞東部
+- 澳大利亞東南部
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>透過來自 ADF 管理的虛擬網路的公用端點進行輸出通訊
 - 只會開啟埠443進行輸出通訊。
@@ -109,9 +111,9 @@ Azure Data Factory 支援私用連結。 Private link 可讓您存取 Azure (Paa
 
 ### <a name="linked-service-creation-of-azure-key-vault"></a>Azure Key Vault 的連結服務建立 
 - 當您建立 Azure Key Vault 的連結服務時，沒有 Azure Integration Runtime 參考。 因此，您無法在 Azure Key Vault 的連結服務建立期間建立私人端點。 但是，當您針對參考 Azure Key Vault 連結服務的資料存放區建立連結服務，而此連結的服務參考了已啟用受控虛擬網路的 Azure Integration Runtime 時，您就能夠在建立時建立 Azure Key Vault 連結服務的私人端點。 
-- Azure Key Vault 連結服務的**測試連接**作業只會驗證 URL 格式，但不會進行任何網路作業。
+- Azure Key Vault 連結服務的 **測試連接** 作業只會驗證 URL 格式，但不會進行任何網路作業。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 教學課程： [使用受控虛擬網路和私人端點建立複製管線](tutorial-copy-data-portal-private.md) 
 - 教學課程： [使用受控虛擬網路和私人端點建立對應資料流程管線](tutorial-data-flow-private.md)

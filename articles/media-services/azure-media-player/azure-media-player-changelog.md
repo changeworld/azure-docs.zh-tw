@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 09/23/2020
-ms.openlocfilehash: c63a8efc4bbcf6e5a124d439e6f9f91397e2fa53
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9d126f591da1bffebbfd29119c56927cfbb21dcd
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315077"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370571"
 ---
 # <a name="changelog"></a>變更記錄
 
@@ -198,7 +198,7 @@ ms.locfileid: "91315077"
 
 ### <a name="changes"></a>變更 ###
 
-- [變更][即時字幕] 已將 CEA 字幕的 API 名稱從 608 變更為 708。 如需詳細資訊，請參閱 [CEA708 字幕設定](/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)-->
+- [變更][即時字幕] 已將 CEA 字幕的 API 名稱從 608 變更為 708。 如需詳細資訊，請參閱 [CEA708 字幕設定](/javascript/api/azuremediaplayer/cea708captionssettings)-->
 
 ## <a name="220-official-release"></a>2.2.0 (正式發行) ##
 
@@ -703,7 +703,7 @@ ms.locfileid: "91315077"
 - [錯誤修正][AzureHtml5JS] 當時間戳記中有小型非精度時，即時播放會在 MPD 更新時凍結
 - [錯誤修正][AzureHtml5JS] 已減輕數個即時播放問題
 - [錯誤修正][AzureHtml5JS] 視窗大小啟發學習法開啟時排清緩衝區，並進入較高解析度的畫面
-- [錯誤修正][AzureHtml5JS] Chrome 現在會正確顯示已結束的事件。 已連結到先前已知的問題：*Chrome 在使用 AzureHtml5JS 時不會正確地傳送已結束的事件。基礎瀏覽器中發生問題。*
+- [錯誤修正][AzureHtml5JS] Chrome 現在會正確顯示已結束的事件。 已連結到先前已知的問題： *Chrome 在使用 AzureHtml5JS 時不會正確地傳送已結束的事件。基礎瀏覽器中發生問題。*
 - [錯誤修正][AzureHtml5JS] 已針對此技術停用 Safari，以解決 *OSX Yosemite 與 AzureHtml5JS 技術搭配使用時的播放問題。MSE 有實作問題。暫時的避免方法：強制以 flashSS、silverlightSS 作為這些使用者代理程式的技術順序*
 - [錯誤修正][FlashSS] 發生錯誤後會引發 loadstart
 
@@ -727,7 +727,7 @@ ms.locfileid: "91315077"
 - [錯誤修正] 已更新自動播放模式的 UI 載入體驗
 - [錯誤修正] AMD 載入器問題並定義方法衝突
 - [錯誤修正] WP 8.1 Cordova 應用程式載入問題
-- [錯誤修正] 受保護內容會查詢平台/技術支援的 ProtectionType，以選取適當的播放技術。  修正先前已知的問題：「_在 Chrome (桌面)/Safari 8 (在 OSX Yosemite 上) 上的 PlayReady 內容目前並未遞補到 Silverlight 播放器_」
+- [錯誤修正] 受保護內容會查詢平台/技術支援的 ProtectionType，以選取適當的播放技術。  修正先前已知的問題：「 _在 Chrome (桌面)/Safari 8 (在 OSX Yosemite 上) 上的 PlayReady 內容目前並未遞補到 Silverlight 播放器_ 」
 - [錯誤修正] WinServer 2012 R2 上有未攔截到的例外狀況，因為該機器上預設不會安裝媒體基礎。  嘗試使用未實作的 HTML 影片標籤 API，因而擲回錯誤。 目前的緩和措施是攔截該錯誤並傳回 false，而不是擲回錯誤。
 - [錯誤修正] 一律會在搜尋或 http 失敗後取得 init 區段，以防止播放期間發生問題
 - [錯誤修正] 關閉曲目模擬進度，並在發生錯誤時 timeupdates。

@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eb37afeb1b0707452d96c47b07a9ecadc17de14c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7e43dd8693a55db282b0333dc447be23373b1f8f
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426838"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546478"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-using-azure-cli"></a>使用 Azure CLI 建立及管理適用於 MySQL 的 Azure 資料庫的 VNet 服務端點
 虛擬網路 (VNet) 服務端點和規則會將虛擬網路的私人位址空間延伸到您適用於 MySQL 的 Azure 資料庫伺服器。 您可以使用 Azure 命令列介面 (CLI) 命令，來建立、更新、刪除、列出及顯示 VNet 服務端點和規則，以管理您的伺服器。 如需適用於 MySQL 的 Azure 資料庫的 VNet 服務端點概觀 (包含限制)，請參閱[適用於 MySQL 的 Azure 資料庫伺服器的 VNet 服務端點](concepts-data-access-and-security-vnet.md)。 VNet 服務端點在「適用於 MySQL 的 Azure 資料庫」的所有支援區域皆可使用。
@@ -28,7 +28,7 @@ ms.locfileid: "92426838"
 > 在 VNet 對等互連的案例中，如果流量流經含有服務端點的通用 VNet 閘道，且應流往同儕節點，請建立 ACL/VNet 規則以允許閘道 VNet 中的 Azure 虛擬機器存取適用於 MySQL 的 Azure 資料庫伺服器。
 
 ## <a name="configure-vnet-service-endpoints-for-azure-database-for-mysql"></a>設定適用於 MySQL 的 Azure 資料庫的 VNet 服務端點
-[az network vnet](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest) \(英文\) 命令會用來設定虛擬網路。
+[az network vnet](/cli/azure/network/vnet) \(英文\) 命令會用來設定虛擬網路。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -36,12 +36,12 @@ ms.locfileid: "92426838"
 
 如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0 版或更新版本。 若要查看所安裝的版本，請執行 `az --version` 命令。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。 
 
-若您在本機上執行 CLI，則需要使用 [az login](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) 命令登入您的帳戶。 請記下命令輸出中的**識別碼**屬性，以取得對應的訂用帳戶名稱。
+若您在本機上執行 CLI，則需要使用 [az login](/cli/azure/authenticate-azure-cli) 命令登入您的帳戶。 請記下命令輸出中的 **識別碼** 屬性，以取得對應的訂用帳戶名稱。
 ```azurecli-interactive
 az login
 ```
 
-如果您有多個訂用帳戶，請選擇資源計費的適當訂用帳戶。 使用 [az account set](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set) 命令來選取您帳戶底下的特定訂用帳戶 ID。 以訂用帳戶之 **az login** 輸出中的**識別碼**屬性，替代訂用帳戶識別碼的預留位置。
+如果您有多個訂用帳戶，請選擇資源計費的適當訂用帳戶。 使用 [az account set](/cli/azure/account#az-account-set) 命令來選取您帳戶底下的特定訂用帳戶 ID。 以訂用帳戶之 **az login** 輸出中的 **識別碼** 屬性，替代訂用帳戶識別碼的預留位置。
 
 - 該帳戶必須擁有必要的權限，才能建立虛擬網路和服務端點。
 
@@ -49,7 +49,7 @@ az login
 
 若要將 Azure 服務資源放到 VNet 保護，使用者必須擁有所要新增之子網路的 "Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/" 權限。 此權限預設會隨附在內建的服務管理員角色中，可藉由建立自訂角色加以修改。
 
-深入了解[內建角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)以及如何將特定權限指派給[自訂角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)。
+深入了解[內建角色](../role-based-access-control/built-in-roles.md)以及如何將特定權限指派給[自訂角色](../role-based-access-control/custom-roles.md)。
 
 VNet 和 Azure 服務資源不一定要位於相同訂用帳戶中。 如果 VNet 和 Azure 服務資源位於不同的訂用帳戶中，則資源應該位於相同的 Active Directory (AD) 租用戶底下。 請確定這兩個訂用帳戶都已註冊 **Microsoft.Sql** 資源提供者。 如需詳細資訊，請參閱 [resource-manager-registration][resource-manager-portal]
 
@@ -67,4 +67,3 @@ VNet 和 Azure 服務資源不一定要位於相同訂用帳戶中。 如果 VNe
 
 <!-- Link references, to text, Within this same GitHub repo. --> 
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md
-

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
-ms.openlocfilehash: 593d6861ee5913fffb25bfdea4829e1b1ce6ddc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5128ac7608dfce08471f7a7f97ed28a7971e62b2
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087396"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534442"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>在 HDInsight 上分析 Apache Kafka 的記錄
 
@@ -25,7 +25,7 @@ ms.locfileid: "86087396"
 
 叢集中的 Apache Kafka 記錄檔位於 `/var/log/kafka` 。 不論是否使用受控磁片，Kafka 記錄都不會儲存或保存在叢集生命週期內。 下表顯示可用的記錄。
 
-|Log |說明 |
+|記錄檔 |描述 |
 |---|---|
 |kafka|Kafka 進程的 stdout 和 stderr。 您會在此檔案中找到 Kafka 的啟動和關閉記錄。|
 |伺服器 .log|主要 Kafka 伺服器記錄檔。 所有 Kafka broker 記錄都會在這裡結束。|
@@ -50,7 +50,7 @@ ms.locfileid: "86087396"
 
 1. 從 [Azure 入口網站](https://portal.azure.com)中，選取您的 Log Analytics 工作區。
 
-2. 從左側功能表的 **[一般**] 底下，選取 [ **記錄**]。 您可以在這裡搜尋從 Kafka 收集而來的資料。 在查詢視窗中輸入查詢，然後選取 [ **執行**]。 以下是一些範例搜尋：
+2. 從左側功能表的 **[一般** ] 底下，選取 [ **記錄** ]。 您可以在這裡搜尋從 Kafka 收集而來的資料。 在查詢視窗中輸入查詢，然後選取 [ **執行** ]。 以下是一些範例搜尋：
 
 * 磁片使用量：
 
@@ -94,7 +94,7 @@ ms.locfileid: "86087396"
 
     您也可以輸入 `*` 來搜尋所有記錄的類型。 目前我們提供以下記錄的查詢：
 
-    | 記錄類型 | 說明 |
+    | 記錄類型 | 描述 |
     | ---- | ---- |
     | log\_kafkaserver\_CL | Kafka broker server.log |
     | log\_kafkacontroller\_CL | Kafka broker controller.log |
@@ -102,9 +102,9 @@ ms.locfileid: "86087396"
 
     ![Apache kafka log analytics cpu 使用量](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
-如需 Azure 監視器的詳細資訊，請參閱 [Azure 監視器總覽](../../log-analytics/log-analytics-get-started.md)和 [查詢 Azure 監視器記錄來監視 HDInsight](../hdinsight-hadoop-oms-log-analytics-use-queries.md)叢集。
+如需 Azure 監視器的詳細資訊，請參閱 [Azure 監視器總覽](../../azure-monitor/overview.md)和 [查詢 Azure 監視器記錄來監視 HDInsight](../hdinsight-hadoop-oms-log-analytics-use-queries.md)叢集。
 
 如需使用 Apache Kafka 的詳細資訊，請參閱下列文件：
 

@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
-ms.openlocfilehash: 0445aeaea6f99754469d5c0e46972aef2ed667aa
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fdfa8c767757aa17983a28d0d586698551326fe4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424207"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545322"
 ---
 # <a name="create-an-azure-cache-for-redis-using-an-arm-template"></a>使用 ARM 範本建立 Azure Cache for Redis
 
@@ -26,8 +26,8 @@ ms.locfileid: "92424207"
 
 ## <a name="prerequisites"></a>必要條件
 
-* **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
-* **儲存體帳戶**：若要建立一個帳戶，請參閱 [建立 Azure 儲存體帳戶](/azure/storage/common/storage-account-create?tabs=azure-portal)。 儲存體帳戶會用於診斷資料。
+* **Azure 訂用帳戶** ：如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/)。
+* **儲存體帳戶** ：若要建立一個帳戶，請參閱 [建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-portal)。 儲存體帳戶會用於診斷資料。
 
 ## <a name="review-the-template"></a>檢閱範本
 
@@ -46,7 +46,7 @@ ms.locfileid: "92424207"
 * [建立具有資料持續性的進階 Azure Cache for Redis](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
 * [建立部署到虛擬網路中的 Premium Redis 快取](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
 
-若要檢查最新的範本，請參閱 [Azure 快速入門範本](https://azure.microsoft.com/documentation/templates/) 並搜尋 _Azure Cache for Redis_。
+若要檢查最新的範本，請參閱 [Azure 快速入門範本](https://azure.microsoft.com/documentation/templates/) 並搜尋 _Azure Cache for Redis_ 。
 
 ## <a name="deploy-the-template"></a>部署範本
 
@@ -55,11 +55,11 @@ ms.locfileid: "92424207"
     [![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 1. 選取或輸入下列值：
 
-    * **訂用帳戶**：選取用來建立資料共用和其他資源的 Azure 訂用帳戶。
-    * **資源群組**：選取 [新建] 以建立新資源群組或選取現有的資源群組。
-    * **位置**：選取資源群組的位置。 儲存體帳戶和 Redis 快取必須位於相同的區域中。 根據預設，Redis 快取會使用與資源群組相同的位置。 因此，請指定與儲存體帳戶相同的位置。
-    * **Redis Cache name**：輸入 Redis 快取的名稱。
-    * **現有的診斷儲存體帳戶**：輸入儲存體帳戶的資源識別碼。 語法是 `/subscriptions/&lt;SUBSCRIPTION ID>/resourceGroups/&lt;RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/&lt;STORAGE ACCOUNT NAME>`。
+    * **訂用帳戶** ：選取用來建立資料共用和其他資源的 Azure 訂用帳戶。
+    * **資源群組** ：選取 [新建] 以建立新資源群組或選取現有的資源群組。
+    * **位置** ：選取資源群組的位置。 儲存體帳戶和 Redis 快取必須位於相同的區域中。 根據預設，Redis 快取會使用與資源群組相同的位置。 因此，請指定與儲存體帳戶相同的位置。
+    * **Redis Cache name** ：輸入 Redis 快取的名稱。
+    * **現有的診斷儲存體帳戶** ：輸入儲存體帳戶的資源識別碼。 語法是 `/subscriptions/&lt;SUBSCRIPTION ID>/resourceGroups/&lt;RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/&lt;STORAGE ACCOUNT NAME>`。
 
     其餘設定請使用預設值。
 1. 選取 [我同意上方所述的條款及條件]，然後選取 [購買]。

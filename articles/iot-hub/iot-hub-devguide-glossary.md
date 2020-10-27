@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e7765e077638c85c0cefe394a10cc22fe2b0b757
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 30ce2247207b34ab63df5b32b2a96f27256afdbb
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147786"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547787"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT 中樞術語詞彙
 
@@ -44,7 +44,7 @@ Azure IoT 中樞中的自動裝置管理，可將管理大群大型裝置的許�
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT 裝置 SDK
 
-適用於多種語言的_裝置 SDK_ 可讓您建立[裝置應用程式](#device-app)來與 IoT 中樞互動。 IoT 中樞教學課程示範如何使用這些裝置 SDK。 您可以在此 GitHub [儲存機制](https://github.com/Azure/azure-iot-sdks)中找到原始程式碼和進一步的裝置 SDK 資訊。
+適用於多種語言的 _裝置 SDK_ 可讓您建立 [裝置應用程式](#device-app)來與 IoT 中樞互動。 IoT 中樞教學課程示範如何使用這些裝置 SDK。 您可以在此 GitHub [儲存機制](https://github.com/Azure/azure-iot-sdks)中找到原始程式碼和進一步的裝置 SDK 資訊。
 
 ## <a name="azure-iot-explorer"></a>Azure IoT Explorer
 
@@ -52,7 +52,7 @@ Azure IoT 中樞中的自動裝置管理，可將管理大群大型裝置的許�
 
 ## <a name="azure-iot-service-sdks"></a>Azure IoT 服務 SDK
 
-適用於多種語言的_服務 SDK_ 可讓您建立[後端應用程式](#back-end-app) 來與 IoT 中樞互動。 IoT 中樞教學課程示範如何使用這些服務 SDK。 您可以在此 GitHub [儲存機制](https://github.com/Azure/azure-iot-sdks)中找到原始程式碼和進一步的服務 SDK 資訊。
+適用於多種語言的 _服務 SDK_ 可讓您建立 [後端應用程式](#back-end-app) 來與 IoT 中樞互動。 IoT 中樞教學課程示範如何使用這些服務 SDK。 您可以在此 GitHub [儲存機制](https://github.com/Azure/azure-iot-sdks)中找到原始程式碼和進一步的服務 SDK 資訊。
 
 ## <a name="azure-iot-tools"></a>Azure IoT Tools
 
@@ -60,7 +60,7 @@ Azure IoT 中樞中的自動裝置管理，可將管理大群大型裝置的許�
 
 ## <a name="azure-portal"></a>Azure 入口網站
 
-[Microsoft Azure 入口網站](https://portal.azure.com)是您可以在其中布建和管理 Azure 資源的中央位置。 它會使用_刀鋒視窗_來組織其內容。
+[Microsoft Azure 入口網站](https://portal.azure.com)是您可以在其中布建和管理 Azure 資源的中央位置。 它會使用 _刀鋒視窗_ 來組織其內容。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -102,9 +102,9 @@ Azure IoT 中樞中的自動裝置管理，可將管理大群大型裝置的許�
 
 您可以在應用程式程式碼中使用連接字串，以封裝連接至端點所需的資訊。 連接字串通常包含端點位址和安全性資訊，但連接字串的格式會因服務而不同。 IoT 中樞服務有兩種相關的連接字串︰
 
-- 「裝置連接字串」** 可讓裝置連接至 IoT 中樞上的裝置對向端點。
+- 「裝置連接字串」  可讓裝置連接至 IoT 中樞上的裝置對向端點。
 
-- 「IoT 中樞連接字串」** 可讓後端應用程式連接至 IoT 中樞上的服務對向端點。
+- 「IoT 中樞連接字串」  可讓後端應用程式連接至 IoT 中樞上的服務對向端點。
 
 ## <a name="custom-endpoints"></a>自訂端點
 
@@ -218,7 +218,7 @@ IoT 中樞是一項完全受控的 Azure 服務，可在數百萬個裝置和一
 
 ## <a name="iot-hub-metrics"></a>IoT 中樞計量
 
-[IoT 中樞計量](iot-hub-metrics.md)可提供 [Azure 訂用帳戶](#subscription)中 IoT 中樞的狀態相關資料。 IoT 中樞度量可讓您評估服務及其連接之裝置的整體健全狀況。 IoT 中樞度量可協助您了解 IoT 中樞的情況並調查根本問題，而不需要連絡 Azure 支援人員。
+[IoT 中樞計量](monitor-iot-hub-reference.md#metrics)可提供 [Azure 訂用帳戶](#subscription)中 IoT 中樞的狀態相關資料。 IoT 中樞度量可讓您評估服務及其連接之裝置的整體健全狀況。 IoT 中樞度量可協助您了解 IoT 中樞的情況並調查根本問題，而不需要連絡 Azure 支援人員。 若要深入瞭解，請參閱 [監視 IoT 中樞](monitor-iot-hub.md)。
 
 ## <a name="iot-hub-query-language"></a>IoT 中樞查詢語言
 
@@ -308,7 +308,7 @@ SASL PLAIN 是 AMQP 通訊協定用來傳輸安全性權杖的通訊協定。
 
 ## <a name="shared-access-signature"></a>共用存取簽章
 
-共用存取簽章 (SAS) 是以 SHA-256 安全雜湊或 URI 為基礎的驗證機制。 SAS 驗證有兩個元件：「共用存取原則」__ 和「共用存取簽章」__ (通常稱為權杖)。 裝置可使用 SAS 向 IoT 中樞進行驗證。 [後端應用程式](#back-end-app)也可使用 SAS 向 IoT 中樞上的服務面向端點進行驗證。 您通常會將 SAS 權杖包含在[連接字串](#connection-string)中，以便應用程式用於建立連往 IoT 中樞的連線。
+共用存取簽章 (SAS) 是以 SHA-256 安全雜湊或 URI 為基礎的驗證機制。 SAS 驗證有兩個元件：「共用存取原則」  和「共用存取簽章」  (通常稱為權杖)。 裝置可使用 SAS 向 IoT 中樞進行驗證。 [後端應用程式](#back-end-app)也可使用 SAS 向 IoT 中樞上的服務面向端點進行驗證。 您通常會將 SAS 權杖包含在[連接字串](#connection-string)中，以便應用程式用於建立連往 IoT 中樞的連線。
 
 ## <a name="shared-access-policy"></a>共用存取原則
 
@@ -319,7 +319,7 @@ SASL PLAIN 是 AMQP 通訊協定用來傳輸安全性權杖的通訊協定。
 為了方便起見，許多 IoT 中樞教學課程都使用模擬裝置，讓您在本機電腦上執行範例。 相反地，[實體裝置](#physical-device)是實際的裝置，例如連接到 IoT 中樞的 Raspberry Pi。
 
 ## <a name="solution"></a>解決方案
-_方案_可意指包含一或多個專案的 Visual Studio 方案。 _方案_也可意指包含裝置、[裝置應用程式](#device-app)、IoT 中樞、其他 Azure 服務和[後端應用程式](#back-end-app)等元素的 IoT 方案。
+_方案_ 可意指包含一或多個專案的 Visual Studio 方案。 _方案_ 也可意指包含裝置、 [裝置應用程式](#device-app)、IoT 中樞、其他 Azure 服務和 [後端應用程式](#back-end-app)等元素的 IoT 方案。
 
 ## <a name="subscription"></a>訂用帳戶
 
@@ -339,7 +339,7 @@ Azure 訂用帳戶是發生帳單的地方。 您建立的每個 Azure 資源，
 
 ## <a name="token-service"></a>權杖服務
 
-您可以使用權杖服務來實作裝置的驗證機制。 建立具備 **DeviceConnect** 權限的 IoT 中樞[共用存取原則](#shared-access-policy)，以建立「裝置範圍」** 權杖。 這些權杖可讓裝置連接到 IoT 中樞。 裝置可使用自訂驗證機制來向權杖服務進行驗證。 如果裝置驗證成功，則權杖服務會發出 SAS 權杖以供裝置用來存取您的 IoT 中樞。
+您可以使用權杖服務來實作裝置的驗證機制。 建立具備  權杖。 這些權杖可讓裝置連接到 IoT 中樞。 裝置可使用自訂驗證機制來向權杖服務進行驗證。 如果裝置驗證成功，則權杖服務會發出 SAS 權杖以供裝置用來存取您的 IoT 中樞。
 
 ## <a name="twin-queries"></a>對應項查詢
 

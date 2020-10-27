@@ -11,12 +11,13 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: bfd9e08387a4de2220ef56afdd0ef79bd837ed4c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.custom: contperfq2
+ms.openlocfilehash: 158a82b43e573e5d34ec9a44c4a47cd1126de8ed
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070192"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424594"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>教學課程 - 建置 SCIM 端點並設定使用 Azure AD 的使用者佈建
 
@@ -44,7 +45,7 @@ SCIM 是兩個端點的標準化定義：/Users 端點和 /Groups 端點。 它�
 
 ## <a name="step-1-design-your-user-and-group-schema"></a>步驟 1:設計您的使用者和群組結構描述
 
-每個應用程式分別需要不同的屬性來建立使用者或群組。 藉由識別應用程式所需的物件 (使用者、群組) 和屬性 (名稱、管理員、職稱等) 開始進行整合。 SCIM 標準定義了用來管理使用者和群組的結構描述。 核心使用者結構描述只需要三個屬性：**id** (服務提供者定義的識別碼)、**externalId** (用戶端定義的識別碼)，以及 **meta** (服務提供者維護的唯讀中繼資料)。 其他所有屬性都是選擇性的。 除了核心使用者結構描述以外，SCIM 標準也會定義企業使用者延伸模組，以及用來擴充使用者結構描述以符合應用程式需求的模型。 例如，如果您的應用程式需要使用者的管理員，您可以使用企業使用者結構描述來收集使用者的管理員，並使用核心結構描述來收集使用者的電子郵件。 若要設計您的結構描述，請遵循下列步驟：
+每個應用程式分別需要不同的屬性來建立使用者或群組。 藉由識別應用程式所需的物件 (使用者、群組) 和屬性 (名稱、管理員、職稱等) 開始進行整合。 SCIM 標準定義了用來管理使用者和群組的結構描述。 核心使用者結構描述只需要三個屬性： **id** (服務提供者定義的識別碼)、 **externalId** (用戶端定義的識別碼)，以及 **meta** (服務提供者維護的唯讀中繼資料)。 其他所有屬性都是選擇性的。 除了核心使用者結構描述以外，SCIM 標準也會定義企業使用者延伸模組，以及用來擴充使用者結構描述以符合應用程式需求的模型。 例如，如果您的應用程式需要使用者的管理員，您可以使用企業使用者結構描述來收集使用者的管理員，並使用核心結構描述來收集使用者的電子郵件。 若要設計您的結構描述，請遵循下列步驟：
   1. 列出您的應用程式所需的屬性。 將您的需求細分為驗證所需的屬性 (例如 loginName 和 email)、管理使用者的生命週期所需的屬性 (例如狀態/作用中)，以及特定應用程式運作所需的其他屬性 (例如管理員、標籤)，可能會有幫助。
   2. 檢查這些屬性是否已定義於核心使用者結構描述或企業使用者結構描述中。 若有任何您需要但未涵蓋於核心或企業使用者結構描述中的屬性，您就必須定義使用者結構描述的延伸模組以涵蓋您所需的屬性。 在下列範例中，我們為使用者新增了延伸模組，以允許佈建使用者的「標籤」。 建議您先從核心和企業使用者結構描述開始著手，然後再擴充至其他自訂結構描述。  
   3. 將 SCIM 屬性對應至 Azure AD 中的使用者屬性。 如果您在 SCIM 端點中定義的某個屬性在 Azure AD 使用者結構描述上沒有明確的對應項目，則資料很有可能完全不會儲存在大部分租用戶的使用者物件上。 請考量此屬性在建立使用者時是否可以是選擇性的。 如果此屬性對於應用程式的運作至關重要，請引導租用戶管理員擴充其結構描述或使用延伸模組屬性，如以下所示的「標籤」屬性。
@@ -165,7 +166,7 @@ SCIM RFC 中定義了數個端點。 您可以從 /User 端點開始著手，然
     - `eq`
     - `and`
 * 對於 SCIM 中的結構元素請勿要求大小寫須相符 (特別是 `op` 作業值)，如 https://tools.ietf.org/html/rfc7644#section-3.5.2 中所定義。 Azure AD 會以 `Add`、`Replace` 和 `Remove` 的形式發出 'op' 的值。
-* Microsoft Azure AD 會要求提取隨機的使用者和群組，以確保端點和認證都是有效的。 此作業也可在 [Azure 入口網站](https://portal.azure.com)的**測試連線**流程中完成。 
+* Microsoft Azure AD 會要求提取隨機的使用者和群組，以確保端點和認證都是有效的。 此作業也可在 [Azure 入口網站](https://portal.azure.com)的 **測試連線** 流程中完成。 
 * 資源可供查詢的屬性，應在 [Azure 入口網站](https://portal.azure.com)中設定為應用程式的比對屬性。 如需詳細資訊，請參閱[自訂使用者佈建屬性對應](customize-application-attributes.md)
 * 在您的 SCIM 端點上支援 HTTPS
 
@@ -554,7 +555,7 @@ SCIM RFC 中定義了數個端點。 您可以從 /User 端點開始著手，然
 
 * 群組應一律以空的成員清單建立。
 * 可依 `displayName` 屬性來查詢群組。
-* 群組 PATCH 要求的更新應會在回應中產生 *HTTP 204 沒有內容*。 不建議傳回列出所有成員的本文。
+* 群組 PATCH 要求的更新應會在回應中產生 *HTTP 204 沒有內容* 。 不建議傳回列出所有成員的本文。
 * 不需要支援傳回群組的所有成員。
 
 #### <a name="create-group"></a>建立群組
@@ -758,13 +759,13 @@ Azure AD 佈建服務目前可在 AzureActiveDirectory 的 IP 範圍下運作，
    > [!Note]
    > 參考程式碼以「原狀」提供，目的是要協助您開始建置 SCIM 端點。 歡迎社群供稿，以協助建置和維護程式碼。
 
-解決方案是由兩個專案所組成：_Microsoft.SCIM_ 和 _Microsoft.SCIM.WebHostSample_。
+解決方案是由兩個專案所組成： _Microsoft.SCIM_ 和 _Microsoft.SCIM.WebHostSample_ 。
 
 _Microsoft.SCIM_ 專案是一個程式庫，會定義符合 SCIM 規格的 Web 服務元件。 此專案會宣告 _Microsoft.SCIM.IProvider_ 介面，要求會轉譯為對提供者方法的呼叫，而這些方法會設計為程式在身分識別存放區上運作。
 
 ![明細：要求轉譯為對提供者方法的呼叫](media/use-scim-to-provision-users-and-groups/scim-figure-3.png)
 
-_Microsoft.SCIM.WebHostSample_ 專案是一個 Visual Studio ASP.NET Core Web 應用程式，以_空白_範本為基礎。 此專案可讓範例程式碼獨立部署，裝載於容器中或在 Internet Information Services 內。 此外也會實作 _Microsoft.SCIM.IProvider_ 介面，將類別保存在記憶體中作為範例身分識別存放區。
+_Microsoft.SCIM.WebHostSample_ 專案是一個 Visual Studio ASP.NET Core Web 應用程式，以 _空白_ 範本為基礎。 此專案可讓範例程式碼獨立部署，裝載於容器中或在 Internet Information Services 內。 此外也會實作 _Microsoft.SCIM.IProvider_ 介面，將類別保存在記憶體中作為範例身分識別存放區。
 
 ```csharp
     public class Startup
@@ -809,7 +810,7 @@ SCIM 服務必須具有 HTTP 位址，而其伺服器驗證憑證的根憑證授
 
 在權杖中，會用 iss 宣告來識別簽發者，例如 `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"`。 在此範例中，宣告值的基礎位址 `https://sts.windows.net` 會將 Azure Active Directory 識別為簽發者，而相對位址區段 _cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_ 則是獲得權杖的 Azure Active Directory 租用戶的唯一識別碼。
 
-權杖的適用對象是應用程式在資源庫中的應用程式範本識別碼，在單一租用戶中註冊的每個應用程式，可能會收到與 SCIM 要求相同的 `iss` 宣告。 所有自訂應用程式的應用程式範本識別碼都是 _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_。 Azure AD 佈建服務所產生的權杖僅供測試之用。 請勿在生產環境中加以使用。
+權杖的適用對象是應用程式在資源庫中的應用程式範本識別碼，在單一租用戶中註冊的每個應用程式，可能會收到與 SCIM 要求相同的 `iss` 宣告。 所有自訂應用程式的應用程式範本識別碼都是 _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_ 。 Azure AD 佈建服務所產生的權杖僅供測試之用。 請勿在生產環境中加以使用。
 
 在範例程式碼中，會使用 Microsoft.AspNetCore.Authentication.JwtBearer 套件來驗證要求。 下列程式碼會強制使用 Azure Active Directory 針對指定的租用戶發出的持有人權杖，對任何服務端點的要求進行驗證：
 
@@ -883,7 +884,7 @@ https://docs.microsoft.com/aspnet/core/fundamentals/environments)
         ...
 ```
 
-請將 GET 要求傳送至權杖控制器以取得有效的持有人權杖，_GenerateJSONWebToken_ 方法會負責建立與針對開發而設定的參數相符的權杖：
+請將 GET 要求傳送至權杖控制器以取得有效的持有人權杖， _GenerateJSONWebToken_ 方法會負責建立與針對開發而設定的參數相符的權杖：
 
 ```csharp
         private string GenerateJSONWebToken()
@@ -915,7 +916,7 @@ https://docs.microsoft.com/aspnet/core/fundamentals/environments)
 
 ### <a name="handling-provisioning-and-deprovisioning-of-users"></a>處理使用者的佈建和取消佈建
 
-***範例 1.查詢服務中是否有相符的使用者***
+***範例 1.查詢服務中是否有相符的使用者** _
 
 Azure Active Directory 會查詢服務是否有 `externalId` 屬性值與 Azure AD 中使用者的 mailNickname 屬性值相符的使用者。 查詢會以類似於此範例的超文字傳輸通訊協定 (HTTP) 要求表示，其中，jyoung 是 Azure Active Directory 中使用者的 mailNickname 範例。
 
@@ -943,12 +944,12 @@ GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
 
 在範例查詢中，針對具有給定 `externalId` 屬性值的使用者，傳至 QueryAsync 方法的引數值為：
 
-* parameters.AlternateFilters.Count：1
+_ parameters.AlternateFilters.Count：1
 * parameters.AlternateFilters.ElementAt(0).AttributePath: "externalId"
 * parameters.AlternateFilters.ElementAt(0).ComparisonOperator：ComparisonOperator.Equals
 * parameters.AlternateFilter.ElementAt(0).ComparisonValue: "jyoung"
 
-***範例 2.佈建使用者***
+***範例 2.佈建使用者** _
 
 如果向 Web 服務查詢是否有 `externalId` 屬性值與使用者的 mailNickname 值相符的使用者時，回應未傳回任何使用者，Azure Active Directory 就會要求服務佈建與 Azure Active Directory 中的使用者對應的使用者。  以下是這類要求的範例： 
 
@@ -997,7 +998,7 @@ GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
 
 在佈建使用者的要求中，資源引數的值會是 Microsoft.SCIM.Core2EnterpriseUser 類別的執行個體 (定義於 Microsoft.SCIM.Schemas 程式庫中)。  如果佈建使用者的要求成功，則方法的實作應會傳回 Microsoft.SCIM.Core2EnterpriseUser 類別的執行個體，並將識別碼屬性的值設定為新佈建之使用者的唯一識別碼。  
 
-***範例 3.查詢使用者的目前狀態*** 
+_*_範例 3.查詢使用者的目前狀態_*_ 
 
 為了更新已知存在於前端為 SCIM 之身分識別存放區中的使用者，Azure Active Directory 會以類似下方的要求向服務要求該使用者的目前狀態，來繼續執行： 
 
@@ -1021,14 +1022,14 @@ GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
 
 在擷取使用者目前狀態之要求的範例中，提供作為參數引數值的物件具有的屬性值如下所示： 
   
-* 識別碼："54D382A4-2050-4C03-94D1-E769F1D15682"
+_ Identifier："54D382A4-2050-4C03-94D1-E769F1D15682"
 * SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-***範例 4.查詢要更新之參考屬性的值*** 
+***範例 4.查詢要更新之參考屬性的值** _ 
 
 如果要更新某個參考屬性，Azure Active Directory 就會查詢服務，以判斷以該服務作為前端之身分識別存放區中參考屬性目前的值，是否已經與 Azure Active Directory 中該屬性的值相符。 對於使用者，以這種方式可查詢目前值的唯一屬性會是管理員屬性。 下列範例說明要判斷使用者物件的管理員屬性目前是否具有某個值的要求：在範例程式碼中，要求會轉譯為對服務提供者的 QueryAsync 方法的呼叫。 提供物件的屬性值作為參數引數的值，如下所示： 
   
-* parameters.AlternateFilters.Count：2
+_ parameters.AlternateFilters.Count：2
 * parameters.AlternateFilters.ElementAt(x).AttributePath：「識別碼」
 * parameters.AlternateFilters.ElementAt(x).ComparisonOperator：ComparisonOperator.Equals
 * parameters.AlternateFilter.ElementAt(x).ComparisonValue："54D382A4-2050-4C03-94D1-E769F1D15682"
@@ -1040,7 +1041,7 @@ GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
 
 在此處，索引 x 的值可能會是 0，而索引 y 的值可能是 1，或 x 值可能是 1 而 y 的值可能是 0，視篩選查詢參數運算式的順序而定。   
 
-***範例 5.Azure AD 對 SCIM 服務發出以更新使用者的要求*** 
+***範例 5.Azure AD 對 SCIM 服務發出要求以更新使用者** _ 
 
 以下是由 Azure Active Directory 對 SCIM 服務發出要求來更新使用者的範例： 
 
@@ -1079,7 +1080,7 @@ GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
 
 在更新使用者之要求的範例中，提供作為修補程式引數值的物件具有這些屬性值： 
   
-* ResourceIdentifier.Identifier："54D382A4-2050-4C03-94D1-E769F1D15682"
+_ ResourceIdentifier.Identifier："54D382A4-2050-4C03-94D1-E769F1D15682"
 * ResourceIdentifier.SchemaIdentifier："urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 * (PatchRequest as PatchRequest2).Operations.Count：1
 * (PatchRequest as PatchRequest2).Operations.ElementAt(0).OperationName：OperationName.Add
@@ -1088,7 +1089,7 @@ GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
 * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Reference: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
 * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Value：2819c223-7f76-453a-919d-413861904646
 
-***範例 6.取消佈建使用者***
+***範例 6.取消佈建使用者** _
 
 若要將使用者從前端為 SCIM 服務的身分識別存放區中取消佈建，Azure AD 會傳送像以下的要求：
 
@@ -1111,7 +1112,7 @@ GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
 
 提供作為 resourceIdentifier 引數值的物件，在要取消佈建使用者之要求的範例中，會具有這些屬性值： 
 
-* ResourceIdentifier.Identifier："54D382A4-2050-4C03-94D1-E769F1D15682"
+_ ResourceIdentifier.Identifier："54D382A4-2050-4C03-94D1-E769F1D15682"
 * ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
 ## <a name="step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client"></a>步驟 4：整合您的 SCIM 端點與 Azure AD SCIM 用戶端
@@ -1146,8 +1147,8 @@ Azure AD 可設定為將已指派的使用者和群組自動佈建至實作 [SCI
 7. 在 [租用戶 URL] 欄位中，輸入應用程式 SCIM 端點的 URL。 範例： `https://api.contoso.com/scim/`
 8. 如果 SCIM 端點需要來自非 Azure AD 簽發者的 OAuth 持有人權杖，那麼便將所需的 OAuth 持有人權杖複製到選擇性 [祕密權杖] 欄位。 如果將此欄位保留空白，則 Azure AD 會在每個要求包含從 Azure AD 簽發的 OAuth 持有人權杖。 應用程式若使用 Azure AD 作為識別提供者，便可以驗證此 Azure AD 簽發的權杖。 
    > [!NOTE]
-   > ***不***建議將此欄位保留空白並使用 Azure AD 所產生的權杖。 此選項主要供測試之用。
-9. 選取 [測試連線]，讓 Azure Active Directory 嘗試連線至 SCIM 端點。 如果嘗試失敗，將會顯示錯誤資訊。  
+   > * *_不_* _建議將此欄位保留空白並使用 Azure AD 所產生的權杖。 此選項主要供測試之用。
+9. 選取 [測試連線]*，讓 Azure Active Directory 嘗試連線至 SCIM 端點。 如果嘗試失敗，將會顯示錯誤資訊。  
 
     > [!NOTE]
     > [測試連線] 會查詢 SCIM 端點中是否有不存在的使用者，並使用隨機 GUID 作為 Azure AD 設定中選取的比對屬性。 預期的正確回應是 HTTP 200 OK 和空白的 SCIM ListResponse 訊息。
@@ -1199,10 +1200,10 @@ SCIM 規格並未定義 SCIM 特有的驗證和授權機制。 其採用現有�
 > [!NOTE]
 > 不建議您在 Azure AD 佈建設定自訂應用程式 UI 中將 [權杖] 欄位保留為空白。 產生的權杖主要供測試之用。
 
-**OAuth 授權碼授與流程：** 佈建服務支援[授權碼授與](https://tools.ietf.org/html/rfc6749#page-24)。 當您提交要在資源庫中發佈應用程式的要求之後，我們的小組會與您合作收集下列資訊：
+**OAuth 授權碼授與流程：** 佈建服務支援 [授權碼授與](https://tools.ietf.org/html/rfc6749#page-24)。 當您提交要在資源庫中發佈應用程式的要求之後，我們的小組會與您合作收集下列資訊：
 *  授權 URL：用戶端透過使用者代理程式重新導向對資源擁有者取得授權時所使用的 URL。 使用者會重新導向至此 URL 以授與存取權。 請注意，此 URL 目前無法針對個別的租用戶進行設定。
 *  權杖交換 URL：用戶端用來交換存取權杖的授權 (通常是透過用戶端驗證) 的 URL。 請注意，此 URL 目前無法針對個別的租用戶進行設定。
-*  用戶端識別碼：授權伺服器會向已註冊的用戶端發出用戶端識別碼，這是一個唯一字串，代表用戶端所提供的註冊資訊。  用戶端識別碼不是秘密，而會向資源擁有者公開，且**不得**單獨用於用戶端驗證。  
+*  用戶端識別碼：授權伺服器會向已註冊的用戶端發出用戶端識別碼，這是一個唯一字串，代表用戶端所提供的註冊資訊。  用戶端識別碼不是秘密，而會向資源擁有者公開，且 **不得** 單獨用於用戶端驗證。  
 *  用戶端密碼：用戶端密碼是由授權伺服器產生的秘密。 此秘密應為只有授權伺服器才知道的唯一值。 
 
 請注意，由於用戶端密碼會公開，因此不支援 OAuth v1。 OAuth v2 則受支援。  

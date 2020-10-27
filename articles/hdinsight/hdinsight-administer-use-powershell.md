@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/13/2020
-ms.openlocfilehash: 0fbafd81fac1982f624adae9286000fb61db62c5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0b4a31b88c9a6fa8c2c6170fce38760c1a361f2e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474915"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92533422"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 HDInsight 上的 Apache Hadoop 叢集
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Azure PowerShell 可讓您在 Azure 中用來控制和自動化工作負載的部署及管理。 在本文中，您將瞭解如何使用 Azure PowerShell Az 模組，在 Azure HDInsight 中管理 [Apache Hadoop](https://hadoop.apache.org/) 叢集。 如需 HDInsight PowerShell Cmdlet 的清單，請參閱 [Az 參考](https://docs.microsoft.com/powershell/module/az.hdinsight)。
+Azure PowerShell 可讓您在 Azure 中用來控制和自動化工作負載的部署及管理。 在本文中，您將瞭解如何使用 Azure PowerShell Az 模組，在 Azure HDInsight 中管理 [Apache Hadoop](https://hadoop.apache.org/) 叢集。 如需 HDInsight PowerShell Cmdlet 的清單，請參閱 [Az 參考](/powershell/module/az.hdinsight)。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -27,7 +27,7 @@ Azure PowerShell 可讓您在 Azure 中用來控制和自動化工作負載的�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-安裝 PowerShell [Az 模組](https://docs.microsoft.com/powershell/azure/)。
+安裝 PowerShell [Az 模組](/powershell/azure/)。
 
 ## <a name="create-clusters"></a>建立叢集
 
@@ -75,7 +75,7 @@ Set-AzHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <New
 
 ## <a name="update-http-user-credentials"></a>更新 HTTP 使用者認證
 
-[AzHDInsightGatewayCredential](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightgatewaycredential) 會設定 Azure HDInsight 叢集的閘道 HTTP 認證。
+[AzHDInsightGatewayCredential](/powershell/module/az.hdinsight/set-azhdinsightgatewaycredential) 會設定 Azure HDInsight 叢集的閘道 HTTP 認證。
 
 ```powershell
 $clusterName = "CLUSTERNAME"
@@ -146,7 +146,7 @@ $resourceGroupName = $cluster.ResourceGroup
 
 ## <a name="see-also"></a>另請參閱
 
-* [Az Cmdlet](https://docs.microsoft.com/powershell/module/az.hdinsight/#hdinsight)
+* [Az Cmdlet](/powershell/module/az.hdinsight/#hdinsight)
 * [使用 Azure 入口網站管理 HDInsight 中的 Apache Hadoop 叢集](hdinsight-administer-use-portal-linux.md)
 * [使用命令列介面管理 HDInsight](hdinsight-administer-use-command-line.md)
 * [建立 HDInsight 叢集](hdinsight-hadoop-provision-linux-clusters.md)

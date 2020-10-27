@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 5c0694f9ef16de9c69d424b5005ca0d5a277a77f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdd43a017e584a07d61d41e1af06d30db2f30ac7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505024"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542772"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>設定 HDInsight 上的 Apache HBase 和 Apache Phoenix 備份和複寫
 
@@ -52,7 +52,7 @@ HDInsight 中的 HBase 會使用建立叢集時選取的預設儲存體，即 Az
 
 * 建立指向目前儲存位置的新 HDInsight 執行個體。 以所有現有的資料建立新的執行個體。
 
-* 將 `hbase` 資料夾複製到其他 Azure 儲存體 Blob 容器或 Data Lake Storage 位置，然後啟動包含該資料的新叢集。 針對 Azure 儲存體使用 [AzCopy](../../storage/common/storage-use-azcopy.md)，並針對 Data Lake Storage 使用 [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)。
+* 將 `hbase` 資料夾複製到其他 Azure 儲存體 Blob 容器或 Data Lake Storage 位置，然後啟動包含該資料的新叢集。 針對 Azure 儲存體使用 [AzCopy](../../storage/common/storage-use-azcopy-v10.md)，並針對 Data Lake Storage 使用 [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md)。
 
 ## <a name="export-then-import"></a>匯出然後匯入
 
@@ -173,7 +173,7 @@ curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterNam
 
 ## <a name="snapshots"></a>快照集
 
-[快照](https://hbase.apache.org/book.html#ops.snapshots) 集可讓您對 HBase 資料存放區中的資料進行時間點備份。 快照集的額外負荷最低，幾秒就能完成，因為快照集作業實際上是擷取該瞬間儲存體中所有檔案名稱的中繼資料作業。 建立快照集時，不會真的複製任何資料。 快照集依賴 HDFS 中儲存之資料的不可變本質 ，HDFS 中的更新、刪除、插入都會以新資料表示。 您可以在同一個叢集上還原 (複製**) 快照集，或將快照集匯出至其他叢集。
+[快照](https://hbase.apache.org/book.html#ops.snapshots) 集可讓您對 HBase 資料存放區中的資料進行時間點備份。 快照集的額外負荷最低，幾秒就能完成，因為快照集作業實際上是擷取該瞬間儲存體中所有檔案名稱的中繼資料作業。 建立快照集時，不會真的複製任何資料。 快照集依賴 HDFS 中儲存之資料的不可變本質 ，HDFS 中的更新、刪除、插入都會以新資料表示。 您可以在同一個叢集上還原 (複製  ) 快照集，或將快照集匯出至其他叢集。
 
 若要建立快照集，請透過 SSH 連線至 HDInsight HBase 叢集的前端節點並啟動 `hbase` Shell：
 
@@ -242,7 +242,7 @@ hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.mya
 
 若要在 HDInsight 上啟用複寫，請對執行中的來源 HDInsight 叢集套用指令碼動作。 如需在叢集中啟用複寫的逐步解說，或要使用 Azure 資源管理範本在虛擬網路中建立的範例叢集上試驗複寫，請參閱[設定 Apache HBase 複寫](apache-hbase-replication.md)。 這篇文章也包含啟用 Phoenix 中繼資料複寫的指示。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [設定 Apache HBase 複寫](apache-hbase-replication.md)
-* [使用 HBase 匯入和匯出公用程式](https://blogs.msdn.microsoft.com/data_otaku/2016/12/21/working-with-the-hbase-import-and-export-utility/)
+* [使用 HBase 匯入和匯出公用程式](/archive/blogs/data_otaku/working-with-the-hbase-import-and-export-utility)

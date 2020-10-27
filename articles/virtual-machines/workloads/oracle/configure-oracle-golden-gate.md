@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: c1890ab9f99999c88e28eb9a76d6270fa08fb87c
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: c480de6da0427b8eda212e02e08c7b3f5426941c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996673"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534136"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>在 Azure Linux VM 上實作 Oracle Golden Gate 
 
@@ -24,7 +24,7 @@ Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。
 
 ## <a name="prepare-the-environment"></a>準備環境
 
-若要執行 Oracle Golden Gate 的安裝，您需要在相同的可用性設定組建立兩個 Azure VM。 您用來建立 Vm 的 Marketplace 映射是 **oracle： oracle-Database-Ee：12.1.0.2：最新版本**。
+若要執行 Oracle Golden Gate 的安裝，您需要在相同的可用性設定組建立兩個 Azure VM。 您用來建立 Vm 的 Marketplace 映射是 **oracle： oracle-Database-Ee：12.1.0.2：最新版本** 。
 
 您也需要熟悉 Unix 編輯器 vi，並且對 x11 (X Windows) 有基本了解。
 
@@ -388,10 +388,10 @@ SQL> EXIT;
 
 3. 在 PuTTY 金鑰產生器中︰
 
-   - 若要產生金鑰，請選取 [產生]**** 按鈕。
-   - 複製金鑰的內容 (**Ctrl+C**)。
-   - 選取 [儲存私密金鑰]**** 按鈕。
-   - 略過隨之出現的警告，然後選取 [確定]****。
+   - 若要產生金鑰，請選取 [產生]  按鈕。
+   - 複製金鑰的內容 ( **Ctrl+C** )。
+   - 選取 [儲存私密金鑰]  按鈕。
+   - 略過隨之出現的警告，然後選取 [確定]  。
 
    ![PuTTY 金鑰產生器頁面的螢幕擷取畫面](./media/oracle-golden-gate/puttykeygen.png)
 
@@ -409,15 +409,15 @@ SQL> EXIT;
    > 金鑰中必須包含字串 `ssh-rsa`。 此外，金鑰的內容必須是單行文字。
    >  
 
-6. 啟動 PuTTY。 在 [**類別目錄**] 窗格中，選取 [**連接**  >  **SSH**  >  **驗證**]。在 [**驗證的私密金鑰**檔案] 方塊中，流覽至您稍早產生的金鑰。
+6. 啟動 PuTTY。 在 [ **類別目錄** ] 窗格中，選取 [ **連接**  >  **SSH**  >  **驗證** ]。在 [ **驗證的私密金鑰** 檔案] 方塊中，流覽至您稍早產生的金鑰。
 
    ![[設定私密金鑰] 頁面上的螢幕擷取畫面](./media/oracle-golden-gate/setprivatekey.png)
 
-7. 在 [類別]**** 窗格中，選取 [連線]**** > [SSH]**** > [X11]****。 然後選取 [啟用 X11 轉送]**** 方塊。
+7. 在 [類別]  窗格中，選取 [連線]  > [SSH]  > [X11]  。 然後選取 [啟用 X11 轉送]  方塊。
 
    ![[啟用 X11] 頁面的螢幕擷取畫面](./media/oracle-golden-gate/enablex11.png)
 
-8. 在 [類別]**** 窗格中，移至 [工作階段]****。 輸入主機資訊，然後選取 [開啟]****。
+8. 在 [類別]  窗格中，移至 [工作階段]  。 輸入主機資訊，然後選取 [開啟]  。
 
    ![工作階段分頁的螢幕擷取畫面](./media/oracle-golden-gate/puttysession.png)
 
@@ -436,25 +436,25 @@ SQL> EXIT;
 
    ![安裝程式之 [選取安裝] 分頁的螢幕擷取畫面](./media/oracle-golden-gate/golden_gate_install_01.png)
 
-3. 變更軟體位置。 然後選取 [啟動管理員]**** 方塊並輸入資料庫位置。 選取 [下一步] 以繼續操作。
+3. 變更軟體位置。 然後選取 [啟動管理員]  方塊並輸入資料庫位置。 選取 [下一步] 以繼續操作。
 
    ![[選取安裝] 分頁的螢幕擷取畫面](./media/oracle-golden-gate/golden_gate_install_02.png)
 
-4. 變更清查目錄，然後選取 [下一步]**** 以繼續操作。
+4. 變更清查目錄，然後選取 [下一步]  以繼續操作。
 
-   ![[選取安裝] 分頁的螢幕擷取畫面](./media/oracle-golden-gate/golden_gate_install_03.png)
+   ![顯示安裝目錄之 [選取安裝] 頁面的螢幕擷取畫面。](./media/oracle-golden-gate/golden_gate_install_03.png)
 
-5. 在 [摘要]**** 畫面上，選取 [安裝]**** 以繼續操作。
+5. 在 [摘要]  畫面上，選取 [安裝]  以繼續操作。
 
-   ![安裝程式之 [選取安裝] 分頁的螢幕擷取畫面](./media/oracle-golden-gate/golden_gate_install_04.png)
+   ![顯示 [選取安裝] 頁面和 [安裝] 按鈕的螢幕擷取畫面。](./media/oracle-golden-gate/golden_gate_install_04.png)
 
-6. 系統可能會提示您以 'root' 的身分執行指令碼。 如果是這樣，請開啟不同的工作階段，ssh 為 VM、sudo 為 root，然後執行指令碼。 選取 [確定]**** 以繼續操作。
+6. 系統可能會提示您以 'root' 的身分執行指令碼。 如果是這樣，請開啟不同的工作階段，ssh 為 VM、sudo 為 root，然後執行指令碼。 選取 [確定]  以繼續操作。
 
-   ![[選取安裝] 分頁的螢幕擷取畫面](./media/oracle-golden-gate/golden_gate_install_05.png)
+   ![顯示腳本位置以及如何執行設定腳本的螢幕擷取畫面。](./media/oracle-golden-gate/golden_gate_install_05.png)
 
-7. 當安裝完成時，選取 [關閉]**** 以完成流程。
+7. 當安裝完成時，選取 [關閉]  以完成流程。
 
-   ![[選取安裝] 分頁的螢幕擷取畫面](./media/oracle-golden-gate/golden_gate_install_06.png)
+   ![顯示 [關閉] 按鈕之 [選取安裝] 頁面的螢幕擷取畫面。](./media/oracle-golden-gate/golden_gate_install_06.png)
 
 ### <a name="set-up-service-on-myvm1-primary"></a>設定 myVM1 (主要) 上的服務
 
@@ -812,7 +812,7 @@ GGSCI> VIEW REPORT INITEXT
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 [建立高可用性的虛擬機器教學課程](../../linux/create-cli-complete.md)
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6de9e31c3e79f6d704ef8b4749d41329dcc0bddb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2af536b2b6c6a4b220a877337ade9a74ad75bb8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82190670"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534986"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>使用 Azure HDInsight 針對 Apache Hadoop HDFS 問題進行疑難排解
 
@@ -115,8 +115,8 @@ hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file
 您也可以使用 Apache Ambari 來全域提高 `fs.azure.write.request.size` 的值。 使用下列步驟即可變更 Ambari Web UI 中的值︰
 
 1. 在瀏覽器中，移至叢集的 Ambari Web UI。 URL 是 `https://CLUSTERNAME.azurehdinsight.net` ，其中 `CLUSTERNAME` 是您的叢集名稱。 出現提示時，請輸入該叢集的管理員名稱和密碼。
-2. 在畫面左側選取 [HDFS]****，然後選取 [設定]**** 索引標籤。
-3. 在 [篩選...]**** 欄位中，輸入 `fs.azure.write.request.size`。
+2. 在畫面左側選取 [HDFS]  ，然後選取 [設定]  索引標籤。
+3. 在 [篩選...]  欄位中，輸入 `fs.azure.write.request.size`。
 4. 將值從 262144 (256 KB) 變更為新值。 例如，4194304 (4 MB)。
 
     ![透過 Ambari Web UI 變更值的影像](./media/hdinsight-troubleshoot-hdfs/hbase-change-block-write-size.png)
@@ -155,4 +155,4 @@ hdfs dfs -rm hdfs://mycluster/tmp/testfile
 
 * 連線至 [@AzureSupport](https://twitter.com/azuresupport) - 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 將 Azure 社群連線到正確的資源：解答、支援和專家。
 
-* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。
+* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](../azure-portal/supportability/how-to-create-azure-support-request.md)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

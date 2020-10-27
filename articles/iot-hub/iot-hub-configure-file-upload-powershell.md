@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
-ms.openlocfilehash: eadc976270888499be1ed01040cc4ff00632e8e4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: e2b106e64aed08b0586575d4d77602329454a673
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92142277"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536006"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>使用 PowerShell 設定 IoT 中樞檔案上傳
 
@@ -58,7 +58,7 @@ ms.locfileid: "92142277"
 
 ## <a name="retrieve-your-storage-account-details"></a>擷取您的儲存體帳戶詳細資料
 
-下列步驟假設您使用 [Resource Manager]**** 部署模型，而非 [傳統]**** 部署模型，建立了儲存體帳戶。
+下列步驟假設您使用 [Resource Manager]  部署模型，而非 [傳統]  部署模型，建立了儲存體帳戶。
 
 若要從裝置設定檔案上傳，您需要 Azure 儲存體帳戶的連接字串。 儲存體帳戶必須與您的 IoT 中樞位於相同的訂用帳戶中。 您也需要儲存體帳戶中 blob 容器的名稱。 使用下列命令來擷取儲存體帳戶金鑰：
 
@@ -99,15 +99,15 @@ Get-AzStorageAccountKey `
 
 設定需要下列值：
 
-* **儲存體容器**︰您目前 Azure 訂用帳戶內 Azure 儲存體帳戶中的 blob 容器，會與您的 IoT 中樞產生關聯。 您已在上一節中擷取了必要的儲存體帳戶資訊。 IoT 中樞會自動產生具有此 Blob 容器寫入權限的 SAS URI，以供裝置上傳檔案時使用。
+* **儲存體容器** ︰您目前 Azure 訂用帳戶內 Azure 儲存體帳戶中的 blob 容器，會與您的 IoT 中樞產生關聯。 您已在上一節中擷取了必要的儲存體帳戶資訊。 IoT 中樞會自動產生具有此 Blob 容器寫入權限的 SAS URI，以供裝置上傳檔案時使用。
 
-* **接收已上傳檔案的通知**︰啟用或停用檔案上傳通知。
+* **接收已上傳檔案的通知** ︰啟用或停用檔案上傳通知。
 
-* **SAS TTL**︰這個設定是「IoT 中樞」傳回給裝置之 SAS URI 的存留時間。 預設會設為一小時。
+* **SAS TTL** ︰這個設定是「IoT 中樞」傳回給裝置之 SAS URI 的存留時間。 預設會設為一小時。
 
-* **檔案通知設定預設 TTL**：檔案上傳通知到期前的存留時間。 預設會設為一天。
+* **檔案通知設定預設 TTL** ：檔案上傳通知到期前的存留時間。 預設會設為一天。
 
-* **檔案通知最大傳遞計數**︰IoT 中樞可嘗試傳遞檔案上傳通知的次數。 預設會設為 10。
+* **檔案通知最大傳遞計數** ︰IoT 中樞可嘗試傳遞檔案上傳通知的次數。 預設會設為 10。
 
 使用下列 PowerShell Cmdlet 來設定 IoT 中樞上的檔案上傳設定：
 
@@ -123,15 +123,14 @@ Set-AzIotHub `
     -FileUploadNotificationMaxDeliveryCount 10
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需 IoT 中樞檔案上傳功能的詳細資訊，請參閱[從裝置上傳檔案](iot-hub-devguide-file-upload.md)。
 
 遵循下列連結以深入了解如何管理 Azure IoT 中樞：
 
 * [大量管理 IoT 裝置](iot-hub-bulk-identity-mgmt.md)
-* [IoT 中樞計量](iot-hub-metrics.md)
-* [作業監視](iot-hub-operations-monitoring.md)
+* [監視您的 IoT 中樞](monitor-iot-hub.md)
 
 若要進一步探索 IoT 中樞的功能，請參閱︰
 
