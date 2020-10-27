@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/13/2019
+ms.date: 10/15/2020
 ms.author: erhopf
-ms.openlocfilehash: 35133b64e43ca3814410d7bbf2ac1be9f760b369
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6d20df031633df4642ce9fb5cbbc469fd7f0a5da
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91654397"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92097230"
 ---
 若要使用 Xamarin 建立適用於跨平台行動應用程式 .NET 開發的 Visual Studio 專案，您需要：
 - 設定 Visual Studio 開發選項。
@@ -50,9 +50,9 @@ ms.locfileid: "91654397"
 
 1. 選取 [建立]  以移至 [新增行動應用程式 Xamarin Forms 專案]  視窗。
 
-   ![顯示 Visual Studio 中 [新增通用 Windows 平台專案] 對話方塊的螢幕擷取畫面。](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-xamarin-new-xamarin-project.png)
+   ![螢幕擷取畫面：顯示 Visual Studio 中的 [新增行動應用程式 Xamarin Forms 專案] 對話方塊。](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-xamarin-new-xamarin-project.png)
 
-1. 選取**空白**範本。
+1. 選取 **空白** 範本。
 
 1. 在 [平台]  中，選取 [Android]  、[iOS]  與 [Windows (UWP)]  核取方塊。
 
@@ -81,7 +81,7 @@ ms.locfileid: "91654397"
    > [!NOTE] 
    > `Microsoft.CognitiveServices.Speech` NuGet 內的 iOS 程式庫未啟用 bitcode。 如果您需要為您的應用程式啟用 bitcode 程式庫，請特別針對 iOS 專案使用 `Microsoft.CognitiveServices.Speech.Xamarin.iOS` NuGet。
 
-1. 在搜尋結果旁的 [套件狀態] 窗格中選取所有專案：**helloworld**、**helloworld.Android**、**helloworld.iOS** 和 **helloworld.UWP**。
+1. 在搜尋結果旁的 [套件狀態] 窗格中選取所有專案： **helloworld** 、 **helloworld.Android** 、 **helloworld.iOS** 和 **helloworld.UWP** 。
 
 1. 選取 [安裝]  。
 

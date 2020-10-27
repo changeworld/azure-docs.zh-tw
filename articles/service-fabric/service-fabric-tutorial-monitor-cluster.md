@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 17ec3c6d3b9b19b7bc6edcb82cef438e27189c33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9ad0f443b1647499f7085693f34f4da9ec85398
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020088"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331986"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>教學課程：在 Azure 中監視 Service Fabric 叢集
 
@@ -57,7 +57,7 @@ Azure 監視器記錄會從裝載於雲端的應用程式和服務收集和分�
 
 在 [概觀] 中，您會看到每個已啟用解決方案的圖格均以圖形形式顯示，其中包括一個適用於 Service Fabric 的圖格。 按一下 [Service Fabric] 圖形以繼續進行「Service Fabric 分析」解決方案。
 
-![Service Fabric 解決方案](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
+![此螢幕擷取畫面顯示 Service Fabric 圖表。](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-summary.png)
 
 下圖顯示 Service Fabric 分析解決方案的首頁。 這個首頁提供叢集中目前情況的快照集檢視。
 
@@ -74,7 +74,7 @@ Azure 監視器記錄會從裝載於雲端的應用程式和服務收集和分�
 
 ### <a name="view-service-fabric-events-including-actions-on-nodes"></a>檢視 Service Fabric 事件，包括節點上的動作
 
-在 Service Fabric 分析頁面上，按一下**叢集事件**的圖形。  隨即顯示已收集的所有系統事件記錄。 為了方便參考，這些記錄均來自 Azure 儲存體帳戶中的 **WADServiceFabricSystemEventsTable**，而且同樣地，您接下來看到的 Reliable Service 和 Actor 事件均分別來自那些表格。
+在 Service Fabric 分析頁面上，按一下 **叢集事件** 的圖形。  隨即顯示已收集的所有系統事件記錄。 為了方便參考，這些記錄均來自 Azure 儲存體帳戶中的 **WADServiceFabricSystemEventsTable** ，而且同樣地，您接下來看到的 Reliable Service 和 Actor 事件均分別來自那些表格。
     
 ![查詢操作通道](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-events.png)
 
@@ -183,7 +183,7 @@ app('PlunkoServiceFabricCluster').traces
 
 ### <a name="view-service-fabric-application-events"></a>檢視 Service Fabric 應用程式事件
 
-您可以檢視部署於叢集上之 Reliable Services 和 Reliable Actors 應用程式的事件。  在 Service Fabric 分析頁面上，按一下**應用程式事件**的圖形。
+您可以檢視部署於叢集上之 Reliable Services 和 Reliable Actors 應用程式的事件。  在 Service Fabric 分析頁面上，按一下 **應用程式事件** 的圖形。
 
 執行下列查詢，以檢視來自 Reliable Services 應用程式的事件：
 ```kusto

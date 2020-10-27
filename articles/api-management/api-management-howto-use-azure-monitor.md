@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 7f6c7a651e133122dab86d6ed81572f239718b43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7080bd98bda5c4280ff7b06b235458bea0e9103c
+ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86243234"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92093577"
 ---
 # <a name="monitor-published-apis"></a>監視發佈的 API
 
@@ -55,13 +55,13 @@ API 管理會每分鐘發出計量，讓您近乎即時地了解 API 的狀態�
 
 存取計量：
 
-1. 從靠近頁面底部的功能表中，選取 [計量]****。
+1. 從靠近頁面底部的功能表中，選取 [計量]  。
 
     ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-2. 從下拉式清單中，選取您想了解的計量。 例如， **要求**。 
+2. 從下拉式清單中，選取您想了解的計量。 例如， **要求** 。 
 3. 該圖表會顯示 API 呼叫的總數。
-4. 您可以使用 [要求]**** 計量的維度來篩選圖表。 例如，按一下 [新增篩選]****，選擇 [後端回應碼]****，輸入500 作為值。 現在，圖表會顯示 API 後端中已失敗的要求數目。   
+4. 您可以使用 [要求]  計量的維度來篩選圖表。 例如，按一下 [新增篩選]  ，選擇 [後端回應碼]  ，輸入500 作為值。 現在，圖表會顯示 API 後端中已失敗的要求數目。   
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>針對未經授權的要求設定警示規則
 
@@ -73,27 +73,27 @@ API 管理會每分鐘發出計量，讓您近乎即時地了解 API 的狀態�
 
 設定警示：
 
-1. 從靠近頁面底部的功能表列中選取 [警示]****。
+1. 從靠近頁面底部的功能表列中選取 [警示]  。
 
-    ![alerts](./media/api-management-azure-monitor/alert-menu-item.png)
+    ![此螢幕擷取畫面在靠近頁面底部的功能表中顯示 [警示]。](./media/api-management-azure-monitor/alert-menu-item.png)
 
-2. 按一下此警示的 [新警示規則]****。
-3. 按一下 [新增條件]****。
-4. 在 [訊號類型] 下拉式清單中選取 [計量]****。
-5. 選取 [未經授權的閘道要求]**** 作為要監視的訊號。
+2. 按一下此警示的 [新警示規則]  。
+3. 按一下 [新增條件]  。
+4. 在 [訊號類型] 下拉式清單中選取 [計量]  。
+5. 選取 [未經授權的閘道要求]  作為要監視的訊號。
 
-    ![alerts](./media/api-management-azure-monitor/signal-type.png)
+    ![此螢幕擷取畫面醒目提示 [訊號類型] 欄位和 [未經授權的閘道要求] 訊號名稱。](./media/api-management-azure-monitor/signal-type.png)
 
-6. 在 [設定訊號邏輯]**** 檢視中，指定應觸發警示的閾值，然後按一下 [完成]****。
+6. 在 [設定訊號邏輯]  檢視中，指定應觸發警示的閾值，然後按一下 [完成]  。
 
-    ![alerts](./media/api-management-azure-monitor/threshold.png)
+    ![顯示 [設定訊號邏輯] 檢視的螢幕擷取畫面。](./media/api-management-azure-monitor/threshold.png)
 
 7. 選取現有動作群組或建立新的群組。 在下列範例中，系統會傳送電子郵件給系統管理員。 
 
     ![alerts](./media/api-management-azure-monitor/action-details.png)
 
 8. 提供警示規則的名稱和描述，並選擇嚴重性層級。 
-9. 按 [建立警示規則]****。
+9. 按 [建立警示規則]  。
 10. 現在，嘗試呼叫沒有 API 金鑰的會議 API。 系統會觸發警示並傳送電子郵件送給系統管理員。 
 
 ## <a name="activity-logs"></a>活動記錄
@@ -110,11 +110,11 @@ API 管理會每分鐘發出計量，讓您近乎即時地了解 API 的狀態�
 檢視活動記錄：
 
 1. 選取您的 APIM 服務執行個體。
-2. 按一下 [活動記錄]****。
+2. 按一下 [活動記錄]  。
 
     ![活動記錄](./media/api-management-azure-monitor/api-management-activity-logs-blade.png)
 
-3. 選取所需的篩選範圍，然後按一下 [套用]****。
+3. 選取所需的篩選範圍，然後按一下 [套用]  。
 
 ## <a name="resource-logs"></a>資源記錄
 
@@ -123,11 +123,11 @@ API 管理會每分鐘發出計量，讓您近乎即時地了解 API 的狀態�
 若要設定資源記錄：
 
 1. 選取您的 APIM 服務執行個體。
-2. 按一下 [診斷設定]****。
+2. 按一下 [診斷設定]  。
 
     ![資源記錄](./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png)
 
-3. 按一下 [開啟診斷]****。 您可以將資源記錄連同計量封存至儲存體帳戶、將其串流至事件中樞，或將其傳送至 Azure 監視器記錄。 
+3. 按一下 [開啟診斷]  。 您可以將資源記錄連同計量封存至儲存體帳戶、將其串流至事件中樞，或將其傳送至 Azure 監視器記錄。 
 
 APIM 目前提供關於個別 API 要求的資源記錄 (每小時提供一批)，且每個要求項目都有下列結構描述︰
 

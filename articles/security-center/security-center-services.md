@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: a311439e8efc5481fbfd7431c1514ba6be576e39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59a87e7c91266dd1ec2d7263df7149d07f6e7ce8
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858008"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342292"
 ---
 # <a name="feature-coverage-for-machines"></a>機器適用的功能涵蓋範圍
 
@@ -28,7 +28,7 @@ ms.locfileid: "91858008"
 
 ### <a name="windows-machines"></a>[**Windows 機器**](#tab/features-windows)
 
-|**功能**|**Azure 虛擬機器**|**Azure 虛擬機器擴展集**|**非 Azure 機器**|**需要 Azure Defender**
+|**功能**|**Azure 虛擬機器**|**Azure 虛擬機器擴展集**|**已啟用 Azure Arc 的機器**|**需要 Azure Defender**
 |----|:----:|:----:|:----:|:----:|
 |[Microsoft Defender ATP 整合](security-center-wdatp.md)|✔</br>(在支援的版本上)|✔</br>(在支援的版本上)|✔|是|
 |[虛擬機器行為分析 (和安全性警示)](alerts-reference.md)|✔|✔|✔|是|
@@ -42,9 +42,9 @@ ms.locfileid: "91858008"
 |[自適性網路強化](security-center-adaptive-network-hardening.md)|✔|-|-|是|
 |[法規遵循儀表板和報表](security-center-compliance-dashboard.md)|✔|✔|✔|是|
 |針對 Docker 裝載的 IaaS 容器上提供建議和威脅防護|-|-|-|是|
-|缺少 OS 修補程式的評量|✔|✔|✔|Azure：否<br><br>非 Azure：是|
-|安全性設定錯誤的評量|✔|✔|✔|Azure：否<br><br>非 Azure：是|
-|[端點保護評量](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure：否<br><br>非 Azure：是|
+|缺少 OS 修補程式的評量|✔|✔|✔|Azure：否<br><br>已啟用 Arc：是|
+|安全性設定錯誤的評量|✔|✔|✔|Azure：否<br><br>已啟用 Arc：是|
+|[端點保護評量](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure：否<br><br>已啟用 Arc：是|
 |磁碟加密評量|✔</br>(僅限[支援的案例](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|否|
 |第三方弱點評量|✔|-|-|否|
 |[網路安全性評量](security-center-network-recommendations.md)|✔|✔|-|否|
@@ -52,10 +52,10 @@ ms.locfileid: "91858008"
 
 ### <a name="linux-machines"></a>[**Linux 機器**](#tab/features-linux)
 
-|**功能**|**Azure 虛擬機器**|**Azure 虛擬機器擴展集**|**非 Azure 機器**|**需要 Azure Defender**
+|**功能**|**Azure 虛擬機器**|**Azure 虛擬機器擴展集**|**已啟用 Azure Arc 的機器**|**需要 Azure Defender**
 |----|:----:|:----:|:----:|:----:|
 |[Microsoft Defender ATP 整合](security-center-wdatp.md)|-|-|-|是|
-|[虛擬機器行為分析 (和安全性警示)](security-center-alerts-iaas.md)|✔</br>(在支援的版本上)|✔</br>(在支援的版本上)|✔|是|
+|[虛擬機器行為分析 (和安全性警示)](./azure-defender.md)|✔</br>(在支援的版本上)|✔</br>(在支援的版本上)|✔|是|
 |[無檔案安全性警示](alerts-reference.md#alerts-windows)|-|-|-|是|
 |[以網路為基礎的安全性警示](other-threat-protections.md#network-layer)|✔|✔|-|是|
 |[Just-In-Time 虛擬機器存取](security-center-just-in-time.md)|✔|-|-|是|
@@ -66,8 +66,8 @@ ms.locfileid: "91858008"
 |[自適性網路強化](security-center-adaptive-network-hardening.md)|✔|-|-|是|
 |[法規遵循儀表板和報表](security-center-compliance-dashboard.md)|✔|✔|✔|是|
 |針對 Docker 裝載的 IaaS 容器上提供建議和威脅防護|✔|✔|✔|是|
-|缺少 OS 修補程式的評量|✔|✔|✔|Azure：否<br><br>非 Azure：是|
-|安全性設定錯誤的評量|✔|✔|✔|Azure：否<br><br>非 Azure：是|
+|缺少 OS 修補程式的評量|✔|✔|✔|Azure：否<br><br>已啟用 Arc：是|
+|安全性設定錯誤的評量|✔|✔|✔|Azure：否<br><br>已啟用 Arc：是|
 |[端點保護評量](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|否|
 |磁碟加密評量|✔</br>(僅限[支援的案例](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|否|
 |第三方弱點評量|✔|-|-|否|
@@ -96,10 +96,10 @@ ms.locfileid: "91858008"
 | 趨勢科技 – Deep Security | Windows Server 系列  | 否 | 是 |
 | Symantec v12.1.1100+| Windows Server 系列  | 否 | 是 |
 | McAfee v10+ | Windows Server 系列  | 否 | 是 |
-| McAfee v10+ | Linux 伺服器系列  | 否 | 是 **\*** |
-| Sophos V9+| Linux 伺服器系列  | 否 | 是 **\***  |
+| McAfee v10+ | Linux 伺服器系列  | 否 | 是 * *\** _ |
+| Sophos V9+| Linux 伺服器系列  | 否 | 是 _*\**_  |
 
- **\*** 目前僅限與受保護訂用帳戶相關聯的 Log Analytics 工作區可提供涵蓋範圍狀態和支援資料。 其不會反映在 Azure 資訊安全中心入口網站中。
+ _ *\** * 目前僅限與受保護訂用帳戶相關聯的 Log Analytics 工作區可提供涵蓋範圍狀態和支援資料。 其不會反映在 Azure 資訊安全中心入口網站中。
 
 > [!NOTE]
 > 在 Windows Server 2008 R2 虛擬機器上偵測 System Center Endpoint Protection (SCEP) 需要在 PowerShell (v3.0 或更新的版本) 之後安裝 SCEP。

@@ -9,16 +9,34 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 5d7e6c5229fa6f8204ba363d9868ffa80d78ccba
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: fb99afef2d5e210b8aa166f016bd2b9ec409c2a2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876493"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518954"
 ---
-# <a name="migrate-a-web-app-from-google-maps"></a>從 Google Maps 遷移 Web 應用程式
+# <a name="tutorial---migrate-a-web-app-from-google-maps"></a>教學課程 - 從 Google Maps 遷移 Web 應用程式
 
-使用 Google Maps 的 Web 應用程式大多使用 Google Maps V3 JavaScript SDK。 Azure 地圖服務 Web SDK 是適合作為遷移目的地的 Azure 型 SDK。 Azure 地圖服務 Web SDK 可讓您以自己的內容和圖像自訂互動式地圖。 您可以在 Web 或行動應用程式上執行應用程式。 此控制項使用 WebGL，可讓您以高效能轉譯大型資料集。 您可以使用 JavaScript 或 TypeScript 以此 SDK 進行開發。
+使用 Google Maps 的 Web 應用程式大多使用 Google Maps V3 JavaScript SDK。 Azure 地圖服務 Web SDK 是適合作為遷移目的地的 Azure 型 SDK。 Azure 地圖服務 Web SDK 可讓您以自己的內容和圖像自訂互動式地圖。 您可以在 Web 或行動應用程式上執行應用程式。 此控制項使用 WebGL，可讓您以高效能轉譯大型資料集。 您可以使用 JavaScript 或 TypeScript 以此 SDK 進行開發。 在本教學課程中，您將學會如何：
+
+> [!div class="checklist"]
+> * 載入地圖
+> * 將地圖當地語系化
+> * 新增標記、聚合線條和多邊形。
+> * 在快顯或資訊視窗中顯示資訊
+> * 載入和顯示 KML 和 GeoJSON 資料
+> * 叢集標記
+> * 覆蓋地圖底圖圖層
+> * 顯示流量資料
+> * 新增地面覆蓋
+
+您也會了解： 
+
+> [!div class="checklist"]
+> * 如何使用 Azure 地圖服務 Web SDK 完成一般對應工作
+> * 改善效能和使用者體驗的最佳做法
+> * 如何讓您的應用程式使用 Azure 地圖服務中更進階功能的秘訣
 
 如果要遷移現有的 Web 應用程式，請檢查其是否使用開放原始碼地圖控制項程式庫。 開放原始碼地圖控制項程式庫的範例如下：Cesium、Leaflet 和 OpenLayers。 如果您的應用程式使用開放原始碼地圖控制項程式庫，而且您不想使用 Azure 地圖服務 Web SDK，您仍然可以遷移應用程式。 在這類情況下，請將您的應用程式連線至 Azure 地圖服務的地圖底圖服務 ([道路地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [衛星地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile))。 以下幾點會詳細說明如何在某些常用的開放原始碼地圖控制項程式庫中使用 Azure 地圖服務。
 
@@ -33,6 +51,11 @@ ms.locfileid: "91876493"
 - [Azure 地圖服務 React 元件](https://github.com/WiredSolutions/react-azure-maps) - Azure 地圖服務控制項的反應包裝函式。
 - [Vue Azure 地圖服務](https://github.com/rickyruiz/vue-azure-maps) - Vue 應用程式的 Azure 地圖服務元件。
 
+## <a name="prerequisites"></a>必要條件 
+
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+2. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
 
 ## <a name="key-features-support"></a>主要功能支援
 
@@ -72,7 +95,6 @@ ms.locfileid: "91876493"
 
 此集合具有適用於每個平台的程式碼範例，且每個範例都包含了常見的使用案例。 其目的是協助您將 Web 應用程式從 Google Maps V3 JavaScript SDK 遷移至 Azure 地圖服務 Web SDK。 與 Web 應用程式相關的程式碼範例會以 JavaScript 提供。 不過，Azure 地圖服務也會透過 [NPM 模組](how-to-use-map-control.md)，將 TypeScript 定義提供為額外的選項。
 
-
 **主題**
 
 - [載入地圖](#load-a-map)
@@ -90,7 +112,6 @@ ms.locfileid: "91876493"
 - [顯示流量資料](#show-traffic-data)
 - [新增地面覆蓋](#add-a-ground-overlay)
 - [將 KML 資料新增至地圖](#add-kml-data-to-the-map)
-
 
 ### <a name="load-a-map"></a>載入地圖
 
@@ -1141,7 +1162,7 @@ GeoJSON 是 Azure 地圖服務中的基底資料類型。 使用 `datasource.imp
 
 下列範例會從 USGS 載入過去一個月所有地震的 GeoJSON 摘要，並以經過加權的熱度圖來呈現。 `"mag"` 屬性會用來作為權數。
 
-#### <a name="before-google-maps"></a>之前：Google 地圖
+#### <a name="before-google-maps"></a>之前：Google Maps
 
 若要建立熱度圖，可藉由將 `&libraries=visualization` 新增至 API 指令碼 URL 來載入「視覺效果」程式庫。 Google Maps 中的熱度圖圖層不會直接支援 GeoJSON 資料。 您必須先下載資料，並將其轉換成加權資料點的陣列：
 
@@ -1289,7 +1310,7 @@ Azure 地圖服務中的地圖底圖圖層在 Google 地圖中稱為影像覆蓋
 
 下列範例會覆蓋來自愛荷華州立大學 Iowa Environmental Mesonet 的氣象雷達地圖底圖圖層。
 
-#### <a name="before-google-maps"></a>之前：Google Maps
+#### <a name="before-google-maps"></a>之前：Google 地圖
 
 在 Google Maps 中，您可以使用 `google.maps.ImageMapType` 類別來建立地圖底圖圖層。
 
@@ -1720,9 +1741,18 @@ Azure 地圖服務 Web SDK 包含可以個別載入的服務模組。 此模組�
 | 幾何程式庫      | [atlas.math](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.math)   |
 | 視覺效果程式庫 | [熱度圖圖層](map-add-heat-map-layer.md) |
 
-深入了解如何遷移至 Google Maps：
+## <a name="next-steps"></a>後續步驟
 
-* [如何使用服務模組](how-to-use-services-module.md) 
-* [如何使用繪圖工具模組](set-drawing-options.md)
-* [如何使用服務模組](how-to-use-services-module.md)
-* [如何使用地圖控制項](how-to-use-map-control.md)
+深入了解 Azure 地圖服務 Web SDK：
+
+> [!div class="nextstepaction"]
+> [如何使用地圖控制項](how-to-use-map-control.md)
+
+> [!div class="nextstepaction"]
+> [如何使用繪圖工具模組](set-drawing-options.md)
+
+> [!div class="nextstepaction"]
+> [如何使用服務模組](how-to-use-services-module.md)
+
+> [!div class="nextstepaction"]
+> [如何使用空間 IO 模組](how-to-use-spatial-io-module.md)

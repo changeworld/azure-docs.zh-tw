@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 10/21/2020
 ms.author: duau
-ms.openlocfilehash: bac1d1e41cab4aa3be10fb226df57277db20c78e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030271"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368312"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教學課程：在 Front Door 自訂網域上設定 HTTPS
 
@@ -84,7 +84,7 @@ ms.locfileid: "90030271"
 > [!WARNING]
 > Azure Front Door 目前僅支援與 Front Door 設定相同訂用帳戶中的 Key Vault 帳戶。 選擇與您 Front Door 不同訂用帳戶下的 Key Vault 將會失敗。
 
-2. Azure Key Vault 憑證：如果您已擁有憑證，您可以將它直接上傳至您的 Azure Key Vault 帳戶，也可以從與 Azure Key Vault 整合的其中一個合作夥伴 CA 透過 Azure Key Vault 建立新憑證。 將您的憑證上傳為**憑證**物件，而不是**祕密**。
+2. Azure Key Vault 憑證：如果您已擁有憑證，您可以將它直接上傳至您的 Azure Key Vault 帳戶，也可以從與 Azure Key Vault 整合的其中一個合作夥伴 CA 透過 Azure Key Vault 建立新憑證。 將您的憑證上傳為 **憑證** 物件，而不是 **祕密** 。
 
 > [!NOTE]
 > 對於您自己的 TLS/SSL 憑證，Front Door 不支援採用 EC 加密演算法的憑證。
@@ -94,7 +94,7 @@ ms.locfileid: "90030271"
 透過 PowerShell，在您的 Azure Active Directory 中將 Azure Front Door 的服務主體作為應用程式註冊。
 
 > [!NOTE]
-> 此動作需要全域管理員權限，每個租用戶只需要執行**一次**。
+> 此動作需要全域管理員權限，每個租用戶只需要執行 **一次** 。
 
 1. 如有需要，請在本機電腦的 PowerShell 中安裝 [Azure PowerShell](/powershell/azure/install-az-ps)。
 
@@ -108,7 +108,7 @@ ms.locfileid: "90030271"
 
 1. 在您的金鑰保存庫帳戶中，於 [設定] 之下選取 [存取原則]  ，然後選取 [新增]  以建立新原則。
 
-2. 在 [選取主體]  中，搜尋 **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037**，然後選擇 [Microsoft.Azure.Frontdoor]  。 按一下 [選取]。 
+2. 在 [選取主體]  中，搜尋 **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** ，然後選擇 [Microsoft.Azure.Frontdoor]  。 按一下 [選取]。 
 
 3. 在 [祕密權限]  中選取 [取得]  ，以允許 Front Door 擷取憑證。
 
@@ -134,6 +134,11 @@ ms.locfileid: "90030271"
     - 您的訂用帳戶識別碼的金鑰保存庫帳戶。 
     - 所選金鑰保存庫底下的憑證 (密碼)。 
     - 可用的憑證版本。 
+
+> [!NOTE]
+> 將憑證版本保持空白會導致：
+> - 選取憑證的最新版本。
+> - 當您的 Key Vault 中有較新版本的憑證時，自動將憑證輪替為最新版本。
  
 5. 當您使用自己的憑證時，不需要進行網域驗證。 請繼續進行[等待傳播](#wait-for-propagation)。
 
@@ -154,7 +159,7 @@ ms.locfileid: "90030271"
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
-如需有關 CNAME 記錄的詳細資訊，請參閱[建立 CNAME DNS 記錄](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain)。
+如需有關 CNAME 記錄的詳細資訊，請參閱[建立 CNAME DNS 記錄](../cdn/cdn-map-content-to-custom-domain.md)。
 
 如果您的 CNAME 記錄格式正確，DigiCert 就會自動驗證您的自訂網域名稱，並且為您的網域名稱建立專用憑證。 DigitCert 不會傳送驗證電子郵件給您，因此您不需要核准您的要求。 憑證有效期限為一年，並且會在到期之前自動更新。 請繼續進行[等待傳播](#wait-for-propagation)。 
 

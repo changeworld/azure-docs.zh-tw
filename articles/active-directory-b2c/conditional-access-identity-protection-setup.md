@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5554cfcde9aba1b0e5c9c8b60e2e6a7e9a8ba378
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fb585e2ccf8c8ed071b5156961adf48d4e4b108d
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89270666"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92309778"
 ---
 # <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>在 Azure AD B2C 中設定 Identity Protection 和條件式存取
 
@@ -41,16 +41,18 @@ Azure AD B2C 目前支援下列風險偵測：
 |風險偵測類型  |描述  |
 |---------|---------|
 | 非慣用登入位置     | 以使用者最近的登入為準，從非慣用的位置登入。        |
-|匿名 IP 位址     | 從匿名 IP 位址登入 (例如：Tor 瀏覽器、Anonymizer VPN)        |
+|匿名 IP 位址     | 從匿名 IP 位址登入 (例如：Tor 瀏覽器、Anonymizer VPN)。        |
+|已連結惡意程式碼的 IP 位址     | 從已連結惡意程式碼的 IP 位址登入。         |
 |不熟悉的登入屬性     | 以給定使用者近期未出現過的屬性登入。        |
-|已連結惡意程式碼的 IP 位址     | 從已連結惡意程式碼的 IP 位址登入         |
-|Azure AD 威脅情報     | Microsoft 的內部和外部威脅情報來源已識別出已知的攻擊模式        |
+|系統管理員已確認使用者遭盜用    | 系統管理員已指出使用者遭盜用。             |
+|密碼噴灑     | 透過密碼噴灑攻擊來登入。      |
+|Azure AD 威脅情報     | Microsoft 的內部和外部威脅情報來源已識別出已知的攻擊模式。        |
 
 ## <a name="view-risk-events-for-your-azure-ad-b2c-tenant"></a>檢視 Azure AD B2C 租用戶的風險事件
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 在入口網站工具列中選取**目錄 + 訂用帳戶**圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
+1. 在入口網站工具列中選取 **目錄 + 訂用帳戶** 圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
 
 1. 在 Azure 入口網站中，搜尋並選取 [Azure AD B2C]。
 
@@ -70,7 +72,7 @@ Azure AD B2C 目前支援下列風險偵測：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-2. 在入口網站工具列中選取**目錄 + 訂用帳戶**圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
+2. 在入口網站工具列中選取 **目錄 + 訂用帳戶** 圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
 
 3. 在 Azure 入口網站中，搜尋並選取 [Azure Active Directory]。
 
@@ -86,7 +88,7 @@ Azure AD B2C 目前支援下列風險偵測：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 在入口網站工具列中選取**目錄 + 訂用帳戶**圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
+1. 在入口網站工具列中選取 **目錄 + 訂用帳戶** 圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
 
 1. 在 Azure 入口網站中，搜尋並選取 [Azure AD B2C]。
 
@@ -124,7 +126,7 @@ Azure AD B2C 目前支援下列風險偵測：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-2. 在入口網站工具列中選取**目錄 + 訂用帳戶**圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
+2. 在入口網站工具列中選取 **目錄 + 訂用帳戶** 圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
 
 3. 在 Azure 入口網站中，搜尋並選取 [Azure AD B2C]。
 
@@ -134,8 +136,8 @@ Azure AD B2C 目前支援下列風險偵測：
 
 6. 檢閱過去 7 天的稽核活動。 包含下列活動類型：
 
-   - **評估條件式存取原則**：此稽核記錄項目表示在驗證期間執行了條件式存取評估。
-   - **補救使用者**：此項目表示使用者符合條件式存取原則的授與或需求，而此活動已向風險引擎回報，以降低 (緩和) 使用者的風險。
+   - **評估條件式存取原則** ：此稽核記錄項目表示在驗證期間執行了條件式存取評估。
+   - **補救使用者** ：此項目表示使用者符合條件式存取原則的授與或需求，而此活動已向風險引擎回報，以降低 (緩和) 使用者的風險。
 
 7. 在清單中選取 [評估條件式存取原則] 記錄項目，以開啟 [活動詳細資料：稽核記錄] 頁面，其中顯示稽核記錄識別碼，以及 [其他詳細資料] 區段中的這項資訊：
 

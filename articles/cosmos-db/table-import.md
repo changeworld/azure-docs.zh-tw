@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 0023308c74d58b1c94bf13fcb47ffb8aa7ade1d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6cf47c3b6af89ff3ff431d18d0bda2144427ec34
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85557631"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329400"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>將您的資料移轉至 Azure Cosmos DB 資料表 API 帳戶
 
@@ -68,11 +68,11 @@ ms.locfileid: "85557631"
 
 在從 Azure 資料表儲存體匯入時若要擷取來源的連接字串，請開啟 Azure 入口網站，按一下 [儲存體帳戶] > [帳戶] > [存取金鑰]，然後使用 [複製] 按鈕複製 [連接字串]。
 
-:::image type="content" source="./media/table-import/storage-table-access-key.png" alt-text="HBase 檔案來源選項的螢幕擷取畫面":::
+:::image type="content" source="./media/table-import/storage-table-access-key.png" alt-text="此螢幕擷取畫面顯示 [儲存體帳戶] > [帳戶] > [存取金鑰] 選項並醒目提示 [複製] 按鈕。":::
 
 在從 Azure Cosmos DB 資料表 API (預覽) 帳戶匯入時若要擷取來源的連接字串，請開啟 Azure 入口網站，按一下 [Azure Cosmos DB] > [帳戶] > [連接字串]，然後使用 [複製] 按鈕複製 [連接字串]。
 
-:::image type="content" source="./media/table-import/cosmos-connection-string.png" alt-text="HBase 檔案來源選項的螢幕擷取畫面":::
+:::image type="content" source="./media/table-import/cosmos-connection-string.png" alt-text="此螢幕擷取畫面顯示 [儲存體帳戶] > [帳戶] > [存取金鑰] 選項並醒目提示 [複製] 按鈕。":::
 
 [Azure 資料表儲存體的命令範例](#azure-table-storage)
 

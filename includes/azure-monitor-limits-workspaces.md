@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: e6b64b5a1a60ba3bbf93e607536eeb0379669c73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e206c12a85cfbaed3297f2a44bf0a5d694c2d170
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91645066"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320914"
 ---
 **資料收集磁碟區和保留** 
 
@@ -70,31 +70,7 @@ Azure 監視器是一種大規模的資料服務，服務對象為每月需傳�
 
 如果您以高於工作區中所設定閾值的 80% 速率將資料傳送至工作區時，則每隔 6 小時會將事件傳送至工作區中的 [作業] 資料表，同時會持續超過閾值。 當內嵌的磁碟區速率高於閾值時，則系統會卸除某些資料，且每隔 6 小時會將事件傳送至工作區中的 [作業] 資料表，同時會持續超過閾值。 如果您的擷取磁碟區速率持續超過閾值，或您希望很快能達到某個閾值，則可以透過開啟支援要求，要求增加速率。 
 
-若希望在接近或達到擷取磁碟區速率限制時，能夠在工作區中收到通知，請使用下列查詢建立[記錄警示規則](../articles/azure-monitor/platform/alerts-log.md)，該查詢具有警示邏輯基於結果數目大於零、評估期間為 5 分鐘且頻率為 5 分鐘的情況。
-
-超過閾值的擷取磁碟區速率
-```Kusto
-Operation
-| where OperationCategory == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where OperationStatus == "Error"
-```
-
-超過 80% 閾值的擷取磁碟區速率
-```Kusto
-Operation
-| where OperationCategory == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where OperationStatus == "Warning"
-```
-
-超過 70% 閾值的擷取磁碟區速率
-```Kusto
-Operation
-| where OperationCategory == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where OperationStatus == "Info"
-```
+請參閱[在 Azure 監視器中監視 Log Analytics 工作區的健康情況](../articles/azure-monitor/platform/monitor-workspace.md)，以建立要在您達到任何擷取限制時主動發出通知的警示規則。
 
 >[!NOTE]
 >視使用 Log Analytics 的時間長度而定，您可能會有舊版定價層的存取權。 深入了解 [Log Analytics 舊版定價層](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers)。 
