@@ -9,16 +9,32 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 5da42ebd31e4b09eb8bc223560aec976584c47e9
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 3e80ff90e47f45655761abd4c7e8fa9ed04b61ef
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874453"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518886"
 ---
 # <a name="tutorial---migrate-web-service-from-google-maps"></a>教學課程 - 從 Google Maps 遷移 Web 服務
 
 Azure 地圖服務和 Google Maps 都提供透過 REST Web 服務來存取空間 API 的功能。 這些平台的 API 介面會執行類似的功能。 但是，其各自使用不同的命名慣例和回應物件。
+
+在本教學課程中，您將學會如何：
+
+> * 正向和反向地理編碼
+> * 搜尋景點
+> * 計算路線和方線
+> * 擷取地圖影像
+> * 計算距離矩陣
+> * 取得時區詳細資料
+
+您也會了解： 
+
+> [!div class="checklist"]
+> * 從 Google Maps Web 服務遷移時應使用的 Azure 地圖服務 REST 服務
+> * 如何充分利用 Azure 地圖服務的秘訣
+> * 深入了解其他相關的 Azure 地圖服務
 
 下表顯示 Azure 地圖服務的服務 API，其具有與表中所列 Google Maps 服務 API 類似的功能。
 
@@ -48,6 +64,12 @@ Azure 地圖服務有一些可能讓您感興趣的額外 REST Web 服務：
 
 - [空間作業](https://docs.microsoft.com/rest/api/maps/spatial)：將複雜的空間計算和作業 (例如地理柵欄) 卸載至某個服務。
 - [交通](https://docs.microsoft.com/rest/api/maps/traffic)：存取即時交通流量和事件資料。
+
+## <a name="prerequisites"></a>必要條件 
+
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+2. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
 
 ## <a name="geocoding-addresses"></a>地理編碼地址
 
@@ -110,7 +132,7 @@ Azure 地圖服務反向地理編碼 API 有一些無法在 Google Maps 中取�
 您可以使用地點搜尋 API，在 Google Maps 中搜尋景點資料。 此 API 提供了三種不同的方式供您搜尋景點：
 
 - **從文字尋找地點：** 根據景點名稱、地址或電話號碼來搜尋景點。
-- **鄰近搜尋**：搜尋位於某位置一定距離內的景點。
+- **鄰近搜尋** ：搜尋位於某位置一定距離內的景點。
 - **文字搜尋：** 使用包含景點和位置資訊的自由格式文字來搜尋地點。 例如，「紐約的披薩」或「主街附近的餐廳」。
 
 Azure 地圖服務會提供數個景點搜尋 API：
@@ -334,7 +356,6 @@ Azure 地圖服務會提供 API 來呈現已覆蓋資料的靜態地圖影像。
 &pins=default|coFF0000|la15 50||'Space Needle' -122.349300 47.620180
 ```
 
-
 ![Azure 地圖服務的標記](media/migrate-google-maps-web-services/azure-maps-marker.png)
 
 新增具有標籤值 '1'、'2' 和 '3' 的三個圖釘：
@@ -342,8 +363,6 @@ Azure 地圖服務會提供 API 來呈現已覆蓋資料的靜態地圖影像。
 ```
 &pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12
 ```
-
-
 
 ![Azure 地圖服務的多個標記](media/migrate-google-maps-web-services/azure-maps-multiple-markers.png)
 
@@ -439,7 +458,7 @@ Azure 地圖服務提供距離矩陣 API。 請使用此 API 透過距離矩陣�
 
 Azure 地圖服務提供了 API 供您擷取座標的時區。 Azure 地圖服務的時區 API 類似於 Google Maps 中的時區 API：
 
-- [**時區 (依座標)** ](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonebycoordinates)：指定座標並接收座標的時區詳細資料。
+- [**時區 (依座標)**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonebycoordinates)：指定座標並接收座標的時區詳細資料。
 
 下表會交互參照 Google Maps API 參數與 Azure 地圖服務中類似的 API 參數。
 
@@ -452,7 +471,7 @@ Azure 地圖服務提供了 API 供您擷取座標的時區。 Azure 地圖服�
 
 除了這個 API 之外，Azure 地圖服務還提供一些時區 API。 這些 API 會根據時區的名稱或識別碼來轉換時間：
 
-- [**時區 (依識別碼)** ](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonebyid)：針對指定的 IANA 時區識別碼，傳回目前、以往和未來的時區資訊。
+- [**時區 (依識別碼)**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonebyid)：針對指定的 IANA 時區識別碼，傳回目前、以往和未來的時區資訊。
 - [**時區列舉 IANA**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneenumiana)：傳回 IANA 時區識別碼的完整清單。 IANA 服務的更新會在一天內就反映在系統中。
 - [**時區列舉 Windows**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneenumwindows)：傳回 Windows 時區識別碼的完整清單。
 - [**時區 IANA 版本**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneianaversion)：傳回 Azure 地圖服務所用的目前 IANA 版本號碼。
@@ -468,13 +487,24 @@ Azure 地圖服務針對下列程式設計語言提供了用戶端程式庫：
 
 - .NET Standard 2.0 – [GitHub 專案](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet 套件](https://www.nuget.org/packages/AzureMapsRestToolkit/)
 
-## <a name="additional-resources"></a>其他資源
+## <a name="next-steps"></a>後續步驟
 
-以下是適用於 Azure 地圖服務 REST 服務的額外文件和資源。
+深入了解 Azure 地圖服務 REST 服務：
 
-- [搜尋的最佳做法](how-to-use-best-practices-for-search.md)
-- [搜尋地址](how-to-search-for-address.md)
-- [路由的最佳做法](how-to-use-best-practices-for-routing.md)
-- [Azure 地圖服務 REST 服務 API 參考文件](https://docs.microsoft.com/rest/api/maps/)
-- [程式碼範例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
-- [如何使用服務模組 (Web SDK)](how-to-use-best-practices-for-routing.md)
+> [!div class="nextstepaction"]
+> [搜尋的最佳做法](how-to-use-best-practices-for-search.md)
+
+> [!div class="nextstepaction"]
+> [搜尋地址](how-to-search-for-address.md)
+
+> [!div class="nextstepaction"]
+> [路由的最佳做法](how-to-use-best-practices-for-routing.md)
+
+> [!div class="nextstepaction"]
+> [Azure 地圖服務 REST 服務 API 參考文件](https://docs.microsoft.com/rest/api/maps/)
+
+> [!div class="nextstepaction"]
+> [程式碼範例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+
+> [!div class="nextstepaction"]
+> [如何使用服務模組 (Web SDK)](how-to-use-best-practices-for-routing.md)

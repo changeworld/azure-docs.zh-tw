@@ -9,16 +9,28 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: ee7eda58c211ca570b052d55c813999e62b95fde
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 3ece62e671caa0838bbf4713c0ad4a74f19fd6cb
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876306"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518869"
 ---
 # <a name="tutorial---migrate-from-google-maps-to-azure-maps"></a>教學課程 - 從 Google 地圖遷移至 Azure 地圖服務
 
-本文將深入解析如何將 Web、行動裝置和伺服器應用程式從 Google Maps 遷移至 Microsoft Azure 地圖服務平台。 本教學課程包含比較程式碼範例、移轉建議，以及遷移至 Azure 地圖服務的最佳做法。
+本文將深入解析如何將 Web、行動裝置和伺服器應用程式從 Google Maps 遷移至 Microsoft Azure 地圖服務平台。 本教學課程包含比較程式碼範例、移轉建議，以及遷移至 Azure 地圖服務的最佳做法。 在本教學課程中，您將了解：
+
+> [!div class="checklist"]
+> * Azure 地圖服務中可用的對等 Google Maps 功能的高階比較
+> * 需要納入考慮的授權差異
+> * 如何規劃移轉
+> * 可以找到技術資源和支援的位置。
+
+## <a name="prerequisites"></a>必要條件 
+
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+2. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
 
 ## <a name="azure-maps-platform-overview"></a>Azure 地圖服務平台概觀
 
@@ -107,10 +119,15 @@ Google 地圖提供基本的金鑰型驗證。 Azure 地圖服務同時提供基
 
 開發人員可透過[論壇](https://aka.ms/AzureMapsForums)或透過眾多 Azure 支援選項之一尋求移轉支援：[https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
 
-您可以使用下列方式了解如何遷移您的 Google Maps 應用程式： 
+## <a name="next-steps"></a>後續步驟
 
-[遷移 Android 應用程式](migrate-from-google-maps-android-app.md) 
+參考下列文章以詳細了解如何遷移您的 Google Maps 應用程式：
 
-[遷移 Web 服務](migrate-from-google-maps-web-services.md) 
+> [!div class="nextstepaction"]
+> [遷移 Web 應用程式](migrate-from-google-maps-web-app.md)
 
-[遷移 Web 應用程式](migrate-from-google-maps-web-app.md)
+> [!div class="nextstepaction"]
+> [遷移 Web 服務](migrate-from-google-maps-web-services.md) 
+
+> [!div class="nextstepaction"]
+> [遷移 Android 應用程式](migrate-from-google-maps-android-app.md) 
