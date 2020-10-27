@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
-ms.openlocfilehash: 62a34a2dba459c6f65729cd5c6804378ee7f8b52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74aa0bf84c19b9d663b92d529604c08bf5800c45
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90902767"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544846"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>如何使用 sys_schema 在適用於 MySQL 的 Azure 資料庫中進行效能微調和資料庫維護
 
@@ -29,7 +29,7 @@ sys_schema 中有 52 個檢視，每個檢視分別具有下列其中一個前�
 - 使用者：使用者所耗用並依使用者分類的資源。 範例包括檔案 I/O、連線和記憶體。
 - Wait：依主機或使用者分類的等候事件。
 
-現在，讓我們看看 sys_schema 的一些常見使用模式。 首先，我們會將使用模式分成兩個類別：**效能微調**和**資料庫維護**。
+現在，讓我們看看 sys_schema 的一些常見使用模式。 首先，我們會將使用模式分成兩個類別： **效能微調** 和 **資料庫維護** 。
 
 ## <a name="performance-tuning"></a>效能微調
 
@@ -83,4 +83,4 @@ InnoDB 緩衝集區存在於記憶體中，是 DBMS 與儲存體之間的主要�
 總而言之，sys_schema 對效能調整和資料庫維護而言，都是很理想的工具。 請務必在您適用於 MySQL 的 Azure 資料庫中充分運用這項功能。 
 
 ## <a name="next-steps"></a>後續步驟
-- 若想知道是否有人可解答您最關切的問題，或是要張貼新問題/解答，請造訪 [Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-database-mysql.html)或 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)。
+- 若想知道是否有人可解答您最關切的問題，或是要張貼新問題/解答，請造訪 [Microsoft 問與答頁面](/answers/topics/azure-database-mysql.html)或 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)。

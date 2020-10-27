@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
-ms.openlocfilehash: c8cb91aa0c7ce1610320d4107db282d3c34407ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 673a76417739fa59a91979cca7c6807a584868f0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81758718"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538250"
 ---
 # <a name="404104-deviceconnectionclosedremotely"></a>404104 DeviceConnectionClosedRemotely
 
@@ -24,15 +24,15 @@ ms.locfileid: "81758718"
 
 ### <a name="symptom-1"></a>徵兆1
 
-裝置會定期中斷連線 (每65分鐘，例如) ，您會在 IoT 中樞診斷記錄中看到 **404104 DeviceConnectionClosedRemotely** 。 有時，您也會看到 **401003 IoTHubUnauthorized** ，而成功的裝置線上活動則會在一分鐘後不到一分鐘。
+裝置會定期中斷連線 (每65分鐘，例如) ，您會在 IoT 中樞資源記錄中看到 **404104 DeviceConnectionClosedRemotely** 。 有時，您也會看到 **401003 IoTHubUnauthorized** ，而成功的裝置線上活動則會在一分鐘後不到一分鐘。
 
 ### <a name="symptom-2"></a>徵兆2
 
-裝置會隨機中斷連線，而您會在 IoT 中樞診斷記錄中看到 **404104 DeviceConnectionClosedRemotely** 。
+裝置會隨機中斷連線，而您會在 IoT 中樞資源記錄中看到 **404104 DeviceConnectionClosedRemotely** 。
 
 ### <a name="symptom-3"></a>徵兆3
 
-許多裝置一次中斷連線，您會在 [ [已連線的裝置](iot-hub-metrics.md)] 計量中看到 dip，而診斷記錄中會有比平常更多的 **404104 DeviceConnectionClosedRemotely** 和 [500xxx 內部錯誤](iot-hub-troubleshoot-error-500xxx-internal-errors.md) 。
+許多裝置一次中斷連線，您會在連線的裝置中看到 dip [ (connectedDeviceCount)](monitor-iot-hub-reference.md)計量，而且 Azure 監視器記錄檔中的 DeviceConnectionClosedRemotely 和 [500xxx 內部錯誤](iot-hub-troubleshoot-error-500xxx-internal-errors.md)比平常更 **404104** 多。
 
 ## <a name="causes"></a>原因
 
@@ -72,6 +72,6 @@ IoT 中樞可能遇到暫時性問題。 請參閱 [IoT 中樞內部伺服器錯
 
 請參閱 [IoT 中樞內部伺服器錯誤的解決方案](iot-hub-troubleshoot-error-500xxx-internal-errors.md#solution)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 我們建議使用 Azure IoT 裝置 Sdk 來可靠地管理連接。 若要深入瞭解，請參閱 [使用 Azure IoT 中樞裝置 sdk 來管理連線能力和可靠的訊息](iot-hub-reliability-features-in-sdks.md)

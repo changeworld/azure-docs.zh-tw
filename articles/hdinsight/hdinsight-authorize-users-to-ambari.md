@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: fc10d385df1dffed07e771d622d9bf9d8bedee39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1cd6d93ff45d7fb40ae7ca1874343486bd0b8cb
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086529"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547923"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>授權 Apache Ambari 檢視的使用者
 
@@ -24,25 +24,25 @@ Active Directory 使用者可以使用其網域認證來登入叢集節點。 �
 > [!WARNING]  
 > 請勿變更以 Linux 為基礎之 HDInsight 叢集上的 Ambari 看門狗 (hdinsightwatchdog) 密碼。 變更密碼會破壞在叢集上使用指令碼動作或執行調整作業的能力。
 
-如果您尚未這麼做，請依照[這些指示](./domain-joined/apache-domain-joined-configure.md)來佈建新 ESP 叢集。
+如果您尚未這麼做，請依照[這些指示](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)來佈建新 ESP 叢集。
 
 ## <a name="access-the-ambari-management-page"></a>存取 Ambari 管理頁面
 
-若要移至 **Ambari 管理頁面**，請在 [Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) 上瀏覽至 `https://CLUSTERNAME.azurehdinsight.net`。 輸入您建立叢集時所定義的叢集系統管理員使用者名稱和密碼。 接著，從 Ambari 儀表板中，選取 [admin] \(系統管理員\)**** 功能表底下的 [Manage Ambari] \(管理 Ambari\)****：
+若要移至 **Ambari 管理頁面** ，請在 [Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) 上瀏覽至 `https://CLUSTERNAME.azurehdinsight.net`。 輸入您建立叢集時所定義的叢集系統管理員使用者名稱和密碼。 接著，從 Ambari 儀表板中，選取 [admin] \(系統管理員\)  功能表底下的 [Manage Ambari] \(管理 Ambari\)  ：
 
 ![Apache Ambari 儀表板管理](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
 
-## <a name="add-users"></a>新增使用者
+## <a name="add-users"></a>加入使用者
 
 ### <a name="add-users-through-the-portal"></a>透過入口網站新增使用者
 
-1. 從 [管理] 頁面選取 [ **使用者**]。
+1. 從 [管理] 頁面選取 [ **使用者** ]。
 
     ![Apache Ambari 管理頁面使用者](./media/hdinsight-authorize-users-to-ambari/apache-ambari-management-page-users.png)
 
-1. 選取 [ **+ 建立本機使用者**]。
+1. 選取 [ **+ 建立本機使用者** ]。
 
-1. 提供使用者 **名稱** 和 **密碼**。 選取 [ **儲存**]。
+1. 提供使用者 **名稱** 和 **密碼** 。 選取 [ **儲存** ]。
 
 ### <a name="add-users-through-powershell"></a>透過 PowerShell 新增使用者
 
@@ -167,38 +167,38 @@ curl -k -u $user:$userPassword -H "X-Requested-By: ambari" \
 
 ## <a name="grant-permissions-to-apache-hive-views"></a>授與對 Apache Hive 檢視的權限
 
-Ambari 隨附 [Apache Hive](https://hive.apache.org/) 和 [Apache TEZ](https://tez.apache.org/) 等等的檢視執行個體。 若要授與對一或多個 Hive 檢視執行個體的存取權，請移至 **Ambari 管理頁面**。
+Ambari 隨附 [Apache Hive](https://hive.apache.org/) 和 [Apache TEZ](https://tez.apache.org/) 等等的檢視執行個體。 若要授與對一或多個 Hive 檢視執行個體的存取權，請移至 **Ambari 管理頁面** 。
 
-1. 從管理頁面中，選取左邊 [檢視] \(Views\)**** 功能表標題底下的 [檢視] \(Views\)**** 連結。
+1. 從管理頁面中，選取左邊 [檢視] \(Views\)  功能表標題底下的 [檢視] \(Views\)  連結。
 
     ![Apache Ambari views view 連結](./media/hdinsight-authorize-users-to-ambari/apache-ambari-views-link.png)
 
-2. 在 [檢視] \(Views\) 頁面上，展開 [HIVE]**** 資料列。 將 Hive 服務新增到叢集時，會建立一個預設的 Hive 檢視。 您也可以視需要建立更多 Hive 檢視執行個體。 選取一個 Hive 檢視：
+2. 在 [檢視] \(Views\) 頁面上，展開 [HIVE]  資料列。 將 Hive 服務新增到叢集時，會建立一個預設的 Hive 檢視。 您也可以視需要建立更多 Hive 檢視執行個體。 選取一個 Hive 檢視：
 
     ![HDInsight 視圖-Apache Hive 視圖](./media/hdinsight-authorize-users-to-ambari/views-apache-hive-view.png)
 
-3. 向下捲動到 [檢視] \(Views\) 頁面底部。 在 [權限] \(Permissions\)** 區段底下，您有兩個選項來授與網域使用者對檢視的權限：
+3. 向下捲動到 [檢視] \(Views\) 頁面底部。 在 [權限] \(Permissions\)  區段底下，您有兩個選項來授與網域使用者對檢視的權限：
 
 **Grant permission to these users (將權限授與這些使用者)** ![Grant permission to these users (將權限授與這些使用者)](./media/hdinsight-authorize-users-to-ambari/hdi-add-user-to-view.png)
 
 **Grant permission to these groups (將權限授與這些群組)** ![Grant permission to these groups (將權限授與這些群組)](./media/hdinsight-authorize-users-to-ambari/add-group-to-view-permission.png)
 
-1. 若要新增使用者，請選取 [Add User] \(新增使用者\)**** 按鈕。
+1. 若要新增使用者，請選取 [Add User] \(新增使用者\)  按鈕。
 
    * 開始輸入使用者名稱，您將會看到先前已定義之名稱的下拉式清單。
 
      ![Apache Ambari 使用者自動完成](./media/hdinsight-authorize-users-to-ambari/ambari-user-autocomplete.png)
 
-   * 選取使用者名稱，或完成使用者名稱輸入。 若要新增此使用者名稱作為新使用者，請選取 [New] \(新增\)**** 按鈕。
+   * 選取使用者名稱，或完成使用者名稱輸入。 若要新增此使用者名稱作為新使用者，請選取 [New] \(新增\)  按鈕。
 
-   * 若要儲存您的變更，請選取**藍色核取方塊**。
+   * 若要儲存您的變更，請選取 **藍色核取方塊** 。
 
      ![Apache Ambari 授與使用者許可權](./media/hdinsight-authorize-users-to-ambari/user-entered-permissions.png)
 
-1. 若要新增群組，請選取 [Add Group] \(新增群組\)**** 按鈕。
+1. 若要新增群組，請選取 [Add Group] \(新增群組\)  按鈕。
 
    * 開始輸入群組名稱。 不論是選取現有的群組名稱，還是新增新的群組，程序都與新增使用者相同。
-   * 若要儲存您的變更，請選取**藍色核取方塊**。
+   * 若要儲存您的變更，請選取 **藍色核取方塊** 。
 
      ![Apache Ambari 授與許可權](./media/hdinsight-authorize-users-to-ambari/ambari-group-entered.png)
 
@@ -208,7 +208,7 @@ Ambari 隨附 [Apache Hive](https://hive.apache.org/) 和 [Apache TEZ](https://t
 
 [Apache TEZ](https://tez.apache.org/) 檢視執行個體可讓使用者對所有 Tez 作業 (由 [Apache Hive](https://hive.apache.org/) 查詢和 [Apache Pig](https://pig.apache.org/) 指令碼所提交) 進行監視和偵錯。 佈建叢集時，會建立一個預設的 Tez 檢視執行個體。
 
-若要將使用者和群組指派給 Tez 檢視執行個體，請依照先前所述，展開 [Views] \(檢視\) 頁面上的 [TEZ]**TEZ** 資料列。
+若要將使用者和群組指派給 Tez 檢視執行個體，請依照先前所述，展開 [Views] \(檢視\) 頁面上的 [TEZ] **TEZ** 資料列。
 
 ![HDInsight 視圖-Apache Tez 視圖](./media/hdinsight-authorize-users-to-ambari/views-apache-tez-view.png)
 
@@ -224,11 +224,11 @@ Ambari 隨附 [Apache Hive](https://hive.apache.org/) 和 [Apache TEZ](https://t
 * 服務操作員
 * 叢集使用者
 
-若要管理角色，請移至 **Ambari 管理頁面**，然後選取左邊 [Clusters] \(叢集\)** 功能表群組內的 [Roles] \(角色\)**** 連結。
+若要管理角色，請移至  功能表群組內的 [Roles] \(角色\)  連結。
 
 ![Apache Ambari 角色功能表連結](./media/hdinsight-authorize-users-to-ambari/cluster-roles-menu-link.png)
 
-若要查看賦予每個角色的權限清單，請按一下 [Roles] \(角色\) 頁面上 [Roles] \(角色\)**** 資料表標頭旁邊的藍色問號。
+若要查看賦予每個角色的權限清單，請按一下 [Roles] \(角色\) 頁面上 [Roles] \(角色\)  資料表標頭旁邊的藍色問號。
 
 ![Apache Ambari 角色功能表連結許可權](./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png "Apache Ambari 角色功能表連結許可權")
 
@@ -236,7 +236,7 @@ Ambari 隨附 [Apache Hive](https://hive.apache.org/) 和 [Apache TEZ](https://t
 
 ### <a name="block-view"></a>[區塊] 檢視
 
-[Block] \(區塊\) 檢視會以每個角色自己一列的方式顯示每個角色，並如先前所述，會提供 [Assign roles to these users] \(指派角色給這些使用者\)**** 和 [Assign roles to these groups] \(指派角色給這些群組\)**** 選項。
+[Block] \(區塊\) 檢視會以每個角色自己一列的方式顯示每個角色，並如先前所述，會提供 [Assign roles to these users] \(指派角色給這些使用者\)  和 [Assign roles to these groups] \(指派角色給這些群組\)  選項。
 
 ![Apache Ambari 角色封鎖視圖](./media/hdinsight-authorize-users-to-ambari/ambari-roles-block-view.png)
 
@@ -248,11 +248,11 @@ Ambari 隨附 [Apache Hive](https://hive.apache.org/) 和 [Apache TEZ](https://t
 
     ![Apache Ambari 角色清單視圖-使用者](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-* [List] \(清單\) 檢視的 [Groups] \(群組\) 類別會顯示所有群組，以及指派給每個群組的角色。 在我們的範例中，群組清單是透過同步處理，從叢集 [Domain] \(網域\) 設定之 [Access user group] \(存取使用者群組\)**** 屬性中指定的 Azure AD 群組取得。 請參閱[建立啟用 ESP 的 HDInsight 叢集](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)。
+* [List] \(清單\) 檢視的 [Groups] \(群組\) 類別會顯示所有群組，以及指派給每個群組的角色。 在我們的範例中，群組清單是透過同步處理，從叢集 [Domain] \(網域\) 設定之 [Access user group] \(存取使用者群組\)  屬性中指定的 Azure AD 群組取得。 請參閱[建立啟用 ESP 的 HDInsight 叢集](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)。
 
     ![Apache Ambari 角色清單視圖群組](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 
-    在上圖中，指派給 "hiveusers" 群組的角色是 [Cluster User] \(叢集使用者\)**。 這是一個唯讀角色，可讓該群組的使用者檢視服務組態和叢集計量，但無法進行變更。
+    在上圖中，指派給 "hiveusers" 群組的角色是 [Cluster User] \(叢集使用者\)  。 這是一個唯讀角色，可讓該群組的使用者檢視服務組態和叢集計量，但無法進行變更。
 
 ## <a name="log-in-to-ambari-as-a-view-only-user"></a>以僅具有檢視權限的使用者身分登入 Ambari
 
@@ -262,11 +262,11 @@ Ambari 隨附 [Apache Hive](https://hive.apache.org/) 和 [Apache TEZ](https://t
 
 ## <a name="log-in-to-ambari-as-a-cluster-user"></a>以叢集使用者身分登入 Ambari
 
-我們已經將 Azure AD 網域使用者 "hiveuser2" 指派給 [Cluster User] \(叢集使用者\)** 角色。 此角色能夠存取儀表板及所有功能表項目。 叢集使用者獲允許使用的選項比系統管理員少。 例如，hiveuser2 可以檢視每個服務的組態，但無法加以編輯。
+我們已經將 Azure AD 網域使用者 "hiveuser2" 指派給 [Cluster User] \(叢集使用者\)  角色。 此角色能夠存取儀表板及所有功能表項目。 叢集使用者獲允許使用的選項比系統管理員少。 例如，hiveuser2 可以檢視每個服務的組態，但無法加以編輯。
 
 ![Apache Ambari 儀表板顯示](./media/hdinsight-authorize-users-to-ambari/user-cluster-user-role.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * [在有 ESP 的 HDInsight 中設定 Apache Hive 原則](./domain-joined/apache-domain-joined-run-hive.md)
 * [管理 ESP HDInsight 叢集](./domain-joined/apache-domain-joined-manage.md)

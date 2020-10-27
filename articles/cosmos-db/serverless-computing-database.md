@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: d6399da204ba930fad2dd3656d27a807a83b1b13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0167dc0b1cbf8cf3b95995645ef24548a05c4343
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85263255"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538641"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>使用 Azure Cosmos DB 和 Azure Functions 的無伺服器資料庫計算
 
@@ -23,9 +23,9 @@ ms.locfileid: "85263255"
 
 Azure Cosmos DB 與 Azure Functions 可讓您以下列方式整合資料庫與無伺服器的應用程式：
 
-* 為 Cosmos DB 建立事件驅動的 **Azure Functions 觸發**程式。 此觸發程式依賴 [變更](change-feed.md) 摘要串流來監視您的 Azure Cosmos 容器是否有變更。 對容器進行任何變更時，變更摘要串流會傳送至觸發程序，其叫用 Azure Function。
-* 或者，使用 **輸入**系結將 azure 函數系結至 azure Cosmos 容器。 函式執行時，輸入繫結會從容器讀取資料。
-* 使用 **輸出**系結將函數系結至 Azure Cosmos 容器。 函式完成時，輸出繫結會將資料寫入容器。
+* 為 Cosmos DB 建立事件驅動的 **Azure Functions 觸發** 程式。 此觸發程式依賴 [變更](change-feed.md) 摘要串流來監視您的 Azure Cosmos 容器是否有變更。 對容器進行任何變更時，變更摘要串流會傳送至觸發程序，其叫用 Azure Function。
+* 或者，使用 **輸入** 系結將 azure 函數系結至 azure Cosmos 容器。 函式執行時，輸入繫結會從容器讀取資料。
+* 使用 **輸出** 系結將函數系結至 Azure Cosmos 容器。 函式完成時，輸出繫結會將資料寫入容器。
 
 > [!NOTE]
 > 目前，Azure Functions 觸發程式、輸入系結，以及 Cosmos DB 的輸出系結僅支援搭配 SQL API 使用。 對於其他所有的 Azure Cosmos DB API，您應對您的 API 使用靜態用戶端，以從函式存取資料庫。
@@ -51,7 +51,7 @@ Azure Cosmos DB 的 Azure Functions 觸發程式、輸入系結和輸出系結�
 
 **實作為：** 針對 Cosmos DB 使用 Azure Functions 觸發程式和輸出系結
 
-1. **Cosmos DB 的 Azure Functions 觸發**程式可用來觸發與汽車警示相關的事件，例如在連接的汽車中進入的檢查引擎燈。
+1. **Cosmos DB 的 Azure Functions 觸發** 程式可用來觸發與汽車警示相關的事件，例如在連接的汽車中進入的檢查引擎燈。
 2. 檢查引擎燈時，感應器資料會傳送到 Azure Cosmos DB。
 3. Azure Cosmos DB 建立或更新新的感應器資料檔案時，這些變更會串流至 Cosmos DB 的 Azure Functions 觸發程式。
 4. 在感應器資料收集每次資料變更時叫用觸發程序，因為所有變更會透過變更摘要串流處理。
@@ -69,7 +69,7 @@ Azure Cosmos DB 的 Azure Functions 觸發程式、輸入系結和輸出系結�
 
 **實作：** 具有 Azure Cosmos DB 輸入繫結的計時器觸發程序
 
-1. 使用 [計時器觸發](../azure-functions/functions-bindings-timer.md)程式時，您可以使用 **輸入**系結，以定期間隔取出儲存在 Azure Cosmos 容器中的銀行帳戶餘額資訊。
+1. 使用 [計時器觸發](../azure-functions/functions-bindings-timer.md)程式時，您可以使用 **輸入** 系結，以定期間隔取出儲存在 Azure Cosmos 容器中的銀行帳戶餘額資訊。
 2. 如果餘額低於使用者設定的低餘額閾值，則追蹤 Azure Function 中的動作。
 3. 輸出繫結可以是 [SendGrid 整合](../azure-functions/functions-bindings-sendgrid.md)，將來自服務帳戶的電子郵件傳送至針對每個低餘額帳戶識別的電子郵件地址。
 
@@ -81,12 +81,12 @@ Azure Cosmos DB 的 Azure Functions 觸發程式、輸入系結和輸出系結�
 
 ### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>Cosmos DB 的遊戲使用案例 Azure Functions 觸發程式和輸出系結 
 
-在遊戲中建立新的使用者時，您可以使用 [Azure Cosmos DB Gremlin API](graph-introduction.md) 搜尋可能知道的其他使用者。 然後，您可以將結果寫入 [Azure Cosmos DB 或 SQL 資料庫]() ，以便輕鬆地進行抓取。
+在遊戲中建立新的使用者時，您可以使用 [Azure Cosmos DB Gremlin API](graph-introduction.md) 搜尋可能知道的其他使用者。 然後，您可以將結果寫入 Azure Cosmos DB 或 SQL 資料庫，以便輕鬆地進行抓取。
 
 **實作為：** 針對 Cosmos DB 使用 Azure Functions 觸發程式和輸出系結
 
 1. 使用 Azure Cosmos DB [graph 資料庫](graph-introduction.md) 來儲存所有使用者，您可以使用 Cosmos DB 的 Azure Functions 觸發程式來建立新的函式。 
-2. 每當插入新的使用者時，會叫用函式，然後使用**輸出繫結**來儲存結果。
+2. 每當插入新的使用者時，會叫用函式，然後使用 **輸出繫結** 來儲存結果。
 3. 函式會查詢圖表資料庫，以搜尋與新使用者直接相關的所有使用者，並將該資料集傳回函式。
 4. 接著，此資料會儲存在 Azure Cosmos DB 中，讓任何顯示新使用者其連線好友的前端應用程式輕鬆地擷取。
 
@@ -122,27 +122,27 @@ Azure Functions 提供了建立可擴展工作單位的功能，或可視需要�
 
 無伺服器計算建議使用 Azure Cosmos DB 的資料庫，原因如下：
 
-* **即時存取所有資料**：您可以精確存取儲存的每個值，因為 Azure Cosmos DB 依預設會[自動編製索引](index-policy.md)所有資料，並讓這些索引立即可用。 這表示您可以經常向資料庫查詢、更新和新增項目，並透過 Azure Functions 即時存取。
+* **即時存取所有資料** ：您可以精確存取儲存的每個值，因為 Azure Cosmos DB 依預設會 [自動編製索引](index-policy.md)所有資料，並讓這些索引立即可用。 這表示您可以經常向資料庫查詢、更新和新增項目，並透過 Azure Functions 即時存取。
 
-* **無結構描述**。 Azure Cosmos DB 是無結構描述的 - 因此它有獨特的能力可處理來自 Azure Function 的任何資料輸出。 這種「處理任何事」的方法使其可直接建立所有輸出至 Azure Cosmos DB 的各種函式。
+* **無結構描述** 。 Azure Cosmos DB 是無結構描述的 - 因此它有獨特的能力可處理來自 Azure Function 的任何資料輸出。 這種「處理任何事」的方法使其可直接建立所有輸出至 Azure Cosmos DB 的各種函式。
 
-* **可擴充的輸送量**。 輸送量可以在 Azure Cosmos DB 中即時地相應增加或相應減少。 如果您有數百或數千個功能查詢，並且寫入相同容器，則可以相應增加輸送量的 [RU/s](request-units.md) 以處理負載。 所有函式可以使用您分配的 RU/秒來並行工作，且保證您的資料[一致](consistency-levels.md)。
+* **可擴充的輸送量** 。 輸送量可以在 Azure Cosmos DB 中即時地相應增加或相應減少。 如果您有數百或數千個功能查詢，並且寫入相同容器，則可以相應增加輸送量的 [RU/s](request-units.md) 以處理負載。 所有函式可以使用您分配的 RU/秒來並行工作，且保證您的資料[一致](consistency-levels.md)。
 
-* **全域**複寫。 您可以複寫[全域範圍內](distribute-data-globally.md)的 Azure Cosmos DB 資料以降低延遲，並異地尋找最靠近使用者所在位置的資料。 如同所有 Azure Cosmos DB 查詢，事件驅動觸發程序的資料是從最靠近使用者的 Azure Cosmos DB 讀取資料。
+* **全域** 複寫。 您可以複寫[全域範圍內](distribute-data-globally.md)的 Azure Cosmos DB 資料以降低延遲，並異地尋找最靠近使用者所在位置的資料。 如同所有 Azure Cosmos DB 查詢，事件驅動觸發程序的資料是從最靠近使用者的 Azure Cosmos DB 讀取資料。
 
 如果您想要整合 Azure Functions 以儲存資料，而且不需要深度編製索引，或如果您需要儲存附件與媒體檔案，則 [Azure Blob 儲存體觸發程序](../azure-functions/functions-bindings-storage-blob.md)可能是更佳的選擇。
 
 Azure Functions 的優點： 
 
-* **事件驅動**。 Azure Functions 是事件驅動的，而且可接聽來自 Azure Cosmos DB 的變更摘要。 這表示您不需要建立接聽邏輯，您只要留意正在接聽的變更即可。 
+* **事件驅動** 。 Azure Functions 是事件驅動的，而且可接聽來自 Azure Cosmos DB 的變更摘要。 這表示您不需要建立接聽邏輯，您只要留意正在接聽的變更即可。 
 
-* **無限制**。 函式會並行執行，而且該服務會根據您的需要啟動。 設定參數。
+* **無限制** 。 函式會並行執行，而且該服務會根據您的需要啟動。 設定參數。
 
-* **適用於快速工作**。 當事件觸發時，服務會啟動函式的新執行個體，並在函式完成後立即關閉這些執行個體。 您只需要針對函式有執行的時間來付費。
+* **適用於快速工作** 。 當事件觸發時，服務會啟動函式的新執行個體，並在函式完成後立即關閉這些執行個體。 您只需要針對函式有執行的時間來付費。
 
 如果您不確定 Flow、Logic Apps、Azure Functions 或 WebJobs 是否適合您的實作，請參閱[在 Flow、Logic Apps、Functions 和 WebJobs 之間做選擇](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 現在，讓我們實際連接 Azure Cosmos DB 與 Azure Functions： 
 

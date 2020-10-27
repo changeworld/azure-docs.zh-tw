@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 9b5463ba789a1bcfb707fb03c70f1a8464cb6b59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83c290adea02915db1dc52bd359b4d3165611522
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767352"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547702"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT 中樞訊息路由查詢語法
 
@@ -23,7 +23,7 @@ ms.locfileid: "91767352"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-訊息路由可讓您對訊息屬性和訊息本文，以及裝置對應項標記和裝置對應項屬性進行查詢。 如果訊息本文不是 JSON，訊息路由仍可以路由該訊息，但將無法把查詢套用至訊息本文。  查詢會被描述為布林運算式，其中布林值為 True 會使查詢成功，並路由所有傳入資料，而布林值為 False 則會使查詢失敗，且不會路由任何資料。 如果運算式評估為 Null 或未定義，系統會將它視為 False，並在發生失敗的情況下於診斷記錄中產生錯誤。 查詢語法必須正確以儲存並評估路由。  
+訊息路由可讓您對訊息屬性和訊息本文，以及裝置對應項標記和裝置對應項屬性進行查詢。 如果訊息本文不是 JSON，訊息路由仍可以路由該訊息，但將無法把查詢套用至訊息本文。  查詢會被描述為布林運算式，其中布林值為 True 會使查詢成功，並路由所有傳入資料，而布林值為 False 則會使查詢失敗，且不會路由任何資料。 如果運算式評估為 null 或未定義，則會將其視為 false，而在發生失敗時，IoT 中樞會產生錯誤，以 [路由資源記錄](monitor-iot-hub-reference.md#routes) 檔記錄。 查詢語法必須正確以儲存並評估路由。  
 
 ## <a name="message-routing-query-based-on-message-properties"></a>根據訊息屬性的訊息路由查詢 
 
@@ -62,7 +62,7 @@ IoT 中樞會針對所有裝置到雲端訊息定義[常見格式](iot-hub-devgu
 | dt-dataschema | 字串 |  此值是由 IoT 中樞在裝置到雲端訊息上設定的。 它包含裝置連線中所設定的裝置型號識別碼。 若要查詢，請使用 `$dt-dataschema`。 |
 | dt-subject | 字串 | 傳送裝置到雲端訊息的元件名稱。 若要查詢，請使用 `$dt-subject`。 |
 
-如 [IoT 中樞訊息](iot-hub-devguide-messages-construct.md)中所述，訊息中還有其他系統屬性。 除了上表中的上述屬性之外，您還可以查詢 **>connectiondeviceid**、 **>connectionmoduleid**。
+如 [IoT 中樞訊息](iot-hub-devguide-messages-construct.md)中所述，訊息中還有其他系統屬性。 除了上表中的上述屬性之外，您還可以查詢 **>connectiondeviceid** 、 **>connectionmoduleid** 。
 
 ### <a name="application-properties"></a>應用程式屬性
 
@@ -146,7 +146,7 @@ deviceClient.sendEvent(message, (err, res) => {
 ```
 
 > [!NOTE] 
-> 這會顯示如何以 javascript 處理主體的編碼。 如果您想要在 c # 中查看範例，請下載 [Azure IoT c # 範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。 將 master.zip 檔案解壓縮。 Visual Studio solution *>simulateddevice*的 Program.cs 檔案會說明如何編碼和提交訊息至 IoT 中樞。 這是用來測試訊息路由的相同範例，如 [訊息路由教學](tutorial-routing.md)課程中所述。 在 Program.cs 的底部，它也有一種方法可以讀取其中一個已編碼的檔案、將其解碼，然後寫回 ASCII，讓您可以讀取它。 
+> 這會顯示如何以 javascript 處理主體的編碼。 如果您想要在 c # 中查看範例，請下載 [Azure IoT c # 範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。 將 master.zip 檔案解壓縮。 Visual Studio solution *>simulateddevice* 的 Program.cs 檔案會說明如何編碼和提交訊息至 IoT 中樞。 這是用來測試訊息路由的相同範例，如 [訊息路由教學](tutorial-routing.md)課程中所述。 在 Program.cs 的底部，它也有一種方法可以讀取其中一個已編碼的檔案、將其解碼，然後寫回 ASCII，讓您可以讀取它。 
 
 
 ### <a name="query-expressions"></a>查詢運算式
@@ -220,7 +220,7 @@ $twin.tags.deploymentLocation.floor = 1
 
 不支援在裝載或屬性名稱中使用句點在主體或裝置對應項上進行路由查詢。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 深入瞭解 [訊息路由](iot-hub-devguide-messages-d2c.md)。
 * 請嘗試 [訊息路由教學](tutorial-routing.md)課程。

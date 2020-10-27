@@ -8,12 +8,12 @@ keywords: hadoop 高可用性
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: beb3c54a0ab7f6f063232a1ad49744d99746c589
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: f83f5aec264aeae1a729e81932843825a0ce6673
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893640"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546937"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Azure HDInsight 商務持續性
 
@@ -39,7 +39,7 @@ Azure HDInsight 叢集依賴許多 Azure 服務，例如儲存體、資料庫、
 
 * 使用 HDInsight 上的 Azure 監視工具來偵測叢集中的異常行為，並設定對應的警示通知。 您可以部署預先設定的 HDInsight 叢集特定的管理解決方案，以收集特定叢集類型的重要效能度量。 如需詳細資訊，請參閱 [適用于 HDInsight 的 Azure 監視器](./hdinsight-hadoop-oms-log-analytics-tutorial.md)。  
 
-* 訂閱 Azure 健康狀態警示，以通知有關訂用帳戶、服務或區域的服務問題、預定的維護、健康情況和資訊安全諮詢。 包含問題原因和 resolute ETA 的健康情況通知，可協助您更妥善地執行容錯移轉和容錯回復。 如需詳細資訊，請參閱 [Azure 服務健康狀態檔](/azure/service-health/)。
+* 訂閱 Azure 健康狀態警示，以通知有關訂用帳戶、服務或區域的服務問題、預定的維護、健康情況和資訊安全諮詢。 包含問題原因和 resolute ETA 的健康情況通知，可協助您更妥善地執行容錯移轉和容錯回復。 如需詳細資訊，請參閱 [Azure 服務健康狀態檔](../service-health/index.yml)。
 
 ## <a name="single-region-availability"></a>單一區域可用性
 
@@ -122,9 +122,9 @@ HDInsight 建議 Azure Data Lake Storage Gen2 作為基礎儲存層。 [Azure �
 |讀取寫入模式 |需要讀取和寫入主要和次要都啟用 |將次要資料庫設計為唯讀|
 |RTO & 零 RPO |要求零資料遺失 (RPO = 0) 和零停機 (RTO = 0)  |以減少需要容錯移轉的元件數目的方式設計 RPO 和 RTO。|
 |商務功能 |在次要資料庫中需要主要的完整商務功能 |評估您是否可以使用次要資料庫中最小的重要商務功能子集來執行。|
-|連線能力 |要求來自主要的所有上游和下游系統都必須連接到次要|將次要連接限制為最小的重要子集。|
+|連接性 |要求來自主要的所有上游和下游系統都必須連接到次要|將次要連接限制為最小的重要子集。|
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入瞭解本文中討論的專案，請參閱：
 

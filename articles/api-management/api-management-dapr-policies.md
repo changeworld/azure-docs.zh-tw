@@ -3,15 +3,15 @@ title: Azure API 管理 Dapr 整合原則 |Microsoft Docs
 description: 深入瞭解與 Dapr 微服務延伸模組互動的 Azure API 管理原則。
 author: vladvino
 ms.author: vlvinogr
-ms.date: 9/13/2020
+ms.date: 10/23/2020
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: d537040be4ed4cbf961a4621980d3d290e306359
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bf9c4d233cfad454d63da4dce30a38af80d24ab
+ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91341878"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92558392"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API 管理 Dapr 整合原則
 
@@ -89,7 +89,7 @@ template:
 
 ### <a name="attributes"></a>屬性
 
-| 屬性        | 描述                     | 必要 | 預設 |
+| 屬性        | 描述                     | 必要 | Default |
 |------------------|---------------------------------|----------|---------|
 | backend-id       | 必須設定為 "dapr"           | 是      | N/A     |
 | dapr-應用程式識別碼      | 目標微服務的名稱。 對應至 Dapr 中的 [appId](https://github.com/dapr/docs/blob/master/reference/api/service_invocation_api.md) 參數。| 是 | N/A |
@@ -104,14 +104,14 @@ template:
 
 ## <a name="send-message-to-pubsub-topic"></a><a name="pubsub"></a> 將訊息傳送至 Pub/Sub 主題
 
-此原則會指示 API 管理閘道將訊息傳送至 Dapr 發佈/訂閱主題。 這項原則會藉由提出 HTTP POST 要求來 `http://localhost:3500/v1.0/publish/{{pub-name}}/{{topic}}` 取代範本參數，並新增在 policy 語句中指定的內容來完成這項工作。
+此原則會指示 API 管理閘道將訊息傳送至 Dapr 發佈/訂閱主題。 這項原則會藉由提出 HTTP POST 要求來 `http://localhost:3500/v1.0/publish/{{pubsub-name}}/{{topic}}` 取代範本參數，並新增在 policy 語句中指定的內容來完成這項工作。
 
 此原則假設 Dapr 執行時間是在與閘道相同的 pod 中的側車容器中執行。 Dapr 執行時間會實行 Pub/Sub 語義。
 
 ### <a name="policy-statement"></a>原則陳述式
 
 ```xml
-<publish-to-dapr topic=”topic-name” ignore-error="false|true" response-variable-name="resp-var-name" timeout="in seconds" template=”Liquid” content-type="application/json">
+<publish-to-dapr pubsub-name="pubsub-name" topic=”topic-name” ignore-error="false|true" response-variable-name="resp-var-name" timeout="in seconds" template=”Liquid” content-type="application/json">
     <!-- message content -->
 </publish-to-dapr>
 ```
@@ -131,7 +131,8 @@ template:
      <inbound>
         <base />
         <publish-to-dapr
-               topic="@("orders/new")"
+           pubsub-name="orders"
+               topic="new"
                response-variable-name="dapr-response">
             @(context.Request.Body.As<string>())
         </publish-to-dapr>
@@ -156,9 +157,10 @@ template:
 
 ### <a name="attributes"></a>屬性
 
-| 屬性        | 描述                     | 必要 | 預設 |
+| 屬性        | 描述                     | 必要 | Default |
 |------------------|---------------------------------|----------|---------|
-| 主題            | 目標主題名稱               | 是      | N/A     |
+| pubsub-名稱      | 目標 PubSub 元件的名稱。 對應至 Dapr 中的 [pubsubname](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md) 參數。 如果不存在， __主題__ 屬性值必須為的形式 `pubsub-name/topic-name` 。    | 否       | None    |
+| 主題            | 主題名稱。 對應至 Dapr 中的 [主題](https://github.com/dapr/docs/blob/master/reference/api/pubsub_api.md) 參數。               | 是      | N/A     |
 | ignore-error     | 如果設定為， `true` 則會在從 Dapr 執行時間收到錯誤時，指示原則不要觸發「 [發生錯誤](api-management-error-handling-policies.md) 」區段 | 否 | `false` |
 | response-variable-name | 要用來儲存 Dapr 執行時間回應的 [變數](api-management-policy-expressions.md#ContextVariables) 集合專案名稱 | 否 | None |
 | timeout | 等候 Dapr 執行時間回應的時間 (秒) 。 的範圍可以從1到240秒。 | 否 | 5 |
@@ -241,9 +243,9 @@ template:
 
 ### <a name="attributes"></a>屬性
 
-| 屬性        | 描述                     | 必要 | 預設 |
+| 屬性        | 描述                     | 必要 | Default |
 |------------------|---------------------------------|----------|---------|
-| NAME            | 目標系結名稱。 必須符合 Dapr 中 [定義](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#bindings-structure) 的系結名稱。           | 是      | N/A     |
+| name            | 目標系結名稱。 必須符合 Dapr 中 [定義](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#bindings-structure) 的系結名稱。           | 是      | N/A     |
 | 作業       | 目標操作名稱 (系結特定) 。 對應至 Dapr 中的 [operation](https://github.com/dapr/docs/blob/master/reference/api/bindings_api.md#invoking-output-bindings) 屬性。 | 否 | None |
 | ignore-error     | 如果設定為， `true` 則會在從 Dapr 執行時間收到錯誤時，指示原則不要觸發「 [發生錯誤](api-management-error-handling-policies.md) 」區段 | 否 | `false` |
 | response-variable-name | 要用來儲存 Dapr 執行時間回應的 [變數](api-management-policy-expressions.md#ContextVariables) 集合專案名稱 | 否 | None |

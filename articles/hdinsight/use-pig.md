@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: 8fd42169ab6ccb144215e1b6ad2ece09ff55c07f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9474a1845898e3fda0c810314f41f6f4deabc96b
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87072829"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538726"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>在 HDInsight 上搭配 Apache Hadoop 使用 Apache Pig
 
@@ -30,11 +30,11 @@ Pig 可讓您將處理定義為一系列轉換，使資料流過以產生所需�
 
 Pig Latin 語言可讓您從原始輸入描述資料流 (經過一或多個轉換後) 以產生所需的輸出。 Pig Latin 程式遵循此一般模式：
 
-* **載入**：讀取要從檔案系統操作的資料。
+* **載入** ：讀取要從檔案系統操作的資料。
 
-* **轉換**：操縱資料。
+* **轉換** ：操縱資料。
 
-* 傾印**或儲存**：將資料輸出至畫面，或儲存資料以供處理。
+* 傾印 **或儲存** ：將資料輸出至畫面，或儲存資料以供處理。
 
 ### <a name="user-defined-functions"></a>使用者自訂函數
 
@@ -95,15 +95,15 @@ HDInsight 可以使用各種方法執行 Pig Latin 工作。 請使用下表決�
 
 * [將資料上傳至 HDInsight](hdinsight-upload-data.md)
 * [搭配 HDInsight 使用 Apache Hive](./hadoop/hdinsight-use-hive.md)
-* [搭配 HDInsight 使用 Apache Sqoop](hdinsight-use-sqoop.md)
+* [搭配 HDInsight 使用 Apache Sqoop](./hadoop/hdinsight-use-sqoop.md)
 * [搭配 HDInsight 使用 MapReduce 工作](./hadoop/hdinsight-use-mapreduce.md)
 
 [apachepig-home]: https://pig.apache.org/
 [putty]: https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 [curl]: https://curl.haxx.se/
-[pigtask]: https://msdn.microsoft.com/library/mt146781(v=sql.120).aspx
-[connectionmanager]: https://msdn.microsoft.com/library/mt146773(v=sql.120).aspx
-[ssispack]: https://msdn.microsoft.com/library/mt146770(v=sql.120).aspx
+[pigtask]: /sql/integration-services/control-flow/azure-hdinsight-pig-task?viewFallbackFrom=sql-server-2014
+[connectionmanager]: /sql/integration-services/connection-manager/azure-subscription-connection-manager?viewFallbackFrom=sql-server-2014
+[ssispack]: /sql/integration-services/azure-feature-pack-for-integration-services-ssis?viewFallbackFrom=sql-server-2014
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
 
 [hdinsight-use-hive]:../hdinsight-use-hive.md

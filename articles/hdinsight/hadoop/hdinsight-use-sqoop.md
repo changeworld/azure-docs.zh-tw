@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: 165b7d00c3cf307e7996e84a35bb2a202f448cc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c09a910ea5f6ac5c66a94c73bda49d1f65630708
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86076873"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545220"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>搭配使用 Apache Sqoop 與 HDInsight 中的 Hadoop
 
@@ -82,7 +82,7 @@ HDInsight 叢集附有某些範例資料。 您將用到以下兩個範例：
     |---|---|
     |訂用帳戶 |從下拉式清單中選取您的 Azure 訂用帳戶。|
     |資源群組 |從下拉式清單中選取您的資源群組，或建立一個新的資源群組|
-    |Location |從下拉式清單中選取區域。|
+    |位置 |從下拉式清單中選取區域。|
     |叢集名稱 |輸入 Hadoop 叢集的名稱。 僅使用小寫字母。|
     |叢集登入使用者名稱 |保留預先填入的值 `admin` 。|
     |叢集登入密碼 |輸入密碼。|
@@ -93,7 +93,7 @@ HDInsight 叢集附有某些範例資料。 您將用到以下兩個範例：
     |_artifacts 位置 | 除非您想要在不同的位置使用您自己的 bacpac 檔案，否則請使用預設值。|
     |_artifacts 位置 Sas 權杖 |保留空白。|
     |Bacpac 檔案名 |除非您想要使用自己的 bacpac 檔案，否則請使用預設值。|
-    |Location |使用預設值。|
+    |位置 |使用預設值。|
 
     [邏輯 SQL server](../../azure-sql/database/logical-servers.md)名稱將會是 `<ClusterName>dbserver` 。 資料庫名稱將會是 `<ClusterName>db` 。 預設的儲存體帳戶名稱將會是 `e6qhezrh2pdqu` 。
 
@@ -105,9 +105,9 @@ HDInsight 叢集附有某些範例資料。 您將用到以下兩個範例：
 
 HDInsight 可以使用各種方法執行 Sqoop 工作。 請使用下表決定適合您的方法，然後跟著連結逐項閱讀介紹。
 
-| **使用此方法** | ...一個 **互動式** 殼層 | ...**批次處理** | ...從此 **用戶端作業系統** |
+| **使用此方法** | ...一個 **互動式** 殼層 | ... **批次處理** | ...從此 **用戶端作業系統** |
 |:--- |:---:|:---:|:--- |:--- |
-| [SSH](apache-hadoop-use-sqoop-mac-linux.md) |? |? |Linux、Unix、Mac OS X 或 Windows |
+| [Ssh](apache-hadoop-use-sqoop-mac-linux.md) |? |? |Linux、Unix、Mac OS X 或 Windows |
 | [.NET SDK for Hadoop](apache-hadoop-use-sqoop-dotnet-sdk.md) |&nbsp; |?  |Windows (目前) |
 | [Azure PowerShell](apache-hadoop-use-sqoop-powershell.md) |&nbsp; |? |Windows |
 
@@ -120,6 +120,6 @@ HDInsight 可以使用各種方法執行 Sqoop 工作。 請使用下表決定�
 
 現在，您已了解如何使用 Sqoop。 若要深入了解，請參閱：
 
-* [搭配 HDInsight 使用 Apache Hive](../hdinsight-use-hive.md)
+* [搭配 HDInsight 使用 Apache Hive](./hdinsight-use-hive.md)
 * [將資料上傳至 HDInsight](../hdinsight-upload-data.md)：尋找可將資料上傳至 HDInsight/Azure Blob 儲存體的其他方法。
 * [使用 Apache Sqoop 在 Apache Hadoop on HDInsight 與 SQL Database 之間匯入及匯出資料](./apache-hadoop-use-sqoop-mac-linux.md)

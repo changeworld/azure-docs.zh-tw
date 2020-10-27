@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 81c6cd6ffe200f0fbc9df20f4fa7e2e147db86af
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 421763769ff0bd7ffe2b06eb48e1ac5ecbbb545e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151188"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537961"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>讀取「適用於 MySQL 的 Azure 資料庫」中的複本
 
@@ -38,7 +38,7 @@ ms.locfileid: "92151188"
 讀取複本功能會使用 MySQL 非同步複寫。 此功能不適用於同步複寫案例。 來源與複本之間會有可測量的延遲。 複本上的資料最終仍會與主要伺服器上的資料保持一致。 請針對可接受此延遲的工作負載使用此功能。
 
 > [!IMPORTANT]
-> 適用於 MySQL 的 Azure 資料庫會使用以**資料列**為基礎的二進位記錄。 如果您的資料表缺少主索引鍵，則會掃描資料表中的所有資料列是否有 DML 作業。 這會導致複寫延遲增加。 為了確保複本能夠跟上來源的變更，我們通常建議您在建立複本伺服器之前，先在來源伺服器的資料表上新增主索引鍵，或者如果已經有複本伺服器，則予以重新建立。
+> 適用於 MySQL 的 Azure 資料庫會使用以 **資料列** 為基礎的二進位記錄。 如果您的資料表缺少主索引鍵，則會掃描資料表中的所有資料列是否有 DML 作業。 這會導致複寫延遲增加。 為了確保複本能夠跟上來源的變更，我們通常建議您在建立複本伺服器之前，先在來源伺服器的資料表上新增主索引鍵，或者如果已經有複本伺服器，則予以重新建立。
 
 ## <a name="cross-region-replication"></a>跨區域複寫
 您可以在來源伺服器的不同區域中建立讀取複本。 跨區域複寫有助於災害復原規劃或讓資料更接近使用者之類的案例。
@@ -71,7 +71,7 @@ ms.locfileid: "92151188"
 
 如果來源伺服器沒有現有的複本伺服器，則來源將會先重新開機以準備複寫。
 
-當您開始建立複本的工作流程時，系統會建立空白的「適用於 MySQL 的 Azure 資料庫」伺服器。 新伺服器會填入來源伺服器上的資料。 建立時間取決於來源上的資料量，以及上次每週完整備份之後的時間。 時間的範圍可能介於數分鐘到數小時。 複本伺服器一律會建立在與來源伺服器相同的資源群組和相同的訂用帳戶中。 如果您想要將複本伺服器建立到不同的資源群組或不同的訂用帳戶，您可以[在建立後移動複本伺服器](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription)。
+當您開始建立複本的工作流程時，系統會建立空白的「適用於 MySQL 的 Azure 資料庫」伺服器。 新伺服器會填入來源伺服器上的資料。 建立時間取決於來源上的資料量，以及上次每週完整備份之後的時間。 時間的範圍可能介於數分鐘到數小時。 複本伺服器一律會建立在與來源伺服器相同的資源群組和相同的訂用帳戶中。 如果您想要將複本伺服器建立到不同的資源群組或不同的訂用帳戶，您可以[在建立後移動複本伺服器](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
 每個複本都會啟用儲存體[自動成長](concepts-pricing-tiers.md#storage-auto-grow)。 自動成長功能可讓複本跟上複寫至其中的資料，並防止因儲存空間不足的錯誤而造成複寫中斷。
 
@@ -83,7 +83,7 @@ ms.locfileid: "92151188"
 
 複本會從來源伺服器繼承系統管理員帳戶。 來源伺服器上的所有使用者帳戶都會複寫到讀取複本。 您只能使用來源伺服器上所提供的使用者帳戶，連接到讀取複本。
 
-您可以使用複本的主機名稱和有效的使用者帳戶來連線到該複本，如同連線到一般適用於 MySQL 的 Azure 資料庫伺服器一樣。 若伺服器名稱為 **myreplica**，且統管理員使用者名稱為 **myadmin**，則您可以使用 mysql CLI 來連線到複本：
+您可以使用複本的主機名稱和有效的使用者帳戶來連線到該複本，如同連線到一般適用於 MySQL 的 Azure 資料庫伺服器一樣。 若伺服器名稱為 **myreplica** ，且統管理員使用者名稱為 **myadmin** ，則您可以使用 mysql CLI 來連線到複本：
 
 ```bash
 mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
@@ -93,7 +93,7 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
 
 ## <a name="monitor-replication"></a>監視複寫
 
-適用於 MySQL 的 Azure 資料庫會在 Azure 監視器中提供**複寫延遲 (秒)** 計量。 此計量僅適用於複本。 在計算此計量時，會使用可於 MySQL 的 `SHOW SLAVE STATUS` 命令中取得的 `seconds_behind_master` 計量。 請設定警示，以在複寫延遲時間接近您工作負載無法接受的值時通知您。
+適用於 MySQL 的 Azure 資料庫會在 Azure 監視器中提供 **複寫延遲 (秒)** 計量。 此計量僅適用於複本。 在計算此計量時，會使用可於 MySQL 的 `SHOW SLAVE STATUS` 命令中取得的 `seconds_behind_master` 計量。 請設定警示，以在複寫延遲時間接近您工作負載無法接受的值時通知您。
 
 如果您看到複寫延遲增加，請參閱 [疑難排解複寫延遲](howto-troubleshoot-replication-latency.md) ，以疑難排解並瞭解可能的原因。
 
@@ -113,7 +113,7 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
 
 來源與複本伺服器之間沒有自動容錯移轉。 
 
-由於複寫是非同步，因此來源與複本之間會有延遲。 延遲量可能會受到一些因素的影響，例如，在來源伺服器上執行的工作負載的繁重程度，以及資料中心之間的延遲。 在大部分的情況下，複本延遲的範圍是幾秒鐘到幾分鐘。 您可以使用計量 *複本延遲*（可用於每個複本）來追蹤實際的複寫延遲。 此計量會顯示上次重新執行交易之後的時間。 我們建議您在一段時間內觀察您的複本延遲，以找出您的平均延遲。 您可以設定複本延遲的警示，如此一來，如果超出預期的範圍，您可以採取動作。
+由於複寫是非同步，因此來源與複本之間會有延遲。 延遲量可能會受到一些因素的影響，例如，在來源伺服器上執行的工作負載的繁重程度，以及資料中心之間的延遲。 在大部分的情況下，複本延遲的範圍是幾秒鐘到幾分鐘。 您可以使用計量 *複本延遲* （可用於每個複本）來追蹤實際的複寫延遲。 此計量會顯示上次重新執行交易之後的時間。 我們建議您在一段時間內觀察您的複本延遲，以找出您的平均延遲。 您可以設定複本延遲的警示，如此一來，如果超出預期的範圍，您可以採取動作。
 
 > [!Tip]
 > 如果您容錯移轉至複本，從來源取消複本時的延遲將會指出遺失的資料量。
@@ -136,7 +136,7 @@ MySQL 支援兩種類型的交易：使用 GTID) 和匿名交易 (識別的 GTID
 
 下列伺服器參數適用于設定 GTID： 
 
-|**伺服器參數**|**說明**|**預設值**|**值**|
+|**伺服器參數**|**描述**|**預設值**|**值**|
 |--|--|--|--|
 |`gtid_mode`|指出是否使用 GTIDs 來識別交易。 模式之間的變更一次只能以遞增順序完成一個步驟 (例如， `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`)|`OFF`|`OFF`：新的和複寫交易都必須是匿名的 <br> `OFF_PERMISSIVE`：新的交易是匿名的。 複寫的交易可以是匿名或 GTID 交易。 <br> `ON_PERMISSIVE`：新交易是 GTID 交易。 複寫的交易可以是匿名或 GTID 交易。 <br> `ON`：新的和複寫的交易都必須是 GTID 交易。|
 |`enforce_gtid_consistency`|藉由只允許執行可以交易安全方式記錄的語句，來強制執行 GTID 一致性。 在啟用 GTID 複寫之前，必須將此值設定為 `ON` 。 |`OFF`|`OFF`：允許所有交易違反 GTID 一致性。  <br> `ON`：不允許交易違反 GTID 一致性。 <br> `WARN`：允許所有交易違反 GTID 一致性，但會產生警告。 | 

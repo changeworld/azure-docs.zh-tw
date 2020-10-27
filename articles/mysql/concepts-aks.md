@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 712bf702ba355ec3b2ca6184c33da8489f8a178e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc40903de09ebfe04858c631eee0233561784418
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86519859"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546903"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>連接 Azure Kubernetes Service 與適用於 MySQL 的 Azure 資料庫
 
@@ -26,11 +26,11 @@ Azure Kubernetes Service (AKS) 提供的受控 Kubernetes 叢集可讓您用於 
 您可以透過下列方式，確認 AKS 叢集是否具有加速網路：
 1. 移至 Azure 入口網站，並選取您的 AKS 叢集。
 2. 選取 [屬性] 索引標籤。
-3. 複製**基礎結構資源群組**的名稱。
+3. 複製 **基礎結構資源群組** 的名稱。
 4. 使用入口網站搜尋列，以找出並開啟基礎結構資源群組。
 5. 選取該資源群組中的 VM。
-6. 移至 VM 的 [網路]**** 索引標籤。
-7. 確認 [加速網路]**** 是否為「啟用」。
+6. 移至 VM 的 [網路]  索引標籤。
+7. 確認 [加速網路]  是否為「啟用」。
 
 或者，透過 Azure CLI 使用下列兩個命令：
 ```azurecli
@@ -42,6 +42,6 @@ az network nic list --resource-group nodeResourceGroup -o table
 ```
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 - [建立 Azure Kubernetes Service 叢集](../aks/kubernetes-walkthrough.md)
-- 了解如何[使用適用於 MySQL 的 OSBA 與 Azure 資料庫從 Helm 圖表安裝 WordPress](../aks/integrate-azure.md)
+- 了解如何[使用適用於 MySQL 的 OSBA 與 Azure 資料庫從 Helm 圖表安裝 WordPress](../aks/index.yml)

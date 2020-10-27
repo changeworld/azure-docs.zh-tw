@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: dc9764ce68d54418578c293833c1fd38080ba0ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afe14bc03f0d12e56e1512aeb788a77c64151b58
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538903"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547243"
 ---
 # <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>使用適用於 MySQL 的 Azure 資料庫建立應用程式的最佳作法 
 
@@ -23,12 +23,12 @@ ms.locfileid: "91538903"
 在 Azure 中部署應用程式時，請確定您所有的相依性都在相同的區域中。 分配跨區域或可用性區域的實例會建立網路延遲，這可能會影響應用程式的整體效能。 
 
 ### <a name="keep-your-mysql-server-secure"></a>保護您的 MySQL 伺服器
-將您的 MySQL 伺服器設定為 [安全](https://docs.microsoft.com/azure/mysql/concepts-security) 且無法公開存取。 您可以使用下列其中一個選項來保護您的伺服器： 
-- [防火牆規則](https://docs.microsoft.com/azure/mysql/concepts-firewall-rules)
-- [虛擬網路](https://docs.microsoft.com/azure/mysql/concepts-data-access-and-security-vnet) 
-- [Azure Private Link](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)
+將您的 MySQL 伺服器設定為 [安全](./concepts-security.md) 且無法公開存取。 您可以使用下列其中一個選項來保護您的伺服器： 
+- [防火牆規則](./concepts-firewall-rules.md)
+- [虛擬網路](./concepts-data-access-and-security-vnet.md) 
+- [Azure Private Link](./concepts-data-access-security-private-link.md)
 
-基於安全性，您必須一律透過 SSL 連線到您的 MySQL 伺服器，並將您的 MySQL 伺服器和應用程式設定為使用 TLS 1.2。 請參閱 [如何設定 SSL/TLS](https://docs.microsoft.com/azure/mysql/concepts-ssl-connection-security)。 
+基於安全性，您必須一律透過 SSL 連線到您的 MySQL 伺服器，並將您的 MySQL 伺服器和應用程式設定為使用 TLS 1.2。 請參閱 [如何設定 SSL/TLS](./concepts-ssl-connection-security.md)。 
 
 ### <a name="tune-your-server-parameters"></a>微調您的伺服器參數
 針對大量讀取的工作負載，微調伺服器參數， `tmp_table_size` 並 `max_heap_table_size` 可協助優化以提升效能。 若要計算這些變數所需的值，請查看每個連接記憶體值和基本記憶體的總計。 每個連接記憶體參數的總和，但不包括 `tmp_table_size` ，結合伺服器總記憶體的基本記憶體帳戶。
@@ -38,15 +38,15 @@ ms.locfileid: "91538903"
 ```(total memory - (base memory + (sum of per-connection memory * # of connections)) / # of connections```
 
 >[!NOTE]
-> 記憶體總計表示伺服器在已布建的虛擬核心上的總記憶體量。  例如，在一般用途的雙 vCore 適用於 MySQL 的 Azure 資料庫伺服器中，總記憶體會是 5 GB * 2。 您可以在 [定價層](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers) 檔中找到每個階層之記憶體的更多詳細資料。
+> 記憶體總計表示伺服器在已布建的虛擬核心上的總記憶體量。  例如，在一般用途的雙 vCore 適用於 MySQL 的 Azure 資料庫伺服器中，總記憶體會是 5 GB * 2。 您可以在 [定價層](./concepts-pricing-tiers.md) 檔中找到每個階層之記憶體的更多詳細資料。
 >
 > 基底記憶體表示 `query_cache_size` `innodb_buffer_pool_size` MySQL 將在伺服器啟動時初始化和配置的記憶體變數，例如和。 每個連接的記憶體（例如 `sort_buffer_size` 和 `join_buffer_size` ）都是只有在查詢需要時才會配置的記憶體。
 
 ### <a name="create-non-admin-users"></a>建立非系統管理員使用者 
-為每個資料庫[建立非系統管理員使用者](https://docs.microsoft.com/azure/mysql/howto-create-users)。 一般而言，會將使用者名稱識別為資料庫名稱。
+為每個資料庫[建立非系統管理員使用者](./howto-create-users.md)。 一般而言，會將使用者名稱識別為資料庫名稱。
 
 ### <a name="reset-your-password"></a>重設密碼
-您可以使用 Azure 入口網站為您的 MySQL 伺服器 [重設密碼](https://docs.microsoft.com/azure/mysql/howto-create-manage-server-portal#update-admin-password) 。 
+您可以使用 Azure 入口網站為您的 MySQL 伺服器 [重設密碼](./howto-create-manage-server-portal.md#update-admin-password) 。 
 
 重設生產資料庫的伺服器密碼可能會使您的應用程式停止運作。 在離峰時間為任何生產工作負載重設密碼是很好的作法，將對應用程式使用者的影響降到最低。
 
@@ -54,29 +54,29 @@ ms.locfileid: "91538903"
 以下是一些您可以用來協助您偵測應用程式效能問題的工具和做法。
 
 ### <a name="enable-slow-query-logs-to-identify-performance-issues"></a>啟用慢速查詢記錄以找出效能問題
-您可以在伺服器上啟用 [慢速查詢記錄](https://docs.microsoft.com/azure/mysql/concepts-server-logs) 和 [審核記錄](https://docs.microsoft.com/azure/mysql/concepts-audit-logs) 。 分析慢速查詢記錄有助於找出效能瓶頸以進行疑難排解。 
+您可以在伺服器上啟用 [慢速查詢記錄](./concepts-server-logs.md) 和 [審核記錄](./concepts-audit-logs.md) 。 分析慢速查詢記錄有助於找出效能瓶頸以進行疑難排解。 
 
-您也可以透過 Azure 監視器記錄、Azure 事件中樞和儲存體帳戶中的 Azure 診斷記錄來取得 Audit 記錄檔。 請參閱 [如何針對查詢效能問題進行疑難排解](https://docs.microsoft.com/azure/mysql/howto-troubleshoot-query-performance)。
+您也可以透過 Azure 監視器記錄、Azure 事件中樞和儲存體帳戶中的 Azure 診斷記錄來取得 Audit 記錄檔。 請參閱 [如何針對查詢效能問題進行疑難排解](./howto-troubleshoot-query-performance.md)。
 
 ### <a name="use-connection-pooling"></a>使用連接共用
-管理資料庫連接可能會對整個應用程式的效能造成重大影響。 若要將效能優化，您必須減少建立連線的次數，以及在主要程式碼路徑中建立連接的時間。 使用 [連接](https://docs.microsoft.com/azure/mysql/concepts-connectivity#access-databases-by-using-connection-pooling-recommended) 共用連接到適用於 MySQL 的 Azure 資料庫，以改善復原能力和效能。 
+管理資料庫連接可能會對整個應用程式的效能造成重大影響。 若要將效能優化，您必須減少建立連線的次數，以及在主要程式碼路徑中建立連接的時間。 使用 [連接](./concepts-connectivity.md#access-databases-by-using-connection-pooling-recommended) 共用連接到適用於 MySQL 的 Azure 資料庫，以改善復原能力和效能。 
 
 您可以使用 [ProxySQL](https://proxysql.com/) 連接共用器有效率地管理連接。 使用連接共用器可能會減少閒置的連線，並重複使用現有的連接，這有助於避免問題。 請參閱 [如何設定 ProxySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/connecting-efficiently-to-azure-database-for-mysql-with-proxysql/ba-p/1279842) 以深入瞭解。 
 
 ### <a name="retry-logic-to-handle-transient-errors"></a>處理暫時性錯誤的重試邏輯
-您的應用程式可能會遇到 [暫時性的錯誤](https://docs.microsoft.com/azure/mysql/concepts-connectivity#handling-transient-errors) ，也就是資料庫連接中斷或中斷的情況。 在這種情況下，伺服器會在5到10秒內啟動並執行兩次重試。 
+您的應用程式可能會遇到 [暫時性的錯誤](./concepts-connectivity.md#handling-transient-errors) ，也就是資料庫連接中斷或中斷的情況。 在這種情況下，伺服器會在5到10秒內啟動並執行兩次重試。 
 
-理想的作法是在第一次重試前等待5秒。 然後以逐漸增加的等候次數（最多60秒），以每次重試的方式執行。 限制應用程式認為作業失敗的最大重試次數，讓您可以進一步調查。 若要深入瞭解，請參閱 [如何疑難排解連接錯誤](https://docs.microsoft.com/azure/mysql/howto-troubleshoot-common-connection-issues) 。 
+理想的作法是在第一次重試前等待5秒。 然後以逐漸增加的等候次數（最多60秒），以每次重試的方式執行。 限制應用程式認為作業失敗的最大重試次數，讓您可以進一步調查。 若要深入瞭解，請參閱 [如何疑難排解連接錯誤](./howto-troubleshoot-common-connection-issues.md) 。 
 
 ### <a name="enable-read-replication-to-mitigate-failovers"></a>啟用讀取複寫以減少容錯移轉
-您可以使用容錯移轉案例的 [資料輸入複寫](https://docs.microsoft.com/azure/mysql/howto-data-in-replication) 。 當您使用讀取複本時，不會發生來源與複本伺服器之間的自動容錯移轉。 
+您可以使用容錯移轉案例的 [資料輸入複寫](./howto-data-in-replication.md) 。 當您使用讀取複本時，不會發生來源與複本伺服器之間的自動容錯移轉。 
 
 您會發現來源與複本之間的延遲，因為複寫是非同步。 網路延遲可能會受到許多因素影響，例如在來源伺服器上執行的工作負載大小，以及資料中心之間的延遲。 在大部分的情況下，複本延遲範圍從幾秒鐘到幾分鐘。
 
 ## <a name="database-deployment"></a>資料庫部署 
 
 ### <a name="configure-an-azure-database-for-mysql-task-in-your-cicd-deployment-pipeline"></a>在您的 CI/CD 部署管線中設定適用于 MySQL 的 Azure 資料庫工作
-有時候，您需要將變更部署至您的資料庫。 在這種情況下，您可以透過 [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) 使用持續整合 (CI) 和持續傳遞 (CD) ，並針對 [MySQL 伺服器](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-mysql-deployment?view=azure-devops) 執行自訂腳本來更新資料庫。
+有時候，您需要將變更部署至您的資料庫。 在這種情況下，您可以透過 [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) 使用持續整合 (CI) 和持續傳遞 (CD) ，並針對 [MySQL 伺服器](/azure/devops/pipelines/tasks/deploy/azure-mysql-deployment?view=azure-devops&preserve-view=true) 執行自訂腳本來更新資料庫。
 
 ### <a name="use-an-effective-process-for-manual-database-deployment"></a>使用手動資料庫部署的有效流程 
 在手動部署資料庫時，請遵循下列步驟來將停機時間降到最低，或降低部署失敗的風險： 
@@ -119,6 +119,4 @@ show global status like 'created_tmp_tables';
 若要避免查詢速度變慢，您可以使用索引。 索引可協助您快速尋找具有特定資料行的資料列。 瞭解 [如何使用 MySQL 中的索引](https://dev.mysql.com/doc/refman/8.0/en/mysql-indexes.html)。
 
 ### <a name="use-explain-for-your-select-queries"></a>使用您的 SELECT 查詢說明
-您 `EXPLAIN` 可以使用語句來取得 MySQL 執行查詢所執行工作的見解。 它可協助您偵測查詢的瓶頸或問題。 瞭解 [如何使用說明來分析查詢效能](https://docs.microsoft.com/azure/mysql/howto-troubleshoot-query-performance)。
-
-
+您 `EXPLAIN` 可以使用語句來取得 MySQL 執行查詢所執行工作的見解。 它可協助您偵測查詢的瓶頸或問題。 瞭解 [如何使用說明來分析查詢效能](./howto-troubleshoot-query-performance.md)。

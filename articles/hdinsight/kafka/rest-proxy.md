@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: 7d8d2c7d48dc0b77d3be0b9019d4bbf1da8a40c4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a99c6412650cac565414817c91752ae85b8ad37d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490266"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539593"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>使用 REST Proxy 與 Azure HDInsight 中的 Apache Kafka 叢集互動
 
@@ -21,17 +21,17 @@ Kafka REST Proxy 可讓您使用 REST API 透過 HTTP 與您的 Kafka 叢集互�
 
 ## <a name="rest-api-reference"></a>REST API 參考資料
 
-若要了解 Kafka REST API 支援的作業，請參閱 [HDInsight Kafka REST Proxy API 參考](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy)。
+若要了解 Kafka REST API 支援的作業，請參閱 [HDInsight Kafka REST Proxy API 參考](/rest/api/hdinsight-kafka-rest-proxy)。
 
 ## <a name="background"></a>背景
 
 ![Kafka REST Proxy 設計](./media/rest-proxy/rest-proxy-architecture.png)
 
-如需 API 所支援作業的完整規格，請參閱 [Apache Kafka REST Proxy API](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy)。
+如需 API 所支援作業的完整規格，請參閱 [Apache Kafka REST Proxy API](/rest/api/hdinsight-kafka-rest-proxy)。
 
 ### <a name="rest-proxy-endpoint"></a>REST Proxy 端點
 
-建立具有 REST Proxy 的 HDInsight Kafka 叢集，會為您的叢集建立新的公用端點，其位於 Azure 入口網站上的 HDInsight 叢集**屬性**中。
+建立具有 REST Proxy 的 HDInsight Kafka 叢集，會為您的叢集建立新的公用端點，其位於 Azure 入口網站上的 HDInsight 叢集 **屬性** 中。
 
 ### <a name="security"></a>安全性
 
@@ -40,18 +40,18 @@ Kafka REST Proxy 的存取權會以 Azure Active Directory 安全性群組進行
 針對 REST Proxy 端點要求，用戶端應用程式應該會取得 OAuth 權杖。 權杖會用來驗證安全性群組成員資格。 請在下方尋找[用戶端應用程式範例](#client-application-sample)，其中會說明如何取得 OAuth 權杖。 用戶端應用程式會將 HTTP 要求中的 OAuth 權杖傳遞至 REST Proxy。
 
 > [!NOTE]
-> 若要深入了解 AAD 安全性群組，請參閱[使用 Azure Active Directory 群組來管理應用程式和資源存取](../../active-directory/fundamentals/active-directory-manage-groups.md)。 如需有關 OAuth 權杖使用方式的詳細資訊，請參閱[使用 OAuth 2.0 授權碼授與流程，授權存取 Azure Active Directory Web 應用程式](../../active-directory/develop/v1-protocols-oauth-code.md)。
+> 若要深入了解 AAD 安全性群組，請參閱[使用 Azure Active Directory 群組來管理應用程式和資源存取](../../active-directory/fundamentals/active-directory-manage-groups.md)。 如需有關 OAuth 權杖使用方式的詳細資訊，請參閱[使用 OAuth 2.0 授權碼授與流程，授權存取 Azure Active Directory Web 應用程式](../../active-directory/azuread-dev/v1-protocols-oauth-code.md)。
 
 ## <a name="kafka-rest-proxy-with-network-security-groups"></a>搭配網路安全性群組使用 Kafka REST Proxy
-如果您使用網路安全性群組來攜帶自己的 VNet 並控制網路流量，除了連接埠 443 以外，請允許連接埠 **9400** 上的**輸入**流量。 這可確保可觸達 Kafka REST Proxy 伺服器。
+如果您使用網路安全性群組來攜帶自己的 VNet 並控制網路流量，除了連接埠 443 以外，請允許連接埠 **9400** 上的 **輸入** 流量。 這可確保可觸達 Kafka REST Proxy 伺服器。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 1. 向 Azure AD 註冊應用程式。 您撰寫來與 Kafka REST Proxy 互動的用戶端應用程式，將使用此應用程式的識別碼和密碼向 Azure 進行驗證。
 
-1. 建立 Azure AD 安全性群組。 將您向 Azure AD 註冊的應用程式新增到安全性群組，以作為該群組的**成員**。 此安全性群組將用來控制哪些應用程式能與 REST Proxy 互動。 如需建立 Azure AD 群組的詳細資訊，請參閱[使用 Azure Active Directory 建立基本群組和新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
+1. 建立 Azure AD 安全性群組。 將您向 Azure AD 註冊的應用程式新增到安全性群組，以作為該群組的 **成員** 。 此安全性群組將用來控制哪些應用程式能與 REST Proxy 互動。 如需建立 Azure AD 群組的詳細資訊，請參閱[使用 Azure Active Directory 建立基本群組和新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
-    確認群組屬於**安全性**類型。
+    確認群組屬於 **安全性** 類型。
     ![安全性群組](./media/rest-proxy/rest-proxy-group.png)
 
     確認該應用程式是群組的成員。
@@ -69,7 +69,7 @@ Kafka REST Proxy 的存取權會以 Azure Active Directory 安全性群組進行
 
      ![螢幕擷取畫面顯示 [建立 H D 深入解析叢集] 頁面，其中包含選取安全性群組的選項。](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
 
-1. 完成剩餘步驟來建立您的叢集，如＜[使用 Azure 入口網站在 Azure HDInsight 中建立 Apache Kafka 叢集](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started)＞中所述。
+1. 完成剩餘步驟來建立您的叢集，如＜[使用 Azure 入口網站在 Azure HDInsight 中建立 Apache Kafka 叢集](./apache-kafka-get-started.md)＞中所述。
 
 1. 建立叢集之後，請移至叢集屬性來記錄 Kafka REST Proxy URL。
 
@@ -81,7 +81,7 @@ Kafka REST Proxy 的存取權會以 Azure Active Directory 安全性群組進行
 
 1. 將程式碼範例儲存在已安裝 Python 的機器上。
 1. 藉由執行 `pip3 install msal`，安裝所需的 Python 相依性。
-1. 修改**設定這些屬性**的程式碼區段，並為您的環境更新下列屬性：
+1. 修改 **設定這些屬性** 的程式碼區段，並為您的環境更新下列屬性：
 
     |屬性 |描述 |
     |---|---|
@@ -269,4 +269,4 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Kafka REST Proxy API 參考文件](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/)
+* [Kafka REST Proxy API 參考文件](/rest/api/hdinsight-kafka-rest-proxy/)

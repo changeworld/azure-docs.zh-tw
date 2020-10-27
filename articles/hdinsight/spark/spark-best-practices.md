@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 3818ce9ebae8e6af6ee8bb5ed30c7ab446a6f6b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a93b3e0da7b881b80f7613907e40af509bffadbd
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855169"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545560"
 ---
 # <a name="apache-spark-guidelines"></a>Apache Spark 指導方針
 
@@ -56,7 +56,7 @@ ms.locfileid: "91855169"
 | HDInsight 上的 Apache Hive | [整合 Apache Spark 和 Apache Hive 與 Hive Warehouse Connector](../interactive-query/apache-hive-warehouse-connector.md) |
 | HDInsight 上的 Apache HBase | [使用 Apache Spark 來讀取和寫入 Apache HBase 資料](../hdinsight-using-spark-query-hbase.md) |
 | HDInsight 上的 Apache Kafka | [教學課程：將 Apache Spark 結構化串流用於 HDInsight 上的 Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md) |
-| Azure Cosmos DB | [Azure Cosmos DB：在 Azure 平台上實作 Lambda 架構](../../cosmos-db/lambda-architecture.md) |
+| Azure Cosmos DB | [適用於 Azure Cosmos DB 的 Azure Synapse Link](../../cosmos-db/synapse-link.md) |
 
 ## <a name="what-are-my-storage-options"></a>我的儲存體選項有哪些？
 
@@ -66,7 +66,7 @@ ms.locfileid: "91855169"
 | Azure Data Lake Storage Gen1 | [使用 Azure Data Lake Storage Gen1 搭配 Azure HDInsight 叢集](../hdinsight-hadoop-use-data-lake-storage-gen1.md) |
 | Azure Blob 儲存體 | [搭配使用 Azure 儲存體與 Azure HDInsight 叢集](../hdinsight-hadoop-use-blob-storage.md) |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [設定 Apache Spark 設定](apache-spark-settings.md)
 * [將 HDInsight 中的 Apache Spark 作業最佳化](apache-spark-perf.md)

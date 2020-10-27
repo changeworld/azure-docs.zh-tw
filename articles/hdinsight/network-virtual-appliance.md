@@ -7,22 +7,22 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: c0f5d8cdc7dda72f21fc1cf372e3796b26a3054a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: c831e099eca3cd6e6da20f55ad19980ae8e9ddc5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127415"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545917"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>在 Azure HDInsight 中設定網路虛擬裝置
 
 > [!Important]
-> 只有當您想要將網路虛擬裝置設定為[Azure 防火牆](https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic)以外的 (NVA) 時，**才**需要下列資訊。
+> 只有當您想要將網路虛擬裝置設定為 [Azure 防火牆](./hdinsight-restrict-outbound-traffic.md)以外的 (NVA) 時， **才** 需要下列資訊。
 
 Azure 防火牆 FQDN 標記會自動設定為允許許多常見重要 Fqdn 的流量。 使用其他網路虛擬裝置將需要您設定一些額外的功能。 當您設定網路虛擬裝置時，請記住下列因素：
 
 * 具有服務端點功能的服務可以使用服務端點進行設定，這會導致略過 NVA，通常是針對成本或效能考慮。
-* 如果 ResourceProviderConnection 設定為 [ *輸出*]，您可以針對儲存體和 SQL server 使用私人端點進行中繼存放區，而不需要將它們新增至 NVA。
+* 如果 ResourceProviderConnection 設定為 [ *輸出* ]，您可以針對儲存體和 SQL server 使用私人端點進行中繼存放區，而不需要將它們新增至 NVA。
 * IP 位址相依性適用于 (TCP 和 UDP 流量) 的非 HTTP/S 流量。
 * FQDN HTTP/HTTPS 端點可以在您的 NVA 裝置中核准。
 * 將您建立的路由表指派給您的 HDInsight 子網。
@@ -41,7 +41,7 @@ Azure 防火牆 FQDN 標記會自動設定為允許許多常見重要 Fqdn 的�
 
 | **端點** | **詳細資料** |
 |---|---|
-| [在此](hdinsight-management-ip-addresses.md)發佈的 ip | 這些 Ip 適用于 HDInsight 資源提供者，且應包含在 UDR 中，以避免非對稱式路由。 只有在 ResourceProviderConnection 設定為 [ *輸入*] 時，才需要此規則。 如果 ResourceProviderConnection 設定為 *輸出* ，則 UDR 中不需要這些 ip。  |
+| [在此](hdinsight-management-ip-addresses.md)發佈的 ip | 這些 Ip 適用于 HDInsight 資源提供者，且應包含在 UDR 中，以避免非對稱式路由。 只有在 ResourceProviderConnection 設定為 [ *輸入* ] 時，才需要此規則。 如果 ResourceProviderConnection 設定為 *輸出* ，則 UDR 中不需要這些 ip。  |
 | AAD-DS 私人 Ip | 只有 ESP 叢集需要 Vnet 時才需要對等互連。|
 
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: 14f0eaee1ede4da3b80ddd94d5c915438e97f8f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90862a74e5fb6521a95292d50fc5cc11bd0082b5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530058"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547651"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>關於適用於 VMware VM 和實體伺服器的行動服務
 
@@ -52,7 +52,7 @@ ms.locfileid: "90530058"
    - 如果符合所有必要條件，則會開始安裝。
    - 如果不符合一或多個 [必要條件](vmware-physical-azure-support-matrix.md) ，安裝就會失敗。
 1. 在安裝代理程式的過程中，會安裝 Azure Site Recovery 的磁碟區陰影複製服務 (VSS) 提供者。 VSS 提供者是用來產生應用程式一致的復原點。 如果 VSS 提供者的安裝失敗，則會略過此步驟，並繼續進行代理程式安裝。
-1. 如果代理程式安裝成功，但 VSS 提供者安裝失敗，則工作狀態會標示為 [ **警告**]。 這不會影響損毀一致的復原點產生。
+1. 如果代理程式安裝成功，但 VSS 提供者安裝失敗，則工作狀態會標示為 [ **警告** ]。 這不會影響損毀一致的復原點產生。
 
     - 若要產生應用程式一致的復原點，請參閱 [我們的指導](vmware-physical-manage-mobility-service.md#install-site-recovery-vss-provider-on-source-machine) 方針，以完成手動安裝 Site Recovery VSS 提供者。
     - 如果您不想要產生應用程式一致的復原點，請 [修改複寫原則](vmware-azure-set-up-replication.md#create-a-policy) 以關閉應用程式一致的復原點。
@@ -78,20 +78,20 @@ ms.locfileid: "90530058"
 > 如果您要將 Azure 基礎結構即服務 (IaaS) VM 從一個 Azure 區域複寫至另一個 Azure 區域，請勿使用 UI 安裝方法。 使用 [命令提示](#install-the-mobility-service-using-command-prompt) 字元安裝。
 
 1. 將安裝檔案複製到機器並執行。
-1. 在 [安裝選項]**** 中，選取 [安裝行動服務]****。
-1. 選擇安裝位置，然後選取 [ **安裝**]。
+1. 在 [安裝選項]  中，選取 [安裝行動服務]  。
+1. 選擇安裝位置，然後選取 [ **安裝** ]。
 
     :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility1.png" alt-text="行動服務安裝選項] 頁面。":::
 
-1. 在 [安裝進度]**** 中監視安裝。 安裝完成後，選取 [繼續進行設定]**** ，以向設定伺服器註冊服務。
+1. 在 [安裝進度]  中監視安裝。 安裝完成後，選取 [繼續進行設定]  ，以向設定伺服器註冊服務。
 
     :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="行動服務安裝選項] 頁面。":::
 
-1. 在 [設定 **伺服器詳細資料**] 中，指定您所設定的 IP 位址和複雜密碼。
+1. 在 [設定 **伺服器詳細資料** ] 中，指定您所設定的 IP 位址和複雜密碼。
 
     :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility4.png" alt-text="行動服務安裝選項] 頁面。":::
 
-1. 選取 [註冊]**** 完成註冊。
+1. 選取 [註冊]  完成註冊。
 
     :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility5.png" alt-text="行動服務安裝選項] 頁面。":::
 
@@ -104,7 +104,7 @@ ms.locfileid: "90530058"
 
 ### <a name="windows-machine"></a>Windows 電腦
 
-- 從命令提示字元執行下列命令，以將安裝程式複製到您想要保護之伺服器上的本機資料夾（例如 _C：\Temp_）。 以實際的檔案名取代安裝程式的檔案名。
+- 從命令提示字元執行下列命令，以將安裝程式複製到您想要保護之伺服器上的本機資料夾（例如 _C：\Temp_ ）。 以實際的檔案名取代安裝程式的檔案名。
 
   ```cmd
   cd C:\Temp
@@ -130,18 +130,18 @@ ms.locfileid: "90530058"
 
 設定 | 詳細資料
 --- | ---
-語法 | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
+Syntax | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
 安裝程式記錄 | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
 `/Role` | 必要安裝參數。 指定應該要安裝行動服務 (MS) 還是主要目標 (MT)。
 `/InstallLocation`| 選擇性參數。 指定行動服務安裝位置 (任何資料夾)。
-`/Platform` | Mandatory。 指定安裝行動服務的平臺： <br/> **Vmware 適用于 Vmware** vm/實體伺服器。 <br/> 適用于 Azure Vm 的**azure** 。<br/><br/> 如果您要將 Azure Vm 視為實體機器，請指定 **VMware**。
+`/Platform` | Mandatory。 指定安裝行動服務的平臺： <br/> **Vmware 適用于 Vmware** vm/實體伺服器。 <br/> 適用于 Azure Vm 的 **azure** 。<br/><br/> 如果您要將 Azure Vm 視為實體機器，請指定 **VMware** 。
 `/Silent`| 選擇性。 指定是否要以無訊息模式執行安裝程式。
 
 #### <a name="registration-settings"></a>註冊設定
 
 設定 | 詳細資料
 --- | ---
-語法 | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
+Syntax | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
 代理程式設定記錄 | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log`
 `/CSEndPoint` | 必要參數。 `<CSIP>` 指定設定伺服器的 IP 位址。 請使用任何有效的 IP 位址。
 `/PassphraseFilePath` |  Mandatory。 複雜密碼的位置。 請使用任何有效的 UNC 或本機檔案路徑。
@@ -171,28 +171,28 @@ ms.locfileid: "90530058"
 
 設定 | 詳細資料
 --- | ---
-語法 | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
+Syntax | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 `-r` | 必要安裝參數。 指定應該要安裝行動服務 (MS) 還是主要目標 (MT)。
 `-d` | 選擇性參數。 指定行動服務安裝位置： `/usr/local/ASR` 。
-`-v` | Mandatory。 指定安裝行動服務的平臺。 <br/> **Vmware 適用于 Vmware** vm/實體伺服器。 <br/> 適用于 Azure Vm 的**azure** 。
+`-v` | Mandatory。 指定安裝行動服務的平臺。 <br/> **Vmware 適用于 Vmware** vm/實體伺服器。 <br/> 適用于 Azure Vm 的 **azure** 。
 `-q` | 選擇性。 指定是否要以無訊息模式執行安裝程式。
 
 #### <a name="registration-settings"></a>註冊設定
 
 設定 | 詳細資料
 --- | ---
-語法 | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
+Syntax | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
 `-i` | 必要參數。 `<CSIP>` 指定設定伺服器的 IP 位址。 請使用任何有效的 IP 位址。
 `-P` |  Mandatory。 儲存複雜密碼之檔案的完整檔案路徑。 請使用任何有效的資料夾。
 
 ## <a name="azure-virtual-machine-agent"></a>Azure 虛擬機器代理程式
 
-- **Windows VM**：從行動服務 9.7.0.0 版開始，會由行動服務安裝程式安裝 [Azure VM 代理程式](../virtual-machines/extensions/features-windows.md#azure-vm-agent)。 這可確保當機器容錯移轉至 Azure 時，Azure VM 會符合使用任何 VM 擴充功能的代理程式安裝先決條件。
-- **Linux VM**：在容錯移轉之後，必須在 Azure VM 上手動安裝 [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md)。
+- **Windows VM** ：從行動服務 9.7.0.0 版開始，會由行動服務安裝程式安裝 [Azure VM 代理程式](../virtual-machines/extensions/features-windows.md#azure-vm-agent)。 這可確保當機器容錯移轉至 Azure 時，Azure VM 會符合使用任何 VM 擴充功能的代理程式安裝先決條件。
+- **Linux VM** ：在容錯移轉之後，必須在 Azure VM 上手動安裝 [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md)。
 
 ## <a name="locate-installer-files"></a>尋找安裝程式檔案
 
-在設定伺服器上，移至資料夾 _%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository_。 根據作業系統檢查您需要的安裝程式。 下表摘要說明每個 VMware VM 和實體伺服器作業系統的安裝程式檔案。 開始之前，您可以檢查支援的 [作業系統](vmware-physical-azure-support-matrix.md#replicated-machines)。
+在設定伺服器上，移至資料夾 _%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository_ 。 根據作業系統檢查您需要的安裝程式。 下表摘要說明每個 VMware VM 和實體伺服器作業系統的安裝程式檔案。 開始之前，您可以檢查支援的 [作業系統](vmware-physical-azure-support-matrix.md#replicated-machines)。
 
 > [!NOTE]
 > 檔案名會使用下表所示的語法，並將 _版本_ 和 _日期_ 做為實際值的預留位置。 實際的檔案名看起來會像這些範例：
@@ -232,7 +232,7 @@ ms.locfileid: "90530058"
 3. 流覽至設定伺服器，複製路徑上的 SUSE Linux Enterprise Server 11 SP3 代理程式安裝程式-INSTALL_DIR \home\svsystems\pushinstallsvc\repository
 1. 複製最新的安裝程式之後，請重新開機 InMage PushInstall 服務。 
 1. 現在，流覽至相關聯的相應放大進程伺服器，重複步驟3和步驟4。
-1. **例如**，如果安裝路徑為 C:\Program Files (x86) \microsoft Azure Site Recovery，則上述目錄會是
+1. **例如** ，如果安裝路徑為 C:\Program Files (x86) \microsoft Azure Site Recovery，則上述目錄會是
     1. C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
 
 ### <a name="rhel-5-or-centos-5-server"></a>RHEL 5 或 CentOS 5 server
@@ -244,7 +244,7 @@ ms.locfileid: "90530058"
 3. 流覽至設定伺服器，將 RHEL 5 或 CentOS 5 代理程式安裝程式複製到路徑-INSTALL_DIR \home\svsystems\pushinstallsvc\repository
 1. 複製最新的安裝程式之後，請重新開機 InMage PushInstall 服務。 
 1. 現在，流覽至相關聯的相應放大進程伺服器，重複步驟3和步驟4。
-1. **例如**，如果安裝路徑為 C:\Program Files (x86) \microsoft Azure Site Recovery，則上述目錄會是
+1. **例如** ，如果安裝路徑為 C:\Program Files (x86) \microsoft Azure Site Recovery，則上述目錄會是
     1. C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
 
 ## <a name="debian-7-server"></a>Debian 7 伺服器
@@ -256,9 +256,9 @@ ms.locfileid: "90530058"
 3. 流覽至設定伺服器，將 Debian 7 代理程式安裝程式複製到路徑-INSTALL_DIR \home\svsystems\pushinstallsvc\repository
 1. 複製最新的安裝程式之後，請重新開機 InMage PushInstall 服務。 
 1. 現在，流覽至相關聯的相應放大進程伺服器，重複步驟3和步驟4。
-1. **例如**，如果安裝路徑為 C:\Program Files (x86) \microsoft Azure Site Recovery，則上述目錄會是
+1. **例如** ，如果安裝路徑為 C:\Program Files (x86) \microsoft Azure Site Recovery，則上述目錄會是
     1. C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [設定行動服務的推入安裝](vmware-azure-install-mobility-service.md)。

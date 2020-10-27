@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: 659e44ddc13cf093d7e571e904e177136ed21127
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d94a4858b4c4fa99a09acc2bec88f94a64686c2d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084489"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539134"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>使用 Microsoft 辨識工具組深入了解模型與 Azure HDInsight Spark 叢集
 
 在本文中，您會執行下列步驟。
 
-1. 執行自訂腳本以在 Azure HDInsight Spark 叢集上安裝 [Microsoft Cognitive Toolkit](https://docs.microsoft.com/cognitive-toolkit/) 。
+1. 執行自訂腳本以在 Azure HDInsight Spark 叢集上安裝 [Microsoft Cognitive Toolkit](/cognitive-toolkit/) 。
 
 2. 將 [Jupyter Notebook](https://jupyter.org/) 上傳至 [Apache Spark](https://spark.apache.org/) 叢集，以了解如何使用 [Spark Python API (PySpark)](https://spark.apache.org/docs/latest/api/python/index.html)，將定型的 Microsoft Cognitive Toolkit 深入學習模型套用至 Azure Blob 儲存體帳戶中的檔案
 

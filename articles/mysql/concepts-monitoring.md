@@ -7,18 +7,18 @@ ms.service: mysql
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 10/21/2020
-ms.openlocfilehash: 4589687593abbe5667aa4b21b1361b68e4bed07f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b2670862814495ab04f92d8f34a757d3ede6cf4a
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428130"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546869"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>在適用於 MySQL 的 Azure 資料庫中監視
 監視伺服器的相關資料，可協助您疑難排解並最佳化您的工作負載。 適用於 MySQL 的 Azure 資料庫提供多種計量，可讓您深入了解您伺服器的行為。
 
 ## <a name="metrics"></a>計量
-所有 Azure 計量都有一分鐘頻率，且每個計量皆提供 30 天的記錄。 您可以在計量上設定警示。 如需逐步指引，請參閱[如何設定警示](howto-alert-on-metric.md)。 其他工作包含設定自動化動作、執行進階分析，以及封存記錄。 如需詳細資訊，請參閱 [Azure 計量概觀](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
+所有 Azure 計量都有一分鐘頻率，且每個計量皆提供 30 天的記錄。 您可以在計量上設定警示。 如需逐步指引，請參閱[如何設定警示](howto-alert-on-metric.md)。 其他工作包含設定自動化動作、執行進階分析，以及封存記錄。 如需詳細資訊，請參閱 [Azure 計量概觀](../azure-monitor/platform/data-platform.md)。
 
 ### <a name="list-of-metrics"></a>計量清單
 這些計量可供適用於 MySQL 的 Azure 資料庫使用：
@@ -59,8 +59,8 @@ ms.locfileid: "92428130"
 
 深入瞭解如何在 [規劃的維護通知](./concepts-planned-maintenance-notification.md) 檔中設定通知。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - 請參閱[如何設定警示](howto-alert-on-metric.md)，取得根據計量來建立警示的指引。
-- 如需如何使用 Azure 入口網站、REST API 或 CLI 存取及匯出計量的詳細資訊，請參閱 [Azure 計量概觀](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
+- 如需如何使用 Azure 入口網站、REST API 或 CLI 存取及匯出計量的詳細資訊，請參閱 [Azure 計量概觀](../azure-monitor/platform/data-platform.md)。
 - 請參閱有關[監視伺服器的最佳做法](https://azure.microsoft.com/blog/best-practices-for-alerting-on-metrics-with-azure-database-for-mysql-monitoring/) \(英文\) 的部落格。
 - 深入瞭解適用於 MySQL 的 Azure 資料庫-單一伺服器中的[規劃維護通知](./concepts-planned-maintenance-notification.md)

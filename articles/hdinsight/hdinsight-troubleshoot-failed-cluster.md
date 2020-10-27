@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 98e062b159b2df639923cb3cd3aac286f6051016
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 4fea7719d0aa375aad3d2795d240006222b6486c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490895"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535088"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>針對 HDInsight 叢集上速度變慢或失敗的作業進行疑難排解
 
@@ -78,11 +78,11 @@ az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>使用 Ambari UI 來檢視叢集組態設定
 
-Apache Ambari 可讓您透過 Web UI 和 REST API 來管理和監視 HDInsight 叢集。 以 Linux 為基礎的 HDInsight 叢集會隨附 Ambari。 請在 Azure 入口網站 HDInsight 頁面上，選取 [叢集儀表板]**** 窗格。  選取 [HDInsight 叢集儀表板]**** 窗格以開啟 Ambari UI，然後輸入叢集登入認證。  
+Apache Ambari 可讓您透過 Web UI 和 REST API 來管理和監視 HDInsight 叢集。 以 Linux 為基礎的 HDInsight 叢集會隨附 Ambari。 請在 Azure 入口網站 HDInsight 頁面上，選取 [叢集儀表板]  窗格。  選取 [HDInsight 叢集儀表板]  窗格以開啟 Ambari UI，然後輸入叢集登入認證。  
 
 ![Apache Ambari 儀表板總覽](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-overview.png)
 
-若要開啟服務檢視清單，請在 Azure 入口網站頁面上選取 [Ambari 檢視]****。  此清單會依所安裝的程式庫而有所不同。 例如，您可能會看到 [YARN 佇列管理員]、[Hive 檢視] 及 [Tez 檢視]。  請選取一個服務連結來查看組態和服務資訊。
+若要開啟服務檢視清單，請在 Azure 入口網站頁面上選取 [Ambari 檢視]  。  此清單會依所安裝的程式庫而有所不同。 例如，您可能會看到 [YARN 佇列管理員]、[Hive 檢視] 及 [Tez 檢視]。  請選取一個服務連結來查看組態和服務資訊。
 
 #### <a name="check-for-azure-service-outages"></a>查看 Azure 服務中斷狀況
 
@@ -90,8 +90,8 @@ HDInsight 倚賴數個 Azure 服務。 它會在 Azure HDInsight 上執行虛擬
 
 #### <a name="check-azure-service-usage-limits"></a>檢查 Azure 服務使用限制
 
-如果您要啟動一個大型叢集，或是已同時啟動許多叢集，則在超出 Azure 服務限制時，叢集就可能發生失敗。 服務限制會依您的 Azure 訂用帳戶而有所不同。 如需詳細資訊，請參閱 [Azure 訂用帳戶和服務限制、配額和條件約束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
-您可以透過 [Resource Manager 核心配額增加要求](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)，要求 Microsoft 增加可用的 HDInsight 資源 (例如 VM 核心和 VM 執行個體) 數目。
+如果您要啟動一個大型叢集，或是已同時啟動許多叢集，則在超出 Azure 服務限制時，叢集就可能發生失敗。 服務限制會依您的 Azure 訂用帳戶而有所不同。 如需詳細資訊，請參閱 [Azure 訂用帳戶和服務限制、配額和條件約束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
+您可以透過 [Resource Manager 核心配額增加要求](../azure-portal/supportability/resource-manager-core-quotas-request.md)，要求 Microsoft 增加可用的 HDInsight 資源 (例如 VM 核心和 VM 執行個體) 數目。
 
 #### <a name="check-the-release-version"></a>檢查發行版本
 
@@ -115,7 +115,7 @@ HDInsight 叢集是由在虛擬機器執行個體上執行的各種不同類型�
 
 ### <a name="check-your-webhcat-service"></a>檢查您的 WebHCat 服務
 
-Apache Hive、Apache Pig 或 Apache Sqoop 作業發生失敗的其中一個常見案例是 [WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (或 *Templeton*) 服務發生失敗。 WebHCat 是一個用於執行遠端作業 (例如 Hive、Pig、Scoop 及 MapReduce) 的 REST 介面。 WebHCat 會將作業提交要求轉譯成 Apache Hadoop YARN 應用程式，然後傳回從 YARN 應用程式狀態衍生的狀態。  下列各節說明常見的 WebHCat HTTP 狀態碼。
+Apache Hive、Apache Pig 或 Apache Sqoop 作業發生失敗的其中一個常見案例是 [WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (或 *Templeton* ) 服務發生失敗。 WebHCat 是一個用於執行遠端作業 (例如 Hive、Pig、Scoop 及 MapReduce) 的 REST 介面。 WebHCat 會將作業提交要求轉譯成 Apache Hadoop YARN 應用程式，然後傳回從 YARN 應用程式狀態衍生的狀態。  下列各節說明常見的 WebHCat HTTP 狀態碼。
 
 #### <a name="badgateway-502-status-code"></a>BadGateway (502 狀態碼)
 
@@ -172,7 +172,7 @@ Templeton 會呼叫 YARN 來執行作業，而 Templeton 與 YARN 之間的通�
 
     如果您開啟 `/var/log/webhcat/webhcat.log` 記錄檔並搜尋 "queued job"，可能會看到多個執行時間過長 (超出 2000 毫秒) 的項目，其中會有項目顯示等候時間增加。
 
-    佇列作業的時間會持續增加，因為提交新作業的速率高於完成舊作業的速率。 一旦 YARN 記憶體的使用率達到 100%，「joblauncher 佇列」** 便無法再從「預設佇列」** 借用容量。 因此，joblauncher 佇列會無法再接受新的作業。 此行為會導致等候時間變得越來越長，除了造成逾時錯誤之外，後面通常也會跟著許多其他錯誤。
+    佇列作業的時間會持續增加，因為提交新作業的速率高於完成舊作業的速率。 一旦 YARN 記憶體的使用率達到 100%，「joblauncher 佇列」  便無法再從「預設佇列」  借用容量。 因此，joblauncher 佇列會無法再接受新的作業。 此行為會導致等候時間變得越來越長，除了造成逾時錯誤之外，後面通常也會跟著許多其他錯誤。
 
     下圖顯示已達 714.4% 過度使用情況的 joblauncher 佇列。 如果預設佇列仍有可用容量可供借用，此情況是可接受的。 不過，當叢集使用率已滿載且 YARN 記憶體容量已達 100% 時，新作業就必須等候，最終就會造成逾時。
 
@@ -206,7 +206,7 @@ Templeton 會呼叫 YARN 來執行作業，而 Templeton 與 YARN 之間的通�
 
 ## <a name="step-4-review-the-environment-stack-and-versions"></a>步驟 4：檢閱環境堆疊和版本
 
-Ambari UI [Stack and Version] \(堆疊與版本\)**** 頁面會提供有關叢集服務組態與服務版本歷程記錄的資訊。  Hadoop 服務程式庫版本如果不正確，可能會導致叢集發生失敗。  在 Ambari UI 中，選取 [Admin] \(系統管理\)**** 功能表，然後選取 [Stack and Version] \(堆疊與版本\)****。  選取頁面上的 [Versions] \(版本\)**** 索引標籤以查看服務版本資訊：
+Ambari UI [Stack and Version] \(堆疊與版本\)  頁面會提供有關叢集服務組態與服務版本歷程記錄的資訊。  Hadoop 服務程式庫版本如果不正確，可能會導致叢集發生失敗。  在 Ambari UI 中，選取 [Admin] \(系統管理\)  功能表，然後選取 [Stack and Version] \(堆疊與版本\)  。  選取頁面上的 [Versions] \(版本\)  索引標籤以查看服務版本資訊：
 
 ![Apache Ambari 堆疊和版本](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
 
@@ -222,13 +222,13 @@ Ambari UI [Stack and Version] \(堆疊與版本\)**** 頁面會提供有關叢�
 
 ### <a name="check-the-script-action-logs"></a>檢查指令碼動作記錄
 
-HDInsight [指令碼動作](hdinsight-hadoop-customize-cluster-linux.md)會以手動方式或在指定時，於叢集上執行指令碼。 例如，指令碼動作可用來在叢集上安裝額外的軟體，或是更改組態設定的預設值。 檢查指令碼動作記錄可讓您深入了解進行叢集設定和組態時所發生的錯誤。  您可以透過選取 Ambari UI 中的 [ops]**** 按鈕，或是從預設儲存體帳戶存取記錄，來檢視指令碼動作的狀態。
+HDInsight [指令碼動作](hdinsight-hadoop-customize-cluster-linux.md)會以手動方式或在指定時，於叢集上執行指令碼。 例如，指令碼動作可用來在叢集上安裝額外的軟體，或是更改組態設定的預設值。 檢查指令碼動作記錄可讓您深入了解進行叢集設定和組態時所發生的錯誤。  您可以透過選取 Ambari UI 中的 [ops]  按鈕，或是從預設儲存體帳戶存取記錄，來檢視指令碼動作的狀態。
 
 指令碼動作記錄位於 `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE` 目錄中。
 
 ### <a name="view-hdinsight-logs-using-ambari-quick-links"></a>使用 Ambari 快速連結來檢視 HDInsight 記錄
 
-HDInsight Ambari UI 包含一些 [Quick Links] \(快速連結\)**** 區段。  若要存取您 HDInsight 叢集中特定服務的記錄連結，請開啟叢集的 Ambari UI，然後從左邊的清單中選取服務連結。 依序選取 [Quick Links] \(快速連結\)**** 下拉式清單、感興趣的 HDInsight 節點，然後選取其相關記錄的連結。
+HDInsight Ambari UI 包含一些 [Quick Links] \(快速連結\)  區段。  若要存取您 HDInsight 叢集中特定服務的記錄連結，請開啟叢集的 Ambari UI，然後從左邊的清單中選取服務連結。 依序選取 [Quick Links] \(快速連結\)  下拉式清單、感興趣的 HDInsight 節點，然後選取其相關記錄的連結。
 
 例如，針對 HDFS 記錄：
 
@@ -259,10 +259,10 @@ HDInsight 叢集已針對相關服務 (例如 Hadoop、Hive、HBase 等) 預先�
 5. 繼續執行，直到所有步驟都已執行且沒有錯誤為止。
 6. 完成對測試叢集的偵錯之後，請將其刪除。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [使用 Apache Ambari Web UI 管理 HDInsight 叢集](hdinsight-hadoop-manage-ambari.md)
-* [分析 HDInsight 記錄](hdinsight-debug-jobs.md)
+* [分析 HDInsight 記錄](./hdinsight-troubleshoot-guide.md)
 * [存取以 Linux 為基礎的 HDInsight 中的 Apache Hadoop YARN 應用程式登入](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [在以 Linux 為基礎的 HDInsight 上啟用 Apache Hadoop 服務的堆積傾印](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-* [HDInsight 上的 Apache Spark 叢集已知問題](hdinsight-apache-spark-known-issues.md)
+* [HDInsight 上的 Apache Spark 叢集已知問題](./spark/apache-spark-known-issues.md)

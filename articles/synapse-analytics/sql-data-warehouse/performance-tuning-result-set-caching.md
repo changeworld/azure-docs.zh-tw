@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: aeeca38afb82e2dcd86e111d1ae5dcb2e7499f42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 933ec541e358f1839c1b4d24acd19e439ea26375
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362260"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541276"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>使用結果集快取進行效能微調
 
@@ -36,11 +36,15 @@ ms.locfileid: "91362260"
 
 一旦開啟資料庫的結果集快取功能，除了這些查詢以外，會快取查詢的其他全部結果，直到快取滿為止：
 
-- 使用 DateTime.Now() 等不具決定性函式的查詢
+- 使用不具決定性的內建函數或運行時程表達式進行查詢，即使基表的資料或查詢沒有變更也是一樣。 例如，DateTime。現在 ( # A1，GetDate ( # A3。
 - 使用使用者定義函式的查詢
 - 使用已啟用資料列層級安全性或資料行層級安全性資料表的查詢
 - 傳回資料的資料列大小超過 64KB 的查詢
 - 傳回大型資料的查詢 (>10GB) 
+>[!NOTE]
+> - 某些不具決定性的函式和運行時程表達式可以具決定性，以針對相同的資料進行重複的查詢。 例如，ROW_NUMBER ( # A1。  
+> - 如果查詢結果集中的資料列順序/順序對您的應用程式邏輯很重要，請在查詢中使用 ORDER BY。
+> - 如果 ORDER BY 資料行中的資料不是唯一的，則在 ORDER BY 資料行中具有相同值的資料列不會有 garanteed 資料列順序，不論結果集快取是啟用或停用。
 
 > [!IMPORTANT]
 > 建立結果集快取以及從快取擷取資料的作業會在 Synapse SQL 集區執行個體的控制節點上進行。
