@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2020
-ms.openlocfilehash: ba8c35fc1802f7ef3ac54c693c8106bbc40cc185
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa8219db0e11694b6f70547d5f75bd892fbfa1f8
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82560156"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633156"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製到 Azure 資料總管或從中複製資料
 
@@ -42,7 +42,7 @@ ms.locfileid: "82560156"
 
 使用 Azure 資料總管連接器，您可以執行下列動作：
 
-* 使用 Azure Active Directory (Azure AD) 應用程式權杖驗證搭配**服務主體**來複製資料。
+* 使用 Azure Active Directory (Azure AD) 應用程式權杖驗證搭配 **服務主體** 來複製資料。
 * 作為來源時，請使用 KQL (Kusto) 查詢擷取資料。
 * 作為接收時，請將資料附加至目的地資料表。
 
@@ -67,22 +67,22 @@ Azure 資料總管連接器使用服務主體驗證。 遵循下列步驟以取�
 
 2. 在 Azure 資料總管中，將正確的許可權授與服務主體。 如需有關角色和許可權的詳細資訊以及管理許可權的詳細資訊，請參閱 [管理 Azure 資料總管資料庫許可權](/azure/data-explorer/manage-database-permissions) 。 一般情況下，您必須：
 
-    - **作為來源**，請至少將 **資料庫檢視器** 角色授與您的資料庫
-    - **作為接收**，請至少將 **資料庫擷取器** 角色授與您的資料庫
+    - **作為來源** ，請至少將 **資料庫檢視器** 角色授與您的資料庫
+    - **作為接收** ，請至少將 **資料庫擷取器** 角色授與您的資料庫
 
 >[!NOTE]
 >當您使用 Data Factory UI 來撰寫時，您的登入使用者帳戶會用來列出 Azure 資料總管叢集、資料庫和資料表。 如果您沒有這些作業的許可權，請手動輸入名稱。
 
 以下是針對 Azure 資料總管已連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | **Type**屬性必須設為**AzureDataExplorer**。 | 是 |
+| type | **Type** 屬性必須設為 **AzureDataExplorer** 。 | 是 |
 | 端點 | Azure 資料總管叢集的端點 URL，格式為 `https://<clusterName>.<regionName>.kusto.windows.net`。 | 是 |
 | [資料庫] | 資料庫名稱。 | 是 |
-| tenant | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 這在 [Kusto 連接字串](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)中稱為「授權識別碼」。 將滑鼠指標暫留在 Azure 入口網站的右上角，將滑鼠指標移至上方。 | 是 |
-| servicePrincipalId | 指定應用程式的用戶端識別碼。 在 [Kusto 連接字串](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)中，這稱為「AAD 應用程式用戶端識別碼」。 | 是 |
-| servicePrincipalKey | 指定應用程式的金鑰。 這在 [Kusto 連接字串](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)中稱為「AAD 應用程式金鑰」。 將此欄位標示為 **SecureString** ，以安全地將它儲存在 Data Factory 中，或 [參考儲存在 Azure Key Vault 的安全資料](store-credentials-in-key-vault.md)。 | 是 |
+| tenant | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 這在 [Kusto 連接字串](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)中稱為「授權識別碼」。 將滑鼠指標暫留在 Azure 入口網站的右上角，將滑鼠指標移至上方。 | 是 |
+| servicePrincipalId | 指定應用程式的用戶端識別碼。 在 [Kusto 連接字串](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)中，這稱為「AAD 應用程式用戶端識別碼」。 | 是 |
+| servicePrincipalKey | 指定應用程式的金鑰。 這在 [Kusto 連接字串](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)中稱為「AAD 應用程式金鑰」。 將此欄位標示為 **SecureString** ，以安全地將它儲存在 Data Factory 中，或 [參考儲存在 Azure Key Vault 的安全資料](store-credentials-in-key-vault.md)。 | 是 |
 
 **連結服務屬性範例：**
 
@@ -109,13 +109,13 @@ Azure 資料總管連接器使用服務主體驗證。 遵循下列步驟以取�
 
 如需可用來定義資料集之區段和屬性的完整清單，請參閱 [Azure Data Factory 中的資料集](concepts-datasets-linked-services.md)。 本節列出 Azure 資料總管資料集所支援的屬性。
 
-若要將資料複製到 Azure 資料總管，請將資料集的 type 屬性設定為 **AzureDataExplorerTable**。
+若要將資料複製到 Azure 資料總管，請將資料集的 type 屬性設定為 **AzureDataExplorerTable** 。
 
 以下是支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | **Type**屬性必須設為 **>azuredataexplorertable**。 | 是 |
+| type | **Type** 屬性必須設為 **>azuredataexplorertable** 。 | 是 |
 | 資料表 | 連結服務所參考的資料表名稱。 | Yes (接收)：No (來源) |
 
 **資料集屬性範例：**
@@ -143,9 +143,9 @@ Azure 資料總管連接器使用服務主體驗證。 遵循下列步驟以取�
 
 ### <a name="azure-data-explorer-as-source"></a>作為來源的 Azure 資料總管
 
-若要從 Azure 資料總管複製資料，請將複製活動來源中的 **type** 屬性設定為 **AzureDataExplorerSource**。 複製活動的 **source** 區段支援下列屬性：
+若要從 Azure 資料總管複製資料，請將複製活動來源中的 **type** 屬性設定為 **AzureDataExplorerSource** 。 複製活動的 **source** 區段支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 **type** 屬性必須設定為： **AzureDataExplorerSource** | 是 |
 | 查詢 | [KQL 格式](/azure/kusto/query/)中指定的唯讀要求。 使用自訂的 KQL 查詢作為參考。 | 是 |
@@ -153,7 +153,7 @@ Azure 資料總管連接器使用服務主體驗證。 遵循下列步驟以取�
 | noTruncation | 指出是否截斷傳回的結果集。 根據預設，結果會在500000記錄或 64 mb (MB) 之後截斷。 強烈建議您使用截斷來確保活動的正確行為。 |否 |
 
 >[!NOTE]
->根據預設，Azure 資料總管來源的大小限制為500000筆記錄或 64 MB。 若要在不截斷的情況下取出所有記錄，您可以 `set notruncation;` 在查詢的開頭指定。 如需詳細資訊，請參閱 [查詢限制](https://docs.microsoft.com/azure/kusto/concepts/querylimits)。
+>根據預設，Azure 資料總管來源的大小限制為500000筆記錄或 64 MB。 若要在不截斷的情況下取出所有記錄，您可以 `set notruncation;` 在查詢的開頭指定。 如需詳細資訊，請參閱 [查詢限制](/azure/kusto/concepts/querylimits)。
 
 **範例︰**
 
@@ -190,13 +190,13 @@ Azure 資料總管連接器使用服務主體驗證。 遵循下列步驟以取�
 
 ### <a name="azure-data-explorer-as-sink"></a>作為接收的 Azure 資料總管
 
-若要將資料複製到 Azure 資料總管，請將複製活動接收中的 type 屬性設定為 **AzureDataExplorerSink**。 複製活動的 **sink** 區段支援下列屬性：
+若要將資料複製到 Azure 資料總管，請將複製活動接收中的 type 屬性設定為 **AzureDataExplorerSink** 。 複製活動的 **sink** 區段支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動接收的 **type** 屬性必須設定為： **AzureDataExplorerSink**。 | 是 |
+| type | 複製活動接收的 **type** 屬性必須設定為： **AzureDataExplorerSink** 。 | 是 |
 | ingestionMappingName | Kusto 資料表上預先建立之 [對應](/azure/kusto/management/mappings#csv-mapping) 的名稱。 若要將資料行從來源對應到 Azure 資料總管 (適用于 [所有支援的來源存放區和格式](copy-activity-overview.md#supported-data-stores-and-formats)（包括 CSV/JSON/Avro 格式) ），您可以使用 [複製活動] 資料 [行對應](copy-activity-schema-and-type-mapping.md) (依名稱隱含，或明確地依照設定的) 和/或 Azure 資料總管對應來進行。 | 否 |
-| additionalProperties | 屬性包，可用來指定任何未由 Azure 資料總管接收器設定的內嵌屬性。 具體而言，這對指定內嵌標記而言很有用。 深入瞭解 [Azure 資料探索資料](https://docs.microsoft.com/azure/data-explorer/ingestion-properties)內嵌檔。 | 否 |
+| additionalProperties | 屬性包，可用來指定任何未由 Azure 資料總管接收器設定的內嵌屬性。 具體而言，這對指定內嵌標記而言很有用。 深入瞭解 [Azure 資料探索資料](/azure/data-explorer/ingestion-properties)內嵌檔。 | 否 |
 
 **範例︰**
 
@@ -235,7 +235,7 @@ Azure 資料總管連接器使用服務主體驗證。 遵循下列步驟以取�
 
 如需屬性的詳細資訊，請參閱 [查閱活動](control-flow-lookup-activity.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 如需 Azure Data Factory 中複製活動支援作為來源和接收的資料存放區清單，請參閱 [支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。
 

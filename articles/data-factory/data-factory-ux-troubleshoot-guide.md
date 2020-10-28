@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: ceespino
 ms.reviewer: daperlov
-ms.openlocfilehash: 9f23155df6d9e63448b35974c331bf78c3e5f90c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bd0421a74679ff0c9498540d722a74ebf3d58af
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426212"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632562"
 ---
 # <a name="troubleshoot-azure-data-factory-ux-issues"></a>針對 Azure Data Factory UX 問題進行疑難排解
 
@@ -42,8 +42,8 @@ ADF UX 會使用瀏覽器 cookie 來保存使用者會話，並啟用互動式�
 
 #### <a name="only-allow-adf-ux-to-use-cookies"></a>只允許 ADF UX 使用 cookie
 如果您不想允許所有的 cookie，可以選擇只允許 ADF UX：
-1. 造訪 **chrome://settings/cookies**。
-1. 選取 [在**永遠可使用 cookie 的網站**下**新增**] 選項 
+1. 造訪 **chrome://settings/cookies** 。
+1. 選取 [在 **永遠可使用 cookie 的網站** 下 **新增** ] 選項 
 
     ![將 ADF UX 新增至 Chrome 中允許的網站](media/data-factory-ux-troubleshoot-guide/chrome-only-adf-cookies-1.png)
 1. 新增 **adf.azure.com** 網站，檢查 **所有 cookie** 選項，然後儲存。 
@@ -63,7 +63,7 @@ ADF UX 會使用瀏覽器 cookie 來保存使用者會話，並啟用互動式�
 
 如果您不想允許所有的 cookie，可以選擇只允許 ADF UX：
 
-1. 造訪 **edge://settings/content/cookies**。
+1. 造訪 **edge://settings/content/cookies** 。
 1. 在 [ **允許** ] 區段下，選取 [ **新增** 並新增 **adf.azure.com** 網站]。 
 
     ![在 Edge 中將 ADF UX 新增至允許的網站](media/data-factory-ux-troubleshoot-guide/edge-allow-adf-cookies.png)
@@ -71,17 +71,17 @@ ADF UX 會使用瀏覽器 cookie 來保存使用者會話，並啟用互動式�
 
 ## <a name="connection-failed-on-adf-ux"></a>ADF UX 上的連接失敗
 
-有時您會在 ADF UX 上看到「連線失敗」錯誤，類似于以下螢幕擷取畫面，請按一下 [ **測試**連線]、[ **預覽**] 等等。
+有時您會在 ADF UX 上看到「連線失敗」錯誤，類似于以下螢幕擷取畫面，請按一下 [ **測試** 連線]、[ **預覽** ] 等等。
 
 ![連接失敗](media/data-factory-ux-troubleshoot-guide/connection-failed.png)
 
 在此情況下，您可以在瀏覽器中嘗試使用 InPrivate 瀏覽模式來進行相同的操作。
 
-如果仍然無法運作，請在瀏覽器中按 F12 以開啟 **開發人員工具**。 移至 [ **網路** ] 索引標籤，核取 [ **停**用快取]，重試失敗的作業，然後找出失敗的要求 (紅色) 。
+如果仍然無法運作，請在瀏覽器中按 F12 以開啟 **開發人員工具** 。 移至 [ **網路** ] 索引標籤，核取 [ **停** 用快取]，重試失敗的作業，然後找出失敗的要求 (紅色) 。
 
 ![失敗的要求](media/data-factory-ux-troubleshoot-guide/failed-request.png)
 
-然後，在此案例中尋找**主機名稱** (，從失敗要求的**要求 URL**中**dpnortheurope.svc.datafactory.azure.com**) 。
+然後，在此案例中尋找 **主機名稱** (，從失敗要求的 **要求 URL** 中 **dpnortheurope.svc.datafactory.azure.com** ) 。
 
 直接在瀏覽器的網址列中輸入 **主機名稱** 。 如果您在瀏覽器中看到404，這通常表示您的用戶端正常，且問題在 ADF 服務端。 提出支援票證，其中包含來自 ADF UX 錯誤訊息的 **活動識別碼** 。
 
@@ -91,7 +91,7 @@ ADF UX 會使用瀏覽器 cookie 來保存使用者會話，並啟用互動式�
 
 ![用戶端錯誤](media/data-factory-ux-troubleshoot-guide/client-side-error.png)
 
-開啟 **命令提示** 字元，然後輸入 **nslookup dpnortheurope.svc.datafactory.azure.com**。 一般的回應看起來應該如下所示：
+開啟 **命令提示** 字元，然後輸入 **nslookup dpnortheurope.svc.datafactory.azure.com** 。 一般的回應看起來應該如下所示：
 
 ![命令回應1](media/data-factory-ux-troubleshoot-guide/command-response-1.png)
 
@@ -120,4 +120,4 @@ ADF UX 會使用瀏覽器 cookie 來保存使用者會話，並啟用互動式�
 * [Data Factory 的 Stack Overflow 論壇](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [關於 Data Factory 的 Twitter 資訊](https://twitter.com/hashtag/DataFactory)
 * [Azure 影片](https://azure.microsoft.com/resources/videos/index/)
-* [Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
+* [Microsoft 問與答頁面](/answers/topics/azure-data-factory.html)

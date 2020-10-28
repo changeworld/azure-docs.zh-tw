@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: c392ad7a098116a8f2224d6844d38dc40e01d753
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f7959b639b75d912d44670c8b00a7327cb7857d6
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545985"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629437"
 ---
 # <a name="script-action-development-with-hdinsight"></a>使用 HDInsight 開發指令碼動作
 
@@ -239,7 +239,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |從來源 URI 將檔案下載到指定的檔案路徑中。 依預設，它不會覆寫現有的檔案。 |
 | `untar_file TARFILE DESTDIR` |將 tar 檔案解壓縮 (使用 `-xf`) 至目的地目錄。 |
-| `test_is_headnode` |如果在叢集前端節點上執行，則會傳回 1，否則傳回 0。 |
+| `test_is_headnode` |如果腳本是在叢集前端節點上執行，則傳回 1;否則為0。 |
 | `test_is_datanode` |如果目前節點是資料 (背景工作角色) 節點，則會傳回 1，否則傳回 0。 |
 | `test_is_first_datanode` |如果目前節點是第一個資料 (背景工作角色) 節點 (名為 workernode0)，則會傳回 1，否則傳回 0。 |
 | `get_headnodes` |傳回叢集中前端節點的完整網域名稱。 名稱會以逗號分隔。 發生錯誤時會傳回空字串。 |
@@ -268,7 +268,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 VARIABLENAME=value
 ```
 
-其中 VARIABLENAME 是變數的名稱。 若要存取變數，請使用 `$VARIABLENAME`。 例如，若要將位置參數提供的值指派為名為 PASSWORD 的環境變數，請使用下列陳述式：
+在上述範例中， `VARIABLENAME` 是變數的名稱。 若要存取變數，請使用 `$VARIABLENAME`。 例如，若要將位置參數提供的值指派為名為 PASSWORD 的環境變數，請使用下列陳述式：
 
 ```bash
 PASSWORD=$1

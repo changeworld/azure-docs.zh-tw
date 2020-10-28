@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e94445a6cb16eacb496daedbec21379928a4dafd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5df2f9cd0a47e5a89d7ff2eb12aefe593cae7a8
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84194450"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631473"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>使用範本來建立 Azure Data Factory 實體
 > [!NOTE]
@@ -27,9 +27,9 @@ ms.locfileid: "84194450"
 
 假設某個組織在全球各地有 10 個製造工廠。 每個工廠的記錄都會儲存在不同的 SQL Server 資料庫中。 該公司想要在雲端中建立單一資料倉儲以進行臨機操作分析。 它也想要具有相同的邏輯，但開發、測試和生產環境的組態不同。
 
-在此情況下，必須在相同的環境內重複執行工作，但每個製造工廠的 10 個資料處理站各有不同的值。 實際上，具有**重複**情況。 範本化允許任意使用這個泛形流程 (即在每個資料處理站中具有相同活動的管線)，但會針對每個製造工廠使用不同的參數檔案。
+在此情況下，必須在相同的環境內重複執行工作，但每個製造工廠的 10 個資料處理站各有不同的值。 實際上，具有 **重複** 情況。 範本化允許任意使用這個泛形流程 (即在每個資料處理站中具有相同活動的管線)，但會針對每個製造工廠使用不同的參數檔案。
 
-此外，組織想要跨不同環境部署這 10 個資料處理站多次時，範本可以針對開發、測試和生產環境使用不同的參數檔案，來使用這個**重複使用性**。
+此外，組織想要跨不同環境部署這 10 個資料處理站多次時，範本可以針對開發、測試和生產環境使用不同的參數檔案，來使用這個 **重複使用性** 。
 
 ## <a name="templating-with-azure-resource-manager"></a>使用 Azure Resource Manager 範本化
 [Azure Resource Manager 範本](../../azure-resource-manager/templates/overview.md)是達成 Azure Data Factory 中範本化的不錯方式。 Resource Manager 範本透過 JSON 檔案來定義 Azure 解決方案的基礎結構和組態。 因為 Azure Resource Manager 範本是與所有/大部分 Azure 服務搭配運作，所以可以廣泛用來輕鬆地管理 Azure 資產的所有資源。 若要深入了解 Resource Manager 範本的一般資訊，請參閱[撰寫 Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md) 。
@@ -228,12 +228,12 @@ dataFactoryName 在 “variables” 中定義為：
 }
 ```
 ## <a name="parameterizing-data-factory-template"></a>參數化 Data Factory 範本
-如需參數化的最佳做法，請參閱[建立 Azure Resource Manager 範本的最佳做法](../../azure-resource-manager/resource-manager-template-best-practices.md)。 一般而言，參數的使用應該降到最低，特別是改為使用變數時。 在下列情況中，僅提供參數：
+如需參數化的最佳做法，請參閱[建立 Azure Resource Manager 範本的最佳做法](../../azure-resource-manager/templates/template-best-practices.md)。 一般而言，參數的使用應該降到最低，特別是改為使用變數時。 在下列情況中，僅提供參數：
 
 * 設定會因環境 (範例︰開發、測試和生產) 而不同
 * 機密資料 (例如密碼)
 
-如果您在使用範本部署 Azure Data Factory 實體時需要從 [Azure 金鑰保存庫](../../key-vault/general/overview.md)提取密碼，請指定 **金鑰保存庫**和**密碼名稱**，如下列範例所示︰
+如果您在使用範本部署 Azure Data Factory 實體時需要從 [Azure 金鑰保存庫](../../key-vault/general/overview.md)提取密碼，請指定 **金鑰保存庫** 和 **密碼名稱** ，如下列範例所示︰
 
 ```JSON
 "parameters": {

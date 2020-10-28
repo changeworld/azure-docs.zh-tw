@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: a19f81fab525b44f0b55244281930977e0e1f476
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3241bc16c0613189faa169032632303788dac3e
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254611"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634125"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Azure Data Factory (舊版) 中支援的檔案格式和壓縮編解碼器
 
@@ -30,19 +30,19 @@ ms.locfileid: "85254611"
 >[!NOTE]
 >從 [分隔的文字格式](format-delimited-text.md) 文章中學習新的模型。 以檔案為基礎的資料存放區資料集上的下列設定，仍支援回溯 compabitility。 建議您繼續使用新的模型。
 
-如果您想要從文字檔讀取或寫入至文字檔，請將資料集之 `format` 區段中的 `type` 屬性設定成 **TextFormat**。 您也可以在 `format` 區段中指定下列**選擇性**屬性。 關於如何設定，請參閱 [TextFormat 範例](#textformat-example)一節。
+如果您想要從文字檔讀取或寫入至文字檔，請將資料集之 `format` 區段中的 `type` 屬性設定成 **TextFormat** 。 您也可以在 `format` 區段中指定下列 **選擇性** 屬性。 關於如何設定，請參閱 [TextFormat 範例](#textformat-example)一節。
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| columnDelimiter |用來分隔檔案中的資料行的字元。 您可以考慮使用資料中不太可能存在的罕見不可列印字元。 例如，指定 "\u0001"，這代表「標題開頭」(SOH)。 |只允許一個字元。 **預設**值為**逗號 ( '，' ) **。 <br/><br/>若要使用 Unicode 字元，請參考 [Unicode 字元 (英文)](https://en.wikipedia.org/wiki/List_of_Unicode_characters) 以取得其對應的代碼。 |否 |
-| rowDelimiter |用來分隔檔案中資料列的字元。 |只允許一個字元。 **預設**值是讀取時的下列任何值： **["\r\n"、"\r"、"\n"]** 和 **"\r\n"** （寫入時）。 |否 |
+| columnDelimiter |用來分隔檔案中的資料行的字元。 您可以考慮使用資料中不太可能存在的罕見不可列印字元。 例如，指定 "\u0001"，這代表「標題開頭」(SOH)。 |只允許一個字元。 **預設** 值為 **逗號 ( '，' )** 。 <br/><br/>若要使用 Unicode 字元，請參考 [Unicode 字元 (英文)](https://en.wikipedia.org/wiki/List_of_Unicode_characters) 以取得其對應的代碼。 |否 |
+| rowDelimiter |用來分隔檔案中資料列的字元。 |只允許一個字元。 **預設** 值是讀取時的下列任何值： **["\r\n"、"\r"、"\n"]** 和 **"\r\n"** （寫入時）。 |否 |
 | escapeChar |用來逸出輸入檔內容中資料行分隔符號的特殊字元。 <br/><br/>您無法為資料表同時指定 escapeChar 和 quoteChar。 |只允許一個字元。 無預設值。 <br/><br/>範例：如果您有逗號 ( '，' ) 做為資料行分隔符號，但您想要在文字中使用逗號字元 (範例： "Hello，world" ) ，您可以將 ' $ ' 定義為 escape 字元，並在來源中使用字串 "Hello $，world"。 |否 |
 | quoteChar |用來為字串值加上引號的字元。 系統會將引號字元內資料行和資料列分隔符號視為字串值的一部分。 這個屬性同時適用於輸入和輸出資料集。<br/><br/>您無法為資料表同時指定 escapeChar 和 quoteChar。 |只允許一個字元。 無預設值。 <br/><br/>例如，如果您以逗號 (',') 做為資料行分隔符號，但您想要在文字中使用逗號字元 (例如：<Hello, world>)，您可以定義 " (雙引號) 做為引用字元，並在來源中使用字串 "Hello, world"。 |否 |
 | nullValue |用來代表 Null 值的一或多個字元。 |一個或多個字元。 在讀取時， **預設** 值為 **"\n" 和 "Null"** ，寫入時則為 " **\n"** 。 |否 |
-| encodingName |指定編碼名稱。 |有效的編碼名稱。 請參閱 [Encoding.encodingname 屬性](https://msdn.microsoft.com/library/system.text.encoding.aspx)。 例如：windows-1250 或 shift_jis。 **預設**值為**utf-8**。 |否 |
+| encodingName |指定編碼名稱。 |有效的編碼名稱。 請參閱 [Encoding.encodingname 屬性](/dotnet/api/system.text.encoding)。 例如：windows-1250 或 shift_jis。 **預設** 值為 **utf-8** 。 |否 |
 | firstRowAsHeader |指定是否將第一個資料列視為標頭。 對於輸入資料集，Data Factory 會讀取第一個資料列做為標頭。 對於輸出資料集，Data Factory 會寫入第一個資料列做為標頭。 <br/><br/>相關範例案例請參閱[使用 `firstRowAsHeader` 和 `skipLineCount` 的案例](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |True<br/><b>FALSE (預設值)</b> |否 |
-| skipLineCount |指出從輸入檔讀取資料時，要略過的**非空白**資料列數。 如果同時指定 skipLineCount 和 firstRowAsHeader，則會先略過行，然後從輸入檔讀取標頭資訊。 <br/><br/>相關範例案例請參閱[使用 `firstRowAsHeader` 和 `skipLineCount` 的案例](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |整數 |否 |
-| treatEmptyAsNull |指定從輸入檔讀取資料時是否將 Null 或空字串視為 Null 值。 |**True (預設) **<br/>False |否 |
+| skipLineCount |指出從輸入檔讀取資料時，要略過的 **非空白** 資料列數。 如果同時指定 skipLineCount 和 firstRowAsHeader，則會先略過行，然後從輸入檔讀取標頭資訊。 <br/><br/>相關範例案例請參閱[使用 `firstRowAsHeader` 和 `skipLineCount` 的案例](#scenarios-for-using-firstrowasheader-and-skiplinecount)。 |整數 |否 |
+| treatEmptyAsNull |指定從輸入檔讀取資料時是否將 Null 或空字串視為 Null 值。 |**True (預設)**<br/>False |否 |
 
 ### <a name="textformat-example"></a>TextFormat 範例
 
@@ -84,16 +84,16 @@ ms.locfileid: "85254611"
 >[!NOTE]
 >從 [JSON 格式](format-json.md) 的文章中瞭解新的模型。 以檔案為基礎的資料存放區資料集上的下列設定，仍支援回溯 compabitility。 建議您繼續使用新的模型。
 
-若要**將 JSON 檔案原封不動匯入到 Azure Cosmos DB 或從中匯出**，請參閱[將資料移進/移出 Azure Cosmos DB](connector-azure-cosmos-db.md) 一文中的「匯入/匯出 JSON 文件」一節。
+若要 **將 JSON 檔案原封不動匯入到 Azure Cosmos DB 或從中匯出** ，請參閱 [將資料移進/移出 Azure Cosmos DB](connector-azure-cosmos-db.md) 一文中的「匯入/匯出 JSON 文件」一節。
 
-如果您想要剖析 JSON 檔案，或以 JSON 格式寫入資料，請將 `format` 區段中的 `type` 屬性設定成 **JsonFormat**。 您也可以在 `format` 區段中指定下列**選擇性**屬性。 關於如何設定，請參閱 [JsonFormat 範例](#jsonformat-example)一節。
+如果您想要剖析 JSON 檔案，或以 JSON 格式寫入資料，請將 `format` 區段中的 `type` 屬性設定成 **JsonFormat** 。 您也可以在 `format` 區段中指定下列 **選擇性** 屬性。 關於如何設定，請參閱 [JsonFormat 範例](#jsonformat-example)一節。
 
 | 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| filePattern |表示每個 JSON 檔案中儲存的資料模式。 允許的值為︰**setOfObjects** 和 **arrayOfObjects**。 **預設**值為**setOfObjects**。 關於這些模式的詳細資訊，請參閱 [JSON 檔案模式](#json-file-patterns)一節。 |否 |
+| filePattern |表示每個 JSON 檔案中儲存的資料模式。 允許的值為︰ **setOfObjects** 和 **arrayOfObjects** 。 **預設** 值為 **setOfObjects** 。 關於這些模式的詳細資訊，請參閱 [JSON 檔案模式](#json-file-patterns)一節。 |否 |
 | jsonNodeReference | 如果您想要逐一查看陣列欄位內相同模式的物件並擷取資料，請指定該陣列的 JSON 路徑。 **從** JSON 檔案複製資料時，才支援這個屬性。 | 否 |
 | jsonPathDefinition | 指定 JSON 路徑運算式，以自訂資料行名稱來對應每個資料行 (開頭為小寫)。 **從** JSON 檔案複製資料時，才支援這個屬性，而您可以從物件或陣列中擷取資料。 <br/><br/> 如果是根物件下的欄位，請從根 $ 開始，如果是 `jsonNodeReference` 屬性所選陣列內的欄位，請從陣列元素開始。 關於如何設定，請參閱 [JsonFormat 範例](#jsonformat-example)一節。 | 否 |
-| encodingName |指定編碼名稱。 如需有效編碼名稱的清單，請參閱： [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) 屬性。 例如：windows-1250 或 shift_jis。 **預設**值為： **utf-8**。 |否 |
+| encodingName |指定編碼名稱。 如需有效編碼名稱的清單，請參閱： [Encoding.EncodingName](/dotnet/api/system.text.encoding) 屬性。 例如：windows-1250 或 shift_jis。 **預設** 值為： **utf-8** 。 |否 |
 | nestingSeparator |用來分隔巢狀層級的字元。 預設值為 '.' (點)。 |否 |
 
 >[!NOTE]
@@ -230,7 +230,7 @@ ms.locfileid: "85254611"
 
 具有 **JsonFormat** 類型的輸入資料集定義如下：只有) 相關元件 (部分定義。 具體而言：
 
-- `structure` 區段定義自訂資料行名稱，以及轉換成表格式資料時對應的資料類型。 除非您需要對應資料行，否則這個區段是**選擇性**。 如需詳細資訊，請參閱[將來源資料集資料行對應至目的地資料集資料行](copy-activity-schema-and-type-mapping.md)。
+- `structure` 區段定義自訂資料行名稱，以及轉換成表格式資料時對應的資料類型。 除非您需要對應資料行，否則這個區段是 **選擇性** 。 如需詳細資訊，請參閱[將來源資料集資料行對應至目的地資料集資料行](copy-activity-schema-and-type-mapping.md)。
 - `jsonPathDefinition` 指定每個資料行的 JSON 路徑，以指出從哪裡擷取資料。 若要從陣列複製資料，您可以使用 `array[x].property` 從第 `xth` 個物件擷取指定屬性的值，也可以使用 `array[*].property` 從包含這類屬性的物件中尋找此值。
 
 ```json
@@ -305,8 +305,8 @@ ms.locfileid: "85254611"
 
 具有 **JsonFormat** 類型的輸入資料集定義如下：只有) 相關元件 (部分定義。 具體而言：
 
-- `structure` 區段定義自訂資料行名稱，以及轉換成表格式資料時對應的資料類型。 除非您需要對應資料行，否則這個區段是**選擇性**。 如需詳細資訊，請參閱[將來源資料集資料行對應至目的地資料集資料行](copy-activity-schema-and-type-mapping.md)。
-- `jsonNodeReference` 表示逐一查看**陣列** `orderlines` 下相同模式的物件並擷取資料。
+- `structure` 區段定義自訂資料行名稱，以及轉換成表格式資料時對應的資料類型。 除非您需要對應資料行，否則這個區段是 **選擇性** 。 如需詳細資訊，請參閱[將來源資料集資料行對應至目的地資料集資料行](copy-activity-schema-and-type-mapping.md)。
+- `jsonNodeReference` 表示逐一查看 **陣列** `orderlines` 下相同模式的物件並擷取資料。
 - `jsonPathDefinition` 指定每個資料行的 JSON 路徑，以指出從哪裡擷取資料。 在此範例中，`ordernumber`、`orderdate` 和 `city` 位於根物件下，JSON 路徑開頭為 `$.`，而 `order_pd` 和 `order_price` 以衍生自陣列元素的路徑定義，不含 `$.`。
 
 ```json
@@ -375,7 +375,7 @@ ms.locfileid: "85254611"
 }
 ```
 
-**JsonFormat** 類型的輸出資料集定義如下：(僅含相關元素的局部定義)。 更具體來說，`structure` 區段會定義目的檔案中的自訂屬性名稱，`nestingSeparator` (預設值是 ".") 則用來識別名稱中的巢狀層。 除非您想要變更屬性名稱與來源資料行名稱之間的對照，或巢狀化某些屬性，否則這個區段是**選擇性**。
+**JsonFormat** 類型的輸出資料集定義如下：(僅含相關元素的局部定義)。 更具體來說，`structure` 區段會定義目的檔案中的自訂屬性名稱，`nestingSeparator` (預設值是 ".") 則用來識別名稱中的巢狀層。 除非您想要變更屬性名稱與來源資料行名稱之間的對照，或巢狀化某些屬性，否則這個區段是 **選擇性** 。
 
 ```json
 "properties": {
@@ -411,7 +411,7 @@ ms.locfileid: "85254611"
 >[!NOTE]
 >從 [Parquet 格式](format-parquet.md) 的文章中學習新的模型。 以檔案為基礎的資料存放區資料集上的下列設定，仍支援回溯 compabitility。 建議您繼續使用新的模型。
 
-如果您想要剖析 Parquet 檔案，或以 Parquet 格式寫入資料，請將 `format` `type` 屬性設定為 **ParquetFormat**。 您不需要在 typeProperties 區段內的 Format 區段中指定任何屬性。 範例：
+如果您想要剖析 Parquet 檔案，或以 Parquet 格式寫入資料，請將 `format` `type` 屬性設定為 **ParquetFormat** 。 您不需要在 typeProperties 區段內的 Format 區段中指定任何屬性。 範例：
 
 ```json
 "format":
@@ -427,15 +427,15 @@ ms.locfileid: "85254611"
 * Parquet 檔案已有下列壓縮相關選項：NONE、SNAPPY、GZIP 和 LZO。 Data Factory 支援以這其中任一種壓縮格式從 Parquet 檔案中讀取資料，但 LZO 除外，它會在中繼資料內使用壓縮轉碼器來讀取資料。 不過，寫入 Parquet 檔案時，Data Factory 會選擇 SNAPPY，這是 Parquet 格式的預設值。 目前沒有任何選項可覆寫這個行為。
 
 > [!IMPORTANT]
-> 針對由自我裝載 Integration Runtime 所授權的複製 (例如，在內部部署與雲端資料存放區之間)，如果您不會**依原樣**複製 Parquet 檔案，就需要在 IR 機器上安裝 **64 位元的 JRE 8 (Java Runtime Environment) 或 OpenJDK**。 如需更多詳細資料，請參閱接下來的段落。
+> 針對由自我裝載 Integration Runtime 所授權的複製 (例如，在內部部署與雲端資料存放區之間)，如果您不會 **依原樣** 複製 Parquet 檔案，就需要在 IR 機器上安裝 **64 位元的 JRE 8 (Java Runtime Environment) 或 OpenJDK** 。 如需更多詳細資料，請參閱接下來的段落。
 
 若為使用 Parquet 檔案序列化/還原序列化在自我裝載 IR 上執行的複製，ADF 會先檢查 JRE 的登錄以找出 JAVA 執行時間， *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* 如果找不到，則會先檢查系統變數 *`JAVA_HOME`* 以進行 OpenJDK。
 
-- **若要使用 JRE**：64位 IR 需要64位 JRE。 您可以從[這裡](https://go.microsoft.com/fwlink/?LinkId=808605)找到該程式。
-- **使用 OpenJDK**：自 IR 3.13 版開始便可支援。 請將 jvm.dll 與所有其他必要的 OpenJDK 組件一起封裝至自我裝載 IR 機器，然後相應地設定 JAVA_HOME 系統環境變數。
+- **若要使用 JRE** ：64位 IR 需要64位 JRE。 您可以從[這裡](https://go.microsoft.com/fwlink/?LinkId=808605)找到該程式。
+- **使用 OpenJDK** ：自 IR 3.13 版開始便可支援。 請將 jvm.dll 與所有其他必要的 OpenJDK 組件一起封裝至自我裝載 IR 機器，然後相應地設定 JAVA_HOME 系統環境變數。
 
 >[!TIP]
->如果您使用自我裝載 Integration Runtime 將資料複製到 Parquet 格式 (或從該格式複製資料)，而且遇到錯誤顯示 [叫用 Java 時發生錯誤。訊息: **java.lang.OutOfMemoryError:Java heap space**]，您可以在裝載自我裝載 IR 的機器中新增環境變數 `_JAVA_OPTIONS`，以調整 JVM 的堆積大小下限/上限，使系統能執行這樣的複製，然後重新執行管線。
+>如果您使用自我裝載 Integration Runtime 將資料複製到 Parquet 格式 (或從該格式複製資料)，而且遇到錯誤顯示 [叫用 Java 時發生錯誤。訊息: **java.lang.OutOfMemoryError:Java heap space** ]，您可以在裝載自我裝載 IR 的機器中新增環境變數 `_JAVA_OPTIONS`，以調整 JVM 的堆積大小下限/上限，使系統能執行這樣的複製，然後重新執行管線。
 
 ![在自我裝載 IR 上設定 JVM 堆積大小](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
@@ -456,7 +456,7 @@ ms.locfileid: "85254611"
 | UInt64 | Int64/二進位 | UInt64 | Decimal |
 | Single | Float | N/A | N/A |
 | Double | Double | N/A | N/A |
-| Decimal | Binary | Decimal | Decimal |
+| 小數位數 | Binary | Decimal | Decimal |
 | String | Binary | Utf8 | Utf8 |
 | Datetime | Int96 | N/A | N/A |
 | TimeSpan | Int96 | N/A | N/A |
@@ -471,7 +471,7 @@ ms.locfileid: "85254611"
 >[!NOTE]
 >從 [ORC 格式](format-orc.md) 的文章中學習新的模型。 以檔案為基礎的資料存放區資料集上的下列設定，仍支援回溯 compabitility。 建議您繼續使用新的模型。
 
-如果您想要剖析 ORC 檔案，或以 ORC 格式寫入資料，請將 `format` `type` 屬性設定為 **OrcFormat**。 您不需要在 typeProperties 區段內的 Format 區段中指定任何屬性。 範例：
+如果您想要剖析 ORC 檔案，或以 ORC 格式寫入資料，請將 `format` `type` 屬性設定為 **OrcFormat** 。 您不需要在 typeProperties 區段內的 Format 區段中指定任何屬性。 範例：
 
 ```json
 "format":
@@ -487,12 +487,12 @@ ms.locfileid: "85254611"
 * ORC 檔案有 3 種 [壓縮相關選項](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)︰NONE、ZLIB、SNAPPY。 Data Factory 支援以這些壓縮格式的任一項從 ORC 檔案讀取資料。 它會使用中繼資料裡的壓縮轉碼器來讀取資料。 不過，寫入 ORC 檔案時，Data Factory 會選擇 ZLIB，這是 ORC 的預設值。 目前沒有任何選項可覆寫這個行為。
 
 > [!IMPORTANT]
-> 針對由自我裝載 Integration Runtime 所授權的複製 (例如，在內部部署與雲端資料存放區之間)，如果您不會**依原樣**複製 ORC 檔案，就需要在 IR 機器上安裝 **64 位元的 JRE 8 (Java Runtime Environment) 或 OpenJDK**。 如需更多詳細資料，請參閱接下來的段落。
+> 針對由自我裝載 Integration Runtime 所授權的複製 (例如，在內部部署與雲端資料存放區之間)，如果您不會 **依原樣** 複製 ORC 檔案，就需要在 IR 機器上安裝 **64 位元的 JRE 8 (Java Runtime Environment) 或 OpenJDK** 。 如需更多詳細資料，請參閱接下來的段落。
 
 若為使用 ORC 檔案序列化/還原序列化在自我裝載 IR 上執行的複製，ADF 會先檢查 JRE 的登錄以找出 JAVA 執行時間， *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* 如果找不到，則會先檢查系統變數 *`JAVA_HOME`* 以進行 OpenJDK。
 
-- **若要使用 JRE**：64位 IR 需要64位 JRE。 您可以從[這裡](https://go.microsoft.com/fwlink/?LinkId=808605)找到該程式。
-- **使用 OpenJDK**：自 IR 3.13 版開始便可支援。 請將 jvm.dll 與所有其他必要的 OpenJDK 組件一起封裝至自我裝載 IR 機器，然後相應地設定 JAVA_HOME 系統環境變數。
+- **若要使用 JRE** ：64位 IR 需要64位 JRE。 您可以從[這裡](https://go.microsoft.com/fwlink/?LinkId=808605)找到該程式。
+- **使用 OpenJDK** ：自 IR 3.13 版開始便可支援。 請將 jvm.dll 與所有其他必要的 OpenJDK 組件一起封裝至自我裝載 IR 機器，然後相應地設定 JAVA_HOME 系統環境變數。
 
 ### <a name="data-type-mapping-for-orc-files"></a>ORC 檔案的資料類型對應
 
@@ -507,7 +507,7 @@ ms.locfileid: "85254611"
 | UInt32 | long |
 | Int64 | long |
 | UInt64 | String |
-| Single | Float |
+| 單一 | Float |
 | Double | Double |
 | Decimal | Decimal |
 | String | String |
@@ -523,7 +523,7 @@ ms.locfileid: "85254611"
 >[!NOTE]
 >從 [Avro 格式](format-avro.md) 的文章中學習新的模型。 以檔案為基礎的資料存放區資料集上的下列設定，仍支援回溯 compabitility。 建議您繼續使用新的模型。
 
-如果您想要剖析 Avro 檔案，或以 Avro 格式寫入資料，請將 `format` `type` 屬性設定為 **AvroFormat**。 您不需要在 typeProperties 區段內的 Format 區段中指定任何屬性。 範例：
+如果您想要剖析 Avro 檔案，或以 Avro 格式寫入資料，請將 `format` `type` 屬性設定為 **AvroFormat** 。 您不需要在 typeProperties 區段內的 Format 區段中指定任何屬性。 範例：
 
 ```json
 "format":
@@ -573,27 +573,27 @@ Azure Data Factory 支援在複製期間壓縮/解壓縮資料。 當您在輸�
 }
 ```
 
-[壓縮] **** 區段有兩個屬性：
+[壓縮]  區段有兩個屬性：
 
-* **類型：** 壓縮編解碼器，它可以是 **GZIP**、 **Deflate**、 **BZIP2**或 **ZipDeflate**。 請注意，使用複製活動將 ZipDeflate 檔解壓縮 (s) 並寫入檔案型接收資料存放區時，檔案將會解壓縮到資料夾： `<path specified in dataset>/<folder named as source zip file>/` 。
-* **層級：** 壓縮比，它可以是**最佳**或**最快**。
+* **類型：** 壓縮編解碼器，它可以是 **GZIP** 、 **Deflate** 、 **BZIP2** 或 **ZipDeflate** 。 請注意，使用複製活動將 ZipDeflate 檔解壓縮 (s) 並寫入檔案型接收資料存放區時，檔案將會解壓縮到資料夾： `<path specified in dataset>/<folder named as source zip file>/` 。
+* **層級：** 壓縮比，它可以是 **最佳** 或 **最快** 。
 
   * **最快：** 即使未以最佳方式壓縮所產生的檔案，壓縮作業也應儘速完成。
-  * **最佳**：即使作業耗費較長的時間才能完成，壓縮作業也應以最佳方式壓縮。
+  * **最佳** ：即使作業耗費較長的時間才能完成，壓縮作業也應以最佳方式壓縮。
 
-    如需詳細資訊，請參閱 [壓縮層級](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) 主題。
+    如需詳細資訊，請參閱 [壓縮層級](/dotnet/api/system.io.compression.compressionlevel) 主題。
 
 > [!NOTE]
-> 不支援 **AvroFormat**、**OrcFormat** 或 **ParquetFormat** 的資料壓縮設定。 讀取這些格式的檔案時，Data Factory 會偵測並使用中繼資料中的壓縮轉碼器。 寫入這些格式的檔案時，Data Factory 會選擇該格式的預設壓縮轉碼器。 例如，ZLIB for OrcFormat 和 SNAPPY for ParquetFormat。
+> 不支援 **AvroFormat** 、 **OrcFormat** 或 **ParquetFormat** 的資料壓縮設定。 讀取這些格式的檔案時，Data Factory 會偵測並使用中繼資料中的壓縮轉碼器。 寫入這些格式的檔案時，Data Factory 會選擇該格式的預設壓縮轉碼器。 例如，ZLIB for OrcFormat 和 SNAPPY for ParquetFormat。
 
 ## <a name="unsupported-file-types-and-compression-formats"></a>不支援的檔案類型和壓縮格式
 
 您可以使用 Azure Data Factory 的擴充性功能來轉換不受支援的檔案。
 有兩個選項，包括使用 Azure Batch Azure Functions 和自訂工作。
 
-您可以看到使用 Azure 函式將 [tar 檔案的內容解壓縮](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)的範例。 如需詳細資訊，請參閱 [Azure Functions 活動](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity)。
+您可以看到使用 Azure 函式將 [tar 檔案的內容解壓縮](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)的範例。 如需詳細資訊，請參閱 [Azure Functions 活動](./control-flow-azure-function-activity.md)。
 
-您也可以使用自訂 dotnet 活動來建立此功能。 您可以從[這裡](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity)取得詳細資訊
+您也可以使用自訂 dotnet 活動來建立此功能。 您可以從[這裡](./transform-data-using-dotnet-custom-activity.md)取得詳細資訊
 
 ## <a name="next-steps"></a>後續步驟
 

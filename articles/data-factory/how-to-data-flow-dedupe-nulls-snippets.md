@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: makromer
-ms.openlocfilehash: 1c630cdd66fa4f8e609524feb9c3f0bcad9711a0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: cdb522cc4be83eadd2c60c91c7fee33e7ccc039b
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458161"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632442"
 ---
 # <a name="dedupe-rows-and-find-nulls-by-using-data-flow-snippets"></a>使用資料流程程式碼片段重復資料列和尋找 null
 
@@ -25,7 +25,7 @@ ms.locfileid: "92458161"
 
 ## <a name="create-a-pipeline"></a>建立管線
 
-1. 選取 [ **新增管線**]。
+1. 選取 [ **新增管線** ]。
 
 1. 新增資料流程活動。
 
@@ -35,9 +35,9 @@ ms.locfileid: "92458161"
 
     重復資料與 null 檢查程式碼片段會使用利用資料流程架構漂移的一般模式。 程式碼片段適用于您的資料集的任何架構，或是具有未預先定義架構的資料集。
 
-1. 在 [ [資料流程腳本 (DFS) ](https://docs.microsoft.com/azure/data-factory/data-flow-script#distinct-row-using-all-columns)的 [使用所有資料行的相異資料列] 區段中，複製 DistinctRows 的程式碼片段。
+1. 在 [ [資料流程腳本 (DFS) ](./data-flow-script.md#distinct-row-using-all-columns)的 [使用所有資料行的相異資料列] 區段中，複製 DistinctRows 的程式碼片段。
 
-1. 在您的 [資料流程設計師] UI 中，選取右上角的 [ **腳本** ] 按鈕，以開啟資料流程圖形後方的腳本編輯器。
+1. [移至 [資料流程腳本] 檔頁面，並複製相異資料列的程式碼片段。](./data-flow-script.md#distinct-row-using-all-columns)
 
     ![來原始程式碼段的螢幕擷取畫面。](media/data-flow/snippet-adf-3.png)
 
@@ -53,9 +53,9 @@ ms.locfileid: "92458161"
 
    現在，您的資料流程會使用「匯總」轉換，從來源中移除重複的資料列，該轉換會在所有資料行值中使用一般雜湊，以依所有資料列分組。
     
-1. 新增程式碼片段，以將您的資料分割成一個資料流程，其中包含具有 null 的資料列和另一個沒有 null 的資料流程。 若要這樣做：
+1. 新增程式碼片段，以將您的資料分割成一個資料流程，其中包含具有 null 的資料列和另一個沒有 null 的資料流程。 操作方法：
 
-   a. 返回至 [程式碼片段程式庫](https://docs.microsoft.com/azure/data-factory/data-flow-script#check-for-nulls-in-all-columns)，然後複製 null 檢查的程式碼。
+1. [返回至程式碼片段程式庫，這次會複製 Null 檢查的程式碼。](./data-flow-script.md#check-for-nulls-in-all-columns)
 
    b. 在資料流程設計師中，再次選取 [ **腳本** ]，然後將這個新的轉換程式碼貼到底部。 此動作會將該轉換的名稱放在貼上的程式碼片段前面，藉此將腳本連接到您先前的轉換。
 

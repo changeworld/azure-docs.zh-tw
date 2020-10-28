@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
-ms.openlocfilehash: 8b6f75204f64f892f80abb4890796551bffd22a7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5bdb1c7f0158b0e45145b41d9960c7c55a0d8ead
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368952"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631864"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>使用 Azure Data Factory 中的 Hadoop Pig 活動轉換資料
 
@@ -65,7 +65,7 @@ Data Factory [管線](concepts-pipelines-activities.md)中的 HDInsight Pig 活�
 | description         | 說明活動用途的文字 | 否       |
 | type                | 對於 Hive 活動，活動類型為 HDinsightPig | 是      |
 | linkedServiceName   | 參考 HDInsight 叢集註冊為 Data Factory 中的連結服務。 若要深入了解此已連結的服務，請參閱[計算已連結的服務](compute-linked-services.md)一文。 | 是      |
-| scriptLinkedService | Azure 儲存體已連結的服務用來儲存要執行之 Pig 指令碼的參考。 這裡僅支援 **[Azure Blob 儲存體](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** 和 **[ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** 的連結服務。 如果您未指定這項連結服務，則會使用 HDInsight 已連結的服務中定義的 Azure 儲存體已連結的服務。 | 否       |
+| scriptLinkedService | Azure 儲存體已連結的服務用來儲存要執行之 Pig 指令碼的參考。 這裡僅支援 **[Azure Blob 儲存體](./connector-azure-blob-storage.md)** 和 **[ADLS Gen2](./connector-azure-data-lake-storage.md)** 的連結服務。 如果您未指定這項連結服務，則會使用 HDInsight 已連結的服務中定義的 Azure 儲存體已連結的服務。 | 否       |
 | scriptPath          | 提供儲存在 scriptLinkedService 引用之 Azure 儲存體中指令碼檔案的路徑。 檔案名稱有區分大小寫。 | 否       |
 | getDebugInfo        | 指定何時將記錄檔複製到 HDInsight 叢集所使用 (或) scriptLinkedService 所指定的 Azure 儲存體。 允許的值：None、Always 或 Failure。 預設值：無。 | 否       |
 | 引數           | 指定 Hadoop 作業的引數陣列。 引數會以命令列引數的方式傳遞給每項工作。 | 否       |

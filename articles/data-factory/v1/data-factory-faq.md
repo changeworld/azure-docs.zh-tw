@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 3ae12355dddbae40eb84730549ccebcd004ff6be
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: de4661bcfd7106d515480e39dc4660f44f469a3d
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371761"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631694"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure 資料處理站-常見問題集
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "92371761"
 
 ## <a name="general-questions"></a>一般問題
 ### <a name="what-is-azure-data-factory"></a>什麼是 Azure Data Factory？
-Data Factory 是雲端架構資料整合服務，用來 **自動移動和轉換資料**。 就像會運轉設備以將原物料轉換成成品的工廠一樣，Data Factory 會協調現有的服務來收集未經處理資料，並將之轉換成隨時可用的資訊。
+Data Factory 是雲端架構資料整合服務，用來 **自動移動和轉換資料** 。 就像會運轉設備以將原物料轉換成成品的工廠一樣，Data Factory 會協調現有的服務來收集未經處理資料，並將之轉換成隨時可用的資訊。
 
 Data Factory 可讓您建立資料導向工作流程，不僅可透過計算服務 (例如 Azure HDInsight 和 Azure Data Lake Analytics) 來處理/轉換資料，還能在內部部署與雲端資料存放區之間移動資料。 建立可執行您所需動作的管線之後，您可以排定讓它定期執行 (每小時、每天、每週等)。   
 
@@ -41,7 +41,7 @@ Data Factory 可讓您建立資料導向工作流程，不僅可透過計算服�
 * 如需說明如何使用 HDInsight Hive 活動 **轉換資料** 的教學課程。 請參閱 [在 Hadoop 叢集上執行 Hive 指令碼來處理資料](data-factory-build-your-first-pipeline.md)
 
 ### <a name="what-is-the-data-factorys-region-availability"></a>什麼是 Data Factory 的區域可用性？
-Data Factory 可在**美國西部**和**北歐**地區使用。 資料處理站所使用的計算服務和儲存體服務可以在其他區域使用。 請參閱 [支援的區域](data-factory-introduction.md#supported-regions)。
+Data Factory 可在 **美國西部** 和 **北歐** 地區使用。 資料處理站所使用的計算服務和儲存體服務可以在其他區域使用。 請參閱 [支援的區域](data-factory-introduction.md#supported-regions)。
 
 ### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>資料處理站/管線/活動/資料集的數量有什麼限制？
 請參閱〈 **Azure 訂用帳戶和服務限制、配額及條件約束** 〉中的〈 [Azure Data Factory 限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) 〉章節。
@@ -83,7 +83,7 @@ Data Factory 可在**美國西部**和**北歐**地區使用。 資料處理站�
 * [資料轉換活動](data-factory-data-transformation-activities.md) 以處理/轉換資料。
 
 ### <a name="when-does-an-activity-run"></a>何時執行活動？
-輸出資料表中的 **可用性** 組態設定決定何時執行活動。 如果已指定輸入資料集，活動會在開始執行之前，先檢查是否滿足所有輸入資料相依性 (即「就緒」 **** 狀態)。
+輸出資料表中的 **可用性** 組態設定決定何時執行活動。 如果已指定輸入資料集，活動會在開始執行之前，先檢查是否滿足所有輸入資料相依性 (即「就緒」  狀態)。
 
 ## <a name="copy-activity---faq"></a>複製活動 - 常見問題集
 ### <a name="is-it-better-to-have-a-pipeline-with-multiple-activities-or-a-separate-pipeline-for-each-activity"></a>最好是一個管線有多個活動，還是每個活動都有不同的管線？
@@ -139,7 +139,7 @@ Data Factory 中的複製活動會將資料從來源資料存放區複製到接�
 
 ## <a name="slices---faq"></a>配量 - 常見問題集
 ### <a name="why-are-my-input-slices-not-in-ready-state"></a>為什麼我的輸入配量不是處於「就緒」狀態？
-常見的錯誤是當輸入資料是 Data Factory 的外部資料 (不是由 Data Factory 產生) 時，未將輸入資料集上的 **external** 屬性設定為 **true**。
+常見的錯誤是當輸入資料是 Data Factory 的外部資料 (不是由 Data Factory 產生) 時，未將輸入資料集上的 **external** 屬性設定為 **true** 。
 
 在下列範例中，您只需要將 **dataset1** 上的 **external** 設定為 true 即可。  
 
@@ -169,7 +169,7 @@ Pipeline 1: dataset4->activity4->dataset5
 您可以利用下列方式之一來重新執行配量：
 
 * 使用「監視及管理應用程式」來重新執行活動時段或配量。 如需相關指示，請參閱 [重新執行已選取的活動時段](data-factory-monitor-manage-app.md#perform-batch-actions) 。   
-* 在 Azure 入口網站中，於該配量的 [資料配量]**** 刀鋒視窗上，按一下命令列中的 [執行]****。
+* 在 Azure 入口網站中，於該配量的 [資料配量]  刀鋒視窗上，按一下命令列中的 [執行]  。
 * 執行 **AzDataFactorySliceStatus** Cmdlet，並將狀態設定為 **等候** 配量。   
 
     ```powershell
@@ -182,12 +182,12 @@ Pipeline 1: dataset4->activity4->dataset5
 
 您也可以在 Azure 入口網站中執行下列操作：  
 
-1. 在您 Data Factory 的 [DATA FACTORY]**** 刀鋒視窗中，按一下 [資料集]**** 圖格。
+1. 在您 Data Factory 的 [DATA FACTORY]  刀鋒視窗中，按一下 [資料集]  圖格。
 2. 在 [ **資料集** ] 刀鋒視窗中，按一下特定資料集。
-3. 從 [資料表]**** 刀鋒視窗的 [最近配量]**** 清單中，選取您感興趣的配量。
-4. 從 [資料配量]**** 刀鋒視窗的 [活動執行]**** 清單中，按一下活動執行。
-5. 在 [活動執行詳細資料]**** 刀鋒視窗中，按一下 [屬性]**** 圖格。
-6. 您應該會看到 [持續時間] **** 欄位與值。 這個值是處理配量所花費的時間。   
+3. 從 [資料表]  刀鋒視窗的 [最近配量]  清單中，選取您感興趣的配量。
+4. 從 [資料配量]  刀鋒視窗的 [活動執行]  清單中，按一下活動執行。
+5. 在 [活動執行詳細資料]  刀鋒視窗中，按一下 [屬性]  圖格。
+6. 您應該會看到 [持續時間]  欄位與值。 這個值是處理配量所花費的時間。   
 
 ### <a name="how-to-stop-a-running-slice"></a>如何停止執行中配量？
 如果您需要停止執行管線，您可以使用 [AzDataFactoryPipeline](/powershell/module/az.datafactory/suspend-azdatafactorypipeline) Cmdlet。 目前，擱置管線並不會停止正在進行的配量執行。 一旦進行中的執行完成，就不會再挑選任何額外的配量。
@@ -205,4 +205,4 @@ Pipeline 1: dataset4->activity4->dataset5
 [adf-pricing-details]: https://go.microsoft.com/fwlink/?LinkId=517777
 [hdinsight-supported-regions]: https://azure.microsoft.com/pricing/details/hdinsight/
 [hdinsight-alternate-storage]: https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx
-[hdinsight-alternate-storage-2]: https://docs.microsoft.com/archive/blogs/cindygross/use-additional-storage-accounts-with-hdinsight-hive
+[hdinsight-alternate-storage-2]: /archive/blogs/cindygross/use-additional-storage-accounts-with-hdinsight-hive

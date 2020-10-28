@@ -10,12 +10,12 @@ author: linda33wj
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: 6f0a1509a97d2d860b43146ffaf69bb241105910
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc10017da8561cda09658ec9380cc82095f3ef94
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84194636"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632227"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-sql-server-to-azure"></a>使用 PowerShell 來建立 data factory 管線，以將資料從 SQL Server 複製到 Azure
 
@@ -27,9 +27,9 @@ ms.locfileid: "84194636"
 
 ## <a name="prerequisites"></a>必要條件
 
-- **SQL Server**。 在此範例中，您會使用 SQL Server 資料庫作為 **源** 資料存放區。
-- **Azure 儲存體帳戶**。 在此範例中，您會使用 Azure Blob 儲存體作為**目的地/接收**資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱 [建立儲存體帳戶](../../storage/common/storage-account-create.md) 一文，以取得建立帳戶的步驟。
-- **自我裝載整合運行**時間。 從[下載中心](https://www.microsoft.com/download/details.aspx?id=39717)下載 MSI 檔案，然後執行它以在您的電腦上安裝自我裝載整合執行階段。  
+- **SQL Server** 。 在此範例中，您會使用 SQL Server 資料庫作為 **源** 資料存放區。
+- **Azure 儲存體帳戶** 。 在此範例中，您會使用 Azure Blob 儲存體作為 **目的地/接收** 資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱 [建立儲存體帳戶](../../storage/common/storage-account-create.md) 一文，以取得建立帳戶的步驟。
+- **自我裝載整合運行** 時間。 從[下載中心](https://www.microsoft.com/download/details.aspx?id=39717)下載 MSI 檔案，然後執行它以在您的電腦上安裝自我裝載整合執行階段。  
 
 ### <a name="create-sample-database-in-sql-server"></a>在 SQL Server 中建立範例資料庫
 1. 在 SQL Server 資料庫中，使用下列 SQL 腳本來建立名為 **emp** 的資料表：
@@ -92,6 +92,6 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/powershell/)。
+如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/)。
 
 您可以在 [Azure Data Factory PowerShell 範例](../samples-powershell.md)中，找到其他 Azure Data Factory PowerShell 指令碼範例。

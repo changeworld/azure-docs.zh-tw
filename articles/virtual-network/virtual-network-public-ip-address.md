@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: 92e71a8c08ef2c64509d7e00b0c43abdd58cf036
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8847768cf4cf1ea85df8646a8848aac02cbd621
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804022"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629250"
 ---
 # <a name="manage-public-ip-addresses"></a>管理公用 IP 位址
 
@@ -61,22 +61,22 @@ ms.locfileid: "91804022"
    |設定|必要？|詳細資料|
    |---|---|---|
    |IP 版本|是| 選取 [IPv4] 或 [IPv6] 或 [兩者]。 選取兩者都會導致2個公用 IP 位址建立-1 個 IPv4 位址和1個 IPv6 位址。 深入瞭解 [Azure vnet 中的 IPv6](../virtual-network/ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。|
-   |SKU|是|在 Sku 推出之前建立的所有公用 IP 位址都是 **基本** SKU 公用 ip 位址。 建立公用 IP 位址之後，即無法變更 SKU。 獨立虛擬機器、可用性設定組內的虛擬機器，或虛擬機器擴展集，可以使用基本或標準 SKU。 不允許在可用性設定組或擴展集或獨立 Vm 內的虛擬機器之間混合使用 Sku。 **基本** SKU：如果您要在支援可用性區域的區域中建立公用 IP 位址，**可用性區域**設定依預設會設為「無」**。 基本公用 Ip 不支援可用性區域。 **標準** SKU：標準 SKU 公用 IP 可與虛擬機器或負載平衡器前端建立關聯。 如果您要在支援可用性區域的區域中建立公用 IP 位址，**可用性區域**設定依預設會設為「區域備援」**。 如需可用性區域的詳細資訊，請參閱**可用性區域**設定。 如果您要將位址與標準負載平衡器建立關聯，則需要標準 SKU。 若要深入了解標準負載平衡器，請參閱 [Azure 負載平衡器標準 SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 當您將標準 SKU 的公用 IP 位址指派給虛擬機器的網路介面時，必須使用[網路安全性群組](security-overview.md#network-security-groups)明確地允許預定的流量。 在建立和關聯網路安全性群組並明確地允許所要流量前，與資源進行的通訊都會失敗。|
+   |SKU|是|在 Sku 推出之前建立的所有公用 IP 位址都是 **基本** SKU 公用 ip 位址。 建立公用 IP 位址之後，即無法變更 SKU。 獨立虛擬機器、可用性設定組內的虛擬機器，或虛擬機器擴展集，可以使用基本或標準 SKU。 不允許在可用性設定組或擴展集或獨立 Vm 內的虛擬機器之間混合使用 Sku。  。 基本公用 Ip 不支援可用性區域。 **標準** SKU：標準 SKU 公用 IP 可與虛擬機器或負載平衡器前端建立關聯。 如果您要在支援可用性區域的區域中建立公用 IP 位址，  。 如需可用性區域的詳細資訊，請參閱 **可用性區域** 設定。 如果您要將位址與標準負載平衡器建立關聯，則需要標準 SKU。 若要深入了解標準負載平衡器，請參閱 [Azure 負載平衡器標準 SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 當您將標準 SKU 的公用 IP 位址指派給虛擬機器的網路介面時，必須使用[網路安全性群組](security-overview.md#network-security-groups)明確地允許預定的流量。 在建立和關聯網路安全性群組並明確地允許所要流量前，與資源進行的通訊都會失敗。|
    |名稱|是|名稱必須是您選取的資源群組中唯一的名稱。|
-   |IP 位址指派|是|**動態︰** 只有在公用 IP 位址與 Azure 資源相關聯，且第一次啟動資源之後，才會指派動態位址。 動態位址指派給資源時可以變更 (例如指派給虛擬機器，而虛擬機器停止 (解除配置)，然後再重新開機)。 如果虛擬機器已重新開機或停止 (但未解除配置)，則位址維持不變。 當公用 IP 位址資源與其所關聯的資源中斷關聯時，便會釋放動態位址。 **靜態︰** 建立公用 IP 位址時會指派靜態位址。 刪除公用 IP 位址資源之前，不會釋出靜態位址。 如果位址與資源沒有關聯，您可以在位址建立後變更指派方法。 如果位址與資源相關聯，您可能無法變更指派方法。 如果您針對**IP 版本**選取*IPv6* ，則基本 SKU 的指派方法必須是*動態*的。  適用于 IPv4 和 IPv6 的標準 SKU 位址是 *靜態* 的。 |
-   |閒置逾時 (分鐘)|否|不需依賴用戶端傳送保持連線訊息，讓 TCP 或 HTTP 連線保持開啟的分鐘數。 如果您選取 IPv6 作為 **IP 版本**，則無法變更此值。 |
+   |IP 位址指派|是|**動態︰** 只有在公用 IP 位址與 Azure 資源相關聯，且第一次啟動資源之後，才會指派動態位址。 動態位址指派給資源時可以變更 (例如指派給虛擬機器，而虛擬機器停止 (解除配置)，然後再重新開機)。 如果虛擬機器已重新開機或停止 (但未解除配置)，則位址維持不變。 當公用 IP 位址資源與其所關聯的資源中斷關聯時，便會釋放動態位址。 **靜態︰** 建立公用 IP 位址時會指派靜態位址。 刪除公用 IP 位址資源之前，不會釋出靜態位址。 如果位址與資源沒有關聯，您可以在位址建立後變更指派方法。 如果位址與資源相關聯，您可能無法變更指派方法。 如果您針對 **IP 版本** 選取 *IPv6* ，則基本 SKU 的指派方法必須是 *動態* 的。  適用于 IPv4 和 IPv6 的標準 SKU 位址是 *靜態* 的。 |
+   |閒置逾時 (分鐘)|否|不需依賴用戶端傳送保持連線訊息，讓 TCP 或 HTTP 連線保持開啟的分鐘數。 如果您選取 IPv6 作為 **IP 版本** ，則無法變更此值。 |
    |DNS 名稱標籤|否|在您建立名稱的 Azure 位置 (跨越所有訂用帳戶和所有位置) 中必須是唯一的。 Azure 會在其 DNS 中自動登錄名稱和 IP 位址，以便您連線至具有此名稱的資源。 Azure 會將 *location.cloudapp.azure.com* (其中 location 是您選取的位置) 之類的預設子網路附加至您提供的名稱 ，以建立完整的 DNS 名稱。 如果您選擇兩個位址版本都建立，則會指派相同的 DNS 名稱給 IPv4 和 IPv6 位址。 Azure 預設 DNS 包含 IPv4 A 和 IPv6 AAAA 名稱記錄，並且會在查詢 DNS 名稱時回應這兩個記錄。 用戶端選擇要與哪一個位址 (IPv4 或 IPv6) 通訊。 可改為 (或同時) 使用具有預設尾碼的 DNS 名稱標籤，您可以使用 Azure DNS 服務來設定 DNS 名稱，其具有解析為公用 IP 位址的自訂尾碼。 如需詳細資訊，請參閱[使用具有 Azure 公用 IP 位址的 Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address)。|
-   |只有當您選取 **兩個**) 的 IP 版本時，才會顯示 [名稱] (|是，如果您選取**兩者**的 IP 版本|該名稱必須與此清單中的第一個**名稱**不同。 如果您選擇同時建立 IPv4 和 IPv6 位址，則入口網站會建立兩個個別的公用 IP 位址資源，並各指派一個 IP 位址版本。|
-   |IP 位址指派 (只有在您選取 **兩個**) 的 ip 版本時才會顯示|是，如果您選取**兩者**的 IP 版本|與上述 IP 位址指派相同的限制|
+   |只有當您選取 **兩個** ) 的 IP 版本時，才會顯示 [名稱] (|是，如果您選取 **兩者** 的 IP 版本|該名稱必須與此清單中的第一個 **名稱** 不同。 如果您選擇同時建立 IPv4 和 IPv6 位址，則入口網站會建立兩個個別的公用 IP 位址資源，並各指派一個 IP 位址版本。|
+   |IP 位址指派 (只有在您選取 **兩個** ) 的 ip 版本時才會顯示|是，如果您選取 **兩者** 的 IP 版本|與上述 IP 位址指派相同的限制|
    |訂用帳戶|是|必須存在於與您將與公用 IP 相關聯之資源的相同 [訂](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) 用帳戶中。|
    |資源群組|是|可以存在於與公用 IP 建立關聯的資源相同或不同的 [資源群組](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) 中。|
    |位置|是|必須存在於相同的 [位置](https://azure.microsoft.com/regions)（也稱為區域），作為您將與公用 IP 建立關聯的資源。|
-   |可用性區域| 否 | 只有在您選取受支援的位置時，才會出現此設定。 如需受支援位置的清單，請參閱[可用性區域概觀](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 如果您選取**基本** SKU，則會自動為您選取「無」**。 如果您想要保證特定區域，可選取特定區域。 或選擇非區域備援。 如果您選取**標準** SKU：會自動為您選取區域備援，並針對區域失敗進行資料路徑復原。 如果您希望保證對區域失敗無法復原的特定區域，則可選取特定區域。
+   |可用性區域| 否 | 只有在您選取受支援的位置時，才會出現此設定。 如需受支援位置的清單，請參閱[可用性區域概觀](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 如果您選取  。 如果您想要保證特定區域，可選取特定區域。 或選擇非區域備援。 如果您選取 **標準** SKU：會自動為您選取區域備援，並針對區域失敗進行資料路徑復原。 如果您希望保證對區域失敗無法復原的特定區域，則可選取特定區域。
 
 ## <a name="view-modify-settings-for-or-delete-a-public-ip-address"></a>查看、修改公用 IP 位址的設定，或刪除公用 IP 位址
 
-   - **視圖/清單**：若要檢查公用 IP 的設定，包括 SKU、位址、任何適用的關聯 (例如虛擬機器 NIC、Load Balancer 前端) 。
-   - **修改**：使用 [建立公用 IP 位址](#create-a-public-ip-address)的步驟4中的資訊來修改設定，例如閒置 timeout、DNS 名稱標籤或指派方法。
+   - **視圖/清單** ：若要檢查公用 IP 的設定，包括 SKU、位址、任何適用的關聯 (例如虛擬機器 NIC、Load Balancer 前端) 。
+   - **修改** ：使用 [建立公用 IP 位址](#create-a-public-ip-address)的步驟4中的資訊來修改設定，例如閒置 timeout、DNS 名稱標籤或指派方法。   (如需將公用 IP SKU 從基本升級至標準的完整程式，請參閱 [升級 Azure 公用 ip 位址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address-upgrade)。 ) 
    >[!WARNING]
    >若要將公用 IP 位址的指派從靜態變更為動態，您必須先中斷任何適用 IP 設定的位址關聯 (請參閱 **刪除** 區段) 。  另請注意，當您將指派方法從靜態變更為動態時，會遺失指派給公用 IP 位址的 IP 位址。 雖然 Azure 公用 DNS 伺服器會維護靜態或動態位址與任何 DNS 名稱標籤 (如果您定義一個位置) 之間的對應，但是動態 IP 位址可能會在虛擬機器處於停止 (已解除配置) 狀態後啟動時變更。 若要防止位址變更，請指派靜態 IP 位址。
    
@@ -86,16 +86,13 @@ ms.locfileid: "91804022"
 |清單 | 在 [ **公用 IP 位址** ] 類別下 |[>get-azpublicipaddress](/powershell/module/az.network/get-azpublicipaddress) 以取得一或多個公用 IP 位址物件並查看其設定|[az 網路公用 ip 清單](/cli/azure/network/public-ip#az-network-public-ip-list) 可列出公用 ip 位址|
 |修改 | 若為中斷關聯的 IP，請 **選取 [** 設定] 以修改閒置的超時時間、DNS 名稱標籤，或將基本 IP 的變更指派從靜態變更為動態  |[>get-azpublicipaddress](/powershell/module/az.network/set-azpublicipaddress) 以更新設定 |[az 網路公用 ip 更新](/cli/azure/network/public-ip#az-network-public-ip-update) 以進行更新 |
 
-   - **刪除**：公用 ip 的刪除要求公用 ip 物件不會與任何 IP 設定或虛擬機器 NIC 相關聯。 如需詳細資訊，請參閱下表。
+   - **刪除** ：公用 ip 的刪除要求公用 ip 物件不會與任何 IP 設定或虛擬機器 NIC 相關聯。 如需詳細資訊，請參閱下表。
 
 |資源|Azure 入口網站|Azure PowerShell|Azure CLI|
 |---|---|---|---|
-|[虛擬機器](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm)|選取 [中斷關聯] 以中斷 IP 位址與 NIC 設定的關聯， **然後選取 [** **刪除**]。|[>get-azpublicipaddress](/powershell/module/az.network/set-azpublicipaddress) 會中斷 IP 位址與 NIC 設定的關聯; [移除->get-azpublicipaddress](/powershell/module/az.network/remove-azpublicipaddress) 以刪除|[az network public-ip update--移除](/cli/azure/network/public-ip#az-network-public-ip-update)以中斷 ip 位址與 NIC 設定的關聯;az 要刪除的[網路公用 ip 刪除](/cli/azure/network/public-ip#az-network-public-ip-delete) |
+|[虛擬機器](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm)|選取 [中斷關聯] 以中斷 IP 位址與 NIC 設定的關聯， **然後選取 [** **刪除** ]。|[>get-azpublicipaddress](/powershell/module/az.network/set-azpublicipaddress) 會中斷 IP 位址與 NIC 設定的關聯; [移除->get-azpublicipaddress](/powershell/module/az.network/remove-azpublicipaddress) 以刪除|[az network public-ip update--移除](/cli/azure/network/public-ip#az-network-public-ip-update)以中斷 ip 位址與 NIC 設定的關聯;az 要刪除的[網路公用 ip 刪除](/cli/azure/network/public-ip#az-network-public-ip-delete) |
 |Load Balancer 前端 | 流覽至未使用的公用 IP 位址，然後選取 [ **關聯** ] 並挑選具有相關前端 IP 設定的 Load Balancer 來取代它 (然後可以使用與 VM 相同的方法來刪除舊 IP)   | [>new-azloadbalancerfrontendipconfig](/powershell/module/az.network/set-azloadbalancerfrontendipconfig) 會將新的前端 IP 設定與公用 Load Balancer 建立關聯; [移除->get-azpublicipaddress](/powershell/module/az.network/remove-azpublicipaddress) 以刪除;如果有一個以上的 IP 設定，也可以使用 [>new-azloadbalancerfrontendipconfig](/powershell/module/az.network/remove-azloadbalancerfrontendipconfig) 來移除前端 IP 設定 |[az network lb 前端-ip 更新](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az_network_lb_frontend_ip_update) ，以將新的前端 ip 設定與公用 Load Balancer 建立關聯; [移除->get-azpublicipaddress](/powershell/module/az.network/remove-azpublicipaddress) 以刪除;也可以使用 [az network lb 前端-ip 刪除](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az_network_lb_frontend_ip_delete) 來移除前端 ip 設定（如果有一個以上）|
 |防火牆|N/A| [解除配置 ( # B1 ](https://docs.microsoft.com/azure/firewall/firewall-faq#how-can-i-stop-and-start-azure-firewall) 以解除配置防火牆並移除所有 IP 設定 | [az network firewall ip-config delete](/cli/azure/ext/azure-firewall/network/firewall/ip-config#ext_azure_firewall_az_network_firewall_ip_config_delete) 以移除 ip (但必須使用 PowerShell 來解除配置第一個) |
-
->[!NOTE]
->某些資源無法在建立之後變更或移除其公用 Ip。  這些是： Azure NAT 閘道、Azure VPN 閘道、Azure 應用程式閘道。
 
 ## <a name="virtual-machine-scale-sets"></a>虛擬機器擴展集
 

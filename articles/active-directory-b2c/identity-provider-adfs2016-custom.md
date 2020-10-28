@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8f6131232d9f6f98095d073672e201cfb591b540
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 60bc4623416eeb491d073dba9517ac13861a3e9e
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054775"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633445"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則將 ADFS 新增為 SAML 識別提供者
 
@@ -27,7 +27,7 @@ ms.locfileid: "92054775"
 ## <a name="prerequisites"></a>Prerequisites
 
 - 完成在 [Azure Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
-- 確定您可以存取具有私密金鑰的憑證 .pfx 檔案。 您可以產生自己簽署的憑證，並將它上傳至 Azure AD B2C。 Azure AD B2C 會使用此憑證簽署傳送給您的 SAML 身分識別提供者的 SAML 要求。
+- 確定您可以存取具有私密金鑰的憑證 .pfx 檔案。 您可以產生自己簽署的憑證，並將它上傳至 Azure AD B2C。 Azure AD B2C 會使用此憑證簽署傳送給您的 SAML 身分識別提供者的 SAML 要求。 如需有關如何產生憑證的詳細資訊，請參閱 [產生簽署憑證](identity-provider-salesforce-custom.md#generate-a-signing-certificate)。
 - 為了讓 Azure 接受 .pfx 檔案密碼，必須使用 Windows 憑證存放區匯出公用程式中的 TripleDES-SHA1 選項加密密碼，而非 AES256-SHA256。
 
 ## <a name="create-a-policy-key"></a>建立原則金鑰
@@ -50,9 +50,9 @@ ms.locfileid: "92054775"
 
 您可以藉由將 ADFS 帳戶新增至原則擴充檔中的 **ClaimsProviders** 元素，將其定義成宣告提供者。 如需詳細資訊，請參閱[定義 SAML 識別提供者技術設定檔](saml-identity-provider-technical-profile.md)。
 
-1. 開啟 *TrustFrameworkExtensions.xml*。
+1. 開啟 *TrustFrameworkExtensions.xml* 。
 1. 尋找 **ClaimsProviders** 元素。 如果不存在，請在根元素下新增。
-1. 新增新的 **ClaimsProvider**，如下所示：
+1. 新增新的 **ClaimsProvider** ，如下所示：
 
     ```xml
     <ClaimsProvider>
@@ -69,7 +69,7 @@ ms.locfileid: "92054775"
             <Item Key="XmlSignatureAlgorithm">Sha256</Item>
           </Metadata>
           <CryptographicKeys>
-            <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_ADFSSamlCert"/>
+            <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SamlCert"/>
           </CryptographicKeys>
           <OutputClaims>
             <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="userPrincipalName" />
@@ -132,7 +132,7 @@ ms.locfileid: "92054775"
 
 1. 從 Starter Pack 開啟 TrustFrameworkBase.xml 檔案。
 2. 尋找並複製包含 `Id="SignUpOrSignIn"` 之 **UserJourney** 元素的整個內容。
-3. 開啟 *TrustFrameworkExtensions.xml*，並尋找 **UserJourneys** 元素。 如果此元素不存在，請新增。
+3. 開啟 *TrustFrameworkExtensions.xml* ，並尋找 **UserJourneys** 元素。 如果此元素不存在，請新增。
 4. 貼上您複製的整個 **UserJourney** 元素內容作為 **UserJourneys** 元素的子系。
 5. 重新命名使用者旅程圖的識別碼。 例如： `SignUpSignInADFS` 。
 
@@ -151,7 +151,7 @@ ms.locfileid: "92054775"
 
 現在已備妥按鈕，您需要將它連結至動作。 在此案例中，動作是讓 Azure AD B2C 與 ADFS 帳戶通訊以接收權杖。
 
-1. 在使用者旅程圖中，尋找包含 `Order="2"` 的 **OrchestrationStep**。
+1. 在使用者旅程圖中，尋找包含 `Order="2"` 的 **OrchestrationStep** 。
 2. 新增下列 **ClaimsExchange** 元素，請確定用於 ID 的值與用於 **TargetClaimsExchangeId** 的值相同：
 
     ```xml
@@ -179,17 +179,17 @@ https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-poli
 
 開啟瀏覽器並瀏覽至此 URL。 請確定您輸入正確的 URL，而且您可以存取 XML 中繼資料檔案。 若要使用 ADFS 管理嵌入式管理單元來新增新的信賴憑證者信任並手動進行設定，請在同盟伺服器上執行下列程序。 若要完成此程式，至少需要本機電腦上 **Administrators** 或同等的成員資格。
 
-1. 在 [伺服器管理員] 中選取 [工具]****，然後選取 [ADFS 管理]****。
-2. 選取 [新增信賴憑證者信任] ****。
-3. 在 [歡迎]**** 頁面上選擇 [宣告感知]****，然後按一下 [開始]****。
-4. 在 [選取資料來源]**** 頁面上，選取 [匯入線上或區域網路上發行的信賴憑證者相關資料]****，提供您的 Azure AD B2C 中繼資料 URL，然後按 [下一步]****。
-5. 在 [指定顯示名稱]**** 頁面上輸入**顯示名稱**、在 [備忘稿]**** 下輸入此信賴憑證者信任的描述，然後按 [下一步]****。
-6. 在 [選擇存取控制原則]**** 頁面上選擇原則，然後按 [下一步]****。
-7. 在 [準備新增信任]**** 頁面上，檢閱設定，然後按一下 [下一步]**** 以儲存您的信賴憑證者信任資訊。
-8. 在 [完成]**** 頁面上按一下 [關閉]****，此動作就會自動顯示 [編輯宣告規則]**** 對話方塊。
-9. 選取 [新增規則]****。
-10. 在 [宣告規則範本]**** 中，選取 [傳送 LDAP 屬性作為宣告]****。
-11. 提供**宣告規則名稱**。 在 [ **屬性存放區**] 中，選取 [ **選取 Active Directory**、新增下列宣告，然後按一下 **[完成** ] 和 **[確定]**。
+1. 在 [伺服器管理員] 中選取 [工具]  ，然後選取 [ADFS 管理]  。
+2. 選取 [新增信賴憑證者信任]  。
+3. 在 [歡迎]  頁面上選擇 [宣告感知]  ，然後按一下 [開始]  。
+4. 在 [選取資料來源]  頁面上，選取 [匯入線上或區域網路上發行的信賴憑證者相關資料]  ，提供您的 Azure AD B2C 中繼資料 URL，然後按 [下一步]  。
+5. 在 [指定顯示名稱]  頁面上輸入  下輸入此信賴憑證者信任的描述，然後按 [下一步]  。
+6. 在 [選擇存取控制原則]  頁面上選擇原則，然後按 [下一步]  。
+7. 在 [準備新增信任]  頁面上，檢閱設定，然後按一下 [下一步]  以儲存您的信賴憑證者信任資訊。
+8. 在 [完成]  頁面上按一下 [關閉]  ，此動作就會自動顯示 [編輯宣告規則]  對話方塊。
+9. 選取 [新增規則]  。
+10. 在 [宣告規則範本]  中，選取 [傳送 LDAP 屬性作為宣告]  。
+11. 提供 **宣告規則名稱** 。 在 [ **屬性存放區** ] 中，選取 [ **選取 Active Directory** 、新增下列宣告，然後按一下 **[完成** ] 和 **[確定]** 。
 
     | LDAP 屬性 | 傳出宣告類型 |
     | -------------- | ------------------- |
@@ -201,9 +201,9 @@ https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-poli
 
     請注意，這些名稱將不會顯示在 [輸出宣告類型] 下拉式清單中。 您必須以手動方式輸入它們。  (下拉式清單實際上是可編輯的) 。
 
-12.  根據不同憑證類型，您可能需要設定雜湊演算法。 在信賴憑證者信任 (B2C 示範) 屬性視窗上，選取 [進階]**** 索引標籤、將 [安全雜湊演算法]**** 變更為 `SHA-256`，然後按一下 [確定]****。
-13. 在 [伺服器管理員] 中選取 [工具]****，然後選取 [ADFS 管理]****。
-14. 選取您建立的信賴憑證者信任，並選取 [從同盟中繼資料中更新]****，然後按一下 [更新]****。
+12.  根據不同憑證類型，您可能需要設定雜湊演算法。 在信賴憑證者信任 (B2C 示範) 屬性視窗上，選取 [進階]  索引標籤、將 [安全雜湊演算法]  變更為 `SHA-256`，然後按一下 [確定]  。
+13. 在 [伺服器管理員] 中選取 [工具]  ，然後選取 [ADFS 管理]  。
+14. 選取您建立的信賴憑證者信任，並選取 [從同盟中繼資料中更新]  ，然後按一下 [更新]  。
 
 ## <a name="create-an-azure-ad-b2c-application"></a>建立 Azure AD B2C 應用程式
 
@@ -215,7 +215,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-poli
 
 更新信賴憑證者 (RP) 檔案，此檔案將起始您剛才建立的使用者旅程圖。
 
-1. 在您的工作目錄中建立一份 SignUpOrSignIn.xml 複本，並將它重新命名。 例如，將它重新命名為 SignUpSignInADFS.xml**。
+1. 在您的工作目錄中建立一份 SignUpOrSignIn.xml 複本，並將它重新命名。 例如，將它重新命名為 SignUpSignInADFS.xml  。
 2. 開啟新檔案，並將 **TrustFrameworkPolicy** 的 **PolicyId** 屬性更新成唯一值。 例如： `SignUpSignInADFS` 。
 3. 將 **PublicPolicyUri** 的值更新成原則的 URI。 例如：`http://contoso.com/B2C_1A_signup_signin_adfs`
 4. 更新 **DefaultUserJourney** 中 **ReferenceId** 屬性的值，以符合您所建立新使用者旅程圖 (SignUpSignInADFS) 的識別碼。

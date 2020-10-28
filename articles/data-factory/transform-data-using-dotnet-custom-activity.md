@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 0332b9aab0db456ed4517c09e541bee1b9884d04
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e84f7a2ee8c2f7a57ce1734ad3392a217d6de5fe
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368990"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632102"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 資料處理站管線中使用自訂活動
 
@@ -29,14 +29,14 @@ ms.locfileid: "92368990"
 - [資料移動活動](copy-activity-overview.md)，可在[支援的來源與接收資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)之間移動資料。
 - 使用計算服務（例如 Azure HDInsight、Azure Batch 和 Azure Machine Learning）來轉換資料的[資料轉換活動](transform-data.md)。
 
-若要將資料移入/移出 Data Factory 不支援的資料存放區，或者以 Data Factory 不支援的方式轉換/處理資料，您可以利用自己的資料移動或轉換邏輯建立**自訂活動**，然後在管線中使用活動。 自訂活動會在虛擬機器的 **Azure Batch** 集區上執行自訂程式碼邏輯。
+若要將資料移入/移出 Data Factory 不支援的資料存放區，或者以 Data Factory 不支援的方式轉換/處理資料，您可以利用自己的資料移動或轉換邏輯建立 **自訂活動** ，然後在管線中使用活動。 自訂活動會在虛擬機器的 **Azure Batch** 集區上執行自訂程式碼邏輯。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 如果您不熟悉 Azure Batch 服務，請參閱下列文章：
 
 * [Azure Batch 基本知識](../batch/batch-technical-overview.md) ，以取得 Azure Batch 服務的概觀。
-* [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) Cmdlet 可建立 Azure Batch 帳戶 (或) [Azure 入口網站](../batch/batch-account-create-portal.md)，以使用 Azure 入口網站建立 Azure Batch 帳戶。 如需使用此 Cmdlet 的詳細指示，請參閱[使用 PowerShell 管理 Azure Batch 帳戶](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx)一文。
+* [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) Cmdlet 可建立 Azure Batch 帳戶 (或) [Azure 入口網站](../batch/batch-account-create-portal.md)，以使用 Azure 入口網站建立 Azure Batch 帳戶。 如需使用此 Cmdlet 的詳細指示，請參閱[使用 PowerShell 管理 Azure Batch 帳戶](/archive/blogs/windowshpc/using-azure-powershell-to-manage-azure-batch-account)一文。
 * [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) Cmdlet 可建立 Azure Batch 集區。
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch 已連結的服務
@@ -104,11 +104,11 @@ ms.locfileid: "92368990"
 | :-------------------- | :--------------------------------------- | :------- |
 | NAME                  | 管線中的活動名稱     | 是      |
 | description           | 說明活動用途的文字。  | 否       |
-| type                  | 針對自訂活動，活動類型是**自訂**。 | 是      |
+| type                  | 針對自訂活動，活動類型是 **自訂** 。 | 是      |
 | linkedServiceName     | Azure Batch 的已連結的服務。 若要深入了解此已連結的服務，請參閱[計算已連結的服務](compute-linked-services.md)一文。  | 是      |
 | 命令               | 要執行的自訂應用程式命令。 如果應用程式已經可以在 Azure Batch 集區節點上使用，則可以略過 resourceLinkedService 和 folderPath。 例如，您可以將命令指定為 `cmd /c dir`，該命令原生受 Windows Batch 集區節點支援。 | 是      |
 | resourceLinkedService | 對儲存體帳戶 (自訂應用程式儲存所在) 的 Azure 儲存體已連結的服務 | 否 &#42;       |
-| folderPath            | 自訂應用程式及其所有相依項目的資料夾路徑<br/><br/>如果您將相依性儲存在子資料夾中 (也就是 folderPath** 下的階層式資料夾結構)，當您將檔案複製到 Azure Batch 時，目前的資料夾結構會遭到壓平合併。 也就是所有檔案會複製到沒有子資料夾的單一資料夾中。 若要解決這個問題行為，請考慮壓縮檔案並複製壓縮的檔案，然後在所需位置中以自訂程式碼來將其解壓縮。 | 否 &#42;       |
+| folderPath            | 自訂應用程式及其所有相依項目的資料夾路徑<br/><br/>如果您將相依性儲存在子資料夾中 (也就是 folderPath  下的階層式資料夾結構)，當您將檔案複製到 Azure Batch 時，目前的資料夾結構會遭到壓平合併。 也就是所有檔案會複製到沒有子資料夾的單一資料夾中。 若要解決這個問題行為，請考慮壓縮檔案並複製壓縮的檔案，然後在所需位置中以自訂程式碼來將其解壓縮。 | 否 &#42;       |
 | referenceObjects      | 現有已連結的服務和資料集的陣列。 參考的已連結的服務和資料集會傳遞至 JSON 格式的自訂應用程式，讓您的自訂程式碼可以參考 Data Factory 的資源 | 否       |
 | extendedProperties    | 使用者定義的屬性，可以傳遞至 JSON 格式的自訂應用程式，讓您的自訂程式碼可以參考其他屬性 | 否       |
 | retentionTimeInDays | 針對自訂活動提交的檔案保留時間。 預設值為30天。 | 否 |
@@ -120,7 +120,7 @@ ms.locfileid: "92368990"
 
 ## <a name="custom-activity-permissions"></a>自訂活動權限
 
-自訂活動會將 Azure Batch 自動使用者帳戶設定為*具有工作範圍 (預設的自動使用者規格) 的非系統管理員存取權*。 您無法變更自動使用者帳戶的權限等級。 如需詳細資訊，請參閱[在 Batch 中的使用者帳戶執行工作 | 自動使用者帳戶](../batch/batch-user-accounts.md#auto-user-accounts)。
+自訂活動會將 Azure Batch 自動使用者帳戶設定為 *具有工作範圍 (預設的自動使用者規格) 的非系統管理員存取權* 。 您無法變更自動使用者帳戶的權限等級。 如需詳細資訊，請參閱[在 Batch 中的使用者帳戶執行工作 | 自動使用者帳戶](../batch/batch-user-accounts.md#auto-user-accounts)。
 
 ## <a name="executing-commands"></a>執行命令
 
@@ -310,7 +310,7 @@ Activity Error section:
 
 ## <a name="retrieve-securestring-outputs"></a>擷取 SecureString 輸出
 
-在 Data Factory 使用者介面上的 [監視] 索引標籤中，指定為 SecureString** 類型的敏感屬性值 (如本文部分範例中所示) 都會加上遮罩。  但是，在實際的管線執行中，SecureString** 屬性會在 `activity.json` 檔案中序列化為純文字形式的 JSON。 例如：
+在 Data Factory 使用者介面上的 [監視] 索引標籤中，指定為 SecureString  類型的敏感屬性值 (如本文部分範例中所示) 都會加上遮罩。  但是，在實際的管線執行中，SecureString  屬性會在 `activity.json` 檔案中序列化為純文字形式的 JSON。 例如：
 
 ```json
 "extendedProperties": {
@@ -323,7 +323,7 @@ Activity Error section:
 
 此序列化不是真正的安全，而且也不是以安全為目的。 其目的是要提示 Data Factory 對 [監視] 索引標籤中的值加上遮罩。
 
-若要從自訂活動中存取 SecureString** 類別的屬性，請讀取您 .EXE 所在資料夾中的 `activity.json` 檔案、將 JSON 還原序列化，然後存取 JSON 屬性 (extendedProperties => [propertyName] => value)。
+若要從自訂活動中存取 SecureString  類別的屬性，請讀取您 .EXE 所在資料夾中的 `activity.json` 檔案、將 JSON 還原序列化，然後存取 JSON 屬性 (extendedProperties => [propertyName] => value)。
 
 ## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a><a name="compare-v2-v1"></a> 比較 v2 自訂活動和第 1 版 (自訂) DotNet 活動
 
@@ -342,7 +342,7 @@ Activity Error section:
 |定義自訂邏輯的方式      |提供可執行檔      |藉由執行 .NET DLL      |
 |自訂邏輯的執行環境      |Windows 或 Linux      |Windows ( .NET Framework 4.5.2)       |
 |執行指令碼      |支援直接執行指令碼 (例如，Windows VM 上的 "cmd /c echo hello world")      |需要在 .NET DLL 中執行      |
-|需要資料集      |選擇性      |需要資料集來鏈結活動並傳遞資訊      |
+|需要資料集      |選用      |需要資料集來鏈結活動並傳遞資訊      |
 |將來自活動的資訊傳遞至自訂邏輯      |透過 ReferenceObjects (LinkedServices 和資料集) 和 ExtendedProperties (自訂屬性)      |透過 ExtendedProperties (自訂屬性)、輸入和輸出資料集      |
 |擷取自訂邏輯中的資訊      |剖析與可執行檔儲存於相同資料夾的 activity.json、linkedServices.json 和 datasets.json      |透過 .NET SDK ( .NET 框架 4.5.2)       |
 |記錄      |直接寫入 STDOUT      |在 .NET DLL 中執行記錄器      |
@@ -356,7 +356,7 @@ Activity Error section:
   - 不再需要 Microsoft.Azure.Management.DataFactories NuGet 套件。
   - 編譯您的程式碼，將可執行檔及其相依性上傳至 Azure 儲存體，並在 `folderPath` 屬性中定義路徑。
 
-如需如何將 Data Factory 第 1 版文章[在 Azure Data Factory 管線中使用自訂活動](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities)中所述的端對端 DLL 和管線範例重新撰寫為 Data Factory 自訂活動的完整範例，請參閱 [Data Factory 自訂活動範例](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFv2CustomActivitySample) \(英文\)。
+如需如何將 Data Factory 第 1 版文章[在 Azure Data Factory 管線中使用自訂活動](./v1/data-factory-use-custom-activities.md)中所述的端對端 DLL 和管線範例重新撰寫為 Data Factory 自訂活動的完整範例，請參閱 [Data Factory 自訂活動範例](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFv2CustomActivitySample) \(英文\)。
 
 ## <a name="auto-scaling-of-azure-batch"></a>Azure Batch 的自動調整
 
@@ -376,7 +376,7 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 
 如需詳細資訊，請參閱 [自動調整 Azure Batch 集區中的計算節點](../batch/batch-automatic-scaling.md) 。
 
-如果集區使用預設的 [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx)，Batch 服務在執行自訂活動之前，可能需要 15-30 分鐘的時間準備 VM。 如果集區使用不同的 autoScaleEvaluationInterval，Batch 服務可能需要 autoScaleEvaluationInterval + 10 分鐘。
+如果集區使用預設的 [autoScaleEvaluationInterval](/rest/api/batchservice/pool/enableautoscale)，Batch 服務在執行自訂活動之前，可能需要 15-30 分鐘的時間準備 VM。 如果集區使用不同的 autoScaleEvaluationInterval，Batch 服務可能需要 autoScaleEvaluationInterval + 10 分鐘。
 
 ## <a name="next-steps"></a>後續步驟
 請參閱下列文章，其說明如何以其他方式轉換資料：

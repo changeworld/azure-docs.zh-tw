@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/08/2020
-ms.openlocfilehash: 7cc8e2e02aef9e323da9859ce6fd0bebea2ce036
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 85dd75b2af5d14d835db8aacc415069a2d67298e
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368905"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631830"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>使用 Azure Data Factory 中的 Hadoop 資料流活動轉換資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -78,7 +78,7 @@ Data Factory [管線](concepts-pipelines-activities.md)中的 HDInsight 資料�
 | mapper            | 指定對應程式可執行檔的名稱 | 是      |
 | reducer           | 指定減壓器可執行檔的名稱 | 是      |
 | 結合子          | 指定結合子可執行檔的名稱 | 否       |
-| fileLinkedService | Azure 儲存體已連結的服務用來儲存要執行之對應程式、結合子和減壓器的參考。 這裡僅支援 **[Azure Blob 儲存體](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)** 和 **[ADLS Gen2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)** 的連結服務。 如果您未指定這項連結服務，則會使用 HDInsight 已連結的服務中定義的 Azure 儲存體已連結的服務。 | 否       |
+| fileLinkedService | Azure 儲存體已連結的服務用來儲存要執行之對應程式、結合子和減壓器的參考。 這裡僅支援 **[Azure Blob 儲存體](./connector-azure-blob-storage.md)** 和 **[ADLS Gen2](./connector-azure-data-lake-storage.md)** 的連結服務。 如果您未指定這項連結服務，則會使用 HDInsight 已連結的服務中定義的 Azure 儲存體已連結的服務。 | 否       |
 | filePath          | 提供 fileLinkedService 引用之 Azure 儲存體中儲存的對應程式、結合子和減壓器程式的路徑陣列。 路徑會區分大小寫。 | 是      |
 | input             | 指定對應程式輸入檔案的 WASB 路徑。 | 是      |
 | output            | 指定減壓器輸出檔案的 WASB 路徑。 | 是      |

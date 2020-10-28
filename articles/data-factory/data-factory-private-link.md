@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: a6faac66edaaf047f5ba025e94a1522c2313f9ed
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c21b4d746d763f41f4360cf93f67939bcd6dc49f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546665"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632680"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Data Factory 的 Azure Private Link
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-藉由使用 Azure Private Link，您可以透過私人端點，連接到 Azure 中的各種平臺即服務 (PaaS) 部署。 私人端點是特定虛擬網路和子網內的私人 IP 位址。 如需支援 Private Link 功能的 PaaS 部署清單，請參閱 [Private Link 檔](https://docs.microsoft.com/azure/private-link/)。 
+藉由使用 Azure Private Link，您可以透過私人端點，連接到 Azure 中的各種平臺即服務 (PaaS) 部署。 私人端點是特定虛擬網路和子網內的私人 IP 位址。 如需支援 Private Link 功能的 PaaS 部署清單，請參閱 [Private Link 檔](../private-link/index.yml)。 
 
 ## <a name="secure-communication-between-customer-networks-and-azure-data-factory"></a>在客戶網路與 Azure Data Factory 之間進行安全通訊 
 您可以將 Azure 虛擬網路設定為雲端中網路的邏輯標記法。 這麼做可提供下列優點：
@@ -67,7 +67,7 @@ Azure Data Factory 服務的通訊會通過 Private Link 並協助提供安全�
 > 當您建立連結服務時，請確定您的認證儲存在 Azure key vault 中。 否則，當您在 Azure Data Factory 中啟用 Private Link 時，認證將無法運作。
 
 ## <a name="set-up-private-link-for-azure-data-factory"></a>設定 Azure Data Factory 的 Private Link
-您可以使用 [Azure 入口網站](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)來建立私人端點。
+您可以使用 [Azure 入口網站](../private-link/create-private-endpoint-portal.md)來建立私人端點。
 
 您也可以移至 Azure 入口網站中的 Azure data factory，並建立私人端點，如下所示：
 
@@ -84,9 +84,8 @@ Azure Data Factory 服務的通訊會通過 Private Link 並協助提供安全�
 > [!NOTE]
 > 您仍然可以在停用公用網路存取之後，透過公用網路存取 Azure Data Factory 入口網站。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [使用 Azure Data Factory UI 來建立資料處理站](quickstart-create-data-factory-portal.md)
 - [Azure Data Factory 簡介](introduction.md)
 - [Azure Data Factory 中的視覺化撰寫](author-visually.md)
-

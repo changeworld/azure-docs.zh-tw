@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 1978cfe6ea117a0d30df938c9e4ba1aeb48314fc
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 4a80b1f9bfa5d477c47e340f1dec1b37e4c69258
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057836"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631034"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure Resource Manager 範本建立 Azure Machine Learning 的工作區
 
@@ -28,13 +28,13 @@ ms.locfileid: "92057836"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* **Azure 訂用帳戶**。 如果您沒有訂用帳戶，則可[試用免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
+* **Azure 訂用帳戶** 。 如果您沒有訂用帳戶，則可[試用免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
 * 若要從 CLI 使用範本，您需要 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
 
 * 某些案例需要您開啟支援票證。 這些案例為：
 
-    * __使用客戶管理的金鑰 Private Link 啟用的工作區 (CMK) __
+    * __使用客戶管理的金鑰 Private Link 啟用的工作區 (CMK)__
     * __虛擬網路背後工作區的 Azure Container Registry__
 
     如需詳細資訊，請參閱 [管理和增加配額](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)。
@@ -59,7 +59,7 @@ ms.locfileid: "92057836"
 
     範本將會針對大部分的資源使用您選取的位置。 例外狀況是 Application Insights 服務，該服務在其他服務可用的所有位置都無法使用。 如果您選取的位置無法使用，服務會建立在美國中南部位置。
 
-* **WorkspaceName**，這是 Azure Machine Learning 工作區的易記名稱。
+* **WorkspaceName** ，這是 Azure Machine Learning 工作區的易記名稱。
 
     > [!NOTE]
     > 工作區名稱不區分大小寫。
@@ -161,9 +161,11 @@ New-AzResourceGroupDeployment `
 
 下列範例範本示範如何建立具有三項設定的工作區：
 
-* 啟用工作區的高機密性設定
-* 啟用工作區的加密
-* 使用現有 Azure Key Vault 來擷取客戶管理的金鑰
+* 啟用工作區的高機密性設定。 這會建立新的 Cosmos DB 實例。
+* 啟用工作區的加密。
+* 使用現有的 Azure Key Vault 取出客戶管理的金鑰。 客戶管理的金鑰可用來為工作區建立新的 Cosmos DB 實例。
+
+    [!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
 > [!IMPORTANT]
 > 建立工作區之後，即無法變更機密資料、加密、金鑰保存庫識別碼或金鑰識別碼的設定。 若要變更這些值，則必須使用新的值來建立新工作區。
@@ -217,7 +219,7 @@ New-AzResourceGroupDeployment `
 
 若要允許使用客戶管理的金鑰，請在部署範本時設定下列參數：
 
-* **encryption_status** 為 [ **已啟用**]。
+* **encryption_status** 為 [ **已啟用** ]。
 * **cmk_keyvault** 為 `cmk_keyvault` 先前步驟中取得的值。
 * **resource_cmk_uri** 為 `resource_cmk_uri` 先前步驟中取得的值。
 
@@ -252,7 +254,7 @@ New-AzResourceGroupDeployment `
 
 使用客戶管理的金鑰時，Azure Machine Learning 建立包含 Cosmos DB 實例的次要資源群組。 如需詳細資訊，請參閱 [靜態加密-Cosmos DB](concept-enterprise-security.md#encryption-at-rest)。
 
-您可以為資料提供的其他設定是將 **confidential_data** 參數設定為 **true**。 這樣做會執行下列動作：
+您可以為資料提供的其他設定是將 **confidential_data** 參數設定為 **true** 。 這樣做會執行下列動作：
 
 * 開始加密 Azure Machine Learning 計算叢集的本機暫存磁片，提供您未在訂用帳戶中建立任何先前的叢集。 如果您先前已在訂用帳戶中建立叢集，請開啟支援票證，以針對您的計算叢集啟用暫存磁片的加密。
 * 清除執行之間的本機暫存磁片。
@@ -547,8 +549,8 @@ New-AzResourceGroupDeployment `
    * 區域：選取將在其中建立資源的 Azure 區域。
    * 工作區名稱：要用於將建立之Azure Machine Learning 工作區的名稱。 工作區名稱必須介於 3 到 33 個字元之間。 只能包含英數字元和 '-'。
    * 位置：選取將建立資源的位置。
-1. 選取 [檢閱 + 建立]____。
-1. 在 [ __審核 + 建立__ ] 畫面中，同意列出的條款及條件，然後選取 [ __建立__]。
+1. 選取 [檢閱 + 建立]。
+1. 在 [ __審核 + 建立__ ] 畫面中，同意列出的條款及條件，然後選取 [ __建立__ ]。
 
 如需詳細資訊，請參閱[從自訂範本部署資源](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)。
 
@@ -578,7 +580,7 @@ New-AzResourceGroupDeployment `
 
 * 檢查 Key Vault 資源是否已存在。 如果有，請不要透過範本予以重建。 例如，若要使用現有的 Key Vault，而不是建立新的，請對範本進行下列變更：
 
-    * **新增**可接受現有 Key Vault 資源識別碼的參數：
+    * **新增** 可接受現有 Key Vault 資源識別碼的參數：
 
         ```json
         "keyVaultId":{
@@ -589,7 +591,7 @@ New-AzResourceGroupDeployment `
         }
       ```
 
-    * **移除**建立 Key Vault 資源的區段：
+    * **移除** 建立 Key Vault 資源的區段：
 
         ```json
         {
@@ -609,7 +611,7 @@ New-AzResourceGroupDeployment `
         },
         ```
 
-    * 從工作區的 `dependsOn` 區段**移除** `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` 行。 此外，**變更**工作區中 `properties` 區段的 `keyVault` 項目，以參考 `keyVaultId` 參數：
+    * 從工作區的 `dependsOn` 區段 **移除** `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` 行。 此外， **變更** 工作區中 `properties` 區段的 `keyVault` 項目，以參考 `keyVaultId` 參數：
 
         ```json
         {
@@ -653,7 +655,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="virtual-network-not-linked-to-private-dns-zone"></a>未連結至私人 DNS 區域的虛擬網路
 
-使用私人端點建立工作區時，此範本會建立名為 __privatelink.api.azureml.ms__的私人 DNS 區域。 __虛擬網路連結__會自動新增到此私人 DNS 區域。 只會針對您在資源群組中建立的第一個工作區和私人端點新增連結;如果您在相同的資源群組中建立另一個具有私人端點的虛擬網路和工作區，則第二個虛擬網路可能不會新增至私人 DNS 區域。
+使用私人端點建立工作區時，此範本會建立名為 __privatelink.api.azureml.ms__ 的私人 DNS 區域。 __虛擬網路連結__ 會自動新增到此私人 DNS 區域。 只會針對您在資源群組中建立的第一個工作區和私人端點新增連結;如果您在相同的資源群組中建立另一個具有私人端點的虛擬網路和工作區，則第二個虛擬網路可能不會新增至私人 DNS 區域。
 
 若要查看私人 DNS 區域已存在的虛擬網路連結，請使用下列 Azure CLI 命令：
 

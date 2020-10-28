@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: 4189aadb6e37fc70bcaeecca2110d6fcc3959dd3
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 5fb82c6098352076307f71eee022074a247e3cd9
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939863"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629335"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>使用適用於 PostgreSQL 的 Azure 資料庫-單一伺服器的商務持續性總覽
 
@@ -29,9 +29,9 @@ ms.locfileid: "91939863"
 | :------------: | :-------: | :-----------------: | :------------------: |
 | 從備份進行時間點還原 | 保留期間內的任何還原點 | 保留期間內的任何還原點 | 保留期間內的任何還原點 |
 | 從異地複寫備份進行異地還原 | 不支援 | RTO-變化 <br/>RPO < 1 小時 | RTO-變化 <br/>RPO < 1 小時 |
-| 讀取複本 | RTO-分鐘 <br/>RPO < 5 分鐘 * | RTO-分鐘 <br/>RPO < 5 分鐘 *| RTO-分鐘 <br/>RPO < 5 分鐘 *|
+| 讀取複本 | RTO-分鐘 * <br/>RPO < 5 分鐘 * | RTO-分鐘 * <br/>RPO < 5 分鐘 *| RTO-分鐘 * <br/>RPO < 5 分鐘 *|
 
-\* 在某些情況下，RPO 可能較高，視各種因素而定，包括主資料庫工作負載和區域之間的延遲。 
+\* 根據各種因素（包括主資料庫工作負載和區域之間的延遲），RTO 和 RPO 在某些情況下可能會更高。 
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>在使用者或應用程式錯誤之後復原伺服器
 
@@ -40,7 +40,7 @@ ms.locfileid: "91939863"
 您可以執行 **時間點還原** ，將伺服器的複本建立到已知的良好時間點。 此時間點必須在您為伺服器設定的備份保留期間內。 資料還原至新的伺服器之後，您可以將原始伺服器取代為還原的新伺服器，或從還原的伺服器將所需的資料複製到原始伺服器。
 
 > [!IMPORTANT]
-> 已刪除的伺服器**無法**還原。 如果您刪除伺服器，所有屬於該伺服器的資料庫也會一併刪除，且無法復原。 使用 [Azure 資源鎖定](../azure-resource-manager/management/lock-resources.md) 來協助防止意外刪除您的伺服器。
+> 已刪除的伺服器 **無法** 還原。 如果您刪除伺服器，所有屬於該伺服器的資料庫也會一併刪除，且無法復原。 使用 [Azure 資源鎖定](../azure-resource-manager/management/lock-resources.md) 來協助防止意外刪除您的伺服器。
 
 ## <a name="recover-from-an-azure-data-center-outage"></a>從 Azure 資料中心中斷復原
 

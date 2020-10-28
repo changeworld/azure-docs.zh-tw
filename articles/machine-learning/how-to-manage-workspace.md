@@ -10,17 +10,17 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: fd1a25e3fae49feb731cd1b472c99da679eee4f4
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 733a5c899e72809d979dfeeb60e4157c0d587bcf
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495673"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633700"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>建立和管理 Azure Machine Learning 工作區 
 
 
-在本文中，您將使用適用于 Python 的 Azure 入口網站或[SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) ，來建立、查看和刪除[Azure Machine Learning](overview-what-is-azure-ml.md)的[**Azure Machine Learning 工作區**](concept-workspace.md)
+在本文中，您將使用適用于 Python 的 Azure 入口網站或 [SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) ，來建立、查看和刪除 [Azure Machine Learning](overview-what-is-azure-ml.md)的 [**Azure Machine Learning 工作區**](concept-workspace.md)
 
 當您的需求變更或自動化的需求增加時，您也可以 [使用 CLI](reference-azure-machine-learning-cli.md)或透過 [VS Code 擴充](tutorial-setup-vscode-extension.md)功能來建立和刪除工作區。
 
@@ -80,11 +80,11 @@ import os
 
 1. 使用您 Azure 訂閱的認證來登入 [Azure 入口網站](https://portal.azure.com/)。 
 
-1. 在 Azure 入口網站的左上角，選取 [+建立資源]****。
+1. 在 Azure 入口網站的左上角，選取 [+建立資源]  。
 
       ![建立新的資源](./media/how-to-manage-workspace/create-workspace.gif)
 
-1. 使用搜尋列尋找 **Machine Learning**。
+1. 使用搜尋列尋找 **Machine Learning** 。
 
 1. 選取 [Machine Learning]  。
 
@@ -94,16 +94,16 @@ import os
 
    欄位|描述 
    ---|---
-   工作區名稱 |輸入可識別您工作區的唯一名稱。 在此範例中，我們使用 **docs-ws**。 名稱必須是整個資源群組中唯一的。 請使用可輕鬆回想並且與其他人建立的工作區有所區別的名稱。 工作區名稱不區分大小寫。
+   工作區名稱 |輸入可識別您工作區的唯一名稱。 在此範例中，我們使用 **docs-ws** 。 名稱必須是整個資源群組中唯一的。 請使用可輕鬆回想並且與其他人建立的工作區有所區別的名稱。 工作區名稱不區分大小寫。
    訂用帳戶 |選取您要使用的 Azure 訂用帳戶。
-   資源群組 | 在您的訂用帳戶中使用現有的資源群組，或輸入名稱來建立新的資源群組。 資源群組會保留 Azure 方案的相關資源。 在此範例中，我們使用 **docs-aml**。 您需要 *參與者* 或 *擁有* 者角色，才能使用現有的資源群組。  如需存取的詳細資訊，請參閱 [管理 Azure Machine Learning 工作區的存取權](how-to-assign-roles.md)。
+   資源群組 | 在您的訂用帳戶中使用現有的資源群組，或輸入名稱來建立新的資源群組。 資源群組會保留 Azure 方案的相關資源。 在此範例中，我們使用 **docs-aml** 。 您需要 *參與者* 或 *擁有* 者角色，才能使用現有的資源群組。  如需存取的詳細資訊，請參閱 [管理 Azure Machine Learning 工作區的存取權](how-to-assign-roles.md)。
    區域 | 選取最接近您的使用者與資料資源的 Azure 區域，以建立您的工作區。
 
     ![設定您的工作區](./media/how-to-manage-workspace/create-workspace-form.png)
 
-1. 當您完成工作區的設定時，請選取 [ **審核 + 建立**]。 （選擇性）使用 [ [網路](#networking) ] 和 [ [Advanced](#advanced) ] 區段來設定工作區的更多設定。
+1. 當您完成工作區的設定時，請選取 [ **審核 + 建立** ]。 （選擇性）使用 [ [網路](#networking) ] 和 [ [Advanced](#advanced) ] 區段來設定工作區的更多設定。
 
-1. 檢查設定，並進行任何額外的變更或修正。 當您對設定感到滿意之後，請選取 [ **建立**]。
+1. 檢查設定，並進行任何額外的變更或修正。 當您對設定感到滿意之後，請選取 [ **建立** ]。
 
    > [!Warning] 
    > 在雲端中建立工作區可能需要數分鐘的時間。
@@ -126,7 +126,7 @@ Azure Machine Learning Python SDK 提供可搭配工作區使用的 [PrivateEndp
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-1. 預設的網路設定是使用可在公用網際網路上存取的 __公用端點__。 若要將您的工作區存取限制為您所建立的 Azure 虛擬網路，您可以改為選取 __私人端點__ (預覽) 作為連線 __方法__，然後使用 [ __+ 新增__ ] 設定端點。   
+1. 預設的網路設定是使用可在公用網際網路上存取的 __公用端點__ 。 若要將您的工作區存取限制為您所建立的 Azure 虛擬網路，您可以改為選取 __私人端點__ (預覽) 作為連線 __方法__ ，然後使用 [ __+ 新增__ ] 設定端點。   
 
    :::image type="content" source="media/how-to-manage-workspace/select-private-endpoint.png" alt-text="私人端點選取":::  
 
@@ -134,7 +134,7 @@ Azure Machine Learning Python SDK 提供可搭配工作區使用的 [PrivateEndp
 
    :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="私人端點選取":::   
 
-1. 當您完成網路的設定時，您可以選取 [ __審核] + [建立__]，或前進至選擇性的 [ __Advanced__ configuration]。
+1. 當您完成網路的設定時，您可以選取 [ __審核] + [建立__ ]，或前進至選擇性的 [ __Advanced__ configuration]。
 
 ---
 
@@ -146,9 +146,9 @@ Azure Machine Learning Python SDK 提供可搭配工作區使用的 [PrivateEndp
 
 當您建立私人端點時，會建立名為 __privatelink.api.azureml.ms__ 的新私人 DNS 區域。 這包含虛擬網路的連結。 如果您在相同的資源群組中建立具有私人端點的多個工作區，則只有第一個私人端點的虛擬網路可以新增至 DNS 區域。 若要新增其他工作區/私人端點所使用之虛擬網路的專案，請使用下列步驟：
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取包含工作區的資源群組。 然後選取名為__privatelink.api.azureml.ms__的私人 DNS 區域資源
-2. 在 [ __設定__] 中，選取 [ __虛擬網路連結__]。
-3. 選取 [新增]。 從 [ __新增虛擬網路連結__ ] 頁面中，提供唯一的 __連結名稱__，然後選取要新增的 __虛擬網路__ 。 選取 __[確定]__ 以新增網路連結。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取包含工作區的資源群組。 然後選取名為 __privatelink.api.azureml.ms__ 的私人 DNS 區域資源
+2. 在 [ __設定__ ] 中，選取 [ __虛擬網路連結__ ]。
+3. 選取 [新增]  。 從 [ __新增虛擬網路連結__ ] 頁面中，提供唯一的 __連結名稱__ ，然後選取要新增的 __虛擬網路__ 。 選取 __[確定]__ 以新增網路連結。
 
 如需詳細資訊，請參閱 [Azure 私人端點 DNS](/azure/private-link/private-endpoint-dns)設定。
 
@@ -167,7 +167,11 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 
 #### <a name="use-your-own-key"></a>使用您自己的金鑰
 
-您可以提供自己的金鑰進行資料加密。 這麼做會建立 Azure Cosmos DB 實例，以在您的 Azure 訂用帳戶中儲存計量和中繼資料。 使用下列步驟來提供您自己的金鑰：
+您可以提供自己的金鑰進行資料加密。 這麼做會建立 Azure Cosmos DB 實例，以在您的 Azure 訂用帳戶中儲存計量和中繼資料。
+
+[!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
+
+使用下列步驟來提供您自己的金鑰：
 
 > [!IMPORTANT]  
 > 在遵循這些步驟之前，您必須先執行下列動作：   
@@ -201,7 +205,7 @@ from azureml.core import Workspace
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-1. 選取 [ __客戶管理的金鑰__]，然後選取 [ __按一下以選取金鑰__]。
+1. 選取 [ __客戶管理的金鑰__ ]，然後選取 [ __按一下以選取金鑰__ ]。
 
     :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="私人端點選取":::
 
@@ -225,7 +229,7 @@ ws.write_config()
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-如果您打算在參考此工作區的本機環境上使用程式碼， 請從工作區的 [概觀]**** 區段中，選取 [下載 config.xml]****。  
+如果您打算在參考此工作區的本機環境上使用程式碼， 請從工作區的 [概觀]  區段中，選取 [下載 config.xml]  。  
 
    ![下載 config.json](./media/how-to-manage-workspace/configure.png)
 
@@ -252,7 +256,7 @@ Workspace.list('<subscription-id>')
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 在 [頂端搜尋] 欄位中，輸入 **Machine Learning**。  
+1. 在 [頂端搜尋] 欄位中，輸入 **Machine Learning** 。  
 
 1. 選取 [Machine Learning]  。
 

@@ -7,20 +7,20 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/19/2020
+ms.date: 10/26/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b6adb06f22013e68987f3315d52e3594fba63907
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 937041bbb48f112e2c8ed7d222dc7c7ef7ea8d81
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309020"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631388"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>要求 Azure Active Directory B2C 中的存取權杖
 
-*存取權杖*中包含宣告，可讓您在 Azure Active Directory B2C (Azure AD B2C) 中用來識別為 API 授與的權限。 在呼叫資源伺服器時，HTTP 要求中必須要有存取權杖。 存取權杖在 Azure AD B2C 的回應中會以 **access_token** 表示。
+*存取權杖* 中包含宣告，可讓您在 Azure Active Directory B2C (Azure AD B2C) 中用來識別為 API 授與的權限。 在呼叫資源伺服器時，HTTP 要求中必須要有存取權杖。 存取權杖在 Azure AD B2C 的回應中會以 **access_token** 表示。
 
 本文說明如何要求 Web 應用程式和 Web API 的存取權杖。 若要進一步了解 Azure AD B2C 中的權杖，請參閱 [Azure Active Directory B2C 中的權杖概觀](tokens-overview.md)。
 
@@ -34,9 +34,9 @@ ms.locfileid: "92309020"
 
 ## <a name="scopes"></a>範圍
 
-範圍可讓您管理受保護資源的權限。 在要求存取權杖時，用戶端應用程式必須在要求的**範圍**參數中指定所需的權限。 例如，若要將 [App ID URI] 為 `https://contoso.onmicrosoft.com/api` 之 API 的 [範圍值] 指定為 `read`，則範圍為 `https://contoso.onmicrosoft.com/api/read`。
+範圍可讓您管理受保護資源的權限。 在要求存取權杖時，用戶端應用程式必須在要求的 **範圍** 參數中指定所需的權限。 例如，若要將 [App ID URI] 為 `https://contoso.onmicrosoft.com/api` 之 API 的 [範圍值] 指定為 `read`，則範圍為 `https://contoso.onmicrosoft.com/api/read`。
 
-Web API 可使用範圍來實作以範圍為基礎的存取控制。 例如，Web API 的使用者可以同時具有讀取和寫入權限，Web API 的使用者也可能只具有讀取權限。 若要在相同的要求中取得多個權限，您可以要求的在單一**範圍**參數中新增以空格分隔的多個項目。
+Web API 可使用範圍來實作以範圍為基礎的存取控制。 例如，Web API 的使用者可以同時具有讀取和寫入權限，Web API 的使用者也可能只具有讀取權限。 若要在相同的要求中取得多個權限，您可以要求的在單一 **範圍** 參數中新增以空格分隔的多個項目。
 
 下列範例顯示在 URL 中解碼的範圍：
 
@@ -50,17 +50,17 @@ scope=https://contoso.onmicrosoft.com/api/read openid offline_access
 scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_access
 ```
 
-如果您要求的範圍比針對用戶端應用程式授與的數目多，但至少已授與一個權限，則呼叫會成功。 在產生的存取權杖中，**scp** 宣告只會填入成功授與的權限。 
+如果您要求的範圍比針對用戶端應用程式授與的數目多，但至少已授與一個權限，則呼叫會成功。 在產生的存取權杖中， **scp** 宣告只會填入成功授與的權限。 
 
 ### <a name="openid-connect-scopes"></a>OpenId Connect 範圍
 
 OpenID Connect 標準會指定數個特殊的範圍值。 下列範圍代表存取使用者設定檔的權限︰
 
 - **openid** - 要求識別碼權杖。
-- **offline_access** - 使用[授權碼流程](authorization-code-flow.md)要求重新整理權杖。
+- **offline_access** - 使用 [授權碼流程](authorization-code-flow.md)要求重新整理權杖。
 - **00000000-0000-0000-0000-000000000000** -使用用戶端識別碼作為範圍時，表示您的應用程式需要可針對您自己的服務或 web API 使用的存取權杖（以相同的用戶端識別碼表示）。
 
-如果 `/authorize` 要求中的 **response_type** 參數包含 `token`，則**範圍**參數必須包含至少一個會授與的資源範圍 (`openid` 與 `offline_access` 除外)。 否則，`/authorize` 要求將會失敗。
+如果 `/authorize` 要求中的 **response_type** 參數包含 `token`，則 **範圍** 參數必須包含至少一個會授與的資源範圍 (`openid` 與 `offline_access` 除外)。 否則，`/authorize` 要求將會失敗。
 
 ## <a name="request-a-token"></a>要求權杖
 
@@ -74,7 +74,7 @@ OpenID Connect 標準會指定數個特殊的範圍值。 下列範圍代表存�
 - `<redirect-uri>` - 您註冊用戶端應用程式時所輸入的 [重新導向 URI]。
 
 ```http
-GET https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
+GET https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
 client_id=<application-ID>
 &nonce=anyRandomValue
 &redirect_uri=https://jwt.ms

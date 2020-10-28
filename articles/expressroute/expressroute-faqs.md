@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 70acacb9bacddaf403b79e11b460333c67641aae
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: f4bddf1746a9d680897428f1aa0afdb35d93e470
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202203"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631269"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常見問題集
 
@@ -40,9 +40,10 @@ ExpressRoute 連線不會經過公用網際網路。 相較於網際網路一般
 
 否。 您可以從服務提供者購買任何速度的 VPN 連線。 不過，您與 Azure 的連線受限於您所購買的 ExpressRoute 線路頻寬。
 
-### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>如果我支付指定頻寬的 ExpressRoute 線路，是否能夠在需要時突增到較高的速度？
+### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>如果我支付指定頻寬的 ExpressRoute 線路，是否能夠使用超過購買頻寬的能力？
 
-是。 ExpressRoute 線路設定允許您可以突增兩倍的所採購頻寬限制，且無需另外付費。 請洽詢您的服務提供者，以了解是否支援此功能。 此功能不會持續一段時間，而且也不保證一定執行。  如果流量流經 ExpressRoute 閘道，則 SKU 的頻寬是固定的，而且無法突增。
+是，您可以使用 ExpressRoute 線路的次要連線上可用的頻寬，最多可使用您所購買之頻寬限制的兩倍。 您線路的內建冗余設定是使用主要和次要連線（每個採購頻寬）設定為兩個 Microsoft Enterprise Edge 路由器 (Msee) 。 如有必要，可透過次要連線使用的頻寬可用於額外的流量。 因為次要連線是用來進行冗余，所以不保證，且不應該用於持續時間的額外流量。 若要深入瞭解如何使用這兩個 connnections 來傳輸流量，請參閱 [這裡](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending)。
+如果您打算只使用您的主要連線來傳輸流量，則連線的頻寬是固定的，而且嘗試超額訂閱會導致封包遺失。 如果流量流經 ExpressRoute 閘道，則 SKU 的頻寬是固定的，而且不會高載。
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>我是否可以在虛擬網路和其他 Azure 服務中同時使用相同的私人網路連線？
 
@@ -50,7 +51,7 @@ ExpressRoute 連線不會經過公用網際網路。 相較於網際網路一般
 
 ### <a name="how-are-vnets-advertised-on-expressroute-private-peering"></a>如何在 ExpressRoute 私人對等互連上公告 Vnet？
 
-ExpressRoute 閘道會公告 Azure VNet 的*位址空間*，您無法在子網層級包含/排除這些位址空間。 其一律是公告的 VNet 位址空間。 此外，如果使用 VNet 對等互連，且對等互連 VNet 已啟用「使用遠端閘道」，則也會公告對等互連 VNet 的位址空間。
+ExpressRoute 閘道會公告 Azure VNet 的 *位址空間* ，您無法在子網層級包含/排除這些位址空間。 其一律是公告的 VNet 位址空間。 此外，如果使用 VNet 對等互連，且對等互連 VNet 已啟用「使用遠端閘道」，則也會公告對等互連 VNet 的位址空間。
 
 ### <a name="how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering"></a>在 ExpressRoute 私人對等互連上，有多少首碼可以從 VNet 公告至內部部署？
 
@@ -118,7 +119,7 @@ Microsoft 會驗證指定的「已公告公用首碼」和「對等互連 ASN」
 Dynamics 365 和 Common Data Service (CD) 環境裝載於 Azure 上，因此客戶可以從 Azure 資源的基礎 ExpressRoute 支援獲益。 如果您的路由器篩選條件包含 Dynamics 365/CD 環境裝載所在的 Azure 區域，則您可以連線到其服務端點。
 
 > [!NOTE]
-> 如果 ExpressRoute 線路是部署在相同的[地緣政治區域](./expressroute-locations-providers.md#expressroute-locations)內，則透過 Azure Expressroute 的 Dynamics 365 連線**不**需要[expressroute Premium](#expressroute-premium) 。
+> 如果 ExpressRoute 線路是部署在相同的 [地緣政治區域](./expressroute-locations-providers.md#expressroute-locations)內，則透過 Azure Expressroute 的 Dynamics 365 連線 **不** 需要 [expressroute Premium](#expressroute-premium) 。
 
 ## <a name="data-and-connections"></a>資料與連線
 
@@ -168,7 +169,7 @@ Dynamics 365 和 Common Data Service (CD) 環境裝載於 Azure 上，因此客�
 
 ### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-peering-or-public-peering-is-preferred-on-the-expressroute-path"></a>如何確保我在 Microsoft 對等互連或公用對等互連上傳送至 Azure 公用服務 (例如 Azure 儲存體和 Azure SQL) 的流量是 ExpressRoute 路徑上偏好的流量？
 
-您必須在路由器上實作*本機喜好設定*屬性，以確保從內部部署至 Azure 的路徑一律是 ExpressRoute 線路上偏好的路徑。
+您必須在路由器上實作 *本機喜好設定* 屬性，以確保從內部部署至 Azure 的路徑一律是 ExpressRoute 線路上偏好的路徑。
 
 如需有關 BGP 路徑選擇和常用路由器組態的其他詳細資料，請參閱[這裡](./expressroute-optimize-routing.md#path-selection-on-microsoft-and-public-peerings)。 
 
