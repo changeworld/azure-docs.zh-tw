@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 49dd333454f0eb92f5fb0dddc40390ec1baa91c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a40d4c82391f8f8cb55374c8c2d02bee5bf24ae4
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88525440"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126904"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>教學課程：Azure Active Directory 與 SilkRoad Life Suite 整合
 
@@ -61,7 +61,7 @@ SilkRoad Life Suite 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **SilkRoad Life Suite**，從結果面板中選取 [SilkRoad Life Suite]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **SilkRoad Life Suite** ，從結果面板中選取 [SilkRoad Life Suite]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
     ![結果清單中的 SilkRoad Life Suite](common/search-new-app.png)
 
@@ -97,29 +97,29 @@ SilkRoad Life Suite 與 Azure AD 整合提供下列優點：
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 如果您有**服務提供者中繼資料檔案**，請在 [基本 SAML 設定] 區段上執行下列步驟：
+4. 如果您有 **服務提供者中繼資料檔案** ，請在 [基本 SAML 設定] 區段上執行下列步驟：
 
     > [!NOTE]
-    > 您會收到**服務提供者中繼資料檔案**，稍後會在本教學課程中加以說明。
+    > 您會收到 **服務提供者中繼資料檔案** ，稍後會在本教學課程中加以說明。
 
     a. 按一下 [上傳中繼資料檔案]  。
 
-    ![image](common/upload-metadata.png)
+    ![此螢幕擷取畫面顯示具有上傳中繼資料檔案連結的基本 SAML 設定。](common/upload-metadata.png)
 
-    b. 按一下**資料夾圖示**以選取中繼資料檔案，然後按一下 [上傳]  。
+    b. 按一下 **資料夾圖示** 以選取中繼資料檔案，然後按一下 [上傳]  。
 
-    ![image](common/browse-upload-metadata.png)
+    ![此螢幕擷取畫面顯示您可以在其中選取並上傳檔案的對話方塊。](common/browse-upload-metadata.png)
 
     c. 成功上傳中繼資料檔案後，就會在 [基本 SAML 設定] 區段中自動填入 [識別碼]  和 [回覆 URL]  值：
 
-    ![image](common/sp-identifier-reply.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入識別碼、回覆 URL 以及選取 [儲存]。](common/sp-identifier-reply.png)
 
     > [!Note]
     > 如果 [識別碼]  和 [回覆 URL]  值未自動填入，請根據您的需求手動填入這些值。
 
     d. 在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<subdomain>.silkroad-eng.com/Authentication/`
 
-5. 如果您沒有**服務提供者中繼資料檔案**，請在 [基本 SAML 設定] 區段上執行下列步驟：
+5. 如果您沒有 **服務提供者中繼資料檔案** ，請在 [基本 SAML 設定] 區段上執行下列步驟：
 
     ![SilkRoad Life Suite 網域及 URL 單一登入資訊](common/sp-identifier-reply.png)
 
@@ -136,9 +136,9 @@ SilkRoad Life Suite 與 Azure AD 整合提供下列優點：
     - `https://<subdomain>.silkroad.com/Authentication/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請連絡 [SilkRoad Life Suite 用戶端支援小組](https://www.silkroad.com/locations/) \(英文\) 以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請連絡 [SilkRoad Life Suite 用戶端支援小組](https://www.silkroad.com/locations/) \(英文\) 以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -161,23 +161,23 @@ SilkRoad Life Suite 與 Azure AD 整合提供下列優點：
 
 1. 移至 [服務提供者]  ，然後按一下 [同盟詳細資料]  。
 
-    ![Azure AD 單一登入](./media/silkroad-life-suite-tutorial/tutorial_silkroad_06.png)
+    ![此螢幕擷取畫面顯示從 [服務提供者] 選取的 [同盟詳細資料]。](./media/silkroad-life-suite-tutorial/tutorial_silkroad_06.png)
 
-1. 按一下 [下載同盟中繼資料]  ，然後將資料檔儲存在您的電腦中。 在 Azure 入口網站的 [基本 SAML 設定] 區段中，使用所下載的同盟中繼資料作為**服務提供者中繼資料檔案**。
+1. 按一下 [下載同盟中繼資料]  ，然後將資料檔儲存在您的電腦中。 在 Azure 入口網站的 [基本 SAML 設定] 區段中，使用所下載的同盟中繼資料作為 **服務提供者中繼資料檔案** 。
 
-    ![Azure AD 單一登入](./media/silkroad-life-suite-tutorial/tutorial_silkroad_07.png)
+    ![此螢幕擷取畫面顯示 [下載同盟中繼資料] 連結。](./media/silkroad-life-suite-tutorial/tutorial_silkroad_07.png)
 
 1. 在您的 **SilkRoad** 應用程式中，按一下 [驗證來源]  。
 
-    ![Azure AD 單一登入](./media/silkroad-life-suite-tutorial/tutorial_silkroad_08.png) 
+    ![此螢幕擷取畫面顯示選取的 [驗證來源]。](./media/silkroad-life-suite-tutorial/tutorial_silkroad_08.png) 
 
 1. 按一下 [加入驗證來源]  。
 
-    ![Azure AD 單一登入](./media/silkroad-life-suite-tutorial/tutorial_silkroad_09.png)
+    ![此螢幕擷取畫面顯示 [新增驗證來源] 連結。](./media/silkroad-life-suite-tutorial/tutorial_silkroad_09.png)
 
 1. 在 [加入驗證來源]  區段中，執行下列步驟：
 
-    ![Azure AD 單一登入](./media/silkroad-life-suite-tutorial/tutorial_silkroad_10.png)
+    ![此螢幕擷取畫面顯示已選取 [使用檔案資料建立識別提供者] 按鈕的 [新增驗證來源]。](./media/silkroad-life-suite-tutorial/tutorial_silkroad_10.png)
   
     a. 在 [Option 2 - Metadata File] \(選項 2 - 中繼資料檔案\)  底下，按一下 [Option 2 - Metadata File] \(瀏覽\)  來上傳從 Azure 入口網站下載的中繼資料檔案。
   
@@ -185,21 +185,21 @@ SilkRoad Life Suite 與 Azure AD 整合提供下列優點：
 
 1. 在 [驗證來源]  區段中，按一下 [編輯]  。
 
-    ![Azure AD 單一登入](./media/silkroad-life-suite-tutorial/tutorial_silkroad_11.png)
+    ![此螢幕擷取畫面顯示已選取 [編輯] 選項的 [驗證來源]。](./media/silkroad-life-suite-tutorial/tutorial_silkroad_11.png)
 
 1. 在 [編輯驗證來源]  對話方塊中，執行下列步驟：
 
-    ![Azure AD 單一登入](./media/silkroad-life-suite-tutorial/tutorial_silkroad_12.png)
+    ![此螢幕擷取畫面顯示 [編輯驗證來源] 對話方塊，您可以在其中輸入所述的值。](./media/silkroad-life-suite-tutorial/tutorial_silkroad_12.png)
 
     a. 對 [已啟用]  選取 [是]  。
 
     b. 在 [實體識別碼]  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
 
-    c. 在 [IdP Description] \(IdP 描述\)  文字方塊中，輸入您的設定描述 (例如：*Azure AD SSO*)。
+    c. 在 [IdP Description] \(IdP 描述\)  文字方塊中，輸入您的設定描述 (例如： *Azure AD SSO* )。
 
-    d. 在 [Metadata File] \(中繼資料檔案\)  文字方塊中，上傳您從 Azure 入口網站下載的**中繼資料**檔案。
+    d. 在 [Metadata File] \(中繼資料檔案\)  文字方塊中，上傳您從 Azure 入口網站下載的 **中繼資料** 檔案。
   
-    e. 在 [IdP Name] \(IdP 名稱\)  文字方塊中，輸入設定特定的名稱 (例如：*Azure SP*)。
+    e. 在 [IdP Name] \(IdP 名稱\)  文字方塊中，輸入設定特定的名稱 (例如： *Azure SP* )。
   
     f. 在 [登出服務 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登出 URL]  值。
 
@@ -209,7 +209,7 @@ SilkRoad Life Suite 與 Azure AD 整合提供下列優點：
 
 1. 停用所有其他驗證來源。
 
-    ![Azure AD 單一登入](./media/silkroad-life-suite-tutorial/tutorial_silkroad_13.png)
+    ![此螢幕擷取畫面顯示 [驗證來源]，您可以在其中停用其他來源。 ](./media/silkroad-life-suite-tutorial/tutorial_silkroad_13.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -227,7 +227,7 @@ SilkRoad Life Suite 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`  
     例如， BrittaSimon@contoso.com

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 95cbb509beba82a14b9f8f8a11c603a6d7b8689d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e74361d6fb3eb1f9708f39f198506d16c7c046c4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87280795"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635094"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory 中的 Web 活動
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -73,7 +73,7 @@ ms.locfileid: "87280795"
 屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
 NAME | Web 活動的名稱 | String | 是
-type | 必須設定為 **WebActivity**。 | String | 是
+type | 必須設定為 **WebActivity** 。 | String | 是
 method | 目標端點的 Rest API 方法。 | 字串。 <br/><br/>支援的類型："GET"、"POST"、"PUT" | 是
 url | 目標端點和路徑 | 字串 (或含有字串之 resultType 的運算式)。 如果活動未在 1 分鐘內收到來自端點的回應，就會發生逾時並出現錯誤。 | 是
 headers | 傳送至要求的標頭。 例如，若要對要求設定語言和類型︰`"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`。 | 字串 (或含有字串之 resultType 的運算式) | 是，Content-type 標頭是必要的。 `"headers":{ "Content-Type":"application/json"}`
@@ -81,7 +81,7 @@ body | 代表傳送至端點的承載。  | 字串 (或含有字串之 resultTyp
 驗證 (authentication) | 呼叫端點所使用的驗證方法。 支援的類型為「基本」或 ClientCertificate。 如需詳細資訊，請參閱[驗證](#authentication)一節。 如果不需要驗證，請排除這個屬性。 | 字串 (或含有字串之 resultType 的運算式) | 否
 datasets | 傳遞至端點的資料集清單。 | 資料集參考的陣列。 可以是空陣列。 | 是
 linkedServices | 傳遞至端點的連結服務清單。 | 連結服務參考的陣列。 可以是空陣列。 | 是
-connectVia | 用來連線到資料存放區的[整合執行階段](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime)。 如果您的資料存放區位於私人網路) ，您可以使用 Azure integration runtime 或自我裝載整合執行時間 (。 如果未指定此屬性，服務會使用預設的 Azure integration runtime。 | Integration runtime 參考。 | 否 
+connectVia | 用來連線到資料存放區的[整合執行階段](./concepts-integration-runtime.md)。 如果您的資料存放區位於私人網路) ，您可以使用 Azure integration runtime 或自我裝載整合執行時間 (。 如果未指定此屬性，服務會使用預設的 Azure integration runtime。 | Integration runtime 參考。 | 否 
 
 > [!NOTE]
 > Web 活動叫用的 REST 端點必須傳回 JSON 類型的回應。 如果活動未在 1 分鐘內收到來自端點的回應，就會發生逾時並出現錯誤。
@@ -100,7 +100,7 @@ connectVia | 用來連線到資料存放區的[整合執行階段](https://docs.
 
 以下是 web 活動中支援的驗證類型。
 
-### <a name="none"></a>無
+### <a name="none"></a>None
 
 如果不需要驗證，請勿包含 authentication 屬性。
 
@@ -130,7 +130,7 @@ connectVia | 用來連線到資料存放區的[整合執行階段](https://docs.
 
 ### <a name="managed-identity"></a>受控識別
 
-將使用資料處理站的受控身分識別指定為其要求存取權杖的資源 URI。 若要呼叫 Azure 資源管理 API，請使用 `https://management.azure.com/`。 如需受控識別如何運作的詳細資訊，請參閱 [Azure 資源的受控識別](/azure/active-directory/managed-identities-azure-resources/overview)概觀頁面。
+將使用資料處理站的受控身分識別指定為其要求存取權杖的資源 URI。 若要呼叫 Azure 資源管理 API，請使用 `https://management.azure.com/`。 如需受控識別如何運作的詳細資訊，請參閱 [Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/overview.md)概觀頁面。
 
 ```json
 "authentication": {

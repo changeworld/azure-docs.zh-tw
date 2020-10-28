@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/26/2019
-ms.openlocfilehash: 5864a5de8ddec60f2072a28827a870c83ece8b9d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c12398ceacf8495a05037422a6501dc8138abc10
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546036"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628689"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>在 HDInsight 中結合 ScaleR 與 SparkR
 
@@ -218,7 +218,7 @@ weatherDF <- read.df(sqlContext, weatherPath, source = "com.databricks.spark.csv
 
 ## <a name="data-cleansing-and-transformation"></a>資料清理和轉換
 
-接下來，我們清理一些已匯入的航線資料，以重新命名資料行。 我們只保留需要的變數，並將預定的起飛時間四捨五入到最接近的時間，以將起飛時的最新天氣資料合併：
+接下來，我們會對我們已匯入的航空公司資料進行一些清理，以重新命名資料行。 我們只保留需要的變數，並將預定的起飛時間四捨五入到最接近的時間，以將起飛時的最新天氣資料合併：
 
 ```
 logmsg('clean the airline data') 
@@ -459,7 +459,7 @@ rxGetInfo(testDS)
 
 ## <a name="train-and-test-a-logistic-regression-model"></a>訓練和測試羅吉斯迴歸模型
 
-現在我們已經準備好建立模型。 為了解天氣對抵達時間延誤的影響，我們使用 ScaleR 的羅吉斯迴歸常式。 我們使用它來說明超過 15 分鐘的抵達延誤是否受起飛和抵達機場的天氣影響：
+現在我們已經準備好建立模型。 為了查看在抵達時間延遲的氣象資料影響，我們會使用 ScaleR 的羅吉斯回歸常式。 我們使用它來說明超過 15 分鐘的抵達延誤是否受起飛和抵達機場的天氣影響：
 
 ```
 logmsg('train a logistic regression model for Arrival Delay > 15 minutes') 
@@ -479,7 +479,7 @@ logitModel <- rxLogit(formula, data = trainDS, maxIterations = 3)
 base::summary(logitModel)
 ```
 
-我們現在進行一些預測並查看 ROC 和 AUC，看看這對於測試資料的作用。
+現在讓我們來看看它如何藉由進行一些預測並查看 ROC 和 AUC，來瞭解測試資料。
 
 ```
 # Predict over test data (Logistic Regression).
@@ -506,7 +506,7 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>在其他位置進行評分
 
-我們也可以在另一個平台上使用模型對資料評分。 透過將模型儲存至 RDS 檔案，然後將該 RDS 傳送和匯入目的地評分環境 (例如 MIcrosoft SQL Server R Services)。 請務必確保要評分的資料因數層級符合建立模型的因素。 透過 ScaleR 的 `rxCreateColInfo()` 函式擷取和儲存與模型化資料相關聯的資料行資訊，然後將該資料行資訊套用至可供預測的輸入資料來源，即可達到此目的。 在下列範例中，我們會儲存測試資料集的幾個資料列，而且會擷取此範例中的資料行資訊並使用於預測指令碼中：
+我們也可以在另一個平台上使用模型對資料評分。 將該 RDS 儲存至 RDS 檔案，然後將該 RDS 傳送和匯入至目的地評分環境，例如 Microsoft SQL Server R Services。 請務必確保要評分的資料因數層級符合建立模型的因素。 您可以透過 ScaleR 的函式來解壓縮和儲存與模型化資料相關聯的資料行資訊，然後將 `rxCreateColInfo()` 該資料行資訊套用至用於預測的輸入資料來源，以達成相符的結果。 在下列程式碼範例中，我們會儲存測試資料集的幾個資料列，並在預測腳本中將此範例中的資料行資訊解壓縮並使用：
 
 ```
 # save the model and a sample of the test dataset 
@@ -529,7 +529,7 @@ elapsed <- (proc.time() - t0)[3]
 logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 ```
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>[摘要]
 
 在本文中，我們示範了如何在 Hadoop Spark 中結合使用 SparkR 進行資料操作與 ScaleR 以進行模型開發。 此案例需要維護個別的 Spark 工作階段 (一次僅執行一個工作階段)，並透過 CSV 檔案交換資料。 這雖然已經很單純，但在後續發行的 ML 服務中，SparkR 和 ScaleR 可以共用 Spark 工作階段和 Spark DataFrame，此程序應該還可變得更加容易。
 

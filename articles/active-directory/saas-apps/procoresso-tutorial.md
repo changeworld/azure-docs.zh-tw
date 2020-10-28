@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: e0a8e6786dbce1015d587cf8015e3624c97a5817
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea69f1e634c66bff98462d41f3eeef19f8e15eb0
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553609"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105238"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>教學課程：Azure Active Directory 與 Procore SSO 整合
 
@@ -61,7 +61,7 @@ Procore SSO 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Procore SSO**，從結果面板中選取 [Procore SSO]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Procore SSO** ，從結果面板中選取 [Procore SSO]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
     ![結果清單中的 Procore SSO](common/search-new-app.png)
 
@@ -101,7 +101,7 @@ Procore SSO 與 Azure AD 整合提供下列優點：
 
     ![Procore SSO 網域與 URL 單一登入資訊](common/preintegrated.png)
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -121,21 +121,21 @@ Procore SSO 與 Azure AD 整合提供下列優點：
 
 2. 從工具箱下拉式清單按一下 [管理]  以開啟 SSO 設定頁面。
 
-    ![設定單一登入](./media/procoresso-tutorial/procore_tool_admin.png)
+    ![此螢幕擷取畫面顯示已選取 [目錄] 的 Procore 公司網站。](./media/procoresso-tutorial/procore_tool_admin.png)
 
 3. 如下所述貼上方塊中的值-
 
-    ![設定單一登入](./media/procoresso-tutorial/procore_setting_admin.png)  
+    ![此螢幕擷取畫面顯示 [新增人員] 對話方塊。](./media/procoresso-tutorial/procore_setting_admin.png) 
 
     a. 在 [單一登入簽發者 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
 
     b. 在 [SAML 登入目標 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
 
-    c. 現在開啟上述從 Azure 入口網站下載的**同盟中繼資料 XML**，然後複製名為 **X509Certificate**之標記中的憑證。 將複製的值貼至 [單一登入 x509 憑證]  方塊。
+    c. 現在開啟上述從 Azure 入口網站下載的 **同盟中繼資料 XML** ，然後複製名為 **X509Certificate** 之標記中的憑證。 將複製的值貼至 [單一登入 x509 憑證]  方塊。
 
 4. 按一下 [儲存變更]  。
 
-5. 在進行這些設定之後，您必須將透過它來登入 Procore 的 **網域名稱** (例如 **contoso.com**)，傳送給 [Procore 支援小組](https://support.procore.com/)，支援小組會為該網域啟動同盟 SSO。
+5. 在進行這些設定之後，您必須將透過它來登入 Procore 的 **網域名稱** (例如 **contoso.com** )，傳送給 [Procore 支援小組](https://support.procore.com/)，支援小組會為該網域啟動同盟 SSO。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
@@ -153,7 +153,7 @@ Procore SSO 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`。 例如， BrittaSimon@contoso.com
 
@@ -195,15 +195,15 @@ Procore SSO 與 Azure AD 整合提供下列優點：
 
 2. 從工具箱下拉式清單按一下 [目錄]  以開啟公司目錄頁面。
 
-    ![設定單一登入](./media/procoresso-tutorial/Procore_sso_directory.png)
+    ![此螢幕擷取畫面顯示已從工具箱選取 [目錄] 的 Procore 公司網站。](./media/procoresso-tutorial/Procore_sso_directory.png)
 
 3. 按一下 [新增人員]  選項來開啟表單，然後輸入執行以下選項-
 
-    ![設定單一登入](./media/procoresso-tutorial/Procore_user_add.png)
+    ![此螢幕擷取畫面顯示 [將人員新增至 Boylan Construction]，您可以在其中輸入使用者資訊。](./media/procoresso-tutorial/Procore_user_add.png)
 
-    a. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **Britta**。
+    a. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **Britta** 。
 
-    b. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon**。
+    b. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon** 。
 
     c. 在 [電子郵件]  文字方塊中，輸入使用者的電子郵件地址，例如 BrittaSimon@contoso.com。
 
@@ -213,11 +213,11 @@ Procore SSO 與 Azure AD 整合提供下列優點：
 
 4. 檢查並更新新增之連絡人的詳細資料。
 
-    ![設定單一登入](./media/procoresso-tutorial/Procore_user_check.png)
+    ![此螢幕擷取畫面顯示編輯頁面，您可以在其中驗證使用者設定。](./media/procoresso-tutorial/Procore_user_check.png)
 
 5. 按一下 [儲存並傳送邀請]  \(如果透過郵件邀請是必要的\)，或者按一下 [儲存]  \(直接儲存\) 以完成使用者註冊。
     
-    ![設定單一登入](./media/procoresso-tutorial/Procore_user_save.png)
+    ![此螢幕擷取畫面顯示 [目前專案設定]，您可以在其中儲存和傳送邀請。](./media/procoresso-tutorial/Procore_user_save.png)
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 

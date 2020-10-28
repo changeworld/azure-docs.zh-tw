@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: abc2367c309f46ee1b29a51145c67e8d71919774
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3e68e65a5c2ed73a8fb6d8e5d01c645e05ca5157
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91665390"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92320709"
 ---
 # <a name="communication-services-notifications"></a>通訊服務通知
 
@@ -40,13 +40,20 @@ Azure 通訊服務與 [Azure 事件方格](https://azure.microsoft.com/services/
 
 通訊服務會使用 Azure 通知中樞作為傳遞服務，以使用[直接傳送](https://docs.microsoft.com/rest/api/notificationhubs/direct-send) API 與各種平台特定的推播通知服務進行通訊。 這可讓您重複使用現有的 Azure 通知中樞資源和設定，為您的應用程式提供低延遲、可靠的通話通知。
 
+> [!NOTE]
+> 目前只支援呼叫推播通知。
+
 ### <a name="notification-hub-provisioning"></a>通知中樞佈建 
 
-若要使用通知中樞將推播通知傳遞至用戶端裝置，請在與您的通訊服務資源相同的訂用帳戶中[建立通知中樞](https://docs.microsoft.com/azure/notification-hubs/create-notification-hub-portal)。 必須為您要使用的平台通知服務設定 Azure 通知中樞。 若要了解如何在用戶端應用程式中收到通知中樞的推播通知，請參閱[開始使用通知中心](https://docs.microsoft.com/azure/notification-hubs/ios-sdk-get-started)，並從靠近頁面頂端的下拉式清單中選取目標用戶端平台。
+若要使用通知中樞將推播通知傳遞至用戶端裝置，請在與您的通訊服務資源相同的訂用帳戶中[建立通知中樞](https://docs.microsoft.com/azure/notification-hubs/create-notification-hub-portal)。 必須為您要使用的平台通知服務設定 Azure 通知中樞。 若要了解如何在用戶端應用程式中收到通知中樞的推播通知，請參閱[開始使用通知中心](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started)，並從靠近頁面頂端的下拉式清單中選取目標用戶端平台。
+
+> [!NOTE]
+> 目前支援 APN 和 FCM 平台。
 
 設定通知中樞之後，您可以使用 Azure Resource Manager 用戶端或透過 Azure 入口網站提供中樞的連接字串，將其與您的「通訊服務」資源建立關聯。 連接字串應該包含「傳送」權限。 我們建議您特別為您的中樞建立另一個具有僅限「傳送」權限的存取原則。 深入了解[通知中樞安全性和存取原則](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-security)
 
-> 注意：若要啟用 Apple Push Notification Service VOIP 通知，您必須將通知中樞的名稱設定為具有 `.voip` 尾碼的應用程式套件組合識別碼。 請參閱[透過通知中樞使用 APNS VOIP](https://docs.microsoft.com/azure/notification-hubs/voip-apns)。
+> [!IMPORTANT]
+> 若要啟用 Apple Push Notification Service VOIP 通知，您必須將通知中樞的名稱設定為具有 `.voip` 尾碼的應用程式套件組合識別碼。 請參閱[透過通知中樞使用 APNS VOIP](https://docs.microsoft.com/azure/notification-hubs/voip-apns)。
 
 #### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>使用 Azure Resource Manager 用戶端來設定通知中樞
 
@@ -67,6 +74,9 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 在入口網站中，瀏覽至您的 Azure 通訊服務資源。 在通訊服務資源中，從 [通訊服務] 頁面的左側功能表選取 [推播通知]，然後連線您先前佈建的通知中樞。 您必須在這裡提供您的連接字串和資源識別碼：
 
 :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="圖表顯示通訊服務與事件方格的整合方式。":::
+
+> [!NOTE]
+> 如果 Azure 通知中樞連接字串有更新，則必須一併更新通訊服務資源。
 
 #### <a name="device-registration"></a>裝置註冊 
 

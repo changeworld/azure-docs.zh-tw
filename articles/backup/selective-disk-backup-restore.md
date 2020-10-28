@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解使用 Azure 虛擬機器備份解決方
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 21e4ead8b3302ceef4cc53c126b9eab5784544b4
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 1052e7e531f6762de660ba89e22c7fbb0d01f808
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174107"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628757"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>適用于 Azure 虛擬機器的選擇性磁片備份和還原
 
@@ -46,7 +46,7 @@ az account set -s {subscriptionID}
 
 ### <a name="configure-backup-with-azure-cli"></a>使用 Azure CLI 設定備份
 
-在設定保護作業期間，您必須使用**包含**  /  **排除**參數指定磁片清單設定，以提供要在備份中包含或排除之磁片的 LUN 編號。
+在設定保護作業期間，您必須使用 **包含**  /  **排除** 參數指定磁片清單設定，以提供要在備份中包含或排除之磁片的 LUN 編號。
 
 ```azurecli
 az backup protection enable-for-vm --resource-group {resourcegroup} --vault-name {vaultname} --vm {vmname} --policy-name {policyname} --disk-list-setting include --diskslist {LUN number(s) separated by space}
@@ -192,7 +192,11 @@ az backup item show -c {vmname} -n {vmname} --vault-name {vaultname} --resource-
 ### <a name="enable-backup-with-powershell"></a>使用 PowerShell 啟用備份
 
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -DiskListSetting "Include"/"Exclude" -DisksList[Strings] -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -InclusionDisksList[Strings] -VaultId $targetVault.ID
+```
+
+```azurepowershell
+Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGroupName "RGName1"  -ExclusionDisksList[Strings] -VaultId $targetVault.ID
 ```
 
 ### <a name="backup-only-os-disk-during-configure-backup-with-powershell"></a>使用 PowerShell 在設定備份期間僅備份 OS 磁片
@@ -212,7 +216,11 @@ $item= Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -Workloa
 ### <a name="modify-protection-for-already-backed-up-vms-with-powershell"></a>使用 PowerShell 修改已備份 Vm 的保護
 
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Item $item -DiskListSetting "Include"/"Exclude" -DisksList[Strings]   -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Item $item -InclusionDisksList[Strings] -VaultId $targetVault.ID
+```
+
+```azurepowershell
+Enable-AzRecoveryServicesBackupProtection -Item $item -ExclusionDisksList[Strings] -VaultId $targetVault.ID
 ```
 
 ### <a name="backup-only-os-disk-during-modify-protection-with-powershell"></a>使用 PowerShell 在修改保護期間僅備份 OS 磁片
@@ -224,7 +232,7 @@ Enable-AzRecoveryServicesBackupProtection -Item $item  -ExcludeAllDataDisks -Vau
 ### <a name="reset-disk-exclusion-setting-with-powershell"></a>使用 PowerShell 重設磁片排除設定
 
 ```azurepowershell
-Enable-AzRecoveryServicesBackupProtection -Item $item -DiskListSetting "Reset" -VaultId $targetVault.ID
+Enable-AzRecoveryServicesBackupProtection -Item $item -ResetExclusionSettings -VaultId $targetVault.ID
 ```
 
 ### <a name="restore-selective-disks-with-powershell"></a>使用 PowerShell 還原選擇性磁片
@@ -278,7 +286,7 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "
 
 - 預設會在 VM 備份和還原中包含 OS 磁片，而且無法排除。
 - 只有在啟用磁片排除功能之後建立的復原點才支援選擇性磁片還原。
-- 使用磁片 **排除設定的** 備份只支援 **磁片還原** 選項。 在此情況下，不支援**VM 還原**或**取代現有**的還原選項。
+- 使用磁片 **排除設定的** 備份只支援 **磁片還原** 選項。 在此情況下，不支援 **VM 還原** 或 **取代現有** 的還原選項。
 
 ![還原作業期間無法使用還原 VM 和取代現有的選項](./media/selective-disk-backup-restore/options-not-available.png)
 
@@ -294,7 +302,7 @@ Azure VM 備份目前不支援具有 ultra 磁片的 Vm 或連接到它們的共
 
 Azure 虛擬機器備份會遵循現有的定價模型，其詳細說明請見 [此處](https://azure.microsoft.com/pricing/details/backup/)。
 
-只有當您選擇使用 [**僅 Os 磁片**] 選項進行備份時，才會針對 os 磁片計算**受保護的實例 (PI) 成本**。  如果您設定備份並至少選取一個資料磁片，則會針對所有連接至 VM 的磁片計算 PI 成本。 **備份儲存體成本** 只會根據包含的磁片計算，因此您可以節省儲存體成本。 一律會為 VM 中的所有磁片計算**快照集成本**， (包含和排除的磁片) 。
+只有當您選擇使用 [ **僅 Os 磁片** ] 選項進行備份時，才會針對 os 磁片計算 **受保護的實例 (PI) 成本** 。  如果您設定備份並至少選取一個資料磁片，則會針對所有連接至 VM 的磁片計算 PI 成本。 **備份儲存體成本** 只會根據包含的磁片計算，因此您可以節省儲存體成本。 一律會為 VM 中的所有磁片計算 **快照集成本** ， (包含和排除的磁片) 。
 
 如果您已選擇跨區域還原 (CRR) 功能，則在排除磁片之後，會將 [CRR 定價](https://azure.microsoft.com/pricing/details/backup/) 套用至備份儲存體成本。
 

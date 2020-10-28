@@ -9,15 +9,15 @@ ms.custom: devx-track-js
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a9faca55f8440a28a845e892ee38df2de3489f97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6b4fff4a58685873e99332b00864ee95f569416
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259487"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628587"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>適用於 Azure Active Directory B2C 中的 JavaScript 範例
 
@@ -36,19 +36,19 @@ ms.locfileid: "91259487"
 > [!NOTE]
 > 如果您想要為使用者流程啟用 JavaScript，請參閱 [Azure Active Directory B2C 中的 javascript 和頁面配置版本](user-flow-javascript-overview.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="select-a-page-layout"></a>選取頁面配置
 
 * 選取應用程式使用者介面元素的 [頁面配置](contentdefinitions.md#select-a-page-layout) 。
 
-    如果您想要使用 JavaScript，您必須[define a page layout version](contentdefinitions.md#migrating-to-page-layout) `contract` 針對自訂原則中的*所有*內容定義，定義頁面配置版本與頁面版本。
+    如果您想要使用 JavaScript，您必須 [define a page layout version](contentdefinitions.md#migrating-to-page-layout) `contract` 針對自訂原則中的 *所有* 內容定義，定義頁面配置版本與頁面版本。 瞭解如何使用頁面版本 [遷移至頁面配置](contentdefinitions.md#migrating-to-page-layout) 。 
 
 ## <a name="add-the-scriptexecution-element"></a>新增 ScriptExecution 元素
 
 您必須將 **ScriptExecution** 元素新增到 [RelyingParty](relyingparty.md) 元素來啟用指令碼執行。
 
-1. 開啟您的自訂原則檔案。 例如 *SignUpOrSignin.xml*。
+1. 開啟您的自訂原則檔案。 例如 *SignUpOrSignin.xml* 。
 2. 將 **ScriptExecution** 元素新增到 **RelyingParty** 的 **UserJourneyBehaviors** 元素：
 
     ```xml
@@ -68,7 +68,7 @@ ms.locfileid: "91259487"
 
 ### <a name="show-or-hide-a-password"></a>顯示或隱藏密碼
 
-協助客戶成功註冊的常見方式，便是允許他們查看自己所輸入的密碼。 此選項可讓使用者輕鬆地查看其密碼，並視需要做出更正，以協助他們完成註冊。 任何輸入密碼的欄位都會有具有 [顯示密碼]**** 標籤的核取方塊。  這可讓使用者以純文字的形式查看密碼。 將此程式碼片段包含到您適用於自我判斷頁面的註冊或登入範本：
+協助客戶成功註冊的常見方式，便是允許他們查看自己所輸入的密碼。 此選項可讓使用者輕鬆地查看其密碼，並視需要做出更正，以協助他們完成註冊。 任何輸入密碼的欄位都會有具有 [顯示密碼]  標籤的核取方塊。  這可讓使用者以純文字的形式查看密碼。 將此程式碼片段包含到您適用於自我判斷頁面的註冊或登入範本：
 
 ```Javascript
 function makePwdToggler(pwd){
@@ -114,7 +114,7 @@ setupPwdTogglers();
 
 ### <a name="add-terms-of-use"></a>新增使用規定
 
-將下列程式碼包含到您在自己的頁面中想包含 [使用規定]**** 核取方塊的位置。 在您的本機帳戶註冊和社交帳戶註冊頁面中，通常會需要這個核取方塊。
+將下列程式碼包含到您在自己的頁面中想包含 [使用規定]  核取方塊的位置。 在您的本機帳戶註冊和社交帳戶註冊頁面中，通常會需要這個核取方塊。
 
 ```Javascript
 function addTermsOfUseLink() {

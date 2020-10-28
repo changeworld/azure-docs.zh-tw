@@ -4,16 +4,16 @@ description: 了解 Azure Analysis Services，此為完全受控的平台即服�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 09/08/2020
+ms.date: 10/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 11ab4e0404b7ebc8620cd1eb54edae9bb861e46b
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: a05da5fae748e799d7965c51415956c2e2a524b1
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018792"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92201506"
 ---
 # <a name="what-is-azure-analysis-services"></a>什麼是 Azure Analysis Services？
 
@@ -29,13 +29,13 @@ Azure Analysis Services 是完全受控的平台即服務 (PaaS)，可在雲端�
 
 您可以在短短幾分鐘內，於 Azure 入口網站中[建立伺服器](analysis-services-create-server.md)。 此外，若是使用 Azure Resource Manager [範本](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)和 PowerShell，您可以使用宣告式範本來建立伺服器。 在單一範本中，您可以部署伺服器資源以及其他 Azure 元件 (例如儲存體帳戶和 Azure Functions)。 
 
-**影片：** 請觀看[讓部署自動進行](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation) \(英文\)，以深入了解如何使用 Azure 自動化來加快伺服器建立速度。
+**影片：** 請觀看 [讓部署自動進行](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation) \(英文\)，以深入了解如何使用 Azure 自動化來加快伺服器建立速度。
 
 Azure Analysis Services 與許多 Azure 服務整合，讓您能建置複雜的分析解決方案。 與 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) 整合可對重要資料提供安全的角色型存取。 納入可將資料載入模型中的活動，進而與 [Azure Data Factory](../data-factory/introduction.md) 管線整合。 [Azure 自動化](../automation/automation-intro.md)和 [Azure Functions](../azure-functions/functions-overview.md) 可用於使用自訂程式碼之模型的輕量型協調流程。 
 
 ## <a name="the-right-tier-when-you-need-it"></a>當您需要時在右層
 
-Azure Analysis Services 會以**開發人員**、**基本**及**標準**層提供。 每一層中的計劃成本會依據處理能力、查詢處理單位 (QPU) 和記憶體大小而有所不同。 當您建立伺服器時，可以選取一個層級內的計劃。 您可以在同一層內上下調動計劃，或升級為較高層，但是無法從較高層降級為較低層。
+Azure Analysis Services 會以 **開發人員** 、 **基本** 及 **標準** 層提供。 每一層中的計劃成本會依據處理能力、查詢處理單位 (QPU) 和記憶體大小而有所不同。 當您建立伺服器時，可以選取一個層級內的計劃。 您可以在同一層內上下調動計劃，或升級為較高層，但是無法從較高層降級為較低層。
 
 ### <a name="developer-tier"></a>開發人員層
 
@@ -71,7 +71,7 @@ Azure Analysis Services 會以**開發人員**、**基本**及**標準**層提�
 |S9v2 <sup>[1](#naar)</sup>    |    1280    |    400     |
 
 <a name="naar">1</a> - 並非所有區域都有提供。   
-<a name="rec">2</a> - 建議使用 v2。
+<a name="rec">2</a> - S8 和 S9 [已淘汰](https://azure.microsoft.com/updates/azure-s8-and-s9-analysis-services-skus-retiring-on-31-august-2023/)。 建議使用 v2。 
 
 ## <a name="availability-by-region"></a>依區域的可用性
 
@@ -85,7 +85,7 @@ Azure Analysis Services 會以**開發人員**、**基本**及**標準**層提�
 |加拿大中部    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |美國東部     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |美國東部 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|美國東部 2     |     S8、S9、S8v2、S9v2   |    1    |
+|美國東部 2     |     S8v2、S9v2   |    1    |
 |美國中北部     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |美國中北部     |     S8v2、S9v2    |    1     |
 |美國中部     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
@@ -93,9 +93,9 @@ Azure Analysis Services 會以**開發人員**、**基本**及**標準**層提�
 |美國中南部     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |美國中西部   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |美國西部     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|美國西部     |    S8、S9、S8v2、S9v2   |    2  |
+|美國西部     |    S8v2、S9v2   |    2  |
 |美國西部 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|美國西部 2    |    S8、S9、S8v2、S9v2  |    1     |
+|美國西部 2    |    S8v2、S9v2  |    1     |
 
 ### <a name="europe"></a>歐洲
 
@@ -105,17 +105,18 @@ Azure Analysis Services 會以**開發人員**、**基本**及**標準**層提�
 |北歐     |    S8v2、S9v2      |    3     |
 |英國南部     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |西歐     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|西歐    |   S8、S9、S8v2、S9v2  |  1  |
+|西歐    |   S8v2、S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>亞太地區 
 
 |區域  | 支援的方案 | 查詢複本 (僅限標準方案) |
 |---------|---------|:---------:|
 |澳大利亞東部     |    B1, B2, S0, S1, S2, S4     |    3     |
-|澳大利亞東部     |    S8、S9、S8v2、S9v2    |    1     |
+|澳大利亞東部     |    S8v2、S9v2    |    1     |
 |澳大利亞東南部     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |日本東部     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|東南亞     |     B1、B2、S0、S1、S2、S4、S8、S9、S8v2、S9v2、D1     |   1      |
+|東南亞     |     B1, B2, S0, S1, S2, S4, D1     |   1      |
+|東南亞     |     S8v2、S9v2     |   1      |
 |印度西部     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>調整您的需求
@@ -159,7 +160,7 @@ Azure Analysis Services 中的表格式模型可支援各種資料來源，從�
 
 ## <a name="your-data-is-secure"></a>您的資料很安全
 
-Azure Analysis Services 可為敏感性資料提供多種層級的安全性。 Analysis Services 是一項 Azure 服務，可在 Azure 平台中自動啟用**基本**層級的分散式阻斷服務 (DDoS) 攻擊防護。 若要深入了解，請參閱 [Azure DDoS 保護標準概觀](../virtual-network/ddos-protection-overview.md)。 
+Azure Analysis Services 可為敏感性資料提供多種層級的安全性。 Analysis Services 是一項 Azure 服務，可在 Azure 平台中自動啟用 **基本** 層級的分散式阻斷服務 (DDoS) 攻擊防護。 若要深入了解，請參閱 [Azure DDoS 保護標準概觀](../virtual-network/ddos-protection-overview.md)。 
 
 在伺服器層級，Analysis Services 提供防火牆、Azure 驗證、伺服器系統管理員角色和伺服器端加密。 在資料模型層級，使用者角色、資料列層級和物件層級的安全性可確保您的資料安全無虞，只有應該看到資料的使用者能看到資料。
 

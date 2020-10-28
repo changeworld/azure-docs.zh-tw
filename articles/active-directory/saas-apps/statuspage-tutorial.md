@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 2ee2eb7586489527272d92dd1eaef6976bc41f94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 532983f2df6689f840b71673ede3fd86842c1d22
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88524748"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122887"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>教學課程：將 Azure Active Directory 與 StatusPage 整合
 
@@ -61,7 +61,7 @@ StatusPage 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **StatusPage**，從結果面板中選取 [StatusPage]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **StatusPage** ，從結果面板中選取 [StatusPage]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
     ![結果清單中的 StatusPage](common/search-new-app.png)
 
@@ -138,17 +138,17 @@ StatusPage 與 Azure AD 整合提供下列優點：
 
 1. 在主工具列中，按一下 [管理帳戶]  。
 
-    ![設定單一登入](./media/statuspage-tutorial/tutorial_statuspage_06.png)
+    ![此螢幕擷取畫面顯示從 StatusPage 公司網站選取的 [管理帳戶]。](./media/statuspage-tutorial/tutorial_statuspage_06.png)
 
 1. 按一下 [單一登入]  索引標籤。
 
-    ![設定單一登入](./media/statuspage-tutorial/tutorial_statuspage_07.png)
+    ![此螢幕擷取畫面顯示 [單一登入] 索引標籤。](./media/statuspage-tutorial/tutorial_statuspage_07.png)
 
 1. 在 [SSO 設定] 頁面上，執行下列步驟：
 
-    ![設定單一登入](./media/statuspage-tutorial/tutorial_statuspage_08.png)
+    ![此螢幕擷取畫面顯示 [SSO 設定] 頁面，您可以在其中輸入所述的值。](./media/statuspage-tutorial/tutorial_statuspage_08.png)
 
-    ![設定單一登入](./media/statuspage-tutorial/tutorial_statuspage_09.png)
+    ![此螢幕擷取畫面顯示 [儲存組態] 按鈕。](./media/statuspage-tutorial/tutorial_statuspage_09.png)
 
     a. 在 [SSO 目標 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
 
@@ -172,7 +172,7 @@ StatusPage 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`  
     例如， BrittaSimon@contoso.com
@@ -217,21 +217,21 @@ StatusPage 支援 Just-in-Time 佈建。 您已在[設定 Azure AD 單一登入]
 
 1. 以管理員身分登入您的 StatusPage 公司網站。
 
-1. 在頂端功能表中，按一下 [ **管理帳戶**]。
+1. 在頂端功能表中，按一下 [ **管理帳戶** ]。
 
-    ![設定單一登入](./media/statuspage-tutorial/tutorial_statuspage_06.png)
+    ![此螢幕擷取畫面顯示從 StatusPage 公司網站選取的 [管理帳戶]。](./media/statuspage-tutorial/tutorial_statuspage_06.png)
 
 1. 按一下 [小組成員]  索引標籤。
   
-    ![建立 Azure AD 測試使用者](./media/statuspage-tutorial/tutorial_statuspage_10.png) 
+    ![此螢幕擷取畫面顯示 [小組成員] 索引標籤。](./media/statuspage-tutorial/tutorial_statuspage_10.png) 
 
 1. 按一下 [新增小組成員]  。
   
-    ![建立 Azure AD 測試使用者](./media/statuspage-tutorial/tutorial_statuspage_11.png) 
+    ![此螢幕擷取畫面顯示 [新增小組成員] 按鈕。](./media/statuspage-tutorial/tutorial_statuspage_11.png) 
 
 1. 在相關的文字方塊中，輸入您想要佈建之有效使用者的 [電子郵件地址]  、[名字]  和 [姓氏]  。 
 
-    ![建立 Azure AD 測試使用者](./media/statuspage-tutorial/tutorial_statuspage_12.png) 
+    ![此螢幕擷取畫面顯示 [新增使用者] 對話方塊，您可以在其中輸入所述的值。](./media/statuspage-tutorial/tutorial_statuspage_12.png) 
 
 1. 針對 [角色]  ，選擇 [用戶端系統管理員]  。
 

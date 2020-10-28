@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/16/2019
-ms.openlocfilehash: 6b04e24541959740ca08c2ec196b2408db0b76b7
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ce53e02c587086a34a9967bb09ba047858af52e8
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545186"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628927"
 ---
 # <a name="submit-apache-hadoop-jobs-in-hdinsight"></a>在 HDInsight 中提交 Apache Hadoop 作業
 
@@ -40,6 +40,6 @@ ms.locfileid: "92545186"
   - [在 HDInsight 中將 Apache Sqoop 與 Apache Hadoop 搭配使用](apache-hadoop-use-sqoop-powershell.md)
   - [使用 PowerShell 在 HDInsight 中以 Apache Hadoop 執行 MapReduce 作業](apache-hadoop-use-mapreduce-powershell.md)
 
-## <a name="see-also"></a>另請參閱
+## <a name="next-steps"></a>後續步驟
 
-- [Azure HDInsight 文件](../index.yml)
+- [Azure HDInsight 檔](../index.yml)

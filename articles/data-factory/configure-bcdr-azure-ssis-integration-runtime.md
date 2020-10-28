@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/09/2020
-ms.openlocfilehash: e1b70e0e3eb54253972afded1bd37363d1a868e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 761841c1f2146a33b35cdddc4adc4d3eb1a4b139
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84195720"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635281"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-sql-database-geo-replication-and-failover"></a>使用 SQL Database 異地複寫和容錯移轉來設定 Azure SSIS integration runtime
 
@@ -25,15 +25,15 @@ ms.locfileid: "84195720"
 
 本文說明如何使用 SSISDB 資料庫的 Azure SQL Database 異地複寫來設定 Azure SSIS 整合執行時間 (IR) 。 發生容錯移轉時，您可以確保 Azure-SSIS IR 仍會使用次要資料庫來運作。
 
-如需 SQL Database 異地複寫和容錯移轉的詳細資訊，請參閱[概觀：主動式異地複寫和自動容錯移轉群組](../sql-database/sql-database-geo-replication-overview.md)。
+如需 SQL Database 異地複寫和容錯移轉的詳細資訊，請參閱[概觀：主動式異地複寫和自動容錯移轉群組](../azure-sql/database/auto-failover-group-overview.md)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="azure-ssis-ir-failover-with-a-sql-managed-instance"></a>使用 SQL 受控執行個體 Azure-SSIS IR 容錯移轉
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
-Azure SQL 受控執行個體使用 *資料庫主要金鑰 (DMK) * 來協助保護儲存在資料庫中的資料、認證和連接資訊。 若要啟用 DMK 的自動解密，金鑰複本會透過 *伺服器主要金鑰加密， (SMK) *。 
+Azure SQL 受控執行個體使用 *資料庫主要金鑰 (DMK)* 來協助保護儲存在資料庫中的資料、認證和連接資訊。 若要啟用 DMK 的自動解密，金鑰複本會透過 *伺服器主要金鑰加密， (SMK)* 。 
 
 SMK 不會在容錯移轉群組中複寫。 您必須在主要和次要實例上新增密碼，才能在容錯移轉之後進行 DMK 解密。
 
@@ -264,7 +264,7 @@ When failover occurs, take the following steps:
     如需此 PowerShell 命令的詳細資訊，請參閱 [Azure Data Factory 中的建立 AZURE SSIS 整合運行](create-azure-ssis-integration-runtime.md)時間。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請考量 Azure-SSIS 整合執行階段的下列其他組態選項：
 

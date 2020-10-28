@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: d5b394833dbc920612f521b01f4da88af6c3e015
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 293fc1bca47f7c58f89a8dac50cc636be8231d4f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220742"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633496"
 ---
 # <a name="how-to-create-an-nfs-share"></a>如何建立 NFS 磁碟區
 
@@ -89,7 +89,7 @@ az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscr
 1. 瀏覽至您的儲存體帳戶，並選取 [檔案共用]。
 1. 選取 [ **+ 檔案共用** ] 以建立新的檔案共用。
 1. 命名您的檔案共用，選取布建的容量。
-1. 針對 **通訊協定** ，請選取 [ **NFS (預覽]) **。
+1. 針對 **通訊協定** ，請選取 [ **NFS (預覽])** 。
 1. 針對 **根 Squash** 進行選取。
 
     - Root squash (預設) 存取遠端超級使用者 (根) 對應到 UID (65534) 和 GID (65534) 。
@@ -120,7 +120,7 @@ az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscr
 
 1. 關閉，然後重新開啟 PowerShell 主控台。
 
-1. 安裝 **Az. Storage** preview module 版本 **2.5.2-preview**。
+1. 安裝 **Az. Storage** preview module 版本 **2.5.2-preview** 。
 
    ```powershell
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
@@ -152,10 +152,9 @@ az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscr
 
 ```azurecli-interactive
 az storage share-rm create \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
+    --storage-account $STORAGEACCT \
     --enabled-protocol NFS \
-    --root-access RootSquash \
+    --root-squash RootSquash \
     --name "myshare" 
 ```
 ---

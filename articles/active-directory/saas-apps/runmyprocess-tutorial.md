@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: db47849575c097cf56824b623dddbb6e0835d1b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5c641ce9b224aecc3d199427bf27b804f7dd2dd
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543596"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92102080"
 ---
 # <a name="tutorial-integrate-runmyprocess-with-azure-active-directory"></a>教學課程：整合 RunMyProcess 與 Azure Active Directory
 
@@ -49,7 +49,7 @@ ms.locfileid: "88543596"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **RunMyProcess**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **RunMyProcess** 。
 1. 從結果面板選取 [RunMyProcess]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
@@ -80,7 +80,7 @@ ms.locfileid: "88543596"
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://live.runmyprocess.com/live/<tenant id>`
 
     > [!NOTE]
-    > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [RunMyProcess 客戶支援小組](mailto:support@runmyprocess.com)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [RunMyProcess 客戶支援小組](mailto:support@runmyprocess.com)以取得此值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -96,11 +96,11 @@ ms.locfileid: "88543596"
 
 1. 在左方瀏覽面板中，按一下 [帳戶]  ，然後選取 [組態]  。
 
-    ![在應用程式端設定單一登入](./media/runmyprocess-tutorial/tutorial_runmyprocess_001.png)
+    ![此螢幕擷取畫面顯示從帳戶選取的組態。](./media/runmyprocess-tutorial/tutorial_runmyprocess_001.png)
 
 1. 移至 [驗證方法]  區段並執行下列步驟：
 
-    ![在應用程式端設定單一登入](./media/runmyprocess-tutorial/tutorial_runmyprocess_002.png)
+    ![此螢幕擷取畫面顯示 [驗證方法]，您可以在其中輸入所述的值。](./media/runmyprocess-tutorial/tutorial_runmyprocess_002.png)
 
     a. 在 [方法]  ，選取 [使用 Samlv2 進行 SSO]  。
 
@@ -108,7 +108,7 @@ ms.locfileid: "88543596"
 
     c. 在 [登出重新導向]  文字方塊中，貼上您從 Azure 入口網站複製的 [登出 URL]  值。
 
-    d. 在 [名稱識別碼格式]  文字方塊中，輸入 **urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress** 作為**名稱識別碼格式**的值。
+    d. 在 [名稱識別碼格式]  文字方塊中，輸入 **urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress** 作為 **名稱識別碼格式** 的值。
 
     e. 從 Azure 入口網站將所下載的憑證檔案以記事本開啟，複製憑證檔案的內容，然後將其貼至 [憑證]  文字方塊。
 

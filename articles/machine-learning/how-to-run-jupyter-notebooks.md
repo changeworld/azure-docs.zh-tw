@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 4373618bacad00675d5f639225c435296010949b
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 654c1beb0f8f544219ed802cab92f06055d70960
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221414"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628672"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>如何在工作區中執行 Jupyter Notebook
 
@@ -43,7 +43,7 @@ ms.locfileid: "92221414"
 
 1. 在 [Azure Machine Learning Studio](https://ml.azure.com) 中開啟您的工作區。
 1. 選取左側的 [筆記本]。 
-1. 在 [我的檔案] 區段中，選取 [使用者檔案] 清單上方的**建立新檔案**圖示。
+1. 在 [我的檔案] 區段中，選取 [使用者檔案] 清單上方的 **建立新檔案** 圖示。
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="建立新檔案":::
 
@@ -78,11 +78,11 @@ ms.locfileid: "92221414"
 1. 選取左側的 [筆記本]。
 1. 選取位於左側 [使用者檔案] 區段中的任何筆記本。  如果您沒有任何筆記本，請先[建立筆記本](#create)。
 1. 選取 **計算** 目標，或建立一個新的，並等候它正在執行。
-1. 選取**開啟終端機**圖示。
+1. 選取 **開啟終端機** 圖示。
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="建立新檔案":::
 
-1. 如果您沒有看到此圖示，請選取計算目標右邊的 **...** ，然後選取 [ **開啟終端**機]。
+1. 如果您沒有看到此圖示，請選取計算目標右邊的 **...** ，然後選取 [ **開啟終端** 機]。
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="建立新檔案":::
 
@@ -113,8 +113,8 @@ ms.locfileid: "92221414"
 
 使用焦點模式來展開目前的視圖，讓您可以將焦點放在使用中的索引標籤上。 焦點模式會隱藏 [筆記本檔案瀏覽器]。
 
-1. 在終端機視窗工具列中，選取 [ **焦點模式]**   以開啟焦點模式。 視您的視窗寬度而定，這可能位於工具列的 [ **...** ] 功能表項目底下。
-1. 在焦點模式中，選取 [ **標準] view**以返回標準視圖。
+1. 在終端機視窗工具列中，選取 [ **焦點模式]** 以開啟焦點模式。 視您的視窗寬度而定，這可能位於工具列的 [ **...** ] 功能表項目底下。
+1. 在焦點模式中，選取 [ **標準] view** 以返回標準視圖。
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/focusmode.gif" alt-text="建立新檔案":::
 
@@ -131,7 +131,7 @@ ms.locfileid: "92221414"
 > 收集功能目前處於公開預覽狀態。
 > 此預覽版本會在沒有服務等級協定的情況下提供，不建議用於實際執行工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-在建立筆記本的過程中，您通常會得到用於資料探索或偵測的資料格。 *收集*功能可協助您在沒有這些多餘儲存格的情況下產生乾淨的筆記本。
+在建立筆記本的過程中，您通常會得到用於資料探索或偵測的資料格。 *收集* 功能可協助您在沒有這些多餘儲存格的情況下產生乾淨的筆記本。
 
 1. 執行您所有的筆記本儲存格。
 1. 選取包含您想要新筆記本執行之程式碼的資料格。 例如，提交實驗的程式碼，或可能註冊模型的程式碼。
@@ -143,13 +143,13 @@ ms.locfileid: "92221414"
 
 ### <a name="save-and-checkpoint-a-notebook"></a>儲存並檢查筆記本的檢查點
 
-當您建立 *.ipynb*檔案時，Azure Machine Learning 建立檢查點檔案   。
+當您建立 *.ipynb* 檔案時，Azure Machine Learning 建立檢查點檔案。
 
 在筆記本工具列中，選取功能表，然後選取 **[ &gt; 儲存和檢查點** ] 以手動方式儲存筆記本，它會新增與筆記本相關聯的檢查點檔案。
 
 :::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="建立新檔案":::
 
-每隔30秒會自動儲存每個筆記本。[自動儲存] 只會更新初始 *.ipynb*檔   ，而不會更新檢查點檔案。
+每隔30秒會自動儲存每個筆記本。 [自動儲存] 只會更新初始 *.ipynb* 檔，而不會更新檢查點檔案。
  
 選取 [筆記本] 功能表中的 [ **檢查點** ]，以建立命名檢查點，並將筆記本還原至已儲存的檢查點。
 
@@ -169,10 +169,10 @@ ms.locfileid: "92221414"
 
 您「無法」刪除 **Samples** 筆記本。  這些筆記本是 Studio 的一部分，而且會在每次發佈新的 SDK 時更新。  
 
-您「可以」透過下列任何方式刪除 **使用者檔案**筆記本：
+您「可以」透過下列任何方式刪除 **使用者檔案** 筆記本：
 
 * 在 Studio 中，選取資料夾或檔案後面的 [...]。  請務必使用支援的瀏覽器 (Microsoft Edge、Chrome 或 Firefox)。
-* 從任何 [筆記本] 工具列中，選取[**開啟終端機**](#terminal)以存取計算執行個體的終端機視窗。
+* 從任何 [筆記本] 工具列中，選取 [**開啟終端機**](#terminal)以存取計算執行個體的終端機視窗。
 * 使用 Jupyter 或 JupyterLab 各自的工具。
 
 ## <a name="run-an-experiment"></a>執行實驗
@@ -184,7 +184,7 @@ ms.locfileid: "92221414"
 3. 選取 [建立]。
 4. 計算執行個體會自動連線到筆記本，您現在可以執行儲存格了。
 
-只有您可以查看和使用您所建立的計算執行個體。  您的**使用者檔案**會與 VM 分開儲存，而且由工作區中的所有計算執行個體共用。
+只有您可以查看和使用您所建立的計算執行個體。  您的 **使用者檔案** 會與 VM 分開儲存，而且由工作區中的所有計算執行個體共用。
 
 ### <a name="view-logs-and-output"></a>檢視記錄和輸出
 
@@ -215,10 +215,10 @@ ms.locfileid: "92221414"
 
 筆記本會自動尋找連線的計算執行個體上安裝的所有 Jupyter 核心程序。  將核心程序加入計算執行個體：
 
-1. 選取 [筆記本] 工具列中的[**開啟終端機**](#terminal)。
+1. 選取 [筆記本] 工具列中的 [**開啟終端機**](#terminal)。
 1. 使用終端機視窗建立新的環境。  例如，下列程式碼會建立 `newenv` ：
     ```shell
-    conda create --name newenv
+    conda create -y --name newenv
     ```
 1. 啟用環境。  例如，建立 `newenv` 之後：
 
@@ -228,13 +228,13 @@ ms.locfileid: "92221414"
 1. 將 pip 和 ipykernel 套件安裝至新環境，並為該 conda 環境建立核心
 
     ```shell
-    conda install pip
-    conda install ipykernel
+    conda install -y pip
+    conda install -y ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
 
 > [!NOTE]
-> 針對筆記本內的套件管理，請使用 **% pip** 或 **% conda** 魔術函式將套件自動安裝 **到目前**執行中的核心，而不是代表所有套件的 **！ pip** 或 **！ conda** ， (包括目前執行中核心以外的套件) 
+> 針對筆記本內的套件管理，請使用 **% pip** 或 **% conda** 魔術函式將套件自動安裝 **到目前** 執行中的核心，而不是代表所有套件的 **！ pip** 或 **！ conda** ， (包括目前執行中核心以外的套件) 
 
 您可以安裝任何[可用的 Jupyter 核心程序](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) 。
 

@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
-ms.openlocfilehash: cac7b4f376300722762b1cedbf52a5c2e0ecb6e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 123595bb6cd0112e597b9d958763900e07b9ff38
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89596105"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633071"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>建立和設定自我裝載整合執行階段
 
@@ -56,7 +56,7 @@ ms.locfileid: "89596105"
 
 使用下列步驟，使用 Azure Data Factory UI 來建立自我裝載 IR。
 
-1. 在 Azure Data Factory UI 的 [開始吧] 頁面上，從最左邊窗格中選取 [[管理] 索引標籤](https://docs.microsoft.com/azure/data-factory/author-management-hub)。
+1. 在 Azure Data Factory UI 的 [開始吧] 頁面上，從最左邊窗格中選取 [[管理] 索引標籤](./author-management-hub.md)。
 
    ![首頁的 [管理] 按鈕](media/doc-common-process/get-started-page-manage-button.png)
 
@@ -64,22 +64,22 @@ ms.locfileid: "89596105"
 
    ![建立整合執行階段](media/doc-common-process/manage-new-integration-runtime.png)
 
-1. 在 [ **整合執行時間設定** ] 頁面上，選取 [ **Azure]、[自我**裝載]，然後選取 [ **繼續**]。 
+1. 在 [ **整合執行時間設定** ] 頁面上，選取 [ **Azure]、[自我** 裝載]，然後選取 [ **繼續** ]。 
 
-1. 在下列頁面上，選取 [ **自我** 裝載] 以建立 Self-Hosted IR，然後選取 [ **繼續**]。
+1. 在下列頁面上，選取 [ **自我** 裝載] 以建立 Self-Hosted IR，然後選取 [ **繼續** ]。
    ![建立 selfhosted IR](media/create-self-hosted-integration-runtime/new-selfhosted-integration-runtime.png)
 
-1. 輸入 IR 的名稱，然後選取 [ **建立**]。
+1. 輸入 IR 的名稱，然後選取 [ **建立** ]。
 
 1. 在 [ **整合執行時間設定** ] 頁面上，選取 **選項 1** 底下的連結，以開啟電腦上的快速安裝。 或依照 **選項 2** 下的步驟手動設定。 下列指示以手動設定為基礎：
 
    ![整合執行階段設定](media/create-self-hosted-integration-runtime/integration-runtime-setting-up.png)
 
-    1. 複製並貼上驗證金鑰。 選取 [ **下載並安裝整合運行**時間]。
+    1. 複製並貼上驗證金鑰。 選取 [ **下載並安裝整合運行** 時間]。
 
     1. 在本機 Windows 電腦上下載自我裝載的整合執行階段。 執行安裝程式。
 
-    1. 在 [ **註冊 Integration Runtime (自我裝載) ** ] 頁面上，貼上您稍早儲存的金鑰，然後選取 [ **註冊**]。
+    1. 在 [ **註冊 Integration Runtime (自我裝載)** ] 頁面上，貼上您稍早儲存的金鑰，然後選取 [ **註冊** ]。
     
        ![註冊整合執行階段](media/create-self-hosted-integration-runtime/register-integration-runtime.png)
 
@@ -138,7 +138,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 1. 資料開發人員使用 PowerShell Cmdlet 在 Azure data factory 中建立自我裝載整合執行時間。 目前，Azure 入口網站不支援這項功能。
 1. 資料開發人員建立內部部署資料存放區的連結服務。 開發人員藉由指定服務應該用來連接到資料存放區的自我裝載整合執行時間實例來執行此動作。
 1. 自我裝載整合執行階段節點會使用 Windows 資料保護應用程式開發介面 (DPAPI) 將加密，並將認證儲存在本機上。 如果有多個節點設定為高可用性，則該認證會進一步同步處理到其他節點。 每個節點都會使用 DPAPI 來加密認證，並將其儲存在本機上。 認證同步處理無需資料開發人員介入，並且由自我裝載 IR 處理。
-1. Azure Data Factory 與自我裝載整合執行時間進行通訊，以排程和管理作業。 通訊是透過使用共用 [Azure 服務匯流排轉送](https://docs.microsoft.com/azure/service-bus-relay/relay-what-is-it#wcf-relay) 連接的控制通道來進行。 當需要執行活動作業時，Data Factory 會將要求和任何認證資訊排入佇列。 如果認證尚未儲存在自我裝載整合執行時間中，它就會這麼做。 自我裝載整合執行時間會在輪詢佇列之後啟動作業。
+1. Azure Data Factory 與自我裝載整合執行時間進行通訊，以排程和管理作業。 通訊是透過使用共用 [Azure 服務匯流排轉送](../azure-relay/relay-what-is-it.md#wcf-relay) 連接的控制通道來進行。 當需要執行活動作業時，Data Factory 會將要求和任何認證資訊排入佇列。 如果認證尚未儲存在自我裝載整合執行時間中，它就會這麼做。 自我裝載整合執行時間會在輪詢佇列之後啟動作業。
 1. 自我裝載整合執行時間會在內部部署存放區與雲端儲存體之間複製資料。 複製的方向取決於在資料管線中如何設定複製活動。 在此步驟中，自我裝載整合執行時間會透過安全的 HTTPS 通道，直接與雲端式儲存體服務（例如 Azure Blob 儲存體）進行通訊。
 
 ## <a name="considerations-for-using-a-self-hosted-ir"></a>使用自我裝載 IR 的考量
@@ -171,7 +171,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 - 如果主機電腦休眠，自我裝載整合執行時間就不會回應資料要求。 因此，安裝自我裝載整合執行階段之前，請先在電腦上設定適當的電源計劃。 如果電腦已設定為休眠，自我裝載整合執行時間安裝程式會提示訊息。
 - 您必須是電腦上的系統管理員，才能成功安裝和設定自我裝載整合執行時間。
 - 複製-活動執行會以特定的頻率進行。 電腦上的處理器和 RAM 使用量遵循與尖峰和閒置時間相同的模式。 資源使用量也取決於移動的資料量。 如果有多個複製作業正在進行，您會看到資源使用量在尖峰時段增加。
-- 在 Parquet、ORC 或 Avro 格式的資料解壓縮期間，工作可能會失敗。 如需 Parquet 的詳細資訊，請參閱 [Azure Data Factory 中的 Parquet 格式](https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime)。 檔案建立會在自我裝載整合機器上執行。 若要如預期般運作，檔案建立需要下列必要條件：
+- 在 Parquet、ORC 或 Avro 格式的資料解壓縮期間，工作可能會失敗。 如需 Parquet 的詳細資訊，請參閱 [Azure Data Factory 中的 Parquet 格式](./format-parquet.md#using-self-hosted-integration-runtime)。 檔案建立會在自我裝載整合機器上執行。 若要如預期般運作，檔案建立需要下列必要條件：
     - [Visual C++ 2010](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe) 可轉散發套件封裝 (x64) 
     - 從 JRE 提供者（例如 [採用 OpenJDK](https://adoptopenjdk.net/)），JAVA 執行時間 (jre) 8 版。 確定 `JAVA_HOME` 已設定環境變數。
 
@@ -186,12 +186,12 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 ## <a name="install-and-register-a-self-hosted-ir-from-microsoft-download-center"></a>從 Microsoft 下載中心安裝和註冊自我裝載 IR
 
 1. 瀏覽至 [Microsoft 整合執行階段下載頁面](https://www.microsoft.com/download/details.aspx?id=39717)。
-1. 選取 [ **下載**]，選取64位版本，然後選取 **[下一步]**。 不支援32位版本。
+1. 選取 [ **下載** ]，選取64位版本，然後選取 **[下一步]** 。 不支援32位版本。
 1. 直接執行受控識別檔案，或將它儲存至硬碟並加以執行。
-1. 在 [ **歡迎使用** ] 視窗中選取語言，然後選取 **[下一步**]。
-1. 接受「Microsoft 軟體授權條款」，然後選取 [下一步]****。
-1. 選取 [資料夾]**** 來安裝自我裝載整合執行階段，接著按一下 [下一步]****。
-1. 在 [ **安裝準備就緒** ] 頁面上，選取 [ **安裝**]。
+1. 在 [ **歡迎使用** ] 視窗中選取語言，然後選取 **[下一步** ]。
+1. 接受「Microsoft 軟體授權條款」，然後選取 [下一步]  。
+1. 選取 [資料夾]  來安裝自我裝載整合執行階段，接著按一下 [下一步]  。
+1. 在 [ **安裝準備就緒** ] 頁面上，選取 [ **安裝** ]。
 1. 選取 **[完成]** 以完成安裝。
 1. 使用 PowerShell 取得驗證金鑰。 擷取驗證金鑰的 PowerShell 範例：
 
@@ -199,11 +199,11 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
     Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
     ```
 
-1. 在電腦上執行 Microsoft Integration Runtime Configuration Manager 的 [ **註冊 Integration Runtime (自我裝載) ** 視窗中，執行下列步驟：
+1. 在電腦上執行 Microsoft Integration Runtime Configuration Manager 的 [ **註冊 Integration Runtime (自我裝載)** 視窗中，執行下列步驟：
 
     1. 將驗證金鑰貼到文字區域。
 
-    1. (選擇性) 選取 [顯示驗證金鑰]**** 以查看金鑰文字。
+    1. (選擇性) 選取 [顯示驗證金鑰]  以查看金鑰文字。
 
     1. 選取 [註冊]。
 
@@ -220,7 +220,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 > 您不需要建立新的自我裝載整合執行時間來關聯每個節點。 您可以將自我裝載整合執行階段安裝在另一部電腦上，並使用相同的驗證金鑰進行註冊。
 
 > [!NOTE]
-> 在您新增其他節點以達到高可用性和擴充性之前，請確定已在第一個節點上啟用 [ **遠端存取內部** 網路] 選項。 若要這樣做， **Microsoft Integration Runtime Configuration Manager**請選取 [  >  **Settings**  >  **遠端存取內部**網路] Microsoft Integration Runtime Configuration Manager 設定。
+> 在您新增其他節點以達到高可用性和擴充性之前，請確定已在第一個節點上啟用 [ **遠端存取內部** 網路] 選項。 若要這樣做， **Microsoft Integration Runtime Configuration Manager** 請選取 [  >  **Settings**  >  **遠端存取內部** 網路] Microsoft Integration Runtime Configuration Manager 設定。
 
 ### <a name="scale-considerations"></a>調整考量
 
@@ -240,7 +240,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 - 憑證必須是受信任的 X509 v3 公開憑證。 建議您使用由公用夥伴憑證授權單位單位所發行的憑證 (CA) 。
 - 每個整合執行階段節點都必須信任此憑證。
-- 我們不建議 (SAN) 憑證的主體別名，因為只會使用最後一個 SAN 專案。 系統會忽略所有其他 SAN 專案。 例如，如果您有 SAN 憑證，其 San 為 **node1.domain.contoso.com** 和 **node2.domain.contoso.com**，則只能在其完整功能變數名稱 (FQDN) 為 **node2.domain.contoso.com**的電腦上使用此憑證。
+- 我們不建議 (SAN) 憑證的主體別名，因為只會使用最後一個 SAN 專案。 系統會忽略所有其他 SAN 專案。 例如，如果您有 SAN 憑證，其 San 為 **node1.domain.contoso.com** 和 **node2.domain.contoso.com** ，則只能在其完整功能變數名稱 (FQDN) 為 **node2.domain.contoso.com** 的電腦上使用此憑證。
 - 憑證可以針對 TLS/SSL 憑證使用 Windows Server 2012 R2 所支援的任何金鑰大小。
 - 不支援使用 CNG 金鑰的憑證。  
 
@@ -265,8 +265,8 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 ### <a name="terminology"></a>詞彙
 
-- **共用 ir**：在實體基礎結構上執行的原始自我裝載 ir。  
-- **連結的 ir**：參考另一個共用 IR 的 ir。 連結的 IR 是邏輯 IR，並使用另一個共用自我裝載 IR 的基礎結構。
+- **共用 ir** ：在實體基礎結構上執行的原始自我裝載 ir。  
+- **連結的 ir** ：參考另一個共用 IR 的 ir。 連結的 IR 是邏輯 IR，並使用另一個共用自我裝載 IR 的基礎結構。
 
 ### <a name="methods-to-share-a-self-hosted-integration-runtime"></a>共用自我裝載整合執行時間的方法
 
@@ -288,7 +288,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 ### <a name="known-limitations-of-self-hosted-ir-sharing"></a>自我裝載整合執行階段共用的已知限制
 
-* 建立連結 IR 的資料處理站必須有 [受控識別](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)。 根據預設，在 Azure 入口網站或 PowerShell Cmdlet 中建立的資料處理站具有隱含建立的受控識別。 但是，透過 Azure Resource Manager 範本或 SDK 建立資料處理站時，您必須明確設定 **Identity** 屬性。 此設定可確保 Resource Manager 建立包含受控識別的 data factory。
+* 建立連結 IR 的資料處理站必須有 [受控識別](../active-directory/managed-identities-azure-resources/overview.md)。 根據預設，在 Azure 入口網站或 PowerShell Cmdlet 中建立的資料處理站具有隱含建立的受控識別。 但是，透過 Azure Resource Manager 範本或 SDK 建立資料處理站時，您必須明確設定 **Identity** 屬性。 此設定可確保 Resource Manager 建立包含受控識別的 data factory。
 
 * 支援此功能的 Data Factory .NET SDK 必須是1.1.0 版或更新版本。
 
@@ -296,7 +296,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 * 共用功能只適用于相同 Azure AD 租使用者內的資料處理站。
 
-* 針對 Azure AD [來賓使用者](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews)，UI 中的搜尋功能（使用搜尋關鍵字列出所有資料處理站）將 [無法運作](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits)。 但只要來賓使用者是 data factory 的擁有者，您就可以在沒有搜尋功能的情況下共用 IR。 針對需要共用 IR 的資料處理站受控識別，請在 [ **指派許可權** ] 方塊中輸入該受控識別，然後選取 Data Factory UI 中的 [ **新增** ]。
+* 針對 Azure AD [來賓使用者](../active-directory/governance/manage-guest-access-with-access-reviews.md)，UI 中的搜尋功能（使用搜尋關鍵字列出所有資料處理站）將 [無法運作](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits)。 但只要來賓使用者是 data factory 的擁有者，您就可以在沒有搜尋功能的情況下共用 IR。 針對需要共用 IR 的資料處理站受控識別，請在 [ **指派許可權** ] 方塊中輸入該受控識別，然後選取 Data Factory UI 中的 [ **新增** ]。
 
   > [!NOTE]
   > 這項功能僅適用于 Data Factory V2。
@@ -311,8 +311,8 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 有兩個要考慮的防火牆：
 
-- 在組織的中央路由器上執行的*公司防火牆*
-- 在安裝自我裝載整合執行時間的本機電腦上，設定為 daemon 的*Windows 防火牆*
+- 在組織的中央路由器上執行的 *公司防火牆*
+- 在安裝自我裝載整合執行時間的本機電腦上，設定為 daemon 的 *Windows 防火牆*
 
 ![防火牆](media/create-self-hosted-integration-runtime/firewall.png)
 
@@ -352,17 +352,17 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 有三個組態選項：
 
-- **請勿使用 proxy**：自我裝載整合執行時間不會明確地使用任何 proxy 來連線到雲端服務。
-- **使用系統 proxy**：自我裝載整合執行時間會使用 diahost.exe.config 和 diawp.exe.config 中所設定的 proxy 設定。如果這些檔案未指定 proxy 設定，自我裝載整合執行時間會直接連接到雲端服務，而不會通過 proxy。
-- **使用自訂 proxy**：設定要用於自我裝載整合執行時間的 HTTP proxy 設定，而不是使用 diahost.exe.config 和 diawp.exe.config 中的設定。需要 **位址** 和 **埠** 值。 **使用者名稱** 和 **密碼** 值是選擇性的，視您的 proxy 驗證設定而定。 自我裝載整合執行階段上的所有設定都會使用 Windows DPAPI 加密，並儲存在本機電腦上。
+- **請勿使用 proxy** ：自我裝載整合執行時間不會明確地使用任何 proxy 來連線到雲端服務。
+- **使用系統 proxy** ：自我裝載整合執行時間會使用 diahost.exe.config 和 diawp.exe.config 中所設定的 proxy 設定。如果這些檔案未指定 proxy 設定，自我裝載整合執行時間會直接連接到雲端服務，而不會通過 proxy。
+- **使用自訂 proxy** ：設定要用於自我裝載整合執行時間的 HTTP proxy 設定，而不是使用 diahost.exe.config 和 diawp.exe.config 中的設定。需要 **位址** 和 **埠** 值。 **使用者名稱** 和 **密碼** 值是選擇性的，視您的 proxy 驗證設定而定。 自我裝載整合執行階段上的所有設定都會使用 Windows DPAPI 加密，並儲存在本機電腦上。
 
 當您儲存更新的 proxy 設定之後，integration runtime 主機服務會自動重新開機。
 
 註冊自我裝載整合執行時間之後，如果您想要查看或更新 proxy 設定，請使用 Microsoft Integration Runtime Configuration Manager。
 
-1. 開啟 [Microsoft Integration Runtime 管理員]****。
+1. 開啟 [Microsoft Integration Runtime 管理員]  。
 1. 選取 [Settings] \(設定\) 索引標籤。
-1. 在 [ **Http proxy**] 底下，選取 [ **變更** ] 連結以開啟 [ **設定 HTTP proxy** ] 對話方塊。
+1. 在 [ **Http proxy** ] 底下，選取 [ **變更** ] 連結以開啟 [ **設定 HTTP proxy** ] 對話方塊。
 1. 選取 [下一步]  。 接著，您會看到一則警告，要求您儲存 proxy 設定並重新啟動 integration runtime 主機服務的許可權。
 
 您可以使用 configuration manager 工具來查看和更新 HTTP proxy。
@@ -396,14 +396,14 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
     </system.net>
     ```
 
-    Proxy 標記可讓其他屬性指定必要的設定，例如 `scriptLocation` 。 如需語法，請參閱[ \<proxy\> (網路設定) 元素](https://msdn.microsoft.com/library/sa91de1e.aspx)。
+    Proxy 標記可讓其他屬性指定必要的設定，例如 `scriptLocation` 。 如需語法，請參閱[ \<proxy\> (網路設定) 元素](/dotnet/framework/configure-apps/file-schema/network/proxy-element-network-settings)。
 
     ```xml
     <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
     ```
 1. 將設定檔儲存在其原始位置。 然後重新開機自我裝載 integration runtime 主機服務，以挑選變更。
 
-   若要重新開機服務，請使用主控台中的 [服務] 小程式。 或從「整合執行階段組態管理員」中，選取 [停止服務]**** 按鈕，然後再選取 [啟動服務]****。
+   若要重新開機服務，請使用主控台中的 [服務] 小程式。 或從「整合執行階段組態管理員」中，選取 [停止服務]  按鈕，然後再選取 [啟動服務]  。
 
    如果服務未啟動，您可能在所編輯的應用程式佈建檔中新增了不正確的 XML 標記語法。
 
@@ -417,7 +417,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 如果您看到類似下列的錯誤訊息，可能是因為防火牆或 proxy 伺服器的設定不正確。 這類設定可防止自我裝載的整合執行時間連接到 Data Factory，以驗證自己的身分。 請參閱上一節，以確保您的防火牆和 Proxy 伺服器的設定皆正確。
 
 * 當您嘗試註冊自我裝載整合執行時間時，您會收到下列錯誤訊息：「無法註冊此 Integration Runtime 節點！ 請確認驗證金鑰有效，且 integration service 主機服務正在這部電腦上執行。
-* 當您開啟「Integration Runtime 組態管理員」時，您會看到「已中斷連線」**** 或「正在連線」**** 狀態。 當您在 [**事件檢視器**應用程式和服務記錄檔] Microsoft Integration Runtime 下查看 Windows 事件記錄檔時  >  **Application and Services Logs**  >  ** **，您會看到如下的錯誤訊息：
+* 當您開啟「Integration Runtime 組態管理員」時，您會看到「已中斷連線」  或「正在連線」  狀態。 當您在 [  ，您會看到如下的錯誤訊息：
 
     ```
     Unable to connect to the remote server
@@ -426,7 +426,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 ### <a name="enable-remote-access-from-an-intranet"></a>啟用來自內部網路的遠端存取
 
-如果您使用 PowerShell 從網路電腦加密認證，而不是安裝自我裝載整合執行時間，您可以啟用從內部網路進行 **遠端存取** 選項。 如果您在安裝自我裝載整合執行時間的電腦上執行 PowerShell 來加密認證，則無法啟用 **從內部網路進行遠端存取**。
+如果您使用 PowerShell 從網路電腦加密認證，而不是安裝自我裝載整合執行時間，您可以啟用從內部網路進行 **遠端存取** 選項。 如果您在安裝自我裝載整合執行時間的電腦上執行 PowerShell 來加密認證，則無法啟用 **從內部網路進行遠端存取** 。
 
 在您新增其他節點以獲得高可用性和擴充性之前，請先啟用內部網路的 **遠端存取** 。  
 

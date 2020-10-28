@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 3181b88b0cf49516eb5230585460d0cc91bb4042
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f36836681e338c597c068a91a6d4bc011cce3511
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575294"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206726"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教學課程：訂購 Azure 資料箱
 
@@ -55,7 +55,7 @@ Azure 資料箱是一項混合式解決方案，可讓您以快速、簡便而�
 
 #### <a name="install-the-cli-locally"></a>在本機安裝 CLI
 
-* 安裝 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.67 版或更新版本)。 或者，您可以[使用 MSI 安裝](https://aka.ms/installazurecliwindows)。
+* 安裝 [Azure CLI](/cli/azure/install-azure-cli) (2.0.67 版或更新版本)。 或者，您可以[使用 MSI 安裝](https://aka.ms/installazurecliwindows)。
 
 **登入 Azure**
 
@@ -164,13 +164,13 @@ You have logged in. Now let us find all the subscriptions to which you have acce
     WSManStackVersion              3.0
 ```
 
-如果您的版本低於 6.2.4，則需要升級您的 Windows PowerShell 版本。 如需安裝最新版的 Windows PowerShell，請參閱[安裝 Azure PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-7)。
+如果您的版本低於 6.2.4，則需要升級您的 Windows PowerShell 版本。 如需安裝最新版的 Windows PowerShell，請參閱[安裝 Azure PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7&preserve-view=true)。
 
 **安裝 Azure PowerShell 和資料箱模組**
 
 您將需要安裝 Azure PowerShell 模組，才能使用 Azure PowerShell 來訂購 Azure 資料箱。 安裝 Azure PowerShell 模組：
 
-1. 安裝 [Azure PowerShell Az 模組](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。
+1. 安裝 [Azure PowerShell Az 模組](/powershell/azure/new-azureps-module-az)。
 2. 然後，使用 `Install-Module -Name Az.DataBox` 命令安裝 Az.DataBox。
 
 ```azurepowershell
@@ -184,7 +184,7 @@ Version              Name                                Repository           De
 
 #### <a name="sign-in-to-azure"></a>登入 Azure
 
-開啟 Windows PowerShell 命令視窗，並使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/Connect-AzAccount) \(英文\) 命令登入 Azure：
+開啟 Windows PowerShell 命令視窗，並使用 [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) \(英文\) 命令登入 Azure：
 
 ```azurepowershell
 PS C:\Windows> Connect-AzAccount
@@ -202,7 +202,7 @@ gusp@contoso.com     MySubscription                            aaaaaaaa-aaaa-aaa
 PS C:\Windows\System32>
 ```
 
-如需如何使用 Windows PowerShell 登入 Azure 的詳細資訊，請參閱[使用 Azure PowerShell 登入](https://docs.microsoft.com/powershell/azure/authenticate-azureps)。
+如需如何使用 Windows PowerShell 登入 Azure 的詳細資訊，請參閱[使用 Azure PowerShell 登入](/powershell/azure/authenticate-azureps)。
 
 ---
 
@@ -251,15 +251,15 @@ PS C:\Windows\System32>
 
 7. 在 [資料目的地] 索引標籤中，選取 [資料目的地]。
 
-    如果使用**儲存體帳戶**作為儲存體目的地，就會看到下列螢幕擷取畫面：
+    如果使用 **儲存體帳戶** 作為儲存體目的地，就會看到下列螢幕擷取畫面：
 
     ![Azure 資料箱資料目的地](media/data-box-deploy-ordered/select-data-box-import-07.png)
 
-    根據指定的 Azure 區域，從現有儲存體帳戶的篩選清單中選取一或多個儲存體帳戶。 資料箱可以與最多 10 個儲存體帳戶連結。 您也可以建立新的**一般用途 v1**、**一般用途 v2** 或 **Blob 儲存體帳戶**。
+    根據指定的 Azure 區域，從現有儲存體帳戶的篩選清單中選取一或多個儲存體帳戶。 資料箱可以與最多 10 個儲存體帳戶連結。 您也可以建立新的 **一般用途 v1** 、 **一般用途 v2** 或 **Blob 儲存體帳戶** 。
 
     支援具有虛擬網路的儲存體帳戶。 若要允許資料箱服務使用受保護的儲存體帳戶來運作，請在儲存體帳戶網路防火牆設定內啟用受信任的服務。 如需詳細資訊，請參閱如何[新增 Azure 資料箱作為受信任的服務](../storage/common/storage-network-security.md#exceptions)。
 
-    如果使用資料箱以從內部部署虛擬硬碟 (VHD) 建立**受控磁碟**，您也必須提供下列資訊：
+    如果使用資料箱以從內部部署虛擬硬碟 (VHD) 建立 **受控磁碟** ，您也必須提供下列資訊：
 
     |設定  |值  |
     |---------|---------|
@@ -271,16 +271,46 @@ PS C:\Windows\System32>
    > [!NOTE]
    > 如果分頁 Blob 未成功轉換為受控磁碟，其會保留在儲存體帳戶中，您需要支付儲存體費用。
 
-    完成時，選取 [下一步:**安全性]** 以繼續作業。
+    完成時，選取 [下一步: **安全性]** 以繼續作業。
 
-1. 在 [安全性] 中，如果您想要啟用以軟體為基礎的雙重加密，請選取 [為訂單啟用雙重加密]。 
+    [安全性] 畫面可讓您使用自己的裝置和共用密碼，並選擇使用雙重加密。 
+
+    [安全性] 畫面上的所有設定都是選擇性的。 如果您未變更任何設定，將會套用預設設定。
+
+    ![資料箱匯入訂單的安全性畫面](media/data-box-deploy-ordered/select-data-box-import-security-01.png)
+
+1. 如果您不想使用系統所產生且 Azure 資料箱預設使用得密碼，請展開 [自備密碼]。
+
+   系統產生的密碼是安全的，除非您的組織要求，否則建議使用。
+
+   ![已針對資料箱匯入訂單展開 [自備密碼] 選項](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
+
+   - 若要對新裝置使用自己的密碼，請 [設定裝置密碼的喜好設定]，選取 [使用自己的密碼]，然後輸入符合安全性需求的密碼。
+   
+     ![資料箱匯入的安全性畫面，可供使用自有裝置密碼的選項](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
+
+   - 若要將自己的密碼使用於共用：
+
+     1. 藉由 [設定共用密碼的喜好設定]，選取 [使用自己的密碼]，然後 [選取共用的密碼]。
+     
+        ![資料箱匯入的安全性畫面，可供使用自有共用密碼的選項](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
+
+     1. 依序輸入每個儲存體帳戶的密碼。 此密碼將會使用於儲存體帳戶的所有共用。
+     
+        若要針對所有儲存體帳戶使用相同的密碼，請選取 [複製到全部]。 完成時，請選取 [儲存]。
+     
+        ![用於輸入資料箱匯入訂單共用密碼的畫面](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
+
+       在 [安全性] 畫面上，您可以使用 [變更密碼的檢視] 來變更密碼。
+
+1. 在 [安全性] 中，如果您想要啟用以軟體為基礎的雙重加密，請展開 [雙重加密 (適用於高度安全的環境)]，然後選取 [為訂單啟用雙重加密]。
+
+   ![資料箱匯入的安全性畫面，針對資料箱訂單啟用以軟體為基礎的加密](media/data-box-deploy-ordered/select-data-box-import-security-07.png)
 
    除了資料箱上的 AES-256 位元加密以外，也會執行以軟體為基礎的加密。
 
    > [!NOTE]
    > 啟用此選項可能會進行訂單處理，且資料複製會花費較長的時間。 建立訂單之後，您就無法變更此選項。
-
-   ![資料箱匯入的安全性畫面，雙重加密](media/data-box-deploy-ordered/select-data-box-import-07c.png)
 
    完成時，選取 [下一步:連絡人詳細資料] 以繼續進行。
 
@@ -338,7 +368,7 @@ PS C:\Windows\System32>
    |查詢| JMESPath 查詢字串。 如需詳細資訊，請參閱 [JMESPath](http://jmespath.org/)。 | --query <string>|
    |verbose| 包括詳細資訊記錄。 | --verbose |
 
-2. 在您選擇的命令提示字元或終端機中，使用 [az databox job create](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create) \(英文\) 來建立您的 Azure 資料箱訂單。
+2. 在您選擇的命令提示字元或終端機中，執行 [az databox job create](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create&preserve-view=true) 以建立您的 Azure 資料箱訂單。
 
    ```azurecli
    az databox job create --resource-group <resource-group> --name <order-name> --location <azure-location> --sku <databox-device-type> --contact-name <contact-name> --phone <phone-number> --email-list <email-list> --street-address1 <street-address-1> --street-address2 <street-address-2> --city "contact-city" --state-or-province <state-province> --country <country> --postal-code <postal-code> --company-name <company-name> --storage-account "storage-account"
@@ -431,7 +461,7 @@ PS C:\Windows\System32>
     $storAcct = Get-AzStorageAccount -Name "mystorageaccount" -ResourceGroup "myresourcegroup"
    ```
 
-2. 記下您資料箱訂單的設定。 這些設定包括您的個人/商務資訊、訂用帳戶名稱、裝置資訊和出貨資訊。 執行 PowerShell 命令以建立資料箱訂單時，您將需要使用這些設定作為參數。 下表顯示用於 [New-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/New-AzDataBoxJob) \(英文\) 的參數設定。
+2. 記下您資料箱訂單的設定。 這些設定包括您的個人/商務資訊、訂用帳戶名稱、裝置資訊和出貨資訊。 執行 PowerShell 命令以建立資料箱訂單時，您將需要使用這些設定作為參數。 下表顯示用於 [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob) \(英文\) 的參數設定。
 
     | 設定 (參數) | 描述 |  範例值 |
     |---|---|---|
@@ -452,7 +482,7 @@ PS C:\Windows\System32>
     |CompanyName| 您工作的公司名稱。| "Contoso, LTD" |
     |StorageAccountResourceId [必要]| 您想要匯入資料的 Azure 儲存體帳戶識別碼。| <AzStorageAccount>.id |
 
-3. 在您選擇的命令提示字元或終端機中，使用 [New-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/New-AzDataBoxJob) \(英文\) 來建立您的 Azure 資料箱訂單。
+3. 在您選擇的命令提示字元或終端機中，使用 [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob) \(英文\) 來建立您的 Azure 資料箱訂單。
 
    ```azurepowershell
     PS> $storAcct = Get-AzureStorageAccount -StorageAccountName "mystorageaccount"
@@ -506,7 +536,7 @@ PS C:\Windows\System32>
 
 ### <a name="track-a-single-order"></a>追蹤單一訂單
 
-若要取得單一現有 Azure 資料箱訂單的追蹤資訊，請執行 [az databox job show](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show)。 此命令會顯示訂單的相關資訊，例如 (但不限於)：名稱、資源群組、追蹤資訊、訂用帳戶識別碼、連絡人資訊、出貨類型，以及裝置 SKU。
+若要取得單一現有 Azure 資料箱訂單的追蹤資訊，請執行 [az databox job show](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true)。 此命令會顯示訂單的相關資訊，例如 (但不限於)：名稱、資源群組、追蹤資訊、訂用帳戶識別碼、連絡人資訊、出貨類型，以及裝置 SKU。
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -547,7 +577,7 @@ PS C:\Windows\System32>
 
 ### <a name="list-all-orders"></a>列出所有訂單
 
-如果您已訂購多個裝置，可以執行 [az databox job list](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list) 來檢視所有 Azure 資料箱訂單。 此命令會列出屬於特定資源群組的所有訂單。 同時也會顯示在輸出中顯示以下資訊：訂單名稱、運送狀態、Azure 區域、交貨類型、訂單狀態。 已取消的訂單也會包含在清單中。
+如果您已訂購多個裝置，可以執行 [az databox job list](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) 來檢視所有 Azure 資料箱訂單。 此命令會列出屬於特定資源群組的所有訂單。 同時也會顯示在輸出中顯示以下資訊：訂單名稱、運送狀態、Azure 區域、交貨類型、訂單狀態。 已取消的訂單也會包含在清單中。
 此命令也會顯示每個訂單的時間戳記。
 
 ```azurecli
@@ -590,7 +620,7 @@ az databox job list --resource-group <resource-group>
 
 ### <a name="track-a-single-order"></a>追蹤單一訂單
 
-若要取得有關單一現有 Azure 資料箱訂單的追蹤資訊，請執行 [Get-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/Get-AzDataBoxJob) \(英文\)。 此命令會顯示訂單的相關資訊，例如 (但不限於)：名稱、資源群組、追蹤資訊、訂用帳戶識別碼、連絡人資訊、出貨類型，以及裝置 SKU。
+若要取得有關單一現有 Azure 資料箱訂單的追蹤資訊，請執行 [Get-AzDataBoxJob](/powershell/module/az.databox/Get-AzDataBoxJob) \(英文\)。 此命令會顯示訂單的相關資訊，例如 (但不限於)：名稱、資源群組、追蹤資訊、訂用帳戶識別碼、連絡人資訊、出貨類型，以及裝置 SKU。
 
 > [!NOTE]
 > `Get-AzDataBoxJob` 用於顯示單一和多張訂單。 不同之處在於您可以針對單一訂單指定訂單名稱。
@@ -623,7 +653,7 @@ az databox job list --resource-group <resource-group>
 
 ### <a name="list-all-orders"></a>列出所有訂單
 
-如果您已訂購多個裝置，則可以執行 [Get-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/Get-AzDataBoxJob) \(英文\) 來檢視您的所有 Azure 資料箱訂單。 此命令會列出屬於特定資源群組的所有訂單。 同時也會顯示在輸出中顯示以下資訊：訂單名稱、運送狀態、Azure 區域、交貨類型、訂單狀態。 已取消的訂單也會包含在清單中。
+如果您已訂購多個裝置，則可以執行 [Get-AzDataBoxJob](/powershell/module/az.databox/Get-AzDataBoxJob) \(英文\) 來檢視您的所有 Azure 資料箱訂單。 此命令會列出屬於特定資源群組的所有訂單。 同時也會顯示在輸出中顯示以下資訊：訂單名稱、運送狀態、Azure 區域、交貨類型、訂單狀態。 已取消的訂單也會包含在清單中。
 此命令也會顯示每個訂單的時間戳記。
 
 ```azurepowershell
@@ -666,7 +696,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="cancel-an-order"></a>取消訂單
 
-若要取消 Azure 資料箱訂單，請執行 [az databox job cancel](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel)。 您必須指定取消訂單的原因。
+若要取消 Azure 資料箱訂單，請執行 [az databox job cancel](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true)。 您必須指定取消訂單的原因。
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -703,7 +733,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="delete-an-order"></a>順序訂單
 
-如果您已取消 Azure 資料箱訂單，可以執行 [az databox job delete](https://docs.microsoft.com/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete) 以刪除訂單。
+如果您已取消 Azure 資料箱訂單，可以執行 [az databox job delete](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) 以刪除訂單。
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]
@@ -742,7 +772,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="cancel-an-order"></a>取消訂單
 
-若要取消 Azure 資料箱訂單，請執行 [Stop-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/stop-azdataboxjob) \(英文\)。 您必須指定取消訂單的原因。
+若要取消 Azure 資料箱訂單，請執行 [Stop-AzDataBoxJob](/powershell/module/az.databox/stop-azdataboxjob) \(英文\)。 您必須指定取消訂單的原因。
 
 ```azurepowershell
 Stop-AzDataBoxJob -ResourceGroup <String> -Name <String> -Reason <String>
@@ -776,7 +806,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="delete-an-order"></a>順序訂單
 
-如果您已取消 Azure 資料箱訂單，則可以執行 [Remove-AzDataBoxJob](https://docs.microsoft.com/powershell/module/az.databox/remove-azdataboxjob) \(英文\) 以刪除訂單。
+如果您已取消 Azure 資料箱訂單，則可以執行 [Remove-AzDataBoxJob](/powershell/module/az.databox/remove-azdataboxjob) \(英文\) 以刪除訂單。
 
 ```azurepowershell
 Remove-AzDataBoxJob -Name <String> -ResourceGroup <String>

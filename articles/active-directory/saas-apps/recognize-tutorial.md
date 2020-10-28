@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 86c2c7383f3850b0c51831f94e673c3941894a08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66e415cbec3b2e8c834ee02630d7f849ccf3e1e2
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548863"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92105918"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>教學課程：Azure Active Directory 與 Recognize 整合
 
@@ -61,7 +61,7 @@ ms.locfileid: "88548863"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Recognize**，從結果面板中選取  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Recognize** ，從結果面板中選取  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Recognize](common/search-new-app.png)
 
@@ -97,16 +97,16 @@ ms.locfileid: "88548863"
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 如果您有**服務提供者中繼資料檔案**，請在 [基本 SAML 設定] 區段上執行下列步驟：
+4. 如果您有 **服務提供者中繼資料檔案** ，請在 [基本 SAML 設定] 區段上執行下列步驟：
 
     >[!NOTE]
-    >您會從本教學課程的**設定 Recognize 單一登入**一節中取得**服務提供者中繼資料檔案**。
+    >您會從本教學課程的 **設定 Recognize 單一登入** 一節中取得 **服務提供者中繼資料檔案** 。
 
     a. 按一下 [上傳中繼資料檔案]  。
 
     ![上傳中繼資料檔案](common/upload-metadata.png)
 
-    b. 按一下**資料夾圖示**以選取中繼資料檔案，然後按一下 [上傳]  。
+    b. 按一下 **資料夾圖示** 以選取中繼資料檔案，然後按一下 [上傳]  。
 
     ![選擇中繼資料檔案](common/browse-upload-metadata.png)
 
@@ -117,7 +117,7 @@ ms.locfileid: "88548863"
      在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：`https://recognizeapp.com/<your-domain>/saml/sso`
 
     > [!Note]
-    > 如果未自動填入 [識別碼]  值，您可從 [SSO 設定] 區段開啟 [服務提供者中繼資料 URL] (本教學課程稍後的**設定 Recognize 單一登入**一節會說明)，以取得 [識別碼] 值。 [登入 URL] 的值不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Recognize 用戶端支援小組](mailto:support@recognizeapp.com)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 如果未自動填入 [識別碼]  值，您可從 [SSO 設定] 區段開啟 [服務提供者中繼資料 URL] (本教學課程稍後的 **設定 Recognize 單一登入** 一節會說明)，以取得 [識別碼] 值。 [登入 URL] 的值不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Recognize 用戶端支援小組](mailto:support@recognizeapp.com)以取得此值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
@@ -139,17 +139,17 @@ ms.locfileid: "88548863"
 
 2. 按一下右上角的 [功能表]  。 移至 [Company Admin]  \(公司管理員)。
    
-    ![在應用程式端設定單一登入](./media/recognize-tutorial/tutorial_recognize_000.png)
+    ![此螢幕擷取畫面顯示從 [設定] 功能表中選取的 [公司管理員]。](./media/recognize-tutorial/tutorial_recognize_000.png)
 
 3. 在左側的導覽窗格上，按一下 [設定]  。
    
-    ![在應用程式端設定單一登入](./media/recognize-tutorial/tutorial_recognize_001.png)
+    ![此螢幕擷取畫面顯示從導覽頁面選取的 [設定]。](./media/recognize-tutorial/tutorial_recognize_001.png)
 
 4. 在 [SSO Settings]  \(SSO 設定) 區段下執行下列步驟。
    
-    ![在應用程式端設定單一登入](./media/recognize-tutorial/tutorial_recognize_002.png)
+    ![此螢幕擷取畫面顯示 [SSO 設定]，您可以在其中輸入所述的值。](./media/recognize-tutorial/tutorial_recognize_002.png)
     
-    a. 將 **[啟用 SSO]** 選取為 **ON**。
+    a. 將 **[啟用 SSO]** 選取為 **ON** 。
 
     b. 在 [IDP 實體識別碼]  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
     
@@ -157,17 +157,17 @@ ms.locfileid: "88548863"
     
     d. 在 [SSO 目標 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登出 URL]  值。 
     
-    e. 在記事本中開啟您下載的**憑證 (Base64)** 檔案，將其內容複製到剪貼簿，然後貼到 [憑證]  文字方塊中
+    e. 在記事本中開啟您下載的 **憑證 (Base64)** 檔案，將其內容複製到剪貼簿，然後貼到 [憑證]  文字方塊中
     
     f. 按一下 [儲存設定]  按鈕。 
 
 5. 在 [SSO Settings]  區段中，複製 [Service Provider Metadata url]  下方的 URL。
    
-    ![在應用程式端設定單一登入](./media/recognize-tutorial/tutorial_recognize_003.png)
+    ![此螢幕擷取畫面會顯示 [附註]，您可以在其中複製 [服務提供者中繼資料]。](./media/recognize-tutorial/tutorial_recognize_003.png)
 
-6. 在空白瀏覽器下方開啟**中繼資料 URL 連結**，以下載中繼資料文件。 然後，從檔案中複製 EntityDescriptor 值 (entityID) 值，然後貼到 Azure 入口網站中 [基本 SAML 組態] 區段的 [識別碼] 文字方塊中。
+6. 在空白瀏覽器下方開啟 **中繼資料 URL 連結** ，以下載中繼資料文件。 然後，從檔案中複製 EntityDescriptor 值 (entityID) 值，然後貼到 Azure 入口網站中 [基本 SAML 組態] 區段的 [識別碼] 文字方塊中。
     
-    ![在應用程式端設定單一登入](./media/recognize-tutorial/tutorial_recognize_004.png)
+    ![此螢幕擷取畫面顯示具有純文字 XML 的文字方塊，您可以在其中取得實體識別碼。](./media/recognize-tutorial/tutorial_recognize_004.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
@@ -185,7 +185,7 @@ ms.locfileid: "88548863"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 brittasimon@yourcompanydomain.extension。 例如， BrittaSimon@contoso.com
 
@@ -237,7 +237,7 @@ ms.locfileid: "88548863"
    
     ![新增使用者](./media/recognize-tutorial/tutorial_recognize_005.png "新增使用者")
    
-    a. 對於 [已啟用同步處理]  選取 **ON**。
+    a. 對於 [已啟用同步處理]  選取 **ON** 。
    
     b. 對於 [Choose sync provider]  \(選擇同步處理提供者)，選取 [Microsoft / Office 365]  。
    

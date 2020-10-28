@@ -1,23 +1,24 @@
 ---
-title: Azure Cosmos DB Gremlin 支援
-description: 從 Apache TinkerPop 了解 Gremlin 語言。 了解 Azure Cosmos DB 提供哪些可用的功能和步驟
-author: jasonwhowell
+title: Azure Cosmos DB Gremlin 對於 TinkerPop 功能的支援和相容性
+description: 從 Apache TinkerPop 了解 Gremlin 語言。 了解 Azure Cosmos DB 中可用的功能和步驟，以及 TinkerPop Graph 引擎相容性的差異。
+author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 04/23/2020
-ms.author: jasonh
-ms.openlocfilehash: 2629cfc40a9f3c0745df78d9a22883be8476beb9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/13/2020
+ms.author: sngun
+ms.openlocfilehash: f435185d0f00d8f64425e3f2b7081e0ee9a393ce
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409739"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276225"
 ---
-# <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin graph 支援
-Azure Cosmos DB 支援 [Apache Tinkerpop 的](https://tinkerpop.apache.org)圖形周遊語言，稱為 [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps)。 您可以使用 Gremlin 語言建立圖表實體 (頂點和邊緣)、修改這些實體內的屬性、執行查詢和周遊，以及刪除實體。 
+# <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Azure Cosmos DB Gremlin 圖形對於 TinkerPop 功能的支援和相容性
 
-在本文中，我們提供 Gremlin 的快速逐步解說，並列舉 Gremlin API 所支援的 Gremlin 功能。
+Azure Cosmos DB 支援 [Apache Tinkerpop 的](https://tinkerpop.apache.org)圖形周遊語言，稱為 [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps)。 您可以使用 Gremlin 語言建立圖表實體 (頂點和邊緣)、修改這些實體內的屬性、執行查詢和周遊，以及刪除實體。
+
+Azure Cosmos DB 圖形引擎會密切遵循 [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) 的周遊步驟規格，但在 Azure Cosmos DB 特定的實作方面則有差異。 在本文中，我們提供 Gremlin 的快速逐步解說，並列舉 Gremlin API 所支援的 Gremlin 功能。
 
 ## <a name="compatible-client-libraries"></a>相容的用戶端程式庫
 
@@ -33,6 +34,7 @@ Azure Cosmos DB 支援 [Apache Tinkerpop 的](https://tinkerpop.apache.org)圖�
 | [Gremlin 主控台](https://tinkerpop.apache.org/downloads.html) | [TinkerPop 文件](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [使用 Gremlin 主控台建立圖表](create-graph-gremlin-console.md) | 3.2.0 + |
 
 ## <a name="supported-graph-objects"></a>支援的圖形物件
+
 TinkerPop 是一套涵蓋各種圖表技術的標準。 因此，它採用標準術語來描述圖表提供者所提供的功能。 Azure Cosmos DB 提供持續、高度並行、可寫入的圖表資料庫，可分割至多個伺服器或叢集。 
 
 下表列出 Azure Cosmos DB 所實作的 TinkerPop 功能︰ 
@@ -114,6 +116,7 @@ JSON 格式用於頂點的屬性說明如下︰
 | `value` | 屬性的值
 
 ## <a name="gremlin-steps"></a>Gremlin 步驟
+
 現在，讓我們看看 Azure Cosmos DB 支援的 Gremlin 步驟。 如需 Gremlin 的完整參考，請參閱 [TinkerPop 參考](https://tinkerpop.apache.org/docs/3.3.2/reference)。
 
 | 步驟 | 描述 | TinkerPop 3.2 文件 |
@@ -162,6 +165,61 @@ JSON 格式用於頂點的屬性說明如下︰
 
 根據預設，Azure Cosmos DB 提供的寫入最佳化引擎支援自動編製頂點和邊緣內所有屬性的索引。 因此，在任何屬性上執行附有篩選條件的查詢、範圍查詢、排序或彙總時，都是從索引來處理，而且有效率地提供。 如需 Azure Cosmos DB 中索引運作方式的詳細資訊，請參閱[無從驗證結構描述的索引編製](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)一文。
 
-## <a name="next-steps"></a>後續步驟
-* [使用我們的 SDK](create-graph-dotnet.md) 開始建置圖表應用程式 
-* 深入了解 Azure Cosmos DB 中的[圖表支援](graph-introduction.md)
+## <a name="behavior-differences"></a>行為差異
+
+* Azure Cosmos DB 圖形引擎會執行 ***廣度優先*** 的周遊，而 TinkerPop Gremlin 則是深度優先。 在可水平調整的系統 (例如 Cosmos DB) 中，此行為可實現更好的效能。
+
+## <a name="unsupported-features"></a>不支援的功能
+
+***[Gremlin 位元組程式碼](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** 是不限程式設計語言的圖形周遊規格。 Cosmos DB 圖形尚不支援此功能。 請使用 `GremlinClient.SubmitAsync()`，並以文字字串的形式傳遞周遊。
+
+目前不支援 ***`property(set, 'xyz', 1)`*** 集合基數。 請改用 `property(list, 'xyz', 1)`。 若要深入了解，請參閱 [TinkerPop 的頂點屬性](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties)。
+
+目前無法使用 ***`match()` 步驟*** 。 此步驟可提供宣告式查詢功能。
+
+頂點或邊緣上不支援 ***以物件作為屬性*** 。 屬性只能是基本類型或陣列。
+
+不支援 ***依據陣列屬性*** `order().by(<array property>)` 排序。 僅支援依據基本類型排序。
+
+不支援 ***非基本 JSON 類型*** 。 請使用 `string`、`number` 或 `true`/`false` 類型。 不支援 `null` 值。 
+
+目前不支援 ***GraphSONv3*** 序列化程式。 在連線設定中，請使用 `GraphSONv2` 序列化程式、讀取器和寫入器類別。 Azure Cosmos DB Gremlin API 所傳回結果的格式會與 GraphSON 格式不同。 
+
+目前不支援 **Lambda 運算式和函式** 。 這包括 `.map{<expression>}`、`.by{<expression>}` 和 `.filter{<expression>}` 函式。 若要深入了解，並了解如何使用 Gremlin 步驟來重寫這些函式，請參閱 [Lambda 的注意事項](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas)。
+
+* 因為系統的分散式本質，所以不支援 ***交易*** 。  在 Gremlin 帳戶上設定適當的一致性模型以「「讀取自己的寫入」，並使用開放式同步存取來解決衝突的寫入。
+
+## <a name="known-limitations"></a>已知的限制
+
+**使用 mid-traversal `.V()` 步驟所進行的 Gremlin 查詢索引使用率** ：目前只有周遊的第一個 `.V()` 呼叫會使用索引來解析其附加的任何篩選或述詞。 後續的呼叫則不會查閱索引，這可能會增加查詢的延遲和成本。
+    
+    Assuming default indexing, a typical read Gremlin query that starts with the `.V()` step would use parameters in its attached filtering steps, such as `.has()` or `.where()` to optimize the cost and performance of the query. For example:
+
+    ```java
+    g.V().has('category', 'A')
+    ```
+
+    However, when more than one `.V()` step is included in the Gremlin query, the resolution of the data for the query might not be optimal. Take the following query as an example:
+
+    ```java
+    g.V().has('category', 'A').as('a').V().has('category', 'B').as('b').select('a', 'b')
+    ```
+
+    This query will return two groups of vertices based on their property called `category`. In this case, only the first call, `g.V().has('category', 'A')` will make use of the index to resolve the vertices based on the values of their properties.
+
+    A workaround for this query is to use subtraversal steps such as `.map()` and `union()`. This is exemplified below:
+
+    ```java
+    // Query workaround using .map()
+    g.V().has('category', 'A').as('a').map(__.V().has('category', 'B')).as('b').select('a','b')
+
+    // Query workaround using .union()
+    g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
+    ```
+
+    You can review the performance of the queries by using the [Gremlin `executionProfile()` step](graph-execution-profile.md).
+
+## <a name="next-steps"></a>採用預設索引編制時，以 `.V()` 步驟開頭的典型讀取 Gremlin 查詢會在其附加的篩選步驟中使用參數 (例如 `.has()` 或 `.where()`) 來將查詢的成本和效能最佳化。
+
+* 例如： 
+* 不過，如果 Gremlin 查詢中包含多個 `.V()` 步驟，則查詢的資料解析可能不會有最佳效能。

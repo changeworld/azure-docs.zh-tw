@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: ae486ac8ddd233487bb10c897a155337aa815fe5
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: c93704130e150a7ca26144d4895e82756657fae2
+ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611243"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92096244"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>教學課程：讓使用者登入並從 Angular 單頁應用程式呼叫 Microsoft Graph API
 
@@ -74,7 +74,7 @@ ng generate component page-name                  # To add a new page (such as a 
 
 在您註冊的應用程式 [概觀] 頁面上，記下 [應用程式 (用戶端) 識別碼] 值以供稍後使用。
 
-將您的**重新導向 URI** 值註冊為 **http://localhost:4200/** 並啟用隱含授與設定。
+將您的 **重新導向 URI** 值註冊為 **http://localhost:4200/** 並啟用隱含授與設定。
 
 ## <a name="configure-the-application"></a>設定應用程式
 
@@ -122,9 +122,9 @@ ng generate component page-name                  # To add a new page (such as a 
 
     |值名稱|關於|
     |---------|---------|
-    |Enter_the_Application_Id_Here|在應用程式註冊的 [概觀] 頁面中，這是您的**應用程式 (用戶端) 識別碼**值。 |
+    |Enter_the_Application_Id_Here|在應用程式註冊的 [概觀] 頁面中，這是您的 **應用程式 (用戶端) 識別碼** 值。 |
     |Enter_the_Cloud_Instance_Id_Here|這是 Azure 雲端的執行個體。 針對主要或全域 Azure 雲端，請輸入 **https://login.microsoftonline.com** 。 針對國家端 (例如中國)，請參閱[國家雲端](./authentication-national-cloud.md)。|
-    |Enter_the_Tenant_Info_Here| 設為下列其中一個選項：如果您的應用程式支援「此組織目錄中的帳戶」，請將此值取代為目錄 (租用戶) 識別碼或租用戶名稱 (例如 **contoso.microsoft.com**)。 如果您的應用程式支援「任何組織目錄中的帳戶」，請將此值取代為 [組織]。 如果您的應用程式支援「任何組織目錄中的帳戶及個人的 Microsoft 帳戶」，請將此值取代為 [通用]。 若要將支援範圍限制為「僅限個人 Microsoft 帳戶」，請將此值取代為 [取用者]。 |
+    |Enter_the_Tenant_Info_Here| 設為下列其中一個選項：如果您的應用程式支援「此組織目錄中的帳戶」，請將此值取代為目錄 (租用戶) 識別碼或租用戶名稱 (例如 **contoso.microsoft.com** )。 如果您的應用程式支援「任何組織目錄中的帳戶」，請將此值取代為 [組織]。 如果您的應用程式支援「任何組織目錄中的帳戶及個人的 Microsoft 帳戶」，請將此值取代為 [通用]。 若要將支援範圍限制為「僅限個人 Microsoft 帳戶」，請將此值取代為 [取用者]。 |
     |Enter_the_Redirect_Uri_Here|以 **http://localhost:4200** 取代。|
 
     如需可用之可設定選項的詳細資訊，請參閱[將用戶端應用程式初始化](msal-js-initializing-client-applications.md) \(英文\)。
@@ -194,7 +194,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 }
 ```
 
-接下來，以 `protectedResourceMap`形式提供受保護資源與 `MsalModule.forRoot()` 的對應，並將這些範圍包含在 `consentScopes` 中：
+接下來，以 `protectedResourceMap`形式提供受保護資源與 `MsalModule.forRoot()` 的對應，並將這些範圍包含在 `consentScopes` 中。 您在 `protectedResourceMap` 集合中提供的 URL 會區分大小寫。
 
 ```javascript
 @NgModule({

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: 2bdfdd31e2cc9bc964abc040d0631c4760fca283
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86bff161e29384b10030ed3d524301f6dea6037e
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984867"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634159"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>在 Azure Data Factory 中搭配使用 Azure SQL 受控執行個體與 SQL Server Integration Services (SSIS) 
 
@@ -41,7 +41,7 @@ ms.locfileid: "90984867"
     - 透過私人端點 (偏好選項)
 
         1. 選擇 Azure-SSIS IR 要加入的虛擬網路：
-            - 在與受控實例相同的虛擬網路內，具有 **不同的子網**。
+            - 在與受控實例相同的虛擬網路內，具有 **不同的子網** 。
             - 在與受控實例不同的虛擬網路中，透過虛擬網路對等互連 (，因為全域 VNet 對等互連限制) 或從虛擬網路連線到虛擬網路，所以受限於相同區域。
 
             如需 SQL 受控執行個體連接的詳細資訊，請參閱 [將您的應用程式連線到 AZURE SQL 受控執行個體](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app)。
@@ -50,76 +50,76 @@ ms.locfileid: "90984867"
 
     - 透過公用端點
 
-        Azure SQL 受控實例可透過 [公用端點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)提供連線能力。 輸入和輸出需求必須符合，才能允許 SQL 受控執行個體和 Azure-SSIS IR 之間的流量：
+        Azure SQL 受控實例可透過 [公用端點](../azure-sql/managed-instance/public-endpoint-configure.md)提供連線能力。 輸入和輸出需求必須符合，才能允許 SQL 受控執行個體和 Azure-SSIS IR 之間的流量：
 
         - 當 Azure-SSIS IR 不在虛擬網路內時 (偏好選項)
 
-            **SQL 受控執行個體的輸入需求**，以允許來自 Azure-SSIS IR 的輸入流量。
+            **SQL 受控執行個體的輸入需求** ，以允許來自 Azure-SSIS IR 的輸入流量。
 
             | 傳輸通訊協定 | 來源 | 來源連接埠範圍 | Destination | 目的地連接埠範圍 |
             |---|---|---|---|---|
             |TCP|Azure 雲端服務標記|*|VirtualNetwork|3342|
 
-            如需詳細資訊，請參閱[允許網路安全性群組上的公用端點流量](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure#allow-public-endpoint-traffic-on-the-network-security-group) (英文)。
+            如需詳細資訊，請參閱[允許網路安全性群組上的公用端點流量](../azure-sql/managed-instance/public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group) (英文)。
 
         - 當 Azure-SSIS IR 在虛擬網路內時
 
-            當 SQL 受控執行個體位於 Azure-SSIS IR 不支援的區域中時，有一個特殊情況，因為全域 VNet 對等互連限制，所以 Azure-SSIS IR 位於沒有 VNet 對等互連的虛擬網路內。 在此案例中， **虛擬網路內的 Azure-SSIS IR** 會透過 **公用端點**連接 SQL 受控執行個體。 使用以下網路安全性群組 (NSG) 規則，以允許 SQL 受控執行個體和 Azure-SSIS IR 之間的流量：
+            當 SQL 受控執行個體位於 Azure-SSIS IR 不支援的區域中時，有一個特殊情況，因為全域 VNet 對等互連限制，所以 Azure-SSIS IR 位於沒有 VNet 對等互連的虛擬網路內。 在此案例中， **虛擬網路內的 Azure-SSIS IR** 會透過 **公用端點** 連接 SQL 受控執行個體。 使用以下網路安全性群組 (NSG) 規則，以允許 SQL 受控執行個體和 Azure-SSIS IR 之間的流量：
 
-            1. **SQL 受控執行個體的輸入需求**，以允許來自 Azure-SSIS IR 的輸入流量。
+            1. **SQL 受控執行個體的輸入需求** ，以允許來自 Azure-SSIS IR 的輸入流量。
 
                 | 傳輸通訊協定 | 來源 | 來源連接埠範圍 | Destination |目的地連接埠範圍 |
                 |---|---|---|---|---|
                 |TCP|Azure-SSIS IR 的靜態 IP 位址 <br> 如需詳細資料，請參閱[針對 Azure-SSIS IR 使用自己的公用 IP](join-azure-ssis-integration-runtime-virtual-network.md#publicIP)。|*|VirtualNetwork|3342|
 
-             1. **Azure-SSIS IR 的輸出需求**，以允許對 SQL 受控執行個體的輸出流量。
+             1. **Azure-SSIS IR 的輸出需求** ，以允許對 SQL 受控執行個體的輸出流量。
 
                 | 傳輸通訊協定 | 來源 | 來源連接埠範圍 | Destination |目的地連接埠範圍 |
                 |---|---|---|---|---|
-                |TCP|VirtualNetwork|*|[SQL 受控執行個體公用端點 IP 位址](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-find-management-endpoint-ip-address)|3342|
+                |TCP|VirtualNetwork|*|[SQL 受控執行個體公用端點 IP 位址](../azure-sql/managed-instance/management-endpoint-find-ip-address.md)|3342|
 
 ### <a name="configure-virtual-network"></a>設定虛擬網路
 
-1. **使用者權限**。 建立 Azure SSIS IR 的使用者必須使用下列其中一個選項，至少在 Azure Data Factory 資源上具有[角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal#list-role-assignments-for-a-user-at-a-scope)：
+1. **使用者權限** 。 建立 Azure SSIS IR 的使用者必須使用下列其中一個選項，至少在 Azure Data Factory 資源上具有[角色指派](../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope)：
 
     - 使用內建的「網路參與者」角色。 此角色隨附 _microsoft.network /\*_ 權限，它的權限範圍大於必要的範圍。
     - 建立包含只有必要 _Microsoft.Network/virtualNetworks/\*/join/action_ 權限的自訂角色。 如果您也想要針對 Azure-SSIS IR 使用自己的公用 IP，並同時將其加入 Azure Resource Manager 虛擬網路，也請在角色中包含 _Microsoft.Network/publicIPAddresses/*/join/action_ 權限。
 
-1. **虛擬網路**。
+1. **虛擬網路** 。
 
     1. 請確認虛擬網路的資源群組可建立及刪除特定 Azure 網路資源。
 
         Azure-SSIS IR 需要在與虛擬網路相同的資源群組下，建立特定的網路資源。 這些資源包括：
-        - Azure 負載平衡器，名稱為* \<Guid> -azurebatch-cloudserviceloadbalancer*
+        - Azure 負載平衡器，名稱為 *\<Guid> -azurebatch-cloudserviceloadbalancer*
         - 具有名稱 * \<Guid> -azurebatch-cloudservicenetworksecuritygroup 的網路安全性群組
         - Azure 公用 IP 位址，名稱為 -azurebatch-cloudservicepublicip
 
         當 Azure SSIS IR 啟動時，將會建立這些資源。 當 Azure-SSIS IR 停止時，就會予以刪除。 為了避免 Azure-SSIS IR 無法停止，請勿在其他資源中重複使用這些網路資源。
 
-    1. 請確認在虛擬網路所屬的資源群組/訂用帳戶上，沒有任何[鎖定的資源](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)。 如果您設定唯讀/刪除鎖定，則啟動和停止 Azure-SSIS IR 將會失敗，或停止回應。
+    1. 請確認在虛擬網路所屬的資源群組/訂用帳戶上，沒有任何[鎖定的資源](../azure-resource-manager/management/lock-resources.md)。 如果您設定唯讀/刪除鎖定，則啟動和停止 Azure-SSIS IR 將會失敗，或停止回應。
 
     1. 請確認沒有任何 Azure 原則會禁止在虛擬網路所屬資源群組/訂用帳戶之下建立下列資源：
         - Microsoft.Network/LoadBalancers
         - Microsoft.Network/NetworkSecurityGroups
 
     1. 允許網路安全性群組上的流量 (NSG) 規則，以允許 SQL 受控執行個體和 Azure-SSIS IR 之間的流量，以及 Azure-SSIS IR 所需的流量。
-        1. **SQL 受控執行個體的輸入需求**，以允許來自 Azure-SSIS IR 的輸入流量。
+        1. **SQL 受控執行個體的輸入需求** ，以允許來自 Azure-SSIS IR 的輸入流量。
 
             | 傳輸通訊協定 | 來源 | 來源連接埠範圍 | Destination | 目的地連接埠範圍 | 註解 |
             |---|---|---|---|---|---|
             |TCP|VirtualNetwork|*|VirtualNetwork|1433、11000-11999|如果 SQL Database 伺服器連線原則設定為 [Proxy] 而不是 [重新導向]，則只需要連接埠 1433。|
 
-        1. **Azure-SSIS IR 的輸出需求**，以允許對 SQL 受控執行個體的輸出流量，以及 Azure-SSIS IR 所需的其他流量。
+        1. **Azure-SSIS IR 的輸出需求** ，以允許對 SQL 受控執行個體的輸出流量，以及 Azure-SSIS IR 所需的其他流量。
 
         | 傳輸通訊協定 | 來源 | 來源連接埠範圍 | Destination | 目的地連接埠範圍 | 註解 |
         |---|---|---|---|---|---|
         | TCP | VirtualNetwork | * | VirtualNetwork | 1433、11000-11999 |允許對 SQL 受控執行個體的輸出流量。 如果連線原則設定為 [Proxy] 而不是 [重新導向]，則只需要連接埠 1433。 |
         | TCP | VirtualNetwork | * | AzureCloud | 443 | 虛擬網路中的 Azure-SSIS IR 節點會使用此連接埠來存取 Azure 服務，例如 Azure 儲存體和 Azure 事件中樞。 |
-        | TCP | VirtualNetwork | * | Internet | 80 | (選擇性) 虛擬網路中的 Azure-SSIS IR 節點會使用此連接埠從網際網路下載憑證撤銷清單。 如果您封鎖此流量，則可能會在啟動 IR 時遇到效能降低的情況，且無法檢查憑證撤銷清單中是否有憑證使用情況。 如果您想要進一步將目的地縮小到特定 FQDN，請參閱[使用 Azure ExpressRoute 或使用者定義的路由 (UDR)](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network#route) (機器翻譯)。|
+        | TCP | VirtualNetwork | * | Internet | 80 | (選擇性) 虛擬網路中的 Azure-SSIS IR 節點會使用此連接埠從網際網路下載憑證撤銷清單。 如果您封鎖此流量，則可能會在啟動 IR 時遇到效能降低的情況，且無法檢查憑證撤銷清單中是否有憑證使用情況。 如果您想要進一步將目的地縮小到特定 FQDN，請參閱[使用 Azure ExpressRoute 或使用者定義的路由 (UDR)](./join-azure-ssis-integration-runtime-virtual-network.md#route) (機器翻譯)。|
         | TCP | VirtualNetwork | * | 儲存體 | 445 | (選擇性) 只有當想要執行儲存在 Azure 檔案儲存體中的 SSIS 套件時，才需要此規則。 |
         |||||||
 
-        1. **Azure-SSIS IR 的輸入需求**，以允許 Azure-SSIS IR 所需的流量。
+        1. **Azure-SSIS IR 的輸入需求** ，以允許 Azure-SSIS IR 所需的流量。
 
         | 傳輸通訊協定 | 來源 | 來源連接埠範圍 | Destination | 目的地連接埠範圍 | 註解 |
         |---|---|---|---|---|---|
@@ -163,7 +163,7 @@ ms.locfileid: "90984867"
 
 ## <a name="clean-up-ssisdb-logs"></a>清除 SSISDB 記錄
 
-SSISDB 記錄保留原則是由 [catalog.catalog_properties](https://docs.microsoft.com/sql/integration-services/system-views/catalog-catalog-properties-ssisdb-database?view=sql-server-ver15) 中的下列屬性所定義：
+SSISDB 記錄保留原則是由 [catalog.catalog_properties](/sql/integration-services/system-views/catalog-catalog-properties-ssisdb-database?view=sql-server-ver15) 中的下列屬性所定義：
 
 - OPERATION_CLEANUP_ENABLED
 

@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 04fcfa4712ec0b558140e942997060234b33f53e
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 979bdaa1e0dac4f45a321abda2a208f46983f9cd
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91627712"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108128"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>教學課程：轉換及保護您的 API
 
@@ -115,7 +115,7 @@ ms.locfileid: "91627712"
 
 1.  選取 [Demo Conference API]  >  [所有作業]  >  [設計]。
 1.  在 [輸入處理] 區段中，選取程式碼編輯器 ( **</>** ) 圖示。
-1.  將游標放在 **&lt;inbound&gt;** 元素內部。
+1.  將游標放在 **&lt;inbound&gt;** 元素中，然後選取右上角的 [顯示程式碼片段]。
 
     :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png" alt-text="入口網站中的原則" border="false":::
 
@@ -176,11 +176,11 @@ ms.locfileid: "91627712"
 1. 選取 [Demo Conference API]  >  [測試]。
 1. 選取 **GetSpeakers** 作業。 連續選取三次 [傳送]。
 
-    傳送要求 3 次之後，您會收到 **429 太多要求**的回應。
+    傳送要求 3 次之後，您會收到 **429 太多要求** 的回應。
 
     :::image type="content" source="media/transform-api/test-throttling.png" alt-text="入口網站中的原則":::
 
-1. 大約等候 15 秒之後，再選取一次 [傳送]。 此時，您應該得到 **200 確定**的回應。
+1. 大約等候 15 秒之後，再選取一次 [傳送]。 此時，您應該得到 **200 確定** 的回應。
 
 ## <a name="next-steps"></a>後續步驟
 

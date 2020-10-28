@@ -3,17 +3,17 @@ title: Azure EA VM 保留執行個體
 description: 本文將摘要說明 VM 保留執行個體的 Azure 保留如何協助您使用企業註冊來節省成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 4970852634039bddfb14be579db5dd355fff9740
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 16e325f029fc4c317a61db62df97ded5c213e0e5
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442440"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132528"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM 保留執行個體
 
@@ -22,6 +22,12 @@ ms.locfileid: "89442440"
 ## <a name="reservation-exchanges-and-refunds"></a>保留交換和退款
 
 您可以用保留來交換相同類型的其他保留。 如果您不再需要保留，也可以退款，每年最多 50,000 美元。 Azure 入口網站可用於對保留進行交換或退款。 如需詳細資訊，請參閱 [Azure 保留的自助式交換和退費](../reservations/exchange-and-refund-azure-reservations.md)。
+
+### <a name="partial-refunds"></a>部分退費
+
+當 EA 客戶退回使用超額而不是預付金購買的保留時，我們會發出部分退費。
+
+在 EA 入口網站中，退費會顯示為上個月的負數調整，而在當月則會顯示為正數調整。 其顯示會與保留交換類似。 貸項憑單會參考原始發票號碼；因此，若要讓初始購買與貸項憑單協調一致，請參考原始發票號碼。
 
 ## <a name="reservation-costs-and-usage"></a>保留的成本和使用量
 
@@ -59,7 +65,7 @@ Enterprise 合約客戶可以在 Azure 入口網站和 REST API 中檢視成本�
 
 若要購買 Azure 保留的虛擬機器執行個體，Azure Enterprise 註冊管理員必須啟用 [保留執行個體] 購買選項。 此選項在 [Azure EA 入口網站](https://ea.azure.com/)中位於 [註冊] 索引標籤上的 [註冊詳細資料] 區段中。
 
-一旦啟用 EA 註冊以新增保留執行個體後，任何具有 EA 註冊相關聯作用中訂用帳戶的帳戶擁有者，都可以在 [Azure 入口網站](https://aka.ms/reservations)中購買保留的虛擬機器執行個體。 如需詳細資訊，請參閱[預付虛擬機器並且使用保留的虛擬機器執行個體來節省成本](https://go.microsoft.com/fwlink/?linkid=861721)。
+一旦啟用 EA 註冊以新增保留執行個體後，任何具有 EA 註冊相關聯作用中訂用帳戶的帳戶擁有者，都可以在 [Azure 入口網站](https://aka.ms/reservations)中購買保留的虛擬機器執行個體。 如需詳細資訊，請參閱[預付虛擬機器並且使用保留的虛擬機器執行個體來節省成本](../../virtual-machines/windows/prepay-reserved-vm-instances.md)。
 
 ### <a name="how-to-view-reserved-instance-purchase-details"></a>如何檢視保留執行個體購買詳細資料
 

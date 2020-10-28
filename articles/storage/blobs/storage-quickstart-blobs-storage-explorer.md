@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: f8768a1b2542eb0461ef0c50c96e22c80eced57a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f920a937f4b9b51f9babd03ed0fb42dd3c7775d8
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87836457"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217784"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-create-a-blob"></a>快速入門：使用 Azure 儲存體總管建立 Blob
 
@@ -38,7 +38,7 @@ ms.locfileid: "87836457"
 
 選取 [新增 Azure 帳戶]  ，然後按一下 [登入]  。遵循螢幕上的提示來登入 Azure 帳戶。
 
-![[Microsoft Azure 儲存體總管 - 連線] 視窗](media/storage-quickstart-blobs-storage-explorer/connect.png)
+![顯示 [Microsoft Azure 儲存體總管 - 連線] 視窗的螢幕擷取畫面。](media/storage-quickstart-blobs-storage-explorer/connect.png)
 
 完成連線時，會載入 Azure 儲存體總管，並顯示 [總管]  索引標籤。 這個檢視可讓您深入了解您所有的 Azure 儲存體帳戶，以及透過 [Azure 儲存體模擬器](../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)、[Cosmos DB](../../cosmos-db/storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 帳戶或 [Azure Stack](/azure-stack/user/azure-stack-storage-connect-se?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 環境設定的本機儲存體。
 
@@ -70,17 +70,17 @@ Blob 儲存體支援區塊 Blob、附加 Blob 和分頁 Blob。 用來備份 Iaa
 
 在 [Azure 儲存體總管]  應用程式中，選取儲存體帳戶底下的容器。 主窗格會顯示選取容器中的 blob 清單。
 
-![Microsoft Azure 儲存體總管 - 在容器中列出 blob](media/storage-quickstart-blobs-storage-explorer/listblobs.png)
+![螢幕擷取畫面：顯示您在 Microsoft Azure 儲存體總管中選取容器的位置。](media/storage-quickstart-blobs-storage-explorer/listblobs.png)
 
 ## <a name="download-blobs"></a>下載 Blob
 
-若要使用 **Azure 儲存體總管**下載 blob，並選取 blob，請從功能區中選取 [下載]  。 檔案對話方塊隨即開啟，讓您可以輸入檔案名稱。 選取 [儲存]  可開始將 blob 下載到本機位置。
+若要使用 **Azure 儲存體總管** 下載 blob，並選取 blob，請從功能區中選取 [下載]  。 檔案對話方塊隨即開啟，讓您可以輸入檔案名稱。 選取 [儲存]  可開始將 blob 下載到本機位置。
 
 ## <a name="manage-snapshots"></a>管理快照集
 
 Azure 儲存體總管可讓您取得及管理 blob 的[快照集](storage-blob-snapshots.md)。 若要取得 blob 的快照集，請以滑鼠右鍵按一下 blob，然後選取 [建立快照集]  。 若要檢視 blob 的快照集，請以滑鼠右鍵按一下 blob，然後選取 [管理快照集]  。 Blob 的快照集清單會顯示在目前的索引標籤中。
 
-![Microsoft Azure 儲存體總管 - 在容器中列出 blob](media/storage-quickstart-blobs-storage-explorer/snapshots.png)
+![顯示 Microsoft Azure 儲存體總管中 Blob 清單的螢幕擷取畫面。](media/storage-quickstart-blobs-storage-explorer/snapshots.png)
 
 ## <a name="manage-access-policies"></a>管理存取原則
 
@@ -96,7 +96,7 @@ Azure 儲存體總管可讓您取得及管理 blob 的[快照集](storage-blob-s
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已了解如何使用 **Azure 儲存體總管**在本機磁碟和 Azure Blob 儲存體之間傳輸檔案。 若要深入了解 Blob 儲存體的用法，請繼續閱讀 Blob 儲存體操作說明。
+在本快速入門中，您已了解如何使用 **Azure 儲存體總管** 在本機磁碟和 Azure Blob 儲存體之間傳輸檔案。 若要深入了解 Blob 儲存體的用法，請繼續閱讀 Blob 儲存體操作說明。
 
 > [!div class="nextstepaction"]
 > [Blob 儲存體作業操作說明](storage-how-to-use-blobs-powershell.md)

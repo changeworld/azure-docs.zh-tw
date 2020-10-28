@@ -48,8 +48,6 @@
           href: costs/manage-automation.md
         - name: 適用於合作夥伴的成本管理
           href: costs/get-started-partners.md
-        - name: 選擇成本管理和 Cloudyn
-          href: costs/choose-between-azure-cost-management-cloudyn.md
     - name: Reservations
       items:
         - name: 什麼是 Azure 保留項目？
@@ -440,10 +438,6 @@
           href: cloudyn/overview.md
     - name: 快速入門
       items:
-        - name: 檢視成本資料
-          href: cloudyn/quick-register-azure-sub.md
-        - name: 檢視成本資料 - EA
-          href: cloudyn/quick-register-ea.md
         - name: 檢視成本資料 - CSP
           href: cloudyn/quick-register-csp.md
     - name: 教學課程
@@ -468,8 +462,6 @@
           href: cloudyn/activate-subs-accounts.md
         - name: 新增適用於虛擬機器的已擴充計量
           href: cloudyn/azure-vm-extended-metrics.md
-        - name: 與 Google 帳戶連線
-          href: cloudyn/connect-google-account.md
         - name: 與 AWS 帳戶連線
           href: cloudyn/connect-aws-account.md
         - name: 設定儲存體帳戶

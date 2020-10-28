@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 081c07be49178be2415edccbfc2026336eb8a8a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0f30edeb24f3c4abed6f144f3fb7f755cc08a72
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604405"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629454"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>使用防火牆後方的工作區進行 Azure Machine Learning
 
@@ -63,6 +63,8 @@ ms.locfileid: "90604405"
 | **mcr.microsoft.com** | 適用于基底 docker 映射的 Microsoft Container Registry |
 | **your-acr-server-name.azurecr.io** | 只有當您的 Azure Container Registry 位於虛擬網路後方時才需要。 在此設定中，會在您的訂用帳戶中，從 Microsoft 環境建立私人連結至 ACR 實例。 針對您的 Azure Machine Learning 工作區使用 ACR server 名稱。 |
 | **\*. notebooks.azure.net** | Azure Machine Learning studio 中的筆記本需要。 |
+| **\*. file.core.windows.net** | Azure Machine Learning studio 中的檔案瀏覽器所需。 |
+| **\*. dfs.core.windows.net** | Azure Machine Learning studio 中的檔案瀏覽器所需。 |
 | **graph.windows.net** | 筆記本所需 |
 
 > [!TIP]
@@ -76,7 +78,7 @@ ms.locfileid: "90604405"
 | ---- | ---- |
 | **anaconda.com**</br>**\*. anaconda.com** | 用來安裝預設封裝。 |
 | **\*. anaconda.org** | 用來取得存放庫資料。 |
-| **pypi.org** | 用來列出預設索引的相依性（如果有的話），而且使用者設定不會覆寫索引。 如果覆寫索引，您也必須允許** \* pythonhosted.org**。 |
+| **pypi.org** | 用來列出預設索引的相依性（如果有的話），而且使用者設定不會覆寫索引。 如果覆寫索引，您也必須允許 **\* pythonhosted.org** 。 |
 
 ## <a name="r-hosts"></a>R 主機
 
