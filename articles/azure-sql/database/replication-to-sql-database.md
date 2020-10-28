@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 079d187f66cf77585121198df06cabafc454fea1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ff1d485ab4c0662ae8a9d754ce67b1446b76fcc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362124"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780949"
 ---
 # <a name="replication-to-azure-sql-database"></a>複寫至 Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "91362124"
 您可以在單向交易式或快照式複寫拓撲中，將 Azure SQL Database 設定為發送訂閱者。
 
 > [!NOTE]
-> 本文描述如何在 Azure SQL Database 中使用 [異動複寫](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) 。 它與 [主動式異地](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication)複寫無關，這是一個 Azure SQL Database 的功能，可讓您建立個別資料庫的完整可讀取複本。
+> 本文描述如何在 Azure SQL Database 中使用 [異動複寫](/sql/relational-databases/replication/transactional/transactional-replication) 。 它與 [主動式異地](./active-geo-replication-overview.md)複寫無關，這是一個 Azure SQL Database 的功能，可讓您建立個別資料庫的完整可讀取複本。
 
 ## <a name="supported-configurations"></a>支援的設定
   
@@ -50,16 +50,16 @@ ms.locfileid: "91362124"
 
 ### <a name="types-of-replication"></a>複寫類型
 
-[複寫有不同類型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)：
+[複寫有不同類型](/sql/relational-databases/replication/types-of-replication)：
 
 | 複寫 | Azure SQL Database | Azure SQL 受控執行個體 |
 | :----| :------------- | :--------------- |
-| [**標準交易式**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | 是 (僅作為訂閱者) | 是 | 
-| [**快照式**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | 是 (僅作為訂閱者) | 是|
-| [**合併式複寫**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | 否 | 否|
-| [**對等**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | 否 | 否|
-| [**雙向**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | 否 | 是|
-| [**可更新訂閱**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | 否 | 否|
+| [**標準交易式**](/sql/relational-databases/replication/transactional/transactional-replication) | 是 (僅作為訂閱者) | 是 | 
+| [**快照式**](/sql/relational-databases/replication/snapshot-replication) | 是 (僅作為訂閱者) | 是|
+| [**合併式複寫**](/sql/relational-databases/replication/merge/merge-replication) | 否 | 否|
+| [**對等**](/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | 否 | 否|
+| [**雙向**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | 否 | 是|
+| [**可更新訂閱**](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | 否 | 否|
 | &nbsp; | &nbsp; | &nbsp; |
 
   
@@ -126,14 +126,14 @@ Azure SQL Database 訂閱不支援下列選項：
 
 建立發行集和發送訂閱。 如需詳細資訊，請參閱
   
-- [建立發行集](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- 使用伺服器名稱做為訂閱者來[建立發送訂閱](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) (例如**N'azuresqldbdns** ）) 和 Azure SQL Database 名稱做為目的地資料庫 (例如**AdventureWorks**) 。  
+- [建立發行集](/sql/relational-databases/replication/publish/create-a-publication)
+- 使用伺服器名稱做為訂閱者來 [建立發送訂閱](/sql/relational-databases/replication/create-a-push-subscription/) (例如 **N'azuresqldbdns** ）) 和 Azure SQL Database 名稱做為目的地資料庫 (例如 **AdventureWorks** ) 。  
 
 ## <a name="see-also"></a>另請參閱  
 
 - [異動複寫](../managed-instance/replication-transactional-overview.md)
-- [建立發行集](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [建立發送訂閱](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [複寫的類型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
-- [監視 (複寫)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
-- [初始化訂閱](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  
+- [建立發行集](/sql/relational-databases/replication/publish/create-a-publication)
+- [建立發送訂閱](/sql/relational-databases/replication/create-a-push-subscription/)
+- [複寫的類型](/sql/relational-databases/replication/types-of-replication)
+- [監視 (複寫)](/sql/relational-databases/replication/monitor/monitoring-replication)
+- [初始化訂閱](/sql/relational-databases/replication/initialize-a-subscription)

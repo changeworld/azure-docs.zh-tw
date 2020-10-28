@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: ca458bebf75f8e77774236166704794b817b7c3f
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 940ea0ac471604b22c64dc008eebd8b580121cf7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167112"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782734"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>授權資料庫存取 SQL Database、SQL 受控執行個體和 Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -39,27 +39,27 @@ ms.locfileid: "92167112"
 [**驗證**](security-overview.md#authentication) 是證明使用者是他們宣稱的流程。 使用者會使用使用者帳戶連接至資料庫。
 當使用者嘗試連接至資料庫時，會提供使用者帳戶和驗證資訊。 使用者會使用下列兩種驗證方法的其中一種進行驗證：
 
-- [SQL 驗證](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)。
+- [SQL 驗證](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)。
 
   使用此驗證方法時，使用者會提交使用者帳戶名稱和相關聯的密碼以建立連線。 此密碼會儲存在 master 資料庫中，以用於連結至登入的使用者帳戶，或儲存在包含 *未* 連結至登入之使用者帳戶的資料庫中。
 - [Azure Active Directory 驗證](authentication-aad-overview.md)
 
   使用此驗證方法，使用者會提交使用者帳戶名稱，並要求服務使用儲存在 Azure Active Directory (Azure AD) 中的認證資訊。
 
-登入**和使用者**：資料庫中的使用者帳戶可以與儲存在 master 資料庫中的登入相關聯，也可以是儲存在個別資料庫中的使用者名稱。
+登入 **和使用者** ：資料庫中的使用者帳戶可以與儲存在 master 資料庫中的登入相關聯，也可以是儲存在個別資料庫中的使用者名稱。
 
-- **登**入是 master 資料庫中的個別帳戶，可在其中連結一或多個資料庫中的使用者帳戶。 登入時，使用者帳戶的認證資訊會與登入一起儲存。
-- **使用者帳戶**是任何資料庫中的個別帳戶，但不一定要連結到登入。 使用未連結至登入的使用者帳戶時，認證資訊會與使用者帳戶一起儲存。
+- **登** 入是 master 資料庫中的個別帳戶，可在其中連結一或多個資料庫中的使用者帳戶。 登入時，使用者帳戶的認證資訊會與登入一起儲存。
+- **使用者帳戶** 是任何資料庫中的個別帳戶，但不一定要連結到登入。 使用未連結至登入的使用者帳戶時，認證資訊會與使用者帳戶一起儲存。
 
-使用資料庫角色和明確許可權來管理存取資料和執行各種動作的[**授權**](security-overview.md#authorization)。 授權是指指派給使用者的許可權，並決定該使用者允許執行的動作。 授權是由使用者帳戶的資料庫 [角色成員資格](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles) 和 [物件層級許可權](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)所控制。 最好的作法是，您應該授與使用者所需的最低權限。
+使用資料庫角色和明確許可權來管理存取資料和執行各種動作的 [**授權**](security-overview.md#authorization)。 授權是指指派給使用者的許可權，並決定該使用者允許執行的動作。 授權是由使用者帳戶的資料庫 [角色成員資格](/sql/relational-databases/security/authentication-access/database-level-roles) 和 [物件層級許可權](/sql/relational-databases/security/permissions-database-engine)所控制。 最好的作法是，您應該授與使用者所需的最低權限。
 
 ## <a name="existing-logins-and-user-accounts-after-creating-a-new-database"></a>建立新資料庫之後的現有登入和使用者帳戶
 
-當您第一次部署 Azure SQL 時，您會為該登入指定管理員登入和相關聯的密碼。 此系統管理帳戶稱為「 **伺服器管理員**」。在部署期間，主資料庫和使用者資料庫中的登入和使用者會進行下列設定：
+當您第一次部署 Azure SQL 時，您會為該登入指定管理員登入和相關聯的密碼。 此系統管理帳戶稱為「 **伺服器管理員** 」。在部署期間，主資料庫和使用者資料庫中的登入和使用者會進行下列設定：
 
-- 系統會使用您指定的登入名稱來建立具有系統管理許可權的 SQL 登入。 [登](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login)入是個別的使用者帳戶，用於登入 SQL DATABASE、SQL 受控執行個體和 Azure Synapse。
-- 這個登入是以 [伺服器層級主體](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine)的形式，授與所有資料庫的完整系統管理許可權。 登入具有所有可用的許可權，而且不受限制。 在 SQL 受控執行個體中，此登入會新增至 [系統管理員（sysadmin）固定伺服器角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) ， (此角色不存在於 Azure SQL Database) 中。
-- [user account](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users) `dbo` 針對每個使用者資料庫中的此登入，建立名為的使用者帳戶。 [Dbo](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine)使用者擁有資料庫中的所有資料庫許可權，而且會對應至 `db_owner` 固定資料庫角色。 本文稍後將討論其他固定資料庫角色。
+- 系統會使用您指定的登入名稱來建立具有系統管理許可權的 SQL 登入。 [登](/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login)入是個別的使用者帳戶，用於登入 SQL DATABASE、SQL 受控執行個體和 Azure Synapse。
+- 這個登入是以 [伺服器層級主體](/sql/relational-databases/security/authentication-access/principals-database-engine)的形式，授與所有資料庫的完整系統管理許可權。 登入具有所有可用的許可權，而且不受限制。 在 SQL 受控執行個體中，此登入會新增至 [系統管理員（sysadmin）固定伺服器角色](/sql/relational-databases/security/authentication-access/server-level-roles) ， (此角色不存在於 Azure SQL Database) 中。
+- [user account](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users) `dbo` 針對每個使用者資料庫中的此登入，建立名為的使用者帳戶。 [Dbo](/sql/relational-databases/security/authentication-access/principals-database-engine)使用者擁有資料庫中的所有資料庫許可權，而且會對應至 `db_owner` 固定資料庫角色。 本文稍後將討論其他固定資料庫角色。
 
 若要識別資料庫的系統管理員帳戶，請開啟 Azure 入口網站，然後流覽至伺服器或受控實例的 [ **屬性** ] 索引標籤。
 
@@ -68,7 +68,7 @@ ms.locfileid: "92167112"
 ![醒目顯示 [屬性] 功能表選項的螢幕擷取畫面。](./media/logins-create-manage/sql-admins2.png)
 
 > [!IMPORTANT]
-> 系統管理員登入名稱在建立後即無法變更。 若要重設伺服器管理員的密碼，請移至 [Azure 入口網站](https://portal.azure.com)、按一下 [SQL Server]****、從清單中選取伺服器，然後按一下 [重設密碼]****。 若要重設 SQL 受控執行個體的密碼，請移至 [Azure 入口網站]，按一下該實例，然後按一下 [ **重設密碼**]。 您也可以使用 PowerShell 或 Azure CLI。
+> 系統管理員登入名稱在建立後即無法變更。 若要重設伺服器管理員的密碼，請移至  、從清單中選取伺服器，然後按一下 [重設密碼]  。 若要重設 SQL 受控執行個體的密碼，請移至 [Azure 入口網站]，按一下該實例，然後按一下 [ **重設密碼** ]。 您也可以使用 PowerShell 或 Azure CLI。
 
 ## <a name="create-additional-logins-and-users-having-administrative-permissions"></a>建立具有系統管理許可權的其他登入和使用者
 
@@ -84,19 +84,19 @@ ms.locfileid: "92167112"
 - **在 SQL 受控執行個體中，建立具有完整系統管理許可權的 SQL 登入**
 
   - 在 master 資料庫中建立額外的 SQL 登入。
-  - 使用[ALTER SERVER role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql)語句，將登入加入至[系統管理員（sysadmin）固定伺服器角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles)。 此登入將擁有完整的系統管理許可權。
+  - 使用[ALTER SERVER role](/sql/t-sql/statements/alter-server-role-transact-sql)語句，將登入加入至[系統管理員（sysadmin）固定伺服器角色](/sql/relational-databases/security/authentication-access/server-level-roles)。 此登入將擁有完整的系統管理許可權。
   - 或者，使用[CREATE login](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)語法建立[Azure AD 登](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)入。
 
 - **在 SQL Database 中，建立具有有限系統管理許可權的 SQL 登入**
 
   - 在 master 資料庫中建立額外的 SQL 登入。
   - 在與這個新登入相關聯的 master 資料庫中建立使用者帳戶。
-  - `dbmanager` `loginmanager` `master` 使用適用于 Azure SYNAPSE 的[ALTER role](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql)語句 (，在資料庫中將使用者帳戶加入至或角色，然後使用[sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)語句) 。
+  - `dbmanager` `loginmanager` `master` 使用適用于 Azure SYNAPSE 的[ALTER role](/sql/t-sql/statements/alter-role-transact-sql)語句 (，在資料庫中將使用者帳戶加入至或角色，然後使用[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)語句) 。
 
   > [!NOTE]
-  > `dbmanager`和 `loginmanager` 角色與**not** SQL 受控執行個體部署無關。
+  > `dbmanager`和 `loginmanager` 角色與 **not** SQL 受控執行個體部署無關。
 
-  這些 [特殊 master 資料庫角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles#special-roles-for--and-) 的成員，Azure SQL Database 有權建立和管理資料庫，或是建立和管理登入。 在屬於角色成員之使用者所建立的資料庫中 `dbmanager` ，該成員會對應至 `db_owner` 固定資料庫角色，而且可以使用使用者帳戶登入並管理該資料庫 `dbo` 。 這些角色沒有 master 資料庫外的明確許可權。
+  這些 [特殊 master 資料庫角色](/sql/relational-databases/security/authentication-access/database-level-roles#special-roles-for--and-) 的成員，Azure SQL Database 有權建立和管理資料庫，或是建立和管理登入。 在屬於角色成員之使用者所建立的資料庫中 `dbmanager` ，該成員會對應至 `db_owner` 固定資料庫角色，而且可以使用使用者帳戶登入並管理該資料庫 `dbo` 。 這些角色沒有 master 資料庫外的明確許可權。
 
   > [!IMPORTANT]
   > 您無法在 SQL Database 中建立具有完整系統管理許可權的其他 SQL 登入。
@@ -122,10 +122,10 @@ ms.locfileid: "92167112"
 
 如需顯示如何建立登入和使用者的範例，請參閱：
 
-- [建立 Azure SQL Database 的登入](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current#examples-1)
-- [建立 Azure SQL 受控執行個體的登入](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current#examples-2)
-- [為 Azure Synapse 建立登入](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest#examples-3)
-- [建立使用者](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql#examples)
+- [建立 Azure SQL Database 的登入](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current#examples-1)
+- [建立 Azure SQL 受控執行個體的登入](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current#examples-2)
+- [為 Azure Synapse 建立登入](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest#examples-3)
+- [建立使用者](/sql/t-sql/statements/create-user-transact-sql#examples)
 - [建立 Azure AD 包含的使用者](authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)
 
 > [!TIP]
@@ -137,19 +137,19 @@ ms.locfileid: "92167112"
 
 - **固定資料庫角色**
 
-  將使用者帳戶加入至 [固定資料庫角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles)。 有9個固定資料庫角色，每個角色都有一組已定義的許可權。 最常見的固定資料庫角色包括： **db_owner**、 **db_ddladmin**、 **db_datawriter**、 **db_datareader**、 **db_denydatawriter**和 **db_denydatareader**。 **db_owner** 通常是用來將完整權限授與少數幾個使用者。 其他固定的資料庫角色適用於快速開發簡單的資料庫，但不建議用於大多數實際執行資料庫。 例如， **db_datareader** 固定資料庫角色會授與資料庫中每個資料表的讀取存取權，這是絕對必要的。
+  將使用者帳戶加入至 [固定資料庫角色](/sql/relational-databases/security/authentication-access/database-level-roles)。 有9個固定資料庫角色，每個角色都有一組已定義的許可權。 最常見的固定資料庫角色包括： **db_owner** 、 **db_ddladmin** 、 **db_datawriter** 、 **db_datareader** 、 **db_denydatawriter** 和 **db_denydatareader** 。 **db_owner** 通常是用來將完整權限授與少數幾個使用者。 其他固定的資料庫角色適用於快速開發簡單的資料庫，但不建議用於大多數實際執行資料庫。 例如， **db_datareader** 固定資料庫角色會授與資料庫中每個資料表的讀取存取權，這是絕對必要的。
 
   - 若要將使用者加入至固定資料庫角色：
 
-    - 在 Azure SQL Database 中，請使用 [ALTER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql) 語句。 如需範例，請參閱 [ALTER ROLE 範例](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql#examples)
-    - Azure Synapse，請使用 [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) 語句。 如需範例，請參閱 [sp_addrolemember 範例](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql)。
+    - 在 Azure SQL Database 中，請使用 [ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql) 語句。 如需範例，請參閱 [ALTER ROLE 範例](/sql/t-sql/statements/alter-role-transact-sql#examples)
+    - Azure Synapse，請使用 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) 語句。 如需範例，請參閱 [sp_addrolemember 範例](/sql/t-sql/statements/alter-role-transact-sql)。
 
 - **自訂資料庫角色**
 
-  使用 [CREATE role](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql) 語句來建立自訂資料庫角色。 自訂角色可讓您建立自己的使用者定義資料庫角色，並為每個角色謹慎授與商務需求所需的最低許可權。 然後，您可以將使用者新增至自訂角色。 當使用者是多個角色的成員時，會集所有這些角色的權限在一身。
+  使用 [CREATE role](/sql/t-sql/statements/create-role-transact-sql) 語句來建立自訂資料庫角色。 自訂角色可讓您建立自己的使用者定義資料庫角色，並為每個角色謹慎授與商務需求所需的最低許可權。 然後，您可以將使用者新增至自訂角色。 當使用者是多個角色的成員時，會集所有這些角色的權限在一身。
 - **直接授與許可權**
 
-  直接授與使用者帳戶 [許可權](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) 。 有超過 100 個權限可在 SQL Database 中分別授與或拒絕。 這些權限有許多為巢狀。 例如，結構描述上的 `UPDATE` 權限包括該結構描述中每個資料表的 `UPDATE` 權限。 如同大多數的權限系統，拒絕權限會覆寫授與權限。 因為權限的巢狀本質和數目，可能需要仔細研究，設計適當的權限系統以便適當地保護您的資料庫。 請從[權限 (Database Engine)](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) 的權限清單開始著手，然後檢閱[海報大小的權限圖](https://docs.microsoft.com/sql/relational-databases/security/media/database-engine-permissions.png)。
+  直接授與使用者帳戶 [許可權](/sql/relational-databases/security/permissions-database-engine) 。 有超過 100 個權限可在 SQL Database 中分別授與或拒絕。 這些權限有許多為巢狀。 例如，結構描述上的 `UPDATE` 權限包括該結構描述中每個資料表的 `UPDATE` 權限。 如同大多數的權限系統，拒絕權限會覆寫授與權限。 因為權限的巢狀本質和數目，可能需要仔細研究，設計適當的權限系統以便適當地保護您的資料庫。 請從[權限 (Database Engine)](/sql/relational-databases/security/permissions-database-engine) 的權限清單開始著手，然後檢閱[海報大小的權限圖](/sql/relational-databases/security/media/database-engine-permissions.png)。
 
 ## <a name="using-groups"></a>使用群組
 
@@ -164,10 +164,10 @@ ms.locfileid: "92167112"
 
 您應該熟悉下列功能，這些功能可用來限制或提高權限︰
 
-- [模擬](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/customizing-permissions-with-impersonation-in-sql-server)和[模組簽署](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)可用來安全地暫時提升權限。
-- [資料列層級安全性](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) 可用於使用者可存取資料列的限制。
+- [模擬](/dotnet/framework/data/adonet/sql/customizing-permissions-with-impersonation-in-sql-server)和[模組簽署](/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)可用來安全地暫時提升權限。
+- [資料列層級安全性](/sql/relational-databases/security/row-level-security) 可用於使用者可存取資料列的限制。
 - [資料遮罩](dynamic-data-masking-overview.md) 可用來限制公開機密資料。
-- [預存程序](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) 可用來限制對資料庫可採取的動作。
+- [預存程序](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) 可用來限制對資料庫可採取的動作。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: bdb021bc0247972fa29975c62bc9214e3b474e2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f76d2079b7ed5aacbf835540ea92febd034e2d0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994542"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782445"
 ---
 # <a name="monitoring-azure-sql-managed-instance-management-operations"></a>監視 Azure SQL 受控執行個體管理作業
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -37,7 +37,7 @@ Azure SQL 受控執行個體提供 [管理作業](management-operations-overview
 有數種方式可用來監視受控實例管理作業：
 
 - [資源群組部署](../../azure-resource-manager/templates/deployment-history.md)
-- [活動記錄檔](../../azure-monitor/platform/activity-log.md)
+- [活動記錄](../../azure-monitor/platform/activity-log.md)
 - [受控實例作業 API](#managed-instance-operations-api)
 
 
@@ -62,9 +62,9 @@ Azure SQL 受控執行個體提供 [管理作業](management-operations-overview
 
 | Command | 描述 |
 | --- | --- |
-|[受控執行個體作業-取得](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/get)|取得受控實例上的管理作業。|
-|[受控執行個體作業-取消](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/cancel)|取消受控實例上的非同步作業。|
-|[受控執行個體作業-依受控執行個體列出](https://docs.microsoft.com/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|取得在受控實例上執行的作業清單。|
+|[受控執行個體作業-取得](/rest/api/sql/managedinstanceoperations/get)|取得受控實例上的管理作業。|
+|[受控執行個體作業-取消](/rest/api/sql/managedinstanceoperations/cancel)|取消受控實例上的非同步作業。|
+|[受控執行個體作業-依受控執行個體列出](/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|取得在受控實例上執行的作業清單。|
 
 > [!NOTE]
 > 使用 API 版本2020-02-02，在作業清單中查看受控實例的建立作業。 這是 Azure 入口網站中所使用的預設版本，以及最新的 PowerShell 和 Azure CLI 套件。
@@ -98,7 +98,7 @@ $managementOperations = Get-AzSqlInstanceOperation `
     -ManagedInstanceName $managedInstance  -ResourceGroupName $resourceGroup
 ```
 
-如需詳細的命令說明，請參閱 [AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceoperation)。
+如需詳細的命令說明，請參閱 [AzSqlInstanceOperation](/powershell/module/az.sql/get-azsqlinstanceoperation)。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -108,7 +108,7 @@ Az sql mi op 清單會取得在受控實例上執行的作業清單。 如果尚
 az sql mi op list -g yourResourceGroupName --mi yourInstanceName 
 ```
 
-如需詳細的命令說明，請參閱 [az sql mi op](https://docs.microsoft.com/cli/azure/sql/mi/op)。
+如需詳細的命令說明，請參閱 [az sql mi op](/cli/azure/sql/mi/op)。
 
 ---
 

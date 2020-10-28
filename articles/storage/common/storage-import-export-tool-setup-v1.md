@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/15/2017
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e03601bc929354a69e7f9027db5ac9b7697c3c82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f9b69cef5741ab609b72f6c2c34e3aa50b45648
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90054070"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782071"
 ---
 # <a name="setting-up-the-azure-importexport-tool-v1"></a>設定 Azure 匯入/匯出工具 v1
 Microsoft Azure 匯入/匯出工具是磁碟機準備及修復工具，可搭配 Microsoft Azure 匯入/匯出服務使用。 您可以使用此工具來執行下列功能︰  
@@ -249,8 +249,8 @@ Examples:
 
 ## <a name="next-steps"></a>後續步驟
 
-* [準備匯入作業的硬碟](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-* [預覽匯出作業的磁片磁碟機使用量](../storage-import-export-tool-previewing-drive-usage-export-v1.md)   
-* [使用複製記錄檔來檢查作業狀態](../storage-import-export-tool-reviewing-job-status-v1.md)   
-* [修復匯入作業](../storage-import-export-tool-repairing-an-import-job-v1.md)   
-* [修復匯出作業](../storage-import-export-tool-repairing-an-export-job-v1.md)
+* [準備匯入作業的硬碟](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import-v1)   
+* [預覽匯出作業的磁片磁碟機使用量](/previous-versions/azure/storage/common/storage-import-export-tool-previewing-drive-usage-export-v1)   
+* [使用複製記錄檔來檢查作業狀態](./storage-import-export-tool-reviewing-job-status-v1.md)   
+* [修復匯入作業](./storage-import-export-tool-repairing-an-import-job-v1.md)   
+* [修復匯出作業](./storage-import-export-tool-repairing-an-export-job-v1.md)

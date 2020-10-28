@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: bc649551986190f944e3225ff0914d091acd3f88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26add03929551c912b4d7b7cf10741d53333689a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619690"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780558"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>了解如何佈建新的租用戶並在目錄中註冊它們
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,8 +33,8 @@ ms.locfileid: "91619690"
 
 若要完成本教學課程，請確定已完成下列必要條件：
 
-* 已部署每一租用戶一個資料庫的 Wingtip Tickets SaaS 應用程式。 若要在五分鐘內完成部署，請參閱[部署及探索每一租用戶一個資料庫的 Wingtip Tickets SaaS 應用程式](../../sql-database/saas-dbpertenant-get-started-deploy.md)。
-* 已安裝 Azure PowerShell。 如需詳細資訊，請參閱[開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+* 已部署每一租用戶一個資料庫的 Wingtip Tickets SaaS 應用程式。 若要在五分鐘內完成部署，請參閱[部署及探索每一租用戶一個資料庫的 Wingtip Tickets SaaS 應用程式](./saas-dbpertenant-get-started-deploy.md)。
+* 已安裝 Azure PowerShell。 如需詳細資訊，請參閱[開始使用 Azure PowerShell](/powershell/azure/get-started-azureps)。
 
 ## <a name="introduction-to-the-saas-catalog-pattern"></a>SaaS 目錄模式簡介
 
@@ -53,7 +53,7 @@ SaaS 應用程式以外，目錄可以啟用資料庫工具。 在每一租用�
 分區對應包含分區 (資料庫) 清單，以及金鑰 (租用戶) 與分區之間的對應。 在租用戶佈建期間，會使用 EDCL 函式來建立分區對應中的項目。 在執行階段，應用程式會使用它們來連線到正確的資料庫。 EDCL 會快取連線資訊，以將對目錄資料庫的流量降到最低，並加快應用程式的速度。
 
 > [!IMPORTANT]
-> 您可以在類別目錄資料庫中存取對應資料，但「請勿編輯它」**。 請只使用「彈性資料庫用戶端程式庫 API」來編輯對應資料。 直接操作對應資料會有造成目錄損毀的風險，而且也不支援這樣做。
+> 您可以在類別目錄資料庫中存取對應資料，但「請勿編輯它」  。 請只使用「彈性資料庫用戶端程式庫 API」來編輯對應資料。 直接操作對應資料會有造成目錄損毀的風險，而且也不支援這樣做。
 
 
 ## <a name="introduction-to-the-saas-provisioning-pattern"></a>SaaS 佈建模式簡介
@@ -66,7 +66,7 @@ SaaS 應用程式以外，目錄可以啟用資料庫工具。 在每一租用�
 
 每一租用戶一個資料庫的 Wingtip Tickets 應用程式會藉由複製目錄伺服器上所部署、名為 _basetenantdb_ 的範本資料庫，佈建新的租用戶。 您可以將佈建整合到應用程式作為註冊體驗的一部分。 此外，也可以藉由使用指令碼以離線方式支援。 本教學課程會使用 PowerShell 來探索佈建。
 
-佈建指令碼會複製 _basetenantdb_ 資料庫，以在彈性集區中建立新的租用戶資料庫。 租用戶資料庫會建立在與 _newtenant_ DNS 別名對應的租用戶伺服器中。 此別名會持續為用來佈建新租用戶的伺服器提供參考，並更新為指向災害復原教學課程 ([使用異地還原的 DR](../../sql-database/saas-dbpertenant-dr-geo-restore.md)、[使用異地複寫的 DR](../../sql-database/saas-dbpertenant-dr-geo-replication.md)) 中的復原租用戶伺服器。 接著，指令碼會以租用戶特定資訊將資料庫初始化，然後在目錄分區對應中註冊該資料庫。 租用戶資料庫會根據租用戶名稱來命名。 此命名配置不是此模式的重要部分。 目錄會將租用戶金鑰與資料庫名稱對應，因此可以使用任何命名慣例。
+佈建指令碼會複製 _basetenantdb_ 資料庫，以在彈性集區中建立新的租用戶資料庫。 租用戶資料庫會建立在與 _newtenant_ DNS 別名對應的租用戶伺服器中。 此別名會持續為用來佈建新租用戶的伺服器提供參考，並更新為指向災害復原教學課程 ([使用異地還原的 DR](./saas-dbpertenant-dr-geo-restore.md)、[使用異地複寫的 DR](./saas-dbpertenant-dr-geo-replication.md)) 中的復原租用戶伺服器。 接著，指令碼會以租用戶特定資訊將資料庫初始化，然後在目錄分區對應中註冊該資料庫。 租用戶資料庫會根據租用戶名稱來命名。 此命名配置不是此模式的重要部分。 目錄會將租用戶金鑰與資料庫名稱對應，因此可以使用任何命名慣例。
 
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>取得每一租用戶一個資料庫的 Wingtip Tickets SaaS 應用程式指令碼
@@ -78,11 +78,11 @@ SaaS 應用程式以外，目錄可以啟用資料庫工具。 在每一租用�
 
 若要了解 Wingtip Tickets 應用程式如何實作新的租用戶佈建，請在佈建租用戶時，新增中斷點並依循工作流程進行操作。
 
-1. 在 PowerShell ISE 中，開啟 ...\\Learning Modules\\ProvisionAndCatalog\\_Demo-ProvisionAndCatalog.ps1_，然後設定下列參數：
+1. 在 PowerShell ISE 中，開啟 ...\\Learning Modules\\ProvisionAndCatalog\\_Demo-ProvisionAndCatalog.ps1_ ，然後設定下列參數：
 
-   * **$TenantName** = 新場地的名稱 (例如，*Bushwillow Blues*)。
-   * **$VenueType** = 其中一個預先定義的場地類型：_blues、classicalmusic、dance、jazz、judo、motor racing、multipurpose、opera、rockmusic、soccer_。
-   * **$DemoScenario** = **1**，佈建單一租用戶。
+   * **$TenantName** = 新場地的名稱 (例如， *Bushwillow Blues* )。
+   * **$VenueType** = 其中一個預先定義的場地類型： _blues、classicalmusic、dance、jazz、judo、motor racing、multipurpose、opera、rockmusic、soccer_ 。
+   * **$DemoScenario** = **1** ，佈建單一租用戶。
 
 2. 若要新增中斷點，請將游標置於顯示 *New-Tenant `* 之行上的任意位置。 然後按 F9。
 
@@ -96,7 +96,7 @@ SaaS 應用程式以外，目錄可以啟用資料庫工具。 在每一租用�
 
 
 
-請使用 [偵錯]**** 功能表選項來追蹤指令碼的執行情況。 按 F10 和 F11 來不進入或逐步執行所呼叫的函式。 如需對 PowerShell 指令碼進行偵錯的詳細資訊，請參閱[使用 PowerShell 指令碼及對其進行偵錯的祕訣](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise) \(英文\)。
+請使用 [偵錯]  功能表選項來追蹤指令碼的執行情況。 按 F10 和 F11 來不進入或逐步執行所呼叫的函式。 如需對 PowerShell 指令碼進行偵錯的詳細資訊，請參閱[使用 PowerShell 指令碼及對其進行偵錯的祕訣](/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise) \(英文\)。
 
 
 您不一定要明確依照此工作流程進行操作。 它說明如何對指令碼進行偵錯。
@@ -106,15 +106,15 @@ SaaS 應用程式以外，目錄可以啟用資料庫工具。 在每一租用�
 * **取得設定詳細資料。** 使用 F11 來逐步執行 Get-Configuration，然後查看指定應用程式設定的方式。 資源名稱及其他應用程式特定值都會在此處定義。 在您熟悉指令碼之前，請勿變更這些值。
 * **取得目錄物件。** 逐步執行 Get-Catalog，這會撰寫並傳回在較高層級指令碼中使用的目錄物件。 此函式會使用從 **AzureShardManagement.psm1** 匯入的分區管理函式。 目錄物件是由下列元素組成：
 
-   * $catalogServerFullyQualifiedName 的建構方式是使用標準主幹再加上您的使用者名稱：_catalog-\<user\>.database.windows .net_。
-   * $catalogDatabaseName 是從下列設定擷取：*tenantcatalog*。
+   * $catalogServerFullyQualifiedName 的建構方式是使用標準主幹再加上您的使用者名稱： _catalog-\<user\>.database.windows .net_ 。
+   * $catalogDatabaseName 是從下列設定擷取： *tenantcatalog* 。
    * $shardMapManager 物件是從類別目錄資料庫初始化。
    * $shardMap 物件是從類別目錄資料庫中的 _tenantcatalog_ 分區對應初始化。 系統會組成並傳回目錄物件。 此物件會用於較高層級的指令碼中。
 * **計算新的租用戶金鑰。** 會使用雜湊函式從租用戶名稱建立租用戶索引鍵。
 * **檢查租用戶金鑰是否已經存在。** 系統會檢查目錄以確定該金鑰可供使用。
 * **租用戶資料庫是使用 New-TenantDatabase 來佈建。** 請使用 F11 來逐步執行，並使用 [Azure Resource Manager 範本](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)來了解資料庫的佈建方式。
 
-    資料庫名稱是使用租用戶名稱來建構，使分區和租用戶之間的從屬關係一目瞭然 您也可以使用其他資料庫命名慣例。 Resource Manager 範本會建立租用戶資料庫，方法是在目錄伺服器上複製範本資料庫 (baseTenantDB__)。 另一個方法是建立一個資料庫，然後匯入 bacpac 來將它初始化。 或者，您也可以從已知的位置執行初始化指令碼。
+    資料庫名稱是使用租用戶名稱來建構，使分區和租用戶之間的從屬關係一目瞭然 您也可以使用其他資料庫命名慣例。 Resource Manager 範本會建立租用戶資料庫，方法是在目錄伺服器上複製範本資料庫 (baseTenantDB  )。 另一個方法是建立一個資料庫，然後匯入 bacpac 來將它初始化。 或者，您也可以從已知的位置執行初始化指令碼。
 
     Resource Manager 範本位於 …\Learning Modules\Common\ 資料夾：tenantdatabasecopytemplate.json
 
@@ -127,7 +127,7 @@ SaaS 應用程式以外，目錄可以啟用資料庫工具。 在每一租用�
     * 已將租用戶的其他相關中繼資料 (場地的名稱) 新增至目錄中的「租用戶」資料表。 「租用戶」資料表不是「分區管理」結構描述的一部分，且不是由 EDCL 安裝。 此資料表說明如何延伸目錄資料庫，以支援其他應用程式特定資料。
 
 
-佈建完成之後，執行會返回原始的 *Demo-ProvisionAndCatalog* 指令碼。 瀏覽器中會開啟新租用戶的 [事件]**** 頁面。
+佈建完成之後，執行會返回原始的 *Demo-ProvisionAndCatalog* 指令碼。 瀏覽器中會開啟新租用戶的 [事件]  頁面。
 
    ![[事件] 頁面](./media/saas-dbpertenant-provision-and-catalog/new-tenant.png)
 
@@ -136,16 +136,16 @@ SaaS 應用程式以外，目錄可以啟用資料庫工具。 在每一租用�
 
 此練習會佈建一批 17 個租用戶。 建議您在開始進行其他每一租用戶一個資料庫的 Wingtip Tickets SaaS 教學課程之前，先佈建這一批租用戶。 這樣就會不止有幾個資料庫可供使用。
 
-1. 在 PowerShell ISE 中，開啟 ...\\Learning Modules\\ProvisionAndCatalog\\*Demo-ProvisionAndCatalog.ps1*。 將 *$DemoScenario* 參數變更為 3：
+1. 在 PowerShell ISE 中，開啟 ...\\Learning Modules\\ProvisionAndCatalog\\*Demo-ProvisionAndCatalog.ps1* 。 將 *$DemoScenario* 參數變更為 3：
 
-   * **$DemoScenario** = **3**，佈建一批租用戶。
+   * **$DemoScenario** = **3** ，佈建一批租用戶。
 2. 若要執行指令碼，請按 F5。
 
 此指令碼會部署一批額外的租用戶。 它會使用 [Azure Resource Manager 範本](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)，此範本會控制該批次並將每個資料庫的佈建委派給所連結的範本。 以此方式使用範本可讓 Azure Resource Manager 代理指令碼的佈建程序。 這些範本會平行佈建資料庫，並視需要處理重試。 指令碼為等冪，如果它失敗，或因為任何原因而停止，請再次執行。
 
 ### <a name="verify-the-batch-of-tenants-that-successfully-deployed"></a>確認已成功部署的一批租用戶
 
-* 在 [Azure 入口網站](https://portal.azure.com) 中，瀏覽至您的伺服器清單並開啟 tenants1** 伺服器。 選取 [SQL 資料庫]****，然後確認清單中現在有該批 17 個額外的資料庫。
+* 在  伺服器。 選取 [SQL 資料庫]  ，然後確認清單中現在有該批 17 個額外的資料庫。
 
    ![資料庫清單](./media/saas-dbpertenant-provision-and-catalog/database-list.png)
 
@@ -155,9 +155,9 @@ SaaS 應用程式以外，目錄可以啟用資料庫工具。 在每一租用�
 
 本教學課程中未包含的其他佈建模式：
 
-**預先佈建資料庫**：預先佈建模式會利用彈性集區中的資料庫並不會增加額外成本的事實。 計費只會針對彈性集區，不會針對資料庫。 閒置的資料庫不會耗用任何資源。 藉由在集區中預先佈建資料庫，並在需要時才配置它們，您便可以縮減新增租用戶的時間。 可以視需要調整預先佈建的資料庫數目，以針對預期的佈建率保留適當的緩衝。
+**預先佈建資料庫** ：預先佈建模式會利用彈性集區中的資料庫並不會增加額外成本的事實。 計費只會針對彈性集區，不會針對資料庫。 閒置的資料庫不會耗用任何資源。 藉由在集區中預先佈建資料庫，並在需要時才配置它們，您便可以縮減新增租用戶的時間。 可以視需要調整預先佈建的資料庫數目，以針對預期的佈建率保留適當的緩衝。
 
-**自動佈建**：在自動佈建模式中，佈建服務會視需要自動佈建伺服器、集區及資料庫。 如果您想要，也可以包含彈性集區中的預先佈建資料庫。 如果資料庫已被解除委任並刪除，可以由佈建服務填補彈性集區中的間隔。 這類服務可以相當簡單，也可以相當複雜，例如處理跨多個地理位置的佈建，以及針對災害復原設定異地複寫。
+**自動佈建** ：在自動佈建模式中，佈建服務會視需要自動佈建伺服器、集區及資料庫。 如果您想要，也可以包含彈性集區中的預先佈建資料庫。 如果資料庫已被解除委任並刪除，可以由佈建服務填補彈性集區中的間隔。 這類服務可以相當簡單，也可以相當複雜，例如處理跨多個地理位置的佈建，以及針對災害復原設定異地複寫。
 
 使用自動佈建模式時，用戶端應用程式或指令碼會將佈建要求提交給要由佈建服務處理的佇列。 接著，它會輪詢服務以判斷完成情況。 如果使用預先佈建，則會快速處理要求。 服務會在背景佈建一個替代資料庫。
 
@@ -172,10 +172,10 @@ SaaS 應用程式以外，目錄可以啟用資料庫工具。 在每一租用�
 > * 佈建一批額外的租用戶。
 > * 了解佈建租用戶和將它們註冊到目錄中的細節。
 
-試用[效能監視教學課程](../../sql-database/saas-dbpertenant-performance-monitoring.md)。
+試用[效能監視教學課程](./saas-dbpertenant-performance-monitoring.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
 * [以每一租用戶一個資料庫的 Wingtip Tickets SaaS 應用程式為基礎的其他教學課程](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [彈性資料庫用戶端程式庫](elastic-database-client-library.md)
-* [在 Windows PowerShell ISE 中針對指令碼進行偵錯](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)
+* [在 Windows PowerShell ISE 中針對指令碼進行偵錯](/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)

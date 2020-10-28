@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 10/26/2020
 ms.author: kenwith
-ms.openlocfilehash: 159a473b2b164d1f0692864e26f6127d9faf8287
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: bf88782cf771c01a6a167d4584ad86dc69795c59
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069869"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781476"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>在 Azure Active Directory 中自訂 SaaS 應用程式的使用者佈建屬性對應
 
@@ -27,7 +27,7 @@ Microsoft Azure AD 支援將使用者佈建至 Salesforce、G Suite 等第三方
 
 ## <a name="editing-user-attribute-mappings"></a>編輯使用者屬性對應
 
-請依照下列步驟存取使用者佈建的**對應**功能：
+請依照下列步驟存取使用者佈建的 **對應** 功能：
 
 1. 登入 [Azure Active Directory 入口網站](https://aad.portal.azure.com)。
 1. 在左側窗格中，選取 [企業應用程式]。 此時會顯示所有已設定的應用程式清單，包括已從資源庫新增的應用程式。
@@ -58,7 +58,7 @@ Microsoft Azure AD 支援將使用者佈建至 Salesforce、G Suite 等第三方
   如需詳細資訊，請參閱[在 Azure Active Directory 中撰寫屬性對應的運算式](../app-provisioning/functions-for-customizing-application-data.md)。
 - **無** - 目標屬性保留未修改。 不過，如果目標屬性是空的，就會填入您所指定的預設值。
 
-除了這四個基本類型以外，自訂屬性對應還支援選擇性的**預設**值指派的概念。 預設值指派可確保當 Azure AD 中和目標物件都沒有值時，目標屬性會填入某個值。 最常見的設定是將其保留空白。
+除了這四個基本類型以外，自訂屬性對應還支援選擇性的 **預設** 值指派的概念。 預設值指派可確保當 Azure AD 中和目標物件都沒有值時，目標屬性會填入某個值。 最常見的設定是將其保留空白。
 
 ### <a name="understanding-attribute-mapping-properties"></a>了解屬性對應屬性
 
@@ -107,9 +107,12 @@ Azure AD 佈建服務可以部署在 "greenfield" 案例中 (使用者不存在�
 
 - Salesforce
 - ServiceNow
-- Workday
+- Workday 至 Active Directory/Workday 到 Azure Active Directory
+- SuccessFactors 至 Azure Active Directory 的 Active Directory/SuccessFactors
 - Azure Active Directory (支援 [Azure AD Graph API 預設屬性](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)和自訂目錄擴充功能)
 - 支援 [SCIM 2.0](https://tools.ietf.org/html/rfc7643) 的應用程式，定義於[核心結構描述](https://tools.ietf.org/html/rfc7643)中的屬性必須新增至此處
+- 針對 Azure Active Directory 回寫至 Workday 或 SuccessFactors，支援將支援的屬性的相關中繼資料更新 (XPATH 和 JSONPath) ，但不支援將新的 Workday 或 SuccessFactors 屬性加入預設架構中包含的屬性之外
+
 
 > [!NOTE]
 > 我們建議，只有已自訂應用程式和系統的結構描述，並確知其自訂屬性如何定義的系統管理員，才可編輯支援的屬性清單。 有時，這會需要熟悉應用程式或系統所提供的 API 和開發人員工具。
@@ -142,7 +145,7 @@ SCIM RFC 會定義核心使用者和群組結構描述，同時允許結構描�
 SCIM 應用程式的屬性名稱必須遵循下列範例顯示的模式。 您可以根據應用程式的需求自訂 "CustomExtensionName" 和 "CustomAttribute"，例如：  
  * urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User:CustomAttribute 
  * urn:ietf:params:scim:schemas:extension:2.0:CustomExtensionName:CustomAttribute  
- * urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User.CustomAttributeName:value
+ * urn： ietf： params： scim：架構： extension： CustomExtensionName：2.0： User： CustomAttributeName： value
 
 這些指示僅適用於已啟用 SCIM 的應用程式。 ServiceNow 和 Salesforce 等應用程式不會與使用 SCIM 的 Azure AD 整合，因此在新增自訂屬性時不需要此特定命名空間。
 
@@ -174,7 +177,7 @@ SCIM 應用程式的屬性名稱必須遵循下列範例顯示的模式。 您�
        "displayName": "John Smith"
      }
    },
-     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:CustomAttribute:User": {
+     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User": {
      "CustomAttribute": "701984",
    },
    "meta": {
@@ -192,7 +195,7 @@ SCIM 應用程式的屬性名稱必須遵循下列範例顯示的模式。 您�
 ## <a name="provisioning-a-role-to-a-scim-app"></a>將角色佈建至 SCIM 應用程式
 使用下列步驟，將使用者的角色佈建至您的應用程式。 請注意，下列描述僅適用於自訂 SCIM 應用程式。 針對資源庫應用程式 (例如 Salesforce 和 ServiceNow)，請使用預先定義的角色對應。 下列項目符號說明如何將 AppRoleAssignments 屬性轉換為您的應用程式預期的格式。
 
-- 若要將 Azure AD 中的 appRoleAssignment 對應至應用程式中的角色，您必須使用[運算式](../app-provisioning/functions-for-customizing-application-data.md)來轉換屬性。 AppRoleAssignment 屬性**不應直接對應**至角色屬性，而未使用運算式來剖析角色詳細資料。 
+- 若要將 Azure AD 中的 appRoleAssignment 對應至應用程式中的角色，您必須使用[運算式](../app-provisioning/functions-for-customizing-application-data.md)來轉換屬性。 AppRoleAssignment 屬性 **不應直接對應** 至角色屬性，而未使用運算式來剖析角色詳細資料。 
 
 - **SingleAppRoleAssignment** 
   - **使用時機：** 使用 SingleAppRoleAssignment 運算式為使用者佈建單一角色，並指定主要角色。 

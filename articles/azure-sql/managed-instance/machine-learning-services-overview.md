@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 06/03/2020
-ms.openlocfilehash: 2fb584d999d48c7d29420db26daebf592790af2b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c5392c822c42c2e0ee3f6ce9edffc6229d572165
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676828"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782411"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Azure SQL 中的 Machine Learning 服務受控執行個體 (preview) 
 
@@ -44,7 +44,7 @@ Azure SQL 受控執行個體中的 Machine Learning 服務可讓您在資料庫�
 
 - **在預存程式中將模型和腳本部署到生產環境中** ，只要在 t-sql 預存程式中內嵌腳本和定型的模型就可以實際運作。 連接到 Azure SQL 受控執行個體的應用程式可以藉由直接呼叫預存程式，在這些模型中受益于預測和智慧。 您也可以使用原生 T-sql PREDICT 函數來讓模型，以在高度並行的即時評分案例中快速評分。
 
-機器學習服務包含了 Python 和 R 的基本發行版。 除了適用於 Python 的 [revoscalepy](https://docs.microsoft.com/sql/advanced-analytics/python/ref-py-revoscalepy) 和 [microsoftml](https://docs.microsoft.com/sql/advanced-analytics/python/ref-py-microsoftml)，以及適用於 R 的 [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler)、[MicrosoftML](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-microsoftml)、[olapR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-olapr) 和 [sqlrutils](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-sqlrutils) 這些上述 Microsoft 套件以外，您還可以安裝並使用開放原始碼套件和架構，例如 PyTorch、TensorFlow 和 scikit-learn。
+機器學習服務包含了 Python 和 R 的基本發行版。 除了適用於 Python 的 [revoscalepy](/sql/advanced-analytics/python/ref-py-revoscalepy) 和 [microsoftml](/sql/advanced-analytics/python/ref-py-microsoftml)，以及適用於 R 的 [RevoScaleR](/sql/advanced-analytics/r/ref-r-revoscaler)、[MicrosoftML](/sql/advanced-analytics/r/ref-r-microsoftml)、[olapR](/sql/advanced-analytics/r/ref-r-olapr) 和 [sqlrutils](/sql/advanced-analytics/r/ref-r-sqlrutils) 這些上述 Microsoft 套件以外，您還可以安裝並使用開放原始碼套件和架構，例如 PyTorch、TensorFlow 和 scikit-learn。
 
 <a name="signup"></a>
 
@@ -85,6 +85,6 @@ Azure SQL 受控執行個體中的 Machine Learning 服務可讓您在資料庫�
 ## <a name="next-steps"></a>後續步驟
 
 - 請參閱 [SQL Server Machine Learning 服務的主要差異](machine-learning-services-differences.md)。
-- 若要瞭解如何在 Machine Learning 服務中使用 Python，請參閱 [執行 python 腳本](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15)。
-- 若要瞭解如何在 Machine Learning 服務中使用 R，請參閱 [執行 r 腳本](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15)。
-- 如需有關其他 SQL 平臺機器學習的詳細資訊，請參閱 [SQL machine learning 檔](https://docs.microsoft.com/sql/machine-learning/)。
+- 若要瞭解如何在 Machine Learning 服務中使用 Python，請參閱 [執行 python 腳本](/sql/machine-learning/tutorials/quickstart-python-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&view=sql-server-ver15)。
+- 若要瞭解如何在 Machine Learning 服務中使用 R，請參閱 [執行 r 腳本](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&view=sql-server-ver15)。
+- 如需有關其他 SQL 平臺機器學習的詳細資訊，請參閱 [SQL machine learning 檔](/sql/machine-learning/)。

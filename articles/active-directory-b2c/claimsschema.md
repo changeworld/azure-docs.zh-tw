@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d02bc8d97b65f4ea2c2585201654899a63d3229b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aadb75d7257470cf4288c6123263f3d2dfe14d21
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201356"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781714"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -64,7 +64,7 @@ PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的�
 
 ### <a name="datatype"></a>DataType
 
-**DataType**元素支援下列值：
+**DataType** 元素支援下列值：
 
 | 類型 | 描述 |
 | ------- | ----------- |
@@ -109,7 +109,7 @@ PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的�
 </ClaimType>
 ```
 
-因此，Azure AD B2C 所發出的 JWT 權杖會略過 `family_name`，而不會略過 ClaimType 名稱 **surname**。
+因此，Azure AD B2C 所發出的 JWT 權杖會略過 `family_name`，而不會略過 ClaimType 名稱 **surname** 。
 
 ```json
 {
@@ -178,7 +178,7 @@ PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的�
 
 #### <a name="enumeration"></a>列舉型別
 
-**列舉**元素會定義可用的選項，讓使用者在使用者介面中選取宣告，例如、或中的值 `CheckboxMultiSelect` `DropdownSingleSelect` `RadioSingleSelect` 。 或者，您也可以使用 [LocalizedCollections](localization.md#localizedcollections) 元素來定義和當地語系化可用的選項。 若要從宣告 **列舉** 集合中查閱專案，請使用 [GetMappedValueFromLocalizedCollection](string-transformations.md#getmappedvaluefromlocalizedcollection) 宣告轉換。
+**列舉** 元素會定義可用的選項，讓使用者在使用者介面中選取宣告，例如、或中的值 `CheckboxMultiSelect` `DropdownSingleSelect` `RadioSingleSelect` 。 或者，您也可以使用 [LocalizedCollections](localization.md#localizedcollections) 元素來定義和當地語系化可用的選項。 若要從宣告 **列舉** 集合中查閱專案，請使用 [GetMappedValueFromLocalizedCollection](string-transformations.md#getmappedvaluefromlocalizedcollection) 宣告轉換。
 
 **Enumeration** 元素包含下列屬性：
 
@@ -188,7 +188,7 @@ PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的�
 |值 | 是 | 與選取此選項相關聯的宣告值。 |
 | SelectByDefault | 否 | 指出預設是否應該在 UI 中選取此選項。 可能的值：True 或 False。 |
 
-下列範例會設定**城市**下拉式清單宣告，並將預設值設定為 `New York`：
+下列範例會設定 **城市** 下拉式清單宣告，並將預設值設定為 `New York`：
 
 ```xml
 <ClaimType Id="city">
@@ -228,7 +228,7 @@ PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的�
   <UserHelpText>Email address that can be used to contact you.</UserHelpText>
   <UserInputType>TextBox</UserInputType>
   <Restriction>
-    <Pattern RegularExpression="^[a-zA-Z0-9.!#$%&amp;'^_`{}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" HelpText="Please enter a valid email address." />
+    <Pattern RegularExpression="^[a-zA-Z0-9.+!#$%&amp;'^_`{}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" HelpText="Please enter a valid email address." />
     </Restriction>
  </ClaimType>
 ```
@@ -239,9 +239,9 @@ PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的�
 
 ### <a name="userinputtype"></a>UserInputType
 
-Azure AD B2C 支援各種不同的使用者輸入類型 (例如文字方塊、密碼與下拉式清單)，可在手動輸入宣告類型的宣告資料時使用。 當您使用[自我判斷技術設定檔](self-asserted-technical-profile.md)和[顯示控制項](display-controls.md)從使用者收集資訊時，必須指定 **>userinputtype** 。
+Azure AD B2C 支援各種不同的使用者輸入類型 (例如文字方塊、密碼與下拉式清單)，可在手動輸入宣告類型的宣告資料時使用。 當您使用 [自我判斷技術設定檔](self-asserted-technical-profile.md)和 [顯示控制項](display-controls.md)從使用者收集資訊時，必須指定 **>userinputtype** 。
 
-**>userinputtype**元素可用的使用者輸入類型：
+**>userinputtype** 元素可用的使用者輸入類型：
 
 | UserInputType | 支援的 ClaimType | 描述 |
 | --------- | -------- | ----------- |
@@ -284,7 +284,7 @@ Azure AD B2C 支援各種不同的使用者輸入類型 (例如文字方塊、�
   <UserHelpText>Email address that can be used to contact you.</UserHelpText>
   <UserInputType>EmailBox</UserInputType>
   <Restriction>
-    <Pattern RegularExpression="^[a-zA-Z0-9!#$%&amp;'+^_`{}~-]+(?:\.[a-zA-Z0-9!#$%&amp;'+^_`{}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$" HelpText="Please enter a valid email address." />
+    <Pattern RegularExpression="^[a-zA-Z0-9.+!#$%&amp;'+^_`{}~-]+(?:\.[a-zA-Z0-9!#$%&amp;'+^_`{}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$" HelpText="Please enter a valid email address." />
   </Restriction>
 </ClaimType>
 ```
@@ -306,7 +306,7 @@ Azure AD B2C 支援各種不同的使用者輸入類型 (例如文字方塊、�
 
 #### <a name="datetimedropdown"></a>DateTimeDropdown
 
-**DateTimeDropdown** 使用者輸入類型會用來提供一組下拉式清單以選取日、月和年。 您可以使用 Predicates 和 PredicateValidations 元素來控制最小和最大日期值。 如需詳細資訊，請參閱 [Predicates 與 PredicateValidations](predicates.md) 的**設定日期範圍**一節。
+**DateTimeDropdown** 使用者輸入類型會用來提供一組下拉式清單以選取日、月和年。 您可以使用 Predicates 和 PredicateValidations 元素來控制最小和最大日期值。 如需詳細資訊，請參閱 [Predicates 與 PredicateValidations](predicates.md) 的 **設定日期範圍** 一節。
 
 ![搭配使用宣告類型與 DateTimeDropdown](./media/claimsschema/datetimedropdown.png)
 

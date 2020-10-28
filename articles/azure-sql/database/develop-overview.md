@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.custom: sqldbrb=2
-ms.openlocfilehash: b099158261de55c829ab2b89a2f994b35b3e50d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ea3456dbd1d0942cba48c97d70982ae088d73f9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254033"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782972"
 ---
 # <a name="application-development-overview---sql-database--sql-managed-instance"></a>應用程式開發總覽-SQL Database & SQL 受控執行個體
 
@@ -27,7 +27,7 @@ ms.locfileid: "85254033"
 
 您可以使用各種[程式設計語言與平台](connect-query-content-reference-guide.md)連線及查詢 Azure SQL Database。 您可以尋找可以用來連接到資料庫的 [範例應用程式](https://azure.microsoft.com/resources/samples/?service=sql-database&sort=0) 。
 
-您可以利用 [cheetah](https://github.com/wunderlist/cheetah)、[sql-cli](https://www.npmjs.com/package/sql-cli)、[VS Code](https://code.visualstudio.com/) 等開放原始碼工具。 此外，Azure SQL Database 使用 [Visual Studio](https://www.visualstudio.com/downloads/) 和 [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) 等 Microsoft 工具。 您也可以使用 Azure 入口網站、PowerShell 和 REST API 協助您獲得額外生產力。
+您可以利用 [cheetah](https://github.com/wunderlist/cheetah)、[sql-cli](https://www.npmjs.com/package/sql-cli)、[VS Code](https://code.visualstudio.com/) 等開放原始碼工具。 此外，Azure SQL Database 使用 [Visual Studio](https://www.visualstudio.com/downloads/) 和 [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) 等 Microsoft 工具。 您也可以使用 Azure 入口網站、PowerShell 和 REST API 協助您獲得額外生產力。
 
 ## <a name="authentication"></a>驗證
 
@@ -39,7 +39,7 @@ Azure SQL Database 的存取受到登入及防火牆的保護。 Azure SQL Datab
 
 在您的用戶端連線邏輯中，將預設的逾時覆寫為 30 秒。 預設 15 秒對於依賴網際網路的連線而言太短。
 
-如果您使用的是 [連接集區](https://msdn.microsoft.com/library/8xx3tyca.aspx)，請確定在程式未主動使用時即時關閉連接，而不是準備重複使用連接。
+如果您使用的是 [連接集區](/dotnet/framework/data/adonet/sql-server-connection-pooling)，請確定在程式未主動使用時即時關閉連接，而不是準備重複使用連接。
 
 請避免長時間執行的交易，因為任何基礎結構或連線失敗可能會復原交易。 可能的話，請將交易分割成多個較小的交易，並使用[批次處理來改善效能](../performance-improve-use-batching.md)。
 

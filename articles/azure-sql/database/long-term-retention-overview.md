@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 05/18/2019
-ms.openlocfilehash: 83d3bb78ef27af377b0a8c5edf75f658a0ca93e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8250fc39fe58168ddc13b7bcf5c040b57d5e92fb
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450236"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782615"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>長期保留-Azure SQL Database 和 Azure SQL 受控執行個體
 
@@ -26,7 +26,7 @@ ms.locfileid: "91450236"
 您可以針對 Azure SQL Database 啟用長期保留，且在 Azure SQL 受控執行個體的有限公開預覽中。 本文提供長期保留的概念性總覽。 若要設定長期保留，請參閱 [設定 AZURE SQL DATABASE ltr](long-term-backup-retention-configure.md) 並 [設定 AZURE SQL 受控執行個體 ltr](../managed-instance/long-term-backup-retention-configure.md)。 
 
 > [!NOTE]
-> 您可以使用 SQL Agent 作業來排程[僅限複製的資料庫備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server)，以替代超過 35 天的 LTR。
+> 您可以使用 SQL Agent 作業來排程[僅限複製的資料庫備份](/sql/relational-databases/backup-restore/copy-only-backups-sql-server)，以替代超過 35 天的 LTR。
 
 
 ## <a name="how-long-term-retention-works"></a>長期保留的運作方式
@@ -36,7 +36,7 @@ ms.locfileid: "91450236"
 若要啟用 LTR，您可以使用四個參數的組合來定義原則：每週備份保留 (W) 、每月備份保留 (M) 、每年備份保留 (Y) 和年中的周 (WeekOfYear) 。 如果指定 W，每週一次的備份會複製到長期儲存體。 如果您指定 M，每個月的第一次備份將會複製到長期儲存體。 如果指定 Y，在以 WeekOfYear 指定的當週進行的一次備份會複製到長期儲存體。 如果在設定原則時，指定的 WeekOfYear 是過去的，則會在下一年建立第一個 LTR 備份。 每個備份都會根據建立 LTR 備份時所設定的原則參數，保留在長期儲存體中。
 
 > [!NOTE]
-> LTR 原則的任何變更只適用于未來的備份。 例如，如果每週備份保留 (W) 、每月備份保留 (M) ，或每年備份保留 (Y) 修改，則新的保留設定只會套用至新的備份。 將不會修改現有備份的保留。 如果您想要在保留期限到期之前刪除舊的 LTR 備份，您將需要 [手動刪除備份](https://docs.microsoft.com/azure/sql-database/sql-database-long-term-backup-retention-configure#delete-ltr-backups)。
+> LTR 原則的任何變更只適用于未來的備份。 例如，如果每週備份保留 (W) 、每月備份保留 (M) ，或每年備份保留 (Y) 修改，則新的保留設定只會套用至新的備份。 將不會修改現有備份的保留。 如果您想要在保留期限到期之前刪除舊的 LTR 備份，您將需要 [手動刪除備份](./long-term-backup-retention-configure.md#delete-ltr-backups)。
 > 
 
 LTR 原則的範例：
@@ -84,7 +84,7 @@ W=12 週 (84 天)、M=12 個月 (365 天)、Y=10 年 (3650 天)、WeekOfYear=15 
 - **有限的公開預覽** -此預覽版僅適用于 EA 和 CSP 訂用帳戶，且受限於有限的可用性。  
 - [**僅限 PowerShell**](../managed-instance/long-term-backup-retention-configure.md) -目前沒有 Azure 入口網站支援。 必須使用 PowerShell 來啟用 LTR。 
 
-若要要求註冊，請建立 [Azure 支援票證](https://azure.microsoft.com/support/create-ticket/)。 針對 [問題類型] 選取 [技術問題]，針對 [服務選擇 SQL 受控執行個體]，針對問題類型選取 [ **備份]、[還原] 和 [商務持續性/長期備份保留**]。 在您的要求中，請確定您想要註冊至 SQL 受控執行個體的限時公開預覽。
+若要要求註冊，請建立 [Azure 支援票證](https://azure.microsoft.com/support/create-ticket/)。 針對 [問題類型] 選取 [技術問題]，針對 [服務選擇 SQL 受控執行個體]，針對問題類型選取 [ **備份]、[還原] 和 [商務持續性/長期備份保留** ]。 在您的要求中，請確定您想要註冊至 SQL 受控執行個體的限時公開預覽。
 
 ## <a name="configure-long-term-backup-retention"></a>設定長期備份保留期
 
@@ -99,4 +99,3 @@ W=12 週 (84 天)、M=12 個月 (365 天)、Y=10 年 (3650 天)、WeekOfYear=15 
 ## <a name="next-steps"></a>後續步驟
 
 因為資料庫備份可保護資料免於意外損毀或刪除，是商務持續性和災害復原策略中不可或缺的一環。 若要深入了解其他 SQL Database 商務持續性解決方案，請參閱[商務持續性概觀](business-continuity-high-availability-disaster-recover-hadr-overview.md)。
- 

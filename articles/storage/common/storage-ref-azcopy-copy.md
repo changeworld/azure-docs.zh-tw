@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: f3d691692553a8201b3e3eccfaead82a2cbb9ca0
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a5c0d8bb47b337b0415565a0b6dad5c6822d0b94
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479692"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781731"
 ---
 # <a name="azcopy-copy"></a>azcopy 複製
 
@@ -214,7 +214,7 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 - azcopy cp "https://s3.amazonaws.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
 
-## <a name="options"></a>選項。
+## <a name="options"></a>選項
 
 **--備份** 啟用 Windows 的上傳 SeBackupPrivilege 或 SeRestorePrivilege for 下載，以允許 AzCopy 查看和讀取所有檔案，不論其檔案系統許可權為何，以及還原擁有權限。 要求執行 AzCopy 的帳戶必須具有這些許可權 (例如，具有系統管理員許可權或 `Backup Operators` 群組) 的成員。 此旗標會啟用帳戶已有的許可權。
 
@@ -242,7 +242,7 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 
 **--排除-** 僅限 Windows 的屬性字串 () 排除屬性符合屬性清單的檔案。 例如： A;！R
 
-**--exclude-blob 類型**字串可選擇性地指定 `BlockBlob` /  `PageBlob` /  `AppendBlob` 從容器或帳戶複製 blob 時所要排除的 blob () 類型。 使用此旗標不適用於從非 Azure 服務複製資料至服務。 應以一個以上的 blob 分隔 `;` 。 
+**--exclude-blob 類型** 字串可選擇性地指定 `BlockBlob` /  `PageBlob` /  `AppendBlob` 從容器或帳戶複製 blob 時所要排除的 blob () 類型。 使用此旗標不適用於從非 Azure 服務複製資料至服務。 應以一個以上的 blob 分隔 `;` 。 
 
 **--排除-** 在複製時排除這些路徑的路徑字串。 此選項不支援萬用字元字元 ( * ) 。 檢查相對路徑首碼 (例如： `myFolder;myFolder/subDirName/file.pdf`) 。 搭配帳戶遍歷使用時，路徑不會包含容器名稱。
 
@@ -292,7 +292,7 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 
 **--s2s-控制碼-無效-中繼資料** 字串指定如何處理不正確中繼資料索引鍵。 可用的選項： ExcludeIfInvalid、FailIfInvalid、RenameIfInvalid。  (預設 `ExcludeIfInvalid`) 。  (預設值 "ExcludeIfInvalid" ) 
 
-**--s2s-保留-存取層**   保留服務至服務複製期間的存取層。 請參閱 [Azure Blob 儲存體：經常性存取、非經常性存取和封存存取層](/azure/storage/blobs/storage-blob-storage-tiers) ，以確保目的地儲存體帳戶支援設定存取層。 在不支援設定存取層的情況下，請使用 s2sPreserveAccessTier = false 來略過複製存取層。  (預設 `true`) 。   (預設值為 "true" ) 
+**--s2s-保留-存取層**   保留服務至服務複製期間的存取層。 請參閱 [Azure Blob 儲存體：經常性存取、非經常性存取和封存存取層](../blobs/storage-blob-storage-tiers.md) ，以確保目的地儲存體帳戶支援設定存取層。 在不支援設定存取層的情況下，請使用 s2sPreserveAccessTier = false 來略過複製存取層。  (預設 `true`) 。   (預設值為 "true" ) 
 
 **--s2s-保留-屬性**   保留服務至服務複製期間的完整屬性。 針對 AWS S3 和 Azure 檔案非單一檔案來源，清單作業不會傳回物件和檔案的完整屬性。 為了保留完整的屬性，AzCopy 需要為每個物件或檔案傳送一個額外的要求。  (預設值為 true) 
 
@@ -300,10 +300,10 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 
 **--cap-mbps float**   以每秒 mb 數為單位的傳輸速率上限。 時間的輸送量可能會與端點稍有不同。 如果此選項設定為零，或省略，則輸送量不會有上限。
 
-**--** 命令輸出的輸出類型字串格式。 選項包括： text、json。 預設值是 `text`。  (預設的「文字」 ) 
+**--** 命令輸出的輸出類型字串格式。 選項包括： text、json。 預設值為 `text`。  (預設的「文字」 ) 
 
 **--受信任-microsoft 尾碼** 字串指定可能傳送 Azure Active Directory 登入權杖的其他網域尾碼。  預設為 `*.core.windows.net;*.core.chinacloudapi.cn;*.core.cloudapi.de;*.core.usgovcloudapi.net`。 此處所列的任何一種都會新增至預設值。 基於安全性，您應該只在這裡放置 Microsoft Azure 網域。 以分號分隔多個專案。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [azcopy](storage-ref-azcopy.md)

@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0991992a6138d263dfb4d200c9555a8d53366d70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 219fe82f16dd9bbc887c9b17b067c706230c63dd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994404"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782377"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>使用儲存在 Azure Key Vault 中客戶管理的金鑰來設定加密
 
@@ -35,15 +35,15 @@ Azure 儲存體會加密待用儲存體帳戶中的所有資料。 根據預設�
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-若要瞭解如何使用 Azure 入口網站來建立金鑰保存庫，請參閱 [快速入門：使用 Azure 入口網站建立金鑰保存庫](../../key-vault/general/quick-create-portal.md)。 當您建立金鑰保存庫時，請選取 [ **啟用清除保護**]，如下圖所示。
+若要瞭解如何使用 Azure 入口網站來建立金鑰保存庫，請參閱 [快速入門：使用 Azure 入口網站建立金鑰保存庫](../../key-vault/general/quick-create-portal.md)。 當您建立金鑰保存庫時，請選取 [ **啟用清除保護** ]，如下圖所示。
 
 :::image type="content" source="media/customer-managed-keys-configure-key-vault/configure-key-vault-portal.png" alt-text="顯示如何在建立金鑰保存庫時啟用清除保護的螢幕擷取畫面":::
 
 若要在現有的金鑰保存庫上啟用清除保護，請遵循下列步驟：
 
 1. 在 Azure 入口網站中，流覽至您的金鑰保存庫。
-1. 在 [ **設定**] 底下，選擇 [ **屬性**]。
-1. 在 [ **清除保護** ] 區段中，選擇 [ **啟用清除保護**]。
+1. 在 [ **設定** ] 底下，選擇 [ **屬性** ]。
+1. 在 [ **清除保護** ] 區段中，選擇 [ **啟用清除保護** ]。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -58,7 +58,7 @@ $keyVault = New-AzKeyVault -Name <key-vault> `
     -EnablePurgeProtection
 ```
 
-若要瞭解如何使用 PowerShell 在現有的金鑰保存庫上啟用清除保護，請參閱 [如何搭配 powershell 使用虛刪除](../../key-vault/general/soft-delete-powershell.md)。
+若要瞭解如何使用 PowerShell 在現有的金鑰保存庫上啟用清除保護，請參閱 [如何搭配 powershell 使用虛刪除](../../key-vault/general/key-vault-recovery.md)。
 
 接下來，將系統指派的受控識別指派給您的儲存體帳戶。 您將使用此受控識別來授與儲存體帳戶存取金鑰保存庫的許可權。 如需系統指派的受控識別的詳細資訊，請參閱 [什麼是適用于 Azure 資源的受控識別？](../../active-directory/managed-identities-azure-resources/overview.md)。
 
@@ -93,7 +93,7 @@ az keyvault create \
     --enable-purge-protection
 ```
 
-若要瞭解如何使用 Azure CLI 在現有的金鑰保存庫上啟用清除保護，請參閱 [如何搭配 CLI 使用虛刪除](../../key-vault/general/soft-delete-cli.md)。
+若要瞭解如何使用 Azure CLI 在現有的金鑰保存庫上啟用清除保護，請參閱 [如何搭配 CLI 使用虛刪除](../../key-vault/general/key-vault-recovery.md)。
 
 接下來，將系統指派的受控識別指派給儲存體帳戶。 您將使用此受控識別來授與儲存體帳戶存取金鑰保存庫的許可權。 如需系統指派的受控識別的詳細資訊，請參閱 [什麼是適用于 Azure 資源的受控識別？](../../active-directory/managed-identities-azure-resources/overview.md)。
 
@@ -129,7 +129,7 @@ az keyvault set-policy \
 
 接下來，在金鑰保存庫中新增金鑰。
 
-Azure 儲存體加密支援2048、3072和4096大小的 RSA 和 RSA-HSM 金鑰。 如需有關金鑰的詳細資訊，請參閱[關於 Azure Key Vault 金鑰、秘密和憑證](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)的**Key Vault 金鑰**。
+Azure 儲存體加密支援2048、3072和4096大小的 RSA 和 RSA-HSM 金鑰。 如需有關金鑰的詳細資訊，請參閱 [關於金鑰](../../key-vault/keys/about-keys.md)。
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
@@ -175,18 +175,18 @@ Azure 儲存體可以自動更新用來加密的客戶管理金鑰，以使用�
 若要使用 Azure 入口網站中的金鑰版本自動更新來設定客戶管理的金鑰，請遵循下列步驟：
 
 1. 瀏覽至儲存體帳戶。
-1. 在儲存體帳戶的 [設定]**** 刀鋒視窗上，按一下 [加密]****。 選取 [ **客戶管理的金鑰** ] 選項，如下圖所示。
+1. 在儲存體帳戶的 [設定]  刀鋒視窗上，按一下 [加密]  。 選取 [ **客戶管理的金鑰** ] 選項，如下圖所示。
 
     ![顯示加密選項的入口網站螢幕擷取畫面](./media/customer-managed-keys-configure-key-vault/portal-configure-encryption-keys.png)
 
-1. 選擇 [從 Key Vault 選取]**** 選項。
-1. 選取 [ **選取金鑰保存庫與金鑰**]。
+1. 選擇 [從 Key Vault 選取]  選項。
+1. 選取 [ **選取金鑰保存庫與金鑰** ]。
 1. 選取包含您要使用之金鑰的金鑰保存庫。
 1. 選取金鑰保存庫中的金鑰。
 
    ![顯示如何選取金鑰保存庫和金鑰的螢幕擷取畫面](./media/customer-managed-keys-configure-key-vault/portal-select-key-from-key-vault.png)
 
-1. 儲存您的變更。
+1. 儲存變更。
 
 當您指定金鑰之後，Azure 入口網站會指出已啟用金鑰版本的自動更新，並顯示目前用於加密的金鑰版本。
 
@@ -251,7 +251,7 @@ az storage account update
    ![顯示如何輸入金鑰 URI 的螢幕擷取畫面](./media/customer-managed-keys-configure-key-vault/portal-specify-key-uri.png)
 
 1. 指定包含金鑰保存庫的訂用帳戶。
-1. 儲存您的變更。
+1. 儲存變更。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -310,7 +310,7 @@ az storage account update
 
 1. 流覽至您的儲存體帳戶，並顯示 **加密** 設定。
 1. 選取金鑰保存庫，然後選擇新的金鑰。
-1. 儲存您的變更。
+1. 儲存變更。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

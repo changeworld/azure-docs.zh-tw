@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: 4ec999cc35e7d18287679c74c6d45a5aa2ecb9e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 092981f9d74a3f9f18c491ca6cee539a29e73c83
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994653"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782496"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>取消 Azure SQL 受控執行個體管理作業
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -75,7 +75,7 @@ Azure SQL 受控執行個體可以取消某些 [管理作業](management-operati
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-如果尚未安裝 Azure PowerShell，請參閱 [安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+如果尚未安裝 Azure PowerShell，請參閱 [安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。
 
 若要取消管理作業，您必須指定管理作業名稱。 因此，請先使用 get 命令來取出作業清單，然後取消特定的作業。
 
@@ -93,7 +93,7 @@ foreach ($mo in $managementOperations ) {
 }
 ```
 
-如需詳細的命令說明，請參閱 [AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceoperation) 和 [Stop-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/stop-azsqlinstanceoperation)。
+如需詳細的命令說明，請參閱 [AzSqlInstanceOperation](/powershell/module/az.sql/get-azsqlinstanceoperation) 和 [Stop-AzSqlInstanceOperation](/powershell/module/az.sql/stop-azsqlinstanceoperation)。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -110,13 +110,13 @@ az sql mi op cancel -g yourResourceGroupName --mi yourInstanceName -n $operation
 done
 ```
 
-如需詳細的命令說明，請參閱 [az sql mi op](https://docs.microsoft.com/cli/azure/sql/mi/op)。
+如需詳細的命令說明，請參閱 [az sql mi op](/cli/azure/sql/mi/op)。
 
 ---
 
 ## <a name="canceled-deployment-request"></a>已取消部署要求
 
-使用 API 版本2020-02-02 時，只要接受實例建立要求，此實例就會開始以資源的形式存在，無論 **部署程式 (** 受控實例狀態是布建) 的進度。 如果您取消實例部署要求 (建立) 的新實例，受控實例將會從布建 **狀態移** 至 **FailedToCreate**。
+使用 API 版本2020-02-02 時，只要接受實例建立要求，此實例就會開始以資源的形式存在，無論 **部署程式 (** 受控實例狀態是布建) 的進度。 如果您取消實例部署要求 (建立) 的新實例，受控實例將會從布建 **狀態移** 至 **FailedToCreate** 。
 
 無法建立的實例仍會以資源的形式出現，而且： 
 

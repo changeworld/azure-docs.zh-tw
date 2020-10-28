@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
 ms.date: 10/13/2020
-ms.openlocfilehash: c1bedf56896332430c6f4b937aab37764a0c6a43
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: b4a8b809fc135a4af26fae10912890f2017153f4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058262"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780915"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>使用保留容量來節省資源成本-Azure SQL Database & SQL 受控執行個體
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)] 
@@ -31,7 +31,7 @@ ms.locfileid: "92058262"
 您可以在 [Azure 入口網站](https://portal.azure.com)中購買保留容量。 保留的付款方式可為[預先付款或每月付款](../../cost-management-billing/reservations/prepare-buy-reservation.md)。 若要購買保留容量：
 
 - 您必須是至少一個具有隨用隨付費率的企業或個別訂用帳戶的擁有者角色。
-- 針對企業訂用帳戶，必須在 [EA 入口網站](https://ea.azure.com)中啟用**新增保留執行個體**。 或者，如果該設定已停用，則您必須是訂用帳戶上的 EA 系統管理員。 保留容量。
+- 針對企業訂用帳戶，必須在 [EA 入口網站](https://ea.azure.com)中啟用 **新增保留執行個體** 。 或者，如果該設定已停用，則您必須是訂用帳戶上的 EA 系統管理員。 保留容量。
 
 如需企業客戶和隨用隨付客戶如何針對保留購買收費的詳細資訊，請參閱 [瞭解您企業註冊的 azure 保留使用量](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) ，以及 [瞭解隨用隨付訂用帳戶的 azure 保留使用量](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)。
 
@@ -58,7 +58,7 @@ ms.locfileid: "92058262"
     | 欄位      | 描述|
     |------------|--------------|
     |訂用帳戶|用來支付容量保留的訂用帳戶。 保留項目的預付費用會透過訂用帳戶的付款方式收取。 訂用帳戶類型必須是 enterprise 合約 (供應專案號碼 MS-AZR-0003P->ms-azr-0017p 或 MS-AZR-0003P-Ms-azr-0148p) 或具有隨用隨付定價的個別合約 (供應專案號碼： MS-MS-AZR-0003P-Ms-azr-0003p 或 MS-MS-AZR-0003P-Ms-azr-0023p) 。 針對企業訂用帳戶，費用會從註冊的承諾用量金額餘額扣除或作為超額部分收費。 針對具有隨用隨付定價的個別訂用帳戶，費用會以訂用帳戶的信用卡或發票付款方法計費。|
-    |影響範圍       |VCore 保留的範圍可以涵蓋一個訂用帳戶或多個訂用帳戶 (共用範圍) 。 如果您選取 <br/><br/>**共用**： vCore 保留折扣會套用至在帳單內容內的任何訂用帳戶中執行的資料庫或受控實例。 針對企業客戶，共用範圍是註冊，並包含註冊中的所有訂用帳戶。 針對隨用隨付客戶，共用範圍是帳戶系統管理員所建立的所有隨用隨付訂用帳戶。<br/><br/>**單一訂**用帳戶，vCore 保留折扣會套用到此訂用帳戶中的資料庫或受控實例。 <br/><br/>**單一資源群組**，保留折扣會套用至所選訂用帳戶中的資料庫實例或受控實例，以及該訂用帳戶內選取的資源群組。|
+    |影響範圍       |VCore 保留的範圍可以涵蓋一個訂用帳戶或多個訂用帳戶 (共用範圍) 。 如果您選取 <br/><br/>**共用** ： vCore 保留折扣會套用至在帳單內容內的任何訂用帳戶中執行的資料庫或受控實例。 針對企業客戶，共用範圍是註冊，並包含註冊中的所有訂用帳戶。 針對隨用隨付客戶，共用範圍是帳戶系統管理員所建立的所有隨用隨付訂用帳戶。<br/><br/>**單一訂** 用帳戶，vCore 保留折扣會套用到此訂用帳戶中的資料庫或受控實例。 <br/><br/>**單一資源群組** ，保留折扣會套用至所選訂用帳戶中的資料庫實例或受控實例，以及該訂用帳戶內選取的資源群組。|
     |區域      |容量保留所涵蓋的 Azure 區域。|
     |部署類型|您要為其購買保留容量的 SQL 資源類型。|
     |效能層級|資料庫或受控實例的服務層級。 |
@@ -67,7 +67,7 @@ ms.locfileid: "92058262"
 
 1. 在 [ **成本** ] 區段中，檢查容量保留的成本。
 1. 選取 [購買]。
-1. 選取 [檢視此保留]**** 以查看您的購買狀態。
+1. 選取 [檢視此保留]  以查看您的購買狀態。
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>取消、交換保留或進行退費
 
@@ -98,4 +98,4 @@ VCore 保留折扣會自動套用至符合容量保留範圍和屬性的資料�
 - [了解 Azure 保留折扣](../../cost-management-billing/reservations/understand-reservation-charges.md)
 - [了解隨用隨付訂用帳戶的保留使用量](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)
 - [了解 Enterprise 註冊的保留項目使用量](../../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
-- [合作夥伴中心雲端解決方案提供者 (CSP) 計畫中的 Azure 保留項目](https://docs.microsoft.com/partner-center/azure-reservations)
+- [合作夥伴中心雲端解決方案提供者 (CSP) 計畫中的 Azure 保留項目](/partner-center/azure-reservations)

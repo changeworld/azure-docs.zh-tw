@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: abb8f42e7fe4ffe6e933f466202247c73ece129a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38133a63d65e45a4d1c83e9752dcaa01a86da33e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441709"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782887"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>什麼是 Azure SQL Database 和 Azure Synapse 中的邏輯 SQL server？
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -34,7 +34,7 @@ SQL Database 和 Azure Synapse 中的伺服器：
 - 是資料庫的父資源、彈性集區和資料倉儲
 - 提供資料庫、彈性集區和資料倉儲資料庫的命名空間
 - 是具有強式存留期語義的邏輯容器-刪除伺服器，並刪除其資料庫、彈性集區和 SQK 集區
-- 參與 [azure 角色型存取控制 (AZURE RBAC) ](/azure/role-based-access-control/overview) -伺服器內的資料庫、彈性集區和資料倉儲資料庫會從伺服器繼承存取權限
+- 參與 [azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md) -伺服器內的資料庫、彈性集區和資料倉儲資料庫會從伺服器繼承存取權限
 - 是資料庫的身分識別、彈性集區和資料倉儲資料庫的高序位元素，適用于 Azure 資源管理用途 (請參閱資料庫和集區的 URL 配置) 
 - 區域中的共置資源
 - 提供用來存取資料庫的連接端點 (`<serverName>`.database.windows.net)
@@ -70,7 +70,7 @@ SQL Database 和 Azure Synapse 中的伺服器：
 
 若要管理現有的伺服器，請使用多種方法（例如從特定的資料庫頁面、[ **SQL server** ] 頁面或 [ **所有資源** ] 頁面）來流覽至伺服器。
 
-若要管理現有的資料庫，請瀏覽至 [SQL 資料庫]**** 頁面，按一下您想要管理的資料庫。 下列螢幕擷取畫面顯示如何從資料庫的 [概觀]**** 頁面，開始設定資料庫的伺服器層級防火牆。
+若要管理現有的資料庫，請瀏覽至 [SQL 資料庫]  頁面，按一下您想要管理的資料庫。 下列螢幕擷取畫面顯示如何從資料庫的 [概觀]  頁面，開始設定資料庫的伺服器層級防火牆。
 
    ![伺服器防火牆規則](./media/single-database-create-quickstart/server-firewall-rule.png)
 
@@ -83,7 +83,7 @@ SQL Database 和 Azure Synapse 中的伺服器：
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> 仍支援 PowerShell Azure Resource Manager 模組，但未來所有的開發都是針對 Az. Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
+> 仍支援 PowerShell Azure Resource Manager 模組，但未來所有的開發都是針對 Az. Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
 
 若要使用 Azure PowerShell 建立和管理伺服器、資料庫和防火牆，請使用下列 PowerShell Cmdlet。 如果您需要安裝或升級 PowerShell，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如需建立和管理彈性集區，請參閱[彈性集區](elastic-pool-overview.md)。
 
@@ -96,13 +96,13 @@ SQL Database 和 Azure Synapse 中的伺服器：
 |[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)|建立資源群組|
 |[New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver)|建立伺服器|
 |[>new-azsqlserver](/powershell/module/az.sql/get-azsqlserver)|傳回伺服器的相關資訊|
-|[設定->new-azsqlserver](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserver)|修改伺服器的屬性|
+|[設定->new-azsqlserver](/powershell/module/az.sql/set-azsqlserver)|修改伺服器的屬性|
 |[移除->new-azsqlserver](/powershell/module/az.sql/remove-azsqlserver)|移除伺服器|
 |[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule)|建立伺服器層級防火牆規則 |
 |[>new-azsqlserverfirewallrule](/powershell/module/az.sql/get-azsqlserverfirewallrule)|取得伺服器的防火牆規則|
 |[設定->new-azsqlserverfirewallrule](/powershell/module/az.sql/set-azsqlserverfirewallrule)|修改伺服器中的防火牆規則|
 |[移除->new-azsqlserverfirewallrule](/powershell/module/az.sql/remove-azsqlserverfirewallrule)|刪除伺服器的防火牆規則|
-| New-AzSqlServerVirtualNetworkRule | 根據同時是虛擬網路服務端點的子網路，建立[*虛擬網路規則*](vnet-service-endpoint-rule-overview.md)。 |
+| New-AzSqlServerVirtualNetworkRule | 根據同時是虛擬網路服務端點的子網路，建立 [*虛擬網路規則*](vnet-service-endpoint-rule-overview.md)。 |
 
 > [!TIP]
 > 如需 PowerShell 快速入門，請參閱 [使用 powershell 在 Azure SQL Database 中建立資料庫](single-database-create-quickstart.md)。 如需 PowerShell 範例腳本，請參閱 [使用 powershell 在 Azure SQL Database 中建立資料庫和設定防火牆規則](scripts/create-and-configure-database-powershell.md) ，並 [在 Azure SQL Database 中使用 powershell 來監視和調整資料庫](scripts/monitor-and-scale-database-powershell.md)。
@@ -110,7 +110,7 @@ SQL Database 和 Azure Synapse 中的伺服器：
 
 ## <a name="manage-servers-databases-and-firewalls-using-the-azure-cli"></a>使用 Azure CLI 管理伺服器、資料庫和防火牆
 
-若要使用 [Azure CLI](/cli/azure)建立和管理伺服器、資料庫和防火牆，請使用下列 [Azure CLI SQL Database](/cli/azure/sql/db) 命令。 使用 [Cloud Shell](/azure/cloud-shell/overview) 在您的瀏覽器中執行 CLI，或在 macOS、Linux 或 Windows 中[安裝](/cli/azure/install-azure-cli)。 如需建立和管理彈性集區，請參閱[彈性集區](elastic-pool-overview.md)。
+若要使用 [Azure CLI](/cli/azure)建立和管理伺服器、資料庫和防火牆，請使用下列 [Azure CLI SQL Database](/cli/azure/sql/db) 命令。 使用 [Cloud Shell](../../cloud-shell/overview.md) 在您的瀏覽器中執行 CLI，或在 macOS、Linux 或 Windows 中[安裝](/cli/azure/install-azure-cli)。 如需建立和管理彈性集區，請參閱[彈性集區](elastic-pool-overview.md)。
 
 | Cmdlet | 描述 |
 | --- | --- |
@@ -150,7 +150,7 @@ SQL Database 和 Azure Synapse 中的伺服器：
 |[CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current) | 在 Azure SQL Database 中建立新的資料庫。 您必須連接到 master 資料庫才能建立新的資料庫。|
 |[ (Azure Synapse) 建立資料庫 ](/sql/t-sql/statements/create-database-transact-sql?view=azure-sqldw-latest) | 在 Azure Synapse 中建立新的資料倉儲資料庫。 您必須連接到 master 資料庫才能建立新的資料庫。|
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |修改資料庫或彈性集區。 |
-|[ALTER DATABASE (Azure Synapse Analytics) ](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|修改 Azure Synapse 中的資料倉儲資料庫。|
+|[ALTER DATABASE (Azure Synapse Analytics) ](/sql/t-sql/statements/alter-database-transact-sql?view=sql-server-ver15)|修改 Azure Synapse 中的資料倉儲資料庫。|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|刪除資料庫。|
 |[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|傳回資料庫的版本 (服務層級) 、服務目標 (定價層) ，以及彈性集區名稱（如果有的話）。 如果登入伺服器的 master 資料庫，則會傳回所有資料庫的相關資訊。 針對 Azure Synapse，您必須連接到 master 資料庫。|
 |[sys.resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| 傳回 Azure SQL Database 中資料庫的 CPU、IO 和記憶體耗用量。 每 15 秒有一個資料列存在，即使資料庫中沒有任何活動亦然。|
@@ -173,22 +173,22 @@ SQL Database 和 Azure Synapse 中的伺服器：
 
 | Command | 描述 |
 | --- | --- |
-|[伺服器-建立或更新](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|建立或更新新的伺服器。|
-|[伺服器 - 刪除](https://docs.microsoft.com/rest/api/sql/servers/delete)|刪除伺服器。|
-|[伺服器 - 取得](https://docs.microsoft.com/rest/api/sql/servers/get)|取得伺服器。|
-|[伺服器 - 清單](https://docs.microsoft.com/rest/api/sql/servers/list)|傳回伺服器的清單。|
-|[伺服器-依資源群組列出](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|傳回資源群組中的伺服器清單。|
-|[伺服器 - 更新](https://docs.microsoft.com/rest/api/sql/servers/update)|更新現有伺服器。|
-|[資料庫-建立或更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|建立新的資料庫或更新現有資料庫。|
-|[資料庫 - 刪除](https://docs.microsoft.com/rest/api/sql/databases/delete)|刪除資料庫。|
-|[資料庫 - 取得](https://docs.microsoft.com/rest/api/sql/databases/get)|取得資料庫。|
-|[資料庫-依彈性集區列出](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|傳回將彈性集區中的資料庫列出的清單。|
-|[資料庫-依伺服器列出](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|傳回伺服器中的資料庫清單。|
-|[資料庫 - 更新](https://docs.microsoft.com/rest/api/sql/databases/update)|更新現有的資料庫。|
-|[防火牆規則-建立或更新](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)|建立或更新防火牆規則。|
-|[防火牆規則-刪除](https://docs.microsoft.com/rest/api/sql/firewallrules/delete)|刪除防火牆規則。|
-|[防火牆規則-取得](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|取得防火牆規則。|
-|[防火牆規則-依伺服器列出](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|傳回防火牆規則的清單。|
+|[伺服器-建立或更新](/rest/api/sql/servers/createorupdate)|建立或更新新的伺服器。|
+|[伺服器 - 刪除](/rest/api/sql/servers/delete)|刪除伺服器。|
+|[伺服器 - 取得](/rest/api/sql/servers/get)|取得伺服器。|
+|[伺服器 - 清單](/rest/api/sql/servers/list)|傳回伺服器的清單。|
+|[伺服器-依資源群組列出](/rest/api/sql/servers/listbyresourcegroup)|傳回資源群組中的伺服器清單。|
+|[伺服器 - 更新](/rest/api/sql/servers/update)|更新現有伺服器。|
+|[資料庫-建立或更新](/rest/api/sql/databases/createorupdate)|建立新的資料庫或更新現有資料庫。|
+|[資料庫 - 刪除](/rest/api/sql/databases/delete)|刪除資料庫。|
+|[資料庫 - 取得](/rest/api/sql/databases/get)|取得資料庫。|
+|[資料庫-依彈性集區列出](/rest/api/sql/databases/listbyelasticpool)|傳回將彈性集區中的資料庫列出的清單。|
+|[資料庫-依伺服器列出](/rest/api/sql/databases/listbyserver)|傳回伺服器中的資料庫清單。|
+|[資料庫 - 更新](/rest/api/sql/databases/update)|更新現有的資料庫。|
+|[防火牆規則-建立或更新](/rest/api/sql/firewallrules/createorupdate)|建立或更新防火牆規則。|
+|[防火牆規則-刪除](/rest/api/sql/firewallrules/delete)|刪除防火牆規則。|
+|[防火牆規則-取得](/rest/api/sql/firewallrules/get)|取得防火牆規則。|
+|[防火牆規則-依伺服器列出](/rest/api/sql/firewallrules/listbyserver)|傳回防火牆規則的清單。|
 
 ## <a name="next-steps"></a>後續步驟
 

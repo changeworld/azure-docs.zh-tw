@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/10/2020
-ms.openlocfilehash: 6b4b31ab4bc0cb1fe5bd9140870df86db6841ff3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ecd7e847a91847db8f57c640a374dc329fce7ea
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450347"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782938"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>使用資料庫作業將管理工作自動化
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,7 +48,7 @@ ms.locfileid: "91450347"
 
 可用的作業排程技術如下：
 
-- **SQL Agent 作業**是經過實戰測試的傳統 SQL Server 作業排程元件，適用於 Azure SQL 受控執行個體。 SQL Agent 作業不適用於 Azure SQL Database。
+- **SQL Agent 作業** 是經過實戰測試的傳統 SQL Server 作業排程元件，適用於 Azure SQL 受控執行個體。 SQL Agent 作業不適用於 Azure SQL Database。
 - **彈性資料庫作業 (預覽)** 是可在 Azure SQL Database 中一或多個資料庫上執行自訂作業的作業排程服務。
 
 值得注意的是 SQL Agent (適用於內部部署並作為 SQL Database 受控執行個體的一部分) 與資料庫彈性作業代理程式 (適用於 Azure SQL Database 中的單一資料庫和 Azure Synapse Analytics 中的資料庫) 之間，有兩個不同之處。
@@ -64,9 +64,9 @@ SQL Agent 作業是針對您的資料庫而指定的 T-SQL 指令碼系列。 �
 一個作業可以在一部本機伺服器或在多部遠端伺服器上執行。 SQL Agent 作業是在受控執行個體服務中執行的內部資料庫引擎元件。
 SQL Agent 作業中有數個重要概念：
 
-- **作業步驟**可設定應在作業內執行的一或多個步驟。 針對每個作業步驟，您可以定義重試策略，以及在作業步驟成功或失敗時應發生的動作。
-- **排程**可定義應執行作業的時間。
-- **通知**可讓您定義一些規則，這些規則將在作業完成後用於透過電子郵件通知操作員。
+- **作業步驟** 可設定應在作業內執行的一或多個步驟。 針對每個作業步驟，您可以定義重試策略，以及在作業步驟成功或失敗時應發生的動作。
+- **排程** 可定義應執行作業的時間。
+- **通知** 可讓您定義一些規則，這些規則將在作業完成後用於透過電子郵件通知操作員。
 
 ### <a name="job-steps"></a>作業步驟
 
@@ -173,13 +173,13 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 - 不支援 Proxy。
 - 不支援 Eventlog。
 
-如需有關 SQL Server Agent 的資訊，請參閱 [SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent)。
+如需有關 SQL Server Agent 的資訊，請參閱 [SQL Server Agent](/sql/ssms/agent/sql-server-agent)。
 
 ## <a name="elastic-database-jobs-preview"></a>彈性資料庫作業 (預覽)
 
-**彈性資料庫作業**提供依照排程或需求，跨越大量資料庫平行執行一或多個 T-SQL 指令碼的功能。
+**彈性資料庫作業** 提供依照排程或需求，跨越大量資料庫平行執行一或多個 T-SQL 指令碼的功能。
 
-**對任何資料庫組合執行作業**：一或多個個別的資料庫、伺服器上的所有資料庫、彈性集區中的所有資料庫，或 shardmap，具有額外彈性可納入或排除任何特定資料庫。 **作業可以跨越多部伺服器、多個集區執行，甚至可以針對不同訂用帳戶中的資料庫執行。** 伺服器和集區都會以動態方式列舉在執行階段，因此作業會針對在執行階段存在於目標群組的所有資料庫執行。
+**對任何資料庫組合執行作業** ：一或多個個別的資料庫、伺服器上的所有資料庫、彈性集區中的所有資料庫，或 shardmap，具有額外彈性可納入或排除任何特定資料庫。 **作業可以跨越多部伺服器、多個集區執行，甚至可以針對不同訂用帳戶中的資料庫執行。** 伺服器和集區都會以動態方式列舉在執行階段，因此作業會針對在執行階段存在於目標群組的所有資料庫執行。
 
 下圖顯示跨不同類型的目標群組執行作業的作業代理程式：
 
@@ -198,19 +198,19 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 彈性作業代理程式是用於建立、執行和管理作業的 Azure 資源。 彈性作業代理程式是您在入口網站中建立的 Azure 資源 (也支援 [PowerShell](elastic-jobs-powershell-create.md) 和 REST)。
 
-建立**彈性作業代理程式**時需要 Azure SQL Database 中現有的資料庫。 此代理程式會將這個現有資料庫設定為[作業資料庫](#job-database)。
+建立 **彈性作業代理程式** 時需要 Azure SQL Database 中現有的資料庫。 此代理程式會將這個現有資料庫設定為[作業資料庫](#job-database)。
 
 彈性作業代理程式是免費的。 作業資料庫的費率與 Azure SQL Database 中的任何資料庫相同。
 
 #### <a name="job-database"></a>作業資料庫
 
-「作業資料庫」用於定義作業以及追蹤作業執行的狀態與歷程記錄。 *作業資料庫*也可用來儲存代理程式中繼資料、記錄、結果、作業定義，此外也包含許多有用的預存程序和其他資料庫物件，以便使用 T-SQL 建立、執行和管理作業。
+「作業資料庫」用於定義作業以及追蹤作業執行的狀態與歷程記錄。 *作業資料庫* 也可用來儲存代理程式中繼資料、記錄、結果、作業定義，此外也包含許多有用的預存程序和其他資料庫物件，以便使用 T-SQL 建立、執行和管理作業。
 
 在目前的預覽中，需要 Azure SQL Database (S0 或更高版本) 中現有的資料庫，才能建立彈性作業代理程式。
 
 「作業資料庫」不一定要是新的，但應該是乾淨、空白、 S0 或更高的服務目標。 「作業資料庫」的建議服務目標為 S1 或更高，但最佳選擇取決於作業的效能需求：作業步驟數、作業目標數，以及作業的執行頻率。 例如，若為每小時執行少量作業且目標少於 10 個資料庫的作業代理程式，S0 資料庫可能就已足夠，但是每分鐘執行一項作業時，S0 資料庫可能就不夠快，而更高的服務層級可能比較適合。
 
-如果對作業資料庫執行的作業速度比預期慢，則使用 Azure 入口網站或 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV 來[監視](monitor-tune-overview.md#azure-sql-database-and-azure-sql-managed-instance-resource-monitoring)慢速期間內作業資料庫的資料庫效能和資源使用率。 如果資源的使用率 (例如 CPU、資料 IO 或記錄寫入) 接近 100% 並與慢速期間相互關聯，請考慮以累加方式將資料庫調整為更高的服務目標 (在 [DTU 模型](service-tiers-dtu.md) 或 [vCore 模型](service-tiers-vcore.md) 中)，直到作業資料庫效能獲得充分改善為止。
+如果對作業資料庫執行的作業速度比預期慢，則使用 Azure 入口網站或 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV 來[監視](monitor-tune-overview.md#azure-sql-database-and-azure-sql-managed-instance-resource-monitoring)慢速期間內作業資料庫的資料庫效能和資源使用率。 如果資源的使用率 (例如 CPU、資料 IO 或記錄寫入) 接近 100% 並與慢速期間相互關聯，請考慮以累加方式將資料庫調整為更高的服務目標 (在 [DTU 模型](service-tiers-dtu.md) 或 [vCore 模型](service-tiers-vcore.md) 中)，直到作業資料庫效能獲得充分改善為止。
 
 ##### <a name="job-database-permissions"></a>作業資料庫權限
 
@@ -233,7 +233,7 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 - **Shardmap** - Shardmap 的資料庫。
 
 > [!TIP]
-> 在執行作業時，「動態列舉」會重新評估包含伺服器或集區的目標群組中的資料庫集合。 動態列舉可確保**作業會在執行階段跨越伺服器或集區中所有現有的資料庫執行**。 在執行階段重新評估資料庫清單特別適用於集區或伺服器成員資格經常變更的案例。
+> 在執行作業時，「動態列舉」會重新評估包含伺服器或集區的目標群組中的資料庫集合。 動態列舉可確保 **作業會在執行階段跨越伺服器或集區中所有現有的資料庫執行** 。 在執行階段重新評估資料庫清單特別適用於集區或伺服器成員資格經常變更的案例。
 
 您可以將集區與單一資料庫指定為在群組中包含或排除。 這能夠建立含有任意資料庫組合的目標群組。 例如，您可以將伺服器新增至目標群組，但是在彈性集區中排除特定資料庫 (或排除整個集區)。
 
@@ -245,13 +245,13 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 **範例 1** 顯示由一系列個別資料庫組成的目標群組。 當使用這個目標群組來執行作業步驟時，作業步驟的動作將會在其中每一個資料庫中執行。<br>
 **範例 2** 顯示包含目標伺服器的目標群組。 當使用這個目標群組來執行作業步驟時，伺服器會以動態方式列舉，以決定目前在伺服器中的資料庫清單。 作業步驟的動作會在其中每個資料庫中執行。<br>
-**範例 3** 顯示與*範例 2* 類似的目標群組，但特別排除個別資料庫。 作業步驟的動作「不會」在排除的資料庫中執行。<br>
-**範例 4** 顯示包含以彈性集區作為目標的目標群組。 類似於*範例 2*，集區會在作業執行時間以動態方式列舉，以決定集區中的資料庫清單。
+**範例 3** 顯示與 *範例 2* 類似的目標群組，但特別排除個別資料庫。 作業步驟的動作「不會」在排除的資料庫中執行。<br>
+**範例 4** 顯示包含以彈性集區作為目標的目標群組。 類似於 *範例 2* ，集區會在作業執行時間以動態方式列舉，以決定集區中的資料庫清單。
 <br><br>
 
 ![其他目標群組範例](./media/job-automation-overview/targetgroup-examples2.png)
 
-**範例 5** 和**範例 6** 顯示進階案例，其中伺服器、彈性集區和資料庫都可使用包含及排除規則來結合。<br>
+**範例 5** 和 **範例 6** 顯示進階案例，其中伺服器、彈性集區和資料庫都可使用包含及排除規則來結合。<br>
 **範例 7** 顯示分區對應中的分區也可在作業執行階段進行評估。
 
 > [!NOTE]
@@ -288,7 +288,7 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱[什麼是 SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent)
+- 請參閱[什麼是 SQL Server Agent](/sql/ssms/agent/sql-server-agent)
 - [如何建立及管理彈性作業](elastic-jobs-overview.md)
 - [使用 PowerShell 建立及管理彈性作業](elastic-jobs-powershell-create.md)
 - [使用 Transact-SQL (T-SQL) 來建立及管理彈性作業](elastic-jobs-tsql-create-manage.md)

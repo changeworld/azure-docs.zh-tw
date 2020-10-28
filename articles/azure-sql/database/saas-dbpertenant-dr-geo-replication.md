@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: dc2047832f8cfbf31c04c84eb7a70fee6631fa4b
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ffe5a1d0c9bbdbc416ecce7c36b3710339c4f059
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330116"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781017"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>使用資料庫異地複寫進行多租用戶 SaaS 應用程式的災害復原
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "92330116"
 
 在開始本教學課程前，請確定已符合下列必要條件：
 * 已部署每一租用戶一個資料庫的 Wingtip Tickets SaaS 應用程式。 若要在五分鐘內完成部署，請參閱[部署及探索每一租用戶一個資料庫的 Wingtip Tickets SaaS 應用程式](saas-dbpertenant-get-started-deploy.md)  
-* 已安裝 Azure PowerShell。 如需詳細資料，請參閱[開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)
+* 已安裝 Azure PowerShell。 如需詳細資料，請參閱[開始使用 Azure PowerShell](/powershell/azure/get-started-azureps)
 
 ## <a name="introduction-to-the-geo-replication-recovery-pattern"></a>異地複寫復原模式簡介
 
@@ -66,11 +66,11 @@ ms.locfileid: "92330116"
 
 在本教學課程中，會使用 Azure SQL Database 和 Azure 平台的功能來因應下列挑戰：
 
-* [Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)，以盡快保留所有所需的容量。 Azure Resource Manager 範本可在復原區域中用來佈建生產伺服器和彈性集區的鏡像映像。
+* [Azure Resource Manager 範本](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)，以盡快保留所有所需的容量。 Azure Resource Manager 範本可在復原區域中用來佈建生產伺服器和彈性集區的鏡像映像。
 * [異地複寫](active-geo-replication-overview.md)，以透過非同步方式為所有資料庫建立複寫的唯讀次要複本。 在中斷期間，您可以容錯移轉至復原區域中的複本。  中斷的問題解決後，您即可容錯回復至原始區域中的資料庫，且不會遺失資料。
-* 依租用戶優先順序傳送的[非同步](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)容錯移轉作業，以盡可能縮短大量資料庫進行容錯移轉的時間。
+* 依租用戶優先順序傳送的[非同步](../../azure-resource-manager/management/async-operations.md)容錯移轉作業，以盡可能縮短大量資料庫進行容錯移轉的時間。
 * [分區管理復原功能](elastic-database-recovery-manager.md)，以在復原和回復期間變更目錄中的資料庫項目。 這些功能可讓應用程式無需重新設定即可從任何位置連線至租用戶資料庫。
-* [SQL Server DNS 別名](../../sql-database/dns-alias-overview.md)，讓新的租用戶可順暢地進行佈建，無論應用程式在哪個區域運作皆可。 DNS 別名也可用來讓目錄同步程序連線至使用中的目錄，無論目錄位於何處。
+* [SQL Server DNS 別名](./dns-alias-overview.md)，讓新的租用戶可順暢地進行佈建，無論應用程式在哪個區域運作皆可。 DNS 別名也可用來讓目錄同步程序連線至使用中的目錄，無論目錄位於何處。
 
 ## <a name="get-the-disaster-recovery-scripts"></a>取得災害復原指令碼 
 
@@ -85,7 +85,7 @@ ms.locfileid: "92330116"
 隨後，在個別的回復步驟中，您會將復原區域中的目錄和租用戶資料庫容錯移轉至原始區域。 在整個回復期間，應用程式和資料庫皆可供使用。 完成後，應用程式會在原始區域中正常運作。
 
 > [!Note]
-> 應用程式會復原到部署應用程式所在區域的 _配對的區域_ 中。 如需詳細資訊，請參閱 [Azure 配對區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
+> 應用程式會復原到部署應用程式所在區域的 _配對的區域_ 中。 如需詳細資訊，請參閱 [Azure 配對區域](../../best-practices-availability-paired-regions.md)。
 
 ## <a name="review-the-healthy-state-of-the-application"></a>檢視應用程式的健康狀態
 
@@ -106,7 +106,7 @@ ms.locfileid: "92330116"
 在此工作中，您會開始進行將伺服器、彈性集區和資料庫的組態同步至租用戶目錄中的程序。 此程序會將目錄中的這些資訊保持在最新狀態。  此程序會處理使用中的目錄，無論目錄位於原始區域還是復原區域中。 組態資訊會作為復原程序的一部分，以確保復原環境與原始環境的一致性，並且在隨後的回復期間確保原始區域會透過在復原環境中所做的任何變更保有一致性。 此目錄也可用來追蹤租用戶資源的復原狀態
 
 > [!IMPORTANT]
-> 為了方便說明，在這些教學課程中，一律會以在您的用戶端使用者登入下執行的本機 PowerShell 作業或工作階段，來實作同步程序和其他長時間執行的復原與回復程序。 在您登入時核發的驗證權杖將在數小時後到期，屆時作業即會失敗。 在生產環境中，應以某種可靠、在服務主體下執行的 Azure 服務來實作長時間執行的程序。 請參閱[使用 Azure PowerShell 建立具有憑證的服務主體](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)。
+> 為了方便說明，在這些教學課程中，一律會以在您的用戶端使用者登入下執行的本機 PowerShell 作業或工作階段，來實作同步程序和其他長時間執行的復原與回復程序。 在您登入時核發的驗證權杖將在數小時後到期，屆時作業即會失敗。 在生產環境中，應以某種可靠、在服務主體下執行的 Azure 服務來實作長時間執行的程序。 請參閱[使用 Azure PowerShell 建立具有憑證的服務主體](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
 
 1. 在 _PowerShell ISE_ 中，開啟 ...\Learning Modules\UserConfig.psm1 檔案。 請將第 10 和 11 行上的 `<resourcegroup>` 與 `<user>` 取代為您部署應用程式時所使用的值。  儲存檔案。
 
@@ -186,7 +186,7 @@ ms.locfileid: "92330116"
 
 2. 按 **F5** 以執行指令碼。  
     * 此指令碼會在新的 PowerShell 視窗中開啟，然後啟動一系列平行執行的 PowerShell 作業。 這些作業會將租用戶資料庫容錯移轉至復原區域。
-    * 復原區域是與您的應用程式部署所在的 Azure 區域相關聯的 _配對區域_ 。 如需詳細資訊，請參閱 [Azure 配對區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 
+    * 復原區域是與您的應用程式部署所在的 Azure 區域相關聯的 _配對區域_ 。 如需詳細資訊，請參閱 [Azure 配對區域](../../best-practices-availability-paired-regions.md)。 
 
 3. 在 PowerShell 視窗中監視復原程序的狀態。
     ![容錯移轉程序](./media/saas-dbpertenant-dr-geo-replication/failover-process.png)

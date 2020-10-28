@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 12/05/2019
-ms.openlocfilehash: a4a666423c6f5a76d69f572f6d8b86a022bf3e30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8f0bb6e0e58d672faa0929d6266e5e2c5a4f1f1
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443145"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781051"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL Database 彈性查詢概觀 (預覽)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "91443145"
 
 ### <a name="stored-procedure-execution"></a>預存程序執行
 
-使用 [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) 執行遠端預存程序呼叫或遠端函式。
+使用 [sp\_execute \_remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database) 執行遠端預存程序呼叫或遠端函式。
 
 ### <a name="flexibility"></a>彈性
 
@@ -73,13 +73,13 @@ ms.locfileid: "91443145"
 > 您必須具備 ALTER ANY EXTERNAL DATA SOURCE 權限。 這個權限包含在 ALTER DATABASE 權限中。 需有 ALTER ANY EXTERNAL DATA SOURCE 權限，才能參考基礎資料來源。
 >
 
-**參考資料**：拓撲是用來管理參考資料。 在下圖中，包含參考資料的兩個資料表 (T1 和 T2) 會保留在專用的資料庫上。 利用彈性查詢，您現在可以在遠端從其他資料庫存取資料表 T1 和 T2，如圖所示。 如果參考資料表很小或參考資料表的遠端查詢有選擇性述詞，則使用拓撲 1。
+**參考資料** ：拓撲是用來管理參考資料。 在下圖中，包含參考資料的兩個資料表 (T1 和 T2) 會保留在專用的資料庫上。 利用彈性查詢，您現在可以在遠端從其他資料庫存取資料表 T1 和 T2，如圖所示。 如果參考資料表很小或參考資料表的遠端查詢有選擇性述詞，則使用拓撲 1。
 
 **圖 2** 垂直資料分割 - 使用彈性查詢來查詢參考資料
 
 ![ 垂直資料分割 - 使用彈性查詢來查詢參考資料][3]
 
-**跨資料庫查詢**：彈性查詢可促成需要跨 SQL Database 中多個資料庫進行查詢的使用案例。 圖 3 顯示四個不同的資料庫：CRM、庫存、HR 和產品。 在其中一個資料庫中執行的查詢也需要存取另一個或其他所有資料庫。 利用彈性查詢，您可以在上述每個資料庫上執行一些簡單的 DDL 陳述式，針對此案例設定您的資料庫。 進行此一次性設定之後，存取遠端資料表就像從 T-SQL 查詢或從 BI 工具參考本機資料表一樣簡單。 如果遠端查詢未傳回大量結果，則建議使用這個方法。
+**跨資料庫查詢** ：彈性查詢可促成需要跨 SQL Database 中多個資料庫進行查詢的使用案例。 圖 3 顯示四個不同的資料庫：CRM、庫存、HR 和產品。 在其中一個資料庫中執行的查詢也需要存取另一個或其他所有資料庫。 利用彈性查詢，您可以在上述每個資料庫上執行一些簡單的 DDL 陳述式，針對此案例設定您的資料庫。 進行此一次性設定之後，存取遠端資料表就像從 T-SQL 查詢或從 BI 工具參考本機資料表一樣簡單。 如果遠端查詢未傳回大量結果，則建議使用這個方法。
 
 **圖 3** 垂直資料分割 - 使用彈性查詢來查詢各種資料庫
 
@@ -87,10 +87,10 @@ ms.locfileid: "91443145"
 
 下列步驟會針對垂直資料分割案例設定彈性資料庫查詢，這些案例需要存取位於 SQL Database 中遠端資料庫上的資料表 (SQL Database 須具有相同結構描述)：
 
-* [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx) mymasterkey
-* [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx) mycredential
-* [CREATE/DROP EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx) mydatasource (類型為 **RDBMS**
-* [CREATE/DROP EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx) mytable
+* [CREATE MASTER KEY](/sql/t-sql/statements/create-master-key-transact-sql) mymasterkey
+* [CREATE DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql) mycredential
+* [CREATE/DROP EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) mydatasource (類型為 **RDBMS**
+* [CREATE/DROP EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql) mytable
 
 執行 DDL 陳述式之後，您可以存取遠端資料表 "mytable"，就像存取本機資料表一樣。 Azure SQL Database 會自動開啟遠端資料庫的連線、處理您對遠端資料庫的要求，以及傳回結果。
 
@@ -108,11 +108,11 @@ ms.locfileid: "91443145"
 
 下列步驟會針對水平資料分割案例設定彈性資料庫查詢，這些案例需要存取 (通常) 位於 SQL Database 中數個遠端資料庫的一組資料表：
 
-* [CREATE MASTER KEY](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql) mymasterkey
-* [CREATE DATABASE SCOPED CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql) mycredential
+* [CREATE MASTER KEY](/sql/t-sql/statements/create-master-key-transact-sql) mymasterkey
+* [CREATE DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql) mycredential
 * 使用彈性資料庫用戶端程式庫，建立代表您的資料層的 [分區對應](elastic-scale-shard-map-management.md) 。
-* [CREATE/DROP EXTERNAL DATA SOURCE](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) mydatasource (類型為 **SHARD_MAP_MANAGER**)
-* [CREATE/DROP EXTERNAL TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) mytable
+* [CREATE/DROP EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) mydatasource (類型為 **SHARD_MAP_MANAGER** )
+* [CREATE/DROP EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql) mytable
 
 執行這些步驟後，您即可存取水平分割的資料表 "mytable"，就像存取本機資料表一樣。 Azure SQL Database 會自動開啟遠端資料庫 (實際儲存資料表的位置) 的多個平行連線、處理對於遠端資料庫的要求，以及傳回結果。
 如需水平資料分割案例所需步驟的詳細資訊，請參閱 [水平資料分割的彈性查詢](elastic-query-horizontal-partitioning.md)。
@@ -120,7 +120,7 @@ ms.locfileid: "91443145"
 若要開始撰寫程式碼，請參閱[開始使用彈性查詢進行水平資料分割 (分區化)](elastic-query-getting-started.md)。
 
 > [!IMPORTANT]
-> 在大量資料庫上成功執行彈性查詢的關鍵在於，每個資料庫在查詢執行期間的可用性。 如果其中一個資料庫無法使用，整個查詢將會失敗。 如果您打算一次查詢數百個或數千個資料庫，請確定您的用戶端應用程式已內嵌重試邏輯，或考慮利用[彈性資料庫作業](https://docs.microsoft.com/azure/sql-database/sql-database-job-automation-overview#elastic-database-jobs-preview) (預覽)，以及查詢較小的資料庫子集，將每個查詢的結果合併至單一目的地。
+> 在大量資料庫上成功執行彈性查詢的關鍵在於，每個資料庫在查詢執行期間的可用性。 如果其中一個資料庫無法使用，整個查詢將會失敗。 如果您打算一次查詢數百個或數千個資料庫，請確定您的用戶端應用程式已內嵌重試邏輯，或考慮利用[彈性資料庫作業](./job-automation-overview.md#elastic-database-jobs-preview) (預覽)，以及查詢較小的資料庫子集，將每個查詢的結果合併至單一目的地。
 
 ## <a name="t-sql-querying"></a>T-SQL 查詢
 
@@ -158,7 +158,7 @@ ms.locfileid: "91443145"
 * 如需垂直資料分割之資料的語法和範例查詢，請參閱[查詢垂直資料分割的資料](elastic-query-vertical-partitioning.md)
 * 如需水平資料分割 (分區化) 教學課程，請參閱[開始使用彈性查詢進行水平資料分割 (分區化)](elastic-query-getting-started.md)。
 * 如需水平資料分割之資料的語法和範例查詢，請參閱[查詢水平資料分割的資料](elastic-query-horizontal-partitioning.md)
-* 如需會在單一遠端 Azure SQL Database 或一組在水平資料分割配置中作為分區之資料庫上執行 Transact-SQL 陳述式的預存程序，請參閱 [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714)。
+* 如需會在單一遠端 Azure SQL Database 或一組在水平資料分割配置中作為分區之資料庫上執行 Transact-SQL 陳述式的預存程序，請參閱 [sp\_execute \_remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database)。
 
 <!--Image references-->
 [1]: ./media/elastic-query-overview/overview.png

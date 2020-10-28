@@ -11,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 80f5d6033429c40f468d525a088bcc72bdc3375b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4837b905f4e65b5513f1dbf693af9815b5696a4a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450293"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782955"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>針對 Azure SQL Database 和 Azure SQL 受控執行個體 Intelligent Insights 的效能問題進行疑難排解
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-此頁面提供透過 [Intelligent Insights](intelligent-insights-overview.md) 資源記錄檔偵測到的 Azure SQL Database 和 Azure SQL 受控執行個體效能問題的相關資訊。 您可以將計量和資源記錄串流至 [Azure 監視器記錄](../../azure-monitor/insights/azure-sql.md)、 [Azure 事件中樞](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)、 [Azure 儲存體](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)或協力廠商解決方案，以取得自訂 DevOps 警示和報告功能。
+此頁面提供透過 [Intelligent Insights](intelligent-insights-overview.md) 資源記錄檔偵測到的 Azure SQL Database 和 Azure SQL 受控執行個體效能問題的相關資訊。 您可以將計量和資源記錄串流至 [Azure 監視器記錄](../../azure-monitor/insights/azure-sql.md)、 [Azure 事件中樞](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)、 [Azure 儲存體](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)或協力廠商解決方案，以取得自訂 DevOps 警示和報告功能。
 
 > [!NOTE]
 > 如需使用 Intelligent Insights 的快速效能疑難排解指南，請參閱本檔中的 [建議疑難排解流程](intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) 流程圖。
@@ -74,7 +74,7 @@ Azure SQL Database 上的資源通常稱為 [DTU](service-tiers-dtu.md) 或 [vCo
 
 如果您已達到可用工作階段限制，則可以透過減少資料庫的登入次數來對應用程式進行最佳化。 如果您無法減少從應用程式到資料庫的登入次數，請考慮增加資料庫訂用帳戶的定價層。 或者，您可以將資料庫分割並移至多個資料庫，以取得更加平衡的工作負載分佈。
 
-如需有關解決會話限制的詳細資訊，請參閱 [如何處理最大登入的限制](https://blogs.technet.microsoft.com/latam/20../../how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/)。 如需有關伺服器和訂閱層級之限制的詳細資訊，請參閱 [伺服器上的資源限制總覽](resource-limits-logical-server.md) 。
+如需有關解決會話限制的詳細資訊，請參閱 [如何處理最大登入的限制](/archive/blogs/latam/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins)。 如需有關伺服器和訂閱層級之限制的詳細資訊，請參閱 [伺服器上的資源限制總覽](resource-limits-logical-server.md) 。
 
 ## <a name="workload-increase"></a>工作負載增加
 
@@ -118,7 +118,7 @@ Azure SQL Database 上的資源通常稱為 [DTU](service-tiers-dtu.md) 或 [vCo
 
 這個效能模式表示與過去七天的效能基準相比，目前的資料庫效能降低，其中偵測到過多的資料庫鎖定。
 
-在現代化的 RDBMS 中，對於實作多執行緒的系統 (其中會透過儘可能執行多個同時背景工作角色和平行資料庫交易來發揮最大效能) 來說，鎖定是不可或缺的。 此內容中的鎖定係指內建的存取機制，其中只有單一交易能夠以獨佔方式存取所需的資料列、頁面、資料表及檔案，而不會與另一個交易競爭資源。 當鎖定資源來使用的交易已經使用完資源時，就會釋出那些資源上的鎖定，這能允許其他交易存取所需的資源。 如需有關鎖定的詳細資訊，請參閱[資料庫引擎中的鎖定](https://msdn.microsoft.com/library/ms190615.aspx)。
+在現代化的 RDBMS 中，對於實作多執行緒的系統 (其中會透過儘可能執行多個同時背景工作角色和平行資料庫交易來發揮最大效能) 來說，鎖定是不可或缺的。 此內容中的鎖定係指內建的存取機制，其中只有單一交易能夠以獨佔方式存取所需的資料列、頁面、資料表及檔案，而不會與另一個交易競爭資源。 當鎖定資源來使用的交易已經使用完資源時，就會釋出那些資源上的鎖定，這能允許其他交易存取所需的資源。 如需有關鎖定的詳細資訊，請參閱[資料庫引擎中的鎖定](/previous-versions/sql/sql-server-2008-r2/ms190615(v=sql.105))。
 
 當 SQL 引擎所執行的交易存取已鎖定使用的資源時，如果等候時間較長，這個等候時間將會導致工作負載執行效能變差。
 
@@ -144,7 +144,7 @@ MAXDOP 伺服器設定選項可用來控制可使用多少 CPU 核心來平行�
 
 診斷記錄會輸出執行持續時間因平行處理程度大於應有程度而增加之查詢的相關查詢雜湊。 此記錄也會輸出 CXP 等候時間。 此時間代表單一組合管理/協調者執行緒 (執行緒 0) 在合併結果並繼續進行之前，等候所有其他執行緒完成工作的時間。 此外，診斷記錄也會輸出效能不佳之查詢整體等候執行的等候時間。 您可以使用此資訊作為疑難排解的基礎。
 
-首先，請將複雜的查詢最佳化或簡化。 理想的做法是將大批作業拆解成較小的作業。 此外，請確定您已建立支援查詢的索引。 您也可以針對已標示為效能不佳的查詢，手動強制執行平行處理原則的最大程度 (MAXDOP)。 若要使用 T-SQL 設定此作業，請參閱[設定 MAXDOP 伺服器設定選項](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option)。
+首先，請將複雜的查詢最佳化或簡化。 理想的做法是將大批作業拆解成較小的作業。 此外，請確定您已建立支援查詢的索引。 您也可以針對已標示為效能不佳的查詢，手動強制執行平行處理原則的最大程度 (MAXDOP)。 若要使用 T-SQL 設定此作業，請參閱[設定 MAXDOP 伺服器設定選項](/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option)。
 
 將 MAXDOP 伺服器設定選項設定為零 (0) 作為預設值，表示資料庫可以使用所有可用的 CPU 核心來平行處理執行緒，以執行單一查詢。 將 MAXDOP 設定為一 (1) 表示針對單一查詢執行只能使用一個核心。 實際上，這代表平行處理已關閉。 您可以視每一案例情況、資料庫可用的核心及診斷記錄資訊而定，將 MAXDOP 選項調整成可能可以解決您案例中問題的平行查詢執行核心數。
 
@@ -196,7 +196,7 @@ MAXDOP 伺服器設定選項可用來控制可使用多少 CPU 核心來平行�
 
 這個效能模式表示偵測到新查詢，而與過去七天效能基準相比，此查詢的效能不佳且影響工作負載效能。
 
-撰寫效能良好的查詢有時會是相當具有挑戰性的工作。 如需撰寫查詢的詳細資訊，請參閱[撰寫 SQL 查詢](https://msdn.microsoft.com/library/bb264565.aspx) \(英文\)。 若要對現有查詢效能進行最佳化，請參閱[查詢微調](https://msdn.microsoft.com/library/ms176005.aspx)。
+撰寫效能良好的查詢有時會是相當具有挑戰性的工作。 如需撰寫查詢的詳細資訊，請參閱[撰寫 SQL 查詢](/previous-versions/sql/sql-server-2005/express-administrator/bb264565(v=sql.90)) \(英文\)。 若要對現有查詢效能進行最佳化，請參閱[查詢微調](/previous-versions/sql/sql-server-2008-r2/ms176005(v=sql.105))。
 
 ### <a name="troubleshooting"></a>疑難排解
 
@@ -210,7 +210,7 @@ MAXDOP 伺服器設定選項可用來控制可使用多少 CPU 核心來平行�
 
 這個可偵測的效能模式表示與過去七天的工作負載基準相比，工作負載效能降低，其中發現有效能不佳的查詢。
 
-在此情況中，系統無法將效能不佳的查詢歸類至任何其他標準的可偵測效能類別，但它偵測到等候統計資料是造成迴歸的原因。 因此，系統會將那些查詢判斷為具有「增加的等候統計資料」**，並同時公開造成迴歸的等候統計資料。
+在此情況中，系統無法將效能不佳的查詢歸類至任何其他標準的可偵測效能類別，但它偵測到等候統計資料是造成迴歸的原因。 因此，系統會將那些查詢判斷為具有「增加的等候統計資料」  ，並同時公開造成迴歸的等候統計資料。
 
 ### <a name="troubleshooting"></a>疑難排解
 
@@ -218,7 +218,7 @@ MAXDOP 伺服器設定選項可用來控制可使用多少 CPU 核心來平行�
 
 由於系統無法順利識別出效能不佳查詢的根本原因，因此診斷資訊是進行手動疑難排解的理想起點。 您可以對這些查詢的效能進行最佳化。 理想的做法是僅擷取所需的資料，然後將複雜的查詢簡化並拆解成較小的查詢。
 
-如需有關將查詢效能優化的詳細資訊，請參閱 [查詢微調](https://msdn.microsoft.com/library/ms176005.aspx)。
+如需有關將查詢效能優化的詳細資訊，請參閱 [查詢微調](/previous-versions/sql/sql-server-2008-r2/ms176005(v=sql.105))。
 
 ## <a name="tempdb-contention"></a>TempDB 爭用
 
@@ -230,7 +230,7 @@ MAXDOP 伺服器設定選項可用來控制可使用多少 CPU 核心來平行�
 
 診斷記錄會輸出 tempDB 爭用的詳細資料。 您可以使用此資訊作為疑難排解的起點。 若要減輕此競爭情形，並提升整體工作負載的輸送量，您可以嘗試兩種方法：您可以停止使用暫存資料表。 您也可以使用經記憶體最佳化的資料表。
 
-如需詳細資訊，請參閱 [經記憶體優化的資料表簡介](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables)。
+如需詳細資訊，請參閱 [經記憶體優化的資料表簡介](/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables)。
 
 ## <a name="elastic-pool-dtu-shortage"></a>彈性集區 DTU 不足
 
@@ -256,11 +256,11 @@ MAXDOP 伺服器設定選項可用來控制可使用多少 CPU 核心來平行�
 
 資料庫引擎會決定查詢執行成本最低的查詢執行計畫。 當查詢類型和工作負載變更時，有時現有的計畫已不再有效，或可能是資料庫引擎未進行良好的評量。 為了更正這種狀況，您可以手動強制執行查詢執行計畫。
 
-這個可偵測的效能模式結合了三種不同的計畫迴歸案例：新計畫迴歸、舊計畫迴歸，以及現有計畫變更工作負載。 所發生之計畫迴歸的特定類型，會在診斷記錄的 [詳細資料]** 屬性中提供。
+這個可偵測的效能模式結合了三種不同的計畫迴歸案例：新計畫迴歸、舊計畫迴歸，以及現有計畫變更工作負載。 所發生之計畫迴歸的特定類型，會在診斷記錄的 [詳細資料]  屬性中提供。
 
 新的計畫回歸條件指的是資料庫引擎開始執行新查詢執行計畫的狀態，其效率不如舊計畫。 當資料庫引擎從使用新的、更有效率的計畫切換至舊計畫，而不像新的計畫一樣有效率時，舊的計畫回歸狀況就是指狀態。 現有計畫變更工作負載迴歸所指的狀態是新計畫和舊計畫會不斷交替，並逐漸朝向效能不佳的計畫方向發展。
 
-如需有關計畫迴歸的詳細資訊，請參閱[什麼是 SQL Server 中的計畫迴歸？](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../what-is-plan-regression-in-sql-server/)\(英文\)。
+如需有關計畫迴歸的詳細資訊，請參閱[什麼是 SQL Server 中的計畫迴歸？](/archive/blogs/sqlserverstorageengine/what-is-plan-regression-in-sql-server)\(英文\)。
 
 ### <a name="troubleshooting"></a>疑難排解
 
@@ -268,7 +268,7 @@ MAXDOP 伺服器設定選項可用來控制可使用多少 CPU 核心來平行�
 
 您可以分析對特定的查詢 (可以藉由系統提供的查詢雜湊來識別) 而言哪個計畫的效能較佳。 判斷出哪個計畫較適用於您的查詢之後，您即可手動強制執行該計畫。
 
-如需詳細資訊，請參閱[了解 SQL Server 如何防止計畫迴歸](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/) \(英文\)。
+如需詳細資訊，請參閱[了解 SQL Server 如何防止計畫迴歸](/archive/blogs/sqlserverstorageengine/you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions) \(英文\)。
 
 > [!TIP]
 > 您知道內建的智慧功能可以自動為資料庫管理效能最佳的查詢執行計畫嗎？
@@ -287,7 +287,7 @@ MAXDOP 伺服器設定選項可用來控制可使用多少 CPU 核心來平行�
 
 診斷記錄會輸出最近所進行且與過去七天的工作負載行為相比，導致效能降低的資料庫範圍設定變更。 您可以還原對先前值的設定變更。 您也可以逐值調整，直到取得所需的效能層級。 您可以從具有滿意效能的類似資料庫複製資料庫範圍設定值。 如果您無法針對效能進行疑難排解，請還原成預設值，然後嘗試從此基準開始進行微調。
 
-如有關將資料庫範圍設定最佳化，以及變更設定之 T-SQL 語法的詳細資料，請參閱[變更資料庫範圍設定 (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx) \(機器翻譯\)。
+如有關將資料庫範圍設定最佳化，以及變更設定之 T-SQL 語法的詳細資料，請參閱[變更資料庫範圍設定 (Transact-SQL)](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) \(機器翻譯\)。
 
 ## <a name="slow-client"></a>用戶端執行速度太慢
 
@@ -326,11 +326,11 @@ MAXDOP 伺服器設定選項可用來控制可使用多少 CPU 核心來平行�
 > [!TIP]
 > 選取流程圖以下載 PDF 版本。
 
-Intelligent Insights 通常需要一小時的時間來執行效能問題的根本原因分析。 如果無法在 Intelligent Insights 中找到您的問題，且此問題對您而言很嚴重，請使用查詢存放區以手動識別效能問題的根本原因。  (，這些問題通常不到一小時的時間。 ) 如需詳細資訊，請參閱 [使用查詢存放區監視效能](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)。
+Intelligent Insights 通常需要一小時的時間來執行效能問題的根本原因分析。 如果無法在 Intelligent Insights 中找到您的問題，且此問題對您而言很嚴重，請使用查詢存放區以手動識別效能問題的根本原因。  (，這些問題通常不到一小時的時間。 ) 如需詳細資訊，請參閱 [使用查詢存放區監視效能](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)。
 
 ## <a name="next-steps"></a>後續步驟
 
 - 瞭解 [Intelligent Insights](intelligent-insights-overview.md) 概念。
 - 使用 [Intelligent Insights 效能診斷記錄](intelligent-insights-use-diagnostics-log.md)。
-- 使用 [Azure SQL 分析](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)進行監視。
+- 使用 [Azure SQL 分析](../../azure-monitor/insights/azure-sql.md)進行監視。
 - 了解如何[收集並取用來自 Azure 資源的記錄資料](../../azure-monitor/platform/platform-logs-overview.md)。

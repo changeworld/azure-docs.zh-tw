@@ -9,16 +9,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: c1dc0c7f37dc848ecd361848934cbcc5640afc66
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 4a4624a94a27f00201c55a320f1745783b06d169
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490759"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92781918"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>轉換至 Azure 監視器中的計量
 
-**2023 年8月 31**日儲存體分析計量，也稱為*傳統計量*將會淘汰。 如需詳細資訊，請參閱[官方公告](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/)。 如果您使用傳統計量，請務必在該日期之前轉換到 Azure 監視器中的計量。 本文可協助您進行轉換。 
+**2023 年8月 31** 日儲存體分析計量，也稱為 *傳統計量* 將會淘汰。 如需詳細資訊，請參閱[官方公告](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/)。 如果您使用傳統計量，請務必在該日期之前轉換到 Azure 監視器中的計量。 本文可協助您進行轉換。 
 
 ## <a name="steps-to-complete-the-transition"></a>完成轉換的步驟
 
@@ -35,7 +35,7 @@ ms.locfileid: "92490759"
    > [!NOTE]
    > 預設會啟用 Azure 監視器中的計量，因此您不需要執行任何動作來開始捕獲計量。 不過，您必須建立圖表或儀表板來查看這些計量。 
  
-5. 如果您已建立以傳統儲存體計量為基礎的警示規則，則根據 Azure 監視器中的計量 [建立警示規則](/azure/azure-monitor/platform/alerts-overview) 。 
+5. 如果您已建立以傳統儲存體計量為基礎的警示規則，則根據 Azure 監視器中的計量 [建立警示規則](../../azure-monitor/platform/alerts-overview.md) 。 
 
 6. 當您可以在 Azure 監視器中看到所有計量之後，您可以關閉傳統記錄。 
 
@@ -53,7 +53,7 @@ ms.locfileid: "92490759"
 
 如果您帳戶中的活動不會觸發計量，則傳統計量會顯示該計量的值為零 (0) 。 Azure 監視器中的計量會完全略過資料，而這會導致清除報表。 例如，使用傳統計量時，如果未報告任何伺服器逾時錯誤，則 `ServerTimeoutError` 度量資料表中的值會設定為0。 當您查詢維度等於的度量值時，Azure 監視器不會傳回任何資料 `Transactions` `ResponseType` `ServerTimeoutError` 。 
 
-若要深入瞭解 Azure 監視器中的計量，請參閱 [Azure 監視器中的計量](/azure/azure-monitor/platform/data-platform-metrics)。
+若要深入瞭解 Azure 監視器中的計量，請參閱 [Azure 監視器中的計量](../../azure-monitor/platform/data-platform-metrics.md)。
 
 <a id="metrics-mapping-between-old-metrics-and-new-metrics"></a>
 
@@ -70,7 +70,7 @@ ms.locfileid: "92490759"
 | `ContainerCount`      | `ContainerCount` |
 
 > [!NOTE]
-> 另外還有幾個新的容量計量無法作為傳統計量使用。 若要查看完整清單，請參閱 [計量](../common/monitor-storage-reference.md#metrics)。
+> 另外還有幾個新的容量計量無法作為傳統計量使用。 若要查看完整清單，請參閱 [計量](../blobs/monitor-blob-storage-reference.md#metrics)。
 
 **交易計量**
 
@@ -117,5 +117,4 @@ ms.locfileid: "92490759"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Azure 監視器](../../monitoring-and-diagnostics/monitoring-overview.md)
-
+* [Azure 監視器](../../azure-monitor/overview.md)

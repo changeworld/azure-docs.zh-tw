@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 14edb8db945a9b69ba77d56cd19a4524876ede03
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: bfecae4775655f732df8fd6cffea613cd39fb828
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676806"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782003"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>在 Azure 入口網站中監視儲存體帳戶
 
@@ -27,7 +27,7 @@ ms.locfileid: "92676806"
 >
 > Azure 檔案服務目前支援儲存體分析計量，但還不支援記錄。
 >
-> Premium 效能區塊 Blob 儲存體帳戶不支援儲存體分析計量，但支援記錄。 您可以透過 REST API 或用戶端程式庫以程式設計的方式啟用記錄。 如果您想要使用進階效能 Blob 儲存體帳戶來檢視計量，請考慮使用 [Azure 監視器中 Azure 儲存體計量](storage-metrics-in-azure-monitor.md)。
+> Premium 效能區塊 Blob 儲存體帳戶不支援儲存體分析計量，但支援記錄。 您可以透過 REST API 或用戶端程式庫以程式設計的方式啟用記錄。 如果您想要使用進階效能 Blob 儲存體帳戶來檢視計量，請考慮使用 [Azure 監視器中 Azure 儲存體計量](../blobs/monitor-blob-storage.md)。
 >
 > 如需使用儲存體分析和其他工具來識別、診斷及疑難排解 Azure 儲存體相關問題的深入指南，請參閱 [監視、診斷及疑難排解 Microsoft Azure 儲存體](storage-monitoring-diagnosing-troubleshooting.md)。
 >

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 993c0bdf1e8e29a7cff9bd1cad60bf78386b16a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b474ae184374a2c91dcba15517048556686ec35
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578218"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782224"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Azure 儲存體加密的客戶管理金鑰
 
@@ -63,9 +63,9 @@ ms.locfileid: "91578218"
 若要瞭解如何使用金鑰保存庫中客戶管理的金鑰來設定 Azure 儲存體加密，請參閱 [使用儲存在 Azure Key Vault 中之客戶管理的金鑰來設定加密](customer-managed-keys-configure-key-vault.md)。 若要在受管理的 HSM 中設定客戶管理的金鑰，請參閱 [使用儲存在 Azure Key Vault 受控 hsm (preview) 中的客戶管理金鑰來設定加密 ](customer-managed-keys-configure-key-vault-hsm.md)。
 
 > [!IMPORTANT]
-> 客戶管理的金鑰依賴適用于 Azure 資源的受控識別，這是 Azure AD 的功能。 受控識別目前不支援跨目錄案例。 當您在 Azure 入口網站中設定客戶管理的金鑰時，系統會自動將受控識別指派給您的儲存體帳戶。 如果您之後將訂用帳戶、資源群組或儲存體帳戶從一個 Azure AD 目錄移至另一個目錄，與儲存體帳戶相關聯的受控身分識別不會傳送至新的租使用者，因此客戶管理的金鑰可能無法再運作。 如需詳細資訊，請參閱在[Azure 資源受控識別的常見問題和已知問題](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)中，**傳輸 Azure AD 目錄之間的訂**用帳戶。  
+> 客戶管理的金鑰依賴適用于 Azure 資源的受控識別，這是 Azure AD 的功能。 受控識別目前不支援跨目錄案例。 當您在 Azure 入口網站中設定客戶管理的金鑰時，系統會自動將受控識別指派給您的儲存體帳戶。 如果您之後將訂用帳戶、資源群組或儲存體帳戶從一個 Azure AD 目錄移至另一個目錄，與儲存體帳戶相關聯的受控身分識別不會傳送至新的租使用者，因此客戶管理的金鑰可能無法再運作。 如需詳細資訊，請參閱在 [Azure 資源受控識別的常見問題和已知問題](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)中， **傳輸 Azure AD 目錄之間的訂** 用帳戶。  
 
-Azure 儲存體加密支援2048、3072和4096大小的 RSA 和 RSA HSM 金鑰。 如需有關金鑰的詳細資訊，請參閱[關於 Azure Key Vault 金鑰、秘密和憑證](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)的**Key Vault 金鑰**。
+Azure 儲存體加密支援2048、3072和4096大小的 RSA 和 RSA HSM 金鑰。 如需有關金鑰的詳細資訊，請參閱 [關於金鑰](../../key-vault/keys/about-keys.md)。
 
 使用金鑰保存庫或受控 HSM 有相關聯的成本。 如需詳細資訊，請參閱 [Key Vault 定價](https://azure.microsoft.com/pricing/details/key-vault/)。
 
@@ -109,7 +109,7 @@ Azure 儲存體加密支援2048、3072和4096大小的 RSA 和 RSA HSM 金鑰。
 
 撤銷客戶管理的金鑰或停用或刪除金鑰之後，本節中未列出的所有資料作業可能會繼續進行。
 
-若要撤銷客戶管理金鑰的存取權，請使用 [PowerShell](storage-encryption-keys-powershell.md#revoke-customer-managed-keys) 或 [Azure CLI](storage-encryption-keys-cli.md#revoke-customer-managed-keys)。
+若要撤銷客戶管理金鑰的存取權，請使用 [PowerShell](./customer-managed-keys-configure-key-vault.md#revoke-customer-managed-keys) 或 [Azure CLI](./customer-managed-keys-configure-key-vault.md#revoke-customer-managed-keys)。
 
 ## <a name="customer-managed-keys-for-azure-managed-disks"></a>適用于 Azure 受控磁片的客戶管理金鑰
 

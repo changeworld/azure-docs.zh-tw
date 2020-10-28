@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 620a5dad7966347667e0a0a50eb30d562ab700b2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: daccbd9dfb3ed628d8a3e604cbb9af4045f1ebe6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330099"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780881"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>使用異地還原從資料庫備份復原多租用戶 SaaS 應用程式
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,7 +43,7 @@ ms.locfileid: "92330099"
 
 在開始本教學課程之前，請完成下列先決條件：
 * 部署每個租用戶應用程式的 Wingtip Tickets SaaS 資料庫。 若要在五分鐘內完成部署，請參閱[部署及探索每個租用戶應用程式的 Wingtip Tickets SaaS 應用程式](saas-dbpertenant-get-started-deploy.md)。 
-* 安裝 Azure PowerShell。 如需詳細資料，請參閱[開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+* 安裝 Azure PowerShell。 如需詳細資料，請參閱[開始使用 Azure PowerShell](/powershell/azure/get-started-azureps)。
 
 ## <a name="introduction-to-the-geo-restore-recovery-pattern"></a>地理還原復原模式簡介
 
@@ -58,17 +58,17 @@ ms.locfileid: "92330099"
  * 在中斷問題解決之後，將資料庫回復至其原始區域，對租用戶的影響最小。  
 
 > [!NOTE]
-> 應用程式會復原到部署應用程式所在區域的配對的區域中。 如需詳細資訊，請參閱 [Azure 配對區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。   
+> 應用程式會復原到部署應用程式所在區域的配對的區域中。 如需詳細資訊，請參閱 [Azure 配對區域](../../best-practices-availability-paired-regions.md)。   
 
 本教學課程會使用 Azure SQL Database 和 Azure 平台的功能來因應下列挑戰：
 
-* [Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)，以盡快保留所有所需的容量。 Azure Resource Manager 範本是用來在復原區域中佈建原始伺服器和彈性集區的鏡像映像。 也會針對佈建新租用戶，建立不同的伺服器和集區。
+* [Azure Resource Manager 範本](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)，以盡快保留所有所需的容量。 Azure Resource Manager 範本是用來在復原區域中佈建原始伺服器和彈性集區的鏡像映像。 也會針對佈建新租用戶，建立不同的伺服器和集區。
 * [彈性資料庫用戶端程式庫](elastic-database-client-library.md) (EDCL) 可建立及維護租用戶資料庫目錄。 擴充的目錄包含定期重新整理的集區和資料庫組態資訊。
 * EDCL 的[分區管理復原功能](elastic-database-recovery-manager.md)可在復原與活負過程中維護目錄內的資料庫位置項目。  
 * [異地還原](../../key-vault/general/disaster-recovery-guidance.md)可從自動維護的異地備援備份復原目錄和租用戶資料庫。 
-* 以租用戶優先順序發送的[非同步還原作業](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)，這些作業依照系統針對每個集區住列，並已批次方式處理，因此集區不會多載。 在執行之前或執行期間，如有必要，可以取消這些作業。   
+* 以租用戶優先順序發送的[非同步還原作業](../../azure-resource-manager/management/async-operations.md)，這些作業依照系統針對每個集區住列，並已批次方式處理，因此集區不會多載。 在執行之前或執行期間，如有必要，可以取消這些作業。   
 * [異地複寫](active-geo-replication-overview.md)可在中斷之後將資料庫回復至原始區域。 當您使用異地複寫時，不會遺失任何資料且對租用戶的影響最小。
-* [SQL Server DNS 別名](../../sql-database/dns-alias-overview.md)可讓目錄同步程序連線至使用中的目錄，無論目錄位於何處。  
+* [SQL Server DNS 別名](./dns-alias-overview.md)可讓目錄同步程序連線至使用中的目錄，無論目錄位於何處。  
 
 ## <a name="get-the-disaster-recovery-scripts"></a>取得災害復原指令碼
 
@@ -104,7 +104,7 @@ ms.locfileid: "92330099"
 在此工作中，您會開始進行將伺服器、彈性集區和資料庫的組態同步至租用戶目錄中的程序。 此資訊會在稍後用來在復原區域中設定鏡像映像環境。
 
 > [!IMPORTANT]
-> 為了簡單起見，在這些範例中，同步過程和其他長時間執行的復原與回復過程，會實作為本機 PowerShell 作業或在您用戶端使用者登入下執行的工作階段。 在您登入時核發的驗證權杖會在數小時後到期，屆時作業即會失敗。 在生產環境中，應以某種可靠、在服務主體下執行的 Azure 服務來實作長時間執行的程序。 請參閱[使用 Azure PowerShell 建立具有憑證的服務主體](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)。 
+> 為了簡單起見，在這些範例中，同步過程和其他長時間執行的復原與回復過程，會實作為本機 PowerShell 作業或在您用戶端使用者登入下執行的工作階段。 在您登入時核發的驗證權杖會在數小時後到期，屆時作業即會失敗。 在生產環境中，應以某種可靠、在服務主體下執行的 Azure 服務來實作長時間執行的程序。 請參閱[使用 Azure PowerShell 建立具有憑證的服務主體](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。 
 
 1. 在 PowerShell ISE 中，開啟 ...\Learning Modules\UserConfig.psm1 檔案。 將第 10 和 11 行上的 `<resourcegroup>` 與 `<user>` 取代為您部署應用程式時所使用的值。 儲存檔案。
 
@@ -180,7 +180,7 @@ ms.locfileid: "92330099"
 
     * 此指令碼會在新的 PowerShell 視窗中開啟，然後啟動一組平行執行的 PowerShell 作業。 這些作業會將伺服器、集區和資料庫還原到復原區域。
 
-    * 復原區域是與您的應用程式部署所在的 Azure 區域相關聯的配對區域。 如需詳細資訊，請參閱 [Azure 配對區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 
+    * 復原區域是與您的應用程式部署所在的 Azure 區域相關聯的配對區域。 如需詳細資訊，請參閱 [Azure 配對區域](../../best-practices-availability-paired-regions.md)。 
 
 3. 在 PowerShell 視窗中監視復原程序的狀態。
 
@@ -374,7 +374,7 @@ ms.locfileid: "92330099"
 > * 使用 DNS 別名，可讓應用程式連線至整個租用戶目錄，而無需重新設定。
 > * 在中斷問題解決之後，使用異地複寫將已復原的資料庫重新回復到其原始區域。
 
-嘗試[使用資料庫異地複寫，為多租用戶 SaaS 應用程式進行災害復原](../../sql-database/saas-dbpertenant-dr-geo-replication.md)教學課程，以了解如何使用異地複寫來大幅減少復原大規模的多租用戶應用程式所需的時間。
+嘗試[使用資料庫異地複寫，為多租用戶 SaaS 應用程式進行災害復原](./saas-dbpertenant-dr-geo-replication.md)教學課程，以了解如何使用異地複寫來大幅減少復原大規模的多租用戶應用程式所需的時間。
 
 ## <a name="additional-resources"></a>其他資源
 

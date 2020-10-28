@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: 3753004b2bd9c18399655cffd594392b63c14264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab77c8cf563c315768ad1c16089d8d939c085322
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325159"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782649"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>什麼是 Azure SQL 受控執行個體集區 (preview) ？
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Azure SQL 受控執行個體中的實例集區可提供便利且符合成本效�
 
 實例集區提供下列優點：
 
-1. 裝載2個 vCore 實例的能力。 * \* 僅適用于實例*集區中的實例。
+1. 裝載2個 vCore 實例的能力。 *\* 僅適用于實例* 集區中的實例。
 2. 可預測且快速的實例部署時間 (最多5分鐘的) 。
 3. 基本 IP 位址配置。
 
@@ -53,15 +53,15 @@ Azure SQL 受控執行個體中的實例集區可提供便利且符合成本效�
 下列清單提供應考慮實例集區的主要使用案例：
 
 - 同時遷移 *一組 SQL Server 實例* ，其中多數是較小的大小 (例如2或4虛擬核心) 。
-- *可預測和簡短實例建立或調整*的案例很重要。 例如，在需要實例層級功能的多租使用者 SaaS 應用程式環境中部署新的租使用者。
+- *可預測和簡短實例建立或調整* 的案例很重要。 例如，在需要實例層級功能的多租使用者 SaaS 應用程式環境中部署新的租使用者。
 - 具有 *固定成本* 或 *消費限制* 的案例很重要。 例如，執行固定 (的共用開發/測試或示範環境，或不常變更) 大小，您可以在需要時定期部署受控實例。
 - VNet 子網中 *最短 IP 位址配置* 很重要的案例。 集區中的所有實例都會共用虛擬機器，因此配置的 IP 位址數目低於單一實例的大小。
 
 ## <a name="architecture"></a>架構
 
-實例集區具有與一般 (*單一*) 受控實例類似的架構。 為了支援 [Azure 虛擬網路內的部署](../../virtual-network/virtual-network-for-azure-services.md)，   並為客戶提供隔離和安全性，實例集區也會依賴 [虛擬叢集](connectivity-architecture-overview.md#high-level-connectivity-architecture)。 虛擬叢集代表在客戶的虛擬網路子網內部署的一組專用的隔離式虛擬機器。
+實例集區具有與一般 ( *單一* ) 受控實例類似的架構。 為了支援 [Azure 虛擬網路內的部署](../../virtual-network/virtual-network-for-azure-services.md) ，並為客戶提供隔離和安全性，實例集區也會依賴 [虛擬叢集](connectivity-architecture-overview.md#high-level-connectivity-architecture)。 虛擬叢集代表在客戶的虛擬網路子網內部署的一組專用的隔離式虛擬機器。
 
-這兩種部署模型之間的主要差異在於，實例集區允許在相同的虛擬機器節點上進行多個 SQL Server 程式部署，也就是使用 [Windows 工作物件](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)來控管資源，而單一實例一律單獨在虛擬機器節點上。
+這兩種部署模型之間的主要差異在於，實例集區允許在相同的虛擬機器節點上進行多個 SQL Server 程式部署，也就是使用 [Windows 工作物件](/windows/desktop/ProcThread/job-objects)來控管資源，而單一實例一律單獨在虛擬機器節點上。
 
 下圖顯示實例集區，以及兩個部署在相同子網中的個別實例，並說明這兩種部署模型的主要架構詳細資料：
 
@@ -76,7 +76,7 @@ Azure SQL 受控執行個體中的實例集區可提供便利且符合成本效�
 - 實例集區僅適用于第5代硬體。
 - 集區中的受控實例具有專用 CPU 和 RAM，因此所有實例的虛擬核心匯總數目必須小於或等於配置給集區的虛擬核心數目。
 - 所有 [實例層級的限制](resource-limits.md#service-tier-characteristics) 都適用于在集區中建立的實例。
-- 除了實例層級限制之外，還會在 *實例集區層級*強加兩個限制：
+- 除了實例層級限制之外，還會在 *實例集區層級* 強加兩個限制：
   - 每個集區的儲存體大小總計 (8 TB) 。
   - 每個集區的資料庫總數 (100) 。
 - 無法為實例集區中部署的實例設定 AAD 系統管理員，因此無法使用 AAD 驗證。
@@ -121,7 +121,7 @@ Azure SQL 受控執行個體中的實例集區可提供便利且符合成本效�
 
 在 [Azure 入口網站](https://portal.azure.com)中建立和管理實例集區的支援要求。
 
-如果您在建立或刪除)  (遇到與實例集區部署相關的問題，請務必在 [**問題子類型**] 欄位中指定**實例**集區。
+如果您在建立或刪除)  (遇到與實例集區部署相關的問題，請務必在 [ **問題子類型** ] 欄位中指定 **實例** 集區。
 
 ![實例集區支援要求](./media/instance-pools-overview/support-request.png)
 
@@ -137,8 +137,8 @@ Azure SQL 受控執行個體中的實例集區可提供便利且符合成本效�
 
 針對虛擬核心) 測量的計算價格 (，有兩個定價選項可用：
 
-  1. *包含的授權*：內含 SQL Server 授權的價格。 這適用于選擇不要將現有 SQL Server 授權套用至軟體保證的客戶。
-  2. *Azure Hybrid Benefit*：包含 SQL Server Azure Hybrid Benefit 的較低價格。 客戶可以使用其現有的 SQL Server 授權搭配軟體保證來選擇使用此價格。 如需資格和其他詳細資料，請參閱 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)。
+  1. *包含的授權* ：內含 SQL Server 授權的價格。 這適用于選擇不要將現有 SQL Server 授權套用至軟體保證的客戶。
+  2. *Azure Hybrid Benefit* ：包含 SQL Server Azure Hybrid Benefit 的較低價格。 客戶可以使用其現有的 SQL Server 授權搭配軟體保證來選擇使用此價格。 如需資格和其他詳細資料，請參閱 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)。
 
 針對集區中的個別實例，不可能設定不同的定價選項。 父集區中的所有實例都必須以授權包含價格或 Azure Hybrid Benefit 價格。 建立集區之後，您可以變更集區的授權模型。
 
@@ -147,7 +147,7 @@ Azure SQL 受控執行個體中的實例集區可提供便利且符合成本效�
 
 如果您在 [適合開發/測試權益](https://azure.microsoft.com/pricing/dev-test/)的訂用帳戶上建立實例集區，您會在 Azure SQL 受控執行個體上自動獲得最高55% 的折扣費率。
 
-如需有關實例集區定價的完整詳細資訊，請參閱[SQL 受控執行個體定價頁面](https://azure.microsoft.com/pricing/details/sql-database/managed/)上的*實例*集區一節。
+如需有關實例集區定價的完整詳細資訊，請參閱 [SQL 受控執行個體定價頁面](https://azure.microsoft.com/pricing/details/sql-database/managed/)上的 *實例* 集區一節。
 
 ## <a name="next-steps"></a>後續步驟
 
