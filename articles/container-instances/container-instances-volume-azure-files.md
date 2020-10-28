@@ -3,13 +3,13 @@ title: 將 Azure 檔案儲存體磁片區掛接至容器群組
 description: 了解如何掛接 Azure 檔案磁碟區來保存 Azure 容器執行個體的狀態
 ms.topic: article
 ms.date: 07/02/2020
-ms.custom: mvc
-ms.openlocfilehash: eaf5e0704ba2ea4f0e0a30d61e4ae1d2ad1bf58d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 5ca619ac3ae93ee238d019b64ecccc975b7c8e3b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259475"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746861"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>在 Azure 容器執行個體中掛接 Azure 檔案共用
 
@@ -81,7 +81,7 @@ az container create \
     --azure-file-volume-mount-path /aci/logs/
 ```
 
-此 `--dns-name-label` 值在您建立容器實例的 Azure 區域中必須是唯一的。 如果您在執行命令時收到 **DNS 名稱標籤**錯誤訊息，請更新上方命令中的值。
+此 `--dns-name-label` 值在您建立容器實例的 Azure 區域中必須是唯一的。 如果您在執行命令時收到 **DNS 名稱標籤** 錯誤訊息，請更新上方命令中的值。
 
 ## <a name="manage-files-in-mounted-volume"></a>管理已掛接磁碟區中的檔案
 
@@ -235,7 +235,7 @@ az deployment group create --resource-group myResourceGroup --template-file depl
 
 若要在容器實例中掛接多個磁片區，您必須使用 [Azure Resource Manager 範本](/azure/templates/microsoft.containerinstance/containergroups)、YAML 檔案或其他程式設計方法進行部署。 若要使用範本或 YAML 檔，請提供共用詳細資料，並在檔案的 `volumes` 區段中填入陣列來定義磁片 `properties` 區。 
 
-例如，如果您在儲存體帳戶*myStorageAccount*中建立了兩個名為 *>\fileserver1\share1\*和*share2*的 Azure 檔案儲存體共用，則 `volumes` Resource Manager 範本中的陣列會如下所示：
+例如，如果您在儲存體帳戶 *myStorageAccount* 中建立了兩個名為 *>\fileserver1\share1\* 和 *share2* 的 Azure 檔案儲存體共用，則 `volumes` Resource Manager 範本中的陣列會如下所示：
 
 ```JSON
 "volumes": [{
@@ -256,7 +256,7 @@ az deployment group create --resource-group myResourceGroup --template-file depl
 }]
 ```
 
-接下來，針對您想要掛接磁碟區所在容器群組中的每個容器，填入容器定義之 `properties` 區段中的 `volumeMounts` 陣列。 例如，這會掛接兩個先前定義的磁碟區：*myvolume1* 和 *myvolume2*：
+接下來，針對您想要掛接磁碟區所在容器群組中的每個容器，填入容器定義之 `properties` 區段中的 `volumeMounts` 陣列。 例如，這會掛接兩個先前定義的磁碟區： *myvolume1* 和 *myvolume2* ：
 
 ```JSON
 "volumeMounts": [{
@@ -269,7 +269,7 @@ az deployment group create --resource-group myResourceGroup --template-file depl
 }]
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 了解如何在 Azure 容器執行個體中掛接其他類型的磁碟區：
 

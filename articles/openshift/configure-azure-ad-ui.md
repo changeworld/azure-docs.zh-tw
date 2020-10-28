@@ -7,13 +7,13 @@ ms.date: 03/12/2020
 author: sabbour
 ms.author: asabbour
 keywords: aro, openshift, az aro, red hat, cli
-ms.custom: mvc
-ms.openlocfilehash: 4eab701d22f579a816aa95bd43a74fd9ea07d9e4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 1b9e4d1f1b989caa317384292d013af255530f11
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490232"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748080"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-portal"></a>設定 Azure Red Hat OpenShift 4 叢集 (入口網站的 Azure Active Directory authentication) 
 
@@ -36,7 +36,7 @@ echo "OAuth callback URL: https://oauth-openshift.apps.$domain.$location.aroapp.
 
 登入 Azure 入口網站，並流覽至 [應用程式註冊](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)分頁，然後按一下 [ **新增註冊** ] 以建立新的應用程式。
 
-提供應用程式的名稱，例如 **aro-azuread-auth**，然後使用您稍早抓取的 OAUTH 回呼 URL 值填入重新 **導向 URI** 。
+提供應用程式的名稱，例如 **aro-azuread-auth** ，然後使用您稍早抓取的 OAUTH 回呼 URL 值填入重新 **導向 URI** 。
 
 ![新增應用程式註冊](media/aro4-ad-registerapp.png)
 
@@ -44,7 +44,7 @@ echo "OAuth callback URL: https://oauth-openshift.apps.$domain.$location.aroapp.
 
 ![建立祕密](media/aro4-ad-clientsecret.png)
 
-流覽至 **總覽** ，並記下 **應用程式 (用戶端) 識別碼** 和 **目錄 (租使用者) 識別碼**。 您將在稍後的階段中需要這些專案。
+流覽至 **總覽** ，並記下 **應用程式 (用戶端) 識別碼** 和 **目錄 (租使用者) 識別碼** 。 您將在稍後的階段中需要這些專案。
 
 ![ (用戶端) 和目錄 (租使用者) 識別碼取得應用程式](media/aro4-ad-ids.png)
 
@@ -60,7 +60,7 @@ echo "OAuth callback URL: https://oauth-openshift.apps.$domain.$location.aroapp.
 
 我們會將 OpenShift 設定為使用宣告 `email` ，並切換回以 `upn` 設定慣用的使用者名稱，方法是將加入 `upn` 成為 Azure Active Directory 所傳回之識別碼權杖的一部分。
 
-流覽至 [ **權杖設定 (預覽]) ** 然後按一下 [ **新增選擇性**宣告]。 選取 [ **識別碼** ]，然後檢查 **電子郵件** 和 **upn** 宣告。
+流覽至 [ **權杖設定 (預覽])** 然後按一下 [ **新增選擇性** 宣告]。 選取 [ **識別碼** ]，然後檢查 **電子郵件** 和 **upn** 宣告。
 
 ![顯示已新增之電子郵件和 upn 宣告的螢幕擷取畫面。](media/aro4-ad-tokens.png)
 
@@ -100,12 +100,12 @@ az aro list-credentials \
 
 在瀏覽器中啟動主控台 URL，並使用 `kubeadmin` 認證登入。
 
-流覽至 [系統**管理**]，按一下 [叢集設定]，然後選取 [**全域****設定**] 索引標籤。滾動以選取**OAuth**。
+流覽至 [系統 **管理** ]，按一下 [叢集設定]，然後選取 [ **全域****設定** ] 索引標籤。滾動以選取 **OAuth** 。
 
-向下滾動以選取 [**識別提供者**] 下的 [**新增**]，然後選取**OpenID Connect**。
+向下滾動以選取 [ **識別提供者** ] 下的 [ **新增** ]，然後選取 **OpenID Connect** 。
 ![從 [識別提供者] 下拉式清單中選取 OpenID Connect](media/aro4-oauth-idpdrop.png)
 
-以 **AAD**、 **用戶端識別碼** 作為 **應用程式識別碼** 和 **用戶端密碼**填入名稱。 **簽發者 URL**的格式如下： `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` 。 將預留位置取代為您稍早取出的租使用者識別碼。
+以 **AAD** 、 **用戶端識別碼** 作為 **應用程式識別碼** 和 **用戶端密碼** 填入名稱。 **簽發者 URL** 的格式如下： `https://login.microsoftonline.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` 。 將預留位置取代為您稍早取出的租使用者識別碼。
 
 ![填寫 OAuth 詳細資料](media/aro4-oauth-idp-1.png)
 
@@ -115,6 +115,6 @@ az aro list-credentials \
 
 ## <a name="verify-login-through-azure-active-directory"></a>確認登入 Azure Active Directory
 
-如果您現在登出 OpenShift Web 主控台，然後再次嘗試登入，您將會看到使用 **AAD**登入的新選項。 您可能需要等候幾分鐘的時間。
+如果您現在登出 OpenShift Web 主控台，然後再次嘗試登入，您將會看到使用 **AAD** 登入的新選項。 您可能需要等候幾分鐘的時間。
 
 ![具有 Azure Active Directory 選項的登入畫面](media/aro4-login-2.png)

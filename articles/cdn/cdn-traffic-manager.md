@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: b75643d0d526bae4d7b2879dffab3d90dbcbe1eb
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: d2d3bd43a0f17167e855d7e678a96cd79fe42237
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875864"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92777736"
 ---
 # <a name="failover-across-multiple-endpoints-with-azure-traffic-manager"></a>使用 Azure 流量管理員跨多個端點進行容錯移轉
 
@@ -42,7 +42,7 @@ ms.locfileid: "91875864"
 * **來自 Verizon 的 Azure CDN 標準**
 * **來自 Akamai 的 Azure CDN 標準**
 
-也支援**來自 Microsoft 的 AZURE CDN** 。
+也支援 **來自 Microsoft 的 AZURE CDN** 。
 
 ## <a name="create-azure-cdn-profiles"></a>建立 Azure CDN 設定檔
 建立具有不同提供者的兩個或多個 Azure CDN 設定檔和端點。
@@ -60,22 +60,22 @@ ms.locfileid: "91875864"
 ## <a name="create-traffic-manager-profile"></a>建立流量管理員設定檔
 建立 Azure 流量管理員設定檔，並在您的 CDN 端點之間設定負載平衡。 
 
-1. 藉由遵循[建立流量管理員設定檔](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile)中的步驟，建立 Azure 流量管理員設定檔。 
+1. 藉由遵循[建立流量管理員設定檔](../traffic-manager/quickstart-create-traffic-manager-profile.md)中的步驟，建立 Azure 流量管理員設定檔。 
 
-    * **路由方法**，請選取 [ **優先權**]。
+    * **路由方法** ，請選取 [ **優先權** ]。
 
-2. 藉由遵循[新增流量管理員端點](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile#add-traffic-manager-endpoints)中的步驟，在您的流量管理員設定檔中新增 CDN 端點
+2. 藉由遵循[新增流量管理員端點](../traffic-manager/quickstart-create-traffic-manager-profile.md#add-traffic-manager-endpoints)中的步驟，在您的流量管理員設定檔中新增 CDN 端點
 
-    * **輸入**，選取 **外部端點**。
-    * [**優先順序**] 中，輸入數位。
+    * **輸入** ，選取 **外部端點** 。
+    * [ **優先順序** ] 中，輸入數位。
 
-    例如，建立 cdndemo101akamai.azureedge.net****，其優先順序為 1****，建立 cdndemo101verizon.azureedge.net****，其優先順序為 2****。
+    例如，建立 cdndemo101akamai.azureedge.net  ，其優先順序為 1  ，建立 cdndemo101verizon.azureedge.net  ，其優先順序為 2  。
 
    ![CDN 流量管理員端點](./media/cdn-traffic-manager/cdn-traffic-manager-endpoints.png)
 
 
 ## <a name="configure-custom-domain-on-azure-cdn-and-azure-traffic-manager"></a>在 Azure CDN 和 Azure 流量管理員上設定自訂網域
-設定 CDN 和流量管理員設定檔之後，請遵循下列步驟來新增 DNS 對應，並向 CDN 端點註冊自訂網域。 例如，自訂網域名稱是 cdndemo101.dustydogpetcare.online****。
+設定 CDN 和流量管理員設定檔之後，請遵循下列步驟來新增 DNS 對應，並向 CDN 端點註冊自訂網域。 例如，自訂網域名稱是 cdndemo101.dustydogpetcare.online  。
 
 1. 請移至自訂網域網域提供者的網站，例如 GoDaddy，然後建立兩個 DNS CNAME 項目。 
 
@@ -96,9 +96,9 @@ ms.locfileid: "91875864"
     >
 
 
-2.  從您的 Azure CDN 設定檔中，選取第一個 CDN 端點 (Akamai)。 選取 [**新增自訂網域**] 和 [輸入**cdndemo101] dustydogpetcare。** 確認用來驗證自訂網域的核取記號為綠色。 
+2.  從您的 Azure CDN 設定檔中，選取第一個 CDN 端點 (Akamai)。 選取 [ **新增自訂網域** ] 和 [輸入 **cdndemo101] dustydogpetcare。** 確認用來驗證自訂網域的核取記號為綠色。 
 
-    Azure CDN 會使用 cdnverify**** 子網域來驗證 DNS 對應，以完成此註冊程序。 如需詳細資訊，請參閱[建立 CNAME DNS 記錄](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record)。 這個步驟可讓 Azure CDN 辨識自訂網域，以便回應其要求。
+    Azure CDN 會使用 cdnverify  子網域來驗證 DNS 對應，以完成此註冊程序。 如需詳細資訊，請參閱[建立 CNAME DNS 記錄](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record)。 這個步驟可讓 Azure CDN 辨識自訂網域，以便回應其要求。
     
     > [!NOTE]
     > 若要從 Akamai 設定檔啟用 **AZURE CDN** 上的 TLS，您必須將自訂網域直接 cname 至您的端點。 尚不支援啟用 TLS 的 cdnverify。 
@@ -110,7 +110,7 @@ ms.locfileid: "91875864"
 
     `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101verizon.azureedge.net`  
 
-4. 從您的 Azure CDN 設定檔中，選取第二個 CDN 端點 (Verizon)，然後重複步驟 2。 選取 [ **新增自訂網域**]，然後輸入 **cdndemo101 dustydogpetcare. online**。
+4. 從您的 Azure CDN 設定檔中，選取第二個 CDN 端點 (Verizon)，然後重複步驟 2。 選取 [ **新增自訂網域** ]，然後輸入 **cdndemo101 dustydogpetcare. online** 。
  
 完成這些步驟之後，具有容錯移轉功能的多 CDN 服務會設定 Azure 流量管理員。 
 
@@ -121,7 +121,4 @@ ms.locfileid: "91875864"
 ## <a name="next-steps"></a>後續步驟
 您可以設定其他路由方法（例如地理）來平衡不同 CDN 端點之間的負載。 
 
-如需詳細資訊，請參閱[使用流量管理員來設定地理流量路由方法](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-geographic-routing-method)。
-
-
-
+如需詳細資訊，請參閱[使用流量管理員來設定地理流量路由方法](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)。

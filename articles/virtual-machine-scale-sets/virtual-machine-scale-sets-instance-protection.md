@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 02/26/2020
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: 8c4944da8ffcaa75e6448483918a29809c32830b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: 59720a3e89db29ba3eb0829084dd5252e27e9cc9
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83124052"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746793"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Azure 虛擬機器擴展集執行個體的執行個體保護
 
@@ -38,7 +38,7 @@ Azure 虛擬機器擴展集可透過[自動調整](virtual-machine-scale-sets-au
     - 防止執行個體進行自動調整起始的相應縮小
     - 防止執行個體進行在擴展集上起始的作業 (升級、重新安裝映像、解除配置等)
     - 使用者起始的執行個體作業 (包括執行個體刪除) **不會受到封鎖**
-    - 刪除完整擴展集**不會受到封鎖**
+    - 刪除完整擴展集 **不會受到封鎖**
 
 ## <a name="protect-from-scale-in"></a>防止相應縮小
 您可在建立執行個體後，將執行個體保護套用至擴展集執行個體。 您只能在[執行個體模型](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view)上套用及修改保護，而無法在[擴展集模型](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model)上這麼做。

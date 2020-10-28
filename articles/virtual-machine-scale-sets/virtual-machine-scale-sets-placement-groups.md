@@ -8,20 +8,20 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: 16c9c103053c0cd36273feb84cd9b07fcf2627bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: ffa2a3a921e988b92ad90831041a6fb4d321bc42
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87830626"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747815"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>使用大型的虛擬機器擴展集
-您現在可以建立容量多達 1,000 個 VM 的 Azure [虛擬機器擴展集](./index.yml)。 本文件將_大型虛擬機器擴展集_定義為能夠調整到 100 個 VM 以上的擴展集。 此容量是由擴展集屬性 (_singlePlacementGroup=False_) 所設定。 
+您現在可以建立容量多達 1,000 個 VM 的 Azure [虛擬機器擴展集](./index.yml)。 本文件將 _大型虛擬機器擴展集_ 定義為能夠調整到 100 個 VM 以上的擴展集。 此容量是由擴展集屬性 ( _singlePlacementGroup=False_ ) 所設定。 
 
 大型擴展集在某些方面 (例如負載平衡和容錯網域) 的行為不同於標準擴展集。 本文件說明大型擴展集的特性，並描述要在應用程式中成功使用這種擴展集的須知事項。 
 
-想要大規模部署雲端基礎結構，常見的方法是建立一組_縮放單位_，例如藉由跨多個 VNET 和儲存體帳戶建立多個 VM 擴展集。 此方法所需的管理作業較單一 VM 簡單，而且多個縮放單位對於許多應用程式來說會很實用，特別是如果應用程式需要其他可堆疊元件時，例如多個虛擬網路和端點。 但如果應用程式需要單一大型叢集，則直接部署多達 1,000 個 VM 的單一擴展集會更快。 範例案例包括集中式的巨量資料部署，或是需要可簡單管理大型背景工作節點集區的計算方格。 結合虛擬機器擴展集所[連結的資料磁碟](virtual-machine-scale-sets-attached-disks.md)，大型擴展集可讓您在單一作業中，就部署由數千個 vCPU 和數 PB 儲存體所組成的可調整基礎結構。
+想要大規模部署雲端基礎結構，常見的方法是建立一組 _縮放單位_ ，例如藉由跨多個 VNET 和儲存體帳戶建立多個 VM 擴展集。 此方法所需的管理作業較單一 VM 簡單，而且多個縮放單位對於許多應用程式來說會很實用，特別是如果應用程式需要其他可堆疊元件時，例如多個虛擬網路和端點。 但如果應用程式需要單一大型叢集，則直接部署多達 1,000 個 VM 的單一擴展集會更快。 範例案例包括集中式的巨量資料部署，或是需要可簡單管理大型背景工作節點集區的計算方格。 結合虛擬機器擴展集所[連結的資料磁碟](virtual-machine-scale-sets-attached-disks.md)，大型擴展集可讓您在單一作業中，就部署由數千個 vCPU 和數 PB 儲存體所組成的可調整基礎結構。
 
 ## <a name="placement-groups"></a>放置群組 
 「大型」擴展集的特殊之處不在於 VM 數目，而在於其所包含的「放置群組」數目。 放置群組是一種類似於 Azure 可用性設定組的建構，並有自己的容錯網域和升級網域。 根據預設，擴展集包含一個大小上限為 100 個 VM 的位置群組。 如果稱為「singlePlacementGroup」的擴展集屬性設為「false」，擴展集可以包含多個位置群組，且具有範圍為 0 到 1,000 個的 VM。 若設為預設值「true」，擴展集則包含單一放置群組，且具有範圍為 0 到 100 個的 VM。
@@ -80,7 +80,7 @@ az vmss create --help
 如需大型擴展集範本的完整範例，請參閱 [https://github.com/gbowerman/azure-myriad/blob/main/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/main/bigtest/bigbottle.json)。
 
 ## <a name="converting-an-existing-scale-set-to-span-multiple-placement-groups"></a>將現有擴展集轉換為橫跨多個放置群組
-若要讓現有虛擬機器擴展集能夠調整為 100 個以上的 VM，您必須將擴展集模型中的 _singlePlacementGroup_ 屬性變更為 _false_。 您可以使用 [Azure 資源總管](https://resources.azure.com/)測試此屬性的變更。 找到現有擴展集，選取 [編輯]，然後變更 [singlePlacementGroup] 屬性。 如果未看到此屬性，您可能是以舊版 Microsoft.Compute API 在檢視擴展集。
+若要讓現有虛擬機器擴展集能夠調整為 100 個以上的 VM，您必須將擴展集模型中的 _singlePlacementGroup_ 屬性變更為 _false_ 。 您可以使用 [Azure 資源總管](https://resources.azure.com/)測試此屬性的變更。 找到現有擴展集，選取 [編輯]，然後變更 [singlePlacementGroup] 屬性。 如果未看到此屬性，您可能是以舊版 Microsoft.Compute API 在檢視擴展集。
 
 > [!NOTE]
 > 您只能將擴展集從支援單一放置群組 (預設行為) 變更為支援多個放置群組，而無法進行相反方向的轉換。 因此在轉換之前，請確定您已了解大型擴展集的屬性。

@@ -3,13 +3,13 @@ title: 輸入/輸出 IP 位址
 description: 瞭解如何在 Azure App Service 中使用輸入和輸出 IP 位址（當它們變更時），以及如何尋找您的應用程式位址。
 ms.topic: article
 ms.date: 08/25/2020
-ms.custom: seodec18
-ms.openlocfilehash: 8fa9fec9219cfd85a8a0b25f50835425766d9043
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: e5b271cc5cd8cb52267b6ee44bc3965d0e4b0aab
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050687"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746148"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure App Service 中的輸入和輸出 IP 位址
 
@@ -51,13 +51,13 @@ nslookup <app-name>.azurewebsites.net
 
 - 刪除應用程式，並在不同的資源群組中重新建立， (部署單位可能會變更) 。
 - 刪除資源群組 _和_ 區域組合中的最後一個應用程式，然後重新建立 (部署單位可能會變更) 。
-- 在較低層級之間調整您的應用程式 (**基本**、 **標準**和 **高階) ，** 而且高階 **V2** 層 (可以將) 中的 IP 位址加入或減去。
+- 在較低層級之間調整您的應用程式 ( **基本** 、 **標準** 和 **高階) ，** 而且高階 **V2** 層 (可以將) 中的 IP 位址加入或減去。
 
-您可以尋找應用程式可使用的所有可能輸出 IP 位址集合（不論定價層為何），方法是在 Azure 入口網站的 [屬性] 分頁中，尋找 `possibleOutboundIpAddresses` 屬性或 [ **Properties** **其他輸出 ip 位址**] 欄位。 請參閱[尋找輸出 IP](#find-outbound-ips)。
+您可以尋找應用程式可使用的所有可能輸出 IP 位址集合（不論定價層為何），方法是在 Azure 入口網站的 [屬性] 分頁中，尋找 `possibleOutboundIpAddresses` 屬性或 [ **Properties** **其他輸出 ip 位址** ] 欄位。 請參閱[尋找輸出 IP](#find-outbound-ips)。
 
 ## <a name="find-outbound-ips"></a>尋找輸出 IP
 
-若要在 Azure 入口網站中尋找應用程式目前所使用的輸出 IP 位址，請按一下應用程式左側導覽中的 [屬性]****。 這些欄位會列在 [ **輸出 IP 位址** ] 欄位中。
+若要在 Azure 入口網站中尋找應用程式目前所使用的輸出 IP 位址，請按一下應用程式左側導覽中的 [屬性]  。 這些欄位會列在 [ **輸出 IP 位址** ] 欄位中。
 
 您可以在 [Cloud Shell](../cloud-shell/quickstart.md) 中執行下列命令來找到同樣的資訊。
 

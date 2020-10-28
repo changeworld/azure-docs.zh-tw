@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
-ms.custom: seodec18
-ms.openlocfilehash: fdb502685259a5e12bf0182c36aa6c73ec7c1dd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 837a57ee6ce836fb781f5bf5d5362d7c56cba31e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88958928"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746205"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>應用程式閘道與服務端點的整合
 App Service 的三種變化，需要與 Azure 應用程式閘道的整合設定稍有不同。 這些變化包括定期 App Service-也稱為多租使用者、內部 Load Balancer (ILB) App Service 環境 (ASE) 和外部 ASE。 本文將逐步解說如何使用 App Service (多租使用者) 進行設定，以及討論有關 ILB 和外部 ASE 的考慮。

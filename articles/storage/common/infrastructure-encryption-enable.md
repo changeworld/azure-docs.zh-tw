@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 3164de9c3e44001d58d46eab9f823041b440960b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 612ba18ba71a22ad6c346b26008e688195c1d1e4
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984153"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746572"
 ---
 # <a name="create-a-storage-account-with-infrastructure-encryption-enabled-for-double-encryption-of-data"></a>建立已啟用基礎結構加密的儲存體帳戶，以進行資料的雙重加密
 
@@ -95,7 +96,7 @@ N/A
 
 1. 在 Azure 入口網站中，流覽至 [ **儲存體帳戶** ] 頁面。
 1. 選擇 [ **新增] 按鈕以** 新增一般用途 v2 儲存體帳戶。
-1. 在 [ **Advanced** ] 索引標籤上，找出 **基礎結構** 加密，然後選取 [ **啟用**]。
+1. 在 [ **Advanced** ] 索引標籤上，找出 **基礎結構** 加密，然後選取 [ **啟用** ]。
 1. 選取 [ **審核 + 建立** ] 以完成建立儲存體帳戶。
 
     :::image type="content" source="media/infrastructure-encryption-enable/create-account-infrastructure-encryption-portal.png" alt-text="顯示如何在建立帳戶時啟用基礎結構加密的螢幕擷取畫面":::
@@ -178,7 +179,7 @@ az storage account create \
 若要確認是否已針對具有 Azure 入口網站的儲存體帳戶啟用基礎結構加密，請遵循下列步驟：
 
 1. 在 Azure 入口網站中巡覽至您的儲存體帳戶。
-1. 在 [ **設定**] 底下，選擇 [ **加密**]。
+1. 在 [ **設定** ] 底下，選擇 [ **加密** ]。
 
     :::image type="content" source="media/infrastructure-encryption-enable/verify-infrastructure-encryption-portal.png" alt-text="顯示如何在建立帳戶時啟用基礎結構加密的螢幕擷取畫面":::
 

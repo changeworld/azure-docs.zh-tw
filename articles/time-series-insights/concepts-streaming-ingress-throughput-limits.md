@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 10/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4d1d071a36531ed5f159543e33e9ac043160cd70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2f6cd943e381d53c36867ce960cd99552f3aea6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650760"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746541"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>串流內嵌輸送量限制
 
@@ -28,9 +28,9 @@ Azure 時間序列深入解析 Gen2 串流資料輸入限制如下所述。
 
 一般來說，輸入速率會被視為您組織中的裝置數目、事件發出頻率，以及每個事件大小的因素：
 
-* **裝置數目** × **事件發出頻率** × **每個事件的大小**。
+* **裝置數目** × **事件發出頻率** × **每個事件的大小** 。
 
-根據預設，Azure 時間序列深入解析 Gen2 可以用每 **秒最多 1 mb 的速率來內嵌傳入資料 (MBps) 每個 Azure 時間序列深入解析 Gen2 環境**。 [每個中樞分割區](./concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits)都有額外的限制。
+根據預設，Azure 時間序列深入解析 Gen2 可以用每 **秒最多 1 mb 的速率來內嵌傳入資料 (MBps) 每個 Azure 時間序列深入解析 Gen2 環境** 。 [每個中樞分割區](./concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits)都有額外的限制。
 
 > [!TIP]
 >
@@ -41,7 +41,7 @@ Azure 時間序列深入解析 Gen2 串流資料輸入限制如下所述。
 
     Contoso Shipping 有 100,000 部裝置每分鐘發出事件三次。 事件的大小為 200 個位元組。 他們使用具有四個磁碟分割的 IoT 中樞做為 Azure 時間序列深入解析 Gen2 事件來源。
 
-  * 其 Azure 時間序列深入解析 Gen2 環境的內嵌速率為： **100000 裝置 * 200 bytes/event * (3/60 事件/秒) = 1 MBps**。
+  * 其 Azure 時間序列深入解析 Gen2 環境的內嵌速率為： **100000 裝置 * 200 bytes/event * (3/60 事件/秒) = 1 MBps** 。
     * 假設有平衡的資料分割，每個分割區的內嵌速率會是 0.25 MBps。
     * Contoso 運送的內嵌費率會在規模限制內。
 
@@ -49,7 +49,7 @@ Azure 時間序列深入解析 Gen2 串流資料輸入限制如下所述。
 
     Contoso 車隊分析有每秒發出事件的40000裝置。 它們會使用分割區計數為2的事件中樞做為 Azure 時間序列深入解析 Gen2 事件來源。 事件的大小為 200 個位元組。
 
-  * 環境的內嵌速率為： **40000 裝置 * 200 bytes/event * 1 event/sec = 8 MBps**。
+  * 環境的內嵌速率為： **40000 裝置 * 200 bytes/event * 1 event/sec = 8 MBps** 。
     * 假設有平衡的資料分割，則其每個資料分割速率會是 4 MBps。
     * Contoso Fleet Analytics 的擷取速率超過環境和分割區限制。 他們可以透過 Azure 入口網站提交要求 Azure 時間序列深入解析 Gen2，以增加其環境的內嵌速率，以及建立具有更多資料分割的事件中樞，以在限制範圍內。
 
@@ -66,7 +66,7 @@ Azure 時間序列深入解析 Gen2 串流資料輸入限制如下所述。
 
 無論您是針對 Azure 時間序列深入解析 Gen2 環境建立新的中樞，或使用現有的環境，都需要計算每個分割區的內嵌速率，以判斷其是否在限制範圍內。
 
-Azure 時間序列深入解析 Gen2 目前有 **每個資料分割限制 0.5 MBps 的一般值**。
+Azure 時間序列深入解析 Gen2 目前有 **每個資料分割限制 0.5 MBps 的一般值** 。
 
 ### <a name="iot-hub-specific-considerations"></a>IoT 中樞特定考量
 
@@ -74,7 +74,7 @@ Azure 時間序列深入解析 Gen2 目前有 **每個資料分割限制 0.5 MBp
 
 固定的資料分割指派也會影響擷取從 IoT 中樞下游傳送之資料的 Azure 時間序列深入解析 Gen2 實例。 當使用相同的閘道裝置識別碼將來自多個裝置的訊息轉送到中樞時，其可能會同時抵達相同的分割區，因而可能會超過每個分割區的規模限制。
 
-**影響**：
+**影響** ：
 
 * 如果單一分割區在超過限制的情況下有持續的速率，則在超過 IoT 中樞資料保留期限之前，Azure 時間序列深入解析 Gen2 可能不會同步所有裝置遙測。 因此，如果一致地超過擷取限制，傳送的資料可能會遺失。
 

@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 96daa93c28617bd34f263b11afcd244e3b7bacf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 3bbe704e6223bb04a17af7109c61875ca3b21bf9
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88214137"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748193"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions 的 Azure 事件方格觸發程序
 
@@ -405,7 +405,7 @@ Python 指令碼不支援屬性。
 
 :::image type="content" source="media/functions-bindings-event-grid/portal-sub-create.png" alt-text="將新的事件訂用帳戶連線至入口網站中的觸發程序。":::
 
-當您選取此連結時，入口網站會開啟**建立事件訂用帳戶**頁面，其中已定義目前的觸發程序端點。
+當您選取此連結時，入口網站會開啟 **建立事件訂用帳戶** 頁面，其中已定義目前的觸發程序端點。
 
 :::image type="content" source="media/functions-bindings-event-grid/endpoint-url.png" alt-text="將新的事件訂用帳戶連線至入口網站中的觸發程序。" :::
 

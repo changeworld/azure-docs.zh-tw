@@ -6,19 +6,19 @@ author: matt1883
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: monitoring
-ms.date: 04/15/2020
+ms.date: 10/27/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 7676f4aeeb9485ce5e3a702027884bc54d79a863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61d860def7209908e65e9456a4bcde87eed522fc
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387314"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746390"
 ---
 # <a name="use-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>使用 Synapse Studio 監視您的工作區管線執行
 
-使用 Azure Synapse Analytics，您可以建立複雜的管線，以自動化和協調您解決方案內的資料移動、資料轉換和計算活動。 您可以使用 Synapse Studio (preview) 來撰寫和監視這些管線。
+使用 Azure Synapse Analytics，您可以建立複雜的管線，以自動化和整合您解決方案內的資料移動、資料轉換和計算活動。 您可以使用 Synapse Studio (preview) 來撰寫和監視這些管線。
 
 本文說明如何監視您的管線執行，這可讓您留意管線的最新狀態、問題和進度。
 
@@ -50,6 +50,6 @@ ms.locfileid: "87387314"
 
 若要查看管線執行的詳細資料，請選取管線執行。 然後，查看與管線執行相關聯的活動執行。 如果管線仍在執行中，您可以監視進度。 
   
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解監視應用程式，請參閱 [Monitor Apache Spark applications](how-to-monitor-spark-applications.md) 文章。 

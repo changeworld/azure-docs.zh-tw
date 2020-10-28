@@ -7,17 +7,17 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
-ms.custom: include file
-ms.openlocfilehash: 234aa602cccb90d130e4d4b6aca375726ca29f0d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: 489ee630deb56aef6c004067f29779053fbcd3e7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91989615"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755368"
 ---
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-*如果您已經有資源群組，您可以跳到[建立金鑰保存庫](#create-a-key-vault)。*
+*如果您已經有資源群組，您可以跳到 [建立金鑰保存庫](#create-a-key-vault)。*
 
 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 
 
@@ -35,7 +35,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 ## <a name="create-a-key-vault"></a>建立金鑰保存庫
 
-*如果您已經有金鑰保存庫，您可以跳到[設定金鑰保存庫進階存取原則](#set-key-vault-advanced-access-policies)。*
+*如果您已經有金鑰保存庫，您可以跳到 [設定金鑰保存庫進階存取原則](#set-key-vault-advanced-access-policies)。*
 
 使用 [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) Azure CLI 命令、[New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure Powershell 命令、[Azure 入口網站](https://portal.azure.com)或 [Resource Manager 範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)建立金鑰保存庫。
 
@@ -63,7 +63,7 @@ New-AzKeyvault -name "<your-unique-keyvault-name>" -ResourceGroupName "myResourc
 
 您也可以使用 [Resource Manager 範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)來建立金鑰保存庫。
 
-1. 在 Azure 快速入門範本中，按一下 [部署至 Azure]****。
+1. 在 Azure 快速入門範本中，按一下 [部署至 Azure]  。
 2. 選取訂用帳戶、資源群組、資源群組位置、Key Vault 名稱、物件識別碼、法律條款和協議，然後按一下 [購買]。 
 
 
@@ -117,9 +117,9 @@ Azure 平台需要存取您金鑰保存庫中的加密金鑰或密碼，讓該�
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-1. 選取金鑰保存庫，移至 [存取原則]，然後**按一下以顯示進階存取原則**。
-2. 選取標示為**為磁碟區加密啟用對 Azure 磁碟加密的存取**的方塊。
-3. 視需要選取 [為部署啟用對 Azure 虛擬機器的存取]**** 及/或 [為範本部署啟用對 Azure Resource Manager 的存取]****。 
+1. 選取金鑰保存庫，移至 [存取原則]，然後 **按一下以顯示進階存取原則** 。
+2. 選取標示為 **為磁碟區加密啟用對 Azure 磁碟加密的存取** 的方塊。
+3. 視需要選取 [為部署啟用對 Azure 虛擬機器的存取]  及/或 [為範本部署啟用對 Azure Resource Manager 的存取]  。 
 4. 按一下 **[儲存]** 。
 
     ![Azure 金鑰保存庫進階存取原則](../articles/virtual-machines/media/disk-encryption/keyvault-portal-fig4.png)

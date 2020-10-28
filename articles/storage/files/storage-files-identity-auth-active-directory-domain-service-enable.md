@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: contperfq1
-ms.openlocfilehash: f64e3459863cc7b7ffddfae824f9c4012802a457
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperfq1, devx-track-azurecli
+ms.openlocfilehash: 906ec80ecc198675fdb5b163403267be1d13de00
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89500312"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746849"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>在 Azure 檔案儲存體上啟用 Azure Active Directory Domain Services authentication
 
@@ -39,7 +39,7 @@ ms.locfileid: "89500312"
 
     若要支援使用 Azure AD 認證進行驗證，您必須為 Azure AD 租用戶啟用 Azure AD Domain Services。 如果您不是 Azure AD 租用戶的系統管理員，請連絡系統管理員，並遵循[使用 Azure 入口網站啟用 Azure Active Directory Domain Services](../../active-directory-domain-services/tutorial-create-instance.md) 的逐步指導。
 
-    Azure AD DS 部署通常需要約15分鐘的時間才能完成。 繼續進行下一個步驟之前，請先確認 Azure AD DS 的健康狀態顯示為 [已啟用密碼雜湊同步處理 **]，然後**再繼續進行下一個步驟。
+    Azure AD DS 部署通常需要約15分鐘的時間才能完成。 繼續進行下一個步驟之前，請先確認 Azure AD DS 的健康狀態顯示為 [已啟用密碼雜湊同步處理 **]，然後** 再繼續進行下一個步驟。
 
 1.  **使用 Azure AD DS 將 Azure VM 加入網域。**
 
@@ -87,9 +87,9 @@ ms.locfileid: "89500312"
 若要使用 [Azure 入口網站](https://portal.azure.com)透過 SMB 啟用 Azure AD DS 驗證，請遵循下列步驟：
 
 1. 在 Azure 入口網站中，移至您現有的儲存體帳戶，或 [建立儲存體帳戶](../common/storage-account-create.md)。
-1. 在 [設定]**** 區段中，選取 [組態]****。
-1. 在檔案共用的 [ **以身分識別為基礎的存取** ] 下，將 **Azure Active Directory 網域服務 (AAD DS) ** 切換為 [ **已啟用**]。
-1. 選取 [儲存]****。
+1. 在 [設定]  區段中，選取 [組態]  。
+1. 在檔案共用的 [ **以身分識別為基礎的存取** ] 下，將 **Azure Active Directory 網域服務 (AAD DS)** 切換為 [ **已啟用** ]。
+1. 選取 [儲存]。
 
 下圖顯示如何針對您的儲存體帳戶啟用透過 SMB 進行 Azure AD DS 驗證。
 
@@ -99,7 +99,7 @@ ms.locfileid: "89500312"
 
 若要使用 Azure PowerShell 啟用透過 SMB Azure AD DS 驗證，請安裝最新的 Az 模組 (2.4 或更新版本的) 或 Az. Storage 模組 (1.5 或更新版本的) 。 如需安裝 PowerShell 的詳細資訊，請參閱 [使用 PowerShellGet 在 Windows 上安裝 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 
-若要建立新的儲存體帳戶，請呼叫 [new-new-azstorageaccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount?view=azps-2.5.0)，然後將 **EnableAzureActiveDirectoryDomainServicesForFile** 參數設定為 **true**。 在下列範例中，請記得使用您自己的值來取代預留位置值。  (如果您使用先前的預覽模組，則啟用功能的參數是 **>enableazurefilesaadintegrationforsmb**。 ) 
+若要建立新的儲存體帳戶，請呼叫 [new-new-azstorageaccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount?view=azps-2.5.0)，然後將 **EnableAzureActiveDirectoryDomainServicesForFile** 參數設定為 **true** 。 在下列範例中，請記得使用您自己的值來取代預留位置值。  (如果您使用先前的預覽模組，則啟用功能的參數是 **>enableazurefilesaadintegrationforsmb** 。 ) 
 
 ```powershell
 # Create a new storage account
@@ -125,7 +125,7 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 
 若要使用 Azure CLI 啟用透過 SMB 進行 Azure AD 驗證，請安裝最新的 CLI 版本 (版本2.0.70 或更新版本的) 。 如需安裝 Azure CLI 的詳細資訊，請參閱 [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-若要建立新的儲存體帳戶，請呼叫 [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)，然後將 `--enable-files-aadds` 屬性設定為 **true**。 在下列範例中，請記得使用您自己的值來取代預留位置值。  (如果您使用先前的預覽模組，功能啟用的參數會是檔案 **aad**。 ) 
+若要建立新的儲存體帳戶，請呼叫 [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)，然後將 `--enable-files-aadds` 屬性設定為 **true** 。 在下列範例中，請記得使用您自己的值來取代預留位置值。  (如果您使用先前的預覽模組，功能啟用的參數會是檔案 **aad** 。 ) 
 
 ```azurecli-interactive
 # Create a new storage account

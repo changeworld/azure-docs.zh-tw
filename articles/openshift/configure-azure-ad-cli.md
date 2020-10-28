@@ -7,13 +7,13 @@ ms.date: 03/12/2020
 author: sabbour
 ms.author: asabbour
 keywords: aro, openshift, az aro, red hat, cli
-ms.custom: mvc
-ms.openlocfilehash: fd6ea0749cce154ae20479bc54ef9b7374a69d0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 03ecd0e11df5fa20f134b6fd87baf788078a2203
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469417"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748042"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>設定 Azure Red Hat OpenShift 4 叢集 (CLI 的 Azure Active Directory authentication) 
 
@@ -21,7 +21,7 @@ ms.locfileid: "89469417"
 
 取出即將用來設定 Azure Active Directory 應用程式的叢集特定 Url。
 
-建立叢集的 OAuth 回呼 URL，並將它儲存在變數 **oauthCallbackURL**中。 請務必以您的資源群組名稱取代 **aro-rg** ，並以叢集的名稱取代 **aro** 叢集。
+建立叢集的 OAuth 回呼 URL，並將它儲存在變數 **oauthCallbackURL** 中。 請務必以您的資源群組名稱取代 **aro-rg** ，並以叢集的名稱取代 **aro** 叢集。
 
 > [!NOTE]
 > `AAD`Oauth 回呼 URL 中的區段應該符合您稍後將設定的 oauth 身分識別提供者名稱。
@@ -210,6 +210,6 @@ oauth.config.openshift.io/cluster configured
 
 ## <a name="verify-login-through-azure-active-directory"></a>確認登入 Azure Active Directory
 
-如果您現在登出 OpenShift Web 主控台，然後再次嘗試登入，您將會看到使用 **AAD**登入的新選項。 您可能需要等候幾分鐘的時間。
+如果您現在登出 OpenShift Web 主控台，然後再次嘗試登入，您將會看到使用 **AAD** 登入的新選項。 您可能需要等候幾分鐘的時間。
 
 ![具有 Azure Active Directory 選項的 [登入] 畫面](media/aro4-login-2.png)

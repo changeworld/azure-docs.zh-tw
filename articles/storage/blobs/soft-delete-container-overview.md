@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: references_regions
-ms.openlocfilehash: 3c6aa408ab3e89c367fca0701773b35fb9b41bb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 1ebfa137357e60a1f462ef90c6430cbf0cb5b968
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460793"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746591"
 ---
 # <a name="soft-delete-for-containers-preview"></a>適用于容器的虛刪除 (預覽) 
 
@@ -57,7 +57,7 @@ ms.locfileid: "91460793"
 - 區塊 blob 儲存體帳戶
 - Blob 儲存體帳戶
 
-如果您的儲存體帳戶是一般用途 v1 帳戶，請使用 Azure 入口網站升級至一般用途 v2 帳戶。 如需儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶總覽](../common/storage-account-overview.md)。
+如果您的儲存體帳戶是一般用途 v1 帳戶，請使用 Azure 入口網站升級至一般用途 v2 帳戶。 如需有關儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../common/storage-account-overview.md)。
 
 也支援啟用階層命名空間的儲存體帳戶，以搭配 Azure Data Lake Storage Gen2 使用。
 

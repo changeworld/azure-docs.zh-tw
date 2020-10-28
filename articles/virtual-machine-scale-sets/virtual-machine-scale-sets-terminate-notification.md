@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 02/26/2020
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: d4b31eb59ed0bae2afe408546ece66eacade9ddb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: c4d6de1b3406e6d82bdac5ff9b5c72a2286da988
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90603827"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747751"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure 虛擬機器擴展集執行個體的終止通知
 擴展集實例可以選擇接收實例終止通知，以及將預先定義的延遲時間設定為終止作業。 終止通知會透過 Azure Metadata Service 傳送 [Scheduled Events](../virtual-machines/windows/scheduled-events.md)，以提供具影響力作業（例如重新開機和重新部署）的通知和延遲。 解決方案會將另一個事件（終止）新增至 Scheduled Events 清單，而終止事件的相關延遲將取決於使用者在其擴展集模型設定中所指定的延遲限制。
@@ -28,12 +28,12 @@ ms.locfileid: "90603827"
 
 下列步驟會在建立新的擴展集時啟用終止通知。 
 
-1. 移至 **虛擬機器擴展集**。
+1. 移至 **虛擬機器擴展集** 。
 1. 選取 [ **+ 新增** ] 以建立新的擴展集。
 1. 移至 [ **管理** ] 索引標籤。 
 1. 找出 **實例終止** 區段。
-1. 如需 **終止通知**，請選取 [ **開啟**]。
-1. 針對 **終止延遲 (分鐘) **，請設定所需的預設超時。
+1. 如需 **終止通知** ，請選取 [ **開啟** ]。
+1. 針對 **終止延遲 (分鐘)** ，請設定所需的預設超時。
 1. 當您完成建立新的擴展集時，請選取 [ **審核 + 建立** ] 按鈕。 
 
 > [!NOTE]
@@ -63,9 +63,9 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 
 ```
 
-上述區塊會針對擴展集內所有實例上的任何終止作業，指定5分鐘的延遲延遲（ *PT5M*) 所示） (。 *NotBeforeTimeout*欄位可採用 ISO 8601 格式的5到15分鐘之間的任何值。 您可以藉由修改上面所述之*terminateNotificationProfile*底下的*notBeforeTimeout*屬性，來變更終止作業的預設超時。
+上述區塊會針對擴展集內所有實例上的任何終止作業，指定5分鐘的延遲延遲（ *PT5M* ) 所示） (。 *NotBeforeTimeout* 欄位可採用 ISO 8601 格式的5到15分鐘之間的任何值。 您可以藉由修改上面所述之 *terminateNotificationProfile* 底下的 *notBeforeTimeout* 屬性，來變更終止作業的預設超時。
 
-在擴展集模型上啟用 *scheduledEventsProfile* 並設定 *notBeforeTimeout*之後，請將個別實例更新為 [最新的模型](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) ，以反映變更。
+在擴展集模型上啟用 *scheduledEventsProfile* 並設定 *notBeforeTimeout* 之後，請將個別實例更新為 [最新的模型](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) ，以反映變更。
 
 > [!NOTE]
 >擴展集實例上的終止通知只能使用 API 版本2019-03-01 和更新版本啟用
@@ -158,7 +158,7 @@ az vmss update \
     ]
 }
 ```
-*DocumentIncarnation*是 ETag，可讓您輕鬆地檢查事件承載自上一次查詢之後是否已變更。
+*DocumentIncarnation* 是 ETag，可讓您輕鬆地檢查事件承載自上一次查詢之後是否已變更。
 
 如需上述每個欄位的詳細資訊，請參閱適用于 [Windows](../virtual-machines/windows/scheduled-events.md#event-properties) 和 [Linux](../virtual-machines/linux/scheduled-events.md#event-properties)的 Scheduled Events 檔。
 
@@ -197,7 +197,7 @@ az vmss update \
 >'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01'
 
 ### <a name="getting-terminate-event-with-incorrect-notbefore-time"></a>取得不正確 NotBefore 時間的終止事件  
-在擴展集模型上啟用 *scheduledEventsProfile* 並設定 *notBeforeTimeout*之後，請將個別實例更新為 [最新的模型](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) ，以反映變更。
+在擴展集模型上啟用 *scheduledEventsProfile* 並設定 *notBeforeTimeout* 之後，請將個別實例更新為 [最新的模型](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) ，以反映變更。
 
 ## <a name="next-steps"></a>後續步驟
 了解如何在虛擬機器擴展集上[部署您的應用程式](virtual-machine-scale-sets-deploy-app.md)。

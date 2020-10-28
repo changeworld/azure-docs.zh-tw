@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 72602e1e74074f21c93950bdb779758e784ce171
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: b7f566f85ebdb6b481797823cba78aa968747e9f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659864"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746421"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>使用 Azure Data Lake Storage 查詢加速來篩選資料
 
@@ -26,7 +26,7 @@ ms.locfileid: "89659864"
 
 - 若要存取 Azure 儲存體，您需要有 Azure 訂用帳戶。 如果您還沒有訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始操作。
 
-- **一般用途 v2**儲存體帳戶。 請參閱 [建立儲存體帳戶](../common/storage-quickstart-create-account.md)。
+- **一般用途 v2** 儲存體帳戶。 請參閱 [建立儲存體帳戶](../common/storage-quickstart-create-account.md)。
 
 - 選擇索引標籤以查看任何 SDK 特定的必要條件。
 

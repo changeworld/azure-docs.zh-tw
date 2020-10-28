@@ -4,13 +4,13 @@ description: 了解如何設定 Azure Functions 應用程式設定。
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 057c030b060343d5bc6f85c38d61feee0b01dfde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: cc996988-fb4f-47, devx-track-azurecli
+ms.openlocfilehash: f597e58c70d6ac9daff753f5c0a54199c2383c42
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83122287"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746175"
 ---
 # <a name="manage-your-function-app"></a>管理您的函數應用程式 
 
@@ -29,11 +29,11 @@ ms.locfileid: "83122287"
 
 1. 若要開始，請移至 [Azure 入口網站]，然後登入您的 Azure 帳戶。 在入口網站頂端的搜尋列中，輸入函數應用程式的名稱，然後從清單中選取它。 
 
-2. 在左窗格的 [設定] 底下 **，選取 [****設定**]。
+2. 在左窗格的 [設定] 底下 **，選取 [****設定** ]。
 
     :::image type="content" source="./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png" alt-text="Azure 入口網站中的函數應用程式概觀":::
 
-您可以從 [總覽] 頁面流覽至管理函數應用程式所需的所有專案，特別是 **[應用程式設定](#settings)** 和 **[平臺功能](#platform-features)**。
+您可以從 [總覽] 頁面流覽至管理函數應用程式所需的所有專案，特別是 **[應用程式設定](#settings)** 和 **[平臺功能](#platform-features)** 。
 
 ## <a name="application-settings"></a><a name="settings"></a>應用程式設定
 
@@ -143,7 +143,7 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 當函數使用 HTTP 觸發程序時，您可以要求呼叫必須先經過驗證。 App Service 支援 Azure Active Directory 驗證，以及使用社交提供者（例如 Facebook、Microsoft 和 Twitter）登入。 如需設定特定驗證提供者的詳細資訊，請參閱 [Azure App Service 驗證概觀](../app-service/overview-authentication-authorization.md)。 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 + [設定 Azure App Service 設定](../app-service/configure-common.md)
 + [Azure Functions 的持續部署](functions-continuous-deployment.md)

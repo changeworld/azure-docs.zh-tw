@@ -8,12 +8,12 @@ author: grantomation
 ms.author: b-grodel
 keywords: aro、openshift、az aro、red hat、cli、azure 檔案
 ms.custom: mvc
-ms.openlocfilehash: c0d809324baa095b2ce8262170289e0dfec8bfd1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a7415a481b133c2f528ba4636c0297ce5cfa23a7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428839"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747890"
 ---
 # <a name="create-an-azure-files-storageclass-on-azure-red-hat-openshift-4"></a>在 Azure Red Hat OpenShift 4 上建立 Azure 檔案儲存體 StorageClass
 
@@ -32,7 +32,7 @@ ms.locfileid: "92428839"
 
 ### <a name="set-up-azure-storage-account"></a>設定 Azure 儲存體帳戶
 
-此步驟會在 Azure Red Hat OpenShift 叢集的資源群組外部建立資源群組。 此資源群組會包含 Azure Red Hat OpenShift 的動態布建程式所建立的 Azure 檔案儲存體共用。
+此步驟會在 Azure Red Hat OpenShift (ARO) 叢集的資源群組之外建立資源群組。 此資源群組會包含 Azure Red Hat OpenShift 的動態布建程式所建立的 Azure 檔案儲存體共用。
 
 ```bash
 AZURE_FILES_RESOURCE_GROUP=aro_azure_files

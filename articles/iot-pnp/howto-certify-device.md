@@ -5,15 +5,15 @@ author: konichi3
 ms.author: koichih
 ms.date: 08/21/2020
 ms.topic: how-to
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 5cdee274ebc815b23b8ce59e8b9eca90d00e3818
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: b20dab7719e4c55c5868032db3178bb7baaddda0
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042961"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748480"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>如何認證 IoT 隨插即用裝置
 
@@ -182,12 +182,12 @@ az iot product test task create --type QueueTestRun --test-id d45d53d9-656d-4be7
 
 若要認證裝置，您必須先建立新專案。
 
-流覽至 [認證入口網站](https://aka.ms/acdp)。 在 [ **專案** ] 頁面上，選取 [ *+ 建立新專案*]。 然後，輸入專案的名稱、裝置名稱，然後選取裝置類別。
+流覽至 [認證入口網站](https://aka.ms/acdp)。 在 [ **專案** ] 頁面上，選取 [ *+ 建立新專案* ]。 然後，輸入專案的名稱、裝置名稱，然後選取裝置類別。
 
 您在認證程式期間提供的產品資訊分為四類：
 
 - 裝置資訊。 收集裝置的相關資訊，例如其名稱、描述、認證和作業系統。
-- 入門**指南。** 您必須將本指南提交為 PDF 檔，以供系統管理員核准，然後再發佈裝置。
+- 入門 **指南。** 您必須將本指南提交為 PDF 檔，以供系統管理員核准，然後再發佈裝置。
 - 行銷詳細資料。 為您的裝置提供客戶就緒的行銷資訊。 行銷資訊包括「描述」、「相片」和「散發者」。
 - 其他產業認證。 此選用區段可讓您提供裝置已取得之任何其他認證的其他相關資訊。
 

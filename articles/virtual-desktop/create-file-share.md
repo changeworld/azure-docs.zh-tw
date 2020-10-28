@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: aad5ebaf7eef5b404f7849b79694facf1efd01b4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8f8086aced26fc46fb1430df074082e8c3365baa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519434"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746806"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>使用 Azure 檔案儲存體和 AD DS 建立設定檔容器
 
@@ -39,12 +39,12 @@ ms.locfileid: "92519434"
 
     - 建立新的資源群組。
     - 輸入儲存體帳戶的唯一名稱。
-    - 針對 [ **位置**]，建議您選擇與 Windows 虛擬桌面主機集區相同的位置。
+    - 針對 [ **位置** ]，建議您選擇與 Windows 虛擬桌面主機集區相同的位置。
     - 針對 [效能]，請選取 [標準]。  (取決於您的 IOPS 需求。 如需詳細資訊，請參閱 [Windows 虛擬桌面中 FSLogix 設定檔容器的儲存體選項](store-fslogix-profile.md)。 ) 
-    - 針對 [ **帳戶類型**]，選取 [ **StorageV2** ] 或 [ **FileStorage** (只有在效能層級為 [高階]) 時才能使用
-    - 針對 **複寫**，請選取 [ **本機-多餘的儲存體] (LRS) **。
+    - 針對 [ **帳戶類型** ]，選取 [ **StorageV2** ] 或 [ **FileStorage** (只有在效能層級為 [高階]) 時才能使用
+    - 針對 **複寫** ，請選取 [ **本機-多餘的儲存體] (LRS)** 。
 
-5. 當您完成時，請選取 [ **審核 + 建立**]，然後選取 [ **建立**]。
+5. 當您完成時，請選取 [ **審核 + 建立** ]，然後選取 [ **建立** ]。
 
 如果您需要更詳細的設定指示，請參閱 [區域可用性](../storage/files/storage-files-identity-auth-active-directory-enable.md#regional-availability)。
 
@@ -56,9 +56,9 @@ ms.locfileid: "92519434"
 
 1. 選取 [前往資源]  。
 
-2. 在 [總覽] 頁面上，選取 [檔案 **共用**]。
+2. 在 [總覽] 頁面上，選取 [檔案 **共用** ]。
 
-3. 選取 [ **+ 檔案共用**]，建立名為 **設定檔**的新檔案共用，然後輸入適當的配額，或將欄位保留空白表示無配額。
+3. 選取 [ **+ 檔案共用** ]，建立名為 **設定檔** 的新檔案共用，然後輸入適當的配額，或將欄位保留空白表示無配額。
 
 4. 選取 [建立]。
 
@@ -68,9 +68,9 @@ ms.locfileid: "92519434"
 
 1. 遠端桌面通訊協定加入已加入網域的 VM。
 
-2. 遵循 [啟用 Azure 檔案共用 AZURE AD DS 驗證](../storage/files/storage-files-identity-ad-ds-enable.md) 中的指示，以安裝 AzFilesHybrid 模組並啟用驗證。
+2. 遵循 [啟用 Azure 檔案共用 AD DS authentication](../storage/files/storage-files-identity-ad-ds-enable.md) 中的指示來安裝 AzFilesHybrid 模組，並啟用驗證。
 
-3.  開啟 Azure 入口網站，開啟您的儲存體帳戶 **，選取 [** 設定]，然後確認 **Active Directory (AD) ** 設為 [ **已啟用**]。
+3.  開啟 Azure 入口網站，開啟您的儲存體帳戶 **，選取 [** 設定]，然後確認 **Active Directory (AD)** 設為 [ **已啟用** ]。
 
      > [!div class="mx-imgBorder"]
      > ![設定頁面的螢幕擷取畫面，其中已啟用 Azure Active Directory (AD) 。](media/active-directory-enabled.png)
@@ -92,11 +92,11 @@ ms.locfileid: "92519434"
 
 2. 開啟您在 [設定儲存體帳戶](#set-up-a-storage-account)中建立的儲存體帳戶。
 
-3. 選取 [檔案 **共用**]，然後選取您打算使用的檔案共用名稱。
+3. 選取 [檔案 **共用** ]，然後選取您打算使用的檔案共用名稱。
 
 4. 選取 [存取控制 (IAM)]。
 
-5. 選取 [ **新增角色指派**]。
+5. 選取 [ **新增角色指派** ]。
 
 6. 在 [ **新增角色指派** ] 索引標籤中，選取 [ **儲存體檔案資料 SMB 共用提升許可權的參與者** ] 以取得系統管理員帳戶。
 
@@ -121,7 +121,7 @@ ms.locfileid: "92519434"
 
 2. 開啟您在 [設定儲存體帳戶](#set-up-a-storage-account)中建立的儲存體帳戶。
 
-3. 選取 [ **設定**]，然後選取 [ **屬性**]。
+3. 選取 [ **設定** ]，然後選取 [ **屬性** ]。
 
 4. 將 **主要檔案服務端點** URI 複製到您選擇的文字編輯器。
 
@@ -141,7 +141,7 @@ ms.locfileid: "92519434"
 
 2. 開啟您在 [設定儲存體帳戶](#set-up-a-storage-account)中建立的儲存體帳戶。
 
-3. 在 [ **儲存體帳戶** ] 索引標籤上，選取 [ **存取金鑰**]。
+3. 在 [ **儲存體帳戶** ] 索引標籤上，選取 [ **存取金鑰** ]。
 
 4. 將 **key1** 或 **key2** 複製到本機電腦上的檔案。
 
@@ -165,7 +165,7 @@ ms.locfileid: "92519434"
 
     取代為 `<mounted-drive-letter>` 您所對應之磁片磁碟機的字母。
 
-    *NT Authority\authenticated users 使用者*和*BUILTIN\Users*預設都有特定的許可權。 這些預設許可權可讓這些使用者讀取其他使用者的設定檔容器。 不過， [設定用於設定檔容器與 Office 容器的儲存體許可權](/fslogix/fslogix-storage-config-ht) 中所述的許可權，並不會讓使用者讀取彼此的設定檔容器。
+    *NT Authority\authenticated users 使用者* 和 *BUILTIN\Users* 預設都有特定的許可權。 這些預設許可權可讓這些使用者讀取其他使用者的設定檔容器。 不過， [設定用於設定檔容器與 Office 容器的儲存體許可權](/fslogix/fslogix-storage-config-ht) 中所述的許可權，並不會讓使用者讀取彼此的設定檔容器。
 
 4. 執行下列命令，以允許您的 Windows 虛擬桌面使用者建立自己的設定檔容器，同時封鎖其他使用者對其設定檔容器的存取。
 
@@ -200,13 +200,13 @@ ms.locfileid: "92519434"
 
 5. 請依照[設定設定檔容器登錄設定](/fslogix/configure-profile-container-tutorial#configure-profile-container-registry-settings)中的指示操作：
 
-    - 流覽至 [**電腦**  >  **HKEY_LOCAL_MACHINE**  >  **軟體**  >  **FSLogix**]。
+    - 流覽至 [ **電腦**  >  **HKEY_LOCAL_MACHINE**  >  **軟體**  >  **FSLogix** ]。
 
     - 建立 **設定檔** 金鑰。
 
     - Create **Enabled，DWORD** 值為1。
 
-    - 建立 **VHDLocations、MULTI_SZ**。
+    - 建立 **VHDLocations、MULTI_SZ** 。
 
     - 將 **VHDLocations** 的值設定為您在 [取得 unc 路徑](#get-the-unc-path)時所產生的 unc 路徑。
 

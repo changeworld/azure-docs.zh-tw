@@ -8,12 +8,12 @@ author: ShaneBala-keyvault
 ms.author: sudbalas
 manager: ravijan
 ms.date: 09/30/2020
-ms.openlocfilehash: a0fe5c2af42e8d8095963e29149e1338cc064c90
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: fbeb6f5f223642c09183c149188c6717c1f33a8e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495192"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748499"
 ---
 # <a name="how-to-enable-soft-delete-and-purge-protection"></a>如何啟用虛刪除和清除保護
 
@@ -23,11 +23,11 @@ ms.locfileid: "92495192"
 
 虛刪除和清除保護有兩種不同的金鑰保存庫修復功能。
 > [!IMPORTANT]
-> 必須在所有金鑰保存庫上啟用虛刪除保護。 停用虛刪除保護的功能將于2020年12月淘汰。 請參閱 [**這裡**的完整詳細資料。](soft-delete-change.md)
+> 必須在所有金鑰保存庫上啟用虛刪除保護。 停用虛刪除保護的功能將于2020年12月淘汰。 請參閱 [**這裡** 的完整詳細資料。](soft-delete-change.md)
 
-虛**刪除**是設計來防止意外刪除金鑰保存庫、金鑰、秘密，以及儲存在金鑰保存庫中的憑證。 請考慮虛刪除，例如回收站。 當您刪除金鑰保存庫或金鑰保存庫物件時，它會保持可供使用者設定的保留期間使用，或預設為90天。 也可以 **清除** 虛刪除狀態中的金鑰保存庫，這表示這些金鑰保存庫會永久刪除。 這可讓您以相同的名稱重新建立金鑰保存庫和金鑰保存庫物件。 復原和刪除金鑰保存庫和物件都需要較高的存取原則許可權。 **啟用虛刪除之後，即無法停用。**
+虛 **刪除** 是設計來防止意外刪除金鑰保存庫、金鑰、秘密，以及儲存在金鑰保存庫中的憑證。 請考慮虛刪除，例如回收站。 當您刪除金鑰保存庫或金鑰保存庫物件時，它會保持可供使用者設定的保留期間使用，或預設為90天。 也可以 **清除** 虛刪除狀態中的金鑰保存庫，這表示這些金鑰保存庫會永久刪除。 這可讓您以相同的名稱重新建立金鑰保存庫和金鑰保存庫物件。 復原和刪除金鑰保存庫和物件都需要較高的存取原則許可權。 **啟用虛刪除之後，即無法停用。**
 
-請務必注意，金鑰保存 **庫名稱是全域唯一**的，因此您將無法使用與已虛刪除狀態的金鑰保存庫相同的名稱來建立金鑰保存庫。 同樣地，金鑰、秘密和憑證的名稱在金鑰保存庫中是唯一的。 您將無法在「虛刪除」狀態中，建立與另一個名稱相同的秘密、金鑰或憑證。
+請務必注意，金鑰保存 **庫名稱是全域唯一** 的，因此您將無法使用與已虛刪除狀態的金鑰保存庫相同的名稱來建立金鑰保存庫。 同樣地，金鑰、秘密和憑證的名稱在金鑰保存庫中是唯一的。 您將無法在「虛刪除」狀態中，建立與另一個名稱相同的秘密、金鑰或憑證。
 
 **清除保護** 的設計目的是防止惡意 insider 刪除您的金鑰保存庫、金鑰、秘密和憑證。 請將此視為具有以時間為基礎之鎖定的回收站。 您可以在可設定的保留期間內的任何時間點復原專案。 **在保留期限到期之前，您將無法永久刪除或清除金鑰保存庫。** 一旦超過保留期限，將會自動清除金鑰保存庫或金鑰保存庫物件。
 
@@ -125,7 +125,7 @@ ms.locfileid: "92495192"
     az keyvault recover --subscription {SUBSCRIPTION ID} -n {VAULT NAME}
     ```
 
-* 清除虛刪除的金鑰保存庫 ** (警告！這項作業會永久刪除您的金鑰保存庫) **
+* 清除虛刪除的金鑰保存庫 **(警告！這項作業會永久刪除您的金鑰保存庫)**
 
     ```azurecli
     az keyvault purge --subscription {SUBSCRIPTION ID} -n {VAULT NAME}
@@ -163,7 +163,7 @@ ms.locfileid: "92495192"
     az keyvault certificate recover --subscription {SUBSCRIPTION ID} --vault-name {VAULT NAME} --name {CERTIFICATE NAME}
     ```
 
-* 清除虛刪除的憑證 ** (警告！此操作會永久刪除您的憑證) **
+* 清除虛刪除的憑證 **(警告！此操作會永久刪除您的憑證)**
 
     ```azurecli
     az keyvault certificate purge --subscription {SUBSCRIPTION ID} --vault-name {VAULT NAME} --name {CERTIFICATE NAME}
@@ -195,7 +195,7 @@ ms.locfileid: "92495192"
     az keyvault key recover --subscription {SUBSCRIPTION ID} --vault-name {VAULT NAME} --name {KEY NAME}
     ```
 
-* 清除虛刪除的金鑰 ** (警告！這項操作會永久刪除您的金鑰) **
+* 清除虛刪除的金鑰 **(警告！這項操作會永久刪除您的金鑰)**
 
     ```azurecli
     az keyvault key purge --subscription {SUBSCRIPTION ID} --vault-name {VAULT NAME} --name {KEY NAME}
@@ -227,7 +227,7 @@ ms.locfileid: "92495192"
     az keyvault secret recover --subscription {SUBSCRIPTION ID} --vault-name {VAULT NAME} --name {SECRET NAME}
     ```
 
-* 清除虛刪除的秘密 ** (警告！這種作業會永久刪除您的秘密) **
+* 清除虛刪除的秘密 **(警告！這種作業會永久刪除您的秘密)**
 
     ```azurecli
     az keyvault secret purge --subscription {SUBSCRIPTION ID} --vault-name {VAULT NAME} --name {SECRET NAME}
@@ -241,14 +241,6 @@ ms.locfileid: "92495192"
 
     ```powershell
     Get-AzKeyVault -VaultName "ContosoVault"
-    ```
-
-* 在金鑰保存庫上啟用虛刪除
-
-    ```powershell
-    ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"
-
-    Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
     ```
 
 * 刪除 key vault
@@ -269,7 +261,7 @@ ms.locfileid: "92495192"
     Undo-AzKeyVaultRemoval -VaultName ContosoVault -ResourceGroupName ContosoRG -Location westus
     ```
 
-* 清除虛刪除的金鑰-保存庫 ** (警告！這項作業會永久刪除您的金鑰保存庫) **
+* 清除虛刪除的金鑰-保存庫 **(警告！這項作業會永久刪除您的金鑰保存庫)**
 
     ```powershell
     Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
@@ -309,7 +301,7 @@ ms.locfileid: "92495192"
   Undo-AzKeyVaultCertificateRemoval -VaultName ContosoVault -Name 'MyCert'
   ```
 
-* 清除虛刪除的憑證 ** (警告！此操作會永久刪除您的憑證) **
+* 清除虛刪除的憑證 **(警告！此操作會永久刪除您的憑證)**
 
   ```powershell
   Remove-AzKeyVaultcertificate -VaultName ContosoVault -Name 'MyCert' -InRemovedState
@@ -341,7 +333,7 @@ ms.locfileid: "92495192"
     Undo-AzKeyVaultKeyRemoval -VaultName ContosoVault -Name ContosoFirstKey
     ```
 
-* 清除虛刪除的金鑰 ** (警告！這項操作會永久刪除您的金鑰) **
+* 清除虛刪除的金鑰 **(警告！這項操作會永久刪除您的金鑰)**
 
     ```powershell
     Remove-AzKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey -InRemovedState
@@ -373,7 +365,7 @@ ms.locfileid: "92495192"
   Undo-AzKeyVaultSecretRemoval -VaultName ContosoVault -Name SQLPAssword
   ```
 
-* 清除處於已刪除狀態的秘密 ** (警告！這項操作會永久刪除您的金鑰) **
+* 清除處於已刪除狀態的秘密 **(警告！這項操作會永久刪除您的金鑰)**
 
   ```powershell
   Remove-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState -name SQLPassword

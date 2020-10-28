@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 9bb228c81ee180ec337ce52e3c87a4a9684e158a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 609f6d5fd0bf75b1a2056c01c8d22ae9e08ab9cb
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563687"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746839"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>關於 Azure 檔案服務的常見問題集 (FAQ)
 [Azure 檔案儲存體](storage-files-introduction.md) 提供雲端中完全受控的檔案共用，可透過業界標準 [伺服器訊息區（ (SMB) 通訊協定](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) 和 [網路檔案系統 (NFS) protocol](https://en.wikipedia.org/wiki/Network_File_System) (preview) ）來存取。 您可以同時在 Windows、Linux 和 macOS 的雲端或內部部署上掛接 Azure 檔案共用。 您也可以使用 Azure 檔案同步，在接近使用資料之處進行快速存取，藉以在 Windows Server 電腦上快取 Azure 檔案共用。
@@ -76,7 +76,7 @@ ms.locfileid: "90563687"
     Azure 檔案儲存體支援兩種儲存層：進階和標準。 標準檔案共用是會在一般用途 (GPv1 或 GPv2) 儲存體帳戶中建立的，而進階檔案共用則是在 FileStorage 儲存體帳戶中建立的。 深入了解如何建立[標準檔案共用](storage-how-to-create-file-share.md)和[進階檔案共用](storage-how-to-create-premium-fileshare.md)。 
     
     > [!NOTE]
-    > 您無法從 Blob 儲存體帳戶或「進階」一般用途 (GPv1 或 GPv2) 儲存體帳戶建立 Azure 檔案共用。 標準 Azure 檔案共用僅能在*標準*一般用途帳戶中建立，而進階檔案共用只能在 FileStorage 儲存體帳戶中建立。 *進階*一般用途 (GPv1 和 GPv2) 儲存體帳戶僅適用於進階分頁 Blob。 
+    > 您無法從 Blob 儲存體帳戶或「進階」一般用途 (GPv1 或 GPv2) 儲存體帳戶建立 Azure 檔案共用。 標準 Azure 檔案共用僅能在 *標準* 一般用途帳戶中建立，而進階檔案共用只能在 FileStorage 儲存體帳戶中建立。 *進階* 一般用途 (GPv1 和 GPv2) 儲存體帳戶僅適用於進階分頁 Blob。 
 
 * <a id="file-locking"></a>
   **Azure 檔案儲存體是否支援檔案鎖定？**  
@@ -107,7 +107,7 @@ ms.locfileid: "90563687"
     效能會依據您的環境設定、設定，以及這是初始同步處理還是進行中的同步處理而有所不同。如需詳細資訊，請參閱 [Azure 檔案同步效能度量](storage-files-scale-targets.md#azure-file-sync-performance-metrics)
 
 * <a id="afs-conflict-resolution"></a>**如果同一個檔案近乎同時地在兩部伺服器上進行變更，會發生什麼事？**  
-    Azure 檔案同步使用簡單的衝突解決策略：我們會同時保留兩個端點中變更之檔案的變更。 最新寫入的變更會保留原始檔案名稱。 較舊的檔案 (由 LastWriteTime 決定) 會將端點名稱和衝突號碼附加至檔案名。 針對伺服器端點，端點名稱是伺服器的名稱。 若為雲端端點，端點名稱為 **雲端**。 此名稱會遵循此分類法： 
+    Azure 檔案同步使用簡單的衝突解決策略：我們會同時保留兩個端點中變更之檔案的變更。 最新寫入的變更會保留原始檔案名稱。 較舊的檔案 (由 LastWriteTime 決定) 會將端點名稱和衝突號碼附加至檔案名。 針對伺服器端點，端點名稱是伺服器的名稱。 若為雲端端點，端點名稱為 **雲端** 。 此名稱會遵循此分類法： 
    
     \<FileNameWithoutExtension\>-\<endpointName\>\[-#\].\<ext\>  
 
@@ -257,7 +257,25 @@ ms.locfileid: "90563687"
 * <a id="ad-multiple-forest"></a>
 **適用於 Azure 檔案共用的內部部署 AD DS 驗證是否支援使用多個樹系與 AD DS 環境整合？**    
 
-    Azure 檔案儲存體內部部署 AD DS 驗證只會與儲存體帳戶註冊的網域服務樹系整合。 若要支援來自另一個樹系的驗證，您的環境必須正確地設定樹系信任。 Azure 檔案儲存體在 AD DS 中註冊的方式幾乎與一般檔案伺服器相同，註冊時會在 AD DS 中建立身分識別 (電腦或服務登入帳戶) 以進行驗證。 唯一的差異在於儲存體帳戶的已註冊 SPN 結尾為 "file.core.windows.net"，這與網域尾碼不符。 請洽詢您的網域管理員，查看是否需要對 DNS 路由原則進行任何更新，以啟用多樹系驗證，因為網域尾碼不同。
+    Azure 檔案儲存體內部部署 AD DS 驗證只會與儲存體帳戶註冊的網域服務樹系整合。 若要支援來自另一個樹系的驗證，您的環境必須正確地設定樹系信任。 Azure 檔案儲存體在 AD DS 中註冊的方式幾乎與一般檔案伺服器相同，註冊時會在 AD DS 中建立身分識別 (電腦或服務登入帳戶) 以進行驗證。 唯一的差異在於儲存體帳戶的已註冊 SPN 結尾為 "file.core.windows.net"，這與網域尾碼不符。 請洽詢您的網域系統管理員，以查看是否需要任何尾碼路由原則的更新，才能啟用多個樹系驗證，因為不同的網域尾碼。 我們提供下列範例來設定尾碼路由原則。
+    
+    範例：當樹系網域中的使用者想要使用針對樹系 B 中的網域所註冊的儲存體帳戶來存取檔案共用時，這不會自動運作，因為儲存體帳戶的服務主體沒有符合樹系 A 中任何網域尾碼的尾碼。若要解決此問題，我們可以手動設定 "file.core.windows.net" 自訂尾碼的後置字元路由規則，從樹系 A 到樹系 B。
+    首先，您必須在樹系 B 上新增自訂尾碼。請確定您有適當的系統管理許可權可變更設定，然後遵循下列步驟：   
+    1. 登入已加入樹系 B 的電腦網域
+    2.  開啟 [Active Directory 網域及信任] 主控台
+    3.  以滑鼠右鍵按一下 [Active Directory 網域及信任]
+    4.  按一下 [屬性]
+    5.  按一下 [新增]
+    6.  新增 "file.core.windows.net" 作為 UPN 尾碼
+    7.  按一下 [套用]，然後按一下 [確定] 以關閉嚮導
+    
+    接下來，在樹系 A 上新增尾碼路由規則，使其重新導向至樹系 B。
+    1.  登入已加入樹系 A 的電腦網域
+    2.  開啟 [Active Directory 網域及信任] 主控台
+    3.  在您要存取檔案共用的網域上按一下滑鼠右鍵，然後按一下 [信任] 索引標籤，然後從 [外寄信任] 選取 [樹系 B 網域]。 如果您還沒有設定兩個樹系之間的信任，您必須先設定信任
+    4.  按一下 [屬性 ...]然後是「名稱尾碼路由」
+    5.  檢查是否顯示 "*. file.core.windows.net" surffix。 如果沒有，請按一下 [重新整理]
+    6.  選取 "*. file.core.windows.net"，然後按一下 [啟用] 和 [套用]
 
 * <a id=""></a>
 **Azure 檔案儲存體 AD DS authentication 有哪些區域可供使用？**
