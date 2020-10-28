@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 266ad613a4966b26fc4a6ddffbb7b4196aa937b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2274a551542b06996941b49e7d047baf3e8b3ca
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372097"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894027"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>使用 Azure 入口網站來管理 Azure 資源
 
@@ -29,22 +29,22 @@ ms.locfileid: "91372097"
 
 ## <a name="open-resources"></a>開啟資源
 
-Azure 資源會依 Azure 服務和資源群組進行組織。 下列程式說明如何開啟名為 **mystorage0207**的儲存體帳戶。 虛擬機器位於名為 **mystorage0207rg**的資源群組中。
+Azure 資源會依 Azure 服務和資源群組進行組織。 下列程式說明如何開啟名為 **mystorage0207** 的儲存體帳戶。 虛擬機器位於名為 **mystorage0207rg** 的資源群組中。
 
 若要依服務類型開啟資源：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 在左窗格中，選取 [Azure 服務]。 在此案例中為 **儲存體帳戶**。  如果您沒有看到列出的服務，請選取 [ **所有服務**]，然後選取 [服務類型]。
+2. 在左窗格中，選取 [Azure 服務]。 在此案例中為 **儲存體帳戶** 。  如果您沒有看到列出的服務，請選取 [ **所有服務** ]，然後選取 [服務類型]。
 
     ![在入口網站中開啟 azure 資源](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
 
 3. 選取您要開啟的資源。
 
-    ![在入口網站中開啟 azure 資源](./media/manage-resources-portal/manage-azure-resources-portal-open-resource.png)
+    ![反白顯示所選資源的螢幕擷取畫面。](./media/manage-resources-portal/manage-azure-resources-portal-open-resource.png)
 
     儲存體帳戶看起來像這樣：
 
-    ![在入口網站中開啟 azure 資源](./media/manage-resources-portal/manage-azure-resources-portal-open-resource-storage.png)
+    ![顯示儲存體帳戶外觀的螢幕擷取畫面。](./media/manage-resources-portal/manage-azure-resources-portal-open-resource-storage.png)
 
 依資源群組開啟資源：
 
@@ -63,10 +63,10 @@ Azure 資源會依 Azure 服務和資源群組進行組織。 下列程式說明
 ## <a name="delete-resources"></a>刪除資源
 
 1. 在入口網站中開啟資源。 如需相關步驟，請參閱 [開啟資源](#open-resources)。
-2. 選取 [刪除]  。 下列螢幕擷取畫面顯示虛擬機器的管理選項。
+2. 選取 [刪除]。 下列螢幕擷取畫面顯示虛擬機器的管理選項。
 
     ![刪除 azure 資源](./media/manage-resources-portal/manage-azure-resources-portal-delete-resource.png)
-3. 輸入資源的名稱以確認刪除，然後選取 [ **刪除**]。
+3. 輸入資源的名稱以確認刪除，然後選取 [ **刪除** ]。
 
 如需 Azure Resource Manager 如何排序資源刪除的詳細資訊，請參閱 [Azure Resource Manager 資源群組刪除](delete-resource-group.md)。
 
@@ -85,10 +85,10 @@ Azure 資源會依 Azure 服務和資源群組進行組織。 下列程式說明
 鎖定可防止您組織中的其他使用者不小心刪除或修改重要資源，例如 Azure 訂用帳戶、資源群組或資源。 
 
 1. 在入口網站中開啟資源。 如需相關步驟，請參閱 [開啟資源](#open-resources)。
-2. 選取 [ **鎖定**]。 下列螢幕擷取畫面顯示儲存體帳戶的管理選項。
+2. 選取 [ **鎖定** ]。 下列螢幕擷取畫面顯示儲存體帳戶的管理選項。
 
     ![鎖定 azure 資源](./media/manage-resources-portal/manage-azure-resources-portal-lock-resource.png)
-3. 選取 [ **新增**]，然後指定鎖定屬性。
+3. 選取 [ **新增** ]，然後指定鎖定屬性。
 
 如需詳細資訊，請參閱 [使用 Azure Resource Manager 鎖定資源](lock-resources.md)。
 
@@ -100,7 +100,7 @@ Azure 資源會依 Azure 服務和資源群組進行組織。 下列程式說明
 2. 選取 [標籤]。 下列螢幕擷取畫面顯示儲存體帳戶的管理選項。
 
     ![標記 azure 資源](./media/manage-resources-portal/manage-azure-resources-portal-tag-resource.png)
-3. 指定標記屬性，然後選取 [ **儲存**]。
+3. 指定標記屬性，然後選取 [ **儲存** ]。
 
 如需詳細資訊，請參閱 [使用標記來組織您的 Azure 資源](tag-resources.md#portal)。
 

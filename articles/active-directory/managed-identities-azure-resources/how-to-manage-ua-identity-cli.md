@@ -16,12 +16,12 @@ ms.date: 04/17/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 29a1a991ab79c38dad1a89533091d80406615d35
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edb326c889a76eedd82c8918c705bdb5bbe5d195
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90969465"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893603"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>使用 Azure CLI 建立、列出和刪除使用者指派的受控識別
 
@@ -30,15 +30,15 @@ ms.locfileid: "90969465"
 
 在本文中，您將瞭解如何使用 Azure CLI 來建立、列出和刪除使用者指派的受控識別。
 
-## <a name="prerequisites"></a>先決條件
+如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
 
-- 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#managed-identity-types)**。
-- 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
-- 若要執行範例指令碼，您有兩個選項：
-    - 使用 [Azure Cloud Shell](../../cloud-shell/overview.md)，您可以使用程式碼區塊右上角的 [試用] 按鈕來開啟。
-    - 藉由安裝最新版本的 [Azure CLI](/cli/azure/install-azure-cli)，在本機執行指令碼，然後使用 [az login](/cli/azure/reference-index#az-login) 來登入 Azure。 請使用您想用來建立資源，且已與 Azure 訂用帳戶建立關聯的帳戶。   
+## <a name="prerequisites"></a>Prerequisites
 
-> [!NOTE]
+- 如果您不熟悉 Azure 資源的受控識別，請參閱 [什麼是適用于 azure 資源的受控識別？](overview.md)。 若要瞭解系統指派和使用者指派的受控識別類型，請參閱 [受控識別類型](overview.md#managed-identity-types)。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+> [!NOTE]   
 > 若要在使用 app service 主體時修改使用者權限，您必須在 Azure AD 圖形 API 中提供服務主體額外的許可權，因為 CLI 的部分會對圖形 API 執行 GET 要求。 否則，您最後可能會收到「許可權不足，無法完成作業」訊息。 若要這樣做，您必須移至 Azure Active Directory 中的應用程式註冊、選取您的應用程式、按一下 [API 許可權]、向下滾動，然後選取 [Azure Active Directory 圖形]。 從該處選取 [應用程式許可權]，然後新增適當的許可權。 
 
 ## <a name="create-a-user-assigned-managed-identity"></a>建立使用者指派的受控識別 

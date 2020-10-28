@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: bfd38f03601f7c4ebfbb5dde4fd7587e78df9efc
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 60d8dc45fb26ea210b1827a6938716474faa0304
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090279"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895608"
 ---
 # <a name="secure-a-single-page-application-with-user-sign-in"></a>使用使用者登入來保護單一頁面應用程式
 
@@ -27,19 +27,19 @@ ms.locfileid: "92090279"
 
 在 Azure AD 中建立 web 應用程式以供使用者登入。 Web 應用程式會將使用者存取權委派給 Azure 地圖服務 REST Api。
 
-1. 在 Azure 入口網站的 Azure 服務清單中，選取 [ **Azure Active Directory**  >  **應用程式註冊**  >  **新註冊**]。  
+1. 在 Azure 入口網站的 Azure 服務清單中，選取 [ **Azure Active Directory**  >  **應用程式註冊**  >  **新註冊** ]。  
 
     > [!div class="mx-imgBorder"]
     > ![應用程式註冊](./media/how-to-manage-authentication/app-registration.png)
 
-2. 輸入 **名稱**、選擇 **支援帳戶類型**、提供重新導向 URI，以代表 Azure AD 將發出權杖的 url，以及裝載地圖控制項的 url。 如需詳細範例，請參閱 [Azure 地圖服務 Azure AD 範例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/tree/master/src/ImplicitGrant)。 然後，選取 [註冊]。  
+2. 輸入 **名稱** 、選擇 **支援帳戶類型** 、提供重新導向 URI，以代表 Azure AD 將發出權杖的 url，以及裝載地圖控制項的 url。 如需詳細範例，請參閱 [Azure 地圖服務 Azure AD 範例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/tree/master/src/ImplicitGrant)。 然後，選取 [註冊]。  
 
-3. 若要將委派的 API 許可權指派給 Azure 地圖服務，請移至應用程式。 然後，在 [**應用程式註冊**] 下，選取 [ **API 許可權**]  >  **新增許可權**。 在 [ **我的組織使用的 api**] 下，搜尋並選取 [ **Azure 地圖服務**]。
+3. 若要將委派的 API 許可權指派給 Azure 地圖服務，請移至應用程式。 然後，在 [ **應用程式註冊** ] 下，選取 [ **API 許可權** ]  >  **新增許可權** 。 在 [ **我的組織使用的 api** ] 下，搜尋並選取 [ **Azure 地圖服務** ]。
 
     > [!div class="mx-imgBorder"]
     > ![新增應用程式 API 許可權](./media/how-to-manage-authentication/app-permissions.png)
 
-4. 選取 [ **存取 Azure 地圖服務**旁的核取方塊，然後選取 [ **新增許可權**]。
+4. 選取 [ **存取 Azure 地圖服務** 旁的核取方塊，然後選取 [ **新增許可權** ]。
 
     > [!div class="mx-imgBorder"]
     > ![選取應用程式 API 許可權](./media/how-to-manage-authentication/select-app-permissions.png)
@@ -75,7 +75,7 @@ ms.locfileid: "92090279"
 
 進一步瞭解單一頁面應用程式案例：
 > [!div class="nextstepaction"]
-> [單一頁面應用程式](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-overview)
+> [單一頁面應用程式](../active-directory/develop/scenario-spa-overview.md)
 
 尋找您 Azure 地圖服務帳戶的 API 使用計量：
 > [!div class="nextstepaction"]

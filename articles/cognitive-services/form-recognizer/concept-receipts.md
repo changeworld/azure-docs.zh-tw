@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 0382c7c7f7d068ea227397ae7accf4bc410de04a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16d90aea8edc47750dfb7e64de7b50885971f632
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761442"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893681"
 ---
 # <a name="receipt-concepts"></a>回條概念
 
@@ -437,7 +437,7 @@ Azure 表單辨識器可以使用其中一個預先建立的模型來分析收�
 
 提出業務費用通常需要花費時間從收據的影像手動輸入資料。 使用接收 API，您可以使用已解壓縮的欄位來部分自動化此程式，並快速分析您的收據。  
 
-因為接收 API 具有簡單的 JSON 輸出，所以您可以用多種方式使用已解壓縮的域值。 與內部費用應用程式整合，以預先填入 expense reports。 如需此案例的詳細資訊，請參閱 Acumatica 如何運用回條 API， [讓支出回報較不困難的流程](https://customers.microsoft.com/en-us/story/762684-acumatica-partner-professional-services-azure)。  
+因為接收 API 具有簡單的 JSON 輸出，所以您可以用多種方式使用已解壓縮的域值。 與內部費用應用程式整合，以預先填入 expense reports。 如需此案例的詳細資訊，請參閱 Acumatica 如何運用回條 API， [讓支出回報較不困難的流程](https://customers.microsoft.com/story/762684-acumatica-partner-professional-services-azure)。  
 
 ### <a name="auditing-and-accounting"></a>審核和帳戶處理 
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: bbd46237e0b3b21b822b088c545c91f678a8034e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cbe6adc37025f0b727fa5f5d3ace46ed34afaa9e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792288"
+ms.locfileid: "92895217"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>自動回應安全性中心觸發程式
 
@@ -193,5 +193,5 @@ ms.locfileid: "92792288"
 - [Azure 資訊安全中心的安全性建議](security-center-recommendations.md)
 - [Azure 資訊安全中心的安全性警示](security-center-alerts-overview.md)
 - [關於 Azure Logic Apps](../logic-apps/logic-apps-overview.md)
-- [Logic Apps 連接器](/connectors/)
+- [適用於 Azure Logic Apps 的連接器](../connectors/apis-list.md)
 - [工作流程自動化資料類型結構描述](https://aka.ms/ASCAutomationSchemas)

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: 19deaa7656cc86d534278464dba1041267ef15b0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 149d0ae99975628239f8b08f3987947a99e01cbb
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92105034"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893228"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>使用 JAVA 和 IntelliJ 建立您的第一個 Azure 函式
 
@@ -37,11 +37,11 @@ ms.locfileid: "92105034"
 
 ## <a name="installation-and-sign-in"></a>安裝和登入
 
-1. 在 IntelliJ IDEA 的 [設定/喜好設定] 對話方塊 (Ctrl+Alt+S) 中，選取 [外掛程式]。 然後，在 **Marketplace** 中尋找**適用於 IntelliJ 的 Azure 工具組**，然後按一下 [安裝]。 安裝之後，按一下 [重新啟動] 以啟動此外掛程式。 
+1. 在 IntelliJ IDEA 的 [設定/喜好設定] 對話方塊 (Ctrl+Alt+S) 中，選取 [外掛程式]。 然後，在 **Marketplace** 中尋找 **適用於 IntelliJ 的 Azure 工具組** ，然後按一下 [安裝]。 安裝之後，按一下 [重新啟動] 以啟動此外掛程式。 
 
     ![Marketplace 中適用於 IntelliJ 的 Azure 工具組外掛程式][marketplace]
 
-2. 若要登入您的 Azure 帳戶，請開啟 **Azure 總管**資訊看板，然後按一下頂端列中的 [Azure 登入] 圖示 (或從 IDEA 功能表**工具/Azure/Azure 登入**點選)。
+2. 若要登入您的 Azure 帳戶，請開啟 **Azure 總管** 資訊看板，然後按一下頂端列中的 [Azure 登入] 圖示 (或從 IDEA 功能表 **工具/Azure/Azure 登入** 點選)。
     ![IntelliJ 的 [Azure 登入] 命令][intellij-azure-login]
 
 3. 在 [Azure 登入] 視窗中選取 [裝置登入]，然後按一下 [登入] ([其他登入選項](/azure/developer/java/toolkit-for-intellij/sign-in-instructions))。
@@ -74,7 +74,7 @@ ms.locfileid: "92105034"
 
 ## <a name="run-the-function-app-locally"></a>在本機執行函式應用程式
 
-1. 導覽至 `src/main/java/org/example/functions/HttpTriggerFunction.java` 以查看產生的程式碼。 在第 *17*行旁邊，您會注意到綠色的 [執行] 按鈕，請按一下然後選取 [執行 'azure-function-exam...']，您會看到函式應用程式在本機執行，並有一些記錄。
+1. 導覽至 `src/main/java/org/example/functions/HttpTriggerFunction.java` 以查看產生的程式碼。 在第 *17* 行旁邊，您會注意到綠色的 [執行] 按鈕，請按一下然後選取 [執行 'azure-function-exam...']，您會看到函式應用程式在本機執行，並有一些記錄。
 
     ![本機執行 Functions 專案](media/functions-create-first-java-intellij/local-run-functions-project.png)
 
@@ -114,7 +114,7 @@ ms.locfileid: "92105034"
 
 1. 選取想要部署的函式應用程式 (系統會自動選取您剛建立的新函式應用程式)。 按一下 [執行] 以部署您的函式。
 
-    ![將函式部署到 Azure 執行](media/functions-create-first-java-intellij/deploy-functions-run.png)
+    ![螢幕擷取畫面顯示 [部署 Azure Functions] 對話方塊。](media/functions-create-first-java-intellij/deploy-functions-run.png)
 
     ![將函式部署到 Azure 記錄](media/functions-create-first-java-intellij/deploy-functions-log.png)
 
@@ -130,7 +130,7 @@ ms.locfileid: "92105034"
 
 1. 在函式 *HttpTrigger-Java* 上按一下滑鼠右鍵，再選取 [觸發函式]，您會看到瀏覽器開啟觸發程序 UR。
 
-    ![將函式部署到 Azure 執行](media/functions-create-first-java-intellij/explorer-trigger-functions.png)
+    ![螢幕擷取畫面顯示具有 U R L 的瀏覽器。](media/functions-create-first-java-intellij/explorer-trigger-functions.png)
 
 ## <a name="add-more-functions-to-the-project"></a>在專案中新增更多 Azure Functions
 
@@ -140,7 +140,7 @@ ms.locfileid: "92105034"
 
 1. 填入類別名稱 HttpTest，然後在 [建立函式類別] 精靈中選取 HttpTrigger，按一下 [確定] 以建立新的函式。
 
-    ![在專案中新增函式 - 選取觸發程序](media/functions-create-first-java-intellij/add-functions-trigger.png)
+    ![螢幕擷取畫面：顯示 [建立函數類別] 對話方塊。](media/functions-create-first-java-intellij/add-functions-trigger.png)
     
     ![在專案中新增函式 - 輸出](media/functions-create-first-java-intellij/add-functions-output.png)
 
@@ -148,7 +148,7 @@ ms.locfileid: "92105034"
 
 1. 刪除 Azure 總管中的 Azure Functions
       
-      ![在專案中新增函式 - 選取觸發程序](media/functions-create-first-java-intellij/delete-function.png)
+      ![螢幕擷取畫面：顯示從內容功能表選取 [刪除]。](media/functions-create-first-java-intellij/delete-function.png)
       
 
 ## <a name="next-steps"></a>後續步驟

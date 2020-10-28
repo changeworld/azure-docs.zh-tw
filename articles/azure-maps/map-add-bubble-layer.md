@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 446a70a4399b7ec0e16fed2d33c9ec711acfe200
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cae29dcc0d334a2296199da0d8e3bc4562e275d3
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310827"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895323"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>將泡泡圖層新增至地圖
 
@@ -25,7 +25,7 @@ ms.locfileid: "91310827"
 
 ## <a name="add-a-bubble-layer"></a>新增泡泡圖層
 
-下列程式碼會將點陣列載入資料來源。 然後，它會將資料點連接到反升 [圖圖層](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer)。 反升圖層會以五個圖元和白色的填滿色彩，轉譯每個氣泡的半徑。 以及藍色的筆觸色彩，以及6圖元的筆觸寬度。 
+下列程式碼會將點陣列載入資料來源。 然後，它會將資料點連接到反升 [圖圖層](/javascript/api/azure-maps-control/atlas.layer.bubblelayer)。 反升圖層會以五個圖元和白色的填滿色彩，轉譯每個氣泡的半徑。 以及藍色的筆觸色彩，以及6圖元的筆觸寬度。 
 
 ```javascript
 //Add point locations.
@@ -83,10 +83,10 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [BubbleLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer)
+> [BubbleLayer](/javascript/api/azure-maps-control/atlas.layer.bubblelayer)
 
 > [!div class="nextstepaction"]
-> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
+> [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions)
 
 請參閱下列文章，以取得更多可新增至地圖的程式碼範例：
 
@@ -100,4 +100,4 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 > [使用資料驅動樣式運算式](data-driven-style-expressions-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [程式碼範例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [程式碼範例](/samples/browse/?products=azure-maps)

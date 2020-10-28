@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: devx-track-js
-ms.openlocfilehash: 4368e71e0ae6185214a0e3e15773fbe1aef375de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e07b614e87ed5dad94cf9bc5994e78071187839
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335308"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895421"
 ---
 # <a name="use-the-azure-maps-services-module"></a>使用 Azure 地圖服務服務模組
 
-Azure 地圖服務 Web SDK 提供 *服務模組*。 此課程模組是協助程式程式庫，可讓您輕鬆地在 web 或 Node.js 應用程式中使用 JavaScript 或 TypeScript 來使用 Azure 地圖服務 REST 服務。
+Azure 地圖服務 Web SDK 提供 *服務模組* 。 此課程模組是協助程式程式庫，可讓您輕鬆地在 web 或 Node.js 應用程式中使用 JavaScript 或 TypeScript 來使用 Azure 地圖服務 REST 服務。
 
 ## <a name="use-the-services-module-in-a-webpage"></a>使用網頁中的服務模組
 
@@ -191,19 +191,19 @@ var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [MapsURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.mapsurl)
+> [MapsURL](/javascript/api/azure-maps-rest/atlas.service.mapsurl)
 
 > [!div class="nextstepaction"]
-> [SearchURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl)
+> [SearchURL](/javascript/api/azure-maps-rest/atlas.service.searchurl)
 
 > [!div class="nextstepaction"]
-> [RouteURL](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl)
+> [RouteURL](/javascript/api/azure-maps-rest/atlas.service.routeurl)
 
 > [!div class="nextstepaction"]
-> [SubscriptionKeyCredential](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.subscriptionkeycredential)
+> [SubscriptionKeyCredential](/javascript/api/azure-maps-rest/atlas.service.subscriptionkeycredential)
 
 > [!div class="nextstepaction"]
-> [TokenCredential](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.tokencredential)
+> [TokenCredential](/javascript/api/azure-maps-rest/atlas.service.tokencredential)
 
 如需使用服務模組的更多程式碼範例，請參閱下列文章：
 

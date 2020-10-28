@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 000f6a80a2cee14abc3d954de479dd87b1edf876
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: c39104912c99b199d38cf489bb61d64e83b89286
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090245"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895591"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>如何使用非互動式登入保護單一頁面應用程式
 
@@ -30,15 +30,15 @@ ms.locfileid: "92090245"
 
 建立安全的 web 服務應用程式，以負責 Azure AD 的驗證。 
 
-1. 在 Azure 入口網站中建立函數。 如需詳細資訊，請參閱 [建立 Azure Function](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function)。
+1. 在 Azure 入口網站中建立函數。 如需詳細資訊，請參閱 [建立 Azure Function](../azure-functions/functions-create-first-azure-function.md)。
 
-2. 在 Azure 函式上設定 CORS 原則，以供單一頁面 web 應用程式存取。 這會將瀏覽器用戶端安全地保護至 web 應用程式的允許來源。 請參閱 [新增 CORS 功能](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-rest-api#add-cors-functionality)。
+2. 在 Azure 函式上設定 CORS 原則，以供單一頁面 web 應用程式存取。 這會將瀏覽器用戶端安全地保護至 web 應用程式的允許來源。 請參閱 [新增 CORS 功能](../app-service/app-service-web-tutorial-rest-api.md#add-cors-functionality)。
 
-3. 在 Azure 函[式上新增系統指派](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)的身分識別，以允許建立服務主體以驗證 Azure AD。  
+3. 在 Azure 函[式上新增系統指派](../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)的身分識別，以允許建立服務主體以驗證 Azure AD。  
 
 4. 將系統指派之身分識別的角色型存取權授與 Azure 地圖服務帳戶。 如需詳細資料，請參閱 [授與以角色為基礎的存取權](#grant-role-based-access) 。
 
-5. 撰寫 Azure 函式的程式碼，以使用系統指派的身分識別，搭配其中一個支援的機制或 REST 通訊協定來取得 Azure 地圖服務存取權杖。 請參閱 [取得 Azure 資源的權杖](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity)
+5. 撰寫 Azure 函式的程式碼，以使用系統指派的身分識別，搭配其中一個支援的機制或 REST 通訊協定來取得 Azure 地圖服務存取權杖。 請參閱 [取得 Azure 資源的權杖](../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity)
 
     範例 REST 通訊協定範例：
 
@@ -64,8 +64,8 @@ ms.locfileid: "92090245"
 
 6. 設定 Azure 函數 HttpTrigger 的安全性
 
-   * [建立函數存取金鑰](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#authorization-keys)
-   * 在生產環境中保護 Azure function 的[HTTP 端點](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#secure-an-http-endpoint-in-production)。
+   * [建立函數存取金鑰](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#authorization-keys)
+   * 在生產環境中保護 Azure function 的[HTTP 端點](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)。
    
 7. Azure 地圖服務 Web SDK 設定 web 應用程式。 
 
@@ -102,25 +102,25 @@ ms.locfileid: "92090245"
 
 ## <a name="grant-role-based-access"></a>授與以角色為基礎的存取權
 
-您可以藉由將系統指派的身分識別指派給一或多個 Azure 角色定義，來授與 *azure 角色型存取控制 (AZURE RBAC) * 存取權。 若要查看可用於 Azure 地圖服務的 Azure 角色定義，請移至 [ **存取控制] (IAM) **。 選取 [ **角色**]，然後搜尋以 *Azure 地圖服務*開頭的角色。
+您可以藉由將系統指派的身分識別指派給一或多個 Azure 角色定義，來授與 *azure 角色型存取控制 (AZURE RBAC)* 存取權。 若要查看可用於 Azure 地圖服務的 Azure 角色定義，請移至 [ **存取控制] (IAM)** 。 選取 [ **角色** ]，然後搜尋以 *Azure 地圖服務* 開頭的角色。
 
-1. 移至您的 **Azure 地圖服務帳戶**。 選取 [**存取控制] (IAM) **  >  **角色指派**。
+1. 移至您的 **Azure 地圖服務帳戶** 。 選取 [ **存取控制] (IAM)**  >  **角色指派** 。
 
     > [!div class="mx-imgBorder"]
     > ![使用 Azure RBAC 授與存取權](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. 在 [ **角色指派** ] 索引標籤的 [ **角色**] 底下，選取內建的 Azure 地圖服務角色定義，例如 **Azure 地圖服務資料讀取器** 或 **Azure 地圖服務資料參與者**。 在 [ **指派存取權**] 底下，選取 [ **函數應用程式**]。 依名稱選取主體。 然後選取 [儲存]。
+2. 在 [ **角色指派** ] 索引標籤的 [ **角色** ] 底下，選取內建的 Azure 地圖服務角色定義，例如 **Azure 地圖服務資料讀取器** 或 **Azure 地圖服務資料參與者** 。 在 [ **指派存取權** ] 底下，選取 [ **函數應用程式** ]。 依名稱選取主體。 然後選取 [儲存]。
 
-   * 請參閱 [新增或移除角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)的詳細資料。
+   * 請參閱 [新增或移除角色指派](../role-based-access-control/role-assignments-portal.md)的詳細資料。
 
 > [!WARNING]
-> Azure 地圖服務內建角色定義可提供非常大的授權存取權給許多 Azure 地圖服務 REST Api。 若要限制 Api 存取的最小值，請參閱 [建立自訂角色定義，並將系統指派的身分識別指派](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) 給自訂角色定義。 這將會啟用應用程式存取 Azure 地圖服務所需的最低許可權。
+> Azure 地圖服務內建角色定義可提供非常大的授權存取權給許多 Azure 地圖服務 REST Api。 若要限制 Api 存取的最小值，請參閱 [建立自訂角色定義，並將系統指派的身分識別指派](../role-based-access-control/custom-roles.md) 給自訂角色定義。 這將會啟用應用程式存取 Azure 地圖服務所需的最低許可權。
 
 ## <a name="next-steps"></a>後續步驟
 
 進一步瞭解單一頁面應用程式案例：
 > [!div class="nextstepaction"]
-> [單一頁面應用程式](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-overview)
+> [單一頁面應用程式](../active-directory/develop/scenario-spa-overview.md)
 
 尋找您 Azure 地圖服務帳戶的 API 使用計量：
 > [!div class="nextstepaction"]

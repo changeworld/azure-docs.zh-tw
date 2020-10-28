@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 13c7178b4a0866066dc74e409f8f4bfcd21a23f4
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 743710ea0d40eb31375236d4e59b0b138a217518
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874589"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895540"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure 地圖服務路線規劃服務的最佳作法
 
-您可以使用 Azure 地圖服務 [Route 服務](https://docs.microsoft.com/rest/api/maps/route) 中的路由方向和路由矩陣 api，來計算每個要求路由 (的預估抵達時間) 。 路由 Api 會考慮像是即時交通資訊和歷程記錄流量資料等因素，例如在一周的要求日和一天的時間內，一般的道路速度。 API 會根據時間或距離，以序列或最佳化順序，一次傳回多個目的地可行的最短或最快路線。 使用者也可以針對行人、自行車騎士和商用車輛（例如卡車）要求特製化路線和詳細資料。 在本文中，我們將分享用來呼叫 Azure 地圖服務 [Route Service](https://docs.microsoft.com/rest/api/maps/route)的最佳做法，而您將瞭解如何：
+您可以使用 Azure 地圖服務 [Route 服務](/rest/api/maps/route) 中的路由方向和路由矩陣 api，來計算每個要求路由 (的預估抵達時間) 。 路由 Api 會考慮像是即時交通資訊和歷程記錄流量資料等因素，例如在一周的要求日和一天的時間內，一般的道路速度。 API 會根據時間或距離，以序列或最佳化順序，一次傳回多個目的地可行的最短或最快路線。 使用者也可以針對行人、自行車騎士和商用車輛（例如卡車）要求特製化路線和詳細資料。 在本文中，我們將分享用來呼叫 Azure 地圖服務 [Route Service](/rest/api/maps/route)的最佳做法，而您將瞭解如何：
 
  * 選擇路由路線 Api 和矩陣路由 API
  * 根據即時和歷史交通資料，要求歷史和預測的行車時間
@@ -27,7 +27,7 @@ ms.locfileid: "91874589"
  * 要求包含一或多個停止 (導航點的路由) 
  * 將一或多個停止的路線優化，以取得每個 stop (waypoint 的最佳流覽順序) 
  * 使用支援點優化替代路由。 例如，提供通過電車輛充電站的替代路由。
- * 使用 Azure 地圖服務 Web SDK 的[路線規劃服務](https://docs.microsoft.com/rest/api/maps/route)
+ * 使用 Azure 地圖服務 Web SDK 的[路線規劃服務](/rest/api/maps/route)
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -90,7 +90,7 @@ ms.locfileid: "91874589"
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&query=51.368752,-0.118332:51.385426,-0.128929&travelMode=car&traffic=true&departAt=2025-03-29T08:00:20&computeTravelTimeFor=all
 ```
 
-回應包含摘要元素，如下所示。 因為起飛時間設定為未來， **trafficDelayInSeconds** 值為零。 **TravelTimeInSeconds**值會使用與時間相關的歷程記錄流量資料來計算。 因此，在此情況下， **travelTimeInSeconds** 值等於 **historicTrafficTravelTimeInSeconds** 值。
+回應包含摘要元素，如下所示。 因為起飛時間設定為未來， **trafficDelayInSeconds** 值為零。 **TravelTimeInSeconds** 值會使用與時間相關的歷程記錄流量資料來計算。 因此，在此情況下， **travelTimeInSeconds** 值等於 **historicTrafficTravelTimeInSeconds** 值。
 
 ```json
 "summary": {
@@ -113,7 +113,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&query=47.6422356,-122.1389797:47.6641142,-122.3011268&travelMode=car&traffic=true&computeTravelTimeFor=all
 ```
 
-回應會包含摘要，如下所示。 由於壅塞， **trafficDelaysInSeconds** 值大於零。 它也大於 **historicTrafficTravelTimeInSeconds**。
+回應會包含摘要，如下所示。 由於壅塞， **trafficDelaysInSeconds** 值大於零。 它也大於 **historicTrafficTravelTimeInSeconds** 。
 
 ```json
 "summary": {
@@ -140,7 +140,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 ![展開的點元素](media/how-to-use-best-practices-for-routing/points-list-img.png)
 
-路由路線 Api 支援不同的指令格式，可透過指定 **instructionsType** 參數來使用。 若要格式化便於進行電腦處理的指示，請使用 **instructionsType = 編碼**。 使用 **instructionsType = 標記** ，將指示顯示為使用者的文字。 此外，您可以將指令的格式設定為文字，其中會標示某些指示的元素，並以特殊格式呈現指示。 如需詳細資訊，請參閱 [支援的指令類型清單](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#routeinstructionstype)。
+路由路線 Api 支援不同的指令格式，可透過指定 **instructionsType** 參數來使用。 若要格式化便於進行電腦處理的指示，請使用 **instructionsType = 編碼** 。 使用 **instructionsType = 標記** ，將指示顯示為使用者的文字。 此外，您可以將指令的格式設定為文字，其中會標示某些指示的元素，並以特殊格式呈現指示。 如需詳細資訊，請參閱 [支援的指令類型清單](/rest/api/maps/route/postroutedirections#routeinstructionstype)。
 
 當要求指令時，回應會傳回名為的新元素 `guidance` 。 `guidance`元素包含兩項資訊：輪流指示和摘要指示。
 
@@ -186,7 +186,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 ## <a name="request-traffic-information-along-a-route"></a>沿著路由要求流量資訊
 
-藉由 Azure 地圖服務路由方向 Api，開發人員可以在要求中包含參數，以要求每個區段類型的詳細資料 `sectionType` 。 例如，您可以要求每個交通卡出區段的速度資訊。 請參閱 [sectionType 索引鍵的值清單](https://docs.microsoft.com/rest/api/maps/route/getroutedirections#sectiontype) ，以瞭解您可以要求的各種詳細資料。
+藉由 Azure 地圖服務路由方向 Api，開發人員可以在要求中包含參數，以要求每個區段類型的詳細資料 `sectionType` 。 例如，您可以要求每個交通卡出區段的速度資訊。 請參閱 [sectionType 索引鍵的值清單](/rest/api/maps/route/getroutedirections#sectiontype) ，以瞭解您可以要求的各種詳細資料。
 
 ### <a name="sample-query"></a>範例查詢
 
@@ -208,13 +208,13 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 Azure 地圖服務目前提供兩種形式的路由優化：
 
-* 根據要求的路由類型進行優化，而不會變更導航點順序。 您可以在 [這裡找到支援的路由類型](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#routetype)
+* 根據要求的路由類型進行優化，而不會變更導航點順序。 您可以在 [這裡找到支援的路由類型](/rest/api/maps/route/postroutedirections#routetype)
 
 * 旅遊的推銷員優化，這會變更導航點的順序，以取得每個停止的最佳流覽順序
 
 若為多重停止路由，單一路由要求中最多可以指定150導航點。 開始和結束座標位置可以相同，就像往返的情況一樣。 但是您必須提供至少一個額外的 waypoint 來進行路由計算。 導航點可以在來源和目的地座標之間的查詢中加入。
 
-如果您想要將最佳的順序優化以流覽指定的導航點，您必須指定 **computeBestOrder = true**。 這種情況也稱為「旅遊的推銷員優化」問題。
+如果您想要將最佳的順序優化以流覽指定的導航點，您必須指定 **computeBestOrder = true** 。 這種情況也稱為「旅遊的推銷員優化」問題。
 
 ### <a name="sample-query"></a>範例查詢
 
@@ -262,11 +262,11 @@ https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-k
 在某些情況下，您可能會想要重建路由，以計算參考路由的零或多個替代路由。 例如，您可能想要顯示通過零售商店的客戶替代路由。 在此情況下，您必須使用支援點來偏差位置。 以下是偏差位置的步驟：
 
 1. 依原樣計算路由並取得路由回應的路徑
-2. 您可以使用路由路徑，在路由路徑旁或附近尋找所需的位置。 例如，您可以使用 Azure 地圖服務 [點感興趣的 API](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi) ，或在您的資料庫中查詢您自己的資料。  
+2. 您可以使用路由路徑，在路由路徑旁或附近尋找所需的位置。 例如，您可以使用 Azure 地圖服務 [點感興趣的 API](/rest/api/maps/search/getsearchpoi) ，或在您的資料庫中查詢您自己的資料。  
 3. 根據路線開頭的距離排序位置
-4. 將這些位置新增至 [Post Route 指示 API](https://docs.microsoft.com/rest/api/maps/route/postroutedirections)的新路由要求中的支援點。 若要深入瞭解支援點，請參閱 [Post 路線指示 API 檔](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#supportingpoints)。 
+4. 將這些位置新增至 [Post Route 指示 API](/rest/api/maps/route/postroutedirections)的新路由要求中的支援點。 若要深入瞭解支援點，請參閱 [Post 路線指示 API 檔](/rest/api/maps/route/postroutedirections#supportingpoints)。 
 
-在呼叫 [Post 路線指示 API](https://docs.microsoft.com/rest/api/maps/route/postroutedirections)時，您可以設定最小偏差時間或距離條件約束，以及支援點。 如果您想要提供替代路由，但您也想要限制行進時間，請使用這些參數。 使用這些條件約束時，替代路由會在指定時間或距離的起點下，遵循參考路由。 換句話說，其他路由會根據指定的條件約束，與參考路由分離。
+在呼叫 [Post 路線指示 API](/rest/api/maps/route/postroutedirections)時，您可以設定最小偏差時間或距離條件約束，以及支援點。 如果您想要提供替代路由，但您也想要限制行進時間，請使用這些參數。 使用這些條件約束時，替代路由會在指定時間或距離的起點下，遵循參考路由。 換句話說，其他路由會根據指定的條件約束，與參考路由分離。
 
 下圖是使用指定的時間和距離的偏差來呈現替代路由的範例。
 
@@ -274,20 +274,20 @@ https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-k
 
 ## <a name="use-the-routing-service-in-a-web-app"></a>在 web 應用程式中使用路由服務
 
-Azure 地圖服務 Web SDK 提供 [服務模組](https://docs.microsoft.com/javascript/api/azure-maps-rest/)。 此模組是協助程式程式庫，可讓您輕鬆地在 web 或 Node.js 應用程式中使用 JavaScript 或 TypeScript 來使用 Azure 地圖服務 REST Api。 服務模組可以用來在地圖上呈現傳回的路由。 模組會自動判斷要搭配 GET 和 POST 要求使用的 API。
+Azure 地圖服務 Web SDK 提供 [服務模組](/javascript/api/azure-maps-rest/)。 此模組是協助程式程式庫，可讓您輕鬆地在 web 或 Node.js 應用程式中使用 JavaScript 或 TypeScript 來使用 Azure 地圖服務 REST Api。 服務模組可以用來在地圖上呈現傳回的路由。 模組會自動判斷要搭配 GET 和 POST 要求使用的 API。
 
 ## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解，請參閱：
 
 > [!div class="nextstepaction"]
-> [Azure 地圖服務路線規劃服務](https://docs.microsoft.com/rest/api/maps/route)
+> [Azure 地圖服務路線規劃服務](/rest/api/maps/route)
 
 > [!div class="nextstepaction"]
-> [如何使用服務模組](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module)
+> [如何使用服務模組](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
-> [顯示地圖上的路線](https://docs.microsoft.com/azure/azure-maps/map-route)
+> [顯示地圖上的路線](./map-route.md)
 
 > [!div class="nextstepaction"]
 > [Azure 地圖服務 NPM 套件](https://www.npmjs.com/package/azure-maps-rest  )

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 579294388dbcf9f785ef41e06505c14b6767565f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6d8a2bfe20d0e7b52dcd60127b3666f0c21a792
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83677934"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895795"
 ---
 # <a name="manage-azure-maps-creator"></a>管理 Azure 地圖服務建立工具
 
@@ -25,7 +25,7 @@ Azure 地圖服務建立工具可讓您建立私人室內地圖資料。 您可�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)
 
-2. 選取您的 Azure 地圖服務帳戶。 如果您在**最近使用的資源**下看不到您的 Azure 地圖服務帳戶，請瀏覽至 Azure 入口網站功能表。 選取 [所有資源]。 尋找並選取您的 Azure 地圖服務帳戶。
+2. 選取您的 Azure 地圖服務帳戶。 如果您在 **最近使用的資源** 下看不到您的 Azure 地圖服務帳戶，請瀏覽至 Azure 入口網站功能表。 選取 [所有資源]。 尋找並選取您的 Azure 地圖服務帳戶。
 
     ![Azure 地圖服務入口網站首頁](./media/how-to-manage-creator/select-maps-account.png)
 
@@ -69,7 +69,7 @@ Azure 地圖服務建立工具可讓您建立私人室內地圖資料。 您可�
 
 建立工具會繼承 Azure 地圖服務存取控制 (IAM) 設定。 所有用於資料存取的 API 呼叫都必須透過驗證和授權規則傳送。
 
-建立工具使用量資料會併入您的 Azure 地圖服務使用量圖表和活動記錄中。  如需詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)。
+建立工具使用量資料會併入您的 Azure 地圖服務使用量圖表和活動記錄中。  如需詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](./how-to-manage-authentication.md)。
 
 ## <a name="access-to-creator-services"></a>存取建立工具服務
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 7d22226721d4fc09b4f5affc15047b6799ed0d19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1772a61f45d88e0b63346c41d557cfddf35ab4a7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409471"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892616"
 ---
 # <a name="test-drive-technical-configuration"></a>試用產品技術設定
 
@@ -22,19 +22,19 @@ Microsoft 商用 marketplace 中的試用產品選項，可讓您設定產品主
 
 ## <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager 試用產品
 
-這是虛擬機器或 Azure 應用程式供應專案的唯一試用產品選項，也需要相當詳細的設定。 閱讀下列各節，以取得 [部署訂用帳戶詳細資料](#deployment-subscription-details) 和 [試用產品清單](#test-drive-listings)，然後繼續進行 [Azure Resource Manager 試用](azure-resource-manager-test-drive.md)產品設定的個別主題。
+這是虛擬機器或 Azure 應用程式供應專案的唯一試用產品選項，且需要相當詳細的設定。 閱讀下列各節，以取得 [部署訂用帳戶詳細資料](#deployment-subscription-details) 和 [試用產品清單](#test-drive-listings)，然後繼續進行 [Azure Resource Manager 試用](azure-resource-manager-test-drive.md)產品設定的個別主題。
 
 ## <a name="hosted-test-drive"></a>託管的試用產品
 
-Microsoft 可以透過使用此類型的試用產品，來裝載和維護服務佈建和部署，藉此降低設定試用產品的複雜性。 無論試用產品的目標為 Dynamics 365 Business Central、Dynamics 365 Customer Engagement 或 Dynamics 365 工作物件，此類型的託管試用產品設定都相同。
+Microsoft 可以藉由裝載和維護服務布建和解除布建，來消除設定試用產品的複雜度。 無論試用產品的目標是 Dynamics 365 Customer Engagement 或 Dynamics 365 工作物件，此類型的試用產品設定都相同。
 
 - **同時試用產品數上限** (必要) – 設定一次可以使用試用產品的客戶數上限。 當試用產品處於使用中狀態時，每位並行使用者都會取用 Dynamics 365 授權，因此請確定您有足夠的授權可支援設定的上限。 建議值是 3 至 5。
 
-- **試用產品持續時間** (所需) –輸入試用產品在一小時內將維持使用中 (的時數) 。 此時間過後，工作階段就會結束且不再占用您的授權。 建議值為 2 至 24 小時，視您供應項目的複雜度而定。 此持續時間只能以一整個小時為單位來進行設定 (例如，「2」小時有效；「1.5」小時則無效)。 若使用者時間耗盡且想要再次存取試用產品，可以要求新的工作階段。
+- **試用產品持續時間** (必要) –輸入每個客戶的試用產品將保持作用中的時數。 在這段期間後，會話將會結束，且不再使用您的其中一個授權。 建議值為 2 至 24 小時，視您供應項目的複雜度而定。 這段期間可能只會在一小時內設定 (例如，「2小時」有效;不) 「1.5 小時」。 若使用者時間耗盡且想要再次存取試用產品，可以要求新的工作階段。
 
 - **執行個體 URL** (必要) – 客戶開始試用產品的網址。 這通常是您的應用程式與範例資料安裝所在的 Dynamics 365 執行個體的 URL (例如，`https://testdrive.crm.dynamics.com`)。
 
--  (所需的**實例 Web api url**) –請登入您的 Microsoft 365 帳戶，然後流覽至 [**設定**  >  **自訂**  >  **開發人員資源**  >  **實例 Web API (服務根目錄 url) **]，來取得 Dynamics 365 實例的 web api url (，複製此處找到的 URL) 例如 `https://testdrive.crm.dynamics.com/api/data/v9.0` 。
+-  (所需的 **實例 Web api url** ) –請登入您的 Microsoft 365 帳戶，然後流覽至 [ **設定**  >  **自訂**  >  **開發人員資源**  >  **實例 Web API (服務根目錄 url)** ]，來取得 Dynamics 365 實例的 web api url (，複製此處找到的 URL) 例如 `https://testdrive.crm.dynamics.com/api/data/v9.0` 。
 
 - **角色名稱** (必要) -提供您在自訂 Dynamics 365 試用產品中定義的安全性角色名稱，這將在其試用產品期間指派給使用者 (例如 test-drive-role)。
 
@@ -48,13 +48,13 @@ Microsoft 可以透過使用此類型的試用產品，來裝載和維護服務�
 
 - **同時試用產品數上限** (必要) – 設定一次可以使用試用產品的客戶數上限。 這些試用產品已部署完成，客戶可以立即存取而不需等候部署。
 
-- **試用產品持續時間** (所需) –輸入試用產品在一小時內將維持使用中 (的時數) 。 在此持續時間過後，試用產品將會自動終止。
+- **試用產品持續時間** (必要) – 輸入試用產品將維持可用的持續時間，以 # 小時數表示。 在此持續時間過後，試用產品將會自動終止。
 
 - **Azure 資源組名** (必要) –輸入您的邏輯應用程式試用產品儲存所在的 [azure 資源群組](../azure-resource-manager/resource-group-overview.md#resource-groups)) 名稱。
 
 - **Azure 邏輯應用程式名稱** (必要) – 輸入將試用產品指派給使用者的邏輯應用程式名稱。 此邏輯應用程式必須儲存在上述的 Azure 資源群組中。
 
--  (需要取消布建**邏輯應用程式名稱**) –請輸入在客戶完成後取消布建試用產品的邏輯應用程式名稱。 此邏輯應用程式必須儲存在上述的 Azure 資源群組中。
+-  (需要取消布建 **邏輯應用程式名稱** ) –請輸入在客戶完成後取消布建試用產品的邏輯應用程式名稱。 此邏輯應用程式必須儲存在上述的 Azure 資源群組中。
 
 ## <a name="power-bi-test-drive"></a>Power BI 試用產品
 
@@ -72,13 +72,13 @@ Microsoft 可以透過使用此類型的試用產品，來裝載和維護服務�
 
 - **Azure AD 租用戶識別碼** (針對 Dynamic 365 為必要) – 輸入您的 Azure Active Directory (AD) 名稱。 若要尋找此名稱，請登入 [Azure 入口網站](https://portal.azure.com/)，位於右上角的租用戶名稱會列在您的帳戶名稱底下。
 
-- **Azure AD 應用程式識別碼** (必要) –請輸入 AZURE ACTIVE DIRECTORY (AD) [應用程式識別碼](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) 。 若要尋找此識別碼，請登入 [Azure 入口網站](https://portal.azure.com/)，選取左側功能表中的 [Active Directory] 索引標籤，選取 [ **應用程式註冊**]，然後尋找列出的 **應用程式識別碼** 號碼 (例如 `50c464d3-4930-494c-963c-1e951d15360e`) 。
+- **Azure AD 應用程式識別碼** (必要) –請輸入 AZURE ACTIVE DIRECTORY (AD) [應用程式識別碼](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) 。 若要尋找此識別碼，請登入 [Azure 入口網站](https://portal.azure.com/)，選取左側功能表中的 [Active Directory] 索引標籤，選取 [ **應用程式註冊** ]，然後尋找列出的 **應用程式識別碼** 號碼 (例如 `50c464d3-4930-494c-963c-1e951d15360e`) 。
 
-- **Azure AD 應用程式用戶端密碼** (必要) –請輸入 Azure AD 應用程式 [用戶端密碼](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)) 。 若要尋找此值，請登入 [Azure 入口網站](https://portal.azure.com/)。 在左側功能表中，選取 [Azure Active Directory] 索引標籤，選取 [應用程式註冊]，然後選擇您的試用產品。 接下來，選取 [憑證和密碼]、選取 [新用戶端密碼]、輸入描述，選取 [到期] 底下的 [永不]，然後選擇 [新增]。 請務必記下此值。 複製值之前，請不要離開頁面。
+- **Azure AD 應用程式用戶端密碼** (必要) –請輸入 Azure AD 應用程式 [用戶端密碼](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)) 。 若要尋找此值，請登入 [Azure 入口網站](https://portal.azure.com/)。 選取左側功能表中的 [ **Azure Active Directory** ] 索引標籤，選取 [ **應用程式註冊** ]，然後選取您的試用產品應用程式。 接著，選取 [ **憑證和秘密** ]、選取 [ **新增用戶端密碼** ]、輸入描述、選取 [ **永不****過期** ]，然後選擇 [ **新增** ]。 請務必記下此值。 複製值之前，請不要離開頁面。
 
 ## <a name="test-drive-listings"></a>試用產品清單
 
-在合作夥伴中心的 [**試用**產品] 索引標籤下找到的 [**試用產品清單**] 選項，會顯示您的試用產品 (和市場) 的語言，目前只有英文 (美國) 是唯一可用的位置。 此外，此頁面會顯示特定語言清單的狀態，以及新增清單的日期/時間。 您將需要為每個語言/市場定義試用產品詳細資料 (描述、使用者手冊、影片等 ) 。
+在合作夥伴中心的 [ **試用** 產品] 索引標籤下找到的 [ **試用產品清單** ] 選項，會顯示您的試用產品 (和市場) 的語言，目前只有英文 (美國) 是唯一可用的位置。 此外，此頁面會顯示特定語言清單的狀態，以及新增清單的日期/時間。 您將需要為每個語言/市場定義試用產品詳細資料 (描述、使用者手冊、影片等 ) 。
 
 - **描述** (必要的) ：描述您的試用產品、要示範的專案、要進行實驗的目標、要探索的功能，以及任何可協助使用者判斷是否取得您的供應專案的相關資訊。 最多可以在此欄位中輸入 3,000 個字元的文字。
 
@@ -86,13 +86,21 @@ Microsoft 可以透過使用此類型的試用產品，來裝載和維護服務�
 
 - **使用者手冊** (需要) ：您的試用產品體驗的深入逐步解說。 使用者手冊應涵蓋您想要讓客戶從試用產品中獲得的確切內容，並做為客戶可能會遇到的任何問題的參考。 檔案必須是 PDF 格式，並在上傳後命名 (最多 255 個字元)。
 
-- 影片 **：新增**影片 (選用) ：您可以在這裡參考裝載于其他位置的影片，其連結和縮圖影像 (533 x 324 圖元) 讓客戶可以觀看資訊的逐步解說，以協助他們深入瞭解試用產品，包括如何成功地使用供應專案的功能，以及瞭解其優點的案例。
+- 影片 **：新增** 影片 (選用) ：您可以在這裡參考裝載于其他位置的影片，其連結和縮圖影像 (533 x 324 圖元) 讓客戶可以觀看資訊的逐步解說，以協助他們深入瞭解試用產品，包括如何成功地使用供應專案的功能，以及瞭解其優點的案例。
   - **名稱** (必要)
-  - 僅 (YouTube 或 Vimeo 的**URL** ;必要) 
+  - 僅 (YouTube 或 Vimeo 的 **URL** ;必要) 
   - **縮圖** (533 x 324 圖元) –影像必須為 PNG 格式。
 
 如果您目前正在合作夥伴中心中建立您的試用產品，請選取 [ **儲存草稿** ]，然後再繼續。
 
-## <a name="next-step"></a>後續步驟
+## <a name="next-steps"></a>後續步驟
 
-- [更新商業市集中的現有供應項目](partner-center-portal/update-existing-offer.md)
+- [試用產品的最佳作法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [總覽](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF;請確定您的快顯封鎖程式已關閉) 
+- [更新商業 Marketplace 中的現有供應項目](partner-center-portal/update-existing-offer.md) \(部分機器翻譯\)
+
+## <a name="additional-resources"></a>其他資源
+
+## <a name="feedback"></a>意見反應
+
+提交及查看[此產品](https://feedback.azure.com/forums/216369-azure-marketplace)的意見反應

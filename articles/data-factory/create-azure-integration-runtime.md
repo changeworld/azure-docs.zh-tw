@@ -10,12 +10,12 @@ ms.date: 06/09/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: 9615dc358b1c5bed0e48c07c2571ccce05fcdf2e
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 97f3a8f79e503b8870baf67ee982b0091d926b1e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637202"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895319"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>如何建立和設定 Azure 整合執行階段
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -54,7 +54,7 @@ Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -N
 
 1. 在左窗格上選取 [整合執行階段]，然後選取 [+ 新增]。
 
-   ![建立整合執行階段](media/doc-common-process/manage-new-integration-runtime.png)
+   ![在左窗格中反白顯示整合執行時間和 [+ 新增] 按鈕的螢幕擷取畫面。](media/doc-common-process/manage-new-integration-runtime.png)
 
 1. 在 [ **整合執行時間設定** ] 頁面上，選取 [ **Azure]、[自我** 裝載]，然後選取 [ **繼續** ]。 
 

@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a96a62d7bb93f0ede6b16008dc844ad7f1a8c8d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9ce0d0770c7e6c4579469cc16d8c76c309a33d1
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86517292"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895370"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>實作建立工具室內地圖的動態樣式
 
-Azure 地圖服務建立工具的[功能狀態服務](https://docs.microsoft.com/rest/api/maps/featurestate)可讓您根據室內地圖資料功能的動態屬性來套用樣式。  例如，您可以使用特定色彩來顯示公用會議室，以反映使用狀態。 在本文中，我們將說明如何使用[功能狀態服務](https://docs.microsoft.com/rest/api/maps/featurestate)和[室內 Web 模組](how-to-use-indoor-module.md)，以動態方式顯示室內地圖功能。
+Azure 地圖服務建立工具的[功能狀態服務](/rest/api/maps/featurestate)可讓您根據室內地圖資料功能的動態屬性來套用樣式。  例如，您可以使用特定色彩來顯示公用會議室，以反映使用狀態。 在本文中，我們將說明如何使用[功能狀態服務](/rest/api/maps/featurestate)和[室內 Web 模組](how-to-use-indoor-module.md)，以動態方式顯示室內地圖功能。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -36,7 +36,7 @@ Azure 地圖服務建立工具的[功能狀態服務](https://docs.microsoft.com
 
 ### <a name="select-features"></a>特性選取
 
-若要實作動態樣式，一項功能 (例如會議或會議室) 必須以其功能 `id` 來參考。 您將使用功能 `id` 來更新該功能的動態屬性或*狀態*。 若要檢視資料集內定義的功能，您可以使用下列其中一種方法：
+若要實作動態樣式，一項功能 (例如會議或會議室) 必須以其功能 `id` 來參考。 您將使用功能 `id` 來更新該功能的動態屬性或 *狀態* 。 若要檢視資料集內定義的功能，您可以使用下列其中一種方法：
 
 * WFS API (Web Feature Service)。 資料集可使用 WFS API 來查詢。 WFS 會依循開放地理空間協會 API 功能。 WFS API 有助於查詢資料集內的功能。 例如，您可以使用 WFS 來尋找特定設施和樓層的所有中型會議室。
 
@@ -60,15 +60,15 @@ map.events.add("click", function(e){
 
 [建立室內地圖](tutorial-creator-indoor-maps.md)教學課程已將功能狀態集設定為接受 `occupancy` 的狀態更新。
 
-在下一節中，我們會將辦公室 `UNIT26` 的使用*狀態*設定為 `true`。 辦公室 `UNIT27` 將會設定為 `false`。
+在下一節中，我們會將辦公室 `UNIT26` 的使用 *狀態* 設定為 `true`。 辦公室 `UNIT27` 將會設定為 `false`。
 
 ### <a name="set-occupancy-status"></a>設定使用狀態
 
  現在，我們將更新 `UNIT26` 和 `UNIT27` 這兩個辦公室的狀態：
 
-1. 在 Postman 應用程式中，選取 [新增]。 在 [新建] 視窗中，選取 [要求]。 輸入**要求名稱**，然後選取集合。 按一下 [儲存] 
+1. 在 Postman 應用程式中，選取 [新增]。 在 [新建] 視窗中，選取 [要求]。 輸入 **要求名稱** ，然後選取集合。 按一下 [儲存] 
 
-2. 使用[功能更新狀態 API](https://docs.microsoft.com/rest/api/maps/featurestate/updatestatespreview) 來更新狀態。 傳遞狀態集識別碼，兩個單元其中之一的識別碼為 `UNIT26`。 附加您的 Azure 地圖服務訂用帳戶金鑰。 以下是更新狀態之 **POST** 要求的 URL：
+2. 使用[功能更新狀態 API](/rest/api/maps/featurestate/updatestatespreview) 來更新狀態。 傳遞狀態集識別碼，兩個單元其中之一的識別碼為 `UNIT26`。 附加您的 Azure 地圖服務訂用帳戶金鑰。 以下是更新狀態之 **POST** 要求的 URL：
 
     ```http
     https://atlas.microsoft.com/featureState/state?api-version=1.0&statesetID={statesetId}&featureID=UNIT26&subscription-key={Azure-Maps-Primary-Subscription-key}
@@ -134,4 +134,3 @@ map.events.add("click", function(e){
 
 > [!div class="nextstepaction"]
 > [WFS 服務](creator-indoor-maps.md#web-feature-service-api)
-

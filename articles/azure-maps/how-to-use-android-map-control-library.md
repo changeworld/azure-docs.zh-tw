@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2cda543781118a19ba4999e774b96ae81857f442
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd2c714c2e16cb8a7a9c530e8e458c33218b1c2b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330922"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895489"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>開始使用 Azure 地圖服務 Android SDK
 
@@ -65,7 +65,7 @@ Android Studio 可讓您在電腦上設定虛擬 Android 裝置。 這麼做可�
     }
     ```
 
-2. 更新 **app/build.gradle**，並於其中新增下列程式碼：
+2. 更新 **app/build.gradle** ，並於其中新增下列程式碼：
     
     1. 確定專案的 **minSdkVersion** 是 API 21 或更新版本。
 
@@ -299,7 +299,7 @@ mapControl.onReady(map -> {
 > [在 Android 地圖中新增符號圖層](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [在 Android 地圖中新增圖形](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+> [在 Android 地圖中新增圖形](./how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [變更 Android 地圖中的地圖樣式](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [變更 Android 地圖中的地圖樣式](./set-android-map-styles.md)

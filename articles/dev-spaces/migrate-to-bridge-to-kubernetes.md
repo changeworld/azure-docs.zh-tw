@@ -5,21 +5,21 @@ ms.date: 10/21/2020
 ms.topic: conceptual
 description: 描述從 Azure Dev Spaces 到 Bridge 到 Kubernetes 的遷移程式
 keywords: Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、容器、Bridge 到 Kubernetes
-ms.openlocfilehash: 6a6fe2367fca3d2068bb7d9a8e1a157fd2e5ca9b
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 7a7642d986d8490c5d0dc3c413e658b21b010798
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329793"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895251"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>遷移以橋接至 Kubernetes
 
 > [!IMPORTANT]
-> Azure Dev Spaces 將于2023年10月31日淘汰。 開發人員應該移至使用 Bridge Kubernetes，也就是用戶端開發人員工具。
+> Azure Dev Spaces 將于2023年10月31日淘汰。 客戶應該移至使用 Bridge Kubernetes，也就是用戶端開發人員工具。
 >
-> Azure Dev Spaces 的目的是要讓開發人員能夠在 Kubernetes 上進行開發。 在 Azure Dev Spaces 的方法中，重大的取捨是對開發人員造成額外的負擔，以瞭解 Docker 和 Kubernetes 設定以及 Kubernetes 部署概念。 經過一段時間之後，它也清楚了 Azure Dev Spaces 的方法無法有效地減少內部迴圈開發在 Kubernetes 上的速度。 橋接 Kubernetes 可有效地減少內部迴圈開發的速度，並避免開發人員產生不必要的負擔。
+> Azure Dev Spaces 的目的是要減輕使用者在 Kubernetes 上的開發。 Azure Dev Spaces 的方法中有一個重大的取捨，就是要對使用者造成額外的負擔，以瞭解 Docker 和 Kubernetes 設定，以及 Kubernetes 的部署概念。 經過一段時間之後，它也清楚了 Azure Dev Spaces 的方法無法有效地減少內部迴圈開發在 Kubernetes 上的速度。 橋接器至 Kubernetes 可有效地減少內部迴圈開發的速度，並避免使用者不必要的負擔。
 >
-> 核心任務保持不變：打造最佳的開發人員體驗，在較大的應用程式內容中開發、測試和偵測微服務程式代碼。
+> 核心任務保持不變：在較大的應用程式內容中建立開發、測試和偵測微服務程式代碼的最佳體驗。
 
 [橋接器至 Kubernetes] 可提供更輕量的替代方案，讓您可以使用 Azure Dev Spaces 的許多開發案例。 橋接器至 Kubernetes 是一種僅限用戶端的體驗， [Visual Studio][vs]   和 [Visual Studio Code][vsc]使用擴充功能。  
 
@@ -44,7 +44,7 @@ Azure Dev Spaces 和 Bridge Kubernetes 有類似的功能，它們在許多方�
 | 需求  | Azure Dev Spaces  | 橋接至 Kubernetes  |
 |---------------|-------------------|--------------------------------|
 | Azure Kubernetes Service | 在15個 Azure 區域中 | 任何 AKS 服務區域    |
-| **Security** |
+| **安全性** |
 | 叢集所需的安全性存取  | AKS 叢集參與者  | Kubernetes RBAC-部署更新   |
 | 開發電腦上所需的安全性存取權  | N/A  | 本機系統管理員/sudo   |
 | **可用性** |
@@ -85,7 +85,7 @@ Kubernetes 可讓您彈性地使用在 Kubernetes 中執行的應用程式，而
 1. 如果您使用 Visual Studio，請將 Visual Studio IDE 更新為16.7 或更高版本，並從 [Visual Studio Marketplace][vs-marketplace]安裝橋接器至 Kubernetes 擴充功能。 如果您使用 Visual Studio Code，請將 [橋接器安裝至 Kubernetes 擴充][vsc-marketplace]功能。
 1. 使用 Azure 入口網站或 [AZURE DEV SPACES CLI][azds-delete]來停用 Azure Dev Spaces 控制器。
 1. 使用 [Azure Cloud Shell](https://shell.azure.com)。 或在已安裝 bash 的 Mac、Linux 或 Windows 上，開啟 bash shell 提示字元。 請確定您的命令列環境中有提供下列工具： Azure CLI、docker、kubectl、捲曲、tar 和 gunzip。
-1. 建立容器登錄，或使用現有的容器登錄。 您可以使用 [Azure Container Registry](../container-registry/index.yml) 或使用 [Docker Hub](https://hub.docker.com/)，在 Azure 中建立容器登錄。
+1. 建立容器登錄，或使用現有的容器登錄。 您可以使用 [Azure Container Registry](../container-registry/index.yml) 或使用 [Docker Hub](https://hub.docker.com/)，在 Azure 中建立容器登錄。 使用 Azure Cloud Shell 時，只有 Azure Container Registry 可用於裝載 docker 映射。
 1. 執行遷移腳本，將 Azure Dev Spaces 資產轉換為 Bridge 以 Kubernetes 資產。 此腳本會建立一個與 Bridge 相容的新映射以 Kubernetes、將它上傳至指定的登錄，然後使用 [Helm](https://helm.sh) 來更新包含映射的叢集。 您必須提供資源群組、AKS 叢集的名稱，以及容器登錄。 還有其他命令列選項，如下所示：
 
    ```azure-cli
@@ -102,6 +102,7 @@ Kubernetes 可讓您彈性地使用在 Kubernetes 中執行的應用程式，而
     -r Path to root of the project that needs to be migrated (default = current working directory)
     -t Image name & tag in format 'name:tag' (default is 'projectName:stable')
     -i Enable a public endpoint to access your service over internet. (default is false)
+    -c Docker build context path. (default = project root path passed to '-r' option)
     -y Doesn't prompt for non-tty terminals
     -d Helm Debug switch
    ```
@@ -116,7 +117,7 @@ Kubernetes 可讓您彈性地使用在 Kubernetes 中執行的應用程式，而
 
 您也可以使用具有 Bridge 的開發人員專屬路由來 Kubernetes。 Azure Dev Spaces 的小組開發案例會使用多個 Kubernetes 命名空間，利用父和子命名空間的概念，將服務與應用程式的其餘部分隔離。 橋接器至 Kubernetes 提供相同的功能，但具有改良的效能特性，以及在相同的應用程式命名空間內。
 
-Kubernetes 和 Azure Dev Spaces 的橋樑都需要有 HTTP 標頭，並在整個應用程式中傳播。 如果您已設定應用程式來處理 Azure Dev Spaces 的標頭傳播，則必須更新標頭。 若要從 Azure Dev Spaces 轉換為 Bridge 以進行 Kubernetes，請將設定的標頭從 *azds-route* 更新為 *Kubernetes-route as*。
+Kubernetes 和 Azure Dev Spaces 的橋樑都需要有 HTTP 標頭，並在整個應用程式中傳播。 如果您已設定應用程式來處理 Azure Dev Spaces 的標頭傳播，則必須更新標頭。 若要從 Azure Dev Spaces 轉換為 Bridge 以進行 Kubernetes，請將設定的標頭從 *azds-route* 更新為 *Kubernetes-route as* 。
 
 ## <a name="evaluate-bridge-to-kubernetes"></a>評估橋接器至 Kubernetes
 
@@ -146,9 +147,9 @@ Kubernetes 和 Azure Dev Spaces 的橋樑都需要有 HTTP 標頭，並在整個
 
 [azds-delete]: how-to/install-dev-spaces.md#remove-azure-dev-spaces-using-the-cli
 [kubernetes-extension]: https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools
-[btk-sample-app]: /visualstudio/containers/bridge-to-kubernetes?view=vs-2019#install-the-sample-application
+[btk-sample-app]: /visualstudio/containers/bridge-to-kubernetes#install-the-sample-application
 [how-it-works-bridge-to-kubernetes]: /visualstudio/containers/overview-bridge-to-kubernetes
-[use-btk-vs]: /visualstudio/containers/bridge-to-kubernetes?view=vs-2019#connect-to-your-cluster-and-debug-a-service
+[use-btk-vs]: /visualstudio/containers/bridge-to-kubernetes#connect-to-your-cluster-and-debug-a-service
 [use-btk-vsc]: https://code.visualstudio.com/docs/containers/bridge-to-kubernetes
 [vs]: https://visualstudio.microsoft.com/
 [vsc-marketplace]: https://marketplace.visualstudio.com/items?itemName=mindaro.mindaro

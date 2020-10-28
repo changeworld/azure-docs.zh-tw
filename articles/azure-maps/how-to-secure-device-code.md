@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: e62a5c984afb434b8c47b5ee8c5c66c61485dbfc
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 3833cbfd0802f334e482203d269984eb0e299797
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090432"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895625"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>使用 Azure AD 和 Azure 地圖服務 REST Api 來保護輸入限制裝置
 
@@ -25,42 +25,42 @@ ms.locfileid: "92090432"
 ## <a name="create-an-application-registration-in-azure-ad"></a>在 Azure AD 中建立應用程式註冊
 
 > [!NOTE]
-> * **先決條件讀取：** [案例：呼叫 web api 的傳統型應用程式](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-overview)
+> * **先決條件讀取：** [案例：呼叫 web api 的傳統型應用程式](../active-directory/develop/scenario-desktop-overview.md)
 > * 下列案例會使用裝置程式碼流程，而不需要網頁瀏覽器來取得權杖。
 
 在 Azure AD 中建立以裝置為基礎的應用程式，以啟用 Azure AD 登入。 此應用程式將會獲得 Azure 地圖服務 REST Api 的存取權。
 
-1. 在 Azure 入口網站的 Azure 服務清單中，選取 [ **Azure Active Directory**  >  **應用程式註冊**  >  **新註冊**]。  
+1. 在 Azure 入口網站的 Azure 服務清單中，選取 [ **Azure Active Directory**  >  **應用程式註冊**  >  **新註冊** ]。  
 
     > [!div class="mx-imgBorder"]
     > ![應用程式註冊](./media/how-to-manage-authentication/app-registration.png)
 
-2. 輸入 **名稱**，然後選擇 **此組織目錄中** 的 [帳戶] 作為 **支援的帳戶類型**。 在 [重新 **導向 uri**] 中，指定 **公用用戶端/原生 (mobile & desktop) ** 然後新增 `https://login.microsoftonline.com/common/oauth2/nativeclient` 至值。 如需詳細資訊，請參閱 [呼叫 Web api Azure AD 傳統型應用程式：應用程式註冊](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)。 然後 **註冊** 應用程式。
+2. 輸入 **名稱** ，然後選擇 **此組織目錄中** 的 [帳戶] 作為 **支援的帳戶類型** 。 在 [重新 **導向 uri** ] 中，指定 **公用用戶端/原生 (mobile & desktop)** 然後新增 `https://login.microsoftonline.com/common/oauth2/nativeclient` 至值。 如需詳細資訊，請參閱 [呼叫 Web api Azure AD 傳統型應用程式：應用程式註冊](../active-directory/develop/scenario-desktop-app-registration.md)。 然後 **註冊** 應用程式。
 
     > [!div class="mx-imgBorder"]
     > ![新增名稱和重新導向 uri 的應用程式註冊詳細資料](./media/azure-maps-authentication/devicecode-app-registration.png)
 
-3. 流覽至 [ **驗證** ]，並啟用 [將 **應用程式視為公用用戶端**]。 這會啟用 Azure AD 的裝置程式碼驗證。
+3. 流覽至 [ **驗證** ]，並啟用 [將 **應用程式視為公用用戶端** ]。 這會啟用 Azure AD 的裝置程式碼驗證。
     
     > [!div class="mx-imgBorder"]
     > ![啟用應用程式註冊作為公用用戶端](./media/azure-maps-authentication/devicecode-public-client.png)
 
-4.  若要將委派的 API 許可權指派給 Azure 地圖服務，請移至應用程式。 然後選取 [ **API 許可權**]  >  **新增許可權**。 在 [ **我的組織使用的 api**] 下，搜尋並選取 [ **Azure 地圖服務**]。
+4.  若要將委派的 API 許可權指派給 Azure 地圖服務，請移至應用程式。 然後選取 [ **API 許可權** ]  >  **新增許可權** 。 在 [ **我的組織使用的 api** ] 下，搜尋並選取 [ **Azure 地圖服務** ]。
 
     > [!div class="mx-imgBorder"]
     > ![新增應用程式 API 許可權](./media/how-to-manage-authentication/app-permissions.png)
 
-5. 選取 [ **存取 Azure 地圖服務**旁的核取方塊，然後選取 [ **新增許可權**]。
+5. 選取 [ **存取 Azure 地圖服務** 旁的核取方塊，然後選取 [ **新增許可權** ]。
 
     > [!div class="mx-imgBorder"]
     > ![選取應用程式 API 許可權](./media/how-to-manage-authentication/select-app-permissions.png)
 
 6. 為使用者或群組 (Azure RBAC) 設定 Azure 角色型存取控制。 請參閱 [將角色型存取權授與使用者，以 Azure 地圖服務](#grant-role-based-access-for-users-to-azure-maps)。
 
-7. 新增在應用程式中取得權杖流程的程式碼，如需執行詳細資料，請參閱 [裝置程式碼流程](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-acquire-token#device-code-flow)。 取得權杖時，請參考範圍： `user_impersonation` 在先前的步驟中選取的範圍。
+7. 新增在應用程式中取得權杖流程的程式碼，如需執行詳細資料，請參閱 [裝置程式碼流程](../active-directory/develop/scenario-desktop-acquire-token.md#device-code-flow)。 取得權杖時，請參考範圍： `user_impersonation` 在先前的步驟中選取的範圍。
 
 > [!Tip]
-> 使用 Microsoft 驗證程式庫 (MSAL) 取得存取權杖。 查看[呼叫 Web api 的傳統型應用程式上的建議：程式碼](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-configuration)設定
+> 使用 Microsoft 驗證程式庫 (MSAL) 取得存取權杖。 查看[呼叫 Web api 的傳統型應用程式上的建議：程式碼](../active-directory/develop/scenario-desktop-app-configuration.md)設定
 
 8. 使用從 Azure AD 取得的權杖來撰寫 HTTP 要求，並使用有效的 HTTP 用戶端傳送要求。
 

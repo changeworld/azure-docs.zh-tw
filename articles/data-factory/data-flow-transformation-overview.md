@@ -6,13 +6,13 @@ ms.author: daperlov
 manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.openlocfilehash: 0442c701f39fd3e84361ad0201aaf8d1840d8851
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/27/2020
+ms.openlocfilehash: 6fe85db6612a16099f61cb52fe9c5864882f35b3
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81606276"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892922"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>對應資料流程轉換總覽
 
@@ -33,6 +33,7 @@ ms.locfileid: "81606276"
 | [查閱](data-flow-lookup.md) | 多個輸入/輸出 | 來自其他來源的參考資料。 |
 | [新增分支](data-flow-new-branch.md) | 多個輸入/輸出 | 針對相同的資料流程套用多組作業和轉換。 |
 | [樞紐](data-flow-pivot.md) | 架構修飾詞 | 一或多個群組資料行將其相異的資料列值轉換成個別資料行的匯總。 |
+| [排名](data-flow-rank.md) | 架構修飾詞 | 根據排序條件產生排序的排名 |
 | [選取](data-flow-select.md) | 架構修飾詞 | 別名資料行和資料流程名稱，以及卸載或重新排列資料行 |
 | [接收](data-flow-sink.md) | - | 資料的最終目的地 |
 | [排序](data-flow-sort.md) | Row 修飾詞 | 在目前的資料流程上排序內送資料列 |

@@ -9,24 +9,24 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 19db4fb0d75369a0f272eef1180e86f47d45d284
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21fd5f5c94b56f2f63d0e90d9982edd60a2d95d6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335325"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895438"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure 地圖服務的地圖控制項
 
 地圖控制項用戶端 JavaScript 程式庫可讓您在 web 或行動應用程式中呈現地圖和內嵌 Azure 地圖服務功能。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要在網頁中使用地圖控制項，您必須具備下列其中一個必要條件：
 
 * [製作 Azure 地圖服務的帳戶](quick-demo-map-app.md#create-an-azure-maps-account) ，並 [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。
 
-* 使用 [驗證選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)取得 AZURE ACTIVE DIRECTORY (AAD) 認證。
+* 使用 [驗證選項](/javascript/api/azure-maps-control/atlas.authenticationoptions)取得 AZURE ACTIVE DIRECTORY (AAD) 認證。
 
 ## <a name="create-a-new-map-in-a-web-page"></a>在網頁中建立新的地圖
 
@@ -83,7 +83,7 @@ ms.locfileid: "91335325"
     </body>
    ```
 
-5. 現在，我們將初始化地圖控制項。 若要驗證此控制項，您必須擁有 Azure 地圖服務的訂用帳戶金鑰，或透過 [驗證選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)使用 AZURE ACTIVE DIRECTORY (AAD) 認證。
+5. 現在，我們將初始化地圖控制項。 若要驗證此控制項，您必須擁有 Azure 地圖服務的訂用帳戶金鑰，或透過 [驗證選項](/javascript/api/azure-maps-control/atlas.authenticationoptions)使用 AZURE ACTIVE DIRECTORY (AAD) 認證。
 
     如果您要使用訂用帳戶金鑰進行驗證，請複製下列腳本專案並貼到專案中 `<head>` ，並貼到第一個專案的下方 `<script>` 。 `<Your Azure Maps Key>`將取代為您的 Azure 地圖服務主要訂用帳戶金鑰。
 
@@ -279,7 +279,7 @@ var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 > [建立地圖](map-create.md)
 
 > [!div class="nextstepaction"]
-> [程式碼範例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [程式碼範例](/samples/browse/?products=azure-maps)
 
 如需顯示如何整合 Azure Active Directory (AAD) 與 Azure 地圖服務的範例清單，請參閱：
 

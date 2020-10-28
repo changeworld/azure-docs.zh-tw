@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: d006ec692a2345f6b79c4be29446340cf4af6095
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d852d17bdf11ea45f833e3d59cacb435166827fe
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335342"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895455"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>使用 Azure 地圖服務室內地圖模組
 
@@ -147,7 +147,7 @@ map.events.add("facilitychanged", indoorManager, (eventData) => {
 4. 將「地圖物件」初始化。 「地圖物件」支援下列選項：
     - `Subscription key`是您的 Azure 地圖服務主要訂用帳戶金鑰。
     - `center` 定義室內地圖中心位置的緯度和經度。 如果不想提供 `bounds` 值，請提供 `center` 值。 格式應為 `center`: [-122.13315, 47.63637]。
-    - `bounds` 是用來括住地圖底圖集地圖資料的最小矩形形狀。 如果不想設定 `center` 值，請設定 `bounds` 值。 您可以呼叫[地圖底圖集清單 API](https://docs.microsoft.com/rest/api/maps/tileset/listpreview)，尋找您的地圖界限。 地圖底圖清單 API 會傳回 `bbox`，您可以剖析並指派給 `bounds`。 格式應該會顯示為 `bounds` ： [# west、# 南部、# east、# 北部]。
+    - `bounds` 是用來括住地圖底圖集地圖資料的最小矩形形狀。 如果不想設定 `center` 值，請設定 `bounds` 值。 您可以呼叫[地圖底圖集清單 API](/rest/api/maps/tileset/listpreview)，尋找您的地圖界限。 地圖底圖清單 API 會傳回 `bbox`，您可以剖析並指派給 `bounds`。 格式應該會顯示為 `bounds` ： [# west、# 南部、# east、# 北部]。
     - `style` 可讓您設定背景的色彩。 若要顯示白色背景，請將 `style` 定義為「空白」。
     - `zoom` 可讓您指定地圖的最小和最大縮放層級。
 
@@ -257,4 +257,4 @@ map.events.add("facilitychanged", indoorManager, (eventData) => {
 > [室內地圖動態樣式](indoor-map-dynamic-styling.md)
 
 > [!div class="nextstepaction"]
-> [程式碼範例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [程式碼範例](/samples/browse/?products=azure-maps)

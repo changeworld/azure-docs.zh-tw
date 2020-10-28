@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: f43c0086cfd6e51e0fbcd5d30911aa6c8e9a6518
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f455a1132a0f63e1ba3eb5d2a57a1f9bfa9a867
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335546"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895676"
 ---
 # <a name="how-to-use-image-templates"></a>如何使用映像範本
 
@@ -24,7 +24,7 @@ ms.locfileid: "91335546"
  - 多邊形圖層可以使用填滿模式影像來呈現。 
  - HTML 標籤可以使用影像和其他 HTML 專案來呈現點。
 
-為了確保圖層有良好的效能，請先將影像載入地圖影像的 sprite 資源，然後再呈現。 根據預設，SymbolLayer 的 [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)會將數個色彩中的幾個標記影像預先載入地圖影像 sprite。 這些標記影像和其他標記影像會以 SVG 範本的形式提供。 它們可用來建立具有自訂縮放比例的影像，或做為客戶主要和次要色彩使用。 總共提供42個影像範本：27個符號圖示和15個多邊形填滿模式。
+為了確保圖層有良好的效能，請先將影像載入地圖影像的 sprite 資源，然後再呈現。 根據預設，SymbolLayer 的 [IconOptions](/javascript/api/azure-maps-control/atlas.iconoptions)會將數個色彩中的幾個標記影像預先載入地圖影像 sprite。 這些標記影像和其他標記影像會以 SVG 範本的形式提供。 它們可用來建立具有自訂縮放比例的影像，或做為客戶主要和次要色彩使用。 總共提供42個影像範本：27個符號圖示和15個多邊形填滿模式。
 
 您可以使用函數，將影像範本新增至地圖影像的 sprite 資源 `map.imageSprite.createFromTemplate` 。 此函式最多允許傳入五個參數;
 
@@ -119,7 +119,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 如果您的應用程式使用與不同圖示的相同圖示，或您要建立可新增其他影像範本的模組，您可以從 Azure 地圖服務 web SDK 輕鬆地新增和取出這些圖示。 在命名空間上使用下列靜態函數 `atlas` 。
 
-| 名稱 | 傳回類型 | 描述 | 
+| Name | 傳回類型 | 描述 | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | 將自訂 SVG 影像範本新增至塔命名空間。 |
 |  `getImageTemplate(templateName: string, scale?: number)`| 字串 | 依名稱抓取 SVG 範本。 |
@@ -514,10 +514,10 @@ SVG 影像範本支援下列預留位置值：
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [ImageSpriteManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagespritemanager)
+> [ImageSpriteManager](/javascript/api/azure-maps-control/atlas.imagespritemanager)
 
 > [!div class="nextstepaction"]
-> [塔命名空間](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas#functions
+> [塔命名空間](/javascript/api/azure-maps-control/atlas#functions
 )
 
 如需可使用影像範本的更多程式碼範例，請參閱下列文章：

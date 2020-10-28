@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: 1668c7ccad75771a598aaa55f5403f070ea2dff8
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ebdc4b219e0840c18e6bef8ebfe9b8eefa8faf3b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090211"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895560"
 ---
 # <a name="secure-a-web-application-with-user-sign-in"></a>使用使用者登入來保護 web 應用程式
 
@@ -27,36 +27,36 @@ ms.locfileid: "92090211"
 
 您必須在 Azure AD 中建立 web 應用程式，使用者才能登入。 此 web 應用程式接著會將使用者存取權委派給 Azure 地圖服務 REST Api。
 
-1. 在 Azure 入口網站的 Azure 服務清單中，選取 [ **Azure Active Directory**  >  **應用程式註冊**  >  **新註冊**]。  
+1. 在 Azure 入口網站的 Azure 服務清單中，選取 [ **Azure Active Directory**  >  **應用程式註冊**  >  **新註冊** ]。  
 
     > [!div class="mx-imgBorder"]
     > ![應用程式註冊](./media/how-to-manage-authentication/app-registration.png)
 
-2. 輸入 **名稱**、選擇 **支援帳戶類型**、提供重新導向 URI，以代表 Azure AD 將發出權杖的 url，以及裝載地圖控制項的 url。 如需詳細資訊，請參閱 Azure AD [案例：登入使用者的 Web 應用程式](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-overview)。 從 Azure AD 案例中完成提供的步驟。  
+2. 輸入 **名稱** 、選擇 **支援帳戶類型** 、提供重新導向 URI，以代表 Azure AD 將發出權杖的 url，以及裝載地圖控制項的 url。 如需詳細資訊，請參閱 Azure AD [案例：登入使用者的 Web 應用程式](../active-directory/develop/scenario-web-app-sign-user-overview.md)。 從 Azure AD 案例中完成提供的步驟。  
 
 3. 應用程式註冊完成後，請確認應用程式登入適用于使用者。 登入運作之後，應用程式就可以被授與 Azure 地圖服務 REST Api 的委派存取權。
     
-4.  若要將委派的 API 許可權指派給 Azure 地圖服務，請移至應用程式。 然後選取 [ **API 許可權**]  >  **新增許可權**。 在 [ **我的組織使用的 api**] 下，搜尋並選取 [ **Azure 地圖服務**]。
+4.  若要將委派的 API 許可權指派給 Azure 地圖服務，請移至應用程式。 然後選取 [ **API 許可權** ]  >  **新增許可權** 。 在 [ **我的組織使用的 api** ] 下，搜尋並選取 [ **Azure 地圖服務** ]。
 
     > [!div class="mx-imgBorder"]
     > ![新增應用程式 API 許可權](./media/how-to-manage-authentication/app-permissions.png)
 
-5. 選取 [ **存取 Azure 地圖服務**旁的核取方塊，然後選取 [ **新增許可權**]。
+5. 選取 [ **存取 Azure 地圖服務** 旁的核取方塊，然後選取 [ **新增許可權** ]。
 
     > [!div class="mx-imgBorder"]
     > ![選取應用程式 API 許可權](./media/how-to-manage-authentication/select-app-permissions.png)
 
-6. 讓 web 應用程式使用應用程式密碼設定應用程式註冊，以呼叫 Azure 地圖服務 REST Api，如需詳細步驟，請參閱 [呼叫 Web api 的 web 應用程式：應用程式註冊](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-app-registration)。 需要秘密，才能代表使用者對 Azure AD 進行驗證。 應用程式註冊憑證或秘密應儲存在安全存放區中，以供 web 應用程式抓取以向 Azure AD 進行驗證。 
+6. 讓 web 應用程式使用應用程式密碼設定應用程式註冊，以呼叫 Azure 地圖服務 REST Api，如需詳細步驟，請參閱 [呼叫 Web api 的 web 應用程式：應用程式註冊](../active-directory/develop/scenario-web-app-call-api-app-registration.md)。 需要秘密，才能代表使用者對 Azure AD 進行驗證。 應用程式註冊憑證或秘密應儲存在安全存放區中，以供 web 應用程式抓取以向 Azure AD 進行驗證。 
    
    * 如果應用程式已設定 Azure AD 應用程式註冊和密碼，則可以略過此步驟。
 
 > [!Tip]
-> 如果應用程式裝載于 Azure 環境中，我們建議使用適用 [于 azure 資源的受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 識別，並透過取得 [存取權杖](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token) 來存取 Azure Key Vault 秘密或憑證，以 Azure Key Vault 實例來存取秘密。 若要連線到 Azure Key Vault 以取得秘密，請參閱 [透過受控識別](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app)連線的教學課程。
+> 如果應用程式裝載于 Azure 環境中，我們建議使用適用 [于 azure 資源的受控](../active-directory/managed-identities-azure-resources/overview.md) 識別，並透過取得 [存取權杖](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) 來存取 Azure Key Vault 秘密或憑證，以 Azure Key Vault 實例來存取秘密。 若要連線到 Azure Key Vault 以取得秘密，請參閱 [透過受控識別](../key-vault/general/tutorial-net-create-vault-azure-web-app.md)連線的教學課程。
    
 7. 針對 Azure 地圖服務 Web SDK，執行安全的權杖端點以存取權杖。 
    
    * 如需範例權杖控制器，請參閱 [Azure 地圖服務 Azure AD 範例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/blob/master/src/OpenIdConnect/AzureMapsOpenIdConnectv1/AzureMapsOpenIdConnect/Controllers/TokenController.cs)。 
-   * 若為非 AspNetCore 的執行或其他，請參閱 Azure AD 檔中 [的取得應用程式權杖](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token) 。
+   * 若為非 AspNetCore 的執行或其他，請參閱 Azure AD 檔中 [的取得應用程式權杖](../active-directory/develop/scenario-web-app-call-api-acquire-token.md) 。
    * 受保護的權杖端點負責傳回已驗證和授權使用者的存取權杖，以呼叫 Azure 地圖服務 REST Api。
 
 8. 為使用者或群組 (Azure RBAC) 設定 Azure 角色型存取控制。 請參閱 [為使用者授與以角色為基礎的存取權](#grant-role-based-access-for-users-to-azure-maps)。
@@ -100,7 +100,7 @@ var map = new atlas.Map("map", {
 
 進一步瞭解 web 應用程式案例：
 > [!div class="nextstepaction"]
-> [案例：登入使用者的 Web 應用程式](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-overview)
+> [案例：登入使用者的 Web 應用程式](../active-directory/develop/scenario-web-app-sign-user-overview.md)
 
 尋找您 Azure 地圖服務帳戶的 API 使用計量：
 > [!div class="nextstepaction"]

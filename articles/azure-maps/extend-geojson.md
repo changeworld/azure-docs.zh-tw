@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: e6cfbef3751a7b4256f689af0e5b3524ae6fa878
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87a5dec2582796c6703bfb37b76e26e53a1192c0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037451"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895778"
 ---
 # <a name="extended-geojson-geometries"></a>擴充 GeoJSON 幾何
 
@@ -29,7 +29,7 @@ Azure 地圖服務提供可在地理功能內外搜尋的強大 Api 清單。 �
 * Point
 * Polygon
 
-某些 Azure 地圖服務 Api 接受不屬於 [GeoJSON 規格][1]的幾何。例如，在 [幾何 API 內搜尋](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) 會接受圓形和多邊形。
+某些 Azure 地圖服務 Api 接受不屬於 [GeoJSON 規格][1]的幾何。例如，在 [幾何 API 內搜尋](/rest/api/maps/search/postsearchinsidegeometry) 會接受圓形和多邊形。
 
 本文詳細說明 Azure 地圖服務如何延伸 [GeoJSON 規格][1]來代表特定的幾何。
 
@@ -37,7 +37,7 @@ Azure 地圖服務提供可在地理功能內外搜尋的強大 Api 清單。 �
 
 `Circle` [GeoJSON 規格][1]不支援幾何。我們會使用 `GeoJSON Point Feature` 物件來代表圓形。
 
-`Circle`使用物件表示的幾何 `GeoJSON Feature` __必須__包含下列座標和屬性：
+`Circle`使用物件表示的幾何 `GeoJSON Feature` __必須__ 包含下列座標和屬性：
 
 - Center
 
@@ -45,7 +45,7 @@ Azure 地圖服務提供可在地理功能內外搜尋的強大 Api 清單。 �
 
 - 半徑
 
-    圓形的 `radius` 是以 `GeoJSON Feature` 的屬性表示。 半徑值的單位是_公尺_，而且必須屬於型別 `double`。
+    圓形的 `radius` 是以 `GeoJSON Feature` 的屬性表示。 半徑值的單位是 _公尺_ ，而且必須屬於型別 `double`。
 
 - 子類型
 
@@ -73,7 +73,7 @@ Azure 地圖服務提供可在地理功能內外搜尋的強大 Api 清單。 �
 
 `Rectangle` [GeoJSON 規格][1]不支援幾何。我們會使用 `GeoJSON Polygon Feature` 物件來表示矩形。 矩形擴充功能主要是由 Web SDK 的繪圖工具模組所使用。
 
-`Rectangle`使用物件表示的幾何 `GeoJSON Polygon Feature` __必須__包含下列座標和屬性：
+`Rectangle`使用物件表示的幾何 `GeoJSON Polygon Feature` __必須__ 包含下列座標和屬性：
 
 - 角落
 

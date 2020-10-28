@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: a01f5d2d000ef6e177000828500ef2ab0e26c4ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1faf4455a983e87ce4c702c09f8bf2d9fbe70047
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448181"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893398"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 診斷擴充功能監視計量與記錄
 
@@ -39,6 +39,9 @@ Linux 診斷擴充功能可協助使用者監視在 Microsoft Azure 上執行的
 ## <a name="installing-the-extension-in-your-vm"></a>在 VM 中安裝擴充功能
 
 您可以使用 Azure PowerShell Cmdlet、Azure CLI 指令碼、ARM 範本或 Azure 入口網站啟用此擴充功能。 如需詳細資訊，請參閱[擴充功能](features-linux.md)。
+
+>[!NOTE]
+>診斷 VM 擴充功能的某些元件也會隨附于 [Log ANALYTICS vm 擴充](./oms-linux.md)功能。 由於此架構的緣故，如果兩個延伸模組都在相同的 ARM 範本中具現化，則可能會發生衝突。 若要避免這些安裝時期衝突，請使用指示[ `dependsOn` 詞來確定](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)是否依序安裝延伸模組。 延伸模組可以依照任何順序安裝。
 
 這些安裝指示與[可下載範例組態](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json)可設定 LAD 3.0 以：
 
@@ -67,8 +70,8 @@ Linux 診斷擴充功能支援下列散發套件和版本。 散發套件和版�
 
 ### <a name="prerequisites"></a>必要條件
 
-* **Azure Linux Agent 2.2.0 版或更新版本**。 大部分的 Azure VM Linux 資源庫映像包含版本 2.2.7 或更新版本。 執行 `/usr/sbin/waagent -version` 以確認安裝在 VM 上的版本。 如果 VM 執行的是舊版客體代理程式，請依照[這些指示](./update-linux-agent.md)更新。
-* **Azure CLI**。 在您的電腦上[設定 Azure CLI](/cli/azure/install-azure-cli) 環境。
+* **Azure Linux Agent 2.2.0 版或更新版本** 。 大部分的 Azure VM Linux 資源庫映像包含版本 2.2.7 或更新版本。 執行 `/usr/sbin/waagent -version` 以確認安裝在 VM 上的版本。 如果 VM 執行的是舊版客體代理程式，請依照[這些指示](./update-linux-agent.md)更新。
+* **Azure CLI** 。 在您的電腦上[設定 Azure CLI](/cli/azure/install-azure-cli) 環境。
 * Wget 命令，如果您沒有：執行 `sudo apt-get install wget`。
 * 現有的 Azure 訂用帳戶和現有的一般用途儲存體帳戶，用來儲存資料。  一般目的儲存體帳戶支援需要的資料表儲存體。  Blob 儲存體帳戶將無法運作。
 
@@ -172,7 +175,7 @@ Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location 
 
 ### <a name="migration-from-previous-versions-of-the-extension"></a>自舊版擴充功能移轉
 
-擴充功能的最新版本是 **3.0**。 **任何舊版 (2.x) 皆已被取代，並會 2018 年 7 月 31 日停止發行**。
+擴充功能的最新版本是 **3.0** 。 **任何舊版 (2.x) 皆已被取代，並會 2018 年 7 月 31 日停止發行** 。
 
 > [!IMPORTANT]
 > 此擴充功能為擴充功能組態帶來突破性的改變。 這一項改變可提升擴充功能安全性，也因此不會再維持與 2.x 的回溯相容性。 此外，此擴充功能的擴充功能發行者與 2.x 版的發行者不同。
@@ -206,7 +209,7 @@ Set-AzVMExtension -ResourceGroupName $VMresourceGroup -VMName $vmName -Location 
 ---- | -----
 storageAccountName | 擴充功能寫入資料的儲存體帳戶名稱。
 storageAccountEndPoint | (選擇性) 可識別儲存體帳戶所在雲端的端點。 如果沒有此設定，LAD 會預設為 Azure 公用雲端，`https://core.windows.net`。 若要使用 Azure 德國、Azure Government 或 Azure 中國中的儲存體帳戶，請相應地設定此值。
-storageAccountSasToken | Blob 與資料表服務 (`ss='bt'`) 的 [帳戶 SAS 權杖](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/)，適用於容器與物件 (`srt='co'`)，可授與新增、建立、列示、更新與寫入權限 (`sp='acluw'`)。 請*勿*包含前置問號 (?)。
+storageAccountSasToken | Blob 與資料表服務 (`ss='bt'`) 的 [帳戶 SAS 權杖](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/)，適用於容器與物件 (`srt='co'`)，可授與新增、建立、列示、更新與寫入權限 (`sp='acluw'`)。 請 *勿* 包含前置問號 (?)。
 mdsdHttpProxy | (選擇性) 啟用擴充功能以連線所指定儲存體帳戶和端點時所需的 HTTP proxy 資訊。
 sinksConfig | (選擇性) 可將計量與事件傳遞至的替代目的地詳細資料。 以下各節包含擴充功能所支援每個資料接收的特定詳細資料。
 
@@ -578,7 +581,7 @@ TransfersPerSecond | 每秒的讀取或寫入作業數
 
 可透過設定 `"condition": "IsAggregate=True"` 取得的所有檔案系統彙總值。 可透過設定 `"condition": 'Name="/mnt"'` 取得的特定已掛接檔案系統 (例如 "/mnt") 的值。 
 
-**注意**：如果使用 Azure 入口網站而非 JSON，則正確的條件欄位形式為 Name='/mnt'
+**注意** ：如果使用 Azure 入口網站而非 JSON，則正確的條件欄位形式為 Name='/mnt'
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>磁碟類別的內建計量
 

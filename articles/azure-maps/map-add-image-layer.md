@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 4116028cc8c4668c897d7de7bbffb607b5e5daba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43de832095e2c2dd674a156da914ed26f1e472d0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310538"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892939"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>在地圖中新增影像圖層
 
@@ -27,7 +27,7 @@ ms.locfileid: "91310538"
 * 氣象雷達圖影像
 
 > [!TIP]
-> [>imagelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer)是一種簡單的方式，可在地圖上覆蓋影像。 請注意，瀏覽器載入大型影像時可能會發生困難。 在此情況下，請考慮將您的影像分解為圖格，並將其載入地圖中作為 [>tilelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer)。
+> [>imagelayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer)是一種簡單的方式，可在地圖上覆蓋影像。 請注意，瀏覽器載入大型影像時可能會發生困難。 在此情況下，請考慮將您的影像分解為圖格，並將其載入地圖中作為 [>tilelayer](/javascript/api/azure-maps-control/atlas.layer.tilelayer)。
 
 映射層支援下列影像格式：
 
@@ -38,7 +38,7 @@ ms.locfileid: "91310538"
 
 ## <a name="add-an-image-layer"></a>新增映像圖層
 
-下列程式碼會在地圖上將 [紐華克（New Jersey）地圖](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) 的影像覆迭為1922。 [>imagelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer)的建立方式是將 URL 傳遞至影像，並使用格式的四個角落座標 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` 。
+下列程式碼會在地圖上將 [紐華克（New Jersey）地圖](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) 的影像覆迭為1922。 [>imagelayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer)的建立方式是將 URL 傳遞至影像，並使用格式的四個角落座標 `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` 。
 
 ```javascript
 //Create an image layer and add it to the map.
@@ -64,7 +64,7 @@ map.layers.add(new atlas.layer.ImageLayer({
 
 此範例示範如何將 KML 地面重迭資訊新增為地圖上的影像圖層。 KML 地面重迭提供北、南、東和西座標，以及逆時針旋轉。 但是，影像圖層預期會有影像的每個角落的座標。 此範例中的 KML 基礎覆迭適用于 Chartres cathedral，且其來源為 [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)。
 
-程式碼會使用 `getCoordinatesFromEdges` [>imagelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer) 類別中的靜態函式。 它會使用 KML 地面重迭的北、南、東、西部和旋轉資訊來計算影像的四個角落。
+程式碼會使用 `getCoordinatesFromEdges` [>imagelayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer) 類別中的靜態函式。 它會使用 KML 地面重迭的北、南、東、西部和旋轉資訊來計算影像的四個角落。
 
 <br/>
 
@@ -85,10 +85,10 @@ map.layers.add(new atlas.layer.ImageLayer({
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer)
+> [ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer)
 
 > [!div class="nextstepaction"]
-> [ImageLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagelayeroptions)
+> [ImageLayerOptions](/javascript/api/azure-maps-control/atlas.imagelayeroptions)
 
 請參閱下列文章，以取得更多可新增至地圖的程式碼範例：
 
