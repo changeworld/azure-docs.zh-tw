@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 1f25aadf716b7768b6122a4fb165466aef7f8a16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c3e46bf386e70cbe35d96728ede896d6bf0dc7d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90053387"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895829"
 ---
 # <a name="drawing-package-requirements"></a>繪圖套件需求
 
-您可以使用 [Azure 地圖服務轉換服務](https://docs.microsoft.com/rest/api/maps/conversion)，將已上傳的繪圖封裝轉換成對應資料。 本文將說明轉換 API 的繪圖套件需求。 若要查看範例套件，您可以下載[繪圖套件](https://github.com/Azure-Samples/am-creator-indoor-data-examples)範例。
+您可以使用 [Azure 地圖服務轉換服務](/rest/api/maps/conversion)，將已上傳的繪圖封裝轉換成對應資料。 本文將說明轉換 API 的繪圖套件需求。 若要查看範例套件，您可以下載[繪圖套件](https://github.com/Azure-Samples/am-creator-indoor-data-examples)範例。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -25,7 +25,7 @@ ms.locfileid: "90053387"
 
 您可以選擇任何 CAD 軟體來產生繪圖套件中的繪圖。  
 
-[Azure 地圖轉換服務](https://docs.microsoft.com/rest/api/maps/conversion)會將繪圖套件轉換成地圖資料。 轉換服務適用于 AutoCAD DWG 檔案格式。 `AC1032` 是 DWG 檔案的內部格式版本，建議您 `AC1032` 針對內部 DWG 檔案格式版本選取。  
+[Azure 地圖轉換服務](/rest/api/maps/conversion)會將繪圖套件轉換成地圖資料。 轉換服務適用于 AutoCAD DWG 檔案格式。 `AC1032` 是 DWG 檔案的內部格式版本，建議您 `AC1032` 針對內部 DWG 檔案格式版本選取。  
 
 ## <a name="glossary-of-terms"></a>名詞解釋
 
@@ -50,13 +50,13 @@ ms.locfileid: "90053387"
 
 ## <a name="dwg-files-requirements"></a>DWG 檔案需求
 
-設施的每個樓層都需要一個 DWG 檔案。 樓層的資料必須包含在單一 DWG 檔案中。 任何外部參考 (_xrefs_) 都必須繫結至父系繪圖。 此外，每個 DWG 檔案：
+設施的每個樓層都需要一個 DWG 檔案。 樓層的資料必須包含在單一 DWG 檔案中。 任何外部參考 ( _xrefs_ ) 都必須繫結至父系繪圖。 此外，每個 DWG 檔案：
 
-* 必須定義「外部」和「單位」圖層。 它可以選擇性地定義下列選用圖層： _牆_、 _門_、 _UnitLabel_、 _Zone_和 _ZoneLabel_。
+* 必須定義「外部」和「單位」圖層。 它可以選擇性地定義下列選用圖層： _牆_ 、 _門_ 、 _UnitLabel_ 、 _Zone_ 和 _ZoneLabel_ 。
 * 不能包含多個樓層中的特徵。
 * 不能包含多個設施中的特徵。
 
-[Azure 地圖轉換服務](https://docs.microsoft.com/rest/api/maps/conversion)可以從 DWG 檔案中將下列特徵類別解壓縮：
+[Azure 地圖轉換服務](/rest/api/maps/conversion)可以從 DWG 檔案中將下列特徵類別解壓縮：
 
 * Levels
 * 單位
@@ -73,11 +73,11 @@ DWG 圖層也必須遵循下列準則：
 
 * 所有 DWG 檔案的繪圖來源都必須對齊相同的緯度和經度。
 * 每個樓層的方向都必須與其他樓層相同。
-* 自動相交的多邊形會自動修復，而 [Azure 地圖服務轉換服務](https://docs.microsoft.com/rest/api/maps/conversion) 會引發警告。 您應手動檢查修復的結果，因為它們可能不符合預期的結果。
+* 自動相交的多邊形會自動修復，而 [Azure 地圖服務轉換服務](/rest/api/maps/conversion) 會引發警告。 您應手動檢查修復的結果，因為它們可能不符合預期的結果。
 
 所有圖層實體都必須是下列其中一種類型：直線、折線、多邊形、圓弧、圓形或文字 (單一線條) 。 系統會忽略任何其他實體類型。
 
-下表概述支援的實體類型，以及每個圖層的支援功能。 如果圖層包含不支援的實體類型，則 [Azure 地圖服務轉換服務](https://docs.microsoft.com/rest/api/maps/conversion) 會忽略這些實體。  
+下表概述支援的實體類型，以及每個圖層的支援功能。 如果圖層包含不支援的實體類型，則 [Azure 地圖服務轉換服務](/rest/api/maps/conversion) 會忽略這些實體。  
 
 | 階層 | 實體類型 | 特性 |
 | :----- | :-------------------| :-------
@@ -168,11 +168,11 @@ Azure 地圖服務資料集中的門，會表示為與多個單位界限重迭�
 
 ## <a name="manifest-file-requirements"></a>資訊清單檔的需求
 
-zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔案必須命名為 **manifest.json**。 其中會描述可讓 [Azure 地圖轉換服務](https://docs.microsoft.com/rest/api/maps/conversion)剖析其內容的 DWG 檔案。 只有資訊清單所識別的檔案會內嵌。 Zip 資料夾中的檔案，但未正確列在資訊清單中，會被忽略。
+zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔案必須命名為 **manifest.json** 。 其中會描述可讓 [Azure 地圖轉換服務](/rest/api/maps/conversion)剖析其內容的 DWG 檔案。 只有資訊清單所識別的檔案會內嵌。 Zip 資料夾中的檔案，但未正確列在資訊清單中，會被忽略。
 
 資訊清單檔之物件中的檔案路徑 `buildingLevels` 必須相對於 ZIP 檔案夾的根目錄。 DWG 檔案名稱必須完全符合設施樓層的名稱。 例如，「下一層」層級的 DWG 檔案為「下 dwg」。 層級2的 DWG 檔案會命名為 "level_2。 如果您的樓層名稱有空格，請使用底線。
 
-雖然使用資訊清單物件時有一些需求，但並非所有物件都是必要的。 下表顯示 [Azure 地圖服務轉換服務](https://docs.microsoft.com/rest/api/maps/conversion)1.1 版的必要和選擇性物件。
+雖然使用資訊清單物件時有一些需求，但並非所有物件都是必要的。 下表顯示 [Azure 地圖服務轉換服務](/rest/api/maps/conversion)1.1 版的必要和選擇性物件。
 
 | Object | 必要 | 描述 |
 | :----- | :------- | :------- |
@@ -404,7 +404,7 @@ zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔�
 
 ## <a name="next-steps"></a>後續步驟
 
-當您的繪圖套件符合需求時，您可以使用 [Azure 地圖服務轉換服務](https://docs.microsoft.com/rest/api/maps/conversion) 將封裝轉換成地圖資料集。 然後，您可以使用「室內地圖」模組，使用資料集來產生室內地圖。
+當您的繪圖套件符合需求時，您可以使用 [Azure 地圖服務轉換服務](/rest/api/maps/conversion) 將封裝轉換成地圖資料集。 然後，您可以使用「室內地圖」模組，使用資料集來產生室內地圖。
 
 > [!div class="nextstepaction"]
 >[室內地圖的建立工具](creator-indoor-maps.md)

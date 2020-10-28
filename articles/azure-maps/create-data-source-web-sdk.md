@@ -9,23 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 75d2833a5b270fcfdcffa668ec0e308399edab8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c82b74ffdc8672dc3d84a98a036c6083bc6c309
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311445"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895914"
 ---
 # <a name="create-a-data-source"></a>建立資料來源
 
 Azure 地圖服務 Web SDK 會將資料儲存在資料來源中。 使用資料來源可將查詢和轉譯的資料作業優化。 目前有兩種類型的資料來源：
 
-- **GeoJSON 來源**：在本機管理 GeoJSON 格式的原始位置資料。 適用于小型至中型的資料集 () 的上百個圖形。
-- **向量圖格來源**：根據地圖並排顯示系統，將格式化為目前地圖視圖之向量磚的資料載入。 適用于大型至大型資料集 (上百萬或數十億個圖形) 。
+- **GeoJSON 來源** ：在本機管理 GeoJSON 格式的原始位置資料。 適用于小型至中型的資料集 () 的上百個圖形。
+- **向量圖格來源** ：根據地圖並排顯示系統，將格式化為目前地圖視圖之向量磚的資料載入。 適用于大型至大型資料集 (上百萬或數十億個圖形) 。
 
 ## <a name="geojson-data-source"></a>GeoJSON 資料來源
 
-以 GeoJSON 為基礎的資料來源會使用類別在本機載入和儲存資料 `DataSource` 。 您可以使用 GeoJSON [資料命名空間中的 helper](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) 類別，以手動方式建立或建立資料。 `DataSource`類別提供匯入本機或遠端 GeoJSON 檔案的函式。 遠端 GeoJSON 檔案必須裝載于已啟用 CORs 的端點上。 `DataSource`類別會提供群集點資料的功能。 而且，您可以使用類別輕鬆地新增、移除和更新資料 `DataSource` 。 下列程式碼顯示如何在 Azure 地圖服務中建立 GeoJSON 資料。
+以 GeoJSON 為基礎的資料來源會使用類別在本機載入和儲存資料 `DataSource` 。 您可以使用 GeoJSON [資料命名空間中的 helper](/javascript/api/azure-maps-control/atlas.data) 類別，以手動方式建立或建立資料。 `DataSource`類別提供匯入本機或遠端 GeoJSON 檔案的函式。 遠端 GeoJSON 檔案必須裝載于已啟用 CORs 的端點上。 `DataSource`類別會提供群集點資料的功能。 而且，您可以使用類別輕鬆地新增、移除和更新資料 `DataSource` 。 下列程式碼顯示如何在 Azure 地圖服務中建立 GeoJSON 資料。
 
 ```javascript
 //Create raw GeoJSON object.
@@ -46,7 +46,7 @@ var geoJsonClass = new atlas.data.Feature(new atlas.data.Point([-100, 45]), {
 }); 
 ```
 
-一旦建立之後，就可以透過 `map.sources` 屬性（也就是 [SourceManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.sourcemanager)）將資料來源新增至地圖。 下列程式碼會示範如何建立 `DataSource` ，並將它加入至對應。
+一旦建立之後，就可以透過 `map.sources` 屬性（也就是 [SourceManager](/javascript/api/azure-maps-control/atlas.sourcemanager)）將資料來源新增至地圖。 下列程式碼會示範如何建立 `DataSource` ，並將它加入至對應。
 
 ```javascript
 //Create a data source and add it to the map.
@@ -74,7 +74,7 @@ dataSource.setShapes(geoJsonData);
 
 ## <a name="vector-tile-source"></a>向量圖格來源
 
-向量圖格來源說明如何存取向量圖格圖層。 使用 [VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource) 類別，將向量圖格來源具現化。 向量圖格圖層類似于圖格圖層，但它們並不相同。 圖格圖層是點陣影像。 向量圖格圖層是 **PBF** 格式的壓縮檔案。 這個壓縮檔案包含向量地圖資料，以及一或多個圖層。 您可以根據每個圖層的樣式，在用戶端上轉譯和樣式檔。 向量圖格中的資料會以點、線條和多邊形的形式包含地理特徵。 使用向量圖格圖層有幾個優點，而不是使用點陣圖格圖層：
+向量圖格來源說明如何存取向量圖格圖層。 使用 [VectorTileSource](/javascript/api/azure-maps-control/atlas.source.vectortilesource) 類別，將向量圖格來源具現化。 向量圖格圖層類似于圖格圖層，但它們並不相同。 圖格圖層是點陣影像。 向量圖格圖層是 **PBF** 格式的壓縮檔案。 這個壓縮檔案包含向量地圖資料，以及一或多個圖層。 您可以根據每個圖層的樣式，在用戶端上轉譯和樣式檔。 向量圖格中的資料會以點、線條和多邊形的形式包含地理特徵。 使用向量圖格圖層有幾個優點，而不是使用點陣圖格圖層：
 
  - 向量磚的檔案大小通常遠小於相等的點陣磚。 因此，使用的頻寬較少。 這表示較低的延遲、更快速的地圖，以及更好的使用者體驗。
  - 由於向量圖格會在用戶端上轉譯，因此會調整為其顯示所在裝置的解析度。 因此，轉譯的地圖會以 crystal clear 標籤更妥善地定義。
@@ -83,10 +83,10 @@ dataSource.setShapes(geoJsonData);
 
 Azure 地圖服務遵守 [Mapbox 向量圖格規格](https://github.com/mapbox/vector-tile-spec)，也就是開放式標準。 Azure 地圖服務提供下列向量圖格服務作為平臺的一部分：
 
-- 道路磚[檔](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)  |  [資料格式詳細資料](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
-- 流量事件[檔](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)  |  [資料格式詳細資料](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
-- 交通流程[檔](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)  |  [資料格式詳細資料](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
-- Azure 地圖服務 Creator 也可讓您透過[取得圖](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)格轉譯 V2 來建立和存取自訂向量磚
+- 道路磚[檔](/rest/api/maps/renderv2/getmaptilepreview)  |  [資料格式詳細資料](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
+- 流量事件[檔](/rest/api/maps/traffic/gettrafficincidenttile)  |  [資料格式詳細資料](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
+- 交通流程[檔](/rest/api/maps/traffic/gettrafficflowtile)  |  [資料格式詳細資料](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
+- Azure 地圖服務 Creator 也可讓您透過[取得圖](/rest/api/maps/renderv2/getmaptilepreview)格轉譯 V2 來建立和存取自訂向量磚
 
 > [!TIP]
 > 使用 Azure 地圖服務轉譯服務的向量或點陣影像磚搭配 web SDK 時，您可以取代 `atlas.microsoft.com` 為預留位置 `{azMapsDomain}` 。 此預留位置將會取代為對應所使用的相同網域，且也會自動附加相同的驗證詳細資料。 這可大幅簡化使用 Azure Active Directory authentication 時，轉譯服務的驗證。
@@ -213,16 +213,16 @@ map.layers.add([polygonLayer, lineLayer, bubbleLayer]);
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource)
+> [DataSource](/javascript/api/azure-maps-control/atlas.source.datasource)
 
 > [!div class="nextstepaction"]
-> [DataSourceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions)
+> [DataSourceOptions](/javascript/api/azure-maps-control/atlas.datasourceoptions)
 
 > [!div class="nextstepaction"]
-> [VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource)
+> [VectorTileSource](/javascript/api/azure-maps-control/atlas.source.vectortilesource)
 
 > [!div class="nextstepaction"]
-> [VectorTileSourceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.vectortilesourceoptions)
+> [VectorTileSourceOptions](/javascript/api/azure-maps-control/atlas.vectortilesourceoptions)
 
 請參閱下列文章，以取得更多可新增至地圖的程式碼範例：
 
@@ -248,4 +248,4 @@ map.layers.add([polygonLayer, lineLayer, bubbleLayer]);
 > [新增熱度圖](map-add-heat-map-layer.md)
 
 > [!div class="nextstepaction"]
-> [程式碼範例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [程式碼範例](/samples/browse/?products=azure-maps)

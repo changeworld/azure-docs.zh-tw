@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 360fc4af688e393bb8639ee773f0bf0de603a425
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69c5b9d15c0ba3c7c8b6b01643beac1905c404ad
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83596047"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895863"
 ---
 # <a name="creator-long-running-operation-api"></a>建立工具長時間執行作業 API
 
-Azure 地圖服務中的某些 API 會使用[非同步要求 - 回復模式](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)。 此模式可讓 Azure 地圖服務提供高可用性和回應性的服務。 本文說明 Azure 地圖服務之長時間執行非同步背景處理的特定實作。
+Azure 地圖服務中的某些 API 會使用[非同步要求 - 回復模式](/azure/architecture/patterns/async-request-reply)。 此模式可讓 Azure 地圖服務提供高可用性和回應性的服務。 本文說明 Azure 地圖服務之長時間執行非同步背景處理的特定實作。
 
 ## <a name="submitting-a-request"></a>提交要求
 

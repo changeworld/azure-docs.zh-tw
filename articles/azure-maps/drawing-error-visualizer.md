@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b3f9451a5ffd13c67232107d8db1e2da4a3891ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99821e51364eb9ffd75cda291c526c3c0b8c8f0e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86524738"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895846"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>使用 Azure 地圖服務繪製錯誤視覺化檢視
 
-「繪製錯誤視覺化檢視」是一個獨立的 Web 應用程式，會顯示在轉換程序期間偵測到[繪圖套件警告和錯誤](drawing-conversion-error-codes.md)。 錯誤視覺化檢視 Web 應用程式由靜態頁面所組成，可以在不連接網際網路的情況下使用。  您可以使用錯誤視覺化檢視，根據[繪圖套件需求](drawing-requirements.md)來修正錯誤和警告。 只有在偵測到錯誤時，[Azure 地圖服務轉換 API](https://docs.microsoft.com/rest/api/maps/conversion) 才會傳回含有錯誤視覺化連結的回應。
+「繪製錯誤視覺化檢視」是一個獨立的 Web 應用程式，會顯示在轉換程序期間偵測到[繪圖套件警告和錯誤](drawing-conversion-error-codes.md)。 錯誤視覺化檢視 Web 應用程式由靜態頁面所組成，可以在不連接網際網路的情況下使用。  您可以使用錯誤視覺化檢視，根據[繪圖套件需求](drawing-requirements.md)來修正錯誤和警告。 只有在偵測到錯誤時，[Azure 地圖服務轉換 API](/rest/api/maps/conversion) 才會傳回含有錯誤視覺化連結的回應。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -58,8 +58,8 @@ ms.locfileid: "86524738"
 
 在從 `diagnosticPackageLocation` 連結下載的壓縮套件中，您會發現兩個檔案。
 
-* _VisualizationTool.zip_：包含繪製錯誤視覺化檢視的原始程式碼、媒體和網頁。
-* _ConversionWarningsAndErrors.json_：包含警告、錯誤和繪製錯誤視覺化檢視所使用之其他詳細資料的格式化清單。
+* _VisualizationTool.zip_ ：包含繪製錯誤視覺化檢視的原始程式碼、媒體和網頁。
+* _ConversionWarningsAndErrors.json_ ：包含警告、錯誤和繪製錯誤視覺化檢視所使用之其他詳細資料的格式化清單。
 
 解壓縮 _VisualizationTool.zip_ 資料夾。 其中包含下列項目：
 
@@ -80,7 +80,7 @@ ms.locfileid: "86524738"
 
 :::image type="content" source="./media/drawing-errors-visualizer/start-page.png" alt-text="繪製錯誤視覺化檢視應用程式 - 起始頁面":::
 
-_ConversionWarningsAndErrors.json_ 檔案已放在下載目錄的根目錄中。 若要載入 _ConversionWarningsAndErrors.json_，您可以將檔案放拖到方塊上，或按一下方塊，在 [檔案總管] 對話方塊中尋找檔案，然後上傳檔案。
+_ConversionWarningsAndErrors.json_ 檔案已放在下載目錄的根目錄中。 若要載入 _ConversionWarningsAndErrors.json_ ，您可以將檔案放拖到方塊上，或按一下方塊，在 [檔案總管] 對話方塊中尋找檔案，然後上傳檔案。
 
 :::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="繪製錯誤視覺化檢視應用程式 - 起始頁面":::
 
@@ -90,7 +90,7 @@ _ConversionWarningsAndErrors.json_ 檔案載入後，您會看到繪圖套件錯
 
 ## <a name="next-steps"></a>後續步驟
 
-一旦您的[繪圖套件符合需求](drawing-requirements.md)，您就可以使用 [Azure 地圖資料集服務](https://docs.microsoft.com/rest/api/maps/conversion)，將繪圖套件轉換成資料集。 然後，您可以使用室內地圖 Web 模組來開發您的應用程式。 請閱讀下列文章以深入了解：
+一旦您的[繪圖套件符合需求](drawing-requirements.md)，您就可以使用 [Azure 地圖資料集服務](/rest/api/maps/conversion)，將繪圖套件轉換成資料集。 然後，您可以使用室內地圖 Web 模組來開發您的應用程式。 請閱讀下列文章以深入了解：
 
 > [!div class="nextstepaction"]
 > [繪製轉換錯誤碼](drawing-conversion-error-codes.md)
