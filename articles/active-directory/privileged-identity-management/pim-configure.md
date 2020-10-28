@@ -14,12 +14,12 @@ ms.date: 09/29/2020
 ms.author: curtand
 ms.custom: pim ; azuread-video-2020
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0b7bcfa6569edd93373f493cfaa7deff2976d35
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: c3c7003ce3e8c65f6fdb7f3d847947114aee251f
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540824"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370180"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>什麼是 Azure AD Privileged Identity Management？
 
@@ -37,17 +37,17 @@ ms.locfileid: "91540824"
 Privileged Identity Management 提供以時間為基礎和以核准為基礎的角色啟用，可降低因重要資源上有過多、不必要或誤用的存取權限而帶來的風險。 以下是 Privileged Identity Management 的一些主要功能：
 
 - 提供 Azure AD 和 Azure 資源的 **Just-In-Time** 特殊存取權限
-- 使用開始和結束日期指派**有時限**的資源存取權
-- 需要**核准**才能啟用特殊權限角色
-- 強制**多重要素驗證**以啟用任何角色
-- 使用**理由**來了解使用者啟用的原因
-- 在特殊權限角色啟用時取得**通知**
-- 進行**存取權檢閱**以確保使用者仍然需要角色
-- 下載**稽核歷程記錄**以供內部或外部稽核
+- 使用開始和結束日期指派 **有時限** 的資源存取權
+- 需要 **核准** 才能啟用特殊權限角色
+- 強制 **多重要素驗證** 以啟用任何角色
+- 使用 **理由** 來了解使用者啟用的原因
+- 在特殊權限角色啟用時取得 **通知**
+- 進行 **存取權檢閱** 以確保使用者仍然需要角色
+- 下載 **稽核歷程記錄** 以供內部或外部稽核
 
 ## <a name="what-can-i-do-with-it"></a>用途為何？
 
-設定 Privileged Identity Management 後，您會在左側導覽功能表中看到 [工作]  、[管理]  和 [活動]  選項。 身為系統管理員，您將在選項之間做選擇，例如管理 **Azure AD 角色**、管理 **Azure 資源**角色或特殊權限存取群組。 當您選擇想要管理的內容時，您會看到該選項的適當選項組。
+設定 Privileged Identity Management 後，您會在左側導覽功能表中看到 [工作]  、[管理]  和 [活動]  選項。 身為系統管理員，您將在選項之間做選擇，例如管理 **Azure AD 角色** 、管理 **Azure 資源** 角色或特殊權限存取群組。 當您選擇想要管理的內容時，您會看到該選項的適當選項組。
 
 ![Azure 入口網站中的 Privileged Identity Management 螢幕擷取畫面](./media/pim-configure/pim-quickstart.png)
 
@@ -106,5 +106,5 @@ Privileged Identity Management 支援下列案例：
 ## <a name="next-steps"></a>後續步驟
 
 - [使用 Privileged Identity Management 的授權要求](subscription-requirements.md)
-- [在 Azure AD 中保護混合式部署和雲端部署的特殊權限存取](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+- [在 Azure AD 中保護混合式部署和雲端部署的特殊權限存取](../roles/security-planning.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 - [部署 Privileged Identity Management](pim-deployment-plan.md)

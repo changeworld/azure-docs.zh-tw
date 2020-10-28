@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: devx-track-python
-ms.openlocfilehash: 1ed15182e700f125072c69ba9bcf60caf4da5c88
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a0545ea61879b30349403e019ead69ba14f75cb9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87873036"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486492"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>快速入門：使用 Azure Cosmos DB 適用於 MongoDB 的 API 建置 Python 應用程式
 
@@ -127,7 +127,7 @@ ms.locfileid: "87873036"
 
 ## <a name="deploy-to-azure"></a>部署至 Azure
 
-若要部署此應用程式，您可以在 Azure 中建立新的 Web 應用程式，並搭配此 GitHub 存放庫的分支啟用持續部署。 請遵循此[教學課程](https://docs.microsoft.com/azure/app-service/deploy-continuous-deployment)，在 Azure 中搭配 GitHub 設定持續部署。
+若要部署此應用程式，您可以在 Azure 中建立新的 Web 應用程式，並搭配此 GitHub 存放庫的分支啟用持續部署。 請遵循此[教學課程](../app-service/deploy-continuous-deployment.md)，在 Azure 中搭配 GitHub 設定持續部署。
 
 部署至 Azure 時，您應該移除應用程式金鑰，並確定以下區段未註解化：
 
@@ -137,7 +137,7 @@ ms.locfileid: "87873036"
     db.authenticate(name=os.getenv("MONGO_USERNAME"),password=os.getenv("MONGO_PASSWORD"))
 ```
 
-接著，您需要將 MONGOURL、MONGO_PASSWORD 和 MONGO_USERNAME 新增到應用程式設定。 您可以遵循此[教學課程](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)，以深入了解 Azure Web Apps 中的應用程式設定。
+接著，您需要將 MONGOURL、MONGO_PASSWORD 和 MONGO_USERNAME 新增到應用程式設定。 您可以遵循此[教學課程](../app-service/configure-common.md#configure-app-settings)，以深入了解 Azure Web Apps 中的應用程式設定。
 
 如果您不想建立此存放庫的分支，也可以選取下方的 [部署至 Azure]  按鈕。 接著，您應該移至 Azure 並使用 Azure Cosmos DB 帳戶資訊設定應用程式設定。
 
@@ -161,4 +161,4 @@ ms.locfileid: "87873036"
 在本快速入門中，您已了解如何建立適用於 Mongo DB API 的 Azure Cosmos DB 帳戶，並使用 Azure Cosmos DB 模擬器來執行從 GitHub 複製的 Python Flask 待辦事項 Web 應用程式。 您現在可以將其他資料匯入 Azure Cosmos DB 帳戶中。 
 
 > [!div class="nextstepaction"]
-> [將 MongoDB 資料匯入到 Azure Cosmos DB](mongodb-migrate.md)
+> [將 MongoDB 資料匯入到 Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)

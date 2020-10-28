@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/09/2020
 ms.author: anfeldma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 74ff6983b08b6f19a94384be7c4361d4266d6a20
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 2d82b7f618757fbf77072bd7147595eec3083885
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108757"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487631"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>快速入門：使用 Azure Cosmos DB SQL API 帳戶透過 Xamarin 建置待辦事項應用程式
 
@@ -32,7 +32,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 > [!NOTE]
 > 在 GitHub 上 ([這裡](https://github.com/xamarinhq/app-geocontacts)) 可找到整個標準範例 Xamarin 應用程式的範例程式碼，該範例程式碼會展示多個 Azure 供應項目 (包括 CosmosDB)。 此應用程式會示範如何檢視分散各地的連絡人，並且讓這些連絡人更新其位置。
 
-此快速入門示範如何使用 Azure 入口網站建立 Azure Cosmos DB SQL API 帳戶、文件資料庫和容器。 接著，您會建置並部署以 [SQL .NET API](sql-api-sdk-dotnet.md) 和採用 [Xamarin.Forms](https://docs.microsoft.com/xamarin/) 與 [MVVM 架構模式](https://docs.microsoft.com/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm)的 [Xamarin](https://docs.microsoft.com/xamarin/) 為基礎的待辦事項清單行動應用程式。
+此快速入門示範如何使用 Azure 入口網站建立 Azure Cosmos DB SQL API 帳戶、文件資料庫和容器。 接著，您會建置並部署以 [SQL .NET API](sql-api-sdk-dotnet.md) 和採用 [Xamarin.Forms](/xamarin/) 與 [MVVM 架構模式](/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm)的 [Xamarin](/xamarin/) 為基礎的待辦事項清單行動應用程式。
 
 :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-todo-screen.png" alt-text="在 iOS 上執行的 Xamarin 待辦事項應用程式":::
 
@@ -177,7 +177,7 @@ ToDoItems 解決方案中的程式碼包含：
 下列步驟將示範如何使用 Visual Studio for Mac 偵錯工具執行應用程式。
 
 > [!NOTE]
-> Android 版應用程式的使用方式幾乎完全相同，若有任何差異，將會在下列步驟中指出。 如果您想要在 Windows 上使用 Visual Studio 進行偵錯，您可以在[這裡 (iOS)](https://docs.microsoft.com/xamarin/ios/deploy-test/debugging-in-xamarin-ios?tabs=vswin) 和[這裡 (Android)](https://docs.microsoft.com/xamarin/android/deploy-test/debugging/) 找到適用的待辦事項文件。
+> Android 版應用程式的使用方式幾乎完全相同，若有任何差異，將會在下列步驟中指出。 如果您想要在 Windows 上使用 Visual Studio 進行偵錯，您可以在[這裡 (iOS)](/xamarin/ios/deploy-test/debugging-in-xamarin-ios?tabs=vswin) 和[這裡 (Android)](/xamarin/android/deploy-test/debugging/) 找到適用的待辦事項文件。
 
 1. 首先，按一下下拉式反白清單，並選取 ToDoItems.iOS (適用於 iOS) 或 ToDoItems.Android (適用於 Android)，以選取要作為目標的平台。
 

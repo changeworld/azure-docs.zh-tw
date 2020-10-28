@@ -13,12 +13,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-python-october2019
 - devx-track-python
-ms.openlocfilehash: 128e80572275924655e1da534553265407353fff
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: aa23f6d5d7b81e93145fd7db3fb5b45e46918d21
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319005"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487580"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>快速入門：使用 Azure Cosmos DB SQL API 帳戶建置 Python 應用程式
 
@@ -39,7 +39,7 @@ ms.locfileid: "91319005"
     * 在 Azure 作用中訂用帳戶內：
         * [建立 Azure 免費帳戶](https://azure.microsoft.com/free) 或使用現有的訂用帳戶 
         * [Visual Studio 每月點數](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers)
-        * [Azure Cosmos DB 免費層](https://docs.microsoft.com/azure/cosmos-db/optimize-dev-test#azure-cosmos-db-free-tier)
+        * [Azure Cosmos DB 免費層](./optimize-dev-test.md#azure-cosmos-db-free-tier)
     * 若沒有作用中的 Azure 訂用帳戶：
         * [免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，此測試環境可使用 30 天。
         * [Azure Cosmos DB 模擬器](https://aka.ms/cosmosdb-emulator) 
@@ -115,13 +115,13 @@ ms.locfileid: "91319005"
 
 現在，返回 Azure 入口網站以取得連接字串資訊，並將它複製到應用程式中。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 Azure Cosmos DB 帳戶中，選取左側導覽列中的 [金鑰]。 在下一個步驟中，使用畫面右側的複製按鈕，將 **URI** 和**主要金鑰**複製到 cosmos_get_started.py 檔案中。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 Azure Cosmos DB 帳戶中，選取左側導覽列中的 [金鑰]。 在下一個步驟中，使用畫面右側的複製按鈕，將 **URI** 和 **主要金鑰** 複製到 cosmos_get_started.py 檔案中。
 
     :::image type="content" source="./media/create-sql-api-dotnet/access-key-and-uri-in-keys-settings-in-the-azure-portal.png" alt-text="Azure 入口網站資料總管，[新增容器] 窗格":::
 
 2. 在 Visual Studio Code 中，開啟 \git-samples\azure-cosmos-db-python-getting-started 中的 cosmos_get_started.py 檔案。
 
-3. 從入口網站複製您的 **URI** 值 (使用 [複製] 按鈕)，並使其成為 cosmos_get_started.py 中的**端點**變數值。 
+3. 從入口網站複製您的 **URI** 值 (使用 [複製] 按鈕)，並使其成為 cosmos_get_started.py 中的 **端點** 變數值。 
 
     `endpoint = 'https://FILLME.documents.azure.com',`
 
@@ -165,7 +165,7 @@ ms.locfileid: "91319005"
 
 1. 在 Visual Studio Code 中，選取 [檢視] > [命令選擇區]。 
 
-2. 在提示字元中，輸入 **Python:Select Interpreter**，然後選取要使用的 Python 版本。
+2. 在提示字元中，輸入 **Python:Select Interpreter** ，然後選取要使用的 Python 版本。
 
     Visual Studio Code 中的頁尾會更新以指出選取的解譯器。 
 
@@ -237,5 +237,3 @@ ms.locfileid: "91319005"
 
 > [!div class="nextstepaction"]
 > [將資料匯入 SQL API 的 Azure Cosmos DB](import-data.md)
-
-

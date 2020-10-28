@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: ba53fb786b1d1f61535168cda2152049a12dfb99
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 87f3ea2d1ce8d3d9f2f584db379618fc6c4a4a67
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86535504"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491235"
 ---
 # <a name="quickstart-build-a-go-app-with-the-gocql-client-to-manage-azure-cosmos-db-cassandra-api-data"></a>快速入門：建置具有 `gocql` 用戶端的 Go 應用程式來管理 Azure Cosmos DB Cassandra API 資料
 
@@ -85,7 +85,7 @@ func GetSession(cosmosCassandraContactPoint, cosmosCassandraPort, cosmosCassandr
 }
 ```
 
-系統會將 Azure Cosmos DB Cassandra 主機傳遞至 [`gocql.NewCluster`](https://godoc.org/github.com/gocql/gocql#NewCluster) 函式，以取得 [`*gocql.ClusterConfig`](https://godoc.org/github.com/gocql/gocql#ClusterConfig)結構，然後將其設定為使用使用者名稱、密碼、連接埠和適當的 TLS 版本 ([HTTPS/SSL/TLS 加密安全性需求](https://docs.microsoft.com/azure/cosmos-db/database-security?WT.mc_id=cassandrago-docs-abhishgu#how-does-azure-cosmos-db-secure-my-database))
+系統會將 Azure Cosmos DB Cassandra 主機傳遞至 [`gocql.NewCluster`](https://godoc.org/github.com/gocql/gocql#NewCluster) 函式，以取得 [`*gocql.ClusterConfig`](https://godoc.org/github.com/gocql/gocql#ClusterConfig)結構，然後將其設定為使用使用者名稱、密碼、連接埠和適當的 TLS 版本 ([HTTPS/SSL/TLS 加密安全性需求](./database-security.md?WT.mc_id=cassandrago-docs-abhishgu#how-does-azure-cosmos-db-secure-my-database))
 
 然後會從 `main` 函式 (`main.go`) 呼叫 `GetSession` 函式。
 

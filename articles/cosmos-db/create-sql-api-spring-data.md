@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/06/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: acd5914ca9f465c69df4c017162ef92f795b235a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b0939191a8029ef30f17500bbaaa7eb32b5a6d7e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278380"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92486543"
 ---
 # <a name="quickstart-build-a-spring-data-azure-cosmos-db-v3-app-to-manage-azure-cosmos-db-sql-api-data"></a>快速入門：建置 Spring Data Azure Cosmos DB v3 應用程式以管理 Azure Cosmos DB SQL API 資料
 
@@ -36,9 +36,9 @@ ms.locfileid: "92278380"
 > Spring Data Azure Cosmos DB 僅支援 SQL API。
 >
 > 請參閱下列文章，以取得與其他 Azure Cosmos DB API 上的 Spring Data 有關的資訊：
-> * [適用於 Apache Cassandra 的 Spring Data 與 Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
-> * [Spring Data MongoDB 與 Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
-> * [Spring Data Gremlin 與 Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
+> * [適用於 Apache Cassandra 的 Spring Data 與 Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db)
+> * [Spring Data MongoDB 與 Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db)
+> * [Spring Data Gremlin 與 Azure Cosmos DB](/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 
 ## <a name="prerequisites"></a>必要條件
@@ -151,7 +151,7 @@ Spring Data 的附加價值，也來自其簡潔、標準化、可在資料存�
     mvn spring-boot:run
     ```
     
-4. 應用程式會載入 **application.properties**，並連接 Azure Cosmos DB 帳戶中的資源。
+4. 應用程式會載入 **application.properties** ，並連接 Azure Cosmos DB 帳戶中的資源。
 5. 應用程式會執行上述的點 CRUD 作業。
 6. 應用程式將會執行衍生的查詢。
 7. 應用程式不會刪除您的資源。 如果您想要避免產生費用，請切換回入口網站，並從您的帳戶中[清除資源](#clean-up-resources)。

@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 5945f50ada9af6a8d117d3d773ebeae48d5f4085
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c3ea7930f41fe89538a817da032e993e534db9cd
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90903773"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92491320"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>什麼是適用於 PostgreSQL 的 Azure 資料庫？
 
@@ -43,7 +43,7 @@ ms.locfileid: "90903773"
 
 適用於 PostgreSQL 的 Azure 資料庫單一伺服器是完全受控的資料庫服務，具有自訂資料庫的最低需求。 單一伺服器平台的設計訴求是處理大部分的資料庫管理功能，例如修補、備份、高可用性，並透過最少的使用者組態和控制帶來安全性。 此架構針對內建高可用性進行最佳化，提供達 99.99% 的單一可用性區域可用性。 同時支援 PostgreSQL 9.5、9,6、10 和 11 社群版本。 本服務已在各個 [Azure 區域](https://azure.microsoft.com/global-infrastructure/services/)中正式推出。
 
-單一伺服器部署選項提供三個定價層：「基本」、「一般用途」及「記憶體最佳化」。 每一層提供不同的資源功能，來支援您的資料庫工作負載。 您可以在小型資料庫中建置第一個應用程式，一個月只需少許花費，然後調整規模以滿足解決方案的需求。 動態延展性可讓您的資料庫以透明的方式回應快速變化的資源需求。 您只需支付您所需的資源費用。 如需詳細資訊，請參閱[定價層](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers)。
+單一伺服器部署選項提供三個定價層：「基本」、「一般用途」及「記憶體最佳化」。 每一層提供不同的資源功能，來支援您的資料庫工作負載。 您可以在小型資料庫中建置第一個應用程式，一個月只需少許花費，然後調整規模以滿足解決方案的需求。 動態延展性可讓您的資料庫以透明的方式回應快速變化的資源需求。 您只需支付您所需的資源費用。 如需詳細資訊，請參閱[定價層](./concepts-pricing-tiers.md)。
 
 雲端原生應用程式最適合使用單一伺服器處理自動修補，無需細部控管修補排程和自訂 PostgreSQL 組態設定。
 
@@ -72,7 +72,7 @@ ms.locfileid: "90903773"
 - 跨這些伺服器的查詢平行處理能力，以提升大型資料集的回應速度
 - 多租用戶應用程式、即時作業分析和高輸送量交易式工作負載的絕佳支援
   
-針對 PostgreSQL 所建置的應用程式可以在超大規模 (Citus) 上執行分散式查詢，只要有標準[連線程式庫](https://docs.microsoft.com/azure/postgresql/concepts-connection-libraries)並進行些許變更即可。
+針對 PostgreSQL 所建置的應用程式可以在超大規模 (Citus) 上執行分散式查詢，只要有標準[連線程式庫](./concepts-connection-libraries.md)並進行些許變更即可。
 
 ## <a name="next-steps"></a>後續步驟
 

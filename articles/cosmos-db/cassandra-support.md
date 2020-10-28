@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: f9d472b94b5490d00eac6d160af40c61d547534b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 89e8a6a2abfc38c497be646bd70910895f92588f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107482"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489314"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支援的 Apache Cassandra 功能 
 
@@ -208,7 +208,7 @@ Azure Cosmos DB Cassandra API 是受控服務平台。 它不會造成任何管�
 
 **Windows：**
 
-如果使用 Windows，建議您啟用[適用於 Linux 的 Windows 檔案系統](https://docs.microsoft.com/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)。 您接著可遵循以下的 Linux 命令。
+如果使用 Windows，建議您啟用[適用於 Linux 的 Windows 檔案系統](/windows/wsl/install-win10#install-the-windows-subsystem-for-linux)。 您接著可遵循以下的 Linux 命令。
 
 **Unix/Linux/Mac：**
 
@@ -255,7 +255,7 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>一致性對應 
 
-Azure Cosmos DB Cassandra API 提供讀取作業的一致性選擇。  一致性對應[在此](consistency-levels-across-apis.md#cassandra-mapping)有詳細說明。
+Azure Cosmos DB Cassandra API 提供讀取作業的一致性選擇。  一致性對應[在此](./cassandra-consistency.md#mapping-consistency-levels)有詳細說明。
 
 ## <a name="permission-and-role-management"></a>權限與角色管理
 

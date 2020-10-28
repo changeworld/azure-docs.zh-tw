@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d4e709b2a844db9d0be55de2630ce799edb01ff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 80ae79f73a55d5feb1aede7ccc7d3b2b64682a24
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87921668"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92364077"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技術和功能概觀
 
@@ -29,7 +29,7 @@ ms.locfileid: "87921668"
 
 * **目錄** -「目錄」是 Azure AD B2C 儲存使用者認證和設定檔資料，以及您的應用程式註冊的位置。
 * **應用程式註冊** - 您向 Azure AD B2C 註冊 Web、行動和原生應用程式，以啟用身分識別管理。 還有，您想要使用 Azure AD B2C 保護的任何 API。
-* **使用者流程**和**自訂原則**- 您應用程式的內建 (使用者流程) 並可完全自訂 (自訂原則) 的身分識別體驗。
+* **使用者流程** 和 **自訂原則** - 您應用程式的內建 (使用者流程) 並可完全自訂 (自訂原則) 的身分識別體驗。
   * 使用「使用者流程」來快速設定和啟用常見身分識別工作，例如註冊、登入和設定檔編輯。
   * 使用「自訂原則」來啟用使用者體驗，不僅適於常見身分識別工作，還能為貴組織、客戶、員工、合作夥伴和公民獨有的複雜身分識別工作流程提供特別支援。
 * **身分識別提供者** - 同盟設定適用於：
@@ -45,7 +45,7 @@ Azure AD B2C 租用戶是開始使用 Azure AD B2C 所需建立的第一個資�
 Azure AD B2C 定義數種類型的使用者帳戶。 Azure Active Directory、Azure Active Directory B2B 和 Azure Active Directory B2C 會共用這些帳戶類型。
 
 * **公司帳戶** - 具有公司帳戶的使用者可管理租用戶中的資源，而具有系統管理員角色的使用者也可管理租用戶。 具有工作帳戶的使用者可以建立新的取用者帳戶、重設密碼、封鎖/解除封鎖帳戶，以及設定權限或將帳戶指派給安全性群組。
-* **來賓帳戶**- 您邀請以來賓身分使用租用戶的外部使用者。 將來賓使用者邀請到 Azure AD B2C 租用戶的典型案例是為了分擔管理責任。
+* **來賓帳戶** - 您邀請以來賓身分使用租用戶的外部使用者。 將來賓使用者邀請到 Azure AD B2C 租用戶的典型案例是為了分擔管理責任。
 * **取用者帳戶** - 取用者帳戶是當使用者在您於租用戶中註冊的應用程式中完成註冊使用者旅程圖時，在 Azure AD B2C 目錄中建立的帳戶。
 
 ![Azure 入口網站中的 Azure AD B2C 使用者管理頁面](media/technical-overview/portal-01-users.png)<br/>*圖：Azure 入口網站中 Azure AD B2C 租用戶內的使用者目錄*
@@ -56,8 +56,8 @@ Azure AD B2C 定義數種類型的使用者帳戶。 Azure Active Directory、Az
 
 取用者帳戶可與下列身分識別類型產生關聯：
 
-* **本機**身分識別，其使用者名稱和密碼儲存在本機的 Azure AD B2C 目錄中。 我們通常會將這些身分識別稱為「本機帳戶」。
-* **社交**或**企業**身分識別，其中使用者的身分識別是由 Facebook、Microsoft、ADFS 或 Salesforce 等同盟識別提供者所管理。
+* **本機** 身分識別，其使用者名稱和密碼儲存在本機的 Azure AD B2C 目錄中。 我們通常會將這些身分識別稱為「本機帳戶」。
+* **社交** 或 **企業** 身分識別，其中使用者的身分識別是由 Facebook、Microsoft、ADFS 或 Salesforce 等同盟識別提供者所管理。
 
 具有取用者帳戶的使用者可使用多種身分識別進行登入，例如使用者名稱、電子郵件、員工識別碼、政府識別碼等等。 單一帳戶可以有多個身分識別，包括本機和社交。
 
@@ -87,9 +87,9 @@ Azure AD B2C 的可延伸原則架構是其核心優點。 原則可描述使用
 
 在 Azure AD B2C 中，您可採用兩個主要途徑來提供這些身分識別體驗：使用者流程和自訂原則。
 
-* **使用者流程**是預先定義的內建、可設定原則，可讓您在短短幾分鐘內建立註冊、登入和原則編輯體驗。
+* **使用者流程** 是預先定義的內建、可設定原則，可讓您在短短幾分鐘內建立註冊、登入和原則編輯體驗。
 
-* **自訂原則**可讓您建立自己的使用者旅程圖，以進行複雜的身分識別體驗案例。
+* **自訂原則** 可讓您建立自己的使用者旅程圖，以進行複雜的身分識別體驗案例。
 
 使用者流程和自訂原則都是由 Identity Experience Framework 支援，這是 Azure AD B2C 的原則協調流程引擎。
 
@@ -215,7 +215,7 @@ Azure AD B2C 租用戶會與用於員工和合作夥伴的企業 Azure Active Di
 * 在 Identity Experience Framework 中建立和管理信任架構原則 (自訂原則)
 * 在 Identity Experience Framework 中管理用於同盟和加密的密碼 (自訂原則)
 
-如需 Azure AD 角色 (包括 Azure AD B2C 系統管理角色支援) 的詳細資訊，請參閱 [Azure Active Directory 中的管理員角色權限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+如需 Azure AD 角色 (包括 Azure AD B2C 系統管理角色支援) 的詳細資訊，請參閱 [Azure Active Directory 中的管理員角色權限](../active-directory/roles/permissions-reference.md)。
 
 ### <a name="multi-factor-authentication-mfa"></a>多重要素驗證 (MFA)
 

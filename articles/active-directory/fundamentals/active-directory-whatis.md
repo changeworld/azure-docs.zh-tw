@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d66e8b15b7af73517a7f838186821248bffeccc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bfc5126c0cce89502b0f1d8b17c06519f338fe52
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89566104"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370843"
 ---
 # <a name="what-is-azure-active-directory"></a>什麼是 Azure Active Directory？
 
@@ -73,7 +73,7 @@ Microsoft 365 或 Microsoft Azure 等 Microsoft Online 業務服務需要 Azure 
 |條件式存取|管理雲端應用程式的存取權。 如需詳細資訊，請參閱 [Azure AD 條件式存取文件](../conditional-access/index.yml)。|
 |裝置管理|管理雲端或內部部署裝置存取公司資料的方式。 如需詳細資訊，請參閱 [Azure AD 裝置管理文件](../devices/index.yml)。|
 |網域服務|在不使用網域控制站的情況下，將 Azure 虛擬機器加入網域中。 如需詳細資訊，請參閱 [Azure AD Domain Services 文件](../../active-directory-domain-services/index.yml)。|
-|企業使用者|管理授權指派、應用程式的存取權，並使用群組和系統管理員角色來設定委派。 如需詳細資訊，請參閱 [Azure Active Directory 使用者管理文件](../users-groups-roles/index.yml)。|
+|企業使用者|管理授權指派、應用程式的存取權，並使用群組和系統管理員角色來設定委派。 如需詳細資訊，請參閱 [Azure Active Directory 使用者管理文件](../enterprise-users/index.yml)。|
 |混合式身分識別|使用 Azure Active Directory Connect 和 Connect Health 提供單一使用者身分識別，以便對不同位置 (不論是雲端還是內部部署) 的所有資源執行驗證和授權程序。 如需詳細資訊，請參閱[混合式身分識別文件](../hybrid/index.yml)。|
 |身分識別治理|管理組織的身分識別，從員工、業務合作夥伴、廠商、服務到應用程式的存取控制。 您也可以執行存取權檢閱。 如需詳細資訊，請參閱 [Azure AD Identity Governance 文件](../governance/identity-governance-overview.md)和 [Azure AD 存取權檢閱](../governance/access-reviews-overview.md)。|
 |身分識別保護|偵測會影響組織身分識別的潛在弱點、設定用來回應可疑動作的原則，然後採取適當動作來加以解決。 如需詳細資訊，請參閱 [Azure AD Identity Protection](../identity-protection/index.yml)。|
@@ -93,7 +93,7 @@ Microsoft 365 或 Microsoft Azure 等 Microsoft Online 業務服務需要 Azure 
 |帳戶管理員|在概念上，這個傳統的訂用帳戶系統管理員角色是訂用帳戶的計費擁有者。 這個角色可存取 [Azure 帳戶中心](https://account.azure.com/Subscriptions)，並可讓您管理帳戶中的所有訂用帳戶。 如需詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。|
 |服務管理員|這個傳統的訂用帳戶系統管理員角色可讓您管理所有 Azure 資源，包括存取權。 這個角色所具有的存取權，與在訂用帳戶範圍獲派擁有者角色的使用者相同。 如需詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。|
 |擁有者|這個角色可協助您管理所有 Azure 資源，包括存取權。 這個角色建置在較新的授權系統 (稱為 Azure 角色型存取控制 (RBAC)) 上，可讓您以更細微的方式管理 Azure 資源的存取權。 如需詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。|
-|Azure AD 全域系統管理員|這個系統管理員角色會自動指派給 Azure AD 租用戶的建立者。 全域系統管理員可以針對 Azure AD 和任何與 Azure AD 同盟的服務 (例如，Exchange Online、SharePoint Online 和商務用 Skype Online)，執行所有系統管理功能。 您可以有多個全域系統管理員，但只有全域系統管理員可以對使用者指派系統管理員角色 (包括指派其他全域系統管理員)。 請注意，此管理員角色在 Azure 入口網站中稱為全域管理員，但在 Microsoft Graph API 與 Azure AD PowerShell 中稱為**公司系統管理員**。如需各種管理員角色的詳細資訊，請參閱 [Azure Active Directory 中的管理員角色權限](../users-groups-roles/directory-assign-admin-roles.md)。|
+|Azure AD 全域系統管理員|這個系統管理員角色會自動指派給 Azure AD 租用戶的建立者。 全域系統管理員可以針對 Azure AD 和任何與 Azure AD 同盟的服務 (例如，Exchange Online、SharePoint Online 和商務用 Skype Online)，執行所有系統管理功能。 您可以有多個全域系統管理員，但只有全域系統管理員可以對使用者指派系統管理員角色 (包括指派其他全域系統管理員)。 請注意，此管理員角色在 Azure 入口網站中稱為全域管理員，但在 Microsoft Graph API 與 Azure AD PowerShell 中稱為 **公司系統管理員** 。如需各種管理員角色的詳細資訊，請參閱 [Azure Active Directory 中的管理員角色權限](../roles/permissions-reference.md)。|
 |Azure 訂用帳戶| 用來支付 Azure 雲端服務費用。 您可以擁有許多訂用帳戶，而它們都會與信用卡連結。|
 |Azure 租用戶| 組織在註冊 Microsoft 雲端服務訂用帳戶 (例如 Microsoft Azure、Microsoft Intune 或 Microsoft 365) 時，所自動建立的專用且受信任 Azure AD 執行個體。 一個 Azure 租用戶代表一個組織。|
 |單一租用戶| 如果 Azure 租用戶會存取專用環境中的其他服務，便可將其視為單一租用戶。|

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 09/22/2020
-ms.openlocfilehash: 25c3f875717c9c064af0ce27bdab735db67d2f5d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 978fcb8c8cf9d2ffd929da5b76d7fd2ff109f420
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943595"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535853"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---flexible-server-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立適用於 PostgreSQL 的 Azure 資料庫 - 彈性伺服器
 
@@ -29,7 +29,7 @@ Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行�
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>建立適用於 PostgreSQL 的 Azure 資料庫伺服器
 
-「適用於 PostgreSQL 的 Azure 資料庫」伺服器是以一組已設定的[計算和儲存體資源](./concepts-compute-storage.md)所建立。 伺服器會建立在 [Azure 資源群組](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)內。
+「適用於 PostgreSQL 的 Azure 資料庫」伺服器是以一組已設定的[計算和儲存體資源](./concepts-compute-storage.md)所建立。 伺服器會建立在 [Azure 資源群組](../../azure-resource-manager/management/overview.md)內。
 
 若要建立 Azure Database for PostgreSQL 伺服器，請採取下列步驟：
 
@@ -52,11 +52,11 @@ Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行�
     訂用帳戶|您的訂用帳戶名稱|您要用於伺服器的 Azure 訂用帳戶。 如果您有多個訂用帳戶，請選擇資源計費的訂用帳戶。
     資源群組|*myresourcegroup*| 新的資源群組名稱，或您訂用帳戶中現有的資源群組名稱。
     伺服器名稱 |*mydemoserver*|可識別 Azure Database for PostgreSQL 伺服器的唯一名稱。 網域名稱 postgres.database.azure.com  已附加至您提供的伺服器名稱。 伺服器只能包含小寫字母、數字及連字號 (-) 字元。 它必須包含至少 3 到 63 個字元。
-    系統管理員使用者名稱 |myadmin | 連線至伺服器時所要使用之自己的登入帳戶。 管理員登入名稱不能是 **azure_superuser**、**azure_pg_admin** **admin** **administrator** **root** **guest** 或 **public**。 它不能以 **pg_** 開頭。
+    系統管理員使用者名稱 |myadmin | 連線至伺服器時所要使用之自己的登入帳戶。 管理員登入名稱不能是 **azure_superuser** 、 **azure_pg_admin** **admin** **administrator** **root** **guest** 或 **public** 。 它不能以 **pg_** 開頭。
     密碼 |您的密碼| 伺服器管理帳戶的新密碼。 其必須包含 8 到 128 個字元。 您的密碼必須包含下列類別中三種類別的字元：英文大寫字母、英文小寫字母、數字 (0 到 9) 及非英數字元 (!、$、#、% 等等)。
     Location|最接近使用者的區域| 最靠近您使用者的位置。
     版本|最新的主要版本| 最新 PostgreSQL 主要版本 (除非您有其他特定需求)。
-    計算 + 儲存體 | **一般用途**、**4 虛擬核心**、**512 GB**、**7 天** | 新伺服器的計算、儲存體和備份組態。 選取 [設定伺服器]  。 一般用途、4 虛擬核心、512 GB 和 7 天分別是**計算層**、**虛擬核心**、**儲存體**和**備份保留期間**的預設值。 您可以讓這些滑桿保持原狀或加以調整。 若要儲存此定價層選取項目，請選取 [確定]  。 下方螢幕擷取畫面會擷取這些選取項目。
+    計算 + 儲存體 | **一般用途** 、 **4 虛擬核心** 、 **512 GB** 、 **7 天** | 新伺服器的計算、儲存體和備份組態。 選取 [設定伺服器]  。 一般用途、4 虛擬核心、512 GB 和 7 天分別是 **計算層** 、 **虛擬核心** 、 **儲存體** 和 **備份保留期間** 的預設值。 您可以讓這些滑桿保持原狀或加以調整。 若要儲存此定價層選取項目，請選取 [確定]  。 下方螢幕擷取畫面會擷取這些選取項目。
 
     :::image type="content" source="./media/quickstart-create-database-portal/4-pricing-tier.png" alt-text="選單中的適用於 PostgreSQL 的 Azure 資料庫":::
     
@@ -72,11 +72,11 @@ Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行�
 
 6. 選取 [檢閱 + 建立] 以檢閱您的選項。 選取 [建立] 以佈建伺服器。 這項作業可能需要幾分鐘的時間。
 
-7. 在工具列上，選取 [通知]  圖示 (鈴鐺) 以監視部署程序。 完成部署後，您可以選取 [釘選到儀表板]  ，在 Azure 入口網站儀表板上建立此伺服器的圖格，以作為伺服器 [概觀]  頁面的捷徑。 選取 [移至資源]**** 會開啟伺服器的 [概觀]**** 頁面。
+7. 在工具列上，選取 [通知]  圖示 (鈴鐺) 以監視部署程序。 完成部署後，您可以選取 [釘選到儀表板]  ，在 Azure 入口網站儀表板上建立此伺服器的圖格，以作為伺服器 [概觀]  頁面的捷徑。 選取 [移至資源]  會開啟伺服器的 [概觀]  頁面。
 
     :::image type="content" source="./media/quickstart-create-database-portal/7-notifications.png" alt-text="選單中的適用於 PostgreSQL 的 Azure 資料庫":::
 
-   根據預設，**postgres** 資料庫會建立在您的伺服器底下。 [postgres](https://www.postgresql.org/docs/12/static/app-initdb.html) 資料庫是要供使用者、公用程式及第三方應用程式使用的預設資料庫。 (其他預設資料庫是 **azure_maintenance**。 其功能是分隔受控服務處理程序和使用者動作。 您無法存取此資料庫。)
+   根據預設， **postgres** 資料庫會建立在您的伺服器底下。 [postgres](https://www.postgresql.org/docs/12/static/app-initdb.html) 資料庫是要供使用者、公用程式及第三方應用程式使用的預設資料庫。 (其他預設資料庫是 **azure_maintenance** 。 其功能是分隔受控服務處理程序和使用者動作。 您無法存取此資料庫。)
 
     > [!NOTE]
     > 您的 Azure Database for PostgreSQL 伺服器連線會透過連接埠 5432 通訊。 如果您嘗試從公司網路內進行連線，您網路的防火牆可能不允許透過連接埠 5432 的輸出流量。 若是如此，除非 IT 部門開啟連接埠 5432，否則您無法連線到您的伺服器。
@@ -84,9 +84,9 @@ Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行�
 
 ## <a name="get-the-connection-information"></a>取得連線資訊
 
-當您建立 Azure Database for PostgreSQL 伺服器時，系統會建立名為 **postgres** 的預設資料庫。 若要連線到您的資料庫伺服器，您需要完整伺服器名稱和系統管理員登入認證。 您稍早可能已在快速入門文章中記下這些值。 若未這麼做，您可以在 Azure 入口網站的伺服器 [概觀]**** 頁面輕鬆尋找伺服器名稱和登入資訊。
+當您建立 Azure Database for PostgreSQL 伺服器時，系統會建立名為 **postgres** 的預設資料庫。 若要連線到您的資料庫伺服器，您需要完整伺服器名稱和系統管理員登入認證。 您稍早可能已在快速入門文章中記下這些值。 若未這麼做，您可以在 Azure 入口網站的伺服器 [概觀]  頁面輕鬆尋找伺服器名稱和登入資訊。
 
-開啟伺服器的 [概觀]**** 頁面。 記下 [伺服器名稱]**** 和 [伺服器管理員登入名稱]****。 將您的游標停留在每個欄位上，複製符號就會出現在文字右邊。 視需要選取複製符號來複製值。
+開啟伺服器的 [概觀]  頁面。 記下 [伺服器名稱]  和 [伺服器管理員登入名稱]  。 將您的游標停留在每個欄位上，複製符號就會出現在文字右邊。 視需要選取複製符號來複製值。
 
  :::image type="content" source="./media/quickstart-create-database-portal/8-server-name.png" alt-text="選單中的適用於 PostgreSQL 的 Azure 資料庫":::
 
@@ -133,7 +133,7 @@ Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行�
     CREATE DATABASE mypgsqldb;
     ```
 
-3. 在提示字元，執行下列命令將連線切換到新建立的資料庫 **mypgsqldb**：
+3. 在提示字元，執行下列命令將連線切換到新建立的資料庫 **mypgsqldb** ：
 
     ```bash
     \c mypgsqldb
@@ -152,19 +152,19 @@ Azure Database for PostgreSQL 是一種受控服務，您用來在雲端執行�
 
 若要刪除整個資源群組 (包括新建立的伺服器)：
 
-1. 在入口網站中找出您的資源群組。 在左側功能表中，選取 [資源群組]****。 然後選取您的資源群組名稱，例如範例中的 **myresourcegroup**。
+1. 在入口網站中找出您的資源群組。 在左側功能表中，選取 [資源群組]  。 然後選取您的資源群組名稱，例如範例中的 **myresourcegroup** 。
 
-2. 在資源群組頁面上，選取 [刪除]  。 在文字方塊中輸入您的資源群組名稱 (例如範例中的 **myresourcegroup**)，以確認刪除。 選取 [刪除]  。
+2. 在資源群組頁面上，選取 [刪除]  。 在文字方塊中輸入您的資源群組名稱 (例如範例中的 **myresourcegroup** )，以確認刪除。 選取 [刪除]  。
 
 若要刪除新建立的伺服器：
 
-1. 請在入口網站中找出您的伺服器 (如果您未將它開啟)。 在左側功能表上選取 [所有資源]****。 然後搜尋您所建立的伺服器。
+1. 請在入口網站中找出您的伺服器 (如果您未將它開啟)。 在左側功能表上選取 [所有資源]  。 然後搜尋您所建立的伺服器。
 
 2. 在 [概觀]  頁面上，按一下 [刪除]  。
 
     :::image type="content" source="./media/quickstart-create-database-portal/9-delete.png" alt-text="選單中的適用於 PostgreSQL 的 Azure 資料庫":::
 
-3. 確認您要刪除的伺服器名稱，並且會檢視其下受影響的資料庫。 在文字方塊中輸入您的伺服器名稱，例如範例中的 **mydemoserver**。 選取 [刪除]  。
+3. 確認您要刪除的伺服器名稱，並且會檢視其下受影響的資料庫。 在文字方塊中輸入您的伺服器名稱，例如範例中的 **mydemoserver** 。 選取 [刪除]  。
 
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]

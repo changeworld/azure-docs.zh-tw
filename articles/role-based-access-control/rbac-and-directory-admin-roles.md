@@ -15,12 +15,12 @@ ms.date: 07/07/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: b85f1d8bd7249ad26ff957a72a9cc7285158caba
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: cc4f775c3cf4c016173c485d57f203b4665c6393
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397720"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92370639"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 角色
 
@@ -99,11 +99,11 @@ Azure AD 角色會用來管理目錄中的 Azure AD 資源，例如建立或編�
 
 | Azure AD 角色 | 權限 | 注意 |
 | --- | --- | --- |
-| [全域管理員](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) | <ul><li>管理 Azure Active Directory 中所有系統管理功能的存取權，以及 Azure Active Directory 同盟服務</li><li>將管理員角色指派給其他人</li><li>為任何使用者和所有其他管理員重設密碼</li></ul> | 註冊 Azure Active Directory 租用戶的人員會變成全域管理員。 |
-| [使用者管理員](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-administrator) | <ul><li>建立及管理使用者與群組的所有層面</li><li>管理支援票證</li><li>監視服務健康情況</li><li>變更使用者、技術支援中心管理員及其他使用者管理員的密碼</li></ul> |  |
-| [計費管理員](../active-directory/users-groups-roles/directory-assign-admin-roles.md#billing-administrator) | <ul><li>進行購買</li><li>管理訂用帳戶</li><li>管理支援票證</li><li>監視服務健康狀態</li></ul> |  |
+| [全域管理員](../active-directory/roles/permissions-reference.md#company-administrator-permissions) | <ul><li>管理 Azure Active Directory 中所有系統管理功能的存取權，以及 Azure Active Directory 同盟服務</li><li>將管理員角色指派給其他人</li><li>為任何使用者和所有其他管理員重設密碼</li></ul> | 註冊 Azure Active Directory 租用戶的人員會變成全域管理員。 |
+| [使用者管理員](../active-directory/roles/permissions-reference.md#user-administrator) | <ul><li>建立及管理使用者與群組的所有層面</li><li>管理支援票證</li><li>監視服務健康情況</li><li>變更使用者、技術支援中心管理員及其他使用者管理員的密碼</li></ul> |  |
+| [計費管理員](../active-directory/roles/permissions-reference.md#billing-administrator) | <ul><li>進行購買</li><li>管理訂用帳戶</li><li>管理支援票證</li><li>監視服務健康狀態</li></ul> |  |
 
-在 Azure 入口網站中，您可以在 [角色和管理員] 刀鋒視窗上看到 Azure AD 角色清單。 如需所有 Azure AD 角色的清單，請參閱 [Azure Active Directory 中的管理員角色權限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+在 Azure 入口網站中，您可以在 [角色和管理員] 刀鋒視窗上看到 Azure AD 角色清單。 如需所有 Azure AD 角色的清單，請參閱 [Azure Active Directory 中的管理員角色權限](../active-directory/roles/permissions-reference.md)。
 
 ![Azure 入口網站中的 Azure AD 角色](./media/rbac-and-directory-admin-roles/directory-admin-roles.png)
 
@@ -129,5 +129,5 @@ Azure AD 角色會用來管理目錄中的 Azure AD 資源，例如建立或編�
 ## <a name="next-steps"></a>後續步驟
 
 - [什麼是 Azure 角色型存取控制 (Azure RBAC)？](overview.md)
-- [Azure Active Directory 中的系統管理員角色權限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+- [Azure Active Directory 中的系統管理員角色權限](../active-directory/roles/permissions-reference.md)
 - [Azure 傳統訂用帳戶管理員](classic-administrators.md)

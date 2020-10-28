@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 10/21/2020
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 29fb509d72514a18a6554a381737bf9530b1dfc4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: cf432910c42716de151aa2e0d36c21bff18d3ed9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276291"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92482889"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>快速入門：建置 .NET 主控台應用程式來管理 Azure Cosmos DB SQL API 資源
 
@@ -167,7 +167,7 @@ export PrimaryKey = "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
 
 若要了解有關不同實體的階層，請參閱[使用 Azure Cosmos DB 中的資料庫、容器和項目](account-databases-containers-items.md) \(部分機器翻譯\) 一文。 您將使用下列 .NET 類別與這些資源互動：
 
-* [CosmosClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclient?view=azure-dotnet&preserve-view=true) - 此類別提供適用於 Azure Cosmos DB 服務的用戶端邏輯表示法。 用戶端物件會用於設定及執行針對服務的要求。
+* [CosmosClient](/dotnet/api/microsoft.azure.cosmos.cosmosclient?preserve-view=true&view=azure-dotnet) - 此類別提供適用於 Azure Cosmos DB 服務的用戶端邏輯表示法。 用戶端物件會用於設定及執行針對服務的要求。
 
 * [CreateDatabaseIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseifnotexistsasync?view=azure-dotnet&preserve-view=true) - 此方法會建立 (如果不存在) 或取得 (如果已經存在) 資料庫資源作為非同步作業。 
 

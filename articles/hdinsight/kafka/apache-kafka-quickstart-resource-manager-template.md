@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 79f9b6f1ec801b67c8600df0131554cbb51f1030
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12988feeb26bc5821e8f08db3e688a2e1c429e19
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858197"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532623"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-arm-template"></a>快速入門：在 Azure HDInsight 中使用 ARM 範本建立 Apache Kafka 叢集
 
@@ -56,18 +56,18 @@ Kafka API 只能由同一個虛擬網路中的資源來存取。 在本快速入
     |資源群組|從下拉式清單中選取現有資源群組，或選取 [新建]。|
     |Location|此值會以資源群組所用的位置來自動填入。|
     |叢集名稱|輸入全域唯一名稱。 針對此範本，請只使用小寫字母和數字。|
-    |叢集登入使用者名稱|提供使用者名稱，預設值為 **admin**。|
+    |叢集登入使用者名稱|提供使用者名稱，預設值為 **admin** 。|
     |叢集登入密碼|提供密碼。 密碼長度至少必須為 10 個字元，且必須包含至少一個數字、一個大寫字母及一個小寫字母、一個非英數字元 (除了字元 ' " `)。 |
     |SSH 使用者名稱|提供使用者名稱，預設值為 **sshuser**|
     |SSH 密碼|請提供密碼。|
 
     ![範本屬性的螢幕擷取畫面](./media/apache-kafka-quickstart-resource-manager-template/resource-manager-template-kafka.png)
 
-1. 檢閱**條款及條件**。 然後選取 [我同意上方所述的條款及條件]，然後選取 [購買]。 您會收到一則通知，內容指出您的部署正在進行中。 大約需要 20 分鐘的時間來建立叢集。
+1. 檢閱 **條款及條件** 。 然後選取 [我同意上方所述的條款及條件]，然後選取 [購買]。 您會收到一則通知，內容指出您的部署正在進行中。 大約需要 20 分鐘的時間來建立叢集。
 
 ## <a name="review-deployed-resources"></a>檢閱已部署的資源
 
-叢集建立好之後，您會收到**部署成功**通知，內有 [移至資源] 連結。 [資源群組] 頁面會列出新的 HDInsight 叢集以及與叢集相關聯的預設儲存體。 每個叢集都具備 [Azure Blob 儲存體](../hdinsight-hadoop-use-blob-storage.md)帳戶、[Azure Data Lake Storage Gen1](../hdinsight-hadoop-use-data-lake-storage-gen1.md) 或 [`Azure Data Lake Storage Gen2`](../hdinsight-hadoop-use-data-lake-storage-gen2.md) 相依性。 也稱為預設儲存體帳戶。 HDInsight 叢集及其預設儲存體帳戶必須共置於相同的 Azure 區域中。 刪除叢集並不會刪除儲存體帳戶。
+叢集建立好之後，您會收到 **部署成功** 通知，內有 [移至資源] 連結。 [資源群組] 頁面會列出新的 HDInsight 叢集以及與叢集相關聯的預設儲存體。 每個叢集都具備 [Azure Blob 儲存體](../hdinsight-hadoop-use-blob-storage.md)帳戶、[Azure Data Lake Storage Gen1](../hdinsight-hadoop-use-data-lake-storage-gen1.md) 或 [`Azure Data Lake Storage Gen2`](../hdinsight-hadoop-use-data-lake-storage-gen2.md) 相依性。 也稱為預設儲存體帳戶。 HDInsight 叢集及其預設儲存體帳戶必須共置於相同的 Azure 區域中。 刪除叢集並不會刪除儲存體帳戶。
 
 ## <a name="get-the-apache-zookeeper-and-broker-host-information"></a>取得 Apache Zookeeper 和訊息代理程式主機資訊
 
@@ -135,7 +135,7 @@ Kafka API 只能由同一個虛擬網路中的資源來存取。 在本快速入
 
 Kafka 會將資料串流儲存於「主題」中。 您可以使用 `kafka-topics.sh` 公用程式來管理主題。
 
-* **若要建立主題**，請在 SSH 連線中使用下列命令：
+* **若要建立主題** ，請在 SSH 連線中使用下列命令：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
@@ -151,7 +151,7 @@ Kafka 會將資料串流儲存於「主題」中。 您可以使用 `kafka-topic
         
         在具有三個容錯網域的區域中，複寫因子 3 可讓複本散佈於容錯網域中。 在具有兩個容錯網域的區域中，複寫因子 4 會在網域中平均散佈複本。
         
-        如需區域中的容錯網域數目的資訊，請參閱 [Linux 虛擬機器的可用性](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)文件。
+        如需區域中的容錯網域數目的資訊，請參閱 [Linux 虛擬機器的可用性](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)文件。
 
         Kafka 不知道 Azure 容錯網域。 為主題建立副本時，可能無法正確發散副本以實現高可用性。
 
@@ -163,7 +163,7 @@ Kafka 會將資料串流儲存於「主題」中。 您可以使用 `kafka-topic
 
         * 擴大叢集時
 
-* **若要列出主題**，請使用下列命令：
+* **若要列出主題** ，請使用下列命令：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $KAFKAZKHOSTS
@@ -171,7 +171,7 @@ Kafka 會將資料串流儲存於「主題」中。 您可以使用 `kafka-topic
 
     此命令會列出可在 Kafka 叢集上使用的主題。
 
-* **若要刪除主題**，請使用下列命令：
+* **若要刪除主題** ，請使用下列命令：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic topicname --zookeeper $KAFKAZKHOSTS

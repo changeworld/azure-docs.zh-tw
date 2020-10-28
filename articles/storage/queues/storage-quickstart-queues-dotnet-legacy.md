@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8e782dc632fe4100194015c3e0adb4ceb1ac30a6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d73f225f0e6f230509c856af0d15bc02e80fcd98
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89011458"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425888"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>快速入門：使用適用於 .NET 的 Azure 儲存體 SDK v11 來管理佇列
 
@@ -34,7 +34,7 @@ ms.locfileid: "89011458"
 - 安裝 [.NET Core for Windows](https://www.microsoft.com/net/download/windows) 或 [.NET Framework](https://www.microsoft.com/net/download/windows) (隨附於 Visual Studio for Windows)
 - 安裝 [Visual Studio for Windows](https://www.visualstudio.com/)。 如果您使用 .NET Core，可選擇性安裝 Visual Studio。  
 
-如需選擇 .NET Core 或 .NET Framework 的相關資訊，請參閱[針對伺服器應用程式選擇 .NET Core 或 .NET Framework](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server)。
+如需選擇 .NET Core 或 .NET Framework 的相關資訊，請參閱[針對伺服器應用程式選擇 .NET Core 或 .NET Framework](/dotnet/standard/choosing-core-framework-server)。
 
 ### <a name="linux"></a>Linux
 
@@ -56,7 +56,7 @@ ms.locfileid: "89011458"
 git clone https://github.com/Azure-Samples/storage-queues-dotnet-quickstart.git
 ```
 
-此命令會將存放庫複製到本機的 git 資料夾。 若要開啟 Visual Studio 解決方案，請尋找 *storage-queues-dotnet-quickstart* 資料夾並加以開啟，然後按兩下 *storage-queues-dotnet-quickstart.sln*。 
+此命令會將存放庫複製到本機的 git 資料夾。 若要開啟 Visual Studio 解決方案，請尋找 *storage-queues-dotnet-quickstart* 資料夾並加以開啟，然後按兩下 *storage-queues-dotnet-quickstart.sln* 。 
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -148,7 +148,7 @@ Press any key to delete the sample queue.
 
 ### <a name="try-parsing-the-connection-string"></a>嘗試剖析連接字串
 
-此範例會先檢查環境變數是否包含可剖析的連接字串，以建立指向儲存體帳戶的 [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) 物件。 為了檢查連接字串是否有效，此範例會使用 [TryParse](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) 方法。 如果 **TryParse** 成功，它會初始化 storageAccount 變數並傳回 **true**。
+此範例會先檢查環境變數是否包含可剖析的連接字串，以建立指向儲存體帳戶的 [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) 物件。 為了檢查連接字串是否有效，此範例會使用 [TryParse](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) 方法。 如果 **TryParse** 成功，它會初始化 storageAccount 變數並傳回 **true** 。
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage connection string is stored
@@ -266,14 +266,14 @@ if (queue != null)
 
 ### <a name="binaries-and-source-code"></a>二進位檔和原始程式碼
 
-- 針對 Azure 儲存體最新版的 [.NET 用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)下載 NuGet 套件
+- 針對 Azure 儲存體最新版的 [.NET 用戶端程式庫](/dotnet/api/overview/azure/storage)下載 NuGet 套件
     - [通用](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
     - [佇列](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - 在 GitHub 上檢視 [.NET 用戶端程式庫原始程式碼](https://github.com/Azure/azure-storage-net)。
 
 ### <a name="client-library-reference-and-samples"></a>用戶端程式庫參考和範例
 
-- 如需 .NET 用戶端程式庫的詳細資訊，請參閱 [.NET API 參考](https://docs.microsoft.com/dotnet/api/overview/azure/storage)。
+- 如需 .NET 用戶端程式庫的詳細資訊，請參閱 [.NET API 參考](/dotnet/api/overview/azure/storage)。
 - 探索使用 .NET 用戶端程式庫所撰寫的[佇列儲存體範例](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues)。
 
 ## <a name="next-steps"></a>後續步驟
@@ -281,6 +281,6 @@ if (queue != null)
 在本快速入門中，您已了解如何將訊息新增至佇列，查看佇列中的訊息，以及使用 .NET 清除佇列和處理訊息。 
 
 > [!div class="nextstepaction"]
-> [在應用程式與 Azure 佇列儲存體之間進行通訊](https://docs.microsoft.com/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
+> [在應用程式與 Azure 佇列儲存體之間進行通訊](/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
 
 - 若要深入了解 .NET Core，請參閱[在 10 分鐘內開始使用 .NET](https://www.microsoft.com/net/learn/get-started/)。

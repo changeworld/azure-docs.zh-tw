@@ -12,12 +12,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08623e6d69ac4db1790c1e9b46089f0c72c0526d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bf57e60fc05d579365d459e4a5d5288c2ca52bb0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87910453"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442145"
 ---
 # <a name="what-are-external-identities-in-azure-active-directory"></a>Azure Active Directory 中的外部身分識別為何？
 
@@ -27,11 +27,11 @@ ms.locfileid: "87910453"
 
 Azure AD 外部身分識別比較不注重使用者與貴組織的關聯性，而比較著重於個人想要登入您應用程式和資源的方式。 在此架構中，Azure AD 支援企業對企業 (B2B) 共同作業的各種案例，以供客戶和消費者 (企業對消費者或 B2C) 進行應用程式開發。
 
-- **與外部使用者 (B2B 共同作業) 共用應用程式**。 邀請外部使用者加入您自己的租用戶，成為可對其指派權限 (進行授權)，同時允許他們使用其現有認證 (進行驗證) 的「來賓」使用者。 使用者透過他們的公司帳戶、學校帳戶或任何電子郵件帳戶，使用簡單的邀請與兌換程序登入共用資源。 現在利用自助式註冊使用者流程 (預覽)，您也可透過您想共用的應用程式，為外部使用者提供登入體驗。 您可以設定使用者流程設定，以控制使用者註冊應用程式的方式，並可讓他們使用其工作帳戶、學校帳戶或他們想要使用的任何社交身分識別 (例如 Google 或 Facebook)。  如需詳細資訊，請參閱 [Azure AD B2B 文件](index.yml)。
+- **與外部使用者 (B2B 共同作業) 共用應用程式** 。 邀請外部使用者加入您自己的租用戶，成為可對其指派權限 (進行授權)，同時允許他們使用其現有認證 (進行驗證) 的「來賓」使用者。 使用者透過他們的公司帳戶、學校帳戶或任何電子郵件帳戶，使用簡單的邀請與兌換程序登入共用資源。 現在利用自助式註冊使用者流程 (預覽)，您也可透過您想共用的應用程式，為外部使用者提供登入體驗。 您可以設定使用者流程設定，以控制使用者註冊應用程式的方式，並可讓他們使用其工作帳戶、學校帳戶或他們想要使用的任何社交身分識別 (例如 Google 或 Facebook)。  如需詳細資訊，請參閱 [Azure AD B2B 文件](index.yml)。
 
-- **開發適用於其他 Azure AD 租用戶 (單一租用戶或多租用戶) 的應用程式**。 開發適用於 Azure AD 的應用程式時，您的開發對象可以是來自單一組織 (單一租用戶) 的使用者，或是來自任何已有 Azure AD 租用戶之組織的使用者 (稱為多租用戶應用程式)。 這些多租用戶應用程式會由您在自己的 Azure AD 中自行註冊一次，但之後可供任何組織中的任何 Azure AD 使用者使用，而您不需要執行任何額外的工作。
+- **開發適用於其他 Azure AD 租用戶 (單一租用戶或多租用戶) 的應用程式** 。 開發適用於 Azure AD 的應用程式時，您的開發對象可以是來自單一組織 (單一租用戶) 的使用者，或是來自任何已有 Azure AD 租用戶之組織的使用者 (稱為多租用戶應用程式)。 這些多租用戶應用程式會由您在自己的 Azure AD 中自行註冊一次，但之後可供任何組織中的任何 Azure AD 使用者使用，而您不需要執行任何額外的工作。
 
-- **為消費者和客戶 (Azure AD B2C) 開發白標應用程式**。 如果您是建立客戶對應應用程式的企業或開發人員，則可使用 Azure AD B2C 來擴展至消費者、客戶或公民。 開發人員可以將 Azure AD 作為完整的身分識別系統，同時讓客戶使用他們已經建立的身分識別 (例如 Facebook 或 Gmail) 登入。 使用 Azure AD B2C，您可以全完自訂及控制客戶註冊、登入的方式，以及在他們使用您的應用程式時管理其設定檔。 如需詳細資訊，請參閱 [Azure AD B2C 文件](https://docs.microsoft.com/azure/active-directory-b2c/)。
+- **為消費者和客戶 (Azure AD B2C) 開發白標應用程式** 。 如果您是建立客戶對應應用程式的企業或開發人員，則可使用 Azure AD B2C 來擴展至消費者、客戶或公民。 開發人員可以將 Azure AD 作為完整的身分識別系統，同時讓客戶使用他們已經建立的身分識別 (例如 Facebook 或 Gmail) 登入。 使用 Azure AD B2C，您可以全完自訂及控制客戶註冊、登入的方式，以及在他們使用您的應用程式時管理其設定檔。 如需詳細資訊，請參閱 [Azure AD B2C 文件](../../active-directory-b2c/index.yml)。
 
 ## <a name="compare-external-identities-solutions"></a>比較外部身分識別解決方案
 
@@ -45,13 +45,13 @@ Azure AD 外部身分識別比較不注重使用者與貴組織的關聯性，�
 | 外部使用者會在自己的目錄中進行管理，與應用程式註冊所在的目錄隔離。    | 外部使用者與員工在相同的目錄中管理的，但特別註解。 管理他們的方式可以和員工相同、他們可以加入到相同的群組等等。    | 外部使用者在應用程式目錄中管理的。 他們和組織的員工及合作夥伴目錄 (若有) 分開管理。  |
 | 單一登入：支援 SSO 至所有與 Azure AD 連線的應用程式。          | 單一登入：支援 SSO 至所有與 Azure AD 連線的應用程式。 例如，您可以提供 Microsoft 365 或內部部署應用程式的存取權，以及其他 SaaS 應用程式 (例如 Salesforce 或 Workday) 的存取權。    | 單一登入：支援 SSO 至客戶在 Azure AD B2C 租用戶內擁有的應用程式。 不支援 SSO 至 Microsoft 365 或其他 Microsoft SaaS 應用程式。    |
 | 客戶生命週期︰由使用者的主要組織管理。      | 合作夥伴生命週期：由主控/邀請組織管理。    | 客戶生命週期︰自助式管理或由應用程式管理。      |
-| 安全性原則和合規性：由主控/邀請組織管理 (例如，使用[條件式存取原則](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access))。           | 安全性原則和合規性：由主控/邀請組織管理 (例如，使用[條件式存取原則](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access))。 | 安全性原則和合規性：受應用程式管理。        |
+| 安全性原則和合規性：由主控/邀請組織管理 (例如，使用[條件式存取原則](./conditional-access.md))。           | 安全性原則和合規性：由主控/邀請組織管理 (例如，使用[條件式存取原則](./conditional-access.md))。 | 安全性原則和合規性：受應用程式管理。        |
 | 商標：使用主控/邀請組織的品牌。   | 商標：使用主控/邀請組織的品牌。    | 商標：受應用程式管理。 通常多半會是產品品牌加上組織在背景淡出的效果。   |
-| 其他資訊：[管理多租用戶應用程式中的身分識別](https://docs.microsoft.com/azure/architecture/multitenant-identity/)、[操作說明指南](https://docs.microsoft.com/azure/active-directory/develop/howto-convert-app-to-be-multi-tenant) | 其他資訊：[部落格文章](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/)、[文件](what-is-b2b.md)                   | 其他資訊：[產品頁面](https://azure.microsoft.com/services/active-directory-b2c/)、[文件](https://docs.microsoft.com/azure/active-directory-b2c/)       |
+| 其他資訊：[管理多租用戶應用程式中的身分識別](/azure/architecture/multitenant-identity/)、[操作說明指南](../develop/howto-convert-app-to-be-multi-tenant.md) | 其他資訊：[部落格文章](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/)、[文件](what-is-b2b.md)                   | 其他資訊：[產品頁面](https://azure.microsoft.com/services/active-directory-b2c/)、[文件](../../active-directory-b2c/index.yml)       |
 
 使用 Azure AD 外部身分識別，保護及管理組織界限以外的客戶和合作夥伴。
 
 ## <a name="next-steps"></a>後續步驟
 
 - [何謂 Azure AD B2B 共同作業？](what-is-b2b.md)
-- [關於 Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/overview)
+- [關於 Azure AD B2C](../../active-directory-b2c/overview.md)

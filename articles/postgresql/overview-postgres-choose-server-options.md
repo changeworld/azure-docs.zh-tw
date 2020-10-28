@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: f81a44af4a90ccda1875c0a9f2bfaa8dc0b73441
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8bc303f619d145cc280e6caab65781bd42d1b314
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943901"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92489688"
 ---
 # <a name="choose-the-right-postgresql-server-option-in-azure"></a>在 Azure 中選擇適當的 PostgreSQL 伺服器選項
 
@@ -86,7 +86,7 @@ Microsoft 可以透過 PaaS：
 
 此外，設定其他資料中心的高可用性時，至少需要進行的最小設定或系統管理。
 
-- 有了 PostgreSQL on Azure VM，您可以完全掌控作業系統和 PostgreSQL 伺服器執行個體組態。 有了 VM，您可以決定何時更新或升級作業系統與資料庫軟體，以及要套用哪些修補檔。 您也可以決定何時安裝任何其他軟體，例如防毒應用程式。 提供某些自動化功能以大幅簡化修補、備份及高可用性。 您還可以控制 VM 的大小、磁碟數目及其儲存體組態。 如需詳細資訊，請參閱[Azure 的虛擬機器和雲端服務大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。
+- 有了 PostgreSQL on Azure VM，您可以完全掌控作業系統和 PostgreSQL 伺服器執行個體組態。 有了 VM，您可以決定何時更新或升級作業系統與資料庫軟體，以及要套用哪些修補檔。 您也可以決定何時安裝任何其他軟體，例如防毒應用程式。 提供某些自動化功能以大幅簡化修補、備份及高可用性。 您還可以控制 VM 的大小、磁碟數目及其儲存體組態。 如需詳細資訊，請參閱[Azure 的虛擬機器和雲端服務大小](../virtual-machines/sizes.md)。
 
 ## <a name="time-to-move-to-azure-postgresql-service-paas"></a>移至 Azure PostgreSQL Service (PaaS) 的時機
 
@@ -98,4 +98,3 @@ Microsoft 可以透過 PaaS：
 
 - 請參閱[適用於 PostgreSQL 的 Azure 資料庫定價](https://azure.microsoft.com/pricing/details/postgresql/server/)。
 - 從建立您的第一部伺服器開始。
-

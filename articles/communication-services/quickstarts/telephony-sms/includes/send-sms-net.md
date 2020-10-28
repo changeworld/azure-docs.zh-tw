@@ -10,12 +10,12 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: c044e9dc7b8ee622b157a93726e7700e62ba2dfa
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: c8bce6afd914a22be80a57ae234e39161d182b7f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779716"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92499157"
 ---
 藉由使用通訊服務 C# SMS 用戶端程式庫來傳送 SMS 訊息，以開始使用 Azure 通訊服務。
 
@@ -41,7 +41,7 @@ ms.locfileid: "91779716"
 
 ### <a name="create-a-new-c-application"></a>建立新的 C# 應用程式
 
-在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `SmsQuickstart` 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔：**Program.cs**。
+在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `SmsQuickstart` 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔： **Program.cs** 。
 
 ```console
 dotnet new console -o SmsQuickstart
@@ -82,7 +82,7 @@ using Azure.Communication.Sms;
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
- 在文字編輯器中開啟 **Program.cs**，並將 `Main` 方法的本文取代為程式碼，以使用您的連接字串來初始化 `SmsClient`。 以下程式碼會從名為 `COMMUNICATION_SERVICES_CONNECTION_STRING` 的環境變數中，擷取資源的連接字串。 了解如何[管理資源的連接字串](../../create-communication-resource.md#store-your-connection-string)。
+ 在文字編輯器中開啟 **Program.cs** ，並將 `Main` 方法的本文取代為程式碼，以使用您的連接字串來初始化 `SmsClient`。 以下程式碼會從名為 `COMMUNICATION_SERVICES_CONNECTION_STRING` 的環境變數中，擷取資源的連接字串。 了解如何[管理資源的連接字串](../../create-communication-resource.md#store-your-connection-string)。
 
 
 ```csharp
@@ -117,3 +117,7 @@ smsClient.Send(
 ```console
 dotnet run
 ```
+
+## <a name="sample-code"></a>範例程式碼
+
+您可以從 [GitHub](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/tree/main/SendSMS) 下載範例應用程式

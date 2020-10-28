@@ -8,12 +8,12 @@ ms.custom: mvc, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 10/16/2020
-ms.openlocfilehash: a9da6a592249aed727231b810a3fbb5f7b72e228
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 16f1e2a6b7a3c0e81b7ceb57359a48a84ee489d9
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164188"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532725"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入門：使用 .NET (C#) 來連線及查詢適用於 MySQL 的 Azure 資料庫中的資料
 
@@ -46,13 +46,13 @@ dotnet add package MySqlConnector
 取得連線到 Azure Database for MySQL 所需的連線資訊。 您需要完整的伺服器名稱和登入認證。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver**)。
+2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver** )。
 3. 按一下伺服器名稱。
 4. 從伺服器的 [概觀] 面板，記下 [伺服器名稱] 和 [伺服器管理員登入名稱]。 如果您忘記密碼，您也可以從此面板重設密碼。
  :::image type="content" source="./media/connect-csharp/1_server-overview-name-login.png" alt-text="Azure Database for MySQL 伺服器名稱":::
 
 ## <a name="connect-create-table-and-insert-data"></a>連線、建立資料表及插入資料
-使用下列程式碼搭配 `CREATE TABLE` 和 `INSERT INTO` SQL 陳述式來連線及載入資料。 此程式碼使用 `MySqlConnection` 類別搭配 [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) 方法來建立 MySQL 連線。 然後，程式碼會使用 [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) 方法，設定 CommandText 屬性，並呼叫 [ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) 方法來執行資料庫命令。 
+使用下列程式碼搭配 `CREATE TABLE` 和 `INSERT INTO` SQL 陳述式來連線及載入資料。 此程式碼使用 `MySqlConnection` 類別搭配 [OpenAsync()](/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) 方法來建立 MySQL 連線。 然後，程式碼會使用 [CreateCommand()](/dotnet/api/system.data.common.dbconnection.createcommand) 方法，設定 CommandText 屬性，並呼叫 [ExecuteNonQueryAsync()](/dotnet/api/system.data.common.dbcommand.executenonqueryasync) 方法來執行資料庫命令。 
 
 將 `Server`、`Database`、`UserID` 和 `Password` 參數取代為您在建立伺服器和資料庫時所指定的值。 
 
@@ -117,7 +117,7 @@ namespace AzureMySqlExample
 
 ## <a name="read-data"></a>讀取資料
 
-使用下列程式碼搭配 `SELECT` SQL 陳述式來連線和讀取資料。 此程式碼使用 `MySqlConnection` 類別搭配 [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) 方法來建立 MySQL 連線。 然後，程式碼會使用 [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) 和 [ExecuteReaderAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executereaderasync) 方法來執行資料庫命令。 接下來程式碼會使用 [ReadAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbdatareader.readasync#System_Data_Common_DbDataReader_ReadAsync) 前往結果中的記錄。 接下來程式碼會使用 GetInt32 和 GetString 來剖析記錄中的值。
+使用下列程式碼搭配 `SELECT` SQL 陳述式來連線和讀取資料。 此程式碼使用 `MySqlConnection` 類別搭配 [OpenAsync()](/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) 方法來建立 MySQL 連線。 然後，程式碼會使用 [CreateCommand()](/dotnet/api/system.data.common.dbconnection.createcommand) 和 [ExecuteReaderAsync()](/dotnet/api/system.data.common.dbcommand.executereaderasync) 方法來執行資料庫命令。 接下來程式碼會使用 [ReadAsync()](/dotnet/api/system.data.common.dbdatareader.readasync#System_Data_Common_DbDataReader_ReadAsync) 前往結果中的記錄。 接下來程式碼會使用 GetInt32 和 GetString 來剖析記錄中的值。
 
 將 `Server`、`Database`、`UserID` 和 `Password` 參數取代為您在建立伺服器和資料庫時所指定的值。 
 
@@ -174,7 +174,7 @@ namespace AzureMySqlExample
 ```
 
 ## <a name="update-data"></a>更新資料
-使用下列程式碼搭配 `UPDATE` SQL 陳述式來連線和讀取資料。 此程式碼使用 `MySqlConnection` 類別搭配 [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) 方法來建立 MySQL 連線。 然後，程式碼會使用 [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) 方法，設定 CommandText 屬性，並呼叫 [ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) 方法來執行資料庫命令。 
+使用下列程式碼搭配 `UPDATE` SQL 陳述式來連線和讀取資料。 此程式碼使用 `MySqlConnection` 類別搭配 [OpenAsync()](/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) 方法來建立 MySQL 連線。 然後，程式碼會使用 [CreateCommand()](/dotnet/api/system.data.common.dbconnection.createcommand) 方法，設定 CommandText 屬性，並呼叫 [ExecuteNonQueryAsync()](/dotnet/api/system.data.common.dbcommand.executenonqueryasync) 方法來執行資料庫命令。 
 
 將 `Server`、`Database`、`UserID` 和 `Password` 參數取代為您在建立伺服器和資料庫時所指定的值。 
 
@@ -226,7 +226,7 @@ namespace AzureMySqlExample
 ## <a name="delete-data"></a>刪除資料
 使用下列程式碼搭配 `DELETE` SQL 陳述式來連線及刪除資料。 
 
-此程式碼使用 `MySqlConnection` 類別搭配 [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) 方法來建立 MySQL 連線。 然後，程式碼會使用 [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) 方法，設定 CommandText 屬性，並呼叫 [ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) 方法來執行資料庫命令。 
+此程式碼使用 `MySqlConnection` 類別搭配 [OpenAsync()](/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync) 方法來建立 MySQL 連線。 然後，程式碼會使用 [CreateCommand()](/dotnet/api/system.data.common.dbconnection.createcommand) 方法，設定 CommandText 屬性，並呼叫 [ExecuteNonQueryAsync()](/dotnet/api/system.data.common.dbcommand.executenonqueryasync) 方法來執行資料庫命令。 
 
 將 `Server`、`Database`、`UserID` 和 `Password` 參數取代為您在建立伺服器和資料庫時所指定的值。 
 

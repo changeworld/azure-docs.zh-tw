@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ecbebfc75cb8c77ebb99ad04b1f9e33b3c4ef64
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e02df83d4b7874a1d158aae45f1619eb543e0aec
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306458"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92362445"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>什麼是 Azure AD Identity Governance？
 
@@ -42,7 +42,7 @@ Identity Governance 讓組織能夠對員工、商務夥伴和廠商以及對內
 
 ## <a name="identity-lifecycle"></a>身分識別生命週期
 
-Identity Governance 可協助組織取得以下兩者之間的平衡：*生產力* - 人員可以存取資源所需的速度，例如他們何時加入我的組織？ 與*安全性* - 其存取權應該如何隨著時間變更，例如由於該人員的雇用狀態變更？  身分識別生命週期管理是 Identity Governance 的基礎，而大規模有效控管必須使應用程式的身分識別生命週期管理基礎結構現代化。
+Identity Governance 可協助組織取得以下兩者之間的平衡： *生產力* - 人員可以存取資源所需的速度，例如他們何時加入我的組織？ 與 *安全性* - 其存取權應該如何隨著時間變更，例如由於該人員的雇用狀態變更？  身分識別生命週期管理是 Identity Governance 的基礎，而大規模有效控管必須使應用程式的身分識別生命週期管理基礎結構現代化。
 
 ![身分識別生命週期](./media/identity-governance-overview/identity-lifecycle.png)
 
@@ -58,7 +58,7 @@ Identity Governance 可協助組織取得以下兩者之間的平衡：*生產�
 
 一般而言，IT 會將存取核准決策委派給商務決策者。  此外，IT 可能是使用者本身。  例如，存取歐洲境內公司行銷應用程式中的機密客戶資料的使用者需要知道公司的原則。 來賓使用者可能不知道他們受邀的組織中資料的處理需求。
 
-組織可以透過[動態群組](../users-groups-roles/groups-dynamic-membership.md)這類技術，並結合使用者佈建至 [SaaS 應用程式](../saas-apps/tutorial-list.md)或[與 SCIM 整合的應用程式](../app-provisioning/use-scim-to-provision-users-and-groups.md)來自動存取生命週期程序。  組織也可以控制哪些[來賓使用者能夠存取內部部署應用程式](../external-identities/hybrid-cloud-to-on-premises.md)。  接著可以利用週期性 [Azure AD 存取權檢閱](access-reviews-overview.md)，定期檢閱這些存取權限。   [Azure AD 權利管理](entitlement-management-overview.md)也可讓您定義使用者要如何跨一套群組和小組成員資格、應用程式角色與 SharePoint Online 角色來要求存取權。
+組織可以透過[動態群組](../enterprise-users/groups-dynamic-membership.md)這類技術，並結合使用者佈建至 [SaaS 應用程式](../saas-apps/tutorial-list.md)或[與 SCIM 整合的應用程式](../app-provisioning/use-scim-to-provision-users-and-groups.md)來自動存取生命週期程序。  組織也可以控制哪些[來賓使用者能夠存取內部部署應用程式](../external-identities/hybrid-cloud-to-on-premises.md)。  接著可以利用週期性 [Azure AD 存取權檢閱](access-reviews-overview.md)，定期檢閱這些存取權限。   [Azure AD 權利管理](entitlement-management-overview.md)也可讓您定義使用者要如何跨一套群組和小組成員資格、應用程式角色與 SharePoint Online 角色來要求存取權。
 
 當使用者嘗試存取應用程式時，Azure AD 會強制執行[條件式存取](../conditional-access/index.yml)原則。 例如，條件式存取原則可以包含先顯示[使用規定](../conditional-access/terms-of-use.md)並[確保使用者已同意這些規定](../conditional-access/require-tou.md)，才能夠存取應用程式。
 
@@ -100,7 +100,7 @@ Identity Governance 可協助組織取得以下兩者之間的平衡：*生產�
 雖然沒有適用於每位客戶的完美解決方案或建議，但下列設定指南也提供了 Microsoft 建議您遵循的基準原則，以確保員工能更加安全且更有生產力。
 
 - [身分識別與裝置存取設定](/microsoft-365/enterprise/microsoft-365-policies-configurations)
-- [保護特殊權限存取](../users-groups-roles/directory-admin-roles-secure.md)
+- [保護特殊權限存取](../roles/security-planning.md)
 
 ## <a name="appendix---least-privileged-roles-for-managing-in-identity-governance-features"></a>附錄 - 要管理 Identity Governance 功能所需的最低特殊權限角色
 

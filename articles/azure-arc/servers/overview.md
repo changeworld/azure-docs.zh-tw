@@ -2,14 +2,14 @@
 title: 已啟用 Azure Arc 的伺服器概觀
 description: 了解如何使用已啟用 Azure Arc 的伺服器來管理裝載於 Azure 外部的伺服器，如同 Azure 資源一樣。
 keywords: azure 自動化, DSC, powershell, Desired State Configuration, 更新管理, 變更追蹤, 清查, Runbook, python, 圖形, 混合式
-ms.date: 10/07/2020
+ms.date: 10/15/2020
 ms.topic: overview
-ms.openlocfilehash: b2875cfdeb80aa17b19cee462dc35eaa7a3de665
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 01de579d2e1ea84c0e9da4ceafbd33dbad4c6e27
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92200962"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460847"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>什麼是已啟用 Azure Arc 的伺服器？
 
@@ -29,7 +29,7 @@ ms.locfileid: "92200962"
 
 - 使用適用於非 Azure Windows 或 Linux 機器的受支援 [Azure VM 擴充功能](manage-vm-extensions.md)，簡化其他 Azure 服務 (例如 Azure 自動化[狀態組態](../../automation/automation-dsc-overview.md)和 Azure 監視器 Log Analytics 工作區) 的部署。 這包括使用自訂指令碼擴充功能來執行部署後設定或軟體安裝。
 
-- 使用 Azure 自動化中的[更新管理](../../automation/update-management/update-mgmt-overview.md)，來管理 Windows 和 Linux 伺服器的作業系統更新。 先部署[混合式 Runbook 背景工作角色](../../automation/automation-hybrid-runbook-worker.md)角色，然後依照步驟在您的非 Azure Windows 或 Linux 電腦上[啟用更新管理](../../automation/update-management/update-mgmt-enable-portal.md)。
+- 使用 Azure 自動化中的[更新管理](../../automation/update-management/update-mgmt-overview.md)，來管理 Windows 和 Linux 伺服器的作業系統更新。
 
 - 納入非 Azure 伺服器以執行威脅偵測，並使用 [Azure 資訊安全中心](../../security-center/security-center-introduction.md)主動監視潛在安全性威脅。
 
@@ -45,7 +45,7 @@ ms.locfileid: "92200962"
 
 ### <a name="agent-status"></a>代理程式狀態
 
-Connected Machine 代理程式每隔 5 分鐘會定期將活動訊號訊息傳送至服務。 如果服務停止接收來自機器的這些活動訊號訊息，系統會將該機器視為離線，且入口網站中的狀態會在 15 到 30 分鐘內自動變更為**中斷連線**。 從 Connected Machine 代理程式收到後續的活動訊號訊息時，其狀態會自動變更為**連線**。
+Connected Machine 代理程式每隔 5 分鐘會定期將活動訊號訊息傳送至服務。 如果服務停止接收來自機器的這些活動訊號訊息，系統會將該機器視為離線，且入口網站中的狀態會在 15 到 30 分鐘內自動變更為 **中斷連線** 。 從 Connected Machine 代理程式收到後續的活動訊號訊息時，其狀態會自動變更為 **連線** 。
 
 ## <a name="next-steps"></a>後續步驟
 

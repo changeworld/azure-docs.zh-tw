@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: 6198475025ff5222edeeb14cf25634ad2d916a1f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3f0b3da7d225e4b2adca3f2d4b08cff9b56e2520
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88651432"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534595"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入門：在 Azure HDInsight 中使用 Azure 入口網站建立 Apache Kafka 叢集
 
@@ -53,15 +53,15 @@ SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (
     |區域    | 從下拉式清單中，選取要在其中建立叢集的區域。  選擇靠近您的區域，以獲得最佳效能。 |
     |叢集類型| 選取 [選取叢集類型]  以開啟清單。 從清單中，選取 [Kafka]  作為叢集類型。|
     |版本|將會指定叢集類型的預設版本。 如果您想要指定不同的版本，請從下拉式清單中選取。|
-    |叢集登入使用者名稱和密碼    | 預設登入名稱為 **admin**。密碼長度至少必須為 10 個字元，且必須包含至少一個數字、一個大寫字母及一個小寫字母、一個非英數字元 (除了字元 ' " ` \)。 確定您**不會提供**常見密碼，例如 "Pass@word1"。|
-    |安全殼層 (SSH) 使用者名稱 | 預設的使用者名稱為 **sshuser**。  您可以為 SSH 使用者名稱提供另一個名稱。 |
+    |叢集登入使用者名稱和密碼    | 預設登入名稱為 **admin** 。密碼長度至少必須為 10 個字元，且必須包含至少一個數字、一個大寫字母及一個小寫字母、一個非英數字元 (除了字元 ' " ` \)。 確定您 **不會提供** 常見密碼，例如 "Pass@word1"。|
+    |安全殼層 (SSH) 使用者名稱 | 預設的使用者名稱為 **sshuser** 。  您可以為 SSH 使用者名稱提供另一個名稱。 |
     |將叢集登入密碼用於 SSH| 選取此核取方塊，讓 SSH 使用者所使用的密碼等同於您提供給叢集登入使用者的密碼。|
 
    ![Azure 入口網站建立叢集基本概念](./media/apache-kafka-get-started/azure-portal-cluster-basics.png)
 
-    每個 Azure 區域 (位置) 提供_容錯網域_。 容錯網域是 Azure 資料中心內基礎硬體的邏輯群組。 每個容錯網域會共用通用電源和網路交換器。 實作 HDInsight 叢集內節點的虛擬機器和受控磁碟會分散於這些容錯網域。 此架構會限制實體硬體故障的潛在影響。
+    每個 Azure 區域 (位置) 提供 _容錯網域_ 。 容錯網域是 Azure 資料中心內基礎硬體的邏輯群組。 每個容錯網域會共用通用電源和網路交換器。 實作 HDInsight 叢集內節點的虛擬機器和受控磁碟會分散於這些容錯網域。 此架構會限制實體硬體故障的潛在影響。
 
-    若要獲得高度資料可用性，請選取包含「三個容錯網域」  的區域 (位置)。 如需區域中的容錯網域數目的資訊，請參閱 [Linux 虛擬機器的可用性](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)文件。
+    若要獲得高度資料可用性，請選取包含「三個容錯網域」  的區域 (位置)。 如需區域中的容錯網域數目的資訊，請參閱 [Linux 虛擬機器的可用性](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)文件。
 
     選取頁面底部的 [下一步:  儲存體>>] 索引標籤，以前進到儲存體設定。
 
@@ -88,7 +88,7 @@ SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (
 
 1. 若要保證 HDInsight 上的 Apache Kafka 可用性，則必須將 [背景工作節點]  的 [節點數目]  項目設為 3 或更高。 預設值為 4。
 
-    [每個背景工作節點的標準磁碟數]  項目會設定 HDInsight 上 Apache Kafka 的延展性。 HDInsight 上的 Apache Kafka 會在叢集中使用虛擬機器的本機磁碟來儲存資料。 Apache Kafka 的 I/O 非常大量，因此會使用 [Azure 受控磁碟](../../virtual-machines/managed-disks-overview.md)來提供高輸送量，並為每個節點提供更多儲存空間。 受控磁碟的類型可以是__標準__ (HDD) 或__進階__ (SSD)。 磁碟類型取決於背景工作節點 (Apache Kafka 代理程式) 所使用的 VM 大小。 進階磁碟會自動與 DS 和 GS 系列的 VM 搭配使用。 所有其他的 VM 類型是使用標準磁碟。
+    [每個背景工作節點的標準磁碟數]  項目會設定 HDInsight 上 Apache Kafka 的延展性。 HDInsight 上的 Apache Kafka 會在叢集中使用虛擬機器的本機磁碟來儲存資料。 Apache Kafka 的 I/O 非常大量，因此會使用 [Azure 受控磁碟](../../virtual-machines/managed-disks-overview.md)來提供高輸送量，並為每個節點提供更多儲存空間。 受控磁碟的類型可以是 __標準__ (HDD) 或 __進階__ (SSD)。 磁碟類型取決於背景工作節點 (Apache Kafka 代理程式) 所使用的 VM 大小。 進階磁碟會自動與 DS 和 GS 系列的 VM 搭配使用。 所有其他的 VM 類型是使用標準磁碟。
 
    ![設定 Apache Kafka 叢集大小](./media/apache-kafka-get-started/azure-portal-cluster-configuration-pricing-kafka.png)
 
@@ -202,7 +202,7 @@ SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (
 
 Kafka 會將資料串流儲存於「主題」  中。 您可以使用 `kafka-topics.sh` 公用程式來管理主題。
 
-* **若要建立主題**，請在 SSH 連線中使用下列命令：
+* **若要建立主題** ，請在 SSH 連線中使用下列命令：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
@@ -218,7 +218,7 @@ Kafka 會將資料串流儲存於「主題」  中。 您可以使用 `kafka-top
         
         * 在具有三個容錯網域的區域中，複寫因子 3 可讓複本散佈於容錯網域中。 在具有兩個容錯網域的區域中，複寫因子 4 會在網域中平均散佈複本。
         
-        * 如需區域中的容錯網域數目的資訊，請參閱 [Linux 虛擬機器的可用性](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)文件。
+        * 如需區域中的容錯網域數目的資訊，請參閱 [Linux 虛擬機器的可用性](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)文件。
 
         * Apache Kafka 不知道 Azure 容錯網域。 為主題建立副本時，可能無法正確發散副本以實現高可用性。
 
@@ -230,7 +230,7 @@ Kafka 會將資料串流儲存於「主題」  中。 您可以使用 `kafka-top
 
             * 擴大叢集時
 
-* **若要列出主題**，請使用下列命令：
+* **若要列出主題** ，請使用下列命令：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $KAFKAZKHOSTS
@@ -238,7 +238,7 @@ Kafka 會將資料串流儲存於「主題」  中。 您可以使用 `kafka-top
 
     此命令會列出可在 Apache Kafka 叢集上使用的主題。
 
-* **若要刪除主題**，請使用下列命令：
+* **若要刪除主題** ，請使用下列命令：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic topicname --zookeeper $KAFKAZKHOSTS

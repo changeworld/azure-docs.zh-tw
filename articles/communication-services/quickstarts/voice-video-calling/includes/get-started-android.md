@@ -6,12 +6,12 @@ ms.author: marobert
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 460d1c33dcd5284067d14d5d6efa9da9b5b182ae
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 02cf175fc0a29795428ce1b3651469532ff3867c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779292"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92438928"
 ---
 在本快速入門中，您將了解如何使用適用於 Android 的 Azure 通訊服務通話用戶端程式庫開始進行通話。
 
@@ -163,7 +163,7 @@ See https://developer.android.com/about/versions/pie/android-9.0-changes-28#apac
 
 建立版面配置之後，即可新增繫結，以及活動的基本 Scaffolding。 活動會處理要求執行階段權限、建立呼叫代理程式，並且在按下按鈕時進行呼叫。 每個項目會涵蓋在各自的區段中。 系統將會覆寫 `onCreate` 方法，以叫用 `getAllPermissions` 和 `createAgent`，以及新增呼叫按鈕的繫結。 只有在建立活動時，才會發生這種情況。 如需 `onCreate` 的詳細資訊，請參閱[了解活動生命週期](https://developer.android.com/guide/components/activities/activity-lifecycle)指南。
 
-瀏覽至 **MainActivity.java**，然後以下列程式碼取代內容：
+瀏覽至 **MainActivity.java** ，然後以下列程式碼取代內容：
 
 ```java
 package com.contoso.acsquickstart;
@@ -315,4 +315,4 @@ private void startCall() {
 
 ## <a name="sample-code"></a>範例程式碼
 
-您可以從 [GitHub](https://github.com/Azure/Communication/tree/master/samples/Add%20Voice%20Calling/Android/Java) 下載範例應用程式
+您可以從 [GitHub](https://github.com/Azure-Samples/communication-services-android-quickstarts/tree/main/Add%20Voice%20Calling) 下載範例應用程式

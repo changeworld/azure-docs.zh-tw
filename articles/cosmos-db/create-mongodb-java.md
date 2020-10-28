@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 301bedc75d243f427120c955bda539508ff43200
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a831921ec3b3fa755496c08c02665b1c0fe99557
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87323633"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475952"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>快速入門：在 Azure Cosmos DB 中使用 Java 和 MongoDB API 建立主控台應用程式
 
@@ -41,7 +41,7 @@ ms.locfileid: "87323633"
 
 ## <a name="add-a-collection"></a>新增集合
 
-將新資料庫命名為 **db**，以及將新集合命名為 **coll**。
+將新資料庫命名為 **db** ，以及將新集合命名為 **coll** 。
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-mongodb-create-collection.md)] 
 
@@ -136,4 +136,4 @@ ms.locfileid: "87323633"
 在本快速入門中，您已了解如何建立適用於 Mongo DB API 的 Azure Cosmos DB 帳戶、使用 [資料總管] 建立資料庫和容器，以及使用 Java 主控台應用程式來新增資料。 您現在可以將其他資料匯入到 Cosmos 資料庫。 
 
 > [!div class="nextstepaction"]
-> [將 MongoDB 資料匯入到 Azure Cosmos DB](mongodb-migrate.md)
+> [將 MongoDB 資料匯入到 Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)

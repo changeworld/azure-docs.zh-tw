@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/1/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 9fc7ecd633e92c22c8d2a65e4bf45371dab9697a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c3101b69b7ebf55367dbb52d0c2fd6d265cf33f5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282409"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475629"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>適用於 MongoDB 的 Azure Cosmos DB API
 
@@ -52,7 +52,7 @@ Cosmos DB 作為完全受控且全域散發之資料庫的主要優點如[這裡
 
 * 遵循[將 MongoDB 應用程式連線到 Azure Cosmos DB](connect-mongodb-account.md) 教學課程，以了解如何取得您的帳戶連接字串資訊。
 * 依照[使用 Studio 3T 搭配 Azure Cosmos DB](mongodb-mongochef.md) 教學課程，了解如何在 Studio 3T 中建立 Azure Cosmos DB 資料庫和 MongoDB 應用程式之間的連線。
-* 遵循[將 MongoDB 資料匯入到 Azure Cosmos DB](mongodb-migrate.md) 教學課程，以將您的資料匯入 Cosmos 資料庫。
+* 遵循[將 MongoDB 資料匯入到 Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json) 教學課程，以將您的資料匯入 Cosmos 資料庫。
 * 使用 [Robo 3T](mongodb-robomongo.md) 連線到 Cosmos 帳戶。
 * 了解如何[設定全球分散式應用程式的讀取喜好設定](../cosmos-db/tutorial-global-distribution-mongodb.md)。
 * 在我們的 [疑難排解指南](mongodb-troubleshoot.md)中尋找常見錯誤的解決方案

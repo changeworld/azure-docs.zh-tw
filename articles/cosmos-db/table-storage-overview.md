@@ -9,12 +9,12 @@ ms.date: 05/20/2019
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: abd88c3cdb54747c21ad8772860a3ed6929dbd15
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7727dd2ae69fab75219c5d6d733db3f150061df3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318716"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477227"
 ---
 # <a name="azure-table-storage-overview"></a>Azure 資料表儲存體概觀
 
@@ -30,10 +30,10 @@ Azure 表格儲存體是可將結構化的 NoSQL 資料儲存在雲端中的服�
 
 * [Microsoft Azure 儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md) 是一個免費的獨立應用程式，可讓您在 Windows、MacOS 和 Linux 上以視覺化方式處理 Azure 儲存體資料。
 
-* [透過 .NET SDK 開始使用 Azure Cosmos DB 資料表 API 和 Azure 資料表儲存體](table-storage-how-to-use-dotnet.md)
+* [透過 .NET SDK 開始使用 Azure Cosmos DB 資料表 API 和 Azure 資料表儲存體](./tutorial-develop-table-dotnet.md)
 
 * 如需可用 API 的完整詳細資訊，請檢視資料表服務參考文件：
 
-    * [Storage Client Library for .NET 參考資料](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+    * [Storage Client Library for .NET 參考資料](/dotnet/api/overview/azure/storage)
 
-    * [REST API 參考資料](https://msdn.microsoft.com/library/azure/dd179355)
+    * [REST API 參考資料](/rest/api/storageservices/)

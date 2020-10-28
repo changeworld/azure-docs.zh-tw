@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 469235957ebe26dd44cc6ce464a68167629099ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 098d6e3712a928392547fcd2cba68b68dcca5ef3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943902"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476139"
 ---
 # <a name="azure-database-for-postgresql-single-server"></a>適用於 PostgreSQL 的 Azure 資料庫單一伺服器
 
@@ -81,8 +81,8 @@ Azure 領先業界的 99.99% 可用性服務等級協定 (SLA)，由 Microsoft �
 
 此服務會執行 PostgreSQL 的社群版本。 這允許完整的應用程式相容性，而且需要的重構成本最少，就能將 PostgreSQL 引擎上開發的現有應用程式遷移至單一伺服器服務。 您可以使用下列其中一個選項移轉單一伺服器：
 
-- **傾印和還原** - 供離線移轉使用，使用者使用 Pg_dump 和 Pg_restore 等社群工具時，可以承擔一些停機時間、傾印和還原，可最快執行遷移。 參閱[使用傾印和還原遷移](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore)以取得詳細資料。
-- **Azure 資料庫移轉服務** - 可使用 Azure 資料庫移轉服務，讓您在最短停機時間的情況下，執行順暢且簡化的單一伺服器移轉。 請[透過入口網站參閱 DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online-portal)，或[透過 CLI 參閱 DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)。
+- **傾印和還原** - 供離線移轉使用，使用者使用 Pg_dump 和 Pg_restore 等社群工具時，可以承擔一些停機時間、傾印和還原，可最快執行遷移。 參閱[使用傾印和還原遷移](./howto-migrate-using-dump-and-restore.md)以取得詳細資料。
+- **Azure 資料庫移轉服務** - 可使用 Azure 資料庫移轉服務，讓您在最短停機時間的情況下，執行順暢且簡化的單一伺服器移轉。 請[透過入口網站參閱 DMS](../dms/tutorial-postgresql-azure-postgresql-online-portal.md)，或[透過 CLI 參閱 DMS](../dms/tutorial-postgresql-azure-postgresql-online.md)。
 
 ## <a name="contacts"></a>連絡人
 
@@ -98,4 +98,3 @@ Azure 領先業界的 99.99% 可用性服務等級協定 (SLA)，由 Microsoft �
 
 您已看過適用於 PostgreSQL 的 Azure 資料庫單一伺服器部署模式的簡介，接下來您可以：
 - 建立第一個伺服器。
-  

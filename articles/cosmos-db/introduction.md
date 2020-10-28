@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: aad69a34cc27f341bec5beda0f52e2581538aaf9
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: cd6bbe963f0cee89c188053d0770816fdabc1b93
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278420"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490385"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>歡迎使用 Azure Cosmos DB
 
@@ -40,7 +40,7 @@ Cosmos DB 允許您隨時新增任何 Azure 區域到您的 Cosmos 帳戶，或�
 
 ### <a name="elastic-scalability-of-throughput-and-storage-worldwide"></a>在全球彈性調整輸送量與儲存體
 
-Cosmos DB 的設計包括透明的水平分割和多重區域寫入複寫，可為您在全球各地的寫入和讀取提供前所未有的彈性延展性。 您可以透過使用單一 API 呼叫，在全球範圍內彈性地擴大數億個要求/秒，並僅支付您所需要的輸送量 (和儲存體)。 此功能可協助您應付工作負載中非預期的暴增，而無需針對尖峰過度佈建。 如需詳細資訊，請參閱 [Cosmos DB 中的分割區](partitioning-overview.md)、[容器和資料庫上佈建的輸送量](set-throughput.md)，以及[全域調整佈建的輸送量](scaling-throughput.md)。
+Cosmos DB 的設計包括透明的水平分割和多重區域寫入複寫，可為您在全球各地的寫入和讀取提供前所未有的彈性延展性。 您可以透過使用單一 API 呼叫，在全球範圍內彈性地擴大數億個要求/秒，並僅支付您所需要的輸送量 (和儲存體)。 此功能可協助您應付工作負載中非預期的暴增，而無需針對尖峰過度佈建。 如需詳細資訊，請參閱 [Cosmos DB 中的分割區](partitioning-overview.md)、[容器和資料庫上佈建的輸送量](set-throughput.md)，以及[全域調整佈建的輸送量](./request-units.md)。
 
 ### <a name="guaranteed-low-latency-at-99th-percentile-worldwide"></a>保證在第 99 個百分位數低延遲 (全球)
 
@@ -48,7 +48,7 @@ Cosmos DB 的設計包括透明的水平分割和多重區域寫入複寫，可�
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>精確定義的多重一致性選擇
 
-建置 Cosmos DB 中的全域分散式應用程式時，您不再需要[在一致性、可用性、延遲和輸送量之間做出極端取捨](consistency-levels-tradeoffs.md)。 Cosmos DB 的多重區域寫入複寫通訊協定謹慎設計成提供[五種定義完善的一致性選擇](consistency-levels.md) -      (強式、限定過期、工作階段、一致前置詞和最終)，以取得直覺式的程式設計模型，讓全域分散式應用程式具有低延遲和高可用性。
+建置 Cosmos DB 中的全域分散式應用程式時，您不再需要[在一致性、可用性、延遲和輸送量之間做出極端取捨](./consistency-levels.md)。 Cosmos DB 的多重區域寫入複寫通訊協定謹慎設計成提供[五種定義完善的一致性選擇](consistency-levels.md) -      (強式、限定過期、工作階段、一致前置詞和最終)，以取得直覺式的程式設計模型，讓全域分散式應用程式具有低延遲和高可用性。
 
 ### <a name="no-schema-or-index-management"></a>不需要任何結構描述或索引管理
 
@@ -76,11 +76,11 @@ Cosmos DB 是第一且唯一提供[領先業界之全方位 SLA](https://azure.m
 
 ### <a name="globally-distributed-operational-analytics-and-ai-with-natively-built-in-apache-spark"></a>使用原生內建 Apache Spark 的全域散發作業分析和 AI
 
-您可以對 Cosmos DB 中儲存的資料直接執行 [Spark](spark-connector.md)。 這項功能允許您在全球範圍內執行低延遲的作業分析，而不會影響針對 Cosmos DB 直接操作的交易式工作負載。 如需詳細資訊，請參閱[全域分散式作業分析](lambda-architecture.md)。
+您可以對 Cosmos DB 中儲存的資料直接執行 [Spark](spark-connector.md)。 這項功能允許您在全球範圍內執行低延遲的作業分析，而不會影響針對 Cosmos DB 直接操作的交易式工作負載。 如需詳細資訊，請參閱[全域分散式作業分析](./synapse-link.md)。
 
 ### <a name="develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis"></a>使用熱門的開放原始碼軟體 (OSS) API 開發 Cosmos DB 上的應用程式
 
-Cosmos DB 提供了一系列 API，用來使用儲存在 Cosmos 資料庫中的資料。 根據預設，[您可以使用 SQL](how-to-sql-query.md) (核心 API) 來查詢 Cosmos 資料庫。 Cosmos DB 還可實作 [Cassandra](cassandra-introduction.md)、[MongoDB](mongodb-introduction.md)、[Gremlin](graph-introduction.md) 和 [Azure 表格儲存體](table-introduction.md)。 您可將常用的 NoSQL (例如 MongoDB、Cassandra、Gremlin) 的用戶端驅動程式 (和工具) 直接指向您的 Cosmos 資料庫。 藉由支援常用的 NoSQL API 的線路通訊協定，Cosmos DB 可讓您：
+Cosmos DB 提供了一系列 API，用來使用儲存在 Cosmos 資料庫中的資料。 根據預設，[您可以使用 SQL](./sql-query-getting-started.md) (核心 API) 來查詢 Cosmos 資料庫。 Cosmos DB 還可實作 [Cassandra](cassandra-introduction.md)、[MongoDB](mongodb-introduction.md)、[Gremlin](graph-introduction.md) 和 [Azure 表格儲存體](table-introduction.md)。 您可將常用的 NoSQL (例如 MongoDB、Cassandra、Gremlin) 的用戶端驅動程式 (和工具) 直接指向您的 Cosmos 資料庫。 藉由支援常用的 NoSQL API 的線路通訊協定，Cosmos DB 可讓您：
 
 * 輕鬆地將應用程式移轉到 Cosmos DB，同時保留應用程式邏輯的重要部分。
 * 維持您的應用程式可攜，並繼續維持雲端廠商中立。

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/09/2020
 ms.author: masoucou
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 10e3f420a187d67e19392dd3647692b54a817fa5
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ffa8e473fb084b2d5f0e7f59a07b3de50e04752e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090296"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92475854"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>快速入門：使用 .NET SDK 和 Azure Cosmos DB 的 MongoDB API 建置 Xamarin.Forms 應用程式
 
@@ -35,7 +35,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 若要執行範例，您將需要 [Visual Studio](https://www.visualstudio.com/downloads/) 或 [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)，以及有效的 Azure CosmosDB 帳戶。
 
-如果您還沒有 Visual Studio，請下載 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)，其在安裝時會一併安裝**使用 .NET 進行行動裝置開發**的工作負載。
+如果您還沒有 Visual Studio，請下載 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)，其在安裝時會一併安裝 **使用 .NET 進行行動裝置開發** 的工作負載。
 
 如果您想要在 Mac 上作業，請下載 [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) 並執行安裝程式。
 
@@ -167,7 +167,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 2. 在 **TaskList.Core** 專案的 [Helpers]\(協助程式\)  目錄中，開啟 **APIKeys.cs** 檔案。
 
-3. 從入口網站 (使用 [複製] 按鈕) 複製您的**主要連接字串**，並使它成為 **APIKeys.cs** 檔案中 [ConnectionString]  欄位的值。
+3. 從入口網站 (使用 [複製] 按鈕) 複製您的 **主要連接字串** ，並使它成為 **APIKeys.cs** 檔案中 [ConnectionString]  欄位的值。
 
 4. 從連接字串中移除 `&replicaSet=globaldb`。 如果您未從查詢字串中移除該值，則會收到執行階段錯誤。
 
@@ -184,7 +184,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 2. 按一下 [還原所有 Nuget 套件]  。
 3. 以滑鼠右鍵按一下 [TaskList.Android]  ，然後選取 [設定為啟始專案]  。
 4. 按 F5 開始對應用程式進行偵錯。
-5. 如果您想要在 iOS 上執行，請先將您的機器連線到 Mac (這裡有如何執行此操作的[指示](https://docs.microsoft.com/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio))。
+5. 如果您想要在 iOS 上執行，請先將您的機器連線到 Mac (這裡有如何執行此操作的[指示](/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio))。
 6. 以滑鼠右鍵按一下 [TaskList.iOS]  專案，然後選取 [設定為啟始專案]  。
 7. 按 F5 開始對應用程式進行偵錯。
 
@@ -206,4 +206,4 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 在本快速入門中，您已了解如何建立 Azure Cosmos DB 帳戶，以及如何使用適用於 MongoDB 的 API 來執行 Xamarin.Forms 應用程式。 您現在可以將其他資料匯入到 Cosmos DB 帳戶。
 
 > [!div class="nextstepaction"]
-> [將資料匯入到使用 Azure Cosmos DB MongoDB API 所設定的 Azure Cosmos DB](mongodb-migrate.md)
+> [將資料匯入到使用 Azure Cosmos DB MongoDB API 所設定的 Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)

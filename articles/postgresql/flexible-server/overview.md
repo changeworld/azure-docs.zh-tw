@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/22/2020
-ms.openlocfilehash: 268eedf6f9d64d52539e20006322b6b1dd9964e8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b4df91f4654f39780f81e0a27139677431926238
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91439985"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532657"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>適用於 PostgreSQL 的 Azure 資料庫 - 彈性伺服器
 
@@ -90,11 +90,9 @@ ms.locfileid: "91439985"
 
 此服務會執行 PostgreSQL 的社群版本。 這允許完整的應用程式相容性，而且需要的重構成本最少，就能將 PostgreSQL 引擎上開發的現有應用程式遷移至彈性伺服器。 
 
-- **傾印和還原** - 供離線移轉使用，使用者使用 pg_dump 和 pg_restore 等社群工具時，可以承擔一些停機時間、傾印和還原，可最快執行遷移。 參閱[使用傾印和還原遷移](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore)以取得詳細資料。
-- **Azure 資料庫移轉服務** - 可使用 Azure 資料庫移轉服務，讓您在最短停機時間的情況下，執行順暢且簡化的彈性伺服器移轉。 請[透過入口網站參閱 DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online-portal)，或[透過 CLI 參閱 DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)。 您可以從適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器遷移至彈性伺服器。 如需詳細資料，請參閱這篇 [DMS 文章](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal)。
+- **傾印和還原** - 供離線移轉使用，使用者使用 pg_dump 和 pg_restore 等社群工具時，可以承擔一些停機時間、傾印和還原，可最快執行遷移。 參閱[使用傾印和還原遷移](../howto-migrate-using-dump-and-restore.md)以取得詳細資料。
+- **Azure 資料庫移轉服務** - 可使用 Azure 資料庫移轉服務，讓您在最短停機時間的情況下，執行順暢且簡化的彈性伺服器移轉。 請[透過入口網站參閱 DMS](../../dms/tutorial-postgresql-azure-postgresql-online-portal.md)，或[透過 CLI 參閱 DMS](../../dms/tutorial-postgresql-azure-postgresql-online.md)。 您可以從適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器遷移至彈性伺服器。 如需詳細資料，請參閱這篇 [DMS 文章](../../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
 您已看過適用於 PostgreSQL 的 Azure 資料庫彈性伺服器部署模式的簡介，接下來您可以建立第一個伺服器：[使用 Azure 入口網站建立適用於 PostgreSQL 的 Azure 資料庫 - 彈性伺服器](./quickstart-create-server-portal.md)
-
-

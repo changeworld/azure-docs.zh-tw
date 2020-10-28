@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e49ecf0f8e88e0de22117a5ed85b8352e73a2f5d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 65a3e9a1e60ad28fbc0357c5b04007ce4da37895
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89020230"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487597"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>快速入門：使用 .NET SDK 與 Azure Cosmos DB 建置資料表 API 應用程式 
 
@@ -22,14 +22,14 @@ ms.locfileid: "89020230"
 > * [.NET](create-table-dotnet.md)
 > * [Java](create-table-java.md)
 > * [Node.js](create-table-nodejs.md)
-> * [Python](create-table-python.md)
+> * [Python](./table-storage-how-to-use-python.md)
 >  
 
 本快速入門示範如何使用 .NET 與 Azure Cosmos DB [資料表 API](table-introduction.md)，透過從 GitHub 複製範例來建置應用程式。 本快速入門也會示範如何建立 Azure Cosmos DB 帳戶，以及如何使用資料總管在以 Web 為基礎的 Azure 入口網站中建立資料表和實體。
 
 ## <a name="prerequisites"></a>必要條件
 
-如果尚未安裝 Visual Studio 2019，您可以下載並使用**免費**的 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 務必在 Visual Studio 設定期間啟用 **Azure 開發**。
+如果尚未安裝 Visual Studio 2019，您可以下載並使用 **免費** 的 [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)。 務必在 Visual Studio 設定期間啟用 **Azure 開發** 。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -68,7 +68,7 @@ ms.locfileid: "89020230"
    ```
 
 > [!TIP]
-> 如需類似程式碼的詳細逐步解說，請參閱 [Cosmos DB 資料表 API 範例](table-storage-how-to-use-dotnet.md)一文。
+> 如需類似程式碼的詳細逐步解說，請參閱 [Cosmos DB 資料表 API 範例](./tutorial-develop-table-dotnet.md)一文。
 
 ## <a name="open-the-sample-application-in-visual-studio"></a>在 Visual Studio 中開啟範例應用程式
 
@@ -102,7 +102,7 @@ ms.locfileid: "89020230"
 
 現在，返回 Azure 入口網站以取得連接字串資訊，並將它複製到應用程式中。 這可讓您的應用程式與託管資料庫進行通訊。 
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，按一下 [連接字串]。 使用視窗右方的複製按鈕來複製**主要連接字串**。
+1. 在 [Azure 入口網站](https://portal.azure.com/)中，按一下 [連接字串]。 使用視窗右方的複製按鈕來複製 **主要連接字串** 。
 
    :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="開啟解決方案"
    }
@@ -173,4 +173,3 @@ ms.locfileid: "89020230"
 
 > [!div class="nextstepaction"]
 > [將資料表資料匯入至資料表 API](table-import.md)
-

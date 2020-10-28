@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 6a01e86f4afe397ed78cd279231a2429b17c60a8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 57cbfa356961aca778032b6e3552cffb88b6ab3d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88651364"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92532997"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>快速入門：使用 PowerShell 在 Azure HDInsight 中建立 Apache Spark 叢集
 
@@ -31,7 +31,7 @@ Kafka API 只能由同一個虛擬網路中的資源來存取。 在本快速入
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-* 安裝 PowerShell [Az 模組](https://docs.microsoft.com/powershell/azure/)。
+* 安裝 PowerShell [Az 模組](/powershell/azure/)。
 
 * SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
@@ -135,7 +135,7 @@ New-AzHDInsightCluster `
 
 `-DisksPerWorkerNode` 參數會設定 HDInsight 上 Kafka 的延展性。 HDInsight 上的 Kafka 會在叢集中使用虛擬機器的本機磁碟來儲存資料。 Kafka 的 I/O 非常大量，因此會使用 [Azure 受控磁碟](../../virtual-machines/managed-disks-overview.md)來提供高輸送量，並為每個節點提供更多儲存空間。
 
-受控磁碟的類型可以是__標準__ (HDD) 或__進階__ (SSD)。 磁碟類型取決於背景工作節點 (Kafka 代理程式) 所使用的 VM 大小。 進階磁碟會自動與 DS 和 GS 系列的 VM 搭配使用。 所有其他的 VM 類型是使用標準磁碟。 您可以使用 `-WorkerNodeSize` 參數來設定 VM 類型。 如需參數的詳細資訊，請參閱 [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster) 文件。
+受控磁碟的類型可以是 __標準__ (HDD) 或 __進階__ (SSD)。 磁碟類型取決於背景工作節點 (Kafka 代理程式) 所使用的 VM 大小。 進階磁碟會自動與 DS 和 GS 系列的 VM 搭配使用。 所有其他的 VM 類型是使用標準磁碟。 您可以使用 `-WorkerNodeSize` 參數來設定 VM 類型。 如需參數的詳細資訊，請參閱 [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster) 文件。
 
 如果您規劃使用 32 個以上的背景工作節點 (在建立叢集時或在建立後調整叢集規模時)，則必須使用 `-HeadNodeSize` 參數來指定具有至少 8 個核心和 14 GB RAM 的 VM 大小。 如需節點大小和相關成本的詳細資訊，請參閱 [HDInsight 定價](https://azure.microsoft.com/pricing/details/hdinsight/)。
 
@@ -147,7 +147,7 @@ New-AzHDInsightCluster `
     ssh sshuser@mykafka-ssh.azurehdinsight.net
     ```
 
-2. 當您初次連線到叢集時，您的 SSH 用戶端可能會顯示警告，指出無法確認主機的真確性。 在系統提示時，輸入 __yes__，然後按 __Enter__ 鍵，以將主機新增至 SSH 用戶端信任的伺服器清單。
+2. 當您初次連線到叢集時，您的 SSH 用戶端可能會顯示警告，指出無法確認主機的真確性。 在系統提示時，輸入 __yes__ ，然後按 __Enter__ 鍵，以將主機新增至 SSH 用戶端信任的伺服器清單。
 
 3. 出現提示時，請輸入 SSH 使用者的密碼。
 
@@ -234,7 +234,7 @@ Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
 
 Kafka 會將資料串流儲存於「主題」  中。 您可以使用 `kafka-topics.sh` 公用程式來管理主題。
 
-* **若要建立主題**，請在 SSH 連線中使用下列命令：
+* **若要建立主題** ，請在 SSH 連線中使用下列命令：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
@@ -250,7 +250,7 @@ Kafka 會將資料串流儲存於「主題」  中。 您可以使用 `kafka-top
         
         在具有三個容錯網域的區域中，複寫因子 3 可讓複本散佈於容錯網域中。 在具有兩個容錯網域的區域中，複寫因子 4 會在網域中平均散佈複本。
         
-        如需區域中的容錯網域數目的資訊，請參閱 [Linux 虛擬機器的可用性](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)文件。
+        如需區域中的容錯網域數目的資訊，請參閱 [Linux 虛擬機器的可用性](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)文件。
 
         Kafka 不知道 Azure 容錯網域。 為主題建立副本時，可能無法正確發散副本以實現高可用性。
 
@@ -262,7 +262,7 @@ Kafka 會將資料串流儲存於「主題」  中。 您可以使用 `kafka-top
 
         * 擴大叢集時
 
-* **若要列出主題**，請使用下列命令：
+* **若要列出主題** ，請使用下列命令：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $KAFKAZKHOSTS
@@ -270,7 +270,7 @@ Kafka 會將資料串流儲存於「主題」  中。 您可以使用 `kafka-top
 
     此命令會列出可在 Kafka 叢集上使用的主題。
 
-* **若要刪除主題**，請使用下列命令：
+* **若要刪除主題** ，請使用下列命令：
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic topicname --zookeeper $KAFKAZKHOSTS
