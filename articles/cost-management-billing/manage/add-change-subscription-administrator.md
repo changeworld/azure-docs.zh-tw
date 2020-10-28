@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 273f12765f60eb1a0d65037e30e33e58b16463bf
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 10956953f9ab3a9e32b9da4ab8a3501d38b0e2c3
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372301"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369653"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>新增或變更 Azure 訂用帳戶系統管理員
 
@@ -73,7 +73,7 @@ Microsoft 建議您使用 Azure RBAC 來管理對資源的存取。 不過，如
 * [什麼是 Azure 角色型存取控制 (Azure RBAC)？](../../role-based-access-control/overview.md)
 * [了解 Azure 中的不同角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [將 Azure 訂用帳戶關聯或新增至您的 Azure Active Directory 租用戶](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
-* [Azure Active Directory 中的系統管理員角色權限](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+* [Azure Active Directory 中的系統管理員角色權限](../../active-directory/roles/permissions-reference.md)
 
 ## <a name="need-help-contact-support"></a>需要協助嗎？ 請連絡支援人員
 

@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 7a096e355e140b18bd7df010c379e31d21f90634
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f823b6d04a217328fe2e825e64906460cd9cbae9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86515048"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672486"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>快速入門：使用 Visual Studio Code 連線及查詢 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -45,13 +45,13 @@ ms.locfileid: "86515048"
 
 ## <a name="install-visual-studio-code"></a>安裝 Visual Studio Code
 
-請確定您已安裝最新版的 [Visual Studio Code](https://code.visualstudio.com/Download) 並已載入 [mssql 擴充功能](https://aka.ms/mssql-marketplace)。 如需 mssql 延伸模組的安裝指引，請參閱[安裝 Visual Studio Code](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code) 和[適用於 Visual Studio Code 的 mssql](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)。
+請確定您已安裝最新版的 [Visual Studio Code](https://code.visualstudio.com/Download) 並已載入 [mssql 擴充功能](https://aka.ms/mssql-marketplace)。 如需 mssql 延伸模組的安裝指引，請參閱[安裝 Visual Studio Code](/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code) 和[適用於 Visual Studio Code 的 mssql](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)。
 
 ## <a name="configure-visual-studio-code"></a>設定 Visual Studio Code
 
 ### <a name="macos"></a>**macOS**
 
-對於 macOS，您必須安裝 OpenSSL，這是 mssql 擴充功能所用 .NET Core 的必要條件。 開啟您的終端機，並輸入下列命令以安裝 **brew** 和 **OpenSSL**。
+對於 macOS，您必須安裝 OpenSSL，這是 mssql 擴充功能所用 .NET Core 的必要條件。 開啟您的終端機，並輸入下列命令以安裝 **brew** 和 **OpenSSL** 。
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -82,11 +82,11 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="set-language-mode-to-sql"></a>將語言模式設定為 SQL
 
-在 Visual Studio Code 中將語言模式設定為 **SQL**，以啟用 mssql 命令和 T-SQL IntelliSense。
+在 Visual Studio Code 中將語言模式設定為 **SQL** ，以啟用 mssql 命令和 T-SQL IntelliSense。
 
 1. 開啟新的 Visual Studio Code 視窗。
 
-2. 按 **Ctrl**+**N**。 此時會開啟新的純文字檔。
+2. 按 **Ctrl**+**N** 。 此時會開啟新的純文字檔。
 
 3. 選取狀態列右下角的 [純文字]。
 
@@ -99,9 +99,9 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 > [!IMPORTANT]
 > 在繼續之前，確定您已備妥伺服器和登入資訊。 開始輸入連線設定檔資訊後，如果您的焦點變換自 Visual Studio Code，則必須重新開始建立設定檔。
 
-1. 在 Visual Studio Code 中，按 **Ctrl+Shift+P** (或 **F1**) 以開啟命令選擇區。
+1. 在 Visual Studio Code 中，按 **Ctrl+Shift+P** (或 **F1** ) 以開啟命令選擇區。
 
-2. 選取 [MS SQL: 連線] 然後選擇 **Enter**。
+2. 選取 [MS SQL: 連線] 然後選擇 **Enter** 。
 
 3. 選取 [建立連線設定檔]。
 
@@ -109,7 +109,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
    | 屬性       | 建議的值 | 描述 |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **伺服器名稱** | 完整伺服器名稱 | 應該類似這樣︰**mynewserver20170313.database.windows.net**。 |
+   | **伺服器名稱** | 完整伺服器名稱 | 應該類似這樣︰ **mynewserver20170313.database.windows.net** 。 |
    | **資料庫名稱** | mySampleDatabase | 要連線的資料庫。 |
    | **驗證** | SQL 登入| 本教學課程使用 SQL 驗證。 |
    | **使用者名稱** | [使用者名稱] | 建立伺服器時所使用伺服器系統管理員帳戶的使用者名稱。 |
@@ -121,7 +121,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="query-data"></a>查詢資料
 
-執行以下 [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL 陳述式來依照類別查詢前 20 項產品。
+執行以下 [SELECT](/sql/t-sql/queries/select-transact-sql) Transact-SQL 陳述式來依照類別查詢前 20 項產品。
 
 1. 在 [編輯器] 視窗中，貼上下列 SQL 查詢。
 
@@ -138,7 +138,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="insert-data"></a>插入資料
 
-執行以下 [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL 陳述式在 `SalesLT.Product` 資料表中加入新產品。
+執行以下 [INSERT](/sql/t-sql/statements/insert-transact-sql) Transact-SQL 陳述式在 `SalesLT.Product` 資料表中加入新產品。
 
 1. 使用此查詢取代先前的查詢。
 
@@ -166,7 +166,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="update-data"></a>更新資料
 
-執行以下 [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL 陳述式更新加入的產品。
+執行以下 [UPDATE](/sql/t-sql/queries/update-transact-sql) Transact-SQL 陳述式更新加入的產品。
 
 1. 使用此查詢取代先前的查詢：
 
@@ -180,7 +180,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="delete-data"></a>刪除資料
 
-執行以下 [DELETE](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) Transact-SQL 陳述式移除新產品。
+執行以下 [DELETE](/sql/t-sql/statements/delete-transact-sql) Transact-SQL 陳述式移除新產品。
 
 1. 使用此查詢取代先前的查詢：
 
@@ -195,4 +195,4 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 - 若要使用 SQL Server Management Studio 進行連線和查詢，請參閱[快速入門：使用 SQL Server Management Studio 連線到 Azure SQL Database 中的資料庫及查詢資料](connect-query-ssms.md)。
 - 若要使用 Azure 入口網站連接及查詢，請參閱[快速入門：在 Azure 入口網站中使用 SQL 查詢編輯器進行連線並查詢資料](connect-query-portal.md)。
-- 如需有關使用 Visual Studio Code 的 MSDN 雜誌文章，請參閱[使用 MSSQL 擴充功能建立資料庫 IDE 部落格文章](https://msdn.microsoft.com/magazine/mt809115)。
+- 如需有關使用 Visual Studio Code 的 MSDN 雜誌文章，請參閱[使用 MSSQL 擴充功能建立資料庫 IDE 部落格文章](/archive/msdn-magazine/2017/june/data-points-visual-studio-code-create-a-database-ide-with-mssql-extension)。

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/04/2020
 ms.author: jingwang
-ms.openlocfilehash: 39f2dad088f3f3eb4a99aa17c1bdde5fe2a2f79c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d52e8e0157c891cf8be6c610b7c0185d83ef9f06
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84655846"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638052"
 ---
-# <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>快速入門：使用 Azure Data Factory UI 建立資料處理站
+# <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>快速入門：使用 Azure Data Factory UI 建立資料處理站 
 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 > * [第 1 版](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
@@ -47,7 +47,7 @@ ms.locfileid: "84655846"
    ![在 [新增] 窗格中選取資料處理站](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. 在 [新增資料處理站] 頁面上，輸入 **ADFTutorialDataFactory** 作為 [名稱]。 
  
-   Azure Data Factory 的名稱必須是 *全域唯一的*。 如果您看到下列錯誤，請變更資料處理站的名稱 (例如 **&lt;yourname&gt;ADFTutorialDataFactory**)，然後試著重新建立。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory - 命名規則](naming-rules.md)一文。
+   Azure Data Factory 的名稱必須是 *全域唯一的* 。 如果您看到下列錯誤，請變更資料處理站的名稱 (例如 **&lt;yourname&gt;ADFTutorialDataFactory** )，然後試著重新建立。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory - 命名規則](naming-rules.md)一文。
   
    ![名稱無法使用時的錯誤](./media/doc-common-process/name-not-available-error.png)
 1. 針對 [訂用帳戶]，選取您要用來建立資料處理站的 Azure 訂用帳戶。 
@@ -78,7 +78,7 @@ ms.locfileid: "84655846"
 ## <a name="create-a-linked-service"></a>建立連結的服務
 在此程序中，您會建立連結服務，將 Azure 儲存體帳戶連結至資料處理站。 連結的服務具有連線資訊，可供 Data Factory 服務在執行階段中用來連線。
 
-1. 從左窗格中開啟 [[管理] 索引標籤](https://docs.microsoft.com/azure/data-factory/author-management-hub)。
+1. 從左窗格中開啟 [[管理] 索引標籤](./author-management-hub.md)。
 
 1. 在 [連結的服務] 頁面上，選取 [+ 新增] 以建立新的連結服務。
 
@@ -88,7 +88,7 @@ ms.locfileid: "84655846"
 
 1. 在 [新增連結服務 (Azure Blob 儲存體)] 頁面上，完成下列步驟： 
 
-   a. 針對 [名稱]，輸入 **AzureStorageLinkedService**。
+   a. 針對 [名稱]，輸入 **AzureStorageLinkedService** 。
 
    b. 針對 [儲存體帳戶名稱] ，選取您 Azure 儲存體帳戶的名稱。
 
@@ -96,15 +96,15 @@ ms.locfileid: "84655846"
 
    d. 選取 [建立] 以儲存連結服務。 
 
-      ![新增連結服務](./media/quickstart-create-data-factory-portal/linked-service.png)
+      ![連結的服務](./media/quickstart-create-data-factory-portal/linked-service.png)
 
 
 ## <a name="create-datasets"></a>建立資料集
-在此程序中，您會建立兩個資料集：**InputDataset** 和 **OutputDataset**。 這些資料集的類型為 **AzureBlob**。 其會參考您在前一節中建立的 Azure 儲存體連結服務。 
+在此程序中，您會建立兩個資料集： **InputDataset** 和 **OutputDataset** 。 這些資料集的類型為 **AzureBlob** 。 其會參考您在前一節中建立的 Azure 儲存體連結服務。 
 
-輸入資料集代表輸入資料夾中的來源資料。 在輸入資料集定義中，您可以指定 Blob 容器 (**adftutorial**)、資料夾 (**input**) 以及包含來源資料的檔案 (**emp.txt**)。 
+輸入資料集代表輸入資料夾中的來源資料。 在輸入資料集定義中，您可以指定 Blob 容器 ( **adftutorial** )、資料夾 ( **input** ) 以及包含來源資料的檔案 ( **emp.txt** )。 
 
-此輸出資料集代表已複製到目的地的資料。 在輸出資料集定義中，您可以指定要將資料複製過去的 Blob 容器 (**adftutorial**)、資料夾 (**output**) 和檔案。 每個管線執行都有其相關聯的唯一識別碼。 您可以使用系統變數 **RunId** 來存取此識別碼。 輸出檔案的名稱會根據管線的執行識別碼進行動態評估。   
+此輸出資料集代表已複製到目的地的資料。 在輸出資料集定義中，您可以指定要將資料複製過去的 Blob 容器 ( **adftutorial** )、資料夾 ( **output** ) 和檔案。 每個管線執行都有其相關聯的唯一識別碼。 您可以使用系統變數 **RunId** 來存取此識別碼。 輸出檔案的名稱會根據管線的執行識別碼進行動態評估。   
 
 在連結服務設定中，您已指定包含來源資料的 Azure 儲存體帳戶。 在來源資料集設定中，您可以指定來源資料確切的所在位置 (Blob 容器、資料夾和檔案)。 在接收資料集設定中，您可以指定要將資料複製過去的位置 (Blob 容器、資料夾和檔案)。 
  
@@ -119,7 +119,7 @@ ms.locfileid: "84655846"
    
 1. 在 [設定屬性] 頁面上，完成下列步驟：
 
-    a. 在 [名稱] 下，輸入 **InputDataset**。 
+    a. 在 [名稱] 下，輸入 **InputDataset** 。 
 
     b. 針對 [連結服務]，選取 [AzureStorageLinkedService]。
 
@@ -140,7 +140,7 @@ ms.locfileid: "84655846"
 
     d. 在 [設定屬性] 頁面上，指定 **OutputDataset** 作為名稱。 選取 [AzureStorageLinkedService] 作為連結服務。
 
-    e. 在 [檔案路徑] 下，輸入 **adftutorial/output**。 如果 **output** 資料夾不存在，則複製活動會在執行階段進行建立。
+    e. 在 [檔案路徑] 下，輸入 **adftutorial/output** 。 如果 **output** 資料夾不存在，則複製活動會在執行階段進行建立。
 
     f. 選取 [確定]。   
 
@@ -151,7 +151,7 @@ ms.locfileid: "84655846"
 
 1. 選取 **+** (加號) 按鈕，然後選取 [管線]。 
 
-1. 在 [屬性] 底下的 [一般] 面板中，針對 [名稱] 指定 **CopyPipeline**。 然後按一下右上角的屬性圖示來摺疊面板。
+1. 在 [屬性] 底下的 [一般] 面板中，針對 [名稱] 指定 **CopyPipeline** 。 然後按一下右上角的屬性圖示來摺疊面板。
 
 1. 在 [活動] 工具箱中，展開 [移動和轉換]。 將 [活動] 工具箱中的 [資料複製] 活動拖到管線設計工具介面。 您也可以在 [活動] 工具箱中搜尋活動。 指定 **CopyFromBlobToBlob** 作為 [名稱]。
    ![建立複製資料活動](./media/quickstart-create-data-factory-portal/copy-activity.png)
@@ -196,7 +196,7 @@ ms.locfileid: "84655846"
 1. 您可以選取 [所有管線執行] 連結，從 [活動執行] 檢視切換回 [管線執行] 檢視。 
 
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>觸發排程上的管線
-此程序是本教學課程的選擇性程序。 您可以建立*排程器觸發程序*，將管線排定為定期執行 (每小時、每天等)。 在此程序中，您會建立一個觸發程序，在您指定的結束日期和日期以前，該觸發程序會每分鐘執行一次。 
+此程序是本教學課程的選擇性程序。 您可以建立 *排程器觸發程序* ，將管線排定為定期執行 (每小時、每天等)。 在此程序中，您會建立一個觸發程序，在您指定的結束日期和日期以前，該觸發程序會每分鐘執行一次。 
 
 1. 切換至 [編寫] 索引標籤。 
 
@@ -217,11 +217,11 @@ ms.locfileid: "84655846"
 
 1. 切換至左側的 [監視] 索引標籤。 選取 [重新整理] 即可重新整理清單。 在發佈時間到結束時間之間，您會看到管線每隔一分鐘執行一次。 
 
-   請留意 [觸發者] 資料行中的值。 手動觸發程序執行來自於您先前完成的步驟 (**立即觸發**)。 
+   請留意 [觸發者] 資料行中的值。 手動觸發程序執行來自於您先前完成的步驟 ( **立即觸發** )。 
 
 1. 切換至 [觸發程序執行] 檢視。 
 
 1. 確認在指定的結束日期和時間之前，每次執行管線時都會在 **output** 資料夾中建立一個輸出檔案。 
 
 ## <a name="next-steps"></a>後續步驟
-此範例中的管線會將資料從 Azure Blob 儲存體中的一個位置複製到其他位置。 若想了解使用 Data Factory 的更多案例，請瀏覽[教學課程](tutorial-copy-data-portal.md)。 
+此範例中的管線會將資料從 Azure Blob 儲存體中的一個位置複製到其他位置。 若想了解使用 Data Factory 的更多案例，請瀏覽[教學課程](tutorial-copy-data-portal.md)。

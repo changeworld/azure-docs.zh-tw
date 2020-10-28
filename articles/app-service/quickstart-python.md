@@ -3,14 +3,14 @@ title: 快速入門：建立 Python 應用程式
 description: 藉由將您的第一個 Python 應用程式部署至 App Service 中的 Linux 容器來開始使用 Azure App Service。
 ms.topic: quickstart
 ms.date: 09/22/2020
-ms.custom: seo-python-october2019, cli-validate, devx-track-python
+ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
-ms.openlocfilehash: 8a0cce6dd68513380759319c378d15aeb0e029c3
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 8f48f31cdaaa555e0a8f6f0fd4756bb61a9f417d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91813180"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741098"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>快速入門：在 Linux 上的 Azure App Service 中建立 Python 應用程式
 
@@ -238,7 +238,7 @@ az webapp log tail
 
 您也可以在瀏覽器中的 `https://<app-name>.scm.azurewebsites.net/api/logs/docker` 檢查記錄檔。
 
-您可以隨時在終端機中按 **Ctrl**+**C**，以停止記錄串流。
+您可以隨時在終端機中按 **Ctrl**+**C** ，以停止記錄串流。
 
 [有任何問題嗎？請告訴我們。](https://aka.ms/FlaskCLIQuickstartHelp)
 
@@ -252,7 +252,7 @@ az webapp log tail
 
 ![在 Azure 入口網站的 App Services 中瀏覽至您的 Python 應用程式](./media/quickstart-python/navigate-to-app-in-app-services-in-the-azure-portal.png)
 
-選取應用程式並開啟其**概觀**頁面，您可以在這裡執行基本管理工作，像是瀏覽、停止、啟動、重新啟動及刪除。
+選取應用程式並開啟其 **概觀** 頁面，您可以在這裡執行基本管理工作，像是瀏覽、停止、啟動、重新啟動及刪除。
 
 ![在 Azure 入口網站的 [概觀] 頁面中管理您的 Python 應用程式](./media/quickstart-python/manage-an-app-in-app-services-in-the-azure-portal.png)
 

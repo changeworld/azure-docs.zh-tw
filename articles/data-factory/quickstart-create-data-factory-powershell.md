@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: ebcab92c40705bf108d5839a7e67aee345c1bbc7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1377743fbaefdb812f18768307421fdae637ed54
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91292382"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637576"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>快速入門：使用 PowerShell 建立 Azure 資料處理站
 
@@ -28,7 +28,7 @@ ms.locfileid: "91292382"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-本快速入門說明如何使用 PowerShell 來建立 Azure 資料處理站。 在此資料處理站中建立的管線會將資料從 Azure Blob 儲存體中的一個資料夾**複製**到其他資料夾。 如需如何使用 Azure Data Factory **轉換**資料的教學課程，請參閱[教學課程︰使用 Spark 轉換資料](transform-data-using-spark.md)。
+本快速入門說明如何使用 PowerShell 來建立 Azure 資料處理站。 在此資料處理站中建立的管線會將資料從 Azure Blob 儲存體中的一個資料夾 **複製** 到其他資料夾。 如需如何使用 Azure Data Factory **轉換** 資料的教學課程，請參閱 [教學課程︰使用 Spark 轉換資料](transform-data-using-spark.md)。
 
 > [!NOTE]
 > 本文不提供 Data Factory 服務的詳細簡介。 如需 Azure Data Factory 服務簡介，請參閱 [Azure Data Factory 簡介](introduction.md)。
@@ -43,7 +43,7 @@ ms.locfileid: "91292382"
 
 #### <a name="log-in-to-powershell"></a>登入 PowerShell
 
-1. 在您的電腦上啟動 **PowerShell**。 讓 PowerShell 保持開啟，直到本快速入門結束為止。 如果您關閉並重新開啟，則需要再次執行這些命令。
+1. 在您的電腦上啟動 **PowerShell** 。 讓 PowerShell 保持開啟，直到本快速入門結束為止。 如果您關閉並重新開啟，則需要再次執行這些命令。
 
 2. 執行下列命令，並輸入您用來登入 Azure 入口網站的相同 Azure 使用者名稱和密碼：
 
@@ -57,7 +57,7 @@ ms.locfileid: "91292382"
     Get-AzSubscription
     ```
 
-4. 如果您發現您的帳戶與多個訂用帳戶相關聯，請執行下列命令來選取您需要使用的訂用帳戶。 以您的 Azure 訂用帳戶識別碼取代 **SubscriptionId**：
+4. 如果您發現您的帳戶與多個訂用帳戶相關聯，請執行下列命令來選取您需要使用的訂用帳戶。 以您的 Azure 訂用帳戶識別碼取代 **SubscriptionId** ：
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"
@@ -105,7 +105,7 @@ ms.locfileid: "91292382"
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 
-* 若要建立 Data Factory 執行個體，您用來登入 Azure 的使用者帳戶必須為**參與者**或**擁有者**角色，或是 Azure 訂用帳戶的**管理員**。
+* 若要建立 Data Factory 執行個體，您用來登入 Azure 的使用者帳戶必須為 **參與者** 或 **擁有者** 角色，或是 Azure 訂用帳戶的 **管理員** 。
 
 * 如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析]  以找出 [Data Factory]  ：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料處理站所使用的資料存放區 (Azure 儲存體、Azure SQL Database 等) 和計算 (HDInsight 等) 可位於其他區域。
 
@@ -115,8 +115,8 @@ ms.locfileid: "91292382"
 在資料處理站中建立的連結服務，會將您的資料存放區和計算服務連結到資料處理站。 在本快速入門中，您要建立連結 Azure 儲存體的服務，可用來作為來源和接收的存放區。 連結的服務具有連線資訊，可供 Data Factory 服務在執行階段中用來連線。
 
 >[!TIP]
->在本快速入門中，您會使用「帳戶金鑰」  作為資料存放區的驗證類型，但可以選擇其他支援的驗證方法：SAS URI  、服務主體  ，以及受控識別  (如有需要)。 如需詳細資訊，請參閱[本文](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties)的對應章節。
->若要安全地儲存資料存放區的秘密，也建議您使用 Azure Key Vault。 如需詳細說明，請參閱[本文](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)。
+>在本快速入門中，您會使用「帳戶金鑰」  作為資料存放區的驗證類型，但可以選擇其他支援的驗證方法：SAS URI  、服務主體  ，以及受控識別  (如有需要)。 如需詳細資訊，請參閱[本文](./connector-azure-blob-storage.md#linked-service-properties)的對應章節。
+>若要安全地儲存資料存放區的秘密，也建議您使用 Azure Key Vault。 如需詳細說明，請參閱[本文](./store-credentials-in-key-vault.md)。
 
 1. 在 **C:\ADFv2QuickStartPSH** 資料夾中，使用以下內容建立名為 **AzureStorageLinkedService.json** 的 JSON 檔案：(如果 ADFv2QuickStartPSH 資料夾尚未存在，請加以建立)。
 
@@ -144,7 +144,7 @@ ms.locfileid: "91292382"
     Set-Location 'C:\ADFv2QuickStartPSH'
     ```
 
-3. 執行 **Set-AzDataFactoryV2LinkedService** Cmdlet 來建立連結服務：**AzureStorageLinkedService**。
+3. 執行 **Set-AzDataFactoryV2LinkedService** Cmdlet 來建立連結服務： **AzureStorageLinkedService** 。
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName `
@@ -163,9 +163,9 @@ ms.locfileid: "91292382"
 
 ## <a name="create-datasets"></a>建立資料集
 
-在此程序中，您會建立兩個資料集：**InputDataset** 和 **OutputDataset**。 這些資料集的類型為**二進位**。 其會參考您在前一節中建立的 Azure 儲存體連結服務。
-輸入資料集代表輸入資料夾中的來源資料。 在輸入資料集定義中，您可以指定 Blob 容器 (**adftutorial**)、資料夾 (**input**) 以及包含來源資料的檔案 (**emp.txt**)。
-此輸出資料集代表已複製到目的地的資料。 在輸出資料集定義中，您可以指定要將資料複製過去的 Blob 容器 (**adftutorial**)、資料夾 (**output**) 和檔案。 
+在此程序中，您會建立兩個資料集： **InputDataset** 和 **OutputDataset** 。 這些資料集的類型為 **二進位** 。 其會參考您在前一節中建立的 Azure 儲存體連結服務。
+輸入資料集代表輸入資料夾中的來源資料。 在輸入資料集定義中，您可以指定 Blob 容器 ( **adftutorial** )、資料夾 ( **input** ) 以及包含來源資料的檔案 ( **emp.txt** )。
+此輸出資料集代表已複製到目的地的資料。 在輸出資料集定義中，您可以指定要將資料複製過去的 Blob 容器 ( **adftutorial** )、資料夾 ( **output** ) 和檔案。 
 1. 在 **C:\ADFv2QuickStartPSH** 資料夾中，使用下列內容建立名為 **InputDataset.json** 的 JSON 檔案：
 
     ```json
@@ -190,7 +190,7 @@ ms.locfileid: "91292382"
     }
     ```
 
-2. 若要建立資料集：**InputDataset**，請執行 **Set-AzDataFactoryV2Dataset** Cmdlet。
+2. 若要建立資料集： **InputDataset** ，請執行 **Set-AzDataFactoryV2Dataset** Cmdlet。
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
@@ -231,7 +231,7 @@ ms.locfileid: "91292382"
     }
     ```
 
-4. 執行 **Set-AzDataFactoryV2Dataset** Cmdlet 來建立 **OutDataset**。
+4. 執行 **Set-AzDataFactoryV2Dataset** Cmdlet 來建立 **OutDataset** 。
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
@@ -306,7 +306,7 @@ ms.locfileid: "91292382"
     }
     ```
 
-2. 若要建立管線：**Adfv2QuickStartPipeline**，請執行 **Set-AzDataFactoryV2Pipeline** Cmdlet。
+2. 若要建立管線： **Adfv2QuickStartPipeline** ，請執行 **Set-AzDataFactoryV2Pipeline** Cmdlet。
 
     ```powershell
     $DFPipeLine = Set-AzDataFactoryV2Pipeline `

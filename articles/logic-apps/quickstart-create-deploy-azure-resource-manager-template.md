@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc, subject-armqs
+ms.custom: mvc, subject-armqs, devx-track-azurecli
 ms.date: 06/30/2020
-ms.openlocfilehash: 10cc89d1a0cc975df4384e551dddde32be0a4a72
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 689582d73e29cb60cc2ee5294b568b5db2f73244
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87078127"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739339"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>快速入門：使用 ARM 範本建立和部署邏輯應用程式工作流程
 
@@ -30,7 +30,7 @@ ms.locfileid: "87078127"
 
 ## <a name="review-the-template"></a>檢閱範本
 
-本快速入門會使用[**建立邏輯應用程式**](https://azure.microsoft.com/resources/templates/101-logic-app-create/)範本，您可以在 [Azure 快速入門範本資源庫](https://azure.microsoft.com/resources/templates)中找到，但是太長而無法在這裡顯示。 相反地，您可以在範本資源庫中檢閱快速入門範本的[「azuredeploy.json 檔案」](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json)。
+本快速入門會使用 [**建立邏輯應用程式**](https://azure.microsoft.com/resources/templates/101-logic-app-create/)範本，您可以在 [Azure 快速入門範本資源庫](https://azure.microsoft.com/resources/templates)中找到，但是太長而無法在這裡顯示。 相反地，您可以在範本資源庫中檢閱快速入門範本的[「azuredeploy.json 檔案」](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json)。
 
 快速入門範本會建立邏輯應用程式工作流程，該工作流程使用「定期」觸發程序 (設定為每小時執行)，以及建立 HTTP [內建動作](../connectors/apis-list.md#connector-types)，其會呼叫可傳回 Azure 狀態的 URL。 內建動作是 Azure Logic Apps 平台的原生動作。
 

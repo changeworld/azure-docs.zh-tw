@@ -4,16 +4,16 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
-ms.openlocfilehash: 70139f6dc051cc0aa6b6a65ab76f0f2db3b94a13
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 4917bcd1ef0e20d4c8f00d4cedb4697fbccb09c0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362760"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670436"
 ---
 檢查合約類型，以判斷您是否有權存取 Microsoft 客戶合約的計費帳戶。
  
-1. 移至 [Azure 入口網站](https://portal.azure.com)以檢查計費帳戶存取權。 搜尋並選取 [成本管理 + 計費]  。
+1. 移至 Azure 入口網站以檢查計費帳戶存取權。 搜尋並選取 [成本管理 + 計費]  。
 
    ![顯示在 Azure 入口網站中搜尋 [成本管理 + 計費] 的螢幕擷取畫面。](./media/billing-check-mca/billing-search-cost-management-billing.png)
  

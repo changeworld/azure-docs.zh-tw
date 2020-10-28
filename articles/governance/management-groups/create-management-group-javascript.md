@@ -3,13 +3,13 @@ title: 快速入門：使用 JavaScript 建立管理群組
 description: 在本快速入門中，您會使用 JavaScript 來建立管理群組，以將您的資源組織成資源階層。
 ms.date: 09/30/2020
 ms.topic: quickstart
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7a234a6619eafd650451ae5d6bce37388c824f33
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: devx-track-js
+ms.openlocfilehash: 965e4b8f81a26cab8f6e34cab3e51d6a97f5a6a6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91604531"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676235"
 ---
 # <a name="quickstart-create-a-management-group-with-javascript"></a>快速入門：使用 JavaScript 建立管理群組
 
@@ -90,7 +90,7 @@ ms.locfileid: "91604531"
    node index.js --groupID "<NEW_MG_GROUP_ID>" --displayName "<NEW_MG_FRIENDLY_NAME>"
    ```
 
-   請務必將每個權杖 `<>` 預留位置分別取代為您的_管理群組識別碼_和_管理群組易記名稱_。
+   請務必將每個權杖 `<>` 預留位置分別取代為您的 _管理群組識別碼_ 和 _管理群組易記名稱_ 。
 
    當指令碼嘗試進行驗證時，終端機中會顯示類似下列訊息的訊息：
 

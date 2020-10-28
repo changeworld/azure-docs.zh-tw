@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: cd08b02cb3b67ce615ffa1003ee1e4441a281c17
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 9203cebbd721b918f2514f7615712c035a0460ed
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92285059"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669749"
 ---
 # <a name="use-github-actions-to-connect-to-azure-sql-database"></a>使用 GitHub Actions 連線到 Azure SQL Database
 
@@ -26,7 +26,7 @@ ms.locfileid: "92285059"
 - 具有 dacpac 套件的 GitHub 存放庫 (`Database.dacpac`)。 如果您沒有 GitHub 帳戶，請[免費註冊](https://github.com/join)。  
 - Azure SQL Database。
     - [快速入門：建立 Azure SQL Database 單一資料庫](single-database-create-quickstart.md)
-    - [如何從現有的 SQL Server 資料庫建立 dacpac 套件](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
+    - [如何從現有的 SQL Server 資料庫建立 dacpac 套件](/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
 
 ## <a name="workflow-file-overview"></a>工作流程檔案概觀
 
@@ -194,4 +194,4 @@ GitHub Actions 工作流程是由您存放庫內 `/.github/workflows/` 路徑中
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [了解 Azure 和 GitHub 整合](https://docs.microsoft.com/azure/developer/github/)
+> [了解 Azure 和 GitHub 整合](/azure/developer/github/)

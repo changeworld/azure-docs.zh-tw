@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 7b4620c739b2f94cb6b96743280cd1decbbb746e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ce045da7d21c2af0dfde5ee896b4f7f343ce6545
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92326110"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92541259"
 ---
 # <a name="use-github-actions-to-connect-to-azure-mysql"></a>使用 GitHub Actions 連線到 Azure MySQL
 
@@ -39,7 +39,7 @@ GitHub Actions 工作流程是由您存放庫內 `/.github/workflows/` 路徑中
 
 ## <a name="generate-deployment-credentials"></a>產生部署認證
 
-您可以使用 [Azure CLI](/cli/azure/) 中的 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) 命令來建立[服務主體](../active-directory/develop/app-objects-and-service-principals.md)。 請使用 Azure 入口網站中的 [Azure Cloud Shell](https://shell.azure.com/)，或選取 [試試看] 按鈕來執行此命令。
+您可以使用 [Azure CLI](/cli/azure/) 中的 [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac&preserve-view=true) 命令來建立[服務主體](../active-directory/develop/app-objects-and-service-principals.md)。 請使用 Azure 入口網站中的 [Azure Cloud Shell](https://shell.azure.com/)，或選取 [試試看] 按鈕來執行此命令。
 
 以 Azure 上所裝載 MySQL 伺服器的名稱取代預留位置 `server-name`。 以連線至 MySQL 伺服器的訂用帳戶識別碼和資源群組取代 `subscription-id` 和 `resource-group`。  
 
@@ -191,4 +191,4 @@ GitHub Actions 工作流程是由您存放庫內 `/.github/workflows/` 路徑中
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [了解 Azure 和 GitHub 整合](https://docs.microsoft.com/azure/developer/github/)
+> [了解 Azure 和 GitHub 整合](/azure/developer/github/)

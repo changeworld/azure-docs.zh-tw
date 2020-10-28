@@ -7,13 +7,13 @@ ms.date: 7/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc
-ms.openlocfilehash: 187a0598dfc26394d1fd48e67d83ef7e98ef6226
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 065e65c0c8ccf61dd67da19fd5a94d4506db73ff
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574008"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737313"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-to-iot-hub-python"></a>快速入門：將範例 IoT 隨插即用裝置應用程式連線至 IoT 中樞 (Python)
 
@@ -37,7 +37,7 @@ python --version
 pip install azure-iot-device
 ```
 
-複製 Python SDK IoT 存放庫，並簽出 **master**：
+複製 Python SDK IoT 存放庫，並簽出 **master** ：
 
 ```cmd/sh
 git clone https://github.com/Azure/azure-iot-sdk-python
@@ -61,7 +61,7 @@ azure-iot-sdk-python\azure-iot-device\samples\pnp 資料夾包含適用於 IoT �
 
     1. 使用裝置 SDK 來建立裝置用戶端，並連線到您的 IoT 中樞。
 
-    1. 更新屬性。 我們使用的模型 (**控溫器**) 會將 `targetTemperature` 和 `maxTempSinceLastReboot` 定義為控溫器的兩個屬性，因此這是我們會使用的屬性。 屬性會使用 `device_client` 上定義的 `patch_twin_reported_properties` 方法進行更新。
+    1. 更新屬性。 我們使用的模型 ( **控溫器** ) 會將 `targetTemperature` 和 `maxTempSinceLastReboot` 定義為控溫器的兩個屬性，因此這是我們會使用的屬性。 屬性會使用 `device_client` 上定義的 `patch_twin_reported_properties` 方法進行更新。
 
     1. 使用 **execute_command_listener** 函式開始接聽命令要求。 此函式會針對來自服務的命令設定接聽程式進行接聽。 當您設定接聽程式時，要提供 `method_name`、`user_command_handler` 和 `create_user_response_handler`。
         - `user_command_handler` 函式會定義裝置收到命令時應執行的動作。 舉例來說，如果您的鬧鐘關閉，收到此命令的效果就是您起床。 請將此視為叫用命令的「效果」。

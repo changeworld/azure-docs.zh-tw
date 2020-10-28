@@ -3,13 +3,13 @@ title: 在 Azure 中的 Service Fabric 上建立 Linux 容器應用程式
 description: 在此快速入門中，您將使用您的應用程式建置 Docker 映像、將映像推送到容器登錄，然後將您的容器部署至 Service Fabric 叢集。
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: 27a21a685d8dc4aa92585ce49b21d1986a54209f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 27d9c96643feb805a785e1e535cd8cac2602082b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91541504"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741912"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>快速入門：將 Linux 容器部署至 Service Fabric
 
@@ -107,7 +107,7 @@ Mozilla Firefox 是 Ubuntu 16.04 中的預設瀏覽器。 若要將憑證匯入 
     ./install.sh
     ```
 
-3. 開啟網頁瀏覽器，並瀏覽至叢集的 Service Fabric Explorer 端點。 端點的格式如下：**https://\<my-azure-service-fabric-cluster-url>:19080/Explorer**；例如，`https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`。 </br>
+3. 開啟網頁瀏覽器，並瀏覽至叢集的 Service Fabric Explorer 端點。 端點的格式如下： **https://\<my-azure-service-fabric-cluster-url>:19080/Explorer** ；例如，`https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`。 </br>
 
 4. 展開 [應用程式] 節點，您可以看到投票應用程式類型和您建立的執行個體現在有一個項目。
 
@@ -149,7 +149,7 @@ Service Fabric 可確保如果發生失敗，容器執行個體會自動移至�
 
     您現在可以選擇調整 Web 前端服務的執行個體數目。
 
-3. 將數字變更為 **2**，然後按一下 [調整服務]。
+3. 將數字變更為 **2** ，然後按一下 [調整服務]。
 4. 按一下樹狀檢視中的 **fabric:/Voting/azurevotefront** 節點，然後展開分割區節點 (以 GUID 表示)。
 
     ![Service Fabric Explorer 調整服務完成][containersquickstartscaledone]

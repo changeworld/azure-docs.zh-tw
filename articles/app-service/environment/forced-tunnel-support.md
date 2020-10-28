@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6dc002b0ed9e68ea15eaa58c226249837c7df32d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c8a4b6998d1471a79dd789ed6528e22b07f2015c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85830854"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540970"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>設定 App Service Environment 搭配強制通道
 
@@ -73,7 +73,7 @@ ASE 有一些外部相依性，[App Service 環境網路架構][network]文件�
 
 2. 在您的 ASE 子網路中使用 Azure SQL 和 Azure 儲存體啟用服務端點。  完成此步驟後，您可以使用強制通道設定您的 VNet。
 
-若要在已設定成在內部部署路由所有流量的虛擬網路中建立您的 ASE，您必須使用 Resource Manager 範本建立 ASE。  您無法使用入口網站在已存在的子網路中建立 ASE。  將您的 ASE 部署到已設定成在內部部署路由輸出流量的 VNet 時，您必須使用可讓您指定已存在的子網路的 Resource Manager 範本來建立 ASE。 如需關於使用範本部署 ASE 的詳細資訊，請參閱[使用範本建立 App Service 環境][template]。
+如需關於使用範本部署 ASE 的詳細資訊，請參閱[使用範本建立 App Service 環境][template]。
 
 服務端點可讓您將多租用戶服務的存取權限制於一組 Azure 虛擬網路和子網路。 您可以在[虛擬網路服務端點][serviceendpoints]文件中深入了解服務端點。 
 
@@ -95,7 +95,7 @@ ASE 有一些外部相依性，[App Service 環境網路架構][network]文件�
 
 3. 取得位址，該位址將使用於從您的 App Service Environment 至網際網路的所有輸出流量。 如果您將流量路由傳送至內部部署網路，則這些位址就是您的 NAT 或閘道 IP。 如果您想要透過 NVA 路由傳送 App Service Environment 連出流量，則輸出位址為 NVA 的公用 IP。
 
-4. _若要在現有的 App Service 環境中設定輸出位址：_ 移至 resource.azure.com 並前往 Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name>。 接著，您就可以看到描述您 App Service Environment 的 JSON。 確定最上方寫的是「讀取/寫入」。 選取 [編輯]。 向下捲動至底部。 將 **userWhitelistedIpRanges** 值從 **null** 變更為類似以下這樣。 使用您要設為輸出位址範圍的位址。 
+4. _若要在現有的 App Service 環境中設定輸出位址：_ 移至 resource.azure.com 並前往 Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name>。 接著，您就可以看到描述您 App Service Environment 的 JSON。 確定最上方寫的是「讀取/寫入」。 選取 [編輯]  。 向下捲動至底部。 將 **userWhitelistedIpRanges** 值從 **null** 變更為類似以下這樣。 使用您要設為輸出位址範圍的位址。 
 
     ```json
     "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"]
@@ -103,7 +103,7 @@ ASE 有一些外部相依性，[App Service 環境網路架構][network]文件�
 
    選取頂端的 [PUT]。 此選項會觸發 App Service Environment 上的規模調整作業，並調整防火牆。
 
-_若要使用輸出位址來建立您的 ASE_：請依照[使用範本建立 App Service 環境][template]中的指示操作，並取得適當的範本。  編輯 azuredeploy.json 檔案中的 "resources" 區段 (但不在 "properties" 區塊中)，而且納入包含您的值的 **userWhitelistedIpRanges** 行。
+_若要使用輸出位址來建立您的 ASE_ ：請依照 [使用範本建立 App Service 環境][template]中的指示操作，並取得適當的範本。  編輯 azuredeploy.json 檔案中的 "resources" 區段 (但不在 "properties" 區塊中)，而且納入包含您的值的 **userWhitelistedIpRanges** 行。
 
 ```json
 "resources": [

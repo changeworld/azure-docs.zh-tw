@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: 77e4e2e1548beaa840f46953ef5bb4e94345416f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dc6b069e3c7686ec6964dab890e503aa193cf6fe
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943626"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545101"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>快速入門：使用 PHP 來連線和查詢適用於 MySQL 的 Azure 資料庫 - 彈性伺服器中的資料
 
@@ -34,7 +34,7 @@ ms.locfileid: "90943626"
 
 ### <a name="install-php"></a>安裝 PHP
 
-在自己的伺服器上安裝 PHP，或建立 Azure [Web 應用程式](https://docs.microsoft.com/azure/app-service/overview) (包括 PHP)。  若要了解如何建立防火牆規則，請參閱[建立和管理防火牆規則](./how-to-manage-firewall-portal.md)。
+在自己的伺服器上安裝 PHP，或建立 Azure [Web 應用程式](../../app-service/overview.md) (包括 PHP)。  若要了解如何建立防火牆規則，請參閱[建立和管理防火牆規則](./how-to-manage-firewall-portal.md)。
 
 #### <a name="macos"></a>macOS
 
@@ -56,7 +56,7 @@ ms.locfileid: "90943626"
 取得連線到適用於 MySQL 的 Azure 資料庫彈性伺服器所需的連線資訊。 您需要完整的伺服器名稱和登入認證。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 從 Azure 入口網站的左側功能表中，選取 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver**)。
+2. 從 Azure 入口網站的左側功能表中，選取 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver** )。
 3. 選取伺服器名稱。
 4. 從伺服器的 [概觀] 面板，記下 [伺服器名稱] 和 [伺服器管理員登入名稱]。 如果您忘記密碼，您也可以從此面板重設密碼。
  <!---:::image type="content" source="./media/connect-php/1_server-overview-name-login.png" alt-text="Azure Database for MySQL Flexible Server name":::--->

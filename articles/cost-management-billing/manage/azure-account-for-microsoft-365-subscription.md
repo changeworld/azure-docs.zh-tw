@@ -9,16 +9,16 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: e2561b6cfce0da2ede9cda567091f9a7e23610de
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: db9c8d18d975661edf4a120a2e82b073c884d2a9
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682989"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92369670"
 ---
 # <a name="sign-up-for-a-microsoft-365-subscription-with-your-azure-account"></a>使用 Azure 帳戶註冊 Microsoft 365 訂用帳戶
 
-如果您是 Azure 訂閱者，您可以使用 Azure 帳戶來註冊 Microsoft 365 訂用帳戶。 如果您屬於具有 Azure 訂用帳戶的組織，您可以為現有 Azure Active Directory (Azure AD) 中的使用者建立 Microsoft 365 訂用帳戶。 使用具有 Azure Active Directory 租用戶中全域管理員或帳務管理員權限的帳戶，來註冊 Microsoft 365。 如需詳細資訊，請參閱[在 Azure AD 中檢查我的帳戶權限](#RoleInAzureAD)和[在 Azure Active Directory 中指派系統管理員角色](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+如果您是 Azure 訂閱者，您可以使用 Azure 帳戶來註冊 Microsoft 365 訂用帳戶。 如果您屬於具有 Azure 訂用帳戶的組織，您可以為現有 Azure Active Directory (Azure AD) 中的使用者建立 Microsoft 365 訂用帳戶。 使用具有 Azure Active Directory 租用戶中全域管理員或帳務管理員權限的帳戶，來註冊 Microsoft 365。 如需詳細資訊，請參閱[在 Azure AD 中檢查我的帳戶權限](#RoleInAzureAD)和[在 Azure Active Directory 中指派系統管理員角色](../../active-directory/roles/permissions-reference.md)。
 
 如果您已經有 Microsoft 365 帳戶和 Azure 訂用帳戶，您可以[將 Microsoft 365 租用戶關聯至 Azure 訂用帳戶](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 
@@ -60,7 +60,7 @@ ms.locfileid: "88682989"
 5. 按一下 [目錄角色]。
 
     ![顯示 Azure 入口網站目錄角色的螢幕擷取畫面](./media/azure-account-for-microsoft-365-subscription/billing-user-directory-role.png)
-6.  需具備**全域管理員**或**受限的管理員** > 和**帳務管理員**角色，才能為現有 Azure Active Directory 中的使用者建立 Microsoft 365 訂用帳戶。
+6.  需具備 **全域管理員** 或 **受限的管理員** > 和 **帳務管理員** 角色，才能為現有 Azure Active Directory 中的使用者建立 Microsoft 365 訂用帳戶。
 
     ![顯示 Azure 入口網站目錄角色帳務管理員的螢幕擷取畫面](./media/azure-account-for-microsoft-365-subscription/billing-directoryrole-limited.png)
 

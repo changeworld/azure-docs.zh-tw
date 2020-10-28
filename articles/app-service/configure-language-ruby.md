@@ -4,13 +4,13 @@ description: 了解如何為您的應用程式設定預先建置的 Ruby 容器�
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.reviewer: astay; kraigb
-ms.custom: mvc, seodec18
-ms.openlocfilehash: c822dbdf9940db7b38d354fa32906c16977df0c0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: 038d62573b491325adc60647debf17fa87e06cfe
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88083382"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743681"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>為於 Azure App Service 設定 Linux Ruby 應用程式
 
@@ -111,7 +111,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 根據預設，Ruby 容器中的 Rails 伺服器以生產模式執行，並[假設資產已先行編譯並由 Web 伺服器提供服務](https://guides.rubyonrails.org/asset_pipeline.html#in-production)。 若要從 Rails 伺服器提供靜態資產，您需要做兩件事：
 
 - **先行編譯的資產** - [在本機先行編譯靜態資產](https://guides.rubyonrails.org/asset_pipeline.html#local-precompilation)並以手動方式加以部署。 或者，讓部署引擎代替處理它 (請參閱[先行編譯資產](#precompile-assets)。
-- **啟用提供靜態檔案** - 若要提供 Ruby 容器中的靜態資產，[請將`RAILS_SERVE_STATIC_FILES`應用程式設定](configure-common.md#configure-app-settings)設定為 `true`。 例如：
+- **啟用提供靜態檔案** - 若要提供 Ruby 容器中的靜態資產， [請將`RAILS_SERVE_STATIC_FILES`應用程式設定](configure-common.md#configure-app-settings)設定為 `true`。 例如：
 
     ```azurecli-interactive
     az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_SERVE_STATIC_FILES=true

@@ -7,12 +7,12 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.topic: overview
 ms.date: 06/30/2020
-ms.openlocfilehash: d52dd19667da005de54bbf9b4d30207976511c7d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cb283380487310165c646c8615d10a545d1a923b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89567804"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675708"
 ---
 # <a name="frequently-asked-questions-about-the-education-hub"></a>Education Hub 常見問題集
 
@@ -46,7 +46,7 @@ ms.locfileid: "89567804"
 
 ### <a name="what-is-microsoft-learn"></a>Microsoft Learn 是什麼?
 
-[Microsoft Learn](https://docs.microsoft.com/learn/) 是免費的線上學習平台，可讓您依自己的步調學習 Azure 技術。 學習路徑結合了模組，可讓您從基本概念開始，然後前進到解決真實世界挑戰的進階方法。
+[Microsoft Learn](/learn/) 是免費的線上學習平台，可讓您依自己的步調學習 Azure 技術。 學習路徑結合了模組，可讓您從基本概念開始，然後前進到解決真實世界挑戰的進階方法。
 
 ### <a name="can-azure-for-students-be-used-for-production-or-only-for-development"></a>Azure 學生版是否可用於生產，或僅適用於開發?
 
@@ -97,7 +97,7 @@ Azure 學生入門版供應項目不需要信用卡。 此供應項目可讓您�
 
 ### <a name="what-is-microsoft-learn"></a>Microsoft Learn 是什麼?
 
-[Microsoft Learn](https://docs.microsoft.com/learn/) 是免費的線上學習平台，可讓您依自己的步調學習 Azure 技術。 學習路徑結合了模組，可讓您從基本概念開始，然後前進到解決真實世界挑戰的進階方法。
+[Microsoft Learn](/learn/) 是免費的線上學習平台，可讓您依自己的步調學習 Azure 技術。 學習路徑結合了模組，可讓您從基本概念開始，然後前進到解決真實世界挑戰的進階方法。
 
 ## <a name="azure-academic-grant"></a>Azure 學術授與
 
@@ -149,7 +149,7 @@ Azure 課程點數僅涵蓋從您開始啟用 Azure 贊助供應項目時的使�
 
 ### <a name="how-do-i-know-if-my-subscription-is-on-the-azure-course-credit-offer"></a>如何知道我的訂用帳戶是否使用 Azure 課程點數供應項目?
 
-如果您在 Azure 入口網站的 [訂用帳戶] 刀鋒視窗中查看特定的訂用帳戶，您會看到**供應項目名稱**是其中一個屬性。 如果供應項目已連接到您的課程點數，則 [供應項目名稱] 會顯示 **Azure 贊助**。 如果未顯示 **Azure 贊助**，請聯絡支援人員以進行轉換。
+如果您在 Azure 入口網站的 [訂用帳戶] 刀鋒視窗中查看特定的訂用帳戶，您會看到 **供應項目名稱** 是其中一個屬性。 如果供應項目已連接到您的課程點數，則 [供應項目名稱] 會顯示 **Azure 贊助** 。 如果未顯示 **Azure 贊助** ，請聯絡支援人員以進行轉換。
 
 ## <a name="azure-dev-tools-for-teaching"></a>Azure Dev Tools for Teaching
 
@@ -252,8 +252,8 @@ Education Hub 市集有下列語言版本︰阿拉伯文、簡體中文、繁體
 
 ### <a name="how-do-i-find-my-subscriber-id"></a>如何尋找我的訂閱者識別碼？
 
-- **當您第一次註冊計畫時**：您的訂閱者識別碼會在您收到的訂用帳戶歡迎電子郵件中。
-- **如果您續約訂用帳戶**：您的訂閱者識別碼會在訂用帳戶系統管理員收到的續約電子郵件中。
+- **當您第一次註冊計畫時** ：您的訂閱者識別碼會在您收到的訂用帳戶歡迎電子郵件中。
+- **如果您續約訂用帳戶** ：您的訂閱者識別碼會在訂用帳戶系統管理員收到的續約電子郵件中。
 
 您的訂閱者識別碼也會在 Visual Studio 訂用帳戶入口網站中。 登入之後，請在 [我的帳戶] 頁面上的 [我的訂用帳戶] 底下查看。
 

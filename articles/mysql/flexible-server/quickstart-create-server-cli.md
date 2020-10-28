@@ -8,16 +8,16 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.custom: mvc
-ms.openlocfilehash: 7a5bab13dbaa5715aa8dd34e41aba34ce62557a2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4be295ada476e4dc41a86d06908ef1d653a3bad8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329523"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545016"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-flexible-server-using-azure-cli"></a>快速入門：使用 Azure CLI 建立適用於 MySQL 的 Azure 資料庫彈性伺服器
 
-本快速入門說明如何使用 [Azure Cloud Shell](https://shell.azure.com) 中的 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 命令，在五分鐘內建立適用於 MySQL 的 Azure 資料庫彈性伺服器。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+本快速入門說明如何使用 [Azure Cloud Shell](https://shell.azure.com) 中的 [Azure CLI](/cli/azure/get-started-with-azure-cli) 命令，在五分鐘內建立適用於 MySQL 的 Azure 資料庫彈性伺服器。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
 > [!IMPORTANT] 
 > 適用於 MySQL 的 Azure 資料庫彈性伺服器目前處於公開預覽狀態
@@ -28,17 +28,17 @@ ms.locfileid: "91329523"
 
 若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看]  即可。 您也可以移至 [https://shell.azure.com/bash](https://shell.azure.com/bash)，從另一個瀏覽器索引標籤開啟 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後選取 **Enter** 鍵加以執行。
 
-如果您偏好在本機安裝和使用 CLI，本快速入門需要有 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+如果您偏好在本機安裝和使用 CLI，本快速入門需要有 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-您必須使用 [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) 命令登入您的帳戶。 請注意 **id** 屬性，這是指您的 Azure 帳戶的**訂用帳戶識別碼**。
+您必須使用 [az login](/cli/azure/reference-index#az-login) 命令登入您的帳戶。 請注意 **id** 屬性，這是指您的 Azure 帳戶的 **訂用帳戶識別碼** 。
 
 ```azurecli-interactive
 az login
 ```
 
-使用 [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set) 命令來選取您帳戶底下的特定訂用帳戶。 記下 **az login** 輸出中的 **id** 值，作為命令中**訂用帳戶**引數的值。 如果您有多個訂用帳戶，請選擇資源計費的適當訂用帳戶。 若要取得您的所有訂用帳戶，請使用 [az account list](https://docs.microsoft.com/cli/azure/account#az-account-list)。
+使用 [az account set](/cli/azure/account#az-account-set) 命令來選取您帳戶底下的特定訂用帳戶。 記下 **az login** 輸出中的 **id** 值，作為命令中 **訂用帳戶** 引數的值。 如果您有多個訂用帳戶，請選擇資源計費的適當訂用帳戶。 若要取得您的所有訂用帳戶，請使用 [az account list](/cli/azure/account#az-account-list)。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -46,13 +46,13 @@ az account set --subscription <subscription id>
 
 ## <a name="create-a-flexible-server"></a>建立彈性伺服器
 
-使用 `az group create` 命令建立 [Azure 資源群組](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)，然後在此資源群組內建立您的 MySQL 彈性伺服器。 請提供唯一的名稱。 下列範例會在 `eastus2` 位置建立名為 `myresourcegroup` 的資源群組。
+使用 `az group create` 命令建立 [Azure 資源群組](../../azure-resource-manager/management/overview.md)，然後在此資源群組內建立您的 MySQL 彈性伺服器。 請提供唯一的名稱。 下列範例會在 `eastus2` 位置建立名為 `myresourcegroup` 的資源群組。
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location eastus2
 ```
 
-使用 `az mysql flexible-server create` 命令建立彈性伺服器。 一部伺服器可以包含多個資料庫。 下列命令會使用服務預設值和 Azure CLI 的[本機內容](https://docs.microsoft.com/cli/azure/local-context)值，建立伺服器： 
+使用 `az mysql flexible-server create` 命令建立彈性伺服器。 一部伺服器可以包含多個資料庫。 下列命令會使用服務預設值和 Azure CLI 的[本機內容](/cli/azure/local-context)值，建立伺服器： 
 
 ```azurecli
 az mysql flexible-server create
@@ -107,7 +107,7 @@ Make a note of your password. If you forget, you would have to reset your passwo
 az mysql flexible-server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-結果會採用 JSON 格式。 請記下 **fullyQualifiedDomainName** 和 **administratorLogin**。 以下是 JSON 輸出的範例： 
+結果會採用 JSON 格式。 請記下 **fullyQualifiedDomainName** 和 **administratorLogin** 。 以下是 JSON 輸出的範例： 
 
 ```json
 {

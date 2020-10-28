@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 08/24/2020
-ms.openlocfilehash: ea61ca42c345fe9df0436a193fb2adcb00ce6195
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7f450d54a0039f591178ae839fbb404f31d80671
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150800"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537264"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 中的企業安全性概觀
 
@@ -78,10 +78,10 @@ Azure 合規性供應項目是以各種類型的保證為基礎，包括正式�
 | 資料存取安全性 | 設定 Azure Data Lake Storage Gen1 和 Gen2 的[存取控制清單 (ACL)](../../storage/blobs/data-lake-storage-access-control.md)  | 客戶 |
 |  | 在儲存體帳戶上啟用 [[需要安全傳輸]](../../storage/common/storage-require-secure-transfer.md) 屬性。 | 客戶 |
 |  | 設定 [Azure 儲存體防火牆](../../storage/common/storage-network-security.md)和虛擬網路 | 客戶 |
-|  | 設定 Cosmos DB 和 [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) 的 [Azure 虛擬網路服務端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) | 客戶 |
+|  | 設定 Cosmos DB 和 [Azure SQL DB](../../azure-sql/database/vnet-service-endpoint-rule-overview.md) 的 [Azure 虛擬網路服務端點](../../virtual-network/virtual-network-service-endpoints-overview.md) | 客戶 |
 |  | 請確定已啟用[傳輸中加密](./encryption-in-transit.md)功能，以使用 TLS 和 IPSec 進行叢集內部通訊。 | 客戶 |
-|  | 設定[客戶管理的金鑰](../../storage/common/storage-encryption-keys-portal.md)以進行 Azure 儲存體加密 | 客戶 |
-|  | 使用[客戶加密箱](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)，利用 Azure 支援來控制對資料的存取 | 客戶 |
+|  | 設定[客戶管理的金鑰](../../storage/common/customer-managed-keys-configure-key-vault.md)以進行 Azure 儲存體加密 | 客戶 |
+|  | 使用[客戶加密箱](../../security/fundamentals/customer-lockbox-overview.md)，利用 Azure 支援來控制對資料的存取 | 客戶 |
 | 應用程式和中介軟體安全性 | 與 AAD-DS 整合並[設定 ESP](apache-domain-joined-configure-using-azure-adds.md) 或使用[適用於 OAuth 驗證的 HIB](identity-broker.md)| 客戶 |
 |  | 設定 [Apache Ranger 授權](apache-domain-joined-run-hive.md)原則 | 客戶 |
 |  | 使用 [Azure 監視器記錄](../hdinsight-hadoop-oms-log-analytics-tutorial.md) | 客戶 |
@@ -98,5 +98,5 @@ Azure 合規性供應項目是以各種類型的保證為基礎，包括正式�
 ## <a name="next-steps"></a>後續步驟
 
 * [規劃具有 ESP 的 HDInsight 叢集](apache-domain-joined-architecture.md)
-* [設定具有 ESP 的 HDInsight 叢集](apache-domain-joined-configure.md)
+* [設定具有 ESP 的 HDInsight 叢集](./apache-domain-joined-configure-using-azure-adds.md)
 * [管理具有 ESP 的 HDInsight 叢集](apache-domain-joined-manage.md)

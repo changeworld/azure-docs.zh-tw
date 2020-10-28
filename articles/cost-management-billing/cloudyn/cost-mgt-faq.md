@@ -3,19 +3,19 @@ title: Azure 中的 Cloudyn 常見問題集
 description: 了解如何使用 Cloudyn 入口網站來解決常見的間接企業設定問題，以及解答其他常見問題。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/12/2020
+ms.date: 10/23/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: benshy
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7b78d9d7bf725e3d82c88360c822455de1301ef6
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 92a62de4223d2ec6d0441840b90fdce20c656d02
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688023"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546223"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Cloudyn 的常見問題集
 
@@ -37,14 +37,14 @@ ms.locfileid: "88688023"
 
 1. 您的轉銷商必須為您的帳戶啟用「標記」  。 如需指示，請參閱[間接客戶上線指南](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide)。
 
-2. 您要產生用於 Cloudyn 的 Azure Enterprise 合約金鑰。 如需指示，請參閱[新增您的 Azure EA](quick-register-ea.md#register-with-cloudyn) 或[如何尋找您的 EA 註冊識別碼和 API 金鑰](https://youtu.be/u_phLs_udig)。
+2. 您要產生用於 Cloudyn 的 Azure Enterprise 合約金鑰。
 
 只有 Azure 服務系統管理員可以啟用 Cloudyn。 共同管理員的權限不足。
 
 在您可以產生 Azure Enterprise 合約 API 金鑰以設定 Cloudyn 之前，您必須啟用 Azure 帳單 API，方法是遵循下列文章中的指示：
 
 - [適用於企業客戶的報告 API 概觀](../manage/enterprise-api.md)
-- **啟用對 API 的資料存取**下的 [Microsoft Azure 企業版入口網站報告 API](https://ea.azure.com/helpdocs/reportingAPI)
+- **啟用對 API 的資料存取** 下的 [Microsoft Azure 企業版入口網站報告 API](https://ea.azure.com/helpdocs/reportingAPI)
 
 
 您可能也需要提供部門管理員、帳戶擁有者，以及企業管理員等權限，才能使用帳單 API「檢視費用」  。
@@ -66,7 +66,7 @@ ms.locfileid: "88688023"
 3.    在未啟動之帳戶的右邊，按一下類似鉛筆的 [編輯]  符號。
 4.    系統會自動偵測您的租用戶識別碼和速率識別碼。 按 [下一步]  。
 5.    您會被重新導向至 Azure 入口網站。 登入入口網站，並授權 Cloudyn Collector 存取您的 Azure 資料。
-6.    接下來，系統會將您重新導向至 Cloudyn Accounts 管理頁面，而且您的訂用帳戶會更新為**作用中**帳戶狀態。 它會顯示綠色核取記號。
+6.    接下來，系統會將您重新導向至 Cloudyn Accounts 管理頁面，而且您的訂用帳戶會更新為 **作用中** 帳戶狀態。 它會顯示綠色核取記號。
 7.    如果您沒有看到一或多個訂用帳戶有綠色核取記號，這表示您沒有建立訂用帳戶的讀取器應用程式 (CloudynCollector) 的權限。 具有訂用帳戶較高權限的使用者必須重複步驟 3 和 4。  
 
 完成上述步驟之後，您可以在一到兩天內看到最佳化工具建議。 不過，最多可能需要五天，完整的最佳化資料才可供使用。
@@ -78,7 +78,7 @@ ms.locfileid: "88688023"
 
 > Admin1 可能是 Microsoft 雲端解決方案提供者或 Enterprise 合約使用者。 其組織已準備好開始使用 Cloudyn。  他透過 Azure 入口網站註冊，並登入 Cloudyn 入口網站。 身為註冊 Cloudyn 服務並登入 Cloudyn 入口網站的人，Admin1 會成為「主要管理員」  。 Admin1 不會建立任何使用者帳戶。 但其會使用 Cloudyn 入口網站建立 Azure 帳戶並設定實體階層。 Admin1 通知身為租用戶系統管理員的 Admin2，告訴其必須向 Cloudyn 註冊，並登入 Cloudyn 入口網站。
 >
-> Admin2 透過 Azure 入口網站註冊。 不過，其在嘗試登入 Cloudyn 入口網站時會收到錯誤，指出其帳戶已**暫時停權**。 主要管理員 Admin1 會收到帳戶暫時停權的通知。 Admin1 必須啟用 Admin2 的帳戶，授與適當實體的「管理員實體存取權」  ，然後允許使用者管理存取權並啟用使用者帳戶。
+> Admin2 透過 Azure 入口網站註冊。 不過，其在嘗試登入 Cloudyn 入口網站時會收到錯誤，指出其帳戶已 **暫時停權** 。 主要管理員 Admin1 會收到帳戶暫時停權的通知。 Admin1 必須啟用 Admin2 的帳戶，授與適當實體的「管理員實體存取權」  ，然後允許使用者管理存取權並啟用使用者帳戶。
 
 
 如果您收到要求允許使用者存取權的警示，則需要啟用使用者帳戶。
@@ -128,9 +128,9 @@ Cloudyn 會自動偵測您的 Enterprise 合約訂用帳戶貨幣，並在報表
 
 Cloudyn 有下列資料重新整理時間軸：
 
-- **初始**：設定之後，可能需要 24 小時的時間，才能在 Cloudyn 中檢視成本資料。 Cloudyn 也可能需要 10 天的時間，才能收集足夠的資料以顯示調整大小的建議。
-- **每日**：從每個月 10 日到月底，Cloudyn 會在隔天大約 UTC+3 之後顯示前一天的資料。
-- **每月**：從每個月 1 日到 10 日，Cloudyn 只會顯示到上個月底的資料。
+- **初始** ：設定之後，可能需要 24 小時的時間，才能在 Cloudyn 中檢視成本資料。 Cloudyn 也可能需要 10 天的時間，才能收集足夠的資料以顯示調整大小的建議。
+- **每日** ：從每個月 10 日到月底，Cloudyn 會在隔天大約 UTC+3 之後顯示前一天的資料。
+- **每月** ：從每個月 1 日到 10 日，Cloudyn 只會顯示到上個月底的資料。
 
 當前一天有完整資料時，Cloudyn 就會處理前一天的資料。 在 Cloudyn 中，通常在每天大約 UTC+3 時可以獲得前一天的資料。 某些資料 (例如標記) 則可能需要額外的 24 小時處理。
 

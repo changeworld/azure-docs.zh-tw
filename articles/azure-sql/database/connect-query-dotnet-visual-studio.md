@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/10/2020
-ms.openlocfilehash: 30cf90f6020ecd4eb560ac0fe2886ff03c552d13
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: a864b2b3e0379a8b0a1d67c97a63b3d5c52f9e58
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825579"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669708"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>快速入門：在 Visual Studio 中使用 .NET 及 C#，連線到 Azure SQL Database 資料庫或 Azure SQL 受控執行個體，並進行查詢
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -70,7 +70,7 @@ ms.locfileid: "91825579"
    
 1. 選取 [專案] > [管理 NuGet 套件]。 
    
-1. 在 [NuGet 套件管理員] 中，選取 [瀏覽] 索引標籤，然後搜尋並選取 **Microsoft.Data.SqlClient**。
+1. 在 [NuGet 套件管理員] 中，選取 [瀏覽] 索引標籤，然後搜尋並選取 **Microsoft.Data.SqlClient** 。
    
 1. 在 **Microsoft.Data.SqlClient** 頁面上，選取 [安裝]。 
    - 出現提示時，選取 [確定]以繼續安裝。 
@@ -139,7 +139,7 @@ ms.locfileid: "91825579"
 
 ## <a name="run-the-code"></a>執行程式碼
 
-1. 若要執行應用程式，請選取 [偵錯] > [開始偵錯]，或在工具列上選取 [開始]，或按下 **F5**。
+1. 若要執行應用程式，請選取 [偵錯] > [開始偵錯]，或在工具列上選取 [開始]，或按下 **F5** 。
 1. 請確認會傳回資料庫的前 20 個「類別/產品」資料列，然後關閉應用程式視窗。
 
 ## <a name="next-steps"></a>後續步驟
@@ -147,11 +147,10 @@ ms.locfileid: "91825579"
 - 了解如何對 Windows/Linux/macOS [使用 .NET Core 來連線及查詢 Azure SQL Database 資料庫](connect-query-dotnet-core.md)。  
 - 了解 [使用命令列以開始使用在 Windows/Linux/macOS 上的 .NET Core](/dotnet/core/tutorials/using-with-xplat-cli)。
 - 深入了解如何[使用 SSMS 設計您的第一個 Azure SQL Database 資料庫](design-first-database-tutorial.md)或[使用 .NET 設計您的第一個 Azure SQL Database 資料庫](design-first-database-csharp-tutorial.md)。
-- 如需 .NET 的詳細資訊，請參閱 [.NET 文件](https://docs.microsoft.com/dotnet/)。
+- 如需 .NET 的詳細資訊，請參閱 [.NET 文件](/dotnet/)。
 - 重試邏輯範例：[使用 ADO.NET 復原連線到 Azure SQL][step-4-connect-resiliently-to-sql-with-ado-net-a78n]。
 
 
 <!-- Link references. -->
 
-[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
-
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: /sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net

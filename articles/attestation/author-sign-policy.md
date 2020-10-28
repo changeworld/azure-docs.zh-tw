@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a3afb12ac831d87b03d0bb16d1b7ef553f1bb906
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c8ffdcd0615913649e80b20f6873d005f4ad4410
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90006814"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675995"
 ---
 # <a name="how-to-author-and-sign-an-attestation-policy"></a>如何撰寫和簽署證明原則
 
@@ -36,7 +36,7 @@ issuancerules
  
 原則檔案有三個區段，如上所示：
 
-- **版本**：版本是所遵循文法的版本號碼。 
+- **版本** ：版本是所遵循文法的版本號碼。 
 
     ```
     version=MajorVersion.MinorVersion   
@@ -44,9 +44,9 @@ issuancerules
 
     目前唯一支援的版本為 1.0。
 
-- **authorizationrules**：將要先檢查的宣告規則集合，以判斷 Azure 證明是否應該繼續處理 **issuancerules**。 宣告規則會依照其定義的順序套用。
+- **authorizationrules** ：將要先檢查的宣告規則集合，以判斷 Azure 證明是否應該繼續處理 **issuancerules** 。 宣告規則會依照其定義的順序套用。
 
-- **issuancerules**：將要評估的宣告規則集合，以將其他資訊新增至原則中定義的證明結果。 宣告規則會依照其定義的順序套用，而且也是選擇性的。
+- **issuancerules** ：將要評估的宣告規則集合，以將其他資訊新增至原則中定義的證明結果。 宣告規則會依照其定義的順序套用，而且也是選擇性的。
 
 如需詳細資訊，請參閱[宣告和宣告規則](claim-rule-grammar.md)。
    
@@ -84,9 +84,9 @@ issuancerules
   };
   ```
 
-  如果傳入宣告集包含符合類型、值和簽發者的宣告，則 permit() 動作會告訴原則引擎處理 **issuancerules**。
+  如果傳入宣告集包含符合類型、值和簽發者的宣告，則 permit() 動作會告訴原則引擎處理 **issuancerules** 。
   
-5. 將宣告規則新增至 **issuancerules**。
+5. 將宣告規則新增至 **issuancerules** 。
 
   ```
   version=1.0;
@@ -128,8 +128,8 @@ issuancerules
      ```
 
 2. (選擇性) 簽署原則。 Azure 證明支援下列演算法：
-     - **無**：請勿簽署原則承載。
-     - **RS256**：支援用來簽署原則承載的演算法
+     - **無** ：請勿簽署原則承載。
+     - **RS256** ：支援用來簽署原則承載的演算法
 
 3. 上傳 JWS 並驗證原則。
      - 如果原則檔案沒有語法錯誤，服務就會接受原則檔案。
@@ -172,4 +172,4 @@ print(encoded.decode('utf-8'))
 
 ## <a name="next-steps"></a>後續步驟
 - [使用 PowerShell 設定 Azure 證明](quickstart-powershell.md)
-- [使用程式碼範例證明 SGX 記憶體保護區](https://docs.microsoft.com/samples/browse/?expanded=azure&terms=attestation)
+- [使用程式碼範例證明 SGX 記憶體保護區](/samples/browse/?expanded=azure&terms=attestation)

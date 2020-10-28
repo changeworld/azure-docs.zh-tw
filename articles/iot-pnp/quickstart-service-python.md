@@ -7,13 +7,13 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc
-ms.openlocfilehash: d04a1eda7dc414233075f5d70e29c967c8bdfc35
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: ad5fa271e3abfaf0c7ee4884881262773a9ad485
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946071"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741489"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-python"></a>快速入門：與已連線至解決方案的 IoT 隨插即用裝置互動 (Python)
 
@@ -59,7 +59,7 @@ pip install azure-iot-hub
     git clone https://github.com/Azure/azure-iot-sdk-python
     ```
 
-1. 此終端機視窗會作為您的**裝置**終端機。 移至複製存放庫的資料夾，並瀏覽至 /azure-iot-sdk-python/azure-iot-device/samples/pnp 資料夾。
+1. 此終端機視窗會作為您的 **裝置** 終端機。 移至複製存放庫的資料夾，並瀏覽至 /azure-iot-sdk-python/azure-iot-device/samples/pnp 資料夾。
 
 1. 使用下列命令來執行範例控溫器裝置：
 
@@ -73,23 +73,23 @@ pip install azure-iot-hub
 
 在本快速入門中，您會使用 Python 中的範例 IoT 解決方案，與您剛剛設定的範例裝置進行互動。
 
-1. 開啟另一個終端機視窗，作為您的**服務**終端機。
+1. 開啟另一個終端機視窗，作為您的 **服務** 終端機。
 
 1. 瀏覽至複製的 Python SDK 存放庫所在的 */azure-iot-sdk-python/azure-iot-hub/samples* 資料夾。
 
 1. 開啟 registry_manager_pnp_sample.py 檔案並檢閱程式碼。 這個範例示範如何使用 **IoTHubRegistryManager** 類別來與 IoT 隨插即用裝置互動。
 
 > [!NOTE]
-> 這些服務範例會使用 **IoT 中樞服務用戶端**中的 **IoTHubRegistryManager** 類別。 若要深入了解 API (包括數位對應項 API)，請參閱[服務開發人員指南](concepts-developer-guide-service.md)。
+> 這些服務範例會使用 **IoT 中樞服務用戶端** 中的 **IoTHubRegistryManager** 類別。 若要深入了解 API (包括數位對應項 API)，請參閱[服務開發人員指南](concepts-developer-guide-service.md)。
 
 ### <a name="get-the-device-twin"></a>取得裝置對應項
 
 在 [設定 IoT 隨插即用的環境快速入門和教學課程](set-up-environment.md)，您建立了兩個環境變數，以設定連線至 IoT 中樞和裝置的範例：
 
-* **IOTHUB_CONNECTION_STRING**：您先前記下的 IoT 中樞連接字串。
-* **IOTHUB_DEVICE_ID**：`"my-pnp-device"`。
+* **IOTHUB_CONNECTION_STRING** ：您先前記下的 IoT 中樞連接字串。
+* **IOTHUB_DEVICE_ID** ：`"my-pnp-device"`。
 
-在**服務**終端機中使用下列命令來執行此範例：
+在 **服務** 終端機中使用下列命令來執行此範例：
 
 ```cmd/sh
 set IOTHUB_METHOD_NAME="getMaxMinReport"
@@ -143,13 +143,13 @@ dtmi:com:example:Thermostat;1
     print("")
 ```
 
-您可以確認更新已套用在顯示下列輸出的**裝置**終端機中：
+您可以確認更新已套用在顯示下列輸出的 **裝置** 終端機中：
 
 ```cmd/sh
 the data in the desired properties patch was: {'targetTemperature': 42, '$version': 2}
 ```
 
-**服務**終端機會確認修補程式已成功：
+**服務** 終端機會確認修補程式已成功：
 
 ```cmd/sh
 The twin patch has been successfully applied
@@ -159,13 +159,13 @@ The twin patch has been successfully applied
 
 範例會接著叫用命令：
 
-**服務**終端機會顯示來自裝置的確認訊息：
+**服務** 終端機會顯示來自裝置的確認訊息：
 
 ```cmd/sh
 The device method has been successfully invoked
 ```
 
-在**裝置**終端機中，您會看到裝置收到命令：
+在 **裝置** 終端機中，您會看到裝置收到命令：
 
 ```cmd/sh
 Command request received with payload

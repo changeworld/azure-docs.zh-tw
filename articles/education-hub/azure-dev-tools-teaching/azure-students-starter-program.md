@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: c581eb79a158dcb2645bcb9fd830a4f83dba1e0d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 87f44c1529055458f341fa6c4c5285560d878d2d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87100775"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674961"
 ---
 # <a name="azure-for-students-starter"></a>Azure 學生入門版
 
@@ -37,4 +37,4 @@ Azure 學生入門版供應項目不需要信用卡。 不過，您隨時可以�
 - [取得登入錯誤的協助](troubleshoot-login.md)
 - [下載軟體 (Azure 學生入門版)](download-software.md)
 - [Azure 學生版計畫](azure-students-program.md)
-- [Microsoft Learn：免費的線上學習平台](https://docs.microsoft.com/learn/)
+- [Microsoft Learn：免費的線上學習平台](/learn/)

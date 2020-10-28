@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 951de77f2ef10a06ff03801872cebcef088172b7
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 200f74ee8d99c80956f1d27599769401d30c3f95
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167044"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537944"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫 - 彈性伺服器 (預覽)
 
@@ -66,7 +66,7 @@ ms.locfileid: "92167044"
 
 ## <a name="network-isolation"></a>網路隔離
 
-您有兩個網路功能選項可連線到適用於 MySQL 的 Azure 資料庫彈性伺服器。 包括**私人存取 (VNet 整合)** 和**公用存取 (允許的 IP 位址)** 。 
+您有兩個網路功能選項可連線到適用於 MySQL 的 Azure 資料庫彈性伺服器。 包括 **私人存取 (VNet 整合)** 和 **公用存取 (允許的 IP 位址)** 。 
 
 * **私人存取 (VNet 整合)** - 您可以將彈性伺服器部署至 [Azure 虛擬網路](../../virtual-network/virtual-networks-overview.md)。 Azure 虛擬網路提供私人且安全的網路通訊。 這可讓虛擬網路中的資源透過私人 IP 位址通訊。
 
@@ -75,7 +75,7 @@ ms.locfileid: "92167044"
    * 使用 VPN 或 ExpressRoute 從非 Azure 資源連線到您的彈性伺服器
    * 沒有公用端點
 
-* **公用存取 (允許的 IP 位址)** - 您可以使用公用端點部署彈性伺服器。 公用端點是可公開解析的 DNS 位址。 「允許的 IP 位址」一詞指的是您選擇授與伺服器存取權的 IP 範圍。 這些權限稱為**防火牆規則**。
+* **公用存取 (允許的 IP 位址)** - 您可以使用公用端點部署彈性伺服器。 公用端點是可公開解析的 DNS 位址。 「允許的 IP 位址」一詞指的是您選擇授與伺服器存取權的 IP 範圍。 這些權限稱為 **防火牆規則** 。
 
 若要深入了解，請參閱[網路概念](concepts-networking.md)。
 
@@ -99,7 +99,7 @@ ms.locfileid: "92167044"
 
 如需深入了解，請參閱[如何使用加密的連線與彈性伺服器連線](https://docs.mongodb.com/manual/tutorial/configure-ssl)。
 
-彈性伺服器允許使用 [Azure 虛擬網路](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) (VNet) 整合，對伺服器進行完整的私人存取。 Azure 虛擬網路中的伺服器只能透過私人 IP 位址連線。 使用 VNet 整合時，公用存取會遭到拒絕，且無法使用公用端點連線到伺服器。 
+彈性伺服器允許使用 [Azure 虛擬網路](../../virtual-network/virtual-networks-overview.md) (VNet) 整合，對伺服器進行完整的私人存取。 Azure 虛擬網路中的伺服器只能透過私人 IP 位址連線。 使用 VNet 整合時，公用存取會遭到拒絕，且無法使用公用端點連線到伺服器。 
 
 若要深入了解，請參閱[網路概念](concepts-networking.md)。
 
@@ -115,7 +115,7 @@ ms.locfileid: "92167044"
 此服務會執行 MySQL 的社群版本。 這允許完整的應用程式相容性，而且需要的重構成本最少，就能將 MySQL 引擎上開發的現有應用程式遷移至單一伺服器服務。 您可以使用下列其中一個選項移轉單一伺服器：
 
 - **傾印和還原** - 供離線移轉使用，使用者使用 mysqldump/mydumper 等社群工具時，可以承擔一些停機時間、傾印和還原，可最快執行遷移。 參閱使用傾印和還原遷移以取得詳細資料。 
-- **Azure 資料庫移轉服務** - 可使用 [Azure 資料庫移轉服務](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online)，讓您在最短停機時間的情況下，執行順暢且簡化的單一伺服器移轉。 
+- **Azure 資料庫移轉服務** - 可使用 [Azure 資料庫移轉服務](../../dms/tutorial-mysql-azure-mysql-online.md)，讓您在最短停機時間的情況下，執行順暢且簡化的單一伺服器移轉。 
 
 ## <a name="azure-regions"></a>Azure 區域
 

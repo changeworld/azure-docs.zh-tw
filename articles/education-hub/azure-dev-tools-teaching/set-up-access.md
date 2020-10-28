@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
-ms.openlocfilehash: 83ae2fdea2ffe586a626f8a45cba74a22c07ae7b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3151da4375c440bec44523711448149f51440d5c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87100740"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676525"
 ---
 # <a name="setting-up-access-for-azure-dev-tools"></a>設定 Azure Dev 工具的存取權
 
@@ -30,7 +30,7 @@ ms.locfileid: "87100740"
 ## <a name="for-students-faculty-and-administrators"></a>適用於學生、教職員和系統管理員
 學生可以透過 [Education Hub](https://aka.ms/devtoolsforteaching) 存取 Azure Dev 工具。
 
-學生和教職員可以透過 Education Hub 取得所有軟體下載權益的存取權。 Education Hub 是建置於 Azure 入口網站內，可讓您的學生輕鬆存取整個軟體目錄，以及存取整個 [Microsoft Learn](https://docs.microsoft.com/learn/) 目錄。
+學生和教職員可以透過 Education Hub 取得所有軟體下載權益的存取權。 Education Hub 是建置於 Azure 入口網站內，可讓您的學生輕鬆存取整個軟體目錄，以及存取整個 [Microsoft Learn](/learn/) 目錄。
 
 ## <a name="next-steps"></a>後續步驟
 - [管理學生帳戶](manage-students.md)

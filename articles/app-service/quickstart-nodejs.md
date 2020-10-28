@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 ms.custom: mvc, devcenter, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: f88960207188779949560218b298fd36d6a8f25e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f105acaa4e2801ca6dc8c33b404fdb9f9d65adc8
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90985224"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633717"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中建立 Node.js Web 應用程式
 
@@ -22,6 +22,7 @@ ms.locfileid: "90985224"
 ## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension)。
+- <a href="https://git-scm.com/" target="_blank">安裝 Git</a>
 - [Node.js 和 npm](https://nodejs.org)。 執行命令 `node --version`，確認已安裝 Node.js。
 - [Visual Studio Code](https://code.visualstudio.com/) \(英文\)。
 - [適用於 Visual Studio Code 的 Azure App Service 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)。
@@ -63,11 +64,11 @@ ms.locfileid: "90985224"
     code .
     ```
 
-1. 在 VS Code 活動列中，選取 Azure 標誌以顯示 [AZURE APP SERVICE] 總管。 選取 [登入 Azure...] 並遵循指示進行。 (如果遇到錯誤，請參閱 [Azure 登入疑難排解](#troubleshooting-azure-sign-in)。)登入之後，總管應會顯示您的 Azure 訂用帳戶名稱。
+1. 在 VS Code 活動列中，選取 Azure 標誌以顯示 [AZURE APP SERVICE] 總管。 選取 [登入 Azure...]  並遵循指示進行。 (如果遇到錯誤，請參閱 [Azure 登入疑難排解](#troubleshooting-azure-sign-in)。)登入之後，總管應會顯示您的 Azure 訂用帳戶名稱。
 
     ![登入 Azure](media/quickstart-nodejs/sign-in.png)
 
-1. 在 VS Code 的 [AZURE APP SERVICE] 總管中，選取藍色的向上箭頭圖示，即可將您的應用程式部署至 Azure。 (您也可以從 [命令選擇區] \(**Ctrl**+**Shift**+**P**\) 叫用相同命令，只要輸入「部署到 Web 應用程式」並選擇 [Azure App Service:部署到 Web 應用程式])。
+1. 在 VS Code 的 [AZURE APP SERVICE] 總管中，選取藍色的向上箭頭圖示，即可將您的應用程式部署至 Azure。 (您也可以從 [命令選擇區] \( **Ctrl**+**Shift**+**P** \) 叫用相同命令，只要輸入「部署到 Web 應用程式」並選擇 [Azure App Service:部署到 Web 應用程式])。
 
     :::image type="content" source="media/quickstart-nodejs/deploy.png" alt-text="VS Code 中 Azure App 服務的螢幕擷取畫面，其中顯示所選的藍色箭號圖示。&quot;:::
         
@@ -78,7 +79,7 @@ ms.locfileid: "90985224"
     - Linux：選擇 [建立新的 Web 應用程式]
     - Windows：選擇 [建立新的 Web 應用程式]...[進階]
 
-1. 輸入 Web 應用程式的全域唯一名稱，然後按 **Enter**。 該名稱在所有 Azure 中必須是唯一的，而且只能使用英數位元 ('A-z'、'a-z' 和 '0-9') 和連字號 ('-')。
+1. 輸入 Web 應用程式的全域唯一名稱，然後按 **Enter** 。 該名稱在所有 Azure 中必須是唯一的，而且只能使用英數位元 ('A-z'、'a-z' 和 '0-9') 和連字號 ('-')。
 
 1. 如果以 Linux 為，請在出現提示時選取 Node.js 版本。 建議使用 **LTS** 版本。
 
@@ -150,7 +151,7 @@ export HTTP_PROXY=http://username:password@proxy:8080
     - Linux：選擇 [建立新的 Web 應用程式]
     - Windows：選擇 [建立新的 Web 應用程式]...[進階]
 
-1. 輸入 Web 應用程式的全域唯一名稱，然後按 **Enter**。 該名稱在所有 Azure 中必須是唯一的，而且只能使用英數位元 ('A-z'、'a-z' 和 '0-9') 和連字號 ('-')。
+1. 輸入 Web 應用程式的全域唯一名稱，然後按 **Enter** 。 該名稱在所有 Azure 中必須是唯一的，而且只能使用英數位元 ('A-z'、'a-z' 和 '0-9') 和連字號 ('-')。
 
 1. 如果以 Linux 為，請在出現提示時選取 Node.js 版本。 建議使用 **LTS** 版本。
 
@@ -218,7 +219,7 @@ export HTTP_PROXY=http://username:password@proxy:8080
 
 ### <a name="troubleshooting"></a>疑難排解
 
-如果您看到 **「找不到名稱為 [訂用帳戶識別碼] 的訂用帳戶**」錯誤，可能是因為您位於 Proxy 後方，所以無法連線到 Azure API。 請使用 `export`，並以您終端機中的Proxy 資訊來設定 `HTTP_PROXY` 和 `HTTPS_PROXY` 環境變數。
+如果您看到 **「找不到名稱為 [訂用帳戶識別碼] 的訂用帳戶** 」錯誤，可能是因為您位於 Proxy 後方，所以無法連線到 Azure API。 請使用 `export`，並以您終端機中的Proxy 資訊來設定 `HTTP_PROXY` 和 `HTTPS_PROXY` 環境變數。
 
 ```sh
 export HTTPS_PROXY=https://username:password@proxy:8080
@@ -298,7 +299,7 @@ code .
     - Linux：選擇 [建立新的 Web 應用程式]
     - Windows：選擇 [建立新的 Web 應用程式]...[進階]
 
-1. 輸入 Web 應用程式的全域唯一名稱，然後按 **Enter**。 該名稱在所有 Azure 中必須是唯一的，而且只能使用英數位元 ('A-z'、'a-z' 和 '0-9') 和連字號 ('-')。
+1. 輸入 Web 應用程式的全域唯一名稱，然後按 **Enter** 。 該名稱在所有 Azure 中必須是唯一的，而且只能使用英數位元 ('A-z'、'a-z' 和 '0-9') 和連字號 ('-')。
 
 1. 如果以 Linux 為，請在出現提示時選取 Node.js 版本。 建議使用 **LTS** 版本。
 
@@ -341,7 +342,7 @@ code .
     - Linux：選擇 [建立新的 Web 應用程式]
     - Windows：選擇 [建立新的 Web 應用程式]...[進階]
 
-1. 輸入 Web 應用程式的全域唯一名稱，然後按 **Enter**。 該名稱在所有 Azure 中必須是唯一的，而且只能使用英數位元 ('A-z'、'a-z' 和 '0-9') 和連字號 ('-')。
+1. 輸入 Web 應用程式的全域唯一名稱，然後按 **Enter** 。 該名稱在所有 Azure 中必須是唯一的，而且只能使用英數位元 ('A-z'、'a-z' 和 '0-9') 和連字號 ('-')。
 
 1. 如果以 Linux 為，請在出現提示時選取 Node.js 版本。 建議使用 **LTS** 版本。
 
@@ -371,7 +372,7 @@ code .
     - Linux：選擇 [建立新的 Web 應用程式]
     - Windows：選擇 [建立新的 Web 應用程式]...[進階]
 
-1. 輸入 Web 應用程式的全域唯一名稱，然後按 **Enter**。 該名稱在所有 Azure 中必須是唯一的，而且只能使用英數位元 ('A-z'、'a-z' 和 '0-9') 和連字號 ('-')。
+1. 輸入 Web 應用程式的全域唯一名稱，然後按 **Enter** 。 該名稱在所有 Azure 中必須是唯一的，而且只能使用英數位元 ('A-z'、'a-z' 和 '0-9') 和連字號 ('-')。
 
 1. 如果以 Linux 為，請在出現提示時選取 Node.js 版本。 建議使用 **LTS** 版本。
 
@@ -427,7 +428,7 @@ VS Code 的輸出視窗會隨即開啟，並且連線至記錄串流。
     - Linux：選擇 [建立新的 Web 應用程式]
     - Windows：選擇 [建立新的 Web 應用程式]...[進階]
 
-1. 輸入 Web 應用程式的全域唯一名稱，然後按 **Enter**。 該名稱在所有 Azure 中必須是唯一的，而且只能使用英數位元 ('A-z'、'a-z' 和 '0-9') 和連字號 ('-')。
+1. 輸入 Web 應用程式的全域唯一名稱，然後按 **Enter** 。 該名稱在所有 Azure 中必須是唯一的，而且只能使用英數位元 ('A-z'、'a-z' 和 '0-9') 和連字號 ('-')。
 
 1. 如果以 Linux 為，請在出現提示時選取 Node.js 版本。 建議使用 **LTS** 版本。
 

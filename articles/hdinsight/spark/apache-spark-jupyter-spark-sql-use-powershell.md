@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 47450b85412e75cf632d9c2873289e9a0820beb0
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: fd7300fd21d20476305dc5404158f255d533ffed
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91537764"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539321"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>快速入門：使用 PowerShell 在 Azure HDInsight 中建立 Apache Spark 叢集
 
@@ -26,7 +26,7 @@ ms.locfileid: "91537764"
 ## <a name="prerequisite"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- [PowerShell Az 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+- [PowerShell Az 模組](/powershell/azure/install-az-ps)。
 
 ## <a name="create-an-apache-spark-cluster-in-hdinsight"></a>在 HDInsight 中建立 Apache Spark 叢集
 
@@ -36,7 +36,7 @@ ms.locfileid: "91537764"
 建立 HDInsight 叢集，包括建立下列 Azure 物件和資源：
 
 - Azure 資源群組。 Azure 資源群組是一個適用於 Azure 資源的容器。
-- Azure 儲存體帳戶或 Azure Data Lake Storage。  每個 HDInsight 叢集都需要相依的資料儲存體。 在本快速入門中，您會建立使用 Azure 儲存體 Blob 作為叢集儲存體的叢集。 如需有關如何使用 Data Lake Storage Gen2 的詳細資訊，請參閱[快速入門：在 HDInsight 中設定叢集](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)。
+- Azure 儲存體帳戶或 Azure Data Lake Storage。  每個 HDInsight 叢集都需要相依的資料儲存體。 在本快速入門中，您會建立使用 Azure 儲存體 Blob 作為叢集儲存體的叢集。 如需有關如何使用 Data Lake Storage Gen2 的詳細資訊，請參閱[快速入門：在 HDInsight 中設定叢集](../hdinsight-hadoop-provision-linux-clusters.md)。
 - HDInsight 上不同叢集類型的叢集。  在本快速入門中，您會建立 Spark 2.3 叢集。
 
 您會使用 PowerShell 指令碼來建立資源。 
@@ -174,7 +174,7 @@ SQL (結構化查詢語言) 是最常見且廣泛使用的語言，可用於查�
     SHOW TABLES
     ```
 
-    當您在 HDInsight 中使用 Jupyter Notebook 搭配 Spark 叢集時，您可取得預設的 `sqlContext`，用來執行使用 Spark SQL 的 Hive 查詢。 `%%sql` 會告知 Jupyter Notebook 使用預設的 `sqlContext` 來執行 Hive 查詢。 此查詢會擷取 Hive 資料表 (**hivesampletable**) 中的前 10 個資料列，依預設所有 HDInsight 叢集均隨附該資料表。 大約需要 30 秒才能取得結果。 輸出看起來如下：
+    當您在 HDInsight 中使用 Jupyter Notebook 搭配 Spark 叢集時，您可取得預設的 `sqlContext`，用來執行使用 Spark SQL 的 Hive 查詢。 `%%sql` 會告知 Jupyter Notebook 使用預設的 `sqlContext` 來執行 Hive 查詢。 此查詢會擷取 Hive 資料表 ( **hivesampletable** ) 中的前 10 個資料列，依預設所有 HDInsight 叢集均隨附該資料表。 大約需要 30 秒才能取得結果。 輸出看起來如下：
 
     ![HDInsight 上 Spark 中的 Apache Hive 查詢](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-get-started-hive-query.png "HDInsight Spark 中的 Hive 查詢")
 

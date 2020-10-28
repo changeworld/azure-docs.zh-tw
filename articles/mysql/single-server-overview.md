@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: b33fab7657827733b2c5e7724666a3800686c8d9
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: b0f8c5806ba22708db6dc537d391c1f1b1a183ec
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91564777"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543809"
 ---
 # <a name="azure-database-for-mysql-single-server"></a>適用於 MySQL 的 Azure 資料庫單一伺服器
 
@@ -55,7 +55,7 @@ Azure 領先業界的 99.99% 可用性服務等級協定 (SLA)，由 Microsoft �
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>在幾秒之內即可調整效能和規模
 
-有三個 SKU 層級提供單一伺服器服務：「基本」、「一般用途」及「記憶體最佳化」。 基本層最適合用於低成本的開發和低並行工作負載。 一般用途和記憶體最佳化較適合需要高並行、縮放和可預測效能的生產工作負載。 您可以在小型資料庫中建置第一個應用程式，一個月只需少許花費，然後調整規模以滿足解決方案的需求。 縮放儲存體比例功能已上線，並支援儲存體自動成長。 動態延展性可讓您的資料庫以透明的方式回應快速變化的資源需求。 您只需就您取用的資源付費。 如需詳細資訊，請參閱 [定價層](concepts-service-tiers.md)。
+有三個 SKU 層級提供單一伺服器服務：「基本」、「一般用途」及「記憶體最佳化」。 基本層最適合用於低成本的開發和低並行工作負載。 一般用途和記憶體最佳化較適合需要高並行、縮放和可預測效能的生產工作負載。 您可以在小型資料庫中建置第一個應用程式，一個月只需少許花費，然後調整規模以滿足解決方案的需求。 縮放儲存體比例功能已上線，並支援儲存體自動成長。 動態延展性可讓您的資料庫以透明的方式回應快速變化的資源需求。 您只需就您取用的資源付費。 如需詳細資訊，請參閱[定價層](./concepts-pricing-tiers.md)。
 
 ## <a name="enterprise-grade-security-compliance-and-governance"></a>企業級安全性、合規性和治理
 
@@ -63,7 +63,7 @@ Azure 領先業界的 99.99% 可用性服務等級協定 (SLA)，由 Microsoft �
 
 此服務可讓您使用[私人連結](concepts-data-access-security-private-link.md)對伺服器進行私人存取，並提供[先進的威脅防護](concepts-data-access-and-security-threat-protection.md)功能。 進階威脅防護會偵測異常活動，指出有不尋常及可能有害的活動試圖存取或惡意探索資料庫。
 
-除了原生驗證之外，單一伺服器服務也支援 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) 驗證。 Azure AD 驗證是使用 Azure AD 中定義和管理的身分識別連線至 MySQL 伺服器的機制。 透過 Azure AD 驗證，您可以集中管理資料庫使用者的身分識別和其他 Azure 服務，從而簡化和集中控管存取控制。
+除了原生驗證之外，單一伺服器服務也支援 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) 驗證。 Azure AD 驗證是使用 Azure AD 中定義和管理的身分識別連線至 MySQL 伺服器的機制。 透過 Azure AD 驗證，您可以集中管理資料庫使用者的身分識別和其他 Azure 服務，從而簡化和集中控管存取控制。
 
 [稽核記錄](concepts-audit-logs.md)可用來追蹤所有資料庫層級的活動。 
 
@@ -80,7 +80,7 @@ Azure 領先業界的 99.99% 可用性服務等級協定 (SLA)，由 Microsoft �
 此服務會執行 MySQL 的社群版本。 這允許完整的應用程式相容性，而且需要的重構成本最少，就能將 MySQL 引擎上開發的現有應用程式遷移至單一伺服器服務。 您可以使用下列其中一個選項移轉單一伺服器：
 
 - **傾印和還原** - 供離線移轉使用，使用者使用 mysqldump/mydumper 等社群工具時，可以承擔一些停機時間、傾印和還原，可最快執行遷移。 參閱[使用傾印和還原遷移](concepts-migrate-dump-restore.md)以取得詳細資料。 
-- **Azure 資料庫移轉服務** - 可使用 [Azure 資料庫移轉服務](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online)，讓您在最短停機時間的情況下，執行順暢且簡化的單一伺服器移轉。 
+- **Azure 資料庫移轉服務** - 可使用 [Azure 資料庫移轉服務](../dms/tutorial-mysql-azure-mysql-online.md)，讓您在最短停機時間的情況下，執行順暢且簡化的單一伺服器移轉。 
 - **資料輸入複寫** - 您可以利用使用二進位記錄複寫的資料輸入複寫，在停機時間最短的情況下移轉。 對於想要更充分掌控移轉的專家而言，使用資料輸入複寫能讓停機時間降至最低。 如需詳細資訊，請參閱[資料輸入複寫](concepts-data-in-replication.md)。
 
 ## <a name="contacts"></a>連絡人
@@ -108,4 +108,3 @@ Azure 領先業界的 99.99% 可用性服務等級協定 (SLA)，由 Microsoft �
   - [PHP](./connect-php.md)
   - [.NET (C#)](./connect-csharp.md)
   - [Go](./connect-go.md)
-  

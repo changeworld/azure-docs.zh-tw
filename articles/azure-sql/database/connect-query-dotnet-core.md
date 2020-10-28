@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: f1908e243b7cb1def2eac8a1d46d5f087a25f8c6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 32ea1dd2141a8df1fb495af64848f87e9f152328
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88936396"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669738"
 ---
 # <a name="quickstart-use-net-core-c-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>快速入門：使用 .NET Core (C#) 查詢 Azure SQL Database 中的資料庫或 Azure SQL 受控執行個體
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "88936396"
 在本快速入門中，您將使用 [.NET Core](https://www.microsoft.com/net/) 和 C# 程式碼來連線到資料庫。 然後，您將使用 Transact-SQL 陳述式來查詢資料。
 
 > [!TIP]
-> 下列 Microsoft Learn 課程模組可協助您免費學習如何[開發和設定可查詢 Azure SQL Database 中資料庫的 ASP.NET 應用程式](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
+> 下列 Microsoft Learn 課程模組可協助您免費學習如何[開發和設定可查詢 Azure SQL Database 中資料庫的 ASP.NET 應用程式](/learn/modules/develop-app-that-queries-azure-sql/)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -84,7 +84,7 @@ ms.locfileid: "88936396"
     dotnet new console
     ```
 
-    此命令會建立新的應用程式專案檔案，包括最初的 C# 程式碼檔案 (**Program.cs**)、XML 組態檔 (**sqltest.csproj**)，以及所需的二進位檔。
+    此命令會建立新的應用程式專案檔案，包括最初的 C# 程式碼檔案 ( **Program.cs** )、XML 組態檔 ( **sqltest.csproj** )，以及所需的二進位檔。
 
 2. 在文字編輯器中，開啟 **sqltest.csproj** 並在 `<Project>` 標記之間貼上以下 XML。 此 XML 會將 `System.Data.SqlClient` 新增為相依性。
 
@@ -96,7 +96,7 @@ ms.locfileid: "88936396"
 
 ## <a name="insert-code-to-query-the-database-in-azure-sql-database"></a>插入程式碼以查詢 Azure SQL Database 中的資料庫
 
-1. 在文字編輯器中開啟 **Program.cs**。
+1. 在文字編輯器中開啟 **Program.cs** 。
 
 2. 使用以下程式碼取代內容，並為您的伺服器、資料庫、使用者名稱和密碼新增適當的值。
 
@@ -207,4 +207,4 @@ namespace sqltest
 - [使用命令列以開始使用在 Windows/Linux/macOS 上的 .NET Core](/dotnet/core/tutorials/using-with-xplat-cli)。
 - 了解如何[使用 .NET Framework 和 Visual Studio，來連線及查詢 Azure SQL Database 或 Azure SQL 受控執行個體](connect-query-dotnet-visual-studio.md)。  
 - 了解如何[使用 SSMS 設計您的第一個資料庫](design-first-database-tutorial.md)，或是[使用 C# 和 ADO.NET 設計及連線資料庫](design-first-database-csharp-tutorial.md)。
-- 如需 .NET 的詳細資訊，請參閱 [.NET 文件](https://docs.microsoft.com/dotnet/)。
+- 如需 .NET 的詳細資訊，請參閱 [.NET 文件](/dotnet/)。

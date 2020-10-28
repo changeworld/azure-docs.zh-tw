@@ -7,14 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 10/26/2020
 ms.author: banders
-ms.openlocfilehash: 469ccad773693047391f56c1f1109a9c444ee90b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.custom: contentperfq2
+ms.openlocfilehash: c9f344ec6eae40db2c76f3712df6f1f9d8cead37
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447693"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92668865"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Azure 入口網站中的帳戶管理員工作
 
@@ -27,7 +28,7 @@ ms.locfileid: "91447693"
 
 ## <a name="navigate-to-your-subscriptions-payment-methods"></a>瀏覽至訂用帳戶的付款方式
 
-1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
+1. 以帳戶管理員身分登入 Azure 入口網站。
 
 1. 搜尋 [成本管理 + 帳單]  。
 
@@ -40,7 +41,7 @@ ms.locfileid: "91447693"
    > [!NOTE]
    > 如果您在這裡未看到某些訂用帳戶，原因可能是您在某個時間點變更了訂用帳戶目錄。 若要看到這些訂用帳戶，您必須將目錄切換到原始目錄 (您最初註冊時所在的目錄)。 然後，重複步驟 2。
 
-1. 選取 [**付款方式**]。
+1. 選取 [ **付款方式** ]。
 
     ![顯示 [付款方式] 頁面的螢幕擷取畫面，您可在其中新增付款方式。](./media/account-admin-tasks/subscription-payment-methods-blade.png)
 
@@ -115,9 +116,9 @@ ms.locfileid: "91447693"
 
 Azure 消費限制可避免您的花費超過您的點數額度。 只要您的 Azure 訂用帳戶所關聯的付款方式有效，您就可以隨時移除消費限制。 對於具有多個月點數的訂用帳戶類型 (例如 Visual Studio Enterprise 和 Visual Studio Professional)，您可以選擇在下一個計費週期開始時重新啟用消費限制。
 
-消費限制不適用於採用承諾用量方案或採用隨用隨付定價的訂用帳戶。 請參閱[完整的 Azure 訂用帳戶類型清單及消費限制的可用性](https://azure.microsoft.com/support/legal/offer-details/)。
+消費限制不適用於採用承諾用量方案或採用隨用隨付定價的訂用帳戶。
 
-1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
+1. 以帳戶管理員身分登入 Azure 入口網站。
 1. 搜尋 [成本管理 + 帳單]  。
 
     ![顯示搜尋 [成本管理 + 帳單] 的螢幕擷取畫面 ](./media/account-admin-tasks/search-bar.png)
@@ -145,7 +146,7 @@ Azure 消費限制可避免您的花費超過您的點數額度。 只要您的 
 
 如果您有 Azure in Open 授權訂用帳戶，您可藉由兌換產品金鑰或利用信用卡購買點數，在 Azure 入口網站中新增您訂用帳戶的點數。
 
-1. 以帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
+1. 以帳戶管理員身分登入 Azure 入口網站。
 1. 搜尋 [成本管理 + 帳單]  。
 
     ![顯示搜尋 [成本管理 + 帳單] 的螢幕擷取畫面 ](./media/account-admin-tasks/search-bar.png)

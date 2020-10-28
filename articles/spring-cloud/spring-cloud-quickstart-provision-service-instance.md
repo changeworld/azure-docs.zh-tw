@@ -6,14 +6,14 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 09/08/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a248699b47cf99980c9490bf16c10e7196ee6ecf
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 22abdb64a2349045923e148db57f683b4be87636
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091078"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742702"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-service"></a>快速入門：佈建 Azure Spring Cloud 服務
 
@@ -103,9 +103,9 @@ az extension add --name spring-cloud
 
 1. 在新的索引標籤中，開啟 [Azure 入口網站](https://ms.portal.azure.com/)。 
 
-2. 從頂端的搜尋方塊，搜尋 **Azure Spring Cloud**。
+2. 從頂端的搜尋方塊，搜尋 **Azure Spring Cloud** 。
 
-3. 從結果中選取 **Azure Spring Cloud**。
+3. 從結果中選取 **Azure Spring Cloud** 。
 
     ![ASC 圖示啟動](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
@@ -115,9 +115,9 @@ az extension add --name spring-cloud
 
 5. 填寫 Azure Spring Cloud [建立] 頁面上的表單。  請參考下列指引：
     - 訂用帳戶：選取您想要用來支付此資源費用的訂用帳戶。
-    - **資源群組**：為新資源建立新資源群組是最佳做法。 請注意，稍後將會使用該資訊作為 **\<resource group name\>** 。
-    - **服務詳細資料/名稱**：指定 **\<service instance name\>** 。  名稱長度必須為 4 到 32 個字元，且只能包含小寫字母、數字及連字號。  服務名稱的第一個字元必須是字母，且最後一個字元必須是字母或數字。
-    - **位置**：選取您服務執行個體的位置。
+    - **資源群組** ：為新資源建立新資源群組是最佳做法。 請注意，稍後將會使用該資訊作為 **\<resource group name\>** 。
+    - **服務詳細資料/名稱** ：指定 **\<service instance name\>** 。  名稱長度必須為 4 到 32 個字元，且只能包含小寫字母、數字及連字號。  服務名稱的第一個字元必須是字母，且最後一個字元必須是字母或數字。
+    - **位置** ：選取您服務執行個體的位置。
 
     ![ASC 入口網站啟動](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 

@@ -5,7 +5,7 @@ description: 本文說明如何搭配 Azure SQL Database 機器學習服務使�
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
-ms.custom: sqldbrb=2 
+ms.custom: sqldbrb=2
 ms.devlang: python
 ms.topic: quickstart
 author: garyericson
@@ -14,12 +14,12 @@ ms.reviewer: davidph, sstein
 manager: cgronlun
 ms.date: 05/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3a939c816cac44ed85802ecfa591564effc1ee73
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 62f1015bc945b5c01f719d7e96e6446c49ac8b8a
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91328827"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675162"
 ---
 # <a name="quickstart-use-r-with-azure-sql-database-machine-learning-services-preview-to-query-a-database"></a>快速入門：搭配 Azure SQL Database 機器學習服務 (預覽) 使用 R來查詢資料庫 
 
@@ -33,7 +33,7 @@ ms.locfileid: "91328827"
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [Azure SQL Database](single-database-create-quickstart.md)
-- 已啟用 R 的[機器學習服務](machine-learning-services-overview.md)。
+- 已啟用 R 的[機器學習服務](../managed-instance/machine-learning-services-overview.md)。
 - [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!IMPORTANT]
@@ -57,7 +57,7 @@ ms.locfileid: "91328827"
 
    如果您需要連線方面的協助，請參閱[快速入門：使用 SQL Server Management Studio 來連線及查詢 Azure SQL Database 中的資料庫](connect-query-ssms.md) (英文)。
 
-1. 將完整的 R 指令碼傳遞至 [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) 預存程序。
+1. 將完整的 R 指令碼傳遞至 [sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) 預存程序。
 
    指令碼會透過 `@script` 引數傳遞。 `@script` 引數內的所有一切都必須是有效的 R 程式碼。
    
@@ -76,12 +76,12 @@ ms.locfileid: "91328827"
 
 ## <a name="run-the-code"></a>執行程式碼
 
-1. 執行 [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) 預存程序。
+1. 執行 [sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) 預存程序。
 
 1. 確認 [訊息] 視窗中已傳回前 20 個類別/產品資料列。
 
 ## <a name="next-steps"></a>後續步驟
 
 - [設計您在 Azure SQL Database 的第一個資料庫](design-first-database-tutorial.md)
-- [Azure SQL Database 機器學習服務 (搭配 R)](machine-learning-services-overview.md)
-- [在 Azure SQL Database 機器學習服務中建立和執行簡單的 R 指令碼 (預覽)](r-script-create-quickstart.md)
+- [Azure SQL Database 機器學習服務 (搭配 R)](../managed-instance/machine-learning-services-overview.md)
+- [在 Azure SQL Database 機器學習服務中建立和執行簡單的 R 指令碼 (預覽)](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context)

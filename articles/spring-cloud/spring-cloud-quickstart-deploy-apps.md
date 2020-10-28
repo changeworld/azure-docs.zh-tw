@@ -6,14 +6,14 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 08/03/2020
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 29eb99d9e009d58c44be8f9d2e5d9fa01d117092
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 173e6541b4113a5d2e71d76b3b939a69d5224b5a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092948"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735587"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>快速入門：建置應用程式並將其部署至 Azure Spring Cloud
 
@@ -222,7 +222,7 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-1. 使用在上一個步驟中所建置的 JAR 檔案來建立 Azure Spring Cloud 微服務。 您將會建立三個應用程式：**gateway**、**auth-service** 及 **account-service**。
+1. 使用在上一個步驟中所建置的 JAR 檔案來建立 Azure Spring Cloud 微服務。 您將會建立三個應用程式： **gateway** 、 **auth-service** 及 **account-service** 。
 
     ```azurecli
     az spring-cloud app create --name gateway
@@ -248,7 +248,7 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
     az spring-cloud app update -n gateway --is-public true
     ```
 
-2. 查詢**閘道**應用程式來取得其公用 IP，讓您可以確認該應用程式正在執行：
+2. 查詢 **閘道** 應用程式來取得其公用 IP，讓您可以確認該應用程式正在執行：
 
     ```azurecli
     az spring-cloud app show --name gateway --query properties.url
@@ -342,8 +342,8 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
 
 您也可以瀏覽 Azure 入口網站來尋找 URL。 
 1. 瀏覽到服務
-2. 選取**應用程式**
-3. 選取**閘道**
+2. 選取 **應用程式**
+3. 選取 **閘道**
 
     ![瀏覽應用程式](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
     

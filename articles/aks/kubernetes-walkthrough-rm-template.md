@@ -4,13 +4,13 @@ description: 了解如何使用 Azure Resource Manager 範本快速建立 Kubern
 services: container-service
 ms.topic: quickstart
 ms.date: 09/11/2020
-ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 2695126b8ad515735907558e3c316b87ac5dfbdc
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.custom: mvc,subject-armqs, devx-track-azurecli
+ms.openlocfilehash: f0ef1c32035eed26c0717364bda030b6b7662b3e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070736"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740286"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-arm-template"></a>快速入門：使用 ARM 範本部署 Azure Kubernetes Service (AKS) 叢集
 
@@ -91,15 +91,15 @@ az ad sp create-for-rbac --skip-assignment
     在本快速入門中，請保留 [OS 磁碟大小 GB]、[代理程式計數]、[代理程式 VM 大小]、[OS 類型] 和 [Kubernetes 版本] 的預設值。 請針對下列範本參數提供您自己的值︰
 
     * 訂用帳戶：選取 Azure 訂用帳戶。
-    * **資源群組**：選取 [建立新的]。 輸入資源群組的唯一名稱 (例如 *myResourceGroup*)，然後選擇 [確定]。
-    * **位置**：選取一個位置，例如 [美國東部]。
-    * **叢集名稱**：輸入 AKS 叢集的唯一名稱，例如 *myAKSCluster*。
-    * **DNS 前置詞**：為您的叢集輸入唯一的 DNS 前置詞，例如 *myakscluster*。
-    * **Linux 管理員使用者名稱**：輸入使用 SSH 連線的使用者名稱，例如 *azureuser*。
-    * **SSH RSA 公開金鑰**：複製並貼上 SSH 金鑰組的*公開*部分 (預設為 *~/.ssh/id_rsa.pub* 的內容)。
-    * **服務主體用戶端識別碼**：從 `az ad sp create-for-rbac` 命令中複製並貼上您服務主體的*應用程式識別碼*。
-    * **服務主體用戶端密碼**：從 `az ad sp create-for-rbac` 命令中複製並貼上您服務主體的*密碼*。
-    * **我同意上方所述的條款及條件**：核取此方塊以表示同意。
+    * **資源群組** ：選取 [建立新的]。 輸入資源群組的唯一名稱 (例如 *myResourceGroup* )，然後選擇 [確定]。
+    * **位置** ：選取一個位置，例如 [美國東部]。
+    * **叢集名稱** ：輸入 AKS 叢集的唯一名稱，例如 *myAKSCluster* 。
+    * **DNS 前置詞** ：為您的叢集輸入唯一的 DNS 前置詞，例如 *myakscluster* 。
+    * **Linux 管理員使用者名稱** ：輸入使用 SSH 連線的使用者名稱，例如 *azureuser* 。
+    * **SSH RSA 公開金鑰** ：複製並貼上 SSH 金鑰組的 *公開* 部分 (預設為 *~/.ssh/id_rsa.pub* 的內容)。
+    * **服務主體用戶端識別碼** ：從 `az ad sp create-for-rbac` 命令中複製並貼上您服務主體的 *應用程式識別碼* 。
+    * **服務主體用戶端密碼** ：從 `az ad sp create-for-rbac` 命令中複製並貼上您服務主體的 *密碼* 。
+    * **我同意上方所述的條款及條件** ：核取此方塊以表示同意。
 
     ![在入口網站中建立 Azure Container Service 叢集的 Resource Manager 範本](./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png)
 
@@ -129,7 +129,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl get nodes
 ```
 
-下列輸出範例會顯示上一個步驟中建立的節點。 請確定所有節點的狀態皆為 *Ready*：
+下列輸出範例會顯示上一個步驟中建立的節點。 請確定所有節點的狀態皆為 *Ready* ：
 
 ```output
 NAME                       STATUS   ROLES   AGE     VERSION
@@ -257,7 +257,7 @@ service "azure-vote-front" created
 kubectl get service azure-vote-front --watch
 ```
 
-一開始，*azure-vote-front* 服務的 *EXTERNAL-IP* 會顯示為 *pending*。
+一開始， *azure-vote-front* 服務的 *EXTERNAL-IP* 會顯示為 *pending* 。
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE

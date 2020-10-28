@@ -5,19 +5,19 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: sqldbrb=2 
+ms.custom: sqldbrb=2
 ms.devlang: ruby
 ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 57e364d8cbd3cb9e1e2996786ee6414b7d7e04a8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0434a99d28b4f71594e0ca9ce312087dee5b0ee2
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86504950"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672539"
 ---
 # <a name="quickstart-use-ruby-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>快速入門：使用 Ruby 在 Azure SQL Database 或 Azure SQL 受控執行個體中查詢資料庫
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -46,11 +46,11 @@ ms.locfileid: "86504950"
   
 - 您的作業系統適用的 Ruby 與相關軟體：
   
-  - **macOS**：安裝 Homebrew、rbenv 和 ruby-build、Ruby、FreeTDS 和 TinyTDS。 請參閱[在 macOS 上使用 SQL Server 建立 Ruby 應用程式](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/)中的步驟 1.2、1.3、1.4、1.5 和 2.1。
+  - **macOS** ：安裝 Homebrew、rbenv 和 ruby-build、Ruby、FreeTDS 和 TinyTDS。 請參閱[在 macOS 上使用 SQL Server 建立 Ruby 應用程式](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/)中的步驟 1.2、1.3、1.4、1.5 和 2.1。
   
-  - **Ubuntu**：安裝 Ruby、rbenv 和 ruby-build、Ruby、FreeTDS 和 TinyTDS 的必要項目。 請參閱[在 Ubuntu 上使用 SQL Server 建立 Ruby 應用程式](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/)中的步驟 1.2、1.3、1.4、1.5 和 2.1。
+  - **Ubuntu** ：安裝 Ruby、rbenv 和 ruby-build、Ruby、FreeTDS 和 TinyTDS 的必要項目。 請參閱[在 Ubuntu 上使用 SQL Server 建立 Ruby 應用程式](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/)中的步驟 1.2、1.3、1.4、1.5 和 2.1。
   
-  - **Windows**：安裝 Ruby、Ruby Devkit 和 TinyTDS。 請參閱[設定 Ruby 開發的開發環境](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development)。
+  - **Windows** ：安裝 Ruby、Ruby Devkit 和 TinyTDS。 請參閱[設定 Ruby 開發的開發環境](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development)。
 
 ## <a name="get-server-connection-information"></a>取得伺服器連線資訊
 
@@ -108,4 +108,4 @@ ms.locfileid: "86504950"
 - [設計您在 Azure SQL Database 的第一個資料庫](design-first-database-tutorial.md)
 - [適用於 TinyTDS 的 GitHub 存放庫](https://github.com/rails-sqlserver/tiny_tds)
 - [回報或發問有關 TinyTDS 的問題](https://github.com/rails-sqlserver/tiny_tds/issues)
-- [Ruby Driver for SQL Server](https://docs.microsoft.com/sql/connect/ruby/ruby-driver-for-sql-server/)
+- [Ruby Driver for SQL Server](/sql/connect/ruby/ruby-driver-for-sql-server/)

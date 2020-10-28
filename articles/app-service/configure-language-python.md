@@ -4,13 +4,13 @@ description: 了解如何使用 Azure 入口網站和 Azure CLI，設定 Web 應
 ms.topic: quickstart
 ms.date: 10/06/2020
 ms.reviewer: astay; kraigb
-ms.custom: mvc, seodec18, devx-track-python
-ms.openlocfilehash: b489f7daebc9232088020948752c3792dca65095
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 935baef209811146d0b60f4fc02986818fd103a7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018741"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743796"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>設定適用於 Azure App Service 的 Linux Python 應用程式
 
@@ -22,9 +22,9 @@ ms.locfileid: "92018741"
 
 您可以使用 [Azure 入口網站](https://portal.azure.com)或 Azure CLI 進行設定：
 
-- **Azure 入口網站**：使用應用程式的 [設定] > [組態] 頁面，如[在 Azure 入口網站中設定 App Service 應用程式](configure-common.md)所述。
+- **Azure 入口網站** ：使用應用程式的 [設定] > [組態] 頁面，如 [在 Azure 入口網站中設定 App Service 應用程式](configure-common.md)所述。
 
-- **Azure CLI**：您有兩個選項。
+- **Azure CLI** ：您有兩個選項。
 
     - 在 [Azure Cloud Shell](../cloud-shell/overview.md) 中執行命令時，您可以使用程式碼區塊右上角的 [試用] 按鈕來開啟。
     - 藉由安裝最新版的 [Azure CLI](/cli/azure/install-azure-cli)，在本機執行命令，然後使用 [az login](/cli/azure/reference-index#az-login) 來登入 Azure。
@@ -34,9 +34,9 @@ ms.locfileid: "92018741"
 
 ## <a name="configure-python-version"></a>設定 Python 版本
 
-- **Azure 入口網站**：使用 [組態] 頁面上的 [一般設定] 索引標籤，如針對 Linux 容器[設定一般設定](configure-common.md#configure-general-settings)所述。
+- **Azure 入口網站** ：使用 [組態] 頁面上的 [一般設定] 索引標籤，如針對 Linux 容器 [設定一般設定](configure-common.md#configure-general-settings)所述。
 
-- **Azure CLI**：
+- **Azure CLI** ：
 
     -  使用 [az webapp config show](/cli/azure/webapp/config#az_webapp_config_show) 顯示目前的 Python 版本：
     
@@ -69,7 +69,7 @@ ms.locfileid: "92018741"
 
 1. 如果自訂建置前指令碼由 `PRE_BUILD_COMMAND` 設定指定，請加以執行。
 1. 執行 `pip install -r requirements.txt`。 requirements.txt 檔案必須存在於專案的根資料夾中。 否則，建至程序會報告錯誤：「找不到 setup.py 或 requirements.txt;未執行 pip 安裝。」
-1. 如果在存放庫的根目錄中找到 *manage.py*(表示 Django 應用程式)，請執行 *manage.py collectstatic*。 不過，如果 `DISABLE_COLLECTSTATIC` 設定為 `true`，則會略過此步驟。
+1. 如果在存放庫的根目錄中找到 *manage.py* (表示 Django 應用程式)，請執行 *manage.py collectstatic* 。 不過，如果 `DISABLE_COLLECTSTATIC` 設定為 `true`，則會略過此步驟。
 1. 如果自訂建置後指令碼由 `POST_BUILD_COMMAND` 設定指定，請加以執行。
 
 根據預設，`PRE_BUILD_COMMAND`、`POST_BUILD_COMMAND` 和 `DISABLE_COLLECTSTATIC` 設定是空的。 
@@ -178,9 +178,9 @@ gunicorn --bind=0.0.0.0 --timeout 600 app:app
 
 若要指定啟動命令或命令檔案：
 
-- **Azure 入口網站**：選取應用程式的 [組態] 頁面，然後選取 [一般設定]。 在 [啟動命令] 欄位中，放置啟動命令的全文或啟動命令檔案的名稱。 然後選取 [儲存] 以套用變更。 請參閱針對 Linux 容器[設定一般設定](configure-common.md#configure-general-settings)。
+- **Azure 入口網站** ：選取應用程式的 [組態] 頁面，然後選取 [一般設定]。 在 [啟動命令] 欄位中，放置啟動命令的全文或啟動命令檔案的名稱。 然後選取 [儲存] 以套用變更。 請參閱針對 Linux 容器[設定一般設定](configure-common.md#configure-general-settings)。
 
-- **Azure CLI**：使用 [az webapp config set](/cli/azure/webapp/config#az_webapp_config_set) 命令搭配 `--startup-file` 參數，以設定啟動命令或檔案：
+- **Azure CLI** ：使用 [az webapp config set](/cli/azure/webapp/config#az_webapp_config_set) 命令搭配 `--startup-file` 參數，以設定啟動命令或檔案：
 
     ```azurecli-interactive
     az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
@@ -192,7 +192,7 @@ App Service 會忽略在處理自訂啟動命令或檔案時所發生的任何�
 
 ### <a name="example-startup-commands"></a>範例啟動命令
 
-- **已新增 Gunicorn 引數**：下列範例會將 `--workers=4` 新增至 Gunicorn 命令列，以便啟動 Django 應用程式： 
+- **已新增 Gunicorn 引數** ：下列範例會將 `--workers=4` 新增至 Gunicorn 命令列，以便啟動 Django 應用程式： 
 
     ```bash
     # <module-path> is the relative path to the folder that contains the module
@@ -202,7 +202,7 @@ App Service 會忽略在處理自訂啟動命令或檔案時所發生的任何�
 
     如需詳細資訊，請參閱[執行 Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org)。
 
-- **啟用 Django 的生產環境記錄功能**：將 `--access-logfile '-'` 和 `--error-logfile '-'` 引數新增至命令列：
+- **啟用 Django 的生產環境記錄功能** ：將 `--access-logfile '-'` 和 `--error-logfile '-'` 引數新增至命令列：
 
     ```bash    
     # '-' for the log files means stdout for --access-logfile and stderr for --error-logfile.
@@ -213,7 +213,7 @@ App Service 會忽略在處理自訂啟動命令或檔案時所發生的任何�
 
     如需詳細資訊，請參閱 [Gunicorn 記錄](https://docs.gunicorn.org/en/stable/settings.html#logging) (docs.gunicorn.org)。
     
-- **自訂 Flask 主要模組**：根據預設，App Service 假設 Flask 應用程式的主要模組為 *application.py* 或 *app.py*。 如果您的主要模組使用不同的名稱，您就必須自訂啟動命令。 例如，如果您擁有的 Flask 應用程式，而其主要模組是 hello.py，且該檔案中的 Flask 應用程式物件名為 `myapp`，則命令如下所示：
+- **自訂 Flask 主要模組** ：根據預設，App Service 假設 Flask 應用程式的主要模組為 *application.py* 或 *app.py* 。 如果您的主要模組使用不同的名稱，您就必須自訂啟動命令。 例如，如果您擁有的 Flask 應用程式，而其主要模組是 hello.py，且該檔案中的 Flask 應用程式物件名為 `myapp`，則命令如下所示：
 
     ```bash
     gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -225,7 +225,7 @@ App Service 會忽略在處理自訂啟動命令或檔案時所發生的任何�
     gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
     ```
     
-- **使用非 Gunicorn 伺服器**：若要使用不同的 Web 伺服器 (例如 [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html))，請使用適當的命令作為啟動命令或使用啟動命令檔案中的適當命令：
+- **使用非 Gunicorn 伺服器** ：若要使用不同的 Web 伺服器 (例如 [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html))，請使用適當的命令作為啟動命令或使用啟動命令檔案中的適當命令：
 
     ```bash
     python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: a84308ba06a38cea475fcb1bae022da16424a731
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 2ee906b406f5fd09fc870626f1905541a4270c66
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032991"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670540"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure 證明 (預覽)
 
@@ -73,7 +73,7 @@ Azure 證明是證明 TEE 的慣用選擇，因為其提供下列優點：
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr-support"></a>商務持續性和災害復原 (BCDR) 支援
 
-適用於 Azure 證明的[商務持續性和災害復原](/azure/best-practices-availability-paired-regions) (BCDR) 可減輕因重大可用性問題或區域中災難事件所造成的服務中斷問題。
+適用於 Azure 證明的[商務持續性和災害復原](../best-practices-availability-paired-regions.md) (BCDR) 可減輕因重大可用性問題或區域中災難事件所造成的服務中斷問題。
 
 以下是 BCDR 目前支援的區域
 - 美國東部 2 => 與美國中部配對。
@@ -91,4 +91,3 @@ Azure 證明是證明 TEE 的慣用選擇，因為其提供下列優點：
 - 了解 [Azure 證明基本概念](basic-concepts.md)
 - [如何撰寫和簽署證明原則](author-sign-policy.md)
 - [使用 PowerShell 設定 Azure 證明](quickstart-powershell.md)
-

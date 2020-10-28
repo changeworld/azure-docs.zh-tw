@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/29/2020
 ms.author: yegu
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 963021e26036969a51f77641376c693e94ac5061
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b880762d43cd4e105b79613aadb476611228a47e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91460335"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536601"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>快速入門：搭配使用 Azure Cache for Redis 與 ASP.NET Web 應用程式 
 
@@ -21,7 +21,7 @@ ms.locfileid: "91460335"
 ## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/dotnet)
-- [Visual Studio 2019](https://www.visualstudio.com/downloads/)，包含 **ASP.NET 與 Web 開發**和 **Azure 開發**工作負載。
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/)，包含 **ASP.NET 與 Web 開發** 和 **Azure 開發** 工作負載。
 
 ## <a name="create-the-visual-studio-project"></a>建立 Visual Studio 專案
 
@@ -39,7 +39,7 @@ ms.locfileid: "91460335"
 
     d. 確認已選取 [.NET Framework 4.5.2]  或更新版本。
 
-    e. 在 [名稱]  方塊中，指定專案的名稱。 在此範例中，我們使用 **ContosoTeamStats**。
+    e. 在 [名稱]  方塊中，指定專案的名稱。 在此範例中，我們使用 **ContosoTeamStats** 。
 
     f. 選取 [確定]  。
    
@@ -89,7 +89,7 @@ ms.locfileid: "91460335"
 
 ### <a name="update-the-webconfig-file-with-an-app-setting-for-the-cache"></a>使用快取的應用程式設定來更新 web.config 檔案
 
-當您在本機執行應用程式時，*CacheSecrets.config* 中的資訊會用來連線到您的 Azure Cache for Redis 執行個體。 稍後您會將此應用程式部署至 Azure。 屆時，您將會在 Azure 中設定應用程式設定，以供應用程式用來擷取快取連線資訊，而不是這個檔案。 
+當您在本機執行應用程式時， *CacheSecrets.config* 中的資訊會用來連線到您的 Azure Cache for Redis 執行個體。 稍後您會將此應用程式部署至 Azure。 屆時，您將會在 Azure 中設定應用程式設定，以供應用程式用來擷取快取連線資訊，而不是這個檔案。 
 
 由於 CacheSecrets.config  檔案不會隨著應用程式部署至 Azure，因此您只會在本機測試應用程式時使用它。 請以最安全的方式保存這項資訊，以防止他人惡意存取快取資料。
 
@@ -249,7 +249,7 @@ ASP.NET 執行階段會將外部檔案的內容與 `<appSettings>` 元素的標�
 
 ## <a name="run-the-app-locally"></a>在本機執行應用程式
 
-根據預設，專案已設定為在 [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview) 本機中裝載應用程式以進行測試和偵錯。
+根據預設，專案已設定為在 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) 本機中裝載應用程式以進行測試和偵錯。
 
 ### <a name="to-run-the-app-locally"></a>在本機執行應用程式
 1. 在 Visual Studio 中，選取 [偵錯]   > [開始偵錯]  以在本機建置和啟動要測試和偵錯的應用程式。
@@ -280,8 +280,8 @@ ASP.NET 執行階段會將外部檔案的內容與 `<appSettings>` 元素的標�
     | ------- | :---------------: | ----------- |
     | **應用程式名稱** | 使用預設值。 | 應用程式名稱會是應用程式部署至 Azure 時的主機名稱。 如有必要，該名稱中會新增時間戳記尾碼，以成為唯一名稱。 |
     | **訂用帳戶** | 選擇 Azure 訂用帳戶。 | 系統會就任何相關的裝載費用，對此訂用帳戶收費。 如果您有多個 Azure 訂用帳戶，請確認您已選取所需的訂用帳戶。|
-    | **資源群組** | 使用您用來建立快取的相同資源群組 (例如 *TestResourceGroup*)。 | 資源群組可協助您以群組管理所有資源。 其後當您想要刪除應用程式時，請直接刪除該群組即可。 |
-    | **App Service 計劃** | 選取 [新增]  ，然後建立名為 TestingPlan  的新 App Service 方案。 <br />使用您在建立快取時所使用的相同**位置**。 <br />選擇**免費**大小。 | App Service 方案會針對要搭配執行的 Web 應用程式定義一組計算資源。 |
+    | **資源群組** | 使用您用來建立快取的相同資源群組 (例如 *TestResourceGroup* )。 | 資源群組可協助您以群組管理所有資源。 其後當您想要刪除應用程式時，請直接刪除該群組即可。 |
+    | **App Service 計劃** | 選取 [新增]  ，然後建立名為 TestingPlan  的新 App Service 方案。 <br />使用您在建立快取時所使用的相同 **位置** 。 <br />選擇 **免費** 大小。 | App Service 方案會針對要搭配執行的 Web 應用程式定義一組計算資源。 |
 
     ![App Service 對話方塊](./media/cache-web-app-howto/cache-create-app-service-dialog.png)
 

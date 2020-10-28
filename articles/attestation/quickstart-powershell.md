@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d25cdce2670de64fecc8590a2f5f833c10d2df69
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6050dd43b91299cd776d1121d7398f46e95bc096
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316010"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678196"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 設定 Azure 證明
 
@@ -231,4 +231,4 @@ Remove-AzAttestationPolicySigner -Name $attestationProvider -ResourceGroupName $
 ## <a name="next-steps"></a>後續步驟
 
 - [如何撰寫和簽署證明原則](author-sign-policy.md)
-- [使用程式碼範例證明 SGX 記憶體保護區](https://docs.microsoft.com/samples/browse/?expanded=azure&terms=attestation)
+- [使用程式碼範例證明 SGX 記憶體保護區](/samples/browse/?expanded=azure&terms=attestation)

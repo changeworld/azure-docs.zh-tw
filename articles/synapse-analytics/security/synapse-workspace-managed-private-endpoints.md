@@ -5,15 +5,15 @@ author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 04/15/2020
+ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: e592159777f3b533bc447bb109e9b1308af7ecff
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 091f73aa2383094973db35efb05c5f93034efa39
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249497"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738089"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Synapse 受控私人端點 (預覽)
 
@@ -52,6 +52,7 @@ SQL 集區和 SQL 隨選是 Azure Synapse 工作區中的分析功能。 這些�
 這兩個受控私人端點會列在 Azure Synapse Studio 中。 選取左側導覽中的 [管理]，然後選取 [受控虛擬網路] 以在 Studio 中查看。
 
 以 SQL 集區為目標的受控私人端點稱為 *synapse-ws-sql--\<workspacename\>* ，而以 SQL 隨選為目標的受控私人端點則稱為 *synapse-ws-sqlOnDemand--\<workspacename\>* 。
+
 ![適用於 SQL 集區的受控私人端點和 SQL 隨選](./media/synapse-workspace-managed-private-endpoints/managed-pe-for-sql-1.png)
 
 建立 Azure Synapse 工作區時，系統會自動為您建立這兩個受控私人端點。 這兩個受控私人端點不會收費。
