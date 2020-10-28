@@ -5,19 +5,19 @@ description: 瞭解如何設定 Azure SQL Database 和 Azure Synapse Analytics�
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: e2cdf7d5213f1667b0b588cc5bfa9f105245b6b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38be8b97b3255e4e63301e693d2a5f295e8d801b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619112"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779963"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell 和 Azure CLI：使用來自 Azure Key Vault 的客戶管理金鑰來啟用透明資料加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -36,11 +36,11 @@ ms.locfileid: "91619112"
 - 金鑰必須具有下列屬性才能用於 TDE：
   - 沒有到期日
   - 未停用
-  - 能夠執行*取得*、*包裝金鑰*、*解除包裝金鑰*作業
+  - 能夠執行 *取得* 、 *包裝金鑰* 、 *解除包裝金鑰* 作業
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-如需 Az 模組安裝指示，請參閱[安裝 Azure PowerShell](/powershell/azure/install-az-ps)。 如需特定的 Cmdlet，請參閱[AzureRM。](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)
+如需 Az 模組安裝指示，請參閱[安裝 Azure PowerShell](/powershell/azure/install-az-ps)。 如需特定的 Cmdlet，請參閱[AzureRM。](/powershell/module/AzureRM.Sql/)
 
 如需 Key Vault 的詳細資訊，請參閱 [Key Vault 的 PowerShell 指示](../../key-vault/secrets/quick-create-powershell.md) ，以及 [如何使用 powershell Key Vault 虛刪除](../../key-vault/general/soft-delete-powershell.md)。
 
@@ -123,7 +123,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要安裝所需版本的 Azure CLI (2.0 版或更新版本) 並連接到您的 Azure 訂用帳戶，請參閱 [安裝和設定 Azure 跨平臺 Command-Line 介面 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+若要安裝所需版本的 Azure CLI (2.0 版或更新版本) 並連接到您的 Azure 訂用帳戶，請參閱 [安裝和設定 Azure 跨平臺 Command-Line 介面 2.0](/cli/azure/install-azure-cli)。
 
 如需 Key Vault 的詳細資訊，請參閱 [使用 cli 2.0 管理 Key Vault](../../key-vault/general/manage-with-cli2.md) 以及 [如何搭配 cli 使用 Key Vault 虛刪除](../../key-vault/general/soft-delete-cli.md)。
 
@@ -239,7 +239,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
 
 - 如果新的金鑰無法新增至伺服器，或新的金鑰無法更新為 TDE 保護裝置，請進行下列檢查：
    - 金鑰不應有到期日
-   - 金鑰必須已啟用*取得*、*包裝金鑰*和*解除包裝金鑰*作業。
+   - 金鑰必須已啟用 *取得* 、 *包裝金鑰* 和 *解除包裝金鑰* 作業。
 
 ## <a name="next-steps"></a>後續步驟
 

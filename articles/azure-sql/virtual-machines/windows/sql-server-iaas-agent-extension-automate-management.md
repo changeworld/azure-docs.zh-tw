@@ -16,12 +16,12 @@ ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: df3e2ae2737aa8bfedd0e8d7daa9d42771f1937b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad1b68242e7cb8eba885c78ab62572d257198d01
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570343"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779708"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>使用 SQL Server IaaS 代理程式延伸模組自動化 Azure 虛擬機器的管理工作
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,7 +31,7 @@ SQL Server IaaS 代理程式擴充功能 (SqlIaasExtension) 會在 Azure 虛擬�
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-如需檢視本文的傳統版本，請參閱 [SQL Server VM 的 SQL Server IaaS 代理程式延伸模組 (傳統)](../../../virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md)。
+如需檢視本文的傳統版本，請參閱 [SQL Server VM 的 SQL Server IaaS 代理程式延伸模組 (傳統)](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension)。
 
 
 ## <a name="supported-services"></a>支援的服務
@@ -51,7 +51,7 @@ SQL Server IaaS 代理程式擴充功能支援下列管理工作︰
 ## <a name="prerequisites"></a>必要條件
 在 VM 上使用 SQL Server IaaS 代理程式延伸模組的需求如下：
 
-**作業系統**：
+**作業系統** ：
 
 * Windows Server 2008 R2
 * Windows Server 2012
@@ -59,7 +59,7 @@ SQL Server IaaS 代理程式擴充功能支援下列管理工作︰
 * Windows Server 2016
 * Windows Server 2019 
 
-**SQL Server 版本**：
+**SQL Server 版本** ：
 
 * SQL Server 2008 
 * SQL Server 2008 R2
@@ -69,7 +69,7 @@ SQL Server IaaS 代理程式擴充功能支援下列管理工作︰
 * SQL Server 2017
 * SQL Server 2019
 
-**Azure PowerShell**：
+**Azure PowerShell** ：
 
 * [下載及設定最新的 Azure PowerShell 命令](/powershell/azure/)
 

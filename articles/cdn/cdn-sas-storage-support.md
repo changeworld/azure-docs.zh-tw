@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
-ms.openlocfilehash: d716b026159311c12341c30a8c32d5a9ecc6fa3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff205069c31d50813a4fad71a3c9e2f8e2462844
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87432756"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778140"
 ---
 # <a name="using-azure-cdn-with-sas"></a>搭配 SAS 使用 Azure CDN
 
@@ -27,13 +27,13 @@ ms.locfileid: "87432756"
 
 如果您想要授與有限的私人儲存體容器存取權，便可以使用 Azure 儲存體帳戶的「共用存取簽章」(SAS) 功能。 SAS 是一個 URI，可在不公開您帳戶金鑰的情況下，授與對「Azure 儲存體」資源的有限存取權限。 針對您不信任其使用您儲存體帳戶金鑰但又想要將特定儲存體帳戶資源存取權委派給它們的用戶端，您可以將 SAS 提供給它們。 藉由將共用存取簽章 URI 提供給這些用戶端，您會授與它們一段指定時間的資源存取權。
  
-使用 SAS 時，您可以定義各種 Blob 存取參數，例如開始時間和到期時間、權限 (讀取/寫入) 及 IP 範圍。 本文說明如何將 SAS 與 Azure CDN 搭配使用。 如需有關 SAS 的詳細資訊 (包括如何建立 SAS 及其參數選項)，請參閱[使用共用存取簽章 (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)。
+使用 SAS 時，您可以定義各種 Blob 存取參數，例如開始時間和到期時間、權限 (讀取/寫入) 及 IP 範圍。 本文說明如何將 SAS 與 Azure CDN 搭配使用。 如需有關 SAS 的詳細資訊 (包括如何建立 SAS 及其參數選項)，請參閱[使用共用存取簽章 (SAS)](../storage/common/storage-sas-overview.md)。
 
 ## <a name="setting-up-azure-cdn-to-work-with-storage-sas"></a>設定 Azure CDN 以與儲存體 SAS 搭配運作
 以下是搭配 Azure CDN 使用 SAS 時的三個建議選項。 所有選項皆假設您已經建立一個可運作的 SAS (請參閱先決條件)。 
  
 ### <a name="prerequisites"></a>必要條件
-若要開始，請建立一個儲存體帳戶，然後為您的資產生 SAS。 您可以產生兩種類型的預存存取簽章：服務 SAS 或帳戶 SAS。 如需詳細資訊，請參閱[共用存取簽章的類型](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1#types-of-shared-access-signatures)。
+若要開始，請建立一個儲存體帳戶，然後為您的資產生 SAS。 您可以產生兩種類型的預存存取簽章：服務 SAS 或帳戶 SAS。 如需詳細資訊，請參閱[共用存取簽章的類型](../storage/common/storage-sas-overview.md#types-of-shared-access-signatures)。
 
 產生 SAS 權杖之後，您可以將 `?sv=<SAS token>` 附加至您的 URL 來存取 Blob 儲存體檔案。 此 URL 的格式如下： 
 
@@ -44,7 +44,7 @@ ms.locfileid: "87432756"
 https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&ss=b&srt=co&sp=r&se=2038-01-02T21:30:49Z&st=2018-01-02T13:30:49Z&spr=https&sig=QehoetQFWUEd1lhU5iOMGrHBmE727xYAbKJl5ohSiWI%3D
 ```
 
-如需有關設定參數的詳細資訊，請參閱 [SAS 參數考量](#sas-parameter-considerations)和[共用存取簽章參數](https://docs.microsoft.com/azure/storage/common/storage-sas-overview#how-a-shared-access-signature-works)。
+如需有關設定參數的詳細資訊，請參閱 [SAS 參數考量](#sas-parameter-considerations)和[共用存取簽章參數](../storage/common/storage-sas-overview.md#how-a-shared-access-signature-works)。
 
 ![CDN SAS 設定](./media/cdn-sas-storage-support/cdn-sas-settings.png)
 
@@ -69,9 +69,9 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
 
 ### <a name="option-2-hidden-cdn-sas-token-using-a-rewrite-rule"></a>選項 2：使用重寫規則的隱藏式 CDN SAS 權杖
  
-此選項僅適用於**來自 Verizon 的 Azure 進階 CDN**設定檔。 使用此選項時，您可以保護原始伺服器的 Blob 儲存體。 如果您不需要特定的檔案存取限制，但想要防止使用者直接存取儲存體原始伺服器來縮短 Azure CDN 卸載時間，便可以使用此選項。 存取原始伺服器指定容器中檔案的任何人都必須有使用者未知的 SAS 權杖。 不過，由於 URL 重寫規則，CDN 端點上不需要 SAS 權杖。
+此選項僅適用於 **來自 Verizon 的 Azure 進階 CDN** 設定檔。 使用此選項時，您可以保護原始伺服器的 Blob 儲存體。 如果您不需要特定的檔案存取限制，但想要防止使用者直接存取儲存體原始伺服器來縮短 Azure CDN 卸載時間，便可以使用此選項。 存取原始伺服器指定容器中檔案的任何人都必須有使用者未知的 SAS 權杖。 不過，由於 URL 重寫規則，CDN 端點上不需要 SAS 權杖。
  
-1. 使用[規則引擎](cdn-rules-engine.md)來建立 URL 重寫規則。 新規則最多需要 4 小時的時間來傳播。
+1. 使用[規則引擎](./cdn-verizon-premium-rules-engine.md)來建立 URL 重寫規則。 新規則最多需要 4 小時的時間來傳播。
 
    ![CDN [管理] 按鈕](./media/cdn-sas-storage-support/cdn-manage-btn.png)
 
@@ -102,7 +102,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
 
 若要使用 Azure CDN 安全性權杖驗證，您必須具有 **來自 Verizon 的 Azure 進階 CDN** 設定檔。 此選項是最安全且可自訂的選項。 用戶端存取權取決於您在安全性權杖上設定的安全性參數。 建立並設定安全性權杖後，所有 CDN 端點 URL 上都需要此權杖。 不過，由於 URL 重寫規則，CDN 端點上不需要 SAS 權杖。 如果 SAS 權杖之後變成無效，Azure CDN 將無法再重新驗證來自原始伺服器的內容。
 
-1. [建立 Azure CDN 安全性權杖](https://docs.microsoft.com/azure/cdn/cdn-token-auth#setting-up-token-authentication)，然後藉由您的使用者可存取檔案所在 CDN 端點和路徑的規則引擎來啟用權杖。
+1. [建立 Azure CDN 安全性權杖](./cdn-token-auth.md#setting-up-token-authentication)，然後藉由您的使用者可存取檔案所在 CDN 端點和路徑的規則引擎來啟用權杖。
 
    安全性權杖端點 URL 的格式如下：   
    `https://<endpoint hostname>.azureedge.net/<container>/<file>?<security_token>`
@@ -114,7 +114,7 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
        
    安全性權杖驗證的參數選項與 SAS 權杖的參數選項不同。 如果您在建立安全性權杖時選擇使用到期時間，請將其設定為與 SAS 權杖到期時間相同的值。 這麼做可確保到期時間是可預測的。 
  
-2. 使用[規則引擎](cdn-rules-engine.md)來建立 URL 重寫規則，以啟用對容器中所有 Blob 的 SAS 權杖存取權。 新規則最多需要 4 小時的時間來傳播。
+2. 使用[規則引擎](./cdn-verizon-premium-rules-engine.md)來建立 URL 重寫規則，以啟用對容器中所有 Blob 的 SAS 權杖存取權。 新規則最多需要 4 小時的時間來傳播。
 
    下列範例「URL 重寫」規則使用規則運算式模式，其中包含一個擷取群組和一個名為 *sasstoragedemo* 的端點：
    
@@ -138,13 +138,13 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
 | --- | --- |
 | Start | Azure CDN 可以開始存取 Blob 檔案的時間。 由於時鐘誤差 (當時鐘訊號針對不同元件在不同時間抵達時) 的緣故，因此如果您想要讓資產立即可供使用，請選擇提早 15 分鐘的時間。 |
 | 結束 | 之後 Azure CDN 即無法再存取 Blob 檔案的時間。 Azure CDN 上先前快取的檔案仍然可供存取。 若要控制檔案到期時間，請在 Azure CDN 安全性權杖上設定適當的到期時間或清除資產。 |
-| 允許的 IP 位址 | 選擇性。 如果您使用**來自 Verizon 的 Azure CDN**，您可以將此參數設定為[來自 Verizon 的 Azure CDN Edge Server IP 範圍](/azure/cdn/cdn-pop-list-api) \(英文\) 中定義的範圍。 如果您使用**來自 Akamai 的 Azure CDN**，則無法設定 IP 範圍參數，因為 IP 位址並非靜態。|
+| 允許的 IP 位址 | 選擇性。 如果您使用 **來自 Verizon 的 Azure CDN** ，您可以將此參數設定為 [來自 Verizon 的 Azure CDN Edge Server IP 範圍](./cdn-pop-list-api.md) \(英文\) 中定義的範圍。 如果您使用 **來自 Akamai 的 Azure CDN** ，則無法設定 IP 範圍參數，因為 IP 位址並非靜態。|
 | 允許的通訊協定 | 針對使用帳戶 SAS 來提出之要求允許的通訊協定。 建議使用 HTTPS 設定。|
 
 ## <a name="next-steps"></a>後續步驟
 
 如需 SAS 的詳細資訊，請參閱下列文章：
-- [使用共用存取簽章 (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
-- [共用存取簽章，第 2 部分：透過 Blob 儲存體來建立與使用 SAS](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)
+- [使用共用存取簽章 (SAS)](../storage/common/storage-sas-overview.md)
+- [共用存取簽章，第 2 部分：透過 Blob 儲存體來建立與使用 SAS](../storage/common/storage-sas-overview.md)
 
-如需設定權杖驗證的詳細資訊，請參閱[使用權杖驗證來保護 Azure 內容傳遞網路資產](https://docs.microsoft.com/azure/cdn/cdn-token-auth)。
+如需設定權杖驗證的詳細資訊，請參閱[使用權杖驗證來保護 Azure 內容傳遞網路資產](./cdn-token-auth.md)。

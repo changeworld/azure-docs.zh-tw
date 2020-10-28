@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure 入口網站開放對 VM 的連接埠
-description: 了解如何使用 Azure 入口網站對 Windows VM 開放連接埠 / 建立端點
+description: 瞭解如何使用 Azure 入口網站為您的 VM 開啟埠/建立端點
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/27/2020
 ms.author: cynthn
-ms.openlocfilehash: 06f682bc697f93d436e2cd71b161c01e1360944a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1c3c39dd8c907f780876f97f9703857653d4e359
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973983"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92777753"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>如何使用 Azure 入口網站開啟虛擬機器的連接埠
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -47,7 +47,7 @@ ms.locfileid: "91973983"
 
 1. 在 [新增輸入安全性規則] 頁面上，從頁面頂端的 [基本] 切換至 [進階]。 
 
-1. 從下拉式功能表中選擇常見的**服務**，例如 **HTTP**。 如果要以提供特定連接埠供使用者使用，您也可以選取 [自訂]。 
+1. 從下拉式功能表中選擇常見的 **服務** ，例如 **HTTP** 。 如果要以提供特定連接埠供使用者使用，您也可以選取 [自訂]。 
 
 1. 選擇性地變更 [優先順序] 或 [名稱]。 優先順序會影響規則的套用順序，數值越低的規則越早套用。
 

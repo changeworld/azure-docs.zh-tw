@@ -1,22 +1,22 @@
 ---
 title: 完成虛擬機器的嚴重損壞修復
-description: 本文說明如何使用 Azure VMware 解決方案完成虛擬機器的嚴重損壞修復
+description: 本文說明如何使用 Azure VMware 解決方案來完成虛擬機器的嚴重損壞修復
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 3608243600eb5d00dcfe10db5bc6b907ecb9aee8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 688d91bc181e1479f5090a10af4b3b262d7ddb7f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92508429"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779606"
 ---
-# <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>使用 Azure VMware 解決方案完成虛擬機器的嚴重損壞修復
+# <a name="complete-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>使用 Azure VMware 解決方案完成虛擬機器的嚴重損壞修復
 
-本文包含的程式可完成虛擬機器的災難復原， (Vm) VMware HCX 解決方案，並使用 Azure VMware 解決方案私人雲端作為復原或目標網站。
+本文包含的程式可完成虛擬機器的嚴重損壞修復 (Vm) VMware HCX 解決方案，並使用 Azure VMware 解決方案私用雲端作為復原或目標網站。
 
 VMware HCX 提供各種作業，可在複寫原則中提供細微的控制和細微性。 可用的作業包括：
 
-- **反向** –發生災難之後。 反向有助於讓網站 B 成為受保護 VM 現在存留所在的來源網站和網站 A。
+- **反向** –發生災難之後。 反向有助於讓網站 B 成為來源網站和網站 A，受保護的 VM 現在存在於其中。
 
 - **暫停** –暫停與選取之 VM 相關聯的目前複寫原則。
 
@@ -38,11 +38,11 @@ VMware HCX 提供各種作業，可在複寫原則中提供細微的控制和細
 
 ## <a name="protect-vms"></a>保護 VM
 
-1. 登入來源網站上的 **VSphere 用戶端** ，並存取 **HCX 外掛程式**。
+1. 登入來源網站上的 **VSphere 用戶端** ，並存取 **HCX 外掛程式** 。
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/hcx-vsphere.png" alt-text="VSphere 中的 HCX 選項" border="true":::
 
-1. 輸入 [嚴重損壞 **修復** ] 區域，然後選取 [ **保護 vm**]。
+1. 輸入 [嚴重損壞 **修復** ] 區域，然後選取 [ **保護 vm** ]。
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/protect-virtual-machine.png" alt-text="VSphere 中的 HCX 選項" border="true" lightbox="./media/disaster-recovery-virtual-machines/protect-virtual-machine.png":::
 
@@ -56,13 +56,13 @@ VMware HCX 提供各種作業，可在複寫原則中提供細微的控制和細
 
    - **啟用靜止：** 暫停 VM，以確保將一致的複本同步處理至遠端網站。
 
-   - **目的地儲存體：** 適用于受保護 Vm 的遠端資料存放區，以及在 Azure VMware 解決方案私人雲端中，這應該是 vSAN 資料存放區。
+   - **目的地儲存體：** 受保護 Vm 的遠端資料存放區，以及在 Azure VMware 解決方案私人雲端中的遠端資料存放區，其應為 vSAN 資料存放區。
 
    - **計算容器：** 遠端 vSphere 叢集或資源集區。
 
-   - **目的地資料夾：** 遠端目的地資料夾是選擇性的，如果未選取任何資料夾，則 Vm 會直接放在選取的叢集下。
+   - **目的地資料夾：** 遠端目的地資料夾是選擇性的，如果未選取任何資料夾，則會將 Vm 直接放在選取的叢集下。
 
-   - **RPO：** 來源 VM 與受保護 VM 之間的同步處理間隔，可從5分鐘到24小時的任何時間。
+   - **RPO：** 來源 VM 與受保護 VM 之間的同步處理間隔。 它可以是5分鐘到24小時之間的任何位置。
 
    - **快照間隔：** 快照之間的間隔。
 
@@ -84,14 +84,14 @@ VMware HCX 提供各種作業，可在複寫原則中提供細微的控制和細
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/list-of-snapshots.png" alt-text="VSphere 中的 HCX 選項" border="true" lightbox="./media/disaster-recovery-virtual-machines/list-of-snapshots.png":::
 
-   黃色三角形表示快照集和虛擬的測試尚未在測試復原操作中測試過。
+   黃色三角形表示快照集與虛擬機器尚未在測試復原作業中進行測試。
 
-   已關閉電源的 VM 與開啟電源的 VM 之間有一些主要差異。 此映射會顯示已開機的 VM 的同步處理常式。 它會啟動同步處理常式，直到它完成第一個快照集（也就是 VM 的完整複本），然後以設定的間隔完成下一個快照集。 針對已關閉電源的 VM，它會同步複本，然後 VM 會顯示為 [非作用中]，且保護作業會顯示為 [已完成]。  當 VM 開機時，它會開始同步處理至遠端網站。
+   開啟電源的 VM 與開啟電源的 VM 之間有一些主要差異。 此映射會顯示已開機之 VM 的同步處理常式。 它會啟動同步處理常式，直到它完成第一個快照集（也就是 VM 的完整複本），然後以設定的間隔完成下一個快照集。 它會同步處理已關閉 VM 的複本，然後 VM 會顯示為非作用中，而保護作業會顯示為已完成。  當 VM 開機時，它會開始同步處理至遠端網站。
 
 ## <a name="complete-a-test-recover-of-vms"></a>完成 Vm 的測試復原
 
 1. 登入遠端網站上的 **VSphere 用戶端** ，也就是 Azure VMware 解決方案私人雲端。 
-1. 在 **HCX 外掛程式**的 [嚴重損壞修復] 區域中，選取任何 VM 上的垂直省略號，以顯示操作功能表，然後選取 [ **測試復原 VM**]。
+1. 在 **HCX 外掛程式** 的 [嚴重損壞修復] 區域中，選取任何 VM 上的垂直省略號，以顯示操作功能表，然後選取 [ **測試復原 VM** ]。
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/test-recover-virtual-machine.png" alt-text="VSphere 中的 HCX 選項" border="true":::
 
@@ -99,7 +99,7 @@ VMware HCX 提供各種作業，可在複寫原則中提供細微的控制和細
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/choose-snapshot.png" alt-text="VSphere 中的 HCX 選項" border="true":::
 
-1. 選取 [ **測試**] 之後，就會開始復原操作。
+1. 選取 [ **測試** ] 之後，就會開始復原操作。
 
 1. 完成時，您可以在 Azure VMware 解決方案私人雲端 vCenter 中檢查新的 VM。
 
@@ -111,11 +111,11 @@ VMware HCX 提供各種作業，可在複寫原則中提供細微的控制和細
 
 ## <a name="recover-vms"></a>復原 Vm
 
-1. 登入遠端網站上的 **VSphere 用戶端** ，也就是 Azure VMware 解決方案私人雲端，並存取 **HCX 外掛程式**。
+1. 登入遠端網站上的 **VSphere 用戶端** ，也就是 Azure VMware 解決方案私人雲端，並存取 **HCX 外掛程式** 。
 
    在復原案例中，這是用於此範例的 Vm 群組。
 
-1. 從清單中選取要復原的 VM，開啟 [ **動作** ] 功能表，然後選取 [ **復原 vm**]。
+1. 從清單中選取要復原的 VM，開啟 [ **動作** ] 功能表，然後選取 [ **復原 vm** ]。
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/recover-virtual-machines.png" alt-text="VSphere 中的 HCX 選項" border="true":::
 
@@ -127,12 +127,12 @@ VMware HCX 提供各種作業，可在複寫原則中提供細微的控制和細
 
 ## <a name="complete-a-reverse-replication-on-vms"></a>在 Vm 上完成反向複寫
 
-1. 登入 Azure VMware 解決方案私人雲端上的 **VSphere 用戶端** ，並存取 **HCX 外掛程式**。
+1. 登入 Azure VMware 解決方案私人雲端上的 **VSphere 用戶端** ，並存取 **HCX 外掛程式** 。
    
    >[!NOTE]
-   >開始反向複寫之前，請確定來源網站上的原始 Vm 已關閉電源。 如果 Vm 未關閉電源，作業就會失敗。
+   > 開始反向複寫之前，請確定來源網站上的原始 Vm 已關閉電源。 如果 Vm 未關閉電源，作業就會失敗。
 
-1. 從清單中選取要複寫回來源網站的 Vm，開啟 [ **動作** ] 功能表，然後選取 [ **反向**]。 
+1. 從清單中選取要複寫回來源網站的 Vm，開啟 [ **動作** ] 功能表，然後選取 [ **反向** ]。 
 1. 選取 [ **反向** ] 以開始複寫。
 
    :::image type="content" source="./media/disaster-recovery-virtual-machines/reverse-operation-virtual-machines.png" alt-text="VSphere 中的 HCX 選項" border="true":::
@@ -145,7 +145,7 @@ VMware HCX 提供各種作業，可在複寫原則中提供細微的控制和細
 
 VMware HCX 目前沒有內建的機制，可建立和自動化嚴重損壞修復計畫。 不過，VMware HCX 會提供一組 REST Api，包括用於損毀修復作業的 Api。 您可以在 [VMware HCX 管理員] 中的 URL 記憶體取 API 規格。
 
-這些 Api 涵蓋了嚴重損壞修復的下列作業。
+這些 Api 涵蓋災難復原中的下列作業。
 
 - Protect
 
@@ -241,4 +241,4 @@ JSON 中的復原操作承載範例如下所示。
 ]
 ```
 
-客戶可以使用這些 Api 來建立自訂機制，以將建立和執行嚴重損壞修復計畫自動化。
+使用這些 Api，您可以建立自訂機制，將嚴重損壞修復計畫的建立和執行自動化。

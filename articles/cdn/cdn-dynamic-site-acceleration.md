@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: bae131c086e8fbf062015ee27c563bb988731cad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5387fdc224cd77ee5273767df5033a51dc27608c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84888549"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778858"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>透過 Azure CDN 進行動態網站加速
 
@@ -27,12 +27,12 @@ ms.locfileid: "84888549"
 
 標準內容傳遞網路 (CDN) 功能包含快取接近使用者的檔案，從而加速靜態檔案傳遞。 不過，使用動態 Web 應用程式，就無法在邊緣位置中快取該內容，因為伺服器所產生的內容是用以回應使用者的行為。 相較於傳統的邊緣快取，要加速傳遞這類內容更為複雜，並且需要端對端解決方案，在從開始到傳遞的整個資料路徑上微調每個元素。 使用 Azure CDN 動態網站加速 (DSA) 最佳化後，能顯著提升具有動態內容的網頁效能。
 
-**Akamai 中的 Azure CDN** 和 **Verizon 中的 Azure CDN** 都會在端點建立期間透過 [最佳化]**** 功能表來提供 DSA 最佳化。 Microsoft 提供的動態網站加速是透過 [Azure Front Door 服務](https://docs.microsoft.com/azure/frontdoor/front-door-overview)提供。
+ 功能表來提供 DSA 最佳化。 Microsoft 提供的動態網站加速是透過 [Azure Front Door 服務](../frontdoor/front-door-overview.md)提供。
 
 > [!Important]
-> 針對**來自 Akamai 的 Azure CDN**設定檔，您可以在 CDN 端點建立之後，變更其最佳化。
+> 針對 **來自 Akamai 的 Azure CDN** 設定檔，您可以在 CDN 端點建立之後，變更其最佳化。
 >   
-> 針對**來自 Verizon 的 Azure CDN**設定檔，您無法在 CDN 端點建立之後，變更其最佳化。
+> 針對 **來自 Verizon 的 Azure CDN** 設定檔，您無法在 CDN 端點建立之後，變更其最佳化。
 
 ## <a name="cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files"></a>設定 CDN 端點以加速動態檔案傳遞
 
@@ -40,34 +40,34 @@ ms.locfileid: "84888549"
 
 **若要將 CDN 端點設定成使用 Azure 入口網站進行 DSA 最佳化：**
 
-1. 在 [CDN 設定檔]**** 頁面中選取 [端點]****。
+1. 在 [CDN 設定檔]  頁面中選取 [端點]  。
 
    ![新增 CDN 端點](./media/cdn-dynamic-site-acceleration/cdn-endpoint-profile.png) 
 
    此時會顯示 [新增端點] 窗格。
 
-2. 在 [最佳化]**** 之下，選取 [動態網站加速]****。
+2. 在 [最佳化]  之下，選取 [動態網站加速]  。
 
     ![使用 DSA 建立新的 CDN 端點](./media/cdn-dynamic-site-acceleration/cdn-endpoint-dsa.png)
 
-3. 針對 [探查路徑]****，輸入檔案的有效路徑。
+3. 針對 [探查路徑]  ，輸入檔案的有效路徑。
 
-    探查路徑是 DSA 特定的功能，在建立時需要有效的路徑。 DSA 會使用放在原始伺服器的小型「探查路徑」** 檔案，將 CDN 的網路路由組態最佳化。 如需探查路徑檔案，您可以下載我們的範例檔案並上傳至您的網站，或使用原始伺服器上大約 10 KB 的現有資產。
+    探查路徑是 DSA 特定的功能，在建立時需要有效的路徑。 DSA 會使用放在原始伺服器的小型「探查路徑」  檔案，將 CDN 的網路路由組態最佳化。 如需探查路徑檔案，您可以下載我們的範例檔案並上傳至您的網站，或使用原始伺服器上大約 10 KB 的現有資產。
 
-4. 輸入其他必要的端點選項 (如需詳細資訊，請參閱[建立新的 CDN 端點](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint))，然後選取 [新增]****。
+4. 輸入其他必要的端點選項 (如需詳細資訊，請參閱  。
 
    建立 CDN 端點之後，就會對所有符合特定準則的檔案套用 DSA 最佳化。 
 
 
 **若要針對 DSA 設定現有端點 (僅限 Akamai 中的 Azure CDN 設定檔)：**
 
-1. 在 [CDN 設定檔]**** 頁面中，選取您要修改的端點。
+1. 在 [CDN 設定檔]  頁面中，選取您要修改的端點。
 
-2. 從左窗格中，選取 [最佳化]****。 
+2. 從左窗格中，選取 [最佳化]  。 
 
-   [最佳化]**** 頁面隨即出現。
+   [最佳化]  頁面隨即出現。
 
-3. 在 [最佳化]**** 之下，選取 [動態網站加速]****，然後選取 [儲存]****。
+3. 在 [最佳化]  之下，選取 [動態網站加速]  ，然後選取 [儲存]  。
 
 > [!Note]
 > DSA 會產生額外費用。 如需詳細資訊，請參閱[內容傳遞網路定價](https://azure.microsoft.com/pricing/details/cdn/)。
@@ -103,15 +103,15 @@ Akamai 網路會使用一些技術，透過 Akamai 伺服器中不同的節點�
 
 #### <a name="eliminating-tcp-slow-start"></a>排除 TCP 慢速啟動
 
-TCP「慢速啟動」** 是 TCP 通訊協定的演算法，可藉由限制透過網路傳送的資料量來防止網路壅塞。 它會從傳送者與接收者之間的小型壅塞視窗大小開始，直到觸達最大值或偵測到封包遺失為止。
+TCP「慢速啟動」  是 TCP 通訊協定的演算法，可藉由限制透過網路傳送的資料量來防止網路壅塞。 它會從傳送者與接收者之間的小型壅塞視窗大小開始，直到觸達最大值或偵測到封包遺失為止。
 
- **來自 Akamai 的 Azure CDN** 和**來自 Verizon 的 Azure CDN** 設定檔都可透過下列三個步驟消除 TCP 啟動緩慢的情況：
+ **來自 Akamai 的 Azure CDN** 和 **來自 Verizon 的 Azure CDN** 設定檔都可透過下列三個步驟消除 TCP 啟動緩慢的情況：
 
 1. 健康狀態和頻寬監視用來測量 PoP Edge Server 之間的連線頻寬。
     
-2. PoP Edge Server 之間會共用這些計量數據，因此每一部伺服器都會知道其他周遭 PoP 的網路狀況和伺服器健康情況。  
+2. PoP Edge Server 之間會共用這些計量數據，因此每一部伺服器都會知道其他周遭 PoP 的網路狀況和伺服器健康情況。  
     
-3. CDN Edge Server 會提出某些傳輸參數的假設，例如與其附近的其他 CDN Edge Server 通訊時的最佳視窗大小。 這個步驟表示，如果 CDN Edge Server 之間的連線健康情況能夠負荷較高的封包資料傳輸，就可增加初始壅塞視窗的大小。  
+3. CDN Edge Server 會提出某些傳輸參數的假設，例如與其附近的其他 CDN Edge Server 通訊時的最佳視窗大小。 這個步驟表示，如果 CDN Edge Server 之間的連線健康情況能夠負荷較高的封包資料傳輸，就可增加初始壅塞視窗的大小。  
 
 #### <a name="leveraging-persistent-connections"></a>利用持續連線
 
@@ -133,7 +133,7 @@ TCP「慢速啟動」** 是 TCP 通訊協定的演算法，可藉由限制透過
 
 大多數網站是由參考諸如映像和指令碼等各種其他資源的 HTML 網頁所組成。 一般而言，當用戶端要求網頁時，瀏覽器會先下載及剖析 HTML 物件，然後再進行完全載入網頁所需的其他連結資產之要求。 
 
-預先擷取** 是 HTML 提供給瀏覽器時，並甚至在瀏覽器提出這些物件要求之前，擷取內嵌在 HTML 網頁中之映像和指令碼的技術。 
+預先擷取  是 HTML 提供給瀏覽器時，並甚至在瀏覽器提出這些物件要求之前，擷取內嵌在 HTML 網頁中之映像和指令碼的技術。 
 
 若在 CDN 提供以 HTML 為基礎的網頁給用戶端瀏覽器時開啟 [預先擷取] 選項，CDN 就會剖析 HTML 檔案，並針對任何連結的資源提出其他要求，並將它儲存在其快取中。 當用戶端提出連結資產的要求時，CDN Edge Server 就已擁有要求的物件，並可以立即提供而不需要在來源之間往返。 此最佳化有助於可快取和不可快取的內容。
 
@@ -147,35 +147,35 @@ TCP「慢速啟動」** 是 TCP 通訊協定的演算法，可藉由限制透過
 --- | ---  
 JPEG 壓縮 | .jpg、.jpeg、.jpe、.jig、.jgig、.jgi
 
-## <a name="caching"></a>快取
+## <a name="caching"></a>Caching
 
 若使用 DSA，CDN 預設會關閉快取功能，即使來源在回應中納入 `Cache-Control` 或 `Expires` 標頭也是如此。 DSA 通常用於不得快取的動態資產，因為這類資產對每個用戶端都是唯一的。 快取可能會破壞此行為。
 
 如果您的網站混雜了靜態和動態資產，您最好採用混合式方法以獲得最佳效能。 
 
-針對**來自 Verizon 的 Azure CDN 標準**和**來自 Akamai 的 Azure CDN 標準**設定檔，您可以使用[快取規則](cdn-caching-rules.md)來開啟特定 DSA 端點的快取。
+針對 **來自 Verizon 的 Azure CDN 標準** 和 **來自 Akamai 的 Azure CDN 標準** 設定檔，您可以使用 [快取規則](cdn-caching-rules.md)來開啟特定 DSA 端點的快取。
 
 存取快取規則：
 
-1. 從 [CDN 設定檔]**** 頁面的 [設定] 底下，選取 [快取規則]****。  
+1. 從 [CDN 設定檔]  頁面的 [設定] 底下，選取 [快取規則]  。  
     
     ![CDN [快取規則] 按鈕](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
-    [快取規則]**** 頁面隨即開啟。
+    [快取規則]  頁面隨即開啟。
 
 2. 建立全域或自訂快取規則以開啟 DSA 端點的快取。 
 
-針對**來自 Verizon 的 Azure CDN 進階**設定檔，您可以使用[規則引擎](cdn-rules-engine.md)來開啟特定 DSA 端點的快取。 所建立的任何規則只會影響您設定檔中已針對 DSA 最佳化的這些端點。 
+針對 **來自 Verizon 的 Azure CDN 進階** 設定檔，您可以使用 [規則引擎](./cdn-verizon-premium-rules-engine.md)來開啟特定 DSA 端點的快取。 所建立的任何規則只會影響您設定檔中已針對 DSA 最佳化的這些端點。 
 
 存取規則引擎：
     
-1. 從 [CDN 設定檔] 頁面選取 [管理]。  
+1. 從 [CDN 設定檔] 頁面選取 [管理]。  
     
     ![CDN 設定檔管理按鈕](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 
     隨即開啟 CDN 管理入口網站。
 
-2. 從 CDN 管理入口網站，選取 [ADN]****，然後選取 [規則引擎]****。 
+2. 從 CDN 管理入口網站，選取 [ADN]  ，然後選取 [規則引擎]  。 
 
     ![DSA 的規則引擎](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
 
@@ -183,7 +183,4 @@ JPEG 壓縮 | .jpg、.jpeg、.jpe、.jig、.jgig、.jgi
 
 此外，您可以使用兩個 CDN 端點：一個使用 DSA 最佳化的端點用來傳遞動態資產，另一個使用靜態最佳化類型 (例如一般 Web 傳遞) 最佳化的端點用來傳遞可快取的資產。 將網頁 URL 修改為直接連結至您打算使用之 CDN 端點上的資產。 
 
-例如：`mydynamic.azureedge.net/index.html` 是從 DSA 端點載入的動態網頁。HTML 網頁會參考多個靜態資產 (例如 JavaScript 程式庫)，或參考從靜態 CDN 端點載入的映像 (例如 `mystatic.azureedge.net/banner.jpg` 和 `mystatic.azureedge.net/scripts.js`)。 
-
-
-
+例如：`mydynamic.azureedge.net/index.html` 是從 DSA 端點載入的動態網頁。  HTML 網頁會參考多個靜態資產 (例如 JavaScript 程式庫)，或參考從靜態 CDN 端點載入的映像 (例如 `mystatic.azureedge.net/banner.jpg` 和 `mystatic.azureedge.net/scripts.js`)。

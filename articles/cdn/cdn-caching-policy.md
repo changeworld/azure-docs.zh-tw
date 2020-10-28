@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/04/2017
 ms.author: juliako
-ms.openlocfilehash: 6beaee98e78e79c48270801f5696e4e487b0a2c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5807d38e22d8cecf40b5ad4262f9e4662b77ec4c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84883711"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779130"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>在 Azure 媒體服務中管理 Azure CDN 快取原則
 Azure 媒體服務提供 HTTP 式「彈性資料流」和漸進式下載功能。 HTTP 式串流具有快取 Proxy 和 CDN 層，以及快取用戶端的優點，所以延展性極佳。 資料流端點提供一般串流功能，以及 HTTP 快取標頭的組態。 串流端點會設定 HTTP Cache-Control: max-age 和 Expires 標頭。 您可以從 [W3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html)(英文) 取得 HTTP 快取標頭的詳細資訊。
@@ -40,10 +40,9 @@ Azure 媒體服務為資料流端點提供 [整合式 CDN](https://azure.microso
 
 1. 若要使用設定 Azure 入口網站設定快取標頭，請參閱[如何管理串流端點](../media-services/previous/media-services-portal-manage-streaming-endpoints.md)一節中的「設定串流端點」中的。
 2. Azure 媒體服務 REST API， [StreamingEndpoint](/rest/api/media/operations/streamingendpoint#StreamingEndpointCacheControl)。
-3. Azure 媒體服務 .NET SDK， [StreamingEndpointCacheControl 屬性](https://go.microsoft.com/fwlink/?LinkId=615302)。
+3. Azure 媒體服務 .NET SDK， [StreamingEndpointCacheControl 屬性](/dotnet/api/microsoft.windowsazure.mediaservices.client.streamingendpointcachecontrol)。
 
 ## <a name="cache-configuration-precedence-order"></a>快取組態的優先順序
 1. Azure 媒體服務的已設定快取值會覆寫預設值。
 2. 如果沒有任何手動組態，系統會套用預設值。
 3. 根據預設，2 秒快取標頭會套用至即時資料流資訊清單 (播放清單)，無論 Azure 媒體或 Azure 儲存體組態為何，且此值無法被覆寫。
-

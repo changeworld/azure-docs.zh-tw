@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
 ms.author: ril
-ms.openlocfilehash: 698b1c7734882ea7f11114476b5e9a7f36a23a0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4ed04185da251d9042f6b54a192d0e49ef20ede
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192624"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778543"
 ---
 # <a name="http2-support-in-azure-cdn"></a>Azure CDN 中的 HTTP/2 支援
 
@@ -67,4 +67,4 @@ HTTP/2 的優點包括︰
 *   [官方 HTTP/2 常見問題集](https://http2.github.io/faq/)
 *   [Akamai HTTP/2 資訊](https://http2.akamai.com/)
 
-若要深入了解 Azure CDN 提供的功能，請參閱 [Azure CDN 概觀](https://azure.microsoft.com/documentation/articles/cdn-overview/)。
+若要深入了解 Azure CDN 提供的功能，請參閱 [Azure CDN 概觀](./cdn-overview.md)。

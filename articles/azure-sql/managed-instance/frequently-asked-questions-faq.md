@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: fedbcf00512e2eb671656ca1c585df83560a8c02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b217e77310224779ea3ea840e613e28da6c86a3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627613"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779861"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 受控執行個體常見問題集 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -82,7 +82,7 @@ ms.locfileid: "91627613"
 
 **如何布建 SQL 受控執行個體？**
 
-您可以從 [Azure 入口網站](instance-create-quickstart.md)、 [PowerShell](scripts/create-configure-managed-instance-powershell.md)、 [Azure CLI](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281) 和 [ARM 範本](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates)布建實例。
+您可以從 [Azure 入口網站](instance-create-quickstart.md)、 [PowerShell](scripts/create-configure-managed-instance-powershell.md)、 [Azure CLI](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281) 和 [ARM 範本](/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates)布建實例。
 
 **我可以在現有的訂用帳戶中布建受控實例嗎？**
 
@@ -94,7 +94,7 @@ ms.locfileid: "91627613"
 
 **如何調整受控實例？**
 
-您可以從 [Azure 入口網站](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation)、 [PowerShell](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell)、 [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update&preserve-view=true) 或 [ARM 範本](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)來調整受控實例。
+您可以從 [Azure 入口網站](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation)、 [PowerShell](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell)、 [Azure CLI](/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update&preserve-view=true) 或 [ARM 範本](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)來調整受控實例。
 
 **我可以將我的受控執行個體從一個區域移到另一個區域嗎？**
 
@@ -102,7 +102,7 @@ ms.locfileid: "91627613"
 
 **如何刪除我的受控執行個體？**
 
-您可以透過 Azure 入口網站、 [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0&preserve-view=true)、 [AZURE CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete&preserve-view=true) 或 [Resource Manager REST api](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)來刪除受控實例。
+您可以透過 Azure 入口網站、 [PowerShell](/powershell/module/az.sql/remove-azsqlinstance?preserve-view=true&view=azps-4.3.0)、 [AZURE CLI](/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete&preserve-view=true) 或 [Resource Manager REST api](/rest/api/sql/managedinstances/delete)來刪除受控實例。
 
 **建立或更新實例或還原資料庫需要花費多少時間？**
 
@@ -118,7 +118,7 @@ ms.locfileid: "91627613"
 
 是，受控執行個體預設的 DNS 區域 *。 database.windows.net* 可以變更。 
 
-若要使用另一個 DNS 區域，而不是預設值，例如， *. contoso.com*： 
+若要使用另一個 DNS 區域，而不是預設值，例如， *. contoso.com* ： 
 - 使用 CliConfig 來定義別名。 此工具只是一個登錄設定包裝函式，因此也可以使用群組原則或腳本來完成。
 - 使用 *CNAME* 搭配 *TrustServerCertificate = true* 選項。
 
@@ -135,9 +135,9 @@ ms.locfileid: "91627613"
 
 其中一個選項是將 [資料庫匯出至 bacpac](../database/database-export.md) ，然後匯 [入 bacpac](../database/database-import.md)檔案。 如果您的資料庫小於 100 GB，這是建議的方法。
 
-如果資料庫中的所有資料表都有*主鍵*，而且資料庫中沒有任何記憶體內部 OLTP 物件，則可以使用[異動複寫](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017&preserve-view=true)。
+如果資料庫中的所有資料表都有 *主鍵* ，而且資料庫中沒有任何記憶體內部 OLTP 物件，則可以使用 [異動複寫](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017&preserve-view=true)。
 
-從受控實例取得的原生 COPY_ONLY 備份無法還原到 SQL Server，因為相較于 SQL Server，受控實例具有較高的資料庫版本。 如需詳細資訊，請參閱 [僅複本備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15&preserve-view=true)。
+從受控實例取得的原生 COPY_ONLY 備份無法還原到 SQL Server，因為相較于 SQL Server，受控實例具有較高的資料庫版本。 如需詳細資訊，請參閱 [僅複本備份](/sql/relational-databases/backup-restore/copy-only-backups-sql-server?preserve-view=true&view=sql-server-ver15)。
 
 **如何將 SQL Server 實例遷移至 SQL 受控執行個體？**
 
@@ -173,22 +173,22 @@ ms.locfileid: "91627613"
 - [自動調整](../database/automatic-tuning-overview.md) 可透過以 AI 和機器學習為基礎的持續效能調整，來提供尖峰效能和穩定的工作負載。
 -   [記憶體內部 OLTP](../in-memory-oltp-overview.md) 可改善交易處理工作負載的輸送量和延遲，並提供更快速的商業見解。 
 
-若要更進一步地調整效能，請考慮套用[應用程式和資料庫調整](../database/performance-guidance.md#tune-your-database)的一些*最佳作法*。
+若要更進一步地調整效能，請考慮套用 [應用程式和資料庫調整](../database/performance-guidance.md#tune-your-database)的一些 *最佳作法* 。
 如果您的工作負載是由許多小型交易所組成，請考慮將連線 [類型從 proxy 切換至重新導向模式](connection-types-overview.md#changing-connection-type) ，以降低延遲和提高輸送量。
 
 ## <a name="monitoring-metrics-and-alerts"></a>監視、計量和警示
 
 **監視及警示受控實例的選項有哪些？**
 
-如需監視 SQL 受控執行個體耗用量和效能警示的所有可能選項，請參閱 [AZURE sql 受控執行個體監視選項的 blog 文章](https://techcommunity.microsoft.com/t5/azure-sql-database/monitoring-options-available-for-azure-sql-managed-instance/ba-p/1065416)。 如需 SQL MI 的即時效能監視，請參閱 [AZURE SQL DB 受控執行個體的即時效能監視](https://docs.microsoft.com/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)。
+如需監視 SQL 受控執行個體耗用量和效能警示的所有可能選項，請參閱 [AZURE sql 受控執行個體監視選項的 blog 文章](https://techcommunity.microsoft.com/t5/azure-sql-database/monitoring-options-available-for-azure-sql-managed-instance/ba-p/1065416)。 如需 SQL MI 的即時效能監視，請參閱 [AZURE SQL DB 受控執行個體的即時效能監視](/archive/blogs/sqlcat/real-time-performance-monitoring-for-azure-sql-database-managed-instance)。
 
 **是否可以使用 SQL Profiler 進行效能追蹤？**
 
-是，支援 SQL Profiler 或 SQL 受控執行個體。 如需詳細資訊，請參閱 [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15&preserve-view=true)。
+是，支援 SQL Profiler 或 SQL 受控執行個體。 如需詳細資訊，請參閱 [SQL Profiler](/sql/tools/sql-server-profiler/sql-server-profiler?preserve-view=true&view=sql-server-ver15)。
 
 **受控執行個體資料庫 Database Advisor 和查詢效能深入解析支援嗎？**
 
-否，不支援它們。 您可以使用 [dmv](../database/monitoring-with-dmvs.md) 和 [查詢存放區](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-ver15&preserve-view=true) 搭配 [SQL Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler?view=sql-server-ver15&preserve-view=true) 和 [XEvents](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events?view=sql-server-ver15&preserve-view=true) 來監視您的資料庫。
+否，不支援它們。 您可以使用 [dmv](../database/monitoring-with-dmvs.md) 和 [查詢存放區](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?preserve-view=true&view=sql-server-ver15) 搭配 [SQL Profiler](/sql/tools/sql-server-profiler/sql-server-profiler?preserve-view=true&view=sql-server-ver15) 和 [XEvents](/sql/relational-databases/extended-events/extended-events?preserve-view=true&view=sql-server-ver15) 來監視您的資料庫。
 
 **我可以在 SQL 受控執行個體上建立計量警示嗎？**
 
@@ -210,7 +210,7 @@ SQL 受控執行個體的儲存體大小取決於所選服務層級 (一般用�
 
 **是否可以將指派給實例的儲存空間與計算資源分開增加？**
 
-是的，您可以從計算中獨立購買附加元件儲存區。 請參閱[資料表](resource-limits.md#hardware-generation-characteristics)中的*最大實例保留儲存體*。
+是的，您可以從計算中獨立購買附加元件儲存區。 請參閱 [資料表](resource-limits.md#hardware-generation-characteristics)中的 *最大實例保留儲存體* 。
 
 **如何優化一般用途服務層級的儲存體效能？**
 
@@ -228,11 +228,11 @@ SQL 受控執行個體的儲存體大小取決於所選服務層級 (一般用�
 
 **是否支援隨選備份？**
 
-是的，您可以在 Azure Blob 儲存體中建立僅限複製的完整備份，但它只能在受控執行個體中還原。 如需詳細資訊，請參閱 [僅複本備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15&preserve-view=true)。 但是，如果資料庫因為加密所用的憑證無法存取，而由服務管理的 TDE 加密，就不可能只複本備份。 在這種情況下，請使用時間點還原功能將資料庫移至另一個 SQL 受控執行個體，或切換至客戶管理的金鑰。
+是的，您可以在 Azure Blob 儲存體中建立僅限複製的完整備份，但它只能在受控執行個體中還原。 如需詳細資訊，請參閱 [僅複本備份](/sql/relational-databases/backup-restore/copy-only-backups-sql-server?preserve-view=true&view=sql-server-ver15)。 但是，如果資料庫因為加密所用的憑證無法存取，而由服務管理的 TDE 加密，就不可能只複本備份。 在這種情況下，請使用時間點還原功能將資料庫移至另一個 SQL 受控執行個體，或切換至客戶管理的金鑰。
 
 **原生還原 (從 .bak 檔案) 至受控執行個體支援嗎？**
 
-是的，SQL Server 2005 + 版本支援和提供。  若要使用原生還原，請將 .bak 檔案上傳至 Azure blob 儲存體，並執行 T-sql 命令。 如需詳細資訊，請參閱 [從 URL 原生還原](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate#native-restore-from-url)。
+是的，SQL Server 2005 + 版本支援和提供。  若要使用原生還原，請將 .bak 檔案上傳至 Azure blob 儲存體，並執行 T-sql 命令。 如需詳細資訊，請參閱 [從 URL 原生還原](./migrate-to-instance-from-sql-server.md#native-restore-from-url)。
 
 ## <a name="business-continuity"></a>業務持續性
 
@@ -254,7 +254,7 @@ SQL 受控執行個體負責設定管理埠的規則。 這是透過名為 [服�
 
 **我可以取得用於輸入管理流量的來源 IP 範圍嗎？**
 
-是。 您可以藉由設定網路監看員 [流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#analyze-traffic-to-or-from-a-network-security-group)，來分析通過網路安全性群組的流量。
+是。 您可以藉由設定網路監看員 [流量記錄](../../network-watcher/network-watcher-monitoring-overview.md#analyze-traffic-to-or-from-a-network-security-group)，來分析通過網路安全性群組的流量。
 
 **我可以設定 NSG 來控制對資料端點的存取 (埠 1433) 嗎？**
 
@@ -273,7 +273,7 @@ SQL 受控執行個體負責設定管理埠的規則。 這是透過名為 [服�
  
 **受控執行個體需要多少個 IP 位址？**
 
-子網必須有足夠的可用 [IP 位址](connectivity-architecture-overview.md#network-requirements)數目。 若要判斷 SQL 受控執行個體的 VNet 子網大小，請參閱 [判斷受控執行個體所需的子網大小與範圍](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-determine-size-vnet-subnet)。 
+子網必須有足夠的可用 [IP 位址](connectivity-architecture-overview.md#network-requirements)數目。 若要判斷 SQL 受控執行個體的 VNet 子網大小，請參閱 [判斷受控執行個體所需的子網大小與範圍](./vnet-subnet-determine-size.md)。 
 
 **如果沒有足夠的 IP 位址可執行實例更新作業，該怎麼辦？**
 
@@ -285,7 +285,7 @@ SQL 受控執行個體負責設定管理埠的規則。 這是透過名為 [服�
 
 **我可以變更子網位址範圍嗎？**
 
-如果內有受控實例，則不是。 這是 Azure 網路基礎結構的限制。 您只允許 [將其他位址空間新增至空白子網](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet#change-subnet-settings)。 
+如果內有受控實例，則不是。 這是 Azure 網路基礎結構的限制。 您只允許 [將其他位址空間新增至空白子網](../../virtual-network/virtual-network-manage-subnet.md#change-subnet-settings)。 
 
 **我可以將受控實例移至另一個子網嗎？**
 
@@ -293,13 +293,13 @@ SQL 受控執行個體負責設定管理埠的規則。 這是透過名為 [服�
 
 **是否需要空的虛擬網路來建立受控執行個體？**
 
-這不是必要項。 您可以 [建立 AZURE sql 受控執行個體的虛擬網路](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-vnet-subnet) ，或 [設定 azure sql 受控執行個體的現有虛擬網路](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vnet-subnet)。
+這不是必要項。 您可以 [建立 AZURE sql 受控執行個體的虛擬網路](./virtual-network-subnet-create-arm-template.md) ，或 [設定 azure sql 受控執行個體的現有虛擬網路](./vnet-existing-add-subnet.md)。
 
 **我可以使用子網中的其他服務來放置受控執行個體嗎？**
 
 否。 我們目前不支援將受控執行個體放在已包含其他資源類型的子網中。
 
-## <a name="connectivity"></a>連線能力 
+## <a name="connectivity"></a>連接性 
 
 **我可以使用 IP 位址連線到受控實例嗎？**
 
@@ -316,13 +316,13 @@ SQL 受控執行個體負責設定管理埠的規則。 這是透過名為 [服�
 
 **受控執行個體是否有公用端點？**
 
-是。 受控執行個體具有僅用於服務管理的公用端點，但客戶也可將其啟用以進行資料存取。 如需詳細資訊，請參閱搭配 [使用 SQL 受控執行個體與公用端點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely)。 若要設定公用端點，請移至 [在 SQL 受控執行個體中設定公用端點](public-endpoint-configure.md)。
+是。 受控執行個體具有僅用於服務管理的公用端點，但客戶也可將其啟用以進行資料存取。 如需詳細資訊，請參閱搭配 [使用 SQL 受控執行個體與公用端點](./public-endpoint-overview.md)。 若要設定公用端點，請移至 [在 SQL 受控執行個體中設定公用端點](public-endpoint-configure.md)。
 
 **受控執行個體如何控制對公用端點的存取？**
 
 受控執行個體可控制在網路和應用層級的公用端點存取權。
 
-管理和部署服務會使用對應到外部負載平衡器的 [管理端點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#management-endpoint) 來連線到受控實例。 只有在一組預先定義的埠（僅限受控實例的管理元件使用）接收到節點時，流量才會路由傳送至節點。 節點上的內建防火牆設定為只允許來自 Microsoft IP 範圍的流量。 憑證會相互驗證管理元件與管理平面之間的所有通訊。 如需詳細資訊，請參閱 [SQL 受控執行個體的連接架構](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#virtual-cluster-connectivity-architecture)。
+管理和部署服務會使用對應到外部負載平衡器的 [管理端點](./connectivity-architecture-overview.md#management-endpoint) 來連線到受控實例。 只有在一組預先定義的埠（僅限受控實例的管理元件使用）接收到節點時，流量才會路由傳送至節點。 節點上的內建防火牆設定為只允許來自 Microsoft IP 範圍的流量。 憑證會相互驗證管理元件與管理平面之間的所有通訊。 如需詳細資訊，請參閱 [SQL 受控執行個體的連接架構](./connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture)。
 
 **我可以使用公用端點來存取受控執行個體資料庫中的資料嗎？**
 
@@ -337,9 +337,9 @@ SQL 受控執行個體負責設定管理埠的規則。 這是透過名為 [服�
 Express Route 線路對等互連是最好的做法。 支援全域虛擬網路對等互連，但有下列注意事項中所述的限制。  
 
 > [!IMPORTANT]
-> [在9/22/2020 上，我們為新建立的虛擬叢集宣佈了全域虛擬網路對等互連](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 這表示在公告日期之後于空白子網中建立的 SQL 受控實例，以及這些子網中建立的所有後續受控實例，都支援全域虛擬網路對等互連。 針對所有其他 SQL 受控實例對等互連支援，受限於相同區域中的網路，原因是 [全域虛擬網路對等互連的限制](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)。 另請參閱 [Azure 虛擬網路常見問題](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) 文章中的相關章節，以取得詳細資料。 
+> [在9/22/2020 上，我們為新建立的虛擬叢集宣佈了全域虛擬網路對等互連](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 這表示在公告日期之後于空白子網中建立的 SQL 受控實例，以及這些子網中建立的所有後續受控實例，都支援全域虛擬網路對等互連。 針對所有其他 SQL 受控實例對等互連支援，受限於相同區域中的網路，原因是 [全域虛擬網路對等互連的限制](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)。 另請參閱 [Azure 虛擬網路常見問題](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) 文章中的相關章節，以取得詳細資料。 
 
-如果不可能有 Express Route 線路對等互連和全域虛擬網路對等互連，唯一的選項是建立站對站 VPN 連線 ([Azure 入口網站](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)、 [PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell) [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)) 。
+如果不可能有 Express Route 線路對等互連和全域虛擬網路對等互連，唯一的選項是建立站對站 VPN 連線 ([Azure 入口網站](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)、 [PowerShell](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)) 。
 
 ## <a name="mitigate-data-exfiltration-risks"></a>緩和資料遭到外泄風險  
 
@@ -347,19 +347,19 @@ Express Route 線路對等互連是最好的做法。 支援全域虛擬網路�
 
 若要減輕任何資料遭到外泄風險，建議客戶套用一組安全性設定和控制項：
 
-- 開啟所有資料庫上的 [透明資料加密 (TDE) ](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql) 。
+- 開啟所有資料庫上的 [透明資料加密 (TDE) ](../database/transparent-data-encryption-tde-overview.md) 。
 - 關閉 Common Language Runtime (CLR) 。 這也是內部部署的建議做法。
 - 使用 Azure Active Directory (Azure AD) 驗證。
 - 使用低許可權 DBA 帳戶存取實例。
 - 設定系統管理員（sysadmin）帳戶的 JIT jumpbox 存取權。
-- 開啟 [SQL 審核](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)，並將其與警示機制整合。
-- 從[Azure Defender FOR SQL](https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql) Suite 開啟[威脅偵測](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)。
+- 開啟 [SQL 審核](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)，並將其與警示機制整合。
+- 從[Azure Defender FOR SQL](../database/azure-defender-for-sql.md) Suite 開啟[威脅偵測](../database/threat-detection-configure.md)。
 
 ## <a name="dns"></a>DNS
 
 **我可以為 SQL 受控執行個體設定自訂 DNS 嗎？**
 
-是。 請參閱 [如何設定 AZURE SQL 受控執行個體的自訂 DNS](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns)。
+是。 請參閱 [如何設定 AZURE SQL 受控執行個體的自訂 DNS](./custom-dns-configure.md)。
 
 **我可以進行 DNS 重新整理嗎？**
 
@@ -378,22 +378,22 @@ Express Route 線路對等互連是最好的做法。 支援全域虛擬網路�
 
 您可以在第一次布建受控實例時設定時區設定。 不支援變更現有受控實例的時區。 如需詳細資訊，請參閱 [時區限制](timezones-overview.md#limitations)。
 
-因應措施包括以適當的時區建立新的受控實例，然後執行手動備份和還原，或建議執行 [跨實例的時間點還原](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/)。
+因應措施包括以適當的時區建立新的受控實例，然後執行手動備份和還原，或建議執行 [跨實例的時間點還原](/archive/blogs/sqlserverstorageengine/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance)。
 
 
 ## <a name="security-and-database-encryption"></a>安全性和資料庫加密
 
 **SQL 受控執行個體是否有系統管理員（sysadmin）伺服器角色？**
 
-是，客戶可以建立屬於系統管理員（sysadmin）角色成員的登入。  採用系統管理員（sysadmin）許可權的客戶也會擔任操作實例的責任，這可能會對 SLA 承諾造成負面影響。 若要將登入加入至系統管理員（sysadmin）伺服器角色，請參閱 [Azure AD authentication](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-aad-security-tutorial#azure-ad-authentication)。
+是，客戶可以建立屬於系統管理員（sysadmin）角色成員的登入。  採用系統管理員（sysadmin）許可權的客戶也會擔任操作實例的責任，這可能會對 SLA 承諾造成負面影響。 若要將登入加入至系統管理員（sysadmin）伺服器角色，請參閱 [Azure AD authentication](./aad-security-configure-tutorial.md#azure-ad-authentication)。
 
 **SQL 受控執行個體支援透明資料加密嗎？**
 
-是，SQL 受控執行個體支援透明資料加密。 如需詳細資訊，請參閱 [SQL 受控執行個體的透明資料加密](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?tabs=azure-portal)。
+是，SQL 受控執行個體支援透明資料加密。 如需詳細資訊，請參閱 [SQL 受控執行個體的透明資料加密](../database/transparent-data-encryption-tde-overview.md?tabs=azure-portal)。
 
 **我可以利用「攜帶您自己的金鑰」模型來進行 TDE 嗎？**
 
-是，適用于 BYOK 的 Azure Key Vault 案例適用于 Azure SQL 受控執行個體。 如需詳細資訊，請參閱 [透明資料加密與客戶管理的金鑰](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?view=sql-server-ver15&tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key&preserve-view=true)。
+是，適用于 BYOK 的 Azure Key Vault 案例適用于 Azure SQL 受控執行個體。 如需詳細資訊，請參閱 [透明資料加密與客戶管理的金鑰](../database/transparent-data-encryption-tde-overview.md?tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key)。
 
 **我可以遷移加密的 SQL Server 資料庫嗎？**
 
@@ -409,8 +409,8 @@ Express Route 線路對等互連是最好的做法。 支援全域虛擬網路�
 
 是，您不需要將資料庫解密以將其還原至 SQL 受控執行個體。 您必須提供憑證/金鑰，作為來源系統上的加密金鑰保護裝置，以供 SQL 受控執行個體，以便從加密的備份檔案讀取資料。 要執行此動作有兩個可行的方式：
 
-- *將憑證保護裝置上傳至 SQL 受控執行個體*。 您只能使用 PowerShell 來完成此操作。 [範例腳本](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate-tde-certificate)會描述整個進程。
-- 將*非對稱金鑰保護裝置上傳至 Azure Key Vault，並將 SQL 受控執行個體指向其中*。 這種方法類似「攜帶您自己的金鑰」 (BYOK) TDE 使用案例，也會使用 Key Vault 整合來儲存加密金鑰。 如果您不想要使用金鑰做為加密金鑰保護裝置，而且只想要讓 SQL 受控執行個體可將加密的資料庫還原 () ，請遵循 [設定 BYOK TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption)的指示，而不要勾選核取方塊將 **選取的金鑰設為預設 TDE 保護**裝置。
+- *將憑證保護裝置上傳至 SQL 受控執行個體* 。 您只能使用 PowerShell 來完成此操作。 [範例腳本](./tde-certificate-migrate.md)會描述整個進程。
+- 將 *非對稱金鑰保護裝置上傳至 Azure Key Vault，並將 SQL 受控執行個體指向其中* 。 這種方法類似「攜帶您自己的金鑰」 (BYOK) TDE 使用案例，也會使用 Key Vault 整合來儲存加密金鑰。 如果您不想要使用金鑰做為加密金鑰保護裝置，而且只想要讓 SQL 受控執行個體可將加密的資料庫還原 () ，請遵循 [設定 BYOK TDE](../database/transparent-data-encryption-tde-overview.md#manage-transparent-data-encryption)的指示，而不要勾選核取方塊將 **選取的金鑰設為預設 TDE 保護** 裝置。
 
 一旦您將加密保護裝置提供給 SQL 受控執行個體，就可以繼續進行標準的資料庫還原程式。
 
@@ -423,17 +423,17 @@ SQL 受控執行個體提供以 [vCore 為基礎的購買模型](sql-managed-ins
 **SQL 受控執行個體有哪些成本效益？**
 
 您可以透過下列方式，利用 Azure SQL 權益來節省成本：
--   將內部部署授權的現有投資最大化，並透過 [Azure Hybrid Benefit](https://docs.microsoft.com/azure/azure-sql/azure-hybrid-benefit?tabs=azure-powershell)省下最多55% 的費用。 
--   認可至計算資源的保留，並省下高達33% 的 [保留實例權益](https://docs.microsoft.com/azure/sql-database/sql-database-reserved-capacity)。 結合此項與 Azure 混合式權益，可節省高達82% 的費用。 
+-   將內部部署授權的現有投資最大化，並透過 [Azure Hybrid Benefit](../azure-hybrid-benefit.md?tabs=azure-powershell)省下最多55% 的費用。 
+-   認可至計算資源的保留，並省下高達33% 的 [保留實例權益](../database/reserved-capacity-overview.md)。 結合此項與 Azure 混合式權益，可節省高達82% 的費用。 
 -   利用 [Azure 開發/測試定價權益](https://azure.microsoft.com/pricing/dev-test/) ，為持續進行的開發和測試工作負載提供折扣費率，最多可省下55% 的費用與標價。
 
 **誰有資格獲得保留實例權益？**
 
-若要符合保留實例權益的資格，您的訂用帳戶類型必須是 enterprise 合約 (供應專案號碼： MS-AZR-0003P->ms-azr-0017p 或 MS-AZR-0003P-Ms-azr-0148p) 或具有隨用隨付定價的個別合約 (供應專案號碼： MS-MS-AZR-0003P-Ms-azr-0003p 或 MS-MS-AZR-0003P-Ms-azr-0023p) 。 如需有關保留的詳細資訊，請參閱 [保留實例權益](https://docs.microsoft.com/azure/sql-database/sql-database-reserved-capacity)。 
+若要符合保留實例權益的資格，您的訂用帳戶類型必須是 enterprise 合約 (供應專案號碼： MS-AZR-0003P->ms-azr-0017p 或 MS-AZR-0003P-Ms-azr-0148p) 或具有隨用隨付定價的個別合約 (供應專案號碼： MS-MS-AZR-0003P-Ms-azr-0003p 或 MS-MS-AZR-0003P-Ms-azr-0023p) 。 如需有關保留的詳細資訊，請參閱 [保留實例權益](../database/reserved-capacity-overview.md)。 
 
 **可以取消、交換或退款保留嗎？**
 
-您可以取消、交換或退款保留，但有某些限制。 如需詳細資訊，請參閱 [Azure 保留的自助式交換和退費](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations)。
+您可以取消、交換或退款保留，但有某些限制。 如需詳細資訊，請參閱 [Azure 保留的自助式交換和退費](../../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)。
 
 ## <a name="billing-for-managed-instance-and-backup-storage"></a>受控執行個體和備份儲存體的計費
 
@@ -443,7 +443,7 @@ SQL 受控執行個體提供以 [vCore 為基礎的購買模型](sql-managed-ins
 
 **如何追蹤受控實例的計費成本？**
 
-您可以使用 [Azure 成本管理解決方案](https://docs.microsoft.com/azure/cost-management-billing/)來這麼做。 流覽至[Azure 入口網站](https://portal.azure.com)中的 [訂用帳戶 **]，然後**選取 [**成本分析**]。 
+您可以使用 [Azure 成本管理解決方案](../../cost-management-billing/index.yml)來這麼做。 流覽至 [Azure 入口網站](https://portal.azure.com)中的 [訂用帳戶 **]，然後** 選取 [ **成本分析** ]。 
 
 使用 [ **累積成本** ] 選項，然後依 **資源類型** 篩選為 `microsoft.sql/managedinstances` 。
 
@@ -453,7 +453,7 @@ SQL 受控執行個體提供以 [vCore 為基礎的購買模型](sql-managed-ins
 
 **如何監視備份儲存體耗用量的計費成本？**
 
-您可以透過 Azure 入口網站監視備份儲存體的成本。 如需相關指示，請參閱 [監視自動備份的成本](https://docs.microsoft.com/azure/azure-sql/database/automated-backups-overview?tabs=managed-instance#monitor-costs)。 
+您可以透過 Azure 入口網站監視備份儲存體的成本。 如需相關指示，請參閱 [監視自動備份的成本](../database/automated-backups-overview.md?tabs=managed-instance#monitor-costs)。 
 
 **如何將受控實例上的備份儲存體成本優化？**
 
@@ -515,11 +515,11 @@ ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 
 **Azure SQL Database & SQL 受控執行個體的根 CA 變更為何？**
 
-請參閱 [Azure SQL Database & SQL 受控執行個體的憑證輪替](https://docs.microsoft.com/azure/azure-sql/updates/ssl-root-certificate-expiring)。 
+請參閱 [Azure SQL Database & SQL 受控執行個體的憑證輪替](../updates/ssl-root-certificate-expiring.md)。 
 
 **什麼是 SQL 受控執行個體的規劃維護事件？**
 
-請參閱 [SQL 受控執行個體中的規劃 Azure 維護事件](https://docs.microsoft.com/azure/azure-sql/database/planned-maintenance)。 
+請參閱 [SQL 受控執行個體中的規劃 Azure 維護事件](../database/planned-maintenance.md)。 
 
 
 ## <a name="azure-feedback-and-support"></a>Azure 意見反應和支援
@@ -530,5 +530,4 @@ ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 
 **如何建立 Azure 支援要求？**
 
-若要瞭解如何建立 Azure 支援要求，請參閱 [如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。
-
+若要瞭解如何建立 Azure 支援要求，請參閱 [如何建立 Azure 支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。

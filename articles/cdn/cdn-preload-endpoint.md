@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2018
 ms.author: allensu
-ms.openlocfilehash: 2f0968af5cb52904f6044e130adba8b0ba9a6cd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fb414680b8ff64d057f9f68d7b97380baeaa551
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192575"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778193"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>在 Azure CDN 端點上預先載入資產
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -37,17 +37,17 @@ ms.locfileid: "88192575"
 1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至包含您希望預先載入之端點的 CDN 設定檔。 設定檔窗格會隨即開啟。
     
 2. 按一下清單中的端點。 端點窗格會隨即開啟。
-3. 從 CDN 端點窗格中，選取 [載入]****。
+3. 從 CDN 端點窗格中，選取 [載入]  。
    
     ![CDN 端點窗格](./media/cdn-preload-endpoint/cdn-endpoint-blade.png)
    
-    [載入]**** 窗格會隨即開啟。
+    [載入]  窗格會隨即開啟。
    
     ![CDN 載入窗格](./media/cdn-preload-endpoint/cdn-load-blade.png)
-4. 針對 [內容路徑]****，輸入每個您希望載入之資產的完整路徑 (例如 `/pictures/kitten.png`)。
+4. 針對 [內容路徑]  ，輸入每個您希望載入之資產的完整路徑 (例如 `/pictures/kitten.png`)。
    
    > [!TIP]
-   > 在您開始輸入文字之後，會出現更多 [內容路徑]**** 文字方塊，可讓您建置多個資產的清單。 若要將資產從清單中刪除，請選取省略符號 (...) 按鈕，然後選取 [刪除]****。
+   > 在您開始輸入文字之後，會出現更多 [內容路徑]  文字方塊，可讓您建置多個資產的清單。 若要將資產從清單中刪除，請選取省略符號 (...) 按鈕，然後選取 [刪除]  。
    > 
    > 每個內容路徑都必須是符合下列[規則運算式](/dotnet/standard/base-types/regular-expression-language-quick-reference)的相對 URL：  
    > - 載入單一檔案路徑：`^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
@@ -58,7 +58,7 @@ ms.locfileid: "88192575"
    > 
    
     ![載入按鈕](./media/cdn-preload-endpoint/cdn-load-paths.png)
-5. 輸入完內容路徑時，選取 [載入]****。
+5. 輸入完內容路徑時，選取 [載入]  。
    
 
 > [!NOTE]
@@ -66,8 +66,7 @@ ms.locfileid: "88192575"
 > 
 > 
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 * [清除 Azure CDN 端點](cdn-purge-endpoint.md)
-* [Azure CDN REST API 參考 - 預先載入端點上的內容](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
-* [Azure CDN REST API 參考 - 從端點清除內容](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
-
+* [Azure CDN REST API 參考 - 預先載入端點上的內容](/rest/api/cdn/endpoints/loadcontent)
+* [Azure CDN REST API 參考 - 從端點清除內容](/rest/api/cdn/endpoints/purgecontent)

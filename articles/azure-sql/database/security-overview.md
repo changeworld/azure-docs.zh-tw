@@ -12,23 +12,23 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 10/26/2020
-ms.openlocfilehash: bb9e17a4befcdcf1a322734c6cc5d75d653f23e6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1485f06af2bb3c4912df3e34cb23c409b7db3dc2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676134"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780354"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL Database 與 SQL 受控執行個體安全性功能的總覽
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-本文概述使用 [Azure SQL Database](sql-database-paas-overview.md) 和 [Azure SQL 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md)保護應用程式資料層的基本概念。 所述的安全性策略會遵循下圖所示的多層式深度防禦方法，並從外部移入：
+本文概述使用 [Azure SQL Database](sql-database-paas-overview.md)、 [Azure SQL 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md)和 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)保護應用程式資料層的基本概念。 所述的安全性策略會遵循下圖所示的多層式深度防禦方法，並從外部移入：
 
 ![多層式深度防禦的圖表。 客戶資料是以網路安全性、存取管理、威脅和資訊保護層級為 encased。](./media/security-overview/sql-security-layer.png)
 
 ## <a name="network-security"></a>網路安全性
 
-Microsoft Azure SQL Database 和 SQL 受控執行個體為雲端和企業應用程式提供關係資料庫服務。 為了協助保護客戶資料，防火牆會在根據 IP 位址或 Azure 虛擬網路流量來源明確授與存取權之前，防止對伺服器的網路存取。
+Microsoft Azure SQL Database、SQL 受控執行個體和 Azure Synapse Analytics 會為雲端和企業應用程式提供關係資料庫服務。 為了協助保護客戶資料，防火牆會在根據 IP 位址或 Azure 虛擬網路流量來源明確授與存取權之前，防止對伺服器的網路存取。
 
 ### <a name="ip-firewall-rules"></a>IP 防火牆規則
 
@@ -36,7 +36,7 @@ IP 防火牆規則會根據每個要求的來源 IP 位址授與資料庫存取�
 
 ### <a name="virtual-network-firewall-rules"></a>虛擬網路防火牆規則
 
-[虛擬網路服務端點](../../virtual-network/virtual-network-service-endpoints-overview.md)會透過 Azure 骨幹擴充您的虛擬網路連線能力，並且讓 Azure SQL Database 找出流量源自的虛擬網路子網路。 若要允許流量觸達 Azure SQL Database，請使用 SQL[服務標籤](../../virtual-network/security-overview.md)，允許透過網路安全性群組輸出流量。
+[虛擬網路服務端點](../../virtual-network/virtual-network-service-endpoints-overview.md)會透過 Azure 骨幹擴充您的虛擬網路連線能力，並且讓 Azure SQL Database 找出流量源自的虛擬網路子網路。 若要允許流量觸達 Azure SQL Database，請使用 SQL[服務標籤](../../virtual-network/network-security-groups-overview.md)，允許透過網路安全性群組輸出流量。
 
 [虛擬網路規則](vnet-service-endpoint-rule-overview.md) 可讓 Azure SQL Database 只接受從虛擬網路內所選子網傳送的通訊。
 
@@ -99,7 +99,7 @@ SQL Database 和 SQL 受控執行個體 audit 會將資料庫事件記錄至客�
 
 SQL Database、SQL 受控執行個體和 Azure Synapse Analytics 保護客戶資料，方法是使用 [傳輸層安全性 (TLS) ](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)來加密移動中的資料。
 
-SQL Database、SQL 受控執行個體和 Azure Synapse 會針對所有連線強制執行加密 (SSL/TLS) 。 這可確保不論連接字串中的 **加密** 或 **TrustServerCertificate** 設定，所有資料都會在用戶端與伺服器之間加密「傳輸中」。
+SQL Database、SQL 受控執行個體和 Azure Synapse Analytics 會針對所有連線強制執行加密 (SSL/TLS) 。 這可確保不論連接字串中的 **加密** 或 **TrustServerCertificate** 設定，所有資料都會在用戶端與伺服器之間加密「傳輸中」。
 
 最佳做法是，建議您在應用程式所使用的連接字串中，指定加密的連接，而 _**不**_ 信任伺服器憑證。 這會強制您的應用程式驗證伺服器憑證，從而防止您的應用程式容易遭受中間人攻擊。
 

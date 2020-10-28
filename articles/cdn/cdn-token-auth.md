@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mazha
-ms.openlocfilehash: bded48b59d10e47a9bbf476583fed78b5b97431d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21ef06f37e6840df08b1477f9c0ff24f6e15d1a3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887441"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778008"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>使用權杖驗證保護 Azure CDN 資產
 
@@ -81,8 +81,8 @@ ms.locfileid: "84887441"
    2. 在 [Primary Key] \(主要金鑰\) 方塊中輸入唯一加密金鑰，並視需要在 [Backup Key] \(備份金鑰\) 方塊中輸入備份金鑰。
 
    3. 從每個金鑰的 [最低加密版本] 清單中選取其最低加密版本，然後選取 [更新]：
-      - **V2**：指出金鑰可用來產生 2.0 和 3.0 版權杖。 只有當您會將舊的 2.0 版加密金鑰轉換成 3.0 版金鑰，才使用此選項。
-      - **V3**：(建議選項) 指出金鑰僅可用來產生 3.0 版權杖。
+      - **V2** ：指出金鑰可用來產生 2.0 和 3.0 版權杖。 只有當您會將舊的 2.0 版加密金鑰轉換成 3.0 版金鑰，才使用此選項。
+      - **V3** ：(建議選項) 指出金鑰僅可用來產生 3.0 版權杖。
 
       ![CDN 權杖驗證安裝識別碼](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
     
@@ -170,10 +170,10 @@ ms.locfileid: "84887441"
 
    9. 視需要自訂要求遭拒時傳回的回應碼類型。 選取 [已啟用]，然後從 [回應碼] 清單中選取回應碼。 [標頭名稱] 會自動設為 [位置]。 選取 [儲存] 來實作新的回應碼。 針對特定回應碼，您還必須在 [標頭值] 方塊中輸入您錯誤頁面的 URL。 預設選取的回應碼是 **403** (禁止)。 
 
-3. 在 [HTTP 大型] 底下，選取 [規則引擎]。 您需使用此規則引擎來定義路徑，以套用功能、啟用權杖驗證功能，以及啟用其他與權杖驗證相關的功能。 如需詳細資訊，請參閱[規則引擎參考](cdn-rules-engine-reference.md)。
+3. 在 [HTTP 大型] 底下，選取 [規則引擎]。 您需使用此規則引擎來定義路徑，以套用功能、啟用權杖驗證功能，以及啟用其他與權杖驗證相關的功能。 如需詳細資訊，請參閱[規則引擎參考](./cdn-verizon-premium-rules-engine-reference.md)。
 
    1. 選取現有規則或建立新規則，以定義您想要套用權杖驗證的資產或路徑。 
-   2. 若要在規則啟用權杖驗證，請從 **功能** 清單中選取 **[Token Auth](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm)** 權杖驗證，然後選取 **已啟用**。 如果您要更新規則，請選取 [更新]，或如果您要建立規則，請選取 [新增]。
+   2. 若要在規則啟用權杖驗證，請從 **功能** 清單中選取 **[Token Auth](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm)** 權杖驗證，然後選取 **已啟用** 。 如果您要更新規則，請選取 [更新]，或如果您要建立規則，請選取 [新增]。
         
       ![CDN 規則引擎權杖驗證啟用範例](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 

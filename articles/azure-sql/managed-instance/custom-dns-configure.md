@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 07/17/2019
-ms.openlocfilehash: 9fdd61c5799724ab3ab098584f85ce52cdd6ccf4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 017698975706aa8501cd059351cf9a9d88594f77
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91283253"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779895"
 ---
 # <a name="configure-a-custom-dns-for-azure-sql-managed-instance"></a>設定 Azure SQL 受控執行個體的自訂 DNS
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,7 +27,7 @@ Azure SQL 受控執行個體必須部署在 Azure [虛擬網路 (VNet) ](../../v
 因為 SQL 受控執行個體在內部工作中使用相同的 DNS，所以請設定自訂 DNS 伺服器，使其能夠解析公用功能變數名稱。
 
 > [!IMPORTANT]
-> 請一律使用郵件伺服器的完整功能變數名稱 (FQDN) 、SQL Server 實例和其他服務，即使它們是在您的私人 DNS 區域內也一樣。 例如，將 `smtp.contoso.com` 用於您的郵件伺服器，因為 `smtp` 無法正確地解析。 建立參考相同虛擬網路內 SQL Server Vm 的連結伺服器或複寫，也需要 FQDN 和預設的 DNS 尾碼。 例如： `SQLVM.internal.cloudapp.net` 。 如需詳細資訊，請參閱 [使用您自己的 DNS 伺服器的名稱解析](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)。
+> 請一律使用郵件伺服器的完整功能變數名稱 (FQDN) 、SQL Server 實例和其他服務，即使它們是在您的私人 DNS 區域內也一樣。 例如，將 `smtp.contoso.com` 用於您的郵件伺服器，因為 `smtp` 無法正確地解析。 建立參考相同虛擬網路內 SQL Server Vm 的連結伺服器或複寫，也需要 FQDN 和預設的 DNS 尾碼。 例如： `SQLVM.internal.cloudapp.net` 。 如需詳細資訊，請參閱 [使用您自己的 DNS 伺服器的名稱解析](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
 
 > [!IMPORTANT]
 > 更新虛擬網路 DNS 伺服器不會立即影響 SQL 受控執行個體。 SQL 受控執行個體 DNS 設定會在 DHCP 租用過期或平臺升級之後更新（以先發生者為准）。 **建議使用者在建立其第一個受控實例之前，先設定其虛擬網路 DNS 設定。**

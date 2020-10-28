@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/25/2020
 ms.author: allensu
-ms.openlocfilehash: c41bf8bc6e5aa3749786bc1189343dfdebdc1508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fbefd3b7761976cffbd6be8714cb849e1253aec
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321122"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778037"
 ---
 # <a name="monitoring-metrics-and-raw-logs-for-azure-cdn-from-microsoft"></a>針對來自 Microsoft 的 Azure CDN 監視計量和原始記錄
 透過 Microsoft 提供的 Azure CDN，您可以透過下列方式監視資源，以協助您疑難排解、追蹤和偵測問題。 
@@ -38,7 +38,7 @@ ms.locfileid: "91321122"
 
 若要為 Microsoft 設定檔中的 Azure CDN 設定原始記錄： 
 
-1. 從 Azure 入口網站] 功能表中，選取 [**所有資源**]  >>  **\<your-CDN-profile>** 。
+1. 從 Azure 入口網站] 功能表中，選取 [ **所有資源** ]  >>  **\<your-CDN-profile>** 。
 
 2. 在 [監視] 下方選取 [診斷設定]。
 
@@ -63,11 +63,11 @@ ms.locfileid: "91321122"
 
     :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="新增 CDN 設定檔的診斷設定。" border="true":::
 
-7. 選取 [儲存]****。
+7. 選取 [儲存]。
 
 ## <a name="configuration---azure-powershell"></a>設定-Azure PowerShell
 
-使用 [>set-azdiagnosticsetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) 來設定原始記錄的診斷設定。
+使用 [>set-azdiagnosticsetting](/powershell/module/az.monitor/set-azdiagnosticsetting) 來設定原始記錄的診斷設定。
 
 保留資料是由命令中的 **->-retentionindays** 選項所定義。
 
@@ -178,7 +178,7 @@ ms.locfileid: "91321122"
     ```
 
 ### <a name="sent-to-origin-shield-deprecation"></a>傳送至原始防護盾
-原始記錄屬性 **isSentToOriginShield** 已被取代，並以新的欄位 **isReceivedFromClient**取代。 如果您已經在使用已被取代的欄位，請使用新欄位。 
+原始記錄屬性 **isSentToOriginShield** 已被取代，並以新的欄位 **isReceivedFromClient** 取代。 如果您已經在使用已被取代的欄位，請使用新欄位。 
 
 原始記錄包含從 CDN edge (子 POP) 和來源防護產生的記錄。 來源防護是指策略性地位於全球各地的父節點。 這些節點會與源伺服器通訊，並減少來源的流量負載。 
 
@@ -201,7 +201,7 @@ AzureDiagnostics
 ```
 
 > [!IMPORTANT]
-> 系統會自動為 **2020 年 2 月 25 日**之後建立或更新的任何設定檔提供 HTTP 原始記錄功能。 對於之前建立的 CDN 設定檔，應於設定記錄之後更新 CDN 端點。 例如，您可以瀏覽至 CDN 端點底下的地區篩選，並封鎖任何與工作負載無關的國家/地區，然後點擊 [儲存]。
+> 系統會自動為 **2020 年 2 月 25 日** 之後建立或更新的任何設定檔提供 HTTP 原始記錄功能。 對於之前建立的 CDN 設定檔，應於設定記錄之後更新 CDN 端點。 例如，您可以瀏覽至 CDN 端點底下的地區篩選，並封鎖任何與工作負載無關的國家/地區，然後點擊 [儲存]。
 
 
 ## <a name="metrics"></a>計量
@@ -211,18 +211,18 @@ AzureDiagnostics
 
 來自 Microsoft 的 Azure CDN 會測量並以60秒的間隔傳送其度量。 計量最多可能需要3分鐘的時間才會出現在入口網站中。 
 
-如需詳細資訊，請參閱 [Azure 監視器計量](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)。
+如需詳細資訊，請參閱 [Azure 監視器計量](../azure-monitor/platform/data-platform-metrics.md)。
 
 **來自 Microsoft 的 Azure CDN 所支援的計量**
 
-| 計量         | 描述                                                                                                      | 尺寸                                                                                   |
+| 計量         | 描述                                                                                                      | 維度                                                                                   |
 |-----------------|------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
 | 位元組點擊率 * | CDN 快取的輸出百分比，針對輸出總計進行計算。                                      | 端點                                                                                    |
 | RequestCount    | CDN 所服務的用戶端要求數目。                                                                     | 端點 </br> 用戶端國家/地區。 </br> 用戶端區域。 </br> HTTP 狀態。 </br> HTTP 狀態群組。 |
 | ResponseSize    | 從 CDN edge 傳送至用戶端之回應的位元組數目。                                                  |端點 </br> 用戶端國家/地區。 </br> 用戶端區域。 </br> HTTP 狀態。 </br> HTTP 狀態群組。                                                                                          |
-| TotalLatency    | 從 CDN 收到的用戶端要求到 **最後一個回應位元組傳送至用戶端之前**的總時間。 |端點 </br> 用戶端國家/地區。 </br> 用戶端區域。 </br> HTTP 狀態。 </br> HTTP 狀態群組。                                                                                             |
+| TotalLatency    | 從 CDN 收到的用戶端要求到 **最後一個回應位元組傳送至用戶端之前** 的總時間。 |端點 </br> 用戶端國家/地區。 </br> 用戶端區域。 </br> HTTP 狀態。 </br> HTTP 狀態群組。                                                                                             |
 
-***命中的位元組數比例 = 從邊緣輸出的邊緣輸出) 從邊緣傳出的 (輸出**
+**_命中的位元組數比例 = 從邊緣輸出的邊緣輸出) 從邊緣傳出的 (輸出_*
 
 以位元組點擊率計算排除的案例：
 
@@ -231,13 +231,13 @@ AzureDiagnostics
 
 ### <a name="metrics-configuration"></a>計量設定
 
-1. 從 Azure 入口網站] 功能表中，選取 [**所有資源**]  >>  **\<your-CDN-profile>** 。
+1. 從 Azure 入口網站] 功能表中，選取 [ **所有資源** ]  >>  **\<your-CDN-profile>** 。
 
-2. 在 [ **監視**] 底下，選取 [ **計量**：
+2. 在 [ **監視** ] 底下，選取 [ **計量** ：
 
     :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="新增 CDN 設定檔的診斷設定。" border="true":::
 
-3. 選取 [ **新增度量**]，選取要新增的度量：
+3. 選取 [ **新增度量** ]，選取要新增的度量：
 
     :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="新增 CDN 設定檔的診斷設定。" border="true":::
 
@@ -255,13 +255,13 @@ AzureDiagnostics
 
 ### <a name="alerts"></a>警示
 
-您可以選取 [**監視**警示]，在 Microsoft CDN 上設定警示  >>  ** **。
+您可以選取 [  。
 
 針對 [計量] 區段中所列的計量，選取 **新的警示規則** ：
 
 :::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="新增 CDN 設定檔的診斷設定。" border="true":::
 
-警示將依據 Azure 監視器收費。 如需警示的詳細資訊，請參閱 [Azure 監視器警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)。
+警示將依據 Azure 監視器收費。 如需警示的詳細資訊，請參閱 [Azure 監視器警示](../azure-monitor/platform/alerts-overview.md)。
 
 ### <a name="additional-metrics"></a>其他計量
 您可以使用 Azure Log Analytics 和原始記錄來啟用額外的計量，以產生額外的費用。
@@ -272,17 +272,17 @@ AzureDiagnostics
 
     :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="新增 CDN 設定檔的診斷設定。" border="true":::   
 
-3. 在 log analytics 工作區中，選取 **[一般**] 底下的 [**記錄**]。  然後選取 **開始**：
+3. 在 log analytics 工作區中，選取 **[一般** ] 底下的 [ **記錄** ]。  然後選取 **開始** ：
 
     :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="新增 CDN 設定檔的診斷設定。" border="true":::   
  
-4. 選取 [ **CDN 設定檔**]。  選取要執行的範例查詢，或關閉範例畫面來輸入自訂查詢：
+4. 選取 [ **CDN 設定檔** ]。  選取要執行的範例查詢，或關閉範例畫面來輸入自訂查詢：
 
     :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="新增 CDN 設定檔的診斷設定。" border="true":::   
 
     :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="新增 CDN 設定檔的診斷設定。" border="true":::   
 
-4. 若要依圖表來查看資料，請選取 [ **圖表**]。  選取 [ **釘選到儀表板** ]，將圖表釘選到 Azure 儀表板：
+4. 若要依圖表來查看資料，請選取 [ **圖表** ]。  選取 [ **釘選到儀表板** ]，將圖表釘選到 Azure 儀表板：
 
     :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="新增 CDN 設定檔的診斷設定。" border="true"::: 
 
@@ -293,6 +293,6 @@ AzureDiagnostics
 
 * [分析](cdn-log-analysis.md) Azure CDN 使用模式。
 
-* 深入了解 [Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview)。
+* 深入了解 [Azure 監視器](../azure-monitor/overview.md)。
 
-* 設定 [Azure 監視器中的 Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)。
+* 設定 [Azure 監視器中的 Log Analytics](../azure-monitor/log-query/get-started-portal.md)。

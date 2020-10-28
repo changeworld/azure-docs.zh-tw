@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: e9092e9564fadb07311b151948656bc6cd007323
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: a707cde306006aef685c22cf1a9f9332449ee1c9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951718"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778236"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>依 Metro 的 Azure CDN 涵蓋範圍 
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "91951718"
 本文針對 Azure 內容傳遞網路 (CDN) 產品列出目前的 Metro，其中包含存在點 (POP) 位置並依區域排序。 每個 Metro 可能包含一個以上的 POP。 例如，來自 Microsoft 的 Azure CDN 在我們的 82 個 Metro 中具有 130 個 POP。 
 
 > [!IMPORTANT]
-> 不會個別揭露**來自 Akamai 的 Azure CDN** 的 POP 城市位置。  
+> 不會個別揭露 **來自 Akamai 的 Azure CDN** 的 POP 城市位置。  
 > 
 > 由於每個 Azure CDN 產品有其建立 CDN 基礎結構的不同方式，Microsoft 建議不要使用 POP 位置來決定要使用的 Azure CDN 產品。 相反地，請考慮其功能和終端使用者效能。 測試每個 Azure CDN 產品的效能來為使用者選擇合適的產品。 
 > 
@@ -49,4 +49,4 @@ ms.locfileid: "91951718"
 
 
 ## <a name="next-steps"></a>後續步驟
-* 若要取得允許清單的最新 IP 位址，請參閱 [Azure CDN 邊緣節點 API](https://docs.microsoft.com/rest/api/cdn/edgenodes)。
+* 若要取得允許清單的最新 IP 位址，請參閱 [Azure CDN 邊緣節點 API](/rest/api/cdn/edgenodes)。

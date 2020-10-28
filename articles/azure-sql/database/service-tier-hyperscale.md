@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/19/2020
-ms.openlocfilehash: 547e56dbc72e283b6c186380a01580982e029a64
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: ee9bcedea15b039982e73304a25073c85b496635
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216635"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780048"
 ---
 # <a name="hyperscale-service-tier"></a>超大規模資料庫服務層級
 
@@ -67,11 +67,11 @@ Azure SQL Database 中的超大規模資料庫服務層級提供下列額外功�
 
 超大規模資料庫服務層級僅在[虛擬核心模型](service-tiers-vcore.md)中提供。 為配合新的架構，定價模型會與一般用途或業務關鍵服務層級稍微不同：
 
-- **計算**：
+- **計算** ：
 
   超大規模資料庫計算單位價格是按每個複本計算。 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) 價格會自動套用到讀取縮放複本。 根據預設，我們會為每個超大規模資料庫建立一個主要複本和一個唯讀複本。  使用者可以調整包含主要自1-5 的複本總數。
 
-- **存放裝置**：
+- **存放裝置** ：
 
   您設定超大規模資料庫時，不需要指定資料大小上限。 在超大規模層中，您需支付資料庫儲存空間的費用（以實際配置為基礎）。 儲存體會在 40 GB 和 100 TB 之間自動設定，以 10 GB 為單位遞增。 如有需要，多個資料檔案可能會同時成長。 建立超大規模資料庫的起始大小為 10 GB，且每隔10分鐘就會開始增加 10 GB，直到達到 40 GB 的大小。
 
@@ -117,9 +117,9 @@ Azure 儲存體包含資料庫中的所有資料檔案。 頁面伺服器會將�
 
 ## <a name="create-a-hyperscale-database"></a>建立超大規模資料庫
 
-您可以使用 [Azure 入口網站](https://portal.azure.com)、 [t-sql](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql)、 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase)或 [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)來建立超大規模資料庫。 超大規模資料庫只適用于以 [vCore 為基礎的購買模型](service-tiers-vcore.md)。
+您可以使用 [Azure 入口網站](https://portal.azure.com)、 [t-sql](/sql/t-sql/statements/create-database-transact-sql)、 [PowerShell](/powershell/module/azurerm.sql/new-azurermsqldatabase)或 [CLI](/cli/azure/sql/db#az-sql-db-create)來建立超大規模資料庫。 超大規模資料庫只適用于以 [vCore 為基礎的購買模型](service-tiers-vcore.md)。
 
-下列 T-SQL 命令會建立超大規模資料庫。 您必須在 `CREATE DATABASE` 陳述式中指定版本和服務目標。 請參閱 [資源限制](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen4) 以取得有效服務目標清單。
+下列 T-SQL 命令會建立超大規模資料庫。 您必須在 `CREATE DATABASE` 陳述式中指定版本和服務目標。 請參閱 [資源限制](./resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen4) 以取得有效服務目標清單。
 
 ```sql
 -- Create a Hyperscale Database
@@ -131,7 +131,7 @@ GO
 
 ## <a name="upgrade-existing-database-to-hyperscale"></a>將現有的資料庫升級至超大規模
 
-您可以使用 [Azure 入口網站](https://portal.azure.com)、 [t-sql](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql)、 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase)或 [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)，將 Azure SQL Database 中的現有資料庫移至超大規模。 這次，這是單向的遷移。 您無法將資料庫從超大規模移至另一個服務層級，而不是藉由匯出和匯入資料。 針對 (Poc) 的概念證明，建議您建立生產資料庫的複本，並將複本遷移至超大規模。 將 Azure SQL Database 中的現有資料庫移轉至超大規模層是資料作業的大小。
+您可以使用 [Azure 入口網站](https://portal.azure.com)、 [t-sql](/sql/t-sql/statements/alter-database-transact-sql)、 [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase)或 [CLI](/cli/azure/sql/db#az-sql-db-update)，將 Azure SQL Database 中的現有資料庫移至超大規模。 這次，這是單向的遷移。 您無法將資料庫從超大規模移至另一個服務層級，而不是藉由匯出和匯入資料。 針對 (Poc) 的概念證明，建議您建立生產資料庫的複本，並將複本遷移至超大規模。 將 Azure SQL Database 中的現有資料庫移轉至超大規模層是資料作業的大小。
 
 下列 T-SQL 命令會將資料庫移至超大規模資料庫服務層級。 您必須在 `ALTER DATABASE` 陳述式中指定版本和服務目標。
 
@@ -165,7 +165,7 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 如果您需要將 Azure SQL Database 中的超大規模資料庫還原至目前所裝載的區域以外的區域，做為損毀修復作業或切入、重新配置或任何其他原因的一部分，主要方法是進行資料庫的異地還原。 這包含與您在 SQL Database 中將任何其他資料庫還原至不同區域時所用的完全相同步驟：
 
 1. 如果您還沒有適當的伺服器，請在目的地區域中建立 [伺服器](logical-servers.md) 。  此伺服器應與原始 (源) 伺服器擁有相同的訂用帳戶。
-2. 請依照頁面的 [異地還原](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#geo-restore) 主題中的指示，從自動備份還原 Azure SQL Database 中的資料庫。
+2. 請依照頁面的 [異地還原](./recovery-using-backups.md#geo-restore) 主題中的指示，從自動備份還原 Azure SQL Database 中的資料庫。
 
 > [!NOTE]
 > 因為來源和目標位於不同的區域，所以資料庫無法與源資料庫共用快照集儲存體，就像在非異地還原中一樣，這會非常快速完成。 在異地還原超大規模資料庫的情況下，它將會是資料大小的作業，即使目標位於異地複寫儲存體的配對區域中也是如此。  這表示執行異地還原的時間會與要還原的資料庫大小成正比。  如果目標在配對的區域中，則複本將會在區域內，其速度會比跨區域複製快很多，但仍會是資料大小的作業。
@@ -227,7 +227,7 @@ Azure SQL Database 超大規模層適用于所有區域，但預設為啟用，�
 | 如果資料庫有一或多個資料檔案大於 1 TB，則遷移會失敗 | 在某些情況下，可能可以藉由將大型檔案壓縮為小於 1 TB 來解決此問題。 如果遷移過程中正在使用的資料庫，請確定沒有任何檔案超過 1 TB。 您可以使用下列查詢來判斷資料庫檔案的大小。 `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | SQL 受控執行個體 | 超大規模資料庫目前不支援 Azure SQL 受控執行個體。 |
 | 彈性集區 |  超大規模目前不支援彈性集區。|
-| 移轉至超大規模資料庫模目前是單向作業 | 一旦資料庫移轉至超大規模之後，就無法直接遷移至非超大規模服務層級。 目前將資料庫從超大規模遷移至非超大規模的唯一方法，是使用 bacpac 檔案或其他資料移動技術來匯出/匯入 (大量複製、Azure Data Factory、Azure Databricks、SSIS 等 ) Bacpac 匯出/匯入、從 Azure 入口網站使用 [AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport) 或 [AzSqlDatabaseImport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport)、從 Azure CLI 使用 [az sql db 匯出](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-export) 和 [az sql db 匯入](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-import)，以及從 [REST API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export) 不受支援。 使用 SSMS 和 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) 18.4 版和更新版本可支援較小超大規模資料庫的 Bacpac 匯入/匯出 (高達 200 GB 的) 。 針對較大的資料庫，bacpac 匯出/匯入可能需要很長的時間，而且可能會因各種原因而失敗。|
+| 移轉至超大規模資料庫模目前是單向作業 | 一旦資料庫移轉至超大規模之後，就無法直接遷移至非超大規模服務層級。 目前將資料庫從超大規模遷移至非超大規模的唯一方法，是使用 bacpac 檔案或其他資料移動技術來匯出/匯入 (大量複製、Azure Data Factory、Azure Databricks、SSIS 等 ) Bacpac 匯出/匯入、從 Azure 入口網站使用 [AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) 或 [AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport)、從 Azure CLI 使用 [az sql db 匯出](/cli/azure/sql/db#az-sql-db-export) 和 [az sql db 匯入](/cli/azure/sql/db#az-sql-db-import)，以及從 [REST API](/rest/api/sql/databases%20-%20import%20export) 不受支援。 使用 SSMS 和 [SqlPackage](/sql/tools/sqlpackage) 18.4 版和更新版本可支援較小超大規模資料庫的 Bacpac 匯入/匯出 (高達 200 GB 的) 。 針對較大的資料庫，bacpac 匯出/匯入可能需要很長的時間，而且可能會因各種原因而失敗。|
 | 使用 In-Memory OLTP 物件遷移資料庫 | 超大規模支援 In-Memory OLTP 物件的子集，包括記憶體優化資料表類型、資料表變數和原生編譯模組。 不過，當要遷移的資料庫中有任何種類的 In-Memory OLTP 物件時，不支援從高階和業務關鍵服務層級遷移至超大規模。 若要將這類資料庫移轉至超大規模，必須卸載所有 In-Memory OLTP 物件及其相依性。 遷移資料庫之後，就可以重新建立這些物件。 超大規模目前不支援持久性和非持久性記憶體優化資料表，且必須重新建立為磁片資料表。|
 | 異地複寫  | 您還無法設定 Azure SQL Database 超大規模的異地複寫。 |
 | 資料庫複製 | 超大規模上的資料庫複製現在處於公開預覽狀態。 |
@@ -244,4 +244,3 @@ Azure SQL Database 超大規模層適用于所有區域，但預設為啟用，�
 - 如需有關伺服器和訂閱層級之限制的詳細資訊，請參閱 [伺服器上的資源限制總覽](resource-limits-logical-server.md) 。
 - 如需單一資料庫的購買模型限制相關資訊，請參閱[適用於單一資料庫的 Azure SQL Database 以虛擬核心為基礎的購買模型限制](resource-limits-vcore-single-databases.md)。
 - 如需功能與比較清單，請參閱 [SQL 的一般功能](features-comparison.md)。
- 

@@ -4,12 +4,12 @@ description: 提供有關 Azure VMware 解決方案的一些常見問題解答�
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
-ms.openlocfilehash: 816f64f9987abbdcd49de93b3bc218ec1606d9f3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 91be1c51639aa3ae8acbf0c37f5c4a8174b5a592
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461646"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779436"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>關於 Azure VMware 解決方案的常見問題
 
@@ -19,7 +19,7 @@ ms.locfileid: "92461646"
 
 #### <a name="what-is-azure-vmware-solution"></a>什麼是 Azure VMware 解決方案？
 
-隨著企業採用 IT 現代化策略來提升業務靈活性、降低成本並加速創新，混合式雲端平台也已成為客戶數位轉型的關鍵實現。 Azure VMware 解決方案結合 VMware 的軟體定義資料中心 (SDDC) 軟體與 Microsoft Azure 的全球雲端服務生態系統。 Azure VMware 解決方案的管理是為了符合效能、可用性、安全性和合規性需求。
+隨著企業採用 IT 現代化策略來提升業務靈活性、降低成本，以及加速創新，混合式雲端平臺已經成為客戶數位轉型的關鍵實現力。 Azure VMware 解決方案結合 VMware 的 Software-Defined 資料中心 (SDDC) 軟體與 Microsoft Azure 的全球雲端服務生態系統。 Azure VMware 解決方案的管理是為了符合效能、可用性、安全性和合規性需求。
 
 ## <a name="azure-vmware-solution-service"></a>Azure VMware 解決方案服務
 
@@ -49,15 +49,15 @@ Azure VMware 解決方案客戶將可使用所有 Azure 服務。 特定服務�
 
 #### <a name="is-a-specific-version-of-vsphere-required-in-on-premises-environments"></a>內部部署環境中是否需要特定版本的 vSphere？
 
-由於所有雲端環境都隨附于適用于 vMotion 的內部部署環境中的 VMware HCX、vSphere 5.5 或更新版本。
+所有雲端環境都隨附于適用于 vMotion 的內部部署環境中的 VMware HCX、vSphere 5.5 或更新版本。
 
 #### <a name="what-does-the-change-control-process-look-like"></a>變更控制流程看起來像什麼？
 
-對服務本身進行的更新將遵循 Microsoft Azure 的標準變更管理流程。 客戶須負責任何工作負載管理工作和相關聯的變更管理流程。
+對服務本身進行的更新將會遵循 Microsoft Azure 的標準變更管理流程。 客戶須負責任何工作負載管理工作和相關聯的變更管理流程。
 
 #### <a name="how-is-this-different-from-azure-vmware-solution-by-cloudsimple"></a>這與 Azure VMware Solution by CloudSimple 有何不同？
 
-透過新的 Azure VMware 解決方案，Microsoft 和 VMware 具有直接的雲端提供者合作關係。 新的解決方案完全是由 Microsoft 設計、建立及支援，並由 VMware 背書。 在架構上，解決方案是一致的，而且 VMware 技術堆疊會在 Azure 專用基礎結構上執行。
+透過新的 Azure VMware 解決方案，Microsoft 和 VMware 具有直接的雲端提供者合作關係。 新的解決方案完全是由 Microsoft 設計、建立及支援，並由 VMware 背書。 在架構上，解決方案是一致的，且 VMware 技術堆疊在專用的 Azure 基礎結構上執行。
 
 #### <a name="are-red-hat-solutions-supported-on-azure-vmware-solution"></a>Azure VMware 解決方案支援 Red Hat 解決方案嗎？
 
@@ -68,7 +68,7 @@ Microsoft 和 Red Hat 共用整合式共置的支援小組，為在 Azure 平臺
 VMware HCX Enterprise Edition (EE) 可供使用，並有 Azure VMware 解決方案做為「預覽」函式/服務。 雖然適用于 Azure VMware 的 VMware HCX EE 解決方案處於預覽狀態，但它是免費的函式/服務，並且受限於預覽服務條款及條件。 一旦 VMware HCX EE 服務正式發行後，您將會收到 30 天的通知，指出帳單將會切換。 您可以關閉或退出服務。
 
 #### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Azure VMware 解決方案 Vm 是否可由 VMRC 管理？
-是的，前提是安裝在上的系統可以存取私用雲端 vCenter，並且使用公用 DNS (以便能夠解析) 的 ESXi 主機名稱。
+是的，前提是它安裝所在的系統可以存取私用雲端 vCenter，並且使用公用 DNS 來解析 ESXi 主機名稱。
 
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>是否有針對 Azure VMware 解決方案 Vm 安裝和使用 VMRC 的特殊指示？
 否，請使用 [VMware 提供的指示](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) ，並滿足這些指示中指定的 VM 必要條件。 
@@ -102,7 +102,7 @@ Azure 防禦服務建議連線到跳躍方塊，以防止將 Azure VMware 解決
 
 #### <a name="how-much-network-bandwidth-is-available-in-each-esxi-host"></a>每部 ESXi 主機有多少網路頻寬可用？
 
-每個 ESXi 主機都是使用 4 25-Gbps 的 Nic 設定的 Azure VMware 解決方案，並針對 ESXi 系統流量布建兩個 Nic，並針對工作負載流量布建兩個 nic。 
+Azure VMware 解決方案中的每個 ESXi 主機都會設定 4 25-Gbps 的 Nic、為 ESXi 系統流量布建兩個 Nic，以及為工作負載流量布建兩個 Nic。 
 
 #### <a name="is-data-stored-on-the-vsan-datastores-encrypted-at-rest"></a>資料會儲存在 vSAN 資料存放區上加密嗎？
 
@@ -116,9 +116,9 @@ Azure 防禦服務建議連線到跳躍方塊，以防止將 Azure VMware 解決
 
 由於這些備份解決方案是由客戶安裝和管理，因此可以與各自的 ISV 聯繫以取得支援。 
 
-#### <a name="what-is-the-correct-storage-policy-for-the-dedup-setup"></a>重復資料刪除設定的正確儲存體原則為何？
+#### <a name="what-is-the-correct-storage-policy-for-the-dedupe-setup"></a>重複專案設定的正確儲存體原則為何？
 
-使用 VM 範本的 *thin_provision* 儲存體原則。  預設值為 *thick_provision*。
+使用 VM 範本的 *thin_provision* 儲存體原則。  預設值為 *thick_provision* 。
 
 #### <a name="are-the-snmp-infrastructure-logs-shared"></a>SNMP 基礎結構記錄檔是共用的嗎？
 
@@ -130,7 +130,7 @@ Azure 防禦服務建議連線到跳躍方塊，以防止將 Azure VMware 解決
 
 否，私人雲端主機和叢集是專用的，而且會在使用前後安全地清除。
 
-#### <a name="what-are-the-minimum-and-maximum-number-of-hosts-per-cluster"></a>每個叢集的主機數目下限和上限為何？
+#### <a name="what-are-the-minimum-and-the-maximum-number-of-hosts-per-cluster"></a>每個叢集的最小和最大主機數目為何？
 
 叢集可以在 3 到 16 個 ESXi 主機之間調整。 試用叢集限制為 3 部主機。
 
@@ -154,7 +154,7 @@ Azure 防禦服務建議連線到跳躍方塊，以防止將 Azure VMware 解決
 
 #### <a name="do-private-clouds-use-vmware-nsx"></a>私人雲端是否使用 VMware NSX？
 
-是，NSX-T 2.5 用於 Azure VMware 解決方案私人雲端中的軟體定義網路。
+是，在 Azure VMware Solution 私用雲端中，會使用 NSX-T 2.5 來進行軟體定義的網路。
 
 #### <a name="can-i-use-vmware-nsx-v-in-a-private-cloud"></a>我是否可以在私人雲端中使用 VMware NSX-V？
 
@@ -166,24 +166,24 @@ Azure 防禦服務建議連線到跳躍方塊，以防止將 Azure VMware 解決
 
 #### <a name="what-is-the-upgrade-and-update-schedule-for-vmware-software-in-a-private-cloud"></a>在私人雲端中，VMware 軟體的升級和更新排程為何？
 
-私用雲端軟體組合升級的目的，是要將軟體從 VMware 保存在最新版本的軟體套件組合的某個版本中。 私用雲端軟體版本可能與個別軟體元件的最新版本不同 (ESXi、NSX-T、vCenter、vSAN) 。
+私用雲端軟體組合升級的目的，是要將軟體從 VMware 保存在最新的軟體套件組合版本的某個版本中。 私用雲端軟體版本可能與個別軟體元件的最新版本不同 (ESXi、NSX-T、vCenter、vSAN) 。
 
 #### <a name="how-often-will-the-private-cloud-software-stack-be-updated"></a>私人雲端軟體堆疊的更新頻率為何？
 
-私人雲端軟體會依照排程進行升級，並隨著 VMware 的軟體搭售方案發行而進行追蹤。 您的私人雲端不需要停機就能進行升級。
+私用雲端軟體會依照排程進行升級，該排程會從 VMware 追蹤軟體套件組合的發行。 您的私人雲端不需要停機就能進行升級。
 
 ## <a name="connectivity"></a>連線能力
 
 #### <a name="what-network-ip-address-planning-is-required-to-incorporate-private-clouds-with-on-premises-environments"></a>若要將私人雲端與內部部署環境結合，需要何種網路 IP 位址方案？
 
-需要私人網路/22 位址空間，才能部署 Azure VMware 解決方案私人雲端。 此私人位址空間不應與訂閱中的其他虛擬網路或內部部署網路重疊。
+需要私人網路/22 位址空間，才能部署 Azure VMware 解決方案私人雲端。 此私人位址空間不應與訂用帳戶中的其他虛擬網路或內部部署網路重迭。
  
 #### <a name="how-do-i-connect-from-on-premises-environments-to-an-azure-vmware-solution-private-cloud"></a>如何? 從內部部署環境連接到 Azure VMware 解決方案私人雲端？
 
 您可以透過下列兩種方法的其中一種連接到服務： 
 
 - 將 VM 或應用程式閘道部署在透過 ExpressRoute 對等互連至私人雲端的 Azure 虛擬網路上。
-- 透過 ExpressRoute Global，從內部部署資料中心到 Azure ExpressRoute 線路。
+- 透過從內部部署資料中心到 Azure ExpressRoute 線路的 ExpressRoute 全球存取範圍。
 
 #### <a name="how-do-i-connect-a-workload-vm-to-the-internet-or-an-azure-service-endpoint"></a>如何將工作負載 VM 連線到網際網路或 Azure 服務端點？
 
@@ -228,7 +228,7 @@ Azure 防禦服務建議連線到跳躍方塊，以防止將 Azure VMware 解決
 
 #### <a name="who-supports-azure-vmware-solution"></a>誰支援 Azure VMware 解決方案？
 
-Azure VMware 解決方案的支援是由 Microsoft 提供。 您可以提交 [支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
+Microsoft 提供對 Azure VMware 解決方案的支援。 您可以提交 [支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
 
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>我需要哪些帳戶才能建立 Azure VMware 解決方案私人雲端？
 
@@ -239,10 +239,10 @@ Azure 訂閱需要 Azure 帳戶。
 * 您將需要 [Azure Enterprise 合約 (EA) ](../cost-management-billing/manage/ea-portal-agreements.md) 的 Microsoft。
 * Azure 訂閱需要 Azure 帳戶。
 
-在您建立 Azure VMware 解決方案資源之前，您必須提交支援票證以配置您的節點。 最多需要五個工作天，才能確認您的要求並配置您的節點。 如果您有現有的 Azure VMware 解決方案私人雲端，且想要配置更多節點，您將會經歷相同的程序。
+建立 Azure VMware 解決方案資源之前，您必須提交支援票證以配置您的節點。 最多需要五個工作天，才能確認您的要求並配置您的節點。 如果您有現有的 Azure VMware 解決方案私人雲端，且想要配置更多節點，您將會經歷相同的程序。
 
 
-1. 在您的 Azure 入口網站中的 [說明 **+ 支援**] 下，建立 **[新的支援要求](https://rc.portal.azure.com/#create/Microsoft.Support)** ，並為票證提供下列資訊：
+1. 在您的 Azure 入口網站中的 [說明 **+ 支援** ] 下，建立 **[新的支援要求](https://rc.portal.azure.com/#create/Microsoft.Support)** ，並為票證提供下列資訊：
    - **問題類型：** 技術需求
    - **訂** 用帳戶：選取您的訂用帳戶
    - **服務：** 所有服務都 > Azure VMware 解決方案
@@ -272,9 +272,9 @@ Azure 訂閱需要 Azure 帳戶。
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
-   ```
+   `"
 
-   如需註冊資源提供者的其他方式，請參閱 [Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)。
+   For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md).
 
 <!-- LINKS - external -->
 [kb2106952]: https://kb.vmware.com/s/article/2106952?lang=en_US&queryTerm=21069522

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: c06af1cc7f068070954669fc4ec269c9e679f278
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2ef1367cbbb1fb71159c4520c3d1481904c1769
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84886063"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779317"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>使用 Azure CDN 進階 HTTP 報告分析使用量統計資料
 ## <a name="overview"></a>概觀
@@ -28,12 +28,12 @@ ms.locfileid: "84886063"
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="accessing-advanced-http-reports"></a>存取進階 HTTP 報告
-1. 在 [CDN 設定檔] 刀鋒視窗中，按一下 [管理] **** 按鈕。
+1. 在 [CDN 設定檔] 刀鋒視窗中，按一下 [管理]  按鈕。
    
     ![[CDN 設定檔] 刀鋒視窗的 [管理] 按鈕](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
    
     隨即開啟 CDN 管理入口網站。
-2. 將滑鼠移至 [分析]**** 索引標籤上，然後將滑鼠移至 [進階 HTTP 報告]**** 飛出視窗上。  按一下 [HTTP 大型平台] ****。
+2. 將滑鼠移至 [分析]  索引標籤上，然後將滑鼠移至 [進階 HTTP 報告]  飛出視窗上。  按一下 [HTTP 大型平台]  。
    
     ![CDN 管理入口網站 - 進階報告功能表](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
    
@@ -48,7 +48,7 @@ ms.locfileid: "84886063"
 
 下面提供每一種以地圖為基礎的地理位置報告的簡短描述。
 
-| 報表名稱 | 說明 |
+| 報表名稱 | 描述 |
 | --- | --- |
 | 世界地圖 |此報告可讓您檢視全球對您的 CDN 內容的需求。 每個國家/地區都會以色彩標示在世界地圖上，以表示來自該區域的點擊百分比。 |
 | 美國地圖 |此報告可讓您檢視美國對您的 CDN 內容的需求。 此地圖上以色彩標示每個州，指出來自該區域的點擊百分比。 |
@@ -71,7 +71,7 @@ ms.locfileid: "84886063"
 
 下面提供這兩種報告的簡短描述。
 
-| 報表名稱 | 說明 |
+| 報表名稱 | 描述 |
 | --- | --- |
 | 前幾名城市 |此報告根據來自該地區的點擊次數來排名城市。 |
 | 前幾名國家/地區 |這份報表會根據源自該國家/地區的點擊次數來排名國家/地區。 |
@@ -199,9 +199,8 @@ ms.locfileid: "84886063"
 
 在橫條圖正下方，將列出前 250 名要求的資產的下列資訊：相對路徑 (包括檔案名稱)、導致「404 找不到」狀態碼的要求數、要求資產的總次數、以及導致「404 找不到」狀態碼的要求百分比。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 * [Azure CDN 總覽](cdn-overview.md)
 * [Microsoft Azure CDN 中的即時統計資料](cdn-real-time-stats.md)
-* [使用規則引擎覆寫預設的 HTTP 行為](cdn-rules-engine.md)
+* [使用規則引擎覆寫預設的 HTTP 行為](./cdn-verizon-premium-rules-engine.md)
 * [分析邊緣效能](cdn-edge-performance.md)
-

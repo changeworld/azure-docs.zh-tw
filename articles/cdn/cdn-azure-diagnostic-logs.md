@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
-ms.openlocfilehash: 164560fff27adc2d4e63cc8471a26d1d710b89a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5d84616e70d2a28abf3937b485f4fcf5258c43e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88191277"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779402"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>診斷記錄-Azure 內容傳遞網路
 
@@ -44,13 +44,13 @@ ms.locfileid: "88191277"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 
-2. 在 Azure 入口網站中，流覽至**All resources**  ->  **您的 cdn 設定檔**的所有資源
+2. 在 Azure 入口網站中，流覽至 **All resources**  ->  **您的 cdn 設定檔** 的所有資源
 
 2. 選取您要啟用診斷記錄的 CDN 端點：
 
     :::image type="content" source="./media/cdn-diagnostics-log/02_browse-to-diagnostics-logs.png" alt-text="選取 CDN 端點。" border="true":::
 
-3. 在 [**監視**] 區段中選取**診斷記錄**：
+3. 在 [ **監視** ] 區段中選取 **診斷記錄** ：
 
     :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="選取 CDN 端點。" border="true":::
 
@@ -59,53 +59,53 @@ ms.locfileid: "88191277"
 若要使用儲存體帳戶來儲存記錄，請遵循下列步驟：
 
  >[!NOTE] 
- >需要儲存體帳戶才能完成這些步驟。 如需詳細資訊，請參閱： **[建立 Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)** 。
+ >需要儲存體帳戶才能完成這些步驟。 如需詳細資訊，請參閱： **[建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%252fazure%252fstorage%252fblobs%252ftoc.json)** 。
     
-1. 針對 [ **診斷設定名稱**]，輸入診斷記錄設定的名稱。
+1. 針對 [ **診斷設定名稱** ]，輸入診斷記錄設定的名稱。
  
-2. 選取 [封存至儲存體帳戶]****，然後選取 [CoreAnalytics]****。 
+2. 選取 [封存至儲存體帳戶]  ，然後選取 [CoreAnalytics]  。 
 
-3. 針對 [保留期 (天數)]****，選擇保留天數。 保留天數為 0 會無限期地儲存記錄。 
+3. 針對 [保留期 (天數)]  ，選擇保留天數。 保留天數為 0 會無限期地儲存記錄。 
 
 4. 選取記錄的訂用帳戶和儲存體帳戶。
 
     :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="選取 CDN 端點。" border="true":::
 
-3. 選取 [儲存]****。
+3. 選取 [儲存]。
 
 ### <a name="send-to-log-analytics"></a>傳送至 Log Analytics
 
 若要針對記錄使用 Log Analytics，請遵循下列步驟：
 
 >[!NOTE] 
->需要 log analytics 工作區才能完成這些步驟。 如需詳細資訊，請參閱： **[在 Azure 入口網站中建立 Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)** 。
+>需要 log analytics 工作區才能完成這些步驟。 如需詳細資訊，請參閱： **[在 Azure 入口網站中建立 Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace.md)** 。
     
-1. 針對 [ **診斷設定名稱**]，輸入診斷記錄設定的名稱。
+1. 針對 [ **診斷設定名稱** ]，輸入診斷記錄設定的名稱。
 
-2. 選取 [ **傳送至 Log Analytics**]，然後選取 [ **[coreanalytics**]。 
+2. 選取 [ **傳送至 Log Analytics** ]，然後選取 [ **[coreanalytics** ]。 
 
 3. 選取記錄的訂用帳戶和 Log Analytics 工作區。
 
    :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="選取 CDN 端點。" border="true":::
 
-4. 選取 [儲存]****。
+4. 選取 [儲存]。
 
 ### <a name="stream-to-an-event-hub"></a>串流至事件中樞
 
 若要針對記錄使用事件中樞，請遵循下列步驟：
 
 >[!NOTE] 
->需要事件中樞才能完成這些步驟。 如需詳細資訊，請參閱： **[快速入門：使用 Azure 入口網站建立事件中樞](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)** 。
+>需要事件中樞才能完成這些步驟。 如需詳細資訊，請參閱： **[快速入門：使用 Azure 入口網站建立事件中樞](../event-hubs/event-hubs-create.md)** 。
     
-1. 針對 [ **診斷設定名稱**]，輸入診斷記錄設定的名稱。
+1. 針對 [ **診斷設定名稱** ]，輸入診斷記錄設定的名稱。
 
-2. 選取 [ **串流至事件中樞**]，然後選取 [ **[coreanalytics**]。 
+2. 選取 [ **串流至事件中樞** ]，然後選取 [ **[coreanalytics** ]。 
 
 3. 選取記錄的訂用帳戶和事件中樞命名空間。
 
    :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="選取 CDN 端點。" border="true":::
 
-4. 選取 [儲存]****。
+4. 選取 [儲存]。
 
 
 ## <a name="enable-logging-with-powershell"></a>使用 PowerShell 啟用記錄
@@ -189,9 +189,9 @@ ms.locfileid: "88191277"
 
 1.  開啟 **Microsoft Azure 儲存體總管**
 2.  找到儲存體帳戶
-3.  展開此儲存體帳戶下方的 [Blob 容器]**** 節點。
+3.  展開此儲存體帳戶下方的 [Blob 容器]  節點。
 4.  選取名為 *insights-logs-coreanalytics* 的容器。
-5.  結果會顯示在右側窗格，開頭的第一層會顯示 *resourceId=*。 繼續選取每個層級，直到您找到 *PT1H.json* 檔案為止。 如需路徑的說明，請參閱 [Blob 路徑格式](cdn-azure-diagnostic-logs.md#blob-path-format)。
+5.  結果會顯示在右側窗格，開頭的第一層會顯示 *resourceId=* 。 繼續選取每個層級，直到您找到 *PT1H.json* 檔案為止。 如需路徑的說明，請參閱 [Blob 路徑格式](cdn-azure-diagnostic-logs.md#blob-path-format)。
 6.  每個 Blob *PT1H.json* 檔案均代表特定 CDN 端點或其自訂網域一小時的分析記錄。
 7.  此 JSON 檔案內容的結構描述如＜核心分析記錄結構描述＞一節所述。
 
@@ -211,7 +211,7 @@ ms.locfileid: "88191277"
 |設定檔名稱 |CDN 設定檔名稱|
 |端點名稱 |CDN 端點名稱|
 |Year|  四位數的年份表示法，例如 2017|
-|Month| 兩位數的月份表示法。 01 = 一月 .。。12 = 十二月|
+|月| 兩位數的月份表示法。 01 = 一月 .。。12 = 十二月|
 |天|   兩位數的當月日期表示法|
 |PT1H.json| 儲存分析資料的實際 JSON 檔案|
 
@@ -229,7 +229,7 @@ ms.locfileid: "88191277"
 
 ## <a name="log-data-delays"></a>記錄資料延遲
 
-下表顯示**來自 Microsoft 的標準 Azure CDN**、**來自 Akamai 的標準 Azure CDN**和**來自 Verizon 的標準 Azure CDN** 的記錄資料延遲。
+下表顯示 **來自 Microsoft 的標準 Azure CDN** 、 **來自 Akamai 的標準 Azure CDN** 和 **來自 Verizon 的標準 Azure CDN** 的記錄資料延遲。
 
 Microsoft 記錄資料延遲 | Verizon 記錄資料延遲 | Akamai 記錄資料延遲
 --- | --- | ---
@@ -329,7 +329,7 @@ Microsoft 目前僅提供核心分析記錄，其中包含的計量會顯示 HTT
 }
 ```
 
-其中 time** 代表報告某段時間統計資料時該時間範圍的開始時間。 CDN 提供者不支援的計量，而不是雙精度浮點數或整數值，因此會產生 null 值。 此 null 值表示沒有計量，且與 0 值不同。 您可以在端點上設定每個網域的其中一組計量。
+其中 time  代表報告某段時間統計資料時該時間範圍的開始時間。 CDN 提供者不支援的計量，而不是雙精度浮點數或整數值，因此會產生 null 值。 此 null 值表示沒有計量，且與 0 值不同。 您可以在端點上設定每個網域的其中一組計量。
 
 範例屬性︰
 
@@ -369,14 +369,7 @@ Microsoft 目前僅提供核心分析記錄，其中包含的計量會顯示 HTT
 
 ## <a name="additional-resources"></a>其他資源
 
-* [Azure 診斷記錄](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
-* [分析 Azure CDN 使用模式](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Azure 監視器記錄](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
-* [Azure Log Analytics REST API](https://docs.microsoft.com/rest/api/loganalytics)
-
-
-
-
-
-
-
+* [Azure 診斷記錄](../azure-monitor/platform/platform-logs-overview.md)
+* [分析 Azure CDN 使用模式](./cdn-analyze-usage-patterns.md)
+* [Azure 監視器記錄](../azure-monitor/log-query/log-query-overview.md)
+* [Azure Log Analytics REST API](/rest/api/loganalytics)

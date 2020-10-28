@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: be8e38d38408bd7cf11608d71035bd7cf0808b60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 400dd66827e82c1ede496526c49977e6f5383487
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488859"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92780184"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database 超大規模常見問題
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -136,7 +136,7 @@ ms.locfileid: "89488859"
 
 ### <a name="how-many-read-scale-out-replicas-are-supported"></a>支援的讀取相應放大複本數目
 
-超大規模資料庫會使用一個讀取相應放大複本來建立 (兩個複本，包括預設的主要) 。 您可以使用 [Azure 入口網站](https://portal.azure.com) 或 [REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)，來調整0和4之間的唯讀複本數目。
+超大規模資料庫會使用一個讀取相應放大複本來建立 (兩個複本，包括預設的主要) 。 您可以使用 [Azure 入口網站](https://portal.azure.com) 或 [REST API](/rest/api/sql/databases/createorupdate)，來調整0和4之間的唯讀複本數目。
 
 ### <a name="for-high-availability-do-i-need-to-provision-additional-compute-replicas"></a>為了達到高可用性，我需要布建額外的計算複本
 
@@ -198,7 +198,7 @@ ms.locfileid: "89488859"
 
 ### <a name="if-i-have-a-huge-table-does-my-table-data-get-spread-out-across-multiple-data-files"></a>如果我有很大的資料表，資料表的資料是否會分散到多個資料檔案
 
-是。 與指定的資料表相關聯的資料頁面可能會移至多個資料檔案中，但全都屬於相同的檔案群組。 SQL Server 使用 [比例填滿策略](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups#file-and-filegroup-fill-strategy) ，將資料散發到資料檔案。
+是。 與指定的資料表相關聯的資料頁面可能會移至多個資料檔案中，但全都屬於相同的檔案群組。 SQL Server 使用 [比例填滿策略](/sql/relational-databases/databases/database-files-and-filegroups#file-and-filegroup-fill-strategy) ，將資料散發到資料檔案。
 
 ## <a name="data-migration-questions"></a>資料移轉問題
 
@@ -231,9 +231,9 @@ ms.locfileid: "89488859"
 
 ### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-in-azure-synapse-analytics"></a>我可以從 blob 儲存體讀取資料，並進行快速載入 (例如 Azure Synapse Analytics 的 Polybase) 
 
-您可以讓用戶端應用程式從 Azure 儲存體讀取資料，並將資料載入至超大規模資料庫 (就像您可以在 Azure SQL Database) 中的任何其他資料庫一樣。 Azure SQL Database 目前不支援 Polybase。 除了提供快速載入之外，您還可以使用[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/)，或使用 spark [connector for SQL](spark-connector.md) [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/)中的 spark 作業。 SQL 的 Spark 連接器支援大量插入。
+您可以讓用戶端應用程式從 Azure 儲存體讀取資料，並將資料載入至超大規模資料庫 (就像您可以在 Azure SQL Database) 中的任何其他資料庫一樣。 Azure SQL Database 目前不支援 Polybase。 除了提供快速載入之外，您還可以使用[Azure Data Factory](../../data-factory/index.yml)，或使用 spark [connector for SQL](spark-connector.md) [Azure Databricks](/azure/azure-databricks/)中的 spark 作業。 SQL 的 Spark 連接器支援大量插入。
 
-您也可以使用 BULK INSERT 或 OPENROWSET 從 Azure Blob 存放區大量讀取資料：大量 [存取 Azure Blob 儲存體中資料的範例](https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location)。
+您也可以使用 BULK INSERT 或 OPENROWSET 從 Azure Blob 存放區大量讀取資料：大量 [存取 Azure Blob 儲存體中資料的範例](/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location)。
 
 「超大規模資料庫」不支援簡單復原或大量記錄模式。 需要完整復原模式，才能提供高可用性和時間點復原。 不過，相較于其他 Azure SQL Database 服務層級，超大規模記錄架構可提供更佳的資料內嵌速度。
 
@@ -277,7 +277,7 @@ RPO 為0分鐘。大部分的還原作業會在60分鐘內完成，不管資料�
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>我可以使用超大規模資料庫執行異地還原
 
-是。 完全支援異地還原。 不同于時間點還原，異地還原需要資料大小的作業。 資料檔案會以平行方式複製，因此此作業的持續時間主要取決於資料庫中最大檔案的大小，而不是資料庫總大小。 如果在與源資料庫的區域 [配對](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) 的 Azure 區域中還原資料庫，則異地還原時間會大幅縮短。
+是。 完全支援異地還原。 不同于時間點還原，異地還原需要資料大小的作業。 資料檔案會以平行方式複製，因此此作業的持續時間主要取決於資料庫中最大檔案的大小，而不是資料庫總大小。 如果在與源資料庫的區域 [配對](../../best-practices-availability-paired-regions.md) 的 Azure 區域中還原資料庫，則異地還原時間會大幅縮短。
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>我可以使用超大規模資料庫設定異地複寫
 
@@ -357,7 +357,7 @@ IOPS 和 IO 延遲會根據工作負載模式而有所不同。 如果要存取�
 
 ### <a name="how-many-secondary-compute-replicas-can-i-provision"></a>我可以布建多少次要計算複本
 
-我們預設會為超大規模資料庫建立一個次要複本。 如果您想要調整複本數目，您可以使用 [Azure 入口網站](https://portal.azure.com) 或 [REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)。
+我們預設會為超大規模資料庫建立一個次要複本。 如果您想要調整複本數目，您可以使用 [Azure 入口網站](https://portal.azure.com) 或 [REST API](/rest/api/sql/databases/createorupdate)。
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-replicas"></a>如何? 連接到這些次要計算複本
 

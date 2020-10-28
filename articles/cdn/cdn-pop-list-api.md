@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 13d4587a80cbbe66e18eb1bec8f3154221ac62b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43b4bcaee447d84efa088e84340ccfc717fe2777
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88192561"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778312"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>取得 Azure CDN 目前的 POP IP 清單
 
 ## <a name="retrieve-the-current-verizon-pop-ip-list-for-azure-cdn"></a>取得 Azure CDN 目前的 Verizon POP IP 清單
 
-您可以使用 REST API 來為 Verizon 的存在點 (PoP) 伺服器擷取一組 IP。 這些 POP 伺服器會將要求發給與 Verizon 設定檔 (**來自 Verizon 的 Azure CDN 標準**或**來自 Verizon 的 Azure CDN 進階**) 上的 Azure 內容傳遞網路 (CDN) 端點相關聯的原始伺服器。 請注意，這組 IP 與用戶端在將要求發給 POP 時所會看到的 IP 不同。 
+您可以使用 REST API 來為 Verizon 的存在點 (PoP) 伺服器擷取一組 IP。 這些 POP 伺服器會將要求發給與 Verizon 設定檔 ( **來自 Verizon 的 Azure CDN 標準** 或 **來自 Verizon 的 Azure CDN 進階** ) 上的 Azure 內容傳遞網路 (CDN) 端點相關聯的原始伺服器。 請注意，這組 IP 與用戶端在將要求發給 POP 時所會看到的 IP 不同。 
 
-如需用於擷取 POP 清單的 REST API 作業語法，請參閱[邊緣節點 - 清單](https://docs.microsoft.com/rest/api/cdn/edgenodes/list)。
+如需用於擷取 POP 清單的 REST API 作業語法，請參閱[邊緣節點 - 清單](/rest/api/cdn/edgenodes/list)。
 
 ## <a name="retrieve-the-current-microsoft-pop-ip-list-for-azure-cdn"></a>取得 Azure CDN 目前的 Microsoft POP IP 清單
 
@@ -48,4 +48,4 @@ ms.locfileid: "88192561"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 REST API 的相關資訊，請參閱 [Azure CDN REST API](https://docs.microsoft.com/rest/api/cdn/)。
+如需 REST API 的相關資訊，請參閱 [Azure CDN REST API](/rest/api/cdn/)。

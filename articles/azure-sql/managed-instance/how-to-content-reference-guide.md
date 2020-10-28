@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 04/16/2019
-ms.openlocfilehash: 208793d3ba8c3463abe892b368beb41d4b79f214
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7f2f060f32cf3bf92660a2e8b75a45b7ec76b82
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617446"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779759"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Azure SQL 受控執行個體內容參考
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -64,7 +64,7 @@ ms.locfileid: "91617446"
 
 - [手動微調](../database/performance-guidance.md)
 - [使用 DMV 監視效能](../database/monitoring-with-dmvs.md)
-- [使用查詢存放區來監視效能](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
+- [使用查詢存放區來監視效能](/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - [使用 Intelligent Insights 針對效能問題進行疑難排解](../database/intelligent-insights-troubleshoot-performance.md)
 - [使用 Intelligent Insights 診斷記錄](../database/intelligent-insights-use-diagnostics-log.md)
 - [監視 In-Memory OLTP 空間](../in-memory-oltp-monitor-space.md)

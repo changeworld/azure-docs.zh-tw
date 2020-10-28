@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
-ms.openlocfilehash: bd6b4831b29a99ed6694f75e64202f339385b7ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa2f00a732a3978524fc017481285859c9535387
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88191164"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779164"
 ---
 # <a name="understanding-azure-cdn-billing"></a>了解 Azure CDN 計費
 
@@ -38,7 +38,7 @@ ms.locfileid: "88191164"
 
 - 區域 5：印度
 
-如需存在點 (POP) 區域的詳細資訊，請參閱[依地區的 Azure CDN POP 位置](https://docs.microsoft.com/azure/cdn/cdn-pop-locations)。 例如，位在墨西哥的 POP 落在北美洲區域，因此屬於區域 1 的涵蓋範圍。 
+如需存在點 (POP) 區域的詳細資訊，請參閱[依地區的 Azure CDN POP 位置](./cdn-pop-locations.md)。 例如，位在墨西哥的 POP 落在北美洲區域，因此屬於區域 1 的涵蓋範圍。 
 
 如需 Azure CDN 價格的詳細資訊，請參閱[內容傳遞網路的價格](https://azure.microsoft.com/pricing/details/cdn/)。
 
@@ -48,7 +48,7 @@ Azure CDN 計費區域的判定，取決於將內容傳遞給終端使用者的�
 例如，假設位在墨西哥的使用者發出要求，然而因對等互連或流量等情況，該要求由位在美國 POP 的伺服器提供服務，則計費區域將會是美國。
 
 ## <a name="what-is-a-billable-azure-cdn-transaction"></a>什麼是可計費的 Azure CDN 交易？
-所有在 CDN 終止的 HTTP(S) 要求都算是可計費事件，包括所有回應類型：成功、失敗或其他。 然而，不同的回應可能會產生不同的流量。 例如，「304 未修改」** 和其他只含標頭的回應只會產生少量流量，因為它們是小型的標頭回應。同樣地，錯誤回應 (如「404 找不到」**) 雖然可計費，不過因為回應承載很小，只會產生少量費用。
+所有在 CDN 終止的 HTTP(S) 要求都算是可計費事件，包括所有回應類型：成功、失敗或其他。 然而，不同的回應可能會產生不同的流量。 例如，「304 未修改」  和其他只含標頭的回應只會產生少量流量，因為它們是小型的標頭回應。同樣地，錯誤回應 (如「404 找不到」  ) 雖然可計費，不過因為回應承載很小，只會產生少量費用。
 
 ## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>使用 Azure CDN 會產生其他哪些相關聯的 Azure 成本？
 使用 Azure CDN 時，用來當做物件來源的服務也會產生一些使用量費用。 這些成本通常只佔整體 CDN 使用量成本的一小部分。
@@ -66,7 +66,7 @@ Azure CDN 計費區域的判定，取決於將內容傳遞給終端使用者的�
 
 如需 Azure 儲存體計費的詳細資訊，請參閱[了解 Azure 儲存體計費 - 頻寬、交易和容量](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)。
 
-如果您使用*託管服務傳遞*，可能會產生以下費用：
+如果您使用 *託管服務傳遞* ，可能會產生以下費用：
 
 - Azure 計算時間：當做來源的計算執行個體。
 
@@ -74,7 +74,7 @@ Azure CDN 計費區域的判定，取決於將內容傳遞給終端使用者的�
 
 如果您的用戶端使用位元組範圍要求 (不考慮來源服務)，請考慮以下事項：
 
-- *位元組範圍要求*是發生在 CDN 的可計費交易。 當用戶端發出位元組範圍要求時，會要求物件的子集 (範圍)。 CDN 只會回應所要求內容的一部分。 這部分的回應是可計費交易，而傳輸量只限於範圍回應的大小 (加上標頭)。
+- *位元組範圍要求* 是發生在 CDN 的可計費交易。 當用戶端發出位元組範圍要求時，會要求物件的子集 (範圍)。 CDN 只會回應所要求內容的一部分。 這部分的回應是可計費交易，而傳輸量只限於範圍回應的大小 (加上標頭)。
 
 - 當索取部分物件的要求 (透過指定位元組範圍標頭) 抵達時，CDN 會將整個物件擷取到快取。 因此，儘管來自 CDN 的可計費交易只有部分回應，不過來自來源的可計費交易卻可能涉及物件的完整大小。
 
@@ -94,7 +94,7 @@ Azure CDN 計費區域的判定，取決於將內容傳遞給終端使用者的�
 - Azure 媒體服務
 - Azure 虛擬機器
 - 虛擬網路
-- 負載平衡器
+- Load Balancer
 - 應用程式閘道
 - Azure DNS
 - ExpressRoute
@@ -119,4 +119,4 @@ Azure CDN 計費區域的判定，取決於將內容傳遞給終端使用者的�
 - Azure Cache for Redis
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>管理成本最有效的方法是什麼？
-盡可能為內容設定最長的 TTL。 
+盡可能為內容設定最長的 TTL。
