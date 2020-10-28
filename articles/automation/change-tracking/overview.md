@@ -3,14 +3,14 @@ title: Azure 自動化的變更追蹤和清查概觀
 description: 本文說明變更追蹤和清查功能，可協助您識別環境中的軟體和 Microsoft 服務變更。
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 10/14/2020
+ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9654529723b5b69c15358be9e06db4f8cbed35e3
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: f4fc464da08128b7f2ecd0a037213d5f40aa65e0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209588"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670735"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>變更追蹤和清查概觀
 
@@ -48,7 +48,7 @@ ms.locfileid: "92209588"
 - Windows 登錄追蹤的遞迴
 - 網路檔案系統
 - 不同安裝方法
-- *儲存在 Windows 上的 **.exe**檔案
+- *儲存在 Windows 上的 *_.exe_* 檔案
 - [最大檔案大小] 資料行和值未用於目前實作中。
 - 如果您嘗試在30分鐘的收集週期中收集超過2500的檔案，變更追蹤和清查效能可能會降低。
 - 如果網路流量很高，變更記錄最多可能需要六個小時的時間才會顯示。
@@ -73,17 +73,19 @@ ms.locfileid: "92209588"
 |*.blob.core.windows.net | *.blob.core.usgovcloudapi.net|
 |*.azure-automation.net | *.azure-automation.us|
 
-當您建立網路群組安全性規則或設定 Azure 防火牆以允許流量流向自動化服務和 Log Analytics 工作區時，請使用 [服務](../../virtual-network/service-tags-overview.md#available-service-tags)標籤 **GuestAndHybridManagement** 和 **AzureMonitor**。 這可簡化網路安全性規則的持續管理。 若要安全且私下地從您的 Azure Vm 連接到自動化服務，請參閱 [使用 Azure Private Link](../how-to/private-link-security.md)。 若要取得目前的服務標籤和範圍資訊，以納入您的內部部署防火牆設定，請參閱 [可下載的 JSON](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)檔案。
+當您建立網路群組安全性規則或設定 Azure 防火牆以允許流量流向自動化服務和 Log Analytics 工作區時，請使用 [服務](../../virtual-network/service-tags-overview.md#available-service-tags)標籤 **GuestAndHybridManagement** 和 **AzureMonitor** 。 這可簡化網路安全性規則的持續管理。 若要安全且私下地從您的 Azure Vm 連接到自動化服務，請參閱 [使用 Azure Private Link](../how-to/private-link-security.md)。 若要取得目前的服務標籤和範圍資訊，以納入您的內部部署防火牆設定，請參閱 [可下載的 JSON](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)檔案。
 
 ## <a name="enable-change-tracking-and-inventory"></a>啟用變更追蹤和清查
 
-以下是您可以啟用變更追蹤和清查，以及選取要管理之機器的方式：
+您可以透過下列方式啟用變更追蹤和清查：
 
-* [從 Azure 虛擬機器](enable-from-vm.md)。
-* [從流覽多部 Azure 虛擬機器](enable-from-portal.md)。
-* [從 Azure 自動化帳戶](enable-from-automation-account.md)。
-* 若為已啟用 Arc 的伺服器或非 Azure 機器，請使用 [VM 延伸](../../azure-arc/servers/manage-vm-extensions.md) 模組，從已啟用 Azure Arc 的伺服器安裝 Log Analytics 代理程式，然後 [讓工作區中的電腦](enable-from-automation-account.md#enable-machines-in-the-workspace) 變更追蹤和清查。
-* [使用自動化 runbook](enable-from-runbook.md)。
+- 從您的 [自動化帳戶](enable-from-automation-account.md) ，適用于一或多個 azure 與非 azure 機器。
+
+- 針對非 Azure 電腦手動進行，包括已向 [Azure Arc 啟用的伺服器](../../azure-arc/servers/overview.md)註冊的電腦或伺服器。 對於混合式電腦，建議先將您的電腦連接到 [Azure Arc 啟用的伺服器](../../azure-arc/servers/overview.md)，然後使用 Azure 原則將「 [部署 log analytics 代理程式」指派給 *Linux* 或 *Windows* Azure Arc 電腦](../../governance/policy/samples/built-in-policies.md#monitoring) 內建原則，以安裝適用于 Windows 的 log analytics 代理程式。 如果您也打算使用適用於 VM 的 Azure 監視器監視電腦，請改用 [啟用適用於 VM 的 Azure 監視器](../../governance/policy/samples/built-in-initiatives.md#monitoring) 方案。
+
+- 適用于 Azure 入口網站中的 [ [虛擬機器] 頁面](enable-from-vm.md) 上的單一 Azure VM。 此案例適用於 Linux 與 Windows VM。
+
+- 針對[多部 Azure VM](enable-from-portal.md)，透過從 Azure 入口網站的虛擬機器頁面中選取這些 VM 的方式來啟用。
 
 ## <a name="tracking-file-changes"></a>追蹤檔案變更
 
@@ -106,8 +108,8 @@ ms.locfileid: "92209588"
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | 監視在關機時執行的指令碼。
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run` | 監視使用者登入 Windows 帳戶之前載入的金鑰。 此金鑰供 64 位元電腦上執行的 32 位元應用程式使用。
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components` | 監視應用程式設定的變更。
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | 監視直接與 Windows 檔案總管連結的內容功能表處理常式，且通常會與 **explorer.exe**執行同進程。
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | 監視複製攔截處理常式，該處理常式會直接連結到 Windows 檔案總管，且通常會與 **explorer.exe**執行同進程。
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | 監視直接與 Windows 檔案總管連結的內容功能表處理常式，且通常會與 **explorer.exe** 執行同進程。
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | 監視複製攔截處理常式，該處理常式會直接連結到 Windows 檔案總管，且通常會與 **explorer.exe** 執行同進程。
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | 監視圖示覆疊處理常式註冊。
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | 針對在 64 位元電腦上執行的 32 位元應用程式，監視圖示覆疊處理常式註冊。
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Internet Explorer 之新瀏覽器協助程式物件外掛程式的監視器。 用以存取當前頁面的文件物件模型 (DOM) 並控制瀏覽。
@@ -125,7 +127,7 @@ ms.locfileid: "92209588"
 
 - 追蹤多個檔案時需要萬用字元。
 
-- 您只能在檔案路徑的最後一個區段中使用萬用字元，例如， **c:\folder \\ file*** 或 **/etc/*.**
+- 您只能在檔案路徑的最後一個區段中使用萬用字元，例如，c:\folder 檔 **_ \\** 或 _ */etc/* 。
 
 - 如果環境變數具有不正確路徑，驗證雖然會成功，但路徑會在執行期間失敗。
 

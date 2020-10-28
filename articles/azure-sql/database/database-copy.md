@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: 3aaa666ac6b7ddffcf5e0d2f5b62d26bd0f96004
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 99eea73add47b6498833de7bfd7728feb4c5c4ab
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516200"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671576"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>在 Azure SQL Database 中複製資料庫的交易一致性複本
 
@@ -43,7 +43,7 @@ Azure SQL Database 提供數種方法，可在相同的伺服器或不同的伺�
 
 ## <a name="copy-using-the-azure-portal"></a>使用 Azure 入口網站複製
 
-若要使用 Azure 入口網站來複製資料庫，請開啟資料庫頁面，然後按一下 [複製]****。
+若要使用 Azure 入口網站來複製資料庫，請開啟資料庫頁面，然後按一下 [複製]  。
 
    ![資料庫複本](./media/database-copy/database-copy.png)
 
@@ -82,7 +82,7 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
 
 使用伺服器管理員登入或建立您要複製之資料庫的登入來登入 master 資料庫。 若要讓資料庫複製成功，非伺服器管理員的登入必須是該角色的成員 `dbmanager` 。 如需登入與連接到伺服器的詳細資訊，請參閱 [管理登入](logins-create-manage.md)。
 
-開始複製源資料庫與 [建立資料庫 .。。作為語句的副本](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true#copy-a-database) 。 T-sql 語句會繼續執行，直到資料庫複製作業完成為止。
+開始複製源資料庫與 [建立資料庫 .。。作為語句的副本](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true#copy-a-database) 。 T-sql 語句會繼續執行，直到資料庫複製作業完成為止。
 
 > [!NOTE]
 > 終止 T-sql 語句並不會終止資料庫複製作業。 若要終止作業，請卸載目標資料庫。
@@ -143,13 +143,13 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>監視複製作業的進度
 
-藉由查詢 [sys. 資料庫](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql)、 [sys.dm_database_copies](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)和 [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) 視圖，來監視複製程式。 正在進行複製時，新資料庫之 sys. 資料庫檢視的 **state_desc** 資料行會設定為 [ **複製**]。
+藉由查詢 [sys. 資料庫](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql)、 [sys.dm_database_copies](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)和 [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) 視圖，來監視複製程式。 正在進行複製時，新資料庫之 sys. 資料庫檢視的 **state_desc** 資料行會設定為 [ **複製** ]。
 
-* 如果複製失敗，新資料庫之 sys. 資料庫檢視的 [ **state_desc** ] 資料行會設定為 [ **可疑**]。 在新的資料庫上執行 DROP 陳述式，稍後再試一次。
-* 如果複製成功，新資料庫之 sys. 資料庫檢視的 **state_desc** 資料行會設定為 **ONLINE**。 複製已完成且新資料庫是一般資料庫，能夠與來源資料庫分開進行變更。
+* 如果複製失敗，新資料庫之 sys. 資料庫檢視的 [ **state_desc** ] 資料行會設定為 [ **可疑** ]。 在新的資料庫上執行 DROP 陳述式，稍後再試一次。
+* 如果複製成功，新資料庫之 sys. 資料庫檢視的 **state_desc** 資料行會設定為 **ONLINE** 。 複製已完成且新資料庫是一般資料庫，能夠與來源資料庫分開進行變更。
 
 > [!NOTE]
-> 如果您決定在進行複製時予以取消，請在新資料庫上執行 [DROP DATABASE](https://docs.microsoft.com/sql/t-sql/statements/drop-database-transact-sql) 陳述式。
+> 如果您決定在進行複製時予以取消，請在新資料庫上執行 [DROP DATABASE](/sql/t-sql/statements/drop-database-transact-sql) 陳述式。
 
 > [!IMPORTANT]
 > 如果您需要使用比來源更小的服務目標來建立複本，目標資料庫可能沒有足夠的資源來完成植入程式，並可能導致複製 operaion 失敗。 在此案例中，請使用異地還原要求在不同的伺服器及/或不同的區域中建立複本。 如需詳細資訊，請參閱 [使用資料庫備份來復原 Azure SQL Database](recovery-using-backups.md#geo-restore) 。
@@ -182,7 +182,7 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 
 ## <a name="resolve-logins"></a>解析登入
 
-在目標伺服器上的新資料庫上線之後，請使用 [ALTER USER](https://docs.microsoft.com/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current&preserve-view=true) 語句，將新資料庫中的使用者重新對應至目標伺服器上的登入。 若要解析被遺棄的使用者，請參閱 [被遺棄使用者疑難排解](https://docs.microsoft.com/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server)。 另請參閱 [如何在嚴重損壞修復之後管理 Azure SQL Database 安全性](active-geo-replication-security-configure.md)。
+在目標伺服器上的新資料庫上線之後，請使用 [ALTER USER](/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current&preserve-view=true) 語句，將新資料庫中的使用者重新對應至目標伺服器上的登入。 若要解析被遺棄的使用者，請參閱 [被遺棄使用者疑難排解](/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server)。 另請參閱 [如何在嚴重損壞修復之後管理 Azure SQL Database 安全性](active-geo-replication-security-configure.md)。
 
 新資料庫中的所有使用者都保有其在來源資料庫中原有的權限。 起始資料庫複本的使用者會變成新資料庫的資料庫擁有者。 在複製成功之後，重新對應其他使用者之前，只有資料庫擁有者可以登入新的資料庫。
 
@@ -192,7 +192,7 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 
 在 Azure SQL Database 中複製資料庫時，可能會發生下列錯誤。 如需詳細資訊，請參閱 [複製 Azure SQL Database](database-copy.md)。
 
-| 錯誤碼 | 嚴重性 | 說明 |
+| 錯誤碼 | 嚴重性 | 描述 |
 | ---:| ---:|:--- |
 | 40635 |16 |IP 位址 '%.&#x2a;ls' 的用戶端已暫時停用。 |
 | 40637 |16 |建立資料庫副本目前已停用。 |

@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 8ffdcac61a3ab0d27fec7602e8625c0367f6c33b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: d7c95317667999ac17803f08575e68641100b967
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048486"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460779"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>教學課程：使用範例用戶端應用程式探索 Azure Digital Twins
 
-本教學課程介紹實作命令列用戶端應用程式的範例應用程式，可用於與 Azure Digital Twins 執行個體進行互動。 該用戶端應用程式與[*教學課程：撰寫用戶端應用程式的程式碼*](tutorial-code.md)中撰寫的用戶端應用程式類似。
+本教學課程介紹實作命令列用戶端應用程式的範例應用程式，可用於與 Azure Digital Twins 執行個體進行互動。 該用戶端應用程式與 [*教學課程：撰寫用戶端應用程式的程式碼*](tutorial-code.md)中撰寫的用戶端應用程式類似。
 
 您可以使用此範例來執行基本的 Azure Digital Twins 動作，例如上傳模型、建立與修改分身，以及建立關聯性。 您也可以查看範例的程式碼以了解 Azure Digital Twins API，並依您想要的方式修改範例專案來練習實作命令。
 
@@ -24,7 +24,7 @@ ms.locfileid: "92048486"
 > [!div class="checklist"]
 > * 設定 Azure Digital Twins 執行個體
 > * 設定範例命令列應用程式以與執行個體互動
-> * 使用命令列應用程式探索 Azure Digital Twins，包括**模型**、**數位分身**、**關聯性**與**查詢**
+> * 使用命令列應用程式探索 Azure Digital Twins，包括 **模型** 、 **數位分身** 、 **關聯性** 與 **查詢**
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
@@ -32,11 +32,11 @@ ms.locfileid: "92048486"
 
 ## <a name="explore-with-the-sample-solution"></a>使用範例解決方案進行探索
 
-現在您已設定執行個體及範例應用程式，將會使用範例專案與一些預先撰寫的範例程式碼，來建置與探索基本的 Azure Digital Twins 解決方案。 主要解決方案元件包括**模型**、**數位分身**、**關聯性**，從而產生可查詢的環境**分身圖表**。
+現在您已設定執行個體及範例應用程式，將會使用範例專案與一些預先撰寫的範例程式碼，來建置與探索基本的 Azure Digital Twins 解決方案。 主要解決方案元件包括 **模型** 、 **數位分身** 、 **關聯性** ，從而產生可查詢的環境 **分身圖表** 。
 
 ### <a name="model-a-physical-environment-with-dtdl"></a>使用 DTDL 建立實體環境的模型
 
-建立 Azure Digital Twins 解決方案的第一個步驟是定義您環境的分身[**模型**](concepts-models.md)。 
+建立 Azure Digital Twins 解決方案的第一個步驟是定義您環境的分身 [**模型**](concepts-models.md)。 
 
 模型類似物件導向程式設計語言中的類別，為[數位分身](concepts-twins-graph.md)提供日後可遵循並具現化的使用者定義範本。 其是以名為 **Digital Twins 定義語言 (DTDL)** 的語言所撰寫 (與 JSON 相似)，並且可定義分身的「屬性」、「遙測」、「關聯性」及「元件」。
 
@@ -47,9 +47,9 @@ ms.locfileid: "92048486"
 
 選取 *Room.json* 在編輯視窗中開啟，並以下列方式進行變更：
 
-* **更新版本號碼**，指出您正在提供此模型的更新版本。 您可以透過將 `@id` 值結尾的 *1*變更為 *2* 來進行此操作。 任何大於目前版本號碼的數字也都能運作。
-* **編輯屬性**。 將 `Humidity` 屬性的名稱變更為 *HumidityLevel* (或任何您想要的名稱。 若您使用與 *HumidityLevel* 不同的名稱，請記住您使用的名稱，並繼續在本教學課程中使用該名稱，而非 *HumidityLevel*)。
-* **新增屬性**。 在第 15 行結束的 `HumidityLevel` 屬性下方，貼上下列程式碼以將 `RoomName` 屬性新增到 Room：
+* **更新版本號碼** ，指出您正在提供此模型的更新版本。 您可以透過將 `@id` 值結尾的 *1* 變更為 *2* 來進行此操作。 任何大於目前版本號碼的數字也都能運作。
+* **編輯屬性** 。 將 `Humidity` 屬性的名稱變更為 *HumidityLevel* (或任何您想要的名稱。 若您使用與 *HumidityLevel* 不同的名稱，請記住您使用的名稱，並繼續在本教學課程中使用該名稱，而非 *HumidityLevel* )。
+* **新增屬性** 。 在第 15 行結束的 `HumidityLevel` 屬性下方，貼上下列程式碼以將 `RoomName` 屬性新增到 Room：
 
     ```json
     ,
@@ -59,7 +59,7 @@ ms.locfileid: "92048486"
       "schema": "string"
     }
     ```
-* **新增關聯性**。 在您剛新增的 `RoomName` 屬性下方，貼上下列程式碼讓此類型的分身能夠與其他分身產生「包含」關聯性：
+* **新增關聯性** 。 在您剛新增的 `RoomName` 屬性下方，貼上下列程式碼讓此類型的分身能夠與其他分身產生「包含」關聯性：
 
     ```json
     ,
@@ -130,7 +130,7 @@ CreateModels Room
 ```
 
 因為模型無法覆寫，這現在會傳回服務錯誤。
-如需如何刪除現有模型的詳細資訊，請參閱[*操作說明：管理自訂模型*](how-to-manage-model.md)。
+如需如何刪除現有模型的詳細資訊，請參閱 [*操作說明：管理自訂模型*](how-to-manage-model.md)。
 ```cmd/sh
 Response 409: Service request failed.
 Status: 409 (Conflict)
@@ -147,7 +147,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="create-digital-twins"></a>建立數位分身
 
-現在您已將一些模型上傳到 Azure Digital Twins 執行個體，您可以依據模型定義來建立[**數位分身**](concepts-twins-graph.md)。 數位分身代表您商務環境中的實體，例如伺服陣列上的感應器、建築物中的房間，或汽車的燈。 
+現在您已將一些模型上傳到 Azure Digital Twins 執行個體，您可以依據模型定義來建立 [**數位分身**](concepts-twins-graph.md)。 數位分身代表您商務環境中的實體，例如伺服陣列上的感應器、建築物中的房間，或汽車的燈。 
 
 若要建立數位分身，您可以使用 `CreateDigitalTwin` 命令。 您必須參考作為分身基礎的模型，並且可以選擇性地定義模型中任何屬性的初始值。 您不需要在此階段傳遞任何關聯性資訊。
 
@@ -167,11 +167,11 @@ CreateDigitalTwin dtmi:example:Floor;1 floor1
 
 :::image type="content" source="media/tutorial-command-line-app/output-create-digital-twin.png" alt-text="編輯後的 Room.json，其中含有更新後的版本號碼、HumidityLevel 與 RoomName 屬性，並包含關聯性":::
 
-您也可以透過執行 `Query` 命令來驗證分身已建立。 此命令向 Azure Digital Twins 執行個體查詢其包含的所有數位分身。 在結果中尋找 *floor0*、*floor1*、*room0* 與 *room1* 分身。
+您也可以透過執行 `Query` 命令來驗證分身已建立。 此命令向 Azure Digital Twins 執行個體查詢其包含的所有數位分身。 在結果中尋找 *floor0* 、 *floor1* 、 *room0* 與 *room1* 分身。
 
 #### <a name="modify-a-digital-twin"></a>修改數位分身
 
-您也可以修改已建立的對應項屬性。 請嘗試執行此命令，將 *room0* 的 RoomName 從 *Room0* 變更為 *PresidentialSuite*：
+您也可以修改已建立的對應項屬性。 請嘗試執行此命令，將 *room0* 的 RoomName 從 *Room0* 變更為 *PresidentialSuite* ：
 
 ```cmd/sh
 UpdateDigitalTwin room0 add /RoomName string PresidentialSuite
@@ -192,11 +192,11 @@ GetDigitalTwin room0
 
 ### <a name="create-a-graph-by-adding-relationships"></a>新增關聯性以建立圖表
 
-接下來，您可以在這些分身之間建立一些**關聯性**，將這些分身連線到[**分身圖表**](concepts-twins-graph.md)。 分身圖表可用於表示整個環境。 
+接下來，您可以在這些分身之間建立一些 **關聯性** ，將這些分身連線到 [**分身圖表**](concepts-twins-graph.md)。 分身圖表可用於表示整個環境。 
 
 若要新增關聯性，請使用 `CreateRelationship` 命令。 指定關聯性的來源分身、要新增的關聯性類型，以及關聯性所連線的分身。 最後，提供關聯性的名稱 (識別碼)。
 
-執行下列程式碼，以將您先前建立的每個 *Floor* 分身與對應 *Room* 的分身新增「包含」關聯性。 請注意，*Floor* 模型上必須已定義「包含」關聯性，才能進行這項操作。
+執行下列程式碼，以將您先前建立的每個 *Floor* 分身與對應 *Room* 的分身新增「包含」關聯性。 請注意， *Floor* 模型上必須已定義「包含」關聯性，才能進行這項操作。
 
 ```cmd/sh
 CreateRelationship floor0 contains room0 relationship0
@@ -242,7 +242,7 @@ Azure Digital Twins 的主要功能是能夠輕鬆且有效率地[查詢](concep
     :::image type="content" source="media/tutorial-command-line-app/output-query-all.png" alt-text="編輯後的 Room.json，其中含有更新後的版本號碼、HumidityLevel 與 RoomName 屬性，並包含關聯性":::
 
     >[!NOTE]
-    >在範例專案中，不包含任何其他引數的 `Query` 命令等同於 `Query SELECT * FROM DIGITALTWINS`。 若要使用[查詢 API](how-to-use-apis-sdks.md) 或 [CLI 命令](how-to-use-cli.md)來查詢執行個體中的所有對應項，請使用較長 (完整) 的查詢。
+    >在範例專案中，不包含任何其他引數的 `Query` 命令等同於 `Query SELECT * FROM DIGITALTWINS`。 若要使用[查詢 API](/rest/api/digital-twins/dataplane/query) 或 [CLI 命令](how-to-use-cli.md)來查詢執行個體中的所有對應項，請使用較長 (完整) 的查詢。
 
 * **我的環境中有哪些房間？** (依模型查詢)
 
@@ -250,7 +250,7 @@ Azure Digital Twins 的主要功能是能夠輕鬆且有效率地[查詢](concep
     Query SELECT * FROM DIGITALTWINS T WHERE IS_OF_MODEL(T, 'dtmi:example:Room;2')
     ```
 
-    您可以將查詢限制在特定類型的分身，以取得其表示項目更具體的資訊。 該結果會顯示 *room0* 與 *room1*，但**不會**顯示 *floor0* 或 *floor1* (因為其為樓層，而非房間)。
+    您可以將查詢限制在特定類型的分身，以取得其表示項目更具體的資訊。 該結果會顯示 *room0* 與 *room1* ，但 **不會** 顯示 *floor0* 或 *floor1* (因為其為樓層，而非房間)。
     
     :::image type="content" source="media/tutorial-command-line-app/output-query-model.png" alt-text="編輯後的 Room.json，其中含有更新後的版本號碼、HumidityLevel 與 RoomName 屬性，並包含關聯性":::
 
@@ -286,7 +286,7 @@ Azure Digital Twins 的主要功能是能夠輕鬆且有效率地[查詢](concep
 
 ## <a name="clean-up-resources"></a>清除資源
 
-本教學課程中的專案形成下一個教學課程：[*教學課程：連線端對端解決方案*](tutorial-end-to-end.md)。 若您希望繼續進行下一個教學課程，您可以保留在此處設定的資源，以繼續使用此 Azure Digital Twins 執行個體以及已設定的範例應用程式。
+本教學課程中的專案形成下一個教學課程： [*教學課程：連線端對端解決方案*](tutorial-end-to-end.md)。 若您希望繼續進行下一個教學課程，您可以保留在此處設定的資源，以繼續使用此 Azure Digital Twins 執行個體以及已設定的範例應用程式。
 * 在此情況下，您可以使用範例應用程式的 `DeleteAllTwins` 與 `DeleteAllModels` 命令來分別清除您執行個體中的分身及模型。 如此一來，您就能以全新狀態進行下一個教學課程。
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]

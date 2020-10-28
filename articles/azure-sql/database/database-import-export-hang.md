@@ -10,12 +10,12 @@ author: v-miegge
 ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
-ms.openlocfilehash: f98cfcd49806061a969a9227f9ade05f70ce79ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e69bba858ccf62f1b3a3b45b08771ddba71f11cf
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85982305"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671399"
 ---
 # <a name="azure-sql-database-and-managed-instance-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Azure SQL Database 和受控執行個體匯入/匯出服務需要很長的時間才能匯入或匯出資料庫
 
@@ -25,7 +25,7 @@ ms.locfileid: "85982305"
 
 ## <a name="azure-sql-database-importexport-service"></a>Azure SQL Database 匯入/匯出服務
 
-Azure SQL Database 匯入/匯出服務是以 REST 為基礎的 web 服務，可在每個 Azure 資料中心執行。 當您使用 [匯 [入資料庫](database-import.md#using-azure-portal) ] 或 [ [匯出](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal) ] 選項，在 Azure 入口網站中移動您的資料庫時，就會呼叫此服務。 此服務提供免費的要求佇列和計算服務，可在 Azure SQL Database 和 Azure Blob 儲存體之間執行匯入和匯出。
+Azure SQL Database 匯入/匯出服務是以 REST 為基礎的 web 服務，可在每個 Azure 資料中心執行。 當您使用 [匯 [入資料庫](database-import.md#using-azure-portal) ] 或 [ [匯出](./database-import.md#using-azure-portal) ] 選項，在 Azure 入口網站中移動您的資料庫時，就會呼叫此服務。 此服務提供免費的要求佇列和計算服務，可在 Azure SQL Database 和 Azure Blob 儲存體之間執行匯入和匯出。
 
 匯入和匯出作業不代表傳統的實體資料庫備份，而是使用特殊 BACPAC 格式之資料庫的邏輯備份。 BACPAC 格式可讓您避免使用在 Microsoft SQL Server、Azure SQL Database 和 Azure SQL 受控執行個體版本之間可能不同的實體格式。
 
@@ -40,20 +40,20 @@ Azure SQL Database 匯入/匯出服務會提供有限數量的計算虛擬機器
 
 如果您的資料庫匯出只用于從意外刪除資料的復原，則所有的 Azure SQL Database 版本都會提供系統產生之備份的自助式還原功能。 但是，如果您因為其他原因需要這些匯出，而且您需要持續更快或更容易預測的匯入/匯出效能，請考慮下列選項：
 
-* [使用 SQLPackage 公用程式匯出至 BACPAC](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-sqlpackage-utility)檔案。
-* [使用 SQL Server Management Studio (SSMS) 匯出至 BACPAC ](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-sql-server-management-studio-ssms)檔案。
+* [使用 SQLPackage 公用程式匯出至 BACPAC](./database-export.md#sqlpackage-utility)檔案。
+* [使用 SQL Server Management Studio (SSMS) 匯出至 BACPAC ](./database-export.md#sql-server-management-studio-ssms)檔案。
 * 使用 Microsoft SQL Server Data-Tier 應用程式架構 (DacFx) API，直接在您的程式碼中執行 BACPAC 匯入或匯出。 如需相關資訊，請參閱：
-  * [匯出資料層應用程式](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
-  * [Microsoft SqlServer. Dac 命名空間](https://docs.microsoft.com/dotnet/api/microsoft.sqlserver.dac)
+  * [匯出資料層應用程式](/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
+  * [Microsoft SqlServer. Dac 命名空間](/dotnet/api/microsoft.sqlserver.dac)
   * [下載 DACFx](https://www.microsoft.com/download/details.aspx?id=55713)
 
 ## <a name="things-to-consider-when-you-export-or-import-a-database"></a>匯出或匯入資料庫時應考慮的事項
 
-* 本文中討論的所有方法都會使用 (DTU) 配額的資料庫交易單位，這會導致 Azure SQL Database 服務進行節流。 您可以 [在 Azure 入口網站上查看資料庫的 DTU 統計資料](https://docs.microsoft.com/azure/sql-database/sql-database-monitor-tune-overview#sql-database-resource-monitoring)。 如果資料庫已達到其資源限制，請 [升級服務層級](https://docs.microsoft.com/azure/sql-database/sql-database-scale-resources) ，以新增更多資源。
+* 本文中討論的所有方法都會使用 (DTU) 配額的資料庫交易單位，這會導致 Azure SQL Database 服務進行節流。 您可以 [在 Azure 入口網站上查看資料庫的 DTU 統計資料](./monitor-tune-overview.md#azure-sql-database-and-azure-sql-managed-instance-resource-monitoring)。 如果資料庫已達到其資源限制，請 [升級服務層級](./scale-resources.md) ，以新增更多資源。
 * 在理想情況下，您應該執行用戶端應用程式， (像是 sqlpackage 公用程式，或自訂 DAC 應用程式) 從與您資料庫相同區域中的 VM。 否則，您可能會遇到與網路延遲相關的效能問題。
 * 匯出沒有叢集索引的大型資料表可能會很慢或甚至導致失敗。 發生此行為的原因是無法以平行方式分割和匯出資料表。 相反地，它必須在單一交易中匯出，並且會在匯出期間導致效能變慢和潛在失敗，特別是針對大型資料表。
 
 
 ## <a name="related-documents"></a>相關文件
 
-[匯出資料庫時的考慮](https://docs.microsoft.com/azure/sql-database/sql-database-export#considerations-when-exporting-an-azure-sql-database)
+[匯出資料庫時的考慮](./database-export.md#considerations)

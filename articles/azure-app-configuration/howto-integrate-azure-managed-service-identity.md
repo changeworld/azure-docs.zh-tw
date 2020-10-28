@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: d71f0396f453ceb7113d724b113fe5aacdc60e21
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: f2d8c6e94638c01fb21e070a756c0c97c330fb26
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078165"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671608"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>使用受控識別來存取應用程式組態
 
@@ -49,9 +49,9 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
 
 1. 如往常一樣，在 [Azure 入口網站](https://portal.azure.com) 中建立應用程式服務實例。 在入口網站中移至該應用程式。
 
-1. 在左側窗格中，向下捲動到 [設定]**** 群組，然後選取 [身分識別]****。
+1. 在左側窗格中，向下捲動到 [設定]  群組，然後選取 [身分識別]  。
 
-1. 在 [系統指派]**** 索引標籤上，將 [狀態]**** 切換成 [開啟]****，然後選取 [儲存]****。
+1. 在 [系統指派]  索引標籤上，將 [狀態]  切換成 [開啟]  ，然後選取 [儲存]  。
 
 1. 當系統提示您啟用系統指派的受控識別時，請回答 **[是]** 。
 
@@ -61,13 +61,13 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
 
 1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取 [ **所有資源** ]，然後選取您在快速入門中建立的應用程式設定存放區。
 
-1. 選取 [存取控制 (IAM)]  。
+1. 選取 [存取控制 (IAM)]。
 
-1. 在 [檢查存取權]**** 索引標籤上，選取 [新增角色指派]**** 卡片 UI 中的 [新增]****。
+1. 在 [檢查存取權]  索引標籤上，選取 [新增角色指派]  卡片 UI 中的 [新增]  。
 
-1. 在 [ **角色**] 底下，選取 [ **應用程式設定資料讀取器**]。 在 [存取權指派對象為]**** 底下，選取 [系統指派的受控識別]**** 底下的 [App Service]****。
+1. 在 [ **角色** ] 底下，選取 [ **應用程式設定資料讀取器** ]。 在 [存取權指派對象為]  底下，選取 [系統指派的受控識別]  底下的 [App Service]  。
 
-1. 在 [訂用帳戶]**** 底下，選取您的 Azure 訂用帳戶。 選取您應用程式的 App Service 資源。
+1. 在 [訂用帳戶]  底下，選取您的 Azure 訂用帳戶。 選取您應用程式的 App Service 資源。
 
 1. 選取 [儲存]。
 
@@ -85,7 +85,7 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
 
 1. 尋找應用程式設定存放區的端點。 此 URL 會列在 Azure 入口網站中存放區的 [ **存取金鑰** ] 索引標籤上。
 
-1. 開啟 *appsettings.json*，然後新增下列指令碼。 以 *\<service_endpoint>* 應用程式設定存放區的 URL 取代（包括括弧）。
+1. 開啟 *appsettings.json* ，然後新增下列指令碼。 以 *\<service_endpoint>* 應用程式設定存放區的 URL 取代（包括括弧）。
 
     ```json
     "AppConfig": {
@@ -93,7 +93,7 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
     }
     ```
 
-1. 開啟 *Program.cs*，並加入 `Azure.Identity` 和命名空間的參考 `Microsoft.Azure.Services.AppAuthentication` ：
+1. 開啟 *Program.cs* ，並加入 `Azure.Identity` 和命名空間的參考 `Microsoft.Azure.Services.AppAuthentication` ：
 
     ```csharp-interactive
     using Azure.Identity;
@@ -107,30 +107,32 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
     ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration((hostingContext, config) =>
-                {
-                    var settings = config.Build();
-                    config.AddAzureAppConfiguration(options =>
-                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
-                })
-                .UseStartup<Startup>();
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+               .ConfigureAppConfiguration((hostingContext, config) =>
+               {
+                   var settings = config.Build();
+                   config.AddAzureAppConfiguration(options =>
+                       options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
+               })
+               .UseStartup<Startup>();
     ```
 
     ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(webBuilder =>
-            webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
             {
-                var settings = config.Build();
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var settings = config.Build();
                     config.AddAzureAppConfiguration(options =>
                         options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
-                })
-                .UseStartup<Startup>());
+                });
+            })
+            .UseStartup<Startup>());
     ```
     ---
 
@@ -139,46 +141,48 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
     ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
-            public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-                WebHost.CreateDefaultBuilder(args)
-                    .ConfigureAppConfiguration((hostingContext, config) =>
-                    {
-                        var settings = config.Build();
-                        var credentials = new ManagedIdentityCredential();
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+               .ConfigureAppConfiguration((hostingContext, config) =>
+               {
+                   var settings = config.Build();
+                   var credentials = new ManagedIdentityCredential();
 
-                        config.AddAzureAppConfiguration(options =>
-                        {
-                            options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                                    .ConfigureKeyVault(kv =>
-                                    {
-                                        kv.SetCredential(credentials);
-                                    });
-                        });
-                    })
-                    .UseStartup<Startup>();
+                   config.AddAzureAppConfiguration(options =>
+                   {
+                       options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
+                           .ConfigureKeyVault(kv =>
+                           {
+                              kv.SetCredential(credentials);
+                           });
+                   });
+               })
+               .UseStartup<Startup>();
     ```
 
     ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(webBuilder =>
-            webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
-                    {
-                        var settings = config.Build();
-                        var credentials = new ManagedIdentityCredential();
+            {
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var settings = config.Build();
+                    var credentials = new ManagedIdentityCredential();
 
-                        config.AddAzureAppConfiguration(options =>
-                        {
-                            options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                                    .ConfigureKeyVault(kv =>
-                                    {
-                                        kv.SetCredential(credentials);
-                                    });
-                        });
-                    })
-                    .UseStartup<Startup>());
+                    config.AddAzureAppConfiguration(options =>
+                    {
+                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
+                            .ConfigureKeyVault(kv =>
+                            {
+                                kv.SetCredential(credentials);
+                            });
+                    });
+                });
+            })
+            .UseStartup<Startup>());
     ```
     ---
 
@@ -222,7 +226,7 @@ az webapp deployment source config-local-git --name <app_name> --resource-group 
 
 ### <a name="deploy-your-project"></a>部署您的專案
 
-在 _本機終端機視窗_中，將 Azure 遠端新增至您的本機 Git 存放庫。 _\<url>_ 以您從 [[啟用本機 Git with Kudu](#enable-local-git-with-kudu)] 取得的 Git 遠端 URL 取代。
+在 _本機終端機視窗_ 中，將 Azure 遠端新增至您的本機 Git 存放庫。 _\<url>_ 以您從 [ [啟用本機 Git with Kudu](#enable-local-git-with-kudu)] 取得的 Git 遠端 URL 取代。
 
 ```bash
 git remote add azure <url>

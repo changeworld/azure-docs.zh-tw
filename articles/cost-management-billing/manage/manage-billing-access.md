@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: ccdd7b16c7ec292b8f4f4c155a6f9497c606a489
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: e174a0539a75945cc0a2595e28a60d928e10acf4
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371808"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92166211"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>管理對 Azure 帳單資訊的存取
 
@@ -53,7 +53,7 @@ ms.locfileid: "91371808"
 
 1. 針對 [成本管理 + 帳單]  進行搜尋。
 
-    ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/manage-billing-access/billing-search-cost-management-billing.png)
+    ![醒目提示 [服務] 區段下 [成本管理 + 計費] 的螢幕擷取畫面。](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
 1. 從左側窗格中選取 [訂用帳戶]  。 視存取權而定，您可能需要選取計費範圍，然後選取 [訂用帳戶]  。
 
@@ -94,7 +94,7 @@ ms.locfileid: "91371808"
 1. 在 [選取]  文字方塊中，鍵入您要新增的使用者名稱或電子郵件。
 1. 選取使用者。
 1. 選取 [儲存]  。
-    ![顯示按一下新增角色指派的螢幕擷取畫面](./media/manage-billing-access/billing-save-role-assignment.png)
+    ![醒目提示 [儲存] 按鈕的螢幕擷取畫面。](./media/manage-billing-access/billing-save-role-assignment.png)
 
 1. 在幾分鐘之後，即會針對訂用帳戶將「帳單讀者」角色指派給使用者。
 

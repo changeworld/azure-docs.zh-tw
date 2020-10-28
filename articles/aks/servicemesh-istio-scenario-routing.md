@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 871a764c549de75d5a9e1449ba2e0737d38a4094
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69541ec652188bc3826b7829fbc5c182193d6ba9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83799951"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670937"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>透過 Istio 在 Azure Kubernetes Service (AKS) 中使用智慧型路由和 Canary 版本
 
@@ -53,7 +53,7 @@ ms.locfileid: "83799951"
 
 首先我們將在您的 Azure Kubernetes Service (AKS) 叢集中部署應用程式。 下圖顯示在此節的結尾所會執行的項目 - 所有元件的 `1.0` 版，且透過 Istio 連入閘道處理輸入要求：
 
-![AKS 投票應用程式元件和路由。](media/servicemesh/istio/scenario-routing-components-01.png)
+![此圖顯示所有元件的1.0 版，其中包含透過 Istio 輸入閘道服務的輸入要求。](media/servicemesh/istio/scenario-routing-components-01.png)
 
 您依照此文章指示操作時所需的成品，皆在 [Azure-Samples/aks-voting-app][github-azure-sample] GitHub 存放庫中提供。 您可以下載成品或複製存放庫，如下所示：
 
@@ -139,9 +139,9 @@ voting-storage-1-0-5d8fcc89c4-2jhms     2/2       Running   0          39s   app
 在建立 Istio [閘道][istio-reference-gateway]和[虛擬服務][istio-reference-virtualservice]前，您無法連線至投票應用程式。 這些 Istio 資源會將來自預設 Istio 輸入閘道的流量路由至我們的應用程式。
 
 > [!NOTE]
-> **閘道**是位於服務網格邊緣的元件，會接收輸入或輸出的 HTTP 和 TCP 流量。
+> **閘道** 是位於服務網格邊緣的元件，會接收輸入或輸出的 HTTP 和 TCP 流量。
 > 
-> **虛擬服務**會為一或多個目的地服務定義一組路由規則。
+> **虛擬服務** 會為一或多個目的地服務定義一組路由規則。
 
 使用 `kubectl apply` 命令部署閘道和虛擬服務 yaml。 請記得指定這些資源要部署到的命名空間。
 
@@ -180,7 +180,7 @@ kubectl get service istio-ingressgateway --namespace istio-system -o jsonpath='{
 
 下圖顯示在此節的結尾所會執行的項目 - 只有 `1.1` 版的 `voting-analytics` 元件有路由自 `voting-app` 元件的流量。 即使 `1.0` 版的 `voting-analytics` 元件繼續執行，而且由 `voting-analytics` 服務所參考，Istio Proxy 仍不允許針對該元件的連入與連出流量。
 
-![AKS 投票應用程式元件和路由。](media/servicemesh/istio/scenario-routing-components-02.png)
+![僅顯示「投票分析」元件1.1 版的圖表，有從投票應用程式元件路由傳送的流量。](media/servicemesh/istio/scenario-routing-components-02.png)
 
 讓我們部署 `1.1` 版的 `voting-analytics` 元件。 請在 `voting` 命名空間中建立此元件：
 
@@ -236,9 +236,9 @@ deployment.apps/voting-analytics-1-1 created
 
 現在，讓我們將流量鎖定到 `1.1` 版的 `voting-analytics` 元件，以及 `1.0` 版的 `voting-storage` 元件。 接著，您會定義所有其他元件的路由規則。
 
-> * **虛擬服務**會為一或多個目的地服務定義一組路由規則。
-> * **目的地規則**會定義流量原則和版本特定原則。
-> * **原則**會定義可用於工作負載的驗證方法。
+> * **虛擬服務** 會為一或多個目的地服務定義一組路由規則。
+> * **目的地規則** 會定義流量原則和版本特定原則。
+> * **原則** 會定義可用於工作負載的驗證方法。
 
 使用 `kubectl apply` 命令來取代 `voting-app` 上的虛擬服務定義，並為其他元件新增[目的地規則][istio-reference-destinationrule]與[虛擬服務][istio-reference-virtualservice]。 您也會將[原則][istio-reference-policy]新增至 `voting` 命名空間，以確定服務之間的所有通訊都會透過相互 TLS 和用戶端憑證加以保護。
 
@@ -361,7 +361,7 @@ voting-storage.voting.svc.cluster.local:6379     OK         mTLS       mTLS     
 * `2.0` 版的 `voting-app` 元件、`2.0` 版的 `voting-analytics` 元件，以及 `2.0` 版的 `voting-storage` 元件能夠彼此通訊。
 * 只有已設定特定功能旗標的使用者能夠存取 `2.0` 版的 `voting-app` 元件。 這項變更可透過 Cookie 使用功能旗標來管理。
 
-![AKS 投票應用程式元件和路由。](media/servicemesh/istio/scenario-routing-components-03.png)
+![此圖顯示您將在本節結尾執行的內容。](media/servicemesh/istio/scenario-routing-components-03.png)
 
 首先，請更新 Istio 目的地規則和虛擬服務，以因應這些新元件的需求。 這些更新可確保您不會錯誤地將流量路由至新元件，且使用者不會獲得非預期的存取：
 
@@ -415,7 +415,7 @@ kubectl get pods --namespace voting -w
 
 在您成功測試 Canary 版本後，請更新 `voting-app` 虛擬服務，以將所有流量路由至 `2.0` 版的 `voting-app` 元件。 其後，無論是否已設定功能旗標，所有使用者都會看到 `2.0` 版的應用程式：
 
-![AKS 投票應用程式元件和路由。](media/servicemesh/istio/scenario-routing-components-04.png)
+![顯示使用者可看到應用程式2.0 版的圖表，不論是否已設定功能旗標。](media/servicemesh/istio/scenario-routing-components-04.png)
 
 更新所有目的地規則，以移除您不想再啟用的元件版本。 接著，更新所有虛擬服務以停止參考這些版本。
 

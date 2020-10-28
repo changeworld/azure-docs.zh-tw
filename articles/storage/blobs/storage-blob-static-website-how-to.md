@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 052a28dc69bf5c758133ca98366efc63105f4a56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2359c762c9ad653ee2eed294709ad7bf6b2a31c0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289866"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671102"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>在 Azure 儲存體中裝載靜態網站
 
@@ -38,11 +38,11 @@ ms.locfileid: "91289866"
 
 4. 選取 [已啟用] 以啟用儲存體帳戶的靜態網站代管功能。
 
-5. 在 [索引文件名稱] 欄位中，指定預設的索引頁 (例如：*index.html*)。 
+5. 在 [索引文件名稱] 欄位中，指定預設的索引頁 (例如： *index.html* )。 
 
    當使用者瀏覽至您靜態網站的根目錄時，就會顯示此預設索引頁面。  
 
-6. 在 [錯誤文件路徑] 欄位中，指定預設的錯誤頁面 (例如：*404.html*)。 
+6. 在 [錯誤文件路徑] 欄位中，指定預設的錯誤頁面 (例如： *404.html* )。 
 
    當使用者嘗試瀏覽至您靜態網站中所沒有的網頁時，就會顯示此預設錯誤頁面。
 
@@ -259,7 +259,7 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 
 4. 然後選取 [輸出] 計量。
 
-   ![Azure 儲存體靜態網站計量的計量](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
+   ![顯示 Azure 儲存體靜態網站輸出度量的螢幕擷取畫面。](./media/storage-blob-static-website/storage-blob-static-website-metrics-metric.png)
 
 5. 從 [彙總] 選取器中選取 [總和]。
 

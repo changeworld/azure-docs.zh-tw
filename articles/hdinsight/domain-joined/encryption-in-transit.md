@@ -7,27 +7,27 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: 85382ecd627ec8afc63a85de0debd98f94a89849
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6f043a1cb870d003e371d2f20d0e1f6614c9201e
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544880"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628978"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>傳輸中的 IPSec 加密 Azure HDInsight
 
 本文討論 Azure HDInsight 叢集節點之間的通訊在傳輸中的執行方式。
 
 > [!Note]
-> 目前已在下欄區域啟用傳輸中加密：美國東部、美國中南部、西歐美國2。 
+> 目前已在下欄區域啟用傳輸中加密：美國東部、美國中南部、西歐美國2。
 
 ## <a name="background"></a>背景
 
 Azure HDInsight 提供各種安全性功能來保護您的企業資料。 這些解決方案會依周邊安全性、驗證、授權、審核、加密和合規性的要素來分組。 加密可以套用至待用和傳輸中的資料。
 
-Azure 儲存體帳戶上的伺服器端加密以及屬於您 HDInsight 叢集一部分的 Azure Vm 上的磁片加密，都會涵蓋靜態加密。
+靜態加密是在 Azure 儲存體帳戶上的伺服器端加密，以及屬於您 HDInsight 叢集一部分的 Azure Vm 上的磁片加密所涵蓋。
 
-在 HDInsight 上傳輸資料的加密是透過 [傳輸層安全性 (TLS) ](../transport-layer-security.md) 來 accssing 叢集閘道和 [網際網路通訊協定安全性 (IPSec ](https://en.wikipedia.org/wiki/IPsec) 在叢集節點之間) 。 IPSec 可以選擇性地在所有前端節點、背景工作節點、邊緣節點和 zookeeper 節點之間啟用。 它不會在閘道或 [識別碼](./identity-broker.md) 代理人節點（以 Windows 為基礎的 vm 和叢集中其他以 linux 為基礎的節點）之間的流量啟用。
+您可以使用 [傳輸層安全性 (TLS) ](../transport-layer-security.md) 來存取 HDInsight 上傳輸中的資料，以存取叢集閘道和 [網際網路通訊協定安全性 (](https://wikipedia.org/wiki/IPsec) 叢集節點之間的 IPSec) 。 IPSec 可以選擇性地在所有前端節點、背景工作節點、邊緣節點和 zookeeper 節點之間啟用。 它不會在閘道或 [識別碼](./identity-broker.md) 代理人節點（以 Windows 為基礎的 vm 和叢集中其他以 linux 為基礎的節點）之間的流量啟用。
 
 ## <a name="enable-encryption-in-transit"></a>啟用傳輸中加密
 
@@ -40,7 +40,7 @@ Azure 儲存體帳戶上的伺服器端加密以及屬於您 HDInsight 叢集一
 
     :::image type="content" source="media/encryption-in-transit/create-cluster-security-networking-tab.png" alt-text="[建立叢集-安全性和網路] 索引標籤。":::
 
-1. 在 [ **安全性 + 網路** ] 索引標籤上，按一下 [ **啟用傳輸中加密** ] 核取方塊。
+1. 在 [ **安全性 + 網路** ] 索引標籤上，選取 [ **啟用傳輸中加密** ] 核取方塊。
 
     :::image type="content" source="media/encryption-in-transit/enable-encryption-in-transit.png" alt-text="[建立叢集-安全性和網路] 索引標籤。":::
 
@@ -79,7 +79,7 @@ az group deployment create --name HDInsightEnterpriseSecDeployment \
     --parameters parameters.json
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [Azure HDInsight 中的企業安全性概觀](hdinsight-security-overview.md)
 * [將 Azure Active Directory 的使用者同步處理至 HDInsight](../disk-encryption.md)叢集。

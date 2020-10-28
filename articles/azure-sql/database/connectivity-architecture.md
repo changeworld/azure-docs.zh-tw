@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: 711d1cfccb6cdfe4a2fcb48a8ada7b33f744c317
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d0242ceec62db6548d91e5e58c21981a4f0246a0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479080"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672501"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database 與 Azure Synapse Analytics 連線架構
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "92479080"
 本文說明各種元件的架構，這些元件會將網路流量導向 Azure SQL Database 或 Azure Synapse Analytics 的伺服器。 它也會說明不同的連線原則，以及它如何影響從 azure 內部連線的用戶端和從 Azure 外部連線的用戶端。
 
 > [!IMPORTANT]
-> 本文「不」適用於 **Azure SQL Database 受控執行個體**。 請參閱 [受控實例](../managed-instance/connectivity-architecture-overview.md)的連線架構。
+> 本文「不」適用於 **Azure SQL Database 受控執行個體** 。 請參閱 [受控實例](../managed-instance/connectivity-architecture-overview.md)的連線架構。
 
 ## <a name="connectivity-architecture"></a>連線架構
 
@@ -43,7 +43,7 @@ ms.locfileid: "92479080"
 
 SQL Database 和 Azure Synapse 中的伺服器支援伺服器連線原則設定的下列三個選項：
 
-- 重新**導向 (建議的) ：** 用戶端會直接與裝載資料庫的節點建立連線，進而降低延遲並提高輸送量。 針對使用此模式的連接，用戶端必須：
+- 重新 **導向 (建議的) ：** 用戶端會直接與裝載資料庫的節點建立連線，進而降低延遲並提高輸送量。 針對使用此模式的連接，用戶端必須：
   - 允許從用戶端到 11000 11999 範圍內埠上的所有 Azure SQL IP 位址的輸出通訊。 使用 SQL 的服務標籤可讓您更輕鬆地管理這些標記。  
   - 允許從用戶端到埠1433上 Azure SQL Database 閘道 IP 位址的輸出通訊。
 
@@ -51,7 +51,7 @@ SQL Database 和 Azure Synapse 中的伺服器支援伺服器連線原則設定�
 
 - **預設值：** 除非您明確地將連線原則變更為或，否則在建立之後，這是在所有伺服器上生效的連接原則 `Proxy` `Redirect` 。 預設原則是 `Redirect` 針對源自 azure (的所有用戶端連線，例如，從 Azure 虛擬機器) ，以及 `Proxy` 源自于 (外部的所有用戶端連線（例如，來自本機工作站的連接) ）。
 
-為了將延遲降到最低及將輸送量提升到最高，強烈建議您採用 `Redirect` 連線原則，而不要採用 `Proxy` 連線原則。 不過，您必須符合如上面所述允許網路流量的其他需求。 如果用戶端是 Azure 虛擬機器，您可以使用網路安全性群組來完成此操作， (NSG) 搭配 [服務](../../virtual-network/security-overview.md#service-tags)標籤。 如果用戶端是從內部部署的工作站進行連線，您可能需要與網路系統管理員合作，以允許透過公司防火牆的網路流量。
+為了將延遲降到最低及將輸送量提升到最高，強烈建議您採用 `Redirect` 連線原則，而不要採用 `Proxy` 連線原則。 不過，您必須符合如上面所述允許網路流量的其他需求。 如果用戶端是 Azure 虛擬機器，您可以使用網路安全性群組來完成此操作， (NSG) 搭配 [服務](../../virtual-network/network-security-groups-overview.md#service-tags)標籤。 如果用戶端是從內部部署的工作站進行連線，您可能需要與網路系統管理員合作，以允許透過公司防火牆的網路流量。
 
 ## <a name="connectivity-from-within-azure"></a>從 Azure 內部連線
 
@@ -66,7 +66,7 @@ SQL Database 和 Azure Synapse 中的伺服器支援伺服器連線原則設定�
 ![此圖顯示如何透過 Azure SQL Database 閘道建立 TCP 會話，而所有後續的封包都會流經閘道。](./media/connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
-> 額外的開啟 TCP 通訊埠1434和14000-14999，以啟用 [與 DAC 的連接](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
+> 額外的開啟 TCP 通訊埠1434和14000-14999，以啟用 [與 DAC 的連接](/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)
 
 ## <a name="gateway-ip-addresses"></a>閘道 IP 位址
 
@@ -124,6 +124,6 @@ SQL Database 和 Azure Synapse 中的伺服器支援伺服器連線原則設定�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需有關如何變更伺服器 Azure SQL Database 連接原則的詳細資訊，請參閱 [連結 [-原則](https://docs.microsoft.com/cli/azure/sql/server/conn-policy)]。
+- 如需有關如何變更伺服器 Azure SQL Database 連接原則的詳細資訊，請參閱 [連結 [-原則](/cli/azure/sql/server/conn-policy)]。
 - 如需使用 ADO.NET 4.5 或更新版本用戶端之 Azure SQL Database 連接行為的詳細資訊，請參閱 [ADO.NET 4.5 超過 1433以外的連接埠](adonet-v12-develop-direct-route-ports.md)。
 - 如需一般應用程式開發概觀的資訊，請參閱 [SQL Database 應用程式開發概觀](develop-overview.md)。

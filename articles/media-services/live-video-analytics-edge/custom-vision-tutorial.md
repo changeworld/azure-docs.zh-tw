@@ -1,35 +1,37 @@
 ---
 title: 使用 IoT Edge 上的即時影片分析和 Azure 自訂視覺來分析即時影片
-description: 了解如何使用自訂視覺來建置可偵測玩具卡車的容器化模型，並使用 IoT Edge (LVA) 上的即時影片分析 AI 擴充性功能，在邊緣上部署模型以從即時影片串流中偵測玩具卡車。
+description: 了解如何使用 Azure 自訂視覺來建置可偵測玩具卡車的容器化模型，並使用 Azure IoT Edge 上的 Azure 即時影片分析 AI 擴充性功能，在邊緣上部署模型以從即時影片串流中偵測玩具卡車。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: e77521765156a13f0675602ffd0b39f78d8957bb
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 52678d66bd4a91c9308a3cc48fbf784e89a5cfe8
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016785"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92171505"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>教學課程：使用 IoT Edge 上的即時影片分析和 Azure 自訂視覺來分析即時影片
 
-在本教學課程中，您將了解如何使用[自訂視覺](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)來建置可偵測玩具卡車的容器化模型，並使用 IoT Edge 上的即時影片分析 [AI 擴充性功能](analyze-live-video-concept.md#analyzing-video-using-a-custom-vision-model)，在邊緣上部署模型以從即時影片串流中偵測玩具卡車。
+在本教學課程中，您將了解如何使用 Azure [自訂視覺](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)來建置可偵測玩具卡車的容器化模型，並使用 IoT Edge 上的 Azure 即時影片分析 [AI 擴充性功能](analyze-live-video-concept.md#analyzing-video-using-a-custom-vision-model)，在邊緣上部署模型以從即時影片串流中偵測玩具卡車。
 
-我們將示範如何結合自訂視覺的威力 (讓任何人都能建置和定型電腦視覺模型，其只要上傳並標記幾個影像即可，而不需要任何資料科學、ML 或 AI 方面的知識)，以及即時影片分析的功能 (輕鬆地將自訂模型部署為邊緣上的容器，並分析模擬的即時影片摘要)。 本教學課程使用 Azure VM 作為 IoT Edge 裝置，其會以透過 C# 所撰寫的範例程式碼為基礎，並建置於[偵測動作並發出事件](detect-motion-emit-events-quickstart.md)快速入門之上。
+我們將示範如何將自訂視覺的功能結合在一起，以藉由上傳和標記幾個影像來建置和訓練電腦視覺模型。 您不需要具備資料科學、機器學習或 AI 的任何知識。 您也將了解即時影片分析的功能，輕鬆地將自訂模型部署為邊緣上的容器，並分析模擬的即時影片摘要。
+
+本教學課程會使用 Azure 虛擬機器 (VM) 作為 IoT Edge 裝置，並以透過 C# 撰寫的範例程式碼為基礎。 本教學課程中的資訊皆以[偵測動作和發出事件](detect-motion-emit-events-quickstart.md)快速入門為基礎。
 
 本教學課程說明如何：
 
 > [!div class="checklist"]
 > * 設定相關資源。
-> * 在雲端建置自訂視覺模型，以偵測玩具卡車並將其部署到邊緣上
-> * 使用 http 擴充功能建立媒體圖表並將其部署至自訂視覺模型
+> * 在雲端建置自訂視覺模型，以偵測玩具卡車並將其部署到邊緣上。
+> * 使用 HTTP 延伸模組建立媒體圖表並將其部署至自訂視覺模型。
 > * 執行範例程式碼。
 > * 檢查並解讀結果。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="suggested-pre-reading"></a>建議的閱讀準備事項  
+## <a name="suggested-pre-reading"></a>建議的閱讀準備事項
 
-在開始之前，建議您先閱讀過下列文章： 
+開始之前，請先閱讀下列文章：
 
 * [IoT Edge 上的 Live Video Analytics 概觀](overview.md)
 * [Azure 自訂視覺概觀](../../cognitive-services/custom-vision-service/overview.md)
@@ -56,35 +58,36 @@ ms.locfileid: "92016785"
 
 ## <a name="review-the-sample-video"></a>檢閱範例影片
 
-本教學課程使用[玩具車推斷影片](https://lvamedia.blob.core.windows.net/public/t2.mkv)檔案來模擬即時串流。 您可以透過 [VLC 媒體播放器](https://www.videolan.org/vlc/)之類的應用程式來檢查影片。 選取 Ctrl+N，然後貼上[玩具車推斷影片](https://lvamedia.blob.core.windows.net/public/t2.mkv)的連結以開始播放。 在觀看影片時請注意，在 36 秒的標記處，玩具卡車會出現在影片中。 自訂模型已完成定型而可偵測到此特定玩具卡車。 在本教學課程中，您將在 IoT Edge 上使用即時影片分析來偵測這類玩具卡車，並將相關聯的推斷事件發佈到 IoT Edge 中樞。
+本教學課程使用[玩具車推斷影片](https://lvamedia.blob.core.windows.net/public/t2.mkv)檔案來模擬即時串流。 您可以透過 [VLC 媒體播放器](https://www.videolan.org/vlc/)之類的應用程式來檢查影片。 選取 **Ctrl+N** ，然後貼上[玩具車推斷影片](https://lvamedia.blob.core.windows.net/public/t2.mkv)的連結以開始播放。 在觀看影片時請注意，在 36 秒的標記處，玩具卡車會出現在影片中。 自訂模型已完成定型而可偵測到此特定玩具卡車。 在本教學課程中，您將在 IoT Edge 上使用即時影片分析來偵測這類玩具卡車，並將相關聯的推斷事件發佈到 IoT Edge 中樞。
 
 ## <a name="overview"></a>概觀
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/topology-custom-vision.svg" alt-text="自訂視覺概觀":::
+> :::image type="content" source="./media/custom-vision-tutorial/topology-custom-vision.svg" alt-text="顯示自訂視覺概觀的圖表。":::
 
 上圖顯示本教學課程中的信號流動方式。 [邊緣模組](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)會模擬裝載了即時串流通訊協定 (RTSP) 伺服器的 IP 攝影機。 [RTSP 來源](media-graph-concept.md#rtsp-source)節點會從這部伺服器提取影片摘要，並將影片畫面傳送到[畫面播放速率篩選處理器](media-graph-concept.md#frame-rate-filter-processor)節點。 此處理器會限制影片串流到達 [HTTP 延伸模組處理器](media-graph-concept.md#http-extension-processor)節點的畫面播放速率。
-HTTP 延伸模組節點扮演 Proxy 的角色。 其會將影片畫面轉換成指定的影像類型。 然後，會透過 REST 將影像轉送至另一個邊緣模組，以在 HTTP 端點後方執行 AI 模型。 在此範例中，該邊緣模組是使用自訂視覺所建置的玩具卡車偵測器模型。 HTTP 延伸模組處理器節點會收集偵測結果，並將事件發佈至 [IoT 中樞接收](media-graph-concept.md#iot-hub-message-sink)節點。 節點接著會將這些事件傳送至 [IoT Edge 中樞](../../iot-edge/iot-edge-glossary.md#iot-edge-hub)。
 
-## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>建置及部署自訂視覺玩具偵測模型 
+HTTP 延伸模組節點扮演 Proxy 的角色。 其會將影片畫面轉換成指定的影像類型。 然後，會透過 REST 將影像轉送至另一個邊緣模組，以在 HTTP 端點後方執行 AI 模型。 在此範例中，該邊緣模組是使用自訂視覺所建置的玩具卡車偵測器模型。 HTTP 延伸模組處理器節點會收集偵測結果，並將事件發佈至 [Azure IoT 中樞接收](media-graph-concept.md#iot-hub-message-sink)節點。 節點接著會將這些事件傳送至 [IoT Edge 中樞](../../iot-edge/iot-edge-glossary.md#iot-edge-hub)。
 
-如自訂視覺所建議的名稱，您可以利用此名稱在雲端中建置自己的自訂物件偵測器或分類器。 其提供了簡單、容易使用且直覺的介面，供您建置可透過容器部署在雲端或邊緣的自訂視覺模型。 
+## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>建置及部署自訂視覺玩具偵測模型
 
-若要建置玩具卡車偵測器，建議您遵循此自訂視覺的透過入口網站建置物件偵測器[快速入門文章](../../cognitive-services/custom-vision-service/get-started-build-detector.md)。
+如自訂視覺所建議的名稱，您可以使用此名稱在雲端中建置自己的自訂物件偵測器或分類器。 其提供了簡單、容易使用且直覺的介面，供您建置可透過容器部署在雲端或邊緣的自訂視覺模型。
+
+若要建置玩具卡車偵測器，請逐步遵循[快速入門：使用自訂視覺網站建置物件偵測器](../../cognitive-services/custom-vision-service/get-started-build-detector.md)。
 
 其他注意事項：
  
-* 在本教學課程中，請勿使用快速入門文章的[必要條件一節](../../cognitive-services/custom-vision-service/get-started-build-detector.md#prerequisites)所提供的範例影像。 相反地，我們已利用特定的影像集來建置玩具偵測器自訂視覺模型，因此建議您在快速入門要求您[選擇定型影像](../../cognitive-services/custom-vision-service/get-started-build-detector.md#choose-training-images)時，使用[這些影像](https://lvamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip)。
+* 在本教學課程中，請勿使用快速入門文章中[必要條件一節](../../cognitive-services/custom-vision-service/get-started-build-detector.md#prerequisites)所提供的範例影像。 相反地，我們使用了特定的影像集來建置玩具偵測器自訂視覺模型。 在快速入門中，當系統要求您[選擇訓練影像](../../cognitive-services/custom-vision-service/get-started-build-detector.md#choose-training-images)時，請使用[這些影像](https://lvamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip)。
 * 在快速入門的標記影像一節中，請確實使用「貨車」標籤來標記圖片中的玩具卡車。
 
-完成後，如果模型已如您所願準備就緒，則可以使用 [效能] 索引標籤中的 [匯出] 按鈕，將模型匯出至 Docker 容器。請確定您選擇 Linux 作為容器平台類型。 這是將用來執行容器的平台。 容器下載所在的電腦可以是 Windows 或 Linux。 下列指示根據的是下載至 Windows 電腦的容器檔案。
+完成之後，您可以使用 [效能] 索引標籤上的 [匯出] 按鈕，將模型匯出至 Docker 容器。請務必選擇 Linux 作為容器平台類型。 這是將用來執行容器的平台。 容器下載所在的電腦可以是 Windows 或 Linux。 下列指示根據的是下載至 Windows 電腦的容器檔案。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="自訂視覺概觀"   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
+> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="顯示自訂視覺概觀的圖表。"   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
         ```
       1. `curl -X POST http://127.0.0.1:80/image -F imageData=@<path to any image file that has the toy delivery truck in it>`
             
-            此命令會測試本機電腦上的容器，如果影像上的貨車與我們用來定型模型的貨車相同，則輸出應該如下所示，表示有 90.12% 的可能性已偵測到貨車。
+            此命令會測試本機電腦上的容器。 如果影像中的貨車與我們用來訓練模型的貨車相同，輸出應該會類似下列範例。 其指出已偵測到貨車，且機率為 90.12%。
     
             ```
             {"created":"2020-03-20T07:10:47.827673","id":"","iteration":"","predictions":[{"boundingBox":{"height":0.66167289,"left":-0.03923762,"top":0.12781593,"width":0.70003178},"probability":0.90128148,"tagId":0,"tagName":"delivery truck"},{"boundingBox":{"height":0.63733053,"left":0.25220079,"top":0.0876643,"width":0.53331227},"probability":0.59745145,"tagId":0,"tagName":"delivery truck"}],"project":""}
@@ -94,115 +97,115 @@ HTTP 延伸模組節點扮演 Proxy 的角色。 其會將影片畫面轉換成�
 
 ## <a name="examine-the-sample-files"></a>檢查範例檔案
 
-1. 在 VSCode 中，瀏覽至「src/edge」。 您會看到您所建立的 .env 檔案以及一些部署範本檔案。
+1. 在 Visual Studio Code 中，瀏覽至 src/edge。 您會看到您所建立的 .env 檔案，以及一些部署範本檔案。
 
     部署範本會使用一些預留位置值來參考邊緣裝置的部署資訊清單。 .env 檔案具有這些變數的值。
-1. 接下來，瀏覽至 "src/cloud-to-device-console-app" 資料夾。 您在這裡會看到您建立的 appsettings.json 檔案，以及一些其他檔案：
+1. 接下來，瀏覽至 src/cloud-to-device-console-app 資料夾。 您在這裡會看到您所建立的 appsettings.json 檔案，以及一些其他檔案：
 
-    * c2d-console-app.csproj - 這是 VSCode 的專案檔。
-    * operations.json - 此檔案會列出您需要程式執行的不同作業。
-    * Program.cs - 這是執行下列動作的範例程式碼：
+    * c2d-console-app.csproj：Visual Studio Code 的專案檔。
+    * operations.json：此檔案會列出您想要讓程式執行的不同作業。
+    * Program.cs：此範例程式碼：
 
         * 載入應用程式設定。
         * 在 IoT Edge 模組的直接方法上叫用即時影片分析，以建立拓撲、具現化圖表並啟動圖表。
-        * 暫停一會，讓您在 [終端機] 視窗中檢查圖表輸出，以及在 [輸出] 視窗中檢查傳送至 IoT 中樞的事件。
+        * 暫停一會，讓您在 [終端] 視窗中檢查圖表輸出，以及在 [輸出] 視窗中檢查傳送至 IoT 中樞的事件。
         * 停用圖表執行個體、刪除圖表執行個體，以及刪除圖表拓撲。
         
 ## <a name="generate-and-deploy-the-deployment-manifest"></a>產生和部署部署資訊清單
 
-1. 在 VSCode 中，瀏覽至「src/cloud-to-device-console-app/operations.json」
+1. 在 Visual Studio Code 中，移至 src/cloud-to-device-console-app/operations.json。
 
-1. 在 GraphTopologySet 底下，確定下列各項成立：<br/>`"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/topology.json"`
-1. 在 GraphInstanceSet 底下，確定： 
-    1. "topologyName" :"InferencingWithHttpExtension"
-    1. 將下列項目新增至參數陣列頂端 - `{"name": "inferencingUrl","value": "http://cv:80/image"},`
-    1. 將 rtspUrl 參數值變更為 – "rtsp://rtspsim:554/media/t2.mkv"    
-1. 在 GraphTopologyDelete 底下，確定 "name":"InferencingWithHttpExtension"
-1. 以滑鼠右鍵按一下「src/edge/ deployment.customvision.template.json」檔案，然後按一下 [產生 IoT Edge 部署資訊清單]。
+1. 在 `GraphTopologySet` 底下，確定符合下列條件：<br/>`"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/topology.json"`
+1. 在 `GraphInstanceSet` 底下，確定：
+    1. `"topologyName" : "InferencingWithHttpExtension"`
+    1. 將下列項目新增至參數陣列頂端：`{"name": "inferencingUrl","value": "http://cv:80/image"},`
+    1. 將 `rtspUrl` 參數值變更為 `"rtsp://rtspsim:554/media/t2.mkv"`。
+1. 在 `GraphTopologyDelete` 底下，確定 `"name": "InferencingWithHttpExtension"`。
+1. 以滑鼠右鍵按一下 src/edge/ deployment.customvision.template.json 檔案，然後選取 [產生 IoT Edge 部署資訊清單]。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="自訂視覺概觀":::
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="顯示自訂視覺概觀的圖表。":::
   
-    這應該會在 src/edge/config 資料夾中建立名為「deployment.customvision.amd64.json」的資訊清單檔。
-1. 開啟「src/edge/ deployment.customvision.template.json」檔案，然後尋找 registryCredentials json 區塊。 在此區塊中，您會找到 Azure 容器登錄的位址以及其使用者名稱和密碼。
-1. 藉由在命令列上遵循下列操作，將本機自訂視覺容器推送至 Azure 容器登錄。
+    此動作應該會在 src/edge/config 資料夾中建立名為 deployment.customvision.amd64.json 的資訊清單檔。
+1. 開啟 src/edge/ deployment.customvision.template.json 檔案，然後尋找 `registryCredentials` JSON 區塊。 在此區塊中，您會找到 Azure 容器登錄的位址以及其使用者名稱和密碼。
+1. 藉由在命令列上遵循下列步驟，將本機自訂視覺容器推送至 Azure Container Registry 執行個體：
 
-    1. 藉由執行下列命令來登入登錄：
+    1. 藉由執行下列命令來登入登入：
     
         `docker login <address>`
     
-        當系統要求驗證時，請輸入使用者名稱和密碼。 
+        當系統要求驗證時，請輸入使用者名稱和密碼。
         
         > [!NOTE]
         > 命令列上不會顯示密碼。
-    1. 使用下列內容標記您的影像：<br/>`docker tag cvtruck   <address>/cvtruck`
-    1. 使用下列內容推送您的影像：<br/>`docker push <address>/cvtruck`
+    1. 使用此命令標記您的影像： <br/>`docker tag cvtruck   <address>/cvtruck`.
+    1. 使用此命令推送您的影像： <br/>`docker push <address>/cvtruck`.
 
-        如果成功，您應該會在命令列上看到「已推送」，以及影像的 SHA。 
-    1. 您也可以藉由檢查 Azure 入口網站上的 Azure 容器登錄來進行確認。 在這裡，您會看到存放庫的名稱以及標籤。 
-1. 按一下左下角 [AZURE IOT 中樞] 窗格旁的 [其他動作] 圖示，以設定 IoT 中樞連接字串。 您可以從 appsettings.json 檔案複製字串。 (以下是另一個建議的方法，可確保您在 VSCode 內透過[選取 IoT 中樞命令](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub) 設定適當的 IoT 中樞)。
-
-    > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="自訂視覺概觀":::
-1. 接下來，以滑鼠右鍵按一下「src/edge/config/ deployment.customvision.amd64.json」，然後按一下 [建立單一裝置的部署]。 
+        如果成功，您應該會在命令列上看到 `Pushed`，以及影像的 SHA。
+    1. 您也可以藉由檢查 Azure 入口網站上的 Azure Container Registry 執行個體來進行確認。 在這裡，您會看到存放庫的名稱以及標籤。
+1. 選取左下角 [AZURE IOT 中樞] 窗格旁的 [更多動作] 圖示，以設定 IoT 中樞連接字串。 您可以從 appsettings.json 檔案複製字串。 (以下是另一個建議的方法，可確保您在 Visual Studio Code 內透過[選取 IoT 中樞命令](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub) 設定適當的 IoT 中樞)。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="自訂視覺概觀":::
-1. 接著，系統會要求您選取 IoT 中樞裝置。 從下拉式選單中選取 [lva-sample-device]。
-1. 在大約 30 秒內，重新整理左下方區段的 Azure IoT 中樞，您應該會看到邊緣裝置已部署下列模組：
+    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="顯示自訂視覺概觀的圖表。":::
+1. 接下來，以滑鼠右鍵按一下 src/edge/config/ deployment.customvision.amd64.json，然後選取 [建立單一裝置的部署]。
 
-    * IoT Edge 模組上命名為「lvaEdge」的即時影片分析。
-    * 名為 `rtspsim` 的模組，其會模擬 RTSP 伺服器，作為即時影片摘要的來源。
-    * 名為 `cv` 的模組，如名稱所示，其為自訂視覺玩具卡車偵測模型，會將自訂視覺套用至影像，並傳回多個標籤類型。 (我們的模型已在單一個標籤「貨車」上定型)。
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="顯示自訂視覺概觀的圖表。":::
+1. 接著，系統會要求您選取 IoT 中樞裝置。 從下拉式清單中選取 [lva-sample-device]。
+1. 在大約 30 秒後，重新整理左下方區段中的 Azure IoT 中樞。 您的邊緣裝置應已部署下列模組：
+
+    * IoT Edge 模組 (名稱為 `lvaEdge`) 上的即時影片分析。
+    * 名為 `rtspsim` 的模組，其會模擬 RTSP 伺服器，以作為即時影片摘要的來源。
+    * 名為 `cv` 的模組，如名稱所示，其為自訂視覺玩具卡車偵測模型，會將自訂視覺套用至影像，並傳回多個標籤類型。 (我們的模型已在單一個標籤「貨車」上訓練)。
 
 ## <a name="prepare-for-monitoring-events"></a>準備監視事件
 
 以滑鼠右鍵按一下 Live Video Analytics 裝置，然後選取 [開始監視內建事件端點]。 您需要執行此步驟，才能在 Visual Studio Code 的 [輸出] 視窗中監視 IoT 中樞事件。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="自訂視覺概觀":::
+> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="顯示自訂視覺概觀的圖表。":::
 
 ## <a name="run-the-sample-program"></a>執行範例程式
 
-如果您在瀏覽器中開啟本教學課程的圖表拓撲，則會看到 inferencingUrl 的值已設定為 http://cv:80/image ，這表示在即時影片中偵測到玩具卡車後 (如果有的話)，推斷伺服器就會傳回結果。
+如果您在瀏覽器中開啟本教學課程的圖表拓撲，您會看到 `inferencingUrl` 的值已設定為 `http://cv:80/image`。 這項設定表示在即時影片中偵測到玩具卡車 (如果有的話) 之後，推斷伺服器會傳回結果。
 
-1. 在 Visual Studio Code 中，開啟 [延伸模組] 索引標籤 (或按 Ctrl+Shift+X) 並搜尋 Azure IoT 中樞。
+1. 在 Visual Studio Code 中，開啟 [延伸模組] 索引標籤 (或選取 **Ctrl+Shift+X** ) 並搜尋 Azure IoT 中樞。
 1. 按一下滑鼠右鍵，然後選取 [延伸模組設定]。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="自訂視覺概觀":::
-1. 搜尋並啟用「顯示詳細資訊訊息」。
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="顯示自訂視覺概觀的圖表。":::
+1. 搜尋並啟用「 **顯示詳細資訊訊息** 」。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="自訂視覺概觀"
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="顯示自訂視覺概觀的圖表。"
               }
             ]
           }
         }
    ```
     
-   * GraphInstanceActivate 的呼叫，會啟動圖表執行個體和影片流程。
-   * GraphInstanceList 的再次呼叫，會顯示圖表執行個體處於執行中狀態。
+   * 呼叫 `GraphInstanceActivate` 以啟動圖表執行個體和影片流程。
+   * 第二次呼叫 `GraphInstanceList` 以顯示圖表執行個體處於執行中狀態。
     
-1. [終端機] 視窗中的輸出會在出現「按 Enter 繼續」提示時暫停。 還不要選取 Enter 鍵。 請向上捲動，查看您所叫用直接方法的 JSON 回應承載。
+1. [終端] 視窗中的輸出會在出現「按 Enter 繼續」提示時暫停。 還不要選取 **Enter** 鍵。 請向上捲動，查看您所叫用直接方法的 JSON 回應承載。
 1. 切換至 Visual Studio Code 中的 [輸出] 視窗。 您會看到訊息指出 IoT Edge 模組上的 Live Video Analytics 正在傳送到 IoT 中樞。 本教學課程的下一節會討論這些訊息。
-1. 媒體圖表會繼續執行並列印結果。 RTSP 模擬器會持續循環播放來源影片。 若要停止媒體圖表，請返回 [終端機] 視窗，然後選取 Enter 鍵。
+1. 媒體圖表會繼續執行並列印結果。 RTSP 模擬器會持續循環播放來源影片。 若要停止媒體圖表，請返回 [終端] 視窗，然後選取 **Enter** 鍵。
 下一系列的呼叫會清除資源：
     
-   * GraphInstanceDeactivate 的呼叫，會停用圖表執行個體。
-   * GraphInstanceDelete 的呼叫，會刪除執行個體。
-   * GraphTopologyDelete 的呼叫，會刪除拓撲。
-   * GraphTopologyList 的最後呼叫，會顯示清單是空的。
+   * 對 `GraphInstanceDeactivate` 的呼叫會停用圖表執行個體。
+   * 對 `GraphInstanceDelete` 的呼叫會刪除執行個體。
+   * 對 `GraphTopologyDelete` 的呼叫會刪除拓撲。
+   * 最後對 `GraphTopologyList` 的呼叫會顯示清單是空的。
     
 ## <a name="interpret-the-results"></a>解讀結果
 
-當您執行媒體圖表時，來自 HTTP 延伸模組處理器節點的結果會將 IoT 中樞接收節點傳遞至 IoT 中樞。 您在 [輸出] 視窗中看到的訊息包含 body 區段和 applicationProperties 區段。 如需詳細資訊，請參閱[建立及讀取 IoT 中樞訊息](../../iot-hub/iot-hub-devguide-messages-construct.md)。
+當您執行媒體圖表時，來自 HTTP 延伸模組處理器節點的結果會將 IoT 中樞接收節點傳遞至 IoT 中樞。 您在 [輸出] 視窗中看到的訊息包含主體區段和 `applicationProperties` 區段。 如需詳細資訊，請參閱[建立及讀取 IoT 中樞訊息](../../iot-hub/iot-hub-devguide-messages-construct.md)。
 
 在下列訊息中，Live Video Analytics 模組會定義應用程式屬性和主體內容。
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished 事件
 
-具現化媒體圖表時，RTSP 來源節點會嘗試連線到在 rtspsim-live555 容器中執行的 RTSP 伺服器。 如果連線成功，則會列印下列事件。 事件類型為 Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished。
+具現化媒體圖表時，RTSP 來源節點會嘗試連線到在 rtspsim-live555 容器中執行的 RTSP 伺服器。 如果連線成功，則會列印下列事件。 事件類型是 `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished`。
 
 ```
 {
@@ -220,10 +223,10 @@ HTTP 延伸模組節點扮演 Proxy 的角色。 其會將影片畫面轉換成�
 
 在此訊息中，請注意下列詳細資料：
 
-* 此訊息為診斷事件。 MediaSessionEstablished 表示 RTSP 來源節點 (主體) 已與 RTSP 模擬器連線，並開始接收 (模擬的) 即時摘要。
-* 在 applicationProperties 中，主體表示訊息是從媒體圖表中的 RTSP 來源節點所產生。
-* 在 applicationProperties 中，eventType 表示此事件是診斷事件。
-* eventTime 表示事件發生的時間。
+* 此訊息為診斷事件。 `MediaSessionEstablished` 表示 RTSP 來源節點 (主體) 已與 RTSP 模擬器連線，並開始接收模擬的即時摘要。
+* 在 `applicationProperties` 中，`subject` 表示訊息是從媒體圖表中的 RTSP 來源節點所產生。
+* 在 `applicationProperties` 中，事件類型表示此事件是診斷事件。
+* 事件時間 (event time) 表示事件發生的時間。
 * 主體 (body) 包含診斷事件的相關資料。 在此情況下，資料包含[工作階段描述通訊協定 (SDP)](https://en.wikipedia.org/wiki/Session_Description_Protocol) 詳細資料。
 
 ### <a name="inference-event"></a>推斷事件
@@ -315,23 +318,23 @@ HTTP 擴充功能處理器節點會接收來自自訂視覺容器的推斷結果
 }
 ```
 
-請注意上述訊息中的下列事項：
+請注意上述訊息中的下列資訊：
 
-* applicationProperties 中的主體會參考產生訊息之來源 MediaGraph 中的節點。 在此情況下，訊息是來自 HTTP 擴充功能處理器。
-* applicationProperties 中的 eventType 表示這是分析推斷事件。
-* eventTime 表示事件發生的時間。
-* 「主體」包含有關分析事件的資料。 在此情況下，事件是推斷事件，因此主體包含稱為「預測」的推斷陣列。
-* 「預測」區段包含在畫面中找到玩具貨車 (標籤=貨車) 的預測清單。 正如您所想到的，貨車是您提供給自訂定型模型的玩具卡車自訂標籤，模型則會推斷輸入影片中的玩具卡車並以不同的可能性信賴度分數來識別玩具卡車。
+* `applicationProperties` 中的主體會參考訊息產生來源媒體圖表中的節點。 在此情況下，訊息是來自 HTTP 延伸模組處理器。
+* `applicationProperties` 中的事件類型 (event type) 表示這是分析推斷事件。
+* 事件時間 (event time) 表示事件發生的時間。
+* 主體包含有關分析事件的資料。 在此情況下，事件是推斷事件，因此主體包含稱為預測的推斷陣列。
+* [預測] 區段包含在畫面中找到玩具貨車 (標籤為「貨車」) 的預測清單。 您應該還記得，「貨車」是您提供給玩具卡車自訂訓練模型的自訂標記。 模型會在輸入影片中推斷並識別玩具卡車，並具有不同的機率信賴分數。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果您想要嘗試其他教學課程或快速入門，請保留所建立的資源。 否則，請移至 Azure 入口網站，瀏覽至您的資源群組，選取您執行本教學課程所用的資源群組，並刪除所有資源。
+如果您想要嘗試其他教學課程或快速入門，請保留已建立的資源。 否則，請移至 Azure 入口網站，瀏覽至您的資源群組，選取您執行本教學課程所用的資源群組，並刪除所有資源。
 
 ## <a name="next-steps"></a>後續步驟
 
 檢閱進階使用者的其他挑戰：
 
 * 使用具有 RTSP 支援的 [IP 攝影機](https://en.wikipedia.org/wiki/IP_camera)，而非使用 RTSP 模擬器。 您可以在[符合 ONVIF 標準的](https://www.onvif.org/conformant-products/)產品頁面上，搜尋支援 RTSP 的 IP 攝影機。 尋找符合設定檔 G、S 或 T 的裝置。
-* 使用 AMD64 或 x64 Linux 裝置 (而非使用 Azure Linux VM)。 此裝置必須與 IP 攝影機位於相同的網路中。 您可以遵循[在 Linux 上安裝 Azure IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge-linux.md)中的指示。 
+* 使用 AMD64 或 x64 Linux 裝置 (而非使用 Azure Linux VM)。 此裝置必須與 IP 攝影機位於相同的網路中。 您可以遵循[在 Linux 上安裝 Azure IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge-linux.md)中的指示。
 
 然後遵循[將您的第一個 IoT Edge 模組部署至虛擬 Linux 裝置](../../iot-edge/quickstart-linux.md)中的指示，向 Azure IoT 中樞註冊裝置。

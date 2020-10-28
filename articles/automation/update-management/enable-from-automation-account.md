@@ -2,28 +2,28 @@
 title: 從自動化帳戶啟用 Azure 自動化更新管理
 description: 此文章說明如何從自動化帳戶啟用更新管理。
 services: automation
-ms.date: 10/15/2020
+ms.date: 10/26/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 1c28d73cac142e85cc9faf36d5e875d684094724
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 9630b29def0c450ef907219895d1488d72fd78d1
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222103"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669895"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>從自動化帳戶啟用更新管理
 
-本文說明如何使用您的自動化帳戶來為您環境中的 Vm 啟用 [更新管理](overview.md) 功能，包括向 [Azure Arc 啟用的伺服器](../../azure-arc/servers/overview.md) 註冊的電腦或伺服器 (preview) 。 若要大規模啟用 Azure Vm，您必須使用更新管理啟用現有的 Azure VM。
+本文說明如何使用您的自動化帳戶來啟用環境中 Vm 的 [更新管理](overview.md) 功能，包括已在 [啟用 Azure Arc 的伺服器](../../azure-arc/servers/overview.md)上註冊的電腦或伺服器。 若要大規模啟用 Azure Vm，您必須使用更新管理啟用現有的 Azure VM。
 
 > [!NOTE]
 > 啟用更新管理時，只有特定區域支援連結 Log Analytics 工作區和自動化帳戶。 如需支援的對應配對清單，請參閱[自動化帳戶和 Log Analytics 工作區的區域對應](../how-to/region-mappings.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有這類帳戶，可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [自動化帳戶](../index.yml)，以管理電腦。
-* 在已啟用 Arc 的伺服器 (預覽) 註冊的 [Azure 虛擬機器](../../virtual-machines/windows/quick-create-portal.md)或 VM 或伺服器。 非 Azure Vm 或伺服器必須安裝適用于 Windows 或 Linux 的 [Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md) ，並向連結至自動化帳戶的工作區報告，更新管理已在中啟用。 您可以藉由部署具有 Azure Arc 的 [Azure Log ANALYTICS VM 擴充](../../azure-arc/servers/manage-vm-extensions.md) 功能，將代理程式安裝在已啟用 Arc 的伺服器上。
+* 在已啟用 Arc 的伺服器 (預覽) 註冊的 [Azure 虛擬機器](../../virtual-machines/windows/quick-create-portal.md)或 VM 或伺服器。 非 Azure Vm 或伺服器必須安裝適用于 Windows 或 Linux 的 [Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md) ，並向連結至自動化帳戶的工作區報告，更新管理已在中啟用。 建議您先將您的電腦連接到 [Azure Arc 啟用的伺服器](../../azure-arc/servers/overview.md)，然後使用 Azure 原則將「 [部署 Log analytics 代理程式」指派給 *Linux* 或 *Windows* Azure Arc 電腦](../../governance/policy/samples/built-in-policies.md#monitoring) 內建原則，以安裝適用于 Windows 或 Linux 的 Log analytics 代理程式。 如果您也打算使用適用於 VM 的 Azure 監視器監視電腦，請改用 [啟用適用於 VM 的 Azure 監視器](../../governance/policy/samples/built-in-initiatives.md#monitoring) 方案。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -53,7 +53,7 @@ ms.locfileid: "92222103"
 
 1. 從您的自動化帳戶中，選取 [更新管理] 之下的 [更新管理]。
 
-2. 選取 [ **新增非 Azure 電腦**]。 此動作會開啟新的瀏覽器視窗，其中包含 [安裝和設定適用于 Windows 的 Log Analytics 代理程式的指示](../../azure-monitor/platform/log-analytics-agent.md) ，讓電腦可以開始向更新管理報告。 如果您要啟用目前受 Operations Manager 管理的電腦，則不需要新的代理程式。 工作區資訊會新增至代理程式設定。
+2. 選取 [ **新增非 Azure 電腦** ]。 此動作會開啟新的瀏覽器視窗，其中包含 [安裝和設定適用于 Windows 的 Log Analytics 代理程式的指示](../../azure-monitor/platform/log-analytics-agent.md) ，讓電腦可以開始向更新管理報告。 如果您要啟用目前受 Operations Manager 管理的電腦，則不需要新的代理程式。 工作區資訊會新增至代理程式設定。
 
 ## <a name="enable-machines-in-the-workspace"></a>啟用工作區中的機器
 

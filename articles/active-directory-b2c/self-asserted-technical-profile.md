@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/15/2020
+ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 817267414555ea0641e8fb8a8392976a4789c780
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: a4e76e3924b1b14660dce8a3b58f7dd5b2715eec
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096210"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670116"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義自我判斷技術設定檔
 
@@ -53,13 +53,13 @@ Azure Active Directory B2C (Azure AD B2C) 中的所有互動都必須提供自�
 
 ## <a name="display-claims"></a>顯示宣告
 
-顯示宣告功能目前為 **預覽**狀態。
+顯示宣告功能目前為 **預覽** 狀態。
 
-**DisplayClaims**元素包含要在螢幕上呈現以收集使用者資料的宣告清單。 若要預先填入顯示宣告的值，請使用先前所述的輸入宣告。 元素可能也包含預設值。
+**DisplayClaims** 元素包含要在螢幕上呈現以收集使用者資料的宣告清單。 若要預先填入顯示宣告的值，請使用先前所述的輸入宣告。 元素可能也包含預設值。
 
-**DisplayClaims**中的宣告順序會指定 Azure AD B2C 在螢幕上呈現宣告的順序。 若要強制使用者提供特定宣告的值，請將**DisplayClaim**元素的**必要**屬性設定為 `true` 。
+**DisplayClaims** 中的宣告順序會指定 Azure AD B2C 在螢幕上呈現宣告的順序。 若要強制使用者提供特定宣告的值，請將 **DisplayClaim** 元素的 **必要** 屬性設定為 `true` 。
 
-**DisplayClaims**集合中的**ClaimType**元素必須將 **>userinputtype**元素設定為 Azure AD B2C 所支援的任何使用者輸入類型。 例如，`TextBox` 或 `DropdownSingleSelect`。
+**DisplayClaims** 集合中的 **ClaimType** 元素必須將 **>userinputtype** 元素設定為 Azure AD B2C 所支援的任何使用者輸入類型。 例如，`TextBox` 或 `DropdownSingleSelect`。
 
 ### <a name="add-a-reference-to-a-displaycontrol"></a>新增控制項的參考
 
@@ -114,11 +114,11 @@ Azure Active Directory B2C (Azure AD B2C) 中的所有互動都必須提供自�
 </TechnicalProfile>
 ```
 
-`age`基底原則中的宣告不會再顯示在使用者的畫面上，它實際上是「隱藏」。 若要顯示宣告 `age` 並從使用者收集存留期值，您必須新增 `age` **DisplayClaim**。
+`age`基底原則中的宣告不會再顯示在使用者的畫面上，它實際上是「隱藏」。 若要顯示宣告 `age` 並從使用者收集存留期值，您必須新增 `age` **DisplayClaim** 。
 
 ## <a name="output-claims"></a>輸出宣告
 
-**OutputClaims**元素包含要傳回至下一個協調流程步驟的宣告清單。 只有從未設定過宣告時， **DefaultValue** 屬性才會生效。 如果設定在先前的協調流程步驟中，即使使用者將值保留空白，預設值也不會生效。 若要強制使用預設值，請將 **AlwaysUseDefaultValue** 屬性設定為 `true`。
+**OutputClaims** 元素包含要傳回至下一個協調流程步驟的宣告清單。 只有從未設定過宣告時， **DefaultValue** 屬性才會生效。 如果設定在先前的協調流程步驟中，即使使用者將值保留空白，預設值也不會生效。 若要強制使用預設值，請將 **AlwaysUseDefaultValue** 屬性設定為 `true`。
 
 基於安全性理由， (設定為) 的密碼宣告值 `UserInputType` `Password` 僅適用于自我判斷技術設定檔的驗證技術設定檔。 您無法在下一個協調流程步驟中使用密碼宣告。 
 
@@ -133,10 +133,10 @@ Azure Active Directory B2C (Azure AD B2C) 中的所有互動都必須提供自�
 
 使用輸出宣告的時機：
 
-- **宣告是由輸出宣告轉換輸出**。
+- **宣告是由輸出宣告轉換輸出** 。
 - **在輸出宣告中設定預設值** ，而不需要從使用者收集資料，或從驗證技術設定檔傳回資料。 `LocalAccountSignUpWithLogonEmail` 自我判斷提示技術設定檔會將 **executed-SelfAsserted-Input** 宣告設定為 `true`。
-- **驗證技術設定檔會傳回輸出宣告**：您的技術設定檔可能會呼叫驗證技術設定檔來傳回某些宣告。 您可能想要提升宣告，並將其傳回到使用者旅程圖中的下一個協調流程步驟。 例如，使用本機帳戶登入時，名為 `SelfAsserted-LocalAccountSignin-Email` 的自我判斷技術設定檔會呼叫名為 `login-NonInteractive` 的驗證技術設定檔。 此技術設定檔會驗證使用者認證，也會傳回使用者設定檔。 例如，'userPrincipalName'、'displayName'、'givenName' 與 'surName'。
-- **顯示控制項會傳回輸出宣告** ，您的技術設定檔可能會有 [顯示控制項](display-controls.md)的參考。 顯示控制項會傳回一些宣告，例如已驗證的電子郵件地址。 您可能想要提升宣告，並將其傳回到使用者旅程圖中的下一個協調流程步驟。 顯示控制項功能目前為 **預覽**狀態。
+- **驗證技術設定檔會傳回輸出宣告** ：您的技術設定檔可能會呼叫驗證技術設定檔來傳回某些宣告。 您可能想要提升宣告，並將其傳回到使用者旅程圖中的下一個協調流程步驟。 例如，使用本機帳戶登入時，名為 `SelfAsserted-LocalAccountSignin-Email` 的自我判斷技術設定檔會呼叫名為 `login-NonInteractive` 的驗證技術設定檔。 此技術設定檔會驗證使用者認證，也會傳回使用者設定檔。 例如，'userPrincipalName'、'displayName'、'givenName' 與 'surName'。
+- **顯示控制項會傳回輸出宣告** ，您的技術設定檔可能會有 [顯示控制項](display-controls.md)的參考。 顯示控制項會傳回一些宣告，例如已驗證的電子郵件地址。 您可能想要提升宣告，並將其傳回到使用者旅程圖中的下一個協調流程步驟。 顯示控制項功能目前為 **預覽** 狀態。
 
 下列範例示範如何使用可同時使用顯示宣告和輸出宣告的自我判斷技術設定檔。
 
@@ -175,6 +175,14 @@ Azure Active Directory B2C (Azure AD B2C) 中的所有互動都必須提供自�
 </TechnicalProfile>
 ```
 
+### <a name="output-claims-sign-up-or-sign-in-page"></a>輸出宣告註冊或登入頁面
+
+在合併的註冊和登入頁面上，使用內容定義 [DataUri](contentdefinitions.md#datauri) 專案時，請注意下列 `unifiedssp` `unifiedssd` 事項：指定或頁面類型：
+
+- 只會轉譯使用者名稱和密碼宣告。
+- 前兩個輸出宣告必須是使用者名稱，而密碼 (順序) 。 
+- 任何其他宣告都不會呈現;針對這些宣告，您必須設定 `defaultValue` 或叫用宣告表單驗證技術設定檔。 
+
 ## <a name="persist-claims"></a>保存宣告
 
 未使用 PersistedClaims 元素。 自我判斷技術設定檔不會保存要 Azure AD B2C 的資料。 而是改為呼叫負責保存資料的驗證技術設定檔。 例如，註冊原則會使用 `LocalAccountSignUpWithLogonEmail` 自我判斷技術設定檔來收集新的使用者設定檔。 `LocalAccountSignUpWithLogonEmail` 技術設定檔會呼叫驗證技術設定檔來建立 Azure AD B2C 中的帳戶。
@@ -203,7 +211,7 @@ Azure Active Directory B2C (Azure AD B2C) 中的所有互動都必須提供自�
 | 設定. forgotPasswordLinkLocation <sup>2</sup>| 否| 顯示忘記的密碼連結。 可能的值： `AfterInput` (預設值) 連結會顯示在頁面底部，或 `None` 移除 [忘記密碼] 連結。|
 | 設定. enableRememberMe <sup>2</sup>| 否| 顯示 [ [讓我保持登入](custom-policy-keep-me-signed-in.md) ] 核取方塊。 可能的值： `true` 或 `false` (預設) 。 |
 | 設定. inputVerificationDelayTimeInMilliseconds <sup>3</sup>| 否| 藉由等待使用者停止輸入，然後驗證值，來改善使用者體驗。 預設值為2000毫秒。 |
-| IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含 [宣告解析](claim-resolver-overview.md) 。 可能的值： `true` 或 `false`   (預設) 。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 `true` 。 |
+| IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含 [宣告解析](claim-resolver-overview.md) 。 可能的值為：`true` 或 `false` (預設)。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 `true` 。 |
 
 注意：
 1. 適用于內容定義 [DataUri](contentdefinitions.md#datauri) 類型的 `unifiedssp` 或 `unifiedssd` 。

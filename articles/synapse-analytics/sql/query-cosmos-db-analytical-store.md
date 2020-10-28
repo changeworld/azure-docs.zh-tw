@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 99fcdd0232e2991acaceb6838bff0b00c6824dfb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c5fa326fa05a34ae5b51054b867a766489b85c16
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474898"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670705"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>使用 Azure Synapse 連結中的無伺服器 SQL 集區來查詢 Azure Cosmos DB 資料 (預覽) 
 
@@ -23,6 +23,9 @@ ms.locfileid: "92474898"
 若要查詢 Azure Cosmos DB，可透過[OPENROWSET](develop-openrowset.md)函式（包括大部分的[SQL 函數和運算子](overview-features.md)）支援完整的[選取](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15)介面區。 您也可以儲存查詢的結果，此查詢會使用 [create external table as select](develop-tables-cetas.md#cetas-in-sql-on-demand)，從 Azure Cosmos DB 中讀取資料，以及 Azure Blob 儲存體中的資料和 Azure Data Lake Storage。 您目前無法使用 [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand)將無伺服器 SQL 集區查詢結果儲存至 Azure Cosmos DB。
 
 在本文中，您將瞭解如何使用無伺服器 SQL 集區來撰寫查詢，該查詢將會從已啟用 Synapse 連結的 Azure Cosmos DB 容器中查詢資料。 然後，您可以深入瞭解如何在 Azure Cosmos DB 容器上建立無伺服器的 SQL 集區，並在 [本](./tutorial-data-analyst.md) 教學課程中將它們連接到 Power BI 模型。 
+
+> [!IMPORTANT]
+> 本教學課程使用的容器具有 [Azure Cosmos DB 定義完善的架構](../../cosmos-db/analytical-store-introduction.md#schema-representation) ，可提供未來將會支援的查詢體驗。 無伺服器 SQL 集區針對 [Azure Cosmos DB 完整精確度架構](#full-fidelity-schema) 所提供的查詢體驗，是根據預覽意見反應而變更的暫時行為。 請勿依賴函式在 `OPENROWSET` 公開預覽期間提供給全功能容器的架構，因為查詢 experinece 可能會變更，並與妥善定義的架構對齊。 Contact [Synapse link 產品小組](mailto:cosmosdbsynapselink@microsoft.com) 以提供意見反應。
 
 ## <a name="overview"></a>概觀
 
@@ -253,16 +256,81 @@ SQL (Core) API 的 Azure Cosmos DB 帳戶支援數位、字串、布林值、nul
 | Null | `any SQL type` 
 | 嵌套物件或陣列 | Varchar (max)  (UTF8 資料庫定序) ，序列化為 JSON 文字 |
 
+## <a name="full-fidelity-schema"></a>完整精確度架構
+
+Azure Cosmos DB 完整的精確度架構會記錄容器中每個屬性的值和其最符合的類型。
+`OPENROWSET` 在具有完整精確度之容器的函式中，會在每個資料格中提供型別和實際值。 讓我們假設下列查詢會從具有完整精確度架構的容器中讀取專案：
+
+```sql
+SELECT *
+FROM OPENROWSET(
+      'CosmosDB',
+      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+       EcdcCases
+    ) as rows
+```
+
+此查詢的結果會傳回格式化為 JSON 文字的類型和值： 
+
+| date_rep | 案例 | geo_id |
+| --- | --- | --- |
+| {"date"： "2020-08-13"} | {"int32"： "254"} | {"string"： "RS"} |
+| {"date"： "2020-08-12"} | {"int32"： "235"}| {"string"： "RS"} |
+| {"date"： "2020-08-11"} | {"int32"： "316"} | {"string"： "RS"} |
+| {"date"： "2020-08-10"} | {"int32"： "281"} | {"string"： "RS"} |
+| {"date"： "2020-08-09"} | {"int32"： " | {"string"： "RS"} |
+| {"string"： "2020/08/08"} | {"int32"： "312"} | {"string"： "RS"} |
+| {"date"： "2020-08-07"} | {"float64"： "339.0"} | {"string"： "RS"} |
+
+您可以針對每個值，查看 Cosmos DB 容器專案中識別的類型。 屬性的大部分值 `date_rep` `date` 都包含值，但其中某些值會不正確地儲存為 Cosmos DB 中的字串。 完整的精確度架構會傳回正確類型的 `date` 值，以及格式不正確的 `string` 值。
+案例數目是儲存為值的資訊 `int32` ，但有一個以十進位數輸入的值。 此值具有 `float64` 類型。 如果有一些值超過最大 `int32` 數目，則會儲存為 `int64` 類型。 `geo_id`此範例中的所有值都會儲存為 `string` 類型。
+
+> [!IMPORTANT]
+> 完整的精確度架構會以預期的型別和不正確輸入類型的值來公開這兩個值。
+> 您應清除 Azure Cosmos DB 容器中具有不正確類型的值，以在完整精確度分析存放區中套用 corection。 
+
 若要查詢 Mongo DB API 種類的 Azure Cosmos DB 帳戶，您可以深入瞭解分析存放區中的完整精確度架構標記法，以及 [此處](../../cosmos-db/analytical-store-introduction.md#analytical-schema)所使用的擴充屬性名稱。
+
+在查詢完全精確度的架構時，您必須在子句中明確指定 SQL 型別和預期的 Cosmos DB 屬性型別 `WITH` 。 在下列範例中，我們會假設 `string` 屬性的正確類型 `geo_id` 和 `int32` 屬性的正確類型 `cases` ：
+
+```sql
+SELECT geo_id, cases = SUM(cases)
+FROM OPENROWSET(
+      'CosmosDB'
+      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+       EcdcCases
+    ) WITH ( geo_id VARCHAR(50) '$.geo_id.string',
+             cases INT '$.cases.int32'
+    ) as rows
+GROUP BY geo_id
+```
+
+具有其他類型的值將不會在 `geo_id` 和資料行中傳回 `cases` ，而且查詢會傳回 `NULL` 這些資料格中的值。 此查詢只會參考 `cases` 運算式 () 中具有指定之類型的 `cases.int32` 。 如果您有與其他類型 (的值 `cases.int64` ， `cases.float64` 則無法在 Cosmos DB 容器中清除代表的) ，您必須在子句中明確參考它們 `WITH` 併合並結果。 下列查詢會匯總 `int32` 、 `int64` 和 `float64` 儲存在資料行中的 `cases` ：
+
+```sql
+SELECT geo_id, cases = SUM(cases_int) + SUM(cases_bigint) + SUM(cases_float)
+FROM OPENROWSET(
+      'CosmosDB',
+      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+       EcdcCases
+    ) WITH ( geo_id VARCHAR(50) '$.geo_id.string', 
+             cases_int INT '$.cases.int32',
+             cases_bigint BIGINT '$.cases.int64',
+             cases_float FLOAT '$.cases.float64'
+    ) as rows
+GROUP BY geo_id
+```
+
+在此範例中，案例數目會儲存為 `int32` 、 `int64` 或 `float64` 值，而且所有值都必須先解壓縮，才能計算每個國家/地區的案例數目。 
 
 ## <a name="known-issues"></a>已知問題
 
-- 在**MUST**函式 `OPENROWSET` (（例如) ）之後，必須指定別名 `OPENROWSET (...) AS function_alias` 。 省略別名可能會導致連線問題，而且 Synapse 無伺服器 SQL 端點可能暫時無法使用。 此問題將在2020年11月解決。
-- 無伺服器 SQL 集區目前不支援 [Azure Cosmos DB 的完整精確度架構](../../cosmos-db/analytical-store-introduction.md#schema-representation)。 請使用無伺服器 SQL 集區，以存取 Cosmos DB 定義完善的架構。
+- 在 **MUST** 函式 `OPENROWSET` (（例如) ）之後，必須指定別名 `OPENROWSET (...) AS function_alias` 。 省略別名可能會導致連線問題，而且 Synapse 無伺服器 SQL 端點可能暫時無法使用。 此問題將在2020年11月解決。
+- 無伺服器 SQL 集區針對 [Azure Cosmos DB 完整精確度架構](#full-fidelity-schema) 提供的查詢體驗，是根據預覽意見反應而變更的暫時行為。 請勿依賴函式在 `OPENROWSET` 公開預覽期間提供的架構，因為查詢體驗可能與妥善定義的架構一致。 Contact [Synapse link 產品小組](mailto:cosmosdbsynapselink@microsoft.com) 以提供意見反應。
 
 下表列出可能的錯誤和疑難排解動作：
 
-| 錯誤 | 根本原因 |
+| Error | 根本原因 |
 | --- | --- |
 | 語法錯誤：<br/> -' Openrowset ' 附近的語法不正確<br/> - `...` 不是可辨識的大量 OPENROWSET 提供者選項。<br/> -接近的語法不正確 `...` | 可能的根本原因<br/> -不使用 ' CosmosDB ' 做為第一個參數，<br/> -使用字串常值，而不是第三個參數中的識別碼，<br/> -未指定第三個參數 (容器名稱)  |
 | CosmosDB 連接字串中發生錯誤 | -未指定帳戶、資料庫、金鑰 <br/> -無法辨識的連接字串中有一些選項。<br/> -分號 `;` 放置於連接字串的結尾 |

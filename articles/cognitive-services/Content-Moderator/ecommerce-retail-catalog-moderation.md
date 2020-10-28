@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 06/29/2020
+ms.date: 10/23/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 017dabf16384e53d924ed69f36b64050fcacb5bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9aae410d320713650704e175006a6593b30f52a7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934781"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504151"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>教學課程：使用 Azure Content Moderator 仲裁電子商務產品影像
 
@@ -48,17 +48,17 @@ GitHub 上的[範例電子商務目錄仲裁](https://github.com/MicrosoftConten
 
 ## <a name="create-custom-moderation-tags"></a>建立自訂仲裁標記
 
-接下來，在審核工具中建立自訂標記 (如果您需要協助進行此程序，請參閱[標記](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/tags)一文)。 在此情況下，我們將新增下列標記：**名人**、**美國**、**國旗**、**玩具**以及**筆**。 並非所有標記都必須是電腦視覺中可偵測的類別 (例如**名人**)；只要您將自訂視覺分類器定型以便在稍後加以偵測，就可以新增您自己的自訂標記。
+接下來，在審核工具中建立自訂標記 (如果您需要協助進行此程序，請參閱[標記](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/tags)一文)。 在此情況下，我們將新增下列標記： **名人** 、 **美國** 、 **國旗** 、 **玩具** 以及 **筆** 。 並非所有標記都必須是電腦視覺中可偵測的類別 (例如 **名人** )；只要您將自訂視覺分類器定型以便在稍後加以偵測，就可以新增您自己的自訂標記。
 
 ![設定自訂標記](images/tutorial-ecommerce-tags2.PNG)
 
 ## <a name="create-visual-studio-project"></a>建立 Visual Studio 專案
 
 1. 在 Visual Studio 中，開啟 [新增專案] 對話方塊。 依序展開 [已安裝]  和 [Visual C#]  ，然後選取 [主控台應用程式 (.NET Framework)]  。
-1. 將應用程式命名為 **EcommerceModeration**，然後按一下 [確定]  。
+1. 將應用程式命名為 **EcommerceModeration** ，然後按一下 [確定]  。
 1. 如果您將此專案新增至現有的方案中，選取此專案作為單一啟始專案。
 
-本教學課程會反白顯示專案的核心程式碼，但是不會涵蓋每一行程式碼。 將 _Program.cs_ 的完整內容從範例專案 ([範例電子商務目錄仲裁](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)) 複製到新專案的 _Program.cs_ 檔案。 接著，逐步執行下列各節以了解專案的運作方式以及如何自行使用該專案。
+本教學課程會反白顯示專案的核心程式碼，但是不會涵蓋每一行程式碼。 將 _Program.cs_ 的完整內容從範例專案 ( [範例電子商務目錄仲裁](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)) 複製到新專案的 _Program.cs_ 檔案。 接著，逐步執行下列各節以了解專案的運作方式以及如何自行使用該專案。
 
 ## <a name="define-api-keys-and-endpoints"></a>定義 API 金鑰與端點
 
@@ -78,13 +78,13 @@ GitHub 上的[範例電子商務目錄仲裁](https://github.com/MicrosoftConten
 
 ## <a name="evaluateadultracy-method"></a>EvaluateAdultRacy 方法
 
-請參閱 **Program** 類別中的 **EvaluateAdultRacy** 方法。 此方法會採用影像 URL 和金鑰值組陣列作為參數。 它會呼叫 Content Moderator 的影像 API (使用 REST) 來取得成人和猥褻的影像分數。 如果任一個分數大於 0.4 (範圍介於 0 與 1)，它便會將 **ReviewTags** 陣列中對應的值設定為 **True**。
+請參閱 **Program** 類別中的 **EvaluateAdultRacy** 方法。 此方法會採用影像 URL 和金鑰值組陣列作為參數。 它會呼叫 Content Moderator 的影像 API (使用 REST) 來取得成人和猥褻的影像分數。 如果任一個分數大於 0.4 (範圍介於 0 與 1)，它便會將 **ReviewTags** 陣列中對應的值設定為 **True** 。
 
 [!code-csharp[define EvaluateAdultRacy method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=73-113)]
 
 ## <a name="evaluatecomputervisiontags-method"></a>EvaluateComputerVisionTags 方法
 
-下一個方法會採用影像 URL 和您的電腦視覺訂用帳戶資訊，並分析影像中是否存在名人。 如果找到一個或多個名人，它會將 **ReviewTags** 陣列中對應的值設為 **True**。
+下一個方法會採用影像 URL 和您的電腦視覺訂用帳戶資訊，並分析影像中是否存在名人。 如果找到一個或多個名人，它會將 **ReviewTags** 陣列中對應的值設為 **True** 。
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=115-146)]
 
@@ -94,13 +94,13 @@ GitHub 上的[範例電子商務目錄仲裁](https://github.com/MicrosoftConten
 
 ![自訂視覺網頁，其中包含筆、玩具和國旗的定型影像](images/tutorial-ecommerce-custom-vision.PNG)
 
-一旦您將分類器定型之後，請取得預測金鑰和預測端點 URL (如果您需要協助擷取它們，請參閱[取得 URL 和預測金鑰](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key))，然後將這些值分別指派給您的 `CustomVisionKey` 和 `CustomVisionUri` 欄位。 此方法會使用這些值查詢分類器。 如果分類器在影像中找到一個或多個自訂標記，則此方法會將 **ReviewTags** 陣列中對應的值設為 **True**。
+一旦您將分類器定型之後，請取得預測金鑰和預測端點 URL (如果您需要協助擷取它們，請參閱[取得 URL 和預測金鑰](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key))，然後將這些值分別指派給您的 `CustomVisionKey` 和 `CustomVisionUri` 欄位。 此方法會使用這些值查詢分類器。 如果分類器在影像中找到一個或多個自訂標記，則此方法會將 **ReviewTags** 陣列中對應的值設為 **True** 。
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=148-171)]
 
 ## <a name="create-reviews-for-review-tool"></a>為審核工具建立審核
 
-在前面幾節中，您已探索應用程式如何掃描傳入影像中是否有成人和猥褻內容 (Content Moderator)、名人 (電腦視覺) 以及各種其他物件 (自訂視覺) 的方法。 接下來，請參閱 **CreateReview** 方法，它會將影像及其套用的所有標記 (當作_中繼資料_傳入) 上傳到 Content Moderator 審核工具。
+在前面幾節中，您已探索應用程式如何掃描傳入影像中是否有成人和猥褻內容 (Content Moderator)、名人 (電腦視覺) 以及各種其他物件 (自訂視覺) 的方法。 接下來，請參閱 **CreateReview** 方法，它會將影像及其套用的所有標記 (當作 _中繼資料_ 傳入) 上傳到 Content Moderator 審核工具。
 
 [!code-csharp[define CreateReview method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=173-196)]
 

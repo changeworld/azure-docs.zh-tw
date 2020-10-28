@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 5da707d02d867ea35382b09612a89144f0a6527f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 426445342263ad10f174ecf7cca926805eb601e6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282305"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669628"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文字和語音翻譯的語言和區域支援
 
@@ -165,8 +165,7 @@ Translator 會偵測下列翻譯和音譯語言。
 |普什圖文|    `ps`    |
 |波斯文|   `fa`    |
 |波蘭文|    `pl`    |
-|葡萄牙文 (巴西)|   `pt-br` |
-|葡萄牙文 (葡萄牙)| `pt-pt` |
+|葡萄牙文|    `pt`    |
 |羅馬尼亞文|  `ro`    |
 |俄文|   `ru`    |
 |塞爾維亞文 (斯拉夫)|    `sr-Cyrl`|
@@ -201,7 +200,7 @@ Translator 會偵測下列翻譯和音譯語言。
 | 繁體中文 | `zh-Hant` | 繁體中文 `Hant`| <--> | 拉丁文 `Latn` |
 | 繁體中文 | `zh-Hant` | 繁體中文 `Hant`| <--> | 簡體中文 `Hans` |
 | 古吉拉特文 | `gu`  | 古吉拉特文 `Gujr` | <--> | 拉丁文 `Latn` |
-| 希伯來文 | `he` | 希伯來文 `Hebr` | <--> | 拉丁文 `Latn` |
+| Hebrew | `he` | 希伯來文 `Hebr` | <--> | 拉丁文 `Latn` |
 | Hindi | `hi` | 梵文字母 `Deva` | <--> | 拉丁文 `Latn` |
 | 日文 | `ja` | 日文 `Jpan` | <--> | 拉丁文 `Latn` |
 | 坎那達文 | `kn` | 坎那達文 `Knda` | <--> | 拉丁文 `Latn` |
@@ -353,7 +352,7 @@ Translator 會偵測下列翻譯和音譯語言。
 ### <a name="speech-to-text"></a>語音轉文字
 將語音轉換成文字，以轉譯成您選擇的文字語言。 語音轉換文字用於語音轉換文字翻譯，或用於與語音合成搭配使用的語音轉換語音翻譯。
 
-| 語言    |
+| Language    |
 |:----------- |
 |阿拉伯文|
 |粵語 (繁體中文)|
@@ -388,7 +387,7 @@ Translator 會偵測下列翻譯和音譯語言。
 ### <a name="text-to-speech"></a>文字轉換語音
 將文字轉換成語音。 文字轉換語音是用來在搭配語音轉換文字使用時，新增聲音轉換結果的聲音輸出，或語音轉換語音翻譯的輸出。 
 
-| 語言    |
+| Language    |
 |:----------- |
 |阿拉伯文|
 |保加利亞文|
