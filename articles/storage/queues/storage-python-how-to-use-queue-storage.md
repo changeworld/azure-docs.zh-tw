@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: seo-javascript-october2019, devx-track-python
-ms.openlocfilehash: 79334db46b6f035aabffcca133ed4f5cb8df3637
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b4592b846477fe16e5ebcff7c9adfb45f7fe559
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855554"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790503"
 ---
 # <a name="how-to-use-azure-queue-storage-from-python"></a>如何使用 Python 的 Azure 佇列儲存體
 
@@ -293,13 +293,13 @@ queue_service.delete_queue(queue_name)
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 既然您已瞭解佇列儲存體的基本概念，請參考下列連結以深入瞭解。
 
 * [Azure 佇列 Python API 參考](/python/api/azure-storage-queue)
 * [Python 開發人員中心](https://azure.microsoft.com/develop/python/)
-* [Azure 儲存體服務 REST API](https://msdn.microsoft.com/library/azure/dd179355)
+* [Azure 儲存體服務 REST API](/rest/api/storageservices/)
 
 [適用于 Python 的 Azure 佇列儲存體用戶端程式庫]: https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue
 [適用於 Python 的 Azure SDK]: https://github.com/azure/azure-sdk-for-python

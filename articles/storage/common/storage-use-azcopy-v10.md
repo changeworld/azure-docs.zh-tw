@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b1d25ae127d9a732225859a09622bb057c348e28
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ce6398f63149a7f5dd3102d75c8db324f526c419
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488481"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791149"
 ---
 # <a name="get-started-with-azcopy"></a>開始使用 AzCopy
 
@@ -37,7 +37,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 這些檔案會壓縮成 zip 檔案 (Windows 和 Mac) 或 (Linux) 的 tar 檔案。 若要下載並解壓縮 Linux 上的 tar 檔案，請參閱您 Linux 發行版本的檔。
 
 > [!NOTE]
-> 如果您想要將資料複製到您的 [Azure 表格儲存體](/azure/storage/tables/table-storage-overview) 服務或從中複製資料，請安裝 [AzCopy 7.3 版](https://aka.ms/downloadazcopynet)。
+> 如果您想要將資料複製到您的 [Azure 表格儲存體](../tables/table-storage-overview.md) 服務或從中複製資料，請安裝 [AzCopy 7.3 版](https://aka.ms/downloadazcopynet)。
 
 
 ## <a name="run-azcopy"></a>執行 AzCopy
@@ -68,7 +68,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 | 儲存體類型 | 目前支援的授權方法 |
 |--|--|
 |**Blob 儲存體** | Azure AD 和 SAS |
-|**Blob 儲存體 (階層命名空間) ** | Azure AD 和 SAS |
+|**Blob 儲存體 (階層命名空間)** | Azure AD 和 SAS |
 |**檔案儲存體** | 僅限 SAS |
 
 ### <a name="option-1-use-azure-active-directory"></a>選項1：使用 Azure Active Directory
@@ -80,14 +80,14 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 
 您需要的授權層級，取決於您是否打算上傳檔案或只下載檔案。
 
-如果您只想要下載檔案，請確認 [儲存體 Blob 資料讀取器](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) 已指派給您的使用者身分識別、受控識別或服務主體。
+如果您只想要下載檔案，請確認 [儲存體 Blob 資料讀取器](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader) 已指派給您的使用者身分識別、受控識別或服務主體。
 
-> 「使用者身分識別」、「受控識別」和「服務主體」都是一種 *安全性主體*，因此我們將在本文的其餘部分使用「 *安全性主體* 」一詞。
+> 「使用者身分識別」、「受控識別」和「服務主體」都是一種 *安全性主體* ，因此我們將在本文的其餘部分使用「 *安全性主體* 」一詞。
 
 如果您想要上傳檔案，請確認其中一個角色已指派給您的安全性主體：
 
-- [儲存體 Blob 資料參與者](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)
-- [儲存體 Blob 資料擁有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
+- [儲存體 Blob 資料參與者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+- [儲存體 Blob 資料擁有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
 
 這些角色可以指派給這些範圍中的安全性主體：
 
@@ -96,14 +96,14 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 - 資源群組
 - 訂用帳戶
 
-若要瞭解如何驗證和指派角色，請參閱 [使用 Azure 入口網站指派 Azure 角色以存取 blob 和佇列資料](/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+若要瞭解如何驗證和指派角色，請參閱 [使用 Azure 入口網站指派 Azure 角色以存取 blob 和佇列資料](./storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)。
 
 > [!NOTE]
 > 請記住，Azure 角色指派最多可能需要五分鐘的時間來傳播。
 
 如果您的安全性主體已新增至目標容器或目錄 (ACL) 的存取控制清單中，您就不需要將其中一個角色指派給安全性主體。 在 ACL 中，安全性主體需要目標目錄的寫入權限，以及容器和每個父目錄的 execute 許可權。
 
-若要深入瞭解，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](/azure/storage/blobs/data-lake-storage-access-control)。
+若要深入瞭解，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](../blobs/data-lake-storage-access-control.md)。
 
 #### <a name="authenticate-a-user-identity"></a>驗證使用者身分識別
 
@@ -137,9 +137,9 @@ azcopy login --tenant-id=<tenant-id>
 
 您可以使用用戶端密碼或使用與服務主體應用程式註冊相關聯之憑證的密碼，來登入您的帳戶。
 
-若要深入瞭解如何建立服務主體，請參閱 [如何：使用入口網站來建立可存取資源 Azure AD 應用程式和服務主體](/azure/active-directory/develop/howto-create-service-principal-portal)。
+若要深入瞭解如何建立服務主體，請參閱 [如何：使用入口網站來建立可存取資源 Azure AD 應用程式和服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
-若要深入瞭解服務主體的一般資訊，請參閱[Azure Active Directory 中的應用程式和服務主體物件](/azure/active-directory/develop/app-objects-and-service-principals)。
+若要深入瞭解服務主體的一般資訊，請參閱[Azure Active Directory 中的應用程式和服務主體物件](../../active-directory/develop/app-objects-and-service-principals.md)。
 
 ##### <a name="using-a-client-secret"></a>使用用戶端密碼
 
@@ -205,7 +205,7 @@ azcopy login --service-principal --certificate-path <path-to-certificate-file> -
 
 ##### <a name="using-a-system-wide-managed-identity"></a>使用全系統受控識別
 
-首先，請確定您已在 VM 上啟用全系統受控識別。 請參閱 [系統指派的受控識別](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity)。
+首先，請確定您已在 VM 上啟用全系統受控識別。 請參閱 [系統指派的受控識別](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)。
 
 然後，在命令主控台中輸入下列命令，然後按 ENTER 鍵。
 
@@ -215,7 +215,7 @@ azcopy login --identity
 
 ##### <a name="using-a-user-assigned-managed-identity"></a>使用使用者指派的受控識別
 
-首先，請確定您已在 VM 上啟用使用者指派的受控識別。 請參閱 [使用者指派的受控識別](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#user-assigned-managed-identity)。
+首先，請確定您已在 VM 上啟用使用者指派的受控識別。 請參閱 [使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity)。
 
 然後，在命令主控台中，輸入下列任何命令，然後按 ENTER 鍵。
 
@@ -247,7 +247,7 @@ azcopy login --identity --identity-resource-id "<resource-id>"
 azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/?sv=2018-03-28&ss=bjqt&srt=sco&sp=rwddgcup&se=2019-05-01T05:01:17Z&st=2019-04-30T21:01:17Z&spr=https&sig=MGCXiyEzbtttkr3ewJIh2AR8KrghSy1DGM9ovN734bQF4%3D" --recursive=true
 ```
 
-若要深入瞭解 SAS 權杖，以及如何取得 SAS 權杖，請參閱 [使用共用存取簽章 (SAS) ](/azure/storage/common/storage-sas-overview)。
+若要深入瞭解 SAS 權杖，以及如何取得 SAS 權杖，請參閱 [使用共用存取簽章 (SAS) ](./storage-sas-overview.md)。
 
 ## <a name="transfer-files"></a>傳輸檔案
 

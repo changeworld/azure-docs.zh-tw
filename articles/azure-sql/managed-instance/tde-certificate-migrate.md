@@ -4,24 +4,24 @@ description: 遷移憑證，以透明資料加密至 Azure SQL 受控執行個�
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein, jovanpop
 ms.date: 07/21/2020
-ms.openlocfilehash: 08adfd7b69d580f6a231f13f9fb2793d828e16a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80ff16156348db9c3a209757b48b7d54615d9104
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618132"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790690"
 ---
 # <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>將受 TDE 保護之資料庫的憑證遷移至 Azure SQL 受控執行個體
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-當您使用原生還原選項將受 [透明資料加密 (TDE) ](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) 的資料庫移轉至 Azure SQL 受控執行個體時，來自 SQL Server 實例的對應憑證必須在資料庫還原之前進行遷移。 本文將逐步引導您完成將憑證手動遷移至 Azure SQL 受控執行個體的程式：
+當您使用原生還原選項將受 [透明資料加密 (TDE) ](/sql/relational-databases/security/encryption/transparent-data-encryption) 的資料庫移轉至 Azure SQL 受控執行個體時，來自 SQL Server 實例的對應憑證必須在資料庫還原之前進行遷移。 本文將逐步引導您完成將憑證手動遷移至 Azure SQL 受控執行個體的程式：
 
 > [!div class="checklist"]
 >
@@ -38,20 +38,20 @@ ms.locfileid: "91618132"
 
 若要完成本文中的步驟，您必須符合下列先決條件︰
 
-* [Pvk2Pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) 命令列工具會安裝在內部部署伺服器或其他電腦上，可以存取匯出為檔案的憑證。 Pvk2Pfx 工具是 [企業 Windows 驅動程式套件](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk)的一部分，是獨立的命令列環境。
+* [Pvk2Pfx](/windows-hardware/drivers/devtest/pvk2pfx) 命令列工具會安裝在內部部署伺服器或其他電腦上，可以存取匯出為檔案的憑證。 Pvk2Pfx 工具是 [企業 Windows 驅動程式套件](/windows-hardware/drivers/download-the-wdk)的一部分，是獨立的命令列環境。
 * 已安裝 [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell) 5.0 版或更新版本。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 請確定您具有下列項目：
 
-* [已安裝並更新](https://docs.microsoft.com/powershell/azure/install-az-ps)Azure PowerShell 模組。
+* [已安裝並更新](/powershell/azure/install-az-ps)Azure PowerShell 模組。
 * [Az. Sql 模組](https://www.powershellgallery.com/packages/Az.Sql)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Azure SQL 受控執行個體仍支援 PowerShell Azure Resource Manager 模組，但未來所有的開發都是針對 Az. Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 AzureRM 模組中命令的引數本質上相同。
+> Azure SQL 受控執行個體仍支援 PowerShell Azure Resource Manager 模組，但未來所有的開發都是針對 Az. Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 AzureRM 模組中命令的引數本質上相同。
 
 在 PowerShell 中執行下列命令，以安裝/更新模組：
 
@@ -72,7 +72,7 @@ Update-Module -Name Az.Sql
 
 ### <a name="export-the-certificate-from-the-source-sql-server-instance"></a>從來源 SQL Server 實例匯出憑證
 
-使用下列步驟來匯出具有 SQL Server Management Studio 的憑證，並將它轉換成 .pfx 格式。 *TDE_Cert*和*full_path*的一般名稱會用於憑證和檔案名，以及透過步驟的路徑。 應該以實際名稱加以取代。
+使用下列步驟來匯出具有 SQL Server Management Studio 的憑證，並將它轉換成 .pfx 格式。 *TDE_Cert* 和 *full_path* 的一般名稱會用於憑證和檔案名，以及透過步驟的路徑。 應該以實際名稱加以取代。
 
 1. 在 SSMS 中，開啟新的查詢視窗，並連接到來源 SQL Server 實例。
 
@@ -125,7 +125,7 @@ Update-Module -Name Az.Sql
 
 2. 在 [憑證] MMC 嵌入式管理單元中，展開 [個人 > 憑證的路徑] 以查看憑證清單。
 
-3. 以滑鼠右鍵按一下憑證，然後按一下 [ **匯出**]。
+3. 以滑鼠右鍵按一下憑證，然後按一下 [ **匯出** ]。
 
 4. 遵循嚮導，將憑證和私密金鑰匯出至 .pfx 格式。
 
@@ -160,7 +160,7 @@ Update-Module -Name Az.Sql
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-您必須先使用 *.pfx*檔案來[設定 Azure key vault](/azure/key-vault/key-vault-manage-with-cli2) 。
+您必須先使用 *.pfx* 檔案來 [設定 Azure key vault](../../key-vault/general/manage-with-cli2.md) 。
 
 1. 在 PowerShell 中開始準備步驟：
 

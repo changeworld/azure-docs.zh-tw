@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/28/2020
-ms.openlocfilehash: a5760d3daaa13a5ed16230e1ffb7fe3691455e09
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 8883263d6ddb2fb8ddc809f464288fcd282531bd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427033"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788820"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>選擇 vCore 和 DTU 購買模型-Azure SQL Database 和 SQL 受控執行個體
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -127,7 +127,7 @@ Dtu 最適合用來瞭解針對不同計算大小和服務層級的資料庫所�
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>判斷工作負載所需的 DTU 數目
 
-如果您想要將現有的內部部署或 SQL Server 的虛擬機器工作負載遷移到 SQL Database，請使用 [dtu 計算機](https://dtucalculator.azurewebsites.net/) 來估計所需的 dtu 數目。 針對現有的 SQL Database 工作負載，請使用 [查詢效能深入](query-performance-insight-use.md) 解析來瞭解您的資料庫資源耗用量 (dtu) 並取得更深入的見解，以優化您的工作負載。 [Sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)動態管理檢視 (DMV) 可讓您查看過去一小時的資源耗用量。 [ [Sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 目錄] 視圖會顯示過去14天的資源耗用量，但以較低的精確度表示五分鐘的平均值。
+如果您想要將現有的內部部署或 SQL Server 的虛擬機器工作負載遷移到 SQL Database，請使用 [dtu 計算機](https://dtucalculator.azurewebsites.net/) 來估計所需的 dtu 數目。 針對現有的 SQL Database 工作負載，請使用 [查詢效能深入](query-performance-insight-use.md) 解析來瞭解您的資料庫資源耗用量 (dtu) 並取得更深入的見解，以優化您的工作負載。 [Sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)動態管理檢視 (DMV) 可讓您查看過去一小時的資源耗用量。 [ [Sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 目錄] 視圖會顯示過去14天的資源耗用量，但以較低的精確度表示五分鐘的平均值。
 
 ### <a name="determine-dtu-utilization"></a>判斷 DTU 使用量
 
@@ -135,7 +135,7 @@ Dtu 最適合用來瞭解針對不同計算大小和服務層級的資料庫所�
 
 `avg_dtu_percent = MAX(avg_cpu_percent, avg_data_io_percent, avg_log_write_percent)`
 
-您可以從 [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)、 [Sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)和 [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) dmv 取得此公式的輸入值。 換句話說，若要判斷 DTU/eDTU 使用量對資料庫或彈性集區的 DTU/eDTU 限制的百分比，請從下列位置挑選最大的百分比值： `avg_cpu_percent` 、 `avg_data_io_percent` 以及 `avg_log_write_percent` 在指定的時間點。
+您可以從 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)、 [Sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)和 [sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) dmv 取得此公式的輸入值。 換句話說，若要判斷 DTU/eDTU 使用量對資料庫或彈性集區的 DTU/eDTU 限制的百分比，請從下列位置挑選最大的百分比值： `avg_cpu_percent` 、 `avg_data_io_percent` 以及 `avg_log_write_percent` 在指定的時間點。
 
 > [!NOTE]
 > 資料庫的 DTU 限制取決於資料庫可用的 CPU、讀取、寫入和記憶體。 不過，因為 SQL Database 引擎通常會使用所有可用的記憶體來進行資料快取，以改善效能，所以 `avg_memory_usage_percent` 不論目前的資料庫負載為何，此值通常會接近100%。 因此，即使記憶體間接影響 DTU 限制，也不會在 DTU 使用率公式中使用。
@@ -150,13 +150,13 @@ Dtu 最適合用來瞭解針對不同計算大小和服務層級的資料庫所�
 
 例如，如果資料庫相應增加或減少至不同的服務目標，或是資料中心內目前的基礎結構已接近其容量限制，或目前使用的硬體因為生命週期結束而解除委任，則可以將資料庫移至不同的硬體世代。
 
-如果資料庫移至不同的硬體，工作負載效能可能會變更。 DTU 模型可保證 [dtu](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-dtu#dtu-benchmark) 效能評定工作負載的輸送量和回應時間，在資料庫移至不同的硬體世代時，會保持完全相同，只要其服務目標 (dtu 數目) 維持不變。
+如果資料庫移至不同的硬體，工作負載效能可能會變更。 DTU 模型可保證 [dtu](./service-tiers-dtu.md#dtu-benchmark) 效能評定工作負載的輸送量和回應時間，在資料庫移至不同的硬體世代時，會保持完全相同，只要其服務目標 (dtu 數目) 維持不變。
 
 不過，在 Azure SQL Database 中執行的廣泛客戶工作負載中，針對相同的服務目標使用不同硬體的影響可能更明顯。 不同的工作負載將受益于不同的硬體設定和功能。 因此，針對 DTU 基準測試以外的工作負載，如果資料庫從一個硬體世代移至另一個硬體，就可能會看到效能差異。
 
 例如，對網路延遲敏感的應用程式可能會在第5代硬體與第4代上看到更佳的效能，因為在第5代中使用加速網路，但使用大量讀取 IO 的應用程式在第4代硬體與第5代上可能會看到較佳的效能，因為第4代上的每個核心比例會有較高的記憶體。
 
-如果客戶的工作負載受到硬體變更的影響，或想要控制其資料庫之硬體世代選擇的客戶，則可以使用 [vCore](service-tiers-vcore.md) 模型，在資料庫建立和調整期間選擇其慣用的硬體世代。 在 vCore 模型中，會針對 [單一資料庫](resource-limits-vcore-single-databases.md) 和 [彈性](resource-limits-vcore-elastic-pools.md)集區記錄每個硬體世代上每個服務目標的資源限制。 如需 vCore 模型中硬體世代的詳細資訊，請參閱 [硬體](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations)世代。
+如果客戶的工作負載受到硬體變更的影響，或想要控制其資料庫之硬體世代選擇的客戶，則可以使用 [vCore](service-tiers-vcore.md) 模型，在資料庫建立和調整期間選擇其慣用的硬體世代。 在 vCore 模型中，會針對 [單一資料庫](resource-limits-vcore-single-databases.md) 和 [彈性](resource-limits-vcore-elastic-pools.md)集區記錄每個硬體世代上每個服務目標的資源限制。 如需 vCore 模型中硬體世代的詳細資訊，請參閱 [硬體](./service-tiers-vcore.md#hardware-generations)世代。
 
 ## <a name="frequently-asked-questions-faqs"></a>常見問題集 (FAQ)
 

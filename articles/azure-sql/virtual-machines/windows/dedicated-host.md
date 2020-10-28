@@ -13,20 +13,20 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 140d95aeb7baf4b342044bc178d108239236229b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: bb80abc35aedcdf0b46cefa279e477739cf1df6b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677672"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789789"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>在 Azure 專用主機上執行 SQL Server VM 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-此文章詳細說明搭配 [Azure 專用主機](/azure/virtual-machines/windows/dedicated-hosts)使用 SQL Server 虛擬機器 (VM) 的細節。 如需有關 Azure 專用主機的其他相關資訊，請參閱部落格文章 [Azure 專用主機簡介](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/) \(英文\)。 
+此文章詳細說明搭配 [Azure 專用主機](../../../virtual-machines/dedicated-hosts.md)使用 SQL Server 虛擬機器 (VM) 的細節。 如需有關 Azure 專用主機的其他相關資訊，請參閱部落格文章 [Azure 專用主機簡介](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/) \(英文\)。 
 
 ## <a name="overview"></a>概觀
-[Azure 專用主機](/azure/virtual-machines/windows/dedicated-hosts)是一個服務，可讓實體伺服器裝載一或多個虛擬機器 - 專用於一個 Azure 訂用帳戶。 專用主機是與 Microsoft 的資料中心內所使用的伺服器相同的實體伺服器，以資源的形式提供。 您可以在區域、可用性區域與容錯網域中佈建專用主機。 然後，您可以依照最能滿足您需要的設定，將 VM 直接放入已佈建的主機中。
+[Azure 專用主機](../../../virtual-machines/dedicated-hosts.md)是一個服務，可讓實體伺服器裝載一或多個虛擬機器 - 專用於一個 Azure 訂用帳戶。 專用主機是與 Microsoft 的資料中心內所使用的伺服器相同的實體伺服器，以資源的形式提供。 您可以在區域、可用性區域與容錯網域中佈建專用主機。 然後，您可以依照最能滿足您需要的設定，將 VM 直接放入已佈建的主機中。
 
 ## <a name="limitations"></a>限制
 
@@ -54,7 +54,7 @@ ms.locfileid: "92677672"
 
 
 ## <a name="provisioning"></a>佈建  
-將 SQL Server VM 佈建到專用主機的方式與佈建其他任何 Azure 虛擬機器的方式是一樣的。 您可以使用 [Azure PowerShell](../../../virtual-machines/windows/dedicated-hosts-powershell.md)、[Azure 入口網站](../../../virtual-machines/windows/dedicated-hosts-portal.md)與 [Azure CLI](../../../virtual-machines/linux/dedicated-hosts-cli.md) 來佈建。
+將 SQL Server VM 佈建到專用主機的方式與佈建其他任何 Azure 虛擬機器的方式是一樣的。 您可以使用 [Azure PowerShell](../../../virtual-machines/windows/dedicated-hosts-powershell.md)、[Azure 入口網站](../../../virtual-machines/dedicated-hosts-portal.md)與 [Azure CLI](../../../virtual-machines/linux/dedicated-hosts-cli.md) 來佈建。
 
 將現有 SQL Server VM 新增至專用主機的程序需要停機，但將不會影響資料或造成資料遺失。 儘管如此，仍應該在移動之前備份所有資料庫，包括系統資料庫。
 
@@ -78,5 +78,3 @@ A：客戶可以運用其現有具備軟體保證的 Windows Server 與 SQL Serv
 * [Windows VM 上的 SQL Server 常見問題集](frequently-asked-questions-faq.md)
 * [Windows VM 上的 SQL Server 定價指導方針](pricing-guidance.md)
 * [Windows VM 上的 SQL Server 版本資訊](doc-changes-updates-release-notes.md)
-
-

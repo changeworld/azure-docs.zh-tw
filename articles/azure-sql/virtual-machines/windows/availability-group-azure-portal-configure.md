@@ -12,13 +12,13 @@ ms.workload: iaas-sql-server
 ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 8634efa1e8e5ab8a3b962b711ec8dfcdac4e6ced
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.custom: seo-lt-2019, devx-track-azurecli
+ms.openlocfilehash: 3a8086c75a7125b744730de83c760db44ce222e9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164562"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790095"
 ---
 # <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>使用 Azure 入口網站為 Azure VM 上的 SQL Server 設定可用性群組 (預覽)  
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,14 +38,14 @@ ms.locfileid: "92164562"
 
 - [Azure 訂用帳戶](https://azure.microsoft.com/free/)。
 - 具有網域控制站的資源群組。 
-- 在 Azure 中執行的一或多個已加入網域的 [vm SQL Server 2016 (或更新版本](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) ，在 *相同* 的可用性設定組或 *不同* 的可用性區域中) Enterprise edition，並以 [完整管理模式向 SQL VM 資源提供者註冊](sql-vm-resource-provider-register.md) ，並且在每個 VM 上使用相同的網域帳戶來進行 SQL Server 服務。
+- 在 Azure 中執行的一或多個已加入網域的 [vm SQL Server 2016 (或更新版本](./create-sql-vm-portal.md) ，在 *相同* 的可用性設定組或 *不同* 的可用性區域中) Enterprise edition，並以 [完整管理模式向 SQL VM 資源提供者註冊](sql-vm-resource-provider-register.md) ，並且在每個 VM 上使用相同的網域帳戶來進行 SQL Server 服務。
 - 兩個可用 (未由任何實體使用) 的 IP 位址。 一個用於內部負載平衡器。 另一個用於與可用性群組位於相同子網路內的可用性群組接聽程式。 如果您是使用現有的負載平衡器，可用性群組接聽程式只需要一個可用的 IP 位址。 
 
 ## <a name="permissions"></a>權限
 
 您需要下列帳戶許可權，才能使用 Azure 入口網站來設定可用性群組： 
 
-- 在網域中擁有**建立電腦物件**權限的現有網域使用者帳戶。 例如，網域系統管理員帳戶通常會有足夠的權限 (例如：account@domain.com)。 _此帳戶也應該屬於建立叢集的每個 VM 上的本機系統管理員群組一部分。_
+- 在網域中擁有 **建立電腦物件** 權限的現有網域使用者帳戶。 例如，網域系統管理員帳戶通常會有足夠的權限 (例如：account@domain.com)。 _此帳戶也應該屬於建立叢集的每個 VM 上的本機系統管理員群組一部分。_
 - 控制 SQL Server 的網域使用者帳戶。 這應該是您想要新增至可用性群組之每個 SQL Server VM 的相同帳戶。 
 
 ## <a name="configure-cluster"></a>設定叢集
@@ -59,9 +59,9 @@ ms.locfileid: "92164562"
 
 如果您還沒有現有的叢集，請使用 Azure 入口網站中的下列步驟建立它：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 
+1. 登入[Azure 入口網站](https://portal.azure.com)。 
 1. 流覽至您的 [SQL 虛擬機器](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 資源。 
-1. 在 [**設定**] 下選取 [**高可用性**]。 
+1. 在 [ **設定** ] 下選取 [ **高可用性** ]。 
 1. 選取 [ **+ 新增 Windows Server 容錯移轉** 叢集] 以開啟 [ **設定 windows 容錯移轉** 叢集] 頁面。  
 
    :::image type="content" source="media/availability-group-az-portal-configure/create-new-cluster.png" alt-text="在入口網站中選取 + 新增叢集以建立新的叢集":::
@@ -70,7 +70,7 @@ ms.locfileid: "92164562"
 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-1.png" alt-text="在入口網站中選取 + 新增叢集以建立新的叢集":::
 
-1. 展開 [ **Windows Server 容錯移轉叢集認證** ]，以提供 SQL Server 服務帳戶的 [認證](https://docs.microsoft.com/rest/api/sqlvm/sqlvirtualmachinegroups/createorupdate#wsfcdomainprofile) ，以及叢集操作員和啟動程式帳戶（如果它們與用於 SQL Server 服務的帳戶不同）。 
+1. 展開 [ **Windows Server 容錯移轉叢集認證** ]，以提供 SQL Server 服務帳戶的 [認證](/rest/api/sqlvm/sqlvirtualmachinegroups/createorupdate#wsfcdomainprofile) ，以及叢集操作員和啟動程式帳戶（如果它們與用於 SQL Server 服務的帳戶不同）。 
 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-new-cluster-2.png" alt-text="在入口網站中選取 + 新增叢集以建立新的叢集"
     ```
@@ -83,9 +83,9 @@ ms.locfileid: "92164562"
 
 若要這樣做，請依照下列步驟執行：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 
+1. 登入[Azure 入口網站](https://portal.azure.com)。 
 1. 流覽至您的 [SQL 虛擬機器](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 資源。 
-1. 在 [**設定**] 下選取 [**高可用性**]。 
+1. 在 [ **設定** ] 下選取 [ **高可用性** ]。 
 1. 選取 [上 **架現有的 Windows Server 容錯移轉** 叢集]，以開啟 [上線 **Windows server 容錯移轉** 叢集] 頁面。 
 
    :::image type="content" source="media/availability-group-az-portal-configure/onboard-existing-cluster.png" alt-text="在入口網站中選取 + 新增叢集以建立新的叢集":::
@@ -100,9 +100,9 @@ ms.locfileid: "92164562"
 
 建立或上線您的叢集之後，請使用 Azure 入口網站建立可用性群組。 若要這樣做，請依照下列步驟執行：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 
+1. 登入[Azure 入口網站](https://portal.azure.com)。 
 1. 流覽至您的 [SQL 虛擬機器](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 資源。 
-1. 在 [**設定**] 下選取 [**高可用性**]。 
+1. 在 [ **設定** ] 下選取 [ **高可用性** ]。 
 1. 選取 [ **+ 新增 Always On 可用性群組** ] 以開啟 [ **建立可用性群組** ] 頁面。
 
    :::image type="content" source="media/availability-group-az-portal-configure/create-new-availability-group.png" alt-text="在入口網站中選取 + 新增叢集以建立新的叢集":::
@@ -126,7 +126,7 @@ ms.locfileid: "92164562"
 您可以在 **活動記錄** 中檢查部署的狀態，您可以從上方導覽列中的鐘圖示存取該記錄。 
 
   > [!NOTE]
-  > 在您將資料庫加入至可用性**群組之前，** Azure 入口網站的 [**高可用性**] 頁面上的同步處理**健全狀況**會顯示為 [狀況不良]。 
+  > 在您將資料庫加入至可用性 **群組之前，** Azure 入口網站的 [ **高可用性** ] 頁面上的同步處理 **健全狀況** 會顯示為 [狀況不良]。 
 
 
 ## <a name="add-database-to-availability-group"></a>將資料庫加入至可用性群組
@@ -138,8 +138,8 @@ ms.locfileid: "92164562"
 1. 使用您慣用的方法（例如遠端桌面連線 (RDP) ）連接到其中一個 SQL Server Vm。 
 1. 開啟 SQL Server Management Studio (SSMS)。
 1. 連接到您的 SQL Server 實例。 
-1. 在**物件總管**中展開**Always On 高可用性**。
-1. 展開 [ **可用性群組**]，以滑鼠右鍵按一下您的可用性群組，然後選擇 [ **新增資料庫 ...**]。
+1. 在 **物件總管** 中展開 **Always On 高可用性** 。
+1. 展開 [ **可用性群組** ]，以滑鼠右鍵按一下您的可用性群組，然後選擇 [ **新增資料庫 ...** ]。
 
    :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="在入口網站中選取 + 新增叢集以建立新的叢集":::
 
@@ -155,16 +155,16 @@ ms.locfileid: "92164562"
 
 若要將更多 SQL Server Vm 新增至叢集，請遵循下列步驟： 
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 
+1. 登入[Azure 入口網站](https://portal.azure.com)。 
 1. 流覽至您的 [SQL 虛擬機器](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines) 資源。 
-1. 在 [**設定**] 下選取 [**高可用性**]。 
+1. 在 [ **設定** ] 下選取 [ **高可用性** ]。 
 1. 選取 [ **設定 Windows Server 容錯移轉** 叢集] 以開啟 [ **設定 Windows server 容錯移轉** 叢集] 頁面。 
 
    :::image type="content" source="media/availability-group-az-portal-configure/configure-existing-cluster.png" alt-text="在入口網站中選取 + 新增叢集以建立新的叢集":::
 
 1. 展開 [ **Windows Server 容錯移轉叢集認證** ]，然後輸入用於 SQL Server 服務、叢集操作員和叢集啟動程式帳戶的帳戶。 
 1. 選取您要新增至叢集的 SQL Server Vm。 
-1. 選取 [套用]。 
+1. 選取 [套用]  。 
 
 您可以在 **活動記錄** 中檢查部署的狀態，您可以從上方導覽列中的鐘圖示存取該記錄。 
 
@@ -172,7 +172,7 @@ ms.locfileid: "92164562"
 ## <a name="modify-availability-group"></a>修改可用性群組 
 
 
-您可以在可用性群組旁邊選取省略號 ( ... ) ，**將更多複本加入**至可用性群組、**設定**接聽程式，或從 Azure 入口網站的 [**高可用性**] 頁面中**刪除**接聽程式： 
+您可以在可用性群組旁邊選取省略號 ( ... ) ， **將更多複本加入** 至可用性群組、 **設定** 接聽程式，或從 Azure 入口網站的 [ **高可用性** ] 頁面中 **刪除** 接聽程式： 
 
 :::image type="content" source="media/availability-group-az-portal-configure/configure-listener.png" alt-text="在入口網站中選取 + 新增叢集以建立新的叢集":::
 
@@ -243,9 +243,9 @@ Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster n
 
 若要查看部署的記錄，並檢查部署歷程記錄，請遵循下列步驟：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入[Azure 入口網站](https://portal.azure.com)。
 1. 流覽至您的資源群組。
-1. 選取 [設定]**** 底下的 [部署]****。
+1. 選取 [設定]  底下的 [部署]  。
 1. 選取感興趣的部署，以深入瞭解部署。 
 
 

@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: jrasnick
 ms.date: 03/10/2020
-ms.openlocfilehash: 54a6293a29a407a7014aafb66587dcb01fc13337
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 773f011e0c79dc7b246ddc4a737914c15fe0f2f6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89645782"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789534"
 ---
 # <a name="tune-applications-and-databases-for-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>在 Azure SQL Database 和 Azure SQL 受控執行個體中調整應用程式和資料庫的效能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -122,7 +122,7 @@ CREATE INDEX missing_index_5006_5005 ON [dbo].[missingindex] ([col2])
 
 ![具有已更正索引的查詢計劃](./media/performance-guidance/query_plan_corrected_indexes.png)
 
-重要的觀念是共用商品系統的 IO 容量會比專用伺服器電腦的容量受到更多限制。 將不必要的 IO 降至最低，以在服務層的每個計算大小資源中充分利用系統的最大優勢。 適當的實體資料庫設計選項可以大幅改善個別查詢的延遲、改善每個縮放單位中可處理的並行要求輸送量，並最小化滿足查詢所需的成本。 如需有關遺漏索引 DMV 的詳細資訊，請參閱 [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx)。
+重要的觀念是共用商品系統的 IO 容量會比專用伺服器電腦的容量受到更多限制。 將不必要的 IO 降至最低，以在服務層的每個計算大小資源中充分利用系統的最大優勢。 適當的實體資料庫設計選項可以大幅改善個別查詢的延遲、改善每個縮放單位中可處理的並行要求輸送量，並最小化滿足查詢所需的成本。 如需有關遺漏索引 DMV 的詳細資訊，請參閱 [sys.dm_db_missing_index_details](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-missing-index-details-transact-sql)。
 
 ### <a name="query-tuning-and-hinting"></a>查詢微調和提示
 
@@ -232,7 +232,7 @@ ORDER BY start_time DESC
 
 您可以檢查 **sys.resource_stats** 來判斷測試使用的資源比另一個測試多或少。 在比較資料時，請將測試的時間隔開，讓它們不在 **sys.resource_stats** 檢視的同一個 5 分鐘時間範圍內。 練習的目標是要最小化使用的資源總量，而不是最小化尖峰資源。 一般而言，最佳化一段延遲的程式碼也可減少資源耗用量。 請確定您對應用程式所做的變更是必要的，而且這些變更不會讓使用應用程式的某人在使用查詢提示時對客戶體驗造成負面影響。
 
-如果工作負載具有一組重複的查詢，擷取並驗證您計劃選項的最適化通常是合理的，因為這會讓主控資料庫所需的資源大小單位降到最低。 在驗證之後，請偶爾重新檢查計劃以確保它們不會降級。 您可以深入了解 [查詢提示 (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx)。
+如果工作負載具有一組重複的查詢，擷取並驗證您計劃選項的最適化通常是合理的，因為這會讓主控資料庫所需的資源大小單位降到最低。 在驗證之後，請偶爾重新檢查計劃以確保它們不會降級。 您可以深入了解 [查詢提示 (Transact-SQL)](/sql/t-sql/queries/hints-transact-sql-query)。
 
 ### <a name="very-large-database-architectures"></a>非常大型的資料庫架構
 

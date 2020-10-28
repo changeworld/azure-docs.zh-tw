@@ -11,18 +11,18 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 09/02/2020
-ms.openlocfilehash: 36010ff0206ddf9dae08391eb6e4c3dd7762cc10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e01e74f5086f7f1eb7e85661fbd35f452d8dae8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319328"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790197"
 ---
 # <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>使用 Spark 連接器加速即時的大型資料分析
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 > [!NOTE]
-> 從2020年9月，此連接器不會主動維護。 不過， [適用于 SQL Server 和 AZURE SQL 的 Apache Spark 連接器](https://docs.microsoft.com/sql/connect/spark/connector) 現在已可供使用，並支援 Python 和 R 系結、更容易使用的介面來大量插入資料，以及其他許多改進。 強烈建議您評估並使用新的連接器，而不是這種連接器。 此頁面 (的舊連接器相關資訊) 只會保留供封存之用。
+> 從2020年9月，此連接器不會主動維護。 不過， [適用于 SQL Server 和 AZURE SQL 的 Apache Spark 連接器](/sql/connect/spark/connector) 現在已可供使用，並支援 Python 和 R 系結、更容易使用的介面來大量插入資料，以及其他許多改進。 強烈建議您評估並使用新的連接器，而不是這種連接器。 此頁面 (的舊連接器相關資訊) 只會保留供封存之用。
 
 Spark 連接器可讓 Azure SQL Database、Azure SQL 受控執行個體和 SQL Server 中的資料庫作為 Spark 作業的輸入資料來源或輸出資料接收器。 它可讓您在大型資料分析中利用即時交易資料，並保存特定查詢或報告的結果。 相較于內建 JDBC 連接器，此連接器可讓您在資料庫中大量插入資料。 它可以優於逐列插入和10倍，以20倍較快的效能。 Spark 連接器支援 Azure Active Directory (Azure AD) authentication 來連線至 Azure SQL Database 和 Azure SQL 受控執行個體，可讓您使用 Azure Databricks 帳戶從 Azure AD 連接您的資料庫。 它提供類似內建 JDBC 連接器的介面。 您可以輕鬆移轉現有的 Spark 作業以使用此新的連接器。
 
@@ -238,4 +238,4 @@ df.bulkCopyToSqlDB(bulkCopyConfig, bulkCopyMetadata)
 - [Azure Databricks Notebook 範例](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
 - [指令碼範例 (Scala)](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/scripts)
 
-您也可以檢閱 [Apache Spark SQL、DataFrame 和 Dataset 指南](https://spark.apache.org/docs/latest/sql-programming-guide.html) (英文) 和 [Azure Databricks 文件](https://docs.microsoft.com/azure/azure-databricks/)。
+您也可以檢閱 [Apache Spark SQL、DataFrame 和 Dataset 指南](https://spark.apache.org/docs/latest/sql-programming-guide.html) (英文) 和 [Azure Databricks 文件](/azure/azure-databricks/)。

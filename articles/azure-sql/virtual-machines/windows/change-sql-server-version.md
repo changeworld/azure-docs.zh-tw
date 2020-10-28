@@ -14,14 +14,14 @@ ms.date: 06/08/2020
 ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a57a432a5f0f8e5a6bd802ec08b18350da3a77b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ec7ed958ac045c68fd7b616903f401dd07d8166
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293368"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789823"
 ---
-# <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>在 Azure VM 上就地變更 SQL Server 版本
+# <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Azure VM 上的 SQL Server 版本就地變更
 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "91293368"
 若要執行 SQL Server 的就地升級，請遵循下列條件：
 
 - 需要 SQL Server 所需版本的安裝媒體。 具備[軟體保證](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)的客戶可從[大量授權中心](https://www.microsoft.com/Licensing/servicecenter/default.aspx)取得安裝媒體。 沒有軟體保證的客戶可以從具有較新版本 SQL Server (（通常位於 C:\SQLServerFull) ）的 Azure Marketplace SQL Server VM 映射使用安裝媒體。
-- 版本升級應遵循 [支援的升級路徑](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15)。
+- 版本升級應遵循 [支援的升級路徑](/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15)。
 
 ## <a name="planning-for-version-change"></a>規劃版本變更
 
@@ -40,34 +40,34 @@ ms.locfileid: "91293368"
 
 1. 檢查您打算升級到的版本中有哪些新功能：
 
-   - [SQL 2019](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-ver15?view=sql-server-ver15)的新功能
-   - [SQL 2017](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-2017?view=sql-server-ver15)的新功能
-   - [SQL 2016](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-ver15)的新功能
-   - [SQL 2014](https://docs.microsoft.com/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-2014)的新功能
+   - [SQL 2019](/sql/sql-server/what-s-new-in-sql-server-ver15?view=sql-server-ver15)的新功能
+   - [SQL 2017](/sql/sql-server/what-s-new-in-sql-server-2017?view=sql-server-ver15)的新功能
+   - [SQL 2016](/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-ver15)的新功能
+   - [SQL 2014](/sql/sql-server/what-s-new-in-sql-server-2016?view=sql-server-2014)的新功能
 
-1. 建議您檢查即將變更之版本的 [相容性](https://docs.microsoft.com/sql/database-engine/install-windows/compatibility-certification?view=sql-server-ver15) 憑證，以便您可以使用資料庫相容性模式，將升級的影響降至最低。
+1. 建議您檢查即將變更之版本的 [相容性](/sql/database-engine/install-windows/compatibility-certification?view=sql-server-ver15) 憑證，以便您可以使用資料庫相容性模式，將升級的影響降至最低。
 1. 您可以參閱下列文章，以協助確保成功的結果：
 
    - [影片：現代化 SQL Server |Pam Lahoud & Pedro Lopes |20年的 PASS](https://www.youtube.com/watch?v=5RPkuQHcxxs&feature=youtu.be)
-   - [AB 測試的資料庫測試助理](https://docs.microsoft.com/sql/dea/database-experimentation-assistant-overview?view=sql-server-ver15)
-   - [使用查詢調整小幫手來升級資料庫](https://docs.microsoft.com/sql/relational-databases/performance/upgrade-dbcompat-using-qta?view=sql-server-ver15)
-   - [變更資料庫相容性層級並使用查詢存放區](https://docs.microsoft.com/sql/database-engine/install-windows/change-the-database-compatibility-mode-and-use-the-query-store?view=sql-server-ver15)
+   - [AB 測試的資料庫測試助理](/sql/dea/database-experimentation-assistant-overview?view=sql-server-ver15)
+   - [使用查詢調整小幫手來升級資料庫](/sql/relational-databases/performance/upgrade-dbcompat-using-qta?view=sql-server-ver15)
+   - [變更資料庫相容性層級並使用查詢存放區](/sql/database-engine/install-windows/change-the-database-compatibility-mode-and-use-the-query-store?view=sql-server-ver15)
 
 ## <a name="upgrade-sql-version"></a>升級 SQL 版本
 
 > [!WARNING]
 > 升級 SQL Server 的版本，除了任何相關聯的服務（例如 Analysis Services 和 R Services）之外，也會重新開機服務以 SQL Server。
 
-若要升級 SQL Server 版本，請取得較新版本的 SQL Server 安裝媒體，以 [支援 SQL Server 的升級路徑](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15) ，然後執行下列步驟：
+若要升級 SQL Server 版本，請取得較新版本的 SQL Server 安裝媒體，以 [支援 SQL Server 的升級路徑](/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15?view=sql-server-ver15) ，然後執行下列步驟：
 
 1. 在開始進行程式之前，請先備份資料庫，包括 tempdb) 和使用者資料庫以外的系統 (。 您也可以使用 Azure 備份服務來建立應用程式一致的 VM 層級備份。
 1. 從 SQL Server 安裝媒體開始 Setup.exe。
-1. 安裝精靈會啟動 SQL Server 的安裝中心。 若要升級現有的 SQL Server 實例，請選取流覽窗格上的 [ **安裝** ]，然後選取 [ **從舊版的 SQL Server 升級**]。
+1. 安裝精靈會啟動 SQL Server 的安裝中心。 若要升級現有的 SQL Server 實例，請選取流覽窗格上的 [ **安裝** ]，然後選取 [ **從舊版的 SQL Server 升級** ]。
 
    :::image type="content" source="./media/change-sql-server-version/upgrade.png" alt-text="升級 SQL Server 版本的選取專案":::
 
-1. 在 [ **產品金鑰** ] 頁面上，選取一個選項來指出您要升級為免費的 SQL Server 版本，還是您擁有產品之實際執行版本的 PID 金鑰。 如需詳細資訊，請參閱 [SQL Server 2019 (6.x) 的版本和支援的功能 ](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15?view=sql-server-ver15) ，以及 [ (SQL Server 2016) 支援的版本與版本升級 ](https://docs.microsoft.com/sql/database-engine/install-windows/supported-version-and-edition-upgrades?view=sql-server-ver15)。
-1. 選取 **[下一步]** ，直到到達 [ **準備升級** ] 頁面，然後選取 [ **升級**]。 當變更生效時，安裝程式視窗可能會停止回應數分鐘。 **完整**的頁面會確認您的升級已完成。 如需升級的逐步程式，請參閱 [完整的](https://docs.microsoft.com/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup?view=sql-server-ver15#procedure)程式。
+1. 在 [ **產品金鑰** ] 頁面上，選取一個選項來指出您要升級為免費的 SQL Server 版本，還是您擁有產品之實際執行版本的 PID 金鑰。 如需詳細資訊，請參閱 [SQL Server 2019 (6.x) 的版本和支援的功能 ](/sql/sql-server/editions-and-components-of-sql-server-version-15?view=sql-server-ver15) ，以及 [ (SQL Server 2016) 支援的版本與版本升級 ](/sql/database-engine/install-windows/supported-version-and-edition-upgrades?view=sql-server-ver15)。
+1. 選取 **[下一步]** ，直到到達 [ **準備升級** ] 頁面，然後選取 [ **升級** ]。 當變更生效時，安裝程式視窗可能會停止回應數分鐘。 **完整** 的頁面會確認您的升級已完成。 如需升級的逐步程式，請參閱 [完整的](/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup?view=sql-server-ver15#procedure)程式。
 
    :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="升級 SQL Server 版本的選取專案":::
 

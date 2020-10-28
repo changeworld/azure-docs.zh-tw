@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: b89b8cc58cb48770b9b42036f8b834cc1bf11b8b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5cfd76d6b2f6bb9429a7605ac05adb23d87a80d3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441125"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790877"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>搭配使用 Azure SQL 透明資料加密與客戶管理的金鑰
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ Azure SQL [透明資料加密 (TDE) ](/sql/relational-databases/security/encrypt
 > 對於使用服務管理的 TDE，而想要開始使用客戶管理的 TDE，資料會在切換過程中保持加密狀態，而且不會有停機時間或重新加密資料庫檔案。 從服務管理的金鑰切換至客戶管理的金鑰時，只需要重新加密 DEK，這是一項快速且線上的操作。
 
 > [!NOTE]
-> 若要為 Azure SQL 客戶提供兩層的待用資料加密，使用 AES-256 加密演算法) 的基礎結構加密 (正在推出平臺管理的金鑰。這會提供待用加密的一層，以及 TDE 與客戶管理的金鑰（已提供）。 針對 Azure SQL Database 和受控執行個體，在開啟基礎結構加密時，所有資料庫（包括 master 資料庫和其他系統資料庫）都會加密。 目前，客戶必須要求存取這項功能。 如果您對這項功能有興趣，請聯絡 AzureSQLDoubleEncryptionAtRest@service.microsoft.com 。
+> <a id="doubleencryption"></a> 若要為 Azure SQL 客戶提供兩層的待用資料加密，使用 AES-256 加密演算法) 的基礎結構加密 (正在推出平臺管理的金鑰。這會提供待用加密的一層，以及 TDE 與客戶管理的金鑰（已提供）。 針對 Azure SQL Database 和受控執行個體，在開啟基礎結構加密時，所有資料庫（包括 master 資料庫和其他系統資料庫）都會加密。 目前，客戶必須要求存取這項功能。 如果您對這項功能有興趣，請聯絡 AzureSQLDoubleEncryptionAtRest@service.microsoft.com 。
 
 ## <a name="benefits-of-the-customer-managed-tde"></a>客戶管理 TDE 的優點
 
@@ -78,11 +78,11 @@ Key vault 系統管理員也可以 [啟用金鑰保存庫審核事件的記錄](
 
 - Key vault 和 SQL Database/受控實例必須屬於相同的 Azure Active Directory 租使用者。 不支援跨租用戶金鑰保存庫與伺服器的互動。 若要在之後移動資源，則必須重新設定 TDE with AKV。 深入瞭解如何 [移動資源](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
-- 必須在金鑰保存庫上啟用虛[刪除](../../key-vault/general/soft-delete-overview.md)功能，以防止資料遺失意外的金鑰 (或金鑰保存庫) 刪除發生。 除非客戶同時復原或清除虛刪除的資源，否則會保留90天。 *復原*和*清除*動作本身的權限已在金鑰保存庫的存取原則中建立關聯。 虛刪除功能預設為關閉，並可透過 [PowerShell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) 或 [CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete)來啟用。 無法透過 Azure 入口網站啟用。  
+- 必須在金鑰保存庫上啟用虛[刪除](../../key-vault/general/soft-delete-overview.md)功能，以防止資料遺失意外的金鑰 (或金鑰保存庫) 刪除發生。 除非客戶同時復原或清除虛刪除的資源，否則會保留90天。 *復原* 和 *清除* 動作本身的權限已在金鑰保存庫的存取原則中建立關聯。 虛刪除功能預設為關閉，並可透過 [PowerShell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) 或 [CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete)來啟用。 無法透過 Azure 入口網站啟用。  
 
 - 將金鑰保存庫 (get、wrapKey、unwrapKey) 的存取權授與伺服器或受控實例，並使用其 Azure Active Directory 身分識別。 使用 Azure 入口網站時，會自動建立 Azure AD 身分識別。 使用 PowerShell 或 CLI 時，必須明確建立 Azure AD 身分識別，並驗證完成。 如需使用 PowerShell 時的詳細逐步指示，請參閱使用 [BYOK 設定 TDE](transparent-data-encryption-byok-configure.md) 和 [設定 TDE WITH BYOK for SQL 受控執行個體](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) 。
 
-- 搭配使用防火牆與 AKV 時，您必須啟用 *[允許信任的 Microsoft 服務] 選項來略過防火牆*。
+- 搭配使用防火牆與 AKV 時，您必須啟用 *[允許信任的 Microsoft 服務] 選項來略過防火牆* 。
 
 ### <a name="requirements-for-configuring-tde-protector"></a>設定 TDE 保護裝置的需求
 
@@ -95,7 +95,7 @@ Key vault 系統管理員也可以 [啟用金鑰保存庫審核事件的記錄](
 - 如果您要將現有金鑰匯入至金鑰保存庫，請務必以支援的檔案格式提供 ( .pfx、byok 或. 備份) 。
 
 > [!NOTE]
-> Azure SQL 現在支援使用以 TDE 保護裝置形式儲存在受控 HSM 中的 RSA 金鑰。 這項功能處於 **公開預覽**狀態。 Azure Key Vault 受控 HSM 是完全受控、高可用性、單一租使用者、符合標準的雲端服務，可讓您使用 FIPS 140-2 層級3驗證的 Hsm 來保護雲端應用程式的密碼編譯金鑰。 深入瞭解 [受管理的 hsm](https://aka.ms/mhsm)。
+> Azure SQL 現在支援使用以 TDE 保護裝置形式儲存在受控 HSM 中的 RSA 金鑰。 這項功能處於 **公開預覽** 狀態。 Azure Key Vault 受控 HSM 是完全受控、高可用性、單一租使用者、符合標準的雲端服務，可讓您使用 FIPS 140-2 層級3驗證的 Hsm 來保護雲端應用程式的密碼編譯金鑰。 深入瞭解 [受管理的 hsm](../../key-vault/managed-hsm/index.yml)。
 
 
 ## <a name="recommendations-when-configuring-customer-managed-tde"></a>設定客戶管理的 TDE 時的建議
@@ -106,7 +106,7 @@ Key vault 系統管理員也可以 [啟用金鑰保存庫審核事件的記錄](
 
 - 設定金鑰保存庫的資源鎖定，以控制誰可以刪除這項重要資源，並防止意外或未經授權的刪除。 深入瞭解 [資源鎖定](../../azure-resource-manager/management/lock-resources.md)。
 
-- 啟用所有加密金鑰的審核和報告： Key vault 提供容易插入其他安全性資訊和事件管理工具的記錄檔。 Operations Management Suite [Log Analytics](../../azure-monitor/insights/azure-key-vault.md) 是已整合之服務的其中一個範例。
+- 啟用所有加密金鑰的審核和報告： Key vault 提供容易插入其他安全性資訊和事件管理工具的記錄檔。 Operations Management Suite [Log Analytics](../../azure-monitor/insights/key-vault-insights-overview.md) 是已整合之服務的其中一個範例。
 
 - 將每個伺服器連結到位於不同區域的兩個金鑰保存庫，並保留相同的金鑰內容，以確保加密資料庫的高可用性。 只將金鑰保存庫中的金鑰，標示為與 TDE 保護裝置相同的區域。 如果中斷影響相同區域中的金鑰保存庫，系統將會自動切換到遠端區域中的金鑰保存庫。
 
@@ -118,7 +118,7 @@ Key vault 系統管理員也可以 [啟用金鑰保存庫審核事件的記錄](
 
 - 每當對 (金鑰進行任何變更時（例如，索引鍵屬性、標記、Acl) ），就會建立新的備份。
 
-- 在輪替金鑰時**將舊版保留**在金鑰保存庫中，以便在還原較舊的資料庫備份時使用。 當資料庫的 TDE 保護裝置變更時，資料庫的舊備份 **不會更新** 為使用最新的 TDE 保護裝置。 在還原時，每個備份都需要在建立時加密的 TDE 保護裝置。 您可以依照[使用 PowerShell 輪替透明資料加密保護裝置](transparent-data-encryption-byok-key-rotation.md)中的指示，來執行金鑰輪替。
+- 在輪替金鑰時 **將舊版保留** 在金鑰保存庫中，以便在還原較舊的資料庫備份時使用。 當資料庫的 TDE 保護裝置變更時，資料庫的舊備份 **不會更新** 為使用最新的 TDE 保護裝置。 在還原時，每個備份都需要在建立時加密的 TDE 保護裝置。 您可以依照[使用 PowerShell 輪替透明資料加密保護裝置](transparent-data-encryption-byok-key-rotation.md)中的指示，來執行金鑰輪替。
 
 - 即使在切換到服務管理的金鑰之後，仍在 AKV 中保留所有先前使用的金鑰。 它可確保可以使用儲存在 AKV 中的 TDE 保護裝置來還原資料庫備份。  使用 Azure Key Vault 建立的 TDE 保護裝置必須保持在所有剩餘的預存備份都以服務管理的金鑰建立之前。 使用 [備份 AzKeyVaultKey](/powershell/module/az.keyvault/backup-azkeyvaultkey)來建立這些金鑰的可復原備份複本。
 
@@ -126,7 +126,7 @@ Key vault 系統管理員也可以 [啟用金鑰保存庫審核事件的記錄](
 
 ## <a name="inaccessible-tde-protector"></a>無法存取 TDE 保護裝置
 
-當透明資料加密設定為使用客戶管理的金鑰時，資料庫必須持續存取 TDE 保護裝置才能保持在線上狀態。 如果伺服器無法存取 AKV 中的客戶管理 TDE 保護裝置，則在最多10分鐘內，資料庫將會開始拒絕所有具有對應錯誤訊息的連線，並將其狀態變更為 *無法*存取。 資料庫處於無法存取狀態的唯一允許的動作是刪除它。
+當透明資料加密設定為使用客戶管理的金鑰時，資料庫必須持續存取 TDE 保護裝置才能保持在線上狀態。 如果伺服器無法存取 AKV 中的客戶管理 TDE 保護裝置，則在最多10分鐘內，資料庫將會開始拒絕所有具有對應錯誤訊息的連線，並將其狀態變更為 *無法* 存取。 資料庫處於無法存取狀態的唯一允許的動作是刪除它。
 
 > [!NOTE]
 > 如果因為間歇性的網路中斷而無法存取資料庫，則不需要採取任何動作，而且資料庫將會自動復原上線。
@@ -135,7 +135,7 @@ Key vault 系統管理員也可以 [啟用金鑰保存庫審核事件的記錄](
 
 - 如果在8小時內還原金鑰存取，資料庫會在接下來的一小時內自動修復。
 
-- 如果在超過 8 個小時後還原金鑰存取，則無法自動修復，且讓資料庫重新上線需要在入口網站上採取額外步驟，視資料庫大小而定可能需要相當長的時間。 一旦資料庫重新上線，先前設定的伺服器層級設定（例如 [容錯移轉群組](auto-failover-group-overview.md) 設定、時間點還原歷程記錄，以及標記）將會 **遺失**。 因此，建議您執行通知系統，讓您識別並解決8小時內的基礎金鑰存取問題。
+- 如果在超過 8 個小時後還原金鑰存取，則無法自動修復，且讓資料庫重新上線需要在入口網站上採取額外步驟，視資料庫大小而定可能需要相當長的時間。 一旦資料庫重新上線，先前設定的伺服器層級設定（例如 [容錯移轉群組](auto-failover-group-overview.md) 設定、時間點還原歷程記錄，以及標記）將會 **遺失** 。 因此，建議您執行通知系統，讓您識別並解決8小時內的基礎金鑰存取問題。
 
 以下是在入口網站上顯示無法存取的資料庫重新上線所需的其他步驟。
 
@@ -146,7 +146,7 @@ Key vault 系統管理員也可以 [啟用金鑰保存庫審核事件的記錄](
 
 有足夠的許可權可存取金鑰保存庫時，可能會意外停用伺服器對金鑰的存取：
 
-- 從伺服器撤銷金鑰保存庫的 *get*、 *wrapKey*、 *unwrapKey* 許可權
+- 從伺服器撤銷金鑰保存庫的 *get* 、 *wrapKey* 、 *unwrapKey* 許可權
 
 - 正在刪除金鑰
 
@@ -163,7 +163,7 @@ Key vault 系統管理員也可以 [啟用金鑰保存庫審核事件的記錄](
 若要監視資料庫狀態，並針對遺失 TDE 保護裝置存取啟用警示，請設定下列 Azure 功能：
 
 - [Azure 資源健康狀態](../../service-health/resource-health-overview.md)。 在資料庫的第一次連線遭到拒絕之後，無法存取且無法存取 TDE 保護裝置的資料庫將會顯示為「無法使用」。
-- 當存取客戶管理的金鑰保存庫中的 TDE 保護裝置失敗時，[活動記錄](../../service-health/alerts-activity-log-service-notifications.md)會將專案新增至活動記錄。  建立這些事件的警示可讓您儘快恢復存取。
+- 當存取客戶管理的金鑰保存庫中的 TDE 保護裝置失敗時，[活動記錄](../../service-health/alerts-activity-log-service-notifications-portal.md)會將專案新增至活動記錄。  建立這些事件的警示可讓您儘快恢復存取。
 - 您可以定義[動作群組](../../azure-monitor/platform/action-groups.md)，以根據您的喜好設定傳送通知和警示，例如電子郵件/SMS/推播/語音、邏輯應用程式、WEBHOOK、ITSM 或自動化 Runbook。
 
 ## <a name="database-backup-and-restore-with-customer-managed-tde"></a>使用客戶管理的 TDE 進行資料庫備份和還原

@@ -12,16 +12,16 @@ ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 993e75f6a5a39e076a9e7161b62abba85d9b0eab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb162231c8cf2bf733c992de0c4aa56bf1fd1be2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90031087"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791081"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>在我的應用程式入口網站中編輯或撤銷應用程式權限
 
-當您在**我的應用程式**入口網站中使用組織應用程式時，通常會授與權限並儲存帳戶資訊。 為了保護您的資料安全，您可能想要檢閱和撤銷權限或清除已儲存的帳戶認證。 移除權限或帳戶可能會中斷部分應用程式功能。 如果您在移除權限或帳戶之後遇到問題，請洽詢組織的技術服務人員以取得其他協助。
+當您在 **我的應用程式** 入口網站中使用組織應用程式時，通常會授與權限並儲存帳戶資訊。 為了保護您的資料安全，您可能想要檢閱和撤銷權限或清除已儲存的帳戶認證。 移除權限或帳戶可能會中斷部分應用程式功能。 如果您在移除權限或帳戶之後遇到問題，請洽詢組織的技術服務人員以取得其他協助。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
@@ -30,9 +30,9 @@ ms.locfileid: "90031087"
 
 ## <a name="manage-app-accounts"></a>管理應用程式帳戶
 
-若要查看您或您的系統管理員同意的應用程式，請選取 [ **...** ] 當您將滑鼠停留在 **我的應用程式** 入口網站中的應用程式上時，請選取 [ **管理您的應用程式**：
+若要查看您或您的系統管理員同意的應用程式，請選取 [ **...** ] 當您將滑鼠停留在 **我的應用程式** 入口網站中的應用程式上時，請選取 [ **管理您的應用程式** ：
 
-![在 [我的應用程式] 入口網站中管理應用程式](media/my-applications-portal-permissions-saved-accounts/manage-your-application.png)
+![在 [我的應用程式] 入口網站中管理應用程式](media/my-applications-portal-permissions-saved-accounts/my-apps-home-woodgrove.png)
 
 [權限] 視窗的上半部會顯示您個人同意的權限。 應用程式權限範例包括存取行事曆、連絡人或相機的能力。
 

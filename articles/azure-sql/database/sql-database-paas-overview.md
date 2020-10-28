@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 972e4bcfc0eb20903dafc598bad812d0afe98afb
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 093d470052a639ad3d4e819d08fad7c34b547d44
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428304"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789500"
 ---
 # <a name="what-is-azure-sql-database"></a>什麼是 Azure SQL Database？
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -26,18 +26,18 @@ Azure SQL Database 是完全受控的平台即服務 (PaaS) 資料庫引擎，�
 
 有了 Azure SQL Database，您可為 Azure 中的應用程式與解決方案建立高度可用且高效能的資料儲存層。 SQL Database 可謂是適合各種現代化雲端應用程式的選擇，因為其可供處理關聯式資料，以及[非關聯式結構](../multi-model-features.md) (例如圖表、JSON、空間和 XML)。
 
-Azure SQL Database 以最新穩定版本的 [Microsoft SQL Server 資料庫引擎](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)為基礎。 您可使用進階查詢處理功能，例如[高效能記憶體內部技術](../in-memory-oltp-overview.md)和[智慧查詢處理](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json)。 事實上，SQL Server 的最新功能會先發行至 SQL Database，然後才發行至 SQL Server 本身。 您可取得最新的 SQL Server 功能，無需額外的修補或升級，即可在數百萬個資料庫之間進行測試。 
+Azure SQL Database 以最新穩定版本的 [Microsoft SQL Server 資料庫引擎](/sql/sql-server/sql-server-technical-documentation?toc=%252fazure%252fsql-database%252ftoc.json)為基礎。 您可使用進階查詢處理功能，例如[高效能記憶體內部技術](../in-memory-oltp-overview.md)和[智慧查詢處理](/sql/relational-databases/performance/intelligent-query-processing?toc=%252fazure%252fsql-database%252ftoc.json)。 事實上，SQL Server 的最新功能會先發行至 SQL Database，然後才發行至 SQL Server 本身。 您可取得最新的 SQL Server 功能，無需額外的修補或升級，即可在數百萬個資料庫之間進行測試。 
 
 SQL Database 可供輕鬆地在兩個不同的購買模型內定義和調整效能：[以虛擬核心為基礎的購買模型](service-tiers-vcore.md)和[以 DTU 為基礎的購買模型](service-tiers-dtu.md)。 SQL Database 是完全受控的服務，其具有內建的高可用性、備份與其他一般維護作業。 Microsoft 可處理 SQL 和作業系統程式碼的所有修補和更新。 您不需要管理基礎結構。
 
-如果您不熟悉 Azure SQL Database，請觀看我們深入的 [Azure SQL 影片系列](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)中的 *Azure SQL Database 概觀*影片：
+如果您不熟悉 Azure SQL Database，請觀看我們深入的 [Azure SQL 影片系列](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)中的 *Azure SQL Database 概觀* 影片：
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Database-Overview-7-of-61/player]
 
 ## <a name="deployment-models"></a>部署模型
 
 Azure SQL Database 為資料庫提供下列部署選項：
 
-- [單一資料庫](single-database-overview.md)代表完全受控的隔離資料庫。 如果有需要單一可靠資料來源的現代化雲端應用程式和微服務，則可使用此選項。 單一資料庫類似於 [SQL Server 資料庫引擎](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)中的[自主資料庫](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases?toc=/azure/sql-database/toc.json)。
+- [單一資料庫](single-database-overview.md)代表完全受控的隔離資料庫。 如果有需要單一可靠資料來源的現代化雲端應用程式和微服務，則可使用此選項。 單一資料庫類似於 [SQL Server 資料庫引擎](/sql/sql-server/sql-server-technical-documentation?toc=%252fazure%252fsql-database%252ftoc.json)中的[自主資料庫](/sql/relational-databases/databases/contained-databases?toc=%252fazure%252fsql-database%252ftoc.json)。
 - [彈性集區](elastic-pool-overview.md)是具有一組共用資源 (例如 CPU 或記憶體) 的[單一資料庫](single-database-overview.md)集合。 單一資料庫可以移入和移出彈性集區。
 
 > [!IMPORTANT]
@@ -92,13 +92,13 @@ Azure SQL Database 提供進階監視和疑難排解功能，可協助更深入�
  - 最新版的 SQL Server 資料庫引擎所提供的內建監視功能。 這些功能可供尋找即時效能深入解析。 
  - Azure 提供的 PaaS 監視功能，可供監視大量的資料庫執行個體並為其進行疑難排解。
 
-[查詢存放區](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store)是內建的 SQL Server 監視功能，可即時記錄查詢效能，並可供找出潛在的效能問題和最耗用資源的資源取用者。 自動調整和建議為效能迴歸以及索引遺漏或重複的查詢提供相關建議。 SQL Database 中的自動調整可供手動套用指令碼來修正問題，或讓 SQL Database 套用修正程式。 SQL Database 也可測試並驗證修正程式是否提供一些好處，並根據結果保留或還原變更。 除了查詢存放區和自動調整功能以外，您還可使用標準 [DMV 和 XEvent](monitoring-with-dmvs.md) 來監視工作負載效能。
+[查詢存放區](/sql/relational-databases/performance/best-practice-with-the-query-store)是內建的 SQL Server 監視功能，可即時記錄查詢效能，並可供找出潛在的效能問題和最耗用資源的資源取用者。 自動調整和建議為效能迴歸以及索引遺漏或重複的查詢提供相關建議。 SQL Database 中的自動調整可供手動套用指令碼來修正問題，或讓 SQL Database 套用修正程式。 SQL Database 也可測試並驗證修正程式是否提供一些好處，並根據結果保留或還原變更。 除了查詢存放區和自動調整功能以外，您還可使用標準 [DMV 和 XEvent](monitoring-with-dmvs.md) 來監視工作負載效能。
 
 Azure 提供[內建的效能監視](performance-guidance.md)和[警示](alerts-insights-configure-portal.md)工具，並搭配使用效能分級，其可供監視數千個資料庫的狀態。 使用這些工具，即可根據目前或所預計效能需求來快速評定擴大或縮小的影響。 此外，SQL Database 可[發出計量和資源記錄](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)，以供更輕鬆地進行監視。 您可以將 SQL Database 設定為將資源使用量、背景工作與工作階段及連線儲存到下列其中一項 Azure 資源：
 
-- **Azure 儲存體**：用於封存大量遙測，價格實惠。
-- **Azure 事件中樞**：用於整合 SQL Database 遙測與自訂監視解決方案或經常性管線。
-- **Azure 監視器記錄**：用於具有報告、警示及風險降低功能的內建監視解決方案。
+- **Azure 儲存體** ：用於封存大量遙測，價格實惠。
+- **Azure 事件中樞** ：用於整合 SQL Database 遙測與自訂監視解決方案或經常性管線。
+- **Azure 監視器記錄** ：用於具有報告、警示及風險降低功能的內建監視解決方案。
 
 ![Azure 監視架構的圖表](./media/sql-database-paas-overview/architecture.png)
 
@@ -149,8 +149,8 @@ SQL Database 會提供您需要監視之查詢的詳細解析。 SQL Database �
 
 [SQL Database 中可用的](automatic-tuning-overview.md)自動調整層面有兩個：
 
-- **自動索引管理**：識別應該在資料庫中新增的索引，以及應該移除的索引。
-- **自動計劃修正**：識別有問題的計劃並修正 SQL 計劃效能問題。
+- **自動索引管理** ：識別應該在資料庫中新增的索引，以及應該移除的索引。
+- **自動計劃修正** ：識別有問題的計劃並修正 SQL 計劃效能問題。
 
 ### <a name="adaptive-query-processing"></a>自適性查詢處理
 
@@ -158,7 +158,7 @@ SQL Database 會提供您需要監視之查詢的詳細解析。 SQL Database �
 
 ## <a name="advanced-security-and-compliance"></a>進階安全性與合規性
 
-SQL Database 提供了各式各樣的[內建安全性與合規性功能](../../active-directory/identity-protection/security-overview.md)，協助您的應用程式符合各種安全性與合規性需求。
+SQL Database 提供了各式各樣的[內建安全性與合規性功能](../../active-directory/identity-protection/concept-identity-protection-security-overview.md)，協助您的應用程式符合各種安全性與合規性需求。
 
 > [!IMPORTANT]
 > Azure SQL Database (所有部署選項) 已通過許多合規性標準的 Microsoft 認證。 如需詳細資訊，請參閱 [Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，您可在當中找到 SQL Database 合規性認證的最新清單。
@@ -180,7 +180,7 @@ SQL Database 提供了各式各樣的[內建安全性與合規性功能](../../a
 
 ### <a name="data-encryption"></a>資料加密
 
-SQL Database 透過提供加密來協助保護您的資料。 針對移動中的資料，其會使用[傳輸層安全性](https://support.microsoft.com/kb/3135244)。 針對待用資料，其會使用[透明資料加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)。 針對使用中的資料，會使用 [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)。
+SQL Database 透過提供加密來協助保護您的資料。 針對移動中的資料，其會使用[傳輸層安全性](https://support.microsoft.com/kb/3135244)。 針對待用資料，其會使用[透明資料加密](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)。 針對使用中的資料，會使用 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)。
 
 ### <a name="data-discovery-and-classification"></a>資料探索與分類
 
@@ -198,8 +198,8 @@ SQL Database 讓應用程式的建置及維護更簡易也更有生產力。 SQL
 |:---|:---|
 |[Azure 入口網站](https://portal.azure.com/)|Web 應用程式，用於管理所有 Azure 服務。|
 |[Azure Data Studio](/sql/azure-data-studio/)|可在 Windows、macOS 和 Linux 上執行的跨平台資料庫工具。|
-|[Transact-SQL](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)|可下載的免費用戶端應用程式，其用於管理任何 SQL 基礎結構 (從 SQL Server 到 SQL Database)。|
-|[Visual Studio 中的 SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)|可供下載的免費用戶端應用程式，可用來開發 SQL Server 關聯式資料庫、Azure SQL Database 中的資料庫、Integration Services 套件、Analysis Services 資料模型及 Reporting Services 報告。|
+|[Transact-SQL](/sql/ssms/download-sql-server-management-studio-ssms)|可下載的免費用戶端應用程式，其用於管理任何 SQL 基礎結構 (從 SQL Server 到 SQL Database)。|
+|[Visual Studio 中的 SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt)|可供下載的免費用戶端應用程式，可用來開發 SQL Server 關聯式資料庫、Azure SQL Database 中的資料庫、Integration Services 套件、Analysis Services 資料模型及 Reporting Services 報告。|
 |[Visual Studio Code](https://code.visualstudio.com/docs) \(英文\)|可下載的免費開放原始碼程式碼編輯器，其適用於 Windows、macOS 和 Linux。 其支援延伸模組，包括可供查詢 Microsoft SQL Server、Azure SQL Database 和 Azure Synapse Analytics (先前稱為 SQL 資料倉儲) 的 [mssql 延伸模組](https://aka.ms/mssql-marketplace)。|
 
 SQL Database 支援在 macOS、Linux 和 Windows 上使用 Python、Java、Node.js、PHP、Ruby 和 .NET 建置應用程式。 SQL Database 支援與 SQL Server 相同的[連線庫](connect-query-content-reference-guide.md#libraries)。
@@ -218,7 +218,7 @@ SQL Database 支援在 macOS、Linux 和 Windows 上使用 Python、Java、Node.
 
 - [DBA Stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server) \(英文\)：詢問資料庫管理問題。
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/sql-server)：詢問開發問題。
-- [Microsoft 問與答的問題頁面](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)：詢問技術問題。
+- [Microsoft 問與答的問題頁面](/answers/topics/azure-synapse-analytics.html)：詢問技術問題。
 - [意見反應](https://aka.ms/sqlfeedback)：報告 Bug 和要求功能。
 - [Reddit](https://www.reddit.com/r/SQLServer/)：討論 SQL Server。
 
@@ -237,4 +237,3 @@ SQL Database 支援在 macOS、Linux 和 Windows 上使用 Python、Java、Node.
 
 - 如需所公告新功能的資訊，請參閱[適用於 SQL Database 的 Azure 藍圖](https://azure.microsoft.com/roadmap/?category=databases)。
 - 請參閱 [Azure SQL Database 部落格](https://azure.microsoft.com/blog/topics/database)，這是 SQL Server 產品小組成員發表 SQL Database 消息和功能的地方。
-

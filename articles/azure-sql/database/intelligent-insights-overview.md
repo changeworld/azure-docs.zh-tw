@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 4f6bbbdbbee6cf83a6bea463cf200be0cf671897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6133d838fa31919a37ddd633193e5559c50de9b6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317050"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790435"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights 使用 AI 來監視和疑難排解資料庫效能 (預覽) 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -85,7 +85,7 @@ Intelligent Insights 在探索和針對資料庫效能問題進行疑難排解�
 
 Intelligent Insights 的輸出可以串流至數個目的地的其中一個，以供分析之用：
 
-- 串流至 Log Analytics 工作區的輸出可以搭配 [Azure SQL 分析](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) 使用，以透過 Azure 入口網站的使用者介面來查看見解。 這是整合式 Azure 解決方案，而且是檢視深入解析的最常見方式。
+- 串流至 Log Analytics 工作區的輸出可以搭配 [Azure SQL 分析](../../azure-monitor/insights/azure-sql.md) 使用，以透過 Azure 入口網站的使用者介面來查看見解。 這是整合式 Azure 解決方案，而且是檢視深入解析的最常見方式。
 - 串流至 Azure 事件中樞的輸出可用於開發自訂監視和警示案例
 - 串流至 Azure 儲存體的輸出可以用於自訂應用程式開發，例如自訂報告、長期資料保存等等。
 
@@ -107,7 +107,7 @@ Azure SQL 分析解決方案使用 Intelligent Insights 資源記錄資料，為
 
 ### <a name="set-up-with-event-hubs"></a>使用事件中樞設定
 
-若要搭配事件中樞使用 Intelligent Insights，請將 Intelligent Insights 記錄資料設定為串流處理到事件中樞，請參閱 [計量和診斷記錄](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) ，並 [將 Azure 診斷記錄串流至事件中樞](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)。
+若要搭配事件中樞使用 Intelligent Insights，請將 Intelligent Insights 記錄資料設定為串流處理到事件中樞，請參閱 [計量和診斷記錄](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) ，並 [將 Azure 診斷記錄串流至事件中樞](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)。
 
 若要使用事件中樞來設定自訂監視和警示，請參閱 [事件中樞的計量和診斷記錄](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs)的處理方式。
 

@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d7938f24e408e72a84003c19e5c294d31f6b65b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8119d01ae8e8ed1e809753e433b063a844a2c5c3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91565117"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790673"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>SQL Server 2014 虛擬機器 (Resource Manager) 的自動備份
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "91565117"
 > * [SQL Server 2014](automated-backup-sql-2014.md)
 > * [SQL Server 2016/2017](automated-backup.md)
 
-自動備份會針對執行 SQL Server 2014 Standard 或 Enterprise 之 Azure VM 上所有現存和新的資料庫，自動設定 [受控備份至 Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) 。 這可讓您設定採用持久性 Azure Blob 儲存體的一般資料庫備份。 自動備份相依於 [SQL Server 基礎結構即服務 (IaaS) 代理程式擴充功能](sql-server-iaas-agent-extension-automate-management.md)。
+自動備份會針對執行 SQL Server 2014 Standard 或 Enterprise 之 Azure VM 上所有現存和新的資料庫，自動設定 [受控備份至 Microsoft Azure](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure) 。 這可讓您設定採用持久性 Azure Blob 儲存體的一般資料庫備份。 自動備份相依於 [SQL Server 基礎結構即服務 (IaaS) 代理程式擴充功能](sql-server-iaas-agent-extension-automate-management.md)。
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -35,11 +35,11 @@ ms.locfileid: "91565117"
 若要使用自動備份，請考慮下列必要條件︰
 
 
-**作業系統**：
+**作業系統** ：
 
 - Windows Server 2012 和更新版本 
 
-**SQL Server 版本**：
+**SQL Server 版本** ：
 
 - SQL Server 2014 Standard
 - SQL Server 2014 Enterprise
@@ -47,9 +47,9 @@ ms.locfileid: "91565117"
 > [!NOTE]
 > 若為 SQL 2016 和更新版本，請參閱 [SQL Server 2016 的自動備份](automated-backup.md)。
 
-**資料庫組態**：
+**資料庫組態** ：
 
-- 目標 _使用者_ 資料庫必須使用完整復原模式。 系統資料庫不一定要使用完整復原模式。 不過，如果要求針對模型或 MSDB 進行記錄備份，就必須使用完整復原模式。 如需深入瞭解完整復原模式對備份之影響，請參閱[在完整復原模式下備份](https://technet.microsoft.com/library/ms190217.aspx)。 
+- 目標 _使用者_ 資料庫必須使用完整復原模式。 系統資料庫不一定要使用完整復原模式。 不過，如果要求針對模型或 MSDB 進行記錄備份，就必須使用完整復原模式。 如需深入瞭解完整復原模式對備份之影響，請參閱[在完整復原模式下備份](/previous-versions/sql/sql-server-2008-r2/ms190217(v=sql.105))。 
 - 已在 [完整管理模式](sql-vm-resource-provider-register.md#upgrade-to-full)中向 SQL vm 資源提供者註冊 SQL Server VM。 
 -  自動備份會依賴完整 [SQL Server IaaS 代理程式擴充](sql-server-iaas-agent-extension-automate-management.md)功能。 如此一來，只有預設實例的目標資料庫或單一命名實例才支援自動備份。 如果沒有預設實例和多個命名實例，SQL IaaS 擴充功能就會失敗，而且自動備份將無法運作。 
 
@@ -84,7 +84,7 @@ ms.locfileid: "91565117"
 
 ![現有 VM 的 SQL 自動備份](./media/automated-backup-sql-2014/azure-sql-rm-autobackup-existing-vms.png)
 
-完成後，請選取**備份**頁面底部的 [套用] 按鈕，以儲存變更。
+完成後，請選取 **備份** 頁面底部的 [套用] 按鈕，以儲存變更。
 
 如果這是您第一次啟用「自動備份」，Azure 就會在背景中設定 SQL Server IaaS Agent。 在此期間，Azure 入口網站可能不會顯示已設定自動備份。 請等候幾分鐘的時間來安裝和設定代理程式。 之後，Azure 入口網站將會反映新的設定。
 
@@ -112,7 +112,7 @@ $resourcegroupname = "resourcegroupname"
 
 如果已安裝 SQL Server IaaS 代理程式擴充功能，您應該會看到它以「SqlIaaSAgent」或「SQLIaaSExtension」的形式列出。 該擴充功能的 **ProvisioningState** 應該也顯示為「已成功」。
 
-如果未安裝或無法佈建擴充功能，您可以使用下列命令來安裝。 除了 VM 名稱和資源群組之外，您還必須指定 VM 所在的區域 ( **$region**)。 指定 SQL Server VM 的授權類型，透過 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) 選擇「隨用隨付」或「自備授權」。 如需授權模式的相關資訊，請參閱[授權模式](licensing-model-azure-hybrid-benefit-ahb-change.md)。 
+如果未安裝或無法佈建擴充功能，您可以使用下列命令來安裝。 除了 VM 名稱和資源群組之外，您還必須指定 VM 所在的區域 ( **$region** )。 指定 SQL Server VM 的授權類型，透過 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) 選擇「隨用隨付」或「自備授權」。 如需授權模式的相關資訊，請參閱[授權模式](licensing-model-azure-hybrid-benefit-ahb-change.md)。 
 
 ```powershell
 New-AzSqlVM  -Name $vmname `
@@ -148,7 +148,7 @@ FullBackupWindowHours       :
 LogBackupFrequency          : 
 ```
 
-如果您的輸出顯示 **Enable** 是設定為 **False**，您就必須啟用自動備份。 好消息是，啟用和設定「自動備份」的方式是相同的。 如需這項資訊，請參閱下一節。
+如果您的輸出顯示 **Enable** 是設定為 **False** ，您就必須啟用自動備份。 好消息是，啟用和設定「自動備份」的方式是相同的。 如需這項資訊，請參閱下一節。
 
 > [!NOTE] 
 > 如果您在進行變更後立即檢查設定，可能會得到舊的組態值。 只要等幾分鐘後再重新檢查設定，即可確定已套用您的變更。
@@ -186,7 +186,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 可能需要幾分鐘的時間來安裝及設定 SQL Server IaaS 代理程式。
 
 > [!NOTE]
-> **New-AzVMSqlServerAutoBackupConfig** 有其他僅適用於 SQL Server 2016 和「自動備份 v2」的設定。 SQL Server 2014 不支援下列設定：**BackupSystemDbs**、**BackupScheduleType**、**FullBackupFrequency**、**FullBackupStartHour**、**FullBackupWindowInHours** 及 **LogBackupFrequencyInMinutes**。 如果您嘗試在 SQL Server 2014 虛擬機器上設定這些設定，並不會發生錯誤，但是不會套用這些設定。 如果要在 SQL Server 2016 虛擬機器上使用這些設定，請參閱 [SQL Server 2016 Azure 虛擬機器的自動備份 v2](automated-backup.md)。
+> **New-AzVMSqlServerAutoBackupConfig** 有其他僅適用於 SQL Server 2016 和「自動備份 v2」的設定。 SQL Server 2014 不支援下列設定： **BackupSystemDbs** 、 **BackupScheduleType** 、 **FullBackupFrequency** 、 **FullBackupStartHour** 、 **FullBackupWindowInHours** 及 **LogBackupFrequencyInMinutes** 。 如果您嘗試在 SQL Server 2014 虛擬機器上設定這些設定，並不會發生錯誤，但是不會套用這些設定。 如果要在 SQL Server 2016 虛擬機器上使用這些設定，請參閱 [SQL Server 2016 Azure 虛擬機器的自動備份 v2](automated-backup.md)。
 
 若要啟用加密，請修改先前的指令碼，為 **CertificatePassword** 參數傳遞 **EnableEncryption** 參數和密碼 (安全字串)。 下列指令碼會啟用上述範例中的自動備份設定，並新增加密。
 
@@ -258,17 +258,17 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 
 若要監控 SQL Server 2014 上的自動備份，您有兩個主要選項。 因為自動備份使用 SQL Server 受控備份功能，所以相同的監控技術適用於兩者。
 
-首先，您可以藉由呼叫 [msdb.smart_admin.sp_get_backup_diagnostics](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-get-backup-diagnostics-transact-sql) 來輪詢狀態。 或查詢 [msdb.smart_admin.fn_get_health_status](https://docs.microsoft.com/sql/relational-databases/system-functions/managed-backup-fn-get-health-status-transact-sql) 資料表值函式。
+首先，您可以藉由呼叫 [msdb.smart_admin.sp_get_backup_diagnostics](/sql/relational-databases/system-stored-procedures/managed-backup-sp-get-backup-diagnostics-transact-sql) 來輪詢狀態。 或查詢 [msdb.smart_admin.fn_get_health_status](/sql/relational-databases/system-functions/managed-backup-fn-get-health-status-transact-sql) 資料表值函式。
 
 > [!NOTE]
-> SQL Server 2014 中受控備份的結構描述是 **msdb.smart_admin**。 在 SQL Server 2016 中，此項已變更為 **msdb.managed_backup**，而且參考主題使用此較新的結構描述。 但是對於 SQL Server 2014，您必須對所有受控備份物件繼續使用 **smart_admin** 結構描述。
+> SQL Server 2014 中受控備份的結構描述是 **msdb.smart_admin** 。 在 SQL Server 2016 中，此項已變更為 **msdb.managed_backup** ，而且參考主題使用此較新的結構描述。 但是對於 SQL Server 2014，您必須對所有受控備份物件繼續使用 **smart_admin** 結構描述。
 
 另一個選項是利用內建的 Database Mail 功能進行通知。
 
-1. 呼叫 [msdb.smart_admin.sp_set_parameter](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) 預存程序，以將電子郵件地址指派至 **SSMBackup2WANotificationEmailIds** 參數。 
+1. 呼叫 [msdb.smart_admin.sp_set_parameter](/sql/relational-databases/system-stored-procedures/managed-backup-sp-set-parameter-transact-sql) 預存程序，以將電子郵件地址指派至 **SSMBackup2WANotificationEmailIds** 參數。 
 1. 啟用 [SendGrid](../../../sendgrid-dotnet-how-to-send-email.md)，以從 Azure VM 傳送電子郵件。
-1. 使用 SMTP 伺服器與使用者名稱以設定 Database Mail。 您可以在 SQL Server Management Studio 中或使用 Transact-SQL 命令設定 Database Mail。 如需詳細資訊，請參閱 [Database Mail](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail)。
-1. [設定 SQL Server Agent 以使用 Database Mail](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-sql-server-agent-mail-to-use-database-mail)。
+1. 使用 SMTP 伺服器與使用者名稱以設定 Database Mail。 您可以在 SQL Server Management Studio 中或使用 Transact-SQL 命令設定 Database Mail。 如需詳細資訊，請參閱 [Database Mail](/sql/relational-databases/database-mail/database-mail)。
+1. [設定 SQL Server Agent 以使用 Database Mail](/sql/relational-databases/database-mail/configure-sql-server-agent-mail-to-use-database-mail)。
 1. 確認是否允許 SMTP 連接埠經過本機虛擬機器防火牆和虛擬機器的網路安全性群組。
 
 ## <a name="next-steps"></a>後續步驟

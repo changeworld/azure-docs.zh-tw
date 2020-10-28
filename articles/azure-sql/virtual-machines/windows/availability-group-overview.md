@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 26d4080e20fb8d00ec4d276e56e09170001d2b8e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 4919abd29ecf10c9116257750374ef53b4bd9d16
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166534"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789908"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 上 SQL Server 的 Always On 可用性群組
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ Azure 虛擬機器上的 Always On 可用性群組與[內部部署的 Always On 
 
 ## <a name="vm-redundancy"></a>VM 備援 
 
-若要提高備援能力與高可用性，SQL Server VM 應位於相同的[可用性設定組](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview)，或不同的[可用性區域](/azure/availability-zones/az-overview)。
+若要提高備援能力與高可用性，SQL Server VM 應位於相同的[可用性設定組](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview)，或不同的[可用性區域](../../../availability-zones/az-overview.md)。
 
 可用性設定組是一組資源，這些資源已設定為不會落在相同的可用性區域中兩次。 這可避免在部署推出期間影響群組中的多個資源。 
 
@@ -74,7 +74,7 @@ DNN 接聽程式是 Azure 中建議的 HADR 連線解決方案，因為其可簡
 
 下表提供可用選項的比較： 
 
-| |**[Azure 入口網站](availability-group-azure-portal-configure.md)**|**[Azure CLI/PowerShell](availability-group-az-cli-configure.md)**|**[快速入門範本](availability-group-quickstart-template-configure.md)**|**[手動](availability-group-manually-configure-prerequisites-tutorial.md)** | 
+| |**[Azure 入口網站](availability-group-azure-portal-configure.md)**|**[Azure CLI/PowerShell](./availability-group-az-commandline-configure.md)**|**[快速入門範本](availability-group-quickstart-template-configure.md)**|**[手動](availability-group-manually-configure-prerequisites-tutorial.md)** | 
 |---------|---------|---------|--------- |---------|
 |**SQL Server 版本** |2016 + |2016 +|2016 +|2012 +|
 |**SQL Server 版本** |Enterprise |Enterprise |Enterprise |Enterprise、Standard|
@@ -100,6 +100,6 @@ DNN 接聽程式是 Azure 中建議的 HADR 連線解決方案，因為其可簡
 
 ## <a name="next-steps"></a>後續步驟
 
-請檢閱 [HADR 最佳做法](hadr-cluster-best-practices.md)，然後開始使用 [Azure 入口網站](availability-group-azure-portal-configure.md)、[Azure CLI / PowerShell](availability-group-az-cli-configure.md)、[快速入門範本](availability-group-quickstart-template-configure.md)或[手動方式](availability-group-manually-configure-prerequisites-tutorial.md)來部署您的可用性群組。
+請檢閱 [HADR 最佳做法](hadr-cluster-best-practices.md)，然後開始使用 [Azure 入口網站](availability-group-azure-portal-configure.md)、[Azure CLI / PowerShell](./availability-group-az-commandline-configure.md)、[快速入門範本](availability-group-quickstart-template-configure.md)或[手動方式](availability-group-manually-configure-prerequisites-tutorial.md)來部署您的可用性群組。
 
-或者，您也可以在[多個區域](availability-group-manually-configure-multiple-regions.md)中部署 [無叢集的可用性群組](availability-group-clusterless-workgroup-configure.md)或可用性群組。 
+或者，您也可以在[多個區域](availability-group-manually-configure-multiple-regions.md)中部署 [無叢集的可用性群組](availability-group-clusterless-workgroup-configure.md)或可用性群組。

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 0bcc26c637e8ef6043589d963cfa9708b599a456
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd9a811fd1c19d115f3ff15194b7e632114140df
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619061"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790248"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>使用 DTU 購買模型的單一資料庫資源限制-Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -103,7 +103,7 @@ ms.locfileid: "91619061"
 > [!IMPORTANT]
 > 所有區域目前均可使用進階層中超過 1 TB 的儲存體，但：中國東部、中國北部、德國中部和德國東北部除外。 在這些區域中，進階層中的儲存空間上限為 1 TB。  如需詳細資訊，請參閱 [P11-P15 目前的限制](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。
 > [!NOTE]
-> 如需 `tempdb` 限制，請參閱 [tempdb 限制](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database)。
+> 如需 `tempdb` 限制，請參閱 [tempdb 限制](/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database)。
 
 ## <a name="next-steps"></a>後續步驟
 

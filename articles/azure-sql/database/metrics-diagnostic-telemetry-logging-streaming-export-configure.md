@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 04/06/2020
-ms.openlocfilehash: 1442ca7957a458e1458c4815033bf5e79c67c32a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1e1de694b6333a350d034b08225aeea117ae703
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448918"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790469"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>設定 Azure SQL Database 和 SQL 受控執行個體診斷遙測的串流匯出
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -50,25 +50,25 @@ ms.locfileid: "91448918"
 | [SQLInsights](#intelligent-insights-dataset)：包含資料庫效能的 Intelligent Insights。 若要深入了解，請參閱 [Intelligent Insights](intelligent-insights-overview.md)。 | 是 | 是 |
 
 > [!NOTE]
-> 無法針對 **系統資料庫**（例如 master、msdb、model、resource 和 tempdb 資料庫）設定診斷設定。
+> 無法針對 **系統資料庫** （例如 master、msdb、model、resource 和 tempdb 資料庫）設定診斷設定。
 
 ## <a name="streaming-export-destinations"></a>串流匯出目的地
 
 此診斷遙測可以串流至下列其中一個 Azure 資源以進行分析。
 
-- **[Log Analytics 工作區](#stream-into-sql-analytics)**：
+- **[Log Analytics 工作區](#stream-into-sql-analytics)** ：
 
-  串流至 [Log Analytics 工作區](../../azure-monitor/platform/resource-logs-collect-workspace.md) 的資料可供 [SQL 分析](../../azure-monitor/insights/azure-sql.md)使用。 SQL 分析是僅限雲端的監視解決方案，可為您的資料庫提供智慧型監視，包括效能報告、警示和緩和建議。 串流至 Log Analytics 工作區的資料可以使用其他所收集的監視資料進行分析，也可讓您運用其他 Azure 監視器功能，例如警示和視覺效果
-- **[Azure 事件中樞](#stream-into-event-hubs)**：
+  串流至 [Log Analytics 工作區](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) 的資料可供 [SQL 分析](../../azure-monitor/insights/azure-sql.md)使用。 SQL 分析是僅限雲端的監視解決方案，可為您的資料庫提供智慧型監視，包括效能報告、警示和緩和建議。 串流至 Log Analytics 工作區的資料可以使用其他所收集的監視資料進行分析，也可讓您運用其他 Azure 監視器功能，例如警示和視覺效果
+- **[Azure 事件中樞](#stream-into-event-hubs)** ：
 
-  資料流程處理至 [Azure 事件中樞](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)的資料提供下列功能：
+  資料流程處理至 [Azure 事件中樞](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)的資料提供下列功能：
 
-  - **將記錄串流至協力廠商記錄和遙測系統**：將您所有的計量和資源記錄串流至單一事件中樞，以將記錄資料輸送到協力廠商 SIEM 或 log analytics 工具。
-  - **建立自訂遙測和記錄平臺**：事件中樞可高度調整的發佈訂閱特性，可讓您彈性地將計量和資源記錄內嵌到自訂的遙測平臺中。 如需詳細資訊，請參閱 [在 Azure 事件中樞上設計和調整全球規模的遙測平臺](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/) 。
-  - 藉**由將資料串流至 Power BI 來查看服務健康狀態**：使用事件中樞、串流分析和 Power BI，將診斷資料轉換為 Azure 服務上的近乎即時見解。 請參閱 [串流分析和 Power BI：適用于串流資料的即時分析儀表板](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-power-bi-dashboard) ，以取得此解決方案的詳細資料。
-- **[Azure 儲存體](#stream-into-azure-storage)**：
+  - **將記錄串流至協力廠商記錄和遙測系統** ：將您所有的計量和資源記錄串流至單一事件中樞，以將記錄資料輸送到協力廠商 SIEM 或 log analytics 工具。
+  - **建立自訂遙測和記錄平臺** ：事件中樞可高度調整的發佈訂閱特性，可讓您彈性地將計量和資源記錄內嵌到自訂的遙測平臺中。 如需詳細資訊，請參閱 [在 Azure 事件中樞上設計和調整全球規模的遙測平臺](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/) 。
+  - 藉 **由將資料串流至 Power BI 來查看服務健康狀態** ：使用事件中樞、串流分析和 Power BI，將診斷資料轉換為 Azure 服務上的近乎即時見解。 請參閱 [串流分析和 Power BI：適用于串流資料的即時分析儀表板](../../stream-analytics/stream-analytics-power-bi-dashboard.md) ，以取得此解決方案的詳細資料。
+- **[Azure 儲存體](#stream-into-azure-storage)** ：
 
-  串流至 [Azure 儲存體](../../azure-monitor/platform/resource-logs-collect-storage.md) 的資料可讓您封存大量的診斷遙測，以取得前兩個串流選項的一部分成本。
+  串流至 [Azure 儲存體](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) 的資料可讓您封存大量的診斷遙測，以取得前兩個串流選項的一部分成本。
 
 此診斷遙測串流至其中一個目的地，可用來測量資源使用量和查詢執行統計資料，以更輕鬆地監視效能。
 
@@ -76,7 +76,7 @@ ms.locfileid: "91448918"
 
 ## <a name="enable-and-configure-the-streaming-export-of-diagnostic-telemetry"></a>啟用和設定診斷遙測的串流匯出
 
-您可以使用下列其中一種方法來啟用及管理計量和診斷遙測記錄：
+您可以使用下列其中一種方法來啟用及管理計量和診斷遙測記錄功能︰
 
 - Azure 入口網站
 - PowerShell
@@ -85,11 +85,11 @@ ms.locfileid: "91448918"
 - Azure Resource Manager 範本
 
 > [!NOTE]
-> 若要啟用安全性遙測的 audit 記錄串流，請參閱[在 Azure 監視器記錄檔和 Azure 事件中樞中](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)[設定資料庫](../../sql-database/sql-database-auditing.md#setup-auditing)的審核和審核記錄。
+> 若要啟用安全性遙測的 audit 記錄串流，請參閱[在 Azure 監視器記錄檔和 Azure 事件中樞中](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)[設定資料庫](./auditing-overview.md#setup-auditing)的審核和審核記錄。
 
 ## <a name="configure-the-streaming-export-of-diagnostic-telemetry"></a>設定診斷遙測的串流匯出
 
-您可以使用 Azure 入口網站中的 [ **診斷設定** ] 功能表來啟用和設定診斷遙測的串流。 此外，您可以使用 PowerShell、Azure CLI、 [REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)和 [Resource Manager 範本](../../azure-monitor/platform/diagnostic-settings-template.md) 來設定診斷遙測的串流。 您可以設定下列目的地來串流診斷遙測： Azure 儲存體、Azure 事件中樞和 Azure 監視器記錄。
+您可以使用 Azure 入口網站中的 [ **診斷設定** ] 功能表來啟用和設定診斷遙測的串流。 此外，您可以使用 PowerShell、Azure CLI、 [REST API](/rest/api/monitor/diagnosticsettings)和 [Resource Manager 範本](../../azure-monitor/samples/resource-manager-diagnostic-settings.md) 來設定診斷遙測的串流。 您可以設定下列目的地來串流診斷遙測： Azure 儲存體、Azure 事件中樞和 Azure 監視器記錄。
 
 > [!IMPORTANT]
 > 診斷遙測的串流匯出預設不會啟用。
@@ -117,17 +117,17 @@ ms.locfileid: "91448918"
 
 1. 移至 Azure 入口網站中的 **彈性集** 區資源。
 2. 選取 [診斷設定]。
-3. 如果沒有先前的設定存在，請選取 [開啟診斷]****，或者選取 [編輯設定]**** 來編輯先前的設定。
+3. 如果沒有先前的設定存在，請選取 [開啟診斷]  ，或者選取 [編輯設定]  來編輯先前的設定。
 
    ![啟用彈性集區的診斷功能](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-container-elasticpool-enable.png)
 
 4. 輸入供您自己參考的設定名稱。
-5. 選取串流診斷資料的目的地資源：封存 **至儲存體帳戶**、 **串流至事件中樞**，或 **傳送至 Log Analytics**。
-6. 針對 log analytics，選取 [ **+ 建立新工作區**]，或選取現有的工作區，以選取 [**設定**和建立新的工作區]。
+5. 選取串流診斷資料的目的地資源：封存 **至儲存體帳戶** 、 **串流至事件中樞** ，或 **傳送至 Log Analytics** 。
+6. 針對 log analytics，選取 [ **+ 建立新工作區** ]，或選取現有的工作區，以選取 [ **設定** 和建立新的工作區]。
 7. 選取 [彈性集區診斷遙測： **基本** 計量] 的核取方塊。
    ![設定彈性集區的診斷功能](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-container-elasticpool-selection.png)
 
-8. 選取 [儲存]****。
+8. 選取 [儲存]。
 9. 此外，請依照下一節所述的步驟，為您想要監視的彈性集區中的每個資料庫設定診斷遙測的串流。
 
 > [!IMPORTANT]
@@ -145,18 +145,18 @@ ms.locfileid: "91448918"
 
 1. 移至 Azure **SQL database** 資源。
 2. 選取 [診斷設定]。
-3. 如果沒有先前的設定存在，請選取 [開啟診斷]****，或者選取 [編輯設定]**** 來編輯先前的設定。 您最多可以建立三個平行連接來串流診斷遙測。
+3. 如果沒有先前的設定存在，請選取 [開啟診斷]  ，或者選取 [編輯設定]  來編輯先前的設定。 您最多可以建立三個平行連接來串流診斷遙測。
 4. 選取 [ **新增診斷設定** ]，將診斷資料的平行串流設定為多個資源。
 
    ![啟用單一和集區資料庫的診斷功能](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-database-sql-enable.png)
 
 5. 輸入供您自己參考的設定名稱。
-6. 選取串流診斷資料的目的地資源：封存 **至儲存體帳戶**、 **串流至事件中樞**，或 **傳送至 Log Analytics**。
-7. 針對以事件為基礎的標準監視體驗，請選取下列資料庫診斷記錄遙測的核取方塊： **SQLInsights**、 **AutomaticTuning**、 **QueryStoreRuntimeStatistics**、 **QueryStoreWaitStatistics**、 **錯誤**、 **DatabaseWaitStatistics**、 **超時**、 **區塊**和 **鎖死**。
+6. 選取串流診斷資料的目的地資源：封存 **至儲存體帳戶** 、 **串流至事件中樞** ，或 **傳送至 Log Analytics** 。
+7. 針對以事件為基礎的標準監視體驗，請選取下列資料庫診斷記錄遙測的核取方塊： **SQLInsights** 、 **AutomaticTuning** 、 **QueryStoreRuntimeStatistics** 、 **QueryStoreWaitStatistics** 、 **錯誤** 、 **DatabaseWaitStatistics** 、 **超時** 、 **區塊** 和 **鎖死** 。
 8. 如需以一分鐘為基礎的先進監視體驗，請選取 [ **基本** 計量] 的核取方塊。
 
    ![針對 Azure SQL Database 設定診斷](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-database-sql-selection.png)
-9. 選取 [儲存]****。
+9. 選取 [儲存]。
 10. 針對您要監視的每個資料庫重複執行這些步驟。
 
 > [!TIP]
@@ -181,18 +181,18 @@ ms.locfileid: "91448918"
 
 1. 移至 Azure 入口網站中的 **受控實例** 資源。
 2. 選取 [診斷設定]。
-3. 如果沒有先前的設定存在，請選取 [開啟診斷]****，或者選取 [編輯設定]**** 來編輯先前的設定。
+3. 如果沒有先前的設定存在，請選取 [開啟診斷]  ，或者選取 [編輯設定]  來編輯先前的設定。
 
    ![啟用受控執行個體的診斷](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-container-mi-enable.png)
 
 4. 輸入供您自己參考的設定名稱。
-5. 選取串流診斷資料的目的地資源：封存 **至儲存體帳戶**、 **串流至事件中樞**，或 **傳送至 Log Analytics**。
-6. 針對 log analytics，選取 [ **+ 建立新的工作區**] 或 [使用現有的工作區]，以選取 [**設定**和建立新的工作區]。
-7. 選取 [實例診斷遙測： **ResourceUsageStats**] 的核取方塊。
+5. 選取串流診斷資料的目的地資源：封存 **至儲存體帳戶** 、 **串流至事件中樞** ，或 **傳送至 Log Analytics** 。
+6. 針對 log analytics，選取 [ **+ 建立新的工作區** ] 或 [使用現有的工作區]，以選取 [ **設定** 和建立新的工作區]。
+7. 選取 [實例診斷遙測： **ResourceUsageStats** ] 的核取方塊。
 
    ![設定受控執行個體的診斷](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-container-mi-selection.png)
 
-8. 選取 [儲存]****。
+8. 選取 [儲存]。
 9. 此外，請依照下一節所述的步驟，為您要監視的受控實例中的每個實例資料庫設定診斷遙測的串流。
 
 > [!IMPORTANT]
@@ -210,17 +210,17 @@ ms.locfileid: "91448918"
 
 1. 移至受控實例中的 **實例資料庫** 資源。
 2. 選取 [診斷設定]。
-3. 如果沒有先前的設定存在，請選取 [開啟診斷]****，或者選取 [編輯設定]**** 來編輯先前的設定。
+3. 如果沒有先前的設定存在，請選取 [開啟診斷]  ，或者選取 [編輯設定]  來編輯先前的設定。
    - 您最多可以建立三個 (3) 平行連接來串流診斷遙測。
-   - 選取 [+新增診斷設定]**** 建立診斷資料到多個資源的多個平行串流處理。
+   - 選取 [+新增診斷設定]  建立診斷資料到多個資源的多個平行串流處理。
 
    ![啟用執行個體資料庫的診斷](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-database-mi-enable.png)
 
 4. 輸入供您自己參考的設定名稱。
-5. 選取串流診斷資料的目的地資源：封存 **至儲存體帳戶**、 **串流至事件中樞**，或 **傳送至 Log Analytics**。
-6. 選取資料庫診斷遙測的核取方塊： [ **SQLInsights**]、[ **QueryStoreRuntimeStatistics**]、[ **QueryStoreWaitStatistics**] 和 [ **錯誤**]。
+5. 選取串流診斷資料的目的地資源：封存 **至儲存體帳戶** 、 **串流至事件中樞** ，或 **傳送至 Log Analytics** 。
+6. 選取資料庫診斷遙測的核取方塊： [ **SQLInsights** ]、[ **QueryStoreRuntimeStatistics** ]、[ **QueryStoreWaitStatistics** ] 和 [ **錯誤** ]。
    ![設定執行個體資料庫的診斷](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/diagnostics-settings-database-mi-selection.png)
-7. 選取 [儲存]****。
+7. 選取 [儲存]。
 8. 針對您要監視的每個實例資料庫重複執行這些步驟。
 
 > [!TIP]
@@ -231,7 +231,7 @@ ms.locfileid: "91448918"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> 仍支援 PowerShell Azure Resource Manager 模組，但未來所有的開發都是針對 Az. Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
+> 仍支援 PowerShell Azure Resource Manager 模組，但未來所有的開發都是針對 Az. Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
 
 您可以使用 PowerShell 啟用計量和診斷記錄功能。
 
@@ -271,7 +271,7 @@ ms.locfileid: "91448918"
 
 **若要設定多個 Azure 資源**
 
-若要支援多個訂用帳戶，從[使用 PowerShell 啟用 Azure 資源計量記錄](https://blogs.technet.microsoft.com/msoms/20../../enable-azure-resource-metrics-logging-using-powershell/)使用 PowerShell 指令碼。
+若要支援多個訂用帳戶，從[使用 PowerShell 啟用 Azure 資源計量記錄](/archive/blogs/msoms/enable-azure-resource-metrics-logging-using-powershell)使用 PowerShell 指令碼。
 
 \<$WSID\>執行腳本 `Enable-AzureRMDiagnostics.ps1` 以將診斷資料從多個資源傳送至工作區時，請提供工作區資源識別碼作為參數。
 
@@ -335,7 +335,7 @@ Azure SQL 分析可使用串流至 Log Analytics 工作區的 Azure SQL Database
 2. 在解決方案中建立 Log Analytics 工作區。
 3. 將資料庫設定為將診斷遙測串流到工作區。
 
-您可以在 Azure 入口網站的 [診斷設定] 索引標籤中，使用內建的 [ **傳送至 Log Analytics** ] 選項，設定此診斷遙測的串流匯出。 您也可以透過 [PowerShell Cmdlet](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-powershell#configure-the-streaming-export-of-diagnostic-telemetry)、 [Azure CLI](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-cli#configure-the-streaming-export-of-diagnostic-telemetry)、 [Azure 監視器 REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)或 [Resource Manager 範本](../../azure-monitor/platform/diagnostic-settings-template.md)，使用診斷設定來啟用串流至 Log Analytics 工作區。
+您可以在 Azure 入口網站的 [診斷設定] 索引標籤中，使用內建的 [ **傳送至 Log Analytics** ] 選項，設定此診斷遙測的串流匯出。 您也可以透過 [PowerShell Cmdlet](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-powershell#configure-the-streaming-export-of-diagnostic-telemetry)、 [Azure CLI](metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-cli#configure-the-streaming-export-of-diagnostic-telemetry)、 [Azure 監視器 REST API](/rest/api/monitor/diagnosticsettings)或 [Resource Manager 範本](../../azure-monitor/samples/resource-manager-diagnostic-settings.md)，使用診斷設定來啟用串流至 Log Analytics 工作區。
 
 ### <a name="create-an-azure-sql-analytics-resource"></a>建立 Azure SQL 分析資源
 
@@ -343,13 +343,13 @@ Azure SQL 分析可使用串流至 Log Analytics 工作區的 Azure SQL Database
 
    ![在入口網站中搜尋 Azure SQL 分析](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/sql-analytics-in-marketplace.png)
 
-2. 在解決方案的 [概觀] 畫面上選取 [建立]****。
+2. 在解決方案的 [概觀] 畫面上選取 [建立]  。
 
 3. 在 Azure SQL 分析表單中填入所需的其他資訊：工作區名稱、訂用帳戶、資源群組、位置及定價層。
 
    ![在入口網站中設定 Azure SQL 分析](./media/metrics-diagnostic-telemetry-logging-streaming-export-configure/sql-analytics-configuration-blade.png)
 
-4. 選取 [確定]**** 確認，然後選取 [建立]****。
+4. 選取 [確定]  確認，然後選取 [建立]  。
 
 ### <a name="configure-the-resource-to-record-metrics-and-resource-logs"></a>設定資源以記錄計量和資源記錄
 
@@ -383,7 +383,7 @@ Azure SQL 分析可使用串流至 Log Analytics 工作區的 Azure SQL Database
 
   藉由使用事件中樞串流，您可以將計量和資源記錄檔放入各種協力廠商監視和記錄分析解決方案中。
 
-- **建立自訂遙測和記錄平臺**
+- **建置自訂遙測及記錄平台**
 
   您是否已建立自訂的遙測平台，或正考慮建置一個？ 事件中樞可高度調整的發佈訂閱特性，可讓您靈活地內嵌計量和資源記錄。 請參閱 [Dan Rosanova 指南，以在全球級別的遙測平台中使用事件中樞](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)。
 
@@ -424,11 +424,11 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 > [!IMPORTANT]
 > 具有較繁重工作負載的作用中資料庫會內嵌比閒置資料庫更多的資料。 如需詳細資訊，請參閱 [Log analytics 定價](https://azure.microsoft.com/pricing/details/monitor/)。
 
-如果您使用 Azure SQL 分析，您可以在 Azure SQL 分析的導覽功能表中選取 [ **OMS 工作區** ]，然後選取 [ **使用量** 和 **估計成本**]，來監視資料內嵌的耗用量。
+如果您使用 Azure SQL 分析，您可以在 Azure SQL 分析的導覽功能表中選取 [ **OMS 工作區** ]，然後選取 [ **使用量** 和 **估計成本** ]，來監視資料內嵌的耗用量。
 
 ## <a name="metrics-and-logs-available"></a>可用的計量和記錄
 
-適用于單一資料庫、集區資料庫、彈性集區、受控實例和實例資料庫的監視遙測資料記載于本文的這一節中。 您可以使用 [Azure 監視器記錄查詢](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) 語言，將 SQL 分析內收集的監視遙測用於您自己的自訂分析和應用程式開發。
+適用于單一資料庫、集區資料庫、彈性集區、受控實例和實例資料庫的監視遙測資料記載于本文的這一節中。 您可以使用 [Azure 監視器記錄查詢](../../azure-monitor/log-query/get-started-queries.md) 語言，將 SQL 分析內收集的監視遙測用於您自己的自訂分析和應用程式開發。
 
 ### <a name="basic-metrics"></a>基本計量
 
@@ -543,7 +543,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |query_id_d|查詢存放區中查詢的識別碼 |
 |plan_id_d|查詢存放區中計劃的識別碼 |
 
-深入瞭解 [查詢存放區執行時間統計資料](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql)。
+深入瞭解 [查詢存放區執行時間統計資料](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql)。
 
 #### <a name="query-store-wait-statistics"></a>查詢存放區等候統計資料
 
@@ -581,7 +581,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |query_id_d|查詢存放區中查詢的識別碼 |
 |plan_id_d|查詢存放區中計劃的識別碼 |
 
-深入了解[查詢存放區等候統計資料](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql)。
+深入了解[查詢存放區等候統計資料](/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql)。
 
 #### <a name="errors-dataset"></a>錯誤資料集
 
@@ -610,7 +610,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |query_hash_s|失敗查詢的查詢雜湊 (如果有) |
 |query_plan_hash_s|失敗查詢的查詢計劃雜湊 (如果有) |
 
-深入瞭解 [SQL 錯誤訊息](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors)。
+深入瞭解 [SQL 錯誤訊息](/sql/relational-databases/errors-events/database-engine-events-and-errors)。
 
 #### <a name="database-wait-statistics-dataset"></a>資料庫等候統計資料資料集
 
@@ -639,7 +639,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |delta_wait_time_ms_d|期間內的總等候時間 |
 |delta_waiting_tasks_count_d|等候工作數目 |
 
-深入了解[資料庫等候統計資料](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)。
+深入了解[資料庫等候統計資料](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)。
 
 #### <a name="time-outs-dataset"></a>逾時資料集
 
@@ -733,7 +733,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |Schema_s|資料庫結構描述 |
 |Table_s|受影響的資料表 |
 |IndexName_s|索引名稱 |
-|IndexColumns_s|資料行名稱 |
+|IndexColumns_s|欄名 |
 |IncludedColumns_s|包含的資料行 |
 |EstimatedImpact_s|自動調整建議 JSON 的預估影響 |
 |Event_s|自動調整事件的類型 |

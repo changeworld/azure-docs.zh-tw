@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 05/28/2020
-ms.openlocfilehash: b8c7671e655594456621e4489cb06191d820b134
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa236ecaaa9c38c68e66d1813280cd98b85b9463
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333149"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790384"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>將 Azure SQL Database 從以 DTU 為基礎的模型遷移到以 vCore 為基礎的模型
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -94,9 +94,9 @@ FROM dtu_vcore_map;
 除了虛擬核心數目 (邏輯 Cpu) 和硬體世代之外，其他數個因素可能會影響 vCore 服務目標的選擇：
 
 - 對應 T-SQL 查詢符合 DTU 和 vCore 服務目標的 CPU 容量，因此對於 CPU 系結的工作負載而言，結果會更準確。
-- 針對相同的硬體世代和相同數量的虛擬核心，vCore 資料庫的 IOPS 和交易記錄輸送量資源限制通常會高於 DTU 資料庫。 對於 IO 系結的工作負載，可能會降低 vCore 模型中的虛擬核心數目，以達到相同層級的效能。 以絕對值表示的 DTU 和 vCore 資料庫的資源限制會在 [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 視圖中公開。 比較要遷移的 DTU 資料庫與使用大約相符服務目標的 vCore 資料庫之間的這些值，可協助您更精確地選取 vCore 服務目標。
+- 針對相同的硬體世代和相同數量的虛擬核心，vCore 資料庫的 IOPS 和交易記錄輸送量資源限制通常會高於 DTU 資料庫。 對於 IO 系結的工作負載，可能會降低 vCore 模型中的虛擬核心數目，以達到相同層級的效能。 以絕對值表示的 DTU 和 vCore 資料庫的資源限制會在 [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 視圖中公開。 比較要遷移的 DTU 資料庫與使用大約相符服務目標的 vCore 資料庫之間的這些值，可協助您更精確地選取 vCore 服務目標。
 - 對應查詢也會針對要遷移的 DTU 資料庫或彈性集區，以及 vCore 模型中的每個硬體產生，傳回每個核心的記憶體數量。 在遷移至 vCore 之後，如果需要大型記憶體資料快取以達到足夠效能的工作負載，或需要大型記憶體授與進行查詢處理的工作負載，請務必確定記憶體總計或更高的記憶體。 針對這類工作負載，視實際效能而定，可能需要增加虛擬核心數目，以取得足夠的總記憶體。
-- 選擇 vCore 服務目標時，應考慮 DTU 資料庫的歷程 [記錄資源使用量](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 。 具有一致使用量過低之 CPU 資源的 DTU 資料庫，可能需要比對應查詢所傳回的數目少虛擬核心。 相反地，如果 DTU 資料庫的 CPU 使用率過高，可能會需要比查詢所傳回的更多虛擬核心。
+- 選擇 vCore 服務目標時，應考慮 DTU 資料庫的歷程 [記錄資源使用量](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 。 具有一致使用量過低之 CPU 資源的 DTU 資料庫，可能需要比對應查詢所傳回的數目少虛擬核心。 相反地，如果 DTU 資料庫的 CPU 使用率過高，可能會需要比查詢所傳回的更多虛擬核心。
 - 如果使用間歇或無法預測的使用模式來遷移資料庫，請考慮使用 [無伺服器](serverless-tier-overview.md) 計算層級。  請注意，在無伺服器中)  (要求的並行工作者數目上限為75% 布建計算中已設定的最大虛擬核心數目的限制。  此外，無伺服器中可用的最大記憶體是已設定的最大虛擬核心數目的 3 GB 倍;例如，在設定 40 max 虛擬核心時，最大記憶體是 120 GB。   
 - 在 vCore 模型中，支援的資料庫大小上限可能會因硬體產生而有所不同。 針對大型資料庫，請檢查 vCore 模型中針對 [單一資料庫](resource-limits-vcore-single-databases.md) 和 [彈性](resource-limits-vcore-elastic-pools.md)集區所支援的最大大小。
 - 針對彈性集區， [DTU](resource-limits-dtu-elastic-pools.md) 和 [vCore](resource-limits-vcore-elastic-pools.md) 模型會有每個集區支援的最大資料庫數目差異。 當您遷移具有多個資料庫的彈性集區時，應考慮這一點。
@@ -105,7 +105,7 @@ FROM dtu_vcore_map;
 > [!IMPORTANT]
 > 系統會提供上述的 DTU 來 vCore 大小調整指導方針，以協助進行目標資料庫服務目標的初始估計。
 >
-> 目標資料庫的最佳設定取決於工作負載。 因此，在遷移後達到最佳的價格/效能比率，可能需要利用 vCore 模型的彈性來調整虛擬核心數目、 [硬體世代](service-tiers-vcore.md#hardware-generations)、 [服務](service-tiers-vcore.md#service-tiers) 和 [計算](service-tiers-vcore.md#compute-tiers) 層，以及調整其他資料庫設定參數，例如平行處理原則的 [最大程度](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)。
+> 目標資料庫的最佳設定取決於工作負載。 因此，在遷移後達到最佳的價格/效能比率，可能需要利用 vCore 模型的彈性來調整虛擬核心數目、 [硬體世代](service-tiers-vcore.md#hardware-generations)、 [服務](service-tiers-vcore.md#service-tiers) 和 [計算](service-tiers-vcore.md#compute-tiers) 層，以及調整其他資料庫設定參數，例如平行處理原則的 [最大程度](/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)。
 > 
 
 ### <a name="dtu-to-vcore-migration-examples"></a>VCore 遷移範例的 DTU
@@ -132,7 +132,7 @@ FROM dtu_vcore_map;
 |----------------|----------------|----------------------|-----------|-----------------------|-----------|-----------------------|
 |0.25|Gen4|0.42|0.250|7|0.425|5.05|
 
-我們看到 DTU 資料庫具有相當於0.25 的邏輯 Cpu (虛擬核心) 、每個 vCore 0.42 GB 的記憶體，以及使用第4代硬體。 第4代和第5代硬體世代中最小的 vCore 服務目標 **GP_Gen4_1** 和 **GP_Gen5_2**，提供比標準 S0 資料庫更多的計算資源，因此不可能直接符合。 由於第4代硬體已 [解除](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/)委任，因此偏好 **GP_Gen5_2** 選項。 此外，如果工作負載適用于 [無伺服器](serverless-tier-overview.md) 計算層級，則 **GP_S_Gen5_1** 會是更接近的相符項。
+我們看到 DTU 資料庫具有相當於0.25 的邏輯 Cpu (虛擬核心) 、每個 vCore 0.42 GB 的記憶體，以及使用第4代硬體。 第4代和第5代硬體世代中最小的 vCore 服務目標 **GP_Gen4_1** 和 **GP_Gen5_2** ，提供比標準 S0 資料庫更多的計算資源，因此不可能直接符合。 由於第4代硬體已 [解除](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/)委任，因此偏好 **GP_Gen5_2** 選項。 此外，如果工作負載適用于 [無伺服器](serverless-tier-overview.md) 計算層級，則 **GP_S_Gen5_1** 會是更接近的相符項。
 
 **遷移 Premium P15 資料庫**
 
@@ -152,7 +152,7 @@ FROM dtu_vcore_map;
 |----------------|----------------|----------------------|-----------|-----------------------|-----------|-----------------------|
 |4.00|Gen5|5.40|2.800|7|4.000|5.05|
 
-我們看到 DTU 彈性集區有4個邏輯 Cpu (虛擬核心) （每個 vCore 5.4 GB 記憶體），以及使用第5代硬體。 VCore 模型中的直接相符是 **GP_Gen5_4** 彈性集區。 不過，此服務目標支援每個集區最多200個資料庫，而基本 200 eDTU 彈性集區則支援最多500個資料庫。 如果要遷移的彈性集區具有200以上的資料庫，則必須 **GP_Gen5_6**相符的 vCore 服務目標，以支援最多500個資料庫。
+我們看到 DTU 彈性集區有4個邏輯 Cpu (虛擬核心) （每個 vCore 5.4 GB 記憶體），以及使用第5代硬體。 VCore 模型中的直接相符是 **GP_Gen5_4** 彈性集區。 不過，此服務目標支援每個集區最多200個資料庫，而基本 200 eDTU 彈性集區則支援最多500個資料庫。 如果要遷移的彈性集區具有200以上的資料庫，則必須 **GP_Gen5_6** 相符的 vCore 服務目標，以支援最多500個資料庫。
 
 ## <a name="migrate-geo-replicated-databases"></a>遷移異地複寫資料庫
 

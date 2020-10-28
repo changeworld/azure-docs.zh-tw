@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 36377d34a03150fefb8332bcfbe7bb6633ccc606
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1b42e9ea06d13271c277ff254b41f10a1ff07e14
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973303"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790605"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL 受控執行個體之間的 t-sql 差異
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -52,7 +52,7 @@ SQL 受控執行個體內建[高可用性](../database/high-availability-sla.md)
 - [DROP AVAILABILITY GROUP](/sql/t-sql/statements/drop-availability-group-transact-sql)
 - [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql)語句的[SET HADR](/sql/t-sql/statements/alter-database-transact-sql-set-hadr)子句
 
-### <a name="backup"></a>Backup
+### <a name="backup"></a>備份
 
 SQL 受控執行個體具有自動備份，因此使用者可以建立完整的資料庫 `COPY_ONLY` 備份。 不支援差異、記錄和檔案快照集備份。
 
@@ -99,7 +99,7 @@ SQL 受控執行個體中的 XEvent 審核支援 Azure Blob 儲存體目標。 �
 - `TO URL`您可以使用新的語法，來指定放置檔案的 Azure Blob 儲存體容器的 URL `.xel` 。
 - `TO FILE`因為 SQL 受控執行個體無法存取 Windows 檔案共用，所以不支援語法。
 
-如需詳細資訊，請參閱 
+如需詳細資訊，請參閱： 
 
 - [CREATE SERVER AUDIT](/sql/t-sql/statements/create-server-audit-transact-sql) 
 - [ALTER SERVER AUDIT](/sql/t-sql/statements/alter-server-audit-transact-sql)
@@ -114,7 +114,7 @@ SQL 受控執行個體無法存取檔案共用及 Windows 資料夾，因此適�
 
 請參閱 [CREATE CERTIFICATE](/sql/t-sql/statements/create-certificate-transact-sql) 和 [BACKUP CERTIFICATE](/sql/t-sql/statements/backup-certificate-transact-sql)。 
  
-因應**措施：不**是建立憑證的備份並還原備份、[取得憑證二進位內容和私密金鑰、將其儲存為 .sql 檔案，以及從二進位檔建立](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database)：
+因應 **措施：不** 是建立憑證的備份並還原備份、 [取得憑證二進位內容和私密金鑰、將其儲存為 .sql 檔案，以及從二進位檔建立](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database)：
 
 ```sql
 CREATE CERTIFICATE  
@@ -153,7 +153,7 @@ SQL 受控執行個體無法存取檔案，所以無法建立密碼編譯提供�
 - 不支援將對應至 Azure AD 群組的 Azure AD 登入設定為資料庫擁有者。
 - 支援使用其他 Azure AD 主體模擬 Azure AD 伺服器層級主體，例如 [EXECUTE as](/sql/t-sql/statements/execute-as-transact-sql) 子句。 EXECUTE AS 限制如下：
 
-  - 當名稱與登入名稱不同時，不支援 Azure AD 使用者的 EXECUTE AS USER。 例如，當使用者從 LOGIN [] 的 CREATE USER [myAadUser] 語法建立時，就會 john@contoso.com 透過 EXEC （user = _myAadUser_）嘗試模擬。 當您從 Azure AD 伺服器主體 (登入) 建立 **使用者** 時，請將 user_name 指定為與 **登**入相同的 login_name。
+  - 當名稱與登入名稱不同時，不支援 Azure AD 使用者的 EXECUTE AS USER。 例如，當使用者從 LOGIN [] 的 CREATE USER [myAadUser] 語法建立時，就會 john@contoso.com 透過 EXEC （user = _myAadUser_ ）嘗試模擬。 當您從 Azure AD 伺服器主體 (登入) 建立 **使用者** 時，請將 user_name 指定為與 **登** 入相同的 login_name。
   - 只有屬於角色的 SQL Server 層級主體 (登入) `sysadmin` 可以執行以 Azure AD 主體為目標的下列作業：
 
     - EXECUTE AS USER
@@ -188,7 +188,7 @@ SQL 受控執行個體無法存取檔案，所以無法建立密碼編譯提供�
 - SQL Database 服務) 所管理的 (不支援[服務主要金鑰備份](/sql/t-sql/statements/backup-service-master-key-transact-sql)。
 - SQL Database 服務) 管理的 (不支援[服務主要金鑰還原](/sql/t-sql/statements/restore-service-master-key-transact-sql)。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 ### <a name="buffer-pool-extension"></a>緩衝集區延伸
 
@@ -220,7 +220,7 @@ SQL 受控執行個體無法存取檔案，所以無法建立密碼編譯提供�
 
 - 不支援多個記錄檔。
 - 「一般用途」服務層級中不支援記憶體內部物件。 
-- 每個一般用途實例都有280個檔案的限制，這表示每個資料庫最多可有280個檔案。 一般用途層中的資料和記錄檔都會計入這項限制。 [商務關鍵性層支援每個資料庫32767個](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)檔案。
+- 每個一般用途實例都有280個檔案的限制，這表示每個資料庫最多可有280個檔案。 一般用途層中的資料和記錄檔都會計入這項限制。 [商務關鍵性層支援每個資料庫32767個](./resource-limits.md#service-tier-characteristics)檔案。
 - 資料庫不能包含包含 filestream 資料的檔案群組。 如果 .bak 包含資料，Restore 會失敗 `FILESTREAM` 。 
 - 每個檔案都位於 Azure Blob 儲存體中。 每個檔案的 IO 和輸送量均取決於每個個別檔案的大小。
 
@@ -354,14 +354,14 @@ SQL 受控執行個體無法存取檔案共用及 Windows 資料夾，因此適�
 ### <a name="distributed-transactions"></a>分散式交易
 
 [分散式交易](../database/elastic-transactions-overview.md)的部分支援目前處於公開預覽狀態。 支援的案例包括：
-* 參與者只是屬於 [伺服器信任群組](https://aka.ms/mitrusted-groups)一部分的 Azure SQL 受控實例的交易。
+* 參與者只是屬於 [伺服器信任群組](./server-trust-group-overview.md)一部分的 Azure SQL 受控實例的交易。
 * 從 .NET (TransactionScope 類別) 和 Transact-sql 起始的交易。
 
 Azure SQL 受控執行個體目前不支援在內部部署或 Azure 虛擬機器中受到 MSDTC 定期支援的其他案例。
 
 ### <a name="extended-events"></a>擴充事件
 
- (XEvents) 的擴充事件的某些 Windows 特定目標不受支援：
+不支援擴充事件 (XEvent) 的某些 Windows 特定目標：
 
 - `etw_classic_sync`不支援目標。 將檔案儲存 `.xel` 在 Azure Blob 儲存體中。 請參閱 [etw_classic_sync 目標](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target)。
 - `event_file`不支援目標。 將檔案儲存 `.xel` 在 Azure Blob 儲存體中。 請參閱 [event_file 目標](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target)。
@@ -482,7 +482,7 @@ SQL 受控執行個體中連結的伺服器支援數量有限的目標：
   - `remote proc trans`
 - 不支援 `sp_execute_external_scripts`。 請參閱 [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples)。
 - 不支援 `xp_cmdshell`。 請參閱 [xp_cmdshell](/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql)。
-- `Extended stored procedures`不受支援，其中包括 `sp_addextendedproc`   和 `sp_dropextendedproc` 。 請參閱 [擴充預存程式](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)。
+- `Extended stored procedures` 不受支援，其中包括 `sp_addextendedproc` 和 `sp_dropextendedproc` 。 請參閱 [擴充預存程式](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)。
 - 不支援 `sp_attach_db`、`sp_attach_single_file_db` 和 `sp_detach_db`。 請參閱 [sp_attach_db](/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql)、[sp_attach_single_file_db](/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql) 和 [sp_detach_db](/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql)。
 
 ### <a name="system-functions-and-variables"></a>系統函數和變數
@@ -527,13 +527,13 @@ SQL 受控執行個體中連結的伺服器支援數量有限的目標：
 
 - 一般角色
   - TargetServersRole
-- [固定資料庫角色](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
+- [固定資料庫角色](/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
   - SQLAgentUserRole
   - SQLAgentReaderRole
   - SQLAgentOperatorRole
-- [DatabaseMail 角色](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile)：
+- [DatabaseMail 角色](/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile)：
   - DatabaseMailUserRole
-- [Integration services 角色](https://docs.microsoft.com/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15)：
+- [Integration services 角色](/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15)：
   - db_ssisadmin
   - db_ssisltduser
   - db_ssisoperator
@@ -543,7 +543,7 @@ SQL 受控執行個體中連結的伺服器支援數量有限的目標：
 
 ### <a name="error-logs"></a>錯誤記錄
 
-SQL 受控執行個體將詳細資訊放在錯誤記錄檔中。 錯誤記錄檔中會記錄許多內部系統事件。 您可以使用自訂程式來讀取錯誤記錄檔，以篩選出一些不相關的專案。 如需詳細資訊，請參閱適用于) 的 [sql 受控執行個體-sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) 或 [sql 受控執行個體延伸模組 (preview Azure Data Studio ](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) 。
+SQL 受控執行個體將詳細資訊放在錯誤記錄檔中。 錯誤記錄檔中會記錄許多內部系統事件。 您可以使用自訂程式來讀取錯誤記錄檔，以篩選出一些不相關的專案。 如需詳細資訊，請參閱適用于) 的 [sql 受控執行個體-sp_readmierrorlog](/archive/blogs/sqlcat/azure-sql-db-managed-instance-sp_readmierrorlog) 或 [sql 受控執行個體延伸模組 (preview Azure Data Studio ](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) 。
 
 ## <a name="next-steps"></a>後續步驟
 

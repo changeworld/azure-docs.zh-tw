@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d1f758390a270f072bc08e13d1d542e08e4df553
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: e558b8ca6498b8419ce6d7ce5ff1b161c05ef3c6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425534"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791132"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 執行 Azure 佇列儲存體作業
 
@@ -45,7 +45,7 @@ Connect-AzAccount
 
 ## <a name="retrieve-list-of-locations"></a>擷取位置清單
 
-如果您不知道要使用哪一個位置，您可以列出可用的位置。 當清單顯示之後，尋找您想要使用的位置。 這個練習將使用 **eastus**。 將其儲存於變數 **location** 中供未來使用。
+如果您不知道要使用哪一個位置，您可以列出可用的位置。 當清單顯示之後，尋找您想要使用的位置。 這個練習將使用 **eastus** 。 將其儲存於變數 **location** 中供未來使用。
 
 ```powershell
 Get-AzLocation | Select-Object Location
@@ -86,7 +86,7 @@ $queueName = "howtoqueue"
 $queue = New-AzStorageQueue –Name $queueName -Context $ctx
 ```
 
-如需 Azure 佇列服務命名慣例的資訊，請參閱 [為佇列和中繼資料命名](https://msdn.microsoft.com/library/azure/dd179349.aspx)。
+如需 Azure 佇列服務命名慣例的資訊，請參閱 [為佇列和中繼資料命名](/rest/api/storageservices/Naming-Queues-and-Metadata)。
 
 ## <a name="retrieve-a-queue"></a>擷取佇列
 
@@ -129,7 +129,7 @@ $queue.CloudQueue.AddMessageAsync($QueueMessage)
 
 會嘗試以最佳的先進先出順序讀取訊息。 不保證會採用此作法。 當您從佇列讀取訊息時，查看佇列的其他處理序會看不到它。 這可確保您的程式碼因為硬體或軟體故障而無法處理訊息時，另一個程式碼的執行個體可以取得相同訊息並再試一次。  
 
-此**不可見逾時**定義在重新開放處理前，訊息維持不可見的時間。 預設值為 30 秒。
+此 **不可見逾時** 定義在重新開放處理前，訊息維持不可見的時間。 預設值為 30 秒。
 
 您的程式碼可使用兩個步驟，從佇列讀取訊息。 當您呼叫 [>cloudqueue GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) 方法時，您會取得佇列中的下一則訊息。 從這個佇列中讀取訊息的任何其他程式碼，都會無法看到從 **GetMessage** 傳回的訊息。 若要完成從佇列中移除訊息，請呼叫 [>cloudqueue. DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) 方法。
 

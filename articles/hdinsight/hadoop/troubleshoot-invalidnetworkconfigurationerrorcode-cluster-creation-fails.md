@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: f30f92df505abeff108f8d1c503cb33162d2e409
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0eb9afc179f1dd2559f0db7b212f6b3a1da15824
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533541"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790911"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>叢集建立失敗，並在 Azure HDInsight 中 InvalidNetworkConfigurationErrorCode
 
@@ -68,6 +68,19 @@ Azure 儲存體和 SQL 沒有固定的 IP 位址，因此我們需要允許所�
 
     如果有已定義的路由，請確定已部署叢集的區域有 IP 位址的路由，且每個路由的 **NextHopType** 都是 **網際網路** 。 應該會有針對上述文章中記載的每個必要 IP 位址定義的路由。
 
+## <a name="failed-to-establish-an-outbound-connection-from-the-cluster-for-the-communication-with-the-hdinsight-resource-provider-please-ensure-that-outbound-connectivity-is-allowed"></a>「無法從叢集建立輸出連線，以與 HDInsight 資源提供者進行通訊。 請確定允許輸出連線能力。」
+
+### <a name="issue"></a>問題
+
+錯誤描述包含「無法從叢集建立輸出連線，以便與 HDInsight 資源提供者進行通訊。 請確定允許輸出連線能力。」
+
+### <a name="cause"></a>原因
+
+使用私人連結的 HDInsight 叢集時，必須將來自叢集的輸出存取設定為允許對 HDInsight 資源提供者進行連線。
+
+### <a name="resolution"></a>解決方案
+
+* 若要解決此問題，請參閱 HDInsight Private Link 設定步驟，位於 [私人連結設定](../hdinsight-private-link.md)
 ---
 
 ## <a name="virtual-network-configuration-is-not-compatible-with-hdinsight-requirement"></a>「虛擬網路設定與 HDInsight 需求不相容」

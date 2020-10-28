@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: c8f73c0789cd0211deeb66af5c7300a81d7b1be0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c89dc28a330e319e18a6289e5f6759c56e46ae8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619809"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791268"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Azure SQL Database 中的擴充事件 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,7 +32,7 @@ Azure SQL Database 中的擴充事件功能集是 SQL Server 和 Azure SQL 受�
 - [快速入門：SQL Server 中的延伸事件](/sql/relational-databases/extended-events/quick-start-extended-events-in-sql-server)
 - [擴充事件](/sql/relational-databases/extended-events/extended-events)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本主題假設您已經有一些下列項目的知識：
 
@@ -71,7 +71,7 @@ Azure SQL Database 中的擴充事件功能集是 SQL Server 和 Azure SQL 受�
 
 ## <a name="new-catalog-views"></a>新目錄檢視
 
-擴充事件功能受到多個 [目錄檢視](https://msdn.microsoft.com/library/ms174365.aspx)支援。 目錄檢視會告訴您目前資料庫中使用者建立事件工作階段的 *中繼資料或定義* 的相關資訊。 檢視不會傳回作用中事件工作階段的執行個體的相關資訊。
+擴充事件功能受到多個 [目錄檢視](/sql/relational-databases/system-catalog-views/catalog-views-transact-sql)支援。 目錄檢視會告訴您目前資料庫中使用者建立事件工作階段的 *中繼資料或定義* 的相關資訊。 檢視不會傳回作用中事件工作階段的執行個體的相關資訊。
 
 | 名稱<br/>目錄檢視的名稱 | 描述 |
 |:--- |:--- |
@@ -81,11 +81,11 @@ Azure SQL Database 中的擴充事件功能集是 SQL Server 和 Azure SQL 受�
 | **sys.database_event_session_targets** |傳回事件工作階段中每一個事件目標的資料列。 |
 | **sys.database_event_sessions** |針對資料庫中的每個事件會話，各傳回一個資料列。 |
 
-在 Microsoft SQL Server 中，類似的目錄檢視具有包含 .server_\_** 而不是 .database\_** 的名稱。 名稱模式類似 **sys.server_event_%**。
+在 Microsoft SQL Server 中，類似的目錄檢視具有包含 .server_\_ 而不是 .database\_ 的名稱。 名稱模式類似 **sys.server_event_%** 。
 
-## <a name="new-dynamic-management-views-dmvs"></a>新的動態管理檢視 [(DMV)](https://msdn.microsoft.com/library/ms188754.aspx)
+## <a name="new-dynamic-management-views-dmvs"></a>新的動態管理檢視 [(DMV)](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)
 
-Azure SQL Database 具有支援擴充事件的 [動態管理檢視 (DMV)](https://msdn.microsoft.com/library/bb677293.aspx) 。 DMV 會告訴您 *作用中* 事件工作階段的相關資訊。
+Azure SQL Database 具有支援擴充事件的 [動態管理檢視 (DMV)](/sql/relational-databases/system-dynamic-management-views/extended-events-dynamic-management-views) 。 DMV 會告訴您 *作用中* 事件工作階段的相關資訊。
 
 | DMV 的名稱 | 描述 |
 |:--- |:--- |
@@ -95,9 +95,9 @@ Azure SQL Database 具有支援擴充事件的 [動態管理檢視 (DMV)](https:
 | **sys.dm_xe_database_session_targets** |會傳回工作階段目標的相關資訊。 |
 | **sys.dm_xe_database_sessions** |針對範圍為目前資料庫的每個事件工作階段傳回資料列。 |
 
-在 Microsoft SQL Server 中，類似的目錄檢視的命名方式沒有名稱的* \_ 資料庫*部分，例如：
+在 Microsoft SQL Server 中，類似的目錄檢視的命名方式沒有名稱的 *\_ 資料庫* 部分，例如：
 
-- **sys.dm_xe_sessions**，而不是<br/>**sys.dm_xe_database_sessions**。
+- **sys.dm_xe_sessions** ，而不是<br/>**sys.dm_xe_database_sessions** 。
 
 ### <a name="dmvs-common-to-both"></a>兩者通用的 DMV
 
@@ -140,11 +140,11 @@ SELECT
 
 以下是可在 Azure SQL Database 上從您的事件會話中捕捉結果的目標：
 
-- [信號緩衝區目標](https://msdn.microsoft.com/library/ff878182.aspx) -在記憶體中簡短保留事件資料。
-- [事件計數器目標](https://msdn.microsoft.com/library/ff878025.aspx) -會計算在擴充事件工作階段期間發生的所有事件。
-- [事件檔案目標](https://msdn.microsoft.com/library/ff878115.aspx) - 會將完整緩衝區寫入 Azure 儲存體容器。
+- [信號緩衝區目標](/previous-versions/sql/sql-server-2016/bb630339(v=sql.130)) -在記憶體中簡短保留事件資料。
+- [事件計數器目標](/previous-versions/sql/sql-server-2016/ff878025(v=sql.130)) -會計算在擴充事件工作階段期間發生的所有事件。
+- [事件檔案目標](/previous-versions/sql/sql-server-2016/ff878115(v=sql.130)) - 會將完整緩衝區寫入 Azure 儲存體容器。
 
-[Windows 事件追蹤 (ETW) ](https://msdn.microsoft.com/library/ms751538.aspx) API 無法用於 Azure SQL Database 上的擴充事件。
+[Windows 事件追蹤 (ETW) ](/dotnet/framework/wcf/samples/etw-tracing) API 無法用於 Azure SQL Database 上的擴充事件。
 
 ## <a name="restrictions"></a>限制
 
@@ -155,7 +155,7 @@ SELECT
 
 ## <a name="permission-model"></a>權限模型
 
-您必須擁有資料庫的**控制**權限，才能發出 **CREATE EVENT SESSION** 陳述式。 資料庫擁有者 (dbo) 有 **控制** 權限。
+您必須擁有資料庫的 **控制** 權限，才能發出 **CREATE EVENT SESSION** 陳述式。 資料庫擁有者 (dbo) 有 **控制** 權限。
 
 ### <a name="storage-container-authorizations"></a>儲存體容器授權
 
@@ -178,23 +178,23 @@ SELECT
 
 **事件檔案** 目標在將資料保存到 Azure 儲存體 Blob 時可能會遇到網路延遲或失敗。 Azure SQL Database 中的其他事件可能會在等候網路通訊完成時延遲。 此延遲會降低您的工作負載。
 
-- 若要減輕這個效能風險，請避免在您的事件工作階段定義中將 **EVENT_RETENTION_MODE** 選項設為 **NO_EVENT_LOSS**。
+- 若要減輕這個效能風險，請避免在您的事件工作階段定義中將 **EVENT_RETENTION_MODE** 選項設為 **NO_EVENT_LOSS** 。
 
 ## <a name="related-links"></a>相關連結
 
 - 搭配[使用 Azure PowerShell 與 Azure 儲存體](/powershell/module/az.storage/)。
-- [Azure 儲存體 Cmdlet](https://docs.microsoft.com/powershell/module/Azure.Storage)
+- [Azure 儲存體 Cmdlet](/powershell/module/Azure.Storage)
 - [搭配使用 Azure PowerShell 與 Azure 儲存體](/powershell/module/az.storage/)
 - [如何使用 .NET 的 Blob 儲存體](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- [CREATE CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/ms189522.aspx)
-- [CREATE EVENT SESSION (Transact-SQL)](https://msdn.microsoft.com/library/bb677289.aspx)
+- [CREATE CREDENTIAL (Transact-SQL)](/sql/t-sql/statements/create-credential-transact-sql)
+- [CREATE EVENT SESSION (Transact-SQL)](/sql/t-sql/statements/create-event-session-transact-sql)
 - [關於 Microsoft SQL Server 中擴充事件的 Jonathan Kehayias 部落格文章](https://www.sqlskills.com/blogs/jonathan/category/extended-events/)
-- Azure *服務更新*網頁，已透過參數將範圍縮小為 Azure SQL Database：
+- Azure *服務更新* 網頁，已透過參數將範圍縮小為 Azure SQL Database：
   - [https://azure.microsoft.com/updates/?service=sql-database](https://azure.microsoft.com/updates/?service=sql-database)
 
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](/sql/relational-databases/extended-events/determine-which-queries-are-holding-locks)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](/sql/relational-databases/extended-events/find-the-objects-that-have-the-most-locks-taken-on-them)
 -->

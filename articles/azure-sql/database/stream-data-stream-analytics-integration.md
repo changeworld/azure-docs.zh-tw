@@ -11,12 +11,12 @@ author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 640dcfc49d1b467cbb852e8b07b113c1180daf7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b796d6689db143cf59ae4ca0a180c2c7c317b7bd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617089"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789432"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>使用 Azure 串流分析整合 (預覽版) 將資料串流至 Azure SQL Database
 
@@ -44,21 +44,21 @@ ms.locfileid: "91617089"
 ## <a name="configure-stream-analytics-integration"></a>設定串流分析整合
 
 1. 登入 Azure 入口網站。
-2. 流覽至您要內嵌串流資料的資料庫。 選取 [ **串流分析] (預覽) **。
+2. 流覽至您要內嵌串流資料的資料庫。 選取 [ **串流分析] (預覽)** 。
 
     ![串流分析](./media/stream-data-stream-analytics-integration/stream-analytics.png)
 
-3. 若要開始將串流資料擷取到這個資料庫，請選取 [ **建立** ]，並將名稱提供給您的串流作業，然後選取 **[下一步：輸入]**。
+3. 若要開始將串流資料擷取到這個資料庫，請選取 [ **建立** ]，並將名稱提供給您的串流作業，然後選取 **[下一步：輸入]** 。
 
     ![設定串流分析作業的基本概念](./media/stream-data-stream-analytics-integration/create-job.png)
 
-4. 輸入您的事件來源詳細資料，然後選取 **[下一步：輸出]**。
+4. 輸入您的事件來源詳細資料，然後選取 **[下一步：輸出]** 。
 
-   - **輸入類型**：事件中樞/IoT 中樞
-   - **輸入別名**：輸入用來識別事件來源的名稱
-   - **訂**用帳戶：與 Azure SQL Database 訂用帳戶相同
-   - **事件中樞命名空間**：命名空間的名稱
-   - **事件中樞名稱**：所選命名空間內的事件中樞名稱
+   - **輸入類型** ：事件中樞/IoT 中樞
+   - **輸入別名** ：輸入用來識別事件來源的名稱
+   - **訂** 用帳戶：與 Azure SQL Database 訂用帳戶相同
+   - **事件中樞命名空間** ：命名空間的名稱
+   - **事件中樞名稱** ：所選命名空間內的事件中樞名稱
    - **事件中樞原則名稱** (預設為建立新的) ：提供原則名稱
    - **事件中樞取用者群組** (預設為建立新的) ：提供取用者組名  
 
@@ -66,19 +66,19 @@ ms.locfileid: "91617089"
 
      ![設定串流分析作業輸出](./media/stream-data-stream-analytics-integration/create-job-output.png)
 
-5. 選取您要內嵌串流資料的資料表。 完成之後，請選取 [ **建立**]。
+5. 選取您要內嵌串流資料的資料表。 完成之後，請選取 [ **建立** ]。
 
-   - 使用者**名稱**、**密碼**：輸入您的認證以進行 SQL server 驗證。 選取 [驗證]。
-   - **資料表**：選取 [ **建立新** 的] 或 [ **使用現有**的]。 在此流程中，讓我們選取 [ **建立**]。 當您啟動串流分析作業時，這會建立新的資料表。
+   - 使用者 **名稱** 、 **密碼** ：輸入您的認證以進行 SQL server 驗證。 選取 [驗證]。
+   - **資料表** ：選取 [ **建立新** 的] 或 [ **使用現有** 的]。 在此流程中，讓我們選取 [ **建立** ]。 當您啟動串流分析作業時，這會建立新的資料表。
 
      ![建立串流分析作業](./media/stream-data-stream-analytics-integration/create.png)
 
 6. [查詢] 頁面隨即開啟，其中包含下列詳細資料：
 
    - 您的 **輸入** (輸入事件來源) 您將從中內嵌資料  
-   - 輸出 ** (輸出** 資料表) 會儲存已轉換的資料
+   - 輸出 **(輸出** 資料表) 會儲存已轉換的資料
    - 使用 SELECT 語句的 [SAQL 查詢](../../stream-analytics/stream-analytics-stream-analytics-query-patterns.md) 範例。
-   - **輸入預覽**：顯示輸入事件來源中最新傳入資料的快照集。
+   - **輸入預覽** ：顯示輸入事件來源中最新傳入資料的快照集。
      -  (JSON/CSV) 會自動偵測資料中的序列化類型。 您也可以手動將它變更為 JSON/CSV/AVRO。
      - 您可以預覽資料表格式或原始格式的傳入資料。
      - 如果顯示的資料不是最新的， **請選取 [** 重新整理] 以查看最新的事件。
@@ -87,43 +87,42 @@ ms.locfileid: "91617089"
 
      ![測試查詢](./media/stream-data-stream-analytics-integration/test-query.png)
 
-   - **測試結果**：選取 **測試查詢** ，您可以看到串流查詢的結果
+   - **測試結果** ：選取 **測試查詢** ，您可以看到串流查詢的結果
 
      ![測試結果](./media/stream-data-stream-analytics-integration/test-results.png)
 
-   - **測試結果架構**：顯示測試後串流查詢結果的架構。 請確定測試結果架構符合您的輸出架構。
+   - **測試結果架構** ：顯示測試後串流查詢結果的架構。 請確定測試結果架構符合您的輸出架構。
 
      ![測試結果架構](./media/stream-data-stream-analytics-integration/test-results-schema.png)
 
-   - **輸出架構**：這包含您在步驟5中選取的資料表架構 (新的或現有的) 。
+   - **輸出架構** ：這包含您在步驟5中選取的資料表架構 (新的或現有的) 。
 
       - 建立新的：如果您已在步驟5中選取此選項，在您啟動串流作業之前，您將不會看到架構。 建立新的資料表時，請選取適當的資料表索引。 如需資料表索引編制的詳細資訊，請參閱 [所述的叢集和非叢集索引](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described/)。
       - 使用現有的：如果您在步驟5中選取此選項，您會看到所選資料表的架構。
 
-7. 完成撰寫 & 測試查詢之後，請選取 [ **儲存查詢**]。 選取 [ **啟動串流分析作業** ]，開始將已轉換的資料擷取到 SQL 資料表中。 完成下欄欄位之後，請 **啟動** 作業。
-   - **輸出開始時間**：這會定義作業第一個輸出的時間。  
+7. 完成撰寫 & 測試查詢之後，請選取 [ **儲存查詢** ]。 選取 [ **啟動串流分析作業** ]，開始將已轉換的資料擷取到 SQL 資料表中。 完成下欄欄位之後，請 **啟動** 作業。
+   - **輸出開始時間** ：這會定義作業第一個輸出的時間。  
      - 現在：作業會立即啟動並處理新的傳入資料。
      - 自訂：作業現在將會啟動，但會處理來自特定時間點 (的資料，這些資料可能會在過去或未來的) 。 如需詳細資訊，請參閱 [如何啟動 Azure 串流分析作業](../../stream-analytics/start-job.md)。
-   - **串流處理單位**： Azure 串流分析是依處理資料至服務所需的串流處理單位數計價。 如需詳細資訊，請參閱 [Azure 串流分析定價](https://azure.microsoft.com/pricing/details/stream-analytics/)。
-   - **輸出資料錯誤處理**：  
+   - **串流處理單位** ： Azure 串流分析是依處理資料至服務所需的串流處理單位數計價。 如需詳細資訊，請參閱 [Azure 串流分析定價](https://azure.microsoft.com/pricing/details/stream-analytics/)。
+   - **輸出資料錯誤處理** ：  
      - 重試：發生錯誤時，Azure 串流分析會無限期地重試寫入事件，直到寫入成功為止。 重試沒有任何超時時間。 最終所有後續事件都會遭到正在重試的事件封鎖，而無法處理。 此選項是預設輸出錯誤處理原則。
      - Drop： Azure 串流分析會卸載任何導致資料轉換錯誤的輸出事件。 捨棄的事件無法復原以便稍後重新處理。 無論輸出錯誤處理原則組態為何，所有暫時性錯誤 (例如網路錯誤) 都會重試。
-   - **SQL Database 輸出設定**：此選項可讓您繼承先前查詢步驟的資料分割配置，以啟用資料表的多個寫入器的完全平行拓朴。 如需詳細資訊，請參閱 [Azure 串流分析輸出至 Azure SQL Database](../../stream-analytics/stream-analytics-sql-output-perf.md)。
-   - **最大批次計數**：建議在每次大量插入交易時傳送的記錄數目上限。  
+   - **SQL Database 輸出設定** ：此選項可讓您繼承先前查詢步驟的資料分割配置，以啟用資料表的多個寫入器的完全平行拓朴。 如需詳細資訊，請參閱 [Azure 串流分析輸出至 Azure SQL Database](../../stream-analytics/stream-analytics-sql-output-perf.md)。
+   - **最大批次計數** ：建議在每次大量插入交易時傳送的記錄數目上限。  
     如需輸出錯誤處理的詳細資訊，請參閱 [Azure 串流分析中的輸出錯誤原則](../../stream-analytics/stream-analytics-output-error-policy.md)。  
 
      ![啟動作業](./media/stream-data-stream-analytics-integration/start-job.png)
 
 8. 當您啟動作業時，您會在清單中看到正在執行的作業，而且您可以採取下列動作：
-   - **啟動/停止作業**：如果作業正在執行中，您可以停止作業。 如果工作已停止，您可以啟動作業。
-   - **編輯工作**：您可以編輯查詢。 如果您想要對作業進行更多變更，例如新增更多輸入/輸出，然後在串流分析中開啟作業。 當作業正在執行時，[編輯] 選項會停用。
-   - **預覽輸出資料表**：您可以在 [SQL 查詢編輯器] 中預覽資料表。
-   - **在串流分析中開啟**：開啟串流分析中的作業，以查看作業的監視、偵測詳細資料。
+   - **啟動/停止作業** ：如果作業正在執行中，您可以停止作業。 如果工作已停止，您可以啟動作業。
+   - **編輯工作** ：您可以編輯查詢。 如果您想要對作業進行更多變更，例如新增更多輸入/輸出，然後在串流分析中開啟作業。 當作業正在執行時，[編輯] 選項會停用。
+   - **預覽輸出資料表** ：您可以在 [SQL 查詢編輯器] 中預覽資料表。
+   - **在串流分析中開啟** ：開啟串流分析中的作業，以查看作業的監視、偵測詳細資料。
 
      ![串流分析作業](./media/stream-data-stream-analytics-integration/jobs.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 串流分析文件](https://docs.microsoft.com/azure/stream-analytics/)
+- [Azure 串流分析文件](../../stream-analytics/index.yml)
 - [Azure 串流分析解決方案模式](../../stream-analytics/stream-analytics-solution-patterns.md)
- 

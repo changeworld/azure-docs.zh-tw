@@ -15,12 +15,12 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bb3fd9136f78a332a22f973d211dec748c4fb260
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bf17f85892691fe930d3d4b1e12846da8f9dc58
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317067"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789806"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>如何使用 Azure PowerShell 在 Azure 虛擬機器上布建 SQL Server
 
@@ -135,7 +135,7 @@ $OSDiskName = $VMName + "OSDisk"
    Get-AzVMImageSku -Location $Location -Publisher 'MicrosoftSQLServer' -Offer $OfferName | Select Skus
    ```
 
-1. 在本教學課程中，使用的是 SQL Server 2017 Developer 版本 (**SQLDEV**)。 Developer 版本免費授權用於測試及開發，而且只需要支付執行 VM 的費用。
+1. 在本教學課程中，使用的是 SQL Server 2017 Developer 版本 ( **SQLDEV** )。 Developer 版本免費授權用於測試及開發，而且只需要支付執行 VM 的費用。
 
    ```powershell
    $Sku = "SQLDEV"
@@ -143,7 +143,7 @@ $OSDiskName = $VMName + "OSDisk"
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-在 Resource Manager 部署模型中，您所建立的第一個物件是資源群組。 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) \(英文\) Cmdlet，來建立 Azure 資源群組及其資源。 指定您先前針對資源群組名稱和位置所初始化的變數。
+在 Resource Manager 部署模型中，您所建立的第一個物件是資源群組。 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) \(英文\) Cmdlet，來建立 Azure 資源群組及其資源。 指定您先前針對資源群組名稱和位置所初始化的變數。
 
 執行此 Cmdlet 來建立新的資源群組。
 
@@ -153,7 +153,7 @@ New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 
 ## <a name="create-a-storage-account"></a>建立儲存體帳戶
 
-虛擬機器需要作業系統磁碟和 SQL Server 資料和記錄檔的儲存體資源。 為了簡單起見，您會針對兩者建立單一磁碟。 您可以在之後使用 [Add-Azure Disk](/powershell/module/servicemanagement/azure.service/add-azuredisk) Cmdlet 來附加額外的磁碟，以將您的 SQL Server 資料和記錄檔放在專用的磁碟上。 使用 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) \(英文\) Cmdlet，在新的資源群組中建立標準儲存體帳戶。 指定您先前針對儲存體帳戶名稱、儲存體 SKU 名稱和位置所初始化的變數。
+虛擬機器需要作業系統磁碟和 SQL Server 資料和記錄檔的儲存體資源。 為了簡單起見，您會針對兩者建立單一磁碟。 您可以在之後使用 [Add-Azure Disk](/powershell/module/servicemanagement/azure.service/add-azuredisk) Cmdlet 來附加額外的磁碟，以將您的 SQL Server 資料和記錄檔放在專用的磁碟上。 使用 [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) \(英文\) Cmdlet，在新的資源群組中建立標準儲存體帳戶。 指定您先前針對儲存體帳戶名稱、儲存體 SKU 名稱和位置所初始化的變數。
 
 執行此 Cmdlet 來建立新的儲存體帳戶。
 
@@ -176,7 +176,7 @@ $StorageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName `
 
 ### <a name="create-a-virtual-network-subnet-configuration"></a>建立虛擬網路子網路組態
 
-首先要建立虛擬網路的子網路設定。 針對本教學課程，使用 [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) \(英文\) Cmdlet 來建立預設子網路。 指定您先前針對子網路名稱和位址前置詞所初始化的變數。
+首先要建立虛擬網路的子網路設定。 針對本教學課程，使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) \(英文\) Cmdlet 來建立預設子網路。 指定您先前針對子網路名稱和位址前置詞所初始化的變數。
 
 > [!NOTE]
 > 您可以使用這個 Cmdlet 來定義虛擬網路子網路組態的其他屬性，但這已超出本教學課程的範圍。
@@ -189,7 +189,7 @@ $SubnetConfig = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefi
 
 ### <a name="create-a-virtual-network"></a>建立虛擬網路
 
-接著，使用 [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) \(英文\) Cmdlet，在新的資源群組中建立虛擬網路。 指定您先前針對名稱、位置及位址前置詞所初始化的變數。 使用您在上一個步驟中所定義的子網路設定。
+接著，使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) \(英文\) Cmdlet，在新的資源群組中建立虛擬網路。 指定您先前針對名稱、位置及位址前置詞所初始化的變數。 使用您在上一個步驟中所定義的子網路設定。
 
 執行此 Cmdlet 來建立虛擬網路。
 
@@ -201,7 +201,7 @@ $VNet = New-AzVirtualNetwork -Name $VNetName `
 
 ### <a name="create-the-public-ip-address"></a>建立公用 IP 位址
 
-您已定義虛擬網路，現在必須設定 IP 位址以連線至該虛擬機器。 針對本教學課程，請使用動態 IP 位址來建立公用 IP 位址，以支援網際網路連線。 使用 [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) \(英文\) Cmdlet，在新的資源群組中建立公用 IP 位址。 指定您先前針對名稱、位置、配置方法及 DNS 網域名稱標籤所初始化的變數。
+您已定義虛擬網路，現在必須設定 IP 位址以連線至該虛擬機器。 針對本教學課程，請使用動態 IP 位址來建立公用 IP 位址，以支援網際網路連線。 使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) \(英文\) Cmdlet，在新的資源群組中建立公用 IP 位址。 指定您先前針對名稱、位置、配置方法及 DNS 網域名稱標籤所初始化的變數。
 
 > [!NOTE]
 > 您可以使用這個 Cmdlet 來定義公用 IP 位址的其他屬性，但這已超出本初期教學課程的範圍。 您也可以建立私人位址或具有靜態位址的位址，但這也已超出本教學課程的範圍。
@@ -243,7 +243,7 @@ $PublicIp = New-AzPublicIpAddress -Name $InterfaceName `
 
 ### <a name="create-the-network-interface"></a>建立網路介面
 
-現在您已經準備好建立虛擬機器的網路介面。 使用 [get-aznetworkinterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) Cmdlet，在新的資源群組中建立網路介面。 指定先前所定義的名稱、位置、子網路及公用 IP 位址。
+現在您已經準備好建立虛擬機器的網路介面。 使用 [get-aznetworkinterface](/powershell/module/az.network/new-aznetworkinterface) Cmdlet，在新的資源群組中建立網路介面。 指定先前所定義的名稱、位置、子網路及公用 IP 位址。
 
 執行此 Cmdlet 來建立網路介面。
 
@@ -265,7 +265,7 @@ $Interface = New-AzNetworkInterface -Name $InterfaceName `
 
 ### <a name="create-the-vm-object"></a>建立 VM 物件
 
-首先要指定虛擬機器的大小。 針對此教學課程，請指定 [DS13]。 使用 [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) \(英文\) Cmdlet，來建立可設定的虛擬網路物件。 指定您先前針對名稱和大小所初始化的變數。
+首先要指定虛擬機器的大小。 針對此教學課程，請指定 [DS13]。 使用 [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) \(英文\) Cmdlet，來建立可設定的虛擬網路物件。 指定您先前針對名稱和大小所初始化的變數。
 
 執行此 Cmdlet 來建立虛擬機器物件。
 
@@ -275,7 +275,7 @@ $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
 
 ### <a name="create-a-credential-object-to-hold-the-name-and-password-for-the-local-administrator-credentials"></a>建立認證物件，以保留本機系統管理員認證的名稱和密碼
 
-在您可以設定虛擬機器的作業系統屬性之前，您必須先以安全字串的形式提供本機系統管理員帳戶的認證。 為了達成此目的，要使用 [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) Cmdlet。
+在您可以設定虛擬機器的作業系統屬性之前，您必須先以安全字串的形式提供本機系統管理員帳戶的認證。 為了達成此目的，要使用 [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) Cmdlet。
 
 執行下列 Cmdlet。 您必須在 PowerShell 認證要求視窗中輸入 VM 的本機系統管理員名稱和密碼。
 
@@ -285,7 +285,7 @@ $Credential = Get-Credential -Message "Type the name and password of the local a
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>設定虛擬機器的作業系統屬性
 
-您現在已準備好使用 [Set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) \(英文\) Cmdlet，來設定虛擬機器的作業系統屬性。
+您現在已準備好使用 [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) \(英文\) Cmdlet，來設定虛擬機器的作業系統屬性。
 
 - 將作業系統的類型設定為 [Windows]。
 - 需要安裝[虛擬機器代理程式](../../../virtual-machines/extensions/agent-windows.md)。
@@ -302,7 +302,7 @@ $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine `
 
 ### <a name="add-the-network-interface-to-the-virtual-machine"></a>將網路介面新增至虛擬機器
 
-接下來，使用 [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) \(英文\) Cmdlet，以您稍早定義的變數來新增網路介面。
+接下來，使用 [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface) \(英文\) Cmdlet，以您稍早定義的變數來新增網路介面。
 
 執行此 Cmdlet 來設定虛擬機器的網路介面。
 
@@ -322,7 +322,7 @@ $OSDiskUri = $StorageAccount.PrimaryEndpoints.Blob.ToString() + "vhds/" + $OSDis
 
 ### <a name="set-the-operating-system-disk-properties-for-the-virtual-machine"></a>設定虛擬機器的作業系統磁碟屬性
 
-接著，使用 [Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk) \(英文\) Cmdlet，來設定虛擬機器的作業系統磁碟屬性。 
+接著，使用 [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) \(英文\) Cmdlet，來設定虛擬機器的作業系統磁碟屬性。 
 
 - 指定虛擬機器的作業系統將會來自映像。
 - 將快取設定成唯讀 (因為 SQL Server 會安裝到相同的磁碟上)。
@@ -337,7 +337,7 @@ $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -Name `
 
 ### <a name="specify-the-platform-image-for-the-virtual-machine"></a>指定虛擬機器的平台映像
 
-最後一個設定步驟是指定虛擬機器的平台映像。 針對本教學課程，請使用最新的 SQL Server 2016 CTP 映像。 使用 [Set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage) \(英文\) Cmdlet，搭配您稍早定義的變數來使用此映像。
+最後一個設定步驟是指定虛擬機器的平台映像。 針對本教學課程，請使用最新的 SQL Server 2016 CTP 映像。 使用 [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage) \(英文\) Cmdlet，搭配您稍早定義的變數來使用此映像。
 
 執行此 Cmdlet 來指定虛擬機器的平台映像。
 
@@ -349,7 +349,7 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine `
 
 ## <a name="create-the-sql-vm"></a>建立 SQL VM
 
-您已完成設定步驟，現在已準備好建立虛擬機器。 使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) \(英文\) Cmdlet，以您定義的變數來建立虛擬機器。
+您已完成設定步驟，現在已準備好建立虛擬機器。 使用 [New-AzVM](/powershell/module/az.compute/new-azvm) \(英文\) Cmdlet，以您定義的變數來建立虛擬機器。
 
 > [!TIP]
 > 建立 VM 可能需要幾分鐘的時間。

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: fd9bc17db3eccc64f35d7295d57dc120364481dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59e28e4a3d630aac0954802e8777058c00261006
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332979"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791438"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Azure SQL 資料同步最佳做法 
 
@@ -41,15 +41,15 @@ ms.locfileid: "91332979"
 
 ### <a name="database-accounts-with-least-required-privileges"></a>擁有最低必要權限的資料庫帳戶
 
--   **針對同步安裝**。 建立/更改資料表、更改資料庫、建立程序、選取/更改結構描述、建立使用者定義型別。
+-   **針對同步安裝** 。 建立/更改資料表、更改資料庫、建立程序、選取/更改結構描述、建立使用者定義型別。
 
--   **進行中的同步**處理。選取/插入/更新/刪除已選取要同步處理的資料表，以及同步處理中繼資料與追蹤資料表的選取/插入/更新/刪除;服務所建立之預存程式的 Execute 許可權;使用者定義資料表類型的 Execute 許可權。
+-   **進行中的同步** 處理。選取/插入/更新/刪除已選取要同步處理的資料表，以及同步處理中繼資料與追蹤資料表的選取/插入/更新/刪除;服務所建立之預存程式的 Execute 許可權;使用者定義資料表類型的 Execute 許可權。
 
--   **針對取消佈建**。 在同步作業中針對資料表所做的更改、針對同步處理中繼資料資料表的選取/刪除、針對同步處理追蹤資料表、預存程序和使用者定義型別的控制。
+-   **針對取消佈建** 。 在同步作業中針對資料表所做的更改、針對同步處理中繼資料資料表的選取/刪除、針對同步處理追蹤資料表、預存程序和使用者定義型別的控制。
 
 Azure SQL Database 僅支援一組認證。 若要在此條件約束內完成這些工作，請考慮以下選項：
 
--   變更不同階段的認證 (例如，*credentials1* 適用於設定，*credentials2* 適用於持續)。  
+-   變更不同階段的認證 (例如， *credentials1* 適用於設定， *credentials2* 適用於持續)。  
 -   變更認證的權限 (也就是在設定同步處理後變更權限)。
 
 ## <a name="setup"></a>安裝程式
@@ -152,7 +152,7 @@ SQL 資料同步提供基本資料庫自動佈建。
 
 #### <a name="what-happens-when-changes-fail-to-propagate"></a>未能傳播變更時會發生什麼事？
 
--   同步群組顯示處於**警告**狀態。
+-   同步群組顯示處於 **警告** 狀態。
 -   詳細資料列示於入口網站 UI 記錄檢視器。
 -   如果問題未解決達 45 天，資料庫會變成過期。
 
@@ -168,15 +168,15 @@ SQL 資料同步提供基本資料庫自動佈建。
 
 ### <a name="avoid-out-of-date-databases-and-sync-groups"></a><a name="avoid-out-of-date-databases-and-sync-groups"></a> 避免資料庫和同步群組過期
 
-同步群組或同步群組中的資料庫可能會過期。 當同步群組的狀態為**過期**時，其會停止運作。 當資料庫的狀態為**過期**時，可能會遺失資料。 建議您最好避免這種情況發生，而不是嘗試從中復原。
+同步群組或同步群組中的資料庫可能會過期。 當同步群組的狀態為 **過期** 時，其會停止運作。 當資料庫的狀態為 **過期** 時，可能會遺失資料。 建議您最好避免這種情況發生，而不是嘗試從中復原。
 
 #### <a name="avoid-out-of-date-databases"></a>避免資料庫過期
 
-資料庫已離線 45 天以上時，狀態會設定為**過期**。 若要避免資料庫變成**過期**狀態，請確認沒有任何資料庫離線 45 天以上。
+資料庫已離線 45 天以上時，狀態會設定為 **過期** 。 若要避免資料庫變成 **過期** 狀態，請確認沒有任何資料庫離線 45 天以上。
 
 #### <a name="avoid-out-of-date-sync-groups"></a>避免同步群組過期
 
-當同步群組內的任何變更無法傳播到其餘同步群組長達 45 天以上時，狀態會設定為**過期**。 若要避免同步群組變為**過期**狀態，請定期檢查同步群組的歷程記錄。 請確定所有衝突都已解決，且變更已成功傳播到整個同步群組資料庫。
+當同步群組內的任何變更無法傳播到其餘同步群組長達 45 天以上時，狀態會設定為 **過期** 。 若要避免同步群組變為 **過期** 狀態，請定期檢查同步群組的歷程記錄。 請確定所有衝突都已解決，且變更已成功傳播到整個同步群組資料庫。
 
 同步群組可能會無法套用變更，原因包括以下其中之一：
 
@@ -195,7 +195,7 @@ SQL 資料同步提供基本資料庫自動佈建。
 
 在某些情況下，向用戶端代理程式取消註冊資料庫可能會導致同步處理失敗。
 
-#### <a name="scenario"></a>狀況
+#### <a name="scenario"></a>案例
 
 1. 同步處理群組 A 是使用 SQL Database 實例和與本機代理程式1相關聯的 SQL Server 資料庫所建立。
 2. 相同的內部部署資料庫已向本機代理程式 2 註冊 (此代理程式並未與任何同步群組建立關聯)。
@@ -238,7 +238,7 @@ SQL 資料同步提供基本資料庫自動佈建。
         -  [使用 PowerShell 在 Azure SQL Database 中的多個資料庫之間進行同步處理](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [使用 PowerShell 在 SQL Database 的資料庫與 SQL Server 實例中的資料庫之間進行同步處理](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 -   Data Sync Agent - [適用於 Azure SQL Data Sync 的 Data Sync Agent](sql-data-sync-agent-overview.md)
--   監視 - [使用 Azure 監視器記錄監視 SQL 資料同步](sql-data-sync-monitor-sync.md)
+-   監視 - [使用 Azure 監視器記錄監視 SQL 資料同步](./monitor-tune-overview.md)
 -   疑難排解 - [為 Azure SQL 資料同步的問題進行疑難排解](sql-data-sync-troubleshoot.md)
 -   更新同步結構描述
     -   使用 Transact-SQL - [在 Azure SQL 資料同步中自動執行結構描述變更複寫](sql-data-sync-update-sync-schema.md)
@@ -247,4 +247,4 @@ SQL 資料同步提供基本資料庫自動佈建。
 如需有關 SQL Database 的詳細資訊，請參閱：
 
 -   [SQL Database 概觀](sql-database-paas-overview.md)
--   [資料庫生命週期管理](https://msdn.microsoft.com/library/jj907294.aspx)
+-   [資料庫生命週期管理](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

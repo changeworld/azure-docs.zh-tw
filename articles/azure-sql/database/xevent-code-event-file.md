@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 06/06/2020
-ms.openlocfilehash: e9f3f1ca6005ff8c61211263944513d859d6d23e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9674b7188251312056812ac8e1dcae5885579e2a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620183"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791302"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL Database 中擴充事件的事件檔案目標程式碼
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "91620183"
 
 您想要完整的程式碼範例以穩健方式擷取和報告擴充事件的資訊。
 
-在 Microsoft SQL Server 中， [事件檔案目標](https://msdn.microsoft.com/library/ff878115.aspx) 是用來將事件輸出儲存到本機硬碟機檔案中。 但是這類檔案並不適用於 Azure SQL Database。 我們改為使用 Azure 儲存體服務來支援事件檔案目標。
+在 Microsoft SQL Server 中， [事件檔案目標](/previous-versions/sql/sql-server-2016/ff878115(v=sql.130)) 是用來將事件輸出儲存到本機硬碟機檔案中。 但是這類檔案並不適用於 Azure SQL Database。 我們改為使用 Azure 儲存體服務來支援事件檔案目標。
 
 本主題示範一個兩階段的程式碼範例：
 
@@ -39,22 +39,22 @@ ms.locfileid: "91620183"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az.Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
+> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az.Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
 
 - Azure 帳戶和訂用帳戶。 您可以註冊 [免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 - 您可以在當中建立資料表的任何資料庫。
   
-  - 您可以選擇性快速[建立 **AdventureWorksLT** 示範資料庫](single-database-create-quickstart.md)。
+  - 您可以選擇性快速 [建立 **AdventureWorksLT** 示範資料庫](single-database-create-quickstart.md)。
 
 - SQL Server Management Studio (ssms.exe)，最好是最新的每月更新版本。
   您可以從下列位置下載最新的 ssms.exe：
   
-  - 名稱為 [下載 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)的主題。
+  - 名稱為 [下載 SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)的主題。
   - [下載的直接連結。](https://go.microsoft.com/fwlink/?linkid=616025)
 
 - 您必須安裝 [Azure PowerShell 模組](https://go.microsoft.com/?linkid=9811175) 。
 
-  - 模組提供 **New-AzStorageAccount**這類的命令。
+  - 模組提供 **New-AzStorageAccount** 這類的命令。
 
 ## <a name="phase-1-powershell-code-for-azure-storage-container"></a>第 1 階段：Azure 儲存體容器的 PowerShell 程式碼
 
@@ -62,7 +62,7 @@ ms.locfileid: "91620183"
 
 此指令碼是以可清除先前可能之執行結果的命令為開頭，並且可重複執行。
 
-1. 將 PowerShell 指令碼貼到如 Notepad.exe 的簡單文字編輯器，並將指令碼儲存為有 **.ps1**副檔名的檔案。
+1. 將 PowerShell 指令碼貼到如 Notepad.exe 的簡單文字編輯器，並將指令碼儲存為有 **.ps1** 副檔名的檔案。
 2. 以系統管理員身分啟動 PowerShell ISE。
 3. 在提示中輸入<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>然後按 Enter 鍵。
 4. 在 PowerShell ISE 中開啟您的 **.ps1** 檔案。 執行指令碼。
@@ -258,7 +258,7 @@ PowerShell 指令碼在結束時列印出幾個具名的值。 您必須編輯 T
 6. 儲存並執行指令碼。
 
 > [!WARNING]
-> 上述 PowerShell 指令碼所產生的 SAS 金鑰值可能會以 '?' (問號) 開頭。 當您在下列 T-SQL 指令碼中使用 SAS 金鑰時，您必須「移除前置 '?'」 **。 否則您的動作可能會遭到安全性封鎖。
+> 上述 PowerShell 指令碼所產生的 SAS 金鑰值可能會以 '?' (問號) 開頭。 當您在下列 T-SQL 指令碼中使用 SAS 金鑰時，您必須「移除前置 '?'」  。 否則您的動作可能會遭到安全性封鎖。
 
 ### <a name="transact-sql-code"></a>Transact-SQL 程式碼
 
@@ -496,19 +496,19 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 上述 TRANSACT-SQL 指令碼使用下列系統函數讀取 event_file：
 
-- [sys.fn_xe_file_target_read_file (Transact-SQL)](https://msdn.microsoft.com/library/cc280743.aspx)
+- [sys.fn_xe_file_target_read_file (Transact-SQL)](/sql/relational-databases/system-functions/sys-fn-xe-file-target-read-file-transact-sql)
 
 您可以在下列文章中取得進階選項的說明，這些選項可用來檢視擴充事件的資料：
 
-- [進一步檢視擴充事件的目標資料](https://msdn.microsoft.com/library/mt752502.aspx)
+- [進一步檢視擴充事件的目標資料](/sql/relational-databases/extended-events/advanced-viewing-of-target-data-from-extended-events-in-sql-server)
 
 ## <a name="converting-the-code-sample-to-run-on-sql-server"></a>轉換程式碼範例在 SQL Server 上執行
 
 假設您想要在 Microsoft SQL Server 上執行上述的 Transact-SQL 範例。
 
-- 為了簡單起見，您可以用簡單的檔案 (例如 *C:\myeventdata.xel*) 來取代「Azure 儲存體」容器的使用。 檔案會寫入裝載 SQL Server 之電腦的本機硬碟。
-- 針對 **CREATE MASTER KEY** 和**CREATE CREDENTIAL**，您不需要任何類型的 Transact-SQL 陳述式。
-- 在 **CREATE EVENT SESSION** 陳述式的 **ADD TARGET** 子句中，您要將對 **filename=** 指派的 Http 值取代為完整路徑字串 (例如 *C:\myfile.xel*)。
+- 為了簡單起見，您可以用簡單的檔案 (例如 *C:\myeventdata.xel* ) 來取代「Azure 儲存體」容器的使用。 檔案會寫入裝載 SQL Server 之電腦的本機硬碟。
+- 針對 **CREATE MASTER KEY** 和 **CREATE CREDENTIAL** ，您不需要任何類型的 Transact-SQL 陳述式。
+- 在 **CREATE EVENT SESSION** 陳述式的 **ADD TARGET** 子句中，您要將對 **filename=** 指派的 Http 值取代為完整路徑字串 (例如 *C:\myfile.xel* )。
   
   - 不需要牽涉到任何 Azure 儲存體帳戶。
 
@@ -517,8 +517,8 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 如需 Azure 儲存體服務中帳戶和容器的詳細資訊，請參閱：
 
 - [如何使用 .NET 的 Blob 儲存體](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
-- [命名和參考容器、Blob 及中繼資料](https://msdn.microsoft.com/library/azure/dd135715.aspx)
-- [使用根容器](https://msdn.microsoft.com/library/azure/ee395424.aspx)
-- [第 1 課：在 Azure 容器上建立預存的存取原則和共用存取簽章](https://msdn.microsoft.com/library/dn466430.aspx)
-  - [第 2 課：使用共用存取簽章建立 SQL Server 認證](https://msdn.microsoft.com/library/dn466435.aspx)
-- [Microsoft SQL Server 的擴充事件](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
+- [命名和參考容器、Blob 及中繼資料](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)
+- [使用根容器](/rest/api/storageservices/Working-with-the-Root-Container)
+- [第 1 課：在 Azure 容器上建立預存的存取原則和共用存取簽章](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016#1---create-stored-access-policy-and-shared-access-storage)
+  - [第 2 課：使用共用存取簽章建立 SQL Server 認證](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016#2---create-a-sql-server-credential-using-a-shared-access-signature)
+- [Microsoft SQL Server 的擴充事件](/sql/relational-databases/extended-events/extended-events)

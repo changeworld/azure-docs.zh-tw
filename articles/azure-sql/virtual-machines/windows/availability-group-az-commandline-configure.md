@@ -12,13 +12,13 @@ ms.workload: iaas-sql-server
 ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 78414e26836d1547fe195a0a7844b6a98bb0dfc8
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.custom: seo-lt-2019, devx-track-azurecli
+ms.openlocfilehash: a85c1326501a362371d3bc961f5c5ae448e8d22e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168251"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790078"
 ---
 # <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>使用 PowerShell 或 Az CLI 為 Azure VM 上的 SQL Server 設定可用性群組 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "92168251"
 
 - [Azure 訂用帳戶](https://azure.microsoft.com/free/)。
 - 具有網域控制站的資源群組。 
-- 在 Azure 中執行的一或多個已加入網域的[vm SQL Server 2016 (或更新版本](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)，在*相同*的可用性設定組或已[向 SQL VM 資源提供者註冊](sql-vm-resource-provider-register.md)的*不同*可用性區域中) Enterprise 版。  
+- 在 Azure 中執行的一或多個已加入網域的 [vm SQL Server 2016 (或更新版本](./create-sql-vm-portal.md)，在 *相同* 的可用性設定組或已 [向 SQL VM 資源提供者註冊](sql-vm-resource-provider-register.md)的 *不同* 可用性區域中) Enterprise 版。  
 - [PowerShell](/powershell/scripting/install/installing-powershell)或[Azure CLI](/cli/azure/install-azure-cli)的最新版本。 
 - 兩個可用 (未由任何實體使用) 的 IP 位址。 一個用於內部負載平衡器。 另一個用於與可用性群組位於相同子網路內的可用性群組接聽程式。 如果您是使用現有的負載平衡器，可用性群組接聽程式只需要一個可用的 IP 位址。 
 
@@ -43,7 +43,7 @@ ms.locfileid: "92168251"
 
 您需要有下列帳戶權限，才能使用 Azure CLI 來設定 Always On 可用性群組： 
 
-- 在網域中擁有**建立電腦物件**權限的現有網域使用者帳戶。 例如，網域系統管理員帳戶通常會有足夠的權限 (例如：account@domain.com)。 _此帳戶也應該屬於建立叢集的每個 VM 上的本機系統管理員群組一部分。_
+- 在網域中擁有 **建立電腦物件** 權限的現有網域使用者帳戶。 例如，網域系統管理員帳戶通常會有足夠的權限 (例如：account@domain.com)。 _此帳戶也應該屬於建立叢集的每個 VM 上的本機系統管理員群組一部分。_
 - 控制 SQL Server 的網域使用者帳戶。 
  
 ## <a name="create-a-storage-account"></a>建立儲存體帳戶 
@@ -64,7 +64,7 @@ az storage account create -n <name> -g <resource group name> -l <region> `
 ```
 
 >[!TIP]
-> 如果您使用過期的 Azure CLI 版本，則可能會看到錯誤 `az sql: 'vm' is not in the 'az sql' command group`。 請下載 [Azure CLI 的最新版本](https://docs.microsoft.com/cli/azure/install-azure-cli-windows)以解決這個錯誤。
+> 如果您使用過期的 Azure CLI 版本，則可能會看到錯誤 `az sql: 'vm' is not in the 'az sql' command group`。 請下載 [Azure CLI 的最新版本](/cli/azure/install-azure-cli-windows)以解決這個錯誤。
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -84,7 +84,7 @@ New-AzStorageAccount -ResourceGroupName <resource group name> -Name <name> `
 
 ## <a name="define-cluster-metadata"></a>定義叢集中繼資料
 
-Azure CLI 的 [az sql vm group](https://docs.microsoft.com/cli/azure/sql/vm/group) 命令群組可管理可用性群組裝載所在 Windows Server 容錯移轉叢集 (WSFC) 服務的中繼資料。 叢集中繼資料包括 Active Directory 網域、叢集帳戶、用來作為雲端見證的儲存體帳戶，以及 SQL Server 版本。 請使用 [az sql vm group create](https://docs.microsoft.com/cli/azure/sql/vm/group#az-sql-vm-group-create) 來定義 WSFC 的中繼資料，如此一來，在新增第一個 SQL Server VM 時就會依照定義來建立叢集。 
+Azure CLI 的 [az sql vm group](/cli/azure/sql/vm/group) 命令群組可管理可用性群組裝載所在 Windows Server 容錯移轉叢集 (WSFC) 服務的中繼資料。 叢集中繼資料包括 Active Directory 網域、叢集帳戶、用來作為雲端見證的儲存體帳戶，以及 SQL Server 版本。 請使用 [az sql vm group create](/cli/azure/sql/vm/group#az-sql-vm-group-create) 來定義 WSFC 的中繼資料，如此一來，在新增第一個 SQL Server VM 時就會依照定義來建立叢集。 
 
 下列程式碼片段會定義叢集的中繼資料：
 
@@ -129,7 +129,7 @@ $group = New-AzSqlVMGroup -Name <name> -Location <regio>
 
 ## <a name="add-vms-to-the-cluster"></a>將 Vm 新增至叢集
 
-將第一個 SQL Server VM 新增至叢集便會建立叢集。 [az sql vm add-to-group](https://docs.microsoft.com/cli/azure/sql/vm#az-sql-vm-add-to-group) 命令會以先前指定的名稱建立叢集、將叢集角色安裝到 SQL Server VM 上，再將這些 VM 新增至叢集。 後續使用 `az sql vm add-to-group` 命令時，則會將更多 SQL Server VM 新增至新建立的叢集。 
+將第一個 SQL Server VM 新增至叢集便會建立叢集。 [az sql vm add-to-group](/cli/azure/sql/vm#az-sql-vm-add-to-group) 命令會以先前指定的名稱建立叢集、將叢集角色安裝到 SQL Server VM 上，再將這些 VM 新增至叢集。 後續使用 `az sql vm add-to-group` 命令時，則會將更多 SQL Server VM 新增至新建立的叢集。 
 
 下列程式碼片段會建立叢集，並於其中新增第一個 SQL Server VM： 
 
@@ -202,7 +202,7 @@ Update-AzSqlVM -ResourceId $sqlvm2.ResourceId -SqlVM $sqlvmconfig2
 像平常一樣，使用 [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio)、[PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell) 或 [Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql) 手動建立可用性群組。 
 
 >[!IMPORTANT]
-> 目前還*不要*建立接聽程式，會在後面幾節透過 Azure CLI 來完成。  
+> 目前還 *不要* 建立接聽程式，會在後面幾節透過 Azure CLI 來完成。  
 
 ## <a name="create-internal-load-balancer"></a>建立內部負載平衡器
 
@@ -246,7 +246,7 @@ New-AzLoadBalancer -name sqlILB -ResourceGroupName <resource group name> `
 
 在您手動建立可用性群組之後，您可以使用 [az sql vm ag-listener](/cli/azure/sql/vm/group/ag-listener#az-sql-vm-group-ag-listener-create) 建立接聽程式。 
 
-*子網路資源識別碼*是附加至虛擬網路資源識別碼的 `/subnets/<subnetname>` 值。 若要識別子網路資源識別碼：
+*子網路資源識別碼* 是附加至虛擬網路資源識別碼的 `/subnets/<subnetname>` 值。 若要識別子網路資源識別碼：
    1. 在 [Azure 入口網站](https://portal.azure.com)中移至您的資源群組。 
    1. 選取虛擬網路資源。 
    1. 在 [設定] 窗格中選取 [屬性]。 
@@ -521,4 +521,4 @@ Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster n
 * [可用性群組的管理 (SQL Server)](/sql/database-engine/availability-groups/windows/administration-of-an-availability-group-sql-server)   
 * [監視可用性群組 &#40;SQL Server&#41;](/sql/database-engine/availability-groups/windows/monitoring-of-availability-groups-sql-server)
 * [AlwaysOn 可用性群組的 Transact-SQL 陳述式概觀 (SQL Server)](/sql/database-engine/availability-groups/windows/transact-sql-statements-for-always-on-availability-groups)   
-* [AlwaysOn 可用性群組的 PowerShell Cmdlet 概觀 (SQL Server)](/sql/database-engine/availability-groups/windows/overview-of-powershell-cmdlets-for-always-on-availability-groups-sql-server)  
+* [AlwaysOn 可用性群組的 PowerShell Cmdlet 概觀 (SQL Server)](/sql/database-engine/availability-groups/windows/overview-of-powershell-cmdlets-for-always-on-availability-groups-sql-server)

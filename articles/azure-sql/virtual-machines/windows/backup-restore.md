@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: a4965c587cb2f42c8411d48af2417dd3fe3d5edb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a386ea5149b36a4e82b4c935e2373f505c6c83cf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360781"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789874"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Azure VM 上的 SQL Server 備份與還原
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -55,23 +55,23 @@ SQL Server 2016 和更新版本的 VM，會透過自動備份 v2 提供更多自
 
 如需如何針對 SQL VM 設定自動備份的詳細資訊，請參閱下列其中一篇文章：
 
-- **SQL Server 2016/2017**：[Azure 虛擬機器的自動備份 v2](automated-backup.md)
-- **SQL Server 2014**：[SQL Server 2014 虛擬機器的自動備份](automated-backup-sql-2014.md)
+- **SQL Server 2016/2017** ： [Azure 虛擬機器的自動備份 v2](automated-backup.md)
+- **SQL Server 2014** ： [SQL Server 2014 虛擬機器的自動備份](automated-backup-sql-2014.md)
 
 ## <a name="azure-backup-for-sql-vms"></a><a id="azbackup"></a> SQL VM 的 Azure 備份
 
-[Azure 備份](/azure/backup/)針對 Azure VM 上的 SQL Server 提供企業級備份功能。 所有備份都會儲存在復原服務保存庫儲存中，並在那裡進行管理。 此解決方案能提供數項特別適用於企業的優點：
+[Azure 備份](../../../backup/index.yml)針對 Azure VM 上的 SQL Server 提供企業級備份功能。 所有備份都會儲存在復原服務保存庫儲存中，並在那裡進行管理。 此解決方案能提供數項特別適用於企業的優點：
 
-- **零基礎架構備份**：您不必管理備份伺服器或儲存位置。
-- **調整**：可保護許多 SQL VM 與數以千計的資料庫。
-- **隨用隨付**：這項功能是由 Azure 備份提供的個別服務，但和所有 Azure 服務一樣，您只需依據使用量付費。
-- **集中管理和監視**：從 Azure 中的單一儀表板集中管理所有備份，包括 Azure 備份支援的其他工作負載。
-- **原則驅動的備份和保留**：針對定期備份建立標準備份原則。 建立保留原則以維護備份長達數年的時間。
-- **支援 SQL Always On**：偵測和保護 SQL Server Always On 設定，並接受備份的可用性群組備份喜好設定。
+- **零基礎架構備份** ：您不必管理備份伺服器或儲存位置。
+- **調整** ：可保護許多 SQL VM 與數以千計的資料庫。
+- **隨用隨付** ：這項功能是由 Azure 備份提供的個別服務，但和所有 Azure 服務一樣，您只需依據使用量付費。
+- **集中管理和監視** ：從 Azure 中的單一儀表板集中管理所有備份，包括 Azure 備份支援的其他工作負載。
+- **原則驅動的備份和保留** ：針對定期備份建立標準備份原則。 建立保留原則以維護備份長達數年的時間。
+- **支援 SQL Always On** ：偵測和保護 SQL Server Always On 設定，並接受備份的可用性群組備份喜好設定。
 - **15 分鐘復原點目標 (RPO)** ：設定最多以 15 分鐘為間隔的 SQL 交易記錄備份。
-- **還原時間點**：使用入口網站將資料庫復原至特定時間點，而不必手動還原多個完整、差異和記錄備份。
-- **彙總的失敗電子郵件警示**：設定針對任何失敗的彙總電子郵件通知。
-- **角色型存取控制**：決定有哪些人員可透過入口網站管理備份或還原作業。
+- **還原時間點** ：使用入口網站將資料庫復原至特定時間點，而不必手動還原多個完整、差異和記錄備份。
+- **彙總的失敗電子郵件警示** ：設定針對任何失敗的彙總電子郵件通知。
+- **角色型存取控制** ：決定有哪些人員可透過入口網站管理備份或還原作業。
 
 如需其運作方式及示範的快速概觀，請觀看下列影片：
 
@@ -83,19 +83,19 @@ SQL Server 2016 和更新版本的 VM，會透過自動備份 v2 提供更多自
 
 如果您想要在 SQL VM 上手動管理備份和還原作業，根據使用的 SQL Server 版本而定，會有數個選項可供您使用。 如需備份和還原的概觀，請根據您的 SQL Server 版本參閱下列其中一篇文章：
 
-- [SQL Server 2016 和更新版本的備份與還原](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)
-- [SQL Server 2014 的備份與還原](https://msdn.microsoft.com/library/ms187048%28v=sql.120%29.aspx)
-- [SQL Server 2012 的備份與還原](https://msdn.microsoft.com/library/ms187048%28v=sql.110%29.aspx)
-- [SQL Server 2008 R2 的備份與還原](https://msdn.microsoft.com/library/ms187048%28v=sql.105%29.aspx)
-- [SQL Server 2008 的備份和還原](https://msdn.microsoft.com/library/ms187048%28v=sql.100%29.aspx)
+- [SQL Server 2016 和更新版本的備份與還原](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases)
+- [SQL Server 2014 的備份與還原](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases?viewFallbackFrom=sql-server-2014)
+- [SQL Server 2012 的備份與還原](/previous-versions/sql/sql-server-2012/ms187048(v=sql.110))
+- [SQL Server 2008 R2 的備份與還原](/previous-versions/sql/sql-server-2008-r2/ms187048(v=sql.105))
+- [SQL Server 2008 的備份和還原](/previous-versions/sql/sql-server-2008/ms187048(v=sql.100))
 
 下列各節將詳細說明數個手動備份和還原選項。
 
 ### <a name="backup-to-attached-disks"></a>備份至已連接磁碟
 
-針對 Azure VM 上的 SQL Server，您可以使用原生備份和還原技術，使用 VM 上的已連接磁碟作為備份檔案的目的地。 不過，根據該 [虛擬機器的大小](../../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)而定，您可以連接到 Azure 虛擬機器的磁碟數有所限制。 磁碟管理的負擔也需要加以考量。
+針對 Azure VM 上的 SQL Server，您可以使用原生備份和還原技術，使用 VM 上的已連接磁碟作為備份檔案的目的地。 不過，根據該 [虛擬機器的大小](../../../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)而定，您可以連接到 Azure 虛擬機器的磁碟數有所限制。 磁碟管理的負擔也需要加以考量。
 
-如需如何使用 Server Management Studio (SSMS) 或 Transact-SQL 手動建立完整資料庫備份的範例，請參閱[建立完整資料庫備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server)。
+如需如何使用 Server Management Studio (SSMS) 或 Transact-SQL 手動建立完整資料庫備份的範例，請參閱[建立完整資料庫備份](/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server)。
 
 ### <a name="backup-to-url"></a>備份至 URL
 
@@ -104,13 +104,13 @@ SQL Server 2016 和更新版本的 VM，會透過自動備份 v2 提供更多自
 | 2016 增強功能 | 詳細資料 |
 | --- | --- |
 | **串接** |當備份至 Microsoft Azure Blob 儲存體時，SQL Server 2016 支援備份至多個 Blob，以啟用可高達 12.8 TB 之大型資料庫的備份。 |
-| **快照集備份** |藉由 Azure 快照集，SQL Server 檔案快照集備份對使用 Azure Blob 儲存體服務儲存的資料庫檔案，提供幾乎即時的備份及快速還原。 這項功能可簡化備份和還原原則。 檔案快照集備份也支援還原時間點。 如需詳細資訊，請參閱 [適用於在 Azure 中的資料庫檔案的快照集備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure)。 |
+| **快照集備份** |藉由 Azure 快照集，SQL Server 檔案快照集備份對使用 Azure Blob 儲存體服務儲存的資料庫檔案，提供幾乎即時的備份及快速還原。 這項功能可簡化備份和還原原則。 檔案快照集備份也支援還原時間點。 如需詳細資訊，請參閱 [適用於在 Azure 中的資料庫檔案的快照集備份](/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure)。 |
 
 如需詳細資訊，請根據您的 SQL Server 版本參閱下列其中一篇文章：
 
-- **SQL Server 2016/2017**：[SQL Server 備份至 URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
-- **SQL Server 2014**：[SQL Server 2014 備份至 URL](https://msdn.microsoft.com/library/jj919148%28v=sql.120%29.aspx)
-- **SQL Server 2012**：[SQL Server 2012 備份至 URL](https://msdn.microsoft.com/library/jj919148%28v=sql.110%29.aspx)
+- **SQL Server 2016/2017** ： [SQL Server 備份至 URL](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
+- **SQL Server 2014** ： [SQL Server 2014 備份至 URL](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service?viewFallbackFrom=sql-server-2014)
+- **SQL Server 2012** ： [SQL Server 2012 備份至 URL](/previous-versions/sql/sql-server-2012/jj919148(v=sql.110))
 
 ### <a name="managed-backup"></a>受控備份
 
@@ -120,8 +120,8 @@ SQL Server 2016 和更新版本的 VM，會透過自動備份 v2 提供更多自
 
 如需詳細資訊，請根據您的 SQL Server 版本參閱下列其中一篇文章：
 
-- [適用於 SQL Server 2016 和更新版本的 Managed Backup to Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure)
-- [適用於 SQL Server 2014 的 Managed Backup to Microsoft Azure](https://msdn.microsoft.com/library/dn449496%28v=sql.120%29.aspx)
+- [適用於 SQL Server 2016 和更新版本的 Managed Backup to Microsoft Azure](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure)
+- [適用於 SQL Server 2014 的 Managed Backup to Microsoft Azure](/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?viewFallbackFrom=sql-server-2014)
 
 ## <a name="decision-matrix"></a>決策矩陣
 

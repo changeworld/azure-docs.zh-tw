@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 8459ab364fc0af15dd1a1b0035e4ce27d192f7a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfc3abd30fad3e86544430e5a4ecb8510e77c9e5
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293453"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789925"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上 SQL Server 的商務持續性和 HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -54,7 +54,7 @@ Azure 支援下列商務持續性 SQL Server 技術：
 
 | 技術 | 範例架構 |
 | --- | --- |
-| **可用性群組** |在相同區域的 Azure VM 中執行的可用性複本提供高可用性。 由於 Windows 容錯移轉叢集需要使用 Active Directory 網域，因此您需要設定網域控制站 VM。<br/><br/> 為了提高冗余和可用性，Azure Vm 可以部署在[可用性群組總覽](availability-group-overview.md)中所記載的不同[可用性區域](../../../availability-zones/az-overview.md)中。 如果可用性群組中的 SQL Server Vm 部署在可用性區域中，則請使用 [azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) 作為接聽程式，如 [AZURE SQL VM CLI](availability-group-az-cli-configure.md) 和 [azure 快速入門範本](availability-group-quickstart-template-configure.md) 文章中所述。<br/> ![可用性群組](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-ha-always-on.png)<br/>如需詳細資訊，請參閱[在 Azure (GUI) 中設定可用性群組](availability-group-azure-marketplace-template-configure.md)。 |
+| **可用性群組** |在相同區域的 Azure VM 中執行的可用性複本提供高可用性。 由於 Windows 容錯移轉叢集需要使用 Active Directory 網域，因此您需要設定網域控制站 VM。<br/><br/> 為了提高冗余和可用性，Azure Vm 可以部署在[可用性群組總覽](availability-group-overview.md)中所記載的不同[可用性區域](../../../availability-zones/az-overview.md)中。 如果可用性群組中的 SQL Server Vm 部署在可用性區域中，則請使用 [azure Standard Load Balancer](../../../load-balancer/load-balancer-overview.md) 作為接聽程式，如 [AZURE SQL VM CLI](./availability-group-az-commandline-configure.md) 和 [azure 快速入門範本](availability-group-quickstart-template-configure.md) 文章中所述。<br/> ![可用性群組](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/azure-only-ha-always-on.png)<br/>如需詳細資訊，請參閱[在 Azure (GUI) 中設定可用性群組](./availability-group-quickstart-template-configure.md)。 |
 | **容錯移轉叢集執行個體** |SQL Server Vm 支援容錯移轉叢集實例。 因為 FCI 功能需要共用儲存體，所以有五個解決方案可搭配 Azure Vm 上的 SQL Server 使用： <br/><br/> -使用適用于 Windows Server 2019 的 [Azure 共用磁片](failover-cluster-instance-azure-shared-disks-manually-configure.md) 。 共用受控磁片是允許將受控磁片同時連結至多個虛擬機器的 Azure 產品。 叢集中的 Vm 可以根據叢集應用程式透過 SCSI 持續保留 (SCSI PR) 所選擇的保留，來讀取或寫入連接的磁片。 SCSI PR 是業界標準的儲存體解決方案，可供在存放區域網路上執行的應用程式使用， (SAN) 內部部署。 在受控磁片上啟用 SCSI PR，可讓您依原樣將這些應用程式遷移至 Azure。 <br/><br/>-使用[儲存空間直接存取 \( S2D \) ](failover-cluster-instance-storage-spaces-direct-manually-configure.md)提供適用于 Windows Server 2016 和更新版本的軟體式虛擬 SAN。<br/><br/>-使用適用于 Windows Server 2012 和更新版本的 [Premium 檔案共用](failover-cluster-instance-premium-file-share-manually-configure.md) 。 Premium 檔案共用是支援 SSD、持續低延遲，而且完全支援與 FCI 搭配使用。<br/><br/>-使用合作夥伴解決方案所支援的儲存體進行叢集化。 如需使用 SIOS DataKeeper 的特定範例，請參閱 blog 專案 [容錯移轉叢集和 SIOS DataKeeper](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/)。<br/><br/>-透過 Azure ExpressRoute 使用遠端 iSCSI 目標的共用區塊儲存體。 例如，NetApp 私用儲存體 (NPS) 會透過 ExpressRoute 使用 Equinix 將 iSCSI 目標公開至 Azure VM。<br/><br/>對於 Microsoft 合作夥伴所提供的共用儲存體和資料複寫解決方案，如有關於存取容錯移轉資料的任何問題，請與廠商連絡。<br/><br/>||
 
 ## <a name="azure-only-disaster-recovery-solutions"></a>僅限 Azure：嚴重損壞修復解決方案
@@ -90,7 +90,7 @@ Azure 支援下列商務持續性 SQL Server 技術：
 
 如需詳細資訊，請參閱[產品授權條款](https://www.microsoft.com/licensing/product-licensing/products)。 
 
-若要啟用此權益，請移至您 [SQL Server 的虛擬機器資源](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)。 選取 [設定] 下的 [**設定**]，**然後選擇**[ **SQL Server 授權**] 下的 [嚴重損壞**修復**] 選項。 選取核取方塊以確認此 SQL Server VM 將用來作為被動複本，然後選取 [套用 **] 以儲存** 您的設定。 
+若要啟用此權益，請移至您 [SQL Server 的虛擬機器資源](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)。 選取 [設定] 下的 [ **設定** ]， **然後選擇** [ **SQL Server 授權** ] 下的 [嚴重損壞 **修復** ] 選項。 選取核取方塊以確認此 SQL Server VM 將用來作為被動複本，然後選取 [套用 **] 以儲存** 您的設定。 
 
 ![在 Azure 中設定嚴重損壞修復複本](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/dr-replica-in-portal.png)
 
@@ -101,12 +101,12 @@ Azure 支援下列商務持續性 SQL Server 技術：
 ### <a name="high-availability-nodes-in-an-availability-set"></a>可用性設定組中的高可用性節點
 Azure 中的可用性設定組可讓您將高可用性節點放入不同的容錯網域和更新網域中。 Azure 平臺會為可用性設定組中的每部虛擬機器指派一個更新網域和一個容錯網域。 資料中心內的這項設定可確保在規劃或未規劃的維護事件發生期間，至少有一部虛擬機器可供使用，且符合99.95% 的 Azure SLA。 
 
-若要設定高可用性設定，請將所有參與 SQL Server 的虛擬機器放在相同的可用性設定組中，以避免在維護事件期間發生應用程式或資料遺失。 只有相同雲端服務內的節點可以參與相同的可用性設定組。 如需詳細資訊，請參閱[管理虛擬機器的可用性](../../../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+若要設定高可用性設定，請將所有參與 SQL Server 的虛擬機器放在相同的可用性設定組中，以避免在維護事件期間發生應用程式或資料遺失。 只有相同雲端服務內的節點可以參與相同的可用性設定組。 如需詳細資訊，請參閱[管理虛擬機器的可用性](../../../virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)。
 
 ### <a name="high-availability-nodes-in-an-availability-zone"></a>可用性區域中的高可用性節點
 可用性區域是 Azure 地區內獨特的實體位置。 每個區域皆由一或多個配備獨立電力、冷卻系統及網路的資料中心所組成。 區域內可用性區域的實體區隔可確保至少有一部虛擬機器可供使用且符合99.99% 的 Azure SLA，以協助保護應用程式和資料不受資料中心失敗的影響。 
 
-若要設定高可用性，請將參與的 SQL Server 虛擬機器分散到區域中的可用性區域。 可用性區域之間的網路對網路傳輸將會產生額外費用。 如需詳細資訊，請參閱[可用性區域](/azure/availability-zones/az-overview)。 
+若要設定高可用性，請將參與的 SQL Server 虛擬機器分散到區域中的可用性區域。 可用性區域之間的網路對網路傳輸將會產生額外費用。 如需詳細資訊，請參閱[可用性區域](../../../availability-zones/az-overview.md)。 
 
 
 ### <a name="failover-cluster-behavior-in-azure-networking"></a>Azure 網路中的容錯移轉叢集行為
@@ -123,7 +123,7 @@ Azure 中不符合 RFC 規範的 DHCP 服務可能會導致建立特定容錯移
 
 您可以將未使用的靜態 IP 位址指派給叢集網路名稱，以使叢集網路名稱上線，以避免此情況。 例如，您可以使用連結-本機 IP 位址，例如 169.254.1.1) 指派。 若要簡化此程序，請參閱[在 Azure 中為可用性群組設定 Windows 容錯移轉叢集](https://social.technet.microsoft.com/wiki/contents/articles/14776.configuring-windows-failover-cluster-in-windows-azure-for-alwayson-availability-groups.aspx) \(英文\)。
 
-如需詳細資訊，請參閱[在 Azure (GUI) 中設定可用性群組](availability-group-azure-marketplace-template-configure.md)。
+如需詳細資訊，請參閱[在 Azure (GUI) 中設定可用性群組](./availability-group-quickstart-template-configure.md)。
 
 ### <a name="support-for-availability-group-listeners"></a>可用性群組接聽程式的支援
 在執行 Windows Server 2012 和更新版本的 Azure Vm 上，支援可用性群組接聽程式。 透過使用在為可用性群組節點的 Azure VM 上啟用的負載平衡端點，即可提供支援。 您必須遵循特殊設定步驟，讓接聽程式適用于在 Azure 中執行的用戶端應用程式，以及在內部部署環境中執行的用戶端應用程式。
@@ -146,11 +146,11 @@ Data Source=ReplicaServer1;Failover Partner=ReplicaServer2;Initial Catalog=Avail
 
 如需用戶端連線的詳細資訊，請參閱：
 
-* [搭配 SQL Server Native Client 使用連接字串關鍵字](https://msdn.microsoft.com/library/ms130822.aspx)
-* [將用戶端連接至資料庫鏡像工作階段 (SQL Server)](https://technet.microsoft.com/library/ms175484.aspx)
-* [連線至混合式 IT 中的可用性群組接聽程式 (英文)](https://docs.microsoft.com/archive/blogs/sqlalwayson/connecting-to-availability-group-listener-in-hybrid-it)
-* [可用性群組接聽程式、用戶端連線及應用程式容錯移轉 (SQL Server)](https://technet.microsoft.com/library/hh213417.aspx)
-* [搭配可用性群組使用資料庫鏡像連接字串](https://technet.microsoft.com/library/hh213417.aspx)
+* [搭配 SQL Server Native Client 使用連接字串關鍵字](/sql/relational-databases/native-client/applications/using-connection-string-keywords-with-sql-server-native-client)
+* [將用戶端連接至資料庫鏡像工作階段 (SQL Server)](/sql/database-engine/database-mirroring/connect-clients-to-a-database-mirroring-session-sql-server)
+* [連線至混合式 IT 中的可用性群組接聽程式 (英文)](/archive/blogs/sqlalwayson/connecting-to-availability-group-listener-in-hybrid-it)
+* [可用性群組接聽程式、用戶端連線及應用程式容錯移轉 (SQL Server)](/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover)
+* [搭配可用性群組使用資料庫鏡像連接字串](/sql/database-engine/availability-groups/windows/listeners-client-connectivity-application-failover)
 
 ### <a name="network-latency-in-hybrid-it"></a>混合式 IT 中的網路延遲
 假設您的內部部署網路與 Azure 之間可能有較長的網路延遲，以部署您的 HADR 解決方案。 當您要將複本部署至 Azure 時，請使用非同步認可，而不是同步處理模式的同步認可。 當您要在內部部署和 Azure 中部署資料庫鏡像伺服器時，請使用高效能模式，而不是高安全性模式。
@@ -162,8 +162,4 @@ Azure 磁碟中的異地複寫不支援將相同資料庫的資料檔與記錄�
 
 ## <a name="next-steps"></a>後續步驟
 
-決定 [可用性群組](availability-group-overview.md) 或 [容錯移轉叢集實例](failover-cluster-instance-overview.md) 是否為您企業的最佳商務持續性解決方案。 然後，請參閱為您的環境設定高可用性和嚴重損壞修復的 [最佳作法](hadr-cluster-best-practices.md) 。 
-
-
-
-
+決定 [可用性群組](availability-group-overview.md) 或 [容錯移轉叢集實例](failover-cluster-instance-overview.md) 是否為您企業的最佳商務持續性解決方案。 然後，請參閱為您的環境設定高可用性和嚴重損壞修復的 [最佳作法](hadr-cluster-best-practices.md) 。

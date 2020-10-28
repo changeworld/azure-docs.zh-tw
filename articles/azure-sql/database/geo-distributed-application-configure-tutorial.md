@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 8e64e1a63b01e900988c999321423dfe92df00c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14031118a93f5760b302e4d2b76334205be6d087
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335053"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789619"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>教學課程： (Azure SQL Database) 執行異地分散式資料庫
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "91335053"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az.Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
+> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az.Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
 
 若要完成本教學課程，請確定您已安裝下列項目：
 
@@ -49,7 +49,7 @@ ms.locfileid: "91335053"
   > [!NOTE]
   > 教學課程使用 *AdventureWorksLT* 範例資料庫。
 
-- Java 和 Maven，請參閱[使用 SQL Server 建立應用程式](https://www.microsoft.com/sql-server/developer-get-started/)，反白顯示 **Java** 並選取您的環境，然後遵循步驟進行。
+- Java 和 Maven，請參閱 [使用 SQL Server 建立應用程式](https://www.microsoft.com/sql-server/developer-get-started/)，反白顯示 **Java** 並選取您的環境，然後遵循步驟進行。
 
 > [!IMPORTANT]
 > 務必設定防火牆規則，使用您在本教學課程中執行步驟的電腦所用的公用 IP 位址。 資料庫層級防火牆規則將會自動複寫到次要伺服器。
@@ -120,7 +120,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
 
 * * *
 
-您也可以在 Azure 入口網站中變更異地複寫設定，方法是選取您的資料庫，然後選取 [異地複寫**設定**]  >  ** **。
+您也可以在 Azure 入口網站中變更異地複寫設定，方法是選取您的資料庫，然後選取 [異地複寫  。
 
 ![異地複寫設定](./media/geo-distributed-application-configure-tutorial/geo-replication.png)
 
@@ -132,7 +132,7 @@ az sql failover-group create --name $failoverGroup --partner-server $drServer `
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
 
-1. 輸入 **Y**，然後按 **ENTER**。
+1. 輸入 **Y** ，然後按 **ENTER** 。
 
 1. 將目錄變更為新的專案。
 

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f312b690ac7743b1574dbbec9d408b3fafbb0194
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6d5a9da238c520e2e0ec70ac312dd112aad2fe8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263176"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789976"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>跨不同的 Azure 區域設定 SQL Server Always On 可用性群組
 
@@ -69,7 +69,7 @@ ms.locfileid: "91263176"
    >[!NOTE]
    >在某些情況下，您可能需要使用 PowerShell 來建立 VNet 對 VNet 連接。 例如，如果您使用不同的 Azure 帳戶，您就無法在入口網站中設定該連線。 在此情況下，請參閱[使用 Azure 入口網站設定 VNet 對 VNet 連接](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)。
 
-1. [在新區域中建立網域控制站](../../../active-directory/active-directory-new-forest-virtual-machine.md)。
+1. [在新區域中建立網域控制站](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)。
 
    此網域控制站可在主要站台中的網域控制站無法供使用時，提供驗證。
 
@@ -84,7 +84,7 @@ ms.locfileid: "91263176"
    - 包含一個僅由相同區域中的虛擬機器所組成的後端集區作為負載平衡器。
    - 使用 IP 位址特定的 TCP 連接埠探查。
    - 擁有相同區域中 SQL Server 特定的負載平衡規則。  
-   - 如果後端集區中的虛擬機器不是單一可用性設定組或虛擬機器擴展集的一部分，則為 Standard Load Balancer。 如需其他資訊，請檢閱 [Azure Load Balancer Standard 概觀](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)。
+   - 如果後端集區中的虛擬機器不是單一可用性設定組或虛擬機器擴展集的一部分，則為 Standard Load Balancer。 如需其他資訊，請檢閱 [Azure Load Balancer Standard 概觀](../../../load-balancer/load-balancer-overview.md)。
 
 1. [將容錯移轉叢集功能新增到新的 SQL Server](availability-group-manually-configure-prerequisites-tutorial.md#add-failover-clustering-features-to-both-sql-server-vms)。
 
@@ -100,7 +100,7 @@ ms.locfileid: "91263176"
 
    ![叢集屬性](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
 
-   在 [屬性] 對話方塊上，選取 [IP 位址] 下的 [新增]，然後從遠端網路區域新增叢集名稱的 IP 位址。 在 [ **IP 位址**] 對話方塊中選取 **[確定**]，然後再次**選取 [叢集內容] 對話方塊**上的 **[確定**]，以儲存新的 IP 位址。 
+   在 [屬性] 對話方塊上，選取 [IP 位址] 下的 [新增]，然後從遠端網路區域新增叢集名稱的 IP 位址。 在 [ **IP 位址** ] 對話方塊中選取 **[確定** ]，然後再次 **選取 [叢集內容] 對話方塊** 上的 **[確定** ]，以儲存新的 IP 位址。 
 
    ![新增叢集 IP](./media/availability-group-manually-configure-multiple-regions/add-cluster-ip-address.png)
 
@@ -113,7 +113,7 @@ ms.locfileid: "91263176"
 
 1. 將 IP 位址資源新增至叢集中的可用性群組角色。 
 
-   以滑鼠右鍵按一下容錯移轉叢集管理員中的可用性群組角色，選擇 [ **新增資源**]、[ **更多資源**]，然後選取 [ **IP 位址**]。
+   以滑鼠右鍵按一下容錯移轉叢集管理員中的可用性群組角色，選擇 [ **新增資源** ]、[ **更多資源** ]，然後選取 [ **IP 位址** ]。
 
    ![建立 IP 位址](./media/availability-group-manually-configure-multiple-regions/20-add-ip-resource.png)
 
@@ -161,7 +161,7 @@ ms.locfileid: "91263176"
 
 遠端資料中心內的複本是可用性群組的一部份，但是位於不同的子網路。 如果此複本變成主要複本，可能會發生應用程式連線逾時。 此行為與多子網路部署中的內部部署可用性群組相同。 若要允許來自用戶端應用程式的連線，請更新用戶端連線，或在叢集網路名稱資源上設定名稱解析快取功能。
 
-建議您更新用戶端連接字串以設定 `MultiSubnetFailover=Yes`。 請參閱[使用 MultiSubnetFailover 進行連接](https://msdn.microsoft.com/library/gg471494#Anchor_0)。
+建議您更新用戶端連接字串以設定 `MultiSubnetFailover=Yes`。 請參閱[使用 MultiSubnetFailover 進行連接](/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#Anchor_0)。
 
 如果您無法修改連接字串，您可以設定名稱解析快取功能。 請參閱[逾時錯誤，而且您無法在多重子網路環境中連線到 SQL Server 2012 AlwaysOn 可用性群組接聽程式](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av) \(英文\)。
 
@@ -170,16 +170,16 @@ ms.locfileid: "91263176"
 若要測試對遠端區域的接聽程式連線能力，您可以將複本容錯移轉至遠端區域。 當複本是非同步複本時，容錯移轉容易導致潛在的資料遺失。 若要容錯移轉又不遺失資料，請將可用性模式變更為同步，並將容錯移轉模式設定為自動。 使用下列步驟：
 
 1. 在 [物件總管] 中，連接到裝載主要複本的 SQL Server 執行個體。
-1. 在 [ **AlwaysOn 可用性群組**]、[ **可用性群組**] 下，以滑鼠右鍵按一下可用性群組，然後選取 [ **屬性**]。
+1. 在 [ **AlwaysOn 可用性群組** ]、[ **可用性群組** ] 下，以滑鼠右鍵按一下可用性群組，然後選取 [ **屬性** ]。
 1. 在 [一般] 頁面上的 [可用性複本] 底下，將 DR 站台中的次要複本設定成使用 [同步認可] 模式和 [自動] 容錯移轉模式。
 1. 如果您在與主要複本相同的站台中有次要複本以支援高可用性，請將此複本設定為 [非同步認可] 和 [手動]。
 1. 選取 [確定]。
-1. 在 **物件總管**中，以滑鼠右鍵按一下可用性群組，然後選取 [ **顯示儀表板**]。
+1. 在 **物件總管** 中，以滑鼠右鍵按一下可用性群組，然後選取 [ **顯示儀表板** ]。
 1. 在儀表板上，確認 DR 站台上的複本已同步。
-1. 在 **物件總管**中，以滑鼠右鍵按一下可用性群組，然後選取 [ **容錯移轉 ...**]。SQL Server Management studio 會開啟嚮導以容錯移轉 SQL Server。  
-1. 選取 [ **下一步]**，然後選取 DR 網站中的 SQL Server 實例。 再次選取 **[下一步]** 。
-1. 連接到 DR 網站中的 SQL Server 實例，然後選取 **[下一步]**。
-1. 在 [ **摘要** ] 頁面上確認設定，然後選取 **[完成]**。
+1. 在 **物件總管** 中，以滑鼠右鍵按一下可用性群組，然後選取 [ **容錯移轉 ...** ]。SQL Server Management studio 會開啟嚮導以容錯移轉 SQL Server。  
+1. 選取 [ **下一步]** ，然後選取 DR 網站中的 SQL Server 實例。 再次選取 **[下一步]** 。
+1. 連接到 DR 網站中的 SQL Server 實例，然後選取 **[下一步]** 。
+1. 在 [ **摘要** ] 頁面上確認設定，然後選取 **[完成]** 。
 
 測試完連線之後，請將主要複本移回到您的主要資料中心，並將可用性模式設定回其一般作業設定。 下表顯示本文件所述架構的一般作業設定：
 
@@ -194,12 +194,12 @@ ms.locfileid: "91263176"
 
 如需詳細資訊，請參閱下列主題：
 
-- [執行可用性群組的已規劃手動容錯移轉 (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
-- [執行可用性群組的強制手動容錯移轉 (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)
+- [執行可用性群組的已規劃手動容錯移轉 (SQL Server)](/sql/database-engine/availability-groups/windows/perform-a-planned-manual-failover-of-an-availability-group-sql-server)
+- [執行可用性群組的強制手動容錯移轉 (SQL Server)](/sql/database-engine/availability-groups/windows/perform-a-forced-manual-failover-of-an-availability-group-sql-server)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [AlwaysOn 可用性群組](https://msdn.microsoft.com/library/hh510230.aspx)
-* [Azure 虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/)
+* [AlwaysOn 可用性群組](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)
+* [Azure 虛擬機器](../../../virtual-machines/windows/index.yml)
 * [Azure Load Balancer](availability-group-manually-configure-tutorial.md#configure-internal-load-balancer)
-* [Azure 可用性設定組](../../../virtual-machines/linux/manage-availability.md)
+* [Azure 可用性設定組](../../../virtual-machines/manage-availability.md)

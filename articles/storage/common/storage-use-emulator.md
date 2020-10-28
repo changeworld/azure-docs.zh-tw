@@ -7,12 +7,12 @@ ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: 959a58a38861075c6509fe57136d8991eeb98ce6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b51746326c2df81e2dd2bdc72bf2a9ab72b649b5
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588173"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790554"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 儲存體模擬器進行開發和測試
 
@@ -44,7 +44,7 @@ Microsoft Azure 儲存體模擬器是一種可模擬 Azure Blob、佇列和表�
 
 若要啟動 Azure 儲存體模擬器：
 
-1. 選取 [開始]**** 按鈕或按下 [Windows]**** 鍵。
+1. 選取 [開始]  按鈕或按下 [Windows]  鍵。
 2. 開始輸入 `Azure Storage Emulator`。
 3. 從顯示的應用程式清單中選取模擬器。
 
@@ -85,7 +85,7 @@ Microsoft Azure 儲存體模擬器是一種可模擬 Azure Blob、佇列和表�
 如需這些命令的詳細資訊，請參閱 [儲存體模擬器命令列工具參考](#storage-emulator-command-line-tool-reference)。
 
 > [!TIP]
-> 您可以使用 [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 來管理您的 SQL Server 執行個體，包括 LocalDB 安裝。 在 SMSS [連接到伺服器]**** 對話方塊中，於 [伺服器名稱:]**** 欄位中指定 `(localdb)\MSSQLLocalDb`，以連接到 LocalDB 執行個體。
+> 您可以使用 [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 來管理您的 SQL Server 執行個體，包括 LocalDB 安裝。 在 SMSS [連接到伺服器]  對話方塊中，於 [伺服器名稱:]  欄位中指定 `(localdb)\MSSQLLocalDb`，以連接到 LocalDB 執行個體。
 
 ## <a name="authenticating-requests-against-the-storage-emulator"></a>針對儲存體模擬器驗證要求
 
@@ -95,7 +95,7 @@ Microsoft Azure 儲存體模擬器是一種可模擬 Azure Blob、佇列和表�
 
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
-如需連接字串的詳細資訊，請參閱[設定 Azure 儲存體連接字串](../storage-configure-connection-string.md)。
+如需連接字串的詳細資訊，請參閱[設定 Azure 儲存體連接字串](./storage-configure-connection-string.md)。
 
 ### <a name="authorize-with-a-shared-access-signature"></a>使用共用存取簽章進行授權
 
@@ -161,7 +161,7 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 `http://127.0.0.1:10000/myaccount-secondary/mycontainer/myblob.txt`
 
 > [!NOTE]
-> 若要使用儲存體模擬器以程式設計方式存取次要資料庫，請使用適用于 .NET 3.2 版或更新版本的儲存體用戶端程式庫。 如需詳細資訊，請參閱 [Microsoft Azure Storage Client Library for .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx) (適用於 .NET 的 Microsoft Azure 儲存體用戶端程式庫)。
+> 若要使用儲存體模擬器以程式設計方式存取次要資料庫，請使用適用于 .NET 3.2 版或更新版本的儲存體用戶端程式庫。 如需詳細資訊，請參閱 [Microsoft Azure Storage Client Library for .NET](/previous-versions/azure/dn261237(v=azure.100)) (適用於 .NET 的 Microsoft Azure 儲存體用戶端程式庫)。
 >
 >
 
@@ -178,17 +178,17 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 `AzureStorageEmulator.exe [start] [stop] [status] [clear] [init] [help]`
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 若要檢視選項清單，請在命令提示字元輸入 `/help` 。
 
-| 選項 | 說明 | Command | 引數 |
+| 選項 | 描述 | Command | 引數 |
 | --- | --- | --- | --- |
 | **開始** |啟動儲存體模擬器。 |`AzureStorageEmulator.exe start [-inprocess]` |*-* 重新處理：在目前的進程中啟動模擬器，而不是建立新的進程。 |
 | **停止** |停止儲存體模擬器。 |`AzureStorageEmulator.exe stop` | |
 | **狀態** |列印儲存體模擬器的狀態。 |`AzureStorageEmulator.exe status` | |
-| **清除** |清除命令列上指定的所有服務中的資料。 |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*blob*：清除 blob 資料。 <br/>*queue*：清除佇列資料。 <br/>*table*：清除資料表資料。 <br/>*all*：清除所有服務中的所有資料。 |
-| **Init** |進行一次性初始化以設定模擬器。 |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-server serverName\instanceName*︰指定裝載 SQL 執行個體的伺服器。 <br/>*-sqlinstance instanceName*：指定在預設伺服器執行個體中使用之 SQL 執行個體的名稱。 <br/>*-forcecreate*：強制建立 SQL 資料庫，即使它已經存在。 <br/>*-skipcreate*︰略過建立 SQL 資料庫。 其優先順序高於 -forcecreate。<br/>*-reserveports*︰嘗試保留與服務相關聯的 HTTP 連接埠。<br/>*-unreserveports*︰嘗試移除服務相關聯 HTTP 連接埠的保留。 其優先順序高於 -reserveports。<br/>*-inprocess*：在目前的處理序中執行初始化，而不是繁衍新的處理序。 如果變更連接埠保留，必須以提高權限啟動目前的處理程序。 |
+| **清除** |清除命令列上指定的所有服務中的資料。 |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*blob* ：清除 blob 資料。 <br/>*queue* ：清除佇列資料。 <br/>*table* ：清除資料表資料。 <br/>*all* ：清除所有服務中的所有資料。 |
+| **Init** |進行一次性初始化以設定模擬器。 |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-server serverName\instanceName* ︰指定裝載 SQL 執行個體的伺服器。 <br/>*-sqlinstance instanceName* ：指定在預設伺服器執行個體中使用之 SQL 執行個體的名稱。 <br/>*-forcecreate* ：強制建立 SQL 資料庫，即使它已經存在。 <br/>*-skipcreate* ︰略過建立 SQL 資料庫。 其優先順序高於 -forcecreate。<br/>*-reserveports* ︰嘗試保留與服務相關聯的 HTTP 連接埠。<br/>*-unreserveports* ︰嘗試移除服務相關聯 HTTP 連接埠的保留。 其優先順序高於 -reserveports。<br/>*-inprocess* ：在目前的處理序中執行初始化，而不是繁衍新的處理序。 如果變更連接埠保留，必須以提高權限啟動目前的處理程序。 |
 
 ## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>儲存體模擬器與 Azure 儲存體之間的差異
 
@@ -254,7 +254,7 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 ### <a name="version-54"></a>版本 5.4
 
-* 若要改善安裝穩定性，模擬器不會嘗試在安裝時保留連接埠。 如果您想要保留埠，請使用**init**命令的 *-reserveports*選項來指定它們。
+* 若要改善安裝穩定性，模擬器不會嘗試在安裝時保留連接埠。 如果您想要保留埠，請使用 **init** 命令的 *-reserveports* 選項來指定它們。
 
 ### <a name="version-53"></a>版本 5.3
 
@@ -310,7 +310,7 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 ### <a name="version-40"></a>4.0 版
 
-* 儲存體模擬器可執行檔已重新命名為 *AzureStorageEmulator.exe*。
+* 儲存體模擬器可執行檔已重新命名為 *AzureStorageEmulator.exe* 。
 
 ### <a name="version-32"></a>3.2 版
 
@@ -326,10 +326,10 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 * 儲存體模擬器圖形化使用者介面已淘汰。 它已由可編寫腳本的命令列介面取代。 如需有關命令列介面的詳細資訊，請參閱儲存體模擬器命令列工具參考。 3.0 版仍將提供圖形化介面，除非在系統匣圖示按一下滑鼠右鍵並選取 [顯示儲存體模擬器 UI] 的方式安裝計算模擬器，否則無法存取圖形化介面。
 * 現在完全支援 2013-08-15 版的 Azure 儲存體服務。 (先前只有儲存體模擬器 2.2.1 版預覽才支援此版本)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 評估跨平臺、以社區維護的開放原始碼儲存體模擬器 [Azurite](https://github.com/azure/azurite)。 
-* [使用 .NET 的 Azure 儲存體範例](../storage-samples-dotnet.md)包含開發應用程式時您可以使用的數個程式碼範例的連結。
+* [使用 .NET 的 Azure 儲存體範例](./storage-samples-dotnet.md)包含開發應用程式時您可以使用的數個程式碼範例的連結。
 * 您可以使用 [Microsoft Azure 儲存體總管](https://storageexplorer.com) 來處理雲端儲存體帳戶和儲存體模擬器中的資源。
 
 ## <a name="see-also"></a>另請參閱

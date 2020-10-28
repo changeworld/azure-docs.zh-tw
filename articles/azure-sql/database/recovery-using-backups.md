@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: 23fdc69b59cc1415d06bd394fd9ef729b7ef4ce0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 334495eeef410c42fb45445c400a86ff1b777061
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448806"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790333"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>使用自動資料庫備份復原-Azure SQL Database & SQL 受控執行個體
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -64,7 +64,7 @@ ms.locfileid: "91448806"
 
 ## <a name="point-in-time-restore"></a>時間點還原
 
-您可以使用 Azure 入口網站、 [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)或 [REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate#creates-a-database-from-pointintimerestore.)，將獨立、集區或實例資料庫還原至較早的時間點。 要求可以指定還原資料庫的任何服務層級或計算大小。 確定您在要還原資料庫的伺服器上有足夠的資源。 
+您可以使用 Azure 入口網站、 [PowerShell](/powershell/module/az.sql/restore-azsqldatabase)或 [REST API](/rest/api/sql/databases/createorupdate#creates-a-database-from-pointintimerestore.)，將獨立、集區或實例資料庫還原至較早的時間點。 要求可以指定還原資料庫的任何服務層級或計算大小。 確定您在要還原資料庫的伺服器上有足夠的資源。 
 
 完成時，還原會在與原始資料庫相同的伺服器上建立新的資料庫。 還原的資料庫會根據其服務層級和計算大小，以一般費率計費。 在資料庫還原完成之前，您不會產生費用。
 
@@ -99,7 +99,7 @@ ms.locfileid: "91448806"
 
 ## <a name="deleted-database-restore"></a>還原已刪除的資料庫
 
-您可以將已刪除的資料庫還原到相同伺服器或相同受控實例上的刪除時間或較早的時間點。 您可以透過 Azure 入口網站、 [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)或 [REST (createMode = Restore) ](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)來完成此動作。 您可以從備份建立新的資料庫來還原已刪除的資料庫。
+您可以將已刪除的資料庫還原到相同伺服器或相同受控實例上的刪除時間或較早的時間點。 您可以透過 Azure 入口網站、 [PowerShell](/powershell/module/az.sql/restore-azsqldatabase)或 [REST (createMode = Restore) ](/rest/api/sql/databases/createorupdate)來完成此動作。 您可以從備份建立新的資料庫來還原已刪除的資料庫。
 
 > [!IMPORTANT]
 > 如果您刪除伺服器或受控實例，其所有資料庫也會一併刪除且無法復原。 您無法還原已刪除的伺服器或受控實例。
@@ -110,13 +110,13 @@ ms.locfileid: "91448806"
 
 #### <a name="sql-database"></a>SQL Database
 
-若要使用 Azure 入口網站將已刪除的資料庫復原到刪除時間，請開啟 [伺服器總覽] 頁面，然後選取 [ **已刪除的資料庫**]。 選取您要還原的已刪除資料庫，然後輸入新資料庫的名稱，該資料庫將會使用從備份還原的資料來建立。
+若要使用 Azure 入口網站將已刪除的資料庫復原到刪除時間，請開啟 [伺服器總覽] 頁面，然後選取 [ **已刪除的資料庫** ]。 選取您要還原的已刪除資料庫，然後輸入新資料庫的名稱，該資料庫將會使用從備份還原的資料來建立。
 
   ![還原已刪除資料庫的螢幕擷取畫面](./media/recovery-using-backups/restore-deleted-sql-database-annotated.png)
 
 #### <a name="sql-managed-instance"></a>SQL 受控執行個體
 
-若要使用 Azure 入口網站來復原受管理的資料庫，請開啟 [受管理的實例] 總覽頁面，然後選取 [ **已刪除的資料庫**]。 選取您要還原的已刪除資料庫，然後輸入新資料庫的名稱，該資料庫將會使用從備份還原的資料來建立。
+若要使用 Azure 入口網站來復原受管理的資料庫，請開啟 [受管理的實例] 總覽頁面，然後選取 [ **已刪除的資料庫** ]。 選取您要還原的已刪除資料庫，然後輸入新資料庫的名稱，該資料庫將會使用從備份還原的資料來建立。
 
   ![還原已刪除的 Azure SQL 受控執行個體資料庫的螢幕擷取畫面](./media/recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
 
@@ -154,10 +154,10 @@ ms.locfileid: "91448806"
 
 若要從您選擇的區域和伺服器中的 Azure 入口網站異地還原單一資料庫，請遵循下列步驟：
 
-1. 從**儀表板**選取 [**新增**  >  **建立 SQL Database**]。 在 [ **基本** ] 索引標籤上，輸入必要的資訊。
-2. 選取 [其他設定]****。
-3. 若要 **使用現有的資料**，請選取 [ **備份**]。
-4. 針對 [ **備份**]，請從可用的異地還原備份清單中選取備份。
+1. 從 **儀表板** 選取 [ **新增**  >  **建立 SQL Database** ]。 在 [ **基本** ] 索引標籤上，輸入必要的資訊。
+2. 選取 [其他設定]  。
+3. 若要 **使用現有的資料** ，請選取 [ **備份** ]。
+4. 針對 [ **備份** ]，請從可用的異地還原備份清單中選取備份。
 
     ![建立 SQL Database 選項的螢幕擷取畫面](./media/recovery-using-backups/geo-restore-azure-sql-database-list-annotated.png)
 
@@ -167,9 +167,9 @@ ms.locfileid: "91448806"
 
 若要從 Azure 入口網站將受控實例資料庫異地還原至您選擇的區域中現有的受控實例，請選取您想要還原資料庫的受控實例。 請遵循下列步驟：
 
-1. 選取 [ **新增資料庫**]。
+1. 選取 [ **新增資料庫** ]。
 2. 輸入所需的資料庫名稱。
-3. 在 [ **使用現有資料**] 下，選取 [ **備份**]。
+3. 在 [ **使用現有資料** ] 下，選取 [ **備份** ]。
 4. 從可用的異地還原備份清單中選取備份。
 
     ![新資料庫選項的螢幕擷取畫面](./media/recovery-using-backups/geo-restore-sql-managed-instance-list-annotated.png)
@@ -205,7 +205,7 @@ ms.locfileid: "91448806"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> SQL Database 和 SQL 受控執行個體仍支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az. Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 Azure Resource Manager 模組中之命令的引數，是相當大的範圍。
+> SQL Database 和 SQL 受控執行個體仍支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az. Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 Azure Resource Manager 模組中之命令的引數，是相當大的範圍。
 
 #### <a name="sql-database"></a>SQL Database
 
@@ -237,8 +237,8 @@ ms.locfileid: "91448806"
 
 | API | 描述 |
 | --- | --- |
-| [REST (createMode=Recovery)](https://docs.microsoft.com/rest/api/sql/databases) |還原資料庫。 |
-| [取得建立或更新資料庫狀態](https://docs.microsoft.com/rest/api/sql/operations) |在還原作業期間傳回狀態。 |
+| [REST (createMode=Recovery)](/rest/api/sql/databases) |還原資料庫。 |
+| [取得建立或更新資料庫狀態](/rest/api/sql/operations) |在還原作業期間傳回狀態。 |
 
 ### <a name="azure-cli"></a>Azure CLI
 

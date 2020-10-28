@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 016bb1e4a0844be2a137108d673159bd041cd351
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0f9d2affe39eaf74d4c0a537658d655a0c150d7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439770"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789568"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>雲端中的新 DBA-在遷移之後管理 Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "89439770"
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>使用 Azure 入口網站監視資料庫
 
-在 [Azure 入口網站](https://portal.azure.com/)中，您可以選取資料庫並按一下 [ **監視** ] 圖表來監視個別資料庫的使用率。 如此會帶出您可變更的 [度量]**** 視窗，只要按一下 [編輯圖表]**** 按鈕即可。 新增下列度量：
+在 [Azure 入口網站](https://portal.azure.com/)中，您可以選取資料庫並按一下 [ **監視** ] 圖表來監視個別資料庫的使用率。 如此會帶出您可變更的 [度量]  視窗，只要按一下 [編輯圖表]  按鈕即可。 新增下列度量：
 
 - CPU 百分比
 - DTU 百分比
@@ -49,7 +49,7 @@ ms.locfileid: "89439770"
 
 ![資料庫效能的服務層監視。](./media/manage-data-after-migrating-to-database/sqldb_service_tier_monitoring.png)
 
-您也可以在效能度量中設定警示。 按一下 [度量]**** 視窗中的 [新增警示]**** 按鈕。 遵循精靈的指示以設定警示。 您可以選擇在度量超出或低於特定臨界值時發出警示。
+您也可以在效能度量中設定警示。 按一下 [度量]  視窗中的 [新增警示]  按鈕。 遵循精靈的指示以設定警示。 您可以選擇在度量超出或低於特定臨界值時發出警示。
 
 例如，如果您預期資料庫中的工作負載會成長，可以選擇設定電子郵件警示，以便在資料庫的任何效能度量達到 80% 時收到警示。 您可以使用此警示作為早期警告，協助您判斷何時需要切換至更高的計算大小。
 
@@ -101,8 +101,8 @@ SQL Database 謹慎對待安全性和隱私權。 SQL Database 於資料庫層�
 
 SQL Database 提供兩個驗證方法：
 
-- [Azure Active Directory Authentication](authentication-aad-overview.md)
-- [SQL 驗證](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
+- [Azure Active Directory 驗證](authentication-aad-overview.md)
+- [SQL 驗證](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 不支援傳統 Windows 驗證。 Azure Active Directory (Azure AD) 是集中式身分識別和存取管理服務。 利用此服務，您可以非常輕鬆地為組織中的所有人員提供單一登入存取 (SSO)。 這表示認證會在所有 Azure 服務間共用，以簡化驗證。 
 
@@ -113,7 +113,7 @@ Azure AD 支援 [Azure Multi-Factor Authentication](authentication-mfa-ssms-over
 |不想要在 Azure 中使用 Azure Active Directory (Azure AD) |使用 [SQL 驗證](security-overview.md)|
 |已在內部部署 SQL Server 上使用 AD|[使 AD 與 Azure AD 結成同盟](../../active-directory/hybrid/whatis-hybrid-identity.md)，並使用 Azure AD 驗證。 如此一來，您即可使用單一登入。|
 |需要強制執行 Multi-Factor Authentication|透過 [Microsoft 條件式存取](conditional-access-configure.md)要求以原則 Multi-Factor Authentication，並透過 [Multi-Factor Authentication 支援來使用 Azure AD 的通用驗證](authentication-mfa-ssms-overview.md)。|
-|具有來自 Microsoft 帳戶 (live.com、outlook.com) 或其他網域 (gmail.com) 的來賓帳戶|在 SQL Database/資料倉儲中使用 [Azure AD 通用驗證](authentication-mfa-ssms-overview.md)，它會利用 [Azure AD B2B 共同作業](../../active-directory/b2b/what-is-b2b.md)。|
+|具有來自 Microsoft 帳戶 (live.com、outlook.com) 或其他網域 (gmail.com) 的來賓帳戶|在 SQL Database/資料倉儲中使用 [Azure AD 通用驗證](authentication-mfa-ssms-overview.md)，它會利用 [Azure AD B2B 共同作業](../../active-directory/external-identities/what-is-b2b.md)。|
 |已使用 Azure AD 認證從同盟網域登入 Windows|使用 [Azure AD 整合式驗證](authentication-aad-configure.md)。|
 |已使用認證從不與 Azure 同盟的網域登入 Windows|使用 [Azure AD 整合式驗證](authentication-aad-configure.md)。|
 |擁有需要連接到 SQL Database 或 Azure Synapse Analytics 的仲介層服務|使用 [Azure AD 整合式驗證](authentication-aad-configure.md)。|
@@ -304,7 +304,7 @@ SQL Database 提供三個服務層級：基本、標準和進階。 在每個服
 |**服務層級**|**常見的使用案例**|
 |---|---|
 |**基本**|應用程式具有少數使用者與一個資料庫，沒有高度並行能力、規模和效能需求。 |
-|**Standard**|應用程式具有相當大的並行能力、規模和效能需求，結合低到中等的 IO 要求。 |
+|**標準**|應用程式具有相當大的並行能力、規模和效能需求，結合低到中等的 IO 要求。 |
 |**高級**|應用程式具有許多並行使用者、高度 CPU/記憶體和高度 IO 要求。 高度並行能力、高輸送量和對延遲敏感的應用程式可以利用高級層級。 |
 |||
 
@@ -320,11 +320,11 @@ SQL Database 會使用的一些智慧技術可讓它自動處理特定類別的�
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database-using-the-azure-portal"></a>如何? 使用 Azure 入口網站以 BACPAC 檔案的形式匯出和匯入資料 SQL Database
 
-- **匯出**：您可以將 Azure SQL Database 中的資料庫匯出為 BACPAC 檔案，從 Azure 入口網站
+- **匯出** ：您可以將 Azure SQL Database 中的資料庫匯出為 BACPAC 檔案，從 Azure 入口網站
 
    ![資料庫匯出](./media/manage-data-after-migrating-to-database/database-export1.png)
 
-- 匯**入**：您也可以使用 Azure 入口網站，將資料以 BACPAC 檔案形式匯入 Azure SQL Database 的資料庫中。
+- 匯 **入** ：您也可以使用 Azure 入口網站，將資料以 BACPAC 檔案形式匯入 Azure SQL Database 的資料庫中。
 
    ![資料庫匯入](./media/manage-data-after-migrating-to-database/import1.png)
 

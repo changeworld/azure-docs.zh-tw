@@ -13,6 +13,7 @@
     - name: 建立 ExpressRoute 線路 - CLI
       href: howto-circuit-cli.md
     - name: 建立 ExpressRoute 線路 - ARM 範本
+      displayName: Resource Manager
       href: quickstart-create-expressroute-vnet-template.md
   expanded: true
 - name: 教學課程

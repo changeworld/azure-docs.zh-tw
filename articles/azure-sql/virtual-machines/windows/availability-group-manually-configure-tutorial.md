@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ee249a33187c3f8776cfc8fc750590c58f74579e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 81a5b5d8b9cb56b41d051de52f1496e30fb4900f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168132"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790061"
 ---
 # <a name="tutorial-manually-configure-an-availability-group-sql-server-on-azure-vms"></a>教學課程：手動設定可用性群組 (Azure VM 上的 SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,12 +29,12 @@ ms.locfileid: "92168132"
 雖然本文會手動設定可用性群組環境，但您也可以使用 [Azure 入口網站](availability-group-azure-portal-configure.md)、[PowerShell 或 Azure CLI](availability-group-az-commandline-configure.md)或 [Azure 快速入門範本](availability-group-quickstart-template-configure.md)來進行設定。 
 
 
-**估計時間** ：在符合[必要條件](availability-group-manually-configure-prerequisites-tutorial.md)之後，需要大約 30 分鐘才能完成。
+**估計時間** ：在符合 [必要條件](availability-group-manually-configure-prerequisites-tutorial.md)之後，需要大約 30 分鐘才能完成。
 
 
 ## <a name="prerequisites"></a>必要條件
 
-本教學課程假設您對 SQL Server Always On 可用性群組有基本的了解。 如需詳細資訊，請參閱 [AlwaysOn 可用性群組概觀 (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx)。
+本教學課程假設您對 SQL Server Always On 可用性群組有基本的了解。 如需詳細資訊，請參閱 [AlwaysOn 可用性群組概觀 (SQL Server)](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)。
 
 開始本教學課程之前，您必須先[完成在 Azure 虛擬機器中建立 Always On 可用性群組的必要條件](availability-group-manually-configure-prerequisites-tutorial.md)。 如果這些必要條件都已經完成，您可以跳到[建立叢集](#CreateCluster)。
 
@@ -51,7 +51,7 @@ ms.locfileid: "92168132"
 |:::image type="icon" source="./media/availability-group-manually-configure-tutorial/square.png" border="false":::   **安裝網域帳戶** | - 每部 SQL Server 上的本機系統管理員 <br/> - 每個 SQL Server 執行個體之 SQL Server sysadmin 固定伺服器角色的成員  |
 
 >[!NOTE]
-> 本教學課程中提供的許多步驟現在都可透過 [Azure 入口網站](availability-group-azure-portal-configure.md)、[PowerShell 和 Az CLI](availability-group-az-cli-configure.md) 和 [Azure 快速入門範本](availability-group-quickstart-template-configure.md)來自動化。
+> 本教學課程中提供的許多步驟現在都可透過 [Azure 入口網站](availability-group-azure-portal-configure.md)、[PowerShell 和 Az CLI](./availability-group-az-commandline-configure.md) 和 [Azure 快速入門範本](availability-group-quickstart-template-configure.md)來自動化。
 
 
 <!--**Procedure**: *This is the first "step". Make titles H2's and short and clear – H2's appear in the right pane on the web page and are important for navigation.*-->
@@ -114,7 +114,7 @@ ms.locfileid: "92168132"
    ![新增節點確認](./media/availability-group-manually-configure-tutorial/46-addnodeconfirmation.png)
 
    >[!WARNING]
-   >如果您使用「儲存空間」但未取消選取 [新增適合的儲存裝置到叢集]，Windows 就會在進行叢集程序時將虛擬機器中斷連結。 因此，它們將不會顯示在「磁碟管理員」或「總管」中，直到您使用 PowerShell 將儲存空間從叢集中移除後再重新連接為止。 儲存空間可將多個磁碟分組為存放集區。 如需詳細資訊，請參閱[儲存空間](https://technet.microsoft.com/library/hh831739)。
+   >如果您使用「儲存空間」但未取消選取 [新增適合的儲存裝置到叢集]，Windows 就會在進行叢集程序時將虛擬機器中斷連結。 因此，它們將不會顯示在「磁碟管理員」或「總管」中，直到您使用 PowerShell 將儲存空間從叢集中移除後再重新連接為止。 儲存空間可將多個磁碟分組為存放集區。 如需詳細資訊，請參閱[儲存空間](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831739(v=ws.11))。
    >
 
 1. 選取 [下一步]  。
@@ -127,7 +127,7 @@ ms.locfileid: "92168132"
 
 ### <a name="add-a-cluster-quorum-file-share"></a>新增叢集仲裁檔案共用
 
-在此範例中，Windows 叢集會使用檔案共用來建立叢集仲裁。 本教學課程使用「節點與檔案共用多數」仲裁。 如需詳細資訊，請參閱[了解容錯移轉叢集中的仲裁設定](https://technet.microsoft.com/library/cc731739.aspx)。
+在此範例中，Windows 叢集會使用檔案共用來建立叢集仲裁。 本教學課程使用「節點與檔案共用多數」仲裁。 如需詳細資訊，請參閱[了解容錯移轉叢集中的仲裁設定](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731739(v=ws.11))。
 
 1. 使用遠端桌面工作階段來連接到檔案共用見證成員伺服器。
 
@@ -176,7 +176,7 @@ ms.locfileid: "92168132"
 1. 在 [選取仲裁見證] 上，選取 [設定檔案共用見證]。
 
    >[!TIP]
-   >Windows Server 2016 支援雲端見證。 如果您選擇此類型的見證，就不需要檔案共用見證。 如需詳細資訊，請參閱[為容錯移轉叢集部署雲端見證 (Deploy a cloud witness for a Failover Cluster)](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness)。 本教學課程使用檔案共用見證，這是舊版作業系統所支援的類型。
+   >Windows Server 2016 支援雲端見證。 如果您選擇此類型的見證，就不需要檔案共用見證。 如需詳細資訊，請參閱[為容錯移轉叢集部署雲端見證 (Deploy a cloud witness for a Failover Cluster)](/windows-server/failover-clustering/deploy-cloud-witness)。 本教學課程使用檔案共用見證，這是舊版作業系統所支援的類型。
    >
 
 1. 在 [設定檔按共用見證] 上，輸入您所建立共用的路徑。 選取 [下一步]  。
@@ -347,7 +347,7 @@ Repeat these steps on the second SQL Server.
    ![容錯移轉叢集管理員中的可用性群組](./media/availability-group-manually-configure-tutorial/80-clustermanager.png)
 
    > [!WARNING]
-   > 請勿嘗試透過容錯移轉叢集管理員，容錯移轉可用性群組。 所有容錯移轉作業都應在 SSMS 的 **AlwaysOn 儀表板** 中執行。 如需詳細資訊，請參閱[容錯移轉叢集管理員與可用性群組一起使用的限制](https://msdn.microsoft.com/library/ff929171.aspx)。
+   > 請勿嘗試透過容錯移轉叢集管理員，容錯移轉可用性群組。 所有容錯移轉作業都應在 SSMS 的 **AlwaysOn 儀表板** 中執行。 如需詳細資訊，請參閱[容錯移轉叢集管理員與可用性群組一起使用的限制](/sql/database-engine/availability-groups/windows/failover-clustering-and-always-on-availability-groups-sql-server)。
     >
 
 此時，您擁有一個在兩個 SQL Server 執行個體上都有複本的可用性群組。 您可以在執行個體之間移動可用性群組。 您還不能連線到可用性群組，因為您沒有接聽程式。 在 Azure 虛擬機器中，接聽程式需要負載平衡器。 下一個步驟就是在 Azure 中建立負載平衡器。
@@ -535,7 +535,7 @@ WSFC IP 位址也必須位於負載平衡器上。
 SQLCMD 連線會自動連線到任何一個裝載主要複本的 SQL Server 執行個體。
 
 > [!TIP]
-> 確定您指定的連接埠在兩部 SQL Server 在防火牆上開啟。 這兩部伺服器需要您使用的 TCP 連接埠的輸入規則。 如需詳細資訊，請參閱[新增或編輯防火牆規則](https://technet.microsoft.com/library/cc753558.aspx)。
+> 確定您指定的連接埠在兩部 SQL Server 在防火牆上開啟。 這兩部伺服器需要您使用的 TCP 連接埠的輸入規則。 如需詳細資訊，請參閱[新增或編輯防火牆規則](/previous-versions/orphan-topics/ws.11/cc753558(v=ws.11))。
 >
 
 ## <a name="next-steps"></a>後續步驟

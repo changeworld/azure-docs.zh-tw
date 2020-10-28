@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: e1c14dc2917185ab4a9237cf0b873b5ad609738e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: dd9b84c379f368e4cb4bcf1b5122e394456cd9e8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168234"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789755"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>在 Azure Vm 上建立具有 Azure 共用磁片 (SQL Server 的 FCI) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,7 +44,7 @@ ms.locfileid: "92168234"
 藉由執行下列動作來新增 Azure 共用磁片： 
 
 
-1. 將下列腳本儲存為 *SharedDiskConfig.js*： 
+1. 將下列腳本儲存為 *SharedDiskConfig.js* ： 
 
    ```JSON
    { 
@@ -86,7 +86,7 @@ ms.locfileid: "92168234"
    ```
 
 
-2. 使用 PowerShell * 在上執行SharedDiskConfig.js* ： 
+2. 使用 PowerShell *在上執行SharedDiskConfig.js* ： 
 
    ```powershell
    $rgName = < specify your resource group name>
@@ -157,11 +157,11 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 1. 在 [選取伺服器或叢集] 下，輸入這兩部虛擬機器的名稱。
 1. 在 [測試選項] 下，選取 [僅執行我選取的測試]。 
 1. 選取 [下一步] 。
-1. 在 [**測試選取專案**] 底下，選取 [**儲存體**]*以外*的所有測試
+1. 在 [ **測試選取專案** ] 底下，選取 [ **儲存體** ] *以外* 的所有測試
 
 ## <a name="test-cluster-failover"></a>測試叢集容錯移轉
 
-測試叢集的容錯移轉。 在**容錯移轉叢集管理員**中，以滑鼠右鍵按一下您的叢集，然後選取 [**其他動作**]  >  **移動核心叢集資源**  >  **選取節點**，然後選取叢集的其他節點。 將核心叢集資源移到叢集的每個節點，再移回主要節點。 如果您可成功地將叢集移至每個節點，即可開始安裝 SQL Server。  
+測試叢集的容錯移轉。 在 **容錯移轉叢集管理員** 中，以滑鼠右鍵按一下您的叢集，然後選取 [ **其他動作** ]  >  **移動核心叢集資源**  >  **選取節點** ，然後選取叢集的其他節點。 將核心叢集資源移到叢集的每個節點，再移回主要節點。 如果您可成功地將叢集移至每個節點，即可開始安裝 SQL Server。  
 
 :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="將核心資源移至其他節點以測試叢集容錯移轉":::
 
@@ -171,7 +171,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 使用遠端桌面通訊協定 (RDP) 連接到第一部虛擬機器。
 
-1. 在 **容錯移轉叢集管理員**中，請確定所有核心叢集資源都位於第一部虛擬機器上。 如有必要，請將所有資源移至該虛擬機器。
+1. 在 **容錯移轉叢集管理員** 中，請確定所有核心叢集資源都位於第一部虛擬機器上。 如有必要，請將所有資源移至該虛擬機器。
 
 1. 找出安裝媒體。 若虛擬機器是使用其中一個 Azure Marketplace 映像，則媒體會位於 `C:\SQLServer_<version number>_Full`。 
 
@@ -187,12 +187,12 @@ FCI 資料目錄必須位於 Azure 共用磁片上。
 
 1. 安裝程式在第一個節點上安裝 FCI 後，請使用 RDP 連線到第二個節點。
 
-1. 開啟 **SQL Server 安裝中心**，然後選取 [ **安裝**]。
+1. 開啟 **SQL Server 安裝中心** ，然後選取 [ **安裝** ]。
 
 1. 選取 [將節點新增到 SQL Server 容錯移轉叢集]。 遵循精靈中的指示來安裝 SQL Server，並將伺服器新增到 FCI。
 
    >[!NOTE]
-   >若曾使用過包含 SQL Server 的 Azure Marketplace 資源庫映像，則映像會包含 SQL Server 工具。 若沒有用過其中一個映像，請另外安裝 SQL Server 工具。 如需詳細資訊，請參閱 [Download SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)(下載 SQL Server Management Studio (SSMS))。
+   >若曾使用過包含 SQL Server 的 Azure Marketplace 資源庫映像，則映像會包含 SQL Server 工具。 若沒有用過其中一個映像，請另外安裝 SQL Server 工具。 如需詳細資訊，請參閱 [Download SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)(下載 SQL Server Management Studio (SSMS))。
    >
 
 ## <a name="register-with-the-sql-vm-rp"></a>向 SQL VM RP 註冊

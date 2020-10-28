@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 04/20/2020
-ms.openlocfilehash: a335f6ac015397ba2b2634d0d604c194a768260a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76bb4ffb4ebeb01baf8236d6be84c900b23ffbc0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91283202"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790809"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>使用 Azure SQL 受控執行個體 (Preview 的異動複寫) 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -35,11 +35,11 @@ SQL 受控執行個體的異動複寫目前處於公開預覽狀態。
 - Azure SQL 受控執行個體中的實例資料庫
 
   > [!NOTE]
-  > 若要使用 Azure SQL 受控執行個體的所有功能，您必須使用最新版本的 [SQL Server Management Studio (SSMS) ](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools (SSDT) ](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。
+  > 若要使用 Azure SQL 受控執行個體的所有功能，您必須使用最新版本的 [SQL Server Management Studio (SSMS) ](/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools (SSDT) ](/sql/ssdt/download-sql-server-data-tools-ssdt)。
 
 ### <a name="components"></a>元件
 
-異動複寫中的重要元件是「 **發行者**」 **、「** 散發者」和「 **訂閱者**」，如下圖所示：  
+異動複寫中的重要元件是「 **發行者** 」 **、「** 散發者」和「 **訂閱者** 」，如下圖所示：  
 
 ![使用 SQL Database 的複寫](./media/replication-transactional-overview/replication-to-sql-database.png)
 
@@ -55,7 +55,7 @@ SQL 受控執行個體的異動複寫目前處於公開預覽狀態。
 
 散發者會從 **發行者收集發行** 項的變更，並將它們散發給訂閱者。 散發者可以是 Azure SQL 受控執行個體或 SQL Server 實例 (任何版本，只要它等於或高於發行者版本) 即可。
 
-**訂閱**者會收到在發行者上所做的變更。 SQL Server 實例和 Azure SQL 受控執行個體可以是發送和提取訂閱者，不過當散發者是 Azure SQL 受控執行個體且訂閱者不支援時，不支援提取訂閱。 Azure SQL Database 中的資料庫只能是發送訂閱者。
+**訂閱** 者會收到在發行者上所做的變更。 SQL Server 實例和 Azure SQL 受控執行個體可以是發送和提取訂閱者，不過當散發者是 Azure SQL 受控執行個體且訂閱者不支援時，不支援提取訂閱。 Azure SQL Database 中的資料庫只能是發送訂閱者。
 
 Azure SQL 受控執行個體可支援從下列版本的 SQL Server 訂閱者：
 
@@ -65,21 +65,21 @@ Azure SQL 受控執行個體可支援從下列版本的 SQL Server 訂閱者：
 
    > [!NOTE]
    >
-   > - 針對其他不支援發行到 Azure 中物件的 SQL Server 版本，可以利用[重新發行](https://docs.microsoft.com/sql/relational-databases/replication/republish-data)資料方法將資料移動到版本較新的 SQL Server。
+   > - 針對其他不支援發行到 Azure 中物件的 SQL Server 版本，可以利用[重新發行](/sql/relational-databases/replication/republish-data)資料方法將資料移動到版本較新的 SQL Server。
    > - 嘗試使用舊版設定複寫可能會導致錯誤號碼 MSSQL_REPL20084 (處理序無法連線到訂閱者。) 和 MSSQ_REPL40532 (無法開啟登入所要求的公開伺服器 \<name>。 登入失敗。)。
 
 ### <a name="types-of-replication"></a>複寫類型
 
-[複寫有不同類型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)：
+[複寫有不同類型](/sql/relational-databases/replication/types-of-replication)：
 
 | 複寫 | Azure SQL Database | Azure SQL 受控執行個體 |
 | :----| :------------- | :--------------- |
-| [**標準交易式**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | 是 (僅作為訂閱者) | 是 |
-| [**快照式**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | 是 (僅作為訂閱者) | 是|
-| [**合併式複寫**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | 否 | 否|
-| [**對等**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | 否 | 否|
-| [**雙向**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | 否 | 是|
-| [**可更新訂閱**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | 否 | 否|
+| [**標準交易式**](/sql/relational-databases/replication/transactional/transactional-replication) | 是 (僅作為訂閱者) | 是 |
+| [**快照式**](/sql/relational-databases/replication/snapshot-replication) | 是 (僅作為訂閱者) | 是|
+| [**合併式複寫**](/sql/relational-databases/replication/merge/merge-replication) | 否 | 否|
+| [**對等**](/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | 否 | 否|
+| [**雙向**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | 否 | 是|
+| [**可更新訂閱**](/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | 否 | 否|
 | &nbsp; | &nbsp; | &nbsp; |
 
 ### <a name="supportability-matrix"></a>支援性對照表
@@ -148,13 +148,13 @@ Azure SQL 受控執行個體可支援從下列版本的 SQL Server 訂閱者：
 - 如果虛擬網路不同，請在複寫參與者的虛擬網路之間設定 VPN 對等互連。
 
 > [!NOTE]
-> 當「散發者」為「Azure SQL 受控執行個體資料庫」且「訂閱者」為內部部署時，當您連線到 Azure 儲存體檔案時，可能會遇到錯誤53（如果輸出網路安全性群組 (NSG) 埠445）。 [更新 VNET NSG](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) 以解決此問題。
+> 當「散發者」為「Azure SQL 受控執行個體資料庫」且「訂閱者」為內部部署時，當您連線到 Azure 儲存體檔案時，可能會遇到錯誤53（如果輸出網路安全性群組 (NSG) 埠445）。 [更新 VNET NSG](../../storage/files/storage-troubleshoot-windows-file-connection-problems.md) 以解決此問題。
 
 ## <a name="with-failover-groups"></a>使用容錯移轉群組
 
 使用異動複寫的 SQL 受控執行個體不支援[主動式異地](../database/active-geo-replication-overview.md)複寫。 您可以使用 [自動容錯移轉群組](../database/auto-failover-group-overview.md)，而不是使用主動式異地複寫，但請注意，在容錯移轉之後，必須從主要受控實例 [手動刪除](transact-sql-tsql-differences-sql-server.md#replication) 發行集，並在次要 SQL 受控執行個體上重新建立。
 
-如果在[容錯移轉群組](../database/auto-failover-group-overview.md)中的「**發行者**」**或「** 散發者」 SQL 受控執行個體上啟用「異地複寫」，則 SQL 受控執行個體系統管理員必須清除舊主要複本上的所有發行集，並在發生容錯移轉之後，在新的主資料庫上重新設定它們。 以下是此案例中所需的活動：
+如果在 [容錯移轉群組](../database/auto-failover-group-overview.md)中的「 **發行者** 」 **或「** 散發者」 SQL 受控執行個體上啟用「異地複寫」，則 SQL 受控執行個體系統管理員必須清除舊主要複本上的所有發行集，並在發生容錯移轉之後，在新的主資料庫上重新設定它們。 以下是此案例中所需的活動：
 
 1. 停止在資料庫上執行的所有複寫作業（如果有的話）。
 1. 在發行者資料庫上執行下列腳本，以卸載發行者的訂閱中繼資料：
@@ -196,16 +196,16 @@ Azure SQL 受控執行個體可支援從下列版本的 SQL Server 訂閱者：
 
 - [設定 SQL 受控執行個體發行者和訂閱者之間的複寫](../managed-instance/replication-between-two-instances-configure-tutorial.md)
 - [設定 SQL 受控執行個體發行者、SQL 受控執行個體散發者和 SQL Server 訂閱者之間的複寫](../managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md)
-- [建立發行](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)集。
-- 使用伺服器名稱做為訂閱者來[建立發送訂閱](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) (例如， `N'azuresqldbdns.database.windows.net` 將資料庫 Azure SQL Database 名稱做為目的地資料庫 (例如**Adventureworks**。 )
+- [建立發行](/sql/relational-databases/replication/publish/create-a-publication)集。
+- 使用伺服器名稱做為訂閱者來 [建立發送訂閱](/sql/relational-databases/replication/create-a-push-subscription) (例如， `N'azuresqldbdns.database.windows.net` 將資料庫 Azure SQL Database 名稱做為目的地資料庫 (例如 **Adventureworks** 。 )
 
-## <a name="see-also"></a>另請參閱  
+## <a name="see-also"></a>請參閱  
 
 - [使用 SQL 受控執行個體和容錯移轉群組進行複寫](transact-sql-tsql-differences-sql-server.md#replication)
 - [複寫至 SQL Database](../database/replication-to-sql-database.md)
 - [複寫至受控實例](../managed-instance/replication-between-two-instances-configure-tutorial.md)
-- [建立發行集](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [建立發送訂閱](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [複寫的類型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
-- [監視 (複寫)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
-- [初始化訂閱](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  
+- [建立發行集](/sql/relational-databases/replication/publish/create-a-publication)
+- [建立發送訂閱](/sql/relational-databases/replication/create-a-push-subscription/)
+- [複寫的類型](/sql/relational-databases/replication/types-of-replication)
+- [監視 (複寫)](/sql/relational-databases/replication/monitor/monitoring-replication)
+- [初始化訂閱](/sql/relational-databases/replication/initialize-a-subscription)

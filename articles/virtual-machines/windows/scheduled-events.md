@@ -9,12 +9,12 @@ ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviwer: mimckitt
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 823013de0462d830f065993b1c7c9dbe4256991d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8a0dd7f020c9a8e720aacf34b1719ee2094fa223
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978032"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788803"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 中繼資料服務：Windows VM 的已排定事件
 
@@ -153,6 +153,10 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 
 > [!NOTE] 
 > 在某些情況下，Azure 能夠預測主機因為硬體效能下降而失敗，並嘗試排定移轉來減輕服務中斷的影響。 受影響的虛擬機器會收到含有 `NotBefore` (通常是未來幾天) 的已排定事件。 實際時間依預測的失敗風險評量而有所不同。 Azure 會盡可能提前 7 天通知，但實際時間不一定，如果預期硬體很可能即將失敗，則時間可能更短。 若要將您服務的風險降至最低，以防萬一硬體在系統起始移轉之前失敗，我們建議您盡快重新部署虛擬機器。
+
+### <a name="polling-frequency"></a>輪詢頻率
+
+您可以視需要經常或不頻繁地輪詢端點是否有更新。 不過，要求之間的時間越長，您可能會失去回應即將發生之事件的時間。 大部分的事件都有5至15分鐘的事先通知，雖然在某些情況下，事先通知可能會比30秒少。 為了確保您有最多時間可以採取緩和動作，建議您每秒輪詢一次服務。
 
 ### <a name="start-an-event"></a>啟動事件 
 

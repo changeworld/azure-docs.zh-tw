@@ -2,13 +2,13 @@
 title: 常見問題集 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供 Azure 事件中樞的常見問題集 (FAQ) 清單及其答案。
 ms.topic: article
-ms.date: 10/23/2020
-ms.openlocfilehash: c95016064ecc9bbfc091138863c8215feeec50b4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.date: 10/27/2020
+ms.openlocfilehash: 051122c2030683eb2f3c57191dbbfa3bfd2bf6b7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518019"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789364"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中樞常見問題集
 
@@ -50,7 +50,7 @@ Azure 事件中樞的標準層提供比基本層更多的功能。 標準層包�
 
 事件中樞標準層目前支援的最大保留期間為七天。 事件中樞不適合用來作為永久資料存放區。 超過24小時的保留期限適用于將事件串流重新執行至相同系統的情況。 例如，在現有的資料上定型或驗證新的機器學習模型。 如果您需要保留訊息七天以上，在事件中樞上啟用[事件中樞擷取](event-hubs-capture-overview.md)，會將資料從事件中樞提取到您選擇的儲存體帳戶或 Azure Data Lake 服務帳戶。 啟用擷取將會產生費用，費用根據您購買的輸送量單位而定。
 
-您可以在儲存體帳戶上設定已擷取資料的保留期限。 Azure 儲存體**生命週期管理**功能針對一般用途 v2 與 Blob 儲存體帳戶提供了豐富且以規則為基礎的原則。 使用原則可將資料轉換到適當的存取層，或在資料的生命週期結束時過期。 如需詳細資訊，請參閱[管理 Azure Blob 儲存體生命週期](../storage/blobs/storage-lifecycle-management-concepts.md)。 
+您可以在儲存體帳戶上設定已擷取資料的保留期限。 Azure 儲存體 **生命週期管理** 功能針對一般用途 v2 與 Blob 儲存體帳戶提供了豐富且以規則為基礎的原則。 使用原則可將資料轉換到適當的存取層，或在資料的生命週期結束時過期。 如需詳細資訊，請參閱[管理 Azure Blob 儲存體生命週期](../storage/blobs/storage-lifecycle-management-concepts.md)。 
 
 ### <a name="how-do-i-monitor-my-event-hubs"></a>如何監視事件中樞？
 事件中樞會發出詳盡的計量，以便將您的資源狀態提供給 [Azure 監視器](../azure-monitor/overview.md)。 它們也可以讓您存取事件中樞服務的整體健康情況 (不僅是在命名空間層級，還包括在實體層級)。 了解針對 [Azure 事件中樞](event-hubs-metrics-azure-monitor.md)所提供的監視功能。
@@ -170,22 +170,33 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 您可以從最低的一個輸送量單位 (TU) 開始，並開啟[自動擴充](event-hubs-auto-inflate.md)。 自動擴充功能可讓您隨著流量/承載增加來增加您的 TU。 您也可以設定 TU 數目的上限。
 
 ### <a name="how-does-auto-inflate-feature-of-event-hubs-work"></a>事件中樞的自動擴充功能如何運作？
-自動擴充功能可讓您擴大輸送量單位 (TU)。 這表示您一開始可以購買較低數目的 TU，然後自動擴充會隨著您的輸入增加而相應增加您的 TU。 它會為您提供符合成本效益的選項及可完全控制的 TU 數目，以進行管理。 此功能是一個**只能相應增加**的功能，而您可以藉由更新 TU 數目，完全控制 TU 數目的相應減少。 
+自動擴充功能可讓您擴大輸送量單位 (TU)。 這表示您一開始可以購買較低數目的 TU，然後自動擴充會隨著您的輸入增加而相應增加您的 TU。 它會為您提供符合成本效益的選項及可完全控制的 TU 數目，以進行管理。 此功能是一個 **只能相應增加** 的功能，而您可以藉由更新 TU 數目，完全控制 TU 數目的相應減少。 
 
 您可能想要從較低的輸送量單位 (TU) 開始，例如 2 個 TU。 如果您預測流量可能增加到 15 個 TU，請在您的命名空間上開啟自動擴充功能，然後將上限設定為 15 個 TU。 您現在可讓 TU 隨著流量增加而自動增加。
 
 ### <a name="is-there-a-cost-associated-when-i-turn-on-the-auto-inflate-feature"></a>當我開啟成本自動擴充功能時，是否有相關聯的成本？
-**沒有任何成本**與此功能相關聯。 
+**沒有任何成本** 與此功能相關聯。 
 
 ### <a name="how-are-throughput-limits-enforced"></a>如何強制執行輸送量限制？
-如果命名空間內所有事件中樞的**輸入**輸送量總計或輸入事件率總計超過彙總輸送量單位額度，傳送者將遭受節流處置並會收到錯誤，指出已超過輸入配額。
+如果命名空間內所有事件中樞的 **輸入** 輸送量總計或輸入事件率總計超過彙總輸送量單位額度，傳送者將遭受節流處置並會收到錯誤，指出已超過輸入配額。
 
-如果命名空間內所有事件中樞的**輸出**輸送量總計或輸出事件率總計超過彙總輸送量單位額度，接收者將遭受節流處置，但不會產生節流錯誤。 
+如果命名空間內所有事件中樞的 **輸出** 輸送量總計或輸出事件率總計超過彙總輸送量單位額度，接收者將遭受節流處置，但不會產生節流錯誤。 
 
 輸入和輸出配額採單獨實施，如此一來，傳送者無法使事件取用速率變慢，接收者也不能阻止事件傳送到事件中樞。
 
-### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>可供保留/選取的輸送量單位 (TU) 數目是否有任何限制？
-在多租用戶供應項目上，輸送量單位最多可以增加為 40 個 TU (您最多可以在入口網站中選取 20 個 TU，然後提出支援票證，在同一個命名空間中上將它提高為 40 個 TU)。 超過 40 個 TU，事件中樞就會提供稱為**事件中樞專用叢集**的資源/容量型模型。 專用叢集會以容量單位 (Cu) 來販售。
+### <a name="is-there-a-limit-on-the-number-of-throughput-units-that-can-be-reservedselected"></a>可以保留/選取的輸送量單位數目是否有限制？
+
+在 Azure 入口網站中建立基本或標準層命名空間時，您可以為命名空間選取最多20個 Tu。 若要將其提升為 **正好** 40 tu，請提交  [支援要求](../azure-portal/supportability/how-to-create-azure-support-request.md)。  
+
+1. 在 [ **事件匯流排命名空間** ] 頁面上，選取左側功能表上的 [ **新增支援要求** ]。 
+1. 在 [ **新增支援要求** ] 頁面上，依照下列步驟執行：
+    1. 如需 **摘要** ，請使用幾個字來描述問題。 
+    1. 針對 [問題類型]  選取 [配額]  。 
+    1. 針對 **問題子類型** ，請選取 [ **要求增加或減少輸送量單位** ]。 
+    
+        :::image type="content" source="./media/event-hubs-faq/support-request-throughput-units.png" alt-text="支援要求頁面":::
+
+超過 40 個 TU，事件中樞就會提供稱為事件中樞專用叢集的資源/容量型模型。 專用叢集會以容量單位 (Cu) 來販售。 如需詳細資訊，請參閱 [事件中樞專用-總覽](event-hubs-dedicated-overview.md)。
 
 ## <a name="dedicated-clusters"></a>專用叢集
 
@@ -199,7 +210,7 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 [!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-dedicated-clusters-faq.md)]
 
 
-## <a name="best-practices"></a>最佳作法
+## <a name="partitions"></a>資料分割
 
 ### <a name="how-many-partitions-do-i-need"></a>我需要多少個分割區？
 分割區數目是在建立時指定，且必須介於1到32之間。 資料分割計數不可變更，您在設定資料分割計數時，應該考慮長期的規模。 資料分割是一種資料組織機制，與取用端應用程式所需的下游平行處理原則有關。 事件中樞內的資料分割數目，與您預期有的並行讀取器數目直接相關。 如需分割區的詳細資訊，請參閱[分割區](event-hubs-features.md#partitions)。
@@ -209,6 +220,21 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 事件中樞的設計目的是讓每個取用者群組均可擁有單一分割區讀取器。 在大多數使用案例中，四個分割區的預設設定就已足夠。 如果您想要調整事件處理，可能就要考慮加入額外的分割區。 分割區上並沒有任何特定的輸送量限制，但是，您命名空間中的彙總輸送量會受限於輸送量單位。 當您提高命名空間中的輸送量單位數目時，可能需要額外的分割區，讓並行讀取器能夠達成它們自己的最大輸送量。
 
 不過，如果在您的模型中應用程式對特定分割區具有同質性，則提高分割區數目可能不會為您帶來任何好處。 如需詳細資訊，請參閱[可用性和一致性](event-hubs-availability-and-consistency.md)。
+
+### <a name="increase-partitions"></a>增加磁碟分割
+您可以提交支援要求，要求將分割區計數增加至 40 (精確的) 。 
+
+1. 在 [ **事件匯流排命名空間** ] 頁面上，選取左側功能表上的 [ **新增支援要求** ]。 
+1. 在 [ **新增支援要求** ] 頁面上，依照下列步驟執行：
+    1. 如需 **摘要** ，請使用幾個字來描述問題。 
+    1. 針對 [問題類型]  選取 [配額]  。 
+    1. 針對 **問題子類型** ，選取 [ **分割區變更的要求** ]。 
+    
+        :::image type="content" source="./media/event-hubs-faq/support-request-increase-partitions.png" alt-text="支援要求頁面":::
+
+分割區計數可以增加到精確的40。 在此情況下，Tu 的數目也必須增加到40。 如果您稍後決定將 TU 限制減少回 <= 20，則最大分割區限制也會減少為32。 
+
+分割區的減少並不會影響現有的事件中樞，因為分割區是在事件中樞層級套用，而且在建立中樞之後是不可變的。 
 
 ## <a name="pricing"></a>定價
 
@@ -222,11 +248,11 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 
 ### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>事件中樞儲存空間大小如何計算及收費？
 
-儲存在所有事件中樞內之事件，包括事件標頭的所有內部負荷或磁碟儲存結構的所有內部負荷，是以全天為單位來測量。 我們會在一天結束時計算儲存空間大小峰值。 每日儲存額度的計算乃以當天選定之輸送量單位的最小數目為基準 (每個輸送量單位提供 84 GB 的額度)。 如果總大小超過計算出來的每日儲存額度，我們會採用 Azure Blob 儲存體費率來計算超出的儲存空間 (依照**本地備援儲存體**費率)。
+儲存在所有事件中樞內之事件，包括事件標頭的所有內部負荷或磁碟儲存結構的所有內部負荷，是以全天為單位來測量。 我們會在一天結束時計算儲存空間大小峰值。 每日儲存額度的計算乃以當天選定之輸送量單位的最小數目為基準 (每個輸送量單位提供 84 GB 的額度)。 如果總大小超過計算出來的每日儲存額度，我們會採用 Azure Blob 儲存體費率來計算超出的儲存空間 (依照 **本地備援儲存體** 費率)。
 
 ### <a name="how-are-event-hubs-ingress-events-calculated"></a>事件中樞輸入事件的計算方式為何？
 
-每個傳送到事件中樞的事件都算是可計費訊息。 *輸入事件*的定義為小於或等於 64 KB 的資料單位。 任何大小小於或等於 64 KB 的事件均視為一個可計費事件。 如果事件大於 64 KB，可計費事件的數目乃根據事件大小來計算 (64 KB 的倍數)。 例如，一個傳送到事件中樞的 8 KB 事件將視為一個事件來計費，不過，一則傳送到事件中樞的 96 KB 訊息將視為兩個事件來計費。
+每個傳送到事件中樞的事件都算是可計費訊息。 *輸入事件* 的定義為小於或等於 64 KB 的資料單位。 任何大小小於或等於 64 KB 的事件均視為一個可計費事件。 如果事件大於 64 KB，可計費事件的數目乃根據事件大小來計算 (64 KB 的倍數)。 例如，一個傳送到事件中樞的 8 KB 事件將視為一個事件來計費，不過，一則傳送到事件中樞的 96 KB 訊息將視為兩個事件來計費。
 
 自事件中樞取用的事件，以及管理作業和控制呼叫 (如檢查點)，不會計入可計費輸入事件，但會累積在輸送量單位額度內。
 

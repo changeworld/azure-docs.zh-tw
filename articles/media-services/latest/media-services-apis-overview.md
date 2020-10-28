@@ -10,15 +10,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 10/23/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: b01208c67610ff220df1654d10211472e0eed61f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 416fb9fc4ce0622a710f2c119942edc4986ddd06
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426848"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790571"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>使用媒體服務 v3 API 開發
 
@@ -32,16 +32,16 @@ ms.locfileid: "92426848"
 
 在獲得存取媒體服務資源和媒體服務 API 的授權之前，您必須先進行驗證。 媒體服務支援 [Azure Active Directory (Azure AD) 型](../../active-directory/fundamentals/active-directory-whatis.md)驗證。 兩種常見的驗證選項為：
  
-* **服務主體驗證**：用以驗證服務 (例如：Web Apps、函數應用程式、Logic Apps、API 與微服務)。 通常使用這種驗證方法的應用程式有執行精靈服務、中介層服務或排程的工作的應用程式。 例如，Web Apps 應該一律有連線到具有服務主體之媒體服務的中介層。
-* **使用者驗證**：用以驗證使用應用程式與媒體服務資源互動的人員。 互動式應用程式應該先提示使用者輸入使用者的認證。 例如，授權的使用者用來監控編碼工作或即時串流的管理主控台應用程式。
+* **服務主體驗證** ：用以驗證服務 (例如：Web Apps、函數應用程式、Logic Apps、API 與微服務)。 通常使用這種驗證方法的應用程式有執行精靈服務、中介層服務或排程的工作的應用程式。 例如，Web Apps 應該一律有連線到具有服務主體之媒體服務的中介層。
+* **使用者驗證** ：用以驗證使用應用程式與媒體服務資源互動的人員。 互動式應用程式應該先提示使用者輸入使用者的認證。 例如，授權的使用者用來監控編碼工作或即時串流的管理主控台應用程式。
 
-媒體服務 API 需要讓提出 REST API 要求的使用者或應用程式能夠存取媒體服務帳戶資源，並使用**參與者**或**擁有者**角色。 您可以使用**讀取者**角色來存取 API，但只能使用 **Get** 或 **List** 作業。 如需詳細資訊，請參閱 [azure 角色型存取控制 (適用于媒體服務帳戶的 AZURE RBAC) ](rbac-overview.md)。
+媒體服務 API 需要讓提出 REST API 要求的使用者或應用程式能夠存取媒體服務帳戶資源，並使用 **參與者** 或 **擁有者** 角色。 您可以使用 **讀取者** 角色來存取 API，但只能使用 **Get** 或 **List** 作業。 如需詳細資訊，請參閱 [azure 角色型存取控制 (適用于媒體服務帳戶的 AZURE RBAC) ](rbac-overview.md)。
 
 請考慮使用 Azure 資源受控識別，透過 Azure Resource Manager 存取媒體服務 API，而不是建立服務主體。 若要深入了解 Azure 資源受控識別，請參閱[什麼是 Azure 資源受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。
 
 ### <a name="azure-ad-service-principal"></a>Azure AD 服務主體
 
-Azure AD 的應用程式和服務主體應位於相同的租使用者中。 建立應用程式之後，請將應用程式**參與者**或**擁有者**角色存取權授與媒體服務帳戶。
+Azure AD 的應用程式和服務主體應位於相同的租使用者中。 建立應用程式之後，請將應用程式 **參與者** 或 **擁有者** 角色存取權授與媒體服務帳戶。
 
 若不確定自己是否有權建立 Azure AD 應用程式，請參閱[必要權限](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
@@ -109,11 +109,11 @@ Azure 媒體服務 [Swagger 檔案](https://github.com/Azure/azure-rest-api-spec
 * [停止串流端點](/rest/api/media/streamingendpoints/stop) (機器翻譯)
 * [調整串流端點](/rest/api/media/streamingendpoints/scale) (機器翻譯)
 
-成功提交長期執行作業時，您會收到「202 已接受」訊息，而且必須使用傳回的作業識別碼來輪詢作業完成度。
+在成功提交長時間的作業時，您會收到「201已建立」，且必須使用傳回的作業識別碼來輪詢作業完成。
 
 [追蹤非同步 Azure 作業](../../azure-resource-manager/management/async-operations.md)一文會深入說明如何透過回應中傳回的值，追蹤非同步 Azure 作業的狀態。
 
-僅支援指定即時事件或其任何相關聯即時輸出的一個長期執行作業。 啟動之後，長期執行作業必須先完成，才能在相同的即時事件或任何相關聯的即時輸出上，啟動後續的長期執行作業。 針對具有多個即時輸出的即時事件，您必須先等待一個即時輸出的長期執行作業完成，才能觸發另一個即時輸出的長期執行作業。 
+僅支援指定即時事件或其任何相關聯即時輸出的一個長期執行作業。 啟動之後，長期執行作業必須先完成，才能在相同的即時事件或任何相關聯的即時輸出上，啟動後續的長期執行作業。 針對具有多個即時輸出的即時事件，您必須先等待一個即時輸出的長期執行作業完成，才能觸發另一個即時輸出的長期執行作業。
 
 ## <a name="sdks"></a>SDK
 

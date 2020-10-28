@@ -11,12 +11,12 @@ ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/15/2020
-ms.openlocfilehash: d05b603d3f854d919df43e633449e37301a5e77d
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 1d6eb4df91ce912832d15835a00bdb287f67e787
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168319"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789738"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上的 SQL Server 文件變更
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -56,9 +56,9 @@ Azure 可供使用內建的 SQL Server 映像部署虛擬機器 (VM)。 本文�
 
 | 變更 | 詳細資料 |
 | --- | --- |
-| **分散式網路名稱 (DNN) ** | Windows Server 2016 + 上的 SQL Server 2019 現在支援使用 [分散式網路名稱](hadr-distributed-network-name-dnn-configure.md) （而不是使用 Azure Load Balancer）將流量路由傳送至容錯移轉叢集實例 (FCI) 。 這項支援可簡化和簡化 Azure 中的高可用性 (HA) 解決方案的連接。 | 
+| **分散式網路名稱 (DNN)** | Windows Server 2016 + 上的 SQL Server 2019 現在支援使用 [分散式網路名稱](./failover-cluster-instance-distributed-network-name-dnn-configure.md) （而不是使用 Azure Load Balancer）將流量路由傳送至容錯移轉叢集實例 (FCI) 。 這項支援可簡化和簡化 Azure 中的高可用性 (HA) 解決方案的連接。 | 
 | **使用 Azure 共用磁片的 FCI** | 您現在可以使用[Azure 共用磁片](failover-cluster-instance-azure-shared-disks-manually-configure.md)，將[容錯移轉叢集實例部署 (FCI) ](failover-cluster-instance-overview.md) 。 |
-| **重新組織 FCI 檔** | 在 [Azure vm 上使用 SQL Server 的容錯移轉叢集實例](failover-cluster-instance-overview.md) 相關檔已重新撰寫並重新組織，以清楚瞭解。 我們已分隔某些設定內容，例如叢集設定的 [最佳作法](hadr-cluster-best-practices.md)、如何準備 [SQL Server FCI 的虛擬機器](failover-cluster-instance-prepare-vm.md)，以及如何設定 [Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md)。 | 
+| **重新組織 FCI 檔** | 在 [Azure vm 上使用 SQL Server 的容錯移轉叢集實例](failover-cluster-instance-overview.md) 相關檔已重新撰寫並重新組織，以清楚瞭解。 我們已分隔某些設定內容，例如叢集設定的 [最佳作法](hadr-cluster-best-practices.md)、如何準備 [SQL Server FCI 的虛擬機器](failover-cluster-instance-prepare-vm.md)，以及如何設定 [Azure Load Balancer](./availability-group-vnn-azure-load-balancer-configure.md)。 | 
 | &nbsp; | &nbsp; |
 
 
@@ -96,14 +96,14 @@ Azure 可供使用內建的 SQL Server 映像部署虛擬機器 (VM)。 本文�
 | **具名執行個體的可支援性** | 若預設執行個體已透過適當方式解除安裝，則現在可搭配具名執行個體使用 [SQL Server IaaS 延伸模組](sql-server-iaas-agent-extension-automate-management.md#installation)。 | 
 | **入口網站增強** | 部署 SQL Server VM 的 Azure 入口網站體驗現在已經過改造，以改善可用性。 如需詳細資訊，請參閱簡短的部署 SQL Server VM [快速入門](sql-vm-create-portal-quickstart.md)，以及更完整的[操作指南](create-sql-vm-portal.md)。|
 | **入口網站改善** | 現在您可使用 [Azure 入口網站](licensing-model-azure-hybrid-benefit-ahb-change.md#vms-already-registered-with-the-resource-provider)將 SQL Server VM 的授權模型從隨用隨付變更為自備授權。|
-| **透過 Azure CLI 簡化可用性群組至 SQL Server VM 的部署** | 現在您可透過比以往更輕鬆的方式，以在 Azure 中將可用性群組部署到 SQL Server VM。 您可以使用 [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid&preserve-view=true) 從命令列建立 Windows 容錯移轉叢集、內部負載平衡器和可用性群組接聽程式。 如需詳細資訊，請參閱 [使用 Azure CLI 為 AZURE VM 上的 SQL Server 設定 Always On 可用性群組](availability-group-az-cli-configure.md)。 | 
+| **透過 Azure CLI 簡化可用性群組至 SQL Server VM 的部署** | 現在您可透過比以往更輕鬆的方式，以在 Azure 中將可用性群組部署到 SQL Server VM。 您可以使用 [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid&preserve-view=true) 從命令列建立 Windows 容錯移轉叢集、內部負載平衡器和可用性群組接聽程式。 如需詳細資訊，請參閱 [使用 Azure CLI 為 AZURE VM 上的 SQL Server 設定 Always On 可用性群組](./availability-group-az-commandline-configure.md)。 | 
 | &nbsp; | &nbsp; |
 
 ## <a name="2018"></a>2018 
 
  變更 | 詳細資料 |
 | --- | --- |
-|  **SQL Server 叢集的新資源提供者** | 新資源提供者 (Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups) 會定義 Windows 容錯移轉叢集的中繼資料。 將 SQL Server VM 加入*SqlVirtualMachineGroups* 會啟動 Windows Server 容錯移轉叢集 (WSFC) 服務，並將 VM 加入叢集。  |
+|  **SQL Server 叢集的新資源提供者** | 新資源提供者 (Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups) 會定義 Windows 容錯移轉叢集的中繼資料。 將 SQL Server VM 加入 *SqlVirtualMachineGroups* 會啟動 Windows Server 容錯移轉叢集 (WSFC) 服務，並將 VM 加入叢集。  |
 | **使用 Azure 快速入門範本自動化可用性群組部署的安裝** |您現在可以使用兩個 Azure 快速入門範本，建立 Windows 容錯移轉叢集、加入 SQL Server Vm、建立接聽程式，並設定內部負載平衡器。 如需詳細資訊，請參閱[使用 Azure 快速入門範本設定 Azure VM 上 SQL Server 的 Always On 可用性群組](availability-group-quickstart-template-configure.md)。 | 
 | **自動化 SQL VM 資源提供者的註冊** | 在本月之後部署的 SQL Server Vm 會自動向新的 SQL VM 資源提供者註冊。 本月之前部署的 SQL Server VM 仍然需要手動註冊。 如需詳細資訊，請參閱[向 SQL VM 資源提供者註冊 Azure 中的 SQL Server 虛擬機器](sql-vm-resource-provider-register.md)。|
 |**新增 SQL VM 資源提供者** |  新資源提供者 (Microsoft.SqlVirtualMachine) 可為 SQL Server VM 提供更佳的管理。 如需註冊 VM 的詳細資訊，請參閱[向 SQL VM 資源提供者註冊 Azure 中的 SQL Server 虛擬機器](sql-vm-resource-provider-register.md)。 |
@@ -112,7 +112,7 @@ Azure 可供使用內建的 SQL Server 映像部署虛擬機器 (VM)。 本文�
 
 ## <a name="additional-resources"></a>其他資源
 
-**Windows VM**：
+**Windows VM** ：
 
 * [Windows VM 上的 SQL Server 概觀](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [在 Windows VM 上布建 SQL Server](create-sql-vm-portal.md)
@@ -121,9 +121,9 @@ Azure 可供使用內建的 SQL Server 映像部署虛擬機器 (VM)。 本文�
 * [Azure 虛擬機器中的 SQL Server 效能最佳做法](performance-guidelines-best-practices.md)
 * [Azure 虛擬機器中的 SQL Server 應用程式模式和開發策略](application-patterns-development-strategies.md)
 
-**Linux VM**：
+**Linux VM** ：
 
 * [Linux VM 上的 SQL Server 概觀](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [在 Linux 虛擬機器上布建 SQL Server](../linux/sql-vm-create-portal-quickstart.md)
 * [常見問題集 (Linux)](../linux/frequently-asked-questions-faq.md)
-* [Linux 上的 SQL Server 文件](https://docs.microsoft.com/sql/linux/sql-server-linux-overview) \(機器翻譯\)
+* [Linux 上的 SQL Server 文件](/sql/linux/sql-server-linux-overview) \(機器翻譯\)

@@ -12,14 +12,14 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 71392b652f305f085e8eddbfe75e0585a756bc4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34f71dfeb0b4e5f94d953137fd45777bf14baa4e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618109"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790758"
 ---
-# <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL 受控執行個體資源限制總覽
+# <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL 受控執行個體資源限制概觀
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 本文概要說明 Azure SQL 受控執行個體的技術特性和資源限制，並提供如何要求增加這些限制的相關資訊。
@@ -35,7 +35,7 @@ SQL 受控執行個體具有相依于基礎結構和架構的特性和資源限�
 | --- | --- | --- |
 | **硬體** | Intel® E5-2673 v3 (Haswell) 2.4 GHz 處理器，附加的 SSD vCore = 1 PP (實體核心)  | Intel® E5-2673 v4 (Broadwell) 2.3 GHz、Intel® SP-8160 (Skylake) 和 Intel® 8272CL (Cascade Lake) 2.5 GHz 處理器、快速 NVMe SSD、vCore = 1 LP (超執行緒)  |
 | **虛擬核心數目** | 8 個、16 個、24 個虛擬核心 | 4、8、16、24、32、40、64、80虛擬核心 |
-| **記憶體 (記憶體/核心比率上限) ** | 每個虛擬核心 7GB<br/>新增更多虛擬核心以取得更多記憶體。 | 每個虛擬核心 5.1 GB<br/>新增更多虛擬核心以取得更多記憶體。 |
+| **記憶體 (記憶體/核心比率上限)** | 每個虛擬核心 7GB<br/>新增更多虛擬核心以取得更多記憶體。 | 每個虛擬核心 5.1 GB<br/>新增更多虛擬核心以取得更多記憶體。 |
 | **最大 In-Memory OLTP 記憶體** | 實例限制：每個 vCore 1-1.5 GB| 實例限制：每個 vCore 0.8-1.65 GB |
 | **實例保留的最大儲存空間** |  一般用途： 8 TB<br/>商務關鍵性： 1 TB | 一般用途： 8 TB<br/> 商務關鍵 1 TB、2 TB 或 4 TB，視核心數目而定 |
 
@@ -82,7 +82,7 @@ SQL 受控執行個體有兩個服務層級： [一般用途](../database/servic
 | 儲存體 IO 延遲 (大約)  | 5-10 毫秒 | 1-2 毫秒 |
 | 記憶體內部 OLTP | 不支援 | 可用， [大小取決於 vCore 數目](#in-memory-oltp-available-space) |
 | 會話數上限 | 30000 | 30000 |
-| 並行背景工作 (要求) 數上限 | 第4代： 210 * 虛擬核心數目 + 800<br>第5代： 105 * 虛擬核心數目 + 800 | 第4代： 210 * vCore 計數 + 800<br>第5代： 105 * vCore 計數 + 800 |
+| 並行背景工作 (要求) 數上限 | 第 4 代：210 * 虛擬核心數目 + 800<br>第 5 代：105 * 虛擬核心數目 + 800 | 第 4 代：210 * 虛擬核心計數 + 800<br>第 5 代：105 * 虛擬核心計數 + 800 |
 | [唯讀複本](../database/read-scale-out.md) | 0 | 價格) 包含 1 ( |
 | 計算隔離 | 第 5 代：<br/>-支援80虛擬核心<br/>-不支援其他大小<br/><br/>因為已淘汰，所以不支援第4代|第 5 代：<br/>-支援60、64、80虛擬核心<br/>-不支援其他大小<br/><br/>因為已淘汰，所以不支援第4代|
 
@@ -120,7 +120,7 @@ SQL 受控執行個體目前僅支援在下列類型的訂閱上進行部署：
 
 - [Enterprise 合約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
 - [隨用隨付](https://azure.microsoft.com/offers/ms-azr-0003p/)
-- [雲端服務提供者 (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
+- [雲端服務提供者 (CSP)](/partner-center/csp-documents-and-learning-resources)
 - [Enterprise 開發/測試](https://azure.microsoft.com/offers/ms-azr-0148p/)
 - [隨用隨付開發/測試](https://azure.microsoft.com/offers/ms-azr-0023p/)
 - [Visual Studio 訂閱者的每月 Azure 點數訂用帳戶](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
@@ -132,8 +132,8 @@ SQL 受控執行個體目前僅支援在下列類型的訂閱上進行部署：
 
 支援的訂用帳戶類型可包含有限的每一區域資源數目。 SQL 受控執行個體的每個 Azure 區域都有兩個預設限制 (可以根據訂用帳戶類型的類型， [在 Azure 入口網站中](../database/quota-increase-request.md) 建立特殊的支援要求，視需要增加：
 
-- **子網限制**：在單一區域中部署 SQL 受控執行個體實例的子網數目上限。
-- **vCore unit limit**：可在單一區域中的所有實例上部署的最大 vCore 單位數目。 一個 GP vCore 使用一個 vCore 單位，而一個 BC vCore 採用4個 vCore 單位。 只要實例的總數在 vCore 單位限制內，就不會受到限制。
+- **子網限制** ：在單一區域中部署 SQL 受控執行個體實例的子網數目上限。
+- **vCore unit limit** ：可在單一區域中的所有實例上部署的最大 vCore 單位數目。 一個 GP vCore 使用一個 vCore 單位，而一個 BC vCore 採用4個 vCore 單位。 只要實例的總數在 vCore 單位限制內，就不會受到限制。
 
 > [!Note]
 > 這些限制是預設設定，而不是技術限制。 如果您在目前的區域中需要更多實例，可以在 Azure 入口網站中建立特殊的 [支援要求，以](../database/quota-increase-request.md) 視需要增加限制。 或者，您可以在另一個 Azure 區域中建立 SQL 受控執行個體的新實例，而不需要傳送支援要求。
@@ -150,7 +150,7 @@ SQL 受控執行個體目前僅支援在下列類型的訂閱上進行部署：
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional 和 MSDN 平臺|2|32|
 
-\* 在規劃部署中，請考慮到商務關鍵性 (BC) 服務層級所需的 vCore 容量比一般用途 (GP) 服務層級的四 (4) 倍多。 例如： 1 GP vCore = 1 vCore unit 和 1 BC vCore = 4 vCore 單位。 若要針對預設限制簡化耗用量分析，請在部署 SQL 受控執行個體的區域中匯總所有子網的 vCore 單位，並將結果與訂用帳戶類型的實例單位限制進行比較。 **VCore 單位限制的最大數目** 會套用至區域中的每個訂用帳戶。 每個個別子網都沒有限制，不同之處在于跨多個子網部署的所有虛擬核心總和必須小於或等於 **vCore 單位的最大數目**。
+\* 在規劃部署中，請考慮到商務關鍵性 (BC) 服務層級所需的 vCore 容量比一般用途 (GP) 服務層級的四 (4) 倍多。 例如： 1 GP vCore = 1 vCore unit 和 1 BC vCore = 4 vCore 單位。 若要針對預設限制簡化耗用量分析，請在部署 SQL 受控執行個體的區域中匯總所有子網的 vCore 單位，並將結果與訂用帳戶類型的實例單位限制進行比較。 **VCore 單位限制的最大數目** 會套用至區域中的每個訂用帳戶。 每個個別子網都沒有限制，不同之處在于跨多個子網部署的所有虛擬核心總和必須小於或等於 **vCore 單位的最大數目** 。
 
 \*\* 較大的子網和 vCore 限制可在下欄區域使用：澳大利亞東部、美國東部、美國東部2、北歐、美國中南部、東南亞、英國南部、西歐、美國西部2。
 

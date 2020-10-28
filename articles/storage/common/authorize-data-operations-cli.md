@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 66815dac145c8c30b770e831a002f6a0ee093675
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be5729320f27e38907c4de6844bf3126cf41747b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714583"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789653"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-or-queue-data-with-azure-cli"></a>選擇如何授權 Azure CLI 存取 blob 或佇列資料
 
@@ -43,7 +43,7 @@ Azure 儲存體提供 Azure CLI 的擴充功能，可讓您指定要如何授權
 
 當您使用 Azure AD 認證登入 Azure CLI 時，會傳回 OAuth 2.0 存取權杖。 Azure CLI 會自動使用該權杖來對 Blob 或佇列儲存體授權後續的資料作業。 針對支援的作業，您不需要再使用命令傳遞帳戶金鑰或 SAS 權杖。
 
-您可以透過 Azure RBAC)  (的 Azure 角色型存取控制，將 blob 和佇列資料的許可權指派給 Azure AD 的安全性主體。 如需有關 Azure 儲存體中 Azure 角色的詳細資訊，請參閱 [使用 AZURE RBAC 管理 Azure 儲存體資料的存取權限](storage-auth-aad-rbac.md)。
+您可以透過 Azure RBAC)  (的 Azure 角色型存取控制，將 blob 和佇列資料的許可權指派給 Azure AD 的安全性主體。 如需有關 Azure 儲存體中 Azure 角色的詳細資訊，請參閱 [使用 AZURE RBAC 管理 Azure 儲存體資料的存取權限](./storage-auth-aad-rbac-portal.md)。
 
 ### <a name="permissions-for-calling-data-operations"></a>呼叫資料作業的許可權
 
@@ -55,7 +55,7 @@ Blob 和佇列資料的作業支援 Azure 儲存體擴充功能。 您可以呼�
 
 下列範例示範如何使用 Azure AD 認證，從 Azure CLI 建立容器。 若要建立容器，您需要登入 Azure CLI，且需要資源群組和儲存體帳戶。 若要瞭解如何建立這些資源，請參閱 [快速入門：使用 Azure CLI 建立、下載及列出 blob](../blobs/storage-quickstart-blobs-cli.md)。
 
-1. 建立容器之前，請將 [儲存體 Blob 資料參與者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) 角色指派給自己。 即使您是帳戶擁有者，您還是需要明確的許可權，才能對儲存體帳戶執行資料作業。 如需指派 Azure 角色的詳細資訊，請參閱 [使用 Azure 入口網站指派 azure 角色以存取 blob 和佇列資料](storage-auth-aad-rbac.md)。
+1. 建立容器之前，請將 [儲存體 Blob 資料參與者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) 角色指派給自己。 即使您是帳戶擁有者，您還是需要明確的許可權，才能對儲存體帳戶執行資料作業。 如需指派 Azure 角色的詳細資訊，請參閱 [使用 Azure 入口網站指派 azure 角色以存取 blob 和佇列資料](./storage-auth-aad-rbac-portal.md)。
 
     > [!IMPORTANT]
     > Azure 角色指派可能需要數分鐘的時間傳播。

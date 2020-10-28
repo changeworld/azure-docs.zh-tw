@@ -5,19 +5,19 @@ description: 瞭解如何使用 PowerShell 和 Azure Synapse Analytics，針對 
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 699434e89872b9525ea99883bc4fcbc86757ab8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c24c82e6e013734798b75d7c2cfa5ca126e32bc4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619843"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788599"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector"></a>輪替透明資料加密 (TDE) 保護裝置
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -37,11 +37,11 @@ ms.locfileid: "91619843"
 
 - 本操作指南假設您已經使用 Azure Key Vault 中的金鑰作為 Azure SQL Database 或 Azure Synapse Analytics 的 TDE 保護裝置。 請參閱[具有 BYOK 支援的透明資料加密](transparent-data-encryption-byok-overview.md)。
 - 您必須已安裝且正在執行 Azure PowerShell。
-- [建議執行的選擇性作業] 先在硬體安全性模組 (HSM) 或本機金鑰存放區中建立 TDE 保護裝置的金鑰內容，然後將金鑰內容匯入至 Azure Key Vault。 請依照[使用硬體安全性模組 (HSM) 與 Key Vault 的指示](https://docs.microsoft.com/azure/key-vault/key-vault-get-started)操作，以深入了解。
+- [建議執行的選擇性作業] 先在硬體安全性模組 (HSM) 或本機金鑰存放區中建立 TDE 保護裝置的金鑰內容，然後將金鑰內容匯入至 Azure Key Vault。 請依照[使用硬體安全性模組 (HSM) 與 Key Vault 的指示](../../key-vault/general/overview.md)操作，以深入了解。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-如需 Az 模組安裝指示，請參閱[安裝 Azure PowerShell](/powershell/azure/install-az-ps)。 如需特定的 Cmdlet，請參閱[AzureRM。](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)
+如需 Az 模組安裝指示，請參閱[安裝 Azure PowerShell](/powershell/azure/install-az-ps)。 如需特定的 Cmdlet，請參閱[AzureRM。](/powershell/module/AzureRM.Sql/)
 
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager (RM) 模組仍受支援，但所有未來的開發都是針對 Az.Sql 模組進行的。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到 Bug 修正。  Az 模組和 AzureRm 模組中命令的引數本質上完全相同。 如需其相容性的詳細資訊，請參閱[新的 Azure PowerShell Az 模組簡介](/powershell/azure/new-azureps-module-az)。

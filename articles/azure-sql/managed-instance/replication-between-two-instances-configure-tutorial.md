@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 8049df552c9754a1674c9e38e6d9b9b2cea3bd85
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 5948f7adedfa430d7d0dac570910f662846464c6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058211"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790860"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>教學課程：設定兩個受控執行個體之間的複寫
 
@@ -68,7 +68,7 @@ SQL 受控執行個體的異動複寫目前處於公開預覽狀態。
 
 ## <a name="3---create-an-azure-storage-account"></a>3 - 建立 Azure 儲存體帳戶
 
-為工作目錄[建立 Azure 儲存體帳戶](/azure/storage/common/storage-create-storage-account#create-a-storage-account)，然後在儲存體帳戶內建立[檔案共用](../../storage/files/storage-how-to-create-file-share.md)。 
+為工作目錄[建立 Azure 儲存體帳戶](../../storage/common/storage-account-create.md#create-a-storage-account)，然後在儲存體帳戶內建立[檔案共用](../../storage/files/storage-how-to-create-file-share.md)。 
 
 複製下列格式的檔案共用路徑：`\\storage-account-name.file.core.windows.net\file-share-name`
 
@@ -326,4 +326,4 @@ GO
 
 ## <a name="next-steps"></a>後續步驟
 
-您也可以深入了解 [Azure SQL 受控執行個體之間的異動複寫](replication-transactional-overview.md)，或了解如何在 [SQL 受控執行個體發行者/散發者與 Azure VM 訂閱者上的 SQL 之間](replication-two-instances-and-sql-server-configure-tutorial.md)設定複寫。 
+您也可以深入了解 [Azure SQL 受控執行個體之間的異動複寫](replication-transactional-overview.md)，或了解如何在 [SQL 受控執行個體發行者/散發者與 Azure VM 訂閱者上的 SQL 之間](replication-two-instances-and-sql-server-configure-tutorial.md)設定複寫。

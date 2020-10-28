@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: eb71c5eda66d3d11385577da7142970f4fbcbad2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0bda32aaab301fe9ed685f0bfd6d4596fab4e5db
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474847"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789007"
 ---
 # <a name="configure-azure-defender-for-storage"></a>設定適用于儲存體的 Azure Defender
 
@@ -23,7 +23,7 @@ ms.locfileid: "92474847"
 
 出現異常活動時，就會觸發安全性警示。 這些安全性警示會與 [Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)整合，也會透過電子郵件傳送給訂用帳戶系統管理員，並提供可疑活動的詳細資料，以及如何調查和修復威脅的建議。
 
-服務會內嵌對 Blob 儲存體的讀取、寫入和刪除要求的資源記錄，以及針對威脅偵測 Azure 檔案儲存體的資源記錄。 若要調查 Azure Defender 的警示，您可以使用儲存體分析記錄來查看相關的儲存體活動。 如需詳細資訊，請參閱 Azure 入口網站中的**設定記錄**[監視儲存體帳戶](storage-monitor-storage-account.md#configure-logging)。
+服務會內嵌對 Blob 儲存體的讀取、寫入和刪除要求的資源記錄，以及針對威脅偵測 Azure 檔案儲存體的資源記錄。 若要調查 Azure Defender 的警示，您可以使用儲存體分析記錄來查看相關的儲存體活動。 如需詳細資訊，請參閱 Azure 入口網站中的 **設定記錄**[監視儲存體帳戶](storage-monitor-storage-account.md#configure-logging)。
 
 ## <a name="availability"></a>可用性
 
@@ -37,7 +37,7 @@ ms.locfileid: "92474847"
 
 - 版本狀態：
   - [Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/) (公開上市) 
-  - [Azure 檔案儲存體](/azure/storage/files/storage-files-introduction) (正式推出) 
+  - [Azure 檔案儲存體](../files/storage-files-introduction.md) (正式推出) 
   - Azure Data Lake Storage Gen2 (正式推出) 
 - 雲端：<br>
     ✔ 商用雲端<br>
@@ -52,11 +52,11 @@ ms.locfileid: "92474847"
 
 當您在 Azure 資訊安全中心中訂閱標準層時，Azure Defender 會自動在您的所有儲存體帳戶上設定。 您可以針對特定訂用帳戶下的儲存體帳戶啟用或停用 Azure Defender，如下所示：
 
-1. 在[Azure 入口網站](https://portal.azure.com)啟動**Azure 資訊安全中心**。
-1. 從主功能表的 [ **管理**] 底下，選取 [ **定價 & 設定**]。
+1. 在 [Azure 入口網站](https://portal.azure.com)啟動 **Azure 資訊安全中心** 。
+1. 從主功能表的 [ **管理** ] 底下，選取 [ **定價 & 設定** ]。
 1. 選取您要啟用或停用 Azure Defender 的訂用帳戶。
 1. 選取 [ **Azure defender 開啟** ] 以啟用訂用帳戶的 azure defender。
-1. 在 [**依資源類型選取 Azure Defender 方案**] 底下，找出 [**儲存體**] 資料列，然後在 [**方案**] 資料行中選取 [**啟用**]
+1. 在 [ **依資源類型選取 Azure Defender 方案** ] 底下，找出 [ **儲存體** ] 資料列，然後在 [ **方案** ] 資料行中選取 [ **啟用** ]
 1. 儲存變更。
 
     :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-security-center.png" alt-text="顯示如何在安全中心啟用 Azure Defender 儲存的螢幕擷取畫面":::
@@ -66,8 +66,8 @@ ms.locfileid: "92474847"
 ### <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 1. 啟動 [Azure 入口網站](https://portal.azure.com/)。
-1. 瀏覽至儲存體帳戶。 在 [ **設定**] 底下，選取 [ **Advanced security**]。
-1. 選取 [ **啟用適用于儲存體的 Azure Defender**]。
+1. 瀏覽至儲存體帳戶。 在 [ **設定** ] 底下，選取 [ **Advanced security** ]。
+1. 選取 [ **啟用適用于儲存體的 Azure Defender** ]。
 
     :::image type="content" source="media/azure-defender-storage-configure/enable-azure-defender-portal.png" alt-text="顯示如何在安全中心啟用 Azure Defender 儲存的螢幕擷取畫面":::
 
@@ -138,4 +138,4 @@ ms.locfileid: "92474847"
 ## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [Azure 儲存體帳戶中的記錄](/rest/api/storageservices/About-Storage-Analytics-Logging)
-- 深入了解 [Azure 資訊安全中心](../../security-center/security-center-intro.md)
+- 深入了解 [Azure 資訊安全中心](../../security-center/security-center-introduction.md)

@@ -13,12 +13,12 @@ ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 06587d80851839188f8d8dcfa870d331e8fa96d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 997e867798922975757a588ef50248f0d09a96e0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293351"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789840"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Azure VM 上 SQL Server 版本的就地變更
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,8 +34,8 @@ SQL Server 的版本是由產品金鑰所決定，且會在使用安裝媒體進
 若要執行 SQL Server 版本的就地變更，您需要下列項目： 
 
 - [Azure 訂用帳戶](https://azure.microsoft.com/free/)。
-- 向 [SQL VM 資源提供者](sql-vm-resource-provider-register.md)註冊的 [Windows 上的 SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。
-- 包含所需 SQL Server **版本**的安裝媒體。 具備[軟體保證](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)的客戶可從[大量授權中心](https://www.microsoft.com/Licensing/servicecenter/default.aspx)取得安裝媒體。 沒有軟體保證的客戶可使用安裝媒體，其來自包含所需版本 Azure Marketplace SQL Server VM 映像 (通常位於 `C:\SQLServerFull`)。 
+- 向 [SQL VM 資源提供者](sql-vm-resource-provider-register.md)註冊的 [Windows 上的 SQL Server VM](./create-sql-vm-portal.md)。
+- 包含所需 SQL Server **版本** 的安裝媒體。 具備[軟體保證](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)的客戶可從[大量授權中心](https://www.microsoft.com/Licensing/servicecenter/default.aspx)取得安裝媒體。 沒有軟體保證的客戶可使用安裝媒體，其來自包含所需版本 Azure Marketplace SQL Server VM 映像 (通常位於 `C:\SQLServerFull`)。 
 
 
 ## <a name="upgrade-an-edition"></a>升級版本
@@ -102,5 +102,3 @@ SQL Server 的版本是由產品金鑰所決定，且會在使用安裝媒體進
 * [Windows VM 上的 SQL Server 常見問題集](frequently-asked-questions-faq.md)
 * [Windows VM 上的 SQL Server 定價指導](pricing-guidance.md)
 * [Windows VM 上的 SQL Server 版本資訊](doc-changes-updates-release-notes.md)
-
-

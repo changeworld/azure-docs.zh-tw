@@ -5,19 +5,19 @@ description: 瞭解如何使用 TDE 搭配攜帶您自己的金鑰 (BYOK) 支援
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: seo-lt-2019 sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: how-to
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: 77f2312438f3f9db7aa4e0dc7cc0f672644a87c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 657e3967d9e34147364114cec4d946e900f60032
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617395"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791370"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>使用 PowerShell 移除透明資料加密 (TDE) 保護裝置
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -26,16 +26,16 @@ ms.locfileid: "91617395"
 本主題說明如何使用 TDE 搭配客戶管理的金鑰，以 Azure Key Vault 攜帶您自己的金鑰 (BYOK) 支援，來回應可能遭盜用的 TDE 保護 Azure SQL Database 或 Azure Synapse Analytics。 若要深入了解 TDE 的 BYOK 支援，請參閱[概觀頁面](transparent-data-encryption-byok-overview.md)。
 
 > [!CAUTION]
-> 本文所述的程式應該只在極端案例或測試環境中完成。 請仔細檢查步驟，因為從 Azure Key Vault 中刪除主動使用的 TDE 保護裝置會導致 **資料庫變得無法使用**。
+> 本文所述的程式應該只在極端案例或測試環境中完成。 請仔細檢查步驟，因為從 Azure Key Vault 中刪除主動使用的 TDE 保護裝置會導致 **資料庫變得無法使用** 。
 
 如果金鑰遭到入侵，讓某個服務或使用者有未經授權的金鑰存取權，最好先刪除金鑰。
 
-請記住，在 Key Vault 中刪除 TDE 保護裝置後，在最多10分鐘內，所有加密的資料庫都會開始拒絕所有具有對應錯誤訊息的連線，並將其狀態變更為 [無法存取](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-byok-azure-sql#inaccessible-tde-protector)。
+請記住，在 Key Vault 中刪除 TDE 保護裝置後，在最多10分鐘內，所有加密的資料庫都會開始拒絕所有具有對應錯誤訊息的連線，並將其狀態變更為 [無法存取](./transparent-data-encryption-byok-overview.md#inaccessible-tde-protector)。
 
 本操作指南會根據所需的結果，在遭入侵的事件回應之後，提供兩種方法：
 
-- 使 Azure SQL Database/Azure Synapse Analytics 中的資料庫 **無法存取**。
-- 若要讓 Azure SQL Database/Azure Azure Synapse Analytics 中的資料庫 (先前的 SQL 資料倉儲) **無法存取**。
+- 使 Azure SQL Database/Azure Synapse Analytics 中的資料庫 **無法存取** 。
+- 若要讓 Azure SQL Database/Azure Azure Synapse Analytics 中的資料庫 (先前的 SQL 資料倉儲) **無法存取** 。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -45,7 +45,7 @@ ms.locfileid: "91617395"
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
- 如需 Az 模組安裝指示，請參閱[安裝 Azure PowerShell](/powershell/azure/install-az-ps)。 如需特定的 Cmdlet，請參閱[AzureRM。](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)
+ 如需 Az 模組安裝指示，請參閱[安裝 Azure PowerShell](/powershell/azure/install-az-ps)。 如需特定的 Cmdlet，請參閱[AzureRM。](/powershell/module/AzureRM.Sql/)
 
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager (RM) 模組仍受支援，但未來所有的開發都是針對 Az. Sql 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到 Bug 修正。  Az 模組和 AzureRm 模組中命令的引數本質上完全相同。 如需其相容性的詳細資訊，請參閱[新的 Azure PowerShell Az 模組簡介](/powershell/azure/new-azureps-module-az)。
@@ -83,7 +83,7 @@ PowerShell 命令 **>get-azurermsqlserverkeyvaultkey**   會提供查詢中所
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-PowerShell 命令**az sql server key show**   提供查詢中所用 TDE 保護裝置的指紋，讓您可以查看要保留的金鑰，以及要在 AKV 中刪除的金鑰。 您只能安全地從 Azure Key Vault 中刪除資料庫不再使用的金鑰。
+PowerShell 命令 **az sql server key show**   提供查詢中所用 TDE 保護裝置的指紋，讓您可以查看要保留的金鑰，以及要在 AKV 中刪除的金鑰。 您只能安全地從 Azure Key Vault 中刪除資料庫不再使用的金鑰。
 
 * * *
 

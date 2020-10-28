@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/08/2020
 ms.custom: sqldbrb=1
-ms.openlocfilehash: 6e60403344a0341b4aee74a001287c09ba67e114
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2f240247cbba0f80254d504792df45be55c6a1b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448908"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790401"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>如何將 SQLite 資料庫遷移至 Azure SQL Database 無伺服器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -109,4 +109,4 @@ Azure SQL Database 無伺服器是適用於單一資料庫的計算層，可根�
 ## <a name="next-steps"></a>後續步驟
 
 - 若要開始使用，請參閱[快速入門：使用 Azure 入口網站在 Azure SQL Database 中建立單一資料庫](single-database-create-quickstart.md)。
-- 如需資源限制，請參閱[無伺服器計算層級資源限制](../../sql-database/sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)。
+- 如需資源限制，請參閱[無伺服器計算層級資源限制](./resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5)。

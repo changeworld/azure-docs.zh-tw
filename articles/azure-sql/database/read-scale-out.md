@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: fbde77de0ad8698ff82b80b440ae1d4bdcae1f36
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9c09a54daa482d738ded9f7aca1c95c2b640617e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426989"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790265"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>使用唯讀複本來卸載唯讀查詢工作負載
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-在 [高可用性架構](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability)中，每個單一資料庫、彈性集區資料庫，以及 Premium 和業務關鍵服務層級中的受控實例，都會自動布建主要讀寫複本和數個次要唯讀複本。 次要複本會以與主要複本相同的計算大小進行布建。 *讀取*相應放大功能可讓您使用其中一個唯讀複本的計算容量來卸載唯讀工作負載，而不是在讀寫複本上執行。 如此一來，某些唯讀工作負載可以與讀寫工作負載隔離，而且不會影響其效能。 這項功能適用于包含邏輯上分隔唯讀工作負載（例如分析）的應用程式。 在 Premium 和業務關鍵服務層級中，應用程式可以使用此額外容量獲得效能優勢，而不需額外費用。
+在 [高可用性架構](high-availability-sla.md#premium-and-business-critical-service-tier-locally-redundant-availability)中，每個單一資料庫、彈性集區資料庫，以及 Premium 和業務關鍵服務層級中的受控實例，都會自動布建主要讀寫複本和數個次要唯讀複本。 次要複本會以與主要複本相同的計算大小進行布建。 *讀取* 相應放大功能可讓您使用其中一個唯讀複本的計算容量來卸載唯讀工作負載，而不是在讀寫複本上執行。 如此一來，某些唯讀工作負載可以與讀寫工作負載隔離，而且不會影響其效能。 這項功能適用于包含邏輯上分隔唯讀工作負載（例如分析）的應用程式。 在 Premium 和業務關鍵服務層級中，應用程式可以使用此額外容量獲得效能優勢，而不需額外費用。
 
 當至少有一個次要複本建立時，超大規模服務層級也會提供 *讀取* 相應放大功能。 多個次要複本可用於負載平衡唯讀工作負載，而這些工作負載需要的資源比一個次要複本上提供的多。
 
@@ -36,7 +36,7 @@ ms.locfileid: "92426989"
 > [!NOTE]
 > 受控執行個體的商務關鍵服務層級中，一律會啟用讀取相應放大。
 
-如果您的 SQL 連接字串是以設定 `ApplicationIntent=ReadOnly` ，則會將應用程式重新導向至該資料庫或受控實例的唯讀複本。 如需如何使用屬性的詳細資訊 `ApplicationIntent` ，請參閱 [指定應用程式意圖](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)。
+如果您的 SQL 連接字串是以設定 `ApplicationIntent=ReadOnly` ，則會將應用程式重新導向至該資料庫或受控實例的唯讀複本。 如需如何使用屬性的詳細資訊 `ApplicationIntent` ，請參閱 [指定應用程式意圖](/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)。
 
 如果您想要確保應用程式連接至主要複本，而不論 `ApplicationIntent` SQL 連接字串中的設定為何，您必須在建立資料庫時或變更其設定時明確停用讀取相應放大。 例如，如果您將資料庫從標準或一般用途層升級為 Premium、業務關鍵或超大規模層，而且想要確定所有連線都繼續移至主要複本，請停用讀取相應放大。如需有關如何停用的詳細資訊，請參閱 [啟用和停用讀取相應](#enable-and-disable-read-scale-out)放大。
 
@@ -87,16 +87,16 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 
 | 名稱 | 目的 |
 |:---|:---|
-|[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| 提供過去一小時的資源使用率計量，包括 CPU、資料 IO 和記錄寫入使用量（相對於服務目標限制）。|
-|[sys.dm_os_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| 提供 database engine 實例的匯總等候統計資料。 |
-|[sys.dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| 提供複本健全狀況狀態和同步處理統計資料。 重做佇列大小與重做速率可作為唯讀複本上的資料延遲指標。 |
-|[sys.dm_os_performance_counters](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| 提供 database engine 效能計數器。|
-|[sys.dm_exec_query_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| 提供依查詢執行的統計資料，例如執行次數、使用的 CPU 時間等等。|
-|[sys.dm_exec_query_plan ( # B1 ](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| 提供快取的查詢計劃。 |
-|[sys.dm_exec_sql_text ( # B1 ](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| 提供快取查詢計劃的查詢文字。|
-|[sys.dm_exec_query_profiles](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| 提供查詢執行時的即時查詢進度。|
-|[sys.dm_exec_query_plan_stats ( # B1 ](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| 提供最後一個已知的實際執行計畫，包括查詢的執行時間統計資料。|
-|[sys.dm_io_virtual_file_stats ( # B1 ](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)| 提供所有資料庫檔案的儲存體 IOPS、輸送量和延遲統計資料。 |
+|[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| 提供過去一小時的資源使用率計量，包括 CPU、資料 IO 和記錄寫入使用量（相對於服務目標限制）。|
+|[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)| 提供 database engine 實例的匯總等候統計資料。 |
+|[sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database)| 提供複本健全狀況狀態和同步處理統計資料。 重做佇列大小與重做速率可作為唯讀複本上的資料延遲指標。 |
+|[sys.dm_os_performance_counters](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-performance-counters-transact-sql)| 提供 database engine 效能計數器。|
+|[sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql)| 提供依查詢執行的統計資料，例如執行次數、使用的 CPU 時間等等。|
+|[sys.dm_exec_query_plan ( # B1 ](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-transact-sql)| 提供快取的查詢計劃。 |
+|[sys.dm_exec_sql_text ( # B1 ](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql)| 提供快取查詢計劃的查詢文字。|
+|[sys.dm_exec_query_profiles](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| 提供查詢執行時的即時查詢進度。|
+|[sys.dm_exec_query_plan_stats ( # B1 ](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-plan-stats-transact-sql)| 提供最後一個已知的實際執行計畫，包括查詢的執行時間統計資料。|
+|[sys.dm_io_virtual_file_stats ( # B1 ](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql)| 提供所有資料庫檔案的儲存體 IOPS、輸送量和延遲統計資料。 |
 
 > [!NOTE]
 > `sys.resource_stats` `sys.elastic_pool_resource_stats` 邏輯 master 資料庫中的和 dmv 會傳回主要複本的資源使用量資料。
@@ -109,13 +109,13 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 
 ### <a name="transaction-isolation-level-on-read-only-replicas"></a>唯讀複本上的交易隔離等級
 
-在唯讀複本上執行的查詢一律會對應到 [快照](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server) 集交易隔離等級。 快照隔離會使用資料列版本設定，以避免封鎖讀取器封鎖寫入器的情況。
+在唯讀複本上執行的查詢一律會對應到 [快照](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server) 集交易隔離等級。 快照隔離會使用資料列版本設定，以避免封鎖讀取器封鎖寫入器的情況。
 
-在罕見的情況下，如果快照隔離交易存取已在另一個並行交易中修改過的物件中繼資料，可能會收到錯誤 [3961](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-3961-database-engine-error)：「資料庫 '%. * ls ' 中的快照集隔離交易失敗，因為這個交易啟動之後，另一個並行交易中的 DDL 語句修改了此語句所存取的物件。 因為中繼資料並未建立版本，因此不允許此情況發生。 如果與快照集隔離混合，中繼資料的並行更新可能會造成不一致的情況。」
+在罕見的情況下，如果快照隔離交易存取已在另一個並行交易中修改過的物件中繼資料，可能會收到錯誤 [3961](/sql/relational-databases/errors-events/mssqlserver-3961-database-engine-error)：「資料庫 '%. * ls ' 中的快照集隔離交易失敗，因為這個交易啟動之後，另一個並行交易中的 DDL 語句修改了此語句所存取的物件。 因為中繼資料並未建立版本，因此不允許此情況發生。 如果與快照集隔離混合，中繼資料的並行更新可能會造成不一致的情況。」
 
 ### <a name="long-running-queries-on-read-only-replicas"></a>唯讀複本上長時間執行的查詢
 
-在唯讀複本上執行的查詢需要存取查詢 (資料表中所參考物件的中繼資料，索引、統計資料等等 ) 在罕見的情況下，如果在主要複本上修改中繼資料物件，而查詢在唯讀複本上持有相同物件的鎖定，則查詢會 [封鎖](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK) 將主要複本的變更套用至唯讀複本的進程。 如果這類查詢很長一段時間執行，就會導致唯讀複本與主要複本的同步處理明顯不同步。 
+在唯讀複本上執行的查詢需要存取查詢 (資料表中所參考物件的中繼資料，索引、統計資料等等 ) 在罕見的情況下，如果在主要複本上修改中繼資料物件，而查詢在唯讀複本上持有相同物件的鎖定，則查詢會 [封鎖](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK) 將主要複本的變更套用至唯讀複本的進程。 如果這類查詢很長一段時間執行，就會導致唯讀複本與主要複本的同步處理明顯不同步。 
 
 如果唯讀複本上長時間執行的查詢導致這種封鎖，則會自動終止，而且會話將會收到錯誤1219：「您的會話因為高優先順序的 DDL 作業而中斷連線」。
 
@@ -123,7 +123,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 > 如果您在對唯讀複本執行查詢時收到錯誤3961或錯誤1219，請重試查詢。
 
 > [!TIP]
-> 在 Premium 和業務關鍵服務層級中，當連接到唯讀複本時， `redo_queue_size` `redo_rate` [sys.dm_database_replica_states](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV 中的和資料行可用來監視資料同步處理常式，做為唯讀複本上的資料延遲指標。
+> 在 Premium 和業務關鍵服務層級中，當連接到唯讀複本時， `redo_queue_size` `redo_rate` [sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV 中的和資料行可用來監視資料同步處理常式，做為唯讀複本上的資料延遲指標。
 > 
 
 ## <a name="enable-and-disable-read-scale-out"></a>啟用和停用讀取相應放大
@@ -144,7 +144,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 > [!IMPORTANT]
 > 仍支援 PowerShell Azure Resource Manager 模組，但未來所有的開發都是針對 Az. Sql 模組。 Azure Resource Manager 模組將持續收到錯誤修正，直到2020年12月為止。  Az 模組和 Azure Resource Manager 模組中命令的引數本質上相同。 如需相容性的詳細資訊，請參閱 [新的 Azure PowerShell Az 模組簡介](/powershell/azure/new-azureps-module-az)。
 
-在 Azure PowerShell 中管理讀取相應放大需要2016年12月 Azure PowerShell 發行或更新版本。 如需最新 PowerShell 版本的相關資訊，請參閱 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+在 Azure PowerShell 中管理讀取相應放大需要2016年12月 Azure PowerShell 發行或更新版本。 如需最新 PowerShell 版本的相關資訊，請參閱 [Azure PowerShell](/powershell/azure/install-az-ps)。
 
 您可以藉由叫用 [>set-azsqldatabase](/powershell/module/az.sql/set-azsqldatabase) Cmdlet，並傳入所需的值 (`Enabled` 或 `Disabled`) 參數，在 Azure PowerShell 中停用或重新啟用讀取相應放大 `-ReadScale` 。
 
@@ -180,7 +180,7 @@ Body: {
 }
 ```
 
-如需詳細資訊，請參閱 [資料庫-建立或更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)。
+如需詳細資訊，請參閱 [資料庫-建立或更新](/rest/api/sql/databases/createorupdate)。
 
 ## <a name="using-the-tempdb-database-on-a-read-only-replica"></a>使用 `tempdb` 唯讀複本上的資料庫
 

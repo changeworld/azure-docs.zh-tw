@@ -9,16 +9,16 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: e71e56b9da06bfd8f3be24481efd619b788a8839
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcf3e9228c8e651efb8f97067f7ba9eead5959db
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822272"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789670"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>使用 Azure 儲存體資源提供者存取管理資源
 
-Azure Resource Manager 是 Azure 的部署和管理服務。 Azure 儲存體資源提供者是以 Azure Resource Manager 為基礎的服務，可讓您存取 Azure 儲存體的管理資源。 您可以使用 Azure 儲存體資源提供者來建立、更新、管理及刪除資源，例如儲存體帳戶、私人端點和帳戶存取金鑰。 如需 Azure Resource Manager 的詳細資訊，請參閱 [Azure Resource Manager 總覽](/azure/azure-resource-manager/resource-group-overview)。
+Azure Resource Manager 是 Azure 的部署和管理服務。 Azure 儲存體資源提供者是以 Azure Resource Manager 為基礎的服務，可讓您存取 Azure 儲存體的管理資源。 您可以使用 Azure 儲存體資源提供者來建立、更新、管理及刪除資源，例如儲存體帳戶、私人端點和帳戶存取金鑰。 如需 Azure Resource Manager 的詳細資訊，請參閱 [Azure Resource Manager 總覽](../../azure-resource-manager/management/overview.md)。
 
 您可以使用 Azure 儲存體資源提供者來執行動作，例如建立或刪除儲存體帳戶，或取得訂用帳戶中的儲存體帳戶清單。 若要對 Azure 儲存體資源提供者授權要求，請使用 Azure Active Directory (Azure AD) 。 本文說明如何將許可權指派給管理資源，並指向示範如何對 Azure 儲存體資源提供者提出要求的範例。
 
@@ -32,9 +32,9 @@ Azure 儲存體支援使用 Azure AD 對 Blob 和佇列儲存體授權要求。 
 
 ## <a name="assign-management-permissions-with-azure-role-based-access-control-azure-rbac"></a>使用 Azure 角色型存取控制指派管理許可權 (Azure RBAC) 
 
-每個 Azure 訂用帳戶都有一個相關聯的 Azure Active Directory，可管理使用者、群組和應用程式。 在 [Microsoft 身分識別平臺](/azure/active-directory/develop/)的環境中，使用者、群組或應用程式也稱為「安全性主體」（security principal）。 您可以使用 Azure 角色型存取控制 (Azure RBAC) ，將訂用帳戶中所定義之資源的存取權授與 Active Directory 中定義的安全性主體。
+每個 Azure 訂用帳戶都有一個相關聯的 Azure Active Directory，可管理使用者、群組和應用程式。 在 [Microsoft 身分識別平臺](../../active-directory/develop/index.yml)的環境中，使用者、群組或應用程式也稱為「安全性主體」（security principal）。 您可以使用 Azure 角色型存取控制 (Azure RBAC) ，將訂用帳戶中所定義之資源的存取權授與 Active Directory 中定義的安全性主體。
 
-當您將 Azure 角色指派給安全性主體時，您也會指出角色所授與的許可權範圍。 針對管理作業，您可以在訂用帳戶、資源群組或儲存體帳戶層級指派角色。 您可以使用 [Azure 入口網站](https://portal.azure.com/)、 [Azure CLI 工具](../../cli-install-nodejs.md)、 [PowerShell](/powershell/azure/)或 [Azure 儲存體資源提供者 REST API](/rest/api/storagerp)，將 Azure 角色指派給安全性主體。
+當您將 Azure 角色指派給安全性主體時，您也會指出角色所授與的許可權範圍。 針對管理作業，您可以在訂用帳戶、資源群組或儲存體帳戶層級指派角色。 您可以使用 [Azure 入口網站](https://portal.azure.com/)、 [Azure CLI 工具](/cli/azure/install-classic-cli)、 [PowerShell](/powershell/azure/)或 [Azure 儲存體資源提供者 REST API](/rest/api/storagerp)，將 Azure 角色指派給安全性主體。
 
 如需詳細資訊，請參閱 [什麼是 AZURE RBAC)  (azure 角色型存取控制？](../../role-based-access-control/overview.md) 和 [傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 系統管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。
 
@@ -53,7 +53,7 @@ Azure 提供內建角色，可授與呼叫管理作業的許可權。 Azure 儲�
 | **使用者存取系統管理員** | 可以管理對儲存體帳戶的存取。   | 是，允許安全性主體將任何許可權指派給自己和其他人。 |
 | **虛擬機器參與者** | 可以管理虛擬機器，但無法管理其連線的儲存體帳戶。   | 是，提供查看和重新產生儲存體帳戶金鑰的許可權。 |
 
-資料表中的第三個數據行表示內建角色是否支援 **Microsoft. Storage/storageAccounts/listkeys/action**。 此動作會授與讀取和重新產生儲存體帳戶金鑰的許可權。 存取 Azure 儲存體管理資源的許可權也不包含存取資料的許可權。 不過，如果使用者具有帳戶金鑰的存取權，他們就可以使用帳戶金鑰來透過共用金鑰授權存取 Azure 儲存體資料。
+資料表中的第三個數據行表示內建角色是否支援 **Microsoft. Storage/storageAccounts/listkeys/action** 。 此動作會授與讀取和重新產生儲存體帳戶金鑰的許可權。 存取 Azure 儲存體管理資源的許可權也不包含存取資料的許可權。 不過，如果使用者具有帳戶金鑰的存取權，他們就可以使用帳戶金鑰來透過共用金鑰授權存取 Azure 儲存體資料。
 
 ### <a name="custom-roles-for-management-operations"></a>管理作業的自訂角色
 
@@ -76,6 +76,6 @@ Resource Manager 和傳統部署模型代表部署和管理 Azure 解決方案�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure Resource Manager 概觀](/azure/azure-resource-manager/resource-group-overview)
+- [Azure Resource Manager 概觀](../../azure-resource-manager/management/overview.md)
 - [什麼是 Azure 角色型存取控制 (Azure RBAC)？](../../role-based-access-control/overview.md)
 - [Azure 儲存體資源提供者的擴充性目標](scalability-targets-resource-provider.md)

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 7717c02fb460c41543ae810820ba01efb13a1ca7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af98811e158b9613e41389e08e19cb36797aa272
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271183"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790588"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 呼叫 REST 端點
 
@@ -27,6 +27,8 @@ ms.locfileid: "91271183"
   一般而言，REST 端點必須符合此準則，連接器才能運作：
 
   * Swagger 檔案必須裝載於可公開存取的 HTTPS URL 上。
+  
+  * Swagger 檔案必須包含 `operationID` 定義中每項作業的。 如果沒有，連接器只會顯示 Swagger 檔案中的最後一個作業。 
 
   * Swagger 檔案必須已啟用[跨原始來源資源共用 (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) \(部分機器翻譯\)。
 
@@ -125,7 +127,7 @@ ms.locfileid: "91271183"
    | 屬性 | 值 |
    |----------|-------|
    | **允許的原始來源** | `*` |
-   | **允許的方法** | `GET`、`HEAD`、`PUT` |
+   | **允許的方法** | `GET`, `HEAD`, `PUT` |
    | **允許的標頭** | `*` |
    | **公開的標頭** | `*` |
    | **存留期上限** (秒) | `200` |
@@ -166,4 +168,3 @@ ms.locfileid: "91271183"
 ## <a name="next-steps"></a>後續步驟
 
 * 了解其他 [Logic Apps 連接器](../connectors/apis-list.md)
-

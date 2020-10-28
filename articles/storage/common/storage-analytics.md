@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: fe1b685a0209643332d798b875b9e62b02aa02da
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 5465fa63a3dff71de2e370281df9351e2bac76c7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488770"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790520"
 ---
 # <a name="storage-analytics"></a>儲存體分析
 
@@ -37,7 +37,7 @@ Azure 儲存體分析會執行記錄，並提供儲存體帳戶的度量資料�
 * 建立 Blob 以用於記錄的要求。
 * 針對度量建立資料表實體的要求。
 
-如果您已設定資料保留原則，就不需在儲存體分析刪除舊記錄和度量資料時支付刪除交易的費用。 不過，從用戶端刪除交易會列入計費。 如需保留原則的詳細資訊，請參閱 [設定儲存體分析資料保留原則](https://msdn.microsoft.com/library/azure/hh343263.aspx)。
+如果您已設定資料保留原則，就不需在儲存體分析刪除舊記錄和度量資料時支付刪除交易的費用。 不過，從用戶端刪除交易會列入計費。 如需保留原則的詳細資訊，請參閱 [設定儲存體分析資料保留原則](/rest/api/storageservices/Setting-a-Storage-Analytics-Data-Retention-Policy)。
 
 ### <a name="understanding-billable-requests"></a>了解計費要求
 

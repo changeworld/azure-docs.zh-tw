@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: a59e498435aab7b3e3e2ecf2e6096c044550a1b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd5c6527cd6a0beea291dce94ff0e5949ba00671
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628361"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791251"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>將您的應用程式連線到 Azure SQL 受控執行個體
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -48,7 +48,7 @@ ms.locfileid: "91628361"
 使用對等互連是因為它使用 Microsoft 骨幹網路，因此從連線的觀點來看，對等互連虛擬網路中的虛擬機器和相同虛擬網路之間的延遲並沒有明顯的差異。 相同區域中的網路之間支援虛擬網路對等互連。 全域虛擬網路對等互連也支援下列注意事項中所述的限制。  
 
 > [!IMPORTANT]
-> [在9/22/2020 上，我們為新建立的虛擬叢集宣佈了全域虛擬網路對等互連](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 這表示在公告日期之後于空白子網中建立的 SQL 受控實例，以及這些子網中建立的所有後續受控實例，都支援全域虛擬網路對等互連。 針對所有其他 SQL 受控實例對等互連支援，受限於相同區域中的網路，原因是 [全域虛擬網路對等互連的限制](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)。 另請參閱 [Azure 虛擬網路常見問題](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) 文章中的相關章節，以取得詳細資料。 
+> [在9/22/2020 上，我們為新建立的虛擬叢集宣佈了全域虛擬網路對等互連](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 這表示在公告日期之後于空白子網中建立的 SQL 受控實例，以及這些子網中建立的所有後續受控實例，都支援全域虛擬網路對等互連。 針對所有其他 SQL 受控實例對等互連支援，受限於相同區域中的網路，原因是 [全域虛擬網路對等互連的限制](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)。 另請參閱 [Azure 虛擬網路常見問題](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) 文章中的相關章節，以取得詳細資料。 
 
 ## <a name="connect-from-on-premises"></a>從內部部署連接 
 
@@ -71,10 +71,10 @@ ms.locfileid: "91628361"
 
 ![虛擬網路對等互連](./media/connect-application-instance/vnet-peering.png)
 
-設定好基本基礎結構之後，您必須修改某些設定，讓 VPN 閘道可以在裝載 SQL 受控執行個體的虛擬網路中看到 IP 位址。 若要這麼做，請在 [對等互連設定]**** 下方設定下列特定變更。
+設定好基本基礎結構之後，您必須修改某些設定，讓 VPN 閘道可以在裝載 SQL 受控執行個體的虛擬網路中看到 IP 位址。 若要這麼做，請在 [對等互連設定]  下方設定下列特定變更。
 
-1. 在裝載 VPN 閘道的虛擬網路中，移至 **對等互連**，移至適用于 SQL 受控執行個體的對等互連虛擬網路連線，然後按一下 [ **允許閘道傳輸**]。
-2. 在裝載 SQL 受控執行個體的虛擬網路中，移至 **對等互連**，移至 VPN 閘道的對等互連虛擬網路連線，然後按一下 [ **使用遠端閘道**]。
+1. 在裝載 VPN 閘道的虛擬網路中，移至 **對等互連** ，移至適用于 SQL 受控執行個體的對等互連虛擬網路連線，然後按一下 [ **允許閘道傳輸** ]。
+2. 在裝載 SQL 受控執行個體的虛擬網路中，移至 **對等互連** ，移至 VPN 閘道的對等互連虛擬網路連線，然後按一下 [ **使用遠端閘道** ]。
 
 ## <a name="connect-azure-app-service"></a>連接 Azure App Service 
 
@@ -101,7 +101,7 @@ ms.locfileid: "91628361"
 
 - 如果您無法從相同虛擬網路內的 Azure 虛擬機器連線到 SQL 受控執行個體，但在不同的子網中，請檢查您是否在可能封鎖存取的 VM 子網上設定網路安全性群組。 此外，請開啟 SQL 埠1433上的輸出連線，以及範圍11000-11999 中的埠，因為透過 Azure 界限內的重新導向連接需要這些連線。
 - 確定已針對與虛擬網路相關聯的路由表將 BGP 傳播設定為 [ **已啟用** ]。
-- 如果使用 P2S VPN，請檢查 Azure 入口網站中的組態，以確認您是否看到**輸入/輸出**數值。 非零的數值表示 Azure 會將流量路由至內部部署，或從中輸出流量。
+- 如果使用 P2S VPN，請檢查 Azure 入口網站中的組態，以確認您是否看到 **輸入/輸出** 數值。 非零的數值表示 Azure 會將流量路由至內部部署，或從中輸出流量。
 
    ![輸入/輸出數值](./media/connect-application-instance/ingress-egress-numbers.png)
 
@@ -151,8 +151,8 @@ ms.locfileid: "91628361"
 |JDBC 驅動程式| 6.4.0 |
 |Node.js 驅動程式| 2.1.1 |
 |OLEDB 驅動程式| 18.0.2.0 |
-|SSMS| 18.0 或 [更高版本](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
-|[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) 或更高版本 |
+|SSMS| 18.0 或 [更高版本](/sql/ssms/download-sql-server-management-studio-ssms) |
+|[SMO](/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) 或更高版本 |
 
 ## <a name="next-steps"></a>後續步驟
 

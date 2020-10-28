@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: 082f246437cdd99b844d1ed8010d8dc846fc4d47
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: f9b3be69ab57c0abf7523169303def899f325229
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341935"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789211"
 ---
 # <a name="security-alerts-schemas"></a>安全性警示架構
 
@@ -25,7 +25,7 @@ ms.locfileid: "92341935"
 您可以在 Azure 資訊安全中心的 **威脅防護** 頁面中查看這些安全性警示，或透過外部工具（例如：
 
 - [Azure Sentinel](../sentinel/index.yml) -Microsoft 的雲端原生 SIEM。 Sentinel 連接器會從 Azure 資訊安全中心取得警示，並將其傳送至 [Log Analytics 工作區](../azure-monitor/learn/quick-create-workspace.md) 以進行 Azure Sentinel。
-- 協力廠商 Siem-使用安全中心的 [連續匯出](continuous-export.md) 工具將資料傳送至 [Azure 事件中樞](../event-hubs/index.yml)。 然後將您的事件中樞資料與協力廠商 SIEM 整合。
+- 協力廠商 Siem-將資料傳送至 [Azure 事件中樞](../event-hubs/index.yml)。 然後將您的事件中樞資料與協力廠商 SIEM 整合。 深入瞭解 [串流警示至 SIEM、SOAR 或 IT 服務管理解決方案](export-to-siem.md)。
 - [REST API](/rest/api/securitycenter/) -如果您要使用 REST API 來存取警示，請參閱 [線上警示 API 檔](/rest/api/securitycenter/alerts)。
 
 如果您使用任何程式設計方法來取用警示，您需要正確的架構，才能找到與您相關的欄位。 此外，如果您要匯出至事件中樞，或嘗試使用泛型 HTTP 連接器來觸發工作流程自動化，請使用架構來適當地剖析 JSON 物件。
@@ -46,8 +46,9 @@ ms.locfileid: "92341935"
 - 在安全中心的工作流程自動化中設定的 Azure 邏輯應用程式實例
 - 使用「安全性中心」連續匯出功能的 Azure 事件中樞
 
-如需工作流程自動化功能的詳細資訊，請參閱 [自動回應警示和建議](workflow-automation.md)。
-如需連續匯出的詳細資訊，請參閱 [匯出警示和建議](continuous-export.md)。
+如需工作流程自動化功能的詳細資訊，請參閱 [自動化資訊安全中心觸發](workflow-automation.md)程式的回應。
+
+如需連續匯出的詳細資訊，請參閱 [持續匯出資訊安全中心資料](continuous-export.md)。
 
 [!INCLUDE [Workflow schema](../../includes/security-center-alerts-schema-workflow-automation.md)]
 
@@ -139,7 +140,7 @@ Azure 資訊安全中心會在 Azure 活動記錄中以事件形式來審核產�
 
 ### <a name="the-data-model-of-the-schema"></a>架構的資料模型
 
-|欄位|說明|
+|欄位|描述|
 |----|----|
 |**管道**|常數，"Operation"|
 |**correlationId**|Azure 資訊安全中心警示識別碼|
@@ -185,5 +186,5 @@ Microsoft Graph 是 Microsoft 365 中資料和智慧的閘道。 它提供統一
 
 - [Azure Sentinel](../sentinel/index.yml) -Microsoft 的雲端原生 SIEM
 - [Azure 事件中樞](../event-hubs/index.yml) -Microsoft 完全受控的即時資料內嵌服務
-- 安全性中心的 [連續匯出功能](continuous-export.md)
+- [持續匯出安全中心資料](continuous-export.md)
 - [Log analytics 工作區](../azure-monitor/learn/quick-create-workspace.md) -Azure 監視器將記錄資料儲存在 log Analytics 工作區中，包含資料和設定資訊的容器

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 8076b417c8043a4f6796ccca0e67db79360ede73
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: dd77305a1b2f7d11a2e371f7682855e15739ee7d
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331663"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790928"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>在單一租用戶應用程式中使用擷取的資料執行跨租用戶分析
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -69,11 +69,11 @@ ms.locfileid: "92331663"
 
 若要完成本教學課程，請確定符合下列必要條件：
 
-- 已部署 Wingtip Tickets SaaS Database Per Tenant 應用程式。 若要在五分鐘內完成部署，請參閱[部署及探索 Wingtip SaaS 應用程式](../../sql-database/saas-dbpertenant-get-started-deploy.md)
+- 已部署 Wingtip Tickets SaaS Database Per Tenant 應用程式。 若要在五分鐘內完成部署，請參閱[部署及探索 Wingtip SaaS 應用程式](./saas-dbpertenant-get-started-deploy.md)
 - Wingtip Tickets SaaS Database Per Tenant 指令碼和應用程式[原始程式碼](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/)是從 GitHub 下載。 請參閱下載指示。 請務必在擷取檔案內容之前解除封鎖 zip 檔案  。 關於下載和解除封鎖 Wingtip Tickets SaaS 指令碼的步驟，請參閱[一般指引](saas-tenancy-wingtip-app-guidance-tips.md)。
 - Power BI Desktop 已安裝。 [下載 Power BI Desktop](https://powerbi.microsoft.com/downloads/)
-- 已佈建額外租用戶的批次，請參閱 [**佈建租用戶教學課程**](../../sql-database/saas-dbpertenant-provision-and-catalog.md)。
-- 已建立作業帳戶和作業帳戶資料庫。 請參閱 [**結構描述管理教學課程**](../../sql-database/saas-tenancy-schema-management.md#create-a-job-agent-database-and-new-job-agent)中的適當步驟。
+- 已佈建額外租用戶的批次，請參閱 [**佈建租用戶教學課程**](./saas-dbpertenant-provision-and-catalog.md)。
+- 已建立作業帳戶和作業帳戶資料庫。 請參閱 [**結構描述管理教學課程**](./saas-tenancy-schema-management.md#create-a-job-agent-database-and-new-job-agent)中的適當步驟。
 
 ### <a name="create-data-for-the-demo"></a>建立資料以供示範
 
@@ -93,7 +93,7 @@ ms.locfileid: "92331663"
     - 若要使用具有資料行存放區的 SQL Database，請設定 **$DemoScenario** = **3**  
 3. 按  指令碼)。 
 
-您已經部署應用程式，並且使用感興趣的租用戶資料填入，請使用 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 來連線 **tenants1-dpt-&lt;User&gt;** 和 **catalog-dpt-&lt;User&gt;** 伺服器，使用登入 = developer，密碼 = *P\@ssword1* 。 如需詳細指引，請參閱[簡介教學課程](../../sql-database/saas-dbpertenant-wingtip-app-overview.md)。
+您已經部署應用程式，並且使用感興趣的租用戶資料填入，請使用 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) 來連線 **tenants1-dpt-&lt;User&gt;** 和 **catalog-dpt-&lt;User&gt;** 伺服器，使用登入 = developer，密碼 = *P\@ssword1* 。 如需詳細指引，請參閱[簡介教學課程](./saas-dbpertenant-wingtip-app-overview.md)。
 
 ![螢幕擷取畫面：顯示要連線到 SQL Server 所需的資訊。](./media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
@@ -240,6 +240,6 @@ AverageTicketsSold = AVERAGEX( SUMMARIZE( TableName, TableName[Venue Name] ), CA
 
 ## <a name="additional-resources"></a>其他資源
 
-- 其他[以 Wingtip SaaS 應用程式為基礎的教學課程](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)。
-- [彈性作業](../../sql-database/elastic-jobs-overview.md)。
-- [使用擷取的資料執行跨租用戶分析 - 多租用戶應用程式](../../sql-database/saas-multitenantdb-tenant-analytics.md)
+- 其他[以 Wingtip SaaS 應用程式為基礎的教學課程](./saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)。
+- [彈性作業](./elastic-jobs-overview.md)。
+- [使用擷取的資料執行跨租用戶分析 - 多租用戶應用程式](./saas-multitenantdb-tenant-analytics.md)

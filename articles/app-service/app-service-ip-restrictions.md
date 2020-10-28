@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6f1a94ae070419c38efb481e8f3967aec6a212d0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 61ccc0231989589836e00088b9ca03d0cb49baca
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533949"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790945"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service 存取限制
 
@@ -24,7 +24,11 @@ ms.locfileid: "92533949"
 
 存取限制功能是在 App Service 前端角色中執行，而這些角色是您的程式碼執行所在的背景工作主機上游。 因此，存取限制實際上是網路 Acl。
 
-將 web 應用程式從 Azure 虛擬網路存取許可權制 (VNet) 的能力稱為「 [服務端點][serviceendpoints]」。 服務端點可讓您限制從選取的子網存取多租使用者服務。 您必須同時在網路端和其所啟用的服務上啟用它。 將流量限制在 App Service 環境中裝載的應用程式時，並不會有任何作用。 如果您在 App Service 環境中，您可以使用 IP 位址規則來控制對您應用程式的存取。
+將 web 應用程式從 Azure 虛擬網路存取許可權制 (VNet) 的能力稱為「 [服務端點][serviceendpoints]」。 服務端點可讓您限制從選取的子網存取多租使用者服務。 將流量限制在 App Service 環境中裝載的應用程式時，並不會有任何作用。 如果您在 App Service 環境中，您可以使用 IP 位址規則來控制對您應用程式的存取。
+
+> [!NOTE]
+> 您必須在網路端和其所啟用的 Azure 服務上啟用服務端點。 如需支援服務端點的 Azure 服務清單，請參閱 [虛擬網路服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)。
+>
 
 ![存取限制流程](media/app-service-ip-restrictions/access-restrictions-flow.png)
 
@@ -134,7 +138,7 @@ management.azure.com/subscriptions/ **subscription ID** /resourceGroups/ **resou
 
 存取限制也適用于具有 App Service 方案相同功能的函式應用程式。 啟用存取限制將會停用任何不允許的 Ip 的入口網站程式碼編輯器。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 [Azure Functions 的存取限制](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
 
 [應用程式閘道與服務端點的整合](networking/app-gateway-with-service-endpoints.md)

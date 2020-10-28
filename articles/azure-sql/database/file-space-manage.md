@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 2e751a77d40403c7bdd4644e8e6fb03ff89063e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a46e47d6e12d52113bf63342c84a58ca98743d0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335062"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789602"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>在 Azure SQL Database 中管理資料庫的檔案空間
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,13 +40,13 @@ ms.locfileid: "91335062"
 
 在 Azure 入口網站和下列 API 中顯示的大部分儲存體空間計量只會測量已使用資料頁面的大小：
 
-- Azure Resource Manager 型計量 API 包括 PowerShell [get-metrics](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric)
-- T-SQL：[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
+- Azure Resource Manager 型計量 API 包括 PowerShell [get-metrics](/powershell/module/az.monitor/get-azmetric)
+- T-SQL：[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 不過，下列 API 也會測量配置給資料庫和彈性集區的空間大小：
 
-- T-SQL：[sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
-- T-SQL：[sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
+- T-SQL：[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
+- T-SQL：[sys.elastic_pool_resource_stats](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
 ### <a name="shrinking-data-files"></a>壓縮資料檔案
 
@@ -148,7 +148,7 @@ ORDER BY end_time DESC
 > [!IMPORTANT]
 > Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az.Sql 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到 Bug 修正。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。 如需其相容性的詳細資訊，請參閱[新的 Azure PowerShell Az 模組簡介](/powershell/azure/new-azureps-module-az)。
 
-PowerShell 指令碼需要 SQL Server PowerShell 模組 – 請參閱[下載 PowerShell 模組](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module)以便安裝。
+PowerShell 指令碼需要 SQL Server PowerShell 模組 – 請參閱[下載 PowerShell 模組](/sql/powershell/download-sql-server-ps-module)以便安裝。
 
 ```powershell
 $resourceGroupName = "<resourceGroupName>"
@@ -214,7 +214,7 @@ DBCC SHRINKDATABASE (N'db1')
 
 此命令可能會在資料庫執行時影響其效能，如果可能，應該在低使用量期間執行。  
 
-如需有關此命令的詳細資訊，請參閱 [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)。
+如需有關此命令的詳細資訊，請參閱 [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)。
 
 ### <a name="auto-shrink"></a>自動壓縮
 
@@ -226,11 +226,11 @@ DBCC SHRINKDATABASE (N'db1')
 ALTER DATABASE [db1] SET AUTO_SHRINK ON
 ```
 
-如需有關此命令的詳細資訊，請參閱 [DATABASE SET](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) 選項。
+如需有關此命令的詳細資訊，請參閱 [DATABASE SET](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) 選項。
 
 ### <a name="rebuild-indexes"></a>重建索引
 
-在資料庫資料檔案壓縮後，索引可能會變得分散而失去效能最佳化效益。 如果發生效能降低的情形，請考慮重建資料庫索引。 如需索引分散和如何重建索引的詳細資訊，請參閱[重新組織與重建索引](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)。
+在資料庫資料檔案壓縮後，索引可能會變得分散而失去效能最佳化效益。 如果發生效能降低的情形，請考慮重建資料庫索引。 如需索引分散和如何重建索引的詳細資訊，請參閱[重新組織與重建索引](/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)。
 
 ## <a name="next-steps"></a>後續步驟
 

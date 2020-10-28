@@ -11,27 +11,27 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 57449b0bbd39b6ea04ecae5a3ad766ae5687ca0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d73efd7a64d0118cea11ca9b0a35f659ce7fee6a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619826"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791285"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Azure SQL Database 中擴充事件的信號緩衝區目標程式碼
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../../includes/sql-database-xevents-selectors-1-include.md)]
 
-您想要完整的程式碼範例以最簡單快速的方式在測試期間擷取和報告擴充事件的資訊。 擴充事件資料最簡單的目標是 [信號緩衝區目標](https://msdn.microsoft.com/library/ff878182.aspx)。
+您想要完整的程式碼範例以最簡單快速的方式在測試期間擷取和報告擴充事件的資訊。 擴充事件資料最簡單的目標是 [信號緩衝區目標](/previous-versions/sql/sql-server-2016/bb630339(v=sql.130))。
 
 本主題提供會執行下列動作的 Transact-SQL 程式碼範例：
 
 1. 使用資料建立要示範的資料表。
-2. 建立現有擴充事件的工作階段，名稱為 **sqlserver.sql_statement_starting**。
+2. 建立現有擴充事件的工作階段，名稱為 **sqlserver.sql_statement_starting** 。
 
-   * 此事件僅限於包含特定 Update 字串的 SQL 陳述式： **statement LIKE '%UPDATE tabEmployee%'**。
-   * 選擇要將事件的輸出傳送給信號緩衝區類型的目標，名稱為 **package0.ring_buffer**。
+   * 此事件僅限於包含特定 Update 字串的 SQL 陳述式： **statement LIKE '%UPDATE tabEmployee%'** 。
+   * 選擇要將事件的輸出傳送給信號緩衝區類型的目標，名稱為 **package0.ring_buffer** 。
 3. 啟動事件工作階段。
 4. 發出幾個簡單的 SQL UPDATE 陳述式。
 5. 發出 SQL SELECT 陳述式擷取信號緩衝區的事件輸出。
@@ -46,11 +46,11 @@ ms.locfileid: "91619826"
 * Azure 帳戶和訂用帳戶。 您可以註冊 [免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * 您可以在當中建立資料表的任何資料庫。
   
-  * 您可以選擇性快速[建立 **AdventureWorksLT** 示範資料庫](single-database-create-quickstart.md)。
+  * 您可以選擇性快速 [建立 **AdventureWorksLT** 示範資料庫](single-database-create-quickstart.md)。
 * SQL Server Management Studio (ssms.exe)，最好是最新的每月更新版本。
   您可以從下列位置下載最新的 ssms.exe：
   
-  * 名稱為 [下載 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)的主題。
+  * 名稱為 [下載 SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)的主題。
   * [下載的直接連結。](https://go.microsoft.com/fwlink/?linkid=616025)
 
 ## <a name="code-sample"></a>程式碼範例
@@ -349,6 +349,6 @@ Azure SQL Database 上擴充事件的主要主題是：
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](https://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](https://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](/sql/relational-databases/extended-events/determine-which-queries-are-holding-locks)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](/sql/relational-databases/extended-events/find-the-objects-that-have-the-most-locks-taken-on-them)
 -->
