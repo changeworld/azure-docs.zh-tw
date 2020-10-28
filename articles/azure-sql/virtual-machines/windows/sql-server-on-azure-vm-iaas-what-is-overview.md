@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ae00703805bef6f5e9758bafcb781eda91cd93f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60f781ddfa5717bbe5bcbb05ec8c236c8594c587
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272152"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793087"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>什麼是 Azure 虛擬機器上的 SQL Server (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,9 +29,9 @@ ms.locfileid: "91272152"
 
 [Azure 虛擬機器上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 可讓您在雲端使用完整的 SQL Server 版本，而不需要管理任何內部部署硬體。 當您使用隨用隨付方案時，SQL Server 虛擬機器 (VM) 也會簡化授權成本。
 
-Azure 虛擬機器會在全球許多不同的[地理區域](https://azure.microsoft.com/regions/)中執行。 此外，也提供各種[機器大小](../../../virtual-machines/windows/sizes.md)。 虛擬機器映像庫可讓您使用正確的版本、版次及作業系統建立 SQL Server VM。 這可讓虛擬機器成為許多不同 SQL Server 工作負載的適合選項。
+Azure 虛擬機器會在全球許多不同的[地理區域](https://azure.microsoft.com/regions/)中執行。 此外，也提供各種[機器大小](../../../virtual-machines/sizes.md)。 虛擬機器映像庫可讓您使用正確的版本、版次及作業系統建立 SQL Server VM。 這可讓虛擬機器成為許多不同 SQL Server 工作負載的適合選項。
 
-如果您不熟悉 Azure VM 上的 SQL Server，請參閱我們深入的 [Azure SQL 影片系列](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)中的  *Azure VM 上的 SQL Server 概觀*影片：
+如果您不熟悉 Azure VM 上的 SQL Server，請參閱我們深入的 [Azure SQL 影片系列](https://channel9.msdn.com/Series/Azure-SQL-for-Beginners?WT.mc_id=azuresql4beg_azuresql-ch9-niner)中的  *Azure VM 上的 SQL Server 概觀* 影片：
 > [!VIDEO https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61/player]
 
 ## <a name="automated-updates"></a>自動化更新
@@ -42,7 +42,7 @@ Azure 虛擬機器上的 SQL Server 可以利用[自動修補](automated-patchin
 
 Azure 虛擬機器上的 SQL Server 可以利用[自動備份](automated-backup.md)，以定期建立資料庫的備份至 Blob 儲存體。 您也可以手動使用此技術。 如需詳細資訊，請參閱 [使用 Azure 儲存體進行 SQL Server 備份與還原](azure-storage-sql-server-backup-restore-use.md)。
 
-Azure 也針對在 Azure VM 中執行的 SQL Server 提供企業級備份解決方案。 完全受控備份解決方案，其支援 Always On 可用性群組、長期保留、時間點復原，以及集中管理和監視。 如需詳細資訊，請參閱 [Azure VM 中的 SQL Server 的 Azure 備份](https://docs.microsoft.com/azure/backup/backup-azure-sql-database)。
+Azure 也針對在 Azure VM 中執行的 SQL Server 提供企業級備份解決方案。 完全受控備份解決方案，其支援 Always On 可用性群組、長期保留、時間點復原，以及集中管理和監視。 如需詳細資訊，請參閱 [Azure VM 中的 SQL Server 的 Azure 備份](../../../backup/backup-azure-sql-database.md)。
   
 
 ## <a name="high-availability"></a>高可用性
@@ -109,7 +109,7 @@ Azure 虛擬機器提供不同的機器大小，以符合各種工作負載需�
 
 Azure 入口網站提供單一頁面，您可以在其中管理 [所有的 Azure SQL 資源，](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql)包括 SQL 虛擬機器。
 
-若要存取 **Azure SQL 資源**頁面，請選取 Azure 入口網站功能表中的 [Azure SQL]，或從任何頁面搜尋並選取 [Azure SQL]。
+若要存取 **Azure SQL 資源** 頁面，請選取 Azure 入口網站功能表中的 [Azure SQL]，或從任何頁面搜尋並選取 [Azure SQL]。
 
 ![搜尋 Azure SQL](./media/sql-server-on-azure-vm-iaas-what-is-overview/search-for-azure-sql.png)
 
@@ -135,7 +135,7 @@ Azure 入口網站提供單一頁面，您可以在其中管理 [所有的 Azure
 Azure 只會針對每個支援的作業系統、版本和版次組合，維護一個虛擬機器映像。 這表示經過一段時間會重新整理映像，而且會移除舊的映像。 如需詳細資訊，請參閱 [SQL Server VM 常見問題集](frequently-asked-questions-faq.md#images)的「映像」一節。
 
 ## <a name="customer-experience-improvement-program-ceip"></a>客戶經驗改進計畫 (CEIP)
-預設會啟用「客戶經驗改進計畫」(CEIP)。 這會定期將報表傳送至 Microsoft 以協助改進 SQL Server。 CEIP 不需要管理工作，除非您要在佈建之後將它停用。 您可以透過遠端桌面連接到 VM，以自訂或停用 CEIP。 然後執行 [SQL Server 錯誤和使用情況報告]  公用程式。 請遵循指示來停用報告功能。 如需有關資料收集的詳細資訊，請參閱 [SQL Server 隱私權聲明](https://docs.microsoft.com/sql/sql-server/sql-server-privacy)。
+預設會啟用「客戶經驗改進計畫」(CEIP)。 這會定期將報表傳送至 Microsoft 以協助改進 SQL Server。 CEIP 不需要管理工作，除非您要在佈建之後將它停用。 您可以透過遠端桌面連接到 VM，以自訂或停用 CEIP。 然後執行 [SQL Server 錯誤和使用情況報告]  公用程式。 請遵循指示來停用報告功能。 如需有關資料收集的詳細資訊，請參閱 [SQL Server 隱私權聲明](/sql/sql-server/sql-server-privacy)。
 
 ## <a name="related-products-and-services"></a>相關產品與服務
 ### <a name="windows-virtual-machines"></a>Windows 虛擬機器
@@ -150,7 +150,7 @@ Azure 只會針對每個支援的作業系統、版本和版次組合，維護�
 * [在 Azure 入口網站中建立完整格式的網域名稱](../../../virtual-machines/linux/portal-create-fqdn.md)
 
 ### <a name="sql"></a>SQL
-* [SQL Server 文件](https://docs.microsoft.com/sql/index)
+* [SQL Server 文件](/sql/index)
 * [Azure SQL Database 比較](../../azure-sql-iaas-vs-paas-what-is-overview.md)
 
 ## <a name="next-steps"></a>後續步驟
@@ -165,5 +165,5 @@ Azure 只會針對每個支援的作業系統、版本和版次組合，維護�
 
 查看在 IaaS 中的 SQL Server 上執行多層式應用程式的參考架構
 
-* [Azure 上具有 SQL Server 的 Windows 多層式架構 (N-tier) 應用程式](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
-* [在多個 Azure 區域中執行多層式架構 (N-Tier) 應用程式以獲得高可用性](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)
+* [Azure 上具有 SQL Server 的 Windows 多層式架構 (N-tier) 應用程式](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
+* [在多個 Azure 區域中執行多層式架構 (N-Tier) 應用程式以獲得高可用性](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)

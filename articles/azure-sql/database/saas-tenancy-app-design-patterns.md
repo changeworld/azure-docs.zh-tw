@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 493c18efa8bad2e366424c8c8130754ce0098913
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a13c641d50a68d9661b4aa6caf8effb82d53dd7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85250686"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793223"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>多租用戶 SaaS 資料庫租用模式
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -26,11 +26,11 @@ ms.locfileid: "85250686"
 
 ## <a name="a-saas-concepts-and-terminology"></a>A. SaaS 概念與術語
 
-在軟體即服務 (SaaS) 模型中，公司將不會出售軟體的「授權」**。 而是讓每位客戶向公司支付租金，使每位客戶成為公司的「租用戶」**。
+在軟體即服務 (SaaS) 模型中，公司將不會出售軟體的「授權」  。 而是讓每位客戶向公司支付租金，使每位客戶成為公司的「租用戶」  。
 
 每個租用戶支付租金後，便可以存取 SaaS 應用程式元件，並將資料儲存於 SaaS 系統中。
 
-「租用戶模型」** 一詞是指組織租用戶儲存資料的方式：
+「租用戶模型」  一詞是指組織租用戶儲存資料的方式：
 
 - *單一租使用者：* &nbsp;每個資料庫只會儲存一個租使用者的資料。
 - *多租使用者：* &nbsp;每個資料庫都會儲存來自多個不同租使用者的資料 (具有保護資料隱私權) 的機制。
@@ -62,7 +62,7 @@ ms.locfileid: "85250686"
 
 - **自訂能力：** &nbsp;輕鬆支援租使用者專屬或租使用者類別專屬的架構自訂。
 
-租用討論著重於「資料」** 圖。  但請考慮一下「應用程式」** 層。  應用程式層會被視為龐大的實體。  如果您將應用程式分割成許多小元件，您所選的租用模型可能會改變。  就使用的租用和儲存體技術或平台而論，您可以將某些元件視為與其他元件不同。
+租用討論著重於「資料」  圖。  但請考慮一下「應用程式」  層。  應用程式層會被視為龐大的實體。  如果您將應用程式分割成許多小元件，您所選的租用模型可能會改變。  就使用的租用和儲存體技術或平台而論，您可以將某些元件視為與其他元件不同。
 
 ## <a name="c-standalone-single-tenant-app-with-single-tenant-database"></a>C. 具有單一租用戶資料庫的獨立單一租用戶應用程式
 
@@ -82,7 +82,7 @@ ms.locfileid: "85250686"
 
 ## <a name="d-multi-tenant-app-with-database-per-tenant"></a>D. 每一租用戶一個資料庫的多租用戶應用程式
 
-下一個模式會使用具有許多資料庫的多租用戶應用程式，所有都是單一租用戶資料庫。  為每個新租用戶佈建一個新資料庫。  為每個節點新增更多資源，以垂直方式相應「增加」** 應用程式層。  或者，藉由新增更多節點，以水平方式相應「放大」** 應用程式。  縮放是以工作負載為基礎，並且與個別資料庫的數目或規模無關。
+下一個模式會使用具有許多資料庫的多租用戶應用程式，所有都是單一租用戶資料庫。  為每個新租用戶佈建一個新資料庫。  為每個節點新增更多資源，以垂直方式相應「增加」  應用程式層。  或者，藉由新增更多節點，以水平方式相應「放大」  應用程式。  縮放是以工作負載為基礎，並且與個別資料庫的數目或規模無關。
 
 ![每一租用戶一個資料庫的多租用戶應用程式設計。][image-mt-app-db-per-tenant-132d]
 
@@ -119,7 +119,7 @@ Azure SQL Database 有許多管理功能，其設計目的是要大規模管理�
 
 例如，您可以將單一租用戶自動復原到較早的時間點。  復原只需要還原儲存租用戶的一個單一租用戶資料庫。  此還原並不會影響其他租用戶，這就確認管理作業屬於每個個別租用戶的精細層級。
 
-## <a name="e-multi-tenant-app-with-multi-tenant-databases"></a>E. 具有多租用戶資料庫的多租用戶應用程式
+## <a name="e-multi-tenant-app-with-multi-tenant-databases"></a>E。 具有多租用戶資料庫的多租用戶應用程式
 
 另一個可用模式是在多租用戶資料庫中儲存許多租用戶。  應用程式執行個體可以有任意多個多租用戶資料庫。  多租用戶資料庫的結構描述必須有一或多個租用戶識別碼資料行，如此才能選擇性地擷取任何指定租用戶中的資料。  此外，結構描述可能需要只由部份租用戶使用的一些資料表或資料行。  不過，靜態程式碼與參考資料只會儲存一次，並由所有租用戶共用。
 
@@ -204,7 +204,7 @@ SQL Database 提供可搭配分區化程式庫和目錄資料庫運作的分割/
 
 [http-visual-studio-devops-485m]: https://www.visualstudio.com/devops/
 
-[docu-sql-svr-db-row-level-security-947w]: https://docs.microsoft.com/sql/relational-databases/security/row-level-security
+[docu-sql-svr-db-row-level-security-947w]: /sql/relational-databases/security/row-level-security
 
 [docu-elastic-db-client-library-536r]:elastic-database-client-library.md
 [docu-sql-db-saas-tutorial-deploy-wingtip-db-per-tenant-496y]: saas-dbpertenant-get-started-deploy.md
@@ -221,4 +221,3 @@ SQL Database 提供可搭配分區化程式庫和目錄資料庫運作的分割/
 [image-mt-app-db-per-tenant-pool-153p]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-database-per-tenant-pool-15.png "每一租用戶一個資料庫的多租用戶應用程式設計 (使用彈性集區)。"
 
 [image-mt-app-sharded-mt-db-174s]: media/saas-tenancy-app-design-patterns/saas-multi-tenant-app-sharded-multi-tenant-databases-17.png "具有分區化多租用戶資料庫的多租用戶應用程式設計。"
-

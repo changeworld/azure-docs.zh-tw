@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: b4458a2b37a3da83591e101344d08c3090868696
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 6ffb6ced6fc828733dd627943a3d4b54e8293ad2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341799"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791897"
 ---
 # <a name="stream-alerts-to-a-siem-soar-or-it-service-management-solution"></a>將警示串流至 SIEM、SOAR 或 IT 服務管理解決方案
 
@@ -63,14 +63,14 @@ Azure Sentinel 包含訂用帳戶和租使用者層級 Azure 資訊安全中心�
 - **Power BI**  - [連接到 Power BI Desktop 中的 Microsoft Graph 安全性 API](/power-bi/connect-data/desktop-connect-graph-security)
 - **ServiceNow**  - [依照指示從 ServiceNow 存放區安裝和設定 Microsoft Graph 安全性 API 應用程式](https://docs.servicenow.com/bundle/orlando-security-management/page/product/secops-integration-sir/secops-integration-ms-graph/task/ms-graph-install.html)
 - **QRadar**  - [IBM 的裝置支援模組，可透過 MICROSOFT GRAPH API 進行 Azure 資訊安全中心](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/com.ibm.dsm.doc/c_dsm_guide_ms_azure_security_center_overview.html) 
-- **Palo Alto Networks**、 **Anomali**、 **Lookout**、 **InSpark**和其他 [Microsoft Graph 安全性 API](https://www.microsoft.com/security/business/graph-security-api#office-MultiFeatureCarousel-09jr2ji)
+- **Palo Alto Networks** 、 **Anomali** 、 **Lookout** 、 **InSpark** 和其他 [Microsoft Graph 安全性 API](https://www.microsoft.com/security/business/graph-security-api#office-MultiFeatureCarousel-09jr2ji)
 
 [深入瞭解 Microsoft Graph 安全性 API](https://www.microsoft.com/security/business/graph-security-api)。
 
 
 ## <a name="stream-alerts-with-azure-monitor"></a>使用 Azure 監視器來串流警示 
 
-將警示串流至 **ArcSight**、 **Splunk**、 **SumoLogic**、Syslog Server、 **LogRhythm**、 **Logz.io Cloud 可檢視性 Platform**和其他監視解決方案。 透過 Azure 事件中樞將「安全性中心」與「Azure 監視器」連線：
+將警示串流至 **ArcSight** 、 **Splunk** 、 **SumoLogic** 、Syslog Server、 **LogRhythm** 、 **Logz.io Cloud 可檢視性 Platform** 和其他監視解決方案。 透過 Azure 事件中樞將「安全性中心」與「Azure 監視器」連線：
 
 1. 啟用 [連續匯出](continuous-export.md) ，以將安全性中心警示串流至訂用帳戶層級的專用 Azure 事件中樞。 
     > [!TIP]
@@ -90,4 +90,4 @@ Azure Sentinel 包含訂用帳戶和租使用者層級 Azure 資訊安全中心�
 
 - [什麼是 Azure Sentinel？](../sentinel/overview.md)
 - [Azure 資訊安全中心中的警示驗證](security-center-alert-validation.md) -確認已正確設定您的警示
-- [持續匯出安全性警示和建議](continuous-export.md)
+- [持續匯出安全中心資料](continuous-export.md)

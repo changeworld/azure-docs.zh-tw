@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: e3eb6b750c805951a67a2e869c862f1285a342a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a40ffab652a6ae8671d6cd1c0dd9336764ce2c4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448325"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791931"
 ---
 # <a name="respond-to-azure-defender-for-key-vault-alerts"></a>回應適用於 Key Vault 的 Azure Defender 警示
 當您從 Azure Defender 針對 Key Vault 收到警示時，建議您調查並回應警示，如下所述。 適用于 Key Vault 的 Azure Defender 可保護應用程式和認證，因此即使您熟悉觸發警示的應用程式或使用者，也請務必確認每個警示周圍的狀況。  
@@ -32,7 +32,7 @@ Azure Defender for Key Vault 的每個警示都包含下列元素：
 1. 如果您可以識別租使用者中的流量來源，請洽詢該應用程式的使用者或擁有者。 
 
 > [!CAUTION]
-> 適用于 Key Vault 的 Azure Defender 是設計用來協助識別遭竊認證所造成的可疑活動。 因為您辨識使用者或應用程式，所以**請勿**關閉警示。 請聯繫應用程式或使用者的擁有者，並確認活動是否合法。 如有必要，您可以建立隱藏專案規則來消除雜訊。 深入瞭解如何 [從 Azure Defender 隱藏警示](alerts-suppression-rules.md)。
+> 適用于 Key Vault 的 Azure Defender 是設計用來協助識別遭竊認證所造成的可疑活動。 因為您辨識使用者或應用程式，所以 **請勿** 關閉警示。 請聯繫應用程式或使用者的擁有者，並確認活動是否合法。 如有必要，您可以建立隱藏專案規則來消除雜訊。 深入瞭解如何 [從 Azure Defender 隱藏警示](alerts-suppression-rules.md)。
 
 
 ## <a name="step-2-immediate-mitigation"></a>步驟 2： 立即緩和 
@@ -72,4 +72,4 @@ Azure Defender for Key Vault 的每個警示都包含下列元素：
 
 - [適用於 Key Vault 的 Azure Defender 簡介](defender-for-key-vault-introduction.md)
 - [隱藏來自 Azure Defender 的警示](alerts-suppression-rules.md)
-- [匯出安全性警示](continuous-export.md)
+- [持續匯出安全中心資料](continuous-export.md)

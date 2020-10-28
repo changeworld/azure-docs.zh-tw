@@ -10,12 +10,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: 7bd2b404627e21a80fc41a4561300d7252d1519c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed31ff5d77b258d141a77fc174c2d5452adf7d01
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84324382"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791710"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL 超大規模效能疑難排解診斷
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "84324382"
 
 下列等候類型 (于 [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)) 說明在主要計算複本上進行記錄速率節流的原因：
 
-|等候類型    |說明                         |
+|等候類型    |描述                         |
 |-------------          |------------------------------------|
 |RBIO_RG_STORAGE        | 當超大規模資料庫主要計算節點記錄產生速率因為頁面伺服器 () 的延遲記錄耗用量而受到節流時發生。         |
 |RBIO_RG_DESTAGE        | 當超大規模資料庫計算節點記錄產生速率因為長期記錄儲存體的延遲記錄耗用量而受到節流時，就會發生這種情況。         |
@@ -97,7 +97,7 @@ ms.locfileid: "84324382"
 
 ## <a name="data-io-in-resource-utilization-statistics"></a>資源使用量統計資料中的資料 IO
 
-在非超大規模資料庫中，資料檔案的相關讀取和寫入 IOPS （相對於 [資源治理](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) 資料 IOPS 限制）會在資料行中 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 和 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 視圖中報告 `avg_data_io_percent` 。 Azure 入口網站中的相同值回報為 _資料 IO 百分比_。
+在非超大規模資料庫中，資料檔案的相關讀取和寫入 IOPS （相對於 [資源治理](./resource-limits-logical-server.md#resource-governance) 資料 IOPS 限制）會在資料行中 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 和 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 視圖中報告 `avg_data_io_percent` 。 Azure 入口網站中的相同值回報為 _資料 IO 百分比_ 。
 
 在超大規模資料庫中，此資料行會報告相對於計算複本上的本機儲存體限制的資料 IOPS 使用量，特別是針對 RBPEX 和的 IO `tempdb` 。 此資料行中的100% 值表示資源管理會限制本機儲存體 IOPS。 如果這與效能問題相互關聯，請調整工作負載以產生較少的 IO，或增加資料庫服務目標來增加資源管理的 _最大資料 IOPS_ [限制](resource-limits-vcore-single-databases.md)。 針對 RBPEX 讀取和寫入的資源管理，系統會計算個別的 8 KB IOs，而不是由 SQL Server 資料庫引擎所發出的較大 IOs。
 

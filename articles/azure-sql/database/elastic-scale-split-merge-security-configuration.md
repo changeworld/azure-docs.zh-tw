@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: b90f86576928e44e00c548f4f3ad3c22c27b8bb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 235efc550fd47d4244a5bf081c75d5e824a8e4b4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85829428"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793427"
 ---
 # <a name="split-merge-security-configuration"></a>分割合併安全性設定
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,18 +32,18 @@ ms.locfileid: "85829428"
 
 ## <a name="to-obtain-certificates"></a>取得憑證
 
-您可以從公用憑證授權單位 (CA) 或從 [Windows 憑證服務](https://msdn.microsoft.com/library/windows/desktop/aa376539.aspx)取得憑證。 這些是取得憑證的慣用方法。
+您可以從公用憑證授權單位 (CA) 或從 [Windows 憑證服務](/windows/win32/seccrypto/certificate-services)取得憑證。 這些是取得憑證的慣用方法。
 
-如果這些選項都無法使用，您可以產生 **自我簽署憑證**。
+如果這些選項都無法使用，您可以產生 **自我簽署憑證** 。
 
 ## <a name="tools-to-generate-certificates"></a>產生憑證的工具
 
-* [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
-* [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
+* [makecert.exe](/previous-versions/dotnet/netframework-4.0/bfsktky3(v=vs.100))
+* [pvk2pfx.exe](/windows-hardware/drivers/devtest/pvk2pfx)
 
 ### <a name="to-run-the-tools"></a>執行工具
 
-* 從 Visual Studio 的開發人員命令提示字元，請參閱 [Visual Studio 命令提示字元](https://msdn.microsoft.com/library/ms229859.aspx) 
+* 從 Visual Studio 的開發人員命令提示字元，請參閱 [Visual Studio 命令提示字元](/dotnet/framework/tools/developer-command-prompt-for-vs) 
   
     如果已安裝，請移至：
   
@@ -124,7 +124,7 @@ ms.locfileid: "85829428"
 預設組態會允許對 HTTPS 端點的所有存取。 這項設定可能會進一步限制。
 
 ### <a name="changing-the-configuration"></a>變更組態
-適用于和端點的存取控制規則群組會在 **\<EndpointAcls>** **服務設定檔**的區段中設定。
+適用于和端點的存取控制規則群組會在 **\<EndpointAcls>** **服務設定檔** 的區段中設定。
 
 ```xml
 <EndpointAcls>
@@ -441,31 +441,31 @@ MyID.pvk and MyID.cer with the filename for the encryption certificate
 
 1. 執行 mmc.exe。
 2. [檔案] -> [新增/移除嵌入式管理單元]
-3. 選取 [ **憑證**]。
-4. 按一下 [新增] 。
+3. 選取 [ **憑證** ]。
+4. 按一下 [新增]  。
 5. 選擇憑證存放區位置。
 6. 按一下 [完成] 。
-7. 按一下 [確定]  。
+7. 按一下 [確定]。
 8. 展開 [憑證]  。
 9. 展開憑證存放區節點。
 10. 展開 [憑證] 子節點。
 11. 在清單中選取憑證。
 
 ## <a name="export-certificate"></a>匯出憑證
-在 [ **憑證匯出精靈**] 中：
+在 [ **憑證匯出精靈** ] 中：
 
-1. 按一下 [下一步]。
-2. 選取 [是]****，再選取 [匯出私密金鑰]****。
-3. 按一下 [下一步]。
+1. 按 [下一步]  。
+2. 選取 [是]  ，再選取 [匯出私密金鑰]  。
+3. 按 [下一步]  。
 4. 選取想要的輸出檔案格式。
 5. 核取所需的選項。
-6. 核取 [ **密碼**]。
+6. 核取 [ **密碼** ]。
 7. 輸入強式密碼並加以確認。
-8. 按一下 [下一步]。
+8. 按 [下一步]  。
 9. 輸入或瀏覽至用來儲存憑證的檔案名稱 (使用 .PFX 副檔名)。
-10. 按 [下一步] 。
+10. 按 [下一步]  。
 11. 按一下 [完成] 。
-12. 按一下 [確定]  。
+12. 按一下 [確定]。
 
 ## <a name="import-certificate"></a>匯入憑證
 在 [憑證匯入精靈] 中：
@@ -474,7 +474,7 @@ MyID.pvk and MyID.cer with the filename for the encryption certificate
    
    * 如果只有在目前使用者下執行的處理程序會存取服務，請選取 [ **目前使用者** ]
    * 如果這台電腦中的其他處理程序會存取服務，請選取 [ **本機電腦** ]
-2. 按一下 [下一步]。
+2. 按 [下一步]  。
 3. 如果從檔案匯入，請確認檔案路徑。
 4. 如果匯入 .PFX 檔案：
    1. 輸入密碼以保護私密金鑰
@@ -484,7 +484,7 @@ MyID.pvk and MyID.cer with the filename for the encryption certificate
 7. 選取所需的存放區。
 8. 按一下 [完成] 。
    
-   * 若已選擇 [受信任的根憑證授權單位] 存放區，請按一下 [ **是**]。
+   * 若已選擇 [受信任的根憑證授權單位] 存放區，請按一下 [ **是** ]。
 9. 在所有對話方塊視窗上，按一下 [ **確定** ]。
 
 ## <a name="upload-certificate"></a>Upload certificate
@@ -492,8 +492,8 @@ MyID.pvk and MyID.cer with the filename for the encryption certificate
 
 1. 選取 [雲端服務]。
 2. 選取雲端服務。
-3. 按一下頂端功能表的 [ **憑證**]。
-4. 按一下底列的 [ **上傳**]。
+3. 按一下頂端功能表的 [ **憑證** ]。
+4. 按一下底列的 [ **上傳** ]。
 5. 選取憑證檔。
 6. 如果是 .PFX 檔案，請輸入私密金鑰的密碼。
 7. 完成後，從清單中的新項目複製憑證指紋。
@@ -508,4 +508,3 @@ MyID.pvk and MyID.cer with the filename for the encryption certificate
 這個資料庫中儲存的認證會被加密。 此外，最佳作法是確定服務部署的 Web 和背景工作角色保持在最新狀態且安全，因為它們都能存取中繼資料資料庫和用來加密和解密已儲存的認證。 
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]
-

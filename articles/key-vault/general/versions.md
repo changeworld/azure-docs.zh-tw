@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 06/30/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 58c5fdcfef5e866d0c69d65412582c0ed649f7c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2396aac67a17352987d9d6e3b49535c19ffe8917
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86230820"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792373"
 ---
 # <a name="key-vault-versions"></a>Key Vault 版本
 
@@ -33,7 +33,7 @@ Key Vault「攜帶您自己的金鑰」 (BYOK) 現已正式發行。 請參閱 [
 ## <a name="2019"></a>2019
 
 - 下一代 Azure Key Vault SDK 發行版本。 如需用法範例，請參閱適用於 [Python](../secrets/quick-create-python.md)、[.NET](../secrets/quick-create-net.md)、[Java](../secrets/quick-create-java.md) 和 [Node.js](../secrets/quick-create-node.md) 的 Azure Key Vault 祕密快速入門
-- 管理金鑰保存庫憑證的新 Azure 原則。 請參閱[適用於 Key Vault 的 Azure 原則內建定義](../policy-samples.md)。
+- 管理金鑰保存庫憑證的新 Azure 原則。 請參閱[適用於 Key Vault 的 Azure 原則內建定義](../policy-reference.md)。
 - Azure Key Vault 虛擬機器擴充功能現已正式發行。  請參閱[適用於 Linux 的 Key Vault 虛擬機器擴充功能](../../virtual-machines/extensions/key-vault-linux.md)和[適用於 Windows 的 Key Vault 虛擬機器擴充功能](../../virtual-machines/extensions/key-vault-windows.md)。
 - Azure 事件方格現已提供 Azure Key Vault 事件驅動的祕密管理。 如需詳細資訊，請參閱 [Azure Key Vault 中的事件方格結構描述](../../event-grid/event-schema-key-vault.md]，並了解如何[使用 Azure 事件方格接收和回應金鑰保存庫通知](event-grid-tutorial.md)。
 
@@ -49,8 +49,8 @@ Key Vault「攜帶您自己的金鑰」 (BYOK) 現已正式發行。 請參閱 [
 
 今年發行的新功能：
 
-- 受控儲存體帳戶金鑰。 儲存體帳戶金鑰功能已新增可與 Azure 儲存體更輕鬆地整合。 如需詳細資訊，請參閱概觀主題：[受控儲存體帳戶金鑰概觀](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-storage-keys)。
-- 虛刪除。 虛刪除功能，改善金鑰保存庫和金鑰保存庫物件的資料保護。 如需詳細資訊，請參閱概觀主題：[虛刪除概觀](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)。
+- 受控儲存體帳戶金鑰。 儲存體帳戶金鑰功能已新增可與 Azure 儲存體更輕鬆地整合。 如需詳細資訊，請參閱概觀主題：[受控儲存體帳戶金鑰概觀](../secrets/overview-storage-keys.md)。
+- 虛刪除。 虛刪除功能，改善金鑰保存庫和金鑰保存庫物件的資料保護。 如需詳細資訊，請參閱概觀主題：[虛刪除概觀](./soft-delete-overview.md)。
 
 ## <a name="2015"></a>2015
 
@@ -64,7 +64,7 @@ Key Vault「攜帶您自己的金鑰」 (BYOK) 現已正式發行。 請參閱 [
 - 還原金鑰 - 已移除 "use" 欄位。     
 - 針對 RSA 演算法，已將 "RSA_OAEP" 變更為 "RSA-OAEP"。 請參閱[關於金鑰、祕密與憑證](about-keys-secrets-certificates.md)。    
  
-於 2015 年 4 月 20 日宣佈第二個預覽版本 (版本 2015-02-01-preview)。 如需詳細資訊，請參閱 [REST API 更新](https://docs.microsoft.com/archive/blogs/kv/rest-api-update)部落格文章。 已更新下列工作：
+於 2015 年 4 月 20 日宣佈第二個預覽版本 (版本 2015-02-01-preview)。 如需詳細資訊，請參閱 [REST API 更新](/archive/blogs/kv/rest-api-update)部落格文章。 已更新下列工作：
  
 - 列出保存庫中的工作 - 已將分頁支援新增至作業。
 - 列出金鑰的版本 - 已新增作業，來列出金鑰的版本。  

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 29ab7def6209483ee891dc0d26bf8163cdc39a23
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6f216a7f0851661efc61a771fc35feb71e77fd1f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165226"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792475"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上的 SQL Server 容錯移轉叢集執行個體
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,8 +30,8 @@ Azure VM 上的 SQL Server 會使用 Windows Server 容錯移轉叢集 (WSFC) �
 
 本文其餘部分著重於容錯移轉叢集執行個體與 Azure VM 上的 SQL Server 搭配使用時的差異。 若要深入了解容錯移轉叢集技術，請參閱： 
 
-- [Windows 叢集技術](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
-- [SQL Server 容錯移轉叢集執行個體](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [Windows 叢集技術](/windows-server/failover-clustering/failover-clustering-overview)
+- [SQL Server 容錯移轉叢集執行個體](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
 
 ## <a name="quorum"></a>Quorum
 
@@ -60,10 +60,10 @@ Azure VM 上的 SQL Server 提供各種選項，作為用來部署 SQL Server �
 
 [Azure 共用磁碟](../../../virtual-machines/windows/disks-shared.md)是 [Azure 受控磁碟](../../../virtual-machines/managed-disks-overview.md)的功能。 Windows Server 容錯移轉叢集支援將 Azure 共用磁碟與容錯移轉叢集執行個體搭配使用。 
 
-**支援的 OS**：全部   
-**支援的 SQL 版本**：全部     
+**支援的 OS** ：全部   
+**支援的 SQL 版本** ：全部     
 
-**優點**： 
+**優點** ： 
 - 可用於想要遷移至 Azure 的應用程式，同時讓其保持原本的高可用性和災害復原 (HADR) 架構。 
 - 可以將叢集應用程式原封不動地遷移至 Azure，因為其支援 SCSI 持續保留 (SCSI PR)。 
 - 支援共用的 Azure 進階 SSD 和 Azure Ultra 磁碟儲存體。
@@ -71,7 +71,7 @@ Azure VM 上的 SQL Server 提供各種選項，作為用來部署 SQL Server �
 - 支援 Filestream。
 
 
-**限制**： 
+**限制** ： 
 - 虛擬機器必須放在相同的可用性設定組和鄰近放置群組中。
 - 不支援可用性區域。
 - 不支援進階固態硬碟快取。
@@ -82,8 +82,8 @@ Azure VM 上的 SQL Server 提供各種選項，作為用來部署 SQL Server �
 
 [儲存空間直接存取](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)是 Azure 虛擬機器上的容錯移轉叢集所支援的 Windows Server 功能。 其提供了以軟體為基礎的虛擬 SAN。
 
-**支援的 OS**：Windows Server 2016 及更新版本   
-**支援的 SQL 版本**：SQL Server 2016 及更新版本   
+**支援的 OS** ：Windows Server 2016 及更新版本   
+**支援的 SQL 版本** ：SQL Server 2016 及更新版本   
 
 
 **優點：** 
@@ -104,8 +104,8 @@ Azure VM 上的 SQL Server 提供各種選項，作為用來部署 SQL Server �
 
 [進階檔案共用](../../../storage/files/storage-how-to-create-premium-fileshare.md)是 [Azure 檔案儲存體](../../../storage/files/index.yml)的功能。 進階檔案共用會透過 SSD 來支援，並持續保持低延遲。 在 Windows Server 2012 或更新版本上的 SQL Server 2012 或更新版本中，其完全支援與容錯移轉叢集執行個體搭配使用。 進階檔案共用提供更大的彈性，因為您無需停機即可調整檔案共用的大小和規模。
 
-**支援的 OS**：Windows Server 2012 及更新版本   
-**支援的 SQL 版本**：SQL Server 2012 及更新版本   
+**支援的 OS** ：Windows Server 2012 及更新版本   
+**支援的 SQL 版本** ：SQL Server 2012 及更新版本   
 
 **優點：** 
 - 只有適用於虛擬機器的共用儲存體解決方案會散佈到多個可用性區域。 
@@ -122,8 +122,8 @@ Azure VM 上的 SQL Server 提供各種選項，作為用來部署 SQL Server �
 
 您可以找到具有受支援儲存體的合作夥伴叢集解決方案。 
 
-**支援的 OS**：全部   
-**支援的 SQL 版本**：全部   
+**支援的 OS** ：全部   
+**支援的 SQL 版本** ：全部   
 
 其中一個範例使用 SIOS DataKeeper 作為儲存體。 如需詳細資訊，請參閱部落格文章[容錯移轉叢集和 SIOS DataKeeper](https://azure.microsoft.com/blog/high-availability-for-a-file-share-using-wsfc-ilb-and-3rd-party-software-sios-datakeeper/)。
 
@@ -131,8 +131,8 @@ Azure VM 上的 SQL Server 提供各種選項，作為用來部署 SQL Server �
 
 您也可以透過 Azure ExpressRoute 公開 iSCSI 目標共用區塊儲存體。 
 
-**支援的 OS**：全部   
-**支援的 SQL 版本**：全部   
+**支援的 OS** ：全部   
+**支援的 SQL 版本** ：全部   
 
 例如，NetApp 私用儲存體 (NPS) 會透過 ExpressRoute 使用 Equinix 將 iSCSI 目標公開至 Azure VM。
 
@@ -149,13 +149,13 @@ Azure 虛擬機器上的 SQL Server 容錯移轉叢集執行個體使用[分散�
 針對 Azure 虛擬機器上的 SQL Server 容錯移轉叢集執行個體，請考慮下列限制。 
 
 ### <a name="lightweight-resource-provider"></a>輕量資源提供者   
-目前，只能透過 [SQL Server IaaS 代理程式延伸模組](sql-server-iaas-agent-extension-automate-management.md)的[輕量管理模式](sql-vm-resource-provider-register.md#management-modes)來支援 Azure 虛擬機器上 SQL Server 容錯移轉叢集執行個體。 若要從完整的延伸模組模式變更為輕量，請刪除對應 VM 的 **SQL 虛擬機器**資源，然後在輕量模式中使用 SQL VM 資源提供者來註冊這些資源。 使用 Azure 入口網站刪除 **SQL 虛擬機器**資源時，請清除正確虛擬機器旁邊的核取方塊。 
+目前，只能透過 [SQL Server IaaS 代理程式延伸模組](sql-server-iaas-agent-extension-automate-management.md)的[輕量管理模式](sql-vm-resource-provider-register.md#management-modes)來支援 Azure 虛擬機器上 SQL Server 容錯移轉叢集執行個體。 若要從完整的延伸模組模式變更為輕量，請刪除對應 VM 的 **SQL 虛擬機器** 資源，然後在輕量模式中使用 SQL VM 資源提供者來註冊這些資源。 使用 Azure 入口網站刪除 **SQL 虛擬機器** 資源時，請清除正確虛擬機器旁邊的核取方塊。 
 
 完整的延伸模組支援自動化備份、修補和進階入口網站管理等功能。 以輕量管理模式重新安裝代理程式後，這些功能對 SQL Server VM 即不再有效。
 
 ### <a name="msdtc"></a>MSDTC 
 
-Azure 虛擬機器支援在儲存體位於叢集共用磁碟區 (CSV) 和 [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) 上的 Windows Server 2019 上使用 Microsoft 分散式交易協調器 (MSDTC)，也支援在使用 Azure 共用磁碟的 SQL Server VM 上使用 MSDTC。 
+Azure 虛擬機器支援在儲存體位於叢集共用磁碟區 (CSV) 和 [Azure Standard Load Balancer](../../../load-balancer/load-balancer-overview.md) 上的 Windows Server 2019 上使用 Microsoft 分散式交易協調器 (MSDTC)，也支援在使用 Azure 共用磁碟的 SQL Server VM 上使用 MSDTC。 
 
 在 Azure 虛擬機器上，具有叢集共用磁碟區的 Windows Server 2016 或更早版本不支援 MSDTC，因為：
 
@@ -171,4 +171,3 @@ Azure 虛擬機器支援在儲存體位於叢集共用磁碟區 (CSV) 和 [Azure
 
 - [Windows 叢集技術](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server 容錯移轉叢集執行個體](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
-

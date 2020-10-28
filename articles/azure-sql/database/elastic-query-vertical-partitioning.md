@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: daa1bbbace55281f81e04c4639b083b3e934b9f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c507a4c618713ba83d25b9defa918092db1a3c8e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443094"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792084"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>對不同結構描述的雲端資料庫執行查詢 (預覽)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,10 +36,10 @@ ms.locfileid: "91443094"
 > 與水平資料分割不同，這些 DDL 陳述式並不倚賴透過彈性資料庫用戶端程式庫來定義帶有分區對應的資料層。
 >
 
-1. [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
-3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
-4. [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx)
+1. [CREATE MASTER KEY](/sql/t-sql/statements/create-master-key-transact-sql)
+2. [CREATE DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)
+3. [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql)
+4. [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql)
 
 ## <a name="create-database-scoped-master-key-and-credentials"></a>建立資料庫範圍的主要金鑰和認證
 
@@ -63,7 +63,7 @@ SECRET = '<password>'
     CREDENTIAL = <credential_name> ) [;]
 
 > [!IMPORTANT]
-> TYPE 參數必須設定為 **RDBMS**。
+> TYPE 參數必須設定為 **RDBMS** 。
 
 ### <a name="example"></a>範例
 
@@ -120,8 +120,8 @@ select * from sys.external_tables;
 
 彈性的查詢會延伸現有的外部資料表語法來定義使用 RDBMS 類型外部資料來源的外部資料表。 垂直資料分割的外部資料表定義包含下列各方面：
 
-* **結構描述**：外部資料表 DDL 會定義您的查詢可以使用的結構描述。 外部資料表定義中提供的結構描述必須符合實際資料儲存所在之遠端資料庫中資料表的結構描述。
-* **遠端資料庫參考**：外部資料表 DDL 指的是外部資料來源。 外部資料源會指定儲存實際資料表資料之遠端資料庫的伺服器名稱和資料庫名稱。
+* **結構描述** ：外部資料表 DDL 會定義您的查詢可以使用的結構描述。 外部資料表定義中提供的結構描述必須符合實際資料儲存所在之遠端資料庫中資料表的結構描述。
+* **遠端資料庫參考** ：外部資料表 DDL 指的是外部資料來源。 外部資料源會指定儲存實際資料表資料之遠端資料庫的伺服器名稱和資料庫名稱。
 
 如上一節所述使用外部資料來源，建立外部資料表的語法如下：
 
@@ -135,7 +135,7 @@ SCHEMA_NAME 和 OBJECT_NAME 子句提供的功能可將外部資料表定義分�
 DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]  
 ```
 
-**CREATE/DROP EXTERNAL TABLE 的權限**：ALTER ANY EXTERNAL DATA SOURCE 權限對外部資料表 DDL 而言是必要的，而後者在參考基礎資料來源時也是必要的。  
+**CREATE/DROP EXTERNAL TABLE 的權限** ：ALTER ANY EXTERNAL DATA SOURCE 權限對外部資料表 DDL 而言是必要的，而後者在參考基礎資料來源時也是必要的。  
 
 ## <a name="security-considerations"></a>安全性考量
 
@@ -163,7 +163,7 @@ DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]
 
 ## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>用於遠端 T-SQL 執行的預存程序：sp\_execute_remote
 
-彈性查詢也會介紹可供直接存取遠端資料庫的預存程序。 預存程序稱為 [sp\_execute\_remote](https://msdn.microsoft.com/library/mt703714)，可用來在遠端資料庫上執行遠端預存程序或 T-SQL 程式碼。 它需要以下參數：
+彈性查詢也會介紹可供直接存取遠端資料庫的預存程序。 預存程序稱為 [sp\_execute\_remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database)，可用來在遠端資料庫上執行遠端預存程序或 T-SQL 程式碼。 它需要以下參數：
 
 * 資料來源名稱 (nvarchar)：RDBMS 類型的外部資料來源名稱。
 * 查詢 (nvarchar)：要在遠端資料庫上執行的 T-SQL 查詢。
@@ -195,7 +195,7 @@ sp\_execute\_remote 會使用叫用參數中提供的外部資料來源，在遠
 * 若要開始撰寫程式碼，請參閱 [開始使用跨資料庫查詢 (垂直資料分割)](elastic-query-getting-started-vertical.md)。
 * 如需水平資料分割 (分區化) 教學課程，請參閱[開始使用彈性查詢進行水平資料分割 (分區化)](elastic-query-getting-started.md)。
 * 如需水平資料分割之資料的語法和範例查詢，請參閱[查詢水平資料分割的資料](elastic-query-horizontal-partitioning.md)
-* 如需會在單一遠端 Azure SQL Database 或一組在水平資料分割配置中作為分區之資料庫上執行 Transact-SQL 陳述式的預存程序，請參閱 [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714)。
+* 如需會在單一遠端 Azure SQL Database 或一組在水平資料分割配置中作為分區之資料庫上執行 Transact-SQL 陳述式的預存程序，請參閱 [sp\_execute \_remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database)。
 
 <!--Image references-->
 [1]: ./media/elastic-query-vertical-partitioning/verticalpartitioning.png

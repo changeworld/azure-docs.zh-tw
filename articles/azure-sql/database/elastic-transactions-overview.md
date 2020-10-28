@@ -1,5 +1,5 @@
 ---
-title: '跨雲端資料庫的分散式交易 (preview) '
+title: 跨雲端資料庫的分散式交易 (預覽)
 description: 使用 Azure SQL Database 和 Azure SQL 受控執行個體的彈性資料庫交易總覽。
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 369f79a436d76e6a1bf1a1ce64f7754f25a5abc5
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 5504b9bc87f78682ff584006255d4e75e5e69fa7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058041"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793342"
 ---
-# <a name="distributed-transactions-across-cloud-databases-preview"></a>跨雲端資料庫的分散式交易 (preview) 
+# <a name="distributed-transactions-across-cloud-databases-preview"></a>跨雲端資料庫的分散式交易 (預覽)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL Database 和 Azure SQL 受控執行個體的彈性資料庫交易可讓您執行跨越數個資料庫的交易。 彈性資料庫交易適用于使用 ADO.NET 的 .NET 應用程式，並與使用「 [系統交易](https://msdn.microsoft.com/library/system.transactions.aspx) 」類別的熟悉程式設計經驗整合。 如要取得程式庫，請參閱 [.NET Framework 4.6.1 (Web 安裝程式)](https://www.microsoft.com/download/details.aspx?id=49981)。
-此外，也可以在 [transact-sql](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql)中使用受控執行個體分散式交易。
+Azure SQL Database 和 Azure SQL 受控執行個體的彈性資料庫交易可讓您執行跨越數個資料庫的交易。 彈性資料庫交易適用于使用 ADO.NET 的 .NET 應用程式，並與使用「 [系統交易](/dotnet/api/system.transactions) 」類別的熟悉程式設計經驗整合。 如要取得程式庫，請參閱 [.NET Framework 4.6.1 (Web 安裝程式)](https://www.microsoft.com/download/details.aspx?id=49981)。
+此外，也可以在 [transact-sql](/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql)中使用受控執行個體分散式交易。
 
 在內部部署中，這類案例通常需要執行 (MSDTC) 的 Microsoft Distributed Transaction Coordinator。 由於 MSDTC 不適用於 Azure 中的平臺即服務應用程式，因此協調分散式交易的能力現在已直接整合到 SQL Database 或受控執行個體。 應用程式可以連接到任何資料庫來啟動分散式交易，而且其中一個資料庫或伺服器會以透明的方式協調分散式交易，如下圖所示。
 
@@ -32,7 +32,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體的彈性資料庫交易可�
 
 ## <a name="common-scenarios"></a>常見的案例
 
-彈性資料庫交易可讓應用程式對儲存在數個不同資料庫中的資料進行不可部分完成的變更。 預覽版著重於 C# 和 .NET 的用戶端開發經驗。 伺服器端體驗 (以預存程式撰寫的程式碼或使用 [transact-sql](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql)) 的伺服器端腳本，僅適用于受控執行個體。
+彈性資料庫交易可讓應用程式對儲存在數個不同資料庫中的資料進行不可部分完成的變更。 預覽版著重於 C# 和 .NET 的用戶端開發經驗。 伺服器端體驗 (以預存程式撰寫的程式碼或使用 [transact-sql](/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql)) 的伺服器端腳本，僅適用于受控執行個體。
 > [!IMPORTANT]
 > 在預覽中，目前不支援在 Azure SQL Database 和 Azure SQL 受控執行個體之間執行彈性資料庫交易。 彈性資料庫交易只能跨一組 SQL 資料庫或一組受控實例。
 
@@ -136,9 +136,9 @@ SQL Database 和受控執行個體的彈性資料庫交易也支援協調分散�
 
 ## <a name="transact-sql-development-experience"></a>Transact-sql 開發經驗
 
-使用 Transact-sql 的伺服器端分散式交易僅適用于 Azure SQL 受控執行個體。 分散式交易只能在屬於相同 [伺服器信任群組](https://aka.ms/mitrusted-groups)的受控實例之間執行。 在此案例中，受控實例需要使用 [連結的伺服器](https://docs.microsoft.com/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine#TsqlProcedure) 彼此參考。
+使用 Transact-sql 的伺服器端分散式交易僅適用于 Azure SQL 受控執行個體。 分散式交易只能在屬於相同 [伺服器信任群組](../managed-instance/server-trust-group-overview.md)的受控實例之間執行。 在此案例中，受控實例需要使用 [連結的伺服器](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine#TsqlProcedure) 彼此參考。
 
-下列的 Transact-sql 程式碼範例會使用 [BEGIN DISTRIBUTED transaction](https://docs.microsoft.com/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) 來啟動分散式交易。
+下列的 Transact-sql 程式碼範例會使用 [BEGIN DISTRIBUTED transaction](/sql/t-sql/language-elements/begin-distributed-transaction-transact-sql) 來啟動分散式交易。
 
 ```Transact-SQL
 
@@ -192,7 +192,7 @@ SQL Database 和受控執行個體的彈性資料庫交易也支援協調分散�
             Helper.ExecuteNonQueryOnOpenConnection(conn, "BEGIN DISTRIBUTED TRAN");
             // ...
         }
-     
+     
         using (SqlConnection conn2 = new SqlConnection(DB1_ConnectionString)
         {
             conn2.Open();
@@ -232,19 +232,19 @@ SQL Database 和受控執行個體的彈性資料庫交易也支援協調分散�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az.Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
+> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az.Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
 
 Azure SQL Database 中的不同伺服器之間支援彈性資料庫交易。 當交易跨越伺服器界限時，參與的伺服器必須先進入相互通訊關聯性。 一旦建立通訊關聯性之後，任一部伺服器中的任何資料庫都可以和另一部伺服器中的資料庫一起參與彈性交易。 當交易跨越兩部以上的伺服器時，就必須對任何一對伺服器進行通訊關聯性。
 
 使用下列 PowerShell Cmdlet 管理跨伺服器的通訊關聯性，以進行彈性資料庫交易：
 
-* **AzSqlServerCommunicationLink**：使用此 Cmdlet 在 Azure SQL Database 中的兩部伺服器之間建立新的通訊關聯性。 關聯性是對稱的，這表示這兩部伺服器都可以起始與其他伺服器的交易。
-* **AzSqlServerCommunicationLink**：使用此 Cmdlet 來取出現有的通訊關聯性及其屬性。
-* **AzSqlServerCommunicationLink**：使用此 Cmdlet 移除現有的通訊關聯性。
+* **AzSqlServerCommunicationLink** ：使用此 Cmdlet 在 Azure SQL Database 中的兩部伺服器之間建立新的通訊關聯性。 關聯性是對稱的，這表示這兩部伺服器都可以起始與其他伺服器的交易。
+* **AzSqlServerCommunicationLink** ：使用此 Cmdlet 來取出現有的通訊關聯性及其屬性。
+* **AzSqlServerCommunicationLink** ：使用此 Cmdlet 移除現有的通訊關聯性。
 
 ## <a name="transactions-across-multiple-servers-for-azure-sql-managed-instance"></a>適用于 Azure SQL 受控執行個體的多部伺服器之間的交易
 
-Azure SQL 受控執行個體中的不同伺服器皆支援分散式交易。 當交易跨越受控執行個體界限時，參與的實例必須先進入相互安全性和通訊關聯性。 這是藉由建立 [伺服器信任群組](https://aka.ms/mitrusted-groups)來完成，這可以在 Azure 入口網站上完成。 如果受管理的實例不在相同的虛擬網路上，則必須設定 [虛擬網路對等互連](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) ，且網路安全性群組的輸入和輸出規則必須允許所有參與的虛擬網路上的埠5024和11000-12000。
+Azure SQL 受控執行個體中的不同伺服器皆支援分散式交易。 當交易跨越受控執行個體界限時，參與的實例必須先進入相互安全性和通訊關聯性。 這是藉由建立 [伺服器信任群組](../managed-instance/server-trust-group-overview.md)來完成，這可以在 Azure 入口網站上完成。 如果受管理的實例不在相同的虛擬網路上，則必須設定 [虛擬網路對等互連](../../virtual-network/virtual-network-peering-overview.md) ，且網路安全性群組的輸入和輸出規則必須允許所有參與的虛擬網路上的埠5024和11000-12000。
 
   ![Azure 入口網站上的伺服器信任群組][3]
 
@@ -254,13 +254,13 @@ Azure SQL 受控執行個體中的不同伺服器皆支援分散式交易。 當
 
 ## <a name="monitoring-transaction-status"></a>監視交易狀態
 
-使用動態管理檢視 (Dmv) 來監視進行中的彈性資料庫交易的狀態和進度。 與交易相關的所有 Dmv 都與 SQL Database 和受控執行個體中的分散式交易有關。 您可以在這裡找到對應的 DMV 清單： [交易相關的動態管理檢視和函數 (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx)。
+使用動態管理檢視 (Dmv) 來監視進行中的彈性資料庫交易的狀態和進度。 與交易相關的所有 Dmv 都與 SQL Database 和受控執行個體中的分散式交易有關。 您可以在這裡找到對應的 DMV 清單： [交易相關的動態管理檢視和函數 (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/transaction-related-dynamic-management-views-and-functions-transact-sql)。
 
 這些 DMV 特別有用：
 
-* **sys.dm\_tran\_active\_transactions**：列出目前使用中的交易及其狀態。 UOW (工作單位) 資料行可以識別屬於相同分散式交易的不同子交易。 相同分散式交易內的所有交易具有相同的 UOW 值。 如需詳細資訊，請參閱 [DMV 檔](https://msdn.microsoft.com/library/ms174302.aspx)集。
-* **sys.dm\_tran\_database\_transactions**：提供交易的其他相關資訊，例如交易在記錄檔中的位置。 如需詳細資訊，請參閱 [DMV 檔](https://msdn.microsoft.com/library/ms186957.aspx)集。
-* **sys.dm\_tran\_locks**：提供目前進行中交易所持有的鎖定相關資訊。 如需詳細資訊，請參閱 [DMV 檔](https://msdn.microsoft.com/library/ms190345.aspx)集。
+* **sys.dm\_tran\_active\_transactions** ：列出目前使用中的交易及其狀態。 UOW (工作單位) 資料行可以識別屬於相同分散式交易的不同子交易。 相同分散式交易內的所有交易具有相同的 UOW 值。 如需詳細資訊，請參閱 [DMV 檔](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-active-transactions-transact-sql)集。
+* **sys.dm\_tran\_database\_transactions** ：提供交易的其他相關資訊，例如交易在記錄檔中的位置。 如需詳細資訊，請參閱 [DMV 檔](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-database-transactions-transact-sql)集。
+* **sys.dm\_tran\_locks** ：提供目前進行中交易所持有的鎖定相關資訊。 如需詳細資訊，請參閱 [DMV 檔](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql)集。
 
 ## <a name="limitations"></a>限制
 
@@ -268,19 +268,19 @@ Azure SQL 受控執行個體中的不同伺服器皆支援分散式交易。 當
 
 * 只支援 SQL Database 中的資料庫之間的交易。 SQL Database 之外的其他 [X/OPEN XA](https://en.wikipedia.org/wiki/X/Open_XA) 資源提供者和資料庫無法參與彈性資料庫交易。 這表示彈性資料庫交易無法在內部部署 SQL Server 和 Azure SQL Database 之間延展。 對於內部部署的分散式交易，請繼續使用 MSDTC。
 * 僅支援來自 .NET 應用程式的用戶端協調交易。 目前已規劃 T-SQL 的伺服器端支援，例如 BEGIN DISTRIBUTED TRANSACTION，但尚未推出。
-* 不支援跨 WCF 服務的交易。 例如，您有執行交易的 WCF 服務方法。 納入交易範圍內的呼叫將會失敗，因為 [System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception)。
+* 不支援跨 WCF 服務的交易。 例如，您有執行交易的 WCF 服務方法。 納入交易範圍內的呼叫將會失敗，因為 [System.ServiceModel.ProtocolException](/dotnet/api/system.servicemodel.protocolexception)。
 
 下列限制目前適用于受控執行個體中的分散式交易：
 
 * 只支援受控執行個體中的資料庫之間的交易。 其他 [X/OPEN XA](https://en.wikipedia.org/wiki/X/Open_XA) 資源提供者和 Azure SQL 之外的資料庫受控執行個體不能參與分散式交易。 這表示分散式交易無法在內部部署 SQL Server 和 Azure SQL 受控執行個體之間延展。 對於內部部署的分散式交易，請繼續使用 MSDTC。
-* 不支援跨 WCF 服務的交易。 例如，您有執行交易的 WCF 服務方法。 納入交易範圍內的呼叫將會失敗，因為 [System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception)。
-* Azure SQL 受控執行個體必須是 [伺服器信任群組](https://aka.ms/mitrusted-groups) 的一部分，才能參與分散式交易。
-* [伺服器信任群組](https://aka.ms/mitrusted-groups)的限制會影響分散式交易。
+* 不支援跨 WCF 服務的交易。 例如，您有執行交易的 WCF 服務方法。 納入交易範圍內的呼叫將會失敗，因為 [System.ServiceModel.ProtocolException](/dotnet/api/system.servicemodel.protocolexception)。
+* Azure SQL 受控執行個體必須是 [伺服器信任群組](../managed-instance/server-trust-group-overview.md) 的一部分，才能參與分散式交易。
+* [伺服器信任群組](../managed-instance/server-trust-group-overview.md)的限制會影響分散式交易。
 * 參與分散式交易的受控實例必須具有私人端點的連線， (使用私人 IP 位址從部署) 的虛擬網路，然後必須使用私人 Fqdn 進行相互參考。 用戶端應用程式可以使用私人端點上的分散式交易。 此外，在 Transact-sql 會利用參考私人端點的連結伺服器時，用戶端應用程式也可以使用公用端點上的分散式交易。 下圖將說明這項限制。
   ![私人端點連線能力限制][4]
 ## <a name="next-steps"></a>後續步驟
 
-* 如有疑問，請洽詢 [Microsoft 問&SQL Database 的問題頁面](https://docs.microsoft.com/answers/topics/azure-sql-database.html)。
+* 如有疑問，請洽詢 [Microsoft 問&SQL Database 的問題頁面](/answers/topics/azure-sql-database.html)。
 * 針對功能要求，請將其新增至 [SQL Database 意見反應論壇](https://feedback.azure.com/forums/217321-sql-database/) 或 [受控執行個體論壇](https://feedback.azure.com/forums/915676-sql-managed-instance)。
 
 
@@ -290,4 +290,3 @@ Azure SQL 受控執行個體中的不同伺服器皆支援分散式交易。 當
 [2]: ./media/elastic-transactions-overview/sql-mi-distributed-transactions.png
 [3]: ./media/elastic-transactions-overview/server-trust-groups-azure-portal.png
 [4]: ./media/elastic-transactions-overview/managed-instance-distributed-transactions-private-endpoint-limitations.png
- 

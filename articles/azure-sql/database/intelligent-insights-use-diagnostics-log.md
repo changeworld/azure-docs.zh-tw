@@ -11,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/12/2020
-ms.openlocfilehash: 5fd0f14f4bbc919efd5b3c236b13654574d456d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 488d10906039327d830bfb6bcffc3163d65ad01e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334968"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792033"
 ---
 # <a name="use-the-intelligent-insights-performance-diagnostics-log-of-azure-sql-database-and-azure-sql-managed-instance-performance-issues"></a>使用 Azure SQL Database 的 Intelligent Insights 效能診斷記錄和 Azure SQL 受控執行個體效能問題
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-此頁面提供有關如何使用 [Intelligent Insights](intelligent-insights-overview.md) Azure SQL Database 所產生之效能診斷記錄的資訊，以及 Azure SQL 受控執行個體效能問題、其格式，以及自訂開發需求所包含的資料。 您可以將此診斷記錄傳送給 [Azure 監視器記錄](../../azure-monitor/insights/azure-sql.md)、 [Azure 事件中樞](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)、 [Azure 儲存體](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)或協力廠商解決方案，以取得自訂 DevOps 警示和報告功能。
+此頁面提供有關如何使用 [Intelligent Insights](intelligent-insights-overview.md) Azure SQL Database 所產生之效能診斷記錄的資訊，以及 Azure SQL 受控執行個體效能問題、其格式，以及自訂開發需求所包含的資料。 您可以將此診斷記錄傳送給 [Azure 監視器記錄](../../azure-monitor/insights/azure-sql.md)、 [Azure 事件中樞](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)、 [Azure 儲存體](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#stream-into-azure-storage)或協力廠商解決方案，以取得自訂 DevOps 警示和報告功能。
 
 > [!NOTE]
 > 智慧型深入解析是預覽功能，無法在下欄區域使用：西歐、北歐、美國西部1和美國東部1。
@@ -144,5 +144,5 @@ Intelligent Insights 效能記錄的最後部分是關於所識別之效能降�
 
 - 了解 [Intelligent Insights](intelligent-insights-overview.md) 概念。
 - 瞭解如何對 [Intelligent Insights 的效能問題進行疑難排解](intelligent-insights-troubleshoot-performance.md)。
-- 瞭解如何 [使用 Azure SQL 分析來監視效能問題](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)。
-- 了解如何[收集並取用來自 Azure 資源的記錄資料](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)。
+- 瞭解如何 [使用 Azure SQL 分析來監視效能問題](../../azure-monitor/insights/azure-sql.md)。
+- 了解如何[收集並取用來自 Azure 資源的記錄資料](../../azure-monitor/platform/platform-logs-overview.md)。

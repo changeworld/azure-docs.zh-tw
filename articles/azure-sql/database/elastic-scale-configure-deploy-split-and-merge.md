@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 02ec24677519902c299babb72e089f75dcf8b34b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71aad7699c5af6ce2a1b9d82a340138200cfb5e1
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443045"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792067"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>部署分割合併服務以在分區化資料庫之間移動資料
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,9 +39,9 @@ ms.locfileid: "91443045"
 
 ## <a name="prerequisites"></a>必要條件
 
-1. 建立將用作分割合併狀態資料庫的 Azure SQL Database 資料庫。 移至 [Azure 入口網站](https://portal.azure.com)。 建立新的 **SQL Database**。 提供資料庫名稱，並建立新的系統管理員和密碼。 請務必記錄名稱和密碼，以供稍後使用。
+1. 建立將用作分割合併狀態資料庫的 Azure SQL Database 資料庫。 移至 [Azure 入口網站](https://portal.azure.com)。 建立新的 **SQL Database** 。 提供資料庫名稱，並建立新的系統管理員和密碼。 請務必記錄名稱和密碼，以供稍後使用。
 
-1. 確定您的伺服器允許 Azure 服務與其連線。 在入口網站的 [防火牆設定]**** 中，確定 [允許存取 Azure 服務]**** 設定設為 [開啟]****。 按一下儲存圖示。
+1. 確定您的伺服器允許 Azure 服務與其連線。 在入口網站的 [防火牆設定]  中，確定 [允許存取 Azure 服務]  設定設為 [開啟]  。 按一下儲存圖示。
 
 1. 建立適用於診斷輸出的 Azure 儲存體帳戶。
 
@@ -51,20 +51,20 @@ ms.locfileid: "91443045"
 
 ### <a name="split-merge-service-configuration"></a>分割合併服務組態
 
-1. 在您下載分割合併組件的資料夾中，建立 *ServiceConfiguration.Template.cscfg* 檔案 (隨 *SplitMergeService.cspkg* 一起提供) 的複本，然後重新命名為 *ServiceConfiguration.cscfg*。
+1. 在您下載分割合併組件的資料夾中，建立 *ServiceConfiguration.Template.cscfg* 檔案 (隨 *SplitMergeService.cspkg* 一起提供) 的複本，然後重新命名為 *ServiceConfiguration.cscfg* 。
 
 1. 在文字編輯器中開啟 *ServiceConfiguration.cscfg* ，例如：會驗證憑證指紋格式等輸入的 Visual Studio。
 
 1. 建立新的資料庫或選擇現有的資料庫，做為分割合併作業的狀態資料庫，並擷取該資料庫的連接字串。
 
    > [!IMPORTANT]
-   > 目前，狀態資料庫必須使用拉丁文定序 (SQL\_Latin1\_General\_CP1\_CI\_AS)。 如需詳細資訊，請參閱 [Windows 定序名稱 (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx)。
+   > 目前，狀態資料庫必須使用拉丁文定序 (SQL\_Latin1\_General\_CP1\_CI\_AS)。 如需詳細資訊，請參閱 [Windows 定序名稱 (Transact-SQL)](/sql/t-sql/statements/windows-collation-name-transact-sql)。
 
    使用 Azure SQL Database 時，連接字串的格式通常為：
 
       `Server=<serverName>.database.windows.net; Database=<databaseName>;User ID=<userId>; Password=<password>; Encrypt=True; Connection Timeout=30`
 
-1. 在 [ElasticScaleMetadata] 設定的**SplitMergeWeb**和 **>splitmergeworker**角色區段中，在 .cscfg 檔案中輸入此連接字串 *。*
+1. 在 [ElasticScaleMetadata] 設定的 **SplitMergeWeb** 和 **>splitmergeworker** 角色區段中，在 .cscfg 檔案中輸入此連接字串 *。*
 
 1. 針對 **SplitMergeWorker** 角色，在 **WorkerRoleSynchronizationStorageAccountConnectionString** 設定中輸入有效的連接字串以連接至 Azure 儲存體。
 
@@ -76,7 +76,7 @@ ms.locfileid: "91443045"
 
 ### <a name="create-a-self-signed-certificate"></a>建立自我簽署憑證
 
-使用 [Visual Studio 開發人員命令提示字元](https://msdn.microsoft.com/library/ms229859.aspx) 視窗建立新的目錄，並從這個目錄中執行下列命令：
+使用 [Visual Studio 開發人員命令提示字元](/dotnet/framework/tools/developer-command-prompt-for-vs) 視窗建立新的目錄，並從這個目錄中執行下列命令：
 
    ```cmd
    makecert ^
@@ -87,7 +87,7 @@ ms.locfileid: "91443045"
     -sv MyCert.pvk MyCert.cer
    ```
 
-將會要求您輸入密碼來保護私密金鑰。 輸入強式密碼並加以確認。 接著會提示您輸入之後要再次使用的密碼。 最後，按一下 [是] **** ，將它匯入受信任的憑證授權單位根目錄存放區。
+將會要求您輸入密碼來保護私密金鑰。 輸入強式密碼並加以確認。 接著會提示您輸入之後要再次使用的密碼。 最後，按一下 [是]  ，將它匯入受信任的憑證授權單位根目錄存放區。
 
 ### <a name="create-a-pfx-file"></a>建立 PFX 檔案
 
@@ -99,20 +99,20 @@ ms.locfileid: "91443045"
 
 ### <a name="import-the-client-certificate-into-the-personal-store"></a>將用戶端憑證匯入個人存放區
 
-1. 在 Windows 檔案總管中，按兩下 [MyCert.pfx] **。
-2. 在 [憑證匯入精靈]**** 中，選取 [目前使用者]****，然後按 [下一步]****。
-3. 確認檔案路徑，然後按 [下一步] ****。
-4. 輸入密碼，保持核取 [包含所有延伸內容]****，然後按 [下一步]****。
-5. 保持核取 [自動選取憑證存放區…]****，然後按 [下一步]****。
-6. 按一下 [完成]**** 和 [確定]****。
+1. 在 Windows 檔案總管中，按兩下 [MyCert.pfx]  。
+2. 在 [憑證匯入精靈]  中，選取 [目前使用者]  ，然後按 [下一步]  。
+3. 確認檔案路徑，然後按 [下一步]  。
+4. 輸入密碼，保持核取 [包含所有延伸內容]  ，然後按 [下一步]  。
+5. 保持核取 [自動選取憑證存放區…]  ，然後按 [下一步]  。
+6. 按一下 [完成]  和 [確定]  。
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>將 PFX 檔案上傳至雲端服務
 
 1. 移至 [Azure 入口網站](https://portal.azure.com)。
 2. 選取 [雲端服務]。
 3. 選取您先前為分割/合併服務建立的雲端服務。
-4. 按一下頂端功能表的 [憑證] **** 。
-5. 按一下底列的 [上傳] **** 。
+4. 按一下頂端功能表的 [憑證]  。
+5. 按一下底列的 [上傳]  。
 6. 選取 PFX 檔案，並輸入與上述相同的密碼。
 7. 完成後，從清單中的新項目複製憑證指紋。
 
@@ -144,9 +144,9 @@ Web 角色：
 1. 移至 [Azure 入口網站](https://portal.azure.com)
 2. 選取您稍早建立的雲端服務。
 3. 按一下 [概觀]  。
-4. 選擇預備環境，然後按一下 [上傳]****。
+4. 選擇預備環境，然後按一下 [上傳]  。
 5. 在對話方塊中，輸入部署的標籤。 在 [封裝] 和 [設定] 中，按一下 [從本機] 並選擇 *SplitMergeService.cspkg* 檔案和您稍早設定的 cscfg 檔案。
-6. 確定已核取 [即使一或多個角色包含單一執行個體也請部署] **** 核取方塊。
+6. 確定已核取 [即使一或多個角色包含單一執行個體也請部署]  核取方塊。
 7. 點按右下方的勾號按鈕，開始進行部署。 預期會需要幾分鐘才能完成。
 
 ## <a name="troubleshoot-the-deployment"></a>疑難排解部署
@@ -162,13 +162,13 @@ Web 角色：
    `Server=<serverName>.database.windows.net; Database=<databaseName>;User ID=<user>; Password=<password>; Encrypt=True; Connection Timeout=30`
 
 - 確定伺服器名稱不是以 **https://** 開頭。
-- 確定您的伺服器允許 Azure 服務與其連線。 若要這樣做，請在入口網站中開啟資料庫，並確定 [允許存取 Azure 服務]**** 設定已設為 [開啟]。
+- 確定您的伺服器允許 Azure 服務與其連線。 若要這樣做，請在入口網站中開啟資料庫，並確定 [允許存取 Azure 服務]  設定已設為 [開啟]。
 
 ## <a name="test-the-service-deployment"></a>測試服務部署
 
 ### <a name="connect-with-a-web-browser"></a>使用網頁瀏覽器連接
 
-決定分割合併服務的 Web 端點。 您可以在入口網站中找到此端點，請移至雲端服務的 [概觀]****，查看右邊的 [網站 URL]****。 由於預設安全性設定會停用 HTTP 端點，因此以 **https://** 取代 **http://**。 在瀏覽器中載入此 URL 的網頁。
+決定分割合併服務的 Web 端點。 您可以在入口網站中找到此端點，請移至雲端服務的 [概觀]  ，查看右邊的 [網站 URL]  。 由於預設安全性設定會停用 HTTP 端點，因此以 **https://** 取代 **http://** 。 在瀏覽器中載入此 URL 的網頁。
 
 ### <a name="test-with-powershell-scripts"></a>使用 PowerShell 指令碼進行測試
 
@@ -234,7 +234,7 @@ Web 角色：
 2. 建立伺服器 (或選擇現有的伺服器) ，其中將會建立分區對應管理員和分區。
 
    > [!NOTE]
-   > *SetupSampleSplitMergeEnvironment.ps1*腳本預設會在相同的伺服器上建立所有這些資料庫，以保持腳本的簡單。 這不是分割合併服務本身的限制。
+   > *SetupSampleSplitMergeEnvironment.ps1* 腳本預設會在相同的伺服器上建立所有這些資料庫，以保持腳本的簡單。 這不是分割合併服務本身的限制。
 
    需要有具備 DB 讀取/寫入存取權的 SQL 驗證登入，分割合併服務才能移動資料和更新分區對應。 因為分割合併服務是在雲端執行，目前不支援整合式驗證。
 
@@ -324,8 +324,8 @@ Web 角色：
 1. 對於每個分區資料表，建立 **ShardedTableInfo** 物件，以描述資料表的父結構描述名稱 (選擇性，預設值為 "dbo")、資料表名稱，以及該資料表中包含分區化索引鍵的資料行名稱。
 2. 對於每個參考資料表，建立 **ReferenceTableInfo** 物件，以描述資料表的父結構描述名稱 (選擇性，預設為 "dbo") 和資料表名稱。
 3. 將上述 TableInfo 物件新增至新的 **SchemaInfo** 物件。
-4. 取得 **ShardMapManager** 物件的參考，並呼叫 **GetSchemaInfoCollection**。
-5. 將 **SchemaInfo** 新增至 **SchemaInfoCollection**，並提供分區對應名稱。
+4. 取得 **ShardMapManager** 物件的參考，並呼叫 **GetSchemaInfoCollection** 。
+5. 將 **SchemaInfo** 新增至 **SchemaInfoCollection** ，並提供分區對應名稱。
 
 在 SetupSampleSplitMergeEnvironment.ps1 指令碼中可以看見這個範例。
 
@@ -343,7 +343,7 @@ Web 角色：
 
    `[Exception] System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'dbo.InsertRequest'.`
 
-在此情況下，請檢查組態檔，特別是 **WorkerRoleSynchronizationStorageAccountConnectionString**的設定。 這個錯誤通常表示背景工作角色無法在第一次使用時成功初始化中繼資料資料庫。
+在此情況下，請檢查組態檔，特別是 **WorkerRoleSynchronizationStorageAccountConnectionString** 的設定。 這個錯誤通常表示背景工作角色無法在第一次使用時成功初始化中繼資料資料庫。
 
 [!INCLUDE [elastic-scale-include](../../../includes/elastic-scale-include.md)]
 

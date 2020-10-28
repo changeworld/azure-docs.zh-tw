@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 09/30/2020
-ms.openlocfilehash: 44dafd1b0043c2daa7065069f571f13529303a73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4473ea304176615c35205494f342922869b71ea
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614422"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793138"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>vCore 模型總覽-Azure SQL Database 和 Azure SQL 受控執行個體 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -34,8 +34,8 @@ VCore 模型中的服務層選項包括一般用途、業務關鍵和超大規�
 |-|**一般用途**|**業務關鍵**|**超大規模資料庫**|
 |---|---|---|---|
 |適用對象|大部分的商業工作負載。 提供以預算為導向、平衡且可調整的計算和儲存體選項。 |使用數個隔離的複本，為商務應用程式提供失敗的最高復原能力，並為每個資料庫複本提供最高的 i/o 效能。|大部分具有可高度擴充之儲存體和讀取規模需求的商務工作負載。  藉由允許設定一個以上的獨立資料庫複本，提供更高的失敗復原能力。 |
-|儲存體|使用遠端儲存體。<br/>**SQL Database 布建的計算**：<br/>5 GB – 4 TB<br/>**無伺服器計算**：<br/>5 GB-3 TB<br/>**SQL 受控執行個體**： 32 GB-8 TB |使用本機 SSD 儲存體。<br/>**SQL Database 布建的計算**：<br/>5 GB – 4 TB<br/>**SQL 受控執行個體**：<br/>32 GB - 4 TB |視需要彈性地自動成長儲存體。 最多可支援 100 TB 的儲存體。 使用本機 SSD 儲存體進行本機緩衝集區快取和本機資料儲存。 使用 Azure 遠端儲存體作為最終長期資料存放區。 |
-|IOPS 和輸送量 (大約) |**SQL Database**：請參閱 [單一資料庫](resource-limits-vcore-single-databases.md) 和 [彈性](resource-limits-vcore-elastic-pools.md)集區的資源限制。<br/>**SQL 受控執行個體**：請參閱 [總覽 Azure SQL 受控執行個體資源限制](../managed-instance/resource-limits.md#service-tier-characteristics)。|查看 [單一資料庫](resource-limits-vcore-single-databases.md) 和 [彈性](resource-limits-vcore-elastic-pools.md)集區的資源限制。|超大規模是多層式架構，可在多個層級進行快取。 有效的 IOPS 和輸送量會視工作負載而定。|
+|儲存體|使用遠端儲存體。<br/>**SQL Database 布建的計算** ：<br/>5 GB – 4 TB<br/>**無伺服器計算** ：<br/>5 GB-3 TB<br/>**SQL 受控執行個體** ： 32 GB-8 TB |使用本機 SSD 儲存體。<br/>**SQL Database 布建的計算** ：<br/>5 GB – 4 TB<br/>**SQL 受控執行個體** ：<br/>32 GB - 4 TB |視需要彈性地自動成長儲存體。 最多可支援 100 TB 的儲存體。 使用本機 SSD 儲存體進行本機緩衝集區快取和本機資料儲存。 使用 Azure 遠端儲存體作為最終長期資料存放區。 |
+|IOPS 和輸送量 (大約) |**SQL Database** ：請參閱 [單一資料庫](resource-limits-vcore-single-databases.md) 和 [彈性](resource-limits-vcore-elastic-pools.md)集區的資源限制。<br/>**SQL 受控執行個體** ：請參閱 [總覽 Azure SQL 受控執行個體資源限制](../managed-instance/resource-limits.md#service-tier-characteristics)。|查看 [單一資料庫](resource-limits-vcore-single-databases.md) 和 [彈性](resource-limits-vcore-elastic-pools.md)集區的資源限制。|超大規模是多層式架構，可在多個層級進行快取。 有效的 IOPS 和輸送量會視工作負載而定。|
 |可用性|1個複本，沒有讀取規模複本|3 個複本、1 個[讀取規模複本](read-scale-out.md)、<br/>區域冗余高可用性 (HA) |1個讀寫複本，加上0-4 個 [讀取規模複本](read-scale-out.md)|
 |備份|[讀取權限異地冗余儲存體 (GRS) ](../../storage/common/geo-redundant-design.md)，7-35 天 (預設為7天) |[GRS](../..//storage/common/geo-redundant-design.md)、7-35 天 (預設為7天) |Azure 遠端儲存體中以快照集為基礎的備份。 還原時可使用這些快照集進行快速復原。 備份是瞬間的，不會影響計算 i/o 效能。 還原速度很快，而且不是資料大小的作業 (需要幾分鐘的時間，而不是) 。|
 |記憶體內|不支援|支援|不支援|
@@ -104,14 +104,14 @@ To enable M-series hardware for a subscription and region, a support request mus
 ### <a name="compute-and-memory-specifications"></a>計算和記憶體規格
 
 
-|硬體世代  |計算  |Memory  |
+|硬體世代  |計算  |記憶體  |
 |:---------|:---------|:---------|
 |Gen4     |-Intel® E5-2673 v3 (Haswell) 2.4 GHz 處理器<br>-最多可布建至24個虛擬核心 (1 vCore = 1 個實體核心)   |-每個 vCore 7 GB<br>-布建高達 168 GB|
 |Gen5     |**佈建計算**<br>-Intel® E5-2673 v4 (Broadwell) 2.3-GHz、Intel® SP-8160 (Skylake) \* 和 intel® 8272CL (Cascade Lake) 2.5 GHz \* 處理器<br>-布建高達80虛擬核心 (1 vCore = 1 超執行緒) <br><br>**無伺服器計算**<br>-Intel® E5-2673 v4 (Broadwell) 2.3-GHz 和 Intel® SP-8160 (Skylake) * 處理器<br>-自動擴大至40虛擬核心 (1 vCore = 1 超執行緒) |**佈建計算**<br>-每個 vCore 5.1 GB<br>-布建高達 408 GB<br><br>**無伺服器計算**<br>-自動調整為每個 vCore 24 GB<br>-自動調整高達 120 GB 上限|
 |Fsv2 系列     |-Intel® 8168 (Skylake) 處理器<br>-採用最大的核心 turbo 頻率速度 3.4 GHz，以及最大單一核心 turbo 頻率速度 3.7 g h z。<br>-布建高達72虛擬核心 (1 vCore = 1 超執行緒) |-每個 vCore 1.9 GB<br>-布建高達 136 GB|
 |M 系列     |-Intel® E7-8890 v3 2.5 GHz 和 Intel® 8280M 2.7 GHz (Cascade Lake) 處理器<br>-布建高達128虛擬核心 (1 vCore = 1 超執行緒) |-每個 vCore 29 GB<br>-布建高達 3.7 TB|
 
-\* 在 [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 動態管理檢視中，使用 INTEL® SP-8160 (Skylake) 處理器之資料庫的硬體世代會顯示為 Gen6，而使用 INTEL® 8272CL (Cascade Lake) 的資料庫產生硬體時，會顯示為 Gen7。 無論處理器類型 (Broadwell、Skylake 或 Cascade Lake) ，所有第5代資料庫的資源限制都相同。
+\* 在 [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 動態管理檢視中，使用 INTEL® SP-8160 (Skylake) 處理器之資料庫的硬體世代會顯示為 Gen6，而使用 INTEL® 8272CL (Cascade Lake) 的資料庫產生硬體時，會顯示為 Gen7。 無論處理器類型 (Broadwell、Skylake 或 Cascade Lake) ，所有第5代資料庫的資源限制都相同。
 
 如需資源限制的詳細資訊，請參閱 [單一資料庫的資源限制 (vCore) ](resource-limits-vcore-single-databases.md)，或彈性集區 [的資源限制 (vCore) ](resource-limits-vcore-elastic-pools.md)。
 
@@ -123,7 +123,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 
 如需詳細資訊，請參閱 [建立 SQL Database](single-database-create-quickstart.md)。
 
-在 [**基本**] 索引標籤上，選取 [**計算 + 儲存體**] 區段中的 [**設定資料庫**] 連結，然後選取 [**變更**設定] 連結：
+在 [ **基本** ] 索引標籤上，選取 [ **計算 + 儲存體** ] 區段中的 [ **設定資料庫** ] 連結，然後選取 [ **變更** 設定] 連結：
 
   ![設定資料庫](./media/service-tiers-vcore/configure-sql-database.png)
 
@@ -138,7 +138,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 
   ![變更硬體](./media/service-tiers-vcore/change-hardware.png)
 
-針對集區，請在 [總覽] 頁面上選取 [ **設定**]。
+針對集區，請在 [總覽] 頁面上選取 [ **設定** ]。
 
 依照步驟來變更設定，然後選取硬體世代（如先前步驟中所述）。
 
@@ -146,7 +146,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 
 如需詳細資訊，請參閱 [建立 SQL 受控執行個體](../managed-instance/instance-create-quickstart.md)。
 
-在 [**基本**] 索引標籤上，選取 [**計算 + 儲存體**] 區段中的 [**設定資料庫**] 連結，然後選取所需的硬體世代：
+在 [ **基本** ] 索引標籤上，選取 [ **計算 + 儲存體** ] 區段中的 [ **設定資料庫** ] 連結，然後選取所需的硬體世代：
 
   ![設定 SQL 受控執行個體](./media/service-tiers-vcore/configure-managed-instance.png)
   
@@ -168,7 +168,7 @@ To enable M-series hardware for a subscription and region, a support request mus
 Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -ComputeGeneration Gen5
 ```
 
-如需詳細資訊，請參閱 [new-azsqlinstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) 命令。
+如需詳細資訊，請參閱 [new-azsqlinstance](/powershell/module/az.sql/set-azsqlinstance) 命令。
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -178,7 +178,7 @@ Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" 
 az sql mi update -g mygroup -n myinstance --family Gen5
 ```
 
-如需詳細資料，請查看 [az sql mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update) 命令。
+如需詳細資料，請查看 [az sql mi update](/cli/azure/sql/mi#az-sql-mi-update) 命令。
 
 ---
 
@@ -238,5 +238,4 @@ Approved support requests are typically fulfilled within 5 business days.
 
 - [Azure SQL Database 的 vCore 為基礎的資源限制](resource-limits-vcore-single-databases.md)。
 - 集區[Azure SQL Database 的 vCore 型資源限制](resource-limits-vcore-elastic-pools.md)。
-- [適用于 AZURE SQL 受控執行個體的 vCore 為基礎的資源限制](../managed-instance/resource-limits.md)。 
-
+- [適用于 AZURE SQL 受控執行個體的 vCore 為基礎的資源限制](../managed-instance/resource-limits.md)。

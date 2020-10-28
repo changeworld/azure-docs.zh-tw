@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: 30f6bf7629152050bc1249a1e22aff0aa30642de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e836a175b45c6fca46f9c76760e1cbaef305a47
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88209537"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792577"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>用於測試和建立原型的公用資料集
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "88209537"
 | [Open Science Data Cloud 資料](https://www.opensciencedatacloud.org/projects/) | 「Open Science Data Cloud 為科學界提供用於儲存、共用及分析 TB 和 PB 規模科學資料集的資源」。| 資料集採用各種格式。 |
 | [全球氣候資料 - WorldClim](https://worldclim.org/) | 「WorldClim 是一組全球氣候圖層 (格狀氣候資料)，包含大約 1 平方公里的空間解析。 這些資料可用於對應和空間模擬。」 | 這些檔案包含地理空間資料。 如需詳細資訊，請參閱[資料格式](https://worldclim.org/formats1)。 |
 | [人類社會相關資料 - GDELT 專案](https://www.gdeltproject.org/data.html) | 「GDELT 專案是人類社會曾建立過的最大、最詳盡且最高解析度的開放資料庫。」 | 未經處理的資料檔採用 CSV 格式。 |
-| [來自 Criteo 且可供機器學習的廣告點擊預測資料](https://labs.criteo.com/2013/12/download-terabyte-click-logs/) | 「曾公開發行的最大 ML 資料集。」 如需詳細資訊，請參閱 [Criteo 的 1 TB 點擊預測資料集](https://blogs.technet.microsoft.com/machinelearning/20../../now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/)。 | |
+| [來自 Criteo 且可供機器學習的廣告點擊預測資料](https://labs.criteo.com/2013/12/download-terabyte-click-logs/) | 「曾公開發行的最大 ML 資料集。」 如需詳細資訊，請參閱 [Criteo 的 1 TB 點擊預測資料集](/archive/blogs/machinelearning/now-available-on-azure-ml-criteos-1tb-click-prediction-dataset)。 | |
 | [來自 Lemur 專案的 ClueWeb09 文字採礦資料集](https://www.lemurproject.org/clueweb09.php/) | 「已建立 ClueWeb09 資料集，以支援資訊擷取和相關人類語言技術的研究。 其中包含在 2009 年 1 月和 2 月以 10 種語言收集的大約 10 億個網頁。」 | 請參閱[資料集資訊](https://www.lemurproject.org/clueweb09/datasetInformation.php)。|
 
 ## <a name="online-service-data"></a>線上服務資料

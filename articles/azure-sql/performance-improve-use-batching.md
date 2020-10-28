@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 487b668d9a3d934220fecf5c0896f7ef492c6775
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07334d62cee94be8b5b8dd6188c1d6354c4d584b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840484"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792594"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>如何使用批次處理來改善 Azure SQL Database 和 Azure SQL 受控執行個體應用程式效能
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體批次處理作業可大幅�
 ### <a name="note-about-timing-results-in-this-article"></a>有關本文中計時結果的注意事項
 
 > [!NOTE]
-> 結果並不是基準，主要是示範 **相對效能**。 計時至少根據 10 個測試回合的平均值。 作業插入至空的資料表。 這些測試是在 V12 以前的版本中測量，不見得符合您在 V12 資料庫中使用新的 [DTU 服務層級](database/service-tiers-dtu.md)或[虛擬核心服務層級](database/service-tiers-vcore.md)時可能遇過的輸送量。 批次處理技術的相對優點應該類似。
+> 結果並不是基準，主要是示範 **相對效能** 。 計時至少根據 10 個測試回合的平均值。 作業插入至空的資料表。 這些測試是在 V12 以前的版本中測量，不見得符合您在 V12 資料庫中使用新的 [DTU 服務層級](database/service-tiers-dtu.md)或[虛擬核心服務層級](database/service-tiers-vcore.md)時可能遇過的輸送量。 批次處理技術的相對優點應該類似。
 
 ### <a name="transactions"></a>交易
 
@@ -93,11 +93,11 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-這兩個範例實際上都使用交易。 在第一個範例中，每個個別的呼叫就是隱含的交易。 在第二個範例中，明確的交易包裝所有的呼叫。 根據[預先寫入交易記錄](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)的文件，記錄檔記錄會在交易認可時排清到磁碟。 因此，交易中包含越多呼叫，就越可能延遲到認可交易時，才會寫入交易記錄檔。 事實上，您是對寫入伺服器交易記錄檔的動作啟用批次處理。
+這兩個範例實際上都使用交易。 在第一個範例中，每個個別的呼叫就是隱含的交易。 在第二個範例中，明確的交易包裝所有的呼叫。 根據[預先寫入交易記錄](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)的文件，記錄檔記錄會在交易認可時排清到磁碟。 因此，交易中包含越多呼叫，就越可能延遲到認可交易時，才會寫入交易記錄檔。 事實上，您是對寫入伺服器交易記錄檔的動作啟用批次處理。
 
 下表顯示一些特定測試結果。 這些測試分別以有交易和無交易，執行相同的循序插入。 為了進一步觀察，第一組測試是從遠端的膝上型電腦連到 Microsoft Azure 中的資料庫執行。 第二組測試是從位在相同 Microsoft Azure 資料中心 (美國西部) 內的雲端服務和資料庫執行。 下表分別以有交易和無交易，顯示循序插入的持續時間 (以毫秒為單位)。
 
-**內部部署至 Azure**：
+**內部部署至 Azure** ：
 
 | 作業 | 沒有交易 (ms)  | 交易 (毫秒) |
 | --- | --- | --- |
@@ -106,7 +106,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 | 100 |12662 |10395 |
 | 1000 |128852 |102917 |
 
-**Azure 至 Azure (相同資料中心)**：
+**Azure 至 Azure (相同資料中心)** ：
 
 | 作業 | 沒有交易 (ms)  | 交易 (毫秒) |
 | --- | --- | --- |
@@ -120,7 +120,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 根據先前的測試結果，將單一作業包裝在交易中確實會降低效能。 但隨著您增加單一交易內的作業數目，效能改善會變得越明顯。 當所有作業都在 Microsoft Azure 資料中心內發生時，效能差異也會更明顯。 從 Microsoft Azure 資料中心外部使用 Azure SQL Database 或 Azure SQL 受控執行個體的延遲增加，減低交易所提升使用交易的效能提升。
 
-雖然使用交易可以提高效能，請繼續[遵守交易和連接的最佳做法](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms187484(v=sql.105))。 交易儘可能越短越好，並於工作完成後立即關閉資料庫連接。 使用上述範例中的陳述式可確保後續的程式碼區塊完成時關閉連接。
+雖然使用交易可以提高效能，請繼續[遵守交易和連接的最佳做法](/previous-versions/sql/sql-server-2008-r2/ms187484(v=sql.105))。 交易儘可能越短越好，並於工作完成後立即關閉資料庫連接。 使用上述範例中的陳述式可確保後續的程式碼區塊完成時關閉連接。
 
 上述範例示範只要使用兩行程式碼，就能將本機交易新增至任何 ADO.NET 程式碼。 對於執行循序插入、更新和刪除作業的程式碼，交易可以快速改善程式碼的效能。 不過，若要達到最快效能，請考慮進一步變更程式碼來利用用戶端批次處理，例如資料表值參數。
 
@@ -128,7 +128,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 ### <a name="table-valued-parameters"></a>資料表值參數
 
-資料表值參數支援使用者定義資料表類型做為 Transact-SQL 陳述式、預存程序和函數中的參數。 此用戶端批次處理技術可讓您在資料表值參數內傳送很多列的資料。 若要使用資料表值參數，請先定義資料表類型。 下列 Transact-SQL 陳述式會建立名為 **MyTableType**的資料表類型。
+資料表值參數支援使用者定義資料表類型做為 Transact-SQL 陳述式、預存程序和函數中的參數。 此用戶端批次處理技術可讓您在資料表值參數內傳送很多列的資料。 若要使用資料表值參數，請先定義資料表類型。 下列 Transact-SQL 陳述式會建立名為 **MyTableType** 的資料表類型。
 
 ```sql
     CREATE TYPE MyTableType AS TABLE
@@ -169,7 +169,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-在上述範例中， **SqlCommand**物件會從資料表值參數** \@ TestTvp**插入資料列。 先前建立的 **DataTable** 物件透過 **SqlCommand.Parameters.Add** 方法指派給此參數。 在一個呼叫中批次處理插入的效能明顯高於循序插入。
+在上述範例中， **SqlCommand** 物件會從資料表值參數 **\@ TestTvp** 插入資料列。 先前建立的 **DataTable** 物件透過 **SqlCommand.Parameters.Add** 方法指派給此參數。 在一個呼叫中批次處理插入的效能明顯高於循序插入。
 
 若要進一步改善上述範例，請使用預存程序代替文字式命令。 下列 Transact-SQL 命令會建立一個接受 **SimpleTestTableType** 資料表值參數的預存程序。
 
@@ -212,7 +212,7 @@ cmd.CommandType = CommandType.StoredProcedure;
 
 ### <a name="sql-bulk-copy"></a>SQL 大量複製
 
-SQL 大量複製是另一種將大量資料插入至目標資料庫的方式。 .NET 應用程式可以使用 **SqlBulkCopy** 類別執行大量插入作業。 **SqlBulkCopy** 在功能上類似於命令列工具 **Bcp.exe**，或 Transact-SQL 陳述式 **BULK INSERT**。 下列程式碼範例示範如何將來源 **DataTable**資料表中的資料列大量複製到目的資料表 MyTable。
+SQL 大量複製是另一種將大量資料插入至目標資料庫的方式。 .NET 應用程式可以使用 **SqlBulkCopy** 類別執行大量插入作業。 **SqlBulkCopy** 在功能上類似於命令列工具 **Bcp.exe** ，或 Transact-SQL 陳述式 **BULK INSERT** 。 下列程式碼範例示範如何將來源 **DataTable** 資料表中的資料列大量複製到目的資料表 MyTable。
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -293,7 +293,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 ### <a name="entity-framework"></a>Entity Framework
 
-[Entity Framework Core](https://docs.microsoft.com/ef/efcore-and-ef6/#saving-data) 支援批次處理。
+[Entity Framework Core](/ef/efcore-and-ef6/#saving-data) 支援批次處理。
 
 ### <a name="xml"></a>XML
 
@@ -380,7 +380,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 例如，假設有一個 Web 應用程式會追蹤每一位使用者的瀏覽歷程記錄。 在每個頁面要求上，應用程式會執行資料庫呼叫來記錄使用者的頁面檢視。 但只要緩衝使用者的瀏覽活動，再分批將此資料傳送至資料庫，就能達到更高的效能和延展性。 您可以指定經歷時間和 (或) 緩衝區大小來觸發資料庫更新。 例如，規則可以指定應該在 20 秒之後或緩衝區達到 1000 個項目時處理批次。
 
-下列程式碼範例使用 [Reactive Extensions - Rx](https://docs.microsoft.com/previous-versions/dotnet/reactive-extensions/hh242985(v=vs.103)) 處理監視類別所引發的緩衝事件。 當緩衝區填滿或達到逾時，就透過資料表值參數將使用者資料的批次傳送至資料庫。
+下列程式碼範例使用 [Reactive Extensions - Rx](/previous-versions/dotnet/reactive-extensions/hh242985(v=vs.103)) 處理監視類別所引發的緩衝事件。 當緩衝區填滿或達到逾時，就透過資料表值參數將使用者資料的批次傳送至資料庫。
 
 下列 NavHistoryData 類別塑造使用者瀏覽詳細資料的模型。 它包含使用者識別碼、存取的 URL 和存取時間等基本資訊。
 

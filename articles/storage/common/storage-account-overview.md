@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 429883a1bd9bc4df270e6a9f2965087fa3fba2dc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: fc44b7a49785a24460ea11f07e5248b266f5dfad
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488855"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793002"
 ---
 # <a name="storage-account-overview"></a>儲存體帳戶概觀
 
@@ -60,7 +60,7 @@ Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔
 
 - 您的應用程式會耗用大量交易或使用大量的異地複寫頻寬，但不需要大量的容量。 在此情況下，一般用途 v1 可能是最經濟實惠的選擇。
 
-- 您使用的 [儲存體服務 REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) 版本早于2014-02-14，或版本低於4.x 的用戶端程式庫。 您無法升級應用程式。
+- 您使用的 [儲存體服務 REST API](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) 版本早于2014-02-14，或版本低於4.x 的用戶端程式庫。 您無法升級應用程式。
 
 ### <a name="blockblobstorage-accounts"></a>BlockBlobStorage 帳戶
 
@@ -127,18 +127,18 @@ Azure 儲存體提供不同的選項，以便根據使用量模式來存取區�
 
 儲存體帳戶會在 Azure 中為您的資料提供唯一命名空間。 每個儲存在 Azure 儲存體中的物件都有一個位址，其中包含您的唯一帳戶名稱。 帳戶名稱與 Azure 儲存體服務端點的組合會形成儲存體帳戶的端點。
 
-例如，如果您的一般用途儲存體帳戶名為 mystorageaccount**，則該帳戶的預設端點如下：
+例如，如果您的一般用途儲存體帳戶名為 mystorageaccount  ，則該帳戶的預設端點如下：
 
 - Blob 儲存體： `https://*mystorageaccount*.blob.core.windows.net`
 - 資料表儲存體： `https://*mystorageaccount*.table.core.windows.net`
 - 佇列儲存體： `https://*mystorageaccount*.queue.core.windows.net`
 - Azure 檔案儲存體： `https://*mystorageaccount*.file.core.windows.net`
-- Azure Data Lake Storage Gen2： `https://*mystorageaccount*.dfs.core.windows.net` (使用 [專門針對大型資料優化的 ABFS 驅動程式](/azure/storage/blobs/data-lake-storage-introduction#key-features-of-data-lake-storage-gen2)。 ) 
+- Azure Data Lake Storage Gen2： `https://*mystorageaccount*.dfs.core.windows.net` (使用 [專門針對大型資料優化的 ABFS 驅動程式](../blobs/data-lake-storage-introduction.md#key-features-of-data-lake-storage-gen2)。 ) 
 
 > [!NOTE]
 > 區塊 blob 和 blob 儲存體帳戶只會公開 Blob 服務端點。
 
-藉由將物件在儲存體帳戶中的位置附加至端點，以建立用來存取儲存體帳戶中物件的 URL。 例如，blob 位址可能會有如下格式︰ http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*。
+藉由將物件在儲存體帳戶中的位置附加至端點，以建立用來存取儲存體帳戶中物件的 URL。 例如，blob 位址可能會有如下格式︰ http:// *mystorageaccount* .blob.core.windows.net/ *mycontainer*/*myblob* 。
 
 您也可以將儲存體帳戶設定為使用 Blob 的自訂網域。 如需詳細資訊，請參閱[為 Azure 儲存體帳戶設定自訂網域名稱](../blobs/storage-custom-domain-name.md)。  
 
@@ -151,7 +151,7 @@ Azure 儲存體提供不同的選項，以便根據使用量模式來存取區�
 您可以使用下列任何一種方法，授與您儲存體帳戶中資料的存取權：
 
 - **Azure Active Directory：** 使用 Azure Active Directory (Azure AD) 認證來驗證使用者、群組或其他身分識別，以存取 blob 和佇列資料。 如果身分識別驗證成功，Azure AD 會傳回一個權杖，以使用於對 Azure Blob 儲存體或佇列儲存體的要求授權。 如需詳細資訊，請參閱[使用 Azure Active Directory 來驗證 Azure 儲存體的存取權](storage-auth-aad.md)。
-- **共用金鑰授權：** 使用儲存體帳戶存取金鑰來建構一個連接字串，以便您的應用程式在執行階段用來存取 Azure 儲存體。 連接字串中的值用來建構會傳遞至 Azure 儲存體的「授權」** 標頭。 如需詳細資訊，請參閱[設定 Azure 儲存體連接字串](storage-configure-connection-string.md)。
+- **共用金鑰授權：** 使用儲存體帳戶存取金鑰來建構一個連接字串，以便您的應用程式在執行階段用來存取 Azure 儲存體。 連接字串中的值用來建構會傳遞至 Azure 儲存體的「授權」  標頭。 如需詳細資訊，請參閱[設定 Azure 儲存體連接字串](storage-configure-connection-string.md)。
 - **共用存取** 簽章：如果您未使用 Azure AD 的授權，請使用共用存取簽章來委派儲存體帳戶中資源的存取權。 共用存取簽章是一個權杖，可封裝在 URL 上對 Azure 儲存體的要求授權所需的資訊。 您可以將儲存體資源、授與的權限，以及權限有效的間隔指定為共用存取簽章的一部分。 如需詳細資訊，請參閱[使用共用存取簽章 (SAS)](storage-sas-overview.md)。
 
 > [!NOTE]
@@ -167,7 +167,7 @@ Microsoft 會提供一些公用程式和程式庫，以便將從內部部署儲�
 
 ### <a name="azcopy"></a>AzCopy
 
-AzCopy 為 Windows 命令列公用程式，可以極高效能將資料複製到 Azure 儲存體，以及從 Azure 儲存體複製資料。 您可以使用 AzCopy 將資料從現有一般用途的儲存體帳戶複製到 Blob 儲存體帳戶中，或從內部部署儲存體裝置上傳資料。 如需詳細資訊，請參閱 [使用 AzCopy 傳輸資料 Command-Line 公用程式](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+AzCopy 為 Windows 命令列公用程式，可以極高效能將資料複製到 Azure 儲存體，以及從 Azure 儲存體複製資料。 您可以使用 AzCopy 將資料從現有一般用途的儲存體帳戶複製到 Blob 儲存體帳戶中，或從內部部署儲存體裝置上傳資料。 如需詳細資訊，請參閱 [使用 AzCopy 傳輸資料 Command-Line 公用程式](./storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)。
 
 ### <a name="data-movement-library"></a>資料移動程式庫
 

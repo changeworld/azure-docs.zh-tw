@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 06/19/2019
-ms.openlocfilehash: 5fca46e7bf80504632e0894deefa1805a080b3b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4709bf901ed74e0ea7589824a280651f8b73866
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442731"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793376"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>教學課程：將 Azure SQL Database 新增至自動容錯移轉群組
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -77,19 +77,19 @@ ms.locfileid: "91442731"
 
 1. 在 [容錯移轉群組] 頁面上輸入或選取下列值，然後選取 [建立]：
 
-   - **容錯移轉群組名稱**：輸入唯一的容錯移轉群組名稱，例如 `failovergrouptutorial`。
-   - **次要伺服器**：選取 [設定必要設定] 選項，然後選擇 [建立新的伺服器]。 或者，您也可以選擇已經存在的伺服器作為次要伺服器。 輸入下列值之後，選取 [選取]。
-      - **伺服器名稱**：輸入次要伺服器的唯一名稱，例如 `mysqlsecondary`。
-      - **伺服器管理員登入**：輸入 `azureuser`
-      - **密碼**：輸入符合密碼需求的複雜密碼。
-      - **位置**：從下拉式清單中選擇位置，例如 `East US`。 此位置不能與您的主要伺服器位於相同的位置。
+   - **容錯移轉群組名稱** ：輸入唯一的容錯移轉群組名稱，例如 `failovergrouptutorial`。
+   - **次要伺服器** ：選取 [設定必要設定] 選項，然後選擇 [建立新的伺服器]。 或者，您也可以選擇已經存在的伺服器作為次要伺服器。 輸入下列值之後，選取 [選取]。
+      - **伺服器名稱** ：輸入次要伺服器的唯一名稱，例如 `mysqlsecondary`。
+      - **伺服器管理員登入** ：輸入 `azureuser`
+      - **密碼** ：輸入符合密碼需求的複雜密碼。
+      - **位置** ：從下拉式清單中選擇位置，例如 `East US`。 此位置不能與您的主要伺服器位於相同的位置。
 
      > [!NOTE]
      > 伺服器登入和防火牆設定必須符合主要伺服器的設定。
 
      ![建立容錯移轉群組的次要伺服器](./media/failover-group-add-single-database-tutorial/create-secondary-failover-server.png)
 
-   - **群組中的資料庫**：選取次要伺服器之後，此選項就會解除鎖定。 請將其選取，以**選取要新增的資料庫**，然後選擇您在第 1 節中建立的資料庫。 將資料庫新增到容錯移轉群組後，將會自動啟動異地複寫程序。
+   - **群組中的資料庫** ：選取次要伺服器之後，此選項就會解除鎖定。 請將其選取，以 **選取要新增的資料庫** ，然後選擇您在第 1 節中建立的資料庫。 將資料庫新增到容錯移轉群組後，將會自動啟動異地複寫程序。
 
    ![將 SQL 資料庫新增至容錯移轉群組](./media/failover-group-add-single-database-tutorial/add-sqldb-to-failover-group.png)
 
@@ -373,7 +373,7 @@ ms.locfileid: "91442731"
 
 | Command | 注意 |
 |---|---|
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | 刪除資源群組，包括所有的巢狀資源。 |
+| [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | 刪除資源群組，包括所有的巢狀資源。 |
 
 ---
 
@@ -417,7 +417,7 @@ ms.locfileid: "91442731"
 | [az sql failover-group create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | 在 Azure SQL Database 中建立容錯移轉群組。 |
 | [az sql failover-group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | 列出 Azure SQL Database 中伺服器的容錯移轉群組。 |
 | [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | 從目前的主伺服器容錯移轉所有資料庫，以設定容錯移轉群組的主要複本。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | 刪除資源群組，包括所有的巢狀資源。 |
+| [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | 刪除資源群組，包括所有的巢狀資源。 |
 
 # <a name="the-portal"></a>[入口網站](#tab/azure-portal)
 

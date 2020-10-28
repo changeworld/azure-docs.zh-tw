@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 3a0b40b91aad388cb42222ead8da4f2bd91947ee
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 848f3cd2d5719d62e39f46c166d51e09ec89bd4c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165229"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792509"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>在 Azure Vm 上建立具有儲存空間直接存取 (SQL Server 的 FCI) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -69,7 +69,7 @@ ms.locfileid: "92165229"
    若要從 UI 安裝容錯移轉叢集，請在兩個虛擬機器上執行下列步驟：
 
    1. 在 [伺服器管理員] 中，選取 [管理]，然後選取 [新增角色和功能]。
-   1. 在 [ **新增角色及功能** ] 嚮導中選取 **[下一步** ]，直到您進入 **選取功能**為止。
+   1. 在 [ **新增角色及功能** ] 嚮導中選取 **[下一步** ]，直到您進入 **選取功能** 為止。
    1. 在 [選取功能] 中，選取 [容錯移轉叢集]。 選取所有所需功能與管理工具。 
    1. 選取 [新增功能]。
    1. 選取 [下一步]，然後選取 [完成] 以安裝功能。
@@ -81,7 +81,7 @@ ms.locfileid: "92165229"
    Invoke-Command  $nodes {Install-WindowsFeature Failover-Clustering -IncludeAllSubFeature -IncludeManagementTools}
    ```
 
-如需後續步驟的詳細資訊，請參閱 [使用 Windows Server 2016 中的儲存空間直接存取超融合式解決方案](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-3-configure-storage-spaces-direct)的「步驟3：設定儲存空間直接存取」一節中的指示。
+如需後續步驟的詳細資訊，請參閱 [使用 Windows Server 2016 中的儲存空間直接存取超融合式解決方案](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-3-configure-storage-spaces-direct)的「步驟3：設定儲存空間直接存取」一節中的指示。
 
 
 ## <a name="validate-the-cluster"></a>驗證叢集
@@ -150,9 +150,9 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 ## <a name="add-storage"></a>新增儲存體
 
-儲存空間直接存取的磁碟必須是空的。 其不能包含磁碟分割或其他資料。 若要清除磁片，請遵循 [部署儲存空間直接存取](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct?redirectedfrom=MSDN#step-31-clean-drives)中的指示。
+儲存空間直接存取的磁碟必須是空的。 其不能包含磁碟分割或其他資料。 若要清除磁片，請遵循 [部署儲存空間直接存取](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-31-clean-drives)中的指示。
 
-1. [啟用儲存空間直接存取](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-35-enable-storage-spaces-direct)。
+1. [啟用儲存空間直接存取](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-35-enable-storage-spaces-direct)。
 
    下列 PowerShell 指令碼會啟用儲存空間直接存取：  
 
@@ -160,9 +160,9 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
    Enable-ClusterS2D
    ```
 
-   現在，您可以在**容錯移轉管理員**中看到儲存集區。
+   現在，您可以在 **容錯移轉管理員** 中看到儲存集區。
 
-1. [建立磁碟區](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct#step-36-create-volumes)。
+1. [建立磁碟區](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-36-create-volumes)。
 
    儲存空間直接存取會在啟用時自動建立儲存集區。 您現在可開始建立磁碟區。 PowerShell Cmdlet `New-Volume` 會自動化磁碟區的建立流程。 此套裝程式含格式化、將磁片區新增至叢集，以及建立 CSV。 此範例會建立 800 gb (GB) CSV：
 
@@ -180,7 +180,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 ## <a name="test-cluster-failover"></a>測試叢集容錯移轉
 
-測試叢集的容錯移轉。 在**容錯移轉叢集管理員**中，以滑鼠右鍵按一下您的叢集，然後選取 [**其他動作**]  >  **移動核心叢集資源**  >  **選取節點**，然後選取叢集的其他節點。 將核心叢集資源移到叢集的每個節點，再移回主要節點。 如果您可成功地將叢集移至每個節點，即可開始安裝 SQL Server。  
+測試叢集的容錯移轉。 在 **容錯移轉叢集管理員** 中，以滑鼠右鍵按一下您的叢集，然後選取 [ **其他動作** ]  >  **移動核心叢集資源**  >  **選取節點** ，然後選取叢集的其他節點。 將核心叢集資源移到叢集的每個節點，再移回主要節點。 如果您可成功地將叢集移至每個節點，即可開始安裝 SQL Server。  
 
 :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="將核心資源移至其他節點以測試叢集容錯移轉":::
 
@@ -190,7 +190,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 使用 RDP 連線到第一部虛擬機器。
 
-1. 在 **容錯移轉叢集管理員**中，請確定所有核心叢集資源都位於第一部虛擬機器上。 如有必要，請將所有資源移至該虛擬機器。
+1. 在 **容錯移轉叢集管理員** 中，請確定所有核心叢集資源都位於第一部虛擬機器上。 如有必要，請將所有資源移至該虛擬機器。
 
 1. 找出安裝媒體。 若虛擬機器是使用其中一個 Azure Marketplace 映像，則媒體會位於 `C:\SQLServer_<version number>_Full`。 選取 [設定]。
 
@@ -211,7 +211,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 1. 選取 [將節點新增到 SQL Server 容錯移轉叢集]。 遵循精靈中的指示來安裝 SQL Server，並將伺服器新增到 FCI。
 
    >[!NOTE]
-   >若曾使用過包含 SQL Server 的 Azure Marketplace 資源庫映像，則映像會包含 SQL Server 工具。 若沒有用過其中一個映像，請另外安裝 SQL Server 工具。 如需詳細資訊，請參閱 [Download SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)(下載 SQL Server Management Studio (SSMS))。
+   >若曾使用過包含 SQL Server 的 Azure Marketplace 資源庫映像，則映像會包含 SQL Server 工具。 若沒有用過其中一個映像，請另外安裝 SQL Server 工具。 如需詳細資訊，請參閱 [Download SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)(下載 SQL Server Management Studio (SSMS))。
    >
 
 
@@ -237,7 +237,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 ## <a name="limitations"></a>限制
 
-- Azure 虛擬機器支援 Windows Server 2019 上的 Microsoft Distributed Transaction Coordinator (MSDTC) ，並在 Csv 和 [標準負載平衡器](../../../load-balancer/load-balancer-standard-overview.md)上使用儲存體。
+- Azure 虛擬機器支援 Windows Server 2019 上的 Microsoft Distributed Transaction Coordinator (MSDTC) ，並在 Csv 和 [標準負載平衡器](../../../load-balancer/load-balancer-overview.md)上使用儲存體。
 - 只有在將存放裝置新增至叢集時，未核取或清除磁片資格選項時，才儲存空間直接存取可以搭配使用，以 NTFS 格式的磁片來連接的磁片。 
 - 只支援以 [輕量管理模式](sql-vm-resource-provider-register.md#management-modes) 向 SQL VM 資源提供者註冊。
 

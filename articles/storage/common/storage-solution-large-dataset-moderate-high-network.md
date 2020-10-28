@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: c88da1c7fba5d7cb51863a580ae420eb6b3298a2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 962bb7a4484f28d52ffd4f0cae985140ec2f0d28
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491269"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792917"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>在有中速至高速的網路頻寬之情況下進行大型資料集的資料轉送
  
@@ -39,8 +39,8 @@ ms.locfileid: "92491269"
 
 - 如果網路轉送的預估速度太慢，您就應該使用實體裝置。 此案例中建議的選項是來自 Azure 資料箱系列的離線轉送裝置，或是使用您自己磁碟機的 Azure 匯入/匯出。
 
-    - **適用於離線轉送的 Azure 資料箱系列**：當您受到時間、網路可用性或成本的限制時，使用 Microsoft 提供的資料箱裝置以將大量資料移動到 Azure。 使用如 Robocopy 等工具複製內部部署資料。 根據要轉送之資料的大小，您可以選擇資料箱磁碟、資料箱或 Data Box Heavy。
-    - **Azure 匯入/匯出**：使用 Azure 匯入/匯出服務，透過寄送您自己的磁碟機，安全地將大量資料匯入至 Azure Blob 儲存體和 Azure 檔案中。 這項服務也能用來將資料從 Azure Blob 儲存體傳輸到磁碟機，然後運送到您的內部部署網站。
+    - **適用於離線轉送的 Azure 資料箱系列** ：當您受到時間、網路可用性或成本的限制時，使用 Microsoft 提供的資料箱裝置以將大量資料移動到 Azure。 使用如 Robocopy 等工具複製內部部署資料。 根據要轉送之資料的大小，您可以選擇資料箱磁碟、資料箱或 Data Box Heavy。
+    - **Azure 匯入/匯出** ：使用 Azure 匯入/匯出服務，透過寄送您自己的磁碟機，安全地將大量資料匯入至 Azure Blob 儲存體和 Azure 檔案中。 這項服務也能用來將資料從 Azure Blob 儲存體傳輸到磁碟機，然後運送到您的內部部署網站。
 
 - 如果預估的網路傳轉送速度合理，則您可以使用[高速網路頻寬](#high-network-bandwidth)中所述的下列任何工具。
 
@@ -49,8 +49,8 @@ ms.locfileid: "92491269"
 
 如果可用網路頻寬是高速的，請使用下列其中一個工具。
 
-- **AzCopy**：使用此命令列工具可獲得最佳效能，輕鬆將資料複製到 Azure Blobs、檔案和表格儲存體，或從其中複製資料。 AzCopy 支援並行和平行處理原則，並且能夠繼續中斷的複製作業。
-- **Azure 儲存體 REST API/SDK**：當您在建置應用程式時，您可以針對 Azure 儲存體 REST API 來開發應用程式，並使用以多種語言提供的 Azure SDK。
+- **AzCopy** ：使用此命令列工具可獲得最佳效能，輕鬆將資料複製到 Azure Blobs、檔案和表格儲存體，或從其中複製資料。 AzCopy 支援並行和平行處理原則，並且能夠繼續中斷的複製作業。
+- **Azure 儲存體 REST API/SDK** ：當您在建置應用程式時，您可以針對 Azure 儲存體 REST API 來開發應用程式，並使用以多種語言提供的 Azure SDK。
 - **適用于線上傳輸的 Azure 資料箱系列** – Data box Edge 和 Data box Gateway 是可將資料移入和移出 Azure 的線上網路裝置。 當在上傳資料之前，同時需要持續擷取資料及預先處理資料時，使用 Data Box Edge 實體裝置。 「資料箱閘道」是該裝置的虛擬版本，並具備相同的資料傳輸功能。 在每個案例中，資料轉送都是由裝置管理。
 - **Azure Data Factory** - Data Factory 應該用於擴充轉送作業，如果需要協調流程和監視功能也可以使用它。 使用 Azure Data Factory 以在數個 Azure 服務、內部部署之間或這兩者的組合之間，定期轉送檔案。 您可以使用 Data Factory 來建立資料驅動的工作流程 (管線) 並進行排程，工作流程會從不同的資料存放區內嵌資料，並自動進行資料移動和資料轉送。
 
@@ -95,16 +95,16 @@ ms.locfileid: "92491269"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [了解如何使用匯入/匯出轉送資料](/azure/storage/common/storage-import-export-data-to-blobs)。
+- [了解如何使用匯入/匯出轉送資料](./storage-import-export-data-to-blobs.md)。
 - 了解如何
 
-    - [使用資料箱磁碟轉送資料](/azure/databox/data-box-disk-quickstart-portal)。
-    - [使用資料箱轉送資料](/azure/databox/data-box-quickstart-portal)。
-- [使用 AzCopy 傳輸資料](/azure/storage/common/storage-use-azcopy-v10)。
+    - [使用資料箱磁碟轉送資料](../../databox/data-box-disk-quickstart-portal.md)。
+    - [使用資料箱轉送資料](../../databox/data-box-quickstart-portal.md)。
+- [使用 AzCopy 傳輸資料](./storage-use-azcopy-v10.md)。
 - 了解如何：
-    - [使用資料箱閘道傳輸資料](/azure/databox-online/data-box-gateway-deploy-add-shares)。
-    - [先使用 Azure Data Box Edge 轉換資料再傳送至 Azure](/azure/databox-online/data-box-edge-deploy-configure-compute)。
-- [了解如何使用 Azure Data Factory 轉送資料](/azure/data-factory/quickstart-create-data-factory-portal)。
+    - [使用資料箱閘道傳輸資料](../../databox-online/data-box-gateway-deploy-add-shares.md)。
+    - [先使用 Azure Data Box Edge 轉換資料再傳送至 Azure](../../databox-online/azure-stack-edge-deploy-configure-compute.md)。
+- [了解如何使用 Azure Data Factory 轉送資料](../../data-factory/quickstart-create-data-factory-portal.md)。
 - 使用 REST API 轉送資料
 
     - [在 .NET 中](/dotnet/api/overview/azure/storage)

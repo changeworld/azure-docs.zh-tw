@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 60b322cc0c1a50df7f8946fa1047bdc58ea92d77
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8afedec224fed55f617340af512485726ff44326
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488532"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792934"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>在低速或無網路頻寬之情況下進行大型資料集的資料轉送
  
@@ -38,8 +38,8 @@ ms.locfileid: "92488532"
 
 在此案例中可用的選項是適用於 Azure 資料箱離線轉送或 Azure 匯入/匯出的裝置。
 
-- **適用於離線轉送的 Azure 資料箱系列**：當您受到時間、網路可用性或成本的限制時，使用 Microsoft 提供的資料箱裝置以將大量資料移動到 Azure。 使用如 Robocopy 等工具複製內部部署資料。 根據要轉送之資料的大小，您可以選擇資料箱磁碟、資料箱或 Data Box Heavy。
-- **Azure 匯入/匯出**：使用 Azure 匯入/匯出服務，透過寄送您自己的磁碟機，安全地將大量資料匯入至 Azure Blob 儲存體和 Azure 檔案中。 這項服務也能用來將資料從 Azure Blob 儲存體傳輸到磁碟機，然後運送到您的內部部署網站。
+- **適用於離線轉送的 Azure 資料箱系列** ：當您受到時間、網路可用性或成本的限制時，使用 Microsoft 提供的資料箱裝置以將大量資料移動到 Azure。 使用如 Robocopy 等工具複製內部部署資料。 根據要轉送之資料的大小，您可以選擇資料箱磁碟、資料箱或 Data Box Heavy。
+- **Azure 匯入/匯出** ：使用 Azure 匯入/匯出服務，透過寄送您自己的磁碟機，安全地將大量資料匯入至 Azure Blob 儲存體和 Azure 檔案中。 這項服務也能用來將資料從 Azure Blob 儲存體傳輸到磁碟機，然後運送到您的內部部署網站。
 
 ## <a name="comparison-of-key-capabilities"></a>主要功能的比較
 
@@ -66,6 +66,6 @@ ms.locfileid: "92488532"
 
 - 了解如何
 
-    - [使用資料箱磁碟轉送資料](/azure/databox/data-box-disk-quickstart-portal)。
-    - [使用資料箱轉送資料](/azure/databox/data-box-quickstart-portal)。
-    - [使用匯入/匯出轉送資料](/azure/storage/common/storage-import-export-data-to-blobs)。
+    - [使用資料箱磁碟轉送資料](../../databox/data-box-disk-quickstart-portal.md)。
+    - [使用資料箱轉送資料](../../databox/data-box-quickstart-portal.md)。
+    - [使用匯入/匯出轉送資料](./storage-import-export-data-to-blobs.md)。

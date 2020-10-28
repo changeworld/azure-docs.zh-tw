@@ -11,16 +11,17 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-ms.openlocfilehash: 8194f520abf5c8d4e47fa279f6cf82013024e9ec
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+- devx-track-azurecli
+ms.openlocfilehash: bdd9d5fd878094326331e60fc1a639eef08b7ea3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152167"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792458"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT 中樞裝置串流 (預覽)
 
-Azure IoT 中樞「裝置串流」** 能協助建立適用於各種不同雲端到裝置通訊案例的安全雙向 TCP 通道。 裝置串流是由 IoT 中樞「串流端點」** 進行調解，其會作為您的裝置和服務端點之間的 Proxy。 當裝置位於網路防火牆後方或私人網路內時，此設定 (如下圖所示) 特別有用。 因此，IoT 中樞裝置串流能提供方便與防火牆搭配使用的方式來協助解決客戶連線到 IoT 裝置的需求，而不需要大幅度地開啟傳入或傳出網路防火牆連接埠。
+Azure IoT 中樞「裝置串流」  能協助建立適用於各種不同雲端到裝置通訊案例的安全雙向 TCP 通道。 裝置串流是由 IoT 中樞「串流端點」  進行調解，其會作為您的裝置和服務端點之間的 Proxy。 當裝置位於網路防火牆後方或私人網路內時，此設定 (如下圖所示) 特別有用。 因此，IoT 中樞裝置串流能提供方便與防火牆搭配使用的方式來協助解決客戶連線到 IoT 裝置的需求，而不需要大幅度地開啟傳入或傳出網路防火牆連接埠。
 
 ![「IoT 中樞裝置串流總覽」](./media/iot-hub-device-streams-overview/iot-hub-device-streams-overview.png )
 
@@ -56,7 +57,7 @@ IoT 中樞裝置串流提供下列優點：
 
 1. 裝置應用程式會事先登錄回呼，以在新的裝置串流對裝置起始時收到通知。 此步驟通常在裝置開機並連線到 IoT 中樞時發生。
 
-2. 需要時，服務端程式會藉由提供裝置識別碼 (「不是」__ IP 位址) 來起始裝置串流。
+2. 需要時，服務端程式會藉由提供裝置識別碼 (「不是」  IP 位址) 來起始裝置串流。
 
 3. IoT 中樞會叫用在步驟 1 中登錄的回呼來通知裝置端程式。 裝置可能會接受或拒絕串流初始化要求。 對於您的應用程式案例來說，此邏輯可能是特定的。 如果裝置拒絕串流要求，IoT 中樞會據以通知服務；若接受，便會遵循以下步驟。
 
@@ -70,7 +71,7 @@ IoT 中樞裝置串流提供下列優點：
 
 * 在上述串流建立流程完成之後，串流端點會作為 Proxy，並透過服務與裝置個別的 WebSocket 傳輸兩者之間流量。
 
-* 裝置和服務都需要經由連接埠 443 針對 IoT 中樞主要端點及串流端點的輸出連線能力。 在「IoT 中樞」入口網站的 [概觀]** 索引標籤上，即可取得這些端點的 URL。
+* 裝置和服務都需要經由連接埠 443 針對 IoT 中樞主要端點及串流端點的輸出連線能力。 在「IoT 中樞」入口網站的 [概觀]  索引標籤上，即可取得這些端點的 URL。
 
 * 已建立之串流的可靠性和排序皆等同於 TCP。
 
@@ -82,7 +83,7 @@ IoT 中樞裝置串流提供下列優點：
 
 ## <a name="connectivity-requirements"></a>連線能力需求
 
-裝置串流的裝置和服務端都必須要能夠針對 IoT 中樞和其串流端點建立啟用 TLS 的連線。 這需要經由連接埠 443 針對這些端點的傳出連線能力。 與這些端點相關聯的主機名稱可在 IoT 中樞的 [概觀]** 索引標籤上找到，如下圖所示：
+裝置串流的裝置和服務端都必須要能夠針對 IoT 中樞和其串流端點建立啟用 TLS 的連線。 這需要經由連接埠 443 針對這些端點的傳出連線能力。 與這些端點相關聯的主機名稱可在 IoT 中樞的 [概觀]  索引標籤上找到，如下圖所示：
 
 ![「裝置串流端點」](./media/iot-hub-device-streams-overview/device-stream-in-portal.png)
 
@@ -103,7 +104,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> 請確定您已安裝 Azure CLI 2.0.57 版或更新版本。 您可以從 [ [安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) ] 頁面下載最新版本。
+> 請確定您已安裝 Azure CLI 2.0.57 版或更新版本。 您可以從 [ [安裝 Azure CLI](/cli/azure/install-azure-cli) ] 頁面下載最新版本。
 >
 
 ## <a name="allow-outbound-connectivity-to-the-device-streaming-endpoints"></a>允許對裝置串流端點的輸出連線能力
@@ -119,28 +120,28 @@ az iot hub devicestream show --name <YourIoTHubName>
 ```
 
 > [!NOTE]
-> 請確定您已安裝 Azure CLI 2.0.57 版或更新版本。 您可以從 [ [安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) ] 頁面下載最新版本。
+> 請確定您已安裝 Azure CLI 2.0.57 版或更新版本。 您可以從 [ [安裝 Azure CLI](/cli/azure/install-azure-cli) ] 頁面下載最新版本。
 >
 
-## <a name="troubleshoot-via-device-streams-activity-logs"></a>透過裝置串流活動記錄進行疑難排解
+## <a name="troubleshoot-via-device-streams-resource-logs"></a>透過裝置串流資源記錄進行疑難排解
 
-您可以設定 Azure 監視器記錄檔，以收集 IoT 中樞內裝置串流的活動記錄。 這對於針對案例進行疑難排解來說很有幫助。
+您可以設定 Azure 監視器，以收集 IoT 中樞所發出之 [裝置串流的資源記錄](monitor-iot-hub-reference.md#device-streams-preview) 。 這對於針對案例進行疑難排解來說很有幫助。
 
-請遵循下列步驟來設定 IoT 中樞裝置串流活動的 Azure 監視器記錄：
+遵循下列步驟來建立診斷設定，以將 IoT 中樞的裝置串流記錄傳送給 Azure 監視器記錄：
 
-1. 瀏覽至您 IoT 中樞中的 [診斷設定]** 索引標籤，然後按一下 [開啟診斷]** 連結。
+1. 在 Azure 入口網站中，流覽至您的 IoT 中樞。 在左窗格的 [ **監視** ] 底下，選取 [ **診斷設定** ]。 然後選取 [ **新增診斷設定** ]。
 
-   ![「啟用診斷記錄」](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings-pane.png)
+2. 提供診斷設定的名稱，然後從記錄清單中選取 [ **DeviceStreams** ]。 然後選取 [ **傳送至 Log Analytics** ]。 系統會引導您選擇現有的 Log Analytics 工作區，或建立一個新的工作區。
 
-2. 提供診斷設定的名稱，然後選擇 [傳送至 Log Analytics]** 選項。 系統會引導您選擇現有的 Log Analytics 工作區資源，或建立一個新的資源。 此外，請核取清單中的 [DeviceStreams]**。
+    :::image type="content" source="media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png" alt-text="啟用裝置串流記錄":::
 
-    ![「啟用裝置資料流程記錄」](./media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png)
-
-3. 您現在可以在 IoT 中樞入口網站中的 [記錄]** 索引標籤下存取您的裝置串流記錄。 裝置串流活動記錄將會出現在 `AzureDiagnostics` 資料表中，並具有 `Category=DeviceStreams`。
+3. 建立診斷設定以將您的裝置串流記錄傳送至 Log Analytics 工作區之後，您可以在 Azure 入口網站的 IoT 中樞左窗格中，選取 [ **監視** ] 下的 [ **記錄** ] 來存取記錄。 裝置串流記錄將會出現在 `AzureDiagnostics` 資料表中，並具有 `Category=DeviceStreams` 。 請注意，可能需要幾分鐘的時間，記錄才會出現在資料表中。
 
    如下所示，記錄中也會提供目標裝置的身分識別，以及作業的結果。
 
    ![「存取裝置資料流程記錄」](./media/iot-hub-device-streams-overview/device-streams-view-logs.png)
+
+若要深入瞭解如何搭配使用 Azure 監視器與 IoT 中樞，請參閱 [監視 Iot 中樞](monitor-iot-hub.md)。 如需 IoT 中樞可用的所有資源記錄、計量和資料表的相關資訊，請參閱 [監視 Azure IoT 中樞資料參考](monitor-iot-hub-reference.md)。
 
 ## <a name="regional-availability"></a>區域可用性
 
@@ -158,13 +159,13 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 IoT 中樞頁面上有兩個 [快速入門範例](./index.yml) 可供使用。 這些會示範應用程式使用裝置串流的方式。
 
-* *Echo*範例示範如何透過呼叫 SDK API 的直接) ，以程式設計方式使用裝置串流 (。
+* *Echo* 範例示範如何透過呼叫 SDK API 的直接) ，以程式設計方式使用裝置串流 (。
 
-* 「本機 Proxy」** 範例示範透過裝置資料流建立現成的用戶端/伺服器應用程式流量通道 (例如 SSH、RDP 或 Web)。
+* 「本機 Proxy」  範例示範透過裝置資料流建立現成的用戶端/伺服器應用程式流量通道 (例如 SSH、RDP 或 Web)。
 
 下面會更詳細說明這些範例。
 
-### <a name="echo-sample"></a>回應範例
+### <a name="echo-sample"></a>Echo 範例
 
 回應範例示範如何以程式設計方式使用裝置資料流，在服務與裝置應用程式之間傳送及接收位元組。 請注意，您可以使用不同語言的服務和裝置程式。 例如，您可以使用 C 裝置程式搭配 c # 服務程式。
 
@@ -182,7 +183,7 @@ IoT 中樞頁面上有兩個 [快速入門範例](./index.yml) 可供使用。 �
 
 本節描述如何使用裝置資料流，讓使用者能夠使用 SSH 透過裝置資料流連線到裝置 (藉由使用通訊協定的對應連接埠，RDP 或其他用戶端/伺服器應用程式的案例也都類似)。
 
-該設定會利用下圖中的兩個「本機 Proxy」** 程式，也就是「裝置本機 Proxy」** 和「服務本機 Proxy」**。 本機 Proxy 程式會負責執行與「IoT 中樞」的[裝置資料流起始交握](#device-stream-creation-flow)，並使用一般用戶端/伺服器通訊端來與 SSH 用戶端和 SSH 精靈進行互動。
+該設定會利用下圖中的兩個「本機 Proxy」  程式，也就是「裝置本機 Proxy」  和「服務本機 Proxy」  。 本機 Proxy 程式會負責執行與「IoT 中樞」的[裝置資料流起始交握](#device-stream-creation-flow)，並使用一般用戶端/伺服器通訊端來與 SSH 用戶端和 SSH 精靈進行互動。
 
 ![「SSH/RDP 的裝置串流 proxy 設定」](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png)
 
@@ -194,7 +195,7 @@ IoT 中樞頁面上有兩個 [快速入門範例](./index.yml) 可供使用。 �
 
 4. 服務本機 Proxy 會在等候來自使用者之新 SSH 連線的指定連接埠上進行接聽 (範例中使用連接埠 2222，但可以設定成任何其他可用的連接埠)。 使用者將 SSH 用戶端指向 localhost 上的服務本機 Proxy 連接埠。
 
-### <a name="notes"></a>備註
+### <a name="notes"></a>注意
 
 * 上述步驟會完成 SSH 用戶端 (右側) 到 SSH 精靈 (左側) 之間的端對端通道。 這個端對端連線能力中有部分牽涉到將流量透過裝置資料流傳送給「IoT 中樞」。
 

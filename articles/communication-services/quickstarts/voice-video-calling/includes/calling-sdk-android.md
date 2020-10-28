@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 99a038b23eb0978b6e1d8a65b061c2f744852def
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1f71c01d53a89ce1b459826689eb5b2e4899b3a2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126787"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886502"
 ---
 ## <a name="prerequisites"></a>必要條件
 
@@ -114,11 +114,21 @@ Call groupCall = callAgent.call(participants, startCallOptions);
 > 目前只支援一個連出的本機影片串流來與影片進行呼叫，您必須使用 API 來列舉本機相機 `deviceManager` `getCameraList` 。
 選取所需的相機之後，請使用它來建立 `LocalVideoStream` 實例，並將它以 `videoOptions` 陣列中的專案形式傳遞 `localVideoStream` 給 `call` 方法。
 一旦呼叫連接後，它會自動開始將影片串流從選取的相機傳送到 (s) 的其他參與者。
+
+> [!NOTE]
+> 基於隱私權考慮，如果未在本機預覽影片，則不會將其分享給通話。
+如需詳細資訊，請參閱 [本機相機預覽](#local-camera-preview) 。
 ```java
 Context appContext = this.getApplicationContext();
 VideoDeviceInfo desiredCamera = callClient.getDeviceManager().get().getCameraList().get(0);
 LocalVideoStream currentVideoStream = new LocalVideoStream(desiredCamera, appContext);
 VideoOptions videoOptions = new VideoOptions(currentVideoStream);
+
+// Render a local preview of video so the user knows that their video is being shared
+Renderer previewRenderer = new Renderer(currentVideoStream, appContext);
+View uiView = previewRenderer.createView(new RenderingOptions(ScalingMode.Fit));
+// Attach the uiView to a viewable location on the app at this point
+layout.addView(uiView);
 
 CommunicationUser[] participants = new CommunicationUser[]{ new CommunicationUser("<acs user id>") };
 StartCallOptions startCallOptions = new StartCallOptions();
@@ -220,7 +230,7 @@ catch(Exception e) {
 
 ### <a name="push-notification-handling"></a>推播通知處理
 
-若要接收傳入的來電推播通知，請在具有承載的*CallAgent*實例上呼叫*HandlePushNotification ( # B1* 。
+若要接收傳入的來電推播通知，請在具有承載的 *CallAgent* 實例上呼叫 *HandlePushNotification ( # B1* 。
 
 若要從 Firebase 雲端通訊取得承載，請從建立新的服務 (檔開始，> 新的 > Service > 服務) ，擴充 *FirebaseMessagingService* Firebase 用戶端程式庫類別並覆寫 `onMessageReceived` 方法。 當 Firebase 雲端通訊將推播通知傳遞給應用程式時，這個方法就是呼叫的事件處理常式。
 
@@ -252,7 +262,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         </service>
 ```
 
-- 一旦抓取承載之後，您就可以在*CallAgent*實例上呼叫*handlePushNotification*方法，將它傳遞至*通訊服務*用戶端程式庫以進行處理。 藉 `CallAgent` 由 `createCallAgent(...)` 在類別上呼叫方法來建立實例 `CallClient` 。
+- 一旦抓取承載之後，您就可以在 *CallAgent* 實例上呼叫 *handlePushNotification* 方法，將它傳遞至 *通訊服務* 用戶端程式庫以進行處理。 藉 `CallAgent` 由 `createCallAgent(...)` 在類別上呼叫方法來建立實例 `CallClient` 。
 
 ```java
 try {
@@ -607,9 +617,9 @@ currentVideoStream = new LocalVideoStream(videoDevice, appContext);
 videoOptions = new VideoOptions(currentVideoStream);
 
 Renderer previewRenderer = new Renderer(currentVideoStream, appContext);
-View uiView previewRenderer.createView(new RenderingOptions(ScalingMode.Fit));
+View uiView = previewRenderer.createView(new RenderingOptions(ScalingMode.Fit));
 
-// Attach the renderingSurface to a viewable location on the app at this point
+// Attach the uiView to a viewable location on the app at this point
 layout.addView(uiView);
 ```
 

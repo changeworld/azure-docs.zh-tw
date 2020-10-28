@@ -7,12 +7,12 @@ ms.date: 09/22/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6670f654685f8d5cdcaf55d2b1679738a57ecab4
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 958402e61f6dc81a3e6618dbcd4df4c8dd6b9ced
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042791"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793053"
 ---
 # <a name="how-to-connect-an--iot-plug-and-play-bridge-sample-running-on-linux-or-windows-to-iot-hub"></a>如何將在 Linux 或 Windows 上執行的 IoT 隨插即用 bridge 範例連線到 IoT 中樞
 
@@ -30,14 +30,14 @@ ms.locfileid: "92042791"
 
 若要在 Linux 上完成本快速入門，您必須在本機 Linux 環境上安裝下列軟體：
 
-使用 `apt-get` 命令，安裝 **GCC**、**Git**、**cmake** 和所有必要的相依性：
+使用 `apt-get` 命令，安裝 **GCC** 、 **Git** 、 **cmake** 和所有必要的相依性：
 
 ```sh
 sudo apt-get update
 sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
 ```
 
-確認 `cmake` 的版本高於 **2.8.12**，而且 **GCC** 的版本高於 **4.4.7**。
+確認 `cmake` 的版本高於 **2.8.12** ，而且 **GCC** 的版本高於 **4.4.7** 。
 
 ```sh
 cmake --version
@@ -48,13 +48,13 @@ gcc --version
 
 若要在 Windows 上完成本快速入門，請在您的本機 Windows 環境上安裝下列軟體：
 
-* [Visual Studio (Community、Professional 或 Enterprise)](https://visualstudio.microsoft.com/downloads/) - 在[安裝](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019) Visual Studio 時，請確實包含**使用 C++ 的桌面開發**工作負載。
+* [Visual Studio (Community、Professional 或 Enterprise)](https://visualstudio.microsoft.com/downloads/) - 在 [安裝](/cpp/build/vscpp-step-0-installation?preserve-view=true&view=vs-2019) Visual Studio 時，請確實包含 **使用 C++ 的桌面開發** 工作負載。
 * [Git](https://git-scm.com/download/)。
 * [CMake](https://cmake.org/download/)。
 
 ### <a name="azure-iot-explorer"></a>Azure IoT 總管
 
-若要在本快速入門的第二個部分與範例裝置互動，您可以使用 **Azure IoT 總管**工具。 針對您的作業系統[下載並安裝最新版的 Azure IoT 總管](./howto-use-iot-explorer.md)。
+若要在本快速入門的第二個部分與範例裝置互動，您可以使用 **Azure IoT 總管** 工具。 針對您的作業系統[下載並安裝最新版的 Azure IoT 總管](./howto-use-iot-explorer.md)。
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
@@ -107,9 +107,13 @@ git submodule update --init --recursive
 
 將 IoT 隨插即用橋接器存放庫複製到您的電腦之後，請流覽至 `pnpbridge/docs/schema` 複製的存放庫目錄，您可以在其中找到設定 [JSON](https://aka.ms/iot-pnp-bridge-env-config) 或 `config.json` 橋接器的環境感應器範例。 您可以在 [IoT 隨插即用 bridge 概念](concepts-iot-pnp-bridge.md)檔中深入瞭解設定檔。
 
-針對此 `root-_interface_model_id` 欄位，您將需要複製可識別裝置模型的 IoT 隨插即用模型識別碼。 在此範例中為 `dtmi:com:example:SampleDevice;1`。 修改下列 **pnp_bridge_parameters** 節點下 `config.json` 的參數： '：
+針對此 `root-_interface_model_id` 欄位，您將需要複製可識別裝置模型的 IoT 隨插即用模型識別碼。 在此範例中為 `dtmi:com:example:SampleDevice;1`。 修改檔案中 **pnp_bridge_parameters** 節點下的下列參數 `config.json` ：
 
-  使用連接字串 (附注： symmetric_key 必須符合連接字串) 中的 SAS 金鑰：
+* connection_string 
+* symmetric_key 
+
+>[!NOTE]
+> Symmetric_key 必須符合連接字串中的 SAS 金鑰。
 
   ```JSON
     {
@@ -126,7 +130,7 @@ git submodule update --init --recursive
   }
   ```
 
- 填妥檔案之後，檔案 `config.json` 應該類似：
+ 填入之後，檔案 `config.json` 應該如下所示：
 
    ```JSON
     {

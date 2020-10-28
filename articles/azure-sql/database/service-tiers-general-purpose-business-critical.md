@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 01/30/2020
-ms.openlocfilehash: c1f60888a3d1fda50e63c7d11ea5d871f7c1e9fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 33c63ffc4220da6d98c462039897067e4ba69491
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321334"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793155"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL Database 和 Azure SQL 受控執行個體服務層級
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -84,7 +84,7 @@ Azure SQL Database 有額外的服務層級：
 > [!IMPORTANT]
 > 系統會向您收取配置給 MDF 和 LDF 檔案的總儲存體費用。
 
-若要監視 MDF 和 LDF 檔案目前的總大小，請使用 [sp_spaceused](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-spaceused-transact-sql)。 若要監視個別 MDF 和 LDF 檔案的目前大小，請使用 [sys.database_files](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql)。
+若要監視 MDF 和 LDF 檔案目前的總大小，請使用 [sp_spaceused](/sql/relational-databases/system-stored-procedures/sp-spaceused-transact-sql)。 若要監視個別 MDF 和 LDF 檔案的目前大小，請使用 [sys.database_files](/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql)。
 
 > [!IMPORTANT]
 > 在某些情況下，您可能需要壓縮資料庫來回收未使用的空間。 如需詳細資訊，請參閱 [管理 Azure SQL Database 中](file-space-manage.md)的檔案空間。
@@ -93,8 +93,8 @@ Azure SQL Database 有額外的服務層級：
 
 資料庫備份的儲存體是配置用來支援時間點還原 (PITR) 和 [長期保留 (LTR) ](long-term-retention-overview.md) 的 SQL DATABASE 和 SQL 受控執行個體功能。 這個儲存體會分別配置給每個資料庫，並以兩個不同的每一資料庫費用來計費。
 
-- **PITR**：系統會自動將個別的資料庫備份複製到 [讀取權限異地重複 (RA-GRS) 儲存體](../../storage/common/geo-redundant-design.md) 。 建立新的備份時，儲存體大小會動態增加。 每週完整備份、每日差異備份，以及每隔5分鐘複製一次的交易記錄備份都使用此儲存體。 儲存體耗用量取決於資料庫的變更率，以及備份的保留期限。 您可以為每個資料庫設定 7 到 35 天的不同保留期限。 最小儲存體數量100等於資料庫大小 (1x) 的最小儲存體數量，不需額外費用。 對於大多數資料庫來說，此數量就足以儲存 7 天份的備份。
-- **LTR**：您也可以選擇設定完整備份的長期保留，最多10年 (這項功能在 [SQL 受控執行個體的有限公開預覽版](long-term-retention-overview.md#sql-managed-instance-support)中。 如果您設定 LTR 原則，這些備份會自動儲存在 GRS 儲存體中，但您可以控制複本備份的頻率。 為了符合不同的合規性需求，您可以針對每週、每月及/或每年備份選取不同的保留期限。 您選擇的設定會決定要將哪些儲存體用於 LTR 備份。 若要估計 LTR 儲存體的成本，您可以使用 LTR 定價計算機。 如需詳細資訊，請參閱 [SQL Database 長期保留](long-term-retention-overview.md)。
+- **PITR** ：系統會自動將個別的資料庫備份複製到 [讀取權限異地重複 (RA-GRS) 儲存體](../../storage/common/geo-redundant-design.md) 。 建立新的備份時，儲存體大小會動態增加。 每週完整備份、每日差異備份，以及每隔5分鐘複製一次的交易記錄備份都使用此儲存體。 儲存體耗用量取決於資料庫的變更率，以及備份的保留期限。 您可以為每個資料庫設定 7 到 35 天的不同保留期限。 最小儲存體數量100等於資料庫大小 (1x) 的最小儲存體數量，不需額外費用。 對於大多數資料庫來說，此數量就足以儲存 7 天份的備份。
+- **LTR** ：您也可以選擇設定完整備份的長期保留，最多10年 (這項功能在 [SQL 受控執行個體的有限公開預覽版](long-term-retention-overview.md#sql-managed-instance-support)中。 如果您設定 LTR 原則，這些備份會自動儲存在 GRS 儲存體中，但您可以控制複本備份的頻率。 為了符合不同的合規性需求，您可以針對每週、每月及/或每年備份選取不同的保留期限。 您選擇的設定會決定要將哪些儲存體用於 LTR 備份。 若要估計 LTR 儲存體的成本，您可以使用 LTR 定價計算機。 如需詳細資訊，請參閱 [SQL Database 長期保留](long-term-retention-overview.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -102,5 +102,4 @@ Azure SQL Database 有額外的服務層級：
 
 - [Azure SQL Database 的 vCore 為基礎的資源限制](resource-limits-vcore-single-databases.md)。
 - [Azure SQL Database 中集區資料庫的 vCore 為基礎的資源限制](resource-limits-vcore-elastic-pools.md)。
-- [適用于 AZURE SQL 受控執行個體的 vCore 為基礎的資源限制](../managed-instance/resource-limits.md)。 
-
+- [適用于 AZURE SQL 受控執行個體的 vCore 為基礎的資源限制](../managed-instance/resource-limits.md)。

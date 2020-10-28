@@ -11,14 +11,14 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: dbf5c06adcddb5b3dfa3cdf2e0127f8a36c59885
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5a2336728d4507544fa621961c2f346746c2bb9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620098"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792645"
 ---
-# <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>使用 Azure 入口網站為 Azure SQL 受控執行個體建立警示
+# <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>使用 Azure 入口網站建立 Azure SQL 受控執行個體的警示
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 本文說明如何使用 Azure 入口網站在 Azure SQL 受控執行個體資料庫中設定資料庫的警示。 警示可以傳送電子郵件、呼叫 Webhook、執行 Azure 函式、Runbook、呼叫外部 ITSM 相容票證系統、撥打您的手機，或在某些計量 (例如執行個體儲存體大小或 CPU 使用量) 達到預先定義的臨界值時傳送文字簡訊。 本文也提供設定警示期間的最佳做法。
@@ -94,7 +94,7 @@ ms.locfileid: "91620098"
 
    ![Select_action_group](./media/alerts-create/mi-select-action-group-smaller-annotated.png)
 
-   * 若要建立新的動作群組，請選取 [ **+ 建立動作群組**]
+   * 若要建立新的動作群組，請選取 [ **+ 建立動作群組** ]
 
       ![Create_action_group_alerts](./media/alerts-create/mi-create-alert-action-group-smaller-annotated.png)
    
@@ -145,5 +145,5 @@ ms.locfileid: "91620098"
 * 瞭解 Azure 監視器警示系統的詳細資訊，請參閱 [Microsoft Azure 中的警示總覽](../../azure-monitor/platform/alerts-overview.md)
 * 深入瞭解計量警示，請參閱 [瞭解計量警示在 Azure 監視器中的運作方式](../../azure-monitor/platform/alerts-metric-overview.md)
 * 瞭解如何在警示中設定 webhook，請參閱 [使用傳統計量警示呼叫 webhook](../../azure-monitor/platform/alerts-webhooks.md)
-* 瞭解如何使用 PowerShell 設定和管理警示，請參閱 [動作規則](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)
-* 瞭解如何使用 API 設定和管理警示，請參閱 [Azure 監視器 REST API 參考](https://docs.microsoft.com/rest/api/monitor/) 
+* 瞭解如何使用 PowerShell 設定和管理警示，請參閱 [動作規則](/powershell/module/az.monitor/add-azmetricalertrulev2)
+* 瞭解如何使用 API 設定和管理警示，請參閱 [Azure 監視器 REST API 參考](/rest/api/monitor/)

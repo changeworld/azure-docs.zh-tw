@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: 0b8ceee1260e4209420778d7f327d771b858a899
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ed8f6dc90debddd17282f8f96962ffd78055030
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617718"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791659"
 ---
 # <a name="delete-a-subnet-after-deleting-a-managed-instance-of-sql-managed-instance"></a>刪除 SQL 受控執行個體的受管理的實例之後，刪除子網
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "91617718"
 
 > [!IMPORTANT]
 > - 虛擬叢集不應包含任何受控實例，刪除作業才會成功。 
-> - 刪除虛擬叢集是長時間執行的作業，持續約1.5 小時 (請參閱 [受控實例管理作業](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations) 以取得最新的虛擬叢集刪除時間) 。 在此程式完成之前，虛擬叢集仍會顯示在入口網站中。
+> - 刪除虛擬叢集是長時間執行的作業，持續約1.5 小時 (請參閱 [受控實例管理作業](./sql-managed-instance-paas-overview.md#management-operations) 以取得最新的虛擬叢集刪除時間) 。 在此程式完成之前，虛擬叢集仍會顯示在入口網站中。
 
 ## <a name="delete-a-virtual-cluster-from-the-azure-portal"></a>從 Azure 入口網站中刪除虛擬叢集
 
@@ -37,7 +37,7 @@ ms.locfileid: "91617718"
 
 ![Azure 入口網站的螢幕擷取畫面，其中已反白顯示搜尋方塊](./media/virtual-cluster-delete/virtual-clusters-search.png)
 
-找出您想要刪除的虛擬叢集之後，請選取 [此資源]，然後選取 [ **刪除**]。 系統會提示您確認是否刪除虛擬叢集。
+找出您想要刪除的虛擬叢集之後，請選取 [此資源]，然後選取 [ **刪除** ]。 系統會提示您確認是否刪除虛擬叢集。
 
 ![Azure 入口網站虛擬叢集儀表板的螢幕擷取畫面，其中已反白顯示 [刪除] 選項](./media/virtual-cluster-delete/virtual-clusters-delete.png)
 
@@ -48,7 +48,7 @@ Azure 入口網站通知會顯示確認已成功提交刪除虛擬叢集的要�
 
 ## <a name="delete-a-virtual-cluster-by-using-the-api"></a>使用 API 刪除虛擬叢集
 
-若要透過 API 刪除虛擬叢集，請使用 [虛擬叢集 delete 方法](https://docs.microsoft.com/rest/api/sql/virtualclusters/delete)中指定的 URI 參數。
+若要透過 API 刪除虛擬叢集，請使用 [虛擬叢集 delete 方法](/rest/api/sql/virtualclusters/delete)中指定的 URI 參數。
 
 ## <a name="next-steps"></a>後續步驟
 

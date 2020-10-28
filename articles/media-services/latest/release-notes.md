@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4a741834637900ec0c78105790bac2453d759e2f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: d825a30cf43b3e7f9017638138df91d5145d280e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514481"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791591"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒體服務 v3 版本資訊
 
@@ -46,6 +46,16 @@ ms.locfileid: "92514481"
 使用索引子 v1 和索引子 v2 的客戶應該遷移至基本音訊分析預設值。
 
 如需基本音訊分析器模式的詳細資訊，請參閱 [分析影片和音訊](analyzing-video-audio-files-concept.md)檔案。  若要瞭解如何使用基本的音訊分析器模式搭配 REST API，請參閱 [如何建立基本音訊轉換](how-to-create-basic-audio-transform.md)。
+
+## <a name="live-events"></a>即時活動
+
+當即時事件停止時，現在允許大部分屬性的更新。 此外，使用者也可以為實況活動的輸入和預覽 Url 指定靜態主機名稱的前置詞。 現在已呼叫 VanityUrl `useStaticHostName` 來更清楚地反映屬性的用途。
+
+實況活動現在有待命狀態。  請參閱 [媒體服務中的即時事件和即時輸出](https://docs.microsoft.com/azure/media-services/latest/live-events-outputs-concept)。
+
+實況活動支援接收各種輸入外觀比例。 Stretch 模式可讓客戶指定輸出的延展行為。
+
+即時編碼現在新增了將固定的主要畫面格間隔片段輸出到20秒0.5 之間的功能。
 
 ## <a name="august-2020"></a>2020 年 8 月
 
@@ -265,10 +275,10 @@ Azure 國家雲端現在支援媒體服務 v3。 尚未在所有雲端中提供�
 
 來自 V3 API GA 版本的更新包括：
        
-* **PresentationTimeRange** 屬性不再是**資產篩選**和**帳戶篩選**的「必要」項目。 
+* **PresentationTimeRange** 屬性不再是 **資產篩選** 和 **帳戶篩選** 的「必要」項目。 
 * **Jobs** 和 **Transforms** 的 $Top 和 $skip 查詢選項已移除，並新增了 $orderby。 在加入新的排序功能時，我們發現以前 $top 和 $skip 選項 (即使並未實作) 會意外公開。
 * 已重新啟用列舉擴充性。 此功能已在 SDK 的預覽版本中啟用，但在 GA 版本中意外停用。
-* 兩個預先定義的串流原則已重新命名。 **SecureStreaming** 現在重新命名為 **MultiDrmCencStreaming**。 **SecureStreamingWithFairPlay** 現在重新命名為 **Predefined_MultiDrmStreaming**。
+* 兩個預先定義的串流原則已重新命名。 **SecureStreaming** 現在重新命名為 **MultiDrmCencStreaming** 。 **SecureStreamingWithFairPlay** 現在重新命名為 **Predefined_MultiDrmStreaming** 。
 
 ## <a name="november-2018"></a>2018 年 11 月
 
@@ -342,7 +352,7 @@ Azure 資源管理支援可提供統一的管理和作業 API (現在所有項�
 
 #### <a name="new-transform-object"></a>新的轉換物件
 
-新的**轉換**物件會簡化編碼模型。 新的物件可讓您輕鬆地建立及共用編碼 Resource Manager 範本和預設值。 
+新的 **轉換** 物件會簡化編碼模型。 新的物件可讓您輕鬆地建立及共用編碼 Resource Manager 範本和預設值。 
 
 #### <a name="azure-active-directory-authentication-and-azure-rbac"></a>Azure Active Directory authentication 和 Azure RBAC
 
@@ -397,12 +407,12 @@ Azure CLI 2.0 模組即將推出，內含所有功能的操作 (包括即時、�
 
 .NET SDK 中推出下列功能：
 
-* **轉換**和**工作**，可編碼或分析媒體內容。 如需範例，請參閱[串流處理檔案](stream-files-tutorial-with-api.md)和[分析](analyze-videos-tutorial-with-api.md)。
-* **串流定位器**，用於將內容發佈及串流處理到終端使用者裝置
-* **串流原則**和**內容金鑰原則**，可在傳遞內容時設定金鑰傳遞和內容保護 (DRM)。
-* **即時事件**和**即時輸出**，可設定內嵌和封存即時串流內容。
-* **資產**，可在 Azure 儲存體中儲存及發佈媒體內容。 
-* **串流端點**，可設定和擴展動態封裝、加密和串流處理即時與點播媒體內容。
+* **轉換** 和 **工作** ，可編碼或分析媒體內容。 如需範例，請參閱[串流處理檔案](stream-files-tutorial-with-api.md)和[分析](analyze-videos-tutorial-with-api.md)。
+* **串流定位器** ，用於將內容發佈及串流處理到終端使用者裝置
+* **串流原則** 和 **內容金鑰原則** ，可在傳遞內容時設定金鑰傳遞和內容保護 (DRM)。
+* **即時事件** 和 **即時輸出** ，可設定內嵌和封存即時串流內容。
+* **資產** ，可在 Azure 儲存體中儲存及發佈媒體內容。 
+* **串流端點** ，可設定和擴展動態封裝、加密和串流處理即時與點播媒體內容。
 
 ### <a name="known-issues"></a>已知問題
 

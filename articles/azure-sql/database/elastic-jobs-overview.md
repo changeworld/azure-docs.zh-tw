@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 2aa2c0c8cbd8b826444dc5420685aaa9731cddab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9a026ed47d662b80ef01e505bfbcf8f32d20b04
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409575"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792169"
 ---
 # <a name="create-configure-and-manage-elastic-jobs-preview"></a> (預覽版建立、設定和管理彈性作業) 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,14 +27,14 @@ ms.locfileid: "91409575"
 
 ## <a name="create-and-configure-the-agent"></a>建立和設定代理程式
 
-1. 建立或識別空的 S0 或更高的資料庫。 此資料庫將在彈性作業代理程式建立期間作為「作業資料庫」**。
+1. 建立或識別空的 S0 或更高的資料庫。 此資料庫將在彈性作業代理程式建立期間作為「作業資料庫」  。
 2. 在 [入口網站](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent) 中或使用 [PowerShell](elastic-jobs-powershell-create.md#create-the-elastic-job-agent)建立彈性作業代理程式。
 
    ![建立彈性作業代理程式](./media/elastic-jobs-overview/create-elastic-job-agent.png)
 
 ## <a name="create-run-and-manage-jobs"></a>建立、執行和管理作業
 
-1. 使用[PowerShell](elastic-jobs-powershell-create.md)或[t-sql](elastic-jobs-tsql-create-manage.md#create-a-credential-for-job-execution)在*作業資料庫*中建立作業執行的認證。
+1. 使用 [PowerShell](elastic-jobs-powershell-create.md)或 [t-sql](elastic-jobs-tsql-create-manage.md#create-a-credential-for-job-execution)在 *作業資料庫* 中建立作業執行的認證。
 2. 使用 [PowerShell](elastic-jobs-powershell-create.md) 或 [t-sql](elastic-jobs-tsql-create-manage.md#create-a-target-group-servers)， (您想要對) 執行作業的資料庫定義目標群組。
 3. 在將要執行作業的每個資料庫中建立作業代理程式認證 [(將使用者 (或角色) 新增至群組中的每個資料庫)](logins-create-manage.md)。 如需範例，請參閱 [PowerShell 教學課程](elastic-jobs-powershell-create.md)。
 4. 使用 [PowerShell](elastic-jobs-powershell-create.md) 或 [t-sql](elastic-jobs-tsql-create-manage.md#deploy-new-schema-to-many-databases)建立作業。
@@ -50,11 +50,11 @@ ms.locfileid: "91409575"
 
 設定適當的認證來執行作業，可能會有點混淆，因此請牢記下列要點：
 
-- 您必須在 *作業資料庫*中建立資料庫範圍認證。
-- **所有目標資料庫都必須具有登入，而且有[足夠的權限](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)，才能順利完成作業** (下圖中的 `jobuser`)。
+- 您必須在 *作業資料庫* 中建立資料庫範圍認證。
+- **所有目標資料庫都必須具有登入，而且有 [足夠的權限](/sql/relational-databases/security/permissions-database-engine)，才能順利完成作業** (下圖中的 `jobuser`)。
 - 認證可跨作業重複使用，而認證密碼會經過加密並受到保護，以免具有作業物件唯讀權限的使用者加以使用。
 
-下圖設計用來協助了解及設定適當的作業認證。 **請記得在每個需要執行作業的資料庫 (所有「目標使用者資料庫」**) 中建立使用者**。
+下圖設計用來協助了解及設定適當的作業認證。  ) 中建立使用者** 。
 
 ![彈性作業認證](./media/elastic-jobs-overview/job-credentials.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "91409575"
 處理彈性作業有幾個最佳做法考量：
 
 - 將 API 的使用限制為受信任的個人。
-- 認證應該具有執行作業步驟所需的最低權限。 如需詳細資訊，請參閱 [授權和許可權](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)。
+- 認證應該具有執行作業步驟所需的最低權限。 如需詳細資訊，請參閱 [授權和許可權](/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)。
 - 使用伺服器和/或集區目標群組的成員時，強烈建議建立個別的認證，而該認證須具有 master 資料庫的權限，可在作業執行前檢視/列出用來擴充伺服器和/或集區的資料庫清單。
 
 ## <a name="agent-performance-capacity-and-limitations"></a>代理程式效能、容量和限制
@@ -83,7 +83,7 @@ ms.locfileid: "91409575"
 ## <a name="best-practices-for-creating-jobs"></a>建立作業的最佳做法
 
 ### <a name="idempotent-scripts"></a>等冪指令碼
-作業的 T-SQL 指令碼必須[具有等冪性](https://en.wikipedia.org/wiki/Idempotence)。 **等冪**表示如果指令碼成功，而且再次執行，就會出現相同的結果。 指令碼可能會因為暫時性網路問題而失敗。 在此情況下，工作會自動重新執行指令碼，達到預設的次數才會停止。 即使等冪指令碼已成功執行兩次 (或更多次)，仍會有相同的結果。
+作業的 T-SQL 指令碼必須[具有等冪性](https://en.wikipedia.org/wiki/Idempotence)。 **等冪** 表示如果指令碼成功，而且再次執行，就會出現相同的結果。 指令碼可能會因為暫時性網路問題而失敗。 在此情況下，工作會自動重新執行指令碼，達到預設的次數才會停止。 即使等冪指令碼已成功執行兩次 (或更多次)，仍會有相同的結果。
 
 簡單的策略是在建立物件之前，測試其是否存在。
 

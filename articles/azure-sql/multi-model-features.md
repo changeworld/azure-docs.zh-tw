@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: 59a709a206eb29b875272674ee19e414023cc37f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5a067272caf9b072117ba57b7b16f8d78a8b456
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87073323"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791642"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database--sql-managed-instance"></a>Azure SQL Database & SQL 受控執行個體的多模型功能
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -44,7 +44,7 @@ Azure SQL 系列產品提供下列多模型功能：
 - 索引[鍵/值](#key-value-pairs)組不會明確支援為特殊功能，因為索引鍵/值組可以原生模型化為兩個數據行的資料表。
 
   > [!Note]
-  > 您可以在相同的 Transact-SQL 查詢中使用 JSON 路徑運算式、XQuery/XPath 運算式、空間函式和圖形查詢運算式，以存取您儲存在資料庫中的任何資料。 此外，任何執行 Transact-SQL 查詢的工具或程式設計語言，也可以使用該查詢介面來存取多模型資料。 相較於多模型資料庫 (例如可針對不同資料模型提供特製化 API 的 [Azure Cosmos DB](/azure/cosmos-db/))，這是主要差異。
+  > 您可以在相同的 Transact-SQL 查詢中使用 JSON 路徑運算式、XQuery/XPath 運算式、空間函式和圖形查詢運算式，以存取您儲存在資料庫中的任何資料。 此外，任何執行 Transact-SQL 查詢的工具或程式設計語言，也可以使用該查詢介面來存取多模型資料。 相較於多模型資料庫 (例如可針對不同資料模型提供特製化 API 的 [Azure Cosmos DB](../cosmos-db/index.yml))，這是主要差異。
 
 在下列各節中，您可以瞭解 Azure SQL 系列產品的最重要多模型功能。
 
@@ -142,9 +142,9 @@ CREATE TABLE Collection (
 
 您可自訂此索引鍵/值結構以符合您的需求，沒有任何限制。 例如，此值可以是 XML 文件，而不是 `nvarchar(max)` 類型，如果值為 JSON 文件，您可以放置 `CHECK` 條件約束來確認 JSON 內容的有效性。 您可以在額外的資料行中放置某個索引鍵的任意多個相關值、新增計算的資料行和索引以簡化和最佳化資料存取、將資料表定義為僅限記憶體/最佳化結構描述的資料表以取得更佳效能等等。
 
-請參閱 [BWin 如何使用記憶體內部 OLTP 來達到前所未有的效能和規模](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/)中達成每秒快取 1.200.000 個批次的 ASP.NET 快取解決方案，作為關聯式模型如何才能有效地實際作為索引鍵/值組解決方案的範例。
+請參閱 [BWin 如何使用記憶體內部 OLTP 來達到前所未有的效能和規模](/archive/blogs/sqlcat/how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale)中達成每秒快取 1.200.000 個批次的 ASP.NET 快取解決方案，作為關聯式模型如何才能有效地實際作為索引鍵/值組解決方案的範例。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 Azure SQL 產品系列中的多模型功能也是 Azure SQL 產品系列中所共用的核心 SQL Server database engine 功能。 若要了解這些功能的詳細資訊，請瀏覽 SQL 關聯式資料庫文件頁面：
 

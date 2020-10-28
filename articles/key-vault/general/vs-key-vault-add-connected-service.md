@@ -9,12 +9,12 @@ ms.custom: vs-azure, devx-track-csharp
 ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: addccf337f82b1695c76ae975c4a33f44ba50f8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c62534acdbfbff7fd4e718bad1f07a92c641626
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448138"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792390"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>使用 Visual Studio 連線服務在 Web 應用程式中新增 Key Vault
 
@@ -22,9 +22,9 @@ ms.locfileid: "91448138"
 
 針對「連線服務」在您專案中為啟用 Key Vault 所做的變更，如需詳細資料，請參閱 [Key Vault 連線服務 - 我的 ASP.NET 4.7.1 專案發生什麼情形](#how-your-aspnet-framework-project-is-modified)或 [Key Vault 連線服務 - 我的 ASP.NET Core 專案發生什麼情形](#how-your-aspnet-core-project-is-modified)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- **Azure 訂用帳戶**。 如果您沒有訂用帳戶，請註冊 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+- **Azure 訂用帳戶** 。 如果您沒有訂用帳戶，請註冊 [免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 - **Visual Studio 2019 16.3 版** 或更新版本 [，請立即下載](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
 
 
@@ -32,13 +32,13 @@ ms.locfileid: "91448138"
 
 開始之前，請確定您已登入 Visual Studio。 使用您用於 Azure 訂用帳戶的相同帳戶登入。 然後開啟 ASP.NET 4.7.1 或更新版本，或 ASP.NET Core 2.0 Web 專案，然後執行下列步驟：
 
-1. 在**方案總管**中，以滑鼠右鍵按一下您要新增 Key Vault 支援的專案，然後選擇 [**加入**  >  **已連結的服務**  >  **新增**]。
+1. 在 **方案總管** 中，以滑鼠右鍵按一下您要新增 Key Vault 支援的專案，然後選擇 [ **加入**  >  **已連結的服務**  >  **新增** ]。
    [連線服務] 頁面隨即出現，並顯示您可新增至專案的服務。
-1. 在 [可用的服務] 功能表中，選擇 **Azure Key Vault** ，然後按 **[下一步]**。
+1. 在 [可用的服務] 功能表中，選擇 **Azure Key Vault** ，然後按 **[下一步]** 。
 
    ![選擇 [Azure Key Vault]](../media/vs-key-vault-add-connected-service/key-vault-connected-service.png)
 
-1. 選取您要使用的訂用帳戶，然後選擇現有的 Key Vault 然後按一下 **[完成]**。 
+1. 選取您要使用的訂用帳戶，然後選擇現有的 Key Vault 然後按一下 **[完成]** 。 
 
    ![選取您的訂用帳戶](../media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
 
@@ -115,7 +115,7 @@ ms.locfileid: "91448138"
          <add key="<secretNameInYourKeyVault>" value="dummy"/>
         ```
 
-1. 編輯 `About` *HomeController.cs*中的方法，以顯示 [確認] 的值。
+1. 編輯 `About` *HomeController.cs* 中的方法，以顯示 [確認] 的值。
 
    ```csharp
    public ActionResult About()
@@ -127,16 +127,16 @@ ms.locfileid: "91448138"
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如果您的 Key Vault 在不同于您登入 (Visual Studio 的 Microsoft 帳戶上執行，則 Key Vault 會在您的工作帳戶上執行，但 Visual Studio 會使用您的私人帳戶) 您會在 Program.cs 檔案中收到錯誤，Visual Studio 無法取得 Key Vault 的存取權。 解決此問題：
+如果您的 Key Vault 在不同于您登入 (Visual Studio 的 Microsoft 帳戶上執行，則 Key Vault 會在您的工作帳戶上執行，但 Visual Studio 會使用您的私人帳戶) 您會在 Program.cs 檔案中收到錯誤，Visual Studio 無法取得 Key Vault 的存取權。 若要修正此問題：
 
 1. 移至 [Azure 入口網站](https://portal.azure.com) 並開啟您的 Key Vault。
 
-1. 選擇 [ **存取**原則]，然後 **新增存取原則**，然後選擇您以「主體」登入的帳戶。
+1. 選擇 [ **存取** 原則]，然後 **新增存取原則** ，然後選擇您以「主體」登入的帳戶。
 
-1. 在 Visual Studio 中，**選擇 [** 檔案  >  **帳戶設定**]。
-從 [**所有帳戶**] 區段中選取 [**新增帳戶**]。 使用您選擇作為存取原則主體的帳戶登入。
+1. 在 Visual Studio 中， **選擇 [** 檔案  >  **帳戶設定** ]。
+從 [ **所有帳戶** ] 區段中選取 [ **新增帳戶** ]。 使用您選擇作為存取原則主體的帳戶登入。
 
-1. 選擇 [**工具**  >  **選項**]，並尋找 [ **Azure 服務驗證**]。 然後選取您剛剛新增至 Visual Studio 的帳戶。
+1. 選擇 [ **工具**  >  **選項** ]，並尋找 [ **Azure 服務驗證** ]。 然後選取您剛剛新增至 Visual Studio 的帳戶。
 
 現在，當您對應用程式進行偵錯工具時，Visual Studio 會連接到您 Key Vault 所在的帳戶。
 
@@ -204,6 +204,6 @@ ms.locfileid: "91448138"
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您遵循本教學課程的指示，您的 Key Vault 許可權會設定為與您自己的 Azure 訂用帳戶一起執行，但在生產環境中可能不需要。 您可以建立受控識別，以管理應用程式的 Key Vault 存取權。 瞭解 [如何驗證 Key Vault](/azure/key-vault/general/authentication) 並 [指派 Key Vault 存取原則](/azure/key-vault/general/assign-access-policy-portal)。
+如果您遵循本教學課程的指示，您的 Key Vault 許可權會設定為與您自己的 Azure 訂用帳戶一起執行，但在生產環境中可能不需要。 您可以建立受控識別，以管理應用程式的 Key Vault 存取權。 瞭解 [如何驗證 Key Vault](./authentication.md) 並 [指派 Key Vault 存取原則](./assign-access-policy-portal.md)。
 
 閱讀 [Key Vault 開發人員指南](developers-guide.md)，以深入瞭解 Key Vault 開發。

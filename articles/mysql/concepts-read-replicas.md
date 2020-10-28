@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/15/2020
-ms.openlocfilehash: 421763769ff0bd7ffe2b06eb48e1ac5ecbbb545e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 10/26/2020
+ms.openlocfilehash: c66845a801b93db4ba718bc0aba5c39eabdd24b4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537961"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791965"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>讀取「適用於 MySQL 的 Azure 資料庫」中的複本
 
@@ -36,9 +36,6 @@ ms.locfileid: "92537961"
 由於複本是唯讀狀態，因此不會直接降低主要伺服器上的寫入容量負擔。 這項功能不是以寫入密集的工作負載為目標。
 
 讀取複本功能會使用 MySQL 非同步複寫。 此功能不適用於同步複寫案例。 來源與複本之間會有可測量的延遲。 複本上的資料最終仍會與主要伺服器上的資料保持一致。 請針對可接受此延遲的工作負載使用此功能。
-
-> [!IMPORTANT]
-> 適用於 MySQL 的 Azure 資料庫會使用以 **資料列** 為基礎的二進位記錄。 如果您的資料表缺少主索引鍵，則會掃描資料表中的所有資料列是否有 DML 作業。 這會導致複寫延遲增加。 為了確保複本能夠跟上來源的變更，我們通常建議您在建立複本伺服器之前，先在來源伺服器的資料表上新增主索引鍵，或者如果已經有複本伺服器，則予以重新建立。
 
 ## <a name="cross-region-replication"></a>跨區域複寫
 您可以在來源伺服器的不同區域中建立讀取複本。 跨區域複寫有助於災害復原規劃或讓資料更接近使用者之類的案例。
@@ -136,7 +133,7 @@ MySQL 支援兩種類型的交易：使用 GTID) 和匿名交易 (識別的 GTID
 
 下列伺服器參數適用于設定 GTID： 
 
-|**伺服器參數**|**描述**|**預設值**|**值**|
+|**伺服器參數**|**說明**|**預設值**|**值**|
 |--|--|--|--|
 |`gtid_mode`|指出是否使用 GTIDs 來識別交易。 模式之間的變更一次只能以遞增順序完成一個步驟 (例如， `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`)|`OFF`|`OFF`：新的和複寫交易都必須是匿名的 <br> `OFF_PERMISSIVE`：新的交易是匿名的。 複寫的交易可以是匿名或 GTID 交易。 <br> `ON_PERMISSIVE`：新交易是 GTID 交易。 複寫的交易可以是匿名或 GTID 交易。 <br> `ON`：新的和複寫的交易都必須是 GTID 交易。|
 |`enforce_gtid_consistency`|藉由只允許執行可以交易安全方式記錄的語句，來強制執行 GTID 一致性。 在啟用 GTID 複寫之前，必須將此值設定為 `ON` 。 |`OFF`|`OFF`：允許所有交易違反 GTID 一致性。  <br> `ON`：不允許交易違反 GTID 一致性。 <br> `WARN`：允許所有交易違反 GTID 一致性，但會產生警告。 | 

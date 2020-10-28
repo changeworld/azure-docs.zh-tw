@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5c54da3621df1e5d49e7269781e6ae33fc9c0923
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 47cface4efbf38f2cec630745d498db674c936d3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675659"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791948"
 ---
 # <a name="how-to-use-azuresearchdocuments-in-a-c-net-application"></a>如何在 c # .NET 應用程式中使用 Azure.Search.Documents
 
@@ -23,7 +23,7 @@ ms.locfileid: "92675659"
 
 ## <a name="about-version-11"></a>關於第11版
 
-Azure SDK for .NET 會從 Azure SDK 小組新增用戶端程式庫，其功能等同于 [Microsoft。搜尋](/dotnet/api/overview/azure/search/client10) 用戶端程式庫，但在適用的情況下使用常見的方法和慣例。 部分範例包括 [`AzureKeyCredential`](/dotnet/api/azure.azurekeycredential) 金鑰驗證，以及 [System.Text.Js。](/dotnet/api/system.text.json.serialization) JSON 序列化的序列化。
+Azure SDK for .NET 會從 Azure SDK 小組新增新的 [**Azure.Search.Documents**](/dotnet/api/overview/azure/search) 用戶端程式庫，其功能等同于 [Microsoft。搜尋](/dotnet/api/overview/azure/search/client10) 用戶端程式庫，但在適用的情況下使用常見的方法和慣例。 部分範例包括 [`AzureKeyCredential`](/dotnet/api/azure.azurekeycredential) 金鑰驗證，以及 [System.Text.Js。](/dotnet/api/system.text.json.serialization) JSON 序列化的序列化。
 
 如同先前的版本，您可以使用此程式庫來：
 

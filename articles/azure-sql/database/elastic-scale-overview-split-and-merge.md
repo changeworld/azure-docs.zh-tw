@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 9303d84b2862b556a9ccc286ffa118bf1e52b715
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a646ffe1d306d7ea13da002715d5bd9b907107b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84034649"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793461"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>在向外延展的雲端資料庫之間移動資料
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,13 +43,13 @@ ms.locfileid: "84034649"
 
 ## <a name="why-use-the-split-merge-tool"></a>為何使用分割合併工具？
 
-- **彈性**
+- **靈活性**
 
   應用程式需要在 Azure SQL Database 的單一資料庫限制範圍內延展。 使用工具依需要將資料移至新的資料庫，同時保有完整性。
 
 - **分割以成長**
 
-  若要增加整體容量以因應爆炸性成長，請將資料分區，並分散到越來越多的資料庫上，來提供更多的容量，直到滿足容量需求為止。 這是主要的**分割**功能範例。
+  若要增加整體容量以因應爆炸性成長，請將資料分區，並分散到越來越多的資料庫上，來提供更多的容量，直到滿足容量需求為止。 這是主要的 **分割** 功能範例。
 
 - **合併以縮減**
 
@@ -139,19 +139,19 @@ ms.locfileid: "84034649"
 
   下一節的要求參數討論分區對應和主控分區對應之資料庫的相關資訊。 尤其是，您需要提供裝載 shardmap 的伺服器和資料庫名稱、連接到分區對應資料庫的認證，最後是分區對應的名稱。 目前，此作業只接受一組認證。 這些認證必須有足夠權限來變更分區對應及分區上的使用者資料。
 
-- **來源範圍 (分割和合併) **
+- **來源範圍 (分割和合併)**
 
   分割及合併作業會採用其低和高索引鍵處理該範圍。 若要指定無限制高索引鍵值的作業，請勾選 [高索引鍵為最大值] 核取方塊，並將高索引鍵欄位留空。 指定的範圍索引鍵值不需要精確地符合分區對應中的對應及其界限。 如果您未指定任何範圍界限，此服務將會自動為您推斷最接近的範圍。 您可以使用 GetMappings.ps1 PowerShell 指令碼來擷取給定分區對應中目前的對應。
 
-- **分割來源行為 (分割) **
+- **分割來源行為 (分割)**
 
   在分割作業中，定義來源範圍中要分割的點。 您可以提供想要從何處分割的分區化索引鍵。 請使用選項按鈕指定要移動範圍的下半部 (不含分割索引鍵)，還是要移動上半部 (包括分割索引鍵)。
 
-- **來源 shardlet (移動) **
+- **來源 shardlet (移動)**
 
   移動作業不同於分割或合併作業，它們不需要範圍來描述來源。 使用您打算移動的分區化索引鍵值，即可識別移動的來源。
 
-- **目標分區 (分割) **
+- **目標分區 (分割)**
 
   提供分割作業的來源相關資訊之後，您需要提供目標的伺服器和資料庫名稱，以定義要將資料複製到何處。
 
@@ -163,7 +163,7 @@ ms.locfileid: "84034649"
 
   批次大小控制資料移動期間會一次離線的 Shardlet 數目。 這是整數值，當您無法忍受長時間沒有 Shardlet 可用時，您可以使用較小的值。 較大的值會延長給定 Shardlet 離線的時間，但可改善效能。
 
-- **作業識別碼 (取消) **
+- **作業識別碼 (取消)**
 
   如果您不再需要某個進行中的作業，您可以在此欄位中提供其作業識別碼來取消作業。 您可以從要求狀態資料表 (請參閱 8.1 節)，或從您提交要求的網頁瀏覽器中的輸出，擷取作業識別碼。
 
@@ -220,7 +220,7 @@ ms.locfileid: "84034649"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> 仍支援 PowerShell Azure Resource Manager 模組，但未來所有的開發都是針對 Az. Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
+> 仍支援 PowerShell Azure Resource Manager 模組，但未來所有的開發都是針對 Az. Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
 
 針對 NuGet 封裝所提供的 Web 和背景工作角色，若要使用診斷組態啟用監視和診斷，請使用 Azure PowerShell 執行下列命令：
 
@@ -244,13 +244,13 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext `
 
 ## <a name="retrieve-diagnostics"></a>擷取診斷
 
-從 Visual Studio 伺服器總管，您可以在伺服器總管樹狀目錄的 Azure 部分中輕鬆存取診斷。 開啟 Visual Studio 執行個體，在功能表列按一下 [檢視] 和 [伺服器總管]。 按一下 [Azure] 圖示，連接至您的 Azure 訂用帳戶。 然後瀏覽至 [Azure] -> [儲存體] -> `<your storage account>` -> [資料表] -> [WADLogsTable]。 如需詳細資訊，請參閱[伺服器總管](https://msdn.microsoft.com/library/x603htbk.aspx)。
+從 Visual Studio 伺服器總管，您可以在伺服器總管樹狀目錄的 Azure 部分中輕鬆存取診斷。 開啟 Visual Studio 執行個體，在功能表列按一下 [檢視] 和 [伺服器總管]。 按一下 [Azure] 圖示，連接至您的 Azure 訂用帳戶。 然後瀏覽至 [Azure] -> [儲存體] -> `<your storage account>` -> [資料表] -> [WADLogsTable]。 如需詳細資訊，請參閱[伺服器總管](/previous-versions/x603htbk(v=vs.140))。
 
 ![WADLogsTable][2]
 
 在上圖中反白顯示的 WADLogsTable 包含分割合併服務應用程式記錄檔中的詳細事件。 請注意，下載的封裝的預設組態是特別針對生產部署而設計。 因此，從服務執行個體提取記錄和計數器的間隔時間很大 (5 分鐘)。 在測試和開發時，請依需要調整 Web 或背景工作角色的診斷設定，以縮短間隔。 請以滑鼠右鍵按一下 Visual Studio 伺服器總管 (請參閱上圖) 中的角色，然後調整 [診斷組態] 設定對話方塊中的 [傳輸期間]：
 
-![組態][3]
+![設定][3]
 
 ## <a name="performance"></a>效能
 

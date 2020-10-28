@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.date: 10/15/2020
 ms.reviewer: ''
-ms.openlocfilehash: 9ae5d5e488a7bbe0e80f5a8960be27fd3de8489a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 19178359d1eeb935499a01828f7c53b123e17571
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102994"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793172"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>以 DTU 為基礎的購買模式的服務層
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "92102994"
 |**執行時間 SLA**|99.99%|99.99%|99.99%|
 |**備份保留期上限**|7 天|35 天|35 天|
 |**CPU**|低|低、中、高|中、高|
-|**IOPS (大約) **\* |每個 DTU 1-4 IOPS| 每個 DTU 1-4 IOPS | 每個 DTU 25 個 IOPS|
+|**IOPS (大約)**\* |每個 DTU 1-4 IOPS| 每個 DTU 1-4 IOPS | 每個 DTU 25 個 IOPS|
 |**IO 延遲 (大約)**|5 毫秒 (讀取)，10 毫秒 (寫入)|5 毫秒 (讀取)，10 毫秒 (寫入)|2 毫秒 (讀取/寫入)|
 |**資料行存放區索引** |N/A|S3 和更新版本|支援|
 |**記憶體內部 OLTP**|N/A|N/A|支援|
@@ -54,7 +54,7 @@ ms.locfileid: "92102994"
 >
 
 > [!TIP]
-> 若要查看資料庫或彈性集區的實際 [資源治理](resource-limits-logical-server.md#resource-governance) 限制，請查詢 [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 視圖。
+> 若要查看資料庫或彈性集區的實際 [資源治理](resource-limits-logical-server.md#resource-governance) 限制，請查詢 [sys.dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 視圖。
 
 > [!NOTE]
 > 您可以在基本服務層級的 Azure SQL Database 中取得免費的資料庫，並搭配 Azure 免費帳戶以探索 Azure。 如需相關資訊，請參閱[使用您的免費 Azure 免費帳戶，建立受管理的雲端資料庫](https://azure.microsoft.com/free/services/sql-database/)。

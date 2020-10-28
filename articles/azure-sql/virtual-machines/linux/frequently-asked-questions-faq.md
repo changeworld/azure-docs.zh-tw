@@ -11,12 +11,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: afd36eb079b6e5f29fa664050cded3c5ddd17d8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad991974df30060e552d21a44d5796cd2ba165e2
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84669455"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792543"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-virtual-machines"></a>Linux 上的 SQL Server 虛擬機器的常見問題
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -61,7 +61,7 @@ ms.locfileid: "84669455"
 
 1. **如何在 Azure VM 上安裝 SQL Server 授權版本？**
 
-   首先，建立只有 Linux OS 的虛擬機器。 然後針對您的 Linux 發行版本執行 [SQL Server 安裝步驟](https://docs.microsoft.com/sql/linux/sql-server-linux-setup#platforms)。 除非您安裝其中一個免費授權的 SQL Server 版本，否則您也必須要有 SQL Server 授權與 [Azure 上透過軟體保證的授權流動性](https://azure.microsoft.com/pricing/license-mobility/)。
+   首先，建立只有 Linux OS 的虛擬機器。 然後針對您的 Linux 發行版本執行 [SQL Server 安裝步驟](/sql/linux/sql-server-linux-setup#platforms)。 除非您安裝其中一個免費授權的 SQL Server 版本，否則您也必須要有 SQL Server 授權與 [Azure 上透過軟體保證的授權流動性](https://azure.microsoft.com/pricing/license-mobility/)。
 
 1. **是否有適用於 SQL Server 的自備授權 (BYOL) Linux 虛擬機器映像？**
 
@@ -75,7 +75,7 @@ ms.locfileid: "84669455"
 
 1. **我可以使用 SQL Server Management Studio (SSMS) 來管理執行 SQL Server 的 Linux 虛擬機器嗎？**
 
-   是，但 SSMS 目前為僅限 Windows 的工具。 您必須從 Windows 電腦遠端連線，才能搭配執行 SQL Server 的 Linux Vm 使用 SSMS。 在 Linux 本機上，新的 [mssql-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) 工具可以執行許多管理工作。 如需跨平台的資料庫管理工具，請參閱 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is)。
+   是，但 SSMS 目前為僅限 Windows 的工具。 您必須從 Windows 電腦遠端連線，才能搭配執行 SQL Server 的 Linux Vm 使用 SSMS。 在 Linux 本機上，新的 [mssql-conf](/sql/linux/sql-server-linux-configure-mssql-conf) 工具可以執行許多管理工作。 如需跨平台的資料庫管理工具，請參閱 [Azure Data Studio](/sql/azure-data-studio/what-is)。
 
 1. **可以從 SQL Server VM 完全移除 SQL Server 嗎？**
 
@@ -85,7 +85,7 @@ ms.locfileid: "84669455"
 
 1. **如何將 Azure VM 中的 SQL Server 升級至新版本？**
 
-   目前，在 Azure VM 中執行的 SQL Server 不提供任何就地升級。 因此，請建立具有所需 SQL Server 版本的 Azure 虛擬機器，然後使用[標準資料移轉技術](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview)，將資料庫移轉到新的伺服器。
+   目前，在 Azure VM 中執行的 SQL Server 不提供任何就地升級。 因此，請建立具有所需 SQL Server 版本的 Azure 虛擬機器，然後使用[標準資料移轉技術](/sql/linux/sql-server-linux-migrate-overview)，將資料庫移轉到新的伺服器。
 
 ## <a name="general"></a>一般
 
@@ -95,13 +95,13 @@ ms.locfileid: "84669455"
 
 ## <a name="resources"></a>資源
 
-**Linux VM**：
+**Linux VM** ：
 
 * [Linux VM 上的 SQL Server 概觀](sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [在 Linux VM 上布建 SQL Server](sql-vm-create-portal-quickstart.md)
-* [Linux 上的 SQL Server 文件](https://docs.microsoft.com/sql/linux/sql-server-linux-overview) \(機器翻譯\)
+* [Linux 上的 SQL Server 文件](/sql/linux/sql-server-linux-overview) \(機器翻譯\)
 
-**Windows VM**：
+**Windows VM** ：
 
 * [Windows VM 上的 SQL Server 概觀](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [在 Windows VM 上布建 SQL Server](../windows/sql-vm-create-portal-quickstart.md)

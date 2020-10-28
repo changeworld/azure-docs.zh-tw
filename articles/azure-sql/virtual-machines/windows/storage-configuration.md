@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: fa471c201965096c4a0f022ab1199d4853128319
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebeee228d8c936732465359dfa264d822cbecb1e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91272016"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793070"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 的儲存體組態
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -46,19 +46,19 @@ ms.locfileid: "91272016"
 
 ![佈建期間的 SQL Server VM 儲存體設定](./media/storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
-在 [儲存體最佳化] 上，選取要為其部署 SQL Server 的工作負載類型。 使用 [一般] 最佳化選項時，根據預設您會有一個 IOPS 上限為 5000 的資料磁碟，而且您會使用此相同磁碟機來儲存資料、交易記錄和 TempDB。 選取 [交易處理] (OLTP) 或 [資料倉儲] 將會為資料建立個別磁碟、為交易記錄建立個別磁碟，並針對 TempDB 使用本機 SSD。 **交易處理**和**資料倉儲**之間沒有任何儲存上的差異，但其卻會變更您的[等量磁碟區設定和追蹤旗標](#workload-optimization-settings)。 根據 [SQL Server VM 效能最佳做法](performance-guidelines-best-practices.md)，選擇進階儲存體會將資料磁碟機的快取設定為*唯讀*，並將記錄磁碟機的快取設定為*無*。 
+在 [儲存體最佳化] 上，選取要為其部署 SQL Server 的工作負載類型。 使用 [一般] 最佳化選項時，根據預設您會有一個 IOPS 上限為 5000 的資料磁碟，而且您會使用此相同磁碟機來儲存資料、交易記錄和 TempDB。 選取 [交易處理] (OLTP) 或 [資料倉儲] 將會為資料建立個別磁碟、為交易記錄建立個別磁碟，並針對 TempDB 使用本機 SSD。 **交易處理** 和 **資料倉儲** 之間沒有任何儲存上的差異，但其卻會變更您的 [等量磁碟區設定和追蹤旗標](#workload-optimization-settings)。 根據 [SQL Server VM 效能最佳做法](performance-guidelines-best-practices.md)，選擇進階儲存體會將資料磁碟機的快取設定為 *唯讀* ，並將記錄磁碟機的快取設定為 *無* 。 
 
 ![佈建期間的 SQL Server VM 儲存體設定](./media/storage-configuration/sql-vm-storage-configuration.png)
 
-您可以完全地自訂磁碟設定，因此您可以為 SQL Server VM 工作負載設定所需的儲存體拓撲、磁碟類型和 IOPS。 如果您的 SQL Server VM 位於其中一個受支援的區域 (美國東部2、東南亞和北歐)，而且您已啟用[訂用帳戶的 Ultra 磁碟](/azure/virtual-machines/windows/disks-enable-ultra-ssd)，則您也可以使用 UltraSSD (預覽) 作為**磁碟類型**的選項。  
+您可以完全地自訂磁碟設定，因此您可以為 SQL Server VM 工作負載設定所需的儲存體拓撲、磁碟類型和 IOPS。 如果您的 SQL Server VM 位於其中一個受支援的區域 (美國東部2、東南亞和北歐)，而且您已啟用 [訂用帳戶的 Ultra 磁碟](../../../virtual-machines/disks-enable-ultra-ssd.md)，則您也可以使用 UltraSSD (預覽) 作為 **磁碟類型** 的選項。  
 
-此外，您也能為磁碟設定快取。 與[進階磁碟](/azure/virtual-machines/windows/disks-types#premium-ssd)搭配使用時，Azure VM 具有稱為 [Blob 快取](/azure/virtual-machines/windows/premium-storage-performance#disk-caching)的多層快取技術。 Blob 快取會結合虛擬機器 RAM 和本機 SSD 進行快取。 
+此外，您也能為磁碟設定快取。 與[進階磁碟](../../../virtual-machines/disks-types.md#premium-ssd)搭配使用時，Azure VM 具有稱為 [Blob 快取](../../../virtual-machines/premium-storage-performance.md#disk-caching)的多層快取技術。 Blob 快取會結合虛擬機器 RAM 和本機 SSD 進行快取。 
 
-進階 SSD 的磁碟快取可以是*唯讀*、*讀寫*或*無*。 
+進階 SSD 的磁碟快取可以是 *唯讀* 、 *讀寫* 或 *無* 。 
 
-- *唯讀*快取對於儲存在進階儲存體上的 SQL Server 資料檔案非常有用。 從位於 VM 記憶體和本機 SSD 內的快取執行讀取時，*唯讀*快取可帶來低讀取延遲、高讀取 IOPS 和輸送量。 這些讀取速度會比從 Azure Blob 儲存體讀取資料磁片快許多。 進階儲存體不會將快取所服務的讀取計入磁碟 IOPS 和輸送量之內。 因此，應用程式能夠達到較高的 IOPS 和輸送量總計。 
-- 裝載 SQL Server 記錄檔的磁碟應使用*無*快取設定，因為記錄檔會依序寫入，並不會受益於*唯讀*快取。 
-- 不應使用*讀寫*快取來裝載 SQL Server 檔案，因為 SQL Server 未對*讀寫*快取支援資料一致性。 如果寫入時經過*唯讀* Blob 快取層，則寫入會浪費*唯讀* Blob 快取的容量，且延遲會稍微增加。 
+- *唯讀* 快取對於儲存在進階儲存體上的 SQL Server 資料檔案非常有用。 從位於 VM 記憶體和本機 SSD 內的快取執行讀取時， *唯讀* 快取可帶來低讀取延遲、高讀取 IOPS 和輸送量。 這些讀取速度會比從 Azure Blob 儲存體讀取資料磁片快許多。 進階儲存體不會將快取所服務的讀取計入磁碟 IOPS 和輸送量之內。 因此，應用程式能夠達到較高的 IOPS 和輸送量總計。 
+- 裝載 SQL Server 記錄檔的磁碟應使用 *無* 快取設定，因為記錄檔會依序寫入，並不會受益於 *唯讀* 快取。 
+- 不應使用 *讀寫* 快取來裝載 SQL Server 檔案，因為 SQL Server 未對 *讀寫* 快取支援資料一致性。 如果寫入時經過 *唯讀* Blob 快取層，則寫入會浪費 *唯讀* Blob 快取的容量，且延遲會稍微增加。 
 
 
    > [!TIP]

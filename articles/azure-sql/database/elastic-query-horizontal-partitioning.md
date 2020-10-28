@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
-ms.openlocfilehash: ced546f8f4375433d9fcd59f7ce46f9604f72921
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 148c4828309738a18dbda5fd35ea634e8384bfde
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443125"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792101"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>跨相應放大的雲端資料庫報告 (預覽)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "91443125"
 
 如需非分區化資料庫，請參閱 [對不同結構描述的雲端資料庫執行查詢](elastic-query-vertical-partitioning.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 使用彈性資料庫用戶端程式庫，建立分區對應。 請參閱 [分區對應管理](elastic-scale-shard-map-management.md)。 或使用 [開始使用彈性資料庫工具](elastic-scale-get-started.md)中的範例應用程式。
 * 或者，請參閱 [轉換現有的資料庫以使用彈性資料庫工具](elastic-convert-to-use-elastic-tools.md)。
@@ -40,10 +40,10 @@ ms.locfileid: "91443125"
 
 這些陳述式可在彈性查詢資料庫中建立分區化資料層的中繼資料表示法。
 
-1. [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
-3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
-4. [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx)
+1. [CREATE MASTER KEY](/sql/t-sql/statements/create-master-key-transact-sql)
+2. [CREATE DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql)
+3. [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql)
+4. [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql)
 
 ## <a name="11-create-database-scoped-master-key-and-credentials"></a>1.1 建立資料庫範圍的主要金鑰和認證
 
@@ -160,10 +160,10 @@ SCHEMA\_NAME 和 OBJECT\_NAME 子句會將外部資料表定義對應至不同�
 DISTRIBUTION 子句會指定用於此資料表的資料散發。 查詢處理器會利用 DISTRIBUTION 子句中提供的資訊來建置最有效率的查詢計劃。
 
 1. **分區化** 表示資料會在資料庫之間水準分割。 用於資料散發的分割索引鍵是 **<sharding_column_name>** 參數。
-2. 「**已**複寫」表示資料表的相同複本存在於每個資料庫上。 您必須負責確保複本在所有資料庫上都相同。
+2. 「 **已** 複寫」表示資料表的相同複本存在於每個資料庫上。 您必須負責確保複本在所有資料庫上都相同。
 3. **四捨五入 \_** 配置資源表示使用應用程式相依的散發方法，以水準方式分割資料表。
 
-**資料層參考**：外部資料表 DDL 指的是外部資料來源。 外部資料源會指定分區對應，以提供外部資料表，以找出您資料層中的所有資料庫所需的資訊。
+**資料層參考** ：外部資料表 DDL 指的是外部資料來源。 外部資料源會指定分區對應，以提供外部資料表，以找出您資料層中的所有資料庫所需的資訊。
 
 ### <a name="security-considerations"></a>安全性考量
 
@@ -194,7 +194,7 @@ DISTRIBUTION 子句會指定用於此資料表的資料散發。 查詢處理器
 
 ## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>用於遠端 T-SQL 執行的預存程序：sp\_execute_remote
 
-彈性查詢也會介紹可供直接存取分區的預存程序。 預存程序稱為 [sp\_execute\_remote](https://msdn.microsoft.com/library/mt703714)，可用來在遠端資料庫上執行遠端預存程序或 T-SQL 程式碼。 它需要以下參數：
+彈性查詢也會介紹可供直接存取分區的預存程序。 預存程序稱為 [sp\_execute\_remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database)，可用來在遠端資料庫上執行遠端預存程序或 T-SQL 程式碼。 它需要以下參數：
 
 * 資料來源名稱 (nvarchar)：RDBMS 類型的外部資料來源名稱。
 * 查詢 (nvarchar)：對每個分區執行的 T-SQL 查詢。
@@ -228,7 +228,7 @@ sp\_execute\_remote 會使用叫用參數中提供的外部資料來源，在遠
 * 若要開始撰寫程式碼，請參閱 [開始使用跨資料庫查詢 (垂直資料分割)](elastic-query-getting-started-vertical.md)。
 * 如需垂直資料分割之資料的語法和範例查詢，請參閱[查詢垂直資料分割的資料](elastic-query-vertical-partitioning.md)
 * 如需水平資料分割 (分區化) 教學課程，請參閱[開始使用彈性查詢進行水平資料分割 (分區化)](elastic-query-getting-started.md)。
-* 如需會在單一遠端 Azure SQL Database 或一組在水平資料分割配置中作為分區之資料庫上執行 Transact-SQL 陳述式的預存程序，請參閱 [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714)。
+* 如需會在單一遠端 Azure SQL Database 或一組在水平資料分割配置中作為分區之資料庫上執行 Transact-SQL 陳述式的預存程序，請參閱 [sp\_execute \_remote](/sql/relational-databases/system-stored-procedures/sp-execute-remote-azure-sql-database)。
 
 <!--Image references-->
 [1]: ./media/elastic-query-horizontal-partitioning/horizontalpartitioning.png

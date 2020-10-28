@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: f3fb31dc7db4808db83f33abdf14179265d147f9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c0952e0f267f9c2511a2e80fa7106958d8dd0ee5
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425185"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791880"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure 資訊安全中心的安全性建議 
 本主題說明如何查看並瞭解 Azure 資訊安全中心中的建議，以協助保護您的 Azure 資源。
@@ -50,9 +50,9 @@ ms.locfileid: "92425185"
 
     此頁面包含：
 
-    1. 在支援的建議上**強制執行**和**拒絕**按鈕 (請參閱[使用強制/拒絕建議來防止錯誤配置](prevent-misconfigurations.md)) 
+    1. 在支援的建議上 **強制執行** 和 **拒絕** 按鈕 (請參閱 [使用強制/拒絕建議來防止錯誤配置](prevent-misconfigurations.md)) 
     1. **嚴重性指標**
-    1. 相關) 的有效**時間間隔** ( 
+    1. 相關) 的有效 **時間間隔** ( 
     1. **描述** -問題的簡短描述
     1. **補救步驟** -在受影響的資源上補救安全性問題時所需的手動步驟的說明。 如需「快速修正」的建議，您可以選取 [ **View 補救邏輯** ]，然後再將建議的修正套用至您的資源。 
     1. **受影響的資源** -您的資源會分組到索引標籤中：
@@ -77,8 +77,8 @@ ms.locfileid: "92425185"
 
 在本文件中，已向您介紹「資訊安全中心」的安全性建議。 如需相關資訊：
 
-- [補救建議](security-center-remediate-recommendations.md) -瞭解如何為您的 Azure 訂用帳戶和資源群組設定安全性原則。
+- [補救建議](security-center-remediate-recommendations.md)--瞭解如何為您的 Azure 訂用帳戶和資源群組設定安全性原則。
 - [使用強制/拒絕建議防止錯誤配置](prevent-misconfigurations.md)。
-- [自動回應建議](workflow-automation.md)
+- [自動回應安全性中心觸發](workflow-automation.md)程式--將回應的回應自動化
 - [讓資源豁免建議](exempt-resource.md)
 - [安全性建議 - 參考指南](recommendations-reference.md)

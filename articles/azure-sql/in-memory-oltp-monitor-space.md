@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 2134cf1fda5f0f1699feb46582813d198304f92e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84e4ec1e7b3b5ec935bb9d5d819b4562e7fd3e5a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616375"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791693"
 ---
 # <a name="monitor-in-memory-oltp-storage-in-azure-sql-database-and-azure-sql-managed-instance"></a>監視 Azure SQL Database 和 Azure SQL 受控執行個體中 In-Memory OLTP 儲存體
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -65,7 +65,7 @@ ms.locfileid: "91616375"
 - 將服務層級升級至具有足夠記憶體內部記憶體的服務層級，以便儲存您需要保留在記憶體最佳化資料表中的資料。
 
 > [!NOTE]
-> 在極少數的情況下，41823 和 41840 錯誤可能是暫時性的，這表示可用的記憶體內部 OLTP 儲存體是足夠的，重試此作業即可成功。 因此，建議您除了監視整體可用的記憶體內部 OLTP 儲存體，也要在首次遇到 41823 或 41840 錯誤時進行重試。 如需重試邏輯的詳細資訊，請參閱[記憶體內部 OLTP 的衝突偵測和重試邏輯](https://docs.microsoft.com/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic)。
+> 在極少數的情況下，41823 和 41840 錯誤可能是暫時性的，這表示可用的記憶體內部 OLTP 儲存體是足夠的，重試此作業即可成功。 因此，建議您除了監視整體可用的記憶體內部 OLTP 儲存體，也要在首次遇到 41823 或 41840 錯誤時進行重試。 如需重試邏輯的詳細資訊，請參閱[記憶體內部 OLTP 的衝突偵測和重試邏輯](/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: cawa
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 96b6b262765a361befeadd9b5a42d37ca5e66497
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 57cda5104551f8b62d157e443a42c5e3c75e4ddf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372050"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792407"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>安全地儲存 Web 應用程式的祕密應用程式設定
 
@@ -30,7 +30,7 @@ ms.locfileid: "92372050"
 ## <a name="aspnet-and-net-core-applications"></a>ASP.NET 和 .NET Core 應用程式
 
 ### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>將秘密設定儲存在位於原始檔控制資料夾外的「使用者密碼」存放區中
-如果您要建構快速原型，或您沒有網際網路存取權，請先將您的秘密設定移至原始檔控制資料夾以外的「使用者密碼」存放區。 「使用者密碼」存放區是一個儲存在使用者分析工具資料夾下的檔案，因此密碼不會簽入原始檔控制中。 下圖說明[使用者密碼](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio)的運作方式。
+如果您要建構快速原型，或您沒有網際網路存取權，請先將您的秘密設定移至原始檔控制資料夾以外的「使用者密碼」存放區。 「使用者密碼」存放區是一個儲存在使用者分析工具資料夾下的檔案，因此密碼不會簽入原始檔控制中。 下圖說明[使用者密碼](/aspnet/core/security/app-secrets?tabs=visual-studio)的運作方式。
 
 ![「使用者密碼」會將秘密設定保存在原始檔控制外](../media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
 
@@ -39,11 +39,11 @@ ms.locfileid: "92372050"
 ### <a name="save-secret-settings-in-azure-key-vault"></a>將秘密設定儲存在 Azure Key Vault 中
 如果您要開發專案，而且必須安全地共用原始程式碼，請使用 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。
 
-1. 在您的 Azure 訂用帳戶中建立金鑰保存庫。 填寫 UI 上的所有必要欄位，然後按一下刀鋒視窗底部的 [建立]**
+1. 在您的 Azure 訂用帳戶中建立金鑰保存庫。 填寫 UI 上的所有必要欄位，然後按一下刀鋒視窗底部的 [建立] 
 
     ![建立 Azure Key Vault](../media/vs-secure-secret-appsettings/create-keyvault.PNG)
 
-2. 為您和您的小組成員授與金鑰保存庫的存取權。 如果您的小組成員眾多，您可以建立 [Azure Active Directory 群組](../../active-directory/active-directory-groups-create-azure-portal.md)，然後新增該安全性群組對金鑰保存庫的存取權。 在 [秘密權限]** 下拉式清單中，核取 [秘密管理作業]** 下的 [取得]** 和 [清單]**。
+2. 為您和您的小組成員授與金鑰保存庫的存取權。 如果您的小組成員眾多，您可以建立 [Azure Active Directory 群組](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)，然後新增該安全性群組對金鑰保存庫的存取權。 在 [秘密權限]  下拉式清單中，核取 [秘密管理作業]  下的 [取得]  和 [清單]  。
 如果您已建立 web 應用程式，請將 Key Vault 的存取權授與 web 應用程式，讓它可以存取金鑰保存庫，而不需要在應用程式設定或檔案中儲存秘密設定。 依名稱搜尋您的 web 應用程式，並以您授與使用者存取權的相同方式加以新增。
 
     ![新增金鑰保存庫存取原則](../media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
@@ -103,7 +103,7 @@ ms.locfileid: "92372050"
 ### <a name="save-secret-settings-in-a-secret-file-that-is-outside-of-source-control-folder"></a>將秘密設定儲存在位於原始檔控制資料夾外的秘密檔案中
 如果您要撰寫快速原型，而且不想要佈建 Azure 資源，請使用此選項。
 
-1. 以滑鼠右鍵按一下專案，然後選取 [ **管理使用者密碼**]。 這會將 NuGet 套件安裝 **Microsoft.Configuration.ConfigUrationBuilders usersecrets.xml** 、建立檔案，以將秘密設定儲存在 web.config 檔之外，並在 web.config 檔中新增區段 **ConfigBuilders** 。
+1. 以滑鼠右鍵按一下專案，然後選取 [ **管理使用者密碼** ]。 這會將 NuGet 套件安裝 **Microsoft.Configuration.ConfigUrationBuilders usersecrets.xml** 、建立檔案，以將秘密設定儲存在 web.config 檔之外，並在 web.config 檔中新增區段 **ConfigBuilders** 。
 
 2. 將秘密設定放在根項目下。 以下是範例
 

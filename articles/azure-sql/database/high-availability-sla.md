@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: sstein, sashan
 ms.date: 08/12/2020
-ms.openlocfilehash: 93e9ad28b14a51432fd9ccd32d1a155eaff2e190
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c616ba1971fcbb0674a42583b30c25f6ccda6874
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427123"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791778"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database 和 SQL 受控執行個體的高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -28,8 +28,8 @@ ms.locfileid: "92427123"
 
 有兩個高可用性架構模型：
 
-- 以計算和儲存體分隔為基礎的**標準可用性模型**。  它依賴遠端儲存層的高可用性和可靠性。 此架構的目標是以預算導向的商務應用程式，可容忍維護活動期間的效能降低。
-- 以資料庫引擎進程叢集為基礎的高階**可用性模型**。 這是因為永遠會有一個可用資料庫引擎節點的仲裁。 此架構以高 IO 效能、高交易率為目標的任務關鍵性應用程式，並保證在維護活動期間對您的工作負載造成最少的效能影響。
+- 以計算和儲存體分隔為基礎的 **標準可用性模型** 。  它依賴遠端儲存層的高可用性和可靠性。 此架構的目標是以預算導向的商務應用程式，可容忍維護活動期間的效能降低。
+- 以資料庫引擎進程叢集為基礎的高階 **可用性模型** 。 這是因為永遠會有一個可用資料庫引擎節點的仲裁。 此架構以高 IO 效能、高交易率為目標的任務關鍵性應用程式，並保證在維護活動期間對您的工作負載造成最少的效能影響。
 
 SQL Database 和 SQL 受控執行個體都是在最新穩定版本的 SQL Server Database engine 和 Windows 作業系統上執行，大部分的使用者都不會注意到升級會持續執行。
 
@@ -63,7 +63,7 @@ SQL Database 和 SQL 受控執行個體都是在最新穩定版本的 SQL Server
 > 如需支援區域重複資料庫之區域的最新資訊，請參閱 [依區域的服務支援](../../availability-zones/az-region.md)。 只有在選取第5代計算硬體時，才可使用區域冗余設定。 SQL 受控執行個體中無法使用此功能。
 
 > [!NOTE]
-> 大小為 80 vcore 的一般用途資料庫，可能會在區域冗余設定時遇到效能降低的情況。 備份、還原、資料庫複製及設定異地 DR 關聯性之類的作業，可能會針對大於 1 TB 的單一資料庫體驗較慢的效能。 
+> 大小為 80 vcore 的一般用途資料庫，可能會在區域冗余設定時遇到效能降低的情況。 此外，備份、還原、資料庫複製和設定異地 DR 關聯性等作業，可能會因為任何大於 1 TB 的單一資料庫，而遇到較慢的效能。 
 
 ## <a name="premium-and-business-critical-service-tier-locally-redundant-availability"></a>Premium 和業務關鍵服務層級本機冗余可用性
 
@@ -71,7 +71,7 @@ Premium 和業務關鍵服務層級會利用高階可用性模型，將計算資
 
 ![資料庫引擎節點的叢集](./media/high-availability-sla/business-critical-service-tier.png)
 
-基礎資料庫檔案 ( .mdf/.ldf) 放置在附加的 SSD 儲存體上，以提供非常低的延遲 IO 給您的工作負載。 高可用性是使用類似 SQL Server [Always On 可用性群組](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)的技術來實行。 叢集包含可供讀寫客戶工作負載存取的單一主要複本，以及最多三個次要複本 (計算和儲存體) 包含資料複本。 主要節點會依序不斷地將變更推送至次要節點，並確保在認可每個交易之前，資料會同步處理至至少一個次要複本。 此程式可保證如果主要節點因為任何原因而損毀，一律會有完全同步處理的節點以進行容錯移轉。 Azure Service Fabric 會起始容錯移轉。 次要複本變成新的主要節點之後，就會建立另一個次要複本，以確保叢集有足夠的節點 (仲裁集) 。 完成容錯移轉之後，Azure SQL 連接會自動重新導向至新的主要節點。
+基礎資料庫檔案 ( .mdf/.ldf) 放置在附加的 SSD 儲存體上，以提供非常低的延遲 IO 給您的工作負載。 高可用性是使用類似 SQL Server [Always On 可用性群組](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)的技術來實行。 叢集包含可供讀寫客戶工作負載存取的單一主要複本，以及最多三個次要複本 (計算和儲存體) 包含資料複本。 主要節點會依序不斷地將變更推送至次要節點，並確保在認可每個交易之前，資料會同步處理至至少一個次要複本。 此程式可保證如果主要節點因為任何原因而損毀，一律會有完全同步處理的節點以進行容錯移轉。 Azure Service Fabric 會起始容錯移轉。 次要複本變成新的主要節點之後，就會建立另一個次要複本，以確保叢集有足夠的節點 (仲裁集) 。 完成容錯移轉之後，Azure SQL 連接會自動重新導向至新的主要節點。
 
 額外的好處是，premium 可用性模型包含將唯讀 Azure SQL 連接重新導向至其中一個次要複本的能力。 這項功能稱為「 [讀取相應](read-scale-out.md)放大」。它提供100% 的額外計算容量，不需額外費用，就能從主要複本關閉並載入唯讀作業，例如分析工作負載。
 
@@ -82,7 +82,7 @@ Premium 和業務關鍵服務層級會利用高階可用性模型，將計算資
 因為區域冗余資料庫在不同的資料中心內有複本之間有一些距離，所以增加的網路延遲可能會增加認可時間，因而影響某些 OLTP 工作負載的效能。 您一律可以停用區域備援設定來回到單一區域設定。 此程式是與一般服務層級升級類似的線上操作。 在此程序結束時，資料庫或集區會從區域備援環移轉成單一區域環，或反之亦然。
 
 > [!IMPORTANT]
-> 區域冗余資料庫和彈性集區目前僅在精選區域中的 Premium 和業務關鍵服務層級支援。 使用業務關鍵層時，只有在選取第5代計算硬體時，才可使用區域冗余設定。 如需支援區域重複資料庫之區域的最新資訊，請參閱 [依區域的服務支援](../../availability-zones/az-region.md)。
+> 使用業務關鍵層時，只有在選取第5代計算硬體時，才可使用區域冗余設定。 如需支援區域重複資料庫之區域的最新資訊，請參閱 [依區域的服務支援](../../availability-zones/az-region.md)。
 
 > [!NOTE]
 > SQL 受控執行個體中無法使用此功能。
@@ -122,9 +122,9 @@ Premium 和業務關鍵服務層級會利用高階可用性模型，將計算資
 
 |部署類型|PowerShell|REST API| Azure CLI|
 |:---|:---|:---|:---|
-|資料庫|[Invoke-AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)|[資料庫容錯移轉](/rest/api/sql/databases(failover)/failover/)|[az rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest) 可用來從 Azure CLI 叫用 REST API 呼叫|
-|彈性集區|[Invoke-AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[彈性集區容錯移轉](/rest/api/sql/elasticpools(failover)/failover/)|[az rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest) 可用來從 Azure CLI 叫用 REST API 呼叫|
-|受控執行個體|[Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[受控實例-容錯移轉](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover)|[az sql mi 容錯移轉](/cli/azure/sql/mi/#az-sql-mi-failover)|
+|資料庫|[Invoke-AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[資料庫容錯移轉](/rest/api/sql/databases(failover)/failover/)|[az rest](/cli/azure/reference-index#az-rest) 可用來從 Azure CLI 叫用 REST API 呼叫|
+|彈性集區|[Invoke-AzSqlElasticPoolFailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[彈性集區容錯移轉](/rest/api/sql/elasticpools(failover)/failover/)|[az rest](/cli/azure/reference-index#az-rest) 可用來從 Azure CLI 叫用 REST API 呼叫|
+|受控執行個體|[Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[受控實例-容錯移轉](/rest/api/sql/managed%20instances%20-%20failover/failover)|[az sql mi 容錯移轉](/cli/azure/sql/mi/#az-sql-mi-failover)|
 
 > [!IMPORTANT]
 > 超大規模資料庫的可讀取次要複本無法使用容錯移轉命令。

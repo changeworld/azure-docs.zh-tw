@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 08/31/2020
-ms.openlocfilehash: 3be0695c20eafb71564211d1168bc59813f8800a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebf36c99e6c4dd636c41086d4c72fd6761f6d5ca
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617752"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791625"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL 受控執行個體上使用者起始的手動容錯移轉
 
@@ -62,7 +62,7 @@ Connect-AzAccount
 Select-AzSubscription -SubscriptionId $subscription
 ```
 
-使用 PowerShell 命令 [調用-AzSqlInstanceFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlinstancefailover) 搭配下列範例，以起始主要節點的容錯移轉，同時適用于 BC 和 GP 服務層級。
+使用 PowerShell 命令 [調用-AzSqlInstanceFailover](/powershell/module/az.sql/invoke-azsqlinstancefailover) 搭配下列範例，以起始主要節點的容錯移轉，同時適用于 BC 和 GP 服務層級。
 
 ```powershell
 $ResourceGroup = 'enter resource group of your MI'
@@ -96,7 +96,7 @@ az sql mi failover -g myresourcegroup -n myinstancename --replica-type ReadableS
 
 ### <a name="using-rest-api"></a>使用 Rest API
 
-針對可能需要自動容錯移轉其 SQL 受控實例以進行持續測試管線，或自動化效能 mitigators 的 advanced 使用者，此函式可以透過 API 呼叫來初始容錯移轉來完成。 如需詳細資料，請參閱 [受控實例-容錯移轉 REST API](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover) 。
+針對可能需要自動容錯移轉其 SQL 受控實例以進行持續測試管線，或自動化效能 mitigators 的 advanced 使用者，此函式可以透過 API 呼叫來初始容錯移轉來完成。 如需詳細資料，請參閱 [受控實例-容錯移轉 REST API](/rest/api/sql/managed%20instances%20-%20failover/failover) 。
 
 若要使用 REST API 呼叫來起始容錯移轉，請先使用您選擇的 API 用戶端來產生驗證權杖。 產生的驗證權杖會在 API 要求標頭中用來做為授權屬性，而且是必要的。
 
@@ -140,7 +140,7 @@ SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_h
 
 > [!IMPORTANT]
 > 使用者起始的手動容錯移轉的功能限制如下：
-> - 每隔 **30 分鐘**可能會有一個 (1) 容錯移轉起始于相同的受控執行個體。
+> - 每隔 **30 分鐘** 可能會有一個 (1) 容錯移轉起始于相同的受控執行個體。
 > - 對於 BC 實例，必須有複本的仲裁，才能接受容錯移轉要求。
 > - 對於 BC 實例，無法指定要在哪個可讀取次要複本上起始容錯移轉。
 

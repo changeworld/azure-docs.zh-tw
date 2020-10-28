@@ -6,15 +6,17 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 10/08/2020
-ms.openlocfilehash: cb02b29c100da7b8d63f214acc78906a757344c0
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.date: 10/25/2020
+ms.openlocfilehash: af82b9e2feee3e03d2a0703d771c68b67ddd08c9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096091"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791574"
 ---
-# <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>針對適用於 MySQL 的 Azure 資料庫中的複寫延遲進行疑難排解
+# <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>對適用於 MySQL 的 Azure 資料庫中的複寫延遲進行疑難排解
+
+[!INCLUDE[applies-to-single-flexible-server](./includes/applies-to-single-flexible-server.md)]
 
 [讀取複本](concepts-read-replicas.md)功能可讓您從適用於 MySQL 的 Azure 資料庫伺服器將資料複寫至唯讀複本伺服器。 您可以將應用程式的讀取和報告查詢路由傳送至複本伺服器，以相應放大工作負載。 此設定可減少來源伺服器的壓力。 它也可改善應用程式調整規模時的整體效能和延遲。 
 
@@ -31,9 +33,9 @@ ms.locfileid: "92096091"
 
 ## <a name="replication-concepts"></a>複寫概念
 
-當二進位記錄檔啟用時，來源伺服器會將認可的交易寫入二進位記錄檔中。 二進位記錄檔用於複寫。 它預設會針對最多支援 16 TB 儲存體的所有新布建伺服器開啟。 在複本伺服器上，兩個執行緒會在每個複本伺服器上執行。 其中一個執行緒是 *IO 執行緒*，另一個則是 *SQL 執行緒*：
+當二進位記錄檔啟用時，來源伺服器會將認可的交易寫入二進位記錄檔中。 二進位記錄檔用於複寫。 它預設會針對最多支援 16 TB 儲存體的所有新布建伺服器開啟。 在複本伺服器上，兩個執行緒會在每個複本伺服器上執行。 其中一個執行緒是 *IO 執行緒* ，另一個則是 *SQL 執行緒* ：
 
-- IO 執行緒會連接到來源伺服器，並要求更新的二進位記錄檔。 此執行緒會接收二進位記錄檔更新。 這些更新會儲存在複本伺服器上，名為「 *轉送」記錄*檔的本機記錄檔中。
+- IO 執行緒會連接到來源伺服器，並要求更新的二進位記錄檔。 此執行緒會接收二進位記錄檔更新。 這些更新會儲存在複本伺服器上，名為「 *轉送」記錄* 檔的本機記錄檔中。
 - SQL 執行緒會讀取轉送記錄，然後將資料變更套用到複本伺服器上。
 
 ## <a name="monitoring-replication-latency"></a>監視複寫延遲

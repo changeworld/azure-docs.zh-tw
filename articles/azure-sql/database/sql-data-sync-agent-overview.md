@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: e91fd0d94d6f6d87b5e554e27bf9c2a2ba6ccabd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed8d51adf5a93b470f287383a4d3eeb866b15236
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858467"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791455"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>SQL 資料同步的 Data Sync Agent
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -24,9 +24,9 @@ ms.locfileid: "91858467"
 藉由在 Azure 中安裝和設定 SQL 資料同步的 Data Sync Agent，同步處理 SQL Server 資料庫的資料。 如需有關「SQL 資料同步」的詳細資訊，請參閱[使用 SQL 資料同步，跨多個雲端和內部部署資料庫同步資料](sql-data-sync-data-sql-server-sql-database.md)。
 
 > [!IMPORTANT]
-> SQL 資料同步目前**不**支援 Azure SQL 受控執行個體。
+> SQL 資料同步目前 **不** 支援 Azure SQL 受控執行個體。
 
-## <a name="download-and-install"></a>下載和安裝
+## <a name="download-and-install"></a>下載並安裝
 
 若要下載 Data Sync Agent，請移至 [SQL 資料同步代理程式](https://www.microsoft.com/download/details.aspx?id=27693)。 若要升級 Data Sync Agent，請將代理程式安裝在與舊代理程式相同的位置，它將會覆寫原始代理程式。
 
@@ -36,7 +36,7 @@ ms.locfileid: "91858467"
 
 - 如果您未提供 **TARGETDIR** 的值，預設值將是 `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0`。
 
-- 如果您提供 `LocalSystem` 做為 **SERVICEACCOUNT**的值，請在將代理程式設定為連線至 SQL Server 時使用 SQL Server 驗證。
+- 如果您提供 `LocalSystem` 做為 **SERVICEACCOUNT** 的值，請在將代理程式設定為連線至 SQL Server 時使用 SQL Server 驗證。
 
 - 如果您提供網域使用者帳戶或本機使用者帳戶作為 **SERVICEACCOUNT** 的值，您也必須使用 **SERVICEPASSWORD** 引數提供密碼。 例如： `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"` 。
 
@@ -52,7 +52,7 @@ msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\
 
 ### <a name="why-do-i-need-a-client-agent"></a>我為何需要用戶端代理程式？
 
-SQL 資料同步服務會透過用戶端代理程式來與 SQL Server 資料庫通訊。 這項安全性功能可防止直接與防火牆後方的資料庫通訊。 當 SQL 資料同步服務與代理程式通訊時，會使用加密的連線與唯一的權杖或「代理程式金鑰」** 來執行此動作。 SQL Server 資料庫會使用連接字串和代理程式金鑰來驗證代理程式。 這項設計可為您的資料提供高階安全性。
+SQL 資料同步服務會透過用戶端代理程式來與 SQL Server 資料庫通訊。 這項安全性功能可防止直接與防火牆後方的資料庫通訊。 當 SQL 資料同步服務與代理程式通訊時，會使用加密的連線與唯一的權杖或「代理程式金鑰」  來執行此動作。 SQL Server 資料庫會使用連接字串和代理程式金鑰來驗證代理程式。 這項設計可為您的資料提供高階安全性。
 
 ### <a name="how-many-instances-of-the-local-agent-ui-can-be-run"></a>一共可執行多少個本機代理程式 UI 執行個體？
 
@@ -98,9 +98,9 @@ SQL 資料同步服務會透過用戶端代理程式來與 SQL Server 資料庫�
 
 ### <a name="the-client-agent-install-uninstall-or-repair-fails"></a><a name="agent-install"></a> 用戶端代理程式安裝、卸載或修復失敗
 
-- **原因**。 許多情節可能會造成這個失敗。 若要判斷此失敗的特定原因，請查看記錄。
+- **原因** 。 許多情節可能會造成這個失敗。 若要判斷此失敗的特定原因，請查看記錄。
 
-- **解決方法**： 若要尋找失敗的特定原因，請產生並查看 Windows Installer 記錄。 您可以在命令提示字元開啟記錄。 例如，如果下載的安裝檔案為 `SQLDataSyncAgent-2.0-x86-ENU.msi`，請使用下列命令列來產生並檢查記錄：
+- **解決方法** ： 若要尋找失敗的特定原因，請產生並查看 Windows Installer 記錄。 您可以在命令提示字元開啟記錄。 例如，如果下載的安裝檔案為 `SQLDataSyncAgent-2.0-x86-ENU.msi`，請使用下列命令列來產生並檢查記錄：
 
   - 安裝：`msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
   - 解除安裝：`msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
@@ -111,9 +111,9 @@ SQL 資料同步服務會透過用戶端代理程式來與 SQL Server 資料庫�
 
 用戶端代理程式無法運作，即使您取消其解除安裝亦然。
 
-- **原因**。 SQL 資料同步用戶端代理程式不會儲存認證，因此發生此問題。
+- **原因** 。 SQL 資料同步用戶端代理程式不會儲存認證，因此發生此問題。
 
-- **解決方法**： 您可以嘗試這兩種解決方案：
+- **解決方法** ： 您可以嘗試這兩種解決方案：
 
     -   使用 services.msc 重新輸入用戶端代理程式的認證。
     -   解除安裝此用戶端代理程式，然後安裝新的用戶端代理程式。 從[下載中心](https://www.microsoft.com/download/details.aspx?id=27693)下載並安裝最新的用戶端代理程式。
@@ -124,16 +124,16 @@ SQL 資料同步服務會透過用戶端代理程式來與 SQL Server 資料庫�
 
 這些情節可能會造成此問題：
 
-- **原因**。 用戶端代理程式和同步群組位於不同的資料中心。
+- **原因** 。 用戶端代理程式和同步群組位於不同的資料中心。
 
-- **解決方法**： 用戶端代理程式和同步群組必須在相同資料中心。 若要設定此情況，您有兩個選項：
+- **解決方法** ： 用戶端代理程式和同步群組必須在相同資料中心。 若要設定此情況，您有兩個選項：
 
     -   在與同步群組所在的相同資料中心中建立新的代理程式。 然後向該代理程式註冊資料庫。
     -   刪除目前的同步處理群組。 然後，在代理程式所在的資料中心重新建立同步群組。
 
-- **原因**。 用戶端代理程式的資料庫清單不是最新的。
+- **原因** 。 用戶端代理程式的資料庫清單不是最新的。
 
-- **解決方法**： 停止然後再重新啟動用戶端代理程式服務。
+- **解決方法** ： 停止然後再重新啟動用戶端代理程式服務。
 
     本機代理程式只會在第一次提交代理程式金鑰時下載相關聯的資料庫清單。 在後續的代理程式金鑰提交時，它不會下載相關聯資料庫的清單。 在代理程式移動期間註冊的資料庫不會出現在原始代理程式執行個體上。
 
@@ -143,22 +143,22 @@ SQL 資料同步服務會透過用戶端代理程式來與 SQL Server 資料庫�
 
 ![資料同步處理錯誤 1069 對話方塊](./media/sql-data-sync-agent-overview/sync-error-1069.png)
 
-- **原因**。 此錯誤的可能原因是，在本機伺服器上的密碼在您建立代理程式及代理程式密碼之後已變更。
+- **原因** 。 此錯誤的可能原因是，在本機伺服器上的密碼在您建立代理程式及代理程式密碼之後已變更。
 
-- **解決方法**： 將代理程式的密碼更新成目前的伺服器密碼：
+- **解決方法** ： 將代理程式的密碼更新成目前的伺服器密碼：
 
   1. 找出 SQL 資料同步用戶端代理程式預覽服務。  
     a. 選取 [開始]  。  
-    b. 在搜尋方塊中輸入 **services.msc**。  
-    c. 在搜尋結果中，選取 [ **服務**]。  
-    d. 在 [服務]**** 視窗中，捲動至 [SQL Data Sync Agent]**** 的項目。  
-  1. 在 [SQL Data Sync Agent]**** 上按一下滑鼠右鍵，然後選取 [停止]****。
-  1. 在 [SQL Data Sync Agent]**** 上按一下滑鼠右鍵，然後選取 [屬性]****。
-  1. 在 [SQL Data Sync Agent 屬性]**** 上，選取 [登入]**** 索引標籤。
-  1. 在 [密碼]**** 方塊中，輸入您的密碼。
-  1. 在 [確認密碼]**** 方塊中，重新輸入密碼。
+    b. 在搜尋方塊中輸入 **services.msc** 。  
+    c. 在搜尋結果中，選取 [ **服務** ]。  
+    d. 在 [服務]  視窗中，捲動至 [SQL Data Sync Agent]  的項目。  
+  1. 在 [SQL Data Sync Agent]  上按一下滑鼠右鍵，然後選取 [停止]  。
+  1. 在 [SQL Data Sync Agent]  上按一下滑鼠右鍵，然後選取 [屬性]  。
+  1. 在 [SQL Data Sync Agent 屬性]  上，選取 [登入]  索引標籤。
+  1. 在 [密碼]  方塊中，輸入您的密碼。
+  1. 在 [確認密碼]  方塊中，重新輸入密碼。
   1. 選取 [套用]  ，然後選取 [確定]  。
-  1. 在 [服務]**** 視窗中，以滑鼠右鍵按一下 [SQL Data Sync Agent]**** 服務，然後按一下 [啟動]****。
+  1. 在 [服務]  視窗中，以滑鼠右鍵按一下 [SQL Data Sync Agent]  服務，然後按一下 [啟動]  。
   1. 關閉 [ **服務** ] 視窗。
 
 ### <a name="i-cant-submit-the-agent-key"></a><a name="agent-key"></a> 我無法提交代理程式金鑰
@@ -167,7 +167,7 @@ SQL 資料同步服務會透過用戶端代理程式來與 SQL Server 資料庫�
 
 ![[同步錯誤] 對話方塊 - 無法提交代理程式金鑰](./media/sql-data-sync-agent-overview/sync-error-cant-submit-agent-key.png)
 
-- **必要條件**。 在繼續之前，請檢查下列必要條件：
+- **必要條件** 。 在繼續之前，請檢查下列必要條件：
 
   - SQL 資料同步 Windows 服務正在執行。
 
@@ -177,12 +177,12 @@ SQL 資料同步服務會透過用戶端代理程式來與 SQL Server 資料庫�
 
   - 本機 IP 會加入同步中繼資料資料庫的伺服器或資料庫防火牆規則。
 
-- **原因**。 代理程式金鑰可唯一識別每個本機代理程式。 金鑰必須符合兩個條件：
+- **原因** 。 代理程式金鑰可唯一識別每個本機代理程式。 金鑰必須符合兩個條件：
 
   -   SQL 資料同步伺服器和本機電腦上的用戶端代理程式金鑰必須相同。
   -   用戶端代理程式金鑰只能使用一次。
 
-- **解決方法**： 如果您的代理程式無法運作，這是因為不符合這些條件之一或兩者皆不符合。 讓代理程式重新運作：
+- **解決方法** ： 如果您的代理程式無法運作，這是因為不符合這些條件之一或兩者皆不符合。 讓代理程式重新運作：
 
   1. 產生新的金鑰。
   1. 將新的金鑰套用至代理程式。
@@ -192,31 +192,31 @@ SQL 資料同步服務會透過用戶端代理程式來與 SQL Server 資料庫�
   1. 在檔案總管中，移至您的代理程式安裝目錄。 預設安裝目錄為 C:\\Program Files (x86)\\Microsoft SQL Data Sync。
   1. 按兩下 bin 子目錄。
   1. 開啟 SqlAzureDataSyncAgent 應用程式。
-  1. 選取 [提交代理程式金鑰]****。
+  1. 選取 [提交代理程式金鑰]  。
   1. 在提供的空間中，貼上剪貼簿中的金鑰。
-  1. 選取 [確定]  。
+  1. 選取 [確定]。
   1. 關閉程式。
 
 ### <a name="the-client-agent-cant-be-deleted-from-the-portal-if-its-associated-on-premises-database-is-unreachable"></a><a name="agent-delete"></a> 如果無法連線到與用戶端代理程式相關聯的內部部署資料庫，則無法從入口網站刪除用戶端代理程式
 
 如果無法連線到向 SQL 資料同步用戶端代理程式註冊的本機端點 (也就是資料庫)，則無法刪除用戶端代理程式。
 
-- **原因**。 無法刪除本機代理程式，因為無法連線的資料庫仍向代理程式註冊。 當您嘗試刪除代理程式時，刪除程序會嘗試連接資料庫，但是失敗。
+- **原因** 。 無法刪除本機代理程式，因為無法連線的資料庫仍向代理程式註冊。 當您嘗試刪除代理程式時，刪除程序會嘗試連接資料庫，但是失敗。
 
-- **解決方法**： 使用「強制刪除」以刪除無法連線的資料庫。
+- **解決方法** ： 使用「強制刪除」以刪除無法連線的資料庫。
 
 > [!NOTE]
 > 如果「強制刪除」之後，同步中繼資料資料表仍然存在，請使用 `deprovisioningutil.exe` 來清除它們。
 
 ### <a name="local-sync-agent-app-cant-connect-to-the-local-sync-service"></a><a name="agent-connect"></a> 本機同步代理程式應用程式無法連線至本機同步處理服務
 
-- **解決方法**： 請嘗試下列步驟：
+- **解決方法** ： 請嘗試下列步驟：
 
   1. 結束應用程式。  
   1. 開啟 [元件服務] 畫面。  
-    a. 在工作列上的 [搜尋] 方塊中，輸入 **services.msc**。  
-    b. 在搜尋結果中按兩下 [服務]****。  
-  1. 停止 **SQL 資料同步**服務。
+    a. 在工作列上的 [搜尋] 方塊中，輸入 **services.msc** 。  
+    b. 在搜尋結果中按兩下 [服務]  。  
+  1. 停止 **SQL 資料同步** 服務。
   1. 重新開機 **SQL 資料同步** 服務。  
   1. 重新開啟應用程式。
 
@@ -326,7 +326,7 @@ SqlDataSyncAgentCommand.exe -action "updatecredential" -serverName localhost -da
         -  [使用 PowerShell 在 Azure SQL Database 中的多個資料庫之間進行同步處理](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [使用 PowerShell 在 Azure SQL Database 的資料庫與 SQL Server 實例中的資料庫之間進行同步處理](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 -   最佳做法 - [Azure SQL 資料同步最佳做法](sql-data-sync-best-practices.md)
--   監視 - [使用 Azure 監視器記錄監視 SQL 資料同步](sql-data-sync-monitor-sync.md)
+-   監視 - [使用 Azure 監視器記錄監視 SQL 資料同步](./monitor-tune-overview.md)
 -   疑難排解-[疑難排解 Azure SQL 資料同步的問題] SQL-資料-troubleshoot.md) 
 -   更新同步結構描述
     -   使用 Transact-sql-將 [架構變更的架構變更自動複寫到 Azure 中的 SQL 資料同步](sql-data-sync-update-sync-schema.md)

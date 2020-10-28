@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: 5798220ad92a99f32f757ffa20f9233b8c79151b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 732a9bab018103321a9a3a759b31495bd67a209e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617429"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793104"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>將 Azure SQL 受控執行個體部署至實例集區
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "91617429"
 |在集區內的實例中建立資料庫|是|是|
 |從 SQL 受控執行個體中刪除資料庫|是|是|
 
-可用的 [PowerShell 命令](https://docs.microsoft.com/powershell/module/az.sql/)：
+可用的 [PowerShell 命令](/powershell/module/az.sql/)：
 
 |Cmdlet |描述 |
 |:---|:---|
@@ -52,7 +52,7 @@ ms.locfileid: "91617429"
 |[AzSqlInstancePoolUsage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | 傳回 SQL 受控執行個體集區使用方式的相關資訊。 |
 
 
-若要使用 PowerShell，請 [安裝 PowerShell Core 的最新版本](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell)，並遵循指示來 [安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+若要使用 PowerShell，請 [安裝 PowerShell Core 的最新版本](/powershell/scripting/install/installing-powershell#powershell)，並遵循指示來 [安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。
 
 針對與集區和單一實例中的實例相關的作業，請使用標準的 [受控實例命令](api-references-create-manage-instance.md#powershell-create-and-configure-managed-instances)，但是針對集區中的實例使用這些命令時，必須填入 [ *實例集區名稱* ] 屬性。
 

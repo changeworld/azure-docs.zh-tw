@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: fc12d1359ab7b6f664326cd3be448b79809c53e2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 2343800f8801105ca75f285972b441ecb027d1a0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332173"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793240"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>使用每一租用戶一個應用程式 SaaS 模式，佈建新租用戶及編目
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "92332173"
 
 ## <a name="standalone-application-per-tenant-pattern"></a>每一租用戶一個獨立應用程式模式
 
-每一租用戶一個獨立應用程式模式，是幾個多租用戶 SaaS 應用程式模式的其中之一。  在這個模式中，每個租用戶都有一個已佈建的應用程式。 應用程式包含應用程式層級元件和 Azure SQL Database。  每個租用戶應用程式都能部署到廠商的訂用帳戶中。  Azure 另提供[受控應用程式方案](https://docs.microsoft.com/azure/managed-applications/overview)，將應用程式部署於租用戶的訂用帳戶中，再由廠商代為控管。
+每一租用戶一個獨立應用程式模式，是幾個多租用戶 SaaS 應用程式模式的其中之一。  在這個模式中，每個租用戶都有一個已佈建的應用程式。 應用程式包含應用程式層級元件和 Azure SQL Database。  每個租用戶應用程式都能部署到廠商的訂用帳戶中。  Azure 另提供[受控應用程式方案](../../azure-resource-manager/managed-applications/overview.md)，將應用程式部署於租用戶的訂用帳戶中，再由廠商代為控管。
 
    ![每一租用戶一個應用程式模式](./media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern.png)
 
@@ -72,8 +72,8 @@ Azure Resource Manager 範本可用來部署及設定應用程式、建立租用
 
 若要完成本教學課程，請確定已完成下列必要條件：
 
-* 已安裝 Azure PowerShell。 如需詳細資料，請參閱[開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)
-* 已部署三個範例租用戶應用程式。 若要在五分鐘內完成這些應用程式的部署，請參閱[部署及探索 Wingtip Tickets SaaS 獨立應用程式模式](../../sql-database/saas-standaloneapp-get-started-deploy.md)。
+* 已安裝 Azure PowerShell。 如需詳細資料，請參閱[開始使用 Azure PowerShell](/powershell/azure/get-started-azureps)
+* 已部署三個範例租用戶應用程式。 若要在五分鐘內完成這些應用程式的部署，請參閱[部署及探索 Wingtip Tickets SaaS 獨立應用程式模式](./saas-standaloneapp-get-started-deploy.md)。
 
 ## <a name="provision-the-catalog"></a>佈建目錄
 
@@ -92,7 +92,7 @@ Azure Resource Manager 範本可用來部署及設定應用程式、建立租用
 1. 按 **F5** 執行指令碼。
 1.  在指令碼於中斷點停止執行之後，請按 **F11** 進入 New-Catalog.ps1 指令碼。
 1.  使用 [偵錯] 功能表選項以及 F10 和 F11 追蹤指令碼的執行，可以跳過或進入呼叫的函式。
-    *   如需對 PowerShell 指令碼進行偵錯的詳細資訊，請參閱[使用 PowerShell 指令碼及對其進行偵錯的祕訣](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise) \(英文\)。
+    *   如需對 PowerShell 指令碼進行偵錯的詳細資訊，請參閱[使用 PowerShell 指令碼及對其進行偵錯的祕訣](/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise) \(英文\)。
 
 指令碼完成之後，目錄隨即會存在，而且所有範例租用戶將會完成註冊。
 
@@ -156,4 +156,4 @@ Azure Resource Manager 範本可用來部署及設定應用程式、建立租用
 > * 關於組成應用程式的伺服器和資料庫。
 > * 如何刪除範例資源以停止相關計費。
 
-對於各種使用每一租用戶一個資料庫版本之 [Wingtip Tickets SaaS 應用程式](../../sql-database/saas-dbpertenant-wingtip-app-overview.md)的跨租用戶案例，您可以探索如何使用目錄來提供支援。
+對於各種使用每一租用戶一個資料庫版本之 [Wingtip Tickets SaaS 應用程式](./saas-dbpertenant-wingtip-app-overview.md)的跨租用戶案例，您可以探索如何使用目錄來提供支援。
