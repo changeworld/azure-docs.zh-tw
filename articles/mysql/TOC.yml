@@ -474,6 +474,10 @@
               href: flexible-server/concepts-audit-logs.md
             - name: 計量
               href: flexible-server/concepts-monitoring.md
+        - name: 複寫
+          items:
+            - name: 讀取複本
+              href: flexible-server/concepts-read-replicas.md
     - name: 操作指南
       items:
         - name: 管理伺服器
@@ -536,6 +540,16 @@
               items:
                 - name: Azure 入口網站
                   href: flexible-server/how-to-configure-audit-logs-portal.md
+        - name: 重新啟動伺服器
+          items:
+            - name: Azure 入口網站
+              href: flexible-server/how-to-restart-server-portal.md
+        - name: 複寫
+          items:
+            - name: 在 Azure 入口網站中建立讀取複本
+              href: flexible-server/how-to-read-replicas-portal.md
+            - name: 在 Azure CLI中建立讀取複本
+              href: flexible-server/how-to-read-replicas-cli.md
         - name: 疑難排解
           items:
             - name: 連接錯誤

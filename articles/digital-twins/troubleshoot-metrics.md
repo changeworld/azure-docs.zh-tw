@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: db4383526874c98f717c5f166b296d814724184a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: b4bc291c21ca1ccabec3cfd9544deaa5d45fcf51
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044629"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787188"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>針對 Azure 數位 Twins 進行疑難排解：計量
 
@@ -26,19 +26,19 @@ ms.locfileid: "92044629"
 
 2. 在 [Azure 入口網站](https://portal.azure.com) 中尋找您的 Azure 數位 Twins 實例 (您可以在入口網站的搜尋列) 中輸入其名稱，以開啟該實例的頁面。 
 
-    從實例的功能表中，選取 [ **計量**]。
+    從實例的功能表中，選取 [ **計量** ]。
    
     :::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="顯示 Azure 數位 Twins 計量頁面的螢幕擷取畫面":::
 
     此頁面會顯示 Azure 數位 Twins 實例的計量。 您也可以從清單中選取您想要查看的計量，以建立其自訂的觀點。
     
-3. 您可以選擇將計量資料傳送到事件中樞端點或 Azure 儲存體帳戶，方法是從功能表選取 [ **診斷設定** ]，然後 **新增診斷設定**。
+3. 您可以選擇將計量資料傳送到事件中樞端點或 Azure 儲存體帳戶，方法是從功能表選取 [ **診斷設定** ]，然後 **新增診斷設定** 。
 
     :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="顯示 Azure 數位 Twins 計量頁面的螢幕擷取畫面":::
 
     如需此程式的詳細資訊，請參閱 [*疑難排解：設定診斷*](troubleshoot-diagnostics.md)。
 
-4. 您可以選擇從功能表選取 [ **警示** ]，然後選取 [ **+ 新增警示規則**]，以設定計量資料的警示。
+4. 您可以選擇從功能表選取 [ **警示** ]，然後選取 [ **+ 新增警示規則** ]，以設定計量資料的警示。
     :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="顯示 Azure 數位 Twins 計量頁面的螢幕擷取畫面":::
 
     如需此程式的詳細資訊，請參閱 [*疑難排解：設定警示*](troubleshoot-alerts.md)。
@@ -53,50 +53,50 @@ Azure 數位 Twins 提供數個計量，可讓您瞭解實例的健康情況和�
 
 需要處理 API 要求的計量：
 
-| 計量 | 度量顯示名稱 | Unit | 彙總類型| 描述 | 維度 |
+| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 描述 | 維度 |
 | --- | --- | --- | --- | --- | --- |
-| ApiRequests | API 要求 (預覽)  | Count | 總計 | 針對數位 Twins 的讀取、寫入、刪除和查詢作業所提出的 API 要求數目。 |  認證 <br>操作 <br>協定 <br>狀態碼， <br>狀態碼類別， <br>狀態文字 |
-| ApiRequestsFailureRate | API 要求失敗率 (預覽)  | 百分比 | Average | 服務針對您的實例所收到的 API 要求百分比，可提供內部錯誤 (500) Twins 讀取、寫入、刪除和查詢作業的回應碼。 | 認證 <br>操作 <br>協定 <br>狀態碼， <br>狀態碼類別， <br>狀態文字
-| ApiRequestsLatency |  (預覽版的 API 要求延遲)  | 毫秒 | Average | API 要求的回應時間。 這指的是 Azure 數位 Twins 收到要求的時間，直到服務傳送數位 Twins 讀取、寫入、刪除和查詢作業的成功/失敗結果為止。 | 認證 <br>操作 <br>通訊協定 |
+| ApiRequests | API 要求 | Count | 總計 | 針對數位 Twins 的讀取、寫入、刪除和查詢作業所提出的 API 要求數目。 |  認證 <br>操作 <br>協定 <br>狀態碼， <br>狀態碼類別， <br>狀態文字 |
+| ApiRequestsFailureRate | API 要求失敗率 | 百分比 | Average | 服務針對您的實例所收到的 API 要求百分比，可提供內部錯誤 (500) Twins 讀取、寫入、刪除和查詢作業的回應碼。 | 認證 <br>操作 <br>協定 <br>狀態碼， <br>狀態碼類別， <br>狀態文字
+| ApiRequestsLatency | API 要求延遲 | 毫秒 | Average | API 要求的回應時間。 這指的是 Azure 數位 Twins 收到要求的時間，直到服務傳送數位 Twins 讀取、寫入、刪除和查詢作業的成功/失敗結果為止。 | 認證 <br>操作 <br>通訊協定 |
 
 #### <a name="billing-metrics"></a>帳單計量
 
 需要計費的計量：
 
 >[!NOTE]
-> 在預覽期間， **計費為零成本**。 雖然這些計量仍會顯示在可選取的清單中，但不會在預覽期間套用，而且會維持為零，直到服務移至預覽之外。
+> 在預覽期間， **計費為零成本** 。 雖然這些計量仍會顯示在可選取的清單中，但不會在預覽期間套用，而且會維持為零，直到服務移至預覽之外。
 
-| 計量 | 度量顯示名稱 | Unit | 彙總類型| 描述 | 維度 |
+| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 描述 | 維度 |
 | --- | --- | --- | --- | --- | --- |
-| BillingApiOperations |  (預覽) 的計費 API 作業 | Count | 總計 | 針對 Azure 數位 Twins 服務提出之所有 API 要求計數的計費計量。 | 計量識別碼 |
-| BillingMessagesProcessed |  (預覽) 處理的帳單訊息 | Count | 總計 | 從 Azure 數位 Twins 送出至外部端點之訊息數目的計費度量。<br><br>若要將帳單視為單一訊息，承載必須不超過 1 KB。 大於此的承載會以 1 KB 的遞增量計算為額外訊息 (因此1到 2 KB 之間的訊息將會計算為2則訊息，介於2到 3 KB 之間將會是3則訊息，依此類推) 。<br>這項限制也適用于回應，因此在回應本文中傳回 1.5 KB 的呼叫將會以2個作業計費。 | 計量識別碼 |
-| BillingQueryUnits | 帳單查詢單位 (預覽)  | Count | 總計 | 查詢單位的數目，這是服務資源使用量的內部計算量值，用來執行查詢。 另外還有可用於測量查詢單位的協助程式 API： [QueryChargeHelper 類別](/dotnet/api/azure.digitaltwins.core.querychargehelper?preserve-view=true&view=azure-dotnet-preview) | 計量識別碼 |
+| BillingApiOperations | 計費 API 作業 | Count | 總計 | 針對 Azure 數位 Twins 服務提出之所有 API 要求計數的計費計量。 | 計量識別碼 |
+| BillingMessagesProcessed | 已處理的帳單訊息 | Count | 總計 | 從 Azure 數位 Twins 送出至外部端點之訊息數目的計費度量。<br><br>若要將帳單視為單一訊息，承載必須不超過 1 KB。 大於此的承載會以 1 KB 的遞增量計算為額外訊息 (因此1到 2 KB 之間的訊息將會計算為2則訊息，介於2到 3 KB 之間將會是3則訊息，依此類推) 。<br>這項限制也適用于回應，因此在回應本文中傳回 1.5 KB 的呼叫將會以2個作業計費。 | 計量識別碼 |
+| BillingQueryUnits | 帳單查詢單位 | Count | 總計 | 查詢單位的數目，這是服務資源使用量的內部計算量值，用來執行查詢。 另外還有可用於測量查詢單位的協助程式 API： [QueryChargeHelper 類別](/dotnet/api/azure.digitaltwins.core.querychargehelper?preserve-view=true&view=azure-dotnet-preview) | 計量識別碼 |
 
 #### <a name="ingress-metrics"></a>輸入計量
 
 與資料輸入有關的計量：
 
-| 計量 | 度量顯示名稱 | Unit | 彙總類型| 描述 | 維度 |
+| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 描述 | 維度 |
 | --- | --- | --- | --- | --- | --- |
-| IngressEvents | 輸入事件 (預覽)  | Count | 總計 | 傳入的遙測事件到 Azure 數位 Twins 的數目。 | 結果 |
-| IngressEventsFailureRate | 輸入事件失敗率 (預覽)  | 百分比 | Average | 服務傳回內部錯誤 (500) 回應碼的傳入遙測事件百分比。 | 結果 |
-| IngressEventsLatency | 輸入事件延遲 (預覽)  | 毫秒 | Average | 當事件已準備好要由 Azure 數位 Twins 輸出時，從該事件到達時的時間，服務會在該時間點傳送成功/失敗結果。 | 結果 |
+| IngressEvents | 輸入事件 | Count | 總計 | 傳入的遙測事件到 Azure 數位 Twins 的數目。 | 結果 |
+| IngressEventsFailureRate | 輸入事件失敗率 | 百分比 | Average | 服務傳回內部錯誤 (500) 回應碼的傳入遙測事件百分比。 | 結果 |
+| IngressEventsLatency | 輸入事件延遲 | 毫秒 | Average | 當事件已準備好要由 Azure 數位 Twins 輸出時，從該事件到達時的時間，服務會在該時間點傳送成功/失敗結果。 | 結果 |
 
 #### <a name="routing-metrics"></a>路由計量
 
 使用路由的計量：
 
-| 計量 | 度量顯示名稱 | Unit | 彙總類型| 描述 | 維度 |
+| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 描述 | 維度 |
 | --- | --- | --- | --- | --- | --- |
-| MessagesRouted | 路由 (預覽) 的訊息 | Count | 總計 | 路由至端點 Azure 服務（例如事件中樞、服務匯流排或事件方格）的訊息數目。 | 端點類型， <br>結果 |
-| RoutingFailureRate | 路由失敗率 (預覽)  | 百分比 | Average | 從 Azure 數位 Twins 路由傳送至端點 Azure 服務（例如事件中樞、服務匯流排或事件方格）時，會產生錯誤的事件百分比。 | 端點類型， <br>結果 |
-| RoutingLatency |  (預覽版的路由延遲)  | 毫秒 | Average | 從 Azure 數位 Twins 路由傳送至端點 Azure 服務（例如事件中樞、服務匯流排或事件方格）的事件之間所經過的時間。 | 端點類型， <br>結果 |
+| MessagesRouted | 路由傳送的訊息 | Count | 總計 | 路由至端點 Azure 服務（例如事件中樞、服務匯流排或事件方格）的訊息數目。 | 端點類型， <br>結果 |
+| RoutingFailureRate | 路由失敗率 | 百分比 | Average | 從 Azure 數位 Twins 路由傳送至端點 Azure 服務（例如事件中樞、服務匯流排或事件方格）時，會產生錯誤的事件百分比。 | 端點類型， <br>結果 |
+| RoutingLatency | 路由延遲 | 毫秒 | Average | 從 Azure 數位 Twins 路由傳送至端點 Azure 服務（例如事件中樞、服務匯流排或事件方格）的事件之間所經過的時間。 | 端點類型， <br>結果 |
 
 ## <a name="dimensions"></a>維度
 
 維度有助於找出更多關於計量的詳細資料。 某些路由計量會提供每個端點的資訊。 下表列出這些維度的可能值。
 
-| 尺寸 | 值 |
+| 維度 | 值 |
 | --- | --- |
 | 驗證 | OAuth |
 |  (API 要求的作業)  | DigitalTwins/DigitalTwins/delete、 <br>DigitalTwins/DigitalTwins/write， <br>DigitalTwins/DigitalTwins/read、 <br>DigitalTwins/eventroutes/read、 <br>DigitalTwins/eventroutes/write， <br>DigitalTwins/eventroutes/delete、 <br>DigitalTwins/模型/讀取、 <br>DigitalTwins/模型/撰寫、 <br>DigitalTwins/模型/刪除、 <br>DigitalTwins/query/action |

@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 46eee878ba8cf1d12edf262241d5df8ef8ccc82f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 423fd0f91de3e936e2920d57e5bc606bb86a2437
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442936"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786712"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>開始使用彈性資料庫工具
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -98,25 +98,25 @@ ms.locfileid: "91442936"
 恭喜！ 您已使用彈性資料庫工具，在 SQL Database 上成功建置並執行您的第一個分區化應用程式。 使用 Visual Studio 或 SQL Server Management Studio 連接到您的資料庫，並快速查看範例所建立的分區。 您會看見範例所建立的新範例分區資料庫和分區對應管理員資料庫。
 
 > [!IMPORTANT]
-> 建議您一律使用最新版的 Management Studio，如此就能與 Azure 及 SQL Database 更新保持同步。 [更新 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)。
+> 建議您一律使用最新版的 Management Studio，如此就能與 Azure 及 SQL Database 更新保持同步。 [更新 SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)。
 
 ## <a name="key-pieces-of-the-code-sample"></a>程式碼範例的主要部分
 
-* **管理分區和分區對應**：此程式碼會解說如何使用 *ShardManagementUtils.cs* 檔案中的分區、範圍和對應。 如需詳細資訊，請參閱[使用分區對應管理員相應放大資料庫](https://go.microsoft.com/?linkid=9862595)。  
+* **管理分區和分區對應** ：此程式碼會解說如何使用 *ShardManagementUtils.cs* 檔案中的分區、範圍和對應。 如需詳細資訊，請參閱[使用分區對應管理員相應放大資料庫](https://go.microsoft.com/?linkid=9862595)。  
 
-* **資料相依路由**：*DataDependentRoutingSample.cs* 檔案中示範如何將交易路由傳送至正確的分區。 如需詳細資訊，請參閱[資料相依路由](https://go.microsoft.com/?linkid=9862596)。
+* **資料相依路由** ： *DataDependentRoutingSample.cs* 檔案中示範如何將交易路由傳送至正確的分區。 如需詳細資訊，請參閱[資料相依路由](https://go.microsoft.com/?linkid=9862596)。
 
-* **查詢多個分區**：*MultiShardQuerySample.cs* 檔案中說明如何在各個分區間進行查詢。 如需詳細資訊，請參閱[多分區查詢](https://go.microsoft.com/?linkid=9862597)。
+* **查詢多個分區** ： *MultiShardQuerySample.cs* 檔案中說明如何在各個分區間進行查詢。 如需詳細資訊，請參閱[多分區查詢](https://go.microsoft.com/?linkid=9862597)。
 
-* **新增空的分區**：反覆新增空分區的作業，是由 *CreateShardSample.cs* 檔案中的程式碼所執行。 如需詳細資訊，請參閱[使用分區對應管理員相應放大資料庫](https://go.microsoft.com/?linkid=9862595)。
+* **新增空的分區** ：反覆新增空分區的作業，是由 *CreateShardSample.cs* 檔案中的程式碼所執行。 如需詳細資訊，請參閱[使用分區對應管理員相應放大資料庫](https://go.microsoft.com/?linkid=9862595)。
 
 ## <a name="other-elastic-scale-operations"></a>其他 Elastic Scale 作業
 
-* **分割現有的分區**：分割分區的功能是透過分割合併工具來提供。 如需詳細資訊，請參閱[在向外延展的雲端資料庫之間移動資料](elastic-scale-overview-split-and-merge.md)。
+* **分割現有的分區** ：分割分區的功能是透過分割合併工具來提供。 如需詳細資訊，請參閱[在向外延展的雲端資料庫之間移動資料](elastic-scale-overview-split-and-merge.md)。
 
-* **合併現有的分區**：分區合併也可使用分割合併工具來執行。 如需詳細資訊，請參閱[在向外延展的雲端資料庫之間移動資料](elastic-scale-overview-split-and-merge.md)。
+* **合併現有的分區** ：分區合併也可使用分割合併工具來執行。 如需詳細資訊，請參閱[在向外延展的雲端資料庫之間移動資料](elastic-scale-overview-split-and-merge.md)。
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>成本
 
 彈性資料庫工具程式庫是免費的。 當您使用彈性資料庫工具時，不會衍生除了您的 Azure 使用成本以外的任何額外費用。
 
@@ -134,7 +134,7 @@ ms.locfileid: "91442936"
   * [指令碼中心的分區彈性](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * 部落格：[Elastic Scale 公告 (英文)](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
 * 第 9 頻道：[Elastic Scale 概觀影片 (英文)](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
-* 討論論壇： [Microsoft 問&Azure SQL Database 的問題頁面](https://docs.microsoft.com/answers/topics/azure-sql-database.html)
+* 討論論壇： [Microsoft 問&Azure SQL Database 的問題頁面](/answers/topics/azure-sql-database.html)
 * 若要測量效能︰ [分區對應管理員的效能計數器](elastic-database-client-library.md)
 
 <!--Anchors-->

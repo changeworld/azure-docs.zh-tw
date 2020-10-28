@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 396d2785d80ff29212dddcfb97adbff8ba9ce4c8
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 6164617c66401811715007548de59ebbf5ff253b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425169"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787477"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Azure 佇列儲存體監視資料參考
 
@@ -36,7 +36,7 @@ Azure 儲存體會提供下列 Azure 監視器容量計量。
 
 #### <a name="queue-storage"></a>佇列儲存體
 
-此表格顯示 [佇列儲存體計量](/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsqueueservices)。
+此表格顯示 [佇列儲存體計量](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)。
 
 | 計量 | 描述 |
 | ------------------- | ----------------- |
@@ -77,7 +77,7 @@ Azure 儲存體支援下列 Azure 監視器計量維度。
 
 [!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-logs-properties-service.md)]
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - 如需監視 Azure 儲存體的說明，請參閱 [監視 Azure 佇列儲存體](monitor-queue-storage.md) 。
 - 如需監視 Azure 資源的詳細資訊，請參閱[使用 Azure 監視器來監視 Azure 資源](../../azure-monitor/insights/monitor-azure-resource.md)。

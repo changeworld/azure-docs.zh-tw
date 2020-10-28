@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c07ad6e631482b47da674549e976953842cf983e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb53181355e292a885e8ffc2ac7c8a3aa48adaae
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855917"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787460"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>以 .NET 開始使用 Azure 佇列儲存體
 
@@ -30,7 +30,7 @@ Azure 佇列儲存體可提供應用程式元件之間的雲端傳訊。 設計�
 
 **預估完成時間：** 45 分鐘
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 - [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 - [Azure 儲存體帳戶](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
@@ -47,14 +47,14 @@ Azure 佇列儲存體可提供應用程式元件之間的雲端傳訊。 設計�
 
 在 Visual Studio 中，建立新的 Windows 主控台應用程式。 下列步驟說明如何在 Visual Studio 2019 中建立主控台應用程式。 這些步驟類似其他 Visual Studio 版本中的步驟。
 
-1. 選取**檔案**  >  **新增**  >  **專案**
-2. 選取**平臺**  >  **視窗**
-3. 選取 **主控台應用程式 ( .NET Framework) **
-4. 選取 [**下一步**]
+1. 選取 **檔案**  >  **新增**  >  **專案**
+2. 選取 **平臺**  >  **視窗**
+3. 選取 **主控台應用程式 ( .NET Framework)**
+4. 選取 [ **下一步** ]
 5. 在 [ **專案名稱** ] 欄位中，輸入應用程式的名稱
 6. 選取 [建立] 
 
-本教學課程中的所有程式碼範例都可以新增至主控台應用程式**Program.cs**檔的**主要 ( # B1**方法。
+本教學課程中的所有程式碼範例都可以新增至主控台應用程式 **Program.cs** 檔的 **主要 ( # B1** 方法。
 
 您可以在任何類型的 .NET 應用程式中使用 Azure 儲存體的用戶端程式庫，包括 Azure 雲端服務或 web 應用程式，以及桌面與行動應用程式。 在本指南中，為求簡化，我們會使用主控台應用程式。
 
@@ -71,7 +71,7 @@ Azure 佇列儲存體可提供應用程式元件之間的雲端傳訊。 設計�
 
 您可以使用 NuGet 來取得這些套件。 請遵循下列步驟：
 
-1. 在 **方案總管**中的專案上按一下滑鼠右鍵，然後選擇 [ **管理 NuGet 套件**]。
+1. 在 **方案總管** 中的專案上按一下滑鼠右鍵，然後選擇 [ **管理 NuGet 套件** ]。
 1. 選取 **[流覽]**
 1. 在線上搜尋 "Azure"，然後選取 [ **安裝** ] 以安裝儲存體用戶端程式庫及其相依性。 這也會安裝 Azure。 Common 和 Azure Core 程式庫是佇列程式庫的相依性。
 1. 在線上搜尋 "System.Configuration.ConfigurationManager"，然後選取 [ **安裝** ] 以安裝 Configuration Manager。
@@ -86,7 +86,7 @@ Azure 佇列儲存體可提供應用程式元件之間的雲端傳訊。 設計�
 
 您可以使用 NuGet 來取得這些套件。 請遵循下列步驟：
 
-1. 在 **方案總管**中的專案上按一下滑鼠右鍵，然後選擇 [ **管理 NuGet 套件**]。
+1. 在 **方案總管** 中的專案上按一下滑鼠右鍵，然後選擇 [ **管理 NuGet 套件** ]。
 1. 選取 **[流覽]**
 1. 在線上搜尋 "Microsoft. Queue"，然後選取 [ **安裝** ] 以安裝儲存體用戶端程式庫及其相依性。 這也會安裝 Microsoft Azure. 通用程式庫，這是佇列程式庫的相依性。
 1. 在線上搜尋 "Microsoft.Azure.ConfigurationManager"，然後選取 [ **安裝** ] 以安裝 Azure Configuration Manager。
@@ -114,7 +114,7 @@ Azure 佇列儲存體可提供應用程式元件之間的雲端傳訊。 設計�
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
 2. 找出您的儲存體帳戶。
 3. 在儲存體帳戶概觀的 [設定] 區段中，選取 [存取金鑰]。 您的帳戶存取金鑰隨即出現，此外也會顯示每個金鑰的完整連接字串。
-4. 尋找 [金鑰1]**** 下方的 [連接字串]**** 值，然後按一下 [複製]**** 按鈕來複製連接字串。 在下一個步驟中，您會將連接字串值新增至環境變數。
+4. 尋找 [金鑰1]  下方的 [連接字串]  值，然後按一下 [複製]  按鈕來複製連接字串。 在下一個步驟中，您會將連接字串值新增至環境變數。
 
     ![顯示如何從 Azure 入口網站複製連接字串的螢幕擷取畫面](media/storage-dotnet-how-to-use-queues/portal-connection-string.png)
 
@@ -349,7 +349,7 @@ queue.DeleteMessage(retrievedMessage);
 
 ## <a name="use-async-await-pattern-with-common-queue-storage-apis"></a>搭配通用佇列儲存體 API 使用 Async-Await 模式
 
-這個範例示範如何搭配通用佇列儲存體 API 使用 Async-Await 模式。 此範例會呼叫每個指定方法的非同步版本，就像每個方法的非同步 *Async* 尾碼所指示的一樣。 使用非同步方法時，async-await 模式會暫停本機執行，直到呼叫完成為止。 這種行為可讓目前的執行緒執行其他工作，有助於避免發生效能瓶頸並提升應用程式的整體回應。 如需在 .NET 中使用 Async-Await 模式的詳細資訊 [，請參閱 Async 和 Await (c # 和 Visual Basic) ](https://msdn.microsoft.com/library/hh191443.aspx)
+這個範例示範如何搭配通用佇列儲存體 API 使用 Async-Await 模式。 此範例會呼叫每個指定方法的非同步版本，就像每個方法的非同步 *Async* 尾碼所指示的一樣。 使用非同步方法時，async-await 模式會暫停本機執行，直到呼叫完成為止。 這種行為可讓目前的執行緒執行其他工作，有助於避免發生效能瓶頸並提升應用程式的整體回應。 如需在 .NET 中使用 Async-Await 模式的詳細資訊 [，請參閱 Async 和 Await (c # 和 Visual Basic) ](/previous-versions/hh191443(v=vs.140))
 
 # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
@@ -489,10 +489,10 @@ queue.Delete();
 了解佇列儲存體的基礎概念之後，請參考下列連結以了解有關更複雜的儲存工作。
 
 - 如需可用 API 的完整詳細資訊，請檢視佇列服務參考文件：
-  - [Storage Client Library for .NET 參考資料](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
-  - [REST API 參考資料](https://msdn.microsoft.com/library/azure/dd179355)
+  - [Storage Client Library for .NET 參考資料](/dotnet/api/overview/azure/storage)
+  - [REST API 參考資料](/rest/api/storageservices/)
 - 如需了解 Azure 中的其他資料儲存選項，請檢視更多功能指南。
-  - [以 .NET 開始使用 Azure 表格儲存體](../../cosmos-db/table-storage-how-to-use-dotnet.md) 以儲存結構化資料。
-  - [以 .NET 開始使用 Azure Blob 儲存體](../blobs/storage-dotnet-how-to-use-blobs.md) 以儲存非結構化資料。
+  - [以 .NET 開始使用 Azure 表格儲存體](../../cosmos-db/tutorial-develop-table-dotnet.md) 以儲存結構化資料。
+  - [以 .NET 開始使用 Azure Blob 儲存體](../blobs/storage-quickstart-blobs-dotnet.md) 以儲存非結構化資料。
   - [使用 .NET (C#) 連接到 SQL Database ](../../azure-sql/database/connect-query-dotnet-core.md) 以儲存關聯式資料。
 - 了解如何使用 [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)，來簡化您撰寫以使用 Azure 儲存體的程式碼。

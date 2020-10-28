@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: e17c7d6618d67d66c89875696c5c529af3a85ea9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75ca0438336825bf8d4bbdc6e08eca109f430fde
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440562"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785913"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>在 Azure 資訊安全中心管理和回應安全性警示
 
@@ -46,7 +46,7 @@ ms.locfileid: "91440562"
 
    ![資訊安全中心內的安全性警示](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
 
-1. 若要篩選顯示的警示，請按一下 [ **篩選**]，然後從開啟的 [ **篩選器** ] 分頁中，選取您要套用的篩選選項。 清單會根據選取的篩選準則進行更新。 篩選可能很有説明。 例如，您可能想確認在過去 24 小時發生的安全性警示，因為您正在調查系統中可能的入侵行動。
+1. 若要篩選顯示的警示，請按一下 [ **篩選** ]，然後從開啟的 [ **篩選器** ] 分頁中，選取您要套用的篩選選項。 清單會根據選取的篩選準則進行更新。 篩選可能很有説明。 例如，您可能想確認在過去 24 小時發生的安全性警示，因為您正在調查系統中可能的入侵行動。
 
     ![篩選資訊安全中心的警示](./media/security-center-managing-and-responding-alerts/security-center-filter-alerts.png)
 
@@ -75,9 +75,9 @@ ms.locfileid: "91440562"
 
 
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 在本檔中，您已瞭解如何查看安全性警示。 請參閱下列頁面以取得相關材質：
 
 - [設定警示隱藏規則](alerts-suppression-rules.md)
-- [使用工作流程自動化將警示和建議的回應自動化](workflow-automation.md)
+- [自動回應安全性中心觸發程式](workflow-automation.md)

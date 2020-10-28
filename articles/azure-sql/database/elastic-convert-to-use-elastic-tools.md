@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 95afd0b9117caca4b531c453417217d8a8de7c7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6ad8b4c80f4b9c2fdb3c1a14209dcf0febc89e9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443465"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787137"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>將現有的資料庫移轉到相應放大的資料庫
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -72,11 +72,11 @@ $ShardMapManager = Get-ShardMapManager -UserName '<user_name>' -Password '<passw
 
 ![清單對應][1]
 
-多租用戶模型會將數個租用戶指派給個別資料庫 (而且您可以跨多個資料庫散發租用戶的群組)。 預期每個租用戶有小型資料需求時，請使用此模型。 在此模型中，使用**範圍對應**將某範圍的租用戶指派給資料庫。
+多租用戶模型會將數個租用戶指派給個別資料庫 (而且您可以跨多個資料庫散發租用戶的群組)。 預期每個租用戶有小型資料需求時，請使用此模型。 在此模型中，使用 **範圍對應** 將某範圍的租用戶指派給資料庫。
 
 ![範圍對應][2]
 
-或者，您可以使用「清單對應」** 來實作多租用戶資料庫模型，以將多個租用戶指派給個別資料庫。 例如，DB1 是用來儲存租用戶 ID 1 和 5 的相關資訊，而 DB2 是用來儲存租用戶 7 和租用戶 10 的資料。
+或者，您可以使用「清單對應」  來實作多租用戶資料庫模型，以將多個租用戶指派給個別資料庫。 例如，DB1 是用來儲存租用戶 ID 1 和 5 的相關資訊，而 DB2 是用來儲存租用戶 7 和租用戶 10 的資料。
 
 ![單一資料庫上的多個租用戶][3]
 
@@ -168,7 +168,7 @@ Get-Mappings -ShardMap $ShardMap
 
 ## <a name="questions-and-feature-requests"></a>問題和功能要求
 
-針對問題，請使用 [Microsoft 問&SQL Database 的問題頁面](https://docs.microsoft.com/answers/topics/azure-sql-database.html) ，並針對功能要求將其新增至 [SQL Database 意見反應論壇](https://feedback.azure.com/forums/217321-sql-database/)。
+針對問題，請使用 [Microsoft 問&SQL Database 的問題頁面](/answers/topics/azure-sql-database.html) ，並針對功能要求將其新增至 [SQL Database 意見反應論壇](https://feedback.azure.com/forums/217321-sql-database/)。
 
 <!--Image references-->
 [1]: ./media/elastic-convert-to-use-elastic-tools/listmapping.png

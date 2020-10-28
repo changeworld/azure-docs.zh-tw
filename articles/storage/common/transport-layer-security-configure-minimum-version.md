@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 10/27/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 4c88791815d248cc20546d7942e7b0f107071186
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07f506ac46b8aa503138cec33918534ea309defc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90018572"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785794"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>對儲存體帳戶的要求強制執行最小必要版本的傳輸層安全性 (TLS) 
 
@@ -33,7 +33,7 @@ Azure 儲存體目前支援三種版本的 TLS 通訊協定：1.0、1.1 和1.2�
 
 當您為儲存體帳戶強制執行最低的 TLS 版本時，您可能會拒絕用戶端傳送具有舊版 TLS 的資料的要求。 若要瞭解如何設定最低的 TLS 版本可能會影響用戶端應用程式，Microsoft 建議您啟用 Azure 儲存體帳戶的記錄，並在一段時間後分析記錄，以偵測 TLS 用戶端應用程式所使用的版本。
 
-若要將要求記錄到您的 Azure 儲存體帳戶並判斷用戶端所使用的 TLS 版本，您可以使用 Azure 監視器 (preview) 中的 Azure 儲存體記錄。 如需詳細資訊，請參閱 [監視 Azure 儲存體](monitor-storage.md)。
+若要將要求記錄到您的 Azure 儲存體帳戶並判斷用戶端所使用的 TLS 版本，您可以使用 Azure 監視器 (preview) 中的 Azure 儲存體記錄。 如需詳細資訊，請參閱 [監視 Azure 儲存體](../blobs/monitor-blob-storage.md)。
 
 Azure 監視器中的 Azure 儲存體記錄支援使用記錄查詢來分析記錄資料。 若要查詢記錄，您可以使用 Azure Log Analytics 工作區。 若要深入瞭解記錄查詢，請參閱 [教學課程：開始使用 Log Analytics 查詢](../../azure-monitor/log-query/get-started-portal.md)。
 
@@ -42,18 +42,18 @@ Azure 監視器中的 Azure 儲存體記錄支援使用記錄查詢來分析記�
 1. [在 Azure 監視器 preview 中註冊 Azure 儲存體記錄](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)。
 1. 在訂用帳戶中建立新的 Log Analytics 工作區，其中包含您的 Azure 儲存體帳戶。 設定儲存體帳戶的記錄之後，記錄將會出現在 Log Analytics 工作區中。 如需詳細資訊，請參閱[在 Azure 入口網站中建立 Log Analytics 工作區](../../azure-monitor/learn/quick-create-workspace.md)。
 1. 在 Azure 入口網站中巡覽至您的儲存體帳戶。
-1. 在 [監視] 區段中，選取 [ **診斷設定 (預覽]) **。
+1. 在 [監視] 區段中，選取 [ **診斷設定 (預覽])** 。
 1. 選取您要記錄要求的 Azure 儲存體服務。 例如，選擇 [ **blob** ] 將要求記錄至 blob 儲存體。
-1. 選取 [ **新增診斷設定**]。
+1. 選取 [ **新增診斷設定** ]。
 1. 提供診斷設定的名稱。
-1. 在 [ **類別細節**] 下的 [ **記錄** ] 區段中，選擇要記錄的要求類型。 您可以記錄讀取、寫入和刪除要求。 例如，選擇 [ **StorageRead** ] 和 [ **StorageWrite** ] 會將讀取和寫入要求記錄到選取的服務。
-1. 在 [ **目的地詳細資料**] 底下，選取 [ **傳送至 Log Analytics**]。 選取您的訂用帳戶和您稍早建立的 Log Analytics 工作區，如下列影像所示。
+1. 在 [ **類別細節** ] 下的 [ **記錄** ] 區段中，選擇要記錄的要求類型。 您可以記錄讀取、寫入和刪除要求。 例如，選擇 [ **StorageRead** ] 和 [ **StorageWrite** ] 會將讀取和寫入要求記錄到選取的服務。
+1. 在 [ **目的地詳細資料** ] 底下，選取 [ **傳送至 Log Analytics** ]。 選取您的訂用帳戶和您稍早建立的 Log Analytics 工作區，如下列影像所示。
 
     :::image type="content" source="media/transport-layer-security-configure-minimum-version/create-diagnostic-setting-logs.png" alt-text="顯示如何建立記錄要求之診斷設定的螢幕擷取畫面":::
 
 建立診斷設定之後，系統會根據該設定，對儲存體帳戶的要求進行記錄。 如需詳細資訊，請參閱 [建立診斷設定以收集 Azure 中的資源記錄和計量](../../azure-monitor/platform/diagnostic-settings.md)。
 
-如需 Azure 監視器中 Azure 儲存體記錄檔中可用欄位的參考，請參閱 [ (preview 的資源記錄) ](monitor-storage-reference.md#resource-logs-preview)。
+如需 Azure 監視器中 Azure 儲存體記錄檔中可用欄位的參考，請參閱 [ (preview 的資源記錄) ](../blobs/monitor-blob-storage-reference.md#resource-logs-preview)。
 
 ### <a name="query-logged-requests-by-tls-version"></a>依 TLS 版本查詢記錄的要求
 
@@ -91,9 +91,6 @@ StorageBlobLogs
 
 若要設定儲存體帳戶的最小 TLS 版本，請設定帳戶的 **MinimumTlsVersion** 版本。 此屬性適用于使用 Azure Resource Manager 部署模型建立的所有儲存體帳戶。 如需 Azure Resource Manager 部署模型的詳細資訊，請參閱 [儲存體帳戶總覽](storage-account-overview.md)。
 
-> [!NOTE]
-> **MinimumTlsVersion**屬性目前僅適用于 Azure 公用雲端中的儲存體帳戶。
-
 # <a name="portal"></a>[入口網站](#tab/portal)
 
 當您使用 Azure 入口網站建立儲存體帳戶時，最小的 TLS 版本預設會設定為1.2。
@@ -102,15 +99,15 @@ StorageBlobLogs
 
 1. 在 Azure 入口網站中巡覽至您的儲存體帳戶。
 1. 選取 [ **設定** ]。
-1. 在 [ **最小 tls 版本**] 下，使用下拉式清單來選取存取此儲存體帳戶中資料所需的最低 tls 版本，如下圖所示。
+1. 在 [ **最小 tls 版本** ] 下，使用下拉式清單來選取存取此儲存體帳戶中資料所需的最低 tls 版本，如下圖所示。
 
     :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="顯示如何建立記錄要求之診斷設定的螢幕擷取畫面":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要使用 PowerShell 來設定儲存體帳戶的最小 TLS 版本，請安裝 [Azure PowerShell 4.4.0 版](https://www.powershellgallery.com/packages/Az/4.4.0) 或更新版本。 接下來，為新的或現有的儲存體帳戶設定 **MinimumTLSVersion** 屬性。 **MinimumTlsVersion**的有效值為 `TLS1_0` 、 `TLS1_1` 和 `TLS1_2` 。
+若要使用 PowerShell 來設定儲存體帳戶的最小 TLS 版本，請安裝 [Azure PowerShell 4.4.0 版](https://www.powershellgallery.com/packages/Az/4.4.0) 或更新版本。 接下來，為新的或現有的儲存體帳戶設定 **MinimumTLSVersion** 屬性。 **MinimumTlsVersion** 的有效值為 `TLS1_0` 、 `TLS1_1` 和 `TLS1_2` 。
 
-當您使用 PowerShell 建立儲存體帳戶時，預設不會設定 **MinimumTlsVersion** 屬性。 除非您明確設定，否則此屬性不會傳回值。 如果屬性值為 **null**，則儲存體帳戶允許以 TLS 1.0 或更高版本傳送的要求。
+當您使用 PowerShell 建立儲存體帳戶時，預設不會設定 **MinimumTlsVersion** 屬性。 除非您明確設定，否則此屬性不會傳回值。 如果屬性值為 **null** ，則儲存體帳戶允許以 TLS 1.0 或更高版本傳送的要求。
 
 下列範例會建立儲存體帳戶，並將 **MinimumTLSVersion** 設定為 tls 1.1，然後更新帳戶，並將 **MINIMUMTLSVERSION** 設定為 tls 1.2。 此範例也會在每個案例中捕獲屬性值。 請記得以您自己的值取代括弧中的預留位置值：
 
@@ -140,9 +137,9 @@ Set-AzStorageAccount -ResourceGroupName $rgName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要使用 Azure CLI 設定儲存體帳戶的最小 TLS 版本，請安裝 Azure CLI 2.9.0 版版或更新版本。 如需詳細資訊，請參閱 [安裝 Azure CLI](/cli/azure/install-azure-cli)。 接下來，為新的或現有的儲存體帳戶設定 **minimumTlsVersion** 屬性。 **MinimumTlsVersion**的有效值為 `TLS1_0` 、 `TLS1_1` 和 `TLS1_2` 。
+若要使用 Azure CLI 設定儲存體帳戶的最小 TLS 版本，請安裝 Azure CLI 2.9.0 版版或更新版本。 如需詳細資訊，請參閱 [安裝 Azure CLI](/cli/azure/install-azure-cli)。 接下來，為新的或現有的儲存體帳戶設定 **minimumTlsVersion** 屬性。 **MinimumTlsVersion** 的有效值為 `TLS1_0` 、 `TLS1_1` 和 `TLS1_2` 。
 
-當您使用 Azure CLI 建立儲存體帳戶時，預設不會設定 **minimumTlsVersion** 屬性。 除非您明確設定，否則此屬性不會傳回值。 如果屬性值為 **null**，則儲存體帳戶允許以 TLS 1.0 或更高版本傳送的要求。
+當您使用 Azure CLI 建立儲存體帳戶時，預設不會設定 **minimumTlsVersion** 屬性。 除非您明確設定，否則此屬性不會傳回值。 如果屬性值為 **null** ，則儲存體帳戶允許以 TLS 1.0 或更高版本傳送的要求。
 
 下列範例會建立儲存體帳戶，並將 **minimumTLSVersion** 設定為 TLS 1.1。 然後，它會更新帳戶，並將 **minimumTLSVersion** 屬性設定為 TLS 1.2。 此範例也會在每個案例中捕獲屬性值。 請記得以您自己的值取代括弧中的預留位置值：
 
@@ -176,9 +173,9 @@ az storage account show \
 
 若要使用範本來設定儲存體帳戶的最小 TLS 版本，請建立將 **MinimumTLSVersion** 屬性設定為 `TLS1_0` 、或的範本 `TLS1_1` `TLS1_2` 。 下列步驟說明如何在 Azure 入口網站中建立範本。
 
-1. 在 [Azure 入口網站中，選擇 [ **建立資源**]。
-1. 在 **[搜尋 Marketplace**] 中，輸入 **範本部署**，然後按 **enter**。
-1. 選擇 [**使用自訂範本部署範本部署 (])  (預覽) **，選擇 **[建立]，然後****在編輯器中選擇 [建立您自己的範本**]。
+1. 在 [Azure 入口網站中，選擇 [ **建立資源** ]。
+1. 在 **[搜尋 Marketplace** ] 中，輸入 **範本部署** ，然後按 **enter** 。
+1. 選擇 [ **使用自訂範本部署範本部署 (])  (預覽)** ，選擇 **[建立]，然後****在編輯器中選擇 [建立您自己的範本** ]。
 1. 在範本編輯器中，貼上下列 JSON 以建立新的帳戶，並將最低的 TLS 版本設定為 TLS 1.2。 請記得將角括弧中的預留位置取代為您自己的值。
 
     ```json
@@ -221,7 +218,7 @@ az storage account show \
 
 ### <a name="check-the-minimum-required-tls-version-for-multiple-accounts"></a>檢查多個帳戶所需的最低 TLS 版本
 
-若要在一組具有最佳效能的儲存體帳戶中檢查所需的最低 TLS 版本，您可以使用 Azure 入口網站中的 Azure Resource Graph Explorer。 若要深入瞭解如何使用 Resource Graph Explorer，請參閱 [快速入門：使用 Azure Resource Graph Explorer 執行您的第一個 Resource Graph 查詢](/azure/governance/resource-graph/first-query-portal)。
+若要在一組具有最佳效能的儲存體帳戶中檢查所需的最低 TLS 版本，您可以使用 Azure 入口網站中的 Azure Resource Graph Explorer。 若要深入瞭解如何使用 Resource Graph Explorer，請參閱 [快速入門：使用 Azure Resource Graph Explorer 執行您的第一個 Resource Graph 查詢](../../governance/resource-graph/first-query-portal.md)。
 
 在 Resource Graph Explorer 中執行下列查詢，會傳回儲存體帳戶的清單，並顯示每個帳戶的最小 TLS 版本：
 
@@ -249,11 +246,11 @@ Azure 原則支援的效果，可決定針對資源評估原則規則時所發�
 若要使用 Azure 入口網站的最小 TLS 版本來建立具有審核效果的原則，請遵循下列步驟：
 
 1. 在 Azure 入口網站中，流覽至 Azure 原則服務。
-1. 在 [ **撰寫** 中] 區段下，選取 [ **定義**]。
+1. 在 [ **撰寫** 中] 區段下，選取 [ **定義** ]。
 1. 選取 [ **新增原則定義** ] 以建立新的原則定義。
 1. 在 [ **定義位置** ] 欄位中，選取 [ **更多** ] 按鈕以指定稽核原則資源所在的位置。
 1. 指定原則的名稱。 您可以選擇性地指定描述和分類。
-1. 在 [ **原則規則**] 下，將下列原則定義新增至 [ **>policyrule.if** ] 區段。
+1. 在 [ **原則規則** ] 下，將下列原則定義新增至 [ **>policyrule.if** ] 區段。
 
     ```json
     {
@@ -286,12 +283,12 @@ Azure 原則支援的效果，可決定針對資源評估原則規則時所發�
 若要使用 Azure 入口網站指派原則，請遵循下列步驟：
 
 1. 在 Azure 入口網站中，流覽至 Azure 原則服務。
-1. 在 [ **撰寫** 中] 區段下，選取 [ **指派**]。
+1. 在 [ **撰寫** 中] 區段下，選取 [ **指派** ]。
 1. 選取 [ **指派原則** ] 以建立新的原則指派。
 1. 在 [ **領域** ] 欄位中，選取原則指派的範圍。
 1. 在 [ **原則定義** ] 欄位中，選取 [ **更多** ] 按鈕，然後從清單中選取您在上一節中定義的原則。
 1. 提供原則指派的名稱。 描述是選擇性的。
-1. 將 [ **強制執行原則** ] 設為 [ *啟用*]。 此設定對稽核原則沒有任何作用。
+1. 將 [ **強制執行原則** ] 設為 [ *啟用* ]。 此設定對稽核原則沒有任何作用。
 1. 選取 [ **審核 + 建立** ] 以建立指派。
 
 ### <a name="view-compliance-report"></a>查看合規性報告
@@ -303,7 +300,7 @@ Azure 原則支援的效果，可決定針對資源評估原則規則時所發�
 若要在 Azure 入口網站中查看合規性報告，請遵循下列步驟：
 
 1. 在 Azure 入口網站中，流覽至 Azure 原則服務。
-1. 選取 [ **符合**]。
+1. 選取 [ **符合** ]。
 1. 篩選您在上一個步驟中建立的原則指派名稱結果。 報表會顯示有多少資源不符合原則。
 1. 您可以向下切入報表以取得其他詳細資料，包括不符合規範的儲存體帳戶清單。
 

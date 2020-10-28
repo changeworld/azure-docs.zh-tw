@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
-ms.openlocfilehash: a33ff6b927045389c3692201fa70839c6a466ede
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e7775f289e0221862d11c585ae85a5b0bc6cc27
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90887649"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788545"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>SQL Server 實例遷移至 Azure SQL 受控執行個體
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "90887649"
 
 首先，判斷 SQL 受控執行個體是否與您應用程式的資料庫需求相容。 SQL 受控執行個體的設計目的是要針對大部分使用 SQL Server 的現有應用程式，提供簡單的隨即轉移。 不過，您有時可能需要的功能不受支援，而且執行因應措施的成本太高。
 
-使用 [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview) 來偵測 Azure SQL Database 上影響資料庫功能的潛在相容性問題。 如果有一些回報的封鎖問題，您可能需要考慮替代選項，例如 [AZURE VM 上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)。 以下是一些範例：
+使用 [Data Migration Assistant](/sql/dma/dma-overview) 來偵測 Azure SQL Database 上影響資料庫功能的潛在相容性問題。 如果有一些回報的封鎖問題，您可能需要考慮替代選項，例如 [AZURE VM 上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)。 以下是一些範例：
 
 - 如果您需要直接存取作業系統或檔案系統，例如在與 SQL Server 的相同虛擬機器上安裝協力廠商或自訂代理程式。
 - 如果您對仍不支援的功能具有嚴格的相依性，例如 FileStream/FileTable、PolyBase 和跨實例交易。
@@ -69,8 +69,8 @@ SQL 受控執行個體可保證99.99% 的可用性（即使在重大情況下）
 您需要在 SQL Server 實例上測量的一些參數如下：
 
 - [監視 SQL Server 實例上的 cpu 使用量](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131) ，並記錄平均和尖峰 cpu 使用量。
-- [監視 SQL Server 實例上的記憶體使用量](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-memory-usage) ，並判斷不同元件所使用的記憶體數量，例如緩衝集區、計畫快取、資料行存放區集區、 [記憶體內部 OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017)等等。此外，您應該會找到 Page Life memory 效能計數器的平均值和尖峰值。
-- 使用 [sys.dm_io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) view 或 [效能計數器](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage)，監視來源 SQL Server 實例上的磁片 IO 使用量。
+- [監視 SQL Server 實例上的記憶體使用量](/sql/relational-databases/performance-monitor/monitor-memory-usage) ，並判斷不同元件所使用的記憶體數量，例如緩衝集區、計畫快取、資料行存放區集區、 [記憶體內部 OLTP](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017)等等。此外，您應該會找到 Page Life memory 效能計數器的平均值和尖峰值。
+- 使用 [sys.dm_io_virtual_file_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) view 或 [效能計數器](/sql/relational-databases/performance-monitor/monitor-disk-usage)，監視來源 SQL Server 實例上的磁片 IO 使用量。
 - 藉由檢查動態管理檢視或查詢存放區（如果您要從 SQL Server 2016 + 版本進行遷移），來監視工作負載和查詢效能或 SQL Server 實例。 識別您工作負載中最重要查詢的平均持續時間和 CPU 使用量，以將其與在受控實例上執行的查詢進行比較。
 
 > [!Note]
@@ -116,7 +116,7 @@ SQL 受控執行個體支援下列資料庫移轉選項 (目前這些是唯一�
 
 [Azure 資料庫移轉服務](../../dms/dms-overview.md) 是一個完全受控的服務，其設計目的是要讓多個資料庫來源順暢地從多個資料庫來源遷移到 Azure 資料平臺。 此服務可簡化將現有協力廠商和 SQL Server 資料庫移至 Azure 所需的工作。 公開預覽的部署選項包含 Azure SQL Database 中的資料庫，以及 Azure 虛擬機器中的 SQL Server 資料庫。 針對您的企業工作負載，建議使用資料庫移轉服務遷移方法。
 
-如果您在內部部署 SQL Server 使用 SQL Server Integration Services (SSIS) ，資料庫移轉服務還不支援將 ssis 目錄 (儲存 SSIS 套件的 SSISDB) 遷移，但您可以在 Azure-SSIS Integration Runtime 中布建 () IR Azure Data Factory，以在受控實例中建立新的 SSISDB，讓您可以將套件重新部署到其中。 請參閱 [Azure Data Factory 中的建立 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。
+如果您在內部部署 SQL Server 使用 SQL Server Integration Services (SSIS) ，資料庫移轉服務還不支援將 ssis 目錄 (儲存 SSIS 套件的 SSISDB) 遷移，但您可以在 Azure-SSIS Integration Runtime 中布建 () IR Azure Data Factory，以在受控實例中建立新的 SSISDB，讓您可以將套件重新部署到其中。 請參閱 [Azure Data Factory 中的建立 Azure-SSIS IR](../../data-factory/create-azure-ssis-integration-runtime.md)。
 
 若要深入瞭解此案例和資料庫移轉服務的設定步驟，請參閱 [使用資料庫移轉服務，將您的內部部署資料庫移轉至受控實例](../../dms/tutorial-sql-server-to-managed-instance.md)。  
 
@@ -133,8 +133,8 @@ SQL 受控執行個體支援下列資料庫移轉選項 (目前這些是唯一�
 |步驟|SQL 引擎和版本|備份/還原方法|
 |---|---|---|
 |將備份放至 Azure 儲存體|2012 SP1 之前的 CU2|直接將 .bak 檔案上傳至 Azure 儲存體|
-||2012 SP1 CU2 - 2016|使用已被取代的 [WITH CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql) 語法直接備份|
-||2016 和更新版本|使用 [WITH SAS CREDENTIAL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url) 直接備份|
+||2012 SP1 CU2 - 2016|使用已被取代的 [WITH CREDENTIAL](/sql/t-sql/statements/restore-statements-transact-sql) 語法直接備份|
+||2016 和更新版本|使用 [WITH SAS CREDENTIAL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) 直接備份|
 |從 Azure 儲存體還原至受控實例|[使用 SAS 認證從 URL 還原](restore-sample-database-quickstart.md)|
 
 > [!IMPORTANT]
@@ -164,7 +164,7 @@ SQL 受控執行個體支援下列資料庫移轉選項 (目前這些是唯一�
 - 藉由調查不同的實例、資料庫、tempdb 設定和設定，將受控實例上的設定與來源 SQL Server 實例的設定對齊。 在執行第一個效能比較之前，請確定您未變更相容性層級或加密等設定，或接受您啟用的某些新功能可能會影響某些查詢的風險。 若要減少移轉的風險，請只在進行效能監視後變更資料庫相容性層級。
 - [針對一般用途實行儲存體最佳作法指導方針](https://techcommunity.microsoft.com)，例如預先設定檔案大小以取得較佳的效能。
 - 深入瞭解 [可能會造成受控實例與 SQL Server 之間效能差異的主要環境差異](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)，並找出可能影響效能的風險。
-- 請確定您已在受控實例上保持啟用查詢存放區和自動調整。 這些功能可讓您測量工作負載效能，並自動修正潛在的效能問題。 瞭解如何使用查詢存放區作為最佳工具，以在資料庫相容性層級變更之前和之後取得工作負載效能的相關資訊，如在 [升級至較新的 SQL Server 版本期間保持效能穩定性](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade)所述。
+- 請確定您已在受控實例上保持啟用查詢存放區和自動調整。 這些功能可讓您測量工作負載效能，並自動修正潛在的效能問題。 瞭解如何使用查詢存放區作為最佳工具，以在資料庫相容性層級變更之前和之後取得工作負載效能的相關資訊，如在 [升級至較新的 SQL Server 版本期間保持效能穩定性](/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade)所述。
 當您準備好可與內部部署環境比較的環境之後，您就可以開始執行工作負載並測量效能。 [當您在來源 SQL Server 實例上建立工作負載量值的基準效能時](#create-a-performance-baseline)，測量程式應包含您所測量的相同參數。
 因此，您應該將效能參數與基準進行比較，並找出重大的差異。
 
@@ -194,16 +194,16 @@ SQL 受控執行個體提供許多用於監視和疑難排解的 advanced tools�
 
 當您在完全受控的平臺上，並確認工作負載效能符合 SQL Server 工作負載效能時，請使用在服務中自動提供的優點。
 
-即使您未在遷移期間對受控實例進行某些變更，在您操作實例以利用最新的資料庫引擎改善時，很可能會開啟一些新功能。 只有當 [資料庫相容性層級變更](https://docs.microsoft.com/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database)時，才會啟用某些變更。
+即使您未在遷移期間對受控實例進行某些變更，在您操作實例以利用最新的資料庫引擎改善時，很可能會開啟一些新功能。 只有當 [資料庫相容性層級變更](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database)時，才會啟用某些變更。
 
 例如，您不需要在受控實例上建立備份-服務會自動為您執行備份。 您無法再擔心如何排程、使用及管理備份。 SQL 受控執行個體可讓您使用 [時間點復原 (PITR) ](../database/recovery-using-backups.md#point-in-time-restore)來還原到此保留期間內的任何時間點。 此外，您不需要擔心如何設定高可用性，因為內建 [高可用性](../database/high-availability-sla.md) 。
 
-若要加強安全性，請考慮使用 [Azure Active Directory 驗證](../database/security-overview.md)、 [審核](auditing-configure.md)、 [威脅偵測](../database/azure-defender-for-sql.md)、資料 [列層級安全性](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)和 [動態資料遮罩](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)。
+若要加強安全性，請考慮使用 [Azure Active Directory 驗證](../database/security-overview.md)、 [審核](auditing-configure.md)、 [威脅偵測](../database/azure-defender-for-sql.md)、資料 [列層級安全性](/sql/relational-databases/security/row-level-security)和 [動態資料遮罩](/sql/relational-databases/security/dynamic-data-masking)。
 
-除了先進的管理和安全性功能之外，受控實例還提供一組可協助您 [監視和調整工作負載](../database/monitor-tune-overview.md)的 advanced tools。 [Azure SQL 分析](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) 可讓您監視大量的受控實例，並集中監視大量的實例和資料庫。 受控實例中的[自動調整](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction)會持續監視 SQL 計畫執行統計資料的效能，並自動修正已識別的效能問題。
+除了先進的管理和安全性功能之外，受控實例還提供一組可協助您 [監視和調整工作負載](../database/monitor-tune-overview.md)的 advanced tools。 [Azure SQL 分析](../../azure-monitor/insights/azure-sql.md) 可讓您監視大量的受控實例，並集中監視大量的實例和資料庫。 受控實例中的[自動調整](/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction)會持續監視 SQL 計畫執行統計資料的效能，並自動修正已識別的效能問題。
 
 ## <a name="next-steps"></a>後續步驟
 
 - 如需 Azure SQL 受控執行個體的詳細資訊，請參閱 [什麼是 AZURE sql 受控執行個體？](sql-managed-instance-paas-overview.md)。
 - 如需包含從備份進行還原的教學課程，請參閱 [建立受控實例](instance-create-quickstart.md)。
-- 如需顯示使用資料庫移轉服務進行遷移的教學課程，請參閱 [使用資料庫移轉服務，將您的內部部署資料庫移轉至 AZURE SQL 受控執行個體](../../dms/tutorial-sql-server-to-managed-instance.md)。  
+- 如需顯示使用資料庫移轉服務進行遷移的教學課程，請參閱 [使用資料庫移轉服務，將您的內部部署資料庫移轉至 AZURE SQL 受控執行個體](../../dms/tutorial-sql-server-to-managed-instance.md)。

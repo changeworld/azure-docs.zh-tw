@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f56da93d0ea0f346e73b34990d8ec4c222bb8813
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: bc0a556841c3c6ee91ae472087aaaf7c74009b67
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488566"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785777"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>待用資料的 Azure 儲存體加密
 
@@ -38,7 +38,7 @@ Azure 儲存體中的資料會以透明的方式使用256位 [AES 加密](https:
 
 根據預設，新儲存體帳戶中的資料會使用 Microsoft 管理的金鑰進行加密。 您可以繼續依賴 Microsoft 管理的金鑰來加密您的資料，也可以使用您自己的金鑰管理加密。 如果您選擇使用自己的金鑰管理加密，您有兩個選項。 您可以使用任一種類型的金鑰管理或兩者：
 
-- 您可以指定 *客戶管理的金鑰* ，以用於加密和解密 Blob 儲存體和 Azure 檔案儲存體中的資料。<sup>1，2</sup> 客戶管理的金鑰必須儲存在 Azure Key Vault 或 Azure Key Vault 受控硬體安全性模型 (HSM)  (preview) 。 如需有關客戶管理金鑰的詳細資訊，請參閱 [使用客戶管理的金鑰進行 Azure 儲存體加密](encryption-customer-managed-keys.md)。
+- 您可以指定 *客戶管理的金鑰* ，以用於加密和解密 Blob 儲存體和 Azure 檔案儲存體中的資料。 <sup>1，2</sup> 客戶管理的金鑰必須儲存在 Azure Key Vault 或 Azure Key Vault 受控硬體安全性模型 (HSM)  (preview) 。 如需有關客戶管理金鑰的詳細資訊，請參閱 [使用客戶管理的金鑰進行 Azure 儲存體加密](./customer-managed-keys-overview.md)。
 - 您可以在 Blob 儲存體作業上指定 *客戶提供的金鑰* 。 對 Blob 儲存體進行讀取或寫入要求的用戶端可以在要求上包含加密金鑰，以對 blob 資料的加密和解密方式進行細微的控制。 如需客戶提供之金鑰的詳細資訊，請參閱針對 [Blob 儲存體的要求提供加密金鑰](../blobs/encryption-customer-provided-keys.md)。
 
 下表比較 Azure 儲存體加密的金鑰管理選項。
@@ -101,8 +101,8 @@ Azure 儲存體中的資料會以透明的方式使用256位 [AES 加密](https:
 
 如果您的加密範圍使用客戶管理的金鑰進行 Azure Key Vault 的保護，則您也可以在金鑰保存庫中刪除相關聯的金鑰，以便停用加密範圍。 請記住，Azure Key Vault 中客戶管理的金鑰受到虛刪除和清除保護的保護，且已刪除的金鑰受限於這些屬性所定義的行為。 如需詳細資訊，請參閱 Azure Key Vault 檔中的下列其中一個主題：
 
-- [透過 PowerShell 使用虛刪除](../../key-vault/general/soft-delete-powershell.md)
-- [如何透過 CLI 使用虛刪除](../../key-vault/general/soft-delete-cli.md)
+- [透過 PowerShell 使用虛刪除](../../key-vault/general/key-vault-recovery.md)
+- [如何透過 CLI 使用虛刪除](../../key-vault/general/key-vault-recovery.md)
 
 > [!NOTE]
 > 不可能刪除加密範圍。

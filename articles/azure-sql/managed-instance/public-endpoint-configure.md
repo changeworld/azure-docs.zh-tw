@@ -10,17 +10,17 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 05/07/2019
-ms.openlocfilehash: f3708885759a6a353742fe89b4454b39496aeeab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73fa4d4988c7a036dc1d2eb7dc81c3c1c5d77026
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619979"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788276"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>在 Azure SQL 受控執行個體中設定公用端點
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-[受控實例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)的公用端點可讓您從[虛擬網路](../../virtual-network/virtual-networks-overview.md)外部存取受控實例的資料。 您可以從多租使用者 Azure 服務（例如 Power BI、Azure App Service 或內部部署網路）存取受控實例。 使用受控實例上的公用端點時，您不需要使用 VPN，這有助於避免 VPN 輸送量問題。
+[受控實例](./sql-managed-instance-paas-overview.md)的公用端點可讓您從[虛擬網路](../../virtual-network/virtual-networks-overview.md)外部存取受控實例的資料。 您可以從多租使用者 Azure 服務（例如 Power BI、Azure App Service 或內部部署網路）存取受控實例。 使用受控實例上的公用端點時，您不需要使用 VPN，這有助於避免 VPN 輸送量問題。
 
 在本文中，您將學會如何：
 
@@ -98,7 +98,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |---------|---------|---------|
     |**Source**     |任何 IP 位址或服務標記         |<ul><li>針對 Power BI 之類的 Azure 服務，請選取 Azure 雲端服務標記</li> <li>針對您的電腦或 Azure 虛擬機器，請使用 NAT IP 位址</li></ul> |
     |**來源連接埠範圍**     |* |將此設為 * (任何) ，因為來源埠通常會動態配置，因此無法預測 |
-    |**目的地**     |任意         |將目的地保留為任何，以允許流量進入受控實例子網 |
+    |**目的地**     |任何         |將目的地保留為任何，以允許流量進入受控實例子網 |
     |**目的地連接埠範圍**     |3342         |將目的地埠範圍設為3342，這是受控實例公用 TDS 端點 |
     |**通訊協定**     |TCP         |SQL 受控執行個體針對 TDS 使用 TCP 通訊協定 |
     |**動作**     |允許         |允許透過公用端點對受控實例進行輸入流量 |
@@ -111,8 +111,8 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 ## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>取得受控實例的公用端點連接字串
 
-1. 流覽至已啟用公用端點的受控實例設定頁面。 在 [**設定**] 底下，選取 [**連接字串**] 索引標籤。
-1. 請注意，公用端點主機名稱的格式 <mi_name>。**public**. <dns_zone> database.windows.net 以及用於連接的埠是3342。
+1. 流覽至已啟用公用端點的受控實例設定頁面。 在 [ **設定** ] 底下，選取 [ **連接字串** ] 索引標籤。
+1. 請注意，公用端點主機名稱的格式 <mi_name>。 **public** . <dns_zone> database.windows.net 以及用於連接的埠是3342。
 
     ![螢幕擷取畫面：顯示公用和私人端點的連接字串。](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 

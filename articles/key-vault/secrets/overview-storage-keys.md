@@ -10,12 +10,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 26e1852058383ef1e4cc4b3b604e1bdc79d60e14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58b4a8c445548c711c2ad76c2d983acaec11ca7f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612178"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786270"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>使用 Key Vault 和 Azure CLI 管理儲存體帳戶金鑰
 
@@ -32,13 +32,13 @@ Azure 儲存體帳戶會使用由帳戶名稱和金鑰組成的認證。 該金�
 
 建議使用 Azure 儲存體與 Azure Active Directory (Azure AD) 整合，這是 Microsoft 的雲端式身分識別和存取管理服務。 Azure AD 整合適用於 [Azure Blob 和佇列](../../storage/common/storage-auth-aad.md)，並提供對 Azure 儲存體的 OAuth2 權杖型存取 (如同 Azure Key Vault)。
 
-Azue AD 可讓您使用應用程式或使用者身分識別來驗證用戶端應用程式，而非使用儲存體帳戶認證。 在 Azure 上執行時，可以使用 [Azure AD 受控識別](/azure/active-directory/managed-identities-azure-resources/)。 受控識別能移除用戶端驗證，以及使用應用程式儲存認證或將認證儲存於應用程式中的需求。
+Azue AD 可讓您使用應用程式或使用者身分識別來驗證用戶端應用程式，而非使用儲存體帳戶認證。 在 Azure 上執行時，可以使用 [Azure AD 受控識別](../../active-directory/managed-identities-azure-resources/index.yml)。 受控識別能移除用戶端驗證，以及使用應用程式儲存認證或將認證儲存於應用程式中的需求。
 
 Azure AD 會使用同時也受 Key Vault 支援的角色型存取控制 (RBAC) 來管理授權。
 
 ## <a name="service-principal-application-id"></a>服務主體的應用程式識別碼
 
-Azure AD 租用戶會為每個已註冊的應用程式提供一個[服務主體](/azure/active-directory/develop/developer-glossary#service-principal-object)。 服務主體會作為應用程式識別碼，在授權設定期間用來透過 RBAC 存取其他 Azure 資源。
+Azure AD 租用戶會為每個已註冊的應用程式提供一個[服務主體](../../active-directory/develop/developer-glossary.md#service-principal-object)。 服務主體會作為應用程式識別碼，在授權設定期間用來透過 RBAC 存取其他 Azure 資源。
 
 Key Vault 是 Microsoft 應用程式，已在所有 Azure AD 租用戶中預先註冊。 Key Vault 會在每個 Azure 雲端中的相同應用程式識別碼下註冊。
 
@@ -163,6 +163,6 @@ az keyvault secret show --vault-name <YourKeyVaultName> --id <SasDefinitionID>
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解[金鑰、祕密與憑證](https://docs.microsoft.com/rest/api/keyvault/)。
-- 請參閱 [Azure Key Vault 小組部落格](https://blogs.technet.microsoft.com/kv/)的文章。
-- 請參閱 [az keyvault storage](https://docs.microsoft.com/cli/azure/keyvault/storage?view=azure-cli-latest) 參考文件。
+- 深入了解[金鑰、祕密與憑證](/rest/api/keyvault/)。
+- 請參閱 [Azure Key Vault 小組部落格](/archive/blogs/kv/)的文章。
+- 請參閱 [az keyvault storage](/cli/azure/keyvault/storage?view=azure-cli-latest) 參考文件。

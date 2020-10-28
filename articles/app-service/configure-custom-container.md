@@ -4,12 +4,12 @@ description: 瞭解如何在 Azure App Service 中設定自訂容器。 本文�
 ms.topic: article
 ms.date: 09/22/2020
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 5b1bf9b205fc1eb90c6eeae3a101def764381213
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f71efbf7cc606efd598880e90ade3a549402245
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264570"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787052"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>設定 Azure App Service 的自訂容器
 
@@ -212,11 +212,11 @@ App Service 會記錄 Docker 主機的動作，以及來自容器內的活動。
 
 ### <a name="in-azure-portal"></a>Azure 入口網站
 
-Docker 記錄會顯示在入口網站的應用程式 [ **容器設定** ] 頁面中。 記錄會被截斷，但您可以按一下 [ **下載**] 來下載所有記錄。 
+Docker 記錄會顯示在入口網站的應用程式 [ **容器設定** ] 頁面中。 記錄會被截斷，但您可以按一下 [ **下載** ] 來下載所有記錄。 
 
 ### <a name="from-the-kudu-console"></a>從 Kudu 主控台
 
-流覽至 `https://<app-name>.scm.azurewebsites.net/DebugConsole` 並按一下 [ **LogFiles**記錄檔] 資料夾，以查看個別記錄檔。 若要下載整個記錄檔目錄，請 **按一下目錄名稱** 左側的 [ **下載** ] 圖示。 您也可以使用 FTP 用戶端來存取這個資料夾。
+流覽至 `https://<app-name>.scm.azurewebsites.net/DebugConsole` 並按一下 [ **LogFiles** 記錄檔] 資料夾，以查看個別記錄檔。 若要下載整個記錄檔目錄，請 **按一下目錄名稱** 左側的 [ **下載** ] 圖示。 您也可以使用 FTP 用戶端來存取這個資料夾。
 
 在主控台終端機中，預設無法存取 `C:\home\LogFiles` 資料夾，因為未啟用持續性共用存放裝置。 若要在主控台終端機中啟用此行為，請 [啟用持續性共用存放裝置](#use-persistent-shared-storage)。
 
@@ -242,7 +242,7 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITE_MEMORY_LIMIT_MB"=2000}
 ```
 
-值的定義為 MB，而且必須小於或等於主機的總實體記憶體。 例如，在具有 8 GB RAM 的 App Service 方案中， `WEBSITE_MEMORY_LIMIT_MB` 所有應用程式的累積總計不得超過 8 gb。 如需每個定價層有多少可用記憶體的相關資訊，請參閱「高階**容器 (Windows) 規劃**」一節的[App Service 定價](https://azure.microsoft.com/pricing/details/app-service/windows/)。
+值的定義為 MB，而且必須小於或等於主機的總實體記憶體。 例如，在具有 8 GB RAM 的 App Service 方案中， `WEBSITE_MEMORY_LIMIT_MB` 所有應用程式的累積總計不得超過 8 gb。 如需每個定價層有多少可用記憶體的相關資訊，請參閱「高階 **容器 (Windows) 規劃** 」一節的 [App Service 定價](https://azure.microsoft.com/pricing/details/app-service/windows/)。
 
 ## <a name="customize-the-number-of-compute-cores"></a>自訂計算核心數目
 
@@ -268,11 +268,11 @@ Get-ComputerInfo | ft CsNumberOfLogicalProcessors # Total number of enabled logi
 Get-ComputerInfo | ft CsNumberOfProcessors # Number of physical processors.
 ```
 
-處理器可能是多核心或超執行緒處理器。 如需每個定價層的可用核心數目的相關資訊，請參閱「高階**容器 (Windows) 方案**」一節的[App Service 定價](https://azure.microsoft.com/pricing/details/app-service/windows/)。
+處理器可能是多核心或超執行緒處理器。 如需每個定價層的可用核心數目的相關資訊，請參閱「高階 **容器 (Windows) 方案** 」一節的 [App Service 定價](https://azure.microsoft.com/pricing/details/app-service/windows/)。
 
 ## <a name="customize-health-ping-behavior"></a>自訂健全狀況偵測行為
 
-App Service 會將容器視為在容器啟動時成功啟動，並回應 HTTP ping。 健康情況 ping 要求會容器標頭 `User-Agent= "App Service Hyper-V Container Availability Check"` 。 如果容器啟動，但在一段時間後沒有回應 ping，App Service 會在 Docker 記錄檔中記錄事件，指出容器未啟動。 
+App Service 會將容器視為在容器啟動時成功啟動，並回應 HTTP ping。 健康情況 ping 要求包含標頭 `User-Agent= "App Service Hyper-V Container Availability Check"` 。 如果容器啟動，但在一段時間後沒有回應 ping，App Service 會在 Docker 記錄檔中記錄事件，指出容器未啟動。 
 
 如果您的應用程式需要大量資源，容器可能不會及時回應 HTTP 偵測。 若要控制 HTTP ping 失敗時的動作，請設定 `CONTAINER_AVAILABILITY_CHECK_MODE` 應用程式設定。 您可以透過 [Cloud Shell](https://shell.azure.com)進行設定。 在 Bash 中：
 
@@ -325,7 +325,7 @@ SSH 可讓容器和用戶端之間進行安全通訊。 為了讓自訂容器支
     ```
 
     > [!NOTE]
-    > sshd_config** 檔案必須包含下列項目︰
+    > sshd_config  檔案必須包含下列項目︰
     > - `Ciphers` 必須在此清單中包含至少一個項目：`aes128-cbc,3des-cbc,aes256-cbc`。
     > - `MACs` 必須在此清單中包含至少一個項目：`hmac-sha1,hmac-sha1-96`。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 0eb38dbb01e1e7d820159a5085b262dae3c04e8f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1a1e9c394f3665845b1f2bbbd605322b43f5f25d
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075326"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787222"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何在 Azure API 管理中使用服務備份和還原實作災害復原
 
@@ -56,32 +56,32 @@ ms.locfileid: "92075326"
 ### <a name="create-an-azure-active-directory-application"></a>建立 Azure Active Directory 應用程式
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 使用含 API 管理服務執行個體的訂用帳戶，瀏覽至 **Azure Active Directory** 的 [應用程式註冊]**** 索引標籤 (Azure Active Directory > 管理/應用程式註冊)。
+2. 使用含 API 管理服務執行個體的訂用帳戶，瀏覽至  索引標籤 (Azure Active Directory > 管理/應用程式註冊)。
 
     > [!NOTE]
     > 如果您的帳戶看不到 Azure Active Directory 預設目錄，請連絡 Azure 訂用帳戶的系統管理員，以授與您的帳戶必要權限。
 
 3. 按一下 [新增應用程式註冊]。
 
-    [建立]**** 視窗會出現在右邊。 您可以在這裡輸入 AAD 應用程式的相關資訊。
+    [建立]  視窗會出現在右邊。 您可以在這裡輸入 AAD 應用程式的相關資訊。
 
 4. 輸入應用程式的名稱。
-5. 針對應用程式類型，選取 [原生]****。
-6. 輸入 [重新導向 URI]**** 的預留位置 URL，例如 `http://resources`，因為它是必要的欄位，但稍後不會使用這個值。 按一下核取方塊以儲存應用程式。
-7. 按一下 [建立]。
+5. 針對應用程式類型，選取 [原生]  。
+6. 輸入 [重新導向 URI]  的預留位置 URL，例如 `http://resources`，因為它是必要的欄位，但稍後不會使用這個值。 按一下核取方塊以儲存應用程式。
+7. 按一下頁面底部的 [新增]  。
 
 ### <a name="add-an-application"></a>新增應用程式
 
-1. 建立應用程式之後，按一下 [ **API 許可權**]。
+1. 建立應用程式之後，按一下 [ **API 許可權** ]。
 2. 按一下 [+ 新增權限]。
-4. 按下 [ **選取 Microsoft api**]。
-5. 選擇 **Azure 服務管理**。
-6. 按 [選取]****。
+4. 按下 [ **選取 Microsoft api** ]。
+5. 選擇 **Azure 服務管理** 。
+6. 按 [選取]  。
 
     ![新增權限](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
 
-7. 按一下剛新增之應用程式旁邊的 [委派的權限]****，選取 [存取 Azure 服務管理 (預覽)]**** 方塊。
-8. 按 [選取]****。
+7. 按一下剛新增之應用程式旁邊的 [委派的權限]  ，選取 [存取 Azure 服務管理 (預覽)]  方塊。
+8. 按 [選取]  。
 9. 按一下 [授與權限]。
 
 ### <a name="configuring-your-app"></a>設定應用程式
@@ -115,12 +115,12 @@ namespace GetTokenResourceManagerRequests
 
 請使用下列指示來取代 `{tenant id}`、`{application id}` 和 `{redirect uri}`：
 
-1. 使用您所建立 Azure Active Directory 應用程式的租用戶識別碼來取代 `{tenant id}`。 您可以按一下**應用程式註冊**  ->  **端點**來存取識別碼。
+1. 使用您所建立 Azure Active Directory 應用程式的租用戶識別碼來取代 `{tenant id}`。 您可以按一下 **應用程式註冊**  ->  **端點** 來存取識別碼。
 
     ![端點][api-management-endpoint]
 
-2. 使用您瀏覽至 [設定]**** 頁面取得的值來取代 `{application id}`。
-3. 以來自您 Azure Active Directory 應用程式 [重新導向 URI]**** 索引標籤的值取代 `{redirect uri}`。
+2. 使用您瀏覽至 [設定]  頁面取得的值來取代 `{application id}`。
+3. 以來自您 Azure Active Directory 應用程式 [重新導向 URI]  索引標籤的值取代 `{redirect uri}`。
 
     指定值之後，程式碼範例應該會傳回類似以下範例的權杖：
 
@@ -152,7 +152,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   `subscriptionId` - 訂用帳戶的識別碼，此訂用帳戶會保留您嘗試備份的「API 管理」服務
 -   `resourceGroupName` - 您 Azure API 管理服務的資源群組名稱
 -   `serviceName` - 所要備份 API 管理服務的名稱，該名稱是在服務建立時所指定
--   `api-version` -取代為 `2018-06-01-preview`
+-   `api-version` -取代為 `2019-12-01`
 
 在要求的本文中指定目標 Azure 儲存體帳戶名稱、存取金鑰、Blob 容器名稱和備份名稱：
 
@@ -171,14 +171,14 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 #### <a name="constraints-when-making-backup-or-restore-request"></a>進行備份或還原要求時的條件約束
 
--   在要求本文中指定的**容器****必須存在**。
+-   在要求本文中指定的 **容器****必須存在** 。
 -   當備份正在進行時，請 **避免在服務中進行管理變更** ，例如 SKU 升級或降級、功能變數名稱變更等等。
--   備份還原的**保證僅限建立後的 30 天內**。
--   在備份作業進行時針對服務組態 (例如 API、原則及開發人員入口網站外觀) 所做的**變更****可能會從備份中排除，因此可能會遺失**。
--   如果已啟用[防火牆][azure-storage-ip-firewall]，**允許**從控制平面存取 Azure 儲存體帳戶。 客戶應該在其儲存體帳戶上開啟一組 [AZURE API 管理控制平面 IP 位址][control-plane-ip-address] ，以進行備份或從中還原。 這是因為 Azure 儲存體的要求不會從計算 > Snat 轉譯至 (Azure Api 管理控制平面) 的公用 IP。 將會 Snat 轉譯跨區域儲存體要求。
+-   備份還原的 **保證僅限建立後的 30 天內** 。
+-   在備份作業進行時針對服務組態 (例如 API、原則及開發人員入口網站外觀) 所做的 **變更****可能會從備份中排除，因此可能會遺失** 。
+-   如果已啟用 [防火牆][azure-storage-ip-firewall]， **允許** 從控制平面存取 Azure 儲存體帳戶。 客戶應該在其儲存體帳戶上開啟一組 [AZURE API 管理控制平面 IP 位址][control-plane-ip-address] ，以進行備份或從中還原。 這是因為 Azure 儲存體的要求不會從計算 > Snat 轉譯至 (Azure Api 管理控制平面) 的公用 IP。 將會 Snat 轉譯跨區域儲存體要求。
 
 #### <a name="what-is-not-backed-up"></a>未備份的內容
--   備份**不包含**用來建立分析報告的**使用量資料**。 請使用 [Azure API 管理 REST API][azure api management rest api] 來定期擷取分析報告，以利妥善保存。
+-   備份 **不包含** 用來建立分析報告的 **使用量資料** 。 請使用 [Azure API 管理 REST API][azure api management rest api] 來定期擷取分析報告，以利妥善保存。
 -   [自訂網域 TLS/SSL](configure-custom-domain.md) 憑證
 -   [自訂 CA 憑證](api-management-howto-ca-certificates.md) ，其中包含客戶上傳的中繼或根憑證
 -   [虛擬網路](api-management-using-with-vnet.md) 整合設定。
@@ -202,7 +202,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   `subscriptionId` - 訂用帳戶的識別碼，此訂用帳戶會保留您要還原備份的目標 API 管理服務
 -   `resourceGroupName` - 資源群組的名稱，該資源群組會保留您要還原備份的目標 Azure API 管理服務
 -   `serviceName` - 所要還原目標 API 管理服務的名稱，該名稱是在服務建立時所指定
--   `api-version` -取代為 `2018-06-01-preview`
+-   `api-version` -取代為 `api-version=2019-12-01`
 
 在要求的本文中，指定備份檔案位置。 也就是新增 Azure 儲存體帳戶名稱、存取金鑰、Blob 容器名稱和備份名稱：
 
@@ -220,9 +220,9 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 還原作業的執行時間較長，因此可能需要 30 分鐘以上的時間才能完成。 如果要求成功並已開始還原程序，您就會收到含有 `Location` 標頭的 `202 Accepted` 回應狀態碼。 請向 `Location` 標頭中的 URL 發出 'GET' 要求，以查明作業的狀態。 在還原進行時，您會持續收到「202 已接受」狀態碼。 回應碼 `200 OK` 代表還原作業已成功完成。
 
 > [!IMPORTANT]
-> 作為還原目的地之服務的 **SKU****必須符合**所要還原之已備份服務的 SKU。
+> 作為還原目的地之服務的 **SKU****必須符合** 所要還原之已備份服務的 SKU。
 >
-> 在還原作業進行時針對服務組態 (例如 API、原則、開發人員入口網站外觀) 所做的**變更****可能會遭到覆寫**。
+> 在還原作業進行時針對服務組態 (例如 API、原則、開發人員入口網站外觀) 所做的 **變更****可能會遭到覆寫** 。
 
 <!-- Dummy comment added to suppress markdown lint warning -->
 

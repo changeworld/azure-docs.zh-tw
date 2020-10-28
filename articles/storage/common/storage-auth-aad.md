@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 391cbbca79560ba57ae2be62accdad8451446227
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7128a11ae9d5c9844353404309f8ad40cba53972
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488719"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787579"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>使用 Azure Active Directory 授權存取 blob 和佇列
 
@@ -37,7 +37,7 @@ Azure 資料表儲存體不支援使用 Azure AD 的授權。 使用共用金鑰
 
 驗證步驟要求應用程式在執行時間要求 OAuth 2.0 存取權杖。 如果應用程式是在 azure 實體（例如 Azure VM、虛擬機器擴展集或 Azure Functions 應用程式）中執行，則可以使用 [受控識別](../../active-directory/managed-identities-azure-resources/overview.md) 來存取 blob 或佇列。 若要瞭解如何授權受控識別對 Azure Blob 或佇列服務所提出的要求，請參閱 [使用 Azure 資源的 Azure Active Directory 和受控識別授權存取 blob 和佇列](storage-auth-aad-msi.md)。
 
-授權步驟需要將一或多個 Azure 角色指派給安全性主體。 Azure 儲存體提供的 Azure 角色包含 blob 和佇列資料的一般許可權集。 指派給安全性主體的角色會決定主體將擁有的許可權。 若要深入瞭解如何為 Azure 儲存體指派 Azure 角色，請參閱 [使用 AZURE RBAC 管理儲存體資料的存取權限](storage-auth-aad-rbac.md)。
+授權步驟需要將一或多個 Azure 角色指派給安全性主體。 Azure 儲存體提供的 Azure 角色包含 blob 和佇列資料的一般許可權集。 指派給安全性主體的角色會決定主體將擁有的許可權。 若要深入瞭解如何為 Azure 儲存體指派 Azure 角色，請參閱 [使用 AZURE RBAC 管理儲存體資料的存取權限](./storage-auth-aad-rbac-portal.md)。
 
 對 Azure Blob 或佇列服務提出要求的原生應用程式和 web 應用程式，也可以使用 Azure AD 來授權存取權。 若要瞭解如何要求存取權杖，並使用它來授權對 blob 或佇列資料的要求，請參閱 [使用 Azure 儲存體應用程式的 Azure AD 授權存取 Azure 儲存體](storage-auth-aad-app.md)。
 
@@ -75,15 +75,15 @@ Azure Active Directory (Azure AD) 透過 [AZURE RBAC (的 azure 角色型存取�
 
 Azure 入口網站可以使用您的 Azure AD 帳戶或帳戶存取金鑰來存取 Azure 儲存體帳戶中的 blob 和佇列資料。 Azure 入口網站所使用的授權配置取決於指派給您的 Azure 角色。
 
-當您嘗試存取 blob 或佇列資料時，Azure 入口網站會先檢查您是否已將 Azure 角色指派給您的 **Microsoft. Storage/storageAccounts/listkeys/action**。 如果您已獲指派具有此動作的角色，則 Azure 入口網站會使用帳戶金鑰來透過共用金鑰授權來存取 blob 和佇列資料。 如果您未獲指派具有此動作的角色，則 Azure 入口網站會嘗試使用您的 Azure AD 帳戶來存取資料。
+當您嘗試存取 blob 或佇列資料時，Azure 入口網站會先檢查您是否已將 Azure 角色指派給您的 **Microsoft. Storage/storageAccounts/listkeys/action** 。 如果您已獲指派具有此動作的角色，則 Azure 入口網站會使用帳戶金鑰來透過共用金鑰授權來存取 blob 和佇列資料。 如果您未獲指派具有此動作的角色，則 Azure 入口網站會嘗試使用您的 Azure AD 帳戶來存取資料。
 
-若要使用您的 Azure AD 帳戶從 Azure 入口網站存取 blob 或佇列資料，您需要存取 blob 和佇列資料的許可權，而且您也需要許可權，才能流覽 Azure 入口網站中的儲存體帳戶資源。 Azure 儲存體提供的內建角色會授與對 blob 和佇列資源的存取權，但不會將許可權授與儲存體帳戶資源。 基於這個理由，入口網站的存取權也需要指派 Azure Resource Manager 角色，例如 [讀者](../../role-based-access-control/built-in-roles.md#reader) 角色，範圍設定為儲存體帳戶或更高的層級。 **讀取**者角色會授與最受限制的許可權，但也可以接受另一個授與儲存體帳戶管理資源存取權的 Azure Resource Manager 角色。 若要深入瞭解如何將許可權指派給使用者，以使用 Azure AD 帳戶在 Azure 入口網站中進行資料存取，請參閱 [使用 Azure 入口網站指派 Azure 角色以存取 blob 和佇列資料](storage-auth-aad-rbac-portal.md)。
+若要使用您的 Azure AD 帳戶從 Azure 入口網站存取 blob 或佇列資料，您需要存取 blob 和佇列資料的許可權，而且您也需要許可權，才能流覽 Azure 入口網站中的儲存體帳戶資源。 Azure 儲存體提供的內建角色會授與對 blob 和佇列資源的存取權，但不會將許可權授與儲存體帳戶資源。 基於這個理由，入口網站的存取權也需要指派 Azure Resource Manager 角色，例如 [讀者](../../role-based-access-control/built-in-roles.md#reader) 角色，範圍設定為儲存體帳戶或更高的層級。 **讀取** 者角色會授與最受限制的許可權，但也可以接受另一個授與儲存體帳戶管理資源存取權的 Azure Resource Manager 角色。 若要深入瞭解如何將許可權指派給使用者，以使用 Azure AD 帳戶在 Azure 入口網站中進行資料存取，請參閱 [使用 Azure 入口網站指派 Azure 角色以存取 blob 和佇列資料](storage-auth-aad-rbac-portal.md)。
 
 Azure 入口網站指出當您流覽至容器或佇列時，所使用的授權配置。 如需有關入口網站中資料存取的詳細資訊，請參閱 [選擇如何授權存取 Azure 入口網站中的 blob 資料](../blobs/authorize-blob-access-portal.md) ，以及 [選擇如何授權存取 Azure 入口網站中的佇列資料](../queues/authorize-queue-access-portal.md)。
 
 ### <a name="data-access-from-powershell-or-azure-cli"></a>從 PowerShell 或 Azure CLI 的資料存取
 
-Azure CLI 和 PowerShell 支援使用 Azure AD 認證登入。 登入之後，您的會話就會在這些認證下執行。 若要深入瞭解，請參閱 [使用 Azure AD 認證執行 Azure CLI 或 PowerShell 命令，以存取 blob 或佇列資料](authorize-active-directory-powershell.md)。
+Azure CLI 和 PowerShell 支援使用 Azure AD 認證登入。 登入之後，您的會話就會在這些認證下執行。 若要深入瞭解，請參閱 [使用 Azure AD 認證執行 Azure CLI 或 PowerShell 命令，以存取 blob 或佇列資料](../blobs/authorize-active-directory-powershell.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

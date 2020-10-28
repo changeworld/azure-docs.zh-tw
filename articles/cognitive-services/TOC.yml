@@ -9,6 +9,8 @@
       href: whats-new-docs.md
     - name: 認知服務和機器學習
       href: cognitive-services-and-machine-learning.md
+    - name: 認知服務開發選項
+      href: cognitive-services-development-options.md
     - name: 認知服務的自訂子網域
       href: cognitive-services-custom-subdomains.md
     - name: 語言支援

@@ -12,25 +12,25 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: d04d29b82ecf09d1ee52986fc40687e5511573da
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 3baf2d7ed7c326895ae40948fc2d0a4cc03021f9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331901"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788361"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>快速入門：設定從內部部署到 Azure SQL 受控執行個體的點對站連線
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-此快速入門示範如何使用 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS)，利用點對站連線從內部部署用戶端電腦連線至 Azure SQL 受控執行個體。 如需點對站連線的詳細資訊，請參閱[關於點對站 VPN](../../vpn-gateway/point-to-site-about.md)。
+此快速入門示範如何使用 [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)，利用點對站連線從內部部署用戶端電腦連線至 Azure SQL 受控執行個體。 如需點對站連線的詳細資訊，請參閱[關於點對站 VPN](../../vpn-gateway/point-to-site-about.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
 此快速入門：
 
 - 使用在[建立受控執行個體](instance-create-quickstart.md)中建立的資源作為起點。
-- 您的內部部署用戶端電腦上需要 PowerShell 5.1 與 Azure PowerShell 1.4.0 或更新版本。 如有需要，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps#install-the-azure-powershell-module)的指示。
-- 您的內部部署用戶端電腦上需要最新版的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms)。
+- 您的內部部署用戶端電腦上需要 PowerShell 5.1 與 Azure PowerShell 1.4.0 或更新版本。 如有需要，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps#install-the-azure-powershell-module)的指示。
+- 您的內部部署用戶端電腦上需要最新版的 [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms)。
 
 ## <a name="attach-a-vpn-gateway-to-a-virtual-network"></a>將 VPN 閘道連結至虛擬網路
 

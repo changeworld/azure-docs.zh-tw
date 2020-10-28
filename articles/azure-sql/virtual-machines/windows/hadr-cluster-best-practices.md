@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 1a2c4364337083be005c550a8859079cd3bb1218
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: b385d6dfb5beba481ad92403d69f5d0988f3bce3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167945"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786423"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>叢集設定最佳做法 (Azure VM 上的 SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -56,7 +56,7 @@ ms.locfileid: "92167945"
 若要開始使用，請參閱 [設定磁片見證](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)。
 
 
-**支援的 OS**：全部   
+**支援的 OS** ：全部   
 
 
 ### <a name="cloud-witness"></a>雲端見證
@@ -66,7 +66,7 @@ ms.locfileid: "92167945"
 若要開始使用，請參閱 [設定雲端見證](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp)。
 
 
-**支援的 OS**：Windows Server 2016 及更新版本   
+**支援的 OS** ：Windows Server 2016 及更新版本   
 
 
 ### <a name="file-share-witness"></a>檔案共用見證
@@ -78,9 +78,9 @@ ms.locfileid: "92167945"
 若要開始使用，請參閱 [設定檔案共用見證](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)。
 
 
-**支援的 OS**：Windows Server 2012 及更新版本   
+**支援的 OS** ：Windows Server 2012 及更新版本   
 
-## <a name="connectivity"></a>連線能力
+## <a name="connectivity"></a>連接性
 
 在傳統內部部署網路環境中，SQL Server 容錯移轉叢集實例似乎是單一電腦上所執行 SQL Server 的單一實例。 由於容錯移轉叢集實例會從節點容錯移轉到節點，因此實例的虛擬網路名稱 (VNN) 會提供統一的連接點，並允許應用程式在不知道目前作用中的節點的情況下，連接到 SQL Server 實例。 發生容錯移轉時，會在新的使用中節點啟動後，將虛擬網路名稱註冊到該節點。 此程式對連接至 SQL Server 的用戶端或應用程式而言是透明的，這會將用戶端或應用程式在失敗期間所遇到的停機時間降到最低。 同樣地，可用性群組接聽程式會使用 VNN 將流量路由傳送至適當的複本。 
 
@@ -104,9 +104,9 @@ ms.locfileid: "92167945"
 
 若要開始使用，請瞭解如何設定[容錯移轉叢集實例](failover-cluster-instance-vnn-azure-load-balancer-configure.md)或[可用性群組](availability-group-vnn-azure-load-balancer-configure.md)的 Azure Load Balancer
 
-**支援的 OS**：全部   
-**支援的 SQL 版本**：全部   
-**支援的 HADR 解決方案**：容錯移轉叢集實例和可用性群組   
+**支援的 OS** ：全部   
+**支援的 SQL 版本** ：全部   
+**支援的 HADR 解決方案** ：容錯移轉叢集實例和可用性群組   
 
 
 ### <a name="distributed-network-name-dnn"></a>分散式網路名稱 (DNN)
@@ -124,9 +124,9 @@ ms.locfileid: "92167945"
 
 若要開始使用，請瞭解如何為[容錯移轉叢集實例](failover-cluster-instance-distributed-network-name-dnn-configure.md)或[可用性群組](availability-group-distributed-network-name-dnn-listener-configure.md)設定分散式網路名稱資源
 
-**支援的 OS**：Windows Server 2016 及更新版本   
-**支援的 SQL 版本**： SQL SERVER 2019 CU2 (FCI) 和 SQL SERVER 2019 CU8 (AG)    
-**支援的 HADR 解決方案**：容錯移轉叢集實例和可用性群組   
+**支援的 OS** ：Windows Server 2016 及更新版本   
+**支援的 SQL 版本** ： SQL SERVER 2019 CU2 (FCI) 和 SQL SERVER 2019 CU8 (AG)    
+**支援的 HADR 解決方案** ：容錯移轉叢集實例和可用性群組   
 
 
 ## <a name="limitations"></a>限制
@@ -135,7 +135,7 @@ ms.locfileid: "92167945"
 
 ### <a name="msdtc"></a>MSDTC 
 
-Azure 虛擬機器支援在儲存體位於叢集共用磁碟區 (CSV) 和 [Azure Standard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md) 上的 Windows Server 2019 上使用 Microsoft 分散式交易協調器 (MSDTC)，也支援在使用 Azure 共用磁碟的 SQL Server VM 上使用 MSDTC。 
+Azure 虛擬機器支援在儲存體位於叢集共用磁碟區 (CSV) 和 [Azure Standard Load Balancer](../../../load-balancer/load-balancer-overview.md) 上的 Windows Server 2019 上使用 Microsoft 分散式交易協調器 (MSDTC)，也支援在使用 Azure 共用磁碟的 SQL Server VM 上使用 MSDTC。 
 
 在 Azure 虛擬機器上，具有叢集共用磁碟區的 Windows Server 2016 或更早版本不支援 MSDTC，因為：
 
@@ -145,5 +145,4 @@ Azure 虛擬機器支援在儲存體位於叢集共用磁碟區 (CSV) 和 [Azure
 
 ## <a name="next-steps"></a>後續步驟
 
-確定您的解決方案有適當的最佳作法之後，請開始 [準備 SQL SERVER VM 以進行 FCI](failover-cluster-instance-prepare-vm.md) ，或使用 [Azure 入口網站](availability-group-azure-portal-configure.md)、 [Azure CLI/PowerShell](availability-group-az-cli-configure.md)或 [Azure 快速入門範本](availability-group-quickstart-template-configure.md)來建立可用性群組。 
-
+確定您的解決方案有適當的最佳作法之後，請開始 [準備 SQL SERVER VM 以進行 FCI](failover-cluster-instance-prepare-vm.md) ，或使用 [Azure 入口網站](availability-group-azure-portal-configure.md)、 [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md)或 [Azure 快速入門範本](availability-group-quickstart-template-configure.md)來建立可用性群組。

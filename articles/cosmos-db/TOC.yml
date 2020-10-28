@@ -59,13 +59,13 @@
         - name: 角色型存取控制
           displayName: rbac
           href: role-based-access-control.md
+        - name: Azure 原則支援
+          href: policy.md
         - name: Azure 原則的安全性控制
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: 安全性基準
           href: security-baseline.md
-        - name: Azure 原則支援
-          href: policy.md
     - name: 使用 Azure Synapse Link 進行分析
       items:
         - name: 適用於 Cosmos DB 的 Azure Synapse Link
@@ -202,11 +202,14 @@
           href: templates-samples-sql.md
     - name: 概念
       items:
-        - name: 模型文件資料
-          displayName: document
-          href: modeling-data.md
-        - name: 資料分割
+        - name: 模型化和資料分割
           items:
+            - name: 模型文件資料
+              displayName: document
+              href: modeling-data.md
+            - name: 模型化和資料分割 - 實際範例
+              displayName: 'model, partition, example'
+              href: how-to-model-partition-example.md
             - name: 綜合磁碟分割索引鍵
               href: synthetic-partition-keys.md
         - name: SQL 查詢
@@ -631,13 +634,13 @@
           items:
             - name: 佈建的輸送量
               items:
-                - name: 在容器上佈建標準 (手動) 輸送量
+                - name: 佈建標準 (手動) 輸送量 - 容器
                   displayName: 'request units, RUs, RU, collection level'
                   href: how-to-provision-container-throughput.md
-                - name: 在資料庫上佈建標準 (手動) 輸送量
+                - name: 佈建標準 (手動) 輸送量 - 資料庫
                   displayName: 'request units, RUs, RU, shared throughput, database level'
                   href: how-to-provision-database-throughput.md
-                - name: 在資料庫或容器上佈建自動調整輸送量
+                - name: 佈建自動調整輸送量 - 資料庫或容器
                   displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
                   href: how-to-provision-autoscale-throughput.md
                 - name: 使用 Cosmos 容量規劃來估計每秒要求單位
@@ -657,9 +660,6 @@
               href: large-partition-keys.md
             - name: 查詢容器
               href: how-to-query-container.md
-            - name: 資料模型和資料分割 - 實際範例
-              displayName: 'model, partition, example'
-              href: how-to-model-partition-example.md
             - name: 遷移至資料分割容器
               href: migrate-containers-partitioned-to-nonpartitioned.md
             - name: 設定存留時間
@@ -1179,8 +1179,6 @@
       items:
         - name: 回應標頭
           href: gremlin-headers.md
-        - name: 限制
-          href: gremlin-limits.md
         - name: REST 資源提供者
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/gremlinresources
         - name: Resource Manager 範本

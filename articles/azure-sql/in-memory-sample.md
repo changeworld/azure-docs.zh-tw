@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 2829b1c71aebcc97452fc658e6509e4fae42da8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5a1035f8a213a6ce02dd3252ff7d3ddea46faf7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616800"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786576"
 ---
 # <a name="in-memory-sample"></a>記憶體內部範例
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -47,9 +47,9 @@ Azure SQL Database 中的記憶體內部技術可讓您改善應用程式的效�
 
 ### <a name="installation-steps"></a>安裝步驟
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，於伺服器上建立進階或業務關鍵資料庫。 將 [來源] **** 設定為 AdventureWorksLT 範例資料庫。 如需詳細指示，請參閱[在 Azure SQL Database 中建立您的第一個資料庫](database/single-database-create-quickstart.md)。
+1. 在 [Azure 入口網站](https://portal.azure.com/)中，於伺服器上建立進階或業務關鍵資料庫。 將 [來源]  設定為 AdventureWorksLT 範例資料庫。 如需詳細指示，請參閱[在 Azure SQL Database 中建立您的第一個資料庫](database/single-database-create-quickstart.md)。
 
-2. 使用 SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx)連接到資料庫。
+2. 使用 SQL Server Management Studio [(SSMS.exe)](/sql/ssms/download-sql-server-management-studio-ssms)連接到資料庫。
 
 3. 將 [In-Memory OLTP Transact-SQL 指令碼](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) 複製到剪貼簿。 T-SQL 指令碼會在步驟 1 建立的 AdventureWorksLT 範例資料庫中建立所需的 In-Memory 物件。
 
@@ -74,7 +74,7 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 
 ### <a name="about-the-created-memory-optimized-items"></a>關於已建立的記憶體最佳化項目
 
-**資料表**：此範例包含下列記憶體最佳化資料表：
+**資料表** ：此範例包含下列記憶體最佳化資料表：
 
 - SalesLT.Product_inmem
 - SalesLT.SalesOrderHeader_inmem
@@ -82,7 +82,7 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 - Demo.DemoSalesOrderHeaderSeed
 - Demo.DemoSalesOrderDetailSeed
 
-您可以透過 SSMS 中的 [物件總管]****，檢查記憶體最佳化資料表。 以滑鼠右鍵按一下 [資料表] > [篩選] > [篩選設定] > [記憶體已最佳化嗎]。 值等於 1。
+您可以透過 SSMS 中的 [物件總管]  ，檢查記憶體最佳化資料表。 以滑鼠右鍵按一下 [資料表] > [篩選] > [篩選設定] > [記憶體已最佳化嗎]。 值等於 1。
 
 或者您可以查詢目錄檢視，例如：
 
@@ -92,7 +92,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
     WHERE is_memory_optimized = 1;
 ```
 
-**原生編譯的預存程序**：您可以透過目錄檢視查詢來檢查 SalesLT.usp_InsertSalesOrder_inmem：
+**原生編譯的預存程序** ：您可以透過目錄檢視查詢來檢查 SalesLT.usp_InsertSalesOrder_inmem：
 
 ```sql
 SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
@@ -104,7 +104,7 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 ### <a name="run-the-sample-oltp-workload"></a>執行範例 OLTP 工作負載
 
-下列兩個預存程序 ** 的唯一差別在於第一個程序會使用記憶體最佳化資料表版本，而第二個程序會使用一般磁碟資料表：
+下列兩個預存程序  的唯一差別在於第一個程序會使用記憶體最佳化資料表版本，而第二個程序會使用一般磁碟資料表：
 
 - SalesLT **.** usp_InsertSalesOrder **_inmem**
 - SalesLT **.** usp_InsertSalesOrder **_ondisk**
@@ -122,7 +122,7 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 本節顯示 ostress.exe 命令列中內嵌的 T-SQL 指令碼。 此指令碼會使用您稍早安裝的 T-SQL 指令碼所建立的項目。
 
-下列指令碼會在下列記憶體最佳化資料表 ** 中插入有 5 個細項的範例銷售訂單：
+下列指令碼會在下列記憶體最佳化資料表  中插入有 5 個細項的範例銷售訂單：
 
 - SalesLT.SalesOrderHeader_inmem
 - SalesLT.SalesOrderDetail_inmem
@@ -160,8 +160,8 @@ end
 
 如需詳細資訊，請參閱
 
-- [記憶體內部 OLTP 的範例資料庫](https://msdn.microsoft.com/library/mt465764.aspx)中的 ostress.exe 討論。
-- [記憶體內部 OLTP 的範例資料庫](https://msdn.microsoft.com/library/mt465764.aspx)。
+- [記憶體內部 OLTP 的範例資料庫](/sql/relational-databases/in-memory-oltp/sample-database-for-in-memory-oltp)中的 ostress.exe 討論。
+- [記憶體內部 OLTP 的範例資料庫](/sql/relational-databases/in-memory-oltp/sample-database-for-in-memory-oltp)。
 - [安裝 ostress.exe 的部落格](https://techcommunity.microsoft.com/t5/sql-server-support/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql/ba-p/317910)。
 
 <!--
@@ -174,9 +174,9 @@ whereas for SQL 2016+
 (https://msdn.microsoft.com/library/mt465764.aspx)
 -->
 
-#### <a name="run-the-_inmem-stress-workload-first"></a>先執行 _inmem** 壓力工作負載
+#### <a name="run-the-_inmem-stress-workload-first"></a>先執行 _inmem  壓力工作負載
 
-您可以使用 RML 命令提示字元 ** 視窗來執行 ostress.exe 命令列。 命令列參數會將 `ostress` 導向至：
+您可以使用 RML 命令提示字元  視窗來執行 ostress.exe 命令列。 命令列參數會將 `ostress` 導向至：
 
 - 同時執行 100 個連線 (-n100)。
 - 每個連線會執行 T-SQL 指令碼 50 次 (-r50)。
@@ -207,7 +207,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 
 #### <a name="reset-edit-for-_ondisk-then-rerun"></a>重設，針對 _ondisk 編輯，然後重新執行
 
-在獲得 _inmem** 執行的結果之後，請針對 _ondisk** 執行回合執行下列步驟：
+在獲得 _inmem  執行的結果之後，請針對 _ondisk  執行回合執行下列步驟：
 
 1. 在 SSMS 中執行下列命令來重設資料庫，以刪除先前執行插入的所有資料：
 
@@ -215,7 +215,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
    EXECUTE Demo.usp_DemoReset;
    ```
 
-2. 編輯 ostress.exe 命令列，以 *_ondisk* 取代所有的 *_inmem*。
+2. 編輯 ostress.exe 命令列，以 *_ondisk* 取代所有的 *_inmem* 。
 
 3. 第二次重新執行 ostress.exe，並擷取持續時間結果。
 
@@ -223,7 +223,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 
 #### <a name="expected-comparison-results"></a>預期的比較結果
 
-就這個過度簡單的工作負載而言，我們的「記憶體內部」測試顯示當 `ostress` 是在與資料庫相同 Azure 區域中的 Azure VM 上執行時，可獲得「九倍」**** 的效能改善。
+就這個過度簡單的工作負載而言，我們的「記憶體內部」測試顯示當 `ostress` 是在與資料庫相同 Azure 區域中的 Azure VM 上執行時，可獲得「九倍」  的效能改善。
 
 <a id="install_analytics_manuallink" name="install_analytics_manuallink"></a>
 
@@ -233,7 +233,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 
 在本節中，您將比較使用資料行存放區索引與使用傳統 B 型樹狀結構索引時的 IO 和統計資料結果。
 
-針對 OLTP 工作負載的即時分析，通常最好使用非叢集式資料行存放區索引。 如需詳細資訊，請參閱[已描述的資料行存放區索引](https://msdn.microsoft.com/library/gg492088.aspx)。
+針對 OLTP 工作負載的即時分析，通常最好使用非叢集式資料行存放區索引。 如需詳細資訊，請參閱[已描述的資料行存放區索引](/sql/relational-databases/indexes/columnstore-indexes-overview)。
 
 ### <a name="prepare-the-columnstore-analytics-test"></a>準備資料行存放區分析測試
 
@@ -254,9 +254,9 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 
 #### <a name="key-tables-and-columnstore-indexes"></a>重要資料表和資料行存放區索引
 
-- dbo.FactResellerSalesXL_CCI 是具有叢集式「資料行存放區」索引的資料表，此資料表已在「資料」** 層級進一步壓縮。
+- dbo.FactResellerSalesXL_CCI 是具有叢集式「資料行存放區」索引的資料表，此資料表已在「資料」  層級進一步壓縮。
 
-- dbo.FactResellerSalesXL_PageCompressed 是具有對等一般叢集式索引的資料表，此資料表只在「頁面」** 層級壓縮。
+- dbo.FactResellerSalesXL_PageCompressed 是具有對等一般叢集式索引的資料表，此資料表只在「頁面」  層級壓縮。
 
 #### <a name="key-queries-to-compare-the-columnstore-index"></a>用來比較資料行存放區索引的重要查詢
 
@@ -335,7 +335,7 @@ GO
 
 ## <a name="next-steps"></a>後續步驟
 
-- [快速入門 1：快速入門 1：可讓 Transact-SQL 擁有更快效能的記憶體內部 OLTP 技術](https://msdn.microsoft.com/library/mt694156.aspx)
+- [快速入門 1：快速入門 1：可讓 Transact-SQL 擁有更快效能的記憶體內部 OLTP 技術](/sql/relational-databases/in-memory-oltp/survey-of-initial-areas-in-in-memory-oltp)
 
 - [在現有的 Azure SQL 應用程式中使用記憶體內部 OLTP](in-memory-oltp-configure.md)
 
@@ -349,17 +349,17 @@ GO
 
 - [Azure SQL Database 中的記憶體內部 OLTP 部落格文章](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
-- [了解記憶體內部 OLTP](https://msdn.microsoft.com/library/dn133186.aspx)
+- [了解記憶體內部 OLTP](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
 
-- [了解資料行存放區索引](https://msdn.microsoft.com/library/gg492088.aspx)
+- [了解資料行存放區索引](/sql/relational-databases/indexes/columnstore-indexes-overview)
 
-- [了解即時作業分析](https://msdn.microsoft.com/library/dn817827.aspx)
+- [了解即時作業分析](/sql/relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics)
 
-- 請參閱[一般工作負載模式和移轉考量](https://msdn.microsoft.com/library/dn673538.aspx) (其中描述記憶體內部 OLTP 經常提供顯著效能改善的工作負載模式)
+- 請參閱[一般工作負載模式和移轉考量](/previous-versions/dn673538(v=msdn.10)) (其中描述記憶體內部 OLTP 經常提供顯著效能改善的工作負載模式)
 
 #### <a name="application-design"></a>應用程式設計
 
-- [In-Memory OLTP (記憶體中最佳化)](https://msdn.microsoft.com/library/dn133186.aspx)
+- [In-Memory OLTP (記憶體中最佳化)](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
 
 - [在現有的 Azure SQL 應用程式中使用記憶體內部 OLTP](in-memory-oltp-configure.md)
 
@@ -367,6 +367,6 @@ GO
 
 - [Azure 入口網站](https://portal.azure.com/)
 
-- [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
+- [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)
 
-- [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)
+- [SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt)

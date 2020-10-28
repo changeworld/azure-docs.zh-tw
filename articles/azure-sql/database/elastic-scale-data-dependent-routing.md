@@ -11,21 +11,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 2e6efc08cb7d38a856098395aff363d9d7ec2bab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60e8b4b21a9e62279cd0eccfabbbed680183e2a9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91442985"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787018"
 ---
 # <a name="use-data-dependent-routing-to-route-a-query-to-an-appropriate-database"></a>使用資料相依路由將查詢路由至適當的資料庫
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-**資料相依路由**是可使用查詢中的資料，將要求路由至適當的資料庫。 使用分區化資料庫時，資料相依路由是一種基本模式。 要求內容也可能會用於路由要求，特別是如果分區化索引鍵不是查詢的一部分。 在使用資料相依路由的應用程式中，每個特定的查詢或交易會限制每個要求只能存取一個資料庫。 針對 Azure SQL Database 彈性工具，此路由會使用 **ShardMapManager** ([JAVA](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager)、 [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) 類別來完成。
+**資料相依路由** 是可使用查詢中的資料，將要求路由至適當的資料庫。 使用分區化資料庫時，資料相依路由是一種基本模式。 要求內容也可能會用於路由要求，特別是如果分區化索引鍵不是查詢的一部分。 在使用資料相依路由的應用程式中，每個特定的查詢或交易會限制每個要求只能存取一個資料庫。 針對 Azure SQL Database 彈性工具，此路由會使用 **ShardMapManager** ( [JAVA](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager)、 [.net](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager)) 類別來完成。
 
-應用程式不需要在分區化環境中追蹤不同的連接字串或與不同資料片段相關聯的 DB 位置。 相反地， [分區對應管理員](elastic-scale-shard-map-management.md) 會根據分區對應中的資料和分區化索引鍵的值 (應用程式要求的目標)，在必要時開啟正確資料庫的連接。 此索引鍵通常是 *customer_id*、 *tenant_id*、 *date_key*或其他特定識別碼，也就是資料庫要求的基本參數。
+應用程式不需要在分區化環境中追蹤不同的連接字串或與不同資料片段相關聯的 DB 位置。 相反地， [分區對應管理員](elastic-scale-shard-map-management.md) 會根據分區對應中的資料和分區化索引鍵的值 (應用程式要求的目標)，在必要時開啟正確資料庫的連接。 此索引鍵通常是 *customer_id* 、 *tenant_id* 、 *date_key* 或其他特定識別碼，也就是資料庫要求的基本參數。
 
-如需詳細資訊，請參閱 [Scaling Out SQL Server with Data Dependent Routing (使用資料相依路由相應放大 SQL Server)](https://technet.microsoft.com/library/cc966448.aspx)。
+如需詳細資訊，請參閱 [Scaling Out SQL Server with Data Dependent Routing (使用資料相依路由相應放大 SQL Server)](/previous-versions/sql/sql-server-2005/administrator/cc966448(v=technet.10))。
 
 ## <a name="download-the-client-library"></a>下載用戶端程式庫
 
@@ -36,7 +36,7 @@ ms.locfileid: "91442985"
 
 ## <a name="using-a-shardmapmanager-in-a-data-dependent-routing-application"></a>在資料相依路由應用程式中使用 ShardMapManager
 
-應用程式應該在初始化期間，使用 Factory 呼叫 **GetSQLShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)) 來具現化 **ShardMapManager**。 此範例中會初始化 **ShardMapManager** 及其包含的特定 **ShardMap**。 這個範例示範 GetSqlShardMapManager 和 GetRangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getrangeshardmap)、[.NET](https://docs.microsoft.com/previous-versions/azure/dn824173(v=azure.100))) 方法。
+應用程式應該在初始化期間，使用 Factory 呼叫 **GetSQLShardMapManager** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanagerfactory.getsqlshardmapmanager)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager)) 來具現化 **ShardMapManager** 。 此範例中會初始化 **ShardMapManager** 及其包含的特定 **ShardMap** 。 這個範例示範 GetSqlShardMapManager 和 GetRangeShardMap ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager.shardmapmanager.getrangeshardmap)、[.NET](/previous-versions/azure/dn824173(v=azure.100))) 方法。
 
 ```Java
 ShardMapManager smm = ShardMapManagerFactory.getSqlShardMapManager(connectionString, ShardMapManagerLoadPolicy.Lazy);
@@ -50,11 +50,11 @@ RangeShardMap<int> customerShardMap = smm.GetRangeShardMap<int>("customerMap");
 
 ### <a name="use-lowest-privilege-credentials-possible-for-getting-the-shard-map"></a>盡可能使用最低權限的認證來取得分區對應
 
-如果應用程式不會自行操作分區對應，用於 Factory 方法中的認證在**全域分區對應**資料庫上應該有唯讀權限。 這些認證通常不同於用來對分區對應管理員開啟連接的認證。 另請參閱 [用來存取彈性資料庫用戶端程式庫的認證](elastic-scale-manage-credentials.md)。
+如果應用程式不會自行操作分區對應，用於 Factory 方法中的認證在 **全域分區對應** 資料庫上應該有唯讀權限。 這些認證通常不同於用來對分區對應管理員開啟連接的認證。 另請參閱 [用來存取彈性資料庫用戶端程式庫的認證](elastic-scale-manage-credentials.md)。
 
 ## <a name="call-the-openconnectionforkey-method"></a>呼叫 OpenConnectionForKey 方法
 
-**ShardMap.OpenConnectionForKey** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) 方法傳回的連線可根據 **key** 參數的值，對適當的資料庫發出命令。 **ShardMapManager** 會將分區資訊快取在應用程式中，因此這些要求通常不需要針對**全域分區對應**資料庫進行資料庫尋查。
+**ShardMap.OpenConnectionForKey** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) 方法傳回的連線可根據 **key** 參數的值，對適當的資料庫發出命令。 **ShardMapManager** 會將分區資訊快取在應用程式中，因此這些要求通常不需要針對 **全域分區對應** 資料庫進行資料庫尋查。
 
 ```Java
 // Syntax:
@@ -68,13 +68,13 @@ public SqlConnection OpenConnectionForKey<TKey>(TKey key, string connectionStrin
 
 * **key** 參數做為分區對應中的查閱索引鍵，以決定要求的適當資料庫。
 * **connectionString** 只用來傳遞使用者認證給所需的連接。 此 *connectionString* 中不含任何資料庫名稱或伺服器名稱，因為此方法會使用 **ShardMap** 來決定資料庫和伺服器。
-* 若分區對應所在的環境可能變更，且資料列可能會移動到其他的資料庫成為分割或合併作業的結果，則 **connectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.connectionoptions)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)) 應設為 **ConnectionOptions.Validate**。 此驗證牽涉到在將連接傳遞至應用程式之前，對目標資料庫上的本機分區對應 (不是全域分區對應) 的簡短查詢。
+* 若分區對應所在的環境可能變更，且資料列可能會移動到其他的資料庫成為分割或合併作業的結果，則 **connectionOptions** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.connectionoptions)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions)) 應設為 **ConnectionOptions.Validate** 。 此驗證牽涉到在將連接傳遞至應用程式之前，對目標資料庫上的本機分區對應 (不是全域分區對應) 的簡短查詢。
 
 如果本機分區對應驗證失敗 (表示快取不正確)，分區對應管理員會查詢全域分區對應來取得查閱的新正確值、更新快取，然後取得並傳回適當的資料庫連線。
 
 唯有當應用程式在線上，分區對應的變更是非預期之時，才使用 **ConnectionOptions.None** 。 在此情況下，快取的值可假定為永遠正確，可放心地略過對於目標資料庫的額外往返驗證呼叫。 這會減少資料庫流量。 也可透過組態檔中的值來設定 **connectionOptions** ，以指出在一段時間內是否預期有分區化變更。  
 
-此範例會利用名為 **customerShardMap** 的 **ShardMap** 物件，使用整數索引鍵值 **CustomerID**。  
+此範例會利用名為 **customerShardMap** 的 **ShardMap** 物件，使用整數索引鍵值 **CustomerID** 。  
 
 ```Java
 int customerId = 12345;
@@ -112,11 +112,11 @@ using (SqlConnection conn = customerShardMap.OpenConnectionForKey(customerId, Co
 
 **OpenConnectionForKey** 方法會傳回新的已開啟連接至正確的資料庫。 以這種方式使用連線仍可充分利用連線共用。
 
-如果您的應用程式利用非同步程式設計，則也可以使用 **OpenConnectionForKeyAsync method** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkeyasync)、[.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync))。
+如果您的應用程式利用非同步程式設計，則也可以使用 **OpenConnectionForKeyAsync method** ( [Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkeyasync)、 [.NET](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync))。
 
 ## <a name="integrating-with-transient-fault-handling"></a>與暫時性錯誤處理整合
 
-在雲端中開發資料存取應用程式時，最佳做法就是確保應用程式會攔截暫時性錯誤，並且將作業重試數次之後才會擲回錯誤。 暫時性錯誤處理中討論雲端應用程式的暫時性錯誤處理 ([Java](/java/api/com.microsoft.azure.elasticdb.core.commons.transientfaulthandling)、[.NET](https://docs.microsoft.com/previous-versions/msp-n-p/dn440719(v=pandp.60)))。
+在雲端中開發資料存取應用程式時，最佳做法就是確保應用程式會攔截暫時性錯誤，並且將作業重試數次之後才會擲回錯誤。 暫時性錯誤處理中討論雲端應用程式的暫時性錯誤處理 ([Java](/java/api/com.microsoft.azure.elasticdb.core.commons.transientfaulthandling)、[.NET](/previous-versions/msp-n-p/dn440719(v=pandp.60)))。
 
 暫時性錯誤處理可以自然地與資料相依路由模式並存。 主要需求是重試整個資料存取要求，包括用以取得資料相依路由連接的 **using** 區塊。 上述範例可以改寫如下。
 

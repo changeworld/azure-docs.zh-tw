@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: e1d1ffbf198a4e4c2574f93919ef98e36a90004a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b40afce24fad6bd793a625b11dc5a84f1f021ace
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566987"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786491"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure Vm 上 SQL Server 的常見問題
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -64,7 +64,7 @@ ms.locfileid: "91566987"
    `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\SysPrepExternal\Specialize`
 
    > [!NOTE]
-   > Azure VM (包括從自訂一般化映像部署的 VM) 上的 SQL Server 應該[註冊到 SQL VM 資源提供者](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-register-with-resource-provider?tabs=azure-cli%2Cbash)，以符合合規性需求，並利用自動修補和自動備份等選擇性功能。 資源提供者還可供為每部 SQL Server VM [指定授權類型](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-ahb?tabs=azure-portal)。
+   > Azure VM (包括從自訂一般化映像部署的 VM) 上的 SQL Server 應該[註冊到 SQL VM 資源提供者](./sql-vm-resource-provider-register.md?tabs=azure-cli%252cbash)，以符合合規性需求，並利用自動修補和自動備份等選擇性功能。 資源提供者還可供為每部 SQL Server VM [指定授權類型](./licensing-model-azure-hybrid-benefit-ahb-change.md?tabs=azure-portal)。
 
 1. **是否可使用自己的 VHD 來部署 SQL Server VM？**
 
@@ -118,7 +118,7 @@ ms.locfileid: "91566987"
 
    1. 您已透過[軟體保證](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)取得[授權行動性](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2)。 
    1. 被動 SQL Server 執行個體不會將 SQL Server 資料提供給用戶端，或執行主動 SQL Server 工作負載。 此執行個體只會用來與主要伺服器進行同步，或是維護處於暖待命狀態的被動資料庫。 如果此執行個體提供資料 (例如，向執行主動 SQL Server 工作負載的用戶端報告)，或執行產品條款中所指定內容以外的其他工作，則必須是付費的授權 SQL Server 執行個體。 次要執行個體上允許下列活動：資料庫一致性檢查或 CheckDB、完整備份、交易記錄備份，以及監視資源使用量資料。 您也可以在每 90 天一次的短期災害復原測試期間內，同時執行主要和對應的災害復原執行個體。 
-   1. 主動 SQL Server 授權涵蓋於軟體保證中，可允許**一個**被動次要 SQL Server 執行個體，且計算數量最多只能與授權的主動伺服器相同。 
+   1. 主動 SQL Server 授權涵蓋於軟體保證中，可允許 **一個** 被動次要 SQL Server 執行個體，且計算數量最多只能與授權的主動伺服器相同。 
    1. 次要 SQL Server VM 會利用 Azure 入口網站中的[災害復原](business-continuity-high-availability-disaster-recovery-hadr-overview.md#free-dr-replica-in-azure)授權。
    
 1. **什麼是被動執行個體？**
@@ -145,11 +145,11 @@ ms.locfileid: "91566987"
  
    是，只要 SQL Server VM 是使用 Resource Manager 模型 (而不是傳統模型) 部署到公用雲端即可。 所有其他客戶都能註冊到新的 SQL Server VM 資源提供者。 不過，只有具有[軟體保證](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)權益的客戶可在 SQL Server VM 上啟用 [Azure Hybrid Benefit (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) 來使用自己的授權。 
 
-1. **若移動或捨棄 VM 資源，則資源提供者 (_Microsoft.SqlVirtualMachine_) 資源會發生什麼事？** 
+1. **若移動或捨棄 VM 資源，則資源提供者 ( _Microsoft.SqlVirtualMachine_ ) 資源會發生什麼事？** 
 
    當 Microsoft.Compute/VirtualMachine 資源被捨棄或移動時，系統會通知關聯的 Microsoft.SqlVirtualMachine 資源，讓其以非同步方式複寫作業。
 
-1. **若捨棄資源提供者 (_Microsoft.SqlVirtualMachine_) 資源，則 VM 會發生什麼事？**
+1. **若捨棄資源提供者 ( _Microsoft.SqlVirtualMachine_ ) 資源，則 VM 會發生什麼事？**
 
     當 Microsoft.SqlVirtualMachine 資源被卸除時，Microsoft.Compute/VirtualMachine 資源不會受影響。 不過，授權變更將會還原為預設的原始映像來源。 
 
@@ -162,14 +162,14 @@ ms.locfileid: "91566987"
 
 1. **是否可以在相同的 VM 上安裝第二個 SQL Server 執行個體？是否可以變更預設執行個體的已安裝功能？**
 
-   是。 SQL Server 安裝媒體位於 **C** 磁碟機的資料夾中。 您可從該位置執行 **Setup.exe** 來新增新的 SQL Server 執行個體，或變更機器上 SQL Server 的其他已安裝功能。 請注意，某些功能 (例如自動備份、自動修補和 Azure Key Vault 整合) 只能在預設執行個體或正確設定的具名執行個體上運作 (請參閱問題 3)。 [透過 Azure Hybrid Benefit](licensing-model-azure-hybrid-benefit-ahb-change.md)或**隨用隨付**授權模型使用軟體保證的客戶可以在虛擬機器上安裝多個 SQL Server 實例，而不會產生額外的授權成本。 除非正確設定，否則額外的 SQL Server 實例可能會造成系統資源負擔。 
+   是。 SQL Server 安裝媒體位於 **C** 磁碟機的資料夾中。 您可從該位置執行 **Setup.exe** 來新增新的 SQL Server 執行個體，或變更機器上 SQL Server 的其他已安裝功能。 請注意，某些功能 (例如自動備份、自動修補和 Azure Key Vault 整合) 只能在預設執行個體或正確設定的具名執行個體上運作 (請參閱問題 3)。 [透過 Azure Hybrid Benefit](licensing-model-azure-hybrid-benefit-ahb-change.md)或 **隨用隨付** 授權模型使用軟體保證的客戶可以在虛擬機器上安裝多個 SQL Server 實例，而不會產生額外的授權成本。 除非正確設定，否則額外的 SQL Server 實例可能會造成系統資源負擔。 
 
 1. **VM 上的實例數目上限為何？**
    SQL Server 2012 至 SQL Server 2019 可支援在獨立伺服器上的 [50 實例](/sql/sql-server/editions-and-components-of-sql-server-version-15#RDBMSSP) 。 無論在 Azure 內部部署中，此限制都相同。 請參閱 [最佳做法](performance-guidelines-best-practices.md#multiple-instances) ，以瞭解如何進一步準備您的環境。 
 
 1. **是否可以將 SQL Server 的預設執行個體解除安裝**
 
-   可以，但有幾點考量。 首先，根據 VM 的授權模型，可能會繼續產生與 SQL Server 相關聯的費用。 其次，如前一個回答中所述，有一些功能依賴 [SQL Server IaaS 代理程式延伸模組](sql-server-iaas-agent-extension-automate-management.md)。 如果您還在未移除 IaaS 延伸模組的情況下解除安裝預設執行個體，則此延伸模組會繼續尋找預設執行個體，且可能會產生事件記錄錯誤。 這些錯誤來自下列兩個來源：**Microsoft SQL Server 認證管理**和 **Microsoft SQL Server IaaS 代理程式**。 其中一個錯誤應如下所示：
+   可以，但有幾點考量。 首先，根據 VM 的授權模型，可能會繼續產生與 SQL Server 相關聯的費用。 其次，如前一個回答中所述，有一些功能依賴 [SQL Server IaaS 代理程式延伸模組](sql-server-iaas-agent-extension-automate-management.md)。 如果您還在未移除 IaaS 延伸模組的情況下解除安裝預設執行個體，則此延伸模組會繼續尋找預設執行個體，且可能會產生事件記錄錯誤。 這些錯誤來自下列兩個來源： **Microsoft SQL Server 認證管理** 和 **Microsoft SQL Server IaaS 代理程式** 。 其中一個錯誤應如下所示：
 
       和 SQL Server 建立連線時，發生與網路相關或執行個體特定的錯誤。 找不到或無法存取伺服器。
 
@@ -241,7 +241,7 @@ ms.locfileid: "91566987"
 
 ## <a name="resources"></a>資源
 
-**Windows VM**：
+**Windows VM** ：
 
 * [Windows VM 上的 SQL Server 概觀](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [在 Windows VM 上布建 SQL Server](create-sql-vm-portal.md)
@@ -250,9 +250,9 @@ ms.locfileid: "91566987"
 * [Azure 虛擬機器中的 SQL Server 效能最佳做法](performance-guidelines-best-practices.md)
 * [Azure 虛擬機器上 SQL Server 的應用程式模式和開發策略](application-patterns-development-strategies.md)
 
-**Linux VM**：
+**Linux VM** ：
 
 * [Linux VM 上的 SQL Server 概觀](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [在 Linux VM 上布建 SQL Server](../linux/sql-vm-create-portal-quickstart.md)
 * [常見問題集 (Linux)](../linux/frequently-asked-questions-faq.md)
-* [Linux 上的 SQL Server 文件](https://docs.microsoft.com/sql/linux/sql-server-linux-overview) \(機器翻譯\)
+* [Linux 上的 SQL Server 文件](/sql/linux/sql-server-linux-overview) \(機器翻譯\)

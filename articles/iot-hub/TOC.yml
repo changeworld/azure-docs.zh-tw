@@ -317,16 +317,10 @@
               href: iot-hub-configure-file-upload-powershell.md
             - name: 使用 Azure CLI
               href: iot-hub-configure-file-upload-cli.md
-        - name: Azure 監視器中的計量
-          href: iot-hub-metrics.md
-        - name: 設定診斷記錄
-          href: iot-hub-monitor-resource-health.md
         - name: 使用 X.509 憑證保護您的中樞
           href: iot-hub-security-x509-get-started.md
         - name: 升級 IoT 中樞
           href: iot-hub-upgrade.md
-        - name: 啟用訊息追蹤
-          href: iot-hub-distributed-tracing.md
         - name: 設定 IP 篩選
           href: iot-hub-ip-filtering.md
         - name: 管理公用網路存取
@@ -339,6 +333,16 @@
               href: iot-hub-automatic-device-management-cli.md
         - name: 大量匯入和匯出 IoT 裝置
           href: iot-hub-bulk-identity-mgmt.md
+    - name: 監視
+      items:
+        - name: 監視 IoT 中樞
+          href: monitor-iot-hub.md
+        - name: 監視資料參考
+          href: monitor-iot-hub-reference.md
+        - name: 啟用訊息追蹤
+          href: iot-hub-distributed-tracing.md
+        - name: IoT 中樞服務和資源健康情況
+          href: iot-hub-azure-service-health-integration.md
     - name: 使用真實裝置
       items:
         - name: 使用線上模擬器

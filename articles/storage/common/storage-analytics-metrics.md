@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: ef38e36ce1d2c7968e3eb7079270626629523334
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f1ab2be598a24a2448fed44742733633a8e0fc8f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518730"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787596"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure 儲存體分析計量 (傳統)
 
@@ -23,18 +23,18 @@ Azure 儲存體使用儲存體分析解決方案儲存包含儲存體服務要�
 - 診斷對儲存體服務提出的要求所發生的問題。
 - 改善使用服務的應用程式所達到的效能。
 
- 預設會為新的儲存體帳戶啟用儲存體分析度量。 您可以在 [Azure 入口網站](https://portal.azure.com/)中設定這些計量。 如需詳細資訊，請參閱 [在 Azure 入口網站中監視儲存體帳戶](/azure/storage/storage-monitor-storage-account)。 您也可以利用程式設計方式，透過 REST API 或用戶端程式庫來啟用儲存體分析。 使用 [設定服務屬性] 作業，為各服務啟用儲存體分析。  
+ 預設會為新的儲存體帳戶啟用儲存體分析度量。 您可以在 [Azure 入口網站](https://portal.azure.com/)中設定這些計量。 如需詳細資訊，請參閱 [在 Azure 入口網站中監視儲存體帳戶](./storage-monitor-storage-account.md)。 您也可以利用程式設計方式，透過 REST API 或用戶端程式庫來啟用儲存體分析。 使用 [設定服務屬性] 作業，為各服務啟用儲存體分析。  
 
 > [!NOTE]
 > 儲存體分析計量可供 Azure Blob 儲存體、Azure 佇列儲存體、Azure 資料表儲存體和 Azure 檔案儲存體使用。
-> 儲存體分析計量現在是傳統計量。 我們建議您[在 Azure 監視器中使用儲存體計量](monitor-storage.md)，而不是儲存體分析計量。
+> 儲存體分析計量現在是傳統計量。 我們建議您[在 Azure 監視器中使用儲存體計量](../blobs/monitor-blob-storage.md)，而不是儲存體分析計量。
 
 ## <a name="transaction-metrics"></a>交易度量  
  系統會以每小時或每分鐘的時間間隔，為每個儲存體服務和要求的 API 作業記錄完善的資料集，其中包括輸入流量和輸出流量、可用性、錯誤，以及已分類的要求百分比。 如需完整的交易詳細資料清單，請參閱[儲存體分析計量資料表結構描述](/rest/api/storageservices/storage-analytics-metrics-table-schema)。  
 
  記錄的交易資料屬於服務層級和 API 作業層級。 在服務層級，系統每小時都會將彙總所有要求的 API 作業的統計資料寫入資料表實體，即使未對該服務提出任何要求也一樣。 在 API 作業層級，只有在該小時內對該作業提出要求時，才會將統計資料寫入實體。  
 
- 例如，如果您在 Blob 服務上執行 **GetBlob** 作業，儲存體分析計量將會記錄要求，然後將它納入 Blob 服務和 **GetBlob** 作業的彙總資料中。 如果在該時段內未要求 **GetBlob** 作業，則不會將實體寫入該作業的 *$MetricsTransactionsBlob*。  
+ 例如，如果您在 Blob 服務上執行 **GetBlob** 作業，儲存體分析計量將會記錄要求，然後將它納入 Blob 服務和 **GetBlob** 作業的彙總資料中。 如果在該時段內未要求 **GetBlob** 作業，則不會將實體寫入該作業的 *$MetricsTransactionsBlob* 。  
 
  系統會針對使用者要求及儲存體分析本身所提出的要求記錄交易計量。 例如，會記錄儲存體分析寫入記錄和資料表實體的要求。
 
@@ -45,9 +45,9 @@ Azure 儲存體使用儲存體分析解決方案儲存包含儲存體服務要�
 
  系統每日都會針對儲存體帳戶的 Blob 服務記錄容量資料，並寫入兩個資料表實體。 其中一個實體會提供使用者資料的統計資料，而另一個實體則會提供有關儲存體分析所使用之 `$logs` Blob 容器的統計資料。 *$MetricsCapacityBlob* 資料表包含下列統計資料：  
 
-- **Capacity**：儲存體帳戶 Blob 服務所使用的儲存體量 (位元組)。  
-- **ContainerCount**：儲存體帳戶的 Blob 服務中的 Blob 容器數目。  
-- **ObjectCount**：儲存體帳戶的 Blob 服務中的認可及未認可區塊或分頁 Blob 的數目。  
+- **Capacity** ：儲存體帳戶 Blob 服務所使用的儲存體量 (位元組)。  
+- **ContainerCount** ：儲存體帳戶的 Blob 服務中的 Blob 容器數目。  
+- **ObjectCount** ：儲存體帳戶的 Blob 服務中的認可及未認可區塊或分頁 Blob 的數目。  
 
   如需容量計量的詳細資訊，請參閱[儲存體分析計量資料表結構描述](/rest/api/storageservices/storage-analytics-metrics-table-schema)。  
 
@@ -83,12 +83,12 @@ Azure 儲存體使用儲存體分析解決方案儲存包含儲存體服務要�
 
 控制儲存體計量的 Cmdlet 會使用下列參數：  
 
-* **ServiceType**：可能值為 **Blob**、**Queue**、**Table** 和 **File**。
-* **MetricsType**：可能的值為 **Hour** 和 **Minute**。  
-* **MetricsLevel**：可能的值包括：
-   * **無**：關閉監視。
-   * **服務**：可收集針對 Blob、佇列、資料表和檔案服務彙總的計量 (例如入口流量和出口流量、可用性、延遲和成功百分比)。
-   * **ServiceAndApi**：除了服務計量之外，在 Azure 儲存體服務 API 中也針對每個儲存體作業收集相同的計量集合。
+* **ServiceType** ：可能值為 **Blob** 、 **Queue** 、 **Table** 和 **File** 。
+* **MetricsType** ：可能的值為 **Hour** 和 **Minute** 。  
+* **MetricsLevel** ：可能的值包括：
+   * **無** ：關閉監視。
+   * **服務** ：可收集針對 Blob、佇列、資料表和檔案服務彙總的計量 (例如入口流量和出口流量、可用性、延遲和成功百分比)。
+   * **ServiceAndApi** ：除了服務計量之外，在 Azure 儲存體服務 API 中也針對每個儲存體作業收集相同的計量集合。
 
 例如，下列命令會在您的儲存體帳戶中，為 Blob 服務開啟每分鐘計量功能，並將保留期間設為五天： 
 
@@ -112,12 +112,12 @@ Set-AzStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -Metri
 Get-AzStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context $storagecontext.Context
 ```  
 
-如需如何設定 Azure PowerShell Cmdlet 以使用您的 Azure 訂閱，以及如何選取要使用的預設儲存體帳戶的相關資訊，請參閱：[安裝和設定 Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/)。  
+如需如何設定 Azure PowerShell Cmdlet 以使用您的 Azure 訂閱，以及如何選取要使用的預設儲存體帳戶的相關資訊，請參閱：[安裝和設定 Azure PowerShell](/powershell/azure/)。  
 
 ## <a name="enable-storage-metrics-programmatically"></a>以程式設計方式啟用儲存體計量  
 除了使用 Azure 入口網站或 Azure PowerShell Cmdlet 來控制「儲存體計量」，您也可使用其中一個 Azure 儲存體 API。 例如，若您使用 .NET 語言，則可使用 Azure 儲存體用戶端程式庫。  
 
-**CloudBlobClient**、**CloudQueueClient**、**CloudTableClient** 和 **CloudFileClient** 類別全都有方法，例如以 **ServiceProperties** 物件作為參數的 **SetServiceProperties** 和 **SetServicePropertiesAsync**。 您可以使用 **ServiceProperties** 物件來設定「儲存體計量」。 例如，下列 C# 程式碼片段顯示如何變更每小時佇列計量的計量層級和保留期間：  
+**CloudBlobClient** 、 **CloudQueueClient** 、 **CloudTableClient** 和 **CloudFileClient** 類別全都有方法，例如以 **ServiceProperties** 物件作為參數的 **SetServiceProperties** 和 **SetServicePropertiesAsync** 。 您可以使用 **ServiceProperties** 物件來設定「儲存體計量」。 例如，下列 C# 程式碼片段顯示如何變更每小時佇列計量的計量層級和保留期間：  
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -130,7 +130,7 @@ serviceProperties.HourMetrics.RetentionDays = 10;
 queueClient.SetServiceProperties(serviceProperties);  
 ```  
 
-如需使用 .NET 語言來設定「儲存體計量」的詳細資訊，請參閱 [.NET 的 Azure 儲存體用戶端程式庫](https://msdn.microsoft.com/library/azure/mt347887.aspx)。  
+如需使用 .NET 語言來設定「儲存體計量」的詳細資訊，請參閱 [.NET 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage)。  
 
 如需使用 REST API 設定「儲存體計量」的一般資訊，請參閱[啟用及設定儲存體分析](/rest/api/storageservices/Enabling-and-Configuring-Storage-Analytics)。  
 
@@ -144,9 +144,9 @@ queueClient.SetServiceProperties(serviceProperties);
 
 在 Azure 入口網站的儲存體帳戶功能表窗格之中的 [監視 (傳統)] 區段，您可以設定[警示規則](#metrics-alerts)。 例如，您可以傳送電子郵件警示，在特定的計量達到特定值時通知您。
 
-如果要下載長期儲存體的計量，或在本機加以分析，您必須使用工具或撰寫程式碼來讀取資料表。 您必須下載每分鐘度量以進行分析。 如果您在儲存體帳戶中列出所有資料表，則資料表就不會出現，但您可以直接依名稱存取它們。 許多儲存體瀏覽工具可以感知這些資料表，讓您能夠直接檢視它們。 如需可用工具的清單，請參閱 [Azure 儲存體用戶端工具](/azure/storage/storage-explorers)。
+如果要下載長期儲存體的計量，或在本機加以分析，您必須使用工具或撰寫程式碼來讀取資料表。 您必須下載每分鐘度量以進行分析。 如果您在儲存體帳戶中列出所有資料表，則資料表就不會出現，但您可以直接依名稱存取它們。 許多儲存體瀏覽工具可以感知這些資料表，讓您能夠直接檢視它們。 如需可用工具的清單，請參閱 [Azure 儲存體用戶端工具](./storage-explorers.md)。
 
-|計量|資料表名稱|附註| 
+|計量|資料表名稱|注意| 
 |-|-|-|  
 |每小時度量|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|在 2013 年 8 月 15 日前的版本中，這些資料表也稱為：<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> 從 2015 年 4 月 5 日的版本開始，提供檔案服務的計量。|  
 |每分鐘度量|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|只能使用 PowerShell 或以程式設計方式啟用。<br /><br /> 從 2015 年 4 月 5 日的版本開始，提供檔案服務的計量。|  
@@ -163,13 +163,13 @@ queueClient.SetServiceProperties(serviceProperties);
 
 在這個每分鐘計量資料範例中，資料分割索引鍵會在每分鐘解析中使用時間。 資料列索引鍵可識別儲存在資料列中的資訊類型。 資訊是由存取類型和要求類型組成：  
 
--   存取類型是**使用者**或**系統**，其中**使用者**是指對儲存體服務所提出的所有使用者要求，而**系統**是指對儲存體分析所提出的要求。  
--   要求類型就是**全部** (在此情況下它是摘要行)，或者它會識別特定的 API，例如 **QueryEntity** 或 **UpdateEntity**。  
+-   存取類型是 **使用者** 或 **系統** ，其中 **使用者** 是指對儲存體服務所提出的所有使用者要求，而 **系統** 是指對儲存體分析所提出的要求。  
+-   要求類型就是 **全部** (在此情況下它是摘要行)，或者它會識別特定的 API，例如 **QueryEntity** 或 **UpdateEntity** 。  
 
 這些範例資料會顯示單一分鐘 (從上午 11:00 開始) 的所有記錄，因此 **QueryEntities** 要求的數目加上 **QueryEntity** 要求的數目再加上 **UpdateEntity** 要求的數目總數為七個。 總數會在 **user:All** 資料列上顯示。 同樣地，您可以藉由計算 ((143.8 * 5) + 3 + 9)/7，在 **user:All** 資料列上衍生平均的端對端延遲 104.4286。  
 
 ## <a name="metrics-alerts"></a>計量警示
-建議您考慮在 [Azure 入口網站](https://portal.azure.com)中設定警示，以便自動通知您有關儲存體服務行為的重要變更。 若使用儲存體總管工具來下載此計量資料 (以使用分隔字元分隔的形式)，您可以使用 Microsoft Excel 來分析資料。 如需可用的儲存體總管工具清單，請參閱 [Azure 儲存體用戶端工具](/azure/storage/storage-explorers)。 您可以在 [警示 (傳統)] 窗格 (可從 [儲存體帳戶] 功能表窗格中的 [監視 (傳統)] 下存取) 中設定警示。
+建議您考慮在 [Azure 入口網站](https://portal.azure.com)中設定警示，以便自動通知您有關儲存體服務行為的重要變更。 若使用儲存體總管工具來下載此計量資料 (以使用分隔字元分隔的形式)，您可以使用 Microsoft Excel 來分析資料。 如需可用的儲存體總管工具清單，請參閱 [Azure 儲存體用戶端工具](./storage-explorers.md)。 您可以在 [警示 (傳統)] 窗格 (可從 [儲存體帳戶] 功能表窗格中的 [監視 (傳統)] 下存取) 中設定警示。
 
 > [!IMPORTANT]
 > 發生儲存體事件與記錄對應的每小時或分鐘計量資料之間可能會有延遲。 就分鐘計量而言，可能會一次寫入數分鐘的資料。 這個問題可能導致將來自較早分鐘的交易彙總至目前分鐘的交易。 發生這個問題時，警示服務可能不會擁有所設定警示間隔的所有可用計量資料，這可能導致非預期地觸發警示。
@@ -179,7 +179,7 @@ queueClient.SetServiceProperties(serviceProperties);
 下列清單顯示 C# 程式碼範例，其會針對某個分鐘範圍存取每分鐘計量，並將結果顯示在主控台視窗中。 程式碼範例會使用 Azure 儲存體用戶端程式庫 4.x 版或更高的版本，其中包含可簡化存取儲存體中之計量資料表的 **CloudAnalyticsClient** 類別。 
 
 > [!NOTE]
-> **CloudAnalyticsClient**類別未包含在適用于 .Net 的 Azure Blob 儲存體用戶端程式庫 v12 中。 **2023 年8月 31**日儲存體分析計量，也稱為*傳統計量*將會淘汰。 如需詳細資訊，請參閱[官方公告](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/)。 如果您使用傳統計量，建議您在該日期之前轉換成 Azure 監視器的計量。 
+> **CloudAnalyticsClient** 類別未包含在適用于 .Net 的 Azure Blob 儲存體用戶端程式庫 v12 中。 **2023 年8月 31** 日儲存體分析計量，也稱為 *傳統計量* 將會淘汰。 如需詳細資訊，請參閱[官方公告](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/)。 如果您使用傳統計量，建議您在該日期之前轉換成 Azure 監視器的計量。 
 
 ```csharp
 private static void PrintMinuteMetrics(CloudAnalyticsClient analyticsClient, DateTimeOffset startDateTime, DateTimeOffset endDateTime)  

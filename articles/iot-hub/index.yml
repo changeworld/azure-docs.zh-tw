@@ -11,12 +11,12 @@ metadata:
   manager: eliotgra
   ms.date: 03/23/2020
   ms.custom: amqp
-  ms.openlocfilehash: 91e3ff9dc19fdc33699fc6237cb5b6e51dbb9b52
-  ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+  ms.openlocfilehash: 5459129d5d49324839bfe36e2031d5be8d1e0521
+  ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/17/2020
-  ms.locfileid: "92148886"
+  ms.lasthandoff: 10/26/2020
+  ms.locfileid: "92545373"
 landingContent:
 - title: 開始使用
   linkLists:
@@ -40,10 +40,10 @@ landingContent:
     links:
     - text: 使用 Node.js 來處理裝置對應項
       url: iot-hub-node-node-twin-getstarted.md
-    - text: 了解 IoT 計量
-      url: iot-hub-metrics.md
-    - text: 診斷記錄
-      url: iot-hub-monitor-resource-health.md
+    - text: 監視 IoT 中樞
+      url: monitor-iot-hub.md
+    - text: 監視 IoT 中樞資料參考
+      url: monitor-iot-hub-reference.md
     - text: 使用 IoT 監視、診斷連線中斷並進行疑難排解
       url: iot-hub-troubleshoot-connectivity.md
 - title: 調整您的解決方案規模

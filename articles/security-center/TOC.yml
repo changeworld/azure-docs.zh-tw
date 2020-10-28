@@ -14,9 +14,17 @@
           href: security-center-services.md
         - name: Azure PaaS 資源的功能涵蓋範圍
           href: features-paas.md
-    - name: 資訊安全中心的新功能？
-      displayName: release notes
-      href: release-notes.md
+    - name: 新功能
+      items:
+        - name: 版本資訊
+          displayName: changelog
+          href: release-notes.md
+        - name: 即將推出的重要變更
+          displayName: 'release notes, changelog'
+          href: upcoming-changes.md
+        - name: 封存的版本資訊 (超過六個月)
+          displayName: changelog
+          href: release-notes-archive.md
     - name: 資訊安全中心基本概念
       items:
         - name: 資訊安全中心的概觀頁面
@@ -217,8 +225,13 @@
         - name: 自訂資訊保護原則
           href: security-center-info-protection-policy.md
     - name: 使用適用於容器登錄的 Azure Defender
-      displayName: 'ACR, registry, images'
-      href: defender-for-container-registries-usage.md
+      items:
+        - name: 掃描您的登錄映像是否有弱點
+          displayName: 'ACR, registry, images, qualys'
+          href: defender-for-container-registries-usage.md
+        - name: 停用特定的映像弱點結果
+          displayName: 'ACR, registry, images, qualys'
+          href: defender-for-container-registries-usage.md#disable-specific-findings-preview
     - name: 匯出警示和建議
       items:
         - name: 匯出至 SIEM、SOAR 或 ITSM
@@ -272,8 +285,6 @@
           href: faq-vms.md
         - name: Azure Log Analytics 的現有使用者
           href: faq-azure-monitor-logs.md
-    - name: 資訊安全中心內新功能的封存？
-      href: release-notes-archive.md
     - name: Azure 藍圖部落格
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: 端點保護評量和建議

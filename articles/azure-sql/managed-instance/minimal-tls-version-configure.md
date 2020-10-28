@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: ''
 ms.date: 05/25/2020
-ms.openlocfilehash: 2dbd4b9af3db122703a7f2b4e0140ec3305f1c3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17d430946f3cba1aa4680d1eaf8979fa4338bc22
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620047"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788395"
 ---
 # <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>在 Azure SQL 受控執行個體中設定基本的 TLS 版本
 最基本的 [傳輸層安全性 (TLS) ](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) 版本設定，可讓客戶控制其 Azure SQL 受控執行個體所使用的 TLS 版本。
@@ -37,7 +37,7 @@ Login failed with invalid TLS version
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az.Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。 下列腳本需要 [Azure PowerShell 模組](/powershell/azure/install-az-ps)。
+> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az.Sql 模組。 如需這些 Cmdlet，請參閱 [AzureRM.Sql](/powershell/module/AzureRM.Sql/) \(英文\)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。 下列腳本需要 [Azure PowerShell 模組](/powershell/azure/install-az-ps)。
 
 下列 PowerShell 腳本會示範如何 `Get` 與 `Set` 實例層級的 **最基本 TLS 版本** 屬性：
 
@@ -52,7 +52,7 @@ Set-AzSqlInstance -Name sql-instance-name -ResourceGroupName resource-group -Min
 ## <a name="set-minimal-tls-version-via-azure-cli"></a>透過 Azure CLI 設定基本的 TLS 版本
 
 > [!IMPORTANT]
-> 本節中的所有腳本都需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+> 本節中的所有腳本都需要 [Azure CLI](/cli/azure/install-azure-cli)。
 
 ### <a name="azure-cli-in-a-bash-shell"></a>Bash shell 中的 Azure CLI
 
