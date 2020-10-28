@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: a99c6412650cac565414817c91752ae85b8ad37d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8447eae4ea7234a7f47219cc81441650121b84ae
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539593"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676174"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>使用 REST Proxy 與 Azure HDInsight 中的 Apache Kafka 叢集互動
 
-Kafka REST Proxy 可讓您使用 REST API 透過 HTTP 與您的 Kafka 叢集互動。 此動作表示您的 Kafka 用戶端可以位於虛擬網路外部。 用戶端可以對 Kafka 叢集進行簡單的 HTTP 呼叫，而不用依賴 Kafka 程式庫。 本文將說明如何建立已啟用 REST Proxy 的 Kafka 叢集。 也會提供範例程式碼，說明如何呼叫 REST Proxy。
+Kafka REST Proxy 可讓您透過 HTTPS 的 REST API，與您的 Kafka 叢集互動。 此動作表示您的 Kafka 用戶端可以位於虛擬網路外部。 用戶端可以對 Kafka 叢集進行簡單、安全的 HTTPS 呼叫，而不需依賴 Kafka 程式庫。 本文將說明如何建立已啟用 REST Proxy 的 Kafka 叢集。 也會提供範例程式碼，說明如何呼叫 REST Proxy。
 
 ## <a name="rest-api-reference"></a>REST API 參考資料
 
@@ -37,7 +37,7 @@ Kafka REST Proxy 可讓您使用 REST API 透過 HTTP 與您的 Kafka 叢集互�
 
 Kafka REST Proxy 的存取權會以 Azure Active Directory 安全性群組進行管理。 建立 Kafka 叢集時，請提供具有 REST 端點存取權的 Azure AD 安全性群組。 應由此群組的擁有者將需要存取 REST Proxy 的 Kafka 用戶端註冊到群組。 群組擁有者可以透過入口網站或透過 PowerShell 註冊。
 
-針對 REST Proxy 端點要求，用戶端應用程式應該會取得 OAuth 權杖。 權杖會用來驗證安全性群組成員資格。 請在下方尋找[用戶端應用程式範例](#client-application-sample)，其中會說明如何取得 OAuth 權杖。 用戶端應用程式會將 HTTP 要求中的 OAuth 權杖傳遞至 REST Proxy。
+針對 REST Proxy 端點要求，用戶端應用程式應該會取得 OAuth 權杖。 權杖會用來驗證安全性群組成員資格。 請在下方尋找[用戶端應用程式範例](#client-application-sample)，其中會說明如何取得 OAuth 權杖。 用戶端應用程式會將 HTTPS 要求中的 OAuth 權杖傳遞給 REST proxy。
 
 > [!NOTE]
 > 若要深入了解 AAD 安全性群組，請參閱[使用 Azure Active Directory 群組來管理應用程式和資源存取](../../active-directory/fundamentals/active-directory-manage-groups.md)。 如需有關 OAuth 權杖使用方式的詳細資訊，請參閱[使用 OAuth 2.0 授權碼授與流程，授權存取 Azure Active Directory Web 應用程式](../../active-directory/azuread-dev/v1-protocols-oauth-code.md)。

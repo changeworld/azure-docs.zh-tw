@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 74926411b659cf5973b03b2caca58d7666803f9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f916fdcf632cc369d1fb7e2faefad6dddafd1e15
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444531"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677254"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>將 audit 寫入至 VNet 和防火牆後方的儲存體帳戶
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -41,14 +41,14 @@ ms.locfileid: "91444531"
 >
 > * 一般用途 v2 儲存體帳戶。 如果您有一般用途 v1 或 blob 儲存體帳戶，請 [升級至一般用途 v2 儲存體帳戶](../../storage/common/storage-account-upgrade.md)。 如需詳細資訊，請參閱[儲存體帳戶類型](../../storage/common/storage-account-overview.md#types-of-storage-accounts)。
 > * 儲存體帳戶必須位於相同的訂用帳戶和 [邏輯 SQL 伺服器](logical-servers.md)的相同位置。
-> * Azure 儲存體帳戶需要 `Allow trusted Microsoft services to access this storage account` 。 在儲存體帳戶 **防火牆和虛擬網路**上設定此設定。
+> * Azure 儲存體帳戶需要 `Allow trusted Microsoft services to access this storage account` 。 在儲存體帳戶 **防火牆和虛擬網路** 上設定此設定。
 > * 您必須具有 `Microsoft.Authorization/roleAssignments/write` 所選儲存體帳戶的許可權。 如需詳細資訊，請參閱 [Azure 內建角色](../../role-based-access-control/built-in-roles.md)。
 
 ## <a name="configure-in-azure-portal"></a>在 Azure 入口網站中設定
 
 使用您的訂用帳戶連接到 [Azure 入口網站](https://portal.azure.com) 。 流覽至資源群組和伺服器。
 
-1. 按一下 [安全性] 標題下的 [ **審核** ]。 選取 [ **開啟**]。
+1. 按一下 [安全性] 標題下的 [ **審核** ]。 選取 [ **開啟** ]。
 
 2. 選取 [儲存體] 。 選取將儲存記錄的儲存體帳戶。 儲存體帳戶必須符合 [必要條件](#prerequisites)中所列的需求。
 
@@ -93,7 +93,7 @@ ms.locfileid: "91444531"
    Set-AzSqlServer -ResourceGroupName <your resource group> -ServerName <azure server name> -AssignIdentity
    ```
 
-   [**REST API**](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)：
+   [**REST API**](/rest/api/sql/servers/createorupdate)：
 
    範例要求
 
@@ -117,12 +117,12 @@ ms.locfileid: "91444531"
    }
    ```
 
-2. 開啟 [Azure 入口網站](https://portal.azure.com)。 瀏覽至儲存體帳戶。 找出 ** (IAM) 的存取控制 **，然後按一下 [ **新增角色指派**]。 將 **儲存體 Blob 資料參與者** Azure 角色指派給裝載您向 Azure Active Directory (Azure AD) 註冊之資料庫的伺服器，如同上一個步驟中所述。
+2. 開啟 [Azure 入口網站](https://portal.azure.com)。 瀏覽至儲存體帳戶。 找出 **(IAM) 的存取控制** ，然後按一下 [ **新增角色指派** ]。 將 **儲存體 Blob 資料參與者** Azure 角色指派給裝載您向 Azure Active Directory (Azure AD) 註冊之資料庫的伺服器，如同上一個步驟中所述。
 
    > [!NOTE]
    > 僅有具備「擁有者」權限的成員才能執行此步驟。 針對各種 Azure 內建角色，請參閱 [azure 內建角色](../../role-based-access-control/built-in-roles.md)。
 
-3. 設定 [伺服器的 blob 稽核原則](/rest/api/sql/server%20auditing%20settings/createorupdate)，而不指定 *storageAccountAccessKey*：
+3. 設定 [伺服器的 blob 稽核原則](/rest/api/sql/server%20auditing%20settings/createorupdate)，而不指定 *storageAccountAccessKey* ：
 
    範例要求
 

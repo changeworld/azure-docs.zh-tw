@@ -3,14 +3,14 @@ title: Azure 自動化更新管理概觀
 description: 此文章提供可對 Windows 和 Linux 機器實作更新的更新管理功能概觀。
 services: automation
 ms.subservice: update-management
-ms.date: 09/23/2020
+ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 92d8c52ee9da1df67be27ea0867e788e2aaed37b
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 217ccbcef28545710ea0875a318bcf5b4b555825
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222037"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677699"
 ---
 # <a name="update-management-overview"></a>更新管理概觀
 
@@ -18,15 +18,18 @@ ms.locfileid: "92222037"
 
 您可以透過下列方式來啟用 VM 的更新管理：
 
-* 從您的 [Azure 自動化帳戶](enable-from-automation-account.md) ，取得一或多個 azure 與非 azure 機器。
-* 針對非 Azure 電腦手動進行，包括向 [Azure Arc 啟用的伺服器](../../azure-arc/servers/overview.md) 登錄的電腦或伺服器 (preview) 。
-* 針對單一 Azure VM，從 Azure 入口網站的虛擬機器頁面啟用。 此案例適用於 [Linux](../../virtual-machines/linux/tutorial-config-management.md#enable-update-management) 與 [Windows](../../virtual-machines/windows/tutorial-config-management.md#enable-update-management) VM。
-* 針對[多部 Azure VM](enable-from-portal.md)，透過從 Azure 入口網站的虛擬機器頁面中選取這些 VM 的方式來啟用。
+- 從您的 [Azure 自動化帳戶](enable-from-automation-account.md) ，取得一或多個 azure 與非 azure 機器。
+
+- 針對非 Azure 電腦手動進行，包括已向 [Azure Arc 啟用的伺服器](../../azure-arc/servers/overview.md)註冊的電腦或伺服器。
+
+- 適用于 Azure 入口網站中的 [ [虛擬機器] 頁面](enable-from-vm.md) 上的單一 Azure VM。 此案例適用於 Linux 與 Windows VM。
+
+- 針對[多部 Azure VM](enable-from-portal.md)，透過從 Azure 入口網站的虛擬機器頁面中選取這些 VM 的方式來啟用。
 
 > [!NOTE]
 > 更新管理需要將 Log Analytics 工作區連結至您的自動化帳戶。 如需支援區域的確切清單，請參閱 [Azure 工作區對應](../how-to/region-mappings.md)。 區域對應並不會影響從您的自動化帳戶，在不同區域中管理 VM 的能力。
 
-[Azure Resource Manager 範本](enable-from-template.md)可用來協助您將更新管理部署到新的或現有的自動化帳戶及訂用帳戶中的 Log Analytics 工作區。
+[Azure Resource Manager 範本](enable-from-template.md)可用來協助您在訂用帳戶中新的或現有的自動化帳戶和 Log Analytics 工作區中啟用更新管理功能。 它不會使用功能來啟用 Azure 或非 Azure Vm，該步驟會在之後使用先前所列的其中一種方法來執行。
 
 > [!NOTE]
 > 您無法使用以更新管理設定的機器，從 Azure 自動化中執行自訂指令碼。 這部機器只能執行 Microsoft 簽署的更新指令碼。
@@ -106,7 +109,7 @@ ms.locfileid: "92222037"
 
 #### <a name="windows"></a>Windows
 
-Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取 Microsoft Update。 如需有關如何安裝適用於 Windows 之 Log Analytics 代理程式的資訊，請參閱[將 Windows 電腦連線至 Azure 監視器](../../azure-monitor/platform/agent-windows.md)。
+Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取 Microsoft Update。 如需有關如何安裝適用於 Windows 之 Log Analytics 代理程式的資訊，請參閱[將 Windows 電腦連線至 Azure 監視器](../../azure-monitor/platform/agent-windows.md)。 對於混合式電腦，建議先將您的電腦連接到 [Azure Arc 啟用的伺服器](../../azure-arc/servers/overview.md)，然後使用 Azure 原則將「 [部署 log analytics 代理程式」指派給 windows Azure Arc 電腦](../../governance/policy/samples/built-in-policies.md#monitoring) 內建原則，以安裝適用于 windows 的 log analytics 代理程式。 如果您也打算使用適用於 VM 的 Azure 監視器來監視電腦，請改用 [啟用適用於 VM 的 Azure 監視器](../../governance/policy/samples/built-in-initiatives.md#monitoring) 方案。
 
 您可以搭配 Microsoft Endpoint Configuration Manager 使用更新管理。 若要深入了解整合案例，請參閱[整合更新管理與 Windows Endpoint Configuration Manager](mecmintegration.md)。 針對 Configuration Manager 環境中網站所管理的 Windows 伺服器，需要[適用於 Windows 的 Log Analytics 代理程式](../../azure-monitor/platform/agent-windows.md)。 
 
@@ -122,7 +125,7 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 > [!NOTE]
 > 只有在特定區域中才支援 Linux 機器的更新評量。 請參閱自動化帳戶和 Log Analytics 工作區[對應表](../how-to/region-mappings.md#supported-mappings) \(部分機器翻譯\)。
 
-如需如何安裝適用於 Linux 的 Log Analytics 代理程式及下載最新版本的相關資訊，請參閱[適用於 Linux 的 Log Analytics 代理程式](../../azure-monitor/platform/agent-linux.md)。
+如需如何安裝適用於 Linux 的 Log Analytics 代理程式及下載最新版本的相關資訊，請參閱[適用於 Linux 的 Log Analytics 代理程式](../../azure-monitor/platform/agent-linux.md)。 對於混合式電腦，建議先將您的電腦連接到 [Azure Arc 啟用的伺服器](../../azure-arc/servers/overview.md)，然後使用 Azure 原則將「 [部署 log analytics 代理程式」指派給 Linux Azure Arc 機器](../../governance/policy/samples/built-in-policies.md#monitoring) 內建原則，以安裝適用于 Windows 的 log analytics 代理程式。 如果您也打算使用適用於 VM 的 Azure 監視器監視電腦，請改用 [啟用適用於 VM 的 Azure 監視器](../../governance/policy/samples/built-in-initiatives.md#monitoring) 方案。
 
 從隨選 Red Hat Enterprise Linux 建立的 Vm (RHEL) 可在 Azure Marketplace 中取得的映射，以存取部署在 Azure 中的 [Red Hat 更新基礎結構 (RHUI) ](../../virtual-machines/workloads/redhat/redhat-rhui.md) 。 針對任何其他 Linux 發行版本，則必須使用該發行版本所支援的方法，從發行版本的線上檔案存放庫進行更新。
 
@@ -191,7 +194,7 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 |`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
 |`*.azure-automation.net` | `*.azure-automation.us`|
 
-當您建立網路群組安全性規則或設定 Azure 防火牆以允許流量流向自動化服務和 Log Analytics 工作區時，請使用 [服務](../../virtual-network/service-tags-overview.md#available-service-tags)標籤 **GuestAndHybridManagement** 和 **AzureMonitor**。 這可簡化網路安全性規則的持續管理。 若要安全且私下地從您的 Azure Vm 連接到自動化服務，請參閱 [使用 Azure Private Link](../how-to/private-link-security.md)。 若要取得目前的服務標籤和範圍資訊，以納入您的內部部署防火牆設定，請參閱 [可下載的 JSON](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)檔案。
+當您建立網路群組安全性規則或設定 Azure 防火牆以允許流量流向自動化服務和 Log Analytics 工作區時，請使用 [服務](../../virtual-network/service-tags-overview.md#available-service-tags)標籤 **GuestAndHybridManagement** 和 **AzureMonitor** 。 這可簡化網路安全性規則的持續管理。 若要安全且私下地從您的 Azure Vm 連接到自動化服務，請參閱 [使用 Azure Private Link](../how-to/private-link-security.md)。 若要取得目前的服務標籤和範圍資訊，以納入您的內部部署防火牆設定，請參閱 [可下載的 JSON](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)檔案。
 
 對於 Windows 機器，您也必須允許流量傳送到 Windows Update 所需的任何端點。 您可以在[與 HTTP/Proxy 相關的問題](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)中，找到所需端點的更新清單。 如果您有本機 [Windows Update 伺服器](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)，也必須允許流量傳送到您 [WSUS 金鑰](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)中指定的伺服器。
 

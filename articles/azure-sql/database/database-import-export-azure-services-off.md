@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: 9b34a2435486a905923e783153ccae97628193a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be966a651df0c896ac7e1973d7783bb7fb686be3
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443748"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676506"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>匯入或匯出 Azure SQL Database，但不允許 Azure 服務存取伺服器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -57,19 +57,19 @@ ms.locfileid: "91443748"
    > [!NOTE]
    > 您也可以使用 SSH 來連線到您的 VM。
 
-4. 關閉**連線至虛擬機器**表單。
+4. 關閉 **連線至虛擬機器** 表單。
 5. 若要連線至您的 VM，請開啟下載的 RDP 檔案。
-6. 出現提示時，請選取 [連接]****。 在 Mac 上，您需要 RDP 用戶端，例如來自 Mac App Store 的[遠端桌面用戶端](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12)。
+6. 出現提示時，請選取 [連接]  。 在 Mac 上，您需要 RDP 用戶端，例如來自 Mac App Store 的[遠端桌面用戶端](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12)。
 
-7. 輸入在建立虛擬機器時指定的使用者名稱和密碼，然後選擇 [確定]****。
+7. 輸入在建立虛擬機器時指定的使用者名稱和密碼，然後選擇 [確定]  。
 
-8. 您可能會在登入過程中收到憑證警告。 選擇 [是]**** 或 [繼續]**** 以繼續進行連線。
+8. 您可能會在登入過程中收到憑證警告。 選擇 [是]  或 [繼續]  以繼續進行連線。
 
 ## <a name="install-sqlpackage"></a>安裝 SqlPackage
 
-[下載並安裝最新版本的 SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download)。
+[下載並安裝最新版本的 SqlPackage](/sql/tools/sqlpackage-download)。
 
-如需詳細資訊，請參閱 [SqlPackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage)。
+如需詳細資訊，請參閱 [SqlPackage.exe](/sql/tools/sqlpackage)。
 
 ## <a name="create-a-firewall-rule-to-allow-the-vm-access-to-the-database"></a>建立防火牆規則以允許 VM 存取資料庫
 
@@ -77,7 +77,7 @@ ms.locfileid: "91443748"
 
 下列步驟會為您虛擬機器的公用 IP 位址建立伺服器層級 IP 防火牆規則，並啟用虛擬機器的連線能力。
 
-1. 從左側功能表中選取 **[sql 資料庫** ]，然後在 [ **sql 資料庫** ] 頁面上選取您的資料庫。 您資料庫的 [總覽] 頁面隨即開啟，顯示完整的伺服器名稱 (例如 **servername.database.windows.net**) ，並提供進一步設定的選項。
+1. 從左側功能表中選取 **[sql 資料庫** ]，然後在 [ **sql 資料庫** ] 頁面上選取您的資料庫。 您資料庫的 [總覽] 頁面隨即開啟，顯示完整的伺服器名稱 (例如 **servername.database.windows.net** ) ，並提供進一步設定的選項。
 
 2. 當連接到您的伺服器及其資料庫時，請複製此完整伺服器名稱以供使用。
 
@@ -89,15 +89,15 @@ ms.locfileid: "91443748"
 
 4. 選擇工具列上的 [ **新增用戶端 ip** ]，將虛擬機器的公用 ip 位址新增至新的伺服器層級 ip 防火牆規則。 伺服器層級 IP 防火牆規則可以針對單一 IP 位址或 IP 位址範圍開啟連接埠 1433。
 
-5. 選取 [儲存]****。 系統會為您虛擬機器的公用 IP 位址建立伺服器層級 IP 防火牆規則，以在伺服器上開啟埠1433。
+5. 選取 [儲存]。 系統會為您虛擬機器的公用 IP 位址建立伺服器層級 IP 防火牆規則，以在伺服器上開啟埠1433。
 
 6. 關閉 [防火牆設定] 頁面。
 
 ## <a name="export-a-database-using-sqlpackage"></a>使用 SqlPackage 匯出資料庫
 
-若要使用 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) 命令列公用程式匯出 Azure SQL Database，請參閱 [匯出參數和屬性](https://docs.microsoft.com/sql/tools/sqlpackage#export-parameters-and-properties)。 SqlPackage 公用程式隨附 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)的最新版本，您也可以下載最新版本的 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download)。
+若要使用 [SqlPackage](/sql/tools/sqlpackage) 命令列公用程式匯出 Azure SQL Database，請參閱 [匯出參數和屬性](/sql/tools/sqlpackage#export-parameters-and-properties)。 SqlPackage 公用程式隨附 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt)的最新版本，您也可以下載最新版本的 [SqlPackage](/sql/tools/sqlpackage-download)。
 
-建議您在大多數生產環境中使用 SqlPackage 公用程式來調整規模和效能。 如需 SQL Server 客戶諮詢小組部落格中有關使用 BACPAC 檔案進行移轉的主題，請參閱[使用 BACPAC 檔案從 SQL Server 移轉至 Azure SQL Database](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)。
+建議您在大多數生產環境中使用 SqlPackage 公用程式來調整規模和效能。 如需 SQL Server 客戶諮詢小組部落格中有關使用 BACPAC 檔案進行移轉的主題，請參閱[使用 BACPAC 檔案從 SQL Server 移轉至 Azure SQL Database](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files)。
 
 此範例示範如何使用具有 Active Directory 通用驗證的 SqlPackage.exe 來匯出資料庫。 取代為您的環境特有的值。
 
@@ -107,11 +107,11 @@ SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=<servername>.da
 
 ## <a name="import-a-database-using-sqlpackage"></a>使用 SqlPackage 匯入資料庫
 
-若要使用 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) 命令列公用程式匯入 SQL Server 資料庫，請參閱[匯入參數和屬性](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties)。 SqlPackage 具有最新的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。 您也可以下載最新版本的 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download)。
+若要使用 [SqlPackage](/sql/tools/sqlpackage) 命令列公用程式匯入 SQL Server 資料庫，請參閱[匯入參數和屬性](/sql/tools/sqlpackage#import-parameters-and-properties)。 SqlPackage 具有最新的 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt)。 您也可以下載最新版本的 [SqlPackage](/sql/tools/sqlpackage-download)。
 
-為了規模和效能，我們建議在大部分生產環境中使用 SqlPackage，而不使用 Azure 入口網站。 如需 SQL Server 客戶諮詢小組部落格中有關使用 `BACPAC` 檔案進行移轉的主題，請參閱[使用 BACPAC 檔案從 SQL Server 移轉至 Azure SQL Database](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/) \(英文\)。
+為了規模和效能，我們建議在大部分生產環境中使用 SqlPackage，而不使用 Azure 入口網站。 如需 SQL Server 客戶諮詢小組部落格中有關使用 `BACPAC` 檔案進行移轉的主題，請參閱[使用 BACPAC 檔案從 SQL Server 移轉至 Azure SQL Database](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files) \(英文\)。
 
-下列 SqlPackage 命令會將 **AdventureWorks2017** 資料庫從本機儲存體匯入至 Azure SQL Database。 此命令會建立名為 **myMigratedDatabase**、且具有**進階**服務層級和 **P6** 服務目標的新資料庫。 請針對您的環境適當變更這些值。
+下列 SqlPackage 命令會將 **AdventureWorks2017** 資料庫從本機儲存體匯入至 Azure SQL Database。 此命令會建立名為 **myMigratedDatabase** 、且具有 **進階** 服務層級和 **P6** 服務目標的新資料庫。 請針對您的環境適當變更這些值。
 
 ```cmd
 sqlpackage.exe /a:import /tcs:"Data Source=<serverName>.database.windows.net;Initial Catalog=myMigratedDatabase>;User Id=<userId>;Password=<password>" /sf:AdventureWorks2017.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
@@ -141,11 +141,11 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 
 ## <a name="store-the-imported-or-exported-bacpac-file"></a>儲存匯入或匯出。BACPAC 檔案
 
-，.BACPAC 檔案可以儲存在 [Azure blob](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)或 [Azure 檔案儲存體](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)中。
+，.BACPAC 檔案可以儲存在 [Azure blob](../../storage/blobs/storage-blobs-overview.md)或 [Azure 檔案儲存體](../../storage/files/storage-files-introduction.md)中。
 
 若要達到最佳效能，請使用 Azure 檔案儲存體。 SqlPackage 會操作檔案系統，以便直接存取 Azure 檔案儲存體。
 
-若要降低成本，請使用 Azure Blob，其成本低於 premium Azure 檔案共用。 不過，它會要求您複製 [。](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) 匯入或匯出作業之前，blob 和本機檔案系統之間的 BACPAC 檔案。 因此，程式需要較長的時間。
+若要降低成本，請使用 Azure Blob，其成本低於 premium Azure 檔案共用。 不過，它會要求您複製 [。](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) 匯入或匯出作業之前，blob 和本機檔案系統之間的 BACPAC 檔案。 因此，程式需要較長的時間。
 
 以上傳或下載。BACPAC 檔案，請參閱 [使用 AzCopy 和 Blob 儲存體傳輸資料](../../storage/common/storage-use-azcopy-blobs.md)，以及 [使用 AzCopy 和檔案儲存體傳輸資料](../../storage/common/storage-use-azcopy-files.md)。
 
@@ -156,4 +156,4 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 - 若要瞭解如何連接並查詢匯入的 SQL Database，請參閱 [快速入門： Azure SQL Database：使用 SQL Server Management Studio 連接和查詢資料](connect-query-ssms.md)。
 - 如需 SQL Server 客戶諮詢小組部落格中有關使用 BACPAC 檔案進行移轉的主題，請參閱[使用 BACPAC 檔案從 SQL Server 移轉至 Azure SQL Database](https://techcommunity.microsoft.com/t5/DataCAT/Migrating-from-SQL-Server-to-Azure-SQL-Database-using-Bacpac/ba-p/305407)。
 - 如需有關整個 SQL Server 資料庫移轉程序的討論，包括效能建議，請參閱[將 SQL Server 資料庫移轉至 Azure SQL Database](migrate-to-database-from-sql-server.md)。
-- 若要了解如何管理和共用儲存體金鑰，以及安全地共用存取簽章，請參閱 [Azure 儲存體安全性指南](https://docs.microsoft.com/azure/storage/common/storage-security-guide)。
+- 若要了解如何管理和共用儲存體金鑰，以及安全地共用存取簽章，請參閱 [Azure 儲存體安全性指南](../../storage/blobs/security-recommendations.md)。

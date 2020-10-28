@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: f47a23a3b95975d98d3825bc5b14ed0522102a0c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 344e15d3c15474fc8959b120f86bb86f22217ef6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547634"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676952"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>使用 IT Service Management Connector 將 Azure 連線到 ITSM 工具
 
@@ -65,7 +65,7 @@ ITSMC 支援與下列 ITSM 工具連線：
    >[!NOTE]
    >因屬於 Microsoft Operations Management Suite (OMS) 轉換為 Azure 監視器的一環，OMS 工作區現在稱為 Log Analytics 工作區。
 
-5. 按一下頁面底部的 [新增] 。
+5. 按一下 [確定]。
 
 部署解決方案資源時，通知會出現在視窗右上方。
 
@@ -122,28 +122,29 @@ ITSMC 支援與下列 ITSM 工具連線：
 
 請使用下列程序：
 
-1. 在 Azure 入口網站中，按一下 [監視]。
-2. 在左窗格中，按一下 [動作群組]。 [新增動作群組] 視窗隨即出現。
+1. 在 Azure 入口網站中，按一下 [  **警示** ]。
+2. 在上方窗格中，按一下 [  **管理動作** ]。 [新增動作群組] 視窗隨即出現。
 
     ![動作群組](media/itsmc-overview/action-groups.png)
 
-3. 提供動作群組的 [名稱] 與 [簡稱]。 選取您要在其中建立動作群組的 [資源群組] 與 [訂用帳戶]。
+3. 選取您要在其中建立動作群組的 **訂** 用帳戶和 **資源群組** 。 提供動作群組的 **動作組名** 和 **顯示名稱** 。 按一下 **[下一步：通知]** 。
 
     ![動作群組詳細資料](media/itsmc-overview/action-groups-details.png)
 
-4. 在 [動作] 清單中，從 [動作類型] 的下拉式功能表選取 [ITSM]。 提供動作的 **名稱** ，然後按一下 [編輯詳細資料]。
-5. 選取 Log Analytics 工作區所在位置的 [訂用帳戶]。 選取 **連線** 名稱 (您的 ITSM 連接器名稱)，後面接著您的工作區名稱。 例如，"MyITSMMConnector(MyWorkspace)"。
+4. 在通知清單中，按一下 [ **嵌套：動作** ]。
+5. 在 [動作] 清單中，從 [動作類型] 的下拉式功能表選取 [ITSM]。 提供動作的 **名稱** ，然後按一下代表 **編輯詳細資料** 的畫筆。
+6. 選取 Log Analytics 工作區所在位置的 [訂用帳戶]。 選取 **連線** 名稱 (您的 ITSM 連接器名稱)，後面接著您的工作區名稱。 例如，"MyITSMMConnector(MyWorkspace)"。
 
     ![ITSM 動作詳細資料](media/itsmc-overview/itsm-action-details.png)
 
-6. 從下拉式功能表選取 [工作項目] 類型。
+7. 從下拉式功能表選取 [工作項目] 類型。
 
-7. 如果您想要以固定值填寫方塊欄位，請選取 [使用自訂範本] 的核取方塊，否則請選擇使用下拉式清單中的現有 [範本](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) ，然後以固定值填滿範本欄位。
+8. 如果您想要以固定值填寫方塊欄位，請選取 [使用自訂範本] 的核取方塊，否則請選擇使用下拉式清單中的現有 [範本](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) ，然後以固定值填滿範本欄位。
 
-8. 選取 [ **為每個設定專案建立個別的工作專案** ] 核取方塊，每個設定專案都會有自己的工作專案。 這表示每個設定專案都會有一個工作專案，而且會根據將建立的警示進行更新。
+9. 選取 [ **為每個設定專案建立個別的工作專案** ] 核取方塊，每個設定專案都會有自己的工作專案。 這表示每個設定專案都會有一個工作專案，而且會根據將建立的警示進行更新。
 如果您取消選取 [ **為每個設定專案建立個別的工作專案** ] 核取方塊，每個警示都會建立新的工作專案，這表示每個設定專案可能會有1個以上的警示。
 
-9. 按一下 [確定]。
+10. 按一下 [確定]。
 
 建立/編輯 Azure 警示規則時，請使用具有 ITSM 動作的動作群組。 警示觸發時，會在 ITSM 工具中建立/更新工作項目。
 
@@ -162,7 +163,7 @@ ITSMC 支援與下列 ITSM 工具連線：
 
 事件和變更要求資料可以使用解決方案中的 ITSM Connector 儀表板進行視覺化。
 
-![Log Analytics 畫面](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
+![顯示 ITSM 連接器儀表板的螢幕擷取畫面。](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
 儀表板也會提供連接器狀態的相關資訊，可用來作為分析任何連線問題的起點。
 

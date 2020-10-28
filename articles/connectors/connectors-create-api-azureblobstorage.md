@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 34608a085c0d60e0ce07e5d198622f80a43f8b38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd23ff0f5ad9912440d38903a344011b069aaf16
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87284076"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677715"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 在 Azure Blob 儲存體中建立和管理 blob
 
@@ -29,15 +29,15 @@ ms.locfileid: "87284076"
 
 ## <a name="limits"></a>限制
 
-* 根據預設，Azure Blob 儲存體動作可以讀取或寫入 *50 MB 或更小*的檔案。 為了處理大於 50 MB 但高達 1024 MB 的檔案，Azure Blob 儲存體動作支援 [訊息區塊](../logic-apps/logic-apps-handle-large-messages.md)處理。 「 **取得 blob 內容** 」動作會隱含地使用區塊化。
+* 根據預設，Azure Blob 儲存體動作可以讀取或寫入 *50 MB 或更小* 的檔案。 為了處理大於 50 MB 但高達 1024 MB 的檔案，Azure Blob 儲存體動作支援 [訊息區塊](../logic-apps/logic-apps-handle-large-messages.md)處理。 「 **取得 blob 內容** 」動作會隱含地使用區塊化。
 
 * Azure Blob 儲存體觸發程式不支援區塊化。 在要求檔案內容時，觸發程式只會選取 50 MB 或更小的檔案。 若要取得大於 50 MB 的檔案，請依照下列模式：
 
-  * 使用會傳回檔案屬性的 Azure Blob 儲存體觸發程式，例如 **在新增或修改 Blob 時， (屬性只) **。
+  * 使用會傳回檔案屬性的 Azure Blob 儲存體觸發程式，例如 **在新增或修改 Blob 時， (屬性只)** 。
 
   * 遵循具有 Azure Blob 儲存體 **取得 Blob 內容** 動作的觸發程式，它會讀取完整的檔案，並隱含地使用區塊化。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -51,13 +51,13 @@ ms.locfileid: "87284076"
 
 在 Azure Logic Apps 中，每個邏輯應用程式都必須使用[觸發程序](../logic-apps/logic-apps-overview.md#logic-app-concepts)啟動，而該觸發程序會在特定事件發生或符合特定條件時引發。 每次引發觸發程序時，Logic Apps 引擎都會建立邏輯應用程式執行個體，並開始執行應用程式的工作流程。
 
-此範例示範如何在新增或修改 blob 時，使用來啟動邏輯應用程式工作流程 ** (屬性只有 ** 在您的儲存體容器中新增或更新 blob 的屬性時) 觸發程式。
+此範例示範如何在新增或修改 blob 時，使用來啟動邏輯應用程式工作流程 **(屬性只有** 在您的儲存體容器中新增或更新 blob 的屬性時) 觸發程式。
 
 1. 在 [Azure 入口網站](https://portal.azure.com) 或 Visual Studio 中，建立空白的邏輯應用程式，以開啟邏輯應用程式設計工具。 這個範例會使用 Azure 入口網站。
 
 2. 在搜尋方塊中，輸入「azure blob」作為篩選條件。 從觸發程序清單中，選取您想要的觸發程序。
 
-   此範例會使用此觸發 **程式：只在新增或修改 Blob 時 (屬性) **
+   此範例會使用此觸發 **程式：只在新增或修改 Blob 時 (屬性)**
 
    ![選取 Azure Blob 儲存體觸發程式](./media/connectors-create-api-azureblobstorage/add-azure-blob-storage-trigger.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "87284076"
 
    在此範例中，請選取您想要監視的容器和資料夾。
 
-   1. 在 [容器]**** 方塊中，選取 [資料夾] 圖示。
+   1. 在 [容器]  方塊中，選取 [資料夾] 圖示。
 
    2. 在 [資料夾] 清單中，選擇右角括弧 ( **>** ) ]，然後流覽直到您找到並選取您想要的資料夾。
 
@@ -73,7 +73,7 @@ ms.locfileid: "87284076"
 
    3. 選取您想要讓觸發程序檢查資料夾是否有變更的間隔和頻率。
 
-4. 當您完成時，請在設計工具的工具列上，選擇 [儲存]****。
+4. 當您完成時，請在設計工具的工具列上，選擇 [儲存]  。
 
 5. 現在，繼續針對您想要使用觸發程序結果來執行的工作，於邏輯應用程式中新增一或多個動作。
 
@@ -85,11 +85,11 @@ ms.locfileid: "87284076"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)或 Visual Studio 的「邏輯應用程式設計工具」中，開啟邏輯應用程式。 這個範例會使用 Azure 入口網站。
 
-2. 在邏輯應用程式設計工具的 [觸發程式] 或 [動作] 下，選擇 [ **新增步驟**]。
+2. 在邏輯應用程式設計工具的 [觸發程式] 或 [動作] 下，選擇 [ **新增步驟** ]。
 
    ![將新步驟新增至邏輯應用程式工作流程](./media/connectors-create-api-azureblobstorage/add-new-step-logic-app-workflow.png) 
 
-   若要在現有步驟之間新增動作，請將滑鼠放在連接箭頭上。 選擇顯示的加號 (**+**) ，然後選取 [ **新增動作**]。
+   若要在現有步驟之間新增動作，請將滑鼠放在連接箭頭上。 選擇顯示的加號 ( **+** ) ，然後選取 [ **新增動作** ]。
 
 3. 在搜尋方塊中，輸入「azure blob」作為篩選條件。 從 [動作] 清單中，選取您想要的動作。
 
@@ -102,13 +102,13 @@ ms.locfileid: "87284076"
 
    針對此範例，請選取您想要的檔案。
 
-   1. 從 [Blob]**** 方塊中，選取 [資料夾] 圖示。
+   1. 從 [Blob]  方塊中，選取 [資料夾] 圖示。
   
       ![選取要搭配動作使用的儲存體資料夾](./media/connectors-create-api-azureblobstorage/action-select-folder.png)
 
    2. 根據 blob 的 **識別碼** ，尋找並選取您想要的檔案。 您可以在先前所述的 blob 儲存體觸發程式所傳回的 blob 中繼資料中找到此 **識別碼** 號碼。
 
-5. 當您完成時，請在設計工具的工具列上，選擇 [儲存]****。
+5. 當您完成時，請在設計工具的工具列上，選擇 [儲存]  。
 若要測試邏輯應用程式，請確定所選取的資料夾包含 Blob。
 
 此範例只會取得 Blob 的內容。 若要檢視內容，請新增另一個動作，以使用另一個連接器建立具有 Blob 的檔案。 例如，新增 OneDrive 動作來根據 Blob 內容建立檔案。
@@ -121,7 +121,7 @@ ms.locfileid: "87284076"
 
 1. 當系統提示您建立連接時，請提供下列資訊：
 
-   | 屬性 | 必要 | 值 | 說明 |
+   | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
    | **連接名稱** | 是 | <*連接-名稱*> | 要為連線建立的名稱 |
    | **儲存體帳戶** | 是 | <*儲存體帳戶*> | 從清單中選取您的儲存體帳戶。 |
@@ -131,7 +131,7 @@ ms.locfileid: "87284076"
 
    ![建立 Azure Blob 儲存體帳戶連接](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png) 
 
-1. 當您準備好時，請選取 [**建立**]
+1. 當您準備好時，請選取 [ **建立** ]
 
 1. 建立連線之後，請繼續 [新增 blob 儲存體觸發](#add-trigger) 程式或 [新增 blob 儲存體動作](#add-action)。
 
@@ -183,9 +183,9 @@ ms.locfileid: "87284076"
 
 若要設定例外狀況和受控識別支援，請遵循下列一般步驟：
 
-1. 在您的儲存體帳戶的 [ **設定**] 底下，選取 [ **防火牆和虛擬網路**]。 在 [ **允許存取來源**] 底下，選取 [ **選取的網路** ] 選項，以顯示相關的設定。
+1. 在您的儲存體帳戶的 [ **設定** ] 底下，選取 [ **防火牆和虛擬網路** ]。 在 [ **允許存取來源** ] 底下，選取 [ **選取的網路** ] 選項，以顯示相關的設定。
 
-1. 在 [ **例外**狀況] 下，選取 [ **允許信任的 Microsoft 服務存取此儲存體帳戶**]，然後選取 [ **儲存**]。
+1. 在 [ **例外** 狀況] 下，選取 [ **允許信任的 Microsoft 服務存取此儲存體帳戶** ]，然後選取 [ **儲存** ]。
 
    ![選取允許 Microsoft 受信任服務的例外狀況](./media/connectors-create-api-azureblobstorage/allow-trusted-services-firewall.png)
 
@@ -202,9 +202,8 @@ ms.locfileid: "87284076"
 
 ### <a name="access-storage-accounts-through-azure-api-management"></a>透過 Azure API 管理存取儲存體帳戶
 
-如果您使用專用層進行 [Api 管理](../api-management/api-management-key-concepts.md)，您可以使用 api 管理來前端儲存體 API，並允許後者通過防火牆的 IP 位址。 基本上，將 API 管理所使用的 Azure 虛擬網路新增至儲存體帳戶的防火牆設定。 然後，您可以使用 API 管理動作或 HTTP 動作來呼叫 Azure 儲存體 Api。 但是，如果您選擇此選項，就必須自行處理驗證程式。 如需詳細資訊，請參閱[簡單的企業整合架構](https://aka.ms/aisarch)。
+如果您使用專用層進行 [Api 管理](../api-management/api-management-key-concepts.md)，您可以使用 api 管理來前端儲存體 API，並允許後者通過防火牆的 IP 位址。 基本上，將 API 管理所使用的 Azure 虛擬網路新增至儲存體帳戶的防火牆設定。 然後，您可以使用 API 管理動作或 HTTP 動作來呼叫 Azure 儲存體 Api。 但是，如果您選擇此選項，就必須自行處理驗證程式。 如需詳細資訊，請參閱[簡單的企業整合架構](/azure/architecture/reference-architectures/enterprise-integration/basic-enterprise-integration)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 了解其他 [Logic Apps 連接器](../connectors/apis-list.md)
-

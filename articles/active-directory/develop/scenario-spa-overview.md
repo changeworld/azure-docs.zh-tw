@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: dc0aee2e6c1b06850ffd0385626955a9798e7aeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: aaddev, identityplatformtop40, devx-track-js
+ms.openlocfilehash: 658e7f206f892c9dc241aab228aa933884f95b94
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91257311"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675624"
 ---
-# <a name="scenario-single-page-application"></a>案例：單一頁面應用程式
+# <a name="scenario-single-page-application"></a>案例：單頁應用程式
 
 瞭解建立單一頁面應用程式 (SPA) 所需的一切。
 
@@ -30,19 +30,19 @@ ms.locfileid: "91257311"
 
 ## <a name="overview"></a>概觀
 
-許多新式 web 應用程式都是以用戶端的單一頁面應用程式來建立。 開發人員使用 JavaScript 或 SPA 架構（例如角度、Vue 和回應）來撰寫它們。 這些應用程式會在網頁瀏覽器上執行，而且其驗證特性與傳統伺服器端 web 應用程式不同。
+許多新式 web 應用程式都是以用戶端的單一頁面應用程式來建立。 開發人員可以使用 JavaScript 或 SPA 架構 (例如 Angular、Vue 和 React) 來撰寫這些應用程式。 這些應用程式會在網頁瀏覽器上執行，且具有與傳統伺服器端 Web 應用程式不同的驗證特性。
 
 Microsoft 身分識別平臺提供 **兩個** 選項，可讓單一頁面應用程式登入使用者，並取得權杖來存取後端服務或 web api：
 
-- [OAuth 2.0 授權碼流程 (與 PKCE) ](./v2-oauth2-auth-code-flow.md)。 授權碼流程可讓應用程式交換 **識別碼** 權杖的授權碼，以代表呼叫受保護 api 所需的已驗證使用者和 **存取** 權杖。 此外，它會傳回重新 **整理權杖，** 以代表使用者提供資源的長期存取權，而不需要與這些使用者互動。 這是 **建議** 的方法。
+- [OAuth 2.0 授權碼流程 (使用 PKCE)](./v2-oauth2-auth-code-flow.md)。 授權碼流程可讓應用程式針對代表已驗證使用者的 **識別碼** 權杖，以及呼叫受保護 API 所需的 **存取** 權杖，交換授權碼。 此外，其會傳回 **重新整理** 權杖，以代表使用者提供長期的資源存取權，而不需要與使用者互動。 這是 **建議** 的方法。
 
-![單一頁面應用程式-驗證](./media/scenarios/spa-app-auth.svg)
+![Single-page applications-auth](./media/scenarios/spa-app-auth.svg)
 
-- [OAuth 2.0 隱含流程](./v2-oauth2-implicit-grant-flow.md)。 隱含授與流程可讓應用程式取得 **識別碼** 和 **存取** 權杖。 不同于授權碼流程，隱含授與流程不會傳回重新整理 **權杖**。
+- [OAuth 2.0 隱含流程](./v2-oauth2-implicit-grant-flow.md)。 隱含授與流程可讓應用程式取得 **識別碼** 及 **存取** 權杖。 不同於授權碼流程，隱含授與流程不會傳回 **重新整理權杖** 。
 
-![單一頁面應用程式-隱含](./media/scenarios/spa-app.svg)
+![Single-page applications-implicit](./media/scenarios/spa-app.svg)
 
-此驗證流程不包含使用跨平臺 JavaScript 架構的應用程式案例，例如 Electron 和回應原生。 它們需要進一步的功能來與原生平臺互動。
+此驗證流程不包含使用跨平台 JavaScript 架構 (例如 Electron 和 React-Native) 的應用程式案例。 它們需要進一步的功能來與原生平臺互動。
 
 ## <a name="specifics"></a>特性
 

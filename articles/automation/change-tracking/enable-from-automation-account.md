@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: c3630105e70ac28e7e9041aa9d5400f724401a5b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 50188ad5fea0ee34a6896f0045e3bbcbfb553aaa
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209512"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677290"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>自動化帳戶的 [啟用變更追蹤和清查]
 
@@ -49,7 +49,7 @@ ms.locfileid: "92209512"
 
 ## <a name="enable-non-azure-vms"></a>啟用非 Azure VM
 
-您必須手動加入不在 Azure 中的機器。
+您必須手動加入不在 Azure 中的機器。 建議您先將您的電腦連接到 [Azure Arc 啟用的伺服器](../../azure-arc/servers/overview.md)，然後使用 Azure 原則將「 [部署 Log analytics 代理程式」指派給 *Linux* 或 *Windows* Azure Arc 電腦](../../governance/policy/samples/built-in-policies.md#monitoring) 內建原則，以安裝適用于 Windows 或 Linux 的 Log analytics 代理程式。 如果您也打算使用適用於 VM 的 Azure 監視器來監視電腦，請改用 [啟用適用於 VM 的 Azure 監視器](../../governance/policy/samples/built-in-initiatives.md#monitoring) 方案。
 
 1. 從您的自動化帳戶中，選取 [組態管理] 底下的 [清查] 或 [變更追蹤]。
 
@@ -61,11 +61,11 @@ ms.locfileid: "92209512"
 
 1. 從您的自動化帳戶中，選取 [組態管理] 底下的 [清查] 或 [變更追蹤]。
 
-2. 選取 [管理機器]。 如果您之前選擇 [**在所有可用及未來的機器上啟用**] 選項，[**管理電腦**] 選項可能會呈現灰色
+2. 選取 [管理機器]。 如果您之前選擇 [ **在所有可用及未來的機器上啟用** ] 選項，[ **管理電腦** ] 選項可能會呈現灰色
 
     ![已儲存的搜尋](media/enable-from-automation-account/manage-machines.png)
 
-3. 若要啟用所有可用機器的變更追蹤和清查，請在 [**管理電腦**] 頁面上選取 [**在所有可用的電腦上啟用**]。 此動作會停用此控制項來個別新增電腦，並將所有回報至工作區的機器新增至電腦群組儲存的搜尋查詢。 選取時，此動作會停用 [ **管理電腦** ] 選項。
+3. 若要啟用所有可用機器的變更追蹤和清查，請在 [ **管理電腦** ] 頁面上選取 [ **在所有可用的電腦上啟用** ]。 此動作會停用此控制項來個別新增電腦，並將所有回報至工作區的機器新增至電腦群組儲存的搜尋查詢。 選取時，此動作會停用 [ **管理電腦** ] 選項。
 
 4. 若要為所有可用的機器與未來的機器啟用此功能，請選取 [在所有可用及未來的機器上啟用]。 此選項會從工作區中刪除已儲存的搜尋和範圍設定，並為向工作區回報的所有 Azure 和非 Azure 電腦開啟此功能。 選取時，此動作會永久停用 [ **管理電腦** ] 選項，因為沒有剩餘的範圍設定。
 

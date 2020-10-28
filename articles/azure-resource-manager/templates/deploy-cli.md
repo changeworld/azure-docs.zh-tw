@@ -2,13 +2,13 @@
 title: 使用 Azure CLI 和範本部署資源
 description: 使用 Azure Resource Manager 和 Azure CLI 將資源部署到 Azure。 資源會定義在 Resource Manager 範本中。
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: 8d033bb9ad1c841614ee1e48aa7edc6b8fe18550
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 7b1639f31b696f300177d05107a98effc3f3ae23
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372165"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676201"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>使用 ARM 範本與 Azure CLI 來部署資源
 
@@ -18,21 +18,19 @@ Azure CLI 版本2.2.0 中的部署命令已變更。 本文中的範例需要 Az
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-如果您沒有安裝 Azure CLI，可以使用 [Cloud Shell](#deploy-template-from-cloud-shell)。
+如果您沒有安裝 Azure CLI，可以使用 Cloud Shell。 如需詳細資訊，請參閱 [部署 Cloud Shell 的 ARM 範本](deploy-cloud-shell.md)。
 
 ## <a name="deployment-scope"></a>部署範圍
 
-您可以將部署的目標設為資源群組、訂用帳戶、管理群組或租使用者。 在大部分情況下，您會將部署的目標設為資源群組。 若要在較大的範圍套用原則和角色指派，請使用訂用帳戶、管理群組或租使用者部署。 部署至訂用帳戶時，您可以建立資源群組，並將資源部署至該資源群組。
+您可以將部署的目標設為資源群組、訂用帳戶、管理群組或租使用者。 視部署的範圍而定，您可以使用不同的命令。
 
-視部署的範圍而定，您可以使用不同的命令。
-
-* 若要部署至 **資源群組**，請使用 [az deployment group create](/cli/azure/deployment/group#az-deployment-group-create)：
+* 若要部署至 **資源群組** ，請使用 [az deployment group create](/cli/azure/deployment/group#az-deployment-group-create)：
 
   ```azurecli-interactive
   az deployment group create --resource-group <resource-group-name> --template-file <path-to-template>
   ```
 
-* 若要部署至 **訂**用帳戶，請使用 [az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create)：
+* 若要部署至 **訂** 用帳戶，請使用 [az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create)：
 
   ```azurecli-interactive
   az deployment sub create --location <location> --template-file <path-to-template>
@@ -40,7 +38,7 @@ Azure CLI 版本2.2.0 中的部署命令已變更。 本文中的範例需要 Az
 
   如需訂用帳戶層級部署的詳細資訊，請參閱[在訂用帳戶層級建立資源群組和資源](deploy-to-subscription.md)。
 
-* 若要部署至 **管理群組**，請使用 [az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create)：
+* 若要部署至 **管理群組** ，請使用 [az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create)：
 
   ```azurecli-interactive
   az deployment mg create --location <location> --template-file <path-to-template>
@@ -48,7 +46,7 @@ Azure CLI 版本2.2.0 中的部署命令已變更。 本文中的範例需要 Az
 
   如需管理群組層級部署的詳細資訊，請參閱[在管理群組層級建立資源](deploy-to-management-group.md)。
 
-* 若要部署至 **租**使用者，請使用 [az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create)：
+* 若要部署至 **租** 使用者，請使用 [az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create)：
 
   ```azurecli-interactive
   az deployment tenant create --location <location> --template-file <path-to-template>
@@ -56,26 +54,25 @@ Azure CLI 版本2.2.0 中的部署命令已變更。 本文中的範例需要 Az
 
   如需租用戶層級部署的詳細資訊，請參閱[在租用戶層級建立資源](deploy-to-tenant.md)。
 
-本文中的範例會使用資源群組部署。
+針對每個範圍，部署範本的使用者必須擁有建立資源的必要許可權。
 
 ## <a name="deploy-local-template"></a>部署本機範本
 
-將資源部署至 Azure 時，您應該：
+您可以從本機電腦或儲存在外部的範本部署範本。 本節說明如何部署本機範本。
 
-1. 登入您的 Azure 帳戶
-2. 建立資源群組，作為已部署資源的容器。 資源群組的名稱只能包含英數字元、句點 (.)、底線、連字號及括弧。 最多可有 90 個字元。 不能以句點結束。
-3. 部署至資源群組，此範本會定義要建立的資源。
-
-範本可以包含讓您自訂部署的參數。 例如，您可以提供針對特定環境 (例如開發、測試和生產) 量身訂做的值。 範例範本會定義儲存體帳戶 SKU 的參數。
-
-下列範例會建立資源群組，並從您的本機電腦部署範本：
+如果您要部署到不存在的資源群組，請建立資源群組。 資源群組的名稱只能包含英數字元、句點 (.)、底線、連字號及括弧。 最多可有 90 個字元。 名稱不能以句點結尾。
 
 ```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
+```
+
+若要部署本機範本，請 `--template-file` 在部署命令中使用參數。 下列範例也會顯示如何設定來自範本的參數值。
+
+```azurecli-interactive
 az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
-  --template-file storage.json \
+  --template-file azuredeploy.json \
   --parameters storageAccountType=Standard_GRS
 ```
 
@@ -85,9 +82,31 @@ az deployment group create \
 "provisioningState": "Succeeded",
 ```
 
+## <a name="deploy-remote-template"></a>部署遠端範本
+
+您可能會想要將 ARM 範本儲存在您的本機電腦上，而不是在本機電腦上儲存它們。 您可以將範本儲存在原始檔控制存放庫 (例如 GitHub) 中。 或者，您可以將它們儲存在 Azure 儲存體帳戶中，以在組織內共用存取。
+
+如果您要部署到不存在的資源群組，請建立資源群組。 資源群組的名稱只能包含英數字元、句點 (.)、底線、連字號及括弧。 最多可有 90 個字元。 名稱不能以句點結尾。
+
+```azurecli-interactive
+az group create --name ExampleGroup --location "Central US"
+```
+
+使用 `template-uri` 參數部署外部範本。
+
+```azurecli-interactive
+az deployment group create \
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
+  --parameters storageAccountType=Standard_GRS
+```
+
+上述範例針對範本需要可公開存取 URI，這適用於大部分的案例，因為您的範本不應該包含機密資料。 如果您需要指定機密資料 (例如系統管理員密碼)，請將該值以安全參數傳遞。 但是，如果您想要管理範本的存取權，請考慮使用 [範本規格](#deploy-template-spec)。
+
 ## <a name="deployment-name"></a>部署名稱
 
-在上述範例中，您將部署命名為 `ExampleDeployment` 。 如果您未提供部署的名稱，則會使用範本檔案的名稱。 例如，如果您部署名為 `azuredeploy.json` 且未指定部署名稱的範本，則會將部署命名為 `azuredeploy` 。
+部署 ARM 範本時，您可以為部署提供名稱。 此名稱可協助您從部署歷程記錄中取出部署。 如果您未提供部署的名稱，則會使用範本檔案的名稱。 例如，如果您部署名為 `azuredeploy.json` 且未指定部署名稱的範本，則會將部署命名為 `azuredeploy` 。
 
 每次執行部署時，會將專案新增至資源群組的部署歷程記錄，並提供部署名稱。 如果您執行另一個部署並指定相同名稱，則會將先前的專案取代為目前的部署。 如果您想要在部署歷程記錄中維護唯一的專案，請為每個部署提供一個唯一的名稱。
 
@@ -111,30 +130,13 @@ deploymentName='ExampleDeployment'$(date +"%d-%b-%Y")
 
 為了避免與並行部署發生衝突，並確保部署歷程記錄中的唯一專案，請為每個部署提供一個唯一的名稱。
 
-## <a name="deploy-remote-template"></a>部署遠端範本
-
-您可能會想要將 ARM 範本儲存在您的本機電腦上，而不是在本機電腦上儲存它們。 您可以將範本儲存在原始檔控制存放庫 (例如 GitHub) 中。 或者，您可以將它們儲存在 Azure 儲存體帳戶中，以在組織內共用存取。
-
-若要部署外部範本，請使用 **template-uri** 參數。 在範例中使用 URI 以部署來自 GitHub 的範例範本。
-
-```azurecli-interactive
-az group create --name ExampleGroup --location "Central US"
-az deployment group create \
-  --name ExampleDeployment \
-  --resource-group ExampleGroup \
-  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
-  --parameters storageAccountType=Standard_GRS
-```
-
-上述範例針對範本需要可公開存取 URI，這適用於大部分的案例，因為您的範本不應該包含機密資料。 如果您需要指定機密資料 (例如系統管理員密碼)，請將該值以安全參數傳遞。 不過，如果不希望將範本公開存取，您可以將它儲存在私人儲存體容器中加以保護。 如需部署需要共用存取簽章 (SAS) 權杖之範本的相關資訊，請參閱[使用 SAS 權杖部署私人範本](secure-template-with-sas-token.md)。
-
 ## <a name="deploy-template-spec"></a>部署範本規格
 
 您可以建立 [範本規格](template-specs.md)，而不是部署本機或遠端範本。範本規格是您的 Azure 訂用帳戶中包含 ARM 範本的資源。 這可讓您輕鬆安全地與組織中的使用者共用範本。 您可以使用 Azure 角色型存取控制 (Azure RBAC) 來授與範本規格的存取權。這項功能目前為預覽狀態。
 
 下列範例示範如何建立和部署範本規格。只有當您已 [註冊預覽版](https://aka.ms/templateSpecOnboarding)時，才能使用這些命令。
 
-首先，請提供 ARM 範本來建立範本規格。
+首先，提供 ARM 範本來建立範本規格。
 
 ```azurecli
 az ts create \
@@ -145,7 +147,7 @@ az ts create \
   --template-file "./mainTemplate.json"
 ```
 
-然後，您會取得範本規格的識別碼，並加以部署。
+然後，取得範本規格的識別碼，並加以部署。
 
 ```azurecli
 id = $(az ts show --name storageSpec --resource-group templateSpecRG --version "1.0" --query "id")
@@ -160,17 +162,6 @@ az deployment group create \
 ## <a name="preview-changes"></a>預覽變更
 
 在部署範本之前，您可以預覽範本將對您的環境進行的變更。 使用「 [假設](template-deploy-what-if.md) 」作業來確認範本會進行您預期的變更。 假設也會驗證範本是否有錯誤。
-
-[!INCLUDE [resource-manager-cloud-shell-deploy.md](../../../includes/resource-manager-cloud-shell-deploy.md)]
-
-在 Cloud Shell 中使用下列命令︰
-
-```azurecli-interactive
-az group create --name examplegroup --location "South Central US"
-az deployment group create --resource-group examplegroup \
-  --template-uri <copied URL> \
-  --parameters storageAccountType=Standard_GRS
-```
 
 ## <a name="parameters"></a>參數
 
@@ -275,4 +266,3 @@ az deployment group create \
 - 若要指定如何處理存在於資源群組中、但尚未定義於範本中的資源，請參閱 [Azure Resource Manager 部署模式](deployment-modes.md)。
 - 若要瞭解如何在您的範本中定義參數，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
 - 如需解決常見部署錯誤的秘訣，請參閱[使用 Azure Resource Manager 針對常見的 Azure 部署錯誤進行疑難排解](common-deployment-errors.md)。
-- 如需部署需要 SAS 權杖之範本的詳細資訊，請參閱[使用 SAS 權杖部署私人範本](secure-template-with-sas-token.md)。

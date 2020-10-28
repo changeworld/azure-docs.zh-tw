@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7d7dc8564ee35bcd8bfd92d996d07e1d0c365806
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcf912f431d578a6e678801d3dc8f4e11484ea78
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776488"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678376"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>接受知識庫中的主動式學習建議問題
 
@@ -22,15 +22,15 @@ ms.locfileid: "91776488"
 
 ## <a name="turn-on-active-learning"></a>開啟主動式學習
 
-為了查看建議的問題，您必須開啟 QnA Maker 資源的 [主動式學習](use-active-learning.md) 。
+為了查看建議的問題，您必須開啟 QnA Maker 資源的 [主動式學習](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/active-learning-suggestions) 。
 
 ## <a name="view-suggested-questions"></a>查看建議的問題
 
-1. 為了查看建議的問題，請在 [ **編輯** 知識庫] 頁面上選取 [ **視圖選項**]，然後選取 [ **顯示主動式學習建議**]。
+1. 為了查看建議的問題，請在 [ **編輯** 知識庫] 頁面上選取 [ **視圖選項** ]，然後選取 [ **顯示主動式學習建議** ]。
 
     [![在入口網站的 [編輯] 區段中，選取 [顯示建議]，以查看主動式學習的新問題替代方案。](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
-1. 藉由選取 [ **依建議篩選**]，以有問題和答案配對來篩選知識庫，以顯示建議。
+1. 藉由選取 [ **依建議篩選** ]，以有問題和答案配對來篩選知識庫，以顯示建議。
 
     [![使用 [依建議篩選] 切換，只查看主動式學習的建議問題替代方案。](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
@@ -38,9 +38,9 @@ ms.locfileid: "91776488"
 
     [![選取或拒絕主動式學習的建議問題，方法是選取綠色核取記號或紅色刪除標記。](../media/improve-knowledge-base/accept-active-learning-suggestions-small.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
-    您可以在內容工具列中選取 [全部**新增**] 或 [**全部拒絕**]，以新增或刪除_所有建議_。
+    您可以在內容工具列中選取 [全部 **新增** ] 或 [ **全部拒絕** ]，以新增或刪除 _所有建議_ 。
 
-1. 選取 [儲存並訓練]****，以儲存對知識庫所做的變更。
+1. 選取 [儲存並訓練]  ，以儲存對知識庫所做的變更。
 
 1. 選取 [ **發佈** ]，以允許可從 [GenerateAnswer API](metadata-generateanswer-usage.md#generateanswer-request-configuration)取得變更。
 
@@ -145,7 +145,7 @@ JSON 主體有數個設定：
 |`feedbackRecords`|array|意見反應清單。|
 |`userId`|字串|接受建議問題之人員的使用者識別碼。 使用者識別碼格式是由您負責。 例如，電子郵件地址可以是您架構中的有效使用者識別碼。 選擇性。|
 |`userQuestion`|字串|使用者查詢的確切文字。 必要。|
-|`qnaID`|數字|問題的識別碼，可在 [GenerateAnswer 回應](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到。 |
+|`qnaID`|number|問題的識別碼，可在 [GenerateAnswer 回應](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到。 |
 
 範例 JSON 主體看起來像這樣：
 

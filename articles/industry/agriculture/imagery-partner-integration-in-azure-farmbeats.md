@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: 430907f43fb40f0ee24505bdc366a98a49f23b47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40e17a9f73d98f24c6c7fbb55ef38cc2bc088861
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82613280"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675932"
 ---
 # <a name="imagery-partner-integration"></a>影像合作夥伴整合
 
@@ -43,9 +43,9 @@ FarmBeats 提供下列功能：
 
 ## <a name="authentication"></a>驗證
 
-FarmBeats 使用 Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) (Azure AD) 。  Azure App Service 提供內建驗證和授權支援。 
+FarmBeats 使用 Microsoft Azure [Active Directory](../../app-service/overview-authentication-authorization.md) (Azure AD) 。  Azure App Service 提供內建驗證和授權支援。 
 
-如需 Azure AD 的詳細資訊，請參閱 [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)。   
+如需 Azure AD 的詳細資訊，請參閱 [Azure Active Directory](../../app-service/overview-authentication-authorization.md)。   
 
 FarmBeats Datahub 使用持有人驗證，其需要下列認證：
 
@@ -138,10 +138,10 @@ JSON 是一種與語言無關的通用資料格式，可提供任意資料結構
 
 1.  根據要上傳的影像類型，建立下欄欄位的新擴充類型：
 
-    - **場景來源**：例如 drone_partner_name
-    - **場景類型**：例如，無人機
-    - **場景檔案類型**：例如，chlorophyll index
-    - **場景檔案內容類型**：例如，影像/tiff
+    - **場景來源** ：例如 drone_partner_name
+    - **場景類型** ：例如，無人機
+    - **場景檔案類型** ：例如，chlorophyll index
+    - **場景檔案內容類型** ：例如，影像/tiff
 
 2.  呼叫/Farms API，以從 Azure FarmBeats 系統內取得伺服器陣列清單。
 3.  提供客戶從伺服器陣列清單選擇單一伺服器陣列的能力。
@@ -498,6 +498,6 @@ API 回應：
 對/SceneFile API 的 POST 呼叫會傳回 SAS 上傳 URL，可用來上傳 .csv 或 tiff 檔，方法是使用 Azure Blob 儲存體用戶端或程式庫。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需以 REST API 為基礎的整合詳細資料的詳細資訊，請參閱 [REST API](rest-api-in-azure-farmbeats.md)。

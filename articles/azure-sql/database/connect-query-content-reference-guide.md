@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 4d0be745ef076ececbc5719a221f49b69d46c2ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cc345eda8a8d51fb61cbbbd5cf0bf84633ccf0b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443917"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676095"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL Database 與 Azure SQL 受控執行個體連線及查詢的文章
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "91443917"
 | 快速入門 | 描述 |
 |---|---|
 |[SQL Server Management Studio](connect-query-ssms.md)|此快速入門示範如何使用 SSMS 連線至資料庫，然後使用 Transact-SQL 陳述式來查詢、插入、更新及刪除資料庫中的資料。|
-|[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)|此快速入門示範如何使用 Azure Data Studio 連線至資料庫，然後使用 Transact-SQL (T-SQL) 陳述式來建立 Azure Data Studio 教學課程中所使用的 TutorialDB。|
+|[Azure Data Studio](/sql/azure-data-studio/quickstart-sql-database?toc=%252fazure%252fsql-database%252ftoc.json)|此快速入門示範如何使用 Azure Data Studio 連線至資料庫，然後使用 Transact-SQL (T-SQL) 陳述式來建立 Azure Data Studio 教學課程中所使用的 TutorialDB。|
 |[Azure 入口網站](connect-query-portal.md)|此快速入門會示範如何使用查詢編輯器連線至資料庫 (僅限 Azure SQL Database)，然後使用 Transact-SQL 陳述式來查詢、插入、更新及刪除資料庫中的資料。|
 |[Visual Studio Code](connect-query-vscode.md)|此快速入門示範如何使用 Visual Studio Code 連線至資料庫，然後使用 Transact-SQL 陳述式來查詢、插入、更新及刪除資料庫中的資料。|
 |[.NET 搭配 Visual Studio](connect-query-dotnet-visual-studio.md)|此快速入門示範如何搭配使用 .NET Framework 與 Visual Studio 來建立 C# 程式，以連線至資料庫，並使用 Transact-SQL 陳述式查詢資料。|
@@ -64,9 +64,9 @@ Microsoft 針對連線至 Azure SQL Database 資料庫或 Azure SQL 受控執行
 
 | Language | 平台 | 其他資源 | 下載 | 開始使用 |
 | :-- | :-- | :-- | :-- | :-- |
-| C# | Windows、Linux、macOS | [Microsoft ADO.NET for SQL Server](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-sql-server) | [下載](https://www.microsoft.com/net/download/) | [開始使用](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
+| C# | Windows、Linux、macOS | [Microsoft ADO.NET for SQL Server](/sql/connect/ado-net/microsoft-ado-net-sql-server) | [下載](https://www.microsoft.com/net/download/) | [開始使用](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows、Linux、macOS | [Microsoft JDBC Driver for SQL Server](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [下載](https://go.microsoft.com/fwlink/?linkid=852460) |  [開始使用](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
-| PHP | Windows、Linux、macOS| [PHP SQL Driver for SQL Server](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server) | [下載](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server) | [開始使用](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
+| PHP | Windows、Linux、macOS| [PHP SQL Driver for SQL Server](/sql/connect/php/microsoft-php-driver-for-sql-server) | [下載](/sql/connect/php/download-drivers-php-sql-server) | [開始使用](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
 | Node.js | Windows、Linux、macOS | [Node.js Driver for SQL Server](/sql/connect/node-js/node-js-driver-for-sql-server/) | [安裝](/sql/connect/node-js/step-1-configure-development-environment-for-node-js-development/) |  [開始使用](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
 | Python | Windows、Linux、macOS | [Python SQL 驅動程式](/sql/connect/python/python-driver-for-sql-server/) | 安裝選項： <br/> \* [pymssql](/sql/connect/python/pymssql/step-1-configure-development-environment-for-pymssql-python-development/) <br/> \* [pyodbc](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development/) |  [開始使用](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
 | Ruby | Windows、Linux、macOS | [Ruby Driver for SQL Server](/sql/connect/ruby/ruby-driver-for-sql-server/) | [安裝](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development/) | [開始使用](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
@@ -76,7 +76,7 @@ Microsoft 針對連線至 Azure SQL Database 資料庫或 Azure SQL 受控執行
 
 | Language | 平台 | ORM |
 | :-- | :-- | :-- |
-| C# | Windows、Linux、macOS | [Entity Framework](https://docs.microsoft.com/ef)<br>[Entity Framework Core](https://docs.microsoft.com/ef/core/index) |
+| C# | Windows、Linux、macOS | [Entity Framework](/ef)<br>[Entity Framework Core](/ef/core/index) |
 | Java | Windows、Linux、macOS |[Hibernate ORM](https://hibernate.org/orm)|
 | PHP | Windows、Linux、macOS | [Laravel (Eloquent)](https://laravel.com/docs/eloquent)<br>[Doctrine](https://www.doctrine-project.org/projects/orm.html) |
 | Node.js | Windows、Linux、macOS | [Sequelize ORM](https://sequelize.org/) |
@@ -101,6 +101,6 @@ Microsoft 針對連線至 Azure SQL Database 資料庫或 Azure SQL 受控執行
 
 <!-- Link references. -->
 
-[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: /sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
 
-[step-4-connect-resiliently-to-sql-with-php-p42h]: https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php
+[step-4-connect-resiliently-to-sql-with-php-p42h]: /sql/connect/php/step-4-connect-resiliently-to-sql-with-php

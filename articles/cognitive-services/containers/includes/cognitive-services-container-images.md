@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/03/2020
 ms.author: aahi
-ms.openlocfilehash: d514460f3cd80b5b85604251743abbbbcd1adc8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f2611c9535b9721cccadf35e56bdd21a3020257
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906993"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677454"
 ---
 ### <a name="container-repositories-and-images"></a>容器儲存機制和映射
 
@@ -63,7 +63,7 @@ Microsoft Container Registry (MCR) syndicates 所有正式推出的認知服務�
 
 | 容器 | Container Registry/存放庫/映射名稱 |
 |--|--|
-| [語音轉換文字](../../speech-service/speech-container-howto.md?tab=stt) | `mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-text` |
+| [語音轉文字](../../speech-service/speech-container-howto.md?tab=stt) | `mcr.microsoft.com/azure-cognitive-services/speechservices/speech-to-text` |
 | [自訂語音轉換文字](../../speech-service/speech-container-howto.md?tab=cstt) | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-speech-to-text` |
 | [文字轉換語音](../../speech-service/speech-container-howto.md?tab=tts) | `mcr.microsoft.com/azure-cognitive-services/speechservices/text-to-speech` |
 
@@ -71,7 +71,7 @@ Microsoft Container Registry (MCR) syndicates 所有正式推出的認知服務�
 
 以下是公開提供的預覽容器。 Microsoft Container Registry (MCR) syndicates 認知服務的所有公開可用 ungated 容器。 您也可以直接從 [Docker hub](https://hub.docker.com/_/microsoft-azure-cognitive-services)使用容器。
 
-| 服務 | 容器 | Container Registry/存放庫/映射名稱 |
+| Service | 容器 | Container Registry/存放庫/映射名稱 |
 |--|--|--|
 | [文字分析](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | 關鍵片語擷取 | `mcr.microsoft.com/azure-cognitive-services/textanalytics/keyphrase` |
 | [文字分析](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | 語言偵測 | `mcr.microsoft.com/azure-cognitive-services/textanalytics/language` |
@@ -85,9 +85,9 @@ Microsoft Container Registry (MCR) syndicates 所有正式推出的認知服務�
 2. 核准時，從 MCR 下載容器。 
 3. 使用來自適當 Azure 資源的金鑰和端點來驗證執行時間的容器。 
 
-| 服務 | 容器 | Container Registry/存放庫/映射名稱 |
+| Service | 容器 | Container Registry/存放庫/映射名稱 |
 |--|--|--|
-| [電腦視覺](../../Computer-vision/computer-vision-how-to-install-containers.md) | 讀取 v3。0 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview` |
+| [電腦視覺](../../Computer-vision/computer-vision-how-to-install-containers.md) | 閱讀文章2。0 | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
 | [電腦視覺](../../Computer-vision/computer-vision-how-to-install-containers.md) | 讀取3.1 版 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
 | [電腦視覺](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-container) | 空間分析 | `mcr.microsoft.com/azure-cognitive-services/vision/spatial-analysis` |
 | [語音服務 API](../../speech-service/speech-container-howto.md?tab=ctts) | 自訂文字轉換語音 | `mcr.microsoft.com/azure-cognitive-services/speechservices/custom-text-to-speech` |

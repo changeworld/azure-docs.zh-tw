@@ -2,50 +2,50 @@
 title: 使用 REST API 和範本部署資源
 description: 使用 Azure Resource Manager 和 Resource Manager REST API 將資源部署到 Azure。 資源會定義在 Resource Manager 範本中。
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 17ea7da3e0b581ed60d2db97d350a70d5250ef28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: d1c8a365153007d3337d922bc163ba3767eeddc9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079479"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675413"
 ---
-# <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>使用 ARM 範本和 Resource Manager REST API 部署資源
+# <a name="deploy-resources-with-arm-templates-and-azure-resource-manager-rest-api"></a>使用 ARM 範本部署資源，並 Azure Resource Manager REST API
 
-這篇文章說明如何使用 Resource Manager REST API 與 Azure Resource Manager (ARM) 範本來將您的資源部署至 Azure。
+本文說明如何使用 Azure Resource Manager REST API 搭配 Azure Resource Manager 範本 (ARM 範本) 將您的資源部署到 Azure。
 
 您可以在要求本文中納入範本，也可以連結至檔案。 使用檔案時，該檔案可以是本機檔案，也可以是透過 URI 所取得的外部檔案。 當範本位於儲存體帳戶中時，您可以限制範本的存取權，並在部署期間提供共用存取簽章 (SAS) 權杖。
 
 ## <a name="deployment-scope"></a>部署範圍
 
-您可以將部署的目標設定為管理群組、Azure 訂用帳戶或資源群組。 在大部分情況下，您會將部署目標設定為資源群組。 使用管理群組或訂用帳戶部署，在指定的範圍內套用原則和角色指派。 您也可以使用「訂用帳戶」部署來建立資源群組，並將資源部署到其中。 視部署的範圍而定，您可以使用不同的命令。
+您可以將部署的目標設為資源群組、Azure 訂用帳戶、管理群組或租使用者。 視部署的範圍而定，您可以使用不同的命令。
 
-* 若要部署至**資源群組**，請使用 [[部署 - 建立]](/rest/api/resources/deployments/createorupdate)。 要求會傳送至：
+* 若要部署至 **資源群組** ，請使用 [[部署 - 建立]](/rest/api/resources/deployments/createorupdate)。 要求會傳送至：
 
   ```HTTP
-  PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
   ```
 
-* 若要部署至**訂用帳戶**，請使用 [[部署 - 在訂用帳戶範圍建立]](/rest/api/resources/deployments/createorupdateatsubscriptionscope)。 要求會傳送至：
+* 若要部署至 **訂用帳戶** ，請使用 [[部署 - 在訂用帳戶範圍建立]](/rest/api/resources/deployments/createorupdateatsubscriptionscope)。 要求會傳送至：
 
   ```HTTP
-  PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
   ```
 
   如需訂用帳戶層級部署的詳細資訊，請參閱[在訂用帳戶層級建立資源群組和資源](deploy-to-subscription.md)。
 
-* 若要部署到**管理群組**，請使用 [[部署 - 在管理群組範圍建立]](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)。 要求會傳送至：
+* 若要部署到 **管理群組** ，請使用 [[部署 - 在管理群組範圍建立]](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)。 要求會傳送至：
 
   ```HTTP
-  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
   ```
 
   如需管理群組層級部署的詳細資訊，請參閱[在管理群組層級建立資源](deploy-to-management-group.md)。
 
-* 若要部署至**租用戶**，請使用 [[部署 - 在租用戶範圍建立或更新]](/rest/api/resources/deployments/createorupdateattenantscope)。 要求會傳送至：
+* 若要部署至 **租用戶** ，請使用 [[部署 - 在租用戶範圍建立或更新]](/rest/api/resources/deployments/createorupdateattenantscope)。 要求會傳送至：
 
   ```HTTP
-  PUT https://management.azure.com/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
+  PUT https://management.azure.com/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
   ```
 
   如需租用戶層級部署的詳細資訊，請參閱[在租用戶層級建立資源](deploy-to-tenant.md)。
@@ -56,10 +56,10 @@ ms.locfileid: "87079479"
 
 1. 設定[一般參數和標頭](/rest/api/azure/) (包括驗證權杖)。
 
-1. 如果您沒有現有資源群組，請建立新的資源群組。 提供您的訂用帳戶識別碼、新資源群組的名稱，以及需要解決方案的位置。 如需詳細資訊，請參閱[建立資源群組](/rest/api/resources/resourcegroups/createorupdate)。
+1. 如果您要部署到不存在的資源群組，請建立資源群組。 提供您的訂用帳戶識別碼、新資源群組的名稱，以及需要解決方案的位置。 如需詳細資訊，請參閱[建立資源群組](/rest/api/resources/resourcegroups/createorupdate)。
 
    ```HTTP
-   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2019-10-01
+   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2020-06-01
    ```
 
    使用如下的要求本文：
@@ -83,7 +83,7 @@ ms.locfileid: "87079479"
 
    在要求本文中，提供您的範本和參數檔案的連結。 如需參數檔案的詳細資訊，請參閱[建立 Resource Manager 參數檔案](parameter-files.md)。
 
-   請注意，**mode** 是設為 **Incremental**。 若要執行完整部署，請將 **mode** 設為 **Complete**。 使用完整模式時請務必謹慎，因為您可能會不小心刪除不在範本中的資源。
+   請注意， **mode** 是設為 **Incremental** 。 若要執行完整部署，請將 **mode** 設為 **Complete** 。 使用完整模式時請務必謹慎，因為您可能會不小心刪除不在範本中的資源。
 
    ```json
    {

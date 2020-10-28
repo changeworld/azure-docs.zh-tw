@@ -3,15 +3,15 @@ title: 測試 Azure Functions
 description: 針對 Visual Studio 中的 C# 函式和 VS Code 中的 JavaScript 函式建立自動化測試
 author: craigshoemaker
 ms.topic: conceptual
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: e0abfc9be0031f899071d6e5e22274481ba76e10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ff70c14310dd81a051ac27c1d6d59bb3d1deb7b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212892"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677610"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>在 Azure Functions 中測試程式碼的策略
 
@@ -37,9 +37,9 @@ ms.locfileid: "88212892"
 若要設定您的環境，請建立函式並測試應用程式。 下列步驟協助您建立支援測試所需的應用程式和函式：
 
 1. [建立新的 Functions 應用程式](./functions-create-first-azure-function.md)，並將它命名為 **Functions**
-2. [從範本建立 HTTP 函式](./functions-create-first-azure-function.md) ，並將它命名為 **MyHttpTrigger**。
-3. [從範本建立計時器](./functions-create-scheduled-function.md) 函式，並將它命名為 **MyTimerTrigger**。
-4. 在方案中[建立 XUnit 測試應用程式](https://xunit.github.io/docs/getting-started-dotnet-core)，並將其命名為「**測試**」。
+2. [從範本建立 HTTP 函式](./functions-create-first-azure-function.md) ，並將它命名為 **MyHttpTrigger** 。
+3. [從範本建立計時器](./functions-create-scheduled-function.md) 函式，並將它命名為 **MyTimerTrigger** 。
+4. 在方案中 [建立 XUnit 測試應用程式](https://xunit.github.io/docs/getting-started-dotnet-core)，並將其命名為「 **測試** 」。
 5. 使用 NuGet 將參考從測試應用程式新增至 [AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
 6. [從函式參考 *函數* 應用](/visualstudio/ide/managing-references-in-a-project?view=vs-2017) 程式。 *測試* 應用程式。
 
@@ -107,11 +107,11 @@ namespace Functions.Tests
 
 `ListLogger` 類別實作下列成員，如 `ILogger` 介面所縮減：
 
-- **BeginScope**：範圍會將內容新增至您的記錄。 在此情況下，測試只會指向類別上的靜態實例， `NullScope` 以允許測試運作。
+- **BeginScope** ：範圍會將內容新增至您的記錄。 在此情況下，測試只會指向類別上的靜態實例， `NullScope` 以允許測試運作。
 
-- **IsEnabled**：提供的預設值 `false` 。
+- **IsEnabled** ：提供的預設值 `false` 。
 
-- **Log**：這個方法會使用提供的函式 `formatter` 來格式化訊息，然後將產生的文字加入至 `Logs` 集合。
+- **Log** ：這個方法會使用提供的函式 `formatter` 來格式化訊息，然後將產生的文字加入至 `Logs` 集合。
 
 `Logs` 集合是 `List<string>` 的執行個體，且在建構函式中初始化。
 
@@ -193,13 +193,13 @@ namespace Functions.Tests
 
 `TestFactory` 類別實作下列成員：
 
-- **Data**：此屬性會傳回範例資料的 [IEnumerable](/dotnet/api/system.collections.ienumerable) 集合。 索引鍵值組代表傳入查詢字串的值。
+- **Data** ：此屬性會傳回範例資料的 [IEnumerable](/dotnet/api/system.collections.ienumerable) 集合。 索引鍵值組代表傳入查詢字串的值。
 
-- **CreateDictionary**：這個方法會接受做為引數的索引鍵/值組，並傳回 `Dictionary` 用來建立的新， `QueryCollection` 以代表查詢字串值。
+- **CreateDictionary** ：這個方法會接受做為引數的索引鍵/值組，並傳回 `Dictionary` 用來建立的新， `QueryCollection` 以代表查詢字串值。
 
-- **CreateHttpRequest**：這個方法會建立以指定的查詢字串參數初始化的 HTTP 要求。
+- **CreateHttpRequest** ：這個方法會建立以指定的查詢字串參數初始化的 HTTP 要求。
 
-- **CreateLogger**：根據記錄器型別，這個方法會傳回用於測試的記錄器類別。 `ListLogger` 會保留已記錄訊息的追蹤以提供給測試的評估使用。
+- **CreateLogger** ：根據記錄器型別，這個方法會傳回用於測試的記錄器類別。 `ListLogger` 會保留已記錄訊息的追蹤以提供給測試的評估使用。
 
 最後，在函式中建立新的類別 *。測試* 名為 **FunctionsTests.cs** 的專案，然後輸入下列程式碼：
 
@@ -245,23 +245,23 @@ namespace Functions.Tests
 
 成員在此案例中的實作為：
 
-- **Http_trigger_should_return_known_string**：此測試會使用 Http 函式的查詢字串值建立要求 `name=Bill` ，並檢查是否傳回預期的回應。
+- **Http_trigger_should_return_known_string** ：此測試會使用 Http 函式的查詢字串值建立要求 `name=Bill` ，並檢查是否傳回預期的回應。
 
-- **Http_trigger_should_return_string_from_member_data**：此測試會使用 xUnit 屬性，將範例資料提供給 Http 函數。
+- **Http_trigger_should_return_string_from_member_data** ：此測試會使用 xUnit 屬性，將範例資料提供給 Http 函數。
 
-- **Timer_should_log_message**：此測試會建立的實例 `ListLogger` ，並將它傳遞給計時器函數。 一旦函式執行之後，便會檢查記錄以確保是否存在預期的訊息。
+- **Timer_should_log_message** ：此測試會建立的實例 `ListLogger` ，並將它傳遞給計時器函數。 一旦函式執行之後，便會檢查記錄以確保是否存在預期的訊息。
 
 如果您想要存取測試中的應用程式設定，您可以使用 [GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables)。
 
 ### <a name="run-tests"></a>執行測試
 
-若要執行測試，請瀏覽至 [測試總管]****，然後按一下 [全部執行]****。
+若要執行測試，請瀏覽至 [測試總管]  ，然後按一下 [全部執行]  。
 
 ![使用 Visual Studio 中的 C# 測試 Azure Functions](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
 ### <a name="debug-tests"></a>偵錯測試
 
-若要針對測試偵錯，請在測試上設定中斷點，瀏覽至 [測試總管]**** 然後按一下 [執行] > [對上一個回合偵錯]****。
+若要針對測試偵錯，請在測試上設定中斷點，瀏覽至 [測試總管]  然後按一下 [執行] > [對上一個回合偵錯]  。
 
 ## <a name="javascript-in-vs-code"></a>VS Code 中的 JavaScript
 
@@ -283,7 +283,7 @@ npm init -y
 npm i jest
 ```
 
-現在，更新 _package.json_，使用下列命令取代現有測試命令：
+現在，更新 _package.json_ ，使用下列命令取代現有測試命令：
 
 ```bash
 "scripts": {
@@ -315,7 +315,7 @@ module.exports = {
 
 此模組實作 `IsPastDue` 屬性，以作為假計時器執行個體。 NCRONTAB 運算式等計時器設定並不是必要的，因為測試控管只是直接呼叫函式來測試結果。
 
-接下來，使用 VS Code Functions 延伸模組[建立新的 JavaScript HTTP 函式](/azure/developer/javascript/tutorial-vscode-serverless-node-01)，並將它命名為 *HttpTrigger*。 一旦函式建立之後，在相同資料夾中新增名為 **index.test.js** 的檔案，並加入下列程式碼：
+接下來，使用 VS Code Functions 延伸模組 [建立新的 JavaScript HTTP 函式](/azure/developer/javascript/tutorial-vscode-serverless-node-01)，並將它命名為 *HttpTrigger* 。 一旦函式建立之後，在相同資料夾中新增名為 **index.test.js** 的檔案，並加入下列程式碼：
 
 ```javascript
 const httpFunction = require('./index');
@@ -336,7 +336,7 @@ test('Http trigger should return known text', async () => {
 
 範本的 HTTP 函式會傳回 "Hello" 以及與查詢字串中提供之名稱串連的字串。 這項測試會建立假的要求執行個體，並將它傳給 HTTP 函式。 測試會檢查 *log* 方法是否有呼叫過一次，並傳回等於 "Hello Bill" 的文字。
 
-接下來，使用 VS Code Functions 延伸模組建立新的 JavaScript 計時器函式，並將它命名為 *TimerTrigger*。 一旦函式建立之後，在相同資料夾中新增名為 **index.test.js** 的檔案，並加入下列程式碼：
+接下來，使用 VS Code Functions 延伸模組建立新的 JavaScript 計時器函式，並將它命名為 *TimerTrigger* 。 一旦函式建立之後，在相同資料夾中新增名為 **index.test.js** 的檔案，並加入下列程式碼：
 
 ```javascript
 const timerFunction = require('./index');
@@ -379,7 +379,7 @@ npm test
 }
 ```
 
-接下來，在測試中設定中斷點，然後按 **F5**。
+接下來，在測試中設定中斷點，然後按 **F5** 。
 
 ## <a name="next-steps"></a>後續步驟
 

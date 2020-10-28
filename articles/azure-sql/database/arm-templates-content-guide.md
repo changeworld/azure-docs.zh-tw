@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 48a2c00f7ff487def13e9872c4f43a3ca36809ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5202145af6f60f34bdce57aa94f4fec92a8b227f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444639"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677265"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database--sql-managed-instance"></a>適用於 Azure SQL Database 與 SQL 受控執行個體的 Azure Resource Manager 範本
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -39,7 +39,7 @@ Azure Resource Manager 範本可讓您定義基礎結構即程式碼，並將解
 | [Azure Web 應用程式與 SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database) | 此範本可在「基本」服務層級，於 Azure SQL Database 中建立免費的 Azure Web 應用程式與資料庫。|
 | [Azure Web 應用程式、Redis 快取與 SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) | 此範本可在相同的資源群組中建立 Web 應用程式、Redis 快取和資料庫，並且在 Web 應用程式中針對資料庫和 Redis 快取建立兩個連接字串。|
 | [使用 ADF V2 從 Blob 儲存體匯入資料](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-v2-blob-to-sql-copy) | 此 Azure Resource Manager 範本可建立能夠將資料從 Azure Blob 儲存體複製到 SQL Database 的 Azure Data Factory V2 執行個體。|
-| [HDInsight 叢集與資料庫](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | 此範本可讓您建立 HDInsight 叢集、邏輯 SQL 伺服器、資料庫與兩個資料表。 [搭配使用 Sqoop 與 HDInsight 中的 Hadoop](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop) 一文中使用了此範本。 |
+| [HDInsight 叢集與資料庫](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | 此範本可讓您建立 HDInsight 叢集、邏輯 SQL 伺服器、資料庫與兩個資料表。 [搭配使用 Sqoop 與 HDInsight 中的 Hadoop](../../hdinsight/hadoop/hdinsight-use-sqoop.md) 一文中使用了此範本。 |
 | [依排程執行 SQL 預存程序的 Azure 邏輯應用程式](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | 此範本可讓您建立會依排程執行 SQL 預存程序的邏輯應用程式。 此程序的任何引數都可放入範本的本文區段中。|
 
 ## <a name="azure-sql-managed-instance"></a>[Azure SQL 受控執行個體](#tab/managed-instance)
@@ -54,4 +54,3 @@ Azure Resource Manager 範本可讓您定義基礎結構即程式碼，並將解
 | [SQL 受控執行個體與虛擬機器](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-jumpbox) | 此部署會建立具有兩個子網路 `ManagedInstance` 和 `Management` 的 Azure 虛擬網路。 SQL 受控執行個體將部署在 `ManagedInstance` 子網路中。 具有最新版 SQL Server Management Studio (SSMS) 的虛擬機器會部署在 `Management` 子網路中。 |
 
 ---
-

@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.custom: devx-track-ansible
-ms.openlocfilehash: 8e34f73f1c403e3a7d21c6c30844f8b9073b3113
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-ansible, devx-track-azurecli
+ms.openlocfilehash: dd967ad08b628f9073edfe548033f7e97845d047
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373567"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735119"
 ---
 # <a name="post-deployment-tasks"></a>部署後工作
 
@@ -70,19 +70,19 @@ az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.
 
 在 Azure 入口網站中：
 
-1. 選取 [ **Azure Active Directory**  >  **應用程式註冊**]。
+1. 選取 [ **Azure Active Directory**  >  **應用程式註冊** ]。
 2. 搜尋您的應用程式註冊 (例如 OCPAzureAD)。
 3. 在結果中，按一下 [應用程式註冊]。
-4. 在 [設定]**** 下，選取 [必要權限]****。
-5. 在 [必要權限]**** 下，選取 [新增]****。
+4. 在 [設定]  下，選取 [必要權限]  。
+5. 在 [必要權限]  下，選取 [新增]  。
 
    ![App 註冊](media/openshift-post-deployment/app-registration.png)
 
-6. 按一下「步驟 1：選取 API」，然後按一下 [Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)]****。 按一下底部的 [選取]****。
+6. 按一下「步驟 1：選取 API」，然後按一下 [Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)]  。 按一下底部的 [選取]  。
 
    ![應用程式註冊選取 API](media/openshift-post-deployment/app-registration-select-api.png)
 
-7. 在「步驟 2：選取權限」，選取 [委派的權限]**** 底下的 [登入及讀取使用者個人檔案]****，然後按一下 [選取]****。
+7. 在「步驟 2：選取權限」，選取 [委派的權限]  底下的 [登入及讀取使用者個人檔案]  ，然後按一下 [選取]  。
 
    ![應用程式註冊存取](media/openshift-post-deployment/app-registration-access.png)
 
@@ -202,6 +202,6 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 > [!NOTE]
 > 只完成 OpenShift 專案範本區段中的步驟，而不是整個安裝區段。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [開始使用 OpenShift 容器平臺](https://docs.openshift.com)

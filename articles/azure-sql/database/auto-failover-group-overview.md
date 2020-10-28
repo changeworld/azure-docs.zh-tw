@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 2035fa811ed6bb5760f2527f66e0f2ca48ccb2c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c64112e30bdaf0da2218177bd2737c3ebe688b0c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627220"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675294"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自動容錯移轉群組可以啟用多個資料庫透明且協調的容錯移轉
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -44,7 +44,7 @@ ms.locfileid: "91627220"
 
 ## <a name="terminology-and-capabilities"></a>術語和功能
 
-- **容錯移轉群組 (霧化) **
+- **容錯移轉群組 (霧化)**
 
   容錯移轉群組是由單一伺服器或受管理的實例所管理的一組資料庫，可在所有或某些主資料庫因為主要區域中斷而變成無法使用時，以一個單位的形式容錯移轉至另一個區域。 針對 SQL 受控執行個體建立時，容錯移轉群組會包含實例中的所有使用者資料庫，因此只能在實例上設定一個容錯移轉群組。
   
@@ -114,7 +114,7 @@ ms.locfileid: "91627220"
   - 將資料庫重新放置到不同的區域
   - 在中斷情況趨緩 (容錯回復) 後，將資料庫傳回到主要區域。
 
-- **未計畫的容錯移轉**
+- **未規劃的容錯移轉**
 
    非計劃性或強制容錯移轉會立即將次要資料庫切換為主要角色，而不會與主要資料庫進行任何同步處理。 這項作業會導致資料遺失。 非計劃性容錯移轉是主要資料庫無法存取時，用來作為中斷期間的復原方法。 當原始的主要複本重新上線時，它會自動重新連線而不進行同步處理，並成為新的次要資料庫。
 
@@ -243,7 +243,7 @@ ms.locfileid: "91627220"
 
 ### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>在不同訂用帳戶中的受控執行個體之間建立容錯移轉群組
 
-只要訂用帳戶與相同的 [Azure Active Directory 租](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)使用者相關聯，您就可以在兩個不同的訂用帳戶中建立 SQL 受控實例之間的容錯移轉群組。 使用 PowerShell API 時，您可以藉由指定 `PartnerSubscriptionId` 次要 SQL 受控執行個體的參數來進行。 使用 REST API 時，參數中包含的每個實例識別碼都 `properties.managedInstancePairs` 可以有自己的 subscriptionID。
+只要訂用帳戶與相同的 [Azure Active Directory 租](../../active-directory/fundamentals/active-directory-whatis.md#terminology)使用者相關聯，您就可以在兩個不同的訂用帳戶中建立 SQL 受控實例之間的容錯移轉群組。 使用 PowerShell API 時，您可以藉由指定 `PartnerSubscriptionId` 次要 SQL 受控執行個體的參數來進行。 使用 REST API 時，參數中包含的每個實例識別碼都 `properties.managedInstancePairs` 可以有自己的 subscriptionID。
   
 > [!IMPORTANT]
 > Azure 入口網站不支援跨不同訂用帳戶建立容錯移轉群組。 此外，對於跨不同訂用帳戶和/或資源群組的現有容錯移轉群組，無法透過入口網站從主要 SQL 受控執行個體手動起始容錯移轉。 請改為從異地次要執行個體起始。
@@ -332,7 +332,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 4. 偵測到中斷情況時，起始手動容錯移轉。 這個選項最適合用於在前端和資料層之間需要一致延遲的應用程式，且支援當前端、資料層或兩者受到中斷影響時進行復原。
 
 > [!NOTE]
-> 如果您使用**唯讀接聽程式**對唯讀工作負載進行負載平衡，請確保此工作負載會在 VM 或是次要地區的其他資源中執行，使其得以連線到次要資料庫。
+> 如果您使用 **唯讀接聽程式** 對唯讀工作負載進行負載平衡，請確保此工作負載會在 VM 或是次要地區的其他資源中執行，使其得以連線到次要資料庫。
 
 ### <a name="use-failover-groups-and-firewall-rules"></a>使用容錯移轉群組和防火牆規則
 
@@ -341,8 +341,8 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 1. [建立公用 IP](../../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 2. [建立公用負載平衡器](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)並為其指派公用 IP。
 3. [建立虛擬網路和虛擬機器](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)以用於前端元件
-4. [建立網路安全性群組](../../virtual-network/security-overview.md)並設定輸入連線。
-5. 使用 ' Sql ' [服務標記](../../virtual-network/security-overview.md#service-tags)，確定輸出連線已開放 Azure SQL Database。
+4. [建立網路安全性群組](../../virtual-network/network-security-groups-overview.md)並設定輸入連線。
+5. 使用 ' Sql ' [服務標記](../../virtual-network/network-security-groups-overview.md#service-tags)，確定輸出連線已開放 Azure SQL Database。
 6. 建立 [SQL Database 防火牆規則](firewall-configure.md) ，以允許您在步驟1中建立之公用 IP 位址的輸入流量。
 
 如需有關如何設定輸出存取以及要在防火牆規則中使用哪個 IP 的詳細資訊，請參閱 [負載平衡器輸出連接](../../load-balancer/load-balancer-outbound-connections.md)。
@@ -362,7 +362,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 - SQL 受控執行個體的實例所使用的虛擬網路必須透過 [VPN 閘道](../../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)進行連線。 當兩個虛擬網路透過內部部署網路連線時，請確定防火牆規則不會封鎖連接埠 5022 和 11000-11999。 支援全域 VNet 對等互連，但有下列注意事項中所述的限制。
 
    > [!IMPORTANT]
-   > [在9/22/2020 上，我們為新建立的虛擬叢集宣佈了全域虛擬網路對等互連](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 這表示在公告日期之後于空白子網中建立的 SQL 受控實例，以及這些子網中建立的所有後續受控實例，都支援全域虛擬網路對等互連。 針對所有其他 SQL 受控實例對等互連支援，受限於相同區域中的網路，原因是 [全域虛擬網路對等互連的限制](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)。 另請參閱 [Azure 虛擬網路常見問題](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) 文章中的相關章節，以取得詳細資料。 
+   > [在9/22/2020 上，我們為新建立的虛擬叢集宣佈了全域虛擬網路對等互連](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 這表示在公告日期之後于空白子網中建立的 SQL 受控實例，以及這些子網中建立的所有後續受控實例，都支援全域虛擬網路對等互連。 針對所有其他 SQL 受控實例對等互連支援，受限於相同區域中的網路，原因是 [全域虛擬網路對等互連的限制](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)。 另請參閱 [Azure 虛擬網路常見問題](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) 文章中的相關章節，以取得詳細資料。 
 
 - 這兩個 SQL 受控執行個體 Vnet 不能有重迭的 IP 位址。
 - 您需要設定網路安全性群組 (NSG)，以便連接埠 5022 和範圍 11000 ~ 12000 開啟來自其他受控執行個體子網路的輸入和輸出連線。 這是為了允許執行個體之間的複寫流量。
@@ -406,7 +406,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 ## <a name="programmatically-managing-failover-groups"></a>以程式設計方式管理容錯移轉群組
 
-如前所述，自動容錯移轉群組和主動式異地複寫也可以使用 Azure PowerShell 和 REST API，以程式設計的方式管理。 下表描述可用的命令集。 主動式異地複寫包含一組可管理的 Azure Resource Manager API，包括 [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) 和 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/)。 這些 API 需要使用資源群組，並支援以角色為基礎的安全性 (RBAC)。 如需有關如何執行存取角色的詳細資訊，請參閱 [azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)。
+如前所述，自動容錯移轉群組和主動式異地複寫也可以使用 Azure PowerShell 和 REST API，以程式設計的方式管理。 下表描述可用的命令集。 主動式異地複寫包含一組可管理的 Azure Resource Manager API，包括 [Azure SQL Database REST API](/rest/api/sql/) 和 [Azure PowerShell Cmdlet](/powershell/azure/)。 這些 API 需要使用資源群組，並支援以角色為基礎的安全性 (RBAC)。 如需有關如何執行存取角色的詳細資訊，請參閱 [azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)。
 
 ### <a name="manage-sql-database-failover"></a>管理 SQL Database 容錯移轉
 
@@ -435,13 +435,13 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 | API | 描述 |
 | --- | --- |
-| [建立或更新容錯移轉群組](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | 建立或更新容錯移轉群組 |
-| [刪除容錯移轉群組](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | 從伺服器移除容錯移轉群組 |
-| [容錯移轉 (計劃性)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | 觸發從目前主伺服器到具有完整資料同步處理的次要伺服器的容錯移轉。|
-| [強制容錯移轉允許資料遺失](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) | 觸發從目前的主伺服器容錯移轉至次要伺服器，而不需要同步處理資料。 這項作業可能會導致資料遺失。 |
-| [取得容錯移轉群組](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | 抓取容錯移轉群組的設定。 |
-| [依伺服器列出容錯移轉群組](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | 列出伺服器上的容錯移轉群組。 |
-| [更新容錯移轉群組](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | 更新容錯移轉群組的設定。 |
+| [建立或更新容錯移轉群組](/rest/api/sql/failovergroups/createorupdate) | 建立或更新容錯移轉群組 |
+| [刪除容錯移轉群組](/rest/api/sql/failovergroups/delete) | 從伺服器移除容錯移轉群組 |
+| [容錯移轉 (計劃性)](/rest/api/sql/failovergroups/failover) | 觸發從目前主伺服器到具有完整資料同步處理的次要伺服器的容錯移轉。|
+| [強制容錯移轉允許資料遺失](/rest/api/sql/failovergroups/forcefailoverallowdataloss) | 觸發從目前的主伺服器容錯移轉至次要伺服器，而不需要同步處理資料。 這項作業可能會導致資料遺失。 |
+| [取得容錯移轉群組](/rest/api/sql/failovergroups/get) | 抓取容錯移轉群組的設定。 |
+| [依伺服器列出容錯移轉群組](/rest/api/sql/failovergroups/listbyserver) | 列出伺服器上的容錯移轉群組。 |
+| [更新容錯移轉群組](/rest/api/sql/failovergroups/update) | 更新容錯移轉群組的設定。 |
 
 ---
 
@@ -473,12 +473,12 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 | API | 描述 |
 | --- | --- |
-| [建立或更新容錯移轉群組](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | 建立或更新容錯移轉群組的設定 |
-| [刪除容錯移轉群組](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | 從實例移除容錯移轉群組 |
-| [容錯移轉 (計劃性)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | 使用完整資料同步處理，觸發從目前的主要實例到這個實例的容錯移轉。 |
-| [強制容錯移轉允許資料遺失](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) | 觸發從目前的主要實例到次要實例的容錯移轉，而不需要同步處理資料。 這項作業可能會導致資料遺失。 |
-| [取得容錯移轉群組](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | 抓取容錯移轉群組的設定。 |
-| [列出容錯移轉群組 - 依位置列出](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | 列出位置中的容錯移轉群組。 |
+| [建立或更新容錯移轉群組](/rest/api/sql/instancefailovergroups/createorupdate) | 建立或更新容錯移轉群組的設定 |
+| [刪除容錯移轉群組](/rest/api/sql/instancefailovergroups/delete) | 從實例移除容錯移轉群組 |
+| [容錯移轉 (計劃性)](/rest/api/sql/instancefailovergroups/failover) | 使用完整資料同步處理，觸發從目前的主要實例到這個實例的容錯移轉。 |
+| [強制容錯移轉允許資料遺失](/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) | 觸發從目前的主要實例到次要實例的容錯移轉，而不需要同步處理資料。 這項作業可能會導致資料遺失。 |
+| [取得容錯移轉群組](/rest/api/sql/instancefailovergroups/get) | 抓取容錯移轉群組的設定。 |
+| [列出容錯移轉群組 - 依位置列出](/rest/api/sql/instancefailovergroups/listbylocation) | 列出位置中的容錯移轉群組。 |
 
 ---
 

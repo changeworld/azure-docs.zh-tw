@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: e305795f4f45a0ea858eb8d74880aedca8ec538d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d57afbe2ebdde7755eec659f56e402315a60ec7d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979841"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676620"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>教學課程：設定 SAP SuccessFactors 來 Active Directory 使用者布建 
 本教學課程的目的是要說明您需要執行的步驟，以將使用者從 SuccessFactors 員工中心布建至 Active Directory (AD) 和 Azure AD，並選擇性地將電子郵件地址回寫至 SuccessFactors。 
@@ -95,18 +95,18 @@ Azure AD 使用者布建服務所支援的 SuccessFactors 使用者布建工作�
 ### <a name="create-an-api-permissions-role"></a>建立 API 許可權角色
 
 * 使用可存取系統管理中心的使用者帳戶登入 SAP SuccessFactors。
-* 搜尋 [ *管理] 許可權角色*，然後從搜尋結果中選取 [ **管理許可權角色** ]。
+* 搜尋 [ *管理] 許可權角色* ，然後從搜尋結果中選取 [ **管理許可權角色** ]。
   ![管理許可權角色](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
-* 從 [許可權角色] 清單中，按一下 [ **建立新**的]。
+* 從 [許可權角色] 清單中，按一下 [ **建立新** 的]。
   > [!div class="mx-imgBorder"]
   > ![建立新的許可權角色](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
 * 為新的許可權角色新增 **角色名稱** 和 **描述** 。 名稱和描述應該指出角色是用於 API 使用方式的許可權。
   > [!div class="mx-imgBorder"]
   > ![許可權角色詳細資料](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
-* 在 [許可權設定] 下，按一下 [ **許可權**]，然後依序向下滾動許可權清單，再按一下 [ **管理整合工具**]。 核取 [ **允許系統管理員透過基本驗證存取 ODATA API**] 的核取方塊。
+* 在 [許可權設定] 下，按一下 [ **許可權** ]，然後依序向下滾動許可權清單，再按一下 [ **管理整合工具** ]。 核取 [ **允許系統管理員透過基本驗證存取 ODATA API** ] 的核取方塊。
   > [!div class="mx-imgBorder"]
   > ![管理整合工具](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
-* 在相同的方塊中向下移動，然後選取 [ **員工中心 API**]。 新增如下所示的許可權，以使用 odata api 來讀取，並使用 ODATA API 進行編輯。 如果您打算使用相同的帳戶進行回寫至 SuccessFactors 案例，請選取 [編輯] 選項。 
+* 在相同的方塊中向下移動，然後選取 [ **員工中心 API** ]。 新增如下所示的許可權，以使用 odata api 來讀取，並使用 ODATA API 進行編輯。 如果您打算使用相同的帳戶進行回寫至 SuccessFactors 案例，請選取 [編輯] 選項。 
   > [!div class="mx-imgBorder"]
   > ![讀取寫入權限](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
 
@@ -117,10 +117,10 @@ Azure AD 使用者布建服務所支援的 SuccessFactors 使用者布建工作�
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>建立 API 使用者的許可權群組
 
-* 在 SuccessFactors 系統管理中心內，搜尋 [ *管理許可權群組*]，然後從搜尋結果中選取 [ **管理許可權群組** ]。
+* 在 SuccessFactors 系統管理中心內，搜尋 [ *管理許可權群組* ]，然後從搜尋結果中選取 [ **管理許可權群組** ]。
   > [!div class="mx-imgBorder"]
   > ![管理許可權群組](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
-* 從 [管理許可權群組] 視窗中，按一下 [ **建立新**的]。
+* 從 [管理許可權群組] 視窗中，按一下 [ **建立新** 的]。
   > [!div class="mx-imgBorder"]
   > ![Add new group](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
 * 加入新群組的組名。 組名應該指出群組適用于 API 使用者。
@@ -133,9 +133,9 @@ Azure AD 使用者布建服務所支援的 SuccessFactors 使用者布建工作�
 
 ### <a name="grant-permission-role-to-the-permission-group"></a>將許可權角色授與許可權群組
 
-* 在 SuccessFactors 系統管理中心內，搜尋 [ *管理許可權角色*]，然後從搜尋結果中選取 [ **管理許可權角色** ]。
-* 從 [ **許可權角色] 清單**中，選取您為 API 使用方式許可權所建立的角色。
-* 在 **[將此角色授與**] 底下，按一下 [ **新增** ] 按鈕。
+* 在 SuccessFactors 系統管理中心內，搜尋 [ *管理許可權角色* ]，然後從搜尋結果中選取 [ **管理許可權角色** ]。
+* 從 [ **許可權角色] 清單** 中，選取您為 API 使用方式許可權所建立的角色。
+* 在 **[將此角色授與** ] 底下，按一下 [ **新增** ] 按鈕。
 * 從下拉式功能表中選取 [ **許可權群組** ]，然後按一下 [ **選取 ...** ] 開啟 [群組] 視窗，以搜尋並選取上面建立的群組。 
   > [!div class="mx-imgBorder"]
   > ![新增許可權群組](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
@@ -158,19 +158,19 @@ Azure AD 使用者布建服務所支援的 SuccessFactors 使用者布建工作�
 
 **若要將 SuccessFactors 設定為 Active Directory 布建：**
 
-1. 移至 <https://portal.azure.com> 。
+1. 移至 <https://portal.azure.com>
 
-2. 在左側導覽列中，選取 [Azure Active Directory]****
+2. 在左側導覽列中，選取 [Azure Active Directory] 
 
 3. 依序選取 [企業應用程式] 和 [所有應用程式]。
 
 4. 選取 [新增應用程式]，然後選取 [全部] 類別。
 
-5. 搜尋 **SuccessFactors 以 Active Directory 使用者**布建，並從資源庫新增該應用程式。
+5. 搜尋 **SuccessFactors 以 Active Directory 使用者** 布建，並從資源庫新增該應用程式。
 
-6. 新增應用程式並顯示應用程式詳細資料畫面之後，**請選取 [** 布建]
+6. 新增應用程式並顯示應用程式詳細資料畫面之後， **請選取 [** 布建]
 
-7. **將布**建**模式**變更為**自動**
+7. **將布** 建 **模式** 變更為 **自動**
 
 8. 按一下顯示的資訊橫幅以下載布建代理程式。 
    > [!div class="mx-imgBorder"]
@@ -182,7 +182,7 @@ Azure AD 使用者布建服務所支援的 SuccessFactors 使用者布建工作�
 若要佈建至內部部署的 Active Directory，必須在具有 .NET 4.7.1+ Framework 且可存取所需 Active Directory 網域的伺服器上，安裝佈建代理程式。
 
 > [!TIP]
-> 您可以使用[這裡](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)提供的指示，檢查您伺服器上的 .NET Framework 版本。
+> 您可以使用[這裡](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)提供的指示，檢查您伺服器上的 .NET Framework 版本。
 > 如果伺服器未安裝 .NET 4.7.1 或更新版本，您可以從[這裡](https://support.microsoft.com/help/4033342/the-net-framework-4-7-1-offline-installer-for-windows)下載。  
 
 將下載的代理程式安裝程式傳輸到伺服器主機，並遵循下面提供的步驟來完成代理程式設定。
@@ -243,13 +243,13 @@ Azure AD 使用者布建服務所支援的 SuccessFactors 使用者布建工作�
 
 1. 完成 [系統管理員認證] 區段，如下所示：
 
-   * 系統**管理員使用者名稱**–輸入 SuccessFactors API 使用者帳戶的使用者名稱，並附加公司識別碼。 格式如下： **username \@ companyID**
+   * 系統 **管理員使用者名稱** –輸入 SuccessFactors API 使用者帳戶的使用者名稱，並附加公司識別碼。 格式如下： **username \@ companyID**
 
    * **管理員密碼–** 輸入 SuccessFactors API 使用者帳戶的密碼。 
 
-   * **租使用者 URL –** 輸入 SuccessFactors OData API 服務端點的名稱。 只輸入伺服器的主機名稱（不含 HTTP 或 HTTPs）。 此值應如下所示： **<的 api-伺服器名稱>. successfactors.com**。
+   * **租使用者 URL –** 輸入 SuccessFactors OData API 服務端點的名稱。 只輸入伺服器的主機名稱（不含 HTTP 或 HTTPs）。 此值應如下所示： **<的 api-伺服器名稱>. successfactors.com** 。
 
-   * **Active Directory 樹系** – 向代理程式註冊的 Active Directory 網域「名稱」。 請使用下拉式清單來選取用於佈建的目標網域。 此值通常是如下的字串：*contoso.com*
+   * **Active Directory 樹系** – 向代理程式註冊的 Active Directory 網域「名稱」。 請使用下拉式清單來選取用於佈建的目標網域。 此值通常是如下的字串： *contoso.com*
 
    * **Active Directory 容器 -** 輸入容器 DN，其中是代理程式預設應建立使用者帳戶的位置。
         範例： *OU = Users，dc = contoso，dc = com*
@@ -258,19 +258,19 @@ Azure AD 使用者布建服務所支援的 SuccessFactors 使用者布建工作�
 
    * **通知電子郵件** – 輸入您的電子郵件地址，然後勾選 [發生失敗時傳送電子郵件] 核取方塊。
     > [!NOTE]
-    > 如果佈建作業進入[隔離](/azure/active-directory/manage-apps/application-provisioning-quarantine-status)狀態，Azure AD 佈建服務會傳送電子郵件通知。
+    > 如果佈建作業進入[隔離](../app-provisioning/application-provisioning-quarantine-status.md)狀態，Azure AD 佈建服務會傳送電子郵件通知。
 
    * 按一下 [測試連線] 按鈕。 如果連線測試成功，請按一下頂端的 [儲存] 按鈕。 如果失敗，請仔細檢查代理程式設定上設定的 SuccessFactors 認證和 AD 認證是否有效。
     >[!div class="mx-imgBorder"]
     >![Azure 入口網站](./media/sap-successfactors-inbound-provisioning/sf2ad-provisioning-creds.png)
 
-   * 成功儲存認證之後，[對應]**區段將**會顯示 [**同步處理 SuccessFactors 使用者至內部部署**] 的預設對應 Active Directory
+   * 成功儲存認證之後，[對應] **區段將** 會顯示 [ **同步處理 SuccessFactors 使用者至內部部署** ] 的預設對應 Active Directory
 
 ### <a name="part-4-configure-attribute-mappings"></a>第 4 部分：設定屬性對應
 
 在本節中，您將設定使用者資料如何從 SuccessFactors 流至 Active Directory。
 
-1. 在 [布建] 索引標籤的 [對應] **底下，按一下**[ **將 SuccessFactors 使用者同步至內部部署 Active Directory**。
+1. 在 [布建] 索引標籤的 [對應] **底下，按一下** [ **將 SuccessFactors 使用者同步至內部部署 Active Directory** 。
 
 1. 在 [ **來源物件範圍** ] 欄位中，您可以藉由定義一組以屬性為基礎的篩選，來選取要在 SuccessFactors 中布建至 AD 的使用者集合範圍。 預設範圍是「SuccessFactors 中的所有使用者」。 範例篩選：
 

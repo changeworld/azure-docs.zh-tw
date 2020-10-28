@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 14360ab7668248f39c8ad0916eb964ffe11f7959
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 25eaca08202bd01ad4777fdb73eb75abff458c29
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331289"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677840"
 ---
 # <a name="vm-certification-troubleshooting"></a>VM 認證疑難排解
 
@@ -37,6 +37,9 @@ ms.locfileid: "92331289"
 > [!Note]
 > 如果您使用的是不是從 Azure Marketplace 取得的 Linux 基底映射，您可以將第一個磁碟分割的 2048 KB 位移。 這可讓您使用未格式化的空間來新增計費資訊，並允許 Azure 將您的 VM 發佈至 Azure Marketplace。  
 
+> [!Note]
+> 如果您使用的是不是從 Marketplace 取得的 Linux 基底映射，您可以使用 2048 KB 來位移第一個磁碟分割。 這可讓您使用未格式化的空間來新增計費資訊，並允許 Azure 將您的 VM 發佈至 Marketplace。  
+
 ## <a name="vm-extension-failure"></a>VM 延伸模組失敗
 
 查看您的映射是否支援 VM 擴充功能。
@@ -44,18 +47,18 @@ ms.locfileid: "92331289"
 若要啟用 VM 擴充功能，請執行下列動作：
 
 1. 選取您的 Linux VM。
-1. 移至 [ **診斷設定**]。
-1. 藉由更新 **儲存體帳戶**來啟用基底矩陣。
+1. 移至 [ **診斷設定** ]。
+1. 藉由更新 **儲存體帳戶** 來啟用基底矩陣。
 1. 選取 [儲存]。
 
    ![啟用來賓層級監視](./media/create-vm/vm-certification-issues-solutions-1.png)
 
 若要確認是否已正確啟用 VM 擴充功能，請執行下列動作：
 
-1. 在 VM 中，選取 [ **VM 擴充** 功能] 索引標籤，然後確認 **Linux 診斷擴充**功能的狀態。
+1. 在 VM 中，選取 [ **VM 擴充** 功能] 索引標籤，然後確認 **Linux 診斷擴充** 功能的狀態。
 1. 
-    * 如果狀態為「布建 *成功*」，則會傳遞延伸模組測試案例。  
-    * 如果狀態為「布建 *失敗*」，擴充功能測試案例會失敗，而您必須設定強化旗標。
+    * 如果狀態為「布建 *成功* 」，則會傳遞延伸模組測試案例。  
+    * 如果狀態為「布建 *失敗* 」，擴充功能測試案例會失敗，而您必須設定強化旗標。
 
       ![顯示布建成功的螢幕擷取畫面](./media/create-vm/vm-certification-issues-solutions-2.png)
 
@@ -67,7 +70,7 @@ ms.locfileid: "92331289"
 
 布建問題可能包含下列失敗案例：
 
-|案例|錯誤|原因|解決方法|
+|案例|Error|原因|解決方法|
 |---|---|---|---|
 |1| (VHD) 的虛擬硬碟無效|如果 VHD 頁尾中指定的 cookie 值不正確，VHD 將會視為無效。|重新建立映射並提交要求。|
 |2|不正確 blob 類型|VM 布建失敗，因為使用的區塊是 blob 類型，而不是頁面類型。|重新建立映射並提交要求。|
@@ -99,7 +102,7 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 
 下表列出工具組將執行的 Linux 測試案例。 [描述] 中會陳述測試驗證。
 
-|案例|測試案例|說明|
+|案例|測試案例|描述|
 |---|---|---|
 |1|Bash 歷程記錄|您應先清除 Bash 記錄檔，再建立 VM 映射。|
 |2|Linux 代理程式版本|應安裝 Azure Linux 代理程式2.2.41 或更新版本。|
@@ -120,14 +123,14 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 |---|---|---|---|
 |1|Linux 代理程式版本測試案例|Linux 代理程式的最低版本是2.2.41 或更新版本。 自2020年5月1日起，這項需求是強制的。|請更新 Linux 代理程式版本，其應為2.241 或更新版本。 如需詳細資訊，您可以造訪 [Linux 代理程式版本更新頁面](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。|
 |2|Bash 歷程記錄測試案例|如果您提交的映射中 bash 歷程記錄的大小超過 1 kb (KB) ，您將會看到錯誤。 大小限制為 1 KB，以確保不會在 bash 記錄檔中捕捉任何可能的機密資訊。|若要解決此問題，請將 VHD 掛接到任何其他工作中的 VM，並進行您想要的任何變更 (例如，刪除 *bash* 歷程記錄檔) ，將大小減少為小於或等於 1 KB。|
-|3|必要的核心參數測試案例|當 **主控台** 的值未設為 **ttyS0**時，您會收到此錯誤。 執行下列命令來進行檢查：<br>`cat /proc/cmdline`|將 [ **主控台** ] 的值設定為 [ **ttyS0**]，然後重新提交要求。|
-|4|ClientAlive 間隔測試案例|如果工具組的結果會在此測試案例中提供失敗的結果，則會有不適當的 **ClientAliveInterval**值。|將 **ClientAliveInterval** 的值設定為小於或等於235，然後重新提交要求。|
+|3|必要的核心參數測試案例|當 **主控台** 的值未設為 **ttyS0** 時，您會收到此錯誤。 執行下列命令來進行檢查：<br>`cat /proc/cmdline`|將 [ **主控台** ] 的值設定為 [ **ttyS0** ]，然後重新提交要求。|
+|4|ClientAlive 間隔測試案例|如果工具組的結果會在此測試案例中提供失敗的結果，則會有不適當的 **ClientAliveInterval** 值。|將 **ClientAliveInterval** 的值設定為小於或等於235，然後重新提交要求。|
 
 ### <a name="windows-test-cases"></a>Windows 測試案例
 
 下表列出工具組將執行的 Windows 測試案例，以及測試驗證的描述：
 
-|案例 |測試案例|說明|
+|案例 |測試案例|描述|
 |---|---|---|---|
 |1|OS 架構|Azure 僅支援64位作業系統。|
 |2|使用者帳戶相依性|應用程式執行不應依存于系統管理員帳戶。|
@@ -148,7 +151,7 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 |17|無線區域網路服務|無線局域網路服務。 尚未支援此伺服器功能。 應用程式不應該相依于這項功能。|
 |
 
-如果您在上述測試案例中遇到任何失敗，請參閱此方案之表格中的 [ **描述** ] 資料行。 如果您需要詳細資訊，請洽詢支援小組。
+如果您在上述測試案例中遇到任何失敗，請參閱此方案之表格中的 [ **描述** ] 資料行。 如果您需要詳細資訊，請洽詢支援小組。 
 
 ## <a name="data-disk-size-verification"></a>資料磁片大小驗證
 
@@ -181,7 +184,7 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 
 若要避免與 WannaCry 病毒相關的潛在攻擊，請確定所有 Windows 映像要求都會以最新的修補程式更新。
 
-若要檢查 Windows Server 修補版本的 OS 詳細資料，以及它所支援的最低版本，請參閱下表：
+若要檢查 Windows Server 修補版本的 OS 詳細資料，以及它所支援的最低版本，請參閱下表： 
 
 影像檔案版本可以從或進行 `C:\windows\system32\drivers\srv.sys` 驗證 `srv2.sys` 。
 
@@ -205,13 +208,13 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 
 如果您的映射未安裝下列其中一個核心版本，請使用正確的修補程式加以更新。 使用這些必要的修補程式更新映射之後，請向支援小組要求所需的核准：
 
-- CVE-2019-11477
-- CVE-2019-11478
+- CVE-2019-11477 
+- CVE-2019-11478 
 - CVE-2019-11479
 
 |作業系統系列|版本|核心|
 |---|---|---|
-|Ubuntu|14.04 LTS|4.4.0-151|
+|Ubuntu|14.04 LTS|4.4.0-151| 
 ||14.04 LTS|4.15.0-1049-*-azure|
 ||16.04 LTS|4.15.0-1049|
 ||18.04 LTS|4.18.0-1023|
@@ -242,7 +245,7 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 ||SLES15|4.12.14-5.30.1 (核心-azure) |
 ||適用于 SAP 的 SLES15|4.12.14-5.30.1 (核心-azure) |
 ||SLES15SP1|4.12.14-5.30.1 (核心-azure) |
-|Oracle|6.10|UEK2 2.6.39-400.312.2<br>UEK3 3.8.13-118.35。2<br>RHCK 2.6.32-754.15。3
+|Oracle|6.10|UEK2 2.6.39-400.312.2<br>UEK3 3.8.13-118.35。2<br>RHCK 2.6.32-754.15。3 
 ||7.0-7。5|UEK3 3.8.13-118.35。2<br>UEK4 4.1.12-124.28。3<br>RHCK 遵循 RHEL|
 ||7.6|RHCK 3.10.0-957.21。3<br>UEK5 4.14.35-1902.2.0|
 |CoreOS 穩定2079.6。0|4.19.43*|
@@ -267,13 +270,22 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
 
 檢查是否已啟用執行自我測試案例的帳戶是否有適當的存取權。 如果未啟用存取，請啟用它來執行測試案例。 如果您不想要啟用存取權，您可能會與支援小組共用自我測試案例的結果。
 
-## <a name="download-failure"></a>下載失敗
+如果您想要使用 SSH 停用的映射來提交認證程式的要求，請遵循下列步驟
 
+1. 在您的映射上執行 Azure 工具組。  (請下載[最新的工具](https://aka.ms/AzureCertificationTestTool)組
+
+2. 提出 [支援票證](https://aka.ms/marketplacepublishersupport)、附加工具組報表，並提供供應專案詳細資料-供應專案名稱、發行者名稱、方案識別碼/SKU 和版本。
+
+3. 請重新提交您的認證要求。
+
+
+## <a name="download-failure"></a>下載失敗
+    
 請參閱下表，以瞭解當您使用共用存取簽章 (SAS) URL 下載 VM 映射時所發生的任何問題。
 
-|案例|錯誤|原因|解決方法|
+|案例|Error|原因|解決方法|
 |---|---|---|---|
-|1|找不到 Blob|VHD 可能會從指定的位置刪除或移動。||
+|1|找不到 Blob|VHD 可能會從指定的位置刪除或移動。|| 
 |2|使用中的 Blob|VHD 會由另一個內部進程使用。|當您使用 SAS URL 下載 VHD 時，該 VHD 應該會處於使用中狀態。|
 |3|不正確 SAS URL|VHD 的相關聯 SAS URL 不正確。|取得正確的 SAS URL。|
 |4|簽章無效|VHD 的相關聯 SAS URL 不正確。|取得正確的 SAS URL。|
@@ -288,13 +300,98 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
 >[!NOTE]
 >* 針對某些特殊映射（例如建置於 Azure Marketplace 的 Azure Windows 基礎映射之上），我們會檢查帳單標記，並在帳單標記存在且符合我們的內部可用值時，忽略 MB 的磁碟分割。
 
+
+## <a name="steps-for-creating-first-mb-2048-kb-partition-only-for-linux-on-an-empty-vhd"></a>建立第一個 MB (2048 KB) 分割 (的步驟，僅適用于空白 VHD 上的 Linux) 
+
+步驟1：建立任何類型的 VM (範例： Ubuntu、分幣 OS 等) 。 填寫必要欄位，然後按一下 [下一步：磁片>] \
+![下一步：磁片命令](./media/create-vm/vm-certification-issues-solutions-15.png)
+
+步驟2：為上述 VM 建立非受控磁片。
+![建立非受控磁片](./media/create-vm/vm-certification-issues-solutions-16.png)
+
+請注意，您可以使用預設值，或為 NIC、NSG 和公用 IP 等欄位指定任意值。
+
+步驟3：建立 VM 之後，請按一下左側的 [磁片]，如下所示， ![ 按一下 [磁片]](./media/create-vm/vm-certification-issues-solutions-17.png)
+
+步驟4：請將您的 VHD 做為資料磁片連結至上述 VM，以如下所示建立分割區資料表。
+![附加您的 VHD](./media/create-vm/vm-certification-issues-solutions-18.png)
+
+按一下 [新增 >datadisk-> 現有的 Blob-> 流覽您的 VHD 儲存體帳戶-> 容器-> 選取 VHD-> 按一下 [確定]，如下所示 \
+![選取 VHD](./media/create-vm/vm-certification-issues-solutions-19.png)
+
+您的 VHD 將新增為數據磁片 LUN 0，請在新增磁片之後重新開機 VM
+
+步驟5：重新開機 VM 之後，使用 Putty (或任何其他用戶端) 登入 VM，然後執行 "sudo-i" 命令以取得根存取權。
+
+![登入 VM](./media/create-vm/vm-certification-issues-solutions-20.png)
+
+步驟6：依照下列步驟在您的 VHD 上建立磁碟分割。
+
+) 類型 fdisk/dev/sdb 命令
+
+b) 若要從您的 VHD 查看現有的資料分割清單，請輸入 p
+
+c) 類型 d 來刪除 VHD 中所有現有的磁碟分割 (您可以略過此步驟（如果不需要的話）) ![ 刪除所有現有的磁碟分割](./media/create-vm/vm-certification-issues-solutions-21.png)
+
+d) 輸入 n 以建立新的分割區，然後選取 p 作為 (主要磁碟分割) 。
+
+e) 請輸入2048作為「第一個磁區」值，您可以保留「最後一個磁區」，因為它會接受預設值。請注意，在 2048 KB 之前，將會清除所有資料。
+           
+>[!NOTE]
+>* 請注意，建立磁碟分割之後，任何現有的資料都會被清除到 2048 KB 為止，因此建議您先備份 VHD，再執行上述命令。
+
+請參閱下列螢幕擷取畫面，以取得您的參考。
+![清除的資料](./media/create-vm/vm-certification-issues-solutions-22.png)
+
+f) 輸入 w 來確認建立資料分割。 
+
+![建立分割區](./media/create-vm/vm-certification-issues-solutions-23.png)
+
+g) 您可以藉由執行命令 n fdisk/dev/sdb 並輸入 p 來驗證資料分割資料表，然後您可以看到如下所示的資料分割是以 2048 offset 值建立。 
+
+ ![2048位移](./media/create-vm/vm-certification-issues-solutions-24.png)
+
+步驟7：請將 VHD 從 VM 卸離，並刪除 VM。
+
+         
+## <a name="steps-for-creating-first-mb-2048-kb-partition-only-for-linux-by-moving-the-existing-data-on-vhd"></a>建立第一個 MB (2048 KB)  (分割區的步驟，僅適用于 Linux) ，藉由在 VHD 上移動現有資料
+
+步驟1：建立任何類型的 VM (範例： Ubuntu、分幣 OS 等) 。 填寫必要欄位，然後按一下 [下一步：磁片>] \
+![按一下 [下一步：磁片>]](./media/create-vm/vm-certification-issues-solutions-15.png)
+
+步驟2：為上述 VM 建立非受控磁片。
+![建立非受控磁片](./media/create-vm/vm-certification-issues-solutions-16.png)
+
+請注意，您可以使用預設值，或為 NIC、NSG 和公用 IP 等欄位指定任意值。
+
+步驟3：建立 VM 之後，請按一下左側的 [磁片]，如下所示， ![ 按一下 [磁片]](./media/create-vm/vm-certification-issues-solutions-17.png)
+
+步驟4：請將您的 VHD 做為資料磁片連結至上述 VM，以如下所示建立分割區資料表。
+![分割區資料表](./media/create-vm/vm-certification-issues-solutions-18.png)
+
+按一下 [新增 >datadisk-> 現有的 Blob-> 流覽您的 VHD 儲存體帳戶-> 容器-> 選取 VHD-> 按一下 [確定]，如下所示 \
+![選取 VHD](./media/create-vm/vm-certification-issues-solutions-19.png)
+
+您的 VHD 將新增為數據磁片 LUN 0，請在新增磁片之後重新開機 VM
+
+步驟5：重新開機 VM 之後，使用 Putty 登入 VM，然後執行 "sudo-i" 命令以取得根存取權。 \
+![重新開機後登入](./media/create-vm/vm-certification-issues-solutions-20.png)
+
+步驟6：請 excute 命令 echo ' + 1M，' |sfdisk--move-資料/dev/sdc-N 1 ![ Execute 命令](./media/create-vm/vm-certification-issues-solutions-25.png)
+
+>[!NOTE]
+>* 請注意，上述命令可能需要更多時間才能完成，因為這取決於磁片的大小。
+
+步驟7：請將 VHD 從 VM 卸離，並刪除 VM。
+
+
 ## <a name="default-credentials"></a>預設認證
 
 一律確定預設認證不會與提交的 VHD 一起傳送。 新增預設認證會使 VHD 更容易遭受安全性威脅。 當您提交 VHD 時，請改為建立您自己的認證。
   
 ## <a name="datadisk-mapped-incorrectly"></a>>datadisk 對應不正確
 
-使用多個資料磁片提交要求，但其訂單未依序，這會被視為對應問題。 例如，如果有三個數據磁片，編號順序必須為 *0、1、2*。 任何其他訂單都會被視為對應問題。
+使用多個資料磁片提交要求，但其訂單未依序，這會被視為對應問題。 例如，如果有三個數據磁片，編號順序必須為 *0、1、2* 。 任何其他訂單都會被視為對應問題。
 
 使用適當的資料磁片排序來重新提交要求。
 
@@ -306,11 +403,11 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
 
 如果要重複使用從 Azure Marketplace 取得的所有映射，則必須將作業系統 VHD 一般化。
 
-* 針對 **linux**，下列程式會一般化 Linux vm，並將它重新部署為個別的 vm。
+* 針對 **linux** ，下列程式會一般化 Linux vm，並將它重新部署為個別的 vm。
 
   在 SSH 視窗中，輸入下列命令： `sudo waagent -deprovision+user`
 
-* 針對 **windows**，您可以使用來一般化 windows 映射 `sysreptool` 。
+* 針對 **windows** ，您可以使用來一般化 windows 映射 `sysreptool` 。
 
 如需此工具的詳細資訊，請參閱 [系統準備 (Sysprep) 總覽]( https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)。
 
@@ -318,7 +415,7 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
 
 如需與資料磁片相關之錯誤的解決方案，請使用下表：
 
-|錯誤|原因|解決方法|
+|Error|原因|解決方法|
 |---|---|---|
 |`DataDisk- InvalidUrl:`|此錯誤的發生原因可能是在提交供應專案時，為邏輯單元編號 (LUN) 指定的號碼無效。|確認資料磁片的 LUN 編號順序合作夥伴中心。|
 |`DataDisk- NotFound:`|發生此錯誤的原因可能是資料磁片不是位於指定的 SAS URL。|確認資料磁片位於要求中所指定的 SAS URL。|
@@ -326,7 +423,7 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
 
 ## <a name="remote-access-issue"></a>遠端存取問題
 
-如果未啟用 Windows 映像的遠端桌面通訊協定 (RDP) 選項，您將會收到此錯誤。
+如果未啟用 Windows 映像的遠端桌面通訊協定 (RDP) 選項，您將會收到此錯誤。 
 
 請先啟用 Windows 映像的 RDP 存取，然後再提交。
 
@@ -385,7 +482,7 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
 > [!NOTE]
 > 您無法從方案中移除最後一個 VM 映射，或停止銷售供應專案的最後一個方案。
 
-執行下列其中一個動作：
+請執行下列其中一項：
 
 - 如果您有新的 VM 映射來取代易受攻擊的 VM 映射，請參閱下方 [提供的固定 vm 映射](#provide-a-fixed-vm-image) 。
 - 如果您沒有新的 VM 映射來取代方案中的唯一 VM 映射，或您已完成此計畫，請 [停止銷售方案](partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan)。
@@ -404,10 +501,10 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
 若要完成這些步驟，您必須為想要新增的 VM 映射準備技術資產。 如需詳細資訊，請參閱使用 [已核准的基底建立虛擬機器](azure-vm-create-using-approved-base.md) ，或 [使用您自己的映射建立虛擬機器](azure-vm-create-using-own-image.md)，並 [產生 VM 映射的 SAS URI](azure-vm-get-sas-uri.md)。
 
 1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard/home)。
-2. 在左側導覽功能表中，選取 [**商業 Marketplace**  >  **總覽**]。
+2. 在左側導覽功能表中，選取 [ **商業 Marketplace**  >  **總覽** ]。
 3. 在 [ **供應專案別名** ] 資料行中，選取供應專案。
 4. 在 [ **計畫總覽** ] 索引標籤的 [ **名稱** ] 欄中，選取您要新增 VM 的方案。
-5. 在 [ **技術** 設定] 索引標籤的 [ **VM 映射** ] 底下，選取 [ **+ 新增 VM 映射**]。
+5. 在 [ **技術** 設定] 索引標籤的 [ **VM 映射** ] 底下，選取 [ **+ 新增 VM 映射** ]。
 
 > [!NOTE]
 > 您一次只能將一個 VM 映射新增至一個方案。 若要新增多個 VM 映射，請在新增下一個 VM 映射之前，先將第一個映射發佈。
@@ -420,18 +517,18 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
 #### <a name="remove-the-vm-image-with-the-security-vulnerability-or-exploit"></a>移除具有安全性弱點或惡意探索的 VM 映射
 
 1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard/home)。
-2. 在左側導覽功能表中，選取 [**商業 Marketplace**  >  **總覽**]。
+2. 在左側導覽功能表中，選取 [ **商業 Marketplace**  >  **總覽** ]。
 3. 在 [ **供應專案別名** ] 資料行中，選取供應專案。
 4. 在 [ **計畫總覽** ] 索引標籤的 [ **名稱** ] 欄中，選取您要移除 VM 的方案。
-5. 在 [ **技術** 設定] 索引標籤的 [ **vm 映射** ] 底下，選取您要移除的 vm 映射旁的 [ **移除 vm 映射**]。
-6. 在出現的對話方塊中，選取 [ **繼續**]。
+5. 在 [ **技術** 設定] 索引標籤的 [ **vm 映射** ] 底下，選取您要移除的 vm 映射旁的 [ **移除 vm 映射** ]。
+6. 在出現的對話方塊中，選取 [ **繼續** ]。
 7. 選取 [儲存草稿]。
 
 繼續進行下一節以重新發佈供應專案。
 
 #### <a name="republish-the-offer"></a>重新發佈供應專案
 
-1. 選取 [ **審核併發布**]。
+1. 選取 [ **審核併發布** ]。
 2. 如果您需要向認證小組提供任何資訊，請將其新增至 [憑證 **的附注** ] 方塊。
 3. 選取 [發佈]  。
 
@@ -439,6 +536,6 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [設定 VM 供應專案屬性](azure-vm-create-properties.md)
+- [設定 VM 供應項目屬性](azure-vm-create-properties.md)
 - [主動式 marketplace 獎勵](partner-center-portal/marketplace-rewards.md)
 - 如果您有任何問題或意見反應要改進，請聯絡合作夥伴中心 [支援服務](https://aka.ms/marketplacepublishersupport)。

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: bae4cb72201bbc1653db5bb549d67531bda71d50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 0c05db39e02a6bc2a7fa5d62b8b891626eb0d241
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537713"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675807"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Azure 認知搜尋中的查詢類型和組合
 
@@ -35,7 +35,7 @@ ms.locfileid: "91537713"
 
 + **`queryType`** 設定剖析器，也就是 [預設的簡單查詢](search-query-simple-examples.md) 剖析器， (全文檢索搜尋) 的最佳方式，或是用於高階運算式、鄰近搜尋、模糊和萬用字元搜尋等先進查詢結構的 [完整 Lucene 查詢](search-query-lucene-examples.md) 剖析器。
 
-+ **`search`** 提供比對準則，通常是完整的詞彙或片語，但通常伴隨著布林運算子。 單一的獨立字詞是「字詞」** 查詢。 以引號括住的多部分查詢是 *片語* 查詢。 搜尋可以是未定義的， **`search=*`** 但如果沒有符合的準則，則結果集是由任意選取的檔所組成。
++ **`search`** 提供比對準則，通常是完整的詞彙或片語，但通常伴隨著布林運算子。 單一的獨立字詞是「字詞」  查詢。 以引號括住的多部分查詢是 *片語* 查詢。 搜尋可以是未定義的， **`search=*`** 但如果沒有符合的準則，則結果集是由任意選取的檔所組成。
 
 + **`searchFields`** 限制特定欄位的查詢執行。 *在索引架構中，* 任何屬性為可搜尋的欄位都是此參數的候選項。
 
@@ -59,9 +59,9 @@ ms.locfileid: "91537713"
 
 ## <a name="how-query-operations-are-enabled-by-the-index"></a>索引如何啟用查詢作業
 
-索引設計和查詢設計在 Azure 認知搜尋中緊密結合。 事先要知道的重要事實是，「索引結構描述」** 與每個欄位上的屬性會決定您可以建置的查詢類型。 
+索引設計和查詢設計在 Azure 認知搜尋中緊密結合。 事先要知道的重要事實是，「索引結構描述」  與每個欄位上的屬性會決定您可以建置的查詢類型。 
 
-欄位上的索引屬性會設定允許的作業 - 欄位在索引中是否「可搜尋」**、在結果中是否「可擷取」**、是否「可排序」**、是否「可篩選」**，不一而足。 在範例查詢字串中， `"$orderby": "Rating"` 僅適用于索引架構中的 [評等] 欄位標示為可 *排序* 。 
+欄位上的索引屬性會設定允許的作業 - 欄位在索引中是否「可搜尋」  、在結果中是否「可擷取」  、是否「可排序」  、是否「可篩選」  ，不一而足。 在範例查詢字串中， `"$orderby": "Rating"` 僅適用于索引架構中的 [評等] 欄位標示為可 *排序* 。 
 
 ![旅館範例的索引定義](./media/search-query-overview/hotel-sample-index-definition.png "旅館範例的索引定義")
 
@@ -78,8 +78,8 @@ ms.locfileid: "91537713"
 
 + 服務端點和索引檔集合，以包含固定和使用者定義元件的 URL 表示： **`https://<your-service-name>.search.windows.net/indexes/<your-index-name>/docs`**
 + **`api-version`** (REST 僅) 是必要的，因為隨時都有一個以上的 API 版本可供使用。 
-+ **`api-key`**（查詢或管理員 api 金鑰）會驗證對您服務的要求。
-+ **`queryType`**（簡單或完整），如果您使用內建的預設簡單語法，則可以省略。
++ **`api-key`** （查詢或管理員 api 金鑰）會驗證對您服務的要求。
++ **`queryType`** （簡單或完整），如果您使用內建的預設簡單語法，則可以省略。
 + **`search`** 或 **`filter`** 提供比對準則，如果您想要執行空的搜尋，則可以不指定。 這兩種查詢類型會以簡單的剖析器來進行討論，但更進階的查詢則需要搜尋參數以便傳遞複雜的查詢運算式。
 
 其他所有搜尋參數都是選用的。 如需屬性的完整清單，請參閱[建立索引 (REST)](/rest/api/searchservice/create-index)。 若要深入瞭解如何在處理期間使用參數，請參閱 [全文檢索搜尋在 Azure 認知搜尋中的運作方式](search-lucene-query-architecture.md)。
@@ -92,7 +92,7 @@ ms.locfileid: "91537713"
 |-------------|-------------|
 | [搜尋 explorer (入口網站) ](search-explorer.md) | 提供搜尋列以及選取索引和 API 版本的選項。 結果會以 JSON 文件的形式傳回。 建議進行探索、測試和驗證。 <br/>[深入了解。](search-get-started-portal.md#query-index) | 
 | [Postman 或其他 REST 工具](search-get-started-postman.md) | Web 測試工具是擬定 REST 呼叫的絕佳選擇。 REST API 支援 Azure 認知搜尋中的每個可能的作業。 在本文中，您將瞭解如何設定 HTTP 要求標頭和主體，以將要求傳送至 Azure 認知搜尋。  |
-| [SearchIndexClient (.NET)](/dotnet/api/microsoft.azure.search.searchindexclient) | 可以用來查詢 Azure 認知搜尋索引的用戶端。  <br/>[深入了解。](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [SearchClient ( .NET) ](/dotnet/api/azure.search.documents.searchclient) | 可以用來查詢 Azure 認知搜尋索引的用戶端。  <br/>[深入了解。](search-howto-dotnet-sdk.md)  |
 | [搜尋文件 (REST API)](/rest/api/searchservice/search-documents) | 索引的 GET 或 POST 方法，使用查詢參數作為額外輸入。  |
 
 ## <a name="choose-a-parser-simple--full"></a>選擇剖析器：簡單 | 完整
@@ -101,7 +101,7 @@ Azure 認知搜尋位於 Apache Lucene 之上，並可讓您選擇兩個查詢�
 
 [完整的 Lucene 查詢語法](query-Lucene-syntax.md#bkmk_syntax)會在您將 `queryType=full` 新增至要求時啟用，可公開廣為採用、且開發作為 [Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 一部分的表達式查詢語言。 完整語法可延伸簡單語法。 您為簡單語法所撰寫的查詢，均可在完整的 Lucene 剖析器下執行。 
 
-下列範例可說明這點：相同的查詢，但有不同的 queryType 設定，會產生不同的結果。 在第一個查詢中， `^3` 會將 after `historic` 視為搜尋詞彙的一部分。 此查詢的最上層結果是「Marquis Plaza & 套件」，其描述中有*海洋*
+下列範例可說明這點：相同的查詢，但有不同的 queryType 設定，會產生不同的結果。 在第一個查詢中， `^3` 會將 after `historic` 視為搜尋詞彙的一部分。 此查詢的最上層結果是「Marquis Plaza & 套件」，其描述中有 *海洋*
 
 ```
 queryType=simple&search=ocean historic^3&searchFields=Description, Tags&$select=HotelId, HotelName, Tags, Description&$count=true
@@ -121,8 +121,8 @@ Azure 認知搜尋支援範圍廣泛的查詢類型。
 
 | 查詢類型 | 使用量 | 範例和詳細資訊 |
 |------------|--------|-------------------------------|
-| 自由格式文字檢索 | 搜尋參數和任一剖析器| 全文檢索搜尋會掃描索引中所有「可搜尋」** 欄位內的一或多個字詞，而且運作方式就如同您對 Google 或 Bing 等搜尋引擎的期待。 簡介中的範例便是全文檢索搜尋。<br/><br/>全文檢索搜尋會使用標準 Lucene 分析器進行詞法分析 (預設) 為小寫的所有詞彙，移除 "a" 這類的停用字詞。 您可以使用 [非英文分析器](index-add-language-analyzers.md#language-analyzer-list) 或 [專門與語言無關的分析器](index-add-custom-analyzers.md#AnalyzerTable) （修改了「詞法分析」）來覆寫預設值。 其中一個範例是[關鍵字](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)，其會將欄位的整個內容視為單一語彙基元。 這適合用於郵遞區號、識別碼和產品名稱等資料。 | 
-| 經過篩選的搜尋 | [OData 篩選條件運算式](query-odata-filter-orderby-syntax.md)和任一剖析器 | 篩選查詢會對索引中的所有「可篩選」** 欄位評估布林運算式。 不同於搜尋，篩選查詢會比對欄位的確切內容，包括字串欄位的大小寫。 另一個差異是篩選查詢會以 OData 語法來表示。 <br/>[篩選條件運算式範例](search-query-simple-examples.md#example-3-filter-queries) |
+| 自由格式文字檢索 | 搜尋參數和任一剖析器| 全文檢索搜尋會掃描索引中所有「可搜尋」  欄位內的一或多個字詞，而且運作方式就如同您對 Google 或 Bing 等搜尋引擎的期待。 簡介中的範例便是全文檢索搜尋。<br/><br/>全文檢索搜尋會使用標準 Lucene 分析器進行詞法分析 (預設) 為小寫的所有詞彙，移除 "a" 這類的停用字詞。 您可以使用 [非英文分析器](index-add-language-analyzers.md#language-analyzer-list) 或 [專門與語言無關的分析器](index-add-custom-analyzers.md#AnalyzerTable) （修改了「詞法分析」）來覆寫預設值。 其中一個範例是[關鍵字](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)，其會將欄位的整個內容視為單一語彙基元。 這適合用於郵遞區號、識別碼和產品名稱等資料。 | 
+| 經過篩選的搜尋 | [OData 篩選條件運算式](query-odata-filter-orderby-syntax.md)和任一剖析器 | 篩選查詢會對索引中的所有「可篩選」  欄位評估布林運算式。 不同於搜尋，篩選查詢會比對欄位的確切內容，包括字串欄位的大小寫。 另一個差異是篩選查詢會以 OData 語法來表示。 <br/>[篩選條件運算式範例](search-query-simple-examples.md#example-3-filter-queries) |
 | 地區搜尋 | 欄位上的 [Edm.GeographyPoint 類型](/rest/api/searchservice/supported-data-types)、篩選條件運算式和任一剖析器 | 座標若儲存在具有 Edm.GeographyPoint 的欄位中，可用於 "find near me" 或以地圖為基礎的搜尋控制項。 <br/>[地理搜尋範例](search-query-simple-examples.md#example-5-geo-search)|
 | 範圍搜尋 | 篩選條件運算式和簡單的剖析器 | 在 Azure 認知搜尋中，系統會使用篩選參數來建立範圍查詢。 <br/>[範圍篩選範例](search-query-simple-examples.md#example-4-range-filters) | 
 | [回復搜尋](query-lucene-syntax.md#bkmk_fields) | 搜尋參數和完整剖析器 | 建置以單一欄位為目標的複合查詢運算式。 <br/>[回復搜尋範例](search-query-lucene-examples.md#example-2-fielded-search) |
@@ -159,13 +159,13 @@ Azure 認知搜尋可讓您輕鬆地執行搜尋結果分頁。 藉由使用 **`
 ### <a name="ordering-results"></a>排序結果
 收到搜尋查詢的結果時，您可以要求 Azure 認知搜尋提供依特定欄位中的值排序的結果。 根據預設，Azure 認知搜尋會根據每個檔的搜尋分數排名（衍生自 [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)）來排序搜尋結果。
 
-如果您想要 Azure 認知搜尋傳回以搜尋分數以外的值排序的結果，您可以使用 **`orderby`** 搜尋參數。 您可以指定參數的值 **`orderby`** 來包含功能變數名稱，以及地理空間值的[** `geo.distance()` 函數**](query-odata-filter-orderby-syntax.md)調用。 每個運算式後面都可以接著， `asc` 表示以遞增順序要求結果，以及 **`desc`** 表示以遞減順序要求結果。 預設排名為遞增順序。
+如果您想要 Azure 認知搜尋傳回以搜尋分數以外的值排序的結果，您可以使用 **`orderby`** 搜尋參數。 您可以指定參數的值 **`orderby`** 來包含功能變數名稱，以及地理空間值的 [**`geo.distance()` 函數**](query-odata-filter-orderby-syntax.md)調用。 每個運算式後面都可以接著， `asc` 表示以遞增順序要求結果，以及 **`desc`** 表示以遞減順序要求結果。 預設排名為遞增順序。
 
 
 ### <a name="hit-highlighting"></a>搜尋結果醒目提示
 在 Azure 認知搜尋中，使用 **`highlight`** 、和參數強調符合搜尋查詢的搜尋結果確切部分，會變得很容易 **`highlightPreTag`** **`highlightPostTag`** 。 您可以指定哪些可搜尋的欄位要強調其 *相符的文字* ，以及指定要附加至 Azure 認知搜尋傳回之相符文字的開頭和結尾的精確字串標記。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 + [全文檢索搜尋在 Azure 認知搜尋 (查詢剖析架構中的運作方式) ](search-lucene-query-architecture.md)
 + [搜尋總管](search-explorer.md)

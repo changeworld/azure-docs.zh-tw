@@ -3,13 +3,13 @@ title: 監視已部署的 Azure Kubernetes Service (AKS) 叢集 |Microsoft Docs
 description: 瞭解如何使用已在訂用帳戶中部署之容器的 Azure 監視器來啟用 Azure Kubernetes Service (AKS) 叢集的監視。
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.custom: devx-track-terraform
-ms.openlocfilehash: b5f1a4880bba099b00a4f3af87649f3eaa9cb884
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.custom: devx-track-terraform, devx-track-azurecli
+ms.openlocfilehash: 9f3b9240bc10f4eaa4c9967d8c7bbb956eeab4e1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165395"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735132"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>啟用監視已部署 Azure Kubernetes Service (AKS) 叢集
 
@@ -28,7 +28,7 @@ ms.locfileid: "92165395"
 
 ## <a name="enable-using-azure-cli"></a>啟用使用 Azure CLI
 
-下列步驟會使用 Azure CLI 來啟用對 AKS 叢集的監視。 在此範例中，您不需要預先建立或指定現有的工作區。 此命令透過在 AKS 叢集預設資源群組中建立預設工作區 (若該區域中沒有預設工作區) 來為您簡化程序。  建立的預設工作區類似于*DefaultWorkspace \<GUID> - \<Region> *的格式。
+下列步驟會使用 Azure CLI 來啟用對 AKS 叢集的監視。 在此範例中，您不需要預先建立或指定現有的工作區。 此命令透過在 AKS 叢集預設資源群組中建立預設工作區 (若該區域中沒有預設工作區) 來為您簡化程序。  建立的預設工作區類似于 *DefaultWorkspace \<GUID> - \<Region>* 的格式。
 
 ```azurecli
 az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
@@ -58,7 +58,7 @@ provisioningState       : Succeeded
     Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
     ```
 
-    複製 **SubscriptionId**的值。
+    複製 **SubscriptionId** 的值。
 
 2. 使用下列命令切換至裝載 Log Analytics 工作區的訂用帳戶：
 
@@ -72,7 +72,7 @@ provisioningState       : Succeeded
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
-    在輸出中，尋找工作區名稱，然後在欄位 **識別碼**下複製該 Log Analytics 工作區的完整資源識別碼。
+    在輸出中，尋找工作區名稱，然後在欄位 **識別碼** 下複製該 Log Analytics 工作區的完整資源識別碼。
 
 4. 執行下列命令來啟用監視附加元件，並取代參數的值 `--workspace-resource-id` 。 字串值必須在雙引號內：
 
@@ -107,13 +107,13 @@ provisioningState       : Succeeded
 
 1. 在 Azure 入口網站中，選取 [監視]。
 
-2. 從清單中選取 [容器]****。
+2. 從清單中選取 [容器]  。
 
-3. 在 [ **監視-容器** ] 頁面上，選取 [未受 **監視**的叢集]。
+3. 在 [ **監視-容器** ] 頁面上，選取 [未受 **監視** 的叢集]。
 
-4. 從未受監視的叢集清單中，尋找清單中的容器，然後按一下 [ **啟用**]。
+4. 從未受監視的叢集清單中，尋找清單中的容器，然後按一下 [ **啟用** ]。
 
-5. 在 [適用於容器的 Azure 監視器上線]**** 頁面上，如果相同訂用帳戶中有現有 Log Analytics 工作區可作為叢集，請從下拉式清單中加以選取。
+5. 在 [適用於容器的 Azure 監視器上線]  頁面上，如果相同訂用帳戶中有現有 Log Analytics 工作區可作為叢集，請從下拉式清單中加以選取。
     清單會預先選取訂用帳戶中已部署 AKS 容器的預設工作區和位置。
 
     ![啟用 AKS 容器深入解析監視](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
@@ -127,17 +127,17 @@ provisioningState       : Succeeded
 
 若要直接從 Azure 入口網站中的其中一個 AKS 叢集啟用監視，請執行下列動作：
 
-1. 在 Azure 入口網站中，選取 [所有服務]  。
+1. 在 Azure 入口網站中，選取 [所有服務]。
 
-2. 在資源清單中，開始輸入**容器**。  清單會根據您輸入的文字進行篩選。
+2. 在資源清單中，開始輸入 **容器** 。  清單會根據您輸入的文字進行篩選。
 
-3. 選取 [Kubernetes 服務]****。
+3. 選取 [Kubernetes 服務]  。
     
 4. 在 Kubernetes 服務清單中，選取服務。
 
-5. 在 Kubernetes 服務的 [總覽] 頁面上，選取 [ **監視-深入**解析]。
+5. 在 Kubernetes 服務的 [總覽] 頁面上，選取 [ **監視-深入** 解析]。
 
-6. 在 [適用於容器的 Azure 監視器上線]**** 頁面上，如果相同訂用帳戶中有現有 Log Analytics 工作區可作為叢集，請在下拉式清單中選取。
+6. 在 [適用於容器的 Azure 監視器上線]  頁面上，如果相同訂用帳戶中有現有 Log Analytics 工作區可作為叢集，請在下拉式清單中選取。
     清單會預先選取訂用帳戶中已部署 AKS 容器的預設工作區和位置。
 
     ![啟用 AKS 容器健康情況監視](./media/container-insights-onboard/kubernetes-onboard-brownfield-02.png)
@@ -226,7 +226,7 @@ provisioningState       : Succeeded
     }
     ```
 
-2. 將此檔案儲存為本機資料夾的 **existingClusterOnboarding.json**。
+2. 將此檔案儲存為本機資料夾的 **existingClusterOnboarding.json** 。
 
 3. 將下列 JSON 語法貼到您的檔案中：
 
@@ -255,11 +255,11 @@ provisioningState       : Succeeded
     }
     ```
 
-4. 使用 AKS 叢集的**AKS 總覽**頁面上的值，編輯 **>aksresourceid**和 **>aksresourceid**的值。 **workspaceResourceId** 值是您 Log Analytics 工作區的完整資源識別碼，其中包含工作區名稱。
+4. 使用 AKS 叢集的 **AKS 總覽** 頁面上的值，編輯 **>aksresourceid** 和 **>aksresourceid** 的值。 **workspaceResourceId** 值是您 Log Analytics 工作區的完整資源識別碼，其中包含工作區名稱。
 
     編輯 **aksResourceTagValues** 的值，以符合針對 AKS 叢集指定的現有標記值。
 
-5. 將此檔案儲存為本機資料夾的 **existingClusterParam.json**。
+5. 將此檔案儲存為本機資料夾的 **existingClusterParam.json** 。
 
 6. 您已準備好部署此範本。
 
@@ -341,7 +341,7 @@ omsagent   1         1         1            1            3h
 
 ### <a name="agent-version-earlier-than-06072018"></a>早於 06072018 的代理程式版本
 
-若要確認已正確部署 06072018** 版以前發行的 Log Analytics 代理程式，請執行下列命令：
+若要確認已正確部署 06072018  版以前發行的 Log Analytics 代理程式，請執行下列命令：
 
 ```
 kubectl get ds omsagent --namespace=kube-system

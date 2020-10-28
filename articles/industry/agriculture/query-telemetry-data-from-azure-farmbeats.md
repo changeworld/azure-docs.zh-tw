@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/11/2020
 ms.author: sunasing
-ms.openlocfilehash: f717903b3f953e04c793092c86802f2006de7e82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9067e2f78c8098d4a21263ac89caf03da631274
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80349809"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677477"
 ---
 # <a name="query-ingested-telemetry-data"></a>查詢內嵌的遙測資料
 
@@ -24,7 +24,7 @@ ms.locfileid: "80349809"
 
 若要內嵌感應器遙測資料，請造訪內嵌歷程 [記錄遙測資料](ingest-historical-telemetry-data-in-azure-farmbeats.md)
 
-繼續進行之前，您也必須確定您熟悉 FarmBeats REST Api，因為您將使用 Api 來查詢內嵌遙測。 如需有關 FarmBeats Api 的詳細資訊，請參閱 [FARMBEATS REST api](rest-api-in-azure-farmbeats.md)。 **確定您能夠對您的 FarmBeats Datahub 端點提出 API 要求**。
+繼續進行之前，您也必須確定您熟悉 FarmBeats REST Api，因為您將使用 Api 來查詢內嵌遙測。 如需有關 FarmBeats Api 的詳細資訊，請參閱 [FARMBEATS REST api](rest-api-in-azure-farmbeats.md)。 **確定您能夠對您的 FarmBeats Datahub 端點提出 API 要求** 。
 
 ## <a name="query-ingested-sensor-telemetry-data"></a>查詢內嵌感應器遙測資料
 
@@ -42,7 +42,7 @@ ms.locfileid: "80349809"
 > [!NOTE]
 > 感興趣的感應器物件的 **識別碼** 和 **sensorModelId** 。
 
-2. 針對 **sensorModelId** 在/SensorModel API 上建立 GET/{id}，如步驟1所述。 「感應器模型」具有來自感應器之內嵌遙測的所有中繼資料和詳細資料。 例如，感應器**模型**物件內的**感應器量值**會詳細說明感應器傳送的量值，以及哪些類型和單位。 例如，
+2. 針對 **sensorModelId** 在/SensorModel API 上建立 GET/{id}，如步驟1所述。 「感應器模型」具有來自感應器之內嵌遙測的所有中繼資料和詳細資料。 例如，感應器 **模型** 物件內的 **感應器量值** 會詳細說明感應器傳送的量值，以及哪些類型和單位。 例如，套用至物件的
 
   ```json
   {
@@ -111,12 +111,12 @@ ms.locfileid: "80349809"
 
 FarmBeats 利用 [Azure 時間序列深入解析 (TSI) ](https://azure.microsoft.com/services/time-series-insights/) 來內嵌、儲存、查詢和視覺化 IoT 規模的資料--高度內容相關並針對時間序列優化的資料。
 
-遙測資料會在 EventHub 上收到，然後處理並推送至 FarmBeats 資源群組內的 TSI 環境。 然後可以從 TSI 直接查詢資料。 如需詳細資訊，請參閱 [TSI 檔](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer)
+遙測資料會在 EventHub 上收到，然後處理並推送至 FarmBeats 資源群組內的 TSI 環境。 然後可以從 TSI 直接查詢資料。 如需詳細資訊，請參閱 [TSI 檔](../../time-series-insights/time-series-insights-explorer.md)
 
 遵循下列步驟來視覺化 TSI 上的資料：
 
-1. 移至**Azure 入口網站**  >  **FarmBeats DataHub 資源群組**> 選取**時間序列深入**解析環境 (tsi-xxxx) >**資料存取原則**。 新增具有讀者或參與者存取權的使用者。
-2. 移至**時間序列深入**解析環境 (tsi-xxxx) 的**總覽**頁面，然後選取**時間序列深入解析總管 URL**。 您現在可以將內嵌遙測視覺化。
+1. 移至 **Azure 入口網站**  >  **FarmBeats DataHub 資源群組** > 選取 **時間序列深入** 解析環境 (tsi-xxxx) > **資料存取原則** 。 新增具有讀者或參與者存取權的使用者。
+2. 移至 **時間序列深入** 解析環境 (tsi-xxxx) 的 **總覽** 頁面，然後選取 **時間序列深入解析總管 URL** 。 您現在可以將內嵌遙測視覺化。
 
 除了儲存、查詢和視覺化遙測之外，TSI 也可整合至 Power BI 的儀表板。 如需詳細資訊，請參閱 [這裡]( https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi)
 

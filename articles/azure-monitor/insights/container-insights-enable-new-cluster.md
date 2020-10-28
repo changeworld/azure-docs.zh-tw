@@ -3,13 +3,13 @@ title: 監視新的 Azure Kubernetes Service (AKS) 叢集 |Microsoft Docs
 description: 瞭解如何使用適用于容器訂用帳戶的 Azure 監視器來啟用新 Azure Kubernetes Service (AKS) 叢集的監視。
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.custom: devx-track-terraform
-ms.openlocfilehash: 7706df4f457167f5bb4d17f1d506594615364380
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-terraform, devx-track-azurecli
+ms.openlocfilehash: 19c4a88cee8776136593b041e94dd14c7c9c28d6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320318"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735077"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>啟用監視新 Azure Kubernetes Service (AKS) 叢集
 
@@ -34,12 +34,12 @@ ms.locfileid: "87320318"
 >[!NOTE]
 >如果您選擇使用 Terraform，則必須執行 Terraform Azure RM Provider 1.17.0 版或以上版本。
 
-若要將適用於容器的 Azure 監視器新增至工作區，請參閱：[azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html)，並透過包含 [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) 和指定 **oms_agent** 來完成設定檔。 
+若要將適用於容器的 Azure 監視器新增至工作區，請參閱： [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html)，並透過包含 [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) 和指定 **oms_agent** 來完成設定檔。 
 
 啟用監視並順利完成所有設定工作之後，您可以透過兩種方式來監視叢集效能：
 
-* 選取左窗格中的 [健康情況]****，直接在 AKS 叢集中進行。
-* 在所選取叢集的 AKS 叢集頁面中，選取 [監視器容器深入解析]**** 圖格。 在 Azure 監視器中，選取左窗格中的 [健康情況]****。 
+* 選取左窗格中的 [健康情況]  ，直接在 AKS 叢集中進行。
+* 在所選取叢集的 AKS 叢集頁面中，選取 [監視器容器深入解析]  圖格。 在 Azure 監視器中，選取左窗格中的 [健康情況]  。 
 
   ![在 AKS 中選取適用於容器的 Azure 監視器選項](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
 
@@ -79,7 +79,7 @@ omsagent   1         1         1            1            3h
 
 ### <a name="agent-version-earlier-than-06072018"></a>早於 06072018 的代理程式版本
 
-若要確認已正確部署 06072018** 版以前發行的 Log Analytics 代理程式，請執行下列命令：  
+若要確認已正確部署 06072018  版以前發行的 Log Analytics 代理程式，請執行下列命令：  
 
 ```
 kubectl get ds omsagent --namespace=kube-system
@@ -113,7 +113,7 @@ az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
   }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 如果您在試著將解決方案上線時遇到問題，請檢閱[疑難排解指南](container-insights-troubleshoot.md)
 

@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: 2fdaaf153f242a25e1ad9d8f926d6ac77d285df2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64bef8a1cd4353ed9602c36cf728a0d727458251
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444904"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675147"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>使用 Azure 入口網站建立 Azure SQL Database 和 Azure Synapse Analytics 的警示
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "91444904"
 * [Azure 入口網站](../../azure-monitor/platform/alerts-classic-portal.md)
 * [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)
 * [命令列介面 (CLI) ](../../azure-monitor/platform/alerts-classic-portal.md)
-* [Azure 監視器 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Azure 監視器 REST API](/rest/api/monitor/alertrules)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>使用 Azure 入口網站建立計量的警示規則
 
@@ -57,14 +57,14 @@ ms.locfileid: "91444904"
 3. 選取 [ **新增警示規則** ] 按鈕以開啟 [ **建立規則** ] 頁面。
   ![建立規則](./media/alerts-insights-configure-portal/create-rule.png)
 
-4. 在 [ **條件** ] 區段中，按一下 [ **新增**]。
+4. 在 [ **條件** ] 區段中，按一下 [ **新增** ]。
   ![定義條件](./media/alerts-insights-configure-portal/create-rule.png)
 5. 在 [ **設定信號邏輯** ] 頁面中，選取信號。
   ![選取信號](./media/alerts-insights-configure-portal/select-signal.png)
-6. 選取信號（例如 **CPU 百分比**）後，[ **設定信號邏輯** ] 頁面隨即出現。
+6. 選取信號（例如 **CPU 百分比** ）後，[ **設定信號邏輯** ] 頁面隨即出現。
   ![設定訊號邏輯](./media/alerts-insights-configure-portal/configure-signal-logic.png)
 7. 在此頁面上，設定該臨界數值型別、運算子、匯總類型、閾值、匯總細微性和評估頻率。 然後按一下 [完成]。
-8. 在 [ **建立規則**] 中，選取現有的 **動作群組** 或建立新的群組。 動作群組可讓您定義警示條件發生時所要採取的動作。
+8. 在 [ **建立規則** ] 中，選取現有的 **動作群組** 或建立新的群組。 動作群組可讓您定義警示條件發生時所要採取的動作。
   ![定義動作群組](./media/alerts-insights-configure-portal/action-group.png)
 
 9. 定義規則的名稱、提供選擇性的描述、選擇規則的嚴重性層級、選擇是否要在建立規則時啟用規則，然後按一下 [ **建立規則警示** ] 以建立計量規則警示。

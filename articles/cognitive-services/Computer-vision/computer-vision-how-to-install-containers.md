@@ -1,23 +1,23 @@
 ---
 title: 從電腦視覺安裝讀取 OCR Docker 容器
 titleSuffix: Azure Cognitive Services
-description: 使用電腦視覺的讀取 OCR Docker 容器，從影像和 douments （內部部署）中將文字解壓縮。
+description: 使用電腦視覺的讀取 OCR Docker 容器，從影像和檔（內部部署）中將文字解壓縮。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/22/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: 內部部署、OCR、Docker、容器
-ms.openlocfilehash: acf6a391965dcba20a2dabc18648076b88c5e7c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07440b99d887ee6cb4b6d505ed7fb79f4c12c784
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536370"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677207"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a> (預覽) 安裝讀取 OCR Docker 容器 
 
@@ -27,10 +27,12 @@ ms.locfileid: "91536370"
 
 「 *讀取* OCR」容器可讓您從影像和檔中取出列印和手寫的文字，並支援 JPEG、PNG、BMP、PDF 和 TIFF 檔案格式。 如需詳細資訊，請參閱 [讀取 API 檔](concept-recognizing-text.md#read-api)。
 
-## <a name="read-3x-containers"></a>讀取3.x 容器
-有兩個版本的3.x 容器可供預覽。 這兩個版本都能在先前的容器上提供額外的精確度和功能。
+## <a name="read-31-container"></a>讀取3.1 容器
 
-讀取 3.0-預覽容器提供：
+> [!NOTE]
+> 讀取 3.0-預覽容器已被取代。 
+
+讀取 3.1-預覽容器提供：
 * 增強精確度的新模型。
 * 在相同檔中支援多種語言
 * 支援：荷蘭文、英文、法文、德文、義大利文、葡萄牙文和西班牙文。
@@ -38,14 +40,11 @@ ms.locfileid: "91536370"
 * 支援較大的檔和影像。
 * 從0到1的信賴分數。
 * 支援具有列印和手寫文字的檔
-
-「讀取 3.1-預覽」容器提供與「v3.0-預覽」相同的優點，以及其他功能：
-
 * 支援簡體中文和日文。
 * 列印和手寫文字的信賴分數和標籤。 
 * 可以從檔中的) 只將選取的頁面中的文字解壓縮 (s。
 
-當考慮要使用哪一個容器版本時，請注意 3.1-preview 處於先前的預覽狀態。 如果您目前使用讀取2.0 容器，請參閱 [遷移指南](read-container-migration-guide.md) ，以瞭解新版本中的變更。
+如果您目前使用讀取2.0 容器，請參閱 [遷移指南](read-container-migration-guide.md) ，以瞭解新版本中的變更。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -53,9 +52,9 @@ ms.locfileid: "91536370"
 
 |必要|目的|
 |--|--|
-|Docker 引擎| 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上**，也必須將 Docker 設定為支援 Linux 容器。<br><br>|
+|Docker 引擎| 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上** ，也必須將 Docker 設定為支援 Linux 容器。<br><br>|
 |熟悉 Docker | 您應具備對 Docker 概念 (例如登錄、存放庫、容器和容器映像等) 的基本了解，以及基本 `docker` 命令的知識。| 
-|電腦視覺資源 |若要使用此容器，您必須具備：<br><br>Azure **電腦視覺** 資源和相關聯的 API 金鑰（端點 URI）。 這兩個值都可在資源的 [總覽] 和 [金鑰] 頁面上取得，而且必須要有這些值才能啟動容器。<br><br>**{API_KEY}**： [ **金鑰** ] 頁面上兩個可用資源金鑰的其中一個<br><br>**{ENDPOINT_URI}**： **總覽** 頁面上提供的端點|
+|電腦視覺資源 |若要使用此容器，您必須具備：<br><br>Azure **電腦視覺** 資源和相關聯的 API 金鑰（端點 URI）。 這兩個值都可在資源的 [總覽] 和 [金鑰] 頁面上取得，而且必須要有這些值才能啟動容器。<br><br>**{API_KEY}** ： [ **金鑰** ] 頁面上兩個可用資源金鑰的其中一個<br><br>**{ENDPOINT_URI}** ： **總覽** 頁面上提供的端點|
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
@@ -73,14 +72,14 @@ ms.locfileid: "91536370"
 
 ### <a name="advanced-vector-extension-support"></a>先進的向量擴充功能支援
 
-**主**電腦是執行 docker 容器的電腦。 主機 *必須支援* (AVX2) 的 [Advanced 向量擴充](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) 功能。 您可以使用下列命令，在 Linux 主機上檢查 AVX2 支援：
+**主** 電腦是執行 docker 容器的電腦。 主機 *必須支援* (AVX2) 的 [Advanced 向量擴充](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) 功能。 您可以使用下列命令，在 Linux 主機上檢查 AVX2 支援：
 
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
 ```
 
 > [!WARNING]
-> *需要*主機電腦才能支援 AVX2。 如果沒有 AVX2 支援，容器 *將無法* 正確運作。
+> *需要* 主機電腦才能支援 AVX2。 如果沒有 AVX2 支援，容器 *將無法* 正確運作。
 
 ### <a name="container-requirements-and-recommendations"></a>容器的需求和建議
 
@@ -93,7 +92,6 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 | 容器 | Container Registry/存放庫/映射名稱 |
 |-----------|------------|
 | 閱讀 2.0-預覽 | `mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview` |
-| Read 3.0-預覽 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview` |
 | Read 3.1-預覽 | `mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview` |
 
 使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令下載容器映射。
@@ -104,12 +102,6 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 ```bash
 docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview
-```
-
-# <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
-
-```bash
-docker pull mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview
 ```
 
 # <a name="version-20-preview"></a>[版本 2.0-預覽](#tab/version-2)
@@ -152,24 +144,6 @@ ApiKey={API_KEY}
 * 公開 TCP 通訊埠5000，並為容器配置虛擬 TTY。
 * 在容器結束之後自動將其移除。 容器映像仍可在主機電腦上使用。
 
-# <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-
-```
-
-此命令：
-
-* 從容器映射執行讀取容器。
-* 配置8個 CPU 核心和 18 gb (GB) 的記憶體。
-* 公開 TCP 通訊埠5000，並為容器配置虛擬 TTY。
-* 在容器結束之後自動將其移除。 容器映像仍可在主機電腦上使用。
-
 # <a name="version-20-preview"></a>[版本 2.0-預覽](#tab/version-2)
 
 ```bash
@@ -195,7 +169,7 @@ ApiKey={API_KEY}
 > [!IMPORTANT]
 > 必須指定 `Eula`、`Billing` 及 `ApiKey` 選項以執行容器，否則容器將不會啟動。  如需詳細資訊，請參閱[帳單](#billing)。
 
-如果您需要更高的輸送量 (例如，在處理多分頁檔案) 時，請考慮使用[Azure 儲存體](https://docs.microsoft.com/azure/storage/common/storage-account-create)和[Azure 佇列](https://docs.microsoft.com/azure/storage/queues/storage-queues-introduction)，[在 Kubernetes 叢集上](deploy-computer-vision-on-premises.md)部署多個 v3.0 或3.1 版的容器。
+如果您需要更高的輸送量 (例如，處理多分頁檔案) ，請考慮使用[Azure 儲存體](https://docs.microsoft.com/azure/storage/common/storage-account-create)和[Azure 佇列](https://docs.microsoft.com/azure/storage/queues/storage-queues-introduction)，[在 Kubernetes 叢集上](deploy-computer-vision-on-premises.md)部署多個容器。
 
 如果您要使用 Azure 儲存體儲存影像以進行處理，您可以建立呼叫容器時所要使用的 [連接字串](https://docs.microsoft.com/azure/storage/common/storage-configure-connection-string) 。
 
@@ -203,7 +177,7 @@ ApiKey={API_KEY}
 
 1. 流覽至 Azure 入口網站上的 **儲存體帳戶** ，並尋找您的帳戶。
 2. 按一下左側導覽清單中的 [ **存取金鑰** ]。
-3. 您的連接字串位於**連接字串**下方
+3. 您的連接字串位於 **連接字串** 下方
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -219,10 +193,6 @@ ApiKey={API_KEY}
 
 請對容器 API 使用主機 `http://localhost:5000`。 您可以在下列位置查看 Swagger 路徑： `http://localhost:5000/swagger/vision-v3.1-preview-read/swagger.json` 。
 
-# <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
-
-請對容器 API 使用主機 `http://localhost:5000`。 您可以在下列位置查看 Swagger 路徑： `http://localhost:5000/swagger/vision-v3.0-preview-read/swagger.json` 。
-
 # <a name="version-20-preview"></a>[版本 2.0-預覽](#tab/version-2)
 
 請對容器 API 使用主機 `http://localhost:5000`。 您可以在下列位置查看 Swagger 路徑： `http://localhost:5000/swagger/vision-v2.0-preview-read/swagger.json` 。
@@ -237,7 +207,7 @@ ApiKey={API_KEY}
 您可以搭配使用 `POST /vision/v3.1/read/analyze` 和 `GET /vision/v3.1/read/operations/{operationId}` 作業來以非同步方式讀取影像，類似于電腦視覺服務如何使用這些對應的 REST 作業。 非同步 POST 方法會傳回，做為 `operationId` HTTP GET 要求的識別碼。
 
 
-從 swagger UI 中選取， `asyncBatchAnalyze` 以在瀏覽器中加以展開。 然後選取 [立即**試用]，**  >  **選擇 [** 檔案]。 在此範例中，我們將使用下圖：
+從 swagger UI 中選取， `asyncBatchAnalyze` 以在瀏覽器中加以展開。 然後選取 [立即 **試用]，**  >  **選擇 [** 檔案]。 在此範例中，我們將使用下圖：
 
 ![索引標籤與空格](media/tabs-vs-spaces.png)
 
@@ -310,80 +280,11 @@ ApiKey={API_KEY}
 }
 ```
 
-# <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
-
-您可以搭配使用 `POST /vision/v3.0/read/analyze` 和 `GET /vision/v3.0/read/operations/{operationId}` 作業來以非同步方式讀取影像，類似于電腦視覺服務如何使用這些對應的 REST 作業。 非同步 POST 方法會傳回，做為 `operationId` HTTP GET 要求的識別碼。
-
-從 swagger UI 中選取， `asyncBatchAnalyze` 以在瀏覽器中加以展開。 然後選取 [立即**試用]，**  >  **選擇 [** 檔案]。 在此範例中，我們將使用下圖：
-
-![索引標籤與空格](media/tabs-vs-spaces.png)
-
-當非同步 POST 成功執行時，它會傳回 **HTTP 202** 狀態碼。 作為回應的一部分，有一個 `operation-location` 標頭會保存要求的結果端點。
-
-```http
- content-length: 0
- date: Fri, 04 Sep 2020 16:23:01 GMT
- operation-location: http://localhost:5000/vision/v3.0/read/operations/a527d445-8a74-4482-8cb3-c98a65ec7ef9
- server: Kestrel
-```
-
-`operation-location`是完整的 URL，可透過 HTTP GET 存取。 以下是從 `operation-location` 上一個影像執行 URL 的 JSON 回應：
-
-```json
-{
-  "status": "succeeded",
-  "createdDateTime": "2020-09-02T10:24:49Z",
-  "lastUpdatedDateTime": "2020-09-02T10:24:50Z",
-  "analyzeResult": {
-    "version": "3.0.0",
-    "readResults": [
-      {
-        "page": 1,
-        "angle": 2.12,
-        "width": 502,
-        "height": 252,
-        "unit": "pixel",
-        "language": "",
-        "lines": [
-          {
-            "boundingBox": [58, 42, 314, 59, 311, 123, 56, 121],
-            "text": "Tabs vs",
-            "words": [
-              {
-                "boundingBox": [85, 45, 242, 62, 241, 122, 83, 123],
-                "text": "Tabs",
-                "confidence": 0.981
-              },
-              {
-                "boundingBox": [258, 64, 314, 72, 314, 123, 256, 123],
-                "text": "vs",
-                "confidence": 0.958
-              }
-            ]
-          },
-          {
-            "boundingBox": [286, 171, 415, 165, 417, 197, 287, 201],
-            "text": "paces",
-            "words": [
-              {
-                "boundingBox": [303, 175, 415, 167, 415, 198, 306, 199],
-                "text": "paces",
-                "confidence": 0.918
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
 # <a name="version-20-preview"></a>[版本 2.0-預覽](#tab/version-2)
 
 您可以搭配使用 `POST /vision/v2.0/read/core/asyncBatchAnalyze` 和 `GET /vision/v2.0/read/operations/{operationId}` 作業來以非同步方式讀取影像，類似于電腦視覺服務如何使用這些對應的 REST 作業。 非同步 POST 方法會傳回，做為 `operationId` HTTP GET 要求的識別碼。
 
-從 swagger UI 中選取， `asyncBatchAnalyze` 以在瀏覽器中加以展開。 然後選取 [立即**試用]，**  >  **選擇 [** 檔案]。 在此範例中，我們將使用下圖：
+從 swagger UI 中選取， `asyncBatchAnalyze` 以在瀏覽器中加以展開。 然後選取 [立即 **試用]，**  >  **選擇 [** 檔案]。 在此範例中，我們將使用下圖：
 
 ![索引標籤與空格](media/tabs-vs-spaces.png)
 
@@ -453,10 +354,6 @@ ApiKey={API_KEY}
 
 `POST /vision/v3.1/read/syncAnalyze` 
 
-# <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
-
-`POST /vision/v3.0/read/syncAnalyze`
-
 # <a name="version-20-preview"></a>[版本 2.0-預覽](#tab/version-2)
 
 `POST /vision/v2.0/read/core/Analyze`
@@ -473,7 +370,7 @@ ApiKey={API_KEY}
 
 JSON 回應物件與非同步版本具有相同的物件圖形。 如果您是 JavaScript 使用者且需要型別安全，請考慮使用 TypeScript 來轉換 JSON 回應。
 
-如需範例使用案例，請參閱<a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">此處 <span class="docon docon-navigate-external x-hidden-focus"></span> 的 TypeScript 沙箱</a>，然後選取 [**執行**] 以視覺化其容易使用。
+如需範例使用案例，請參閱 <a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">此處 <span class="docon docon-navigate-external x-hidden-focus"></span> 的 TypeScript 沙箱</a>，然後選取 [ **執行** ] 以視覺化其容易使用。
 
 ## <a name="stop-the-container"></a>停止容器
 

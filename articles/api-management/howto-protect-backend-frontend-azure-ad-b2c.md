@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
-ms.custom: fasttrack-new
-ms.openlocfilehash: 60177dd00dc6326aae4cfdc0b658c85f2635f8c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: fasttrack-new, devx-track-js
+ms.openlocfilehash: aa3bce73d2a91538dff0fdeb9e0eb814d878459a
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86253689"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676025"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>使用 OAuth 2.0、Azure Active Directory B2C 和 Azure API 管理來保護 SPA 後端
 
@@ -31,7 +31,7 @@ ms.locfileid: "86253689"
 
 針對深層防禦，我們接著會使用 EasyAuth 在後端 API 內再次驗證權杖。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 若要依照本文中的步驟進行，您必須有：
 * Azure (StorageV2) 一般用途 V2 儲存體帳戶，以裝載前端 JS 單一頁面應用程式
 * Azure API 管理實例 
@@ -180,7 +180,7 @@ ms.locfileid: "86253689"
    > 現在您的函式 API 不應從任何地方（透過 API 管理或您的位址）進行呼叫。
    
 ## <a name="import-the-function-app-definition"></a>匯入函數應用程式定義
-1. 開啟 [ *API 管理*] 分頁，然後開啟 *您的實例*。
+1. 開啟 [ *API 管理* ] 分頁，然後開啟 *您的實例* 。
 1. 從實例的 [API 管理] 區段中，選取 [Api] 分頁。
 1. 從 [新增 API] 窗格中，選擇 [函數應用程式]，然後從快顯視窗頂端選取 [完整]。
 1. 按一下 [流覽]，選擇您要在其中裝載 API 的函式應用程式，然後按一下 [選取]。
@@ -194,7 +194,7 @@ ms.locfileid: "86253689"
 1. 您可以在 [用戶端註冊頁面 URL] 中輸入任何值，因為將不會使用此值。
 1. 檢查 *隱含驗證* 授與類型，並保留核取授權碼授與類型。
 1. 移至 [ *授權* 和 *權杖* 端點] 欄位，然後輸入您先前從已知的設定 xml 檔中所捕獲的值。
-1. 使用 Azure AD B2C 應用程式註冊中的後端函式 API 用戶端識別碼，向下滾動並填入名為 ' resource ' 的*其他主體參數*
+1. 使用 Azure AD B2C 應用程式註冊中的後端函式 API 用戶端識別碼，向下滾動並填入名為 ' resource ' 的 *其他主體參數*
 1. 選取 [用戶端認證]，將用戶端識別碼設定為開發人員主控台應用程式的應用程式識別碼-如果使用使用量 API 管理模型，請略過此步驟。
 1. 將用戶端密碼設定為您稍早記錄的金鑰-如果使用取用 API 管理模型，請略過此步驟。
 1. 最後，現在記錄 API 管理的驗證碼授與的 redirect_uri，以供稍後使用。
@@ -457,7 +457,7 @@ ms.locfileid: "86253689"
 ## <a name="and-were-done"></a>我們已經完成了
 您可以調整和編輯上述步驟，以允許許多不同的 Azure AD B2C 使用 API 管理。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 深入了解 [Azure Active Directory 和 OAuth2.0](../active-directory/develop/authentication-vs-authorization.md)。
 * 查看更多有關 API 管理的 [視訊](https://azure.microsoft.com/documentation/videos/index/?services=api-management) 。
 * 如需其他保護後端服務的方式，請參閱[相互憑證驗證](api-management-howto-mutual-certificates.md)。

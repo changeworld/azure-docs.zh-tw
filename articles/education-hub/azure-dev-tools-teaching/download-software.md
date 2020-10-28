@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: dbfb2d32b6aab7660f4fc11865122ad44e9732fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d556956a4e123d65a5725b56db57b3ce6cbb7aaf
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87096204"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675344"
 ---
 # <a name="help-students-download-software-developer-tools-from-the-azure-education-hub"></a>協助學生從 Azure Education Hub 下載軟體發展人員工具
 
@@ -26,7 +26,7 @@ ms.locfileid: "87096204"
 1. 使用您的 Azure 學生版訂用帳號憑證登入。
 1. 選取 Education Hub 中的任何軟體發展人員工具，以開啟下載窗格。
 1. 請閱讀軟體資訊，以確定軟體與您的電腦系統相容。
-1. 確認軟體與您的系統相容之後，請選取 [ **下載**]。
+1. 確認軟體與您的系統相容之後，請選取 [ **下載** ]。
 1. 遵循畫面上的指示，下載並安裝軟體。
 
    Azure 學生版提供您 12 個月內可用的 $100 點數。 其中包含超過 25 個免費服務的存取權，包括計算、網路、儲存體和資料庫。 這段期間所產生的任何費用都會從點數中扣除。 
@@ -36,5 +36,5 @@ ms.locfileid: "87096204"
 - [取得登入錯誤的協助](troubleshoot-login.md)
 - [Azure 學生版](azure-students-program.md)
 - [Azure 學生入門版](azure-students-starter-program.md)
-- [Microsoft Learn：免費的線上學習平台](https://docs.microsoft.com/learn/)
+- [Microsoft Learn：免費的線上學習平台](/learn/)
 - [常見問題集](program-faq.md#azure-for-students)

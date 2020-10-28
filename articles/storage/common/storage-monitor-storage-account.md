@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 4c78938e2f70342822a4009ed9195196ca486fe0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14edb8db945a9b69ba77d56cd19a4524876ede03
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88034663"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676806"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>在 Azure 入口網站中監視儲存體帳戶
 
@@ -37,7 +37,7 @@ ms.locfileid: "88034663"
 1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 [儲存體帳戶]，接著選取儲存體帳戶名稱以開啟帳戶儀表板。
 1. 在功能表刀鋒視窗的 [監視] 區段中選取 [診斷]。
 
-    ![MonitoringOptions](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
+    ![在監視 (傳統) 區段下，反白顯示診斷設定 (傳統) 選項的螢幕擷取畫面。](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 
 1. 針對您想要監視的每個 [服務] 選取計量資料的 [類型]，並選取資料的 [保留原則]。 您也可以將 [狀態] 設定為 [關閉] 來停用監視。
 
@@ -91,7 +91,7 @@ ms.locfileid: "88034663"
 
 您在 [診斷] 中選取的計量會決定帳戶可用計量的解析︰
 
-* **彙總**監視會提供入口流量/出口流量、可用性、延遲和成功百分比等計量。 這些計量是從 Blob、資料表、檔案和佇列服務彙總而來。
+* **彙總** 監視會提供入口流量/出口流量、可用性、延遲和成功百分比等計量。 這些計量是從 Blob、資料表、檔案和佇列服務彙總而來。
 * **依 API** 會提供更精細的解析，除了服務層級的彙總外，還能呈現個別儲存體作業可用的計量。
 
 ## <a name="configure-metrics-alerts"></a>設定計量警示

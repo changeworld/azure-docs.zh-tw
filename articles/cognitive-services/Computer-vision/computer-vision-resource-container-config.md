@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 10/22/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 00c96333e612c7f92d7c53630eaa006b060986ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5094bd4aa5ac68c24f284cfb74e410fbdf089af7
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536234"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677185"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>設定讀取 OCR Docker 容器
 
@@ -46,7 +46,7 @@ ms.locfileid: "91536234"
 
 此設定可在下列位置找到：
 
-* Azure 入口網站：**認知服務**資源管理，位於**金鑰**底下
+* Azure 入口網站： **認知服務** 資源管理，位於 **金鑰** 底下
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 設定
 
@@ -92,17 +92,17 @@ ms.locfileid: "91536234"
 
 |選用| 名稱 | 資料類型 | 描述 |
 |-------|------|-----------|-------------|
-|不允許| `Input` | 字串 | 電腦視覺容器不會使用此項目。|
-|選用| `Output` | String | 輸出裝載的目標。 預設值是 `/output`。 這是記錄的位置。 這包括容器記錄。 <br><br>範例：<br>`--mount type=bind,src=c:\output,target=/output`|
+|不允許| `Input` | String | 電腦視覺容器不會使用此項目。|
+|選用| `Output` | String | 輸出裝載的目標。 預設值為 `/output`。 這是記錄的位置。 這包括容器記錄。 <br><br>範例：<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>範例 docker run 命令
 
 下列範例會使用組態設定來說明如何撰寫和使用 `docker run` 命令。  開始執行後，容器就會持續執行，直到您加以[停止](computer-vision-how-to-install-containers.md#stop-the-container)。
 
-* **行接續字元**：下列各節中的 Docker 命令會使用反斜線 `\` 作為行接續字元。 請根據您主機作業系統的需求加以替換或移除。 
-* **引數順序**：除非您非常熟悉 Docker 容器，否則請勿變更引數的順序。
+* **行接續字元** ：下列各節中的 Docker 命令會使用反斜線 `\` 作為行接續字元。 請根據您主機作業系統的需求加以替換或移除。 
+* **引數順序** ：除非您非常熟悉 Docker 容器，否則請勿變更引數的順序。
 
-請將 {_argument_name_} 取代為您自己的值：
+請將 { _argument_name_ } 取代為您自己的值：
 
 | 預留位置 | 值 | 格式或範例 |
 |-------------|-------|---|
@@ -138,29 +138,6 @@ ApiKey={API_KEY}
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
 mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-Logging:Console:LogLevel:Default=Information
-```
-
-# <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
-
-### <a name="basic-example"></a>基本範例
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
-Eula=accept \
-Billing={ENDPOINT_URI} \
-ApiKey={API_KEY}
-```
-
-### <a name="logging-example"></a>記錄範例 
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.0-preview \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

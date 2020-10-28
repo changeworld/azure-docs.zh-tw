@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 06/03/2020
-ms.openlocfilehash: 49e885862a49bb3bbea718566ee5389e6b08e860
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4da14c1fbdaf71018e62b0f97e288a66edef5c8
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444604"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677285"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database audit 記錄檔格式
 
@@ -89,8 +89,8 @@ Audit 事件會寫入至在審核設定期間定義的 Log Analytics 工作區�
 | target_server_principal_name | target_server_principal_name_s | 動作的目標登入。 Null （如果不適用） | sysname | 字串 |
 | target_server_principal_sid | target_server_principal_sid_s | 目標登入的 SID。 Null （如果不適用） | varbinary | 字串 |
 | transaction_id | transaction_id_d | 只有 (從2016開始 SQL Server 的) -0 代表 Azure SQL Database | BIGINT | int |
-| user_defined_event_id | user_defined_event_id_d | 以引數形式傳遞給 sp_audit_write 的使用者定義事件識別碼。 系統事件的 Null (預設值) ，而使用者定義的事件則為非零。 如需詳細資訊，請參閱 [sp_audit_write (transact-sql) ](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | SMALLINT | int |
-| user_defined_information | user_defined_information_s | 以引數形式傳遞給 sp_audit_write 的使用者定義資訊。 系統事件的 Null (預設值) ，而使用者定義的事件則為非零。 如需詳細資訊，請參閱 [sp_audit_write (transact-sql) ](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | nvarchar(4000) | 字串 |
+| user_defined_event_id | user_defined_event_id_d | 以引數形式傳遞給 sp_audit_write 的使用者定義事件識別碼。 系統事件的 Null (預設值) ，而使用者定義的事件則為非零。 如需詳細資訊，請參閱 [sp_audit_write (transact-sql) ](/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | SMALLINT | int |
+| user_defined_information | user_defined_information_s | 以引數形式傳遞給 sp_audit_write 的使用者定義資訊。 系統事件的 Null (預設值) ，而使用者定義的事件則為非零。 如需詳細資訊，請參閱 [sp_audit_write (transact-sql) ](/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | nvarchar(4000) | 字串 |
 
 ## <a name="next-steps"></a>後續步驟
 

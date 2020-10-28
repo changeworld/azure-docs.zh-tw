@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6f7af74cce6bbafea7924d505f768503c7b1f108
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3c941139b12fdf19bf1080b4dddecb8ab761568
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89457986"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676123"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics 版本資訊
 
@@ -40,6 +40,13 @@ ms.locfileid: "89457986"
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
 
+## <a name="oct-2020"></a>10月2020
+
+| 服務改進功能 | 詳細資料 |
+| --- | --- |
+|**T-sql 內嵌 Table-Valued 函式 (預覽)**|在此版本中，您現在可以使用 Transact-sql 建立內嵌資料表值函式，並查詢其結果，就像處理資料表一樣。 這項功能目前為預覽狀態，在 GA 的工具中將會支援此功能。 如需詳細資訊，請參閱 [CREATE FUNCTION (Azure Synapse Analytics) ](https://docs.microsoft.com/sql/t-sql/statements/create-function-sql-data-warehouse?view=azure-sqldw-latest)。|
+|**MERGE 命令 (preview)**|您現在可以從與來源資料表聯結的結果，在目標資料表上執行插入、更新或刪除作業。 例如，您可以根據在另一個資料表中所找到的差異在資料表中插入、更新或刪除資料列，以同步處理兩個資料表。  檢查 [合併](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) 以取得詳細資料。|
+
 ## <a name="aug-2020"></a>2020年8月
 
 | 服務改進功能 | 詳細資料 |
@@ -51,10 +58,10 @@ ms.locfileid: "89457986"
 
 | 服務改進功能 | 詳細資料 |
 | --- | --- |
-|**資料行層級加密 (公開預覽) **|使用 Transact-sql 將對稱式加密套用至資料行，以保護您 Azure Synapse Analytics 中的機密資訊。 資料行層級加密具有內建函數，可讓您使用以憑證、密碼、對稱金鑰或非對稱金鑰進一步保護的對稱金鑰來加密資料。 如需詳細資訊，請造訪 [加密資料行](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest)。|
-|** (GA) 的相容性層級支援 **|在此版本中，使用者現在可以設定資料庫的相容性層級，以取得特定版本 Synapse SQL 引擎的 Transact-SQL 語言和查詢處理行為。 如需詳細資訊，請參閱 [sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 和[改變資料庫範圍設定](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。|
+|**資料行層級加密 (公開預覽)**|使用 Transact-sql 將對稱式加密套用至資料行，以保護您 Azure Synapse Analytics 中的機密資訊。 資料行層級加密具有內建函數，可讓您使用以憑證、密碼、對稱金鑰或非對稱金鑰進一步保護的對稱金鑰來加密資料。 如需詳細資訊，請造訪 [加密資料行](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest)。|
+|**(GA) 的相容性層級支援**|在此版本中，使用者現在可以設定資料庫的相容性層級，以取得特定版本 Synapse SQL 引擎的 Transact-SQL 語言和查詢處理行為。 如需詳細資訊，請參閱 [sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 和[改變資料庫範圍設定](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。|
 |**資料列層級安全性**|此版本包含在其上強制執行 RLS 之資料列的更新和刪除作業的改進。 在此版本中，如果內建函式未參考 DML 目標資料表中的任何資料行，則具有 ' is_rolemember ' 等內建函式的更新和刪除作業將會成功。 在這項改進之前，這些作業會因為基礎 DML 作業的限制而失敗。|
-|**DBCC SHRINKDATABASE (GA) **|您現在可以壓縮指定之資料庫中的資料和記錄檔大小。 如需詳細資訊，請參閱 [檔](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15)。|
+|**DBCC SHRINKDATABASE (GA)**|您現在可以壓縮指定之資料庫中的資料和記錄檔大小。 如需詳細資訊，請參閱 [檔](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15)。|
 
 ## <a name="may-2020"></a>2020 年 5 月
 
@@ -63,8 +70,8 @@ ms.locfileid: "89457986"
 |**工作負載隔離 (GA)**|[工作負載隔離](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation)現已正式推出。  您可以透過[工作負載群組](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)保留和包含資源。  也可以設定查詢逾時來取消失控查詢。|
 |**工作負載管理入口網站體驗 (預覽)**| 使用者可以透過 Azure 入口網站來設定及管理其工作負載管理設定。  可以設定[工作群組](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal)和具有重要性的[工作負載分類器](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal)。|
 |**改變工作負載群組**|現在可以使用 [ALTER WORKLOAD GROUP](https://docs.microsoft.com/sql/t-sql/statements/alter-workload-group-transact-sql?view=azure-sqldw-latest) 命令。  使用改變來變更現有[工作負載群組](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation)的設定。|
-|**使用複製命令 (預覽) 自動偵測 Parquet 檔案的架構 **|[COPY 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)現在支援在載入 Parquet 檔案時進行自動結構描述偵測。 此命令會自動偵測 Parquet 檔案結構描述，並且在載入之前建立資料表。 前往下列電子郵件通訊群組清單，以啟用此功能： sqldwcopypreview@service.microsoft.com 。 |
-|**使用複製命令 (預覽版載入複雜的 Parquet 資料類型) **|[COPY 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)現在支援載入複雜的 Parquet 類型。 您可以將例如「地圖」和「清單」的複雜類型載入至字串資料行。  前往下列電子郵件通訊群組清單，以啟用此功能： sqldwcopypreview@service.microsoft.com 。 |
+|**使用複製命令 (預覽) 自動偵測 Parquet 檔案的架構**|[COPY 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)現在支援在載入 Parquet 檔案時進行自動結構描述偵測。 此命令會自動偵測 Parquet 檔案結構描述，並且在載入之前建立資料表。 前往下列電子郵件通訊群組清單，以啟用此功能： sqldwcopypreview@service.microsoft.com 。 |
+|**使用複製命令 (預覽版載入複雜的 Parquet 資料類型)**|[COPY 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)現在支援載入複雜的 Parquet 類型。 您可以將例如「地圖」和「清單」的複雜類型載入至字串資料行。  前往下列電子郵件通訊群組清單，以啟用此功能： sqldwcopypreview@service.microsoft.com 。 |
 |**使用 COPY 命令進行 Parquet 檔案的自動壓縮偵測**|[COPY 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)現在支援 Parquet 檔案的壓縮方法自動偵測。 前往下列電子郵件通訊群組清單，以啟用此功能： sqldwcopypreview@service.microsoft.com 。|
 |**其他載入建議**|[載入建議](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations)現在適用於 Synapse SQL。 當您應該分割檔案以取得最大輸送量時，請將您的儲存體帳戶與您的 SQL 集區共置，或在使用 SQLBulkCopy API 或 BCP 等載入公用程式時增加批次大小，以取得主動式通知|
 |**T-SQL 可更新散發資料行 (GA)**|使用者現在可以更新儲存在散發資料行中的資料。 如需詳細資訊，請參閱[在 Synapse SQL 集區中設計分散式資料表的指引](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute)。|
@@ -114,7 +121,7 @@ ms.locfileid: "89457986"
 | 服務改進功能 | 詳細資料 |
 | --- | --- |
 |**Azure Private Link (預覽)**|使用 [Azure Private Link](https://azure.microsoft.com/blog/announcing-azure-private-link/)，您可以在您的虛擬網路 (VNet) 中建立私人端點，並且將其對應至您的 SQL 集區。 接著，您可以透過 VNet 中的私人 IP 位址來存取這些資源，以啟用透過 Azure ExpressRoute 私人對等互連和/或 VPN 閘道的內部部署連線。 整體來說，因為不需要您將其開啟到公用 IP 位址，所以可以簡化網路設定。 也可以保護資料外洩風險。 如需詳細資訊，請參閱[概觀](../../private-link/private-link-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)和 [SQL Analytics 文件](../../azure-sql/database/private-endpoint-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。|
-|**資料探索與分類 (GA)**|[資料探索與分類](../../azure-sql/database/data-discovery-and-classification-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)功能現已正式推出。 這項功能提供**探索、分類、標記與保護**資料庫中敏感性資料的進階功能。|
+|**資料探索與分類 (GA)**|[資料探索與分類](../../azure-sql/database/data-discovery-and-classification-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)功能現已正式推出。 這項功能提供 **探索、分類、標記與保護** 資料庫中敏感性資料的進階功能。|
 |**Azure Advisor 單鍵整合**|Azure Synapse 中的 SQL Analytics 現在會直接與概觀刀鋒視窗中的 Azure Advisor 建議整合，並提供單鍵體驗。 您現在可以在概觀刀鋒視窗中探索建議，而不用瀏覽至 Azure Advisor 刀鋒視窗。 在[這裡](sql-data-warehouse-concept-recommendations.md)了解更多建議。|
 |**讀取認可快照隔離 (預覽)**|您可以使用 ALTER DATABASE 來啟用或停用使用者資料庫的快照隔離。  若要避免影響目前的工作負載，您可以在資料庫維護期間設定此選項，或等到資料庫沒有其他作用中連線時進行設定。 如需詳細資訊，請參閱 [ALTER DATABASE SET 選項](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。|
 |**EXECUTE AS (Transact-SQL)**| [EXECUTE AS](/sql/t-sql/statements/execute-as-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 支援現在可以讓客戶將工作階段的執行內容設定給指定使用者。|

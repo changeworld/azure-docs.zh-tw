@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: 271d3c0ca44c500a6fd8ee50ed5f1698e46cd511
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af1bee00261cd96f61a39389f31a52109f4e64b5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510261"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675811"
 ---
 # <a name="ingest-historical-telemetry-data"></a>內嵌歷程記錄遙測資料
 
@@ -42,17 +42,17 @@ ms.locfileid: "88510261"
 
 2. **如果您是在 FarmBeats 版本1.2.7 或更新版本上，請略過步驟 a、b 和 c，然後移至步驟3。** 您可以選取 FarmBeats UI 右上角的 [ **設定** ] 圖示來檢查 FarmBeats 版本。
 
-      a.  移至**Azure Active Directory**  >  **應用程式註冊**
+      a.  移至 **Azure Active Directory**  >  **應用程式註冊**
 
       b. 選取在 FarmBeats 部署過程中建立的 **應用程式註冊** 。 它會有與您的 FarmBeats datahub 相同的名稱。
 
-      c. 選取 [ **公開 API** ] > 選取 [ **新增用戶端應用程式** ]，然後輸入 **04b07795-8ddb-461a-bbee-02f9e1bf7b46** 並檢查 **授權範圍**。 這會提供 Azure CLI (Cloud Shell) 的存取權，以執行下列步驟：
+      c. 選取 [ **公開 API** ] > 選取 [ **新增用戶端應用程式** ]，然後輸入 **04b07795-8ddb-461a-bbee-02f9e1bf7b46** 並檢查 **授權範圍** 。 這會提供 Azure CLI (Cloud Shell) 的存取權，以執行下列步驟：
 
 3. 開啟 Cloud Shell。 此選項可在 Azure 入口網站右上角的工具列上取得。
 
     ![Azure 入口網站工具列](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-4. 確定環境已設定為 **PowerShell**。 依預設，它會設定為 Bash。
+4. 確定環境已設定為 **PowerShell** 。 依預設，它會設定為 Bash。
 
     ![PowerShell 工具列設定](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
@@ -70,13 +70,13 @@ ms.locfileid: "88510261"
 
 7. 執行下列命令。 這會將腳本下載到您的主目錄。
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive 
 
     wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1
 
     ```
 
-8. 執行下列指令碼。 腳本會要求租使用者識別碼，您可以從**Azure Active Directory**  >  **總覽**頁面取得該識別碼。
+8. 執行下列指令碼。 腳本會要求租使用者識別碼，您可以從 **Azure Active Directory**  >  **總覽** 頁面取得該識別碼。
 
     ```azurepowershell-interactive
 
@@ -84,7 +84,7 @@ ms.locfileid: "88510261"
 
     ```
 
-9. 遵循畫面上的指示來捕捉 **API 端點**、租使用者 **識別碼**、 **用戶端識別碼**、 **用戶端密碼**和 **EventHub 連接字串**的值。
+9. 遵循畫面上的指示來捕捉 **API 端點** 、租使用者 **識別碼** 、 **用戶端識別碼** 、 **用戶端密碼** 和 **EventHub 連接字串** 的值。
 
 
 ## <a name="create-device-or-sensor-metadata"></a>建立裝置或感應器中繼資料
@@ -96,10 +96,10 @@ ms.locfileid: "88510261"
  > [!NOTE]
  > 作為合作夥伴，您只能存取讀取、建立和更新中繼資料; **只有夥伴才能刪除選項。**
 
-- /**DeviceModel**： DeviceModel 對應至裝置的中繼資料，例如製造商和裝置類型，也就是閘道或節點。
-- /**Device**：Device 會對應至存在於伺服器陣列上的實體裝置。
-- /**SensorModel**： SensorModel 對應至感應器的中繼資料，例如製造商、感應器類型、類比或數位，以及感應器測量，例如環境溫度和壓力。
-- /**Sensor**：Sensor 會對應至記錄值的實體感應器。 感應器通常會使用裝置識別碼連線到裝置。
+- /**DeviceModel** ： DeviceModel 對應至裝置的中繼資料，例如製造商和裝置類型，也就是閘道或節點。
+- /**Device** ：Device 會對應至存在於伺服器陣列上的實體裝置。
+- /**SensorModel** ： SensorModel 對應至感應器的中繼資料，例如製造商、感應器類型、類比或數位，以及感應器測量，例如環境溫度和壓力。
+- /**Sensor** ：Sensor 會對應至記錄值的實體感應器。 感應器通常會使用裝置識別碼連線到裝置。
 
 
 |        DeviceModel   |  建議   |
@@ -192,9 +192,9 @@ access_token = token_response.get('access_token')
 
 以下是您對 FarmBeats Datahub 進行 API 呼叫時，必須指定的最常見要求標頭：
 
-- **Content-type**： application/json
-- **授權**：持有者 <Access-Token>
-- **Accept**： application/json
+- **Content-type** ： application/json
+- **授權** ：持有者 <Access-Token>
+- **Accept** ： application/json
 
 ### <a name="input-payload-to-create-metadata"></a>用來建立中繼資料的輸入承載
 
@@ -336,7 +336,7 @@ response = requests.post(ENDPOINT + "/DeviceModel", data=payload, headers=header
 
 ### <a name="create-a-telemetry-client"></a>建立遙測用戶端
 
-您必須將遙測資料傳送至 Azure 事件中樞進行處理。 Azure 事件中樞是一項服務，可從連線的裝置和應用程式擷取即時資料 (遙測)。 若要將遙測資料傳送至 FarmBeats，請建立用戶端，以將訊息傳送至 FarmBeats 中的事件中樞。 如需有關傳送遙測的詳細資訊，請參閱 [Azure 事件中樞](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)。
+您必須將遙測資料傳送至 Azure 事件中樞進行處理。 Azure 事件中樞是一項服務，可從連線的裝置和應用程式擷取即時資料 (遙測)。 若要將遙測資料傳送至 FarmBeats，請建立用戶端，以將訊息傳送至 FarmBeats 中的事件中樞。 如需有關傳送遙測的詳細資訊，請參閱 [Azure 事件中樞](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)。
 
 ### <a name="send-a-telemetry-message-as-the-client"></a>以用戶端的形式傳送遙測訊息
 
@@ -431,9 +431,9 @@ write_client.stop()
 
 ### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>從感應器內嵌歷程/串流資料之後，無法檢視遙測資料
 
-**徵兆**：裝置或感應器已部署，而且您已在 FarmBeats 上建立裝置/感應器，並將遙測內嵌至 EventHub，但無法取得或檢視 FarmBeats 上的遙測資料。
+**徵兆** ：裝置或感應器已部署，而且您已在 FarmBeats 上建立裝置/感應器，並將遙測內嵌至 EventHub，但無法取得或檢視 FarmBeats 上的遙測資料。
 
-**矯正措施**：
+**矯正措施** ：
 
 1. 確定您已完成適當的夥伴註冊-您可以移至您的 datahub swagger、流覽至/Partner API、執行 Get 並檢查夥伴是否已註冊，以進行檢查。 如果沒有，請遵循 [此處的步驟](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) 來新增夥伴。
 

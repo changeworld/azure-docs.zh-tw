@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3ad4724280039f2820611a621186d8174e9af986
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ecbbb9580a9a79ae52320ea53a4831ac8ef57f8b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091401"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92678180"
 ---
 # <a name="authentication-with-azure-maps"></a>向 Azure 地圖服務驗證
 
@@ -43,7 +43,7 @@ Azure 訂用帳戶隨附于 Azure AD 租使用者，以啟用更細緻的存取�
 * 使用由使用者委派之許可權的夥伴應用程式
 * 適用於 Azure 資源的受控識別
 
-Azure 地圖服務會為每個 Azure 地圖服務帳戶產生「唯一識別碼 (用戶端識別碼)」**。 當您將此用戶端識別碼與其他參數合併時，可以要求 Azure AD 的權杖。
+Azure 地圖服務會為每個 Azure 地圖服務帳戶產生「唯一識別碼 (用戶端識別碼)」  。 當您將此用戶端識別碼與其他參數合併時，可以要求 Azure AD 的權杖。
 
 如需如何為 Azure 地圖服務設定 Azure AD 和要求權杖的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)。
 
@@ -104,7 +104,7 @@ Azure 地圖服務支援 [ (AZURE RBAC) 存取 azure 角色型存取控制 ](htt
 | 建立者            | Azure 地圖服務資料參與者 |
 | 空間            | Azure 地圖服務資料參與者 |
 
-如需有關觀看 Azure RBAC 設定的詳細資訊，請參閱 [如何設定適用于 Azure 地圖服務的 AZURE rbac](https://aka.ms/amrbac)。
+如需有關觀看 Azure RBAC 設定的詳細資訊，請參閱 [如何設定適用于 Azure 地圖服務的 AZURE rbac](./how-to-manage-authentication.md)。
 
 #### <a name="custom-role-definitions"></a>自訂角色定義
 
@@ -114,7 +114,7 @@ Azure 地圖服務支援 [ (AZURE RBAC) 存取 azure 角色型存取控制 ](htt
 
 以下是一些範例案例，其中的自訂角色可以改善應用程式安全性。
 
-| 狀況                                                                                                                                                                                                                 | 自訂角色資料動作 (s)                                                                                                                   |
+| 案例                                                                                                                                                                                                                 | 自訂角色資料動作 (s)                                                                                                                   |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
 | 具有基底地圖磚且沒有其他 REST Api 的公開或互動式登入網頁。                                                                                                                              | `Microsoft.Maps/accounts/services/render/read`                                                                                              |
 | 只需要反向地理編碼且沒有其他 REST Api 的應用程式。                                                                                                                                             | `Microsoft.Maps/accounts/services/search/read`                                                                                              |

@@ -5,16 +5,16 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: cc2eb7ecb7f0587c065aac1cfb57cfae10b732ac
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: dd0ed78c56e4d656a2ecee6395d831ed093e85b5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168285"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677374"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>針對 Azure FarmBeats 進行疑難排解
 
-本文提供 Azure FarmBeats 常見問題的解決方案。 如需其他協助，請與我們的 [Q&支援論壇](https://aka.ms/farmbeatssupport) ，或傳送電子郵件給我們 farmbeatssupport@microsoft.com 。
+本文提供 Azure FarmBeats 常見問題的解決方案。 如需其他協助，請與我們的 [Q&支援論壇](/answers/topics/azure-farmbeats.html) ，或傳送電子郵件給我們 farmbeatssupport@microsoft.com 。
 
 > [!NOTE]
   > 如果您在四月期間安裝了 FarmBeats，而您的作業失敗並出現空白的錯誤訊息，表示您的安裝可能未配置任何批次配額，無法優先處理重要的健康與安全組織支援。 如需詳細資訊，請參閱 [此處](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) 。 您必須要求將 VM 配置給 Batch 帳戶，才能成功執行作業。
@@ -22,7 +22,7 @@ ms.locfileid: "92168285"
 ## <a name="install-issues"></a>安裝問題
 
   > [!NOTE]
-  > 如果您因為發生錯誤而重新啟動安裝，請務必先刪除**資源群組**，或刪除資源群組中的所有資源，然後再重新觸發安裝。
+  > 如果您因為發生錯誤而重新啟動安裝，請務必先刪除 **資源群組** ，或刪除資源群組中的所有資源，然後再重新觸發安裝。
 
 ### <a name="invalid-sentinel-credentials"></a>不正確的 Sentinel 認證
 
@@ -34,7 +34,7 @@ ms.locfileid: "92168285"
 
 ### <a name="invalid-resource-group-location"></a>不正確的資源群組位置
 
-請確定**資源群組**位於安裝期間指定的**區域**中。
+請確定 **資源群組** 位於安裝期間指定的 **區域** 中。
 
 ### <a name="other-install-issues"></a>其他安裝問題
 
@@ -44,17 +44,17 @@ ms.locfileid: "92168285"
 - 資源群組名稱
 - 請遵循下列步驟來附加部署失敗的記錄檔：
 
-    1. 在 Azure 入口網站中，瀏覽至**資源群組**。
+    1. 在 Azure 入口網站中，瀏覽至 **資源群組** 。
 
     2. 在左側的 [設定] 區段底下，選取 [部署]。
 
-    3. 針對顯示**失敗**的每個部署，選取其詳細資料並下載部署詳細資料。 將此檔案附加至郵件。
+    3. 針對顯示 **失敗** 的每個部署，選取其詳細資料並下載部署詳細資料。 將此檔案附加至郵件。
 
 ## <a name="sensor-telemetry"></a>感應器遙測
 
 ### <a name="cant-view-telemetry-data"></a>無法檢視遙測資料
 
-**徵兆**：裝置或感應器已部署，而且您已將 FarmBeats 與裝置合作夥伴連結，但無法取得或檢視 FarmBeats 上的遙測資料。
+**徵兆** ：裝置或感應器已部署，而且您已將 FarmBeats 與裝置合作夥伴連結，但無法取得或檢視 FarmBeats 上的遙測資料。
 
 **矯正措施**
 
@@ -69,7 +69,7 @@ ms.locfileid: "92168285"
 
 ### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>從感應器內嵌歷程/串流資料之後，無法檢視遙測資料
 
-**徵兆**：裝置或感應器已部署，而且您已在 FarmBeats 上建立裝置/感應器，並將遙測內嵌至 EventHub，但無法取得或檢視 FarmBeats 上的遙測資料。
+**徵兆** ：裝置或感應器已部署，而且您已在 FarmBeats 上建立裝置/感應器，並將遙測內嵌至 EventHub，但無法取得或檢視 FarmBeats 上的遙測資料。
 
 **矯正措施**
 
@@ -110,14 +110,14 @@ ms.locfileid: "92168285"
 > [!NOTE]
 > 所關注感應器合作夥伴的合作夥伴識別碼。
 
-3. 返回至夥伴 API，然後選取 [**取得/ \<ID> **]。
+3. 返回至夥伴 API，然後選取 [ **取得/ \<ID>** ]。
 4. 指定步驟 3 中的合作夥伴識別碼，然後選取 [執行]。
 
    API 回應應具有事件中樞連接字串。
 
 ### <a name="device-appears-offline"></a>我的裝置顯示為離線
 
-**徵兆**：已安裝裝置，而且您已將 FarmBeats 與裝置合作夥伴連結。 裝置已上線並正在傳送遙測資料，但其顯示為離線。
+**徵兆** ：已安裝裝置，而且您已將 FarmBeats 與裝置合作夥伴連結。 裝置已上線並正在傳送遙測資料，但其顯示為離線。
 
 **矯正措施** 未針對此裝置設定報告間隔。 若要設定報告間隔，請連絡您的裝置製造商。 
 
@@ -125,9 +125,9 @@ ms.locfileid: "92168285"
 
 當您刪除裝置時，可能會遇到下列其中一個常見的錯誤情況：  
 
-**訊息**：「多個感應器參照該裝置：有一或多個與裝置相關聯的感應器。 請刪除感應器，然後再刪除裝置。」  
+**訊息** ：「多個感應器參照該裝置：有一或多個與裝置相關聯的感應器。 請刪除感應器，然後再刪除裝置。」  
 
-**意義**：裝置與伺服器陣列中部署的多個感應器相關聯。
+**意義** ：裝置與伺服器陣列中部署的多個感應器相關聯。
 
 **矯正措施**  
 
@@ -135,9 +135,9 @@ ms.locfileid: "92168285"
 2. 如果您想要將感應器與不同的裝置建立關聯，請要求裝置夥伴執行相同動作。  
 3. 使用 `DELETE API` 呼叫來刪除裝置，並將 force 參數設定為 true。  
 
-**訊息**：「多個裝置將該裝置視為 ParentDeviceId 來進行參照：有一個或多個裝置以子裝置的形式與此裝置相關聯。 請將這些子裝置刪除，然後再刪除此裝置。」  
+**訊息** ：「多個裝置將該裝置視為 ParentDeviceId 來進行參照：有一個或多個裝置以子裝置的形式與此裝置相關聯。 請將這些子裝置刪除，然後再刪除此裝置。」  
 
-**意義**：您的裝置有其他相關聯的裝置。  
+**意義** ：您的裝置有其他相關聯的裝置。  
 
 **矯正措施**
 
@@ -145,14 +145,14 @@ ms.locfileid: "92168285"
 2. 刪除特定裝置。  
 
     > [!NOTE]
-    > 如果感應器與裝置相關聯，您將無法刪除裝置。 如需有關如何刪除相關聯感應器的詳細資訊，請參閱[從感應器合作夥伴取得感應器資料](get-sensor-data-from-sensor-partner.md)中的＜**刪除感應器**＞一節。
+    > 如果感應器與裝置相關聯，您將無法刪除裝置。 如需有關如何刪除相關聯感應器的詳細資訊，請參閱 [從感應器合作夥伴取得感應器資料](get-sensor-data-from-sensor-partner.md)中的＜ **刪除感應器** ＞一節。
     > 合作夥伴沒有刪除裝置或感應器的權限。 只有系統管理員具有刪除的權限。
 
 ## <a name="issues-with-jobs"></a>作業問題
 
 ### <a name="farmbeats-internal-error"></a>FarmBeats 內部錯誤
 
-**訊息**：「FarmBeats 內部錯誤，請參閱疑難排解指南以取得詳細資料。」
+**訊息** ：「FarmBeats 內部錯誤，請參閱疑難排解指南以取得詳細資料。」
 
 **矯正措施** 此問題可能是因為資料管線中的暫時性失敗所造成。 請再次建立作業。 若錯誤持續發生，請與我們連絡，並提供錯誤訊息/記錄。
 
@@ -160,15 +160,15 @@ ms.locfileid: "92168285"
 
 ### <a name="access-control"></a>存取控制
 
-**問題**：您在新增角色指派時收到錯誤。
+**問題** ：您在新增角色指派時收到錯誤。
 
-**訊息**：「找不到相符的使用者。」
+**訊息** ：「找不到相符的使用者。」
 
 **矯正措施** 檢查您嘗試對其新增角色指派的電子郵件識別碼。 電子郵件識別碼必須完全符合 Active Directory 中為該使用者註冊的識別碼。 若錯誤持續發生，請與我們連絡，並提供錯誤訊息/記錄。
 
 ### <a name="unable-to-log-in-to-accelerator"></a>無法登入加速器
 
-**訊息**：「錯誤：您未獲授權，無法呼叫服務。 請連絡系統管理員以取得授權。」
+**訊息** ：「錯誤：您未獲授權，無法呼叫服務。 請連絡系統管理員以取得授權。」
 
 **矯正措施** 要求系統管理員授權您存取 FarmBeats 部署。 若要執行此動作，您可以執行 RoleAssignment API 的 POST，或透過加速器 [設定] 窗格中的存取控制。  
 
@@ -178,13 +178,13 @@ ms.locfileid: "92168285"
 
 ### <a name="accelerator-issues"></a>加速器問題  
 
-**問題**：您收到原因不明的加速器錯誤。
+**問題** ：您收到原因不明的加速器錯誤。
 
-**訊息**：「錯誤：發生未知的錯誤。」
+**訊息** ：「錯誤：發生未知的錯誤。」
 
-**矯正措施**如果您讓頁面閒置太久，就會發生此錯誤。 重新整理頁面。 若錯誤持續發生，請與我們連絡，並提供錯誤訊息/記錄。
+**矯正措施** 如果您讓頁面閒置太久，就會發生此錯誤。 重新整理頁面。 若錯誤持續發生，請與我們連絡，並提供錯誤訊息/記錄。
 
-**問題**：FarmBeats 加速器不會顯示最新版本，即使在您升級 FarmBeatsDeployment 之後也一樣。
+**問題** ：FarmBeats 加速器不會顯示最新版本，即使在您升級 FarmBeatsDeployment 之後也一樣。
 
 **矯正措施** 此錯誤是因為瀏覽器中的服務背景工作角色持續性所造成。 執行下列動作：
 
@@ -195,9 +195,9 @@ ms.locfileid: "92168285"
 
 ### <a name="wrong-username-or-password"></a>錯誤的使用者名稱或密碼
 
-**作業失敗訊息**：「需要完整驗證才能存取此資源」。
+**作業失敗訊息** ：「需要完整驗證才能存取此資源」。
 
-**矯正措施**：執行下列其中一個動作：
+**矯正措施** ：執行下列其中一個動作：
 
 - 請使用下列步驟，以正確的使用者名稱/密碼更新 FarmBeats，然後重試此作業。
 
@@ -226,9 +226,9 @@ ms.locfileid: "92168285"
 
 ### <a name="sentinel-hub-wrongurlor-site-not-accessible"></a>Sentinel 中樞：錯誤的 URL 或網站無法存取
 
-**作業失敗訊息**：「哎呀，發生錯誤。 您嘗試存取的網頁 (暫時) 無法使用。」
+**作業失敗訊息** ：「哎呀，發生錯誤。 您嘗試存取的網頁 (暫時) 無法使用。」
 
-**矯正措施**：
+**矯正措施** ：
 
 1. 在瀏覽器中開啟 [Sentinel](https://scihub.copernicus.eu/dhus/)，查看網站是否可存取。
 2. 如果無法存取網站，請檢查是否有任何防火牆、公司網路或其他封鎖軟體阻擋網站的存取，然後採取必要的步驟來允許 Sentinel URL。 
@@ -236,9 +236,9 @@ ms.locfileid: "92168285"
 
 ### <a name="sentinel-server-down-for-maintenance"></a>Sentinel 伺服器：因維護造成的停機
 
-**作業失敗訊息**：「Copernicus Open Access Hub 很快就會恢復！ 很抱歉造成您的不便，我們目前正在進行一些維護作業。 我們很快就會恢復運作！」 
+**作業失敗訊息** ：「Copernicus Open Access Hub 很快就會恢復！ 很抱歉造成您的不便，我們目前正在進行一些維護作業。 我們很快就會恢復運作！」 
 
-**矯正措施**：
+**矯正措施** ：
 
 如果在 Sentinel 伺服器上正在進行任何維護活動，就會發生此問題。
 
@@ -250,20 +250,20 @@ ms.locfileid: "92168285"
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel：已達連線數目上限
 
-**作業失敗訊息**：「使用者 ' ' 所達到的兩個並行流程的最大數目 \<username> 。」
+**作業失敗訊息** ：「使用者 ' ' 所達到的兩個並行流程的最大數目 \<username> 。」
 
-**意義**：如果作業因為已達到連線數目上限而失敗，則會在多個作業中使用相同的 Sentinel 帳戶。
+**意義** ：如果作業因為已達到連線數目上限而失敗，則會在多個作業中使用相同的 Sentinel 帳戶。
 
-**矯正措施**：請試著執行下列作業：
+**矯正措施** ：請試著執行下列作業：
 
 * 等候其他作業完成，再重新執行失敗的作業。
 * 建立新的 Sentinel 帳戶，然後更新 FarmBeats 中的 Sentinel 使用者名稱和密碼。
 
 ### <a name="sentinel-server-refused-connection"></a>Sentinel 伺服器：拒絕的連線
 
-**作業失敗訊息**：「伺服器已拒絕以下位置的連線： http://172.30.175.69:8983/solr/dhus 」。
+**作業失敗訊息** ：「伺服器已拒絕以下位置的連線： http://172.30.175.69:8983/solr/dhus 」。
 
-**矯正措施**：如果在 Sentinel 伺服器上正在進行任何維護活動，就會發生此問題。
+**矯正措施** ：如果在 Sentinel 伺服器上正在進行任何維護活動，就會發生此問題。
 
 1. 如果任何作業或管線因為正在進行的維護而失敗，請在一段時間後重新提交作業。
 
@@ -273,9 +273,9 @@ ms.locfileid: "92168285"
 
 ### <a name="soil-moisture-map-has-white-areas"></a>土壤濕度地圖有白色區域
 
-**問題**：已產生**土壤濕度地圖**，但地圖大部分都是白色區域。
+**問題** ：已產生 **土壤濕度地圖** ，但地圖大部分都是白色區域。
 
-**矯正措施**：如果在要求地圖時產生的衛星指數具有小於 0.3 的 NDVI 值，就會發生此問題。 如需詳細資訊，請瀏覽 [Sentinel 的技術指南](https://earth.esa.int/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm)。
+**矯正措施** ：如果在要求地圖時產生的衛星指數具有小於 0.3 的 NDVI 值，就會發生此問題。 如需詳細資訊，請瀏覽 [Sentinel 的技術指南](https://earth.esa.int/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm)。
 
 1. 以不同日期範圍重新執行作業，並檢查衛星指數中的 NDVI 值是否大於 0.3。
 
@@ -287,9 +287,9 @@ ms.locfileid: "92168285"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 在 [搜尋] 方塊中，搜尋 FarmBeats Datahub 資源群組。
-3. 在**資源群組**儀表板上，搜尋 datahublogs\* 儲存體帳戶。 例如 datahublogsmvxmq。  
-4. 在 [名稱] 欄中選取 [儲存體帳戶]，以檢視**儲存體帳戶**儀表板。
-5. 在 **datahubblogs\*** 窗格中，選取 [在總管中開啟]，以開啟 **Azure 儲存體總管**應用程式。
+3. 在 **資源群組** 儀表板上，搜尋 datahublogs\* 儲存體帳戶。 例如 datahublogsmvxmq。  
+4. 在 [名稱] 欄中選取 [儲存體帳戶]，以檢視 **儲存體帳戶** 儀表板。
+5. 在 [ **datahubblogs \* *] 窗格中，選取 [_* 在 Explorer 中開啟]** 以查看 **開啟的 Azure 儲存體總管** 應用程式。
 6. 在左側窗格中，選取 [Blob 容器]，然後針對 Azure Data Factory 記錄選取 [job-logs]，或針對 App Service 選取 [appinsights-logs]。
 7. 選取 [下載]，並將記錄下載到您機器上的本機資料夾。
 
@@ -299,17 +299,17 @@ ms.locfileid: "92168285"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 在 [搜尋] 方塊中，搜尋 FarmBeats 加速器資源群組。
-3. 在**資源群組**儀表板上，搜尋 storage\* 儲存體帳戶。 例如 storagedop4k\*。
-4. 在 [名稱] 資料行中選取儲存體帳戶，以檢視**儲存體帳戶**儀表板。
-5. 在 **storage\*** 窗格中，選取 [在總管中開啟]，以開啟 Azure 儲存體總管應用程式。
+3. 在 **資源群組** 儀表板上，搜尋 storage\* 儲存體帳戶。 例如 storagedop4k\*。
+4. 在 [名稱] 資料行中選取儲存體帳戶，以檢視 **儲存體帳戶** 儀表板。
+5. 在 [ **儲存體 \* *_] 窗格中，選取 [_* 在 Explorer 中開啟]** 以開啟 Azure 儲存體總管應用程式。
 6. 在左側窗格中，選取 [Blob 容器]，然後針對 Azure Data Factory 記錄選取 [job-logs]，或針對 App Service 選取 [appinsights-logs]。
 7. 選取 [下載]，並將記錄下載到您機器上的本機資料夾。
 
 ## <a name="high-cpu-usage"></a>高 CPU 用量
 
-**錯誤**：您會收到一封指出**高 CPU 使用量警示**的電子郵件警示。
+**錯誤** ：您會收到一封指出 **高 CPU 使用量警示** 的電子郵件警示。
 
-**矯正措施**：
+**矯正措施** ：
 
 1. 移至您的 FarmBeats Datahub 資源群組。
 2. 選取 [App Service]。  
@@ -317,7 +317,7 @@ ms.locfileid: "92168285"
 
 ## <a name="weather-data-job-failures"></a>天氣資料工作失敗
 
-**錯誤**：您執行工作以取得天氣資料，但作業失敗
+**錯誤** ：您執行工作以取得天氣資料，但作業失敗
 
 ### <a name="collect-logs-to-troubleshoot-weather-data-job-failures"></a>收集記錄以針對氣象資料作業失敗進行疑難排解
 
@@ -329,7 +329,7 @@ ms.locfileid: "92168285"
 
 :::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="醒目顯示 sku： Datahub 標記的螢幕擷取畫面。":::
 
-3. 在 Data factory 的 [總覽] 頁面上，按一下 [ **撰寫和監視**]。 您的瀏覽器會開啟新的索引標籤。 按一下 [**監視**]
+3. 在 Data factory 的 [總覽] 頁面上，按一下 [ **撰寫和監視** ]。 您的瀏覽器會開啟新的索引標籤。 按一下 [ **監視** ]
 
 :::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="醒目顯示 sku： Datahub 標記的螢幕擷取畫面。":::
 
@@ -341,11 +341,11 @@ ms.locfileid: "92168285"
  
 :::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="醒目顯示 sku： Datahub 標記的螢幕擷取畫面。":::
 
-6. 返回至 Azure 入口網站中的 FarmBeats 資源群組，然後按一下名為**datahublogs**的儲存體帳戶
+6. 返回至 Azure 入口網站中的 FarmBeats 資源群組，然後按一下名為 **datahublogs** 的儲存體帳戶
  
 :::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="醒目顯示 sku： Datahub 標記的螢幕擷取畫面。":::
 
-7. 按一下 [**容器**]  ->  **adfjobs**。 在 [搜尋] 方塊中，輸入您在上述步驟5中記下的工作執行識別碼。
+7. 按一下 [ **容器** ]  ->  **adfjobs** 。 在 [搜尋] 方塊中，輸入您在上述步驟5中記下的工作執行識別碼。
  
 :::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="醒目顯示 sku： Datahub 標記的螢幕擷取畫面。":::
 

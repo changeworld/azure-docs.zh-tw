@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: a1ae0971b016ed226351167cfabfca7d3cafd19f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82220a63cfe470344951e4276bc9eaccd9600428
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87905400"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677355"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>優化效能的 Azure Data Lake Storage Gen2
 
@@ -27,7 +27,7 @@ Data Lake Storage Gen2 可以調整以提供所有分析情節的必要輸送量
 
 將資料從來源擷取至 Data Lake Storage Gen2 時，請務必考慮來源硬體、來源網路硬體和與 Data Lake Storage Gen2 的網路連線可能會是瓶頸。  
 
-![Data Lake Storage Gen2 效能](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
+![此圖顯示從來源系統擷取資料到 Data Lake Storage Gen2 時要考慮的因素。](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
 
 務必確定資料移動不會受到這些因素影響。
 
@@ -107,7 +107,7 @@ HDInsight 叢集內有三個層級可以微調，以增加容器數目並且使�
 
 **執行具有更多節點和/或較大大小 VM 的叢集。**  較大的叢集可讓您執行更多 YARN 容器，如下圖所示。
 
-![Data Lake Storage Gen2 效能](./media/data-lake-storage-performance-tuning-guidance/VM.png)
+![此圖顯示較大的叢集如何讓您執行更多 YARN 的容器。](./media/data-lake-storage-performance-tuning-guidance/VM.png)
 
 **使用具有較大網路頻寬的 VM。**  如果網路頻寬比 Data Lake Storage Gen2 輸送量小，網路頻寬量可能會是瓶頸。  不同 VM 會有不同的網路頻寬大小。  選擇具有最大可能網路頻寬的 VM 類型。
 
@@ -115,7 +115,7 @@ HDInsight 叢集內有三個層級可以微調，以增加容器數目並且使�
 
 **使用較小的 YARN 容器。**  減少每個 YARN 容器的大小以使用相同的資源量來建立更多容器。
 
-![Data Lake Storage Gen2 效能](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
+![此圖顯示當您減少每個 YARN 容器的大小以建立更多容器時的結果。](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
 
 根據您的工作負載，一定有需要的最小 YARN 容器大小。 如果您挑選的容器太小，您的作業會遇到記憶體不足的問題。 通常 YARN 容器應該不小於 1GB。 通常會看到 3GB YARN 容器。 針對某些工作負載，您可能需要較大的 YARN 容器。  
 
@@ -125,7 +125,7 @@ HDInsight 叢集內有三個層級可以微調，以增加容器數目並且使�
 
 **使用所有可用的容器。**  將工作數目設定為等於或大於可用容器的數目，以便利用到所有資源。
 
-![Data Lake Storage Gen2 效能](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
+![顯示所有容器使用方式的圖表。](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
 
 **失敗的工作成本很高。** 如果每項工作都有大量資料要處理，則工作失敗會造成昂貴的重試成本。  因此，最好是建立更多工作，每個工作處理小量資料。
 
@@ -138,5 +138,5 @@ HDInsight 叢集內有三個層級可以微調，以增加容器數目並且使�
 | [MapReduce on HDInsight](data-lake-storage-performance-tuning-mapreduce.md) | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
 | [Storm on HDInsight](data-lake-storage-performance-tuning-storm.md)| <ul><li>背景工作處理序數目</li><li>Spout 執行程式執行個體數目</li><li>Bolt 執行程式執行個體數目 </li><li>Spout 工作數目</li><li>Bolt 工作數目</li></ul>|
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 * [Azure Data Lake Storage Gen2 概觀](data-lake-storage-introduction.md)
