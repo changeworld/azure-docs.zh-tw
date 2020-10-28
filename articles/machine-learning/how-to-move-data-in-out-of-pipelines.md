@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: a1bd93931f8a94f598952b28fc3db23d33e5783f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 195c334500c8c540d819e949353b34bea65b3d4f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329766"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741907"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>將資料匯入 ML 管線步驟並在其中來回移動 (Python)
 
@@ -101,6 +101,9 @@ train_step = PythonScriptStep(
 )
 ```
 
+> [!NOTE]
+> 您必須將所有這些引數的值取代 (也就是、 `"train_data"` 、 `"train.py"` 、 `cluster` 和 `iris_dataset`) 與您自己的資料。 上述程式碼片段只會顯示呼叫的格式，而不是 Microsoft 範例的一部分。 
+
 您也可以使用方法（例如 `random_split()` 和） `take_sample()` 來建立多個輸入，或減少傳遞給管線步驟的資料量：
 
 ```python
@@ -150,9 +153,12 @@ ws = run.experiment.workspace
 ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 ```
 
+> [!NOTE]
+> 上述程式碼片段顯示呼叫的格式，而不是 Microsoft 範例的一部分。 您必須以您自己的專案中的值取代各種引數。
+
 ## <a name="use-pipelinedata-for-intermediate-data"></a>用於 `PipelineData` 中繼資料
 
-雖然 `Dataset` 物件代表持續性資料，但 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) 物件是用於從管線步驟輸出的暫存資料。 因為物件的存留期 `PipelineData` 超過單一管線步驟，所以您可以在管線定義腳本中定義它們。 當您建立 `PipelineData` 物件時，您必須提供資料將存放的名稱和資料存放區。 `PipelineData` `PythonScriptStep` 使用_both_ `arguments` 和引數，將您的物件 (s) 傳遞給 `outputs` ：
+雖然 `Dataset` 物件代表持續性資料，但 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py&preserve-view=true) 物件是用於從管線步驟輸出的暫存資料。 因為物件的存留期 `PipelineData` 超過單一管線步驟，所以您可以在管線定義腳本中定義它們。 當您建立 `PipelineData` 物件時，您必須提供資料將存放的名稱和資料存放區。 `PipelineData` `PythonScriptStep` 使用 _both_ `arguments` 和引數，將您的物件 (s) 傳遞給 `outputs` ：
 
 ```python
 
@@ -175,6 +181,9 @@ dataprep_step = PythonScriptStep(
 ```python
 PipelineData("clean_data", datastore=def_blob_store, output_mode="upload", output_path_on_compute="clean_data_output/")
 ```
+
+> [!NOTE]
+> 上述程式碼片段顯示呼叫的格式，而不是 Microsoft 範例的一部分。 您必須以您自己的專案中的值取代各種引數。
 
 > [!TIP]
 > 公開預覽版類別提供在管線步驟之間傳遞中繼資料的改良體驗 [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) 。 如需使用的程式碼範例 `OutputFileDatasetConfig` ，請參閱如何 [建立兩個步驟的 ML 管線](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)。
@@ -226,6 +235,9 @@ pipeline = Pipeline(workspace=ws, steps=[step1, step2])
 ```
 
 輸入的值 `PipelineData` 是先前輸出的路徑。 
+
+> [!NOTE]
+> 上述程式碼片段顯示呼叫的格式，而不是 Microsoft 範例的一部分。 您必須以您自己的專案中的值取代各種引數。
 
 > [!TIP]
 > 公開預覽版類別提供在管線步驟之間傳遞中繼資料的改良體驗 [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true) 。 如需使用的程式碼範例 `OutputFileDatasetConfig` ，請參閱如何 [建立兩個步驟的 ML 管線](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)。

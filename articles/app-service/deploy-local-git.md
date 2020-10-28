@@ -5,13 +5,13 @@ ms.assetid: ac50a623-c4b8-4dfd-96b2-a09420770063
 ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
-ms.custom: seodec18
-ms.openlocfilehash: efe4c07a6231e0b2c95b049db056a4e5d055db98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 9650633e1eaffdb588b3a31cd5a2f305c36e7a25
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77152987"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741304"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>本機 Git 部署至 Azure App Service
 
@@ -100,26 +100,26 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
 
 使用 Azure Pipelines (Preview) 為您的應用程式啟用本機 Git 部署：
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 [ **應用程式服務**]。 
+1. 在 [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 [ **應用程式服務** ]。 
 
 1. 選取您的 Azure App Service 應用程式，然後選取左側功能表中的 [ **部署中心** ]。
    
-1. 在 [ **部署中心** ] 頁面上，選取 [ **本機 Git**]，然後選取 [ **繼續**]。 
+1. 在 [ **部署中心** ] 頁面上，選取 [ **本機 Git** ]，然後選取 [ **繼續** ]。 
    
    ![選取 [本機 Git]，然後選取 [繼續]](media/app-service-deploy-local-git/portal-enable.png)
    
-1. 在 [ **組建提供者** ] 頁面上，選取 [ **Azure Pipelines (Preview) **]，然後選取 [ **繼續**]。 
+1. 在 [ **組建提供者** ] 頁面上，選取 [ **Azure Pipelines (Preview)** ]，然後選取 [ **繼續** ]。 
    
    ![選取 Azure Pipelines (Preview) ，然後選取 [繼續]。](media/app-service-deploy-local-git/pipeline-builds.png)
 
-1. 在 [ **設定** ] 頁面上，設定新的 Azure DevOps 組織或指定現有的組織，然後選取 [ **繼續**]。
+1. 在 [ **設定** ] 頁面上，設定新的 Azure DevOps 組織或指定現有的組織，然後選取 [ **繼續** ]。
    
    > [!NOTE]
    > 如果未列出您現有的 Azure DevOps 組織，您可能需要將它連結至您的 Azure 訂用帳戶。 如需詳細資訊，請參閱 [定義您的 CD 發行管線](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps#cd)。
    
-1. 視您的 App Service 方案 [定價層](https://azure.microsoft.com/pricing/details/app-service/plans/)而定，您可能會看到 [ **部署至預備** 環境] 頁面。 選擇是否要 [啟用部署](deploy-staging-slots.md)位置，然後選取 [ **繼續**]。
+1. 視您的 App Service 方案 [定價層](https://azure.microsoft.com/pricing/details/app-service/plans/)而定，您可能會看到 [ **部署至預備** 環境] 頁面。 選擇是否要 [啟用部署](deploy-staging-slots.md)位置，然後選取 [ **繼續** ]。
    
-1. 在 [ **摘要** ] 頁面上，檢查設定，然後選取 **[完成]**。
+1. 在 [ **摘要** ] 頁面上，檢查設定，然後選取 **[完成]** 。
    
 1. 當 Azure 管線就緒時，請從 [ **部署中心** ] 頁面複製 Git 儲存機制 URL，以在下一個步驟中使用。 
    
@@ -152,7 +152,7 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|您未在中指定分支 `git push` ，或尚未設定中的 `push.default` 值 `.gitconfig` 。|`git push`再次執行，指定主要分支： `git push azure master` 。|
 |`src refspec [branchname] does not match any.`|您嘗試在 ' azure ' 遠端上推送至主分支以外的分支。|`git push`再次執行，指定主要分支： `git push azure master` 。|
 |`RPC failed; result=22, HTTP code = 5xx.`|如果您嘗試透過 HTTPS 推送大型 Git 存放庫，就會發生這個錯誤。|變更本機電腦上的 git 設定，使其 `postBuffer` 更大。 例如： `git config --global http.postBuffer 524288000` 。|
-|`Error - Changes committed to remote repository but your web app not updated.`|您已使用指定其他必要模組的檔案 _package.js_ 來部署 Node.js 應用程式。|請檢查 `npm ERR!` 此錯誤之前的錯誤訊息，以取得失敗的詳細內容。 以下是此錯誤的已知原因，以及對應的 `npm ERR!` 訊息：<br /><br />檔案**上的 package.js格式不正確**：`npm ERR! Couldn't read dependencies.`<br /><br />**原生模組沒有適用于 Windows 的二進位分佈**：<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />或 <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
+|`Error - Changes committed to remote repository but your web app not updated.`|您已使用指定其他必要模組的檔案 _package.js_ 來部署 Node.js 應用程式。|請檢查 `npm ERR!` 此錯誤之前的錯誤訊息，以取得失敗的詳細內容。 以下是此錯誤的已知原因，以及對應的 `npm ERR!` 訊息：<br /><br />檔案 **上的 package.js格式不正確** ：`npm ERR! Couldn't read dependencies.`<br /><br />**原生模組沒有適用于 Windows 的二進位分佈** ：<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />或 <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
-ms.openlocfilehash: 661147769d8ae845066e912a84118c9fd3f93486
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: dd5d05ff6ed2368308f90f61ea0a6f107e43acd7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674926"
+ms.locfileid: "92740772"
 ---
 # <a name="weather-partner-integration"></a>氣象合作夥伴整合
 
@@ -180,7 +180,7 @@ Docker 程式必須有兩個元件： **啟動** 程式和 **工作** 。 可以
 
 ## <a name="weather-data-telemetry-specifications"></a>天氣資料 (遙測) 規格
 
-天氣資料會對應到已推送至 Azure 事件中樞進行處理的標準訊息。 Azure EventHub 是一項服務，可讓您從連線的裝置和應用程式內嵌即時資料 (遙測) 。 若要將天氣資料傳送至 FarmBeats，您必須建立用戶端，以將訊息傳送至 FarmBeats 中的事件中樞。 若要深入瞭解如何傳送遙測，請參閱將 [遙測傳送至事件中樞](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
+天氣資料會對應到已推送至 Azure 事件中樞進行處理的標準訊息。 Azure 事件中樞是一項服務，可從連線的裝置和應用程式擷取即時資料 (遙測)。 若要將天氣資料傳送至 FarmBeats，您必須建立用戶端，以將訊息傳送至 FarmBeats 中的事件中樞。 若要深入瞭解如何傳送遙測，請參閱將 [遙測傳送至事件中樞](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 以下是範例 Python 程式碼，可將遙測當作用戶端傳送至指定的事件中樞。
 

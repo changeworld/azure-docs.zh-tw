@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, has-adal-ref, devx-track-js
-ms.openlocfilehash: a1d89def944529235a0141d7e700049f15d1d0a7
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 8eb042b214ba1e4aea1eda1c65996d55ddde216e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424987"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741883"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>設定 Azure Machine Learning 資源和工作流程的驗證
 
@@ -25,8 +25,8 @@ ms.locfileid: "92424987"
 
 一般而言，您可以搭配 Azure Machine Learning 使用兩種驗證類型：
 
-* __互動式__：您在 Azure Active Directory 中使用您的帳戶來直接驗證，或取得用於驗證的權杖。 互動式驗證會在實驗和反復開發期間使用。 或者，您想要控制對資源的存取 (例如，以每個使用者為基礎的 web 服務) 。
-* __服務主體__：您會在 Azure Active Directory 中建立服務主體帳戶，並使用它來驗證或取得權杖。 當您需要自動化程式來向服務驗證，而不需要使用者互動時，就會使用服務主體。 例如，每次定型程式碼變更時，會訓練並測試模型的持續整合和部署腳本。 如果您不想要要求服務的終端使用者進行驗證，您也可以使用服務主體來取得權杖，以驗證 web 服務。 或不使用 Azure Active Directory 直接執行使用者驗證。
+* __互動式__ ：您在 Azure Active Directory 中使用您的帳戶來直接驗證，或取得用於驗證的權杖。 互動式驗證會在實驗和反復開發期間使用。 或者，您想要控制對資源的存取 (例如，以每個使用者為基礎的 web 服務) 。
+* __服務主體__ ：您會在 Azure Active Directory 中建立服務主體帳戶，並使用它來驗證或取得權杖。 當您需要自動化程式來向服務驗證，而不需要使用者互動時，就會使用服務主體。 例如，每次定型程式碼變更時，會訓練並測試模型的持續整合和部署腳本。 如果您不想要要求服務的終端使用者進行驗證，您也可以使用服務主體來取得權杖，以驗證 web 服務。 或不使用 Azure Active Directory 直接執行使用者驗證。
 
 無論使用哪一種驗證類型，Azure RBAC)  (的 Azure 角色型存取控制，都是用來限定資源允許的存取層級。 例如，用來取得已部署模型之存取權杖的帳戶只需要工作區的讀取權限。 如需有關 Azure RBAC 的詳細資訊，請參閱 [管理 Azure Machine Learning 工作區的存取權](how-to-assign-roles.md)。
 
@@ -285,8 +285,8 @@ print(token_response)
 
 Azure Machine Learning 所建立的模型部署提供兩種驗證方法：
 
-* 以索引**鍵為基礎**：靜態金鑰是用來對 web 服務進行驗證。
-* **權杖型**：必須從工作區取得暫存權杖，並用來對 web 服務進行驗證。 此權杖會在一段時間後到期，而且必須重新整理，才能繼續使用 web 服務。
+* 以索引 **鍵為基礎** ：靜態金鑰是用來對 web 服務進行驗證。
+* **權杖型** ：必須從工作區取得暫存權杖，並用來對 web 服務進行驗證。 此權杖會在一段時間後到期，而且必須重新整理，才能繼續使用 web 服務。
 
     > [!NOTE]
     > 只有在部署至 Azure Kubernetes Service 時，才可使用以權杖為基礎的驗證。
@@ -319,7 +319,7 @@ aci_service = Model.deploy(workspace=ws,
 aci_service.wait_for_deployment(True)
 ```
 
-若要擷取驗證金鑰，請使用 `aci_service.get_keys()`。 若要重新產生金鑰，請使用 `regen_key()` 函式，並傳遞 **Primary** 或 **Secondary**。
+若要擷取驗證金鑰，請使用 `aci_service.get_keys()`。 若要重新產生金鑰，請使用 `regen_key()` 函式，並傳遞 **Primary** 或 **Secondary** 。
 
 ```python
 aci_service.regen_key("Primary")
@@ -333,9 +333,9 @@ aci_service.regen_key("Secondary")
 
 當啟用 Web 服務的權杖驗證時，使用者必須向 Web 服務出示 Machine Learning JSON Web 權杖才能加以存取。 權杖會在指定的時間範圍之後過期，且需要重新整理才能繼續進行呼叫。
 
-* 在部署至 Azure Kubernetes Service 時，**依預設會停用**權杖驗證。
-* 部署至 Azure 容器執行個體時，**不支援**權杖驗證。
-* 權杖驗證 **無法與金鑰型驗證同時使用**。
+* 在部署至 Azure Kubernetes Service 時， **依預設會停用** 權杖驗證。
+* 部署至 Azure 容器執行個體時， **不支援** 權杖驗證。
+* 權杖驗證 **無法與金鑰型驗證同時使用** 。
 
 若要控制權杖驗證，請 `token_auth_enabled` 在建立或更新部署時使用參數：
 

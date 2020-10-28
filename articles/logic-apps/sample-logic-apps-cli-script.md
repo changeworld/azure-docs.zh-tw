@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: ceb4a3356ef78d2129f76bd11f555a9ca5206d51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e66edb1325d1c603e89f877f1d34f60c136eb1db
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87505831"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740735"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Azure CLI 腳本範例-建立邏輯應用程式
 
@@ -142,7 +142,7 @@ ms.locfileid: "87505831"
 
     1. `00000000-0000-0000-0000-000000000000`以您自己的訂用帳戶值取代 () 的連接識別碼 (`connectionId` 和) 下的預留位置訂 `id` `$connections` 用 (帳戶值。
 
-1. 儲存您的變更。
+1. 儲存變更。
 
 ## <a name="sample-script"></a>範例指令碼
 

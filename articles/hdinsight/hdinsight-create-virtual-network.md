@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/16/2020
-ms.openlocfilehash: d4fcf7830250e5e6d2e4255ddb88867023606d0e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4f604ba2edcc63a245a5e87d3dcb6fdd16a9d050
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547549"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741444"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>建立 Azure HDInsight 叢集的虛擬網路
 
@@ -289,7 +289,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
     
     * 將 `192.168.0.1` 值取代為內部部署 DNS 伺服器的 IP 位址。 此項目會將所有其他 DNS 要求路由傳送至內部部署 DNS 伺服器。
 
-1. 若要使用設定，請重新啟動 Bind。 例如 `sudo service bind9 restart`。
+1. 若要使用設定，請重新啟動 Bind。 例如： `sudo service bind9 restart` 。
 
 1. 將條件式轉寄站新增至內部部署 DNS 伺服器。 設定條件式轉寄站，以將步驟 1 中之 DNS 尾碼的要求傳送至自訂 DNS 伺服器。
 
@@ -370,7 +370,7 @@ az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protoc
 
 完成這些步驟之後，您可以使用完整網域名稱 (FQDN) 連線至虛擬網路中的資源。 您現在可以將 HDInsight 安裝至虛擬網路。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 如需將 HDInsight 設定為連線至內部部署網路的完整範例，請參閱 [將 hdinsight 連線到內部部署網路](./connect-on-premises-network.md)。
 * 若要在 Azure 虛擬網路中設定 Apache HBase 叢集，請參閱 [在 Azure 虛擬網路的 HDInsight 上建立 Apache hbase](hbase/apache-hbase-provision-vnet.md)叢集。

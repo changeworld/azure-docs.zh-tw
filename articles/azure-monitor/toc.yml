@@ -556,8 +556,6 @@
               href: platform/alerts-managing-smart-groups.md
             - name: 管理警示與智慧群組狀態
               href: platform/alerts-managing-alert-states.md
-            - name: 管理來自其他監視服務的警示
-              href: platform/alerts-managing-nagios-zabbix-scom.md
         - name: 警示 API
           href: platform/api-alerts.md
         - name: 疑難排解警示
@@ -576,8 +574,6 @@
               href: platform/itsmc-service-manager-script.md
             - name: 修正 ServiceNow ITSM 同步的問題
               href: platform/itsmc-resync-servicenow.md
-        - name: 警示管理解決方案
-          href: platform/alert-management-solution.md
         - name: 遷移傳統警示規則
           items:
             - name: 關於傳統警示
@@ -1138,6 +1134,8 @@
               href: insights/vmware.md
             - name: Wire Data 解決方案
               href: insights/wire-data.md
+            - name: 警示管理解決方案
+              href: platform/alert-management-solution.md
     - name: 活頁簿
       items:
         - name: 概觀

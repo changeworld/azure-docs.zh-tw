@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/15/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 823f5f90bc1a72b1df87ee21e37cf39fed0b2340
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 452259015cf78234aa6a96194342de20db9a3724
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486152"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740880"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>在 Azure Cosmos DB-SQL API 中的資料庫或容器上布建自動調整輸送量
 

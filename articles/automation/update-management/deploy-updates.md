@@ -3,14 +3,14 @@ title: 如何建立 Azure 自動化更新管理的更新部署
 description: 本文說明如何排程更新部署並檢查其狀態。
 services: automation
 ms.subservice: update-management
-ms.date: 10/26/2020
+ms.date: 10/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d6594e1cdd7925a4287cf9edbfd5324b427338f4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 41ccecfb844f11a0d234271bcddc1851d3c02fda
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637593"
+ms.locfileid: "92742288"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>如何部署更新和檢查結果
 
@@ -75,9 +75,6 @@ ms.locfileid: "92637593"
 
    > [!NOTE]
    > 您無法指定將已取代的更新納入更新部署中。
-
-   > [!IMPORTANT]
-   > 若是 Red Hat Enterprise，核心升級也會顯示為 YUM 中的套件。 如果您未排除包含核心升級的更新，更新管理將會套用這些更新。
 
 9. 選取 [排程設定]。 預設開始時間為目前時間之後的 30 分鐘。 您可以將開始時間設為 10 分鐘以後的任何時間。
 

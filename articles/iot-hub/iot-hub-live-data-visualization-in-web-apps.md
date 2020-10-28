@@ -11,12 +11,13 @@ ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: c6452d1c5c9792e8d021838635686e8621629ff2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+- devx-track-azurecli
+ms.openlocfilehash: 35df99d0a30b0952521281fa0d6bb95ce0509695
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146681"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740991"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>使用 Web 應用程式，將來自 Azure IoT 中樞的即時感應器資料視覺化
 
@@ -72,7 +73,7 @@ az iot hub consumer-group create --hub-name YourIoTHubName --name YourConsumerGr
 
 ## <a name="get-a-service-connection-string-for-your-iot-hub"></a>取得 IoT 中樞的服務連接字串
 
-IoT 中樞在建立時即含有數個預設存取原則。 其中一個原則是**服務**原則，其提供可讓服務讀取和寫入 IoT 中樞端點的足夠權限。 執行下列命令，以取得符合服務原則的 IoT 中樞連接字串：
+IoT 中樞在建立時即含有數個預設存取原則。 其中一個原則是 **服務** 原則，其提供可讓服務讀取和寫入 IoT 中樞端點的足夠權限。 執行下列命令，以取得符合服務原則的 IoT 中樞連接字串：
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name YourIotHub --policy-name service

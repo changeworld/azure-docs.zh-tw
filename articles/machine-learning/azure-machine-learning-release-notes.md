@@ -9,18 +9,50 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: f490038e6257829e63b1b28591d17eee76e17eb4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6e18599e83a301ecda94525949f9f4cd077085a2
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92139370"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742015"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
 在本文中，您將瞭解 Azure Machine Learning 版本。  如需完整的 SDK 參考內容，請造訪 Azure Machine Learning 的 [**適用于 Python 的主要 SDK**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true) 參考頁面。
 
 若要了解已知的 Bug 和因應措施，請參閱[已知問題的清單](resource-known-issues.md)。
+
+## <a name="2020-10-26"></a>2020-10-26
+
+### <a name="azure-machine-learning-sdk-for-python-v1170"></a>Azure Machine Learning SDK for Python v 1.17.0 或
++ **新範例**
+  + 提供範例的新社區導向存放庫，網址為： https://github.com/Azure/azureml-examples
++ **Bug 修正和改善**
+  + **azureml-automl-core**
+    + 修正 get_output 可能引發 XGBoostError 的問題。
+  + **azureml-automl-runtime**
+    + AutoML 所建立的時間/行事曆功能現在會有前置詞。
+    + 已修正在針對分類資料集定型 StackEnsemble 時，已啟用大量類別和多取樣的 IndexError 時發生的。
+    + 修正 VotingRegressor 預測在 refitting 模型之後可能不正確的問題。
+  + **azureml-core**
+    + 已新增有關 AKS 部署設定和 Azure Kubernetes Service 概念之間關聯性的額外詳細資料。
+    + 客戶可以使用連結的服務 SDK 將 synapse 工作區連結至 AML 工作區。 支援 CRUD。
+    + 支援環境用戶端標籤。 使用者可以加上標籤，並依標籤參考環境。
+  + **azureml-dataprep**
+    + 使用目前不支援的 Spark 搭配 Scala 2.12 時，有更好的錯誤訊息。
+  + **azureml-說明-模型**
+    + Azureml-說明模型套件已正式淘汰
+  + **azureml-mlflow**
+    + 已解決 mlflow 中的錯誤。請針對未正確處理完成狀態的 azureml 後端執行。
+  + **azureml-pipeline-core**
+    + 新增支援以建立、列出及取得以一個管線端點為基礎的管線排程。
+    +  使用不正確使用範例改善了 PipelineData.as_dataset 的檔-使用 PipelineData.as_dataset 不正確，現在會導致擲回 ValueException
+    + 已將 HyperDriveStep 管線筆記本變更為直接在 HyperDriveStep 執行之後，在 PipelineStep 中註冊最佳模型。
+  + **azureml-pipeline-steps**
+    + 已將 HyperDriveStep 管線筆記本變更為直接在 HyperDriveStep 執行之後，在 PipelineStep 中註冊最佳模型。
+  + **azureml-train-automl-client**
+    + 修正 get_output 可能引發 XGBoostError 的問題。
+
 
 ## <a name="2020-10-12"></a>2020-10-12
 
@@ -179,7 +211,7 @@ ms.locfileid: "92139370"
   + 新增開始使用登陸頁面 
   
 + **預覽功能**
-    + 在筆記本中收集功能。 透過 [收集](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#clean-your-notebook-preview)   功能，使用者現在可以輕鬆地清除筆記本，收集會使用您筆記本的自動化相依性分析，確保會保留必要的程式碼，但移除任何不相關的部分。
+    + 在筆記本中收集功能。 透過 [收集](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#clean-your-notebook-preview) 功能，使用者現在可以輕鬆地清除筆記本，收集會使用您筆記本的自動化相依性分析，確保會保留必要的程式碼，但移除任何不相關的部分。
 
 + **Bug 修正和改善**
   + 改進速度和可靠性
@@ -347,7 +379,7 @@ ms.locfileid: "92139370"
   + **azureml-pipeline-steps**
     + Azureml-管線-步驟的更新。
     +  已新增 ParallelRunConfig 的支援， `load_yaml()` 可讓使用者定義以 rest 設定或個別檔案內嵌的環境
-  + **azureml-定型-automl-client**。
+  + **azureml-定型-automl-client** 。
     + 已移除在 AutoMLConfig 中指定的功能 `enable_cache`
   + **azureml-train-automl-runtime**
     + 新增了具有 BERT 的多重 noded、多重 gpu 分散式特徵化的有限可用性。
@@ -1880,7 +1912,7 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
   + **azureml-pipeline-steps**
     + DatabricksStep 中的輸入和輸出現在支援 DBFS 資料存放區。
     + 針對輸入/輸出的 Azure Batch 步驟更新檔。
-    + 在」已 azurebatchstep 中， *delete_batch_job_after_finish* 預設值變更為 *true*。
+    + 在」已 azurebatchstep 中， *delete_batch_job_after_finish* 預設值變更為 *true* 。
   + **azureml-telemetry**
     +  將 azureml-contrib-opendatasets 移至 azureml-opendatasets。
     + 允許將開放式資料集類別註冊到 Azure Machine Learning 工作區，並順暢地利用 AML 資料集功能。
@@ -1912,7 +1944,7 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
 
 + **新功能**
   + **azureml-opendatasets**
-    + **azureml-contrib-opendatasets** 現在以 **azureml-opendatasets**的形式提供。 舊的封裝仍可運作，但我們建議您使用 **azureml opendatasets** ，以取得更豐富的功能和增強功能。
+    + **azureml-contrib-opendatasets** 現在以 **azureml-opendatasets** 的形式提供。 舊的封裝仍可運作，但我們建議您使用 **azureml opendatasets** ，以取得更豐富的功能和增強功能。
     + 這個新的封裝可讓您將開啟的資料集註冊為 Azure Machine Learning 工作區中的資料集，並利用資料集所提供的任何功能。
     + 它也包含現有的功能，例如取用開啟的資料集做為 Pandas/SPARK 資料框架，以及某些資料集（例如天氣）的位置聯結。
 
@@ -1998,7 +2030,7 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
 ### <a name="mlops"></a>MLOps
 + **評分容器的本機部署 & 偵錯工具**<br/> 您現在可以在本機部署 ML 模型，並快速地逐一查看評分檔案和相依性，以確保其行為如預期般運作。
 
-+ **已推出 InferenceConfig & 模型。部署 ( # B1 **<br/> 模型部署現在支援指定具有輸入腳本的源資料夾，與 RunConfig 相同。  此外，模型部署已簡化為單一命令。
++ **已推出 InferenceConfig & 模型。部署 ( # B1**<br/> 模型部署現在支援指定具有輸入腳本的源資料夾，與 RunConfig 相同。  此外，模型部署已簡化為單一命令。
 
 + **Git 參考追蹤**<br/> 客戶已要求基本的 Git 整合功能一段時間，因為它有助於維護完整的審核記錄。 我們已在 Azure ML 中針對 Git 相關的中繼資料執行追蹤， (存放庫、認可、清除狀態) 。 SDK 和 CLI 會自動收集此資訊。
 
@@ -2008,7 +2040,7 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
 
 + **改良的 Swagger 架構產生體驗**<br/> 先前的 swagger 產生方法發生錯誤，且無法自動化。 我們有新的逐行方式，可透過裝飾專案從任何 Python 函數產生 swagger 架構。 我們有開放原始碼的程式碼，而我們的架構產生通訊協定不會與 Azure ML 平臺結合。
 
-+ **Azure ML CLI 正式推出 (GA) **<br/> 現在可以使用單一 CLI 命令來部署模型。 我們提供了一項常見的客戶意見反應，讓您無法從 Jupyter 筆記本部署 ML 模型。 [**CLI 參考檔**](https://aka.ms/azmlcli)已更新。
++ **Azure ML CLI 正式推出 (GA)**<br/> 現在可以使用單一 CLI 命令來部署模型。 我們提供了一項常見的客戶意見反應，讓您無法從 Jupyter 筆記本部署 ML 模型。 [**CLI 參考檔**](https://aka.ms/azmlcli)已更新。
 
 
 ## <a name="2019-04-22"></a>2019-04-22
@@ -2031,7 +2063,7 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
 
 + **新功能**
   + Azure Machine Learning SDK 現在支援 Python 3.7。
-  + Azure Machine Learning DNN 估算器現在提供內建的多版本支援。 例如， `TensorFlow`   估算器現在接受 `framework_version` 參數，使用者可以指定 ' 1.10 ' 或 ' 1.12 ' 版。 如需目前 SDK 版本所支援的版本清單，請在所 `get_supported_versions()` 需的架構類別上呼叫 (例如 `TensorFlow.get_supported_versions()`) 。
+  + Azure Machine Learning DNN 估算器現在提供內建的多版本支援。 例如， `TensorFlow` 估算器現在接受 `framework_version` 參數，使用者可以指定 ' 1.10 ' 或 ' 1.12 ' 版。 如需目前 SDK 版本所支援的版本清單，請在所 `get_supported_versions()` 需的架構類別上呼叫 (例如 `TensorFlow.get_supported_versions()`) 。
   如需最新 SDK 版本所支援的版本清單，請參閱 [DNN 估算器檔](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py&preserve-view=true)。
 
 ## <a name="2019-03-25"></a>2019-03-25
@@ -2039,7 +2071,7 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
 ### <a name="azure-machine-learning-sdk-for-python-v1021"></a>Azure Machine Learning SDK for Python v 1.0.21
 
 + **新功能**
-  + *Azureml.core.Run.create_children*方法可讓您透過單一呼叫，以低延遲的方式建立多個子執行。
+  + *Azureml.core.Run.create_children* 方法可讓您透過單一呼叫，以低延遲的方式建立多個子執行。
 
 ## <a name="2019-03-11"></a>2019-03-11
 

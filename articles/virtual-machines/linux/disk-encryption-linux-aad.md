@@ -7,13 +7,13 @@ ms.subservice: security
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
-ms.custom: seodec18
-ms.openlocfilehash: fa01c4a595a08ffdba56d777128431946540eee5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: c8228086eb67478d80aa041004e0da3eed71f896
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372666"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741805"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>在 Linux Vm 上使用 Azure AD 啟用 Azure 磁碟加密 (舊版) 
 
@@ -142,13 +142,13 @@ Azure 磁碟加密的新版本不需要提供 Azure Active Directory (Azure AD) 
 
 針對使用 Azure AD 用戶端識別碼的現有或執行中 VM，以下資料表列出其 Resource Manager 範本參數︰
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 | --- | --- |
 | AADClientID | 具有權限可將密碼寫入金鑰保存庫之 Azure AD 應用程式的用戶端識別碼。 |
 | AADClientSecret | 具有權限可將密碼寫入金鑰保存庫之 Azure AD 應用程式的用戶端密碼。 |
 | keyVaultName | 應上傳金鑰的金鑰保存庫名稱。 您可以使用 Azure CLI 命令 `az keyvault show --name "MySecureVault" --query KVresourceGroup` 來取得它。 |
-|  keyEncryptionKeyURL | 用來加密所產生金鑰的金鑰加密金鑰 URL。 如果您在 [ **UseExistingKek** ] 下拉式清單中選取 [ **nokek** ]，則此參數是選擇性的。 如果您在 [ **UseExistingKek** ] 下拉式清單中選取 [ **kek** ]，則必須輸入_keyEncryptionKeyURL_值。 |
-| volumeType | 執行加密作業所在磁碟區的類型。 有效的支援值為 _OS_ 或 _全部_。  (在先前的必要條件一節中，請參閱作業系統和資料磁片支援的 Linux 發行版本及其版本。 )  |
+|  keyEncryptionKeyURL | 用來加密所產生金鑰的金鑰加密金鑰 URL。 如果您在 [ **UseExistingKek** ] 下拉式清單中選取 [ **nokek** ]，則此參數是選擇性的。 如果您在 [ **UseExistingKek** ] 下拉式清單中選取 [ **kek** ]，則必須輸入 _keyEncryptionKeyURL_ 值。 |
+| volumeType | 執行加密作業所在磁碟區的類型。 有效的支援值為 _OS_ 或 _全部_ 。  (在先前的必要條件一節中，請參閱作業系統和資料磁片支援的 Linux 發行版本及其版本。 )  |
 | sequenceVersion | BitLocker 作業的順序版本。 每當在相同的 VM 上執行磁碟加密作業時便遞增此版本號碼。 |
 | vmName | 要執行加密作業所在 VM 的名稱。 |
 | 複雜密碼 | 輸入強式複雜密碼做為資料加密金鑰。 |
@@ -180,7 +180,7 @@ EncryptFormatAll 參數會減少加密 Linux 資料磁碟的時間。 符合特�
 
 1. 例如，使用 [Resource Manager 範本來加密執行中的 Linux IaaS VM](https://github.com/vermashi/azure-quickstart-templates/tree/encrypt-format-running-linux-vm/201-encrypt-running-linux-vm)。 
 2. 選取 Azure 快速入門範本上的 [ **部署至 azure** ]。
-3. 將 **>encryptionoperation** 欄位從 **EnableEncryption** 變更為 **EnableEncryptionFormatAl**。
+3. 將 **>encryptionoperation** 欄位從 **EnableEncryption** 變更為 **EnableEncryptionFormatAl** 。
 4. 選取訂用帳戶、資源群組、資源群組位置、其他參數、法律條款及合約。 選取 [ **建立** ]，在現有或執行中的 IaaS VM 上啟用加密。
 
 
@@ -341,12 +341,12 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
          az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
      ```
 - **使用 Resource Manager 範本停用加密：** 若要停用加密，請使用在 [執行中的 LINUX VM 範本上停用加密](https://aka.ms/decrypt-linuxvm) 。
-     1. 選取 [ **部署至 Azure**]。
+     1. 選取 [ **部署至 Azure** ]。
      2. 選取訂用帳戶、資源群組、位置、VM、法律條款及合約。
      3. 選取 [ **購買** ] 以在執行中的 Windows VM 上停用磁片加密。 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [適用于 Linux 的 Azure 磁碟加密總覽](disk-encryption-overview-aad.md)
 - [使用 Azure AD (舊版建立和設定 Azure 磁碟加密的金鑰保存庫) ](disk-encryption-key-vault-aad.md)
