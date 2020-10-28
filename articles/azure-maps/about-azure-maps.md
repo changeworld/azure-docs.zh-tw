@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 11a0ddc5c7b297d0700e6fd07d60f8efe0e55a8f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 082695069a66efb3919be0667407ba73d963c572
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91285327"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92889947"
 ---
 # <a name="what-is-azure-maps"></a>什麼是 Azure 地圖服務？
 
@@ -60,29 +60,29 @@ Azure 地圖服務由下列服務組成，可以為 Azure 應用程式提供地�
 
 ### <a name="data-service"></a>資料服務
 
-對地圖而言，資料是不可或缺的。 請使用資料服務上傳及儲存地理空間資料供空間作業或影像構圖使用。  讓客戶資料更貼近 Azure 地圖服務可減少您應用程式的延遲、提高應用程式生產力，以及在您的應用程式中建立全新的案例。 如需這項服務的詳細資訊，請瀏覽[資料服務文件](https://docs.microsoft.com/rest/api/maps/data) \(英文\)。
+對地圖而言，資料是不可或缺的。 請使用資料服務上傳及儲存地理空間資料供空間作業或影像構圖使用。  讓客戶資料更貼近 Azure 地圖服務可減少您應用程式的延遲、提高應用程式生產力，以及在您的應用程式中建立全新的案例。 如需這項服務的詳細資訊，請瀏覽[資料服務文件](/rest/api/maps/data) \(英文\)。
 
 ### <a name="geolocation-service"></a>地理位置服務
 
 可使用地理位置服務預覽從 IP 位址擷取的兩個字母國碼/區域碼。 此服務可協助您藉由根據地理位置提供自訂應用程式內容，來加強使用者體驗。
 
-如需詳細資訊，請參閱[地理位置服務文件](https://docs.microsoft.com/rest/api/maps/geolocation)。
+如需詳細資訊，請參閱[地理位置服務文件](/rest/api/maps/geolocation)。
 
 ### <a name="mobility-service"></a>行動服務
 
 Azure 地圖服務行動服務可加速開發出具有大眾運輸功能的應用程式，例如運輸路線和搜尋附近的大眾運輸站點。 使用者可以擷取有關運輸站點、路線和時刻表的詳細資訊。 行動服務也可讓使用者擷取站點和路線幾何圖形、站點提醒、路線和服務區域，以及即時的大眾運輸抵達和服務提醒。 此外，行動服務也會提供具有多模式行程規劃選項的路線功能。 多模式行程規劃將步行、騎腳踏車和大眾運輸選項全都納入到一個行程中。 使用者也可以存取詳細的多模式逐步路線。
 
-若要深入了解該服務，請參閱[行動服務文件](https://docs.microsoft.com/rest/api/maps/mobility) \(英文\)。
+若要深入了解該服務，請參閱[行動服務文件](/rest/api/maps/mobility) \(英文\)。
 
 ### <a name="render-service"></a>轉譯服務
 
-現在為預覽狀態的[轉譯服務 V2](https://docs.microsoft.com/rest/api/maps/renderv2) 引進了新版本的[取得地圖底圖 V2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)。 取得地圖底圖 V2 API 現在允許客戶要求 Azure 地圖服務的道路底圖、氣象底圖，或使用 Azure 地圖服務建立工具建立的地圖底圖。 建議您使用新的取得地圖底圖 V2 API。  
+現在為預覽狀態的[轉譯服務 V2](/rest/api/maps/renderv2) 引進了新版本的[取得地圖底圖 V2 API](/rest/api/maps/renderv2/getmaptilepreview)。 取得地圖底圖 V2 API 現在允許客戶要求 Azure 地圖服務的道路底圖、氣象底圖，或使用 Azure 地圖服務建立工具建立的地圖底圖。 建議您使用新的取得地圖底圖 V2 API。  
 
 :::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="使用 Azure 地圖服務 Web SDK 所建立的人口變化範例地圖":::
 
-如需詳細資訊，請參閱[轉譯服務 V2 文件](https://docs.microsoft.com/rest/api/maps/renderv2) \(英文\)。
+如需詳細資訊，請參閱[轉譯服務 V2 文件](/rest/api/maps/renderv2) \(英文\)。
 
-若要深入了解 GA (正式發行) 中的轉譯服務 V1，請參閱[轉譯服務 V1 文件](https://docs.microsoft.com/rest/api/maps/render)。  
+若要深入了解 GA (正式發行) 中的轉譯服務 V1，請參閱[轉譯服務 V1 文件](/rest/api/maps/render)。  
 
 ### <a name="route-service"></a>路線規劃服務
 
@@ -96,7 +96,7 @@ Azure 地圖服務行動服務可加速開發出具有大眾運輸功能的應�
 * 包含一組出發地與目的地之間旅行時間和距離資訊的矩陣。
 * 尋找路徑或距離資訊可讓使用者了解所需的旅行時間與燃料需求，據以做好萬全準備。
 
-如需路線規劃功能的詳細資料，請參閱[路線規劃服務文件](https://docs.microsoft.com/rest/api/maps/route) \(英文\)。
+如需路線規劃功能的詳細資料，請參閱[路線規劃服務文件](/rest/api/maps/route) \(英文\)。
 
 ### <a name="search-service"></a>搜尋服務
 
@@ -111,13 +111,13 @@ Azure 地圖服務行動服務可加速開發出具有大眾運輸功能的應�
 * 以批次處理方式處理一組搜尋要求。
 * 依品牌名稱搜尋電動車充電站和景點 (POI) 資料。
 
-如需搜尋功能的詳細資訊，請參閱[搜尋服務文件](https://docs.microsoft.com/rest/api/maps/search) \(英文\)。
+如需搜尋功能的詳細資訊，請參閱[搜尋服務文件](/rest/api/maps/search) \(英文\)。
 
 ### <a name="spatial-service"></a>空間服務
 
 空間服務會快速分析位置資訊，以便通知客戶有關某個時間和空間發生的進行中事件。 藉此達到幾近即時的事件分析和預測性模型化。
 
-服務可讓客戶運用內含常見地理空間數學計算的程式庫，提升他們的智慧定位能力。 一般計算包括最接近點、大圓距離及環域。 若要深入了解服務以及各種功能，請參閱[空間服務文件](https://docs.microsoft.com/rest/api/maps/spatial)。
+服務可讓客戶運用內含常見地理空間數學計算的程式庫，提升他們的智慧定位能力。 一般計算包括最接近點、大圓距離及環域。 若要深入了解服務以及各種功能，請參閱[空間服務文件](/rest/api/maps/spatial)。
 
 ### <a name="timezone-service"></a>時區服務
 
@@ -155,7 +155,7 @@ Azure 地圖服務行動服務可加速開發出具有大眾運輸功能的應�
 }
 ```
 
-如需這項服務的詳細資訊，請閱讀[時區服務文件](https://docs.microsoft.com/rest/api/maps/timezone) \(英文\)。
+如需這項服務的詳細資訊，請閱讀[時區服務文件](/rest/api/maps/timezone) \(英文\)。
 
 ### <a name="traffic-service"></a>交通服務
 
@@ -166,15 +166,15 @@ Azure 地圖服務行動服務可加速開發出具有大眾運輸功能的應�
 
 ![含路況資訊的地圖範例](media/about-azure-maps/intro_traffic.png)
 
-如需詳細資訊，請參閱[交通服務文件](https://docs.microsoft.com/rest/api/maps/traffic) \(英文\)。
+如需詳細資訊，請參閱[交通服務文件](/rest/api/maps/traffic) \(英文\)。
 
 ### <a name="weather-service"></a>天氣服務
 
 氣象服務所提供的 API 可讓開發人員用來擷取特定位置的氣象資訊。 此資訊包含各種詳細資料，例如觀測日期和時間、天氣狀況的簡短說明、氣象圖示、降雨機率指示器旗標、溫度和風速資訊。 此外，也會傳回其他詳細資料，例如 RealFeel™ 溫度和紫外線指數。
 
-開發人員可以使用[取得沿路氣象資訊 API](https://docs.microsoft.com/rest/api/maps/weather/getweatheralongroutepreview) 來擷取特定路線的沿路氣象資訊。 此外，此服務也支援產生受天氣災害 (例如洪水或豪雨) 影響的導航點氣象通知。
+開發人員可以使用[取得沿路氣象資訊 API](/rest/api/maps/weather/getweatheralongroutepreview) 來擷取特定路線的沿路氣象資訊。 此外，此服務也支援產生受天氣災害 (例如洪水或豪雨) 影響的導航點氣象通知。
 
-[取得地圖底圖 V2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) 可讓您要求過去、現在和未來的雷達底圖和衛星底圖。
+[取得地圖底圖 V2 API](/rest/api/maps/renderv2/getmaptilepreview) 可讓您要求過去、現在和未來的雷達底圖和衛星底圖。
 
 ![具有即時氣象雷達底圖的地圖範例](media/about-azure-maps/intro_weather.png)
 
@@ -184,21 +184,21 @@ Azure 地圖服務行動服務可加速開發出具有大眾運輸功能的應�
 
 地圖建立者會提供三項核心服務：
 
-* [資料集服務](https://docs.microsoft.com/rest/api/maps/dataset)。 使用資料集服務，從已轉換的繪圖套件資料建立資料集。 如需有關繪圖套件需求的詳細資訊，請參閱繪圖套件需求。
+* [資料集服務](/rest/api/maps/dataset)。 使用資料集服務，從已轉換的繪圖套件資料建立資料集。 如需有關繪圖套件需求的詳細資訊，請參閱繪圖套件需求。
 
-* [轉換服務](https://docs.microsoft.com/rest/api/maps/dataset)。 使用轉換服務可將 DWG 設計檔案轉換成適用於室內地圖的繪圖套件資料。
+* [轉換服務](/rest/api/maps/dataset)。 使用轉換服務可將 DWG 設計檔案轉換成適用於室內地圖的繪圖套件資料。
 
-* [地圖底圖集服務](https://docs.microsoft.com/rest/api/maps/tileset)。 使用地圖底圖集服務來建立資料集的向量型標記法。 應用程式可以使用地圖底圖集，呈現以視覺效果地圖底圖為基礎的資料集檢視。
+* [地圖底圖集服務](/rest/api/maps/tileset)。 使用地圖底圖集服務來建立資料集的向量型標記法。 應用程式可以使用地圖底圖集，呈現以視覺效果地圖底圖為基礎的資料集檢視。
 
-* [功能狀態服務](https://docs.microsoft.com/rest/api/maps/featurestate)。 使用功能狀態服務來支援動態地圖樣式。 動態地圖樣式可讓應用程式反映 IoT 系統所提供空間的即時事件。
+* [功能狀態服務](/rest/api/maps/featurestate)。 使用功能狀態服務來支援動態地圖樣式。 動態地圖樣式可讓應用程式反映 IoT 系統所提供空間的即時事件。
 
-* [WFS 服務](https://docs.microsoft.com/rest/api/maps/featurestate)。 使用 WFS 服務來查詢您的室內地圖資料。 WFS 服務會遵循[開放地理空間協會 API](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html) 標準來查詢單一資料集。
+* [WFS 服務](/rest/api/maps/featurestate)。 使用 WFS 服務來查詢您的室內地圖資料。 WFS 服務會遵循[開放地理空間協會 API](http://docs.opengeospatial.org/is/17-069r3/17-069r3.html) 標準來查詢單一資料集。
 
 ## <a name="programming-model"></a>程式設計模型
 
-Azure 地圖服務是針對行動性而建置，可以協助您開發跨平台應用程式。 它使用與語言無關的程式設計模型，並且透過 [REST API](https://docs.microsoft.com/rest/api/maps/) 支援 JSON 輸出。
+Azure 地圖服務是針對行動性而建置，可以協助您開發跨平台應用程式。 它使用與語言無關的程式設計模型，並且透過 [REST API](/rest/api/maps/) 支援 JSON 輸出。
 
-此外，Azure 地圖服務也使用簡單的程式設計模型提供方便的 [JavaScript 地圖控制項](https://docs.microsoft.com/javascript/api/azure-maps-control)。 Web 和行動應用程式都可輕易且快速地進行開發。
+此外，Azure 地圖服務也使用簡單的程式設計模型提供方便的 [JavaScript 地圖控制項](/javascript/api/azure-maps-control)。 Web 和行動應用程式都可輕易且快速地進行開發。
 
 ## <a name="power-bi-visual"></a>Power BI 視覺效果
 

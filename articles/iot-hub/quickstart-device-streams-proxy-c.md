@@ -6,15 +6,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 9e2182ee67683c4dfb963aeb320984a82d78b26c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 35c120b6d7715ac6fefe0e8712040108568ee8de
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148859"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747431"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>快速入門：使用 C Proxy 應用程式透過 IoT 中樞裝置串流進行 SSH 和 RDP 輸送 (預覽)
 
@@ -132,7 +132,7 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
 
    > [!NOTE]
    > * 以您為 IoT 中樞選擇的名稱取代 YourIoTHubName  預留位置。
-   > * 如需您所註冊的裝置名稱，建議使用如下所示的 *MyDevice*。 如果您為裝置選擇不同的名稱，請在本文中使用該名稱，並先在應用程式範例中更新該裝置名稱，再執行應用程式。
+   > * 如需您所註冊的裝置名稱，建議使用如下所示的 *MyDevice* 。 如果您為裝置選擇不同的名稱，請在本文中使用該名稱，並先在應用程式範例中更新該裝置名稱，再執行應用程式。
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
@@ -157,7 +157,7 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
 
 ### <a name="run-the-device-local-proxy-application"></a>執行裝置本機 Proxy 應用程式
 
-1. 編輯資料夾 `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample` 中的來源檔案 **iothub_client_c2d_streaming_proxy_sample.c**，並提供您的裝置連接字串、目標裝置的 IP/主機名稱，以及 SSH 連接埠 22：
+1. 編輯資料夾 `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample` 中的來源檔案 **iothub_client_c2d_streaming_proxy_sample.c** ，並提供您的裝置連接字串、目標裝置的 IP/主機名稱，以及 SSH 連接埠 22：
 
    ```C
    /* Paste in your device connection string  */

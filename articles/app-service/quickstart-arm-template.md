@@ -6,14 +6,14 @@ ms.author: msangapu
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 ms.date: 10/16/2020
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 173c6ff8bb4bcee7ecc40f9f277fae0e4cb8dd13
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c8542bfe3d1393917a63e4a1feae7d6dfc223031
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152353"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746181"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>快速入門：使用 ARM 範本建立 App Service 應用程式
 
@@ -136,16 +136,16 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 > 從本機 Git 進行部署
 
 > [!div class="nextstepaction"]
-> ASP.NET Core 搭配 SQL Database
+> [ASP.NET Core 搭配 SQL Database](tutorial-dotnetcore-sqldb-app.md)
 
 > [!div class="nextstepaction"]
 > Python with Postgres
 
 > [!div class="nextstepaction"]
-> PHP with MySQL
+> [PHP with MySQL](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
->  [使用 Java 連線至 Azure SQL 資料庫](../azure-sql/database/connect-query-java.md?toc=%252fazure%252fjava%252ftoc.json)
+> [使用 Java 連線至 Azure SQL 資料庫](../azure-sql/database/connect-query-java.md?toc=%252fazure%252fjava%252ftoc.json)
 
 > [!div class="nextstepaction"]
->  [對應自訂網域](app-service-web-tutorial-custom-domain.md)
+> [對應自訂網域](app-service-web-tutorial-custom-domain.md)

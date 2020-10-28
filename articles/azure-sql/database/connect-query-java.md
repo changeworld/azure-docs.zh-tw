@@ -9,25 +9,25 @@ ms.subservice: development
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 06/26/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 829a106a643c10626a65855152375c349cd76f9a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: badf6b8887c356c2a7fc7308f6aa15f551e4bb67
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87833584"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746721"
 ---
 # <a name="use-java-and-jdbc-with--azure-sql-database"></a>搭配使用 Java、JDBC 和 Azure SQL Database
 
-本主題示範如何建立使用 Java 和 [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) 的範例應用程式，以在 [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) 中儲存及擷取資訊。
+本主題示範如何建立使用 Java 和 [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) 的範例應用程式，以在 [Azure SQL Database](/azure/sql-database/) 中儲存及擷取資訊。
 
 JDBC 是用來連線到傳統關聯式資料庫的標準 JAVA API。
 
 ## <a name="prerequisites"></a>必要條件
 
 - 一個 Azure 帳戶。 如果您沒有帳戶，請[取得免費試用帳戶](https://azure.microsoft.com/free/)。
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart) 或 [Azure CLI](/cli/azure/install-azure-cli)。 建議使用 Azure Cloud Shell，因此您將會自動登入，並可存取您需要的所有工具。
-- 支援的 [JAVA 開發工具組](https://aka.ms/azure-jdks) 版本 8 (包含在 Azure Cloud Shell 中)。
+- [Azure Cloud Shell](../../cloud-shell/quickstart.md) 或 [Azure CLI](/cli/azure/install-azure-cli)。 建議使用 Azure Cloud Shell，因此您將會自動登入，並可存取您需要的所有工具。
+- 支援的 [JAVA 開發工具組](/azure/developer/java/fundamentals/java-jdk-long-term-support) 版本 8 (包含在 Azure Cloud Shell 中)。
 - [Apache Maven](https://maven.apache.org/) 建置工具。
 
 ## <a name="prepare-the-working-environment"></a>準備工作環境
@@ -69,7 +69,7 @@ az group create \
 我們首先要建立的是受控 Azure SQL Database 伺服器。
 
 > [!NOTE]
-> 您可以在[快速入門：建立 Azure SQL Database 單一資料庫](/azure/sql-database/sql-database-single-database-get-started)中，閱讀有關建立 Azure SQL Database 伺服器的詳細資訊。
+> 您可以在[快速入門：建立 Azure SQL Database 單一資料庫](./single-database-create-quickstart.md)中，閱讀有關建立 Azure SQL Database 伺服器的詳細資訊。
 
 在 [Azure Cloud Shell](https://shell.azure.com/) 中執行下列命令：
 
@@ -498,4 +498,4 @@ az group delete \
 
 - [設計您在 Azure SQL Database 的第一個資料庫](design-first-database-tutorial.md)  
 - [Microsoft JDBC Driver for SQL Server](https://github.com/microsoft/mssql-jdbc)  
-- [回報問題/發問](https://github.com/microsoft/mssql-jdbc/issues)  
+- [回報問題/發問](https://github.com/microsoft/mssql-jdbc/issues)

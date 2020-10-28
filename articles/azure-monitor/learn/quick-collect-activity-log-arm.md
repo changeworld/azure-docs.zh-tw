@@ -3,16 +3,16 @@ title: 使用 Azure Resource Manager 範本將 Azure 活動記錄傳送至 Log A
 description: 使用 ARM 範本來建立 Log Analytics 工作區和診斷設定，以將活動記錄傳送至 Azure 監視器記錄。
 ms.subservice: logs
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 552df72901b9fde7acedd554b429f3a2ce0f671b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: abcaee8cffd36e22c918b9d82f37370df1d61c26
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91631846"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747033"
 ---
 # <a name="quickstart-send-azure-activity-log-to-log-analytics-workspace-using-an-arm-template"></a>快速入門：使用 ARM 範本將 Azure 活動記錄傳送至 Log Analytics 工作區
 
@@ -134,7 +134,7 @@ ms.locfileid: "91631846"
 
 ### <a name="deploy-the-template"></a>部署範本
 
-使用[部署 ARM 範本](../../azure-resource-manager/templates/deploy-portal.md)來，例如使用 CLI 和 PowerShell 的下列範例。 以適用於您環境的適當值取代 **Resource Group**、**workspaceName** 和 **location** 的範例值。 工作區名稱在您的 Azure 訂用帳戶中必須是唯一的。
+使用[部署 ARM 範本](../../azure-resource-manager/templates/deploy-portal.md)來，例如使用 CLI 和 PowerShell 的下列範例。 以適用於您環境的適當值取代 **Resource Group** 、 **workspaceName** 和 **location** 的範例值。 工作區名稱在您的 Azure 訂用帳戶中必須是唯一的。
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -248,7 +248,7 @@ Get-AzOperationalInsightsWorkspace -Name my-workspace-01 -ResourceGroupName my-r
 
 ### <a name="deploy-the-template"></a>部署範本
 
-使用[部署 ARM 範本](../../azure-resource-manager/templates/deploy-portal.md)來，例如使用 CLI 和 PowerShell 的下列範例。 以適用於您環境的適當值取代 **Resource Group**、**workspaceName** 和 **location** 的範例值。 工作區名稱在您的 Azure 訂用帳戶中必須是唯一的。
+使用[部署 ARM 範本](../../azure-resource-manager/templates/deploy-portal.md)來，例如使用 CLI 和 PowerShell 的下列範例。 以適用於您環境的適當值取代 **Resource Group** 、 **workspaceName** 和 **location** 的範例值。 工作區名稱在您的 Azure 訂用帳戶中必須是唯一的。
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 

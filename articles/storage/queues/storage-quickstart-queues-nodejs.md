@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: ad26cba30986ee9a5f642755840ad5ec281219aa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1446b501b9d91c94c12c82755d0e31f361f8cd8f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91320280"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783414"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>快速入門：適用於 JavaScript 的 Azure 佇列儲存體用戶端程式庫 v12
 
@@ -31,15 +31,15 @@ ms.locfileid: "91320280"
 
 其他資源：
 
-* [API 參考文件](https://docs.microsoft.com/javascript/api/@azure/storage-queue/)
+* [API 參考文件](/javascript/api/@azure/storage-queue/)
 * [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)
 * [套件 (節點套件管理員)](https://www.npmjs.com/package/@azure/storage-queue)
-* [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [範例](../common/storage-samples-javascript.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
-* Azure 儲存體帳戶 - [建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure 儲存體帳戶 - [建立儲存體帳戶](../common/storage-account-create.md)
 * 適用於您作業系統的 [Node.js](https://nodejs.org/en/download/) 目前版本。
 
 ## <a name="setting-up"></a>設定
@@ -136,9 +136,9 @@ Azure 佇列儲存體是用來儲存大量訊息的服務。 一則佇列訊息�
 
 使用下列 JavaScript 類別與這些資源互動：
 
-* [QueueServiceClient](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueserviceclient)：`QueueServiceClient` 可讓您管理儲存體帳戶中的所有佇列。
-* [QueueClient](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient)：`QueueClient` 類別可讓您管理和操作個別佇列及其訊息。
-* [QueueMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queuemessage)：`QueueMessage` 類別代表在佇列上呼叫 [receiveMessages](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient?view=azure-node-latest#receivemessages-queuereceivemessageoptions-) 時所傳回的個別物件。
+* [QueueServiceClient](/javascript/api/@azure/storage-queue/queueserviceclient)：`QueueServiceClient` 可讓您管理儲存體帳戶中的所有佇列。
+* [QueueClient](/javascript/api/@azure/storage-queue/queueclient)：`QueueClient` 類別可讓您管理和操作個別佇列及其訊息。
+* [QueueMessage](/javascript/api/@azure/storage-queue/queuemessage)：`QueueMessage` 類別代表在佇列上呼叫 [receiveMessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) 時所傳回的個別物件。
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -174,9 +174,9 @@ const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STR
 決定新佇列的名稱。 下列程式碼會將 UUID 值附加到佇列名稱，以確保它是唯一的。
 
 > [!IMPORTANT]
-> 佇列名稱只能包含小寫字母、數字和連字號，且必須以字母或數字開頭。 每個連字號前後都必須緊接非連字號的字元。 名稱長度也必須為 3 到 63 個字元。 如需為佇列命名的詳細資訊，請參閱[為佇列和中繼資料命名](https://docs.microsoft.com/rest/api/storageservices/naming-queues-and-metadata)。
+> 佇列名稱只能包含小寫字母、數字和連字號，且必須以字母或數字開頭。 每個連字號前後都必須緊接非連字號的字元。 名稱長度也必須為 3 到 63 個字元。 如需為佇列命名的詳細資訊，請參閱[為佇列和中繼資料命名](/rest/api/storageservices/naming-queues-and-metadata)。
 
-建立 [QueueClient](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient) 類別的執行個體。 然後，呼叫 [create](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#create-queuecreateoptions-) 方法，以在您的儲存體帳戶中建立佇列。
+建立 [QueueClient](/javascript/api/@azure/storage-queue/queueclient) 類別的執行個體。 然後，呼叫 [create](/javascript/api/@azure/storage-queue/queueclient#create-queuecreateoptions-) 方法，以在您的儲存體帳戶中建立佇列。
 
 將此程式碼加入到 `main` 函式的結尾處：
 
@@ -197,7 +197,7 @@ console.log("Queue created, requestId:", createQueueResponse.requestId);
 
 ### <a name="add-messages-to-a-queue"></a>將訊息新增至佇列
 
-下列程式碼片段會藉由呼叫 [sendMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#sendmessage-string--queuesendmessageoptions-) 方法，將訊息新增至佇列。 其也會儲存第三次 `sendMessage` 呼叫所傳回的 [QueueMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queuemessage)。 傳回的 `sendMessageResponse` 用來在稍後的程式中更新訊息內容。
+下列程式碼片段會藉由呼叫 [sendMessage](/javascript/api/@azure/storage-queue/queueclient#sendmessage-string--queuesendmessageoptions-) 方法，將訊息新增至佇列。 其也會儲存第三次 `sendMessage` 呼叫所傳回的 [QueueMessage](/javascript/api/@azure/storage-queue/queuemessage)。 傳回的 `sendMessageResponse` 用來在稍後的程式中更新訊息內容。
 
 將此程式碼加入到 `main` 函式的結尾處：
 
@@ -214,7 +214,7 @@ console.log("Messages added, requestId:", sendMessageResponse.requestId);
 
 ### <a name="peek-at-messages-in-a-queue"></a>窺視佇列中的訊息
 
-藉由呼叫 [peekMessages](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-) 方法來窺視佇列中的訊息。 `peekMessages` 方法會從佇列前面擷取一或多則訊息，但不會更改訊息的可見性。
+藉由呼叫 [peekMessages](/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-) 方法來窺視佇列中的訊息。 `peekMessages` 方法會從佇列前面擷取一或多則訊息，但不會更改訊息的可見性。
 
 將此程式碼加入到 `main` 函式的結尾處：
 
@@ -232,7 +232,7 @@ for (i = 0; i < peekedMessages.peekedMessageItems.length; i++) {
 
 ### <a name="update-a-message-in-a-queue"></a>更新佇列中的訊息
 
-藉由呼叫 [updateMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--undefined---number--queueupdatemessageoptions-) 方法來更新訊息的內容。 `updateMessage` 方法可以變更訊息的可見度逾時和內容。 訊息內容必須是大小上限為 64 KB 的 UTF-8 編碼字串。 連同新內容，傳入先前在程式碼中儲存的回應中的 `messageId`和 `popReceipt`。 `sendMessageResponse` 屬性會識別要更新的訊息。
+藉由呼叫 [updateMessage](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--undefined---number--queueupdatemessageoptions-) 方法來更新訊息的內容。 `updateMessage` 方法可以變更訊息的可見度逾時和內容。 訊息內容必須是大小上限為 64 KB 的 UTF-8 編碼字串。 連同新內容，傳入先前在程式碼中儲存的回應中的 `messageId`和 `popReceipt`。 `sendMessageResponse` 屬性會識別要更新的訊息。
 
 ```javascript
 console.log("\nUpdating the third message in the queue...");
@@ -249,7 +249,7 @@ console.log("Message updated, requestId:", updateMessageResponse.requestId);
 
 ### <a name="receive-messages-from-a-queue"></a>從佇列接收訊息
 
-藉由呼叫 [receiveMessages](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) 方法來下載先前新增的訊息。  在 `numberOfMessages` 欄位中，傳入要針對此呼叫接收的訊息數目上限。
+藉由呼叫 [receiveMessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) 方法來下載先前新增的訊息。  在 `numberOfMessages` 欄位中，傳入要針對此呼叫接收的訊息數目上限。
 
 將此程式碼加入到 `main` 函式的結尾處：
 
@@ -266,7 +266,7 @@ console.log("Messages received, requestId:", receivedMessagesResponse.requestId)
 
 在接收和處理訊息後，從佇列中刪除訊息。 在此情況下，處理只會在主控台上顯示訊息。
 
-藉由呼叫 [deleteMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#deletemessage-string--string--queuedeletemessageoptions-) 方法來刪除訊息。 任何未明確刪除的訊息最後都會再次顯示在佇列中，以提供另一次進行處理的機會。
+藉由呼叫 [deleteMessage](/javascript/api/@azure/storage-queue/queueclient#deletemessage-string--string--queuedeletemessageoptions-) 方法來刪除訊息。 任何未明確刪除的訊息最後都會再次顯示在佇列中，以提供另一次進行處理的機會。
 
 將此程式碼加入到 `main` 函式的結尾處：
 
@@ -289,7 +289,7 @@ for (i = 0; i < receivedMessagesResponse.receivedMessageItems.length; i++) {
 
 ### <a name="delete-a-queue"></a>刪除佇列
 
-下列程式碼會使用 [delete](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-) 方法刪除佇列，以清除應用程式所建立的資源。
+下列程式碼會使用 [delete](/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-) 方法刪除佇列，以清除應用程式所建立的資源。
 
 將此程式碼新增到 `main` 函式的結尾並儲存檔案：
 
@@ -354,7 +354,7 @@ Done
 如需教學課程、範例、快速入門及其他文件，請瀏覽：
 
 > [!div class="nextstepaction"]
-> [Azure for JavaScript 文件](https://docs.microsoft.com/azure/developer/javascript/)
+> [Azure for JavaScript 文件](/azure/developer/javascript/)
 
 * 若要深入了解，請參閱[適用於 JavaScript 的 Azure 儲存體佇列用戶端程式庫](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)。
 * 若要查看更多 Azure 佇列儲存體範例應用程式，請繼續 [Azure 佇列儲存體用戶端程式庫 v12 JavaScript 範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples)。

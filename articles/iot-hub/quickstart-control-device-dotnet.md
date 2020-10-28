@@ -12,13 +12,14 @@ ms.custom:
 - mvc
 - mqtt
 - 'Role: Cloud Development'
+- devx-track-azurecli
 ms.date: 03/04/2020
-ms.openlocfilehash: 1b3b8382c81015e3278954dd0443ba44520e2e3b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d2f6d858275ca5a51ea7d8ef6edc23b741cc2466
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87315133"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747559"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>快速入門：控制連線到 IoT 中樞的裝置 (.NET)
 
@@ -74,18 +75,18 @@ az extension add --name azure-iot
 
 1. 在 Azure Cloud Shell 中執行下列命令，以建立裝置身分識別。
 
-   **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
+   **YourIoTHubName** ：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
-   **MyDotnetDevice**：這是您要註冊之裝置的名稱。 建議您使用 **MyDotnetDevice**，如下所示。 如果您為裝置選擇不同的名稱，則也必須在本文中使用該名稱，並先在範例應用程式中更新該裝置名稱，再執行應用程式。
+   **MyDotnetDevice** ：這是您要註冊之裝置的名稱。 建議您使用 **MyDotnetDevice** ，如下所示。 如果您為裝置選擇不同的名稱，則也必須在本文中使用該名稱，並先在範例應用程式中更新該裝置名稱，再執行應用程式。
 
     ```azurecli-interactive
     az iot hub device-identity create \
       --hub-name {YourIoTHubName} --device-id MyDotnetDevice
     ```
 
-2. 在 Azure Cloud Shell 中執行下列命令，以針對您剛註冊的裝置取得_裝置連接字串_：
+2. 在 Azure Cloud Shell 中執行下列命令，以針對您剛註冊的裝置取得 _裝置連接字串_ ：
 
-   **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
+   **YourIoTHubName** ：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
@@ -122,7 +123,7 @@ az iot hub show-connection-string --policy-name service --name {YourIoTHubName} 
 
 2. 在您選擇的文字編輯器中開啟 **SimulatedDevice.cs** 檔案。
 
-    使用您稍早所記錄的裝置連接字串來取代 `s_connectionString` 變數的值。 然後將變更儲存到 **SimulatedDevice.cs**。
+    使用您稍早所記錄的裝置連接字串來取代 `s_connectionString` 變數的值。 然後將變更儲存到 **SimulatedDevice.cs** 。
 
 3. 在本機終端機視窗中，執行下列命令以安裝模擬裝置應用程式所需的套件：
 
@@ -148,7 +149,7 @@ az iot hub show-connection-string --policy-name service --name {YourIoTHubName} 
 
 2. 在您選擇的文字編輯器中開啟 **BackEndApplication.cs** 檔案。
 
-    使用稍早所記錄的服務連接字串來取代 `s_connectionString` 變數的值。 然後將您的變更儲存到 **BackEndApplication.cs**。
+    使用稍早所記錄的服務連接字串來取代 `s_connectionString` 變數的值。 然後將您的變更儲存到 **BackEndApplication.cs** 。
 
 3. 在本機終端機視窗中，執行下列命令以安裝後端應用程式所需的程式庫：
 

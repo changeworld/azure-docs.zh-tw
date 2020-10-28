@@ -9,12 +9,12 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3b9aadf7d9cd27763cafb878d0b35d13a140a304
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3f6e10d3e5b33a07c223a3913bba0b220df2ff64
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89008398"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787375"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>佇列儲存體的效能和延展性檢查清單
 
@@ -52,7 +52,7 @@ Azure 儲存體具有容量、交易速率和頻寬的延展性和效能目標�
 
 如果您的應用程式達到或超過任何延展性目標，它可能會遇到增加的交易延遲或節流。 當 Azure 儲存體對您的應用程式進行節流時，該服務會開始傳回 503 (伺服器忙碌) 或 500 (作業逾時) 錯誤碼。 保持在延展性目標的限制範圍內以避免這些錯誤，對於提升應用程式效能很重要。
 
-如需佇列服務的延展性目標詳細資訊，請參閱 [Azure 儲存體延展性和效能目標](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage)。
+如需佇列服務的延展性目標詳細資訊，請參閱 [Azure 儲存體延展性和效能目標](./scalability-targets.md#scale-targets-for-queue-storage)。
 
 ### <a name="maximum-number-of-storage-accounts"></a>儲存體帳戶的數目上限
 
@@ -128,7 +128,7 @@ ServicePointManager.DefaultConnectionLimit = 100; //(Or More)
 
 若是其他程式設計語言，請參閱該語言的文件以確定如何設定連線限制。  
 
-如需詳細資訊，請參閱部落格文章 [Web 服務：並行連線](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/)。  
+如需詳細資訊，請參閱部落格文章 [Web 服務：並行連線](/archive/blogs/darrenj/web-services-concurrent-connections)。  
 
 ### <a name="increase-minimum-number-of-threads"></a>提高執行緒數目上限
 
@@ -146,7 +146,7 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 ## <a name="client-libraries-and-tools"></a>用戶端程式庫和工具
 
-為了達到最佳效能，請一律使用 Microsoft 所提供的最新用戶端程式庫和工具。 Azure 儲存體的用戶端程式庫適用於各種不同的語言。 Azure 儲存體也支援 PowerShell 和 Azure CLI。 Microsoft 主動開發以效能為考量的這些用戶端程式庫和工具，透過最新的服務版本將他們保持在最新的狀態，並確保這些工具會在內部處理許多已經實證的效能做法。 如需詳細資訊，請參閱 [Azure 儲存體參考文件](/azure/storage/#reference)。
+為了達到最佳效能，請一律使用 Microsoft 所提供的最新用戶端程式庫和工具。 Azure 儲存體的用戶端程式庫適用於各種不同的語言。 Azure 儲存體也支援 PowerShell 和 Azure CLI。 Microsoft 主動開發以效能為考量的這些用戶端程式庫和工具，透過最新的服務版本將他們保持在最新的狀態，並確保這些工具會在內部處理許多已經實證的效能做法。 如需詳細資訊，請參閱 [Azure 儲存體參考文件](./reference.md)。
 
 ## <a name="handle-service-errors"></a>處理服務錯誤
 
@@ -184,7 +184,7 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 ## <a name="use-update-message"></a>使用更新訊息
 
-您可以使用 [更新訊息]**** 作業來增加隱藏逾時，或更新訊息的狀態資訊。 相較於在作業的每個步驟完成時，將作業從一個佇列傳遞到下一個佇列的工作流程，使用 [更新訊息]**** 更有效率。 您的應用程式可以將作業狀態儲存到訊息，然後繼續工作，而不是每次步驟完成時，便重新佇列訊息以進行作業的下一個步驟。 請記住，每個 [更新訊息]**** 作業都會算在延展性目標內。
+您可以使用 [更新訊息]  作業來增加隱藏逾時，或更新訊息的狀態資訊。 相較於在作業的每個步驟完成時，將作業從一個佇列傳遞到下一個佇列的工作流程，使用 [更新訊息]  更有效率。 您的應用程式可以將作業狀態儲存到訊息，然後繼續工作，而不是每次步驟完成時，便重新佇列訊息以進行作業的下一個步驟。 請記住，每個 [更新訊息]  作業都會算在延展性目標內。
 
 ## <a name="application-architecture"></a>應用程式架構
 

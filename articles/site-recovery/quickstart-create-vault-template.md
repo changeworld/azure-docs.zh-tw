@@ -2,14 +2,14 @@
 title: 使用 Azure Resource Manager 範本建立 Azure 復原服務保存庫的快速入門。
 description: 在本快速入門中，您會了解如何使用 Azure Resource Manager 範本 (ARM 範本) 建立 Azure 復原服務保存庫。
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 04/29/2020
-ms.openlocfilehash: 62bfe71c397367282c696eecdf55ab9c900c69a1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c1c6d625c67130a4e3608cee6134b8c81404c01b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88684111"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745871"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>快速入門：使用 ARM 範本建立復原服務保存庫
 
@@ -42,7 +42,7 @@ ms.locfileid: "88684111"
 
 ## <a name="deploy-the-template"></a>部署範本
 
-若要部署範本，需要**訂用帳戶**、**資源群組**和**保存庫名稱**。
+若要部署範本，需要 **訂用帳戶** 、 **資源群組** 和 **保存庫名稱** 。
 
 1. 選取 [部署至 Azure] 映像以登入 Azure 並開啟範本。
 
@@ -52,13 +52,13 @@ ms.locfileid: "88684111"
 
    :::image type="content" source="media/quickstart-create-vault-template/create-vault-template.png" alt-text="建立復原服務保存庫的範本":::
 
-   - **訂用帳戶**：選取您的 Azure 訂用帳戶。
-   - **資源群組**：選取現有的群組，或選取 [建立新的] 以新增群組。
-   - **位置**：預設為資源群組的位置，在選取資源群組後無法使用。
-   - **保存庫名稱**：提供保存庫名稱。
-   - **變更儲存體類型**：預設值為 **false**。 只有在需要變更保存庫的儲存體類型時，才選取 [True]。
-   - **保存庫儲存體類型**：預設值為 **GloballyRedundant**。 如果儲存體類型設為 **True**，請選取 [LocallyRedundant]。
-   - **位置**：函式 `[resourceGroup().location]` 預設為資源群組的位置。 若要變更位置，請輸入值，例如 **westus**。
+   - **訂用帳戶** ：選取您的 Azure 訂用帳戶。
+   - **資源群組** ：選取現有的群組，或選取 [建立新的] 以新增群組。
+   - **位置** ：預設為資源群組的位置，在選取資源群組後無法使用。
+   - **保存庫名稱** ：提供保存庫名稱。
+   - **變更儲存體類型** ：預設值為 **false** 。 只有在需要變更保存庫的儲存體類型時，才選取 [True]。
+   - **保存庫儲存體類型** ：預設值為 **GloballyRedundant** 。 如果儲存體類型設為 **True** ，請選取 [LocallyRedundant]。
+   - **位置** ：函式 `[resourceGroup().location]` 預設為資源群組的位置。 若要變更位置，請輸入值，例如 **westus** 。
    - 選取 [我同意上方所述的條款及條件] 核取方塊。
 
 1. 若要開始保存庫的部署，請選取 [購買] 按鈕。 部署成功後，就會顯示通知。

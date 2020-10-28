@@ -14,13 +14,14 @@ ms.custom:
 - seo-java-september2019
 - mqtt
 - devx-track-java
+- devx-track-azurecli
 ms.date: 06/21/2019
-ms.openlocfilehash: 2865d0fc082244e1b135275ecda58edc5649d82b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 915199a619ff7596596b92362de38338bda03029
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150714"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747543"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>快速入門：使用 Java 來控制連線到 Azure IoT 中樞的裝置
 
@@ -78,18 +79,18 @@ az extension add --name azure-iot
 
 1. 在 Azure Cloud Shell 中執行下列命令，以建立裝置身分識別。
 
-   **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
+   **YourIoTHubName** ：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
-   **MyJavaDevice**：這是您要註冊之裝置的名稱。 建議您使用 **MyJavaDevice**，如下所示。 如果您為裝置選擇不同的名稱，則也必須在本文中使用該名稱，並先在範例應用程式中更新該裝置名稱，再執行應用程式。
+   **MyJavaDevice** ：這是您要註冊之裝置的名稱。 建議您使用 **MyJavaDevice** ，如下所示。 如果您為裝置選擇不同的名稱，則也必須在本文中使用該名稱，並先在範例應用程式中更新該裝置名稱，再執行應用程式。
 
     ```azurecli-interactive
     az iot hub device-identity create \
       --hub-name {YourIoTHubName} --device-id MyJavaDevice
     ```
 
-2. 在 Azure Cloud Shell 中執行下列命令，以針對您剛註冊的裝置取得_裝置連接字串_：
+2. 在 Azure Cloud Shell 中執行下列命令，以針對您剛註冊的裝置取得 _裝置連接字串_ ：
 
-   **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
+   **YourIoTHubName** ：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
@@ -106,9 +107,9 @@ az extension add --name azure-iot
 
 ## <a name="retrieve-the-service-connection-string"></a>擷取服務連接字串
 
-您也需要_服務連接字串_，讓後端應用程式能夠連線到您的 IoT 中樞並擷取訊息。 下列命令可擷取 IoT 中樞的服務連接字串：
+您也需要 _服務連接字串_ ，讓後端應用程式能夠連線到您的 IoT 中樞並擷取訊息。 下列命令可擷取 IoT 中樞的服務連接字串：
 
-**YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
+**YourIoTHubName** ：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
 ```azurecli-interactive
 az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
@@ -128,7 +129,7 @@ az iot hub show-connection-string --policy-name service --name {YourIoTHubName} 
 
 2. 在您選擇的文字編輯器中開啟 **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** 檔案。
 
-    使用您稍早所記錄的裝置連接字串來取代 `connString` 變數的值。 然後將變更儲存到 **SimulatedDevice.java**。
+    使用您稍早所記錄的裝置連接字串來取代 `connString` 變數的值。 然後將變更儲存到 **SimulatedDevice.java** 。
 
 3. 在本機終端機視窗中，執行下列命令以安裝模擬裝置應用程式所需的程式庫，並建置模擬裝置應用程式：
 
@@ -154,7 +155,7 @@ az iot hub show-connection-string --policy-name service --name {YourIoTHubName} 
 
 2. 在您選擇的文字編輯器中開啟 **src/main/java/com/microsoft/docs/iothub/samples/BackEndApplication.java** 檔案。
 
-    使用稍早所記錄的服務連接字串來取代 `iotHubConnectionString` 變數的值。 然後將您的變更儲存到 **BackEndApplication.java**。
+    使用稍早所記錄的服務連接字串來取代 `iotHubConnectionString` 變數的值。 然後將您的變更儲存到 **BackEndApplication.java** 。
 
 3. 在本機終端機視窗中，執行下列命令安裝所需的程式庫並建置後端應用程式：
 

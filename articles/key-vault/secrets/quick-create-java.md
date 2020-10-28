@@ -2,18 +2,18 @@
 title: 快速入門 - 適用於 Java 的 Azure Key Vault 用戶端程式庫
 description: 提供格式和內容準則來規範如何撰寫 Azure SDK 用戶端程式庫的快速入門。
 author: msmbaldwin
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 87d7bbaa40226e02726b92cf7f7705c8028149f7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: f4008b43c487f9dd1c8cfe5e5b67a250ff849daf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019625"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786202"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>快速入門：適用於 Java 的 Azure Key Vault 祕密用戶端程式庫
 
@@ -37,7 +37,7 @@ ms.locfileid: "92019625"
 
 ## <a name="setting-up"></a>設定
 
-本快速入門會使用 Azure 身分識別程式庫搭配 Azure CLI，向 Azure 服務驗證使用者。 開發人員也可以使用 Visual Studio 或 Visual Studio Code 來驗證其呼叫。如需詳細資訊，請參閱[使用 Azure 身分識別用戶端程式庫驗證用戶端](https://docs.microsoft.com/java/api/overview/azure/identity-readme)
+本快速入門會使用 Azure 身分識別程式庫搭配 Azure CLI，向 Azure 服務驗證使用者。 開發人員也可以使用 Visual Studio 或 Visual Studio Code 來驗證其呼叫。如需詳細資訊，請參閱[使用 Azure 身分識別用戶端程式庫驗證用戶端](/java/api/overview/azure/identity-readme)
 
 ### <a name="sign-in-to-azure"></a>登入 Azure
 

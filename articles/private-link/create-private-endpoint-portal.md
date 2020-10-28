@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: allensu
-ms.openlocfilehash: 3deeca4635f33b63a6e0bcecc0c829d3df88e352
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 395912ae70c5a01bd7de9a80cf8a507dd516028e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327492"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895196"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立私人端點
 
@@ -50,7 +50,7 @@ ms.locfileid: "92327492"
     | 資源群組   | 選取 [CreatePrivateEndpointQS-rg] |
     | **執行個體詳細資料** |                                                                 |
     | 名稱             | 輸入 **myVNet**                                    |
-    | 區域           | 選取 [\<your-web-app-region>]。 </br> 選取 Web 應用程式部署所在的區域。|
+    | 區域           | 選取 [西歐]。|
 
 3. 選取 [IP 位址] 索引標籤，或選取頁面底部的 [下一步：IP 位置] 按鈕。
 
@@ -101,7 +101,7 @@ ms.locfileid: "92327492"
     | 資源群組 | 選取 [CreatePrivateEndpointQS-rg] |
     | **執行個體詳細資料** |  |
     | 虛擬機器名稱 | 輸入 myVM |
-    | 區域 | 選取 [\<your-web-app-region>]。 </br> 選取 Web 應用程式部署所在的區域。 |
+    | 區域 | 選取 [西歐]。 |
     | 可用性選項 | 選取 [不需要基礎結構備援] |
     | 映像 | 選取 [Windows Server 2019 Datacenter - Gen1] |
     | Azure Spot 執行個體 | 選取 [否] |
@@ -149,7 +149,7 @@ ms.locfileid: "92327492"
     | 資源群組 | 選取 [CreatePrivateEndpointQS-rg]。 您已在上一節中建立此資源群組。|
     | **執行個體詳細資料** |  |
     | 名稱  | 輸入 myPrivateEndpoint。 |
-    | 區域 | 選取 [\<your-web-app-region>]。 </br> 選取 Web 應用程式部署所在的區域。 |
+    | 區域 | 選取 [西歐]。 |
 
 6. 選取 [資源] 索引標籤或 [下一步：資源] 按鈕 (位於頁面底部)。
     

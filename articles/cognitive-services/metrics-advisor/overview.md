@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: overview
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: 858bf042593045059c988ae1b2796b063b33bb6e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 1a57660733b7257b224c38a55059f1bf069495a0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047568"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890237"
 ---
 # <a name="what-is-metrics-advisor-preview"></a>Metrics Advisor (預覽) 是什麼？ 
 
@@ -53,16 +53,14 @@ Metrics Advisor 可以連線到許多資料存放區，並從這些資料存放�
 工作流程很簡單：在資料上線之後，您可以微調異常偵測，並建立符合您案例的組態。
 
 1. [建立供 Metrics Advisor 使用的 Azure 資源](../cognitive-services-apis-create-account.md)。 
-2. 嘗試示範網站，查看具有預先設定之範例資料的 Metrics Advisor 執行個體。 
-3. 使用入口網站建置您的第一個監視。
+2. 使用入口網站建置您的第一個監視。
     1. 將資料上線
     2. 異常偵測微調
     3. 訂閱警示
     4. 檢視診斷見解
-1. 使用 REST API 自訂執行個體。
+3. 使用 REST API 自訂執行個體。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 試用[示範網站](quickstarts/explore-demo.md)。
 * 探索快速入門：[在 Web 上監視您的第一個計量](quickstarts/web-portal.md)。
 * 探索快速入門：[使用 REST API 來自訂解決方案](quickstarts/rest-api.md)。

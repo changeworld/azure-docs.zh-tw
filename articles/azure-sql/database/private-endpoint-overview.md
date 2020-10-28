@@ -9,20 +9,20 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: b0908aee6253a3be486f71c245ea1eee2ff8b9bb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 088300d4b6f92886310315b67763536e39cbb019
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91319464"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789517"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>適用於 Azure SQL Database 和 Azure Synapse Analytics 的 Azure Private Link
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Private Link 可讓您透過**私人端點**連線到 Azure 中的各種 PaaS 服務。 如需支援 Private Link 功能的 PaaS 服務清單，請移至 [Private Link 文件](../../private-link/index.yml)頁面。 私用端點為特定 [VNet](../../virtual-network/virtual-networks-overview.md) 和子網路內的私用 IP 位址。
+Private Link 可讓您透過 **私人端點** 連線到 Azure 中的各種 PaaS 服務。 如需支援 Private Link 功能的 PaaS 服務清單，請移至 [Private Link 文件](../../private-link/index.yml)頁面。 私用端點為特定 [VNet](../../virtual-network/virtual-networks-overview.md) 和子網路內的私用 IP 位址。
 
 > [!IMPORTANT]
-> 本文適用於 Azure SQL Database 和 Azure Synapse Analytics (先前的 SQL 資料倉儲)。 簡單來說，「資料庫」一詞同時指稱 Azure SQL Database 和 Azure Synapse Analytics 中的資料庫。 同樣地，只要提到「伺服器」，也都是指裝載 Azure SQL Database 和 Azure Synapse Analytics 的[邏輯 SQL 伺服器](logical-servers.md)。 本文「不」適用於 **Azure SQL Database 受控執行個體**。
+> 本文適用於 Azure SQL Database 和 Azure Synapse Analytics (先前的 SQL 資料倉儲)。 簡單來說，「資料庫」一詞同時指稱 Azure SQL Database 和 Azure Synapse Analytics 中的資料庫。 同樣地，只要提到「伺服器」，也都是指裝載 Azure SQL Database 和 Azure Synapse Analytics 的[邏輯 SQL 伺服器](logical-servers.md)。 本文「不」適用於 **Azure SQL Database 受控執行個體** 。
 
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>如何設定適用於 Azure SQL Database 的 Private Link 
 
@@ -75,7 +75,7 @@ Private Link 可讓您透過**私人端點**連線到 Azure 中的各種 PaaS �
 
 ### <a name="check-connectivity-using-telnet"></a>使用 Telnet 檢查連線能力
 
-[Telnet 用戶端](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754293%28v%3dws.10%29)是一項 Windows 功能，可以用來測試連線能力。 視 Windows 作業系統的版本而定，您可能需要明確地啟用此功能。 
+[Telnet 用戶端](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754293%28v%3dws.10%29)是一項 Windows 功能，可以用來測試連線能力。 視 Windows 作業系統的版本而定，您可能需要明確地啟用此功能。 
 
 在您安裝 Telnet 之後，請開啟 [命令提示字元] 視窗。 執行 Telnet 命令，並指定 SQL Database 資料庫的 IP 位址和私人端點。
 
@@ -130,7 +130,7 @@ Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 檢查連線能力
 > [!NOTE]
-> 在用戶端的連接字串中，使用伺服器的**完整網域名稱 (FQDN)** (`<server>.database.windows.net`)。 任何直接對 IP 位址進行或使用私人連結 FQDN (`<server>.privatelink.database.windows.net`) 的登入嘗試都會失敗。 這是刻意設計的行為，因為私人端點會將流量路由至區域中的 SQL 閘道，而且必須指定正確的 FQDN，登入才會成功。
+> 在用戶端的連接字串中，使用伺服器的 **完整網域名稱 (FQDN)** (`<server>.database.windows.net`)。 任何直接對 IP 位址進行或使用私人連結 FQDN (`<server>.privatelink.database.windows.net`) 的登入嘗試都會失敗。 這是刻意設計的行為，因為私人端點會將流量路由至區域中的 SQL 閘道，而且必須指定正確的 FQDN，登入才會成功。
 
 請遵循此處的步驟來使用 [SSMS 連線到 SQL Database](connect-query-ssms.md)。 使用 SSMS 連線到 SQL Database 之後，請執行下列查詢，以確認您可以從 Azure VM 的私人 IP 位址進行連線：
 
@@ -149,14 +149,14 @@ where session_id=@@SPID
 1. 僅允許使用 VM 的私人 IP 位址對 SQL Database 資料庫傳送流量。 如需詳細資訊，請參閱有關[服務端點](vnet-service-endpoint-rule-overview.md)和[虛擬網路防火牆規則](firewall-configure.md)的文章。
 1. 在 Azure VM 上，請使用[網路安全性群組 (NSG)](../../virtual-network/manage-network-security-group.md) 和服務標籤來縮小傳出連線的範圍，如下所示
     - 指定 NSG 規則，以允許服務標記 = SQL.WestUs 的流量 - 僅允許連線到位於美國西部的 SQL Database
-    - 指定 NSG 規則 (使用**較高的優先順序**) 以拒絕服務標籤 = SQL 的流量 - 拒絕連線到所有區域中的 SQL Database
+    - 指定 NSG 規則 (使用 **較高的優先順序** ) 以拒絕服務標籤 = SQL 的流量 - 拒絕連線到所有區域中的 SQL Database
 
 在此設定結束時，Azure VM 只能連線到美國西部區域的 SQL Database 資料庫。 不過，連線並不限於單一 SQL Database 資料庫。 VM 仍然可以連線到美國西部區域的任何資料庫，包括不屬於訂用帳戶的資料庫。 雖然在上述案例中，我們已將資料外泄範圍縮減到特定區域，但我們尚未完全消除此問題。
 
 透過 Private Link，客戶現在可以設定網路存取控制 (例如 NSG) 來限制私人端點的存取。 這麼一來，個別的 Azure PaaS 資源就會對應到特定的私人端點。 懷有惡意的測試人員只能存取對應的 PaaS 資源 (例如 SQL Database 資料庫)，不能存取其他資源。 
 
 ## <a name="limitations"></a>限制 
-私人端點的連線僅支援 **Proxy** 作為[連線原則](connectivity-architecture.md#connection-policy)
+私人端點的連線僅支援 **Proxy** 作為 [連線原則](connectivity-architecture.md#connection-policy)
 
 
 ## <a name="connecting-from-an-azure-vm-in-peered-virtual-network"></a>從對等式虛擬網路中的 Azure VM 連線 

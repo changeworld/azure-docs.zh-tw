@@ -7,12 +7,12 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: 21909a9c7a1edda5059b9e83cf8dda243862b966
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b57303a1c9fdba2bea8637bef6c148622087a8d3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88660202"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789772"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>快速入門：使用 ARM 範本建立 SQL Server VM
 
@@ -59,23 +59,23 @@ SQL Server VM 的 ARM 範本需要下列各項：
 2. 選取或輸入下列值。
 
     * 訂用帳戶：選取 Azure 訂用帳戶。
-    * **資源群組**：為 SQL Server VM 準備的資源群組。 
-    * **區域**：選取區域。  例如，**美國中部**。
-    * **虛擬機器名稱**：輸入 SQL Server 虛擬機器的名稱。 
-    * **虛擬機器大小**：從下拉式選單中，為您的虛擬機器選擇適當的大小。
-    * **現有虛擬網路名稱**：輸入為 SQL Server VM 準備的虛擬網路名稱。 
-    * **現有 Vnet 資源群組**：輸入其中已備妥虛擬網路的資源群組。 
-    * **現有子網路名稱**：備妥的子網路名稱。 
-    * **映像供應項目**：選擇最符合您業務需求的 SQL Server 和 Windows Server 映像。 
-    * **SQL SKU**：選擇最符合您業務需求的 SQL Server SKU 版本。 
-    * **管理使用者名稱**：虛擬機器管理員的使用者名稱。 
-    * **管理員密碼**：VM 管理帳戶所使用的密碼。 
-    * **儲存體工作負載類型**：最符合您業務的工作負載儲存體類型。 
-    * **SQL 資料磁碟計數**：SQL Server 用在資料檔案上的磁碟數目。  
-    * **資料路徑**：SQL Server 資料檔案的路徑。 
-    * **SQL 記錄磁碟計數**：SQL Server 用在記錄檔上的磁碟數目。 
-    * **記錄路徑**：SQL Server 記錄檔的路徑。 
-    * **位置**：所有資源的位置，此值應維持 `[resourceGroup().location]` 的預設值。 
+    * **資源群組** ：為 SQL Server VM 準備的資源群組。 
+    * **區域** ：選取區域。  例如， **美國中部** 。
+    * **虛擬機器名稱** ：輸入 SQL Server 虛擬機器的名稱。 
+    * **虛擬機器大小** ：從下拉式選單中，為您的虛擬機器選擇適當的大小。
+    * **現有虛擬網路名稱** ：輸入為 SQL Server VM 準備的虛擬網路名稱。 
+    * **現有 Vnet 資源群組** ：輸入其中已備妥虛擬網路的資源群組。 
+    * **現有子網路名稱** ：備妥的子網路名稱。 
+    * **映像供應項目** ：選擇最符合您業務需求的 SQL Server 和 Windows Server 映像。 
+    * **SQL SKU** ：選擇最符合您業務需求的 SQL Server SKU 版本。 
+    * **管理使用者名稱** ：虛擬機器管理員的使用者名稱。 
+    * **管理員密碼** ：VM 管理帳戶所使用的密碼。 
+    * **儲存體工作負載類型** ：最符合您業務的工作負載儲存體類型。 
+    * **SQL 資料磁碟計數** ：SQL Server 用在資料檔案上的磁碟數目。  
+    * **資料路徑** ：SQL Server 資料檔案的路徑。 
+    * **SQL 記錄磁碟計數** ：SQL Server 用在記錄檔上的磁碟數目。 
+    * **記錄路徑** ：SQL Server 記錄檔的路徑。 
+    * **位置** ：所有資源的位置，此值應維持 `[resourceGroup().location]` 的預設值。 
 
 3. 選取 [檢閱 + 建立]。 成功部署 SQL Server VM 之後，您會收到通知。
 
@@ -120,7 +120,7 @@ Write-Host "Press [ENTER] to continue..."
 如需逐步教學課程，以引導您完成建立範本的流程，請參閱：
 
 > [!div class="nextstepaction"]
-> [教學課程：建立及部署您的第一個 ARM 範本](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [教學課程：建立及部署您的第一個 ARM 範本](../../../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 如需部署 SQL Server VM 的其他方式，請參閱： 
 - [Azure 入口網站](create-sql-vm-portal.md)

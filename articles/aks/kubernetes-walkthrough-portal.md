@@ -5,13 +5,13 @@ description: 了解如何使用 Azure 入口網站快速建立 Kubernetes 叢集
 services: container-service
 ms.topic: quickstart
 ms.date: 10/06/2020
-ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 9a666f257cf2616d540a70d145647fbc73350cbd
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.custom: mvc, seo-javascript-october2019, devx-track-azurecli
+ms.openlocfilehash: 30c00b1dfda3e30f047faf0deed7151aaf8c3fae
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91850429"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745769"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站部署 Azure Kubernetes Service (AKS) 叢集
 
@@ -36,10 +36,10 @@ Azure Kubernetes Service (AKS) 是受控 Kubernetes 服務，可讓您快速部�
 2. 選取 [容器] >  [Kubernetes Service]。
 
 3. 在 [基本資料] 頁面上設定下列選項：
-    - **專案詳細資料**：選取 Azure [訂用帳戶]，然後選取或建立 Azure [資源群組]，例如 *myResourceGroup*。
-    - **叢集詳細資料**：輸入 **Kubernetes 叢集名稱**，例如 myAKSCluster。 選取 AKS 叢集的 [區域] 和 [Kubernetes 版本]。
-    - **主要節點集區**：選取 AKS 節點的 VM [節點大小]。 VM 大小「無法」在 AKS 叢集部署完畢後變更。
-            - 選取要部署到叢集的節點數目。 本快速入門將 [節點計數] 設為「1」。 節點計數*可以*在叢集部署完畢後調整。
+    - **專案詳細資料** ：選取 Azure [訂用帳戶]，然後選取或建立 Azure [資源群組]，例如 *myResourceGroup* 。
+    - **叢集詳細資料** ：輸入 **Kubernetes 叢集名稱** ，例如 myAKSCluster。 選取 AKS 叢集的 [區域] 和 [Kubernetes 版本]。
+    - **主要節點集區** ：選取 AKS 節點的 VM [節點大小]。 VM 大小「無法」在 AKS 叢集部署完畢後變更。
+            - 選取要部署到叢集的節點數目。 本快速入門將 [節點計數] 設為「1」。 節點計數 *可以* 在叢集部署完畢後調整。
     
     ![建立 AKS 叢集 - 提供基本資訊](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
@@ -50,7 +50,7 @@ Azure Kubernetes Service (AKS) 是受控 Kubernetes 服務，可讓您快速部�
     > 建立新的 AAD 服務主體可能需要數分鐘的時間才能傳播並變成可用，導致 Azure 入口網站中找不到服務主體的錯誤和驗證失敗。 如果您遇到這種情況，請造訪[這裡](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster)以取得緩和措施。
 
 5. 在 [驗證] 頁面上，設定下列選項：
-    - 讓 [服務主體] 欄位保留 **(新的) 預設服務主體**，以建立新的服務主體。 您也可以選擇 [設定服務主體] 以使用現有服務主體。 如果您使用現有服務主體，您必須提供 SPN 用戶端識別碼和祕密。
+    - 讓 [服務主體] 欄位保留 **(新的) 預設服務主體** ，以建立新的服務主體。 您也可以選擇 [設定服務主體] 以使用現有服務主體。 如果您使用現有服務主體，您必須提供 SPN 用戶端識別碼和祕密。
     - 啟用適用於 Kubernetes 角色型存取控制 (RBAC) 的選項。 這會針對 AKS 叢集中部署的 Kubernetes 資源提供更細部的存取控管。
 
     您也可以使用受控識別而不是服務主體。 如需詳細資訊，請參閱[使用受控識別](use-managed-identity.md)。
@@ -81,7 +81,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl get nodes
 ```
 
-下列輸出範例會顯示上一個步驟中建立的單一節點。 請確定節點的狀態為 *Ready*：
+下列輸出範例會顯示上一個步驟中建立的單一節點。 請確定節點的狀態為 *Ready* ：
 
 ```output
 NAME                       STATUS    ROLES     AGE       VERSION
@@ -207,7 +207,7 @@ service "azure-vote-front" created
 kubectl get service azure-vote-front --watch
 ```
 
-一開始，*azure-vote-front* 服務的 *EXTERNAL-IP* 會顯示為 *pending*。
+一開始， *azure-vote-front* 服務的 *EXTERNAL-IP* 會顯示為 *pending* 。
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
@@ -233,7 +233,7 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 1. 在左側的 [監視] 底下，選擇 [見解]
 1. 在頂端選擇 [+ 新增篩選器]
 1. 選取 Namespace 作為屬性，然後選擇 *\<All but kube-system\>*
-1. 選擇檢視**容器**。
+1. 選擇檢視 **容器** 。
 
 系統會顯示 azure-vote-back 和 azure-vote-front 容器，如下列範例所示：
 

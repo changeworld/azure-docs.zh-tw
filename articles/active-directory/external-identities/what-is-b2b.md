@@ -12,19 +12,19 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfce0031d912b1611b6810310e56241857821579
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d10eb3334154f4915aa0bddd488ddc78bde06805
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87926717"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897257"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>什麼是 Azure Active Directory B2B 中的來賓使用者存取權？
 
 Azure Active Directory (Azure AD) 企業對企業 (B2B) 共同作業是外部身分識別中的一項功能，可讓您邀請來賓使用者與您的組織共同作業。 透過企業對企業 (B2B) 共同作業，您可以與來自任何其他組織的來賓使用者安全地共用公司的應用程式與服務，同時持續控制您公司的資料。 即使沒有 Azure AD 或 IT 部門，也可以安全地與外部合作夥伴 (無論大型或小型) 合作。 透過簡單的邀請和兌換程序，夥伴可以使用自己的認證來存取您的公司資源。 開發人員可以使用 Azure AD 企業對企業 API 來自訂邀請程序，或撰寫自助式註冊入口網站等應用程式。 如需來賓使用者的相關授權和定價資訊，請參閱 [Azure Active Directory 定價](https://azure.microsoft.com/pricing/details/active-directory/)。  
 
    > [!IMPORTANT]
-   > **自 2021 年 3 月 31 日起**，Microsoft 將不再支援兌換邀請，而是建立適用於 B2B 共同作業案例的非受控 Azure AD 帳戶和租用戶。 在準備過程中，我們鼓勵客戶選擇使用[電子郵件一次性密碼驗證](one-time-passcode.md)。 我們歡迎您提供此公開預覽功能的意見反應，而且期待能建立更多共同作業的方式。
+   > **自 2021 年 3 月 31 日起** ，Microsoft 將不再支援兌換邀請，而是建立適用於 B2B 共同作業案例的非受控 Azure AD 帳戶和租用戶。 在準備過程中，我們鼓勵客戶選擇使用[電子郵件一次性密碼驗證](one-time-passcode.md)。 我們歡迎您提供此公開預覽功能的意見反應，而且期待能建立更多共同作業的方式。
 
 ## <a name="collaborate-with-any-partner-using-their-identities"></a>使用他們的身分識別與任何夥伴共同作業
 
@@ -74,8 +74,8 @@ Azure Active Directory (Azure AD) 企業對企業 (B2B) 共同作業是外部身
 
 讓您的外部合作夥伴以針對您組織需求量身打造的方式上線使用。
 
-- 使用 [Azure AD 權利管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)來設定原則，以[管理外部使用者的存取權](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users)。
-- 使用 [B2B 共同作業邀請 API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) 來自訂您的上線體驗。
+- 使用 [Azure AD 權利管理](../governance/entitlement-management-overview.md)來設定原則，以[管理外部使用者的存取權](../governance/entitlement-management-external-users.md#how-access-works-for-external-users)。
+- 使用 [B2B 共同作業邀請 API](/graph/api/resources/invitation) 來自訂您的上線體驗。
 
 ## <a name="integrate-with-identity-providers"></a>與識別提供者整合
 
@@ -95,6 +95,6 @@ Azure AD 支援 Facebook、Microsoft 帳戶、Google 或企業識別提供者之
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure AD B2B 共同作業授權指導方針](licensing-guidance.md)
+- [外部身分識別定價](external-identities-pricing.md)
 - [在入口網站中新增 B2B 共同作業來賓使用者](add-users-administrator.md)
 - [了解邀請兌換程序](redemption-experience.md)

@@ -4,28 +4,28 @@ description: 了解如何搭配使用 Java 和 JDBC 與適用於 MySQL 的 Azure
 author: jdubois
 ms.author: judubois
 ms.service: mysql
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, devx-track-azurecli
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
-ms.openlocfilehash: a54e950286a37c207d902090f015b3732e0ff10b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b7db124f8f5ba56f760dc054491990889e4e738f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88517577"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745262"
 ---
 # <a name="use-java-and-jdbc-with-azure-database-for-mysql"></a>搭配使用 Java 和 JDBC 與適用於 MySQL 的 Azure 資料庫
 
-本主題示範如何建立使用 Java 和 [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) 的範例應用程式，以在[適用於 MySQL 的 Azure 資料庫](https://docs.microsoft.com/azure/mysql/)中儲存及擷取資訊。
+本主題示範如何建立使用 Java 和 [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) 的範例應用程式，以在[適用於 MySQL 的 Azure 資料庫](./index.yml)中儲存及擷取資訊。
 
 JDBC 是用來連線到傳統關聯式資料庫的標準 JAVA API。
 
 ## <a name="prerequisites"></a>必要條件
 
 - 一個 Azure 帳戶。 如果您沒有帳戶，請[取得免費試用帳戶](https://azure.microsoft.com/free/)。
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart) 或 [Azure CLI](/cli/azure/install-azure-cli)。 建議使用 Azure Cloud Shell，因此您將會自動登入，並可存取您需要的所有工具。
-- 支援的 [JAVA 開發工具組](https://aka.ms/azure-jdks) 版本 8 (包含在 Azure Cloud Shell 中)。
+- [Azure Cloud Shell](../cloud-shell/quickstart.md) 或 [Azure CLI](/cli/azure/install-azure-cli)。 建議使用 Azure Cloud Shell，因此您將會自動登入，並可存取您需要的所有工具。
+- 支援的 [JAVA 開發工具組](/azure/developer/java/fundamentals/java-jdk-long-term-support) 版本 8 (包含在 Azure Cloud Shell 中)。
 - [Apache Maven](https://maven.apache.org/) 建置工具。
 
 ## <a name="prepare-the-working-environment"></a>準備工作環境
@@ -68,7 +68,7 @@ az group create \
 我們首先要建立的是受控 MySQL 伺服器。
 
 > [!NOTE]
-> 您可以在[使用 Azure 入口網站建立適用於 MySQL 的 Azure 資料庫伺服器](/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal)中，閱讀更多關於如何建立 MySQL 伺服器的詳細資訊。
+> 您可以在[使用 Azure 入口網站建立適用於 MySQL 的 Azure 資料庫伺服器](./quickstart-create-mysql-server-database-using-azure-portal.md)中，閱讀更多關於如何建立 MySQL 伺服器的詳細資訊。
 
 在 [Azure Cloud Shell](https://shell.azure.com/) 中執行下列指令碼：
 

@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein
 ms.date: 09/26/2019
-ms.openlocfilehash: 2f2e8c6be128e5004769dca2f42a6c8013510cde
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bf606af0425c04873dadcf47932c806a1099942a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91325227"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788701"
 ---
 # <a name="quickstart-create-a-managed-instance-of-sql-managed-instance"></a>快速入門：建立 SQL 受控執行個體的受控執行個體
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "91325227"
 如果您沒有 Azure 訂用帳戶，請[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-1. 在 Azure 入口網站的左側功能表上選取 [Azure SQL]。 如果 [Azure SQL] 不在清單中，請選取 [所有服務]，然後在搜尋方塊中輸入 **Azure SQL**。
+1. 在 Azure 入口網站的左側功能表上選取 [Azure SQL]。 如果 [Azure SQL] 不在清單中，請選取 [所有服務]，然後在搜尋方塊中輸入 **Azure SQL** 。
 1. 選取 [+ 新增] 以開啟 [選取 SQL 部署選項] 頁面。 您可以在 [SQL 受控執行個體] 圖格上選取 [顯示詳細資料]，以檢視有關 Azure SQL 受控執行個體的其他資訊。
 1. 選取 [建立]。
 
@@ -79,7 +79,7 @@ ms.locfileid: "91325227"
    | **虛擬網路** | 選取 [建立新的虛擬網路] 或有效的虛擬網路與子網路。| 如果網路或子網路無法使用，您必須先[修改成符合網路需求](vnet-existing-add-subnet.md)後，才能選取它作為新的受控執行個體目標。 如需關於設定 SQL 受控執行個體網路環境的需求資訊，請參閱[設定 SQL 受控執行個體的虛擬網路](connectivity-architecture-overview.md)。 |
    | **連線類型** | 在 Proxy 和重新導向連線類型之間做選擇。|如需有關連線類型的詳細資訊，請參閱 [Azure SQL 受控執行個體連線類型](../database/connectivity-architecture.md#connection-policy)。|
    | **公用端點**  | 選取 [啟用]。 | 若要讓受控執行個體可透過公用資料端點來存取，您必須啟用此選項。 | 
-   | **允許從此存取** (如果已啟用 [公用雲端]) | 選取其中一個選項。   |入口網站體驗可讓您對公用端點設定安全性群組。 </br> </br> 根據您的情況，選取下列其中一個選項： </br> <ul> <li>**Azure 服務**：當您從 Power BI 或其他多租用戶服務進行連線時，建議使用此選項。 </li> <li> **網際網路**：可在您想要快速啟動受控執行個體時用於測試目的。 請勿將其用於生產環境。 </li> <li> **無存取權**：此選項會建立 [拒絕] 安全性規則。 修改這項規則，讓受控執行個體可透過公用端點來存取。 </li> </ul> </br> 如需公用端點安全性的詳細資訊，請參閱[搭配公用端點來安全地使用 Azure SQL 受控執行個體](public-endpoint-overview.md)。|
+   | **允許從此存取** (如果已啟用 [公用雲端]) | 選取其中一個選項。   |入口網站體驗可讓您對公用端點設定安全性群組。 </br> </br> 根據您的情況，選取下列其中一個選項： </br> <ul> <li>**Azure 服務** ：當您從 Power BI 或其他多租用戶服務進行連線時，建議使用此選項。 </li> <li> **網際網路** ：可在您想要快速啟動受控執行個體時用於測試目的。 請勿將其用於生產環境。 </li> <li> **無存取權** ：此選項會建立 [拒絕] 安全性規則。 修改這項規則，讓受控執行個體可透過公用端點來存取。 </li> </ul> </br> 如需公用端點安全性的詳細資訊，請參閱[搭配公用端點來安全地使用 Azure SQL 受控執行個體](public-endpoint-overview.md)。|
 
 - 選取 [檢閱 + 建立]，以在建立受控執行個體前檢閱您的選擇。 或者，設定更多自訂設定，做法是選取 [下一步:其他設定]。
 
@@ -93,7 +93,7 @@ ms.locfileid: "91325227"
 
    | 設定| 建議的值 | 描述 |
    | ------ | --------------- | ----------- |
-   | **定序** | 選擇您要用於受控執行個體的定序。 如果您從 SQL Server 遷移資料庫，請使用 `SELECT SERVERPROPERTY(N'Collation')` 來檢查來源定序並使用該值。| 如需定序的相關資訊，請參閱[設定或變更伺服器定序](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation)。|   
+   | **定序** | 選擇您要用於受控執行個體的定序。 如果您從 SQL Server 遷移資料庫，請使用 `SELECT SERVERPROPERTY(N'Collation')` 來檢查來源定序並使用該值。| 如需定序的相關資訊，請參閱[設定或變更伺服器定序](/sql/relational-databases/collations/set-or-change-the-server-collation)。|   
    | **時區** | 選取受控執行個體將要觀察的時區。|如需詳細資訊，請參閱[時區](timezones-overview.md)。|
    | **作為次要容錯移轉群組** | 選取 [是]。 | 啟用此選項以使用受控執行個體作為次要容錯移轉群組。|
    | **主要 SQL 受控執行個體** (如果 [作為次要容錯移轉群組] 設定為 [是]) | 選擇現有主要受控執行個體，其將加入與您所建立受控執行個體相同的 DNS 區域中。 | 此步驟會啟用容錯移轉群組的建立後設定。 如需詳細資訊，請參閱[教學課程：將受控執行個體新增到容錯移轉群組](failover-group-add-instance-tutorial.md)。|
@@ -126,7 +126,7 @@ ms.locfileid: "91325227"
 > [!IMPORTANT]
 > - 建立 SQL 受控執行個體是長時間執行的作業，可能需要幾個小時，視特定的情況而定。 如需一般建立時間的相關資訊，請參閱[管理作業持續時間](management-operations-overview.md#duration)。
 > - 在有其他受影響的作業 (例如在相同子網路中的其他受控執行個體上長時間執行的還原或調整作業) 時，可能會延遲建立 SQL 受控執行個體的開始時間。 若要深入了解，請參閱[管理作業交互影響](management-operations-overview.md#management-operations-cross-impact)。
-> - 為了能夠取得建立受控執行個體時的狀態，您必須具有資源群組的**讀取權限**。 如果您沒有此權限，或在受控執行個體建立過程中將其撤銷，則可能會導致 SQL 受控執行個體不會顯示在資源群組部署清單中。
+> - 為了能夠取得建立受控執行個體時的狀態，您必須具有資源群組的 **讀取權限** 。 如果您沒有此權限，或在受控執行個體建立過程中將其撤銷，則可能會導致 SQL 受控執行個體不會顯示在資源群組部署清單中。
 >
 
 ## <a name="view-resources-created"></a>檢視已建立的資源
@@ -173,7 +173,7 @@ ms.locfileid: "91325227"
 
    ![主機名稱](./media/instance-create-quickstart/host-name.png)
 
-   所複製的值代表可用於連線至 SQL 受控執行個體的完整網域名稱 (FQDN)。 其類似於下列位址範例：*your_host_name.a1b2c3d4e5f6.database.windows.net*。
+   所複製的值代表可用於連線至 SQL 受控執行個體的完整網域名稱 (FQDN)。 其類似於下列位址範例： *your_host_name.a1b2c3d4e5f6.database.windows.net* 。
 
 ## <a name="next-steps"></a>後續步驟
 

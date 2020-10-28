@@ -3,19 +3,19 @@ title: 啟動 Azure 訂用帳戶與帳戶
 description: 使用新的和現有帳戶的 Azure Resource Manager API 來啟用存取，並解決常見的帳戶問題。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/12/2020
+ms.date: 10/23/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cloudyn
 ms.reviewer: vitavor
 ms.custom: secdec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 52ac239369f2998a3a8eac9c400512ac845a0c49
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: b1b7ea7467be107bd1af9daf0869c77ff0b94c70
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131423"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537335"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>使用 Cloudyn 啟動 Azure 訂用帳戶與帳戶
 
@@ -34,7 +34,7 @@ ms.locfileid: "92131423"
 
 在您的 Azure 訂用帳戶中，您的帳戶必須具有 `Microsoft.Authorization/*/Write` 存取權，才能指派 CloudynCollector 應用程式。 此動作是[擁有者](../../role-based-access-control/built-in-roles.md#owner)角色或[使用者存取系統管理員](../../role-based-access-control/built-in-roles.md#user-access-administrator)角色來授與。
 
-如果您的帳戶被指派**參與者**角色，您並沒有足夠的權限可指派應用程式。 嘗試將 CloudynCollector 應用程式指派到您的 Azure 訂用帳戶時，您會收到錯誤。
+如果您的帳戶被指派 **參與者** 角色，您並沒有足夠的權限可指派應用程式。 嘗試將 CloudynCollector 應用程式指派到您的 Azure 訂用帳戶時，您會收到錯誤。
 
 ### <a name="check-azure-active-directory-permissions"></a>檢查 Azure Active Directory 權限
 
@@ -59,7 +59,7 @@ ms.locfileid: "92131423"
 
 ### <a name="update-a-subscription"></a>更新訂用帳戶
 
-1. 如果您想要在 [帳戶管理] 中更新 Cloudyn 中已存在的_未啟動_訂用帳戶，請按一下父代 [租用戶 GUID]  右側的編輯鉛筆符號。 訂用帳戶會分組歸類在一個父代租用戶之下，因此請避免個別啟用訂用帳戶。
+1. 如果您想要在 [帳戶管理] 中更新 Cloudyn 中已存在的 _未啟動_ 訂用帳戶，請按一下父代 [租用戶 GUID]  右側的編輯鉛筆符號。 訂用帳戶會分組歸類在一個父代租用戶之下，因此請避免個別啟用訂用帳戶。
     ![在 [重新探索訂用帳戶] 方塊中選取您的租用戶識別碼](./media/activate-subs-accounts/existing-sub.png)
 2. 如有必要，請輸入租用戶識別碼。 如果您不知道您的租用戶識別碼，請使用下列步驟來尋找它：
     1. 登入 [Azure 入口網站](https://portal.azure.com)。
@@ -75,7 +75,7 @@ ms.locfileid: "92131423"
 4. 在 [新增帳戶] (或[編輯訂用帳戶]) 方塊中，按一下 [儲存]  (或 [下一步]  )。 您會被重新導向至 Azure 入口網站。
 5. 登入入口網站。 按一下 [接受]  ，授權給 Cloudyn 收集器存取您的 Azure 帳戶。
 
-    系統會將您重新導向至 Cloudyn Accounts 管理頁面，而且您的訂用帳戶會更新為**作用中**帳戶狀態。 它應會在 [Resource Manager] 資料行下顯示綠色核取記號符號。
+    系統會將您重新導向至 Cloudyn Accounts 管理頁面，而且您的訂用帳戶會更新為 **作用中** 帳戶狀態。 它應會在 [Resource Manager] 資料行下顯示綠色核取記號符號。
 
     如果您沒有看到一個或多個訂用帳戶的綠色核取記號符號，這表示您沒有為訂用帳戶建立讀取器應用程式 (CloudynCollector) 的權限。 具有較高訂用帳戶權限的使用者必須重複此程序。
 
@@ -87,21 +87,21 @@ ms.locfileid: "92131423"
 
 當您第一次使用 Cloudyn 入口網站時，如果您是 Enterprise 合約或雲端解決方案提供者 (CSP) 使用者，您可能會看到下列訊息：
 
-- 在 [設定 Cloudyn]  精靈中顯示*指定的 API 金鑰不是最上層的註冊金鑰*。
+- 在 [設定 Cloudyn]  精靈中顯示 *指定的 API 金鑰不是最上層的註冊金鑰* 。
 - 在 Enterprise 合約入口網站中顯示的「直接註冊 – 否」  。
-- 在 Cloudyn 入口網站中顯示的*找不到過去 30 天的使用方式資料。請連絡您的散發者以確定您的 Azure 帳戶已啟用標記*。
+- 在 Cloudyn 入口網站中顯示的 *找不到過去 30 天的使用方式資料。請連絡您的散發者以確定您的 Azure 帳戶已啟用標記* 。
 
 前面的訊息指出您透過轉銷商或雲端解決方案提供者購買了 Azure Enterprise 合約。 您的轉銷商或雲端解決方案提供者必須為您的 Azure 帳戶啟用「標記」  ，您才能在 Cloudyn 中檢視資料。
 
 以下是修正問題的方法：
 
 1. 您的轉銷商必須為您的帳戶啟用「標記」  。 如需指示，請參閱[間接客戶上線指南](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide)。
-2. 您要產生用於 Cloudyn 的 Azure Enterprise 合約金鑰。 如需相關指示，請參閱[註冊 Azure Enterprise 合約並檢視成本資料](./quick-register-ea.md)。
+2. 您要產生用於 Cloudyn 的 Azure Enterprise 合約金鑰。
 
 在您可以產生 Azure Enterprise 合約 API 金鑰以設定 Cloudyn 之前，您必須啟用 Azure 帳單 API，方法是遵循下列文章中的指示：
 
 - [適用於企業客戶的報告 API 概觀](../manage/enterprise-api.md)
-- **啟用對 API 的資料存取**下的 [Microsoft Azure 企業版入口網站報告 API](https://ea.azure.com/helpdocs/reportingAPI)
+- **啟用對 API 的資料存取** 下的 [Microsoft Azure 企業版入口網站報告 API](https://ea.azure.com/helpdocs/reportingAPI)
 
 您可能也需要提供部門管理員、帳戶擁有者，以及企業管理員等權限，才能使用帳單 API「檢視費用」  。
 
@@ -133,6 +133,6 @@ $url = "https://login.windows.net/"+$tenant+"/oauth2/authorize?api-version=1&res
 
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 如果您尚未完成 Cloudyn 的第一個教學課程，請閱讀[檢閱使用量和成本](tutorial-review-usage.md)。

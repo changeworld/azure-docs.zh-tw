@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f23512bfd85c520c36cd98843db37371b84af293
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: ca3b218da7835ee9f3e9e8653f4829767a1ffb07
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939197"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783465"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>快速入門：適用於 .NET 的 Azure 佇列儲存體用戶端程式庫 v12
 
@@ -34,12 +34,12 @@ ms.locfileid: "91939197"
 * [API 參考文件](/dotnet/api/azure.storage.queues)
 * [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
 * [套件 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
-* [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+* [範例](../common/storage-samples-dotnet.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
-* Azure 儲存體帳戶 - [建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure 儲存體帳戶 - [建立儲存體帳戶](../common/storage-account-create.md)
 * 適用於您作業系統的 [NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) \(英文\) 目前版本。 請務必取得 SDK，而不是執行階段。
 
 ## <a name="setting-up"></a>設定
@@ -50,7 +50,7 @@ ms.locfileid: "91939197"
 
 建立一個名為 QueuesQuickstartV12 的 .NET Core 應用程式。
 
-1. 在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 QueuesQuickstartV12 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔：*Program.cs*。
+1. 在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 QueuesQuickstartV12 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔： *Program.cs* 。
 
    ```console
    dotnet new console -n QueuesQuickstartV12
@@ -77,7 +77,7 @@ dotnet add package Azure.Storage.Queues
 1. 在編輯器中開啟 Program.cs 檔案
 1. 移除 `Console.WriteLine("Hello World!");` 陳述式
 1. 新增 `using` 指示詞
-1. 更新 `Main` 方法宣告以[支援非同步程式碼](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#async-main)
+1. 更新 `Main` 方法宣告以[支援非同步程式碼](/dotnet/csharp/whats-new/csharp-7#async-main)
 
 
 
@@ -334,7 +334,7 @@ Done
 如需教學課程、範例、快速入門及其他文件，請瀏覽：
 
 > [!div class="nextstepaction"]
-> [適用於 .NET 和 .NET Core 開發人員的 Azure](https://docs.microsoft.com/dotnet/azure/)
+> [適用於 .NET 和 .NET Core 開發人員的 Azure](/dotnet/azure/)
 
 * 若要深入了解，請參閱[適用於 .NET 的 Azure 儲存體程式庫](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage)。
 * 若要查看更多 Azure 佇列儲存體範例應用程式，請繼續 [Azure 佇列儲存體 v12 .NET 用戶端程式庫範例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)。

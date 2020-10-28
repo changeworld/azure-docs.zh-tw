@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 10/12/2020
 ms.author: duau
-ms.openlocfilehash: 37f0b890cd4942e5dcb47b496d661eb7c54db94d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 7521344a2bb6aae67724c8bfbb9131e2ff1e6b94
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093509"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789721"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>快速入門：使用 ARM 範本建立具有私人對等互連的 ExpressRoute 線路
 
@@ -36,14 +36,14 @@ ms.locfileid: "92093509"
 
 在本快速入門中，您將使用 Equinix 作為服務提供者來建立 ExpressRoute 線路。 此線路將會使用 Premium SKU，其頻寬為 50 Mbps，以及華盛頓特區的對等互連位置。 私人對等互連會分別在 *192.168.10.16/30* 和 *192.168.10.20/30* 的主要和次要子網路上啟用。 虛擬網路也會隨著 HighPerformance ExpressRoute 閘道一併建立。
 
-:::code language="json" source="~/quickstart-templates/101-expressroute-private-peering-vnet/azuredeploy.json" range="001-351" highlight="183-219":::
+:::code language="json" source="~/quickstart-templates/101-expressroute-private-peering-vnet/azuredeploy.json":::
 
 範本中已定義多個 Azure 資源：
 
 * [**Microsoft.Network/expressRouteCircuits**](/azure/templates/microsoft.network/expressRouteCircuits)
 * [**Microsoft.Network/expressRouteCircuits/peerings**](/azure/templates/microsoft.network/expressRouteCircuits/peerings) (用於在線路上啟用私人對等互連)
 * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networkSecurityGroups) (網路安全性群組會套用至虛擬網路中的子網路)
-* [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualNetworks) 
+* [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualNetworks)
 * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicIPAddresses) (ExpressRoute 閘道會使用公用 IP)
 * [**Microsoft.Network/virtualNetworkGateways**](/azure/templates/microsoft.network/virtualNetworkGateways) (ExpressRoute 閘道用於將 VNet 連結至線路)
 
@@ -51,7 +51,7 @@ ms.locfileid: "92093509"
 
 ## <a name="deploy-the-template"></a>部署範本
 
-1. 選取以下程式碼區塊的 [試用] 以開啟 Azure Cloud Shell，然後遵循指示登入 Azure。 
+1. 選取以下程式碼區塊的 [試用] 以開啟 Azure Cloud Shell，然後遵循指示登入 Azure。
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -94,7 +94,7 @@ Azure PowerShell 用於部署範本。 除了 Azure PowerShell 以外，您也�
 
      :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute Resource Manager 範本 PowerShell 部署輸出":::
 
-1. 選取 ExpressRoute 線路 **er-ck01**，以確認線路狀態為 [已啟用]、提供者狀態為 [未佈建]，且私人對等互連的狀態為 [已佈建]。
+1. 選取 ExpressRoute 線路 **er-ck01** ，以確認線路狀態為 [已啟用]、提供者狀態為 [未佈建]，且私人對等互連的狀態為 [已佈建]。
 
     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute Resource Manager 範本 PowerShell 部署輸出":::
 
@@ -114,6 +114,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 ## <a name="next-steps"></a>後續步驟
 
 在本快速入門中，您已建立一個：
+
 * ExpressRoute 線路
 * 虛擬網路
 * VPN 閘道

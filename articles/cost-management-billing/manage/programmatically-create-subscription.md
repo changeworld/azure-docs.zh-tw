@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/12/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 28397d36a611f26544fefb9f4fa7593a0fdf3f73
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 59d3a44b1eff544f7214014f2dd31edc92bfc6bc
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014523"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748174"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-the-latest-apis"></a>使用最新的 API 以程式設計方式建立 Azure 訂用帳戶
 
@@ -47,7 +47,7 @@ Azure 客戶若使用下列合約類型的計費帳戶，則可以程式設計�
 
 當您加入與「帳戶擁有者」相關聯的註冊帳戶之後，Azure 會使用帳戶與註冊的關聯性來判斷由誰支付訂用帳戶的費用。 所有在該帳戶下所建立訂用帳戶的費用，都會由該帳戶所在的 EA 註冊支付。 若要建立訂用帳戶，您必須傳入註冊帳戶與使用者主體的相關值，才能擁有訂用帳戶。
 
-若要執行下列命令，您必須登入「帳戶擁有者」的*主目錄* (建立訂用帳戶時預設的所在目錄)。
+若要執行下列命令，您必須登入「帳戶擁有者」的 *主目錄* (建立訂用帳戶時預設的所在目錄)。
 
 ### <a name="rest"></a>[REST](#tab/rest-getEnrollments)
 
@@ -183,7 +183,7 @@ GET https://management.azure.com/providers/Microsoft.Subscription/aliases/sample
 
 若要安裝包含 `New-AzSubscriptionAlias` Cmdlet 的最新版模組，請執行 `Install-Module Az.Subscription`。 若要安裝最新版本的 PowerShellGet，請參閱[取得 PowerShellGet 模組](/powershell/scripting/gallery/installing-psget)。
 
-使用計費範圍 `"/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"`，執行下列 [New-AzSubscriptionAlias](/powershell/module/az.subscription/New-AzSubscriptionAlias) 命令。 
+使用計費範圍 `"/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"`，執行下列 [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription) 命令。 
 
 ```azurepowershell-interactive
 New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321" -Workload 'Production"
@@ -463,7 +463,7 @@ GET https://management.azure.com/providers/Microsoft.Subscription/aliases/sample
 
 若要安裝包含 `New-AzSubscriptionAlias` Cmdlet 的最新版模組，請執行 `Install-Module Az.Subscription`。 若要安裝最新版本的 PowerShellGet，請參閱[取得 PowerShellGet 模組](/powershell/scripting/gallery/installing-psget)。
 
-執行下列 [New-AzSubscriptionAlias](/powershell/module/az.subscription/New-AzSubscriptionAlias) 和計費範圍 `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"`。 
+執行下列 [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription) 和計費範圍 `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"`。 
 
 ```azurepowershell-interactive
 New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx" -Workload 'Production"
@@ -736,13 +736,13 @@ GET https://management.azure.com/providers/Microsoft.Subscription/aliases/sample
 
 此時會傳回進行中狀態，在 `provisioningState` 下顯示為 `Accepted` 狀態。 
 
-在 API 的要求本文中，傳遞從第二個步驟中複製的選擇性 *resellerId*。
+在 API 的要求本文中，傳遞從第二個步驟中複製的選擇性 *resellerId* 。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-MPA)
 
 若要安裝包含 `New-AzSubscriptionAlias` Cmdlet 的最新版模組，請執行 `Install-Module Az.Subscription`。 若要安裝最新版本的 PowerShellGet，請參閱[取得 PowerShellGet 模組](/powershell/scripting/gallery/installing-psget)。
 
-使用計費範圍 `"/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx"`，執行下列 [New-AzSubscriptionAlias](/powershell/module/az.subscription/New-AzSubscriptionAlias) 命令。 
+使用計費範圍 `"/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx"`，執行下列 [New-AzSubscriptionAlias](/powershell/module/az.subscription/new-azsubscription) 命令。 
 
 ```azurepowershell-interactive
 New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Subscription" -BillingScope "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -Workload 'Production"
@@ -762,7 +762,7 @@ New-AzSubscriptionAlias -AliasName "sampleAlias" -SubscriptionName "Dev Team Sub
 }
 ```
 
-在 `New-AzSubscriptionAlias` 呼叫中，傳遞從第二個步驟中複製的選擇性 *resellerId*。
+在 `New-AzSubscriptionAlias` 呼叫中，傳遞從第二個步驟中複製的選擇性 *resellerId* 。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-MPA)
 
@@ -788,7 +788,7 @@ az account alias create --name "sampleAlias" --billing-scope "/providers/Microso
 }
 ```
 
-在 `az account alias create` 呼叫中，傳遞從第二個步驟中複製的選擇性 *resellerId*。
+在 `az account alias create` 呼叫中，傳遞從第二個步驟中複製的選擇性 *resellerId* 。
 
 ---
 

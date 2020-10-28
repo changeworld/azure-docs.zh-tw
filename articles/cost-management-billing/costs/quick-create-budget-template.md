@@ -8,13 +8,13 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.topic: quickstart
 ms.date: 07/28/2020
-ms.custom: subject-armqs
-ms.openlocfilehash: 3b21353c7e5338c78b9d56e79ac5da3fa7e9af84
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: subject-armqs, devx-track-azurecli
+ms.openlocfilehash: 7d93bd757a39247302a6bc09009a1a814425c32f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687581"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745377"
 ---
 # <a name="quickstart-create-a-budget-with-an-arm-template"></a>快速入門：使用 ARM 範本建立預算
 
@@ -84,21 +84,21 @@ ms.locfileid: "88687581"
 
    :::image type="content" source="./media/quick-create-budget-template/create-budget-using-template-portal.png" alt-text="Resource Manager 範本、建立預算、部署入口網站" lightbox="./media/quick-create-budget-template/create-budget-using-template-portal.png" :::
    
-    * **訂用帳戶**：選取 Azure 訂用帳戶。
-    * **資源群組**：如有必要，請選取現有的資源群組或**建立新的資源群組**。
-    * **區域**：選取 Azure 區域。 例如，**美國中部**。
-    * **預算名稱**：輸入預算的名稱。 其在資源群組內必須是唯一的。 只允許英數字元、底線及連字號字元。
-    * **金額**：輸入要透過預算追蹤的成本總金額。
-    * **時間粒紋**：輸入預算所涵蓋的時間。 允許的值為 [每月]、[每季] 或 [每年]。 預算會在時間粒紋結束時重設。
-    * **開始日期**：輸入月份的第一天作為開始日期 (格式為 YYYY-MM-DD)。 未來開始日期不得超過今天算起的三個月。 您可以使用「時間粒紋」週期來指定過去開始日期。
-    * **結束日期**：以 YYYY-MM-DD 格式輸入預算的結束日期。 
-    * **第一個閾值**：輸入第一個通知的閾值。 當成本超過閾值時，就會傳送通知。 該值一律是百分比，且必須介於 0 到 1000 之間。
-    * **第二個閾值**：輸入第二個通知的閾值。 當成本超過閾值時，就會傳送通知。 該值一律是百分比，且必須介於 0 到 1000 之間。
-    * **連絡人角色**：輸入超出閾值時，預算通知要傳送至的連絡人角色清單。 預設值為「擁有者」、「參與者」和「讀者」。 預期的格式為 `["Owner","Contributor","Reader"]`。
-    * **連絡人電子郵件**：輸入超出閾值時，預算通知要傳送至的電子郵件地址清單。 預期的格式為 `["user1@domain.com","user2@domain.com"]`。
-    * **連絡人群組**：輸入在超出閾值時，預算通知要傳送到的動作群組資源識別碼清單 (以完整資源 URI 的形式)。 其接受字串陣列。 預期的格式為 `["action group resource ID1","action group resource ID2"]`。 如果不想要使用動作群組，請輸入 `[]`。
-    * **資源群組篩選值**：輸入要篩選的資源群組名稱清單。 預期的格式為 `["Resource Group Name1","Resource Group Name2"]`。 如果您不想要套用篩選條件，請輸入 `[]`。 
-    * **計量類別篩選值**：輸入 Azure 服務計量類別的清單。 預期的格式為 `["Meter Category1","Meter Category2"]`。 如果您不想要套用篩選條件，請輸入 `[]`。
+    * **訂用帳戶** ：選取 Azure 訂用帳戶。
+    * **資源群組** ：如有必要，請選取現有的資源群組或 **建立新的資源群組** 。
+    * **區域** ：選取 Azure 區域。 例如， **美國中部** 。
+    * **預算名稱** ：輸入預算的名稱。 其在資源群組內必須是唯一的。 只允許英數字元、底線及連字號字元。
+    * **金額** ：輸入要透過預算追蹤的成本總金額。
+    * **時間粒紋** ：輸入預算所涵蓋的時間。 允許的值為 [每月]、[每季] 或 [每年]。 預算會在時間粒紋結束時重設。
+    * **開始日期** ：輸入月份的第一天作為開始日期 (格式為 YYYY-MM-DD)。 未來開始日期不得超過今天算起的三個月。 您可以使用「時間粒紋」週期來指定過去開始日期。
+    * **結束日期** ：以 YYYY-MM-DD 格式輸入預算的結束日期。 
+    * **第一個閾值** ：輸入第一個通知的閾值。 當成本超過閾值時，就會傳送通知。 該值一律是百分比，且必須介於 0 到 1000 之間。
+    * **第二個閾值** ：輸入第二個通知的閾值。 當成本超過閾值時，就會傳送通知。 該值一律是百分比，且必須介於 0 到 1000 之間。
+    * **連絡人角色** ：輸入超出閾值時，預算通知要傳送至的連絡人角色清單。 預設值為「擁有者」、「參與者」和「讀者」。 預期的格式為 `["Owner","Contributor","Reader"]`。
+    * **連絡人電子郵件** ：輸入超出閾值時，預算通知要傳送至的電子郵件地址清單。 預期的格式為 `["user1@domain.com","user2@domain.com"]`。
+    * **連絡人群組** ：輸入在超出閾值時，預算通知要傳送到的動作群組資源識別碼清單 (以完整資源 URI 的形式)。 其接受字串陣列。 預期的格式為 `["action group resource ID1","action group resource ID2"]`。 如果不想要使用動作群組，請輸入 `[]`。
+    * **資源群組篩選值** ：輸入要篩選的資源群組名稱清單。 預期的格式為 `["Resource Group Name1","Resource Group Name2"]`。 如果您不想要套用篩選條件，請輸入 `[]`。 
+    * **計量類別篩選值** ：輸入 Azure 服務計量類別的清單。 預期的格式為 `["Meter Category1","Meter Category2"]`。 如果您不想要套用篩選條件，請輸入 `[]`。
    
 3. 根據您的 Azure 訂用帳戶類型，執行下列其中一個動作：
    - 選取 [檢閱 + 建立]。

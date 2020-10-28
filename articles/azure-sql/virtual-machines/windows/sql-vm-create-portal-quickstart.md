@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fb10e85b07037805d59dcba91ff20a4bc2a6574e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d7d82db7fc8a39a0865e80ee7873ee849627c583
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84667636"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791064"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中的 Windows 虛擬機器上建立 SQL Server 2017
 
@@ -45,7 +45,7 @@ ms.locfileid: "84667636"
 
 1. 在 Azure 入口網站的左側功能表中，選取 [Azure SQL]。 如果 **Azure SQL** 不在清單中，請選取 [所有服務]，然後在搜尋方塊中輸入 Azure SQL。
 1. 選取 [+ 新增] 以開啟 [選取 SQL 部署選項] 頁面。 您可以選取 [SQL 虛擬機器] 圖格上的 [顯示詳細資料]，以檢視其他資訊。
-1. 選取**免費的 SQL Server 授權：Windows Server 2016 上的 SQL Server 2017 Developer** 映像 (從下拉式清單中)。
+1. 選取 **免費的 SQL Server 授權：Windows Server 2016 上的 SQL Server 2017 Developer** 映像 (從下拉式清單中)。
 
    ![新的搜尋視窗](./media/sql-vm-create-portal-quickstart/select-sql-2017-vm-image.png)
 
@@ -64,9 +64,9 @@ ms.locfileid: "84667636"
 1. 在 [執行個體詳細資料] 下方：
     1. 輸入 _SQLVM_ 作為 [虛擬機器名稱]。 
     1. 選擇 [區域] 的位置。 
-    1. 基於此快速入門的目的，請將 [可用性選項] 設定保留為 [不需要基礎結構備援]。 如需關於可用性選項的詳細資訊，請參閱[可用性](../../../virtual-machines/windows/availability.md)。 
+    1. 基於此快速入門的目的，請將 [可用性選項] 設定保留為 [不需要基礎結構備援]。 如需關於可用性選項的詳細資訊，請參閱[可用性](../../../virtual-machines/availability.md)。 
     1. 在 **映像** 清單中，選取免費的 _SQL Server 授權：_ Windows Server 2016 上的 SQL Server 2017 Developer 的映像。 
-    1. 選擇為虛擬機器的**大小** [變更大小]，然後選取 **A2 Basic** 供應項目。 在資源使用完畢後請務必加以清除，以防止產生任何非預期的費用。 
+    1. 選擇為虛擬機器的 **大小** [變更大小]，然後選取 **A2 Basic** 供應項目。 在資源使用完畢後請務必加以清除，以防止產生任何非預期的費用。 
 
    ![執行個體詳細資料](./media/sql-vm-create-portal-quickstart/basics-instance-details.png)
 
@@ -83,7 +83,7 @@ ms.locfileid: "84667636"
 在 [SQL Server 設定] 索引標籤上，設定下列選項：
 
 1. 在 [安全性與網路] 下方，針對 [SQL 連線] 選取 [公用 (網際網路)]，並將連接埠變更為 `1401`，以避免在公用案例中使用已知的連接埠號碼。 
-1. 在 [SQL 驗證] 下方，選取 [啟用]。 SQL 登入認證已設為您對 VM 設定的相同使用者名稱和密碼。 使用 [**Azure Key Vault 整合**](azure-key-vault-integration-configure.md)的預設設定。 **儲存體組態**不適用於基本 SQL Server VM 映像，但您可以在[儲存體組態](storage-configuration.md#new-vms)中找到與其他映像的可用選項有關的詳細資訊。  
+1. 在 [SQL 驗證] 下方，選取 [啟用]。 SQL 登入認證已設為您對 VM 設定的相同使用者名稱和密碼。 使用 [**Azure Key Vault 整合**](azure-key-vault-integration-configure.md)的預設設定。 **儲存體組態** 不適用於基本 SQL Server VM 映像，但您可以在 [儲存體組態](storage-configuration.md#new-vms)中找到與其他映像的可用選項有關的詳細資訊。  
 
    ![SQL Server 安全性設定](./media/sql-vm-create-portal-quickstart/sql-server-settings.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "84667636"
 1. 在已連線到網際網路的其他電腦上開啟 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)。
 
 
-1. 在 [連接到伺服器] 或 [連接到 Database Engine] 對話方塊中，編輯 [伺服器名稱] 值。 輸入您 VM 的公用 IP 位址。 然後加入一個逗號，並加入您在您設定新的 VM 時所指定的自訂連接埠 (**1401**)。 例如： `11.22.33.444,1401` 。
+1. 在 [連接到伺服器] 或 [連接到 Database Engine] 對話方塊中，編輯 [伺服器名稱] 值。 輸入您 VM 的公用 IP 位址。 然後加入一個逗號，並加入您在您設定新的 VM 時所指定的自訂連接埠 ( **1401** )。 例如： `11.22.33.444,1401` 。
 
 1. 在 [驗證] 方塊中，選取 [SQL Server 驗證]。
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 99257b7bef83d0acef484118c7d53aea8eda168c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c017ae8044c14a579190f5f1e76cfb1a73e3ce66
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264281"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896186"
 ---
 # <a name="quickstart-create-an-interactive-search-map-with-azure-maps"></a>快速入門：使用 Azure 地圖服務建立互動式地圖搜尋
 
@@ -37,7 +37,7 @@ ms.locfileid: "91264281"
 使用下列步驟建立新的 Azure 地圖服務帳戶：
 
 1. 按一下 [Azure 入口網站](https://portal.azure.com)左上角的 [建立資源]。
-2. 在 [搜尋 Marketplace] 方塊中，輸入 **Azure 地圖服務**。
+2. 在 [搜尋 Marketplace] 方塊中，輸入 **Azure 地圖服務** 。
 3. 從 [結果] 中，選取 [Azure 地圖服務]。 按一下地圖下方顯示的 [建立] 按鈕。
 4. 在 [建立地圖服務帳戶] 頁面上輸入下列值：
     * 您想要使用於此帳戶的 [訂用帳戶]。
@@ -60,14 +60,14 @@ ms.locfileid: "91264281"
 3. 將 [主索引鍵] 複製到剪貼簿。 將其儲存在本機，以供本教學課程稍後使用。
 
 >[!NOTE]
-> 如果您使用訂用帳戶金鑰而非主要金鑰，您的地圖將無法正確轉譯。 此外，為了安全起見，建議您在主要和次要金鑰之間輪替。 若要輪替金鑰，將您的應用程式更新為使用次要金鑰，部署，然後按下主要金鑰旁的循環/重新整理按鈕，以產生新的主要金鑰。 舊的主要金鑰將會停用。 如需金鑰輪替的詳細資訊，請參閱[使用金鑰輪替和稽核來設定 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/secrets/key-rotation-log-monitoring)
+> 如果您使用訂用帳戶金鑰而非主要金鑰，您的地圖將無法正確轉譯。 此外，為了安全起見，建議您在主要和次要金鑰之間輪替。 若要輪替金鑰，將您的應用程式更新為使用次要金鑰，部署，然後按下主要金鑰旁的循環/重新整理按鈕，以產生新的主要金鑰。 舊的主要金鑰將會停用。 如需金鑰輪替的詳細資訊，請參閱[使用金鑰輪替和稽核來設定 Azure Key Vault](../key-vault/secrets/tutorial-rotation-dual.md)
 
 :::image type="content" source="./media/quick-demo-map-app/get-key.png" alt-text="在入口網站中建立地圖服務帳戶":::
 
 ## <a name="download-the-demo-application"></a>下載示範應用程式
 
 1. 移至 [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html)。 複製檔案的內容。
-2. 將此檔案的內容在本機另存為 **AzureMapDemo.html**。 在文字編輯器中將其開啟。
+2. 將此檔案的內容在本機另存為 **AzureMapDemo.html** 。 在文字編輯器中將其開啟。
 3. 搜尋字串 `<Your Azure Maps Key>`。 以上一節的 **主要金鑰** 值加以取代。
 
 ## <a name="open-the-demo-application"></a>開啟示範應用程式
@@ -75,7 +75,7 @@ ms.locfileid: "91264281"
 1. 在您選擇的瀏覽器中開啟 **AzureMapDemo.html** 檔案。
 2. 查看地圖所顯示的洛杉磯市。 縮放地圖大小，以查看地圖依據縮放層級搭配較多或較少資訊縮放時，自動轉譯的情況。
 3. 變更地圖的預設中心。 在 **AzureMapDemo.html** 檔案中，搜尋名為 **center** 的變數。 以新的值 **[-74.0060, 40.7128]** 取代此變數的 [經度, 緯度] 值組。 儲存檔案並重新整理瀏覽器。
-4. 試用互動式搜尋體驗。 在示範 Web 應用程式左上角的搜尋方塊中，搜尋**餐廳**。
+4. 試用互動式搜尋體驗。 在示範 Web 應用程式左上角的搜尋方塊中，搜尋 **餐廳** 。
 5. 將滑鼠移到搜尋方塊下所出現的地址和位置清單。 注意地圖上對應的圖釘如何彈出該位置的相關資訊。 為了保護私人公司的隱私權，在此顯示的是虛構的名稱和地址。
 
     :::image type="content" source="./media/quick-demo-map-app/interactive-search.png" alt-text="在入口網站中建立地圖服務帳戶":::

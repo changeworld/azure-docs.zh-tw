@@ -4,23 +4,23 @@ description: 使用 Azure 入口網站、PowerShell 或 Azure CLI，在 Azure SQ
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: contperfq1
+ms.custom: contperfq1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/03/2020
-ms.openlocfilehash: 6a0d81cc9954f934395bc275785bda34c55c35bd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ab920a05f255e38905f9ff79f08f2bfa0c6540b6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91263397"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791506"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>快速入門：建立 Azure SQL Database 單一資料庫
 
-在此快速入門中，您可以使用 Azure 入口網站、PowerShell 指令碼或 Azure CLI 指令碼，在 Azure SQL Database 中建立[單一資料庫](single-database-overview.md)。 接著，您可以使用 Azure 入口網站中的**查詢編輯器**來查詢資料庫。
+在此快速入門中，您可以使用 Azure 入口網站、PowerShell 指令碼或 Azure CLI 指令碼，在 Azure SQL Database 中建立[單一資料庫](single-database-overview.md)。 接著，您可以使用 Azure 入口網站中的 **查詢編輯器** 來查詢資料庫。
 
 
 
@@ -37,23 +37,23 @@ ms.locfileid: "91263397"
 若要在 Azure 入口網站中建立單一資料庫，本快速入門會從 Azure SQL 頁面開始。
 
 1. 瀏覽至[選取 SQL 部署選項](https://portal.azure.com/#create/Microsoft.AzureSQL)頁面。
-1. 在 **SQL 資料庫**下，將**資源類型**設定為**單一資料庫**，然後選取 [建立]。
+1. 在 **SQL 資料庫** 下，將 **資源類型** 設定為 **單一資料庫** ，然後選取 [建立]。
 
    ![新增至 Azure SQL](./media/single-database-create-quickstart/select-deployment.png)
 
-1. 在**建立 SQL 資料庫**表單的**基本資料**索引標籤上，在**專案詳細資料**下，選取想要的 Azure **訂用帳戶**。
-1. 針對**資源群組**選取 [建立新的]，輸入 myResourceGroup，然後選取 [確定]。
-1. 針對**資料庫名稱**輸入 mySampleDatabase。
-1. 在**伺服器**中，選取 [建立新的]，並以下列值填寫**新伺服器**表單：
-   - **伺服器名稱**：輸入 mysqlserver 並新增一些字元來表示唯一性。 由於伺服器名稱必須是 Azure 中所有伺服器的全域唯一名稱，而不只是訂用帳戶中的唯一名稱，因此我們無法提供要使用的確切伺服器名稱。 因此，請輸入類似 mysqlserver12345 的值，入口網站會讓您知道您輸入的值是否可以使用。
-   - **伺服器管理員登入**：輸入 azureuser。
-   - **密碼**：輸入符合需求的密碼，然後在 [確認密碼] 欄位中再次輸入。
-   - **位置**：從下拉式清單中選取位置。
+1. 在 **建立 SQL 資料庫** 表單的 **基本資料** 索引標籤上，在 **專案詳細資料** 下，選取想要的 Azure **訂用帳戶** 。
+1. 針對 **資源群組** 選取 [建立新的]，輸入 myResourceGroup，然後選取 [確定]。
+1. 針對 **資料庫名稱** 輸入 mySampleDatabase。
+1. 在 **伺服器** 中，選取 [建立新的]，並以下列值填寫 **新伺服器** 表單：
+   - **伺服器名稱** ：輸入 mysqlserver 並新增一些字元來表示唯一性。 由於伺服器名稱必須是 Azure 中所有伺服器的全域唯一名稱，而不只是訂用帳戶中的唯一名稱，因此我們無法提供要使用的確切伺服器名稱。 因此，請輸入類似 mysqlserver12345 的值，入口網站會讓您知道您輸入的值是否可以使用。
+   - **伺服器管理員登入** ：輸入 azureuser。
+   - **密碼** ：輸入符合需求的密碼，然後在 [確認密碼] 欄位中再次輸入。
+   - **位置** ：從下拉式清單中選取位置。
 
    選取 [確定]。
 
-1. 將**您要使用 SQL 彈性集區**設為**否**。
-1. 在**計算 + 儲存體**下，選取 [設定資料庫]。
+1. 將 **您要使用 SQL 彈性集區** 設為 **否** 。
+1. 在 **計算 + 儲存體** 下，選取 [設定資料庫]。
 1. 本快速入門會使用無伺服器資料庫，因此請選取 [無伺服器]，然後選取 [套用]。 
 
       ![設定無伺服器資料庫](./media/single-database-create-quickstart/configure-database.png)
@@ -62,8 +62,8 @@ ms.locfileid: "91263397"
 
    ![新的 SQL 資料庫 - 基本資料索引標籤](./media/single-database-create-quickstart/new-sql-database-basics.png)
 
-1. 在**網路功能**索引標籤的**連線方法**中，選取 [公用端點]。
-1. 針對**防火牆規則**，將 [新增目前的用戶端 IP 位址] 設定為 **是**。 將**允許 Azure 服務和資源存取此伺服器群組**保留為**否**。
+1. 在 **網路功能** 索引標籤的 **連線方法** 中，選取 [公用端點]。
+1. 針對 **防火牆規則** ，將 [新增目前的用戶端 IP 位址] 設定為 **是** 。 將 **允許 Azure 服務和資源存取此伺服器群組** 保留為 **否** 。
 1. 完成時，選取 [下一步:其他設定]，位於頁面底部。
 
    ![網路功能索引標籤](./media/single-database-create-quickstart/networking.png)
@@ -254,7 +254,7 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 
 ## <a name="query-the-database"></a>查詢資料庫
 
-資料庫建好之後，您可以使用 Azure 入口網站中的**查詢編輯器 (預覽)** 連線到資料庫，並查詢資料。
+資料庫建好之後，您可以使用 Azure 入口網站中的 **查詢編輯器 (預覽)** 連線到資料庫，並查詢資料。
 
 1. 在入口網站中，搜尋並選取 [SQL 資料庫]，然後從清單中選取您的資料庫。
 1. 在資料庫頁面面上，選取左側功能表中的 [查詢編輯器 (預覽)]。
@@ -320,4 +320,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
 想要最佳化並節省您的雲端費用嗎？
 
 > [!div class="nextstepaction"]
-> [使用成本管理開始分析成本](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [使用成本管理開始分析成本](../../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

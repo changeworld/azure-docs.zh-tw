@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 4086a8f354e5e906325d9c324410f3546a32f658
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b80437fa1ac41bb240565923eb40e562c8cf8c5b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82996186"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778892"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>快速入門：整合 Azure 儲存體帳戶與 Azure CDN
 
@@ -50,7 +50,7 @@ ms.locfileid: "82996186"
 
     | 設定 | 值 | 
     | --- | --- |
-    | 專案詳細資料 > 資源群組 | 選取 [新建]，並使用名稱 *CDNQuickstart-rg*。 您也可以使用現有的資源群組 (如果您偏好此做法)。 |
+    | 專案詳細資料 > 資源群組 | 選取 [新建]，並使用名稱 *CDNQuickstart-rg* 。 您也可以使用現有的資源群組 (如果您偏好此做法)。 |
     | 執行個體詳細資料 > 儲存體帳戶名稱 | 輸入限用 3-24 小寫字母和數字的帳戶名稱。 此名稱在 Azure 中必須是唯一的，且會成為 URL 中用來為訂用帳戶的 Blob、佇列或資料表資源定址的主機名稱。 若要為 Blob 儲存體的容器資源定址，請使用下列格式的 URI： http:// *&lt;storageaccountname&gt;* .blob.core.windows.net/ *&lt;container-name&gt;* 。
     | 執行個體詳細資料 > 位置 | 從下拉式清單中選取您附近的 Azure 區域。 |
     
@@ -69,8 +69,8 @@ ms.locfileid: "82996186"
     | 設定  | 值 |
     | -------- | ----- |
     | **CDN 設定檔** | 選取 [新建] 並輸入設定檔名稱，例如 cdn-profile-123。 設定檔是端點的集合。 |
-    | **定價層** | 選取其中一個**標準**選項，例如 [標準 Microsoft]。 |
-    | **CDN 端點名稱** | 輸入您的端點主機名稱，例如 *cdn-endpoint-123*。 此名稱在 Azure 中必須是全域唯一的，因為此名稱會用來存取 URL _&lt;endpoint-name&gt;_ .azureedge.net 上的快取資源。 |
+    | **定價層** | 選取其中一個 **標準** 選項，例如 [標準 Microsoft]。 |
+    | **CDN 端點名稱** | 輸入您的端點主機名稱，例如 *cdn-endpoint-123* 。 此名稱在 Azure 中必須是全域唯一的，因為此名稱會用來存取 URL _&lt;endpoint-name&gt;_ .azureedge.net 上的快取資源。 |
     | **原始主機名稱** | 根據預設，新的 CDN 端點會使用儲存體帳戶的主機名稱作為原始伺服器。 |
 
 1. 選取 [建立]。 端點建立之後，即會出現在端點清單中。
@@ -95,7 +95,7 @@ ms.locfileid: "82996186"
 
 若要存取 CDN 上快取的內容，請使用入口網站中提供的 CDN URL。 快取 blob 的位址格式如下：
 
-http://<*endpoint-name*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
+http://< *endpoint-name*\>.azureedge.net/< *myPublicContainer*\>/<*BlobName*\>
 
 > [!NOTE]
 > 啟用 Azure CDN 存取儲存體帳戶後，所有公開可用的物件皆適用於 CDN POP 快取。 如果您修改的物件目前是 CDN 中的快取物件，在快取內容的有效存留期已滿之後，除非 Azure CDN 重新整理內容，否則無法透過 Azure CDN 取得新的內容。
@@ -104,7 +104,7 @@ http://<*endpoint-name*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
 
 如果不想繼續在 Azure CDN 中快取物件，您可以採取下列其中一個步驟：
 
-- 將容器設為私人而非公用。 如需詳細資訊，請參閱 [管理對容器與 Blob 的匿名讀取權限](../storage/blobs/storage-manage-access-to-resources.md)。
+- 將容器設為私人而非公用。 如需詳細資訊，請參閱 [管理對容器與 Blob 的匿名讀取權限](../storage/blobs/anonymous-read-access-configure.md)。
 - 使用 Azure 入口網站來停用或刪除 CDN 端點。
 - 修改託管服務，使其不再回應物件的要求。
 
@@ -116,7 +116,7 @@ http://<*endpoint-name*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
 
 1. 從 Azure 入口網站的左側功能表中，依序選取 [資源群組] 和 *CDNQuickstart-rg*\*。
 
-2. 在 [資源群組] 頁面上選取 [刪除資源群組]，在文字方塊中輸入 *CDNQuickstart-rg*，然後選取 [刪除]。
+2. 在 [資源群組] 頁面上選取 [刪除資源群組]，在文字方塊中輸入 *CDNQuickstart-rg* ，然後選取 [刪除]。
 
     此動作將會刪除資源群組、設定檔，以及您在此快速入門中建立的端點。
 

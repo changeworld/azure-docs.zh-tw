@@ -7,13 +7,13 @@ ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-ms.custom: mvc
-ms.openlocfilehash: e1ca3d7270fb0858bb2512e5b9e285eb8d4555c6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 91e4e7de73d820c345b2973896d07d3479e49f9e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297142"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748086"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本設定 IoT 中樞裝置佈建服務
 
@@ -133,7 +133,7 @@ ms.locfileid: "91297142"
 
    ``` 
 
-5. 若要建立佈建服務，請將下列幾行新增至 **resources** 集合中的 IoT 中樞規格之後。 佈建服務的 **name** 和 **location** 會以參數的形式傳入。 **iotHubs** 集合會指定要連結至佈建服務的 IoT 中樞。 您至少必須指定每個已連結 IoT 中樞的 **connectionString** 和 **location** 屬性。 您也可以設定每個 IoT 中樞的屬性 (例如 **allocationWeight** 和 **applyAllocationPolicy**)，以及佈建服務本身的屬性 (例如 **allocationPolicy** 和 **authorizationPolicies**)。 若要深入了解，請參閱 [Microsoft.Devices/provisioningServices 範本參考](https://docs.microsoft.com/azure/templates/microsoft.devices/provisioningservices)。
+5. 若要建立佈建服務，請將下列幾行新增至 **resources** 集合中的 IoT 中樞規格之後。 佈建服務的 **name** 和 **location** 會以參數的形式傳入。 **iotHubs** 集合會指定要連結至佈建服務的 IoT 中樞。 您至少必須指定每個已連結 IoT 中樞的 **connectionString** 和 **location** 屬性。 您也可以設定每個 IoT 中樞的屬性 (例如 **allocationWeight** 和 **applyAllocationPolicy** )，以及佈建服務本身的屬性 (例如 **allocationPolicy** 和 **authorizationPolicies** )。 若要深入了解，請參閱 [Microsoft.Devices/provisioningServices 範本參考](https://docs.microsoft.com/azure/templates/microsoft.devices/provisioningservices)。
 
    **dependsOn** 屬性用來確保 Resource Manager 會先建立 IoT 中樞，再建立佈建服務。 此範本需要 IoT 中樞的連接字串，以指定其與佈建服務的連結，因此必須先建立中樞與其索引鍵。 此範本會使用 **concat** 和 **listkeys** 之類的函式，從參數化變數建立連接字串。 若要深入了解，請參閱 [Azure Resource Manager 範本函式](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions)。
 

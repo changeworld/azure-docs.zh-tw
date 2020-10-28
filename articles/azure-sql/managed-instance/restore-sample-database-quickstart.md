@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 18f717ca05e93c9a8f06ac8868e9a6e5ff80eadb
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 413786cf8946c1ffbb76bd0e18eae7c7ba16a9c1
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91355528"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790741"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>快速入門：使用 SSMS 將資料庫還原至 Azure SQL 受控執行個體
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -35,14 +35,14 @@ ms.locfileid: "91355528"
 此快速入門：
 
 - 使用[建立受控執行個體](instance-create-quickstart.md)快速入門的資源。
-- 需要安裝最新版本的 [SSMS](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms)。
+- 需要安裝最新版本的 [SSMS](/sql/ssms/sql-server-management-studio-ssms)。
 - 需要使用 SSMS 以連線到 SQL 受控執行個體。 請參閱這些快速入門以了解如何連線：
   - 在 SQL 受控執行個體上[啟用公用端點](public-endpoint-configure.md) - 這是本教學課程建議的方法。
   - [從 Azure VM 連線到 SQL 受控執行個體](connect-vm-instance-configure.md)。
   - [設定從內部部署連線至 SQL 受控執行個體的點對站連線](point-to-site-p2s-configure.md)。
 
 > [!NOTE]
-> 如需有關使用 Azure Blob 儲存體和[共用存取簽章 (SAS) 金鑰](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)來備份和還原 SQL Server 資料庫的詳細資訊，請參閱 [SQL Server 備份到 URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017)。
+> 如需有關使用 Azure Blob 儲存體和[共用存取簽章 (SAS) 金鑰](../../storage/common/storage-sas-overview.md)來備份和還原 SQL Server 資料庫的詳細資訊，請參閱 [SQL Server 備份到 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017)。
 
 ## <a name="restore-from-a-backup-file"></a>從備份檔案還原
 
@@ -50,7 +50,7 @@ ms.locfileid: "91355528"
 
 1. 開啟 SSMS 並連線到您的受控執行個體。
 2. 在 [物件總管] 中，以滑鼠右鍵按一下您的受控執行個體，並選取 [新增查詢] 以開啟新的查詢視窗。
-3. 執行下列 SQL 指令碼，其會使用預先設定的儲存體帳戶和 SAS 金鑰，在您的受控執行個體中[建立認證](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql)。
+3. 執行下列 SQL 指令碼，其會使用預先設定的儲存體帳戶和 SAS 金鑰，在您的受控執行個體中[建立認證](/sql/t-sql/statements/create-credential-transact-sql)。
 
    ```sql
    CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]
@@ -88,15 +88,15 @@ ms.locfileid: "91355528"
    WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE')
    ```
 
-7. 當還原完成時，請在 [物件總管] 中檢視資料庫。 您可以使用 [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) 檢視來確認資料庫還原已完成。
+7. 當還原完成時，請在 [物件總管] 中檢視資料庫。 您可以使用 [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) 檢視來確認資料庫還原已完成。
 
 > [!NOTE]
-> 資料庫還原作業是非同步的，而且可以重試。 如果連線中斷或逾時已過期，您可能會在 SQL Server Management Studio 中收到錯誤。 Azure SQL Database 將會繼續嘗試在背景還原資料庫，而且您可以使用 [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) 檢視追蹤還原進度。
-> 在還原程序的某些階段中，您將會在系統檢視中看到唯一識別碼，而不是實際的資料庫名稱。 在[這裡](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-transact-sql-information#restore-statement)了解 `RESTORE` 陳述式行為差異。
+> 資料庫還原作業是非同步的，而且可以重試。 如果連線中斷或逾時已過期，您可能會在 SQL Server Management Studio 中收到錯誤。 Azure SQL Database 將會繼續嘗試在背景還原資料庫，而且您可以使用 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) 檢視追蹤還原進度。
+> 在還原程序的某些階段中，您將會在系統檢視中看到唯一識別碼，而不是實際的資料庫名稱。 在[這裡](./transact-sql-tsql-differences-sql-server.md#restore-statement)了解 `RESTORE` 陳述式行為差異。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如果在步驟 5 中，以訊息識別碼 22003 終止資料庫還原，請建立包含備份總和檢查碼的新備份檔案，然後再次執行還原。 請參閱[在備份或還原期間啟用或停用備份總和檢查碼](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server)。
-- 若要對備份至 URL 進行疑難排解，請參閱 [SQL Server 備份至 URL 的最佳做法和疑難排解](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting)。
+- 如果在步驟 5 中，以訊息識別碼 22003 終止資料庫還原，請建立包含備份總和檢查碼的新備份檔案，然後再次執行還原。 請參閱[在備份或還原期間啟用或停用備份總和檢查碼](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server)。
+- 若要對備份至 URL 進行疑難排解，請參閱 [SQL Server 備份至 URL 的最佳做法和疑難排解](/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting)。
 - 如需有關應用程式連線選項的概觀，請參閱[將您的應用程式連線至 SQL 受控執行個體](connect-application-instance.md)。
 - 若要使用慣用工具或語言進行查詢，請參閱[快速入門：Azure SQL Database 連線和查詢](../database/connect-query-content-reference-guide.md)。

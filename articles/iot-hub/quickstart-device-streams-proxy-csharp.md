@@ -6,15 +6,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 97551ac63066f7064c16a001d9ce1f6bc31465ec
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3e53937122b8721aff5db435ac447b686ea16643
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80586568"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748688"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>快速入門：使用 C# Proxy 應用程式透過 IoT 中樞裝置串流進行 SSH 和 RDP 輸送 (預覽)
 
@@ -93,7 +93,7 @@ Microsoft Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://a
 
    > [!NOTE]
    > * 以您為 IoT 中樞選擇的名稱取代 YourIoTHubName  預留位置。
-   > * 如需您所註冊的裝置名稱，建議使用如下所示的 *MyDevice*。 如果您為裝置選擇不同的名稱，請在本文中使用該名稱，並先在應用程式範例中更新該裝置名稱，再執行應用程式。
+   > * 如需您所註冊的裝置名稱，建議使用如下所示的 *MyDevice* 。 如果您為裝置選擇不同的名稱，請在本文中使用該名稱，並先在應用程式範例中更新該裝置名稱，再執行應用程式。
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
@@ -112,7 +112,7 @@ Microsoft Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://a
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
 
-1. 若要連線到您的 IoT 中樞並建立裝置串流，您也需要來自 IoT 中樞的*服務連接字串*來啟用服務端應用程式。 下列命令會擷取您 IoT 中樞的這個值：
+1. 若要連線到您的 IoT 中樞並建立裝置串流，您也需要來自 IoT 中樞的 *服務連接字串* 來啟用服務端應用程式。 下列命令會擷取您 IoT 中樞的這個值：
 
    > [!NOTE]
    > 以您為 IoT 中樞選擇的名稱取代 YourIoTHubName  預留位置。

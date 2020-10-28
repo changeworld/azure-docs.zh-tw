@@ -10,16 +10,16 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: ed44431af6d99daa5549d019f42efda4bbf9912b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 336f58635465f77c60d04c53bb1893cb60f5f35f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540348"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791217"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>快速入門：使用 REST API 在 Java 中建立 Azure 認知搜尋索引
 > [!div class="op_single_selector"]
-> * [JavaScript](search-get-started-nodejs.md)
+> * [JavaScript](search-get-started-javascript.md)
 > * [C#](search-get-started-dotnet.md)
 > * [Java](search-get-started-java.md)
 > * [入口網站](search-get-started-portal.md)
@@ -53,7 +53,7 @@ ms.locfileid: "91540348"
 
    此外也須建立查詢金鑰。 最佳做法是發出具有唯讀存取權的查詢要求。
 
-:::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="取得服務名稱及管理和查詢金鑰" border="false":::
+:::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="取得服務名稱及管理和查詢金鑰" border="false":::
 
 傳送至服務的每個要求都需要 API 金鑰。 擁有有效的金鑰就能為每個要求在傳送要求之應用程式與處理要求之服務間建立信任。
 
@@ -69,7 +69,7 @@ ms.locfileid: "91540348"
 
     :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="取得服務名稱及管理和查詢金鑰" border="false":::
 
-1. 針對 **GroupId** 和 **ArtifactId**，輸入 `AzureSearchQuickstart`。
+1. 針對 **GroupId** 和 **ArtifactId** ，輸入 `AzureSearchQuickstart`。
 1. 接受其餘預設值以開啟專案。
 
 ### <a name="specify-maven-dependencies"></a>指定 Maven 相依性
