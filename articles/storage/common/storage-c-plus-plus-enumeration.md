@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 008991a6eda8a2eac9e7a39074c9e0bddb0c51b5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8c8e2d2ddf6899e62bc95bc1e52c84eccdc3a91e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488702"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784093"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>以 C++ 列出 Azure 儲存體資源
 
@@ -59,8 +59,8 @@ list_blob_item_segment list_blobs_segmented(const continuation_token& token) con
 
 分段列表作業的回應包含：
 
-* *_segment*，其中包含針對列表 API 的單一呼叫所傳回的結果集。
-* continuation_token**，其會傳遞給下一個呼叫，以便取得下一頁的結果。 沒有可傳回的結果時，接續 Token 為 null。
+* *_segment* ，其中包含針對列表 API 的單一呼叫所傳回的結果集。
+* continuation_token  ，其會傳遞給下一個呼叫，以便取得下一頁的結果。 沒有可傳回的結果時，接續 Token 為 null。
 
 例如，列出容器中所有 Blob 的典型呼叫可能如下列程式碼片段所示。 此程式碼可在我們的 [範例](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)中取得：
 
@@ -87,7 +87,7 @@ do
 while (!token.empty());
 ```
 
-請注意，一個頁面傳回的結果數目可由每個 API 的多載中的參數 max_results** 所控制，例如：
+請注意，一個頁面傳回的結果數目可由每個 API 的多載中的參數 max_results  所控制，例如：
 
 ```cpp
 list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, bool use_flat_blob_listing,
@@ -95,9 +95,9 @@ list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, boo
     const blob_request_options& options, operation_context context)
 ```
 
-如果您未指定 max_results** 參數，則會在單一頁面中傳回多達 5000 筆結果的預設最大值。
+如果您未指定 max_results  參數，則會在單一頁面中傳回多達 5000 筆結果的預設最大值。
 
-也請注意，對 Azure 資料表儲存體的查詢可能不會傳回任何記錄，或傳回少於您指定之 max_results** 參數值的記錄 (即使接續 Token 不是空的)。 其中一個原因可能是查詢無法在五秒內完成。 只要接續 Token 不是空的，查詢就應該繼續進行，而您的程式碼不得假設區段結果的大小。
+也請注意，對 Azure 資料表儲存體的查詢可能不會傳回任何記錄，或傳回少於您指定之 max_results  參數值的記錄 (即使接續 Token 不是空的)。 其中一個原因可能是查詢無法在五秒內完成。 只要接續 Token 不是空的，查詢就應該繼續進行，而您的程式碼不得假設區段結果的大小。
 
 大多數案例的建議編碼模式為分段列表，可以提供明確的列表或查詢進度，以及服務回應每個要求的方式。 尤其是 C++ 應用程式或服務，列表進度的較低層級控制項有助於控制記憶體和效能。
 
@@ -143,7 +143,7 @@ do
 } while (!token.empty());
 ```
 
-指定區段的 max_results** 參數，即可平衡要求數目與記憶體使用量，以符合您的應用程式的效能考量。
+指定區段的 max_results  參數，即可平衡要求數目與記憶體使用量，以符合您的應用程式的效能考量。
 
 此外，如果您使用分段列表 API，但以「窮盡」樣式將資料儲存在本機集合中，也強烈建議您重整您的程式碼，以便仔細地將資料大規模儲存在本機集合中。
 
@@ -198,7 +198,7 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 
 * [如何使用 C++ 的 Blob 儲存體](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [如何使用 c + + 的資料表儲存體](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-* [如何使用 C++ 的佇列儲存體](../storage-c-plus-plus-how-to-use-queues.md)
+* [如何使用 C++ 的佇列儲存體](../queues/storage-c-plus-plus-how-to-use-queues.md)
 * [Azure Storage Client Library for C++ API 文件。](https://azure.github.io/azure-storage-cpp/)
 * [Azure 儲存體團隊部落格](/archive/blogs/windowsazurestorage/)
 * [Azure 儲存體檔](https://azure.microsoft.com/documentation/services/storage/)

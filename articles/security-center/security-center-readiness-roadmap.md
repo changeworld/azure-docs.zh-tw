@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 38e1fc7f062908f8c4a4b9aa903ca09dd7fb9ea5
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: fcaf427c2e0ab275a5a6e08306dda785bca690d6
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342326"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784162"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure 資訊安全中心就緒藍圖
 本文件提供的整備藍圖將協助您開始使用 Azure 資訊安全中心。
@@ -78,7 +78,7 @@ Azure 資訊安全中心提供統一的安全性管理和進階的威脅防護�
 
 發行項    
 * [使用 Azure 資訊安全中心進行事件回應](./tutorial-security-incident.md)
-* [使用自動化工作流程來自動回應](workflow-automation.md)
+* [使用自動化來回應安全性中心觸發程式](workflow-automation.md)
 
 ## <a name="advanced-cloud-defense"></a>進階雲端防禦
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 4223e3bc572a689472dce136b60599034566b274
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3ecf29be94074f51ead3173f997154df6dfa88f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654254"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785607"
 ---
 # <a name="migrate-to-azure-file-shares"></a>遷移至 Azure 檔案共用
 
@@ -34,11 +34,11 @@ Azure 有多種可用的雲端儲存體類型。 檔案遷移至 Azure 的基本
 
 以下是檔案的兩個基本元件：
 
-- **資料流程**：檔案的資料流程會儲存檔案內容。
-- 檔案**中繼資料**：檔案中繼資料具有下列子元件：
+- **資料流程** ：檔案的資料流程會儲存檔案內容。
+- 檔案 **中繼資料** ：檔案中繼資料具有下列子元件：
    * 檔案屬性，例如唯讀
    * 檔案許可權，可稱為 *NTFS 許可權* 或檔案 *和資料夾 acl*
-   * 時間戳記，最值得注意的是建立和上次修改時間戳記
+   * 時間戳記，最特別是建立和上次修改時間戳記
    * 替代資料流程，這是儲存較大量非標準屬性的空間
 
 您可以將遷移中的檔案精確度定義為：
@@ -111,7 +111,7 @@ Active Directory 的使用者（也就是其內部部署網域控制站）可以
 
     當您第一次執行此工具時，它會複製大量資料。 此初始執行可能會持續一段時間。 它通常會比您想要讓資料來源離線進行商務程式的時間還長。
 
-    藉由將來源鏡像至目標 (，如同 **robocopy/MIR**) ，您可以在相同的來源和目標上重新執行此工具。 執行速度會更快，因為它只需要傳輸在上一次執行之後發生的來源變更。 以這種方式重新執行複製工具可以大幅減少停機時間。
+    藉由將來源鏡像至目標 (，如同 **robocopy/MIR** ) ，您可以在相同的來源和目標上重新執行此工具。 執行速度會更快，因為它只需要傳輸在上一次執行之後發生的來源變更。 以這種方式重新執行複製工具可以大幅減少停機時間。
 
 下錶針對 Azure 檔案共用分類 Microsoft 工具和其目前的適用性：
 
@@ -121,7 +121,7 @@ Active Directory 的使用者（也就是其內部部署網域控制站）可以
 |![是，建議使用](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure 檔案同步 | 原生整合至 Azure 檔案共用。 | 完整的精確度。 * |
 |![是，建議使用](media/storage-files-migration-overview/circle-green-checkmark.png)| 存放裝置移轉服務 | 間接支援。 您可以將 Azure 檔案共用掛接為 SMS 目標伺服器上的網路磁碟機機。 | 完整的精確度。 * |
 |![是，建議使用](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy，10.4 版或更新版本| 支援。 | 完整的精確度。 * |
-|![不是完全建議](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| 資料箱 | 支援。 | 不會複製中繼資料。 [資料箱可搭配 Azure 檔案同步使用](storage-sync-offline-data-transfer.md)。 |
+|![是，建議使用](media/storage-files-migration-overview/circle-green-checkmark.png)| 資料箱 | 支援。 | 資料箱現在完全支援中繼資料。 [資料箱也可以搭配 Azure 檔案同步一起使用](storage-sync-offline-data-transfer.md)。 |
 |![不是完全建議](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure 儲存體總管，版本1.14 | 支援。 | 不會複製 Acl。 支援時間戳記。  |
 |![不建議使用](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | 支援。 | 不會複製中繼資料。 |
 |||||
@@ -144,7 +144,7 @@ Azure 檔案同步的調整主要是 (檔案和) 資料夾的專案數，而不�
 
 測試的工具版本是4.4.1 版。 它與雲端階層式檔案相容。 此工具不會在其正常操作期間重新叫用階層式檔案。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 1. 建立 Azure 檔案共用部署 (僅限雲端或您想要的混合式) 的方案。
 1. 請參閱可用的遷移指南清單，以尋找符合您的 Azure 檔案共用來源和部署的詳細指南。

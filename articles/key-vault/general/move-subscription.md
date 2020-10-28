@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: 2a06fd55d73c37caaa35797131d2b31817bf90f0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: c92671028f851a456b3222100e33958c9e26466a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042400"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785318"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>將 Azure Key Vault 移至另一個訂用帳戶
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 > [!IMPORTANT]
 > **將金鑰保存庫移至另一個訂用帳戶，將會對您的環境造成重大變更。**
@@ -50,11 +50,11 @@ ms.locfileid: "92042400"
 
 您的應用程式已連線至金鑰保存庫，可建立兩年有效的憑證。 您嘗試移動金鑰保存庫的訂用帳戶具有原則指派，以封鎖建立有效期限超過一年的憑證。 將您的金鑰保存庫移至新的訂用帳戶之後，Azure 原則指派將會封鎖用來建立兩年有效憑證的作業。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 請確定您移至 Azure 入口網站上的 [Azure 原則] 頁面，並查看您目前訂用帳戶的原則指派，以及您要移動的訂用帳戶，並確定沒有任何不符的情況。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 目前訂用帳戶的參與者層級存取權或更高版本，您的金鑰保存庫存在。
 * 參與者層級存取權或更高版本，可存取您想要移動金鑰保存庫的訂用帳戶。
@@ -80,7 +80,7 @@ ms.locfileid: "92042400"
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <your-subscriptionId>                # Select your Azure Subscription
 $vaultResourceId = (Get-AzKeyVault -VaultName myvault).ResourceId          # Get your key vault's Resource ID 
-$vault = Get-AzResource –ResourceId $vaultResourceId -ExpandProperties     # Get the properties for your key vault
+$vault = Get-AzResource -ResourceId $vaultResourceId -ExpandProperties     # Get the properties for your key vault
 $vault.Properties.TenantId = (Get-AzContext).Tenant.TenantId               # Change the Tenant that your key vault resides in
 $vault.Properties.AccessPolicies = @()                                     # Access policies can be updated with real
                                                                            # applications/users/rights so that it does not need to be                             # done after this whole activity. Here we are not setting 

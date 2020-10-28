@@ -5,18 +5,18 @@ author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 10/27/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 399f81a5246633912d1e17a13492e404119e362f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0252af90a6afb5b2a59620afaa61702f208991e7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282070"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785250"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>讀取 Azure Cosmos DB 變更摘要
 
-您可以使用推送模型或提取模型來處理 Azure Cosmos DB 變更摘要。 使用推送模型，伺服器 (變更摘要處理器) 將工作推送至具有商務邏輯的用戶端，以處理此工作。 不過，在伺服器上，檢查工作和儲存最後處理工作之狀態的複雜度是在伺服器上處理。
+您可以使用推送模型或提取模型來處理 Azure Cosmos DB 變更摘要。 使用推送模型，變更摘要處理器會將工作推送至具有商務邏輯的用戶端，以處理此工作。 不過，檢查工作和儲存最後處理工作狀態的複雜度，會在變更摘要處理器內處理。
 
 使用提取模型時，用戶端必須從伺服器提取工作。 在此情況下，用戶端不僅具有處理工作的商務邏輯，也儲存最後處理工作的狀態，處理跨多個用戶端處理工作的負載平衡，以及處理錯誤。
 
@@ -68,7 +68,7 @@ ms.locfileid: "92282070"
 提取模型並未內建「至少一次」傳遞保證。 提取模型可讓您進行低階控制，以決定您想要如何處理錯誤。
 
 > [!NOTE]
-> 變更摘要提取模型目前僅在 [Azure Cosmos DB .NET SDK 中處於預覽狀態](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.13.0-preview)。 此預覽尚未提供給其他 SDK 版本使用。
+> 變更摘要提取模型目前僅在 [Azure Cosmos DB .NET SDK 中處於預覽狀態](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.15.0-preview)。 此預覽尚未提供給其他 SDK 版本使用。
 
 ## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Cassandra API 和 MongoDB API 中的變更摘要
 

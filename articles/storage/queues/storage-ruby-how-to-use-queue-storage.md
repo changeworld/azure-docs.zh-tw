@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: bb7619500cc142eca52ca0a1a6e0b670e6b8f51a
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7270ea589d82c09081aec5d81d1cd0b50b1b8a9f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425473"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785573"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>如何使用 Ruby 的佇列儲存體
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -22,20 +22,20 @@ ms.locfileid: "92425473"
 
 ## <a name="overview"></a>概觀
 本指南示範如何使用 Microsoft Azure 佇列儲存體服務執行常見案例。 這些範例是以 Ruby Azure API 撰寫的。
-所涵蓋的案例包括「插入」****、「查看」****、「取得」**** 和「刪除」**** 佇列訊息，以及「建立和刪除佇列」****。
+所涵蓋的案例包括「插入」  、「查看」  、「取得」  和「刪除」  佇列訊息，以及「建立和刪除佇列」  。
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-ruby-application"></a>建立 Ruby 應用程式
-建立 Ruby 應用程式。 如需說明，請參閱[在 Linux 上的 App Service 中建立 Ruby 應用程式](/azure/app-service/quickstart-ruby)。
+建立 Ruby 應用程式。 如需說明，請參閱[在 Linux 上的 App Service 中建立 Ruby 應用程式](../../app-service/quickstart-ruby.md)。
 
 ## <a name="configure-your-application-to-access-storage"></a>設定您的應用程式以存取儲存體
 若要使用 Azure 儲存體，您需要下載並使用 Ruby azure 套件，這包含一組便利程式庫，能與儲存體 REST 服務通訊。
 
 ### <a name="use-rubygems-to-obtain-the-package"></a>使用 RubyGems 來取得套件
-1. 使用命令列介面，例如 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix)。
+1. 使用命令列介面，例如 **PowerShell** (Windows)、 **Terminal** (Mac) 或 **Bash** (Unix)。
 2. 在命令視窗中鍵入 "gem install azure" 以安裝 Gem 和相依性。
 
 ### <a name="import-the-package"></a>匯入封裝
@@ -79,14 +79,14 @@ end
 ```
 
 ## <a name="how-to-insert-a-message-into-a-queue"></a>作法：將訊息插入佇列中
-若要將訊息插入佇列中，請使用 **create_message ( # B1 ** 方法來建立新訊息，並將其新增至佇列。
+若要將訊息插入佇列中，請使用 **create_message ( # B1** 方法來建立新訊息，並將其新增至佇列。
 
 ```ruby
 azure_queue_service.create_message("test-queue", "test message")
 ```
 
 ## <a name="how-to-peek-at-the-next-message"></a>作法：預覽下一個訊息
-您可以在佇列前面查看訊息，而不需要藉由呼叫 **查看 \_ 訊息 ( # B1 ** 方法將訊息從佇列中移除。 根據預設， **查看 \_ 訊息 ( # B1 ** 會查看單一訊息。 您也可以指定所要查看的訊息數。
+您可以在佇列前面查看訊息，而不需要藉由呼叫 **查看 \_ 訊息 ( # B1** 方法將訊息從佇列中移除。 根據預設， **查看 \_ 訊息 ( # B1** 會查看單一訊息。 您也可以指定所要查看的訊息數。
 
 ```ruby
 result = azure_queue_service.peek_messages("test-queue",
@@ -97,9 +97,9 @@ result = azure_queue_service.peek_messages("test-queue",
 您可以使用兩個步驟將訊息從佇列中移除。
 
 1. 呼叫 **list\_messages()** 時，您預設會取得佇列中的下一個訊息。 您也可以指定您要取得的訊息數。 從 **list\_messages()** 傳回的訊息，對於從此佇列讀取訊息的任何其他程式碼而言將會是不可見的。 您可以傳入以秒為單位的可見性逾時，作為參數。
-2. 若要完成從佇列中移除訊息，您也必須 ** ( # B1 呼叫 delete_message **。
+2. 若要完成從佇列中移除訊息，您也必須 **( # B1 呼叫 delete_message** 。
 
-這個移除訊息的兩步驟程序可確保您的程式碼因為硬體或軟體故障而無法處理訊息時，另一個程式碼的執行個體可以取得相同訊息並再試一次。 在處理訊息之後，您的程式碼會直接呼叫 **delete \_ message ( # B1 ** 。
+這個移除訊息的兩步驟程序可確保您的程式碼因為硬體或軟體故障而無法處理訊息時，另一個程式碼的執行個體可以取得相同訊息並再試一次。 在處理訊息之後，您的程式碼會直接呼叫 **delete \_ message ( # B1** 。
 
 ```ruby
 messages = azure_queue_service.list_messages("test-queue", 30)
@@ -142,7 +142,7 @@ message_count, metadata = azure_queue_service.get_queue_metadata(
 ```
 
 ## <a name="how-to-delete-a-queue"></a>作法：刪除佇列
-若要刪除佇列及其內含的所有訊息，請在佇列物件上呼叫 **delete \_ queue ( # B1 ** 方法。
+若要刪除佇列及其內含的所有訊息，請在佇列物件上呼叫 **delete \_ queue ( # B1** 方法。
 
 ```ruby
 azure_queue_service.delete_queue("test-queue")

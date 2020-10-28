@@ -14,12 +14,12 @@ ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4252528020dde731dd7bf14ae8f7a03467ba953a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 131deabfbd29e4d55a3f34252e3ba68261872ca0
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298571"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785488"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>使用 Azure Site Recovery 將 SQL Server VM 移至 Azure 中的另一個區域
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -64,7 +64,7 @@ ms.locfileid: "91298571"
     - 當您啟用來源 VM 的複寫時，Azure Site Recovery 會自動探索和建立虛擬網路。 您也可在啟用複寫的使用者流程中，預先建立網路並將其指派給 VM。 您必須在目標區域中手動建立任何其他資源。
 - 若要根據來源 VM 設定建立最常用且符合需求的網路資源，請參閱下列文件： 
     - [網路安全性群組](../../../virtual-network/tutorial-filter-network-traffic.md) 
-    - [負載平衡器](../../../load-balancer/tutorial-load-balancer-standard-internal-portal.md)
+    - [負載平衡器](../../../load-balancer/quickstart-load-balancer-standard-internal-portal.md)
     - [公用 IP 位址](../../../virtual-network/virtual-network-public-ip-address.md)
     - 如需任何其他網路元件，請參閱[網路文件](../../../virtual-network/virtual-networks-overview.md)。
 - 如果想要先測試設定，再執行移至目標區域的最終移動作業，請在目標區域中手動建立非生產網路。 我們建議執行此步驟，因為這可以確保對生產網路產生的干擾最少。 
@@ -77,7 +77,7 @@ ms.locfileid: "91298571"
 1. 從瀏覽窗格的左上角選擇 [建立資源]。 
 1. 選取 [IT 和管理工具]，然後選取 [備份和 Site Recovery]。 
 1. 在 [基本] 索引標籤的 [專案詳細資料] 下方，於目標區域中建立新的資源群組，或選取目標區域中的現有資源群組。 
-1. 在 [執行個體詳細資料] 中，指定保存庫的名稱，然後從下拉式清單中選取目標**區域**。 
+1. 在 [執行個體詳細資料] 中，指定保存庫的名稱，然後從下拉式清單中選取目標 **區域** 。 
 1. 按一下 [檢閱 + 建立] 來建立復原服務保存庫。 
 1. 從瀏覽窗格左上角選取 [所有服務]，然後在搜尋方塊中鍵入 `recovery services`。 
 1. (選擇性) 選取 [復原服務保存庫] 旁的星號，將其新增至快速瀏覽列。 
@@ -88,32 +88,32 @@ ms.locfileid: "91298571"
 
 1. 選取 [來源]，然後選取 [Azure] 作為來源。 為其他下拉式欄位選取適當的值，例如來源 VM 的位置。 只有位於 [來源位置] 區域的資源群組才會顯示在 [來源資源群組] 欄位中。 
 1. 選取 [虛擬機器]，然後選擇想要移轉的虛擬機器。 選取 [確定] 以儲存 VM 選取項目。 
-1. 選取 [設定]，然後從下拉式清單中選擇**目標位置**。 這應該是先前準備的資源群組。 
+1. 選取 [設定]，然後從下拉式清單中選擇 **目標位置** 。 這應該是先前準備的資源群組。 
 1. 在自訂複寫之後，請選取 [建立目標資源]，以在新的位置中建立資源。 
 1. 資源建立完成後，請選取 [啟用複寫]，開始將 SQL Server VM 從來源複寫到目標區域。
-1. 若要檢查複寫的狀態，請巡覽至復原保存庫，選取 [已複寫的項目] 並檢視 SQL Server VM 其**狀態**。 [受保護] 的狀態表示複寫已完成。 
+1. 若要檢查複寫的狀態，請巡覽至復原保存庫，選取 [已複寫的項目] 並檢視 SQL Server VM 其 **狀態** 。 [受保護] 的狀態表示複寫已完成。 
 
    ![確認複寫狀態](./media/move-sql-vm-different-region/check-replication-status.png)
 
 ## <a name="test-move-process"></a>測試移動處理序
 下列步驟顯示如何使用 Azure Site Recovery 來測試移動處理序。 
 
-1. 巡覽至在 [Azure 入口網站](https://portal.azure.com)中的**復原服務保存庫**，然後選取 [已複寫的項目]。 
+1. 巡覽至在 [Azure 入口網站](https://portal.azure.com)中的 **復原服務保存庫** ，然後選取 [已複寫的項目]。 
 1. 選取想要移動的 SQL Server VM，確認 [複寫健康狀態] 顯示為 [狀況良好]，然後選取 [測試容錯移轉]。 
 
    ![測試 VM 的容錯移轉](./media/move-sql-vm-different-region/test-failover-of-replicated-vm.png)
 
-1. 在 [測試容錯移轉] 頁面上，選取要用於容錯移轉的**最新應用程式一致**復原點，因為這是唯一能保證 SQL Server 資料一致性的快照集類型。 
+1. 在 [測試容錯移轉] 頁面上，選取要用於容錯移轉的 **最新應用程式一致** 復原點，因為這是唯一能保證 SQL Server 資料一致性的快照集類型。 
 1. 選取 [Azure 虛擬網路] 下的虛擬網路，然後選取 [確定] 以測試容錯移轉。 
    
    >[!IMPORTANT]
    > 我們建議使用個別 Azure VM 網路進行容錯移轉測試。 請勿使用啟用複寫時所設定，以及 VM 最終移動目標位置所在的生產網路。 
 
-1. 若要監視進度，請巡覽至保存庫，選取 [監視] 下的 [Site Recovery 作業]，然後選取進行中的**測試容錯移轉**作業。
+1. 若要監視進度，請巡覽至保存庫，選取 [監視] 下的 [Site Recovery 作業]，然後選取進行中的 **測試容錯移轉** 作業。
 
    ![監視容錯移轉測試進度](./media/move-sql-vm-different-region/monitor-failover-test-job.png)
 
-1. 測試完成之後，請巡覽至入口網站中的**虛擬機器**，並檢閱新建立的虛擬機器。 請確定 SQL Server VM 正在執行中、其大小適中且已連線到適當的網路。 
+1. 測試完成之後，請巡覽至入口網站中的 **虛擬機器** ，並檢閱新建立的虛擬機器。 請確定 SQL Server VM 正在執行中、其大小適中且已連線到適當的網路。 
 1. 刪除在測試過程中建立的 VM，因為在清除容錯移轉測試資源之前，[容錯移轉] 選項會呈現灰色。 巡覽回保存庫，選取 [已複寫的項目]，選取 [SQL Server VM]，然後選取 [清除測試容錯移轉]。 在 [附註] 區段中記錄並儲存與測試建立關聯的任何觀察，然後選取 [Testing is complete. Delete test failover virtual machine] \(測試完成。請刪除測試容錯移轉虛擬機器\) 旁的核取方塊。 選取 [確定] 以在測試之後清除資源。 
 
    ![在容錯移轉測試之後清除項目](./media/move-sql-vm-different-region/cleanup-test-items.png)
@@ -121,20 +121,20 @@ ms.locfileid: "91298571"
 ## <a name="move-the-sql-server-vm"></a>移動 SQL Server VM 
 下列步驟示範如何將 SQL Server VM 從來源區域移至目標區域。 
 
-1. 巡覽至**復原服務**保存庫，選取 [已複寫的項目]，選取 VM，然後選取 [容錯移轉]。 
+1. 巡覽至 **復原服務** 保存庫，選取 [已複寫的項目]，選取 VM，然後選取 [容錯移轉]。 
 
    ![起始容錯移轉](./media/move-sql-vm-different-region/initiate-failover.png)
 
-1. 選取 [復原點] 下的**最新應用程式一致**復原點。 
-1. 選取 [ **先將機器關機再開始容錯移轉**] 旁的核取方塊。 Site Recovery 會先嘗試關閉來源 VM，再觸發容錯移轉。 即使關機失敗，仍會繼續容錯移轉。 
+1. 選取 [復原點] 下的 **最新應用程式一致** 復原點。 
+1. 選取 [ **先將機器關機再開始容錯移轉** ] 旁的核取方塊。 Site Recovery 會先嘗試關閉來源 VM，再觸發容錯移轉。 即使關機失敗，仍會繼續容錯移轉。 
 1. 選取 [確定] 開始進行容錯移轉。
 1. 從在上一節中監視容錯移轉測試時所檢視的相同 [Site Recovery 作業] 頁面中，您可監視容錯移轉處理序。 
 1. 作業完成後，請確認 SQL Server VM 如預期般出現在目標區域中。 
 1. 巡覽回保存庫，選取 [已複寫的項目]，選取 [SQL Server VM]，然後選取 [認可]，vio 完成移至目標區域的移動處理序。 請等候認可作業完成。 
-1. 將 SQL Server VM 註冊到 SQL VM 資源提供者，以在與資源提供者建立關聯的 Azure 入口網站和功能中啟用 **SQL 虛擬機器**管理能力。 如需詳細資訊，請參閱 [使用 SQL vm 資源提供者註冊 SQL SERVER VM](sql-vm-resource-provider-register.md)。 
+1. 將 SQL Server VM 註冊到 SQL VM 資源提供者，以在與資源提供者建立關聯的 Azure 入口網站和功能中啟用 **SQL 虛擬機器** 管理能力。 如需詳細資訊，請參閱 [使用 SQL vm 資源提供者註冊 SQL SERVER VM](sql-vm-resource-provider-register.md)。 
 
   > [!WARNING]
-  > 只有應用程式一致的快照集才會保證 SQL Server 資料一致性。 當損毀復原快照集無法保證 SQL Server 資料一致性時，**最新處理**快照集即無法用於 SQL Server 容錯移轉。 
+  > 只有應用程式一致的快照集才會保證 SQL Server 資料一致性。 當損毀復原快照集無法保證 SQL Server 資料一致性時， **最新處理** 快照集即無法用於 SQL Server 容錯移轉。 
 
 ## <a name="clean-up-source-resources"></a>清除來源資源
 若要避免計費，請從保存庫移除 SQL Server VM，並刪除任何不必要的相關聯資源。 
@@ -156,5 +156,3 @@ ms.locfileid: "91298571"
 * [Windows VM 上的 SQL Server 常見問題集](frequently-asked-questions-faq.md)
 * [Windows VM 上的 SQL Server 定價指引](pricing-guidance.md)
 * [Windows VM 上的 SQL Server 版本資訊](doc-changes-updates-release-notes.md)
-
-

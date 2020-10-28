@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 13d2633576454ea6445deb4d2b0b11c2bbb1514e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: de97640ab462ac8ea7342d235d0fad802c232179
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478366"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783363"
 ---
 # <a name="azcopy-sync"></a>azcopy 同步
 
@@ -129,7 +129,7 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 > [!NOTE]
 > 如果同時使用 include/exclude 旗標，則只會查看符合 include 模式的檔案，但會一律忽略符合排除模式的檔案。
 
-## <a name="options"></a>選項。
+## <a name="options"></a>選項
 
 **--區塊大小-mb** 浮點數使用 () 上傳至 Azure 儲存體或從 Azure 儲存體下載時所指定的區塊大小。 預設值會根據檔案大小自動計算。 允許使用小數小數 (例如： `0.25`) 。
 
@@ -159,16 +159,16 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--遞迴** `True`依預設，會在目錄之間進行同步處理時，以遞迴方式查看子目錄。      (預設 `True`) 。 
 
-**--s2s-保留-存取層**  保留服務至服務複製期間的存取層。 請參閱 [Azure Blob 儲存體：經常性存取、非經常性存取和封存存取層](/azure/storage/blobs/storage-blob-storage-tiers) ，以確保目的地儲存體帳戶支援設定存取層。 在不支援設定存取層的情況下，請使用 s2sPreserveAccessTier = false 來略過複製存取層。  (預設 `true`) 。 
+**--s2s-保留-存取層**  保留服務至服務複製期間的存取層。 請參閱 [Azure Blob 儲存體：經常性存取、非經常性存取和封存存取層](../blobs/storage-blob-storage-tiers.md) ，以確保目的地儲存體帳戶支援設定存取層。 在不支援設定存取層的情況下，請使用 s2sPreserveAccessTier = false 來略過複製存取層。  (預設 `true`) 。 
 
 ## <a name="options-inherited-from-parent-commands"></a>繼承自父命令的選項
 
-|選項|說明|
+|選項|描述|
 |---|---|
 |--cap-mbps uint32|以每秒 mb 數為單位的傳輸速率上限。 時間的輸送量可能會與端點稍有不同。 如果此選項設定為零，或省略，則輸送量不會有上限。|
 |--output 類型字串|命令輸出的格式。 選項包括： text、json。 預設值為 "text"。|
-|--受信任-microsoft-尾碼字串   |指定可能傳送 Azure Active Directory 登入權杖的其他網域尾碼。  預設值為 '*. core.windows.net;*。core.chinacloudapi.cn;*. core.cloudapi.de;*。core.usgovcloudapi.net '。 此處所列的任何一種都會新增至預設值。 基於安全性，您應該只在這裡放置 Microsoft Azure 網域。 以分號分隔多個專案。|
+|--受信任-microsoft-尾碼字串   |指定可能傳送 Azure Active Directory 登入權杖的其他網域尾碼。  預設值為 ' *. core.windows.net;* 。core.chinacloudapi.cn; *. core.cloudapi.de;* 。core.usgovcloudapi.net '。 此處所列的任何一種都會新增至預設值。 基於安全性，您應該只在這裡放置 Microsoft Azure 網域。 以分號分隔多個專案。|
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [azcopy](storage-ref-azcopy.md)

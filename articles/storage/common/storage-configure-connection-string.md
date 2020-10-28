@@ -10,12 +10,12 @@ ms.date: 10/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 3f2fa6cffd63811df596c8fca80afdc888a0eea9
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: d7ca1707c89f03683960822591065143d3f8aa4f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091605"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783873"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>設定 Azure 儲存體連接字串
 
@@ -35,7 +35,7 @@ ms.locfileid: "92091605"
 
 * 您可以將連接字串儲存在環境變數中。
 * 在桌面上或裝置上執行的應用程式可將連接字串儲存在 **app.config** 或 **web.config** 檔案。 將連接字串新增至這些檔案中的 **AppSettings** 區段。
-* 在 Azure 雲端服務中執行的應用程式可將連接字串儲存在 [Azure 服務組態結構描述 (.cscfg) 檔](https://msdn.microsoft.com/library/ee758710.aspx)中。 將此連接字串加入服務組態檔的 [ConfigurationSettings] **** 區段。
+* 在 Azure 雲端服務中執行的應用程式可將連接字串儲存在 [Azure 服務組態結構描述 (.cscfg) 檔](/previous-versions/azure/reference/ee758710(v=azure.100))中。 將此連接字串加入服務組態檔的 [ConfigurationSettings]  區段。
 
 將連接字串儲存在設定檔中，可讓您輕鬆地更新連接字串，以在 [Azurite 儲存體模擬器](../common/storage-use-azurite.md) 和雲端中的 Azure 儲存體帳戶之間切換。 您只需要編輯連接字串以指向您的目標環境。
 
@@ -57,10 +57,10 @@ ms.locfileid: "92091605"
 
 `DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=<account-key>`
 
-雖然 Azure 儲存體可同時支援連接字串中的 HTTP 和 HTTPS，但*強烈建議您使用 HTTPS*。
+雖然 Azure 儲存體可同時支援連接字串中的 HTTP 和 HTTPS，但 *強烈建議您使用 HTTPS* 。
 
 > [!TIP]
-> 您可以在 [Azure 入口網站](https://portal.azure.com)中找到儲存體帳戶的連接字串。 流覽至**SETTINGS**  >  儲存體帳戶功能表分頁中的設定**存取金鑰**，以查看主要和次要存取金鑰的連接字串。
+> 您可以在 [Azure 入口網站](https://portal.azure.com)中找到儲存體帳戶的連接字串。 流覽至 **SETTINGS**  >  儲存體帳戶功能表分頁中的設定 **存取金鑰** ，以查看主要和次要存取金鑰的連接字串。
 >
 
 ## <a name="create-a-connection-string-using-a-shared-access-signature"></a>使用共用存取簽章建立連接字串

@@ -6,21 +6,21 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/09/2020
+ms.date: 10/27/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 59f1231e2edf3277898ff57d8e6f8da42ee057ca
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: aa0586ab2a0ff21e3187bba070dd4be7ef325288
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276983"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784672"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Azure Cosmos DB 中的變更摘要提取模型
 
 您可以透過變更摘要提取模型，依自己的步調使用 Azure Cosmos DB 變更摘要。 如同您已可以透過[變更摘要處理器](change-feed-processor.md)進行的動作，您可以使用變更摘要提取模型，平行處理多個變更摘要取用者之間的變更。
 
 > [!NOTE]
-> 變更摘要提取模型目前僅適用於 [Azure Cosmos DB .NET SDK 中的預覽](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.13.0-preview)。 預覽尚未提供給其他 SDK 版本使用。
+> 變更摘要提取模型目前僅適用於 [Azure Cosmos DB .NET SDK 中的預覽](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.15.0-preview)。 預覽尚未提供給其他 SDK 版本使用。
 
 ## <a name="comparing-with-change-feed-processor"></a>與變更摘要處理器比較
 
@@ -44,9 +44,13 @@ ms.locfileid: "92276983"
 | 追蹤處理變更摘要的目前時間點 | 租用 (儲存在 Azure Cosmos DB 容器中) | 接續權杖 (儲存在記憶體中或以手動方式保存) |
 | 重新執行過去變更的能力 | 是，使用推送模型 | 是，使用提取模型|
 | 輪詢未來的變更 | 根據使用者指定的 `WithPollInterval` 自動檢查變更 | 手動 |
+| 沒有新變更的行為 | 自動等待 `WithPollInterval` 並重新檢查 | 必須攔截例外狀況並手動重新檢查 |
 | 處理整個容器的變更 | 是，且自動平行處理來自相同容器的多個執行緒/機器| 是，且使用 FeedTokens 手動平行處理 |
 | 只處理單一分割區索引鍵的變更 | 不支援 | 是|
 | 支援層級 | 正式推出 | 預覽 |
+
+> [!NOTE]
+> 不同于使用變更摘要處理器進行讀取時，您必須明確處理沒有任何新變更的案例。 
 
 ## <a name="consuming-an-entire-containers-changes"></a>使用整個容器的變更
 
@@ -75,14 +79,22 @@ FeedIterator iteratorForTheEntireContainer = container.GetChangeFeedStreamIterat
 
 while (iteratorForTheEntireContainer.HasMoreResults)
 {
-   FeedResponse<User> users = await iteratorForTheEntireContainer.ReadNextAsync();
+    try {
+        FeedResponse<User> users = await iteratorForTheEntireContainer.ReadNextAsync();
 
-   foreach (User user in users)
-    {
-        Console.WriteLine($"Detected change for user with id {user.id}");
+        foreach (User user in users)
+            {
+                Console.WriteLine($"Detected change for user with id {user.id}");
+            }
+    }
+    catch {
+        Console.WriteLine($"No new changes");
+        Thread.Sleep(5000);
     }
 }
 ```
+
+由於變更摘要實際上是一份無限的專案清單，包含所有未來的寫入和更新，所以的值 `HasMoreResults` 一律為 true。 當您嘗試讀取變更摘要且沒有可用的新變更時，將會收到例外狀況。 在上述範例中，例外狀況的處理方式是在重新檢查變更前等待5秒。
 
 ## <a name="consuming-a-partition-keys-changes"></a>使用分割區索引鍵的變更
 
@@ -93,11 +105,17 @@ FeedIterator<User> iteratorForPartitionKey = container.GetChangeFeedIterator<Use
 
 while (iteratorForThePartitionKey.HasMoreResults)
 {
-   FeedResponse<User> users = await iteratorForThePartitionKey.ReadNextAsync();
+    try {
+        FeedResponse<User> users = await iteratorForThePartitionKey.ReadNextAsync();
 
-   foreach (User user in users)
-    {
-        Console.WriteLine($"Detected change for user with id {user.id}");
+        foreach (User user in users)
+            {
+                Console.WriteLine($"Detected change for user with id {user.id}");
+            }
+    }
+    catch {
+        Console.WriteLine($"No new changes");
+        Thread.Sleep(5000);
     }
 }
 ```
@@ -129,11 +147,17 @@ IReadOnlyList<FeedRange> ranges = await container.GetFeedRangesAsync();
 FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(ranges[0]));
 while (iteratorA.HasMoreResults)
 {
-   FeedResponse<User> users = await iteratorA.ReadNextAsync();
+    try {
+        FeedResponse<User> users = await iteratorA.ReadNextAsync();
 
-   foreach (User user in users)
-    {
-        Console.WriteLine($"Detected change for user with id {user.id}");
+        foreach (User user in users)
+            {
+                Console.WriteLine($"Detected change for user with id {user.id}");
+            }
+    }
+    catch {
+        Console.WriteLine($"No new changes");
+        Thread.Sleep(5000);
     }
 }
 ```
@@ -144,11 +168,17 @@ while (iteratorA.HasMoreResults)
 FeedIterator<User> iteratorB = container.GetChangeFeedIterator<User>(ChangeFeedStartFrom.Beginning(ranges[1]));
 while (iteratorB.HasMoreResults)
 {
-   FeedResponse<User> users = await iteratorB.ReadNextAsync();
+    try {
+        FeedResponse<User> users = await iteratorA.ReadNextAsync();
 
-   foreach (User user in users)
-    {
-        Console.WriteLine($"Detected change for user with id {user.id}");
+        foreach (User user in users)
+            {
+                Console.WriteLine($"Detected change for user with id {user.id}");
+            }
+    }
+    catch {
+        Console.WriteLine($"No new changes");
+        Thread.Sleep(5000);
     }
 }
 ```
@@ -164,13 +194,19 @@ string continuation = null;
 
 while (iterator.HasMoreResults)
 {
-   FeedResponse<User> users = await iterator.ReadNextAsync();
-   continuation = users.ContinuationToken;
+   try { 
+        FeedResponse<User> users = await iterator.ReadNextAsync();
+        continuation = users.ContinuationToken;
 
-   foreach (User user in users)
-    {
-        Console.WriteLine($"Detected change for user with id {user.id}");
-    }
+        foreach (User user in users)
+            {
+                Console.WriteLine($"Detected change for user with id {user.id}");
+            }
+   }
+    catch {
+        Console.WriteLine($"No new changes");
+        Thread.Sleep(5000);
+    }   
 }
 
 // Some time later

@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 6c29fd00a19c930995d748027b2ec04eaa12a5ec
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 5f04a20b347e2672d9699551885f5dd16ceaa99c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480644"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785590"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>使用儲存體分析記錄排除延遲問題
 
@@ -27,7 +27,7 @@ ms.locfileid: "92480644"
 
 ## <a name="recommended-steps"></a>建議的步驟
 
-1. 下載 [儲存體分析記錄](/azure/storage/common/storage-analytics-logging#download-storage-logging-log-data)檔。
+1. 下載 [儲存體分析記錄](./storage-analytics-logging.md#download-storage-logging-log-data)檔。
 
 2. 使用下列 PowerShell 腳本，將原始格式記錄轉換成表格格式：
 
@@ -114,7 +114,7 @@ ms.locfileid: "92480644"
 * Server-Latency
 * Client-Latency
 
-在**RequestStatus = Success**的**GetBlob**作業中，如果在**用戶端延遲**時間內花費**最大時間**，這表示 Azure 儲存體正在將大量的時間寫入用戶端。 此延遲表示 Client-Side 問題。
+在 **RequestStatus = Success** 的 **GetBlob** 作業中，如果在 **用戶端延遲** 時間內花費 **最大時間** ，這表示 Azure 儲存體正在將大量的時間寫入用戶端。 此延遲表示 Client-Side 問題。
 
 **建議：**
 
@@ -129,7 +129,7 @@ ms.locfileid: "92480644"
 * Server-Latency
 * Client-Latency
 
-在**RequestStatus = (SAS) NetworkError**的**GetBlob**作業中，如果**最大時間**花在**用戶端延遲**，最常見的問題就是用戶端在儲存體服務中的超時時間過期之前中斷連線。
+在 **RequestStatus = (SAS) NetworkError** 的 **GetBlob** 作業中，如果 **最大時間** 花在 **用戶端延遲** ，最常見的問題就是用戶端在儲存體服務中的超時時間過期之前中斷連線。
 
 **建議：**
 
@@ -144,7 +144,7 @@ ms.locfileid: "92480644"
 * Server-Latency
 * Client-Latency
 
-在**RequestStatus = Success**的**Put**作業中，如果在**用戶端延遲**時間內花費**最大時間**，這表示用戶端需要更多時間將資料傳送至 Azure 儲存體。 此延遲表示 Client-Side 問題。
+在 **RequestStatus = Success** 的 **Put** 作業中，如果在 **用戶端延遲** 時間內花費 **最大時間** ，這表示用戶端需要更多時間將資料傳送至 Azure 儲存體。 此延遲表示 Client-Side 問題。
 
 **建議：**
 
@@ -159,10 +159,9 @@ ms.locfileid: "92480644"
 * Server-Latency
 * Client-Latency
 
-在**RequestStatus = (SAS) NetworkError**的**PutBlob**作業中，如果**最大時間**花在**用戶端延遲**，最常見的問題就是用戶端在儲存體服務中的超時時間過期之前中斷連線。
+在 **RequestStatus = (SAS) NetworkError** 的 **PutBlob** 作業中，如果 **最大時間** 花在 **用戶端延遲** ，最常見的問題就是用戶端在儲存體服務中的超時時間過期之前中斷連線。
 
 **建議：**
 
 * 請調查用戶端裡的程式碼，了解用戶端何時及為何與儲存體服務中斷連線。
 * 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 調查用戶端的網路連線問題。
-

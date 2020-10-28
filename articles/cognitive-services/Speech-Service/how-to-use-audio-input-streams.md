@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3c8d3162e13c31204ed317edc653756b04ef8dd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3baedd49843c7721b6dba464054d5535b4c4f1cd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934118"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785335"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>關於語音 SDK 音訊輸入資料流 API
 
@@ -26,7 +26,7 @@ ms.locfileid: "88934118"
 
 - 識別音訊資料流的格式。 語音 SDK 和語音服務必須支援此格式。 目前僅支援下列設定：
 
-  PCM 格式的音訊範例、一個通道、每個樣本16個位、每秒8000或16000個樣本 (16000 或每秒32000位元組) 、兩個區塊對齊 (16 位，包括樣本) 的填補。
+  音訊樣本採用 PCM 格式，一個通道，每個樣本16個位，每秒8000或16000個樣本 (16000 或每秒32000個位元組) ，兩個區塊對齊 (16 位，包括) 範例的填補。
 
   SDK 中用於建立音訊格式相對應程式碼看起來像這樣：
 
@@ -37,7 +37,7 @@ ms.locfileid: "88934118"
   var audioFormat = AudioStreamFormat.GetWaveFormatPCM(samplesPerSecond, bitsPerSample, channels);
   ```
 
-- 請確定您的程式碼可以根據這些規格提供未經處理的音訊資料。 如果您的音訊來源資料不符合支援的格式，則必須將音訊轉碼成所需的格式。
+- 請確定您的程式碼會根據這些規格提供原始音訊資料。 也可確保16位範例以位元組由小到大的格式抵達。 也支援已簽署的範例。 如果您的音訊來源資料不符合支援的格式，則必須將音訊轉碼成所需的格式。
 
 - 建立自己衍生自 `PullAudioInputStreamCallback` 的音訊輸入資料流類別。 實作`Read()` 和 `Close()` 成員。 確切的函式簽章視語言而定，但程式碼看起來類似此程式碼範例：
 

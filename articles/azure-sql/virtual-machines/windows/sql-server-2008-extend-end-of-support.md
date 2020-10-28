@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 48288ed3765fa939fc56a4469f64070315c4c6aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbfc4619e8af86a89b82f32ff3bc9a39c92b355a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84668741"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784859"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>使用 Azure 擴充對 Azure SQL Server 2008 和 SQL Server 2008 R2 的支援
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,14 +33,14 @@ SQL Server 2008 和 SQL Server 2008 R2 均已達到[終止支援 (EOS) 生命週
 
 ## <a name="provisioning"></a>佈建
 
-在 Azure Marketplace 上提供一個**在 Windows Server 2008 R2 映像上執行的隨用隨付 SQL Server 2008 R2**。
+在 Azure Marketplace 上提供一個 **在 Windows Server 2008 R2 映像上執行的隨用隨付 SQL Server 2008 R2** 。
 
 使用 SQL Server 2008 的客戶必須自行安裝或升級至 SQL Server 2008 R2。 同樣地，使用 Windows Server 2008 的客戶也必須從自訂 VHD 部署 VM，或升級至 Windows Server 2008 R2。
 
 透過 Azure Marketplace 部署的映像會隨附預先安裝的 SQL IaaS 擴充功能。 SQL IaaS 擴充功能是彈性授權和自動修補功能的必備條件。 部署自行安裝 VM 的客戶必須手動安裝 SQL IaaS 擴充功能。 Windows Server 2008 不支援 SQL IaaS 擴充功能。
 
 > [!NOTE]
-> SQL Server 的 [建立] 和 [管理] 刀鋒視窗支援 Azure 入口網站的 SQL Server 2008 R2 映像，但_不支援_下列功能：自動備份、Azure Key Vault 整合、R 服務和儲存體設定。
+> SQL Server 的 [建立] 和 [管理] 刀鋒視窗支援 Azure 入口網站的 SQL Server 2008 R2 映像，但 _不支援_ 下列功能：自動備份、Azure Key Vault 整合、R 服務和儲存體設定。
 
 ## <a name="licensing"></a>授權
 隨用隨付 SQL Server 2008 R2 部署可以轉換為 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)。
@@ -54,21 +54,21 @@ SQL Server 2008 和 SQL Server 2008 R2 均已達到[終止支援 (EOS) 生命週
 
 ### <a name="azure-site-recovery"></a>Azure Site Recovery
 
-針對大量遷移，我們建議使用 [Azure Site Recovery](/azure/site-recovery/site-recovery-overview) 服務。 透過 Azure Site Recovery，客戶可以複寫整個 VM，包括從內部部署到 Azure VM 的 SQL Server。
+針對大量遷移，我們建議使用 [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) 服務。 透過 Azure Site Recovery，客戶可以複寫整個 VM，包括從內部部署到 Azure VM 的 SQL Server。
 
 SQL Server 需要應用程式一致的 Azure Site Recovery 快照集以確保復原。 Azure Site Recovery 支援最少 1 小時間隔的應用程式一致快照集。 使用 Azure Site Recovery 遷移 SQL Server 時，最短復原點目標 (RPO) 為 1 小時。 復原時間目標 (RTO) 是 2 小時加上 SQL Server 復原時間。
 
 ### <a name="database-migration-service"></a>Database Migration Service
 
-如果 [客戶是從](/azure/dms/dms-overview) 內部部署遷移至 azure VM，請將 SQL Server 升級為2012版或更新版本，以供客戶選擇。
+如果 [客戶是從](../../../dms/dms-overview.md) 內部部署遷移至 azure VM，請將 SQL Server 升級為2012版或更新版本，以供客戶選擇。
 
 ## <a name="disaster-recovery"></a>災害復原
 
 Azure VM 上的 EOS SQL Server 的災害復原解決方案如下：
 
-- **SQL Server 備份**：使用 Azure 備份的 15 分鐘 RPO 和時間點復原的損毀，協助您保護 EOS SQL Server 2008 和 2008 R2 免於遭受勒索軟體的侵害、意外刪除和損毀。 如需詳細資料，請參閱[這篇文章](https://docs.microsoft.com/azure/backup/sql-support-matrix#scenario-support)。
-- **記錄傳送**：您可以在具有持續還原的另一個區域或 Azure 區域中，建立記錄傳送複本，以減少 RTO。 您必須手動設定記錄傳送。
-- **Azure Site Recovery**：您可以透過 Azure Site Recovery 複寫，在區域和區域之間複寫 VM。 SQL Server 需要應用程式一致的快照集，以確保在發生災害時能夠復原。 Azure Site Recovery 為 EOS SQL Server 災害復原提供最少 1 小時的 RPO 和 2 小時 (加上 SQL Server 復原時間) 的 RTO。
+- **SQL Server 備份** ：使用 Azure 備份的 15 分鐘 RPO 和時間點復原的損毀，協助您保護 EOS SQL Server 2008 和 2008 R2 免於遭受勒索軟體的侵害、意外刪除和損毀。 如需詳細資料，請參閱[這篇文章](../../../backup/sql-support-matrix.md#scenario-support)。
+- **記錄傳送** ：您可以在具有持續還原的另一個區域或 Azure 區域中，建立記錄傳送複本，以減少 RTO。 您必須手動設定記錄傳送。
+- **Azure Site Recovery** ：您可以透過 Azure Site Recovery 複寫，在區域和區域之間複寫 VM。 SQL Server 需要應用程式一致的快照集，以確保在發生災害時能夠復原。 Azure Site Recovery 為 EOS SQL Server 災害復原提供最少 1 小時的 RPO 和 2 小時 (加上 SQL Server 復原時間) 的 RTO。
 
 ## <a name="security-patching"></a>安全性修補
 在 SQL Server VM 已向 SQL VM [資源提供者](sql-vm-resource-provider-register.md)註冊後，會透過 Microsoft Update 通道傳遞SQL Server VM 的擴充安全性更新。 您可以手動或自動下載修補程式。

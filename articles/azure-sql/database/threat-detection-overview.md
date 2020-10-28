@@ -13,12 +13,12 @@ ms.author: ronmat
 ms.reviewer: vanto, sstein
 ms.date: 09/21/2020
 tags: azure-synapse
-ms.openlocfilehash: bf228d31180f5c2223fde7433d2d9b335e2b8853
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f83b9515e16fcf2c2158586297545206d57e1a6e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91284154"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785114"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Azure SQL Database、SQL 受控執行個體和 Azure Synapse Analytics 的 Advanced 威脅防護
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -35,7 +35,7 @@ Advanced 威脅防護是 [Azure Defender FOR SQL](azure-defender-for-sql.md) 供
 
 ## <a name="alerts"></a>警示
 
-適用於 Azure SQL Database 的進階威脅防護會偵測異常活動，這些活動代表有不尋常及可能有害的活動試圖存取或惡意探索資料庫。 如需 Azure SQL Database 的警示清單，請參閱 [) 中的 SQL Database 和 Azure Synapse Analytics (先前的 SQL 資料倉儲 Azure 資訊安全中心的警示](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-sql-db-and-warehouse)。
+適用於 Azure SQL Database 的進階威脅防護會偵測異常活動，這些活動代表有不尋常及可能有害的活動試圖存取或惡意探索資料庫。 如需 Azure SQL Database 的警示清單，請參閱 [) 中的 SQL Database 和 Azure Synapse Analytics (先前的 SQL 資料倉儲 Azure 資訊安全中心的警示](../../security-center/alerts-reference.md#alerts-sql-db-and-warehouse)。
 
 ## <a name="explore-detection-of-a-suspicious-event"></a>探索可疑事件的偵測
 
@@ -65,5 +65,5 @@ Advanced 威脅防護會將其警示與 [Azure 安全性中心](https://azure.mi
 - 深入瞭解 [AZURE SQL 受控執行個體中的「先進威脅防護](../managed-instance/threat-detection-configure.md)」。
 - 深入瞭解 [Azure Defender FOR SQL](azure-defender-for-sql.md)。
 - 深入了解 [Azure SQL Database 稽核](../../azure-sql/database/auditing-overview.md)
-- 深入瞭解 [Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
-- 如需定價的詳細資訊，請參閱 [Azure SQL Database 定價頁面](https://azure.microsoft.com/pricing/details/sql-database/)  
+- 深入瞭解 [Azure 資訊安全中心](../../security-center/security-center-introduction.md)
+- 如需定價的詳細資訊，請參閱 [Azure SQL Database 定價頁面](https://azure.microsoft.com/pricing/details/sql-database/)

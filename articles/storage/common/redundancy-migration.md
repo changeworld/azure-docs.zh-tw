@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a16199891c00e2b8133aebebd1eaa6488423896c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 286a4f47d542a500fb49f022f3c647088ebad637
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487886"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784213"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>變更儲存體帳戶的複寫方式 \(部分機器翻譯\)
 
@@ -62,7 +62,7 @@ Azure 儲存體提供下列類型的複寫：
 
 1. 在 Azure 入口網站中巡覽至您的儲存體帳戶。
 1. 選取 [ **設定** ]。
-1. 更新複寫**設定。**
+1. 更新複寫 **設定。**
 
 ![顯示如何在入口網站中變更複寫選項的螢幕擷取畫面](media/redundancy-migration/change-replication-option.png)
 
@@ -123,20 +123,20 @@ ZRS 僅支援一般用途 v2 帳戶，因此請務必先升級您的儲存體帳
 
 您可以透過 [Azure 支援入口網站](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)要求即時移轉。 從入口網站中，選取您想要轉換成 ZRS 的儲存體帳戶。
 
-1. 選取 [ **新增支援要求**]。
+1. 選取 [ **新增支援要求** ]。
 2. 根據您的帳戶資訊完成 **基本概念** ： 
-    - **問題類型**：選取 [ **技術**]。
-    - **服務**：選取 [ **我的服務** 和 **儲存體帳戶管理**]。
-    - **資源**：選取您想要轉換成 ZRS 的資源。
+    - **問題類型** ：選取 [ **技術** ]。
+    - **服務** ：選取 [ **我的服務** 和 **儲存體帳戶管理** ]。
+    - **資源** ：選取您想要轉換成 ZRS 的資源。
 3. 選取 [下一步]  。
-4. 在 [問題]**** 區段中，指定下列值︰
-    - **嚴重性**：將預設值保持不變。
-    - **問題類型**：選取 [資料移轉]****。
-    - **類別**：選取 [ **遷移至 ZRS**]。
-    - **標題**：輸入描述性標題，例如 **ZRS 帳戶移轉**。
-    - **詳細資料**：在 [**詳細資料**] 方塊中輸入其他詳細資料，例如，我想要從區域中的 [LRS，GRS] 遷移至 ZRS \_ \_ 。
+4. 在 [問題]  區段中，指定下列值︰
+    - **嚴重性** ：將預設值保持不變。
+    -  。
+    - **類別** ：選取 [ **遷移至 ZRS** ]。
+    - **標題** ：輸入描述性標題，例如 **ZRS 帳戶移轉** 。
+    - **詳細資料** ：在 [ **詳細資料** ] 方塊中輸入其他詳細資料，例如，我想要從區域中的 [LRS，GRS] 遷移至 ZRS \_ \_ 。
 5. 選取 [下一步]  。
-6. 確認 [連絡人資訊]**** 刀鋒視窗上的連絡人資訊正確。
+6. 確認 [連絡人資訊]  刀鋒視窗上的連絡人資訊正確。
 7. 選取 [建立]。
 
 支援人員將會與您連絡，並提供您所需的一切協助。
@@ -144,9 +144,9 @@ ZRS 僅支援一般用途 v2 帳戶，因此請務必先升級您的儲存體帳
 > [!NOTE]
 > Premium 檔案共用目前不支援即時移轉。 目前只支援手動複製或移動資料。
 >
-> GZRS 儲存體帳戶目前不支援封存層。 如需詳細資訊，請參閱 [Azure Blob 儲存體：經常性存取層、非經常性存取層和封存存取層](/azure/storage/blobs/storage-blob-storage-tiers) 。
+> GZRS 儲存體帳戶目前不支援封存層。 如需詳細資訊，請參閱 [Azure Blob 儲存體：經常性存取層、非經常性存取層和封存存取層](../blobs/storage-blob-storage-tiers.md) 。
 >
-> 受控磁片僅供 LRS 使用，無法遷移至 ZRS。 您可以在標準 HDD 儲存體上儲存標準 SSD 受控磁片的快照集和映射，並在 [LRS 和 ZRS 選項之間選擇](https://azure.microsoft.com/pricing/details/managed-disks/)。 如需與可用性設定組整合的詳細資訊，請參閱 [Azure 受控磁片簡介](/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)。
+> 受控磁片僅供 LRS 使用，無法遷移至 ZRS。 您可以在標準 HDD 儲存體上儲存標準 SSD 受控磁片的快照集和映射，並在 [LRS 和 ZRS 選項之間選擇](https://azure.microsoft.com/pricing/details/managed-disks/)。 如需與可用性設定組整合的詳細資訊，請參閱 [Azure 受控磁片簡介](../../virtual-machines/managed-disks-overview.md#integration-with-availability-sets)。
 
 ## <a name="switch-from-zrs-classic"></a>從傳統 ZRS 切換
 
@@ -157,7 +157,7 @@ ZRS 僅支援一般用途 v2 帳戶，因此請務必先升級您的儲存體帳
 
 傳統 ZRS 會以非同步方式在一至兩個區域內的資料中心間複寫資料。 除非 Microsoft 起始對次要區域的容錯移轉，否則複寫的資料可能無法供使用。 傳統 ZRS 帳戶無法以 LRS、GRS 或 RA-GRS 作為轉換目標或來源。 傳統 ZRS 帳戶也不支援計量或記錄。
 
-傳統 ZRS 僅適用於一般用途 V1 (GPv1) 儲存體帳戶中的**區塊 Blob**。 如需有關儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](storage-account-overview.md)。
+傳統 ZRS 僅適用於一般用途 V1 (GPv1) 儲存體帳戶中的 **區塊 Blob** 。 如需有關儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](storage-account-overview.md)。
 
 若要手動將 ZRS 帳戶資料移轉至 LRS、GRS、RA GRS 或 ZRS 傳統帳戶，請使用下列其中一種工具： AzCopy、Azure 儲存體總管、PowerShell 或 Azure CLI。 您也可以使用其中一個 Azure 儲存體用戶端程式庫，自行建置移轉解決方案。
 
@@ -165,7 +165,7 @@ ZRS 僅支援一般用途 v2 帳戶，因此請務必先升級您的儲存體帳
 
 # <a name="portal"></a>[入口網站](#tab/portal)
 
-若要在 Azure 入口網站中升級至 ZRS，請流覽至帳戶 **的設定，然後選擇 [** **升級**]：
+若要在 Azure 入口網站中升級至 ZRS，請流覽至帳戶 **的設定，然後選擇 [** **升級** ]：
 
 ![在入口網站中將傳統 ZRS 升級至 ZRS](media/redundancy-migration/portal-zrs-classic-upgrade.png)
 

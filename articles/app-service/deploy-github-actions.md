@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure
-ms.openlocfilehash: bdc236c3ba4c70ba44e61457e2bade7df65f3153
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 638dfc63b6a37bae3905703bbd5ecabaa94d2020
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108043"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783074"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>使用 GitHub Actions 部署到 App Service
 
@@ -29,7 +29,7 @@ ms.locfileid: "92108043"
     - JAVA： [在 Azure App Service 上建立 java 應用程式](quickstart-java.md)
     - Python： [在 Azure App Service 中建立 python 應用程式](quickstart-python.md)
 
-## <a name="workflow-file-overview"></a>工作流程檔案總覽
+## <a name="workflow-file-overview"></a>工作流程檔案概觀
 
 工作流程是由您存放庫內 `/.github/workflows/` 路徑中的 YAML (. yml) 檔案所定義的。 此定義包含組成工作流程的各種步驟與參數。
 
@@ -37,7 +37,7 @@ ms.locfileid: "92108043"
 
 |區段  |工作  |
 |---------|---------|
-|**驗證** | 1. 定義服務主體或發行設定檔。 <br /> 2. 建立 GitHub 秘密。 |
+|**驗證** | 1. 定義服務主體或發行設定檔。 <br /> 2.建立 GitHub 祕密。 |
 |**建置** | 1. 設定環境。 <br /> 2. 建立 web 應用程式。 |
 |**部署** | 1. 部署 web 應用程式。 |
 
@@ -46,8 +46,8 @@ ms.locfileid: "92108043"
 您可以使用 App Service Deployment Center 快速開始 GitHub Actions。 這會根據您的應用程式堆疊自動產生工作流程檔案，並將其認可到正確目錄中的 GitHub 存放庫。
 
 1. 在 Azure 入口網站中流覽至您的 webapp
-1. 在左側，按一下 [**部署中心**]
-1. 在 [**持續部署 (CI/CD) **] 下，選取 [ **GitHub** ]
+1. 在左側，按一下 [ **部署中心** ]
+1. 在 [ **持續部署 (CI/CD)** ] 下，選取 [ **GitHub** ]
 1. 接下來，選取 **GitHub Actions**
 1. 使用下拉式清單來選取您的 GitHub 存放庫、分支和應用程式堆疊
     - 如果選取的分支受到保護，您仍然可以繼續新增工作流程檔案。 繼續進行之前，請務必先審查您的分支保護。
@@ -71,13 +71,13 @@ ms.locfileid: "92108043"
 
 1. 在 Azure 入口網站中，移至您的 app service。 
 
-1. 在 [ **總覽** ] 頁面上，選取 [ **取得發行設定檔**]。
+1. 在 [ **總覽** ] 頁面上，選取 [ **取得發行設定檔** ]。
 
 1. 儲存下載的檔案。 您將使用檔案的內容來建立 GitHub 秘密。
 
 # <a name="service-principal"></a>[服務主體](#tab/userlevel)
 
-您可以在[Azure CLI](/cli/azure/)中使用[az ad sp 建立-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true)命令來建立[服務主體](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 使用 Azure 入口網站中的 [Azure Cloud Shell](https://shell.azure.com/) 來執行此命令，或選取 [ **試試看** ] 按鈕。
+您可以使用 [Azure CLI](/cli/azure/) 中的 [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) 命令來建立[服務主體](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 請使用 Azure 入口網站中的 [Azure Cloud Shell](https://shell.azure.com/)，或選取 [試試看] 按鈕來執行此命令。
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
@@ -107,7 +107,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 # <a name="publish-profile"></a>[發行設定檔](#tab/applevel)
 
-在 [GitHub](https://github.com/)中，流覽您的存放庫，選取 **> 秘密 > 新增密碼的設定**。
+在 [GitHub](https://github.com/)中，流覽您的存放庫，選取 **> 秘密 > 新增密碼的設定** 。
 
 若要使用 [應用層級的認證](#generate-deployment-credentials)，請將所下載發行設定檔的內容貼入秘密的 [值] 欄位中。 為秘密命名 `AZURE_WEBAPP_PUBLISH_PROFILE` 。
 
@@ -121,11 +121,11 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 # <a name="service-principal"></a>[服務主體](#tab/userlevel)
 
-在 [GitHub](https://github.com/)中，流覽您的存放庫，選取 **> 秘密 > 新增密碼的設定**。
+在 [GitHub](https://github.com/)中，流覽您的存放庫，選取 **> 秘密 > 新增密碼的設定** 。
 
-若要使用 [使用者層級的認證](#generate-deployment-credentials)，請將 Azure CLI 命令中的整個 JSON 輸出貼到秘密的值欄位中。 為秘密命名，例如 `AZURE_CREDENTIALS` 。
+若要使用 [使用者層級的認證](#generate-deployment-credentials)，請將 Azure CLI 命令中的整個 JSON 輸出貼到秘密的值欄位中。 將祕密命名為 `AZURE_CREDENTIALS`。
 
-當您稍後設定工作流程檔案時，您會使用秘密來輸入 `creds` Azure 登入動作。 例如：
+當您稍後設定工作流程檔案時，會將祕密用於 Azure 登入動作的輸入 `creds`。 例如：
 
 ```yaml
 - uses: azure/login@v1

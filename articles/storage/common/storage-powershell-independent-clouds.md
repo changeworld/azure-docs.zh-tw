@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b610a5537d110a4046bd42ac86f5c938aeafe953
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e924a5f6c765b5b964fe3b1492393b063d9d23b4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072942"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783567"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>使用 PowerShell 在 Azure 獨立雲端中管理儲存體
 
@@ -31,7 +31,7 @@ ms.locfileid: "89072942"
 
 若要在其中一個獨立雲端中使用 Azure 儲存體，您要連線到該雲端，而非 Azure 公用。 若要使用其中一個獨立雲端，而非 Azure 公用：
 
-* 指定要連線的「環境」**。
+* 指定要連線的「環境」  。
 * 決定並且使用可用的區域。
 * 使用正確的端點尾碼，它與 Azure 公用的尾碼不同。
 
@@ -51,7 +51,7 @@ Get-AzEnvironment
 Connect-AzAccount –Environment AzureUSGovernment
 ```
 
-若要存取中國雲端，請使用環境 **AzureChinaCloud**。 若要存取德國雲端，請使用 **AzureGermanCloud**。
+若要存取中國雲端，請使用環境 **AzureChinaCloud** 。 若要存取德國雲端，請使用 **AzureGermanCloud** 。
 
 此時，如果您需要用來建立儲存體帳戶或其他資源的位置清單，您可以使用 [Get-AzLocation](/powershell/module/az.resources/get-azlocation) 查詢適用於選取之雲端的位置。
 
@@ -61,7 +61,7 @@ Get-AzLocation | select Location, DisplayName
 
 下表顯示針對德國雲端傳回的位置。
 
-|Location | 顯示名稱 |
+|位置 | 顯示名稱 |
 |----|----|
 | `germanycentral` | 德國中部|
 | `germanynortheast` | 德國東北部 |
@@ -69,11 +69,11 @@ Get-AzLocation | select Location, DisplayName
 
 ## <a name="endpoint-suffix"></a>端點尾碼
 
-端點尾碼，這些環境的每個尾碼都與 Azure 公用端點不同。 例如，Azure 公用的 blob 端點尾碼是 **blob.core.windows.net**。 針對政府雲端，blob 端點尾碼是 **blob.core.usgovcloudapi.net**。
+端點尾碼，這些環境的每個尾碼都與 Azure 公用端點不同。 例如，Azure 公用的 blob 端點尾碼是 **blob.core.windows.net** 。 針對政府雲端，blob 端點尾碼是 **blob.core.usgovcloudapi.net** 。
 
 ### <a name="get-endpoint-using-get-azenvironment"></a>使用 Get-AzEnvironment 取得端點
 
-使用 [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) 擷取端點尾碼。 端點是環境的「StorageEndpointSuffix」** 屬性。
+使用 [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) 擷取端點尾碼。 端點是環境的「StorageEndpointSuffix」  屬性。
 
 下列程式碼片段示範如何取出端點尾碼。 所有這些命令會傳回類似 "core.cloudapp.net" 或 "core.cloudapi.de" 等內容。將尾碼附加至儲存體服務以存取該服務。 例如，"queue.core.cloudapi.de" 會在德國雲端中存取佇列服務。
 
@@ -92,7 +92,7 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 | AzureGermanCloud | core.cloudapi.de|
 | AzureUSGovernment | core.usgovcloudapi.net |
 
-若要擷取指定環境的所有屬性，請呼叫 **Get-AzEnvironment** 並且指定雲端名稱。 此程式碼片段會傳回屬性清單。在清單中尋找 **StorageEndpointSuffix**。 下列範例適用於德國雲端。
+若要擷取指定環境的所有屬性，請呼叫 **Get-AzEnvironment** 並且指定雲端名稱。 此程式碼片段會傳回屬性清單。在清單中尋找 **StorageEndpointSuffix** 。 下列範例適用於德國雲端。
 
 ```powershell
 Get-AzEnvironment -Name AzureGermanCloud
@@ -167,7 +167,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 ## <a name="next-steps"></a>後續步驟
 
 * [在 PowerShell 工作階段之間保存使用者登入](/powershell/azure/context-persistence)
-* [Azure Government 儲存體](../../azure-government/documentation-government-services-storage.md)
+* [Azure Government 儲存體](../../azure-government/compare-azure-government-global-azure.md)
 * [Microsoft Azure Government 開發人員指南](../../azure-government/documentation-government-developer-guide.md)
 * [Azure 中國世紀應用程式的開發人員注意事項](https://msdn.microsoft.com/library/azure/dn578439.aspx)
 * [Azure 德國文件](../../germany/germany-welcome.md)

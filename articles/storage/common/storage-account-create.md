@@ -10,12 +10,12 @@ ms.date: 09/24/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: f1cdd04be4b5774944f70e551221a08261aef22d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b7faec5023abe37802d8b08980f216934d70a6ac
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488889"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784349"
 ---
 # <a name="create-a-storage-account"></a>建立儲存體帳戶
 
@@ -223,7 +223,7 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 
 若要瞭解如何修改此範本或建立新範本，請參閱：
 
-- [Azure Resource Manager 檔](/azure/azure-resource-manager/)。
+- [Azure Resource Manager 檔](../../azure-resource-manager/index.yml)。
 - [儲存體帳戶範本參考](/azure/templates/microsoft.storage/allversions)。
 - [其他儲存體帳戶範本範例](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage)。
 
@@ -279,7 +279,7 @@ az storage account delete --name storageAccountName --resource-group resourceGro
 > [!WARNING]
 > 您無法還原已刪除的儲存體帳戶，也無法擷取刪除之前所包含的任何內容。 請務必先備份您想要儲存的任何資料，再刪除帳戶。 這也適用於帳戶中的任何資源 - 一旦刪除 Blob、資料表、佇列或檔案，就是永久刪除。
 >
-> 如果您嘗試刪除與 Azure 虛擬機器相關聯的儲存體帳戶，您可能會收到儲存體帳戶仍在使用中的相關錯誤。 如需針對此錯誤進行疑難排解的協助，請參閱針對 [刪除儲存體帳戶時的錯誤進行疑難排解](../common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md)。
+> 如果您嘗試刪除與 Azure 虛擬機器相關聯的儲存體帳戶，您可能會收到儲存體帳戶仍在使用中的相關錯誤。 如需針對此錯誤進行疑難排解的協助，請參閱針對 [刪除儲存體帳戶時的錯誤進行疑難排解](../../virtual-machines/troubleshooting/index.yml)。
 
 ## <a name="next-steps"></a>後續步驟
 

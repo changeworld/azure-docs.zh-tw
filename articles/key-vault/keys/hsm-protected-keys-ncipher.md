@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: de14cf8cc79b4e1387950a2ae048da41738f5db1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5d58f89aa87a39d12b2d6f6a3a91254a653a088
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589923"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784655"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>匯入適用於 Azure Key Vault 的受 HSM 保護金鑰 (nCipher)
 
@@ -62,7 +62,7 @@ Microsoft 已與 nCipher Security 合作增強 HSM 的開發狀態。 這些增�
 | Azure 訂用帳戶 |若要建立 Azure 金鑰保存庫，您需要 Azure 訂用帳戶： [註冊免費試用](https://azure.microsoft.com/pricing/free-trial/) |
 | 可支援受 HSM 保護之金鑰的 Azure 金鑰保存庫進階服務層級 |如需 Azure 金鑰保存庫的服務層級和功能的詳細資訊，請參閱 [Azure 金鑰保存庫價格](https://azure.microsoft.com/pricing/details/key-vault/) 網站。 |
 | nCipher nShield HSM、智慧卡和支援軟體 |您必須存取 nCipher 硬體安全模組和 nCipher nShield HSM 的基本操作知識。 請參閱 [nCipher nShield 硬體安全模組](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy) 以取得相容模型的清單，或者如果您沒有 HSM，請購買 HSM。 |
-| 下列的硬體和軟體︰<ol><li>離線 x64 工作站、至少為 Windows 7 的 Windows 作業系統，以及至少為 11.50 版的 nCipher nShield 軟體。<br/><br/>如果此工作站執行 Windows 7，您必須[安裝 Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>連線至網際網路且 Windows 作業系統至少為 Windows 7 的工作站，並已安裝至少為 [1.1.0 版的 Azure PowerShell](/powershell/azure/?view=azps-1.2.0) ****。</li><li>至少有 16 MB 可用空間的 USB 磁碟機或其他可攜式儲存裝置。</li></ol> |基於安全性理由，建議第一個工作站不要連線到網路。 不過，在程式設計方面並不強迫採取這項建議。<br/><br/>在接下來的指示中，此工作站稱為中斷連線的工作站。</p></blockquote><br/>此外，如果您的租用戶金鑰適用於生產網路，建議您另外使用第二個工作站來下載工具組，並上傳租用戶金鑰。 但如果只是測試，您可以直接使用第一個工作站。<br/><br/>在接下來的指示中，此第二個工作站稱為網際網路連線的工作站。</p></blockquote><br/> |
+| 下列的硬體和軟體︰<ol><li>離線 x64 工作站、至少為 Windows 7 的 Windows 作業系統，以及至少為 11.50 版的 nCipher nShield 軟體。<br/><br/>如果此工作站執行 Windows 7，您必須[安裝 Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe)。</li><li>連線至網際網路且 Windows 作業系統至少為 Windows 7 的工作站，並已安裝至少為  。</li><li>至少有 16 MB 可用空間的 USB 磁碟機或其他可攜式儲存裝置。</li></ol> |基於安全性理由，建議第一個工作站不要連線到網路。 不過，在程式設計方面並不強迫採取這項建議。<br/><br/>在接下來的指示中，此工作站稱為中斷連線的工作站。</p></blockquote><br/>此外，如果您的租用戶金鑰適用於生產網路，建議您另外使用第二個工作站來下載工具組，並上傳租用戶金鑰。 但如果只是測試，您可以直接使用第一個工作站。<br/><br/>在接下來的指示中，此第二個工作站稱為網際網路連線的工作站。</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>產生金鑰並將其傳輸至 Azure 金鑰保存庫 HSM
 
@@ -166,7 +166,7 @@ KeyVault-BYOK-Tools-Australia.zip
 CD0FB7365053DEF8C35116D7C92D203C64A3D3EE2452A025223EEB166901C40A
 
 ---
-[**Azure Government:** ](https://azure.microsoft.com/features/gov/)
+[**Azure Government:**](https://azure.microsoft.com/features/gov/)
 
 KeyVault-BYOK-Tools-USGovCloud.zip
 
@@ -231,7 +231,7 @@ KeyVault-BYOK-Tools-Switzerland.zip
 ---
 
 
-若要驗證您已下載之 BYOK 工具組的完整性，請從您的 Azure PowerShell 工作階段，使用 [Get-FileHash](https://technet.microsoft.com/library/dn520872.aspx) Cmdlet。
+若要驗證您已下載之 BYOK 工具組的完整性，請從您的 Azure PowerShell 工作階段，使用 [Get-FileHash](/powershell/module/microsoft.powershell.utility/get-filehash) Cmdlet。
 
    ```powershell
    Get-FileHash KeyVault-BYOK-Tools-*.zip
@@ -243,7 +243,7 @@ KeyVault-BYOK-Tools-Switzerland.zip
 * 具有以 **BYOK-SecurityWorld-pkg-**
 * 名為 **verifykeypackage.py** 的 python 指令碼。
 * 名為 **KeyTransferRemote.exe** 的命令列可執行檔及關聯的 DLL。
-* Visual C++ 可轉散發套件，名為 **vcredist_x64.exe**。
+* Visual C++ 可轉散發套件，名為 **vcredist_x64.exe** 。
 
 將封裝複製到 USB 磁碟機或其他可攜式儲存裝置。
 
@@ -255,7 +255,7 @@ KeyVault-BYOK-Tools-Switzerland.zip
 
 在 Windows 電腦上安裝 nCipher 支援軟體，然後將 nCipher nShield HSM 附加至該電腦。
 
-確定 nCipher 工具位於您的路徑 ( **%nfast_home%\bin**)。 例如，輸入下列內容：
+確定 nCipher 工具位於您的路徑 ( **%nfast_home%\bin** )。 例如，輸入下列內容：
 
   ```cmd
   set PATH=%PATH%;"%nfast_home%\bin"
@@ -287,7 +287,7 @@ KeyVault-BYOK-Tools-Switzerland.zip
     new-world.exe --initialize --cipher-suite=DLf3072s256mRijndael --module=1 --acs-quorum=2/3
    ```
 
-此程式會在 %NFAST_KMDATA%\local\world 中建立與 C:\ProgramData\nCipher\Key Management Data\local 資料夾對應的**安全園地**檔案。 您可以使用不同的值進行仲裁，但是在我們的範例中，系統會提示您輸入三個空白的卡片和其個別的 Pin 碼。 然後，任兩張卡片可提供安全世界的完整存取權。 這些卡片將成為新安全園地的**系統管理員卡組**。
+此程式會在 %NFAST_KMDATA%\local\world 中建立與 C:\ProgramData\nCipher\Key Management Data\local 資料夾對應的 **安全園地** 檔案。 您可以使用不同的值進行仲裁，但是在我們的範例中，系統會提示您輸入三個空白的卡片和其個別的 Pin 碼。 然後，任兩張卡片可提供安全世界的完整存取權。 這些卡片將成為新安全園地的 **系統管理員卡組** 。
 
 > [!NOTE]
 > 如果您的 HSM 不支援較新的加密套件 DLf3072s256mRijndael，您可以使用 --cipher-suite=DLf1024s160mRijndael 來取代 --cipher-suite= DLf3072s256mRijndael
@@ -416,7 +416,7 @@ KeyVault-BYOK-Tools-Switzerland.zip
      >
 2. 確認您看到下列訊息，表示驗證成功： **Result: SUCCESS**
 
-此指令碼會驗證簽章者鏈結到 nShield 根金鑰。 此根金鑰的雜湊內嵌於指令碼中，且其值必須為 **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**。 您也可以造訪 [nCipher 網站](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation)以另行確認此值。
+此指令碼會驗證簽章者鏈結到 nShield 根金鑰。 此根金鑰的雜湊內嵌於指令碼中，且其值必須為 **59178a47 de508c3f 291277ee 184f46c4 f1d9c639** 。 您也可以造訪 [nCipher 網站](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation)以另行確認此值。
 
 您現在可以開始建立新的金鑰。
 
@@ -432,11 +432,11 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
 
 當您執行此命令時，請使用下列指示：
 
-* 參數 *protect* 必須如所示般設定為值 **module**。 這會建立受模組保護的金鑰。 BYOK 工具組不支援受 OCS 保護的金鑰。
+* 參數 *protect* 必須如所示般設定為值 **module** 。 這會建立受模組保護的金鑰。 BYOK 工具組不支援受 OCS 保護的金鑰。
 * 以任何字串值取代 **ident** 和 **plainname** 的 *contosokey* 值。 若要將系統管理負擔降至最低並減少錯誤的風險，建議您同時對兩者使用相同的值。 **ident** 值只能包含數字、破折號和小寫字母。
 * 在這個範例中，Pubexp 保留空白 (預設值)，但是您可以指定特定值。 如需詳細資訊，請參閱 [nCipher文件](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)。
 
-此命令會在您的 %NFAST_KMDATA%\local 資料夾建立名稱開頭為 **key_simple_** 的語彙基元化金鑰檔案，後面接著在命令中指定的 **ident**。 例如：**key_simple_contosokey**。 此檔案包含已加密的金鑰。
+此命令會在您的 %NFAST_KMDATA%\local 資料夾建立名稱開頭為 **key_simple_** 的語彙基元化金鑰檔案，後面接著在命令中指定的 **ident** 。 例如： **key_simple_contosokey** 。 此檔案包含已加密的金鑰。
 
 在安全的位置備份此語彙基元化金鑰檔案。
 
@@ -546,11 +546,11 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SUI-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SUI-1
    ```
 
-當您執行此命令時，請以您從[產生您的金鑰](#step-3-generate-your-key)步驟的**步驟 3.5：建立新的金鑰**中指定的相同值取代 *contosokey*。
+當您執行此命令時，請以您從 [產生您的金鑰](#step-3-generate-your-key)步驟的 **步驟 3.5：建立新的金鑰** 中指定的相同值取代 *contosokey* 。
 
 系統會要求您插入您的安全世界系統管理員卡。
 
-此命令完成時，您會看到 **Result: SUCCESS**，而降低權限的金鑰複本會在名為 key_xferacId_\<contosokey> 的檔案中。
+此命令完成時，您會看到 **Result: SUCCESS** ，而降低權限的金鑰複本會在名為 key_xferacId_\<contosokey> 的檔案中。
 
 您可使用 nCipher nShield 公用程式，以下列命令檢查 ACLS：
 
@@ -564,7 +564,7 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
    ```cmd
    "%nfast_home%\bin\kmfile-dump.exe" "%NFAST_KMDATA%\local\key_xferacld_contosokey"
    ```
-  當您執行這些命令時，請以您從[產生您的金鑰](#step-3-generate-your-key)步驟的**步驟 3.5：建立新的金鑰**指定的相同值取代 contosokey。
+  當您執行這些命令時，請以您從 [產生您的金鑰](#step-3-generate-your-key)步驟的 **步驟 3.5：建立新的金鑰** 指定的相同值取代 contosokey。
 
 ### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>步驟 4.2：使用 Microsoft 的金鑰交換金鑰來加密您的金鑰
 
@@ -664,11 +664,11 @@ generatekey --generate simple type=RSA size=2048 protect=module ident=contosokey
 
 當您執行此命令時，請使用下列指示：
 
-* 請以您在*產生您的金鑰*步驟的**步驟 3.5：建立新的金鑰**中用來產生金鑰的識別碼取代 [contosokey](#step-3-generate-your-key) 。
+* 請以您在 *產生您的金鑰* 步驟的 **步驟 3.5：建立新的金鑰** 中用來產生金鑰的識別碼取代 [contosokey](#step-3-generate-your-key) 。
 * 以包含金鑰保存庫的 Azure 訂用帳戶識別碼取代 *SubscriptionID* 。 您先前已在 **步驟 1.2：取得 Azure 訂用帳戶識別碼** 中從 [準備網際網路連線的工作站](#step-1-prepare-your-internet-connected-workstation) 步驟擷取過這個值。
-* 以用於輸出檔案名稱的標籤取代 *ContosoFirstHSMKey*。
+* 以用於輸出檔案名稱的標籤取代 *ContosoFirstHSMKey* 。
 
-當此動作成功完成時，會顯示 **Result: SUCCESS** ，而且目前的資料夾中會有新的檔案，其名稱如下：KeyTransferPackage-*ContosoFirstHSMkey*.byok
+當此動作成功完成時，會顯示 **Result: SUCCESS** ，而且目前的資料夾中會有新的檔案，其名稱如下：KeyTransferPackage- *ContosoFirstHSMkey* .byok
 
 ### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>步驟 4.3：將金鑰傳輸封裝複製到網際網路連線的工作站
 

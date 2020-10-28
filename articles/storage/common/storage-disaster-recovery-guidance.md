@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e9bd2db8bcc427118a76f87e49ade422a74a11c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7d7bff1bc85e0dec78a69422d126b86f61b7704
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87276919"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783975"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>災害復原和儲存體帳戶容錯移轉
 
@@ -33,9 +33,9 @@ Azure 儲存體支援異地冗余儲存體帳戶的帳戶容錯移轉。 透過�
 
 Azure 儲存體會維護儲存體帳戶的多個複本，以確保持久性和高可用性。 您針對帳戶所選擇的備援選項，取決於您所需的復原程度。 針對區域性中斷的保護，請設定您的帳戶以使用異地複寫儲存體，不論是否有從次要區域讀取存取的選項：  
 
-**異地冗余儲存體 (GRS) 或地理區域冗余儲存體 (GZRS) ** 在兩個地理區域中以非同步方式複製您的資料，這些地理區域至少有數十萬英里。 如果主要區域發生中斷，次要區域便會成為您資料的備援來源。 您可以起始容錯移轉，以將次要端點轉換為主要端點。
+**異地冗余儲存體 (GRS) 或地理區域冗余儲存體 (GZRS)** 在兩個地理區域中以非同步方式複製您的資料，這些地理區域至少有數十萬英里。 如果主要區域發生中斷，次要區域便會成為您資料的備援來源。 您可以起始容錯移轉，以將次要端點轉換為主要端點。
 
-**讀取權限異地冗余儲存體 (GRS) 或讀取權限異地區域冗余儲存體 (ra-GZRS) ** 提供異地多餘的儲存體，並提供次要端點讀取權限的額外優點。 如果主要端點發生中斷情況，則針對次要資料庫的讀取存取設定的應用程式，以及針對高可用性而設計的應用程式，都可以繼續從次要端點讀取。 Microsoft 建議以 GZRS 為您的應用程式提供最大的可用性和耐久性。
+**讀取權限異地冗余儲存體 (GRS) 或讀取權限異地區域冗余儲存體 (ra-GZRS)** 提供異地多餘的儲存體，並提供次要端點讀取權限的額外優點。 如果主要端點發生中斷情況，則針對次要資料庫的讀取存取設定的應用程式，以及針對高可用性而設計的應用程式，都可以繼續從次要端點讀取。 Microsoft 建議以 GZRS 為您的應用程式提供最大的可用性和耐久性。
 
 如需 Azure 儲存體中冗余的詳細資訊，請參閱 [Azure 儲存體冗余](storage-redundancy.md)。
 
@@ -54,9 +54,9 @@ Azure 儲存體會維護儲存體帳戶的多個複本，以確保持久性和�
 此外，請記住這些適用於維護 Azure 儲存體資料之高可用性的最佳做法：
 
 - **磁片：** 使用 [Azure 備份](https://azure.microsoft.com/services/backup/) 來備份您的 Azure 虛擬機器所使用的 VM 磁片。 也請考慮使用 [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) 來保護 VM 不受區域災害的影響。
-- **區塊 blob：** 開啟虛 [刪除](../blobs/storage-blob-soft-delete.md) 以防止物件層級刪除和覆寫，或使用 [AzCopy](storage-use-azcopy.md)、 [Azure PowerShell](/powershell/module/az.storage/)或 [Azure 資料手機連結庫](storage-use-data-movement-library.md)，將區塊 blob 複製到不同區域中的另一個儲存體帳戶。
-- 檔案 **：** 使用[AzCopy](storage-use-azcopy.md)或[Azure PowerShell](/powershell/module/az.storage/)將您的檔案複製到不同區域中的另一個儲存體帳戶。
-- **資料表：** 使用 [AzCopy](storage-use-azcopy.md) 將資料表資料匯出到位於不同區域的其他儲存體帳戶。
+- **區塊 blob：** 開啟虛 [刪除](../blobs/soft-delete-blob-overview.md) 以防止物件層級刪除和覆寫，或使用 [AzCopy](./storage-use-azcopy-v10.md)、 [Azure PowerShell](/powershell/module/az.storage/)或 [Azure 資料手機連結庫](storage-use-data-movement-library.md)，將區塊 blob 複製到不同區域中的另一個儲存體帳戶。
+- 檔案 **：** 使用 [AzCopy](./storage-use-azcopy-v10.md)或 [Azure PowerShell](/powershell/module/az.storage/)將您的檔案複製到不同區域中的另一個儲存體帳戶。
+- **資料表：** 使用 [AzCopy](./storage-use-azcopy-v10.md) 將資料表資料匯出到位於不同區域的其他儲存體帳戶。
 
 ## <a name="track-outages"></a>追蹤中斷
 
@@ -98,7 +98,7 @@ Microsoft 也建議您將應用程式設計成可以因應可能的寫入失敗�
 
 當您強制進行容錯移轉時，隨著次要區域變成新的主要區域，且儲存體帳戶被設定為本地備援，舊主要區域中的所有資料都會遺失。 當容錯移轉發生時，會維護已複製到次要資料庫的所有資料。 但是，任何寫入至未複製到次要資料庫之主要資料的資料會永久遺失。
 
-[上次同步時間]**** 屬性能指出來自主要區域的資料保證已寫入次要區域的最近時間。 在 [上次同步時間] 之前所寫入的所有資料都會存在於次要區域上，但在 [上次同步時間] 之後所寫入的資料則有可能尚未寫入次要區域，並可能會遺失。 在發生中斷時，請使用此屬性來估計起始帳戶容錯移轉可能會導致的資料遺失程度。
+[上次同步時間]  屬性能指出來自主要區域的資料保證已寫入次要區域的最近時間。 在 [上次同步時間] 之前所寫入的所有資料都會存在於次要區域上，但在 [上次同步時間] 之後所寫入的資料則有可能尚未寫入次要區域，並可能會遺失。 在發生中斷時，請使用此屬性來估計起始帳戶容錯移轉可能會導致的資料遺失程度。
 
 作為最佳做法，請將應用程式設計成可以使用 [上次同步時間] 來評估預期的資料遺失。 例如，如果您記錄所有寫入作業，則您可以比較最後一次的寫入作業與 [上次同步時間]，來判斷哪些寫入尚未被同步到次要區域。
 
@@ -110,7 +110,7 @@ Microsoft 也建議您將應用程式設計成可以因應可能的寫入失敗�
 
 在儲存體帳戶被重新設定為異地備援之後，您可以從新的主要區域針對新的次要區域起始另一個容錯移轉。 在此情況下，容錯移轉前的原始主要區域將會再次變成主要區域，並被設定為本地備援。 這會使所有位於容錯移轉前主要區域 (原始的次要區域) 中的所有資料都遺失。 如果在您容錯回復之前，儲存體帳戶中的大部分資料尚未複製到新的次要資料庫，您可能會遭遇重大資料遺失。
 
-若要避免重大資料遺失，請在容錯回復之前檢查 [上次同步時間]**** 屬性。 比較 [上次同步時間] 與上次資料寫入到新主要區域的時間，以評估預期的資料遺失。 
+若要避免重大資料遺失，請在容錯回復之前檢查 [上次同步時間]  屬性。 比較 [上次同步時間] 與上次資料寫入到新主要區域的時間，以評估預期的資料遺失。 
 
 ## <a name="initiate-an-account-failover"></a>初始化帳戶容錯移轉
 
@@ -132,7 +132,7 @@ Microsoft 也建議您將應用程式設計成可以因應可能的寫入失敗�
 
 ### <a name="azure-virtual-machines"></a>Azure 虛擬機器
 
-Azure 虛擬機器 (VM) 不會隨著帳戶容錯移轉一起容錯移轉。 如果主要區域變得無法使用，且您容錯移轉到次要區域，您必須在容錯移轉後重新建立所有 VM。 此外，可能會遺失與帳戶容錯移轉相關聯的資料。 Microsoft 建議您針對 Azure 中的虛擬機器提供下列 [高可用性和嚴重](../../virtual-machines/windows/manage-availability.md) 損壞 [修復](../../virtual-machines/windows/backup-recovery.md) 指導方針。
+Azure 虛擬機器 (VM) 不會隨著帳戶容錯移轉一起容錯移轉。 如果主要區域變得無法使用，且您容錯移轉到次要區域，您必須在容錯移轉後重新建立所有 VM。 此外，可能會遺失與帳戶容錯移轉相關聯的資料。 Microsoft 建議您針對 Azure 中的虛擬機器提供下列 [高可用性和嚴重](../../virtual-machines/manage-availability.md) 損壞 [修復](../../virtual-machines/backup-recovery.md) 指導方針。
 
 ### <a name="azure-unmanaged-disks"></a>Azure 非受控磁碟
 
@@ -143,7 +143,7 @@ Azure 虛擬機器 (VM) 不會隨著帳戶容錯移轉一起容錯移轉。 如�
 1. 在開始前，請記下所有非受控磁碟的名稱、其邏輯單元編號 (LUN)，以及其所附加至的 VM。 這麼做將會使於容錯移轉後重新附加磁碟的工作變得較為輕鬆。
 2. 關閉 VM。
 3. 刪除 VM，但保留非受控磁碟的 VHD 檔案。 請記下您刪除 VM 的時間。
-4. 等候 [上次同步時間]**** 更新，並且是比您刪除 VM 更晚的時間。 此步驟很重要，因為在發生容錯移轉時，如果次要端點尚未搭配 VHD 檔案完全更新，則 VM 在新的主要區域中可能無法正確執行。
+4. 等候 [上次同步時間]  更新，並且是比您刪除 VM 更晚的時間。 此步驟很重要，因為在發生容錯移轉時，如果次要端點尚未搭配 VHD 檔案完全更新，則 VM 在新的主要區域中可能無法正確執行。
 5. 起始帳戶容錯移轉。
 6. 等候帳戶容錯移轉完成，且次要區域已成為新的主要區域。
 7. 在新的主要區域中建立 VM，並重新附加 VHD。
@@ -162,7 +162,7 @@ Azure 虛擬機器 (VM) 不會隨著帳戶容錯移轉一起容錯移轉。 如�
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>將複製資料作為容錯移轉的替代項目
 
-如果您的儲存體帳戶已設定為可讀取次要資料庫的存取權，則您可以設計應用程式以從次要端點讀取。 如果您不想在主要區域發生中斷的情況下進行容錯移轉，您可以使用 [AzCopy](storage-use-azcopy.md)、[Azure PowerShell](/powershell/module/az.storage/) 或 [Azure Data Movement 程式庫](../common/storage-use-data-movement-library.md) \(英文\) 等工具，將次要區域中的資料從儲存體帳戶複製到位於未受影響區域中的另一個儲存體帳戶。 您接著可以將應用程式指向該儲存體帳戶，以取得讀取和寫入上的可用性。
+如果您的儲存體帳戶已設定為可讀取次要資料庫的存取權，則您可以設計應用程式以從次要端點讀取。 如果您不想在主要區域發生中斷的情況下進行容錯移轉，您可以使用 [AzCopy](./storage-use-azcopy-v10.md)、[Azure PowerShell](/powershell/module/az.storage/) 或 [Azure Data Movement 程式庫](../common/storage-use-data-movement-library.md) \(英文\) 等工具，將次要區域中的資料從儲存體帳戶複製到位於未受影響區域中的另一個儲存體帳戶。 您接著可以將應用程式指向該儲存體帳戶，以取得讀取和寫入上的可用性。
 
 > [!CAUTION]
 > 帳戶容錯移轉不應當做資料移轉策略的一部分使用。
@@ -171,7 +171,7 @@ Azure 虛擬機器 (VM) 不會隨著帳戶容錯移轉一起容錯移轉。 如�
 
 在區域因嚴重災害而遺失的極端情況下，Microsoft 可能會起始區域容錯移轉。 在此情況下，您不需要採取任何動作。 在 Microsoft 管理的容錯移轉完成之前，您將無法取得儲存體帳戶的寫入權限。 如果您的儲存體帳戶設定為 GRS 或 GZRS，您的應用程式可以從次要區域讀取。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [使用異地備援來設計高可用性的應用程式](geo-redundant-design.md)
 - [初始化帳戶容錯移轉](storage-initiate-account-failover.md)

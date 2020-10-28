@@ -9,23 +9,23 @@ ms.subservice: managed-hsm
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: a21d0db383e8c563f0b187061a95ac818dd2a4f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 803dc4d1a7b78df891780eb741cba4e57ab2d5dc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994546"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784417"
 ---
 # <a name="managed-hsm-access-control"></a>受控 HSM 存取控制
 
 > [!NOTE]
-> Key Vault 資源提供者支援兩種資源類型：保存 **庫** 和 **受管理的 hsm**。 本文所述的存取控制僅適用于 **受管理的 hsm**。 若要深入瞭解受控 HSM 的存取控制，請參閱 [使用 Azure 角色型存取控制來提供 Key Vault 金鑰、憑證和秘密的存取權](../general/rbac-guide.md)。
+> Key Vault 資源提供者支援兩種資源類型：保存 **庫** 和 **受管理的 hsm** 。 本文所述的存取控制僅適用于 **受管理的 hsm** 。 若要深入瞭解受控 HSM 的存取控制，請參閱 [使用 Azure 角色型存取控制來提供 Key Vault 金鑰、憑證和秘密的存取權](../general/rbac-guide.md)。
 
 Azure Key Vault 受控 HSM 是一項雲端服務，可保護加密金鑰。 這是敏感且具業務關鍵性的資料，因此您必須藉由僅允許獲得授權的應用程式和使用者存取受控 HSM，來保護其存取。 本文提供受控 HSM 控制存取模型的概觀。 文中會說明驗證和授權，並說明如何保護對受控 HSM 的存取權。
 
 ## <a name="access-control-model"></a>存取控制模型
 
-受控 HSM 的存取權可透過兩個介面來控制： **管理平面** 和 **資料平面**。 管理平面是您管理 HSM 本身的位置。 此平面中的作業包括建立和刪除受管理的 hsm，以及抓取受管理的 HSM 屬性。 資料平面是您使用受管理的 HSM 中所儲存資料的位置，也就是 HSM 支援的加密金鑰。 您可以新增、刪除、修改和使用金鑰來執行密碼編譯作業、管理角色指派來控制金鑰的存取、建立完整的 HSM 備份、還原完整備份，以及從資料平面介面管理安全性網域。
+受控 HSM 的存取權可透過兩個介面來控制： **管理平面** 和 **資料平面** 。 管理平面是您管理 HSM 本身的位置。 此平面中的作業包括建立和刪除受管理的 hsm，以及抓取受管理的 HSM 屬性。 資料平面是您使用受管理的 HSM 中所儲存資料的位置，也就是 HSM 支援的加密金鑰。 您可以新增、刪除、修改和使用金鑰來執行密碼編譯作業、管理角色指派來控制金鑰的存取、建立完整的 HSM 備份、還原完整備份，以及從資料平面介面管理安全性網域。
 
 若要在任一平面存取受控 HSM，所有呼叫端都必須有適當的驗證和授權。 驗證會建立呼叫者的身分識別。 授權則會判斷呼叫者可以執行哪些作業。 呼叫端可以是 Azure Active Directory 使用者、群組、服務主體或受控識別中定義的任何一個 [安全性主體](../../role-based-access-control/overview.md#security-principal) 。
 
@@ -46,7 +46,7 @@ Azure Key Vault 受控 HSM 是一項雲端服務，可保護加密金鑰。 這�
 
 當您在 Azure 訂用帳戶中建立受控 HSM 時，它會自動與訂用帳戶的 Azure Active Directory 租使用者建立關聯。 這兩個平面中的所有呼叫者都必須在此租使用者中註冊，並進行驗證以存取受管理的 HSM。
 
-應用程式會在呼叫任一平面之前，使用 Azure Active Directory 進行驗證。 應用程式可以根據應用程式類型來使用任何 [支援的驗證方法](../../active-directory/develop/authentication-scenarios.md) 。 應用程式會取得平面中的資源權杖以取得存取權。 視 Azure 環境而定，資源會是管理或資料平面中的端點。 應用程式會使用權杖，並將 REST API 要求傳送至受管理的 HSM 端點。 若要深入了解，請參閱[整個驗證流程](../../active-directory/develop/v2-oauth2-auth-code-flow.md)。
+應用程式會在呼叫任一平面之前，使用 Azure Active Directory 進行驗證。 應用程式可以根據應用程式類型來使用任何 [支援的驗證方法](../../active-directory/develop/authentication-vs-authorization.md) 。 應用程式會取得平面中的資源權杖以取得存取權。 視 Azure 環境而定，資源會是管理或資料平面中的端點。 應用程式會使用權杖，並將 REST API 要求傳送至受管理的 HSM 端點。 若要深入了解，請參閱[整個驗證流程](../../active-directory/develop/v2-oauth2-auth-code-flow.md)。
 
 針對這兩個平面使用單一驗證機制有幾個優點：
 
@@ -63,18 +63,18 @@ Azure Key Vault 受控 HSM 是一項雲端服務，可保護加密金鑰。 這�
 | 存取&nbsp;平面 | 存取端點 | 作業 | 存取控制機制 |
 | --- | --- | --- | --- |
 | 管理平面 | **全域：**<br> management.azure.com:443<br> | 建立、讀取、更新、刪除和移動受控 Hsm<br>設定受控 HSM 標記 | Azure RBAC |
-| 資料平面 | **全域：**<br> &lt;hsm 名稱 &gt; . vault.azure.net:443<br> | **金鑰**：解密、加密、<br> 解除包裝、包裝、驗證、簽署、取得、列出、更新、建立、匯入、刪除、備份、還原、清除<br/><br/> **資料平面角色管理 (受控 HSM 本機 RBAC) * * *：列出角色定義、指派角色、刪除角色指派、定義自訂角色 <br/> <br/> **備份/還原 **：備份、還原、檢查狀態備份/還原作業 <br/> <br/> **安全性網域 * *：下載並上傳安全性網域 | 受控 HSM 本機 RBAC |
+| 資料平面 | **全域：**<br> &lt;hsm 名稱 &gt; . vault.azure.net:443<br> | **金鑰** ：解密、加密、<br> 解除包裝、包裝、驗證、簽署、取得、列出、更新、建立、匯入、刪除、備份、還原、清除<br/><br/> **資料平面角色管理 (受控 HSM 本機 RBAC)** _：列出角色定義、指派角色、刪除角色指派、定義自訂角色 <br/> <br/>_ * 備份/還原 **：備份、還原、檢查狀態備份/還原作業 <br/> <br/>** 安全性網域 * *：下載並上傳安全性網域 | 受控 HSM 本機 RBAC |
 |||||
 ## <a name="management-plane-and-azure-rbac"></a>管理平面和 Azure RBAC
 
-在管理平面中，您會使用 Azure RBAC 來授權呼叫者可以執行的作業。 在 RBAC 模型中，每個 Azure 訂用帳戶都有 Azure Active Directory 的實例。 您可以對來自該目錄的使用者、群組和應用程式授與存取權。 授與存取權即可在 Azure 訂用帳戶中管理使用 Azure Resource Manager 部署模型的資源。 若要授與存取權，請使用 [Azure 入口網站](https://portal.azure.com/)、[Azure CLI](../../cli-install-nodejs.md)、[Azure PowerShell](/powershell/azureps-cmdlets-docs) 或 [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx)。
+在管理平面中，您會使用 Azure RBAC 來授權呼叫者可以執行的作業。 在 RBAC 模型中，每個 Azure 訂用帳戶都有 Azure Active Directory 的實例。 您可以對來自該目錄的使用者、群組和應用程式授與存取權。 授與存取權即可在 Azure 訂用帳戶中管理使用 Azure Resource Manager 部署模型的資源。 若要授與存取權，請使用 [Azure 入口網站](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-classic-cli)、[Azure PowerShell](/powershell/azureps-cmdlets-docs) 或 [Azure Resource Manager REST API](/rest/api/authorization/roleassignments)。
 
 您會在資源群組中建立金鑰保存庫，並使用 Azure Active Directory 來管理存取權。 您可以對使用者或群組授與在資源群組中管理金鑰保存庫的能力。 您可以藉由指派適當的 RBAC 角色，來授與特定範圍層級的存取權。 若要對使用者授與管理金鑰保存庫的權限，您可以在特定範圍對使用者指派預先定義的 `key vault Contributor` 角色。 您可以對 RBAC 角色指派下列範圍層級：
 
-- **管理群組**：在訂用帳戶層級指派的 RBAC 角色，會套用至該管理群組中的所有訂用帳戶。
+- **管理群組** ：在訂用帳戶層級指派的 RBAC 角色，會套用至該管理群組中的所有訂用帳戶。
 - 訂用帳戶：在訂用帳戶層級指派的 RBAC 角色，會套用至該訂用帳戶內的所有資源群組和資源。
-- **資源群組**：在資源群組層級指派的 RBAC 角色，會套用至該資源群組內的所有資源。
-- **特定資源**：針對特定資源指派的 RBAC 角色，則會套用至該資源。 在此情況下，資源會是特定的金鑰保存庫。
+- **資源群組** ：在資源群組層級指派的 RBAC 角色，會套用至該資源群組內的所有資源。
+- **特定資源** ：針對特定資源指派的 RBAC 角色，則會套用至該資源。 在此情況下，資源會是特定的金鑰保存庫。
 
 有數個預先定義的角色。 如果預先定義的角色不符合您的需求，您可以定義您自己的角色。 如需詳細資訊，請參閱[RBAC：內建角色](../../role-based-access-control/built-in-roles.md)。
 
@@ -82,8 +82,8 @@ Azure Key Vault 受控 HSM 是一項雲端服務，可保護加密金鑰。 這�
 
 您可以藉由指派角色來授與安全性主體存取權，以執行特定的金鑰作業。 針對每個角色指派，您必須指定要套用指派的角色和範圍。 針對受控 HSM 本機 RBAC，有兩個範圍可供使用。
 
-- **"/" 或 "/keys"**： HSM 層級範圍。 在此範圍指派角色的安全性主體可針對受管理的 HSM 中)  (金鑰的所有物件，執行角色中定義的作業。
-- **"/keys/ &lt; key-name &gt; "**：索引鍵層級範圍。 在此範圍指派角色的安全性主體，只能針對指定之金鑰的所有版本執行此角色中定義的作業。
+- **"/" 或 "/keys"** ： HSM 層級範圍。 在此範圍指派角色的安全性主體可針對受管理的 HSM 中)  (金鑰的所有物件，執行角色中定義的作業。
+- **"/keys/ &lt; key-name &gt; "** ：索引鍵層級範圍。 在此範圍指派角色的安全性主體，只能針對指定之金鑰的所有版本執行此角色中定義的作業。
 
 ## <a name="next-steps"></a>下一步
 
