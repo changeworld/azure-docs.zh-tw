@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bd5ae5c60530890f65f8cc9a98171c29820a7762
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd2f7d46df09085d19b19709c7f45cd3d6566988
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85202852"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628655"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -63,7 +63,7 @@ ms.locfileid: "85202852"
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| Id | 是 | 內容定義的識別碼。 此值是本頁面後面的**內容定義識別碼**區段中指定的值。 |
+| Id | 是 | 內容定義的識別碼。 此值是本頁面後面的 **內容定義識別碼** 區段中指定的值。 |
 
 **ContentDefinition** 元素包含下列元素：
 
@@ -96,7 +96,7 @@ ms.locfileid: "85202852"
 
 的 [版本](page-layout.md) 部分會 `DataUri` 針對原則中的使用者介面專案，指定包含 HTML、CSS 和 JavaScript 的內容套件。 如果您想要啟用 JavaScript 用戶端程式代碼，您的 JavaScript 所依據的元素必須是不可變的。 如果它們不是不可變的，則任何變更可能會在使用者頁面上造成非預期的行為。 若要避免這些問題，請強制使用頁面配置，並指定頁面配置版本。 這麼做可確保您以 JavaScript 為基礎的所有內容定義都是不可變的。 即使您不打算啟用 JavaScript，仍然需要指定頁面的頁面配置版本。
 
-下列範例會顯示版本**DataUri**的 DataUri `selfasserted` `1.2.0` ：
+下列範例會顯示版本 **DataUri** 的 DataUri `selfasserted` `1.2.0` ：
 
 ```xml
 <ContentDefinition Id="api.localaccountpasswordreset">
@@ -111,7 +111,7 @@ ms.locfileid: "85202852"
 
 #### <a name="migrating-to-page-layout"></a>遷移至頁面配置
 
-值的格式必須包含 " `contract` _urn： com： microsoft： aad： b2c： elements：**contract**:p age： version_。 若要在自訂原則中指定使用舊 **DataUri** 值的頁面配置，請使用下表來遷移至新的格式。
+值的格式必須包含 " `contract` _urn： com： microsoft： aad： b2c： elements： **contract** :p age： version_ 。 若要在自訂原則中指定使用舊 **DataUri** 值的頁面配置，請使用下表來遷移至新的格式。
 
 | 舊的 DataUri 值 | 新的 DataUri 值 |
 | ----------------- | ----------------- |
@@ -126,6 +126,39 @@ ms.locfileid: "85202852"
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 
+下列範例會顯示內容定義識別碼和對應的 **DataUri** 與頁面合約： 
+
+```xml
+<ContentDefinitions>
+  <ContentDefinition Id="api.error">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.idpselections">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.idpselections.signup">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.signuporsignin">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.selfasserted">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.selfasserted.profileupdate">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.localaccountsignup">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.localaccountpasswordreset">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.phonefactor">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0</DataUri>
+  </ContentDefinition>
+</ContentDefinitions>
+```
 
 ### <a name="metadata"></a>中繼資料
 
@@ -157,7 +190,7 @@ ms.locfileid: "85202852"
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1:n | 內容定義的當地語系化資源參考清單。 |
 
-**LocalizedResourcesReference**元素包含下列屬性：
+**LocalizedResourcesReference** 元素包含下列屬性：
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
@@ -190,10 +223,10 @@ ms.locfileid: "85202852"
 
 | 識別碼 | 預設範本 | 描述 |
 | -- | ---------------- | ----------- |
-| api.error**** | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **錯誤頁面** - 發生例外狀況或錯誤時，會顯示錯誤頁面。 |
-| api.idpselections**** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **識別提供者選取頁面** - 列出使用者可以在登入期間選擇的識別提供者。 這些選項通常是企業識別提供者、社交識別提供者 (如 Facebook 和 Google+) 或本機帳戶。 |
-| api.idpselections.signup**** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **適用於註冊的識別提供者選取項目** - 列出使用者可以在註冊期間選擇的識別提供者。 這些選項通常是企業識別提供者、社交識別提供者 (如 Facebook 和 Google+) 或本機帳戶。 |
-| api.localaccountpasswordreset**** | [selfasserted](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **忘記密碼頁面** - 顯示一份表單，使用者必須填妥表單，然後才能開始密碼重設。 |
+| api.error  | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **錯誤頁面** - 發生例外狀況或錯誤時，會顯示錯誤頁面。 |
+| api.idpselections  | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **識別提供者選取頁面** - 列出使用者可以在登入期間選擇的識別提供者。 這些選項通常是企業識別提供者、社交識別提供者 (如 Facebook 和 Google+) 或本機帳戶。 |
+| api.idpselections.signup  | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **適用於註冊的識別提供者選取項目** - 列出使用者可以在註冊期間選擇的識別提供者。 這些選項通常是企業識別提供者、社交識別提供者 (如 Facebook 和 Google+) 或本機帳戶。 |
+| api.localaccountpasswordreset  | [selfasserted](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **忘記密碼頁面** - 顯示一份表單，使用者必須填妥表單，然後才能開始密碼重設。 |
 | **api.localaccountsignin** | [selfasserted](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **本機帳戶登入頁面** - 顯示一份表單，可供以電子郵件地址或使用者名稱為基礎的本機帳戶進行登入。 此表單可以包含文字輸入方塊和密碼輸入方塊。 |
 | **api.localaccountsignup** | [selfasserted](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **本機帳戶註冊頁面** - 顯示一份表單，可供以電子郵件地址或使用者名稱為基礎的本機帳戶進行註冊。 此表單可以包含各種輸入控制項，例如文字輸入方塊、密碼輸入方塊、選項按鈕、單選下拉式清單方塊和多選核取方塊。 |
 | **api.phonefactor** | [multifactor-1.0.0.cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **多重要素驗證頁面** - 在註冊或登入期間，藉由使用簡訊或語音，驗證電話號碼。 |

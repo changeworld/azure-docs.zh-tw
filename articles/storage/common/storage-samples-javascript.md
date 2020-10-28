@@ -3,17 +3,17 @@ title: 使用 JavaScript 的 Azure 儲存體範例 | Microsoft Docs
 description: 檢視、下載及執行 Azure 儲存體的範例程式碼和應用程式。 探索使用 JavaScript/Node.js 儲存體用戶端程式庫之 Blob、佇列、資料表和檔案的入門範例。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/19/2020
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-js
-ms.openlocfilehash: 208e06e9bd8fcf26674a11f79d2bd6878ca4f633
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d21c92d6595d2db3f9fb01ee5ddc3669a0564bab
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331551"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92359742"
 ---
 # <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>使用 v12 JavaScript 用戶端程式庫的 Azure 儲存體範例
 
@@ -428,4 +428,5 @@ ms.locfileid: "91331551"
 * .NET：[使用 .NET 的 Azure 儲存體範例](storage-samples-dotnet.md)
 * Java：[使用 Java 的 Azure 儲存體範例](storage-samples-java.md)
 * Python：[使用 Python 的 Azure 儲存體範例](storage-samples-python.md)
+* C++：[使用 C++ 的 Azure 儲存體範例](storage-samples-c-plus-plus.md)
 * 所有其他語言：[Azure 儲存體範例](storage-samples.md)

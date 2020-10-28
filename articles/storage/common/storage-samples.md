@@ -3,17 +3,17 @@ title: Azure 儲存體程式碼範例 | Microsoft Docs
 description: 檢視、下載及執行 Azure 儲存體的範例程式碼和應用程式。 探索使用 .NET、Java、Python、Node.js、Azure CLI 和 C++ 的儲存體用戶端程式庫之 Blob、佇列、資料表和檔案的入門範例。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/06/2019
+ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: edf30d628a73c879ce81f68bda7cd2d7daa6cde3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cf1b643caef515411842d6aaf668708e873e96d
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503645"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92367885"
 ---
 # <a name="azure-storage-samples"></a>Azure 儲存體範例
 
@@ -49,11 +49,11 @@ ms.locfileid: "87503645"
 
 ## <a name="c-samples"></a>C++ 範例
 
-若要瀏覽 C++ 範例，請從 NuGet 下載 [C++ 儲存體用戶端程式庫](https://www.nuget.org/packages/wastorage/)。
+若要瀏覽 C++ 範例，請從 GitHub 取得[適用於 C++ 的 Azure 儲存體用戶端程式庫](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage)。
 
-* [開始使用 Blob](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)
-* [開始使用資料表](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/TablesGettingStarted.cpp)
-* [開始使用佇列](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/QueuesGettingStarted.cpp)
+* [開始使用 Azure Blob](https://github.com/Azure/azure-sdk-for-cpp/blob/master/sdk/storage/azure-storage-blobs/sample/blob_getting_started.cpp)
+* [開始使用 Azure Data Lake](https://github.com/Azure/azure-sdk-for-cpp/blob/master/sdk/storage/azure-storage-files-datalake/sample/datalake_getting_started.cpp)
+* [開始使用 Azure 檔案儲存體](https://github.com/Azure/azure-sdk-for-cpp/blob/master/sdk/storage/azure-storage-files-shares/sample/file_share_getting_started.cpp)
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -71,7 +71,7 @@ ms.locfileid: "87503645"
 | Java | [Java 用戶端程式庫參考](https://docs.microsoft.com/java/api/overview/azure/storage) | [Java 儲存體用戶端程式庫的原始程式碼](https://github.com/azure/azure-storage-java) |
 | Python | [Python 用戶端程式庫參考](https://azure-storage.readthedocs.io/) \(英文\) | [Python 儲存體用戶端程式庫的原始程式碼](https://github.com/Azure/azure-storage-python) \(英文\) |
 | Node.js | [Node.js 用戶端程式庫參考](https://azure.github.io/azure-storage-node) | [Node.js 儲存體用戶端程式庫的原始程式碼](https://github.com/Azure/azure-storage-node) |
-| C++ | [C++ 用戶端程式庫參考](https://azure.github.io/azure-storage-cpp/) | [C++ 儲存體用戶端程式庫的原始程式碼](https://github.com/Azure/azure-storage-cpp)|
+| C++ | [C++ 用戶端程式庫參考](https://azure.github.io/azure-sdk-for-cpp/) | [C++ 儲存體用戶端程式庫的原始程式碼](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage)|
 | Azure CLI | [Azure CLI 程式庫參考](/cli/azure/storage) | [Azure CLI 儲存體用戶端程式庫的原始程式碼](https://github.com/Azure-Samples/azure-cli-samples/tree/master/storage) \(英文\)
 
 ## <a name="next-steps"></a>後續步驟
@@ -82,4 +82,5 @@ ms.locfileid: "87503645"
 * [使用 Java 的 Azure 儲存體範例](storage-samples-java.md)
 * [使用 JavaScript 的 Azure 儲存體範例](storage-samples-javascript.md)
 * [使用 Python 的 Azure 儲存體範例](storage-samples-python.md)
+* [使用 C++ 的 Azure 儲存體範例](storage-samples-c-plus-plus.md)
 * [使用 Azure CLI 的 Azure 儲存體範例](/azure/storage/blobs/storage-samples-blobs-cli)

@@ -5,14 +5,14 @@ services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 10/22/2020
+ms.date: 10/26/2020
 ms.author: lle
-ms.openlocfilehash: d35dd94c8aa264c9b4dd679d3b50f3783acb2fde
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c85e27cedfbcebe7060dfed2f96fc53aea9838c9
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427222"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629358"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>針對自我裝載整合執行階段進行疑難排解
 
@@ -34,7 +34,7 @@ ms.locfileid: "92427222"
 
     ![傳送記錄檔](media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png)
 
-1. 您可以選擇想要傳送的記錄檔。 針對 *自我裝載 ir*，您可以上傳與失敗活動相關的記錄，或自我裝載 ir 節點上的所有記錄。 針對 *共用 IR*，您只能上傳與失敗活動相關的記錄。
+1. 您可以選擇想要傳送的記錄檔。 針對 *自我裝載 ir* ，您可以上傳與失敗活動相關的記錄，或自我裝載 ir 節點上的所有記錄。 針對 *共用 IR* ，您只能上傳與失敗活動相關的記錄。
 
     ![選擇記錄檔](media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "92427222"
 #### <a name="resolution"></a>解決方案
 
 Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通常是因為 SSL 憑證不正確而發生。 SAN 中的最後一個 DNSName 應該是有效的。 請遵循下列步驟來驗證。 
-1.  開啟管理主控台，再從憑證詳細資料中，再次檢查 *主體* 和 *主體替代名稱* 。 例如，在上述案例中， *主體別名*中的最後一個專案是「DNS 名稱 = microsoft.com.com」，並不合法。
+1.  開啟管理主控台，再從憑證詳細資料中，再次檢查 *主體* 和 *主體替代名稱* 。 例如，在上述案例中， *主體別名* 中的最後一個專案是「DNS 名稱 = microsoft.com.com」，並不合法。
 2.  請洽詢憑證問題公司以移除錯誤的 DNS 名稱。
 
 ### <a name="concurrent-jobs-limit-issue"></a>並行作業數限制問題
@@ -164,7 +164,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 > [!TIP] 
 > 您可以設定篩選器，如下列螢幕擷取畫面所示。
-> 它會告訴我們 dll **ValueTuple** 不在 GAC 相關資料夾或 *C:\Program Files\Microsoft integration Runtime\4.0\Gateway*或 *C:\Program Files\Microsoft integration Runtime\4.0\Shared* 資料夾中。
+> 它會告訴我們 dll **ValueTuple** 不在 GAC 相關資料夾或 *C:\Program Files\Microsoft integration Runtime\4.0\Gateway* 或 *C:\Program Files\Microsoft integration Runtime\4.0\Shared* 資料夾中。
 > 基本上，檔案會先從 GAC 資料夾載入 dll，然後從「共用」載入 dll，最後再從「閘道」資料夾載入 dll。 因此，您可以將 dll 放到任何可能有幫助的路徑。
 
 ![設定篩選](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
@@ -179,7 +179,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 您在 *%windir%\Microsoft.NET\assembly* 和 *%windir%\assembly* 下看到 System.ValueTuple.dll 的原因是 .net 的行為。 
 
-從下面的錯誤中，您可以清楚地看到元件 *ValueTuple* 。 因此，當應用程式嘗試檢查元件 *System.ValueTuple.dll*時，就會發生這類問題。
+從下面的錯誤中，您可以清楚地看到元件 *ValueTuple* 。 因此，當應用程式嘗試檢查元件 *System.ValueTuple.dll* 時，就會發生這類問題。
  
 `<LogProperties><ErrorInfo>[{"Code":0,"Message":"The type initializer for 'Npgsql.PoolManager' threw an exception.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.TypeInitializationException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[{"Code":0,"Message":"Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.IO.FileNotFoundException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[]}]}]</ErrorInfo></LogProperties>`
  
@@ -201,7 +201,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 #### <a name="resolution"></a>解決方案
 
-如果上述任一原因都不適用，您可以移至資料夾： *%Programdata%\Microsoft\Data Transfer\DataManagementGateway*，並檢查名稱為 [設定] 的檔案 **是否已刪除** 。 如果已刪除，請依照[這裡](https://www.netwrix.com/how_to_detect_who_deleted_file.html)的指示，稽核刪除該檔案的人員。
+如果上述任一原因都不適用，您可以移至資料夾： *%Programdata%\Microsoft\Data Transfer\DataManagementGateway* ，並檢查名稱為 [設定] 的檔案 **是否已刪除** 。 如果已刪除，請依照[這裡](https://www.netwrix.com/how_to_detect_who_deleted_file.html)的指示，稽核刪除該檔案的人員。
 
 ![檢查設定檔案](media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png)
 
@@ -210,7 +210,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 #### <a name="symptoms"></a>徵兆
 
-建立來源和目的地資料存放區的自我裝載 IR 後，您想將兩個 IR 連接在一起，以完成複本。 如果資料存放區是在不同的 Vnet 中設定，或無法瞭解閘道機制，您將會遇到類似以下的錯誤： *無法在目的地 IR 中找到來源的驅動程式*; *目的地 IR 無法存取來源*。
+建立來源和目的地資料存放區的自我裝載 IR 後，您想將兩個 IR 連接在一起，以完成複本。 如果資料存放區是在不同的 Vnet 中設定，或無法瞭解閘道機制，您將會遇到類似以下的錯誤： *無法在目的地 IR 中找到來源的驅動程式* ; *目的地 IR 無法存取來源* 。
  
 #### <a name="cause"></a>原因
 
@@ -288,14 +288,14 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 ![IR 事件記錄檔](media/self-hosted-integration-runtime-troubleshoot-guide/ir-event-log.png)
 
-如果錯誤顯示為上述 *system.unauthorizedaccessexception*，請遵循下列指示：
+如果錯誤顯示為上述 *system.unauthorizedaccessexception* ，請遵循下列指示：
 
 
 1. 檢查 Windows 服務面板中的 *DIAHostService* logon service 帳戶。
 
     ![登入服務帳戶](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
 
-2. 檢查登入服務帳戶是否具有資料夾的 R/W 許可權： *%programdata%\Microsoft\DataTransfer\DataManagementGateway*。
+2. 檢查登入服務帳戶是否具有資料夾的 R/W 許可權： *%programdata%\Microsoft\DataTransfer\DataManagementGateway* 。
 
     - 根據預設，如果服務登入帳戶尚未變更，它應該具有 R/W 的許可權。
 
@@ -305,7 +305,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
         1. 清除 [將目前的自我裝載 IR 卸載]。
         1. 安裝自我裝載 IR 位。
         1. 請遵循下列指示來變更服務帳戶： 
-            1. 移至 selfhosted IR 的安裝資料夾，切換到下列資料夾： *Microsoft Integration Runtime\4.0\Shared*。
+            1. 移至 selfhosted IR 的安裝資料夾，切換到下列資料夾： *Microsoft Integration Runtime\4.0\Shared* 。
             1. 使用較高的許可權啟動命令列。 *\<user>* 將和取代 *\<password>* 為您自己的使用者名稱和密碼，然後執行下列命令：
                        
                 ```
@@ -325,7 +325,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
             1. 您可以使用本機/網域使用者作為 IR 服務登入帳戶。            
         1. 註冊 Integration Runtime。
 
-如果錯誤顯示為： *服務 ' Integration Runtime service ' (DIAHostService) 無法啟動。確認您有足夠的許可權可以啟動系統服務*，請遵循下列指示：
+如果錯誤顯示為： *服務 ' Integration Runtime service ' (DIAHostService) 無法啟動。確認您有足夠的許可權可以啟動系統服務* ，請遵循下列指示：
 
 1. 檢查 Windows 服務面板中的 *DIAHostService* logon service 帳戶。
    
@@ -351,7 +351,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
 
 #### <a name="cause"></a>原因
 
-自 *Integration Runtime 3.0*版起，已移除現有 Integration Runtime 節點上的 [ **註冊** ] 按鈕，以啟用更清楚且更安全的環境。 若某個節點已註冊到某個 Integration Runtime (無論是否為線上)，若要將該節點重新註冊至另一個 Integration Runtime，您必須先解除安裝舊有的節點，再安裝並註冊該節點。
+自 *Integration Runtime 3.0* 版起，已移除現有 Integration Runtime 節點上的 [ **註冊** ] 按鈕，以啟用更清楚且更安全的環境。 若某個節點已註冊到某個 Integration Runtime (無論是否為線上)，若要將該節點重新註冊至另一個 Integration Runtime，您必須先解除安裝舊有的節點，再安裝並註冊該節點。
 
 #### <a name="resolution"></a>解決方案
 
@@ -476,7 +476,7 @@ Get_LoopbackIpOrName 時，無法在新電腦上註冊自我裝載 IR。
 
 #### <a name="cause"></a>原因 
 
-自我裝載的整合執行階段節點可能會有**非使用中**的狀態，如下列螢幕擷取畫面所示：
+自我裝載的整合執行階段節點可能會有 **非使用中** 的狀態，如下列螢幕擷取畫面所示：
 
 ![非使用中的自我裝載整合執行階段節點](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
 
@@ -549,7 +549,7 @@ Get_LoopbackIpOrName 時，無法在新電腦上註冊自我裝載 IR。
 - 然後，您可以藉由移除篩選來取得用戶端與 Data Factory 伺服器之間的轉換。
 
     ![取得對話](media/self-hosted-integration-runtime-troubleshoot-guide/get-conversation.png)
-- 根據所收集的 netmon 追蹤，我們可以告訴 TTL (TimeToLive) total 為64。 根據[本文](https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/)中所述的**預設 TTL 和躍點限制值** (如) 所述，我們可以看到它是重設套件的 Linux 系統，並會導致中斷連接。
+- 根據所收集的 netmon 追蹤，我們可以告訴 TTL (TimeToLive) total 為64。 根據 [本文](https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/)中所述的 **預設 TTL 和躍點限制值** (如) 所述，我們可以看到它是重設套件的 Linux 系統，並會導致中斷連接。
 
     預設的 TTL 和躍點限制值會因不同的作業系統而異，以下是一些預設值：
     - Linux 核心 2.4 (約 2001) ： 255 for TCP、UDP 和 ICMP
@@ -569,7 +569,7 @@ Get_LoopbackIpOrName 時，無法在新電腦上註冊自我裝載 IR。
  
     *來自 Linux 系統 A 且 TTL 為64的網路封裝-> B TTL 64 減 1 = 63-> C TTL 63 減去 1 = 62-> TTL 62 減 1 = 61 自我裝載 IR*
 
-- 在理想的情況下，TTL 將會是128，這表示 Windows 系統正在執行 Data Factory。 如下列範例所示， *128 – 107 = 21 個躍點*，表示封裝的21個躍點在 TCP 3 信號交換期間，從 Data Factory 傳送到自我裝載的 IR。
+- 在理想的情況下，TTL 將會是128，這表示 Windows 系統正在執行 Data Factory。 如下列範例所示， *128 – 107 = 21 個躍點* ，表示封裝的21個躍點在 TCP 3 信號交換期間，從 Data Factory 傳送到自我裝載的 IR。
  
     ![TTL 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
 
@@ -587,11 +587,11 @@ Get_LoopbackIpOrName 時，無法在新電腦上註冊自我裝載 IR。
 ![netmon 追蹤2](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-2.png)
  
 
-這表示您無法根據埠**888**對**8.8.8.8**伺服器端進行 TCP 連線，因此您會在該處看到兩個**SynReTransmit**額外的套件。 由於來源 **自我 host2.contoso.com** 無法連接到第一個封裝的 **8.8.8.8** ，因此會繼續進行連接。
+這表示您無法根據埠 **888** 對 **8.8.8.8** 伺服器端進行 TCP 連線，因此您會在該處看到兩個 **SynReTransmit** 額外的套件。 由於來源 **自我 host2.contoso.com** 無法連接到第一個封裝的 **8.8.8.8** ，因此會繼續進行連接。
 
 > [!TIP]
-> - 您可以按一下 [**載入篩選器**  ->  **標準篩選器**  ->  **定址**  ->  **IPv4 位址**]。
-> - 輸入 **IPv4. Address = = 8.8.8.8** as filter， **然後按一下 [** 套用]。 之後，您將只會看到從本機電腦到目的地 **8.8.8.8**的通訊。
+> - 您可以按一下 [ **載入篩選器**  ->  **標準篩選器**  ->  **定址**  ->  **IPv4 位址** ]。
+> - 輸入 **IPv4. Address = = 8.8.8.8** as filter， **然後按一下 [** 套用]。 之後，您將只會看到從本機電腦到目的地 **8.8.8.8** 的通訊。
 
 ![篩選位址1](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-1.png)
         
@@ -630,7 +630,7 @@ Get_LoopbackIpOrName 時，無法在新電腦上註冊自我裝載 IR。
 ##### <a name="scenario-1-outbound-communication-from-self-hosted-integration-runtime-running-on-premises-behind-the-corporate-firewall"></a>案例1：從自我裝載的 Integration Runtime 在公司防火牆後方內部部署執行的輸出通訊
 如何判斷您是否受影響：
 - 如果您使用本檔中所述的方法，根據 FQDN 名稱定義防火牆規則，則不會受到影響： [ip 位址的防火牆設定和允許清單設定](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)。
-- 但是，如果您在公司防火牆上明確允許清單輸出 Ip，就會受到影響。
+- 但是，如果您明確地在公司防火牆上啟用輸出 Ip 的允許清單，就會受到影響。
 
 當您受到影響時要採取的動作：通知您的網路基礎結構小組，更新您的網路設定，以在2020年11月8日之前使用最新的 Data Factory IP 位址。  若要下載最新的 IP 位址，請移至 [服務標籤 [IP 範圍下載] 連結](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)。
 
@@ -639,16 +639,55 @@ Get_LoopbackIpOrName 時，無法在新電腦上註冊自我裝載 IR。
 - 檢查您的私人網路中是否有任何包含自我裝載 Integration Runtime 的輸出 NSG 規則。 如果沒有輸出限制，就不會有任何影響。
 - 如果您有輸出規則限制，請檢查您是否使用服務標記。 如果您使用服務標籤，則不需要變更或新增任何新的 IP 範圍，因為新的 IP 範圍會在現有的服務標籤底下。 
  ![目的地檢查](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
-- 但是，如果您在 Azure 虛擬網路上的 NSG 規則設定上明確地允許清單輸出 IP 位址，則會受到影響。
+- 但是，如果您在 Azure 虛擬網路上的 NSG 規則設定上明確啟用了輸出 IP 位址的允許清單，就會受到影響。
 
 當您受到影響時要採取的動作：通知網路基礎結構小組，以更新 Azure 虛擬網路設定上的 NSG 規則，以在2020年11月8日之前使用最新的 Data Factory IP 位址。  若要下載最新的 IP 位址，請移至 [服務標籤 [IP 範圍下載] 連結](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)。
 
 ##### <a name="scenario-3-outbound-communication-from-ssis-integration-runtime-in-customer-managed-azure-virtual-network"></a>案例3：客戶管理的 Azure 虛擬網路中來自 SSIS Integration Runtime 的輸出通訊
 - 檢查您的私人網路中是否有包含 SSIS Integration Runtime 的任何輸出 NSG 規則。 如果沒有輸出限制，就不會有任何影響。
 - 如果您有輸出規則限制，請檢查您是否使用服務標記。 如果您使用服務標籤，則不需要變更或新增任何新的 IP 範圍，因為新的 IP 範圍會在現有的服務標籤底下。
-- 但是，如果您在 Azure 虛擬網路上的 NSG 規則設定上明確允許清單了輸出 IP 位址，則會受到影響。
+- 但是，如果您在 Azure 虛擬網路上的 NSG 規則設定上明確啟用了輸出 IP 位址的允許清單，就會受到影響。
 
 當您受到影響時要採取的動作：通知網路基礎結構小組，以更新 Azure 虛擬網路設定上的 NSG 規則，以在2020年11月8日之前使用最新的 Data Factory IP 位址。  若要下載最新的 IP 位址，請移至 [服務標籤 [IP 範圍下載] 連結](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)。
+
+### <a name="could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>無法建立 SSLTLS 安全通道的信任關係 
+
+#### <a name="symptoms"></a>徵兆
+
+自我裝載 IR 無法連接至 ADF 服務。
+
+藉由檢查 SHIR 事件記錄檔或 CustomLogEvent 資料表中的用戶端通知記錄，將會發現下列錯誤訊息：
+
+`The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.The remote certificate is invalid according to the validation procedure.`
+
+如何檢查 ADF 服務的伺服器憑證：
+
+最簡單的方式是在瀏覽器中開啟 ADF 服務 URL，例如，在 https://eu.frontend.clouddatahub.net/ 安裝 SHIR 的電腦上開啟，然後查看伺服器憑證資訊：
+
+  ![檢查 ADF 服務的伺服器憑證](media/self-hosted-integration-runtime-troubleshoot-guide/server-certificate.png)
+
+  ![檢查伺服器憑證路徑](media/self-hosted-integration-runtime-troubleshoot-guide/certificate-path.png)
+
+#### <a name="cause"></a>原因
+
+此問題的兩個可能原因：
+
+- 在安裝 SHIR 的電腦上，ADF 服務伺服器憑證的根 CA 不受信任。 
+- 您在環境中使用 proxy，且 ADF 服務的伺服器憑證是由 proxy 所取代，而已取代的伺服器憑證則不受安裝 SHIR 的電腦所信任。
+
+#### <a name="solution"></a>解決方法
+
+- 基於原因1，請確定 ADF 伺服器憑證及其憑證鏈是否受安裝 SHIR 的電腦所信任。
+- 基於原因2，請信任 SHIR 電腦上取代的根 CA，或將 proxy 設定為不要取代 ADF 伺服器憑證。
+
+請參閱 [這篇文章](https://docs.microsoft.com/skype-sdk/sdn/articles/installing-the-trusted-root-certificate) ，以取得在 Windows 上信任憑證的詳細資料。
+
+#### <a name="additional-info"></a>其他資訊
+我們即將推出從 DigiCert 簽署的新 SSL 憑證，請檢查 DigiCert 的全域根目錄 G2 是否位於受信任的根 CA 中。
+
+  ![DigiCert Global Root G2](media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png)
+
+如果沒有，請從 [這裡](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt )下載。 
 
 ## <a name="self-hosted-ir-sharing"></a>自我裝載 IR 共用
 

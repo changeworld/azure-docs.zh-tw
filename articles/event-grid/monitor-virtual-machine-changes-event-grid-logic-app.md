@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: estfan, LADocs
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 7af555a634f0e362bdf2d530627a782843105bdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a5d8c36382433024efd1f1cc6ba9fd878d28ddc
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87461267"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92329520"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>教學課程：使用 Azure 事件方格和 Logic Apps 監視虛擬機器的變更
 
@@ -80,7 +80,7 @@ ms.locfileid: "87461267"
 
    ![Logic Apps 範本的螢幕擷取畫面，顯示用來建立空白邏輯應用程式的選取項目。](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-logic-app-template.png)
 
-   Logic Apps 設計工具現在會顯示[*觸發程序*](../logic-apps/logic-apps-overview.md#logic-app-concepts)，您可用於啟動邏輯應用程式。 每個邏輯應用程式都必須使用觸發程序啟動，而該觸發程序會在特定事件發生或符合特定條件時引發。 每次引發觸發程序時，Azure Logic Apps 會建立執行邏輯應用程式的工作流程執行個體。
+   Logic Apps 設計工具現在會顯示 [*觸發程序*](../logic-apps/logic-apps-overview.md#logic-app-concepts)，您可用於啟動邏輯應用程式。 每個邏輯應用程式都必須使用觸發程序啟動，而該觸發程序會在特定事件發生或符合特定條件時引發。 每次引發觸發程序時，Azure Logic Apps 會建立執行邏輯應用程式的工作流程執行個體。
 
 ## <a name="add-an-event-grid-trigger"></a>新增事件方格觸發程序
 
@@ -107,7 +107,7 @@ ms.locfileid: "87461267"
    | **資源類型** | 是 | <*event-publisher-Azure-resource-type*> | 選取事件發行者的 Azure 資源類型。 如需有關 Azure 資源類型的詳細資訊，請參閱 [Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)。 在本教學課程中，選取 `Microsoft.Resources.ResourceGroups` 值以監視 Azure 資源群組。 |
    | **資源名稱** |  是 | <*event-publisher-Azure-resource-name*> | 選取事件發行者的 Azure 資源名稱。 這份清單會根據您選取的資源類型而有所不同。 在此教學課程中，請選取包含虛擬機器的 Azure 資源群組名稱。 |
    | **事件類型項目** |  否 | <*event-types*> | 選取要篩選的一或多個特定事件類型，並傳送至您的事件方格。 例如，您可以選擇性地新增這些事件類型，以偵測資源何時遭到變更或刪除： <p><p>- `Microsoft.Resources.ResourceActionSuccess` <br>- `Microsoft.Resources.ResourceDeleteSuccess` <br>- `Microsoft.Resources.ResourceWriteSuccess` <p>如需詳細資訊，請參閱下列主題： <p><p>- [Azure Event Grid 資源群組事件結構描述](../event-grid/event-schema-resource-groups.md) <br>- [了解事件篩選](../event-grid/event-filtering.md) <br>- [針對事件方格篩選事件](../event-grid/how-to-filter-events.md) |
-   | 若要新增選擇性屬性，請選取 [新增參數]  ，然後選取您想要的屬性。 | 否 | {請參閱說明} | * **前置詞篩選**：在此教學課程中，將此屬性保留空白。 預設行為會比對所有的值。 不過，您可以指定前置詞字串作為篩選條件，例如，特定資源的路徑和參數。 <p>* **後置詞篩選**：在此教學課程中，將此屬性保留空白。 預設行為會比對所有的值。 不過，您可以指定前置詞字串作為篩選條件，例如，副檔名 (如果只想要特定檔案類型)。 <p>* **訂用帳戶名稱**：在此教學課程中，您可以為事件訂閱提供唯一名稱。 |
+   | 若要新增選擇性屬性，請選取 [新增參數]  ，然後選取您想要的屬性。 | 否 | {請參閱說明} | * **前置詞篩選** ：在此教學課程中，將此屬性保留空白。 預設行為會比對所有的值。 不過，您可以指定前置詞字串作為篩選條件，例如，特定資源的路徑和參數。 <p>* **後置詞篩選** ：在此教學課程中，將此屬性保留空白。 預設行為會比對所有的值。 不過，您可以指定前置詞字串作為篩選條件，例如，副檔名 (如果只想要特定檔案類型)。 <p>* **訂用帳戶名稱** ：在此教學課程中，您可以為事件訂閱提供唯一名稱。 |
    |||
 
 1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]  。 若要在邏輯應用程式中摺疊並隱藏動作的詳細資料，請選取動作的標題列。
@@ -243,7 +243,7 @@ ms.locfileid: "87461267"
 
 您可以使用事件格線和邏輯應用程式來監視其他組態變更，例如：
 
-* 虛擬機器取得角色型存取控制 (RBAC) 權限。
+* 虛擬機器可取得 Azure 角色型存取控制 (RBAC) 權限。
 * 對網路介面 (NIC) 上的網路安全性群組 (NSG) 進行變更。
 * 已新增或移除虛擬機器的磁碟。
 * 已將公用 IP 位址指派給虛擬機器 NIC。

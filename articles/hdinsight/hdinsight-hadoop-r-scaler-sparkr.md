@@ -529,7 +529,7 @@ elapsed <- (proc.time() - t0)[3]
 logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 ```
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 
 在本文中，我們示範了如何在 Hadoop Spark 中結合使用 SparkR 進行資料操作與 ScaleR 以進行模型開發。 此案例需要維護個別的 Spark 工作階段 (一次僅執行一個工作階段)，並透過 CSV 檔案交換資料。 這雖然已經很單純，但在後續發行的 ML 服務中，SparkR 和 ScaleR 可以共用 Spark 工作階段和 Spark DataFrame，此程序應該還可變得更加容易。
 

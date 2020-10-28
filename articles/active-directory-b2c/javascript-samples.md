@@ -36,7 +36,7 @@ ms.locfileid: "92628587"
 > [!NOTE]
 > 如果您想要為使用者流程啟用 JavaScript，請參閱 [Azure Active Directory B2C 中的 javascript 和頁面配置版本](user-flow-javascript-overview.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="select-a-page-layout"></a>選取頁面配置
 

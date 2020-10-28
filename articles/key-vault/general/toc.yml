@@ -62,6 +62,8 @@
         - name: Azure 原則的安全性控制
           displayName: 'regulatory, compliance, standards, domains'
           href: ../security-controls-policy.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
+    - name: Azure Key Vault 記錄
+      href: logging.md
     - name: 通知
       items:
         - name: 使用 Azure 事件方格進行監視
@@ -122,8 +124,6 @@
           href: alert.md
         - name: 整合 Azure Key Vault 與 Azure 原則
           href: azure-policy.md
-        - name: Azure Key Vault 記錄
-          href: logging.md
         - name: 透過 Azure 事件方格和 Logic Apps 接收通知
           href: event-grid-logicapps.md
         - name: 透過 Azure 事件方格和 Azure 自動化接收通知

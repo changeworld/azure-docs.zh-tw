@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 18afa6b2e974c605b18d4e38b82061234619e9ff
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: c59a104796e11b15af805e34f9cd14b2ce8bd075
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998107"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628842"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中註冊 SAML 應用程式
 
@@ -51,8 +51,8 @@ Azure AD B2C 利用下列兩種方式的其中一種來達到 SAML 互通性：
 
 此案例需要三個主要元件：
 
-* SAML **服務提供者**，其能夠傳送 SAML 要求，以及從 Azure AD B2C 接收、解碼和回應 SAML 判斷提示。 這也稱為信賴憑證者。
-* 公開可用的 SAML **中繼資料端點**，以提供給您的服務提供者使用。
+* SAML **服務提供者** ，其能夠傳送 SAML 要求，以及從 Azure AD B2C 接收、解碼和回應 SAML 判斷提示。 服務提供者也稱為信賴憑證者應用程式。
+* 公開可用的 SAML **中繼資料端點** ，以提供給您的服務提供者使用。
 * [Azure AD B2C 租用戶](tutorial-create-tenant.md)
 
 如果您還沒有 SAML 服務提供者和相關聯的中繼資料端點，您可以使用我們基於測試用途提供的 SAML 應用程式範例：
@@ -101,7 +101,7 @@ Azure AD B2C 利用下列兩種方式的其中一種來達到 SAML 互通性：
 1. 登入 [Azure 入口網站](https://portal.azure.com)，然後瀏覽至您的 Azure AD B2C 租用戶。
 1. 在 [原則] 中，選取 [Identity Experience Framework]，然後選取 [原則金鑰]。
 1. 選取 [新增]，然後選取 [選項] > [上傳]。
-1. 輸入**名稱** ，例如 SamlIdpCert。 金鑰名稱前面會自動新增前置詞 B2C_1A_。
+1. 輸入 **名稱** ，例如 SamlIdpCert。 金鑰名稱前面會自動新增前置詞 B2C_1A_。
 1. 使用上傳檔案控制項來上傳您的憑證。
 1. 輸入憑證的密碼。
 1. 選取 [建立]。
@@ -208,7 +208,7 @@ Azure AD B2C 利用下列兩種方式的其中一種來達到 SAML 互通性：
 
 1. 將 `tenant-name` 更新為您的 Azure AD B2C 租用戶名稱。
 
-您的最終信賴憑證者原則檔案看起來應該如下所示：
+您最終的信賴憑證者原則檔案看起來應該類似下列 XML 程式碼：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -288,7 +288,7 @@ Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML �
 
 #### <a name="identifieruris"></a>identifierUris
 
-`identifierUris` 是包含使用者定義 URI 的字串集合，這些 URI 可在其 Azure AD B2C 租用戶中識別唯一的 Web 應用程式。 您的服務提供者必須在 SAML 要求的 `Issuer` 元素中設定此值。
+`identifierUris` 是包含使用者定義 URI 的字串集合，這些 URI 可在其 Azure AD B2C 租用戶中識別唯一的 Web 應用程式。 URI 必須符合 SAML 要求的 `Issuer` 名稱。 使用者定義的 URI 通常與服務提供者中繼資料的值相同 `entityID` 。
 
 #### <a name="samlmetadataurl"></a>samlMetadataUrl
 
@@ -296,7 +296,7 @@ Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML �
 
 中繼資料是在 SAML 通訊協定中用來公開 SAML 合作對象設定 (例如服務提供者) 的資訊。 中繼資料會定義服務的位置，例如，登入和登出、憑證、登入方法，以及其他服務。 Azure AD B2C 會讀取服務提供者中繼資料，並據以採取動作。 中繼資料不是必要的。 您也可以直接在應用程式資訊清單中指定一些屬性，例如回覆 URI 和登出 URI。
 
-如果 SAML 中繼資料 URL 和應用程式註冊的資訊清單中「都」指定了某些屬性，則這些**屬性**會合併。 中繼資料 URL 中指定的屬性會先進行處理，並優先使用。
+如果 SAML 中繼資料 URL 和應用程式註冊的資訊清單中「都」指定了某些屬性，則這些 **屬性** 會合併。 中繼資料 URL 中指定的屬性會先進行處理，並優先使用。
 
 在使用 SAML 測試應用程式的本教學課程中，請針對 `samlMetadataUrl` 使用下列值：
 
@@ -335,12 +335,14 @@ Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML �
 
 最後一個步驟是將 Azure AD B2C 啟用為 SAML 信賴憑證者應用程式中的 SAML IdP。 每個應用程式都不同，而執行這項操作的步驟也會有所不同。 如需詳細資訊，請參閱您的應用程式文件。
 
+中繼資料可以設定為服務提供者中的「靜態中繼資料」或「動態中繼資料」。 在靜態模式中，您可以從 Azure AD B2C 的原則中繼資料複製所有或部分中繼資料。 在動態模式中，您會將 URL 設定為中繼資料，並讓應用程式動態讀取中繼資料。
+
 通常會需要下列部分或全部的項目：
 
-* **中繼資料**：`https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
-* **簽發者**： 使用中繼資料檔案中的 entityID
-* **登入 Url/SAML 端點/SAML Url**：檢查中繼資料檔案中的值
-* **憑證**：這是 B2C_1A_SamlIdpCert，但沒有私密金鑰。 若要取得憑證的公開金鑰：
+* **中繼資料** ：`https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
+* **簽發者** ： SAML 要求 `issuer` 值必須符合 `identifierUris` 應用程式註冊資訊清單的元素中所設定的其中一個 uri。 如果專案 `issuer` 中沒有 SAML 要求名稱 `identifierUris` ，請 [將它新增至應用程式註冊資訊清單](#identifieruris)。 例如： `https://contoso.onmicrosoft.com/app-name` 。 
+* **登入 Url/saml 端點/Saml url** ：檢查 XML 元素 Azure AD B2C SAML 原則中繼資料檔案中的值 `<SingleSignOnService>`
+* **憑證** ：這是 B2C_1A_SamlIdpCert，但沒有私密金鑰。 若要取得憑證的公開金鑰：
 
     1. 移至上面指定的中繼資料 URL。
     1. 複製 `<X509Certificate>` 元素中的值。
@@ -353,7 +355,7 @@ Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML �
 
 * 更新租用戶名稱
 * 更新原則名稱，例如 B2C_1A_signup_signin_saml
-* 指定此簽發者 URI：`https://contoso.onmicrosoft.com/app-name`
+* 指定此簽發者 URI。 `identifierUris`例如，使用在應用程式註冊資訊清單的元素中找到的其中一個 uri `https://contoso.onmicrosoft.com/app-name` 。
 
 選取 [登入]，您應該會看到使用者登入畫面。 登入時，SAML 判斷提示會回傳給範例應用程式。
 
@@ -361,7 +363,7 @@ Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML �
 
 若要加密傳回給服務提供者的 SAML 判斷提示，Azure AD B2C 將會使用服務提供者公開金鑰憑證。 公開金鑰必須存在於上述 ["samlMetadataUrl"](#samlmetadataurl) 中所述的 SAML 中繼資料中，做為使用 ' Encryption ' 的 >keydescriptor。
 
-以下是使用 set to Encryption >keydescriptor 的 SAML 中繼資料的範例：
+下列 XML 程式碼是使用 set to Encryption >keydescriptor 的 SAML 中繼資料的範例：
 
 ```xml
 <KeyDescriptor use="encryption">
@@ -391,7 +393,9 @@ Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML �
 
 ## <a name="enable-identity-provider-initiated-flow-optional"></a>啟用識別提供者起始的流程 (選擇性) 
 
-在識別提供者起始的流程中，登入程式是由身分識別提供者起始 (Azure AD B2C) ，它會將未經要求的 SAML 回應傳送給服務提供者， (您的信賴憑證者應用程式) 。 若要啟用識別提供者起始的流程，請將 **>iDPInitiatedprofileenabled** 中繼資料專案設定為信賴憑證者 `true` [技術設定檔](relyingparty.md#technicalprofile)中的。
+在識別提供者起始的流程中，登入程式是由身分識別提供者起始 (Azure AD B2C) ，它會將未經要求的 SAML 回應傳送給服務提供者， (您的信賴憑證者應用程式) 。 我們目前不支援初始身分識別提供者為外部識別提供者（例如 [AD FS](identity-provider-adfs2016-custom.md)或 [Salesforce](identity-provider-salesforce-custom.md)）的案例。
+
+若要啟用識別提供者 (Azure AD B2C) 起始的流程，請將 **>iDPInitiatedprofileenabled** 中繼資料專案設定為信賴憑證者 `true` [技術設定檔](relyingparty.md#technicalprofile)中的。
 
 ```xml
 <RelyingParty>
@@ -410,14 +414,14 @@ Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML �
 若要透過識別提供者起始的流程登入或註冊使用者，請使用下列 URL：
 
 ```
-https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/generic/login
+https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/generic/login?EntityId=app-identifier-uri 
 ```
 
 取代下列值：
 
 * **租使用者-名稱** 與您的租使用者名稱
 * **原則-** 使用您的 SAML 信賴憑證者原則名稱
-
+* 使用中繼資料檔案中的 **應用程式識別碼 uri** `identifierUris` ，例如`https://contoso.onmicrosoft.com/app-name`
 ## <a name="sample-policy"></a>範例原則
 
 我們會提供完整的範例原則，供您用來搭配 SAML 測試應用程式進行測試。
@@ -435,22 +439,19 @@ https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/generic
 * 在應用程式/服務主體物件中指定權杖加密金鑰。
 * 身分識別提供者起始登入，其中 Azure AD B2C 身分識別提供者。
 
-目前不支援下列 SAML 信賴憑證者 (RP) 案例：
-* 身分識別提供者起始登入，其中身分識別提供者是外部識別提供者（例如 ADFS）。
-
 ## <a name="saml-token"></a>SAML 權杖
 
 SAML 權杖是在成功登入之後 Azure AD B2C 所簽發的安全性權杖。 它包含使用者的相關資訊、權杖所適用的服務提供者、簽章和有效時間。 下表列出 Azure AD B2C 所簽發的 SAML 權杖中，您可以預期的宣告和屬性。
 
-|元素  |屬性  |附註  |
+|元素  |屬性  |注意  |
 |---------|---------|---------|
 |`<Response>`| `ID` | 自動產生之回應的唯一識別碼。 | 
 |`<Response>`| `InResponseTo` | 此訊息所回應的 SAML 要求識別碼。 | 
-|`<Response>` | `IssueInstant` | 回應問題的時間。 時間值會以 UTC 編碼。若要變更權杖存留期的設定，請設定 `TokenNotBeforeSkewInSeconds` SAML 權杖簽發者技術設定檔的 [中繼資料](saml-issuer-technical-profile.md#metadata) 。 | 
+|`<Response>` | `IssueInstant` | 回應問題的時間。 時間值會以 UTC 編碼。  若要變更權杖存留期的設定，請設定 `TokenNotBeforeSkewInSeconds` SAML 權杖簽發者技術設定檔的 [中繼資料](saml-issuer-technical-profile.md#metadata) 。 | 
 |`<Response>` | `Destination`| URI 參考，指出已傳送此回應的位址。 此值與 SAML 要求相同 `AssertionConsumerServiceURL` 。 | 
-|`<Response>` `<Issuer>` | |識別權杖簽發者。 這是 SAML 權杖問題 `IssuerUri` [中繼資料](saml-issuer-technical-profile.md#metadata)所定義的任意 URI     |
-|`<Response>` `<Assertion>` `<Subject>` `<NameID>`     |         |權杖判斷提示資訊的相關主體，例如使用者物件識別碼。 這個值不可變，而且無法重新指派或重複使用。 它可用來安全地執行授權檢查，例如當權杖用於存取資源時。 根據預設，主體宣告會填入目錄中使用者的物件識別碼。|
-|`<Response>` `<Assertion>` `<Subject>` `<NameID>`     | `Format` | 表示以字串為基礎之識別碼資訊分類的 URI 參考。 預設會省略此屬性。 您可以設定信賴憑證者 [SubjectNamingInfo](relyingparty.md#subjectnaminginfo) 來指定 `NameID` 格式，例如 `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` 。 |
+|`<Response>` `<Issuer>` | |識別權杖簽發者。 這是 SAML 權杖問題 `IssuerUri` [中繼資料](saml-issuer-technical-profile.md#metadata)所定義的任意 URI     |
+|`<Response>` `<Assertion>` `<Subject>` `<NameID>`     |         |權杖判斷提示資訊的相關主體，例如使用者物件識別碼。 這個值不可變，而且無法重新指派或重複使用。 它可用來安全地執行授權檢查，例如當權杖用於存取資源時。 根據預設，主體宣告會填入目錄中使用者的物件識別碼。|
+|`<Response>` `<Assertion>` `<Subject>` `<NameID>`     | `Format` | 表示以字串為基礎之識別碼資訊分類的 URI 參考。 預設會省略此屬性。 您可以設定信賴憑證者 [SubjectNamingInfo](relyingparty.md#subjectnaminginfo) 來指定 `NameID` 格式，例如 `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` 。 |
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |權杖變成有效的時間。 時間值會以 UTC 編碼。 您的應用程式應使用此宣告來驗證權杖存留期的有效性。 若要變更權杖存留期的設定，請設定 `TokenNotBeforeSkewInSeconds` SAML 權杖問題技術設定檔的 [中繼資料](saml-issuer-technical-profile.md#metadata) 。 |
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | 權杖變成不正確時間。 您的應用程式應使用此宣告來驗證權杖存留期的有效性。 值為15分鐘之後 `NotBefore` ，無法變更。|
 |`<Response>` `<Assertion>` `<Conditions>` `<AudienceRestriction>` `<Audience>` | |識別目標物件的 URI 參考。 它會識別權杖的預定收件者。 此值與 SAML 要求相同 `AssertionConsumerServiceURL` 。|

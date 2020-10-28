@@ -11,27 +11,28 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: pafarley
 ROBOTS: NOINDEX
-ms.openlocfilehash: c3394156b073df54d6582dc43571137b21df29cd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cfc9745fc4684a7b0d8f7da7e63149a6fe50f6d2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968934"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92331833"
 ---
 # <a name="upgrade-from-read-v2x-to-read-v3x"></a>從 Read v2.x 升級至 Read v3.x
 
 本指南說明如何將您現有的容器或雲端 API 程式碼從 Read v2.x 升級至 Read v3.0 和 v3.1 預覽。
 
 ## <a name="determine-your-api-path"></a>確認您的 API 路徑
-使用下表根據您要遷移至的 Read 3.x 版確認 API 路徑中的**版本字串**。
+使用下表根據您要遷移至的 Read 3.x 版確認 API 路徑中的 **版本字串** 。
 
 |產品類型| 版本 | 3\.x API 路徑中的版本字串 |
 |:-----|:----|:----|
-|服務 | 讀取 3.0 | **v3.0** |
-|容器 | Read 3.0 預覽 | **v3.0** |
-|服務/容器 | Read 3.1 預覽 | **v3.1-preview.2** |
+|服務 | Read 3.0 或 3.1 | 分別是 **v3.0** 或 **v3.1** |
+|Service | Read 3.2 預覽 | **v3.2-preview.1** |
+|容器 | Read 3.0 預覽或 Read 3.1 預覽 | 分別是 **v3.0** 或 **v3.1-preview.2** |
 
-接著，使用以下各節縮小作業範圍，並將 API 路徑中的**版本字串**取代為表格中的值。 例如，對於 **Read v3.1 預覽**的雲端和容器版本，請將 API 路徑更新為 **https://{endpoint}/vision/v3.1-preview.2/read/analyze[?language]** 。
+
+接著，使用以下各節縮小作業範圍，並將 API 路徑中的 **版本字串** 取代為表格中的值。 例如，對於 **Read v3.2 預覽** 的雲端和容器版本，請將 API 路徑更新為 **https://{endpoint}/vision/v3.2-preview.1/read/analyze[?language]** 。
 
 ## <a name="servicecontainer"></a>服務/容器
 
@@ -39,7 +40,7 @@ ms.locfileid: "91968934"
 
 |讀取 2.x |Read 3.x  |
 |----------|-----------|
-|https://{endpoint}/vision/**v2.0/read/core/asyncBatchAnalyze**     |https://{endpoint}/vision/<**version string**>/read/analyze[?language]|
+|https://{endpoint}/vision/ **v2.0/read/core/asyncBatchAnalyze**     |https://{endpoint}/vision/< **version string** >/read/analyze[?language]|
     
 有新的選擇性 _language_ 參數可供使用。 如果您不知道文件的語言，或者其可能是多語系，請勿包含此參數。 
 
@@ -47,7 +48,7 @@ ms.locfileid: "91968934"
 
 |讀取 2.x |Read 3.x  |
 |----------|-----------|
-|https://{endpoint}/vision/**v2.0/read/operations**/{operationId}     |https://{endpoint}/vision/<**version string**>/read/analyzeResults/{operationId}|
+|https://{endpoint}/vision/ **v2.0/read/operations** /{operationId}     |https://{endpoint}/vision/< **version string** >/read/analyzeResults/{operationId}|
 
 ### <a name="get-read-operation-result-status-flag"></a>`Get Read Operation Result` 狀態旗標
 
@@ -177,7 +178,7 @@ V3.0 API 也導入了您可以選擇運用的下列改進：
 
 |辨識文字 2.x |Read 3.x  |
 |----------|-----------|
-|https://{endpoint}/vision/**v2.0/recognizeText[?mode]**|https://{endpoint}/vision/<**version string**>/read/analyze[?language]|
+|https://{endpoint}/vision/ **v2.0/recognizeText[?mode]**|https://{endpoint}/vision/< **version string** >/read/analyze[?language]|
     
 `Read` 中不支援 _mode_ 參數。 手寫和列印文字都會自動受到支援。
     
@@ -187,7 +188,7 @@ v3.0 中有新的選擇性 _language_ 參數可供使用。 如果您不知道�
 
 |辨識文字 2.x |Read 3.x  |
 |----------|-----------|
-|https://{endpoint}/vision/**v2.0/textOperations/** {operationId}|https://{endpoint}/vision/<**version string**>/read/analyzeResults/{operationId}|
+|https://{endpoint}/vision/ **v2.0/textOperations/** {operationId}|https://{endpoint}/vision/< **version string** >/read/analyzeResults/{operationId}|
 
 ### <a name="get-recognize-text-operation-result-status-flags"></a>`Get Recognize Text Operation Result` 狀態旗標
 當 `Get Recognize Text Operation Result` 的呼叫成功時，其會在 JSON 主體中傳回狀態字串欄位。 
@@ -311,4 +312,4 @@ V3.0 API 也引進了您可以選擇運用的下列改良功能。 如需詳細�
 
 |Read 2.0 |Read 3.x  |
 |----------|-----------|
-|https://{endpoint}/vision/**v2.0/read/core/Analyze**     |https://{endpoint}/vision/<**version string**>/read/syncAnalyze[?language]|
+|https://{endpoint}/vision/ **v2.0/read/core/Analyze**     |https://{endpoint}/vision/< **version string** >/read/syncAnalyze[?language]|

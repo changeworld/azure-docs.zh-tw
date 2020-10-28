@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 860b1ac1713ac7afb7db2643d68974b399b5236b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 9b75df9df2e81f01543b407b019c752c77ee6807
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207035"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92628825"
 ---
 # <a name="app-service-networking-features"></a>App Service 網路功能
 
@@ -29,6 +29,7 @@ Azure App Service 是分散式系統。 處理傳入 HTTP/HTTPS 要求的角色�
 | 應用程式指派的位址 | 混合式連線 |
 | 存取限制 | 閘道需要 VNet 整合 |
 | 服務端點 | VNet 整合 |
+| 私人端點 ||
 
 除非另有說明，否則所有功能皆可一起使用。 您可以混合使用這些功能來解決各種問題。
 
@@ -89,20 +90,23 @@ App Service 有許多用來管理服務的端點。  這些位址會在個別的
 
 ### <a name="access-restrictions"></a>存取限制 
 
-存取限制功能可讓您根據來源 IP 位址篩選 **輸入** 要求。 篩選動作會在與您的應用程式執行所在的背景工作角色上游的前端角色上進行。 由於前端角色是來自背景工作角色，因此可將存取限制功能視為您應用程式的網路層級保護。 這項功能可讓您建立以優先權順序評估的允許和拒絕位址區塊清單。 它類似于 Azure 網路中 (NSG) 功能的網路安全性群組。  您可以在 ASE 或多租使用者服務中使用這項功能。 與 ILB ASE 搭配使用時，您可以限制來自私用位址區塊的存取。
+存取限制功能可讓您篩選 **輸入** 要求。 篩選動作會在與您的應用程式執行所在的背景工作角色上游的前端角色上進行。 由於前端角色是來自背景工作角色，因此可將存取限制功能視為您應用程式的網路層級保護。 這項功能可讓您建立以優先權順序評估的允許和拒絕規則清單。 它類似于 Azure 網路中 (NSG) 功能的網路安全性群組。  您可以在 ASE 或多租使用者服務中使用這項功能。 搭配使用 ILB ASE 或私人端點時，您可以限制來自私人位址區塊的存取。
+> [!NOTE]
+> 每個應用程式最多可以設定512個存取限制規則。 
 
 ![存取限制](media/networking-features/access-restrictions.png)
+#### <a name="ip-based-access-restriction-rules"></a>以 IP 為基礎的存取限制規則
 
-當您想要限制可用來存取應用程式的 IP 位址時，存取限制功能將有所説明。 這項功能的使用案例包括：
+當您想要限制可用來存取應用程式的 IP 位址時，以 IP 為基礎的存取限制功能將有所説明。 可支援 IPv4 和 IPv6 兩者。 這項功能的使用案例包括：
 
 * 從一組定義完善的位址限制對您應用程式的存取 
-* 透過負載平衡服務（例如 Azure Front Door）來限制存取。 如果您想要鎖定 Azure Front Door 的輸入流量，請建立規則以允許來自 147.243.0.0/16 和2a01：111：2050：：/44 的流量。 
+* 限制來自負載平衡服務的存取，例如 Azure Front Door
 
 ![Front Door 的存取限制](media/networking-features/access-restrictions-afd.png)
 
-如果您想要鎖定應用程式的存取權，以便只能從 Azure 虛擬網路中的資源連線到 (VNet) ，您需要在 VNet 中的任何來源都有靜態公用位址。 如果資源沒有公用位址，您應該改為使用服務端點功能。 瞭解如何使用設定 [存取限制][iprestrictions]的教學課程來啟用這項功能。
+瞭解如何使用設定 [存取限制][iprestrictions]的教學課程來啟用這項功能。
 
-### <a name="service-endpoints"></a>服務端點
+#### <a name="service-endpoint-based-access-restriction-rules"></a>以服務端點為基礎的存取限制規則
 
 服務端點可讓您鎖定應用程式的 **輸入** 存取，使來源位址必須來自您所選取的一組子網。 這項功能與 IP 存取限制搭配運作。 服務端點與遠端偵錯不相容。 若要對您的應用程式使用遠端偵錯程式，您的用戶端不能在啟用服務端點的子網中。 服務端點會設定為與 IP 存取限制相同的使用者體驗。 您可以建立包含公用位址以及 Vnet 中子網的存取規則的允許/拒絕清單。 這項功能支援的案例如下：
 
@@ -117,7 +121,7 @@ App Service 有許多用來管理服務的端點。  這些位址會在個別的
 
 ### <a name="private-endpoints"></a>私人端點
 
-私人端點是一種網路介面，可透過 Azure Private Link，以私人且安全的方式連線到您的 Web 應用程式。 私人端點會使用您 VNet 中的私人 IP 位址，有效地將 Web 應用程式帶入您的 VNet 中。 這項功能僅適用于 Web 應用程式的 **輸入** 流量。
+私人端點是一種網路介面，可讓您以私人且安全的方式連線到您的 Web 應用程式，並透過 Azure private link。 私人端點會使用您 VNet 中的私人 IP 位址，有效地將 Web 應用程式帶入您的 VNet 中。 這項功能僅適用于 Web 應用程式的 **輸入** 流量。
 [使用 Azure Web 應用程式的私人端點][privateendpoints]
 
 私人端點可啟用下列案例：
@@ -261,10 +265,10 @@ ASE 提供有關隔離和專用應用程式裝載的最佳案例，但有一些�
 
 如果您掃描 App Service，將會發現數個針對輸入連線所公開的埠。 無法在多租使用者服務中封鎖或控制對這些埠的存取。 公開的埠如下所示：
 
-| 使用 | 連接埠 |
+| 用途 | 連接埠 |
 |----------|-------------|
 |  HTTP/HTTPS  | 80、443 |
-|  管理性 | 454、455 |
+|  管理 | 454、455 |
 |  FTP/FTPS    | 21、990、10001-10020 |
 |  Visual Studio 遠端偵錯  |  4020、4022、4024 |
 |  Web Deploy 服務 | 8172 |
