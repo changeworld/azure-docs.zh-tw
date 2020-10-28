@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 65357642d940453b5bbfabf2fbb726ca909ce6f5
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 0eec1538814b93c024fe6a5aa34ee73c4c09184c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173121"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740421"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>瞭解適用於 PostgreSQL 的 Azure 資料庫單一伺服器的根 CA 變更變更
 
@@ -52,11 +52,11 @@ ms.locfileid: "92173121"
 *   同時包含 **baltimorecybertrustroot.crt** 和 **DigiCertGlobalRootG2** 憑證來產生合併的 CA 憑證存儲。
     *   針對 JAVA (使用 DefaultJAVASSLFactory 于 postgresql JDBC) 使用者，請執行：
 
-          ```azurecli-interactive
+          ```console
           keytool -importcert -alias PostgreSQLServerCACert  -file D:\BaltimoreCyberTrustRoot.crt.pem  -keystore truststore -storepass password -noprompt
           ```
 
-          ```azurecli-interactive
+          ```console
           keytool -importcert -alias PostgreSQLServerCACert2  -file D:\DigiCertGlobalRootG2.crt.pem -keystore truststore -storepass password  -noprompt
           ```
 
@@ -133,7 +133,7 @@ ms.locfileid: "92173121"
 若要確認您是否使用 SSL 連線來連線到伺服器，請參閱 [ssl 驗證](concepts-ssl-connection-security.md#applications-that-require-certificate-verification-for-tls-connectivity)。
 
 ### <a name="13-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>13. 如果我的憑證檔案中已經有 DigiCertGlobalRootG2，是否需要採取動作？
-否。 如果您的憑證檔案已經有 **DigiCertGlobalRootG2**，就不需要採取任何動作。
+否。 如果您的憑證檔案已經有 **DigiCertGlobalRootG2** ，就不需要採取任何動作。
 
 ### <a name="14-what-is-you-are-using-docker-image-of-pgbouncer-sidecar-provided-by-microsoft"></a>14. 您使用的是 Microsoft 所提供之 Pgbouncer) 側車的 docker 映射？
 支援 [**巴爾的摩**](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) 和 [**DigiCert**](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) 的新 docker 映射會發佈 [到下方，](https://hub.docker.com/_/microsoft-azure-oss-db-tools-pgbouncer-sidecar) (最新的標記) 。 您可以提取這個新映射，以避免自2021年2月15日起中斷連線。 

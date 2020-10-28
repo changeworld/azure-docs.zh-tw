@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 27a58fc66de31fef272ab2f2c2bfaa9896a07d4b
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a3899d9fbf04f9629885ec38f6b0b2bde728561b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209548"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740153"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>在您開發的 mobile apps 中支援單一登入和應用程式保護原則
 
@@ -47,7 +47,7 @@ ms.locfileid: "92209548"
 
 針對 iOS 應用程式，我們有一個 [快速入門](quickstart-v2-ios.md) ，說明如何使用 MSAL 來設定登入，以及如何 [針對各種 SSO 案例設定 MSAL 的指引](single-sign-on-macos-ios.md)。
 
-針對 Android 應用程式，我們提供 [快速入門](quickstart-v2-android.md) ，說明如何使用 MSAL 設定登入，以及如何使用代理 [驗證](brokered-auth.md) 或 [授權代理](authorization-agents.md)程式。
+針對 Android 應用程式，我們有一個 [快速入門](quickstart-v2-android.md) ，說明如何使用 MSAL 來設定登入，以及 [如何使用 MSAL 在 Android 上啟用跨應用程式的 SSO](msal-android-single-sign-on.md)的指引。
 
 ### <a name="use-the-system-web-browser"></a>使用系統網頁瀏覽器
 

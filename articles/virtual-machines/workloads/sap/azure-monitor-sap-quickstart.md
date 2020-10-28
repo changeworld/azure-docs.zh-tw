@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.date: 08/17/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: dc8aa50c5c4ecb5e4b56a7e49453c266dad28818
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 4b0e54c434f68a8a26f49b6ba0c1010e93d36ad6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678099"
+ms.locfileid: "92739893"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>使用 Azure 入口網站部署適用于 SAP 解決方案的 Azure 監視器
 
@@ -54,7 +54,7 @@ ms.locfileid: "92678099"
 
 4. 輸入您想要使用的資料庫租使用者名稱。 不過，您可以選擇任何租使用者，但我們建議使用 **SYSTEMDB** ，因為它可讓更廣泛的監視區域陣列。 
 
-5. 輸入與 HANA 資料庫相關聯的 SQL 埠號碼。 埠號碼的格式應為 **[3]**  +  **[實例 #]**  +  **[13]** 或 **[3]**  +  **[實例 #]**  +  **[15]** 。 例如，30013或30015。 
+5. 輸入與 HANA 資料庫相關聯的 SQL 埠號碼。 埠號碼的格式應為 **[3]**  +  **[實例 #]**  +  **[13]** 。 例如，30013。 
 
 6. 輸入您想要使用的資料庫使用者名稱。 確定資料庫使用者已指派 **監視** 和 **目錄讀取** 角色。 
 

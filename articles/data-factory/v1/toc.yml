@@ -200,7 +200,7 @@
     - name: 個案研究
       href: data-factory-customer-case-studies.md
     - name: Microsoft 問與答頁面
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-factory.html'
+      href: /answers/topics/azure-data-factory.html
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/data-factory/'
     - name: 定價計算機
@@ -211,7 +211,7 @@
       href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=data-factory'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=data-factory'

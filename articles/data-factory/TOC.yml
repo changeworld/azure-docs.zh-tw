@@ -748,8 +748,6 @@
           href: connector-troubleshoot-guide.md
         - name: 資料流程
           href: data-flow-troubleshoot-guide.md
-        - name: 複製資料工具
-          href: copy-data-tool-troubleshoot-guide.md
         - name: 自我裝載整合執行階段
           href: self-hosted-integration-runtime-troubleshoot-guide.md
         - name: Azure-SSIS 整合執行階段
@@ -783,7 +781,7 @@
     - name: 部落格
       href: 'https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog#'
     - name: 詢問問題 - Microsoft 問與答頁面
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-factory.html'
+      href: /answers/topics/azure-data-factory.html
     - name: 提出問題 - Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
     - name: 要求功能

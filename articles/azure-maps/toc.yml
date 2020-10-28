@@ -359,9 +359,9 @@
     - name: Azure IoT SDK
       items:
         - name: IoT 服務 SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks
         - name: IoT 裝置 SDK
-          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-device-sdks
     - name: Azure 地圖服務使用規定
       href: 'https://azure.microsoft.com/support/legal/'
     - name: Azure 地圖服務定價

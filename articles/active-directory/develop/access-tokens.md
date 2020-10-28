@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/18/2020
+ms.date: 10/26/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 3b091fb66172fad85b604d8eb621f1bebb750a46
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ee8ea874ba8133216bf5a28587f841d3b7cfa2ed
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366015"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740174"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 身分識別平台存取權杖
 
@@ -32,7 +32,8 @@ ms.locfileid: "92366015"
 
 > [!IMPORTANT]
 > 存取權杖是根據權杖的「對象」 (這表示在權杖中擁有範圍的應用程式) 來建立。  這是將[應用程式資訊清單](reference-app-manifest.md#manifest-reference)中 `accessTokenAcceptedVersion` 資源設定為 `2` 以允許用戶端呼叫 v1.0 端點來接收 v2.0 存取權杖的方式。  同樣地，這也是為什麼為用戶端變更存取權杖的[選擇性宣告](active-directory-optional-claims.md)，不會變更針對資源所擁有 `user.read` 要求權杖時接收的存取權杖。
-> 基於相同原因，當使用個人帳戶 (例如 hotmail.com 或 outlook.com) 來測試用戶端應用程式時，可能會發現用戶端收到的存取權杖是不透明字串。 這是因為所存取的資源已要求舊版 MSA (Microsoft 帳戶) 票證，這些票證已加密且無法讓用戶端解讀。
+>
+> 基於相同的理由，使用支援個人帳戶 (（例如 hotmail.com 或 outlook.com) ）來測試用戶端應用程式時，您會發現用戶端所收到的存取權杖是不透明的字串。 這是因為正在存取的資源已使用加密權杖，因此用戶端無法理解。  這是預期的情況，而且不應該是您的應用程式的問題-用戶端應用程式絕對不應該依賴存取權杖的格式。 
 
 ## <a name="sample-tokens"></a>權杖範例
 
@@ -58,7 +59,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEps
 
 JWT (JSON Web 權杖) 分成三個部分：
 
-* **標頭** - 提供如何[驗證權杖](#validating-tokens)的相關資訊，包括權杖類型和簽署方式的相關資訊。
+* **標頭** - 提供如何 [驗證權杖](#validating-tokens)的相關資訊，包括權杖類型和簽署方式的相關資訊。
 * **承載** - 對於所有嘗試呼叫您服務的使用者或應用程式，其相關重要資料都包含在此。
 * **簽章** - 用來驗證權杖的原始資料。
 
@@ -103,7 +104,7 @@ JWT (JSON Web 權杖) 分成三個部分：
 | `wids` | [RoleTemplateID](../roles/permissions-reference.md#role-template-ids) GUID 的陣列 | 代表從[系統管理員角色頁面](../roles/permissions-reference.md#role-template-ids)中的角色區段，指派給此使用者的全租用戶角色。  此宣告會透過[應用程式資訊清單](reference-app-manifest.md)的 `groupMembershipClaims` 屬性，針對每個應用程式進行設定。  必須將其設定為 "All" 或 "DirectoryRole"。  可能不會出現在因權杖長度考量而透過隱含流程取得的權杖中。 |
 | `groups` | GUID 的 JSON 陣列 | 提供代表主體群組成員資格的物件識別碼。 這些值都是唯一的 (請參閱「物件識別碼」)，而且可安全地用來管理存取權，例如強制授權以存取資源。 群組宣告中包含的群組會透過[應用程式資訊清單](reference-app-manifest.md)的 `groupMembershipClaims` 屬性，針對每個應用程式進行設定。 Null 值會排除所有群組，"SecurityGroup" 的值只會包含 Active Directory 的安全性群組成員資格，而 "All" 值會包含安全性群組和 Microsoft 365 通訊群組清單。 <br><br>請參閱下面的 `hasgroups` 宣告，以取得使用 `groups` 宣告搭配隱含授與的詳細資訊。 <br>針對其他流程，如果使用者所屬的群組數目超過限制 (SAML 為 150，JWT 為 200)，則會將超額宣告新增至指向 Microsoft Graph 端點 (包含使用者群組清單) 的宣告來源。 |
 | `hasgroups` | Boolean | 如果有的話，一律為 `true`，表示使用者在至少一個群組中。 如果完整 groups 宣告會將 URI 片段延伸超出 URL 長度限制 (目前為 6 個或更多群組)，則使用於取代隱含授與流程中 JWT 的 `groups` 宣告。 表示用戶端應該使用 Microsoft Graph API 來判斷使用者的群組 (`https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects`)。 |
-| `groups:src1` | JSON 物件 | 若為沒有長度限制 (請參閱上面的 `hasgroups`) 但是對權杖而言仍然太大的權杖要求，則會包含使用者的完整 groups 清單連結。 在 JWT 中以分散式宣告形式取代 `groups` 宣告，在 SAML 中則以新宣告形式取代。 <br><br>**範例 JWT 值**： <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }` |
+| `groups:src1` | JSON 物件 | 若為沒有長度限制 (請參閱上面的 `hasgroups`) 但是對權杖而言仍然太大的權杖要求，則會包含使用者的完整 groups 清單連結。 在 JWT 中以分散式宣告形式取代 `groups` 宣告，在 SAML 中則以新宣告形式取代。 <br><br>**範例 JWT 值** ： <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }` |
 | `sub` | String | 權杖判斷提示其相關資訊的主體，例如應用程式的使用者。 這個值不可變，而且無法重新指派或重複使用。 它可用來安全地執行授權檢查 (例如當權杖用於存取資源時)，並可做為資料庫資料表中的索引鍵。 由於主體一律是存在於 Azure AD 所簽發的權杖中，因此建議您在一般用途的授權系統中使用此值。 不過，主體是成對識別碼，對於特定應用程式識別碼來說，主體是唯一的。 因此，如果單一使用者使用兩個不同的用戶端識別碼登入兩個不同的應用程式，這些應用程式會收到兩個不同的主體宣告值。 視您的架構和隱私權需求而定，這不一定是您想要的。 另請參閱 `oid` 宣告 (這確實會在租用戶內的應用程式中保持不變)。 |
 | `oid` | 字串，GUID | 物件在 Microsoft 身分識別平台中的不可變識別碼，在此案例為使用者帳戶。 它也可用來安全地執行授權檢查，以及做為資料庫資料表中的索引鍵。 此識別碼可跨應用程式唯一識別使用者，同一位使用者登入兩個不同的應用程式會在 `oid` 宣告中收到相同的值。 因此，在對 Microsoft 線上服務 (例如 Microsoft Graph) 進行查詢時可使用 `oid`。 Microsoft Graph 會傳回這個識別碼作為指定[使用者帳戶](/graph/api/resources/user)的 `id` 屬性。 因為 `oid` 可讓多個應用程式相互關聯使用者，因此需要 `profile` 範圍才能接收此宣告。 請注意，如果單一使用者存在於多個租用戶，使用者將會在每個租用戶中包含不同的物件識別碼，它們會被視為不同帳戶，即使使用者使用相同認證來登入各個帳戶也是如此。 |
 | `tid` | 字串，GUID | 代表使用者是來自哪個 Azure AD 租用戶。 就工作和學校帳戶而言，GUID 是使用者所屬組織的不可變租用戶識別碼。 就個人帳戶而言，此值會是 `9188040d-6c67-4c5b-b112-36a304b66dad`。 需要 `profile` 範圍才能接收此宣告。 |
@@ -177,7 +178,7 @@ Azure AD 中介軟體已內建驗證存取權杖的功能，您可以瀏覽我�
 
 ### <a name="validating-the-signature"></a>驗證簽章
 
-JWT 包含三個區段 (以 `.` 字元分隔)。 第一個區段稱為**標頭**、第二個稱為**主體**，而第三個稱為**簽章**。 簽章區段可用來驗證權杖的真實性，您的應用程式才得以信任。
+JWT 包含三個區段 (以 `.` 字元分隔)。 第一個區段稱為 **標頭** 、第二個稱為 **主體** ，而第三個稱為 **簽章** 。 簽章區段可用來驗證權杖的真實性，您的應用程式才得以信任。
 
 Azure AD 所簽發的權杖是使用業界標準非對稱式加密演算法 (例如 RS256) 進行簽署。 JWT 標頭包含用來簽署權杖的金鑰和加密方法相關資訊：
 

@@ -25,13 +25,13 @@
     - name: Internet Analyzer 疑難排解
       href: troubleshoot.md
     - name: Internet Analyzer CLI 參考
-      href: 'https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest'
+      href: /cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: 部落格
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: Microsoft 問與答頁面
-      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
+      href: /answers/topics/azure-virtual-network.html
     - name: 預覽 SLA
       href: 'https://azure.microsoft.com/support/legal/preview-supplemental-terms'
     - name: SLA

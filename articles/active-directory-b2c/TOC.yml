@@ -252,7 +252,7 @@
                   href: identity-provider-twitter-custom.md
             - name: SAML 提供者
               items:
-                - name: ADFS
+                - name: AD FS
                   href: identity-provider-adfs2016-custom.md
                   displayName: SAML
                 - name: Salesforce
@@ -515,7 +515,7 @@
       href: 'https://azure.microsoft.com/updates/?product=active-directory-b2c'
     - name: 解決方案與訓練
       href: solution-articles.md
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework'
     - name: 支援
       href: support-options.md

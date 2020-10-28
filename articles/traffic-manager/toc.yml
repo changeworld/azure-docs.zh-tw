@@ -13,6 +13,7 @@
     - name: 建立流量管理員設定檔 - Azure CLI
       href: quickstart-create-traffic-manager-profile-cli.md
     - name: 建立流量管理員設定檔 - ARM 範本
+      displayName: Resource Manager
       href: quickstart-create-traffic-manager-profile-template.md
   expanded: true
 - name: 教學課程

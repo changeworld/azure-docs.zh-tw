@@ -7,13 +7,13 @@ ms.subservice: security
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: aba28e867f5fdb7bfaa917547f60565c39e382dd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: d3e856256e02e2c1914aeec493a87ffe992bbf13
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977760"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740318"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 上的 Azure 磁碟加密案例
 
@@ -179,7 +179,7 @@ key-encryption-key 參數值的語法為 KEK 的完整 URI： https://[keyvault-
      Get-AzVmDiskEncryptionStatus -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
      ```
     
-- **停用磁碟加密**：若要停用加密，請使用 [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) Cmdlet。 只能在 Linux VM 的資料磁碟區上停用加密。
+- **停用磁碟加密** ：若要停用加密，請使用 [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) Cmdlet。 只能在 Linux VM 的資料磁碟區上停用加密。
      
      ```azurepowershell-interactive 
      Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
@@ -201,7 +201,7 @@ key-encryption-key 參數值的語法為 KEK 的完整 URI： https://[keyvault-
 | keyVaultName | 應作為加密金鑰上傳目的地的金鑰保存庫名稱。 您可以使用 Cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` 或 Azure CLI 命令 `az keyvault list --resource-group "MyKeyVaultResourceGroupName"` 來取得。|
 | keyVaultResourceGroup | 包含金鑰保存庫的資源群組名稱。 |
 |  keyEncryptionKeyURL | 用來加密加密金鑰的金鑰加密金鑰 URL。 如果您在 UseExistingKek 下拉式清單中選取 [nokek]，此參數是選擇性的。 如果您在 UseExistingKek 下拉式清單中選取 [kek]，您必須輸入 _keyEncryptionKeyURL_ 值。 |
-| volumeType | 執行加密作業所在磁碟區的類型。 有效值為 _OS_、_Data_ 和 _All_。 
+| volumeType | 執行加密作業所在磁碟區的類型。 有效值為 _OS_ 、 _Data_ 和 _All_ 。 
 | forceUpdateTag | 每次需要強制執行作業時傳入唯一的值，例如 GUID。 |
 | location | 所有資源的位置。 |
 
@@ -218,7 +218,7 @@ key-encryption-key 參數值的語法為 KEK 的完整 URI： https://[keyvault-
  >如果您在更新加密設定時設定此參數，則可能導致在實際加密前重新開機。 在此情況下，您也可以從 fstab 檔案中移除您不想格式化的磁碟。 同樣地，您應該先將想要加密格式化的磁碟分割新增至 fstab 檔案，在起始加密作業。 
 
 ### <a name="encryptformatall-criteria"></a>EncryptFormatAll 準則
-此參數會通過所有磁碟分割，只要它們符合下列**所有**準則，就會予以加密：
+此參數會通過所有磁碟分割，只要它們符合下列 **所有** 準則，就會予以加密：
 - 不是根/OS/開機磁碟分割
 - 尚未加密
 - 不是 BEK 磁碟區
