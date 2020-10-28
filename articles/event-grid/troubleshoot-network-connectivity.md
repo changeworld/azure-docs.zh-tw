@@ -5,12 +5,12 @@ author: batrived
 ms.topic: article
 ms.date: 06/21/2020
 ms.author: batrived
-ms.openlocfilehash: 5eb40d464fb718f0bd6dffe0d00f6420f4ea4995
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b93d7a110889192bb5be6fffa56a73758d6faa2
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86118999"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892310"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>針對連線能力問題進行疑難排解-Azure 事件方格
 
@@ -22,7 +22,7 @@ ms.locfileid: "86118999"
 
 如果應用程式根本無法連線到事件方格，請遵循本節中的步驟來針對問題進行疑難排解。
 
-### <a name="check-if-there-is-a-service-outage"></a>檢查是否有服務中斷
+### <a name="check-if-theres-a-service-outage"></a>檢查是否有服務中斷
 
 檢查 azure [服務狀態網站](https://azure.microsoft.com/status/)上的 Azure Event Grid 服務中斷。
 
@@ -50,6 +50,8 @@ telnet {sampletopicname}.{region}-{suffix}.eventgrid.azure.net 443
 
 當您使用 Azure 時，有時您必須允許公司防火牆或 proxy 中的特定 IP 位址範圍或 Url 存取您使用的所有 Azure 服務，或嘗試使用的所有服務。 確認事件方格所使用的 IP 位址上允許流量。 針對 Azure 事件方格所使用的 IP 位址：請參閱 [AZURE Ip 範圍和服務標籤-公用雲端](https://www.microsoft.com/download/details.aspx?id=56519) 和 [服務標記-AzureEventGrid](network-security.md#service-tags)。
 
+[AZURE IP 範圍和服務標記-公用雲端](https://www.microsoft.com/download/details.aspx?id=56519)檔也會 **依區域** 列出 IP 位址。 您可以在公司防火牆或 proxy 中允許 **主題區域** 和 **配對區域** 的位址範圍。 針對區域的配對區域，請參閱 [商務持續性和嚴重損壞修復 (BCDR) ： Azure 配對的區域](/azure/best-practices-availability-paired-regions)。 
+
 > [!NOTE]
 > 您可以將新的 IP 位址新增至 AzureEventGrid 服務標籤，但這並不是一般的。 因此，建議您對服務標籤進行每週檢查一次。
 
@@ -63,7 +65,7 @@ telnet {sampletopicname}.{region}-{suffix}.eventgrid.azure.net 443
 
 根據預設，只要要求提供有效的驗證與授權，就可以從網際網路存取事件方格主題/網域。 透過 IP 防火牆，您可以將其進一步限制為僅允許一組 IPv4 位址，或是使用 [CIDR (無類別網域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法來設定 IPv4 位址範圍。
 
-IP 防火牆規則會套用於事件方格主題/網域層級。 因此，規則會套用至來自用戶端的所有連接 (使用任何受支援的通訊協定)。 在事件方格主題/網域上，從不符合允許的 IP 規則的 IP 位址嘗試進行的任何連線，都會被拒絕為禁止。 回應則不涉及 IP 規則。
+IP 防火牆規則會套用於事件方格主題/網域層級。 因此，規則會套用至來自用戶端的所有連接 (使用任何受支援的通訊協定)。 在事件方格主題/網域上，從不符合允許的 IP 規則的 IP 位址嘗試進行的任何連線，都會被拒絕為禁止。 回應不會提及 IP 規則。
 
 如需詳細資訊，請參閱 [設定 Azure 事件方格主題/網域的 IP 防火牆規則](configure-firewall.md)。
 
@@ -83,7 +85,7 @@ IP 防火牆規則會套用於事件方格主題/網域層級。 因此，規則
 
 ### <a name="check-if-the-eventgrid-topicdomain-can-be-accessed-using-only-a-private-endpoint"></a>檢查是否只能使用私人端點來存取 EventGrid 主題/網域
 
-如果事件方格主題/網域設定為只能透過私人端點存取，請確認用戶端應用程式正在透過私人端點存取主題/網域。 若要確認這一點，請檢查用戶端應用程式是否正在子網內執行，以及該子網中的事件方格主題/網域是否有私人端點。
+如果事件方格主題/網域設定為只能透過私人端點存取，請確認用戶端應用程式正在透過私人端點存取主題/網域。 若要確認，請檢查用戶端應用程式是否在子網內執行，以及該子網中的事件方格主題/網域是否有私人端點。
 
 [Azure Private Link 服務](../private-link/private-link-overview.md) 可讓您透過虛擬網路中的 **私人端點** 來存取 Azure 事件方格。 私人端點是一種網路介面，其可以私人且安全的方式連線至 Azure Private Link 所支援服務。 私人端點會使用您 VNet 中的私人 IP 位址，有效地將服務帶入您的 VNet 中。 服務的所有流量都可以透過私人端點路由傳送，因此不需要閘道、NAT 裝置、ExpressRoute 或 VPN 連線或公用 IP 位址。 虛擬網路和服務間的流量會在通過 Microsoft 骨幹網路時隨之減少，降低資料在網際網路中公開的風險。 您可連線到 Azure 資源的執行個體，以取得最高層級的存取控制細微性。
 
@@ -91,7 +93,7 @@ IP 防火牆規則會套用於事件方格主題/網域層級。 因此，規則
 
 ## <a name="troubleshoot-transient-connectivity-issues"></a>針對暫時性連接問題進行疑難排解
 
-如果您遇到間歇性的連線問題，請參閱下列各節以取得疑難排解秘訣。
+如果您遇到間歇性連線問題，請參閱下列各節以取得疑難排解秘訣。
 
 ### <a name="run-the-command-to-check-dropped-packets"></a>執行命令以檢查丟棄的封包
 

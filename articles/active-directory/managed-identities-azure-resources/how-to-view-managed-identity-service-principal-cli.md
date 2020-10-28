@@ -16,12 +16,12 @@ ms.date: 09/30/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1c0f167a36ceff6a9b62e2a3ccf24ca6e13e6294
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce3a35562bdef34f44ef1093a3196ea7afb0bd9b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611906"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892038"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-using-azure-cli"></a>使用 PowerShell 檢視受控識別的服務主體如何使用 Azure CLI 檢視受控識別的服務主體
 
@@ -29,14 +29,15 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 在本文中，您會了解如何使用 Azure CLI 來檢視受控識別的服務主體。
 
+如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
+
 ## <a name="prerequisites"></a>先決條件
 
-- 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。
-- 如果您還沒有 Azure 帳戶，請[註冊免費帳戶](https://azure.microsoft.com/free/)。
+- 如果您不熟悉 Azure 資源的受控識別，請參閱 [什麼是適用于 azure 資源的受控識別？](overview.md)。
+
 - 啟用[虛擬機器](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity)或[應用程式](../../app-service/overview-managed-identity.md#add-a-system-assigned-identity)上的系統指派身分識別。
-- 若要執行範例指令碼，您有兩個選項：
-    - 使用 [Azure Cloud Shell](../../cloud-shell/overview.md)，您可以使用程式碼區塊右上角的 [試用] 按鈕來開啟。
-    - 藉由安裝最新版本的 [Azure CLI](/cli/azure/install-azure-cli)，在本機執行指令碼，然後使用 [az login](/cli/azure/reference-index#az-login) 來登入 Azure。 請使用您想用來建立資源，且已與 Azure 訂用帳戶建立關聯的帳戶。   
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="view-the-service-principal"></a>檢視服務主體
 

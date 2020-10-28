@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 3f6786ad8b7a9a635770be378e3efd0716be2428
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a51a4a95d3580912d9b727d1580e6f278831f677
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519651"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891497"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>適用于虛擬機器的 Azure Automanage
 
@@ -37,18 +37,20 @@ ms.locfileid: "92519651"
 最後，經驗很簡單。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在您嘗試啟用虛擬機器上的 Azure Automanage 之前，必須考慮幾個必要條件。
 
 - 僅限 Windows Server Vm
 - Vm 必須正在執行
 - Vm 必須位於支援的區域
-- 使用者必須有正確的許可權
-- Vm 不得連結至不同訂用帳戶中的 log analytics 工作區
+- 使用者必須有正確的許可權 (請參閱下面的段落) 
 - Automanage 目前不支援沙箱訂閱
 
-您必須具有**參與者**角色，才能使用現有的 Automanage 帳戶來啟用 Automanage。 如果您要使用新的 Automanage 帳戶來啟用 Automanage，則需要下列權限：**擁有者**角色或**參與者**以及**使用者存取系統管理員**角色。
+您必須擁有包含 Vm 之資源群組的「 **參與者** 」角色，才能使用現有的 Automanage 帳戶在 vm 上啟用 Automanage。 如果您要使用新的 Automanage 帳戶啟用 Automanage，您需要訂用帳戶的下列許可權： **擁有** 者角色或 **參與者** ，以及 **使用者存取系統管理員** 角色。 
+
+> [!NOTE]
+> 如果您想要在連線至不同訂用帳戶中工作區的 VM 上使用 Automanage，您必須擁有上述每個訂用帳戶的許可權。
 
 也請務必注意，Automanage 僅支援位於下欄區域的 Windows Vm：西歐、美國東部、美國西部2、加拿大中部美國中西部。
 
@@ -67,7 +69,7 @@ ms.locfileid: "92519651"
 
 在 Azure 入口網站中，您可以在現有的虛擬機器上或在建立新的虛擬機器時啟用 Automanage。 如需此程式的簡潔步驟，請參閱 [虛擬機器快速入門的 Automanage](quick-create-virtual-machines-portal.md)。
 
-如果這是您第一次啟用 VM 的 Automanage，您可以在 Azure 入口網站中搜尋 **Automanage – Azure 虛擬機器的最佳做法**。 按一下 [ **在現有的 VM 上啟用**]，選取您要上架的 vm，按一下 [ **選取**]，再按一下 [ **啟用**]，即可完成。
+如果這是您第一次啟用 VM 的 Automanage，您可以在 Azure 入口網站中搜尋 **Automanage – Azure 虛擬機器的最佳做法** 。 按一下 [ **在現有的 VM 上啟用** ]，選取您要上架的 vm，按一下 [ **選取** ]，再按一下 [ **啟用** ]，即可完成。
 
 當我們嘗試修復您的 VM 時，您可能需要與此 VM 互動以管理這些服務，但無法執行這項作業。 如果我們成功修復您的 VM，我們會將它恢復合規性，而不會對您發出警示。
 
@@ -105,7 +107,7 @@ Automanage 帳戶是安全性內容或執行自動化作業所用的身分識別
 在 Azure 入口網站體驗中，當您在 Vm 上啟用 Automanage 時，[ **啟用 AZURE VM 最佳作法** ] 分頁上會有一個 Advanced 下拉式清單，可讓您指派或手動建立 Automanage 帳戶。
 
 > [!NOTE]
-> 您必須具有**參與者**角色，才能使用現有的 Automanage 帳戶來啟用 Automanage。 如果您要使用新的 Automanage 帳戶來啟用 Automanage，則需要下列權限：**擁有者**角色或**參與者**以及**使用者存取系統管理員**角色。
+> 您必須在包含您 Vm 的資源群組上擁有「 **參與者** 」角色，才能使用現有的 Automanage 帳戶在 vm 上啟用 Automanage。 如果您要使用新的 Automanage 帳戶啟用 Automanage，您需要訂用帳戶的下列許可權： **擁有** 者角色或 **參與者** ，以及 **使用者存取系統管理員** 角色。
 
 
 ## <a name="status-of-vms"></a>Vm 的狀態
@@ -121,7 +123,7 @@ Automanage 帳戶是安全性內容或執行自動化作業所用的身分識別
 - *已設定* -VM 已設定且未偵測到漂移
 - *失敗* -VM 已漂移，所以無法補救
 
-如果您看到 **狀態** 為 [ *失敗*]，您可以透過您的 VM 所在的資源群組進行部署的疑難排解。 移至 [ **資源群組**]，選取您的資源群組，按一下 [ **部署** ]，並在該處查看 *失敗* 的狀態以及錯誤詳細資料。
+如果您看到 **狀態** 為 [ *失敗* ]，您可以透過您的 VM 所在的資源群組進行部署的疑難排解。 移至 [ **資源群組** ]，選取您的資源群組，按一下 [ **部署** ]，並在該處查看 *失敗* 的狀態以及錯誤詳細資料。
 
 
 ## <a name="disabling-automanage-for-vms"></a>停用 Vm 的 Automanage

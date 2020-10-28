@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b47ec082daa6eee4ab593fdb5523087f9eb5b038
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eccbbb22814788aaf06fa6fd10d8c376203c1d49
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274141"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892446"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>B2B 共同作業使用者的條件式存取
 
@@ -24,7 +24,7 @@ ms.locfileid: "91274141"
 在使用 Azure AD B2B 共同作業的情況下，組織會為 B2B 使用者強制執行 Multi-Factor Authentication (MFA) 原則。 這些原則可以在租用戶層級、應用程式或個別使用者層級強制執行，也同樣針對組織的全職員工和成員啟用。 MFA 原則會在資源組織強制執行。
 
 範例：
-1. 公司 A 中的系統管理員或資訊工作者邀請公司 B 的使用者使用公司 A 的應用程式 *Foo*。
+1. 公司 A 中的系統管理員或資訊工作者邀請公司 B 的使用者使用公司 A 的應用程式 *Foo* 。
 2. 公司 A 中的應用程式 *Foo* 是設定為要求在存取時使用 MFA。
 3. 當公司 B 的使用者嘗試存取公司 A 租用戶的應用程式 *Foo* 時，系統會要求他們完成 MFA 查問。
 4. 使用者可以設定他們的公司 A MFA，選擇其 MFA 選項。
@@ -110,5 +110,5 @@ ms.locfileid: "91274141"
 請參閱下列有關 Azure AD B2B 共同作業的文章：
 
 * [何謂 Azure AD B2B 共同作業？](what-is-b2b.md)
-* [Azure AD B2B 共同作業授權](licensing-guidance.md)
+* [外部身分識別定價](external-identities-pricing.md)
 * [Azure Active Directory B2B 共同作業常見問題 (FAQ)](faq.md)

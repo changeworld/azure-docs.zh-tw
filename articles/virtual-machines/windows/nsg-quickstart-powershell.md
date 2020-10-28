@@ -1,21 +1,21 @@
 ---
 title: 使用 Azure PowerShell 對 VM 開啟連接埠
-description: 了解如何使用 Azure Resource Manager 部署模式和 Azure PowerShell 對 Windows VM 開啟連接埠 / 建立端點
+description: 瞭解如何使用 Azure PowerShell 為您的 VM 開啟埠/建立端點
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a417c271c16aabe91836f425f26c0a55e7103557
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a432ce978f6fa9e3a472cb15e9ef9241bc41004d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973932"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891749"
 ---
-# <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>如何使用 PowerShell 對 Azure 中的 VM 開啟連接埠與端點
+# <a name="how-to-open-ports-and-endpoints-to-a-vm-using-powershell"></a>如何使用 PowerShell 對 VM 開啟埠和端點
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## <a name="quick-commands"></a>快速命令

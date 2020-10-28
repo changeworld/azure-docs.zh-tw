@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 9b40dbd91357038d1e98b04628bd866ebb336381
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95a04d763fa5982181cc1c797bce969d9857ae4b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328882"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890627"
 ---
 # <a name="use-the-drawing-tools-module"></a>使用繪圖工具模組
 
-Azure 地圖服務 Web SDK 提供 *繪圖工具模組*。 此課程模組可讓您輕鬆地使用輸入裝置（例如滑鼠或觸控式螢幕），在地圖上繪製和編輯圖形。 此課程模組的核心類別是「 [繪圖管理員](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-)」。 繪圖管理員提供在地圖上繪製和編輯圖形所需的所有功能。 您可以直接使用它，並與自訂工具列 UI 整合。 您也可以使用內建的 [繪圖工具欄](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) 類別。 
+Azure 地圖服務 Web SDK 提供 *繪圖工具模組* 。 此課程模組可讓您輕鬆地使用輸入裝置（例如滑鼠或觸控式螢幕），在地圖上繪製和編輯圖形。 此課程模組的核心類別是「 [繪圖管理員](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-)」。 繪圖管理員提供在地圖上繪製和編輯圖形所需的所有功能。 您可以直接使用它，並與自訂工具列 UI 整合。 您也可以使用內建的 [繪圖工具欄](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar) 類別。 
 
 ## <a name="loading-the-drawing-tools-module-in-a-webpage"></a>在網頁中載入繪圖工具模組
 
-1. 建立新的 HTML 檔案，並 [照常執行對應](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)。
+1. 建立新的 HTML 檔案，並 [照常執行對應](./how-to-use-map-control.md)。
 2. 載入 Azure 地圖服務繪圖工具模組。 您可以透過下列兩種方式之一載入它：
     - 使用 Azure 地圖服務服務模組的全球託管 Azure 內容傳遞網路版本。 在檔案的元素中，將參考新增至 JavaScript 和 CSS 樣式表單 `<head>` ：
 
@@ -44,7 +44,7 @@ Azure 地圖服務 Web SDK 提供 *繪圖工具模組*。 此課程模組可讓�
 
 ## <a name="use-the-drawing-manager-directly"></a>直接使用繪圖管理員
 
-在您的應用程式中載入繪圖工具模組之後，您就可以使用 [繪圖管理員](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-)來啟用繪圖和編輯功能。 您可以指定繪圖管理員的選項，同時將其具現化，或使用 `drawingManager.setOptions()` 函數。
+在您的應用程式中載入繪圖工具模組之後，您就可以使用 [繪圖管理員](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager#setoptions-drawingmanageroptions-)來啟用繪圖和編輯功能。 您可以指定繪圖管理員的選項，同時將其具現化，或使用 `drawingManager.setOptions()` 函數。
 
 ### <a name="set-the-drawing-mode"></a>設定繪圖模式
 
@@ -122,10 +122,10 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [地圖](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [地圖](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [繪圖管理員](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
+> [繪圖管理員](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
 
 > [!div class="nextstepaction"]
-> [繪圖工具欄](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)
+> [繪圖工具欄](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)

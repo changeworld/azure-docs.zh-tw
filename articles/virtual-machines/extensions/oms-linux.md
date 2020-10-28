@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: 1193bfe74e8b5e20d2189c143f6ca0cb09abfd49
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: fc9c5e1f5922543ea14b13e3e5b424190dbbfb7a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329639"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892191"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>適用於 Linux 的 Log Analytics 虛擬機器擴充功能
 
@@ -74,7 +74,7 @@ Azure 資訊安全中心會自動佈建 Log Analytics 代理程式，並且將�
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
-下列 JSON 顯示 Log Analytics 代理程式擴充功能的結構描述。 此擴充功能需要來自目標 Log Analytics 工作區的工作區 ID 和工作區金鑰，這些值可於 Azure 入口網站中[在 Log Analytics 工作區尋找](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key)。 由於工作區金鑰應視為敏感性資料，因此應儲存在受保護的設定組態中。 Azure VM 擴充功能保護的設定資料會經過加密，只會在目標虛擬機器上解密。 請注意，**workspaceId** 和 **workspaceKey** 區分大小寫。
+下列 JSON 顯示 Log Analytics 代理程式擴充功能的結構描述。 此擴充功能需要來自目標 Log Analytics 工作區的工作區 ID 和工作區金鑰，這些值可於 Azure 入口網站中[在 Log Analytics 工作區尋找](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key)。 由於工作區金鑰應視為敏感性資料，因此應儲存在受保護的設定組態中。 Azure VM 擴充功能保護的設定資料會經過加密，只會在目標虛擬機器上解密。 請注意， **workspaceId** 和 **workspaceKey** 區分大小寫。
 
 ```json
 {
@@ -110,12 +110,15 @@ Azure 資訊安全中心會自動佈建 Log Analytics 代理程式，並且將�
 | apiVersion | 2018-06-01 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
 | type | OmsAgentForLinux |
-| typeHandlerVersion | 1.7 |
+| typeHandlerVersion | 1.13 |
 | workspaceId (例如) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (例如) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
 
 ## <a name="template-deployment"></a>範本部署
+
+>[!NOTE]
+>Log Analytics VM 擴充功能的某些元件也會隨附于 [診斷 VM 擴充](./diagnostics-linux.md)功能。 由於此架構的緣故，如果兩個延伸模組都在相同的 ARM 範本中具現化，則可能會發生衝突。 若要避免這些安裝時期衝突，請使用指示[ `dependsOn` 詞來確定](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)是否依序安裝延伸模組。 延伸模組可以依照任何順序安裝。
 
 也可以使用 Azure Resource Manager 範本部署 Azure VM 擴充功能。 如果部署一或多部虛擬機器之後需要設定 (例如上架至 Azure 監視器記錄)，就很適合使用範本。 [Azure 快速入門資源庫](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)中有一個範例 Resource Manager 範本包含 Log Analytics 代理程式 VM 擴充功能。 
 
@@ -135,7 +138,7 @@ Azure 資訊安全中心會自動佈建 Log Analytics 代理程式，並且將�
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.7",
+    "typeHandlerVersion": "1.13",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -160,7 +163,7 @@ Azure 資訊安全中心會自動佈建 Log Analytics 代理程式，並且將�
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.7",
+    "typeHandlerVersion": "1.13",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -181,7 +184,7 @@ az vm extension set \
   --vm-name myVM \
   --name OmsAgentForLinux \
   --publisher Microsoft.EnterpriseCloud.Monitoring \
-  --version 1.10.1 --protected-settings '{"workspaceKey":"myWorkspaceKey"}' \
+  --protected-settings '{"workspaceKey":"myWorkspaceKey"}' \
   --settings '{"workspaceId":"myWorkspaceId"}'
 ```
 

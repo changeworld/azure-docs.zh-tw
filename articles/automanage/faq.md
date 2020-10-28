@@ -8,18 +8,18 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 003f97c99de7dd4be79e820e822b6071f45ed146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89ad5c2b973a74bc9fa0f6ca2f59f92a26b666e7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714967"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891453"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>適用于 Vm 的 Azure Automanage 的常見問題
 
 本文提供一些關於 [Azure Automanage 的虛擬機器](automanage-virtual-machines.md)最常見問題的解答。
 
-若本文中未提及您的 Azure 問題，請前往 [MSDN 及 Stack Overflow 上的 Azure 論壇](https://azure.microsoft.com/support/forums/)。 您可以在這些論壇中張貼您的問題，或將問題貼到 [Twitter 上的 @AzureSupport](https://twitter.com/AzureSupport)。 您也可以提交 Azure 支援要求。 若要提交支援要求，請在 [ [Azure 支援] 頁面](https://azure.microsoft.com/support/options/)上選取 [ **取得支援**]。
+若本文中未提及您的 Azure 問題，請前往 [MSDN 及 Stack Overflow 上的 Azure 論壇](https://azure.microsoft.com/support/forums/)。 您可以在這些論壇中張貼您的問題，或將問題貼到 [Twitter 上的 @AzureSupport](https://twitter.com/AzureSupport)。 您也可以提交 Azure 支援要求。 若要提交支援要求，請在 [ [Azure 支援] 頁面](https://azure.microsoft.com/support/options/)上選取 [ **取得支援** ]。
 
 
 ## <a name="azure-automanage-for-virtual-machines"></a>適用于虛擬機器的 Azure Automanage
@@ -32,7 +32,6 @@ ms.locfileid: "91714967"
 - Vm 必須位於支援的區域
 - 使用者必須有正確的許可權
 - 僅限非擴展集 Vm
-- Vm 不得連結至不同訂用帳戶中的 log analytics 工作區
 - Automanage 目前不支援沙箱訂閱
 
 **啟用 Automanage 所需的 Azure RBAC 許可權為何？**
@@ -106,11 +105,11 @@ Automanage 帳戶是 MSI (受控服務識別) ，可提供安全性內容或執�
 
 **為什麼我的 VM 在 Automanage 入口網站中的狀態失敗？**
 
-如果您看到狀態為 [ *失敗*]，您可以透過您的 VM 所在的資源群組進行部署的疑難排解。 移至 [ **資源群組**]，選取您的資源群組，按一下 [ **部署** ]，並在該處查看 *失敗* 的狀態以及錯誤詳細資料。
+如果您看到狀態為 [ *失敗* ]，您可以透過您的 VM 所在的資源群組進行部署的疑難排解。 移至 [ **資源群組** ]，選取您的資源群組，按一下 [ **部署** ]，並在該處查看 *失敗* 的狀態以及錯誤詳細資料。
 
 **如何取得 Automanage 的疑難排解支援？**
 
-您可以提出 [技術支援案例的票證](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。 針對 [**服務**] 選項，在 [*監視和管理*] 區段底下搜尋並選取 [ *Automanage* ]。
+您可以提出 [技術支援案例的票證](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。 針對 [ **服務** ] 選項，在 [ *監視和管理* ] 區段底下搜尋並選取 [ *Automanage* ]。
 
 
 ## <a name="next-steps"></a>後續步驟

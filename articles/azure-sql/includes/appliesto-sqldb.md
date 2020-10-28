@@ -6,4 +6,4 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 10/09/2020
 ms.locfileid: "90533289"
 ---
-<Token>**適用於：** :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure SQL Database </Token> 
+<Token>**適用於：** :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure SQL Database</Token> 

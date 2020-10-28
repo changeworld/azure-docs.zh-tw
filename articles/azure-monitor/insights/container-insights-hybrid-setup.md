@@ -3,12 +3,12 @@ title: 使用適用于容器的 Azure 監視器來設定混合式 Kubernetes 叢
 description: 本文說明如何設定容器的 Azure 監視器，以監視 Azure Stack 或其他環境上託管的 Kubernetes 叢集。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 2d2522118fddcebcb2ca922ed455011e394fac45
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: d481af07013c0a5b4c5a381527c6f555400a2559
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994435"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890457"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>使用容器的 Azure 監視器設定混合式 Kubernetes 叢集
 
@@ -16,14 +16,12 @@ ms.locfileid: "91994435"
 
 ## <a name="supported-configurations"></a>支援的設定
 
-以下是針對容器 Azure 監視器正式支援的設定。
+以下是針對容器 Azure 監視器正式支援的設定。 如果您有不同版本的 Kubernetes 和作業系統版本，請將郵件傳送至 askcoin@microsoft.com 。
 
 - 環境：
 
     - Kubernetes 內部部署
-    
-    - Azure 和 Azure Stack 上的 AKS 引擎。 如需詳細資訊，請參閱 [Azure Stack 上的 AKS 引擎](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)
-    
+    - Azure 和 Azure Stack 上的 AKS 引擎。 如需詳細資訊，請參閱 [Azure Stack 上的 AKS 引擎](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908&preserve-view=true)
     - [OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) 第4版和更高版本、內部部署或其他雲端環境。
 
 - Kubernetes 和支援原則的版本與 [支援的 AKS](../../aks/supported-kubernetes-versions.md)版本相同。
@@ -34,7 +32,7 @@ ms.locfileid: "91994435"
 
 - 支援的存取控制： Kubernetes RBAC 和非 RBAC
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 開始之前，請確定您有下列項目：
 
@@ -110,7 +108,7 @@ ms.locfileid: "91994435"
     Microsoft Azure                       AzureCloud   0fb60ef2-03cc-4290-b595-e71108e8f4ce  Enabled  True
     ```
 
-    複製 **SubscriptionId**的值。
+    複製 **SubscriptionId** 的值。
 
 2. 使用下列命令切換至裝載 Log Analytics 工作區的訂用帳戶：
 
@@ -124,7 +122,7 @@ ms.locfileid: "91994435"
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
-    在輸出中，尋找工作區名稱，然後在欄位 **識別碼**下複製該 Log Analytics 工作區的完整資源識別碼。
+    在輸出中，尋找工作區名稱，然後在欄位 **識別碼** 下複製該 Log Analytics 工作區的完整資源識別碼。
 
 4. 複製以下 JSON 語法並貼到您的檔案中：
 
@@ -204,7 +202,7 @@ ms.locfileid: "91994435"
     }
     ```
 
-7. 使用您在步驟3中複製的值來編輯**workspaceResourceId**的值，並在執行 Azure CLI 命令[az monitor log analytics workspace show](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list)之後，針對 **>workspaceregion**複製**區域**值。
+7. 使用您在步驟3中複製的值來編輯 **workspaceResourceId** 的值，並在執行 Azure CLI 命令 [az monitor log analytics workspace show](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list&preserve-view=true)之後，針對 **>workspaceregion** 複製 **區域** 值。
 
 8. 將此檔案儲存為本機資料夾的 containerSolutionParams.js。
 
@@ -260,13 +258,13 @@ ms.locfileid: "91994435"
 
     `az monitor log-analytics workspace list --resource-group <resourceGroupName>`
 
-    在輸出中，尋找功能變數名稱底下的工作區名稱 **，然後**在 [ **customerID**] 欄位下複製該 Log Analytics 工作區的工作區識別碼。
+    在輸出中，尋找功能變數名稱底下的工作區名稱 **，然後** 在 [ **customerID** ] 欄位下複製該 Log Analytics 工作區的工作區識別碼。
 
 2. 執行下列命令，以識別工作區的主要金鑰：
 
     `az monitor log-analytics workspace get-shared-keys --resource-group <resourceGroupName> --workspace-name <logAnalyticsWorkspaceName>`
 
-    在輸出中，尋找 **primarySharedKey**欄位下的主鍵，然後複製值。
+    在輸出中，尋找 **primarySharedKey** 欄位下的主鍵，然後複製值。
 
 >[!NOTE]
 >下列命令僅適用于 Helm 第2版。 使用參數不適用於 `--name` Helm 第3版。 
@@ -277,14 +275,14 @@ ms.locfileid: "91994435"
 3. 執行下列命令，將 Azure 圖表存放庫新增至您的本機清單：
 
     ```
-    helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
+    helm repo add microsoft https://microsoft.github.io/charts/repo
     ````
 
 4. 執行下列命令來安裝圖表：
 
     ```
     $ helm install --name myrelease-1 \
-    --set omsagent.secret.wsid=<logAnalyticsWorkspaceId>,omsagent.secret.key=<logAnalyticsWorkspaceKey>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
+    --set omsagent.secret.wsid=<logAnalyticsWorkspaceId>,omsagent.secret.key=<logAnalyticsWorkspaceKey>,omsagent.env.clusterName=<my_prod_cluster> microsoft/azuremonitor-containers
     ```
 
     如果 Log Analytics 工作區位於 Azure 中國的世紀，請執行下列命令：
@@ -349,13 +347,13 @@ Proxy 設定值具有下列語法： `[protocol://][user:password@]proxyhost[:po
 |proxyhost | Proxy 伺服器的位址或 FQDN |
 |連接埠 | Proxy 伺服器的選擇性埠號碼 |
 
-例如： `omsagent.proxy=http://user01:password@proxy01.contoso.com:8080`
+例如：`omsagent.proxy=http://user01:password@proxy01.contoso.com:8080`
 
-如果您將通訊協定指定為 **HTTP**，則會使用 SSL/TLS 安全連線來建立 HTTP 要求。 您的 proxy 伺服器必須支援 SSL/TLS 通訊協定。
+如果您將通訊協定指定為 **HTTP** ，則會使用 SSL/TLS 安全連線來建立 HTTP 要求。 您的 proxy 伺服器必須支援 SSL/TLS 通訊協定。
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如果您在嘗試為混合式 Kubernetes 叢集啟用監視時遇到錯誤，請複製 PowerShell 腳本 [TroubleshootError_nonAzureK8s.ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1) 並將它儲存到電腦上的資料夾。 此腳本可協助您偵測及修正所遇到的問題。 其設計用來偵測和嘗試更正的問題如下：
+如果您在嘗試為混合式 Kubernetes 叢集啟用監視時遇到錯誤，請複製 PowerShell 腳本 [TroubleshootError_nonAzureK8s.ps1](https://aka.ms/troubleshoot-non-azure-k8s) 並將它儲存到電腦上的資料夾。 此腳本可協助您偵測及修正所遇到的問題。 其設計用來偵測和嘗試更正的問題如下：
 
 - 指定的 Log Analytics 工作區有效
 - Log Analytics 工作區是以容器解決方案的 Azure 監視器設定。 如果沒有，請設定工作區。
@@ -372,6 +370,6 @@ Proxy 設定值具有下列語法： `[protocol://][user:password@]proxyhost[:po
 .\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile> -clusterContextInKubeconfig <clusterContext>
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 啟用監視以收集混合式 Kubernetes 叢集和其上執行之工作負載的健康情況和資源使用量，瞭解 [如何使用](container-insights-analyze.md) 容器 Azure 監視器。

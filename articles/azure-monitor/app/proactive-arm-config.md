@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa8529abf3d7eea7d413c59ce62c93c7eb6c76d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 169ad40e32f688ae20a9d02f61db161844b1254a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87309336"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890508"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本來管理 Application Insights 智慧偵測規則
 
@@ -21,18 +21,18 @@ ms.locfileid: "87309336"
 ## <a name="smart-detection-rule-configuration"></a>智慧偵測規則設定
 
 您可以設定智慧偵測規則的下列設定：
-- 如果已啟用規則 (預設值為 **true**。 ) 
-- 如果在找到偵測時，應該將電子郵件傳送給與訂用帳戶的 [監視讀取器](../../role-based-access-control/built-in-roles.md#monitoring-reader) 和 [監視參與者](../../role-based-access-control/built-in-roles.md#monitoring-contributor) 角色相關聯的使用者 (預設值為 **true**。 ) 
+- 如果已啟用規則 (預設值為 **true** 。 ) 
+- 如果在找到偵測時，應該將電子郵件傳送給與訂用帳戶的 [監視讀取器](../../role-based-access-control/built-in-roles.md#monitoring-reader) 和 [監視參與者](../../role-based-access-control/built-in-roles.md#monitoring-contributor) 角色相關聯的使用者 (預設值為 **true** 。 ) 
 - 應該在找到偵測時收到通知的任何其他電子郵件收件者。
-    -  電子郵件設定不適用於標示為 _預覽版_的智慧偵測規則。
+    -  電子郵件設定不適用於標示為 _預覽版_ 的智慧偵測規則。
 
-為了允許透過 Azure Resource Manager 設定規則設定，智慧偵測規則設定現在可作為 Application Insights 資源 (名為 **ProactiveDetectionConfigs**) 中的內部資源。
+為了允許透過 Azure Resource Manager 設定規則設定，智慧偵測規則設定現在可作為 Application Insights 資源 (名為 **ProactiveDetectionConfigs** ) 中的內部資源。
 為獲得最大彈性，您可以使用唯一的通知設定來設定每個智慧偵測規則。
 
 ## <a name="examples"></a>範例
 
 以下幾個範例會說明如何使用 Azure Resource Manager 範本來設定智慧偵測規則的設定。
-所有範例都參考名為 myApplication__ 的 Application Insights 資源以及「相依性持續時間較長智慧偵測規則」(這在內部稱為 longdependencyduration__)。
+所有範例都參考名為 myApplication  的 Application Insights 資源以及「相依性持續時間較長智慧偵測規則」(這在內部稱為 longdependencyduration  )。
 請務必取代 Application Insights 資源名稱，並指定相關的智慧偵測規則內部名稱。 請查閱下表中每個智慧偵測規則對應的內部 Azure Resource Manager 名稱清單。
 
 ### <a name="disable-a-smart-detection-rule"></a>停用智慧偵測規則
@@ -44,7 +44,7 @@ ms.locfileid: "87309336"
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -75,7 +75,7 @@ ms.locfileid: "87309336"
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -106,7 +106,7 @@ ms.locfileid: "87309336"
       "type": "Microsoft.Insights/components",
       "location": "[resourceGroup().location]",
       "properties": {
-        "ApplicationId": "myApplication"
+        "Application_Type": "web"
       },
       "resources": [
         {
@@ -120,7 +120,7 @@ ms.locfileid: "87309336"
           "properties": {
             "name": "longdependencyduration",
             "sendEmailsToSubscriptionOwners": true,
-            "customEmails": ['alice@contoso.com', 'bob@contoso.com'],
+            "customEmails": ["alice@contoso.com", "bob@contoso.com"],
             "enabled": true
           }
         }

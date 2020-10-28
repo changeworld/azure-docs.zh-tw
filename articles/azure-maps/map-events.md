@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 0621e0ecfbb91d151e3cc78d3b345ab92133695c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8121ceb68bdea9332316a9508bf6f4731e05b0ba
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310368"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890780"
 ---
 # <a name="interact-with-the-map"></a>與地圖互動
 
-本文說明如何使用[地圖事件類別](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events)。 屬性會醒目提示地圖上事件及地圖的不同圖層。 您也可以在與 HTML 標記互動時醒目提示事件。
+本文說明如何使用[地圖事件類別](/javascript/api/azure-maps-control/atlas.map#events)。 屬性會醒目提示地圖上事件及地圖的不同圖層。 您也可以在與 HTML 標記互動時醒目提示事件。
 
 ## <a name="interact-with-the-map"></a>與地圖互動
 
@@ -117,4 +117,4 @@ ms.locfileid: "91310368"
 > [使用 Azure 地圖服務的服務模組](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
-> [程式碼範例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [程式碼範例](/samples/browse/?products=azure-maps)

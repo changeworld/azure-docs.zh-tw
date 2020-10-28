@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/15/2020
-ms.openlocfilehash: 5845ab6419d6914b9221df1ae1280d31aba0ae7a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.date: 10/27/2020
+ms.openlocfilehash: 6354b0a1df9d8c331de0731b230d628ac4e435df
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737526"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891344"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>對應資料流程中的接收轉換
 
@@ -40,7 +40,7 @@ ms.locfileid: "92737526"
 
 對應資料流程會遵循 (ELT) 方法的解壓縮、載入和轉換，且適用于所有 Azure 中的 *暫存* 資料集。 目前，您可以在來源轉換中使用下列資料集。
 
-| 連接器 | 格式 | 資料集/內嵌 |
+| 連接子 | 格式 | 資料集/內嵌 |
 | --------- | ------ | -------------- |
 | [Azure Blob 儲存體](connector-azure-blob-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [分隔符號文字](format-delimited-text.md#mapping-data-flow-properties) <br> [差異 (預覽) ](format-delta.md) <br> [ORC](format-orc.md#mapping-data-flow-properties)<br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> ✓/- <br> -/✓ <br>✓/✓<br> ✓/- |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [分隔符號文字](format-delimited-text.md#mapping-data-flow-properties) <br> [ORC](format-orc.md#mapping-data-flow-properties)<br/> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> ✓/- <br>✓/✓<br> ✓/- |
@@ -68,6 +68,10 @@ Azure Data Factory 可以存取90以上的 [原生連接器](connector-overview.
 **架構漂移** ： [架構漂移](concepts-data-flow-schema-drift.md) 是 Data Factory 能夠以原生方式處理資料流程中的彈性架構，而不需要明確定義資料行變更。 啟用 [ **允許架構漂移** ]，以在接收資料架構中定義的內容上寫入額外的資料行。
 
 **驗證架構** ：如果選取了 [驗證架構]，如果在來源投射中找不到傳入來源架構的任何資料行，或資料類型不相符，資料流程將會失敗。 您可以使用此設定來強制來源資料符合您所定義投射的合約。 這在資料庫來源案例中很有用，可告知資料行名稱或類型已變更。
+
+**使用 TempDB：** 根據預設，Data Factory 會使用全域臨時表，在載入過程中儲存資料。 您也可以取消核取 [使用 TempDB] 選項，並改為要求 Data Factory 將臨時保存資料表儲存在使用者資料庫中，該資料庫位於要用於此接收的資料庫中。
+
+![Tempdb](media/data-flow/tempdb.png "Tempdb")
 
 ## <a name="field-mapping"></a>欄位對應
 

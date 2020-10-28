@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 5b042bc12202de5fc0fe30aac62e065538abf3a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5434406af1f912c1c89123baa344dd3f9c7ff91
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310487"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891049"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>將符號圖層新增至地圖
 
@@ -100,16 +100,16 @@ dataSource.add(new atlas.data.Point([0, 0]));
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [SymbolLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer)
+> [SymbolLayer](/javascript/api/azure-maps-control/atlas.layer.symbollayer)
 
 > [!div class="nextstepaction"]
-> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions)
+> [SymbolLayerOptions](/javascript/api/azure-maps-control/atlas.symbollayeroptions)
 
 > [!div class="nextstepaction"]
-> [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)
+> [IconOptions](/javascript/api/azure-maps-control/atlas.iconoptions)
 
 > [!div class="nextstepaction"]
-> [TextOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions)
+> [TextOptions](/javascript/api/azure-maps-control/atlas.textoptions)
 
 請參閱下列文章，以取得更多可新增至地圖的程式碼範例：
 

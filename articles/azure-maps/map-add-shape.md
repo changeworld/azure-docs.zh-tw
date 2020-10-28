@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 74c8ba4ed1f228b9b3ba90b46c47f538d71ff409
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96553e75d4b982cfe67d03961d4356a3844f253c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310453"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890992"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>將多邊形圖層新增至地圖
 
-本文說明如何使用多邊形圖層，在地圖上呈現 `Polygon` 和 `MultiPolygon` 特徵幾何的區域。 Azure 地圖服務 Web SDK 也支援建立圓形幾何，如[擴充的 GeoJSON 結構描述](extend-geojson.md#circle)所定義。 在地圖上呈現時，這些圓形會轉換為多邊形。 以 [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) 類別包裝時，所有特徵幾何都可輕易更新。
+本文說明如何使用多邊形圖層，在地圖上呈現 `Polygon` 和 `MultiPolygon` 特徵幾何的區域。 Azure 地圖服務 Web SDK 也支援建立圓形幾何，如[擴充的 GeoJSON 結構描述](extend-geojson.md#circle)所定義。 在地圖上呈現時，這些圓形會轉換為多邊形。 以 [atlas.Shape](/javascript/api/azure-maps-control/atlas.shape) 類別包裝時，所有特徵幾何都可輕易更新。
 
 ## <a name="use-a-polygon-layer"></a>使用多邊形圖層 
 
-當多邊形圖層連線至資料來源並載入至地圖時，將會呈現具有 `Polygon` 和 `MultiPolygon` 特徵的區域。 若要建立多邊形，請將其新增至資料來源，並使用 [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer) 類別和多邊形圖層加以呈現。
+當多邊形圖層連線至資料來源並載入至地圖時，將會呈現具有 `Polygon` 和 `MultiPolygon` 特徵的區域。 若要建立多邊形，請將其新增至資料來源，並使用 [PolygonLayer](/javascript/api/azure-maps-control/atlas.layer.polygonlayer) 類別和多邊形圖層加以呈現。
 
 ```javascript
 //Create a data source and add it to the map.
@@ -115,7 +115,7 @@ Azure 地圖服務 Web SDK 會將這些 `Point` 特徵轉換為 `Polygon` 特徵
 
 ## <a name="make-a-geometry-easy-to-update"></a>讓幾何易於更新
 
-`Shape` 類別會包裝[幾何](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry)或[特徵](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature)，使這些特徵更容易更新和維護。 若要具現化圖形變數，請將幾何或一組屬性傳至圖形建構函式。
+`Shape` 類別會包裝[幾何](/javascript/api/azure-maps-control/atlas.data.geometry)或[特徵](/javascript/api/azure-maps-control/atlas.data.feature)，使這些特徵更容易更新和維護。 若要具現化圖形變數，請將幾何或一組屬性傳至圖形建構函式。
 
 ```javascript
 //Creating a shape by passing in a geometry and a object containing properties.
@@ -137,10 +137,10 @@ var shape2 = new atlas.Shape(new atlas.data.Feature(new atlas.data.Point[0,0], {
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [Polygon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon)
+> [Polygon](/javascript/api/azure-maps-control/atlas.data.polygon)
 
 > [!div class="nextstepaction"]
-> [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer)
+> [PolygonLayer](/javascript/api/azure-maps-control/atlas.layer.polygonlayer)
 
 > [!div class="nextstepaction"]
 > [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)

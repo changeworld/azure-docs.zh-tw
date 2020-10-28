@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: a67fad5d0980730eb73f4219f12eaf3a7b9ec7dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 903574a8c8696f10d9903a685bab8d12b3e6395f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310470"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891031"
 ---
 # <a name="add-a-popup-to-the-map"></a>在地圖上新增快顯
 
@@ -22,7 +22,7 @@ ms.locfileid: "91310470"
 
 ## <a name="understand-the-code"></a>了解程式碼
 
-下列程式碼會使用符號圖層，將具有和屬性的點特徵新增 `name` `description` 至地圖。 隨即建立 [快顯視窗類別](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup) 的實例，但不會顯示。 滑鼠事件會加入至符號圖層，以觸發開啟和關閉快顯視窗。 當標記符號停留時，快顯視窗的 `position` 屬性會以標記的位置進行更新，而 `content` 選項會以一些 HTML 來更新，以包裝要停留的  `name` `description` 點功能和屬性。 然後，會使用其函式在地圖上顯示快顯視窗 `open` 。
+下列程式碼會使用符號圖層，將具有和屬性的點特徵新增 `name` `description` 至地圖。 隨即建立 [快顯視窗類別](/javascript/api/azure-maps-control/atlas.popup) 的實例，但不會顯示。 滑鼠事件會加入至符號圖層，以觸發開啟和關閉快顯視窗。 當標記符號停留時，快顯視窗的 `position` 屬性會以標記的位置進行更新，而 `content` 選項會以一些 HTML 來更新，以包裝要停留的  `name` `description` 點功能和屬性。 然後，會使用其函式在地圖上顯示快顯視窗 `open` 。
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -279,13 +279,13 @@ var popup = new atlas.Popup({
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [Popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
+> [Popup](/javascript/api/azure-maps-control/atlas.popup)
 
 > [!div class="nextstepaction"]
-> [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions)
+> [PopupOptions](/javascript/api/azure-maps-control/atlas.popupoptions)
 
 > [!div class="nextstepaction"]
-> [PopupTemplate](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popuptemplate)
+> [PopupTemplate](/javascript/api/azure-maps-control/atlas.popuptemplate)
 
 請參閱下列推薦文章，了解完整程式碼範例：
 

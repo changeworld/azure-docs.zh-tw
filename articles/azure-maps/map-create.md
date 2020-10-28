@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 62aa8f966126d95af003478e7f43d3ccea2b48cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 833b6413cc5dfde1129075a286e5fe93a06e159f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310402"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890916"
 ---
 # <a name="create-a-map"></a>建立地圖
 
@@ -22,7 +22,7 @@ ms.locfileid: "91310402"
 
 ## <a name="loading-a-map"></a>載入對應
 
-若要載入對應，請建立 [map 類別](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)的新實例。 初始化對應時，傳遞 DIV 元素識別碼以轉譯地圖，並傳遞一組選項以在載入地圖時使用。 如果未在命名空間上指定預設驗證資訊，則在 `atlas` 載入對應時，必須在對應選項中指定這項資訊。 地圖會以非同步方式載入數個資源以獲得效能。 如此一來，在建立對應實例之後，請將 `ready` 或 `load` 事件附加至對應，然後將與對應互動的任何其他程式碼加入至事件處理常式。 當 `ready` 對應的資源載入足以以程式設計方式進行互動時，就會引發此事件。 `load`初始地圖視圖完全載入完成之後，就會引發此事件。 
+若要載入對應，請建立 [map 類別](/javascript/api/azure-maps-control/atlas.map)的新實例。 初始化對應時，傳遞 DIV 元素識別碼以轉譯地圖，並傳遞一組選項以在載入地圖時使用。 如果未在命名空間上指定預設驗證資訊，則在 `atlas` 載入對應時，必須在對應選項中指定這項資訊。 地圖會以非同步方式載入數個資源以獲得效能。 如此一來，在建立對應實例之後，請將 `ready` 或 `load` 事件附加至對應，然後將與對應互動的任何其他程式碼加入至事件處理常式。 當 `ready` 對應的資源載入足以以程式設計方式進行互動時，就會引發此事件。 `load`初始地圖視圖完全載入完成之後，就會引發此事件。 
 
 <br/>
 
@@ -48,10 +48,10 @@ ms.locfileid: "91310402"
 
 在那裡建立對應時，有數種不同類型的選項可供傳入，以自訂對應的運作方式，如下所示。
 
-- [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraoptions) 和 [CameraBoundOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraboundsoptions) 是用來指定地圖應該顯示的區域。
-- [ServiceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions) 可用來指定地圖應該如何與支援地圖的服務互動。
-- [StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) 用來指定應將地圖設為樣式和呈現。
-- [UserInteractionOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.userinteractionoptions) 可用來指定當使用者與地圖互動時，地圖應該如何到達。 
+- [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions) 和 [CameraBoundOptions](/javascript/api/azure-maps-control/atlas.cameraboundsoptions) 是用來指定地圖應該顯示的區域。
+- [ServiceOptions](/javascript/api/azure-maps-control/atlas.serviceoptions) 可用來指定地圖應該如何與支援地圖的服務互動。
+- [StyleOptions](/javascript/api/azure-maps-control/atlas.styleoptions) 用來指定應將地圖設為樣式和呈現。
+- [UserInteractionOptions](/javascript/api/azure-maps-control/atlas.userinteractionoptions) 可用來指定當使用者與地圖互動時，地圖應該如何到達。 
 
 使用 `setCamera` 、 `setServiceOptions` 、 `setStyle` 和函數載入對應之後，也可以更新這些選項 `setUserInteraction` 。 
 
@@ -81,7 +81,7 @@ map.setCamera({
 });
 ```
 
-在下列程式碼中，會建立 [地圖物件](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) ，並設定置中和縮放選項。 地圖屬性（例如置中和縮放層級）是 [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraoptions)的一部分。
+在下列程式碼中，會建立 [地圖物件](/javascript/api/azure-maps-control/atlas.map) ，並設定置中和縮放選項。 地圖屬性（例如置中和縮放層級）是 [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)的一部分。
 
 <br/>
 
@@ -101,7 +101,7 @@ map.setCamera({
 });
 ```
 
-在下列程式碼中，會透過來建立 [地圖物件](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) `new atlas.Map()` 。 `CameraBoundsOptions` 等地圖屬性可透過 Map 類別的 [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) 函式來定義。 邊界和邊框間距屬性會使用 `setCamera` 來設定。
+在下列程式碼中，會透過來建立 [地圖物件](/javascript/api/azure-maps-control/atlas.map) `new atlas.Map()` 。 `CameraBoundsOptions` 等地圖屬性可透過 Map 類別的 [setCamera](/javascript/api/azure-maps-control/atlas.map) 函式來定義。 邊界和邊框間距屬性會使用 `setCamera` 來設定。
 
 <br/>
 
@@ -110,7 +110,7 @@ map.setCamera({
 
 ### <a name="animate-map-view"></a>以動畫方式呈現地圖的檢視
 
-設定地圖的相機選項時，也可以設定 [動畫選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.animationoptions) 。 這些選項會指定移動相機所應採取的動畫類型和持續時間。
+設定地圖的相機選項時，也可以設定 [動畫選項](/javascript/api/azure-maps-control/atlas.animationoptions) 。 這些選項會指定移動相機所應採取的動畫類型和持續時間。
 
 ```javascript
 map.setCamera({
@@ -135,7 +135,7 @@ map.setCamera({
 - 將額外標頭新增至磚要求。 這通常是針對受密碼保護的服務所完成。
 - 修改 Url 以透過 proxy 服務執行要求。
 
-對應的 [服務選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions) 有 `transformRequest` ，可以用來修改對應之前的所有要求。 `transformRequest`選項是採用兩個參數的函式、字串 URL，以及表示要求用途的資源類型字串。 此函數必須傳回 [RequestParameters](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.requestparameters) 結果。
+對應的 [服務選項](/javascript/api/azure-maps-control/atlas.serviceoptions) 有 `transformRequest` ，可以用來修改對應之前的所有要求。 `transformRequest`選項是採用兩個參數的函式、字串 URL，以及表示要求用途的資源類型字串。 此函數必須傳回 [RequestParameters](/javascript/api/azure-maps-control/atlas.requestparameters) 結果。
 
 ```JavaScript
 transformRequest: (url: string, resourceType: string) => RequestParameters
@@ -171,7 +171,7 @@ var map = new atlas.Map('myMap', {
 
 ## <a name="try-out-the-code"></a>試用程式碼
 
-查看程式碼範例。 您可以在 [ **JS]** 索引標籤內編輯 JavaScript 程式碼，並在 [ **結果]** 索引標籤上查看地圖視圖的變更。您也可以按一下 [>codepen] 右上角的 [ **編輯**]，然後修改 >codepen 中的程式碼。
+查看程式碼範例。 您可以在 [ **JS]** 索引標籤內編輯 JavaScript 程式碼，並在 [ **結果]** 索引標籤上查看地圖視圖的變更。您也可以按一下 [>codepen] 右上角的 [ **編輯** ]，然後修改 >codepen 中的程式碼。
 
 <a id="relatedReference"></a>
 
@@ -180,7 +180,7 @@ var map = new atlas.Map('myMap', {
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [地圖](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [地圖](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)
@@ -197,4 +197,4 @@ var map = new atlas.Map('myMap', {
 > [將控制項新增至地圖](map-add-controls.md)
 
 > [!div class="nextstepaction"]
-> [程式碼範例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [程式碼範例](/samples/browse/?products=azure-maps)

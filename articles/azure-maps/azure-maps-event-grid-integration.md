@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 701c94237ef5348e11b5d7fbc85d4da1f20136ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44b2cab814d4e51c4eb0c3ce3322b898f5b26414
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88036805"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92889761"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>使用事件格線回應 Azure 地圖服務事件
 
 Azure 地圖服務與 Azure 事件方格整合，讓使用者可以將事件通知傳送給其他服務並觸發下游處理常式。 本文的目的是協助您設定商務應用程式，以聆聽 Azure 地圖服務事件。 這可讓使用者以可靠、可擴充且安全的方式回應重大事件。 例如，使用者可以建立應用程式來更新資料庫、建立票證，並在每次裝置進入地理柵欄時傳遞電子郵件通知。
 
-Azure 事件方格是一個完全受控的事件路由服務，使用發佈-訂閱模型。 事件方格內建 Azure 服務的支援，例如 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) 和 [Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview)。 可以使用 Webhook 將事件警示傳遞至非 Azure 服務。 如需事件方格所支援的事件處理常式完整清單，請參閱 [Azure 事件方格簡介](https://docs.microsoft.com/azure/event-grid/overview)。
+Azure 事件方格是一個完全受控的事件路由服務，使用發佈-訂閱模型。 事件方格內建 Azure 服務的支援，例如 [Azure Functions](../azure-functions/functions-overview.md) 和 [Azure Logic Apps](../azure-functions/functions-overview.md)。 可以使用 Webhook 將事件警示傳遞至非 Azure 服務。 如需事件方格所支援的事件處理常式完整清單，請參閱 [Azure 事件方格簡介](../event-grid/overview.md)。
 
 
 ![Azure 事件格線運作模型](./media/azure-maps-event-grid-integration/azure-event-grid-functional-model.png)
@@ -28,7 +28,7 @@ Azure 事件方格是一個完全受控的事件路由服務，使用發佈-訂�
 
 ## <a name="azure-maps-events-types"></a>Azure 地圖服務事件類型
 
-Event Grid 使用[事件訂閱](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions)將事件訊息路由至訂閱者。 Azure 地圖服務帳戶會發出下列事件類型： 
+Event Grid 使用[事件訂閱](../event-grid/concepts.md#event-subscriptions)將事件訊息路由至訂閱者。 Azure 地圖服務帳戶會發出下列事件類型： 
 
 | 事件類型 | 描述 |
 | ---------- | ----------- |

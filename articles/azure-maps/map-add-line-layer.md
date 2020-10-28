@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: c1968df19ebc62d47da77b0338d93ceb5f49f2c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9cf2f4876d62572ace118562fe5760f2b4010fa5
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310521"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891154"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>將線條圖層新增至地圖
 
@@ -23,7 +23,7 @@ ms.locfileid: "91310521"
 > [!TIP]
 > 根據預設，線條圖層會轉譯資料來源中的多邊形座標及線條。 若要限制圖層，使其只呈現 LineString 功能，請將圖層的 `filter` 屬性設定為 `['==', ['geometry-type'], 'LineString']`，如果也想包含 MultiLineString 功能，則請設為 `['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]`。
 
-下列程式碼示範如何建立線條。 將這行程式碼新增至資料來源，然後使用 [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer) 類別，以線條圖層呈現。
+下列程式碼示範如何建立線條。 將這行程式碼新增至資料來源，然後使用 [LineLayer](/javascript/api/azure-maps-control/atlas.layer.linelayer) 類別，以線條圖層呈現。
 
 ```javascript
 //Create a data source and add it to the map.
@@ -88,7 +88,7 @@ map.layers.add(new atlas.layer.LineLayer(dataSource, null, {
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer) 
+> [LineLayer](/javascript/api/azure-maps-control/atlas.layer.linelayer) 
 
 > [!div class="nextstepaction"]
 > [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions)

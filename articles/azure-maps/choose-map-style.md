@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: e993e3086ac63a6e9d5b8372327e35016b36239f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2d7c9e39cb3eb14a2c2c6a7b13e37f3a526184b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285157"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92889794"
 ---
 # <a name="change-the-style-of-the-map"></a>變更地圖樣式
 
-地圖控制項支援數種不同的地圖 [樣式選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) 和 [基底地圖樣式](supported-map-styles.md)。 當地圖控制項初始化時，可以設定所有樣式。 或者，您可以使用地圖控制項的函式來設定樣式 `setStyle` 。 本文說明如何使用這些樣式選項來自訂地圖的外觀。 此外，您將瞭解如何在地圖中執行樣式選擇器控制項。 樣式選擇器控制項可讓使用者在不同的基底樣式之間切換。
+地圖控制項支援數種不同的地圖 [樣式選項](/javascript/api/azure-maps-control/atlas.styleoptions) 和 [基底地圖樣式](supported-map-styles.md)。 當地圖控制項初始化時，可以設定所有樣式。 或者，您可以使用地圖控制項的函式來設定樣式 `setStyle` 。 本文說明如何使用這些樣式選項來自訂地圖的外觀。 此外，您將瞭解如何在地圖中執行樣式選擇器控制項。 樣式選擇器控制項可讓使用者在不同的基底樣式之間切換。
 
 ## <a name="set-map-style-options"></a>設定地圖樣式選項
 
-您可以在 web 控制項初始化期間設定樣式選項。 或者，您可以藉由呼叫地圖控制項的函式來更新樣式選項 `setStyle` 。 若要查看所有可用的樣式選項，請參閱 [樣式選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)。
+您可以在 web 控制項初始化期間設定樣式選項。 或者，您可以藉由呼叫地圖控制項的函式來更新樣式選項 `setStyle` 。 若要查看所有可用的樣式選項，請參閱 [樣式選項](/javascript/api/azure-maps-control/atlas.styleoptions)。
 
 ```javascript
 //Set the style options when creating the map.
@@ -82,7 +82,7 @@ var map = new atlas.Map('map', {
 map.setStyle({ style: 'satellite' });
 ```
 
-在下列程式碼中，載入地圖實例之後，會將地圖樣式從更新 `grayscale_dark` 為 `satellite` 使用 [>setstyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#setstyle-styleoptions-) 函數。
+在下列程式碼中，載入地圖實例之後，會將地圖樣式從更新 `grayscale_dark` 為 `satellite` 使用 [>setstyle](/javascript/api/azure-maps-control/atlas.map#setstyle-styleoptions-) 函數。
 
 <br/>
 
@@ -93,7 +93,7 @@ map.setStyle({ style: 'satellite' });
 
 樣式選擇器控制項提供一個便於使用的按鈕與飛出視窗面板，可供使用者用來在基底樣式之間切換。
 
-樣式選擇器有兩種不同的版面配置選項： `icon` 和 `list` 。 此外，樣式選擇器也可讓您選擇兩個不同的樣式選擇器控制項 `style` 選項： `light` 和 `dark` 。 在此範例中，樣式選擇器會使用 `icon` 版面配置，並以圖示形式顯示基底地圖樣式的選取清單。 樣式控制項選擇器包含下列基本樣式集： `["road", "grayscale_light", "grayscale_dark", "night", "road_shaded_relief"]` 。 如需樣式選擇器控制項選項的詳細資訊，請參閱 [樣式控制項選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.stylecontroloptions)。
+樣式選擇器有兩種不同的版面配置選項： `icon` 和 `list` 。 此外，樣式選擇器也可讓您選擇兩個不同的樣式選擇器控制項 `style` 選項： `light` 和 `dark` 。 在此範例中，樣式選擇器會使用 `icon` 版面配置，並以圖示形式顯示基底地圖樣式的選取清單。 樣式控制項選擇器包含下列基本樣式集： `["road", "grayscale_light", "grayscale_dark", "night", "road_shaded_relief"]` 。 如需樣式選擇器控制項選項的詳細資訊，請參閱 [樣式控制項選項](/javascript/api/azure-maps-control/atlas.stylecontroloptions)。
 
 下圖顯示在版面配置中顯示的樣式選擇器控制項 `icon` 。
 
@@ -118,16 +118,16 @@ map.setStyle({ style: 'satellite' });
 深入了解此文章中使用的類別與方法：
 
 > [!div class="nextstepaction"]
-> [地圖](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [地圖](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions)
+> [StyleOptions](/javascript/api/azure-maps-control/atlas.styleoptions)
 
 > [!div class="nextstepaction"]
-> [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol)
+> [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol)
 
 > [!div class="nextstepaction"]
-> [StyleControlOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.stylecontroloptions)
+> [StyleControlOptions](/javascript/api/azure-maps-control/atlas.stylecontroloptions)
 
 將控制項新增至對應：
 
