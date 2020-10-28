@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
-ms.openlocfilehash: 665ee16d71612ac79607b4a173979847e5e115af
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fa9ab9d82244d8f9afa0c185176c44ce0ad10a8e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332415"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92470661"
 ---
 在本快速入門中，您將了解如何使用語音 SDK 進行文字轉換語音合成的常見設計模式。 首先，您會進行基本設定與合成，並繼續處理更多用於自訂應用程式開發的高階範例，包括：
 
@@ -63,7 +63,7 @@ using namespace Microsoft::CognitiveServices::Speech::Audio;
 * 使用主機：傳入主機位址。 金鑰或授權權杖是選用項目。
 * 使用授權權杖：傳入授權權杖和相關聯的區域。
 
-在此範例中，您會使用訂用帳戶金鑰和區域來建立 [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)。 請參閱[區域支援](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)頁面，以尋找您的區域識別碼。 您也會建立一些基本的重複使用程式碼，用於本文的其餘部分，而您可針對不同的自訂項目進行修改。
+在此範例中，您會使用訂用帳戶金鑰和區域來建立 [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)。 請依照[免費試用語音服務](../../../overview.md#try-the-speech-service-for-free)中的步驟，來取得這些認證。 您也會建立一些基本的重複使用程式碼，用於本文的其餘部分，而您可針對不同的自訂項目進行修改。
 
 ```cpp
 int wmain()
@@ -189,7 +189,7 @@ void synthesizeSpeech()
 語音合成標記語言 (SSML) 可讓您從 XML 結構描述提交要求，以微調文字轉換語音輸出的音調、發音、說話速度、音量等等。 本節說明一些實際使用範例，但如需更詳細的指南，請參閱 [SSML 操作說明文章](../../../speech-synthesis-markup.md)。
 
 若要開始使用 SSML 進行自訂，您可進行簡單變更來切換語音。
-首先，在根專案目錄中為 SSML 組態建立新的 XML 檔案，在此範例中為 `ssml.xml`。 根元素一律為 `<speak>`，而將文字包裝在 `<voice>` 元素中，可讓您使用 `name` 參數來變更語音。 這個範例會將語音變更為男性英文 (英式) 語音。 請注意，此語音是**標準**語音，其定價和可用性與**神經**語音不同。 請參閱支援的**標準**語音[完整清單](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#standard-voices)。
+首先，在根專案目錄中為 SSML 組態建立新的 XML 檔案，在此範例中為 `ssml.xml`。 根元素一律為 `<speak>`，而將文字包裝在 `<voice>` 元素中，可讓您使用 `name` 參數來變更語音。 這個範例會將語音變更為男性英文 (英式) 語音。 請注意，此語音是 **標準** 語音，其定價和可用性與 **神經** 語音不同。 請參閱支援的 **標準** 語音 [完整清單](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#standard-voices)。
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -221,7 +221,7 @@ void synthesizeSpeech()
 }
 ```
 
-輸出有作用，但您可進行額外幾項簡單的變更，使其聽起來更自然。 整體說話速度有點太快，因此我們會新增 `<prosody>` 標籤並將速度降低為預設速率的 **90%** 。 此外，句子中逗點之後的暫停有點太短，而且聽起來不自然。 若要修正此問題，請新增 `<break>` 標籤以延遲語音，並將時間參數設定為 **200 毫秒**。 重新執行合成，以查看這些自訂項目對輸出有何影響。
+輸出有作用，但您可進行額外幾項簡單的變更，使其聽起來更自然。 整體說話速度有點太快，因此我們會新增 `<prosody>` 標籤並將速度降低為預設速率的 **90%** 。 此外，句子中逗點之後的暫停有點太短，而且聽起來不自然。 若要修正此問題，請新增 `<break>` 標籤以延遲語音，並將時間參數設定為 **200 毫秒** 。 重新執行合成，以查看這些自訂項目對輸出有何影響。
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -240,7 +240,7 @@ void synthesizeSpeech()
 若要切換成神經語音，請將 `name` 變更為其中一個[神經語音選項](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)。 然後，新增 `mstts` 的 XML 命名空間，並將您的文字包裝在 `<mstts:express-as>` 標籤中。 使用 `style` 參數來自訂說話風格。 此範例會使用 `cheerful`，但請嘗試將其設定為 `customerservice` 或 `chat`，以查看說話風格的差異。
 
 > [!IMPORTANT]
-> **只有**在 [美國東部]、[東南亞] 和 [西歐] 區域中建立的語音資源，才支援神經語音。
+> **只有** 在 [美國東部]、[東南亞] 和 [西歐] 區域中建立的語音資源，才支援神經語音。
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">

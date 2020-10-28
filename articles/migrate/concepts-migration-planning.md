@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: ce6f0ff97b1dfa8757b05b13dff653a1d34f4531
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6629f02178b7c00ccc849e2ccfc3f0a48f419a7f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315295"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735554"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>使用 Azure Migrate 建立移轉計劃
 
@@ -20,7 +20,7 @@ ms.locfileid: "92315295"
 - 關於 Azure Migrate 的[一般問題](resources-faq.md)
 - [Azure Migrate 設備](common-questions-appliance.md)的相關問題
 - [伺服器遷移](common-questions-server-migration.md)的相關問題
-- 在[Azure Migrate 論壇](https://aka.ms/AzureMigrateForum)中取得問題的解答
+- 在[Azure Migrate 論壇](https://docs.microsoft.com/answers/topics/azure-migrate.html)中取得問題的解答
 
 ## <a name="define-the-goals-of-cloud-migration"></a>定義雲端遷移的目標
 
@@ -75,13 +75,13 @@ ms.locfileid: "92315295"
 ### <a name="readiness-and-suitability-analysis-for-azure"></a>Azure 的就緒和適用性分析
 匯出 Azure VM 評量報告，並依下列準備類別篩選，以瞭解 Azure 的 VM 就緒程度：
 
-- **適用于 azure**：您可以在不進行任何變更的情況下，依原樣將這些機器遷移至 azure  
+- **適用于 azure** ：您可以在不進行任何變更的情況下，依原樣將這些機器遷移至 azure  
 
-- **有條件地準備好用於 azure**：您可以將這些機器遷移至 azure，但您需要在這些伺服器上根據評量中提供的補救指導方針進行輕微變更
+- **有條件地準備好用於 azure** ：您可以將這些機器遷移至 azure，但您需要在這些伺服器上根據評量中提供的補救指導方針進行輕微變更
 
-- **尚未準備好進行 azure**：您無法依原樣將這些機器遷移至 Azure，而且需要根據補救指導方針修正問題，再進行遷移
+- **尚未準備好進行 azure** ：您無法依原樣將這些機器遷移至 Azure，而且需要根據補救指導方針修正問題，再進行遷移
 
-- **就緒狀態不明**：由於中繼資料不足，Azure Migrate 無法判斷電腦是否就緒
+- **就緒狀態不明** ：由於中繼資料不足，Azure Migrate 無法判斷電腦是否就緒
 
 您可以使用資料庫評量來評估將 SQL Server 資料資產遷移至 Azure SQL Database 或 Azure SQL 受控實例的準備工作。 您可以看到每個 SQL server 實例的遷移準備就緒狀態百分比。 此外，針對每個實例，您可以在 Azure 中看到建議的目標、可能的遷移封鎖器、重大變更計數、Azure SQL DB/Azure SQL VM 的就緒程度，以及相容性層級。 您可以更深入瞭解遷移封鎖程式的影響，以及修正它們的建議。
 
@@ -95,19 +95,19 @@ ms.locfileid: "92315295"
 
 評量中以 *效能為基礎* 的適當調整大小選項可讓您將 Azure 的工作負載優化。 除了擔心之外，還有一些其他途徑有助於節省成本：
 
-- **保留**實例：使用保留實例時，您可以大幅降低成本，相較于隨用隨付定價，在 Windows 和 Linux (vm 上使用1年期或3年期的隨用隨付定價) 
+- **保留** 實例：使用保留實例時，您可以大幅降低成本，相較于隨用隨付定價，在 Windows 和 Linux (vm 上使用1年期或3年期的隨用隨付定價) 
 
-- **Azure 混合式優點**：您可以將 Windows Server 內部部署授權與軟體保證整合到 Azure，並將它與保留實例選項結合
+- **Azure 混合式優點** ：您可以將 Windows Server 內部部署授權與軟體保證整合到 Azure，並將它與保留實例選項結合
 
-- **Enterprise 合約供應專案 (EA) **： Enterprise 合約提供適用于您訂用帳戶的內建節省費用
+- **Enterprise 合約供應專案 (EA)** ： Enterprise 合約提供適用于您訂用帳戶的內建節省費用
 
-- **優惠**：有多個 Azure 供應專案，例如隨用隨付開發/測試和企業開發/測試，可為開發或測試 vm 提供較低的費率
+- **優惠** ：有多個 Azure 供應專案，例如隨用隨付開發/測試和企業開發/測試，可為開發或測試 vm 提供較低的費率
 
-- **VM 執行時間**：您可以在 Azure vm 執行時，每個月以天為單位和每日的時間來提及，以降低您的成本 (不適用於 RI) 
+- **VM 執行時間** ：您可以在 Azure vm 執行時，每個月以天為單位和每日的時間來提及，以降低您的成本 (不適用於 RI) 
 
-- **目的地區域**：您可以在不同區域中建立多個評量，以進行比較。
+- **目的地區域** ：您可以在不同區域中建立多個評量，以進行比較。
 
-- 以**效能為基礎的建議**：最佳做法是嘗試使用 Rightsized 的 Azure VM 建議，以協助您節省雲端成本
+- 以 **效能為基礎的建議** ：最佳做法是嘗試使用 Rightsized 的 Azure VM 建議，以協助您節省雲端成本
 
 ### <a name="visualize-data"></a>顯現資料
 
@@ -125,7 +125,7 @@ ms.locfileid: "92315295"
 
 以下是一些建議的遷移策略：
 
-- **排定快速獲勝的優先順序**：您可以使用評量報告來識別低度的水果（包括已完全就緒的伺服器和資料庫），並需要最少的努力遷移至 Azure：
+- **排定快速獲勝的優先順序** ：您可以使用評量報告來識別低度的水果（包括已完全就緒的伺服器和資料庫），並需要最少的努力遷移至 Azure：
     - Azure 移轉已就緒：匯出評量報告，並篩選所有「適用于 Azure」的電腦。 這可以是您可以隨即轉移 Azure Migrate：伺服器遷移工具的第一組電腦。
     - 作業系統終止支援：匯出評量報告，並篩選執行 Windows Server 2008 和 Windows Server 2008 R2 作業系統的所有電腦。 這些 Sku 已結束支援，而且只有 Azure 會在您將其遷移至 Azure 時，提供您3年的免費安全性更新。 當您結合、Azure Hybrid Benefit 和使用保留實例時，儲存可能會更高。
     - SQL Server 遷移：使用資料庫評估建議，以使用 Azure Migrate 來遷移適用于 Azure SQL 資料庫的資料庫：資料庫移轉和準備使用 Azure SQL VM 的資料庫（使用 Azure Migrate：伺服器遷移）。
@@ -133,9 +133,9 @@ ms.locfileid: "92315295"
     - 過度布建的 Vm：匯出評定報告，並篩選出 CPU 使用率低 (% ) 和記憶體使用量 (% ) 的電腦。  您可以使用這個機會來遷移至 Azure 中的 rightsized VM，並省下您針對使用量過低之資源的費用。
     - 容量限制：匯出您的評定報告，並篩選出 CPU 使用率高 (% ) 和記憶體使用量 (% ) 的電腦。  您可以藉由將 Vm 遷移至 Azure 並利用自動調整功能來滿足需求，以防止 overstrained 的 Vm 中斷並提高效能。 您也可以查看評量報告，藉由分析磁片 IOPS 和輸送量，並找出最符合您需求的建議磁片類型，來瞭解您的儲存體限制。
 
-- **從小規模開始，然後再**開始：開始移動最少風險且較不復雜的應用程式和工作負載，以在您的遷移策略中建立信心。 您也可以與組織的 CMDB 存放庫交集 Azure Migrate 評量建議，以在試驗遷移中尋找並遷移開發/測試環境工作負載。 當您遷移生產工作負載時，可以使用這些試驗中的學習。  
+- **從小規模開始，然後再** 開始：開始移動最少風險且較不復雜的應用程式和工作負載，以在您的遷移策略中建立信心。 您也可以與組織的 CMDB 存放庫交集 Azure Migrate 評量建議，以在試驗遷移中尋找並遷移開發/測試環境工作負載。 當您遷移生產工作負載時，可以使用這些試驗中的學習。  
 
-- **符合您的法規/產業需求**： Azure 會在廣泛和深度的供應專案中，維持產業的最大合規性組合。 您可以使用這種方式來排定遷移至 Azure 的優先順序，並符合您的國家、地區和業界特定標準和法律。 尤其是對於處理業務關鍵或保存機密資訊的組織來說，或在嚴格管制的產業中，為數眾多和特定案例中的標準和法規可能經常變更，因此難以趕上。  
+- **符合您的法規/產業需求** ： Azure 會在廣泛和深度的供應專案中，維持產業的最大合規性組合。 您可以使用這種方式來排定遷移至 Azure 的優先順序，並符合您的國家、地區和業界特定標準和法律。 尤其是對於處理業務關鍵或保存機密資訊的組織來說，或在嚴格管制的產業中，為數眾多和特定案例中的標準和法規可能經常變更，因此難以趕上。  
 
 ## <a name="finalize-the-migration-planandprepare-formigration"></a>完成遷移計畫並準備進行遷移
 

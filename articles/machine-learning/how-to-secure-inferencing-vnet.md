@@ -10,13 +10,13 @@ ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
-ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: eb7439bc84eaa4bfba58be1059a19ddadfc6a93e
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
+ms.openlocfilehash: 20f0d6a9d87caa8e95e7f9fa0b29ff45ed1195c2
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496015"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735476"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 推斷環境
 
@@ -119,8 +119,8 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 有兩種方法可將 AKS 叢集的流量與虛擬網路隔離：
 
-* __私用 AKS__叢集：此方法會使用 Azure Private Link 來保護與叢集的通訊，以進行部署/管理作業。
-* __內部 AKS 負載平衡器__：此方法會將您部署的端點設定為 AKS，以使用虛擬網路內的私人 IP。
+* __私用 AKS__ 叢集：此方法會使用 Azure Private Link 來保護與叢集的通訊，以進行部署/管理作業。
+* __內部 AKS 負載平衡器__ ：此方法會將您部署的端點設定為 AKS，以使用虛擬網路內的私人 IP。
 
 > [!WARNING]
 > 內部負載平衡器無法與使用 kubenet 的 AKS 叢集搭配使用。 如果您想要同時使用內部負載平衡器和私人 AKS 叢集，請使用 Azure 容器網路介面設定私人 AKS 叢集 (CNI) 。 如需詳細資訊，請參閱 [Azure Kubernetes Service 中的設定 AZURE CNI 網路](../aks/configure-azure-cni.md)。
@@ -138,7 +138,7 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 根據預設，AKS 部署會使用 [公用負載平衡器](../aks/load-balancer-standard.md)。 在本節中，您將瞭解如何設定 AKS 以使用內部負載平衡器。 內部 (或私用) 負載平衡器會在只允許私人 Ip 作為前端時使用。 內部負載平衡器可用來對虛擬網路內的流量進行負載平衡
 
-藉由設定 AKS 來使用 _內部負載平衡_器，即可啟用私人負載平衡器。 
+藉由設定 AKS 來使用 _內部負載平衡_ 器，即可啟用私人負載平衡器。 
 
 #### <a name="network-contributor-role"></a>網路參與者角色
 
@@ -147,7 +147,7 @@ aks_target = ComputeTarget.create(workspace=ws,
 >
 > 若要將身分識別新增為網路參與者，請使用下列步驟：
 
-1. 若要尋找 AKS 的服務主體或受控識別識別碼，請使用下列 Azure CLI 命令。 將 `<aks-cluster-name>` 取代為叢集的名稱。 `<resource-group-name>`以_包含 AKS_叢集的資源組名取代：
+1. 若要尋找 AKS 的服務主體或受控識別識別碼，請使用下列 Azure CLI 命令。 將 `<aks-cluster-name>` 取代為叢集的名稱。 `<resource-group-name>`以 _包含 AKS_ 叢集的資源組名取代：
 
     ```azurecli-interactive
     az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
@@ -159,7 +159,7 @@ aks_target = ComputeTarget.create(workspace=ws,
     az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
     ```
 
-1. 若要尋找包含您虛擬網路的資源群組識別碼，請使用下列命令。 `<resource-group-name>`以_包含虛擬網路_的資源組名取代：
+1. 若要尋找包含您虛擬網路的資源群組識別碼，請使用下列命令。 `<resource-group-name>`以 _包含虛擬網路_ 的資源組名取代：
 
     ```azurecli-interactive
     az group show -n <resource-group-name> --query id
@@ -244,7 +244,7 @@ aks_target.wait_for_completion(show_output = True)
 
 ## <a name="enable-azure-container-instances-aci"></a>啟用 (ACI) 的 Azure 容器實例
 
-部署模型時會以動態方式建立 Azure 容器執行個體。 若要讓 Azure Machine Learning 能夠在虛擬網路內部建立 ACI，您必須為部署所使用的子網路啟用__子網路委派__。
+部署模型時會以動態方式建立 Azure 容器執行個體。 若要讓 Azure Machine Learning 能夠在虛擬網路內部建立 ACI，您必須為部署所使用的子網路啟用 __子網路委派__ 。
 
 > [!WARNING]
 > 使用虛擬網路中的 Azure 容器實例時，虛擬網路必須位於與您的 Azure Machine Learning 工作區相同的資源群組中。

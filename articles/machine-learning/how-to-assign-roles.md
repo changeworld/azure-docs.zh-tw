@@ -10,13 +10,13 @@ ms.reviewer: Blackmist
 ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
-ms.custom: how-to, seodec18
-ms.openlocfilehash: e15092ee767e6840f190027b0a35af3ce07e8ba9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.custom: how-to, seodec18, devx-track-azurecli
+ms.openlocfilehash: cba01684457c8b3a7f6c8c51c7d202bf8963658e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425647"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736604"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理對 Azure Machine Learning 工作區的存取
 
@@ -173,7 +173,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 
 這裡有一些常見的案例，其中包含自訂建議的角色定義，您可以使用這些定義作為基礎來定義您自己的自訂角色：
 
-* __資料科學家自訂__：允許資料科學家執行工作區內的所有作業， **除了**：
+* __資料科學家自訂__ ：允許資料科學家執行工作區內的所有作業， **除了** ：
 
     * 建立計算
     * 將模型部署到生產 AKS 叢集
@@ -209,7 +209,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
     }
     ```
 
-* __資料科學家受限制的自訂__：允許的動作中不含萬用字元的更受限制角色定義。 它可以執行工作區內的所有作業， **除了**：
+* __資料科學家受限制的自訂__ ：允許的動作中不含萬用字元的更受限制角色定義。 它可以執行工作區內的所有作業， **除了** ：
 
     * 建立計算
     * 將模型部署到生產 AKS 叢集
@@ -270,7 +270,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
     }
     ```
      
-* __MLflow 資料科學家自訂__：允許資料科學家執行所有 MLflow AzureML 支援的作業，但下列情況 **除外**：
+* __MLflow 資料科學家自訂__ ：允許資料科學家執行所有 MLflow AzureML 支援的作業，但下列情況 **除外** ：
 
    * 建立計算
    * 將模型部署到生產 AKS 叢集
@@ -310,7 +310,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
     }
     ```   
 
-* __MLOps Custom__：可讓您將角色指派給服務主體，並使用它來自動化您的 MLOps 管線。 例如，若要針對已發佈的管線提交執行：
+* __MLOps Custom__ ：可讓您將角色指派給服務主體，並使用它來自動化您的 MLOps 管線。 例如，若要針對已發佈的管線提交執行：
 
     `mlops_custom_role.json` :
     ```json
@@ -351,7 +351,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
     }
     ```
 
-* __工作區系統管理員__：可讓您在工作區的範圍內執行所有作業，但下列情況 **除外**：
+* __工作區系統管理員__ ：可讓您在工作區的範圍內執行所有作業，但下列情況 **除外** ：
 
     * 新增新的工作區
     * 指派訂用帳戶或工作區層級配額
@@ -381,7 +381,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
     ```
 
 <a name="labeler"></a>
-* __標籤人員 Custom__：可讓您定義僅限範圍標籤資料的角色：
+* __標籤人員 Custom__ ：可讓您定義僅限範圍標籤資料的角色：
 
     `labeler_custom_role.json` :
     ```json

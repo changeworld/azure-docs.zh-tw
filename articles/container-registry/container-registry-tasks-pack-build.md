@@ -3,13 +3,13 @@ title: 使用雲端原生 Buildpack 建立映射
 description: 使用 az acr pack build 命令從應用程式建立容器映射，並推送至 Azure Container Registry，而不使用 Dockerfile。
 ms.topic: article
 ms.date: 10/24/2019
-ms.custom: devx-track-js
-ms.openlocfilehash: cad7d5c066dd8c8a7468833cb67e6085f067417a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 264fc7314c78088ebfefb9ddb8edbe38fa16581a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91262105"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736631"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>使用雲端原生 Buildpack 從應用程式建立和推送映射
 
@@ -85,7 +85,7 @@ az acr pack build \
 az acr login --name myregistry
 ```
 
-執行映射，以 *runid*的映射標記取代：
+執行映射，以 *runid* 的映射標記取代：
 
 ```console
 docker run --rm -p 8080:8080 myregistry.azurecr.io/java-app:runid

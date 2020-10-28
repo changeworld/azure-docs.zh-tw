@@ -9,17 +9,17 @@ keywords: ipv6, azure load balancer, 雙重堆疊, 公用 ip, 原生 ipv6, 行�
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: how-to
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: edc17b9636792ce00458716e3461077fa689b3ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97fdf55032e92585d723b54e21079098cdc19636
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87001568"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735921"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>使用 Azure CLI 建立採用 IPv6 的公用負載平衡器
 
@@ -48,11 +48,11 @@ Azure 負載平衡器是第 4 層 (TCP、UDP) 負載平衡器。 負載平衡器
 
 若要部署負載平衡器，請建立並設定下列物件：
 
-* **前端 IP 組態**：包含傳入網路流量的公用 IP 位址。
-* **後端位址集區**：包含虛擬機器的網路介面 (NIC)，可從負載平衡器接收網路流量。
-* **負載平衡規則**：包含將負載平衡器上的公用連接埠對應至後端位址集區中的連接埠的規則。
-* **輸入 NAT 規則**：包含網路位址轉譯 (NAT) 規則，可將負載平衡器上的公用連接埠對應至後端位址集區中特定虛擬機器的連接埠。
-* **探查**：包含用來檢查後端位址集區中虛擬機器執行個體可用性的健全狀況探查。
+* **前端 IP 組態** ：包含傳入網路流量的公用 IP 位址。
+* **後端位址集區** ：包含虛擬機器的網路介面 (NIC)，可從負載平衡器接收網路流量。
+* **負載平衡規則** ：包含將負載平衡器上的公用連接埠對應至後端位址集區中的連接埠的規則。
+* **輸入 NAT 規則** ：包含網路位址轉譯 (NAT) 規則，可將負載平衡器上的公用連接埠對應至後端位址集區中特定虛擬機器的連接埠。
+* **探查** ：包含用來檢查後端位址集區中虛擬機器執行個體可用性的健全狀況探查。
 
 ## <a name="set-up-azure-cli"></a>設定 Azure CLI
 
@@ -122,7 +122,7 @@ Azure 負載平衡器是第 4 層 (TCP、UDP) 負載平衡器。 負載平衡器
     > [!IMPORTANT]
     > 負載平衡器會使用公用 IP 的網域標籤作為其完整網域名稱 (FQDN)。 這是一項來自傳統部署的變更，該部署使用雲端服務名稱作為負載平衡器 FQDN。
     >
-    > 在此範例中，FQDN 是 *contoso09152016.southcentralus.cloudapp.azure.com*。
+    > 在此範例中，FQDN 是 *contoso09152016.southcentralus.cloudapp.azure.com* 。
 
 ## <a name="create-front-end-and-back-end-pools"></a>建立前端和後端集區
 

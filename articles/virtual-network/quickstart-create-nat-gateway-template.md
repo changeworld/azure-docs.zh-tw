@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/09/2020
 ms.author: allensu
-ms.custom: subject-armqs
-ms.openlocfilehash: fc4804070e0fa4ca6e9e54dcf6e04aafcc17f91a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: subject-armqs, devx-track-azurecli
+ms.openlocfilehash: 24577fd110ce944e12750a7380192d1a2d3cb4cd
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88053893"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736966"
 ---
 # <a name="create-a-nat-gateway---resource-manager-template"></a>建立 NAT 閘道 - Resource Manager 範本
 
@@ -138,7 +138,7 @@ Remove-AzResourceGroup -Name myResourceGroupNAT
 
 **Azure 入口網站**
 
-若不再需要，可刪除資源群組、NAT 閘道和所有相關資源。 選取包含 NAT 閘道的資源群組 **myResourceGroupNAT**，然後選取 [刪除]。
+若不再需要，可刪除資源群組、NAT 閘道和所有相關資源。 選取包含 NAT 閘道的資源群組 **myResourceGroupNAT** ，然後選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -5,19 +5,19 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 02/10/2020
-ms.openlocfilehash: 62f78ed9063d4736e541dda2b1763ffded8eab5d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 10/27/2020
+ms.openlocfilehash: bb146f03000f17d94d3d2ffc93b55c42eea20dac
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371472"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736403"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>使用 Azure Logic Apps 中的受控識別驗證及存取 Azure 資源
 
 若要輕鬆存取 Azure Active Directory (Azure AD) 保護的其他資源並驗證您的身分識別而不登入，您的邏輯應用程式可以使用[受控識別](../active-directory/managed-identities-azure-resources/overview.md) (原為「受控服務識別」或 MSI)，而不使用認證或祕密。 Azure 會為您管理此身分識別，並協助保護您的認證，因為您不需要提供或輪替使用祕密。
 
-Azure Logic Apps 支援[*系統指派的*](../active-directory/managed-identities-azure-resources/overview.md)和[*使用者指派的*](../active-directory/managed-identities-azure-resources/overview.md)受控識別。 您的邏輯應用程式可以使用系統指派的身分識別，或*單一*使用者指派的身分識別，您可以在一組邏輯應用程式之間共用，但無法同時使用兩者。 目前，只有[特定的內建觸發和動作](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)支援受控識別，而非受控的連接器或連線，例如：
+Azure Logic Apps 支援 [*系統指派的*](../active-directory/managed-identities-azure-resources/overview.md)和 [*使用者指派的*](../active-directory/managed-identities-azure-resources/overview.md)受控識別。 您的邏輯應用程式可以使用系統指派的身分識別，或 *單一* 使用者指派的身分識別，您可以在一組邏輯應用程式之間共用，但無法同時使用兩者。 目前，只有[特定的內建觸發和動作](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)支援受控識別，而非受控的連接器或連線，例如：
 
 * HTTP
 * Azure Functions
@@ -68,7 +68,7 @@ Azure Logic Apps 支援[*系統指派的*](../active-directory/managed-identitie
    ![啟用系統指派的身分識別](./media/create-managed-service-identity/enable-system-assigned-identity.png)
 
    > [!NOTE]
-   > 如果您收到錯誤，表示您只能有一個受控識別，則您的邏輯應用程式已與使用者指派的身分識別建立關聯。 在您可以新增系統指派的身分識別之前，您必須先從邏輯應用程式*移除*使用者指派的身分識別。
+   > 如果您收到錯誤，表示您只能有一個受控識別，則您的邏輯應用程式已與使用者指派的身分識別建立關聯。 在您可以新增系統指派的身分識別之前，您必須先從邏輯應用程式 *移除* 使用者指派的身分識別。
 
    您的邏輯應用程式現在可以使用系統指派的身分識別，它會向 Azure Active Directory 註冊，並以物件識別碼表示。
 
@@ -156,19 +156,19 @@ Azure Logic Apps 支援[*系統指派的*](../active-directory/managed-identitie
 
    ![新增受控識別](./media/create-managed-service-identity/add-user-assigned-identity.png)
 
-1. 提供受控識別的相關資訊，然後選取 [建立]，例如：
+1. 提供受控識別的相關資訊，然後選取 [ **審核 + 建立** ]，例如：
 
    ![建立使用者指派的受控識別](./media/create-managed-service-identity/create-user-assigned-identity.png)
 
    | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
-   | **資源名稱** | 是 | <*user-assigned-identity-name*> | 要提供給使用者指派身分識別的名稱。 這個範例會使用「Fabrikam-user-assigned-identity」。 |
    | **訂用帳戶** | 是 | <*Azure-subscription-name*> | 要使用的 Azure 訂用帳戶的名稱 |
-   | **資源群組** | 是 | <*Azure-resource-group-name*> | 輸入要使用的資源名稱。 建立新的群組，或選取現有的群組。 這個範例會建立名為「fabrikam-managed-identities-RG」的新群組。 |
-   | **位置** | 是 | <*Azure-region*> | 用來存放資源相關資訊的 Azure 區域。 此範例使用「美國西部」。 |
+   | **資源群組** | 是 | <*Azure-resource-group-name*> | 輸入要使用的資源名稱。 建立新的群組，或選取現有的群組。 這個範例會建立名為的新群組 `fabrikam-managed-identities-RG` 。 |
+   | **區域** | 是 | <*Azure-region*> | 用來存放資源相關資訊的 Azure 區域。 此範例使用「美國西部」。 |
+   | **名稱** | 是 | <*user-assigned-identity-name*> | 要提供給使用者指派身分識別的名稱。 此範例會使用 `Fabrikam-user-assigned-identity`。 |
    |||||
 
-   現在您可以將使用者指派的身分識別新增至邏輯應用程式。 您無法將多個使用者指派的身分識別新增至您的邏輯應用程式。
+   驗證這些詳細資料之後，Azure 會建立您的受控身分識別。 現在您可以將使用者指派的身分識別新增至邏輯應用程式。 您無法將多個使用者指派的身分識別新增至您的邏輯應用程式。
 
 1. 在 Azure 入口網站的邏輯應用程式設計工具中，尋找並開啟邏輯應用程式。
 
@@ -176,7 +176,7 @@ Azure Logic Apps 支援[*系統指派的*](../active-directory/managed-identitie
 
    ![新增使用者指派的受控識別](./media/create-managed-service-identity/add-user-assigned-identity-logic-app.png)
 
-1. 在 [新增使用者指派的受控識別] 窗格上，從 [訂用帳戶] 清單中選取您的Azure 訂用帳戶 (如果尚未選取)。 從顯示該訂用帳戶中*全部*受控識別的清單中，尋找並選取您想要的使用者指派身分識別。 若要篩選清單，請在 [使用者指派的受控識別] 搜尋方塊中，輸入身分識別或資源群組的名稱。 完成後，選取 [新增]。
+1. 在 [新增使用者指派的受控識別] 窗格上，從 [訂用帳戶] 清單中選取您的Azure 訂用帳戶 (如果尚未選取)。 從顯示該訂用帳戶中 *全部* 受控識別的清單中，尋找並選取您想要的使用者指派身分識別。 若要篩選清單，請在 [使用者指派的受控識別] 搜尋方塊中，輸入身分識別或資源群組的名稱。 完成後，選取 [新增]。
 
    ![選取要使用的使用者指派身分識別](./media/create-managed-service-identity/select-user-assigned-identity.png)
 
@@ -287,7 +287,7 @@ Azure Logic Apps 支援[*系統指派的*](../active-directory/managed-identitie
 * [Azure 入口網站](#azure-portal-assign-access)
 * [Azure Resource Manager 範本](../role-based-access-control/role-assignments-template.md)
 * Azure PowerShell ([New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)) -如需詳細資訊，請參閱[使用 Azure RBAC 新增角色指派和 Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)。
-* Azure CLI ([az role assignment create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)) -如需詳細資訊，請參閱[使用 Azure RBAC 新增角色指派和 Azure CLI](../role-based-access-control/role-assignments-cli.md)。
+* Azure CLI ([az role assignment create](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true#az-role-assignment-create)) -如需詳細資訊，請參閱[使用 Azure RBAC 新增角色指派和 Azure CLI](../role-based-access-control/role-assignments-cli.md)。
 * [Azure REST API](../role-based-access-control/role-assignments-rest.md)
 
 <a name="azure-portal-assign-access"></a>
@@ -303,9 +303,9 @@ Azure Logic Apps 支援[*系統指派的*](../active-directory/managed-identitie
    > [!TIP]
    > 如果 [新增角色指派] 選項已停用，很可能表示您沒有權限。 如需可讓您管理資源角色的權限的詳細資訊，請參閱 [Azure Active Directory 中的系統管理員角色權限](../active-directory/roles/permissions-reference.md)。
 
-1. 在 [新增角色指派] 中，選取能為您的身分識別提供目標資源必要存取權的**角色**。
+1. 在 [新增角色指派] 中，選取能為您的身分識別提供目標資源必要存取權的 **角色** 。
 
-   在本主題的範例中，您的身分識別需要[存取 Azure 儲存體容器中的 Blob 所用的角色](../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)。
+   在本主題的範例中，您的身分識別需要 [可存取 Azure 儲存體容器中 blob 的角色](../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)，因此請選取受控識別的 **儲存體 blob 資料參與者** 角色。
 
    ![選取「儲存體 Blob 資料參與者」角色](./media/create-managed-service-identity/select-role-for-identity.png)
 
@@ -378,8 +378,8 @@ Azure Logic Apps 支援[*系統指派的*](../active-directory/managed-identitie
    |----------|----------|---------------|-------------|
    | **方法** | 是 | `PUT`| 快照集 Blob 操作所使用的HTTP 方法 |
    | **URI** | 是 | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Azure 全域 (公用) 環境中 Azure Blob 儲存體檔案的資源識別碼會使用此語法 |
-   | **標頭** | 是，適用於 Azure 儲存體 | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | Azure 儲存體作業所需的 `x-ms-blob-type` 和 `x-ms-version` 標題值。 <p><p>**重要**：在 Azure 儲存體的傳出 HTTP 觸發和動作要求中，標題需要您要執行的作業所用的 `x-ms-version` 屬性和 API 版本。 <p>如需詳細資訊，請參閱下列主題： <p><p>- [要求標題 - 快照集 Blob](/rest/api/storageservices/snapshot-blob#request) <br>- [Azure 儲存體服務的版本設定](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
-   | **查詢** | 是，適用於此作業 | `comp` = `snapshot` | 快照集 Blob 作業的查詢參數名稱和值。 |
+   | **標頭** | 針對 Azure 儲存體 | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` <p>`x-ms-date` = `@{formatDateTime(utcNow(),'r'}` | `x-ms-blob-type` `x-ms-version` `x-ms-date` Azure 儲存體作業需要、和標頭值。 <p><p>**重要** ：在 Azure 儲存體的傳出 HTTP 觸發和動作要求中，標題需要您要執行的作業所用的 `x-ms-version` 屬性和 API 版本。 `x-ms-date`必須是目前的日期。 否則，您的邏輯應用程式會失敗，並出現 `403 FORBIDDEN` 錯誤。 若要取得所需格式的目前日期，您可以使用範例值中的運算式。 <p>如需詳細資訊，請參閱下列主題： <p><p>- [要求標題 - 快照集 Blob](/rest/api/storageservices/snapshot-blob#request) <br>- [Azure 儲存體服務的版本設定](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
+   | **查詢** | 僅適用于快照集 Blob 作業 | `comp` = `snapshot` | 運算的查詢參數名稱和值。 |
    |||||
 
    以下是範例 HTTP 動作，其中顯示所有的屬性值：
@@ -407,12 +407,12 @@ Azure Logic Apps 支援[*系統指派的*](../active-directory/managed-identitie
 
      ![選取使用者指派的身分識別](./media/create-managed-service-identity/select-user-assigned-identity-for-action.png)
 
-   此範例會繼續使用**系統指派的受控識別**。
+   此範例會繼續使用 **系統指派的受控識別** 。
 
 1. 在某些觸發和動作上，也會顯示 [物件] 屬性，讓您設定目標資源識別碼。 將 [物件] 屬性設定為[目標資源或服務的資源識別碼](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。 否則，根據預設，[物件] 屬性會使用 `https://management.azure.com/` 資源識別碼，也就是 Azure Resource Manager 的資源識別碼。
 
    > [!IMPORTANT]
-   > 請確定目標資源識別碼*完全符合* Azure Active Directory (AD) 所預期的值，包括任何必要的後置斜線。 例如，所有 Azure Blob 儲存體帳戶的資源識別碼都需要後置斜線。 不過，特定儲存體帳戶的資源識別碼不需要後置斜線。 檢查[支援 Azure AD 的 Azure 服務所用的資源識別碼](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
+   > 請確定目標資源識別碼 *完全符合* Azure Active Directory (AD) 所預期的值，包括任何必要的後置斜線。 例如，所有 Azure Blob 儲存體帳戶的資源識別碼都需要後置斜線。 不過，特定儲存體帳戶的資源識別碼不需要後置斜線。 檢查[支援 Azure AD 的 Azure 服務所用的資源識別碼](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
    這個範例會將 [物件] 屬性設定為 `https://storage.azure.com/`，讓用於驗證的存取權杖對所有儲存體帳戶都有效。 不過，您也可以指定特定儲存體帳戶的根服務 URL `https://fabrikamstorageaccount.blob.core.windows.net`。
 

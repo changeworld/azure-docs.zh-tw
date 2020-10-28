@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 08/20/2019
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: 5521e49c767a2510bf7c8c53cf6ac5e86b73b466
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 767b5a6be9c9aaff1bfe82ebc46b3b9179e271e4
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87837171"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736979"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>虛擬機器擴展集的計劃性維護通知
 
@@ -29,8 +29,8 @@ ms.locfileid: "87837171"
 預定進行的維護作業若需要重新開機，會排定在不同波段。 每一個波段都有不同的範圍 (區域)：
 
 - 波段開始時會傳送通知給客戶。 根據預設，通知會傳送給訂用帳戶擁有者和共同擁有者。 您可以使用 Azure [活動記錄警示](../azure-monitor/platform/platform-logs-overview.md)，對通知新增收件者和傳訊選項，例如電子郵件、SMS 和 Webhook。  
-- 隨著通知會提供一個「自助時段」**。 在此視窗中，通常是35天，您可以找到哪些 Vm 包含在 wave 中。 您可以根據自己的排程需求，主動啟動維護。
-- 在自助期間之後，「排定維護期間」** 隨即開始。 在此時段的某個時間點，Azure 會為您的 VM 排定並套用必要的維護。 
+- 隨著通知會提供一個「自助時段」  。 在此視窗中，通常是35天，您可以找到哪些 Vm 包含在 wave 中。 您可以根據自己的排程需求，主動啟動維護。
+- 在自助期間之後，「排定維護期間」  隨即開始。 在此時段的某個時間點，Azure 會為您的 VM 排定並套用必要的維護。 
 
 之所以要有兩個時段，目的是要讓您在知道 Azure 何時會自動啟動維護的同時，有足夠的時間啟動維護並重新啟動 VM。
 
@@ -41,16 +41,16 @@ ms.locfileid: "87837171"
 下列指導方針可協助您決定是否要在您選擇的時間啟動維護。
 
 > [!NOTE] 
-> 自助式維護可能不適用於所有的虛擬機器。 若要判斷您的 VM 是否可以使用主動式重新部署，請在維護狀態中尋找 [立即開始]****。 目前，Azure 雲端服務 (Web/背景工作角色) 和 Azure Service Fabric 無法使用自助維護。
+> 自助式維護可能不適用於所有的虛擬機器。 若要判斷您的 VM 是否可以使用主動式重新部署，請在維護狀態中尋找 [立即開始]  。 目前，Azure 雲端服務 (Web/背景工作角色) 和 Azure Service Fabric 無法使用自助維護。
 
 
-針對使用「可用性設定組」** 的部署，不建議使用自助維護。 可用性設定組是在任何時間都只有一個更新網域會受影響的高可用性設定。 針對可用性設定組：
+針對使用「可用性設定組」  的部署，不建議使用自助維護。 可用性設定組是在任何時間都只有一個更新網域會受影響的高可用性設定。 針對可用性設定組：
 
 - 讓 Azure 觸發維護工作。 針對需要重新開機的維護，會依更新網域逐一進行維護。 更新網域不一定會依序接收維護。 更新網域之間會有 30 分鐘的暫停。
 - 如果擔心會暫時損失某些容量 (1/更新網域計數)，在維護期間配置額外的執行個體，即可輕鬆補足該損失。
 - 針對不需要重新開機的維護，系統會在容錯網域層級套用更新。 
     
-在下列情況，**請勿**使用自助式維護： 
+在下列情況， **請勿** 使用自助式維護： 
 
 - 如果您經常關閉 VM (不論是手動、使用 DevTest Labs、使用自動關機，還是依照排程)。 在這些情況下，自助維護可能會將維護狀態還原，而導致產生額外的停機時間。
 - 在您知道將會在維護波段結束前被刪除的短期存留虛擬機器上。 
@@ -58,7 +58,7 @@ ms.locfileid: "87837171"
 - 如果您經常調整 VM 的大小。 此情況可能會將維護狀態還原。 
 - 如果採用的排定事件可讓工作負載在維護關機開始之前 15 分鐘便主動容錯移轉或正常關機。
 
-如果您打算在排程維護階段連續不中斷地執行 VM，而且上述所有反指標都不適用，則請**使用**自助維護。 
+如果您打算在排程維護階段連續不中斷地執行 VM，而且上述所有反指標都不適用，則請 **使用** 自助維護。 
 
 在下列情況下，最好使用自助維護：
 
@@ -73,13 +73,13 @@ ms.locfileid: "87837171"
 在排定一波計劃性維護之後，您就可以使用 Azure 入口網站，檢視受即將到來的一波維護影響的虛擬機器擴展集清單。 
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 在左側功能表中，選取 [所有服務]****，然後選取 [虛擬機器擴展集]****。
-3. 在 [虛擬機器擴展集]**** 底下，選取 [編輯資料行]**** 以開啟可用的資料行清單。
-4. 在 [可用的資料行]**** 區段中，選取 [自助維護]****，然後將其移至 [選取的資料行]**** 清單。 選取 [套用]。  
+2. 在左側功能表中，選取 [所有服務]  ，然後選取 [虛擬機器擴展集]  。
+3. 在 [虛擬機器擴展集]  底下，選取 [編輯資料行]  以開啟可用的資料行清單。
+4. 在 [可用的資料行]  區段中，選取 [自助維護]  ，然後將其移至 [選取的資料行]  清單。 選取 [套用]  。  
 
-    若要讓 [自助維護]**** 項目變得更容易被找到，您可以將 [可用的資料行]**** 區段中的下拉式清單從 [全部]**** 變更為 [屬性]****。
+    若要讓 [自助維護]  項目變得更容易被找到，您可以將 [可用的資料行]  區段中的下拉式清單從 [全部]  變更為 [屬性]  。
 
-此時，[自助維護]**** 資料行就會出現在虛擬機器擴展集的清單中。 每個虛擬機器擴展集可以具備下列自助式維護資料行的其中一個值：
+此時，[自助維護]  資料行就會出現在虛擬機器擴展集的清單中。 每個虛擬機器擴展集可以具備下列自助式維護資料行的其中一個值：
 
 | 值 | 描述 |
 |-------|-------------|
@@ -92,21 +92,21 @@ ms.locfileid: "87837171"
 Azure 會將電子郵件傳送至訂用帳戶擁有者和共同擁有者群組，來傳達計劃性維護排程。 您可以藉由建立活動記錄警示，為此通訊新增收件者和管道。 如需詳細資訊，請參閱[使用 Azure 活動記錄監視訂用帳戶活動](../azure-monitor/platform/platform-logs-overview.md)。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 在左側功能表中，選取 [監視]****。 
-3. 在 [監視 - 警示 (傳統)]**** 窗格中，選取 [+ 新增活動記錄警示]****。
-4. 在 [新增活動記錄警示]**** 頁面上，選取或輸入所要求的資訊。 在 [準則]**** 中，請確定您已設定下列值：
-   - **事件類別目錄**：選取 [服務健康狀態]****。
-   - **服務**：選取 [虛擬機器擴展集與虛擬機器]****。
-   - **類型**：選取 [計劃性維護]****。 
+2. 在左側功能表中，選取 [監視]  。 
+3. 在 [監視 - 警示 (傳統)]  窗格中，選取 [+ 新增活動記錄警示]  。
+4. 在 [新增活動記錄警示]  頁面上，選取或輸入所要求的資訊。 在 [準則]  中，請確定您已設定下列值：
+   -  。
+   -  。
+   -  。 
     
 若要深入了解如何設定活動記錄警示，請參閱[建立活動記錄警示](../azure-monitor/platform/activity-log-alerts.md)
     
     
 ## <a name="start-maintenance-on-your-virtual-machine-scale-set-from-the-portal"></a>從入口網站開始維護您的虛擬機器擴展集
 
-您可以在虛擬機器擴展集概觀中，看到更多與維護相關的詳細資料。 如果虛擬機器擴展集中至少有一個 VM 包含在這一波計劃性維護中，在頁面頂端附近就會新增一個新的通知功能區。 選取該通知功能區，即可移至 [維護]**** 頁面。 
+您可以在虛擬機器擴展集概觀中，看到更多與維護相關的詳細資料。 如果虛擬機器擴展集中至少有一個 VM 包含在這一波計劃性維護中，在頁面頂端附近就會新增一個新的通知功能區。 選取該通知功能區，即可移至 [維護]  頁面。 
 
-在 [維護]**** 頁面上，您可以查看哪些 VM 執行個體受到計劃性維護影響。 若要啟動維護，請選取與受影響 VM 對應的核取方塊。 然後，選取 [啟動維護]****。
+在 [維護]  頁面上，您可以查看哪些 VM 執行個體受到計劃性維護影響。 若要啟動維護，請選取與受影響 VM 對應的核取方塊。 然後，選取 [啟動維護]  。
 
 啟動維護之後，虛擬機器擴展集中受影響的 VM 就會進行維護而暫時無法使用。 如果您錯過自助服務時段，仍可以看到 Azure 將維護虛擬機器擴展集的時間範圍。
  
@@ -120,7 +120,7 @@ Azure 會將電子郵件傳送至訂用帳戶擁有者和共同擁有者群組�
 Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -InstanceView
 ```
 
-下列屬性會在 **>maintenanceredeploystatus**下傳回： 
+下列屬性會在 **>maintenanceredeploystatus** 下傳回： 
 
 | 值 | 描述   |
 |-------|---------------|
@@ -135,7 +135,7 @@ Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -In
 
 ### <a name="start-maintenance-on-your-vm-instance-by-using-powershell"></a>使用 PowerShell 在 VM 執行個體上啟動維護
 
-如果將 **IsCustomerInitiatedMaintenanceAllowed** 設定為 **true**，便可在虛擬機器上啟動維護。 請使用 [Set-AzVmss](/powershell/module/az.compute/set-azvmss) Cmdlet 搭配 `-PerformMaintenance` 參數。
+如果將 **IsCustomerInitiatedMaintenanceAllowed** 設定為 **true** ，便可在虛擬機器上啟動維護。 請使用 [Set-AzVmss](/powershell/module/az.compute/set-azvmss) Cmdlet 搭配 `-PerformMaintenance` 參數。
 
 ```powershell
 Set-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -PerformMaintenance 
@@ -165,7 +165,7 @@ az vmss list-instances -g rgName -n vmssName --expand instanceView
 
 ### <a name="start-maintenance-on-your-vm-instance-by-using-the-cli"></a>使用 CLI 在 VM 執行個體上啟動維護
 
-如果將 `IsCustomerInitiatedMaintenanceAllowed` 設定為 **true**，下列呼叫就會在 VM 執行個體上起始維護：
+如果將 `IsCustomerInitiatedMaintenanceAllowed` 設定為 **true** ，下列呼叫就會在 VM 執行個體上起始維護：
 
 ```azurecli
 az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
@@ -202,17 +202,17 @@ az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 **問：我在 Vm 上看不到任何維護資訊。問題出在哪裡？**
 
 **答：** 有幾個原因會導致您可能在 VM 上看不到任何維護資訊：
-   - 您使用標示為「Microsoft 內部」** 的訂用帳戶。
+   - 您使用標示為「Microsoft 內部」  的訂用帳戶。
    - 您的 VM 未排定進行維護。 可能是維護波段已結束、取消或修改，所以您的 VM 不再受到它的影響。
-   - 您尚未將 [維護]**** 資料行新增至您的虛擬機器清單檢視。 雖然我們已將此資料行新增至預設檢視，但如果您將檢視設定為顯示非預設資料行，則必須手動將 [維護]**** 資料行新增至您的 VM 清單檢視。
+   - 您尚未將 [維護]  資料行新增至您的虛擬機器清單檢視。 雖然我們已將此資料行新增至預設檢視，但如果您將檢視設定為顯示非預設資料行，則必須手動將 [維護]  資料行新增至您的 VM 清單檢視。
 
 **問：我的 VM 第二次排程進行維護。為什麼？**
 
 **答：** 在數個使用案例中，是將您的 VM 排定成在您已經完成維護並重新部署之後進行維護：
    - 我們已取消維護，並且使用不同的裝載重新啟動它。 可能是我們已偵測到發生錯誤的承載，而只是需要部署額外承載。
-   - 因為硬體故障，您的 VM 已*服務修復*到另一個節點。
+   - 因為硬體故障，您的 VM 已 *服務修復* 到另一個節點。
    - 您已經選擇停止 (解除配置)，然後重新啟動 VM。
-   - 您已經為 VM 開啟**自動關機**。
+   - 您已經為 VM 開啟 **自動關機** 。
 
 ## <a name="next-steps"></a>後續步驟
 

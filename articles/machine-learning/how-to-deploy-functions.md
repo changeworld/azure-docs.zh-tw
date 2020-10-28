@@ -10,13 +10,13 @@ author: vaidya-s
 ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
-ms.custom: how-to, racking-python
-ms.openlocfilehash: cc5bc5b2c9f78854909b965487f7b4299f3a1579
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: how-to, racking-python, devx-track-azurecli
+ms.openlocfilehash: e93db23b09e933b58d6338646e7fff6fa30bc68e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567446"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736560"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>將機器學習模型部署至 Azure Functions (preview) 
 
@@ -47,7 +47,7 @@ ms.locfileid: "91567446"
 
 在部署之前，您必須定義以 web 服務的形式執行模型所需的內容。 下列清單描述部署所需的核心專案：
 
-* __輸入腳本__。 此腳本會接受要求、使用模型來評分要求，並傳回結果。
+* __輸入腳本__ 。 此腳本會接受要求、使用模型來評分要求，並傳回結果。
 
     > [!IMPORTANT]
     > 專案腳本為您的模型所特有;它必須瞭解傳入要求資料的格式、您的模型所預期的資料格式，以及傳回給用戶端的資料格式。
@@ -58,9 +58,9 @@ ms.locfileid: "91567446"
 
 如需輸入腳本的詳細資訊，請參閱 [定義評分程式碼](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#script)
 
-* 執行輸入腳本或模型所**需的相依性，例如**helper 腳本或 Python/Conda 套件
+* 執行輸入腳本或模型所 **需的相依性，例如** helper 腳本或 Python/Conda 套件
 
-這些實體會封裝成 __推斷__設定。 推斷設定會參考輸入指令碼和其他相依性。
+這些實體會封裝成 __推斷__ 設定。 推斷設定會參考輸入指令碼和其他相依性。
 
 > [!IMPORTANT]
 > 建立用於 Azure Functions 的推斷設定時，您必須使用 [環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true) 物件。 請注意，如果您要定義自訂環境，您必須將 >= 1.0.45 版 azureml-defaults 版的 azureml 預設值新增為 pip 相依性。 此套件包含將模型裝載為 Web 服務所需的功能。 下列範例示範如何建立環境物件，並將它與推斷設定搭配使用：
@@ -84,7 +84,7 @@ ms.locfileid: "91567446"
 如需有關推斷設定的詳細資訊，請參閱 [使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
 
 > [!IMPORTANT]
-> 部署至函式時，您不需要建立 __部署__設定。
+> 部署至函式時，您不需要建立 __部署__ 設定。
 
 ## <a name="install-the-sdk-preview-package-for-functions-support"></a>安裝 SDK preview 套件以取得函數支援
 
@@ -144,7 +144,7 @@ print(blob.location)
     }
     ```
 
-    儲存使用者 __名稱__ 和其中一個 __密碼__的值。
+    儲存使用者 __名稱__ 和其中一個 __密碼__ 的值。
 
 1. 如果您還沒有資源群組或 app service 方案可部署服務，則下列命令會示範如何建立兩者：
 

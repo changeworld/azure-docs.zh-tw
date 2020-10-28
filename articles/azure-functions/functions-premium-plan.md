@@ -8,12 +8,13 @@ ms.author: jehollan
 ms.custom:
 - references_regions
 - fasttrack-edit
-ms.openlocfilehash: aaf5cb70e3099d84a54a22fa291f8f3ab9e0daa6
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+- devx-track-azurecli
+ms.openlocfilehash: 7efcff5709995898a6ec950dfea6450f7e0dd48d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490742"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736807"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions Premium 方案
 
@@ -47,14 +48,14 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 > [!NOTE]
 > 每個 premium 方案都至少會有一個作用中 () 實例計費。
 
-您可以藉由選取 **函數應用程式**、前往 [ **平臺功能** ] 索引標籤，然後選取 [ **Scale Out** ] 選項，來設定 Azure 入口網站中隨時可用的實例數目。 在函數應用程式的 [編輯] 視窗中，[永遠可用的實例] 是該應用程式專用的實例。
+您可以藉由選取 **函數應用程式** 、前往 [ **平臺功能** ] 索引標籤，然後選取 [ **Scale Out** ] 選項，來設定 Azure 入口網站中隨時可用的實例數目。 在函數應用程式的 [編輯] 視窗中，[永遠可用的實例] 是該應用程式專用的實例。
 
 ![彈性調整規模設定](./media/functions-premium-plan/scale-out.png)
 
 您也可以為具有 Azure CLI 的應用程式設定永遠可用的實例。
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.minimumElasticInstanceCount=<desired_always_ready_count> --resource-type Microsoft.Web/sites 
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.minimumElasticInstanceCount=<desired_always_ready_count> --resource-type Microsoft.Web/sites
 ```
 
 #### <a name="pre-warmed-instances"></a>預先準備就緒的實例
@@ -68,7 +69,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 您可以使用 Azure CLI 修改應用程式的預先準備就緒實例數目。
 
 ```azurecli-interactive
-az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites 
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
 ```
 
 #### <a name="maximum-instances-for-an-app"></a>應用程式的最大實例
@@ -122,7 +123,7 @@ az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-inst
 
 ### <a name="available-instance-skus"></a>可用的實例 Sku
 
-建立或調整您的方案時，您可以選擇三種實例大小。  您將會依每秒配置給您的核心和記憶體總數來計費。  您的應用程式可以視需要自動相應放大至多個實例。  
+建立或調整您的方案時，您可以選擇三種實例大小。  您將會依每秒配置給您的核心和記憶體總數來計費。  您的應用程式可以視需要自動相應放大至多個實例。
 
 |SKU|核心|記憶體|儲存體|
 |--|--|--|--|

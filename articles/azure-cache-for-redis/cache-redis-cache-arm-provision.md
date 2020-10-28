@@ -7,14 +7,14 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: subject-armqs
 ms.date: 08/18/2020
-ms.openlocfilehash: fdfa8c767757aa17983a28d0d586698551326fe4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8bd9a45ec7c43d9338dec184afd784d2b163c410
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545322"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735974"
 ---
-# <a name="create-an-azure-cache-for-redis-using-an-arm-template"></a>使用 ARM 範本建立 Azure Cache for Redis
+# <a name="quickstart-create-an-azure-cache-for-redis-using-an-arm-template"></a>快速入門：使用 ARM 範本建立 Azure Cache for Redis
 
 瞭解如何建立 Azure Resource Manager 範本 (ARM 範本) ，以部署 Azure Cache for Redis。 快取可以搭配現有的儲存體帳戶以保留診斷資料。 您將學習如何定義要部署哪些資源，以及如何定義執行部署時所指定的參數。 您可以直接在自己的部署中使用此範本，或自訂此範本以符合您的需求。 目前對於訂用帳戶，同一區域中所有快取的診斷設定是共用的。 更新區域中的一個快取將會影響區域中的所有其他快取。
 

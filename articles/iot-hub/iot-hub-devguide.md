@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.custom: mqtt
-ms.openlocfilehash: 4e380fdcd72ab21f00272536b9f08145dcb09bc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03e05eb2bc56a07c2bda3d3fb224012abb3c9e4a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81728806"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735925"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Azure IoT 中樞開發人員指南
 
@@ -52,11 +52,11 @@ Azure IoT 中樞可提供您︰
 
 * [從裝置上傳檔案](iot-hub-devguide-file-upload.md)說明如何從裝置上傳檔案。 本文也包含上傳程序可傳送之通知等主題的相關資訊。
 
-* [在 IoT 中樞管理裝置身分識別](iot-hub-devguide-identity-registry.md)說明每個 IoT 中樞身分識別登錄所儲存的資訊。 本文也說明如何存取和修改該資訊。
+* [管理 IoT 中樞中的裝置身分識別](iot-hub-devguide-identity-registry.md)說明每個 IoT 中樞的身分識別登錄所儲存的資訊。 本文也說明如何存取和修改該資訊。
 
 * [控制 IoT 中樞的存取權](iot-hub-devguide-security.md)說明用來將存取權授與適用於裝置和雲端元件之 IoT 中樞功能的安全性模型。 本文包含使用權杖和 X.509 憑證的相關資訊，以及您可授與之權限的詳細資料。
 
-* [使用裝置對應項來同步狀態和設定](iot-hub-devguide-device-twins.md)說明「裝置對應項」** 概念。 本文也說明裝置 twins 公開的功能，例如將裝置與其裝置對應項同步處理。 本文包含裝置對應項中儲存之資料的相關資訊。
+*  概念。 本文也說明裝置 twins 公開的功能，例如將裝置與其裝置對應項同步處理。 本文包含裝置對應項中儲存之資料的相關資訊。
 
 * [在裝置上叫用直接方法](iot-hub-devguide-direct-methods.md)說明直接方法的生命週期。 本文說明如何從後端應用程式在裝置上叫用方法，以及在裝置上處理直接方法。
 

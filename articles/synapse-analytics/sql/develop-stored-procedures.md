@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 09/23/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 2089a6895a34c74de9d3e14beaa3807bbb1b6e6b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 1db3b224d23664c83f21e77dcb445b0fb043a4c3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279071"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737853"
 ---
 # <a name="use-stored-procedures-in-synapse-sql"></a>在 Synapse SQL 中使用預存程式
 
@@ -24,6 +24,9 @@ ms.locfileid: "92279071"
 ## <a name="what-to-expect"></a>預期的情況
 
 Synapse SQL 支援許多 SQL Server 中使用的 T-sql 功能。 更重要的是有相應放大的特定功能，您可用來將解決方案效能最大化。
+
+> [!NOTE]
+> 在程式主體中，您只能使用 Synapse SQL 介面區中支援的功能。 請參閱 [這篇文章](overview-features.md) ，以找出可在預存程式中使用的物件和語句。 在這些文章中的範例中，使用了可在無伺服器和已布建的介面區中使用的一般功能。
 
 為了維護 SQL 集區的規模和效能，也有一些特性和功能有行為差異，其他則不受支援。
 

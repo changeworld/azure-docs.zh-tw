@@ -6,16 +6,16 @@ author: avanigupta
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
-ms.custom: devx-track-dotnet
+ms.custom: devx-track-dotnet, devx-track-azurecli
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 3c4bdf1268aea06d7b67776a4022c608549994e7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: b48adfdfda4b3e120b2246e67a70000d25c25f3a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074850"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737090"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>自動備份應用程式設定存放區
 
@@ -23,7 +23,7 @@ ms.locfileid: "92074850"
 
 設定自動備份之後，應用程式設定會將事件發佈至 Azure 事件方格，以針對設定存放區中的索引鍵/值所做的任何變更。 事件方格支援各種不同的 Azure 服務，使用者可以從這些服務訂閱索引鍵/值建立、更新或刪除時發出的事件。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 在本文中，您將使用 Azure 佇列儲存體從事件方格接收事件，並使用 Azure Functions 的計時器觸發程式，以批次方式處理佇列中的事件。 
 
@@ -62,7 +62,7 @@ az group create --name $resourceGroupName --location westus
 ## <a name="create-app-configuration-stores"></a>建立應用程式設定存放區
 
 在不同區域中建立您的主要和次要應用程式設定存放區。
- `<primary_appconfig_name>`將和取代 `<secondary_appconfig_name>` 為您設定存放區的唯一名稱。 每個存放區名稱都必須是唯一的，因為它是用來做為 DNS 名稱。
+`<primary_appconfig_name>`將和取代 `<secondary_appconfig_name>` 為您設定存放區的唯一名稱。 每個存放區名稱都必須是唯一的，因為它是用來做為 DNS 名稱。
 
 ```azurecli-interactive
 primaryAppConfigName="<primary_appconfig_name>"
@@ -213,7 +213,7 @@ az role assignment create \
 az appconfig kv set --name $primaryAppConfigName --key Foo --value Bar --yes
 ```
 
-您已觸發此事件。 在幾分鐘內，事件方格會將事件通知傳送至您的佇列。 *下次排程執行您*的函式之後，請查看次要存放區中的設定，以查看其是否包含主要存放區中更新的索引鍵/值。
+您已觸發此事件。 在幾分鐘內，事件方格會將事件通知傳送至您的佇列。 *下次排程執行您* 的函式之後，請查看次要存放區中的設定，以查看其是否包含主要存放區中更新的索引鍵/值。
 
 > [!NOTE]
 > 您可以在測試和疑難排解期間 [手動觸發](../azure-functions/functions-manually-run-non-http.md) 函式，而不需等候排程的計時器觸發程式。

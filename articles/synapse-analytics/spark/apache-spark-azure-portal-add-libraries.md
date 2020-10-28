@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 10/16/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 02f627c9f606ced7e1b0d991e5053dab17050292
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31201bb7168910915ee33d4361bf944e7669db66
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826735"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737968"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中管理 Apache Spark 的程式庫
 
@@ -58,7 +58,7 @@ alabaster==0.7.10
    
 3. 使用頁面 **封裝** 區段中的檔案選取器，上傳環境設定檔。 
    
-![在集區建立期間新增 Python 程式庫](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-add-library-python.png "新增 Python 程式庫")
+    ![在集區建立期間新增 Python 程式庫](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-add-library-python.png "新增 Python 程式庫")
  
 
 #### <a name="install-packages-from-the-synapse-workspace"></a>從 Synapse 工作區安裝套件
@@ -68,11 +68,11 @@ alabaster==0.7.10
    
 2.  從 Azure 入口網站啟動您的 Azure Synapse Analytics 工作區。
 
-3.  從主要導覽面板中選取 [ **管理** ]，然後選取 [ **Apache Spark**集區]。
+3.  從主要導覽面板中選取 [ **管理** ]，然後選取 [ **Apache Spark** 集區]。
    
 4. 選取單一 Spark 集區，並使用頁面  **封裝** 區段中的檔案選取器來上傳環境設定檔。
 
-![在 synapse 中新增 Python 程式庫](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-update.png "新增 Python 程式庫")
+    ![在 synapse 中新增 Python 程式庫](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-update.png)
    
 #### <a name="install-packages-from-the-azure-portal"></a>從 Azure 入口網站安裝套件
 若要將程式庫安裝到 Spark 集區 (預覽) 直接從 Azure 入口網站：
@@ -81,11 +81,11 @@ alabaster==0.7.10
    
  2. 在 [ **Synapse resources** ] 區段下，選取 [ **Apache Spark** 集區] 索引標籤，並從清單中選取 Spark 集區。
    
- 3. 從 Spark 集區的 [**設定**] 區段中選取 [**套件**]。 
+ 3. 從 Spark 集區的 [ **設定** ] 區段中選取 [ **套件** ]。 
 
  4. 使用檔案選取器上傳環境設定檔。
 
-![醒目顯示 [上傳環境設定檔] 按鈕的螢幕擷取畫面。](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "新增 Python 程式庫")
+    ![醒目顯示 [上傳環境設定檔] 按鈕的螢幕擷取畫面。](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "新增 Python 程式庫")
 
 ### <a name="verify-installed-libraries"></a>確認已安裝的程式庫
 
@@ -106,13 +106,13 @@ for i in pip.get_installed_distributions(local_only=True):
 
 3. 流覽至 [ **套件** ] 區段，然後上傳新的環境設定檔
    
-4. 儲存變更之後，您將需要結束使用中的會話，並讓集區重新開機。 （選擇性）您可以選取核取方塊來強制進行 **新的設定**，以強制結束使用中的會話。
+4. 儲存變更之後，您將需要結束使用中的會話，並讓集區重新開機。 （選擇性）您可以選取核取方塊來強制進行 **新的設定** ，以強制結束使用中的會話。
 
-![新增 Python 程式庫](./media/apache-spark-azure-portal-add-libraries/update-libraries.png "新增 Python 程式庫")
+    ![新增 Python 程式庫](./media/apache-spark-azure-portal-add-libraries/update-libraries.png "新增 Python 程式庫")
    
 
 > [!IMPORTANT]
-> 藉由選取強制執行 **新設定**的選項，您將會結束所選 Spark 集區的所有目前會話。 一旦會話結束，您就必須等待集區重新開機。 
+> 藉由選取強制執行 **新設定** 的選項，您將會結束所選 Spark 集區的所有目前會話。 一旦會話結束，您就必須等待集區重新開機。 
 >
 > 如果未選取此設定，您將必須等待目前的 Spark 會話結束或手動停止。 一旦會話結束，您將需要讓集區重新開機。 
 

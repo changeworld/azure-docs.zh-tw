@@ -4,13 +4,13 @@ description: 瞭解如何從 Azure container registry 提取容器映射，以�
 services: container-instances
 ms.topic: article
 ms.date: 07/02/2020
-ms.custom: mvc
-ms.openlocfilehash: d5ba56271950c2d14c7fbf0b9154afb371bcbabc
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: cca1001f0f84f4e4fc87df233f872fc1efdb3267
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173648"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736728"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>從 Azure Container Registry 部署至 Azure 容器執行個體
 
@@ -18,9 +18,9 @@ ms.locfileid: "92173648"
 
 ## <a name="prerequisites"></a>必要條件
 
-**Azure container registry**：您需要 azure container registry （在登錄中至少有一個容器映射），才能完成本文中的步驟。 如果您需要登錄，請參閱[使用 Azure CLI 建立容器登錄](../container-registry/container-registry-get-started-azure-cli.md)。
+**Azure container registry** ：您需要 azure container registry （在登錄中至少有一個容器映射），才能完成本文中的步驟。 如果您需要登錄，請參閱[使用 Azure CLI 建立容器登錄](../container-registry/container-registry-get-started-azure-cli.md)。
 
-**Azure CLI**：本文中的命令列範例使用 [Azure CLI](/cli/azure/)，並使用 Bash 殼層適用的格式。 您可以在本機[安裝 Azure CLI](/cli/azure/install-azure-cli)，或使用 [Azure Cloud Shell][cloud-shell-bash]。
+**Azure CLI** ：本文中的命令列範例使用 [Azure CLI](/cli/azure/)，並使用 Bash 殼層適用的格式。 您可以在本機[安裝 Azure CLI](/cli/azure/install-azure-cli)，或使用 [Azure Cloud Shell][cloud-shell-bash]。
 
 ## <a name="limitations"></a>限制
 
@@ -55,7 +55,7 @@ az keyvault create -g $RES_GROUP -n $AKV_NAME
 
 現在，請建立服務主體，並將其認證儲存在您的金鑰保存庫中。
 
-下列命令使用 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 建立服務主體，以及使用 [az keyvault secret set][az-keyvault-secret-set] 將服務主體的**密碼**儲存在保存庫中。
+下列命令使用 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 建立服務主體，以及使用 [az keyvault secret set][az-keyvault-secret-set] 將服務主體的 **密碼** 儲存在保存庫中。
 
 ```azurecli
 # Create service principal, store its password in vault (the registry *password*)
@@ -84,8 +84,8 @@ az keyvault secret set \
 
 您已建立 Azure Key Vault，並在其中儲存兩個祕密：
 
-* `$ACR_NAME-pull-usr`:服務主體識別碼，用來作為容器登錄**使用者名稱**。
-* `$ACR_NAME-pull-pwd`:服務主體密碼，用來作為容器登錄**密碼**。
+* `$ACR_NAME-pull-usr`:服務主體識別碼，用來作為容器登錄 **使用者名稱** 。
+* `$ACR_NAME-pull-pwd`:服務主體密碼，用來作為容器登錄 **密碼** 。
 
 現在，當您或應用程式和服務從登錄提取映像時，您可以依名稱參考這些祕密。
 
@@ -147,9 +147,9 @@ az container create \
 
 1. 在 Azure 入口網站中，瀏覽到您的容器登錄。
 
-1. 若要確認已啟用管理帳戶，請選取 [存取金鑰]****，然後在 [管理使用者]**** 之下選取 [啟用]****。
+1. 若要確認已啟用管理帳戶，請選取 [存取金鑰]  ，然後在 [管理使用者]  之下選取 [啟用]  。
 
-1. 選取 [存放庫]****，接著選取您想要從中部署的存放庫、以滑鼠右鍵按一下您想要部署之容器映像的標籤，然後選取 [執行執行個體]****。
+1. 選取 [存放庫]  ，接著選取您想要從中部署的存放庫、以滑鼠右鍵按一下您想要部署之容器映像的標籤，然後選取 [執行執行個體]  。
 
     ![Azure 入口網站內 Azure Container Registry 中的 [執行執行個體]][acr-runinstance-contextmenu]
 

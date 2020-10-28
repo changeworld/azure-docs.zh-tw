@@ -5,14 +5,14 @@ services: container-service
 ms.topic: article
 ms.author: jpalma
 ms.date: 06/29/2020
-ms.custom: fasttrack-edit
+ms.custom: fasttrack-edit, devx-track-azurecli
 author: palma21
-ms.openlocfilehash: 33355251a06ba076be3677b84e383793f9f25193
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe6907ac659b94494472a327ff0b47e630ed89a0
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570377"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735582"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes Service (AKS) 中叢集節點的連出流量
 
@@ -29,17 +29,17 @@ AKS 輸出相依性幾乎完全以 Fqdn 定義，其後面沒有靜態位址。 
 根據預設，AKS 叢集具有不受限制的輸出 (連出) 網際網路存取。 此網路存取層級可讓您執行的節點和服務視需要存取外部資源。 如果您想要限制連出流量，則必須能夠存取有限數量的連接埠和位址，才能維持狀況良好的叢集維護工作。 保護輸出位址最簡單的解決方案是使用防火牆裝置，該裝置可以根據功能變數名稱來控制輸出流量。 例如，Azure 防火牆可以根據目的地的 FQDN 限制輸出 HTTP 和 HTTPS 流量。 您也可以設定慣用的防火牆和安全性規則，以允許這些必要的埠和位址。
 
 > [!IMPORTANT]
-> 此文件僅涵蓋如何鎖定離開 AKS 子網路的流量。 依預設，AKS 沒有輸入需求。  不支援使用網路安全性群組來封鎖 **內部子網流量** (nsg) 和防火牆。 若要控制和封鎖叢集中的流量，請使用 [***網路原則***][network-policy]。
+> 此文件僅涵蓋如何鎖定離開 AKS 子網路的流量。 依預設，AKS 沒有輸入需求。  不支援使用網路安全性群組來封鎖 **內部子網流量** (nsg) 和防火牆。 若要控制和封鎖叢集中的流量，請使用 [ * *_網路原則_* _][network-policy]。
 
 ## <a name="required-outbound-network-rules-and-fqdns-for-aks-clusters"></a>AKS 叢集所需的輸出網路規則和 Fqdn
 
 AKS 叢集需要下列網路和 FQDN/應用程式規則，如果您想要設定 Azure 防火牆以外的解決方案，您可以使用它們。
 
-* 適用於非 HTTP/S 流量的 IP 地址相依性 (TCP 與 UDP 流量)
+_ IP 位址相依性適用于 (TCP 和 UDP 流量的非 HTTP/S 流量) 
 * FQDN HTTP/HTTPS 端點可以放在您的防火牆裝置。
 * 萬用字元 HTTP/HTTPS 端點是相依性，可能會因數個限定詞而不同于您的 AKS 叢集。
 * AKS 會使用許可控制器將 FQDN 做為環境變數插入 kube 系統和閘道管理員系統下的所有部署，以確保節點和 API 伺服器之間的所有系統通訊都使用 API 伺服器 FQDN，而不是 API 伺服器 IP。 
-* 如果您有需要與 API 伺服器通訊的應用程式或解決方案，則必須新增 **額外** 的網路規則，以允許 *對 api 伺服器 IP 的埠443進行 TCP 通訊*。
+* 如果您有需要與 API 伺服器通訊的應用程式或解決方案，則必須新增 **額外** 的網路規則，以允許 *對 api 伺服器 IP 的埠443進行 TCP 通訊* 。
 * 在罕見的情況下，如果有維護作業，則您的 API 伺服器 IP 可能會變更。 可變更 API 伺服器 IP 的預定維護作業，一律會事先進行通訊。
 
 

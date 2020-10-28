@@ -3,13 +3,13 @@ title: 在 Azure 中建立 Linux Service Fabric 叢集
 description: 了解如何使用 Azure CLI 將 Linux Service Fabric 叢集部署到現有的 Azure 虛擬網路。
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.custom: mvc
-ms.openlocfilehash: c4b71328ce59284f8870407c9492d24afe9acd8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 52eba2e5780b1a66f3884a764631908335372273
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88586915"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738967"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>將 Linux Service Fabric 叢集部署到 Azure 虛擬網路
 
@@ -46,7 +46,7 @@ Ubuntu 18.04 LTS 兩個範本之間的差異
 * 每個節點的 **typeHandlerVersion** 會設定為1。1
 * ServiceFabric/叢集資源
    - **apiVersion** 設為 "2019-03-01" 或更高版本
-   - 設定為 "Ubuntu18_04" 的**vmImage**屬性
+   - 設定為 "Ubuntu18_04" 的 **vmImage** 屬性
 
 此範本會將一個由七部虛擬機器和三個節點類型組成的安全叢集部署到虛擬網路中。  您可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates) 上找到其他範例範本。 [上的AzureDeploy.js][template]會部署一些資源，包括下列各項。
 
@@ -84,7 +84,7 @@ Ubuntu 18.04 LTS 兩個範本之間的差異
 
 ## <a name="set-template-parameters"></a>設定範本參數
 
-**AzureDeploy**會宣告用來部署叢集和相關聯資源的許多值。 您可能需要為自己的部署修改某些參數：
+**AzureDeploy** 會宣告用來部署叢集和相關聯資源的許多值。 您可能需要為自己的部署修改某些參數：
 
 |參數|範例值|注意|
 |---|---||

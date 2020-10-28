@@ -6,16 +6,16 @@ author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
-ms.date: 05/01/2020
+ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: d0063594309dc7a1c12c61b6dd18fec1d93f1082
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: 02f304af10ae1907326d3f77f318a058155a4c21
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893079"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738752"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中建立、開發及維護 Synapse Studio (預覽版) 筆記本
 
@@ -32,7 +32,7 @@ Synapse Studio (preview) 筆記本是一個 web 介面，可讓您建立包含�
 
 ## <a name="create-a-notebook"></a>建立 Notebook
 
-建立筆記本的方法有兩種。 您可以從**物件總管**建立新的筆記本，也可以將現有的筆記本匯入到 Azure Synapse 工作區。 Azure Synapse Studio 筆記本可以辨識標準 Jupyter Notebook IPYNB 檔案。
+建立筆記本的方法有兩種。 您可以從 **物件總管** 建立新的筆記本，也可以將現有的筆記本匯入到 Azure Synapse 工作區。 Azure Synapse Studio 筆記本可以辨識標準 Jupyter Notebook IPYNB 檔案。
 
 ![建立匯入筆記本](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
 
@@ -76,7 +76,7 @@ Azure Synapse Studio 筆記本支援四種 Apache Spark 語言：
 |%%pyspark| Python | 針對 Spark 內容執行 **Python** 查詢。  |
 |%%spark| Scala | 針對 Spark 內容執行 **Scala** 查詢。  |  
 |%%sql| SparkSQL | 針對 Spark 內容執行 **SparkSQL** 查詢。  |
-|%%csharp | 適用於 Spark C# 的 .NET | 針對 Spark 內容執行**適用於 Spark C# 的 .NET** 查詢。 |
+|%%csharp | 適用於 Spark C# 的 .NET | 針對 Spark 內容執行 **適用於 Spark C# 的 .NET** 查詢。 |
 
 下圖是如何使用 **%%pyspark** magic 命令，或在 **Spark(Scala)** 筆記本中使用 **%%sql** magic 命令的 SparkSQL 查詢，以便撰寫 PySpark 查詢的範例。 請注意，筆記本的主要語言會設定為 pySpark。
 
@@ -167,7 +167,7 @@ IntelliSense 功能在不同語言的成熟度層級不同。 使用下表來檢
 
 有數種方式可以在儲存格中執行程式碼。
 
-1. 將游標停留在您想要執行的儲存格上，然後選取 [執行儲存格] 按鈕，或按下 **Ctrl+Enter**。
+1. 將游標停留在您想要執行的儲存格上，然後選取 [執行儲存格] 按鈕，或按下 **Ctrl+Enter** 。
 
    ![run-cell-1](./media/apache-spark-development-using-notebooks/synapse-run-cell.png)
 
@@ -294,7 +294,7 @@ df = spark.read.option("header", "true") \
 
 ### <a name="render-html-or-interactive-libraries"></a>轉譯 HTML 或互動式程式庫
 
-您可以使用**displayHTML ( # B1**來呈現 HTML 程式碼，包括 JAVASCRIPT、CSS、D3 或互動式程式庫（例如**bokeh**）。
+您可以使用 **displayHTML ( # B1** 來呈現 HTML 程式碼，包括 JAVASCRIPT、CSS、D3 或互動式程式庫（例如 **bokeh** ）。
 
 下圖是使用 **bokeh** 在地圖上繪製圖像的範例。
 
@@ -357,7 +357,7 @@ displayHTML(html)
 可用的儲存格 magic：[%%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、[%%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)、[%%capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture)、[%%writefile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile)、[%%sql](#use-multiple-languages)、[%%pyspark](#use-multiple-languages)、[%%spark](#use-multiple-languages)、[%%csharp](#use-multiple-languages)
 
 
-## <a name="orchestrate-notebook"></a>協調筆記本
+## <a name="integrate-a-notebook"></a>整合筆記本
 
 ### <a name="add-a-notebook-to-a-pipeline"></a>將筆記本新增至管線
 
@@ -375,7 +375,7 @@ Azure Data Factory 會尋找參數儲存格，並將此資料格視為在執行�
 
 ### <a name="assign-parameters-values-from-a-pipeline"></a>從管線指派參數值
 
-建立具有參數的筆記本之後，您可以使用 Azure Synapse 筆記本活動從管線執行它。 將活動新增至管線畫布之後，您將能夠在 [**設定**] 索引標籤的 [**基底參數**] 區段下設定參數值。 
+建立具有參數的筆記本之後，您可以使用 Azure Synapse 筆記本活動從管線執行它。 將活動新增至管線畫布之後，您將能夠在 [ **設定** ] 索引標籤的 [ **基底參數** ] 區段下設定參數值。 
 
 ![指派參數](./media/apache-spark-development-using-notebooks/assign-parameter.png)
 

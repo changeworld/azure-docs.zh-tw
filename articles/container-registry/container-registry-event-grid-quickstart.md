@@ -3,13 +3,13 @@ title: 快速入門-將事件傳送至事件方格
 description: 在本快速入門中，您可以針對容器登錄啟用事件方格事件，然後將容器映像推送和刪除事件傳送至範例應用程式。
 ms.topic: article
 ms.date: 08/23/2018
-ms.custom: seodec18
-ms.openlocfilehash: dbeba56820a520e3435eeb0c5c8dbc5aae981241
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 3e9e9a7d6016f53225c1b2f31fb8eef91e202c7a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78403235"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736859"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>快速入門：將事件從私用容器登錄傳送至事件方格
 
@@ -96,7 +96,7 @@ az group deployment create \
 
 ## <a name="subscribe-to-registry-events"></a>訂閱登錄事件
 
-在事件方格中，您可以訂閱「主題」**，以告知它您想要追蹤的事件，以及要將它們傳送至何處。 下列 [az eventgrid event-subscription create][az-eventgrid-event-subscription-create] 命令會訂閱您所建立的容器登錄，並指定您的 Web 應用程式 URL 作為應將事件傳送至其中的端點。 您在先前小節中所填入的環境變數會在此處重複使用，因此不需進行任何編輯。
+在事件方格中，您可以訂閱「主題」  ，以告知它您想要追蹤的事件，以及要將它們傳送至何處。 下列 [az eventgrid event-subscription create][az-eventgrid-event-subscription-create] 命令會訂閱您所建立的容器登錄，並指定您的 Web 應用程式 URL 作為應將事件傳送至其中的端點。 您在先前小節中所填入的環境變數會在此處重複使用，因此不需進行任何編輯。
 
 ```azurecli-interactive
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
@@ -206,7 +206,7 @@ Are you sure you want to continue? (y/n):
 
 一旦您完成使用在本快速入門中建立的資源之後，您可以使用下列 Azure CLI 命令來將它們全部刪除。 當您刪除資源群組時，即會永久刪除所有包含在內的資源。
 
-**警告**：此作業無法復原。 執行此命令之前，請確定您不再需要群組中的任何資源。
+**警告** ：此作業無法復原。 執行此命令之前，請確定您不再需要群組中的任何資源。
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP_NAME

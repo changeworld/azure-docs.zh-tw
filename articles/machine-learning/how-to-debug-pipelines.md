@@ -9,13 +9,13 @@ author: lobrien
 ms.author: laobri
 ms.date: 10/22/2020
 ms.topic: conceptual
-ms.custom: troubleshooting, devx-track-python
-ms.openlocfilehash: d31dffe6ee4190e72f413444621eb9f10791d4fc
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.custom: troubleshooting, devx-track-python, contperfq2
+ms.openlocfilehash: ce32871620cc0a471e56a5b65191834d7c23b88d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370265"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735710"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>機器學習管線的偵錯和疑難排解
 
@@ -32,7 +32,7 @@ ms.locfileid: "92370265"
 | 計算目標有不明確的錯誤 | 請嘗試刪除並重新建立計算目標。 重新建立計算目標很快速，可解決一些暫時性問題。 |
 | 管線未重複使用步驟 | 預設會啟用步驟重複使用，但請確定您未在管線步驟中將它停用。 如果已停用重複使用， `allow_reuse` 則步驟中的參數會設定為 `False` 。 |
 | 不必要地重新執行管線 | 為確保只有在基礎資料或腳本變更時才會重新執行步驟，請將每個步驟的原始程式碼目錄分離。 如果您使用相同的來原始目錄進行多個步驟，可能會遇到不必要的重新執行。 `source_directory`在管線步驟物件上使用參數，以指向該步驟的隔離目錄，並確保您不會 `source_directory` 針對多個步驟使用相同的路徑。 |
-| 逐步減緩定型 epoch 或其他迴圈行為 | 請嘗試將任何檔案寫入（包括記錄）切換 `as_mount()` 至 `as_upload()` 。 **掛接**模式使用遠端虛擬化檔案系統，並在每次將檔案附加至時，上傳整個檔案。 |
+| 逐步減緩定型 epoch 或其他迴圈行為 | 請嘗試將任何檔案寫入（包括記錄）切換 `as_mount()` 至 `as_upload()` 。 **掛接** 模式使用遠端虛擬化檔案系統，並在每次將檔案附加至時，上傳整個檔案。 |
 
 ## <a name="troubleshooting-parallelrunstep"></a>故障 排除 `ParallelRunStep` 
 
@@ -179,8 +179,8 @@ parallelrun_step = ParallelRunStep(
 | 程式庫                    | 類型   | 範例                                                          | Destination                                  | 資源                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure Machine Learning SDK | 計量 | `run.log(name, val)`                                             | Azure Machine Learning 入口網站 UI             | [如何追蹤實驗](how-to-track-experiments.md)<br>[azureml. 核心. 執行類別](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true)                                                                                                                                                 |
-| Python 列印/記錄    | 記錄檔    | `print(val)`<br>`logging.info(message)`                          | 驅動程式記錄，Azure Machine Learning 設計工具 | [如何追蹤實驗](how-to-track-experiments.md)<br><br>[Python 記錄](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
-| OpenCensus Python          | 記錄檔    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights-追蹤                | [對 Application Insights 中的管線進行偵錯](how-to-debug-pipelines-application-insights.md)<br><br>[OpenCensus Azure 監視器匯出工具](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python 記錄操作手冊](https://docs.python.org/3/howto/logging-cookbook.html) |
+| Python 列印/記錄    | 記錄    | `print(val)`<br>`logging.info(message)`                          | 驅動程式記錄，Azure Machine Learning 設計工具 | [如何追蹤實驗](how-to-track-experiments.md)<br><br>[Python 記錄](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
+| OpenCensus Python          | 記錄    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights-追蹤                | [對 Application Insights 中的管線進行偵錯](how-to-debug-pipelines-application-insights.md)<br><br>[OpenCensus Azure 監視器匯出工具](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python 記錄操作手冊](https://docs.python.org/3/howto/logging-cookbook.html) |
 
 #### <a name="logging-options-example"></a>記錄選項範例
 

@@ -3,13 +3,13 @@ title: Azure Functions 的 JAVA 開發人員參考
 description: 了解如何使用 Java 開發函式。
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.custom: devx-track-java
-ms.openlocfilehash: 2dfd00484e84f4b2c31e52392df43bb07a800f73
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: fcacfd96ece68424c876b0349ceb49d3eaabb598
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519617"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736705"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 開發人員指南
 
@@ -45,7 +45,7 @@ JAVA 函式是 `public` 方法，以註釋 `@FunctionName` 裝飾。 此方法�
 
 ### <a name="project-scaffolding"></a>建立專案的結構
 
-如果您偏好從終端機執行命令列開發，則針對以 JAVA 為基礎的函式專案，使用 `Apache Maven` 原型來建立結構最簡單。 Azure Functions 的 JAVA Maven 原型已發佈於下列 _groupId_:_artifactId_: [com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/) 之下。 
+如果您偏好從終端機執行命令列開發，則針對以 JAVA 為基礎的函式專案，使用 `Apache Maven` 原型來建立結構最簡單。 Azure Functions 的 JAVA Maven 原型已發佈於下列 _groupId_ : _artifactId_ : [com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/) 之下。 
 
 下列命令使用此原型產生新的 JAVA 函式專案：
 
@@ -153,7 +153,7 @@ public class Function {
 
 Maven 原型會產生以指定的 JAVA 版本為目標的 pom.xml。 pom.xml 中的下列元素指出要使用的 JAVA 版本：
 
-| 項目 |  JAVA 8 值 | JAVA 11 值 | 說明 |
+| 元素 |  JAVA 8 值 | JAVA 11 值 | 描述 |
 | ---- | ---- | ---- | --- |
 | **`Java.version`** | 1.8 | 11 | Maven 編譯器-外掛程式所使用的 JAVA 版本。 |
 | **`JavaVersion`** | 8 | 11 | Azure 中函數應用程式所裝載的 JAVA 版本。 |
@@ -173,7 +173,7 @@ Maven 原型會產生以指定的 JAVA 版本為目標的 pom.xml。 pom.xml 中
 
 Maven 也可讓您指定在 Azure 中執行函數應用程式的作業系統。 使用 `os` 元素選擇作業系統。 
 
-| 項目 |  Windows | Linux | Docker |
+| 元素 |  Windows | Linux | Docker |
 | ---- | ---- | ---- | --- |
 | **`os`** | windows | Linux | docker |
 

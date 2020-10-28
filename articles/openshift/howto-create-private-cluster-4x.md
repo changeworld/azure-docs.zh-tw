@@ -7,13 +7,13 @@ ms.date: 03/12/2020
 author: georgewallace
 ms.author: gwallace
 keywords: aro, openshift, az aro, red hat, cli
-ms.custom: mvc
-ms.openlocfilehash: eedd796e3223c6cbcd0844cc4e814a35172d6c7e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 3082f30f46a1e450a9ac42958163894c014de66d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078522"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737215"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>建立 Azure Red Hat OpenShift 4 私人叢集
 
@@ -192,7 +192,7 @@ az aro create \
 執行 `az aro create` 命令之後，一般大約需要 35 分鐘的時間來建立叢集。
 
 >[!IMPORTANT]
-> 如果您選擇指定自訂網域 (例如 **foo.example.com**)，OpenShift 主控台將會以類似 `https://console-openshift-console.apps.foo.example.com` 的 URL 來提供，而不是內建的網域：`https://console-openshift-console.apps.<random>.<location>.aroapp.io`。
+> 如果您選擇指定自訂網域 (例如 **foo.example.com** )，OpenShift 主控台將會以類似 `https://console-openshift-console.apps.foo.example.com` 的 URL 來提供，而不是內建的網域：`https://console-openshift-console.apps.<random>.<location>.aroapp.io`。
 >
 > 根據預設，OpenShift 會針對 `*.apps.<random>.<location>.aroapp.io` 上建立的所有路由使用自我簽署憑證。  如果您在連線至叢集之後，選擇自訂 DNS，則必須遵循 OpenShift 文件來[為您的輸入控制器設定自訂 CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) \(英文\)，並[為您的 API 伺服器自訂 CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html) \(英文\)。
 
