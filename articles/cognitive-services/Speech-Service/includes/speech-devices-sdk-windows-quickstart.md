@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: d2160a5cd38fcd24c3af5d32ccbbbee8ac723b2f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6ce0006c493228d99131ca564a34600800f0ab5e
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88226310"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92169082"
 ---
 在本快速入門中，您將了解如何使用適用於 Windows 的語音裝置 SDK 建置具備語音功能的產品，或使用它作為[交談轉譯](../conversation-transcription-service.md)裝置。 針對對話轉譯，只支援 [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)。 針對其他語音，支援使用提供麥克風陣列幾何的線性麥克風陣列。
 
@@ -44,7 +44,7 @@ ms.locfileid: "88226310"
 
 1. 在 [Eclipse Launcher] 中，於 [工作區] 欄位中輸入新工作區目錄的名稱。 然後選取 [啟動]。
 
-   ![Eclipse Launcher 的螢幕擷取畫面](../media/speech-devices-sdk/eclipse-launcher.png)
+   ![顯示 Eclipse Launcher 的螢幕擷取畫面，您可以在其中輸入工作區目錄的名稱。](../media/speech-devices-sdk/eclipse-launcher.png)
 
 1. 不久之後，Eclipse IDE 的主要視窗隨即出現。 如果出現 [歡迎使用] 畫面，請加以關閉。
 
@@ -52,7 +52,7 @@ ms.locfileid: "88226310"
 
 1. [新增 Java 專案] 精靈隨即啟動。 [瀏覽] 範例專案的位置。 選取 [完成]。
 
-   ![[新增 Java 專案] 精靈的螢幕擷取畫面](../media/speech-devices-sdk/eclipse-new-java-project.png)
+   ![顯示 [新增 Java 專案] 精靈的螢幕擷取畫面。](../media/speech-devices-sdk/eclipse-new-java-project.png)
 
 1. 在 [套件總管] 中，以滑鼠右鍵按一下您的專案。 從操作功能表中選擇 [設定] > [轉換成 Maven 專案]。 選取 [完成]。
 
@@ -112,7 +112,7 @@ ms.locfileid: "88226310"
 
     若要使用新的關鍵字，請更新 `FunctionsList.java` 中的下列行，並將關鍵字複製到您的應用程式。 例如，若要使用來自關鍵字套件 `machine.zip` 的關鍵字「Machine」：
 
-   * 將 `kws.table` 檔案從 zip 套件複製到專案資料夾 **target/classes**。
+   * 將 `kws.table` 檔案從 zip 套件複製到專案資料夾 **target/classes** 。
    * 使用關鍵字名稱更新 `FunctionsList.java`：
 
      ```java
@@ -127,11 +127,11 @@ ms.locfileid: "88226310"
 
 1. 「語音裝置 SDK」範例應用程式會啟動，並顯示下列選項：
 
-   ![「語音裝置 SDK」範例應用程式和選項](../media/speech-devices-sdk/java-sample-app-windows.png)
+   ![範例語音裝置 SDK 應用程式和選項的螢幕擷取畫面。](../media/speech-devices-sdk/java-sample-app-windows.png)
 
-1. 嘗試新的 [交談轉譯] 示範。 透過 [工作階段] > [啟動] 開始轉譯。 根據預設，每個人都是來賓。 不過，如果您有參與者的語音簽章，可以將其放入專案資料夾**target/classes**的 `participants.properties` 檔案中。 若要產生語音簽章，請查看[轉譯交談 (SDK)](../how-to-use-conversation-transcription-service.md)。
+1. 嘗試新的 [交談轉譯] 示範。 透過 [工作階段] > [啟動] 開始轉譯。 根據預設，每個人都是來賓。 不過，如果您有參與者的語音簽章，可以將其放入專案資料夾 **target/classes** 的 `participants.properties` 檔案中。 若要產生語音簽章，請查看[轉譯交談 (SDK)](../how-to-use-conversation-transcription-service.md)。
 
-   ![示範交談轉譯應用程式](../media/speech-devices-sdk/cts-sample-app-windows.png)
+   ![示範交談轉譯應用程式的螢幕擷取畫面。](../media/speech-devices-sdk/cts-sample-app-windows.png)
 
 ## <a name="create-and-run-a-standalone-application"></a>建立及執行獨立應用程式
 
@@ -139,11 +139,11 @@ ms.locfileid: "88226310"
 
 1. [匯出] 視窗隨即出現。 展開 [Java]，然後選取 [可執行的 JAR 檔案]，然後選取 [下一步]。
 
-   ![[匯出] 視窗的螢幕擷取畫面](../media/speech-devices-sdk/eclipse-export-windows.png)
+   ![顯示 [匯出] 視窗的螢幕擷取畫面，您可以在其中選取可執行 JAR 檔案。](../media/speech-devices-sdk/eclipse-export-windows.png)
 
 1. [可執行的 JAR 檔案匯出] 視窗隨即出現。 選擇應用程式的 [匯出目的地]，然後選取 [完成]。
 
-   ![可執行的 JAR 檔案匯出的螢幕擷取畫面](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
+   ![顯示可執行 JAR 檔案 [匯出] 視窗的螢幕擷取畫面，您可以在其中選擇匯出目的地。](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
 
 1. 請將 `kws.table`、`participants.properties`、`unimic_runtime.dll`、`pma.dll` 和 `Microsoft.CognitiveServices.Speech.extension.pma.dll` 放入上面所選的目的地資料夾，因為應用程式需要這些檔案。
 

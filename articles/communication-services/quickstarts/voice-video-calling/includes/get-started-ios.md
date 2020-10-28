@@ -6,12 +6,12 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: bb0af58c9abc4fad701b1d0927f4c13e1fdcca49
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 48a3972d7b7db3f0c68866f23d6deca0bbce2e35
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91376385"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92157900"
 ---
 在本快速入門中，您將了解如何使用適用於 iOS 的 Azure 通訊服務通話用戶端程式庫開始進行通話。
 
@@ -43,8 +43,8 @@ ms.locfileid: "91376385"
 2. 在 Xcode 中，按一下您的專案檔，然後選取建置目標，以開啟專案設定編輯器。
 3. 在 [一般] 索引標籤底下，瀏覽至 [架構、程式庫和內嵌內容] 區段，然後按一下 [+] 圖示。
 4. 在對話方塊的左下方，使用下拉式清單選擇 [新增檔案]，瀏覽至未解壓縮的用戶端程式庫套件的 **AzureCommunicationCalling.framework** 目錄。
-    1. 重複最後一個步驟以新增 **AzureCore.framework** 和 **AzureCommunication.framework**。
-5. 開啟專案設定編輯器的 [建置設定] 索引標籤，並瀏覽至 [搜尋路徑] 區段。 針對包含 **AzureCommunicationCalling** 的目錄，新增新的**架構搜尋路徑**項目。
+    1. 重複最後一個步驟以新增 **AzureCore.framework** 和 **AzureCommunication.framework** 。
+5. 開啟專案設定編輯器的 [建置設定] 索引標籤，並瀏覽至 [搜尋路徑] 區段。 針對包含 **AzureCommunicationCalling** 的目錄，新增新的 **架構搜尋路徑** 項目。
     1. 新增另一個「架構搜尋路徑」項目，指向包含相依性的資料夾。
 
 :::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="顯示 Xcode 內 [新增專案] 視窗的螢幕擷取畫面。":::

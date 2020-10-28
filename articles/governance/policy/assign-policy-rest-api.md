@@ -1,14 +1,14 @@
 ---
 title: 快速入門：使用 REST API 進行新原則指派
 description: 在本快速入門中，使用 REST API 建立 Azure 原則指派，以識別不符合規範的資源。
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 04880ef013060bc5ff12618af6a9156295a26a88
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ab05079c5bb319f0808a743a1d668649df51b1b3
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88137082"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92074000"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-rest-api"></a>快速入門：使用 REST API 建立原則指派，以識別不符合規範的資源
 
@@ -23,13 +23,13 @@ REST API 可用來建立和管理 Azure 資源。 本指南使用 REST API 來�
 
 - 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
-- 請安裝 [ARMClient](https://github.com/projectkudu/ARMClient) (如果尚未安裝)。 此工具會將 HTTP 要求傳送至以 Azure Resource Manager 為基礎的 REST API。 或者，您可以使用 REST 文件中的「試試看」功能或 PowerShell 的 [RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) 或 [Postman](https://www.postman.com)等工具。
+- 請安裝 [ARMClient](https://github.com/projectkudu/ARMClient) (如果尚未安裝)。 此工具會將 HTTP 要求傳送至以 Azure Resource Manager 為基礎的 REST API。 您也可以使用 REST 文件中的「試試看」功能或 PowerShell 的 [RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod) 或 [Postman](https://www.postman.com)等工具。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-policy-assignment"></a>建立原則指派
 
-在本快速入門中，您會建立一個原則指派，並且指派**稽核沒有受控磁碟的虛擬機器** (`06a78e20-9358-41c9-923c-fb736d382a4d`) 定義。 此原則定義會識別與原則定義中設定之條件不相符的資源。
+在本快速入門中，您會建立一個原則指派，並且指派 **稽核沒有受控磁碟的虛擬機器** (`06a78e20-9358-41c9-923c-fb736d382a4d`) 定義。 此原則定義會識別與原則定義中設定之條件不相符的資源。
 
 執行下列命令以建立原則指派：
 
@@ -59,12 +59,12 @@ REST API URI：
   - 訂用帳戶：`/subscriptions/{subscriptionId}`
   - 資源群組：`/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
   - 資源：`/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}`
-- **Name** - 指派的實際名稱。 例如，我們使用了 audit-vm-manageddisks__。
+- **Name** - 指派的實際名稱。 例如，我們使用了 audit-vm-manageddisks  。
 
 要求本文：
-- **DisplayName** - 原則指派的顯示名稱。 在此案例中，您會使用_稽核沒有受控磁碟指派的虛擬機器_。
+- **DisplayName** - 原則指派的顯示名稱。 在此案例中，您會使用 _稽核沒有受控磁碟指派的虛擬機器_ 。
 - **Description** - 原則用途或為何指派給此範圍的更深入說明。
-- **policyDefinitionId** – 原則定義識別碼，這是您用來建立指派的根基。 在此案例中，即為原則定義_稽核沒有受控磁碟的虛擬機器_的 ID。
+- **policyDefinitionId** – 原則定義識別碼，這是您用來建立指派的根基。 在此案例中，即為原則定義 _稽核沒有受控磁碟的虛擬機器_ 的 ID。
 
 ## <a name="identify-non-compliant-resources"></a>識別不符合規範的資源
 
@@ -100,7 +100,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
 }
 ```
 
-結果類似於您通常在 Azure 入口網站檢視中看到列在 [不符合規範的資源]**** 之下的內容。
+結果類似於您通常在 Azure 入口網站檢視中看到列在 [不符合規範的資源]  之下的內容。
 
 ## <a name="clean-up-resources"></a>清除資源
 

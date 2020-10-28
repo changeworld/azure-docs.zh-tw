@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: 47fef490c5ece577823a14e3fa4c415f0f613ccb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e8a28415bf9448133102e92a658e7d200ac2772c
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943881"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316975"
 ---
 # <a name="what-are-azure-arc-enabled-data-services-preview"></a>什麼是已啟用 Azure Arc 的資料服務 (預覽)？
 
@@ -41,7 +41,7 @@ Azure Arc 也提供其他雲端優勢，例如大規模的快速部署和自動�
 
 ## <a name="unified-management"></a>整合式管理
 
-您現在可以使用熟悉的工具 (例如 Azure 入口網站、Azure Data Studio 和 Azure 資料 CLI)，更進一步了解以 Azure Arc 部署的所有資料資產。您不僅可以跨環境和 Azure 檢視和管理各種關聯式資料庫，還能從 Kubernetes API 取得記錄和遙測資料，以分析基礎結構的容量和健康情況。 除了擁有當地語系化的記錄分析和效能監視，您現在還可以利用 Azure 監視器，取得整個資產的完整營運見解。
+您現在可以使用熟悉的工具 (例如 Azure 入口網站、Azure Data Studio 和 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)])，更進一步了解以 Azure Arc 部署的所有資料資產。您不僅可以跨環境和 Azure 檢視和管理各種關聯式資料庫，還能從 Kubernetes API 取得記錄和遙測資料，以分析基礎結構的容量和健康情況。 除了擁有當地語系化的記錄分析和效能監視，您現在還可以利用 Azure 監視器，取得整個資產的完整營運見解。
 
 ## <a name="disconnected-scenario-support"></a>中斷案例支援
 

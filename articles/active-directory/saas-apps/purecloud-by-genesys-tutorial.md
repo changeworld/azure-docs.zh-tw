@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 0d2953710c559deb094761410e6d46401e103d8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab63e54589f68516b0106a1c96edced38539d252
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553269"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108536"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 PureCloud by Genesys 整合
 
@@ -52,7 +52,7 @@ ms.locfileid: "88553269"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 移至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **PureCloud by Genesys**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **PureCloud by Genesys** 。
 1. 從結果面板選取 [PureCloud by Genesys]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-purecloud-by-genesys"></a>設定及測試 PureCloud by Genesys 的 Azure AD 單一登入
@@ -78,7 +78,7 @@ ms.locfileid: "88553269"
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 設定]  區段中，如果您想要以 **IDP 起始**模式設定應用程式，請輸入下列欄位的值：
+1. 在 [基本 SAML 設定]  區段中，如果您想要以 **IDP 起始** 模式設定應用程式，請輸入下列欄位的值：
 
     a. 在 [識別碼]  方塊中，輸入對應至您所在區域的 URL：
 
@@ -167,21 +167,21 @@ ms.locfileid: "88553269"
 
 1. 選取頂端的 [系統管理]  ，然後移至 [整合]  下的 [單一登入]  。
 
-    ![設定單一登入](./media/purecloud-by-genesys-tutorial/configure01.png)
+    ![此螢幕擷取畫面顯示 [PureCloud 管理員] 視窗，您可以在其中選取 [單一登入]。](./media/purecloud-by-genesys-tutorial/configure01.png)
 
 1. 切換至 [ADFS/Azure AD (進階)]  索引標籤，然後遵循下列步驟：
 
-    ![設定單一登入](./media/purecloud-by-genesys-tutorial/configure02.png)
+    ![此螢幕擷取畫面顯示 [整合] 頁面，您可以在其中輸入所述的值。](./media/purecloud-by-genesys-tutorial/configure02.png)
 
     a. 選取 [瀏覽]  ，將您從 Azure 入口網站下載的 base-64 編碼憑證上傳至 [ADFS 憑證]  。
 
-    b. 在 [ADFS 簽發者 URI]  方塊中，貼上您從 Azure 入口網站複製的 **Azure AD 識別碼**值。
+    b. 在 [ADFS 簽發者 URI]  方塊中，貼上您從 Azure 入口網站複製的 **Azure AD 識別碼** 值。
 
-    c. 在 [目標 URI]  方塊中，貼上您從 Azure 入口網站複製的**登入 URL** 值。
+    c. 在 [目標 URI]  方塊中，貼上您從 Azure 入口網站複製的 **登入 URL** 值。
 
-    d. 針對 [信賴憑證者識別碼]  的值，請移至 Azure 入口網站，然後在 [PureCloud by Genesys]  應用程式整合頁面上選取 [屬性]  索引標籤，並複製**應用程式識別碼**的值。 將值貼到 [信賴憑證者識別碼]  方塊中。
+    d. 針對 [信賴憑證者識別碼]  的值，請移至 Azure 入口網站，然後在 [PureCloud by Genesys]  應用程式整合頁面上選取 [屬性]  索引標籤，並複製 **應用程式識別碼** 的值。 將值貼到 [信賴憑證者識別碼]  方塊中。
 
-    ![設定單一登入](./media/purecloud-by-genesys-tutorial/configure06.png)
+    ![此螢幕擷取畫面顯示 [屬性] 窗格，您可以在其中尋找 [應用程式識別碼] 值。](./media/purecloud-by-genesys-tutorial/configure06.png)
 
     e. 選取 [儲存]  。
 
@@ -195,19 +195,19 @@ ms.locfileid: "88553269"
 
 1. 選取頂端的 [系統管理]  ，然後移至 [人員和權限]  底下的 [人員]  。
 
-    ![設定單一登入](./media/purecloud-by-genesys-tutorial/configure03.png)
+    ![此螢幕擷取畫面顯示 [PureCloud 管理員] 視窗，您可以在其中選取 [人員]。](./media/purecloud-by-genesys-tutorial/configure03.png)
 
 1. 在 [人員]  頁面上，選取 [新增人員]  。
 
-    ![設定單一登入](./media/purecloud-by-genesys-tutorial/configure04.png)
+    ![此螢幕擷取畫面顯示 [人員] 頁面，您可以在其中新增人員。](./media/purecloud-by-genesys-tutorial/configure04.png)
 
 1. 在 [將人員新增至組織]  對話方塊中，遵循下列步驟：
 
-    ![設定單一登入](./media/purecloud-by-genesys-tutorial/configure05.png)
+    ![此螢幕擷取畫面顯示可輸入所述值的頁面。](./media/purecloud-by-genesys-tutorial/configure05.png)
 
-    a. 在 [全名]  方塊中，輸入使用者的名稱。 例如：**B.simon**。
+    a. 在 [全名]  方塊中，輸入使用者的名稱。 例如： **B.simon** 。
 
-    b. 在 [電子郵件]  方塊中，輸入使用者的電子郵件。 例如：**b.simon\@contoso.com**。
+    b. 在 [電子郵件]  方塊中，輸入使用者的電子郵件。 例如： **b.simon\@contoso.com** 。
 
     c. 選取 [建立]  。
 

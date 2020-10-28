@@ -3,12 +3,12 @@ title: 將容器中的 .NET 應用程式部署到 Azure Service Fabric
 description: 了解如何使用 Visual Studio 將現有 .NET 應用程式容器化，並在 Service Fabric 本機為容器偵錯。 需將容器化的應用程式推送至 Azure 容器登錄，並部署到 Service Fabric 叢集。 部署到 Azure 時，應用程式會使用 Azure SQL 資料庫保存資料。
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: b841591bb200bca7edbde24744c5b47302816ea0
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: c2e44db9bc813b346493b4d23b9f48b279e245b3
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91817632"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122058"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>教學課程：將 Windows 容器中的 .NET 應用程式部署到 Azure Service Fabric
 
@@ -30,14 +30,14 @@ ms.locfileid: "91817632"
 1. 如果您沒有 Azure 訂用帳戶，請[建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 2. 安裝 [Docker CE for Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)，以便在 Windows 10 上執行容器。
 3. 安裝 [Service Fabric 執行階段 6.2 版或更新版本](service-fabric-get-started.md)和 [Service Fabric SDK 3.1 版](service-fabric-get-started.md)或更新版本。
-4. 安裝 [Visual Studio 2019 16.1 版](https://www.visualstudio.com/)或更新版本，其中包含 **Azure 開發**及 **ASP.NET 和 Web 開發**工作負載。
+4. 安裝 [Visual Studio 2019 16.1 版](https://www.visualstudio.com/)或更新版本，其中包含 **Azure 開發** 及 **ASP.NET 和 Web 開發** 工作負載。
 5. 安裝 [Azure PowerShell][link-azure-powershell-install]
 
 ## <a name="download-and-run-fabrikam-fiber-callcenter"></a>下載並執行 Fabrikam Fiber CallCenter
 
 1. 下載 [Fabrikam Fiber CallCenter][link-fabrikam-github] 範例應用程式。  按一下 [下載封存] 連結。  從 fabrikam.zip檔案中的 sourceCode目錄 ，解壓縮 sourceCode.zip檔案，然後將 VS2015 目錄解壓縮到電腦中。
 
-2. 確認 Fabrikam Fiber CallCenter 應用程式建置及執行正常。  以**系統管理員**身分啟動 Visual Studio，並開啟 [FabrikamFiber.CallCenter.sln][link-fabrikam-github] 檔案。  按 F5 進行偵錯並執行應用程式。
+2. 確認 Fabrikam Fiber CallCenter 應用程式建置及執行正常。  以 **系統管理員** 身分啟動 Visual Studio，並開啟 [FabrikamFiber.CallCenter.sln][link-fabrikam-github] 檔案。  按 F5 進行偵錯並執行應用程式。
 
    ![Fabrikam Fiber CallCenter 應用程式首頁 (執行於本機主機上) 的螢幕擷取畫面。 此頁面會顯示儀表板，其中包含支援電話的清單。][fabrikam-web-page]
 
@@ -47,7 +47,7 @@ ms.locfileid: "91817632"
 
 2. 若出現提示，請按一下 [是]，立即將 Docker 切換到 Windows 容器。
 
-   現在在方案中已建立新的 Service Fabric 應用程式專案 **FabrikamFiber.CallCenterApplication**。  並已在現有 **FabrikamFiber.Web** 專案中新增 Dockerfile。  **PackageRoot** 目錄也已新增至 **FabrikamFiber.Web** 專案，其中包含新 FabrikamFiber.Web 服務的服務資訊清單和設定。
+   現在在方案中已建立新的 Service Fabric 應用程式專案 **FabrikamFiber.CallCenterApplication** 。  並已在現有 **FabrikamFiber.Web** 專案中新增 Dockerfile。  **PackageRoot** 目錄也已新增至 **FabrikamFiber.Web** 專案，其中包含新 FabrikamFiber.Web 服務的服務資訊清單和設定。
 
    現在準備好在 Service Fabric 應用程式中建置及封裝此容器。 在您的電腦上建置完容器映像之後，您便可以將它推送到任何容器登錄，然後下拉到任何主機來執行。
 
@@ -118,7 +118,7 @@ Write-Host "Server name is $servername"
 ```
 
 >[!NOTE]
->您可以使用任何慣用的 SQL Server 來進行本機偵錯，只要能夠從您的主機連線到該 SQL Server 即可。 不過，**localdb** 不支援 `container -> host` 通訊。 在建置 Web 應用程式的發行組建時，如果您想要使用不同的 SQL 資料庫，請在 web.release.config 檔案中新增另一個連接字串。
+>您可以使用任何慣用的 SQL Server 來進行本機偵錯，只要能夠從您的主機連線到該 SQL Server 即可。 不過， **localdb** 不支援 `container -> host` 通訊。 在建置 Web 應用程式的發行組建時，如果您想要使用不同的 SQL 資料庫，請在 web.release.config 檔案中新增另一個連接字串。
 
 ## <a name="run-the-containerized-application-locally"></a>在本機執行容器化的應用程式
 
@@ -157,7 +157,7 @@ Service Fabric 應用程式執行於叢集，也就是一組連接網路的虛�
 
 1. 以滑鼠右鍵按一下 [方案總管] 中的 [FabrikamFiber.CallCenterApplication] 應用程式專案，然後選擇 [發佈]。
 2. 使用您的 Azure 帳戶登入，以便存取您的訂用帳戶。
-3. 選取 [連線端點] 下拉式清單，然後選取 [建立新叢集...] 選項。
+3. 在 [連線端點] 下拉式清單下方，選取 [建立新叢集...] 選項。
 4. 在 [建立叢集] 對話方塊中，修改下列設定：
 
     a. 在 [叢集名稱] 欄位中指定叢集的名稱，以及您想要使用的訂用帳戶和位置。 記下叢集資源群組的名稱。

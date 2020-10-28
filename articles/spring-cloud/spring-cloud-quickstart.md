@@ -4,16 +4,16 @@ description: 在本快速入門中，我們會將 Spring Cloud 應用程式部�
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 09/08/2020
+ms.date: 09/18/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 1d7196f85f64ed466e99986996832952ffe1d59c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2ec79c9c1fc3b461037b2005da7198f81cbbab34
+ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91336253"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92170357"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>快速入門：部署您的第一個 Azure Spring Cloud 應用程式
 
@@ -21,7 +21,7 @@ ms.locfileid: "91336253"
 本快速入門說明如何部署可在 Azure 上執行的簡單 Azure Spring Cloud 微服務應用程式。
 
 >[!NOTE]
-> Steeltoe 對於 Azure Spring Cloud 的支援目前是以公開預覽版的形式來提供。 公開預覽版供應項目可讓客戶在其正式發行前，先試驗新功能。  公開預覽功能和服務不適用於生產環境。  如需預覽期間的支援詳細資訊，請參閱[常見問題集](https://azure.microsoft.com/support/faq/)或提出[支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
+> Steeltoe 對於 Azure Spring Cloud 的支援目前是以公開預覽版的形式來提供。 公開預覽版供應項目可讓客戶在其正式發行前，先試驗新功能。  公開預覽功能和服務不適用於生產環境。  如需預覽期間的支援詳細資訊，請參閱[常見問題集](https://azure.microsoft.com/support/faq/)或提出[支援要求](../azure-portal/supportability/how-to-create-azure-support-request.md)。
 
 藉由遵循本快速入門，您將了解如何：
 
@@ -37,7 +37,7 @@ ms.locfileid: "91336253"
 
 * 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)。 Azure Spring Cloud 服務支援 .NET Core 3.1 和更新版本。
-* [Azure CLI 2.0.67 版或更新版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
+* [Azure CLI 2.0.67 版或更新版本](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 * [Git](https://git-scm.com/)。
 
 ## <a name="install-azure-cli-extension"></a>安裝 Azure CLI 擴充功能
@@ -206,9 +206,9 @@ az extension add --name spring-cloud
 
 1. 開啟 [Azure 入口網站](https://ms.portal.azure.com/)。 
 
-1. 從頂端的搜尋方塊，搜尋 *Azure Spring Cloud*。
+1. 從頂端的搜尋方塊，搜尋 *Azure Spring Cloud* 。
 
-1. 從結果中選取 *Azure Spring Cloud*。
+1. 從結果中選取 *Azure Spring Cloud* 。
 
    ![ASC 圖示啟動](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
@@ -219,9 +219,9 @@ az extension add --name spring-cloud
 1. 填寫 Azure Spring Cloud [建立] 頁面上的表單。  請參考下列指引：
 
    * 訂用帳戶：選取您想要用來支付此資源費用的訂用帳戶。
-   * **資源群組**：建立新的資源群組。 您在此處輸入的名稱將會用於後續步驟中作為 **\<resource group name\>** 。
-   * **服務詳細資料/名稱**：指定 **\<service instance name\>** 。  名稱長度必須為 4 到 32 個字元，且只能包含小寫字母、數字及連字號。  服務名稱的第一個字元必須是字母，且最後一個字元必須是字母或數字。
-   * **區域**：選取您服務執行個體的區域。
+   * **資源群組** ：建立新的資源群組。 您在此處輸入的名稱將會用於後續步驟中作為 **\<resource group name\>** 。
+   * **服務詳細資料/名稱** ：指定 **\<service instance name\>** 。  名稱長度必須為 4 到 32 個字元，且只能包含小寫字母、數字及連字號。  服務名稱的第一個字元必須是字母，且最後一個字元必須是字母或數字。
+   * **區域** ：選取您服務執行個體的區域。
 
    ![ASC 入口網站啟動](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
@@ -338,10 +338,10 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
 
 若要完成本快速入門：
 
-* [安裝 JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true)
+* [安裝 JDK 8](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)
 * [註冊 Azure 訂用帳戶](https://azure.microsoft.com/free/)
-* (選擇性) [安裝 Azure CLI 版本 2.0.67 或更高版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)，並使用下列命令安裝 Azure Spring Cloud 擴充功能：`az extension add --name spring-cloud`
-* (選擇性) [安裝 Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) 並[登入](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
+* (選擇性) [安裝 Azure CLI 版本 2.0.67 或更高版本](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)，並使用下列命令安裝 Azure Spring Cloud 擴充功能：`az extension add --name spring-cloud`
+* (選擇性) [安裝 Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) 並[登入](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)
 
 ## <a name="generate-a-spring-cloud-project"></a>產生 Spring Cloud 專案
 
@@ -376,9 +376,9 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3
 
 1. 在新的索引標籤中，開啟 [Azure 入口網站](https://ms.portal.azure.com/)。 
 
-2. 從頂端的搜尋方塊，搜尋 *Azure Spring Cloud*。
+2. 從頂端的搜尋方塊，搜尋 *Azure Spring Cloud* 。
 
-3. 從結果中選取 *Azure Spring Cloud*。
+3. 從結果中選取 *Azure Spring Cloud* 。
 
     ![ASC 圖示啟動](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
@@ -388,9 +388,9 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3
 
 5. 填寫 Azure Spring Cloud [建立] 頁面上的表單。  請參考下列指引：
     - 訂用帳戶：選取您想要用來支付此資源費用的訂用帳戶。
-    - **資源群組**：為新資源建立新資源群組是最佳做法。 稍後將會使用該資訊作為 **\<resource group name\>** 。
-    - **服務詳細資料/名稱**：指定 **\<service instance name\>** 。  名稱長度必須為 4 到 32 個字元，且只能包含小寫字母、數字及連字號。  服務名稱的第一個字元必須是字母，且最後一個字元必須是字母或數字。
-    - **位置**：選取您服務執行個體的區域。
+    - **資源群組** ：為新資源建立新資源群組是最佳做法。 稍後將會使用該資訊作為 **\<resource group name\>** 。
+    - **服務詳細資料/名稱** ：指定 **\<service instance name\>** 。  名稱長度必須為 4 到 32 個字元，且只能包含小寫字母、數字及連字號。  服務名稱的第一個字元必須是字母，且最後一個字元必須是字母或數字。
+    - **位置** ：選取您服務執行個體的區域。
 
     ![ASC 入口網站啟動](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
@@ -419,10 +419,10 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3
     az spring-cloud app create -n hellospring -s <service instance name> -g <resource group name> --is-public
     ```
 
-1. 部署應用程式的 Jar 檔案：
+1. 部署應用程式的 Jar 檔案 (在 Windows 上為 `target\hellospring-0.0.1-SNAPSHOT.jar`)：
 
     ```azurecli
-    az spring-cloud app deploy -n hellospring -s <service instance name> -g <resource group name> --jar-path target\hellospring-0.0.1-SNAPSHOT.jar
+    az spring-cloud app deploy -n hellospring -s <service instance name> -g <resource group name> --jar-path <jar file path>
     ```
     
 1. 系統需要幾分鐘的時間來完成部署應用程式。 若要確認其已部署完成，請移至 Azure 入口網站的 [應用程式] 刀鋒視窗。 您應該會看到應用程式的狀態。
@@ -439,7 +439,7 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3
     ![匯入專案](media/spring-cloud-quickstart-java/intellij-new-project.png)
 
 ### <a name="deploy-the-app"></a>部署應用程式
-若要部署至 Azure，您必須使用您的 Azure 帳戶登入，然後選擇您的訂用帳戶。  如需登入詳細資訊，請參閱[安裝和登入](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)。
+若要部署至 Azure，您必須使用您的 Azure 帳戶登入，然後選擇您的訂用帳戶。  如需登入詳細資訊，請參閱[安裝和登入](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)。
 
 1. 在 IntelliJ 專案總管中以滑鼠右鍵按一下專案，然後選取 [Azure] ->  [部署至 Azure Spring Cloud]。
 
@@ -448,7 +448,7 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3
 1. 在 [名稱] 欄位中，接受應用程式的名稱。 [名稱] 是指設定，而不是應用程式名稱。 使用者通常不需要加以變更。
 1. 在 [成品] 文字方塊中，選取 [hellospring-0.0.1-SNAPSHOT.jar]。
 1. 在 [訂用帳戶] 文字方塊中，驗證您的訂用帳戶。
-1. 在 [Spring Cloud] 文字方塊中，選取您在[佈建 Azure Spring Cloud 執行個體](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-provision-service-instance)中所建立的 Azure Spring Cloud 執行個體。
+1. 在 [Spring Cloud] 文字方塊中，選取您在[佈建 Azure Spring Cloud 執行個體](./spring-cloud-quickstart-provision-service-instance.md)中所建立的 Azure Spring Cloud 執行個體。
 1. 將 [公用端點] 設定為 [啟用]。
 1. 在 [應用程式：] 文字方塊中，選取 [建立應用程式...]。
 1. 輸入 hellospring，然後按一下 [確定]。

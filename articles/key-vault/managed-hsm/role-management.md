@@ -8,17 +8,17 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 814167425fcd39e90edccd952e1a3e4fbd570988
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 370be4501a113403a9b1db14571f5a021ac15517
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91818026"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92149111"
 ---
 # <a name="managed-hsm-role-management"></a>受控 HSM 角色管理
 
 > [!NOTE]
-> Key Vault 支援兩種類型的資源：保存庫和受控 HSM。 本文討論**受控 HSM**。 如果您想要了解如何管理保存庫，請參閱[使用 Azure CLI 來管理 Key Vault](../general/manage-with-cli2.md)。
+> Key Vault 支援兩種類型的資源：保存庫和受控 HSM。 本文討論 **受控 HSM** 。 如果您想要了解如何管理保存庫，請參閱[使用 Azure CLI 來管理 Key Vault](../general/manage-with-cli2.md)。
 
 如需受控 HSM 的概觀，請參閱[什麼是受控 HSM？](overview.md)。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -52,7 +52,7 @@ az login
 
 ### <a name="assign-roles-for-all-keys"></a>指派所有金鑰的角色
 
-使用 `az keyvault role assignment create` 命令，針對 ContosoHSM 中的所有**金鑰** (範圍 `/keys`)，將**受控 HSM 密碼編譯金鑰**角色指派給使用者主體名稱 **user2\@contoso.com** 所識別的使用者。
+使用 `az keyvault role assignment create` 命令，針對 ContosoHSM 中的所有 **金鑰** (範圍 `/keys`)，將 **受控 HSM 密碼編譯金鑰** 角色指派給使用者主體名稱 **user2\@contoso.com** 所識別的使用者。
 
 ```azurecli-interactive
 az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys
@@ -60,7 +60,7 @@ az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Cr
 
 ### <a name="assign-role-for-a-specific-key"></a>指派特定金鑰的角色
 
-使用 `az keyvault role assignment create` 命令，針對名為 **myrsakey** 的特定金鑰，將**受控 HSM 密碼編譯金鑰**角色指派給使用者主體名稱 **user2\@contoso.com** 所識別的使用者。
+使用 `az keyvault role assignment create` 命令，針對名為 **myrsakey** 的特定金鑰，將 **受控 HSM 密碼編譯金鑰** 角色指派給使用者主體名稱 **user2\@contoso.com** 所識別的使用者。
 
 ```azurecli-interactive
 az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys/myrsakey
@@ -70,7 +70,7 @@ az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Cr
 
 使用 `az keyvault role assignment list` 列出角色指派。
 
-在範圍 / (未指定 --scope 時的預設值) 為所有使用者 (指定了 --assignee 時的預設值) 進行的所有角色指派
+在範圍 / (未指定 --scope 時的預設值) 為所有使用者 (未指定 --assignee 時的預設值) 進行的所有角色指派
 
 ```azurecli-interactive
 az keyvault role assignment list --hsm-name ContosoMHSM
@@ -88,7 +88,7 @@ az keyvault role assignment list --hsm-name ContosoMHSM --assignee user@contoso.
 az keyvault role assignment list --hsm-name ContosoMHSM --assignee user2@contoso.com --scope /keys/myrsakey
 ```
 
-針對特定金鑰 **myrsakey** 的特定使用者 **user2@contoso.com** 進行的**受控 HSM 密碼編譯人員**角色的特定角色指派
+針對特定金鑰 **myrsakey** 的特定使用者 **user2@contoso.com** 進行的 **受控 HSM 密碼編譯人員** 角色的特定角色指派
 
 
 ```azurecli-interactive
@@ -97,7 +97,7 @@ az keyvault role assignment list --hsm-name ContosoMHSM --assignee user2@contoso
 
 ## <a name="delete-a-role-assignment"></a>刪除角色指派
 
-使用 `az keyvault role assignment delete` 命令，刪除指派給金鑰 **myrsakey2** 的使用者 **user2\@contoso.com** 的**受控 HSM 密碼編譯人員**角色。
+使用 `az keyvault role assignment delete` 命令，刪除指派給金鑰 **myrsakey2** 的使用者 **user2\@contoso.com** 的 **受控 HSM 密碼編譯人員** 角色。
 
 ```azurecli-interactive
 az keyvault role assignment delete --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys/myrsakey2

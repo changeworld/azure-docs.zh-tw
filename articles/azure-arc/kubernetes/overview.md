@@ -9,12 +9,12 @@ ms.author: mlearned
 description: 本文提供已啟用 Azure Arc 的 Kubernetes 概觀。
 keywords: Kubernetes, Arc, Azure, 容器
 ms.custom: references_regions
-ms.openlocfilehash: a4d53614a0ab6783b9adfe395fec4d79e7b62e1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 601fcb096bf2bfeb1a6120015690c9aff4b6177b
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858416"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92216074"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>什麼是已啟用 Azure Arc 的 Kubernetes 預覽？
 
@@ -72,7 +72,7 @@ ms.locfileid: "91858416"
 
     否。 在已啟用 Azure Arc 的 Kubernetes 上，諸如 Azure 監視器、Azure 原則 (Gatekeeper) 等各項功能都會透過 AKS (在 Azure 中已有資源表示法) 原生提供。
     
-* 我是否應將 Azure Stack HCI 上的 AKS 叢集連線至 Azure Arc？ 在 Azure Stack Hub 或 Azure Stack Engine 上執行的 Kubernetes 叢集又應如何？
+* 我是否應將 Azure Stack HCI 上的 AKS 叢集連線至 Azure Arc？ 在 Azure Stack Hub 或 Azure Stack Edge 上執行的 Kubernetes 叢集又應如何？
 
     是，將這些叢集連線至 Azure Arc 有其優點。 這樣可在 Azure Resource Manager 中提供這些 Kubernetes 叢集的資源表示法。 使用此資源表示法，可將叢集設定、Azure 監視器、Azure 原則 (閘道管理員) 等功能擴充至這些 Kubernetes 叢集
 

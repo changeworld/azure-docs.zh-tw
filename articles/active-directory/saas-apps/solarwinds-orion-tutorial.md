@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 723546d6a997d895c1a1df39b558aabb797d0a11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9f93457edc4276422eb97b56c90b83ad6a19a65
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545088"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126887"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-solarwinds-orion"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SolarWinds Orion 整合
 
@@ -50,7 +50,7 @@ ms.locfileid: "88545088"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **SolarWinds Orion**。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **SolarWinds Orion** 。
 1. 從結果面板選取 [SolarWinds Orion]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -72,7 +72,7 @@ ms.locfileid: "88545088"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [SolarWinds Orion] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -88,7 +88,7 @@ ms.locfileid: "88545088"
     在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://<ORION-HOSTNAME-OR-EXTERNAL-URL>/Orion/Login.aspx`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [SolarWinds Orion 用戶端支援小組](mailto:technicalsupport@solarwinds.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [SolarWinds Orion 用戶端支援小組](mailto:technicalsupport@solarwinds.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. SolarWinds Orion 應用程式需要特定格式的 SAML 判斷提示，而您需要將自訂屬性對應新增到 SAML 權杖屬性組態。 以下螢幕擷取畫面顯示預設屬性清單。
 
@@ -144,19 +144,19 @@ ms.locfileid: "88545088"
 
 1. 登入 SolarWinds Orion，並移至 [設定] -> [所有設定]。
 
-    ![ SolarWinds Orion 組態 ](./media/solarwinds-orion-tutorial/settings.png)
+    ![此螢幕擷取畫面顯示從 [設定] 選取的 [所有設定]。](./media/solarwinds-orion-tutorial/settings.png)
 
 1. 在 [使用者帳戶] 區段中，選取 [SAML 組態]。
 
-    ![ SolarWinds Orion 組態 ](./media/solarwinds-orion-tutorial/configure-user-accounts.png)
+    ![此螢幕擷取畫面顯示從 [使用者帳戶] 選取的 [SAML 組態]。](./media/solarwinds-orion-tutorial/configure-user-accounts.png)
 
 1. 按一下 [新增識別提供者]。
 
-    ![ SolarWinds Orion 組態 ](./media/solarwinds-orion-tutorial/configure-add-identity-provider.png)
+    ![此螢幕擷取畫面顯示 [SAML 組態]，您可以在其中選取 [新增識別提供者]。](./media/solarwinds-orion-tutorial/configure-add-identity-provider.png)
 
 1. 在 [新增識別提供者] 頁面上，執行下列步驟：
 
-    ![ SolarWinds Orion 組態 ](./media/solarwinds-orion-tutorial/configure-solarwinds.png)
+    ![此螢幕擷取畫面顯示 [新增識別提供者] 頁面，您可以在其中輸入所述的值。](./media/solarwinds-orion-tutorial/configure-solarwinds.png)
 
     a. 移至 [設定] 索引標籤。
 
@@ -164,35 +164,35 @@ ms.locfileid: "88545088"
 
     c. 在 [SSO 目標 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL] 值。
 
-    d.  在 [簽發者 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 **Azure AD 識別碼**值。
+    d.  在 [簽發者 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 **Azure AD 識別碼** 值。
 
-    e. 從 Azure 入口網站將所下載的**憑證(Base64)** 以記事本開啟，然後將內容貼至 [X.509 簽署憑證] 文字方塊。
+    e. 從 Azure 入口網站將所下載的 **憑證(Base64)** 以記事本開啟，然後將內容貼至 [X.509 簽署憑證] 文字方塊。
 
-    f. 按一下 [ **儲存**]。
+    f. 按一下 [ **儲存** ]。
 
 ### <a name="create-solarwinds-orion-test-user"></a>建立 SolarWinds Orion 測試使用者
 
 1. 登入 SolarWinds Orion 網站，並移至 [設定] -> [所有設定]。
 
-    ![ SolarWinds Orion 建立測試使用者 ](./media/solarwinds-orion-tutorial/settings.png)
+    ![此螢幕擷取畫面顯示從 [設定] 選取的 [所有設定]。](./media/solarwinds-orion-tutorial/settings.png)
 
 1. 在 [使用者帳戶] 區段中，選取 [管理帳戶]。
 
-    ![ SolarWinds Orion 建立測試使用者 ](./media/solarwinds-orion-tutorial/user-accounts.png)
+    ![此螢幕擷取畫面顯示選取的 [SAML 組態]。](./media/solarwinds-orion-tutorial/user-accounts.png)
 
 1. 在 [個別帳戶] 索引標籤中，按一下 [新增新帳戶]。
 
-    ![ SolarWinds Orion 建立測試使用者 ](./media/solarwinds-orion-tutorial/create-user.png)
+    ![此螢幕擷取畫面顯示在 [管理帳戶] 中選取的 [新增帳戶]。](./media/solarwinds-orion-tutorial/create-user.png)
 
 1. 選取帳戶類型，您需要建立 SAML 個別使用者或群組。
 
-    ![ SolarWinds Orion 建立測試使用者 ](./media/solarwinds-orion-tutorial/create-user-new-account.png)
+    ![此螢幕擷取畫面顯示 [新增帳戶]，您可以在其中選取帳戶的類型。](./media/solarwinds-orion-tutorial/create-user-new-account.png)
 
 1.  在 [名稱識別碼] 文字方塊中，輸入必須與 Azure AD 完全相同的使用者名稱或群組名稱。
 
 1.  按一下 [下一步] 然後提交頁面。
 
-    ![ SolarWinds Orion 建立測試使用者 ](./media/solarwinds-orion-tutorial/create-user-name-id.png)
+    ![此螢幕擷取畫面顯示 [新增帳戶]，您可以在其中輸入來自 Azure AD 的名稱識別碼。](./media/solarwinds-orion-tutorial/create-user-name-id.png)
 
 ## <a name="test-sso"></a>測試 SSO 
 

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 2301219db250b97fd7ea2eb3814f5eba2c70148a
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: aad69a34cc27f341bec5beda0f52e2581538aaf9
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569869"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92278420"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>歡迎使用 Azure Cosmos DB
 
@@ -60,7 +60,7 @@ Cosmos DB 是 Azure 中的基本服務。 近十年來，許多 Microsoft 產品
 
 ### <a name="ubiquitous-regional-presence"></a>遍及各區，無所不在
 
-Cosmos DB 可在全球所有 Azure 區域使用，包括公用雲端中 54 個以上區域、[Azure 中國 21Vianet](https://www.azure.cn/en-us/)、Azure Germany、Azure Government 和 Azure Government for Department of Defense (DoD)。 請參閱 [Cosmos DB 遍及各區](regional-presence.md)。
+Cosmos DB 可在全球所有 Azure 區域使用，包括公用雲端中 54 個以上區域、[Azure 中國 21Vianet](https://www.azure.cn/en-us/)、Azure Germany、Azure Government 和 Azure Government for Department of Defense (DoD)。 請參閱 [Azure Cosmos DB 的高可用性](high-availability.md)。
 
 ### <a name="secure-by-default-and-enterprise-ready"></a>預設保護且適合企業使用
 

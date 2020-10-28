@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: acd2f12150155efbccc668b99dcc4683d81b87e0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7b732537d5b0ba517c5d638381c07f229c500081
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047007"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92107788"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>快速入門：將您的第一個 IoT Edge 模組部署至虛擬 Windows 裝置
 
@@ -78,7 +78,7 @@ IoT Edge 裝置：
 >
 > 為了簡單起見，本快速入門使用的是 Windows 桌面虛擬機器。 如需正式生產情境下一般何種 Windows 作業系統可供使用的資訊，請參閱 [Azure IoT Edge 支援系統](support.md)。
 >
-> 如果您想要針對 IoT Edge 設定自己的 Windows 裝置，請遵循[安裝 Azure IoT Edge 執行階段](how-to-install-iot-edge.md)中的步驟。
+> 如果您想要為 IoT Edge 設定自己的 Windows 裝置，包括執行 IoT 核心版的裝置，請遵循[安裝 Azure IoT Edge 執行階段](how-to-install-iot-edge.md)中的步驟。
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
@@ -94,7 +94,7 @@ IoT Edge 裝置：
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
    ```
 
-   如果因您的訂用帳戶中已有免費中樞而發生錯誤，請將 SKU 變更為 **S1**。 如果您收到無法使用 IoT 中樞名稱的錯誤，則表示其他人已經有該名稱的中樞。 請嘗試新的名稱。
+   如果因您的訂用帳戶中已有免費中樞而發生錯誤，請將 SKU 變更為 **S1** 。 如果您收到無法使用 IoT 中樞名稱的錯誤，則表示其他人已經有該名稱的中樞。 請嘗試新的名稱。
 
 ## <a name="register-an-iot-edge-device"></a>註冊 IoT Edge 裝置
 
@@ -128,7 +128,7 @@ IoT Edge 裝置：
 在 IoT Edge 裝置上安裝 Azure IoT Edge 執行階段，並使用裝置連接字串進行設定。
 ![圖表 - 在裝置上啟動執行階段](./media/quickstart/start-runtime.png)
 
-IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 它有三個元件。 *IoT Edge 安全性精靈*會在每次 IoT Edge 裝置開機時啟動，並藉由啟動 IoT Edge 代理程式來啟動該裝置。 *IoT Edge 代理程式*可管理模組在 IoT Edge 裝置 (包括 IoT Edge 中樞) 上的部署和監視。 *IoT Edge 中樞*可處理 IoT Edge 裝置上的模組通訊，以及裝置與 IoT 中樞之間的通訊。
+IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 它有三個元件。 *IoT Edge 安全性精靈* 會在每次 IoT Edge 裝置開機時啟動，並藉由啟動 IoT Edge 代理程式來啟動該裝置。 *IoT Edge 代理程式* 可管理模組在 IoT Edge 裝置 (包括 IoT Edge 中樞) 上的部署和監視。 *IoT Edge 中樞* 可處理 IoT Edge 裝置上的模組通訊，以及裝置與 IoT 中樞之間的通訊。
 
 安裝指令碼也包含名為 Moby 的容器引擎，可用來管理 IoT Edge 裝置上的容器映像。
 

@@ -3,17 +3,17 @@ title: 使用 Power BI 應用程式分析 Azure 成本
 description: 本文將說明如何安裝及使用 Azure 成本管理 Power BI 應用程式。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 10/14/2020
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 0174c8a0c96d884f42aea9b6fb1cb0d9c06ce400
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 7282ef9269c1168214fe57d3faa5488e531af8da
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447654"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92131117"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>使用適用於 Enterprise 合約 (EA) 的 Azure 成本管理 Power BI 應用程式來分析成本
 
@@ -28,8 +28,8 @@ Azure 成本管理 Power BI 應用程式目前僅支援具有 [Enterprise 合約
 
 ## <a name="prerequisites"></a>必要條件
 
-- 安裝和使用應用程式所需的 [Power BI Pro 授權](/power-bi/service-self-service-signup-for-power-bi)
-- 若要連結資料，您必須使用[企業系統管理員](../manage/understand-ea-roles.md)帳戶
+- 需要 [Power BI Pro 授權](/power-bi/service-self-service-signup-for-power-bi)才能安裝及使用應用程式。
+- 若要連結資料，您必須使用[企業系統管理員](../manage/understand-ea-roles.md)帳戶。 支援企業系統管理員 (唯讀) 角色。
 
 ## <a name="installation-steps"></a>安裝步驟
 
@@ -44,9 +44,9 @@ Azure 成本管理 Power BI 應用程式目前僅支援具有 [Enterprise 合約
 7. 選取 [移至應用程式]。
 8. 在 [開始使用您的新應用程式] 中，從 [連結您的資料] 底下，選取 [連結]。  
   ![開始使用您的新應用程式 - 連結](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-data2.png)
-9. 在出現的對話方塊中，於 **BillingProfileIdOrEnrollmentNumber** 中輸入您的 EA 註冊號碼。 指定要取得資料的月份數。 保留**註冊號碼**的預設**範圍**值，然後選取 [下一步]。  
+9. 在出現的對話方塊中，於 **BillingProfileIdOrEnrollmentNumber** 中輸入您的 EA 註冊號碼。 指定要取得資料的月份數。 保留 **註冊號碼** 的預設 **範圍** 值，然後選取 [下一步]。  
   ![輸入 EA 註冊資訊](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
-10. 下一個對話方塊會與 Azure 連結，並取得保留執行個體建議所需的資料。 *保留已設定的預設值*，然後選取 [登入]。  
+10. 下一個對話方塊會與 Azure 連結，並取得保留執行個體建議所需的資料。 *保留已設定的預設值* ，然後選取 [登入]。  
   ![顯示含預設值之 [連線到 Azure 成本管理應用程式] 對話方塊的螢幕擷取畫面。](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
 11. 最後的安裝步驟會連結到您的 EA 註冊，而且需要[企業系統管理員](../manage/understand-ea-roles.md)帳戶。 選取 [登入]，以向您的 EA 註冊進行驗證。 此步驟也會在 Power BI 中啟動資料重新整理動作。  
   ![連結到 EA 註冊](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
@@ -80,7 +80,7 @@ Azure 成本管理 Power BI 應用程式目前僅支援具有 [Enterprise 合約
 
 ![Azure Hybrid Benefit 完整報表](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png)
 
-此報表也會識別已啟用 **Hybrid Benefit**，但「少於」 8 個 vCPU 的 Windows VM。 此外，有 8 個「或以上」的 vCPU，卻**未啟用** Hybrid Benefit 的情形也會顯示。 這項資訊可協助您充分運用 Hybrid Benefit。 將權益套用至您最耗費資源的虛擬機器，以最大化可省下的成本。
+此報表也會識別已啟用 **Hybrid Benefit** ，但「少於」 8 個 vCPU 的 Windows VM。 此外，有 8 個「或以上」的 vCPU，卻 **未啟用** Hybrid Benefit 的情形也會顯示。 這項資訊可協助您充分運用 Hybrid Benefit。 將權益套用至您最耗費資源的虛擬機器，以最大化可省下的成本。
 
 ![Azure Hybrid Benefit – 少於 8 個 vCPU 及未啟用 vCPU](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png)
 
@@ -88,7 +88,7 @@ Azure 成本管理 Power BI 應用程式目前僅支援具有 [Enterprise 合約
 
 您可以在 chargetype 上套用篩選，以檢視 RI 使用量過低的資料。
 
-如需有關分攤資料的詳細資訊，請參閱[取得 Enterprise 合約保留成本和使用量](/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea)。
+如需有關分攤資料的詳細資訊，請參閱[取得 Enterprise 合約保留成本和使用量](../reservations/understand-reserved-instance-usage-ea.md)。
 
 **RI 節省量** - 此報表會顯示訂用帳戶、資源群組和資源層級上保留所累積的節省量。 其會顯示：
 
@@ -145,11 +145,11 @@ Data source error: {"error":{"code":"ModelRefresh_ShortMessage_ProcessingError",
 
 #### <a name="cause"></a>原因
 
-預設**範圍**值 `Enrollment Number` 已在成本管理的連線中變更。
+預設 **範圍** 值 `Enrollment Number` 已在成本管理的連線中變更。
 
 #### <a name="solution"></a>解決方法
 
-重新連線至成本管理，並將**範圍**值設定為 `Enrollment Number`。 請勿輸入組織的註冊號碼，而應輸入與下圖所示完全相同的 `Enrollment Number`。
+重新連線至成本管理，並將 **範圍** 值設定為 `Enrollment Number`。 請勿輸入組織的註冊號碼，而應輸入與下圖所示完全相同的 `Enrollment Number`。
 
 ![輸入 EA 註冊資訊](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
 
@@ -166,7 +166,7 @@ Data source error: The 'budgetAmount' column does not exist in the rowset. Table
 
 #### <a name="cause"></a>原因
 
-發生此錯誤的原因是基礎中繼資料包含錯誤 (bug)。 發生此問題的原因是，在 Azure 入口網站的**成本管理 > 預算**下沒有可用的預算。 我們正在部署到 Power BI Desktop 和 Power BI 服務的流程中處理此錯誤 (bug) 修正。 
+發生此錯誤的原因是基礎中繼資料包含錯誤 (bug)。 發生此問題的原因是，在 Azure 入口網站的 **成本管理 > 預算** 下沒有可用的預算。 我們正在部署到 Power BI Desktop 和 Power BI 服務的流程中處理此錯誤 (bug) 修正。 
 
 #### <a name="solution"></a>解決方法
 
@@ -188,9 +188,9 @@ Failed to update data source credentials: The credentials provided for the Azure
 #### <a name="solution"></a>解決方法
 
 1. 連線到您的資料。
-1. 輸入 EA 註冊和月數之後，請確定您將驗證方法保留為**匿名**的預設值，並將隱私權等級設為**無**。  
+1. 輸入 EA 註冊和月數之後，請確定您將驗證方法保留為 **匿名** 的預設值，並將隱私權等級設為 **無** 。  
   ![顯示已輸入 [匿名] 和 [無] 值之 [連線到 Azure 成本管理應用程式] 對話方塊的螢幕擷取畫面。](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
-1. 在下一個頁面上，將驗證方法設定為 **OAuth2**，並將隱私權等級設為**無**。 接著，登入以驗證您的註冊。 此步驟也會重新整理 Power BI 資料。
+1. 在下一個頁面上，將驗證方法設定為 **OAuth2** ，並將隱私權等級設為 **無** 。 接著，登入以驗證您的註冊。 此步驟也會重新整理 Power BI 資料。
 
 
 ## <a name="data-reference"></a>資料參考
@@ -204,8 +204,8 @@ Failed to update data source credentials: The credentials provided for the Azure
 | [**預算**](/rest/api/consumption/budgets/get#definitions) | 預算詳細資料，可針對現有的預算目標檢視實際成本或使用量。 |
 | [**價位表**](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet#see-also) | 所提供帳單設定檔或 EA 註冊適用的計量費率。 |
 | [**RI 費用**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges#response) | 過去 24 個月內與您保留執行個體相關的費用。 |
-| [**RI 建議 (共用)** ](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response) | 保留執行個體購買建議，以您過去 7、30 或 60 天的所有訂用帳戶使用量趨勢為依據。 |
-| [**RI 建議 (單一)** ](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response-1) | 保留執行個體購買建議，以您過去 7、30 或 60 天的單一訂用帳戶使用量趨勢為依據。 |
+| [**RI 建議 (共用)**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response) | 保留執行個體購買建議，以您過去 7、30 或 60 天的所有訂用帳戶使用量趨勢為依據。 |
+| [**RI 建議 (單一)**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response-1) | 保留執行個體購買建議，以您過去 7、30 或 60 天的單一訂用帳戶使用量趨勢為依據。 |
 | [**RI 使用量詳細資料**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#response) | 您現有保留執行個體上個月的耗用量詳細資料。 |
 | [**RI 使用量摘要**](/rest/api/consumption/reservationssummaries/list) | 每日 Azure 保留使用量的百分比。 |
 | [**使用量詳細資料**](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#usage-details-field-definitions) | EA 註冊中指定帳單設定檔的已耗用數量和預估費用明細。 |

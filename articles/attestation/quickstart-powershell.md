@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 538aa29ab66fce48da944dbdf9ea79d5c8f7f330
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d25cdce2670de64fecc8590a2f5f833c10d2df69
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89421283"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92316010"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 設定 Azure 證明
 
@@ -186,7 +186,7 @@ $teeType = "<tee Type>"
 Get-AzAttestationPolicy   -Name $attestationProvider -ResourceGroupName $attestationResourceGroup -Tee $teeType 
 ```
 
-支援的 TEE 類型為 "sgxenclave" 和 "vbsenclave"。
+支援的 TEE 類型為 "SgxEnclave"、"OpenEnclave" 和 "VbsEnclave"。
 
 Set-AttestationPolicy 會為指定的 TEE 設定新原則。 此 Cmdlet 會接受文字或 JWT 格式的原則，而且會由 PolicyFormat 參數所控制。 "Text" 是 PolicyFormat 的預設值。 
 

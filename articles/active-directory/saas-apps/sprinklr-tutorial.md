@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 02b9adcb72b4d26a19b6514d19ce94a70a2415ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6a7784d052a03971fad84c90cdd70cd16b4a872
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88534144"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92122563"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>教學課程：Azure Active Directory 與 Sprinklr 整合
 
@@ -61,7 +61,7 @@ Sprinklr 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Sprinklr**，從結果面板中選取 [Sprinklr]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Sprinklr** ，從結果面板中選取 [Sprinklr]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Sprinklr](common/search-new-app.png)
 
@@ -106,7 +106,7 @@ Sprinklr 與 Azure AD 整合提供下列優點：
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<subdomain>.sprinklr.com`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Sprinklr 用戶端支援小組](https://www.sprinklr.com/contact-us/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Sprinklr 用戶端支援小組](https://www.sprinklr.com/contact-us/)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
@@ -136,13 +136,13 @@ Sprinklr 與 Azure AD 整合提供下列優點：
 
 1. 按一下 [新增單一登入]  。
 
-    ![單一登入](./media/sprinklr-tutorial/ic782909.png "單一登入")
+    ![此螢幕擷取畫面顯示 [新增單一登入] 按鈕。](./media/sprinklr-tutorial/ic782909.png "單一登入")
 
 1. 在 [單一登入]  頁面上，執行下列步驟：
 
-    ![單一登入](./media/sprinklr-tutorial/ic782910.png "單一登入")
+    ![此螢幕擷取畫面顯示 [單一登入] 頁面，您可以在其中輸入所述的值。](./media/sprinklr-tutorial/ic782910.png "單一登入")
 
-    a. 在 [名稱]  文字方塊中，輸入您的組態名稱 (例如：*WAADSSOTest*)。
+    a. 在 [名稱]  文字方塊中，輸入您的組態名稱 (例如： *WAADSSOTest* )。
 
     b. 選取 [啟用]  。
 
@@ -180,7 +180,7 @@ Sprinklr 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -225,11 +225,11 @@ Sprinklr 與 Azure AD 整合提供下列優點：
 
 1. 從左窗格移至 [管理用戶端] \> [使用者]  。
 
-    ![設定](./media/sprinklr-tutorial/ic782914.png "設定")
+    ![此螢幕擷取畫面顯示 [設定/使用者] 中的 [新增使用者] 按鈕。](./media/sprinklr-tutorial/ic782914.png "設定")
 
 1. 按一下 [新增使用者]  。
 
-    ![設定](./media/sprinklr-tutorial/ic782915.png "設定")
+    ![此螢幕擷取畫面顯示 [編輯使用者] 對話方塊，您可以在其中輸入所述的值。](./media/sprinklr-tutorial/ic782915.png "設定")
 
 1. 在 [編輯使用者]  對話方塊上，執行下列步驟：
 

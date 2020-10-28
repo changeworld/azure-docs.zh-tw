@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
-ms.openlocfilehash: 76cc09ab5283e10e8f25af3aba4278ec6cca4838
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 550097272f90a2f7fa06af7f06810fd3fa0ed94f
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91333268"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92173883"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>快速入門：使用 Azure Application Insights 開始監視您的 Node.js Web 應用程式
 
@@ -60,7 +60,7 @@ Application Insights 可以從任何連上網際網路的應用程式收集遙�
    npm install applicationinsights --save
    ```
 
-3. 編輯應用程式的第一個 *.js* 檔案，並將以下兩行新增至指令碼的最上方。 如果您使用 [Node.js 快速入門應用程式](../../app-service/quickstart-nodejs.md)，請修改 *index.js* 檔案。 將 `<instrumentation_key>` 取代為應用程式的檢測金鑰。 
+3. 編輯應用程式的第一個 *.js* 檔案，並將以下兩行新增至指令碼的最上方。 如果您使用 [Node.js 快速入門應用程式](../../app-service/quickstart-nodejs.md)，請修改 *index.js* 檔案。 將 `<instrumentation_key>` 取代為 Application Insight 的檢測金鑰。 
 
    ```JavaScript
    const appInsights = require('applicationinsights');
@@ -90,7 +90,7 @@ Application Insights 可以從任何連上網際網路的應用程式收集遙�
 
    ![Application Insights 健康情況概觀的時間軸圖表](./media/nodejs-quick-start/azure-app-insights-health-overview.png)
 
-   若要在 [網頁檢視載入時間]  圖表中填入**用戶端遙測**資料，請將此指令碼新增至您要追蹤的每個頁面：
+   若要在 [網頁檢視載入時間]  圖表中填入 **用戶端遙測** 資料，請將此指令碼新增至您要追蹤的每個頁面：
 
    ```HTML
    <!-- 
@@ -126,7 +126,7 @@ Application Insights 可以從任何連上網際網路的應用程式收集遙�
 > 如果您使用了現有的資源群組，下列指示將沒有作用，而且您只需要刪除個別的 Application Insights 資源。 請記住，每當您刪除資源群組時，將會刪除屬於該群組的所有基礎資源。
 
 1. 從 Azure 入口網站的左側功能表中，依序選取 [資源群組]  和 [myResourceGroup]  。
-2. 在資源群組頁面上，選取 [刪除]  ，在文字方塊中輸入 **myResourceGroup**，然後選取 [刪除]  。
+2. 在資源群組頁面上，選取 [刪除]  ，在文字方塊中輸入 **myResourceGroup** ，然後選取 [刪除]  。
 
 ## <a name="next-steps"></a>後續步驟
 

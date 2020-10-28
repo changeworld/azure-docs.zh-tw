@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: f3fd214fa62d95430bd8ca62e78fd3df30c77d19
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b2a15bcc9d9dce922470031fd07b66cf9899f0b3
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91652443"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92281357"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>快速入門：轉換模型以進行轉譯
 
@@ -27,7 +27,7 @@ ms.locfileid: "91652443"
 ## <a name="prerequisites"></a>必要條件
 
 * 完成[快速入門：使用 Unity 轉譯模型](render-model.md)
-* 安裝 Azure PowerShell [(文件)](https://docs.microsoft.com/powershell/azure/)
+* 若要使用 PowerShell 指令碼進行轉換：安裝 Azure PowerShell [(文件)](/powershell/azure/)
   * 以系統管理員權限開啟 PowerShell
   * 執行：`Install-Module -Name Az -AllowClobber`
 
@@ -70,12 +70,12 @@ ms.locfileid: "91652443"
 以下列方式填寫表單：
 
 * 從下拉式方塊下方的連結建立新的資源群組，並將此命名為 **ARR_Tutorial**
-* 針對 [儲存體帳戶名稱]，在此輸入唯一名稱。 **此名稱必須是全域唯一的**，否則會出現提示，告知您該名稱已被使用。 在本快速入門的範圍中，我們將其命名為 **arrtutorialstorage**。 因此，您需要以您的名稱取代本快速入門中任何出現的項目。
-* 選取您附近的**位置**。 在理想情況下，使用在其他快速入門中用於設定轉譯的相同位置。
-* **效能**設為「標準」
-* **帳戶種類**設為「StorageV2 (一般用途 V2)」
-* **複寫**設為「讀取權限異地備援儲存體 (RA-GRS)」
-* **存取層**設為「經常性」
+* 針對 [儲存體帳戶名稱]，在此輸入唯一名稱。 **此名稱必須是全域唯一的** ，否則會出現提示，告知您該名稱已被使用。 在本快速入門的範圍中，我們將其命名為 **arrtutorialstorage** 。 因此，您需要以您的名稱取代本快速入門中任何出現的項目。
+* 選取您附近的 **位置** 。 在理想情況下，使用在其他快速入門中用於設定轉譯的相同位置。
+* **效能** 設為「標準」
+* **帳戶種類** 設為「StorageV2 (一般用途 V2)」
+* **複寫** 設為「讀取權限異地備援儲存體 (RA-GRS)」
+* **存取層** 設為「經常性」
 
 其他索引標籤中的屬性都不需要變更，因此您可以繼續進行 [審查 + 建立]，然後遵循步驟來完成設定。
 
@@ -91,13 +91,13 @@ ms.locfileid: "91652443"
 
 ![Azure - 新增容器](./media/azure-add-containers.png)
 
-按下 [+ 容器] 按鈕，以建立**輸入** Blob 儲存體容器。
+按下 [+ 容器] 按鈕，以建立 **輸入** Blob 儲存體容器。
 建立容器時，請使用下列設定︰
   
 * 名稱 = arrinput
 * 公用存取層級 = 私人
 
-建立容器之後，再次按一下 [+ 容器]，然後對**輸出**容器重複使用下列設定：
+建立容器之後，再次按一下 [+ 容器]，然後對 **輸出** 容器重複使用下列設定：
 
 * 名稱 = arroutput
 * 公用存取層級 = 私人
@@ -108,7 +108,16 @@ ms.locfileid: "91652443"
 
 ## <a name="run-the-conversion"></a>執行轉換
 
-為了讓您更輕鬆地呼叫資產轉換服務，我們提供了一個公用程式指令碼。 其位於 *Scripts* 資料夾並稱為 **Conversion.ps1**。
+有三種不同的方式可觸發模型轉換：
+
+### <a name="1-conversion-via-the-arrt-tool"></a>1.透過 ARRT 工具轉換
+
+有一個[以 UI 為基礎的工具稱為 ARRT](./../samples/azure-remote-rendering-asset-tool.md)，其可開始轉換並與轉譯的結果互動。
+![ARRT](./../samples/media/azure-remote-rendering-asset-tool.png "ARRT 螢幕擷取畫面")
+
+### <a name="2-conversion-via-a-powershell-script"></a>2.透過 PowerShell 指令碼轉換
+
+為了讓您更輕鬆地呼叫資產轉換服務，我們提供了一個公用程式指令碼。 其位於 *Scripts* 資料夾並稱為 **Conversion.ps1** 。
 
 特別是，此指令碼會
 
@@ -144,10 +153,10 @@ ms.locfileid: "91652443"
 }
 ```
 
-**accountSettings** 群組 (帳戶識別碼和金鑰) 內的組態應該填入類似於[使用 Unity 轉譯模型快速入門](render-model.md)中的認證。
+**accountSettings** 群組 (帳戶識別碼和金鑰) 內的組態應該填入類似於 [使用 Unity 轉譯模型快速入門](render-model.md)中的認證。
 
-在 **assetConversionSettings** 群組內，請務必變更 **resourceGroup**、**blobInputContainerName** 和 **blobOutputContainerName**，如上所示。
-請注意，在儲存體帳戶建立期間，必須以您挑選的唯一名稱取代 **arrtutorialstorage** 值。
+在 **assetConversionSettings** 群組內，請務必變更 **resourceGroup** 、 **blobInputContainerName** 和 **blobOutputContainerName** ，如上所示。
+請注意，在儲存體帳戶建立期間，必須以您挑選的唯一名稱取代 **arrtutorialstorage** 的值。
 
 將 **localAssetDirectoryPath** 變更為指向磁碟上的目錄，其中包含您想要轉換的模型。 請小心使用雙反斜線 ("\\\\")，正確地逸出路徑中的反斜線 ("\\")。
 
@@ -159,14 +168,14 @@ ms.locfileid: "91652443"
 
 組態設定 **outputAssetFileName** 會決定已轉換資產的名稱 - 這是選用參數，否則會從輸入檔案名稱推論輸出檔案名稱。
 
-開啟 PowerShell，確定您已如[必要條件](#prerequisites)所述安裝 *Azure PowerShell*。 然後使用下列命令登入 Azure 訂用帳戶並遵循畫面上的指示操作：
+開啟 PowerShell，確定您已如 [必要條件](#prerequisites)所述安裝 *Azure PowerShell* 。 然後使用下列命令登入 Azure 訂用帳戶並遵循畫面上的指示操作：
 
 ```PowerShell
 Connect-AzAccount
 ```
 
 > [!NOTE]
-> 如果您的組織有多個訂用帳戶，您可能需要指定 SubscriptionId 和 Tenant 引數。 在 [Connect-AzAccount documentation](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) 中尋找詳細資料。
+> 如果您的組織有多個訂用帳戶，您可能需要指定 SubscriptionId 和 Tenant 引數。 在 [Connect-AzAccount documentation](/powershell/module/az.accounts/connect-azaccount) 中尋找詳細資料。
 
 切換至 `azure-remote-rendering\Scripts` 目錄，然後執行轉換指令碼：
 
@@ -175,6 +184,13 @@ Connect-AzAccount
 ```
 
 您應該會看到如下的結果：![Conversion.ps1](./media/successful-conversion.png)
+
+### <a name="3-conversion-via-api-calls"></a>3.透過 API 呼叫轉換
+
+C# 和 C++ API 都會提供用來與服務互動的進入點：
+* [C# AzureFrontend.StartAssetConversionAsync()](/dotnet/api/microsoft.azure.remoterendering.azurefrontend.startassetconversionasync)
+* [C++ AzureFrontend::StartAssetConversionAsync()](/cpp/api/remote-rendering/azurefrontend#startassetconversionasync)
+
 
 ## <a name="insert-new-model-into-quickstart-sample-app"></a>將新模型插入快速入門範例應用程式
 
@@ -190,7 +206,7 @@ Connect-AzAccount
 
 1. 移至 [Azure 入口網站](https://www.portal.azure.com)
 1. 按一下 [儲存體帳戶] 資源：![反白顯示所選儲存體帳戶資源的螢幕擷取畫面。](./media/portal-storage-accounts.png)
-1. 在下列畫面中，按一下左面板中的 [儲存體總管]，然後在 *arroutput* Blob 儲存體容器中尋找您的輸出模型 (*arrAsset* 檔案)。 以滑鼠右鍵按一下檔案，然後從快顯功能表選取 [取得共用存取簽章]：![簽章存取](./media/portal-storage-explorer.png)
+1. 在下列畫面中，按一下左面板中的 [儲存體總管]，然後在 *arroutput* Blob 儲存體容器中尋找您的輸出模型 ( *arrAsset* 檔案)。 以滑鼠右鍵按一下檔案，然後從快顯功能表選取 [取得共用存取簽章]：![簽章存取](./media/portal-storage-explorer.png)
 1. 新畫面隨即開啟，您可在其中選取到期日。 按下 [建立]，然後複製下一個對話方塊中所顯示的 URI。 這個新的 URI 會取代指令碼所建立的暫存 URI。
 
 ## <a name="next-steps"></a>後續步驟

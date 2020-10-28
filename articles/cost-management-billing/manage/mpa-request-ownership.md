@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 10/19/2020
 ms.author: banders
-ms.openlocfilehash: bb2a58b76445f2cfd14a905de1fb66dbff3eee7e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: aaa94f66f1b0441e025013369b3b674d799d4847
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371009"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92203257"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>將 Azure 訂用帳戶的帳單擁有權交給您的 MPA 帳戶
 
@@ -21,15 +21,15 @@ ms.locfileid: "91371009"
 
 這項功能僅適用於已認證為 [Azure 專家 MSP](https://partner.microsoft.com/membership/azure-expert-msp) 的 CSP 直接帳單合作夥伴。 這受限於 Microsoft 控管和原則，而且可能需要對特定客戶進行檢閱與核准。
 
-若要要求帳單擁有權，您必須擁有 [全域管理員] 或 [管理員代理人] 角色。 若要深入了解，請參閱[合作夥伴中心 - 指派使用者角色和權限](https://docs.microsoft.com/partner-center/permissions-overview)。
+若要要求帳單擁有權，您必須擁有 [全域管理員] 或 [管理員代理人] 角色。 若要深入了解，請參閱[合作夥伴中心 - 指派使用者角色和權限](/partner-center/permissions-overview)。
 
 本文適用於 Microsoft 合作夥伴合約的計費帳戶。 針對雲端解決方案提供者 (CSP) 建立這些帳戶，以便在新的商務體驗中管理其客戶的帳單。 新的體驗僅適用於下列合作夥伴：至少有一個客戶已接受 Microsoft 客戶合約 (MCA) 且具有 Azure 方案。 [檢查您是否有 Microsoft 合作夥伴合約的存取權](#check-access-to-a-microsoft-partner-agreement)。
 
 ## <a name="prerequisites"></a>必要條件
 
-1. 與客戶建立[經銷商關係](https://docs.microsoft.com/partner-center/request-a-relationship-with-a-customer)。 檢查 [CSP 地區授權概觀](https://docs.microsoft.com/partner-center/regional-authorization-overview)，以確保客戶和合作夥伴租用戶都位於相同的授權區域中。
-1. [確認客戶已接受 Microsoft 客戶合約](https://docs.microsoft.com/partner-center/confirm-customer-agreement)。
-1. 為客戶設定 [Azure 方案](https://docs.microsoft.com/partner-center/purchase-azure-plan)。 如果客戶透過多個轉銷商購買，您必須為每個客戶與轉銷商組合設定 Azure 方案。
+1. 與客戶建立[經銷商關係](/partner-center/request-a-relationship-with-a-customer)。 檢查 [CSP 地區授權概觀](/partner-center/regional-authorization-overview)，以確保客戶和合作夥伴租用戶都位於相同的授權區域中。
+1. [確認客戶已接受 Microsoft 客戶合約](/partner-center/confirm-customer-agreement)。
+1. 為客戶設定 [Azure 方案](/partner-center/purchase-azure-plan)。 如果客戶透過多個轉銷商購買，您必須為每個客戶與轉銷商組合設定 Azure 方案。
 
 ## <a name="request-billing-ownership"></a>要求帳單擁有權
 
@@ -115,7 +115,7 @@ ms.locfileid: "91371009"
 
 ### <a name="azure-resources-transfer"></a>Azure 資源轉移
 
-訂用帳戶中的所有資源 (例如 VM、磁碟和網站) 都會轉移。
+訂用帳戶中的所有資源 (例如 VM、磁碟和網站) 都會轉移。 傳輸時，會保留訂用帳戶識別碼和資源識別碼。 
 
 ### <a name="azure-marketplace-products-transfer"></a>Azure Marketplace 產品轉移
 
@@ -123,13 +123,13 @@ ms.locfileid: "91371009"
 
 ### <a name="azure-reservations-transfer"></a>Azure 保留轉移
 
-Azure 保留不會自動隨著訂用帳戶轉移。 您可以保有 EA 中的保留以用於其他訂用帳戶，或[取消保留](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations)，讓合作夥伴可在 CSP 中重新購買。
+Azure 保留不會自動隨著訂用帳戶轉移。 您可以保有 EA 中的保留以用於其他訂用帳戶，或[取消保留](../reservations/exchange-and-refund-azure-reservations.md)，讓合作夥伴可在 CSP 中重新購買。
 
 ### <a name="access-to-azure-services"></a>對 Azure 服務的存取
 
 使用 [Azure 角色型存取控制 (Azure RBAC)](../../role-based-access-control/overview.md) 為現有使用者、群組或服務主體指派的存取權，在轉換期間不受影響。 合作夥伴不會取得訂用帳戶的任何新 Azure RBAC 存取權。
 
-合作夥伴應該與客戶合作，以取得訂用帳戶的存取權。 合作夥伴必須取得[代表的管理員 - AOBO](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) 或 [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider) 存取權才能開啟支援票證。
+合作夥伴應該與客戶合作，以取得訂用帳戶的存取權。 合作夥伴必須取得[代表的管理員 - AOBO](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) 或 [Azure Lighthouse](../../lighthouse/concepts/cloud-solution-provider.md) 存取權才能開啟支援票證。
 
 ### <a name="azure-support-plan"></a>Azure 支援方案
 
@@ -155,13 +155,13 @@ SaaS 產品不會隨著訂用帳戶一起轉移。 請要求使用者[連絡 Azu
 
 所移轉 Azure 訂用帳戶的目錄必須符合在建立 CSP 關聯性時所選取的客戶目錄。
 
-如果這兩個目錄不相符，就無法移轉訂用帳戶。 您必須藉由選取 Azure 訂用帳戶的目錄來與客戶建立新的 CSP 轉銷商關係，或變更 Azure 訂用帳戶的目錄以符合客戶 CSP 關聯性目錄。 如需詳細資訊，請參閱[將現有的訂用帳戶關聯至您的 Azure AD 目錄](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory#to-associate-an-existing-subscription-to-your-azure-ad-directory)。
+如果這兩個目錄不相符，就無法移轉訂用帳戶。 您必須藉由選取 Azure 訂用帳戶的目錄來與客戶建立新的 CSP 轉銷商關係，或變更 Azure 訂用帳戶的目錄以符合客戶 CSP 關聯性目錄。 如需詳細資訊，請參閱[將現有的訂用帳戶關聯至您的 Azure AD 目錄](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory)。
 
-### <a name="ea-subscription-in-the-non-orgnization-directory"></a>非組織目錄中的 EA 訂用帳戶
+### <a name="ea-subscription-in-the-non-organization-directory"></a>非組織目錄中的 EA 訂用帳戶
 
 只要目錄與 CSP 有轉銷商關係，就可以傳送非組織目錄中的 EA 訂用帳戶。 如果目錄沒有轉銷商關聯性，您必須確定目錄中的組織使用者為可以接受合作夥伴關係的「全域管理員」。 使用者名稱的網域名稱部分必須是初始預設網域名稱 "[domain name]. onmicrosoft.com" 或已驗證的非同盟自訂網域名稱，例如 "contoso.com"。  
 
-若要將新的使用者新增至目錄，請參閱[快速入門：將新的使用者新增至 Azure Active Directory 以將新的使用者新增至 AAD 目錄](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory)。
+若要將新的使用者新增至目錄，請參閱[快速入門：將新的使用者新增至 Azure Active Directory 以將新的使用者新增至目錄](../../active-directory/fundamentals/add-users-azure-active-directory.md)。
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>檢查 Microsoft 合作夥伴合約的存取權
 
@@ -174,4 +174,4 @@ SaaS 產品不會隨著訂用帳戶一起轉移。 請要求使用者[連絡 Azu
 ## <a name="next-steps"></a>後續步驟
 
 * Azure 訂用帳戶的帳單擁有權已轉移給您。 請在 [Azure入口網站](https://portal.azure.com)中追蹤這些訂用帳戶的費用。
-* 與客戶合作，以取得已轉移 Azure 訂用帳戶的存取權。 [使用 Azure 入口網站新增或移除 Azure 角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
+* 與客戶合作，以取得已轉移 Azure 訂用帳戶的存取權。 [使用 Azure 入口網站新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)。

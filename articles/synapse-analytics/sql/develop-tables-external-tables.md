@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6c76fcc0fefdf8aa3ae97a4c131481f7ea6ada81
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a9bb3ac7d3028937a422f2cd94aca4f4f4f41b58
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288846"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92167530"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>搭配 Synapse SQL 使用外部資料表
 
@@ -165,6 +165,8 @@ WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yel
 
 ### <a name="syntax-for-create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT 語法
 
+#### <a name="sql-pool"></a>[SQL 集區](#tab/sql-pool)
+
 ```syntaxsql
 -- Create an external file format for PARQUET files.  
 CREATE EXTERNAL FILE FORMAT file_format_name  
@@ -192,6 +194,40 @@ WITH (
     | Encoding = {'UTF8' | 'UTF16'}
 }
 ```
+
+#### <a name="sql-on-demand"></a>[SQL 隨選](#tab/sql-on-demand)
+
+```syntaxsql
+-- Create an external file format for PARQUET files.  
+CREATE EXTERNAL FILE FORMAT file_format_name  
+WITH (  
+    FORMAT_TYPE = PARQUET  
+    [ , DATA_COMPRESSION = {  
+        'org.apache.hadoop.io.compress.SnappyCodec'  
+      | 'org.apache.hadoop.io.compress.GzipCodec'      }  
+    ]);  
+
+--Create an external file format for DELIMITED TEXT files
+CREATE EXTERNAL FILE FORMAT file_format_name  
+WITH (  
+    FORMAT_TYPE = DELIMITEDTEXT  
+    [ , DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec' ]
+    [ , FORMAT_OPTIONS ( <format_options> [ ,...n  ] ) ]  
+    );  
+
+<format_options> ::=  
+{  
+    FIELD_TERMINATOR = field_terminator  
+    | STRING_DELIMITER = string_delimiter
+    | First_Row = integer
+    | USE_TYPE_DEFAULT = { TRUE | FALSE }
+    | Encoding = {'UTF8' | 'UTF16'}
+    | PARSER_VERSION = {'parser_version'}
+}
+```
+
+---
+
 
 ### <a name="arguments-for-create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT 引數
 
@@ -245,6 +281,8 @@ DELIMITEDTEXT 檔案格式類型支援下列壓縮方法：
 
 - DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec'
 
+PARSER_VERSION = 'parser_version' 指定讀取檔案時所要使用的剖析器版本。 請檢查 [OPENROWSET 引數](develop-openrowset.md#arguments)中的 PARSER_VERSION 引數以取得詳細資料。
+
 ### <a name="example-for-create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT 範例
 
 下列範例會建立普查檔案的外部檔案格式：
@@ -285,7 +323,7 @@ column_name <data_type>
 
 要建立之資料表名稱的第一到第三部分。 針對外部資料表，SQL 隨選只會儲存資料表中繼資料。 不會在 SQL 隨選中移動或儲存任何實際資料。
 
-<column_definition>, ...*n* ]
+<column_definition>, ... *n* ]
 
 CREATE EXTERNAL TABLE 支援設定資料行名稱、資料類型、可 NULL 性和定序功能。 您無法在外部資料表上使用 DEFAULT CONSTRAINT。
 
@@ -294,7 +332,7 @@ CREATE EXTERNAL TABLE 支援設定資料行名稱、資料類型、可 NULL 性�
 
 從 Parquet 檔案讀取時，您只能指定要讀取的資料行，並略過其餘部分。
 
-LOCATION = '*folder_or_filepath*'
+LOCATION = ' *folder_or_filepath* '
 
 指定位於 Azure Blob 儲存體中之實際資料的資料夾或檔案路徑，以及檔案名稱。 位置會從根資料夾開始。 根資料夾是在外部資料來源中指定的資料位置。
 
@@ -351,7 +389,7 @@ SELECT TOP 1 * FROM census_external_table
 
 - 您必須至少擁有[建立權限](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2&preserve-view=true)，才能在 SQL 集區或 SQL OD 上建立和查詢外部資料表
 
-- 與 ADLS Gen2 帳戶相關聯的連結服務**必須具有檔案的存取權**。 例如，如果連結的服務驗證機制是受控識別，則工作區受控識別必須至少有儲存體帳戶的儲存體 Blob 讀者權限
+- 與 ADLS Gen2 帳戶相關聯的連結服務 **必須具有檔案的存取權** 。 例如，如果連結的服務驗證機制是受控識別，則工作區受控識別必須至少有儲存體帳戶的儲存體 Blob 讀者權限
 
 從 [資料] 面板中，選取想建立外部資料表的來源檔案：
 > [!div class="mx-imgBorder"]

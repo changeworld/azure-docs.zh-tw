@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: c659af83034a2406449e586723341e1ae535934f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee5927e19dfb6864d7edcde9dceadfd744d7ddbf
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88525355"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92126613"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>教學課程：Azure Active Directory 與 Small Improvements 整合
 
@@ -61,7 +61,7 @@ Small Improvements 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Small Improvements**，從結果面板中選取 **Small Improvements**，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Small Improvements** ，從結果面板中選取 **Small Improvements** ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Small Improvements](common/search-new-app.png)
 
@@ -106,7 +106,7 @@ Small Improvements 與 Azure AD 整合提供下列優點：
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<subdomain>.small-improvements.com`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Small Improvements 客戶支援小組](mailto:support@small-improvements.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Small Improvements 客戶支援小組](mailto:support@small-improvements.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
@@ -128,15 +128,15 @@ Small Improvements 與 Azure AD 整合提供下列優點：
 
 1. 在主要儀表板頁面上，按一下左側的 [系統管理]  按鈕。
 
-    ![設定單一登入](./media/smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
+    ![此螢幕擷取畫面顯示選取的 [管理] 按鈕。](./media/smallimprovements-tutorial/tutorial_smallimprovements_06.png) 
 
 1. 按一下 [整合] 區段的 [SAML SSO] 按鈕。
 
-    ![設定單一登入](./media/smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
+    ![此螢幕擷取畫面顯示在 [整合] 中選取的 [SAML SSO] 圖示。](./media/smallimprovements-tutorial/tutorial_smallimprovements_07.png) 
 
 1. 在 [SSO 設定] 頁面上，執行下列步驟：
 
-    ![設定單一登入](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
+    ![此螢幕擷取畫面顯示 [SSO 設定] 頁面，您可以在其中輸入所述的值。](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
 
     a. 在 [HTTP Endpoint] \(HTTP 端點\)  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
 
@@ -164,7 +164,7 @@ Small Improvements 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -211,21 +211,21 @@ Small Improvements 與 Azure AD 整合提供下列優點：
 
 1. 按一下 [使用者管理] 區段的 [使用者目錄]  按鈕。
 
-    ![建立 Azure AD 測試使用者](./media/smallimprovements-tutorial/tutorial_smallimprovements_10.png) 
+    ![此螢幕擷取畫面顯示從 [管理概觀] 選取的 [使用者目錄]。](./media/smallimprovements-tutorial/tutorial_smallimprovements_10.png) 
 
 1. 按一下 [新增使用者]  。
 
-    ![建立 Azure AD 測試使用者](./media/smallimprovements-tutorial/tutorial_smallimprovements_11.png) 
+    ![此螢幕擷取畫面顯示 [新增使用者] 按鈕。](./media/smallimprovements-tutorial/tutorial_smallimprovements_11.png) 
 
 1. 在 [新增使用者]  對話方塊上，執行下列步驟： 
 
-    ![建立 Azure AD 測試使用者](./media/smallimprovements-tutorial/tutorial_smallimprovements_12.png)
+    ![此螢幕擷取畫面顯示 [新增使用者] 對話方塊，您可以在其中輸入所述的值。](./media/smallimprovements-tutorial/tutorial_smallimprovements_12.png)
 
-    a. 輸入使用者的**名字**，例如 **Britta**。
+    a. 輸入使用者的 **名字** ，例如 **Britta** 。
 
-    b. 輸入使用者的**姓氏**，例如 **Simon**。
+    b. 輸入使用者的 **姓氏** ，例如 **Simon** 。
 
-    c. 輸入使用者的**電子郵件**，例如 **brittasimon@contoso.com** 。
+    c. 輸入使用者的 **電子郵件** ，例如 **brittasimon@contoso.com** 。
 
     d. 您也可以選擇在 [傳送通知電子郵件]  方塊中，輸入您個人的訊息。 如果您不想傳送通知，則取消選取此核取方塊。
 

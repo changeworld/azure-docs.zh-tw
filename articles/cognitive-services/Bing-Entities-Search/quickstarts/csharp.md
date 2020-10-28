@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 05/08/2020
+ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 131c282ab61f04ffa94921c2816886a35ea4b7ac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 99f2197732a332e860af421f46d1049c2388043c
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88936821"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221225"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>快速入門：使用 C# 將搜尋要求傳送至 Bing 實體搜尋 REST API
 
@@ -25,24 +25,23 @@ ms.locfileid: "88936821"
 雖然此應用程式是以 C# 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [Visual Studio 2017 或更新版本](https://www.visualstudio.com/downloads/)的任何版本。
-
-- [Json.NET](https://www.newtonsoft.com/json) 架構 (以 NuGet 套件形式提供)。 在 Visual Studio 中安裝 NuGet 套件：
-
-   1. 以滑鼠右鍵按一下 [方案總管] 中的專案。
-   2. 選取 [管理 NuGet 套件]。
-   3. 搜尋並選取 Newtonsoft.Json，然後安裝此套件。
-
-- 如果您使用 Linux/MacOS，則可以使用 [Mono](https://www.mono-project.com/) 來執行此應用程式。
+- 或者，如果您使用的是 Linux 或 MacOS，則可以使用 [Visual Studio Code](https://code.visualstudio.com/) 和 [.NET Core](/dotnet/core/install/macos) 來遵循此快速入門
+- [免費的 Azure 帳戶](https://azure.microsoft.com/free/dotnet)
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>建立專案並將其初始化
 
-1. 在 Visual Studio 中建立新的 C# 主控台解決方案。 然後將下列命名空間新增至主要程式碼檔案：
+1. 在 Visual Studio 中建立新的 C# 主控台解決方案。 
+1. 新增 [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) NuGet 套件。
+    1. 以滑鼠右鍵按一下 [方案總管] 中的專案。
+    2. 選取 [管理 NuGet 套件]。
+    3. 搜尋並選取 Newtonsoft.Json，然後安裝此套件。
+1. 然後將下列命名空間新增至主要程式碼檔案：
     
     ```csharp
     using Newtonsoft.Json;

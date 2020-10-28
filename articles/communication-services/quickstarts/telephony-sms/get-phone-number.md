@@ -9,12 +9,12 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: a9c33fad6d376c2f568f4eefbb0379486b5c40f3
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: cff39f93f9caddfdbe48788f14b62642a373e2bf
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044763"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148189"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站取得電話號碼
 
@@ -39,54 +39,54 @@ ms.locfileid: "92044763"
 
 :::image type="content" source="../media/manage-phone-azure-portal-phone-page.png" alt-text="顯示通訊服務資源主頁面的螢幕擷取畫面。":::
 
-按 [`Get`] 按鈕以啟動精靈。 [`Phone numbers`] 刀鋒視窗上的精靈將逐步引導您完成一系列的問題，協助您選擇最適合您案例的電話號碼。 
+按 [取得] 按鈕以啟動精靈。 [電話號碼] 刀鋒視窗上的精靈將逐步引導您完成一系列的問題，協助您選擇最適合您案例的電話號碼。 
 
-首先，您必須選擇您想要佈建電話號碼的 `Country/region`。 選取國家/地區之後，您必須選取最能滿足您需求的 `use case`。 
+首先，您必須選擇您想要佈建電話號碼的 [國家/區域]。 選取國家/區域之後，您必須選取最能滿足您需求的 [使用案例]。 
 
 :::image type="content" source="../media/manage-phone-azure-portal-get-numbers.png" alt-text="顯示通訊服務資源主頁面的螢幕擷取畫面。":::
 
-### <a name="select-a-phone-plan"></a>選取電話方案
+### <a name="select-your-phone-number-features"></a>選取您的電話號碼功能
 
-選取電話方案分成兩個步驟： 
+設定電話號碼分為兩個步驟： 
 
 1. 選取[號碼類型](../../concepts/telephony-sms/plan-solution.md#phone-number-types-in-azure-communication-services)
-2. 選取[方案](../../concepts/telephony-sms/plan-solution.md#phone-number-plans-in-azure-communication-services)
+2. 選取[號碼功能](../../concepts/telephony-sms/plan-solution.md#phone-number-features-in-azure-communication-services)
 
-我們目前提供兩種號碼類型：`Geographic` 和 `Toll-free`。 選取號碼類型後，您會看到幾個可供選擇的方案。
+您可以選取的電話號碼類型有兩種： **地理** 和 **免付費電話** 。 當您選取了號碼類型時，就可以選擇該功能。
 
-在我們的範例中，我們已選擇 `Toll-free` 號碼類型及 `Outbound calling` 和 `Inbound and Outbound SMS` 方案。
+在我們的範例中，我們選取了 [免付費電話] 號碼類型，以及 [撥出] 和 [傳入和傳出簡訊] 功能。
 
 :::image type="content" source="../media/manage-phone-azure-portal-select-plans.png" alt-text="顯示通訊服務資源主頁面的螢幕擷取畫面。":::
 
-從這裡按一下頁面底部的 [`Next: Numbers`] 按鈕，以自訂您想要佈建的電話號碼。
+從這裡按 [下一步：號碼] 按鈕 (位於頁面底部)，以自訂您想要佈建的電話號碼。
 
 ### <a name="customizing-phone-numbers"></a>自訂電話號碼
 
-在 [`Numbers`] 頁面上，您將自訂想要佈建的電話號碼。
+在 [號碼] 頁面上，您將自訂想要佈建的電話號碼。
 
 :::image type="content" source="../media/manage-phone-azure-portal-select-numbers-start.png" alt-text="顯示通訊服務資源主頁面的螢幕擷取畫面。":::
 
 > [!NOTE]
-> 本快速入門會說明 `Toll-free` 號碼類型的自訂流程。 如果您已選擇 `Geographic` 號碼類型，可能會有稍微不同的體驗，但最終結果會是相同的。
+> 本快速入門會說明 **免付費電話** 號碼類型的自訂流程。 如果您已選擇 **地理** 號碼類型，可能會有稍微不同的體驗，但最終結果會是相同的。
 
-從可用的區碼清單中選擇 [`Area code`]，然後輸入您想要佈建的數量，再按一下 [`Search`]，尋找符合您所選需求的號碼。 符合您需求的電話號碼將會連同其每月費用一起顯示。
+從可用的區碼清單中選擇 [區碼]，然後輸入您想要佈建的數量，再按一下 [搜尋]，尋找符合您所選需求的號碼。 符合您需求的電話號碼將會連同其每月費用一起顯示。
 
 :::image type="content" source="../media/manage-phone-azure-portal-found-numbers.png" alt-text="顯示通訊服務資源主頁面的螢幕擷取畫面。":::
 
 > [!NOTE]
-> 可用性取決於您所選取的號碼類型、位置和方案。
+> 可用性取決於您所選取的號碼類型、位置和功能。
 > 在交易到期之前，號碼會保留一小段時間。 如果交易過期，您將需要重新選取號碼。
 
-若要檢視購買摘要並下單，請按一下頁面底部的 [`Next: Summary`] 按鈕。
+若要檢視購買摘要並下單，請按 [下一步：摘要] 按鈕 (位於頁面底部)。
 
 ### <a name="place-order"></a>下單
 
 摘要頁面將會檢視用來佈建電話號碼的號碼類型、功能、電話號碼及每月費用總計。
 
 > [!NOTE]
-> 顯示的價格是**每月週期性費用**，其中涵蓋您租用所選電話號碼的費用。 此檢視中未包含**隨用隨付的費用**，此費用會在您撥打或接聽來電時產生。 您可以在[這裡](../../concepts/pricing.md)取得價格清單。 這些費用取決於號碼類型和撥打電話的目的地。 例如，從西雅圖地區號碼撥打到紐約中的地區號碼，與從相同號碼撥打到英國行動電話號碼的每分鐘價格可能會有所不同。
+> 顯示的價格是 **每月週期性費用** ，其中涵蓋您租用所選電話號碼的費用。 此檢視中未包含 **隨用隨付的費用** ，此費用會在您撥打或接聽來電時產生。 您可以在[這裡](../../concepts/pricing.md)取得價格清單。 這些費用取決於號碼類型和撥打電話的目的地。 例如，從西雅圖地區號碼撥打到紐約中的地區號碼，與從相同號碼撥打到英國行動電話號碼的每分鐘價格可能會有所不同。
 
-最後，按一下頁面底部的 [`Place order`] 進行確認。
+最後，按一下頁面底部的 [下單] 進行確認。
 
 :::image type="content" source="../media/manage-phone-azure-portal-get-numbers-summary.png" alt-text="顯示通訊服務資源主頁面的螢幕擷取畫面。":::
 
@@ -103,12 +103,14 @@ ms.locfileid: "92044763"
 > [!NOTE]
 > 可能需要幾分鐘的時間，已佈建的號碼才會顯示在此頁面上。
 
-### <a name="customizing-phone-number-features"></a>自訂電話號碼功能
-在 `Numbers` 頁面上，您可以按一下您想要自訂方案的號碼來選取電話號碼。
+
+### <a name="customizing-phone-numbers"></a>自訂電話號碼
+
+在 [號碼] 頁面上，您可以選取要設定的電話號碼。
 
 :::image type="content" source="../media/manage-phone-azure-portal-capability-update.png" alt-text="顯示通訊服務資源主頁面的螢幕擷取畫面。":::
 
-從可用呼叫和 SMS 功能的清單中選取功能，然後按一下 `Confirm` 以套用選項。
+從可用的選項中選取功能，然後按一下 [確認] 以套用您的選取項目。
 
 ## <a name="troubleshooting"></a>疑難排解
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 10803a16a2ceb84e084070d899b50360446710fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55ab6b339d6cb71bf46340e458bcc93cd73e2ba9
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548919"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108655"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>教學課程：Azure Active Directory 與 QuickHelp 整合
 
@@ -63,7 +63,7 @@ QuickHelp 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **QuickHelp**，從結果面板中選取 [QuickHelp]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **QuickHelp** ，從結果面板中選取 [QuickHelp]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 QuickHelp](common/search-new-app.png)
 
@@ -108,9 +108,9 @@ QuickHelp 與 Azure AD 整合提供下列優點：
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，輸入 URL：`https://auth.quickhelp.com`
 
     > [!NOTE]
-    > [登入 URL] 的值不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡組織的 QuickHelp 管理員或您的 BrainStorm Client Success Manager 來取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > [登入 URL] 的值不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡組織的 QuickHelp 管理員或您的 BrainStorm Client Success Manager 來取得此值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -130,17 +130,17 @@ QuickHelp 與 Azure AD 整合提供下列優點：
 
 2. 在頂端的功能表中，按一下 [系統管理員]  。
    
-    ![設定單一登入][21]
+    ![此螢幕擷取畫面顯示 [集體討論] 的 [管理] 功能表項目。][21]
 
 3. 在 [QuickHelp 系統管理員]  功能表上，按一下 [設定]  。
    
-    ![設定單一登入][22]
+    ![此螢幕擷取畫面顯示從 [QuickHelp 管理員] 功能表選取的設定。][22]
 
 4. 按一下 [驗證設定]  。
 
 5. 在 [驗證設定]  頁面上，執行下列步驟
    
-    ![設定單一登入][23]
+    ![此螢幕擷取畫面顯示 [驗證設定] 頁面，您可以在其中輸入所述的值。][23]
    
     a. 對 [SSO 類型]  選取 [WSFederation]  。
    
@@ -170,7 +170,7 @@ QuickHelp 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 brittasimon@yourcompanydomain.extension。 例如， BrittaSimon@contoso.com
 

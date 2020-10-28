@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 05/22/2020
+ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-csharp
-ms.openlocfilehash: 2760e6a46801871a25ecbe23a2400211ae312650
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f87cf1ed9194ff74f85dcd11ed398824750ef696
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88921693"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92217281"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>快速入門：使用 Bing Web 搜尋 REST API 和 C# 來搜尋 Web
 
@@ -24,19 +24,19 @@ ms.locfileid: "88921693"
 
 本快速入門中的這個範例程式僅使用 .NET Core 類別。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 以下是執行本快速入門之前的幾個必備項目：
 
 * Windows：[Visual Studio 2017 或更新版本](https://www.visualstudio.com/downloads/)
-* Linux/macOS：[Mono](https://www.mono-project.com/)  
-* 訂用帳戶金鑰
+* Linux/macOS：[Visual Studio Code](https://code.visualstudio.com/) 和 [.NET Core](https://dotnet.microsoft.com/download)
+* [免費的 Azure 訂用帳戶](https://azure.microsoft.com/free/dotnet)
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-declare-dependencies"></a>建立專案並宣告相依性
 
-在 Visual Studio 或 Mono 中建立新專案。 使用下列程式碼來匯入必要的命名空間和類型：
+在 Visual Studio 或 VS Code 中建立主控台專案。 使用下列程式碼來匯入必要的命名空間和類型：
 
 ```csharp
 using System;

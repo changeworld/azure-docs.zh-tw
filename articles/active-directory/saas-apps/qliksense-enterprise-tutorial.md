@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 5344354c05547d6d2a5e2762c70a97cc4222c464
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4995f813bbfe7ef368f83085cdd61ab97fa330e8
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552334"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92108519"
 ---
 # <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>教學課程：整合 Qlik Sense Enterprise 與 Azure Active Directory
 
@@ -51,7 +51,7 @@ ms.locfileid: "88552334"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Qlik Sense Enterprise**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Qlik Sense Enterprise** 。
 1. 從結果面板中選取 [Qlik Sense Enterprise]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
@@ -125,7 +125,7 @@ ms.locfileid: "88552334"
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組]  對話方塊中，從使用者清單選取 **Britta Simon**，然後按一下畫面底部的 [選取]  按鈕。
+1. 在 [使用者和群組]  對話方塊中，從使用者清單選取 **Britta Simon** ，然後按一下畫面底部的 [選取]  按鈕。
 1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
 1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 
@@ -136,7 +136,7 @@ ms.locfileid: "88552334"
     > [!NOTE]
     > 將 IdP 中繼資料上傳至 Qlik Sense 伺服器之前，必須先編輯此檔案才能移除資訊，以確保 Azure AD 與 Qlik Sense 伺服器之間的運作正常。
 
-    ![QlikSense][qs24]
+    ![此螢幕擷取畫面顯示具有同盟中繼資料 XML 檔案的 Visual Studio Code 視窗。][qs24]
 
     a. 在文字編輯器中開啟從 Azure 入口網站下載的 FederationMetaData.xml 檔案。
 
@@ -150,19 +150,19 @@ ms.locfileid: "88552334"
 
 3. 在 QMC 中，按一下 [虛擬Proxy]  功能表項目。
 
-    ![QlikSense][qs6]
+    ![此螢幕擷取畫面顯示從 [設定系統] 選取的虛擬 Proxy。][qs6]
 
 4. 按一下畫面底部的 [新建]  按鈕。
 
-    ![QlikSense][qs7]
+    ![此螢幕擷取畫面顯示 [新建] 選項。][qs7]
 
 5. 虛擬 Proxy 編輯畫面隨即出現。  畫面右邊的功能表會顯示組態選項。
 
-    ![QlikSense][qs9]
+    ![此螢幕擷取畫面顯示從 [屬性] 選取的識別。][qs9]
 
 6. 勾選 [識別] 功能表選項後，輸入 Azure 虛擬 Proxy 組態的識別資訊。
 
-    ![QlikSense][qs8]  
+    ![此螢幕擷取畫面顯示 [編輯虛擬 Proxy 識別] 區段，您可以在其中輸入所述的值。][qs8]  
 
     a. [說明]  欄位是虛擬 Proxy 組態的易記名稱。  輸入說明的值。
 
@@ -174,7 +174,7 @@ ms.locfileid: "88552334"
 
 7. 按一下 [驗證] 功能表選項，讓它立即可見。  [驗證] 畫面隨即出現。
 
-    ![QlikSense][qs10]
+    ![此螢幕擷取畫面顯示 [編輯虛擬 Proxy 驗證] 區段，您可以在其中輸入所述的值。][qs10]
 
     a. [匿名存取模式]  下拉式清單可讓您決定匿名使用者是否可透過虛擬 Proxy 存取 Qlik Sense。  預設選項是 [沒有匿名使用者]。
 
@@ -184,71 +184,71 @@ ms.locfileid: "88552334"
 
     d. 在 [SAML 實體識別碼]  中，輸入與 [SAML 主機 URI] 欄位相同的值。
 
-    e. [SAML IdP 中繼資料]  是稍早在 [從 Azure AD 組態編輯同盟中繼資料]  區段中編輯的檔案。  **上傳 IdP 中繼資料之前，必須先編輯此檔案**才能移除資訊，以確保 Azure AD 與 Qlik Sense 伺服器之間的運作正常。  **如果檔案尚未進行編輯，請參閱上述指示。**  如果檔案已經過編輯，請按一下 [瀏覽] 按鈕，然後選取已編輯的中繼資料檔案，將它上傳至虛擬 Proxy 組態。
+    e. [SAML IdP 中繼資料]  是稍早在 [從 Azure AD 組態編輯同盟中繼資料]  區段中編輯的檔案。  **上傳 IdP 中繼資料之前，必須先編輯此檔案** 才能移除資訊，以確保 Azure AD 與 Qlik Sense 伺服器之間的運作正常。  **如果檔案尚未進行編輯，請參閱上述指示。**  如果檔案已經過編輯，請按一下 [瀏覽] 按鈕，然後選取已編輯的中繼資料檔案，將它上傳至虛擬 Proxy 組態。
 
-    f. 輸入 SAML 屬性的屬性名稱或結構描述參考，代表 Azure AD 將傳送至 Qlik Sense 伺服器的 **UserID**。  在設定後的 Azure 應用程式畫面中可取得結構描述參考資訊。  若要使用名稱屬性，請輸入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
+    f. 輸入 SAML 屬性的屬性名稱或結構描述參考，代表 Azure AD 將傳送至 Qlik Sense 伺服器的 **UserID** 。  在設定後的 Azure 應用程式畫面中可取得結構描述參考資訊。  若要使用名稱屬性，請輸入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
 
-    g. 輸入**使用者目錄**的值，此值會在使用者透過 Azure AD 向 Qlik Sense 伺服器進行驗證時附加至使用者。  硬式編碼值必須以**方括號 []** 括住。  若要使用 Azure AD SAML 判斷提示中傳送的屬性，請在此文字方塊中輸入屬性名稱 (**不需**方括號)。
+    g. 輸入 **使用者目錄** 的值，此值會在使用者透過 Azure AD 向 Qlik Sense 伺服器進行驗證時附加至使用者。  硬式編碼值必須以 **方括號 []** 括住。  若要使用 Azure AD SAML 判斷提示中傳送的屬性，請在此文字方塊中輸入屬性名稱 ( **不需** 方括號)。
 
-    h. [SAML 簽章演算法]  可設定虛擬 Proxy 組態的服務提供者 (在此例中是 Qlik Sense 伺服器) 憑證簽署。  如果 Qlik Sense 伺服器使用透過 Microsoft Enhanced RSA 和 AES 密碼編譯提供者產生的受信任憑證，請將 SAML 簽署演算法變更為 **SHA-256**。
+    h. [SAML 簽章演算法]  可設定虛擬 Proxy 組態的服務提供者 (在此例中是 Qlik Sense 伺服器) 憑證簽署。  如果 Qlik Sense 伺服器使用透過 Microsoft Enhanced RSA 和 AES 密碼編譯提供者產生的受信任憑證，請將 SAML 簽署演算法變更為 **SHA-256** 。
 
     i. [SAML 屬性對應] 區段可讓其他屬性 (如群組) 傳送到 Qlik Sense，以便用於安全性規則。
 
 8. 按一下 [負載平衡]  功能表選項，讓它立即可見。  [負載平衡] 畫面隨即出現。
 
-    ![QlikSense][qs11]
+    ![此螢幕擷取畫面顯示用於平衡負載的 [虛擬 Proxy] 編輯畫面，您可以在其中選取 [新增伺服器節點]。][qs11]
 
 9. 按一下 [新增伺服器節點]  按鈕，選取 Qlik Sense 為了達到負載平衡而會將工作階段傳送至的引擎節點，然後按一下 [新增]  按鈕。
 
-    ![QlikSense][qs12]
+    ![此螢幕擷取畫面顯示 [新增伺服器節點以達到負載平衡] 對話按鈕，您可以在其中新增伺服器。][qs12]
 
 10. 按一下 [進階] 功能表選項，讓它立即可見。 [進階] 畫面隨即出現。
 
-    ![QlikSense][qs13]
+    ![此螢幕擷取畫面顯示 [編輯虛擬 Proxy] 進階畫面。][qs13]
 
     [主機允許清單] 會識別在連線至 Qlik Sense 伺服器時所接受的主機名稱。  **輸入連接到 Qlik Sense 伺服器時使用者會指定的主機名稱。** 主機名稱是與 SAML 主機 uri 相同的值 (不含 https://)。
 
 11. 按一下 [套用]  按鈕。
 
-    ![QlikSense][qs14]
+    ![此螢幕擷取畫面顯示 [套用] 按鈕。][qs14]
 
 12. 按一下 [確定] 以接受警告訊息，該訊息指出將重新啟動連結至虛擬 Proxy 的 Proxy。
 
-    ![QlikSense][qs15]
+    ![此螢幕擷取畫面顯示 [將變更套用至虛擬 Proxy] 確認訊息。][qs15]
 
 13. 畫面右側會出現 [相關聯的項目] 功能表。  按一下 [Proxy]  功能表選項。
 
-    ![QlikSense][qs16]
+    ![此螢幕擷取畫面顯示從 [相關聯的項目] 選取的 Proxy。][qs16]
 
 14. Proxy 畫面隨即出現。  按一下底部的 [連結]  按鈕，將 Proxy 連結到虛擬 Proxy。
 
-    ![QlikSense][qs17]
+    ![此螢幕擷取畫面顯示 [連結] 按鈕。][qs17]
 
 15. 選取將會支援此虛擬 Proxy 連線的 Proxy 節點，然後按一下 [連結]  按鈕。  連結之後，Proxy 會列在相關聯的 Proxy 之下。
 
-    ![QlikSense][qs18]
+    ![此螢幕擷取畫面顯示 [選取 Proxy 服務]。][qs18]
   
-    ![QlikSense][qs19]
+    ![此螢幕擷取畫面顯示 [虛擬 Proxy 相關聯的項目] 對話方塊中相關聯的 Proxy。][qs19]
 
 16. 大約五到十秒後，[重新整理 QMC] 訊息會出現。  按一下 [重新整理 QMC]  按鈕。
 
-    ![QlikSense][qs20]
+    ![此螢幕擷取畫面顯示「您的工作階段已結束」訊息。][qs20]
 
 17. 當 QMC 重新整理時，按一下 [虛擬 Proxy]  功能表項目。 新的 SAML 虛擬 Proxy 項目會列在螢幕上的表格中。  按一下此虛擬 Proxy 項目。
 
-    ![QlikSense][qs51]
+    ![此螢幕擷取畫面顯示具有單一項目的虛擬 Proxy。][qs51]
 
 18. 畫面底部的 [下載 SP 中繼資料] 按鈕將會啟用。  按一下 [下載 SP 中繼資料]  按鈕，將中繼資料儲存至檔案。
 
-    ![QlikSense][qs52]
+    ![此螢幕擷取畫面顯示 [下載 SP 中繼資料] 按鈕。][qs52]
 
 19. 開啟 SP 中繼資料檔案。  觀察 **entityID** 項目和 **AssertionConsumerService** 項目。  這些值相當於 Azure AD 應用程式組態中的 [識別碼]  、[登入 URL]  和 [回覆 URL]  。 如果這些值不相符，請將其貼在 Azure AD 應用程式組態中的 [Qlik Sense Enterprise 網域與 URL]  區段，然後您應該在 Azure AD App 組態精靈中取代這些值。
 
-    ![QlikSense][qs53]
+    ![此螢幕擷取畫面顯示純文字編輯器，其中包含已標註 entityID 和 AssertionConsumerService 的 EntityDescriptor。][qs53]
 
 ### <a name="create-qlik-sense-enterprise-test-user"></a>建立 Qlik Sense Enterprise 測試使用者
 
-Qlik Sense Enterprise 支援 **Just-in-Time 佈建**，使用者會在使用 SSO 功能時自動新增至 Qlik Sense Enterprise 的「使用者」存放庫。 此外，用戶端可以使用 QMC 並建立 UDC (使用者目錄連接器)，從其選擇的 LDAP (例如 Active Directory 和其他) 預先填入 Qlik Sense Enterprise 中的使用者。
+Qlik Sense Enterprise 支援 **Just-in-Time 佈建** ，使用者會在使用 SSO 功能時自動新增至 Qlik Sense Enterprise 的「使用者」存放庫。 此外，用戶端可以使用 QMC 並建立 UDC (使用者目錄連接器)，從其選擇的 LDAP (例如 Active Directory 和其他) 預先填入 Qlik Sense Enterprise 中的使用者。
 
 ### <a name="test-sso"></a>測試 SSO
 

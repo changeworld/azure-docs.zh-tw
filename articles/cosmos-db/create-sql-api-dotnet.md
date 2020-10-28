@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 3b577127013252f03e7a617e7f2b9c8d2c4c9188
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 29fb509d72514a18a6554a381737bf9530b1dfc4
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570396"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92276291"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>快速入門：建置 .NET 主控台應用程式來管理 Azure Cosmos DB SQL API 資源
 
@@ -29,7 +29,7 @@ ms.locfileid: "91570396"
 
 開始使用適用於 .NET 的 Azure Cosmos DB SQL API 用戶端程式庫。 請依照此文件中的步驟安裝 .NET 套件、建置應用程式，並針對 Azure Cosmos DB 中儲存的資料嘗試使用基本 CRUD 作業的範例程式碼。 
 
-Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以使用 Azure Cosmos DB 快速地建立及查詢機碼/值、文件與圖形資料庫。 使用適用於 .NET 的 Azure Cosmos DB SQL API 用戶端程式庫來：
+Azure Cosmos DB 是 Microsoft 的快速 NoSQL 資料庫，可支援任何規模的開放式 API。 您可以使用 Azure Cosmos DB 快速地建立及查詢機碼/值、文件與圖形資料庫。 使用適用於 .NET 的 Azure Cosmos DB SQL API 用戶端程式庫來：
 
 * 建立 Azure Cosmos 資料庫與容器
 * 將範例資料新增至容器
@@ -49,7 +49,7 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 ### <a name="create-an-azure-cosmos-account"></a><a id="create-account"></a>建立 Azure Cosmos 帳戶
 
-如果您使用[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 選項來建立 Azure Cosmos 帳戶，則必須建立類型為 **SQL API** 的 Azure Cosmos DB 帳戶。 已為您建立 Azure Cosmos DB 測試帳戶。 您不需要明確建立帳戶，因此您可以略過此小節並移至下一小節。
+如果您使用 [免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 選項來建立 Azure Cosmos 帳戶，則必須建立類型為 **SQL API** 的 Azure Cosmos DB 帳戶。 已為您建立 Azure Cosmos DB 測試帳戶。 您不需要明確建立帳戶，因此您可以略過此小節並移至下一小節。
 
 如果您有自己的 Azure 訂用帳戶，或已建立免費訂用帳戶，您應該明確地建立 Azure Cosmos 帳戶。 下列程式碼會建立包含工作階段一致性的 Azure Cosmos 帳戶。 該帳戶會在 `South Central US` 與 `North Central US` 中複寫。  
 
@@ -129,11 +129,11 @@ dotnet add package Microsoft.Azure.Cosmos
 
 1. 瀏覽至 Azure Cosmos 帳戶。
 
-1. 開啟 [金鑰] 窗格，然後複製您帳戶的 **URI** 與**主索引鍵**。 在下一個步驟中，您會將 URI 和索引鍵值新增至環境變數。
+1. 開啟 [金鑰] 窗格，然後複製您帳戶的 **URI** 與 **主索引鍵** 。 在下一個步驟中，您會將 URI 和索引鍵值新增至環境變數。
 
 ### <a name="set-the-environment-variables"></a>設定環境變數
 
-在複製您帳戶的 **URI** 與**主索引鍵**後，請在執行應用程式的本機電腦上，將該字串儲存到新的環境變數中。 若要設定環境變數，請開啟主控台視窗，然後執行下列命令。 請務必取代 `<Your_Azure_Cosmos_account_URI>` 與 `<Your_Azure_Cosmos_account_PRIMARY_KEY>` 值。
+在複製您帳戶的 **URI** 與 **主索引鍵** 後，請在執行應用程式的本機電腦上，將該字串儲存到新的環境變數中。 若要設定環境變數，請開啟主控台視窗，然後執行下列命令。 請務必取代 `<Your_Azure_Cosmos_account_URI>` 與 `<Your_Azure_Cosmos_account_PRIMARY_KEY>` 值。
 
 **Windows**
 
@@ -165,7 +165,7 @@ export PrimaryKey = "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
 * 容器 
 * 項目
 
-若要了解有關不同實體的階層，請參閱[使用 Azure Cosmos DB 中的資料庫、容器和項目](databases-containers-items.md) \(部分機器翻譯\) 一文。 您將使用下列 .NET 類別與這些資源互動：
+若要了解有關不同實體的階層，請參閱[使用 Azure Cosmos DB 中的資料庫、容器和項目](account-databases-containers-items.md) \(部分機器翻譯\) 一文。 您將使用下列 .NET 類別與這些資源互動：
 
 * [CosmosClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclient?view=azure-dotnet&preserve-view=true) - 此類別提供適用於 Azure Cosmos DB 服務的用戶端邏輯表示法。 用戶端物件會用於設定及執行針對服務的要求。
 

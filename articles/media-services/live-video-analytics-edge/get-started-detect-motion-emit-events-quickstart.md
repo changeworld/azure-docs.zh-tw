@@ -3,12 +3,12 @@ title: 開始使用 IoT Edge 上的 Live Video Analytics - Azure
 description: 本快速入門說明如何在 IoT Edge 上開始使用 Live Video Analytics。 了解如何偵測即時影片串流中的動作。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 4975223255cb92c85c3117dbd44a64916054b590
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 2d426952e92951185c43b68266196a6764f4f601
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825934"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92125008"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>快速入門：開始使用 - IoT Edge 上的 Live Video Analytics
 
@@ -18,6 +18,10 @@ ms.locfileid: "91825934"
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/analyze-live-video/motion-detection.svg" alt-text="以動作偵測為基礎的 Live Video Analytics":::
+
+您可以觀看下列影片，其中包含如何在 IoT Edge 上開始使用即時影片分析的詳細步驟：
+
+<iframe src="https://www.microsoft.com/en-us/videoplayer/embed/RE4Hcax" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -102,7 +106,7 @@ RTSP 模擬器模組會在您執行 [Live Video Analytics 資源設定指令碼]
 若要列舉模組中的所有[圖表拓撲](media-graph-concept.md#media-graph-topologies-and-instances)：
 
 1. 在 Visual Studio Code 中，以滑鼠右鍵按一下 [lvaEdge] 模組，然後選取 [叫用模組直接方法]。
-1. 在出現的方塊中，輸入 *GraphTopologyList*。
+1. 在出現的方塊中，輸入 *GraphTopologyList* 。
 1. 複製下列 JSON 承載，然後將其貼到方塊中。 然後選取 Enter 鍵。
 
     ```

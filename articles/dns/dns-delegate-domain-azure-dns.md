@@ -1,18 +1,18 @@
 ---
 title: 教學課程：裝載您的網域和子網域 - Azure DNS
-description: 在本文中，您將了解如何設定 Azure DNS 以裝載 DNS 區域。
+description: 在本教學課程中，您將了解如何設定 Azure DNS 以裝載 DNS 區域。
 services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 207254164296d6ed3b0c412c4bf19322ca3ffc0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8f64ab3141459142def12a1758b0fe0a94ca432
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89077988"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282172"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>教學課程：在 Azure DNS 上裝載您的網域
 
@@ -54,7 +54,7 @@ ms.locfileid: "89077988"
     | **專案詳細資料：**  |  |  |
     | **資源群組**    | ContosoRG | 建立資源群組。 資源群組名稱在您選取的訂用帳戶中必須是唯一的。 資源群組的位置不會對 DNS 區域造成任何影響。 DNS 區域一定是「全域」位置，且不會顯示出來。 |
     | **執行個體詳細資料：** |  |  |
-    | **區域子系**        | 保持未核取 | 由於此區域**不是**[子區域](./tutorial-public-dns-zones-child.md)，因此您應該將其保留為未核取 |
+    | **區域子系**        | 保持未核取 | 由於此區域 **不是**[子區域](./tutorial-public-dns-zones-child.md)，因此您應該將其保留為未核取 |
     | **名稱**              | contoso.net | 父區域名稱的欄位      |
     | **位置**          | 美國東部 | 此欄位是根據在建立資源群組時所選取的位置而定  |
     
@@ -63,9 +63,9 @@ ms.locfileid: "89077988"
 
 在委派 DNS 區域給 Azure DNS 之前，您必須知道區域的名稱伺服器。 每次建立區域時，Azure DNS 都會配置某個集區中的名稱伺服器。
 
-1. 建立 DNS 區域之後，在 Azure 入口網站的 [我的最愛]**** 窗格中選取 [所有資源]****。 在 [所有資源]**** 頁面上，選取您的 DNS 區域。 如果您選取的訂用帳戶已有幾個資源，您可以在 [依名稱篩選]**** 方塊中輸入您的網域名稱，以輕鬆存取應用程式閘道。 
+1. 建立 DNS 區域之後，在 Azure 入口網站的 [我的最愛]  窗格中選取 [所有資源]  。 在 [所有資源]  頁面上，選取您的 DNS 區域。 如果您選取的訂用帳戶已有幾個資源，您可以在 [依名稱篩選]  方塊中輸入您的網域名稱，以輕鬆存取應用程式閘道。 
 
-1. 從 DNS 區域頁面中擷取名稱伺服器。 在此範例中，區域 contoso.net 已被指派名稱伺服器 *ns1-01.azure-dns.com*、*ns2-01.azure-dns.net*、*ns3-01.azure-dns.org* 和 *ns4-01.azure-dns.info*：
+1. 從 DNS 區域頁面中擷取名稱伺服器。 在此範例中，區域 contoso.net 已被指派名稱伺服器 *ns1-01.azure-dns.com* 、 *ns2-01.azure-dns.net* 、 *ns3-01.azure-dns.org* 和 *ns4-01.azure-dns.info* ：
 
    ![名稱伺服器清單](./media/dns-delegate-domain-azure-dns/viewzonens500.png)
 
@@ -82,7 +82,7 @@ Azure DNS 會自動在您的區域中為指派的名稱伺服器建立權威 NS 
 > [!NOTE]
 > 當您複製每個名稱伺服器位址時，請務必複製位址結尾的句點。 結尾句點表示完整網域名稱結束。 有些註冊機構會在 NS 名稱不含結尾句點時附加句點。 為了符合 DNS RFC，請加上結尾的句點。
 
-Azure DNS 目前不支援使用您區域中名稱伺服器的委派 (有時稱為*虛名名稱伺服器*)。
+Azure DNS 目前不支援使用您區域中名稱伺服器的委派 (有時稱為 *虛名名稱伺服器* )。
 
 ## <a name="verify-the-delegation"></a>確認委派
 
@@ -116,7 +116,7 @@ Azure DNS 目前不支援使用您區域中名稱伺服器的委派 (有時稱�
 
 如果您想要進行下一個教學課程，您可以保留 **contosoRG** 資源群組。 否則請刪除 **contosoRG** 資源群組，以刪除在本教學課程中建立的資源。
 
-- 選取 **contosoRG** 資源群組，然後選取 [刪除資源群組]****。 
+- 選取  。 
 
 ## <a name="next-steps"></a>後續步驟
 

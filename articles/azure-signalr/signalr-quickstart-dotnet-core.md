@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
-ms.openlocfilehash: b5fc15815c9843c55bf31efe31e12e2de02d3be3
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: b5a2064e2fd80b895b0e801090c66d7119cf69dd
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874011"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92151005"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>快速入門：使用 SignalR 服務建立聊天室
 
-Azure SignalR 服務是可以協助開發人員使用即時功能輕鬆地建置 Web 應用程式的 Azure 服務。 此服務原本是以 [SignalR for ASP.NET Core 2.1](https://docs.microsoft.com/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1) 為基礎，但現在支援更新的版本。
+Azure SignalR 服務是可以協助開發人員使用即時功能輕鬆地建置 Web 應用程式的 Azure 服務。 此服務原本是以 [SignalR for ASP.NET Core 2.1](/aspnet/core/signalr/introduction?preserve-view=true&view=aspnetcore-2.1) 為基礎，但現在支援更新的版本。
 
 本文會示範如何開始使用 Azure SignalR 服務。 在此快速入門中，您將會使用 ASP.NET Core MVC Web 應用程式建立聊天應用程式。 此應用程式會與您的 Azure SignalR 服務資源連線，以提供即時的內容更新。 您將會於本機裝載 Web 應用程式，並與多個瀏覽器用戶端連線。 每個用戶端都將能把內容更新推送至所有其他用戶端。 
 
@@ -42,7 +42,7 @@ Azure SignalR 服務是可以協助開發人員使用即時功能輕鬆地建置
 
 ## <a name="create-an-aspnet-core-web-app"></a>建立 ASP.NET Core Web 應用程式
 
-在本節中，您會使用 [.NET Core 命令列介面 (CLI)](https://docs.microsoft.com/dotnet/core/tools/) \(英文\) 來建立 ASP.NET Core MVC Web 應用程式專案。 使用 .NET Core CLI 而非 Visual Studio 的好處，在於 .NET Core CLI 可同時於 Windows、macOS 及 Linux 平台上取得。 
+在本節中，您會使用 [.NET Core 命令列介面 (CLI)](/dotnet/core/tools/) \(英文\) 來建立 ASP.NET Core MVC Web 應用程式專案。 使用 .NET Core CLI 而非 Visual Studio 的好處，在於 .NET Core CLI 可同時於 Windows、macOS 及 Linux 平台上取得。 
 
 1. 為您的專案建立資料夾。 本快速入門會使用 *E:\Testing\chattest* 資料夾。
 
@@ -56,9 +56,9 @@ Azure SignalR 服務是可以協助開發人員使用即時功能輕鬆地建置
 
 ## <a name="add-secret-manager-to-the-project"></a>將祕密管理員新增至專案
 
-在本節中，您會將[祕密管理員工具](https://docs.microsoft.com/aspnet/core/security/app-secrets) \(機器翻譯\) 新增至您的專案。 祕密管理員工具能儲存專案樹狀結構外開發工作的敏感性資料。 此作法能協助避免於原始程式碼內意外共用應用程式祕密。
+在本節中，您會將[祕密管理員工具](/aspnet/core/security/app-secrets) \(機器翻譯\) 新增至您的專案。 祕密管理員工具能儲存專案樹狀結構外開發工作的敏感性資料。 此作法能協助避免於原始程式碼內意外共用應用程式祕密。
 
-1. 開啟您的 *.csproj* 檔案。 新增 `DotNetCliToolReference` 元素以包含 *Microsoft.Extensions.SecretManager.Tools*。 也新增 *chattest.csproj* 的以下程式碼中顯示的 `UserSecretsId` 元素，然後儲存檔案。
+1. 開啟您的 *.csproj* 檔案。 新增 `DotNetCliToolReference` 元素以包含 *Microsoft.Extensions.SecretManager.Tools* 。 也新增 *chattest.csproj* 的以下程式碼中顯示的 `UserSecretsId` 元素，然後儲存檔案。
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -107,16 +107,17 @@ Azure SignalR 服務是可以協助開發人員使用即時功能輕鬆地建置
     此祕密可使用設定 API 來存取。 在所有支援的平台上，組態 API 的組態名稱中都適用冒號 (:)。 請參閱[取決於環境的組態](/dotnet/core/extensions/configuration-providers#environment-variable-configuration-provider)。
 
 
-4. 開啟 *Startup.cs* 並更新 `ConfigureServices` 方法，以透過呼叫 `AddSignalR()` 來使用 Azure SignalR 服務：
+4. 開啟 *Startup.cs* 並更新 `ConfigureServices` 方法，以透過呼叫 `AddSignalR()` 和 `AddAzureSignalR()` 方法來使用 Azure SignalR 服務：
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddAzureSignalR();
+        services.AddSignalR()
+                .AddAzureSignalR();
     }
     ```
 
-    透過不傳遞參數至 `AddAzureSignalR()`，此程式碼會針對 SignalR 服務資源連接字串使用預設組態金鑰。 預設組態金鑰為 *Azure: SignalR:ConnectionString*。
+    透過不傳遞參數至 `AddAzureSignalR()`，此程式碼會針對 SignalR 服務資源連接字串使用預設組態金鑰。 預設組態金鑰為 *Azure: SignalR:ConnectionString* 。
 
 5. 在 *Startup.cs* 中，更新 `Configure` 方法，作法為將其取代為下列程式碼。
 
@@ -169,7 +170,7 @@ Azure SignalR 服務是可以協助開發人員使用即時功能輕鬆地建置
 
 此聊天室應用程式的用戶端使用者介面，將會由位於 *wwwroot* 目錄中名為 *index.html* 檔案內的 HTML 和 JavaScript 所組成。
 
-從[範例存放庫](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot)的 *wwwroot* 資料夾複製 *css/site.css* 檔案。 將您專案的 *css/site.css* 取代為您所複製的檔案。
+從 [範例存放庫](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/ChatRoom/wwwroot)的 *wwwroot* 資料夾複製 *css/site.css* 檔案。 將您專案的 *css/site.css* 取代為您所複製的檔案。
 
 這裡有 *index.html* 的主要程式碼：
 
@@ -325,7 +326,7 @@ Azure SignalR 服務是可以協助開發人員使用即時功能輕鬆地建置
 
 ## <a name="add-a-development-runtime-profile"></a>新增開發執行階段設定檔
 
-在本節中，您將會新增適用於 ASP.NET Core 的開發執行階段環境。 如需詳細資訊，請參閱[在 ASP.NET Core 中使用多個環境](https://docs.microsoft.com/aspnet/core/fundamentals/environments) \(英文\)。
+在本節中，您將會新增適用於 ASP.NET Core 的開發執行階段環境。 如需詳細資訊，請參閱[在 ASP.NET Core 中使用多個環境](/aspnet/core/fundamentals/environments) \(英文\)。
 
 1. 在專案中建立名為 *Properties* 的資料夾。
 

@@ -8,16 +8,16 @@ ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 249ff87813fe23505a09db020d4c6ad0f272796d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b6aa31e816a42e9cf1344137676fbbafb0c06730
+ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85483290"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92282193"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>快速入門：使用 ARM 範本來建立 Azure Cosmos DB 和容器
 
-Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以使用 Azure Cosmos DB 快速地建立及查詢機碼/值資料庫、文件資料庫與圖形資料庫。 本快速入門所著重的程序可讓您部署 Azure Resource Manager 範本 (ARM 範本) 以建立 Azure Cosmos 資料庫並於該資料庫內建立容器。 您稍後可以在此容器中儲存資料。
+Azure Cosmos DB 是 Microsoft 的快速 NoSQL 資料庫，可支援任何規模的開放式 API。 您可以使用 Azure Cosmos DB 快速地建立及查詢機碼/值資料庫、文件資料庫與圖形資料庫。 本快速入門所著重的程序可讓您部署 Azure Resource Manager 範本 (ARM 範本) 以建立 Azure Cosmos 資料庫並於該資料庫內建立容器。 您稍後可以在此容器中儲存資料。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -61,20 +61,20 @@ Azure 訂用帳戶或免費的 Azure Cosmos DB 試用帳戶
 
     除非有指定，否則請使用預設值來建立 Azure Cosmos 資源。
 
-    * **訂用帳戶**：選取 Azure 訂用帳戶。
+    * **訂用帳戶** ：選取 Azure 訂用帳戶。
     * [資源群組]選取 [新建]，輸入資源群組的唯一名稱，然後按一下 [確認]。
-    * **位置**：選取位置。  例如，**美國中部**。
-    * **帳戶名稱**：輸入 Azure Cosmos 帳戶的名稱。 此名稱必須是全域唯一的。
-    * **位置**：輸入您想要在其中建立 Azure Cosmos 帳戶的位置。 Azure Cosmos 帳戶可以位於和資源群組相同的位置。
-    * **主要區域**：Azure Cosmos 帳戶的主要複本區域。
-    * **次要區域**：Azure Cosmos 帳戶的次要複本區域。
-    * **預設一致性等級**：Azure Cosmos 帳戶的預設一致性等級。
-    * **過期前置詞的上限**：過期要求的上限。 需要 BoundedStaleness。
+    * **位置** ：選取位置。  例如， **美國中部** 。
+    * **帳戶名稱** ：輸入 Azure Cosmos 帳戶的名稱。 此名稱必須是全域唯一的。
+    * **位置** ：輸入您想要在其中建立 Azure Cosmos 帳戶的位置。 Azure Cosmos 帳戶可以位於和資源群組相同的位置。
+    * **主要區域** ：Azure Cosmos 帳戶的主要複本區域。
+    * **次要區域** ：Azure Cosmos 帳戶的次要複本區域。
+    * **預設一致性等級** ：Azure Cosmos 帳戶的預設一致性等級。
+    * **過期前置詞的上限** ：過期要求的上限。 需要 BoundedStaleness。
     * **最大間隔 (秒)** ：延隔時間上限。 需要 BoundedStaleness。
-    * **資料庫名稱**：Azure Cosmos 資料庫的名稱。
-    * **容器名稱**：Azure Cosmos 容器的名稱。
-    * **輸送量**：容器的輸送量，輸送量的最小值為 400 RU/秒。
-    * **我同意上方所述的條款及條件**：選取。
+    * **資料庫名稱** ：Azure Cosmos 資料庫的名稱。
+    * **容器名稱** ：Azure Cosmos 容器的名稱。
+    * **輸送量** ：容器的輸送量，輸送量的最小值為 400 RU/秒。
+    * **我同意上方所述的條款及條件** ：選取。
 
 3. 選取 [購買]。 成功部署 Azure Cosmos 帳戶之後，您會收到通知：
 
