@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
-ms.custom: devx-track-terraform
-ms.openlocfilehash: e13e6d9ac2f4600e41f221efd23997f712dffc54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-terraform, devx-track-azurecli
+ms.openlocfilehash: dbbd1511a6063223a2b76786b3c7c4394e2fa407
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87032080"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745434"
 ---
 # <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>在 Azure Cloud Shell 中從 Bash 使用 Terraform 進行部署
 本文逐步引導您使用 [Terraform AzureRM 提供者](https://www.terraform.io/docs/providers/azurerm/index.html)建立資源群組。
@@ -188,6 +188,6 @@ Destroy complete! Resources: 1 destroyed.
 
 您已成功透過 Terraform 建立 Azure 資源。 請瀏覽後續步驟，以繼續了解 Cloud Shell。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 [了解 Terraform Azure 提供者](https://www.terraform.io/docs/providers/azurerm/#)<br>
 [Cloud Shell 中 Bash 的快速入門](quickstart.md)

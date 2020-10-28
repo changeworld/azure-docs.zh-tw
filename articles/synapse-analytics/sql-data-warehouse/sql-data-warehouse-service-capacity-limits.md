@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c0fcbe59aa4393f1266c0840cf05c3dc7b1f6d90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e06dbee5b1edbb4fd1a3379ee2d9aa06f9949ab
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85204977"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742463"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Azure Synapse Analytics (先前的 SQL DW) 容量限制
 
@@ -61,8 +61,8 @@ Azure Synapse 的各種元件允許的最大值。
 
 | 類別 | 描述 | 最大值 |
 |:--- |:--- |:--- |
-| PolyBase 載入 |每列 MB 數 |1<br/><br/>Polybase 會載入小於 1 MB 的資料列。 不支援將 LOB 資料類型載入具有叢集資料行存放區索引的資料表 (CCI) 。<br/><br/> |
-||||
+| PolyBase 載入 |每列 MB 數 |1<br/><br/>Polybase 會載入小於 1 MB 的資料列。 不支援將 LOB 資料類型載入具有叢集資料行存放區索引的資料表 (CCI) 。<br/> |
+|PolyBase 載入|檔案總數|1,000,000<br/><br/>Polybase 載入不能超過1M 個以上的檔案。 您可能會遇到下列錯誤： **因為分割計數超過1000000的上限** ，所以作業失敗。|
 
 ## <a name="queries"></a>查詢
 

@@ -6,13 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 1802708c3b9e15a2459f29d15da72f2dc1da1a4f
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 2fbdd46b872c4c70999355d457045f4aac8aa34c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093985"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742802"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>如何針對 Azure Spring Cloud 應用程式啟用系統指派的受控識別
 
@@ -72,8 +72,8 @@ Azure 春季 Cloud 會與 Azure 虛擬機器共用相同的端點以取得權杖
 若要從不再需要的應用程式中移除系統指派的受控識別：
 
 1. 使用與包含 Azure 春天雲端實例的 Azure 訂用帳戶相關聯的帳戶登入 [Azure 入口網站](https://portal.azure.com/) 。
-1. 瀏覽至所需的虛擬機器，然後選取 [身分識別]****。
-1. 在 [**系統指派** / 的**狀態**] 底下，選取 [**關閉**]，然後按一下 [**儲存**]：
+1. 瀏覽至所需的虛擬機器，然後選取 [身分識別]  。
+1. 在 [ **系統指派** / 的 **狀態** ] 底下，選取 [ **關閉** ]，然後按一下 [ **儲存** ]：
 
  ![受控識別](./media/spring-cloud-managed-identity/remove-identity.png)
 

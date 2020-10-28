@@ -5,13 +5,13 @@ description: 了解如何使用 Azure CLI 建立使用虛擬節點執行 Pod 的
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.custom: references_regions
-ms.openlocfilehash: 1e62af4f2ab8233125777bf6edf713758e4f2ec7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 96c47ed59fd904f1523347d9f0ef7bc00edb866f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87543073"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745659"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>使用 Azure CLI 建立和設定 Azure Kubernetes Service (AKS) 叢集以使用虛擬節點
 
@@ -29,7 +29,7 @@ ms.locfileid: "87543073"
 az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
 ```
 
-*Microsoft.ContainerInstance* 提供者應該回報為 *Registered*，如以下範例輸出所示：
+*Microsoft.ContainerInstance* 提供者應該回報為 *Registered* ，如以下範例輸出所示：
 
 ```output
 Namespace                    RegistrationState    RegistrationPolicy
@@ -37,7 +37,7 @@ Namespace                    RegistrationState    RegistrationPolicy
 Microsoft.ContainerInstance  Registered           RegistrationRequired
 ```
 
-如果提供者顯示為 *NotRegistered*，請使用 [az provider register][az-provider-register] 來註冊提供者，如下列範例所示：
+如果提供者顯示為 *NotRegistered* ，請使用 [az provider register][az-provider-register] 來註冊提供者，如下列範例所示：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerInstance
@@ -81,7 +81,7 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-Azure 資源群組是部署及管理 Azure 資源所在的邏輯群組。 使用 [az group create][az-group-create] 命令來建立資源群組。 下列範例會在*westus*位置建立名為*myResourceGroup*的資源群組。
+Azure 資源群組是部署及管理 Azure 資源所在的邏輯群組。 使用 [az group create][az-group-create] 命令來建立資源群組。 下列範例會在 *westus* 位置建立名為 *myResourceGroup* 的資源群組。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus
@@ -89,7 +89,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-a-virtual-network"></a>建立虛擬網路
 
-使用 [az network vnet create][az-network-vnet-create] 命令來建立虛擬網路。 下列範例會建立名為 myVnet** 的虛擬網路 (位址首碼為 10.0.0.0/8**)，以及名為 myAKSSubnet** 的子網路。 這個子網路的位址首碼預設為 10.240.0.0/16**：
+使用 [az network vnet create][az-network-vnet-create] 命令來建立虛擬網路。 下列範例會建立名為 myVnet  的虛擬網路 (位址首碼為 10.0.0.0/8  )，以及名為 myAKSSubnet  的子網路。 這個子網路的位址首碼預設為 10.240.0.0/16  ：
 
 ```azurecli-interactive
 az network vnet create \
@@ -100,7 +100,7 @@ az network vnet create \
     --subnet-prefix 10.240.0.0/16
 ```
 
-現在，使用 [az network vnet subnet create][az-network-vnet-subnet-create] 命令為虛擬節點建立其他子網路。 下列範例會建立名為 myVirtualNodeSubnet** 且位址首碼為 10.241.0.0/16** 的子網路。
+現在，使用 [az network vnet subnet create][az-network-vnet-subnet-create] 命令為虛擬節點建立其他子網路。 下列範例會建立名為 myVirtualNodeSubnet  且位址首碼為 10.241.0.0/16  的子網路。
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -178,7 +178,7 @@ az aks create \
 
 ## <a name="enable-virtual-nodes-addon"></a>啟用虛擬節點附加元件
 
-若要啟用虛擬節點，請立即使用 [az aks enable-addons][az-aks-enable-addons] 命令。 下列範例會使用上一個步驟所建立的子網路，其名稱為 myVirtualNodeSubnet**：
+若要啟用虛擬節點，請立即使用 [az aks enable-addons][az-aks-enable-addons] 命令。 下列範例會使用上一個步驟所建立的子網路，其名稱為 myVirtualNodeSubnet  ：
 
 ```azurecli-interactive
 az aks enable-addons \

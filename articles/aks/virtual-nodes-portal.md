@@ -4,13 +4,13 @@ description: 了解如何使用 Azure 入口網站建立使用虛擬節點執行
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.custom: references_regions
-ms.openlocfilehash: 0fe8c4753cef9fa829a2cb696e164dbdf5f2b8f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: aaada79855b07e390ce3d30a20cd08dc484481c9
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297564"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745476"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>在 Azure 入口網站中建立和設定 Azure Kubernetes Service (AKS) 叢集以使用虛擬節點
 
@@ -28,7 +28,7 @@ ms.locfileid: "89297564"
 az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
 ```
 
-*Microsoft.ContainerInstance* 提供者應該回報為 *Registered*，如以下範例輸出所示：
+*Microsoft.ContainerInstance* 提供者應該回報為 *Registered* ，如以下範例輸出所示：
 
 ```output
 Namespace                    RegistrationState    RegistrationPolicy
@@ -36,7 +36,7 @@ Namespace                    RegistrationState    RegistrationPolicy
 Microsoft.ContainerInstance  Registered           RegistrationRequired
 ```
 
-如果提供者顯示為 *NotRegistered*，請使用 [az provider register][az-provider-register] 來註冊提供者，如下列範例所示：
+如果提供者顯示為 *NotRegistered* ，請使用 [az provider register][az-provider-register] 來註冊提供者，如下列範例所示：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerInstance
@@ -80,12 +80,12 @@ az provider register --namespace Microsoft.ContainerInstance
 
 在 [基本資料] 頁面上設定下列選項：
 
-- 專案詳細資料：選取 Azure 訂用帳戶，然後選取或建立 Azure 資源群組，例如 *myResourceGroup*。 輸入 **Kubernetes 叢集名稱**，例如 myAKSCluster。
+- 專案詳細資料：選取 Azure 訂用帳戶，然後選取或建立 Azure 資源群組，例如 *myResourceGroup* 。 輸入 **Kubernetes 叢集名稱** ，例如 myAKSCluster。
 - 叢集詳細資料：選取 AKS 叢集的區域、Kubernetes 版本及 DNS 名稱前置詞。
-- 主要節點集區：選取 AKS 節點的 VM 大小。 VM 大小**無法**在 AKS 叢集部署完畢後變更。
-     - 選取要部署到叢集的節點數目。 本文將 [節點計數] 設為 1。 節點計數**可以**在叢集部署完畢後調整。
+- 主要節點集區：選取 AKS 節點的 VM 大小。 VM 大小 **無法** 在 AKS 叢集部署完畢後變更。
+     - 選取要部署到叢集的節點數目。 本文將 [節點計數] 設為 1。 節點計數 **可以** 在叢集部署完畢後調整。
 
-按一下 **下一步調整**。
+按一下 **下一步調整** 。
 
 在 [調整] 頁面上，選取 [虛擬節點] 下的 [啟用]。
 

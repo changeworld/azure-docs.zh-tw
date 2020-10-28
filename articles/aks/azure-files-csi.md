@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 986db4edbf7b8856a12067fb66a370627642e970
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 556aec071ccb59a0223bc07d134f3427755117f3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078352"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745799"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>在 Azure Kubernetes Service (AKS)  (preview 中使用 Azure 檔案儲存體容器儲存體介面 (CSI) 驅動程式) 
 
@@ -33,13 +33,13 @@ CSI 是將任意區塊和檔案儲存系統公開給 Kubernetes 上容器化工�
 
 ## <a name="dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes"></a>使用內建的儲存類別，以動態方式建立 Azure 檔案儲存體 PVs
 
-儲存體類別可用來定義建立 Azure 檔案儲存體共用的方式。 系統會自動在 [節點資源群組][node-resource-group] 中建立儲存體帳戶，以搭配儲存類別來保存 Azure 檔案儲存體共用。 選擇下列其中一個適用于*skuName*的[Azure 儲存體冗余 sku][storage-skus] ：
+儲存體類別可用來定義建立 Azure 檔案儲存體共用的方式。 系統會自動在 [節點資源群組][node-resource-group] 中建立儲存體帳戶，以搭配儲存類別來保存 Azure 檔案儲存體共用。 選擇下列其中一個適用于 *skuName* 的 [Azure 儲存體冗余 sku][storage-skus] ：
 
-* **Standard_LRS**：標準本機冗余儲存體
-* **Standard_GRS**：標準異地冗余儲存體
-* **Standard_ZRS**：標準區域-多餘的儲存體
-* **Standard_RAGRS**：標準讀取權限異地冗余儲存體
-* **Premium_LRS**： Premium 本機冗余儲存體
+* **Standard_LRS** ：標準本機冗余儲存體
+* **Standard_GRS** ：標準異地冗余儲存體
+* **Standard_ZRS** ：標準區域-多餘的儲存體
+* **Standard_RAGRS** ：標準讀取權限異地冗余儲存體
+* **Premium_LRS** ： Premium 本機冗余儲存體
 
 > [!NOTE]
 > Azure 檔案儲存體支援 Azure 進階儲存體。 最小 premium 檔案共用為 100 GB。
@@ -76,7 +76,7 @@ total 29
 
 預設的儲存類別符合最常見的案例，但並非全部。 在某些情況下，您可能會想要使用您自己的參數自訂自己的儲存類別。 例如，使用下列資訊清單來設定檔案 `mountOptions` 共用的。
 
-Kubernetes 掛接的檔案共用的預設*值為0777，而* *dirMode*為*0777* 。 您可以在儲存類別物件上指定不同的掛接選項。
+Kubernetes 掛接的檔案共用的預設 *值為0777，而* *dirMode* 為 *0777* 。 您可以在儲存類別物件上指定不同的掛接選項。
 
 建立名為的檔案 `azure-file-sc.yaml` ，並貼上下列範例資訊清單：
 
@@ -212,13 +212,13 @@ Filesystem                                                                      
 az feature register --namespace "Microsoft.Storage" --name "AllowNfsFileShares"
 ```
 
-狀態需要幾分鐘的時間才會顯示「已註冊」**。 使用 [az feature list][az-feature-list] 命令來確認註冊狀態：
+狀態需要幾分鐘的時間才會顯示「已註冊」  。 使用 [az feature list][az-feature-list] 命令來確認註冊狀態：
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.Storage/AllowNfsFileShares')].{Name:name,State:properties.state}"
 ```
 
-當您準備好時，請使用[az provider register][az-provider-register]命令重新整理*Microsoft 的儲存體*資源提供者註冊：
+當您準備好時，請使用 [az provider register][az-provider-register]命令重新整理 *Microsoft 的儲存體* 資源提供者註冊：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Storage
@@ -259,7 +259,7 @@ storageclass.storage.k8s.io/azurefile-csi created
 您可以[stateful set](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) `data.txt` 使用[kubectl apply][kubectl-apply]命令部署下列命令，以部署將時間戳記儲存至檔案的範例具狀態集：
 
  ```console
-$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/statefulset.yaml
 
 statefulset.apps/statefulset-azurefile created
 ```

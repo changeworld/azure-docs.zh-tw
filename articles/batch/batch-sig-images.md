@@ -3,13 +3,13 @@ title: 使用共用映射庫來建立自訂映射集區
 description: 自訂映射集區是設定計算節點以執行 Batch 工作負載的有效方式。
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: 31fcbff50a2a66aec1643f1bac351e0401205861
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 4a41e8345bdb4c4e8761debe8e6b39f8588f5a8c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605187"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745517"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>使用共用映射庫來建立自訂映射集區
 
@@ -38,16 +38,16 @@ ms.locfileid: "90605187"
 > [!NOTE]
 > 您需要使用 Azure AD 進行驗證。 如果您使用共用金鑰驗證，則會收到驗證錯誤。  
 
-- **Azure Batch 帳戶**。 若要建立 Batch 帳戶，請參閱使用 [Azure 入口網站](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md) 的 Batch 快速入門。
+- **Azure Batch 帳戶** 。 若要建立 Batch 帳戶，請參閱使用 [Azure 入口網站](quick-create-portal.md)或 [Azure CLI](quick-create-cli.md) 的 Batch 快速入門。
 
-- **共用映像庫的映像**。 若要建立共用映像，您必須擁有或建立受控映像資源。 您應該從 VM 之 OS 磁碟 (以及視需要從其連結之資料磁碟) 的快照集建立該映像。
+- **共用映像庫的映像** 。 若要建立共用映像，您必須擁有或建立受控映像資源。 您應該從 VM 之 OS 磁碟 (以及視需要從其連結之資料磁碟) 的快照集建立該映像。
 
 > [!NOTE]
 > 如果共用映射與 Batch 帳戶不在相同的訂用帳戶中，您必須為該訂用帳戶 [註冊 Microsoft.Batch 資源提供者](../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider) 。 這兩個訂用帳戶必須位於相同的 Azure AD 租使用者中。
 >
 > 映射可以位於不同的區域中，只要它的複本位於與您的 Batch 帳戶相同的區域中。
 
-如果您使用 Azure AD 應用程式來建立具有共用映射庫映射的自訂映射集區，則該應用程式必須已被授與 [Azure 內建角色](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) ，讓它能夠存取共用映射。 您可以藉由流覽至共用映射、選取 [ **存取控制] (IAM) ** 並新增應用程式的角色指派，在 Azure 入口網站中授與此存取權。
+如果您使用 Azure AD 應用程式來建立具有共用映射庫映射的自訂映射集區，則該應用程式必須已被授與 [Azure 內建角色](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) ，讓它能夠存取共用映射。 您可以藉由流覽至共用映射、選取 [ **存取控制] (IAM)** 並新增應用程式的角色指派，在 Azure 入口網站中授與此存取權。
 
 ## <a name="prepare-a-shared-image"></a>準備共用映射
 

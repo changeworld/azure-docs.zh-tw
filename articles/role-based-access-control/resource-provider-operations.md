@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 10/23/2020
 ms.custom: generated
-ms.openlocfilehash: 955e80f31cf08dd703f089d26a03b7f97242eab0
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 905bdf95222a03514b5c5e76e18330cf27da0d3d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631099"
+ms.locfileid: "92745129"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure 資源提供者作業
 
@@ -158,6 +158,7 @@ ms.locfileid: "92631099"
 | [Microsoft.Intune](#microsoftintune) |
 | **其他** |
 | [Microsoft.BingMaps](#microsoftbingmaps) |
+| [Microsoft.DigitalTwins](#microsoftdigitaltwins) |
 
 
 ## <a name="general"></a>一般
@@ -9663,6 +9664,45 @@ Azure 服務： [Bing 地圖](https://docs.microsoft.com/BingMaps/)服務
 > | Microsoft.BingMaps/mapApis/listSecrets/action | 列出 BingMaps/mapApis 的秘密 |
 > | BingMaps/mapApis/listUsageMetrics/action | 列出 BingMaps/mapApis 的計量 |
 > | Microsoft.BingMaps/Operations/read | 列出 BingMaps 的作業。 |
+
+### <a name="microsoftdigitaltwins"></a>Microsoft.DigitalTwins
+
+Azure 服務： [Azure 數位 Twins](../digital-twins/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | 動作 | 描述 |
+> | --- | --- |
+> | DigitalTwins/註冊/動作 | 為數字 Twins 資源提供者註冊訂用帳戶，並讓您能夠建立數位 Twins 實例。 |
+> | DigitalTwins/取消註冊/動作 | 為數字 Twins 資源提供者取消註冊訂用帳戶 |
+> | DigitalTwins/digitalTwinsInstances/read | 讀取任何 DigitalTwins/digitalTwinsInstances 資源 |
+> | DigitalTwins/digitalTwinsInstances/write | 建立或更新任何 DigitalTwins/digitalTwinsInstances 資源 |
+> | DigitalTwins/digitalTwinsInstances/delete | 刪除 DigitalTwins/digitalTwinsInstances 資源 |
+> | DigitalTwins/digitalTwinsInstances/diagnosticSettings/read | 取得資源的診斷設定 |
+> | DigitalTwins/digitalTwinsInstances/diagnosticSettings/write | 設定資源的診斷設定 |
+> | DigitalTwins/digitalTwinsInstances/端點/刪除 | 刪除數位 Twins 資源的任何端點 |
+> | DigitalTwins/digitalTwinsInstances/端點/讀取 | 讀取數位 Twins 資源的任何端點 |
+> | DigitalTwins/digitalTwinsInstances/端點/寫入 | 建立或更新數位 Twins 資源的任何端點 |
+> | DigitalTwins/digitalTwinsInstances/logDefinitions/read | 取得資源 Azure 監視器的記錄檔設定 |
+> | DigitalTwins/digitalTwinsInstances/metricDefinitions/read | 取得資源 Azure 監視器的度量設定 |
+> | DigitalTwins/digitalTwinsInstances/operationsResults/read | 讀取任何作業結果 |
+> | DigitalTwins/位置/checkNameAvailability/動作 | 檢查數位 Twins 資源提供者中的資源名稱可用性 |
+> | DigitalTwins/位置/operationsResults/讀取 | 讀取任何作業結果 |
+> | DigitalTwins/operations/read | 讀取所有作業 |
+> | **DataAction** | **說明** |
+> | DigitalTwins/query/action | 查詢任何數位 Twins 圖形 |
+> | DigitalTwins/DigitalTwins/read | 讀取任何數位對應項 |
+> | DigitalTwins/DigitalTwins/write | 建立或更新任何數位對應項 |
+> | DigitalTwins/DigitalTwins/delete | 刪除任何數位對應項 |
+> | DigitalTwins/DigitalTwins/命令/action | 在數位對應項上叫用任何命令 |
+> | DigitalTwins/DigitalTwins/關係/read | 讀取任何數位對應項關聯性 |
+> | DigitalTwins/DigitalTwins/關係/write | 建立或更新任何數位對應項關聯性 |
+> | DigitalTwins/DigitalTwins/關聯性/刪除 | 刪除任何數位對應項關聯性 |
+> | DigitalTwins/eventroutes/read | 讀取任何事件路由 |
+> | DigitalTwins/eventroutes/delete | 刪除任何事件路由 |
+> | DigitalTwins/eventroutes/write | 建立或更新任何事件路由 |
+> | DigitalTwins/模型/讀取 | 讀取任何模型 |
+> | DigitalTwins/模型/寫入 | 建立或更新任何模型 |
+> | DigitalTwins/模型/刪除 | 刪除任何模型 |
 
 ## <a name="next-steps"></a>後續步驟
 

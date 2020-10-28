@@ -6,13 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 731e4306575a8bd5f63dd47ca213a0e52a21487b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 03b112466ef094a578d47586a44ab383a5da1a9b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151230"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744887"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR 服務驗證
 
@@ -370,7 +370,7 @@ ms.locfileid: "92151230"
                     Application started. Press Ctrl+C to shut down.
     ```
 
-4. 啟動瀏覽器視窗並瀏覽至 `http://localhost:5000`。 按一下頂端的**這裡**連結以使用 GitHub 登入。
+4. 啟動瀏覽器視窗並瀏覽至 `http://localhost:5000`。 按一下頂端的 **這裡** 連結以使用 GitHub 登入。
 
     ![OAuth 已在 Azure 中完成裝載](media/signalr-concept-authenticate-oauth/signalr-oauth-complete-azure.png)
 
@@ -548,11 +548,11 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 ### <a name="update-the-github-oauth-app"></a>更新 GitHub OAuth 應用程式
 
-您需要執行的最後一件事是將 GitHub OAuth 應用程式的**首頁 URL** 和**授權回呼 URL** 更新為指向新裝載的應用程式。
+您需要執行的最後一件事是將 GitHub OAuth 應用程式的 **首頁 URL** 和 **授權回呼 URL** 更新為指向新裝載的應用程式。
 
 1. 在瀏覽器中開啟 [https://github.com](https://github.com)，然後瀏覽至您帳戶的 [設定] >  [開發人員設定] >  [Oauth應用程式]。
 
-2. 按一下您的驗證應用程式，然後更新**首頁 URL** 和**授權回呼 URL**，如下所示：
+2. 按一下您的驗證應用程式，然後更新 **首頁 URL** 和 **授權回呼 URL** ，如下所示：
 
     | 設定 | 範例 |
     | ------- | ------- |

@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
-ms.custom: seodec18, devx-track-java
+ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 65b31bd39c85ea9073bb9415b9829df12b7d9e35
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 2e77d76ddae540a311655eca36c53b23c418f5e3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171579"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744139"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>設定適用于 Azure App Service 的 JAVA 應用程式
 
@@ -332,13 +332,13 @@ keyStore.load(
 1. 在 [NewRelic.com](https://newrelic.com/signup) 建立 NewRelic 帳戶
 2. 從 NewRelic 下載 Java 代理程式，其檔案名稱類似 [newrelic-java-x.x.x.zip]。
 3. 複製您的授權金鑰，以供稍後設定代理程式時使用。
-4. [透過 SSH 連線到您的 App Service 執行個體](configure-linux-open-ssh-session.md)，然後建立新目錄 */home/site/wwwroot/apm*。
+4. [透過 SSH 連線到您的 App Service 執行個體](configure-linux-open-ssh-session.md)，然後建立新目錄 */home/site/wwwroot/apm* 。
 5. 將解壓縮的 NewRelic Java 代理程式檔案上傳至 */home/site/wwwroot/apm* 之下的目錄。 代理程式檔案應位於 */home/site/wwwroot/apm/newrelic* 中。
 6. 在 */home/site/wwwroot/apm/newrelic/newrelic.yml* 修改 YAML 檔案，並將預留位置授權值取代為您自己的授權金鑰。
 7. 在 Azure 入口網站中，瀏覽至您在 App Service 中的應用程式，並建立新的應用程式設定。
 
     - 若為 **JAVA SE** 應用程式，請建立名為的環境變數 `JAVA_OPTS` 並指定值 `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 。
-    - 針對 **Tomcat**，請建立名為的環境變數 `CATALINA_OPTS` 並指定值 `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 。
+    - 針對 **Tomcat** ，請建立名為的環境變數 `CATALINA_OPTS` 並指定值 `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 。
 
 ::: zone-end
 ::: zone pivot="platform-linux"
@@ -346,13 +346,13 @@ keyStore.load(
 1. 在 [NewRelic.com](https://newrelic.com/signup) 建立 NewRelic 帳戶
 2. 從 NewRelic 下載 Java 代理程式，其檔案名稱類似 [newrelic-java-x.x.x.zip]。
 3. 複製您的授權金鑰，以供稍後設定代理程式時使用。
-4. [透過 SSH 連線到您的 App Service 執行個體](configure-linux-open-ssh-session.md)，然後建立新目錄 */home/site/wwwroot/apm*。
+4. [透過 SSH 連線到您的 App Service 執行個體](configure-linux-open-ssh-session.md)，然後建立新目錄 */home/site/wwwroot/apm* 。
 5. 將解壓縮的 NewRelic Java 代理程式檔案上傳至 */home/site/wwwroot/apm* 之下的目錄。 代理程式檔案應位於 */home/site/wwwroot/apm/newrelic* 中。
 6. 在 */home/site/wwwroot/apm/newrelic/newrelic.yml* 修改 YAML 檔案，並將預留位置授權值取代為您自己的授權金鑰。
 7. 在 Azure 入口網站中，瀏覽至您在 App Service 中的應用程式，並建立新的應用程式設定。
    
     - 若為 **JAVA SE** 應用程式，請建立名為的環境變數 `JAVA_OPTS` 並指定值 `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 。
-    - 針對 **Tomcat**，請建立名為的環境變數 `CATALINA_OPTS` 並指定值 `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 。
+    - 針對 **Tomcat** ，請建立名為的環境變數 `CATALINA_OPTS` 並指定值 `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar` 。
 
 ::: zone-end
 
@@ -364,7 +364,7 @@ keyStore.load(
 
 1. 在 [AppDynamics.com](https://www.appdynamics.com/community/register/) 建立 AppDynamics 帳戶
 2. 從 AppDynamics 網站下載 Java 代理程式，其檔案名稱會類似 *AppServerAgent-x.x.x.xxxxx.zip*
-3. 使用 [Kudu 主控台](https://github.com/projectkudu/kudu/wiki/Kudu-console) 來建立新的目錄 */home/site/wwwroot/apm*。
+3. 使用 [Kudu 主控台](https://github.com/projectkudu/kudu/wiki/Kudu-console) 來建立新的目錄 */home/site/wwwroot/apm* 。
 4. 將 Java 代理程式檔案上傳至 */home/site/wwwroot/apm* 下的目錄。 代理程式檔案應位於 */home/site/wwwroot/apm/appdynamics* 中。
 5. 在 Azure 入口網站中，瀏覽至您在 App Service 中的應用程式，並建立新的應用程式設定。
 
@@ -376,7 +376,7 @@ keyStore.load(
 
 1. 在 [AppDynamics.com](https://www.appdynamics.com/community/register/) 建立 AppDynamics 帳戶
 2. 從 AppDynamics 網站下載 Java 代理程式，其檔案名稱會類似 *AppServerAgent-x.x.x.xxxxx.zip*
-3. [透過 SSH 連線到您的 App Service 執行個體](configure-linux-open-ssh-session.md)，然後建立新目錄 */home/site/wwwroot/apm*。
+3. [透過 SSH 連線到您的 App Service 執行個體](configure-linux-open-ssh-session.md)，然後建立新目錄 */home/site/wwwroot/apm* 。
 4. 將 Java 代理程式檔案上傳至 */home/site/wwwroot/apm* 下的目錄。 代理程式檔案應位於 */home/site/wwwroot/apm/appdynamics* 中。
 5. 在 Azure 入口網站中，瀏覽至您在 App Service 中的應用程式，並建立新的應用程式設定。
 
@@ -452,7 +452,7 @@ keyStore.load(
     </Context>
     ```
 
-3. 更新您應用程式的 *web.xml*，以使用您應用程式中的資料來源。
+3. 更新您應用程式的 *web.xml* ，以使用您應用程式中的資料來源。
 
     ```xml
     <resource-env-ref>
@@ -530,7 +530,7 @@ keyStore.load(
     </Context>
     ```
 
-3. 更新您應用程式的 *web.xml*，以使用您應用程式中的資料來源。
+3. 更新您應用程式的 *web.xml* ，以使用您應用程式中的資料來源。
 
     ```xml
     <resource-env-ref>
@@ -546,11 +546,11 @@ keyStore.load(
 啟動指令碼會對 server .xml 檔案進行 [xsl 轉換](https://www.w3schools.com/xml/xsl_intro.asp)，並將產生的 xml 檔案輸出至 `/usr/local/tomcat/conf/server.xml`。 啟動指令碼會透過 apk 安裝 libxslt。 您可以透過 FTP 上傳 xsl 檔案和啟動指令碼。 以下是啟動指令碼範例。
 
 ```sh
-# Install libxslt. Also copy the transform file to /home/tomcat/conf/
+# Install libxslt. Also copy the transform file to /home/tomcat/conf/
 apk add --update libxslt
 
-# Usage: xsltproc --output output.xml style.xsl input.xml
-xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
+# Usage: xsltproc --output output.xml style.xsl input.xml
+xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
 ```
 
 下方提供一段範例 xsl 檔案。 範例 xsl 檔案會將新的連接器節點加入至 Tomcat server .xml。
@@ -678,7 +678,7 @@ xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl 
     ```
 
 1. 使用您選擇的 FTP 用戶端，將 JDBC driver、 `jboss-cli-commands.cli` 、 `startup_script.sh` 和模組定義上傳至 `/site/deployments/tools/` 。
-2. 設定您的網站在 `startup_script.sh` 容器啟動時執行。 在 Azure 入口網站中，流覽**至**  >  **[設定一般設定**  >  **啟動] 命令**。 將 [啟動命令] 欄位設定為 `/home/site/deployments/tools/startup_script.sh` 。 [儲存] 變更。
+2. 設定您的網站在 `startup_script.sh` 容器啟動時執行。 在 Azure 入口網站中，流覽 **至**  >  **[設定一般設定**  >  **啟動] 命令** 。 將 [啟動命令] 欄位設定為 `/home/site/deployments/tools/startup_script.sh` 。 [儲存] 變更。
 
 若要確認資料來源已新增至 JBoss 伺服器，請透過 SSH 連線到您的 webapp 並執行 `$JBOSS_HOME/bin/jboss-cli.sh --connect` 。 當您連接到 JBoss 之後，請執行 `/subsystem=datasources:read-resource` 以列印資料來源清單。
 

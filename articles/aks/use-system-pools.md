@@ -5,17 +5,17 @@ services: container-service
 ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 2cb6ed265d3e94c2c162381dfb80ba0c5427a71f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: fasttrack-edit, devx-track-azurecli
+ms.openlocfilehash: b567ebfc2cb13aa0db6f8dd32db79cb7e031b710
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888955"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745743"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>管理 Azure Kubernetes Service (AKS) 中的系統節點集區
 
-在 Azure Kubernetes Service (AKS) 中，相同設定的節點會一起分組到 *節點*集區中。 節點集區包含執行應用程式的基礎 Vm。 系統節點集區和使用者節點集區是 AKS 叢集的兩個不同節點集區模式。 系統節點集區提供裝載重要系統 pod （例如和）的主要用途 `CoreDNS` `metrics-server` 。 使用者節點集區提供裝載應用程式 pod 的主要用途。 但是，如果您想要在 AKS 叢集中只有一個集區，則可以在系統節點集區上排程應用程式 pod。 每個 AKS 叢集至少必須包含一個具有至少一個節點的系統節點集區。
+在 Azure Kubernetes Service (AKS) 中，相同設定的節點會一起分組到 *節點* 集區中。 節點集區包含執行應用程式的基礎 Vm。 系統節點集區和使用者節點集區是 AKS 叢集的兩個不同節點集區模式。 系統節點集區提供裝載重要系統 pod （例如和）的主要用途 `CoreDNS` `metrics-server` 。 使用者節點集區提供裝載應用程式 pod 的主要用途。 但是，如果您想要在 AKS 叢集中只有一個集區，則可以在系統節點集區上排程應用程式 pod。 每個 AKS 叢集至少必須包含一個具有至少一個節點的系統節點集區。
 
 > [!Important]
 > 如果您在生產環境中為您的 AKS 叢集執行單一系統節點集區，建議您針對節點集區使用至少三個節點。

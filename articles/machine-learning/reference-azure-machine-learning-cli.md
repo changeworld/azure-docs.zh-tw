@@ -9,13 +9,13 @@ ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 06/22/2020
-ms.custom: seodec18
-ms.openlocfilehash: 50ac8ede9f8272d6956d1ac29e57a9c26d2c0bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 8ce32ab1e7dac6fd1a154fc6e730113428a8291b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708266"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744488"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>安裝和使用 Azure Machine Learning 的 CLI 擴充功能
 
@@ -34,7 +34,7 @@ CLI 不是 Azure Machine Learning SDK 的取代項目。 它是已經過最佳�
 
 * 若要使用 CLI，您必須擁有 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
-* 若要從您的**本機環境**使用本文件中的 CLI 命令，您需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
+* 若要從您的 **本機環境** 使用本文件中的 CLI 命令，您需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
 
     如果您使用 [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)，則可透過瀏覽器存取 CLI，並存留在雲端。
 
@@ -285,7 +285,7 @@ max_duration_minutes: 100 # The maximum length of time to run the experiment bef
 az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configuration-name <hdconfig> my_train.py
 ```
 
-請注意 runconfig 中的 *arguments* 區段，以及 HyperDrive config 中的 *parameter space*。其包含要傳遞至定型指令碼的命令列引數。 runconfig 中的值會在每次反覆運算時維持不變，而 HyperDrive config 中的範圍則會遭到反覆處理。 請勿在這兩個檔案中指定相同的引數。
+請注意 runconfig 中的 *arguments* 區段，以及 HyperDrive config 中的 *parameter space* 。其包含要傳遞至定型指令碼的命令列引數。 runconfig 中的值會在每次反覆運算時維持不變，而 HyperDrive config 中的範圍則會遭到反覆處理。 請勿在這兩個檔案中指定相同的引數。
 
 ## <a name="dataset-management"></a>資料集管理
 
@@ -411,7 +411,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 
 | JSON 欄位 | 類型 | 描述 |
 |---|---|---|
-| `name` | `string` | 環境的名稱。 名稱開頭請勿使用 **Microsoft** 或 **AzureML**。 |
+| `name` | `string` | 環境的名稱。 名稱開頭請勿使用 **Microsoft** 或 **AzureML** 。 |
 | `version` | `string` | 環境的版本。 |
 | `environmentVariables` | `{string: string}` | 環境變數名稱和值的雜湊對應。 |
 | `python` | [`PythonSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.pythonsection?view=azure-ml-py&preserve-view=true)hat 會定義要在目標計算資源上使用的 Python 環境和解譯器。 |
@@ -466,7 +466,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 
     如需詳細資訊，請參閱 [az ml model register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-model-register)。
 
-+ **選擇性**分析您的模型，以取得最佳的 CPU 和記憶體以供部署使用。
++ **選擇性** 分析您的模型，以取得最佳的 CPU 和記憶體以供部署使用。
     ```azurecli-interactive
     az ml model profile -n myprofile -m mymodel:1 --ic inferenceconfig.json -d "{\"data\": [[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]]}" -t myprofileresult.json
     ```

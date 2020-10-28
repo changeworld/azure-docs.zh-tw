@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive,seoapr2020
+ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/24/2020
-ms.openlocfilehash: 0675f77acbdecfe74634a6734b83c5b74019b8ab
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: cc17cd23ae197db25fed440eb249f2cf069d4859
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332020"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744579"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2
 
@@ -28,7 +28,7 @@ ms.locfileid: "92332020"
 Data Lake Storage Gen2 作為儲存體選項，幾乎所有 Azure HDInsight 叢集類型都可作為預設和額外的儲存體帳戶。 不過，HBase 只能有一個具有 Data Lake Storage Gen2 的帳戶。
 
 > [!Note]  
-> 選取 Data Lake Storage Gen2 作為 **主要儲存體類型**之後，您就無法選取 Data Lake Storage Gen1 作為額外的儲存體。
+> 選取 Data Lake Storage Gen2 作為 **主要儲存體類型** 之後，您就無法選取 Data Lake Storage Gen1 作為額外的儲存體。
 
 ## <a name="create-hdinsight-clusters-using-data-lake-storage-gen2"></a>使用 Data Lake Storage Gen2 建立 HDInsight 叢集
 
@@ -66,19 +66,19 @@ Azure 服務有兩種類型的受控識別：系統指派和使用者指派。 H
 
 您可以透過數種方式從 HDInsight 叢集存取 Data Lake Storage Gen2 中的檔案。
 
-* **使用完整格式名稱**。 使用這種方法，您可以針對想要存取的檔案提供完整路徑。
+* **使用完整格式名稱** 。 使用這種方法，您可以針對想要存取的檔案提供完整路徑。
 
     ```
     abfs://<containername>@<accountname>.dfs.core.windows.net/<file.path>/
     ```
 
-* **使用簡短路徑格式**。 使用這種方法，您可以利用以下方式取代到叢集根目錄的路徑：
+* **使用簡短路徑格式** 。 使用這種方法，您可以利用以下方式取代到叢集根目錄的路徑：
 
     ```
     abfs:///<file.path>/
     ```
 
-* **使用相對路徑**。 使用這種方法，您可以針對想要存取的檔案，只提供相對路徑。
+* **使用相對路徑** 。 使用這種方法，您可以針對想要存取的檔案，只提供相對路徑。
 
     ```
     /<file.path>/

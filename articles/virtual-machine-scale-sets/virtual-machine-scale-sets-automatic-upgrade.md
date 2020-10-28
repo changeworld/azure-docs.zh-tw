@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 06/26/2020
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: b5f3305fc5d2595c8b7b08d78ff20edea01c195e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: 334e0c745257354d9548a6f9c8cee4d43fa8da6d
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89229832"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744738"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 虛擬機器擴展集的 OS 映像自動升級
 
@@ -68,7 +68,7 @@ ms.locfileid: "89229832"
 
 ## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>設定 OS 映像自動升級的需求
 
-- 映射的 [ *版本* ] 屬性必須設定為 [ *最新*]。
+- 映射的 [ *版本* ] 屬性必須設定為 [ *最新* ]。
 - 非 Service Fabric 的擴展集必須使用應用程式健康情況探查或[應用程式健康情況擴充功能](virtual-machine-scale-sets-health-extension.md)。
 - 使用計算 API 版本2018-10-01 或更高版本。
 - 請確定擴展集模型中指定的外部資源可供使用且已更新。 範例包括在 VM 擴充功能屬性中用於啟動承載的 SAS URI、儲存體帳戶中的承載，以及模型中祕密的參照等等。
@@ -99,7 +99,7 @@ ms.locfileid: "89229832"
 
 
 ## <a name="configure-automatic-os-image-upgrade"></a>設定 OS 映像自動升級
-若要設定 OS 映像自動升級，請確定擴展集模型定義中的 *automaticOSUpgradePolicy.enableAutomaticOSUpgrade* 屬性是設為 *true*。
+若要設定 OS 映像自動升級，請確定擴展集模型定義中的 *automaticOSUpgradePolicy.enableAutomaticOSUpgrade* 屬性是設為 *true* 。
 
 ### <a name="rest-api"></a>REST API
 下列範例說明如何設定擴展集模型上的 OS 自動升級：
@@ -121,14 +121,14 @@ PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/p
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-使用 [new-azvmss 指令程式](/powershell/module/az.compute/update-azvmss) 來設定擴展集的自動 OS 映射升級。 下列範例會在名為*myResourceGroup*的資源群組中，針對名為*myScaleSet*的擴展集設定自動升級：
+使用 [new-azvmss 指令程式](/powershell/module/az.compute/update-azvmss) 來設定擴展集的自動 OS 映射升級。 下列範例會在名為 *myResourceGroup* 的資源群組中，針對名為 *myScaleSet* 的擴展集設定自動升級：
 
 ```azurepowershell-interactive
 Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -AutomaticOSUpgrade $true
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-使用 [az vmss update](/cli/azure/vmss#az-vmss-update) 來設定擴展集的自動 OS 映射升級。 使用 Azure CLI 2.0.47 或更新版本。 下列範例會在名為*myResourceGroup*的資源群組中，針對名為*myScaleSet*的擴展集設定自動升級：
+使用 [az vmss update](/cli/azure/vmss#az-vmss-update) 來設定擴展集的自動 OS 映射升級。 使用 Azure CLI 2.0.47 或更新版本。 下列範例會在名為 *myResourceGroup* 的資源群組中，針對名為 *myScaleSet* 的擴展集設定自動升級：
 
 ```azurecli-interactive
 az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
@@ -184,7 +184,7 @@ az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradeP
 您可以使用 Azure PowerShell、Azure CLI 2.0 或 REST API，檢查您擴展集上最近執行之 OS 升級的記錄。 您可以取得過去兩個月內的最近五次 OS 升級嘗試的記錄。
 
 ### <a name="rest-api"></a>REST API
-下列範例會使用[REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) ，在名為*myResourceGroup*的資源群組中檢查名為*myScaleSet*的擴展集狀態：
+下列範例會使用 [REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) ，在名為 *myResourceGroup* 的資源群組中檢查名為 *myScaleSet* 的擴展集狀態：
 
 ```
 GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2019-12-01`
@@ -228,14 +228,14 @@ GET 呼叫會傳回類似下列範例輸出的內容：
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-使用 [Get-AzVmss](/powershell/module/az.compute/get-azvmss) Cmdlet 來檢查擴展集的 OS 升級歷程記錄。 下列範例會詳細說明如何在名為*myResourceGroup*的資源群組中，檢查名為*myScaleSet*之擴展集的 OS 升級狀態：
+使用 [Get-AzVmss](/powershell/module/az.compute/get-azvmss) Cmdlet 來檢查擴展集的 OS 升級歷程記錄。 下列範例會詳細說明如何在名為 *myResourceGroup* 的資源群組中，檢查名為 *myScaleSet* 之擴展集的 OS 升級狀態：
 
 ```azurepowershell-interactive
 Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -OSUpgradeHistory
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-使用 [az vmss get-os-upgrade-history](/cli/azure/vmss#az-vmss-get-os-upgrade-history) 來檢查擴展集的 OS 升級歷程記錄。 使用 Azure CLI 2.0.47 或更新版本。 下列範例會詳細說明如何在名為*myResourceGroup*的資源群組中，檢查名為*myScaleSet*之擴展集的 OS 升級狀態：
+使用 [az vmss get-os-upgrade-history](/cli/azure/vmss#az-vmss-get-os-upgrade-history) 來檢查擴展集的 OS 升級歷程記錄。 使用 Azure CLI 2.0.47 或更新版本。 下列範例會詳細說明如何在名為 *myResourceGroup* 的資源群組中，檢查名為 *myScaleSet* 之擴展集的 OS 升級狀態：
 
 ```azurecli-interactive
 az vmss get-os-upgrade-history --resource-group myResourceGroup --name myScaleSet
@@ -269,21 +269,21 @@ az vm image list --location "westus" --publisher "Canonical" --offer "UbuntuServ
 > OS 映射升級的手動觸發程式不會提供自動回復功能。 如果實例未在升級作業之後復原其健康情況，則無法還原其先前的 OS 磁片。
 
 ### <a name="rest-api"></a>REST API
-使用 [啟動 OS 升級](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) API 呼叫來開始輪流升級，以將所有虛擬機器擴展集實例移至最新的可用映射作業系統版本。 已在執行最新可用 OS 版本的實例不會受到影響。 下列範例會詳細說明如何在名為*myResourceGroup*的資源群組中，于名為*myScaleSet*的擴展集上開始進行滾動 OS 升級。
+使用 [啟動 OS 升級](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) API 呼叫來開始輪流升級，以將所有虛擬機器擴展集實例移至最新的可用映射作業系統版本。 已在執行最新可用 OS 版本的實例不會受到影響。 下列範例會詳細說明如何在名為 *myResourceGroup* 的資源群組中，于名為 *myScaleSet* 的擴展集上開始進行滾動 OS 升級。
 
 ```
 POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2019-12-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-使用 [AzVmssRollingOSUpgrade](/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade) Cmdlet 來檢查擴展集的 OS 升級歷程記錄。 下列範例會詳細說明如何在名為*myResourceGroup*的資源群組中，于名為*myScaleSet*的擴展集上開始進行滾動 OS 升級。
+使用 [AzVmssRollingOSUpgrade](/powershell/module/az.compute/Start-AzVmssRollingOSUpgrade) Cmdlet 來檢查擴展集的 OS 升級歷程記錄。 下列範例會詳細說明如何在名為 *myResourceGroup* 的資源群組中，于名為 *myScaleSet* 的擴展集上開始進行滾動 OS 升級。
 
 ```azurepowershell-interactive
 Start-AzVmssRollingOSUpgrade -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-使用 [az vmss 輪流升級開始](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) ，檢查您擴展集的 OS 升級歷程記錄。 使用 Azure CLI 2.0.47 或更新版本。 下列範例會詳細說明如何在名為*myResourceGroup*的資源群組中，于名為*myScaleSet*的擴展集上開始進行滾動 OS 升級。
+使用 [az vmss 輪流升級開始](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) ，檢查您擴展集的 OS 升級歷程記錄。 使用 Azure CLI 2.0.47 或更新版本。 下列範例會詳細說明如何在名為 *myResourceGroup* 的資源群組中，于名為 *myScaleSet* 的擴展集上開始進行滾動 OS 升級。
 
 ```azurecli-interactive
 az vmss rolling-upgrade start --resource-group "myResourceGroup" --name "myScaleSet" --subscription "subscriptionId"

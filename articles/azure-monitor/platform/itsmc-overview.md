@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 344e15d3c15474fc8959b120f86bb86f22217ef6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 5c18a904f0ec0f100312ee3fafb53038bd2ccf19
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676952"
+ms.locfileid: "92745722"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>使用 IT Service Management Connector 將 Azure 連線到 ITSM 工具
 
@@ -125,7 +125,7 @@ ITSMC 支援與下列 ITSM 工具連線：
 1. 在 Azure 入口網站中，按一下 [  **警示** ]。
 2. 在上方窗格中，按一下 [  **管理動作** ]。 [新增動作群組] 視窗隨即出現。
 
-    ![動作群組](media/itsmc-overview/action-groups.png)
+    [![動作群組](media/itsmc-overview/action-groups-selection.png)](media/itsmc-overview/action-groups-selection-big.png)
 
 3. 選取您要在其中建立動作群組的 **訂** 用帳戶和 **資源群組** 。 提供動作群組的 **動作組名** 和 **顯示名稱** 。 按一下 **[下一步：通知]** 。
 
@@ -135,7 +135,7 @@ ITSMC 支援與下列 ITSM 工具連線：
 5. 在 [動作] 清單中，從 [動作類型] 的下拉式功能表選取 [ITSM]。 提供動作的 **名稱** ，然後按一下代表 **編輯詳細資料** 的畫筆。
 6. 選取 Log Analytics 工作區所在位置的 [訂用帳戶]。 選取 **連線** 名稱 (您的 ITSM 連接器名稱)，後面接著您的工作區名稱。 例如，"MyITSMMConnector(MyWorkspace)"。
 
-    ![ITSM 動作詳細資料](media/itsmc-overview/itsm-action-details.png)
+    ![ITSM 動作詳細資料](media/itsmc-overview/itsm-action-configuration.png)
 
 7. 從下拉式功能表選取 [工作項目] 類型。
 

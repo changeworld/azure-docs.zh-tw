@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 4db53b806adc2e29ae9c9a950faf8fc822c9d66b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: how-to, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 5a7d33e163c10a6d56416ea474d7e3a9e8624219
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743976"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744410"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>在 Azure Machine Learning 中建立 & 使用軟體環境
 
@@ -56,7 +56,7 @@ Environment(name="myenv")
 
 策劃環境包含 Python 套件的集合，預設可在您的工作區中使用。 這些環境是由快取的 Docker 映射所支援，可減少執行準備成本。 您可以選取下列其中一個常用的策劃環境來開始： 
 
-* _AzureML-最基本_的環境包含一組最基本的套件，可讓您執行追蹤和資產上傳。 您可以使用它做為您自己環境的起點。
+* _AzureML-最基本_ 的環境包含一組最基本的套件，可讓您執行追蹤和資產上傳。 您可以使用它做為您自己環境的起點。
 
 * AzureML 教學課程環境包含常見 _的_ 資料科學套件。 這些套件包括 Scikit-learn-學習、Pandas、Matplotlib 和一組較大的 azureml sdk 套件。
 
@@ -110,7 +110,7 @@ Azure Machine Learning 類別的，可 [`DockerSection`](https://docs.microsoft.
 myenv.docker.enabled = True
 ```
 
-根據預設，新建立的 Docker 映射會出現在與工作區相關聯的容器登錄中。  存放庫名稱的形式為*azureml/azureml_ \<uuid\> *。 名稱 (*uuid*) 部分的唯一識別碼，會對應至從環境設定計算的雜湊。 此對應可讓服務判斷指定環境的映射是否已存在，以供重複使用。
+根據預設，新建立的 Docker 映射會出現在與工作區相關聯的容器登錄中。  存放庫名稱的形式為 *azureml/azureml_ \<uuid\>* 。 名稱 ( *uuid* ) 部分的唯一識別碼，會對應至從環境設定計算的雜湊。 此對應可讓服務判斷指定環境的映射是否已存在，以供重複使用。
 
 #### <a name="use-a-prebuilt-docker-image"></a>使用預建的 Docker 映射
 
@@ -259,7 +259,7 @@ myenv.environment_variables = {"MESSAGE":"Hello from Azure Machine Learning"}
 ```
 
 >[!IMPORTANT]
-> 如果您將相同的環境定義用於另一次執行，Azure Machine Learning 服務會重複使用您環境的快取映射。 例如，如果您建立的環境具有取消固定的套件相依性，則 ```numpy``` 該環境會繼續使用在 _建立環境時_所安裝的套件版本。 此外，任何符合定義的未來環境都將繼續使用舊版本。 如需詳細資訊，請參閱 [環境建立、快取和重複使用](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)。
+> 如果您將相同的環境定義用於另一次執行，Azure Machine Learning 服務會重複使用您環境的快取映射。 例如，如果您建立的環境具有取消固定的套件相依性，則 ```numpy``` 該環境會繼續使用在 _建立環境時_ 所安裝的套件版本。 此外，任何符合定義的未來環境都將繼續使用舊版本。 如需詳細資訊，請參閱 [環境建立、快取和重複使用](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)。
 
 ### <a name="private-python-packages"></a>私人 Python 套件
 

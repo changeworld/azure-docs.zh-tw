@@ -2,15 +2,15 @@
 title: 設定 ASP.NET apps
 description: 瞭解如何在 Azure App Service 中設定 ASP.NET 應用程式。 本文說明最常見的設定工作。
 ms.devlang: dotnet
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 30fddaec9ca5d0439beadedf7c5ca6b6c7d51d83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ed6835583cc4881b19eee14ed392b193324535e
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961698"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744163"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>針對 Azure App Service 設定 ASP.NET 應用程式
 
@@ -71,7 +71,7 @@ ConfigurationManager.ConnectionStrings["MyConnection"];
 }
 ```
 
-如果您在 App Service 和 *web.config*中以相同的名稱來設定應用程式設定，App Service 值的優先順序會高於 *web.config* 值。 本機 *web.config* 值可讓您在本機對應用程式進行偵錯工具，但 App Service 值可讓您在產品中使用生產設置來執行應用程式。 連接字串的運作方式相同。 如此一來，您就可以將應用程式秘密保存在程式碼存放庫之外，並在不變更程式碼的情況下存取適當的值。
+如果您在 App Service 和 *web.config* 中以相同的名稱來設定應用程式設定，App Service 值的優先順序會高於 *web.config* 值。 本機 *web.config* 值可讓您在本機對應用程式進行偵錯工具，但 App Service 值可讓您在產品中使用生產設置來執行應用程式。 連接字串的運作方式相同。 如此一來，您就可以將應用程式秘密保存在程式碼存放庫之外，並在不變更程式碼的情況下存取適當的值。
 
 ## <a name="deploy-multi-project-solutions"></a>部署多專案方案
 
@@ -91,7 +91,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 </system.web>
 ```
 
-使用更新的 *Web.config*重新部署您的應用程式。您現在應該會看到相同的詳細例外狀況頁面。
+使用更新的 *Web.config* 重新部署您的應用程式。您現在應該會看到相同的詳細例外狀況頁面。
 
 ## <a name="access-diagnostic-logs"></a>存取診斷記錄
 

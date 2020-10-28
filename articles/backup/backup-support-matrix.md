@@ -4,12 +4,12 @@ description: 摘要說明 Azure 備份服務的支援設定和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: d9da2ee893244afc7150ab6249dbe51845d5d0c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee37e994c9e72c3d3c98455360dc68746f49d278
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332707"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743117"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 備份的支援矩陣
 
@@ -108,8 +108,8 @@ Azure 備份支援傳輸中和待用資料的加密。
 
 - 備份資料會在復原服務保存庫中以加密格式儲存。
 - 使用 MARS 代理程式從內部部署伺服器備份資料時，資料會在上傳至 Azure 備份時以複雜密碼加密，而且只有在從 Azure 備份下載時才會解密。
-- 備份 Azure VM 時，您必須在虛擬機器*內*設定加密。
-- Azure 備份支援 Azure 磁碟加密，其會在 Windows 虛擬機器上使用 BitLocker，而在 Linux 虛擬機器上使用 **dm-crypt**。
+- 備份 Azure VM 時，您必須在虛擬機器 *內* 設定加密。
+- Azure 備份支援 Azure 磁碟加密，其會在 Windows 虛擬機器上使用 BitLocker，而在 Linux 虛擬機器上使用 **dm-crypt** 。
 - 在後端，Azure 備份會使用 [Azure 儲存體服務加密](../storage/common/storage-service-encryption.md)，保護待用資料。
 
 **機器** | **傳輸中** | **待用**
@@ -136,7 +136,7 @@ Azure 備份支援傳輸中和待用資料的加密。
 
 **設定** | **限制**
 --- | ---
-**每個受保護實例的最大復原點 (機或工作負載) ** | 9,999
+**每個受保護實例的最大復原點 (機或工作負載)** | 9,999
 **復原點的到期時間上限** | 沒有限制
 **備份至 DPM/MABS 的頻率上限** | 每隔 15 分鐘 (SQL Server)<br/><br/> 每小時一次 (其他工作負載)
 **備份至保存庫的頻率上限** | **執行 MABS 的內部部署 Windows 電腦或 Azure VM：** 每天三次<br/><br/> **DPM/MABS：** 每天兩次<br/><br/> **Azure VM 備份：** 每天一次
@@ -151,7 +151,7 @@ Azure 備份已新增跨區域還原功能來加強資料可用性和復原功�
 | 備份管理類型 | 支援                                                    | 支援的區域 |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | 是。   支援加密 VM 和磁碟小於 4 TB 的 VM | 所有 Azure 公用區域和主權雲端。  |
-| SQL/SAP HANA | 是                                                          | 美國西部 2 (WUS2) 、美國中西部 (WCUS) 、加拿大中部 (CNC) 、加拿大東部 (CNE) 、美國東部 (EUS) 、美國西部 (WUS) 、日本東部 (JPE) 、日本東部 (JPE)  |
+| SQL/SAP HANA | 是                                                          | 法國以外的所有公用區域 |
 | MARS 代理程式/內部部署  | 否                                                           | N/A               |
 | Azure 檔案共用) 的 AFS (                 | 否                                                           | N/A               |
 

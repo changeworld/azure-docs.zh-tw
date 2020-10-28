@@ -5,16 +5,16 @@ author: normesta
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/02/2020
+ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: b5eb37ff7063662341cf3b92176c26839df4b21d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdd5a8b518a374340af35d5f866d51d016e5ac79
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711231"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745190"
 ---
 # <a name="monitoring-azure-blob-storage"></a>監視 Azure Blob 儲存體
 
@@ -52,17 +52,9 @@ Azure 監視器中的計量和記錄只支援 Azure Resource Manager 儲存體�
 
 ## <a name="collection-and-routing"></a>收集和路由
 
-系統會自動收集平臺計量和活動記錄，但是可以使用診斷設定將其路由至其他位置。 您必須建立診斷設定以收集資源記錄。 
+系統會自動收集平臺計量和活動記錄，但是可以使用診斷設定將其路由至其他位置。 
 
-若要使用 Azure 入口網站、Azure CLI 或 PowerShell 來建立診斷設定，請參閱 [建立診斷設定以收集 Azure 中的平臺記錄和計量](../../azure-monitor/platform/diagnostic-settings.md)。 
-
-若要查看建立診斷設定的 Azure Resource Manager 範本，請參閱 [Azure 儲存體的診斷設定](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage)。
-
-當您建立診斷設定時，請選擇您要啟用記錄的儲存體類型，例如 Blob、佇列、資料表或檔案。 針對 Blob 儲存體，請選擇 [ **blob**]。 Data Lake Storage Gen2 不會顯示為儲存體類型。 這是因為 Data Lake Storage Gen2 是適用于 Blob 儲存體的一組功能。 
-
-如果您在 Azure 入口網站中建立診斷設定，可以從清單中選取資源。 如果您使用 PowerShell 或 Azure CLI，則需要使用 Blob 儲存體端點的資源識別碼。 在 Azure 入口網站中，開啟您儲存體帳戶的 [屬性] 頁面，即可尋找資源識別碼。
-
-您也必須指定下列其中一個要收集記錄的作業類別目錄。 
+若要收集資源記錄，您必須建立診斷設定。 當您建立設定時，請選擇 [ **blob** ] 作為您想要啟用記錄的儲存體類型。 然後，指定您要收集記錄的下列其中一種作業類別目錄。 
 
 | 類別 | 描述 |
 |:---|:---|
@@ -70,11 +62,202 @@ Azure 監視器中的計量和記錄只支援 Azure Resource Manager 儲存體�
 | StorageWrite | 對物件進行寫入作業。 |
 | StorageDelete | 刪除物件上的作業。 |
 
+> [!NOTE]
+> Data Lake Storage Gen2 不會顯示為儲存體類型。 這是因為 Data Lake Storage Gen2 是適用于 Blob 儲存體的一組功能。 
+
+## <a name="creating-a-diagnostic-setting"></a>建立診斷設定
+
+您可以使用 Azure 入口網站、PowerShell、Azure CLI 或 Azure Resource Manager 範本來建立診斷設定。 
+
+如需一般指引，請參閱 [建立診斷設定以收集 Azure 中的平臺記錄和計量](../../azure-monitor/platform/diagnostic-settings.md)。
+
+> [!NOTE]
+> Azure 監視器中的 Azure 儲存體記錄處於公開預覽狀態，可在所有公用雲端區域中進行預覽測試。 若要註冊預覽，請參閱[本頁](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)。 此預覽可讓 blob (記錄，其中包含 Azure Data Lake Storage Gen2) 、檔案、佇列和資料表。 這項功能適用于使用 Azure Resource Manager 部署模型建立的所有儲存體帳戶。 請參閱 [儲存體帳戶總覽](../common/storage-account-overview.md)。
+
+### <a name="azure-portal"></a>[Azure 入口網站](#tab/azure-portal)
+
+1. 登入 Azure 入口網站。
+
+2. 瀏覽至儲存體帳戶。
+
+3. 在 [ **監視** ] 區段中，按一下 [ **診斷設定 (預覽])** 。
+
+   > [!div class="mx-imgBorder"]
+   > ![入口網站 - 診斷記錄](media/monitor-blob-storage/diagnostic-logs-settings-pane.png)   
+
+4. 選擇 [ **blob** ] 作為您想要啟用記錄的儲存體類型。
+
+5. 按一下「新增診斷設定」  。
+
+   > [!div class="mx-imgBorder"]
+   > ![入口網站-資源記錄-新增診斷設定](media/monitor-blob-storage/diagnostic-logs-settings-pane-2.png)
+
+   [ **診斷設定** ] 頁面隨即出現。
+
+   > [!div class="mx-imgBorder"]
+   > ![資源記錄頁面](media/monitor-blob-storage/diagnostic-logs-page.png)
+
+6. 在頁面的 [ **名稱** ] 欄位中，輸入此資源記錄檔設定的名稱。 然後，選取您要記錄哪些作業 (讀取、寫入和刪除作業) ，以及要將記錄傳送至何處。
+
+#### <a name="archive-logs-to-a-storage-account"></a>將記錄封存至儲存體帳戶
+
+1. 選取 [封存 **至儲存體帳戶** ] 核取方塊，然後按一下 [ **設定** ] 按鈕。
+
+   > [!div class="mx-imgBorder"]   
+   > ![診斷設定頁面封存儲存體](media/monitor-blob-storage/diagnostic-logs-settings-pane-archive-storage.png)
+
+2. 在 [ **儲存體帳戶** ] 下拉式清單中，選取您要封存記錄的儲存體帳戶，按一下 [ **確定]** 按鈕，然後按一下 [ **儲存** ] 按鈕。
+
+   > [!NOTE]
+   > 在您選擇儲存體帳戶作為匯出目的地之前，請參閱封存 [Azure 資源記錄](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage) 以瞭解儲存體帳戶上的必要條件。
+
+#### <a name="stream-logs-to-azure-event-hubs"></a>將記錄串流至 Azure 事件中樞
+
+1. 選取 [ **串流至事件中樞** ] 核取方塊，然後按一下 [ **設定** ] 按鈕。
+
+2. 在 [ **選取事件中樞** ] 窗格中，選擇您想要串流記錄的事件中樞命名空間、名稱和原則名稱。 
+
+   > [!div class="mx-imgBorder"]
+   > ![診斷設定頁面事件中樞](media/monitor-blob-storage/diagnostic-logs-settings-pane-event-hub.png)
+
+3. 按一下 [ **確定]** 按鈕，然後按一下 [ **儲存** ] 按鈕。
+
+#### <a name="send-logs-to-azure-log-analytics"></a>將記錄傳送至 Azure Log Analytics
+
+1. 選取 [ **傳送至 Log analytics** ] 核取方塊，並選取 Log Analytics 工作區，然後按一下，再按一下 [ **儲存** ] 按鈕。
+
+   > [!div class="mx-imgBorder"]   
+   > ![診斷設定頁面記錄分析](media/monitor-blob-storage/diagnostic-logs-settings-pane-log-analytics.png)
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+1. 開啟 Windows PowerShell 命令視窗，然後使用命令登入您的 Azure 訂用帳戶 `Connect-AzAccount` 。 然後，依照畫面上的指示進行。
+
+   ```powershell
+   Connect-AzAccount
+   ```
+
+2. 將使用中的訂用帳戶設定為您想要啟用記錄的儲存體帳戶訂用帳戶。
+
+   ```powershell
+   Set-AzContext -SubscriptionId <subscription-id>
+   ```
+
+#### <a name="archive-logs-to-a-storage-account"></a>將記錄封存至儲存體帳戶
+
+使用 [>set-azdiagnosticsetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell Cmdlet 搭配參數來啟用記錄 `StorageAccountId` 。
+
+```powershell
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+```
+
+將 `<storage-service-resource--id>` 此程式碼片段中的預留位置取代為 blob 服務的資源識別碼。 在 Azure 入口網站中，開啟您儲存體帳戶的 [屬性] 頁面，即可尋找資源識別碼。
+
+您可以使用 `StorageRead` 、 `StorageWrite` 和做 `StorageDelete` 為 **Category** 參數的值。
+
+以下為範例：
+
+`Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default -StorageAccountId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount -Enabled $true -Category StorageWrite,StorageDelete`
+
+如需每個參數的說明，請參閱透過 [Azure PowerShell 封存 Azure 資源記錄](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#archive-diagnostic-logs-via-azure-powershell)。
+
+#### <a name="stream-logs-to-an-event-hub"></a>將記錄串流至事件中樞
+
+使用 [>set-azdiagnosticsetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell Cmdlet 搭配參數來啟用記錄 `EventHubAuthorizationRuleId` 。
+
+```powershell
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+```
+
+以下為範例：
+
+`Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default -EventHubAuthorizationRuleId /subscriptions/20884142-a14v3-4234-5450-08b10c09f4/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey -Enabled $true -Category StorageDelete`
+
+如需每個參數的描述，請參閱透過 [PowerShell Cmdlet 將資料串流至事件中樞](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-event-hubs#via-powershell-cmdlets)。
+
+#### <a name="send-logs-to-log-analytics"></a>將記錄傳送至 Log Analytics
+
+使用 [>set-azdiagnosticsetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell Cmdlet 搭配參數來啟用記錄 `WorkspaceId` 。
+
+```powershell
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+```
+
+以下為範例：
+
+`Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default -WorkspaceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace -Enabled $true -Category StorageDelete`
+
+如需詳細資訊，請參閱 [Azure 監視器中的將 Azure 資源記錄串流至 Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store)。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. 首先，開啟 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)，或若已在本機[安裝](https://docs.microsoft.com/cli/azure/install-azure-cli) Azure CLI，請開啟 Windows PowerShell 等命令主控台應用程式。
+
+2. 如果您的身分識別與多個訂用帳戶相關聯，請將您的使用中訂用帳戶設定為您想要啟用記錄的儲存體帳戶訂用帳戶。
+
+   ```azurecli-interactive
+   az account set --subscription <subscription-id>
+   ```
+
+   使用訂閱識別碼取代 `<subscription-id>` 預留位置值。
+
+#### <a name="archive-logs-to-a-storage-account"></a>將記錄封存至儲存體帳戶
+
+使用 [az monitor 診斷-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 命令來啟用記錄。
+
+```azurecli-interactive
+az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
+```
+
+`<storage-service-resource--id>`將此程式碼片段中的預留位置取代為資源識別碼 Blob 儲存體服務。 在 Azure 入口網站中，開啟您儲存體帳戶的 [屬性] 頁面，即可尋找資源識別碼。
+
+您可以使用 `StorageRead` 、 `StorageWrite` 和做 `StorageDelete` 為 **category** 參數的值。
+
+以下為範例：
+
+`az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/blobServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
+
+如需每個參數的描述，請參閱透過 Azure CLI 的封存 [資源記錄](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#archive-diagnostic-logs-via-the-azure-cli)檔。
+
+#### <a name="stream-logs-to-an-event-hub"></a>將記錄串流至事件中樞
+
+使用 [az monitor 診斷-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 命令來啟用記錄。
+
+```azurecli-interactive
+az monitor diagnostic-settings create --name <setting-name> --event-hub <event-hub-name> --event-hub-rule <event-hub-namespace-and-key-name> --resource <storage-account-resource-id> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
+```
+
+以下為範例：
+
+`az monitor diagnostic-settings create --name setting1 --event-hub myeventhub --event-hub-rule /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/blobServices/default --logs '[{"category": StorageDelete, "enabled": true }]'`
+
+如需每個參數的描述，請參閱透過 [Azure CLI 將串流資料串流至事件中樞](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-event-hubs#via-azure-cli)。
+
+#### <a name="send-logs-to-log-analytics"></a>將記錄傳送至 Log Analytics
+
+使用 [az monitor 診斷-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 命令來啟用記錄。
+
+```azurecli-interactive
+az monitor diagnostic-settings create --name <setting-name> --workspace <log-analytics-workspace-resource-id> --resource <storage-account-resource-id> --logs '[{"category": <category name>, "enabled": true "retentionPolicy": {"days": <days>, "enabled": <retention-bool}}]'
+```
+
+以下為範例：
+
+`az monitor diagnostic-settings create --name setting1 --workspace /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/blobServices/default --logs '[{"category": StorageDelete, "enabled": true ]'`
+
+ 如需詳細資訊，請參閱 [Azure 監視器中的將 Azure 資源記錄串流至 Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store)。
+
+### <a name="template"></a>[範本](#tab/template)
+
+若要查看建立診斷設定的 Azure Resource Manager 範本，請參閱 [Azure 儲存體的診斷設定](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-diagnostic-settings#diagnostic-setting-for-azure-storage)。
+
+---
+
 ## <a name="analyzing-metrics"></a>分析計量
 
 您可使用計量瀏覽器，利用其他 Azure 服務的計量來分析 Azure 儲存體的計量。 從 [Azure 監視器] 功能表中選擇 [計量]，以開啟計量瀏覽器。 如需使用此工具的詳細資訊，請參閱[開始使用 Azure 計量瀏覽器](../../azure-monitor/platform/metrics-getting-started.md)。 
 
-此範例說明如何檢視帳戶層級的**交易**。
+此範例說明如何檢視帳戶層級的 **交易** 。
 
 ![在 Azure 入口網站中存取計量的螢幕擷取畫面](./media/monitor-blob-storage/access-metrics-portal.png)
 
@@ -97,49 +280,7 @@ Azure Blob 儲存體的計量位於下列命名空間：
 > [!TIP]
 > 若要檢視 Azure CLI 或 .NET 範例，請選擇此處所列的對應索引標籤。
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-#### <a name="list-the-metric-definition"></a>列出計量定義
-
-您可以列出儲存體帳戶或 Blob 儲存體服務的度量定義。 使用 [Get-AzMetricDefinition](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricdefinition) Cmdlet。
-
-在此範例中，請將 `<resource-ID>` 預留位置取代為整個儲存體帳戶的資源識別碼或 Blob 儲存體服務的資源識別碼。  您可在 Azure 入口網站中儲存體帳戶的 [屬性] 頁面上找到這些資源識別碼。
-
-```powershell
-   $resourceId = "<resource-ID>"
-   Get-AzMetricDefinition -ResourceId $resourceId
-```
-
-#### <a name="reading-metric-values"></a>讀取度量值
-
-您可以讀取儲存體帳戶或 Blob 儲存體服務的帳戶層級度量值。 使用 [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric) Cmdlet。
-
-```powershell
-   $resourceId = "<resource-ID>"
-   Get-AzMetric -ResourceId $resourceId -MetricNames "UsedCapacity" -TimeGrain 01:00:00
-```
-
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-#### <a name="list-the-account-level-metric-definition"></a>列出帳戶層級的計量定義
-
-您可以列出儲存體帳戶或 Blob 儲存體服務的度量定義。 使用 [az monitor metrics list-definitions](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) 命令。
- 
-在此範例中，請將 `<resource-ID>` 預留位置取代為整個儲存體帳戶的資源識別碼或 Blob 儲存體服務的資源識別碼。 您可在 Azure 入口網站中儲存體帳戶的 [屬性] 頁面上找到這些資源識別碼。
-
-```azurecli-interactive
-   az monitor metrics list-definitions --resource <resource-ID>
-```
-
-#### <a name="read-account-level-metric-values"></a>讀取帳戶層級的計量值
-
-您可以讀取儲存體帳戶或 Blob 儲存體服務的度量值。 使用 [az monitor metrics list](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list) 命令。
-
-```azurecli-interactive
-   az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
-```
-
-### <a name="net"></a>[.NET](#tab/dotnet)
+### <a name="net"></a>[.NET](#tab/azure-portal)
 
 Azure 監視器提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) 來讀取計量定義和值。 [範例程式碼](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)示範如何使用 SDK 搭配不同的參數。 您必須使用 `0.18.0-preview` 或更新版本的儲存體計量。
  
@@ -279,6 +420,51 @@ Azure 監視器提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.
 
 ```
 
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+#### <a name="list-the-metric-definition"></a>列出計量定義
+
+您可以列出儲存體帳戶或 Blob 儲存體服務的度量定義。 使用 [Get-AzMetricDefinition](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricdefinition) Cmdlet。
+
+在此範例中，請將 `<resource-ID>` 預留位置取代為整個儲存體帳戶的資源識別碼或 Blob 儲存體服務的資源識別碼。  您可在 Azure 入口網站中儲存體帳戶的 [屬性] 頁面上找到這些資源識別碼。
+
+```powershell
+   $resourceId = "<resource-ID>"
+   Get-AzMetricDefinition -ResourceId $resourceId
+```
+
+#### <a name="reading-metric-values"></a>讀取度量值
+
+您可以讀取儲存體帳戶或 Blob 儲存體服務的帳戶層級度量值。 使用 [Get-AzMetric](https://docs.microsoft.com/powershell/module/Az.Monitor/Get-AzMetric) Cmdlet。
+
+```powershell
+   $resourceId = "<resource-ID>"
+   Get-AzMetric -ResourceId $resourceId -MetricNames "UsedCapacity" -TimeGrain 01:00:00
+```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+#### <a name="list-the-account-level-metric-definition"></a>列出帳戶層級的計量定義
+
+您可以列出儲存體帳戶或 Blob 儲存體服務的度量定義。 使用 [az monitor metrics list-definitions](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) 命令。
+ 
+在此範例中，請將 `<resource-ID>` 預留位置取代為整個儲存體帳戶的資源識別碼或 Blob 儲存體服務的資源識別碼。 您可在 Azure 入口網站中儲存體帳戶的 [屬性] 頁面上找到這些資源識別碼。
+
+```azurecli-interactive
+   az monitor metrics list-definitions --resource <resource-ID>
+```
+
+#### <a name="read-account-level-metric-values"></a>讀取帳戶層級的計量值
+
+您可以讀取儲存體帳戶或 Blob 儲存體服務的度量值。 使用 [az monitor metrics list](https://docs.microsoft.com/cli/azure/monitor/metrics#az-monitor-metrics-list) 命令。
+
+```azurecli-interactive
+   az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
+```
+### <a name="template"></a>[範本](#tab/template)
+
+N/A。
+
 ---
 
 ## <a name="analyzing-logs"></a>分析記錄
@@ -326,7 +512,7 @@ Blob 儲存體服務本身所提出的要求（例如記錄建立或刪除）不
 
 ### <a name="accessing-logs-in-an-event-hub"></a>存取事件中樞內的記錄
 
-傳送至事件中樞的記錄不會儲存為檔案，但您可確認事件中樞已收到記錄資訊。 在 Azure 入口網站中，移至您的事件中樞並確認**內送郵件**計數大於零。 
+傳送至事件中樞的記錄不會儲存為檔案，但您可確認事件中樞已收到記錄資訊。 在 Azure 入口網站中，移至您的事件中樞並確認 **內送郵件** 計數大於零。 
 
 ![稽核記錄](media/monitor-blob-storage/event-hub-log.png)
 
@@ -345,7 +531,7 @@ Blob 儲存體服務本身所提出的要求（例如記錄建立或刪除）不
 以下是一些您可以在 **記錄搜尋** 列中輸入的查詢，可協助您監視 Blob 儲存體。 這些查詢使用[新語言](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)。
 
 > [!IMPORTANT]
-> 當您從 [儲存體帳戶資源群組] 功能表選取 [ **記錄** ] 時，會開啟 Log Analytics，並將查詢範圍設定為目前的資源群組。 這表示記錄查詢只會包含該資源群組中的資料。 如果您想要執行包含來自其他 Azure 服務之其他資源或資料之資料的查詢，請從 [ **Azure 監視器**] 功能表中選取 [**記錄**]。 如需詳細資訊，請參閱 [Azure 監視器 Log Analytics 中的記錄查詢範圍和時間範圍](/azure/azure-monitor/log-query/scope/)。
+> 當您從 [儲存體帳戶資源群組] 功能表選取 [ **記錄** ] 時，會開啟 Log Analytics，並將查詢範圍設定為目前的資源群組。 這表示記錄查詢只會包含該資源群組中的資料。 如果您想要執行包含來自其他 Azure 服務之其他資源或資料之資料的查詢，請從 [ **Azure 監視器** ] 功能表中選取 [ **記錄** ]。 如需詳細資訊，請參閱 [Azure 監視器 Log Analytics 中的記錄查詢範圍和時間範圍](/azure/azure-monitor/log-query/scope/)。
 
 使用這些查詢可協助您監視 Azure 儲存體帳戶：
 

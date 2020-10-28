@@ -2,16 +2,16 @@
 title: 設定 ASP.NET Core 應用程式
 description: 瞭解如何在 Azure App Service 中設定原生 Windows 實例或預先建立之 Linux 容器中的 ASP.NET Core 應用程式。 本文說明最常見的設定工作。
 ms.devlang: dotnet
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 3456adc2b143f1f51115183fe4873938d067d267
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f7047638aa2e2b4a9ac6ffade82fdc117b56cfb
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961664"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744182"
 ---
 # <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>設定適用于 Azure App Service 的 ASP.NET Core 應用程式
 
@@ -125,10 +125,10 @@ namespace SomeNamespace
 }
 ```
 
-例如，如果您以 App Service 中的相同名稱來設定應用程式設定，並在 *appsettings.js*中設定，則 App Service 值的優先順序會高於 *appsettings.js* 的值。 本機 *appsettings.js* 的值可讓您在本機對應用程式進行偵錯工具，但 App Service 值可讓您在產品中使用生產設置來執行應用程式。 連接字串的運作方式相同。 如此一來，您就可以將應用程式秘密保存在程式碼存放庫之外，並在不變更程式碼的情況下存取適當的值。
+例如，如果您以 App Service 中的相同名稱來設定應用程式設定，並在 *appsettings.js* 中設定，則 App Service 值的優先順序會高於 *appsettings.js* 的值。 本機 *appsettings.js* 的值可讓您在本機對應用程式進行偵錯工具，但 App Service 值可讓您在產品中使用生產設置來執行應用程式。 連接字串的運作方式相同。 如此一來，您就可以將應用程式秘密保存在程式碼存放庫之外，並在不變更程式碼的情況下存取適當的值。
 
 > [!NOTE]
-> 請注意， *appsettings.js*中的[階層](/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data)式設定資料是使用 `:` .net Core 標準的分隔符號來存取。 若要覆寫 App Service 中的特定階層式設定，請在機碼中使用相同的分隔格式來設定應用程式設定名稱。 您可以在 [Cloud Shell](https://shell.azure.com)中執行下列範例：
+> 請注意， *appsettings.js* 中的 [階層](/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data)式設定資料是使用 `:` .net Core 標準的分隔符號來存取。 若要覆寫 App Service 中的特定階層式設定，請在機碼中使用相同的分隔格式來設定應用程式設定名稱。 您可以在 [Cloud Shell](https://shell.azure.com)中執行下列範例：
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings My:Hierarchical:Config:Data="some value"
@@ -175,7 +175,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="detect-https-session"></a>偵測 HTTPS 工作階段
 
-在 App Service 中，[SSL 終止](https://wikipedia.org/wiki/TLS_termination_proxy)會在網路負載平衡器上發生，因此所有的 HTTPS 要求都會以未加密 HTTP 要求的形式進入您的應用程式。 如果您的應用程式邏輯需要知道使用者要求是否已加密，請在 *Startup.cs*中設定轉送的標頭中介軟體：
+在 App Service 中，[SSL 終止](https://wikipedia.org/wiki/TLS_termination_proxy)會在網路負載平衡器上發生，因此所有的 HTTPS 要求都會以未加密 HTTP 要求的形式進入您的應用程式。 如果您的應用程式邏輯需要知道使用者要求是否已加密，請在 *Startup.cs* 中設定轉送的標頭中介軟體：
 
 - 請使用 [ForwardedHeadersOptions](/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) 來設定中介軟體以轉送 `Startup.ConfigureServices` 中的 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭。
 - 將私人 IP 位址範圍新增至已知的網路，讓中介軟體可以信任 App Service 負載平衡器。

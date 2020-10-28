@@ -1,17 +1,17 @@
 ---
 title: 設定 Node.js 應用程式
 description: 瞭解如何在 Azure App Service 中設定原生 Windows 實例或預先建立之 Linux 容器中的 Node.js 應用程式。 本文說明最常見的設定工作。
-ms.custom: devx-track-js
+ms.custom: devx-track-js, devx-track-azurecli
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 48b111966d58af80b6c34fa17231034f4f0cc213
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f925854f4ef09ccc74c0ec1e8fdcca6b71d1437
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311830"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744068"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>設定適用于 Azure App Service 的 Node.js 應用程式
 
@@ -93,8 +93,8 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 1. 執行自訂指令碼 (如果 `PRE_BUILD_SCRIPT_PATH` 已指定)。
 1. 在 `npm install` 不含任何旗標的情況下執行，其中包括 npm `preinstall` 和 `postinstall` 腳本，也會進行安裝 `devDependencies` 。
-1. `npm run build`如果您在*package.js*中指定組建腳本，請執行。
-1. `npm run build:azure`如果組建： azure 腳本是在您*的package.js*中指定的，請執行。
+1. `npm run build`如果您在 *package.js* 中指定組建腳本，請執行。
+1. `npm run build:azure`如果組建： azure 腳本是在您 *的package.js* 中指定的，請執行。
 1. 執行自訂指令碼 (如果 `POST_BUILD_SCRIPT_PATH` 已指定)。
 
 > [!NOTE]
@@ -123,7 +123,7 @@ Node.js 的容器隨附于 [PM2](https://pm2.keymetrics.io/)，也就是生產�
 
 ### <a name="run-custom-command"></a>執行自訂命令
 
-App Service 可以使用自訂命令來啟動應用程式，例如可執行檔（例如 *run.sh*）。例如，若要執行 `npm run start:prod` ，請在 [Cloud Shell](https://shell.azure.com)中執行下列命令：
+App Service 可以使用自訂命令來啟動應用程式，例如可執行檔（例如 *run.sh* ）。例如，若要執行 `npm run start:prod` ，請在 [Cloud Shell](https://shell.azure.com)中執行下列命令：
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "npm run start:prod"
@@ -163,8 +163,8 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 您也可以使用下列延伸模組來設定自訂啟動檔案：
 
-- *.Js*檔案
-- 副檔名為 *.config.js*、 *. yaml*或*yml*的[PM2](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file) *檔。*
+- *.Js* 檔案
+- 副檔名為 *.config.js* 、 *. yaml* 或 *yml* 的 [PM2](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file) *檔。*
 
 若要新增自訂啟動檔案，請在 [Cloud Shell](https://shell.azure.com)中執行下列命令：
 
@@ -177,9 +177,9 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 > [!NOTE]
 > 遠端偵錯程式目前為預覽狀態。
 
-如果您將 Node.js 應用程式設定為以[PM2 執行](#run-with-pm2)，則可以在[Visual Studio Code](https://code.visualstudio.com/)中遠端進行偵錯工具，除非您使用 * .config.js、*. yml 或*yaml*來執行它。
+如果您將 Node.js 應用程式設定為以 [PM2 執行](#run-with-pm2)，則可以在 [Visual Studio Code](https://code.visualstudio.com/)中遠端進行偵錯工具，除非您使用 * .config.js、*. yml 或 *yaml* 來執行它。
 
-在大部分情況下，您的應用程式不需要額外的設定。 如果您的應用程式是以檔案 * 上的process.js* 執行 (預設或自訂) ，它必須 `script` 在 JSON 根目錄中有屬性。 例如：
+在大部分情況下，您的應用程式不需要額外的設定。 如果您的應用程式是以檔案 *上的process.js* 執行 (預設或自訂) ，它必須 `script` 在 JSON 根目錄中有屬性。 例如：
 
 ```json
 {
@@ -191,9 +191,9 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 若要設定遠端偵錯程式的 Visual Studio Code，請安裝 [App Service 擴充](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)功能。 遵循 [擴充功能] 頁面上的指示，並在 Visual Studio Code 中登入 Azure。
 
-在 [Azure explorer] 中，尋找您想要進行偵錯工具的應用程式，並以滑鼠右鍵按一下它，然後選取 [ **開始遠端偵錯**]。 按一下 **[是]** 為您的應用程式啟用它。 App Service 會為您啟動通道 proxy，並附加偵錯工具。 然後，您可以對應用程式提出要求，並查看偵錯工具在中斷點處暫停。
+在 [Azure explorer] 中，尋找您想要進行偵錯工具的應用程式，並以滑鼠右鍵按一下它，然後選取 [ **開始遠端偵錯** ]。 按一下 **[是]** 為您的應用程式啟用它。 App Service 會為您啟動通道 proxy，並附加偵錯工具。 然後，您可以對應用程式提出要求，並查看偵錯工具在中斷點處暫停。
 
-完成偵錯工具之後，請選取 **[中斷連線]** 以停止偵錯工具。 出現提示時，您應該按一下 **[是]** ，以停用遠端偵錯。 若要在稍後停用它，請在 Azure explorer 中，再次以滑鼠右鍵按一下您的應用程式，然後選取 [**停用遠端偵錯**
+完成偵錯工具之後，請選取 **[中斷連線]** 以停止偵錯工具。 出現提示時，您應該按一下 **[是]** ，以停用遠端偵錯。 若要在稍後停用它，請在 Azure explorer 中，再次以滑鼠右鍵按一下您的應用程式，然後選取 [ **停用遠端偵錯**
 
 ::: zone-end
 
@@ -209,7 +209,7 @@ process.env.NODE_ENV
 
 根據預設，當 App Service build automation `npm install --production` 可辨識 Node.js 的應用程式是透過 Git 進行部署，或啟用組建自動化的 Zip 部署時，即會執行。 如果您的應用程式需要任何熱門的自動化工具，例如 Grunt、Bower 或 Gulp，您需要提供 [自訂部署腳本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) 來執行它。
 
-若要讓您的存放庫能夠執行這些工具，您必須將它們新增至*package.js*的相依性。 例如：
+若要讓您的存放庫能夠執行這些工具，您必須將它們新增至 *package.js* 的相依性。 例如：
 
 ```json
 "dependencies": {
@@ -227,7 +227,7 @@ npm install kuduscript -g
 kuduscript --node --scriptType bash --suppressPrompt
 ```
 
-您的存放庫根目錄現在有兩個額外的檔案： *. deployment* 和 *deploy.sh*。
+您的存放庫根目錄現在有兩個額外的檔案： *. deployment* 和 *deploy.sh* 。
 
 開啟 *deploy.sh* 並尋找 `Deployment` 區段，如下所示：
 
@@ -318,7 +318,7 @@ if (req.secure) {
 
 - [存取記錄資料流](#access-diagnostic-logs)。
 - 在生產模式中於本機測試應用程式。 App Service 會在生產模式中執行 node.js 應用程式，因此您必須確定項目生產模式下按預期在本機中運作。 例如：
-    - 根據您 * 的package.js*，可能會針對生產模式安裝不同的封裝， (`dependencies` 與 `devDependencies`) 。
+    - 根據您 *的package.js* ，可能會針對生產模式安裝不同的封裝， (`dependencies` 與 `devDependencies`) 。
     - 某些 web 架構可以在生產模式中以不同的方式部署靜態檔案。
     - 在生產模式中執行時，某些 web 架構可能會使用自訂啟動指令碼。
 - 在開發模式中 App Service 執行您的應用程式。 例如，在 [MEAN.js](https://meanjs.org/)中，您可以藉由 [設定 `NODE_ENV` 應用程式設定](configure-common.md)，在執行時間中將應用程式設定為開發模式。

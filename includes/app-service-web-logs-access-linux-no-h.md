@@ -7,13 +7,13 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/27/2019
 ms.author: cephalin
-ms.custom: include file
-ms.openlocfilehash: df71f0804b62eb4b17ff8d2f652b076b5c64c959
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: include file, devx-track-azurecli
+ms.openlocfilehash: e2c5794e5ce6e23b60bff513562f69c9333d6e34
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822783"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743787"
 ---
 您可以存取從容器產生的主控台記錄。
 
@@ -33,6 +33,6 @@ az webapp log tail --name <app-name> --resource-group <resource-group-name>
 
 如果您沒有立即看到主控台記錄，請在 30 秒後再查看。
 
-若要隨時停止記錄資料流，請輸入 **Ctrl**+**C**。
+若要隨時停止記錄資料流，請輸入 **Ctrl**+**C** 。
 
 您也可以在瀏覽器中的 `https://<app-name>.scm.azurewebsites.net/api/logs/docker` 檢查記錄檔。

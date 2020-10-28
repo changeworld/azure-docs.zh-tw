@@ -5,13 +5,13 @@ author: marcvaneijk
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
-ms.custom: seodec18
-ms.openlocfilehash: 72f9e332a4faa98a8a86ef7b6edbefe20357e33f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: ea010a625c3e3cd6228513299d878733bf3775ce
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356880"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744753"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>開發適用于雲端一致性的 ARM 範本
 
@@ -205,7 +205,7 @@ Resource Manager 會在執行階段擷取巢狀範本。 在 VM 延伸模組，�
 }
 ```
 
-使用此方法，包括設定指令碼在內的所有部署成品，都會和範本本身儲存在同一位置。 若要變更所有連結的位置，您只需為 _artifactsLocation 參數_指定不同的基底 URL 即可。
+使用此方法，包括設定指令碼在內的所有部署成品，都會和範本本身儲存在同一位置。 若要變更所有連結的位置，您只需為 _artifactsLocation 參數_ 指定不同的基底 URL 即可。
 
 ## <a name="factor-in-differing-regional-capabilities"></a>區別區域功能的因素
 
@@ -443,8 +443,8 @@ API 設定檔不是範本中的必要項目。 即使您新增項目，它也只
 
 在範本中，一般會避免硬式編碼的端點。 最佳做法是使用參考範本函式動態擷取端點。 例如，最常見的硬式編碼端點是儲存體帳戶的端點命名空間。 每個儲存體帳戶都有唯一的 FQDN，透過串連儲存體帳戶的名稱和端點命名空間所建構。 名為 mystorageaccount1 的 Blob 儲存體帳戶會導致不同的 FQDN，視雲端而定：
 
-* 在全球 Azure 雲端上建立時，**mystorageaccount1.Blob.core.windows.net**。
-* 在 Azure 中國的世紀雲端建立的**mystorageaccount1.blob.core.chinacloudapi.cn** 。
+* 在全球 Azure 雲端上建立時， **mystorageaccount1.Blob.core.windows.net** 。
+* 在 Azure 中國的世紀雲端建立的 **mystorageaccount1.blob.core.chinacloudapi.cn** 。
 
 下列參考範本函式會從儲存體資源提供者擷取端點命名空間：
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 2d1122d723058af7b11004589a9ebd14958cc4ef
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 4744b974cd20c15d8abf22f52b64b8d3dc5a7f55
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173108"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743003"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>瞭解適用於 MariaDB 的 Azure 資料庫的根 CA 變更變更
 
@@ -45,18 +45,18 @@ ms.locfileid: "92173108"
 
 若要避免應用程式的可用性因為未預期地撤銷憑證而中斷，或要更新已撤銷的憑證，請遵循下列步驟。 其概念是建立新的 *pem* 檔案，其中結合了目前的憑證和新憑證，而在 SSL 憑證驗證期間，將會使用允許的值。 請參閱下列步驟：
 
-*   從下列連結下載**baltimorecybertrustroot.crt**  &  **DigiCertGlobalRootG2** CA：
+*   從下列連結下載 **baltimorecybertrustroot.crt**  &  **DigiCertGlobalRootG2** CA：
     *   https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem
     *   https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem
 
 *   同時包含 **baltimorecybertrustroot.crt** 和 **DigiCertGlobalRootG2** 憑證來產生合併的 CA 憑證存儲。
     *   若為 JAVA (適用于 mariadb Connector/J) 使用者，請執行：
 
-          ```azurecli-interactive
+          ```console
           keytool -importcert -alias MariaDBServerCACert  -file D:\BaltimoreCyberTrustRoot.crt.pem  -keystore truststore -storepass password -noprompt
           ```
 
-          ```azurecli-interactive
+          ```console
           keytool -importcert -alias MariaDBServerCACert2  -file D:\DigiCertGlobalRootG2.crt.pem -keystore truststore -storepass password  -noprompt
           ```
 
@@ -149,7 +149,7 @@ ms.locfileid: "92173108"
 若要確認您是否使用 SSL 連線來連線到伺服器，請參閱 [ssl 驗證](howto-configure-ssl.md#verify-the-ssl-connection)。
 
 ### <a name="14-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>14. 如果我的憑證檔案中已經有 DigiCertGlobalRootG2，是否需要採取動作？
-否。 如果您的憑證檔案已經有 **DigiCertGlobalRootG2**，就不需要採取任何動作。
+否。 如果您的憑證檔案已經有 **DigiCertGlobalRootG2** ，就不需要採取任何動作。
 
 ### <a name="15-what-if-i-have-further-questions"></a>15. 如果我有其他問題，該怎麼辦？
 如果您有任何疑問，請從 [Microsoft Q&中的](mailto:AzureDatabaseformariadb@service.microsoft.com)「社區專家」獲得解答。 如果您有支援方案，且需要技術協助，請 [與我們聯絡](mailto:AzureDatabaseformariadb@service.microsoft.com)。

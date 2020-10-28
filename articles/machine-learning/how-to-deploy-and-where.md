@@ -10,13 +10,13 @@ author: gvashishtha
 ms.reviewer: larryfr
 ms.date: 09/17/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 40d8d4596e7d93b589e44f2dde2d1cb453566d71
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
+ms.openlocfilehash: 2642af3490cd69a3e793f020c193d83d2966e1ab
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999224"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744626"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署模型
 
@@ -255,7 +255,7 @@ inference_config = InferenceConfig(entry_script='path-to-score.py',
 | 計算目標 | 部署設定範例 |
 | ----- | ----- |
 | 本機 | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
-| Azure 容器執行個體 | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
+| Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
 您可以從下列來源匯入本機、Azure 容器實例和 AKS web 服務的類別 `azureml.core.webservice` ：

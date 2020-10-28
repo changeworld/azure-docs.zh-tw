@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: manayar
-ms.openlocfilehash: 0a777b9008864368a6d1731cae0374e55a4c585f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c7574daced9cec078b6e98e378212ce30d6f4f6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842864"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744722"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>預覽：Azure 中 Windows VM 的自動 VM 客體修補
 
@@ -80,17 +80,20 @@ Azure 上的 Windows Vm 現在支援下列修補程式協調流程模式：
 
 **AutomaticByPlatform:**
 - 此模式會啟用 Windows 虛擬機器的自動 VM 來賓修補，而後續的修補程式安裝會由 Azure 進行協調。
+- 這是可用性優先修補的必要模式。
 - 設定此模式也會停用 Windows 虛擬機器上的原生自動更新，以避免重複。
 - 只有使用上述支援的作業系統平臺映射建立的 Vm 才支援此模式。
 - 若要使用此模式，請設定屬性 `osProfile.windowsConfiguration.enableAutomaticUpdates=true` ，並設定  `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatfom` VM 範本中的屬性。
 
 **AutomaticByOS:**
 - 此模式會啟用 Windows 虛擬機器上的自動更新，並透過自動更新在 VM 上安裝修補程式。
+- 此模式不支援可用性優先修補。
 - 如果未指定其他修補程式模式，預設會設定此模式。
 - 若要使用此模式 `osProfile.windowsConfiguration.enableAutomaticUpdates=true` ，請設定屬性，並設定  `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByOS` VM 範本中的屬性。
 
 **手動：**
 - 此模式會停用 Windows 虛擬機器上的自動更新。
+- 此模式不支援可用性優先修補。
 - 使用自訂修補解決方案時應設定此模式。
 - 若要使用此模式 `osProfile.windowsConfiguration.enableAutomaticUpdates=false` ，請設定屬性，並設定  `osProfile.windowsConfiguration.patchSettings.patchMode=Manual` VM 範本中的屬性。
 
@@ -196,7 +199,7 @@ Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-在建立新的 VM 時，請使用 [az vm create](/cli/azure/vm#az-vm-create) 來啟用自動 vm 來賓修補。 下列範例會針對名為*myResourceGroup*的資源群組中名為*myVM*的 VM，設定自動 vm 來賓修補：
+在建立新的 VM 時，請使用 [az vm create](/cli/azure/vm#az-vm-create) 來啟用自動 vm 來賓修補。 下列範例會針對名為 *myResourceGroup* 的資源群組中名為 *myVM* 的 VM，設定自動 vm 來賓修補：
 
 ```azurecli-interactive
 az vm create --resource-group myResourceGroup --name myVM --image Win2019Datacenter --enable-agent --enable-auto-update --patch-mode AutomaticByPlatform

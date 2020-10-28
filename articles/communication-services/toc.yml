@@ -84,6 +84,8 @@
       href: concepts/logging-and-diagnostics.md
     - name: 計量
       href: concepts/metrics.md
+    - name: 疑難排解
+      href: concepts/troubleshooting-info.md
 - name: 範例
   items:
     - name: 群組通話 Hero 範例
@@ -105,4 +107,4 @@
 - name: 資源
   items:
     - name: 版本資訊
-      href: 'https://github.com/Azure/Communication/blob/master/releasenotes/2020-September-22.md'
+      href: 'https://github.com/Azure/Communication/blob/master/releasenotes'

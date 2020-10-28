@@ -3,12 +3,12 @@ title: Azure Kubernetes Service (AKS) 的常見問題集
 description: 尋找一些關於 Azure Kubernetes Service (AKS) 的常見問題解答。
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: c68810e0fd9ee3593aa014243c3f75fb8a63a7fd
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: bbe4d43fde3746e6c992b7f03927f081d3814597
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494518"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745768"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 的常見問題集
 
@@ -57,14 +57,14 @@ AKS 會根據一些 Azure 基礎結構資源來建置，包括虛擬機器擴展
 
 為了啟用此架構，每個 AKS 部署皆會跨越兩個資源群組：
 
-1. 您會建立第一個資源群組。 此群組僅包含 Kubernetes 服務資源。 AKS 資源提供者會在部署期間自動建立第二個資源群組。 第二個資源群組的範例是 *MC_myResourceGroup_myAKSCluster_eastus*。 如需如何指定這第二個資源群組名稱的相關資訊，請參閱下一節。
+1. 您會建立第一個資源群組。 此群組僅包含 Kubernetes 服務資源。 AKS 資源提供者會在部署期間自動建立第二個資源群組。 第二個資源群組的範例是 *MC_myResourceGroup_myAKSCluster_eastus* 。 如需如何指定這第二個資源群組名稱的相關資訊，請參閱下一節。
 1. 第二個資源群組 (稱為「節點資源群組」) 包含所有與該叢集相關聯的基礎結構資源。 這些資源包括 Kubernetes 節點 VM、虛擬網路和儲存體。 根據預設，節點資源群組具有類似 *MC_myResourceGroup_myAKSCluster_eastus* 的名稱。 每當刪除叢集時，AKS 就會自動刪除節點資源，因此，其應該只能用於共用叢集生命週期的資源。
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>我可以為 AKS 節點資源群組提供自己的名稱嗎？
 
-是。 根據預設，AKS 會將節點資源群組命名為 *MC_resourcegroupname_clustername_location*，但您也可以自行命名。
+是。 根據預設，AKS 會將節點資源群組命名為 *MC_resourcegroupname_clustername_location* ，但您也可以自行命名。
 
-若要指定您自己的資源群組名稱，請安裝 [aks-preview][aks-preview-cli] Azure CLI 延伸模組 *0.3.2* 版或更新版本。 當您使用 [az aks create][az-aks-create] 命令建立 AKS 叢集時，請使用 *--node-resource-group* 參數，並指定資源群組的名稱。 如果您[使用 Azure Resource Manager 範本][aks-rm-template]來部署 AKS 叢集，則可使用 *nodeResourceGroup* 屬性來定義資源群組名稱。
+若要指定您自己的資源群組名稱，請安裝 [aks-preview][aks-preview-cli] Azure CLI 延伸模組 *0.3.2* 版或更新版本。 當您使用 [az aks create][az-aks-create] 命令建立 AKS 叢集時，請使用 *--node-resource-group* 參數，並指定資源群組的名稱。 如果您 [使用 Azure Resource Manager 範本][aks-rm-template]來部署 AKS 叢集，則可使用 *nodeResourceGroup* 屬性來定義資源群組名稱。
 
 * 您自己訂用帳戶中的 Azure 資源提供者會自動建立第二個資源群組。
 * 只有在建立叢集時，才能指定自訂資源群組名稱。
@@ -95,12 +95,15 @@ AKS 支援下列[許可控制器][admission-controllers]：
 - *MutatingAdmissionWebhook*
 - *ValidatingAdmissionWebhook*
 - *ResourceQuota*
+- *PodNodeSelector*
+- *PodTolerationRestriction*
+- *ExtendedResourceToleration*
 
 您目前無法修改 AKS 中的許可控制器清單。
 
 ## <a name="can-i-use-admission-controller-webhooks-on-aks"></a>我可以在 AKS 上使用許可控制站 Webhook 嗎？
 
-是，您可以在 AKS 上使用許可控制站 Webhook。 建議您排除以**控制平面標籤**標記的內部 AKS 命名空間。 例如，將下列內容新增至 Webhook 設定：
+是，您可以在 AKS 上使用許可控制站 Webhook。 建議您排除以 **控制平面標籤** 標記的內部 AKS 命名空間。 例如，將下列內容新增至 Webhook 設定：
 
 ```
 namespaceSelector:
@@ -109,9 +112,11 @@ namespaceSelector:
       operator: DoesNotExist
 ```
 
+將 API 伺服器輸出 AKS 防火牆，讓您必須能夠從叢集記憶體取控制器 webhook。
+
 ## <a name="can-admission-controller-webhooks-impact-kube-system-and-internal-aks-namespaces"></a>許可控制站 Webhook 會影響 kube 系統和內部 AKS 命名空間嗎？
 
-為了保護系統的穩定性，並防止自訂的許可控制器影響 kube 系統中的內部服務，命名空間 AKS 具有**許可強制器**，可自動排除 kube 系統和 AKS 內部命名空間。 此服務確保自訂的許可控制器不會影響在 kube 系統中執行的服務。
+為了保護系統的穩定性，並防止自訂的許可控制器影響 kube 系統中的內部服務，命名空間 AKS 具有 **許可強制器** ，可自動排除 kube 系統和 AKS 內部命名空間。 此服務確保自訂的許可控制器不會影響在 kube 系統中執行的服務。
 
 如果您有一個關鍵使用案例，需要在 kube 系統上部署某些項目 (不建議)，以讓自訂許可 Webhook 涵蓋於其中，則您可以新增下列標籤或註釋，讓許可強制器能夠加以忽略。
 

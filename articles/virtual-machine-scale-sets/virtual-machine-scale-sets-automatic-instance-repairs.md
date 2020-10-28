@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 02/28/2020
 ms.reviewer: jushiman
-ms.custom: avverma
-ms.openlocfilehash: 45c316c1d1dd56f6d920423a725b2488df1a5032
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: 383895f2cb5983abd68bfca67d2c8361ee094ea1
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86527416"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744842"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Azure 虛擬機器擴展集的執行個體自動修復
 
@@ -62,13 +62,13 @@ Service fabric 擴展集目前不支援此功能。
 
 ### <a name="grace-period"></a>寬限期
 
-當實例因為 PUT、PATCH 或 POST 動作在擴展集上執行而經歷狀態變更作業 (例如重新安裝映射、重新部署、更新等 ) ，則只有在等候寬限期之後，才會執行該實例上的任何修復動作。 寬限期是允許實例恢復正常狀態的時間量。 寬限期會在狀態變更完成後啟動。 這有助於避免任何過早或意外的修復作業。 擴展集內任何新建立的實例都會接受寬限期， (包括因為修復作業) 所建立的實例。 以 ISO 8601 格式指定的寬限期（以分鐘為單位），而且可以使用 *automaticRepairsPolicy. gracePeriod*屬性來設定。 寬限期的範圍可介於30分鐘到90分鐘之間，預設值為30分鐘。
+當實例因為 PUT、PATCH 或 POST 動作在擴展集上執行而經歷狀態變更作業 (例如重新安裝映射、重新部署、更新等 ) ，則只有在等候寬限期之後，才會執行該實例上的任何修復動作。 寬限期是允許實例恢復正常狀態的時間量。 寬限期會在狀態變更完成後啟動。 這有助於避免任何過早或意外的修復作業。 擴展集內任何新建立的實例都會接受寬限期， (包括因為修復作業) 所建立的實例。 以 ISO 8601 格式指定的寬限期（以分鐘為單位），而且可以使用 *automaticRepairsPolicy. gracePeriod* 屬性來設定。 寬限期的範圍可介於30分鐘到90分鐘之間，預設值為30分鐘。
 
 ### <a name="suspension-of-repairs"></a>修復暫停 
 
-虛擬機器擴展集可讓您視需要暫時暫停自動實例修復。 在虛擬機器擴展集的實例中，[屬性*orchestrationServices* ] 下的 [自動修復] *serviceState*會顯示自動修復的目前狀態。 當擴展集加入宣告自動修復時，[參數*serviceState* ] 的值會設定為 [*執行中]。* 當擴展集的自動修復暫止時，參數 *serviceState* 會設定為 [已 *暫停*]。 如果 *automaticRepairsPolicy* 定義在擴展集上，但未啟用自動修復功能，則參數 *serviceState* 會設定為 [ *未*執行]。
+虛擬機器擴展集可讓您視需要暫時暫停自動實例修復。 在虛擬機器擴展集的實例中，[屬性 *orchestrationServices* ] 下的 [自動修復] *serviceState* 會顯示自動修復的目前狀態。 當擴展集加入宣告自動修復時，[參數 *serviceState* ] 的值會設定為 [ *執行中]。* 當擴展集的自動修復暫止時，參數 *serviceState* 會設定為 [已 *暫停* ]。 如果 *automaticRepairsPolicy* 定義在擴展集上，但未啟用自動修復功能，則參數 *serviceState* 會設定為 [ *未* 執行]。
 
-如果新建立的實例取代擴展集中的狀況不良，即使在重複執行修復作業之後，仍會繼續保持狀況不良，然後以安全性措施的方式，將 *serviceState* 更新為自動修復以 *暫停*。 您可以藉由將 [自動修復] 的 [ *serviceState* ] 值 *設定為 [* 執行中]，再次繼續自動修復。 如需詳細指示，請見關於如何針對擴展集的 [自動修復原則來查看和更新服務狀態](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy) 。 
+如果新建立的實例取代擴展集中的狀況不良，即使在重複執行修復作業之後，仍會繼續保持狀況不良，然後以安全性措施的方式，將 *serviceState* 更新為自動修復以 *暫停* 。 您可以藉由將 [自動修復] 的 [ *serviceState* ] 值 *設定為 [* 執行中]，再次繼續自動修復。 如需詳細指示，請見關於如何針對擴展集的 [自動修復原則來查看和更新服務狀態](#viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy) 。 
 
 自動實例修復程式的運作方式如下：
 
@@ -96,14 +96,14 @@ Service fabric 擴展集目前不支援此功能。
  
 下列步驟會在建立新的擴展集時啟用自動修復原則。
  
-1. 移至 **虛擬機器擴展集**。
+1. 移至 **虛擬機器擴展集** 。
 1. 選取 [ **+ 新增** ] 以建立新的擴展集。
 1. 移至 [ **健康** 情況] 索引標籤。 
 1. 找出 **健全狀況** 區段。
 1. 啟用 [ **監視應用程式健全狀況** ] 選項。
 1. 找出 [ **自動修復原則** ] 區段。
 1. 開啟 **[** **自動修復** ] 選項。
-1. 在 **寬限期 (min) **中，指定寬限期（以分鐘為單位），允許的值介於30到90分鐘。 
+1. 在 **寬限期 (min)** 中，指定寬限期（以分鐘為單位），允許的值介於30到90分鐘。 
 1. 當您完成建立新的擴展集時，請選取 [ **審核 + 建立** ] 按鈕。
 
 ### <a name="rest-api"></a>REST API
@@ -156,7 +156,7 @@ az vmss create \
   --automatic-repairs-grace-period 30
 ```
 
-上述範例使用現有的負載平衡器和健康情況探查來監視實例的應用程式健康情況狀態。 如果您想要改為使用應用程式健全狀況延伸模組進行監視，您可以建立擴展集、設定應用程式健康情況延伸模組，然後使用 *az vmss update*來啟用自動實例修復原則，如下一節所述。
+上述範例使用現有的負載平衡器和健康情況探查來監視實例的應用程式健康情況狀態。 如果您想要改為使用應用程式健全狀況延伸模組進行監視，您可以建立擴展集、設定應用程式健康情況延伸模組，然後使用 *az vmss update* 來啟用自動實例修復原則，如下一節所述。
 
 ## <a name="enabling-automatic-repairs-policy-when-updating-an-existing-scale-set"></a>在更新現有的擴展集時啟用自動修復原則
 
@@ -169,12 +169,12 @@ az vmss create \
 您可以透過 Azure 入口網站修改現有擴展集的自動修復原則。 
  
 1. 移至現有的虛擬機器擴展集。
-1. 在左側功能表的 [ **設定** ] 底下，選取 [ **健全狀況和修復**]。
+1. 在左側功能表的 [ **設定** ] 底下，選取 [ **健全狀況和修復** ]。
 1. 啟用 [ **監視應用程式健全狀況** ] 選項。
 1. 找出 [ **自動修復原則** ] 區段。
 1. 開啟 **[** **自動修復** ] 選項。
-1. 在 **寬限期 (min) **中，指定寬限期（以分鐘為單位），允許的值介於30到90分鐘。 
-1. 完成之後，請選取 [儲存]****。 
+1. 在 **寬限期 (min)** 中，指定寬限期（以分鐘為單位），允許的值介於30到90分鐘。 
+1. 完成之後，請選取 [儲存]  。 
 
 ### <a name="rest-api"></a>REST API
 
@@ -223,7 +223,7 @@ az vmss update \
 
 ### <a name="rest-api"></a>REST API 
 
-針對虛擬機器擴展集使用具有 API 2019-12-01 版或更高版本的 [[取得實例視圖](/rest/api/compute/virtualmachinescalesets/getinstanceview)]，以在屬性*orchestrationServices*下查看自動修復的*serviceState* 。 
+針對虛擬機器擴展集使用具有 API 2019-12-01 版或更高版本的 [ [取得實例視圖](/rest/api/compute/virtualmachinescalesets/getinstanceview)]，以在屬性 *orchestrationServices* 下查看自動修復的 *serviceState* 。 
 
 ```http
 GET '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/instanceView?api-version=2019-12-01'
@@ -309,10 +309,10 @@ Set-AzVmssOrchestrationServiceState `
 
 **正在查看擴展集實例的應用程式健全狀況狀態**
 
-您可以針對虛擬機器擴展集中的實例，使用「 [取得實例」視圖 API](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) 來查看應用程式健康情況狀態。 使用 Azure PowerShell 時，您可以使用 [>get-azvmssvm](/powershell/module/az.compute/get-azvmssvm) 搭配 *-InstanceView* 旗標。 應用程式健康情況狀態會在屬性 *vmHealth*下提供。
+您可以針對虛擬機器擴展集中的實例，使用「 [取得實例」視圖 API](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) 來查看應用程式健康情況狀態。 使用 Azure PowerShell 時，您可以使用 [>get-azvmssvm](/powershell/module/az.compute/get-azvmssvm) 搭配 *-InstanceView* 旗標。 應用程式健康情況狀態會在屬性 *vmHealth* 下提供。
 
 在 Azure 入口網站中，您也可以看到健康情況狀態。 移至現有的擴展集，從左側功能表中選取 [ **實例** ]，然後查看每個擴展集實例健康情況狀態的 [ **健全狀況狀態** ] 資料行。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何為您的擴展集設定 [應用程式健康情況擴充](./virtual-machine-scale-sets-health-extension.md) 功能或 [負載平衡器健全狀況探查](../load-balancer/load-balancer-custom-probe-overview.md) 。

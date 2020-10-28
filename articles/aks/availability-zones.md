@@ -2,15 +2,15 @@
 title: 使用 Azure Kubernetes Service (AKS) 中的可用性區域
 description: 了解如何建立在 Azure Kubernetes Service (AKS) 中的可用性區域之間散發節點的叢集
 services: container-service
-ms.custom: fasttrack-edit, references_regions
+ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: 5d2c670bc862dadf289171fbf53318e876eff3d3
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 7d91491a2f521d974f15878791739a70a31c1bbe
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165803"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745814"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>建立使用可用性區域的 Azure Kubernetes Service (AKS) 叢集
 
@@ -22,7 +22,7 @@ Azure Kubernetes Service (AKS) 叢集會在基本 Azure 基礎結構的邏輯區
 
 ## <a name="before-you-begin"></a>開始之前
 
-您必須安裝並設定 Azure CLI 版本 2.0.76 或以後版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您必須安裝並設定 Azure CLI 版本 2.0.76 或以後版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][install-azure-cli]。
 
 ## <a name="limitations-and-region-availability"></a>限制和區域可用性
 
@@ -56,7 +56,7 @@ Azure Kubernetes Service (AKS) 叢集會在基本 Azure 基礎結構的邏輯區
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>AKS 叢集的可用性區域概觀
 
-可用性區域是高可用性供應項目，可保護您的應用程式和資料不受資料中心故障影響。 區域是在 Azure 區域內獨特的實體位置。 每個區域皆由一或多個配備獨立電力、冷卻系統及網路的資料中心所組成。 若要確保復原能力，所有啟用區域的地區中，都至少要有三個獨立的區域。 某個地區內可用性區域的實體區隔可保護應用程式和資料不受資料中心故障影響。
+可用性區域是高可用性供應項目，可保護您的應用程式和資料不受資料中心故障影響。 區域是在 Azure 區域內獨特的實體位置。 每個區域皆由一或多個配備獨立電力、冷卻系統及網路的資料中心所組成。 為了確保復原能力，在所有區域啟用的區域中一律會有一個以上的區域。 某個地區內可用性區域的實體區隔可保護應用程式和資料不受資料中心故障影響。
 
 如需詳細資訊，請參閱 [Azure 中的區域和可用性區域][az-overview]。
 
@@ -68,7 +68,7 @@ Azure Kubernetes Service (AKS) 叢集會在基本 Azure 基礎結構的邏輯區
 
 ## <a name="create-an-aks-cluster-across-availability-zones"></a>在可用性區域之間建立 AKS 叢集
 
-當您使用 [az aks create][az-aks-create] 命令建立叢集時，會由 `--zones` 參數定義要在其中部署的區域代理程式節點。 如果在叢集建立階段定義 `--zones` 參數，則控制平面元件 (例如 etcd) 會在三個區域之間散佈。 控制平面元件散佈的特定區域，會獨立於初始節點集區專用的明確區域。
+當您使用 [az aks create][az-aks-create] 命令建立叢集時，會由 `--zones` 參數定義要在其中部署的區域代理程式節點。 如果您在建立叢集時定義參數，則 etcd 或 API 等控制平面元件會散佈到區域中的可用區域 `--zones` 。 控制平面元件散佈的特定區域，會獨立於初始節點集區專用的明確區域。
 
 如果您在建立 AKS 叢集時，並未定義預設代理程式集區的任何區域，則不保證控制平面元件會在可用性區域之間散佈。 您可以使用 [az aks nodepool add][az-aks-nodepool-add] 命令來新增其他節點集區，並指定新節點的 `--zones`，但如此並不會變更控制平面在區域間散佈的方式。 僅限叢集或節點集區的建立階段，方能定義可用性區域設定。
 
@@ -107,7 +107,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"
 ```
 
-下列範例輸出顯示了跨指定區域和可用性區域散發的三個節點，例如第一個可用性區域的 *eastus2-1*，以及第二個可用性區域的 *eastus2-2*：
+下列範例輸出顯示了跨指定區域和可用性區域散發的三個節點，例如第一個可用性區域的 *eastus2-1* ，以及第二個可用性區域的 *eastus2-2* ：
 
 ```console
 Name:       aks-nodepool1-28993262-vmss000000

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 643b28b2e88f233d2924270511d3c87fa4d9b767
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba14e2c475611ed77661060d6e17ae0bcbf0a6ca
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631625"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744210"
 ---
 # <a name="step-3-validate-connectivity"></a>步驟3：驗證連線能力
 
@@ -29,18 +29,27 @@ ms.locfileid: "91631625"
 
 - 您必須在記錄轉寄站電腦上擁有較高的許可權 (sudo) 。
 
-- 您必須在記錄轉寄站電腦上安裝 Python。<br>
+- 您必須在記錄轉寄站電腦上安裝 **python 2.7** 。<br>
 使用 `python –version` 命令來檢查。
+
+- 在此程式中的某個時間點，您可能需要工作區識別碼和工作區主要金鑰。 您可以在工作區資源的 [代理程式 **管理** ] 下找到它們。
 
 ## <a name="how-to-validate-connectivity"></a>如何驗證連線能力
 
-1. 從 Azure Sentinel 導覽功能表開啟 [ **記錄**檔]。 使用 **CommonSecurityLog** 架構來執行查詢，以查看您是否從安全性解決方案接收記錄。<br>
-請注意，在您的記錄開始顯示于 **Log Analytics**之前，可能需要大約20分鐘的時間。 
+1. 從 Azure Sentinel 導覽功能表開啟 [ **記錄** 檔]。 使用 **CommonSecurityLog** 架構來執行查詢，以查看您是否從安全性解決方案接收記錄。<br>
+請注意，在您的記錄開始顯示于 **Log Analytics** 之前，可能需要大約20分鐘的時間。 
 
 1. 如果您沒有看到查詢的任何結果，請確認已從您的安全性解決方案產生事件，或嘗試產生一些事件，並確認它們正在轉送至您指定的 Syslog 轉寄站電腦。 
 
-1. 在記錄轉寄站上執行下列腳本，以檢查您的安全性解決方案、記錄轉寄站和 Azure Sentinel 之間的連線能力。 此腳本會檢查守護程式是否正在接聽正確的埠、是否已正確設定轉送，而且沒有任何專案會封鎖 daemon 與 Log Analytics 代理程式之間的通訊。 它也會傳送 mock 訊息 ' TestCommonEventFormat ' 來檢查端對端連線能力。 <br>
- `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]`
+1. 在記錄轉寄站上執行下列腳本 (套用工作區識別碼來取代預留位置) ，以檢查安全性解決方案、記錄轉寄站和 Azure Sentinel 之間的連線能力。 此腳本會檢查守護程式是否正在接聽正確的埠、是否已正確設定轉送，而且沒有任何專案會封鎖 daemon 與 Log Analytics 代理程式之間的通訊。 它也會傳送 mock 訊息 ' TestCommonEventFormat ' 來檢查端對端連線能力。 <br>
+
+    ```bash
+    sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]` 
+    ```
+
+   - 您可能會收到一則訊息，引導您執行命令以更正 ***電腦* 欄位對應** 的問題。 如需詳細資訊，請參閱 [驗證腳本中的說明](#mapping-command) 。
+
+    - 您可能會收到一則訊息，引導您執行命令以修正 **Cisco ASA 防火牆記錄** 檔的剖析問題。 如需詳細資訊，請參閱 [驗證腳本中的說明](#parsing-command) 。
 
 ## <a name="validation-script-explained"></a>驗證腳本說明
 
@@ -72,21 +81,31 @@ ms.locfileid: "91631625"
     </filter>
     ```
 
-1. 檢查是否已如預期般設定防火牆事件的 Cisco ASA 剖析：
+1. 使用下列命令，檢查是否已如預期般設定 Cisco ASA 防火牆事件的剖析： 
 
     ```bash
-    sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" 
-        /opt/microsoft/omsagent/plugin/security_lib.rb && 
-        sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "return ident if ident.include?('%ASA')" /opt/microsoft/omsagent/plugin/security_lib.rb
     ```
 
-1. 檢查 syslog 來源中的 *電腦* 欄位是否已正確對應至 Log Analytics 代理程式：
+    - <a name="parsing-command"></a>如果剖析時發生問題，腳本會產生錯誤訊息，讓您以 **手動方式執行下列命令** (套用工作區識別碼來取代預留位置) 。 此命令會確保正確的剖析，並重新啟動代理程式。
+    
+        ```bash
+        # Cisco ASA parsing fix
+        sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" /opt/microsoft/omsagent/plugin/security_lib.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
+
+1. 使用下列命令，檢查 syslog 來源中的 *電腦* 欄位是否已正確對應至 Log Analytics 代理程式： 
 
     ```bash
-    sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
-        -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
-        filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
     ```
+
+    - <a name="mapping-command"></a>如果對應有問題，腳本會產生錯誤訊息，讓您以 **手動方式執行下列命令** (套用工作區識別碼來取代預留位置) 。 此命令會確保正確的對應，並重新啟動代理程式。
+
+        ```bash
+        # Computer field mapping fix
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 1. 檢查電腦上是否有任何安全性增強功能可能會封鎖網路流量 (例如主機防火牆) 。
 
@@ -155,21 +174,31 @@ ms.locfileid: "91631625"
     </filter>
     ```
 
-1. 檢查是否已如預期般設定防火牆事件的 Cisco ASA 剖析：
+1. 使用下列命令，檢查是否已如預期般設定 Cisco ASA 防火牆事件的剖析： 
 
     ```bash
-    sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" 
-        /opt/microsoft/omsagent/plugin/security_lib.rb && 
-        sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "return ident if ident.include?('%ASA')" /opt/microsoft/omsagent/plugin/security_lib.rb
     ```
 
-1. 檢查 syslog 來源中的 *電腦* 欄位是否已正確對應至 Log Analytics 代理程式：
+    - <a name="parsing-command"></a>如果剖析時發生問題，腳本會產生錯誤訊息，讓您以 **手動方式執行下列命令** (套用工作區識別碼來取代預留位置) 。 此命令會確保正確的剖析，並重新啟動代理程式。
+    
+        ```bash
+        # Cisco ASA parsing fix
+        sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" /opt/microsoft/omsagent/plugin/security_lib.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
+
+1. 使用下列命令，檢查 syslog 來源中的 *電腦* 欄位是否已正確對應至 Log Analytics 代理程式： 
 
     ```bash
-    sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
-        -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
-        filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    grep -i "'Host' => record\['host'\]"  /opt/microsoft/omsagent/plugin/filter_syslog_security.rb
     ```
+
+    - <a name="mapping-command"></a>如果對應有問題，腳本會產生錯誤訊息，讓您以 **手動方式執行下列命令** (套用工作區識別碼來取代預留位置) 。 此命令會確保正確的對應，並重新啟動代理程式。
+
+        ```bash
+        # Computer field mapping fix
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 1. 檢查電腦上是否有任何安全性增強功能可能會封鎖網路流量 (例如主機防火牆) 。
 
