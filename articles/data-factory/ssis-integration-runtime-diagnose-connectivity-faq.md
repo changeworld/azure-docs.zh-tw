@@ -10,12 +10,12 @@ author: meiyl
 ms.reviewer: sawinark
 manager: yidetu
 ms.date: 06/07/2020
-ms.openlocfilehash: cf41da685036770144ebf7eb2befd0c3d126362d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ede36b20353f00ed9a4f80bec2d7bc5a3512a9ea
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87446031"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637950"
 ---
 # <a name="use-the-diagnose-connectivity-feature-in-the-ssis-integration-runtime"></a>使用 SSIS 整合執行時間中的診斷連線能力功能
 
@@ -38,13 +38,13 @@ ms.locfileid: "87446031"
 
 ## <a name="error-code-invalidinput"></a>錯誤碼： InvalidInput
 
-- **錯誤訊息**：「請確認您的輸入正確。」
-- **可能的原因**：您的輸入不正確。
-- **建議**：檢查您的輸入。
+- **錯誤訊息** ：「請確認您的輸入正確。」
+- **可能的原因** ：您的輸入不正確。
+- **建議** ：檢查您的輸入。
 
 ## <a name="error-code-firewallornetworkissue"></a>錯誤碼： FirewallOrNetworkIssue
 
-- **錯誤訊息**：「請確認您的防火牆/伺服器/NSG 上已開啟此埠，且網路穩定。」
+- **錯誤訊息** ：「請確認您的防火牆/伺服器/NSG 上已開啟此埠，且網路穩定。」
 - **可能的原因：**
   - 您的伺服器未開啟埠。
   - 您的網路安全性群組拒絕埠上的輸出流量。
@@ -56,17 +56,17 @@ ms.locfileid: "87446031"
 
 ## <a name="error-code-misconfigureddnssettings"></a>錯誤碼： MisconfiguredDnsSettings
 
-- **錯誤訊息**：「如果您在 Azure-SSIS IR 所聯結的 VNet 中使用自己的 DNS 伺服器，請確認它可以解析您的主機名稱」。
+- **錯誤訊息** ：「如果您在 Azure-SSIS IR 所聯結的 VNet 中使用自己的 DNS 伺服器，請確認它可以解析您的主機名稱」。
 - **可能的原因：**
   -  您的自訂 DNS 有問題。
   -  您未針對私人主機名稱使用 (FQDN) 的完整功能變數名稱。
 - **建議：**
   -  請修正您的自訂 DNS 問題，以確定它可以解析主機名稱。
-  -  使用 FQDN。 Azure-SSIS IR 不會自動附加您自己的 DNS 尾碼。 例如，使用 **<your_private_server> contoso.com** ，而不是 **<your_private_server **>。
+  -  使用 FQDN。 Azure-SSIS IR 不會自動附加您自己的 DNS 尾碼。 例如，使用 **<your_private_server> contoso.com** ，而不是 **<your_private_server** >。
 
 ## <a name="error-code-servernotallowremoteconnection"></a>錯誤碼： ServerNotAllowRemoteConnection
 
-- **錯誤訊息**：「請確認您的伺服器允許透過此埠進行遠端 TCP 連接」。
+- **錯誤訊息** ：「請確認您的伺服器允許透過此埠進行遠端 TCP 連接」。
 - **可能的原因：**
   -  您的伺服器防火牆不允許遠端 TCP 連接。
   -  您的伺服器不在線上。
@@ -76,7 +76,7 @@ ms.locfileid: "87446031"
    
 ## <a name="error-code-misconfigurednsgsettings"></a>錯誤碼： MisconfiguredNsgSettings
 
-- **錯誤訊息**：「請確認您的 VNet NSG 允許透過此埠的輸出流量。 如果您使用 Azure ExpressRoute 和或 UDR，請確認您的防火牆/伺服器上已開啟此埠。
+- **錯誤訊息** ：「請確認您的 VNet NSG 允許透過此埠的輸出流量。 如果您使用 Azure ExpressRoute 和或 UDR，請確認您的防火牆/伺服器上已開啟此埠。
 - **可能的原因：**
   -  您的網路安全性群組拒絕埠上的輸出流量。
   -  您的 NVA/Azure 防火牆/內部部署防火牆未開啟該埠。
@@ -86,24 +86,24 @@ ms.locfileid: "87446031"
 
 ## <a name="error-code-genericissues"></a>錯誤碼： GenericIssues
 
-- **錯誤訊息**：「由於一般問題，測試連接失敗。」
-- **可能的原因**：測試連接發生一般暫時性問題。
-- **建議**：稍後再重試測試連接。 如果重試沒有説明，請聯絡 Azure Data Factory 支援小組。
+- **錯誤訊息** ：「由於一般問題，測試連接失敗。」
+- **可能的原因** ：測試連接發生一般暫時性問題。
+- **建議** ：稍後再重試測試連接。 如果重試沒有説明，請聯絡 Azure Data Factory 支援小組。
 
 ## <a name="error-code-pspingexecutiontimeout"></a>錯誤碼： PSPingExecutionTimeout
 
-- **錯誤訊息**：「測試連接逾時，請稍後再試一次」。
-- **可能的原因**：測試連接逾時。
-- **建議**：稍後再重試測試連接。 如果重試沒有説明，請聯絡 Azure Data Factory 支援小組。
+- **錯誤訊息** ：「測試連接逾時，請稍後再試一次」。
+- **可能的原因** ：測試連接逾時。
+- **建議** ：稍後再重試測試連接。 如果重試沒有説明，請聯絡 Azure Data Factory 支援小組。
 
 ## <a name="error-code-networkinstable"></a>錯誤碼： NetworkInstable
 
-- **錯誤訊息**：「因為網路不穩定，導致測試連接不規則地成功。」
-- **可能的原因**：暫時性的網路問題。
-- **建議**：檢查伺服器或防火牆網路是否穩定。
+- **錯誤訊息** ：「因為網路不穩定，導致測試連接不規則地成功。」
+- **可能的原因** ：暫時性的網路問題。
+- **建議** ：檢查伺服器或防火牆網路是否穩定。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-- [使用 SSMS 將 SSIS 專案部署至 Azure](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-deploy-ssms)
-- [使用 SSMS 在 Azure 中執行 SSIS 套件](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-run-ssms)
-- [在 Azure 中排程 SSIS 套件](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)
+- [使用 SSMS 將 SSIS 專案部署至 Azure](/sql/integration-services/ssis-quickstart-deploy-ssms)
+- [使用 SSMS 在 Azure 中執行 SSIS 套件](/sql/integration-services/ssis-quickstart-run-ssms)
+- [在 Azure 中排程 SSIS 套件](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)

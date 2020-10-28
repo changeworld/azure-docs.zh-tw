@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: ca76563475dfbf8d35595c1de3cdee37f80e3ce1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2f61085d3dab6d4489aa190204be4169ea5c2fb
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83690234"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638001"
 ---
 # <a name="plan-and-manage-costs-for-azure-data-factory"></a>規劃和管理 Azure Data Factory 的成本
 
@@ -56,13 +56,13 @@ Azure Data Factory 是針對雲端規模而建立的無伺服器和彈性資料�
 
 ## <a name="use-budgets-and-cost-alerts"></a>使用預算和成本警示
 
-您可以建立[預算](https://docs.microsoft.com/azure/cost-management/tutorial-acm-create-budgets)來管理成本，以及建立警示，以便在出現異常消費和超支風險時自動通知利害關係人。  警示是以支出為基礎 (相較於預算和成本閾值)。  建立預算時，可以在訂閱層級進行，也可以新增額外的篩選器 (例如資源識別碼和計量名稱) 更為精細地執行。  但您無法建立處理站內個別管線的預算。
+您可以建立[預算](../cost-management-billing/costs/tutorial-acm-create-budgets.md)來管理成本，以及建立警示，以便在出現異常消費和超支風險時自動通知利害關係人。  警示是以支出為基礎 (相較於預算和成本閾值)。  建立預算時，可以在訂閱層級進行，也可以新增額外的篩選器 (例如資源識別碼和計量名稱) 更為精細地執行。  但您無法建立處理站內個別管線的預算。
 
 ## <a name="monitor-costs-at-factory-level"></a>監視工廠層級的成本
 
-當您開始使用 Azure Data Factory 時，您可以在 Azure 入口網站的 [成本分析](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis) 窗格中看到產生的成本。
+當您開始使用 Azure Data Factory 時，您可以在 Azure 入口網站的 [成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md) 窗格中看到產生的成本。
 
-1. 若要檢視[成本分析](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis)，請開啟 [成本管理 + 計費] 視窗，從功能表中選取 [成本管理]，然後選取 [開啟成本分析]。
+1. 若要檢視[成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md)，請開啟 [成本管理 + 計費] 視窗，從功能表中選取 [成本管理]，然後選取 [開啟成本分析]。
 2. 預設的視圖會顯示目前月份的累積成本。  您可以切換到不同的時間範圍和不同的資料細微性，例如每日或每月。
 3. 若要減少單一服務 (例如 Azure Data Factory) 的成本，請選取 [新增篩選]，然後選取 [服務名稱]。  然後從清單中選擇 [Azure Data Factory v2]。
 4. 您可以新增其他篩選準則，以便分析特定處理站執行個體和特定 ADF 計量資料細微性的成本。
@@ -81,7 +81,7 @@ Azure Data Factory 是針對雲端規模而建立的無伺服器和彈性資料�
 
 ![管線耗用量詳細資料](media/plan-manage-costs/pipeline-consumption-details.png)
 
-[管線執行耗用量] 檢視會顯示每個 ADF 計量針對特定管線執行所耗用的數量，但不會顯示實際費用，因為您所支付的費用取決於您擁有的 Azure 帳戶類型，以及所使用的貨幣類型。  若要檢視所支援帳戶類型的完整清單，請參閱[了解成本管理資料](https://docs.microsoft.com/azure/cost-management-billing/costs/understand-cost-mgt-data)。
+[管線執行耗用量] 檢視會顯示每個 ADF 計量針對特定管線執行所耗用的數量，但不會顯示實際費用，因為您所支付的費用取決於您擁有的 Azure 帳戶類型，以及所使用的貨幣類型。  若要檢視所支援帳戶類型的完整清單，請參閱[了解成本管理資料](../cost-management-billing/costs/understand-cost-mgt-data.md)。
 
 ## <a name="monitor-consumption-at-activity-run-level"></a>監視活動執行層級的耗用量
 一旦您瞭解管線執行層級的匯總耗用量，在某些情況下，您需要進一步向下切入並找出管線中最耗費成本的活動。
@@ -101,5 +101,5 @@ Azure Data Factory 是針對雲端規模而建立的無伺服器和彈性資料�
 請參閱下列文章，以深入瞭解定價在 Azure Data Factory 中的運作方式：
 
 - [Azure Data Factory 定價頁面](https://azure.microsoft.com/pricing/details/data-factory/ssis/)
-- [透過範例瞭解 Azure Data Factory](https://docs.microsoft.com/azure/data-factory/pricing-concepts)
+- [透過範例瞭解 Azure Data Factory](./pricing-concepts.md)
 - [Azure Data Factory 定價計算機](https://azure.microsoft.com/pricing/calculator/?service=data-factory)

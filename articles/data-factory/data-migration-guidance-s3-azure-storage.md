@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 963a541835c5e45c5642f2d516da53fd165142b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be1cb7abbc243e3f79e183223fbbb32380f5d02d
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616919"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638035"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>使用 Azure Data Factory 將資料從 Amazon S3 遷移到 Azure 儲存體 
 
@@ -41,9 +41,9 @@ ADF 提供無伺服器的架構，其可供以不同層級進行平行處理，�
 
 上圖說明如何透過不同層級的平行處理以達到絕佳資料移動速度：
  
-- 單一複製活動可利用可調整的計算資源：使用 Azure Integration Runtime 時，您可以無伺服器的方式為每個複製活動指定[最多 256 個 DIU](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units)；使用自我裝載整合執行階段時，您可手動擴大機器或擴增至多部機器 ([最多 4 個節點](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability))，且單一複製活動會將其檔案集分割至所有節點。 
+- 單一複製活動可利用可調整的計算資源：使用 Azure Integration Runtime 時，您可以無伺服器的方式為每個複製活動指定[最多 256 個 DIU](./copy-activity-performance.md#data-integration-units)；使用自我裝載整合執行階段時，您可手動擴大機器或擴增至多部機器 ([最多 4 個節點](./create-self-hosted-integration-runtime.md#high-availability-and-scalability))，且單一複製活動會將其檔案集分割至所有節點。 
 - 單一複製活動會使用多個執行緒來從資料存放區讀取和寫入至資料存放區。 
-- ADF 控制流程可以平行方式啟動多個複製活動，例如使用 [For Each 迴圈](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)。 
+- ADF 控制流程可以平行方式啟動多個複製活動，例如使用 [For Each 迴圈](./control-flow-for-each-activity.md)。 
 
 ## <a name="resilience"></a>恢復功能
 
@@ -81,10 +81,10 @@ ADF 提供無伺服器的架構，其可供以不同層級進行平行處理，�
 
 ### <a name="authentication-and-credential-management"></a>驗證及認證管理 
 
-- 若要向 Amazon S3 帳戶進行驗證，則必須使用 [IAM 帳戶的存取金鑰](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service#linked-service-properties)。 
-- 支援多個驗證類型來連線到 Azure Blob 儲存體。  我們強烈建議使用 [Azure 資源受控識別](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity)：Azure 資源受控識別是建置在 Azure AD 中的自動受控 ADF 識別上，其可供在並未於連結服務定義中提供認證的情況下設定管線。  或者，您可使用[服務主體](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication)、[共用存取簽章](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)，或[儲存體帳戶金鑰](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)來向 Azure Blob 儲存體進行驗證。 
-- 也支援多個驗證類型來連線到 Azure Data Lake Storage Gen2。  我們強烈建議使用 [Azure 資源受控識別](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity)，雖然您也可使用[服務主體](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication)或[儲存體帳戶金鑰](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)。 
-- 當不使用 Azure 資源受控識別時，則強烈建議[將認證儲存在 Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) 中，其可供更輕鬆地集中管理和輪換金鑰，而無須修改 ADF 連結服務。  這也是其中一個 [CI/CD 的最佳做法](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)。 
+- 若要向 Amazon S3 帳戶進行驗證，則必須使用 [IAM 帳戶的存取金鑰](./connector-amazon-simple-storage-service.md#linked-service-properties)。 
+- 支援多個驗證類型來連線到 Azure Blob 儲存體。  我們強烈建議使用 [Azure 資源受控識別](./connector-azure-blob-storage.md#managed-identity)：Azure 資源受控識別是建置在 Azure AD 中的自動受控 ADF 識別上，其可供在並未於連結服務定義中提供認證的情況下設定管線。  或者，您可使用[服務主體](./connector-azure-blob-storage.md#service-principal-authentication)、[共用存取簽章](./connector-azure-blob-storage.md#shared-access-signature-authentication)，或[儲存體帳戶金鑰](./connector-azure-blob-storage.md#account-key-authentication)來向 Azure Blob 儲存體進行驗證。 
+- 也支援多個驗證類型來連線到 Azure Data Lake Storage Gen2。  我們強烈建議使用 [Azure 資源受控識別](./connector-azure-data-lake-storage.md#managed-identity)，雖然您也可使用[服務主體](./connector-azure-data-lake-storage.md#service-principal-authentication)或[儲存體帳戶金鑰](./connector-azure-data-lake-storage.md#account-key-authentication)。 
+- 當不使用 Azure 資源受控識別時，則強烈建議[將認證儲存在 Azure Key Vault](./store-credentials-in-key-vault.md) 中，其可供更輕鬆地集中管理和輪換金鑰，而無須修改 ADF 連結服務。  這也是其中一個 [CI/CD 的最佳做法](./continuous-integration-deployment.md#best-practices-for-cicd)。 
 
 ### <a name="initial-snapshot-data-migration"></a>初始快照集資料移轉 
 
@@ -138,16 +138,16 @@ ADF 提供無伺服器的架構，其可供以不同層級進行平行處理，�
 ![資料表的螢幕擷取畫面會顯示預估價格。](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
 
 ### <a name="additional-references"></a>其他參考 
-- [Amazon Simple Storage Service 連接器](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)
-- [Azure Blob 儲存體連接器](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-- [Azure Data Lake Storage Gen2 連接器](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [複製活動效能調整指南](https://docs.microsoft.com/azure/data-factory/copy-activity-performance) (機器翻譯)
-- [建立和設定自我裝載整合執行階段](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime) (機器翻譯)
-- [自我裝載整合執行階段 HA 及可擴縮性](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability) (機器翻譯)
-- [資料移動安全性考量](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations) (機器翻譯)
-- [在 Azure Key Vault 中儲存認證](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) (機器翻譯)
-- [根據時間分割檔案名稱，以累加方式複製檔案](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool) (機器翻譯)
-- [根據 LastModifiedDate 複製新增和變更的檔案](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool) (機器翻譯)
+- [Amazon Simple Storage Service 連接器](./connector-amazon-simple-storage-service.md)
+- [Azure Blob 儲存體連接器](./connector-azure-blob-storage.md)
+- [Azure Data Lake Storage Gen2 連接器](./connector-azure-data-lake-storage.md)
+- [複製活動效能調整指南](./copy-activity-performance.md) (機器翻譯)
+- [建立和設定自我裝載整合執行階段](./create-self-hosted-integration-runtime.md) (機器翻譯)
+- [自我裝載整合執行階段 HA 及可擴縮性](./create-self-hosted-integration-runtime.md#high-availability-and-scalability) (機器翻譯)
+- [資料移動安全性考量](./data-movement-security-considerations.md) (機器翻譯)
+- [在 Azure Key Vault 中儲存認證](./store-credentials-in-key-vault.md) (機器翻譯)
+- [根據時間分割檔案名稱，以累加方式複製檔案](./tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md) (機器翻譯)
+- [根據 LastModifiedDate 複製新增和變更的檔案](./tutorial-incremental-copy-lastmodified-copy-data-tool.md) (機器翻譯)
 - [DF 定價頁面](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
 ## <a name="template"></a>[範本]

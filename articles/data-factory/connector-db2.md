@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: jingwang
-ms.openlocfilehash: 3c65ed7e5fa6bb1652791eee75d4caa4c9c5f1ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f890e4c47a427b6ca8c07463d6795f0813ef5bbd
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83873642"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638188"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 DB2 複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -49,7 +49,7 @@ ms.locfileid: "83873642"
 * IBM DB2 for LUW 10.1
 
 >[!TIP]
->DB2 連接器是建置在 Microsoft OLE DB Provider for DB2 之上。 若要針對 DB2 連接器錯誤進行疑難排解，請參閱 [Data Provider 錯誤碼](https://docs.microsoft.com/host-integration-server/db2oledbv/data-provider-error-codes#drda-protocol-errors)。
+>DB2 連接器是建置在 Microsoft OLE DB Provider for DB2 之上。 若要針對 DB2 連接器錯誤進行疑難排解，請參閱 [Data Provider 錯誤碼](/host-integration-server/db2oledbv/data-provider-error-codes#drda-protocol-errors)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -69,7 +69,7 @@ ms.locfileid: "83873642"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 類型屬性必須設定為：**Db2** | 是 |
+| type | 類型屬性必須設定為： **Db2** | 是 |
 | connectionString | 指定連線到 DB2 執行個體所需的資訊。<br/> 您也可以將密碼放在 Azure Key Vault 中，並從連接字串中提取 `password` 組態。 請參閱下列範例和[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)一文中的更多詳細資料。 | 是 |
 | connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 深入了解[必要條件](#prerequisites)一節。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
 
@@ -79,7 +79,7 @@ ms.locfileid: "83873642"
 |:--- |:--- |:--- |
 | 伺服器 |DB2 伺服器的名稱。 您可以指定在伺服器名稱後面加上以冒號隔開的連接埠號碼，例如 `server:port`。<br>DB2 連接器會利用 DDM/DRDA 通訊協定，但若未指定，則預設會使用連接埠 50000。 特定 DB2 資料庫所使用的連接埠可能會根據版本和您的設定而有所不同，例如對於 DB2 LUW，預設連接埠為 50000，對於 AS400，預設連接埠則為 446 或 448 (若已啟用 TLS 的話)。 如需一般設定連接埠的方式，請參閱下列 DB2 文件：[DB2 z/OS](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.qb.dbconn.doc/doc/t0008229.html)、[DB2 iSeries](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/ddp/rbal1ports.htm) 和 [DB2 LUW](https://www.ibm.com/support/knowledgecenter/en/SSEKCU_1.1.3.0/com.ibm.psc.doc/install/psc_t_install_typical_db2_port.html)。 |是 |
 | [資料庫] |DB2 資料庫的名稱。 |是 |
-| authenticationType |用來連接到 DB2 資料庫的驗證類型。<br/>允許的值為：**基本**。 |是 |
+| authenticationType |用來連接到 DB2 資料庫的驗證類型。<br/>允許的值為： **基本** 。 |是 |
 | username |指定要連線到 DB2 資料庫的使用者名稱。 |是 |
 | 密碼 |指定您為使用者名稱所指定之使用者帳戶的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 |是 |
 | packageCollection | 指定在查詢資料庫時，ADF 自動建立所需套件的位置。 如果未設定此項，Data Factory 會使用 {username} 做為預設值。 | 否 |
@@ -114,13 +114,13 @@ ms.locfileid: "83873642"
         "type": "Db2",
         "typeProperties": {
             "connectionString": "server=<server:port>;database=<database>;authenticationType=Basic;username=<username>;packageCollection=<packagecollection>;certificateCommonName=<certname>;",
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -166,7 +166,7 @@ ms.locfileid: "83873642"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的類型屬性必須設定為：**Db2Table** | 是 |
+| type | 資料集的類型屬性必須設定為： **Db2Table** | 是 |
 | 結構描述 | 結構描述的名稱。 |否 (如果已指定活動來源中的「查詢」)  |
 | 資料表 | 資料表的名稱。 |否 (如果已指定活動來源中的「查詢」)  |
 | tableName | 具有結構描述的資料表名稱。 支援此屬性是基於回溯相容性。 對於新的工作負載，請使用 `schema` 和 `table`。 | 否 (如果已指定活動來源中的「查詢」) |
@@ -201,7 +201,7 @@ ms.locfileid: "83873642"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的類型屬性必須設定為：**Db2Source** | 是 |
+| type | 複製活動來源的類型屬性必須設定為： **Db2Source** | 是 |
 | 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如： `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""` 。 | 否 (如果已指定資料集中的 "tableName") |
 
 **範例︰**

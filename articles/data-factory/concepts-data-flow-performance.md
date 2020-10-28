@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: a6f2c16730a9140fdbd1710a3aa0df0ee91795d6
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 055cdf7b6cec12eb8c3e7fde891d155b831a6523
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874827"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637865"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>對應資料流的效能和調整指南
 
@@ -155,7 +155,7 @@ Azure SQL Database 有一個稱為「來源」資料分割的唯一資料分割�
 
 #### <a name="isolation-level"></a>隔離等級
 
-在 Azure SQL 來源系統上讀取的隔離等級會對效能造成影響。 選擇 [讀取未認可] 可提供最快的效能，並防止任何資料庫鎖定。 若要深入瞭解 SQL 隔離等級，請參閱 [瞭解隔離等級](https://docs.microsoft.com/sql/connect/jdbc/understanding-isolation-levels?view=sql-server-ver15)。
+在 Azure SQL 來源系統上讀取的隔離等級會對效能造成影響。 選擇 [讀取未認可] 可提供最快的效能，並防止任何資料庫鎖定。 若要深入瞭解 SQL 隔離等級，請參閱 [瞭解隔離等級](/sql/connect/jdbc/understanding-isolation-levels?view=sql-server-ver15)。
 
 #### <a name="read-using-query"></a>使用查詢讀取
 
@@ -163,7 +163,7 @@ Azure SQL Database 有一個稱為「來源」資料分割的唯一資料分割�
 
 ### <a name="azure-synapse-analytics-sources"></a>Azure Synapse Analytics 來源
 
-使用 Azure Synapse Analytics 時，來源選項中會有一個稱為「 **啟用暫存** 」的設定。 這可讓 ADF 使用 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15)從 Synapse 讀取，以大幅改善讀取效能。 啟用 PolyBase 需要您在 [資料流程] 活動設定中指定 Azure Blob 儲存體或 Azure Data Lake Storage gen2 預備位置。
+使用 Azure Synapse Analytics 時，來源選項中會有一個稱為「 **啟用暫存** 」的設定。 這可讓 ADF 使用 [PolyBase](/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15)從 Synapse 讀取，以大幅改善讀取效能。 啟用 PolyBase 需要您在 [資料流程] 活動設定中指定 Azure Blob 儲存體或 Azure Data Lake Storage gen2 預備位置。
 
 ![啟用暫存](media/data-flow/enable-staging.png "啟用暫存")
 
@@ -198,7 +198,7 @@ Azure SQL Database 有一個稱為「來源」資料分割的唯一資料分割�
 ![停用索引](media/data-flow/disable-indexes-sql.png "停用索引")
 
 > [!WARNING]
-> 停用索引時，資料流程實際上會取得資料庫的控制權，而且查詢目前不可能成功。 如此一來，許多 ETL 作業都會在夜間觸發，以避免發生此衝突。 如需詳細資訊，請瞭解 [停用索引的條件約束](https://docs.microsoft.com/sql/relational-databases/indexes/disable-indexes-and-constraints?view=sql-server-ver15)
+> 停用索引時，資料流程實際上會取得資料庫的控制權，而且查詢目前不可能成功。 如此一來，許多 ETL 作業都會在夜間觸發，以避免發生此衝突。 如需詳細資訊，請瞭解 [停用索引的條件約束](/sql/relational-databases/indexes/disable-indexes-and-constraints?view=sql-server-ver15)
 
 #### <a name="scaling-up-your-database"></a>擴大您的資料庫
 
@@ -206,7 +206,7 @@ Azure SQL Database 有一個稱為「來源」資料分割的唯一資料分割�
 
 ### <a name="azure-synapse-analytics-sinks"></a>Azure Synapse Analytics 接收
 
-寫入至 Azure Synapse Analytics 時，請確定 [ **啟用預備** 環境] 設定為 [true]。 這可讓 ADF 使用 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) 進行寫入，以大量地大量載入資料。 使用 PolyBase 時，您必須參考 Azure Data Lake Storage gen2 或 Azure Blob 儲存體帳戶來暫存資料。
+寫入至 Azure Synapse Analytics 時，請確定 [ **啟用預備** 環境] 設定為 [true]。 這可讓 ADF 使用 [PolyBase](/sql/relational-databases/polybase/polybase-guide) 進行寫入，以大量地大量載入資料。 使用 PolyBase 時，您必須參考 Azure Data Lake Storage gen2 或 Azure Blob 儲存體帳戶來暫存資料。
 
 除了 PolyBase 以外，相同的最佳作法也適用于 Azure Synapse Analytics 為 Azure SQL Database。
 
@@ -226,7 +226,7 @@ Azure SQL Database 有一個稱為「來源」資料分割的唯一資料分割�
 
 設定命名 **模式** 會將每個分割檔重新命名為更容易使用的名稱。 這項作業會在寫入後發生，而且會比選擇預設值稍微慢一點。 每個分割區可讓您手動命名每個個別的資料分割。
 
-如果資料行對應到您想要輸出資料的方式，您可以選取 [ **資料行] 中**的 [資料]。 這會 reshuffles 資料，而且如果資料行未平均分佈，可能會影響效能。
+如果資料行對應到您想要輸出資料的方式，您可以選取 [ **資料行] 中** 的 [資料]。 這會 reshuffles 資料，而且如果資料行未平均分佈，可能會影響效能。
 
 **輸出至單一** 檔案會將所有資料結合成單一資料分割。 這會導致較長的寫入時間，特別是針對大型資料集。 Azure Data Factory 團隊強烈建議您 **不要** 選擇這個選項，除非有明確的商業理由要這麼做。
 
@@ -247,7 +247,7 @@ Azure SQL Database 有一個稱為「來源」資料分割的唯一資料分割�
 
 #### <a name="broadcasting"></a>廣播
 
-在聯結、查閱和存在轉換中，如果其中一個或兩個數據流夠小，可納入背景工作節點記憶體，您可以藉由啟用 **廣播**來將效能優化。 廣播是指您將小型資料框架傳送到叢集中的所有節點。 這可讓 Spark 引擎執行聯結，而不需要重新輪換大型資料流程中的資料。 Spark 引擎預設會自動決定是否要廣播聯結的一端。 如果您熟悉傳入的資料，並知道某個資料流程將會明顯小於另一個串流，您可以選取 **固定** 的廣播。 固定廣播會強制 Spark 廣播選取的資料流程。 
+在聯結、查閱和存在轉換中，如果其中一個或兩個數據流夠小，可納入背景工作節點記憶體，您可以藉由啟用 **廣播** 來將效能優化。 廣播是指您將小型資料框架傳送到叢集中的所有節點。 這可讓 Spark 引擎執行聯結，而不需要重新輪換大型資料流程中的資料。 Spark 引擎預設會自動決定是否要廣播聯結的一端。 如果您熟悉傳入的資料，並知道某個資料流程將會明顯小於另一個串流，您可以選取 **固定** 的廣播。 固定廣播會強制 Spark 廣播選取的資料流程。 
 
 如果廣播資料的大小對 Spark 節點而言太大，您可能會遇到記憶體不足的錯誤。 若要避免發生記憶體不足的錯誤，請使用 **記憶體優化** 的叢集。 如果您在資料流程執行期間遇到廣播超時，則可以關閉廣播優化。 不過，這會造成資料流程的執行速度變慢。
 
@@ -271,7 +271,7 @@ Azure SQL Database 有一個稱為「來源」資料分割的唯一資料分割�
 
 ![偏斜和峰](media/data-flow/skewness-kurtosis.png "偏斜和峰")
 
-監視顯示器會顯示如何將資料分散到每個資料分割，以及兩個度量、偏斜和峰。 非**對稱**性是指非對稱資料的量值，而且可以有正數、零、負值或未定義的值。 負誤差表示左尾的長度超過右邊。 [**峰值**] 是資料是否為繁重或亮尾的量值。 不需要高峰值。 最理想的偏斜範圍介於-3 和3之間，而峰值範圍小於10。 解讀這些數位的簡單方式，就是查看分割區圖表，並查看1個橫條圖是否明顯大於其餘部分。
+監視顯示器會顯示如何將資料分散到每個資料分割，以及兩個度量、偏斜和峰。 非 **對稱** 性是指非對稱資料的量值，而且可以有正數、零、負值或未定義的值。 負誤差表示左尾的長度超過右邊。 [ **峰值** ] 是資料是否為繁重或亮尾的量值。 不需要高峰值。 最理想的偏斜範圍介於-3 和3之間，而峰值範圍小於10。 解讀這些數位的簡單方式，就是查看分割區圖表，並查看1個橫條圖是否明顯大於其餘部分。
 
 如果您的資料未在轉換後平均分割，您可以使用 [ [優化]](#optimize-tab) 索引標籤重新分割。 重新輪換資料需要一些時間，而且可能無法改善您的資料流程效能。
 

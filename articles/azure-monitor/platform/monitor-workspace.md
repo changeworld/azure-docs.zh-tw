@@ -6,22 +6,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: d77b4b5824c4426f106d10ca246c5b0d5e76327a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d6c29cb41d38e5473a9b24dbc89fd99d3e19c16f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372254"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638324"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>在 Azure 監視器中監視 Log Analytics 工作區的健康情況
-若要在 Azure 監視器中維護 Log Analytics 工作區的效能和可用性，您必須能夠主動偵測出發生的任何問題。 本文說明如何使用 [作業資料表中的資料](/azure-monitor/reference/tables/operation) 來監視 Log Analytics 工作區的健康情況。 此資料表包含在每個 Log Analytics 工作區中，並包含在工作區中發生的錯誤和警告。 您應定期檢查此資料並建立警示，以在您的工作區中有任何重要事件時主動收到通知。
+若要在 Azure 監視器中維護 Log Analytics 工作區的效能和可用性，您必須能夠主動偵測出發生的任何問題。 本文說明如何使用 [作業資料表中的資料](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) 來監視 Log Analytics 工作區的健康情況。 此資料表包含在每個 Log Analytics 工作區中，並包含在工作區中發生的錯誤和警告。 您應定期檢查此資料並建立警示，以在您的工作區中有任何重要事件時主動收到通知。
 
-## <a name="_logsoperation-function"></a>_LogsOperation 函式
-Azure 監視器記錄會將任何問題的詳細資料傳送至發生問題之工作區中的[作業資料表。](/azure-monitor/reference/tables/operation) **_LogsOperation**系統函數是以**作業資料表為**基礎，並提供一組簡化的資訊供分析和警示之用。
+## <a name="_logoperation-function"></a>_LogOperation 函式
+Azure 監視器記錄會將任何問題的詳細資料傳送至發生問題之工作區中的[作業資料表。](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) **_LogOperation** 系統函數是以 **作業資料表為** 基礎，並提供一組簡化的資訊供分析和警示之用。
 
 ## <a name="columns"></a>資料行
 
-**_LogsOperation**函數會傳回下表中的資料行。
+**_LogOperation** 函數會傳回下表中的資料行。
 
 | 資料行 | 描述 |
 |:---|:---|
@@ -36,14 +36,14 @@ Azure 監視器記錄會將任何問題的詳細資料傳送至發生問題之�
 
 
 ## <a name="categories"></a>類別
-下表說明 _LogsOperations 函式中的分類。 
+下表說明 _LogOperation 函式中的分類。 
 
 | 類別 | 描述 |
 |:---|:---|
 | 擷取           | 屬於資料內嵌進程的作業。 詳細資訊請見下文。 |
 | 代理程式               | 表示代理程式安裝發生問題。 |
-| 資料收集     | 與資料集合進程相關的作業。 |
-| 解決方案目標  | *ConfigurationScope*類型的作業已處理。 |
+| 資料集合     | 與資料集合進程相關的作業。 |
+| 解決方案目標  | *ConfigurationScope* 類型的作業已處理。 |
 | 評量解決方案 | 已執行評量程式。 |
 
 
@@ -53,20 +53,20 @@ Azure 監視器記錄會將任何問題的詳細資料傳送至發生問題之�
 
 | 作業 | 層級 | 詳細資料 | 相關文章 |
 |:---|:---|:---|:---|
-| 自訂記錄檔 | 錯誤   | 已達到自訂欄位的資料行限制。 | [Azure 監視器服務限制](../service-limits.md#log-analytics-workspaces) |
-| 自訂記錄檔 | 錯誤   | 自訂記錄內嵌失敗。 | |
-| 中繼資料。 | 錯誤 | 偵測到設定錯誤。 | |
-| 資料收集 | 錯誤   | 因為建立的要求早于設定的天數，所以已卸載資料。 | [使用 Azure 監視器記錄來管理使用量和成本](manage-cost-storage.md#alert-when-daily-cap-reached)
-| 資料收集 | Info    | 偵測到收集電腦設定。| |
-| 資料收集 | Info    | 因為新的日期，所以已開始資料收集。 | [使用 Azure 監視器記錄來管理使用量和成本](/manage-cost-storage.md#alert-when-daily-cap-reached) |
-| 資料收集 | 警告 | 因為達到每日限制，所以資料收集已停止。| [使用 Azure 監視器記錄來管理使用量和成本](/manage-cost-storage.md#alert-when-daily-cap-reached) |
-| 資料處理 | 錯誤   | 不正確 JSON 格式。 | [使用 HTTP 資料收集器 API 將記錄資料傳送給 Azure 監視器 (公開預覽)](data-collector-api.md#request-body) | 
+| 自訂記錄檔 | Error   | 已達到自訂欄位的資料行限制。 | [Azure 監視器服務限制](../service-limits.md#log-analytics-workspaces) |
+| 自訂記錄檔 | Error   | 自訂記錄內嵌失敗。 | |
+| 中繼資料。 | Error | 偵測到設定錯誤。 | |
+| 資料集合 | Error   | 因為建立的要求早于設定的天數，所以已卸載資料。 | [使用 Azure 監視器記錄來管理使用量和成本](manage-cost-storage.md#alert-when-daily-cap-reached)
+| 資料集合 | Info    | 偵測到收集電腦設定。| |
+| 資料集合 | Info    | 因為新的日期，所以已開始資料收集。 | [使用 Azure 監視器記錄來管理使用量和成本](/manage-cost-storage.md#alert-when-daily-cap-reached) |
+| 資料集合 | 警告 | 因為達到每日限制，所以資料收集已停止。| [使用 Azure 監視器記錄來管理使用量和成本](/manage-cost-storage.md#alert-when-daily-cap-reached) |
+| 資料處理 | Error   | 不正確 JSON 格式。 | [使用 HTTP 資料收集器 API 將記錄資料傳送給 Azure 監視器 (公開預覽)](data-collector-api.md#request-body) | 
 | 資料處理 | 警告 | 值已修剪為允許的最大大小。 | [Azure 監視器服務限制](../service-limits.md#log-analytics-workspaces) |
 | 資料處理 | 警告 | 已達到大小限制而修剪的域值。 | [Azure 監視器服務限制](../service-limits.md#log-analytics-workspaces) | 
 | 內嵌速率 | Info | 內嵌速率限制接近70%。 | [Azure 監視器服務限制](../service-limits.md#log-analytics-workspaces) |
 | 內嵌速率 | 警告 | 接近限制的內嵌速率限制。 | [Azure 監視器服務限制](../service-limits.md#log-analytics-workspaces) |
-| 內嵌速率 | 錯誤   | 達到速率限制。 | [Azure 監視器服務限制](../service-limits.md#log-analytics-workspaces) |
-| 儲存體 | 錯誤   | 因為使用的認證無效，所以無法存取儲存體帳戶。  |
+| 內嵌速率 | Error   | 達到速率限制。 | [Azure 監視器服務限制](../service-limits.md#log-analytics-workspaces) |
+| 儲存體 | Error   | 因為使用的認證無效，所以無法存取儲存體帳戶。  |
 
 
 
@@ -82,8 +82,8 @@ Azure 監視器記錄會將任何問題的詳細資料傳送至發生問題之�
 
 | 查詢 | 臨界值 | 期間 | 頻率 |
 |:---|:---|:---|:---|
-| `_LogsOperation | where Level == "Error"`   | 0 | 5 | 5 |
-| `_LogsOperation | where Level == "Warning"` | 0 | 1440 | 1440 |
+| `_LogOperation | where Level == "Error"`   | 0 | 5 | 5 |
+| `_LogOperation | where Level == "Warning"` | 0 | 1440 | 1440 |
 
 這些警示規則會回應相同的所有作業，並出現錯誤或警告。 當您更熟悉產生警示的作業時，您可能會想要以不同的方式回應特定的作業。 例如，您可能會想要將通知傳送給不同的人員以進行特定的作業。 
 

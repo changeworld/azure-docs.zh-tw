@@ -2,15 +2,15 @@
 title: 將資源部署至訂用帳戶
 description: 描述如何在 Azure Resource Manager 範本中建立資源群組。 此外也會說明如何將資源部署到 Azure 訂用帳戶範圍。
 ms.topic: conceptual
-ms.date: 10/05/2020
-ms.openlocfilehash: 0673ea5260c7312395acde8a62b5d457657b9793
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/26/2020
+ms.openlocfilehash: 7b0edde4f3571255e92c65d82429b4ddd1a689b8
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91729112"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92668877"
 ---
-# <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在訂用帳戶層級建立資源群組和資源
+# <a name="subscription-deployments-with-arm-templates"></a>使用 ARM 範本的訂用帳戶部署
 
 若要簡化資源的管理，您可以使用 Azure Resource Manager 範本 (ARM 範本) ，在您的 Azure 訂用帳戶層級部署資源。 例如，您可以將原則和[azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)部署至您的訂用帳戶，這會在您的訂用帳戶中套用這些[原則](../../governance/policy/overview.md)。 您也可以在訂用帳戶內建立資源群組，並將資源部署至訂用帳戶中的資源群組。
 
@@ -71,32 +71,26 @@ ms.locfileid: "91729112"
 針對範本，請使用：
 
 ```json
-https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    ...
+}
 ```
 
 所有部署範圍的參數檔案結構描述都相同。 針對參數檔案，請使用：
 
 ```json
-https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    ...
+}
 ```
-
-## <a name="deployment-scopes"></a>部署範圍
-
-部署至訂用帳戶時，您可以將一個訂用帳戶和訂用帳戶內的任何資源群組設為目標。 您無法部署到不同于目標訂用帳戶的訂用帳戶。 部署範本的使用者必須擁有指定範圍的存取權。
-
-在範本的資源區段中定義的資源會套用至訂用帳戶。
-
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-sub.json" highlight="5":::
-
-若要以訂用帳戶內的資源群組為目標，請新增嵌套的部署並包含 `resourceGroup` 屬性。 在下列範例中，嵌套部署會以名為的資源群組為目標 `rg2` 。
-
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-resource-group.json" highlight="9,13":::
-
-在本文中，您可以找到範本，以示範如何將資源部署到不同的範圍。 針對建立資源群組並部署儲存體帳戶的範本，請參閱 [建立資源群組和資源](#create-resource-group-and-resources)。 針對建立資源群組的範本，對其套用鎖定，並指派資源群組的角色，請參閱 [存取控制](#access-control)。
 
 ## <a name="deployment-commands"></a>部署命令
 
-用於訂用帳戶層級部署的命令與用於資源群組部署的命令不同。
+若要部署至訂用帳戶，請使用訂用帳戶層級的部署命令。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 針對 Azure CLI，請使用 [az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create)。 下列範例會部署範本來建立資源群組：
 
@@ -108,7 +102,9 @@ az deployment sub create \
   --parameters rgName=demoResourceGroup rgLocation=centralus
 ```
 
-針對 PowerShell 部署命令，請使用 [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) 或 **New-AzSubscriptionDeployment**。 下列範例會部署範本來建立資源群組：
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+針對 PowerShell 部署命令，請使用 [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) 或 **New-AzSubscriptionDeployment** 。 下列範例會部署範本來建立資源群組：
 
 ```azurepowershell-interactive
 New-AzSubscriptionDeployment `
@@ -119,35 +115,52 @@ New-AzSubscriptionDeployment `
   -rgLocation centralus
 ```
 
-針對 REST API，請使用[部署 - 在訂用帳戶範圍上建立](/rest/api/resources/deployments/createorupdateatsubscriptionscope)。
+---
+
+如需部署 ARM 範本的部署命令和選項的詳細資訊，請參閱：
+
+* [使用 ARM 範本和 Azure 入口網站部署資源](deploy-portal.md)
+* [使用 ARM 範本與 Azure CLI 來部署資源](deploy-cli.md)
+* [使用 ARM 範本與 Azure PowerShell 來部署資源](deploy-powershell.md)
+* [使用 ARM 範本部署資源，並 Azure Resource Manager REST API](deploy-rest.md)
+* [使用部署按鈕從 GitHub 存放庫部署範本](deploy-to-azure-button.md)
+* [從 Cloud Shell 部署 ARM 範本](deploy-cloud-shell.md)
+
+## <a name="deployment-scopes"></a>部署範圍
+
+部署至訂用帳戶時，您可以將資源部署至：
+
+* 來自作業的目標訂用帳戶
+* 訂用帳戶內的資源群組
+* [擴充功能資源](scope-extension-resources.md) 可以套用至資源
+
+您無法部署到不同于目標訂用帳戶的訂用帳戶。 部署範本的使用者必須擁有指定範圍的存取權。
+
+本節說明如何指定不同的範圍。 您可以將這些不同的範圍結合在單一範本中。
+
+### <a name="scope-to-subscription"></a>訂用帳戶的範圍
+
+若要將資源部署到目標訂用帳戶，請將這些資源新增至範本的資源區段。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-sub.json" highlight="5":::
+
+如需部署至訂用帳戶的範例，請參閱 [建立資源群組](#create-resource-groups) 和 [指派原則定義](#assign-policy-definition)。
+
+### <a name="scope-to-resource-group"></a>將範圍設為資源群組
+
+若要將資源部署至訂用帳戶內的資源群組，請新增嵌套部署並包含 `resourceGroup` 屬性。 在下列範例中，嵌套部署會以名為的資源群組為目標 `demoResourceGroup` 。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-resource-group.json" highlight="9,13":::
+
+如需部署至資源群組的範例，請參閱 [建立資源群組和資源](#create-resource-group-and-resources)。
 
 ## <a name="deployment-location-and-name"></a>部署位置和名稱
 
 針對訂用帳戶層級部署，您必須提供部署的位置。 部署的位置與您部署的資源位置不同。 部署位置會指定部署資料的儲存位置。
 
-您可以提供部署的名稱，或使用預設的部署名稱。 預設名稱是範本檔案的名稱。 例如，部署名為 **azuredeploy.json** 的範本會建立預設的部署名稱 **azuredeploy**。
+您可以提供部署的名稱，或使用預設的部署名稱。 預設名稱是範本檔案的名稱。 例如，部署名為 **azuredeploy.json** 的範本會建立預設的部署名稱 **azuredeploy** 。
 
 對於每個部署名稱而言，此位置是不可變的。 當某個位置已經有名稱相同的現有部署時，您無法在其他位置建立部署。 如果您收到錯誤代碼 `InvalidDeploymentLocation`，請使用不同的名稱或與先前該名稱部署相同的位置。
-
-## <a name="use-template-functions"></a>使用範本函式
-
-針對訂用帳戶層級部署，使用範本函式時有一些重要考量：
-
-* **不**支援 [resourceGroup()](template-functions-resource.md#resourcegroup) 函式。
-* 支援 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函式。
-* 請勿使用 [resourceId ( # B1 ](template-functions-resource.md#resourceid) 來取得在訂用帳戶層級部署之資源的資源識別碼。 請改用 [subscriptionResourceId ( # B1 ](template-functions-resource.md#subscriptionresourceid) 函數。
-
-  例如，若要取得部署至訂用帳戶之原則定義的資源識別碼，請使用：
-
-  ```json
-  subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
-  ```
-
-  傳回的資源識別碼具有下列格式：
-
-  ```json
-  /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  ```
 
 ## <a name="resource-groups"></a>資源群組
 

@@ -4,13 +4,13 @@ description: 了解如何使用 Azure Application Insights 搭配 Azure Function
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.custom: devx-track-csharp, fasttrack-edit, contperfq2
-ms.openlocfilehash: 85851c896d32d2e15efa0a39260af4331f99f862
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: devx-track-csharp, fasttrack-edit, contperfq2, devx-track-js
+ms.openlocfilehash: 87c31df6ecb92acd5bedaee274f9886383e5c617
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217145"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92668735"
 ---
 # <a name="monitor-azure-functions"></a>監視 Azure Functions
 
@@ -33,7 +33,7 @@ Application Insights 會收集記錄檔、效能和錯誤資料。 藉由自動�
 
 ## <a name="application-insights-integration"></a>Application Insights 整合
 
-當您建立函數應用程式時，通常會建立 Application Insights 實例。 在此情況下，整合所需的檢測金鑰已經設定為 *APPINSIGHTS_INSTRUMENTATIONKEY*的應用程式設定。 如果您的函式應用程式因為某些原因而未設定檢測金鑰，您必須 [啟用 Application Insights 整合](configure-monitoring.md#enable-application-insights-integration)。  
+當您建立函數應用程式時，通常會建立 Application Insights 實例。 在此情況下，整合所需的檢測金鑰已經設定為 *APPINSIGHTS_INSTRUMENTATIONKEY* 的應用程式設定。 如果您的函式應用程式因為某些原因而未設定檢測金鑰，您必須 [啟用 Application Insights 整合](configure-monitoring.md#enable-application-insights-integration)。  
 
 ## <a name="collecting-telemetry-data"></a>收集遙測資料
 
@@ -95,9 +95,9 @@ Application Insights 會產生所收集相依性資料的 _應用程式對應_ �
 
 有兩種方式可以查看您的函數執行所產生的記錄資料串流。
 
-* **內建記錄資料流**：App Service 平台可讓您檢視應用程式記錄檔的資料流。 當您在 [本機開發](functions-develop-local.md) 期間，以及在入口網站中使用 [ **測試** ] 索引標籤時，此資料流程相當於您在調試函式時所看到的輸出。 隨即會顯示所有以記錄為基礎的資訊。 如需詳細資訊，請參閱[串流處理記錄](../app-service/troubleshoot-diagnostic-logs.md#stream-logs)。 此串流處理方法僅支援單一執行個體，且不能與在使用量方案中的 Linux 上執行的應用程式搭配使用。
+* **內建記錄資料流** ：App Service 平台可讓您檢視應用程式記錄檔的資料流。 當您在 [本機開發](functions-develop-local.md) 期間，以及在入口網站中使用 [ **測試** ] 索引標籤時，此資料流程相當於您在調試函式時所看到的輸出。 隨即會顯示所有以記錄為基礎的資訊。 如需詳細資訊，請參閱[串流處理記錄](../app-service/troubleshoot-diagnostic-logs.md#stream-logs)。 此串流處理方法僅支援單一執行個體，且不能與在使用量方案中的 Linux 上執行的應用程式搭配使用。
 
-* **即時計量資料流**：當您的函式應用程式 [連線到 Application Insights](configure-monitoring.md#enable-application-insights-integration)時，您可以使用 [即時計量資料流](../azure-monitor/app/live-stream.md)，在 Azure 入口網站中近乎即時地查看記錄資料和其他度量。 當您在使用量方案中監視在多個執行個體或 Linux 上執行的函式時，請使用此方法。 此方法會使用[取樣資料](configure-monitoring.md#configure-sampling)。
+* **即時計量資料流** ：當您的函式應用程式 [連線到 Application Insights](configure-monitoring.md#enable-application-insights-integration)時，您可以使用 [即時計量資料流](../azure-monitor/app/live-stream.md)，在 Azure 入口網站中近乎即時地查看記錄資料和其他度量。 當您在使用量方案中監視在多個執行個體或 Linux 上執行的函式時，請使用此方法。 此方法會使用[取樣資料](configure-monitoring.md#configure-sampling)。
 
 您可以在入口網站和大部分的本機開發環境中檢視記錄資料流。 若要瞭解如何啟用記錄資料流程，請參閱 [Azure Functions 中的啟用串流執行記錄](streaming-logs.md)。
 

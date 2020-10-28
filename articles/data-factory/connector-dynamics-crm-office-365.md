@@ -12,12 +12,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 09/23/2020
-ms.openlocfilehash: 942cbda3652692acc8eedf2ec9508bb501a60547
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 204399186ae229324f9dc478e0ef58a173060013
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332095"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638171"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Dynamics 365 (Common Data Service) 複製資料以及複製資料至 Dynamics 365
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -56,14 +56,14 @@ ms.locfileid: "91332095"
 
 此連接器不支援其他應用程式類型，例如財務、營運和人才。
 
-此 Dynamics 連接器是以 [DYNAMICS XRM 工具](https://docs.microsoft.com/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)為基礎。
+此 Dynamics 連接器是以 [DYNAMICS XRM 工具](/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)為基礎。
 
 >[!TIP]
 >若要從 Dynamics 365 財務和營運複製資料，您可以使用 [DYNAMICS AX 連接器](connector-dynamics-ax.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
-若要搭配 Azure AD 服務主體驗證使用此連接器，您必須在 Common Data Service 或 Dynamics 中設定伺服器對伺服器 (S2S) 驗證。 如需詳細步驟，請參閱 [這篇文章](https://docs.microsoft.com/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication) 。
+若要搭配 Azure AD 服務主體驗證使用此連接器，您必須在 Common Data Service 或 Dynamics 中設定伺服器對伺服器 (S2S) 驗證。 如需詳細步驟，請參閱 [這篇文章](/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication) 。
 
 ## <a name="get-started"></a>開始使用
 
@@ -172,7 +172,7 @@ ms.locfileid: "91332095"
 
 ### <a name="dynamics-365-and-dynamics-crm-on-premises-with-ifd"></a>搭配 IFD 的 Dynamics 365 和 Dynamics CRM 內部部署版
 
-與 Dynamics online 比較的其他屬性是 **主機名稱** 和 **埠**。
+與 Dynamics online 比較的其他屬性是 **主機名稱** 和 **埠** 。
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
@@ -255,7 +255,7 @@ ms.locfileid: "91332095"
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 type 屬性必須設定為 ">dynamicssource"、"DynamicsCrmSource" 或 "CommonDataServiceForAppsSource"。 | 是 |
-| 查詢 | FetchXML 是在 Dynamics online 和內部部署中使用的專屬查詢語言。 請參閱下列範例。 若要深入瞭解，請參閱 [使用 FetchXML 建立查詢](https://msdn.microsoft.com/library/gg328332.aspx)。 | 如果 `entityName` 在資料集中指定，則為 No |
+| 查詢 | FetchXML 是在 Dynamics online 和內部部署中使用的專屬查詢語言。 請參閱下列範例。 若要深入瞭解，請參閱 [使用 FetchXML 建立查詢](/previous-versions/dynamicscrm-2016/developers-guide/gg328332(v=crm.8))。 | 如果 `entityName` 在資料集中指定，則為 No |
 
 >[!NOTE]
 >即使您在 FetchXML 查詢中設定的資料行投影未包含 PK 資料行，還是一律會複製 PK 資料行。
@@ -326,14 +326,14 @@ ms.locfileid: "91332095"
 | writeBehavior | 作業的寫入行為。 值必須是 "Upsert"。 | 是 |
 | alternateKeyName | 在您的實體上定義的替代索引鍵名稱，可進行 upsert。 | 否。 |
 | writeBatchSize | 每個批次中寫入 Dynamics 的資料列計數。 | 否。 預設值是 10。 |
-| ignoreNullValues | 在寫入作業期間，是否忽略索引鍵欄位以外的輸入資料中的 null 值。<br/><br/>有效的值為 **TRUE** 和 **FALSE**：<ul><li>**TRUE**：當您執行 upsert 或更新作業時，將目的地物件中的資料保留不變。 執行插入作業時，插入已定義的預設值。</li><li>**FALSE**：當您執行 upsert 或更新作業時，將目的地物件中的資料更新為 null 值。 當您進行插入作業時，插入 null 值。</li></ul> | 否。 預設值為 **FALSE**。 |
+| ignoreNullValues | 在寫入作業期間，是否忽略索引鍵欄位以外的輸入資料中的 null 值。<br/><br/>有效的值為 **TRUE** 和 **FALSE** ：<ul><li>**TRUE** ：當您執行 upsert 或更新作業時，將目的地物件中的資料保留不變。 執行插入作業時，插入已定義的預設值。</li><li>**FALSE** ：當您執行 upsert 或更新作業時，將目的地物件中的資料更新為 null 值。 當您進行插入作業時，插入 null 值。</li></ul> | 否。 預設值為 **FALSE** 。 |
 
 >[!NOTE]
 >接收 **writeBatchSize** 和 Dynamics 接收器的複製活動 **[parallelCopies](copy-activity-performance-features.md#parallel-copy)** 預設值為10。 因此，預設會將100記錄以並行方式提交至 Dynamics。
 
-針對 Dynamics 365 online， [每個組織都有兩個並行批次呼叫](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations)的限制。 如果超出該限制，則在執行第一個要求之前，會擲回「伺服器忙碌」例外狀況。 將 **writeBatchSize** 保持在10以下，以避免這類並行呼叫的節流。
+針對 Dynamics 365 online， [每個組織都有兩個並行批次呼叫](/previous-versions/dynamicscrm-2016/developers-guide/jj863631(v=crm.8)#Run-time%20limitations)的限制。 如果超出該限制，則在執行第一個要求之前，會擲回「伺服器忙碌」例外狀況。 將 **writeBatchSize** 保持在10以下，以避免這類並行呼叫的節流。
 
-**WriteBatchSize**和**parallelCopies**的最佳組合取決於您實體的架構。 架構元素包括連接到這些呼叫的資料行數目、資料列大小，以及外掛程式、工作流程或工作流程活動的數目。 **WriteBatchSize** (10) &times; **parallelCopies** (10) 預設設定為根據 Dynamics 服務的建議。 此值適用于大部分的 Dynamics 實體，但它可能無法提供最佳效能。 您可以藉由調整複製活動設定中的組合來微調效能。
+**WriteBatchSize** 和 **parallelCopies** 的最佳組合取決於您實體的架構。 架構元素包括連接到這些呼叫的資料行數目、資料列大小，以及外掛程式、工作流程或工作流程活動的數目。 **WriteBatchSize** (10) &times; **parallelCopies** (10) 預設設定為根據 Dynamics 服務的建議。 此值適用于大部分的 Dynamics 實體，但它可能無法提供最佳效能。 您可以藉由調整複製活動設定中的組合來微調效能。
 
 #### <a name="example"></a>範例
 
@@ -378,26 +378,26 @@ ms.locfileid: "91332095"
 | Dynamics 資料類型 | Data Factory 過渡期資料類型 | 支援作為來源 | 支援作為接收 |
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | long | ✓ | ✓ |
-| AttributeTypeCode.Boolean | 布林值 | ✓ | ✓ |
+| AttributeTypeCode.Boolean | Boolean | ✓ | ✓ |
 | AttributeType.Customer | GUID | ✓ | ✓ (參閱 [指引](#writing-data-to-a-lookup-field))  |
 | AttributeType.DateTime | Datetime | ✓ | ✓ |
-| AttributeType.Decimal | Decimal | ✓ | ✓ |
+| AttributeType.Decimal | 小數位數 | ✓ | ✓ |
 | AttributeType.Double | Double | ✓ | ✓ |
-| AttributeType.EntityName | 字串 | ✓ | ✓ |
+| AttributeType.EntityName | String | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
 | AttributeType.Lookup | GUID | ✓ | ✓ (參閱 [指引](#writing-data-to-a-lookup-field))  |
-| AttributeType.ManagedProperty | 布林值 | ✓ | |
-| AttributeType.Memo | 字串 | ✓ | ✓ |
-| AttributeType.Money | Decimal | ✓ | ✓ |
+| AttributeType.ManagedProperty | Boolean | ✓ | |
+| AttributeType.Memo | String | ✓ | ✓ |
+| AttributeType.Money | 小數位數 | ✓ | ✓ |
 | AttributeType.Owner | GUID | ✓ | ✓ (參閱 [指引](#writing-data-to-a-lookup-field))  |
 | AttributeType.Picklist | Int32 | ✓ | ✓ |
 | AttributeType.Uniqueidentifier | GUID | ✓ | ✓ |
-| AttributeType.String | 字串 | ✓ | ✓ |
+| AttributeType.String | String | ✓ | ✓ |
 | AttributeType.State | Int32 | ✓ | ✓ |
 | AttributeType.Status | Int32 | ✓ | ✓ |
 
 > [!NOTE]
-> 不支援 Dynamics 資料類型 **AttributeType. attributetype.calendarrules attributetype.partylist**、 **AttributeType. MultiSelectPicklist**和 **AttributeType. PartyList** 。
+> 不支援 Dynamics 資料類型 **AttributeType. attributetype.calendarrules attributetype.partylist** 、 **AttributeType. MultiSelectPicklist** 和 **AttributeType. PartyList** 。
 
 ## <a name="writing-data-to-a-lookup-field"></a>將資料寫入查閱欄位
 
@@ -413,15 +413,15 @@ ms.locfileid: "91332095"
 
 例如，假設來源有下列兩個數據行：
 
-- **GUID**類型的**CustomerField**資料行，這是 Dynamics 中目標實體的主鍵值。
-- **字串**類型的**目標**資料行，這是目標實體的邏輯名稱。
+- **GUID** 類型的 **CustomerField** 資料行，這是 Dynamics 中目標實體的主鍵值。
+- **字串** 類型的 **目標** 資料行，這是目標實體的邏輯名稱。
 
-此外，假設您想要將此類資料複製到 type **Customer**的 sink Dynamics Entity field **CustomerField** 。
+此外，假設您想要將此類資料複製到 type **Customer** 的 sink Dynamics Entity field **CustomerField** 。
 
 在 [複製活動資料行對應] 中，對應兩個數據行，如下所示：
 
-- **CustomerField** 至 **CustomerField**。 此對應是一般欄位對應。
-- **目標設定** 為 **CustomerField \@ EntityReference**。 接收資料行是代表實體參考的虛擬資料行。 在對應中輸入這類功能變數名稱，因為它們不會藉由匯入架構來顯示。
+- **CustomerField** 至 **CustomerField** 。 此對應是一般欄位對應。
+- **目標設定** 為 **CustomerField \@ EntityReference** 。 接收資料行是代表實體參考的虛擬資料行。 在對應中輸入這類功能變數名稱，因為它們不會藉由匯入架構來顯示。
 
 ![Dynamics 查閱-欄位資料行對應](./media/connector-dynamics-crm-office-365/connector-dynamics-lookup-field-column-mapping.png)
 

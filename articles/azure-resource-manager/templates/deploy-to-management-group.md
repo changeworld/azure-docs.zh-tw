@@ -2,15 +2,15 @@
 title: 將資源部署至管理群組
 description: 說明如何在 Azure Resource Manager 範本的管理群組範圍中部署資源。
 ms.topic: conceptual
-ms.date: 09/24/2020
-ms.openlocfilehash: 23f86d7d0b7e1f882cf3fb74adc484e0fe47db87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/22/2020
+ms.openlocfilehash: 084ab69f463334569d37efd9187bfe587bfc524d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372420"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92668927"
 ---
-# <a name="create-resources-at-the-management-group-level"></a>在管理群組層級建立資源
+# <a name="management-group-deployments-with-arm-templates"></a>使用 ARM 範本進行管理群組部署
 
 隨著您的組織逐漸成熟，您可以 (ARM 範本部署 Azure Resource Manager 範本，) 在管理群組層級建立資源。 例如，您可能需要為管理群組定義和指派 [原則](../../governance/policy/overview.md) 或 [azure 角色型存取控制 (azure RBAC) ](../../role-based-access-control/overview.md) 。 您可以使用管理群組層級範本，以宣告方式套用原則，並在管理群組層級指派角色。
 
@@ -52,42 +52,26 @@ ms.locfileid: "91372420"
 針對範本，請使用：
 
 ```json
-https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    ...
+}
 ```
 
 所有部署範圍的參數檔案結構描述都相同。 針對參數檔案，請使用：
 
 ```json
-https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    ...
+}
 ```
-
-## <a name="deployment-scopes"></a>部署範圍
-
-部署至管理群組時，您可以將部署命令中指定的管理群組設為目標，也可以選取租使用者中的另一個管理群組。
-
-在範本的資源區段中定義的資源會從部署命令套用至管理群組。
-
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-mg.json" highlight="5":::
-
-若要以另一個管理群組為目標，請新增嵌套部署並指定 `scope` 屬性。 將 `scope` 屬性設定為格式的值 `Microsoft.Management/managementGroups/<mg-name>` 。
-
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/scope-mg.json" highlight="10,17,22":::
-
-您也可以將管理群組中的訂用帳戶或資源群組設為目標。 部署範本的使用者必須擁有指定範圍的存取權。
-
-若要以管理群組內的訂用帳戶為目標，請使用嵌套部署和 `subscriptionId` 屬性。
-
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-subscription.json" highlight="10,18":::
-
-若要以該訂用帳戶內的資源群組為目標，請新增另一個嵌套的部署和 `resourceGroup` 屬性。
-
-:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-resource-group.json" highlight="10,21,25":::
-
-若要使用管理群組部署來建立訂用帳戶內的資源群組，並將儲存體帳戶部署到該資源群組，請參閱 [部署至訂用帳戶和資源群組](#deploy-to-subscription-and-resource-group)。
 
 ## <a name="deployment-commands"></a>部署命令
 
-管理群組部署的命令與資源群組部署的命令不同。
+若要部署至管理群組，請使用管理群組部署命令。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 針對 Azure CLI，請使用 [az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create)：
 
@@ -99,6 +83,8 @@ az deployment mg create \
   --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/management-level-deployment/azuredeploy.json"
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 針對 Azure PowerShell，請使用 [AzManagementGroupDeployment](/powershell/module/az.resources/new-azmanagementgroupdeployment)。
 
 ```azurepowershell-interactive
@@ -109,42 +95,70 @@ New-AzManagementGroupDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/management-level-deployment/azuredeploy.json"
 ```
 
-針對 REST API，請使用 [部署-在管理群組範圍建立](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)。
+---
+
+如需部署 ARM 範本的部署命令和選項的詳細資訊，請參閱：
+
+* [使用 ARM 範本和 Azure 入口網站部署資源](deploy-portal.md)
+* [使用 ARM 範本與 Azure CLI 來部署資源](deploy-cli.md)
+* [使用 ARM 範本與 Azure PowerShell 來部署資源](deploy-powershell.md)
+* [使用 ARM 範本部署資源，並 Azure Resource Manager REST API](deploy-rest.md)
+* [使用部署按鈕從 GitHub 存放庫部署範本](deploy-to-azure-button.md)
+* [從 Cloud Shell 部署 ARM 範本](deploy-cloud-shell.md)
+
+## <a name="deployment-scopes"></a>部署範圍
+
+部署至管理群組時，您可以將資源部署至：
+
+* 作業中的目標管理群組
+* 租使用者中的另一個管理群組
+* 管理群組中的訂用帳戶
+* 管理群組中的資源群組會透過兩個嵌套部署 () 
+* [擴充功能資源](scope-extension-resources.md) 可以套用至資源
+
+部署範本的使用者必須擁有指定範圍的存取權。
+
+本節說明如何指定不同的範圍。 您可以將這些不同的範圍結合在單一範本中。
+
+### <a name="scope-to-target-management-group"></a>範圍設定為目標管理群組
+
+在範本的資源區段中定義的資源會從部署命令套用至管理群組。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-mg.json" highlight="5":::
+
+### <a name="scope-to-another-management-group"></a>將範圍設為另一個管理群組
+
+若要以另一個管理群組為目標，請新增嵌套部署並指定 `scope` 屬性。 將 `scope` 屬性設定為格式的值 `Microsoft.Management/managementGroups/<mg-name>` 。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/scope-mg.json" highlight="10,17,22":::
+
+### <a name="scope-to-subscription"></a>訂用帳戶的範圍
+
+您也可以將管理群組中的訂用帳戶設為目標。 部署範本的使用者必須擁有指定範圍的存取權。
+
+若要以管理群組內的訂用帳戶為目標，請使用嵌套部署和 `subscriptionId` 屬性。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-subscription.json" highlight="10,18":::
+
+### <a name="scope-to-resource-group"></a>將範圍設為資源群組
+
+若要以該訂用帳戶內的資源群組為目標，請新增兩個嵌套部署。 第一個目標是具有資源群組的訂用帳戶。 第二個是藉由設定屬性來以資源群組為目標 `resourceGroup` 。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/mg-to-resource-group.json" highlight="10,21,25":::
+
+若要使用管理群組部署來建立訂用帳戶內的資源群組，並將儲存體帳戶部署到該資源群組，請參閱 [部署至訂用帳戶和資源群組](#deploy-to-subscription-and-resource-group)。
 
 ## <a name="deployment-location-and-name"></a>部署位置和名稱
 
 針對管理群組層級部署，您必須提供部署的位置。 部署的位置與您部署的資源位置不同。 部署位置會指定部署資料的儲存位置。
 
-您可以提供部署的名稱，或使用預設的部署名稱。 預設名稱是範本檔案的名稱。 例如，部署名為 **azuredeploy.json** 的範本會建立預設的部署名稱 **azuredeploy**。
+您可以提供部署的名稱，或使用預設的部署名稱。 預設名稱是範本檔案的名稱。 例如，部署名為 **azuredeploy.json** 的範本會建立預設的部署名稱 **azuredeploy** 。
 
 對於每個部署名稱而言，此位置是不可變的。 當某個位置已經有名稱相同的現有部署時，您無法在其他位置建立部署。 如果您收到錯誤代碼 `InvalidDeploymentLocation`，請使用不同的名稱或與先前該名稱部署相同的位置。
 
-## <a name="use-template-functions"></a>使用範本函式
-
-針對管理群組部署，使用範本函式時有一些重要考慮：
-
-* **不**支援 [resourceGroup()](template-functions-resource.md#resourcegroup) 函式。
-* **不**支援 [subscription()](template-functions-resource.md#subscription) 函式。
-* 支援 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函式。
-* 請勿針對部署至管理群組的資源使用 [resourceId ( # B1 ](template-functions-resource.md#resourceid) 函數。
-
-  相反地，請針對實作為管理群組延伸的資源，使用 [extensionResourceId ( # B1 ](template-functions-resource.md#extensionresourceid) 函數。 部署至管理群組的自訂原則定義是管理群組的延伸。
-
-  若要在管理群組層級取得自訂原則定義的資源識別碼，請使用：
-  
-  ```json
-  "policyDefinitionId": "[extensionResourceId(variables('mgScope'), 'Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
-  ```
-
-  針對管理群組中可用的租使用者資源使用 [tenantResourceId](template-functions-resource.md#tenantresourceid) 函式。 內建原則定義是租使用者層級的資源。
-
-  若要取得內建原則定義的資源識別碼，請使用：
-  
-  ```json
-  "policyDefinitionId": "[tenantResourceId('Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
-  ```
-
 ## <a name="azure-policy"></a>Azure 原則
+
+部署至管理群組的自訂原則定義是管理群組的延伸。 若要取得自訂原則定義的識別碼，請使用 [extensionResourceId ( # B1 ](template-functions-resource.md#extensionresourceid) 函數。 內建原則定義是租使用者層級的資源。 若要取得內建原則定義的識別碼，請使用 [tenantResourceId](template-functions-resource.md#tenantresourceid) 函數。
 
 下列範例顯示如何在管理群組層級 [定義](../../governance/policy/concepts/definition-structure.md) 原則，並加以指派。
 

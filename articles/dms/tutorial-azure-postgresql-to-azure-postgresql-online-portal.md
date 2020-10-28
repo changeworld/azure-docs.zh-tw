@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 0513b12c7ec9174c9a458400cd5682904d9ffb3b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 85b42c6a3c3c59bd8c22bcdc8954b8dd3399c454
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313154"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460966"
 ---
-# <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>教學課程：透過 Azure 入口網站，使用 DMS 將適用於 PostgreSQL 的 Azure DB - 單一伺服器，線上遷移至適用於 PostgreSQL 的 Azure DB - 單一伺服器
+# <a name="tutorial-migrateupgrade-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>教學課程：透過 Azure 入口網站，使用 DMS 將適用於 PostgreSQL 的 Azure DB - 單一伺服器，線上遷移/升級至適用於 PostgreSQL 的 Azure DB - 單一伺服器
 
 您可以使用 Azure 資料庫移轉服務，將來自[適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server)執行個體的資料庫遷移至相同或不同適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器或適用於 PostgreSQL 的 Azure 資料庫 - 彈性伺服器版本，且停機時間最短。 在此教學課程中，您會在 Azure 資料庫移轉服務中使用線上移轉活動，將 **DVD Rental** 範例資料庫從適用於 PostgreSQL 的 Azure 資料庫 v10 遷移至適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器。
 
@@ -47,7 +47,7 @@ ms.locfileid: "92313154"
 若要完成本教學課程，您需要：
 
 * 檢查 [Azure 資料庫移轉服務所支援的移轉案例狀態](https://docs.microsoft.com/azure/dms/resource-scenario-status)，以取得支援的移轉和版本組合。 
-* 現有的 [適用於 PostgreSQL 的 Azure 資料庫](https://docs.microsoft.com/azure/postgresql/)版本 10 和更新版本執行個體，具有 **DVD Rental** 資料庫。 Azure 資料庫移轉服務不支援從適用於 PostgreSQL 的 Azure DB 9.5 或 9.6 進行移轉。
+* 現有的 [適用於 PostgreSQL 的 Azure 資料庫](https://docs.microsoft.com/azure/postgresql/)版本 10 和更新版本執行個體，具有 **DVD Rental** 資料庫。 
 
     另請注意，目標「適用於 PostgreSQL 的 Azure 資料庫」版本必須等於或晚於內部部署 PostgreSQL 版本。 例如，PostgreSQL 10 可以移轉至適用於 PostgreSQL 的 Azure 資料庫 10 或 11，但無法移轉至適用於 PostgreSQL 的 Azure 資料庫 9.6。
 

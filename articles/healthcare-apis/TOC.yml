@@ -79,6 +79,8 @@
           href: configure-cross-origin-resource-sharing.md
         - name: 設定匯出
           href: configure-export-data.md
+        - name: 設定 Private Link
+          href: configure-private-link.md
     - name: 匯出資料
       expanded: false
       items:

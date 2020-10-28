@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
-ms.openlocfilehash: 2197136b86d0bfbb2de79af6712c953339d46371
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8192b1351d54acbb553bacb8b36474cba271cb05
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442832"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638069"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>使用 Azure Data Factory 將資料從內部部署 Netezza 伺服器遷移至 Azure 
 
@@ -41,13 +41,13 @@ Azure Data Factory 提供了無伺服器架構，可允許各種層級的平行�
 
 上圖可解讀如下：
 
-- 單一複製活動可以利用可擴充的計算資源。 當您使用 Azure Integration Runtime 時， [最多](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) 可為每個複製活動指定以無伺服器方式為256的 diu。 使用自我裝載整合執行時間 (自我裝載的整合執行時間) ，您可以手動向上擴充電腦或向外延展至多部電腦 ([最多四個節點](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)) ，而單一複製活動會將其分割區分散到所有節點。 
+- 單一複製活動可以利用可擴充的計算資源。 當您使用 Azure Integration Runtime 時， [最多](./copy-activity-performance.md#data-integration-units) 可為每個複製活動指定以無伺服器方式為256的 diu。 使用自我裝載整合執行時間 (自我裝載的整合執行時間) ，您可以手動向上擴充電腦或向外延展至多部電腦 ([最多四個節點](./create-self-hosted-integration-runtime.md#high-availability-and-scalability)) ，而單一複製活動會將其分割區分散到所有節點。 
 
 - 單一複製活動會使用多個執行緒來讀取和寫入資料存放區。 
 
-- Azure Data Factory 控制流程可以平行啟動多個複製活動。 例如，它可以使用 [For each 迴圈](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)來啟動它們。 
+- Azure Data Factory 控制流程可以平行啟動多個複製活動。 例如，它可以使用 [For each 迴圈](./control-flow-for-each-activity.md)來啟動它們。 
 
-如需詳細資訊，請參閱 [複製活動效能和擴充性指南](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)。
+如需詳細資訊，請參閱 [複製活動效能和擴充性指南](./copy-activity-performance.md)。
 
 ## <a name="resilience"></a>恢復功能
 
@@ -63,7 +63,7 @@ Azure Data Factory 提供了無伺服器架構，可允許各種層級的平行�
 
 下一節將討論如何達到更高的安全性。
 
-## <a name="solution-architecture"></a>方案架構
+## <a name="solution-architecture"></a>解決方案架構
 
 本節將討論兩種遷移資料的方式。
 
@@ -95,33 +95,33 @@ Azure Data Factory 提供了無伺服器架構，可允許各種層級的平行�
 
 ### <a name="manage-authentication-and-credentials"></a>管理驗證和認證 
 
-- 若要驗證 Netezza，您可以透過 [連接字串使用 ODBC 驗證](https://docs.microsoft.com/azure/data-factory/connector-netezza#linked-service-properties)。 
+- 若要驗證 Netezza，您可以透過 [連接字串使用 ODBC 驗證](./connector-netezza.md#linked-service-properties)。 
 
 - 若要向 Azure Blob 儲存體進行驗證： 
 
-   - 我們強烈建議使用 [適用于 Azure 資源的受控](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity)識別。 受控識別是以 Azure Active Directory (Azure AD) 中自動管理的 Azure Data Factory 識別為基礎，可讓您設定管線，而不需要在連結服務定義中提供認證。  
+   - 我們強烈建議使用 [適用于 Azure 資源的受控](./connector-azure-blob-storage.md#managed-identity)識別。 受控識別是以 Azure Active Directory (Azure AD) 中自動管理的 Azure Data Factory 識別為基礎，可讓您設定管線，而不需要在連結服務定義中提供認證。  
 
-   - 或者，您可以使用 [服務主體](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication)、 [共用存取](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)簽章或 [儲存體帳戶金鑰](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)來驗證 Azure Blob 儲存體。 
+   - 或者，您可以使用 [服務主體](./connector-azure-blob-storage.md#service-principal-authentication)、 [共用存取](./connector-azure-blob-storage.md#shared-access-signature-authentication)簽章或 [儲存體帳戶金鑰](./connector-azure-blob-storage.md#account-key-authentication)來驗證 Azure Blob 儲存體。 
 
 - 若要驗證 Azure Data Lake Storage Gen2： 
 
-   - 我們強烈建議使用 [適用于 Azure 資源的受控](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity)識別。
+   - 我們強烈建議使用 [適用于 Azure 資源的受控](./connector-azure-data-lake-storage.md#managed-identity)識別。
    
-   - 您也可以使用 [服務主體](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) 或 [儲存體帳戶金鑰](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)。 
+   - 您也可以使用 [服務主體](./connector-azure-data-lake-storage.md#service-principal-authentication) 或 [儲存體帳戶金鑰](./connector-azure-data-lake-storage.md#account-key-authentication)。 
 
 - 若要驗證 Azure Synapse Analytics：
 
-   - 我們強烈建議使用 [適用于 Azure 資源的受控](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity)識別。
+   - 我們強烈建議使用 [適用于 Azure 資源的受控](./connector-azure-sql-data-warehouse.md#managed-identity)識別。
    
-   - 您也可以使用 [服務主體](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#service-principal-authentication) 或 [SQL 驗證](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#sql-authentication)。
+   - 您也可以使用 [服務主體](./connector-azure-sql-data-warehouse.md#service-principal-authentication) 或 [SQL 驗證](./connector-azure-sql-data-warehouse.md#sql-authentication)。
 
-- 當您未使用適用于 Azure 資源的受控識別時，強烈建議您將 [認證儲存在 Azure Key Vault 中](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) ，讓您可以更輕鬆地集中管理及輪替金鑰，而不需要修改 Azure Data Factory 連結的服務。 這也是其中一個 [CI/CD 的最佳做法](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)。 
+- 當您未使用適用于 Azure 資源的受控識別時，強烈建議您將 [認證儲存在 Azure Key Vault 中](./store-credentials-in-key-vault.md) ，讓您可以更輕鬆地集中管理及輪替金鑰，而不需要修改 Azure Data Factory 連結的服務。 這也是其中一個 [CI/CD 的最佳做法](./continuous-integration-deployment.md#best-practices-for-cicd)。 
 
 ### <a name="migrate-initial-snapshot-data"></a>遷移初始快照集資料 
 
 若為小型資料表 (也就是，磁片區小於 100 GB 或可在兩個小時內遷移至 Azure 的資料表) ，您可以讓每個複製作業每個資料表載入資料。 若要取得更高的輸送量，您可以執行多個 Azure Data Factory 複製作業，同時載入不同的資料表。 
 
-在每個複製作業中，若要依分割區執行平行查詢和複製資料，您也可以使用[ `parallelCopies` 屬性設定](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy)搭配下列其中一個資料分割選項，以達到某個層級的平行處理原則：
+在每個複製作業中，若要依分割區執行平行查詢和複製資料，您也可以使用[ `parallelCopies` 屬性設定](./copy-activity-performance.md#parallel-copy)搭配下列其中一個資料分割選項，以達到某個層級的平行處理原則：
 
 - 為了協助達成更高的效率，我們鼓勵您從資料配量著手。  請確定設定中的值 `parallelCopies` 小於您在 Netezza 伺服器上資料表中的資料配量分割區總數。  
 
@@ -192,18 +192,18 @@ Azure Data Factory 提供了無伺服器架構，可允許各種層級的平行�
 如需詳細資訊，請參閱下列文章和指南：
 
 - [使用 Azure Data Factory 將資料從內部部署的關聯式資料倉儲資料庫移轉至 Azure](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/)
-- [Netezza 連接器](https://docs.microsoft.com/azure/data-factory/connector-netezza)
-- [ODBC 連接器](https://docs.microsoft.com/azure/data-factory/connector-odbc)
-- [Azure Blob 儲存體連接器](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
-- [Azure Data Lake Storage Gen2 連接器](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
-- [Azure Synapse Analytics 連接器](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
-- [複製活動效能調整指南](https://docs.microsoft.com/azure/data-factory/copy-activity-performance) (機器翻譯)
-- [建立和設定自我裝載整合執行階段](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
-- [自我裝載整合執行階段 HA 及可擴縮性](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability) (機器翻譯)
-- [資料移動安全性考量](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations) (機器翻譯)
-- [在 Azure Key Vault 中儲存認證](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) (機器翻譯)
-- [從一個資料表以累加方式複製資料](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-portal)
-- [從多個資料表以累加方式複製資料](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-multiple-tables-portal)
+- [Netezza 連接器](./connector-netezza.md)
+- [ODBC 連接器](./connector-odbc.md)
+- [Azure Blob 儲存體連接器](./connector-azure-blob-storage.md)
+- [Azure Data Lake Storage Gen2 連接器](./connector-azure-data-lake-storage.md)
+- [Azure Synapse Analytics 連接器](./connector-azure-sql-data-warehouse.md)
+- [複製活動效能調整指南](./copy-activity-performance.md) (機器翻譯)
+- [建立和設定自我裝載整合執行階段](./create-self-hosted-integration-runtime.md)
+- [自我裝載整合執行階段 HA 及可擴縮性](./create-self-hosted-integration-runtime.md#high-availability-and-scalability) (機器翻譯)
+- [資料移動安全性考量](./data-movement-security-considerations.md) (機器翻譯)
+- [在 Azure Key Vault 中儲存認證](./store-credentials-in-key-vault.md) (機器翻譯)
+- [從一個資料表以累加方式複製資料](./tutorial-incremental-copy-portal.md)
+- [從多個資料表以累加方式複製資料](./tutorial-incremental-copy-multiple-tables-portal.md)
 - [Azure Data Factory 定價頁面](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
 ## <a name="next-steps"></a>後續步驟

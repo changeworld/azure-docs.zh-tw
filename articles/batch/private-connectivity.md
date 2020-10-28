@@ -4,12 +4,12 @@ description: 瞭解如何使用私人端點私下連接到 Azure Batch 帳戶。
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7dba3dd1d34421666821c6bc7320ef76ab77bb7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f797dbda7888eb8ea9f5c76e3b527fb98d896ee4
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542133"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92669025"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>使用私人端點搭配 Azure Batch 帳戶
 
@@ -28,20 +28,20 @@ Private Link 可讓使用者從虛擬網路或任何對等互連的虛擬網路�
 
 使用下列步驟，使用 Azure 入口網站建立私人 Batch 帳戶：
 
-1. 從 [ **建立資源** ] 窗格中，選擇 [ **Batch 服務** ]，然後選取 [ **建立**]。
-2. 在 [ **基本** ] 索引標籤中輸入訂用帳戶、資源群組、區域和 Batch 帳戶名稱，然後選取 **[下一步： Advanced**]。
-3. 在 [ **Advanced** ] 索引標籤中，將 [**公用網路存取**] 設定為 [**停用**
-4. 在 [ **設定**] 中，選取 [ **私人端點連接** ]，然後選取 [ **+ 私人端點**]。
+1. 從 [ **建立資源** ] 窗格中，選擇 [ **Batch 服務** ]，然後選取 [ **建立** ]。
+2. 在 [ **基本** ] 索引標籤中輸入訂用帳戶、資源群組、區域和 Batch 帳戶名稱，然後選取 **[下一步： Advanced** ]。
+3. 在 [ **Advanced** ] 索引標籤中，將 [ **公用網路存取** ] 設定為 [ **停用**
+4. 在 [ **設定** ] 中，選取 [ **私人端點連接** ]，然後選取 [ **+ 私人端點** ]。
    :::image type="content" source="media/private-connectivity/private-endpoint-connections.png" alt-text="私人端點連接":::
-5. 在 [ **基本** ] 窗格中，輸入或選取訂用帳戶、資源群組、私人端點資源名稱和區域詳細資料，然後選取 **[下一步：資源]**。
-6. 在 [ **資源** ] 窗格中，將 **資源類型** 設定為 **Microsoft.Batch/batchAccounts**。 選取您要存取的私人 Batch 帳戶，然後選取 **[下一步：設定]**。
+5. 在 [ **基本** ] 窗格中，輸入或選取訂用帳戶、資源群組、私人端點資源名稱和區域詳細資料，然後選取 **[下一步：資源]** 。
+6. 在 [ **資源** ] 窗格中，將 **資源類型** 設定為 **Microsoft.Batch/batchAccounts** 。 選取您要存取的私人 Batch 帳戶，然後選取 **[下一步：設定]** 。
    :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="私人端點連接":::
-7. **在 [設定**] 窗格中，輸入或選取這項資訊：
-   - **虛擬網路**：選取您的虛擬網路。
-   - **子網**：選取您的子網。
-   - **與私人 DNS 區域整合**：選取 **[是]**。 若要私下與私人端點連線，則需要 DNS 記錄。 我們建議將私人端點與私人 DNS 區域整合。 您也可以使用自己的 DNS 伺服器，或藉由使用虛擬機器上的主機檔案來建立 DNS 記錄。
-   - **私人 DNS 區域**：選取 [privatelink <region> ]。batch.azure.com。 系統會自動決定私人 DNS 區域。 您無法使用 Azure 入口網站來加以變更。
-8. 選取 [ **審核] + [建立**]，然後等待 Azure 驗證您的設定。
+7. **在 [設定** ] 窗格中，輸入或選取這項資訊：
+   - **虛擬網路** ：選取您的虛擬網路。
+   - **子網** ：選取您的子網。
+   - **與私人 DNS 區域整合** ：選取 **[是]** 。 若要私下與私人端點連線，則需要 DNS 記錄。 我們建議將私人端點與私人 DNS 區域整合。 您也可以使用自己的 DNS 伺服器，或藉由使用虛擬機器上的主機檔案來建立 DNS 記錄。
+   - **私人 DNS 區域** ：選取 [privatelink \<region\> ]。batch.azure.com。 系統會自動決定私人 DNS 區域。 您無法使用 Azure 入口網站來加以變更。
+8. 選取 [ **審核] + [建立** ]，然後等待 Azure 驗證您的設定。
 9. 當您看到 [驗證成功] 訊息時，請選取 [建立]。
 
 布建私人端點之後，您可以使用私人端點，從相同虛擬網路中的 Vm 存取 Batch 帳戶。 若要從 Azure 入口網站中查看 IP 位址：
@@ -54,7 +54,7 @@ Private Link 可讓使用者從虛擬網路或任何對等互連的虛擬網路�
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager 範本
 
-[使用 Azure Resource Manager 範本建立 Batch 帳戶](quick-create-template.md)時，請修改範本，將**將 publicnetworkaccess 新增**設定為**停用**，如下所示。
+[使用 Azure Resource Manager 範本建立 Batch 帳戶](quick-create-template.md)時，請修改範本，將 **將 publicnetworkaccess 新增** 設定為 **停用** ，如下所示。
 
 ```json
 {

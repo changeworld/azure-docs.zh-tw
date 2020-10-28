@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: b2c1d08656ce9ef6b76e34a943f133859b78345a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f1332255ae83a32f9b71d24d812b00fad9b7fa1
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86172021"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637916"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>針對 Azure Data Factory 中的 SSIS Integration Runtime 管理進行疑難排解
 
@@ -82,7 +82,7 @@ ms.locfileid: "86172021"
 
 ## <a name="custom-setup-issues"></a>自訂安裝問題
 
-自訂設定所提供的介面可讓您自行新增在佈建或重新設定 SSIS IR 期間的設定步驟。 如需詳細資訊，請參閱[自訂 Azure-SSIS Integration Runtime 的設定](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)。
+自訂設定所提供的介面可讓您自行新增在佈建或重新設定 SSIS IR 期間的設定步驟。 如需詳細資訊，請參閱[自訂 Azure-SSIS Integration Runtime 的設定](./how-to-configure-azure-ssis-ir-custom-setup.md)。
 
 請確定您的容器只包含必要的自訂設定檔案；容器中的所有檔案都會下載到 SSIS IR 背景工作角色節點。 建議您在本機電腦上測試自訂設定指令碼，先修正任何指令碼執行問題，再於 SSIS IR 中執行指令碼。
 
@@ -114,7 +114,7 @@ SSIS IR 會定期更新，因此系統會在 IR 正在執行時檢查自訂設�
 
 ## <a name="virtual-network-configuration"></a>虛擬網路設定
 
-當您將 SSIS IR 加入 Azure 虛擬網路時，SSIS IR 會使用位於使用者訂用帳戶下的虛擬網路。 如需詳細資訊，請參閱[將 Azure-SSIS Integration Runtime 加入虛擬網路](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。
+當您將 SSIS IR 加入 Azure 虛擬網路時，SSIS IR 會使用位於使用者訂用帳戶下的虛擬網路。 如需詳細資訊，請參閱[將 Azure-SSIS Integration Runtime 加入虛擬網路](./join-azure-ssis-integration-runtime-virtual-network.md)。
 SSIS IR 順利啟動之後，如果遇到網路連線問題，您可以嘗試使用診斷連線 [工具](ssis-integration-runtime-diagnose-connectivity-faq.md) 來自行診斷問題。
 發生虛擬網路相關的問題時，您會看到下列其中一個錯誤。
 
@@ -141,7 +141,7 @@ SSIS IR 順利啟動之後，如果遇到網路連線問題，您可以嘗試使
 
 這類錯誤訊息可能看起來像這樣：「無法在 VNet 中布建 Integration Runtime。 如果已設定 DNS 伺服器或 NSG 設定，請確定 DNS 伺服器可供存取，且 NSG 已正確設定。」
 
-在此情況下，您可能會有 DNS 伺服器或 NSG 設定的自訂設定，但這會導致系統無法解析或存取 SSIS IR 所需的 Azure 伺服器名稱。 如需詳細資訊，請參閱 [SSIS IR 虛擬網路設定](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。 如果您仍然遇到問題，請連絡 Azure Data Factory 支援小組。
+在此情況下，您可能會有 DNS 伺服器或 NSG 設定的自訂設定，但這會導致系統無法解析或存取 SSIS IR 所需的 Azure 伺服器名稱。 如需詳細資訊，請參閱 [SSIS IR 虛擬網路設定](./join-azure-ssis-integration-runtime-virtual-network.md)。 如果您仍然遇到問題，請連絡 Azure Data Factory 支援小組。
 
 ### <a name="vnetresourcegrouplockedduringupgrade"></a>VNetResourceGroupLockedDuringUpgrade
 
@@ -157,11 +157,11 @@ SSIS IR 會定期自動更新。 升級期間會建立新的 Azure Batch 集區�
 
 ### <a name="nodeunavailable"></a>NodeUnavailable
 
-當 IR 正在執行時會發生此錯誤，這表示 IR 已變得狀況不良。 造成此錯誤的原因一律是 DNS 伺服器或 NSG 設定有變更，因此讓 SSIS IR 無法連線至必要服務。 由於 DNS 伺服器和 NSG 的設定是由客戶控制的，因此客戶必須在其那一端修正執行問題。 如需詳細資訊，請參閱 [SSIS IR 虛擬網路設定](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。 如果您仍然遇到問題，請連絡 Azure Data Factory 支援小組。
+當 IR 正在執行時會發生此錯誤，這表示 IR 已變得狀況不良。 造成此錯誤的原因一律是 DNS 伺服器或 NSG 設定有變更，因此讓 SSIS IR 無法連線至必要服務。 由於 DNS 伺服器和 NSG 的設定是由客戶控制的，因此客戶必須在其那一端修正執行問題。 如需詳細資訊，請參閱 [SSIS IR 虛擬網路設定](./join-azure-ssis-integration-runtime-virtual-network.md)。 如果您仍然遇到問題，請連絡 Azure Data Factory 支援小組。
 
 ## <a name="static-public-ip-addresses-configuration"></a>靜態公用 IP 位址設定
 
-當您將 Azure-SSIS IR 加入 Azure 虛擬網路時，您也可以為 IR 攜帶您自己的靜態公用 IP 位址，讓 IR 可以存取限制特定 IP 位址存取的資料來源。 如需詳細資訊，請參閱[將 Azure-SSIS Integration Runtime 加入虛擬網路](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。
+當您將 Azure-SSIS IR 加入 Azure 虛擬網路時，您也可以為 IR 攜帶您自己的靜態公用 IP 位址，讓 IR 可以存取限制特定 IP 位址存取的資料來源。 如需詳細資訊，請參閱[將 Azure-SSIS Integration Runtime 加入虛擬網路](./join-azure-ssis-integration-runtime-virtual-network.md)。
 
 除了上述的虛擬網路問題之外，您也可以符合靜態公用 IP 位址的相關問題。 請檢查下列錯誤以取得協助。
 
@@ -174,7 +174,7 @@ SSIS IR 會定期自動更新。 升級期間會建立新的 Azure Batch 集區�
 | 提供的靜態公用 IP 位址已在使用中，請為您的 Azure-SSIS Integration Runtime 提供兩個未使用的 IP 位址。 | 您應該選取兩個未使用的靜態公用 IP 位址，或移除指定之公用 IP 位址的目前參考，然後重新開機 Azure-SSIS IR。 |
 | 提供的靜態公用 IP 位址沒有 DNS 名稱，請為您的 Azure-SSIS Integration Runtime 提供兩個 DNS 名稱。 | 您可以在 Azure 入口網站中設定公用 IP 位址的 DNS 名稱，如下圖所示。 特定步驟如下： (1) 開啟 Azure 入口網站並移至此公用 IP 位址的資源頁面; (2) 選取 [設定 **] 區段並** 設定 DNS 名稱，然後按一下 [ **儲存** ] 按鈕; (3) 重新開機 Azure-SSIS IR。 |
 | 為您的 Azure-SSIS Integration Runtime 提供的 VNet 和靜態公用 IP 位址必須位於相同的位置。 | 根據 Azure 網路的需求，靜態公用 IP 位址和虛擬網路應該位於相同的位置和訂用帳戶中。 請提供兩個有效的靜態公用 IP 位址，然後重新開機 Azure-SSIS IR。 |
-| 提供的靜態公用 IP 位址是基本 IP 位址，請為您的 Azure-SSIS Integration Runtime 提供兩個標準。 | 請參閱 [公用 IP 位址的 sku](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) 以取得協助。 |
+| 提供的靜態公用 IP 位址是基本 IP 位址，請為您的 Azure-SSIS Integration Runtime 提供兩個標準。 | 請參閱 [公用 IP 位址的 sku](../virtual-network/public-ip-addresses.md#sku) 以取得協助。 |
 
 ![Azure-SSIS IR](media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png)
 

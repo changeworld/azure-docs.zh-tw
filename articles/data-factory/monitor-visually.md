@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: fcbf48081484941fd93f209bee21eb14c2c38310
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48373c9ffc9146b6e62b62fb7d7fe10d571ce27f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570137"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638103"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>以視覺化方式監視 Azure Data Factory
 
@@ -36,7 +36,7 @@ ms.locfileid: "91570137"
 | 回合開始 | 管線回合的開始日期和時間 (MM/DD/YYYY，HH:MM:SS AM/PM) |
 | Duration | 回合持續時間 (HH:MM:SS) |
 | 觸發方式 | 啟動管線的觸發程序名稱 |
-| 狀態 | **失敗**、**成功**、**進行中**、**已取消**或**已排入佇列** |
+| 狀態 | **失敗** 、 **成功** 、 **進行中** 、 **已取消** 或 **已排入佇列** |
 | 註解 | 與管線相關聯的可篩選標籤  |
 | 參數 | 管線回合的參數 (名稱/值組) |
 | 錯誤 | 如果管線失敗，則回合錯誤 |
@@ -55,11 +55,11 @@ ms.locfileid: "91570137"
 | **資料行名稱** | **說明** |
 | --- | --- |
 | 活動名稱 | 管線內的活動名稱 |
-| 活動類型 | 活動的類型，例如 **Copy**、**ExecuteDataFlow** 或 **AzureMLExecutePipeline** |
+| 活動類型 | 活動的類型，例如 **Copy** 、 **ExecuteDataFlow** 或 **AzureMLExecutePipeline** |
 | 動作 | 圖示，可讓您查看 JSON 輸入資訊、JSON 輸出資訊，或詳細的活動特定監視體驗 | 
 | 回合開始 | 活動回合的開始日期和時間 (MM/DD/YYYY，HH:MM:SS AM/PM) |
 | Duration | 回合持續時間 (HH:MM:SS) |
-| 狀態 | **失敗**、**成功**、**進行中**或**已取消** |
+| 狀態 | **失敗** 、 **成功** 、 **進行中** 或 **已取消** |
 | 整合執行階段 | 活動是在哪個 Integration Runtime 上執行 |
 | 使用者屬性 | 活動的使用者定義屬性 |
 | 錯誤 | 如果活動失敗，則回合錯誤 |
@@ -94,7 +94,7 @@ ms.locfileid: "91570137"
 | --- | --- |
 | 管線名稱 | 依管線的名稱篩選。 |
 | 回合開始 |  判定所顯示管線回合的時間範圍。 選項包括針對 [過去 24 小時]、[上週] 和 [過去 30 天] 的快速篩選，或是選取自訂日期和時間。 |
-| 回合狀態 | 依狀態篩選回合：**成功**、**失敗**、**已排入佇列**、**已取消**或**進行中**。 |
+| 回合狀態 | 依狀態篩選回合： **成功** 、 **失敗** 、 **已排入佇列** 、 **已取消** 或 **進行中** 。 |
 | 註解 | 依套用至每個管線的標籤篩選 |
 | 執行 | 篩選您是否要查看重新執行的管線 |
 
@@ -212,4 +212,4 @@ ms.locfileid: "91570137"
 
 ## <a name="next-steps"></a>後續步驟
 
-若要了解如何監視和管理管線，請參閱[以程式設計方式監視和管理管線](https://docs.microsoft.com/azure/data-factory/monitor-programmatically)一文。
+若要了解如何監視和管理管線，請參閱[以程式設計方式監視和管理管線](./monitor-programmatically.md)一文。

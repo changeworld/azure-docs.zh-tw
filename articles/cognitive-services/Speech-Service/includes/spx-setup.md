@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 203ba2988d817e3e396fd8aec3db00eba9832041
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4b04558077f6b59d0fef613308a6ab96680d7ff8
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92324014"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92470821"
 ---
 ## <a name="download-and-install"></a>下載並安裝
 
@@ -107,7 +107,8 @@ pwd
 
 ## <a name="create-subscription-config"></a>建立訂用帳戶設定
 
-若要開始使用語音 CLI，您必須先輸入語音訂用帳戶金鑰和區域資訊。 請參閱[區域支援](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)頁面，以尋找您的區域識別碼。 一旦您擁有訂用帳戶金鑰和區域識別碼 (例如， `eastus`、`westus`)，請執行下列命令。
+若要開始使用語音 CLI，您必須輸入語音訂用帳戶金鑰和區域識別碼。 請依照[免費試用語音服務](../overview.md#try-the-speech-service-for-free)中的步驟，來取得這些認證。
+一旦您擁有訂用帳戶金鑰和區域識別碼 (例如， `eastus`、`westus`)，請執行下列命令。
 
 ```shell
 spx config @key --set SUBSCRIPTION-KEY
