@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 160e8182a2de56b494e8f37bbedf4a8cec66c608
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05c3cfc390fed905f4a1b09c221095b56867d540
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88030889"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896169"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure 地圖服務路線規劃涵蓋範圍
 
 本文提供 Azure 地圖服務路線規劃的涵蓋範圍資訊。 在搜尋查詢中，Azure 地圖服務會從位置 A 傳回到位置 B 的最佳路由。系統會提供您精確的行進時間、旅遊資訊的即時更新，以及路線指示。 您也可以新增其他搜尋參數，例如目前的流量、車輛類型和條件，以避免。 路由的優化視區域而定。 這是因為 Azure 地圖服務針對不同區域具有不同層級的資訊和精確度。 下表列出區域和您可以要求的資訊類型。
  
-檢查[**地理編碼**](geocoding-coverage.md)的涵蓋範圍。       
-檢查[**流量**](traffic-coverage.md)的涵蓋範圍。  
-檢查[**轉譯器**](render-coverage.md)的涵蓋範圍。
+檢查 [**地理編碼**](geocoding-coverage.md)的涵蓋範圍。       
+檢查 [**流量**](traffic-coverage.md)的涵蓋範圍。  
+檢查 [**轉譯器**](render-coverage.md)的涵蓋範圍。
 <br>  
 **圖例**
 
@@ -245,4 +245,4 @@ ms.locfileid: "88030889"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Azure 地圖服務路由的詳細資訊，請參閱 [路由](https://docs.microsoft.com/rest/api/maps/route) 參考頁面。
+如需 Azure 地圖服務路由的詳細資訊，請參閱 [路由](/rest/api/maps/route) 參考頁面。

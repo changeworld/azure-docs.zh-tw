@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 731ffe02b16fe832bb5feba34973ca81bf941646
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80d61e69b5e8d666406c378c2d3fece28c822491
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371417"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896774"
 ---
 # <a name="tutorial-use-creator-to-create-indoor-maps"></a>教學課程：使用建立工具建立室內地圖
 
@@ -44,7 +44,7 @@ ms.locfileid: "91371417"
 
 ## <a name="upload-a-drawing-package"></a>上傳繪圖套件
 
-使用[資料上傳 API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)，將繪圖套件上傳至 Azure 地圖服務資源。
+使用[資料上傳 API](/rest/api/maps/data/uploadpreview)，將繪圖套件上傳至 Azure 地圖服務資源。
 
 資料上傳 API 是一個長時間執行的交易，會實作此處定義的模式。 作業完成後，我們會使用 `udid` 來存取上傳的套件，以進行轉換。 請依照下列步驟取得 `udid`。
 
@@ -102,7 +102,7 @@ ms.locfileid: "91371417"
 
  在繪圖套件上傳後，我們將對上傳的套件使用 `udid`，以將套件轉換成地圖資料。 轉換 API 會使用長時間執行的交易，實作[此處](creator-long-running-operation.md)定義的模式。 作業完成後，我們會使用 `conversionId` 來存取已轉換的資料。 請依照下列步驟取得 `conversionId`。
 
-1. 選取 [ **新增**]。 在 [新建] 視窗中，選取 [要求]。 輸入**要求名稱**，然後選取集合。 按一下 [檔案] 。
+1. 選取 [ **新增** ]。 在 [新建] 視窗中，選取 [要求]。 輸入 **要求名稱** ，然後選取集合。 按一下 [檔案] 。
 
 2. 在 [產生器] 索引標籤中選取 **POST** HTTP 方法，然後輸入下列 URL，以將您上傳的繪圖套件轉換成地圖資料。 請使用上傳套件的 `udid`。
 
@@ -164,17 +164,17 @@ ms.locfileid: "91371417"
 
 ## <a name="create-a-dataset"></a>建立資料集
 
-此資料集是地圖功能的集合，例如建築物、樓層和房間。 若要建立資料集，請使用[資料集建立 API](https://docs.microsoft.com/rest/api/maps/dataset/createpreview)。 資料集建立 API 會使用已轉換繪圖套件的 `conversionId`，並傳回已建立資料集的 `datasetId`。 下列步驟說明如何建立資料集。
+此資料集是地圖功能的集合，例如建築物、樓層和房間。 若要建立資料集，請使用[資料集建立 API](/rest/api/maps/dataset/createpreview)。 資料集建立 API 會使用已轉換繪圖套件的 `conversionId`，並傳回已建立資料集的 `datasetId`。 下列步驟說明如何建立資料集。
 
-1. 在 Postman 應用程式中，選取 [新增]。 在 [新建] 視窗中，選取 [要求]。 輸入**要求名稱**，然後選取集合。 按一下 [儲存] 
+1. 在 Postman 應用程式中，選取 [新增]。 在 [新建] 視窗中，選取 [要求]。 輸入 **要求名稱** ，然後選取集合。 按一下 [儲存] 
 
-2. 對[資料集建立 API](https://docs.microsoft.com/rest/api/maps/dataset/createpreview) 提出 **POST** 要求，以建立新的資料集。 提交要求之前，請附加您的訂用帳戶金鑰和 `conversionId`，以及在步驟 5 的轉換程序期間取得的 `conversionId`。  要求應會類似於下列 URL：
+2. 對 [資料集建立 API](/rest/api/maps/dataset/createpreview) 提出 **POST** 要求，以建立新的資料集。 提交要求之前，請附加您的訂用帳戶金鑰和 `conversionId`，以及在步驟 5 的轉換程序期間取得的 `conversionId`。  要求應會類似於下列 URL：
 
     ```http
     https://atlas.microsoft.com/dataset/create?api-version=1.0&conversionID={conversionId}&type=facility&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. 在回應**標頭**的 [位置] 索引鍵中，取得 `statusURL`。
+3. 在回應 **標頭** 的 [位置] 索引鍵中，取得 `statusURL`。
 
 4. 對 `statusURL` 提出 **GET** 要求，以取得 `datasetId`。 請附加您的 Azure 地圖服務主要訂用帳戶金鑰，以進行驗證。 要求應會類似於下列 URL：
 
@@ -197,7 +197,7 @@ ms.locfileid: "91371417"
 
 圖格集是在地圖上轉譯的一組向量圖格。 圖格集是從現有資料集建立而來的。 不過，圖格集並不依賴其來源資料集。 如果資料集遭刪除，圖格集將繼續存在。 若要建立圖格集，請遵循下列步驟：
 
-1. 在 Postman 應用程式中，選取 [新增]。 在 [新建] 視窗中，選取 [要求]。 輸入**要求名稱**，然後選取集合。 按一下 [儲存] 
+1. 在 Postman 應用程式中，選取 [新增]。 在 [新建] 視窗中，選取 [要求]。 輸入 **要求名稱** ，然後選取集合。 按一下 [儲存] 
 
 2. 在 [產生器] 索引標籤中提出 **POST** 要求。要求 URL 應會類似於下列 URL：
 
@@ -224,9 +224,9 @@ ms.locfileid: "91371417"
 
 ## <a name="query-datasets-with-wfs-api"></a>使用 WFS API 查詢資料集
 
- 您可以使用 [WFS API](https://docs.microsoft.com/rest/api/maps/wfs) 來查詢資料集。 您可以使用 WFS API 來查詢功能集合、特定集合，或具有功能**識別碼**的特定功能。 功能**識別碼**可唯一識別資料集內的功能。 例如，可用來識別特定狀態集中的哪些功能狀態應更新。
+ 您可以使用 [WFS API](/rest/api/maps/wfs) 來查詢資料集。 您可以使用 WFS API 來查詢功能集合、特定集合，或具有功能 **識別碼** 的特定功能。 功能 **識別碼** 可唯一識別資料集內的功能。 例如，可用來識別特定狀態集中的哪些功能狀態應更新。
 
-1. 在 Postman 應用程式中，選取 [新增]。 在 [新建] 視窗中，選取 [要求]。 輸入**要求名稱**，然後選取集合。 按一下 [儲存] 
+1. 在 Postman 應用程式中，選取 [新增]。 在 [新建] 視窗中，選取 [要求]。 輸入 **要求名稱** ，然後選取集合。 按一下 [儲存] 
 
 2. 提出 **GET** 要求，以檢視資料集中的集合清單。 請將 `<dataset-id>` 取代為您自己的 `datasetId`。 請使用您的 Azure 地圖服務主要金鑰，而非預留位置。 要求應會類似於下列 URL：
 
@@ -234,7 +234,7 @@ ms.locfileid: "91371417"
     https://atlas.microsoft.com/wfs/datasets/{datasetId}/collections?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
     ```
 
-3. 回應本文會以 GeoJSON 格式傳遞，且會包含資料集內的所有集合。 為了簡單起見，此處的範例僅顯示 `unit` 集合。 若要查看包含所有集合的範例，請參閱 [WFS 說明集合 API](https://docs.microsoft.com/rest/api/maps/wfs/collectiondescriptionpreview)。 若要深入了解任何集合，您可以按一下 `link` 元素內的任何 URL。
+3. 回應本文會以 GeoJSON 格式傳遞，且會包含資料集內的所有集合。 為了簡單起見，此處的範例僅顯示 `unit` 集合。 若要查看包含所有集合的範例，請參閱 [WFS 說明集合 API](/rest/api/maps/wfs/collectiondescriptionpreview)。 若要深入了解任何集合，您可以按一下 `link` 元素內的任何 URL。
 
     ```json
     {
@@ -302,15 +302,15 @@ ms.locfileid: "91371417"
 
 ## <a name="create-a-feature-stateset"></a>建立功能狀態集
 
-1. 在 Postman 應用程式中，選取 [新增]。 在 [新建] 視窗中，選取 [要求]。 輸入**要求名稱**，然後選取集合。 按一下 [儲存] 
+1. 在 Postman 應用程式中，選取 [新增]。 在 [新建] 視窗中，選取 [要求]。 輸入 **要求名稱** ，然後選取集合。 按一下 [儲存] 
 
-2. 對[建立狀態集 API](https://docs.microsoft.com/rest/api/maps/featurestate/createstatesetpreview) 提出 **POST** 要求。 請使用您要修改的狀態所屬資料集的 `datasetId`。 要求應會類似於下列 URL：
+2. 對 [建立狀態集 API](/rest/api/maps/featurestate/createstatesetpreview) 提出 **POST** 要求。 請使用您要修改的狀態所屬資料集的 `datasetId`。 要求應會類似於下列 URL：
 
     ```http
     https://atlas.microsoft.com/featureState/stateset?api-version=1.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. 在 **POST** 要求的 [標頭] 中，將 `Content-Type` 設定為 `application/json`。 在 [本文] 中，提供下列樣式以反映 `occupied` 和 `temperature` *狀態*的變更。 完成後，按一下 [傳送]。
+3. 在 **POST** 要求的 [標頭] 中，將 `Content-Type` 設定為 `application/json`。 在 [本文] 中，提供下列樣式以反映 `occupied` 和 `temperature` *狀態* 的變更。 完成後，按一下 [傳送]。
 
     ```json
     {
@@ -402,7 +402,7 @@ ms.locfileid: "91371417"
 
 7. 成功更新後，您將會收到 `200 OK` HTTP 狀態碼。 如果您已為室內地圖[實作動態樣式](indoor-map-dynamic-styling.md)，則更新將會依指定的時間戳記顯示於轉譯的地圖中。
 
-[功能取得狀態 API](https://docs.microsoft.com/rest/api/maps/featurestate/getstatespreview) 可讓您使用功能 `ID` 擷取功能的狀態。 您也可以使用[功能狀態刪除 API](https://docs.microsoft.com/rest/api/maps/featurestate/deletestatesetpreview) 來刪除狀態集及其資源。
+[功能取得狀態 API](/rest/api/maps/featurestate/getstatespreview) 可讓您使用功能 `ID` 擷取功能的狀態。 您也可以使用[功能狀態刪除 API](/rest/api/maps/featurestate/deletestatesetpreview) 來刪除狀態集及其資源。
 
 若要深入了解本文中討論的不同 Azure 地圖服務建立工具服務，請參閱 [建立工具室內地圖](creator-indoor-maps.md)。
 

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 3b1b86e47164ce4c1a13a3dfe037c0ecc659fbee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11aa0eb07ed9cb3a1a785b3155b832f8b447708f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310028"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896866"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure 地圖服務交通涵蓋範圍
 
-Azure 地圖服務會以交通**流量**和**事件**的形式提供豐富的交通資訊。 此資料可以在地圖上以視覺形式呈現，或用來產生將行車條件納入考量的更聰明路線。
+Azure 地圖服務會以交通 **流量** 和 **事件** 的形式提供豐富的交通資訊。 此資料可以在地圖上以視覺形式呈現，或用來產生將行車條件納入考量的更聰明路線。
 
 不過，Maps 沒有相同層級的資訊和精確度適用于所有國家或地區。 下表提供您可以從每個國家或地區要求何種流量資訊的相關資訊： 
 
@@ -135,4 +135,4 @@ Azure 地圖服務會以交通**流量**和**事件**的形式提供豐富的交
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Azure 地圖服務交通資料的詳細資訊，請參閱[交通](https://docs.microsoft.com/rest/api/maps/traffic)參考頁面。
+如需 Azure 地圖服務交通資料的詳細資訊，請參閱[交通](/rest/api/maps/traffic)參考頁面。

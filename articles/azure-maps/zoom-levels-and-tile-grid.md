@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 618c8597f7f10ce669bb340b9f5ea4c96f5c1d3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d15f78c19b5f142f8879d54a1ae32e229ce7f50
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825296"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896577"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>縮放層級和圖格格線
 
@@ -74,7 +74,7 @@ var mapWidth = tileSize * Math.pow(2, zoom);
 var mapHeight = mapWidth;
 ```
 
-因為地圖寬度和高度在每個縮放層級都不同，所以圖元座標。 地圖左上角的圖元一律具有圖元座標 (0，0) 。 地圖右下角的圖元具有圖元座標 * (width-1、height-1) *，或參考上一節中的方程式， * (tileSize \* 2<sup>zoom</sup>–1，tileSize \* 2<sup>zoom</sup>– 1) *。 例如，在層級2使用512正方形圖格時，圖元座標的範圍從 (0，0) 到 (2047，2047) ，如下所示：
+因為地圖寬度和高度在每個縮放層級都不同，所以圖元座標。 地圖左上角的圖元一律具有圖元座標 (0，0) 。 地圖右下角的圖元具有圖元座標 *(width-1、height-1)* ，或參考上一節中的方程式， *(tileSize \* 2 <sup>zoom</sup>–1，tileSize \* 2 <sup>zoom</sup>– 1)* 。 例如，在層級2使用512正方形圖格時，圖元座標的範圍從 (0，0) 到 (2047，2047) ，如下所示：
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="世界地圖磚":::
 
@@ -100,7 +100,7 @@ var numberOfTilesWide = Math.pow(2, zoom);
 var numberOfTilesHigh = numberOfTilesWide;
 ```
 
-每個磚都會提供 XY 座標，範圍從左上角的 (0、0) ，到右下角的 * (2<sup>縮放</sup>-1、2<sup>縮放</sup>-1) * 。 例如，在縮放層級3，圖格座標的範圍是從 (0、0) 到 (7、7) ，如下所示：
+每個磚都會提供 XY 座標，範圍從左上角的 (0、0) ，到右下角的 *(2 <sup>縮放</sup>-1、2 <sup>縮放</sup>-1)* 。 例如，在縮放層級3，圖格座標的範圍是從 (0、0) 到 (7、7) ，如下所示：
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="世界地圖磚":::
 
@@ -114,7 +114,7 @@ var tileY = Math.floor(pixelY / tileSize);
 
 磚是由縮放層級所呼叫。 X 和 y 座標會對應到圖格在該縮放層級的方格位置。
 
-判斷要使用的縮放層級時，請記住每個位置都在其磚上的固定位置。 如此一來，顯示特定 expanse 領域所需的磚數目，取決於全球地圖上縮放方格的特定位置。 例如，如果兩個點相距 900 公尺，「可能」** 只需要在縮放層級 17 用三個圖格來顯示這兩點之間的路線。 不過，如果西邊的點是在其圖格中的右邊，而東邊的點是在其圖格中的左邊，則可能需要四個圖格：
+判斷要使用的縮放層級時，請記住每個位置都在其磚上的固定位置。 如此一來，顯示特定 expanse 領域所需的磚數目，取決於全球地圖上縮放方格的特定位置。 例如，如果兩個點相距 900 公尺，「可能」  只需要在縮放層級 17 用三個圖格來顯示這兩點之間的路線。 不過，如果西邊的點是在其圖格中的右邊，而東邊的點是在其圖格中的左邊，則可能需要四個圖格：
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png" alt-text="世界地圖磚":::
 
@@ -933,20 +933,20 @@ module AzureMaps {
 
 > [!NOTE]
 > Azure 地圖服務 SDK 中的互動式地圖控制項具有協助程式函式，可在地理空間位置和視口圖元之間進行轉換。 
-> - [Web SDK：地圖圖元和位置計算](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
+> - [Web SDK：地圖圖元和位置計算](/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
 
 ## <a name="next-steps"></a>後續步驟
 
 直接從 Azure 地圖服務 REST 服務存取地圖底圖：
 
 > [!div class="nextstepaction"]
-> [取得地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+> [取得地圖底圖](/rest/api/maps/render/getmaptile)
 
 > [!div class="nextstepaction"]
-> [取得交通流程磚](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)
+> [取得交通流程磚](/rest/api/maps/traffic/gettrafficflowtile)
 
 > [!div class="nextstepaction"]
-> [取得流量事件磚](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)
+> [取得流量事件磚](/rest/api/maps/traffic/gettrafficincidenttile)
 
 深入瞭解地理空間概念：
 

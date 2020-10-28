@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 3ece62e671caa0838bbf4713c0ad4a74f19fd6cb
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 61b6f4a530ab1861c67b0bd4983167546e268957
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518869"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896322"
 ---
 # <a name="tutorial---migrate-from-google-maps-to-azure-maps"></a>教學課程 - 從 Google 地圖遷移至 Azure 地圖服務
 
@@ -79,7 +79,7 @@ Google 地圖提供基本的金鑰型驗證。 Azure 地圖服務同時提供基
 - [Azure 地圖服務定價頁面](https://azure.microsoft.com/pricing/details/azure-maps/)
 - [Azure 定價計算機](https://azure.microsoft.com/pricing/calculator/?service=azure-maps)
 - [Azure 地圖服務使用規定](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46) (包含在 Microsoft Online Services 條款中)
-- [在 Azure 地圖服務中選擇正確的定價層](https://docs.microsoft.com/azure/azure-maps/choose-pricing-tier)
+- [在 Azure 地圖服務中選擇正確的定價層](./choose-pricing-tier.md)
 
 ## <a name="suggested-migration-plan"></a>建議的移轉計劃
 
@@ -87,7 +87,7 @@ Google 地圖提供基本的金鑰型驗證。 Azure 地圖服務同時提供基
 
 1. 清查您的應用程式所使用的 Google Maps SDK 和服務。 確認 Azure 地圖服務會提供替代 SDK 和服務。
 2. 如果您還沒有 Azure 訂用帳戶，請在 [https://azure.com](https://azure.com) 加以建立。
-3. 建立 Azure 地圖服務帳戶 ([文件](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)) 和驗證金鑰或 Azure Active Directory ([文件](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication))。
+3. 建立 Azure 地圖服務帳戶 ([文件](./how-to-manage-account-keys.md)) 和驗證金鑰或 Azure Active Directory ([文件](./how-to-manage-authentication.md))。
 4. 遷移應用程式的程式碼。
 5. 測試已遷移的應用程式。
 6. 將已遷移的應用程式部署至生產環境。
@@ -98,17 +98,17 @@ Google 地圖提供基本的金鑰型驗證。 Azure 地圖服務同時提供基
 
 1. 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 2. 登入 [Azure 入口網站](https://portal.azure.com/)。
-3. 建立 [Azure 地圖服務帳戶](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)。 
-4. [取得您 Azure 地圖服務的訂用帳戶金鑰](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details)或設定 Azure Active Directory 驗證以增強安全性。
+3. 建立 [Azure 地圖服務帳戶](./how-to-manage-account-keys.md)。 
+4. [取得您 Azure 地圖服務的訂用帳戶金鑰](./how-to-manage-authentication.md#view-authentication-details)或設定 Azure Active Directory 驗證以增強安全性。
 
 ## <a name="azure-maps-technical-resources"></a>Azure 地圖服務技術資源
 
 以下列出 Azure 地圖服務的實用技術資源。
 
 - 概觀：[https://azure.com/maps](https://azure.com/maps)
-- 文件：[https://aka.ms/AzureMapsDocs](https://aka.ms/AzureMapsDocs)
+- 文件：[https://aka.ms/AzureMapsDocs](./index.yml)
 - Web SDK 程式碼範例：[https://aka.ms/AzureMapsSamples](https://aka.ms/AzureMapsSamples)
-- 開發人員論壇：[https://aka.ms/AzureMapsForums](https://aka.ms/AzureMapsForums)
+- 開發人員論壇：[https://aka.ms/AzureMapsForums](/answers/topics/azure-maps.html)
 - 影片：[https://aka.ms/AzureMapsVideos](https://aka.ms/AzureMapsVideos)
 - 部落格：[https://aka.ms/AzureMapsBlog](https://aka.ms/AzureMapsBlog)
 - 技術部落格：[https://aka.ms/AzureMapsTechBlog](https://aka.ms/AzureMapsTechBlog)
@@ -117,7 +117,7 @@ Google 地圖提供基本的金鑰型驗證。 Azure 地圖服務同時提供基
 
 ## <a name="migration-support"></a>移轉支援
 
-開發人員可透過[論壇](https://aka.ms/AzureMapsForums)或透過眾多 Azure 支援選項之一尋求移轉支援：[https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
+開發人員可透過[論壇](/answers/topics/azure-maps.html)或透過眾多 Azure 支援選項之一尋求移轉支援：[https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: dc1da641ba628cef92250549c1c6b6482cf18b51
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5a0f9f9f972ec42987d6152c16e4377e399cdba5
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547328"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896407"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用指令碼動作在 Azure HDInsight 上安全地管理 Python 環境
 
@@ -129,6 +129,24 @@ HDInsight 叢集取決於內建的 Python 環境，也就是 Python 2.7 和 Pyth
     4. 儲存變更，然後重新啟動受影響的服務。 這些變更需要重新啟動 Spark2 服務。 Ambari UI 會提示您輸入必要的重新啟動提醒，請按一下 [重新啟動] 以重新啟動所有受影響的服務。
 
         ![重新啟動服務](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+
+    5. 將兩個屬性設定為您的 Spark 會話，以確保作業指向更新的 spark 設定： `spark.yarn.appMasterEnv.PYSPARK_PYTHON` 和 `spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON` 。 
+
+        使用終端機或筆記本，請使用 `spark.conf.set` 函數。
+
+        ```spark
+        spark.conf.set("spark.yarn.appMasterEnv.PYSPARK_PYTHON", "/usr/bin/anaconda/envs/py35/bin/python")
+        spark.conf.set("spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON", "/usr/bin/anaconda/envs/py35/bin/python")
+        ```
+
+        如果您使用 livy，請將下列屬性新增至要求主體：
+
+        ```
+        “conf” : {
+        “spark.yarn.appMasterEnv.PYSPARK_PYTHON”:”/usr/bin/anaconda/envs/py35/bin/python”,
+        “spark.yarn.appMasterEnv.PYSPARK_DRIVER_PYTHON”:”/usr/bin/anaconda/envs/py35/bin/python”
+        }
+        ```
 
 4. 如果您想要在 Jupyter 上使用新建立的虛擬環境。 變更 Jupyter 設定，然後重新啟動 Jupyter。 在具有下列陳述式的所有標頭節點上執行指令碼動作，以將 Jupyter 指向新建立的虛擬環境。 請務必將路徑修改您為虛擬環境指定的前置詞。 執行此指令碼動作之後，請透過 Ambari UI 重新啟動 Jupyter 服務，讓這個變更可供使用。
 

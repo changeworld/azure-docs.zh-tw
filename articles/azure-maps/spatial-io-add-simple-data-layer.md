@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 75b193017bbfccbae0f299c0a1db2fe0e34f1810
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90f3cb0ae44be176d3ae248988d098039c140c3e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321793"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896152"
 ---
 # <a name="add-a-simple-data-layer"></a>新增簡單的資料圖層
 
@@ -114,7 +114,7 @@ Azure 地圖服務和 GitHub 樣式屬性是兩組支援的屬性名稱。 不�
 
 您也可以使用反升圖圖層來呈現叢集。 叢集的 radius 預設會設定為 `16` 。 叢集的色彩會根據叢集中的點數數目而有所不同，如下所示：
 
-| 點數 | Color    |
+| 點數 | 色彩    |
 |-------------|----------|
 | &gt;= 100   | `red`    |
 | &gt;= 10    | `yellow` |
@@ -176,10 +176,10 @@ Azure 地圖服務和 GitHub 樣式屬性是兩組支援的屬性名稱。 不�
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [SimpleDataLayer](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
+> [SimpleDataLayer](/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
 
 > [!div class="nextstepaction"]
-> [SimpleDataLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
+> [SimpleDataLayerOptions](/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
 
 請參閱下列文章，以取得更多可新增至地圖的程式碼範例：
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 905085d5b0787697d6094bd1337420ee8ae61d90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: faa5e3e3177e18787a73c6b4c43aa04b6bc760b7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311082"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897087"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 將圖格圖層新增至地圖
 
@@ -37,9 +37,9 @@ ms.locfileid: "91311082"
 * `{bbox-epsg-3857}` - 使用 `{west},{south},{east},{north}` 格式的週框方塊字串，位在 EPSG 3857 空間參考系統中。
 * `{subdomain}` -子域值的預留位置（如果已指定子域值）。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要完成本文中的程式，您必須安裝 [Azure 地圖服務 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) 以載入地圖。
+若要完成本文中的程式，您必須安裝 [Azure 地圖服務 Android SDK](./how-to-use-android-map-control-library.md) 以載入地圖。
 
 
 ## <a name="add-a-tile-layer-to-the-map"></a>將圖格圖層新增至地圖
@@ -71,7 +71,7 @@ ms.locfileid: "91311082"
     </FrameLayout>
     ```
 
-2. 將下列程式碼片段複製到您類別的 **>oncreate ( # B1 ** 方法中 `MainActivity.java` 。
+2. 將下列程式碼片段複製到您類別的 **>oncreate ( # B1** 方法中 `MainActivity.java` 。
 
     ```Java
     mapControl.onReady(map -> {
@@ -84,7 +84,7 @@ ms.locfileid: "91311082"
     });
     ```
     
-    上述程式碼片段會先使用 **onReady ( # B1 ** 回呼方法取得 Azure 地圖服務的地圖控制項實例。 然後，它會建立 `TileLayer` 物件，並將格式化的 **XYZ** 磚 URL 傳遞至 `tileUrl` 選項中。 圖層的不透明度設定為 `0.8` ，因為所使用的磚服務磚是256圖元磚，所以會將此資訊傳遞至 `tileSize` 選項。 圖格圖層接著會傳遞至地圖圖層管理員。
+    上述程式碼片段會先使用 **onReady ( # B1** 回呼方法取得 Azure 地圖服務的地圖控制項實例。 然後，它會建立 `TileLayer` 物件，並將格式化的 **XYZ** 磚 URL 傳遞至 `tileUrl` 選項中。 圖層的不透明度設定為 `0.8` ，因為所使用的磚服務磚是256圖元磚，所以會將此資訊傳遞至 `tileSize` 選項。 圖格圖層接著會傳遞至地圖圖層管理員。
 
     新增上述程式碼片段之後，您 `MainActivity.java` 應該看起來如下所示：
     
@@ -179,4 +179,4 @@ ms.locfileid: "91311082"
 請參閱下列文章，以深入瞭解設定地圖樣式的方式
 
 > [!div class="nextstepaction"]
-> [變更 Android 地圖中的地圖樣式](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [變更 Android 地圖中的地圖樣式](./set-android-map-styles.md)

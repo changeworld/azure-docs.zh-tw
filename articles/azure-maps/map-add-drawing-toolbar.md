@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 05a409faedb2093637b3d93045b35eb4e4929626
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b00628ec5a9f41b027bf90b93421f3aa1404e97a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310742"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896390"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>將繪圖工具工具列新增至地圖
 
-本文說明如何使用繪圖工具模組，並在地圖上顯示繪圖工具欄。 [DrawingToolbar](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)控制項會在地圖上新增繪圖工具欄。 您將學習如何建立只包含一個和所有繪圖工具的地圖，以及如何在繪圖管理員中自訂繪圖圖形的呈現。
+本文說明如何使用繪圖工具模組，並在地圖上顯示繪圖工具欄。 [DrawingToolbar](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)控制項會在地圖上新增繪圖工具欄。 您將學習如何建立只包含一個和所有繪圖工具的地圖，以及如何在繪圖管理員中自訂繪圖圖形的呈現。
 
 ## <a name="add-drawing-toolbar"></a>新增繪製工具列
 
@@ -143,10 +143,10 @@ drawingManager.setOptions({
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [地圖](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [地圖](/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
-> [繪圖工具欄](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)
+> [繪圖工具欄](/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar)
 
 > [!div class="nextstepaction"]
-> [繪圖管理員](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)
+> [繪圖管理員](/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager)

@@ -10,21 +10,20 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 733a5c899e72809d979dfeeb60e4157c0d587bcf
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9abfbe03a4192411a3790bb6d6e488d674c13109
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633700"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897155"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>建立和管理 Azure Machine Learning 工作區 
-
 
 在本文中，您將使用適用于 Python 的 Azure 入口網站或 [SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true) ，來建立、查看和刪除 [Azure Machine Learning](overview-what-is-azure-ml.md)的 [**Azure Machine Learning 工作區**](concept-workspace.md)
 
 當您的需求變更或自動化的需求增加時，您也可以 [使用 CLI](reference-azure-machine-learning-cli.md)或透過 [VS Code 擴充](tutorial-setup-vscode-extension.md)功能來建立和刪除工作區。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 * 如果使用 Python SDK，請 [安裝 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。
@@ -33,48 +32,82 @@ ms.locfileid: "92633700"
 
 # <a name="python"></a>[Python](#tab/python)
 
-第一個範例只需要最基本的規格，而且會自動建立所有相依的資源以及資源群組。
+* **預設規格。** 依預設，會自動建立相依資源和資源群組。 此程式碼會建立名為的工作區 `myworkspace` ，以及中所命名的資源群組 `myresourcegroup` `eastus2` 。
+    
+    ```python
+    from azureml.core import Workspace
+    
+    ws = Workspace.create(name='myworkspace',
+                   subscription_id='<azure-subscription-id>',
+                   resource_group='myresourcegroup',
+                   create_resource_group=True,
+                   location='eastus2'
+                   )
+    ```
+    `create_resource_group`如果您有想要用於工作區的現有 Azure 資源群組，請設定為 False。
 
-```python
-from azureml.core import Workspace
-   ws = Workspace.create(name='myworkspace',
-               subscription_id='<azure-subscription-id>',
-               resource_group='myresourcegroup',
-               create_resource_group=True,
-               location='eastus2'
-               )
-```
-`create_resource_group`如果您有想要用於工作區的現有 Azure 資源群組，請設定為 False。
+* <a name="create-multi-tenant"></a>**多個租使用者。**  如果您有多個帳戶，請新增您想要使用之 Azure Active Directory 的租使用者識別碼。  在 [ **Azure Active Directory、外部** 身分識別] 下的 [Azure 入口網站](https://portal.azure.com)中尋找您的租使用者識別碼。
 
-您也可以使用 Azure 資源識別碼格式來建立使用現有 Azure 資源的工作區。 在 Azure 入口網站中或使用 SDK 尋找特定的 Azure 資源識別碼。 此範例假設資源群組、儲存體帳戶、金鑰保存庫、App Insights 和 container registry 都已存在。
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(tenant_id="my-tenant-id")
+    ws = Workspace.create(name='myworkspace',
+                subscription_id='<azure-subscription-id>',
+                resource_group='myresourcegroup',
+                create_resource_group=True,
+                location='eastus2',
+                auth=interactive_auth
+                )
+    ```
 
-```python
-import os
+* **[主權雲端](reference-machine-learning-cloud-parity.md)** 。 如果您是在主權雲端中工作，您將需要額外的程式碼來向 Azure 進行驗證。
+
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(cloud="<cloud name>") # for example, cloud="AzureUSGovernment"
+    ws = Workspace.create(name='myworkspace',
+                subscription_id='<azure-subscription-id>',
+                resource_group='myresourcegroup',
+                create_resource_group=True,
+                location='eastus2',
+                auth=interactive_auth
+                )
+    ```
+
+* **使用現有的 Azure 資源** 。  您也可以使用 Azure 資源識別碼格式來建立使用現有 Azure 資源的工作區。 在 Azure 入口網站中或使用 SDK 尋找特定的 Azure 資源識別碼。 此範例假設資源群組、儲存體帳戶、金鑰保存庫、App Insights 和 container registry 都已存在。
+
+   ```python
+   import os
    from azureml.core import Workspace
    from azureml.core.authentication import ServicePrincipalAuthentication
 
    service_principal_password = os.environ.get("AZUREML_PASSWORD")
 
    service_principal_auth = ServicePrincipalAuthentication(
-       tenant_id="<tenant-id>",
-       username="<application-id>",
-       password=service_principal_password)
+      tenant_id="<tenant-id>",
+      username="<application-id>",
+      password=service_principal_password)
 
-   ws = Workspace.create(name='myworkspace',
-                         auth=service_principal_auth,
-                         subscription_id='<azure-subscription-id>',
-                         resource_group='myresourcegroup',
-                         create_resource_group=False,
-                         location='eastus2',
-                         friendly_name='My workspace',
-                         storage_account='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.storage/storageaccounts/mystorageaccount',
-                         key_vault='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.keyvault/vaults/mykeyvault',
-                         app_insights='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.insights/components/myappinsights',
-                         container_registry='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.containerregistry/registries/mycontainerregistry',
-                         exist_ok=False)
-```
+                        auth=service_principal_auth,
+                             subscription_id='<azure-subscription-id>',
+                             resource_group='myresourcegroup',
+                             create_resource_group=False,
+                             location='eastus2',
+                             friendly_name='My workspace',
+                             storage_account='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.storage/storageaccounts/mystorageaccount',
+                             key_vault='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.keyvault/vaults/mykeyvault',
+                             app_insights='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.insights/components/myappinsights',
+                             container_registry='subscriptions/<azure-subscription-id>/resourcegroups/myresourcegroup/providers/microsoft.containerregistry/registries/mycontainerregistry',
+                             exist_ok=False)
+   ```
 
-如需詳細資訊，請參閱 [工作區 SDK 參考](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true)
+如需詳細資訊，請參閱 [工作區 SDK 參考](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true)。
+
+如果您在存取訂用帳戶時遇到問題，請參閱 [設定 Azure Machine Learning 資源與工作流程的驗證](how-to-setup-authentication.md)，以及 [Azure Machine Learning 筆記本中的驗證](https://aka.ms/aml-notebook-auth) 。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -237,6 +270,37 @@ ws.write_config()
 
 使用 Python 指令碼或 Jupyter Notebook 將文件置於目錄結構中。 可以位於相同的目錄，名為 *aml_config* 的子目錄，或位於父目錄。 當您建立計算實例時，會為您將此檔案新增至 VM 上的正確目錄。
 
+## <a name="connect-to-a-workspace"></a>連線到工作區
+
+在您的 Python 程式碼中，您會建立工作區物件以連接到您的工作區。  此程式碼會讀取設定檔案的內容，以尋找您的工作區。  如果您尚未經過驗證，您將會收到登入的提示。
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+```
+
+* <a name="connect-multi-tenant"></a>**多個租使用者。**  如果您有多個帳戶，請新增您想要使用之 Azure Active Directory 的租使用者識別碼。  在 [ **Azure Active Directory、外部** 身分識別] 下的 [Azure 入口網站](https://portal.azure.com)中尋找您的租使用者識別碼。
+
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(tenant_id="my-tenant-id")
+    ws = Workspace.from_config(auth=interactive_auth)
+    ```
+
+* **[主權雲端](reference-machine-learning-cloud-parity.md)** 。 如果您是在主權雲端中工作，您將需要額外的程式碼來向 Azure 進行驗證。
+
+    ```python
+    from azureml.core.authentication import InteractiveLoginAuthentication
+    from azureml.core import Workspace
+    
+    interactive_auth = InteractiveLoginAuthentication(cloud="<cloud name>") # for example, cloud="AzureUSGovernment"
+    ws = Workspace.from_config(auth=interactive_auth)
+    ```
+    
+如果您在存取訂用帳戶時遇到問題，請參閱 [設定 Azure Machine Learning 資源與工作流程的驗證](how-to-setup-authentication.md)，以及 [Azure Machine Learning 筆記本中的驗證](https://aka.ms/aml-notebook-auth) 。
 
 ## <a name="find-a-workspace"></a><a name="view"></a>尋找工作區
 

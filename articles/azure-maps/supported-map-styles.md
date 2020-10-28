@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4a50a9d6d4a485f7d8e63adb9ae5032f49edc261
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3404c02dc159309ed1e9fcd6f9f6bb593fc7552
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310351"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896934"
 ---
 # <a name="azure-maps-supported-built-in-map-styles"></a>Azure 地圖服務支援的內建地圖樣式
 
@@ -21,21 +21,21 @@ ms.locfileid: "91310351"
 
 ## <a name="road"></a>路段
 
-**道路**地圖是顯示道路的標準地圖。 它也會顯示自然和人工的功能，以及這些功能的標籤。
+**道路** 地圖是顯示道路的標準地圖。 它也會顯示自然和人工的功能，以及這些功能的標籤。
 
 ![道路地圖樣式](./media/supported-map-styles/road.png)
 
 **適用 API：**
 
-* [地圖影像](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [地圖影像](/rest/api/maps/render/getmapimage)
+* [地圖底圖](/rest/api/maps/render/getmaptile)
 * Web SDK 地圖控制項
 * Android 地圖控制項
 * Power BI 視覺效果
 
 ## <a name="blank-and-blank_accessible"></a>空白和 blank_accessible
 
-**空白**和**blank_accessible**的地圖樣式會提供空白畫布來將資料視覺化。 **Blank_accessible**樣式將繼續提供具有地圖位置詳細資料的螢幕讀取器更新，即使未顯示基底地圖也一樣。
+**空白** 和 **blank_accessible** 的地圖樣式會提供空白畫布來將資料視覺化。 **Blank_accessible** 樣式將繼續提供具有地圖位置詳細資料的螢幕讀取器更新，即使未顯示基底地圖也一樣。
 
 > [!Note]
 > 在 Web SDK 中，您可以藉由設定地圖 DIV 元素的 CSS 樣式來變更地圖的背景色彩 `background-color` 。
@@ -46,13 +46,13 @@ ms.locfileid: "91310351"
 
 ## <a name="satellite"></a>satellite
 
-**衛星**樣式是衛星和空拍影像的結合。
+**衛星** 樣式是衛星和空拍影像的結合。
 
 ![附屬圖格地圖樣式](./media/supported-map-styles/satellite.png)
 
 **適用 API：**
 
-* [衛星底圖](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
+* [衛星底圖](/rest/api/maps/render/getmapimagerytilepreview)
 * Web SDK 地圖控制項
 * Android 地圖控制項
 * Power BI 視覺效果
@@ -71,14 +71,14 @@ ms.locfileid: "91310351"
 
 ## <a name="grayscale_dark"></a>grayscale_dark
 
-**深灰階**是路段圖樣式的深色版本。
+**深灰階** 是路段圖樣式的深色版本。
 
 ![gray_scale 地圖樣式](./media/supported-map-styles/grayscale-dark.png)
 
 **適用 API：**
 
-* [地圖影像](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [地圖影像](/rest/api/maps/render/getmapimage)
+* [地圖底圖](/rest/api/maps/render/getmaptile)
 * Web SDK 地圖控制項
 * Android 地圖控制項
 * Power BI 視覺效果
@@ -96,7 +96,7 @@ ms.locfileid: "91310351"
 
 ## <a name="night"></a>夜間
 
-**夜間**是路段圖樣式的深色版本，具有彩色的道路和符號。
+**夜間** 是路段圖樣式的深色版本，具有彩色的道路和符號。
 
 ![夜晚地圖樣式](./media/supported-map-styles/night.png)
 
@@ -108,13 +108,13 @@ ms.locfileid: "91310351"
 
 ## <a name="road_shaded_relief"></a>road_shaded_relief
 
-**路段陰影起伏圖**是以地球等高線完成的「Azure 地圖服務」的主要樣式。
+**路段陰影起伏圖** 是以地球等高線完成的「Azure 地圖服務」的主要樣式。
 
 ![陰影起伏地圖樣式](./media/supported-map-styles/shaded-relief.png)
 
 **適用 API：**
 
-* [地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [地圖底圖](/rest/api/maps/render/getmaptile)
 * Web SDK 地圖控制項
 * Android 地圖控制項
 * Power BI 視覺效果
@@ -134,4 +134,4 @@ ms.locfileid: "91310351"
 
 瞭解如何在 Azure 地圖服務中設定地圖樣式：
 
-[選擇地圖樣式](https://docs.microsoft.com/azure/azure-maps/choose-map-style)
+[選擇地圖樣式](./choose-map-style.md)

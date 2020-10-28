@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4430737814ef904e83b2bf3ce25edf3d44e2668d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea8698b7bf402850e506ec126cd2a7bb6ce05823
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972047"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896722"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure 地圖服務的氣象服務
 
-本文介紹適用于 [Azure 地圖服務氣象服務](https://aka.ms/AzureMapsWeatherService)的概念。 我們建議您在開始使用氣象 Api 之前，先閱讀這篇文章。
+本文介紹適用于 [Azure 地圖服務氣象服務](/rest/api/maps/weather)的概念。 我們建議您在開始使用氣象 Api 之前，先閱讀這篇文章。
 
 ## <a name="unit-types"></a>單位類型
 
@@ -46,8 +46,8 @@ ms.locfileid: "90972047"
 |18      |華氏          |
 |19      |克式              |
 |20      |percent             |
-|21      |FLOAT               |
-|22      |整數             |
+|21      |float               |
+|22      |integer             |
 
 
 ## <a name="weather-icons"></a>氣象圖示
@@ -84,7 +84,7 @@ ms.locfileid: "90972047"
 | 30           | :::image type="icon" source="./media/weather-services-concepts/hot-i.png"::: | 是 |  是   | 經常性存取層|
 | 31           | :::image type="icon" source="./media/weather-services-concepts/cold-i.png"::: | 是 |  是   | 冷|
 | 32           | :::image type="icon" source="./media/weather-services-concepts/windy-i.png"::: | 是 |  是   | 風|
-| 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | 否  |  是   | 清除|
+| 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | 否  |  是   | Clear|
 | 34           | :::image type="icon" source="./media/weather-services-concepts/mostly-clear-night.png"::: | 否  |  是   | 大多明確|
 | 35           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-night.png"::: | 否  |  是   | 部分的雲|
 | 36           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds-Night.png"::: | 否  |  是   | 間歇雲|
@@ -100,7 +100,7 @@ ms.locfileid: "90972047"
 
 ## <a name="radar-and-satellite-imagery-color-scale"></a>雷達圖和衛星圖像色階
 
-透過 [取得地圖底圖 V2 API](https://aka.ms/AzureMapsWeatherTiles) 使用者可以要求最新的雷達圖和紅外線附屬映射。 請參閱下面的指南，以協助解讀用於雷達圖和附屬磚的色彩。
+透過 [取得地圖底圖 V2 API](/rest/api/maps/renderv2/getmaptilepreview) 使用者可以要求最新的雷達圖和紅外線附屬映射。 請參閱下面的指南，以協助解讀用於雷達圖和附屬磚的色彩。
 
 ### <a name="radar-images"></a>雷達影像
 
@@ -129,7 +129,7 @@ ms.locfileid: "90972047"
 
 | **雨**             | **冰**              | **雪**              | **MIXED**             |
 |----------------------|----------------------|-----------------------|-----------------------|
-| **dBZ** ** (色彩) **  | **dBZ** ** (色彩) **  | **dBZ** ** (色彩) **   | **dBZ** ** (色彩) **   |
+| **dBZ** **(色彩)**  | **dBZ** **(色彩)**  | **dBZ** **(色彩)**   | **dBZ** **(色彩)**   |
 | 1.25 ( # 93C701)  | 1.25 ( # E6A5C8)  | 1.25 ( # 9EC8F2)   | 1.25 ( # C196E6)  |
 | 2.5 ( # 92C201)  | 2.5 ( # E6A2C6)  | 2.5 ( # 98C5F0)   | 2.5 ( # BF92E6)  |
 | 3.75 ( # 92BE01)  | 3.75 ( # E69FC5)  | 3.75 ( # 93C3EF)   | 3.75 ( # BD8EE6)  |
@@ -215,7 +215,7 @@ ms.locfileid: "90972047"
 
 紅外衛星磚的詳細色彩調色板如下所示。
 
-|**Temp (K) **|**十六進位色彩代碼**|
+|**Temp (K)**|**十六進位色彩代碼**|
 |--------|--------------|
 |198     |#fe050505     |
 |198.43  |#fe120505     |
@@ -475,7 +475,7 @@ ms.locfileid: "90972047"
 
 ## <a name="index-ids-and-index-groups-ids"></a>索引識別碼和索引群組識別碼
 
-[取得每日索引 API](https://aka.ms/AzureMapsWeatherDailyIndices) 可讓使用者將傳回的結果限制為特定的索引類型或索引群組。
+[取得每日索引 API](/rest/api/maps/weather) 可讓使用者將傳回的結果限制為特定的索引類型或索引群組。
 
 以下是可用索引識別碼的資料表、其名稱，以及其範圍集合的連結。 下表列出各種索引群組。
 
@@ -540,14 +540,14 @@ ms.locfileid: "90972047"
   7       |海灘和航海 | 海灘 & 集區 (10)  </br> 釣魚 (13)  </br> Sailing (11) 
   8       |運動員 | 釣魚 (13)  </br> 搜尋 (20)  </br> 室外活動 (29) </br>
   9       |農業 |  現場就緒 (32)  </br>   (34) 的泥土濕度
-  10      |醫療 | Arthritis 難題 (21)  </br> Asthma (23)  </br> 常見的冷 (25)  </br> 灰塵 & Dander (18)  </br> 流感 (26)  </br> 狀況良好的核心健身 (16)  </br> Migraine 的麻煩 (27) 
+  10      |健全狀況 | Arthritis 難題 (21)  </br> Asthma (23)  </br> 常見的冷 (25)  </br> 灰塵 & Dander (18)  </br> 流感 (26)  </br> 狀況良好的核心健身 (16)  </br> Migraine 的麻煩 (27) 
   11      |戶外 | 戶外烤肉 (24)  </br> 海灘 & 集區 (10)  </br> 騎腳踏車 (4)  </br> 戶外音樂會 (8)  </br>  現場就緒 (32)  </br> 釣魚 (13)  </br> 高爾夫球氣象 (5)  </br> 健行 (3)  </br> 搜尋 (20)  </br> Jogging (2)  </br> Kite 飛行 (9)  </br> Mosquito 活動 (17) </br> 草坪 Mowing (28)  </br> 室外活動 (29)  </br> 正在執行 (1)  </br> Sailing (11)  </br> Skateboarding (7)  </br> Ski 氣象 (15)  </br>   (34) 的泥土濕度</br> Stargazing (12)  </br> 網球 (6) 
   12      |體育 | 騎腳踏車 (4)  </br> 高爾夫球氣象 (5)  </br> 健行 (3)  </br>  Jogging (2)  </br> 正在執行 (1)  </br> Skateboarding (7)  </br> Ski 氣象 (15)  </br>網球 (6) 
-  13      |首頁 | 家用能源效率 (36)  </br> 燃料經濟 (37)  </br> 室內活動 (-2) 
+  13      |家庭 | 家用能源效率 (36)  </br> 燃料經濟 (37)  </br> 室內活動 (-2) 
 
 ## <a name="daily-index-range-sets"></a>每日索引範圍集合
 
-[取得每日索引 API](https://aka.ms/AzureMapsWeatherDailyIndices) 會傳回每個索引識別碼的範圍值和其相關聯的類別名稱。 所有索引的範圍集合都不相同。 下表顯示 [索引識別碼和索引群組識別碼](#index-ids-and-index-groups-ids)中所列之支援索引所使用的各種範圍集。 若要找出哪些索引使用哪些範圍集合，請移至本檔的「 [索引識別碼」和「索引群組識別碼](#index-ids-and-index-groups-ids) 」一節。
+[取得每日索引 API](/rest/api/maps/weather) 會傳回每個索引識別碼的範圍值和其相關聯的類別名稱。 所有索引的範圍集合都不相同。 下表顯示 [索引識別碼和索引群組識別碼](#index-ids-and-index-groups-ids)中所列之支援索引所使用的各種範圍集。 若要找出哪些索引使用哪些範圍集合，請移至本檔的「 [索引識別碼」和「索引群組識別碼](#index-ids-and-index-groups-ids) 」一節。
 
 ### <a name="poor-excellent-1"></a>Poor-Excellent 1
 
@@ -624,7 +624,7 @@ ms.locfileid: "90972047"
 | 類別名稱 | 開始範圍 | 結束範圍 |
   ----------------|--------------|------------
   不可能         |  0     |          2.99
-  監看式            |  3     |          4.99
+  觀看            |  3     |          4.99
   諮詢         |  5     |          6.99
   警告          |  7     |          8.99
   緊急狀況        |  9     |          10

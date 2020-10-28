@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1f79add26af40abfa320bc23a3287d8246237701
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cf27319fa84ff5d693e74e90664b7a86f4d934a
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037434"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897206"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure 地圖地理編碼涵蓋範圍
 
-Azure 地圖服務 [搜尋服務](https://docs.microsoft.com/rest/api/maps/search) 支援地理編碼，這表示您的 API 要求可以有搜尋詞彙，例如位址或位置名稱，並將結果傳回為緯度和經度座標。 例如，Azure 地圖服務 [取得搜尋位址 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) 會接收包含位置資訊的查詢，並將結果傳回為緯度和經度座標。
+Azure 地圖服務 [搜尋服務](/rest/api/maps/search) 支援地理編碼，這表示您的 API 要求可以有搜尋詞彙，例如位址或位置名稱，並將結果傳回為緯度和經度座標。 例如，Azure 地圖服務 [取得搜尋位址 API](/rest/api/maps/search/getsearchaddress) 會接收包含位置資訊的查詢，並將結果傳回為緯度和經度座標。
 
-不過，Azure 地圖服務 [搜尋服務](https://docs.microsoft.com/rest/api/maps/search) 不會有相同層級的資訊和精確度適用于所有區域和國家/地區。 請參考本文，以判斷您在各個區域中能夠可靠地搜尋何種地點。
+不過，Azure 地圖服務 [搜尋服務](/rest/api/maps/search) 不會有相同層級的資訊和精確度適用于所有區域和國家/地區。 請參考本文，以判斷您在各個區域中能夠可靠地搜尋何種地點。
 
 在國家/地區中地理編碼的功能取決於道路資料涵蓋範圍，以及地理編碼服務的地理編碼精確度。 下列分類可用來指定每個國家/地區的地理編碼支援層級。
 
@@ -301,4 +301,4 @@ Azure 地圖服務 [搜尋服務](https://docs.microsoft.com/rest/api/maps/searc
 
 深入瞭解 Azure 地圖服務地理編碼：
 > [!div class="nextstepaction"]
-> [Azure 地圖服務搜尋服務](https://docs.microsoft.com/rest/api/maps/search)
+> [Azure 地圖服務搜尋服務](/rest/api/maps/search)

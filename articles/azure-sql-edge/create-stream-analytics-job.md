@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: f0fcdf7aab5f43a0412cd28a1c15188b19770dc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e75edad9f2e473d27d81c73fc784c568c4e404c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888104"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896135"
 ---
 # <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>在 Azure SQL Edge 中建立資料串流作業 
 
@@ -103,7 +103,7 @@ Azure SQL Edge 目前僅支援使用下列資料來源作為串流的輸入和�
 
 3. 使用 CREATE EXTERNAL DATA SOURCE 建立外部資料來源。 下列範例將：
 
-    * 建立名為 *LocalSQLOutput*的外部資料源。
+    * 建立名為 *LocalSQLOutput* 的外部資料源。
     * 識別外部資料來源 (LOCATION = '<vendor>://<server>[:<port>]')。 在此範例中，它會指向 Azure SQL Edge 的本機實例。
     * 使用先前建立的認證。
 
@@ -117,7 +117,7 @@ Azure SQL Edge 目前僅支援使用下列資料來源作為串流的輸入和�
     go
     ```
 
-4. 建立外部資料流物件。 下列範例會建立指向資料表 dbo 的外部資料流物件 *。TemperatureMeasurements*，在資料庫 *MySQLDatabase*中。
+4. 建立外部資料流物件。 下列範例會建立指向資料表 dbo 的外部資料流物件 *。TemperatureMeasurements* ，在資料庫 *MySQLDatabase* 中。
 
     ```sql
     CREATE EXTERNAL STREAM TemperatureMeasurements 
@@ -233,7 +233,8 @@ exec sys.sp_get_streaming_job @name=N'StreamingJob1'
 (
        (
        name nvarchar(256),
-       status nvarchar(256)
+       status nvarchar(256),
+       error nvarchar(256)
        )
 )
 ```

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 831fc28711a181d45a8c69e3f46056604b30649e
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 05071be4fc1705787a649d331613e8d9399f983f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089463"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897172"
 ---
 # <a name="glossary"></a>詞彙
 
@@ -25,7 +25,7 @@ ms.locfileid: "92089463"
 
 <a name="advanced-routing"></a> **Advanced routing** (進階路線規劃)：使用道路路線規劃資料來執行進階作業的服務集合；例如，計算可達範圍 (等時線)、距離矩陣，以及批次路線要求。
 
-<a name="aerial-imagery"></a> **Aerial imagery** (航空影像)：請參閱[衛星影像](#satellite-imagery)。 
+<a name="aerial-imagery"></a> **Aerial imagery** (航空影像)：請參閱 [衛星影像](#satellite-imagery)。 
 
 <a name="along-a-route-search"></a> **Along a route search** (沿路線搜尋)：從路線路徑中尋找位於指定繞道時間或距離範圍內之資料的空間查詢。
 
@@ -35,11 +35,11 @@ ms.locfileid: "92089463"
 
 <a name="annotation"></a> **Annotation** (註釋)：顯示在地圖上以為使用者提供資訊的文字或圖形。 註釋可以識別或描述特定的地圖實體、提供地圖上某個區域的一般資訊，或是提供有關地圖本身的資訊。
 
-<a name="antimeridian"></a> **Antimeridian** (對向子午線)：也稱為第 180<sup></sup> 條經線。 這是經度 -180 度和 180 度的交會點。 其與地球上的本初子午線相反。
+<a name="antimeridian"></a> **Antimeridian** (對向子午線)：也稱為第 180 <sup></sup> 條經線。 這是經度 -180 度和 180 度的交會點。 其與地球上的本初子午線相反。
 
 <a name="application-programming-interface-api"></a> **Application Programming Interface (API)** (應用程式開發介面)：可讓開發人員建立應用程式的規格。
 
-<a name="api-key"></a> **API key** (API 金鑰)：請參閱[共用金鑰驗證](#shared-key-authentication)。
+<a name="api-key"></a> **API key** (API 金鑰)：請參閱 [共用金鑰驗證](#shared-key-authentication)。
 
 <a name="area-of-interest-aoi"></a> **Area of Interest (AOI)** (感興趣區域)：用來針對地圖或資料庫實際執行環境定義焦點區域的範圍。
 
@@ -55,7 +55,7 @@ ms.locfileid: "92089463"
 
 <a name="azure-active-directory"></a> **Azure Active Directory (Azure AD)** ：Azure AD 是 Microsoft 的雲端式身分識別與存取管理服務。 Azure 地圖服務的 Azure AD 整合目前可供所有 Azure 地圖服務 API 預覽使用。 Azure AD 支援 Azure RBAC) 的 Azure 角色型訪問 (控制，可讓您更精細地存取 Azure 地圖服務資源。 若要深入了解 Azure 地圖服務的 Azure AD 整合，請參閱 [Azure 地圖服務與 Azure AD](azure-maps-authentication.md) 及[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
 
-<a name="azure-maps-key"></a> **Azure Maps key** (Azure 地圖服務金鑰)：請參閱[共用金鑰驗證](#shared-key-authentication)。
+<a name="azure-maps-key"></a> **Azure Maps key** (Azure 地圖服務金鑰)：請參閱 [共用金鑰驗證](#shared-key-authentication)。
 
 ## <a name="b"></a>B
 
@@ -67,7 +67,7 @@ ms.locfileid: "92089463"
 
 <a name="boundary"></a> **Boundary** (界線)：分隔相鄰政治實體 (例如國家/地區、行政區及房地產) 的線條或多邊形。 界線為可能或可能不會依循實體特徵 (例如河流、山或牆) 的線條。
 
-<a name="bounds"></a> **Bounds** (邊界)：請參閱[週框方塊](#bounding-box)。
+<a name="bounds"></a> **Bounds** (邊界)：請參閱 [週框方塊](#bounding-box)。
 
 <a name="bounding-box"></a> **Bounding box** (定界框)：用來代表地圖上矩形區域的座標集合。 
 
@@ -129,11 +129,11 @@ ms.locfileid: "92089463"
 
 <a name="elevation"></a> **Elevation** (海拔)：位於參考面或基準上方或下方之點或物件的垂直距離。 一般而言，參考面為平均海平面。 相對高度通常指的是土地的垂直高度。
 
-<a name="envelope"></a> **Envelope** (包封)：請參閱[週框方塊](#bounding-box)。
+<a name="envelope"></a> **Envelope** (包封)：請參閱 [週框方塊](#bounding-box)。
 
 <a name="extended-postal-code"></a> **Extended postal code** (擴充郵遞區號)：可能包含額外資訊的郵遞區號。 例如，在美國，郵遞區號有五位數。 但擴充郵遞區號 (也稱為 zip+4) 包含四個額外的數字。 這些額外的數字可用來識別五位數投遞區域內的地理區段，例如，城市街區、集合住宅或郵政信箱。 了解地理區段有助於提升郵件分類和投遞的效率。
 
-<a name="extent"></a> **Extent** (範圍)：請參閱[週框方塊](#bounding-box)。
+<a name="extent"></a> **Extent** (範圍)：請參閱 [週框方塊](#bounding-box)。
 
 ## <a name="f"></a>F
 
@@ -165,31 +165,31 @@ ms.locfileid: "92089463"
 
 <a name="geofence"></a> **Geofence** (地理柵欄)：已定義的地理區域，可用來在裝置進入或離開該區域時觸發事件。
 
-<a name="geojson"></a> **GeoJSON**：常見的 JSON 型檔案，可用來儲存地理向量資料，例如點、線段及多邊形。 **注意**：Azure 地圖服務使用的是 GeoJSON 的擴充版本，如[這裡所記載](extend-geojson.md)。
+<a name="geojson"></a> **GeoJSON** ：常見的 JSON 型檔案，可用來儲存地理向量資料，例如點、線段及多邊形。 **注意** ：Azure 地圖服務使用的是 GeoJSON 的擴充版本，如 [這裡所記載](extend-geojson.md)。
 
 <a name="geometry"></a> **Geometry** (幾何)：代表點、線段或多邊形等空間物件。
 
-<a name="geometrycollection"></a> **GeometryCollection**：幾何物件的集合。
+<a name="geometrycollection"></a> **GeometryCollection** ：幾何物件的集合。
 
-<a name="geopol"></a> **GeoPol**：指的是地緣政治性的敏感性資料，例如有爭議的邊界和地點名稱。
+<a name="geopol"></a> **GeoPol** ：指的是地緣政治性的敏感性資料，例如有爭議的邊界和地點名稱。
 
 <a name="georeference"></a> **Georeference** (地理坐標參考)：將地理資料或影像與已知座標系統配對的程序。 此程序可能會對資料進行移位、旋轉、縮放或扭曲。
 
-<a name="georss"></a> **GeoRSS**：能將空間資料新增至 RSS 摘要的 XML 擴充功能。
+<a name="georss"></a> **GeoRSS** ：能將空間資料新增至 RSS 摘要的 XML 擴充功能。
 
-<a name="gis"></a> **GIS**："Geographic Information System" (地理資訊系統) 的縮寫。 這是經常用來描述地圖產業的字眼。
+<a name="gis"></a> **GIS** ："Geographic Information System" (地理資訊系統) 的縮寫。 這是經常用來描述地圖產業的字眼。
 
-<a name="gml"></a> **GML**：也稱為「地理標記語言」。 可用來儲存空間資料的 XML 檔案擴充功能。
+<a name="gml"></a> **GML** ：也稱為「地理標記語言」。 可用來儲存空間資料的 XML 檔案擴充功能。
 
-<a name="gps"></a> **GPS**：也稱為「全球定位系統」，這是用來判斷裝置在地球上之位置的衛星系統。 環繞地球移動的衛星會傳輸訊號，讓位於地球上任何位置的 GPS 接收器都能透過三邊測量計算出自己的位置。
+<a name="gps"></a> **GPS** ：也稱為「全球定位系統」，這是用來判斷裝置在地球上之位置的衛星系統。 環繞地球移動的衛星會傳輸訊號，讓位於地球上任何位置的 GPS 接收器都能透過三邊測量計算出自己的位置。
 
-<a name="gpx"></a> **GPX**：也稱為 GPS eXchange 格式，GPS 裝置通常都會建立這種 XML 檔案格式。  
+<a name="gpx"></a> **GPX** ：也稱為 GPS eXchange 格式，GPS 裝置通常都會建立這種 XML 檔案格式。  
 
 <a name="great-circle-distance"></a> **Great-circle distance** (大圓距離)：球體表面上兩點之間的最短距離。
 
 <a name="greenwich-mean-time-gmt"></a> **Greenwich Mean Time (GMT)** (格林威治標準時間)：本初子午線的時間。本初子午線會通過位於英國格林威治的皇家天文台。
 
-<a name="guid"></a> **GUID**：全域唯一識別碼。 用來唯一識別介面、類別、類型程式庫、元件類別或記錄的字串。
+<a name="guid"></a> **GUID** ：全域唯一識別碼。 用來唯一識別介面、類別、類型程式庫、元件類別或記錄的字串。
 
 ## <a name="h"></a>H
 
@@ -205,7 +205,7 @@ ms.locfileid: "92089463"
 
 ## <a name="i"></a>I
 
-<a name="iana"></a> **IANA**："Internet Assigned Numbers Authority" (網際網路號碼分配局) 的縮寫。 監督全域 IP 位址配置的非營利組織。
+<a name="iana"></a> **IANA** ："Internet Assigned Numbers Authority" (網際網路號碼分配局) 的縮寫。 監督全域 IP 位址配置的非營利組織。
 
 <a name="isochrone"></a> **Isochrone** (等時線)：等時線能定義出從特定位置朝任何方向，以某種運輸模式在指定時間內所能移動到的區域。 另請參閱[可抵達範圍](#reachable-range)。
 
@@ -213,7 +213,7 @@ ms.locfileid: "92089463"
 
 ## <a name="k"></a>K
 
-<a name="kml"></a> **KML**：也稱為 Keyhole Markup Language，這是用來儲存地理向量資料 (例如點、線段及多邊形) 的常見 XML 檔案格式。 
+<a name="kml"></a> **KML** ：也稱為 Keyhole Markup Language，這是用來儲存地理向量資料 (例如點、線段及多邊形) 的常見 XML 檔案格式。 
 
 ## <a name="l"></a>L
 
@@ -227,7 +227,7 @@ ms.locfileid: "92089463"
 
 <a name="linear-interpolation"></a> **Linear interpolation** (線性插補)：使用已知值之間的線性距離來預估未知的值。
 
-<a name="linestring"></a> **LineString**：用來代表線段的幾何。 也稱為聚合線條。 
+<a name="linestring"></a> **LineString** ：用來代表線段的幾何。 也稱為聚合線條。 
 
 <a name="localization"></a> **Localization** (當地語系化)：對不同語言及文化特性 (Culture) 的支援。
 
@@ -243,11 +243,11 @@ ms.locfileid: "92089463"
 
 <a name="mercator-projection"></a> **Mercator projection** (麥卡托投影)：這個圓柱形地圖投影現已成為航海用途的標準地圖投影，因為它能將固定路線的線段 (稱為恆向線) 表示為能保留經線角度的直線區段。 與地球表面的真實佈局相比，所有平面的地圖投影都會扭曲地圖形狀或大小。 麥卡托投影會放大遠離赤道的區域，因此當您接近兩極時，地圖上較小的區域看起來將會比較大。 
 
-<a name="multilinestring"></a> **MultiLineString**：代表 LineString 物件集合的幾何。 
+<a name="multilinestring"></a> **MultiLineString** ：代表 LineString 物件集合的幾何。 
 
 <a name="multipoint"></a> **MultiPoint** (多點)：代表 Point 物件集合的幾何。
 
-<a name="multipolygon"></a> **MultiPolygon**：代表 Polygon 物件集合的幾何。 例如，若要顯示夏威夷的界線，每個島嶼都具有多邊形的外框。 因此，夏威夷的界線會是一個 MultiPolygon。
+<a name="multipolygon"></a> **MultiPolygon** ：代表 Polygon 物件集合的幾何。 例如，若要顯示夏威夷的界線，每個島嶼都具有多邊形的外框。 因此，夏威夷的界線會是一個 MultiPolygon。
 
 <a name="municipality"></a> **Municipality** (直轄市)：縣市或鄉鎮。 
 
@@ -283,7 +283,7 @@ ms.locfileid: "92089463"
 
 <a name="position"></a> **Position** (位置)：某個點的經度、緯度及高度 (x,y,z 座標)。
 
-<a name="post-code"></a> **Post code** (郵遞編號)：請參閱[郵遞區號](#postal-code)。
+<a name="post-code"></a> **Post code** (郵遞編號)：請參閱 [郵遞區號](#postal-code)。
 
 <a name="postal-code"></a> **Postal code** (郵遞區號)：一系列具有特定格式的字母或數字 (或兩者)。 國家/地區的郵政服務會使用郵遞區號來將地理區域分割成較小區域，以簡化郵件的投遞。
 
@@ -291,13 +291,13 @@ ms.locfileid: "92089463"
 
 <a name="prime-meridian"></a> **Prime meridian** (本初子午線)：代表經度 0 度的經度線。 一般而言，經度的值會隨著朝西方行進而逐漸遞減 (直到 180 度為止)，並隨著朝東方行進而逐漸遞增 (直到 -180 度為止)。 
 
-<a name="prj"></a> **PRJ**：經常伴隨形狀檔出現的文字檔，其中包含資料集所在之投影座標系統的相關資訊。
+<a name="prj"></a> **PRJ** ：經常伴隨形狀檔出現的文字檔，其中包含資料集所在之投影座標系統的相關資訊。
 
 <a name="projection"></a> **Projection** (投影)：以地圖投影 (例如橫麥卡托投影、亞爾勃斯投影及羅賓森投影) 為基礎的投影座標系統。 它們能將地球球面的地圖投影到 2D 笛卡兒座標平面。 投影的座標系統有時會被稱為「地圖投影」。
 
 ## <a name="q"></a>Q
 
-<a name="quadkey"></a> **Quadkey**：適用於四元樹並排系統內之圖格的基底 4 位址索引。 如需詳細資訊，請參閱[縮放層級和圖格格線](zoom-levels-and-tile-grid.md)文件。
+<a name="quadkey"></a> **Quadkey** ：適用於四元樹並排系統內之圖格的基底 4 位址索引。 如需詳細資訊，請參閱[縮放層級和圖格格線](zoom-levels-and-tile-grid.md)文件。
 
 <a name="quadtree"></a> **Quadtree** (四元樹)：其中的每個節點都具有四個子節點的資料結構。 Azure 地圖服務中所使用的分塊系統會使用四元樹結構，這表示當使用者將地圖放大一個等級時，每個地圖底圖都會分割成四個子底圖。  如需詳細資訊，請參閱[縮放層級和圖格格線](zoom-levels-and-tile-grid.md)文件。
 
@@ -319,15 +319,15 @@ ms.locfileid: "92089463"
 
 <a name="reverse-geocode"></a> **Reverse geocode** (反向地理編碼)：透過座標判斷出它在地圖上所代表之地址的程序。
 
-<a name="reproject"></a> **Reproject** (重新投影)：請參閱[轉換](#transformation)。
+<a name="reproject"></a> **Reproject** (重新投影)：請參閱 [轉換](#transformation)。
 
 <a name="rest-service"></a> **REST service** (REST 服務)："Representational State Transfer" (具象狀態傳輸) 的縮寫。 用來在非集中式分散環境中的對等之間交換資訊的架構。 REST 可讓不同電腦上的程式與作業系統或平台分開通訊。 服務可以將超文字傳輸通訊協定 (HTTP) 要求傳送至統一資源定位器 (URL)，並取回資料。
 
 <a name="route"></a> **Route** (路線)：兩個或更多位置之間的路徑，也可能包含其他資訊，例如針對路線上導航點的指示。
 
-<a name="requests-per-second-rps"></a> **Requests Per Second (RPS)** (每秒要求數目)：請參閱[每秒查詢數目 (QPS)](#queries-per-second-qps)。 
+<a name="requests-per-second-rps"></a> **Requests Per Second (RPS)** (每秒要求數目)：請參閱 [每秒查詢數目 (QPS)](#queries-per-second-qps)。 
 
-<a name="rss"></a> **RSS**：根據來源的不同，可為 "Really Simple Syndication" (真正簡易新聞訂閱方式)、"Resource Description Framework (RDF) Site Summary" (資源描述架構 (RDF) 網站摘要)，或 "Rich Site Summary" (具意網站摘要) 的縮寫。 它是用來共用不同網站上內容的簡易、結構化 XML 格式。 RSS 文件會包含重要的中繼資料元素，例如作者、日期、標題、簡短描述，以及超文字連結。 此資訊能協助使用者 (或 RSS 發行者服務) 決定有哪些內容值得他們做出進一步的調查。
+<a name="rss"></a> **RSS** ：根據來源的不同，可為 "Really Simple Syndication" (真正簡易新聞訂閱方式)、"Resource Description Framework (RDF) Site Summary" (資源描述架構 (RDF) 網站摘要)，或 "Rich Site Summary" (具意網站摘要) 的縮寫。 它是用來共用不同網站上內容的簡易、結構化 XML 格式。 RSS 文件會包含重要的中繼資料元素，例如作者、日期、標題、簡短描述，以及超文字連結。 此資訊能協助使用者 (或 RSS 發行者服務) 決定有哪些內容值得他們做出進一步的調查。
 
 ## <a name="s"></a>S
 
@@ -347,9 +347,9 @@ ms.locfileid: "92089463"
 
 <a name="spatial-reference"></a> **Spatial reference** (空間參考)：以座標為基礎的當地、區域或全球系統，用來精確地找出地理實體。 它能定義用來將地圖座標與真實世界位置相關聯的座標系統。 空間參考可確保來自不同圖層或來源的空間資料能夠整合，以進行精確檢視或分析。 Azure 地圖服務會使用 [EPSG:3857](https://epsg.io/3857) \(英文\) 座標參考系統，並針對輸入幾何資料使用 WGS 84。
 
-<a name="sql-spatial"></a> **SQL spatial** (SQL 空間)：指的是 SQL Azure 和 SQL Server 2008 及更新版本所內建的空間功能。 此空間功能也會以 .NET 程式庫的形式提供，並可獨立於 SQL Server 使用。 如需詳細資訊，請參閱[空間資料 (SQL Server) 文件](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server)。
+<a name="sql-spatial"></a> **SQL spatial** (SQL 空間)：指的是 SQL Azure 和 SQL Server 2008 及更新版本所內建的空間功能。 此空間功能也會以 .NET 程式庫的形式提供，並可獨立於 SQL Server 使用。 如需詳細資訊，請參閱[空間資料 (SQL Server) 文件](/sql/relational-databases/spatial/spatial-data-sql-server)。
 
-<a name="subscription-key"></a> **Subscription key** (訂用帳戶金鑰)：請參閱[共用金鑰驗證](#shared-key-authentication)。
+<a name="subscription-key"></a> **Subscription key** (訂用帳戶金鑰)：請參閱 [共用金鑰驗證](#shared-key-authentication)。
 
 <a name="synchronous-request"></a> **Synchronous request** (同步要求)：會開啟連線並等候回應的 HTTP 要求。 瀏覽器會限制可從某個頁面提出之並行 HTTP 要求的數目。 如果同時提出多個長時間執行的同步要求，則可能會達到此限制。 要求將會延遲，直到其中一個其他要求完成為止。
 
@@ -400,13 +400,12 @@ ms.locfileid: "92089463"
 
 <a name="web-mercator"></a> **Web Mercator** (網際網路麥卡托)：也稱為「球形麥卡托投影」。 其為麥卡托投影的微幅變體，主要用於 Web 型地圖程式。 它所使用的公式，與標準麥卡托投影用於較小規模地圖的公式相同。 不過，網際網路麥卡托在所有縮放等級中都會使用球形公式，但大規模的麥卡托地圖通常會使用橢圓體形式的投影。 此差異無法在全球規模中察覺，但會導致當地區域的地圖與相同縮放等級的真實橢圓體麥卡托地圖具有些微差異。
 
-<a name="wgs84"></a> **WGS84**：用來將空間座標關聯至地圖表面上位置的常數集合。 WGS84 數據是大部分線上地圖提供者和 GPS 裝置所使用的標準數據。 Azure 地圖服務會使用 WGS84 的 [EPSG:3857](https://epsg.io/3857) \(英文\) 座標參考系統變體。
+<a name="wgs84"></a> **WGS84** ：用來將空間座標關聯至地圖表面上位置的常數集合。 WGS84 數據是大部分線上地圖提供者和 GPS 裝置所使用的標準數據。 Azure 地圖服務會使用 WGS84 的 [EPSG:3857](https://epsg.io/3857) \(英文\) 座標參考系統變體。
 
 ## <a name="z"></a>Z
 
-<a name="z-coordinate"></a> **Z-coordinate** (Z 座標)：請參閱[高度](#altitude)。 
+<a name="z-coordinate"></a> **Z-coordinate** (Z 座標)：請參閱 [高度](#altitude)。 
 
-<a name="zip-code"></a> **Zip code** (郵遞區號)：請參閱[郵遞區號](#postal-code)。
+<a name="zip-code"></a> **Zip code** (郵遞區號)：請參閱 [郵遞區號](#postal-code)。
 
 <a name="Zoom level"></a> **Zoom level** (縮放等級)：指定詳細資料的層級，以及地圖的可見程度。 一直縮放到等級 0 時，通常就會顯示完整的世界地圖。 但是，地圖將顯示的詳細資料有限，例如，國家/地區名稱、邊界和海洋名稱。 放大到層級 17 時，地圖將會顯示涵蓋數個城市街區的區域，並提供詳細的道路資訊。 在 Azure 地圖服務中，最高縮放等級為 22。 如需詳細資訊，請參閱[縮放層級和圖格格線](zoom-levels-and-tile-grid.md)文件。
-

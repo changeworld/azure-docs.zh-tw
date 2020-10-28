@@ -8,26 +8,26 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 10969e20cd7ae71cade230f6643a27d5d940ceaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acd5f06a5383308ce736f2860810ebee7e5bce28
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311269"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897104"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 將符號圖層新增至地圖
 
 本文說明如何使用 Azure 地圖服務 Android SDK，將資料來源中的點資料呈現為地圖上的符號圖層。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要完全遵循這篇文章中的步驟，您必須安裝 [Azure 地圖服務 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) 以載入對應。
+若要完全遵循這篇文章中的步驟，您必須安裝 [Azure 地圖服務 Android SDK](./how-to-use-android-map-control-library.md) 以載入對應。
 
 ## <a name="add-a-symbol-layer"></a>新增符號圖層
 
 若要使用符號圖層在地圖上新增標記，請遵循下列步驟：
 
-1. 編輯**res**  >  **版面**配置  >  **activity_main.xml** ，使其看起來類似下列 XML：
+1. 編輯 **res**  >  **版面** 配置  >  **activity_main.xml** ，使其看起來類似下列 XML：
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -50,7 +50,7 @@ ms.locfileid: "91311269"
     </FrameLayout>
     ```
 
-2. 將下列程式碼片段複製到您類別的 **>oncreate ( # B1 ** 方法中 `MainActivity.java` 。
+2. 將下列程式碼片段複製到您類別的 **>oncreate ( # B1** 方法中 `MainActivity.java` 。
 
     ```Java
     mapControl.onReady(map -> {
@@ -72,7 +72,7 @@ ms.locfileid: "91311269"
     
     ```
     
-    上述程式碼片段會先使用 **onReady ( # B1 ** 回呼方法取得 Azure 地圖服務的地圖控制項實例。 接著，它會使用 **DataSource** 類別建立資料來源物件，並將它加入至對應。 然後，它會將包含點幾何的 **功能** 新增至其中。 接著會將紅色標記影像設定為符號的圖示。 **符號圖層**會使用文字或圖示，將資料來源中包裝的以點為基礎的資料轉譯為地圖上的符號。 接著會建立符號圖層，並將資料來源傳遞給它以轉譯，然後新增至地圖圖層。
+    上述程式碼片段會先使用 **onReady ( # B1** 回呼方法取得 Azure 地圖服務的地圖控制項實例。 接著，它會使用 **DataSource** 類別建立資料來源物件，並將它加入至對應。 然後，它會將包含點幾何的 **功能** 新增至其中。 接著會將紅色標記影像設定為符號的圖示。 **符號圖層** 會使用文字或圖示，將資料來源中包裝的以點為基礎的資料轉譯為地圖上的符號。 接著會建立符號圖層，並將資料來源傳遞給它以轉譯，然後新增至地圖圖層。
     
     新增上述程式碼片段之後，您 `MainActivity.java` 應該看起來如下所示：
     
@@ -180,7 +180,7 @@ ms.locfileid: "91311269"
 若要在地圖中新增更多東西，請參閱：
 
 > [!div class="nextstepaction"]
-> [在 Android 地圖中新增圖形](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+> [在 Android 地圖中新增圖形](./how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
 > [顯示功能資訊](display-feature-information-android.md)

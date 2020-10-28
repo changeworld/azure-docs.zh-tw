@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: aecda5ed9b87ba2345a52923a574919d6a08594f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c89922aef1ba802ee694aaed9bae2ac2dd273ee
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362666"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896237"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>開始使用 Azure 地圖服務 Power BI visual
 
-<Token>**適用于：** ![綠色核取記號。 ](media/power-bi-visual/yes.png)***消費者***的 Power BI 服務 ![ 綠色核取記號。 ](media/power-bi-visual/yes.png)適用于設計工具 & 開發人員的 Power BI 服務 ![ 綠色核取記號。 ](media/power-bi-visual/yes.png)Power BI Desktop ![ X 表示否。 ](media/power-bi-visual/no.png)需要 Pro 或 Premium 授權</Token>
+<Token>**適用于：** ![綠色核取記號。 ](media/power-bi-visual/yes.png) 適用于 * 取用 *_者_* _ ![ 綠色核取記號的 Power BI 服務。 ](media/power-bi-visual/yes.png) 適用于設計工具 & 開發人員的 Power BI 服務 ![ 綠色核取記號。 ](media/power-bi-visual/yes.png) Power BI Desktop ![ X 表示否。 ](media/power-bi-visual/no.png) 需要 Pro 或 Premium 授權</Token>
 
 本文說明如何使用 Power BI 的 Microsoft Azure Maps 視覺效果。
 
@@ -47,15 +47,15 @@ Azure 地圖服務的視覺效果會連接到裝載于 Azure 中的雲端服務�
 
 ## <a name="preview-behavior-and-requirements"></a>預覽行為及需求
 
-此預覽版本的 **Azure 地圖服務**有幾個考慮和需求：
+此預覽版本的 _ * Azure 地圖服務 * * 有幾個考慮和需求：
 
--   **Azure 地圖服務**的視覺效果處於預覽狀態，必須在 Power BI Desktop 中啟用。 若要啟用 **Azure 地圖服務**， **請選取** &gt; [檔案選項] 和 [ **設定** &gt; **選項** &gt; ] **預覽功能**，然後選取 [ **Azure 地圖服務視覺效果** ] 核取方塊。 如果您在執行此操作之後無法使用 Azure 地圖服務的視覺效果，就可能必須啟用系統管理員入口網站中的租使用者系統管理切換。
+-   **Azure 地圖服務** 的視覺效果處於預覽狀態，必須在 Power BI Desktop 中啟用。 若要啟用 **Azure 地圖服務** ， **請選取** &gt; [檔案選項] 和 [ **設定** &gt; **選項** &gt; ] **預覽功能** ，然後選取 [ **Azure 地圖服務視覺效果** ] 核取方塊。 如果您在執行此操作之後無法使用 Azure 地圖服務的視覺效果，就可能必須啟用系統管理員入口網站中的租使用者系統管理切換。
 -   資料集的欄位必須包含 **緯度** 和 **經度** 資訊。 將在未來的更新中新增位置欄位的地理編碼。
 -   Power BI 的內建圖例控制項目前不會出現在此預覽中。 它將會在未來的更新中新增。
 
 ## <a name="use-the-azure-maps-visual"></a>使用 Azure 地圖服務視覺效果
 
-一旦啟用**Azure 地圖服務**視覺效果，請從 [視覺**效果**] 窗格中選取**Azure 地圖服務**圖示。
+一旦啟用 **Azure 地圖服務** 視覺效果，請從 [視覺 **效果** ] 窗格中選取 **Azure 地圖服務** 圖示。
 
 ![[視覺效果] 窗格上的 Azure 地圖服務視覺效果按鈕](media/power-bi-visual/azure-maps-in-visualizations-pane.png)
 
@@ -70,7 +70,7 @@ Power BI 會建立空白的 Azure 地圖服務視覺化設計畫布。 在預覽
     > [!div class="mx-imgBorder"]
     > ![在提供的緯度和經度欄位之後，Azure 地圖服務視覺效果顯示地圖上的點](media/power-bi-visual/bubble-layer.png)
 
-2.  若要根據分類來建立資料的色彩，請將 [類別目錄] 欄位拖曳到 [**欄位**] 窗格的 [**圖例**] 值區中。 在此範例中，我們會使用 **AdminDistrict** 資料行 (也稱為州或省) 。  
+2.  若要根據分類來建立資料的色彩，請將 [類別目錄] 欄位拖曳到 [ **欄位** ] 窗格的 [ **圖例** ] 值區中。 在此範例中，我們會使用 **AdminDistrict** 資料行 (也稱為州或省) 。  
     
     > [!div class="mx-imgBorder"]
     > ![在提供圖例欄位之後，Azure 地圖服務視覺效果將點顯示為彩色的氣泡](media/power-bi-visual/bubble-layer-with-legend-color.png)
@@ -78,7 +78,7 @@ Power BI 會建立空白的 Azure 地圖服務視覺化設計畫布。 在預覽
     > [!NOTE]
     > Power BI 的內建圖例控制項目前不會出現在此預覽中。 它將會在未來的更新中新增。
 
-3.  若要相對地調整資料，請將量值拖曳到 [**欄位**] 窗格的 [**大小**] 值區中。 在此範例中，我們使用 [ **Sales** ] 資料行。  
+3.  若要相對地調整資料，請將量值拖曳到 [ **欄位** ] 窗格的 [ **大小** ] 值區中。 在此範例中，我們使用 [ **Sales** ] 資料行。  
     
     > [!div class="mx-imgBorder"]
     > ![Azure 地圖服務視覺效果，在提供的 [大小] 欄位之後，將點顯示為彩色和縮放的氣泡。](media/power-bi-visual/bubble-layer-with-legend-color-and-size.png)
@@ -118,7 +118,7 @@ Power BI 會建立空白的 Azure 地圖服務視覺化設計畫布。 在預覽
 
 | 設定          | 描述   |
 |------------------|---------------|
-| 縮放             | 地圖的預設縮放層級。 可以是介於0到22之間的數位。 |
+| Zoom             | 地圖的預設縮放層級。 可以是介於0到22之間的數位。 |
 | 中心緯度  | 地圖中央的預設緯度。 |
 | 中心經度 | 地圖中央的預設經度。 |
 | 朝向          | 地圖的預設方向（以度為單位），其中0是北、90是東部、180是南部，而270是西部。 可以是介於0到360之間的任何數位。 |
@@ -173,7 +173,7 @@ Azure 地圖服務的視覺效果可在下列服務和應用程式中使用：
 自訂視覺效果：
 
 > [!div class="nextstepaction"]
-> [在 Power BI 中色彩格式化的秘訣和訣竅](https://docs.microsoft.com/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
+> [在 Power BI 中色彩格式化的秘訣和訣竅](/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
 
 > [!div class="nextstepaction"]
-> [自訂視覺效果標題、背景和圖例](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)
+> [自訂視覺效果標題、背景和圖例](/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b503c7494d1b5e1821718fab5577bca88be65169
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d86ddd8d0fe53599e9dce3d2fc5fa7682f2aed08
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442281"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897053"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>在 Azure 入口網站中新增 Azure Active Directory B2B 共同作業使用者
 
@@ -50,8 +50,8 @@ ms.locfileid: "92442281"
    - **名稱。** 來賓使用者的姓氏與名字。
    - **電子郵件地址 (必要)** 。 來賓使用者的電子郵件地址。
    - **個人訊息 (選擇性)** 包含向來賓使用者顯示的個人歡迎訊息。
-   - **群組**：您可以將來賓使用者新增到一個或多個現有的群組，或者您也可以稍後再執行此動作。
-   - **目錄角色**：如果您需要讓使用者具有 Azure AD 系統管理權限，您可以將他們新增至 Azure AD 角色。 
+   - **群組** ：您可以將來賓使用者新增到一個或多個現有的群組，或者您也可以稍後再執行此動作。
+   - **目錄角色** ：如果您需要讓使用者具有 Azure AD 系統管理權限，您可以將他們新增至 Azure AD 角色。 
 
 7. 選取 [邀請] 即可自動對來賓使用者傳送邀請。 
  
@@ -94,7 +94,7 @@ ms.locfileid: "92442281"
    - 如果目錄中已有來賓使用者，請搜尋 B2B 使用者。 選取使用者，按一下 [選取]，然後按一下 [指派] 將使用者新增至應用程式中。
    - 如果來賓使用者尚不在目錄中，請在 [選取成員或邀請外部使用者] 下方輸入使用者的電子郵件地址。 在訊息方塊中，輸入選擇性的個人訊息。 在訊息方塊下方，按一下 [邀請]。
            
-       ![用來新增來賓成員的新增邀請按鈕](./media/add-users-administrator/AppInviteUsers.png)
+       ![醒目提示要在哪裡新增使用者的電子郵件地址、個人化訊息，以及反白顯示 [邀請] 按鈕的螢幕擷取畫面。](./media/add-users-administrator/AppInviteUsers.png)
    
       按一下 [選取]，然後按一下 [指派] 將使用者新增至應用程式中。 邀請會自動傳送給受邀的使用者。
 

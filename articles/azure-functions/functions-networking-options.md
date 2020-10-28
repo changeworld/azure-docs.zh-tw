@@ -1,15 +1,16 @@
 ---
 title: Azure Functions 網路選項
 description: Azure Functions 中所有可用的網路選項概觀。
+author: jeffhollan
 ms.topic: conceptual
-ms.date: 4/11/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 271730e57a2d7ef8324420744b4bcd088b9809cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/27/2020
+ms.author: jehollan
+ms.openlocfilehash: 3a44efac274bf5c5d6cfc6a0f044ee89b479cbe6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530078"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897070"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 網路選項
 
@@ -66,11 +67,30 @@ Azure Functions 中的虛擬網路整合會使用共用基礎結構搭配 App Se
 
 若要深入了解，請參閱[虛擬網路服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)。
 
-## <a name="restrict-your-storage-account-to-a-virtual-network"></a>將儲存體帳戶限定於虛擬網路
+## <a name="restrict-your-storage-account-to-a-virtual-network-preview"></a>將您的儲存體帳戶限制為虛擬網路 (預覽版) 
 
-建立函式應用程式時，您必須建立或連結至支援 Blob、佇列及資料表儲存體的一般用途 Azure 儲存體帳戶。 您目前無法在此帳戶上使用任何虛擬網路限制。 如果您在用於函式應用程式的儲存體帳戶上設定虛擬網路服務端點，該設定將會中斷您的應用程式。
+建立函式應用程式時，您必須建立或連結至支援 Blob、佇列及資料表儲存體的一般用途 Azure 儲存體帳戶。  您可以使用服務端點或私人端點所保護的儲存體帳戶來取代此儲存體帳戶。  這項預覽功能目前僅適用于西歐的 Windows Premium 方案。  若要使用限制為私人網路的儲存體帳戶來設定函數：
 
-若要深入了解，請參閱[儲存體帳戶需求](./functions-create-function-app-portal.md#storage-account-requirements)。
+> [!NOTE]
+> 限制儲存體帳戶目前僅適用于使用西歐的 Windows 的 Premium 函式
+
+1. 使用未啟用服務端點的儲存體帳戶來建立函數。
+1. 設定函式以連接到您的虛擬網路。
+1. 建立或設定不同的儲存體帳戶。  這會是我們使用服務端點保護的儲存體帳戶，並連接我們的函式。
+1. 在受保護的儲存體帳戶中[建立檔案共用](../storage/files/storage-how-to-create-file-share.md#create-file-share)。
+1. 啟用儲存體帳戶的服務端點或私人端點。  
+    * 如果您使用服務端點，請務必啟用您函式應用程式專用的子網。
+    * 如果使用私用端點，請務必建立 DNS 記錄，並將您的應用程式設定為使用 [私人端點端點](#azure-dns-private-zones) 。  儲存體帳戶將需要 `file` 和子資源的私人端點 `blob` 。  如果使用特定功能（例如 Durable Functions），您也需要 `queue` `table` 透過私人端點連接來存取。
+1.  (選擇性) 將檔案和 blob 內容從函數應用程式儲存體帳戶複製到受保護的儲存體帳戶和檔案共用。
+1. 複製此儲存體帳戶的連接字串。
+1. 將函數應用程式的 [設定 **] 下的****應用程式設定** 更新為下列內容：
+    - `AzureWebJobsStorage` 指向受保護儲存體帳戶的連接字串。
+    - `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 指向受保護儲存體帳戶的連接字串。
+    - `WEBSITE_CONTENTSHARE` 至在安全儲存體帳戶中建立的檔案共用名稱。
+    - 使用的名稱和值建立新的設定 `WEBSITE_CONTENTOVERVNET` `1` 。
+1. 儲存應用程式設定。  
+
+函式應用程式將會重新開機，且現在會連接到安全的儲存體帳戶。
 
 ## <a name="use-key-vault-references"></a>使用 Key Vault 參考
 
@@ -87,7 +107,7 @@ Azure Functions 中的虛擬網路整合會使用共用基礎結構搭配 App Se
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>具有虛擬網路觸發程序的進階方案
 
-當您執行進階方案時，可以將非 HTTP 觸發程序函式連線到在虛擬網路中執行的服務。 若要這麼做，您必須啟用函式應用程式的虛擬網路觸發程序支援。 **執行時間調整監視**設定**可在 [** [Azure portal](https://portal.azure.com)  >  **設定函數執行時間設定**] 下的 [Azure 入口網站] 中找到。
+當您執行進階方案時，可以將非 HTTP 觸發程序函式連線到在虛擬網路中執行的服務。 若要這麼做，您必須啟用函式應用程式的虛擬網路觸發程序支援。 **執行時間調整監視** 設定 **可在 [** [Azure portal](https://portal.azure.com)  >  **設定函數執行時間設定** ] 下的 [Azure 入口網站] 中找到。
 
 :::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 
@@ -136,8 +156,8 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 ## <a name="automation"></a>自動化
 下列 Api 可讓您以程式設計方式管理區域虛擬網路整合：
 
-+ **Azure CLI**：使用 [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) 命令來新增、列出或移除區域虛擬網路整合。  
-+ **ARM 範本**：您可以使用 Azure Resource Manager 範本來啟用區域虛擬網路整合。 如需完整範例，請參閱 [此函數快速入門範本](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/)。
++ **Azure CLI** ：使用 [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) 命令來新增、列出或移除區域虛擬網路整合。  
++ **ARM 範本** ：您可以使用 Azure Resource Manager 範本來啟用區域虛擬網路整合。 如需完整範例，請參閱 [此函數快速入門範本](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/)。
 
 ## <a name="troubleshooting"></a>疑難排解
 

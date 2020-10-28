@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 5b186901551e421ba365b97a6de6a55ff791e5e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43bf70d66c42bc0ecd5e26e4cc724456bd4bf84e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310181"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896917"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK 支援的瀏覽器
 
-Azure 地圖服務 Web SDK 提供名為 [isSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas#issupported-boolean-)的 helper 函數。 此函式會偵測網頁瀏覽器是否有支援載入和轉譯地圖控制項所需的最小一組 WebGL 功能。 以下是如何使用函數的範例：
+Azure 地圖服務 Web SDK 提供名為 [isSupported](/javascript/api/azure-maps-control/atlas#issupported-boolean-)的 helper 函數。 此函式會偵測網頁瀏覽器是否有支援載入和轉譯地圖控制項所需的最小一組 WebGL 功能。 以下是如何使用函數的範例：
 
 ```JavaScript
 if (!atlas.isSupported()) {

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84169daa28fc394254ddce211a96d4a462f78cbd
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 61f82e94f506cc403106912e24532f9d5263a60d
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441856"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896461"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>對 Azure AD 中的 B2B 使用者授與內部部署應用程式的存取權
 
@@ -28,10 +28,10 @@ ms.locfileid: "92441856"
 
 您必須執行下列兩個動作：
 
-- 使用 SAML 來整合應用程式，如 [設定 saml 型單一登入](../manage-apps/configure-saml-single-sign-on.md)中所述。 請務必記下您所使用的**登入 URL** 值。
+- 使用 SAML 來整合應用程式，如 [設定 saml 型單一登入](../manage-apps/configure-saml-single-sign-on.md)中所述。 請務必記下您所使用的 **登入 URL** 值。
 -  使用 Azure AD 應用程式 Proxy 來發行內部部署應用程式，並將 **Azure Active Directory** 設定為驗證來源。 如需指示，請參閱[使用 Azure AD 應用程式 Proxy 發行應用程式](../manage-apps/application-proxy-add-on-premises-application.md)。 
 
-   當您設定 [內部 Url]**** 設定時，請使用您在非資源庫的應用程式範本中指定的登入 URL。 如此一來，使用者就可以從組織界限外存取應用程式。 應用程式 Proxy 會為內部部署應用程式執行 SAML 單一登入。
+   當您設定 [內部 Url]  設定時，請使用您在非資源庫的應用程式範本中指定的登入 URL。 如此一來，使用者就可以從組織界限外存取應用程式。 應用程式 Proxy 會為內部部署應用程式執行 SAML 單一登入。
  
    ![顯示內部部署應用程式設定內部 URL 和驗證](media/hybrid-cloud-to-on-premises/OnPremAppSettings.PNG)
 
@@ -39,8 +39,8 @@ ms.locfileid: "92441856"
 
 針對使用整合式 Windows 驗證和 Kerberos 限制委派所保護的內部部署應用程式，若要讓 B2B 使用者獲得這些應用程式的存取權，您需要下列元件：
 
-- **透過 Azure AD 應用程式 Proxy 的驗證**。 B2B 使用者必須能夠向內部部署應用程式進行驗證。 若要這麼做，您必須透過 Azure AD 應用程式 Proxy 發行內部部署應用程式。 如需詳細資訊，請參閱[開始使用應用程式 Proxy 並安裝連接器](../manage-apps/application-proxy-add-on-premises-application.md)和[使用 Azure AD 應用程式 Proxy 發佈應用程式](../manage-apps/application-proxy-add-on-premises-application.md)。
-- **透過內部部署目錄中 B2B 使用者物件的授權**。 應用程式必須能夠執行使用者存取權檢查，並授與正確資源的存取權。 IWA 和 KCD 需要內部部署 Windows Server Active Directory 中的使用者物件才能完成此授權。 如[使用 KCD 單一登入的運作方式](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)所述，應用程式 Proxy 需要這個使用者物件，以模擬使用者並將 Kerberos 權杖交給應用程式。 
+- **透過 Azure AD 應用程式 Proxy 的驗證** 。 B2B 使用者必須能夠向內部部署應用程式進行驗證。 若要這麼做，您必須透過 Azure AD 應用程式 Proxy 發行內部部署應用程式。 如需詳細資訊，請參閱 [教學課程：新增內部部署應用程式，以透過應用程式 Proxy 進行遠端存取](../manage-apps/application-proxy-add-on-premises-application.md)。
+- **透過內部部署目錄中 B2B 使用者物件的授權** 。 應用程式必須能夠執行使用者存取權檢查，並授與正確資源的存取權。 IWA 和 KCD 需要內部部署 Windows Server Active Directory 中的使用者物件才能完成此授權。 如[使用 KCD 單一登入的運作方式](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)所述，應用程式 Proxy 需要這個使用者物件，以模擬使用者並將 Kerberos 權杖交給應用程式。 
 
    > [!NOTE]
    > 當您設定 Azure AD 應用程式 Proxy 時，請確定整合式 Windows 驗證 (IWA) 的單一登入設定中，已將 [ **委派的登** 入身分識別] 設定為 [ **使用者主體名稱** ] (預設) 。

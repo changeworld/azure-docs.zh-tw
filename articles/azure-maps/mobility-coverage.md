@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: d61cc94ee1b3c5d23135c033b1068aa7411761d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12548b04e5fb967572e17f1be88369b9950661c3
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88033252"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896288"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure 地圖服務行動性涵蓋範圍
 
-Azure 地圖服務 [行動服務](https://aka.ms/AzureMapsMobilityService) 可改善具有公開傳輸功能之應用程式的開發時間，例如，傳送路由和搜尋附近的公用運輸停止。 使用者可以擷取有關運輸站點、路線和時刻表的詳細資訊。 行動服務也可讓使用者擷取站點和路線幾何圖形、站點提醒、路線和服務區域，以及即時的大眾運輸抵達和服務提醒。 此外，行動服務也會提供具有多模式行程規劃選項的路線功能。 多模式行程規劃將步行、騎腳踏車和大眾運輸選項全都納入到一個行程中。 使用者也可以存取詳細的多模式逐步路線。 
+Azure 地圖服務 [行動服務](/rest/api/maps/mobility) 可改善具有公開傳輸功能之應用程式的開發時間，例如，傳送路由和搜尋附近的公用運輸停止。 使用者可以擷取有關運輸站點、路線和時刻表的詳細資訊。 行動服務也可讓使用者擷取站點和路線幾何圖形、站點提醒、路線和服務區域，以及即時的大眾運輸抵達和服務提醒。 此外，行動服務也會提供具有多模式行程規劃選項的路線功能。 多模式行程規劃將步行、騎腳踏車和大眾運輸選項全都納入到一個行程中。 使用者也可以存取詳細的多模式逐步路線。 
 
 Azure 地圖服務不會針對所有城市和國家/地區提供相同層級的資訊和精確度。 呼叫公開傳輸資料的功能取決於 metro 區域。 此外，地圖資料可能不包含所有公用運輸選項和提供 metro 區域的機構。
 
@@ -29,7 +29,7 @@ Azure 地圖服務不會針對所有城市和國家/地區提供相同層級的�
 
 ## <a name="americas"></a>美洲
 
-| 國家/地區 |   (Metro 區域的城市)  |
+| 國家/區域 |   (Metro 區域的城市)  |
 |----------------|---------|
 | 安地卡及巴布達 | 安地卡及巴布達 * |
 | 阿根廷       | <p>Bahía Blanca、布宜諾斯艾利斯、Caleta Olivia、Catamarca、Chivilcoy、Comodoro Rivadavia、Córdoba、Corrientes、General Pico、La Rioja、Mar del Plata、門多薩、Miramar、Necochea、Neuquén、Oberá、Olavarría、Paraná、Posadas、Rio、Tercero、Rosario、Salta、Carlos、Bariloche、Luis、Pedro、Tandil、Ushuaia、Viedma、別墅、María</p>|
@@ -54,7 +54,7 @@ Azure 地圖服務不會針對所有城市和國家/地區提供相同層級的�
 
 ## <a name="asia-pacific"></a>亞太地區
 
-| 國家/地區 |   (Metro 區域的城市)  |
+| 國家/區域 |   (Metro 區域的城市)  |
 |--------|---------|
 | 澳洲 | <p>阿德萊德、Alice 的彈簧、Bowen、布里斯班、Bundaberg QLD、Burnie、Cairns、坎培拉、Darwin、Gladstone、霍巴特、Innisfail、Launceston、Mercer-mackay、磁性島、Maryborough-Hervey Bay、墨爾本、新的南威爾士、、RockHampton、東南部、昆士蘭、Toowoomba、Townsville、Warwick、維多利亞、Yeppoon、</p> |
 | 汶萊 | Bandar Seri Begawan |
@@ -76,7 +76,7 @@ Azure 地圖服務不會針對所有城市和國家/地區提供相同層級的�
 
 ## <a name="europe"></a>歐洲
 
-| 國家/地區 |   (Metro 區域的城市)  |
+| 國家/區域 |   (Metro 區域的城市)  |
 |----------------|---------|
 | 安道爾        | 安道爾 la Vella |
 | 奧地利        | 維也納 |
@@ -126,7 +126,7 @@ Azure 地圖服務不會針對所有城市和國家/地區提供相同層級的�
 
 ## <a name="middle-east-and-africa"></a>中東與非洲
 
-| 國家/地區 |   (Metro 區域的城市)  |
+| 國家/區域 |   (Metro 區域的城市)  |
 |---------|---------|
 | 巴林 | 群島 |
 | 布吉納法索 | 瓦加杜古 |
@@ -159,4 +159,4 @@ Azure 地圖服務不會針對所有城市和國家/地區提供相同層級的�
 探索 Azure 地圖服務行動服務 API 檔
 
 > [!div class="nextstepaction"]
-> [行動服務 API 檔](https://aka.ms/AzureMapsMobilityService)
+> [行動服務 API 檔](/rest/api/maps/mobility)

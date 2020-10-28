@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 3e80ff90e47f45655761abd4c7e8fa9ed04b61ef
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f97d04ca40e69ba2516744adfc9f1f455cba97c0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518886"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896339"
 ---
 # <a name="tutorial---migrate-web-service-from-google-maps"></a>教學課程 - 從 Google Maps 遷移 Web 服務
 
@@ -40,15 +40,15 @@ Azure 地圖服務和 Google Maps 都提供透過 REST Web 服務來存取空間
 
 | Google Maps 服務 API | Azure 地圖服務的服務 API                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| 方向              | [路由](https://docs.microsoft.com/rest/api/maps/route)                                     |
-| 距離矩陣         | [路線矩陣](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)       |
-| 地理編碼               | [搜尋](https://docs.microsoft.com/rest/api/maps/search)                                   |
-| 地點搜尋           | [搜尋](https://docs.microsoft.com/rest/api/maps/search)                                   |
-| 地點自動完成      | [搜尋](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| 方向              | [路由](/rest/api/maps/route)                                     |
+| 距離矩陣         | [路線矩陣](/rest/api/maps/route/postroutematrixpreview)       |
+| 地理編碼               | [搜尋](/rest/api/maps/search)                                   |
+| 地點搜尋           | [搜尋](/rest/api/maps/search)                                   |
+| 地點自動完成      | [搜尋](/rest/api/maps/search)                                   |
 | 緊貼道路            | 請參閱[計算路線和方向](#calculate-routes-and-directions)一節。            |
 | 速度限制            | 請參閱[對座標進行反向地理編碼](#reverse-geocode-a-coordinate)一節。                  |
-| 靜態地圖              | [轉譯](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                       |
-| 時區               | [時區](https://docs.microsoft.com/rest/api/maps/timezone)                              |
+| 靜態地圖              | [轉譯](/rest/api/maps/render/getmapimage)                       |
+| 時區               | [時區](/rest/api/maps/timezone)                              |
 
 Azure 地圖服務目前無法使用下列服務 API：
 
@@ -62,8 +62,8 @@ Azure 地圖服務目前無法使用下列服務 API：
 
 Azure 地圖服務有一些可能讓您感興趣的額外 REST Web 服務：
 
-- [空間作業](https://docs.microsoft.com/rest/api/maps/spatial)：將複雜的空間計算和作業 (例如地理柵欄) 卸載至某個服務。
-- [交通](https://docs.microsoft.com/rest/api/maps/traffic)：存取即時交通流量和事件資料。
+- [空間作業](/rest/api/maps/spatial)：將複雜的空間計算和作業 (例如地理柵欄) 卸載至某個服務。
+- [交通](/rest/api/maps/traffic)：存取即時交通流量和事件資料。
 
 ## <a name="prerequisites"></a>必要條件 
 
@@ -77,11 +77,11 @@ Azure 地圖服務有一些可能讓您感興趣的額外 REST Web 服務：
 
 Azure 地圖服務提供數種用來地理編碼地址的方法：
 
-- [**自由格式的地址地理編碼**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)：指定單一地址字串，並立即處理要求。 舉例來說，「1 Microsoft way, Redmond, WA」便是單一地址字串。 如果您需要快速地進行個別地址的地理編碼程序，建議使用此 API。
-- [**結構化的地址地理編碼**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressstructured)：指定單一地址的各個部分 (例如，街道名稱、城市、國家/區域和郵遞區號)，然後立即處理要求。 如果您需要快速地進行個別地址的地理編碼程序，而且已將資料剖析成個別的地址部分，則建議使用此 API。
-- [**批次地址地理編碼**](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatchpreview)：建立最多包含 10,000 個地址的要求，並讓這些地址進行一段時間的處理。 所有地址會在伺服器上以平行方式進行地理編碼，並可於完成後下載完整的結果集。 若要對大型資料集進行地理編碼，則建議使用此做法。
-- [**模糊搜尋**](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)：此 API 會結合地址地理編碼與景點搜尋。 此 API 會接受自由格式的字串。 這個字串可以是地址、地點、地標、景點或景點類別。 此 API 會近乎即時地處理要求。 如果應用程式可供使用者在相同文字方塊中搜尋地址或景點，則建議使用此 API。
-- [**模糊批次搜尋**](https://docs.microsoft.com/rest/api/maps/search/postsearchfuzzybatchpreview)：建立最多包含 10,000 個地址、地點、地標或景點的要求，並讓這些項目進行一段時間的處理。 所有資料會在伺服器上以平行方式處理，並可於完成後下載完整的結果集。
+- [**自由格式的地址地理編碼**](/rest/api/maps/search/getsearchaddress)：指定單一地址字串，並立即處理要求。 舉例來說，「1 Microsoft way, Redmond, WA」便是單一地址字串。 如果您需要快速地進行個別地址的地理編碼程序，建議使用此 API。
+- [**結構化的地址地理編碼**](/rest/api/maps/search/getsearchaddressstructured)：指定單一地址的各個部分 (例如，街道名稱、城市、國家/區域和郵遞區號)，然後立即處理要求。 如果您需要快速地進行個別地址的地理編碼程序，而且已將資料剖析成個別的地址部分，則建議使用此 API。
+- [**批次地址地理編碼**](/rest/api/maps/search/postsearchaddressbatchpreview)：建立最多包含 10,000 個地址的要求，並讓這些地址進行一段時間的處理。 所有地址會在伺服器上以平行方式進行地理編碼，並可於完成後下載完整的結果集。 若要對大型資料集進行地理編碼，則建議使用此做法。
+- [**模糊搜尋**](/rest/api/maps/search/getsearchfuzzy)：此 API 會結合地址地理編碼與景點搜尋。 此 API 會接受自由格式的字串。 這個字串可以是地址、地點、地標、景點或景點類別。 此 API 會近乎即時地處理要求。 如果應用程式可供使用者在相同文字方塊中搜尋地址或景點，則建議使用此 API。
+- [**模糊批次搜尋**](/rest/api/maps/search/postsearchfuzzybatchpreview)：建立最多包含 10,000 個地址、地點、地標或景點的要求，並讓這些項目進行一段時間的處理。 所有資料會在伺服器上以平行方式處理，並可於完成後下載完整的結果集。
 
 下表會交互參照 Google Maps API 參數與 Azure 地圖服務中類似的 API 參數。
 
@@ -105,9 +105,9 @@ Azure 地圖服務提供數種用來地理編碼地址的方法：
 
 Azure 地圖服務提供數種反向地理編碼方法：
 
-- [**地址反向地理編碼器**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)：指定單一地理座標，以取得與此座標對應的大致地址。 近乎即時地處理要求。
-- [**十字路口反向地理編碼器**](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet)：指定單一地理座標以取得附近的十字路口資訊，並立即處理要求。 例如，您可能會收到下列十字路口：1st Ave 和 Main St。
-- [**批次地址反向地理編碼器**](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatchpreview)：建立最多包含 10,000 個座標的要求，並讓這些地址進行一段時間的處理。 所有資料都會在伺服器上平行處理。 當要求完成時，您便可以下載一組完整的結果。
+- [**地址反向地理編碼器**](/rest/api/maps/search/getsearchaddressreverse)：指定單一地理座標，以取得與此座標對應的大致地址。 近乎即時地處理要求。
+- [**十字路口反向地理編碼器**](/rest/api/maps/search/getsearchaddressreversecrossstreet)：指定單一地理座標以取得附近的十字路口資訊，並立即處理要求。 例如，您可能會收到下列十字路口：1st Ave 和 Main St。
+- [**批次地址反向地理編碼器**](/rest/api/maps/search/postsearchaddressreversebatchpreview)：建立最多包含 10,000 個座標的要求，並讓這些地址進行一段時間的處理。 所有資料都會在伺服器上平行處理。 當要求完成時，您便可以下載一組完整的結果。
 
 下表會交互參照 Google Maps API 參數與 Azure 地圖服務中類似的 API 參數。
 
@@ -137,13 +137,13 @@ Azure 地圖服務反向地理編碼 API 有一些無法在 Google Maps 中取�
 
 Azure 地圖服務會提供數個景點搜尋 API：
 
-- [**POI 搜尋**](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi)：依名稱搜尋景點。 例如，「星巴克」。
-- [**POI 類別搜尋**](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory)：依類別搜尋景點。 例如，「餐廳」。
-- [**鄰近搜尋**](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby)：搜尋位於某位置一定距離內的景點。
-- [**模糊搜尋**](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)：此 API 會結合地址地理編碼與景點搜尋。 此 API 會採用自由格式的字串 (內容可以是地址、地點、地標、景點或景點類別)。 其會近乎即時地處理要求。 如果應用程式可供使用者在相同文字方塊中搜尋地址或景點，則建議使用此 API。
-- [**在幾何範圍內搜尋**](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)：搜尋指定幾何範圍內的景點。 例如，搜尋多邊形內的景點。
-- [**沿路線搜尋**](https://docs.microsoft.com/rest/api/maps/search/postsearchalongroute)：搜尋指定路線路徑沿途的景點。
-- [**模糊批次搜尋**](https://docs.microsoft.com/rest/api/maps/search/postsearchfuzzybatchpreview)：建立最多包含 10,000 個地址、地點、地標或景點的要求。 對要求進行一段時間的處理。 所有資料都會在伺服器上平行處理。 當要求處理完成時，您便可以下載一組完整的結果。
+- [**POI 搜尋**](/rest/api/maps/search/getsearchpoi)：依名稱搜尋景點。 例如，「星巴克」。
+- [**POI 類別搜尋**](/rest/api/maps/search/getsearchpoicategory)：依類別搜尋景點。 例如，「餐廳」。
+- [**鄰近搜尋**](/rest/api/maps/search/getsearchnearby)：搜尋位於某位置一定距離內的景點。
+- [**模糊搜尋**](/rest/api/maps/search/getsearchfuzzy)：此 API 會結合地址地理編碼與景點搜尋。 此 API 會採用自由格式的字串 (內容可以是地址、地點、地標、景點或景點類別)。 其會近乎即時地處理要求。 如果應用程式可供使用者在相同文字方塊中搜尋地址或景點，則建議使用此 API。
+- [**在幾何範圍內搜尋**](/rest/api/maps/search/postsearchinsidegeometry)：搜尋指定幾何範圍內的景點。 例如，搜尋多邊形內的景點。
+- [**沿路線搜尋**](/rest/api/maps/search/postsearchalongroute)：搜尋指定路線路徑沿途的景點。
+- [**模糊批次搜尋**](/rest/api/maps/search/postsearchfuzzybatchpreview)：建立最多包含 10,000 個地址、地點、地標或景點的要求。 對要求進行一段時間的處理。 所有資料都會在伺服器上平行處理。 當要求處理完成時，您便可以下載一組完整的結果。
 
 Azure 地圖服務目前沒有與 Google Maps 中的文字搜尋 API 類似的 API。
 
@@ -154,7 +154,7 @@ Azure 地圖服務目前沒有與 Google Maps 中的文字搜尋 API 類似的 A
 
 ### <a name="find-place-from-text"></a>從文字尋找地點
 
-使用 Azure 地圖服務的 [POI 搜尋](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi)和[模糊搜尋](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)，以便依名稱或地址搜尋景點。
+使用 Azure 地圖服務的 [POI 搜尋](/rest/api/maps/search/getsearchpoi)和[模糊搜尋](/rest/api/maps/search/getsearchfuzzy)，以便依名稱或地址搜尋景點。
 
 下表會交互參照 Google Maps API 參數與類似的 Azure 地圖服務 API 參數。
 
@@ -169,7 +169,7 @@ Azure 地圖服務目前沒有與 Google Maps 中的文字搜尋 API 類似的 A
 
 ### <a name="nearby-search"></a>鄰近搜尋
 
-使用[鄰近搜尋](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby) API，在 Azure 地圖服務中擷取鄰近的景點。
+使用[鄰近搜尋](/rest/api/maps/search/getsearchnearby) API，在 Azure 地圖服務中擷取鄰近的景點。
 
 下表會顯示 Google Maps API 參數與類似的 Azure 地圖服務 API 參數。
 
@@ -201,9 +201,9 @@ Azure 地圖服務目前沒有與 Google Maps 中的文字搜尋 API 類似的 A
 
 Azure 地圖服務路線服務會提供下列 API 來計算路線：
 
-- [**計算路線**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)：計算路線並立即處理要求。 此 API 同時支援 GET 和 POST 要求。 當您指定大量導航點，或使用許多路線選項來確保 URL 要求不會太長而造成問題時，建議您使用 POST 要求。 Azure 地圖服務中的 POST 路線方向可選擇接受數千個[支援點](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#supportingpoints)，並使用這些支援點來重建其間的邏輯路線路徑 (緊貼道路)。 
-- [**批次路線**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview)：建立最多包含 1,000 個路線要求的要求，並讓這些地址進行一段時間的處理。 所有資料會在伺服器上以平行方式處理，並可於完成後下載完整的結果集。
-- [**行動服務**](https://docs.microsoft.com/rest/api/maps/mobility)：使用大眾運輸系統來計算路線和方向。
+- [**計算路線**](/rest/api/maps/route/getroutedirections)：計算路線並立即處理要求。 此 API 同時支援 GET 和 POST 要求。 當您指定大量導航點，或使用許多路線選項來確保 URL 要求不會太長而造成問題時，建議您使用 POST 要求。 Azure 地圖服務中的 POST 路線方向可選擇接受數千個[支援點](/rest/api/maps/route/postroutedirections#supportingpoints)，並使用這些支援點來重建其間的邏輯路線路徑 (緊貼道路)。 
+- [**批次路線**](/rest/api/maps/route/postroutedirectionsbatchpreview)：建立最多包含 1,000 個路線要求的要求，並讓這些地址進行一段時間的處理。 所有資料會在伺服器上以平行方式處理，並可於完成後下載完整的結果集。
+- [**行動服務**](/rest/api/maps/mobility)：使用大眾運輸系統來計算路線和方向。
 
 下表會交互參照 Google Maps API 參數與 Azure 地圖服務中類似的 API 參數。
 
@@ -221,8 +221,8 @@ Azure 地圖服務路線服務會提供下列 API 來計算路線：
 | `origin`                       | `query`                            |
 | `region`                       | *N/A* – 這是與地理編碼相關的功能。 在使用 Azure 地圖服務的地理編碼 API 時，請使用 countrySet 參數。  |
 | `traffic_model`               | *N/A* – 只能指定是否應該讓交通資料與 traffic 參數搭配使用。 |
-| `transit_mode`                | 請參閱[行動服務文件](https://docs.microsoft.com/rest/api/maps/mobility) |
-| `transit_routing_preference` | 請參閱[行動服務文件](https://docs.microsoft.com/rest/api/maps/mobility) |
+| `transit_mode`                | 請參閱[行動服務文件](/rest/api/maps/mobility) |
+| `transit_routing_preference` | 請參閱[行動服務文件](/rest/api/maps/mobility) |
 | `units`                        | *N/A* – Azure 地圖服務只會使用公制單位。  |
 | `waypoints`                    | `query`                            |
 
@@ -242,13 +242,13 @@ Azure 地圖服務的路線規劃 API 有其他無法在 Google Maps 中取得�
 - 支援商用車路線參數。 例如，車輛尺寸、重量、車軸數目和貨物類型。
 - 指定最大車速。
 
-除此之外，Azure 地圖服務中的路線規劃服務也支援[計算可規劃路線的範圍](https://docs.microsoft.com/rest/api/maps/route/getrouterange)。 計算可規劃路線的範圍也稱為等時線。 其需要產生一個多邊形，以涵蓋可從原點以任何方向行進到達的區域。 這些區域全都在指定的時間長度或是燃料量或電量之下。
+除此之外，Azure 地圖服務中的路線規劃服務也支援[計算可規劃路線的範圍](/rest/api/maps/route/getrouterange)。 計算可規劃路線的範圍也稱為等時線。 其需要產生一個多邊形，以涵蓋可從原點以任何方向行進到達的區域。 這些區域全都在指定的時間長度或是燃料量或電量之下。
 
 請檢閱[路由的最佳做法](how-to-use-best-practices-for-routing.md)文件。
 
 ## <a name="retrieve-a-map-image"></a>擷取地圖影像
 
-Azure 地圖服務會提供 API 來呈現已覆蓋資料的靜態地圖影像。 Azure 地圖服務中的[地圖影像呈現](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile) API 相當於 Google Maps 中的靜態地圖 API。
+Azure 地圖服務會提供 API 來呈現已覆蓋資料的靜態地圖影像。 Azure 地圖服務中的[地圖影像呈現](/rest/api/maps/render/getmapimagerytile) API 相當於 Google Maps 中的靜態地圖 API。
 
 > [!NOTE]
 > Azure 地圖服務需要中心、所有標記和路徑位置都是採用「緯度,經度」格式的座標。 Google Maps 則會使用「緯度,經度」格式。 地址必須先進行地理編碼。
@@ -278,8 +278,8 @@ Azure 地圖服務會提供 API 來呈現已覆蓋資料的靜態地圖影像。
 
 除了能夠產生靜態地圖影像之外，Azure 地圖服務的呈現服務也能讓您直接存取點陣 (PNG) 和向量格式的地圖底圖：
 
-- [**地圖底圖**](https://docs.microsoft.com/rest/api/maps/render/getmaptile)：擷取基底地圖 (道路、邊界、背景) 的點陣 (PNG) 和向量地圖底圖。
-- [**地圖影像地圖底圖**](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)：擷取空照圖影像和衛星影像的地圖底圖。
+- [**地圖底圖**](/rest/api/maps/render/getmaptile)：擷取基底地圖 (道路、邊界、背景) 的點陣 (PNG) 和向量地圖底圖。
+- [**地圖影像地圖底圖**](/rest/api/maps/render/getmapimagerytile)：擷取空照圖影像和衛星影像的地圖底圖。
 
 > [!TIP]
 > 幾年前有許多 Google Maps 應用程式從互動式地圖體驗切換成靜態地圖影像。 這麼做是為了節省成本。 在 Azure 地圖服務中，使用 Web SDK 中的互動式地圖控制項通常更符合成本效益。 互動式地圖控制項會根據地圖底圖的載入數量來收費。 Azure 地圖服務中的地圖底圖很大。 通常只需要幾個地圖底圖就能重新建立與靜態地圖相同的地圖檢視。 瀏覽器會自動快取地圖底圖。 因此，互動式地圖控制項在重現靜態地圖檢視時，往往會產生一小部分的交易。 平移和縮放會載入更多地圖底圖，不過地圖控制項中有選項可供停用此行為。 互動式地圖控制項也會提供比靜態地圖服務多更多的視覺效果選項。
@@ -426,7 +426,7 @@ Azure 地圖服務會提供 API 來呈現已覆蓋資料的靜態地圖影像。
 
 Azure 地圖服務提供距離矩陣 API。 請使用此 API 透過距離矩陣來計算一組位置之間的行進時間和距離。 此 API 相當於 Google Maps 中的距離矩陣 API。
 
-- [**路線矩陣**](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)：以非同步方式計算一組起點和終點的行進時間和距離。 每個要求最多可支援 700 個資料格。 此數目就是起點數目與終點數目的乘積。 在考慮到該條件約束的情況下，可能的矩陣維度範例如下：700x1、50x10、10x10、28x25、10x70。
+- [**路線矩陣**](/rest/api/maps/route/postroutematrixpreview)：以非同步方式計算一組起點和終點的行進時間和距離。 每個要求最多可支援 700 個資料格。 此數目就是起點數目與終點數目的乘積。 在考慮到該條件約束的情況下，可能的矩陣維度範例如下：700x1、50x10、10x10、28x25、10x70。
 
 > [!NOTE]
 > 針對距離矩陣 API 的要求只能使用 POST 要求來提出，而且要在要求主體中附上起點和終點資訊。 此外，Azure 地圖服務會要求所有起點和終點都必須是座標。 地址必須先進行地理編碼。
@@ -458,7 +458,7 @@ Azure 地圖服務提供距離矩陣 API。 請使用此 API 透過距離矩陣�
 
 Azure 地圖服務提供了 API 供您擷取座標的時區。 Azure 地圖服務的時區 API 類似於 Google Maps 中的時區 API：
 
-- [**時區 (依座標)**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonebycoordinates)：指定座標並接收座標的時區詳細資料。
+- [**時區 (依座標)**](/rest/api/maps/timezone/gettimezonebycoordinates)：指定座標並接收座標的時區詳細資料。
 
 下表會交互參照 Google Maps API 參數與 Azure 地圖服務中類似的 API 參數。
 
@@ -471,11 +471,11 @@ Azure 地圖服務提供了 API 供您擷取座標的時區。 Azure 地圖服�
 
 除了這個 API 之外，Azure 地圖服務還提供一些時區 API。 這些 API 會根據時區的名稱或識別碼來轉換時間：
 
-- [**時區 (依識別碼)**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonebyid)：針對指定的 IANA 時區識別碼，傳回目前、以往和未來的時區資訊。
-- [**時區列舉 IANA**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneenumiana)：傳回 IANA 時區識別碼的完整清單。 IANA 服務的更新會在一天內就反映在系統中。
-- [**時區列舉 Windows**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneenumwindows)：傳回 Windows 時區識別碼的完整清單。
-- [**時區 IANA 版本**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezoneianaversion)：傳回 Azure 地圖服務所用的目前 IANA 版本號碼。
-- [**Windows 轉 IANA 時區**](https://docs.microsoft.com/rest/api/maps/timezone/gettimezonewindowstoiana)：在給定有效 Windows 時區識別碼的情況下，傳回對應的 IANA 識別碼。 單一 Windows 識別碼可能會傳回多個 IANA 識別碼。
+- [**時區 (依識別碼)**](/rest/api/maps/timezone/gettimezonebyid)：針對指定的 IANA 時區識別碼，傳回目前、以往和未來的時區資訊。
+- [**時區列舉 IANA**](/rest/api/maps/timezone/gettimezoneenumiana)：傳回 IANA 時區識別碼的完整清單。 IANA 服務的更新會在一天內就反映在系統中。
+- [**時區列舉 Windows**](/rest/api/maps/timezone/gettimezoneenumwindows)：傳回 Windows 時區識別碼的完整清單。
+- [**時區 IANA 版本**](/rest/api/maps/timezone/gettimezoneianaversion)：傳回 Azure 地圖服務所用的目前 IANA 版本號碼。
+- [**Windows 轉 IANA 時區**](/rest/api/maps/timezone/gettimezonewindowstoiana)：在給定有效 Windows 時區識別碼的情況下，傳回對應的 IANA 識別碼。 單一 Windows 識別碼可能會傳回多個 IANA 識別碼。
 
 ## <a name="client-libraries"></a>用戶端程式庫
 
