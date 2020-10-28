@@ -7,14 +7,14 @@ author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/01/2020
+ms.date: 10/26/2020
 ms.custom: references_regions
-ms.openlocfilehash: 2dc7458dd905ff84455927c81b4ea93765d4f5cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdc0ae3fef2fb70b7372ab4fb28497ea6a6400a4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88928814"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635427"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>在 Azure 認知搜尋中設定客戶管理的金鑰進行資料加密
 
@@ -24,7 +24,10 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 
 使用客戶管理的金鑰進行加密時，會在建立這些物件時套用至個別的索引或同義字地圖，而不會在搜尋服務層級本身指定。 只有新的物件可以加密。 您無法加密已存在的內容。
 
-金鑰不一定要位於相同的金鑰保存庫中。 單一搜尋服務可以裝載多個加密的索引或同義字對應，每個都使用自己的客戶管理加密金鑰進行加密，並儲存在不同的金鑰保存庫中。 您也可以在相同的服務中，使用客戶管理的金鑰來加密索引和同義字對應。 
+金鑰不一定要位於相同的金鑰保存庫中。 單一搜尋服務可以裝載多個加密的索引或同義字對應，每個都使用自己的客戶管理加密金鑰進行加密，並儲存在不同的金鑰保存庫中。 您也可以在相同的服務中，使用客戶管理的金鑰來加密索引和同義字對應。
+
+>[!Important]
+> 如果您執行客戶管理的金鑰，請務必在例行金鑰保存庫金鑰的例行輪替期間遵循嚴格的程式，並 Active Directory 應用程式秘密和註冊。 在刪除舊的內容之前，請一律更新所有加密的內容，以使用新的秘密和金鑰。 如果您錯過這個步驟，您的內容就無法解密。
 
 ## <a name="double-encryption"></a>雙重加密
 
@@ -40,22 +43,30 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 
 ## <a name="prerequisites"></a>必要條件
 
-在此範例中，會使用下列服務和服務。 
+此範例會使用下列工具和服務。 
 
-+ [建立 Azure 認知搜尋服務](search-create-service-portal.md)，或[尋找現有服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 
++ [建立認知搜尋服務](search-create-service-portal.md) 或 [尋找現有](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)的辨識項。 
 
-+ [建立 Azure Key Vault 資源](../key-vault/secrets/quick-create-portal.md#create-a-vault) ，或在與 Azure 認知搜尋相同的訂用帳戶中尋找現有的保存庫。 這項功能具有相同的訂用帳戶需求。
++ [建立 Azure Key Vault 資源](../key-vault/secrets/quick-create-portal.md#create-a-vault) 或尋找現有資源。 Key Vault 和認知搜尋都必須位於相同的訂用帳戶中。 金鑰保存庫必須啟用虛 **刪除** 和 **清除保護** 。
 
-+ [Azure PowerShell](/powershell/azure/) 或 [Azure CLI](/cli/azure/install-azure-cli) 用於設定工作。
++ [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) 註冊應用程式，並建立應用程式用來驗證的秘密字串。 如果您沒有帳戶，請 [設定一個新的租](../active-directory/develop/quickstart-create-new-tenant.md)使用者。
 
-+ 您可以使用[Postman](search-get-started-postman.md)、 [AZURE POWERSHELL](./search-get-started-powershell.md)和[.net SDK preview](https://aka.ms/search-sdk-preview)來呼叫 REST API，以建立包含加密金鑰參數的索引和同義字地圖。 目前沒有可將索引鍵加入至索引或同義字對應的入口網站支援。
+您應該有可建立加密物件的搜尋應用程式。 在此程式碼中，您將參考金鑰保存庫金鑰，並 Active Directory 註冊資訊。 此程式碼可以是可運作的應用程式，或原型程式碼，例如 [c # 程式碼範例 DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK)。
 
->[!Note]
-> 由於使用客戶管理的金鑰進行加密的本質，如果刪除您的 Azure Key vault 金鑰，Azure 認知搜尋將無法取得您的資料。 若要防止意外刪除 Key Vault 金鑰所造成的資料遺失，必須在金鑰保存庫上啟用虛刪除和清除保護。 預設會啟用虛刪除，因此您只會在刻意停用時才會遇到問題。 預設不會啟用清除保護，但 Azure 認知搜尋 CMK 加密需要它。 如需詳細資訊，請參閱虛 [刪除](../key-vault/general/soft-delete-overview.md) 和 [清除保護](../key-vault/general/soft-delete-overview.md#purge-protection) 概述。
+> [!TIP]
+> 您可以使用 [Postman](search-get-started-postman.md) 或 [AZURE POWERSHELL](./search-get-started-powershell.md) 來呼叫 REST api，以建立包含加密金鑰參數的索引和同義字地圖。 目前沒有可將索引鍵加入至索引或同義字對應的入口網站支援。
 
 ## <a name="1---enable-key-recovery"></a>1-啟用金鑰復原
 
-金鑰保存庫必須啟用虛 **刪除** 和 **清除保護** 。 您可以使用入口網站或下列 PowerShell 或 Azure CLI 命令來設定這些功能。
+由於使用客戶管理的金鑰進行加密的本質，如果刪除您的 Azure Key vault 金鑰，就不會有任何人可以取出您的資料。 若要防止意外刪除 Key Vault 金鑰所造成的資料遺失，必須在金鑰保存庫上啟用虛刪除和清除保護。 預設會啟用虛刪除，因此您只會在刻意停用時才會遇到問題。 預設不會啟用清除保護，但 Azure 認知搜尋 CMK 加密需要它。 如需詳細資訊，請參閱虛 [刪除](../key-vault/general/soft-delete-overview.md) 和 [清除保護](../key-vault/general/soft-delete-overview.md#purge-protection) 概述。
+
+您可以使用入口網站、PowerShell 或 Azure CLI 命令來設定這兩個屬性。
+
+### <a name="using-azure-portal"></a>使用 Azure 入口網站
+
+1. 登[入 Azure 入口網站](https://portal.azure.com)，然後開啟您的金鑰保存庫總覽頁面。
+
+1. 在 [ **概要] 頁面的** [ **基本** 資訊] 下，啟用虛 **刪除** 和 **清除保護** 。
 
 ### <a name="using-powershell"></a>使用 PowerShell
 
@@ -87,98 +98,85 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
 
-```azurecli-interactive
-az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --enable-purge-protection
-```
++ 如果您安裝了 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)，您可以執行下列命令來啟用必要的屬性。
 
-## <a name="2---create-a-new-key"></a>2-建立新的金鑰
+   ```azurecli-interactive
+   az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --enable-purge-protection
+   ```
 
-如果您使用現有的金鑰來加密 Azure 認知搜尋內容，請略過此步驟。
+## <a name="2---create-a-key-in-key-vault"></a>2-在 Key Vault 中建立金鑰
+
+如果您在 Azure Key Vault 中已經有金鑰，請略過此步驟。
 
 1. 登[入 Azure 入口網站](https://portal.azure.com)，然後開啟您的金鑰保存庫總覽頁面。
 
-1. 從左側導覽窗格中選取 [ **金鑰** ] 設定，然後按一下 [ **+ 產生/匯入**]。
+1. 選取左邊的索引 **鍵** ，然後選取 [ **+ 產生/匯入** ]。
 
-1. 在 [建立金鑰]**** 窗格中，從 [選項]**** 清單中選擇您要用來建立金鑰的方法。 您可以 [產生]**** 新的金鑰、[上傳]**** 現有金鑰，或使用 [還原備份]**** 來選取金鑰的備份。
+1. 在 [建立金鑰]  窗格中，從 [選項]  清單中選擇您要用來建立金鑰的方法。 您可以 [產生]  新的金鑰、[上傳]  現有金鑰，或使用 [還原備份]  來選取金鑰的備份。
 
 1. 輸入您的金鑰 **名稱** ，並選擇性地選取其他索引鍵屬性。
 
-1. 按一下 [ **建立** ] 按鈕以開始部署。
+1. 選取 [建立]  以開始部署。
 
-記下金鑰識別碼–這是由 **金鑰值 Uri**、 **金鑰名稱**和 **金鑰版本**所組成。 您將需要這些來定義 Azure 認知搜尋中的加密索引。
- 
-![建立新的金鑰保存庫金鑰](./media/search-manage-encryption-keys/create-new-key-vault-key.png "建立新的金鑰保存庫金鑰")
+1. 記下金鑰識別碼，它是由 **金鑰值 Uri** 、 **金鑰名稱** 和 **金鑰版本** 所組成。 在 Azure 認知搜尋中，您將需要用來定義加密索引的識別碼。
 
-## <a name="3---create-a-service-identity"></a>3-建立服務身分識別
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-key-identifier.png" alt-text="建立新的金鑰保存庫金鑰":::
 
-將身分識別指派給您的搜尋服務，可讓您將 Key Vault 存取權限授與您的搜尋服務。 您的搜尋服務將會使用其身分識別來向 Azure Key vault 進行驗證。
+## <a name="3---register-an-app-in-active-directory"></a>3-在 Active Directory 中註冊應用程式
 
-Azure 認知搜尋支援兩種指派身分識別的方式：受控識別或外部管理的 Azure Active Directory 應用程式。 
+1. 在 [Azure 入口網站](https://portal.azure.com)中，尋找訂用帳戶的 Azure Active Directory 資源。
 
-可能的話，請使用受控識別。 這是將身分識別指派給搜尋服務的最簡單方式，而且在大部分的情況下都應該可以使用。 如果您使用多個索引鍵來編制索引和同義字地圖，或如果您的解決方案是在 disqualifies 身分識別型驗證的分散式架構中，請使用本文結尾所述的 advanced [對外 Azure Active Directory 方法](#aad-app) 。
+1. 在左側的 [ **管理** ] 底下，選取 [ **應用程式註冊** ]，然後選取 [ **新增註冊** ]。
 
- 一般而言，受控識別可讓您的搜尋服務驗證 Azure Key Vault，而不需要在程式碼中儲存認證。 這種受控識別的生命週期會系結至搜尋服務的生命週期，而此服務只能有一個受控識別。 [深入瞭解受控](../active-directory/managed-identities-azure-resources/overview.md)識別。
+1. 為註冊提供名稱，可能是類似于搜尋應用程式名稱的名稱。 選取 [註冊]。
 
-1. 登[入 Azure 入口網站](https://portal.azure.com)，然後開啟您的搜尋服務 [總覽] 頁面。 
+1. 一旦建立應用程式註冊，請複製應用程式識別碼。 您必須將此字串提供給您的應用程式。 
 
-1. 按一下左方流覽窗格中的 [ **識別** ]，將其狀態變更為 [ **開啟**]，然後按一下 [ **儲存**]。
+   如果您正在逐步執行 [DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK)，請將此值貼入檔案中的 **appsettings.js** 。
 
-![啟用受控識別](./media/search-enable-msi/enable-identity-portal.png "啟用受控身分識別")
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-application-id.png" alt-text="建立新的金鑰保存庫金鑰":::
+
+1. 接下來，選取左側 **& 秘密的憑證** 。
+
+1. 選取 [新增用戶端密碼]。 為秘密提供顯示名稱，然後選取 [ **新增** ]。
+
+1. 複製應用程式秘密。 如果您要逐步執行範例，請將此值貼入檔案中的 **appsettings.js** 。
+
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-application-secret.png" alt-text="建立新的金鑰保存庫金鑰":::
 
 ## <a name="4---grant-key-access-permissions"></a>4-授與金鑰存取權限
 
-若要讓您的搜尋服務使用您的 Key Vault 金鑰，您必須將特定存取權限授與您的搜尋服務。
+在此步驟中，您將在 Key Vault 中建立存取原則。 此原則會為您註冊的應用程式提供 Active Directory 的許可權，以使用客戶管理的金鑰。
 
 您可以在任何指定時間撤銷存取權限。 一旦撤銷之後，任何使用該金鑰保存庫的搜尋服務索引或同義字對應都會變成無法使用。 稍後還原 Key vault 存取權限將會還原 index\synonym 對應存取。 如需詳細資訊，請參閱 [安全存取金鑰保存庫](../key-vault/general/secure-your-key-vault.md)。
 
-1. 登[入 Azure 入口網站](https://portal.azure.com)，然後開啟您的金鑰保存庫總覽頁面。 
+1. 仍在 Azure 入口網站中，開啟您的金鑰保存庫 **總覽** 頁面。 
 
-1. 從左側導覽窗格中選取 [ **存取原則** ] 設定，然後按一下 [ **+ 加入新**的]。
+1. 選取左側的 **存取原則** ，然後選取 [ **+ 新增存取原則** ]。
 
-   ![新增金鑰保存庫存取原則](./media/search-manage-encryption-keys/add-new-key-vault-access-policy.png "新增金鑰保存庫存取原則")
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-add-access-policy.png" alt-text="建立新的金鑰保存庫金鑰":::
 
-1. 按一下 [ **選取主體** ]，然後選取您的 Azure 認知搜尋服務。 您可以依名稱或在啟用受控識別之後所顯示的物件識別碼來搜尋它。
+1. 選擇 [ **選取主體** ]，然後選取您向 Active Directory 註冊的應用程式。 您可以依名稱搜尋它。
 
-   ![選取 key vault 存取原則主體](./media/search-manage-encryption-keys/select-key-vault-access-policy-principal.png "選取 key vault 存取原則主體")
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-access-policy-permissions.png" alt-text="建立新的金鑰保存庫金鑰":::
 
-1. 按一下 [ **金鑰許可權** ]，然後選取 [ *取得*]、[解除包裝 *金鑰* 和 *包裝金鑰*]。 您可以使用 *Azure Data Lake Storage 或 Azure 儲存體* 範本，快速選取所需的許可權。
+1. 在 [ **金鑰許可權** ] 中，選擇 [ *取得* ]、[解除包裝 *金鑰* 和 *包裝金鑰* ]。
 
-   您必須使用下列 [存取權限](../key-vault/keys/about-keys.md#key-operations)來授與 Azure 認知搜尋：
+1. 在 [ **秘密許可權** ] 中，選取 [ *取得* ]。
 
-   * *Get* -允許您的搜尋服務在 Key Vault 中取出金鑰的公開部分
-   * *包裝金鑰* -允許您的搜尋服務使用您的金鑰來保護內部加密金鑰
-   * 解除包裝*金鑰*-允許您的搜尋服務使用您的金鑰來解除包裝內部加密金鑰
+1. 在 [ **憑證許可權** ] 中，選取 [ *取得* ]。
 
-   ![選取 key vault 存取原則金鑰許可權](./media/search-manage-encryption-keys/select-key-vault-access-policy-key-permissions.png "選取 key vault 存取原則金鑰許可權")
-
-1. 若為 **秘密許可權**，請選取 [ *取得*]。
-
-1. 針對 [ **憑證許可權**]，選取 [ *取得*]。
-
-1. 按一下 **[確定]** 並 **儲存** 存取原則變更。
+1. 選取 [ **新增** ]，然後按一下 [ **儲存** ]。
 
 > [!Important]
-> Azure 認知搜尋中的加密內容設定為使用特定的 Azure Key Vault 金鑰搭配特定 **版本**。 如果您變更索引鍵或版本，則必須先更新索引或同義字對應，才能使用新的 key\version， **然後再** 刪除先前的 key\version。 如果無法這樣做，將會導致無法使用索引或同義字地圖，當金鑰存取遺失時，您將無法解密內容。   
+> Azure 認知搜尋中的加密內容設定為使用特定的 Azure Key Vault 金鑰搭配特定 **版本** 。 如果您變更索引鍵或版本，則必須先更新索引或同義字對應，才能使用新的 key\version， **然後再** 刪除先前的 key\version。 如果無法這樣做，將會導致無法使用索引或同義字地圖，當金鑰存取遺失時，您將無法解密內容。
 
 ## <a name="5---encrypt-content"></a>5-加密內容
 
-若要在索引或同義字地圖上加入客戶管理的金鑰，您必須使用 [搜尋 REST API](/rest/api/searchservice/) 或 SDK。 入口網站不會公開同義字地圖或加密屬性。 當您使用有效的 API 時，索引和同義字對應都支援最上層的 **encryptionKey** 屬性。 
+若要在索引或同義字地圖上加入客戶管理的金鑰，請使用 REST API 或 SDK 來建立其定義包含的物件 `encryptionKey` 。
 
-使用金鑰保存 **庫 Uri**、金鑰 **名稱** 和金鑰 **版本** 的金鑰保存庫金鑰，建立 **encryptionKey** 定義，如下所示：
+這個範例會使用 REST API，以及 Azure Key Vault 和 Azure Active Directory 的值：
 
-```json
-{
-  "encryptionKey": {
-    "keyVaultUri": "https://demokeyvault.vault.azure.net",
-    "keyVaultKeyName": "myEncryptionKey",
-    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660"
-  }
-}
-```
-> [!Note] 
-> 這些金鑰保存庫的詳細資料都不會被視為秘密，而且可以藉由流覽至 Azure 入口網站中相關的 Azure Key Vault 金鑰頁面來輕鬆取出。
-
-如果您使用 AAD 應用程式來 Key Vault 驗證，而不是使用受控識別，請將 AAD 應用程式 **存取** 認證新增至您的加密金鑰： 
 ```json
 {
   "encryptionKey": {
@@ -193,8 +191,16 @@ Azure 認知搜尋支援兩種指派身分識別的方式：受控識別或外�
 }
 ```
 
-## <a name="example-index-encryption"></a>範例：索引加密
-若要透過 REST API 建立新索引的詳細資料，請參閱 [Create index (Azure 認知搜尋 REST API) ](/rest/api/searchservice/create-index)，其中唯一的差別在於將加密金鑰詳細資料指定為索引定義的一部分： 
+> [!Note]
+> 這些金鑰保存庫的詳細資料都不會被視為秘密，而且可以藉由流覽至 Azure 入口網站中相關的 Azure Key Vault 金鑰頁面來輕鬆取出。
+
+## <a name="rest-examples"></a>REST 範例
+
+本節顯示加密索引和同義字對應的完整 JSON
+
+### <a name="index-encryption"></a>索引加密
+
+您可以在 [Create index (REST API) ](/rest/api/searchservice/create-index)找到透過 REST API 建立新索引的詳細資料，其中唯一的差別在於將加密金鑰詳細資料指定為索引定義的一部分：
 
 ```json
 {
@@ -211,18 +217,23 @@ Azure 認知搜尋支援兩種指派身分識別的方式：受控識別或外�
   {"name": "Rating", "type": "Edm.Double", "filterable": true, "sortable": true, "facetable": true},
   {"name": "Location", "type": "Edm.GeographyPoint", "filterable": true, "sortable": true},
  ],
- "encryptionKey": {
-   "keyVaultUri": "https://demokeyvault.vault.azure.net",
-   "keyVaultKeyName": "myEncryptionKey",
-   "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660"
- }
+  "encryptionKey": {
+    "keyVaultUri": "https://demokeyvault.vault.azure.net",
+    "keyVaultKeyName": "myEncryptionKey",
+    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+    "accessCredentials": {
+      "applicationId": "00000000-0000-0000-0000-000000000000",
+      "applicationSecret": "myApplicationSecret"
+    }
+  }
 }
 ```
+
 您現在可以傳送索引建立要求，然後開始正常使用索引。
 
-## <a name="example-synonym-map-encryption"></a>範例：同義字地圖加密
+### <a name="synonym-map-encryption"></a>同義字地圖加密
 
-若要透過 REST API 建立新同義字地圖的詳細資料，請參閱 [建立同義字地圖 (Azure 認知搜尋 REST API) ](/rest/api/searchservice/create-synonym-map)，其中唯一的差別在於將加密金鑰詳細資料指定為同義字對應定義的一部分： 
+若要透過 REST API 建立新同義字地圖的詳細資料，請參閱 [Create 同義字 map (REST API) ](/rest/api/searchservice/create-synonym-map)，其中唯一的差別在於將加密金鑰詳細資料指定為同義字對應定義的一部分： 
 
 ```json
 {   
@@ -233,39 +244,55 @@ Azure 認知搜尋支援兩種指派身分識別的方式：受控識別或外�
   "encryptionKey": {
     "keyVaultUri": "https://demokeyvault.vault.azure.net",
     "keyVaultKeyName": "myEncryptionKey",
-    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660"
+    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+    "activeDirectoryAccessCredentials": {
+      "applicationId": "00000000-0000-0000-0000-000000000000",
+      "applicationSecret": "myApplicationSecret"
+    }
   }
 }
 ```
+
 您現在可以傳送同義字對應建立要求，然後正常地開始使用它。
 
->[!Important] 
-> 雖然 **encryptionKey** 無法新增至現有的 Azure 認知搜尋索引或同義字對應，但它可能會藉由提供三個金鑰保存庫詳細資料的不同值來更新 (例如，更新金鑰版本) 。 變更為新的 Key Vault 金鑰或新的金鑰版本時，任何使用該金鑰的 Azure 認知搜尋索引或同義字對應都必須先更新為使用新的 key\version， **才能** 刪除先前的 key\version。 如果無法這樣做，將無法使用索引或同義字對應，因為它在金鑰存取遺失之後將無法解密內容。   
-> 稍後還原金鑰保存庫存取權限將會還原內容存取。
-
-## <a name="advanced-use-an-externally-managed-azure-active-directory-application"></a><a name="aad-app"></a> Advanced：使用外部受控的 Azure Active Directory 應用程式
-
-如果無法使用受控識別，您可以建立 Azure Active Directory 的應用程式，其中包含 Azure 認知搜尋服務的安全性主體。 具體而言，在這些情況下，受控識別並非可行：
-
-* 您無法直接將您的搜尋服務存取權限授與金鑰保存庫 (例如，如果搜尋服務與 Azure Key Vault) 位於不同的 Active Directory 租使用者中。
-
-* 需要單一搜尋服務來裝載多個加密 indexes\synonym 對應，每個都使用不同金鑰保存庫中的不同金鑰，每個金鑰保存庫都必須使用不同的身分 **識別** 來進行驗證。 如果不需要使用不同的身分識別來管理不同的金鑰保存庫，請考慮使用上述的受控識別選項。  
-
-為了配合這類拓撲，Azure 認知搜尋支援使用 Azure Active Directory (AAD) 應用程式，在您的搜尋服務與 Key Vault 之間進行驗證。    
-若要在入口網站中建立 AAD 應用程式：
-
-1. [建立 Azure Active Directory 應用程式](../active-directory/develop/howto-create-service-principal-portal.md)。
-
-1. 取得建立加密索引所需的[應用程式識別碼和驗證金鑰](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。 您必須提供的值包括 **應用程式識別碼** 和 **驗證金鑰**。
-
 >[!Important]
-> 當您決定使用 AAD 應用程式進行驗證，而不是使用受控識別時，請考慮 Azure 認知搜尋不會授權管理您的 AAD 應用程式，而是由您負責管理您的 AAD 應用程式，例如定期輪替應用程式驗證金鑰。
-> 變更 AAD 應用程式或其驗證金鑰時，使用該應用程式的任何 Azure 認知搜尋索引或同義字對應都必須先更新為使用新的應用 **程式 ID\key，然後再刪除** 先前的應用程式或其授權金鑰，以及撤銷您的 Key Vault 存取權。
-> 如果無法這樣做，將無法使用索引或同義字對應，因為它在金鑰存取遺失之後將無法解密內容。
+> 雖然 `encryptionKey` 無法新增至現有的搜尋索引或同義字對應，但它可能會藉由提供三個金鑰保存庫詳細資料的不同值來更新 (例如，更新金鑰版本) 。 變更為新的 Key Vault 金鑰或新的金鑰版本時，必須先更新使用該金鑰的任何搜尋索引或同義字對應，才能使用新的 key\version， **然後再** 刪除先前的 key\version。 如果無法這樣做，將無法使用索引或同義字對應，因為它在金鑰存取遺失之後將無法解密內容。 雖然稍後還原金鑰保存庫存取權限會還原內容存取。
+
+## <a name="simpler-alternative-trusted-service"></a>更簡單的替代方法：信任的服務
+
+視租使用者設定和驗證需求而定，您可能可以實行更簡單的方法來存取金鑰保存庫金鑰。 您可以為其啟用系統管理的身分識別，而不是建立和使用 Active Directory 應用程式，而是讓搜尋服務成為受信任的服務。 然後，您會使用受信任的搜尋服務做為安全性原則，而不是 AD 註冊的應用程式，以存取金鑰保存庫金鑰。
+
+這種方法可讓您略過應用程式註冊和應用程式秘密的步驟，並將加密金鑰定義簡化為只 (URI、保存庫名稱、金鑰版本) 的金鑰保存庫元件。
+
+一般而言，受控識別可讓您的搜尋服務驗證 Azure Key Vault，而不需要在程式碼中儲存 (ApplicationID 或 ApplicationSecret) 的認證。 這種受控識別的生命週期會系結至搜尋服務的生命週期，而此服務只能有一個受控識別。 如需受控識別如何運作的詳細資訊，請參閱 [什麼是適用于 Azure 資源的受控](../active-directory/managed-identities-azure-resources/overview.md)識別。
+
+1. 將您的搜尋服務設為受信任的服務。
+
+   ![開啟系統指派的受控識別](./media/search-managed-identities/turn-on-system-assigned-identity.png "開啟系統指派的受控識別")
+
+1. 在 Azure Key Vault 中設定存取原則時，請選擇受信任的搜尋服務作為原則 (，而不是以 AD 註冊的應用程式) 。 指派相同的許可權 (多個取得、包裝、解除包裝) ，如同授與存取金鑰許可權步驟中的指示。
+
+1. 使用 `encryptionKey` 省略 Active Directory 屬性的簡化結構。
+
+    ```json
+    {
+      "encryptionKey": {
+        "keyVaultUri": "https://demokeyvault.vault.azure.net",
+        "keyVaultKeyName": "myEncryptionKey",
+        "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660"
+      }
+    }
+    ```
+
+防止您採用這種簡化方法的條件包括：
+
++ 您無法直接將您的搜尋服務存取權限授與金鑰保存庫 (例如，如果搜尋服務與 Azure Key Vault) 位於不同的 Active Directory 租使用者中。
+
++ 需要單一搜尋服務來裝載多個加密 indexes\synonym 對應，每個都使用不同金鑰保存庫中的不同金鑰，每個金鑰保存庫都必須使用不同的身分 **識別** 來進行驗證。 因為搜尋服務只能有一個受控識別，所以多個身分識別的需求會 disqualifies 您案例的簡化方法。  
 
 ## <a name="work-with-encrypted-content"></a>使用加密的內容
 
-使用 CMK 加密時，您會發現索引和查詢的延遲，因為額外的加密/解密工作。 Azure 認知搜尋不會記錄加密活動，但您可以透過 key vault 記錄來監視金鑰存取權。 建議您在設定金鑰保存庫的過程中 [啟用記錄功能](../key-vault/general/logging.md) 。
+使用 CMK 加密時，您會發現索引和查詢的延遲，因為額外的加密/解密工作。 Azure 認知搜尋不會記錄加密活動，但您可以透過 key vault 記錄來監視金鑰存取權。 建議您在金鑰保存庫設定中 [啟用記錄功能](../key-vault/general/logging.md) 。
 
 預期會在一段時間後進行金鑰輪替。 每當您輪替金鑰時，請務必遵循下列順序：
 

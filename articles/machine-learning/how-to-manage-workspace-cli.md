@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: fd6fc3ee88d63c1d933d3405437ec1bf49e0432e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 45f9f61712903436d63f483673705650f5470b3f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426357"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635944"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 建立 Azure Machine Learning 的工作區
 
@@ -24,9 +24,9 @@ ms.locfileid: "92426357"
 
 ## <a name="prerequisites"></a>必要條件
 
-* **Azure 訂用帳戶**。 如果您沒有訂用帳戶，則可[試用免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
+* **Azure 訂用帳戶** 。 如果您沒有訂用帳戶，則可[試用免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
-* 若要從您的**本機環境**使用本文件中的 CLI 命令，您需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
+* 若要從您的 **本機環境** 使用本文件中的 CLI 命令，您需要 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
 
     如果您使用 [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)，CLI 可透過瀏覽器存取，並在雲端運作。
 
@@ -107,7 +107,7 @@ az group create --name <resource-group-name> --location <location>
 
 ### <a name="automatically-create-required-resources"></a>自動建立所需的資源
 
-若要建立會在其中__自動建立服務__的新工作區，請使用下列命令：
+若要建立會在其中 __自動建立服務__ 的新工作區，請使用下列命令：
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
@@ -150,7 +150,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 * `--pe-auto-approval`：是否應自動核准工作區的私人端點連接。
 * `--pe-resource-group`：要在其中建立私人端點的資源群組。 必須是包含虛擬網路的相同群組。
 * `--pe-vnet-name`：要在其中建立私人端點的現有虛擬網路。
-* `--pe-subnet-name`：要在其中建立私人端點的子網名稱。 預設值是 `default`。
+* `--pe-subnet-name`：要在其中建立私人端點的子網名稱。 預設值為 `default`。
 
 如需有關搭配您的工作區使用私人端點和虛擬網路的詳細資訊，請參閱 [虛擬網路隔離和隱私權總覽](how-to-network-security-overview.md)。
 
@@ -160,18 +160,17 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 
 您可以使用 [提供您自己的金鑰]，而不是使用 Microsoft 管理的金鑰。 這麼做會建立 Azure Cosmos DB 實例，以在您的 Azure 訂用帳戶中儲存計量和中繼資料。 使用 `--cmk-keyvault` 參數來指定包含金鑰的 Azure Key Vault，並 `--resource-cmk-uri` 指定保存庫中金鑰的 URL。
 
-> [!IMPORTANT]
-> 使用 `--cmk-keyvault` 和參數之前 `--resource-cmk-uri` ，您必須先執行下列動作：
->
-> 1. 使用訂用帳戶的參與者許可權，在身分識別和存取管理) 中授權 __Machine Learning 應用程式__ (。
-> 1. 遵循 [設定客戶管理的金鑰](/azure/cosmos-db/how-to-setup-cmk) 的步驟：
->     * 註冊 Azure Cosmos DB 提供者
->     * 建立並設定 Azure Key Vault
->     * 產生金鑰
->
->     您不需要手動建立 Azure Cosmos DB 實例，系統會在工作區建立期間為您建立一個實例。 此 Azure Cosmos DB 實例會根據此模式使用名稱，在個別的資源群組中建立： `<your-resource-group-name>_<GUID>` 。
->
-> 建立工作區之後，就無法變更此設定。 如果您刪除工作區所使用的 Azure Cosmos DB，也必須刪除正在使用該工作區的工作區。
+使用 `--cmk-keyvault` 和參數之前 `--resource-cmk-uri` ，您必須先執行下列動作：
+
+1. 使用訂用帳戶的參與者許可權，在身分識別和存取管理) 中授權 __Machine Learning 應用程式__ (。
+1. 遵循 [設定客戶管理的金鑰](/azure/cosmos-db/how-to-setup-cmk) 的步驟：
+    * 註冊 Azure Cosmos DB 提供者
+    * 建立並設定 Azure Key Vault
+    * 產生金鑰
+
+您不需要手動建立 Azure Cosmos DB 實例，系統會在工作區建立期間為您建立一個實例。 此 Azure Cosmos DB 實例會根據此模式使用名稱，在個別的資源群組中建立： `<your-resource-group-name>_<GUID>` 。
+
+[!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
 若要限制 Microsoft 在您的工作區上收集的資料，請使用 `--hbi-workspace` 參數。 
 
@@ -187,7 +186,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 > [!IMPORTANT]
 > 您不需要指定所有現有的資源。 您可指定一或多個資源。 例如，您可指定現有的儲存體帳戶，且工作區將會建立其他資源。
 
-+ **Azure 儲存體帳戶**：`az storage account show --name <storage-account-name> --query "id"`
++ **Azure 儲存體帳戶** ：`az storage account show --name <storage-account-name> --query "id"`
 
     此命令的回應類似下列文字，這是儲存體帳戶的識別碼：
 
@@ -196,7 +195,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
     > [!IMPORTANT]
     > 如果您想要使用現有的 Azure 儲存體帳戶，它不能是 premium 帳戶 (Premium_LRS 和 Premium_GRS) 。 它也不能有階層命名空間 (用於 Azure Data Lake Storage Gen2) 。 使用工作區的 _預設_ 儲存體帳戶並不支援 premium 儲存體或階層命名空間。 您可以搭配使用 premium 儲存體或階層命名空間與 _非預設_ 儲存體帳戶。
 
-+ **Azure Application Insights**：
++ **Azure Application Insights** ：
 
     1. 安裝 Application Insights 延伸模組：
 
@@ -214,13 +213,13 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 
         `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/microsoft.insights/components/<application-insight-name>"`
 
-+ **Azure Key Vault**：`az keyvault show --name <key-vault-name> --query "ID"`
++ **Azure Key Vault** ：`az keyvault show --name <key-vault-name> --query "ID"`
 
     此命令的回應類似下列文字，這是金鑰保存庫的識別碼：
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"`
 
-+ **Azure Container Registry**：`az acr show --name <acr-name> -g <resource-group-name> --query "id"`
++ **Azure Container Registry** ：`az acr show --name <acr-name> -g <resource-group-name> --query "id"`
 
     此命令的回應類似下列文字，這是容器登錄的識別碼：
 

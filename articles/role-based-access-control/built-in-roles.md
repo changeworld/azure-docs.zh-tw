@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 09/22/2020
+ms.date: 10/23/2020
 ms.custom: generated
-ms.openlocfilehash: 8db16ba415e609827f6b775840f153489702ecca
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 28de993f51b13e973edb0e42f138217cd35ab8dd
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370554"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636692"
 ---
 # <a name="azure-built-in-roles"></a>Azure 內建角色
 
@@ -91,8 +91,8 @@ ms.locfileid: "92370554"
 > | [Azure Kubernetes Service 參與者角色](#azure-kubernetes-service-contributor-role) | 授與讀取和寫入 Azure Kubernetes Service 叢集的存取權 | ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8 |
 > | [Azure Kubernetes Service RBAC 管理員](#azure-kubernetes-service-rbac-admin) | 可讓您管理叢集/命名空間下的所有資源，但更新或刪除資源配額和命名空間除外。 | 3498e952-d568-435e-9b2c-8d77e338d7f7 |
 > | [Azure Kubernetes Service RBAC 叢集管理員](#azure-kubernetes-service-rbac-cluster-admin) | 可讓您管理叢集中的所有資源。 | b1ff04bb-8a4e-4dc4-8eb5-8693973ce19b |
-> | [Azure Kubernetes Service RBAC 讀者](#azure-kubernetes-service-rbac-reader) | 可讓您查看叢集/命名空間中的所有資源，但秘密除外。 | 7f6c6a51-bcf8-42ba-9220-52d62157d7db |
-> | [Azure Kubernetes Service RBAC 寫入器](#azure-kubernetes-service-rbac-writer) | 可讓您更新叢集/命名空間中的所有專案，但資源配額、命名空間、pod 安全性原則、憑證簽署要求、 (叢集) 角色和 (叢集) 角色系結除外。 | a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb |
+> | [Azure Kubernetes Service RBAC 讀者](#azure-kubernetes-service-rbac-reader) | 允許唯讀存取，以查看命名空間中的大部分物件。 它不允許查看角色或角色系結。 此角色不允許您查看秘密，因為讀取秘密的內容可讓您存取命名空間中的 ServiceAccount 認證，這會允許 API 存取做為命名空間中的任何 ServiceAccount () 的許可權擴大形式。 在叢集範圍套用此角色可讓您存取所有命名空間。 | 7f6c6a51-bcf8-42ba-9220-52d62157d7db |
+> | [Azure Kubernetes Service RBAC 寫入器](#azure-kubernetes-service-rbac-writer) | 允許對命名空間中大部分物件的讀取/寫入存取。此角色不允許查看或修改角色或角色系結。 不過，此角色可讓您存取秘密，並以命名空間中的任何 ServiceAccount 來執行 pod，讓它可以用來取得命名空間中任何 ServiceAccount 的 API 存取層級。 在叢集範圍套用此角色可讓您存取所有命名空間。 | a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb |
 > | **資料庫** |  |  |
 > | [Cosmos DB 帳戶讀者角色](#cosmos-db-account-reader-role) | 可以讀取 Azure Cosmos DB 帳戶資料。 請參閱 [DocumentDB 帳戶參與者](#documentdb-account-contributor)以管理 Azure Cosmos DB 帳戶。 | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
 > | [Cosmos DB 操作員](#cosmos-db-operator) | 可讓您管理 Azure Cosmos DB 帳戶，但無法存取其中的資料。 防止存取帳戶金鑰和連接字串。 | 230815da-be43-4aae-9cb4-875f7bd000aa |
@@ -3274,7 +3274,7 @@ ACR 隔離資料寫入者
 
 ### <a name="azure-kubernetes-service-rbac-reader"></a>Azure Kubernetes Service RBAC 讀者
 
-可讓您查看叢集/命名空間中的所有資源，但秘密除外。 [深入了解](../aks/manage-azure-rbac.md)
+允許唯讀存取，以查看命名空間中的大部分物件。 它不允許查看角色或角色系結。 此角色不允許您查看秘密，因為讀取秘密的內容可讓您存取命名空間中的 ServiceAccount 認證，這會允許 API 存取做為命名空間中的任何 ServiceAccount () 的許可權擴大形式。 在叢集範圍套用此角色可讓您存取所有命名空間。 [深入了解](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -3286,22 +3286,47 @@ ACR 隔離資料寫入者
 > | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | 取得訂用帳戶清單。 |
 > | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
-> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 列出受控叢集的 clusterUser 認證 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/read |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/controllerrevisions/read | 讀取 controllerrevisions |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/daemonsets/read | 讀取 daemonset |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/deployments/read | 讀取部署 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/replicasets/read | 讀取 replicaset |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/statefulsets/read | 讀取 statefulset |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/autoscaling/horizontalpodautoscalers/read | 讀取 horizontalpodautoscalers |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/batch/cronjobs/read | 讀取 cronjobs |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/batch/jobs/read | 讀取作業 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/configmaps/read | 讀取 configmaps |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/endpoints/read | 讀取端點 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/events.k8s.io/events/read | 讀取事件 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/events/read | 讀取事件 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/extensions/daemonsets/read | 讀取 daemonset |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/extensions/deployments/read | 讀取部署 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/extensions/ingresses/read | 讀取 ingresses |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/extensions/networkpolicies/read | 讀取 networkpolicies |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/extensions/replicasets/read | 讀取 replicaset |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/limitranges/read | 讀取 limitranges |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/namespaces/read | 讀取命名空間 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/networking.k8s.io/ingresses/read | 讀取 ingresses |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/networking.k8s.io/networkpolicies/read | 讀取 networkpolicies |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/persistentvolumeclaims/read | 讀取 persistentvolumeclaims |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/pods/read | 讀取 pod |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/policy/poddisruptionbudgets/read | 讀取 poddisruptionbudgets |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/replicationcontrollers/read | 讀取 replicationcontrollers |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/replicationcontrollers/read | 讀取 replicationcontrollers |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/read | 讀取 resourcequotas |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/serviceaccounts/read | 讀取 serviceaccounts |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/services/read | 讀取服務 |
 > | **NotDataActions** |  |
-> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/rbac.authorization.k8s.io/*/read |  |
-> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/rbac.authorization.k8s.io/*/write |  |
-> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/secrets/* |  |
+> | 無 |  |
 
 ```json
 {
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you view all resources in cluster/namespace, except secrets.",
+  "description": "Allows read-only access to see most objects in a namespace. It does not allow viewing roles or role bindings. This role does not allow viewing Secrets, since reading the contents of Secrets enables access to ServiceAccount credentials in the namespace, which would allow API access as any ServiceAccount in the namespace (a form of privilege escalation). Applying this role at cluster scope will give access across all namespaces.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/7f6c6a51-bcf8-42ba-9220-52d62157d7db",
   "name": "7f6c6a51-bcf8-42ba-9220-52d62157d7db",
   "permissions": [
@@ -3313,18 +3338,41 @@ ACR 隔離資料寫入者
         "Microsoft.Resources/subscriptions/operationresults/read",
         "Microsoft.Resources/subscriptions/read",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
-        "Microsoft.Support/*",
-        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+        "Microsoft.Support/*"
       ],
       "notActions": [],
       "dataActions": [
-        "Microsoft.ContainerService/managedClusters/*/read"
+        "Microsoft.ContainerService/managedClusters/apps/controllerrevisions/read",
+        "Microsoft.ContainerService/managedClusters/apps/daemonsets/read",
+        "Microsoft.ContainerService/managedClusters/apps/deployments/read",
+        "Microsoft.ContainerService/managedClusters/apps/replicasets/read",
+        "Microsoft.ContainerService/managedClusters/apps/statefulsets/read",
+        "Microsoft.ContainerService/managedClusters/autoscaling/horizontalpodautoscalers/read",
+        "Microsoft.ContainerService/managedClusters/batch/cronjobs/read",
+        "Microsoft.ContainerService/managedClusters/batch/jobs/read",
+        "Microsoft.ContainerService/managedClusters/configmaps/read",
+        "Microsoft.ContainerService/managedClusters/endpoints/read",
+        "Microsoft.ContainerService/managedClusters/events.k8s.io/events/read",
+        "Microsoft.ContainerService/managedClusters/events/read",
+        "Microsoft.ContainerService/managedClusters/extensions/daemonsets/read",
+        "Microsoft.ContainerService/managedClusters/extensions/deployments/read",
+        "Microsoft.ContainerService/managedClusters/extensions/ingresses/read",
+        "Microsoft.ContainerService/managedClusters/extensions/networkpolicies/read",
+        "Microsoft.ContainerService/managedClusters/extensions/replicasets/read",
+        "Microsoft.ContainerService/managedClusters/limitranges/read",
+        "Microsoft.ContainerService/managedClusters/namespaces/read",
+        "Microsoft.ContainerService/managedClusters/networking.k8s.io/ingresses/read",
+        "Microsoft.ContainerService/managedClusters/networking.k8s.io/networkpolicies/read",
+        "Microsoft.ContainerService/managedClusters/persistentvolumeclaims/read",
+        "Microsoft.ContainerService/managedClusters/pods/read",
+        "Microsoft.ContainerService/managedClusters/policy/poddisruptionbudgets/read",
+        "Microsoft.ContainerService/managedClusters/replicationcontrollers/read",
+        "Microsoft.ContainerService/managedClusters/replicationcontrollers/read",
+        "Microsoft.ContainerService/managedClusters/resourcequotas/read",
+        "Microsoft.ContainerService/managedClusters/serviceaccounts/read",
+        "Microsoft.ContainerService/managedClusters/services/read"
       ],
-      "notDataActions": [
-        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/read",
-        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/write",
-        "Microsoft.ContainerService/managedClusters/secrets/*"
-      ]
+      "notDataActions": []
     }
   ],
   "roleName": "Azure Kubernetes Service RBAC Reader",
@@ -3335,7 +3383,7 @@ ACR 隔離資料寫入者
 
 ### <a name="azure-kubernetes-service-rbac-writer"></a>Azure Kubernetes Service RBAC 寫入器
 
-可讓您更新叢集/命名空間中的所有專案，但資源配額、命名空間、pod 安全性原則、憑證簽署要求、 (叢集) 角色和 (叢集) 角色系結除外。 [深入了解](../aks/manage-azure-rbac.md)
+允許對命名空間中大部分物件的讀取/寫入存取。此角色不允許查看或修改角色或角色系結。 不過，此角色可讓您存取秘密，並以命名空間中的任何 ServiceAccount 來執行 pod，讓它可以用來取得命名空間中任何 ServiceAccount 的 API 存取層級。 在叢集範圍套用此角色可讓您存取所有命名空間。 [深入了解](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -3347,26 +3395,48 @@ ACR 隔離資料寫入者
 > | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | 取得訂用帳戶清單。 |
 > | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
-> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 列出受控叢集的 clusterUser 認證 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/read |  |
-> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/write |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/controllerrevisions/read | 讀取 controllerrevisions |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/daemonsets/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/deployments/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/replicasets/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/statefulsets/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/autoscaling/horizontalpodautoscalers/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/batch/cronjobs/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/batch/jobs/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/configmaps/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/endpoints/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/events.k8s.io/events/read | 讀取事件 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/events/read | 讀取事件 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/extensions/daemonsets/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/extensions/deployments/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/extensions/ingresses/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/extensions/networkpolicies/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/extensions/replicasets/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/limitranges/read | 讀取 limitranges |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/namespaces/read | 讀取命名空間 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/networking.k8s.io/ingresses/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/networking.k8s.io/networkpolicies/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/persistentvolumeclaims/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/pods/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/policy/poddisruptionbudgets/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/replicationcontrollers/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/replicationcontrollers/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/read | 讀取 resourcequotas |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/secrets/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/serviceaccounts/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/services/* |  |
 > | **NotDataActions** |  |
-> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/rbac.authorization.k8s.io/*/read |  |
-> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/rbac.authorization.k8s.io/*/write |  |
-> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/namespaces/write | 寫入命名空間 |
-> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/write | 寫入 resourcequotas |
-> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/certificates.k8s.io/certificatesigningrequests/write | 寫入 certificatesigningrequests |
-> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/policy/podsecuritypolicies/write | 寫入 podsecuritypolicies |
+> | 無 |  |
 
 ```json
 {
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you update everything in cluster/namespace, except resource quotas, namespaces, pod security policies, certificate signing requests, (cluster)roles and (cluster)role bindings.",
+  "description": "Allows read/write access to most objects in a namespace.This role does not allow viewing or modifying roles or role bindings. However, this role allows accessing Secrets and running Pods as any ServiceAccount in the namespace, so it can be used to gain the API access levels of any ServiceAccount in the namespace. Applying this role at cluster scope will give access across all namespaces.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb",
   "name": "a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb",
   "permissions": [
@@ -3378,22 +3448,42 @@ ACR 隔離資料寫入者
         "Microsoft.Resources/subscriptions/operationresults/read",
         "Microsoft.Resources/subscriptions/read",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
-        "Microsoft.Support/*",
-        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+        "Microsoft.Support/*"
       ],
       "notActions": [],
       "dataActions": [
-        "Microsoft.ContainerService/managedClusters/*/read",
-        "Microsoft.ContainerService/managedClusters/*/write"
+        "Microsoft.ContainerService/managedClusters/apps/controllerrevisions/read",
+        "Microsoft.ContainerService/managedClusters/apps/daemonsets/*",
+        "Microsoft.ContainerService/managedClusters/apps/deployments/*",
+        "Microsoft.ContainerService/managedClusters/apps/replicasets/*",
+        "Microsoft.ContainerService/managedClusters/apps/statefulsets/*",
+        "Microsoft.ContainerService/managedClusters/autoscaling/horizontalpodautoscalers/*",
+        "Microsoft.ContainerService/managedClusters/batch/cronjobs/*",
+        "Microsoft.ContainerService/managedClusters/batch/jobs/*",
+        "Microsoft.ContainerService/managedClusters/configmaps/*",
+        "Microsoft.ContainerService/managedClusters/endpoints/*",
+        "Microsoft.ContainerService/managedClusters/events.k8s.io/events/read",
+        "Microsoft.ContainerService/managedClusters/events/read",
+        "Microsoft.ContainerService/managedClusters/extensions/daemonsets/*",
+        "Microsoft.ContainerService/managedClusters/extensions/deployments/*",
+        "Microsoft.ContainerService/managedClusters/extensions/ingresses/*",
+        "Microsoft.ContainerService/managedClusters/extensions/networkpolicies/*",
+        "Microsoft.ContainerService/managedClusters/extensions/replicasets/*",
+        "Microsoft.ContainerService/managedClusters/limitranges/read",
+        "Microsoft.ContainerService/managedClusters/namespaces/read",
+        "Microsoft.ContainerService/managedClusters/networking.k8s.io/ingresses/*",
+        "Microsoft.ContainerService/managedClusters/networking.k8s.io/networkpolicies/*",
+        "Microsoft.ContainerService/managedClusters/persistentvolumeclaims/*",
+        "Microsoft.ContainerService/managedClusters/pods/*",
+        "Microsoft.ContainerService/managedClusters/policy/poddisruptionbudgets/*",
+        "Microsoft.ContainerService/managedClusters/replicationcontrollers/*",
+        "Microsoft.ContainerService/managedClusters/replicationcontrollers/*",
+        "Microsoft.ContainerService/managedClusters/resourcequotas/read",
+        "Microsoft.ContainerService/managedClusters/secrets/*",
+        "Microsoft.ContainerService/managedClusters/serviceaccounts/*",
+        "Microsoft.ContainerService/managedClusters/services/*"
       ],
-      "notDataActions": [
-        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/read",
-        "Microsoft.ContainerService/managedClusters/rbac.authorization.k8s.io/*/write",
-        "Microsoft.ContainerService/managedClusters/namespaces/write",
-        "Microsoft.ContainerService/managedClusters/resourcequotas/write",
-        "Microsoft.ContainerService/managedClusters/certificates.k8s.io/certificatesigningrequests/write",
-        "Microsoft.ContainerService/managedClusters/policy/podsecuritypolicies/write"
-      ]
+      "notDataActions": []
     }
   ],
   "roleName": "Azure Kubernetes Service RBAC Writer",
@@ -3691,10 +3781,8 @@ ACR 隔離資料寫入者
 > | [/ManagedInstances/databases/vulnerabilityAssessments/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/ManagedInstances/securityAlertPolicies/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/ManagedInstances/vulnerabilityAssessments/*](resource-provider-operations.md#microsoftsql) |  |
-> | [/Servers/databases/auditingPolicies/*](resource-provider-operations.md#microsoftsql) | 編輯稽核原則 |
 > | [/Servers/databases/auditingSettings/*](resource-provider-operations.md#microsoftsql) | 編輯稽核設定 |
 > | [Microsoft .Sql](resource-provider-operations.md#microsoftsql)/servers/databases/auditRecords/read | 擷取資料庫 Blob 稽核記錄 |
-> | [/Servers/databases/connectionPolicies/*](resource-provider-operations.md#microsoftsql) | 編輯連接原則 |
 > | [/Servers/databases/currentSensitivityLabels/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/Servers/databases/dataMaskingPolicies/*](resource-provider-operations.md#microsoftsql) | 編輯資料遮罩原則 |
 > | [/Servers/databases/extendedAuditingSettings/*](resource-provider-operations.md#microsoftsql) |  |
@@ -3744,10 +3832,8 @@ ACR 隔離資料寫入者
         "Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/*",
         "Microsoft.Sql/managedInstances/securityAlertPolicies/*",
         "Microsoft.Sql/managedInstances/vulnerabilityAssessments/*",
-        "Microsoft.Sql/servers/databases/auditingPolicies/*",
         "Microsoft.Sql/servers/databases/auditingSettings/*",
         "Microsoft.Sql/servers/databases/auditRecords/read",
-        "Microsoft.Sql/servers/databases/connectionPolicies/*",
         "Microsoft.Sql/servers/databases/currentSensitivityLabels/*",
         "Microsoft.Sql/servers/databases/dataMaskingPolicies/*",
         "Microsoft.Sql/servers/databases/extendedAuditingSettings/*",
@@ -3794,7 +3880,8 @@ ACR 隔離資料寫入者
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | 讀取計量 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/read | 讀取計量定義 |
 > | **NotActions** |  |
-> | 無 |  |
+> | [Microsoft .Sql](resource-provider-operations.md#microsoftsql)/managedInstances/azureADOnlyAuthentications/delete | 只 Azure Active Directory authentication 物件刪除特定的受管理伺服器 |
+> | [Microsoft .Sql](resource-provider-operations.md#microsoftsql)/managedInstances/azureADOnlyAuthentications/write | 新增或更新特定的受管理伺服器 Azure Active Directory 僅限驗證物件 |
 > | **DataActions** |  |
 > | 無 |  |
 > | **NotDataActions** |  |
@@ -3827,7 +3914,10 @@ ACR 隔離資料寫入者
         "Microsoft.Insights/metrics/read",
         "Microsoft.Insights/metricDefinitions/read"
       ],
-      "notActions": [],
+      "notActions": [
+        "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/delete",
+        "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/write"
+      ],
       "dataActions": [],
       "notDataActions": []
     }
@@ -3861,13 +3951,10 @@ ACR 隔離資料寫入者
 > | [/ManagedInstances/securityAlertPolicies/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/ManagedInstances/databases/transparentDataEncryption/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/ManagedInstances/vulnerabilityAssessments/*](resource-provider-operations.md#microsoftsql) |  |
-> | [/Servers/auditingPolicies/*](resource-provider-operations.md#microsoftsql) | 建立和管理 SQL Server 稽核原則 |
 > | [/Servers/auditingSettings/*](resource-provider-operations.md#microsoftsql) | 建立和管理 SQL Server 稽核設定 |
 > | [Microsoft .Sql](resource-provider-operations.md#microsoftsql)/servers/extendedAuditingSettings/read | 擷取指定伺服器上所設定之擴充伺服器 Blob 稽核原則的詳細資料 |
-> | [/Servers/databases/auditingPolicies/*](resource-provider-operations.md#microsoftsql) | 建立和管理 SQL Server 資料庫稽核原則 |
 > | [/Servers/databases/auditingSettings/*](resource-provider-operations.md#microsoftsql) | 建立和管理 SQL Server 資料庫稽核設定 |
 > | [Microsoft .Sql](resource-provider-operations.md#microsoftsql)/servers/databases/auditRecords/read | 擷取資料庫 Blob 稽核記錄 |
-> | [/Servers/databases/connectionPolicies/*](resource-provider-operations.md#microsoftsql) | 建立和管理 SQL Server 資料庫連接原則 |
 > | [/Servers/databases/currentSensitivityLabels/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/Servers/databases/dataMaskingPolicies/*](resource-provider-operations.md#microsoftsql) | 建立和管理 SQL Server 資料庫資料遮罩原則 |
 > | [Microsoft .Sql](resource-provider-operations.md#microsoftsql)/servers/databases/extendedAuditingSettings/read | 擷取指定資料庫上所設定之擴充 Blob 稽核原則的詳細資料 |
@@ -3889,8 +3976,9 @@ ACR 隔離資料寫入者
 > | [/Servers/securityAlertPolicies/*](resource-provider-operations.md#microsoftsql) | 建立和管理 SQL Server 安全性警示原則 |
 > | [/Servers/vulnerabilityAssessments/*](resource-provider-operations.md#microsoftsql) |  |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
-> | [Microsoft .sql](resource-provider-operations.md#microsoftsql)/servers/administrators/read | 取得特定的 Azure Active Directory 系統管理員物件 |
 > | [/Servers/azureADOnlyAuthentications/*](resource-provider-operations.md#microsoftsql) |  |
+> | [Microsoft .Sql](resource-provider-operations.md#microsoftsql)/managedInstances/read | 傳回受控執行個體的清單，或取得指定受控執行個體的屬性。 |
+> | [/ManagedInstances/azureADOnlyAuthentications/*](resource-provider-operations.md#microsoftsql) |  |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -3925,13 +4013,10 @@ ACR 隔離資料寫入者
         "Microsoft.Sql/managedInstances/securityAlertPolicies/*",
         "Microsoft.Sql/managedInstances/databases/transparentDataEncryption/*",
         "Microsoft.Sql/managedInstances/vulnerabilityAssessments/*",
-        "Microsoft.Sql/servers/auditingPolicies/*",
         "Microsoft.Sql/servers/auditingSettings/*",
         "Microsoft.Sql/servers/extendedAuditingSettings/read",
-        "Microsoft.Sql/servers/databases/auditingPolicies/*",
         "Microsoft.Sql/servers/databases/auditingSettings/*",
         "Microsoft.Sql/servers/databases/auditRecords/read",
-        "Microsoft.Sql/servers/databases/connectionPolicies/*",
         "Microsoft.Sql/servers/databases/currentSensitivityLabels/*",
         "Microsoft.Sql/servers/databases/dataMaskingPolicies/*",
         "Microsoft.Sql/servers/databases/extendedAuditingSettings/read",
@@ -3953,8 +4038,9 @@ ACR 隔離資料寫入者
         "Microsoft.Sql/servers/securityAlertPolicies/*",
         "Microsoft.Sql/servers/vulnerabilityAssessments/*",
         "Microsoft.Support/*",
-        "Microsoft.Sql/servers/administrators/read",
-        "Microsoft.Sql/servers/azureADOnlyAuthentications/*"
+        "Microsoft.Sql/servers/azureADOnlyAuthentications/*",
+        "Microsoft.Sql/managedInstances/read",
+        "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/*"
       ],
       "notActions": [],
       "dataActions": [],
@@ -3993,12 +4079,9 @@ ACR 隔離資料寫入者
 > | [/ManagedInstances/databases/vulnerabilityAssessments/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/ManagedInstances/securityAlertPolicies/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/ManagedInstances/vulnerabilityAssessments/*](resource-provider-operations.md#microsoftsql) |  |
-> | [/Servers/auditingPolicies/*](resource-provider-operations.md#microsoftsql) | 編輯 SQL Server 稽核原則 |
 > | [/Servers/auditingSettings/*](resource-provider-operations.md#microsoftsql) | 編輯 SQL Server 稽核設定 |
-> | [/Servers/databases/auditingPolicies/*](resource-provider-operations.md#microsoftsql) | 編輯 SQL Server 資料庫稽核原則 |
 > | [/Servers/databases/auditingSettings/*](resource-provider-operations.md#microsoftsql) | 編輯 SQL Server 資料庫稽核設定 |
 > | [Microsoft .Sql](resource-provider-operations.md#microsoftsql)/servers/databases/auditRecords/read | 擷取資料庫 Blob 稽核記錄 |
-> | [/Servers/databases/connectionPolicies/*](resource-provider-operations.md#microsoftsql) | 編輯 SQL Server 資料庫連接原則 |
 > | [/Servers/databases/currentSensitivityLabels/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/Servers/databases/dataMaskingPolicies/*](resource-provider-operations.md#microsoftsql) | 編輯 SQL Server 資料庫資料遮罩原則 |
 > | [/Servers/databases/extendedAuditingSettings/*](resource-provider-operations.md#microsoftsql) |  |
@@ -4051,12 +4134,9 @@ ACR 隔離資料寫入者
         "Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/*",
         "Microsoft.Sql/managedInstances/securityAlertPolicies/*",
         "Microsoft.Sql/managedInstances/vulnerabilityAssessments/*",
-        "Microsoft.Sql/servers/auditingPolicies/*",
         "Microsoft.Sql/servers/auditingSettings/*",
-        "Microsoft.Sql/servers/databases/auditingPolicies/*",
         "Microsoft.Sql/servers/databases/auditingSettings/*",
         "Microsoft.Sql/servers/databases/auditRecords/read",
-        "Microsoft.Sql/servers/databases/connectionPolicies/*",
         "Microsoft.Sql/servers/databases/currentSensitivityLabels/*",
         "Microsoft.Sql/servers/databases/dataMaskingPolicies/*",
         "Microsoft.Sql/servers/databases/extendedAuditingSettings/*",
@@ -5470,7 +5550,7 @@ ACR 隔離資料寫入者
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/edgeSubscriptions/read |  |
+> | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/edgeSubscriptions/read | 取得 Azure Stack Edge 訂用帳戶的屬性 |
 > | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/products/*/action |  |
 > | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/products/read | 取得 Azure Stack Marketplace 產品的屬性 |
 > | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/read | 取得 Azure Stack 註冊的屬性 |
@@ -6246,6 +6326,7 @@ Azure Sentinel 讀者 [深入瞭解](../sentinel/roles.md)
 > | [SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/read |  |
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | 檢查使用者授權和使用權 |
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/query/action | 查詢威脅情報指標 |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/queryIndicators/action | 查詢威脅情報指標 |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | 使用新的引擎進行搜尋。 |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | 檢視記錄分析資料 |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/LinkedServices/read | 取得指定工作區下已連結的服務。 |
@@ -6281,6 +6362,7 @@ Azure Sentinel 讀者 [深入瞭解](../sentinel/roles.md)
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
         "Microsoft.SecurityInsights/threatIntelligence/indicators/query/action",
+        "Microsoft.SecurityInsights/threatIntelligence/queryIndicators/action",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
         "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
@@ -7879,7 +7961,7 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 > | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/read | 讀取任何 Azure Arc 機器 |
 > | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | 寫入 Azure Arc 機器 |
 > | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/delete | 刪除 Azure Arc 機器 |
-> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/reconnect/action | 重新連接 Azure Arc 機器 |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/reconnect/action |  |
 > | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/write | 安裝或更新 Azure Arc 擴充 |
 > | [HybridCompute](resource-provider-operations.md#microsofthybridcompute)/*/read |  |
 > | **NotActions** |  |

@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: 31d0d7f3ecb9ddb8a52c8ddda8a076e32283ae16
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7a0d3c60841cb12f2999a929eb4af351716abda7
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545713"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635774"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory 受控虛擬網路 (預覽) 
 
@@ -55,7 +55,7 @@ Azure Data Factory 支援私用連結。 Private link 可讓您存取 Azure (Paa
 
 當您使用 private link 時，資料存放區與受控虛擬網路之間的流量會完全流經 Microsoft 骨幹網路。 Private Link 可保護您免受資料外洩風險。 您可以建立私人端點來建立資源的私人連結。
 
-私人端點會使用受控虛擬網路中的私人 IP 位址，有效地將服務帶入其中。 私人端點會對應至 Azure 中的特定資源，而不是整個服務。 客戶可以限制其組織所核准之特定資源的連線能力。 深入了解[私人連結和私人端點](https://docs.microsoft.com/azure/private-link/)。
+私人端點會使用受控虛擬網路中的私人 IP 位址，有效地將服務帶入其中。 私人端點會對應至 Azure 中的特定資源，而不是整個服務。 客戶可以限制其組織所核准之特定資源的連線能力。 深入了解[私人連結和私人端點](../private-link/index.yml)。
 
 > [!NOTE]
 > 建議您使用受控私人端點連線到所有資料來源。 
@@ -113,7 +113,7 @@ Azure Data Factory 支援私用連結。 Private link 可讓您存取 Azure (Paa
 - 當您建立 Azure Key Vault 的連結服務時，沒有 Azure Integration Runtime 參考。 因此，您無法在 Azure Key Vault 的連結服務建立期間建立私人端點。 但是，當您針對參考 Azure Key Vault 連結服務的資料存放區建立連結服務，而此連結的服務參考了已啟用受控虛擬網路的 Azure Integration Runtime 時，您就能夠在建立時建立 Azure Key Vault 連結服務的私人端點。 
 - Azure Key Vault 連結服務的 **測試連接** 作業只會驗證 URL 格式，但不會進行任何網路作業。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 教學課程： [使用受控虛擬網路和私人端點建立複製管線](tutorial-copy-data-portal-private.md) 
 - 教學課程： [使用受控虛擬網路和私人端點建立對應資料流程管線](tutorial-data-flow-private.md)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1d524e34623d5fde3d6f22afbdd63ce95699fe6f
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 52ecc1f7de2afb83d3f37ddae6b1b618a8a8e34d
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494486"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636012"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure Digital Twins API 和 SDK
 
@@ -26,16 +26,16 @@ Azure 數位 Twins 隨附 **控制平面 api** 和 **資料平面 api** ，可�
 
 控制平面 Api 是用來管理整個 Azure 數位 Twins 實例的 [ARM](../azure-resource-manager/management/overview.md) api，因此涵蓋建立或刪除整個實例等作業。 您也會使用這些來建立和刪除端點。
 
-公開預覽的最新控制平面 API 版本為 _**2020-10-31**_。
+公開預覽的最新控制平面 API 版本為 _**2020-10-31**_ 。
 
 若要使用控制平面 Api：
 * 您可以參考 [控制平面 Swagger 資料夾](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)中最新的 Swagger，直接呼叫 api。 此存放庫也包含顯示使用方式的範例資料夾。
 * 您目前可以在中存取控制項 Api 的 Sdk .。。
   - [.Net (c # ) ](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([來源](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))  ([參考 [自動產生]](/dotnet/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-dotnet-preview)) 
-  - [JAVA](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([來源](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins))  ([參考 [自動產生]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview)) 
+  - [JAVA](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([來源](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))  ([參考 [自動產生]](/java/api/overview/azure/digitaltwins/management?preserve-view=true&view=azure-java-preview)) 
   - [JavaScript](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([來源](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins)) 
-  - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([來源](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-mgmt-digitaltwins)) 
-  - [Go](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins)
+  - [Python](https://pypi.org/project/azure-mgmt-digitaltwins/) ([來源](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins)) 
+  - [前往](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ([來源](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins)) 
 
 您也可以透過 [Azure 入口網站](https://portal.azure.com) 和 [CLI](how-to-use-cli.md)與 Azure 數位 Twins 互動，來練習控制項平面 api。
 
@@ -47,13 +47,13 @@ Azure 數位 Twins 隨附 **控制平面 api** 和 **資料平面 api** ，可�
 * **查詢** -查詢類別可讓開發人員在關聯性 [的對應項圖形中尋找數位 twins 的集合](how-to-query-graph.md) 。
 * **事件路由** -事件路由類別包含可透過系統和下游服務 [路由資料](concepts-route-events.md)的 api。
 
-公開預覽的最新資料平面 API 版本為 _**2020-10-31**_。
+公開預覽的最新資料平面 API 版本為 _**2020-10-31**_ 。
 
 若要使用資料平面 Api：
 * 您可以直接呼叫 Api，方法是 .。。
    - 參考 [資料平面 swagger 資料夾](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins)中最新的 swagger。 此存放庫也包含顯示使用方式的範例資料夾。 
    - 查看 [API 參考檔](/rest/api/azure-digitaltwins/)。
-* 您可以使用 **.net (c # ) ** SDK。 若要使用 .NET SDK .。。
+* 您可以使用 **.net (c # )** SDK。 若要使用 .NET SDK .。。
    - 您可以從 NuGet： [DigitalTwins](https://www.nuget.org/packages/Azure.DigitalTwins.Core)來查看和新增套件。 
    - 您可以在 GitHub： [適用于 .net 的 Azure IoT 數位 Twins 用戶端程式庫](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)中找到 SDK 來源，包括範例的資料夾。 
    - 您可以查看 [SDK 參考檔](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)。
@@ -275,7 +275,7 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 ## <a name="general-apisdk-usage-notes"></a>一般 API/SDK 使用注意事項
 
 > [!NOTE]
-> 請注意，Azure 數位 Twins 目前不支援 **跨原始來源資源分享 (CORS) **。 如需有關影響和解決策略的詳細資訊，請參閱「 [*跨原始資源分享 (CORS) *](concepts-security.md#cross-origin-resource-sharing-cors) *概念： Azure 數位 Twins 解決方案的安全性*」一節。
+> 請注意，Azure 數位 Twins 目前不支援 **跨原始來源資源分享 (CORS)** 。 如需有關影響和解決策略的詳細資訊，請參閱「 [*跨原始資源分享 (CORS)*](concepts-security.md#cross-origin-resource-sharing-cors) *概念： Azure 數位 Twins 解決方案的安全性* 」一節。
 
 下列清單提供使用 Api 和 Sdk 的其他詳細資料和一般指導方針。
 

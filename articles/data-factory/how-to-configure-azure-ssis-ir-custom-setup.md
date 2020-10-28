@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 10/13/2020
-ms.openlocfilehash: e4708e49ebd45210e381a1b58752bbfa287a9eeb
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 021c3705ff96774583438d261f894ff1bc24c21f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019846"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636318"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>自訂 Azure-SSIS Integration Runtime 的安裝
 
@@ -25,11 +25,11 @@ ms.locfileid: "92019846"
 
 您可以透過自訂的方式，在 () ADF Azure Data Factory 中自訂您的 Azure SQL Server Integration Services (SSIS) Integration Runtime (IR) 。 它們可讓您在布建或重新設定 Azure-SSIS IR 時，新增您自己的步驟。 
 
-藉由使用自訂設定，您可以改變 Azure-SSIS IR 的預設操作設定或環境。 例如，若要啟動其他 Windows 服務，請保存檔案共用的存取認證，或使用強式加密/更安全的網路通訊協定 (TLS 1.2) 。 或者，您可以在 Azure-SSIS IR 的每個節點上安裝其他元件，例如組件、驅動程式或延伸模組。 它們可以是自訂的、開放原始碼或協力廠商元件。 如需內建/預先安裝元件的詳細資訊，請參閱 [Azure-SSIS IR 上的內建/預先安裝元件](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime) \(英文\)。
+藉由使用自訂設定，您可以改變 Azure-SSIS IR 的預設操作設定或環境。 例如，若要啟動其他 Windows 服務，請保存檔案共用的存取認證，或使用強式加密/更安全的網路通訊協定 (TLS 1.2) 。 或者，您可以在 Azure-SSIS IR 的每個節點上安裝其他元件，例如組件、驅動程式或延伸模組。 它們可以是自訂的、開放原始碼或協力廠商元件。 如需內建/預先安裝元件的詳細資訊，請參閱 [Azure-SSIS IR 上的內建/預先安裝元件](./built-in-preinstalled-components-ssis-integration-runtime.md) \(英文\)。
 
 您可以透過下列兩種方式之一，在 Azure-SSIS IR 上執行自訂安裝程式： 
-* **使用指令碼的標準自訂安裝**：準備指令碼及其相關聯的檔案，並將其一起上傳至您 Azure 儲存體帳戶中的 Blob 容器。 接著，當您安裝或重新設定 Azure-SSIS IR 時，您可以提供容器的共用存取簽章 (SAS) 統一資源識別項 (URI)。 之後，Azure-SSIS IR 的每個節點都會從您的容器下載指令碼及其相關聯的檔案，並使用提高的權限執行您的自訂安裝。 自訂安裝完成後，每個節點都會將執行的標準輸出和其他記錄上傳到您的容器中。
-* **不使用指令碼的快速自訂安裝**：執行一些常見的系統組態和 Windows 命令，或安裝一些熱門或建議的其他元件，而不使用任何指令碼。
+* **使用指令碼的標準自訂安裝** ：準備指令碼及其相關聯的檔案，並將其一起上傳至您 Azure 儲存體帳戶中的 Blob 容器。 接著，當您安裝或重新設定 Azure-SSIS IR 時，您可以提供容器的共用存取簽章 (SAS) 統一資源識別項 (URI)。 之後，Azure-SSIS IR 的每個節點都會從您的容器下載指令碼及其相關聯的檔案，並使用提高的權限執行您的自訂安裝。 自訂安裝完成後，每個節點都會將執行的標準輸出和其他記錄上傳到您的容器中。
+* **不使用指令碼的快速自訂安裝** ：執行一些常見的系統組態和 Windows 命令，或安裝一些熱門或建議的其他元件，而不使用任何指令碼。
 
 您可以使用標準和快速的自訂安裝來安裝免費 (未授權) 和付費 (授權) 元件。 如果您是獨立軟體廠商 (ISV) ，請參閱 [開發 Azure-SSIS IR 的付費或授權元件](how-to-develop-azure-ssis-ir-licensed-components.md)。
 
@@ -40,9 +40,9 @@ ms.locfileid: "92019846"
 
 下列限制僅適用於標準自訂安裝：
 
-- 如果您想要使用指令碼中的 *gacutil.exe*，在全域組件快取 (GAC) 中安裝組件，您必須在自訂安裝的過程中提供 *gacutil.exe*。 或者，您可以使用*公開預覽*容器的*範例*資料夾中所提供的複本，請參閱下面的**標準自訂設定範例**一節。
+- 如果您想要使用指令碼中的 *gacutil.exe* ，在全域組件快取 (GAC) 中安裝組件，您必須在自訂安裝的過程中提供 *gacutil.exe* 。 或者，您可以使用 *公開預覽* 容器的 *範例* 資料夾中所提供的複本，請參閱下面的 **標準自訂設定範例** 一節。
 
-- 如果您想要參考指令碼中的子資料夾，*msiexec.exe* 不支援以 `.\` 標記法參考根資料夾。 請使用諸如 `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` 而非 `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...` 的命令。
+- 如果您想要參考指令碼中的子資料夾， *msiexec.exe* 不支援以 `.\` 標記法參考根資料夾。 請使用諸如 `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` 而非 `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...` 的命令。
 
 - Azure-SSIS IR 目前不支援由 Windows 自動建立的系統管理共用或隱藏的網路共用。
 
@@ -56,7 +56,7 @@ ms.locfileid: "92019846"
 
 - [Azure 訂用帳戶](https://azure.microsoft.com/)
 
-- [佈建您的 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)
+- [佈建您的 Azure-SSIS IR](./tutorial-deploy-ssis-packages-azure.md)
 
 - [Azure 儲存體帳戶](https://azure.microsoft.com/services/storage/)。 快速自訂安裝不需要。 針對標準自訂安裝，您可以上傳自訂安裝指令碼及其相關聯的檔案，並將其儲存在 Blob 容器中。 自訂安裝程序也會將其執行記錄上傳至相同的 Blob 容器。
 
@@ -72,7 +72,7 @@ ms.locfileid: "92019846"
 
    * 您必須擁有名為 *main.cmd* 的指令碼檔案，這是您自訂安裝的進入點。  
    * 若要確保腳本能以無訊息模式執行，您應該先在本機電腦上進行測試。  
-   * 如果您想要將其他工具 (例如 *msiexec.exe*) 所產生的其他記錄上傳到您的容器中，請將預先定義的環境變數 `CUSTOM_SETUP_SCRIPT_LOG_DIR` 指定為指令碼中的記錄資料夾 (例如 *msiexec /i xxx.msi /quiet /lv %CUSTOM_SETUP_SCRIPT_LOG_DIR%\install.log*)。
+   * 如果您想要將其他工具 (例如 *msiexec.exe* ) 所產生的其他記錄上傳到您的容器中，請將預先定義的環境變數 `CUSTOM_SETUP_SCRIPT_LOG_DIR` 指定為指令碼中的記錄資料夾 (例如 *msiexec /i xxx.msi /quiet /lv %CUSTOM_SETUP_SCRIPT_LOG_DIR%\install.log* )。
 
 1. 下載、安裝並開啟 [Azure 儲存體總管](https://storageexplorer.com/)。
 
@@ -111,7 +111,7 @@ ms.locfileid: "92019846"
 
       ![複製並儲存共用存取簽章](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image8.png)
 
-1. 在 [**整合執行時間設定**] 窗格的 [ **Advanced settings** ] 頁面上，選取 [**使用其他系統設定/元件安裝自訂您的 Azure-SSIS Integration Runtime** ] 核取方塊。 接下來，在 [ **自訂安裝程式容器 SAS uri** ] 文字方塊中輸入容器的 SAS uri。
+1. 在 [ **整合執行時間設定** ] 窗格的 [ **Advanced settings** ] 頁面上，選取 [ **使用其他系統設定/元件安裝自訂您的 Azure-SSIS Integration Runtime** ] 核取方塊。 接下來，在 [ **自訂安裝程式容器 SAS uri** ] 文字方塊中輸入容器的 SAS uri。
 
    ![自訂安裝的進階設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)
 
@@ -121,43 +121,43 @@ ms.locfileid: "92019846"
 
 若要在 ADF UI 上使用快速自訂設定來布建或重新設定您的 Azure-SSIS IR，請完成下列步驟。
 
-1. 在 [**整合執行時間設定**] 窗格的 [ **Advanced settings** ] 頁面上，選取 [**使用其他系統設定/元件安裝自訂您的 Azure-SSIS Integration Runtime** ] 核取方塊。 
+1. 在 [ **整合執行時間設定** ] 窗格的 [ **Advanced settings** ] 頁面上，選取 [ **使用其他系統設定/元件安裝自訂您的 Azure-SSIS Integration Runtime** ] 核取方塊。 
 
-1. 選取 [新增] 以開啟 [**新增****快速自訂安裝**] 窗格，然後在 [**快速自訂安裝類型**] 下拉式清單中選取類型。 我們目前提供快速自訂的安裝程式，以執行 cmdkey 命令、新增環境變數、安裝 Azure PowerShell，以及安裝授權的元件。
+1. 選取 [新增] 以開啟 [ **新增****快速自訂安裝** ] 窗格，然後在 [ **快速自訂安裝類型** ] 下拉式清單中選取類型。 我們目前提供快速自訂的安裝程式，以執行 cmdkey 命令、新增環境變數、安裝 Azure PowerShell，以及安裝授權的元件。
 
 #### <a name="running-cmdkey-command"></a>正在執行 cmdkey 命令
 
-如果您針對快速自訂安裝程式選取 [ **執行 cmdkey] 命令** 類型，您可以在 Azure-SSIS IR 上執行 Windows cmdkey 命令。 若要這樣做，請分別在 [ **/add**]、[ **/user**] 和 [ **/Pass** ] 文字方塊中輸入您的目標電腦名稱稱或功能變數名稱、使用者名稱或帳戶名稱，以及密碼或帳戶金鑰。 這可讓您保存您 Azure-SSIS IR 上的 SQL Server、檔案共用或 Azure 檔案儲存體的存取認證。 例如，若要存取 Azure 檔案儲存體，您可以 `YourAzureStorageAccountName.file.core.windows.net` `azure\YourAzureStorageAccountName` `YourAzureStorageAccountKey` 分別針對 **/Add**、 **/user**和 **/Pass**輸入、和。 這類似於在本機電腦上執行 Windows [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) 命令。 目前只支援一個快速自訂安裝程式來執行 cmdkey 命令。 若要執行多個 cmdkey 命令，請改用標準的自訂安裝程式。
+如果您針對快速自訂安裝程式選取 [ **執行 cmdkey] 命令** 類型，您可以在 Azure-SSIS IR 上執行 Windows cmdkey 命令。 若要這樣做，請分別在 [ **/add** ]、[ **/user** ] 和 [ **/Pass** ] 文字方塊中輸入您的目標電腦名稱稱或功能變數名稱、使用者名稱或帳戶名稱，以及密碼或帳戶金鑰。 這可讓您保存您 Azure-SSIS IR 上的 SQL Server、檔案共用或 Azure 檔案儲存體的存取認證。 例如，若要存取 Azure 檔案儲存體，您可以 `YourAzureStorageAccountName.file.core.windows.net` `azure\YourAzureStorageAccountName` `YourAzureStorageAccountKey` 分別針對 **/Add** 、 **/user** 和 **/Pass** 輸入、和。 這類似於在本機電腦上執行 Windows [cmdkey](/windows-server/administration/windows-commands/cmdkey) 命令。 目前只支援一個快速自訂安裝程式來執行 cmdkey 命令。 若要執行多個 cmdkey 命令，請改用標準的自訂安裝程式。
 
 #### <a name="adding-environment-variables"></a>新增環境變數
 
-如果您針對快速自訂安裝程式選取 [ **新增環境變數** 類型]，您可以在 Azure-SSIS IR 上新增 Windows 環境變數。 若要這樣做，請分別在 [ **變數名稱** ] 和 [ **變數值** ] 文字方塊中輸入您的環境變數名稱和值。 這可讓您在 Azure-SSIS IR 上執行的封裝中使用環境變數，例如在腳本元件/工作中。 這類似於在本機電腦上執行 Windows [set](https://docs.microsoft.com/windows-server/administration/windows-commands/set_1) 命令。
+如果您針對快速自訂安裝程式選取 [ **新增環境變數** 類型]，您可以在 Azure-SSIS IR 上新增 Windows 環境變數。 若要這樣做，請分別在 [ **變數名稱** ] 和 [ **變數值** ] 文字方塊中輸入您的環境變數名稱和值。 這可讓您在 Azure-SSIS IR 上執行的封裝中使用環境變數，例如在腳本元件/工作中。 這類似於在本機電腦上執行 Windows [set](/windows-server/administration/windows-commands/set_1) 命令。
 
 #### <a name="installing-azure-powershell"></a>安裝 Azure PowerShell
 
-如果您選取快速自訂安裝的 [ **安裝] Azure PowerShell** 類型，您可以在 Azure-SSIS IR 上安裝 PowerShell 的 Az 模組。 若要這樣做，請從 [支援的清單](https://www.powershellgallery.com/stats/packages/Az?groupby=Version)中，輸入您想要的 Az 模組版本號碼 (x. y. z) 。 這可讓您在套件中執行 Azure PowerShell Cmdlet/腳本來管理 Azure 資源，例如 [azure Analysis Services)  (的 ](https://docs.microsoft.com/azure/analysis-services/analysis-services-powershell)。
+如果您選取快速自訂安裝的 [ **安裝] Azure PowerShell** 類型，您可以在 Azure-SSIS IR 上安裝 PowerShell 的 Az 模組。 若要這樣做，請從 [支援的清單](https://www.powershellgallery.com/stats/packages/Az?groupby=Version)中，輸入您想要的 Az 模組版本號碼 (x. y. z) 。 這可讓您在套件中執行 Azure PowerShell Cmdlet/腳本來管理 Azure 資源，例如 [azure Analysis Services)  (的 ](../analysis-services/analysis-services-powershell.md)。
 
 #### <a name="installing-licensed-components"></a>安裝授權的元件
 
 如果您針對快速自訂安裝程式選取 [ **安裝授權的元件** 類型]，則可以在 [ **元件名稱** ] 下拉式清單中選取 ISV 合作夥伴提供的整合元件：
 
-   * 如果您選取 **SentryOne 的工作 factory** 元件，您可以在 Azure-SSIS IR 上，從 SentryOne 安裝元件的工作 [factory](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) 套件。 若要這樣做，請在 [ **授權金鑰** ] 文字方塊中，輸入您事先購買的產品授權金鑰。 目前的整合版本是 **2020.1.3**。
+   * 如果您選取 **SentryOne 的工作 factory** 元件，您可以在 Azure-SSIS IR 上，從 SentryOne 安裝元件的工作 [factory](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) 套件。 若要這樣做，請在 [ **授權金鑰** ] 文字方塊中，輸入您事先購買的產品授權金鑰。 目前的整合版本是 **2020.1.3** 。
 
-   * 如果您選取 **OH22'S HEDDA。** 您可以安裝 HEDDA 的 IO 元件 [。](https://github.com/oh22is/HEDDA.IO/tree/master/SSIS-IR) Oh22 在您的 Azure-SSIS IR 上的 IO 資料品質/清理元件。 若要這樣做，您必須事先購買其服務。 目前的整合版本是 **1.0.14**。
+   * 如果您選取 **OH22'S HEDDA。** 您可以安裝 HEDDA 的 IO 元件 [。](https://github.com/oh22is/HEDDA.IO/tree/master/SSIS-IR) Oh22 在您的 Azure-SSIS IR 上的 IO 資料品質/清理元件。 若要這樣做，您必須事先購買其服務。 目前的整合版本是 **1.0.14** 。
 
-   * 如果您選取 **oh22's SQLPhonetics.NET** 元件，您可以在 Azure-SSIS IR 上安裝 oh22 的 [SQLPhonetics.NET](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) 資料品質/比對元件。 若要這樣做，請在 [ **授權金鑰** ] 文字方塊中，輸入您事先購買的產品授權金鑰。 目前的整合版本是 **1.0.45 版 azureml-defaults**。
+   * 如果您選取 **oh22's SQLPhonetics.NET** 元件，您可以在 Azure-SSIS IR 上安裝 oh22 的 [SQLPhonetics.NET](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) 資料品質/比對元件。 若要這樣做，請在 [ **授權金鑰** ] 文字方塊中，輸入您事先購買的產品授權金鑰。 目前的整合版本是 **1.0.45 版 azureml-defaults** 。
 
-   * 如果您選取 **KingswaySoft 的 Ssis 整合工具** 組元件，您可以在 Azure-SSIS IR 上，從 KINGSWAYSOFT 安裝 CRM/ERP/marketing/共同作業應用程式的 [SSIS 整合工具](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) 組套件（例如 Microsoft Dynamics/SharePoint/Project Server、Oracle/Salesforce marketing Cloud 等）。 若要這樣做，請在 [ **授權金鑰** ] 文字方塊中，輸入您事先購買的產品授權金鑰。 目前的整合版本為 **2020.1**。
+   * 如果您選取 **KingswaySoft 的 Ssis 整合工具** 組元件，您可以在 Azure-SSIS IR 上，從 KINGSWAYSOFT 安裝 CRM/ERP/marketing/共同作業應用程式的 [SSIS 整合工具](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) 組套件（例如 Microsoft Dynamics/SharePoint/Project Server、Oracle/Salesforce marketing Cloud 等）。 若要這樣做，請在 [ **授權金鑰** ] 文字方塊中，輸入您事先購買的產品授權金鑰。 目前的整合版本為 **2020.1** 。
 
-   * 如果您選取 **KingswaySoft 的 ssis** 產能套件元件，則可以從您的 Azure-SSIS IR 上的 KingswaySoft 安裝 [SSIS 生產力](https://www.kingswaysoft.com/products/ssis-productivity-pack) 套件套件。 若要這樣做，請在 [ **授權金鑰** ] 文字方塊中，輸入您事先購買的產品授權金鑰。 目前的整合版本為 **20.1**。
+   * 如果您選取 **KingswaySoft 的 ssis** 產能套件元件，則可以從您的 Azure-SSIS IR 上的 KingswaySoft 安裝 [SSIS 生產力](https://www.kingswaysoft.com/products/ssis-productivity-pack) 套件套件。 若要這樣做，請在 [ **授權金鑰** ] 文字方塊中，輸入您事先購買的產品授權金鑰。 目前的整合版本為 **20.1** 。
 
-   * 如果您選取 **Theobald 軟體的 XTRACT 是** 元件，您可以安裝 [Xtract 為](https://theobald-software.com/en/xtract-is/) SAP 系統的連接器套件， (ERP、s/4HANA、BW) 從 Azure-SSIS IR 的 Theobald 軟體。 若要這樣做，請將您事先購買的產品授權檔案拖曳至 [ **授權檔案** ] 輸入方塊中，然後將其拖放 &。 目前的整合版本是 **6.1.1.3**。
+   * 如果您選取 **Theobald 軟體的 XTRACT 是** 元件，您可以安裝 [Xtract 為](https://theobald-software.com/en/xtract-is/) SAP 系統的連接器套件， (ERP、s/4HANA、BW) 從 Azure-SSIS IR 的 Theobald 軟體。 若要這樣做，請將您事先購買的產品授權檔案拖曳至 [ **授權檔案** ] 輸入方塊中，然後將其拖放 &。 目前的整合版本是 **6.1.1.3** 。
 
-   * 如果您選取 **AecorSoft 的整合服務** 元件，您可以在 Azure-SSIS IR 上，從 AecorSoft 安裝適用于 SAP 和 Salesforce 系統的連接器 [整合服務](https://www.aecorsoft.com/en/products/integrationservice) 套件。 若要這樣做，請在 [ **授權金鑰** ] 文字方塊中，輸入您事先購買的產品授權金鑰。 目前的整合版本是 **3.0.00**。
+   * 如果您選取 **AecorSoft 的整合服務** 元件，您可以在 Azure-SSIS IR 上，從 AecorSoft 安裝適用于 SAP 和 Salesforce 系統的連接器 [整合服務](https://www.aecorsoft.com/en/products/integrationservice) 套件。 若要這樣做，請在 [ **授權金鑰** ] 文字方塊中，輸入您事先購買的產品授權金鑰。 目前的整合版本是 **3.0.00** 。
 
-   * 如果您選取 **cdata 的 Ssis 標準封裝** 元件，您可以在 Azure-SSIS IR 上安裝 cdata 的最熱門元件的 [SSIS 標準封裝](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#standard) 套件，例如 Microsoft SharePoint 連接器。 若要這樣做，請在 [ **授權金鑰** ] 文字方塊中，輸入您事先購買的產品授權金鑰。 目前的整合版本為 **19.7354**。
+   * 如果您選取 **cdata 的 Ssis 標準封裝** 元件，您可以在 Azure-SSIS IR 上安裝 cdata 的最熱門元件的 [SSIS 標準封裝](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#standard) 套件，例如 Microsoft SharePoint 連接器。 若要這樣做，請在 [ **授權金鑰** ] 文字方塊中，輸入您事先購買的產品授權金鑰。 目前的整合版本為 **19.7354** 。
 
-   * 如果您選取 **cdata 的 Ssis 擴充套件** 元件，您可以在 Azure-SSIS IR 上安裝 cdata 的所有元件的 [ssis 擴充](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#extended) 套件套件，例如 Microsoft Dynamics 365 Business Central 連接器和其 **ssis 標準套件**中的其他元件。 若要這樣做，請在 [ **授權金鑰** ] 文字方塊中，輸入您事先購買的產品授權金鑰。 目前的整合版本為 **19.7354**。 因為它的大小很大，所以若要避免安裝超時，請確定您的 Azure-SSIS IR 的每個節點至少有4個 CPU 核心。
+   * 如果您選取 **cdata 的 Ssis 擴充套件** 元件，您可以在 Azure-SSIS IR 上安裝 cdata 的所有元件的 [ssis 擴充](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#extended) 套件套件，例如 Microsoft Dynamics 365 Business Central 連接器和其 **ssis 標準套件** 中的其他元件。 若要這樣做，請在 [ **授權金鑰** ] 文字方塊中，輸入您事先購買的產品授權金鑰。 目前的整合版本為 **19.7354** 。 因為它的大小很大，所以若要避免安裝超時，請確定您的 Azure-SSIS IR 的每個節點至少有4個 CPU 核心。
 
 您新增的快速自訂設定將會出現在 [ **Advanced settings** ] 頁面上。 若要將其移除，請選取其核取方塊，然後選取 [刪除]。
 
@@ -287,7 +287,7 @@ ms.locfileid: "92019846"
 
    d. 在左窗格中，選取已連線的 **publicpreview** 容器，然後按兩下 [CustomSetupScript] 資料夾。 此資料夾中包含下列項目：
 
-      * [Sample] 資料夾，其中包含自訂安裝程式，用以在 Azure-SSIS IR 的每個節點上安裝基本工作。 此工作不會執行任何動作，而會休眠數秒鐘。 此資料夾也包含 [gacutil] 資料夾，其完整內容 (*gacutil .exe*、*gacutil .exe .config* 和 *1033\gacutlrc.dll*) 可以依原樣複製至您的容器。
+      * [Sample] 資料夾，其中包含自訂安裝程式，用以在 Azure-SSIS IR 的每個節點上安裝基本工作。 此工作不會執行任何動作，而會休眠數秒鐘。 此資料夾也包含 [gacutil] 資料夾，其完整內容 ( *gacutil .exe* 、 *gacutil .exe .config* 和 *1033\gacutlrc.dll* ) 可以依原樣複製至您的容器。
 
       * [UserScenarios] 資料夾，其中包含實際使用者案例的數個自訂安裝範例。
 
@@ -295,65 +295,65 @@ ms.locfileid: "92019846"
 
    e. 按兩下 [UserScenarios] 資料夾以尋找下列項目：
 
-      * *.NET FRAMEWORK 3.5*資料夾，其中包含自訂安裝腳本 (的*主要 .cmd*) 在 Azure-SSIS IR 的每個節點上安裝舊版的 .NET Framework。 某些自訂群組件可能需要此版本。
+      * *.NET FRAMEWORK 3.5* 資料夾，其中包含自訂安裝腳本 (的 *主要 .cmd* ) 在 Azure-SSIS IR 的每個節點上安裝舊版的 .NET Framework。 某些自訂群組件可能需要此版本。
 
-      * *BCP*資料夾，其中包含自訂安裝腳本 (的*主要 .Cmd*) ，以在MsSqlCmdLnUtils.msi的每個節點上安裝 SQL Server 命令列公用程式 (*) * Azure-SSIS IR。 其中一個公用程式是 (*bcp*) 的大量複製程式。
+      * *BCP* 資料夾，其中包含自訂安裝腳本 (的 *主要 .Cmd* ) ，以在MsSqlCmdLnUtils.msi的每個節點上安裝 SQL Server 命令列公用程式 ( *)* Azure-SSIS IR。 其中一個公用程式是 ( *bcp* ) 的大量複製程式。
 
-      * *DNS 尾碼*資料夾，其中包含自訂安裝腳本 (*主要 .cmd*) 附加您自己的 DNS 尾碼 (例如， *test.com*) 到任何不合格的單一標籤功能變數名稱，然後將它轉換成完整的功能變數名稱 (FQDN) ，然後再將它用於 Azure-SSIS IR 的 DNS 查詢中。
+      * *DNS 尾碼* 資料夾，其中包含自訂安裝腳本 ( *主要 .cmd* ) 附加您自己的 DNS 尾碼 (例如， *test.com* ) 到任何不合格的單一標籤功能變數名稱，然後將它轉換成完整的功能變數名稱 (FQDN) ，然後再將它用於 Azure-SSIS IR 的 DNS 查詢中。
 
-      * *EXCEL*資料夾，其中包含自訂安裝腳本 (的*主要 .cmd*) 將某些 c # 元件和程式庫安裝在 Azure-SSIS IR 的每個節點上。 您可以在腳本工作中使用它們來動態讀取和寫入 Excel 檔案。 
+      * *EXCEL* 資料夾，其中包含自訂安裝腳本 (的 *主要 .cmd* ) 將某些 c # 元件和程式庫安裝在 Azure-SSIS IR 的每個節點上。 您可以在腳本工作中使用它們來動態讀取和寫入 Excel 檔案。 
       
         首先，下載 [*ExcelDataReader*](https://www.nuget.org/packages/ExcelDataReader/) 與 [*DocumentFormat.OpenXml.dll*](https://www.nuget.org/packages/DocumentFormat.OpenXml/)，然後將其與 *main.cmd* 全部一起上傳至您的容器。 或者，如果您只想要使用標準的 Excel 連接器 (連線管理員、來源和目的地) ，包含這些連接器的存取可轉散發套件已預先安裝在您的 Azure-SSIS IR 上，因此您不需要任何自訂設定。
       
-      * [MYSQL ODBC] 資料夾，其中包含自訂安裝指令碼 (*main.cmd*)，用以在 Azure-SSIS IR 的每個節點上安裝 Oracle ODBC 驅動程式。 這種設定可讓您使用 ODBC 連接器 (連線管理員、來源和目的地) 來連接至 MySQL 伺服器。 
+      * [MYSQL ODBC] 資料夾，其中包含自訂安裝指令碼 ( *main.cmd* )，用以在 Azure-SSIS IR 的每個節點上安裝 Oracle ODBC 驅動程式。 這種設定可讓您使用 ODBC 連接器 (連線管理員、來源和目的地) 來連接至 MySQL 伺服器。 
      
-        首先，[下載最新的 64 位元和 32 位元版本的 MySQL ODBC 驅動程式安裝程式](https://dev.mysql.com/downloads/connector/odbc/) (例如 *mysql-connector-odbc-8.0.13-winx64.msi* 和 *mysql-connector-odbc-8.0.13-win32.msi*)，然後將其與 *main.cmd* 全部一起上傳至您的容器。
+        首先， [下載最新的 64 位元和 32 位元版本的 MySQL ODBC 驅動程式安裝程式](https://dev.mysql.com/downloads/connector/odbc/) (例如 *mysql-connector-odbc-8.0.13-winx64.msi* 和 *mysql-connector-odbc-8.0.13-win32.msi* )，然後將其與 *main.cmd* 全部一起上傳至您的容器。
 
-      * [ORACLE ENTERPRISE] 資料夾，其中包含自訂安裝指令碼 (*main.cmd*) 和無訊息安裝組態檔 (*client.rsp*)，用以在 Azure-SSIS IR Enterprise Edition 的每個節點上安裝 Oracle 連接器和 OCI 驅動程式。 這種設定可讓您使用 Oracle 連線管理員、來源和目的地連接到 Oracle 伺服器。 
+      * [ORACLE ENTERPRISE] 資料夾，其中包含自訂安裝指令碼 ( *main.cmd* ) 和無訊息安裝組態檔 ( *client.rsp* )，用以在 Azure-SSIS IR Enterprise Edition 的每個節點上安裝 Oracle 連接器和 OCI 驅動程式。 這種設定可讓您使用 Oracle 連線管理員、來源和目的地連接到 Oracle 伺服器。 
       
-        首先，請從 Microsoft 下載中心下載適用于 Oracle 的 Microsoft connector 5.0 版 (*AttunitySSISOraAdaptersSetup.msi* 和 *AttunitySSISOraAdaptersSetup64.msi*) 從 [microsoft 下載中心](https://www.microsoft.com/en-us/download/details.aspx?id=55179) 和最新的 Oracle 用戶端 (* 例如，從 * [oracle](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html)winx64_12102_client.zip) 。 接下來，將這些專案與 *主要 .cmd* 和 *用戶端* 一起上傳至您的容器。 如果您使用 TNS 來連線到 Oracle，您也需要下載 *tnsnames.ora tnsnames.ora*、編輯它，然後將它上傳至您的容器。 如此一來，您就可以在安裝期間將它複製到 Oracle 安裝資料夾。
+        首先，請從 Microsoft 下載中心下載適用于 Oracle 的 Microsoft connector 5.0 版 ( *AttunitySSISOraAdaptersSetup.msi* 和 *AttunitySSISOraAdaptersSetup64.msi* ) 從 [microsoft 下載中心](https://www.microsoft.com/en-us/download/details.aspx?id=55179) 和最新的 Oracle 用戶端 ( *例如，從* [oracle](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html)winx64_12102_client.zip) 。 接下來，將這些專案與 *主要 .cmd* 和 *用戶端* 一起上傳至您的容器。 如果您使用 TNS 來連線到 Oracle，您也需要下載 *tnsnames.ora tnsnames.ora* 、編輯它，然後將它上傳至您的容器。 如此一來，您就可以在安裝期間將它複製到 Oracle 安裝資料夾。
 
-      * [ORACLE STANDARD ADO.NET] 資料夾，其中包含自訂安裝指令碼 (*main.cmd*)，用以在 Azure-SSIS IR 的每個節點上安裝 Oracle ODP.NET 驅動程式。 這種設定可讓您使用 ADO.NET 連線管理員、來源和目的地連接到 Oracle 伺服器。 
+      * [ORACLE STANDARD ADO.NET] 資料夾，其中包含自訂安裝指令碼 ( *main.cmd* )，用以在 Azure-SSIS IR 的每個節點上安裝 Oracle ODP.NET 驅動程式。 這種設定可讓您使用 ADO.NET 連線管理員、來源和目的地連接到 Oracle 伺服器。 
       
-        首先，[下載最新的 Oracle ODP.NET 驅動程式](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html) (例如 *ODP.NET_Managed_ODAC122cR1.zip*)，然後將其與 *main.cmd* 一起上傳至您的容器。
+        首先， [下載最新的 Oracle ODP.NET 驅動程式](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html) (例如 *ODP.NET_Managed_ODAC122cR1.zip* )，然後將其與 *main.cmd* 一起上傳至您的容器。
        
-      * *ORACLE STANDARD ODBC*資料夾，其中包含自訂安裝腳本 (*主要 .cmd*) 在 Azure-SSIS IR 的每個節點上安裝 ORACLE ODBC 驅動程式。 腳本也會設定 (DSN) 的資料來源名稱。 這種設定可讓您使用 ODBC 連線管理員、來源和目的地，或 Power Query 連線管理員和來源與 ODBC 資料來源類型，以連接到 Oracle 伺服器。 
+      * *ORACLE STANDARD ODBC* 資料夾，其中包含自訂安裝腳本 ( *主要 .cmd* ) 在 Azure-SSIS IR 的每個節點上安裝 ORACLE ODBC 驅動程式。 腳本也會設定 (DSN) 的資料來源名稱。 這種設定可讓您使用 ODBC 連線管理員、來源和目的地，或 Power Query 連線管理員和來源與 ODBC 資料來源類型，以連接到 Oracle 伺服器。 
       
         首先，下載最新的 Oracle Instant Client (基本套件或基本精簡套件) 和 ODBC 套件，然後將其們與 *main.cmd* 全部一起上傳至您的容器：
-        * [下載 64 位元套件](https://www.oracle.com/technetwork/topics/winx64soft-089540.html) (基本套件：*instantclient-basic-windows.x64-18.3.0.0.0dbru.zip*；基本精簡套件：*instantclient-basiclite-windows.x64-18.3.0.0.0dbru.zip*；ODBC 套件：*instantclient-odbc-windows.x64-18.3.0.0.0dbru.zip*) 
-        * [下載 32 位元套件](https://www.oracle.com/technetwork/topics/winsoft-085727.html) (基本套件：*instantclient-basic-nt-18.3.0.0.0dbru.zip*；基本精簡套件：*instantclient-basiclite-nt-18.3.0.0.0dbru.zip*；ODBC 套件：*instantclient-odbc-nt-18.3.0.0.0dbru.zip*)
+        * [下載 64 位元套件](https://www.oracle.com/technetwork/topics/winx64soft-089540.html) (基本套件： *instantclient-basic-windows.x64-18.3.0.0.0dbru.zip* ；基本精簡套件： *instantclient-basiclite-windows.x64-18.3.0.0.0dbru.zip* ；ODBC 套件： *instantclient-odbc-windows.x64-18.3.0.0.0dbru.zip* ) 
+        * [下載 32 位元套件](https://www.oracle.com/technetwork/topics/winsoft-085727.html) (基本套件： *instantclient-basic-nt-18.3.0.0.0dbru.zip* ；基本精簡套件： *instantclient-basiclite-nt-18.3.0.0.0dbru.zip* ；ODBC 套件： *instantclient-odbc-nt-18.3.0.0.0dbru.zip* )
 
-      * [ORACLE STANDARD OLEDB] 資料夾，其中包含自訂安裝指令碼 (*main.cmd*)，用以在 Azure-SSIS IR 的每個節點上安裝 Oracle OLEDB 驅動程式。 這種設定可讓您使用 OLEDB 連線管理員、來源和目的地連接到 Oracle 伺服器。 
+      * [ORACLE STANDARD OLEDB] 資料夾，其中包含自訂安裝指令碼 ( *main.cmd* )，用以在 Azure-SSIS IR 的每個節點上安裝 Oracle OLEDB 驅動程式。 這種設定可讓您使用 OLEDB 連線管理員、來源和目的地連接到 Oracle 伺服器。 
      
-        首先，[下載最新的 Oracle OLEDB 驅動程式](https://www.oracle.com/partners/campaign/index-090165.html) (例如 *ODAC122010Xcopy_x64.zip*)，然後將其與 *main.cmd* 一起上傳至您的容器。
+        首先， [下載最新的 Oracle OLEDB 驅動程式](https://www.oracle.com/partners/campaign/index-090165.html) (例如 *ODAC122010Xcopy_x64.zip* )，然後將其與 *main.cmd* 一起上傳至您的容器。
 
-      * [POSTGRESQL ODBC] 資料夾，其中包含自訂安裝指令碼 (*main.cmd*)，用以在 Azure-SSIS IR 的每個節點上安裝 PostgreSQL ODBC 驅動程式。 這種設定可讓您使用 ODBC 連線管理員、來源和目的地連接到于 postgresql 伺服器。 
+      * [POSTGRESQL ODBC] 資料夾，其中包含自訂安裝指令碼 ( *main.cmd* )，用以在 Azure-SSIS IR 的每個節點上安裝 PostgreSQL ODBC 驅動程式。 這種設定可讓您使用 ODBC 連線管理員、來源和目的地連接到于 postgresql 伺服器。 
      
-        首先，[下載最新的 64 位元和 32 位元版本的 PostgreSQL ODBC 驅動程式安裝程式](https://www.postgresql.org/ftp/odbc/versions/msi/) (例如 *psqlodbc_x64.msi* 和 *psqlodbc_x86.msi*)，然後將其與 *main.cmd* 全部一起上傳至您的容器。
+        首先， [下載最新的 64 位元和 32 位元版本的 PostgreSQL ODBC 驅動程式安裝程式](https://www.postgresql.org/ftp/odbc/versions/msi/) (例如 *psqlodbc_x64.msi* 和 *psqlodbc_x86.msi* )，然後將其與 *main.cmd* 全部一起上傳至您的容器。
 
-      * [SAP BW] 資料夾，其中包含自訂安裝指令碼 (*main.cmd*)，用以在 Azure-SSIS IR Enterprise Edition 的每個節點上安裝 SAP .NET 連接器組件 (*librfc32.dll*)。 這種設定可讓您使用 SAP BW 連線管理員、來源和目的地連接到 SAP BW 伺服器。 
+      * [SAP BW] 資料夾，其中包含自訂安裝指令碼 ( *main.cmd* )，用以在 Azure-SSIS IR Enterprise Edition 的每個節點上安裝 SAP .NET 連接器組件 ( *librfc32.dll* )。 這種設定可讓您使用 SAP BW 連線管理員、來源和目的地連接到 SAP BW 伺服器。 
       
         首先，從 SAP 安裝資料夾將 64 位元或 32 位元版本的 *librfc32.dll* 與 *main.cmd* 一起上傳至您的容器中。 接著，指令碼會在安裝期間，將 SAP 組件複製到 *%windir%\SysWow64* 或 *%windir%\System32* 資料夾。
 
-      * [STORAGE] 資料夾，其中包含自訂安裝指令碼 (*main.cmd*)，用以在 Azure-SSIS IR 的每個節點上安裝 Azure PowerShell。 此安裝程式可讓您部署和執行 [Azure PowerShell Cmdlet/腳本的 SSIS 封裝，以管理您的 Azure 儲存體](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell)。 
+      * [STORAGE] 資料夾，其中包含自訂安裝指令碼 ( *main.cmd* )，用以在 Azure-SSIS IR 的每個節點上安裝 Azure PowerShell。 此安裝程式可讓您部署和執行 [Azure PowerShell Cmdlet/腳本的 SSIS 封裝，以管理您的 Azure 儲存體](../storage/blobs/storage-quickstart-blobs-powershell.md)。 
       
-        將 *main.cmd*、範例 *AzurePowerShell.msi* (或使用最新版本) 和 *storage.ps1* 複製至您的容器。 使用 *PowerShell.dtsx* 作為您套件的範本。 套件範本結合了 [Azure Blob 下載](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task)工作，此工作會下載可修改的 PowerShell 腳本 (*storage.ps1*) ），以及執行每個節點上腳本的「 [執行處理](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/)」工作。
+        將 *main.cmd* 、範例 *AzurePowerShell.msi* (或使用最新版本) 和 *storage.ps1* 複製至您的容器。 使用 *PowerShell.dtsx* 作為您套件的範本。 套件範本結合了 [Azure Blob 下載](/sql/integration-services/control-flow/azure-blob-download-task)工作，此工作會下載可修改的 PowerShell 腳本 ( *storage.ps1* ) ），以及執行每個節點上腳本的「 [執行處理](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/)」工作。
 
-      * [TERADATA] 資料夾，其中包含自訂安裝指令碼 (*main.cmd*)、其相關聯的檔案 (*install.cmd*)，以安裝程式套件 ( *.msi*)。 這些檔案會在 Azure-SSIS IR Enterprise Edition 的每個節點上安裝 Teradata 連接器、Teradata Parallel Transporter (TPT) API 和 ODBC 驅動程式。 這種設定可讓您使用 Teradata 連線管理員、來源和目的地連接到 Teradata 伺服器。 
+      * [TERADATA] 資料夾，其中包含自訂安裝指令碼 ( *main.cmd* )、其相關聯的檔案 ( *install.cmd* )，以安裝程式套件 ( *.msi* )。 這些檔案會在 Azure-SSIS IR Enterprise Edition 的每個節點上安裝 Teradata 連接器、Teradata Parallel Transporter (TPT) API 和 ODBC 驅動程式。 這種設定可讓您使用 Teradata 連線管理員、來源和目的地連接到 Teradata 伺服器。 
       
-        首先，[下載 Teradata Tools and Utilities 15.x zip 檔案](http://partnerintelligence.teradata.com) (例如，*TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip*)，然後將其與先前提到的 *.cmd* 和 *.msi* 檔案一起上傳至您的容器。
+        首先， [下載 Teradata Tools and Utilities 15.x zip 檔案](http://partnerintelligence.teradata.com) (例如， *TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip* )，然後將其與先前提到的 *.cmd* 和 *.msi* 檔案一起上傳至您的容器。
 
-      * *Tls 1.2*資料夾，其中包含自訂安裝腳本 (*主要 .cmd*) 使用強式密碼編譯以及更安全的網路通訊協定 (TLS 1.2) 在 Azure-SSIS IR 的每個節點上。 腳本也會停用較舊的 SSL/TLS 版本。
+      * *Tls 1.2* 資料夾，其中包含自訂安裝腳本 ( *主要 .cmd* ) 使用強式密碼編譯以及更安全的網路通訊協定 (TLS 1.2) 在 Azure-SSIS IR 的每個節點上。 腳本也會停用較舊的 SSL/TLS 版本。
 
-      * [ZULU OPENJDK] 資料夾，其中包含自訂安裝指令碼 (*main.cmd*) 和 PowerShell 檔案 (*install_openjdk.ps1*)，用以在 Azure-SSIS IR 的每個節點上安裝 Zulu OpenJDK。 此安裝可讓您使用 Azure Data Lake Store 和彈性檔案連接器處理 ORC 和 Parquet 檔案。 如需詳細資訊，請參閱 [Azure Feature Pack for Integration Services](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-ver15#dependency-on-java)。 
+      * [ZULU OPENJDK] 資料夾，其中包含自訂安裝指令碼 ( *main.cmd* ) 和 PowerShell 檔案 ( *install_openjdk.ps1* )，用以在 Azure-SSIS IR 的每個節點上安裝 Zulu OpenJDK。 此安裝可讓您使用 Azure Data Lake Store 和彈性檔案連接器處理 ORC 和 Parquet 檔案。 如需詳細資訊，請參閱 [Azure Feature Pack for Integration Services](/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-ver15#dependency-on-java)。 
       
-        首先，[下載最新的 Zulu OpenJDK](https://www.azul.com/downloads/zulu/zulu-windows/) (例如，*zulu8.33.0.1-jdk8.0.192-win_x64.zip*)，然後將其與 *main.cmd* 和 *install_openjdk.ps1* 一起上傳至您的容器。
+        首先， [下載最新的 Zulu OpenJDK](https://www.azul.com/downloads/zulu/zulu-windows/) (例如， *zulu8.33.0.1-jdk8.0.192-win_x64.zip* )，然後將其與 *main.cmd* 和 *install_openjdk.ps1* 一起上傳至您的容器。
 
         ![使用者案例資料夾中的資料夾](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
 
    f. 若要重複使用這些標準自訂安裝範例，請將所選資料夾的內容複寫到您的容器。
 
-1. 當您在 ADF UI 上布建或重新設定 Azure-SSIS IR 時，請在 [**整合執行時間設定**] 窗格的 [ **Advanced settings** ] 頁面中，選取 [**使用其他系統組態/元件安裝自訂您的 Azure-SSIS Integration Runtime** ] 核取方塊。 接下來，在 [ **自訂安裝程式容器 SAS uri** ] 文字方塊中輸入容器的 SAS uri。
+1. 當您在 ADF UI 上布建或重新設定 Azure-SSIS IR 時，請在 [ **整合執行時間設定** ] 窗格的 [ **Advanced settings** ] 頁面中，選取 [ **使用其他系統組態/元件安裝自訂您的 Azure-SSIS Integration Runtime** ] 核取方塊。 接下來，在 [ **自訂安裝程式容器 SAS uri** ] 文字方塊中輸入容器的 SAS uri。
    
 1. 當您使用 Azure PowerShell 布建或重新設定 Azure-SSIS IR 時，請將其停止（如果已啟動/執行）， `Set-AzDataFactoryV2IntegrationRuntime` 並以容器的 SAS URI 作為參數的值來執行 Cmdlet， `SetupScriptContainerSasUri` 然後啟動您的 Azure-SSIS IR。
 

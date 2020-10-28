@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 5d0393ab5f2582efa2a4b727543bc799cdb1143e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe3fd25753344c5ccfd21310ae01fca9962e3971
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082846"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636063"
 ---
 # <a name="what-are-wrangling-data-flows"></a>什麼是整頓資料流程？
 
@@ -21,7 +21,7 @@ ms.locfileid: "87082846"
 
 組織需要進行資料準備和整頓，以便準確分析每日持續成長的複雜資料。 需要資料準備，讓組織可以使用各種商務程式中的資料，並縮短價值的時間。
 
-Azure Data Factory 中的整頓資料流程可讓您反復進行雲端規模的無程式碼資料準備。 整頓資料流程程與 [Power Query Online](https://docs.microsoft.com/power-query/) 整合，讓 data factory 使用者可以使用 Power Query M 函式。
+Azure Data Factory 中的整頓資料流程可讓您反復進行雲端規模的無程式碼資料準備。 整頓資料流程程與 [Power Query Online](/power-query/) 整合，讓 data factory 使用者可以使用 Power Query M 函式。
 
 整頓資料流程會將 Power Query 線上混搭編輯器所產生的 M 轉譯成適用于雲端規模執行的 spark 程式碼。
 
@@ -46,7 +46,7 @@ Azure Data Factory 中的整頓資料流程可讓您反復進行雲端規模的�
 
 ## <a name="supported-sources"></a>支援的來源
 
-| 連接子 | 資料格式 | 驗證類型 |
+| 連接器 | 資料格式 | 驗證類型 |
 | -- | -- | --|
 | [Azure Blob 儲存體](connector-azure-blob-storage.md) | CSV、Parquet | 帳戶金鑰 |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | 服務主體 |
@@ -68,6 +68,6 @@ Azure Data Factory 中的整頓資料流程可讓您反復進行雲端規模的�
 
 目前整頓資料流程僅支援寫入至一個接收。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何 [建立整頓資料流程](wrangling-data-flow-tutorial.md)。

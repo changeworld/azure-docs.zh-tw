@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: cf1bf9e05f83610fd43146cf4c99c5006fdc97b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98484655dec069c3a284dce0ea83477faf75d9a8
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87171436"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637746"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>使用 Azure SQL 受控執行個體代理程式來執行 SSIS 套件
 
@@ -22,21 +22,21 @@ ms.locfileid: "87171436"
 
 您可以使用這項功能，在 SQL 受控執行個體、檔案系統（例如 Azure 檔案儲存體或 Azure SSIS integration runtime 套件存放區）中，執行儲存在 SSISDB 中的 SSIS 封裝。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-若要使用這項功能，請 [下載](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) 並安裝最新的 SQL SERVER MANAGEMENT STUDIO (SSMS) 。 版本支援詳細資料，如下所示：
+若要使用這項功能，請 [下載](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) 並安裝最新的 SQL SERVER MANAGEMENT STUDIO (SSMS) 。 版本支援詳細資料，如下所示：
 
 - 若要在 SSISDB 或檔案系統中執行套件，請安裝 SSMS 18.5 版或更新版本。
 - 若要在封裝存放區中執行封裝，請安裝 SSMS 18.6 版或更新版本。
 
-您也需要在 Azure Data Factory 中布 [建 AZURE SSIS 整合運行](tutorial-create-azure-ssis-runtime-portal.md) 時間。 它會使用 SQL 受控執行個體作為端點伺服器。
+您也需要在 Azure Data Factory 中布 [建 AZURE SSIS 整合運行](./tutorial-deploy-ssis-packages-azure.md) 時間。 它會使用 SQL 受控執行個體作為端點伺服器。
 
 ## <a name="run-an-ssis-package-in-ssisdb"></a>在 SSISDB 中執行 SSIS 套件
 
 在此程式中，您會使用 SQL 受控執行個體 Agent 來叫用儲存在 SSISDB 中的 SSIS 封裝。
 
 1. 在最新版本的 SSMS 中，連接到 SQL 受控執行個體。
-1. 建立新的代理程式作業和新的作業步驟。 在 [ **SQL Server Agent**] 下，以滑鼠右鍵按一下 [ **作業** ] 資料夾，然後選取 [ **新增作業**]。
+1. 建立新的代理程式作業和新的作業步驟。 在 [ **SQL Server Agent** ] 下，以滑鼠右鍵按一下 [ **作業** ] 資料夾，然後選取 [ **新增作業** ]。
 
    ![建立新代理程式作業的選項](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
 
@@ -50,11 +50,11 @@ ms.locfileid: "87171436"
 
    ![具有套件來源類型選取專案的 [封裝] 索引標籤](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb.png)
 
-1. **在 [設定**] 索引標籤上，您可以：
+1. **在 [設定** ] 索引標籤上，您可以：
   
-   - 請在 **參數**下指定參數值。
-   - 覆寫 **連接管理員**下的值。
-   - 覆寫屬性，然後選擇 [ **Advanced**] 下的記錄層級。
+   - 請在 **參數** 下指定參數值。
+   - 覆寫 **連接管理員** 下的值。
+   - 覆寫屬性，然後選擇 [ **Advanced** ] 下的記錄層級。
 
    ![具有套件來源類型選取專案的 [設定] 索引標籤](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb-configuration.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "87171436"
 在此程式中，您會使用 SQL 受控執行個體 Agent 來執行儲存在檔案系統中的 SSIS 封裝。
 
 1. 在最新版本的 SSMS 中，連接到 SQL 受控執行個體。
-1. 建立新的代理程式作業和新的作業步驟。 在 [ **SQL Server Agent**] 下，以滑鼠右鍵按一下 [ **作業** ] 資料夾，然後選取 [ **新增作業**]。
+1. 建立新的代理程式作業和新的作業步驟。 在 [ **SQL Server Agent** ] 下，以滑鼠右鍵按一下 [ **作業** ] 資料夾，然後選取 [ **新增作業** ]。
 
    ![建立新代理程式作業的選項](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
 
@@ -76,19 +76,19 @@ ms.locfileid: "87171436"
 
 1. 在 [ **封裝** ] 索引標籤上：
 
-   1. 針對 [ **封裝位置**]，選取 [ **檔案系統**]。
+   1. 針對 [ **封裝位置** ]，選取 [ **檔案系統** ]。
 
-   1. 針對檔案 **來源類型**：
+   1. 針對檔案 **來源類型** ：
 
-      - 如果您的套件已上傳至 Azure 檔案儲存體，請選取 [ **Azure 檔案共用**]。
+      - 如果您的套件已上傳至 Azure 檔案儲存體，請選取 [ **Azure 檔案共用** ]。
 
         ![檔案來源類型的選項](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-file-system.png)
 
         封裝路徑為 **`\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`** 。
 
-        在 [ **封裝檔案存取認證**] 底下，輸入 azure 檔案帳戶名稱和帳戶金鑰來存取 azure 檔案。 網域會設定為 **Azure**。
+        在 [ **封裝檔案存取認證** ] 底下，輸入 azure 檔案帳戶名稱和帳戶金鑰來存取 azure 檔案。 網域會設定為 **Azure** 。
 
-      - 如果您的套件已上傳至網路共用，請選取 [ **網路共用**]。
+      - 如果您的套件已上傳至網路共用，請選取 [ **網路共用** ]。
 
         套件路徑是套件檔案的 UNC 路徑，副檔名為 .dtsx。
 
@@ -111,7 +111,7 @@ ms.locfileid: "87171436"
 在此程式中，您會使用 SQL 受控執行個體 Agent 來執行儲存在 Azure-SSIS IR 封裝存放區中的 SSIS 封裝。
 
 1. 在最新版本的 SSMS 中，連接到 SQL 受控執行個體。
-1. 建立新的代理程式作業和新的作業步驟。 在 [ **SQL Server Agent**] 下，以滑鼠右鍵按一下 [ **作業** ] 資料夾，然後選取 [ **新增作業**]。
+1. 建立新的代理程式作業和新的作業步驟。 在 [ **SQL Server Agent** ] 下，以滑鼠右鍵按一下 [ **作業** ] 資料夾，然後選取 [ **新增作業** ]。
 
    ![建立新代理程式作業的選項](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
 
@@ -121,9 +121,9 @@ ms.locfileid: "87171436"
 
 1. 在 [ **封裝** ] 索引標籤上：
 
-   1. 針對 [ **封裝位置**]，選取 [ **封裝存放區**]。
+   1. 針對 [ **封裝位置** ]，選取 [ **封裝存放區** ]。
 
-   1. 針對 **套件路徑**：
+   1. 針對 **套件路徑** ：
 
       封裝路徑為 **`<package store name>\<folder name>\<package name>`** 。
 
@@ -146,17 +146,17 @@ ms.locfileid: "87171436"
 
 若要從 SQL 受控執行個體 Agent 作業取消封裝執行，請執行下列步驟，而不是直接停止代理程式作業：
 
-1. 從**msdb.dbo.sys作業**中尋找您的 SQL 代理程式**作業**。
+1. 從 **msdb.dbo.sys作業** 中尋找您的 SQL 代理程式 **作業** 。
 1. 使用下列查詢，根據作業識別碼尋找對應的 SSIS **executionId** ：
    ```sql
    select * from '{table for job execution}' where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
    ```
-   如果您的 SSIS 套件位於 SSISDB 中，請使用 **ssisdb.internal.execution_parameter_values** 作為工作執行的資料表。 如果您的 SSIS 封裝位於檔案系統中，請使用 **ssisdb.internal.execution_parameter_values_noncatalog**。
-1. 以滑鼠右鍵按一下 SSISDB 目錄，然後選取 [作用中的 **作業**]。
+   如果您的 SSIS 套件位於 SSISDB 中，請使用 **ssisdb.internal.execution_parameter_values** 作為工作執行的資料表。 如果您的 SSIS 封裝位於檔案系統中，請使用 **ssisdb.internal.execution_parameter_values_noncatalog** 。
+1. 以滑鼠右鍵按一下 SSISDB 目錄，然後選取 [作用中的 **作業** ]。
 
    ![SSISDB 目錄之快捷方式功能表上的 [作用中作業]](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)
 
-1. 根據 **executionId**停止對應的操作。
+1. 根據 **executionId** 停止對應的操作。
 
-## <a name="next-steps"></a>接下來的步驟
-您也可以使用 Azure Data Factory 來排程 SSIS 封裝。 如需逐步指示，請參閱 [Azure Data Factory 事件觸發](how-to-create-event-trigger.md)程式。 
+## <a name="next-steps"></a>後續步驟
+您也可以使用 Azure Data Factory 來排程 SSIS 封裝。 如需逐步指示，請參閱 [Azure Data Factory 事件觸發](how-to-create-event-trigger.md)程式。

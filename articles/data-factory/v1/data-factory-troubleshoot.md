@@ -13,12 +13,12 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 45aa444393ed81bc320a770203ca114c35e16107
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7afc16beaacee5b75d57c4e4216a105734d20a09
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84195907"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637066"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>資料處理站的疑難排解
 > [!NOTE]
@@ -59,15 +59,15 @@ ms.locfileid: "84195907"
     如果您使用的是 Chrome，請移至 [chrome web 存放區](https://chrome.google.com/webstore/)，使用 "ClickOnce" 關鍵字進行搜尋，選擇其中一個 ClickOnce 延伸模組，然後加以安裝。
 
     針對 Firefox 進行相同的操作 (安裝附加元件)。 按一下工具列上的 [開啟功能表] 按鈕 (右上角的三條水平線)，按一下 [附加元件]，以「ClickOnce」關鍵字進行搜尋，選擇其中一個 ClickOnce 延伸模組並安裝。
-* 使用入口網站中相同刀鋒視窗上顯示的 [手動安裝]**** 連結。 您可以使用這個方法來下載安裝檔案，然後手動執行它。 安裝成功之後，您會看到 [資料管理閘道組態] 對話方塊。 從入口網站畫面複製**金鑰**，並且在組態管理員中使用它來手動向服務註冊閘道器。  
+* 使用入口網站中相同刀鋒視窗上顯示的 [手動安裝]  連結。 您可以使用這個方法來下載安裝檔案，然後手動執行它。 安裝成功之後，您會看到 [資料管理閘道組態] 對話方塊。 從入口網站畫面複製 **金鑰** ，並且在組態管理員中使用它來手動向服務註冊閘道器。  
 
 ### <a name="problem-fail-to-connect-to-sql-server"></a>問題：無法連接到 SQL Server
-在閘道器機器上啟動 [資料管理閘道組態管理員]****，使用 [疑難排解]**** 索引標籤以測試從閘道器機器到 SQL Server 的連接。 如需連接/閘道器相關問題的疑難排解秘訣，請參閱 [針對閘道問題進行疑難排解](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) 。   
+在閘道器機器上啟動 [資料管理閘道組態管理員]  ，使用 [疑難排解]  索引標籤以測試從閘道器機器到 SQL Server 的連接。 如需連接/閘道器相關問題的疑難排解秘訣，請參閱 [針對閘道問題進行疑難排解](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) 。   
 
 ### <a name="problem-input-slices-are-in-waiting-state-forever"></a>問題：輸入配量永遠處于等候狀態
-配量可能因各種原因而處於**等候中**狀態。 其中一個常見的原因是 **external** 屬性未設定為 **true**。 在 Azure Data Factory 範圍外產生的任何資料集，都應該標示 **external** 屬性。 此屬性可指出資料為外部資料，並未受到 Data Factory 內的任何管線支持。 一旦資料在個別的存放區可用，資料配量就會標示為 [就緒]****。
+配量可能因各種原因而處於 **等候中** 狀態。 其中一個常見的原因是 **external** 屬性未設定為 **true** 。 在 Azure Data Factory 範圍外產生的任何資料集，都應該標示 **external** 屬性。 此屬性可指出資料為外部資料，並未受到 Data Factory 內的任何管線支持。 一旦資料在個別的存放區可用，資料配量就會標示為 [就緒]  。
 
-關於 **external** 屬性的用法，請參閱下列範例。 當您將 external 設為 true 時，您可以選擇性地指定 **externalData***。
+關於 **external** 屬性的用法，請參閱下列範例。 當您將 external 設為 true 時，您可以選擇性地指定 **externalData** _。
 
 如需此屬性的詳細資訊，請參閱 [資料集](data-factory-create-datasets.md) 文章。
 
@@ -97,7 +97,7 @@ ms.locfileid: "84195907"
 }
 ```
 
-若要解決這個錯誤，請將 **external** 屬性和選用 **externalData** 區段加入輸入資料表的 JSON 定義，並重新建立資料表。
+若要解決此錯誤，請將 _ *external* * 屬性和選擇性的 **externalData** 區段新增至輸入資料表的 JSON 定義，然後重新建立資料表。
 
 ### <a name="problem-hybrid-copy-operation-fails"></a>問題：混合式複製作業失敗
 請參閱[針對閘道問題進行疑難排解](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)以取得對於使用資料管理閘道複製到/自內部部署資料存放區的問題的疑難排解步驟。
@@ -130,9 +130,9 @@ Failed to create cluster. Exception: Unable to complete the cluster create opera
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md
-[developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[developer-reference]: /previous-versions/azure/dn834987(v=azure.100)
 [cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
-[json-scripting-reference]: https://go.microsoft.com/fwlink/?LinkId=516971
+[json-scripting-reference]: /previous-versions/azure/dn835050(v=azure.100)
 
 [azure-portal]: https://portal.azure.com/
 

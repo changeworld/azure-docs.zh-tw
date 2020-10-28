@@ -11,12 +11,12 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2c308bd038f273a7cec0442e42f8a749bc4bb8fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3539b867d8f03d11e7799498d0207a65ac9db7d8
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89073551"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636624"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>使用 Azure 彈性資料庫作業清除 SSISDB 記錄
 
@@ -160,7 +160,7 @@ $Job | Set-AzureRmSqlElasticJob -IntervalType $IntervalType -IntervalCount $Inte
 
 ## <a name="clean-up-logs-with-transact-sql"></a>使用 Transact-SQL 清除記錄
 
-下列 Transact-SQL 指令碼範例會建立新的彈性作業來觸發清除 SSISDB 記錄的預存程序。 如需詳細資訊，請參閱[使用 Transact-SQL (T-SQL) 建立及管理彈性資料庫作業](../sql-database/elastic-jobs-tsql.md)。
+下列 Transact-SQL 指令碼範例會建立新的彈性作業來觸發清除 SSISDB 記錄的預存程序。 如需詳細資訊，請參閱[使用 Transact-SQL (T-SQL) 建立及管理彈性資料庫作業](../azure-sql/database/elastic-jobs-tsql-create-manage.md)。
 
 1. 建立或識別作為 SSISDBCleanup 作業資料庫的空白 S0 或更高版本的 Azure SQL Database。 然後在 [Azure 入口網站](https://ms.portal.azure.com/#create/Microsoft.SQLElasticJobAgent)中建立彈性作業代理程式。
 

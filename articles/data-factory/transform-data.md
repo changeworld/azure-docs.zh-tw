@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 039afdafdccbefe03b5b366a89256409fda482e9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 37eac4acab7232e44f94e852b1c04c5549447b09
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368854"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637678"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory 中的資料轉換
 
@@ -49,7 +49,7 @@ Data Factory 支援下列可個別或與其他活動鏈結而加入至 [管線](
 
 ### <a name="wrangling-data-flows"></a>整頓資料流程
 
-Azure Data Factory 中的整頓資料流程可讓您反復進行雲端規模的無程式碼資料準備。 整頓資料流程與 [Power Query Online](https://docs.microsoft.com/power-query/) 整合，讓 Power Query M 函式可供透過 spark 執行以雲端規模整頓的資料。 如需詳細資訊，請參閱 [整頓資料流程](wrangling-data-flow-overview.md)。
+Azure Data Factory 中的整頓資料流程可讓您反復進行雲端規模的無程式碼資料準備。 整頓資料流程與 [Power Query Online](/power-query/) 整合，讓 Power Query M 函式可供透過 spark 執行以雲端規模整頓的資料。 如需詳細資訊，請參閱 [整頓資料流程](wrangling-data-flow-overview.md)。
 
 ## <a name="external-transformations"></a>外部轉換
 
@@ -103,8 +103,8 @@ Data Factory 管線中的 Azure Databricks Python 活動會在 Azure Databricks 
 ### <a name="compute-environments"></a>計算環境
 您需要為計算環境建立連結服務，然後在定義轉換活動時使用該連結服務。 Data Factory 支援兩種類型的資計算環境。 
 
-- **隨選**：在此情況下，運算環境完全由 Data Factory 管理。 Data Factory 服務會在工作提交前自動建立運算環境以處理資料，而在工作完成時予以移除。 您可以針對工作執行、叢集管理及啟動載入動作，設定和控制隨選計算環境的細微設定。 
-- **攜帶您自己的裝置**：在此情況下，您可以註冊自己的運算環境 (例如 HDInsight 叢集)，做為 Data Factory 中的連結服務。 運算環境由您自行管理，而 Data Factory 會使用它來執行活動。 
+- **隨選** ：在此情況下，運算環境完全由 Data Factory 管理。 Data Factory 服務會在工作提交前自動建立運算環境以處理資料，而在工作完成時予以移除。 您可以針對工作執行、叢集管理及啟動載入動作，設定和控制隨選計算環境的細微設定。 
+- **攜帶您自己的裝置** ：在此情況下，您可以註冊自己的運算環境 (例如 HDInsight 叢集)，做為 Data Factory 中的連結服務。 運算環境由您自行管理，而 Data Factory 會使用它來執行活動。 
 
 如需了解 Data Factory 所支援的計算服務，請參閱 [計算連結服務](compute-linked-services.md) 一文。 
 

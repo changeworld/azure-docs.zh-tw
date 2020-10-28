@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: db50049675766d9fd8a018c8730f48ac34e23bfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0fcd61230d68d7b26017237e2b7e0465fcb1f07
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276657"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635315"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>設定 Azure-SSIS Integration Runtime 以獲得高效能
 
@@ -122,7 +122,7 @@ Y 軸是在一小時內完成執行的封裝數目。 請注意，這只是一�
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-當您已經使用功能強大的背景工作節點來執行套件時，增加 **AzureSSISMaxParallelExecutionsPerNode** 可能會增加整合執行階段的整體輸送量。 如果您想要增加最大值，您需要使用 Azure PowerShell 來更新 **>azuressismaxparallelexecutionspernode**。 您可以根據套件的成本和背景工作角色節點的下列設定，評估適當的值。 如需詳細資訊，請參閱[一般用途的虛擬機器大小](../virtual-machines/windows/sizes-general.md)。
+當您已經使用功能強大的背景工作節點來執行套件時，增加 **AzureSSISMaxParallelExecutionsPerNode** 可能會增加整合執行階段的整體輸送量。 如果您想要增加最大值，您需要使用 Azure PowerShell 來更新 **>azuressismaxparallelexecutionspernode** 。 您可以根據套件的成本和背景工作角色節點的下列設定，評估適當的值。 如需詳細資訊，請參閱[一般用途的虛擬機器大小](../virtual-machines/sizes-general.md)。
 
 | 大小             | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大暫存儲存體輸送量：IOPS / 讀取 MBps / 寫入 MBps | 最大資料磁碟/輸送量：IOPS | 最大 NIC/預期的網路效能 (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
@@ -161,7 +161,7 @@ Y 軸是在一小時內完成執行的封裝數目。 請注意，這只是一�
 
 -   如果記錄層級設定為 [詳細資訊]，請選擇較強大的資料庫（例如 s3）。 根據我們的非官方內部測試，s3 定價層可支援具有2個節點的 SSIS 套件執行、128並行計數和詳細資訊記錄層級。
 
-您也可以根據 Azure 入口網站上提供的[資料庫交易單位](../sql-database/sql-database-what-is-a-dtu.md) (DTU) 使用量資訊，調整資料庫定價層。
+您也可以根據 Azure 入口網站上提供的[資料庫交易單位](../azure-sql/database/service-tiers-dtu.md) (DTU) 使用量資訊，調整資料庫定價層。
 
 ## <a name="design-for-high-performance"></a>為高效能而設計
 設計一個在 Azure 上執行的 SSIS 套件，不同於設計一個內部部署執行的套件。 相對於將多個獨立工作結合在相同的套件中，Azure-SSIS IR 中將它們分成數個套件，以求更有效率地執行。 針對每個套件建立套件執行，這樣一來就不用等待彼此完成。 這種方法受益於 Azure-SSIS Integration Runtime 的延展性，並可改善整體輸送量。

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: yexu
-ms.openlocfilehash: 4a0529248c58f7fa7f962d9d1432411c351c7bdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: caec9b802bb347333dd861ebe499f72249d75aa2
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440638"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634772"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure Data Factory 中複製活動的容錯
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -93,7 +93,7 @@ path | 記錄檔的路徑。 | 指定用來儲存記錄檔的路徑。 如不提
 > - 只有當您在源資料集中指定多個檔案（可以是資料夾、萬用字元或檔案清單）時，複製活動才能略過特定的錯誤檔案。 如果要將源資料集內的單一檔案指定為要複製到目的地，當發生任何錯誤時，複製活動將會失敗。
 >
 > 當使用者在來源與目的地存放區中驗證為不一致時，略過特定檔案：
-> - 您可以從 [這裡](https://docs.microsoft.com/azure/data-factory/copy-activity-data-consistency)的資料一致性檔取得更多詳細資料。
+> - 您可以從 [這裡](./copy-activity-data-consistency.md)的資料一致性檔取得更多詳細資料。
 
 ### <a name="monitoring"></a>監視 
 
@@ -146,22 +146,22 @@ Timestamp,Level,OperationName,OperationItem,Message
 ### <a name="supported-scenarios"></a>支援的案例
 複製活動支援三種案例，以偵測、跳過並記錄不相容的表格式資料：
 
-- **來源資料類型和接收原生類型之間的不相容**。 
+- **來源資料類型和接收原生類型之間的不相容** 。 
 
     例如：使用包含三種 INT 類型資料行的結構描述定義，從 Blob 儲存體中的 CSV 檔案將資料複製到 SQL 資料庫。 包含數值資料的 CSV 檔案資料列 (例如 123,456,789) 會成功複製到接收存放區。 不過，包含非數值的資料列 (例如 123,456, abc) 會偵測為不相容並加以跳過。
 
-- **來源與接收之間的資料行數目不相符**。
+- **來源與接收之間的資料行數目不相符** 。
 
     例如：使用包含六個資料行的結構描述定義，從 Blob 儲存體中的 CSV 檔案將資料複製到 SQL 資料庫。 包含六個資料行的 CSV 檔案資料列會成功複製到接收存放區。 包含多於六個資料行的 CSV 檔案資料列會偵測為不相容，並加以跳過。
 
-- **寫入 SQL Server/Azure SQL Database/Azure Cosmos DB**　時發生主索引鍵違規。
+- **寫入 SQL Server/Azure SQL Database/Azure Cosmos DB** 　時發生主索引鍵違規。
 
     例如：從 SQL Server 將資料複製到 SQL 資料庫。 會在接收 SQL 資料庫中定義主索引鍵，但是在來源 SQL Server 中不會定義這類主索引鍵。 無法將來源中的重複資料列複製到接收。 複製活動只會將來源資料中的第一個資料列複製到接收。 包含重複主索引鍵值的後續來源資料列會偵測為不相容，並加以跳過。
 
 >[!NOTE]
 >- 若要使用 PolyBase 將資料載入 Azure Synapse Analytics (先前的 SQL 資料倉儲) ，請在複製活動中透過 "[polyBaseSettings](connector-azure-sql-data-warehouse.md#azure-sql-data-warehouse-as-sink)" 指定拒絕原則，以設定 polybase 的原生容錯設定。 如往常，您仍然可以啟用將 PolyBase 不相容的資料列重新導向到 Blob 或 ADLS 的功能，如下所示。
 >- 當複製活動設定為叫用 [Amazon Redshift Unload](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift)時，不會套用此功能。
->- 當複製活動設定為叫用 [SQL 接收中儲存的程序](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#invoke-a-stored-procedure-from-a-sql-sink)時，不會套用此功能。
+>- 當複製活動設定為叫用 [SQL 接收中儲存的程序](./connector-azure-sql-database.md#invoke-a-stored-procedure-from-a-sql-sink)時，不會套用此功能。
 
 ### <a name="configuration"></a>組態
 下列範例提供的 JSON 定義，可設定在複製活動中略過不相容的資料列：
@@ -298,5 +298,3 @@ data4, data5, data6, "2627", "Violation of PRIMARY KEY constraint 'PK_tblintstrd
 
 - [複製活動概觀](copy-activity-overview.md)
 - [複製活動效能](copy-activity-performance.md)
-
-

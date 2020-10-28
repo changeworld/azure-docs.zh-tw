@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 7183a9c75c78a973b53a9c8c065d62c592b13151
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 6c0908d2656d9d6464ae1f94d5b0cd68f759530a
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441103"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637338"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure 監視器 (預覽中的 Log Analytics 工作區資料匯出) 
 Azure 監視器中的 Log Analytics 工作區資料匯出可讓您從 Log Analytics 工作區中選取的資料表持續將資料匯出到 Azure 儲存體帳戶，或在收集時 Azure 事件中樞。 本文提供這項功能的詳細資料，以及在工作區中設定資料匯出的步驟。
@@ -36,6 +36,7 @@ Log Analytics 工作區資料匯出會持續從 Log Analytics 工作區匯出資
 ## <a name="current-limitations"></a>目前的限制
 
 - 目前只能使用 CLI 或 REST 要求來執行設定。 您無法使用 Azure 入口網站或 PowerShell。
+- ```--export-all-tables```CLI 和 REST 中的選項不受支援，將會移除。 您應該明確地提供匯出規則中的資料表清單。
 - 支援的資料表目前僅限於以下支援的 [資料表](#supported-tables) 區段中的特定資料表。 如果資料匯出規則包含不支援的資料表，作業將會成功，但不會針對該資料表匯出任何資料。 如果資料匯出規則包含不存在的資料表，它將會失敗並出現錯誤 ```Table <tableName> does not exist in the workspace.```
 - 您的 Log Analytics 工作區可以位於下列任何區域中：
   - 瑞士北部
@@ -63,9 +64,9 @@ Log Analytics 工作區資料匯出會持續從 Log Analytics 工作區匯出資
 ## <a name="export-destinations"></a>匯出目的地
 
 ### <a name="storage-account"></a>儲存體帳戶
-每小時都會將資料傳送至儲存體帳戶。 資料匯出設定會為儲存體帳戶中的每個資料表建立一個容器，並 *在後面加* 上該資料表的名稱。 例如，資料表 *SecurityEvent* 會傳送至名為 *am-SecurityEvent*的容器。
+每小時都會將資料傳送至儲存體帳戶。 資料匯出設定會為儲存體帳戶中的每個資料表建立一個容器，並 *在後面加* 上該資料表的名稱。 例如，資料表 *SecurityEvent* 會傳送至名為 *am-SecurityEvent* 的容器。
 
-儲存體帳戶 blob 路徑為 *WorkspaceResourceId =/subscriptions/subscription-id/resourcegroups/ \<resource-group\> /providers/microsoft.operationalinsights/workspaces/ \<workspace\> /y =/m =/d =/h = \<four-digit numeric year\> \<two-digit numeric month\> \<two-digit numeric day\> \<two-digit 24-hour clock hour\> 00/PT1H.js開啟*。 因為附加 blob 僅限於儲存體中的50K 寫入，所以如果附加的數目很高，匯出的 blob 數目可能會擴充。 在這種情況下，blob 的命名模式會是 PT1H_ #，其中 # 是增量 blob 計數。
+儲存體帳戶 blob 路徑為 *WorkspaceResourceId =/subscriptions/subscription-id/resourcegroups/ \<resource-group\> /providers/microsoft.operationalinsights/workspaces/ \<workspace\> /y =/m =/d =/h = \<four-digit numeric year\> \<two-digit numeric month\> \<two-digit numeric day\> \<two-digit 24-hour clock hour\> 00/PT1H.js開啟* 。 因為附加 blob 僅限於儲存體中的50K 寫入，所以如果附加的數目很高，匯出的 blob 數目可能會擴充。 在這種情況下，blob 的命名模式會是 PT1H_ #，其中 # 是增量 blob 計數。
 
 儲存體帳戶資料格式為 [JSON 行](diagnostic-logs-append-blobs.md)。 這表示每筆記錄都是以一個新行分隔，而且沒有外部記錄陣列，而 JSON 記錄之間沒有逗號。 
 
@@ -74,12 +75,12 @@ Log Analytics 工作區資料匯出會持續從 Log Analytics 工作區匯出資
 當以時間為基礎的保留原則啟用 *allowProtectedAppendWrites* 設定時，Log Analytics 資料匯出可以將附加 blob 寫入不可變的儲存體帳戶。 這可讓您將新的區塊寫入附加 blob，同時保有永久性的保護和合規性。 請參閱 [允許受保護的附加 blob 寫入](../../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes)。
 
 ### <a name="event-hub"></a>事件中樞
-資料會在接近 Azure 監視器時，以近乎即時的方式傳送至您的事件中樞。 系統會為您匯出的每個資料類型建立事件中樞，並*在後面加上資料表名稱。* 例如，資料表 *SecurityEvent* 會傳送至名為 *SecurityEvent*的事件中樞。 如果您想要匯出的資料到達特定的事件中樞，或資料表的名稱超過47個字元的限制，您可以提供自己的事件中樞名稱，並將所有資料表匯出到其中。
+資料會在接近 Azure 監視器時，以近乎即時的方式傳送至您的事件中樞。 系統會為您匯出的每個資料類型建立事件中樞，並 *在後面加上資料表名稱。* 例如，資料表 *SecurityEvent* 會傳送至名為 *SecurityEvent* 的事件中樞。 如果您想要匯出的資料到達特定的事件中樞，或資料表的名稱超過47個字元的限制，您可以提供自己的事件中樞名稱，並將已定義資料表的所有資料匯出至該名稱。
 
 匯出的資料量通常會隨著時間增加，而且必須增加事件中樞規模以處理較大的傳輸速率，並避免節流案例和資料延遲。 您應該使用事件中樞的自動擴充功能，自動擴大並增加輸送量單位的數目，並符合使用量需求。 如需詳細資料，請參閱 [自動擴大 Azure 事件中樞輸送量單位](../../event-hubs/event-hubs-auto-inflate.md) 。
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 以下是在設定 Log Analytics 資料匯出之前必須完成的必要條件。
 
 - 儲存體帳戶和事件中樞必須已建立，且必須與 Log Analytics 工作區位於相同的區域。 如果您需要將資料複寫至其他儲存體帳戶，您可以使用任何 [Azure 儲存體的冗余選項](../../storage/common/storage-redundancy.md)。  
@@ -98,7 +99,7 @@ Log Analytics 工作區資料匯出會持續從 Log Analytics 工作區匯出資
 
 - Microsoft.Insights
 
-此資源提供者可能已經註冊給大部分的 Azure 監視器使用者。 若要確認，請移至 Azure 入口網站中的 [ **訂閱** ]。 選取您的訂用帳戶，然後按一下功能表的 [**設定**] 區段中的 [**資源提供者**]。 找出 [ **Microsoft Insights**]。 如果其狀態為 [已 **註冊**]，表示它已註冊。 如果沒有，請按一下 [ **註冊** ] 進行註冊。
+此資源提供者可能已經註冊給大部分的 Azure 監視器使用者。 若要確認，請移至 Azure 入口網站中的 [ **訂閱** ]。 選取您的訂用帳戶，然後按一下功能表的 [ **設定** ] 區段中的 [ **資源提供者** ]。 找出 [ **Microsoft Insights** ]。 如果其狀態為 [已 **註冊** ]，表示它已註冊。 如果沒有，請按一下 [ **註冊** ] 進行註冊。
 
 您也可以使用任何可用的方法來註冊資源提供者 [，如 Azure 資源提供者和類型](../../azure-resource-manager/management/resource-providers-and-types.md)中所述。 以下是使用 PowerShell 的範例命令：
 
@@ -107,13 +108,18 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 ```
 
 ### <a name="allow-trusted-microsoft-services"></a>允許信任的 Microsoft 服務
-如果您已將儲存體帳戶設定為允許從選取的網路進行存取，您需要新增例外狀況，以允許 Azure 監視器寫入至帳戶。 從儲存體帳戶的 **防火牆和虛擬網路** ，選取 [ **允許信任的 Microsoft 服務存取此儲存體帳戶**]。
+如果您已將儲存體帳戶設定為允許從選取的網路進行存取，您需要新增例外狀況，以允許 Azure 監視器寫入至帳戶。 從儲存體帳戶的 **防火牆和虛擬網路** ，選取 [ **允許信任的 Microsoft 服務存取此儲存體帳戶** ]。
 
 [![儲存體帳戶防火牆和虛擬網路](media/logs-data-export/storage-account-vnet.png)](media/logs-data-export/storage-account-vnet.png#lightbox)
 
 
 ### <a name="create-or-update-data-export-rule"></a>建立或更新資料匯出規則
-資料匯出規則會定義要從所有資料表或一組特定資料表匯出到單一目的地的資料。 如果您需要傳送至多個目的地，請建立多個規則。
+資料匯出規則會定義要針對一組資料表匯出到單一目的地的資料。 您可以為每個目的地建立規則。
+
+使用下列 CLI 命令來查看工作區中的資料表。 它有助於複製您想要的資料表，並包含在資料匯出規則中。
+```azurecli
+az monitor log-analytics workspace table list -resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
+```
 
 使用下列命令，以使用 CLI 來建立儲存體帳戶的資料匯出規則。
 
@@ -142,8 +148,8 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
             "resourceId": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/Microsoft.Storage/storageAccounts/storage-account-name"
         },
         "tablenames": [
-"table1",
-    "table2" 
+            "table1",
+            "table2" 
         ],
         "enable": true
     }
@@ -165,9 +171,26 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
         "enable": true
     }
 }
-
 ```
 
+以下是提供事件中樞名稱的事件中樞 REST 要求的範例主體。 在此情況下，所有匯出的資料都會傳送到此事件中樞。
+
+```json
+{
+    "properties": {
+        "destination": {
+            "resourceId": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/Microsoft.EventHub/namespaces/eventhub-namespaces-name",
+            "metaData": {
+                "EventHubName": "eventhub-name"
+        },
+        "tablenames": [
+            "table1",
+            "table2"
+        ],
+        "enable": true
+    }
+}
+```
 
 ## <a name="view-data-export-configuration"></a>查看資料匯出設定
 使用下列命令，以使用 CLI 來查看資料匯出規則的設定。
@@ -246,7 +269,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 支援的資料表目前僅限於以下指定的資料表。 除非指定了限制，否則將匯出資料表中的所有資料。 這份清單會隨著加入其他資料表的支援而更新。
 
 
-| 資料表 | 限制 |
+| Table | 限制 |
 |:---|:---|:---|
 | AADDomainServicesAccountLogon | |
 | AADDomainServicesAccountManagement | |
@@ -406,7 +429,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | 更新 | 部分支援。 某些資料是透過不支援匯出的內部服務所內嵌。 這項資料目前不會匯出。 |
 | UpdateRunProgress | |
 | UpdateSummary | |
-| 使用方式 | |
+| 使用量 | |
 | UserAccessAnalytics | |
 | UserPeerAnalytics | |
 | 關注清單 | |

@@ -7,17 +7,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: daperlov
-ms.openlocfilehash: 5e846ed02d1a0ac22c9c9479f3367800d1dc9dd2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 452aa3406ac09dd8342d8ade0b56b126067b7582
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92042587"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636403"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure Data Factory 中的 Common Data Model 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Common Data Model (CDM) 中繼資料系統，可讓您輕鬆地在應用程式和商務程式之間共用資料和其意義。 若要深入瞭解，請參閱 [Common Data Model](https://docs.microsoft.com/common-data-model/) 總覽。
+Common Data Model (CDM) 中繼資料系統，可讓您輕鬆地在應用程式和商務程式之間共用資料和其意義。 若要深入瞭解，請參閱 [Common Data Model](/common-data-model/) 總覽。
 
 在 Azure Data Factory 中，使用者可以使用對應資料流程，從儲存在 [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) model.js中的 CDM 實體轉換資料。 您也可以使用 CDM 實體參考，以 CDM 格式接收資料，以將資料以 CSV 或 Parquet 格式傳入資料分割資料夾。 
 
@@ -71,7 +71,7 @@ Common Data Model 是以 [內嵌資料集](data-flow-source.md#inline-datasets) 
 
 #### <a name="import-schema"></a>匯入架構
 
-CDM 只能做為內嵌資料集使用，而且預設不會有相關聯的架構。 若要取得資料行中繼資料，請按一下 [**預測**] 索引標籤的 [匯**入架構**] 按鈕這可讓您參考主體所指定的資料行名稱和資料類型。 若要匯入架構， [資料流程](concepts-data-flow-debug-mode.md) 的偵測會話必須是作用中，而且您必須要有現有的 CDM 實體定義檔才能指向。
+CDM 只能做為內嵌資料集使用，而且預設不會有相關聯的架構。 若要取得資料行中繼資料，請按一下 [ **預測** ] 索引標籤的 [匯 **入架構** ] 按鈕這可讓您參考主體所指定的資料行名稱和資料類型。 若要匯入架構， [資料流程](concepts-data-flow-debug-mode.md) 的偵測會話必須是作用中，而且您必須要有現有的 CDM 實體定義檔才能指向。
 
 將資料流程資料行對應到接收轉換中的實體屬性時，請按一下 [對應] 索引標籤，然後選取 [匯入架構]。 ADF 會讀取您在接收選項中指向的實體參考，讓您能夠對應到目標 CDM 架構。
 

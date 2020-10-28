@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 10/26/2020
 ms.author: lle
-ms.openlocfilehash: c85e27cedfbcebe7060dfed2f96fc53aea9838c9
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 3598db409e5493737753a8a1b03de168af5c664b
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629358"
+ms.locfileid: "92637185"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>針對自我裝載整合執行階段進行疑難排解
 
@@ -183,7 +183,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 此問題通�
  
 `<LogProperties><ErrorInfo>[{"Code":0,"Message":"The type initializer for 'Npgsql.PoolManager' threw an exception.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.TypeInitializationException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[{"Code":0,"Message":"Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified.","EventType":0,"Category":5,"Data":{},"MsgId":null,"ExceptionType":"System.IO.FileNotFoundException","Source":"Npgsql","StackTrace":"","InnerEventInfos":[]}]}]</ErrorInfo></LogProperties>`
  
-如需 GAC 的詳細資訊，請參閱 [這篇文章](https://docs.microsoft.com/dotnet/framework/app-domains/gac)。
+如需 GAC 的詳細資訊，請參閱 [這篇文章](/dotnet/framework/app-domains/gac)。
 
 
 ### <a name="how-to-audit-self-hosted-ir-key-missing"></a>如何稽核自我裝載 IR 金鑰遺漏的問題
@@ -468,7 +468,7 @@ Get_LoopbackIpOrName 時，無法在新電腦上註冊自我裝載 IR。
 
 > [!NOTE] 
 > Proxy 考量：
-> *    檢查是否需要將 Proxy 伺服器放在安全的收件者清單中。 若是如此，請確定[這些網域](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network) 列於安全收件者的清單上。
+> *    檢查是否需要將 Proxy 伺服器放在安全的收件者清單中。 若是如此，請確定[這些網域](./data-movement-security-considerations.md#firewall-requirements-for-on-premisesprivate-network) 列於安全收件者的清單上。
 > *    檢查 Proxy 伺服器上的 TLS/SSL 憑證「wu2.frontend.clouddatahub.net/」是否受信任。
 > *    如果您在 Proxy 上使用 Active Directory 驗證，請將服務帳戶變更為可將 Proxy 作為「整合執行階段服務」存取的使用者帳戶。
 
@@ -632,7 +632,7 @@ Get_LoopbackIpOrName 時，無法在新電腦上註冊自我裝載 IR。
 - 如果您使用本檔中所述的方法，根據 FQDN 名稱定義防火牆規則，則不會受到影響： [ip 位址的防火牆設定和允許清單設定](data-movement-security-considerations.md#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway)。
 - 但是，如果您明確地在公司防火牆上啟用輸出 Ip 的允許清單，就會受到影響。
 
-當您受到影響時要採取的動作：通知您的網路基礎結構小組，更新您的網路設定，以在2020年11月8日之前使用最新的 Data Factory IP 位址。  若要下載最新的 IP 位址，請移至 [服務標籤 [IP 範圍下載] 連結](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)。
+當您受到影響時要採取的動作：通知您的網路基礎結構小組，更新您的網路設定，以在2020年11月8日之前使用最新的 Data Factory IP 位址。  若要下載最新的 IP 位址，請移至 [服務標籤 [IP 範圍下載] 連結](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)。
 
 ##### <a name="scenario-2-outbound-communication-from-self-hosted-integration-runtime-running-on-an-azure-vm-inside-customer-managed-azure-virtual-network"></a>案例2：從自我裝載的 Integration Runtime 在客戶管理的 Azure 虛擬網路內于 Azure VM 上執行的輸出通訊
 如何判斷您是否受影響：
@@ -641,14 +641,14 @@ Get_LoopbackIpOrName 時，無法在新電腦上註冊自我裝載 IR。
  ![目的地檢查](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
 - 但是，如果您在 Azure 虛擬網路上的 NSG 規則設定上明確啟用了輸出 IP 位址的允許清單，就會受到影響。
 
-當您受到影響時要採取的動作：通知網路基礎結構小組，以更新 Azure 虛擬網路設定上的 NSG 規則，以在2020年11月8日之前使用最新的 Data Factory IP 位址。  若要下載最新的 IP 位址，請移至 [服務標籤 [IP 範圍下載] 連結](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)。
+當您受到影響時要採取的動作：通知網路基礎結構小組，以更新 Azure 虛擬網路設定上的 NSG 規則，以在2020年11月8日之前使用最新的 Data Factory IP 位址。  若要下載最新的 IP 位址，請移至 [服務標籤 [IP 範圍下載] 連結](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)。
 
 ##### <a name="scenario-3-outbound-communication-from-ssis-integration-runtime-in-customer-managed-azure-virtual-network"></a>案例3：客戶管理的 Azure 虛擬網路中來自 SSIS Integration Runtime 的輸出通訊
 - 檢查您的私人網路中是否有包含 SSIS Integration Runtime 的任何輸出 NSG 規則。 如果沒有輸出限制，就不會有任何影響。
 - 如果您有輸出規則限制，請檢查您是否使用服務標記。 如果您使用服務標籤，則不需要變更或新增任何新的 IP 範圍，因為新的 IP 範圍會在現有的服務標籤底下。
 - 但是，如果您在 Azure 虛擬網路上的 NSG 規則設定上明確啟用了輸出 IP 位址的允許清單，就會受到影響。
 
-當您受到影響時要採取的動作：通知網路基礎結構小組，以更新 Azure 虛擬網路設定上的 NSG 規則，以在2020年11月8日之前使用最新的 Data Factory IP 位址。  若要下載最新的 IP 位址，請移至 [服務標籤 [IP 範圍下載] 連結](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files)。
+當您受到影響時要採取的動作：通知網路基礎結構小組，以更新 Azure 虛擬網路設定上的 NSG 規則，以在2020年11月8日之前使用最新的 Data Factory IP 位址。  若要下載最新的 IP 位址，請移至 [服務標籤 [IP 範圍下載] 連結](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)。
 
 ### <a name="could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>無法建立 SSLTLS 安全通道的信任關係 
 
@@ -709,7 +709,7 @@ Get_LoopbackIpOrName 時，無法在新電腦上註冊自我裝載 IR。
 *  [Data Factory 部落格](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory 功能要求](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure 影片](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
+*  [Microsoft 問與答頁面](/answers/topics/azure-data-factory.html)
 *  [Data Factory 的堆疊溢位論壇](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [關於 Data Factory 的 Twitter 資訊](https://twitter.com/hashtag/DataFactory)
 *  [對應資料流程效能指南](concepts-data-flow-performance.md)

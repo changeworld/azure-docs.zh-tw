@@ -10,25 +10,25 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: 5dd8e483751010a6090e0ec415c40d381e978fd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14d016f0deba518f16908492b4fae020b2dcc58c
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84118817"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637542"
 ---
 # <a name="access-data-stores-and-file-shares-with-windows-authentication-from-ssis-packages-in-azure"></a>在 Azure 中從 SSIS 套件使用 Windows 驗證來存取資料存放區和檔案共用
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-您可以使用 Windows 驗證從 Azure Data Factory (ADF) 中 Azure-SSIS Integration Runtime (IR) 上執行的 SSIS 套件存取資料存放區，例如 SQL 伺服器、檔案共用、Azure 檔案等。 您的資料存放區可以是內部部署、裝載在 Azure 虛擬機器 (VM)上，也可以作為受控服務在 Azure 中執行。 如果它們是在內部部署環境，您必須將 Azure-SSIS IR 加入虛擬網路 (Microsoft Azure 虛擬網路) 連接到您的內部部署網路，請參閱將 [Azure-SSIS IR 聯結至 Microsoft Azure 虛擬網路](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。 從 Azure-SSIS IR 上執行的 SSIS 套件中使用 Windows 驗證存取資料存放區有四種方法：
+您可以使用 Windows 驗證從 Azure Data Factory (ADF) 中 Azure-SSIS Integration Runtime (IR) 上執行的 SSIS 套件存取資料存放區，例如 SQL 伺服器、檔案共用、Azure 檔案等。 您的資料存放區可以是內部部署、裝載在 Azure 虛擬機器 (VM)上，也可以作為受控服務在 Azure 中執行。 如果它們是在內部部署環境，您必須將 Azure-SSIS IR 加入虛擬網路 (Microsoft Azure 虛擬網路) 連接到您的內部部署網路，請參閱將 [Azure-SSIS IR 聯結至 Microsoft Azure 虛擬網路](./join-azure-ssis-integration-runtime-virtual-network.md)。 從 Azure-SSIS IR 上執行的 SSIS 套件中使用 Windows 驗證存取資料存放區有四種方法：
 
 | 連線方法 | 有效範圍 | 設定步驟 | 套件中的存取方法 | 認證組數和已連線資源 | 已連線資源的類型 | 
 |---|---|---|---|---|---|
-| 設定活動層級的執行內容 | 每個執行 SSIS 套件活動 | 在執行 SSIS 套件作為 ADF 管線中的執行 SSIS 套件活動時，設定 **Windows 驗證**屬性來設定 "Execution/Run as" 內容。<br/><br/> 如需詳細資訊，請參閱[設定執行 SSIS 套件活動](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)。 | 透過 UNC 路徑直接存取套件中的資源，例如，如果您使用檔案共用或 Azure 檔案儲存體： `\\YourFileShareServerName\YourFolderName` 或 `\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | 針對所有已連線的資源只支援一組認證 | - 內部部署/Azure VM 上的檔案共用<br/><br/> - Azure 檔案，請參閱[使用 Azure 檔案共用](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) <br/><br/> - 內部部署 SQL Server/Azure VM 搭配 Windows 驗證<br/><br/> - 其他資源搭配 Windows 驗證 |
-| 設定目錄層級的執行內容 | 根據 Azure-SSIS IR，但在設定活動層級的執行內容時會覆寫， (見上述)  | 執行 SSISDB `catalog.set_execution_credential` 預存程序，以設定 "Execution/Run as" 內容。<br/><br/> 如需詳細資訊，請參閱本文下方的其餘部分。 | 透過 UNC 路徑直接存取套件中的資源，例如，如果您使用檔案共用或 Azure 檔案儲存體： `\\YourFileShareServerName\YourFolderName` 或 `\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | 針對所有已連線的資源只支援一組認證 | - 內部部署/Azure VM 上的檔案共用<br/><br/> - Azure 檔案，請參閱[使用 Azure 檔案共用](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) <br/><br/> - 內部部署 SQL Server/Azure VM 搭配 Windows 驗證<br/><br/> - 其他資源搭配 Windows 驗證 |
-| 透過 `cmdkey` 命令保存認證 | 根據 Azure-SSIS IR，但在設定活動/目錄層級的執行內容時會覆寫， (見上述)  | `cmdkey`在自訂安裝腳本中執行命令 (在布建 `main.cmd` Azure-SSIS IR 時) ，例如，如果您使用檔案共用或 Azure 檔案儲存體： `cmdkey /add:YourFileShareServerName /user:YourDomainName\YourUsername /pass:YourPassword` 或 `cmdkey /add:YourAzureStorageAccountName.file.core.windows.net /user:azure\YourAzureStorageAccountName /pass:YourAccessKey` 。<br/><br/> 如需詳細資訊，請參閱[自訂 Azure SSIS IR 的安裝](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)。 | 透過 UNC 路徑直接存取套件中的資源，例如，如果您使用檔案共用或 Azure 檔案儲存體： `\\YourFileShareServerName\YourFolderName` 或 `\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | 支援針對不同的連線資源使用多組認證 | - 內部部署/Azure VM 上的檔案共用<br/><br/> - Azure 檔案，請參閱[使用 Azure 檔案共用](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) <br/><br/> - 內部部署 SQL Server/Azure VM 搭配 Windows 驗證<br/><br/> - 其他資源搭配 Windows 驗證 |
-| 在套件執行期間裝載磁碟機 (非持續性) | 每個套件 | 以在套件控制流程一開始加入的「執行處理工作」執行 `net use` 命令，例如：`net use D: \\YourFileShareServerName\YourFolderName` | 透過對應磁碟機存取檔案共用 | 支援不同的檔案共用使用多個磁碟機 | - 內部部署/Azure VM 上的檔案共用<br/><br/> - Azure 檔案，請參閱[使用 Azure 檔案共用](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) |
+| 設定活動層級的執行內容 | 每個執行 SSIS 套件活動 | 在執行 SSIS 套件作為 ADF 管線中的執行 SSIS 套件活動時，設定 **Windows 驗證** 屬性來設定 "Execution/Run as" 內容。<br/><br/> 如需詳細資訊，請參閱[設定執行 SSIS 套件活動](./how-to-invoke-ssis-package-ssis-activity.md)。 | 透過 UNC 路徑直接存取套件中的資源，例如，如果您使用檔案共用或 Azure 檔案儲存體： `\\YourFileShareServerName\YourFolderName` 或 `\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | 針對所有已連線的資源只支援一組認證 | - 內部部署/Azure VM 上的檔案共用<br/><br/> - Azure 檔案，請參閱[使用 Azure 檔案共用](../storage/files/storage-how-to-use-files-windows.md) <br/><br/> - 內部部署 SQL Server/Azure VM 搭配 Windows 驗證<br/><br/> - 其他資源搭配 Windows 驗證 |
+| 設定目錄層級的執行內容 | 根據 Azure-SSIS IR，但在設定活動層級的執行內容時會覆寫， (見上述)  | 執行 SSISDB `catalog.set_execution_credential` 預存程序，以設定 "Execution/Run as" 內容。<br/><br/> 如需詳細資訊，請參閱本文下方的其餘部分。 | 透過 UNC 路徑直接存取套件中的資源，例如，如果您使用檔案共用或 Azure 檔案儲存體： `\\YourFileShareServerName\YourFolderName` 或 `\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | 針對所有已連線的資源只支援一組認證 | - 內部部署/Azure VM 上的檔案共用<br/><br/> - Azure 檔案，請參閱[使用 Azure 檔案共用](../storage/files/storage-how-to-use-files-windows.md) <br/><br/> - 內部部署 SQL Server/Azure VM 搭配 Windows 驗證<br/><br/> - 其他資源搭配 Windows 驗證 |
+| 透過 `cmdkey` 命令保存認證 | 根據 Azure-SSIS IR，但在設定活動/目錄層級的執行內容時會覆寫， (見上述)  | `cmdkey`在自訂安裝腳本中執行命令 (在布建 `main.cmd` Azure-SSIS IR 時) ，例如，如果您使用檔案共用或 Azure 檔案儲存體： `cmdkey /add:YourFileShareServerName /user:YourDomainName\YourUsername /pass:YourPassword` 或 `cmdkey /add:YourAzureStorageAccountName.file.core.windows.net /user:azure\YourAzureStorageAccountName /pass:YourAccessKey` 。<br/><br/> 如需詳細資訊，請參閱[自訂 Azure SSIS IR 的安裝](./how-to-configure-azure-ssis-ir-custom-setup.md)。 | 透過 UNC 路徑直接存取套件中的資源，例如，如果您使用檔案共用或 Azure 檔案儲存體： `\\YourFileShareServerName\YourFolderName` 或 `\\YourAzureStorageAccountName.file.core.windows.net\YourFolderName` | 支援針對不同的連線資源使用多組認證 | - 內部部署/Azure VM 上的檔案共用<br/><br/> - Azure 檔案，請參閱[使用 Azure 檔案共用](../storage/files/storage-how-to-use-files-windows.md) <br/><br/> - 內部部署 SQL Server/Azure VM 搭配 Windows 驗證<br/><br/> - 其他資源搭配 Windows 驗證 |
+| 在套件執行期間裝載磁碟機 (非持續性) | 每個套件 | 以在套件控制流程一開始加入的「執行處理工作」執行 `net use` 命令，例如：`net use D: \\YourFileShareServerName\YourFolderName` | 透過對應磁碟機存取檔案共用 | 支援不同的檔案共用使用多個磁碟機 | - 內部部署/Azure VM 上的檔案共用<br/><br/> - Azure 檔案，請參閱[使用 Azure 檔案共用](../storage/files/storage-how-to-use-files-windows.md) |
 |||||||
 
 > [!WARNING]
@@ -44,7 +44,7 @@ ms.locfileid: "84118817"
 
 若要提供網域認證，讓套件使用 Windows 驗證以存取內部部署資料存放區，請執行下列動作：
 
-1. 使用 SQL Server Management Studio (SSMS) 或其他工具，連接到裝載 SSISDB 的 SQL Database/SQL 受控執行個體。 如需詳細資訊，請參閱[連線至 Azure 中的 SSISDB](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)。
+1. 使用 SQL Server Management Studio (SSMS) 或其他工具，連接到裝載 SSISDB 的 SQL Database/SQL 受控執行個體。 如需詳細資訊，請參閱[連線至 Azure 中的 SSISDB](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)。
 
 2. 使用 SSISDB 作為目前的資料庫，開啟查詢視窗。
 
@@ -60,7 +60,7 @@ ms.locfileid: "84118817"
 
 若要檢視作用中的網域認證，請執行下列動作：
 
-1. 使用 SSMS 或其他工具，連接到裝載 SSISDB 的 SQL Database/SQL 受控執行個體。 如需詳細資訊，請參閱[連線至 Azure 中的 SSISDB](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)。
+1. 使用 SSMS 或其他工具，連接到裝載 SSISDB 的 SQL Database/SQL 受控執行個體。 如需詳細資訊，請參閱[連線至 Azure 中的 SSISDB](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)。
 
 2. 使用 SSISDB 作為目前的資料庫，開啟查詢視窗。
 
@@ -75,7 +75,7 @@ ms.locfileid: "84118817"
 ### <a name="clear-domain-credentials"></a>清除網域認證
 若要清除並移除本文中所述您所提供的認證，請執行下列動作：
 
-1. 使用 SSMS 或其他工具，連接到裝載 SSISDB 的 SQL Database/SQL 受控執行個體。 如需詳細資訊，請參閱[連線至 Azure 中的 SSISDB](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)。
+1. 使用 SSMS 或其他工具，連接到裝載 SSISDB 的 SQL Database/SQL 受控執行個體。 如需詳細資訊，請參閱[連線至 Azure 中的 SSISDB](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)。
 
 2. 使用 SSISDB 作為目前的資料庫，開啟查詢視窗。
 
@@ -105,9 +105,9 @@ ms.locfileid: "84118817"
 
 1.  在 SQL Server 組態管理員中，啟用 TCP/IP 通訊協定。
 
-2. 允許通過 Windows 防火牆進行存取。 如需詳細資訊，請參閱[設定 Windows 防火牆以存取 SQL Server](https://docs.microsoft.com/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access)。
+2. 允許通過 Windows 防火牆進行存取。 如需詳細資訊，請參閱[設定 Windows 防火牆以存取 SQL Server](/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access)。
 
-3. 將您的 Azure-SSIS IR 加入至連線至 SQL Server 內部部署的 Microsoft Azure 虛擬網路。  如需詳細資訊，請參閱將 [Azure-SSIS IR 加入 Microsoft Azure 虛擬網路](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。
+3. 將您的 Azure-SSIS IR 加入至連線至 SQL Server 內部部署的 Microsoft Azure 虛擬網路。  如需詳細資訊，請參閱將 [Azure-SSIS IR 加入 Microsoft Azure 虛擬網路](./join-azure-ssis-integration-runtime-virtual-network.md)。
 
 4. 使用 SSISDB `catalog.set_execution_credential` 預存程序提供本文所述的認證。
 
@@ -132,7 +132,7 @@ ms.locfileid: "84118817"
 
 1. 允許通過 Windows 防火牆進行存取。
 
-2. 將您的 Azure-SSIS IR 加入至連線至內部部署檔案共用的 Microsoft Azure 虛擬網路。  如需詳細資訊，請參閱將 [Azure-SSIS IR 加入 Microsoft Azure 虛擬網路](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。
+2. 將您的 Azure-SSIS IR 加入至連線至內部部署檔案共用的 Microsoft Azure 虛擬網路。  如需詳細資訊，請參閱將 [Azure-SSIS IR 加入 Microsoft Azure 虛擬網路](./join-azure-ssis-integration-runtime-virtual-network.md)。
 
 3. 使用 SSISDB `catalog.set_execution_credential` 預存程序提供本文所述的認證。
 
@@ -140,7 +140,7 @@ ms.locfileid: "84118817"
 
 若要從 Azure 中執行的套件存取 Azure VM 上的檔案共用，請執行下列動作：
 
-1. 使用 SSMS 或其他工具，連接到裝載 SSISDB 的 SQL Database/SQL 受控執行個體。 如需詳細資訊，請參閱[連線至 Azure 中的 SSISDB](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)。
+1. 使用 SSMS 或其他工具，連接到裝載 SSISDB 的 SQL Database/SQL 受控執行個體。 如需詳細資訊，請參閱[連線至 Azure 中的 SSISDB](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)。
 
 2. 使用 SSISDB 作為目前的資料庫，開啟查詢視窗。
 
@@ -156,7 +156,7 @@ ms.locfileid: "84118817"
 
 若要從 Azure 中執行的套件存取 Azure Files 中的檔案共用，請執行下列動作：
 
-1. 使用 SSMS 或其他工具，連接到裝載 SSISDB 的 SQL Database/SQL 受控執行個體。 如需詳細資訊，請參閱[連線至 Azure 中的 SSISDB](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)。
+1. 使用 SSMS 或其他工具，連接到裝載 SSISDB 的 SQL Database/SQL 受控執行個體。 如需詳細資訊，請參閱[連線至 Azure 中的 SSISDB](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)。
 
 2. 使用 SSISDB 作為目前的資料庫，開啟查詢視窗。
 
@@ -168,6 +168,6 @@ ms.locfileid: "84118817"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 部署您的套件。 如需詳細資訊，請參閱[使用 SSMS 將 SSIS 專案部署到 Azure](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-deploy-ssms)。
-- 執行您的套件。 如需詳細資訊，請參閱[在 Azure 中使用 SSMS 執行 SSIS 套件](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-run-ssms)。
-- 排程您的套件。 如需詳細資訊，請參閱[在 Azure 中排程 SSIS 套件](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)。
+- 部署您的套件。 如需詳細資訊，請參閱[使用 SSMS 將 SSIS 專案部署到 Azure](/sql/integration-services/ssis-quickstart-deploy-ssms)。
+- 執行您的套件。 如需詳細資訊，請參閱[在 Azure 中使用 SSMS 執行 SSIS 套件](/sql/integration-services/ssis-quickstart-run-ssms)。
+- 排程您的套件。 如需詳細資訊，請參閱[在 Azure 中排程 SSIS 套件](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)。

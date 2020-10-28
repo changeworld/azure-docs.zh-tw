@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/16/2020
-ms.openlocfilehash: dabb7b8cd8023fe88a8c8d6dc507a09623bd11dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50ef97bca0a5359c49ba2f18b1ec789ab076350a
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86537675"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637729"
 ---
 # <a name="create-a-predictive-pipeline-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>使用 Azure Machine Learning Studio (傳統) 和 Azure Data Factory 建立預測管線
 
@@ -27,9 +27,9 @@ ms.locfileid: "86537675"
 
 [Azure Machine Learning Studio (傳統) ](https://azure.microsoft.com/documentation/services/machine-learning/) 可讓您建立、測試及部署預測性分析解決方案。 從高階觀點而言，由下列三個步驟完成這個動作：
 
-1. **建立訓練實驗**。 您可以使用 Azure Machine Learning Studio (傳統) 來執行此步驟。 Azure Machine Learning Studio (傳統) 是一個共同作業的視覺化開發環境，可讓您使用定型資料來定型及測試預測性分析模型。
-2. **將其轉換為評分實驗**。 一旦您的模型已使用現有資料訓練，並做好使用該模型為新資料評分的準備之後，您準備並簡化用於評分實驗。
-3. **將其部署為 Web 服務**。 只要按一下，您就可以將評分實驗當做 Azure Web 服務發佈。 您可以透過此 Web 服務端點將資料傳送給您的模型，並從模型接收結果預測。
+1. **建立訓練實驗** 。 您可以使用 Azure Machine Learning Studio (傳統) 來執行此步驟。 Azure Machine Learning Studio (傳統) 是一個共同作業的視覺化開發環境，可讓您使用定型資料來定型及測試預測性分析模型。
+2. **將其轉換為評分實驗** 。 一旦您的模型已使用現有資料訓練，並做好使用該模型為新資料評分的準備之後，您準備並簡化用於評分實驗。
+3. **將其部署為 Web 服務** 。 只要按一下，您就可以將評分實驗當做 Azure Web 服務發佈。 您可以透過此 Web 服務端點將資料傳送給您的模型，並從模型接收結果預測。
 
 ### <a name="data-factory-and-azure-machine-learning-studio-classic-together"></a>Data Factory 和 Azure Machine Learning Studio 一起 (傳統) 
 Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的 [Azure Machine Learning Studio (傳統) ](https://azure.microsoft.com/documentation/services/machine-learning) web 服務進行預測性分析。 使用 Azure Data Factory 管線中的 **批次執行活動** ，您可以叫用 Azure Machine Learning Studio (傳統) web 服務來對批次中的資料進行預測。
@@ -39,11 +39,11 @@ Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的 [Azure Ma
 1. 將訓練實驗 (而非預設實驗) 發佈為 Web 服務。 您可以在 Azure Machine Learning Studio (傳統) 中執行此步驟，就像在先前的案例中將預測實驗公開為 web 服務一樣。
 2. 使用 Azure Machine Learning Studio (傳統) 批次執行活動來叫用用於訓練實驗的 web 服務。 基本上，您可以使用 Azure Machine Learning Studio (傳統) 批次執行活動來叫用定型 web 服務和評分 web 服務。
 
-當您完成重新訓練之後，請使用 **Azure Machine Learning Studio (傳統) 更新資源活動**，將評分 web 服務 (以 web 服務公開的預測性實驗，) 為新定型的模型。 如需詳細資料，請參閱[使用更新資源活動更新模型](update-machine-learning-models.md)一文。
+當您完成重新訓練之後，請使用 **Azure Machine Learning Studio (傳統) 更新資源活動** ，將評分 web 服務 (以 web 服務公開的預測性實驗，) 為新定型的模型。 如需詳細資料，請參閱[使用更新資源活動更新模型](update-machine-learning-models.md)一文。
 
 ## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure Machine Learning Studio (傳統) 連結服務
 
-您可以建立 **Azure Machine Learning studio (傳統) ** 連結服務，將 Azure Machine Learning Studio (傳統) Web 服務連結至 Azure data factory。 Azure Machine Learning Studio (傳統) 批次執行活動和 [更新資源活動](update-machine-learning-models.md)使用連結的服務。
+您可以建立 **Azure Machine Learning studio (傳統)** 連結服務，將 Azure Machine Learning Studio (傳統) Web 服務連結至 Azure data factory。 Azure Machine Learning Studio (傳統) 批次執行活動和 [更新資源活動](update-machine-learning-models.md)使用連結的服務。
 
 ```JSON
 {
@@ -68,7 +68,7 @@ Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的 [Azure Ma
 
 如需了解 JSON 定義中的屬性說明，請參閱[計算連結服務](compute-linked-services.md)一文。
 
-Azure Machine Learning Studio (傳統) 針對您的預測實驗支援傳統 Web 服務和新的 Web 服務。 您可以從 Data Factory 選擇正確的服務。 若要取得建立 Azure Machine Learning Studio (傳統) 連結服務所需的資訊，請移至 https://services.azureml.net ，其中會列出所有 (新的) Web 服務和傳統 Web 服務。 按一下您要存取的 Web 服務，然後按一下 [取用]**** 頁面。 為 **apiKey** 屬性複製**主索引鍵**，並為 **mlEndpoint** 屬性複製**批次要求**。
+Azure Machine Learning Studio (傳統) 針對您的預測實驗支援傳統 Web 服務和新的 Web 服務。 您可以從 Data Factory 選擇正確的服務。 若要取得建立 Azure Machine Learning Studio (傳統) 連結服務所需的資訊，請移至 https://services.azureml.net ，其中會列出所有 (新的) Web 服務和傳統 Web 服務。 按一下您要存取的 Web 服務，然後按一下 [取用]  頁面。 為 **apiKey** 屬性複製 **主索引鍵** ，並為 **mlEndpoint** 屬性複製 **批次要求** 。
 
 ![Azure Machine Learning Studio (傳統) Web 服務](./media/transform-data-using-machine-learning/web-services.png)
 
@@ -126,11 +126,11 @@ Azure Machine Learning Studio (傳統) 針對您的預測實驗支援傳統 Web 
 }
 ```
 
-| 屬性          | 說明                              | 必要 |
+| 屬性          | 描述                              | 必要 |
 | :---------------- | :--------------------------------------- | :------- |
 | NAME              | 管線中的活動名稱     | 是      |
 | description       | 說明活動用途的文字。  | 否       |
-| type              | 針對 Data Lake Analytics 的 U-SQL 活動，活動類型為 **AzureMLBatchExecution**。 | 是      |
+| type              | 針對 Data Lake Analytics 的 U-SQL 活動，活動類型為 **AzureMLBatchExecution** 。 | 是      |
 | linkedServiceName | Azure Machine Learning Studio (傳統) 連結服務的連結服務。 若要深入了解此已連結的服務，請參閱[計算已連結的服務](compute-linked-services.md)一文。 | 是      |
 | webServiceInputs  | 索引鍵、值組，對應 Azure Machine Learning Studio (傳統) Web 服務輸入的名稱。 索引鍵必須符合已發佈的 Azure Machine Learning Studio (傳統) Web 服務中定義的輸入參數。 值是指定輸入 Blob 位置的 Azure 儲存體連結服務和 FilePath 屬性組。 | 否       |
 | webServiceOutputs | 索引鍵、值組，對應 Azure Machine Learning Studio (傳統) Web 服務輸出的名稱。 索引鍵必須符合已發佈的 Azure Machine Learning Studio (傳統) Web 服務中定義的輸出參數。 值是指定輸出 Blob 位置的 Azure 儲存體連結服務和 FilePath 屬性組。 | 否       |
@@ -190,7 +190,7 @@ Azure Machine Learning Studio (傳統) 針對您的預測實驗支援傳統 Web 
 }
 ```
 ### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>案例 2：使用讀取器/寫入器模組參考各種儲存體資料的實驗
-建立 Azure Machine Learning Studio (傳統) 實驗的另一個常見案例是使用匯入資料和輸出資料模組。 「匯入資料」模組是用來將資料載入實驗，而「輸出資料」模組則是用於儲存您的實驗資料。 如需「匯入資料」和「輸出資料」模組的詳細資料，請參閱 MSDN 文件庫上的[匯入資料](https://msdn.microsoft.com/library/azure/dn905997.aspx)和[輸出資料](https://msdn.microsoft.com/library/azure/dn905984.aspx)主題。
+建立 Azure Machine Learning Studio (傳統) 實驗的另一個常見案例是使用匯入資料和輸出資料模組。 「匯入資料」模組是用來將資料載入實驗，而「輸出資料」模組則是用於儲存您的實驗資料。 如需「匯入資料」和「輸出資料」模組的詳細資料，請參閱 MSDN 文件庫上的[匯入資料](/azure/machine-learning/studio-module-reference/import-data)和[輸出資料](/azure/machine-learning/studio-module-reference/export-data)主題。
 
 使用「匯入資料」和「輸出資料」模組時，較好的做法是針對這些模組的每一個屬性，使用 Web 服務參數。 這些 Web 參數可讓您在執行階段設定值。 例如，您可以透過使用 Azure SQL Database：XXX.database.windows.net 的「匯入資料」模組，建立實驗。 部署 web 服務之後，您會想要啟用 web 服務的取用者，以指定另一個稱為的邏輯 SQL server `YYY.database.windows.net` 。 您可以使用 Web 服務參數來設定此值。
 
@@ -213,7 +213,7 @@ Azure Machine Learning Studio (傳統) 針對您的預測實驗支援傳統 Web 
 > [!NOTE]
 > Web 服務參數區分大小寫，因此，請確定您在活動 JSON 中所指定的名稱符合 Web 服務所公開的名稱。
 
-當您完成重新訓練之後，請使用 **Azure Machine Learning Studio (傳統) 更新資源活動**，將評分 web 服務 (以 web 服務公開的預測性實驗，) 為新定型的模型。 如需詳細資料，請參閱[使用更新資源活動更新模型](update-machine-learning-models.md)一文。
+當您完成重新訓練之後，請使用 **Azure Machine Learning Studio (傳統) 更新資源活動** ，將評分 web 服務 (以 web 服務公開的預測性實驗，) 為新定型的模型。 如需詳細資料，請參閱[使用更新資源活動更新模型](update-machine-learning-models.md)一文。
 
 ## <a name="next-steps"></a>後續步驟
 請參閱下列文章，其說明如何以其他方式轉換資料：

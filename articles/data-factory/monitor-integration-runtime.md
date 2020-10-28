@@ -10,12 +10,12 @@ ms.date: 08/11/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 4a0c2813a45fab497173d0101f87b30288e93884
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c7765d65b63c9cee83a76a13448506f61aa8472
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568896"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637151"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>在 Azure Data Factory 中監視整合執行階段
 
@@ -48,8 +48,8 @@ Cmdlet 會為不同類型的整合執行階段傳回不同的資訊。 本文說
 | 屬性 | 描述 |
 -------- | ------------- | 
 | 名稱 | Azure 整合執行階段的名稱。 |  
-| State | Azure 整合執行階段的狀態。 | 
-| Location | Azure 整合執行階段的位置。 如需 Azure 整合執行階段的位置詳細資訊，請參閱[整合執行階段簡介](concepts-integration-runtime.md)。 |
+| 狀態 | Azure 整合執行階段的狀態。 | 
+| 位置 | Azure 整合執行階段的位置。 如需 Azure 整合執行階段的位置詳細資訊，請參閱[整合執行階段簡介](concepts-integration-runtime.md)。 |
 | DataFactoryName | Azure 整合執行階段所屬的資料處理站名稱。 | 
 | resourceGroupName | 資料處理站所屬的資源群組名稱。  |
 | 描述 | 整合執行階段的說明。  |
@@ -72,7 +72,7 @@ Cmdlet 會為不同類型的整合執行階段傳回不同的資訊。 本文說
 
 ### <a name="properties"></a>屬性
 
-下表提供**每個節點**的監視屬性說明：
+下表提供 **每個節點** 的監視屬性說明：
 
 | 屬性 | 描述 | 
 | -------- | ----------- | 
@@ -82,7 +82,7 @@ Cmdlet 會為不同類型的整合執行階段傳回不同的資訊。 本文說
 | 可用的記憶體 | 自我裝載整合執行階段節點上的可用記憶體。 這個值是近乎即時的快照集。 | 
 | CPU 使用率 | 自我裝載整合執行階段節點的 CPU 使用率。 這個值是近乎即時的快照集。 |
 | 網路功能 (輸入/輸出) | 自我裝載整合執行階段節點的網路使用率。 這個值是近乎即時的快照集。 | 
-| 並行作業 (執行中/限制) | **正在**執行。 每個節點上執行的作業或工作數目。 這個值是近乎即時的快照集。 <br/><br/>**限制**。 限制表示每個節點的最大並行作業數。 這個值會根據機器大小來定義。 您可以提高限制以在進階案例 (即便 CPU、記憶體或網路並未充分使用，而活動照樣會逾時的案例) 中相應增加並行作業執行能力。 這項功能也可與單一節點的自我裝載整合執行階段搭配使用。 |
+| 並行作業 (執行中/限制) | **正在** 執行。 每個節點上執行的作業或工作數目。 這個值是近乎即時的快照集。 <br/><br/>**限制** 。 限制表示每個節點的最大並行作業數。 這個值會根據機器大小來定義。 您可以提高限制以在進階案例 (即便 CPU、記憶體或網路並未充分使用，而活動照樣會逾時的案例) 中相應增加並行作業執行能力。 這項功能也可與單一節點的自我裝載整合執行階段搭配使用。 |
 | 角色 | 多節點的自我裝載整合執行階段中的角色有兩種 – 發送器和背景工作角色。 所有節點都是背景工作角色，這表示它們全都能用來執行作業。 發送器節點只有一個，可用來提取雲端服務中的工作/作業，並發送到不同的背景工作節點。 發送器節點也是背景工作角色節點。 |
 
 當自我裝載整合執行階段中有兩個或多個節點 (也就是相應放大的案例) 時，屬性的某些設定會比較合理。
@@ -93,7 +93,7 @@ Cmdlet 會為不同類型的整合執行階段傳回不同的資訊。 本文說
 
 您可以增加節點數目來相應放大。 當您增加節點數目時，並行作業數限制是所有可用的節點的並行作業數限制值的總和。  例如，有一個節點可讓您執行最多十二個並行作業，然後再新增三個類似的節點之後，您能執行的並行作業數最多為 48 個 (也就是 4 x 12)。 我們建議您只有在看到每個節點上的預設值會造成資源使用率偏低的狀況時，才增加並行作業數限制。
 
-您可以覆寫 Azure 入口網站中計算得出的預設值。 依序選取 [作者] > [連線] > [整合執行階段] > [編輯] > [節點] > [修改每個節點的並行作業值]。 您也可以使用 PowerShell [update-Azdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/az.datafactory/update-Azdatafactoryv2integrationruntimenode#examples) 命令。
+您可以覆寫 Azure 入口網站中計算得出的預設值。 依序選取 [作者] > [連線] > [整合執行階段] > [編輯] > [節點] > [修改每個節點的並行作業值]。 您也可以使用 PowerShell [update-Azdatafactoryv2integrationruntimenode](/powershell/module/az.datafactory/update-Azdatafactoryv2integrationruntimenode#examples) 命令。
   
 ### <a name="status-per-node"></a>狀態 (每個節點)
 
@@ -181,8 +181,8 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 | 節點                        | 您 Azure-SSIS IR 具有節點特定狀態的已配置/可用節點 (啟動/可用/回收/無法使用) 和可採取動作的錯誤。 |
 | OtherErrors                  | 您 Azure-SSIS IR 上的非節點特定可操作錯誤。 |
 | LastOperation                | 在您的 Azure-SSIS IR 上，最後一次啟動/停止作業的結果具有可採取動作的錯誤 (s) 如果失敗的話）。 |
-| State                        | 整體狀態 (Azure-SSIS IR 的初始/啟動/啟動/停止/停止) 。 |
-| Location                     | Azure-SSIS IR 的位置。 |
+| 狀態                        | 整體狀態 (Azure-SSIS IR 的初始/啟動/啟動/停止/停止) 。 |
+| 位置                     | Azure-SSIS IR 的位置。 |
 | NodeSize                     | 您 Azure-SSIS IR 中每個節點的大小。 |
 | NodeCount                    | 您 Azure-SSIS IR 中的節點數目。 |
 | MaxParallelExecutionsPerNode | 您 Azure-SSIS IR 中每個節點的平行執行數目上限。 |
@@ -208,7 +208,7 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 | 啟動中             | 正在準備此節點。 |
 | 可用            | 此節點已準備好部署/執行 SSIS 套件。 |
 | 回收中            | 此節點正在修復/重新啟動。 |
-| [無法使用]          | 此節點尚未準備好部署/執行 SSIS 套件，且具有可採取動作的錯誤/問題可供您解決。 |
+| 無法使用          | 此節點尚未準備好部署/執行 SSIS 套件，且具有可採取動作的錯誤/問題可供您解決。 |
 
 #### <a name="status-overall-azure-ssis-ir"></a>狀態 (整體 Azure-SSIS IR) 
 
@@ -224,70 +224,70 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 
 ### <a name="monitor-the-azure-ssis-integration-runtime-in-azure-portal"></a>監視 Azure 入口網站中的 Azure SSIS 整合執行時間
 
-若要監視 Azure 入口網站中的 Azure-SSIS IR，請移至 ADF UI 上 [**監視**中樞] 的 [**整合運行**時間] 頁面，您可以在其中查看所有整合執行時間。
+若要監視 Azure 入口網站中的 Azure-SSIS IR，請移至 ADF UI 上 [ **監視** 中樞] 的 [ **整合運行** 時間] 頁面，您可以在其中查看所有整合執行時間。
 
 ![監視所有整合執行時間](media/monitor-integration-runtime/monitor-integration-runtimes.png)
 
-接下來，選取您的 Azure-SSIS IR 名稱以開啟其 [監視] 頁面，您可以在其中查看其整體/節點特定屬性和狀態。 在此頁面上，視您如何設定 Azure-SSIS IR 的 [一般]、[部署] 和 [advanced] 設定而定，您可以找到各種資訊/功能圖格。  **類型**和**區域**資訊圖格分別顯示您 Azure-SSIS IR 的類型和區域。 **節點大小**資訊圖格會顯示 (SSIS 的 SKU edition_VM tier_VM 系列) 、CPU 核心數目，以及您的 Azure-SSIS IR 每個節點的 RAM 大小。 執行中 **/要求的節點 (S) ** 資訊磚會將目前執行的節點數目，與先前針對您的 Azure-SSIS IR 所要求的節點總數進行比較。 以下將詳細說明功能磚。
+接下來，選取您的 Azure-SSIS IR 名稱以開啟其 [監視] 頁面，您可以在其中查看其整體/節點特定屬性和狀態。 在此頁面上，視您如何設定 Azure-SSIS IR 的 [一般]、[部署] 和 [advanced] 設定而定，您可以找到各種資訊/功能圖格。  **類型** 和 **區域** 資訊圖格分別顯示您 Azure-SSIS IR 的類型和區域。 **節點大小** 資訊圖格會顯示 (SSIS 的 SKU edition_VM tier_VM 系列) 、CPU 核心數目，以及您的 Azure-SSIS IR 每個節點的 RAM 大小。 執行中 **/要求的節點 (S)** 資訊磚會將目前執行的節點數目，與先前針對您的 Azure-SSIS IR 所要求的節點總數進行比較。 以下將詳細說明功能磚。
 
 ![監視您的 Azure-SSIS IR](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime.png)
 
 #### <a name="status-tile"></a>狀態磚
 
-在 Azure-SSIS IR 監視] 頁面的 [ **狀態** ] 磚上，您可以看到其整體狀態，例如 [執行中 **] 或 [** **已停止**]。 選取 [ **執行中]** 狀態時，會出現一個視窗，其中含有 [即時 **停止** ] 按鈕以停止您的 Azure-SSIS IR。 選取 [ **已停止** ] 狀態會出現一個視窗，其中含有 [即時 **啟動** ] 按鈕來啟動您的 Azure-SSIS IR。 快顯視窗也有 [ **執行 ssis 套件** ] 按鈕，可使用在 Azure-SSIS IR 上執行的「執行 ssis 套件」活動來自動產生 ADF 管線， (請參閱在 [ADF 管線中執行 Ssis 套件的執行 ssis 套件活動](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)) 和 **資源識別碼** 文字方塊，您可以從中複製 Azure-SSIS IR 資源識別碼 (`/subscriptions/YourAzureSubscripton/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourADF/integrationruntimes/YourAzureSSISIR`) 。 包含 ADF 和 Azure-SSIS IR 名稱 Azure-SSIS IR 資源識別碼的尾碼會形成一個叢集識別碼，可用來向獨立軟體廠商購買額外的高階/授權 SSIS 元件 (Isv) 並將其系結至您的 Azure-SSIS IR (請參閱在 [您的 Azure-SSIS IR) 上安裝 premium/授權元件](https://docs.microsoft.com/azure/data-factory/how-to-develop-azure-ssis-ir-licensed-components) 。
+在 Azure-SSIS IR 監視] 頁面的 [ **狀態** ] 磚上，您可以看到其整體狀態，例如 [執行中 **] 或 [** **已停止** ]。 選取 [ **執行中]** 狀態時，會出現一個視窗，其中含有 [即時 **停止** ] 按鈕以停止您的 Azure-SSIS IR。 選取 [ **已停止** ] 狀態會出現一個視窗，其中含有 [即時 **啟動** ] 按鈕來啟動您的 Azure-SSIS IR。 快顯視窗也有 [ **執行 ssis 套件** ] 按鈕，可使用在 Azure-SSIS IR 上執行的「執行 ssis 套件」活動來自動產生 ADF 管線， (請參閱在 [ADF 管線中執行 Ssis 套件的執行 ssis 套件活動](./how-to-invoke-ssis-package-ssis-activity.md)) 和 **資源識別碼** 文字方塊，您可以從中複製 Azure-SSIS IR 資源識別碼 (`/subscriptions/YourAzureSubscripton/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourADF/integrationruntimes/YourAzureSSISIR`) 。 包含 ADF 和 Azure-SSIS IR 名稱 Azure-SSIS IR 資源識別碼的尾碼會形成一個叢集識別碼，可用來向獨立軟體廠商購買額外的高階/授權 SSIS 元件 (Isv) 並將其系結至您的 Azure-SSIS IR (請參閱在 [您的 Azure-SSIS IR) 上安裝 premium/授權元件](./how-to-develop-azure-ssis-ir-licensed-components.md) 。
 
 ![監視您的 Azure-SSIS IR 狀態磚](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-status.png)
 
 #### <a name="ssisdb-server-endpoint-tile"></a>SSISDB 伺服器端點磚
 
-如果您使用專案部署模型，其中封裝會儲存在您的 Azure SQL Database 伺服器或受控實例所裝載的 SSISDB 中，您將會在 Azure-SSIS IR 監視頁面上看到 [ **SSISDB 伺服器端點** ] 磚 (請參閱 [設定 Azure-SSIS IR 部署設定](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure#deployment-settings-page)) 。 在此磚中，您可以選取一個連結，以指定您的 Azure SQL Database 伺服器或受控實例來快顯視窗，您可以從文字方塊複製伺服器端點，並在從 SSMS 連線以部署、設定、執行和管理套件時使用它。 在快顯視窗中，您也可以選取 [ **查看您的 Azure SQL Database 或受控實例設定** ] 連結，在 Azure 入口網站中重新設定/調整 SSISDB 的大小。
+如果您使用專案部署模型，其中封裝會儲存在您的 Azure SQL Database 伺服器或受控實例所裝載的 SSISDB 中，您將會在 Azure-SSIS IR 監視頁面上看到 [ **SSISDB 伺服器端點** ] 磚 (請參閱 [設定 Azure-SSIS IR 部署設定](./tutorial-deploy-ssis-packages-azure.md#deployment-settings-page)) 。 在此磚中，您可以選取一個連結，以指定您的 Azure SQL Database 伺服器或受控實例來快顯視窗，您可以從文字方塊複製伺服器端點，並在從 SSMS 連線以部署、設定、執行和管理套件時使用它。 在快顯視窗中，您也可以選取 [ **查看您的 Azure SQL Database 或受控實例設定** ] 連結，在 Azure 入口網站中重新設定/調整 SSISDB 的大小。
 
 ![監視您的 Azure-SSIS IR-SSISDB 磚](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-ssisdb.png)
 
 #### <a name="proxy--staging-tile"></a>PROXY/預備磚
 
-如果您下載、安裝及設定 Self-Hosted IR (SHIR) 做為 Azure-SSIS IR 的 proxy 以存取內部部署資料，您將會在 [Azure-SSIS IR 監視] 頁面上看到 [ **proxy/預備** ] 磚 (請參閱將 [SHIR 設定為 Azure-SSIS IR) 的 proxy](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis) 。 在此圖格中，您可以選取指定 SHIR 的連結，以開啟其 [監視] 頁面。 您也可以選取另一個連結來指定預備的 Azure Blob 儲存體，以重新設定其連結服務。
+如果您下載、安裝及設定 Self-Hosted IR (SHIR) 做為 Azure-SSIS IR 的 proxy 以存取內部部署資料，您將會在 [Azure-SSIS IR 監視] 頁面上看到 [ **proxy/預備** ] 磚 (請參閱將 [SHIR 設定為 Azure-SSIS IR) 的 proxy](./self-hosted-integration-runtime-proxy-ssis.md) 。 在此圖格中，您可以選取指定 SHIR 的連結，以開啟其 [監視] 頁面。 您也可以選取另一個連結來指定預備的 Azure Blob 儲存體，以重新設定其連結服務。
 
 #### <a name="validate-vnet--subnet-tile"></a>驗證 VNET/子網圖格
 
-如果您將 Azure-SSIS IR 加入 VNet，您將會在 Azure-SSIS IR 監視頁面上看到 [ **驗證 vnet/子網** ] 圖格 (查看將 [Azure-SSIS IR 加入 vnet](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)) 。 在此磚中，您可以選取一個連結，以指定您的 VNet 和子網以快顯視窗，您可以在其中從文字方塊複製您的 VNet 資源識別碼 (`/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/virtualNetworks/YourARMVNet`) 和子網名稱，以及驗證您的 vnet 和子網設定，以確保您的 Azure-SSIS IR 的輸入/輸出網路流量和管理不會受到阻擋。
+如果您將 Azure-SSIS IR 加入 VNet，您將會在 Azure-SSIS IR 監視頁面上看到 [ **驗證 vnet/子網** ] 圖格 (查看將 [Azure-SSIS IR 加入 vnet](./join-azure-ssis-integration-runtime-virtual-network.md)) 。 在此磚中，您可以選取一個連結，以指定您的 VNet 和子網以快顯視窗，您可以在其中從文字方塊複製您的 VNet 資源識別碼 (`/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/virtualNetworks/YourARMVNet`) 和子網名稱，以及驗證您的 vnet 和子網設定，以確保您的 Azure-SSIS IR 的輸入/輸出網路流量和管理不會受到阻擋。
 
 ![監視您的 Azure-SSIS IR-驗證磚](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-validate.png)
 
 #### <a name="diagnose-connectivity-tile"></a>診斷連線能力磚
 
-在 [監視 Azure-SSIS IR 監視] 頁面的 [ **診斷** 連線] 圖格上，您可以選取 [ **測試** 連線] 連結以快顯視窗，您可以在其中檢查 Azure-SSIS IR 和相關套件/設定/資料存放區之間的連線，以及管理服務，其方式是透過其完整功能變數名稱 (FQDN) /IP 位址和指定的埠 (請參閱 [從 Azure-SSIS IR) 測試連接](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-diagnose-connectivity-faq) 。
+在 [監視 Azure-SSIS IR 監視] 頁面的 [ **診斷** 連線] 圖格上，您可以選取 [ **測試** 連線] 連結以快顯視窗，您可以在其中檢查 Azure-SSIS IR 和相關套件/設定/資料存放區之間的連線，以及管理服務，其方式是透過其完整功能變數名稱 (FQDN) /IP 位址和指定的埠 (請參閱 [從 Azure-SSIS IR) 測試連接](./ssis-integration-runtime-diagnose-connectivity-faq.md) 。
 
 ![螢幕擷取畫面，顯示您可以在其中測試 Azure-SSIS IR 和相關套件/設定/資料存放區之間的連線。](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
 
 #### <a name="static-public-ip-addresses-tile"></a>靜態公用 IP 位址磚
 
-如果您將自己的靜態公用 IP 位址用於 Azure-SSIS IR，您會在 Azure-SSIS IR 監視頁面上看到 [ **靜態公用 IP 位址** ] 磚 (請參閱 [將您自己的靜態公用 ip 位址用於 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network#publicIP)) 。 在此圖格中，您可以選取連結來指定 Azure-SSIS IR 的第一個/第二個靜態公用 IP 位址，以快顯視窗，您可以從文字方塊中複製其資源識別碼 (`/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress`) 。 在快顯視窗中，您也可以選取 [ **查看您的第一個/第二個靜態公用 ip 位址設定** ] 連結，以管理 Azure 入口網站中的第一個/第二個靜態公用 ip 位址。
+如果您將自己的靜態公用 IP 位址用於 Azure-SSIS IR，您會在 Azure-SSIS IR 監視頁面上看到 [ **靜態公用 IP 位址** ] 磚 (請參閱 [將您自己的靜態公用 ip 位址用於 Azure-SSIS IR](./join-azure-ssis-integration-runtime-virtual-network.md#publicIP)) 。 在此圖格中，您可以選取連結來指定 Azure-SSIS IR 的第一個/第二個靜態公用 IP 位址，以快顯視窗，您可以從文字方塊中複製其資源識別碼 (`/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress`) 。 在快顯視窗中，您也可以選取 [ **查看您的第一個/第二個靜態公用 ip 位址設定** ] 連結，以管理 Azure 入口網站中的第一個/第二個靜態公用 ip 位址。
 
 ![顯示您可以指定第一個/第二個靜態公用 IP 位址的螢幕擷取畫面。](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
 
 #### <a name="package-stores-tile"></a>封裝存放區磚
 
-如果您使用套件部署模型，其中封裝儲存在檔案系統/Azure 檔案儲存體/SQL Server 資料庫 (MSDB) 由您的 Azure SQL 受控執行個體所裝載，並透過 Azure-SSIS IR 套件存放區來管理，您將會在 Azure-SSIS IR 監視頁面上看到 **套件存放區** 磚 (請參閱設定 [Azure-SSIS IR 部署設定](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure#deployment-settings-page)) 。 在此圖格中，您可以選取連結來指定附加至 Azure-SSIS IR 的封裝存放區數目，以快顯視窗，您可以在 Azure SQL 受控執行個體所裝載的檔案系統/Azure 檔案儲存體/MSDB 上，重新設定 Azure-SSIS IR 封裝存放區的相關連結服務。
+如果您使用套件部署模型，其中封裝儲存在檔案系統/Azure 檔案儲存體/SQL Server 資料庫 (MSDB) 由您的 Azure SQL 受控執行個體所裝載，並透過 Azure-SSIS IR 套件存放區來管理，您將會在 Azure-SSIS IR 監視頁面上看到 **套件存放區** 磚 (請參閱設定 [Azure-SSIS IR 部署設定](./tutorial-deploy-ssis-packages-azure.md#deployment-settings-page)) 。 在此圖格中，您可以選取連結來指定附加至 Azure-SSIS IR 的封裝存放區數目，以快顯視窗，您可以在 Azure SQL 受控執行個體所裝載的檔案系統/Azure 檔案儲存體/MSDB 上，重新設定 Azure-SSIS IR 封裝存放區的相關連結服務。
 
 ![監視您的 Azure-SSIS IR 套件磚](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-package.png)
 
 #### <a name="errors-tile"></a>) 磚 (時發生錯誤
 
-如果您的 Azure-SSIS IR 的啟動/停止/維護/升級發生問題，您將會在 Azure-SSIS IR 監視頁面上 ** (S) ** 磚看到額外的錯誤。 在此磚中，您可以選取一個連結，以指定您的 Azure-SSIS IR 所產生的錯誤數目以快顯視窗，您可以在其中查看這些錯誤的詳細資料，並將其複製以找出疑難排解指南中的建議解決方案， (參閱 Azure-SSIS IR) 的 [疑難排解](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-management-troubleshoot) 。
+如果您的 Azure-SSIS IR 的啟動/停止/維護/升級發生問題，您將會在 Azure-SSIS IR 監視頁面上 **(S)** 磚看到額外的錯誤。 在此磚中，您可以選取一個連結，以指定您的 Azure-SSIS IR 所產生的錯誤數目以快顯視窗，您可以在其中查看這些錯誤的詳細資料，並將其複製以找出疑難排解指南中的建議解決方案， (參閱 Azure-SSIS IR) 的 [疑難排解](./ssis-integration-runtime-management-troubleshoot.md) 。
 
 ![監視您的 Azure-SSIS IR-診斷磚](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-error.png)
 
 ### <a name="monitor-the-azure-ssis-integration-runtime-with-azure-monitor"></a>使用 Azure 監視器監視 Azure SSIS 整合執行時間
 
-若要使用 Azure 監視器監視您的 Azure-SSIS IR，請參閱 [使用 Azure 監視器監視 SSIS 作業](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#monitor-ssis-operations-with-azure-monitor)。
+若要使用 Azure 監視器監視您的 Azure-SSIS IR，請參閱 [使用 Azure 監視器監視 SSIS 作業](./monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor)。
 
 ### <a name="more-info-about-the-azure-ssis-integration-runtime"></a>深入了解 Azure-SSIS 整合執行階段
 
 請參閱下列文章以深入了解 Azure SSIS 整合執行階段：
 
 - [Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime)。 本文提供整合執行階段的一般概念性資訊，包括 Azure-SSIS IR。 
-- [教學課程：將 SSIS 套件部署至 Azure](tutorial-create-azure-ssis-runtime-portal.md)。 本文提供逐步指示，說明如何建立您的 Azure-SSIS IR，並使用 Azure SQL Database 來裝載 (SSISDB) 的 SSIS 目錄。 
+- [教學課程：將 SSIS 套件部署至 Azure](./tutorial-deploy-ssis-packages-azure.md)。 本文提供逐步指示，說明如何建立您的 Azure-SSIS IR，並使用 Azure SQL Database 來裝載 (SSISDB) 的 SSIS 目錄。 
 - [如何：建立 Azure-SSIS 整合執行階段](create-azure-ssis-integration-runtime.md)。 本文將擴充教學課程，並提供使用 Azure SQL 受控執行個體裝載 SSISDB 的指示。 
 - [管理 Azure-SSIS IR](manage-azure-ssis-integration-runtime.md). 本文說明如何啟動、停止或刪除您的 Azure-SSIS IR。 它也會示範如何藉由新增更多節點來向外擴充。 
 - [將 Azure-SSIS IR 加入虛擬網路](join-azure-ssis-integration-runtime-virtual-network.md)。 本文提供將您的 Azure-SSIS IR 加入虛擬網路的指示。

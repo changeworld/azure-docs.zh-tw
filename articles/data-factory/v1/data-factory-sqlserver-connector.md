@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fe9a50b5557e6165835abf1df67f7486c260c1c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2d69f9f70861799d941bbeaed7eb8d338fa8a5e
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84195912"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636165"
 ---
 # <a name="move-data-to-and-from-sql-server-using-azure-data-factory"></a>使用 Azure Data Factory 將資料移入和移出 SQL Server
 
@@ -33,11 +33,11 @@ ms.locfileid: "84195912"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="supported-scenarios"></a>支援的案例
-您可以**從 SQL Server 資料庫**將資料複製到下列資料存放區：
+您可以 **從 SQL Server 資料庫** 將資料複製到下列資料存放區：
 
 [!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
 
-您可以從下列資料存放區將資料複製**到 SQL Server 資料庫**：
+您可以從下列資料存放區將資料複製 **到 SQL Server 資料庫** ：
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
@@ -54,14 +54,14 @@ ms.locfileid: "84195912"
 ## <a name="getting-started"></a>開始使用
 您可以使用不同的工具/Api，建立具有複製活動的管線，以將資料移進/移出 SQL Server 資料庫。
 
-若要建立管線，最簡單的方式就是使用「 **複製嚮導**」。 如需使用複製資料精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md) 。
+若要建立管線，最簡單的方式就是使用「 **複製嚮導** 」。 如需使用複製資料精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md) 。
 
-您也可以使用下列工具來建立管線： **Visual Studio**、 **Azure PowerShell**、 **Azure Resource Manager 範本**、 **.net API**和 **REST API**。 請參閱「 [複製活動」教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 課程，以取得使用複製活動建立管線的逐步指示。
+您也可以使用下列工具來建立管線： **Visual Studio** 、 **Azure PowerShell** 、 **Azure Resource Manager 範本** 、 **.net API** 和 **REST API** 。 請參閱「 [複製活動」教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 課程，以取得使用複製活動建立管線的逐步指示。
 
 不論您是使用工具還是 API，都需執行下列步驟來建立將資料從來源資料存放區移到接收資料存放區的管線：
 
-1. 建立 **資料**處理站。 資料處理站可包含一或多個管線。
-2. 建立**連結服務**，將輸入和輸出資料存放區連結到資料處理站。 例如，如果您從 SQL Server 資料庫將資料複製到 Azure Blob 儲存體，您會建立兩個連結服務，將 SQL Server 資料庫和 Azure 儲存體帳戶連結至資料處理站。 有關 SQL Server 資料庫專屬的連結服務屬性，請參閱[連結服務屬性](#linked-service-properties)一節。
+1. 建立 **資料** 處理站。 資料處理站可包含一或多個管線。
+2. 建立 **連結服務** ，將輸入和輸出資料存放區連結到資料處理站。 例如，如果您從 SQL Server 資料庫將資料複製到 Azure Blob 儲存體，您會建立兩個連結服務，將 SQL Server 資料庫和 Azure 儲存體帳戶連結至資料處理站。 有關 SQL Server 資料庫專屬的連結服務屬性，請參閱[連結服務屬性](#linked-service-properties)一節。
 3. 建立 **資料集** 以代表複製作業的輸入和輸出資料。 在上一個步驟所述的範例中，您會建立資料集來指定 SQL Server 資料庫中包含輸入資料的 SQL 資料表。 您還會建立另一個資料集來指定 blob 容器和資料夾，以保存從 SQL Server 資料庫複製的資料。 有關 SQL Server 資料庫專屬的資料集屬性，請參閱[資料集屬性](#dataset-properties)一節。
 4. 建立具有複製活動的 **管線** ，該活動會採用資料集做為輸入，並使用資料集做為輸出。 在稍早所述的範例中，您使用 SqlSource 作為來源，以及使用 BlobSink 作為複製活動的接收器。 同樣地，如果您是從 Azure Blob 儲存體複製到 SQL Server 資料庫，則需要在複製活動中使用 BlobSource 和 SqlSink。 有關 SQL Server 資料庫專屬的複製活動屬性，請參閱[複製活動屬性](#copy-activity-properties)一節。 如需有關如何使用資料存放區作為來源或接收器的詳細資訊，按一下上一節中資料存放區的連結。
 
@@ -74,15 +74,15 @@ ms.locfileid: "84195912"
 
 下表提供 SQL Server 連結服務專屬 JSON 元素的描述。
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| type |類型屬性應設為： **OnPremisesSqlServer**。 |是 |
+| type |類型屬性應設為： **OnPremisesSqlServer** 。 |是 |
 | connectionString |指定使用 SQL 驗證或 Windows 驗證來連線至 SQL Server 資料庫時所需的 connectionString 資訊。 |是 |
 | gatewayName |Data Factory 服務應該用來連接到 SQL Server 資料庫的閘道名稱。 |是 |
-| username |如果您使用「Windows 驗證」，請指定使用者名稱。 範例︰**domainname\\username**。 |否 |
+| username |如果您使用「Windows 驗證」，請指定使用者名稱。 範例︰ **domainname\\username** 。 |否 |
 | 密碼 |指定您為使用者名稱所指定之使用者帳戶的密碼。 |否 |
 
-您可以使用 **AzDataFactoryEncryptValue** Cmdlet 來加密認證，並在連接字串中使用它們，如下列範例所示 (**EncryptedCredential** 屬性) ：
+您可以使用 **AzDataFactoryEncryptValue** Cmdlet 來加密認證，並在連接字串中使用它們，如下列範例所示 ( **EncryptedCredential** 屬性) ：
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
@@ -131,12 +131,12 @@ ms.locfileid: "84195912"
 
 每個資料集類型的 typeProperties 區段都不同，可提供資料存放區中資料的位置相關資訊。 **SqlServerTable** 類型資料集的 **typeProperties** 區段有下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
 | tableName |SQL Server Database 執行個體中連結服務所參照的資料表或檢視名稱。 |是 |
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
-如果您要將資料從 SQL Server 資料庫移出，請將複製活動中的來源類型設定為 **SqlSource**。 同樣的，如果您要將資料移進 SQL Server 資料庫，請將複製活動中的接收器類型設定為 **SqlSink**。 本節提供 SqlSource 和 SqlSink 支援的屬性清單。
+如果您要將資料從 SQL Server 資料庫移出，請將複製活動中的來源類型設定為 **SqlSource** 。 同樣的，如果您要將資料移進 SQL Server 資料庫，請將複製活動中的接收器類型設定為 **SqlSink** 。 本節提供 SqlSource 和 SqlSink 支援的屬性清單。
 
 如需定義活動的區段和屬性完整清單，請參閱[建立管線](data-factory-create-pipelines.md)一文。 屬性 (例如名稱、描述、輸入和輸出資料表，以及原則) 適用於所有類型的活動。
 
@@ -146,7 +146,7 @@ ms.locfileid: "84195912"
 而活動的 typeProperties 區段中可用的屬性會隨著每個活動類型而有所不同。 就「複製活動」而言，這些屬性會根據來源和接收器的類型而有所不同。
 
 ### <a name="sqlsource"></a>SqlSource
-當複製活動中的來源類型為 **SqlSource** 時，**typeProperties** 區段會有下列可用屬性：
+當複製活動中的來源類型為 **SqlSource** 時， **typeProperties** 區段會有下列可用屬性：
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
@@ -172,7 +172,7 @@ ms.locfileid: "84195912"
 | writeBatchSize |當緩衝區大小達到 writeBatchSize 時，將資料插入 SQL 資料表中 |整數 (資料列數目) |否 (預設值：10000) |
 | sqlWriterCleanupScript |指定要讓「複製活動」執行的查詢，以便清除特定分割的資料。 如需詳細資訊，請參閱[可重複複製](#repeatable-copy)一節。 |查詢陳述式。 |否 |
 | sliceIdentifierColumnName |指定要讓「複製活動」以自動產生的分割識別碼填入的資料行名稱，這可在重新執行時用來清除特定分割的資料。 如需詳細資訊，請參閱[可重複複製](#repeatable-copy)一節。 |資料類型為 binary(32) 之資料行的資料行名稱。 |否 |
-| sqlWriterStoredProcedureName |預存程序的名稱，此預存程序定義如何將來源資料套用至目標資料表，例如使用您自己的商務邏輯來執行更新插入或轉換。 <br/><br/>請注意，將會**依批次叫用**此預存程序。 如果您想要進行只執行一次且與來源資料無關的作業 (例如刪除/截斷)，請使用 `sqlWriterCleanupScript` 屬性。 |預存程序的名稱。 |否 |
+| sqlWriterStoredProcedureName |預存程序的名稱，此預存程序定義如何將來源資料套用至目標資料表，例如使用您自己的商務邏輯來執行更新插入或轉換。 <br/><br/>請注意，將會 **依批次叫用** 此預存程序。 如果您想要進行只執行一次且與來源資料無關的作業 (例如刪除/截斷)，請使用 `sqlWriterCleanupScript` 屬性。 |預存程序的名稱。 |否 |
 | storedProcedureParameters |預存程序的參數。 |名稱/值組。 參數的名稱和大小寫必須符合預存程序參數的名稱和大小寫。 |否 |
 | sqlWriterTableType |指定要在預存程序中使用的資料表類型名稱。 複製活動可讓正在移動的資料可用於此資料表類型的暫存資料表。 然後，預存程序程式碼可以合併正在複製的資料與現有的資料。 |資料表類型名稱。 |否 |
 
@@ -310,7 +310,7 @@ ms.locfileid: "84195912"
 ```
 **具有複製活動的管線**
 
-此管線包含「複製活動」，該活動已設定為使用這些輸入和輸出資料集，並且排定為每小時執行。 在管線 JSON 定義中，**source** 類型設為 **SqlSource**，而 **sink** 類型設為 **BlobSink**。 針對 **SqlReaderQuery** 屬性指定的 SQL 查詢會選取過去一小時內要複製的資料。
+此管線包含「複製活動」，該活動已設定為使用這些輸入和輸出資料集，並且排定為每小時執行。 在管線 JSON 定義中， **source** 類型設為 **SqlSource** ，而 **sink** 類型設為 **BlobSink** 。 針對 **SqlReaderQuery** 屬性指定的 SQL 查詢會選取過去一小時內要複製的資料。
 
 ```json
 {
@@ -492,7 +492,7 @@ ms.locfileid: "84195912"
 ```
 **具有複製活動的管線**
 
-此管線包含「複製活動」，該活動已設定為使用這些輸入和輸出資料集，並且排定為每小時執行。 在管線 JSON 定義中，**source** 類型設為 **BlobSource**，而 **sink** 類型設為 **SqlSink**。
+此管線包含「複製活動」，該活動已設定為使用這些輸入和輸出資料集，並且排定為每小時執行。 在管線 JSON 定義中， **source** 類型設為 **BlobSource** ，而 **sink** 類型設為 **SqlSink** 。
 
 ```json
 {
@@ -542,20 +542,20 @@ ms.locfileid: "84195912"
 ```
 
 ## <a name="troubleshooting-connection-issues"></a>疑難排解連線問題
-1. 將 SQL Server 設定成接受遠端連線。 啟動 [SQL Server Management Studio]****、用滑鼠右鍵按一下 [伺服器]****，然後按一下 [屬性]****。 選取清單中 [連接]****，然後核取 [允許此伺服器的遠端連接]****。
+1. 將 SQL Server 設定成接受遠端連線。 啟動 [SQL Server Management Studio]  、用滑鼠右鍵按一下 [伺服器]  ，然後按一下 [屬性]  。 選取清單中 [連接]  ，然後核取 [允許此伺服器的遠端連接]  。
 
     ![啟用遠端連線](./media/data-factory-sqlserver-connector/AllowRemoteConnections.png)
 
-    如需詳細步驟，請參閱 [設定 remote access 伺服器組態選項](https://msdn.microsoft.com/library/ms191464.aspx) 。
-2. 啟動 [SQL Server 組態管理員] ****。 展開您想要之執行個體的 [SQL Server 網路組態]****，然後選取 [MSSQLSERVER 的通訊協定]****。 您應該會在右窗格中看到通訊協定。 用滑鼠右鍵按一下 [TCP/IP]****，然後按一下 [啟用]**** 來啟用 TCP/IP。
+    如需詳細步驟，請參閱 [設定 remote access 伺服器組態選項](/sql/database-engine/configure-windows/configure-the-remote-access-server-configuration-option) 。
+2. 啟動 [SQL Server 組態管理員]  。 展開您想要之執行個體的 [SQL Server 網路組態]  ，然後選取 [MSSQLSERVER 的通訊協定]  。 您應該會在右窗格中看到通訊協定。 用滑鼠右鍵按一下 [TCP/IP]  ，然後按一下 [啟用]  來啟用 TCP/IP。
 
     ![啟用 TCP/IP](./media/data-factory-sqlserver-connector/EnableTCPProptocol.png)
 
-    如需啟用 TCP/IP 通訊協定的詳細資料及替代方式，請參閱 [啟用或停用伺服器網路通訊協定](https://msdn.microsoft.com/library/ms191294.aspx) 。
-3. 在相同的視窗中，按兩下 [TCP/IP]**** 來啟動 [TCP/IP 屬性]**** 視窗。
-4. 切換至 [ **IP 位址** ] 索引標籤。向下滾動以查看 **IPAll** 區段。 請注意 **TCP 埠** (預設值為 **1433**) 。
+    如需啟用 TCP/IP 通訊協定的詳細資料及替代方式，請參閱 [啟用或停用伺服器網路通訊協定](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol) 。
+3. 在相同的視窗中，按兩下 [TCP/IP]  來啟動 [TCP/IP 屬性]  視窗。
+4. 切換至 [ **IP 位址** ] 索引標籤。向下滾動以查看 **IPAll** 區段。 請注意 **TCP 埠** (預設值為 **1433** ) 。
 5. 在電腦上建立 **Windows 防火牆規則** ，來允許透過此連接埠的連入流量。
-6. **確認連線**：若要使用完整名稱來連線到 SQL Server，請使用來自不同機器的 SQL Server Management Studio。 例如："\<machine\>\<domain\>.corp\<company\>.com,1433"。
+6. **確認連線** ：若要使用完整名稱來連線到 SQL Server，請使用來自不同機器的 SQL Server Management Studio。 例如："\<machine\>\<domain\>.corp\<company\>.com,1433"。
 
    > [!IMPORTANT]
    > 

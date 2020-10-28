@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: fef41a177f653dc67835897a48d734400a37a0d0
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 60a18591687eb7953063e16397719191eece7844
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496012"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637083"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning 的企業安全性
 
@@ -111,7 +111,7 @@ Azure Machine Learning 仰賴其他 Azure 服務來處理計算資源。 計算�
 ## <a name="data-encryption"></a>資料加密
 
 > [!IMPORTANT]
-> 針對在 __定型__期間的生產等級加密，Microsoft 建議使用 Azure Machine Learning 計算叢集。 針對在 __推斷__期間的生產等級加密，Microsoft 建議使用 Azure Kubernetes Service。
+> 針對在 __定型__ 期間的生產等級加密，Microsoft 建議使用 Azure Machine Learning 計算叢集。 針對在 __推斷__ 期間的生產等級加密，Microsoft 建議使用 Azure Kubernetes Service。
 >
 > Azure Machine Learning 計算實例是開發/測試環境。 使用它時，建議您將檔案（例如筆記本和腳本）儲存在檔案共用中。 您的資料應該儲存在資料存放區中。
 
@@ -158,12 +158,7 @@ Azure Machine Learning 會在 Azure Cosmos DB 執行個體中儲存計量和中�
         > [!NOTE]
         > 此金鑰保存庫執行個體可以與您佈建工作區時 Azure Machine Learning 所建立的金鑰保存庫不同。 如果您想要將相同的金鑰保存庫執行個體用於工作區，請在佈建工作區時傳遞相同的金鑰保存庫，方法是使用 [key_vault 參數](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) \(部分機器翻譯\)。 
 
-此 Cosmos DB 實例會建立在您訂用帳戶的 Microsoft 管理資源群組中，以及所需的任何資源。 受控資源群組的命名格式為 `<AML Workspace Resource Group Name><GUID>`。 如果您的 Azure Machine Learning 工作區使用私人端點，也會為 Cosmos DB 實例建立虛擬網路。 此 VNet 可用來保護 Cosmos DB 與 Azure Machine Learning 之間的通訊。
-
-> [!IMPORTANT]
-> * 請勿刪除包含此 Cosmos DB 實例的資源群組，或在此群組中自動建立的任何資源。 如果您需要刪除資源群組、Cosmos DB 實例等，您必須刪除使用該資源群組的 Azure Machine Learning 工作區。 刪除相關聯的工作區時，會刪除資源群組、Cosmos DB 實例和其他自動建立的資源。
-> * 此 Cosmos DB 帳戶的預設[要求單位](../cosmos-db/request-units.md)設定為 __8000__。 不支援變更此值。
-> * 您無法提供自己的 VNet 以搭配所建立的 Cosmos DB 實例使用。 您也無法修改虛擬網路。 例如，您無法變更它所使用的 IP 位址範圍。
+[!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
 如果您需要「輪替或撤銷」金鑰，您可以隨時執行此動作。 輪替金鑰時，Cosmos DB 將會開始使用新的金鑰 (最新版本) 來加密待用資料。 撤銷 (停用) 金鑰時，Cosmos DB 會負責處理失敗的要求。 輪替或撤銷通常需要一小時的時間才會生效。
 
@@ -371,8 +366,8 @@ Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性�
 
 [Azure 原則](/azure/governance/policy) 是一種管理工具，可讓您確保 Azure 資源符合您的原則。 您可以使用 Azure Machine Learning 指派下列原則：
 
-* **客戶管理的金鑰**：無論工作區是否必須使用客戶管理的金鑰，請進行審核或強制執行。
-* **Private link**： Audit 工作區是否使用私人端點來與虛擬網路通訊。
+* **客戶管理的金鑰** ：無論工作區是否必須使用客戶管理的金鑰，請進行審核或強制執行。
+* **Private link** ： Audit 工作區是否使用私人端點來與虛擬網路通訊。
 
 如需 Azure 原則的詳細資訊，請參閱 [Azure 原則檔](/azure/governance/policy/overview)。
 

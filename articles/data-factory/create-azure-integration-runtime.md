@@ -10,12 +10,12 @@ ms.date: 06/09/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: c7880fd7fb687483409ce591059e0f5b2d2e2991
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9615dc358b1c5bed0e48c07c2571ccce05fcdf2e
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84659707"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637202"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>如何建立和設定 Azure 整合執行階段
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -41,14 +41,14 @@ Azure IR 提供完全受控的計算，以原生方式執行資料移動並將�
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -Name "MySampleAzureIR" -ResourceGroupName "ADFV2SampleRG" -Type Managed -Location "West Europe"
 ```  
-針對 Azure IR，類型必須設定為**受控**。 您不需要指定計算詳細資料，因為它在雲端中以彈性的方式受到完整管理。 當您要建立 Azure-SSIS IR 時，才需要指定例如節點大小和節點計數的計算詳細資料。 如需詳細資訊，請參閱[建立和設定 Azure-SSIS IR](create-azure-ssis-integration-runtime.md)。
+針對 Azure IR，類型必須設定為 **受控** 。 您不需要指定計算詳細資料，因為它在雲端中以彈性的方式受到完整管理。 當您要建立 Azure-SSIS IR 時，才需要指定例如節點大小和節點計數的計算詳細資料。 如需詳細資訊，請參閱[建立和設定 Azure-SSIS IR](create-azure-ssis-integration-runtime.md)。
 
 您可以使用 Set-AzDataFactoryV2IntegrationRuntime PowerShell Cmdlet 來設定現有的 Azure IR 來變更其位置。 如需 Azure IR 位置的詳細資訊，請參閱[整合執行階段簡介](concepts-integration-runtime.md)。
 
 ### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>透過 Azure Data Factory UI 建立 Azure IR
 使用下列步驟來建立使用 Azure Data Factory UI 的 Azure IR。
 
-1. 在 Azure Data Factory UI 的 [開始吧] 頁面上，從最左邊窗格中選取 [[管理] 索引標籤](https://docs.microsoft.com/azure/data-factory/author-management-hub)。
+1. 在 Azure Data Factory UI 的 [開始吧] 頁面上，從最左邊窗格中選取 [[管理] 索引標籤](./author-management-hub.md)。
 
    ![首頁的 [管理] 按鈕](media/doc-common-process/get-started-page-manage-button.png)
 
@@ -56,12 +56,12 @@ Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -N
 
    ![建立整合執行階段](media/doc-common-process/manage-new-integration-runtime.png)
 
-1. 在 [ **整合執行時間設定** ] 頁面上，選取 [ **Azure]、[自我**裝載]，然後選取 [ **繼續**]。 
+1. 在 [ **整合執行時間設定** ] 頁面上，選取 [ **Azure]、[自我** 裝載]，然後選取 [ **繼續** ]。 
 
-1. 在下列頁面上，選取 [ **Azure** ] 以建立 Azure IR，然後選取 [ **繼續**]。
+1. 在下列頁面上，選取 [ **Azure** ] 以建立 Azure IR，然後選取 [ **繼續** ]。
    ![建立整合執行階段](media/create-azure-integration-runtime/new-azure-integration-runtime.png)
 
-1. 輸入 Azure IR 的名稱，然後選取 [ **建立**]。
+1. 輸入 Azure IR 的名稱，然後選取 [ **建立** ]。
    ![建立 Azure IR](media/create-azure-integration-runtime/create-azure-integration-runtime.png)
 
 1. 當建立完成時，您會看到快顯通知。 在 [ **整合運行** 時間] 頁面上，請確定您在清單中看到新建立的 IR。
@@ -87,9 +87,8 @@ Azure IR 建立之後，您可以在「已連結的服務」定義中參考它�
 
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 若要了解如何建立其他類型的整合執行階段，請參閱下列文章：
 
 - [建立自我裝載整合執行時間](create-self-hosted-integration-runtime.md)
 - [建立 Azure-SSIS 整合執行階段](create-azure-ssis-integration-runtime.md)
- 

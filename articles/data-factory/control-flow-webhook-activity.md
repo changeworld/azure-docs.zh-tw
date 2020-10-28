@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4056550ae0a71138d136878fc7e3aa5f6f8f4180
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ce41a5928d5b8a7c7df439ce5321cd15f0cc1d5
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417873"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634975"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure Data Factory 中的 Webhook 活動
 
@@ -60,16 +60,16 @@ Webhook 活動可以透過您的自訂程式碼來控制管線的執行。 使�
 **方法** | 目標端點的 REST API 方法。 | 字串。 支援的類型為 "POST"。 | 是 |
 **url** | 目標端點和路徑。 | 字串或含有字串之 **resultType** 值的運算式。 | 是 |
 **頭** | 傳送至要求的標頭。 以下範例會在要求上設定語言和類型： `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` 。 | 字串或含有字串之 **resultType** 值的運算式。 | 是。 您 `Content-Type` 必須使用類似的標頭 `"headers":{ "Content-Type":"application/json"}` 。 |
-**body** | 代表傳送至端點的承載。 | 有效的 JSON 或具有 JSON 之 **resultType** 值的運算式。 請參閱要求承載架構的 [要求承載架構](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#request-payload-schema) 。 | 是 |
-**認證** | 用來呼叫端點的驗證方法。 支援的類型為「基本」和「ClientCertificate」。 如需詳細資訊，請參閱[驗證](https://docs.microsoft.com/azure/data-factory/control-flow-web-activity#authentication)。 如果不需要驗證，請排除此屬性。 | 字串或含有字串之 **resultType** 值的運算式。 | 否 |
-**timeout** | 活動等候叫用 **callBackUri** 所指定回呼的時間長度。 預設值為10分鐘 ( "00:10:00" ) 。 值的 TimeSpan 格式為 *d*。*hh*：*mm*：*ss*。 | String | 否 |
+**body** | 代表傳送至端點的承載。 | 有效的 JSON 或具有 JSON 之 **resultType** 值的運算式。 請參閱要求承載架構的 [要求承載架構](./control-flow-web-activity.md#request-payload-schema) 。 | 是 |
+**認證** | 用來呼叫端點的驗證方法。 支援的類型為「基本」和「ClientCertificate」。 如需詳細資訊，請參閱[驗證](./control-flow-web-activity.md#authentication)。 如果不需要驗證，請排除此屬性。 | 字串或含有字串之 **resultType** 值的運算式。 | 否 |
+**timeout** | 活動等候叫用 **callBackUri** 所指定回呼的時間長度。 預設值為10分鐘 ( "00:10:00" ) 。 值的 TimeSpan 格式為 *d* 。 *hh* ： *mm* ： *ss* 。 | String | 否 |
 **報告回呼的狀態** | 讓使用者報告 webhook 活動的失敗狀態。 | Boolean | 否 |
 
 ## <a name="authentication"></a>驗證
 
 Webhook 活動支援下列驗證類型。
 
-### <a name="none"></a>無
+### <a name="none"></a>None
 
 如果不需要驗證，請不要包含 **驗證** 屬性。
 
@@ -99,7 +99,7 @@ Webhook 活動支援下列驗證類型。
 
 ### <a name="managed-identity"></a>受控識別
 
-使用 data factory 的受控識別來指定要求存取權杖的資源 URI。 若要呼叫 Azure 資源管理 API，請使用 `https://management.azure.com/`。 如需受控識別如何運作的詳細資訊，請參閱適用 [于 Azure 資源的受控識別總覽](/azure/active-directory/managed-identities-azure-resources/overview)。
+使用 data factory 的受控識別來指定要求存取權杖的資源 URI。 若要呼叫 Azure 資源管理 API，請使用 `https://management.azure.com/`。 如需受控識別如何運作的詳細資訊，請參閱適用 [于 Azure 資源的受控識別總覽](../active-directory/managed-identities-azure-resources/overview.md)。
 
 ```json
 "authentication": {
@@ -119,7 +119,7 @@ Data Factory 會將主體中的額外屬性 **callBackUri** 傳遞至 URL 端點
 
 針對每個 REST API 呼叫，如果端點未在一分鐘內回應，用戶端會超時。 此行為是標準 HTTP 最佳做法。 若要修正此問題，請執行202模式。 在目前的案例中，端點會傳回 202 (已接受的) 且用戶端會進行輪詢。
 
-要求的一分鐘超時與活動超時無關。 後者可用來等候 **callbackUri**所指定的回呼。
+要求的一分鐘超時與活動超時無關。 後者可用來等候 **callbackUri** 所指定的回呼。
 
 傳遞回回呼 URI 的主體必須是有效的 JSON。 將 `Content-Type` 標頭設定為 `application/json`。
 

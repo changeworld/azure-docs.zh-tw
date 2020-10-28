@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: b48fb28a56cdc1c836233cd2bd03a1f9e750a0a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96667dcdd43eb801542a4be8fa4f21ff8d1317b7
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85249647"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637253"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>複製活動中的架構和資料類型對應
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -54,13 +54,13 @@ ms.locfileid: "85249647"
 | path     | 要解壓縮或對應的每個欄位的 JSON 路徑運算式。 適用于階層式來源和接收，例如 Cosmos DB、MongoDB 或 REST 連接器。<br>針對根物件底下的欄位，JSON 路徑的開頭為根 `$` ; 針對屬性所選擇的陣列中的欄位 `collectionReference` ，json 路徑會從陣列元素開始，而不需要 `$` 。 | 否       |
 | type     | 來源或接收資料行 Data Factory 過渡期資料類型。 一般而言，您不需要指定或變更這個屬性。 深入瞭解 [資料類型對應](#data-type-mapping)。 | 否       |
 | culture  | 來源或接收資料行的文化特性。 當類型為或時套用 `Datetime` `Datetimeoffset` 。 預設為 `en-us`。<br>一般而言，您不需要指定或變更這個屬性。 深入瞭解 [資料類型對應](#data-type-mapping)。 | 否       |
-| format   | 當類型為或時，要使用的格式字串 `Datetime` `Datetimeoffset` 。 有關如何格式化日期時間的資訊，請參閱[自訂日期和時間格式字串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 一般而言，您不需要指定或變更這個屬性。 深入瞭解 [資料類型對應](#data-type-mapping)。 | 否       |
+| format   | 當類型為或時，要使用的格式字串 `Datetime` `Datetimeoffset` 。 有關如何格式化日期時間的資訊，請參閱[自訂日期和時間格式字串](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 一般而言，您不需要指定或變更這個屬性。 深入瞭解 [資料類型對應](#data-type-mapping)。 | 否       |
 
 除了下列屬性之外，還支援下列屬性 `translator` `mappings` ：
 
 | 屬性            | 描述                                                  | 必要 |
 | ------------------- | ------------------------------------------------------------ | -------- |
-| collectionReference | 從階層式來源複製資料（例如 Cosmos DB、MongoDB 或 REST 連接器）時適用。<br>如果您想要逐一查看**陣列欄位內**相同模式的物件並擷取資料，然後轉換為每個物件一個資料列，則請指定該陣列的 JSON 路徑，以執行交叉套用。 | 否       |
+| collectionReference | 從階層式來源複製資料（例如 Cosmos DB、MongoDB 或 REST 連接器）時適用。<br>如果您想要逐一查看 **陣列欄位內** 相同模式的物件並擷取資料，然後轉換為每個物件一個資料列，則請指定該陣列的 JSON 路徑，以執行交叉套用。 | 否       |
 
 #### <a name="tabular-source-to-tabular-sink"></a>表格式接收器的表格式來源
 
@@ -170,7 +170,7 @@ ms.locfileid: "85249647"
 }
 ```
 
-而且，您想要使用標題列將它複製到文字檔中，方法是將陣列中的資料簡維 * (order_pd 和 order_price) * 和交叉聯結與一般根資訊 * (數位、日期和城市) *：
+而且，您想要使用標題列將它複製到文字檔中，方法是將陣列中的資料簡維 *(order_pd 和 order_price)* 和交叉聯結與一般根資訊 *(數位、日期和城市)* ：
 
 | orderNumber | orderDate | order_pd | order_price | city    |
 | ----------- | --------- | -------- | ----------- | ------- |
@@ -182,13 +182,13 @@ ms.locfileid: "85249647"
 
 1. 在 [複製活動-> 對應] 索引標籤上，按一下 [匯 **入架構** ] 按鈕以匯入來源和接收架構。 當 Data Factory 在匯入架構時，範例前幾個物件，如果未顯示任何欄位，您可以將它加入至階層中的正確層-將滑鼠停留在現有的功能變數名稱上，然後加入宣告節點、物件或陣列。
 
-2. 選取您要從中反復查看和解壓縮資料的陣列。 它會自動填入做為 **集合參考**。 請注意，這類操作只支援單一陣列。
+2. 選取您要從中反復查看和解壓縮資料的陣列。 它會自動填入做為 **集合參考** 。 請注意，這類操作只支援單一陣列。
 
 3. 將需要的欄位對應到接收。 Data Factory 會自動判斷階層式端的對應 JSON 路徑。
 
 ![使用 UI 將階層式對應至表格式](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-ui.png)
 
-您也可以切換至 **Advanced editor**，在這種情況下，您可以直接查看並編輯欄位的 JSON 路徑。 如果您選擇在此視圖中加入新的對應，請指定 JSON 路徑。
+您也可以切換至 **Advanced editor** ，在這種情況下，您可以直接查看並編輯欄位的 JSON 路徑。 如果您選擇在此視圖中加入新的對應，請指定 JSON 路徑。
 
 ![使用 advanced editor 將階層式對應至表格式](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-advanced-editor.png)
 
@@ -283,12 +283,12 @@ ms.locfileid: "85249647"
 
 從來源到接收的過渡型別之間，支援下列資料類型轉換。
 
-| Source\Sink | Boolean | 位元組陣列 | Decimal | 日期/時間 <small> (1) </small> | 浮點數 <small> (2) </small> | GUID | 整數 <small> (3) </small> | String | TimeSpan |
+| Source\Sink | Boolean | 位元組陣列 | 小數位數 | 日期/時間 <small> (1) </small> | 浮點數 <small> (2) </small> | GUID | 整數 <small> (3) </small> | String | TimeSpan |
 | ----------- | ------- | ---------- | ------- | ---------------------------- | ------------------------------ | ---- | -------------------------- | ------ | -------- |
 | Boolean     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
 | 位元組陣列  |         | ✓          |         |                              |                                |      |                            | ✓      |          |
 | 日期/時間   |         |            |         | ✓                            |                                |      |                            | ✓      |          |
-| Decimal     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
+| 小數位數     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
 | 浮點數 | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
 | GUID        |         |            |         |                              |                                | ✓    |                            | ✓      |          |
 | 整數     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
@@ -314,9 +314,9 @@ ms.locfileid: "85249647"
 | *下 `typeConversionSettings`* |                                                              |          |
 | allowDataTruncation              | 在複製期間將來源資料轉換成具有不同類型的接收時，允許資料截斷，例如從 DatetimeOffset 轉換成整數，從 DatetimeOffset 到 Datetime。 <br>預設值為 true。 | 否       |
 | treatBooleanAsNumber             | 將布林值視為數位，例如，true 為1。<br>預設值為 False。 | 否       |
-| dateTimeFormat                   | 在不含時區時差與字串的日期之間進行轉換時的格式字串，例如 `yyyy-MM-dd HH:mm:ss.fff` 。  如需詳細資訊，請參閱 [自訂日期和時間格式字串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) 。 | 否       |
-| dateTimeOffsetFormat             | 使用時區位移和字串在日期之間轉換時的格式字串，例如 `yyyy-MM-dd HH:mm:ss.fff zzz` 。  如需詳細資訊，請參閱 [自訂日期和時間格式字串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) 。 | 否       |
-| timeSpanFormat                   | 在時間週期和字串之間轉換時的格式字串，例如 `dd\.hh\:mm` 。 如需詳細資訊，請參閱 [自訂 TimeSpan 格式字串](https://docs.microsoft.com/dotnet/standard/base-types/custom-timespan-format-strings) 。 | 否       |
+| dateTimeFormat                   | 在不含時區時差與字串的日期之間進行轉換時的格式字串，例如 `yyyy-MM-dd HH:mm:ss.fff` 。  如需詳細資訊，請參閱 [自訂日期和時間格式字串](/dotnet/standard/base-types/custom-date-and-time-format-strings) 。 | 否       |
+| dateTimeOffsetFormat             | 使用時區位移和字串在日期之間轉換時的格式字串，例如 `yyyy-MM-dd HH:mm:ss.fff zzz` 。  如需詳細資訊，請參閱 [自訂日期和時間格式字串](/dotnet/standard/base-types/custom-date-and-time-format-strings) 。 | 否       |
+| timeSpanFormat                   | 在時間週期和字串之間轉換時的格式字串，例如 `dd\.hh\:mm` 。 如需詳細資訊，請參閱 [自訂 TimeSpan 格式字串](/dotnet/standard/base-types/custom-timespan-format-strings) 。 | 否       |
 | culture                          | 轉換類型時要使用的文化特性資訊，例如 `en-us` 或 `fr-fr` 。 | 否       |
 
 **範例︰**
@@ -356,7 +356,7 @@ ms.locfileid: "85249647"
 
 ### <a name="alternative-column-mapping-legacy-model"></a>替代資料行對應 (舊版模型) 
 
-您可以指定複製活動-> `translator`  ->  `columnMappings` ，以便在表格式資料之間進行對應。 在此情況下，輸入和輸出資料集都需要 "structure" 區段。 資料行對應支援將來源資料集「結構」中的所有或一部分資料行，對應至接收資料集「結構」中的所有資料行****。 以下是會導致發生例外狀況的錯誤狀況：
+您可以指定複製活動-> `translator`  ->  `columnMappings` ，以便在表格式資料之間進行對應。 在此情況下，輸入和輸出資料集都需要 "structure" 區段。 資料行對應支援將來源資料集「結構」中的所有或一部分資料行，對應至接收資料集「結構」中的所有資料行  。 以下是會導致發生例外狀況的錯誤狀況：
 
 - 來源資料存放區查詢結果在輸入資料集的「結構」區段中並未指定資料行名稱。
 - 接收資料存放區 (如果含有預先定義的結構描述) 在輸出資料集的「結構」區段中並未指定資料行名稱。
@@ -411,7 +411,7 @@ ms.locfileid: "85249647"
 }
 ```
 
-下列 JSON 定義了管線中的複製活動。 來源中的資料行，使用**translator**  ->  **>columnmappings**屬性對應至接收中的資料行。
+下列 JSON 定義了管線中的複製活動。 來源中的資料行，使用 **translator**  ->  **>columnmappings** 屬性對應至接收中的資料行。
 
 ```json
 {
@@ -455,8 +455,8 @@ ms.locfileid: "85249647"
 | 屬性            | 描述                                                  | 必要 |
 | :------------------ | :----------------------------------------------------------- | :------- |
 | type                | 複製活動轉譯器的 type 屬性必須設定為： **TabularTranslator** | 是      |
-| schemaMapping       | 機碼值組的集合，表示 **從來源端到接收端**的對應關聯性。<br/>- **Key：** 代表 source。 若為 **表格式來源**，請指定資料集結構中所定義的資料行名稱;針對 [ **階層式來源**]，指定要解壓縮和對應的每個欄位的 JSON 路徑運算式。<br>- **Value：** 代表 sink。 若為 **表格式接收**，請指定資料集結構中所定義的資料行名稱;針對 **階層式接收**，請針對要解壓縮和對應的每個欄位指定 JSON 路徑運算式。 <br>在階層式資料的情況下，針對根物件底下的欄位，JSON 路徑的開頭為根 $;針對屬性所選擇的陣列內的欄位 `collectionReference` ，JSON 路徑會從陣列元素開始。 | 是      |
-| collectionReference | 如果您想要逐一查看**陣列欄位內**相同模式的物件並擷取資料，然後轉換為每個物件一個資料列，則請指定該陣列的 JSON 路徑，以執行交叉套用。 只有在階層式資料是來源時，才支援這個屬性。 | 否       |
+| schemaMapping       | 機碼值組的集合，表示 **從來源端到接收端** 的對應關聯性。<br/>- **Key：** 代表 source。 若為 **表格式來源** ，請指定資料集結構中所定義的資料行名稱;針對 [ **階層式來源** ]，指定要解壓縮和對應的每個欄位的 JSON 路徑運算式。<br>- **Value：** 代表 sink。 若為 **表格式接收** ，請指定資料集結構中所定義的資料行名稱;針對 **階層式接收** ，請針對要解壓縮和對應的每個欄位指定 JSON 路徑運算式。 <br>在階層式資料的情況下，針對根物件底下的欄位，JSON 路徑的開頭為根 $;針對屬性所選擇的陣列內的欄位 `collectionReference` ，JSON 路徑會從陣列元素開始。 | 是      |
+| collectionReference | 如果您想要逐一查看 **陣列欄位內** 相同模式的物件並擷取資料，然後轉換為每個物件一個資料列，則請指定該陣列的 JSON 路徑，以執行交叉套用。 只有在階層式資料是來源時，才支援這個屬性。 | 否       |
 
 **範例：從 MongoDB 複製到 Oracle：**
 
@@ -487,7 +487,7 @@ ms.locfileid: "85249647"
 }
 ```
 
-您想要壓平合併陣列內的資料 (order_pd 和 order_price)**，將內容複製到下列格式的 Azure SQL 資料表，並與一般根資訊 (編號、日期和城市)** 交叉聯結︰
+您想要壓平合併陣列內的資料 (order_pd 和 order_price)  ，將內容複製到下列格式的 Azure SQL 資料表，並與一般根資訊 (編號、日期和城市)  交叉聯結︰
 
 | orderNumber | orderDate | order_pd | order_price | city    |
 | ----------- | --------- | -------- | ----------- | ------- |

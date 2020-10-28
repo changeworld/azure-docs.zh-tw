@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/05/2020
-ms.openlocfilehash: d6f292ff89a70de90e6b86f19f73de26963d997f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7035da173102e59aec9c643381bad701d6facf38
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927550"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634533"
 ---
 # <a name="how-to-run-self-hosted-integration-runtime-in-windows-container"></a>如何在 Windows 容器中執行 Self-Hosted Integration Runtime
 
@@ -26,7 +26,7 @@ ms.locfileid: "87927550"
 Azure Data Factory 正在提供 Self-Hosted Integration Runtime 的官方 windows 容器支援。 您可以下載 docker 組建原始程式碼，並將組建和執行程式結合在您自己的持續傳遞管線中。 
 
 ## <a name="prerequisites"></a>必要條件 
-- [Windows 容器需求](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/system-requirements)
+- [Windows 容器需求](/virtualization/windowscontainers/deploy-containers/system-requirements)
 - Docker 2.3 版和更新版本 
 - Self-Hosted Integration Runtime 4.11.7512.1 版和更新版本 
 ## <a name="get-started"></a>開始使用 
@@ -61,7 +61,5 @@ docker run -d -e NODE_NAME="irNodeName" -e AUTH_KEY="IR_AUTHENTICATI
 - 自動更新 
 
 ### <a name="next-steps"></a>後續步驟
-- 檢閱 [Azure Data Factory 中的整合執行階段概念](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime)。
-- 了解如何[在 Azure 入口網站中建立自我裝載的整合執行階段](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)。
-
-
+- 檢閱 [Azure Data Factory 中的整合執行階段概念](./concepts-integration-runtime.md)。
+- 了解如何[在 Azure 入口網站中建立自我裝載的整合執行階段](./create-self-hosted-integration-runtime.md)。

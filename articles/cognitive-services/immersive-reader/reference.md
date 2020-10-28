@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
-ms.author: metan
-ms.openlocfilehash: dbd5724797fdaf44d147d2f29362b1e5092728dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: metang
+ms.openlocfilehash: f2f5c8193454a3b7fa6be1cea7a1236b613d6c8f
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761544"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636522"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>沈浸式閱讀程式 (v1.1) 的 JavaScript SDK 參考
 
@@ -159,9 +159,9 @@ Required: false
 | 設定 | 類型 | 說明 |
 | ------- | ---- | ----------- |
 | 容器 | HTMLDivElement | 包含沈浸式閱讀程式 iframe 的 HTML 元素。 |
-| sessionID | 字串 | 此會話的全域唯一識別碼，用於進行偵錯工具。 |
+| sessionID | String | 此會話的全域唯一識別碼，用於進行偵錯工具。 |
  
-## <a name="error"></a>錯誤
+## <a name="error"></a>Error
 
 包含錯誤的相關資訊。
 
@@ -176,8 +176,8 @@ Required: false
 
 | 設定 | 類型 | 說明 |
 | ------- | ---- | ----------- |
-| code | 字串 | 一組錯誤碼的其中一個。 請參閱[錯誤碼](#error-codes) \(英文\)。 |
-| 訊息 | 字串 | 錯誤的人們可讀取標記法。 |
+| code | String | 一組錯誤碼的其中一個。 請參閱[錯誤碼](#error-codes) \(英文\)。 |
+| message | String | 錯誤的人們可讀取標記法。 |
 
 #### <a name="error-codes"></a>錯誤碼
 
@@ -190,7 +190,7 @@ Required: false
 
 <br>
 
-## <a name="types"></a>型別
+## <a name="types"></a>類型
 
 ### <a name="content"></a>Content
 
@@ -242,8 +242,8 @@ Default value: null
 
 | 名稱 | 類型 | 描述 |
 | ---- | ---- |------------ |
-| 內容 | 字串 | 字串，其中包含傳送至沈浸式閱讀程式的內容。 |
-| lang | 字串 | 文字的語言，其值為 IETF BCP 47 語言標記格式，例如 en、es。 如果未指定，則會自動偵測語言。 請參閱[支援的語言](#supported-languages)。 |
+| 內容 | String | 字串，其中包含傳送至沈浸式閱讀程式的內容。 |
+| lang | String | 文字的語言，其值為 IETF BCP 47 語言標記格式，例如 en、es。 如果未指定，則會自動偵測語言。 請參閱[支援的語言](#supported-languages)。 |
 | mimeType | 字串 | 支援純文字、MathML、HTML & Microsoft Word .DOCX 格式。 如需詳細資訊，請參閱 [支援的 MIME 類型](#supported-mime-types) 。 |
 
 ##### `content`
@@ -279,7 +279,7 @@ Default value: "text/plain"
 
 <br>
 
-## <a name="options"></a>選項。
+## <a name="options"></a>選項
 
 包含屬性，這些屬性會設定沈浸式閱讀程式的特定行為。
 
@@ -307,21 +307,21 @@ Default value: "text/plain"
 
 | 名稱 | 類型 | 描述 |
 | ---- | ---- |------------ |
-| uiLang | 字串 | UI 的語言，其值為 IETF BCP 47 語言標記格式，例如 en、es。 如果未指定，則預設為瀏覽器語言。 |
+| uiLang | String | UI 的語言，其值為 IETF BCP 47 語言標記格式，例如 en、es。 如果未指定，則預設為瀏覽器語言。 |
 | timeout | 數字 | LaunchAsync 的持續時間 (以毫秒為單位) 在[launchAsync](#launchasync)失敗前發生逾時錯誤 (預設值為15000毫秒) 。 此超時只適用于初始啟動的 [讀取器] 頁面，其中會在 [讀取器] 頁面開啟時觀察到成功，並開始微調。 應該不需要調整時間。 |
 | uiZIndex | 數字 | 將建立 (預設值為 1000) 的 iframe 的 Z-索引。 |
-| useWebview | 布林值| 使用 web 程式標記而非 iframe，以與 Chrome 應用程式相容 (預設為 false) 。 |
+| useWebview | Boolean| 使用 web 程式標記而非 iframe，以與 Chrome 應用程式相容 (預設為 false) 。 |
 | onExit | 函式 | 當沈浸式閱讀程式結束時執行。 |
-| allowFullscreen | 布林值 | 切換全螢幕 (預設值的功能是) 。 |
-| hideExitButton | 布林值 | 是否要隱藏沈浸式閱讀程式的離開按鈕箭號 (預設為 false) 。 如果有提供替代機制來結束沈浸式閱讀程式 (例如移動工具列的向後箭號) ，則應該只有 true。 |
+| allowFullscreen | Boolean | 切換全螢幕 (預設值的功能是) 。 |
+| hideExitButton | Boolean | 是否要隱藏沈浸式閱讀程式的離開按鈕箭號 (預設為 false) 。 如果有提供替代機制來結束沈浸式閱讀程式 (例如移動工具列的向後箭號) ，則應該只有 true。 |
 | cookiePolicy | [CookiePolicy](#cookiepolicy-options) | 沈浸式閱讀程式的 cookie 使用量設定 (預設值為 *CookiePolicy。停* 用) 。 主機應用程式會負責根據歐盟 Cookie 合規性原則取得任何必要的使用者同意。 請參閱 [Cookie 原則選項](#cookiepolicy-options)。 |
-| disableFirstRun | 布林值 | 停用第一次執行體驗。 |
+| disableFirstRun | Boolean | 停用第一次執行體驗。 |
 | readAloudOptions | [ReadAloudOptions](#readaloudoptions) | 設定大聲讀出的選項。 |
 | translationOptions | [TranslationOptions](#translationoptions) | 設定翻譯的選項。 |
 | >displayoptions | [>displayoptions](#displayoptions) | 設定文字大小、字型等的選項。 |
-| 偏好 | 字串 | 從 onPreferencesChanged 傳回的字串，代表使用者在沈浸式閱讀程式中的喜好設定。 如需詳細資訊，請參閱 [設定參數](#settings-parameters) 和 [如何儲存使用者喜好](./how-to-store-user-preferences.md) 設定。 |
+| 偏好 | String | 從 onPreferencesChanged 傳回的字串，代表使用者在沈浸式閱讀程式中的喜好設定。 如需詳細資訊，請參閱 [設定參數](#settings-parameters) 和 [如何儲存使用者喜好](./how-to-store-user-preferences.md) 設定。 |
 | onPreferencesChanged | 函式 | 當使用者的喜好設定變更時執行。 如需詳細資訊，請參閱 [如何儲存使用者喜好](./how-to-store-user-preferences.md) 設定。 |
-| customDomain | 字串 | 保留供內部使用。 主控沈浸式閱讀程式 webapp 的自訂網域 (預設為 null) 。 |
+| customDomain | String | 保留供內部使用。 主控沈浸式閱讀程式 webapp 的自訂網域 (預設為 null) 。 |
 
 ##### `uiLang`
 ```Parameters
@@ -392,9 +392,9 @@ type ReadAloudOptions = {
 
 | 名稱 | 類型 | 描述 |
 | ---- | ---- |------------ |
-| voice | 字串 | 語音，也就是「女性」或「男性」。 請注意，並非所有語言都支援這兩種性別。 |
+| voice | String | 語音，也就是「女性」或「男性」。 請注意，並非所有語言都支援這兩種性別。 |
 | 速度 | 數字 | 播放速度必須介於0.5 到2.5 （含）之間。 |
-| 播放 | 布林值 | 當沈浸式閱讀程式載入時，會自動開始大聲朗讀。 |
+| 播放 | Boolean | 當沈浸式閱讀程式載入時，會自動開始大聲朗讀。 |
 
 ##### `voice`
 ```Parameters
@@ -431,9 +431,9 @@ type TranslationOptions = {
 
 | 名稱 | 類型 | 描述 |
 | ---- | ---- |------------ |
-| 語言 | 字串 | 設定翻譯語言，此值為 IETF BCP 47 語言標記格式，例如 fr-fr、es-MX、zh-Hans-CN。 自動啟用 word 或檔轉譯所需。 |
-| autoEnableDocumentTranslation | 布林值 | 自動轉譯整份檔。 |
-| autoEnableWordTranslation | 布林值 | 自動啟用文字轉譯。 |
+| 語言 | String | 設定翻譯語言，此值為 IETF BCP 47 語言標記格式，例如 fr-fr、es-MX、zh-Hans-CN。 自動啟用 word 或檔轉譯所需。 |
+| autoEnableDocumentTranslation | Boolean | 自動轉譯整份檔。 |
+| autoEnableWordTranslation | Boolean | 自動啟用文字轉譯。 |
 
 ##### `language`
 ```Parameters
@@ -460,8 +460,8 @@ type DisplayOptions = {
 | 名稱 | 類型 | 描述 |
 | ---- | ---- |------------ |
 | textSize | 數字 | 設定選擇的文字大小。 |
-| increaseSpacing | 布林值 | 設定是否開啟或關閉文字間距。 |
-| fontFamily | 字串 | 設定所選字型 ( "Calibri"、"ComicSans" 或 "Sitka" ) 。 |
+| increaseSpacing | Boolean | 設定是否開啟或關閉文字間距。 |
+| fontFamily | String | 設定所選字型 ( "Calibri"、"ComicSans" 或 "Sitka" ) 。 |
 
 ##### `textSize`
 ```Parameters
@@ -487,28 +487,28 @@ Values available: "Calibri", "Sitka", "ComicSans"
 enum CookiePolicy { Disable, Enable }
 ```
 
-**下列設定**僅供參考之用。 沈浸式閱讀程式會將其設定或使用者喜好設定儲存在 cookie 中。 此 *cookiePolicy* 選項預設會 **停** 用 cookie 的使用方式，以符合歐盟的 cookie 合規性法則。 如果您想要重新啟用 cookie，並還原沈浸式閱讀程式使用者喜好設定的預設功能，您必須確保您的網站或應用程式能取得使用者的適當同意，以啟用 cookie。 然後，若要在沈浸式閱讀程式中重新啟用 cookie，您必須明確地將 *cookiePolicy* 選項設定為 cookiePolicy，以在啟動沈浸式閱讀程式時 *啟用* 。 下表描述當啟用 *cookiePolicy* 選項時，沈浸式閱讀程式儲存在其 cookie 中的設定。
+**下列設定** 僅供參考之用。 沈浸式閱讀程式會將其設定或使用者喜好設定儲存在 cookie 中。 此 *cookiePolicy* 選項預設會 **停** 用 cookie 的使用方式，以符合歐盟的 cookie 合規性法則。 如果您想要重新啟用 cookie，並還原沈浸式閱讀程式使用者喜好設定的預設功能，您必須確保您的網站或應用程式能取得使用者的適當同意，以啟用 cookie。 然後，若要在沈浸式閱讀程式中重新啟用 cookie，您必須明確地將 *cookiePolicy* 選項設定為 cookiePolicy，以在啟動沈浸式閱讀程式時 *啟用* 。 下表描述當啟用 *cookiePolicy* 選項時，沈浸式閱讀程式儲存在其 cookie 中的設定。
 
 #### <a name="settings-parameters"></a>Settings 參數
 
 | 設定 | 類型 | 描述 |
 | ------- | ---- | ----------- |
 | textSize | 數字 | 設定選擇的文字大小。 |
-| fontFamily | 字串 | 設定所選字型 ( "Calibri"、"ComicSans" 或 "Sitka" ) 。 |
+| fontFamily | String | 設定所選字型 ( "Calibri"、"ComicSans" 或 "Sitka" ) 。 |
 | textSpacing | 數字 | 設定是否開啟或關閉文字間距。 |
-| formattingEnabled | 布林值 | 設定是否開啟或關閉 HTML 格式化。 |
-| Theme - 佈景主題 | 字串 | 設定選擇的主題 (例如 "Light"、"深色" ... ) 。 |
-| syllabificationEnabled | 布林值 | 設定 syllabification 是開啟或關閉。 |
-| nounHighlightingEnabled | 布林值 | 這會設定是否開啟或關閉名詞反白顯示。 |
-| nounHighlightingColor | 字串 | 設定選擇的名詞反白顯示色彩。 |
-| verbHighlightingEnabled | 布林值 | 設定是否開啟或關閉動詞反白顯示。 |
-| verbHighlightingColor | 字串 | 設定所選擇的動詞反白顯示色彩。 |
-| adjectiveHighlightingEnabled | 布林值 | 設定是否開啟或關閉形容詞反白顯示。 |
-| adjectiveHighlightingColor | 字串 | 設定所選擇的形容詞反白顯示色彩。 |
-| adverbHighlightingEnabled | 布林值 | 設定是否開啟或關閉副詞反白顯示。 |
-| adverbHighlightingColor | 字串 | 設定選擇的副詞反白顯示色彩。 |
-| pictureDictionaryEnabled | 布林值 | 設定是否開啟或關閉相片字典。 |
-| posLabelsEnabled | 布林值 | 設定是否要開啟或關閉每個醒目提示部分的上標文字標籤。  |
+| formattingEnabled | Boolean | 設定是否開啟或關閉 HTML 格式化。 |
+| Theme - 佈景主題 | String | 設定選擇的主題 (例如 "Light"、"深色" ... ) 。 |
+| syllabificationEnabled | Boolean | 設定 syllabification 是開啟或關閉。 |
+| nounHighlightingEnabled | Boolean | 這會設定是否開啟或關閉名詞反白顯示。 |
+| nounHighlightingColor | String | 設定選擇的名詞反白顯示色彩。 |
+| verbHighlightingEnabled | Boolean | 設定是否開啟或關閉動詞反白顯示。 |
+| verbHighlightingColor | String | 設定所選擇的動詞反白顯示色彩。 |
+| adjectiveHighlightingEnabled | Boolean | 設定是否開啟或關閉形容詞反白顯示。 |
+| adjectiveHighlightingColor | String | 設定所選擇的形容詞反白顯示色彩。 |
+| adverbHighlightingEnabled | Boolean | 設定是否開啟或關閉副詞反白顯示。 |
+| adverbHighlightingColor | String | 設定選擇的副詞反白顯示色彩。 |
+| pictureDictionaryEnabled | Boolean | 設定是否開啟或關閉相片字典。 |
+| posLabelsEnabled | Boolean | 設定是否要開啟或關閉每個醒目提示部分的上標文字標籤。  |
 
 <br>
 

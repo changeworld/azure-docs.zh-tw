@@ -7,18 +7,18 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: 4297cc83ab3fa280e15480aefcd5aef8734c65ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee82d3f35b6b2b50b001e065eb81447738526b1c
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531008"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635366"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>在對應資料流程中建立運算式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-在對應資料流程中，許多轉換屬性都是以運算式的形式輸入。 這些運算式是由在執行時間評估為 Spark 資料類型的資料行值、參數、函數、運算子和常值所組成。 對應資料流程的專用體驗旨在協助您建立這些稱為「 **運算式**產生器」的運算式。 使用  [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense) 程式碼完成以醒目提示、語法檢查和自動完成，運算式產生器的設計目的是讓建立資料流程變得更容易。 本文說明如何使用運算式產生器來有效地建立您的商務邏輯。
+在對應資料流程中，許多轉換屬性都是以運算式的形式輸入。 這些運算式是由在執行時間評估為 Spark 資料類型的資料行值、參數、函數、運算子和常值所組成。 對應資料流程的專用體驗旨在協助您建立這些稱為「 **運算式** 產生器」的運算式。 使用  [IntelliSense](/visualstudio/ide/using-intellisense) 程式碼完成以醒目提示、語法檢查和自動完成，運算式產生器的設計目的是讓建立資料流程變得更容易。 本文說明如何使用運算式產生器來有效地建立您的商務邏輯。
 
 ![運算式產生器](media/data-flow/expresion-builder.png "運算式產生器")
 
@@ -32,7 +32,7 @@ ms.locfileid: "90531008"
 
 ![藍色運算式方塊](media/data-flow/expressionbox.png "運算式產生器")
 
-當您參考相符或分組依據條件中的資料行時，運算式可以從資料行中解壓縮值。 若要建立運算式，請選取 [ **計算資料行**]。
+當您參考相符或分組依據條件中的資料行時，運算式可以從資料行中解壓縮值。 若要建立運算式，請選取 [ **計算資料行** ]。
 
 ![計算資料行選項](media/data-flow/computedcolumn.png "運算式產生器")
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cf8d847bd4e950ab17cc1f04b52be2589607f99c
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 55a27dbb6c2ec3569bae9d6fb96fcd8087f08daf
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629488"
+ms.locfileid: "92637661"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure Data Factory 複製精靈
 
@@ -78,7 +78,7 @@ Azure Data Factory 複製精靈簡化內嵌資料的程序，這通常是端對�
 
 ![使用系統變數](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-如下列螢幕擷取畫面所示，您也可以使用 **custom** 變數和任何 [支援的格式字串](https://msdn.microsoft.com/library/8kb3ddd4.aspx)。 若要選取具有該結構的資料夾，請先使用 [瀏覽]  按鈕。 然後將值取代為 **{custom}** ，並按 **Tab** 鍵來查看可輸入格式字串的文字方塊。     
+如下列螢幕擷取畫面所示，您也可以使用 **custom** 變數和任何 [支援的格式字串](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 若要選取具有該結構的資料夾，請先使用 [瀏覽]  按鈕。 然後將值取代為 **{custom}** ，並按 **Tab** 鍵來查看可輸入格式字串的文字方塊。     
 
 ![使用自訂變數](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 

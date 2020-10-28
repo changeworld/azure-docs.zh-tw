@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 6f502374996f01363ad27ff10dff3b34964a3474
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 0e9c669f2994e896205762c5f3f4df1b5fe214ae
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220732"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637219"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>將 Azure-SSIS 整合執行階段加入虛擬網路
 
@@ -49,7 +49,7 @@ Data Factory 可讓您將 Azure-SSIS IR 加入透過傳統部署模型或 Azure 
 
 ## <a name="access-to-on-premises-data-stores"></a>存取內部部署資料存放區
 
-如果您的 SSIS 套件存取內部部署資料存放區，您可以將您的 Azure-SSIS IR 加入連線至內部部署網路的虛擬網路。 或者，您可以將自我裝載 IR 設定和管理為 Azure-SSIS IR 的 proxy。 如需詳細資訊，請參閱 [將自我裝載 IR 設定為 Azure-SSIS IR 的 proxy](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)。 
+如果您的 SSIS 套件存取內部部署資料存放區，您可以將您的 Azure-SSIS IR 加入連線至內部部署網路的虛擬網路。 或者，您可以將自我裝載 IR 設定和管理為 Azure-SSIS IR 的 proxy。 如需詳細資訊，請參閱 [將自我裝載 IR 設定為 Azure-SSIS IR 的 proxy](./self-hosted-integration-runtime-proxy-ssis.md)。 
 
 將您的 Azure-SSIS IR 加入虛擬網路時，請記住下列重點： 
 
@@ -73,7 +73,7 @@ Data Factory 可讓您將 Azure-SSIS IR 加入透過傳統部署模型或 Azure 
 
 ## <a name="access-to-data-sources-protected-by-ip-firewall-rule"></a>存取 IP 防火牆規則所保護的資料來源
 
-如果您的 SSIS 套件存取的資料存放區/資源僅允許特定的靜態公用 IP 位址，而且您想要保護這些資源從 Azure-SSIS IR 的存取權，您可以將自己的 [公用 IP 位址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address) 加入 Azure-SSIS IR，同時將其加入虛擬網路，然後將 ip 防火牆規則新增至相關的資源，以允許來自這些 IP 位址的存取。
+如果您的 SSIS 套件存取的資料存放區/資源僅允許特定的靜態公用 IP 位址，而且您想要保護這些資源從 Azure-SSIS IR 的存取權，您可以將自己的 [公用 IP 位址](../virtual-network/virtual-network-public-ip-address.md) 加入 Azure-SSIS IR，同時將其加入虛擬網路，然後將 ip 防火牆規則新增至相關的資源，以允許來自這些 IP 位址的存取。
 
 在所有情況下，只能透過 Azure Resource Manager 部署模型來部署虛擬網路。
 
@@ -99,7 +99,7 @@ Data Factory 可讓您將 Azure-SSIS IR 加入透過傳統部署模型或 Azure 
 
 - 如果您攜帶自己的公用 IP 位址，請確定虛擬網路的資源群組 (或公用 IP 位址的資源群組) 可以建立和刪除特定的 Azure 網路資源。 如需詳細資訊，請參閱 [設定資源群組](#resource-group)。 
 
-- 如果您自訂 [Azure-SSIS IR 的自訂設定](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)中所述的 Azure-SSIS IR，則您的 Azure-SSIS IR 節點會從預先定義的172.16.0.0 範圍取得私人 IP 位址以進行172.31.255.255。 因此，請確定您虛擬或內部部署網路的私人 IP 位址範圍不會與此範圍發生衝突。
+- 如果您自訂 [Azure-SSIS IR 的自訂設定](./how-to-configure-azure-ssis-ir-custom-setup.md)中所述的 Azure-SSIS IR，則您的 Azure-SSIS IR 節點會從預先定義的172.16.0.0 範圍取得私人 IP 位址以進行172.31.255.255。 因此，請確定您虛擬或內部部署網路的私人 IP 位址範圍不會與此範圍發生衝突。
 
 下圖顯示您的 Azure-SSIS IR 所需的連接：
 
@@ -133,7 +133,7 @@ Data Factory 可讓您將 Azure-SSIS IR 加入透過傳統部署模型或 Azure 
 
 - 應該只提供未與其他 Azure 資源建立關聯的兩個未使用的專案。 當我們定期升級 Azure-SSIS IR 時，將會使用額外的一項。 請注意，一個公用 IP 位址無法在您的有效 Azure SSIS IRs 之間共用。
 
-- 它們應該是標準類型的靜態類型。 如需詳細資訊，請參閱 [公用 IP 位址的 sku](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) 。
+- 它們應該是標準類型的靜態類型。 如需詳細資訊，請參閱 [公用 IP 位址的 sku](../virtual-network/public-ip-addresses.md#sku) 。
 
 - 它們應該都有 DNS 名稱。 如果您在建立時未提供 DNS 名稱，您可以在 Azure 入口網站上進行。
 
@@ -151,7 +151,7 @@ Data Factory 可讓您將 Azure-SSIS IR 加入透過傳統部署模型或 Azure 
 如需詳細資訊，請參閱 [使用您自己的 DNS 伺服器的名稱解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。 
 
 > [!NOTE]
-> 請使用完整功能變數名稱 (FQDN) 作為私用主機名稱 (例如，使用 `<your_private_server>.contoso.com` 而非 `<your_private_server>`) 。 或者，您可以在 Azure-SSIS IR 上使用標準自訂安裝程式，以自動附加您自己的 DNS 尾碼 (例如 `contoso.com`) 到任何不合格的單一標籤功能變數名稱，然後將它轉換成 FQDN，然後再將它用於 DNS 查詢中，請參閱 [標準自訂安裝範例](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup#standard-custom-setup-samples)。 
+> 請使用完整功能變數名稱 (FQDN) 作為私用主機名稱 (例如，使用 `<your_private_server>.contoso.com` 而非 `<your_private_server>`) 。 或者，您可以在 Azure-SSIS IR 上使用標準自訂安裝程式，以自動附加您自己的 DNS 尾碼 (例如 `contoso.com`) 到任何不合格的單一標籤功能變數名稱，然後將它轉換成 FQDN，然後再將它用於 DNS 查詢中，請參閱 [標準自訂安裝範例](./how-to-configure-azure-ssis-ir-custom-setup.md#standard-custom-setup-samples)。 
 
 ### <a name="set-up-an-nsg"></a><a name="nsg"></a> 設定 NSG
 如果您需要針對 Azure-SSIS IR 所使用的子網執行 NSG，請允許通過下列埠的輸入和輸出流量： 
@@ -170,13 +170,13 @@ Data Factory 可讓您將 Azure-SSIS IR 加入透過傳統部署模型或 Azure 
 |---|---|---|---|---|---|---|
 | 輸出 | TCP | VirtualNetwork | * | AzureCloud | 443 | 虛擬網路中的 Azure-SSIS IR 節點會使用此連接埠來存取 Azure 服務，例如 Azure 儲存體和 Azure 事件中樞。 |
 | 輸出 | TCP | VirtualNetwork | * | Internet | 80 | (選擇性) 虛擬網路中的 Azure-SSIS IR 節點會使用此連接埠從網際網路下載憑證撤銷清單。 如果您封鎖此流量，則可能會在啟動 IR 時遇到效能降低的情況，且無法檢查憑證撤銷清單中是否有憑證使用情況。 如果您想要進一步將目的地縮小為特定 Fqdn，請參閱 **使用 Azure ExpressRoute 或 UDR** 一節|
-| 輸出 | TCP | VirtualNetwork | * | Sql | 1433、11000-11999 |  (選擇性) 只有當虛擬網路中 Azure-SSIS IR 的節點存取伺服器所裝載的 SSISDB 時，才需要此規則。 如果您的伺服器連接原則設定為 **Proxy** 而不是重新 **導向**，則只需要端口1433。 <br/><br/> 此輸出安全性規則不適用於虛擬網路中 SQL 受控執行個體所裝載的 SSISDB，或 SQL Database 以私人端點設定的登錄。 |
-| 輸出 | TCP | VirtualNetwork | * | VirtualNetwork | 1433、11000-11999 |  (選擇性) 只有當虛擬網路中 Azure-SSIS IR 的節點存取虛擬網路中的 SQL 受控執行個體所裝載的 SSISDB，或使用私人端點設定的 SQL Database 時，才需要此規則。 如果您的伺服器連接原則設定為 **Proxy** 而不是重新 **導向**，則只需要端口1433。 |
+| 輸出 | TCP | VirtualNetwork | * | Sql | 1433、11000-11999 |  (選擇性) 只有當虛擬網路中 Azure-SSIS IR 的節點存取伺服器所裝載的 SSISDB 時，才需要此規則。 如果您的伺服器連接原則設定為 **Proxy** 而不是重新 **導向** ，則只需要端口1433。 <br/><br/> 此輸出安全性規則不適用於虛擬網路中 SQL 受控執行個體所裝載的 SSISDB，或 SQL Database 以私人端點設定的登錄。 |
+| 輸出 | TCP | VirtualNetwork | * | VirtualNetwork | 1433、11000-11999 |  (選擇性) 只有當虛擬網路中 Azure-SSIS IR 的節點存取虛擬網路中的 SQL 受控執行個體所裝載的 SSISDB，或使用私人端點設定的 SQL Database 時，才需要此規則。 如果您的伺服器連接原則設定為 **Proxy** 而不是重新 **導向** ，則只需要端口1433。 |
 | 輸出 | TCP | VirtualNetwork | * | 儲存體 | 445 | (選擇性) 只有當想要執行儲存在 Azure 檔案儲存體中的 SSIS 套件時，才需要此規則。 |
 ||||||||
 
 ### <a name="use-azure-expressroute-or-udr"></a><a name="route"></a> 使用 Azure ExpressRoute 或 UDR
-如果您想要檢查來自 Azure-SSIS IR 的輸出流量，您可以透過[Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/)強制通道 (通告 BGP 路由（0.0.0.0/0）至虛擬網路) 或透過[Udr](../virtual-network/virtual-networks-udr-overview.md)將網路虛擬裝置 (NVA) 作為防火牆或[Azure 防火牆](https://docs.microsoft.com/azure/firewall/)，以將從 Azure-SSIS IR 起始的流量路由傳送至內部部署防火牆設備。 
+如果您想要檢查來自 Azure-SSIS IR 的輸出流量，您可以透過[Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/)強制通道 (通告 BGP 路由（0.0.0.0/0）至虛擬網路) 或透過[Udr](../virtual-network/virtual-networks-udr-overview.md)將網路虛擬裝置 (NVA) 作為防火牆或[Azure 防火牆](../firewall/index.yml)，以將從 Azure-SSIS IR 起始的流量路由傳送至內部部署防火牆設備。 
 
 ![Azure-SSIS IR 的 NVA 案例](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir-nva.png)
 
@@ -184,9 +184,9 @@ Data Factory 可讓您將 Azure-SSIS IR 加入透過傳統部署模型或 Azure 
    -   Azure Batch 管理服務和 Azure-SSIS IR 之間的輸入流量無法透過防火牆設備路由傳送。
    -   防火牆設備應允許 Azure-SSIS IR 所需的輸出流量。
 
-Azure Batch 管理服務和 Azure-SSIS IR 之間的輸入流量無法路由傳送至防火牆設備，否則流量會因非對稱式路由問題而中斷。 必須針對輸入流量定義路由，讓流量可以回復回相同的方式。 您可以定義特定 Udr，以在 Azure Batch 管理服務和 Azure-SSIS IR 之間路由傳送流量，並以 **網際網路**作為下一個躍點類型。
+Azure Batch 管理服務和 Azure-SSIS IR 之間的輸入流量無法路由傳送至防火牆設備，否則流量會因非對稱式路由問題而中斷。 必須針對輸入流量定義路由，讓流量可以回復回相同的方式。 您可以定義特定 Udr，以在 Azure Batch 管理服務和 Azure-SSIS IR 之間路由傳送流量，並以 **網際網路** 作為下一個躍點類型。
 
-例如，如果您的 Azure-SSIS IR 位於 `UK South` ，而您想要透過 Azure 防火牆檢查輸出流量，您首先會 `BatchNodeManagement.UKSouth` 從服務標籤 [ip 範圍下載連結](https://www.microsoft.com/download/details.aspx?id=56519) 或透過服務標籤 [探索 API](https://aka.ms/discoveryapi)取得服務標籤的 IP 範圍清單。 然後，將下列 Udr 的相關 IP 範圍路由，套用至下一個躍點類型為 [ **網際網路** ]，以及將下一個躍點類型為 [ **虛擬裝置**] 的 0.0.0.0/0 路由。
+例如，如果您的 Azure-SSIS IR 位於 `UK South` ，而您想要透過 Azure 防火牆檢查輸出流量，您首先會 `BatchNodeManagement.UKSouth` 從服務標籤 [ip 範圍下載連結](https://www.microsoft.com/download/details.aspx?id=56519) 或透過服務標籤 [探索 API](../virtual-network/service-tags-overview.md#service-tags-on-premises)取得服務標籤的 IP 範圍清單。 然後，將下列 Udr 的相關 IP 範圍路由，套用至下一個躍點類型為 [ **網際網路** ]，以及將下一個躍點類型為 [ **虛擬裝置** ] 的 0.0.0.0/0 路由。
 
 ![Azure Batch UDR 設定](media/join-azure-ssis-integration-runtime-virtual-network/azurebatch-udr-settings.png)
 
@@ -269,10 +269,10 @@ else
 > [!NOTE]
 > 針對 Azure SQL 和儲存體，如果您在子網上設定虛擬網路服務端點，則相同區域或配對區域中 Azure-SSIS IR 和 Azure SQL 之間 Azure 儲存體的流量，將會直接路由傳送至 Microsoft Azure 骨幹網路，而不是您的防火牆設備。
 
-如果您不需要檢查 Azure-SSIS IR 輸出流量的功能，您可以直接套用路由以強制所有流量流向下一個躍點類型 **網際網路**：
+如果您不需要檢查 Azure-SSIS IR 輸出流量的功能，您可以直接套用路由以強制所有流量流向下一個躍點類型 **網際網路** ：
 
 -   在 Azure ExpressRoute 案例中，您可以在裝載 Azure-SSIS IR 的子網上，將具有下一個躍點類型的 0.0.0.0/0 路由套用為 **網際網路** 。 
--   在 NVA 案例中，您可以將從下一個躍點類型的子 Azure-SSIS IR 網套用的現有 0.0.0.0/0 路由修改為 **虛擬應用裝置** 至 **網際網路**。
+-   在 NVA 案例中，您可以將從下一個躍點類型的子 Azure-SSIS IR 網套用的現有 0.0.0.0/0 路由修改為 **虛擬應用裝置** 至 **網際網路** 。
 
 ![新增路由](media/join-azure-ssis-integration-runtime-virtual-network/add-route-for-vnet.png)
 
@@ -282,9 +282,9 @@ else
 ### <a name="set-up-the-resource-group"></a><a name="resource-group"></a> 設定資源群組
 
 Azure-SSIS IR 需要在與虛擬網路相同的資源群組下，建立特定的網路資源。 這些資源包括：
-- Azure 負載平衡器，其名稱為* \<Guid> azurebatch-cloudserviceloadbalancer*。
-- Azure 公用 IP 位址，其名稱為* \<Guid> azurebatch-cloudservicepublicip*。
-- 網路工作安全性群組，名稱為* \<Guid> -azurebatch-cloudservicenetworksecuritygroup*。 
+- Azure 負載平衡器，其名稱為 *\<Guid> azurebatch-cloudserviceloadbalancer* 。
+- Azure 公用 IP 位址，其名稱為 *\<Guid> azurebatch-cloudservicepublicip* 。
+- 網路工作安全性群組，名稱為 *\<Guid> -azurebatch-cloudservicenetworksecuritygroup* 。 
 
 > [!NOTE]
 > 您現在可以為 Azure-SSIS IR 帶入自己的靜態公用 IP 位址。 在此案例中，我們只會在與您靜態公用 IP 位址（而非虛擬網路）相同的資源群組下建立 Azure 負載平衡器和網路安全性群組。
@@ -306,7 +306,7 @@ Azure-SSIS IR 需要在與虛擬網路相同的資源群組下，建立特定的
  
   現在，當您的 Azure-SSIS IR 加入虛擬網路時，會自動建立公用 IP 位址。 我們有一個 NIC 層級的 NSG，僅允許 Azure Batch 管理服務對您的 Azure-SSIS IR 進行輸入連接。 您也可以為輸入保護指定子網層級的 NSG。
 
-  如果您不想要公開任何公用 IP 位址，請考慮將 [自我裝載 IR 設定為您 Azure-SSIS IR 的 proxy](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis) ，而不是在您的案例中加入您的 Azure-SSIS IR 到虛擬網路。
+  如果您不想要公開任何公用 IP 位址，請考慮將 [自我裝載 IR 設定為您 Azure-SSIS IR 的 proxy](./self-hosted-integration-runtime-proxy-ssis.md) ，而不是在您的案例中加入您的 Azure-SSIS IR 到虛擬網路。
  
 - 我可以將我的 Azure-SSIS IR 的公用 IP 位址新增至我的資料來源的防火牆允許清單嗎？
 
@@ -315,7 +315,7 @@ Azure-SSIS IR 需要在與虛擬網路相同的資源群組下，建立特定的
   - 如果您的資料來源位於內部部署，將虛擬網路連線到內部部署網路，並將您的 Azure-SSIS IR 加入虛擬網路子網之後，您可以接著將該子網的私人 IP 位址範圍新增至您資料來源的防火牆允許清單。
   - 如果您的資料來源是支援虛擬網路服務端點的 Azure 服務，您可以在虛擬網路子網上設定虛擬網路服務端點，並將您的 Azure-SSIS IR 加入該子網。 然後，您可以將具有該子網的虛擬網路規則新增至您資料來源的防火牆。
   - 如果您的資料來源是非 Azure 雲端服務，您可以使用 UDR，透過靜態公用 IP 位址，將來自您 Azure-SSIS IR 的輸出流量路由傳送至 NVA/Azure 防火牆。 然後，您可以將 NVA/Azure 防火牆的靜態公用 IP 位址新增至您資料來源的防火牆允許清單。
-  - 如果上述選項都不符合您的需求，請考慮將 [自我裝載 IR 設定為您 Azure-SSIS IR 的 proxy](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)。 然後，您可以將裝載自我裝載 IR 之電腦的靜態公用 IP 位址新增至您資料來源的防火牆允許清單。
+  - 如果上述選項都不符合您的需求，請考慮將 [自我裝載 IR 設定為您 Azure-SSIS IR 的 proxy](./self-hosted-integration-runtime-proxy-ssis.md)。 然後，您可以將裝載自我裝載 IR 之電腦的靜態公用 IP 位址新增至您資料來源的防火牆允許清單。
 
 - 如果我想要攜帶自己的 Azure-SSIS IR，為什麼需要提供兩個靜態公用位址？
 
@@ -340,27 +340,27 @@ Azure-SSIS IR 需要在與虛擬網路相同的資源群組下，建立特定的
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 
-1. 選取 [ **更多服務**]。 篩選並選取 [虛擬網路]****。 
+1. 選取 [ **更多服務** ]。 篩選並選取 [虛擬網路]  。 
 
 1. 篩選並選取清單中的 [虛擬網路]。 
 
-1. 在 [虛擬網路]**** 頁面上，選取 [屬性]****。 
+1. 在 [虛擬網路]  頁面上，選取 [屬性]  。 
 
-1. 選取 [資源識別碼]**** 的 [複製] 按鈕，將虛擬網路的資源識別碼複製到剪貼簿。 將剪貼簿中的識別碼儲存至 OneNote 或檔案中。 
+1. 選取 [資源識別碼]  的 [複製] 按鈕，將虛擬網路的資源識別碼複製到剪貼簿。 將剪貼簿中的識別碼儲存至 OneNote 或檔案中。 
 
-1. 在左側功能表上選取 [ **子網**]。 確定可用位址的數目大於 Azure-SSIS IR 中的節點數目。 
+1. 在左側功能表上選取 [ **子網** ]。 確定可用位址的數目大於 Azure-SSIS IR 中的節點數目。 
 
 1. 確認已在具有虛擬網路的 Azure 訂用帳戶中註冊 Azure Batch 提供者。 或註冊 Azure Batch 提供者。 如果您的訂用帳戶中已經有 Azure Batch 帳戶，您的訂用帳戶會註冊 Azure Batch。 (若在 Data Factory 入口網站中建立 Azure-SSIS IR，便會自動註冊 Azure Batch 提供者)。 
 
-   1. 在 [Azure 入口網站中，選取左側功能表上的 [ **訂閱**]。 
+   1. 在 [Azure 入口網站中，選取左側功能表上的 [ **訂閱** ]。 
 
    1. 選取您的訂用帳戶。 
 
-   1. 選取左側的 [ **資源提供者**]，然後確認 **Microsoft.Batch** 是已註冊的提供者。 
+   1. 選取左側的 [ **資源提供者** ]，然後確認 **Microsoft.Batch** 是已註冊的提供者。 
 
    ![確認「已註冊」狀態](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
 
-   如果您在清單中未看到 **Microsoft.Batch**，若要進行註冊，請在訂用帳戶中[建立空白 Azure Batch 帳戶](../batch/batch-account-create-portal.md)。 您可以稍後刪除它。 
+   如果您在清單中未看到 **Microsoft.Batch** ，若要進行註冊，請在訂用帳戶中 [建立空白 Azure Batch 帳戶](../batch/batch-account-create-portal.md)。 您可以稍後刪除它。 
 
 ### <a name="configure-a-classic-virtual-network"></a>設定傳統虛擬網路
 
@@ -370,29 +370,29 @@ Azure-SSIS IR 需要在與虛擬網路相同的資源群組下，建立特定的
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 
-1. 選取 [ **更多服務**]。 篩選並選取 [虛擬網路 (傳統)]****。 
+1. 選取 [ **更多服務** ]。 篩選並選取 [虛擬網路 (傳統)]  。 
 
 1. 篩選並選取清單中的 [虛擬網路]。 
 
-1. 在 [虛擬網路 (傳統)]**** 頁面上，選取 [屬性]****。 
+1. 在 [虛擬網路 (傳統)]  頁面上，選取 [屬性]  。 
 
    ![傳統虛擬網路資源識別碼](media/join-azure-ssis-integration-runtime-virtual-network/classic-vnet-resource-id.png)
 
-1. 選取 [資源識別碼]**** 的 [複製] 按鈕，將傳統網路的資源識別碼複製到剪貼簿。 將剪貼簿中的識別碼儲存至 OneNote 或檔案中。 
+1. 選取 [資源識別碼]  的 [複製] 按鈕，將傳統網路的資源識別碼複製到剪貼簿。 將剪貼簿中的識別碼儲存至 OneNote 或檔案中。 
 
-1. 在左側功能表上選取 [ **子網**]。 確定可用位址的數目大於 Azure-SSIS IR 中的節點數目。 
+1. 在左側功能表上選取 [ **子網** ]。 確定可用位址的數目大於 Azure-SSIS IR 中的節點數目。 
 
    ![虛擬網路中的可用位址數目](media/join-azure-ssis-integration-runtime-virtual-network/number-of-available-addresses.png)
 
-1. 將 **MicrosoftAzureBatch** 加入虛擬網路的**傳統虛擬機器參與者**角色。 
+1. 將 **MicrosoftAzureBatch** 加入虛擬網路的 **傳統虛擬機器參與者** 角色。 
 
-   1. 在左側功能表中，選取 [ **存取控制] (IAM) **，然後選取 [ **角色指派** ] 索引標籤。 
+   1. 在左側功能表中，選取 [ **存取控制] (IAM)** ，然後選取 [ **角色指派** ] 索引標籤。 
 
        ![[存取控制] 和 [新增] 按鈕](media/join-azure-ssis-integration-runtime-virtual-network/access-control-add.png)
 
    1. 選取 [新增角色指派]。
 
-   1. 在 [ **新增角色指派** ] 頁面上，針對 [ **角色**] 選取 [ **傳統虛擬機器參與者**]。 在 [ **選取** ] 方塊中，貼上 **ddbf3205-c6bd-46ae-8127-60eb93363864**，然後從搜尋結果清單中選取 [ **Microsoft Azure Batch** ]。 
+   1. 在 [ **新增角色指派** ] 頁面上，針對 [ **角色** ] 選取 [ **傳統虛擬機器參與者** ]。 在 [ **選取** ] 方塊中，貼上 **ddbf3205-c6bd-46ae-8127-60eb93363864** ，然後從搜尋結果清單中選取 [ **Microsoft Azure Batch** ]。 
 
        ![[新增角色指派] 頁面上的搜尋結果](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
 
@@ -400,21 +400,21 @@ Azure-SSIS IR 需要在與虛擬網路相同的資源群組下，建立特定的
 
        ![儲存存取設定](media/join-azure-ssis-integration-runtime-virtual-network/save-access-settings.png)
 
-   1. 確認您在參與者清單中看到 **Microsoft Azure Batch**。 
+   1. 確認您在參與者清單中看到 **Microsoft Azure Batch** 。 
 
        ![確認 Azure Batch 存取](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-in-list.png)
 
 1. 確認已在具有虛擬網路的 Azure 訂用帳戶中註冊 Azure Batch 提供者。 或註冊 Azure Batch 提供者。 如果您的訂用帳戶中已經有 Azure Batch 帳戶，您的訂用帳戶會註冊 Azure Batch。 (若在 Data Factory 入口網站中建立 Azure-SSIS IR，便會自動註冊 Azure Batch 提供者)。 
 
-   1. 在 [Azure 入口網站中，選取左側功能表上的 [ **訂閱**]。 
+   1. 在 [Azure 入口網站中，選取左側功能表上的 [ **訂閱** ]。 
 
    1. 選取您的訂用帳戶。 
 
-   1. 選取左側的 [ **資源提供者**]，然後確認 **Microsoft.Batch** 是已註冊的提供者。 
+   1. 選取左側的 [ **資源提供者** ]，然後確認 **Microsoft.Batch** 是已註冊的提供者。 
 
    ![確認「已註冊」狀態](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
 
-   如果您在清單中未看到 **Microsoft.Batch**，若要進行註冊，請在訂用帳戶中[建立空白 Azure Batch 帳戶](../batch/batch-account-create-portal.md)。 您可以稍後刪除它。 
+   如果您在清單中未看到 **Microsoft.Batch** ，若要進行註冊，請在訂用帳戶中 [建立空白 Azure Batch 帳戶](../batch/batch-account-create-portal.md)。 您可以稍後刪除它。 
 
 ### <a name="join-the-azure-ssis-ir-to-a-virtual-network"></a>將 Azure-SSIS IR 加入虛擬網路
 
@@ -422,7 +422,7 @@ Azure-SSIS IR 需要在與虛擬網路相同的資源群組下，建立特定的
 
 1. 啟動 Microsoft Edge 或 Google Chrome。 目前只有這些網頁瀏覽器支援 Data Factory 的 UI。 
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取左側功能表上的 [ **Data**factory]。 如果您在功能表上沒有看到 [ **Data** factory]，請選取 [ **更多服務**]，然後在 [ **智慧 + 分析** ] 區段中，選取 [ **data**factory]。 
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取左側功能表上的 [ **Data** factory]。 如果您在功能表上沒有看到 [ **Data** factory]，請選取 [ **更多服務** ]，然後在 [ **智慧 + 分析** ] 區段中，選取 [ **data** factory]。 
 
    ![資料處理站清單](media/join-azure-ssis-integration-runtime-virtual-network/data-factories-list.png)
 
@@ -430,7 +430,7 @@ Azure-SSIS IR 需要在與虛擬網路相同的資源群組下，建立特定的
 
    ![Data Factory 首頁](media/join-azure-ssis-integration-runtime-virtual-network/data-factory-home-page.png)
 
-1. 在 Data Factory UI 中，切換至 [編輯]**** 索引標籤，選取 [連線]****，然後切換至 [整合執行階段]**** 索引標籤。 
+1. 在 Data Factory UI 中，切換至 [編輯]  索引標籤，選取 [連線]  ，然後切換至 [整合執行階段]  索引標籤。 
 
    ![[整合執行階段] 索引標籤](media/join-azure-ssis-integration-runtime-virtual-network/integration-runtimes-tab.png)
 
@@ -442,37 +442,37 @@ Azure-SSIS IR 需要在與虛擬網路相同的資源群組下，建立特定的
 
    ![編輯整合執行階段](media/join-azure-ssis-integration-runtime-virtual-network/integration-runtime-edit.png)
 
-1. 在 [整合執行時間設定] 面板上，選取 [**下一步]** 按鈕，以前進到 [**一般設定**] 和 [ **SQL 設定**] 區段。 
+1. 在 [整合執行時間設定] 面板上，選取 [ **下一步]** 按鈕，以前進到 [ **一般設定** ] 和 [ **SQL 設定** ] 區段。 
 
 1. 在 [ **Advanced Settings** ] 區段上： 
 
    1. 選取 [ **選取要加入 Azure-SSIS Integration Runtime 的 VNet，讓 ADF 建立特定的網路資源，並選擇性地攜帶您自己的靜態公用 IP 位址** ] 核取方塊。 
 
-   1. 針對 [訂用帳戶]****，選取具有您的虛擬網路的 Azure 訂用帳戶。
+   1. 針對 [訂用帳戶]  ，選取具有您的虛擬網路的 Azure 訂用帳戶。
 
-   1. 針對 [位置]****，選取整合執行階段的相同位置。
+   1. 針對 [位置]  ，選取整合執行階段的相同位置。
 
-   1. 在 [ **類型**] 中，選取虛擬網路的類型： [傳統] 或 [Azure Resource Manager]。 建議您選取 Azure Resource Manager 的虛擬網路，因為傳統虛擬網路很快就會淘汰。
+   1. 在 [ **類型** ] 中，選取虛擬網路的類型： [傳統] 或 [Azure Resource Manager]。 建議您選取 Azure Resource Manager 的虛擬網路，因為傳統虛擬網路很快就會淘汰。
 
-   1. 針對 **[VNet 名稱]**，選取您虛擬網路的名稱。 它應該與虛擬網路服務端點所使用的相同，或是搭配私人端點來裝載 SSISDB 的 SQL 受控執行個體 SQL Database。 也應該與您的內部部署網路相同。 否則，它可以是任何虛擬網路，以將您自己的靜態公用 IP 位址用於 Azure-SSIS IR。
+   1. 針對 **[VNet 名稱]** ，選取您虛擬網路的名稱。 它應該與虛擬網路服務端點所使用的相同，或是搭配私人端點來裝載 SSISDB 的 SQL 受控執行個體 SQL Database。 也應該與您的內部部署網路相同。 否則，它可以是任何虛擬網路，以將您自己的靜態公用 IP 位址用於 Azure-SSIS IR。
 
-   1. 針對 [子網路名稱]****，選取虛擬網路的子網路名稱。 它應該與虛擬網路服務端點用來裝載 SSISDB 的 SQL Database 相同。 您也應該是不同的子網，與用於 SQL 受控執行個體搭配私人端點來裝載 SSISDB 的子網不同。 否則，它可以是任何子網，以將您自己的靜態公用 IP 位址用於 Azure-SSIS IR。
+   1. 針對 [子網路名稱]  ，選取虛擬網路的子網路名稱。 它應該與虛擬網路服務端點用來裝載 SSISDB 的 SQL Database 相同。 您也應該是不同的子網，與用於 SQL 受控執行個體搭配私人端點來裝載 SSISDB 的子網不同。 否則，它可以是任何子網，以將您自己的靜態公用 IP 位址用於 Azure-SSIS IR。
 
    1. 選取 [ **為您的 Azure-SSIS Integration Runtime 帶入靜態公用 ip 位址** ] 核取方塊，以選擇是否要為 Azure-SSIS IR 攜帶您自己的靜態公用 ip 位址，讓您可以在防火牆上為您的資料來源提供這些位址。
 
       如果您選取此核取方塊，請完成下列步驟。
 
-      1. 針對 [ **第一個靜態公用 ip 位址**]，選取符合您 Azure-SSIS IR [需求](#publicIP) 的第一個靜態公用 ip 位址。 如果您沒有任何專案，請按一下 [ **建立新** 連結]，在 Azure 入口網站上建立靜態公用 IP 位址，然後按一下這裡的 [重新整理] 按鈕，即可加以選取。
+      1. 針對 [ **第一個靜態公用 ip 位址** ]，選取符合您 Azure-SSIS IR [需求](#publicIP) 的第一個靜態公用 ip 位址。 如果您沒有任何專案，請按一下 [ **建立新** 連結]，在 Azure 入口網站上建立靜態公用 IP 位址，然後按一下這裡的 [重新整理] 按鈕，即可加以選取。
       
-      1. 針對 [ **第二個靜態公用 ip 位址**]，選取符合您 Azure-SSIS IR [需求](#publicIP) 的第二個靜態公用 ip 位址。 如果您沒有任何專案，請按一下 [ **建立新** 連結]，在 Azure 入口網站上建立靜態公用 IP 位址，然後按一下這裡的 [重新整理] 按鈕，即可加以選取。
+      1. 針對 [ **第二個靜態公用 ip 位址** ]，選取符合您 Azure-SSIS IR [需求](#publicIP) 的第二個靜態公用 ip 位址。 如果您沒有任何專案，請按一下 [ **建立新** 連結]，在 Azure 入口網站上建立靜態公用 IP 位址，然後按一下這裡的 [重新整理] 按鈕，即可加以選取。
 
-   1. 選取 [ **VNet 驗證**]。 如果驗證成功，請選取 [ **繼續**]。 
+   1. 選取 [ **VNet 驗證** ]。 如果驗證成功，請選取 [ **繼續** ]。 
 
    ![虛擬網路進階設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-vnet.png)
 
-1. 在 [ **摘要** ] 區段上，檢查您 Azure-SSIS IR 的所有設定。 然後選取 [ **更新**]。
+1. 在 [ **摘要** ] 區段上，檢查您 Azure-SSIS IR 的所有設定。 然後選取 [ **更新** ]。
 
-1. 在 Azure-SSIS IR 的 [**動作**] 欄中選取 [**開始**] 按鈕，以啟動您的 Azure-SSIS IR。 需要大約20到30分鐘的時間，才能啟動聯結虛擬網路的 Azure-SSIS IR。 
+1. 在 Azure-SSIS IR 的 [ **動作** ] 欄中選取 [ **開始** ] 按鈕，以啟動您的 Azure-SSIS IR。 需要大約20到30分鐘的時間，才能啟動聯結虛擬網路的 Azure-SSIS IR。 
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -601,7 +601,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 如需 Azure-SSIS IR 的詳細資訊，請參閱下列文章： 
 - [Azure-SSIS IR](concepts-integration-runtime.md#azure-ssis-integration-runtime)。 本文提供關於 IRs 的一般概念性資訊，包括 Azure-SSIS IR。 
-- [教學課程：將 SSIS 套件部署到 Azure](tutorial-create-azure-ssis-runtime-portal.md)。 本教學課程提供逐步指示，說明如何建立您的 Azure-SSIS IR。 它會使用 Azure SQL Database 來裝載 SSIS 目錄。 
+- [教學課程：將 SSIS 套件部署到 Azure](./tutorial-deploy-ssis-packages-azure.md)。 本教學課程提供逐步指示，說明如何建立您的 Azure-SSIS IR。 它會使用 Azure SQL Database 來裝載 SSIS 目錄。 
 - [建立 Azure-SSIS IR](create-azure-ssis-integration-runtime.md)。 本文將擴充教學課程。 它會提供有關使用虛擬網路服務端點的 Azure SQL Database，或虛擬網路中的 SQL 受控執行個體來裝載 SSIS 目錄的指示。 它說明如何將您的 Azure-SSIS IR 加入虛擬網路中。 
 - [監視 Azure-SSIS IR](monitor-integration-runtime.md#azure-ssis-integration-runtime). 本文說明如何取得 Azure-SSIS IR 的相關資訊。 它會提供所傳回信息的狀態原因。 
 - [管理 Azure-SSIS IR](manage-azure-ssis-integration-runtime.md). 本文說明如何停止、啟動或刪除您的 Azure-SSIS IR。 此外也會說明如何藉由新增節點來相應放大 Azure-SSIS IR。

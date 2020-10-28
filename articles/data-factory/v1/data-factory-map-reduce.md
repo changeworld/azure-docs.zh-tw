@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 98e352024ceea322f09947baf1bc759459a2af19
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 089a2e6a0b90c1682e2ebdd146626c93cec35f77
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359963"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636845"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>從 Data Factory 叫用 MapReduce 程式
 > [!div class="op_single_selector" title1="轉換活動"]
@@ -26,8 +26,8 @@ ms.locfileid: "92359963"
 > * [MapReduce 活動](data-factory-map-reduce.md)
 > * [Hadoop 串流活動](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活動](data-factory-spark.md)
-> * [Azure Machine Learning Studio (傳統) 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
-> * [Azure Machine Learning Studio (傳統) 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning Studio (傳統版) 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
+> * [Azure Machine Learning Studio (傳統版) 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
 > * [預存程序活動](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL 活動](data-factory-usql-activity.md)
 > * [.NET 自訂活動](data-factory-use-custom-activities.md)
@@ -49,7 +49,7 @@ Azure Data Factory 中的「管線」會使用連結的計算服務，來處理�
 ## <a name="json-for-hdinsight-mapreduce-activity"></a>「HDInsight MapReduce 活動」的 JSON
 在 HDInsight 活動的 JSON 定義中： 
 
-1. 將 **activity** 的 **type** 設為 **HDInsight**。
+1. 將 **activity** 的 **type** 設為 **HDInsight** 。
 2. 針對 **className** 屬性指定類別名稱。
 3. 針對 **jarFilePath** 屬性指定 JAR 檔案的路徑 (包含檔案名稱)。
 4. 針對 **jarLinkedService** 屬性指定參照 Azure Blob 儲存體 (包含 JAR 檔案) 的連結服務。   
@@ -118,7 +118,7 @@ Azure Data Factory 中的「管線」會使用連結的計算服務，來處理�
 本範例中的管線會在 Azure HDInsight 叢集上執行字數統計 Map/Reduce 程式。   
 
 ### <a name="linked-services"></a>連結的服務
-首先，建立連結的服務，將 Azure HDInsight 叢集使用的 Azure 儲存體連結到  Azure Data Factory。 如果您複製/貼上下列程式碼，請記得使用 Azure 儲存體的名稱和金鑰來取代**帳戶名稱**和**帳戶金鑰**。 
+首先，建立連結的服務，將 Azure HDInsight 叢集使用的 Azure 儲存體連結到  Azure Data Factory。 如果您複製/貼上下列程式碼，請記得使用 Azure 儲存體的名稱和金鑰來取代 **帳戶名稱** 和 **帳戶金鑰** 。 
 
 #### <a name="azure-storage-linked-service"></a>Azure 儲存體連結服務
 
@@ -181,9 +181,9 @@ Azure Data Factory 中的「管線」會使用連結的計算服務，來處理�
 ### <a name="pipeline"></a>管線
 此範例中的管線只含有一個類型為 HDInsightMapReduce 的活動。 JSON 中的幾個重要屬性如下： 
 
-| 屬性 | 附註 |
+| 屬性 | 注意 |
 |:--- |:--- |
-| 型別 |類型必須設為 **HDInsightMapReduce**。 |
+| 類型 |類型必須設為 **HDInsightMapReduce** 。 |
 | className |類別的名稱是： **wordcount** |
 | jarFilePath |包含類別的 Jar 檔案路徑。 如果您複製/貼上下列程式碼，請記得變更叢集的名稱。 |
 | jarLinkedService |包含 Jar 檔案的 Azure 儲存體連結服務。 這個連結服務會參考與 HDInsight 叢集關聯的儲存體。 |
@@ -235,14 +235,14 @@ Azure Data Factory 中的「管線」會使用連結的計算服務，來處理�
 ## <a name="run-spark-programs"></a>執行 Spark 程式
 您可以使用 MapReduce 活動，在 HDInsight Spark 叢集上執行 Spark 程式。 如需詳細資訊，請參閱 [從 Azure Data Factory 叫用 Spark 程式](data-factory-spark.md) 。  
 
-[developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[developer-reference]: /previous-versions/azure/dn834987(v=azure.100)
 [cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
 
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [adfgetstartedmonitoring]:data-factory-copy-data-from-azure-blob-storage-to-sql-database.md#monitor-pipelines 
 
-[Developer Reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[Developer Reference]: /previous-versions/azure/dn834987(v=azure.100)
 [Azure Portal]: https://portal.azure.com
 
 ## <a name="see-also"></a>另請參閱
@@ -251,4 +251,3 @@ Azure Data Factory 中的「管線」會使用連結的計算服務，來處理�
 * [Hadoop 串流活動](data-factory-hadoop-streaming-activity.md)
 * [叫用 Spark 程式](data-factory-spark.md)
 * [叫用 R 指令碼](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
-

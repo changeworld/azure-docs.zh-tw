@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 09/06/2020
-ms.openlocfilehash: fb5b5cb0ac4a9ace7b5de5e92308da58fd2b1fec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b3c94023daf51559623f69e34b8e2b1f42fde92
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504939"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637236"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>從 SSDT 在 Azure 中執行 SSIS 套件
 
@@ -29,13 +29,13 @@ ms.locfileid: "89504939"
 
 ## <a name="prerequisites"></a>必要條件
 
-若要使用這項功能，請從 [這裡](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)下載並安裝最新的 SSDT 與 SSIS 專案擴充功能，以 VISUAL STUDIO (VS) 。 或者，您也可以從 [這裡](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)下載並安裝最新的 SSDT 做為獨立安裝程式。
+若要使用這項功能，請從 [這裡](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)下載並安裝最新的 SSDT 與 SSIS 專案擴充功能，以 VISUAL STUDIO (VS) 。 或者，您也可以從 [這裡](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)下載並安裝最新的 SSDT 做為獨立安裝程式。
 
 ## <a name="azure-enable-ssis-projects"></a>Azure-啟用 SSIS 專案
 
 ### <a name="creating-new-azure-enabled-ssis-projects"></a>建立已啟用 Azure 的新 SSIS 專案
 
-在 SSDT 上，您可以使用 **Integration Services 專案 (啟用 ** azure 的) 範本來建立新的已啟用 azure SSIS 專案。
+在 SSDT 上，您可以使用 **Integration Services 專案 (啟用** azure 的) 範本來建立新的已啟用 azure SSIS 專案。
 
    ![已啟用 Azure 的新 SSIS 專案](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-new-project.png)
 
@@ -43,21 +43,21 @@ ms.locfileid: "89504939"
 
    ![連接 Azure-SSIS IR 提示](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-integration-runtime-connect-prompt.png)
 
-如果您想要立即連接到您的 Azure-SSIS IR，請參閱 [連接到 Azure-SSIS IR](#connectssisir) ，以取得更多詳細資料。 您也可以在 SSDT 的 [方案總管] 視窗中，以滑鼠右鍵按一下專案節點，以顯示功能表。 接下來，**在 Azure Data Factory**子功能表中，選取 ssis 中 Azure Data Factory 專案的 [**連接到 ssis]** 。
+如果您想要立即連接到您的 Azure-SSIS IR，請參閱 [連接到 Azure-SSIS IR](#connectssisir) ，以取得更多詳細資料。 您也可以在 SSDT 的 [方案總管] 視窗中，以滑鼠右鍵按一下專案節點，以顯示功能表。 接下來， **在 Azure Data Factory** 子功能表中，選取 ssis 中 Azure Data Factory 專案的 [ **連接到 ssis]** 。
 
 ### <a name="azure-enabling-existing-ssis-projects"></a><a name="azureenableproject"></a> Azure-啟用現有的 SSIS 專案
 
 針對現有的 SSIS 專案，您可以遵循下列步驟來啟用 Azure：
 
-1. 在 SSDT 的 [方案總管] 視窗中，以滑鼠右鍵按一下您的專案節點，以顯示功能表。 接下來，**在 Azure Data Factory**子功能表中，選取 [SSIS 中**已啟用 azure 的專案**專案]，以啟動**啟用 azure 的專案嚮導**。
+1. 在 SSDT 的 [方案總管] 視窗中，以滑鼠右鍵按一下您的專案節點，以顯示功能表。 接下來， **在 Azure Data Factory** 子功能表中，選取 [SSIS 中 **已啟用 azure 的專案** 專案]，以啟動 **啟用 azure 的專案嚮導** 。
 
    ![Azure-啟用現有的 SSIS 專案](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-for-existing-project.png)
 
-2. 在 [ **選取 Visual Studio** 設定] 頁面上，選取您現有的 VS 設定，以將套件執行設定套用至 Azure。 如果尚未建立新的 VS 設定，您也可以建立新的 [VS](https://docs.microsoft.com/visualstudio/ide/how-to-create-and-edit-configurations?view=vs-2019)設定。 建議您在本機和雲端環境中至少有兩個不同的 VS 設定來執行套件，以便 Azure 針對雲端設定啟用您的專案。 如此一來，如果您已參數化專案或封裝，您可以在執行時間根據不同的執行環境，將不同的值指派給您的專案或封裝參數 (在本機電腦或 Azure) 中。 例如，請參閱 [切換封裝執行環境](#switchenvironment)。
+2. 在 [ **選取 Visual Studio** 設定] 頁面上，選取您現有的 VS 設定，以將套件執行設定套用至 Azure。 如果尚未建立新的 VS 設定，您也可以建立新的 [VS](/visualstudio/ide/how-to-create-and-edit-configurations?view=vs-2019)設定。 建議您在本機和雲端環境中至少有兩個不同的 VS 設定來執行套件，以便 Azure 針對雲端設定啟用您的專案。 如此一來，如果您已參數化專案或封裝，您可以在執行時間根據不同的執行環境，將不同的值指派給您的專案或封裝參數 (在本機電腦或 Azure) 中。 例如，請參閱 [切換封裝執行環境](#switchenvironment)。
 
    ![選取 Visual Studio 設定](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-select-visual-studio-configurations.png)
 
-3. Azure-啟用您現有的 SSIS 專案時，您必須將其目標伺服器版本設定為 Azure-SSIS IR 所支援的最新版本。 Azure-SSIS IR 目前以 **SQL Server 2017**為基礎。 請確定您的套件未包含 SQL Server 2017 上不支援的其他元件。 此外，也請確定您的 Azure-SSIS IR 上也已透過自訂安裝程式安裝所有相容的其他元件，請參閱 [自訂您的 Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)。 選取 [ **下一步]** 按鈕以繼續。
+3. Azure-啟用您現有的 SSIS 專案時，您必須將其目標伺服器版本設定為 Azure-SSIS IR 所支援的最新版本。 Azure-SSIS IR 目前以 **SQL Server 2017** 為基礎。 請確定您的套件未包含 SQL Server 2017 上不支援的其他元件。 此外，也請確定您的 Azure-SSIS IR 上也已透過自訂安裝程式安裝所有相容的其他元件，請參閱 [自訂您的 Azure-SSIS IR](./how-to-configure-azure-ssis-ir-custom-setup.md)。 選取 [ **下一步]** 按鈕以繼續。
 
    ![切換目標伺服器版本](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-switch-target-server-version-step.png)
 
@@ -74,7 +74,7 @@ ms.locfileid: "89504939"
 2. 在 [ **選取 adf 中的 SSIS IR** ] 頁面上，選取您現有的 ADF 和 Azure-SSIS IR 來執行套件。 您也可以建立新的專案（如果沒有的話）。
    - 若要選取現有的 Azure-SSIS IR，請先選取相關的 Azure 訂用帳戶和 ADF。
    - 如果您選取的現有 ADF 沒有任何 Azure-SSIS IR，請選取 [ **建立 SSIS IR** ] 按鈕，在 adf 入口網站上建立新的 adf。 建立之後，您可以返回此頁面來選取新的 Azure-SSIS IR。
-   - 如果您選取現有的 Azure 訂用帳戶，但該訂用帳戶沒有任何 ADF，請選取 [ **建立 SSIS IR** ] 按鈕以啟動 [ **Integration Runtime 建立]**。 在嚮導上，您可以輸入指定的位置和前置詞，以代表您自動建立新的 Azure 資源群組、Data Factory 和 SSIS IR，並以下列模式命名： **YourPrefix-RG/DF/IR-YourCreationTime**。 建立之後，您可以返回此頁面來選取新的 ADF 和 Azure-SSIS IR。
+   - 如果您選取現有的 Azure 訂用帳戶，但該訂用帳戶沒有任何 ADF，請選取 [ **建立 SSIS IR** ] 按鈕以啟動 [ **Integration Runtime 建立]** 。 在嚮導上，您可以輸入指定的位置和前置詞，以代表您自動建立新的 Azure 資源群組、Data Factory 和 SSIS IR，並以下列模式命名： **YourPrefix-RG/DF/IR-YourCreationTime** 。 建立之後，您可以返回此頁面來選取新的 ADF 和 Azure-SSIS IR。
 
    ![選取 ADF 中的 SSIS IR](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard2.png)
 
@@ -105,11 +105,11 @@ ms.locfileid: "89504939"
 ### <a name="suppressing-assessment-rules"></a>隱藏評量規則
 
 一旦您確定某些可能的雲端相容性問題不適用，或您的套件中已適當地緩和，您就可以隱藏相關的評定規則。 這會減少後續評量報告中的雜訊。
--  在 SSDT 的 [**評量報告**] 視窗中，選取 [**設定評定規則隱藏**] 連結，以顯示 [**評量規則隱藏設定**] 視窗，您可以在其中選取要隱藏的評量規則。
+-  在 SSDT 的 [ **評量報告** ] 視窗中，選取 [ **設定評定規則隱藏** ] 連結，以顯示 [ **評量規則隱藏設定** ] 視窗，您可以在其中選取要隱藏的評量規則。
 
    ![評量規則隱藏設定](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings.png)
 
--  或者，在 SSDT 的方案總管視窗中，以滑鼠右鍵按一下您的專案節點，以顯示功能表。 在 Azure Data Factory 子功能表中，選取 [ **SSIS 中****啟用 Azure 的設定**專案]，以顯示包含專案屬性頁的視窗。 在 [**啟用 Azure 的設定**] 區段中，選取 [**隱藏的評定規則識別碼**] 屬性。 最後，選取其省略號 (**...**) 按鈕以顯示 [ **評量規則隱藏設定** ] 視窗，您可以在其中選取要隱藏的評量規則。
+-  或者，在 SSDT 的方案總管視窗中，以滑鼠右鍵按一下您的專案節點，以顯示功能表。 在 Azure Data Factory 子功能表中，選取 [ **SSIS 中****啟用 Azure 的設定** 專案]，以顯示包含專案屬性頁的視窗。 在 [ **啟用 Azure 的設定** ] 區段中，選取 [ **隱藏的評定規則識別碼** ] 屬性。 最後，選取其省略號 ( **...** ) 按鈕以顯示 [ **評量規則隱藏設定** ] 視窗，您可以在其中選取要隱藏的評量規則。
 
    ![啟用 Azure 的設定](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-azure-enabled-setting.png)
 
@@ -121,15 +121,15 @@ ms.locfileid: "89504939"
 
 在 Azure 中執行您的封裝之前，您可以為其設定 Azure 啟用的設定。 例如，您可以依照下列步驟，在您的 Azure-SSIS IR 上啟用 Windows 驗證，以存取內部部署/雲端資料存放區：
 
-1. 在 SSDT 的 [方案總管] 視窗中，以滑鼠右鍵按一下您的專案節點，以顯示功能表。 接下來，**在 Azure Data Factory**子功能表中，選取 [SSIS 中**啟用 Azure 的設定**專案]，以顯示包含專案屬性頁的視窗。
+1. 在 SSDT 的 [方案總管] 視窗中，以滑鼠右鍵按一下您的專案節點，以顯示功能表。 接下來， **在 Azure Data Factory** 子功能表中，選取 [SSIS 中 **啟用 Azure 的設定** 專案]，以顯示包含專案屬性頁的視窗。
 
    ![啟用 Azure 的設定](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-azure-enabled-setting.png)
 
-2. 在 [啟用**Azure 的設定**] 區段中，選取 [**啟用 Windows 驗證**] 屬性，然後在其子功能表中選取 [ **True** ]。 接下來，選取 [ **Windows 驗證認證** ] 屬性，然後選取其省略號 (**...**) 按鈕以顯示 [ **windows 驗證認證** ] 視窗。
+2. 在 [啟用 **Azure 的設定** ] 區段中，選取 [ **啟用 Windows 驗證** ] 屬性，然後在其子功能表中選取 [ **True** ]。 接下來，選取 [ **Windows 驗證認證** ] 屬性，然後選取其省略號 ( **...** ) 按鈕以顯示 [ **windows 驗證認證** ] 視窗。
 
    ![啟用 Windows 驗證](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-windows-authentication-open.png)
 
-3. 輸入您的 Windows 驗證認證。 例如，若要存取 Azure 檔案儲存體，您可以 `Azure` `YourStorageAccountName` `YourStorageAccountKey` 分別針對 **網域**、使用者 **名稱**和 **密碼**分別輸入、和。
+3. 輸入您的 Windows 驗證認證。 例如，若要存取 Azure 檔案儲存體，您可以 `Azure` `YourStorageAccountName` `YourStorageAccountKey` 分別針對 **網域** 、使用者 **名稱** 和 **密碼** 分別輸入、和。
 
    ![Windows 驗證認證](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-windows-authentication-credential.png)
 
@@ -161,12 +161,12 @@ ms.locfileid: "89504939"
 
 ### <a name="switching-package-protection-level"></a>切換封裝保護層級
 
-在 Azure 中執行 SSIS 套件不支援 **>encryptsensitivewithuserkey** / **>encryptallwithuserkey**保護層級。 因此，如果您的套件設定為使用這些套件，我們會暫時將它們分別轉換成使用**EncryptSensitiveWithPassword** / **>encryptallwithpassword**保護層級。 我們也會在將套件上傳到 Azure 檔案儲存體以供 Azure-SSIS IR 執行時，隨機產生加密密碼。
+在 Azure 中執行 SSIS 套件不支援 **>encryptsensitivewithuserkey** / **>encryptallwithuserkey** 保護層級。 因此，如果您的套件設定為使用這些套件，我們會暫時將它們分別轉換成使用 **EncryptSensitiveWithPassword** / **>encryptallwithpassword** 保護層級。 我們也會在將套件上傳到 Azure 檔案儲存體以供 Azure-SSIS IR 執行時，隨機產生加密密碼。
 
 > [!NOTE]
-> 如果您的套件包含的「執行封裝」工作參考的子封裝設定為使用 **>encryptsensitivewithuserkey** / **>encryptallwithuserkey**保護層級，則您必須手動將這些子封裝重新設定為使用**EncryptSensitiveWithPassword** / **>encryptallwithpassword**保護層級，再執行您的套件。
+> 如果您的套件包含的「執行封裝」工作參考的子封裝設定為使用 **>encryptsensitivewithuserkey** / **>encryptallwithuserkey** 保護層級，則您必須手動將這些子封裝重新設定為使用 **EncryptSensitiveWithPassword** / **>encryptallwithpassword** 保護層級，再執行您的套件。
 
-如果您的套件已設定為使用**EncryptSensitiveWithPassword** / **>encryptallwithpassword**保護層級，我們會將它們保持不變。 當我們將套件上傳到 Azure 檔案儲存體以便在您的 Azure-SSIS IR 上執行時，我們仍然會隨機產生加密密碼。
+如果您的套件已設定為使用 **EncryptSensitiveWithPassword** / **>encryptallwithpassword** 保護層級，我們會將它們保持不變。 當我們將套件上傳到 Azure 檔案儲存體以便在您的 Azure-SSIS IR 上執行時，我們仍然會隨機產生加密密碼。
 
 ### <a name="switching-package-execution-environments"></a><a name="switchenvironment"></a> 切換封裝執行環境
 
@@ -176,13 +176,13 @@ ms.locfileid: "89504939"
 
    ![建立封裝參數](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-define-parameters.png)
 
-2. 接下來，在 [**檔案系統工作編輯器**] 視窗的 [**一般**] 頁面上，使用**FilePath**封裝參數參數化 [**來源連接**] 區段中的 **[sourcevariable**屬性。 
+2. 接下來，在 [ **檔案系統工作編輯器** ] 視窗的 [ **一般** ] 頁面上，使用 **FilePath** 封裝參數參數化 [ **來源連接** ] 區段中的 **[sourcevariable** 屬性。 
 
    ![參數化來源連接](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-update-task-with-parameters.png)
 
-3. 根據預設，您在名為 **開發**的本機環境中有現有的 VS 設定，可供封裝執行。 在名為 **Azure**的雲端環境中建立套件執行的新 vs 設定，請參閱 [建立新的 vs](https://docs.microsoft.com/visualstudio/ide/how-to-create-and-edit-configurations?view=vs-2019)設定（如果您尚未這樣做）。
+3. 根據預設，您在名為 **開發** 的本機環境中有現有的 VS 設定，可供封裝執行。 在名為 **Azure** 的雲端環境中建立套件執行的新 vs 設定，請參閱 [建立新的 vs](/visualstudio/ide/how-to-create-and-edit-configurations?view=vs-2019)設定（如果您尚未這樣做）。
 
-4. 當您查看套件的參數時，請選取 [ **將參數新增至** 設定] 按鈕，以開啟封裝的 [ **管理參數值** ] 視窗。 接下來，將目標檔案路徑的不同值指派給**開發**和**Azure**設定下的**FilePath**套件參數。
+4. 當您查看套件的參數時，請選取 [ **將參數新增至** 設定] 按鈕，以開啟封裝的 [ **管理參數值** ] 視窗。 接下來，將目標檔案路徑的不同值指派給 **開發** 和 **Azure** 設定下的 **FilePath** 套件參數。
 
    ![指派參數值](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-override-parameter.png)
 
@@ -206,4 +206,4 @@ ms.locfileid: "89504939"
 
 ## <a name="next-steps"></a>後續步驟
 
-當您滿意從 SSDT 在 Azure 中執行套件之後，您就可以在 ADF 管線中將其部署並執行為執行 SSIS 套件活動，請參閱 [在 adf 管線中執行 ssis 套件作為執行 Ssis 套件活動](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)。
+當您滿意從 SSDT 在 Azure 中執行套件之後，您就可以在 ADF 管線中將其部署並執行為執行 SSIS 套件活動，請參閱 [在 adf 管線中執行 ssis 套件作為執行 Ssis 套件活動](./how-to-invoke-ssis-package-ssis-activity.md)。

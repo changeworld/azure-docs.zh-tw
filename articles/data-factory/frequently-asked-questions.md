@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 2d2c4145ab0a070e4cb20d89b8a0d3973b23d9ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba3cc376edef1e6dc8fbf859e456219a1fd3ca60
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440502"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635757"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory 常見問題集
 
@@ -67,10 +67,10 @@ Data Factory V2 提供一組豐富的 Sdk，可讓您使用最愛的 IDE 來撰�
 ### <a name="iterative-development-and-debugging-by-using-visual-tools"></a>使用視覺化檢視進行反復開發和偵錯工具
 Azure Data Factory 的視覺效果工具可進行反復式開發和調試。 您可以使用管線畫布中的 **Debug** 功能來建立管線和執行測試回合，而不需要撰寫任何一行程式碼。 您可以在管線畫布的 [ **輸出** ] 視窗中，查看測試回合的結果。 當您的測試回合成功之後，您可以將更多活動新增至管線，並以反復的方式繼續進行偵錯工具。 您也可以在測試執行完成之後予以取消。 
 
-在選取 **Debug**之前，您不需要將變更發佈至 data factory 服務。 當您在開發、測試或生產環境中更新資料處理站工作流程之前，您想要確保新的新增專案或變更會如預期般運作，這會很有説明。 
+在選取 **Debug** 之前，您不需要將變更發佈至 data factory 服務。 當您在開發、測試或生產環境中更新資料處理站工作流程之前，您想要確保新的新增專案或變更會如預期般運作，這會很有説明。 
 
 ### <a name="ability-to-deploy-ssis-packages-to-azure"></a>能夠將 SSIS 套件部署至 Azure 
-如果您想要移動 SSIS 工作負載，可以建立 Data Factory，然後佈建 Azure-SSIS 整合執行階段。 Azure SSIS 整合執行時間是一個完全受控的 Azure Vm (節點) ，專門用來在雲端執行您的 SSIS 套件。 如需逐步指示，請參閱教學課程：[將 SSIS 封裝部署至 Azure](tutorial-create-azure-ssis-runtime-portal.md)。 
+如果您想要移動 SSIS 工作負載，可以建立 Data Factory，然後佈建 Azure-SSIS 整合執行階段。 Azure SSIS 整合執行時間是一個完全受控的 Azure Vm (節點) ，專門用來在雲端執行您的 SSIS 套件。 如需逐步指示，請參閱教學課程：[將 SSIS 封裝部署至 Azure](./tutorial-deploy-ssis-packages-azure.md)。 
  
 ### <a name="sdks"></a>SDK
 如果您是先進的使用者，且正在尋找程式設計介面，Data Factory 提供一組豐富的 Sdk，讓您可以使用您最愛的 IDE 來撰寫、管理或監視管線。 .NET、PowerShell、Python 和 REST 皆提供語言支援。
@@ -95,9 +95,9 @@ Azure Data Factory 的視覺效果工具可進行反復式開發和調試。 您
 ## <a name="what-is-the-integration-runtime"></a>什麼是整合執行時間？
 整合執行時間是一種計算基礎結構，Azure Data Factory 用來跨各種網路環境提供下列資料整合功能：
 
-- **資料移動**：針對資料移動，整合執行時間會在來源與目的地資料存放區之間移動資料，同時提供內建連接器、格式轉換、資料行對應，以及高效能且可調整規模的資料傳輸支援。
-- **分派活動**：針對轉換，整合執行時間提供原生執行 SSIS 套件的功能。
-- **執行 ssis 套件**：整合執行時間會以原生方式在受控 Azure 計算環境中執行 SSIS 套件。 整合執行時間也支援分派和監視在各種計算服務上執行的轉換活動，例如 Azure HDInsight、Azure Machine Learning、SQL Database 和 SQL Server。
+- **資料移動** ：針對資料移動，整合執行時間會在來源與目的地資料存放區之間移動資料，同時提供內建連接器、格式轉換、資料行對應，以及高效能且可調整規模的資料傳輸支援。
+- **分派活動** ：針對轉換，整合執行時間提供原生執行 SSIS 套件的功能。
+- **執行 ssis 套件** ：整合執行時間會以原生方式在受控 Azure 計算環境中執行 SSIS 套件。 整合執行時間也支援分派和監視在各種計算服務上執行的轉換活動，例如 Azure HDInsight、Azure Machine Learning、SQL Database 和 SQL Server。
 
 您可以視需要部署一或多個整合執行時間實例，以移動和轉換資料。 整合執行時間可以在 Azure 公用網路或私人網路上 (內部部署、Azure 虛擬網路或 Amazon Web Services 虛擬私用雲端 [VPC] ) 上執行。 
 
@@ -159,7 +159,7 @@ Dataset 是強型別參數，以及您可以重複使用或參考的實體。 �
 移至下列網站掌握 Azure Data Factory 的最新資訊：
 
 - [部落格](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-- [文件首頁](/azure/data-factory)
+- [文件首頁](./index.yml)
 - [產品首頁](https://azure.microsoft.com/services/data-factory/)
 
 ## <a name="technical-deep-dive"></a>深入技術性討論 
@@ -257,7 +257,7 @@ Azure Data Factory (ADF) 是受控資料整合服務，可讓資料工程師和�
 * NCHAR
 * varchar
 * NVARCHAR
-* 整數
+* integer
 * int
 * bit
 * boolean

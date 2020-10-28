@@ -2,16 +2,14 @@
 title: '從 Azure 入口網站 (Preview 存取 Kubernetes 資源) '
 description: 瞭解如何與 Kubernetes 資源互動，以管理 Azure 入口網站中 (AKS) 叢集的 Azure Kubernetes Service。
 services: container-service
-author: laurenhughes
 ms.topic: article
 ms.date: 09/21/2020
-ms.author: lahugh
-ms.openlocfilehash: ce51e76829c19def1c1603b1a88592d1e683ccae
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ae617615a8ba83e311a416581fb41d3cb6ca1b05
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070634"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635604"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>從 Azure 入口網站 (Preview 存取 Kubernetes 資源) 
 
@@ -62,7 +60,7 @@ Kubernetes 資源檢視也包含 YAML 編輯器。 內建的 YAML 編輯器表�
 
 :::image type="content" source="media/kubernetes-portal/service-editor.png" alt-text="Kubernetes 顯示在 Azure 入口網站中的 pod 資訊。":::
 
-編輯 YAML 之後，請選取 [ **審核] + [儲存**]、確認變更，然後重新儲存，以套用變更。
+編輯 YAML 之後，請選取 [ **審核] + [儲存** ]、確認變更，然後重新儲存，以套用變更。
 
 >[!WARNING]
 > 不建議透過 UI 或 CLI 執行直接生產變更，您應該利用 [持續整合 (CI) 和持續部署 (CD) 最佳做法](kubernetes-action.md)。 Azure 入口網站的 Kubernetes 管理功能和 YAML 編輯器是為了學習和試驗開發和測試設定中的新部署所設計。

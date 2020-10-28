@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/12/2020
-ms.openlocfilehash: 7aef08f4ba1948c32fe83a2d0064a21459c003b4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: af03dde724b4f1ec75c9505bb2f9311ad09f5fd0
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148957"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635910"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure Blob 儲存體中複製和轉換資料
 
@@ -78,7 +78,7 @@ Data Factory 支援下列儲存體帳戶金鑰驗證的屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | **Type**屬性必須設定為**AzureBlobStorage** (建議的) 或**AzureStorage** (請參閱下列附注) 。 |是 |
+| type | **Type** 屬性必須設定為 **AzureBlobStorage** (建議的) 或 **AzureStorage** (請參閱下列附注) 。 |是 |
 | connectionString | 針對 **connectionString** 屬性指定連接到儲存體所需的資訊。 <br/> 您也可以將帳戶金鑰放在 Azure Key Vault 中，並 `accountKey` 從連接字串中提取設定。 如需詳細資訊，請參閱 Azure Key Vault 文章中的下列範例和 [存放區認證](store-credentials-in-key-vault.md) 。 |是 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 如果您的資料存放區位於私人網路) ，您可以使用 Azure integration runtime 或自我裝載整合執行時間 (。 如果未指定此屬性，服務會使用預設的 Azure integration runtime。 |否 |
 
@@ -115,13 +115,13 @@ Data Factory 支援下列儲存體帳戶金鑰驗證的屬性：
         "type": "AzureBlobStorage",
         "typeProperties": {
             "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;",
-            "accountKey": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "accountKey": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -138,17 +138,17 @@ Data Factory 支援下列儲存體帳戶金鑰驗證的屬性：
 
 您不需要共用您的帳戶存取金鑰。 共用存取簽章是一種 URI，此 URI 會在其查詢參數中包含對儲存體資源進行驗證式存取所需的一切資訊。 若要使用共用存取簽章存取儲存體資源，用戶端只需在適當的建構函式或方法中傳入共用存取簽章即可。 
 
-如需有關共用存取簽章的詳細資訊，請參閱[共用存取簽章：了解共用存取簽章模型](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。
+如需有關共用存取簽章的詳細資訊，請參閱[共用存取簽章：了解共用存取簽章模型](../storage/common/storage-sas-overview.md)。
 
 > [!NOTE]
->- Data Factory 現已支援*服務共用存取簽章*和*帳戶共用存取簽章*。 如需共用存取簽章的詳細資訊，請參閱 [使用共用存取簽章授與 Azure 儲存體資源的有限存取權](../storage/common/storage-sas-overview.md)。
+>- Data Factory 現已支援 *服務共用存取簽章* 和 *帳戶共用存取簽章* 。 如需共用存取簽章的詳細資訊，請參閱 [使用共用存取簽章授與 Azure 儲存體資源的有限存取權](../storage/common/storage-sas-overview.md)。
 >- 在稍後的資料集設定中，資料夾路徑是從容器層級開始的絕對路徑。 您需要設定一個對應您 SAS URI 中路徑的。
 
 Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | **Type**屬性必須設定為**AzureBlobStorage** (建議的) 或**AzureStorage** (請參閱下列附注) 。 |是 |
+| type | **Type** 屬性必須設定為 **AzureBlobStorage** (建議的) 或 **AzureStorage** (請參閱下列附注) 。 |是 |
 | sasUri | 指定儲存體資源（例如 blob 或容器）的共用存取簽章 URI。 <br/>將此欄位標示為 **SecureString** ，以安全地將它儲存在 Data Factory 中。 您也可以將 SAS 權杖放在 Azure Key Vault 中，以使用自動旋轉並移除權杖部分。 如需詳細資訊，請參閱下列範例，並 [將認證儲存在 Azure Key Vault 中](store-credentials-in-key-vault.md)。 |是 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 如果您的資料存放區位於私人網路) ，您可以使用 Azure integration runtime 或自我裝載整合執行時間 (。 如果未指定此屬性，服務會使用預設的 Azure integration runtime。 |否 |
 
@@ -188,13 +188,13 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
                 "type": "SecureString",
                 "value": "<SAS URI of the Azure Storage resource without token e.g. https://<accountname>.blob.core.windows.net/>"
             },
-            "sasToken": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName with value of SAS token e.g. ?sv=<storage version>&st=<start time>&se=<expire time>&sr=<resource>&sp=<permissions>&sip=<ip range>&spr=<protocol>&sig=<signature>>" 
+            "sasToken": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName with value of SAS token e.g. ?sv=<storage version>&st=<start time>&se=<expire time>&sr=<resource>&sp=<permissions>&sip=<ip range>&spr=<protocol>&sig=<signature>>" 
             }
         },
         "connectVia": {
@@ -225,20 +225,20 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 2. 在 Azure Blob 儲存體中授與服務主體適當權限。 如需有關角色的詳細資訊，請參閱 [使用 Azure 入口網站指派 Azure 角色以存取 blob 和佇列資料](../storage/common/storage-auth-aad-rbac-portal.md)。
 
-    - **作為來源**， ** (IAM) 的存取控制 **中，請至少授與 **儲存體 Blob 資料讀取** 者角色。
-    - **作為接收**，在 **存取控制 (IAM) **中，請至少授與 **儲存體 Blob 資料參與者** 角色。
+    - **作為來源** ， **(IAM) 的存取控制** 中，請至少授與 **儲存體 Blob 資料讀取** 者角色。
+    - **作為接收** ，在 **存取控制 (IAM)** 中，請至少授與 **儲存體 Blob 資料參與者** 角色。
 
 以下是支援 Azure Blob 儲存體連結服務的屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | **Type**屬性必須設為**AzureBlobStorage**。 |是 |
+| type | **Type** 屬性必須設為 **AzureBlobStorage** 。 |是 |
 | serviceEndpoint | 指定模式為 `https://<accountName>.blob.core.windows.net/` 的 Azure Blob 儲存體服務端點。 |是 |
-| accountKind | 指定您的儲存體帳戶種類。 允許的值為： **儲存體** (一般用途 v1) 、 **StorageV2** (一般用途 v2) 、 **BlobStorage**或 **BlockBlobStorage**。 <br/> 在資料流程中使用 Azure Blob 連結服務時，當帳戶種類為空白或「儲存體」時，不支援受控識別或服務主體驗證。 指定適當的帳戶種類、選擇不同的驗證，或將您的儲存體帳戶升級至一般用途 v2。 |否 |
+| accountKind | 指定您的儲存體帳戶種類。 允許的值為： **儲存體** (一般用途 v1) 、 **StorageV2** (一般用途 v2) 、 **BlobStorage** 或 **BlockBlobStorage** 。 <br/> 在資料流程中使用 Azure Blob 連結服務時，當帳戶種類為空白或「儲存體」時，不支援受控識別或服務主體驗證。 指定適當的帳戶種類、選擇不同的驗證，或將您的儲存體帳戶升級至一般用途 v2。 |否 |
 | servicePrincipalId | 指定應用程式的用戶端識別碼。 | 是 |
 | servicePrincipalKey | 指定應用程式的金鑰。 將此欄位標示為 **SecureString** ，以安全地將它儲存在 Data Factory 中，或 [參考儲存在 Azure Key Vault 中的密碼](store-credentials-in-key-vault.md)。 | 是 |
 | tenant | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 藉由將滑鼠游標停留在 Azure 入口網站的右上角來取出。 | 是 |
-| azureCloudType | 針對服務主體驗證，請指定您的 Azure Active Directory 應用程式註冊所在的 Azure 雲端環境類型。 <br/> 允許的值為 **AzurePublic**、 **AzureChina**、 **AzureUsGovernment**和 **AzureGermany**。 根據預設，會使用 data factory 的雲端環境。 | 否 |
+| azureCloudType | 針對服務主體驗證，請指定您的 Azure Active Directory 應用程式註冊所在的 Azure 雲端環境類型。 <br/> 允許的值為 **AzurePublic** 、 **AzureChina** 、 **AzureUsGovernment** 和 **AzureGermany** 。 根據預設，會使用 data factory 的雲端環境。 | 否 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 如果您的資料存放區位於私人網路) ，您可以使用 Azure integration runtime 或自我裝載整合執行時間 (。 如果未指定此屬性，服務會使用預設的 Azure integration runtime。 |否 |
 
 >[!NOTE]
@@ -282,8 +282,8 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 2. 授與 Azure Blob 儲存體中的受控識別許可權。 如需有關角色的詳細資訊，請參閱 [使用 Azure 入口網站指派 Azure 角色以存取 blob 和佇列資料](../storage/common/storage-auth-aad-rbac-portal.md)。
 
-    - **作為來源**， ** (IAM) 的存取控制 **中，請至少授與 **儲存體 Blob 資料讀取** 者角色。
-    - **作為接收**，在 **存取控制 (IAM) **中，請至少授與 **儲存體 Blob 資料參與者** 角色。
+    - **作為來源** ， **(IAM) 的存取控制** 中，請至少授與 **儲存體 Blob 資料讀取** 者角色。
+    - **作為接收** ，在 **存取控制 (IAM)** 中，請至少授與 **儲存體 Blob 資料參與者** 角色。
 
 >[!IMPORTANT]
 >如果您使用 PolyBase 將資料從 Blob 儲存體 (載入作為來源的資料，或) 到先前的 SQL 資料) 倉儲 Azure Synapse Analytics (，則當您針對 Blob 儲存體使用受控識別驗證時，請確定您也遵循 [本指南](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)中的步驟1和步驟2。 這些步驟會向 Azure AD 註冊您的伺服器，並將「儲存體 Blob 資料參與者」角色指派給您的伺服器。 Data Factory 會處理其餘部分。 如果您已使用 Azure 虛擬網路端點設定 Blob 儲存體，若要使用 PolyBase 載入資料，您必須使用 PolyBase 所要求的受控識別驗證。
@@ -292,9 +292,9 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | **Type**屬性必須設為**AzureBlobStorage**。 |是 |
+| type | **Type** 屬性必須設為 **AzureBlobStorage** 。 |是 |
 | serviceEndpoint | 指定模式為 `https://<accountName>.blob.core.windows.net/` 的 Azure Blob 儲存體服務端點。 |是 |
-| accountKind | 指定您的儲存體帳戶種類。 允許的值為： **儲存體** (一般用途 v1) 、 **StorageV2** (一般用途 v2) 、 **BlobStorage**或 **BlockBlobStorage**。 <br/> 在資料流程中使用 Azure Blob 連結服務時，當帳戶種類為空白或「儲存體」時，不支援受控識別或服務主體驗證。 指定適當的帳戶種類、選擇不同的驗證，或將您的儲存體帳戶升級至一般用途 v2。 |否 |
+| accountKind | 指定您的儲存體帳戶種類。 允許的值為： **儲存體** (一般用途 v1) 、 **StorageV2** (一般用途 v2) 、 **BlobStorage** 或 **BlockBlobStorage** 。 <br/> 在資料流程中使用 Azure Blob 連結服務時，當帳戶種類為空白或「儲存體」時，不支援受控識別或服務主體驗證。 指定適當的帳戶種類、選擇不同的驗證，或將您的儲存體帳戶升級至一般用途 v2。 |否 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 如果您的資料存放區位於私人網路) ，您可以使用 Azure integration runtime 或自我裝載整合執行時間 (。 如果未指定此屬性，服務會使用預設的 Azure integration runtime。 |否 |
 
 > [!NOTE]
@@ -332,7 +332,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 | 屬性   | 描述                                                  | 必要 |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | 資料集中位置的 **type** 屬性必須設定為 **AzureBlobStorageLocation**。 | 是      |
+| type       | 資料集中位置的 **type** 屬性必須設定為 **AzureBlobStorageLocation** 。 | 是      |
 | 容器  | Blob 容器。                                          | 是      |
 | folderPath | 指定容器下的資料夾路徑。 如果您想要使用萬用字元來篩選資料夾，請略過此設定，並在 [活動來源設定] 中指定該設定。 | 否       |
 | fileName   | 給定容器和資料夾路徑下的檔案名。 如果您想要使用萬用字元來篩選檔案，請略過此設定，並在 [活動來源設定] 中指定該設定。 | 否       |
@@ -376,19 +376,19 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 | 屬性                 | 描述                                                  | 必要                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | 下的 **類型** 屬性 `storeSettings` 必須設為 **AzureBlobStorageReadSettings**。 | 是                                           |
-| 尋找要複製的檔案： |  |  |
-| 選項 1：靜態路徑<br> | 從資料集內指定的特定容器或資料夾/檔案路徑複製。 如果您想要從容器或資料夾複製所有 blob，請另外指定 `wildcardFileName` as `*` 。 |  |
+| type                     | 下的 **類型** 屬性 `storeSettings` 必須設為 **AzureBlobStorageReadSettings** 。 | 是                                           |
+| **_找出要複製的檔案：_* _ |  |  |
+| 選項 1：靜態路徑<br> | 從資料集內指定的特定容器或資料夾/檔案路徑複製。 如果您想要從容器或資料夾複製所有 blob，請另外指定 `wildcardFileName` as `_` 。 |  |
 | 選項2：blob 前置詞<br>- 前置詞 | Blob 名稱的前置詞，在資料集內設定的指定容器下，用來篩選來源 blob。 系統會選取其名稱開頭為的 blob `container_in_dataset/this_prefix` 。 它會利用 Blob 儲存體的服務端篩選，提供比萬用字元篩選器更好的效能。 | 否                                                          |
 | 選項 3：萬用字元<br>- wildcardFolderPath | 在資料集中設定的指定容器下，具有萬用字元的資料夾路徑，以篩選來源資料夾。 <br>允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 `^`如果資料夾名稱中有萬用字元或這個 escape 字元，請使用來進行 escape。 <br>如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 否                                            |
 | 選項 3：萬用字元<br>- wildcardFileName | 在指定的容器和資料夾路徑下具有萬用字元的檔案名 (或萬用字元資料夾路徑) ，以篩選原始程式檔。 <br>允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 `^`如果您的資料夾名稱裡面有萬用字元或這個 escape 字元，請使用來進行 escape。 如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 是 |
 | 選項 4：檔案清單<br>- fileListPath | 表示要複製指定的檔案集。 指向文字檔，其中包含您要複製的檔案清單，每行一個檔案，也就是在資料集中設定之路徑的相對路徑。<br/>當您使用此選項時，請勿在資料集中指定檔案名。 [檔案清單範例](#file-list-examples) (英文) 有更多範例可供參閱。 |否 |
-| 其他設定： |  | |
-| 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當 **遞迴** 設定為 **true** 且接收是檔案型存放區時，不會在接收時複製或建立空的資料夾或子資料夾。 <br>允許的值為 **true** (預設值) 和 **false**。<br>設定 `fileListPath` 時，不適用此屬性。 |否 |
+| ***其他設定：** _ |  | |
+| 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當 _ *遞迴* * 設定為 **true** 且接收是檔案型存放區時，不會在接收時複製或建立空的資料夾或子資料夾。 <br>允許的值為 **true** (預設值) 和 **false** 。<br>設定 `fileListPath` 時，不適用此屬性。 |否 |
 | deleteFilesAfterCompletion | 指出是否要在成功移至目的地存放區之後，從來源存放區刪除二進位檔案。 檔案刪除是針對每個檔案，因此當複製活動失敗時，您會看到部分檔案已複製到目的地並從來源刪除，其他檔案仍在來源存放區上。 <br/>這個屬性只在二進位檔案複製案例中有效。 預設值： false。 |否 |
-| modifiedDatetimeStart    | 檔案會根據屬性進行篩選：上次修改。 <br>若檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 時間會以 "2018-12-01T05：00： 00Z" 格式套用至 UTC 時區。 <br> 屬性可以是 **Null**，這表示不會將任何檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 有 datetime 值但 `modifiedDatetimeEnd` 為 **Null**時，將會選取上次修改屬性大於或等於日期時間值的檔案。  當 `modifiedDatetimeEnd` 有 datetime 值但 `modifiedDatetimeStart` 為 **Null**時，將會選取上次修改屬性小於 datetime 值的檔案。<br/>設定 `fileListPath` 時，不適用此屬性。 | 否                                            |
+| modifiedDatetimeStart    | 檔案會根據屬性進行篩選：上次修改。 <br>若檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 時間會以 "2018-12-01T05：00： 00Z" 格式套用至 UTC 時區。 <br> 屬性可以是 **Null** ，這表示不會將任何檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 有 datetime 值但 `modifiedDatetimeEnd` 為 **Null** 時，將會選取上次修改屬性大於或等於日期時間值的檔案。  當 `modifiedDatetimeEnd` 有 datetime 值但 `modifiedDatetimeStart` 為 **Null** 時，將會選取上次修改屬性小於 datetime 值的檔案。<br/>設定 `fileListPath` 時，不適用此屬性。 | 否                                            |
 | modifiedDatetimeEnd      | 同上。                                               | 否                                            |
-| enablePartitionDiscovery | 針對已分割的檔案，指定是否從檔案路徑剖析分割區，並將它們新增為其他來源資料行。<br/>允許的值為 **false** (預設) 和 **true**。 | 否                                            |
+| enablePartitionDiscovery | 針對已分割的檔案，指定是否從檔案路徑剖析分割區，並將它們新增為其他來源資料行。<br/>允許的值為 **false** (預設) 和 **true** 。 | 否                                            |
 | partitionRootPath | 當資料分割探索已啟用時，請指定絕對根路徑，以便將分割的資料夾讀取為數據行。<br/><br/>如果未指定，則預設為<br/>-當您在資料集或來源上的檔案清單中使用檔案路徑時，資料分割根路徑是在資料集中設定的路徑。<br/>-當您使用萬用字元資料夾篩選時，資料分割根路徑是第一個萬用字元之前的子路徑。<br/>-當您使用前置詞時，資料分割根路徑是最後一個 "/" 之前的子路徑。 <br/><br/>例如，假設您將資料集中的路徑設定為 "root/folder/year = 2020/month = 08/day = 27"：<br/>-如果您將資料分割根路徑指定為 "root/folder/year = 2020"，則除了檔案內的資料行之外，複製活動會分別產生兩個數據行， `month` 以及 `day` 值為 "08" 和 "27" 的資料行。<br/>-如果未指定資料分割根路徑，將不會產生額外的資料行。 | 否                                            |
 | maxConcurrentConnections | 儲存體的並行連接數目。 只有當您想要限制與資料存放區的並行連接時，才指定。 | 否                                            |
 
@@ -444,9 +444,9 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 | 屬性                 | 描述                                                  | 必要 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | 下的 **類型** 屬性 `storeSettings` 必須設為 **AzureBlobStorageWriteSettings**。 | 是      |
+| type                     | 下的 **類型** 屬性 `storeSettings` 必須設為 **AzureBlobStorageWriteSettings** 。 | 是      |
 | copyBehavior             | 當來源是來自檔案型資料存放區的檔案時，會定義複製行為。<br/><br/>允許的值包括：<br/><b>- PreserveHierarchy (預設)</b>：保留目標資料夾中的檔案階層。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><b>- FlattenHierarchy</b>：來自來源資料夾的所有檔案都會在目標資料夾的第一層中。 目標檔案會有自動產生的名稱。 <br/><b>- MergeFiles</b>：將來自來源資料夾的所有檔案合併成一個檔案。 如果有指定檔案或 Blob 名稱，合併檔案的名稱會是指定的名稱。 否則，就會是自動產生的檔案名稱。 | 否       |
-| blockSizeInMB | 指定用來將資料寫入區塊 blob 的區塊大小（以 mb 為單位）。 請參閱[關於區塊 Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) 以深入了解。 <br/>允許的值 *介於 4 mb 和 100 mb 之間*。 <br/>根據預設，Data Factory 會根據您的來源存放區類型和資料自動決定區塊大小。 若要將非二進位複製到 Blob 儲存體中，預設區塊大小為 100 MB，因此它可以容納 (最多) 4.95 TB 的資料。 當您的資料不大時，可能不是最佳情況，特別是當您使用自我裝載整合執行時間時，網路連接不佳，而導致作業超時或效能問題。 您可以明確地指定區塊大小，同時確保 `blockSizeInMB*50000` 夠大來儲存資料。 否則，複製活動執行將會失敗。 | 否 |
+| blockSizeInMB | 指定用來將資料寫入區塊 blob 的區塊大小（以 mb 為單位）。 請參閱[關於區塊 Blob](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) 以深入了解。 <br/>允許的值 *介於 4 mb 和 100 mb 之間* 。 <br/>根據預設，Data Factory 會根據您的來源存放區類型和資料自動決定區塊大小。 若要將非二進位複製到 Blob 儲存體中，預設區塊大小為 100 MB，因此它可以容納 (最多) 4.95 TB 的資料。 當您的資料不大時，可能不是最佳情況，特別是當您使用自我裝載整合執行時間時，網路連接不佳，而導致作業超時或效能問題。 您可以明確地指定區塊大小，同時確保 `blockSizeInMB*50000` 夠大來儲存資料。 否則，複製活動執行將會失敗。 | 否 |
 | maxConcurrentConnections | 儲存體的並行連接數目。 只有當您想要限制與資料存放區的並行連接時，才指定。 | 否       |
 
 **範例︰**
@@ -488,7 +488,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 本節描述含有萬用字元篩選之資料夾路徑和檔案名稱所產生的行為。
 
-| folderPath | fileName | 遞迴 | 來源資料夾結構和篩選結果 (會擷取以**粗體**顯示的檔案)|
+| folderPath | fileName | 遞迴 | 來源資料夾結構和篩選結果 (會擷取以 **粗體** 顯示的檔案)|
 |:--- |:--- |:--- |:--- |
 | `container/Folder*` | (空白，使用預設值) | false | 容器<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `container/Folder*` | (空白，使用預設值) | true | 容器<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File2.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4.json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
@@ -602,11 +602,11 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 **清除資料夾：** 決定是否在寫入資料之前先清除目的地資料夾。
 
 **檔案名稱選項：** 決定目的地檔案在目的地資料夾中的命名方式。 檔案名稱的選項如下：
-   * **預設值**：可讓 Spark 根據 PART 預設值來命名檔案。
-   * **模式**：輸入模式來列舉每個分割區的輸出檔案。 例如，**loans[n].csv** 會建立 loans1.csv、loans2.csv，依此類推。
-   * **每個分割區**：針對每個分割區輸入一個檔案名稱。
-   * **作為資料行中的資料**：將輸出檔案設定為資料行的值。 路徑相對於資料集容器，而不是目的地資料夾。 如果資料集含有資料夾路徑，則會被覆寫。
-   * **輸出至單一檔案**：將分割的輸出檔案結合成單一的具名檔案。 路徑相對於資料集資料夾。 請注意，合併作業可能會根據節點大小而失敗。 針對大型資料集，我們不建議採用此選項。
+   * **預設值** ：可讓 Spark 根據 PART 預設值來命名檔案。
+   * **模式** ：輸入模式來列舉每個分割區的輸出檔案。 例如， **loans[n].csv** 會建立 loans1.csv、loans2.csv，依此類推。
+   * **每個分割區** ：針對每個分割區輸入一個檔案名稱。
+   * **作為資料行中的資料** ：將輸出檔案設定為資料行的值。 路徑相對於資料集容器，而不是目的地資料夾。 如果資料集含有資料夾路徑，則會被覆寫。
+   * **輸出至單一檔案** ：將分割的輸出檔案結合成單一的具名檔案。 路徑相對於資料集資料夾。 請注意，合併作業可能會根據節點大小而失敗。 針對大型資料集，我們不建議採用此選項。
 
 **全部報價：** 決定是否要將所有值括在引號中。
 
@@ -631,16 +631,16 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的 **type** 屬性必須設為 **AzureBlob**。 |是 |
+| type | 資料集的 **type** 屬性必須設為 **AzureBlob** 。 |是 |
 | folderPath | Blob 儲存體中容器和資料夾的路徑。 <br/><br/>路徑支援萬用字元篩選，但不包括容器名稱。 允許的萬用字元為：`*` (符合零或多個字元) 和 `?` (符合零或單一字元)。 `^`如果您的資料夾名稱裡面有萬用字元或這個 escape 字元，請使用來進行 escape。 <br/><br/>例如： myblobcontainer/myblobfolder/。 如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 |適用于複製或查閱活動，GetMetadata 活動不是 |
-| fileName | 指定之 **folderPath** 值下之 blob 的名稱或萬用字元篩選準則。 如果沒有為此屬性指定值，資料集就會指向資料夾中的所有 Blob。 <br/><br/>若為篩選，允許的萬用字元為： `*` (符合零或多個字元) ，而且 `?` (符合零或單一字元) 。<br/>- 範例 1：`"fileName": "*.csv"`<br/>- 範例 2：`"fileName": "???20180427.txt"`<br/>`^`如果您的檔案名中有萬用字元或這個 escape 字元，請使用來進行 escape。<br/><br/>當未指定輸出資料集的 **檔案名** ，而且活動接收器未指定 **PreserveHierarchy** 時，複製活動會自動以下列模式產生 Blob 名稱：「*資料。」活動執行識別碼 GUID]。[GUID （如果 FlattenHierarchy）]。[格式化（若已設定）]。[壓縮（如果已設定）]*。 例如： "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. gz"。 <br/><br/>如果您使用資料表名稱而非查詢從表格式來源複製，則名稱模式為 "*[table name]. [format]。[壓縮（如果已設定）]*。 例如： "MyTable.csv"。 |否 |
-| modifiedDatetimeStart | 檔案會根據屬性進行篩選：上次修改。 若檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br/><br/> 請注意，當您想要篩選大量的檔案時，啟用這項設定會影響資料移動的整體效能。 <br/><br/> 屬性可以是 **Null**，這表示不會將任何檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 有 datetime 值但 `modifiedDatetimeEnd` 為 **Null**時，將會選取上次修改屬性大於或等於日期時間值的檔案。  當 `modifiedDatetimeEnd` 有 datetime 值但 `modifiedDatetimeStart` 為 **Null**時，將會選取上次修改屬性小於 datetime 值的檔案。| 否 |
-| modifiedDatetimeEnd | 檔案會根據屬性進行篩選：上次修改。 若檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br/><br/> 請注意，當您想要篩選大量的檔案時，啟用這項設定會影響資料移動的整體效能。 <br/><br/> 屬性可以是 **Null**，這表示不會將任何檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 有 datetime 值但 `modifiedDatetimeEnd` 為 **Null**時，將會選取上次修改屬性大於或等於日期時間值的檔案。  當 `modifiedDatetimeEnd` 有 datetime 值但 `modifiedDatetimeStart` 為 **Null**時，將會選取上次修改屬性小於 datetime 值的檔案。| 否 |
-| format | 如果您想要在檔案型存放區之間依原樣複製檔案 (二進位複本)，請在輸入和輸出資料集定義中略過格式區段。<br/><br/>如果您想要剖析或產生特定格式的檔案，以下是支援的檔案格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 將 [format] 下的 [type] 屬性設定為下列其中一個值。 如需詳細資訊，請參閱[文字格式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[JSON 格式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)小節。 |否 (僅適用於二進位複製案例) |
-| compression | 指定此資料的壓縮類型和層級。 如需詳細資訊，請參閱[支援的檔案格式和壓縮轉碼器](supported-file-formats-and-compression-codecs-legacy.md#compression-support)。<br/>支援的類型為：GZip、Deflate、BZip2 及 ZipDeflate。<br/>支援的層級為 **Optimal** 和 **Fastest**。 |否 |
+| fileName | 指定之 **folderPath** 值下之 blob 的名稱或萬用字元篩選準則。 如果沒有為此屬性指定值，資料集就會指向資料夾中的所有 Blob。 <br/><br/>若為篩選，允許的萬用字元為： `*` (符合零或多個字元) ，而且 `?` (符合零或單一字元) 。<br/>- 範例 1：`"fileName": "*.csv"`<br/>- 範例 2：`"fileName": "???20180427.txt"`<br/>`^`如果您的檔案名中有萬用字元或這個 escape 字元，請使用來進行 escape。<br/><br/>當未指定輸出資料集的 **檔案名** ，而且活動接收器未指定 **PreserveHierarchy** 時，複製活動會自動以下列模式產生 Blob 名稱：「 *資料。」活動執行識別碼 GUID]。[GUID （如果 FlattenHierarchy）]。[格式化（若已設定）]。[壓縮（如果已設定）]* 。 例如： "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. gz"。 <br/><br/>如果您使用資料表名稱而非查詢從表格式來源複製，則名稱模式為 " *[table name]. [format]。[壓縮（如果已設定）]* 。 例如： "MyTable.csv"。 |否 |
+| modifiedDatetimeStart | 檔案會根據屬性進行篩選：上次修改。 若檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br/><br/> 請注意，當您想要篩選大量的檔案時，啟用這項設定會影響資料移動的整體效能。 <br/><br/> 屬性可以是 **Null** ，這表示不會將任何檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 有 datetime 值但 `modifiedDatetimeEnd` 為 **Null** 時，將會選取上次修改屬性大於或等於日期時間值的檔案。  當 `modifiedDatetimeEnd` 有 datetime 值但 `modifiedDatetimeStart` 為 **Null** 時，將會選取上次修改屬性小於 datetime 值的檔案。| 否 |
+| modifiedDatetimeEnd | 檔案會根據屬性進行篩選：上次修改。 若檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br/><br/> 請注意，當您想要篩選大量的檔案時，啟用這項設定會影響資料移動的整體效能。 <br/><br/> 屬性可以是 **Null** ，這表示不會將任何檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 有 datetime 值但 `modifiedDatetimeEnd` 為 **Null** 時，將會選取上次修改屬性大於或等於日期時間值的檔案。  當 `modifiedDatetimeEnd` 有 datetime 值但 `modifiedDatetimeStart` 為 **Null** 時，將會選取上次修改屬性小於 datetime 值的檔案。| 否 |
+| format | 如果您想要在檔案型存放區之間依原樣複製檔案 (二進位複本)，請在輸入和輸出資料集定義中略過格式區段。<br/><br/>如果您想要剖析或產生特定格式的檔案，以下是支援的檔案格式類型： **TextFormat** 、 **JsonFormat** 、 **AvroFormat** 、 **OrcFormat** 和 **ParquetFormat** 。 將 [format] 下的 [type] 屬性設定為下列其中一個值。 如需詳細資訊，請參閱[文字格式](supported-file-formats-and-compression-codecs-legacy.md#text-format)、[JSON 格式](supported-file-formats-and-compression-codecs-legacy.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)小節。 |否 (僅適用於二進位複製案例) |
+| compression | 指定此資料的壓縮類型和層級。 如需詳細資訊，請參閱[支援的檔案格式和壓縮轉碼器](supported-file-formats-and-compression-codecs-legacy.md#compression-support)。<br/>支援的類型為：GZip、Deflate、BZip2 及 ZipDeflate。<br/>支援的層級為 **Optimal** 和 **Fastest** 。 |否 |
 
 >[!TIP]
->若要複製資料夾下的所有 Blob，只要指定 **folderPath**。<br>若要複製指定名稱的單一 blob，請指定資料夾元件的 **folderPath** ，以及檔案名的 **檔案名** 。<br>若要複製資料夾下的 blob 子集，請為資料夾部分指定 **folderPath** ，並使用萬用字元篩選指定 **檔案名** 。 
+>若要複製資料夾下的所有 Blob，只要指定 **folderPath** 。<br>若要複製指定名稱的單一 blob，請指定資料夾元件的 **folderPath** ，以及檔案名的 **檔案名** 。<br>若要複製資料夾下的 blob 子集，請為資料夾部分指定 **folderPath** ，並使用萬用字元篩選指定 **檔案名** 。 
 
 **範例︰**
 
@@ -676,8 +676,8 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的 **type** 屬性必須設為 **>blobsource**。 |是 |
-| 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當 **遞迴** 設定為 **true** 且接收是檔案型存放區時，不會在接收時複製或建立空的資料夾或子資料夾。<br/>允許的值為 **true** (預設值) 和 **false**。 | 否 |
+| type | 複製活動來源的 **type** 屬性必須設為 **>blobsource** 。 |是 |
+| 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當 **遞迴** 設定為 **true** 且接收是檔案型存放區時，不會在接收時複製或建立空的資料夾或子資料夾。<br/>允許的值為 **true** (預設值) 和 **false** 。 | 否 |
 | maxConcurrentConnections | 儲存體的並行連接數目。 只有當您想要限制與資料存放區的並行連接時，才指定。 | 否 |
 
 **範例︰**
@@ -716,7 +716,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動接收的 **type** 屬性必須設為 **BlobSink**。 |是 |
+| type | 複製活動接收的 **type** 屬性必須設為 **BlobSink** 。 |是 |
 | copyBehavior | 當來源是來自檔案型資料存放區的檔案時，會定義複製行為。<br/><br/>允許的值包括：<br/><b>- PreserveHierarchy (預設)</b>：保留目標資料夾中的檔案階層。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><b>- FlattenHierarchy</b>：來自來源資料夾的所有檔案都會在目標資料夾的第一層中。 目標檔案會有自動產生的名稱。 <br/><b>- MergeFiles</b>：將來自來源資料夾的所有檔案合併成一個檔案。 如果有指定檔案或 Blob 名稱，合併檔案的名稱會是指定的名稱。 否則，就會是自動產生的檔案名稱。 | 否 |
 | maxConcurrentConnections | 儲存體的並行連接數目。 只有當您想要限制與資料存放區的並行連接時，才指定。 | 否 |
 

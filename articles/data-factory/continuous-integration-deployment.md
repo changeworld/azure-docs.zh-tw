@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 1836e6fc1c29e74bceba62bbeb40ce9cc5831895
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 629c27602df14c0b35e2063d8db2d0b13bbff99a
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147447"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635893"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory 中的持續整合和傳遞
 
@@ -24,11 +24,11 @@ ms.locfileid: "92147447"
 
 ## <a name="overview"></a>概觀
 
-持續整合是指進行相關實作，以自動並及早測試對您的程式碼基底所做的每項變更。 在持續整合期間執行測試，並將變更推送至暫存或生產系統後，就會進行持續傳遞。
+持續整合是指進行相關實作，以自動並及早測試對您的程式碼基底所做的每項變更。  在持續整合期間執行測試，並將變更推送至暫存或生產系統後，就會進行持續傳遞。
 
-在 Azure Data Factory 中，持續整合和傳遞 (CI/CD) 是指將一個環境 (開發、測試、生產) 中的 Data Factory 管線移至另一個環境。 Azure Data Factory 利用 [Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)來儲存各種 ADF 實體 (管線、資料集、資料流程等等) 的設定。 有兩個建議方法可將資料處理站提升至另一個環境：
+在 Azure Data Factory 中，持續整合和傳遞 (CI/CD) 是指將一個環境 (開發、測試、生產) 中的 Data Factory 管線移至另一個環境。 Azure Data Factory 利用 [Azure Resource Manager 範本](../azure-resource-manager/templates/overview.md)來儲存各種 ADF 實體 (管線、資料集、資料流程等等) 的設定。 有兩個建議方法可將資料處理站提升至另一個環境：
 
--    使用 Data Factory 與 [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) 的整合進行自動化部署
+-    使用 Data Factory 與 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) 的整合進行自動化部署
 -    使用 Data Factory UX 與 Azure Resource Manager 的整合，手動上傳 Resource Manager 範本。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -62,11 +62,11 @@ ms.locfileid: "92147447"
 
 ### <a name="requirements"></a>需求
 
--   使用 [Azure Resource Manager 服務端點](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager)連結至 Visual Studio Team Foundation Server 或 Azure Repos 的 Azure 訂用帳戶。
+-   連結至 Visual Studio Team Foundation Server 的 Azure 訂用帳戶，或使用 [Azure Resource Manager 服務端點](/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager)的 Azure Repos。
 
 -   設定了 Azure Repos Git 整合的資料處理站。
 
--    [Azure 金鑰保存庫](https://azure.microsoft.com/services/key-vault/)，其中包含每個環境的秘密。
+-   [Azure 金鑰保存庫](https://azure.microsoft.com/services/key-vault/)，其中包含每個環境的密碼。
 
 ### <a name="set-up-an-azure-pipelines-release"></a>設定 Azure Pipelines 發行
 
@@ -94,7 +94,7 @@ ms.locfileid: "92147447"
 
     ![階段檢視](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    b.  建立新的工作。 搜尋 **ARM 範本部署**，然後選取 [ **新增**]。
+    b.  建立新的工作。 搜尋 **ARM 範本部署** ，然後選取 [ **新增** ]。
 
     c.  在部署工作中，選取目標資料處理站的訂用帳戶、資源群組和位置。 視需要提供認證。
 
@@ -109,13 +109,13 @@ ms.locfileid: "92147447"
     h. 針對 [部署模式] 選取 [增量]。
 
     > [!WARNING]
-    > 在完整部署模式中，存在於資源群組中但未在新的 Resource Manager 範本中指定的資源將會被 **刪除**。 如需詳細資訊，請參閱 [Azure Resource Manager 部署模式](../azure-resource-manager/templates/deployment-modes.md)
+    > 在完整部署模式中，存在於資源群組中但未在新的 Resource Manager 範本中指定的資源將會被 **刪除** 。 如需詳細資訊，請參閱 [Azure Resource Manager 部署模式](../azure-resource-manager/templates/deployment-modes.md)
 
     ![Data Factory 生產部署](media/continuous-integration-deployment/continuous-integration-image9.png)
 
 1.  儲存發行管線。
 
-1. 若要觸發發行，請選取 [建立發行]。 若要自動建立發行，請參閱 [Azure DevOps 發行觸發程序](https://docs.microsoft.com/azure/devops/pipelines/release/triggers?view=azure-devops)
+1. 若要觸發發行，請選取 [建立發行]。 若要自動建立發行，請參閱 [Azure DevOps 發行觸發程序](/azure/devops/pipelines/release/triggers?view=azure-devops)
 
    ![建立建立發行](media/continuous-integration-deployment/continuous-integration-image10.png)
 
@@ -151,7 +151,7 @@ ms.locfileid: "92147447"
 
     參數檔案也必須位於發行分支中。
 
-1. 在上一節中所述的 Azure Resource Manager 部署工作之前，新增 [Azure Key Vault 工作](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault)：
+1. 在上一節中所述的 Azure Resource Manager 部署工作之前，新增 [Azure Key Vault 工作](/azure/devops/pipelines/tasks/deploy/azure-key-vault)：
 
     1.  在 [工作] 索引標籤上，建立新的工作。 搜尋 **Azure Key Vault** 並加以新增。
 
@@ -228,14 +228,14 @@ ms.locfileid: "92147447"
 以下是當您建立自訂 parameters 檔案 (arm-template-parameters-definition.json) 時所要遵循的一些指導方針。 此檔案是由每個實體類型的區段所組成：觸發程序、管線、連結服務、資料集、整合執行階段和資料流程。
 
 * 輸入相關實體類型下的屬性路徑。
-* 將屬性名稱設定為 `*`，表示您想要將其下的所有屬性參數化 (僅限向下的第一層，而非採用遞迴方式)。 您也可以提供此組態的例外狀況。
-* 將屬性的值設定為字串，就表示您想要將屬性參數化。 使用此格式： `<action>:<name>:<stype>`。
-   *  `<action>` 可以是下列其中一個字元：
-      * `=` 表示將目前的值保留作為參數的預設值。
-      * `-` 表示不要保留參數的預設值。
-      * `|` 是 Azure Key Vault 中連接字串或金鑰祕密的特殊案例。
-   * `<name>` 是參數的名稱。 如果空白，便會採用屬性的名稱。 如果值是以 `-` 字元開頭，則名稱會縮短。 例如，`AzureStorage1_properties_typeProperties_connectionString` 會縮短成 `AzureStorage1_connectionString`。
-   * `<stype>` 是參數的類型。 如果 `<stype>` 空白，則預設類型為 `string`。 支援的值：`string`、`bool`、`number`、`object` 和 `securestring`。
+* 將屬性名稱設定為， `*` 表示您想要將其下的所有屬性參數化 (只限于第一個層級，而不是以遞迴方式) 。 您也可以提供此組態的例外狀況。
+* 將屬性的值設定為字串，就表示您想要將屬性參數化。 請使用 `<action>:<name>:<stype>` 格式。
+   *  `<action>` 可以是下列其中一個字元：
+      * `=` 表示保留目前的值做為參數的預設值。
+      * `-` 表示不保留參數的預設值。
+      * `|` 是來自 Azure Key Vault 連接字串或金鑰之秘密的特殊案例。
+   * `<name>` 是參數的名稱。 如果空白，便會採用屬性的名稱。 如果值是以 `-` 字元開頭，則名稱會縮短。 例如，`AzureStorage1_properties_typeProperties_connectionString` 會縮短成 `AzureStorage1_connectionString`。
+   * `<stype>` 這是參數的型別。 如果 `<stype>` 是空白，則預設類型為 `string` 。 支援的值：`string`、`bool`、`number`、`object` 和 `securestring`。
 * 在定義檔中指定陣列，就表示範本中的比對屬性是陣列。 Data Factory 會使用陣列的整合執行階段物件中所指定的定義，逐一查看陣列中的所有物件。 第二個物件 (字串) 會變成屬性的名稱，以作為每個反覆項目參數的名稱。
 * 定義不得專屬於特定資源執行個體。 任何定義都會套用至該類型的所有資源。
 * 根據預設，所有安全字串 (例如 Key Vault 秘密) 和安全字串 (例如連接字串、金鑰和權杖) 都會參數化。
@@ -603,7 +603,7 @@ ms.locfileid: "92147447"
 
 連結的 Resource Manager 範本通常包含一個主要範本，以及一組連結到主要範本的子系範本。 父代範本稱為 ArmTemplate_master.json，而子系範本則會使用 ArmTemplate_0.json、ArmTemplate_1.json 等模式來命名。 
 
-若要使用連結的範本，而不是完整的 Resource Manager 範本，請更新您的 CI/CD 工作，使其指向 ArmTemplate_master.json，而不是 ArmTemplateForFactory.json (完整 Resource Manager 範本)。 Resource Manager 也會要求您將連結的範本上傳到儲存體帳戶，以便 Azure 在部署期間存取這些範本。 如需詳細資訊，請參閱[透過 VSTS 部署連結的 Resource Manager 範本](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/)。
+若要使用連結的範本，而不是完整的 Resource Manager 範本，請更新您的 CI/CD 工作，使其指向 ArmTemplate_master.json，而不是 ArmTemplateForFactory.json (完整 Resource Manager 範本)。 Resource Manager 也會要求您將連結的範本上傳到儲存體帳戶，以便 Azure 在部署期間存取這些範本。 如需詳細資訊，請參閱[透過 VSTS 部署連結的 Resource Manager 範本](/archive/blogs/najib/deploying-linked-arm-templates-with-vsts)。
 
 請記得在在部署工作之前和之後，於 CI/CD 管線中新增 Data Factory 指令碼。
 
@@ -637,15 +637,15 @@ ms.locfileid: "92147447"
 
 如果您將 Git 整合與資料處理站搭配使用，而且具有 CI/CD 管線，可將您的變更從開發轉移到測試，然後再轉移到生產，我們建議採用以下最佳做法：
 
--   **Git 整合**。 只要使用 Git 整合設定您的開發資料處理站。 測試與生產變更已透過 CI/CD 部署，而且不需要 Git 整合。
+-   **Git 整合** 。 只要使用 Git 整合設定您的開發資料處理站。 測試與生產變更已透過 CI/CD 部署，而且不需要 Git 整合。
 
--   **部署前後指令碼**。 在 CI/CD 的 Resource Manager 部署步驟之前，您必須先完成某些工作，例如停止並重新開機觸發程序以及執行清除作業。 我們建議您在部署工作前後使用 PowerShell 指令碼。 如需詳細資訊，請參閱[更新使用中的觸發程序](#updating-active-triggers)。 資料處理站小組已[提供可用的指令碼](#script) (位於此頁面的底部)。
+-   **部署前後指令碼** 。 在 CI/CD 的 Resource Manager 部署步驟之前，您必須先完成某些工作，例如停止並重新開機觸發程序以及執行清除作業。 我們建議您在部署工作前後使用 PowerShell 指令碼。 如需詳細資訊，請參閱[更新使用中的觸發程序](#updating-active-triggers)。 資料處理站小組已[提供可用的指令碼](#script) (位於此頁面的底部)。
 
--   **整合執行階段和共用**。 整合執行階段不會經常變更，而且在 CI/CD 中的所有階段都很類似。 所以 Data Factory 預期在 CI/CD 的所有階段中，要有相同的名稱和相同類型的整合執行階段。 如果您想要在所有階段中共用整合執行階段，請考慮使用三元處理站，只包含共用的整合執行階段。 您可以在所有環境中，使用此共用處理站作為連結的整合執行階段類型。
+-   **整合執行階段和共用** 。 整合執行階段不會經常變更，而且在 CI/CD 中的所有階段都很類似。 所以 Data Factory 預期在 CI/CD 的所有階段中，要有相同的名稱和相同類型的整合執行階段。 如果您想要在所有階段中共用整合執行階段，請考慮使用三元處理站，只包含共用的整合執行階段。 您可以在所有環境中，使用此共用處理站作為連結的整合執行階段類型。
 
--   **受控私人端點部署**。 如果私人端點已經存在於 factory 中，而您嘗試部署的 ARM 範本包含具有相同名稱但具有已修改屬性的私人端點，則部署將會失敗。 換句話說，您可以成功部署私人端點，只要它的屬性與處理站中現有的相同。 如果環境之間有不同的屬性，您可以將該屬性參數化，並在部署期間提供個別的值來覆寫它。
+-   **受控私人端點部署** 。 如果私人端點已經存在於 factory 中，而您嘗試部署的 ARM 範本包含具有相同名稱但具有已修改屬性的私人端點，則部署將會失敗。 換句話說，您可以成功部署私人端點，只要它的屬性與處理站中現有的相同。 如果環境之間有不同的屬性，您可以將該屬性參數化，並在部署期間提供個別的值來覆寫它。
 
--   **Key Vault**。 當您使用連線資訊存放在 Azure Key Vault 中的連結服務時，建議您針對不同的環境保留個別的金鑰保存庫。 您也可以為每個金鑰保存庫設定不同的權限層級。 例如，您可能不希望小組成員具有生產秘密的權限。 如果您遵循此方法，我們建議您在所有階段中保留相同的秘密名稱。 如果您保留相同的秘密名稱，則不需要將所有 CI/CD 環境中的每個連接字串參數化，因為唯一的變更是金鑰保存庫名稱 (這是個別的參數)。
+-   **Key Vault** 。 當您使用連線資訊存放在 Azure Key Vault 中的連結服務時，建議您針對不同的環境保留個別的金鑰保存庫。 您也可以為每個金鑰保存庫設定不同的權限層級。 例如，您可能不希望小組成員具有生產秘密的權限。 如果您遵循此方法，我們建議您在所有階段中保留相同的秘密名稱。 如果您保留相同的秘密名稱，則不需要將所有 CI/CD 環境中的每個連接字串參數化，因為唯一的變更是金鑰保存庫名稱 (這是個別的參數)。
 
 -  **資源命名** 由於 ARM 範本條件約束的緣故，如果您的資源在名稱中包含空格，則可能會發生部署問題。 Azure Data Factory 團隊建議使用 ' _ ' 或 '-' 字元，而不是資源的空格。 例如，' Pipeline_1 ' 會是比 ' Pipeline 1 ' 更理想的名稱。
 

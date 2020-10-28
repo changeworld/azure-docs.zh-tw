@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 3f3dd5898518a9788a7079ab903b6f88b9f82989
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d5e20b1fc0ce32eae8dc2888fdda982f0de95d90
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371200"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636641"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory 中的整合執行階段 
 
@@ -24,10 +24,10 @@ ms.locfileid: "92371200"
 
 整合執行階段 (IR) 是 Azure Data Factory 所使用的計算基礎結構，可跨不同網路環境提供下列資料整合功能：
 
-- **資料流程**：在受控 Azure 計算環境中執行 [資料流程](concepts-data-flow-overview.md) 。  
-- **資料移動**：在公用網路中的資料存放區和私人網路中的資料存放區之間複製資料 (內部部署或虛擬私人網路) 。 它支援內建的連接器、格式轉換、資料行對應，以及高效能和可調式資料轉送。
-- **活動分派**：分派和監視在各種計算服務上執行的轉換活動，例如 Azure Databricks、Azure HDInsight、Azure Machine Learning、Azure SQL Database、SQL Server 等等。
-- **SSIS 套件執行**：在受控 Azure 計算環境中，以原生方式執行 SQL Server Integration Services (SSIS) 套件。
+- **資料流程** ：在受控 Azure 計算環境中執行 [資料流程](concepts-data-flow-overview.md) 。  
+- **資料移動** ：在公用網路中的資料存放區和私人網路中的資料存放區之間複製資料 (內部部署或虛擬私人網路) 。 它支援內建的連接器、格式轉換、資料行對應，以及高效能和可調式資料轉送。
+- **活動分派** ：分派和監視在各種計算服務上執行的轉換活動，例如 Azure Databricks、Azure HDInsight、Azure Machine Learning、Azure SQL Database、SQL Server 等等。
+- **SSIS 套件執行** ：在受控 Azure 計算環境中，以原生方式執行 SQL Server Integration Services (SSIS) 套件。
 
 在 Data Factory 中，活動可定義要執行的動作。 連結服務可定義目標資料存放區或計算服務。 整合執行階段提供活動與連結服務之間的橋樑。  它是由連結服務或活動所參考，並提供可在其中執行活動或從中分派活動的計算環境。 如此一來，就能在最接近目標資料存放區或計算服務的區域執行活動，效率最高，又滿足安全性和合規性需求。
 
@@ -113,7 +113,7 @@ Azure-SSIS IR 是一個完全受控的 Azure VM 叢集，專門用來執行您�
 
 如需 Azure-SSIS 執行階段的詳細資訊，請參閱下列文章： 
 
-- [教學課程：將 SSIS 套件部署至 Azure](tutorial-create-azure-ssis-runtime-portal.md)。 本文提供逐步指示，說明如何建立 Azure-SSIS IR，並使用 Azure SQL Database 來裝載 SSIS 目錄。 
+- [教學課程：將 SSIS 套件部署至 Azure](./tutorial-deploy-ssis-packages-azure.md)。 本文提供逐步指示，說明如何建立 Azure-SSIS IR，並使用 Azure SQL Database 來裝載 SSIS 目錄。 
 - [如何：建立 Azure-SSIS 整合執行階段](create-azure-ssis-integration-runtime.md)。 本文將擴充教學課程，並提供使用 SQL 受控執行個體以及將 IR 加入虛擬網路的指示。 
 - [監視 Azure-SSIS IR](monitor-integration-runtime.md#azure-ssis-integration-runtime). 本文示範如何在傳回的資訊中擷取 Azure-SSIS IR 的相關資訊和狀態描述。 
 - [管理 Azure-SSIS IR](manage-azure-ssis-integration-runtime.md). 本文示範如何停止、啟動或移除 Azure-SSIS IR。 它也會示範如何將更多節點新增至 IR，藉此相應放大 Azure-SSIS IR。 
@@ -180,9 +180,9 @@ Azure-SSIS IR 是一個完全受控的 Azure VM 叢集，專門用來執行您�
 
 若是複製活動，需要來源和接收連結服務來定義資料流程的方向。 下列邏輯可決定使用哪個整合執行階段執行個體來執行複製： 
 
-- 在**兩個雲端資料來源之間進行複製**：當來源和接收連結服務都使用 Azure IR 時，ADF 會使用區域 Azure IR，如果您選擇自動解析 IR (預設) （如[整合執行時間位置](#integration-runtime-location)一節中所述），則會自動決定 Azure IR 的位置。
-- **在雲端資料來源與私人網路中的資料來源之間複製**：如果任一來源或接收連結服務指向自我裝載 IR，則會在自我裝載整合執行階段上執行複製活動。
-- **在私人網路中的兩個數據源之間複製**：來源和接收連結服務都必須指向相同的整合執行時間實例，而該整合執行時間會用來執行複製活動。
+- 在 **兩個雲端資料來源之間進行複製** ：當來源和接收連結服務都使用 Azure IR 時，ADF 會使用區域 Azure IR，如果您選擇自動解析 IR (預設) （如 [整合執行時間位置](#integration-runtime-location)一節中所述），則會自動決定 Azure IR 的位置。
+- **在雲端資料來源與私人網路中的資料來源之間複製** ：如果任一來源或接收連結服務指向自我裝載 IR，則會在自我裝載整合執行階段上執行複製活動。
+- **在私人網路中的兩個數據源之間複製** ：來源和接收連結服務都必須指向相同的整合執行時間實例，而該整合執行時間會用來執行複製活動。
 
 ### <a name="lookup-and-getmetadata-activity"></a>查閱和 GetMetadata 活動
 
@@ -202,4 +202,4 @@ Azure-SSIS IR 是一個完全受控的 Azure VM 叢集，專門用來執行您�
 
 - [建立 Azure 整合執行時間](create-azure-integration-runtime.md)
 - [建立自我裝載整合執行時間](create-self-hosted-integration-runtime.md)
-- [建立 AZURE SSIS 整合運行](create-azure-ssis-integration-runtime.md)時間。 本文將擴充教學課程，並提供使用 SQL 受控執行個體以及將 IR 加入虛擬網路的指示。 
+- [建立 AZURE SSIS 整合運行](create-azure-ssis-integration-runtime.md)時間。 本文將擴充教學課程，並提供使用 SQL 受控執行個體以及將 IR 加入虛擬網路的指示。

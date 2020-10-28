@@ -11,12 +11,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 10/15/2020
-ms.openlocfilehash: a8b79cea8d502222d08dd3f1f0fb40d1982f565d
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 805b6ed649a3ce301a3246ce1f672475ed47b9ea
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107737"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636454"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-managed-instance-by-using-azure-data-factory"></a>使用 Azure Data Factory 複製和轉換 Azure SQL 受控執行個體中的資料
 
@@ -40,7 +40,7 @@ ms.locfileid: "92107737"
 - 作為接收，如果不存在，則會根據來源架構自動建立目的地資料表;在複製期間將資料附加至資料表，或使用自訂邏輯叫用預存程式。
 
 >[!NOTE]
-> 此連接器目前不支援 SQL 受控執行個體 [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) 。 若要解決這個問題，您可以透過自我裝載的整合執行時間，使用 [一般 odbc 連接器](connector-odbc.md) 和 SQL Server ODBC 驅動程式。 若要深入瞭解，請 [使用 Always Encrypted](#using-always-encrypted) 一節。 
+> 此連接器目前不支援 SQL 受控執行個體 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 。 若要解決這個問題，您可以透過自我裝載的整合執行時間，使用 [一般 odbc 連接器](connector-odbc.md) 和 SQL Server ODBC 驅動程式。 若要深入瞭解，請 [使用 Always Encrypted](#using-always-encrypted) 一節。 
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -60,12 +60,12 @@ ms.locfileid: "92107737"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | Type 屬性必須設為 **AzureSqlMI**。 | 是 |
+| type | Type 屬性必須設為 **AzureSqlMI** 。 | 是 |
 | connectionString |這個屬性會指定使用 SQL 驗證連接到 SQL 受控執行個體所需的 **connectionString** 資訊。 如需詳細資訊，請參閱下列範例。 <br/>預設的連接埠為 1433。 如果您使用具有公用端點的 SQL 受控執行個體，請明確指定埠3342。<br> 您也可以將密碼放在 Azure Key Vault 中。 如果是 SQL 驗證，請 `password` 從連接字串中提取設定。 如需詳細資訊，請參閱下表中的 JSON 範例，並 [將認證儲存在 Azure Key Vault 中](store-credentials-in-key-vault.md)。 |是 |
 | servicePrincipalId | 指定應用程式的用戶端識別碼。 | 是，當您搭配服務主體使用 Azure AD authentication 時 |
 | servicePrincipalKey | 指定應用程式的金鑰。 將此欄位標記為 **SecureString** ，將它安全地儲存在 Azure Data Factory 中，或 [參考儲存在 Azure Key Vault 中的秘密](store-credentials-in-key-vault.md)。 | 是，當您搭配服務主體使用 Azure AD authentication 時 |
 | tenant | 指定您的應用程式所在的租使用者資訊，例如功能變數名稱或租使用者識別碼。 將滑鼠游標暫留在 Azure 入口網站右上角，即可加以擷取。 | 是，當您搭配服務主體使用 Azure AD authentication 時 |
-| azureCloudType | 針對服務主體驗證，請指定您的 Azure AD 應用程式註冊所在的 Azure 雲端環境類型。 <br/> 允許的值為 **AzurePublic**、 **AzureChina**、 **AzureUsGovernment**和 **AzureGermany**。 根據預設，會使用 data factory 的雲端環境。 | 否 |
+| azureCloudType | 針對服務主體驗證，請指定您的 Azure AD 應用程式註冊所在的 Azure 雲端環境類型。 <br/> 允許的值為 **AzurePublic** 、 **AzureChina** 、 **AzureUsGovernment** 和 **AzureGermany** 。 根據預設，會使用 data factory 的雲端環境。 | 否 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 您可以使用自我裝載整合執行時間或 Azure integration runtime （如果您的受控實例具有公用端點），並允許 Azure Data Factory 存取它。 若未指定，則會使用預設 Azure Integration Runtime。 |是 |
 
 針對不同的驗證類型，請分別參閱下列有關先決條件和 JSON 範例的章節：
@@ -103,13 +103,13 @@ ms.locfileid: "92107737"
         "type": "AzureSqlMI",
         "typeProperties": {
             "connectionString": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;",
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -132,7 +132,7 @@ ms.locfileid: "92107737"
     - 應用程式金鑰
     - 租用戶識別碼
 
-3. [建立](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql) Azure Data Factory 受控識別的登入。 在 SQL Server Management Studio (SSMS) 中，使用 **系統管理員（sysadmin**）的 SQL Server 帳戶連接到您的受控實例。 在 **master** 資料庫中執行下列 T-SQL：
+3. [建立](/sql/t-sql/statements/create-login-transact-sql) Azure Data Factory 受控識別的登入。 在 SQL Server Management Studio (SSMS) 中，使用 **系統管理員（sysadmin** ）的 SQL Server 帳戶連接到您的受控實例。 在 **master** 資料庫中執行下列 T-SQL：
 
     ```sql
     CREATE LOGIN [your application name] FROM EXTERNAL PROVIDER
@@ -144,7 +144,7 @@ ms.locfileid: "92107737"
     CREATE USER [your application name] FROM EXTERNAL PROVIDER
     ```
 
-5. 依照您平常為 SQL 使用者和其他人所做的動作，授與 Data Factory 受控識別所需的許可權。 執行下列程式碼。 如需更多選項，請參閱[此文件](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql)。
+5. 依照您平常為 SQL 使用者和其他人所做的動作，授與 Data Factory 受控識別所需的許可權。 執行下列程式碼。 如需更多選項，請參閱[此文件](/sql/t-sql/statements/alter-role-transact-sql)。
 
     ```sql
     ALTER ROLE [role name e.g. db_owner] ADD MEMBER [your application name]
@@ -184,7 +184,7 @@ ms.locfileid: "92107737"
 
 1. 遵循下列步驟來為您的受控執行個體布建 [Azure Active Directory 系統管理員](../azure-sql/database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)。
 
-2. [建立](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql) Azure Data Factory 受控識別的登入。 在 SQL Server Management Studio (SSMS) 中，使用 **系統管理員（sysadmin**）的 SQL Server 帳戶連接到您的受控實例。 在 **master** 資料庫中執行下列 T-SQL：
+2. [建立](/sql/t-sql/statements/create-login-transact-sql) Azure Data Factory 受控識別的登入。 在 SQL Server Management Studio (SSMS) 中，使用 **系統管理員（sysadmin** ）的 SQL Server 帳戶連接到您的受控實例。 在 **master** 資料庫中執行下列 T-SQL：
 
     ```sql
     CREATE LOGIN [your Data Factory name] FROM EXTERNAL PROVIDER
@@ -196,7 +196,7 @@ ms.locfileid: "92107737"
     CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER
     ```
 
-4. 依照您平常為 SQL 使用者和其他人所做的動作，授與 Data Factory 受控識別所需的許可權。 執行下列程式碼。 如需更多選項，請參閱[此文件](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql)。
+4. 依照您平常為 SQL 使用者和其他人所做的動作，授與 Data Factory 受控識別所需的許可權。 執行下列程式碼。 如需更多選項，請參閱[此文件](/sql/t-sql/statements/alter-role-transact-sql)。
 
     ```sql
     ALTER ROLE [role name e.g. db_owner] ADD MEMBER [your Data Factory name]
@@ -230,7 +230,7 @@ ms.locfileid: "92107737"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的 type 屬性必須設為 **AzureSqlMITable**。 | 是 |
+| type | 資料集的 type 屬性必須設為 **AzureSqlMITable** 。 | 是 |
 | 結構描述 | 結構描述的名稱。 |否 (來源)；是 (接收)  |
 | 資料表 | 資料表/檢視的名稱。 |否 (來源)；是 (接收)  |
 | tableName | 具有結構描述的資料表/檢視名稱。 支援此屬性是基於回溯相容性。 對於新的工作負載，請使用 `schema` 和 `table`。 | 否 (來源)；是 (接收) |
@@ -269,21 +269,21 @@ ms.locfileid: "92107737"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的 type 屬性必須設為 **SqlMISource**。 | 是 |
+| type | 複製活動來源的 type 屬性必須設為 **SqlMISource** 。 | 是 |
 | sqlReaderQuery |此屬性使用自訂 SQL 查詢來讀取資料。 例如 `select * from MyTable`。 |否 |
 | sqlReaderStoredProcedureName |此屬性是從來源資料表讀取資料的預存程序名稱。 最後一個 SQL 陳述式必須是預存程序中的 SELECT 陳述式。 |否 |
 | storedProcedureParameters |這些是預存程序的參數。<br/>允許的值為名稱或值組。 參數的名稱和大小寫必須符合預存程序參數的名稱和大小寫。 |否 |
-| isolationLevel | 指定 SQL 來源的異動鎖定行為。 允許的值為： **ReadCommitted**、 **ReadUncommitted**、 **RepeatableRead**、 **Serializable**、 **Snapshot**。 如果未指定，則會使用資料庫的預設隔離等級。 如需詳細資訊，請參閱[這篇文件](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)。 | 否 |
-| partitionOptions | 指定用來從 SQL MI 載入資料的資料分割選項。 <br>允許的值為： **無** (預設值) 、 **PhysicalPartitionsOfTable**和 **DynamicRange**。<br>當您啟用分割區選項時 (也就是不 `None`) 時，從 SQL MI 並行載入資料的平行處理原則程度，是由 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 複製活動上的設定所控制。 | 否 |
+| isolationLevel | 指定 SQL 來源的異動鎖定行為。 允許的值為： **ReadCommitted** 、 **ReadUncommitted** 、 **RepeatableRead** 、 **Serializable** 、 **Snapshot** 。 如果未指定，則會使用資料庫的預設隔離等級。 如需詳細資訊，請參閱[這篇文件](/dotnet/api/system.data.isolationlevel)。 | 否 |
+| partitionOptions | 指定用來從 SQL MI 載入資料的資料分割選項。 <br>允許的值為： **無** (預設值) 、 **PhysicalPartitionsOfTable** 和 **DynamicRange** 。<br>當您啟用分割區選項時 (也就是不 `None`) 時，從 SQL MI 並行載入資料的平行處理原則程度，是由 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 複製活動上的設定所控制。 | 否 |
 | partitionSettings | 指定資料分割的設定群組。 <br>當資料分割選項不適用時套用 `None` 。 | 否 |
-| ***在 `partitionSettings` 下列情況下：*** | | |
-| partitionColumnName | **以整數或日期/日期時間類型**指定來源資料行的名稱，此名稱將由範圍資料分割用於平行複製。 如果未指定，則會自動偵測資料表的索引或主鍵，並將其當做資料分割資料行使用。<br>當分割選項是 `DynamicRange` 時套用。 如果您使用查詢來取出來源資料，請  `?AdfDynamicRangePartitionCondition ` 在 WHERE 子句中掛上。 如需範例，請參閱 [SQL database 的平行複製](#parallel-copy-from-sql-mi) 一節。 | 否 |
+| **_在 `partitionSettings` ：_* _ | | |
+| partitionColumnName | *以 [整數] 或 [日期/日期/日期/日期/時間類型* *] 中的來源資料行名稱，指定將用於平行複製的範圍分割。 如果未指定，則會自動偵測資料表的索引或主鍵，並將其當做資料分割資料行使用。<br>當分割選項是 `DynamicRange` 時套用。 如果您使用查詢來取出來源資料，請  `?AdfDynamicRangePartitionCondition ` 在 WHERE 子句中掛上。 如需範例，請參閱 [SQL database 的平行複製](#parallel-copy-from-sql-mi) 一節。 | 否 |
 | partitionUpperBound | 分割區範圍分割之分割區資料行的最大值。 這個值是用來決定資料分割 stride，而不是用來篩選資料表中的資料列。 資料表或查詢結果中的所有資料列都會進行分割和複製。 如果未指定，複製活動會自動偵測該值。  <br>當分割選項是 `DynamicRange` 時套用。 如需範例，請參閱 [SQL database 的平行複製](#parallel-copy-from-sql-mi) 一節。 | 否 |
 | partitionLowerBound | 分割區範圍分割之分割區資料行的最小值。 這個值是用來決定資料分割 stride，而不是用來篩選資料表中的資料列。 資料表或查詢結果中的所有資料列都會進行分割和複製。 如果未指定，複製活動會自動偵測該值。<br>當分割選項是 `DynamicRange` 時套用。 如需範例，請參閱 [SQL database 的平行複製](#parallel-copy-from-sql-mi) 一節。 | 否 |
 
 **請注意下列幾點：**
 
-- 如果針對**SqlMISource**指定了**sqlReaderQuery** ，複製活動就會針對 SQL 受控執行個體來源執行此查詢以取得資料。 如果預存程序接受參數，您也可以藉由指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** 來指定預存程序。
+- 如果針對 **SqlMISource** 指定了 **sqlReaderQuery** ，複製活動就會針對 SQL 受控執行個體來源執行此查詢以取得資料。 如果預存程序接受參數，您也可以藉由指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** 來指定預存程序。
 - 如果您未指定 **sqlReaderQuery** 或 **sqlReaderStoredProcedureName** 屬性，資料集 JSON "structure" 區段中定義的資料行就會用來建構查詢。 查詢會 `select column1, column2 from mytable` 針對 SQL 受控執行個體執行。 如果資料集定義沒有 "structure"，則會從資料表中選取所有資料行。
 
 **範例：使用 SQL 查詢**
@@ -382,14 +382,14 @@ GO
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動接收的 type 屬性必須設為 **SqlMISink**。 | 是 |
+| type | 複製活動接收的 type 屬性必須設為 **SqlMISink** 。 | 是 |
 | preCopyScript |這個屬性會指定在將資料寫入 SQL 受控執行個體之前，要執行的複製活動的 SQL 查詢。 每一複製回合只會叫用此查詢一次。 您可以使用此屬性來清除預先載入的資料。 |否 |
 | tableOption | 指定是否要根據來源架構， [自動建立接收資料表](copy-activity-overview.md#auto-create-sink-tables) （如果不存在的話）。 當接收指定預存程式時，不支援自動建立資料表。 允許的值包為：`none` (預設) 或 `autoCreate`。 |否 |
-| sqlWriterStoredProcedureName | 定義如何將來源資料套用到目標資料表的預存程序名稱。 <br/>此預存程序將會*依批次叫用*。 對於只執行一次且與來源資料無關的作業（例如刪除或截斷），請使用 `preCopyScript` 屬性。<br>請參閱從 [SQL 接收叫用預存](#invoke-a-stored-procedure-from-a-sql-sink)程式的範例。 | 否 |
+| sqlWriterStoredProcedureName | 定義如何將來源資料套用到目標資料表的預存程序名稱。 <br/>此預存程序將會 *依批次叫用* 。 對於只執行一次且與來源資料無關的作業（例如刪除或截斷），請使用 `preCopyScript` 屬性。<br>請參閱從 [SQL 接收叫用預存](#invoke-a-stored-procedure-from-a-sql-sink)程式的範例。 | 否 |
 | storedProcedureTableTypeParameterName |預存程式中指定之資料表類型的參數名稱。  |否 |
 | sqlWriterTableType |要在預存程式中使用的資料表類型名稱。 複製活動可讓正在移動的資料可用於此資料表類型的暫存資料表。 然後，預存程序程式碼可以合併正在複製的資料與現有的資料。 |否 |
 | storedProcedureParameters |預存程序的參數。<br/>允許的值為：名稱和值組。 參數的名稱和大小寫必須符合預存程序參數的名稱和大小寫。 | 否 |
-| writeBatchSize |*每個批次*要插入 SQL 資料表中的資料列數目。<br/>允許的值為整數的資料列數目。 根據預設，Azure Data Factory 會根據資料列大小，動態決定適當的批次大小。  |否 |
+| writeBatchSize |*每個批次* 要插入 SQL 資料表中的資料列數目。<br/>允許的值為整數的資料列數目。 根據預設，Azure Data Factory 會根據資料列大小，動態決定適當的批次大小。  |否 |
 | writeBatchTimeout |此屬性會指定在逾時前等待批次插入作業完成的時間。<br/>允許的值適用于 timespan。 範例是 “00:30:00”，也就是 30 分鐘。 |否 |
 
 **範例1：附加資料**
@@ -477,9 +477,9 @@ GO
 
 | 狀況                                                     | 建議的設定                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 具有實體資料分割之大型資料表的完整載入。        | **分割區選項**：資料表的實體分割區。 <br><br/>在執行期間，Data Factory 會自動偵測實體分割區，並依分割區複製資料。 <br><br/>若要檢查您的資料表是否有實體分割區，您可以參考 [此查詢](#sample-query-to-check-physical-partition)。 |
-| 從大型資料表完整載入（沒有實體資料分割），同時使用整數或 datetime 資料行進行資料分割。 | **分割選項**：動態範圍分割。<br>**分割** 區資料行 (選擇性) ：指定用來分割資料的資料行。 如果未指定，則會使用索引或主鍵資料行。<br/>**分割區上限** 和資料 **分割下限** (選擇性) ：指定是否要判斷資料分割 stride。 這不是用來篩選資料表中的資料列，而是資料表中的所有資料列都會進行分割和複製。 如果未指定，複製活動會自動偵測這些值。<br><br>例如，如果您的資料分割資料行 "ID" 的值範圍從1到100，而且您將下限設定為20，並將上限設為80，並將平行複製設為4，則 Data Factory 會分別以4個數據分割識別碼（範圍 <= 20、[21、50]、[51、80] 和 >= 81）抓取資料。 |
-| 使用自訂查詢（沒有實體資料分割）載入大量資料，並使用資料分割的整數或日期/日期時間資料行。 | **分割選項**：動態範圍分割。<br>**查詢**：`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`。<br>**分割資料行**：指定用來分割資料的資料行。<br>**分割區上限** 和資料 **分割下限** (選擇性) ：指定是否要判斷資料分割 stride。 這不是用來篩選資料表中的資料列，而且查詢結果中的所有資料列都會進行分割和複製。 如果未指定，複製活動會自動偵測該值。<br><br>在執行期間，Data Factory 會 `?AdfRangePartitionColumnName` 以實際的資料行名稱和每個資料分割的值範圍取代，並傳送至 SQL MI。 <br>例如，如果您的資料分割資料行 "ID" 的值範圍從1到100，而且您將下限設定為20，並將上限設為80，並將平行複製設為4，則 Data Factory 會分別以4個數據分割識別碼（範圍 <= 20、[21、50]、[51、80] 和 >= 81）抓取資料。 <br><br>以下是針對不同案例的查詢範例：<br> 1. 查詢整個資料表： <br>`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition`<br> 2. 從包含資料行選取和其他 where 子句篩選的資料表查詢： <br>`SELECT <column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 3. 使用子查詢進行查詢： <br>`SELECT <column_list> FROM (<your_sub_query>) AS T WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 4. 查詢子查詢中的資料分割： <br>`SELECT <column_list> FROM (SELECT <your_sub_query_column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition) AS T`
+| 具有實體資料分割之大型資料表的完整載入。        | **分割區選項** ：資料表的實體分割區。 <br><br/>在執行期間，Data Factory 會自動偵測實體分割區，並依分割區複製資料。 <br><br/>若要檢查您的資料表是否有實體分割區，您可以參考 [此查詢](#sample-query-to-check-physical-partition)。 |
+| 從大型資料表完整載入（沒有實體資料分割），同時使用整數或 datetime 資料行進行資料分割。 | **分割選項** ：動態範圍分割。<br>**分割** 區資料行 (選擇性) ：指定用來分割資料的資料行。 如果未指定，則會使用索引或主鍵資料行。<br/>**分割區上限** 和資料 **分割下限** (選擇性) ：指定是否要判斷資料分割 stride。 這不是用來篩選資料表中的資料列，而是資料表中的所有資料列都會進行分割和複製。 如果未指定，複製活動會自動偵測這些值。<br><br>例如，如果您的資料分割資料行 "ID" 的值範圍從1到100，而且您將下限設定為20，並將上限設為80，並將平行複製設為4，則 Data Factory 會分別以4個數據分割識別碼（範圍 <= 20、[21、50]、[51、80] 和 >= 81）抓取資料。 |
+| 使用自訂查詢（沒有實體資料分割）載入大量資料，並使用資料分割的整數或日期/日期時間資料行。 | **分割選項** ：動態範圍分割。<br>**查詢** ：`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`。<br>**分割資料行** ：指定用來分割資料的資料行。<br>**分割區上限** 和資料 **分割下限** (選擇性) ：指定是否要判斷資料分割 stride。 這不是用來篩選資料表中的資料列，而且查詢結果中的所有資料列都會進行分割和複製。 如果未指定，複製活動會自動偵測該值。<br><br>在執行期間，Data Factory 會 `?AdfRangePartitionColumnName` 以實際的資料行名稱和每個資料分割的值範圍取代，並傳送至 SQL MI。 <br>例如，如果您的資料分割資料行 "ID" 的值範圍從1到100，而且您將下限設定為20，並將上限設為80，並將平行複製設為4，則 Data Factory 會分別以4個數據分割識別碼（範圍 <= 20、[21、50]、[51、80] 和 >= 81）抓取資料。 <br><br>以下是針對不同案例的查詢範例：<br> 1. 查詢整個資料表： <br>`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition`<br> 2. 從包含資料行選取和其他 where 子句篩選的資料表查詢： <br>`SELECT <column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 3. 使用子查詢進行查詢： <br>`SELECT <column_list> FROM (<your_sub_query>) AS T WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 4. 查詢子查詢中的資料分割： <br>`SELECT <column_list> FROM (SELECT <your_sub_query_column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition) AS T`
 |
 
 使用資料分割選項載入資料的最佳作法：
@@ -549,15 +549,15 @@ WHERE s.name='[your schema]' AND t.name = '[your table name]'
 
 ### <a name="upsert-data"></a>更新插入資料
 
-**選項1：** 當您要複製大量資料時，可以使用複製活動將所有記錄大量載入至臨時表，然後執行預存程式活動，以在一次中套用 [MERGE](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql) 或 INSERT/UPDATE 語句。 
+**選項1：** 當您要複製大量資料時，可以使用複製活動將所有記錄大量載入至臨時表，然後執行預存程式活動，以在一次中套用 [MERGE](/sql/t-sql/statements/merge-transact-sql) 或 INSERT/UPDATE 語句。 
 
 複製活動目前並不支援將資料載入資料庫臨時表。 您可以使用多個活動的組合來設定它，請參閱 [優化 SQL Database 大量 Upsert 案例](https://github.com/scoriani/azuresqlbulkupsert)。 以下顯示使用永久資料表做為暫存的範例。
 
-例如，在 Azure Data Factory 中，您可以使用與**預存程式活動**連結的**複製活動**來建立管線。 前者會將資料從您的來源存放區複製到 Azure SQL 受控執行個體臨時表（例如 **UpsertStagingTable**），做為資料集中的資料表名稱。 接著，後者會叫用預存程式，將來源資料從臨時表合併到目標資料表中，並清除臨時表。
+例如，在 Azure Data Factory 中，您可以使用與 **預存程式活動** 連結的 **複製活動** 來建立管線。 前者會將資料從您的來源存放區複製到 Azure SQL 受控執行個體臨時表（例如 **UpsertStagingTable** ），做為資料集中的資料表名稱。 接著，後者會叫用預存程式，將來源資料從臨時表合併到目標資料表中，並清除臨時表。
 
 ![Upsert](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
 
-在您的資料庫中，使用合併邏輯定義預存程式，如下列範例所示，其指向先前的預存程式活動。 假設目標是包含三個數據行的 **行銷** 資料表： **ProfileID**、 **State**和 **Category**。 根據 **ProfileID** 資料行進行 upsert。
+在您的資料庫中，使用合併邏輯定義預存程式，如下列範例所示，其指向先前的預存程式活動。 假設目標是包含三個數據行的 **行銷** 資料表： **ProfileID** 、 **State** 和 **Category** 。 根據 **ProfileID** 資料行進行 upsert。
 
 ```sql
 CREATE PROCEDURE [dbo].[spMergeData]
@@ -588,13 +588,13 @@ END
 
 ## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a><a name="invoke-a-stored-procedure-from-a-sql-sink"></a> 從 SQL 接收叫用預存程序
 
-當您將資料複製到 SQL 受控執行個體時，您也可以在來源資料表的每個批次上，使用其他參數來設定及叫用使用者指定的預存程式。 預存程式功能會利用 [資料表值參數](https://msdn.microsoft.com/library/bb675163.aspx)。
+當您將資料複製到 SQL 受控執行個體時，您也可以在來源資料表的每個批次上，使用其他參數來設定及叫用使用者指定的預存程式。 預存程式功能會利用 [資料表值參數](/dotnet/framework/data/adonet/sql/table-valued-parameters)。
 
 當內建的複製機制無法滿足需求時，您可以使用預存程序。 例如，當您想要在最後將來源資料插入目的地資料表之前，套用額外的處理。 一些額外的處理範例是當您想要合併資料行、查閱其他值，然後插入多個資料表時。
 
-下列範例示範如何使用預存程序，對 SQL Server 資料庫中的資料表執行更新插入。 假設輸入資料和接收 **行銷** 資料表各有三個數據行： **ProfileID**、 **State**和 **Category**。 根據 **ProfileID** 資料行進行 upsert，並只將它套用至名為 "ProductA" 的特定類別。
+下列範例示範如何使用預存程序，對 SQL Server 資料庫中的資料表執行更新插入。 假設輸入資料和接收 **行銷** 資料表各有三個數據行： **ProfileID** 、 **State** 和 **Category** 。 根據 **ProfileID** 資料行進行 upsert，並只將它套用至名為 "ProductA" 的特定類別。
 
-1. 在資料庫中，使用與 **sqlWriterTableType**相同的名稱來定義資料表類型。 資料表類型的結構描述會與輸入資料所傳回的結構描述相同。
+1. 在資料庫中，使用與 **sqlWriterTableType** 相同的名稱來定義資料表類型。 資料表類型的結構描述會與輸入資料所傳回的結構描述相同。
 
     ```sql
     CREATE TYPE [dbo].[MarketingType] AS TABLE(
@@ -604,7 +604,7 @@ END
     )
     ```
 
-2. 在資料庫中，使用與 **>sqlwriterstoredprocedurename**相同的名稱來定義預存程式。 它會處理來自指定來源的輸入資料，並合併至輸出資料表。 預存程式中資料表類型的參數名稱與資料集內定義的 **tableName** 相同。
+2. 在資料庫中，使用與 **>sqlwriterstoredprocedurename** 相同的名稱來定義預存程式。 它會處理來自指定來源的輸入資料，並合併至輸出資料表。 預存程式中資料表類型的參數名稱與資料集內定義的 **tableName** 相同。
 
     ```sql
     CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)
@@ -651,7 +651,7 @@ END
 | 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Table | 如果您選取資料表做為輸入，資料流程就會從資料集所指定的資料表中提取所有資料。 | 否 | - |- |
-| 查詢 | 如果您選取 [查詢為輸入]，請指定要從來源提取資料的 SQL 查詢，這會覆寫您在資料集中指定的任何資料表。 使用查詢是減少測試或查閱資料列的絕佳方法。<br><br>不支援**Order By**子句，但您可以設定完整的 SELECT FROM 語句。 您也可使用使用者定義的資料表函數。 **select * From udfGetData ( # B1 ** 是 SQL 中的 UDF，會傳回您可以在資料流程中使用的資料表。<br>查詢範例： `Select * from MyTable where customerId > 1000 and customerId < 2000`| 否 | String | 查詢 |
+| 查詢 | 如果您選取 [查詢為輸入]，請指定要從來源提取資料的 SQL 查詢，這會覆寫您在資料集中指定的任何資料表。 使用查詢是減少測試或查閱資料列的絕佳方法。<br><br>不支援 **Order By** 子句，但您可以設定完整的 SELECT FROM 語句。 您也可使用使用者定義的資料表函數。 **select * From udfGetData ( # B1** 是 SQL 中的 UDF，會傳回您可以在資料流程中使用的資料表。<br>查詢範例： `Select * from MyTable where customerId > 1000 and customerId < 2000`| 否 | String | 查詢 |
 | 批次大小 | 指定批次大小以將大型資料區塊為讀取。 | 否 | 整數 | batchSize |
 | 隔離等級 | 選擇下列其中一個隔離等級：<br>-讀取認可<br>-讀取未認可的 (預設) <br>-可重複讀取<br>-Serializable<br>-無 (忽略隔離等級)  | 否 | <small>READ_COMMITTED<br/>READ_UNCOMMITTED<br/>REPEATABLE_READ<br/>SERIALIZABLE<br/>沒有</small> |isolationLevel |
 
@@ -676,7 +676,7 @@ source(allowSchemaDrift: true,
 | Update 方法 | 指定您的資料庫目的地允許哪些作業。 預設僅允許插入。<br>若要更新、upsert 或刪除資料列，則需要 [Alter row 轉換](data-flow-alter-row.md) 來標記這些動作的資料列。 | 是 | `true` 或 `false` | 刪除 <br/>插入 <br/>更新 <br/>upsertable |
 | 索引鍵資料行 | 針對更新、upsert 和刪除，必須設定索引鍵資料行 (s) ，以決定要改變的資料列。<br>您選擇做為索引鍵的資料行名稱將會用來做為後續更新、upsert、刪除的一部分。 因此，您必須挑選存在於接收對應中的資料行。 | 否 | Array | 金鑰 |
 | 略過寫入索引鍵資料行 | 如果您不想將值寫入至索引鍵資料行，請選取 [略過寫入索引鍵資料行]。 | 否 | `true` 或 `false` | skipKeyWrites |
-| 資料表動作 |決定在寫入之前，是否要重新建立或移除目的地資料表中的所有資料列。<br>- **None**：不會對資料表執行任何動作。<br>- **重新**建立：資料表將被捨棄並重新建立。 如果要動態建立新的資料表，則為必要。<br>- **截斷**：目標資料表中的所有資料列都會被移除。 | 否 | `true` 或 `false` | 重建<br/>truncate |
+| 資料表動作 |決定在寫入之前，是否要重新建立或移除目的地資料表中的所有資料列。<br>- **None** ：不會對資料表執行任何動作。<br>- **重新** 建立：資料表將被捨棄並重新建立。 如果要動態建立新的資料表，則為必要。<br>- **截斷** ：目標資料表中的所有資料列都會被移除。 | 否 | `true` 或 `false` | 重建<br/>truncate |
 | 批次大小 | 指定每個批次中寫入的資料列數目。 較大的批次大小會改善壓縮和記憶體優化，但會導致在快取資料時發生記憶體例外狀況的風險。 | 否 | 整數 | batchSize |
 | 前置和後置 SQL 腳本 | 指定將在 (前置) 處理之前執行的多行 SQL 腳本，以及 (後置處理) 資料寫入至您的接收資料庫。 | 否 | String | preSQLs<br>postSQLs |
 
@@ -734,8 +734,8 @@ IncomingStream sink(allowSchemaDrift: true,
 | smalldatetime |Datetime |
 | SMALLINT |Int16 |
 | SMALLMONEY |Decimal |
-| sql_variant |Object |
-| 文字 |String, Char[] |
+| sql_variant |物件 |
+| text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | TINYINT |Int16 |
@@ -749,23 +749,23 @@ IncomingStream sink(allowSchemaDrift: true,
 
 ## <a name="using-always-encrypted"></a>使用 Always Encrypted
 
-當您使用 [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)從 Azure SQL 受控執行個體複製資料時，請使用 [一般 ODBC 連接器](connector-odbc.md) ，並透過自我裝載的 Integration Runtime SQL Server ODBC 驅動程式。 此 Azure SQL 受控執行個體連接器目前不支援 Always Encrypted。 
+當您使用 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)從 Azure SQL 受控執行個體複製資料時，請使用 [一般 ODBC 連接器](connector-odbc.md) ，並透過自我裝載的 Integration Runtime SQL Server ODBC 驅動程式。 此 Azure SQL 受控執行個體連接器目前不支援 Always Encrypted。 
 
 具體而言：
 
 1. 設定自我裝載的 Integration Runtime （如果沒有的話）。 如需詳細資訊，請參閱自我裝載的 [Integration Runtime](create-self-hosted-integration-runtime.md) 文章。
 
-2. 從 [這裡](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server)下載適用于 SQL Server 的64位 ODBC 驅動程式，並在 Integration Runtime 電腦上安裝。 深入瞭解此驅動程式如何 [使用 Always Encrypted 搭配 ODBC driver for SQL Server](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver#using-the-azure-key-vault-provider)。
+2. 從 [這裡](/sql/connect/odbc/download-odbc-driver-for-sql-server)下載適用于 SQL Server 的64位 ODBC 驅動程式，並在 Integration Runtime 電腦上安裝。 深入瞭解此驅動程式如何 [使用 Always Encrypted 搭配 ODBC driver for SQL Server](/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver#using-the-azure-key-vault-provider)。
 
 3. 建立具有 ODBC 類型的連結服務，以連接到您的 SQL database，請參閱下列範例：
 
-    - 若要使用 **SQL 驗證**：請指定 ODBC 連接字串，如下所示，然後選取 [ **基本** 身份驗證] 來設定使用者名稱和密碼。
+    - 若要使用 **SQL 驗證** ：請指定 ODBC 連接字串，如下所示，然後選取 [ **基本** 身份驗證] 來設定使用者名稱和密碼。
 
         ```
         Driver={ODBC Driver 17 for SQL Server};Server=<serverName>;Database=<databaseName>;ColumnEncryption=Enabled;KeyStoreAuthentication=KeyVaultClientSecret;KeyStorePrincipalId=<servicePrincipalKey>;KeyStoreSecret=<servicePrincipalKey>
         ```
 
-    - 使用 **Data Factory 受控識別驗證**： 
+    - 使用 **Data Factory 受控識別驗證** ： 
 
         1. 遵循相同的 [先決條件](#managed-identity) 來建立受控識別的資料庫使用者，並在您的資料庫中授與適當的角色。
         2. 在 [連結服務] 中，指定 ODBC 連接字串（如下所示），然後選取 [ **匿名** 驗證]，因為連接字串本身會指出 `Authentication=ActiveDirectoryMsi` 。
