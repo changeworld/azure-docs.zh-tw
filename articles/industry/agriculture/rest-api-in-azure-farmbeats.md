@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: f15bee7e802b04d04a3c87d7f84fc975b88bf260
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 292374bcce90da042dc6bd672feaad3750759aa9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86536567"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674502"
 ---
 # <a name="azure-farmbeats-apis"></a>Azure FarmBeats Api
 
@@ -29,7 +29,7 @@ FarmBeats Api 包含 Swagger 技術檔。 如需所有 Api 及其對應要求或
 
 下表摘要說明 FarmBeats Datahub 中的所有物件和資源：
 
-| 物件和資源 | 說明
+| 物件和資源 | 描述
 --- | ---|
 Farm | 伺服器陣列對應于 FarmBeats 系統內的實體位置。 每個伺服器陣列都有伺服器陣列名稱和唯一的伺服器陣列識別碼。 |
 裝置  | 裝置會對應至存在於伺服器陣列上的實體裝置。 每個裝置都有唯一的裝置識別碼。 裝置通常會布建到具有伺服器陣列識別碼的伺服器陣列。
@@ -143,24 +143,24 @@ Azure FarmBeats Datahub Api 會傳回標準 HTTP 錯誤。 最常見的錯誤碼
 
 Azure Active Directory 中的使用者或應用程式註冊可以存取 Azure FarmBeats Api。 若要在 Azure Active Directory 中建立應用程式註冊，請遵循下列步驟：
 
-1. 移至[Azure 入口網站](https://portal.azure.com)，然後選取**Azure Active Directory**  >  **應用程式註冊**  >  **新註冊**。 或者，您可以使用現有的帳戶。
+1. 移至 [Azure 入口網站](https://portal.azure.com)，然後選取 **Azure Active Directory**  >  **應用程式註冊**  >  **新註冊** 。 或者，您可以使用現有的帳戶。
 2. 針對新帳戶，請執行下列動作：
 
     - 輸入名稱。
-    - 選取 **此組織目錄中的帳戶，只 (單一租使用者) **。
+    - 選取 **此組織目錄中的帳戶，只 (單一租使用者)** 。
     - 在其餘欄位中使用預設值。
     - 選取 [註冊]。
 
 3. 在 [新的和現有的應用程式註冊 **總覽** ] 窗格中，執行下列動作：
 
-    - 捕獲 **用戶端識別碼** 和 **租使用者識別碼**。
-    - 移至 [ **憑證及秘密** ] 以產生新的用戶端密碼，並捕獲 **用戶端密碼**。
-    - 返回 **總覽**，然後選取 [ **管理本機目錄中的應用程式**] 旁的連結。
-    - 移至 [ **屬性** ] 以抓取 **物件識別碼**。
+    - 捕獲 **用戶端識別碼** 和 **租使用者識別碼** 。
+    - 移至 [ **憑證及秘密** ] 以產生新的用戶端密碼，並捕獲 **用戶端密碼** 。
+    - 返回 **總覽** ，然後選取 [ **管理本機目錄中的應用程式** ] 旁的連結。
+    - 移至 [ **屬性** ] 以抓取 **物件識別碼** 。
 
 4. 移至您的 Datahub Swagger (HTTPs:// <yourdatahub> . azurewebsites.net/swagger/index.html) ，然後執行下列動作：
-    - 移至 **ROLEASSIGNMENT API**。
-    - 針對您剛才建立的**物件識別碼**，執行 POST 來建立**RoleAssignment**物件。
+    - 移至 **ROLEASSIGNMENT API** 。
+    - 針對您剛才建立的 **物件識別碼** ，執行 POST 來建立 **RoleAssignment** 物件。
  
 ```json
 {
@@ -172,7 +172,7 @@ Azure Active Directory 中的使用者或應用程式註冊可以存取 Azure Fa
 ```
 
   > [!NOTE]
-  > 如需如何新增使用者和 Active Directory 註冊的詳細資訊，請參閱 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
+  > 如需如何新增使用者和 Active Directory 註冊的詳細資訊，請參閱 [Azure Active Directory](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
 完成先前的步驟之後，您的應用程式註冊 (用戶端) 可以透過持有人驗證使用存取權杖來呼叫 Azure FarmBeats Api。
 

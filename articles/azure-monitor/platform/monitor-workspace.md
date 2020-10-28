@@ -6,17 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: d6c29cb41d38e5473a9b24dbc89fd99d3e19c16f
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9a70dcbabea9bc55703a5e9875df05b534eb372a
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638324"
+ms.locfileid: "92674744"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>在 Azure 監視器中監視 Log Analytics 工作區的健康情況
 若要在 Azure 監視器中維護 Log Analytics 工作區的效能和可用性，您必須能夠主動偵測出發生的任何問題。 本文說明如何使用 [作業資料表中的資料](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) 來監視 Log Analytics 工作區的健康情況。 此資料表包含在每個 Log Analytics 工作區中，並包含在工作區中發生的錯誤和警告。 您應定期檢查此資料並建立警示，以在您的工作區中有任何重要事件時主動收到通知。
 
 ## <a name="_logoperation-function"></a>_LogOperation 函式
+
 Azure 監視器記錄會將任何問題的詳細資料傳送至發生問題之工作區中的[作業資料表。](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) **_LogOperation** 系統函數是以 **作業資料表為** 基礎，並提供一組簡化的資訊供分析和警示之用。
 
 ## <a name="columns"></a>資料行
@@ -36,6 +37,7 @@ Azure 監視器記錄會將任何問題的詳細資料傳送至發生問題之�
 
 
 ## <a name="categories"></a>類別
+
 下表說明 _LogOperation 函式中的分類。 
 
 | 類別 | 描述 |

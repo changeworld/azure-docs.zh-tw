@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
-ms.custom: aaddev
-ms.openlocfilehash: ab072fa53d3ecc3f856b6765acfb8c19da3ff298
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.custom: aaddev devx-track-js
+ms.openlocfilehash: 327280c193c3c2fb829e468bccfc352f35edfdb5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442247"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673505"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>使用適用于 JavaScript 的 Microsoft 驗證程式庫來處理 Azure AD B2C
 
@@ -32,7 +32,7 @@ ms.locfileid: "92442247"
 - 支援在單一頁面應用程式中 (SPA) 登入，並呼叫受保護 *的* web API
 - 啟用密碼重設支援
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 如果您還沒有這麼做，請建立 [Azure AD B2C 的租](../../active-directory-b2c/tutorial-create-tenant.md)使用者。
 
@@ -56,7 +56,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="step-3-configure-authentication"></a>步驟3：設定驗證
 
-1. 開啟範例中的 `config.json` 檔案。
+1. 開啟範例中的檔案 *config.js* 。
 
 2. 使用您稍早在註冊應用程式時取得的應用程式認證來設定範例。 藉由將值取代為您的租使用者名稱、用戶端識別碼和原則名稱，來變更下列幾行程式碼。
 
@@ -169,7 +169,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 ### <a name="step-2-catch-and-handle-authentication-errors-in-your-login-method"></a>步驟2：攔截並處理登入方法中的驗證錯誤
 
-當使用者選取 **忘記密碼**時，您的應用程式會擲回您應該在程式碼中攔截的錯誤，然後藉由呈現適當的使用者流程來處理。 在此情況下， `b2c_1_reset` 密碼重設流程。
+當使用者選取 **忘記密碼** 時，您的應用程式會擲回您應該在程式碼中攔截的錯誤，然後藉由呈現適當的使用者流程來處理。 在此情況下， `b2c_1_reset` 密碼重設流程。
 
 1. 擴充您的登入方法，如下所示：
 

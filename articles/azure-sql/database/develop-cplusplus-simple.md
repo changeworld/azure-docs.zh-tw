@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: 38e4839a41ad8e58e575e552e877303a5105ff36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e891c5797c9ce93e6cab7a07d2f68de1a9157249
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91443670"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674769"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>使用 C 和 C++ 連接到 SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "91443670"
 
 * 使用中的 Azure 帳戶。 如果您沒有帳戶，您可以註冊 [免費 Azure 試用](https://azure.microsoft.com/pricing/free-trial/)。
 * [Visual Studio](https://www.visualstudio.com/downloads/)。 您必須安裝 C++ 語言元件以建置並執行此範例。
-* [Visual Studio Linux 開發](https://docs.microsoft.com/cpp/linux/?view=vs-2019)。 如果您要在 Linux 上進行開發，必須也安裝 Visual Studio Linux 擴充功能。
+* [Visual Studio Linux 開發](/cpp/linux/?view=vs-2019)。 如果您要在 Linux 上進行開發，必須也安裝 Visual Studio Linux 擴充功能。
 
 ## <a name="azure-sql-database-and-sql-server-on-virtual-machines"></a><a id="AzureSQL"></a>虛擬機器上的 Azure SQL Database 和 SQL Server
 
@@ -39,7 +39,7 @@ Azure 目前有兩個選項可裝載 SQL server 工作負載： Azure SQL Databa
 
 ## <a name="data-access-technologies-odbc-and-ole-db"></a><a id="ODBC"></a>資料存取技術︰ODBC 和 OLE DB
 
-連接到 Azure SQL Database 並無不同，目前有兩種方式可以連接到資料庫： ODBC (開放式資料庫連接) 以及 OLE DB (物件連結和內嵌資料庫) 。 近年來，Microsoft 已配合 [ODBC 進行原生關聯式資料存取](https://blogs.msdn.microsoft.com/sqlnativeclient/20../../microsoft-is-aligning-with-odbc-for-native-relational-data-access/)。 ODBC 相當簡單，而且也比 OLE DB 更快速。 唯一必須注意的是 ODBC 會使用舊的 C 樣式 API。
+連接到 Azure SQL Database 並無不同，目前有兩種方式可以連接到資料庫： ODBC (開放式資料庫連接) 以及 OLE DB (物件連結和內嵌資料庫) 。 近年來，Microsoft 已配合 [ODBC 進行原生關聯式資料存取](/archive/blogs/sqlnativeclient/microsoft-is-aligning-with-odbc-for-native-relational-data-access)。 ODBC 相當簡單，而且也比 OLE DB 更快速。 唯一必須注意的是 ODBC 會使用舊的 C 樣式 API。
 
 ## <a name="step-1--creating-your-azure-sql-database"></a><a id="Create"></a>步驟 1：建立 Azure SQL Database
 
@@ -73,7 +73,7 @@ Azure 目前有兩個選項可裝載 SQL server 工作負載： Azure SQL Databa
 
 請確定您提供的資料庫驗證詳細資料是的正確，做為該資料庫連接字串的一部分。
 
-啟動應用程式來建置它。 您應該會看到下列驗證成功連線的視窗。 您甚至可以執行一些基本的 SQL 命令，例如**建立資料表**來驗證您的資料庫連線︰
+啟動應用程式來建置它。 您應該會看到下列驗證成功連線的視窗。 您甚至可以執行一些基本的 SQL 命令，例如 **建立資料表** 來驗證您的資料庫連線︰
 
 ![SQL 命令](./media/develop-cplusplus-simple/sqlcommands.png)
 
@@ -123,7 +123,7 @@ Azure 目前有兩個選項可裝載 SQL server 工作負載： Azure SQL Databa
 
 ![新增 ODBC 做為輸入程式庫](./media/develop-cplusplus-simple/lib.png)
 
-若要啟動您的應用程式，從**偵錯**功能表開啟 Linux 主控台︰
+若要啟動您的應用程式，從 **偵錯** 功能表開啟 Linux 主控台︰
 
 ![Linux 主控台](./media/develop-cplusplus-simple/linuxconsole.png)
 
@@ -143,7 +143,7 @@ Azure 目前有兩個選項可裝載 SQL server 工作負載： Azure SQL Databa
 ## <a name="next-steps"></a>後續步驟
 
 * 複習 [SQL Database 開發總覽](develop-overview.md)
-* 更多 [ODBC API 參考](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)的相關資訊
+* 更多 [ODBC API 參考](/sql/odbc/reference/syntax/odbc-api-reference/)的相關資訊
 
 ## <a name="additional-resources"></a>其他資源
 

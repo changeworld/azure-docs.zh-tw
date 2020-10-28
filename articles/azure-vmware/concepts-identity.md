@@ -3,18 +3,18 @@ title: 概念-身分識別和存取
 description: 深入瞭解 Azure VMware 解決方案的身分識別和存取概念
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 9d5b7b4c7c2e0d55cffc99a3f371494f40320a16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7127109801d92d2177f6edac3efcaf76ddf217e6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88750582"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674646"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware 解決方案身分識別概念
 
-部署私人雲端時，會布建 vCenter 伺服器和 NSX-T 管理員。 您可以使用 vCenter 來管理虛擬機器工作負載和 NSX-T 管理員，以擴充私用雲端軟體定義的網路。
+部署私用雲端時，會布建 vCenter 伺服器和 NSX-T 管理員。 您可以使用 vCenter 來管理虛擬機器 (VM) 工作負載。 您可以使用 NSX-T 管理員來擴充私用雲端軟體定義的網路。
 
-存取和身分識別管理使用適用于 vCenter 的 CloudAdmin 群組許可權，以及適用于 NSX-T 管理員的受限制系統管理員許可權。 此原則可確保您的私用雲端平臺可以自動升級。 這會定期傳遞最新的功能和修補程式。 如需私用雲端升級的詳細資訊，請參閱 [私用雲端升級概念文章][concepts-upgrades] 。
+存取和身分識別管理使用適用于 vCenter 的 CloudAdmin 群組許可權，以及適用于 NSX-T 管理員的受限制系統管理員許可權。 它可確保您的私用雲端平臺會自動升級為最新的功能和修補程式。  如需詳細資訊，請參閱 [私用雲端升級概念文章][concepts-upgrades]。
 
 ## <a name="vcenter-access-and-identity"></a>vCenter 存取和身分識別
 
@@ -49,9 +49,9 @@ CloudAdmin 和 CloudGlobalAdmin 許可權如下表所示。
 
 ## <a name="nsx-t-manager-access-and-identity"></a>NSX-T 管理員存取和身分識別
 
-您可以使用「系統管理員」帳戶存取 NSX-T 管理員。 該帳戶具有完整許可權，可讓您建立和管理 T1 路由器、邏輯交換器和所有服務。 在 NSX-T 中的完整許可權也可讓您存取 NSX-T T0 路由器。 對 T0 路由器的變更可能會導致網路效能降低，或無法存取私人雲端。 為了符合支援需求，您必須在 Azure 入口網站中開啟支援要求，以要求對您的 NSX-T T0 路由器進行任何變更。
+使用「系統管理員」帳戶存取 NSX-T 管理員。 它具有完整的許可權，可讓您建立和管理 T1 路由器、邏輯交換器和所有服務。 這些許可權可讓您存取 NSX-T T0 路由器。 對 T0 路由器的變更可能會導致網路效能降低，或無法存取私人雲端。 在 Azure 入口網站中開啟支援要求，以向您的 NSX-T T0 路由器要求任何變更。
   
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 下一步是瞭解私用 [雲端升級的概念][concepts-upgrades]。
 

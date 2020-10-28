@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 5ddc79721355924f125acedd7420cab5f487c065
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71c73fec4f559b34b097556243617636acd77480
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445051"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673276"
 ---
 # <a name="tutorial-configure-active-geo-replication-and-failover-in-the-azure-portal-azure-sql-database"></a>教學課程：在 Azure 入口網站中設定主動式異地複寫和容錯移轉 (Azure SQL Database)
 
@@ -35,7 +35,7 @@ ms.locfileid: "91445051"
 * Azure SQL Database 中的資料庫：您想要複寫到不同地理區域的主要資料庫。
 
 > [!Note]
-> 使用 Azure 入口網站時，您只能在與主要資料庫相同的訂用帳戶內建立次要資料庫。 如果次要資料庫必須位在不同的訂用帳戶中，請使用[建立資料庫 REST API](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) 或 [ALTER DATABASE Transact-SQL API](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql)。
+> 使用 Azure 入口網站時，您只能在與主要資料庫相同的訂用帳戶內建立次要資料庫。 如果次要資料庫必須位在不同的訂用帳戶中，請使用[建立資料庫 REST API](/rest/api/sql/databases/createorupdate) 或 [ALTER DATABASE Transact-SQL API](/sql/t-sql/statements/alter-database-transact-sql)。
 
 ## <a name="add-a-secondary-database"></a>新增次要資料庫
 
@@ -56,8 +56,8 @@ ms.locfileid: "91445051"
 3. 選取或設定伺服器及次要資料庫的定價層。
 
     ![建立次要形式](./media/active-geo-replication-configure-portal/create-secondary.png)
-4. (選擇性) 您可以將次要資料庫新增至彈性集區。 若要在集區中建立次要資料庫，請按一下 [彈性集區]****，然後選取目標伺服器上的集區。 集區必須已存在目標伺服器上。 此工作流程不會建立集區。
-5. 按一下 [建立] **** 以加入次要資料庫。
+4. (選擇性) 您可以將次要資料庫新增至彈性集區。 若要在集區中建立次要資料庫，請按一下 [彈性集區]  ，然後選取目標伺服器上的集區。 集區必須已存在目標伺服器上。 此工作流程不會建立集區。
+5. 按一下 [建立]  以加入次要資料庫。
 6. 將會建立次要資料庫並開始植入程序。
 
     ![次要地圖](./media/active-geo-replication-configure-portal/seeding0.png)
@@ -74,7 +74,7 @@ ms.locfileid: "91445051"
 3. 在 [次要] 清單中，選取要作為新主要資料庫的資料庫，然後按一下 [強制容錯移轉]。
 
     ![failover](./media/active-geo-replication-configure-portal/secondaries.png)
-4. 按一下 [是] **** 即可開始容錯移轉。
+4. 按一下 [是]  即可開始容錯移轉。
 
 命令會立即將次要資料庫切換為主要角色。 此程序通常會在 30 秒 (或更少的時間) 內完成。
 
@@ -90,10 +90,10 @@ ms.locfileid: "91445051"
 1. 在 [Azure 入口網站](https://portal.azure.com) 中，瀏覽至「異地複寫」合作關係中的主要資料庫。
 2. 在 SQL Database 頁面上，選取 [異地複寫]。
 3. 在 [次要] 清單中，選取您想要從「異地複寫」合作關係中移除的資料庫。
-4. 按一下 [ **停止複寫**]。
+4. 按一下 [ **停止複寫** ]。
 
     ![移除次要](./media/active-geo-replication-configure-portal/remove-secondary.png)
-5. 隨即開啟確認視窗。 按一下 [是]**** 以從異地複寫合作關係中移除資料庫。 (將它設定為讀寫資料庫不屬於任何複寫的一部分。)
+5. 隨即開啟確認視窗。 按一下 [是]  以從異地複寫合作關係中移除資料庫。 (將它設定為讀寫資料庫不屬於任何複寫的一部分。)
 
 ## <a name="next-steps"></a>後續步驟
 

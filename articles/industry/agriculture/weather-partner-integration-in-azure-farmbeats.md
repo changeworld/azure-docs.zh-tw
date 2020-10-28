@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
-ms.openlocfilehash: a2677b5343b2d65a39e7c9f6d5006db599c1ac73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 661147769d8ae845066e912a84118c9fd3f93486
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86496990"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674926"
 ---
 # <a name="weather-partner-integration"></a>氣象合作夥伴整合
 
@@ -28,7 +28,7 @@ ms.locfileid: "86496990"
 - 客戶專屬的 API 金鑰/認證，可存取來自氣象夥伴系統的資料
 - VM SKU 詳細資料 (合作夥伴可提供此資訊，以免其 docker 具有特定的 VM 需求，否則客戶可以選擇 Azure 中支援的 VM Sku) 
 
-客戶會使用上述的 docker 資訊，在其 FarmBeats 實例中註冊氣象夥伴。 若要深入瞭解客戶如何使用 docker 在 FarmBeats 中內嵌氣象資料，請參閱[取得天氣資料](https://docs.microsoft.com/azure/industry/agriculture/get-weather-data-from-weather-partner)的指南
+客戶會使用上述的 docker 資訊，在其 FarmBeats 實例中註冊氣象夥伴。 若要深入瞭解客戶如何使用 docker 在 FarmBeats 中內嵌氣象資料，請參閱[取得天氣資料](./get-weather-data-from-weather-partner.md)的指南
 
 ## <a name="connector-docker-development"></a>連接器 docker 開發
 
@@ -71,9 +71,9 @@ headers = *{"Authorization": "Bearer " + access_token, …}*
    }
 }
 ```
-API 服務會將此 dict 序列化，並將其儲存在 [KeyVault](https://docs.microsoft.com/azure/key-vault/basic-concepts)中。
+API 服務會將此 dict 序列化，並將其儲存在 [KeyVault](../../key-vault/general/basic-concepts.md)中。
 
-[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) 是用來協調天氣作業並啟動資源，以執行 docker 程式碼。 它也提供一種機制，可將資料安全地推送至 docker 作業執行所在的 VM。 現在安全地儲存在 KeyVault 中的 API 認證會以安全字串的形式從 KeyVault 讀取，並在 docker 容器的工作目錄中提供作為擴充屬性，作為檔案 (activity.jsworking_dir 路徑上的 activity.js，) docker 程式碼可以在執行時間讀取此檔案中的認證，以代表客戶存取合作夥伴端 Api。 認證將可在檔案中使用，如下所示：
+[Azure Data Factory](../../data-factory/introduction.md) 是用來協調天氣作業並啟動資源，以執行 docker 程式碼。 它也提供一種機制，可將資料安全地推送至 docker 作業執行所在的 VM。 現在安全地儲存在 KeyVault 中的 API 認證會以安全字串的形式從 KeyVault 讀取，並在 docker 容器的工作目錄中提供作為擴充屬性，作為檔案 (activity.jsworking_dir 路徑上的 activity.js，) docker 程式碼可以在執行時間讀取此檔案中的認證，以代表客戶存取合作夥伴端 Api。 認證將可在檔案中使用，如下所示：
 
 ```json
 { 
@@ -89,7 +89,7 @@ FarmBeats lib 提供 helper 函式，可讓合作夥伴從活動內容讀取認�
 
 檔案的存留期只會在 docker 程式碼執行期間執行，並將在 docker 執行結束之後刪除。
 
-如需 ADF 管線和活動運作方式的詳細資訊，請參閱 [https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping](https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping) 。
+如需 ADF 管線和活動運作方式的詳細資訊，請參閱 [https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping](../../data-factory/copy-activity-schema-and-type-mapping.md) 。
 
 **HTTP 要求標頭**
 
@@ -107,7 +107,7 @@ JSON 是一種與語言無關的通用資料格式，可提供任意資料結構
 
 ## <a name="docker-specifications"></a>Docker 規格
 
-Docker 程式必須有兩個元件： **啟動** 程式和 **工作**。 可以有一個以上的作業。
+Docker 程式必須有兩個元件： **啟動** 程式和 **工作** 。 可以有一個以上的作業。
 
 ### <a name="bootstrap"></a>拔靴複製法
 
@@ -123,18 +123,18 @@ Docker 程式必須有兩個元件： **啟動** 程式和 **工作**。 可以�
  > [!NOTE]
  > **請注意** ，如果您更新了 [參考執行](https://github.com/azurefarmbeats/noaa_docker)中所述的檔案 bootstrap_manifest.js，則不需要建立下列中繼資料，因為啟動程式會根據您的資訊清單檔建立相同的中繼資料。
 
-- /**WeatherDataModel**： WeatherDataModel 是代表氣象資料的模型，並且對應至來源所提供的不同資料集。 例如，DailyForecastSimpleModel 可能會一天提供平均溫度、濕度和降雨資訊，而 DailyForecastAdvancedModel 可能會在每小時的資料細微性提供更多資訊。 您可以建立任意數目的 WeatherDataModels。
-- /**JobType**： FarmBeats 具有可擴充的作業管理系統。 作為氣象資料提供者，您將會有不同的資料集/Api (例如 GetDailyForecasts) -您可以在 FarmBeats 中啟用它們作為 JobType。 一旦建立 JobType，客戶就可以觸發該類型的作業，以取得其地點/伺服器陣列的氣象資料 (請參閱 [FarmBeats Swagger](https://aka.ms/farmbeatsswagger)) 中的 JobType 和作業 api。
+- /**WeatherDataModel** ： WeatherDataModel 是代表氣象資料的模型，並且對應至來源所提供的不同資料集。 例如，DailyForecastSimpleModel 可能會一天提供平均溫度、濕度和降雨資訊，而 DailyForecastAdvancedModel 可能會在每小時的資料細微性提供更多資訊。 您可以建立任意數目的 WeatherDataModels。
+- /**JobType** ： FarmBeats 具有可擴充的作業管理系統。 作為氣象資料提供者，您將會有不同的資料集/Api (例如 GetDailyForecasts) -您可以在 FarmBeats 中啟用它們作為 JobType。 一旦建立 JobType，客戶就可以觸發該類型的作業，以取得其地點/伺服器陣列的氣象資料 (請參閱 [FarmBeats Swagger](https://aka.ms/farmbeatsswagger)) 中的 JobType 和作業 api。
 
 ### <a name="jobs"></a>工作
 
 每次 FarmBeats 使用者執行您在啟動程式過程中建立的/JobType 作業時，就會叫用此元件。 作業的 docker run 命令會定義為您所建立之 **/JobType** 的一部分。
 - 作業的責任是從來源提取資料，並將其推送至 FarmBeats。 取得資料所需的參數，應該在啟動程式過程中定義為/JobType 的一部分。
-- 在作業過程中，程式將必須根據在啟動程式過程中建立的/WeatherDataModel 建立 **/WeatherDataLocation** 。 **/WeatherDataLocation**會對應至 (lat/long) 的位置，由使用者提供作為工作的參數。
+- 在作業過程中，程式將必須根據在啟動程式過程中建立的/WeatherDataModel 建立 **/WeatherDataLocation** 。 **/WeatherDataLocation** 會對應至 (lat/long) 的位置，由使用者提供作為工作的參數。
 
 ### <a name="details-of-the-objects"></a>物件的詳細資料
 
-  WeatherDataModel | 說明 |
+  WeatherDataModel | 描述 |
   --- | ---
   名稱  | 氣象資料模型的名稱 |
   描述  | 提供有意義的型號描述。 |
@@ -156,7 +156,7 @@ Docker 程式必須有兩個元件： **啟動** 程式和 **工作**。 可以�
   pipelineDetails > 參數 > 描述 | 參數說明 |
   屬性  | 製造商的其他屬性。
   屬性 > **programRunCommand** | docker run 命令-當客戶執行氣象工作時，將會執行此命令。 |
-  **WeatherDataLocation** | **描述** |
+  **WeatherDataLocation** | **說明** |
   weatherDataModelId  | 在啟動程式期間建立的對應 WeatherDataModel 識別碼|
   location  | 代表緯度、經度和提高許可權 |
   名稱 | 物件的名稱 |
@@ -180,7 +180,7 @@ Docker 程式必須有兩個元件： **啟動** 程式和 **工作**。 可以�
 
 ## <a name="weather-data-telemetry-specifications"></a>天氣資料 (遙測) 規格
 
-天氣資料會對應到已推送至 Azure 事件中樞進行處理的標準訊息。 Azure EventHub 是一項服務，可讓您從連線的裝置和應用程式內嵌即時資料 (遙測) 。 若要將天氣資料傳送至 FarmBeats，您必須建立用戶端，以將訊息傳送至 FarmBeats 中的事件中樞。 若要深入瞭解如何傳送遙測，請參閱將 [遙測傳送至事件中樞](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)
+天氣資料會對應到已推送至 Azure 事件中樞進行處理的標準訊息。 Azure EventHub 是一項服務，可讓您從連線的裝置和應用程式內嵌即時資料 (遙測) 。 若要將天氣資料傳送至 FarmBeats，您必須建立用戶端，以將訊息傳送至 FarmBeats 中的事件中樞。 若要深入瞭解如何傳送遙測，請參閱將 [遙測傳送至事件中樞](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 以下是範例 Python 程式碼，可將遙測當作用戶端傳送至指定的事件中樞。
 
@@ -267,6 +267,6 @@ FarmBeats 支援新增感應器量值類型和單位。 請注意，您可以在
 
 如需 /ExtendedType API 的詳細資訊，請參閱 [Swagger](https://aka.ms/FarmBeatsSwagger)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 現在您已有與 FarmBeats 整合的連接器 docker。 接下來，您可以瞭解如何使用 docker 將天氣資料帶入 FarmBeats。 請參閱 [取得天氣資料](get-weather-data-from-weather-partner.md)。

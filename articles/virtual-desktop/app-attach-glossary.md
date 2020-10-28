@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f3cc8495f673c8b428aa9e6ace2747a70c5b0847
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6107ffea4fe4d615a42973ab1b231ca9f6b5241f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88556242"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674956"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX 應用程式附加詞彙
 
@@ -25,7 +25,7 @@ MSIX 容器是 MSIX apps 的執行位置。 若要深入瞭解，請參閱 [MSIX
 
 ## <a name="msix-application"></a>MSIX 應用程式 
 
-儲存在 MSIX 檔中的應用程式。
+儲存在中的應用程式。MSIX 檔案。
 
 ## <a name="msix-package"></a>MSIX 套件 
 
@@ -35,13 +35,17 @@ MSIX 套件是 MSIX 檔案或應用程式。
 
 MSIX 共用是保存擴充的 MSIX 套件的網路共用。 MSIX 共用支援 SMB 3 或更新版本。 應用程式會從此 MSIX 共用暫存，而不需要將應用程式檔移至系統磁片磁碟機。
 
+## <a name="msix-image"></a>MSIX 影像
+
+MSIX 映射是包含一或多個 MSIX 封裝應用程式的 VHD、VHDx 或 CIM 檔案。 每個應用程式都會使用 MSIXMGR 工具在 MSIX 映射中傳遞。
+
 ## <a name="repackage"></a>重新封裝
 
 重新封裝會採用非 MSIX 的應用程式，並使用 MSIX 封裝工具 (的) 來將它轉換成 MSIX。 如需詳細資訊，請參閱 [MSIX 封裝工具總覽](/windows/msix/packaging-tool/tool-overview)。
 
-## <a name="expand"></a>展開
+## <a name="expand-an-msix-package"></a>展開 MSIX 套件
 
-擴充 MSIX 套件是一個多步驟的流程。 它會採用 MSIX 檔案，並將其內容放入 VHD (x) 或 CIM 檔案中。 
+擴充 MSIX 套件是一個多步驟的程式。 展開會採用 MSIX 檔案，並將其內容放入 VHD (x) 或 CIM 檔案中。 
 
 若要展開 MSIX 套件：
 
@@ -63,11 +67,11 @@ MSIX 共用是保存擴充的 MSIX 套件的網路共用。 MSIX 共用支援 SM
 
 在 Windows 虛擬桌面中，每個 MSIX 共用會進行上傳一次。 當您上傳封裝之後，相同訂用帳戶中的所有主機集區都可以參考它。
 
-## <a name="publish-an-msix-package"></a>發佈 MSIX 套件
+## <a name="add-an-msix-package"></a>新增 MSIX 套件
 
-在 Windows 虛擬桌面中，發佈 MSIX 套件會將它連結至遠端應用程式或桌面。
+在 Windows 虛擬桌面中，新增 MSIX 套件會將它連結至主機集區。
 
-## <a name="assign-an-msix-package"></a>指派 MSIX 套件 
+## <a name="publish-an-msix-package"></a>發佈 MSIX 套件 
 
 在 Windows 虛擬桌面中，必須將已發佈的 MSIX 套件指派給 Active Directory 網域服務 (AD DS) 或 Azure Active Directory (Azure AD 使用者或使用者群組。
 
@@ -118,4 +122,3 @@ Destaging 會通知作業系統，MSIX 封裝或應用程式目前未執行，�
 ## <a name="next-steps"></a>後續步驟
 
 如果您想要深入瞭解 MSIX app 附加，請參閱我們的 [總覽](what-is-app-attach.md) 和 [常見問題](app-attach-faq.md)。 否則，請開始 [設定應用程式連接](app-attach.md)。
-

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d4c1005d300a5b326ff2f41d9fa3838dbb1c7552
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e29aeb7570ad6daba9d6fc652291471fa246bf0a
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278012"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674621"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Marketplace 計量付費 Api
 
@@ -34,7 +34,7 @@ TLS 1.2 版是以 HTTPS 通訊的最基本版本來強制執行。 請務必在�
 
 每個資源的日曆日每小時只能發出一個使用事件。 如果一小時內耗用一個以上的單位，則會累積該小時內耗用的所有單位，然後在單一事件中發出。 使用事件只能在過去24小時內發出。 如果您在8:00 和8:59:59 之間的任何時間都發出使用事件 (並且接受) 並在8:00 和8:59:59 之間的相同日期傳送額外事件，則會被拒絕為重複專案。
 
-**POST**：`https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**POST** ：`https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 查詢參數：
 
@@ -67,7 +67,7 @@ TLS 1.2 版是以 HTTPS 通訊的最基本版本來強制執行。 請務必在�
 >[!NOTE]
 >`resourceId` 對於 SaaS 應用程式和發出自訂計量的受控應用程式，有不同的意義。 
 
-針對 Azure 應用程式受控應用程式方案，`resourceId` 為可在受控應用程式中繼資料物件的 `billingDetails` 底下找到的 `resourceUsageId`。 用來加以擷取的範例指令碼，可在[使用 Azure 受控識別權杖](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token)中找到。 
+針對 Azure 應用程式受控應用程式方案， `resourceId` 是受管理的應用程式 `resource group Id` 。 用來加以擷取的範例指令碼，可在[使用 Azure 受控識別權杖](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token)中找到。 
 
 針對 SaaS 供應項目，`resourceId` 為 SaaS 訂用帳戶識別碼。 如需 SaaS 訂用帳戶的詳細資料，請參閱[列出訂用帳戶](./pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions)。
 
@@ -191,7 +191,7 @@ TLS 1.2 版是以 HTTPS 通訊的最基本版本來強制執行。 請務必在�
 >[!NOTE]
 >`resourceId` 對於 SaaS 應用程式和發出自訂計量的受控應用程式，有不同的意義。 
 
-針對 Azure 應用程式受控應用程式方案，`resourceId` 為可在受控應用程式中繼資料物件的 `billingDetails` 底下找到的 `resourceUsageId`。 用來加以擷取的範例指令碼，可在[使用 Azure 受控識別權杖](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token)中找到。 
+針對 Azure 應用程式受控應用程式方案， `resourceId` 是受管理的應用程式 `resource group Id` 。 用來加以擷取的範例指令碼，可在[使用 Azure 受控識別權杖](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token)中找到。 
 
 針對 SaaS 供應項目，`resourceId` 為 SaaS 訂用帳戶識別碼。 如需 SaaS 訂用帳戶的詳細資料，請參閱[列出訂用帳戶](./pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions)。
 

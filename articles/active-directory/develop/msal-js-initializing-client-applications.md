@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 5af5d3a88262792f4b32e2ce3d8143ac680f083a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: aaddev, devx-track-js
+ms.openlocfilehash: ea8629e53ec793b4a63c817b6ec83278a2d23871
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87027031"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674077"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>使用 MSAL.js 初始化用戶端應用程式
 
@@ -28,22 +28,22 @@ ms.locfileid: "87027031"
 
 若要深入瞭解用戶端應用程式類型和應用程式設定選項，請參閱 [MSAL 中的公用和機密用戶端應用](msal-client-applications.md)程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在初始化應用程式之前，您必須先向 [Azure 入口網站註冊它](scenario-spa-app-registration.md)，並在您的應用程式與 Microsoft 身分識別平臺之間建立信任關係。
 
 註冊您的應用程式之後，您將需要可在 Azure 入口網站中找到的部分或所有下列值。
 
-| 值 | 必要 | 說明 |
+| 值 | 必要 | 描述 |
 |:----- | :------: | :---------- |
 | 應用程式 (用戶端) 識別碼 | 必要 | 可在 Microsoft 身分識別平臺中唯一識別您應用程式的 GUID。 |
-| 授權單位 | 選用 | 身分識別提供者 URL (*實例*) 和您應用程式的登 *入物件* 。 當使用者串連時，實例和登入物件會構成 *授權*單位。 |
-| 目錄 (租用戶) 識別碼 | 選用 | 如果您要建立僅供組織使用的企業營運應用程式（通常稱為 *單一租使用者應用程式*），請指定此項。 |
+| 授權單位 | 選用 | 身分識別提供者 URL ( *實例* ) 和您應用程式的登 *入物件* 。 當使用者串連時，實例和登入物件會構成 *授權* 單位。 |
+| 目錄 (租用戶) 識別碼 | 選用 | 如果您要建立僅供組織使用的企業營運應用程式（通常稱為 *單一租使用者應用程式* ），請指定此項。 |
 | 重新導向 URI | 選用 | 如果您要建立 web 應用程式，則 `redirectUri` 會指定身分識別提供者 (Microsoft 身分識別平臺) 應傳回其所發出的安全性權杖。 |
 
 ## <a name="initialize-msaljs-2x-apps"></a>初始化 MSAL.js 2.x 應用程式
 
-使用[設定物件具][msal-js-configuration]現化[PublicClientApplication][msal-js-publicclientapplication] ，以初始化 MSAL authentication 內容。 [必要的最小設定] 屬性是 `clientID` 您應用程式的，在 Azure 入口網站的應用程式註冊的 [**總覽**] 頁面上顯示為**應用程式 (用戶端) 識別碼**。
+使用[設定物件具][msal-js-configuration]現化[PublicClientApplication][msal-js-publicclientapplication] ，以初始化 MSAL authentication 內容。 [必要的最小設定] 屬性是 `clientID` 您應用程式的，在 Azure 入口網站的應用程式註冊的 [ **總覽** ] 頁面上顯示為 **應用程式 (用戶端) 識別碼** 。
 
 以下是範例設定物件和具現化 `PublicClientApplication` ：
 
@@ -113,7 +113,7 @@ msalInstance.handleRedirectPromise().then((tokenResponse) => {
 
 ## <a name="initialize-msaljs-1x-apps"></a>初始化 MSAL.js 1.x 應用程式
 
-使用設定物件具現化 [UserAgentApplication][msal-js-useragentapplication] ，以初始化 MSAL 1.x 驗證內容。 [必要的最小設定] 屬性是 `clientID` 您應用程式的，在 Azure 入口網站的應用程式註冊的 [**總覽**] 頁面上顯示為**應用程式 (用戶端) 識別碼**。
+使用設定物件具現化 [UserAgentApplication][msal-js-useragentapplication] ，以初始化 MSAL 1.x 驗證內容。 [必要的最小設定] 屬性是 `clientID` 您應用程式的，在 Azure 入口網站的應用程式註冊的 [ **總覽** ] 頁面上顯示為 **應用程式 (用戶端) 識別碼** 。
 
 針對在 MSAL.js 1.2. x 或更早版本中具有重新導向流程 ([loginRedirect][msal-js-loginredirect] 和 [>acquiretokenredirect][msal-js-acquiretokenredirect]) 的驗證方法，您必須透過方法明確地註冊成功或錯誤的回呼 `handleRedirectCallback()` 。 MSAL.js 1.2. x 和更早版本中需要明確註冊回呼，因為重新導向流程不會傳回像是具有快顯體驗的方法的承諾。 在 MSAL.js 版本 1.3. x 和更新版本中，註冊回呼是 *選擇性* 的。
 
@@ -144,7 +144,7 @@ MSAL.js 1.x 和2.x 都設計成分別具有或的單一實例和設定， `UserA
 
 不建議或的多個實例， `UserAgentApplication` `PublicClientApplication` 因為它們會導致瀏覽器中的快取專案和行為發生衝突。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 此 MSAL.js 在 GitHub 上的2.x 程式碼範例示範如何使用[設定物件來][msal-js-configuration]具現化[PublicClientApplication][msal-js-publicclientapplication] ：
 

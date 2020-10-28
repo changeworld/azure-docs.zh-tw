@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
-ms.openlocfilehash: d90cc76da20861ae9eca7aaf59a49e5f3e866c92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a57de3d6beda5336f480f20137a9ccaa014b012d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444430"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675080"
 ---
 # <a name="use-azure-active-directory-authentication"></a>使用 Azure Active Directory authentication
 
@@ -155,19 +155,19 @@ Azure Active Directory 驗證支援下列方法，使用 Azure AD 身分識別�
 - 建議將連接逾時設定為 30 秒。
 - SQL Server 2016 Management Studio 和 SQL Server Data Tools for Visual Studio 2015 (版本 14.0.60311.1 (2016 年 4 月) 或更新版本) 支援 Azure Active Directory 驗證。 ( **.NET Framework Data Provider for SqlServer** 支援 Azure AD 驗證，最低版本 .NET Framework 4.6)。 因此，這些工具和資料層應用程式的最新版本 (DAC 和 BACPAC) 可以使用 Azure AD 驗證。
 - 從版本15.0.1 版開始， [sqlcmd 公用程式](/sql/tools/sqlcmd-utility) 和 [bcp 公用程式](/sql/tools/bcp-utility) 支援 Active Directory Multi-Factor Authentication 的互動式驗證。
-- SQL Server Data Tools for Visual Studio 2015 至少需要 2016 年 4 月版本的 Data Tools (版本 14.0.60311.1)。 Azure AD 的使用者目前不會顯示在 SSDT 物件總管中。 解決方法是在 [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx) 中檢視使用者。
+- SQL Server Data Tools for Visual Studio 2015 至少需要 2016 年 4 月版本的 Data Tools (版本 14.0.60311.1)。 Azure AD 的使用者目前不會顯示在 SSDT 物件總管中。 解決方法是在 [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql) 中檢視使用者。
 - [Microsoft JDBC Driver 6.0 for SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) 支援 Azure AD 驗證。 此外，請參閱 [設定連接屬性](/sql/connect/jdbc/setting-the-connection-properties)。
 - PolyBase 無法使用 Azure AD 驗證進行驗證。
 - 使用 Azure 入口網站匯 **入資料庫** 和 **匯出資料庫** blade，可支援 Azure SQL Database 和 Azure Synapse 的 Azure AD 驗證。 PowerShell 命令也支援使用 Azure AD 驗證的匯入和匯出。
-- 使用 CLI 可支援 SQL Database、SQL 受控執行個體和 Azure Synapse 的 Azure AD 驗證。 如需詳細資訊，請參閱使用 SQL Database 或 Azure Synapse 和[SQL Server-az SQL Server](https://docs.microsoft.com/cli/azure/sql/server)來[設定和管理 Azure AD authentication](authentication-aad-configure.md) 。
+- 使用 CLI 可支援 SQL Database、SQL 受控執行個體和 Azure Synapse 的 Azure AD 驗證。 如需詳細資訊，請參閱使用 SQL Database 或 Azure Synapse 和[SQL Server-az SQL Server](/cli/azure/sql/server)來[設定和管理 Azure AD authentication](authentication-aad-configure.md) 。
 
 ## <a name="next-steps"></a>後續步驟
 
 - 若要瞭解如何建立和填入 Azure AD 的實例，然後使用 Azure SQL Database、SQL 受控執行個體或 Azure Synapse 進行設定，請參閱 [使用 SQL Database、sql 受控執行個體或 Azure Synapse 來設定及管理 Azure Active Directory 驗證](authentication-aad-configure.md)。
 - 如需使用 Azure AD 伺服器主體 (使用 SQL 受控執行個體) 登入的教學課程，請參閱 Azure AD[使用 sql 的](../managed-instance/aad-security-configure-tutorial.md)登入 (伺服器主體) 
 - 如需 SQL Database 中的登入、使用者、資料庫角色和許可權的總覽，請參閱登入 [、使用者、資料庫角色和許可權](logins-create-manage.md)。
-- 如需資料庫主體的詳細資訊，請參閱[主體](https://msdn.microsoft.com/library/ms181127.aspx)。
-- 如需資料庫角色的詳細資訊，請參閱[資料庫角色](https://msdn.microsoft.com/library/ms189121.aspx)。
+- 如需資料庫主體的詳細資訊，請參閱[主體](/sql/relational-databases/security/authentication-access/principals-database-engine)。
+- 如需資料庫角色的詳細資訊，請參閱[資料庫角色](/sql/relational-databases/security/authentication-access/database-level-roles)。
 - 如需為 SQL 受控執行個體建立 Azure AD 伺服器主體 (登入) 的語法，請參閱  [建立登](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)入。
 - 如需 SQL Database 中防火牆規則的詳細資訊，請參閱 [SQL Database 防火牆規則](firewall-configure.md)。
 

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 66008012dd9b3eb6000e96f251d18cf14a9c8dc1
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: ee1753932018d0ea3a627ff2a6c7b85dc0a65de1
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495236"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674850"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>設定 Azure Machine Learning 的開發環境
 
@@ -43,7 +43,7 @@ ms.locfileid: "92495236"
 
 ### <a name="local-and-dsvm-only-create-a-workspace-configuration-file"></a><a id="workspace"></a> (本機和僅限 DSVM) 建立工作區設定檔
 
-工作區設定檔案是 JSON 檔案，可告知 SDK 如何與您的 Azure Machine Learning 工作區進行通訊。 檔案名稱為 *config.json*，其格式如下：
+工作區設定檔案是 JSON 檔案，可告知 SDK 如何與您的 Azure Machine Learning 工作區進行通訊。 檔案名稱為 *config.json* ，其格式如下：
 
 ```json
 {
@@ -61,13 +61,13 @@ ms.locfileid: "92495236"
 
 * Azure 入口網站
 
-    **下載檔案**：在[Azure 入口網站](https://ms.portal.azure.com)中，從工作區的 [**總覽**] 區段中選取 [**下載 config.js** 。
+    **下載檔案** ：在 [Azure 入口網站](https://ms.portal.azure.com)中，從工作區的 [ **總覽** ] 區段中選取 [ **下載 config.js** 。
 
     ![Azure 入口網站](./media/how-to-configure-environment/configure.png)
 
 * Azure Machine Learning Python SDK
 
-    建立腳本以連接到您的 Azure Machine Learning 工作區，然後使用 [`write_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) 方法來產生您的檔案，並將它儲存為 *azureml/config.js*。 請務必將 `subscription_id` 、和取代為 `resource_group` `workspace_name` 您自己的。
+    建立腳本以連接到您的 Azure Machine Learning 工作區，然後使用 [`write_config`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) 方法來產生您的檔案，並將它儲存為 *azureml/config.js* 。 請務必將 `subscription_id` 、和取代為 `resource_group` `workspace_name` 您自己的。
 
     ```python
     from azureml.core import Workspace
@@ -121,6 +121,9 @@ ms.locfileid: "92495236"
 1. 啟動 Jupyter Notebook 伺服器
 
 若要開始使用 Azure Machine Learning 和 Jupyter 筆記本，請參閱 [Azure Machine Learning 筆記本存放庫](https://github.com/Azure/MachineLearningNotebooks) 。
+
+> [!NOTE]
+> 您可以在中找到範例的社區導向存放庫 https://github.com/Azure/azureml-examples 。
 
 ### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio Code
 
@@ -240,7 +243,7 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
 
 叢集執行之後，請 [建立程式庫](https://docs.databricks.com/user-guide/libraries.html#create-a-library) 以將適當的 Azure Machine Learning SDK 套件附加至您的叢集。 針對自動化 ML，請跳至 [具有自動化機器學習服務區段的 Databricks SDK](#sdk-for-databricks-with-automated-machine-learning)。
 
-1. 以滑鼠右鍵按一下您要儲存程式庫的目前工作區資料夾。 選取 [**建立**連結  >  **庫**]。
+1. 以滑鼠右鍵按一下您要儲存程式庫的目前工作區資料夾。 選取 [ **建立** 連結  >  **庫** ]。
 
 1. 選擇下列選項 (不支援其他 SDK 安裝) 
 
@@ -251,15 +254,15 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
    > [!Warning]
    > 不能安裝任何其他 SDK 額外專案。 只選擇 [ `databricks` ] 選項。
 
-   * 請勿選取 [ **自動附加到所有**叢集]。
+   * 請勿選取 [ **自動附加到所有** 叢集]。
    * 選取叢集名稱旁邊的 [  **附加** ]。
 
-1. 監視錯誤直到 **附加**狀態變更為止，這可能需要幾分鐘的時間。  如果此步驟失敗：
+1. 監視錯誤直到 **附加** 狀態變更為止，這可能需要幾分鐘的時間。  如果此步驟失敗：
 
    請嘗試重新開機您的叢集：
-   1. 在左窗格中，選取 [叢集]****。
+   1. 在左窗格中，選取 [叢集]  。
    1. 請選取表格中您的叢集名稱。
-   1. 在 [程式庫]**** 索引標籤上，選取 [重新啟動]****。
+   1. 在 [程式庫]  索引標籤上，選取 [重新啟動]  。
 
    也請考慮：
    + 在 AutoML config 中，使用 Azure Databricks 新增下列參數：

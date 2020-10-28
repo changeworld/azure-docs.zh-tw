@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: e9444291c40ef504a674ee18351ba581695d1dd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00f98a5086b9a9bf21054138cf01d26a550338da
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394512"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673839"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>使用 Azure Resource Manager 部署模型設定強制通道
 
@@ -53,6 +53,7 @@ Azure 中的強制通道處理會透過虛擬網路使用者定義的路由進�
 * 此程序使用「使用者定義的路由 (UDR)」建立路由表以新增預設路由，然後將路由表關聯至您的 VNet 子網路，以啟用那些子網路上的強制通道處理。
 * 強制通道必須與具有路由型 VPN 閘道的 VNet 相關聯。 您需要在連接到虛擬網路的內部部署本機網站間設定「預設網站」。 此外，內部部署 VPN 裝置必須使用 0.0.0.0/0 設定為流量選取器。 
 * ExpressRoute 強制通道不會透過這項機制進行設定，相反地，將由透過 ExpressRoute BGP 對等互連工作階段的廣告預設路由進行啟用。 如需詳細資訊，請參閱 [ExpressRoute 文件](https://azure.microsoft.com/documentation/services/expressroute/)。
+* 在相同的 VNet 中部署 VPN 閘道和 ExpressRoute 閘道時，不再需要使用者定義的路由 (UDR) ，因為 ExpressRoute 閘道會將設定的「預設網站」公告至 VNet。
 
 ## <a name="configuration-overview"></a>組態概觀
 

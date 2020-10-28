@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 08/14/2019
-ms.openlocfilehash: ab057e1328efbff294faa1d68f2a27c5a1f03ade
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98f2a8fb0ce48dab0e1e5f7610d73d55526969eb
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577504"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675112"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>設定 Azure SQL Database 的容錯移轉群組
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -50,9 +50,9 @@ ms.locfileid: "91577504"
 
    ![新增容錯移轉群組](./media/auto-failover-group-configure/sqldb-add-new-failover-group.png)
 
-1. 在 [ **容錯移轉群組** ] 頁面上，輸入或選取所需的值，然後選取 [ **建立**]。
+1. 在 [ **容錯移轉群組** ] 頁面上，輸入或選取所需的值，然後選取 [ **建立** ]。
 
-   - **群組內的資料庫**：選擇您要新增至容錯移轉群組的資料庫。 將資料庫新增到容錯移轉群組後，將會自動啟動異地複寫程序。
+   - **群組內的資料庫** ：選擇您要新增至容錯移轉群組的資料庫。 將資料庫新增到容錯移轉群組後，將會自動啟動異地複寫程序。
 
    ![將 SQL 資料庫新增至容錯移轉群組](./media/auto-failover-group-configure/add-sqldb-to-failover-group.png)
 
@@ -120,7 +120,7 @@ ms.locfileid: "91577504"
 
    ![開啟單一資料庫的伺服器](./media/auto-failover-group-configure/open-sql-db-server.png)
 
-1. 選取 [**設定**] 窗格底下的 [**容錯移轉群組**]，然後選擇您剛才建立的容錯移轉群組。
+1. 選取 [ **設定** ] 窗格底下的 [ **容錯移轉群組** ]，然後選擇您剛才建立的容錯移轉群組。
   
    ![從入口網站選取容錯移轉群組](./media/auto-failover-group-configure/select-failover-group.png)
 
@@ -220,7 +220,7 @@ ms.locfileid: "91577504"
 
    ![新增容錯移轉群組](./media/auto-failover-group-configure/sqldb-add-new-failover-group.png)
 
-1. 在 [ **容錯移轉群組** ] 頁面上，輸入或選取所需的值，然後選取 [ **建立**]。 請建立新的次要伺服器，或選取現有的次要伺服器。
+1. 在 [ **容錯移轉群組** ] 頁面上，輸入或選取所需的值，然後選取 [ **建立** ]。 請建立新的次要伺服器，或選取現有的次要伺服器。
 
 1. 選取 **群組中** 的 [資料庫]，然後選擇您要新增至容錯移轉群組的彈性集區。 如果次要伺服器上還沒有彈性集區，則會出現警告，提示您在次要伺服器上建立彈性集區。 選取警告，然後選取 [確定]，以在次要伺服器上建立彈性集區。
 
@@ -370,12 +370,12 @@ ms.locfileid: "91577504"
 
 使用 Azure 入口網站建立主要虛擬網路閘道。
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，移至您的資源群組，然後為您的主要受控執行個體選取**虛擬網路**資源。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，移至您的資源群組，然後為您的主要受控執行個體選取 **虛擬網路** 資源。
 1. 選取 [設定] 底下的 [子網路]，然後選取新增 [閘道子網路]。 請保留預設值。
 
    ![為主要受控執行個體新增閘道](./media/auto-failover-group-configure/add-subnet-gateway-primary-vnet.png)
 
-1. 建立子網路閘道之後，從左側瀏覽窗格中選取 [建立資源]，然後在搜尋方塊中輸入 `Virtual network gateway`。 選取 **Microsoft** 發佈的**虛擬網路閘道**資源。
+1. 建立子網路閘道之後，從左側瀏覽窗格中選取 [建立資源]，然後在搜尋方塊中輸入 `Virtual network gateway`。 選取 **Microsoft** 發佈的 **虛擬網路閘道** 資源。
 
    ![建立新的虛擬網路閘道](./media/auto-failover-group-configure/create-virtual-network-gateway.png)
 
@@ -507,19 +507,19 @@ ms.locfileid: "91577504"
 使用 Azure 入口網站建立兩個閘道之間的連接。
 
 1. 從 [Azure 入口網站](https://portal.azure.com)選取 [建立資源]。
-1. 在搜尋方塊中輸入 `connection`，然後按 Enter 鍵進行搜尋，這會帶您前往 Microsoft 發佈的**連線**資源。
+1. 在搜尋方塊中輸入 `connection`，然後按 Enter 鍵進行搜尋，這會帶您前往 Microsoft 發佈的 **連線** 資源。
 1. 選取 [建立] 以建立您的連線。
-1. 在 [ **基本** ] 索引標籤上，選取下列值，然後選取 **[確定]**。
+1. 在 [ **基本** ] 索引標籤上，選取下列值，然後選取 **[確定]** 。
     1. 選取 `VNet-to-VNet` 作為 [連線類型]。
     1. 從下拉式清單中選取訂用帳戶。
     1. 在下拉式清單中，選取您受控實例的資源群組。
     1. 從下拉式清單中選取您的主要受控執行個體位置。
-1. 在 [ **設定** ] 索引標籤上，選取或輸入下列值，然後選取 **[確定]**：
+1. 在 [ **設定** ] 索引標籤上，選取或輸入下列值，然後選取 **[確定]** ：
     1. 選擇主要網路閘道作為 [第一個虛擬網路閘道]，例如 `Primary-Gateway`。  
     1. 選擇次要網路閘道作為 [第二個虛擬網路閘道]，例如 `Secondary-Gateway`。
     1. 選取 [建立雙向連線] 旁的核取方塊。
     1. 保留預設的主要連線名稱，或將其重新命名為您選擇的值。
-    1. 提供連線的**共用金鑰 (PSK)** ，例如 `mi1m2psk`。
+    1. 提供連線的 **共用金鑰 (PSK)** ，例如 `mi1m2psk`。
 
    ![建立閘道連線](./media/auto-failover-group-configure/create-gateway-connection.png)
 
@@ -566,7 +566,7 @@ ms.locfileid: "91577504"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)的左側功能表中，選取 [Azure SQL]。 如果 **Azure SQL** 不在清單中，請選取 [所有服務]，然後在搜尋方塊中鍵入 Azure SQL。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。
 1. 選取您要新增至容錯移轉群組的主要受管理的實例。  
-1. 在 [ **設定**] 底下，流覽至 [ **實例容錯移轉群組** ]，然後選擇 [ **加入群組** ] 以開啟 [ **實例容錯移轉群組** ] 頁面。
+1. 在 [ **設定** ] 底下，流覽至 [ **實例容錯移轉群組** ]，然後選擇 [ **加入群組** ] 以開啟 [ **實例容錯移轉群組** ] 頁面。
 
    ![新增容錯移轉群組](./media/auto-failover-group-configure/add-failover-group.png)
 
@@ -665,7 +665,7 @@ ms.locfileid: "91577504"
 
 若要使用私人連結搭配您的容錯移轉群組，請執行下列動作：
 
-1. 確定您的主要和次要伺服器都在 [配對的區域](/azure/best-practices-availability-paired-regions)中。 
+1. 確定您的主要和次要伺服器都在 [配對的區域](../../best-practices-availability-paired-regions.md)中。 
 1. 在每個區域中建立虛擬網路和子網，以裝載主要和次要伺服器的私人端點，使其具有非重迭的 IP 位址空間。 例如，主要的虛擬網路位址範圍 10.0.0.0/16 和第二個虛擬網路位址範圍 10.0.0.1/16 重迭。 如需虛擬網路位址範圍的詳細資訊，請參閱 [設計 Azure 虛擬網路](https://devblogs.microsoft.com/premier-developer/understanding-cidr-notation-when-designing-azure-virtual-networks-and-subnets/)的 blog。
 1. 建立 [主要伺服器的私人端點和 Azure 私人 DNS 區域](../../private-link/create-private-endpoint-portal.md#create-a-private-endpoint)。 
 1. 也請為次要伺服器建立私人端點，但這次選擇重複使用為主伺服器建立的相同私人 DNS 區域。 

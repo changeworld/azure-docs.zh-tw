@@ -8,12 +8,12 @@ ms.service: site-reliability-engineering
 ms.topic: article
 ms.date: 09/14/2020
 ms.author: dnb
-ms.openlocfilehash: 3d0698f2780a4ccc41eedbde70fddea1766c5f21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62872443c386c45d9821053dc901ad8e0055b74f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090324"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674265"
 ---
 # <a name="frequently-asked-questions-whats-the-relationship-between-sre-and-devops"></a>常見問題： SRE 與 DevOps 之間的關係為何？
 
@@ -38,7 +38,7 @@ SRE 與 DevOps 之間的相似之處很清楚。 真正有趣的是，兩者有�
 
 ### <a name="class-sre-implements-interface-devops"></a>"class SRE implements interface DevOps"
 
-我們的[資源書籍清單](../resources/books.md)中_所述的網站可靠性活頁簿_ () 討論 SRE 和 DevOps 的第一章。 該章節使用 "class SRE implements interface DevOps" 一詞作為其子標題。 這是為了建議 (使用以開發人員為目標的片語，) 可將 SRE 視為 DevOps 原理的特定執行。 如章節所述，「DevOps 是如何在詳細層級上執行作業的無訊息方式」，而 SRE 在其實務上會有更多禁止使用。 因此，這兩個關聯性的問題可能有一項可能會被視為 DevOps 的許多可能實施方式之一。
+我們的 [資源書籍清單](../resources/books.md)中 _所述的網站可靠性活頁簿_ () 討論 SRE 和 DevOps 的第一章。 該章節使用 "class SRE implements interface DevOps" 一詞作為其子標題。 這是為了建議 (使用以開發人員為目標的片語，) 可將 SRE 視為 DevOps 原理的特定執行。 如章節所述，「DevOps 是如何在詳細層級上執行作業的無訊息方式」，而 SRE 在其實務上會有更多禁止使用。 因此，這兩個關聯性的問題可能有一項可能會被視為 DevOps 的許多可能實施方式之一。
 
 ### <a name="sre-is-to-reliability-as-devops-is-to-delivery"></a>SRE 的可靠性是為了提供 DevOps
 
@@ -50,7 +50,7 @@ SRE 與 DevOps 之間的相似之處很清楚。 真正有趣的是，兩者有�
 
 然後，您可以輕鬆地說 SRE 的單字是「可靠性」。 在名稱的中間，也可以為此宣告提供一些絕佳的辨識項。
 
-如果我們使用 [Azure DevOps 資源中心](https://docs.microsoft.com/azure/devops/learn/)的此 DevOps 定義：
+如果我們使用 [Azure DevOps 資源中心](/azure/devops/learn/)的此 DevOps 定義：
 
 > DevOps 是人員、程序與產品的結合，可為終端使用者提供價值的持續傳遞。
 
@@ -60,7 +60,7 @@ SRE 與 DevOps 之間的相似之處很清楚。 真正有趣的是，兩者有�
 
 ### <a name="direction-of-attention"></a>關注方向
 
-從 Thomas Limoncelli 到我們的[資源書籍清單](../resources/books.md)中所述的「_搜尋 SRE_ 」書籍，此答案會以引號括住或稍微摘錄。 他注意的是，DevOps 工程師大多專注于軟體發展生命週期管線，但偶爾會有生產作業的職責，而 Sre 專注于生產作業，但不定期 SDLC 管線責任。
+從 Thomas Limoncelli 到我們的 [資源書籍清單](../resources/books.md)中所述的「 _搜尋 SRE_ 」書籍，此答案會以引號括住或稍微摘錄。 他注意的是，DevOps 工程師大多專注于軟體發展生命週期管線，但偶爾會有生產作業的職責，而 Sre 專注于生產作業，但不定期 SDLC 管線責任。
 
 但更重要的是，他也會從一側的軟體發展程式開始繪製一個圖表，而生產作業也會在另一個階段工作。 這兩個連接的一般管線是由開發人員所建立的程式碼、透過所需的測試和階段 shepherd，然後將該程式碼移至生產環境。
 
@@ -80,4 +80,4 @@ Limoncelli 請注意，DevOps 工程師是從開發環境開始，並自動執�
 
 ## <a name="next-steps"></a>後續步驟
 
-有興趣深入瞭解網站可靠性工程或 DevOps 嗎？ 請查看我們的 [網站可靠性工程中樞](../index.yml) ，並 [Azure DevOps 資源中心](https://docs.microsoft.com/azure/devops/learn/)。
+有興趣深入瞭解網站可靠性工程或 DevOps 嗎？ 請查看我們的 [網站可靠性工程中樞](../index.yml) ，並 [Azure DevOps 資源中心](/azure/devops/learn/)。

@@ -5,16 +5,16 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 88a8dcb53ab2f845f52121b11c96c23ad0a3e791
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef74c4b799c3a24636f88a8e704bf726104b034f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87078919"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674321"
 ---
 # <a name="sensor-partner-integration"></a>感應器合作夥伴整合
 
-本文提供用以啟用感應器合作夥伴整合的 Azure FarmBeats **轉譯程式**元件相關資訊。
+本文提供用以啟用感應器合作夥伴整合的 Azure FarmBeats **轉譯程式** 元件相關資訊。
 
 透過此元件，合作夥伴可使用 FarmBeats Datahub API 來與 FarmBeats 整合，並將客戶裝置資料和遙測傳送至 FarmBeats Datahub。 一旦 FarmBeats 中有資料可用，該資料即會使用 FarmBeats Accelerator 來視覺化，並可用於資料融合及建立機器學習/人工智慧模型。
 
@@ -48,7 +48,7 @@ FarmBeats 的感應器資料整合功能會透過 REST API 公開。 這些功�
 
 FarmBeats 使用 Microsoft Azure Active Directory 驗證。 Azure App Service 提供內建驗證和授權支援。
 
-如需詳細資訊，請參閱 [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)。
+如需詳細資訊，請參閱 [Azure Active Directory](../../app-service/overview-authentication-authorization.md)。
 
 FarmBeats Datahub 使用持有人驗證，其需要下列認證：
    - 用戶端識別碼
@@ -126,12 +126,12 @@ JSON 是一種與語言無關的通用資料格式，可提供任意資料結構
 
 FarmBeats Datahub 具有下列 API，其可讓裝置合作夥伴建立和管理裝置或感應器中繼資料。
 
-- /**DeviceModel**：DeviceModel 會對應至裝置的中繼資料，例如製造商和裝置類型 (閘道或節點)。
-- /**Device**：Device 會對應至存在於伺服器陣列上的實體裝置。
-- /**SensorModel**：SensorModel 會對應至感應器的中繼資料，例如製造商、感應器類型 (類比或數位)，以及感應器量值 (例如環境溫度和壓力)。
-- /**Sensor**：Sensor 會對應至記錄值的實體感應器。 感應器通常會使用裝置識別碼連線到裝置。
+- /**DeviceModel** ：DeviceModel 會對應至裝置的中繼資料，例如製造商和裝置類型 (閘道或節點)。
+- /**Device** ：Device 會對應至存在於伺服器陣列上的實體裝置。
+- /**SensorModel** ：SensorModel 會對應至感應器的中繼資料，例如製造商、感應器類型 (類比或數位)，以及感應器量值 (例如環境溫度和壓力)。
+- /**Sensor** ：Sensor 會對應至記錄值的實體感應器。 感應器通常會使用裝置識別碼連線到裝置。
 
-  DeviceModel | 說明 |
+  DeviceModel | 描述 |
   --- | ---
   Type (Node、Gateway)  | 裝置的類型 - 節點或閘道 |
   製造商  | 製造商的名稱 |
@@ -140,7 +140,7 @@ FarmBeats Datahub 具有下列 API，其可讓裝置合作夥伴建立和管理�
   名稱  | 用於識別資源的名稱。 例如，型號名稱或產品名稱。 |
   描述  | 提供有意義的型號描述。 |
   屬性  | 製造商的其他屬性。 |
-  **裝置** | **描述** |
+  **裝置** | **說明** |
   DeviceModelId  |相關裝置型號的識別碼。 |
   HardwareId   |裝置的唯一識別碼，例如 MAC 位址。  |
   ReportingInterval |報告間隔 (秒)。 |
@@ -149,7 +149,7 @@ FarmBeats Datahub 具有下列 API，其可讓裝置合作夥伴建立和管理�
   名稱  | 用於識別資源的名稱。 裝置合作夥伴必須傳送與裝置合作夥伴端其裝置名稱一致的名稱。 如果裝置名稱是裝置合作夥伴端的使用者定義名稱，則應該將相同的使用者定義名稱傳播至 FarmBeats。  |
   描述  | 提供有意義的描述。  |
   屬性  |製造商的其他屬性。  |
-  **SensorModel** | **描述** |
+  **SensorModel** | **說明** |
   Type (Analog、Digital)  |提及類比或數位感應器。|
   製造商  | 製造商的名稱。 |
   ProductCode  | 產品代碼，或型號名稱或號碼。 例如，RS-CO2-N01。  |
@@ -163,7 +163,7 @@ FarmBeats Datahub 具有下列 API，其可讓裝置合作夥伴建立和管理�
   名稱  | 用於識別資源的名稱。 例如，型號名稱或產品名稱。
   描述  | 提供有意義的型號描述。
   屬性  | 製造商的其他屬性。
-  **Sensor**  | **描述** |
+  **Sensor**  | **說明** |
   HardwareId  | 製造商所設定感應器的唯一識別碼。
   SensorModelId  | 相關感應器型號的識別碼。
   Location  | 感應器緯度 (-90 到 +90)、經度 (-180 到 180) 和高度 (公尺)。
@@ -201,7 +201,7 @@ FarmBeats 支援新增感應器量值類型和單位。 如需 /ExtendedType API
 
 ## <a name="send-telemetry-data-to-farmbeats"></a>將遙測資料傳送至 FarmBeats
 
-若要將遙測資料傳送至 FarmBeats，請建立用戶端，以將訊息傳送至 FarmBeats 中的事件中樞。 如需遙測資料的詳細資訊，請參閱[將遙測傳送至事件中樞](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send) (機器翻譯)。
+若要將遙測資料傳送至 FarmBeats，請建立用戶端，以將訊息傳送至 FarmBeats 中的事件中樞。 如需遙測資料的詳細資訊，請參閱[將遙測傳送至事件中樞](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) (機器翻譯)。
 
 以下是範例 Python 程式碼，可將遙測當作用戶端傳送至指定的事件中樞。
 

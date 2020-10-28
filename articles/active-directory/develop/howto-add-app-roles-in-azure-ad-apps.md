@@ -13,12 +13,12 @@ ms.date: 07/15/2020
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: be5cb1c1e6ff428b3c4d4305c915e07d3880839c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c29e1e3fd42702e0eb02531f995c550738839a9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258382"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673703"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在您的應用程式中新增應用程式角色，並且在權杖中接收這些角色
 
@@ -35,7 +35,7 @@ ms.locfileid: "91258382"
 ### <a name="declare-app-roles-using-azure-portal"></a>使用 Azure 入口網站宣告應用程式角色
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 選取入口網站工具列中的**目錄 + 訂閱**圖示。
+1. 選取入口網站工具列中的 **目錄 + 訂閱** 圖示。
 1. 在 [我的最愛] 或 [所有目錄] 清單中，選擇想要註冊應用程式的 Active Directory 租用戶。
 1. 在 Azure 入口網站中，搜尋並選取 [Azure Active Directory]。
 1. 在 [Azure Active Directory] 窗格中，選取 [應用程式註冊] 以檢視所有應用程式的清單。
@@ -76,7 +76,7 @@ ms.locfileid: "91258382"
 > [!NOTE]
 >`displayName`可能包含空格。
 
-您可以將應用程式角色定義成以 `users`、`applications` 或兩者為目標。 如果可供使用 `applications` ，應用程式角色會顯示為 [ **管理** ] 區段下的 [應用程式許可權] > **API 許可權 > 新增 > 我的 Api 的許可權 > 選擇 API > 應用程式許可權**。 下列範例顯示以 `Application` 為目標的應用程式角色。
+您可以將應用程式角色定義成以 `users`、`applications` 或兩者為目標。 如果可供使用 `applications` ，應用程式角色會顯示為 [ **管理** ] 區段下的 [應用程式許可權] > **API 許可權 > 新增 > 我的 Api 的許可權 > 選擇 API > 應用程式許可權** 。 下列範例顯示以 `Application` 為目標的應用程式角色。
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -126,7 +126,7 @@ ms.locfileid: "91258382"
 ## <a name="next-steps"></a>後續步驟
 
 - [使用應用程式角色與角色宣告將授權新增至 ASP.NET Core Web 應用程式](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
-- [使用 Microsoft 身分識別平臺在您的應用程式中執行授權 (影片) ](https://www.youtube.com/watch?v=LRoc-na27l0)
+- [使用 Microsoft 身分識別平臺在您的應用程式中執行授權 (影片) ](https://www.youtube.com/watch?v=HdBSBSbgYQQ)
 - [Azure Active Directory 現在具有群組宣告和應用程式角色](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory 應用程式資訊清單](./reference-app-manifest.md)
 - [Azure AD 存取權杖](access-tokens.md)

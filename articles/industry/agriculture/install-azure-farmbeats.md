@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: 2535c05241c076e08f8f0f2ba9e2301fb353723e
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 5863dcc20fb13f1bb203c68ad168655371130601
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330473"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674568"
 ---
 # <a name="install-azure-farmbeats"></a>安裝 Azure FarmBeats
 
@@ -18,9 +18,9 @@ ms.locfileid: "92330473"
 
 Azure FarmBeats 是可在 Azure Marketplace 中取得的企業對企業供應項目。 它可在提供者之間匯總農業資料集，並產生可採取動作的見解。 Azure FarmBeats 可讓您根據融合的資料集，建立人工智慧 (AI) 或機器學習服務 (ML) 模型。 Azure FarmBeats 的兩個主要元件如下：
 
-- **Datahub**：一種 API 層，可在不同的提供者之間匯總、正規化及對脈絡化各種農業資料集。
+- **Datahub** ：一種 API 層，可在不同的提供者之間匯總、正規化及對脈絡化各種農業資料集。
 
-- **加速器**：以 Datahub 為基礎的 Web 應用程式。 它會快速啟動您的模型開發和視覺效果。 此加速器會使用 Azure FarmBeats Api，將內嵌感應器資料的視覺效果示範為模型輸出的圖表和視覺效果，以做為對應。
+- **加速器** ：以 Datahub 為基礎的 Web 應用程式。 它會快速啟動您的模型開發和視覺效果。 此加速器會使用 Azure FarmBeats Api，將內嵌感應器資料的視覺效果示範為模型輸出的圖表和視覺效果，以做為對應。
 
 ## <a name="general-information"></a>一般資訊
 
@@ -71,7 +71,7 @@ Azure FarmBeats 的成本是基礎 Azure 服務成本的匯總。 您可以使�
 
 Azure FarmBeats 的整個設定（包括準備和安裝）將花費不到一小時的時間。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 您必須先完成下列步驟，才能開始實際安裝 Azure FarmBeats：
 
@@ -87,13 +87,13 @@ Azure FarmBeats 的整個設定（包括準備和安裝）將花費不到一小�
 
 從 marketplace 執行 FarmBeats 安裝的人員必須是要在其中安裝 FarmBeats 之資源群組的擁有者。 對於訂用帳戶擁有者，這會在建立資源群組時自動發生。 針對其他人，請預先建立資源群組，並要求訂用帳戶擁有者讓您成為資源群組的擁有者。
 
-您可以遵循 [Azure 角色型存取控制](https://docs.microsoft.com/azure/role-based-access-control/check-access)中的指示，確認 Azure 入口網站中的存取權限。
+您可以遵循 [Azure 角色型存取控制](../../role-based-access-control/check-access.md)中的指示，確認 Azure 入口網站中的存取權限。
 
 ### <a name="decide-subscription-and-region"></a>決定訂用帳戶和區域
 
 您將需要 Azure 訂用帳戶識別碼，以及您想要安裝 Azure FarmBeats 的區域。 選擇 [ [區域支援](#regions-supported) ] 區段中所列的其中一個區域。
 
-記下 **Azure 訂** 用帳戶識別碼和 **azure 區域**。
+記下 **Azure 訂** 用帳戶識別碼和 **azure 區域** 。
 
 ### <a name="create-an-aad-application"></a>建立 AAD 應用程式
 
@@ -124,11 +124,11 @@ Azure FarmBeats 需要 Azure Active Directory 的應用程式建立和註冊。 
 
 4. 腳本會要求下列三個輸入：
 
-    - **FarmBeats 網站名稱**：這是 FarmBeats web 應用程式的唯一 URL 前置詞。 如果已採用前置詞，腳本將會發生錯誤。安裝之後，您的 FarmBeats 部署將可從 HTTPs://存取， \<FarmBeats-website-name> 而 Swagger api 將會位於 HTTPs:// \<FarmBeats-website-name> -api.azurewebsites.net
+    - **FarmBeats 網站名稱** ：這是 FarmBeats web 應用程式的唯一 URL 前置詞。 如果已採用前置詞，腳本將會發生錯誤。安裝之後，您的 FarmBeats 部署將可從 HTTPs://存取， \<FarmBeats-website-name> 而 Swagger api 將會位於 HTTPs:// \<FarmBeats-website-name> -api.azurewebsites.net
 
-    - **Azure 登入識別碼**：針對您想要新增為 FarmBeats 系統管理員的使用者，提供 azure 登入識別碼。 然後，此使用者可以授與存取權給其他使用者存取 FarmBeats web 應用程式。 登入識別碼的格式通常為 john.doe@domain.com 。 也支援 Azure UPN。
+    - **Azure 登入識別碼** ：針對您想要新增為 FarmBeats 系統管理員的使用者，提供 azure 登入識別碼。 然後，此使用者可以授與存取權給其他使用者存取 FarmBeats web 應用程式。 登入識別碼的格式通常為 john.doe@domain.com 。 也支援 Azure UPN。
 
-    - **訂**用帳戶識別碼：這是您要在其中安裝 Azure FarmBeats 的訂用帳戶識別碼
+    - **訂** 用帳戶識別碼：這是您要在其中安裝 Azure FarmBeats 的訂用帳戶識別碼
 
 5. AAD 腳本大約需要2分鐘的時間來執行和輸出畫面上的值，以及在相同目錄中的 json 檔案。 如果您有其他人執行腳本，請要求他們與您共用此輸出。
 
@@ -142,7 +142,7 @@ Azure FarmBeats 需要 Azure Active Directory 的應用程式建立和註冊。 
 2. 提供必要的詳細資料 (名字、姓氏、使用者名稱、密碼和電子郵件識別碼) ，然後完成表單。
 3. 驗證連結會傳送至已註冊的電子郵件識別碼。 選取電子郵件中提供的連結，並完成驗證。
 
-您的註冊程式已完成。 完成驗證之後，請記下 **sentinel 使用者名稱** 和 **sentinel 密碼**。
+您的註冊程式已完成。 完成驗證之後，請記下 **sentinel 使用者名稱** 和 **sentinel 密碼** 。
 
 ## <a name="install"></a>安裝
 
@@ -166,11 +166,11 @@ Azure FarmBeats 需要 Azure Active Directory 的應用程式建立和註冊。 
 
     ![Dependencies Tab](./media/install-azure-farmbeats/create-azure-farmbeats-dependencies.png)
 
-8. 一旦輸入的詳細資料通過驗證，請選取 **[確定]**。 使用規定] 頁面隨即出現。 檢查條款，然後選取 [ **建立** ] 開始安裝。 系統會將您重新導向至可以依照安裝進度執行的頁面。
+8. 一旦輸入的詳細資料通過驗證，請選取 **[確定]** 。 使用規定] 頁面隨即出現。 檢查條款，然後選取 [ **建立** ] 開始安裝。 系統會將您重新導向至可以依照安裝進度執行的頁面。
 
 安裝完成之後，您可以流覽至您在安裝期間提供的網站名稱，以確認安裝並開始使用 FarmBeats 入口網站： HTTPs:// \<FarmBeats-website-name> . azurewebsites.net。 您應該會看到 FarmBeats 使用者介面，並提供建立伺服器陣列的選項。
 
-**Datahub**您可以在 HTTPs:// \<FarmBeats-website-name> Api.azurewebsites.net/swagger 中找到 Datahub。 您將在這裡看到不同的 FarmBeats API 物件，並在 Api 上執行 REST 作業。
+**Datahub** 您可以在 HTTPs:// \<FarmBeats-website-name> Api.azurewebsites.net/swagger 中找到 Datahub。 您將在這裡看到不同的 FarmBeats API 物件，並在 Api 上執行 REST 作業。
 
 ## <a name="upgrade"></a>升級
 
