@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 08bbe1000d457cc4f4d6b655051ec640d4dcecf4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e880d257b8a8bd6eb287b88e11a1f6c3243fe9a
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362090"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92778615"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>教學課程：將自訂網域新增至 Azure CDN 端點
 本教學課程說明如何將自訂網域新增至 Azure 內容傳遞網路 (CDN) 端點。 使用 CDN 端點來傳遞內容時，如果您想要在 CDN URL 中顯示您自己的網域名稱，則需要自訂網域。 有可見的網域名稱對您的客戶而言較為方便，並且也有助於宣傳商標。 
@@ -38,9 +38,9 @@ ms.locfileid: "91362090"
 
 您必須先建立 CDN 設定檔和至少一個 CDN 端點，才能完成本教學課程中的步驟。 如需詳細資訊，請參閱[快速入門：建立 Azure CDN 設定檔和端點](cdn-create-new-endpoint.md)。
 
-如果您還沒有自訂網域，必須先向網域提供者購買。 如需範例，請參閱[購買自訂網域名稱](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain)。
+如果您還沒有自訂網域，必須先向網域提供者購買。 如需範例，請參閱[購買自訂網域名稱](../app-service/manage-custom-dns-buy-domain.md)。
 
-如果您使用 Azure 來裝載您的 [DNS 網域](https://docs.microsoft.com/azure/dns/dns-overview)，必須將網域提供者的網域名稱系統 (DNS) 委派給 Azure DNS。 如需詳細資訊，請參閱[將網域委派給 Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)。 反之，如果您使用網域提供者來處理 DNS 網域，請繼續執行[建立 CNAME DNS 記錄](#create-a-cname-dns-record)。
+如果您使用 Azure 來裝載您的 [DNS 網域](../dns/dns-overview.md)，必須將網域提供者的網域名稱系統 (DNS) 委派給 Azure DNS。 如需詳細資訊，請參閱[將網域委派給 Azure DNS](../dns/dns-delegate-domain-azure-dns.md)。 反之，如果您使用網域提供者來處理 DNS 網域，請繼續執行[建立 CNAME DNS 記錄](#create-a-cname-dns-record)。
 
 
 ## <a name="create-a-cname-dns-record"></a>建立 CNAME DNS 記錄
@@ -50,7 +50,7 @@ ms.locfileid: "91362090"
 自訂網域及其子網域一次只能與單一端點相關聯。 不過，您可以使用多個 CNAME 記錄，將來自相同自訂網域的不同子網域用於不同的 Azure 服務端點。 您也可以將具有不同子網域的自訂網域對應至相同的 CDN 端點。
 
 > [!NOTE]
-> 如果您使用 Azure DNS 作為網域提供者，則可將任何別名記錄類型用於自訂網域。 本逐步解說會使用 CNAME 記錄類型。 如果您使用 A 或 AAAA 記錄類型，請遵循以下相同步驟並以您選擇的記錄類型取代 CNAME。 如果您使用別名記錄來新增根網域作為自訂網域，並且想要啟用 TLS，則必須使用手動驗證，如[本文](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint)所述。 如需詳細資訊，請參閱[將區域 Apex 指向 Azure CDN 端點](https://docs.microsoft.com/azure/dns/dns-alias#point-zone-apex-to-azure-cdn-endpoints)。
+> 如果您使用 Azure DNS 作為網域提供者，則可將任何別名記錄類型用於自訂網域。 本逐步解說會使用 CNAME 記錄類型。 如果您使用 A 或 AAAA 記錄類型，請遵循以下相同步驟並以您選擇的記錄類型取代 CNAME。 如果您使用別名記錄來新增根網域作為自訂網域，並且想要啟用 TLS，則必須使用手動驗證，如[本文](./cdn-custom-ssl.md?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate#custom-domain-is-not-mapped-to-your-cdn-endpoint)所述。 如需詳細資訊，請參閱[將區域 Apex 指向 Azure CDN 端點](../dns/dns-alias.md#point-zone-apex-to-azure-cdn-endpoints)。
 
 ## <a name="map-the-temporary-cdnverify-subdomain"></a>對應暫時 cdnverify 子網域
 
@@ -62,7 +62,7 @@ ms.locfileid: "91362090"
 
 1. 登入自訂網域的網域提供者網站。
 
-2. 找出管理 DNS 記錄的頁面 (可查閱提供者的文件或，尋找網站上標示為**網域名稱**、**DNS** 或**名稱伺服器管理**的區域)。 
+2. 找出管理 DNS 記錄的頁面 (可查閱提供者的文件或，尋找網站上標示為 **網域名稱** 、 **DNS** 或 **名稱伺服器管理** 的區域)。 
 
 3. 建立自訂網域的 CNAME 記錄項目，並完成下表說明的欄位 (欄位名稱可能有所不同)：
 
@@ -134,9 +134,9 @@ ms.locfileid: "91362090"
    Azure 會確認您所輸入的自訂網域名稱有 CNAME 記錄存在。 如果 CNAME 正確，就會驗證您的自訂網域。 
 
    新的自訂網域設定傳播至所有 CDN 邊緣節點可能需要一些時間： 
-    - 若為**來自 Microsoft 的標準 Azure CDN** 設定檔，通常會在 10 分鐘內完成傳播。 
-    - 若為**來自 Akamai 的標準 Azure CDN** 設定檔，通常會在一分鐘內完成傳播。 
-    - 若為**來自 Verizon 的標準 Azure CDN** 和**來自 Verizon 的進階 Azure CDN** 設定檔，通常會在 10 分鐘內完成傳播。   
+    - 若為 **來自 Microsoft 的標準 Azure CDN** 設定檔，通常會在 10 分鐘內完成傳播。 
+    - 若為 **來自 Akamai 的標準 Azure CDN** 設定檔，通常會在一分鐘內完成傳播。 
+    - 若為 **來自 Verizon 的標準 Azure CDN** 和 **來自 Verizon 的進階 Azure CDN** 設定檔，通常會在 10 分鐘內完成傳播。   
 
 
 ## <a name="verify-the-custom-domain"></a>驗證自訂網域
@@ -156,7 +156,7 @@ ms.locfileid: "91362090"
 
 1. 登入自訂網域的網域提供者網站。
 
-2. 找到管理 DNS 記錄的頁面 (可查閱提供者的文件或，尋找網站上標示**網域名稱**、**DNS** 或**名稱伺服器管理**的區域)。 
+2. 找到管理 DNS 記錄的頁面 (可查閱提供者的文件或，尋找網站上標示 **網域名稱** 、 **DNS** 或 **名稱伺服器管理** 的區域)。 
 
 3. 建立自訂網域的 CNAME 記錄項目，並完成下表說明的欄位 (欄位名稱可能有所不同)：
 
@@ -233,5 +233,3 @@ ms.locfileid: "91362090"
 
 > [!div class="nextstepaction"]
 > [教學課程：在 Azure CDN 自訂網域上設定 HTTPS](cdn-custom-ssl.md)
-
-

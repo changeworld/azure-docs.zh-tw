@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 557e20dcafabb2db0bc66c9dfda4977aca50de50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 800dc50f82fa47228f1a88a143c5b515168812a6
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91745458"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755773"
 ---
 | 資源 | 免費 | 共用 | 基本 | 標準 | 進階 (v3) | 隔離 </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -32,6 +32,7 @@ ms.locfileid: "91745458"
 | 混合式連線 | | | 每個方案 5 個 | 每個方案 25 個 | 每個應用程式 200 個 | 每個應用程式 200 個 |
 | [虛擬網路整合](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
 | 整合式負載平衡器 | |X |X |X |X |X<sup>10</sup> |
+| [存取限制](../articles/app-service/networking-features.md#access-restrictions) | 每一應用程式 512 個規則 | 每一應用程式 512 個規則 | 每一應用程式 512 個規則 | 每一應用程式 512 個規則 | 每一應用程式 512 個規則 | 每一應用程式 512 個規則 |
 | [Always On](../articles/app-service/configure-common.md) | | |X |X |X |X |
 | [排定的備份](../articles/app-service/manage-backup.md) | | | | 排程每 2 小時備份，每天最多 12 次備份 (手動 + 排程) | 排程每小時備份，每天最多 50 次備份 (手動 + 排程) | 排程每小時備份，每天最多 50 次備份 (手動 + 排程) |
 | [Autoscale](../articles/app-service/manage-scale-up.md) | | | |X |X |X |

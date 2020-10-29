@@ -14,12 +14,13 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-js
-ms.openlocfilehash: aecf5c8b71f23e3d51c755c86ec0122d6da05f21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+- devx-track-azurecli
+ms.openlocfilehash: 74d5e5395853bcba20b2012e54dd8f9fea03afe6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842762"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748553"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -27,7 +28,7 @@ ms.locfileid: "91842762"
 
 除了從您的裝置接收遙測資料，您可能也需要從後端服務設定您的裝置。 當您將所需的組態傳送至裝置時，您也可以從這些裝置接收狀態和相容性更新。 例如，您可以設定裝置的目標操作溫度範圍，或從裝置收集韌體版本資訊。
 
-若要同步處理裝置與 IoT 中樞之間的狀態資訊，請使用_裝置對應項_。 [裝置對應項](iot-hub-devguide-device-twins.md)是與特定裝置相關聯的 JSON 文件，IoT 中樞會在雲端中將其儲存於可供您[查詢](iot-hub-devguide-query-language.md)之處。 裝置對應項包含_所需屬性_、_報告屬性_和_標記_。 所需屬性由後端應用程式所設定，供裝置讀取。 報告屬性是由裝置所設定，供後端應用程式讀取。 標記由後端應用程式所設定，且一律不會傳送至裝置。 您可以使用標記來組織裝置。 本教學課程說明如何使用所需屬性和報告屬性來同步處理狀態資訊：
+若要同步處理裝置與 IoT 中樞之間的狀態資訊，請使用 _裝置對應項_ 。 [裝置對應項](iot-hub-devguide-device-twins.md)是與特定裝置相關聯的 JSON 文件，IoT 中樞會在雲端中將其儲存於可供您[查詢](iot-hub-devguide-query-language.md)之處。 裝置對應項包含 _所需屬性_ 、 _報告屬性_ 和 _標記_ 。 所需屬性由後端應用程式所設定，供裝置讀取。 報告屬性是由裝置所設定，供後端應用程式讀取。 標記由後端應用程式所設定，且一律不會傳送至裝置。 您可以使用標記來組織裝置。 本教學課程說明如何使用所需屬性和報告屬性來同步處理狀態資訊：
 
 ![對應項摘要](media/tutorial-device-twins/DeviceTwins.png)
 
@@ -62,7 +63,7 @@ node --version
 
 若要完成本教學課程，您的 Azure 訂用帳戶必須包含將裝置新增至身分識別登錄的 IoT 中樞。 裝置身分識別登錄中的項目可讓您在此教學課程中執行的模擬裝置連線至中樞。
 
-如果您尚未在訂用帳戶中設定 IoT 中樞，您可以使用下列 CLI 指令碼設定一個。 此指令碼會使用 **tutorial-iot-hub** 作為 IoT 中樞的名稱，但您在執行指令碼時，應將此名稱取代為您自己的唯一名稱。 此指令碼會在**美國中部**區域建立資源群組和中樞，但您可以變更為您附近的區域。 此指令碼會擷取您的 IoT 中樞服務連接字串，此即為您在後端範例中用來連線至 IoT 中樞的連接字串：
+如果您尚未在訂用帳戶中設定 IoT 中樞，您可以使用下列 CLI 指令碼設定一個。 此指令碼會使用 **tutorial-iot-hub** 作為 IoT 中樞的名稱，但您在執行指令碼時，應將此名稱取代為您自己的唯一名稱。 此指令碼會在 **美國中部** 區域建立資源群組和中樞，但您可以變更為您附近的區域。 此指令碼會擷取您的 IoT 中樞服務連接字串，此即為您在後端範例中用來連線至 IoT 中樞的連接字串：
 
 ```azurecli-interactive
 hubname=tutorial-iot-hub
@@ -119,13 +120,13 @@ az iot hub device-identity show-connection-string --device-id MyTwinDevice --hub
 
 ### <a name="sample-desired-properties"></a>範例所需屬性
 
-您也可以用任何方便應用程式運作的方式，來建構您的所需屬性。 此範例會使用一個名為 **fanOn** 的最上層屬性，並將其餘屬性分組到個別的**元件**中。 下列 JSON 程式碼片段說明本教學課程使用的所需屬性結構：
+您也可以用任何方便應用程式運作的方式，來建構您的所需屬性。 此範例會使用一個名為 **fanOn** 的最上層屬性，並將其餘屬性分組到個別的 **元件** 中。 下列 JSON 程式碼片段說明本教學課程使用的所需屬性結構：
 
 [!code[Sample desired properties](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/desired.json "Sample desired properties")]
 
 ### <a name="create-handlers"></a>建立處理常式
 
-您可以建立所需屬性更新的處理常式，以回應 JSON 階層中不同層級的更新。 例如，此處理常式會檢視從後端應用程式傳送至裝置的所有所需屬性變更。 **差異**變數包含從解決方案後端傳送的所需屬性：
+您可以建立所需屬性更新的處理常式，以回應 JSON 階層中不同層級的更新。 例如，此處理常式會檢視從後端應用程式傳送至裝置的所有所需屬性變更。 **差異** 變數包含從解決方案後端傳送的所需屬性：
 
 [!code-javascript[Handle all properties](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=allproperties&highlight=2 "Handle all properties")]
 
@@ -135,19 +136,19 @@ az iot hub device-identity show-connection-string --device-id MyTwinDevice --hub
 
 ### <a name="handlers-for-multiple-properties"></a>多個屬性的處理常式
 
-在先前顯示的範例所需屬性 JSON 中，**元件**下的**氣候**節點包含兩個屬性：**minTemperature** 和 **maxTemperature**。
+在先前顯示的範例所需屬性 JSON 中， **元件** 下的 **氣候** 節點包含兩個屬性： **minTemperature** 和 **maxTemperature** 。
 
-裝置的本機**對應項**物件會儲存一組完整的所需屬性和報告屬性。 從後端傳送的**差異**可能僅更新了所需屬性的子集。 在下列程式碼片段中，如果模擬裝置接收到僅對 **minTemperature** 和 **maxTemperature** 其中之一所做的更新，它將會以本機對應項中的值作為另一個值，來設定裝置：
+裝置的本機 **對應項** 物件會儲存一組完整的所需屬性和報告屬性。 從後端傳送的 **差異** 可能僅更新了所需屬性的子集。 在下列程式碼片段中，如果模擬裝置接收到僅對 **minTemperature** 和 **maxTemperature** 其中之一所做的更新，它將會以本機對應項中的值作為另一個值，來設定裝置：
 
 [!code-javascript[Handle climate component](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=climatecomponent&highlight=2 "Handle climate component")]
 
-本機**對應項**物件會儲存一組完整的所需屬性和報告屬性。 從後端傳送的**差異**可能僅更新了所需屬性的子集。
+本機 **對應項** 物件會儲存一組完整的所需屬性和報告屬性。 從後端傳送的 **差異** 可能僅更新了所需屬性的子集。
 
 ### <a name="handle-insert-update-and-delete-operations"></a>處理插入、更新和刪除作業
 
 從後端傳送的所需屬性不會指出正在對特定的所需屬性執行何種作業。 您的程式碼必須從目前儲存於本機的所需屬性集，以及從中樞傳送的變更，來推斷作業類型。
 
-下列程式碼片段說明模擬裝置如何對所需屬性中所列的**元件**處理插入、更新和刪除作業。 您可以了解如何使用 **null** 值指出應將元件刪除：
+下列程式碼片段說明模擬裝置如何對所需屬性中所列的 **元件** 處理插入、更新和刪除作業。 您可以了解如何使用 **null** 值指出應將元件刪除：
 
 [!code-javascript[Handle components](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=components&highlight=2,6,13 "Handle components")]
 
@@ -161,7 +162,7 @@ az iot hub device-identity show-connection-string --device-id MyTwinDevice --hub
 
 [!code-javascript[Create registry and get twin](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/ServiceClient.js?name=getregistrytwin&highlight=2,6 "Create registry and get twin")]
 
-下列程式碼片段顯示後端應用程式傳送至裝置的不同所需屬性*修補程式*：
+下列程式碼片段顯示後端應用程式傳送至裝置的不同所需屬性 *修補程式* ：
 
 [!code-javascript[Patches sent to device](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/ServiceClient.js?name=patches&highlight=2,12,26,41,56 "Patches sent to device")]
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 66e0ac622479d38d2e2a3cbf499bb7900251571d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12cf4b029424bbbdb7449e6e1d04684ed485ef97
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91359386"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779011"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>教學課程：在 Azure CDN 自訂網域上設定 HTTPS
 
@@ -70,7 +70,7 @@ Azure CDN 預設支援 CDN 端點主機名稱上的 HTTPS。 舉例來說，當�
 
 1. 請移至 [Azure 入口網站](https://portal.azure.com)，尋找您的 Azure CDN 所管理的憑證。 搜尋並選取 [CDN 設定檔]  。 
 
-2. 選擇**來自 Microsoft 的標準 Azure CDN**、**來自 Akamai 的標準 Azure CDN**、**來自 Verizon 的標準 Azure CDN** 或**來自 Verizon 的進階 Azure CDN** 設定檔。
+2. 選擇 **來自 Microsoft 的標準 Azure CDN** 、 **來自 Akamai 的標準 Azure CDN** 、 **來自 Verizon 的標準 Azure CDN** 或 **來自 Verizon 的進階 Azure CDN** 設定檔。
 
 3. 在 CDN 端點清單中，選取包含自訂網域的端點。
 
@@ -96,10 +96,10 @@ Azure CDN 預設支援 CDN 端點主機名稱上的 HTTPS。 舉例來說，當�
 # <a name="option-2-enable-https-with-your-own-certificate"></a>[選項 2：使用您自己的憑證啟用 HTTPS](#tab/option-2-enable-https-with-your-own-certificate)
 
 > [!IMPORTANT]
-> 此選項僅適用於**來自 Microsoft 的 Azure CDN** 和**來自 Verizon 的 Azure CDN** 設定檔。 
+> 此選項僅適用於 **來自 Microsoft 的 Azure CDN** 和 **來自 Verizon 的 Azure CDN** 設定檔。 
 >
  
-您可以使用自己的憑證啟用 HTTPS 功能。 此程序會透過與 Azure Key Vault 的整合來進行，而讓您可以安全地儲存您的憑證。 Azure CDN 使用此安全機制來取得您的憑證，為此您需要執行一些額外的步驟。 當您建立 TLS/SSL 憑證時，您必須使用允許的憑證授權單位 (CA) 來建立。 否則，如果您使用非允許的 CA，系統會拒絕您的要求。 如需允許 CA 的清單，請參閱[可在 Azure CDN 上啟用自訂 HTTPS 的允許憑證授權單位](cdn-troubleshoot-allowed-ca.md)。若為**來自 Verizon 的 Azure CDN**，則可接受任何有效的 CA。 
+您可以使用自己的憑證啟用 HTTPS 功能。 此程序會透過與 Azure Key Vault 的整合來進行，而讓您可以安全地儲存您的憑證。 Azure CDN 使用此安全機制來取得您的憑證，為此您需要執行一些額外的步驟。 當您建立 TLS/SSL 憑證時，您必須使用允許的憑證授權單位 (CA) 來建立。 否則，如果您使用非允許的 CA，系統會拒絕您的要求。 如需允許 CA 的清單，請參閱 [可在 Azure CDN 上啟用自訂 HTTPS 的允許憑證授權單位](cdn-troubleshoot-allowed-ca.md)。若為 **來自 Verizon 的 Azure CDN** ，則可接受任何有效的 CA。 
 
 ### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>準備您的 Azure Key Vault 帳戶和憑證
  
@@ -128,7 +128,7 @@ Azure CDN 預設支援 CDN 端點主機名稱上的 HTTPS。 舉例來說，當�
 
     ![建立新的存取原則](./media/cdn-custom-ssl/cdn-new-access-policy.png)
 
-2. 在 [選取主體]  中，搜尋 **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8**，然後選擇 [Microsoft.Azure.Cdn]  。 按一下 [選取]。 
+2. 在 [選取主體]  中，搜尋 **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8** ，然後選擇 [Microsoft.Azure.Cdn]  。 按一下 [選取]。 
 
     ![存取原則設定](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
@@ -182,7 +182,7 @@ Azure CDN 預設支援 CDN 端點主機名稱上的 HTTPS。 舉例來說，當�
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 
-如需有關 CNAME 記錄的詳細資訊，請參閱[建立 CNAME DNS 記錄](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain)。
+如需有關 CNAME 記錄的詳細資訊，請參閱[建立 CNAME DNS 記錄](./cdn-map-content-to-custom-domain.md)。
 
 如果您的 CNAME 記錄格式正確，DigiCert 就會自動驗證您的自訂網域名稱，並且為您的網域名稱建立專用憑證。 DigitCert 不會傳送驗證電子郵件給您，因此您不需要核准您的要求。 憑證有效期限為一年，並且會在到期之前自動更新。 請繼續進行[等待傳播](#wait-for-propagation)。 
 
@@ -194,7 +194,7 @@ Azure CDN 預設支援 CDN 端點主機名稱上的 HTTPS。 舉例來說，當�
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>自訂網域未對應至您的 CDN 端點
 
 >[!NOTE]
->如果您使用 **Akamai 中的 Azure CDN**，則應該設定下列 CNAME 以啟用自動網域驗證。 "_acme-challenge.&lt;自訂網域主機名稱&gt; -> CNAME -> &lt;自訂網域主機名稱&gt;.ak-acme-challenge.azureedge.net"
+>如果您使用 **Akamai 中的 Azure CDN** ，則應該設定下列 CNAME 以啟用自動網域驗證。 "_acme-challenge.&lt;自訂網域主機名稱&gt; -> CNAME -> &lt;自訂網域主機名稱&gt;.ak-acme-challenge.azureedge.net"
 
 如果 CNAME 記錄項目包含 cdnverify 子網域，請依照此步驟中的其餘指示進行操作。
 
@@ -264,7 +264,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 [CDN 設定檔]  。 
 
-2. 選擇**來自 Microsoft 的標準 Azure CDN**、**來自 Verizon 的標準 Azure CDN** 或**來自 Verizon 的進階 Azure CDN** 設定檔。
+2. 選擇 **來自 Microsoft 的標準 Azure CDN** 、 **來自 Verizon 的標準 Azure CDN** 或 **來自 Verizon 的進階 Azure CDN** 設定檔。
 
 3. 在端點清單中，挑選包含自訂網域的端點。
 
@@ -296,11 +296,11 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 1. *憑證提供者是誰？使用的是哪一種憑證？*
 
-    對於**來自 Verizon 的 Azure CDN** 與**來自 Microsoft 的 Azure CDN**，Digicert 均為您的自訂網域提供專用/單一憑證。 
+    對於 **來自 Verizon 的 Azure CDN** 與 **來自 Microsoft 的 Azure CDN** ，Digicert 均為您的自訂網域提供專用/單一憑證。 
 
 2. *您使用 IP 型或 SNI TLS/SSL？*
 
-    **來自 Verizon 的 Azure CDN** 與**來自 Microsoft 的標準 Azure CDN** 都會使用 SNI TLS/SSL。
+    **來自 Verizon 的 Azure CDN** 與 **來自 Microsoft 的標準 Azure CDN** 都會使用 SNI TLS/SSL。
 
 3. *如果沒有收到 DigiCert 的驗證電子郵件該怎麼辦？*
 
@@ -337,4 +337,3 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 > [!div class="nextstepaction"]
 > [教學課程：設定 Azure CDN 快取規則](cdn-caching-rules-tutorial.md)
-

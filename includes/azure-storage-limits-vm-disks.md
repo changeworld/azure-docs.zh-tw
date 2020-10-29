@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/18/2019
 ms.author: rogarana
-ms.openlocfilehash: e89676505bc211d01a4327f8816a048218e579fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10599b47d55a0b4ea1eb79cda3c31a2479efb7c0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91829061"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755759"
 ---
 您可以將一些資料磁碟連結至 Azure 虛擬機器。 根據 VM 資料磁碟的可擴縮性和效能目標，您可以決定您需要的磁碟數目和類型，以符合您的效能和容量需求。
 
@@ -18,7 +18,7 @@ ms.locfileid: "91829061"
 
 **針對 Azure 受控磁碟：**
 
-下表說明每個訂用帳戶每個區域的預設資源數和資源數上限。 每個資源群組的受控磁碟、快照集和映像數目沒有限制。  
+下表說明每個訂用帳戶每個區域的預設資源數和資源數上限。 無論磁碟以平台代控金鑰還是客戶自控金鑰進行加密，限制都會維持不變。 每個資源群組的受控磁碟、快照集和映像數目沒有限制。  
 
 > | 資源 | 限制 |
 > | --- | --- |

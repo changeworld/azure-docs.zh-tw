@@ -14,17 +14,17 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 3d52b9a6842c13e9141fd081e10156e3866c163f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae217352b83617600fd983a747d578f8f28e7ddd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81254303"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779232"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>教學課程：設定 Azure CDN 快取規則
 
 > [!NOTE] 
-> 快取規則僅適用於「**來自 Verizon 的 Azure CDN 標準**」和「**來自 Akamai 的 Azure CDN 標準**」的設定檔。 針對**來自 Microsoft 的 Azure CDN** 設定檔，您必須使用 [標準規則引擎](cdn-standard-rules-engine-reference.md)。針對**來自 Verizon 的 Azure CDN 進階**設定檔，您必須使用 [管理] 入口網站中的 [Verizon 進階規則引擎](cdn-rules-engine.md)來執行類似功能。
+> 快取規則僅適用於「 **來自 Verizon 的 Azure CDN 標準** 」和「 **來自 Akamai 的 Azure CDN 標準** 」的設定檔。 針對 **來自 Microsoft 的 Azure CDN** 設定檔，您必須使用 [標準規則引擎](cdn-standard-rules-engine-reference.md)。針對 **來自 Verizon 的 Azure CDN 進階** 設定檔，您必須使用 [管理] 入口網站中的 [Verizon 進階規則引擎](./cdn-verizon-premium-rules-engine.md)來執行類似功能。
  
 
 本教學課程說明如何使用 Azure 內容傳遞網路 (CDN) 快取規則，以全域及自訂條件 (例如 URL 路徑和副檔名) 的方式設定或修改預設快取到期行為。 Azure CDN 提供兩種類型的快取規則：
@@ -114,6 +114,3 @@ ms.locfileid: "81254303"
 
 > [!div class="nextstepaction"]
 > [使用快取規則來控制 Azure CDN 快取行為](cdn-caching-rules.md)
-
-
-

@@ -14,18 +14,19 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-js
-ms.openlocfilehash: a1410b9e8287b34c8b40e841ff513de784e1730a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+- devx-track-azurecli
+ms.openlocfilehash: 432cc733ee31bdaa18d555d9a6aeb6aee9879a44
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150546"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748527"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>教學課程：實作裝置韌體更新程序
 
 您可能需要對連線至 IoT 中樞的裝置更新軔體。 例如，您可以將新功能新增至韌體，或套用安全性修補程式。 在許多 IoT 案例中，實際瀏覽並手動將韌體更新套用至裝置，並非切實可行的做法。 本教學課程將說明透過連線至中樞的後端應用程式，從遠端啟動並監視韌體更新程序。
 
-若要建立及監視韌體更新程序，請在本教學課程中，以後端應用程式在 IoT 中樞內建立_組態_。 IoT 中樞[自動裝置管理](./iot-hub-automatic-device-management.md)會使用此組態，在您的所有 Chiller 裝置上更新一組_裝置對應項的所需屬性_。 所需屬性會指定必要韌體更新的詳細資料。 Chiller 裝置在執行韌體更新程序時，會使用_裝置對應項的報告屬性_將其狀態報告給後端應用程式。 後端應用程式可使用此組態來監視從裝置傳送的報告屬性，並追蹤韌體更新程序的完成進度：
+若要建立及監視韌體更新程序，請在本教學課程中，以後端應用程式在 IoT 中樞內建立 _組態_ 。 IoT 中樞 [自動裝置管理](./iot-hub-automatic-device-management.md)會使用此組態，在您的所有 Chiller 裝置上更新一組 _裝置對應項的所需屬性_ 。 所需屬性會指定必要韌體更新的詳細資料。 Chiller 裝置在執行韌體更新程序時，會使用 _裝置對應項的報告屬性_ 將其狀態報告給後端應用程式。 後端應用程式可使用此組態來監視從裝置傳送的報告屬性，並追蹤韌體更新程序的完成進度：
 
 ![韌體更新程序](media/tutorial-firmware-update/Process.png)
 
@@ -61,7 +62,7 @@ node --version
 
 若要完成本教學課程，您的 Azure 訂用帳戶必須具有已將裝置新增至身分識別登錄的 IoT 中樞。 裝置身分識別登錄中的項目可讓您在此教學課程中執行的模擬裝置連線至中樞。
 
-如果您尚未在訂用帳戶中設定 IoT 中樞，您可以使用下列 CLI 指令碼設定一個。 此指令碼會使用 **tutorial-iot-hub** 作為 IoT 中樞的名稱，但您在執行指令碼時，應將此名稱取代為您自己的唯一名稱。 此指令碼會在**美國中部**區域建立資源群組和中樞，但您可以變更為您附近的區域。 此指令碼會擷取您的 IoT 中樞服務連接字串，此即為您在後端範例應用程式中用來連線至 IoT 中樞的連接字串：
+如果您尚未在訂用帳戶中設定 IoT 中樞，您可以使用下列 CLI 指令碼設定一個。 此指令碼會使用 **tutorial-iot-hub** 作為 IoT 中樞的名稱，但您在執行指令碼時，應將此名稱取代為您自己的唯一名稱。 此指令碼會在 **美國中部** 區域建立資源群組和中樞，但您可以變更為您附近的區域。 此指令碼會擷取您的 IoT 中樞服務連接字串，此即為您在後端範例應用程式中用來連線至 IoT 中樞的連接字串：
 
 ```azurecli-interactive
 hubname=tutorial-iot-hub
@@ -103,7 +104,7 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 
 ## <a name="start-the-firmware-update"></a>開始進行韌體更新
 
-您可以在後端應用程式中建立[自動裝置管理組態](iot-hub-automatic-device-management.md#create-a-configuration)，以開始在 **devicetype** 標記為 Chiller 的所有裝置上進行韌體更新程序。 在本節中，您將了解如何：
+您可以在後端應用程式中建立 [自動裝置管理組態](iot-hub-automatic-device-management.md#create-a-configuration)，以開始在 **devicetype** 標記為 Chiller 的所有裝置上進行韌體更新程序。 在本節中，您將了解如何：
 
 * 從後端應用程式建立組態。
 * 監視作業的完成進度。

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 470324799cd157c8b33311e1cae8b5b698433e1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0abe13c7c6a9f26746278aeede199a0860a54c0d
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88079904"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92779539"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>教學課程：將 Azure CDN 新增至 Azure App Service Web 應用程式
 
@@ -43,20 +43,20 @@ ms.locfileid: "88079904"
 若要完成本教學課程：
 
 - [安裝 Git](https://git-scm.com/)
-- [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [安裝 Azure CLI](/cli/azure/install-azure-cli)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-web-app"></a>建立 Web 應用程式
 
-若要建立您將使用的 Web 應用程式，請遵循[靜態 HTML 快速入門](../app-service/quickstart-html.md)的**瀏覽至應用程式**步驟。
+若要建立您將使用的 Web 應用程式，請遵循 [靜態 HTML 快速入門](../app-service/quickstart-html.md)的 **瀏覽至應用程式** 步驟。
 
 ## <a name="log-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
 開啟瀏覽器並瀏覽至 [Azure 入口網站](https://portal.azure.com)。
 
 ### <a name="dynamic-site-acceleration-optimization"></a>動態網站加速最佳化
-如果您想要為 CDN 端點進行動態網站加速 (DSA) 的最佳化，您應使用 [CDN 入口網站](cdn-create-new-endpoint.md)建立設定檔和端點。 執行 [DSA 最佳化](cdn-dynamic-site-acceleration.md)後，具有動態內容的網頁將可顯著提升效能。 如需如何從 CDN 入口網站為 CDN 端點進行 DSA 最佳化的相關指示，請參閱[用來加速傳遞動態檔案的 CDN 端點組態](cdn-dynamic-site-acceleration.md#cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files)。 否則，如果您不想要最佳化新端點，您可以依照下一節中的步驟，使用 Web 應用程式入口網站建立端點。 請注意，對於**來自 Verizon 的 Azure CDN** 設定檔，您無法在 CDN 端點建立之後變更其最佳化。
+如果您想要為 CDN 端點進行動態網站加速 (DSA) 的最佳化，您應使用 [CDN 入口網站](cdn-create-new-endpoint.md)建立設定檔和端點。 執行 [DSA 最佳化](cdn-dynamic-site-acceleration.md)後，具有動態內容的網頁將可顯著提升效能。 如需如何從 CDN 入口網站為 CDN 端點進行 DSA 最佳化的相關指示，請參閱[用來加速傳遞動態檔案的 CDN 端點組態](cdn-dynamic-site-acceleration.md#cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files)。 否則，如果您不想要最佳化新端點，您可以依照下一節中的步驟，使用 Web 應用程式入口網站建立端點。 請注意，對於 **來自 Verizon 的 Azure CDN** 設定檔，您無法在 CDN 端點建立之後變更其最佳化。
 
 ## <a name="create-a-cdn-profile-and-endpoint"></a>建立 CDN 設定檔和端點
 
@@ -87,11 +87,11 @@ Azure 會建立設定檔和端點。 新端點會出現在 [端點] 清單中，
 ### <a name="test-the-cdn-endpoint"></a>測試 CDN 端點
 
  因為需要一段時間才能傳播註冊，所以端點不會立即可供使用： 
-   - 若為**來自 Microsoft 的標準 Azure CDN** 設定檔，通常會在 10 分鐘內完成傳播。 
-   - 若為**來自 Akamai 的標準 Azure CDN** 設定檔，通常會在一分鐘內完成傳播。 
-   - 若為**來自 Verizon 的標準 Azure CDN** 和**來自 Verizon 的進階 Azure CDN** 設定檔，通常會在 90 分鐘內完成傳播。 
+   - 若為 **來自 Microsoft 的標準 Azure CDN** 設定檔，通常會在 10 分鐘內完成傳播。 
+   - 若為 **來自 Akamai 的標準 Azure CDN** 設定檔，通常會在一分鐘內完成傳播。 
+   - 若為 **來自 Verizon 的標準 Azure CDN** 和 **來自 Verizon 的進階 Azure CDN** 設定檔，通常會在 90 分鐘內完成傳播。 
 
-範例應用程式有 *index.html* 檔案以及包含其他靜態資產的 *css*、*img* 和 *js* 資料夾。 在 CDN 端點上，上述所有檔案的內容路徑都相同。 例如，下列 URL 可存取 css 資料夾中的 bootstrap.css 檔案︰
+範例應用程式有 *index.html* 檔案以及包含其他靜態資產的 *css* 、 *img* 和 *js* 資料夾。 在 CDN 端點上，上述所有檔案的內容路徑都相同。 例如，下列 URL 可存取 css 資料夾中的 bootstrap.css 檔案︰
 
 ```
 http://<appname>.azurewebsites.net/css/bootstrap.css
@@ -170,7 +170,7 @@ http://<endpointname>.azureedge.net/index.html
 
 ![選取清除](media/cdn-add-to-web-app/portal-select-purge.png)
 
-輸入您想要清除的內容路徑。 您可以傳遞完整檔案路徑來清除個別檔案，也可以傳遞路徑區段來清除並重新整理資料夾中的所有內容。 因為您變更了 *index.html*，所以請確認該項目位在其中一個路徑內。
+輸入您想要清除的內容路徑。 您可以傳遞完整檔案路徑來清除個別檔案，也可以傳遞路徑區段來清除並重新整理資料夾中的所有內容。 因為您變更了 *index.html* ，所以請確認該項目位在其中一個路徑內。
 
 選取頁面底部的 [清除]。
 
@@ -182,7 +182,7 @@ http://<endpointname>.azureedge.net/index.html
 
 ![清除通知](media/cdn-add-to-web-app/portal-purge-notification.png)
 
-當您瀏覽至 *index.html*的 CDN 端點 URL 時，會看見您新增至標題的 *V2* 出現在首頁上，這表示 CDN 快取已重新整理。
+當您瀏覽至 *index.html* 的 CDN 端點 URL 時，會看見您新增至標題的 *V2* 出現在首頁上，這表示 CDN 快取已重新整理。
 
 ```
 http://<endpointname>.azureedge.net/index.html
@@ -222,18 +222,18 @@ Azure CDN 提供下列快取行為選項︰
 http://<endpointname>.azureedge.net/index.html?q=1
 ```
 
-Azure CDN 會傳回目前的 Web 應用程式內容，其標題中包含 *V2*。 
+Azure CDN 會傳回目前的 Web 應用程式內容，其標題中包含 *V2* 。 
 
 若要確保此頁面已在 CDN 中快取，請重新整理此頁面。 
 
-開啟 *index.html*並將 *V2* 變更為 *V3*，然後部署變更。 
+開啟 *index.html* 並將 *V2* 變更為 *V3* ，然後部署變更。 
 
 ```bash
 git commit -am "version 3"
 git push azure master
 ```
 
-在瀏覽器中，移至含有新查詢字串 (例如 `q=2`) 的 CDN 端點 URL。 CDN 會取得目前的 *index.html* 檔案並顯示 *V3*。 但是，如果您瀏覽至含有 `q=1` 查詢字串的 CDN 端點，則會看到 *V2*。
+在瀏覽器中，移至含有新查詢字串 (例如 `q=2`) 的 CDN 端點 URL。 CDN 會取得目前的 *index.html* 檔案並顯示 *V3* 。 但是，如果您瀏覽至含有 `q=1` 查詢字串的 CDN 端點，則會看到 *V2* 。
 
 ```
 http://<endpointname>.azureedge.net/index.html?q=2
@@ -269,5 +269,3 @@ http://<endpointname>.azureedge.net/index.html?q=1
 
 > [!div class="nextstepaction"]
 > [教學課程：將自訂網域新增至 Azure CDN 端點](cdn-map-content-to-custom-domain.md)
-
-

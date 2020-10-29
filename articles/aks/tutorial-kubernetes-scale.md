@@ -4,13 +4,13 @@ description: 在本 Azure Kubernetes Service (AKS) 教學課程中，您將了�
 services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
-ms.custom: mvc
-ms.openlocfilehash: a9a8a73e2208f7efe01f43fa87e196ffd8c64f14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: e700934a965f836456458cb33dc46125bef4ab72
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576297"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746993"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>教學課程：調整 Azure Kubernetes Service (AKS) 中的應用程式
 
@@ -45,7 +45,7 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-若要手動變更 *azure-vote-front* 部署中的 Pod 數目，請使用 [kubectl scale][kubectl-scale] 命令。 下列範例會將前端 Pod 的數目增加為 *5*：
+若要手動變更 *azure-vote-front* 部署中的 Pod 數目，請使用 [kubectl scale][kubectl-scale] 命令。 下列範例會將前端 Pod 的數目增加為 *5* ：
 
 ```console
 kubectl scale --replicas=5 deployment/azure-vote-front

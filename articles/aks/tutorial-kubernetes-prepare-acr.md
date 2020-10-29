@@ -4,13 +4,13 @@ description: 在本 Azure Kubernetes Service (AKS) 教學課程中，您會建�
 services: container-service
 ms.topic: tutorial
 ms.date: 09/30/2020
-ms.custom: mvc
-ms.openlocfilehash: bf2ea5c7ea0c2f3ae90f9d98d8009915d5ced6f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: b0f78c3969f3d02c19824fdb6d1e3b786dceb43c
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576275"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747076"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>教學課程：部署和使用 Azure Container Registry
 
@@ -54,7 +54,7 @@ az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 az acr login --name <acrName>
 ```
 
-此命令在完成之後會傳回*登入成功*訊息。
+此命令在完成之後會傳回 *登入成功* 訊息。
 
 ## <a name="tag-a-container-image"></a>標記容器映像
 
@@ -74,13 +74,13 @@ tiangolo/uwsgi-nginx-flask                     python3.6           a16ce562e863 
 
 若要將 *azure-vote-front* 容器映像用於 ACR，該映像必須標記登錄的登入伺服器位址。 將容器映像推送到映像登錄時，此標籤可用於路由傳送。
 
-若要取得登入伺服器位址，請使用 [az acr list][az-acr-list] 命令並查詢 *loginServer*，如下所示：
+若要取得登入伺服器位址，請使用 [az acr list][az-acr-list] 命令並查詢 *loginServer* ，如下所示：
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-現在，請以容器登錄的 *acrLoginServer* 位址標記您的本機 *azure-vote-front* 映像。 若要指出映像版本，請在映像名稱結尾處加上 *:v1*：
+現在，請以容器登錄的 *acrLoginServer* 位址標記您的本機 *azure-vote-front* 映像。 若要指出映像版本，請在映像名稱結尾處加上 *:v1* ：
 
 ```console
 docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 <acrLoginServer>/azure-vote-front:v1
