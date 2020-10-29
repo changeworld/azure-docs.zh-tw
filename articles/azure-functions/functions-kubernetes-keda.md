@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: eab0a54d30f2cd2829779dbfc6081445f5be0a71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 525635ef40437fe308c52e2d5aba2c97ed8f20e7
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83648853"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927527"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>搭配 KEDA 使用 Kubernetes 上的 Azure Functions
 
@@ -34,6 +34,9 @@ Azure Functions 服務是由兩個主要元件所組成：執行階段和調整�
 
 您可以將任何函式應用程式部署到執行 KEDA 的 Kubernetes 叢集。  因為您的函式會在 Docker 容器中執行，所以您的專案需要 `Dockerfile`。  如果您沒有 Dockerfile，可以在 Functions 專案的根目錄執行下列命令來新增 Dockerfile：
 
+> [!NOTE]
+> Core Tools 會自動建立以 .NET、Node、Python 或 PowerShell 撰寫 Azure Functions 的 Dockerfile。 針對以 JAVA 撰寫的函式應用程式，必須以手動方式建立 Dockerfile。 使用 Azure Functions [映射清單](https://github.com/Azure/azure-functions-docker) 來尋找以 Azure 函式為基礎的正確映射。
+
 ```cli
 func init --docker-only
 ```
@@ -49,7 +52,10 @@ func kubernetes deploy --name <name-of-function-deployment> --registry <containe
 
 > 以函式應用程式的名稱取代 `<name-of-function-deployment>`。
 
-這會建立 Kubernetes `Deployment` 資源、`ScaledObject` 資源和 `Secrets`(包括從您 `local.settings.json` 檔案匯入的環境變數)。
+Deploy 命令會執行一連串的動作：
+1. 稍早建立的 Dockerfile 可用來建立函數應用程式的本機映射。
+2. 本機映射會標記並推送至使用者登入的 container registry。
+3. 系統會建立資訊清單，並將其套用至定義 Kubernetes `Deployment` 資源、資源和的叢集， `ScaledObject` `Secrets` 包括從您的檔案匯入的環境變數 `local.settings.json` 。
 
 ### <a name="deploying-a-function-app-from-a-private-registry"></a>從私人登錄部署函式應用程式
 

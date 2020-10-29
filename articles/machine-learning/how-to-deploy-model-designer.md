@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: keli19
 author: likebupt
 ms.reviewer: peterlu
-ms.date: 10/12/2020
+ms.date: 10/29/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy, studio
-ms.openlocfilehash: e2f3e0b596847000af62aa6e23da5b137ee9de33
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 0d98d5103e26eb0b4ee0d31b95f1d07cdaa396ae
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999000"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927578"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>使用 studio 部署在設計工具中定型的模型
 
@@ -33,7 +33,7 @@ Studio 中的部署是由下列步驟所組成：
 
 在設計工具中定型的模型也可以透過 SDK 或命令列介面 (CLI) 來部署。 如需詳細資訊，請參閱 [使用 Azure Machine Learning 部署現有的模型](how-to-deploy-existing-model.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * [Azure Machine Learning 工作區](how-to-manage-workspace.md)
 
@@ -56,7 +56,7 @@ Studio 中的部署是由下列步驟所組成：
 
     ![定型模型模組右窗格的螢幕擷取畫面](./media/how-to-deploy-model-designer/train-model-right-pane.png)
 
-1. 輸入模型的名稱，然後選取 [ **儲存**]。
+1. 輸入模型的名稱，然後選取 [ **儲存** ]。
 
 註冊您的模型之後，您可以在 studio 的 [ **模型** 資產] 頁面中找到它。
     
@@ -67,9 +67,9 @@ Studio 中的部署是由下列步驟所組成：
 
 您需要下列檔案，才能在 Azure Machine Learning studio 中部署模型：
 
-- **進入腳本** 檔-載入定型的模型、處理來自要求的輸入資料、執行即時推斷，然後傳回結果。 `score.py`當「**定型模型**」模組完成時，設計工具會自動產生輸入腳本檔案。
+- **進入腳本** 檔-載入定型的模型、處理來自要求的輸入資料、執行即時推斷，然後傳回結果。 `score.py`當「 **定型模型** 」模組完成時，設計工具會自動產生輸入腳本檔案。
 
-- **Conda** 相依性檔案-指定您的 webservice 依存的 pip 和 Conda 套件。 `conda_env.yaml`當「**定型模型**」模組完成時，設計工具會自動建立檔案。
+- **Conda** 相依性檔案-指定您的 webservice 依存的 pip 和 Conda 套件。 `conda_env.yaml`當「 **定型模型** 」模組完成時，設計工具會自動建立檔案。
 
 您可以在 [ **訓練模型** ] 模組的右窗格中下載這兩個檔案：
 
@@ -104,7 +104,7 @@ Studio 中的部署是由下列步驟所組成：
 
     - 輸入端點的名稱。
     - 選取即可將模型部署到 [Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md) 或 [Azure 容器實例](how-to-deploy-azure-container-instance.md)。
-    - 上傳 `score.py` **輸入腳本**檔案的。
+    - 上傳 `score.py` **輸入腳本** 檔案的。
     - 上傳 Conda 相依性檔案的 `conda_env.yml` 。 **Conda dependencies file** 
 
     >[!TIP]
@@ -299,6 +299,7 @@ score_params = dict(
 ## <a name="next-steps"></a>後續步驟
 
 * [在設計工具中將模型定型](tutorial-designer-automobile-price-train-score.md)
+* [使用 Azure Machine Learning SDK 部署模型](how-to-deploy-and-where.md)
 * [針對失敗的部署進行疑難排解](how-to-troubleshoot-deployment.md)
 * [部署到 Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)
 * [建立用戶端應用程式以使用 web 服務](how-to-consume-web-service.md)

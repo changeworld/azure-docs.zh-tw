@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 574592d4434b9d8c49086b82bab0b8775fb67e03
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0a68c2b9c857205dda7f5da846085f9f3823da20
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371727"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927629"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>安全存取 Azure Cosmos DB 中的資料
 
@@ -119,6 +119,12 @@ User user = await database.CreateUserAsync("User 1");
 > [!NOTE]
 > 若要執行預存程式，使用者必須擁有將在其中執行預存程式之容器的 All 許可權。
 
+如果您啟用 [資料平面要求的診斷記錄](cosmosdb-monitor-resource-logs.md)，則會記錄對應至許可權的下列兩個屬性：
+
+* **resourceTokenPermissionId** -此屬性指出您已指定的資源權杖許可權識別碼。 
+
+* **resourceTokenPermissionMode** -此屬性指出您在建立資源權杖時所設定的許可權模式。 許可權模式可以有「全部」或「讀取」之類的值。
+
 ### <a name="code-sample-to-create-permission"></a>建立權限的程式碼範例
 
 下列程式碼範例示範如何建立權限資源，讀取權限資源的資源權杖，並將權限與先前所建立的[使用者](#users)產生關聯。
@@ -150,12 +156,12 @@ CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrR
 若要將 Azure Cosmos DB 帳戶讀者存取權新增至您的使用者帳戶，請在 Azure 入口網站執行下列步驟，以取得訂用帳戶擁有者。
 
 1. 開啟 Azure 入口網站，選取您的 Azure Cosmos DB 帳戶。
-2. 按一下 [存取控制 (IAM)]**** 索引標籤，然後按一下 [+ 新增角色指派]****。
-3. 在 [新增角色指派]**** 窗格的 [角色]**** 方塊中，選取 [Cosmos DB 帳戶讀者角色]****。
-4. 在 [ **指派存取權**] 方塊中，選取 [ **Azure AD 使用者、群組或應用程式**]。
+2. 按一下 [存取控制 (IAM)]  索引標籤，然後按一下 [+ 新增角色指派]  。
+3. 在 [新增角色指派]  窗格的 [角色]  方塊中，選取 [Cosmos DB 帳戶讀者角色]  。
+4. 在 [ **指派存取權** ] 方塊中，選取 [ **Azure AD 使用者、群組或應用程式** ]。
 5. 選取目錄中您要為其授與存取權的使用者、群組或應用程式。  您可以依顯示名稱、電子郵件地址或物件識別碼來搜尋目錄。
     選取的使用者、群組或應用程式會出現在選取的成員清單中。
-6. 按一下 [檔案]  。
+6. 按一下 [儲存]。
 
 實體現在已可讀取 Azure Cosmos DB 資源。
 

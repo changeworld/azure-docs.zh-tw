@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 602e3f58ac5f8f194ad4704a4e792d4f0aec3a3e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 19abb3f12dc1a0fd2a3dff548ecdc9e7fff47659
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978776"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927663"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA 在 Azure 上的基礎結構設定和作業
 此文件提供設定 Azure 基礎結構和已部署在 Azure 原生虛擬機器 (VM) 上之 SAP Hana 系統的作業指導方針。 此文件也包含 M128s VM SKU 的 SAP HANA 相應放大設定資訊。 這份文件並非用以取代標準 SAP 文件，包含下列內容：
@@ -83,7 +83,7 @@ ms.locfileid: "91978776"
 > 
 
 > [!IMPORTANT]
-> **不**支援的另一種設計是將 SAP 應用程式層與 DBMS 層隔離到不同的 Azure 虛擬網路，而這些虛擬網路彼此間沒有[對等互連](../../../virtual-network/virtual-network-peering-overview.md)。 建議您使用 Azure 的虛擬網路內的子網路來區隔 SAP 應用程式層和 DBMS 層，而不使用不同的 Azure 虛擬網路。 如果您決定不遵循建議，而是要將兩個層隔離到不同的虛擬網路，則這兩個虛擬網路必須要[對等互連](../../../virtual-network/virtual-network-peering-overview.md)。 請注意，兩個[對等互連](../../../virtual-network/virtual-network-peering-overview.md) Azure 虛擬網路之間的網路流量會產生傳輸成本。 由於 SAP 應用程式層和 DBMS 層之間會交換龐大資料量 (以 TB 計算)，如果 SAP 應用程式層和 DBMS 層分別在兩個對等互連的 Azure 虛擬網路中，則會累積大量成本。 
+> **不** 支援的另一種設計是將 SAP 應用程式層與 DBMS 層隔離到不同的 Azure 虛擬網路，而這些虛擬網路彼此間沒有 [對等互連](../../../virtual-network/virtual-network-peering-overview.md)。 建議您使用 Azure 的虛擬網路內的子網路來區隔 SAP 應用程式層和 DBMS 層，而不使用不同的 Azure 虛擬網路。 如果您決定不遵循建議，而是要將兩個層隔離到不同的虛擬網路，則這兩個虛擬網路必須要[對等互連](../../../virtual-network/virtual-network-peering-overview.md)。 請注意，兩個[對等互連](../../../virtual-network/virtual-network-peering-overview.md) Azure 虛擬網路之間的網路流量會產生傳輸成本。 由於 SAP 應用程式層和 DBMS 層之間會交換龐大資料量 (以 TB 計算)，如果 SAP 應用程式層和 DBMS 層分別在兩個對等互連的 Azure 虛擬網路中，則會累積大量成本。 
 
 當您安裝執行 SAP HANA 的 VM 時，VM 將會需要：
 
@@ -135,11 +135,11 @@ ms.locfileid: "91978776"
 
 因此，使用擴增所設定單一節點的典型基本設計，看起來就像下面這樣：
 
-![單一節點的相應放大基本概念](media/hana-vm-operations/scale-out-basics-anf-shared.PNG)
+![此圖顯示相應放大設定中單一節點的一般基本設計。](media/hana-vm-operations/scale-out-basics-anf-shared.PNG)
 
 SAP HANA 相應放大的 VM 節點基本設定看起來像這樣：
 
-- 針對 **/hana/shared**，您可以使用透過 Azure NetApp Files 提供的原生 NFS 服務。 
+- 針對 **/hana/shared** ，您可以使用透過 Azure NetApp Files 提供的原生 NFS 服務。 
 - 所有其他的磁碟區都不會在不同節點間共用，而且也不是以 NFS 為基礎。 使用非共用 **/hana/data** 與 **hana/log** 之擴增 HANA 安裝的安裝設定與步驟，稍後都會在此文件中進一步提供。 如需可使用的 HANA 認證儲存體，請參閱 [SAP HANA Azure 虛擬機器儲存體設定](./hana-vm-operations-storage.md)一文。
 
 

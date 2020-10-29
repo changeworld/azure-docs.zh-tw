@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: b739bb94911e24002b359aabfa23583ecfc9de85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3908e5f4b7b246fe1c74e5ac4d20053242ece9f6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335998"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927680"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>如何擴充虛擬機器的 OS 磁碟機
 
@@ -32,26 +32,27 @@ ms.locfileid: "91335998"
 > [!IMPORTANT]
 > 若要調整 Azure 虛擬機器的 OS 或資料磁片大小，必須將虛擬機器解除配置。
 >
-> 在擴充磁碟之後，您必須[擴充 OS 內的磁碟區](#expand-the-volume-within-the-os)以使用較大的磁碟。
+> 不支援壓縮現有的磁片，可能會導致資料遺失。
 > 
+> 在擴充磁碟之後，您必須[擴充 OS 內的磁碟區](#expand-the-volume-within-the-os)以使用較大的磁碟。
 
 ## <a name="resize-a-managed-disk-in-the-azure-portal"></a>調整 Azure 入口網站中的受控磁片大小
 
 1. 在 [ [Azure 入口網站](https://portal.azure.com)中，移至您要在其中擴充磁片的虛擬機器。 選取 [ **停止** ] 以將 VM 解除配置。
-2. 當 VM 停止時，請在左側功能表的 [ **設定**] 底下，選取 [ **磁片**]。
+2. 當 VM 停止時，請在左側功能表的 [ **設定** ] 底下，選取 [ **磁片** ]。
 
     :::image type="content" source="./media/expand-os-disk/select-disks.png" alt-text="顯示在功能表的 [設定] 區段中選取 [磁片] 選項的螢幕擷取畫面。":::
 
  
-3. 在 [ **磁片名稱**] 下，選取您要調整大小的磁片。
+3. 在 [ **磁片名稱** ] 下，選取您要調整大小的磁片。
 
     :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="顯示在功能表的 [設定] 區段中選取 [磁片] 選項的螢幕擷取畫面。":::
 
-4. 在左側功能表的 [ **設定**] 底下 **，選取 [** 設定]。
+4. 在左側功能表的 [ **設定** ] 底下 **，選取 [** 設定]。
 
     :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="顯示在功能表的 [設定] 區段中選取 [磁片] 選項的螢幕擷取畫面。":::
 
-5. 在 [ **大小] (GiB]) **中，選取您要的磁片大小。
+5. 在 [ **大小] (GiB])** 中，選取您要的磁片大小。
    
    > [!WARNING]
    > 新的大小應該大於現有的磁碟大小。 針對 OS 磁片，允許的最大值為 2048 GB。  (可以將 VHD blob 擴充至超過該大小，但 OS 只能與前 2048 GB 的空間搭配使用。 ) 
@@ -59,7 +60,7 @@ ms.locfileid: "91335998"
 
     :::image type="content" source="./media/expand-os-disk/size.png" alt-text="顯示在功能表的 [設定] 區段中選取 [磁片] 選項的螢幕擷取畫面。":::
 
-6. 選取 [儲存]****。
+6. 選取 [儲存]。
 
     :::image type="content" source="./media/expand-os-disk/save.png" alt-text="顯示在功能表的 [設定] 區段中選取 [磁片] 選項的螢幕擷取畫面。":::
 
@@ -230,15 +231,15 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 
 ## <a name="expand-the-volume-within-the-os"></a>擴充 OS 內的磁碟區
 
-當您擴充 VM 的磁片時，您必須移至 OS，並展開磁片區以包含新的空間。 有數種方法可以擴充磁碟分割。 本章節說明如何使用 RDP 連線與 VM 建立連線，以使用 **DiskPart**擴充磁碟分割。
+當您擴充 VM 的磁片時，您必須移至 OS，並展開磁片區以包含新的空間。 有數種方法可以擴充磁碟分割。 本章節說明如何使用 RDP 連線與 VM 建立連線，以使用 **DiskPart** 擴充磁碟分割。
 
 1. 開啟連到 VM 的 RDP 連線。
 
-2. 開啟命令提示字元，然後鍵入 **diskpart**。
+2. 開啟命令提示字元，然後鍵入 **diskpart** 。
 
 3. 在 **DISKPART** 提示處，鍵入 `list volume`。 記下您想要擴充的磁碟區。
 
-4. 在 **DISKPART** 提示處，鍵入 `select volume <volumenumber>`。 如此會選取您想在相同磁碟上擴充成連續空間的磁碟區 *volumenumber*。
+4. 在 **DISKPART** 提示處，鍵入 `select volume <volumenumber>`。 如此會選取您想在相同磁碟上擴充成連續空間的磁碟區 *volumenumber* 。
 
 5. 在 **DISKPART** 提示處，鍵入 `extend [size=<size>]`。 如此會以 *size* (MB) 為單位，擴充選取的磁碟區。
 
