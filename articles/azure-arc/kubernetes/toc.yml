@@ -33,3 +33,7 @@
     - name: Azure 原則內建
       displayName: 'samples, policies, definitions'
       href: policy-reference.md
+- name: 資源
+  items:
+    - name: Azure Arc 快速入門
+      href: 'https://github.com/microsoft/azure_arc'

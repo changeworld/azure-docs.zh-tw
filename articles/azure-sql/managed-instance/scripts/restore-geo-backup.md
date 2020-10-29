@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: 0c6ca03f535201059f107d6b53bc423b92d1c1c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f04e4b5a44dccdc3aaeabe6b4144836b0be7354c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87073374"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790775"
 ---
 # <a name="use-powershell-to-restore-an-azure-sql-managed-instance-database-to-another-geo-region"></a>使用 PowerShell 將 Azure SQL 受控執行個體資料庫還原到另一個地理區域
 
@@ -75,7 +75,7 @@ Remove-AzResourceGroup -ResourceGroupName $TargetResourceGroupName
 
 | Command | 注意 |
 |---|---|
-| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/New-AzResourceGroup) | 建立用來存放所有資源的資源群組。 |
+| [New-AzResourceGroup](/powershell/module/az.resources/New-AzResourceGroup) | 建立用來存放所有資源的資源群組。 |
 | [Get-AzSqlInstanceDatabaseGeoBackup](/powershell/module/az.sql/Get-AzSqlInstanceDatabaseGeoBackup) | 建立 SQL 受控執行個體資料庫的異地備援備份。 |
 | [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/Restore-AzSqlInstanceDatabase) | 在 SQL 受控執行個體上從異地備份建立資料庫。 |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 刪除資源群組，包括所有巢狀資源。 |

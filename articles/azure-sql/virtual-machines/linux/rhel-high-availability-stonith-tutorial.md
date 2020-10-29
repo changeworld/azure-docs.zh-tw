@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: 4411bd490ab72aa27fbf16a8598a9ff0dae7a5b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06442e861a247f545ca6f22ecc82e5f5dc910553
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358911"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790231"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教學課程：在 Azure 中為 RHEL 虛擬機器上的 SQL Server 設定可用性群組 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -242,7 +242,7 @@ az vm availability-set create \
     done
     ```
 
-上述命令會建立 VM，並建立這些 VM 的預設 VNet。 如需不同設定的詳細資訊，請參閱 [az vm create](https://docs.microsoft.com/cli/azure/vm) 一文。
+上述命令會建立 VM，並建立這些 VM 的預設 VNet。 如需不同設定的詳細資訊，請參閱 [az vm create](/cli/azure/vm) 一文。
 
 對每個 VM 完成此命令後，應該會產生如下的結果：
 
@@ -304,7 +304,7 @@ ssh <username>@publicipaddress
 1. 使用下列命令，在所有節點上更新及安裝 Pacemaker 套件：
 
     > [!NOTE]
-    > **nmap** 會安裝為此命令區塊中的一項工具，用以尋找您網路中可用的 IP 位址。 您不需要安裝 **nmap**，但其效用將在本教學課程稍後的步驟中彰顯出來。
+    > **nmap** 會安裝為此命令區塊中的一項工具，用以尋找您網路中可用的 IP 位址。 您不需要安裝 **nmap** ，但其效用將在本教學課程稍後的步驟中彰顯出來。
 
     ```bash
     sudo yum update -y
@@ -324,7 +324,7 @@ ssh <username>@publicipaddress
     sudo vi /etc/hosts
     ```
 
-    在 **vi** 編輯器中，輸入 `i` 以插入文字，並在空白行上新增對應 VM 的**私人 IP**。 然後，在 IP 旁的空格後面新增 VM 名稱。 各行應包含個別的項目。
+    在 **vi** 編輯器中，輸入 `i` 以插入文字，並在空白行上新增對應 VM 的 **私人 IP** 。 然後，在 IP 旁的空格後面新增 VM 名稱。 各行應包含個別的項目。
 
     ```output
     <IP1> <VM1>
@@ -333,7 +333,7 @@ ssh <username>@publicipaddress
     ```
 
     > [!IMPORTANT]
-    > 建議您使用上方的**私人 IP** 位址。 在此設定中使用公用 IP 位址將導致設定失敗，而且我們不建議您將 VM 公開至外部網路。
+    > 建議您使用上方的 **私人 IP** 位址。 在此設定中使用公用 IP 位址將導致設定失敗，而且我們不建議您將 VM 公開至外部網路。
 
     若要結束 **vi** 編輯器，請先按 **Esc** 鍵，然後輸入命令 `:wq` 以寫入檔案並結束。
 
@@ -486,7 +486,7 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  
  1. 移至 https://portal.azure.com 。
  2. 開啟 [Azure Active Directory 刀鋒視窗](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)。 移至 [屬性]，並記下目錄識別碼。 這是 `tenant ID`
- 3. 按一下[**應用程式註冊**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
+ 3. 按一下 [**應用程式註冊**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
  4. 按一下 [新增註冊]
  5. 輸入 `<resourceGroupName>-app` 之類的 [名稱]，然後選取 [僅限此組織目錄中的帳戶]
  6. 選取應用程式類型 [Web]，輸入登入 URL (例如 http://localhost) ，然後按一下 [新增]。 登入 URL 並未使用，而且可以是任何有效的 URL。 完成後，按一下 [註冊]
@@ -601,7 +601,7 @@ sudo firewall-cmd --reload
 ## <a name="install-sql-server-and-mssql-tools"></a>安裝 SQL Server 和 mssql-tools
 
 > [!NOTE]
-> 如果您已建立在 RHEL8-HA 上預先安裝 SQL Server 2019 的 VM，可以跳過下列安裝 SQL Server 和 mssql-tools 的步驟，並在所有 VM 上執行 `sudo /opt/mssql/bin/mssql-conf set-sa-password` 命令來設定 sa 密碼後，開始進行**設定可用性群組**區段。
+> 如果您已建立在 RHEL8-HA 上預先安裝 SQL Server 2019 的 VM，可以跳過下列安裝 SQL Server 和 mssql-tools 的步驟，並在所有 VM 上執行 `sudo /opt/mssql/bin/mssql-conf set-sa-password` 命令來設定 sa 密碼後，開始進行 **設定可用性群組** 區段。
 
 依照下一節的指示，在 VM 上安裝 SQL Server 和 mssql-tools。 您可以選擇下列其中一個範例，將 SQL Server 2017 安裝在 RHEL 7，或將 SQL Server 2019 安裝在 RHEL 8 上。 請在所有節點上執行這些動作。 如需詳細資訊，請參閱[在 Red Hat VM 上安裝 SQL Server](/sql/linux/quickstart-install-connect-red-hat)。
 
@@ -699,7 +699,7 @@ sudo systemctl restart mssql-server
 
 我們目前不支援對 AG 端點進行 AD 驗證。 因此，我們必須使用憑證為 AG 端點加密。
 
-1. 使用 SQL Server Management Studio (SSMS) 或 SQL CMD 連線至**所有節點**。 執行下列命令，以啟用 AlwaysOn_health 工作階段，並建立主要金鑰：
+1. 使用 SQL Server Management Studio (SSMS) 或 SQL CMD 連線至 **所有節點** 。 執行下列命令，以啟用 AlwaysOn_health 工作階段，並建立主要金鑰：
 
     > [!IMPORTANT]
     > 如果您是從遠端連線至 SQL Server 執行個體，則必須在防火牆上開啟連接埠 1433。 您也必須在每個 VM 的 NSG 中，允許對連接埠 1433 的輸入連線。 如需詳細資訊，請參閱[建立安全性規則](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)，以了解如何建立輸入安全性規則。
@@ -906,7 +906,7 @@ GO
     GO
     ```
 
-1. 聯結次要複本後，您可以在 SSMS 物件總管中加以檢視，方法是展開 **Always On 高可用性**節點：
+1. 聯結次要複本後，您可以在 SSMS 物件總管中加以檢視，方法是展開 **Always On 高可用性** 節點：
 
     ![此螢幕擷取畫面顯示主要和次要可用性複本。](./media/rhel-high-availability-stonith-tutorial/availability-group-joined.png)
 

@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 34265552122c1f8d1bcbbcfe95948683a5750a71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea1cc022cbea7dbf3d1fa12cb83cfe3084b28560
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530998"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788076"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教學課程：使用 Python 和 AI 從 Azure Blob 產生可搜尋的內容
 
@@ -43,9 +43,9 @@ ms.locfileid: "91530998"
 
 ## <a name="download-files"></a>下載檔案
 
-1. 開啟此 [OneDrive 資料夾](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，然後在左上角按一下 [下載]****，將檔案複製到您的電腦。 
+1. 開啟此  ，將檔案複製到您的電腦。 
 
-1. 以滑鼠右鍵按一下 ZIP 檔案並選取 [全部解壓縮]****。 其中有 14 個不同類型的檔案。 在此練習中，您將使用 7 個檔案。
+1. 以滑鼠右鍵按一下 ZIP 檔案並選取 [全部解壓縮]  。 其中有 14 個不同類型的檔案。 在此練習中，您將使用 7 個檔案。
 
 ## <a name="1---create-services"></a>1 - 建立服務
 
@@ -55,39 +55,39 @@ ms.locfileid: "91530998"
 
 ### <a name="start-with-azure-storage"></a>開始使用 Azure 儲存體
 
-1. [登入 Azure 入口網站](https://portal.azure.com/)，然後按一下 [+ 建立資源]****。
+1.  。
 
-1. 搜尋「儲存體帳戶」**，然後選取 Microsoft 的儲存體帳戶供應項目。
+1. 搜尋「儲存體帳戶」  ，然後選取 Microsoft 的儲存體帳戶供應項目。
 
    :::image type="content" source="media/cognitive-search-tutorial-blob/storage-account.png" alt-text="建立儲存體帳戶" border="false":::
 
 1. 在 [基本] 索引標籤中，需要下列項目。 接受所有其他項目的預設值。
 
-   + **資源群組**。 選取現有群組或建立一個新的群組，但必須對所有服務使用相同的群組，以便您一起管理這些服務。
+   + **資源群組** 。 選取現有群組或建立一個新的群組，但必須對所有服務使用相同的群組，以便您一起管理這些服務。
 
-   + **儲存體帳戶名稱**。 如果您認為您可能會有多個相同類型的資源，請透過名稱在類型和區域上做出區別，例如 blobstoragewestus**。 
+   + **儲存體帳戶名稱** 。 如果您認為您可能會有多個相同類型的資源，請透過名稱在類型和區域上做出區別，例如 blobstoragewestus  。 
 
-   + **位置**。 可能的話，請選擇用於 Azure 認知搜尋和認知服務的相同位置。 單一位置可避免產生頻寬費用。
+   + **位置** 。 可能的話，請選擇用於 Azure 認知搜尋和認知服務的相同位置。 單一位置可避免產生頻寬費用。
 
-   + **帳戶種類**。 選擇預設值 [StorageV2 (一般用途 v2)]**。
+   + **帳戶種類** 。 選擇預設值 [StorageV2 (一般用途 v2)]  。
 
-1. 按一下 [檢閱 + 建立]**** 以建立服務。
+1. 按一下 [檢閱 + 建立]  以建立服務。
 
-1. 建立後，按一下 [移至資源]**** 以開啟 [概觀] 頁面。
+1. 建立後，按一下 [移至資源]  以開啟 [概觀] 頁面。
 
-1. 按一下 [Blob]**** 服務。
+1. 按一下 [Blob]  服務。
 
-1. 按一下 [+ 容器]**** 來建立容器，並將其命名為 cog-search-demo**。
+1. 按一下 [+ 容器]  來建立容器，並將其命名為 cog-search-demo  。
 
-1. 選取 [cog-search-demo]**，然後按一下 [上傳]**** 以開啟其中儲存下載檔案的資料夾。 選取所有非影像檔案。 您應該會有 7 個檔案。 按一下 [確定]**** 來上傳。
+1. 選取 [cog-search-demo]  ，然後按一下 [上傳]  以開啟其中儲存下載檔案的資料夾。 選取所有非影像檔案。 您應該會有 7 個檔案。 按一下 [確定]  來上傳。
 
    :::image type="content" source="media/cognitive-search-tutorial-blob/sample-files.png" alt-text="建立儲存體帳戶" border="false":::
 
 1. 在您離開 Azure 儲存體之前，請取得連接字串，以便在 Azure 認知搜尋中制定連線。 
 
-   1. 往回瀏覽到儲存體帳戶的 [概觀] 頁面 (我們使用 blobstragewestus** 作為範例)。 
+   1. 往回瀏覽到儲存體帳戶的 [概觀] 頁面 (我們使用 blobstragewestus  作為範例)。 
    
-   1. 在左側導覽窗格中，選取 [存取金鑰]**** 並複製其中一個連接字串。 
+   1. 在左側導覽窗格中，選取 [存取金鑰]  並複製其中一個連接字串。 
 
    連接字串應為類似於下列範例的 URL：
 
@@ -111,13 +111,13 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 
 ### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>取得 Azure 認知搜尋的管理員 API 金鑰和 URL
 
-1. [登入 Azure 入口網站](https://portal.azure.com/)，並在搜尋服務的 [概觀]**** 頁面中取得您的搜尋服務名稱。 您可藉由檢閱端點 URL 來確認您的服務名稱。 如果您的端點 URL 為 `https://mydemo.search.windows.net`，您的服務名稱會是 `mydemo`。
+1.  頁面中取得您的搜尋服務名稱。 您可藉由檢閱端點 URL 來確認您的服務名稱。 如果您的端點 URL 為 `https://mydemo.search.windows.net`，您的服務名稱會是 `mydemo`。
 
-2. 在 [設定]**** >  [金鑰]**** 中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
+2. 在 [設定]  >  [金鑰]  中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
 
    一併取得查詢金鑰。 最佳做法是發出具有唯讀存取權的查詢要求。
 
-   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="建立儲存體帳戶" border="false":::
+   :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="建立儲存體帳戶" border="false":::
 
 在傳送至您服務的每個要求的標頭中都需要有 api-key。 有效的金鑰能為每個要求在傳送要求之應用程式與處理要求的服務間建立信任。
 
@@ -188,13 +188,13 @@ print(r.status_code)
 
 此要求應該會傳回確認成功的狀態碼 201。
 
-在 Azure 入口網站的搜尋服務儀表板頁面上，確認 cogsrch-py-datasource 出現在 [資料來源]**** 清單中。 按一下 [重新整理]**** 來更新頁面。
+在 Azure 入口網站的搜尋服務儀表板頁面上，確認 cogsrch-py-datasource 出現在 [資料來源]  清單中。 按一下 [重新整理]  來更新頁面。
 
 :::image type="content" source="media/cognitive-search-tutorial-blob-python/py-data-source-tile.png" alt-text="建立儲存體帳戶" border="false":::
 
 ### <a name="step-2-create-a-skillset"></a>步驟 2:建立技能集
 
-在此步驟中，您將會定義一組要套用至資料的擴充步驟。 我們將每個擴充步驟稱為*技能*，一組擴充步驟則稱之為*技能集*。 本教學課程會使用為技能集[內建的認知技能](cognitive-search-predefined-skills.md)：
+在此步驟中，您將會定義一組要套用至資料的擴充步驟。 我們將每個擴充步驟稱為 *技能* ，一組擴充步驟則稱之為 *技能集* 。 本教學課程會使用為技能集[內建的認知技能](cognitive-search-predefined-skills.md)：
 
 + [實體辨識](cognitive-search-skill-entity-recognition.md)，用以從 Blob 容器中的內容擷取組織名稱。
 

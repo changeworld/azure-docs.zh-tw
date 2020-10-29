@@ -10,12 +10,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 11/21/2019
-ms.openlocfilehash: ff29e93149c618bb7d6df6b4477cc79fcf4b53d2
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 8173d53a5d4cac899b22f51a001f6e373f102236
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058551"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790792"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>教學課程：設定 Azure SQL 受控執行個體與 SQL Server 之間的異動複寫
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -38,7 +38,7 @@ SQL 受控執行個體的異動複寫目前處於公開預覽狀態。
 
 
 > [!NOTE]
-> 本文說明如何在 Azure SQL 受控執行個體中使用[異動複寫](/sql/relational-databases/replication/transactional/transactional-replication)。 這與[容錯移轉群組](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)無關，後者是一種 Azure SQL 受控執行個體功能，可讓您建立個別執行個體的完整可讀取複本。 在設定[容錯移轉群組的異動複寫](replication-transactional-overview.md#with-failover-groups)時，還要考慮其他事項。
+> 本文說明如何在 Azure SQL 受控執行個體中使用[異動複寫](/sql/relational-databases/replication/transactional/transactional-replication)。 這與[容錯移轉群組](../database/auto-failover-group-overview.md)無關，後者是一種 Azure SQL 受控執行個體功能，可讓您建立個別執行個體的完整可讀取複本。 在設定[容錯移轉群組的異動複寫](replication-transactional-overview.md#with-failover-groups)時，還要考慮其他事項。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -69,7 +69,7 @@ New-AzResourceGroup -Name  $ResourceGroupName -Location $Location
 使用 [Azure 入口網站](https://portal.azure.com)，在這個新的資源群組內建立兩個受控執行個體。
 
 - 發行者受控執行個體的名稱應為 `sql-mi-publisher` (以及幾個隨機的字元)，虛擬網路的名稱應為 `vnet-sql-mi-publisher`。
-- 散發者受控執行個體的名稱應為 `sql-mi-distributor` (以及幾個隨機的字元)，且應_位於與發行者受控執行個體相同的虛擬網路中_。
+- 散發者受控執行個體的名稱應為 `sql-mi-distributor` (以及幾個隨機的字元)，且應 _位於與發行者受控執行個體相同的虛擬網路中_ 。
 
    ![將發行者 VNet 用於散發者](./media/replication-two-instances-and-sql-server-configure-tutorial/use-same-vnet-for-distributor.png)
 
@@ -159,7 +159,7 @@ Get-AzVirtualNetworkPeering `
 
 ### <a name="create-an-a-record"></a>建立 A 記錄
 
-1. 移至新的**私人 DNS 區域**，然後選取 [概觀]。
+1. 移至新的 **私人 DNS 區域** ，然後選取 [概觀]。
 1. 選取 [+ 記錄集] 以建立新的 A 記錄。
 1. 提供 SQL Server VM 的名稱，以及私人內部 IP 位址。
 
@@ -169,7 +169,7 @@ Get-AzVirtualNetworkPeering `
 
 ### <a name="link-the-virtual-network"></a>連結虛擬網路
 
-1. 移至新的**私人 DNS 區域**，然後選取 [虛擬網路連結]。
+1. 移至新的 **私人 DNS 區域** ，然後選取 [虛擬網路連結]。
 1. 選取 [+ 新增] 。
 1. 提供連結的名稱，例如 `Pub-link`。
 1. 從下拉式選單中選取您的訂閱，然後選取發行者受控執行個體的虛擬網路。
@@ -182,7 +182,7 @@ Get-AzVirtualNetworkPeering `
 
 ## <a name="create-an-azure-storage-account"></a>建立 Azure 儲存體帳戶
 
-為工作目錄[建立 Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account)，然後在儲存體帳戶內建立[檔案共用](../../storage/files/storage-how-to-create-file-share.md)。
+為工作目錄[建立 Azure 儲存體帳戶](../../storage/common/storage-account-create.md#create-a-storage-account)，然後在儲存體帳戶內建立[檔案共用](../../storage/files/storage-how-to-create-file-share.md)。
 
 複製下列格式的檔案共用路徑：`\\storage-account-name.file.core.windows.net\file-share-name`
 
@@ -210,7 +210,7 @@ GO
 -- Drop database if it exists
 IF EXISTS (SELECT * FROM sys.sysdatabases WHERE name = 'ReplTutorial')
 BEGIN
-    DROP DATABASE ReplTutorial
+    DROP DATABASE ReplTutorial
 END
 GO
 
@@ -352,7 +352,7 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 ## <a name="clean-up-resources"></a>清除資源
 
 1. 瀏覽至您在 [Azure 入口網站](https://portal.azure.com)中的資源群組。
-1. 選取受控執行個體，然後選取 [刪除]。 在文字方塊中輸入 `yes` 以確認您要刪除資源，然後選取 [刪除]。 此程序可能需要一些時間才能在背景中完成，在其完成前，您將無法刪除*虛擬叢集*或任何其他相依資源。 監視 [活動] 索引標籤中的刪除，確認您的受控執行個體已刪除。
+1. 選取受控執行個體，然後選取 [刪除]。 在文字方塊中輸入 `yes` 以確認您要刪除資源，然後選取 [刪除]。 此程序可能需要一些時間才能在背景中完成，在其完成前，您將無法刪除 *虛擬叢集* 或任何其他相依資源。 監視 [活動] 索引標籤中的刪除，確認您的受控執行個體已刪除。
 1. 受控執行個體刪除後，請在資源群組中選取虛擬叢集，然後選擇 [刪除]，加以刪除。 在文字方塊中輸入 `yes` 以確認您要刪除資源，然後選取 [刪除]。
 1. 刪除任何剩餘的資源。 在文字方塊中輸入 `yes` 以確認您要刪除資源，然後選取 [刪除]。
 1. 選取 [刪除資源群組]、輸入資源群組的名稱 `myResourceGroup`，然後選取 [刪除]，以刪除資源群組。
@@ -363,7 +363,7 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 
 `Exception Message: Windows logins are not supported in this version of SQL Server.`
 
-代理程式已設定了 Windows 登入，必須改為使用 SQL Server 登入。 請使用**發行集屬性**的 [代理程式安全性] 頁面，將登入認證變更為 SQL Server 登入。
+代理程式已設定了 Windows 登入，必須改為使用 SQL Server 登入。 請使用 **發行集屬性** 的 [代理程式安全性] 頁面，將登入認證變更為 SQL Server 登入。
 
 ### <a name="failed-to-connect-to-azure-storage"></a>無法連線至 Azure 儲存體
 
@@ -397,7 +397,7 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 
 ### <a name="no-publications-to-which-you-can-subscribe"></a>您沒有可訂閱的發行集
 
-使用**新增訂閱**精靈來新增訂閱時，您可能會發現 [發行集] 頁面上沒有任何資料庫和發行集列為可用的選項，且您可能會看到下列錯誤訊息：
+使用 **新增訂閱** 精靈來新增訂閱時，您可能會發現 [發行集] 頁面上沒有任何資料庫和發行集列為可用的選項，且您可能會看到下列錯誤訊息：
 
 `There are no publications to which you can subscribe, either because this server has no publications or because you do not have sufficient privileges to access the publications.`
 
@@ -414,7 +414,7 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 - [威脅偵測](threat-detection-configure.md)
 - [動態資料遮罩](/sql/relational-databases/security/dynamic-data-masking)
 - [資料列層級安全性](/sql/relational-databases/security/row-level-security)
-- [透明資料加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
+- [透明資料加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 
 ### <a name="sql-managed-instance-capabilities"></a>SQL 受控執行個體功能
 

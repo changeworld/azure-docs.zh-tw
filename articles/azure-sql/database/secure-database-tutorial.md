@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: bec60875561a9d821642d850c27e47d4f906aba3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9afb35a0e8a1c2513ce032030271599d181cd14
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90885405"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792679"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>教學課程：保護 Azure SQL Database 中的資料庫
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,10 +39,10 @@ Azure SQL Database 可讓您以下列方式保護資料：
 > [!NOTE]
 > 如 [Azure SQL 受控執行個體](../managed-instance/sql-managed-instance-paas-overview.md)和[連線架構](../managed-instance/connectivity-architecture-overview.md)所述，使用網路安全性群組規則和私人端點來保護 Azure SQL 受控執行個體。
 
-若要深入了解，請參閱 [Azure SQL Database 安全性概觀](/azure/sql-database/sql-database-security-index)和[功能](security-overview.md)文章。
+若要深入了解，請參閱 [Azure SQL Database 安全性概觀](./security-overview.md)和[功能](security-overview.md)文章。
 
 > [!TIP]
-> 下列 Microsoft Learn 課程模組可協助您免費學習如何[保護 Azure SQL Database 中的資料庫](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)。
+> 下列 Microsoft Learn 課程模組可協助您免費學習如何[保護 Azure SQL Database 中的資料庫](/learn/modules/secure-your-azure-sql-database/)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -62,7 +62,7 @@ Azure SQL Database 可讓您以下列方式保護資料：
 
 Azure 中 SQL Database 中的資料庫是由防火牆保護。 依預設，伺服器與資料庫的所有連線皆會遭拒。 若要深入了解，請參閱[伺服器層級和資料庫層級防火牆規則](firewall-configure.md)。
 
-最安全的設定是將 [允許存取 Azure 服務] 設為 [關閉]。 接著，針對需要連線的資源 (例如 Azure VM 或雲端服務)，建立[保留的 IP (傳統部署)](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip)，而且只允許透過防火牆的 IP 位址存取。 如果您使用 [Resource Manager](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) 部署模型，則每個資源都需要專用的公用 IP 位址。
+最安全的設定是將 [允許存取 Azure 服務] 設為 [關閉]。 接著，針對需要連線的資源 (例如 Azure VM 或雲端服務)，建立[保留的 IP (傳統部署)](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip)，而且只允許透過防火牆的 IP 位址存取。 如果您使用 [Resource Manager](../../virtual-network/public-ip-addresses.md) 部署模型，則每個資源都需要專用的公用 IP 位址。
 
 > [!NOTE]
 > SQL Database 會透過連接埠 1433 通訊。 如果您嘗試從公司網路連線，您網路的防火牆可能不允許透過連接埠 1433 的連出流量。 若情況如此，除非系統管理員開啟連接埠 1433，否則您無法連線至伺服器。
@@ -78,7 +78,7 @@ Azure 中 SQL Database 中的資料庫是由防火牆保護。 依預設，伺�
     ![伺服器防火牆規則](./media/secure-database-tutorial/server-name.png)
 
     > [!NOTE]
-    > 請務必複製完整的伺服器名稱 (例如 *yourserver.database.windows.net*)，以便稍後在本教學課程中使用。
+    > 請務必複製完整的伺服器名稱 (例如 *yourserver.database.windows.net* )，以便稍後在本教學課程中使用。
 
 1. 在 [概觀] 頁面上，選取 [設定伺服器防火牆]。 伺服器的 [防火牆設定] 頁面隨即開啟。
 
@@ -155,9 +155,9 @@ Azure 中 SQL Database 中的資料庫是由防火牆保護。 依預設，伺�
 
 若要新增使用者，請選擇資料庫驗證類型：
 
-- **SQL 驗證**，使用登入作業的使用者名稱和密碼，而且僅在伺服器內的特定資料庫環境中有效。
+- **SQL 驗證** ，使用登入作業的使用者名稱和密碼，而且僅在伺服器內的特定資料庫環境中有效。
 
-- **Azure AD 驗證**，使用 Azure AD 所管理的身分識別
+- **Azure AD 驗證** ，使用 Azure AD 所管理的身分識別
 
 ### <a name="sql-authentication"></a>SQL 驗證
 
@@ -280,17 +280,17 @@ Azure SQL Database 會提供可使用 Azure 入口網站存取的安全性功能
 
    1. 選取 [稽核記錄目的地] 作為下列任何一項：
 
-       - **儲存體**，其中儲存事件記錄並可下載為 *.xel* 檔案的 Azure 儲存體帳戶。
+       - **儲存體** ，其中儲存事件記錄並可下載為 *.xel* 檔案的 Azure 儲存體帳戶。
 
           > [!TIP]
           > 讓所有稽核的資料庫都使用相同的儲存體帳戶，以充分利用稽核報告範本。
 
-       - **Log Analytics**，可自動儲存事件以供查詢或進一步分析
+       - **Log Analytics** ，可自動儲存事件以供查詢或進一步分析
 
            > [!NOTE]
-           > 需要有 **Log Analytics 工作區**才可支援進階功能，例如分析、自訂警示規則以及 Excel 或 Power BI 匯出。 沒有工作區，只可使用查詢編輯器。
+           > 需要有 **Log Analytics 工作區** 才可支援進階功能，例如分析、自訂警示規則以及 Excel 或 Power BI 匯出。 沒有工作區，只可使用查詢編輯器。
 
-       - **事件中樞**，允許路由傳送事件，以便在其他應用程式中使用
+       - **事件中樞** ，允許路由傳送事件，以便在其他應用程式中使用
 
    1. 選取 [儲存]。
 

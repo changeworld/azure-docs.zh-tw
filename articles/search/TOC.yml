@@ -32,8 +32,8 @@
       href: search-get-started-dotnet.md
     - name: Java
       href: search-get-started-java.md
-    - name: Node.js
-      href: search-get-started-nodejs.md
+    - name: JavaScript
+      href: search-get-started-javascript.md
     - name: postman
       href: search-get-started-postman.md
     - name: PowerShell
@@ -320,9 +320,11 @@
           href: search-api-preview.md
         - name: 以 .NET 開發
           items:
-            - name: 使用 Microsoft.Azure.Search (v10)
+            - name: 使用 Azure.Search.Documents
               href: search-howto-dotnet-sdk.md
-            - name: 開始使用 (v10)
+            - name: 使用 Microsoft.Azure.Search
+              href: search-howto-dotnet-sdk-v10.md
+            - name: 舊版快速入門 (Microsoft.Azure.Search)
               href: search-get-started-dotnet-v10.md
         - name: 升級 SDK
           items:

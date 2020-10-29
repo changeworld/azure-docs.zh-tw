@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: c60bff122b6ad9bef4e9e4558d9858e1243ebd1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d346d1ff30c138667749822b258bab4c6a621f4
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321436"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792713"
 ---
 # <a name="use-powershell-to-update-the-sync-schema-in-an-existing-sync-group"></a>使用 PowerShell 更新現有同步群組中的同步結構描述
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -78,11 +78,11 @@ UpdateSyncSchema.ps1 -SubscriptionId <subscriptionId> -ResourceGroupName <resour
 
 | Command | 注意 |
 |---|---|
-| [Get-AzSqlSyncGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncgroup) | 傳回有關同步群組的資訊。 |
-| [Update-AzSqlSyncGroup](https://docs.microsoft.com/powershell/module/az.sql/update-azsqlsyncgroup) | 更新同步群組。 |
-| [Get-AzSqlSyncMember](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncmember) | 傳回有關同步成員的資訊。 |
-| [Get-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncschema) | 傳回有關同步結構描述的資訊。 |
-| [Update-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/update-azsqlsyncschema) | 更新同步結構描述。 |
+| [Get-AzSqlSyncGroup](/powershell/module/az.sql/get-azsqlsyncgroup) | 傳回有關同步群組的資訊。 |
+| [Update-AzSqlSyncGroup](/powershell/module/az.sql/update-azsqlsyncgroup) | 更新同步群組。 |
+| [Get-AzSqlSyncMember](/powershell/module/az.sql/get-azsqlsyncmember) | 傳回有關同步成員的資訊。 |
+| [Get-AzSqlSyncSchema](/powershell/module/az.sql/get-azsqlsyncschema) | 傳回有關同步結構描述的資訊。 |
+| [Update-AzSqlSyncSchema](/powershell/module/az.sql/update-azsqlsyncschema) | 更新同步結構描述。 |
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -100,7 +100,7 @@ UpdateSyncSchema.ps1 -SubscriptionId <subscriptionId> -ResourceGroupName <resour
         -  [使用 PowerShell 同步處理 Azure SQL Database 與 SQL Server 之間的資料](sql-data-sync-sync-data-between-azure-onprem.md)
 - Data Sync Agent - [適用於 Azure 中 SQL 資料同步的 Data Sync Agent](../sql-data-sync-agent-overview.md)
 - 最佳做法 - [Azure 中的 SQL 資料同步最佳做法](../sql-data-sync-best-practices.md)
-- 監視 - [使用 Azure 監視器記錄監視 SQL 資料同步](../sql-data-sync-monitor-sync.md)
+- 監視 - [使用 Azure 監視器記錄監視 SQL 資料同步](../monitor-tune-overview.md)
 - 疑難排解 - [在 Azure 中針對 SQL 資料同步的問題進行疑難排解](../sql-data-sync-troubleshoot.md)
 - 更新同步結構描述
     - 使用 Transact-SQL - [在 Azure 中將 SQL 資料同步結構描述變更的複寫自動化](../sql-data-sync-update-sync-schema.md)
@@ -108,4 +108,4 @@ UpdateSyncSchema.ps1 -SubscriptionId <subscriptionId> -ResourceGroupName <resour
 如需有關 SQL Database 的詳細資訊，請參閱：
 
 - [SQL Database 概觀](../sql-database-paas-overview.md)
-- [資料庫生命週期管理](https://msdn.microsoft.com/library/jj907294.aspx)
+- [資料庫生命週期管理](/previous-versions/sql/sql-server-guides/jj907294(v=sql.110))

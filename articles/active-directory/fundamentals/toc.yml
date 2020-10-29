@@ -79,6 +79,8 @@
               href: sync-ldap.md
             - name: SCIM 同步處理
               href: sync-scim.md
+        - name: Azure 中使用的憑證授權單位
+          href: certificate-authorities.md
     - name: 部署指南
       items:
         - name: 部署 30、90 及更多

@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 552b3f55632e817cc4669ce5da41b1e127c7d808
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9161bf4f99ddfed479451d2091458ab309aa2c17
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91283865"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788616"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>教學課程：使用 Azure AD 伺服器主體 (登入) 的 Azure SQL 受控執行個體中的安全性
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -120,7 +120,7 @@ Azure SQL 受控執行個體幾乎提供了最新的 SQL Server (Enterprise Edit
 
 - 若要讓新建立的 Azure AD 伺服器主體 (登入) 有能力為其他 Azure AD 使用者、群組或應用程式建立其他登入，請為登入授與 `sysadmin` 或 `securityadmin` 伺服器角色。
 - 最少必須將 **ALTER ANY LOGIN** 權限授與 Azure AD 伺服器主體 (登入)，其才能建立其他 Azure AD 伺服器主體 (登入)。
-- 根據預設，會為主要伺服器中新建的 Azure AD 伺服器主體 (登入) 授與的標準權限是：**CONNECT SQL** 和 **VIEW ANY DATABASE**。
+- 根據預設，會為主要伺服器中新建的 Azure AD 伺服器主體 (登入) 授與的標準權限是： **CONNECT SQL** 和 **VIEW ANY DATABASE** 。
 - `sysadmin` 伺服器角色可以授與給受控執行個體中的多個 Azure AD 伺服器主體 (登入)。
 
 若要將登入新增至 `sysadmin` 伺服器角色：
@@ -214,7 +214,7 @@ Azure SQL 受控執行個體幾乎提供了最新的 SQL Server (Enterprise Edit
       ```
 
 > [!NOTE]
-> 只有在新增為 Azure AD 群組的一部分時，才支援在 SQL 受控執行個體登入中使用 Azure AD 來賓使用者。 Azure AD 來賓使用者是受邀從另一個 Azure AD 執行個體加入受控執行個體所屬 Azure AD 執行個體的帳戶。 例如，joe@contoso.com (Azure AD 帳戶) 或 steve@outlook.com (Microsoft 帳戶) 可以新增至 Azure AD aadsqlmi 執行個體中的群組。 在將使用者新增至群組後，便能使用 **CREATE LOGIN** 語法在 SQL 受控執行個體的**主要**資料庫中，為該群組建立登入。 屬於此群組成員的來賓使用者可以使用其目前的登入 (例如 joe@contoso.com 或 steve@outlook.com) 連線至受控執行個體。
+> 只有在新增為 Azure AD 群組的一部分時，才支援在 SQL 受控執行個體登入中使用 Azure AD 來賓使用者。 Azure AD 來賓使用者是受邀從另一個 Azure AD 執行個體加入受控執行個體所屬 Azure AD 執行個體的帳戶。 例如，joe@contoso.com (Azure AD 帳戶) 或 steve@outlook.com (Microsoft 帳戶) 可以新增至 Azure AD aadsqlmi 執行個體中的群組。 在將使用者新增至群組後，便能使用 **CREATE LOGIN** 語法在 SQL 受控執行個體的 **主要** 資料庫中，為該群組建立登入。 屬於此群組成員的來賓使用者可以使用其目前的登入 (例如 joe@contoso.com 或 steve@outlook.com) 連線至受控執行個體。
 
 ## <a name="create-an-azure-ad-user-from-the-azure-ad-server-principal-login"></a>從 Azure AD 伺服器主體 (登入) 建立 Azure AD 使用者
 
@@ -280,7 +280,7 @@ Azure SQL 受控執行個體幾乎提供了最新的 SQL Server (Enterprise Edit
     );
     ```
 
-1. 使用所建立的使用者在 SSMS 中建立連線。 您會發現您無法看到 `sysadmin` 稍早所建立的資料表 **TestTable**。 我們必須對使用者提供讀取資料庫資料的權限。
+1. 使用所建立的使用者在 SSMS 中建立連線。 您會發現您無法看到 `sysadmin` 稍早所建立的資料表 **TestTable** 。 我們必須對使用者提供讀取資料庫資料的權限。
 
 1. 您可以藉由執行下列命令來檢查使用者目前擁有的權限：
 
@@ -361,7 +361,7 @@ SQL 受控執行個體支援模擬 Azure AD 伺服器層級主體 (登入)。
     GO
     ```
 
-1. 使用下列命令查看您在執行預存程序時所模擬的使用者是否為 **bob\@aadsqlmi.net**。
+1. 使用下列命令查看您在執行預存程序時所模擬的使用者是否為 **bob\@aadsqlmi.net** 。
 
     ```sql
     Exec dbo.usp_Demo
@@ -447,7 +447,7 @@ SQL 受控執行個體支援模擬 Azure AD 伺服器層級主體 (登入)。
 - [威脅偵測](threat-detection-configure.md)
 - [動態資料遮罩](/sql/relational-databases/security/dynamic-data-masking)
 - [資料列層級安全性](/sql/relational-databases/security/row-level-security)
-- [透明資料加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
+- [透明資料加密 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 
 ### <a name="sql-managed-instance-capabilities"></a>SQL 受控執行個體功能
 

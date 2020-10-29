@@ -10,13 +10,13 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 661622b296a7a81a8d4c203e86a7c8d61c386e5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 0da0a56a64aa9b4500d36da2f6c86fc4c07f4c0f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843221"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786049"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>針對使用一組驗證認證的資源，將秘密的輪替自動化
 
@@ -44,7 +44,7 @@ ms.locfileid: "91843221"
 
 [![顯示標示為「部署至 Azure」的按鈕影像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
 
-1. 在 [資源群組] 下方，選取 [新建]。 將群組命名為 **akvrotation**。
+1. 在 [資源群組] 下方，選取 [新建]。 將群組命名為 **akvrotation** 。
 1. 在 [Sql 管理員登入] 底下，輸入 Sql 管理員登入名稱。 
 1. 選取 [檢閱 + 建立]。
 1. 選取 [建立]
@@ -115,7 +115,7 @@ akvrotation-fnapp        akvrotation       eastus      Microsoft.Web/sites
 akvrotation-fnapp        akvrotation       eastus      Microsoft.insights/components
 ```
 
-如需如何建立函式應用程式和使用受控識別來存取 Key Vault 的相關資訊，請參閱[從 Azure 入口網站建立函式應用程式](/azure/azure-functions/functions-create-function-app-portal)、[如何使用 App Service 和 Azure Functions 的受控識別](/azure/app-service/overview-managed-identity)以及[使用 Azure 入口網站指派 Key Vault 存取金鑰](../general/assign-access-policy-portal.md)。
+如需如何建立函式應用程式和使用受控識別來存取 Key Vault 的相關資訊，請參閱[從 Azure 入口網站建立函式應用程式](../../azure-functions/functions-create-function-app-portal.md)、[如何使用 App Service 和 Azure Functions 的受控識別](../../app-service/overview-managed-identity.md)以及[使用 Azure 入口網站指派 Key Vault 存取金鑰](../general/assign-access-policy-portal.md)。
 
 ### <a name="rotation-function"></a>輪替函式
 前一個步驟中部署的函式會透過更新 Key Vault 和 SQL 資料庫，使用事件來觸發密碼輪替。 
@@ -207,7 +207,7 @@ az keyvault secret set --name sqlPassword --vault-name akvrotation-kv --value "S
 
 ## <a name="test-and-verify"></a>測試和驗證
 
-若要確認密碼是否已輪替，請移至 **Key Vault** > **秘密**：
+若要確認密碼是否已輪替，請移至 **Key Vault** > **秘密** ：
 
 ![移至秘密](../media/rotate-8.png)
 

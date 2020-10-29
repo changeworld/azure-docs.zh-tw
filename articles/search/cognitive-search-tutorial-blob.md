@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
-ms.openlocfilehash: 99d477bb9e8291721022e276c5933ec0ef7f1e37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84defa0704c44bb0ed4564195725f7dd1c42312c
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936005"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788055"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教學課程：使用 REST 和 AI 從 Azure Blob 產生可搜尋的內容
 
@@ -61,13 +61,13 @@ ms.locfileid: "88936005"
 
 1. 在 [基本] 索引標籤中，需要下列項目。 接受所有其他項目的預設值。
 
-   + **資源群組**。 選取現有群組或建立一個新的群組，但必須對所有服務使用相同的群組，以便您一起管理這些服務。
+   + **資源群組** 。 選取現有群組或建立一個新的群組，但必須對所有服務使用相同的群組，以便您一起管理這些服務。
 
-   + **儲存體帳戶名稱**。 如果您認為您可能會有多個相同類型的資源，請透過名稱在類型和區域上做出區別，例如 blobstoragewestus  。 
+   + **儲存體帳戶名稱** 。 如果您認為您可能會有多個相同類型的資源，請透過名稱在類型和區域上做出區別，例如 blobstoragewestus  。 
 
-   + **位置**。 可能的話，請選擇用於 Azure 認知搜尋和認知服務的相同位置。 單一位置可避免產生頻寬費用。
+   + **位置** 。 可能的話，請選擇用於 Azure 認知搜尋和認知服務的相同位置。 單一位置可避免產生頻寬費用。
 
-   + **帳戶種類**。 選擇預設值 [StorageV2 (一般用途 v2)]  。
+   + **帳戶種類** 。 選擇預設值 [StorageV2 (一般用途 v2)]  。
 
 1. 按一下 [檢閱 + 建立]  以建立服務。
 
@@ -115,7 +115,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 
    一併取得查詢金鑰。 最佳做法是發出具有唯讀存取權的查詢要求。
 
-   ![取得服務名稱及管理和查詢金鑰](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![取得服務名稱及管理和查詢金鑰](media/search-get-started-javascript/service-name-and-keys.png)
 
 在傳送至您服務的每個要求的標頭中都需要有 api-key。 有效的金鑰能為每個要求在傳送要求之應用程式與處理要求的服務間建立信任。
 
@@ -123,7 +123,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 
 啟動 Postman 及設定 HTTP 要求。 如果您不熟悉此工具，請參閱[使用 Postman 探索 Azure 認知搜尋 REST API](search-get-started-postman.md)。
 
-本教學課程中使用的要求方法為 **POST**、**PUT** 和 **GET**。 您將使用這些方法來對您的搜尋服務進行四個 API 呼叫：建立資料來源、技能集、索引及索引子。
+本教學課程中使用的要求方法為 **POST** 、 **PUT** 和 **GET** 。 您將使用這些方法來對您的搜尋服務進行四個 API 呼叫：建立資料來源、技能集、索引及索引子。
 
 在標頭中，將 "Content-type" 設定為 `application/json`，並將 `api-key` 設定為您 Azure 認知搜尋服務的管理員 API 金鑰。 設定標頭之後，您就可以在此練習中的每個要求上加以使用。
 
@@ -143,7 +143,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
    https://[YOUR-SERVICE-NAME].search.windows.net/datasources?api-version=2020-06-30
    ```
 
-1. 在要求**本文**中，複製下列 JSON 定義，並將 `connectionString` 取代為您儲存體帳戶的實際連接字串。 
+1. 在要求 **本文** 中，複製下列 JSON 定義，並將 `connectionString` 取代為您儲存體帳戶的實際連接字串。 
 
    請記得也要編輯容器名稱。 我們建議您使用先前步驟中的 "cog-search-demo" 作為容器名稱。
 
@@ -173,7 +173,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
     https://[YOUR-SERVICE-NAME].search.windows.net/skillsets/cog-search-demo-sd?api-version=2020-06-30
     ```
 
-1. 在要求**本文**中，複製下列 JSON 定義。 此技能集包含下列內建技能。
+1. 在要求 **本文** 中，複製下列 JSON 定義。 此技能集包含下列內建技能。
 
    | 技能                 | 描述    |
    |-----------------------|----------------|
@@ -258,7 +258,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
    https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx?api-version=2020-06-30
    ```
 
-1. 在要求**本文**中，複製下列 JSON 定義。 `content` 欄位會儲存文件本身。 `languageCode`、`keyPhrases` 和 `organizations` 的其他欄位代表技能集所建立的新資訊 (欄位和值)。
+1. 在要求 **本文** 中，複製下列 JSON 定義。 `content` 欄位會儲存文件本身。 `languageCode`、`keyPhrases` 和 `organizations` 的其他欄位代表技能集所建立的新資訊 (欄位和值)。
 
     ```json
     {
@@ -342,7 +342,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
    https://[servicename].search.windows.net/indexers/cog-search-demo-idxr?api-version=2020-06-30
    ```
 
-1. 在要求**本文**中，複製下列 JSON 定義。 請注意欄位對應元素；這些對應會定義資料流程，所以很重要。 
+1. 在要求 **本文** 中，複製下列 JSON 定義。 請注意欄位對應元素；這些對應會定義資料流程，所以很重要。 
 
    `fieldMappings` 會在技能集之前進行處理，用來將資料來源中的內容傳送到索引中的目標欄位。 您會使用欄位對應將已修改的現有內容傳送至索引。 如果兩端上的欄位名稱和類型都相同，則不需要任何對應。
 

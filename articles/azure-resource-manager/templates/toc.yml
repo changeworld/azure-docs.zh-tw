@@ -48,7 +48,7 @@
               href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 串流分析
               href: ../../stream-analytics/quick-create-azure-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Synapse Analytics
+            - name: Synapse Analytics SQL 集區
               href: ../../synapse-analytics/sql-data-warehouse/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 區塊鏈
           items:
@@ -158,6 +158,10 @@
               href: ../../application-gateway/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 內容傳遞網路
               href: ../../cdn/create-profile-endpoint-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: DNS
+              href: ../../dns/dns-get-started-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: ExpressRoute
+              href: ../../expressroute/quickstart-create-expressroute-vnet-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 防火牆 - 可用性區域
               href: ../../firewall/deploy-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 防火牆 - IP 群組
@@ -166,20 +170,26 @@
               href: ../../firewall/quick-create-multiple-ip-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 防火牆管理員
               href: ../../firewall-manager/quick-secure-virtual-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: 負載平衡器
+            - name: Load Balancer - 公用
               href: ../../load-balancer/quickstart-load-balancer-standard-public-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: NAT 閘道
+              href: ../../virtual-network/quickstart-create-nat-gateway-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 私人端點
               href: ../../private-link/create-private-endpoint-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Private Link 服務
               href: ../../private-link/create-private-link-service-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: 流量管理員
+              href: ../../traffic-manager/quickstart-create-traffic-manager-profile-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Web 應用程式防火牆
               href: ../../web-application-firewall/ag/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 安全性
           items:
             - name: 證明
               href: ../../attestation/quickstart-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Key Vault
+            - name: Key Vault - 秘密
               href: ../../key-vault/secrets/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: 資訊安全中心
+              href: ../../security-center/quickstart-automation-alert.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 儲存體
           items:
             - name: Data Share
@@ -188,7 +198,9 @@
               href: ../../storage/common/storage-account-create.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Web
           items:
-            - name: App Service
+            - name: API 管理
+              href: ../../api-management/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+            - name: App Service 方案
               href: ../../app-service/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: 通知中樞
               href: ../../notification-hubs/create-notification-hub-template.md?toc=/azure/azure-resource-manager/templates/toc.json
@@ -343,36 +355,42 @@
             - name: 輸出
               displayName: 'iteration,copy'
               href: copy-outputs.md
-    - name: 探索範本內容
-      items:
-        - name: 匯出範本
-          href: export-template-portal.md
-        - name: 探索資源
-          href: view-resources.md
-    - name: 驗證範本
-      items:
-        - name: 假設部署
-          href: template-deploy-what-if.md
-        - name: 測試工具組
-          href: test-toolkit.md
-        - name: 測試案例
-          href: test-cases.md
     - name: 部署範本
       items:
-        - name: 部署 - 入口網站
-          displayName: deployment
-          href: deploy-portal.md
-        - name: 部署 - CLI
-          displayName: deployment
-          href: deploy-cli.md
-        - name: 部署 - PowerShell
-          displayName: deployment
-          href: deploy-powershell.md
-        - name: 部署 - REST API
-          displayName: deployment
-          href: deploy-rest.md
-        - name: 從 GitHub 部署
-          href: deploy-to-azure-button.md
+        - name: 部署作業
+          items:
+            - name: 部署 - 入口網站
+              displayName: deployment
+              href: deploy-portal.md
+            - name: 部署 - CLI
+              displayName: deployment
+              href: deploy-cli.md
+            - name: 部署 - PowerShell
+              displayName: deployment
+              href: deploy-powershell.md
+            - name: 部署 - REST API
+              displayName: deployment
+              href: deploy-rest.md
+            - name: 部署 - GitHub
+              href: deploy-to-azure-button.md
+            - name: 部署 - Cloud Shell
+              href: deploy-cloud-shell.md
+        - name: 範圍
+          items:
+            - name: 資源群組
+              href: deploy-to-resource-group.md
+            - name: 訂用帳戶
+              href: deploy-to-subscription.md
+            - name: 管理群組
+              href: deploy-to-management-group.md
+            - name: 租用戶
+              href: deploy-to-tenant.md
+            - name: 擴充功能資源
+              href: scope-extension-resources.md
+            - name: 跨範圍的函式
+              href: scope-functions.md
+        - name: 假設部署
+          href: template-deploy-what-if.md
         - name: 發生錯誤時重新部署
           displayName: rollback
           href: rollback-on-error.md
@@ -380,16 +398,6 @@
           href: secure-template-with-sas-token.md
         - name: 檢視部署歷程記錄
           href: deployment-history.md
-    - name: 限域部署
-      items:
-        - name: 訂用帳戶
-          href: deploy-to-subscription.md
-        - name: 管理群組
-          href: deploy-to-management-group.md
-        - name: 租用戶
-          href: deploy-to-tenant.md
-        - name: 跨範圍部署
-          href: cross-scope-deployment.md
     - name: 提供參數
       items:
         - name: 建立參數檔案
@@ -397,12 +405,24 @@
         - name: 傳遞敏感值
           displayname: key vault
           href: key-vault-parameter.md
+    - name: 測試範本
+      items:
+        - name: 測試工具組
+          href: test-toolkit.md
+        - name: 測試案例
+          href: test-cases.md
     - name: CI/CD
       items:
         - name: 具有管線的 ARM 範本
           href: add-template-to-azure-pipelines.md
         - name: 部署 - GitHub 動作
           href: deploy-github-actions.md
+    - name: 探索範本內容
+      items:
+        - name: 匯出範本
+          href: export-template-portal.md
+        - name: 探索資源
+          href: view-resources.md
     - name: 使用撰寫工具
       items:
         - name: Visual Studio

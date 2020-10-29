@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 340cdd97e7097a9fe6f0653d9f50f5a5cc41f890
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: da7a80842bec68fde8cc44401bb04c2dd061741f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91740920"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787953"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>教學課程：使用 .NET SDK 以 AI 方式從 Azure Blob 產生可搜尋的內容
 
@@ -72,13 +72,13 @@ ms.locfileid: "91740920"
 
 1. 在 [基本] 索引標籤中，需要下列項目。 接受所有其他項目的預設值。
 
-   * **資源群組**。 選取現有群組或建立一個新的群組，但必須對所有服務使用相同的群組，以便您一起管理這些服務。
+   * **資源群組** 。 選取現有群組或建立一個新的群組，但必須對所有服務使用相同的群組，以便您一起管理這些服務。
 
-   * **儲存體帳戶名稱**。 如果您認為您可能會有多個相同類型的資源，請透過名稱在類型和區域上做出區別，例如 blobstoragewestus。 
+   * **儲存體帳戶名稱** 。 如果您認為您可能會有多個相同類型的資源，請透過名稱在類型和區域上做出區別，例如 blobstoragewestus。 
 
-   * **位置**。 可能的話，請選擇用於 Azure 認知搜尋和認知服務的相同位置。 單一位置可避免產生頻寬費用。
+   * **位置** 。 可能的話，請選擇用於 Azure 認知搜尋和認知服務的相同位置。 單一位置可避免產生頻寬費用。
 
-   * **帳戶種類**。 選擇預設值 [StorageV2 (一般用途 v2)]。
+   * **帳戶種類** 。 選擇預設值 [StorageV2 (一般用途 v2)]。
 
 1. 按一下 [檢閱 + 建立] 以建立服務。
 
@@ -128,7 +128,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 
    一併取得查詢金鑰。 最佳做法是發出具有唯讀存取權的查詢要求。
 
-   ![取得服務名稱及管理和查詢金鑰](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![取得服務名稱及管理和查詢金鑰](media/search-get-started-javascript/service-name-and-keys.png)
 
 擁有有效的金鑰就能為每個要求在傳送要求之應用程式與處理要求之服務間建立信任。
 
@@ -173,7 +173,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 
 新增您的搜尋服務與 Blob 儲存體帳戶資訊。 您應該記得，您可以從上一節所指示的服務佈建步驟中取得這項資訊。
 
-針對 **SearchServiceUri**，輸入完整的 URL。
+針對 **SearchServiceUri** ，輸入完整的 URL。
 
 ### <a name="add-namespaces"></a>新增命名空間
 
@@ -338,7 +338,7 @@ private static OcrSkill CreateOcrSkill()
 
 ### <a name="merge-skill"></a>合併技能
 
-在此節中，您將建立**合併**技能，來合併文件內容欄位與 OCR 技能所產生的文字。
+在此節中，您將建立 **合併** 技能，來合併文件內容欄位與 OCR 技能所產生的文字。
 
 ```csharp
 private static MergeSkill CreateMergeSkill()
@@ -377,7 +377,7 @@ private static MergeSkill CreateMergeSkill()
 
 ### <a name="language-detection-skill"></a>語言偵測技能
 
-**語言偵測**技能會偵測輸入文字的語言，並針對要求所提交的每份文件回報單一語言代碼。 我們將使用**語言偵測**技能的輸出作為**文字分割**技能輸入的一部分。
+**語言偵測** 技能會偵測輸入文字的語言，並針對要求所提交的每份文件回報單一語言代碼。 我們將使用 **語言偵測** 技能的輸出作為 **文字分割** 技能輸入的一部分。
 
 ```csharp
 private static LanguageDetectionSkill CreateLanguageDetectionSkill()
@@ -406,7 +406,7 @@ private static LanguageDetectionSkill CreateLanguageDetectionSkill()
 
 ### <a name="text-split-skill"></a>文字分割技能
 
-下列**分割**技能將依頁面分割文字，並按照 `String.Length` 所測量的來將其限制為 4,000 個字元。 此演算法會嘗試將文字分割成區塊，且區塊大小最多為 `maximumPageLength`。 在此案例中，演算法將盡量在例句邊界斷句，好讓區塊大小稍微小於 `maximumPageLength`。
+下列 **分割** 技能將依頁面分割文字，並按照 `String.Length` 所測量的來將其限制為 4,000 個字元。 此演算法會嘗試將文字分割成區塊，且區塊大小最多為 `maximumPageLength`。 在此案例中，演算法將盡量在例句邊界斷句，好讓區塊大小稍微小於 `maximumPageLength`。
 
 ```csharp
 private static SplitSkill CreateSplitSkill()
@@ -442,7 +442,7 @@ private static SplitSkill CreateSplitSkill()
 
 ### <a name="entity-recognition-skill"></a>實體辨識技能
 
-此 `EntityRecognitionSkill` 執行個體會設定來辨識類別類型 `organization`。 **實體辨識**技能也可以辨識類別類型 `person` 和 `location`。
+此 `EntityRecognitionSkill` 執行個體會設定來辨識類別類型 `organization`。 **實體辨識** 技能也可以辨識類別類型 `person` 和 `location`。
 
 請注意，[內容] 欄位會設定為附有星號的 ```"/document/pages/*"```，這表示會在 ```"/document/pages"``` 下方針對每個頁面呼叫擴充步驟。
 
@@ -475,7 +475,7 @@ private static EntityRecognitionSkill CreateEntityRecognitionSkill()
 
 ### <a name="key-phrase-extraction-skill"></a>關鍵片語擷取技能
 
-如同剛建立的 `EntityRecognitionSkill` 執行個體，會針對文件的每個頁面呼叫**關鍵片語擷取**技能。
+如同剛建立的 `EntityRecognitionSkill` 執行個體，會針對文件的每個頁面呼叫 **關鍵片語擷取** 技能。
 
 ```csharp
 private static KeyPhraseExtractionSkill CreateKeyPhraseExtractionSkill()
