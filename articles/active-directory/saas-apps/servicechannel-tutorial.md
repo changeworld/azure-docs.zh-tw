@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 55a685222444b99c10b19699560553a510d2a7a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46ef5dda412013dfa5c832472447ee5ec9179239
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543035"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92672740"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicechannel"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 ServiceChannel 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543035"
 * 讓使用者使用其 Azure AD 帳戶自動登入 ServiceChannel。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -50,7 +50,7 @@ ms.locfileid: "88543035"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **ServiceChannel**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **ServiceChannel** 。
 1. 從結果面板選取 [ServiceChannel]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-servicechannel"></a>設定及測試 ServiceChannel 的 Azure AD 單一登入
@@ -71,7 +71,7 @@ ms.locfileid: "88543035"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [ServiceChannel]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -83,9 +83,9 @@ ms.locfileid: "88543035"
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<customer domain>.servicechannel.com/saml/acs`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 在此建議您在 [識別碼] 中使用唯一的字串值。 請連絡 [ServiceChannel 用戶端支援小組](https://servicechannel.zendesk.com/hc/en-us) \(英文\) 以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 在此建議您在 [識別碼] 中使用唯一的字串值。 請連絡 [ServiceChannel 用戶端支援小組](https://servicechannel.zendesk.com/hc/en-us) \(英文\) 以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-1. 角色宣告已預先設定，因此您不需要進行設定，但您仍然需要使用[本文](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)在 Azure AD 中建立角色。 您可以參考[這裡](https://servicechannel.zendesk.com/hc/articles/217514326-Azure-AD-Configuration-Example)的 ServiceChannel 指南，以取得宣告的詳細指引。
+1. 角色宣告已預先設定，因此您不需要進行設定，但您仍然需要使用[本文](../develop/active-directory-enterprise-app-role-management.md)在 Azure AD 中建立角色。 您可以參考[這裡](https://servicechannel.zendesk.com/hc/articles/217514326-Azure-AD-Configuration-Example)的 ServiceChannel 指南，以取得宣告的詳細指引。
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -137,14 +137,14 @@ ms.locfileid: "88543035"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [ServiceChannel] 圖格時，應該會自動登入您已設定 SSO 的 ServiceChannel。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [ServiceChannel] 圖格時，應該會自動登入您已設定 SSO 的 ServiceChannel。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 ServiceChannel](https://aad.portal.azure.com/)

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 50e6ce9b4c206650de72d9cdd41bdd6dd555acd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e948962a73137f78ec26a01c1d2f54d883e76783
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566596"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637440"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站建置您的第一個資料處理站
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "91566596"
 > 本文適用於第 1 版 Azure Data Factory (正式運作版)。 如果您使用目前版本的 Data Factory 服務，請參閱[快速入門：使用 Data Factory 建立資料處理站](../quickstart-create-data-factory-dot-net.md)。
 
 > [!WARNING]
-> Azure 入口網站中用於撰寫及部署 ADF v1 管線的 JSON 編輯器將於 2019 年 7 月 31 日關閉。 2019 年 7 月 31 日之後，您可以繼續使用 [ADF v1 Powershell Cmdlet](https://docs.microsoft.com/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2)、[ADF v1 .Net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet)、[ADF v1 REST API](https://docs.microsoft.com/rest/api/datafactory/) 來撰寫及部署您的 ADF v1 管線。
+> Azure 入口網站中用於撰寫及部署 ADF v1 管線的 JSON 編輯器將於 2019 年 7 月 31 日關閉。 2019 年 7 月 31 日之後，您可以繼續使用 [ADF v1 Powershell Cmdlet](/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2)、[ADF v1 .Net SDK](/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet)、[ADF v1 REST API](/rest/api/datafactory/) 來撰寫及部署您的 ADF v1 管線。
 
 在本文中，您會了解如何使用 [Azure 入口網站](https://portal.azure.com/) 來建立您的第一個資料處理站。 若要使用其他工具/SDK 進行本教學課程，請選取下拉式清單的其中一個選項。 
 
@@ -58,7 +58,7 @@ ms.locfileid: "91566596"
 
    ![建立刀鋒視窗](./media/data-factory-build-your-first-pipeline-using-editor/create-blade.png)
 
-1. 在 [新增資料處理站] 刀鋒視窗上的 [名稱] 底下，輸入 **GetStartedDF**。
+1. 在 [新增資料處理站] 刀鋒視窗上的 [名稱] 底下，輸入 **GetStartedDF** 。
 
    ![新增 Data Factory 刀鋒視窗](./media/data-factory-build-your-first-pipeline-using-editor/new-data-factory-blade.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "91566596"
    >
 1. 在 [訂用帳戶] 底下，選取您想要建立資料處理站的 Azure 訂用帳戶。
 
-1. 請選取現有的資源群組，或建立資源群組。 在教學課程中，建立名稱為 **ADFGetStartedRG**的資源群組。
+1. 請選取現有的資源群組，或建立資源群組。 在教學課程中，建立名稱為 **ADFGetStartedRG** 的資源群組。
 
 1. 在 [位置] 下，選取資料處理站的位置。 下拉式清單中只會顯示 Data Factory 服務支援的區域。
 
@@ -110,13 +110,13 @@ ms.locfileid: "91566596"
 
    ![儲存體連結服務](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
-1. 將**帳戶名稱**取代成您儲存體帳戶的名稱。 將**帳戶金鑰**取代成儲存體帳戶的存取金鑰。 若要了解如何取得儲存體存取金鑰，請參閱[管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。
+1. 將 **帳戶名稱** 取代成您儲存體帳戶的名稱。 將 **帳戶金鑰** 取代成儲存體帳戶的存取金鑰。 若要了解如何取得儲存體存取金鑰，請參閱[管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。
 
 1. 選取命令列上的 [部署] 以部署連結服務。
 
     ![[部署] 按鈕](./media/data-factory-build-your-first-pipeline-using-editor/deploy-button.png)
 
-   成功部署連結服務之後，[Draft-1] 視窗就會消失。 您會在左側的樹狀檢視中看到 **AzureStorageLinkedService**。
+   成功部署連結服務之後，[Draft-1] 視窗就會消失。 您會在左側的樹狀檢視中看到 **AzureStorageLinkedService** 。
 
     ![AzureStorageLinkedService](./media/data-factory-build-your-first-pipeline-using-editor/StorageLinkedServiceInTree.png)    
 
@@ -159,9 +159,9 @@ ms.locfileid: "91566596"
 
      b. 您可以使用自己的 HDInsight 叢集，不必使用隨選的 HDInsight 叢集。 如需詳細資訊，請參閱 [HDInsight 連結服務](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)。
 
-     c. HDInsight 叢集會在您於 JSON 屬性中指定的 Blob 儲存體 (**linkedServiceName**) 建立預設容器。 HDInsight 不會在刪除叢集時刪除此容器。 這是設計的行為。 在使用 HDInsight 隨選連結服務時，除非有現有的即時叢集 (**timeToLive**)，否則每次處理配量時，就會建立 HDInsight 叢集。 此叢集會在處理完成時自動刪除。
+     c. HDInsight 叢集會在您於 JSON 屬性中指定的 Blob 儲存體 ( **linkedServiceName** ) 建立預設容器。 HDInsight 不會在刪除叢集時刪除此容器。 這是設計的行為。 在使用 HDInsight 隨選連結服務時，除非有現有的即時叢集 ( **timeToLive** )，否則每次處理配量時，就會建立 HDInsight 叢集。 此叢集會在處理完成時自動刪除。
 
-     隨著處理的配量越來越多，您會在 Blob 儲存體中看到許多容器。 如果在對作業進行疑難排解時不需要這些容器，建議您加以刪除以降低儲存成本。 這些容器的名稱遵循下列模式："adf**yourdatafactoryname**-**linkedservicename**-datetimestamp"。 請使用 [Azure 儲存體總管](https://storageexplorer.com/)之類的工具刪除 Blob 儲存體中的容器。
+     隨著處理的配量越來越多，您會在 Blob 儲存體中看到許多容器。 如果在對作業進行疑難排解時不需要這些容器，建議您加以刪除以降低儲存成本。 這些容器的名稱遵循下列模式："adf **yourdatafactoryname**-**linkedservicename** -datetimestamp"。 請使用 [Azure 儲存體總管](https://storageexplorer.com/)之類的工具刪除 Blob 儲存體中的容器。
 
      如需詳細資訊，請參閱[隨選 HDInsight 連結服務](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)。
 
@@ -169,7 +169,7 @@ ms.locfileid: "91566596"
 
     ![部署選項](./media/data-factory-build-your-first-pipeline-using-editor/ondemand-hdinsight-deploy.png)
 
-1. 確認您有在左側的樹狀檢視中看到 **AzureStorageLinkedService** 和 **HDInsightOnDemandLinkedService**。
+1. 確認您有在左側的樹狀檢視中看到 **AzureStorageLinkedService** 和 **HDInsightOnDemandLinkedService** 。
 
     ![顯示 AzureStorageLinkedService 和 HDInsightOnDemandLinkedService 連結在一起的螢幕擷取畫面。](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png)
 
@@ -210,14 +210,14 @@ ms.locfileid: "91566596"
 
    | 屬性 | 所在巢狀結構 | 描述 |
    |:--- |:--- |:--- |
-   | type | properties |類型屬性會設為 **AzureBlob**，因為資料位於 Blob 儲存體。 |
+   | type | properties |類型屬性會設為 **AzureBlob** ，因為資料位於 Blob 儲存體。 |
    | linkedServiceName | format |表示您先前建立的 AzureStorageLinkedService。 |
    | folderPath | typeProperties | 指定包含輸入 Blob 的 Blob 容器和資料夾。 | 
    | fileName | typeProperties |這是選用屬性。 如果您省略此屬性，會挑選位於 folderPath 的所有檔案。 在本教學課程中，只會處理 input.log 檔案。 |
-   | type | format |記錄檔為文字格式，因此我們會使用 **TextFormat**。 |
+   | type | format |記錄檔為文字格式，因此我們會使用 **TextFormat** 。 |
    | columnDelimiter | format |記錄檔案中的資料行會以逗號字元 (`,`) 分隔。 |
-   | frequency/interval | availability |頻率設為「**每月**」且間隔為 **1**，表示每個月都會可取得輸入配量。 |
-   | external | properties | 如果輸入資料不是由此管線產生，此屬性會設為 **true**。 在本教學課程中，input.log 檔案不是由此管線產生，因此我們會將屬性設為 **true**。 |
+   | frequency/interval | availability |頻率設為「 **每月** 」且間隔為 **1** ，表示每個月都會可取得輸入配量。 |
+   | external | properties | 如果輸入資料不是由此管線產生，此屬性會設為 **true** 。 在本教學課程中，input.log 檔案不是由此管線產生，因此我們會將屬性設為 **true** 。 |
 
     如需這些 JSON 屬性的詳細資訊，請參閱 [Azure Blob 連接器](data-factory-azure-blob-connector.md#dataset-properties)。
 
@@ -228,7 +228,7 @@ ms.locfileid: "91566596"
 
 1. 在 Data Factory 編輯器中，選取 [更多] > [新增資料集] > [Azure Blob 儲存體]。
 
-1. 複製下列程式碼片段並貼到 [Draft-1] 視窗。 在 JSON 程式碼片段中，建立名為 **AzureBlobOutput**的資料集，並指定由 Hive 指令碼產生的資料結構。 您也可以指定將結果儲存在名為 **adfgetstarted** 的 Blob 容器及名為 **partitioneddata** 的資料夾中。 **availability** 區段會指定每月產生一次輸出資料集。
+1. 複製下列程式碼片段並貼到 [Draft-1] 視窗。 在 JSON 程式碼片段中，建立名為 **AzureBlobOutput** 的資料集，並指定由 Hive 指令碼產生的資料結構。 您也可以指定將結果儲存在名為 **adfgetstarted** 的 Blob 容器及名為 **partitioneddata** 的資料夾中。 **availability** 區段會指定每月產生一次輸出資料集。
 
     ```JSON
     {
@@ -268,7 +268,7 @@ ms.locfileid: "91566596"
 1. 複製下列程式碼片段並貼到 [Draft-1] 視窗。
 
    > [!IMPORTANT]
-   > 在 JSON 程式碼片段中使用您的儲存體帳戶名稱取代 **storageaccountname**。
+   > 在 JSON 程式碼片段中使用您的儲存體帳戶名稱取代 **storageaccountname** 。
    >
    >
 
@@ -319,13 +319,13 @@ ms.locfileid: "91566596"
 
     您會在 JSON 程式碼片段中建立一個管線，其中包括在 HDInsight 叢集上使用 Hive 處理「資料」的單一活動。
 
-    Hive 指令碼檔案 (**partitionweblogs.hql**) 儲存於儲存體帳戶 (透過名為 **AzureStorageLinkedService** 的 scriptLinkedService 來指定)。 其可以在 **adfgetstarted** 容器的 **script** 資料夾中找到。
+    Hive 指令碼檔案 ( **partitionweblogs.hql** ) 儲存於儲存體帳戶 (透過名為 **AzureStorageLinkedService** 的 scriptLinkedService 來指定)。 其可以在 **adfgetstarted** 容器的 **script** 資料夾中找到。
 
     **defines** 區段用來指定執行階段設定，該設定將傳遞到 Hive 指令碼作為 Hive 設定值。 範例包括 ${hiveconf:inputtable} 和 ${hiveconf:partitionedtable}。
 
     管線的 **start** 和 **end** 屬性會指定管線的作用中期間。
 
-    在活動 JSON 中，您會指定 Hive 指令碼要在透過 **linkedServiceName**：**HDInsightOnDemandLinkedService** 指定的計算上執行。
+    在活動 JSON 中，您會指定 Hive 指令碼要在透過 **linkedServiceName** ： **HDInsightOnDemandLinkedService** 指定的計算上執行。
 
    > [!NOTE]
    > 如需範例中使用的 JSON 屬性詳細資料，請參閱 [Data Factory 中的管線及活動](data-factory-create-pipelines.md)中的＜管線 JSON＞一節。
@@ -337,9 +337,9 @@ ms.locfileid: "91566596"
 
    b. **partitionweblogs.hql** 檔案存在於 Blob 儲存體中 **adfgetstarted** 容器的 **script** 資料夾中。 如果您沒有看見這些檔案，請遵循[教學課程概觀](data-factory-build-your-first-pipeline.md) 中＜先決條件＞一節中的步驟。
 
-   c. 在管線 JSON 中使用您的儲存體帳戶名稱取代 **storageaccountname**。
+   c. 在管線 JSON 中使用您的儲存體帳戶名稱取代 **storageaccountname** 。
 
-1. 選取命令列上的 [部署] 以部署管線。 由於 **start** 和 **end** 時間設定在過去，且 **isPaused** 設為 **false**，管線 (管線中的活動) 會在部署之後立即執行。
+1. 選取命令列上的 [部署] 以部署管線。 由於 **start** 和 **end** 時間設定在過去，且 **isPaused** 設為 **false** ，管線 (管線中的活動) 會在部署之後立即執行。
 
 1. 確認您在樹狀檢視中看到管線。
 
@@ -361,13 +361,13 @@ ms.locfileid: "91566596"
 
     ![開啟管線功能表](./media/data-factory-build-your-first-pipeline-using-editor/open-pipeline-menu.png)
 
-1. 確認您在管線中看到了 **Hive 活動**。
+1. 確認您在管線中看到了 **Hive 活動** 。
 
     ![開啟管線檢視](./media/data-factory-build-your-first-pipeline-using-editor/open-pipeline-view.png)
 
     如要回到上一個檢視，請選取頂端功能表中的 [資料處理站]。
 
-1. 在 [圖表] 檢視中，按兩下 [AzureBlobInput] 資料集。 確認配量為 [就緒] 狀態。 可能需要數分鐘的時間，配量才會顯示為 [就緒] 狀態。 如果一段時間之後還未顯示，請查看輸入檔案 (**input.log**) 是否放置在正確的容器 (**adfgetstarted**) 和資料夾 (**inputdata**) 中。
+1. 在 [圖表] 檢視中，按兩下 [AzureBlobInput] 資料集。 確認配量為 [就緒] 狀態。 可能需要數分鐘的時間，配量才會顯示為 [就緒] 狀態。 如果一段時間之後還未顯示，請查看輸入檔案 ( **input.log** ) 是否放置在正確的容器 ( **adfgetstarted** ) 和資料夾 ( **inputdata** ) 中。
 
    ![輸入配量處於就緒狀態](./media/data-factory-build-your-first-pipeline-using-editor/input-slice-ready.png)
 
@@ -402,7 +402,7 @@ ms.locfileid: "91566596"
    如需詳細資訊，請參閱[使用 Azure 入口網站刀鋒視窗監視及管理管線](data-factory-monitor-manage-pipelines.md)。
 
 > [!IMPORTANT]
-> 配量處理成功時就會刪除輸入檔案。 因此，如果您想要重新執行配量或再次進行本教學課程，請將輸入檔案 (**input.log**) 上傳至 **adfgetstarted** 容器的 **inputdata** 資料夾。
+> 配量處理成功時就會刪除輸入檔案。 因此，如果您想要重新執行配量或再次進行本教學課程，請將輸入檔案 ( **input.log** ) 上傳至 **adfgetstarted** 容器的 **inputdata** 資料夾。
 >
 >
 

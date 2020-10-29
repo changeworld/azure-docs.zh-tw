@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: 893ea607b322c2f9b2d8a4e8b5b087e21c476d98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f28d8f82796f54002312514b1a34e3dd8b666a3
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87497166"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675262"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>用於 Azure SQL Database 和 SQL 受控執行個體的 Azure CLI 範例 
  
@@ -73,7 +73,7 @@ ms.locfileid: "87497166"
 | [設定 SQL 受控執行個體的容錯移轉群組](../../sql-database/scripts/sql-database-add-managed-instance-to-failover-group-cli.md) | 建立兩個 SQL 受控執行個體的執行個體，並將其新增至容錯移轉群組，然後測試是否能從主要 SQL 受控執行個體容錯移轉至次要 SQL 受控執行個體。 |
 |||
 
-如需其他 SQL 受控執行個體範例，請參閱[建立](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../create-azure-sql-managed-instance-using-azure-cli/)、[更新](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../modify-azure-sql-database-managed-instance-using-azure-cli/)、[移動資料庫](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/)和[使用](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)指令碼。
+如需其他 SQL 受控執行個體範例，請參閱[建立](/archive/blogs/sqlserverstorageengine/create-azure-sql-managed-instance-using-azure-cli)、[更新](/archive/blogs/sqlserverstorageengine/modify-azure-sql-database-managed-instance-using-azure-cli)、[移動資料庫](/archive/blogs/sqlserverstorageengine/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance)和[使用](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)指令碼。
 
 深入了解 [SQL 受控執行個體 Azure CLI API](../managed-instance/api-references-create-manage-instance.md#azure-cli-create-and-configure-managed-instances)。
 

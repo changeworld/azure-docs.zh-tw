@@ -10,12 +10,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 07/29/2019
-ms.openlocfilehash: fe4bcb10db33c6f68abeb779e668726fc1a59345
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b3235f457f1c6475c18045886c49d3dd2ca2242
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360237"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92671173"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-cx23-and-adonet"></a>教學課程：使用 C&#x23; 和 ADO.NET 在 Azure SQL Database 中設計關聯式資料庫
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,7 +34,7 @@ Azure SQL Database 是 Microsoft Cloud (Azure) 中的關聯式資料庫即服務
 *如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 > [!TIP]
-> 下列 Microsoft Learn 模組可協助您免費學習如何[開發和設定可查詢 Azure SQL Database 的 ASP.NET 應用程式](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/) (包括建立簡易資料庫)。
+> 下列 Microsoft Learn 模組可協助您免費學習如何[開發和設定可查詢 Azure SQL Database 的 ASP.NET 應用程式](/learn/modules/develop-app-that-queries-azure-sql/) (包括建立簡易資料庫)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -91,7 +91,7 @@ SQL Database 會在伺服器層級建立 IP 防火牆。 此防火牆會防止�
 > [!IMPORTANT]
 > SQL Database 會透過連接埠 1433 通訊。 如果您嘗試從公司網路連線到這項服務，您網路的防火牆可能不允許透過連接埠 1433 的輸出流量。 若情況如此，除非系統管理員開啟連接埠 1433，否則您無法連線至您的資料庫。
 
-1. 部署完成之後，按一下左側功能表中的 [SQL 資料庫]，然後按一下 [SQL 資料庫] 頁面上的 [yourDatabase]。 資料庫的概觀頁面隨即開啟，其中會顯示完整**伺服器名稱** (例如 *yourserver.database.windows.net*)，並提供進一步的組態選項。
+1. 部署完成之後，按一下左側功能表中的 [SQL 資料庫]，然後按一下 [SQL 資料庫] 頁面上的 [yourDatabase]。 資料庫的概觀頁面隨即開啟，其中會顯示完整 **伺服器名稱** (例如 *yourserver.database.windows.net* )，並提供進一步的組態選項。
 
 2. 請複製此完整伺服器名稱，以便從 SQL Server Management Studio 連線到伺服器和資料庫。
 

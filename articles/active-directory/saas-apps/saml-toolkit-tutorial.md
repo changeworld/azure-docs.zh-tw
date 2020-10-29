@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 7886691559a63e6d54ea748582f641f33cecf995
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26618382223a87f779f95452000a39126f37efbb
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979742"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675427"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Azure AD SAML Toolkit 整合
 
@@ -50,7 +50,7 @@ ms.locfileid: "90979742"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Azure AD SAML Toolkit**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Azure AD SAML Toolkit** 。
 1. 從結果面板選取 [Azure AD SAML Toolkit]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-sso-for-azure-ad-saml-toolkit"></a>設定並測試 Azure AD SAML Toolkit 的 Azure AD SSO
@@ -71,7 +71,7 @@ ms.locfileid: "90979742"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 Azure 入口網站的 [Azure AD SAML Toolkit] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -138,7 +138,7 @@ ms.locfileid: "90979742"
 
     1. 在 [登出 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登出 URL]  值。
 
-    1. 按一下 [選擇檔案]  及上傳您從 Azure 入口網站下載的**憑證 (原始)** 檔案。
+    1. 按一下 [選擇檔案]  及上傳您從 Azure 入口網站下載的 **憑證 (原始)** 檔案。
 
     1. 按一下頁面底部的 [新增]  。
 
@@ -156,8 +156,8 @@ ms.locfileid: "90979742"
 
 2. 直接移至 SAML Toolkit 登入 URL，然後從該處起始登入流程。
 
-3. 您可以使用 Microsoft 存取面板。 當您在存取面板中按一下 SAML Toolkit 圖格時，應該會自動登入您已設定 SSO 的 SAML Toolkit。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+3. 您可以使用 Microsoft 存取面板。 當您在存取面板中按一下 SAML Toolkit 圖格時，應該會自動登入您已設定 SSO 的 SAML Toolkit。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-設定 Azure AD SAML Toolkit 後，您可以強制執行工作階段控制項，以即時防止組織的敏感性資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+設定 Azure AD SAML Toolkit 後，您可以強制執行工作階段控制項，以即時防止組織的敏感性資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-aad)

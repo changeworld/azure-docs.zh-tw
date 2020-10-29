@@ -3,21 +3,19 @@ title: 適用於 Azure Kubernetes Service (AKS) 的 Azure 原則法規合規性�
 description: 列出適用於 Azure Kubernetes Service (AKS) 的 Azure 原則法規合規性控制措施。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
 ms.date: 10/20/2020
 ms.topic: sample
-author: laurenhughes
-ms.author: lahugh
 ms.service: container-service
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: be806a7f7811133bbdd4f45d65c2a9cf191374f1
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 52d60c3fa471960e6949b0169928280f3ac59e56
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320456"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636590"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-kubernetes-service-aks"></a>適用於 Azure Kubernetes Service (AKS) 的 Azure 原則法規合規性控制措施
 
-[Azure 原則中的法規合規性](../governance/policy/concepts/regulatory-compliance.md)可針對與不同合規性標準相關的**合規性網域**和**安全性控制**，提供 Microsoft 建立和管理的方案定義 (稱為「內建」)。 此頁面會列出適用於 Azure Kubernetes Service (AKS) 的**合規性網域**和**安全性控制**。
-您可以針對**安全性控制**個別指派內建項目，以協助讓您的 Azure 資源符合特定標準的規範。
+[Azure 原則中的法規合規性](../governance/policy/concepts/regulatory-compliance.md)可針對與不同合規性標準相關的 **合規性網域** 和 **安全性控制** ，提供 Microsoft 建立和管理的方案定義 (稱為「內建」)。 此頁面會列出適用於 Azure Kubernetes Service (AKS) 的 **合規性網域** 和 **安全性控制** 。
+您可以針對 **安全性控制** 個別指派內建項目，以協助讓您的 Azure 資源符合特定標準的規範。
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]
 

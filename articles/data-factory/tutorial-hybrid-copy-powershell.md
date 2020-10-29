@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: 3db7112516941e53c07e1521f15140a8b9c28e47
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 9562c9fd590ea1234fb2378f03861141e58432ff
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147974"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637525"
 ---
 # <a name="tutorial-copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>教學課程：將資料從 SQL Server 資料庫複製到 Azure Blob 儲存體
 
@@ -50,7 +50,7 @@ ms.locfileid: "92147974"
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014、2016 和 2017
 在此教學課程中，您會使用 SQL Server 資料庫作為「來源」資料存放區。 您在此教學課程中於資料處理站中建立的管線會將資料從此 SQL Server 資料庫 (來源) 複製到 Azure Blob 儲存體 (接收)。 然後在 SQL Server 資料庫中建立名為 **emp** 的資料表，並在資料表中插入幾個範例項目。
 
-1. 啟動 SQL Server Management Studio。 如果它尚未安裝在電腦上，請移至[下載 SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
+1. 啟動 SQL Server Management Studio。 如果它尚未安裝在電腦上，請移至[下載 SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)。
 
 1. 使用您的認證連線到 SQL Server 執行個體。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 905ca5fd92a09b209bf099bfac0862132ec679a4
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: c589db84b6221aa23868b3b49aea84f33623619f
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875339"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92673866"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>教學課程：Azure Active Directory 與 Sectigo Certificate Manager 整合
 
@@ -28,7 +28,7 @@ Sectigo Certificate Manager 與 Azure AD 整合提供下列優點：
 * 使用者可以使用其 Azure AD 帳戶自動登入 Sectigo Certificate Manager (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-如需軟體即服務 (SaaS) 應用程式與 Azure AD 的整合詳細資訊，請參閱 [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如需軟體即服務 (SaaS) 應用程式與 Azure AD 的整合詳細資訊，請參閱 [Azure Active Directory 中的應用程式單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -38,7 +38,7 @@ Sectigo Certificate Manager 與 Azure AD 整合提供下列優點：
 * Sectigo Certificate Manager 帳戶。
 
 > [!NOTE]
-> Sectigo 會執行多個 Sectigo Certificate Manager 的執行個體。 Sectigo Certificate Manager 的主要執行個體是 **https:\//cert-manager.com**，而本教學課程中會使用此 URL。  如果您的帳戶位於不同的執行個體上，您必須據以調整 URL。
+> Sectigo 會執行多個 Sectigo Certificate Manager 的執行個體。 Sectigo Certificate Manager 的主要執行個體是 **https:\//cert-manager.com** ，而本教學課程中會使用此 URL。  如果您的帳戶位於不同的執行個體上，您必須據以調整 URL。
 
 ## <a name="scenario-description"></a>案例描述
 
@@ -67,7 +67,7 @@ Sectigo Certificate Manager 支援下列功能：
 
     ![新增應用程式選項](common/add-new-app.png)
 
-1. 在搜尋方塊中，輸入 **Sectigo Certificate Manager**。 在搜尋結果中，選取 [Sectigo Certificate Manager]  ，然後選取 [新增]  。
+1. 在搜尋方塊中，輸入 **Sectigo Certificate Manager** 。 在搜尋結果中，選取 [Sectigo Certificate Manager]  ，然後選取 [新增]  。
 
     ![結果清單中的 Sectigo Certificate Manager](common/search-new-app.png)
 
@@ -104,24 +104,24 @@ Sectigo Certificate Manager 支援下列功能：
 
 1. 在 [基本 SAML 設定] 區段中，完成下列步驟：
 
-    1. 在 [識別碼 (實體識別碼)] 方塊中，針對主要 Sectigo Certificate Manager 執行個體輸入 **https:\//cert-manager.com/shibboleth**。
+    1. 在 [識別碼 (實體識別碼)] 方塊中，針對主要 Sectigo Certificate Manager 執行個體輸入 **https:\//cert-manager.com/shibboleth** 。
 
-    1. 在 [回覆 URL] 方塊中，針對主要 Sectigo Certificate Manager 執行個體輸入 **https:\//cert-manager.com/Shibboleth.sso/SAML2/POST**。
+    1. 在 [回覆 URL] 方塊中，針對主要 Sectigo Certificate Manager 執行個體輸入 **https:\//cert-manager.com/Shibboleth.sso/SAML2/POST** 。
         
     > [!NOTE]
-    > 一般來說，**登入 URL** 是「SP 起始模式」的必要項目，但不需要從 Sectigo Certificate Manager 登入。        
+    > 一般來說， **登入 URL** 是「SP 起始模式」的必要項目，但不需要從 Sectigo Certificate Manager 登入。        
 
-1. (選擇性) 在 [基本 SAML 設定] 區段中，若要設定 [IDP 起始模式] 並允許進行**測試**，請完成下列步驟：
+1. (選擇性) 在 [基本 SAML 設定] 區段中，若要設定 [IDP 起始模式] 並允許進行 **測試** ，請完成下列步驟：
 
     1. 選取 [設定其他 URL]  。
 
-    1. 在 [轉送狀態] 方塊中，輸入 Sectigo Certificate Manager 客戶專屬的 URL。 針對主要 Sectigo Certificate Manager 執行個體，輸入 **https:\//cert-manager.com/customer/\<customerURI\>/idp**。
+    1. 在 [轉送狀態] 方塊中，輸入 Sectigo Certificate Manager 客戶專屬的 URL。 針對主要 Sectigo Certificate Manager 執行個體，輸入 **https:\//cert-manager.com/customer/\<customerURI\>/idp** 。
 
     ![Sectigo Certificate Manager 網域及 URL 單一登入資訊](common/idp-relay.png)
 
 1. 在 [使用者屬性和宣告] 區段中，完成下列步驟：
 
-    1. 刪除所有**額外宣告**。
+    1. 刪除所有 **額外宣告** 。
     
     1. 選取 [新增宣告] 並新增下列四個宣告：
     
@@ -156,9 +156,9 @@ Sectigo Certificate Manager 支援下列功能：
 
 1. 在 [使用者]  窗格中，完成下列步驟：
 
-    1. 在 [名稱]  方塊中，輸入 **BrittaSimon**。
+    1. 在 [名稱]  方塊中，輸入 **BrittaSimon** 。
   
-    1. 在 [使用者名稱] 方塊中，輸入**brittasimon\@\<your-company-domain>.\<extension\>** 。 例如，**brittasimon\@contoso.com**。
+    1. 在 [使用者名稱] 方塊中，輸入 **brittasimon\@\<your-company-domain>.\<extension\>** 。 例如， **brittasimon\@contoso.com** 。
 
     1. 選取 [顯示密碼]  核取方塊。 記下 [密碼] 方塊中顯示的值。
 
@@ -216,8 +216,6 @@ Sectigo Certificate Manager 支援下列功能：
 
 若要深入了解，請檢閱下列文章：
 
-- [用於整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-
+- [用於整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](./tutorial-list.md)
+- [Azure Active Directory 中的應用程式單一登入](../manage-apps/what-is-single-sign-on.md)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

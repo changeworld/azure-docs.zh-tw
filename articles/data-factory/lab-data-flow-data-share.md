@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: db5384f843173bdc795fba64f277ff8bf85dc4f5
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 1c8958062c7430f98db0925c2b3996887bfe5548
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827134"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637355"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>使用 Azure Data Factory 和 Azure Data Share 進行資料整合
 
@@ -28,17 +28,17 @@ ms.locfileid: "91827134"
 
 ## <a name="prerequisites"></a>必要條件
 
-* **Azure 訂用帳戶**：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+* **Azure 訂用帳戶** ：如果您沒有 Azure 訂用帳戶，請在開始前建立 [免費帳戶](https://azure.microsoft.com/free/)。
 
-* **Azure SQL Database**：如果您沒有 SQL DB，請了解如何[建立 SQL DB 帳戶](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)
+* **Azure SQL Database** ：如果您沒有 SQL DB，請了解如何 [建立 SQL DB 帳戶](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal)
 
-* **Azure Data Lake Storage Gen2 儲存體帳戶**：如果您沒有 ADLS Gen2 儲存體帳戶，請了解如何[建立 ADLS Gen2 儲存體帳戶](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account)。
+* **Azure Data Lake Storage Gen2 儲存體帳戶** ：如果您沒有 ADLS Gen2 儲存體帳戶，請了解如何 [建立 ADLS Gen2 儲存體帳戶](../storage/common/storage-account-create.md)。
 
-* **Azure Synapse Analytics (先前為 SQL DW)** ：如果您沒有 Azure Synapse Analytics (先前為 SQL DW)，請了解如何[建立 Azure Synapse Analytics 執行個體](https://docs.microsoft.com/azure/sql-data-warehouse/create-data-warehouse-portal)。
+* **Azure Synapse Analytics (先前為 SQL DW)** ：如果您沒有 Azure Synapse Analytics (先前為 SQL DW)，請了解如何 [建立 Azure Synapse Analytics 執行個體](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)。
 
-* **Azure Data Factory**：如果您尚未建立資料處理站，請參閱如何[建立資料處理站](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal)。
+* **Azure Data Factory** ：如果您尚未建立資料處理站，請參閱如何 [建立資料處理站](./quickstart-create-data-factory-portal.md)。
 
-* **Azure Data Share**：如果您尚未建立資料共用，請參閱如何[建立資料共用](https://docs.microsoft.com/azure/data-share/share-your-data#create-a-data-share-account)。
+* **Azure Data Share** ：如果您尚未建立資料共用，請參閱如何 [建立資料共用](../data-share/share-your-data.md#create-a-data-share-account)。
 
 ## <a name="set-up-your-azure-data-factory-environment"></a>設定您的 Azure Data Factory 環境
 
@@ -97,7 +97,7 @@ ms.locfileid: "91827134"
 
 ### <a name="turn-on-data-flow-debug-mode"></a>開啟資料流程偵錯模式
 
-在*使用對應資料流程來轉換資料*一節中，您將建置對應資料流程。 建置對應資料流程的最佳做法是開啟偵測模式，這可讓您在作用中的 Spark 叢集上快速測試轉換邏輯。
+在 *使用對應資料流程來轉換資料* 一節中，您將建置對應資料流程。 建置對應資料流程的最佳做法是開啟偵測模式，這可讓您在作用中的 Spark 叢集上快速測試轉換邏輯。
 
 若要開啟偵錯，請按一下處理站頂端列中的 [資料流程偵錯] 滑桿。 在確認對話方塊快顯時，按一下 [確定]。 啟動叢集約需要 5-7 分鐘的時間。 在初始化期間，請繼續「使用複製活動將資料從 Azure SQL DB 內嵌至 ADLS Gen2」。
 
@@ -126,10 +126,10 @@ ms.locfileid: "91827134"
 1. 按一下複製活動的 [來源] 索引標籤。 若要建立新的資料集，請按一下 [新增]。 您的來源會是 'dbo.TripData' 資料表，位於先前設定的連結服務 'SQLDB' 中。
 
     ![入口網站複製 4](media/lab-data-flow-data-share/copy4.png)
-1. 搜尋 **Azure SQL Database**，然後按一下 [繼續]。
+1. 搜尋 **Azure SQL Database** ，然後按一下 [繼續]。
 
     ![入口網站複製 5](media/lab-data-flow-data-share/copy5.png)
-1. 呼叫您的資料集 'TripData'。 選取 'SQLDB' 作為連結服務。 從資料表名稱下拉式清單中選取資料表名稱 'dbo.TripData'。 **從連線/存放區**匯入結構描述。 在完成作業後，按一下 [確定]。
+1. 呼叫您的資料集 'TripData'。 選取 'SQLDB' 作為連結服務。 從資料表名稱下拉式清單中選取資料表名稱 'dbo.TripData'。 **從連線/存放區** 匯入結構描述。 在完成作業後，按一下 [確定]。
 
     ![入口網站複製 6](media/lab-data-flow-data-share/copy6.png)
 
@@ -140,7 +140,7 @@ ms.locfileid: "91827134"
 1. 按一下複製活動的 [接收] 索引標籤。 若要建立新的資料集，請按一下 [新增]。
 
     ![入口網站複製 7](media/lab-data-flow-data-share/copy7.png)
-1. 搜尋 **Azure Data Lake Storage Gen2**，然後按一下 [繼續]。
+1. 搜尋 **Azure Data Lake Storage Gen2** ，然後按一下 [繼續]。
 
     ![入口網站複製 8](media/lab-data-flow-data-share/copy8.png)
 1. 在 [選取格式] 窗格中，和寫入至 csv 檔案一樣選取 [DelimitedText]。 按一下 [繼續]。
@@ -161,7 +161,7 @@ ms.locfileid: "91827134"
 1. 複製監視檢視會提供活動的執行詳細資料和效能特性。 您可以查看已讀取/寫入的資料、已讀取/寫入的資料列、已讀取/寫入的檔案以及輸送量等資訊。 如果一切都已正確設定，您應該會看到 49,999 個資料列寫入至 ADLS 接收中的一個檔案。
 
     ![入口網站複製 13](media/lab-data-flow-data-share/copy13.png)
-1. 繼續進行下一節之前，建議您按一下處理站頂端列中的 [全部發佈]，將變更發佈至資料處理站服務。 雖然此實驗室中並未涵蓋完整的 Git 整合，但 Azure Data Factory 可加以支援。 Git 整合可用於版本控制、在存放庫中反覆儲存，以及在資料處理站上進行共同作業。 如需詳細資訊，請參閱 [Azure Data Factory中的原始檔控制](https://docs.microsoft.com/azure/data-factory/source-control#troubleshooting-git-integration)。
+1. 繼續進行下一節之前，建議您按一下處理站頂端列中的 [全部發佈]，將變更發佈至資料處理站服務。 雖然此實驗室中並未涵蓋完整的 Git 整合，但 Azure Data Factory 可加以支援。 Git 整合可用於版本控制、在存放庫中反覆儲存，以及在資料處理站上進行共同作業。 如需詳細資訊，請參閱 [Azure Data Factory中的原始檔控制](./source-control.md#troubleshooting-git-integration)。
 
     ![入口網站發佈 1](media/lab-data-flow-data-share/publish1.png)
 
@@ -209,10 +209,10 @@ ms.locfileid: "91827134"
 1. 將此來源命名為 'TripFaresSQL'。 按一下 [來源資料集] 欄位旁的 [新增]，以建立新的 SQL DB 資料集。
 
     ![入口網站資料流程 9](media/lab-data-flow-data-share/dataflow9.png)
-1. 選取 [Azure SQL Database] 磚，然後按一下 [繼續]。 *注意：您可能會發現，資料處理站中有許多連接器在對應資料流程中不受支援。若要轉換其中一個來源的資料，請使用複製活動將其內嵌至支援的來源中*。
+1. 選取 [Azure SQL Database] 磚，然後按一下 [繼續]。 *注意：您可能會發現，資料處理站中有許多連接器在對應資料流程中不受支援。若要轉換其中一個來源的資料，請使用複製活動將其內嵌至支援的來源中* 。
 
     ![入口網站資料流程 10](media/lab-data-flow-data-share/dataflow10.png)
-1. 呼叫您的資料集 'TripFares'。 選取 'SQLDB' 作為連結服務。 從資料表名稱下拉式清單中選取資料表名稱 'dbo.TripFares'。 **從連線/存放區**匯入結構描述。 在完成作業後，按一下 [確定]。
+1. 呼叫您的資料集 'TripFares'。 選取 'SQLDB' 作為連結服務。 從資料表名稱下拉式清單中選取資料表名稱 'dbo.TripFares'。 **從連線/存放區** 匯入結構描述。 在完成作業後，按一下 [確定]。
 
     ![入口網站資料流程 11](media/lab-data-flow-data-share/dataflow11.png)
 1. 若要驗證您的資料，請在 [資料預覽] 索引標籤中擷取資料預覽。
@@ -224,7 +224,7 @@ ms.locfileid: "91827134"
 1. 若要新增轉換，請按一下 'TripDataCSV' 右下角的加號圖示。 在 [多個輸入/輸出] 底下，選取 [聯結]。
 
     ![入口網站聯結 1](media/lab-data-flow-data-share/join1.png)
-1. 將聯結轉換命名為 'InnerJoinWithTripFares'。 從 [右側資料流] 下拉式清單中選取 [TripFaresSQL]。 選取 [內部] 作為聯結類型。 若要深入了解對應資料流程中的不同聯結類型，請參閱[聯結類型](https://docs.microsoft.com/azure/data-factory/data-flow-join#join-types)。
+1. 將聯結轉換命名為 'InnerJoinWithTripFares'。 從 [右側資料流] 下拉式清單中選取 [TripFaresSQL]。 選取 [內部] 作為聯結類型。 若要深入了解對應資料流程中的不同聯結類型，請參閱[聯結類型](./data-flow-join.md#join-types)。
 
     透過 [聯結條件] 下拉式清單，從每個資料流程中選取您要比對的資料行。 若要新增其他聯結條件，請按一下現有條件旁的加號圖示。 根據預設，所有聯結條件都會以 AND 運算子進行合併，這表示必須符合所有條件才會產生相符項目。 在此實驗室中，我們想要比對資料行 `medallion`、`hack_license`、`vendor_id` 和 `pickup_datetime`
 
@@ -248,7 +248,7 @@ ms.locfileid: "91827134"
     首先，您將建立平均費用運算式。 在標示為 [新增或選取資料行] 的文字方塊中，輸入 'average_fare'。
 
     ![入口網站彙總 3](media/lab-data-flow-data-share/agg3.png)
-1. 若要輸入彙總運算式，請按一下標示為 [輸入運算式] 的藍色方塊。 這會開啟資料流程運算式產生器，此工具可用來以視覺化方式建立使用輸入結構描述、內建函式和作業以及使用者定義參數的資料流程運算式。 如需運算式產生器功能的詳細資訊，請參閱[運算式產生器文件](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder)。
+1. 若要輸入彙總運算式，請按一下標示為 [輸入運算式] 的藍色方塊。 這會開啟資料流程運算式產生器，此工具可用來以視覺化方式建立使用輸入結構描述、內建函式和作業以及使用者定義參數的資料流程運算式。 如需運算式產生器功能的詳細資訊，請參閱[運算式產生器文件](./concepts-data-flow-expression-builder.md)。
 
     若要取得平均費用，請使用 `avg()` 彙總函式，透過 `toInteger()` 來彙總轉換成整數的 `total_amount` 資料行。 在資料流程運算式語言中，這會定義為 `avg(toInteger(total_amount))`。 在完成作業後，按一下 [儲存後結束]。
 
@@ -310,17 +310,17 @@ ms.locfileid: "91827134"
 
 在本節中，您將了解如何使用 Azure 入口網站來設定新的資料共用。 進行此作業時，您將建立新的資料共用，其中包含來自 Azure Data Lake Store Gen2 和 Azure Synapse Analytics (先前為 SQL 資料倉儲) 的資料集。 接著，您將設定快照集排程，讓資料取用者能夠選擇自動重新整理其共用的資料。 然後，您將邀請收件者加入您的資料共用。 
 
-建立資料共用後，您將切換身分，而成為*資料取用者*。 身為資料取用者，您將逐步執行接受資料共用邀請的流程、設定要接收資料的位置，並將資料集對應至不同的儲存位置。 接著，您將觸發快照集，而將與您共用的資料複製到指定的目的地。 
+建立資料共用後，您將切換身分，而成為 *資料取用者* 。 身為資料取用者，您將逐步執行接受資料共用邀請的流程、設定要接收資料的位置，並將資料集對應至不同的儲存位置。 接著，您將觸發快照集，而將與您共用的資料複製到指定的目的地。 
 
 ### <a name="sharing-data-data-provider-flow"></a>共用資料 (Data Provider 流程)
 
 1. 在 Microsoft Edge 或 Google Chrome 中開啟 Azure 入口網站。
 
-1. 使用頁面頂端的搜尋列，搜尋**資料共用**
+1. 使用頁面頂端的搜尋列，搜尋 **資料共用**
 
     ![入口網站 adls](media/lab-data-flow-data-share/portal-ads.png)
 
-1. 選取名稱中含有 'Provider' 的資料共用帳戶。 例如 **DataProvider0102**。 
+1. 選取名稱中含有 'Provider' 的資料共用帳戶。 例如 **DataProvider0102** 。 
 
 1. 選取 [開始共用資料]
 
@@ -372,9 +372,9 @@ ms.locfileid: "91827134"
 
     ![新增資料集 adls](media/lab-data-flow-data-share/add-dataset-adls.png)
 
-1. 選取 [**下一步**]
+1. 選取 [ **下一步** ]
 
-1. 展開 *wwtaxidata*。 展開 *Boston Taxi Data*。 請注意，您可以向下共用至檔案層級。 
+1. 展開 *wwtaxidata* 。 展開 *Boston Taxi Data* 。 請注意，您可以向下共用至檔案層級。 
 
 1. 選取 *Boston Taxi Data* 資料夾，將整個資料夾新增至您的資料共用。 
 
@@ -400,7 +400,7 @@ ms.locfileid: "91827134"
 
     您現在已有作用中的資料共用。 請檢閱您在建立資料共用時所能看到的資料提供者。 
 
-1. 選取您所建立的資料共用，其標題為 **DataProvider**。 您可以選取 [資料共用] 中的 [已傳送的共用]，以瀏覽至該共用。 
+1. 選取您所建立的資料共用，其標題為 **DataProvider** 。 您可以選取 [資料共用] 中的 [已傳送的共用]，以瀏覽至該共用。 
 
 1. 按一下 [快照集排程]。 您可以停用您所選擇的快照集排程。 
 
@@ -436,7 +436,7 @@ ms.locfileid: "91827134"
 
 1. 針對 [資料共用帳戶]，選取 [DataConsumer]。 您也可以建立新的資料共用帳戶。 
 
-1. 在 [已接收的共用名稱] 旁，您會發現預設的共用名稱為資料提供者所指定的名稱。 請為共用提供易記名稱以說明您要接收的資料，例如 **TaxiDataShare**。
+1. 在 [已接收的共用名稱] 旁，您會發現預設的共用名稱為資料提供者所指定的名稱。 請為共用提供易記名稱以說明您要接收的資料，例如 **TaxiDataShare** 。
 
     ![邀請接受](media/lab-data-flow-data-share/consumer-accept.png)
 
@@ -519,5 +519,3 @@ ms.locfileid: "91827134"
 1. 瀏覽回資料取用者的資料共用。 在觸發程序的狀態顯示為成功後，瀏覽至目的地 SQL 資料庫和 Data Lake，以確認資料已進入個別的存放區中。 
 
 恭喜，您已完成實驗室！
-
-
