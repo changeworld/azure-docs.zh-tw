@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: e9bcdfeb983138046792313c018c386eb69136fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 801197a171b5be2cfe46c249398381e1b25857ff
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553653"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515350"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>教學課程：Azure Active Directory 與 Predictix Price Reporting 整合
 
@@ -28,7 +28,7 @@ ms.locfileid: "88553653"
 * 您可以讓使用者透過其 Azure AD 帳戶自動登入 Predictix Price Reporting (單一登入)。
 * 您可以集中管理您的帳戶：Azure 入口網站。
 
-若要深入了解 SaaS 應用程式與 Azure AD 的整合，請參閱 [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 的整合，請參閱 [Azure Active Directory 中的應用程式單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -61,7 +61,7 @@ ms.locfileid: "88553653"
 
     ![選取 [新增應用程式]](common/add-new-app.png)
 
-4. 在 [搜尋] 方塊中，輸入 **Predictix Price Reporting**。 選取搜尋結果中的 [Predictix Price Reporting]，然後選取 [新增]。
+4. 在 [搜尋] 方塊中，輸入 **Predictix Price Reporting** 。 選取搜尋結果中的 [Predictix Price Reporting]，然後選取 [新增]。
 
      ![搜尋結果](common/search-new-app.png)
 
@@ -123,11 +123,11 @@ ms.locfileid: "88553653"
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
-    1. **登入 URL**。
+    1. **登入 URL** 。
 
-    1. **Azure AD 識別碼**。
+    1. **Azure AD 識別碼** 。
 
-    1. **登出 URL**。
+    1. **登出 URL** 。
 
 ### <a name="configure-predictix-price-reporting-single-sign-on"></a>設定 Predictix Price Reporting 單一登入
 
@@ -149,7 +149,7 @@ ms.locfileid: "88553653"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    1. 在 [名稱] 方塊中，輸入 **BrittaSimon**。
+    1. 在 [名稱] 方塊中，輸入 **BrittaSimon** 。
   
     1. 在 [使用者名稱] 方塊中，輸入 **BrittaSimon@\<yourcompanydomain>.\<extension>** 。 (例如，BrittaSimon@contoso.com)。
 
@@ -191,12 +191,12 @@ ms.locfileid: "88553653"
 
 您現在必須使用存取面板來測試您的 Azure AD 單一登入組態。
 
-當您在存取面板中選取 Predictix Price Reporting 圖格時，應該會自動登入您設定 SSO 的 Predictix Price Reporting 執行個體。 如需詳細資訊，請參閱[在「我的應用程式」入口網站上存取和使用應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 Predictix Price Reporting 圖格時，應該會自動登入您設定 SSO 的 Predictix Price Reporting 執行個體。 如需詳細資訊，請參閱[在「我的應用程式」入口網站上存取和使用應用程式](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

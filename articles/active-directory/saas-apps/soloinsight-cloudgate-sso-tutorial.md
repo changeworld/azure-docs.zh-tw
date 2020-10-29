@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 5ac0f0777ea341036950550e19c5d8e7fb71a91f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 193d779a2e9246fe36af4828251a15d593e80ac7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545058"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514770"
 ---
 # <a name="tutorial-integrate-soloinsight-cloudgate-sso-with-azure-active-directory"></a>教學課程：整合 Soloinsight-CloudGate SSO 與 Azure Active Directory
 
@@ -26,7 +26,7 @@ ms.locfileid: "88545058"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Soloinsight-CloudGate SSO。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -47,7 +47,7 @@ ms.locfileid: "88545058"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Soloinsight-CloudGate SSO**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Soloinsight-CloudGate SSO** 。
 1. 從結果面板中選取 [Soloinsight-CloudGate SSO]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
@@ -80,7 +80,7 @@ ms.locfileid: "88545058"
     1. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<SUBDOMAIN>.sigateway.com/process/sso`
 
    > [!NOTE]
-   > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值 (稍後在本教學課程 **設定 Soloinsight-CloudGate SSO 單一登入**一節中會加以說明)。
+   > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值 (稍後在本教學課程 **設定 Soloinsight-CloudGate SSO 單一登入** 一節中會加以說明)。
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -102,7 +102,7 @@ ms.locfileid: "88545058"
 
 3. 如果您想要手動設定 Soloinsight-CloudGate SSO，請開啟新的網頁瀏覽器視窗，並以系統管理員身分登入 Soloinsight-CloudGate SSO 公司網站，然後執行下列步驟：
 
-4. 若要取得要在設定基本 SAML 時貼到 Azure 入口網站的值，請使用認證登入 CloudGate 入口網站，然後存取 SSO 設定 (可於下列路徑找到：**首頁 > 管理 > 系統設定 > 一般**)。
+4. 若要取得要在設定基本 SAML 時貼到 Azure 入口網站的值，請使用認證登入 CloudGate 入口網站，然後存取 SSO 設定 (可於下列路徑找到： **首頁 > 管理 > 系統設定 > 一般** )。
 
     ![CloudGate SSO 設定](./media/soloinsight-cloudgate-sso-tutorial/sso-main-settings.png)
 
@@ -168,24 +168,24 @@ ms.locfileid: "88545058"
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組]  對話方塊中，從使用者清單選取 **Britta Simon**，然後按一下畫面底部的 [選取]  按鈕。
+1. 在 [使用者和群組]  對話方塊中，從使用者清單選取 **Britta Simon** ，然後按一下畫面底部的 [選取]  按鈕。
 1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
 1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 
 ### <a name="create-soloinsight-cloudgate-sso-test-user"></a>建立 Soloinsight-CloudGate SSO 測試使用者
 
-若要建立測試使用者，請從 CloudGate 入口網站的主要功能表選取 [員工]  ，然後填妥 [新增員工] 表單。 要指派給測試使用者的授權層級是**商務管理員**。填妥所有必要欄位後，按一下 [建立]  。
+若要建立測試使用者，請從 CloudGate 入口網站的主要功能表選取 [員工]  ，然後填妥 [新增員工] 表單。 要指派給測試使用者的授權層級是 **商務管理員** 。填妥所有必要欄位後，按一下 [建立]  。
 
 ![員工測試](./media/soloinsight-cloudgate-sso-tutorial/employee-test.png)
 
 ### <a name="test-sso"></a>測試 SSO
 
-當您在存取面板中選取 [Soloinsight-CloudGate SSO] 圖格時，應該會自動登入您已設定 SSO 的 Soloinsight-CloudGate SSO。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [Soloinsight-CloudGate SSO] 圖格時，應該會自動登入您已設定 SSO 的 Soloinsight-CloudGate SSO。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 3dd09770ef5f747f008090368c35b1f274374c5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fb117b7f7b9a0c7a6a67e2714380a01cd53a4e0
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88549060"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515631"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>教學課程：Azure Active Directory 與 Pega Systems 整合
 
@@ -28,7 +28,7 @@ ms.locfileid: "88549060"
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Pega Systems (單一登入)。
 * 您可以集中管理您的帳戶：Azure 入口網站。
 
-若要深入了解 SaaS 應用程式與 Azure AD 的整合，請參閱 [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 的整合，請參閱 [Azure Active Directory 中的應用程式單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -61,7 +61,7 @@ ms.locfileid: "88549060"
 
     ![選取 [新增應用程式]](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Pega Systems**。 在搜尋結果中，選取 [Pega Systems]  ，然後選取 [新增]  。
+4. 在搜尋方塊中，輸入 **Pega Systems** 。 在搜尋結果中，選取 [Pega Systems]  ，然後選取 [新增]  。
 
      ![搜尋結果](common/search-new-app.png)
 
@@ -118,7 +118,7 @@ ms.locfileid: "88549060"
     1. 在 [轉送狀態]  方塊中，輸入以下模式的 URL：`https://<customername>.pegacloud.io/prweb/sso`
 
     > [!NOTE]
-    > 此處提供的值是預留位置。 您需要使用實際的「識別碼」、「回覆 URL」、「登入 URL」及「轉送狀態 URL」。 您可以從本教學課程稍後所述的 Pega 應用程式取得「識別碼」和「回覆 URL」的值。 若要取得轉送狀態的值，請連絡 [Pega Systems 支援小組](https://www.pega.com/contact-us)。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 此處提供的值是預留位置。 您需要使用實際的「識別碼」、「回覆 URL」、「登入 URL」及「轉送狀態 URL」。 您可以從本教學課程稍後所述的 Pega 應用程式取得「識別碼」和「回覆 URL」的值。 若要取得轉送狀態的值，請連絡 [Pega Systems 支援小組](https://www.pega.com/contact-us)。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 6. Pega Systems 應用程式需要特定格式的 SAML 判斷提示。 若要取得正確的格式，您需要將自訂屬性對應新增至您的 SAML 權杖屬性組態。 以下螢幕擷取畫面顯示預設屬性。 選取 [編輯]  圖示，以開啟 [使用者屬性]  對話方塊：
 
@@ -166,11 +166,11 @@ ms.locfileid: "88549060"
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
-    1. **登入 URL**。
+    1. **登入 URL** 。
 
-    1. **Azure AD 識別碼**。
+    1. **Azure AD 識別碼** 。
 
-    1. **登出 URL**。
+    1. **登出 URL** 。
 
 ### <a name="configure-pega-systems-single-sign-on"></a>設定 Pega Systems 單一登入
 
@@ -186,7 +186,7 @@ ms.locfileid: "88549060"
 
     1. 在 [類型]  清單中，選取 [SAML 2.0]  。
 
-    1. 在 [名稱]  方塊中輸入任何名稱 (例如 **Azure AD SSO**)。
+    1. 在 [名稱]  方塊中輸入任何名稱 (例如 **Azure AD SSO** )。
 
     1. 在 [簡短描述]  方塊中輸入描述。  
 
@@ -228,7 +228,7 @@ ms.locfileid: "88549060"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  方塊中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  方塊中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱] 方塊中，輸入 **brittasimon@\<yourcompanydomain>.\<extension>** 。 (例如，BrittaSimon@contoso.com)。
 
@@ -270,12 +270,12 @@ ms.locfileid: "88549060"
 
 您現在必須使用存取面板來測試您的 Azure AD 單一登入組態。
 
-當您在存取面板中選取 [Pega Systems] 圖格時，應該會自動登入您已設定 SSO 的 Pega Systems 執行個體。 如需詳細資訊，請參閱[在「我的應用程式」入口網站上存取和使用應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [Pega Systems] 圖格時，應該會自動登入您已設定 SSO 的 Pega Systems 執行個體。 如需詳細資訊，請參閱[在「我的應用程式」入口網站上存取和使用應用程式](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 7a0da85aeba1a9736884a6b8b345efd3f0a8544c
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: ed697b54b868319d715fdbb88dcae8f8968852d2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996547"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515656"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>教學課程：整合 Oracle Cloud Infrastructure Console 與 Azure Active Directory
 
@@ -26,7 +26,7 @@ ms.locfileid: "91996547"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Oracle Cloud Infrastructure Console。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -40,7 +40,7 @@ ms.locfileid: "91996547"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * Oracle Cloud Infrastructure Console 支援 **SP** 起始的 SSO。
-* 設定 Oracle Cloud Infrastructure Console 後，您可以強制執行工作階段控制項，以即時防護貴組織敏感性資料的外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 設定 Oracle Cloud Infrastructure Console 後，您可以強制執行工作階段控制項，以即時防護貴組織敏感性資料的外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-oracle-cloud-infrastructure-console-from-the-gallery"></a>從資料庫新增 Oracle Cloud Infrastructure Console
 
@@ -50,7 +50,7 @@ ms.locfileid: "91996547"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資料庫新增]  區段的搜尋方塊中，輸入 **Oracle Cloud Infrastructure Console**。
+1. 在 [從資料庫新增]  區段的搜尋方塊中，輸入 **Oracle Cloud Infrastructure Console** 。
 1. 從結果面板選取 [Oracle Cloud Infrastructure Console]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
@@ -79,11 +79,11 @@ ms.locfileid: "91996547"
 1. 在 [基本 SAML 設定]  頁面上，輸入下列欄位的值：
 
    > [!NOTE]
-   > 您會從本教學課程的**設定 Oracle Cloud Infrastructure Console 單一登入**一節中取得服務提供者中繼資料檔案。
+   > 您會從本教學課程的 **設定 Oracle Cloud Infrastructure Console 單一登入** 一節中取得服務提供者中繼資料檔案。
     
    1. 按一下 [上傳中繼資料檔案]  。
 
-   1. 按一下**資料夾圖示**以選取中繼資料檔案，然後按一下 [上傳]  。
+   1. 按一下 **資料夾圖示** 以選取中繼資料檔案，然後按一下 [上傳]  。
 
    1. 成功上傳中繼資料檔案後，就會在 [基本 SAML 設定]  區段文字方塊中自動填入 [識別碼]  和 [回覆 URL]  值。
     
@@ -93,7 +93,7 @@ ms.locfileid: "91996547"
       在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://console.<REGIONNAME>.oraclecloud.com/`
 
       > [!NOTE]
-      > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Oracle Cloud Infrastructure Console 用戶端支援小組](https://www.oracle.com/support/advanced-customer-support/products/cloud.html)以取得值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+      > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Oracle Cloud Infrastructure Console 用戶端支援小組](https://www.oracle.com/support/advanced-customer-support/products/cloud.html)以取得值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  來下載憑證，並將其儲存在電腦上。
 
@@ -105,9 +105,9 @@ ms.locfileid: "91996547"
 
 1. 除了以上屬性外，Oracle Cloud Infrastructure Console 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [群組宣告 (預覽)]  對話方塊的 [使用者屬性與宣告]  區段中，執行下列步驟：
 
-   1. 按一下**名稱識別碼值**旁邊的 [畫筆]  。
+   1. 按一下 **名稱識別碼值** 旁邊的 [畫筆]  。
 
-   1. 選取 [永續性]  作為**選擇名稱識別碼格式**。
+   1. 選取 [永續性]  作為 **選擇名稱識別碼格式** 。
  
    1. 按一下 [檔案]  。
 
@@ -115,7 +115,7 @@ ms.locfileid: "91996547"
     
       ![顯示 [管理使用者宣告] 對話方塊的螢幕擷取畫面，其中已選取 [永續性] 和 [儲存] 按鈕。](./media/oracle-cloud-tutorial/config11.png)
 
-   1. 按一下 [宣告中傳回的群組]  旁的**筆**。
+   1. 按一下 [宣告中傳回的群組]  旁的 **筆** 。
 
    1. 選取選項按鈕清單中的 [安全性群組]  。
 
@@ -123,7 +123,7 @@ ms.locfileid: "91996547"
 
    1. 勾選 [自訂群組宣告的名稱]  。
 
-   1. 在 [名稱]  文字方塊中，輸入 **groupName**。
+   1. 在 [名稱]  文字方塊中，輸入 **groupName** 。
 
    1. 在 [命名空間 (選擇性)]  文字方塊中，輸入 `https://auth.oraclecloud.com/saml/claims`。
 
@@ -187,7 +187,7 @@ ms.locfileid: "91996547"
 
    1. 在 [描述]  文字方塊中，輸入描述。
 
-   1. 選取 [MICROSOFT ACTIVE DIRECTORY 同盟服務 (ADFS) 或 SAML 2.0 相容識別提供者]  作為**類型**。
+   1. 選取 [MICROSOFT ACTIVE DIRECTORY 同盟服務 (ADFS) 或 SAML 2.0 相容識別提供者]  作為 **類型** 。
 
    1. 按一下 [瀏覽]  以上傳您從 Azure 入口網站下載的同盟中繼資料 XML。
 
@@ -207,16 +207,16 @@ ms.locfileid: "91996547"
 
 ### <a name="test-sso"></a>測試 SSO
 
-當您在存取面板中選取 [Oracle Cloud Infrastructure Console] 圖格時，系統會將您重新導向至 Oracle Cloud Infrastructure Console 登入頁面。 從下拉式功能表選取 [識別提供者]  ，然後如下所示按一下 [繼續]  以登入。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [Oracle Cloud Infrastructure Console] 圖格時，系統會將您重新導向至 Oracle Cloud Infrastructure Console 登入頁面。 從下拉式功能表選取 [識別提供者]  ，然後如下所示按一下 [繼續]  以登入。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ![組態](./media/oracle-cloud-tutorial/config10.png)
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
-- [如何使用進階可見性和控制項保護 Oracle Cloud Infrastructure Console](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何使用進階可見性和控制項保護 Oracle Cloud Infrastructure Console](/cloud-app-security/proxy-intro-aad)

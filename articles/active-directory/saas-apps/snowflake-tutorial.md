@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: c0051deeef467fda93ca5e13221d391a15133403
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 26ca1fffb3932493dc7182de1b520f8c0a17d59c
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123023"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514838"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>教學課程：Azure Active Directory 與 Snowflake 整合
 
@@ -27,7 +27,7 @@ Snowflake 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Snowflake (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -62,7 +62,7 @@ Snowflake 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Snowflake**，從結果面板中選取 [Snowflake]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Snowflake** ，從結果面板中選取 [Snowflake]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Snowflake](common/search-new-app.png)
 
@@ -115,7 +115,7 @@ Snowflake 與 Azure AD 整合提供下列優點：
     在 [登出 URL]  文字方塊中，以下列模式輸入 URL：`https://<SNOWFLAKE-URL>.snowflakecomputing.com/fed/logout`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Snowflake 用戶端支援小組](https://support.snowflake.net/s/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Snowflake 用戶端支援小組](https://support.snowflake.net/s/)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 4. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
@@ -135,14 +135,14 @@ Snowflake 與 Azure AD 整合提供下列優點：
 
 1. 在不同的網頁瀏覽器視窗中，以安全性系統管理員身分登入 Snowflake。
 
-1. 按一下頁面右上方的 [設定檔]，**切換角色**為 **ACCOUNTADMIN**。
+1. 按一下頁面右上方的 [設定檔]， **切換角色** 為 **ACCOUNTADMIN** 。
 
     > [!NOTE]
     > 這與您在右上角您使用者名稱底下選取的內容不同
     
     ![Snowflake admin](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
-1. 在記事本中開啟**所下載的 Base 64 憑證**。 複製介於 “-----BEGIN CERTIFICATE-----” 與 “-----END CERTIFICATE-----" 之間的值，並將此值貼到下面 [憑證]  旁邊的引號中。 在 [ssoUrl]  中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。 選取 [所有查詢]  ，然後按一下 [執行]  。
+1. 在記事本中開啟 **所下載的 Base 64 憑證** 。 複製介於 “-----BEGIN CERTIFICATE-----” 與 “-----END CERTIFICATE-----" 之間的值，並將此值貼到下面 [憑證]  旁邊的引號中。 在 [ssoUrl]  中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。 選取 [所有查詢]  ，然後按一下 [執行]  。
 
    ![Snowflake sql](./media/snowflake-tutorial/tutorial_snowflake_sql.png)
 
@@ -173,7 +173,7 @@ Snowflake 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -216,7 +216,7 @@ Snowflake 與 Azure AD 整合提供下列優點：
 
 1. 以安全性系統管理員身分登入 Snowflake。
 
-2. 按一下頁面右上方的 [設定檔]，**切換角色**為 **ACCOUNTADMIN**。  
+2. 按一下頁面右上方的 [設定檔]， **切換角色** 為 **ACCOUNTADMIN** 。  
 
     ![Snowflake admin](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
@@ -233,13 +233,12 @@ Snowflake 與 Azure AD 整合提供下列優點：
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 Snowflake 圖格時，應該會自動登入您設定 SSO 的 Snowflake。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 Snowflake 圖格時，應該會自動登入您設定 SSO 的 Snowflake。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 2f3e540174643f20c87396b8568f6e5b0a1ab16d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ff8196ff4e30aa6ed036cabe00a72bfa8a5c51f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658939"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515316"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-prezi"></a>教學課程：Azure Active Directory 單一登入與 Prezi 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "89658939"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Prezi。
 * 在 Azure 入口網站中管理您的帳戶。
 
-若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -41,7 +41,7 @@ ms.locfileid: "89658939"
 
 * Prezi 支援由 SP 和 IDP 起始的 SSO。
 * Prezi 支援 Just-In-Time 使用者佈建。
-* 在設定 Prezi 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 如需詳細資訊，請參閱[了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 在設定 Prezi 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 如需詳細資訊，請參閱[了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 > [!NOTE]
 > 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
@@ -54,7 +54,7 @@ ms.locfileid: "89658939"
 1. 在最左邊的窗格上，選取 [Azure Active Directory]。
 1. 移至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增新的應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Prezi**。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Prezi** 。
 1. 從結果面板選取 [Prezi]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-sso-for-prezi"></a>設定和測試 Prezi 的 Azure AD SSO
@@ -75,7 +75,7 @@ ms.locfileid: "89658939"
 若要在 Azure 入口網站中啟用 Azure AD SSO：
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Prezi] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [設定使用 SAML 的單一登入] 頁面上，選取 [編輯] 圖示，以編輯 [基本 SAML 設定] 上的設定。
 
    ![編輯 [基本 SAML 設定] 設定](common/edit-urls.png)
@@ -114,7 +114,7 @@ ms.locfileid: "89658939"
 1. 在 Azure 入口網站最左邊的窗格中，選取 [Azure Active Directory]。 移至 [使用者 ]，然後選取 [所有使用者]。
 1. 在畫面頂端選取 [新增使用者]。
 1. 在使用者屬性中，遵循下列步驟：
-   1. 在 [名稱] 方塊中，輸入 **B.Simon**。
+   1. 在 [名稱] 方塊中，輸入 **B.Simon** 。
    1. 在 [使用者名稱] 方塊中輸入 `username@companydomain.extension`，例如 `B.Simon@contoso.com`。
    1. 選取 [顯示密碼] 核取方塊。 記下 [密碼] 方塊中顯示的值。
    1. 選取 [建立]。
@@ -141,7 +141,7 @@ ms.locfileid: "89658939"
 
 1. 在不同的網頁瀏覽器視窗中，使用您的小組帳戶登入 Prezi，並移至[管理主控台](https://prezi.com/organizations/manage)。
 
-1. 從**管理主控台**中，選取 [設定] 索引標籤。
+1. 從 **管理主控台** 中，選取 [設定] 索引標籤。
 
     ![[設定] 索引標籤](./media/prezi-tutorial/settings-image.png)
 
@@ -157,7 +157,7 @@ ms.locfileid: "89658939"
 
     1. 在 [SAML 2.0 端點 (HTTP)] 方塊中，貼上您從 Azure 入口網站複製的 [登入 URL] 值。
 
-    1. 在記事本中開啟從 Azure 入口網站下載的**憑證 (Base64)** 。 複製憑證的內容，並將內容貼入 [憑證 (X.509)] 方塊中。
+    1. 在記事本中開啟從 Azure 入口網站下載的 **憑證 (Base64)** 。 複製憑證的內容，並將內容貼入 [憑證 (X.509)] 方塊中。
 
     1. 選取 [儲存]。
 
@@ -169,14 +169,13 @@ ms.locfileid: "89658939"
 
 在本節中，您會使用存取面板來測試您的 Azure AD SSO 組態。
 
-當您在存取面板中選取 [Prezi] 圖格時，應該會自動登入您已設定 SSO 的 Prezi。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [Prezi] 圖格時，應該會自動登入您已設定 SSO 的 Prezi。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [如何整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](./tutorial-list.md)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 - [嘗試搭配 Azure AD 使用 Prezii](https://aad.portal.azure.com/)
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-- [如何使用進階可見性和控制項保護 Prezi](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
+- [如何使用進階可見性和控制項保護 Prezi](/cloud-app-security/proxy-intro-aad)

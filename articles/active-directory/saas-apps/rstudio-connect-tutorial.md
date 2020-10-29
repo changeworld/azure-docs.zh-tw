@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 6f67d1bb1e4502d918cd7af6d98ce5ed5f76c969
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 638b6899331aa1414a730045e6ce9d1e5d332569
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102284"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514974"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>教學課程：Azure Active Directory 與 RStudio Connect 整合
 
@@ -27,7 +27,7 @@ ms.locfileid: "92102284"
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 RStudio Connect (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -63,7 +63,7 @@ ms.locfileid: "92102284"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **RStudio Connect**，從結果面板中選取 [RStudio Connect]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **RStudio Connect** ，從結果面板中選取 [RStudio Connect]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
     ![結果清單中的 RStudio Connect](common/search-new-app.png)
 
@@ -114,7 +114,7 @@ ms.locfileid: "92102284"
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<example.com>/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 它們是由 RStudio Connect 伺服器位址 (在上述範例中為 `https://example.com`) 來決定。 如果遇到問題，請連絡 [RStudio Connect 支援小組](mailto:support@rstudio.com)。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 它們是由 RStudio Connect 伺服器位址 (在上述範例中為 `https://example.com`) 來決定。 如果遇到問題，請連絡 [RStudio Connect 支援小組](mailto:support@rstudio.com)。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 6. RStudio Connect 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增到您的 SAML 權杖屬性組態。 下列螢幕擷取畫面顯示預設屬性清單，其中的 **nameidentifier** 與 **user.userprincipalname** 相對應。 RStudio Connect 應用程式要求 **nameidentifier** 需與 **user.mail** 相對應，因此您必須按一下 [編輯]  圖示以編輯屬性對應，並變更屬性對應。
 
@@ -126,7 +126,7 @@ ms.locfileid: "92102284"
 
 ### <a name="configure-rstudio-connect-single-sign-on"></a>設定 RStudio Connect 單一登入
 
-若要針對 **RStudio Connect** 設定單一登入，您必須使用上面所使用的 [應用程式同盟中繼資料 URL]  和**伺服器位址**。 這能透過位於 `/etc/rstudio-connect/rstudio-connect.gcfg` 的 RStudio Connect 設定檔來完成。
+若要針對 **RStudio Connect** 設定單一登入，您必須使用上面所使用的 [應用程式同盟中繼資料 URL]  和 **伺服器位址** 。 這能透過位於 `/etc/rstudio-connect/rstudio-connect.gcfg` 的 RStudio Connect 設定檔來完成。
 
 這是範例的設定檔：
 
@@ -153,7 +153,7 @@ IdPAttributeProfile = azure
 SSOInitiated = IdPAndSP
 ```
 
-將您的**伺服器位址** 儲存在 `Server.Address` 值中，然後將 [應用程式同盟中繼資料 URL]  儲存在 `SAML.IdPMetaData` 值中。 請注意，此範例組態會使用未加密的 HTTP 連線，而 Azure AD 需要使用加密的 HTTPS 連線。 您可以使用 RStudio Connect 前面的[反向 Proxy](https://docs.rstudio.com/connect/admin/proxy/)，或將 RStudio Connect 設定為[直接使用 HTTPS](https://docs.rstudio.com/connect/admin/appendix/configuration/#HTTPS)。 
+將您的 **伺服器位址** 儲存在 `Server.Address` 值中，然後將 [應用程式同盟中繼資料 URL]  儲存在 `SAML.IdPMetaData` 值中。 請注意，此範例組態會使用未加密的 HTTP 連線，而 Azure AD 需要使用加密的 HTTPS 連線。 您可以使用 RStudio Connect 前面的[反向 Proxy](https://docs.rstudio.com/connect/admin/proxy/)，或將 RStudio Connect 設定為[直接使用 HTTPS](https://docs.rstudio.com/connect/admin/appendix/configuration/#HTTPS)。 
 
 如果您遇到設定上的問題，請參閱 [RStudio Connect 系統管理指南](https://docs.rstudio.com/connect/admin/authentication/saml/) \(英文\) 或傳送電子郵件給 [RStudio 支援小組](mailto:support@rstudio.com)以取得協助。
 
@@ -173,7 +173,7 @@ SSOInitiated = IdPAndSP
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`。 例如， BrittaSimon@contoso.com
 
@@ -215,13 +215,12 @@ SSOInitiated = IdPAndSP
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 RStudio Connect 圖格時，應該會自動登入您已設定 SSO 的 RStudio Connect。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 RStudio Connect 圖格時，應該會自動登入您已設定 SSO 的 RStudio Connect。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
