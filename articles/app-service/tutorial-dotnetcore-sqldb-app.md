@@ -4,14 +4,14 @@ description: 了解如何讓 .NET Core 應用程式在 Azure App Service 中運�
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.custom: devx-track-csharp, mvc, cli-validate, seodec18
+ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: b83dfbd715a6b27491fd5f5efd41213210092325
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 305137cf371d7a9e3d336d8142ef9a03eb38421f
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90982885"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743695"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>教學課程：在 Azure App Service 中建置 ASP.NET Core 和 Azure SQL Database 應用程式
 
@@ -75,7 +75,7 @@ dotnet ef database update
 dotnet run
 ```
 
-在瀏覽器中，瀏覽至 `http://localhost:5000` 。 選取 [新建]**** 連結，並且建立幾個 [待辦事項]__ 項目。
+在瀏覽器中，瀏覽至 `http://localhost:5000` 。 選取 [新建]  連結，並且建立幾個 [待辦事項]  項目。
 
 ![成功連線至 SQL Database](./media/tutorial-dotnetcore-sqldb-app/local-app-in-browser.png)
 
@@ -97,7 +97,7 @@ dotnet run
 
 在 Cloud Shell 中，使用 [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) 命令建立 SQL Database 邏輯伺服器。
 
-將 *\<server-name>* 預留位置取代為「唯一」** 的 SQL Database 名稱。 這個名稱會用來做為全域唯一 SQL Database 端點 (`<server-name>.database.windows.net`) 的一部分。 有效字元為 `a`-`z`、`0`-`9`、`-`。 此外，將 *\<db-username>* 與 *\<db-password>* 取代為您選擇的使用者名稱與密碼。 
+將  的 SQL Database 名稱。 這個名稱會用來做為全域唯一 SQL Database 端點 (`<server-name>.database.windows.net`) 的一部分。 有效字元為 `a`-`z`、`0`-`9`、`-`。 此外，將 *\<db-username>* 與 *\<db-password>* 取代為您選擇的使用者名稱與密碼。 
 
 
 ```azurecli-interactive
@@ -136,7 +136,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server <se
 > [僅使用您的應用程式所用的輸出 IP 位址](overview-inbound-outbound-ips.md#find-outbound-ips)，讓您的防火牆規則更具限制性。
 >
 
-在 Cloud Shell 中，將 *\<your-ip-address>* 取代為[您的本機 IPv4 IP 位址](https://www.whatsmyip.org/) \(英文\) 並再次執行命令，以允許從您的本機電腦進行存取。
+在 Cloud Shell 中，將 *\<your-ip-address>* 取代為 [您的本機 IPv4 IP 位址](https://www.whatsmyip.org/) \(英文\) 並再次執行命令，以允許從您的本機電腦進行存取。
 
 ```azurecli-interactive
 az sql server firewall-rule create --name AllowLocalClient --server <server-name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
@@ -214,7 +214,7 @@ dotnet ef database update
 dotnet run
 ```
 
-在瀏覽器中，瀏覽至 `http://localhost:5000` 。 選取 [新建]**** 連結，並且建立幾個 [待辦事項]__ 項目。 您的應用程式現在正在讀取及寫入資料至生產資料庫。
+在瀏覽器中，瀏覽至 `http://localhost:5000` 。 選取 [新建]  連結，並且建立幾個 [待辦事項]  項目。 您的應用程式現在正在讀取及寫入資料至生產資料庫。
 
 認可本機變更，然後將變更認可至 Git 存放庫中。 
 
@@ -269,7 +269,7 @@ git commit -m "connect to SQLDB in Azure"
 az webapp config connection-string set --resource-group myResourceGroup --name <app-name> --settings MyDbConnection="<connection-string>" --connection-string-type SQLAzure
 ```
 
-在 ASP.NET Core 中，您可以使用標準模式的這個具名連接字串 (`MyDbConnection`)，例如 appsettings.json** 中指定的任何連接字串。 在此情況下，`MyDbConnection` 也會定義在 appsettings.json** 中。 在 App Service 中執行時，App Service 中所定義的連接字串會優先於 appsettings.json** 中所定義的連接字串。 程式碼會在本機開發期間使用 appsettings.json**，而且相同的程式碼會在部署時使用 App Service 值。
+在 ASP.NET Core 中，您可以使用標準模式的這個具名連接字串 (`MyDbConnection`)，例如 appsettings.json  中指定的任何連接字串。 在此情況下，`MyDbConnection` 也會定義在 appsettings.json  中。 在 App Service 中執行時，App Service 中所定義的連接字串會優先於 appsettings.json  中所定義的連接字串。 程式碼會在本機開發期間使用 appsettings.json  ，而且相同的程式碼會在部署時使用 App Service 值。
 
 若要了解如何在程式碼中參考連接字串，請參閱[設定應用程式以連線到生產資料庫](#configure-app-to-connect-to-production-database)。
 
@@ -362,7 +362,7 @@ http://<app-name>.azurewebsites.net
 
 ### <a name="update-your-data-model"></a>更新資料模型
 
-在程式碼編輯器中開啟 _Models/Todo.cs_。 將下列屬性加入至 `ToDo` 類別：
+在程式碼編輯器中開啟 _Models/Todo.cs_ 。 將下列屬性加入至 `ToDo` 類別：
 
 ```csharp
 public bool Done { get; set; }
@@ -385,7 +385,7 @@ dotnet ef database update
 
 在您的程式碼中進行一些變更以使用 `Done` 屬性。 為了簡單起見，在本教學課程中，您僅需變更 `Index` 和 `Create` 檢視，以查看作用中的屬性。
 
-開啟 _Controllers/TodosController.cs_。
+開啟 _Controllers/TodosController.cs_ 。
 
 尋找 `Create([Bind("ID,Description,CreatedDate")] Todo todo)` 方法，並將 `Done` 加入至 `Bind` 屬性 (Attribute) 中的屬性 (Property) 清單。 完成時，您的 `Create()` 方法簽章應該如以下程式碼所示：
 
@@ -393,7 +393,7 @@ dotnet ef database update
 public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")] Todo todo)
 ```
 
-開啟 _Views/Todos/Create.cshtml_。
+開啟 _Views/Todos/Create.cshtml_ 。
 
 在 Razor 程式碼中，您應該會看到 `Description` 的 `<div class="form-group">` 元素，然後是另一個 `CreatedDate` 的 `<div class="form-group">` 元素。 在這兩個元素的正後方，新增另一個 `Done` 的 `<div class="form-group">` 元素：
 
@@ -407,7 +407,7 @@ public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")
 </div>
 ```
 
-開啟 _Views/Todos/Index.cshtml_。
+開啟 _Views/Todos/Index.cshtml_ 。
 
 搜尋空白的 `<th></th>` 元素。 在此元素的正上方，新增下列 Razor 程式碼：
 
@@ -439,7 +439,7 @@ dotnet run
 > 如果您開啟新的終端機視窗，則需要在終端機中設定生產資料庫的連接字串，就像您在[對生產資料庫執行資料庫移轉](#run-database-migrations-to-the-production-database)中所做的一樣。
 >
 
-在瀏覽器中，瀏覽至 `http://localhost:5000/`。 您現在可以新增待辦事項項目，並且勾選 [完成]****。 然後，它應該會在您的首頁中顯示為已完成的項目。 請記住，[`Edit`] 檢視不會顯示 [`Done`] 欄位，因為您沒有變更 [`Edit`] 檢視。
+在瀏覽器中，瀏覽至 `http://localhost:5000/`。 您現在可以新增待辦事項項目，並且勾選 [完成]  。 然後，它應該會在您的首頁中顯示為已完成的項目。 請記住，[`Edit`] 檢視不會顯示 [`Done`] 欄位，因為您沒有變更 [`Edit`] 檢視。
 
 ### <a name="publish-changes-to-azure"></a>將變更發佈至 Azure
 
@@ -449,7 +449,7 @@ git commit -m "added done field"
 git push azure master
 ```
 
-`git push` 完成之後，瀏覽至 App Service 應用程式並嘗試新增待辦事項，然後核取 [完成]****。
+`git push` 完成之後，瀏覽至 App Service 應用程式並嘗試新增待辦事項，然後核取 [完成]  。
 
 ![Code First 移轉之後的 Azure 應用程式](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
 
@@ -462,7 +462,7 @@ git push azure master
 範例專案已遵循 [Azure 中的 ASP.NET Core 記錄](/aspnet/core/fundamentals/logging#azure-app-service-provider)指引，其中有兩項組態變更：
 
 - 在 *DotNetCoreSqlDb.csproj* 中包含 `Microsoft.Extensions.Logging.AzureAppServices` 的參考。
-- 在 Program.cs** 中呼叫 `loggerFactory.AddAzureWebAppDiagnostics()`。
+- 在 Program.cs  中呼叫 `loggerFactory.AddAzureWebAppDiagnostics()`。
 
 若要將 App Service 中的 ASP.NET Core [記錄層級](/aspnet/core/fundamentals/logging#log-level)從預設層級 `Error` 設定為 `Information`，請在 Cloud Shell 中使用 [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) 命令。
 
@@ -471,7 +471,7 @@ az webapp log config --name <app-name> --resource-group myResourceGroup --applic
 ```
 
 > [!NOTE]
-> 專案的記錄層級已經在 appsettings.json** 中設定為 `Information`。
+> 專案的記錄層級已經在 appsettings.json  中設定為 `Information`。
 > 
 
 若要開始記錄資料流，請在 Cloud Shell 中使用 [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) 命令。
@@ -488,7 +488,7 @@ az webapp log tail --name <app-name> --resource-group myResourceGroup
 
 ## <a name="manage-your-azure-app"></a>管理您的 Azure 應用程式
 
-若要查看您建立的應用程式，請在 [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 [應用程式服務]****。
+若要查看您建立的應用程式，請在  。
 
 ![在 Azure 入口網站中選取應用程式服務](./media/tutorial-dotnetcore-sqldb-app/app-services.png)
 

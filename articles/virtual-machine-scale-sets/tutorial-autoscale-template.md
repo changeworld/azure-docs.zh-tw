@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
-ms.custom: avverma
-ms.openlocfilehash: fae86e13be624d7a5304aa04b82432e1163b1244
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: avverma, devx-track-azurecli
+ms.openlocfilehash: f94a68833347d662f427fa0944dd83d33458bd14
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84629543"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746005"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>教學課程：使用 Azure 範本自動調整虛擬機器擴展集
 當建立擴展集時，您會定義您想要執行的 VM 執行個體數目。 當您的應用程式需求變更時，您可以自動增加或減少 VM 執行個體數目。 自動調整的能力可讓您在整個應用程式的生命週期中，跟上客戶的需求或對應用程式效能變更做出回應。 在本教學課程中，您將了解如何：
@@ -33,7 +33,7 @@ ms.locfileid: "84629543"
 
 
 ## <a name="define-an-autoscale-profile"></a>定義自動調整設定檔
-您可以使用 *Microsoft.insights/autoscalesettings* 資源提供者在 Azure 範本中定義自動調整設定檔。 *設定檔*會詳細說明擴展集的容量，以及任何相關聯的規則。 下列範例會定義名為*根據 CPU 使用率依百分比自動調整*的設定檔，並設定預設 (最小) 容量 *2* 個 VM 執行個體，以及最大容量 *10* 個：
+您可以使用 *Microsoft.insights/autoscalesettings* 資源提供者在 Azure 範本中定義自動調整設定檔。 *設定檔* 會詳細說明擴展集的容量，以及任何相關聯的規則。 下列範例會定義名為 *根據 CPU 使用率依百分比自動調整* 的設定檔，並設定預設 (最小) 容量 *2* 個 VM 執行個體，以及最大容量 *10* 個：
 
 ```json
 {
@@ -135,7 +135,7 @@ ms.locfileid: "84629543"
 
 
 ## <a name="create-an-autoscaling-scale-set"></a>建立自動調整擴展集
-我們將使用範例範本來建立擴展集，並套用自動調整規則。 您可以[檢閱完整範本](https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/autoscale.json)，或[檢視範本的 *Microsoft.insights/autoscalesettings* 資源提供者區段](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/autoscale.json#L220)。
+我們將使用範例範本來建立擴展集，並套用自動調整規則。 您可以 [檢閱完整範本](https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/autoscale.json)，或 [檢視範本的 *Microsoft.insights/autoscalesettings* 資源提供者區段](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/autoscale.json#L220)。
 
 首先，使用 [az group create](/cli/azure/group) 建立資源群組。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組：
 
@@ -143,7 +143,7 @@ ms.locfileid: "84629543"
 az group create --name myResourceGroup --location eastus
 ```
 
-現在，請使用 [az group deployment create](/cli/azure/group/deployment) 建立虛擬機器擴展集。 出現提示時，請提供您自己的使用者名稱 (例如 *azureuser*)，以及作為每個 VM 執行個體之認證的密碼：
+現在，請使用 [az group deployment create](/cli/azure/group/deployment) 建立虛擬機器擴展集。 出現提示時，請提供您自己的使用者名稱 (例如 *azureuser* )，以及作為每個 VM 執行個體之認證的密碼：
 
 ```azurecli-interactive
 az group deployment create \
@@ -188,7 +188,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-當 **stress** 顯示類似於 stress: info: [2688] dispatching hogs:*10 cpu, 0 io, 0 vm, 0 hdd* 的輸出時，請按 Enter 鍵返回提示。
+當 **stress** 顯示類似於 stress: info: [2688] dispatching hogs: *10 cpu, 0 io, 0 vm, 0 hdd* 的輸出時，請按 Enter 鍵返回提示。
 
 若要確認 **stress** 產生了 CPU 負載，請使用 **top** 公用程式檢查作用中的系統負載：
 
@@ -196,7 +196,7 @@ sudo stress --cpu 10 --timeout 420 &
 top
 ```
 
-結束 **top**，然後關閉 VM 執行個體的連線。 **stress** 會繼續對 VM 執行個體執行。
+結束 **top** ，然後關閉 VM 執行個體的連線。 **stress** 會繼續對 VM 執行個體執行。
 
 ```console
 Ctrl-c
@@ -209,14 +209,14 @@ exit
 ssh azureuser@13.92.224.66 -p 50003
 ```
 
-安裝並執行 **stress**，然後在第二個 VM 執行個體上啟動十個背景工作。
+安裝並執行 **stress** ，然後在第二個 VM 執行個體上啟動十個背景工作。
 
 ```console
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-再次，當 **stress** 顯示類似於 stress: info: [2713] dispatching hogs:*10 cpu, 0 io, 0 vm, 0 hdd* 的輸出時，請按 Enter 鍵返回提示。
+再次，當 **stress** 顯示類似於 stress: info: [2713] dispatching hogs: *10 cpu, 0 io, 0 vm, 0 hdd* 的輸出時，請按 Enter 鍵返回提示。
 
 關閉第二個 VM 執行個體的連線。 **stress** 會繼續對 VM 執行個體執行。
 
@@ -225,7 +225,7 @@ exit
 ```
 
 ## <a name="monitor-the-active-autoscale-rules"></a>監視作用中的自動調整規則
-若要監視擴展集中的 VM 執行個體數目，請使用 **watch**。 約需要 5 分鐘的時間，自動調整規則才會開始執行擴增程序，以回應 **stress** 對每個 VM 執行個體產生的 CPU 負載：
+若要監視擴展集中的 VM 執行個體數目，請使用 **watch** 。 約需要 5 分鐘的時間，自動調整規則才會開始執行擴增程序，以回應 **stress** 對每個 VM 執行個體產生的 CPU 負載：
 
 ```azurecli-interactive
 watch az vmss list-instances \

@@ -20,7 +20,7 @@
           href: get-started-analyze-sql-on-demand.md
         - name: 5 分析儲存體帳戶中的資料
           href: get-started-analyze-storage.md
-        - name: 6 使用管線進行協調
+        - name: 6 與管線整合
           href: get-started-pipelines.md
         - name: 7 使用 Power BI 將資料視覺化
           href: get-started-visualize-power-bi.md
@@ -42,7 +42,8 @@
       href: quickstart-create-workspace-cli.md
     - name: 使用 Azure PowerShell 建立 Synapse 工作區
       href: quickstart-create-workspace-powershell.md
-    - name: 透過範本進行部署
+    - name: 使用 ARM 範本進行部署
+      displayName: Resource Manager
       href: quickstart-deployment-template-workspaces.md
     - name: 連結 Power BI 工作區
       href: quickstart-power-bi.md
@@ -168,7 +169,7 @@
               href: ../sql-database/transparent-data-encryption-azure-sql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 具有 BYOK 的 TDE
               href: ../sql-database/transparent-data-encryption-byok-azure-sql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: 整合與協調流程
+    - name: 整合
       items:
         - name: 管線與活動
           href: ../data-factory/concepts-pipelines-activities.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -558,7 +559,7 @@
               href: ../data-factory/data-flow-unpivot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 時間範圍
               href: ../data-factory/data-flow-window.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: 整合和協調
+    - name: 整合
       items:
         - name: 作者
           items:
@@ -893,8 +894,6 @@
               href: ../data-factory/data-factory-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 連接器疑難排解
               href: ../data-factory/connector-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: 資料複製工具疑難排解
-              href: ../data-factory/copy-data-tool-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 自我裝載整合執行階段疑難排解
               href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: 將工具連線到 Synapse 工作區
@@ -955,7 +954,7 @@
       href: 'https://docs.microsoft.com/answers/questions/topics/single/25423.html'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=sql-data-warehouse'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-synapse/'
     - name: 支援
       href: ./sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

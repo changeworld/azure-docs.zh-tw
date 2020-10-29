@@ -5,13 +5,13 @@ author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
-ms.custom: mvc, devcenter
-ms.openlocfilehash: cc4912545bedb650268b3d8e4a3e9820b70b5fe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: 3727e9a83827261bf9e8a526ffedb6d3fc644afa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842524"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745985"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>教學課程：使用範本將應用程式部署到 Service Fabric Mesh
 
@@ -69,7 +69,7 @@ az group create --name myResourceGroup --location eastus
 
 ### <a name="create-the-container-registry"></a>建立容器登錄
 
-使用 `az acr create` 命令建立 ACR 執行個體。 登錄名稱在 Azure 內必須是唯一的，且包含 5-50 個英數字元。 下列範例中使用名稱 *myContainerRegistry*。 如果您收到錯誤指出登錄名稱已在使用中，請選擇其他名稱。
+使用 `az acr create` 命令建立 ACR 執行個體。 登錄名稱在 Azure 內必須是唯一的，且包含 5-50 個英數字元。 下列範例中使用名稱 *myContainerRegistry* 。 如果您收到錯誤指出登錄名稱已在使用中，請選擇其他名稱。
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name myContainerRegistry --sku Basic
@@ -100,7 +100,7 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry --sku 
 
 ## <a name="push-the-images-to-azure-container-registry"></a>將映像推送至 Azure Container Registry
 
-本教學課程使用待辦事項清單範例應用程式作為範例。  [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) 與 [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) 服務的容器映像可在 Docker Hub 中找到。 如需如何在 Visual Studio 中建立應用程式的相關資訊，請參閱[建立 Servic Fabric Mesh Web 應用程式](service-fabric-mesh-tutorial-create-dotnetcore.md)。 Service Fabric Mesh 可以執行 Windows 或 Linux Docker 容器。  如果您正在使用 Linux 容器，請在 Docker 中選取**切換至 Linux 容器**。  如果您正在使用 Windows 容器，請在 Docker 中選取**切換至 Windows 容器**。
+本教學課程使用待辦事項清單範例應用程式作為範例。  [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) 與 [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) 服務的容器映像可在 Docker Hub 中找到。 如需如何在 Visual Studio 中建立應用程式的相關資訊，請參閱[建立 Servic Fabric Mesh Web 應用程式](service-fabric-mesh-tutorial-create-dotnetcore.md)。 Service Fabric Mesh 可以執行 Windows 或 Linux Docker 容器。  如果您正在使用 Linux 容器，請在 Docker 中選取 **切換至 Linux 容器** 。  如果您正在使用 Windows 容器，請在 Docker 中選取 **切換至 Windows 容器** 。
 
 若要推送映像到 ACR 執行個體，您必須先有容器映像。 如果您還沒有任何本機容器映像，請使用 [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) 命令，以從 Docker Hub 中提取 [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) 與 [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) 映像。
 
@@ -196,9 +196,9 @@ Service Fabric Mesh 應用程式是一種 Azure 資源，您可以使用 Azure R
 本教學課程使用待辦事項清單範例作為範例。  不會建立新的範本和參數檔案，而是下載 [mesh_rp.windows.json 部署範本](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json)與 [mesh_rp.windows.parameter.json 參數](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json)檔案。
 
 ### <a name="parameters"></a>參數
-當您範本中的值是您要在部署時變更的值，或希望可以選擇在每個部署基礎上進行變更的值 (如果您打算將此範本重新用於其他部署)，最佳做法是將值參數化。 執行此操作的正確方法是在部署範本的頂端建立「參數」區段，您可以在該區段中指定參數名稱和屬性，以供之後在部署範本中引用。 每個參數定義包括 *type*、*defaultValue*，以及具有*描述*之選用性*中繼資料*區段。
+當您範本中的值是您要在部署時變更的值，或希望可以選擇在每個部署基礎上進行變更的值 (如果您打算將此範本重新用於其他部署)，最佳做法是將值參數化。 執行此操作的正確方法是在部署範本的頂端建立「參數」區段，您可以在該區段中指定參數名稱和屬性，以供之後在部署範本中引用。 每個參數定義包括 *type* 、 *defaultValue* ，以及具有 *描述* 之選用性 *中繼資料* 區段。
 
-參數區段定義於部署範本的頂端，就在*資源*區段之前：
+參數區段定義於部署範本的頂端，就在 *資源* 區段之前：
 
 ```json
 {

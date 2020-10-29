@@ -161,6 +161,8 @@
       href: ../../service-bus-messaging/security-baseline.md
     - name: Service Fabric 基準
       href: ../../service-fabric/security-baseline.md
+    - name: Site Recovery 基準
+      href: ../../site-recovery/security-baseline.md
     - name: 串流分析基準
       href: ../../stream-analytics/security-baseline.md
     - name: Synapse Analytics 安全性基準

@@ -5,14 +5,14 @@ ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: msangapu
 keywords: azure app service, web 應用程式, linux, windows, docker, 容器
-ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
+ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 0cb1aa2d922db96eff21a128eaa60363b37db9d7
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f3c687d5c8b4e4c6d0b7f4ff912137066fe10bbb
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152091"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743719"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>使用自訂容器將自訂軟體遷移至 Azure App Service
 
@@ -29,7 +29,7 @@ ms.locfileid: "92152091"
 - <a href="https://hub.docker.com/" target="_blank">註冊 Docker Hub 帳戶</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">安裝適用於 Windows 的 Docker</a>。
 - <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">切換 Docker 以執行 Windows 容器</a>。
-- <a href="https://www.visualstudio.com/downloads/" target="_blank">安裝 Visual Studio 2019</a>，記得包含 **ASP.NET 與網頁程式開發**與 **Azure 開發**工作負載。 若您已安裝 Visual Studio 2019：
+- <a href="https://www.visualstudio.com/downloads/" target="_blank">安裝 Visual Studio 2019</a>，記得包含 **ASP.NET 與網頁程式開發** 與 **Azure 開發** 工作負載。 若您已安裝 Visual Studio 2019：
     - 按一下 [說明] > [檢查更新] 以安裝最新的 Visual Studio 更新。
     - 按一下 [工具] > [取得工具與功能] 以在 Visual Studio 中新增工作負載。
 
@@ -46,7 +46,7 @@ ms.locfileid: "92152091"
 
 ### <a name="install-the-font"></a>安裝字型
 
-在 Windows 檔案總管中，瀏覽至 _custom-font-win-container-master/CustomFontSample_，以滑鼠右鍵按一下 _FrederickatheGreat-Regular.ttf_，然後選取 [安裝]。
+在 Windows 檔案總管中，瀏覽至 _custom-font-win-container-master/CustomFontSample_ ，以滑鼠右鍵按一下 _FrederickatheGreat-Regular.ttf_ ，然後選取 [安裝]。
 
 可從 [Google Fonts](https://fonts.google.com/specimen/Fredericka+the+Great) 下載此字型。
 
@@ -70,7 +70,7 @@ ms.locfileid: "92152091"
 
 您的專案現在已設定為在 Windows 容器中執行。 _Dockerfile_ 已新增至 **CustomFontSample** 專案，而且 **docker-compose** 專案已新增至解決方案。 
 
-從 [方案總管] 開啟 **Dockerfile**。
+從 [方案總管] 開啟 **Dockerfile** 。
 
 您需要使用[支援的父映像](configure-custom-container.md#supported-parent-images)。 請使用下列程式碼取代 `FROM` 這一行，以變更父映像：
 
@@ -84,7 +84,7 @@ FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
 RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 ```
 
-您可以在 **CustomFontSample** 專案中找到 _InstallFont.ps1_。 它是用於安裝字型的簡單指令碼。 您可以在 [Script Center](https://gallery.technet.microsoft.com/scriptcenter/fb742f92-e594-4d0c-8b79-27564c575133) 找到較複雜版本的指令碼。
+您可以在 **CustomFontSample** 專案中找到 _InstallFont.ps1_ 。 它是用於安裝字型的簡單指令碼。 您可以在 [Script Center](https://gallery.technet.microsoft.com/scriptcenter/fb742f92-e594-4d0c-8b79-27564c575133) 找到較複雜版本的指令碼。
 
 > [!NOTE]
 > 若要在本機測試 Windows 容器，請確定已在您的本機電腦上啟動 Docker。
@@ -119,7 +119,7 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 | 設定  | 建議的值 | 取得詳細資訊 |
 | ----------------- | ------------ | ----|
 |**DNS 首碼**| 保留產生的登錄名稱，或將它變更為其他唯一名稱。 |  |
-|**資源群組**| 按一下 [新增]，輸入 **myResourceGroup**，然後按一下 [確定]。 |  |
+|**資源群組**| 按一下 [新增]，輸入 **myResourceGroup** ，然後按一下 [確定]。 |  |
 |**SKU**| 基本 | [定價層](https://azure.microsoft.com/pricing/details/container-registry/)|
 |**登錄位置**| 西歐 | |
 
@@ -142,12 +142,12 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 | 設定  | 建議的值 | 取得詳細資訊 |
 | ----------------- | ------------ | ----|
 |**訂用帳戶**| 請確定已選取正確的訂用帳戶。 |  |
-|**資源群組**| 選取 [新建]，輸入 **myResourceGroup**，然後按一下 [確定]。 |  |
+|**資源群組**| 選取 [新建]，輸入 **myResourceGroup** ，然後按一下 [確定]。 |  |
 |**名稱**| 輸入唯一名稱。 | Web 應用程式的 URL 是 `http://<app-name>.azurewebsites.net`，其中 `<app-name>` 是您的應用程式名稱。 |
 |**Publish**| Docker 容器 | |
 |**作業系統**| Windows | |
 |**區域**| 西歐 | |
-|**Windows 方案**| 選取 [新建]，輸入 **myAppServicePlan**，然後按一下 [確定]。 | |
+|**Windows 方案**| 選取 [新建]，輸入 **myAppServicePlan** ，然後按一下 [確定]。 | |
 
 您的 [基本] 索引標籤應該會顯示如下：
 
@@ -561,7 +561,7 @@ az group create --name AppSvc-DockerTutorial-rg --location westus2
 
     您也可以在瀏覽器中的 `https://<app-name>.scm.azurewebsites.net/api/logs/docker` 檢查記錄檔。
 
-1. 若要隨時停止記錄資料流，請輸入 **Ctrl**+**C**。
+1. 若要隨時停止記錄資料流，請輸入 **Ctrl**+**C** 。
 
 ## <a name="connect-to-the-container-using-ssh"></a>使用 SSH 連線到容器
 
@@ -606,7 +606,7 @@ service ssh start
 
 1. 請瀏覽至 `https://<app-name>.scm.azurewebsites.net/webssh/host` 並以您的 Azure 帳戶登入。 以 Web 應用程式名稱取代 `<app-name>`。
 
-1. 登入之後，系統會將您重新導向至 Web 應用程式的參考頁面。 選取頁面頂端的 **SSH**，以開啟殼層並使用命令。
+1. 登入之後，系統會將您重新導向至 Web 應用程式的參考頁面。 選取頁面頂端的 **SSH** ，以開啟殼層並使用命令。
 
     例如，您可以使用 `top` 命令來檢查在其中執行的程序。
     

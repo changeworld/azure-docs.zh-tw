@@ -6,13 +6,13 @@ author: msangapu-msft
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.custom: cli-validate
-ms.openlocfilehash: 9c984daa380f1d4f0a7b067604ab66ba14a0b70b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: cli-validate, devx-track-azurecli
+ms.openlocfilehash: 7945c6c6f834de068665e3400440d2be5dd713ff
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88081958"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743444"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>教學課程：在適用於容器的 Web 應用程式中建立多容器 (預覽) 應用程式
 
@@ -63,7 +63,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
-在 Cloud Shell 中，使用 [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令來建立資源群組。 下列範例會在*美國中南部*位置中建立名為 *myResourceGroup* 的資源群組。 若要查看**標準**層中 Linux 上之 App Service 的所有支援位置，請執行 [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) 命令。
+在 Cloud Shell 中，使用 [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令來建立資源群組。 下列範例會在 *美國中南部* 位置中建立名為 *myResourceGroup* 的資源群組。 若要查看 **標準** 層中 Linux 上之 App Service 的所有支援位置，請執行 [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) 命令。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
@@ -79,7 +79,7 @@ az group create --name myResourceGroup --location "South Central US"
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan-linux.md)] -->
 
-下列範例會在**標準**定價層 (`--sku S1`) 和 Linux 容器 (`--is-linux`) 中，建立名為 `myAppServicePlan` 的 App Service 方案。
+下列範例會在 **標準** 定價層 (`--sku S1`) 和 Linux 容器 (`--is-linux`) 中，建立名為 `myAppServicePlan` 的 App Service 方案。
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku S1 --is-linux
@@ -138,7 +138,7 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 
 ![適用於容器的 Web 應用程式上的範例多容器應用程式][1]
 
-**恭喜**，您已在適用於容器的 Web 應用程式中建立多容器應用程式。 接下來，您必須設定應用程式以使用適用於 MySQL 的 Azure 資料庫。 請勿在此時安裝 WordPress。
+**恭喜** ，您已在適用於容器的 Web 應用程式中建立多容器應用程式。 接下來，您必須設定應用程式以使用適用於 MySQL 的 Azure 資料庫。 請勿在此時安裝 WordPress。
 
 ## <a name="connect-to-production-database"></a>連線至生產資料庫
 
@@ -413,7 +413,7 @@ services:
 
 ### <a name="configure-environment-variables"></a>設定環境變數
 
-若要使用 Redis，您必須在 App Service 內啟用此設定 `WP_REDIS_HOST`。 這是讓 WordPress 與 Redis 主機進行通訊的*必要設定*。 若要進行這項變更，請在 Cloud Shell 中使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令。 應用程式設定為區分大小寫和空格分隔。
+若要使用 Redis，您必須在 App Service 內啟用此設定 `WP_REDIS_HOST`。 這是讓 WordPress 與 Redis 主機進行通訊的 *必要設定* 。 若要進行這項變更，請在 Cloud Shell 中使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令。 應用程式設定為區分大小寫和空格分隔。
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app-name> --settings WP_REDIS_HOST="redis"
@@ -482,11 +482,11 @@ az webapp config container set --resource-group myResourceGroup --name <app-name
 
 ![按一下 [啟用物件快取] 按鈕][5]
 
-WordPress 會連線至 Redis 伺服器。 連線**狀態**會顯示在相同頁面上。
+WordPress 會連線至 Redis 伺服器。 連線 **狀態** 會顯示在相同頁面上。
 
 ![WordPress 會連線至 Redis 伺服器。 連線 **狀態** 會顯示在相同頁面上。][6]
 
-**恭喜**，您已將 WordPress 連線至 Redis。 已可用於生產環境的應用程式現在會使用**適用於 MySQL 的 Azure 資料庫、永續性儲存體和 Redis**。 您現在可以將 App Service 方案擴增至多個執行個體。
+**恭喜** ，您已將 WordPress 連線至 Redis。 已可用於生產環境的應用程式現在會使用 **適用於 MySQL 的 Azure 資料庫、永續性儲存體和 Redis** 。 您現在可以將 App Service 方案擴增至多個執行個體。
 
 ## <a name="find-docker-container-logs"></a>尋找 Docker 容器記錄
 

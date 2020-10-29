@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/15/2020
-ms.openlocfilehash: a0f081e0f8df00bbc99d2163fb54a2f15d92a159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1031c34a44a253c7458ef78c6371b88014e882ed
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87006427"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746466"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>教學課程：在 Azure HDInsight 中建立端對端資料管線以衍生 Sales Insights
 
@@ -27,13 +27,13 @@ ms.locfileid: "87006427"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* Azure CLI - 至少為 2.2.0 版。 請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+* Azure CLI - 至少為 2.2.0 版。 請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 * jq，這是命令列 JSON 處理器。  請參閱 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
 
 * [Azure 內建角色 - 擁有者](../role-based-access-control/built-in-roles.md)的成員。
 
-* 如果使用 PowerShell 來觸發 Data Factory 管線，您將需要 [Az 模組](https://docs.microsoft.com/powershell/azure/)。
+* 如果使用 PowerShell 來觸發 Data Factory 管線，您將需要 [Az 模組](/powershell/azure/)。
 
 * [Power BI Desktop](https://aka.ms/pbiSingleInstaller)，以在本教學課程結束時將商業深入解析視覺化。
 
@@ -93,7 +93,7 @@ ms.locfileid: "87006427"
     ./scripts/resources.sh $resourceGroup LOCATION
     ```
 
-    如果您不確定要指定哪個區域，您可以使用 [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list-locations) 命令擷取訂用帳戶所支援的區域清單。
+    如果您不確定要指定哪個區域，您可以使用 [az account list-locations](/cli/azure/account#az-account-list-locations) 命令擷取訂用帳戶所支援的區域清單。
 
     此命令會部署下列資源：
 

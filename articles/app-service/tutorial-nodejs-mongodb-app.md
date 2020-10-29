@@ -5,14 +5,14 @@ ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.custom: mvc, cli-validate, seodec18, devx-track-js
+ms.custom: mvc, cli-validate, seodec18, devx-track-js, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 4fc79f8508f46f5003b99289d725b303feef78aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c204a07e3c5edff028342af1c88b15ebac0754b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91312000"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743652"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>教學課程：在 Azure 中建置 Node.js 和 MongoDB 應用程式
 
@@ -127,7 +127,7 @@ MEAN.js 範例應用程式會將使用者資料儲存於資料庫中。 如果�
 ### <a name="create-a-cosmos-db-account"></a>建立 Cosmos DB 帳戶
 
 > [!NOTE]
-> 在本教學課程中，當您在自己的 Azure 訂用帳戶中建立 Azure Cosmos DB 資料庫時會產生費用。 若要使用為期七天的免費 Azure Cosmos DB 帳戶，您可以使用[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 的體驗。 直接按一下 [MongoDB] 圖格中的 [建立] 按鈕，在 Azure 上建立免費的 MongoDB 資料庫。 資料庫建立好之後，在入口網站中瀏覽至**連接字串**，並擷取 Azure Cosmos DB 連線字串以供在本教學課程稍後使用。
+> 在本教學課程中，當您在自己的 Azure 訂用帳戶中建立 Azure Cosmos DB 資料庫時會產生費用。 若要使用為期七天的免費 Azure Cosmos DB 帳戶，您可以使用[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 的體驗。 直接按一下 [MongoDB] 圖格中的 [建立] 按鈕，在 Azure 上建立免費的 MongoDB 資料庫。 資料庫建立好之後，在入口網站中瀏覽至 **連接字串** ，並擷取 Azure Cosmos DB 連線字串以供在本教學課程稍後使用。
 >
 
 在 Cloud Shell 中，使用 [`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-create) 命令來建立 Cosmos DB 帳戶。
@@ -287,7 +287,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 在 Node.js 程式碼中，您可以利用 `process.env.MONGODB_URI` 來[存取此應用程式設定](configure-language-nodejs.md#access-environment-variables)，就像存取任何環境變數一樣。 
 
-在本機 MEAN.js 存放庫中，開啟 _config/env/production.js_ (而不是 _config/env/local-production.js_)，它具有生產環境特定設定。 預設的 MEAN.js 應用程式已經設定為使用您建立的 `MONGODB_URI` 環境變數。
+在本機 MEAN.js 存放庫中，開啟 _config/env/production.js_ (而不是 _config/env/local-production.js_ )，它具有生產環境特定設定。 預設的 MEAN.js 應用程式已經設定為使用您建立的 `MONGODB_URI` 環境變數。
 
 ```javascript
 db: {
@@ -317,7 +317,7 @@ remote: Handling node.js deployment.
 .
 remote: Deployment successful.
 To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
- * [new branch]      master -> master
+ * [new branch]      master -> master
 </pre>
 
 您可能會注意到，部署程序會在 `npm install` 之後執行 [Gulp](https://gulpjs.com/)。 App Service 不會在部署期間執行 Gulp 或 Grunt 工作，因此，這個範例存放庫在其根目錄中有兩個其他檔案可啟用它： 
@@ -351,7 +351,7 @@ http://<app-name>.azurewebsites.net
 
 ### <a name="update-the-data-model"></a>更新資料模型
 
-在本機 MEAN.js 存放庫中，開啟 _modules/articles/server/models/article.server.model.js_。
+在本機 MEAN.js 存放庫中，開啟 _modules/articles/server/models/article.server.model.js_ 。
 
 在 `ArticleSchema` 中，新增名為 `comment` 的 `String` 類型。 完成時，您的結構描述程式碼應該如下所示：
 
@@ -376,7 +376,7 @@ const ArticleSchema = new Schema({
 
 有五個需要修改的檔案：伺服器控制器和四個用戶端檢視。 
 
-開啟 _modules/articles/server/controllers/articles.server.controller.js_。
+開啟 _modules/articles/server/controllers/articles.server.controller.js_ 。
 
 在 `update` 函式中，新增 `article.comment` 的指派。 下列程式碼會顯示已完成的 `update` 函式：
 
@@ -392,7 +392,7 @@ exports.update = function (req, res) {
 };
 ```
 
-開啟 _modules/articles/client/views/view-article.client.view.html_。
+開啟 _modules/articles/client/views/view-article.client.view.html_ 。
 
 就在結尾 `</section>` 標記的正上方，新增下列程式碼行來顯示 `comment` 以及剩餘的文章資料：
 
@@ -400,7 +400,7 @@ exports.update = function (req, res) {
 <p class="lead" ng-bind="vm.article.comment"></p>
 ```
 
-開啟 _modules/articles/client/views/list-articles.client.view.html_。
+開啟 _modules/articles/client/views/list-articles.client.view.html_ 。
 
 就在結尾 `</a>` 標記的正上方，新增下列程式碼行來顯示 `comment` 以及剩餘的文章資料：
 
@@ -408,7 +408,7 @@ exports.update = function (req, res) {
 <p class="list-group-item-text" ng-bind="article.comment"></p>
 ```
 
-開啟 _modules/articles/client/views/admin/list-articles.client.view.html_。
+開啟 _modules/articles/client/views/admin/list-articles.client.view.html_ 。
 
 在 `<div class="list-group">` 元素內部且就在結尾 `comment` 標記的正上方，新增下列程式碼行來顯示 `</a>` 以及剩餘的文章資料：
 
@@ -416,7 +416,7 @@ exports.update = function (req, res) {
 <p class="list-group-item-text" data-ng-bind="article.comment"></p>
 ```
 
-開啟 _modules/articles/client/views/admin/form-article.client.view.html_。
+開啟 _modules/articles/client/views/admin/form-article.client.view.html_ 。
 
 找到包含提交按鈕的 `<div class="form-group">` 元素，如下所示：
 

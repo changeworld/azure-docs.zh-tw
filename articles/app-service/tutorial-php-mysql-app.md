@@ -5,14 +5,14 @@ ms.assetid: 14feb4f3-5095-496e-9a40-690e1414bd73
 ms.devlang: php
 ms.topic: tutorial
 ms.date: 06/15/2020
-ms.custom: mvc, cli-validate, seodec18
+ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 0faf269852418ee8694e5fa51ce8010e57a2c054
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1053eb9772650dce040570bda04addf93df49178
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150211"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92743538"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure-app-service"></a>教學課程：在 Azure App Service 中建置 PHP 和 MySQL 應用程式
 
@@ -197,7 +197,7 @@ az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-n
 > [僅使用您的應用程式所用的輸出 IP 位址](overview-inbound-outbound-ips.md#find-outbound-ips)，讓您的防火牆規則更具限制性。
 >
 
-在 Cloud Shell 中，將 *\<your-ip-address>* 取代為[您的本機 IPv4 IP 位址](https://www.whatsmyip.org/) \(英文\) 並再次執行命令，以允許從您的本機電腦進行存取。
+在 Cloud Shell 中，將 *\<your-ip-address>* 取代為 [您的本機 IPv4 IP 位址](https://www.whatsmyip.org/) \(英文\) 並再次執行命令，以允許從您的本機電腦進行存取。
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name AllowLocalClient --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
@@ -265,9 +265,9 @@ MYSQL_SSL=true
 
 ### <a name="configure-tlsssl-certificate"></a>設定 TLS/SSL 憑證
 
-根據預設，適用於 MySQL 的 Azure 資料庫會強制用戶端使用 TLS 連線。 若要連線至 Azure 中的 MySQL 資料庫，您必須使用[適用於 MySQL 的 Azure 資料庫所提供的 _.pem_ 憑證](../mysql/howto-configure-ssl.md)。
+根據預設，適用於 MySQL 的 Azure 資料庫會強制用戶端使用 TLS 連線。 若要連線至 Azure 中的 MySQL 資料庫，您必須使用 [適用於 MySQL 的 Azure 資料庫所提供的 _.pem_ 憑證](../mysql/howto-configure-ssl.md)。
 
-開啟 _config/database.php_，在 `connections.mysql` 中新增 `sslmode` 和 `options` 參數，如下列程式碼所示。
+開啟 _config/database.php_ ，在 `connections.mysql` 中新增 `sslmode` 和 `options` 參數，如下列程式碼所示。
 
 ::: zone pivot="platform-windows"  
 
@@ -377,7 +377,7 @@ git commit -m "database.php updates"
 
 ### <a name="configure-database-settings"></a>設定資料庫設定
 
-在 App Service 中，您可以使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) 命令將環境變數設定為「應用程式設定」__。
+在 App Service 中，您可以使用  。
 
 下列命令會設定 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`、`DB_PASSWORD` 應用程式設定。 取代預留位置 _&lt;app-name>_ 和 _&lt;mysql-server-name>_ 。
 
@@ -402,7 +402,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 Laravel 在 App Service 中需要應用程式金鑰。 您可以使用應用程式設定加以設定。
 
-在本機終端機視窗中，使用 `php artisan` 產生新的應用程式金鑰，而不將它儲存為 _.env_。
+在本機終端機視窗中，使用 `php artisan` 產生新的應用程式金鑰，而不將它儲存為 _.env_ 。
 
 ```bash
 php artisan key:generate --show
@@ -420,7 +420,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 ::: zone pivot="platform-windows"  
 
-設定應用程式的虛擬應用程式路徑。 需要執行此步驟，是因為 [Laravel 應用程式生命週期](https://laravel.com/docs/5.4/lifecycle)是在「公用」__ 目錄中啟動，而不是在應用程式的根目錄。 在根目錄中啟動生命週期的其他 PHP 架構，不需要手動設定虛擬應用程式路徑即可運作。
+設定應用程式的虛擬應用程式路徑。 需要執行此步驟，是因為  目錄中啟動，而不是在應用程式的根目錄。 在根目錄中啟動生命週期的其他 PHP 架構，不需要手動設定虛擬應用程式路徑即可運作。
 
 在 Cloud Shell 中，使用 [`az resource update`](/cli/azure/resource#az-resource-update) 命令來設定虛擬應用程式路徑。 取代 _&lt;app-name>_ 預留位置。
 
@@ -428,13 +428,13 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
 ```
 
-依預設，Azure App Service 會將根虛擬應用程式路徑 ( _/_ ) 指向已部署應用程式檔案的根目錄 (_sites\wwwroot_)。
+依預設，Azure App Service 會將根虛擬應用程式路徑 ( _/_ ) 指向已部署應用程式檔案的根目錄 ( _sites\wwwroot_ )。
 
 ::: zone-end
 
 ::: zone pivot="platform-linux"
 
-[Laravel 應用程式生命週期](https://laravel.com/docs/5.4/lifecycle)是在「公用」目錄中啟動，而不是在應用程式的根目錄。 App Service 的預設 PHP Docker 映像會使用 Apache，且不會讓您自訂 Laravel 的 `DocumentRoot`。 不過，您可以使用 `.htaccess` 將所有要求重寫為指向 /public__，而不是指向根目錄。 在存放庫根路徑中，已針對此目的新增 `.htaccess`。 因此，您的 Laravel 應用程式已準備好進行部署。
+[Laravel 應用程式生命週期](https://laravel.com/docs/5.4/lifecycle)是在「公用」目錄中啟動，而不是在應用程式的根目錄。 App Service 的預設 PHP Docker 映像會使用 Apache，且不會讓您自訂 Laravel 的 `DocumentRoot`。 不過，您可以使用 `.htaccess` 將所有要求重寫為指向 /public  ，而不是指向根目錄。 在存放庫根路徑中，已針對此目的新增 `.htaccess`。 因此，您的 Laravel 應用程式已準備好進行部署。
 
 如需詳細資訊，請參閱[變更站台根目錄](configure-language-php.md#change-site-root)。
 
@@ -550,7 +550,7 @@ public function down()
 php artisan migrate
 ```
 
-根據 [Laravel 命名慣例](https://laravel.com/docs/5.4/eloquent#defining-models)，依預設 `Task` 模型 (請看 app/Task.php__) 會對應至 `tasks` 資料表。
+根據  ) 會對應至 `tasks` 資料表。
 
 ### <a name="update-application-logic"></a>更新應用程式邏輯
 
@@ -679,7 +679,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 移至 [Azure 入口網站](https://portal.azure.com)，以管理您所建立的應用程式。
 
-按一下左側功能表中的 [應用程式服務]****，然後按一下 Azure 應用程式的名稱。
+按一下左側功能表中的 [應用程式服務]  ，然後按一下 Azure 應用程式的名稱。
 
 ![入口網站瀏覽至 Azure 應用程式](./media/tutorial-php-mysql-app/access-portal.png)
 
