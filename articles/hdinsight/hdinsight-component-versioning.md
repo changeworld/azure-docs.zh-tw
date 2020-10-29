@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 08/13/2020
-ms.openlocfilehash: 47e2211be478a16238d35eeb5219cf6e785a6979
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 282f13c89c527b096573b67b5d539de821e89032
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547566"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900798"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>可供 Azure HDInsight 使用的 Apache Hadoop 元件和版本
 
@@ -133,6 +133,6 @@ Azure HDInsight 支援多個可隨時部署的 Hadoop 叢集版本。 在 2017 �
 ## <a name="next-steps"></a>後續步驟
 
 - [使用 Hadoop、Spark 及 Kafka 等在 HDInsight 中設定叢集](hdinsight-hadoop-provision-linux-clusters.md)
-- [從 Windows PC 在 HDInsight 上的 Hadoop 生態系統中作業](hdinsight-hadoop-windows-tools.md)
-- [與 Azure HDInsight 版本相關聯的 Hortonworks 版本資訊](./hortonworks-release-notes.md)
 - [企業安全性套件](./enterprise-security-package.md)
+- [與 Azure HDInsight 版本相關聯的 Hortonworks 版本資訊](./hortonworks-release-notes.md)
+- [從 Windows PC 在 HDInsight 上的 Hadoop 生態系統中作業](hdinsight-hadoop-windows-tools.md)

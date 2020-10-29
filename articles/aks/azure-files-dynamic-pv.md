@@ -5,12 +5,12 @@ description: 了解如何透過 Azure 檔案服務以動態方式建立永續性
 services: container-service
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 515994f07e524685df014a784309cd692a9491b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad252118a56402386691d1cdf7d975ef69ec45ad
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299260"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900446"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中以動態方式建立和使用 Azure 檔案服務的永續性磁碟區
 
@@ -22,11 +22,11 @@ ms.locfileid: "91299260"
 
 此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
-您也必須安裝並設定 Azure CLI 2.0.59 版或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您也必須安裝並設定 Azure CLI 2.0.59 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][install-azure-cli]。
 
 ## <a name="create-a-storage-class"></a>建立儲存體類別
 
-儲存體類別可用來定義 Azure 檔案共用的建立方式。 [節點資源群組][node-resource-group]中會自動建立儲存體帳戶，供儲存體類別用來保存 Azure 檔案共用。 針對 *skuName*，請 選擇下列 [Azure 儲存體備援][storage-skus]：
+儲存體類別可用來定義 Azure 檔案共用的建立方式。 [節點資源群組][node-resource-group]中會自動建立儲存體帳戶，供儲存體類別用來保存 Azure 檔案共用。 針對 *skuName* ，請 選擇下列 [Azure 儲存體備援][storage-skus]：
 
 * *Standard_LRS* - 標準本地備援儲存體 (LRS)
 * *Standard_GRS* - 標準異地備援儲存體 (GRS)
@@ -86,7 +86,7 @@ spec:
 ```
 
 > [!NOTE]
-> 如果儲存體類別使用 *Premium_LRS* sku，則 *storage* 的最小值必須為 *100Gi*。
+> 如果儲存體類別使用 *Premium_LRS* sku，則 *storage* 的最小值必須為 *100Gi* 。
 
 使用 [kubectl apply][kubectl-apply] 命令建立永續性磁碟區宣告：
 
@@ -105,7 +105,7 @@ my-azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        R
 
 ## <a name="use-the-persistent-volume"></a>使用永續性磁碟區
 
-下列 YAML 會建立使用永久性磁片區宣告 *azurefile* 的 pod，以在 */mnt/azure* 路徑上掛接 Azure 檔案共用。 對於 Windows Server 容器，請採用 Windows 路徑慣例來指定 *mountPath*，例如 *'D:'* 。
+下列 YAML 會建立使用永久性磁片區宣告 *azurefile* 的 pod，以在 */mnt/azure* 路徑上掛接 Azure 檔案共用。 對於 Windows Server 容器，請採用 Windows 路徑慣例來指定 *mountPath* ，例如 *'D:'* 。
 
 建立名為 `azure-pvc-files.yaml` 的檔案，然後將下列 YAML 複製進來。 請確定claimName 與最後一個步驟中建立的 PVC 相符。
 
@@ -117,7 +117,7 @@ metadata:
 spec:
   containers:
   - name: mypod
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m
@@ -165,7 +165,7 @@ Volumes:
 
 ## <a name="mount-options"></a>掛接選項
 
-若為 Kubernetes 1.13.0 版和更新版本，則 *fileMode* 和 *dirMode* 的預設值為 *0777*。 如果以儲存體類別動態建立永續性磁碟區，則可以在儲存體類別物件上指定裝載選項。 下列範例會設定 0777：
+若為 Kubernetes 1.13.0 版和更新版本，則 *fileMode* 和 *dirMode* 的預設值為 *0777* 。 如果以儲存體類別動態建立永續性磁碟區，則可以在儲存體類別物件上指定裝載選項。 下列範例會設定 0777：
 
 ```yaml
 kind: StorageClass

@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: e52bd150f72ba663c504b81832ce83d3e38cbf04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbbd5dbbc51cdb3b0d3c3783fa6ed72b76d26284
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986783"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900358"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>應用程式開發人員在 Azure Kubernetes Services (AKS) 中管理資源的最佳做法
 
@@ -27,7 +27,7 @@ ms.locfileid: "90986783"
 
 ## <a name="define-pod-resource-requests-and-limits"></a>定義 Pod 資源要求和限制
 
-**最佳作法指引** - 對您 YAML 資訊清單中的所有 Pod 設定 Pod 要求和限制。 如果 AKS 叢集使用*資源配額*，而您未定義這些值，則您的部署可能會遭到拒絕。
+**最佳作法指引** - 對您 YAML 資訊清單中的所有 Pod 設定 Pod 要求和限制。 如果 AKS 叢集使用 *資源配額* ，而您未定義這些值，則您的部署可能會遭到拒絕。
 
 在 AKS 叢集內管理計算資源的主要方式，是使用 Pod 要求和限制。 這些要求和限制可讓 Kubernetes 排程器得知應為 Pod 指派哪些計算資源。
 
@@ -60,7 +60,7 @@ metadata:
 spec:
   containers:
   - name: mypod
-    image: nginx:1.15.5
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m

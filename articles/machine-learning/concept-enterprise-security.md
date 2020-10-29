@@ -1,5 +1,5 @@
 ---
-title: 企業安全性
+title: 企業安全性和指導方針
 titleSuffix: Azure Machine Learning
 description: 安全地使用 Azure Machine Learning：驗證、授權、網路安全性、資料加密和監視。
 services: machine-learning
@@ -10,18 +10,18 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: 60a18591687eb7953063e16397719191eece7844
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b45c5cd1a750ee4b3f182920c4ee2f2e47756867
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637083"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899315"
 ---
-# <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning 的企業安全性
+# <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Azure Machine Learning 的企業安全性和治理
 
 在此文章中，您將了解 Azure Machine Learning 可用的安全性功能。
 
-當您使用雲端服務時，最佳做法是限制只有需要的使用者才能存取。 一開始先了解服務所使用的驗證與授權模型。 您也可能想要限制網路存取，或安全地將內部部署網路中的資源與雲端聯結。 資料加密也很重要，不論是待用，還是資料在服務之間移動。 最後，您必須能夠監視服務，並產生所有活動的稽核記錄。
+當您使用雲端服務時，最佳做法是限制只有需要的使用者才能存取。 一開始先了解服務所使用的驗證與授權模型。 您也可能想要限制網路存取，或安全地將內部部署網路中的資源與雲端聯結。 資料加密也很重要，不論是待用，還是資料在服務之間移動。 您也可能想要建立原則，以在建立不符合規範的設定時強制執行某些設定或記錄。 最後，您必須能夠監視服務，並產生所有活動的稽核記錄。
 
 > [!NOTE]
 > 此文章中的資訊適用於 Azure Machine Learning Python SDK 1.0.83.1 版或更高版本。

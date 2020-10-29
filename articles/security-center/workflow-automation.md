@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: cbe6adc37025f0b727fa5f5d3ace46ed34afaa9e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: a7341362183aee4a23556a164677bc320babdfec
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895217"
+ms.locfileid: "92900837"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>自動回應安全性中心觸發程式
 
@@ -74,7 +74,7 @@ ms.locfileid: "92895217"
 1. 在新的邏輯應用程式中，您可以從 [安全性] 類別中的內建預先定義範本中進行選擇。 或者，您可以定義觸發此進程時，所要發生的自訂事件流程。
 
     > [!TIP]
-    > 有時候，在邏輯應用程式中，參數會包含在連接器中做為字串的一部分，而不會包含在其本身的欄位中。 如需如何解壓縮參數的 ean 範例，請參閱 [建立 Azure 資訊安全中心工作流程自動化時使用邏輯應用程式參數](https://techcommunity.microsoft.com/t5/azure-security-center/working-with-logic-app-parameters-while-building-azure-security/ba-p/1342121)的步驟 #14。
+    > 有時候，在邏輯應用程式中，參數會包含在連接器中做為字串的一部分，而不會包含在其本身的欄位中。 如需如何解壓縮參數的範例，請參閱 [建立 Azure 資訊安全中心工作流程自動化時使用邏輯應用程式參數](https://techcommunity.microsoft.com/t5/azure-security-center/working-with-logic-app-parameters-while-building-azure-security/ba-p/1342121)的步驟 #14。
 
     邏輯應用程式設計工具支援下列安全性中心觸發程式：
 

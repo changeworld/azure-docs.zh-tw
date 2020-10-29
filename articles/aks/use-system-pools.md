@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit, devx-track-azurecli
-ms.openlocfilehash: b567ebfc2cb13aa0db6f8dd32db79cb7e031b710
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9c9479fca538c36f4f5eb430c4befb76e39370e6
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745743"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900028"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>管理 Azure Kubernetes Service (AKS) 中的系統節點集區
 
@@ -180,7 +180,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在本文中，您已瞭解如何建立和管理 AKS 叢集中的系統節點集區。 如需有關如何使用多個節點集區的詳細資訊，請參閱 [使用多個節點][use-multiple-node-pools]集區。
 
@@ -193,7 +193,7 @@ az group delete --name myResourceGroup --yes --no-wait
 [kubernetes-label-syntax]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
 
 <!-- INTERNAL LINKS -->
-[aks-taints]: use-multiple-node-pools.md#schedule-pods-using-taints-and-tolerations
+[aks-taints]: use-multiple-node-pools.md#setting-nodepool-taints
 [aks-windows]: windows-container-cli.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-aks-create]: /cli/azure/aks#az-aks-create

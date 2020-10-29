@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/03/2020
-ms.openlocfilehash: 9088b36acead9f47e94949ee102d66a8aff2d226
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/28/2020
+ms.openlocfilehash: 1f3ab61c6030c2871356f494db228711305e5466
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87529597"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92901584"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP ECC 複製資料
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -47,6 +47,13 @@ ms.locfileid: "87529597"
 
 - 使用基本驗證來複製資料。
 
+7.0 版或更新版本指的是 SAP NetWeaver 版本，而不是 SAP ECC 版本。 例如，SAP ECC 6.0 EHP 7 一般都有 NetWeaver 版本 >= 7.4。 如果您不確定您的環境，以下是從您的 SAP 系統確認版本的步驟：
+
+1. 使用 SAP GUI 連接到 SAP 系統。 
+2. 移至 [ **系統**  ->  **狀態** ]。 
+3. 檢查 SAP_BASIS 的版本，確定它等於或大於701。  
+      ![檢查 SAP_BASIS](./media/connector-sap-table/sap-basis.png)
+
 >[!TIP]
 >若要透過 SAP 資料表或檢視表從 SAP ECC 複製資料，請使用更快速且更具可擴縮性的 [SAP 資料表](connector-sap-table.md)連接器。
 
@@ -54,9 +61,9 @@ ms.locfileid: "87529597"
 
 若要使用此 SAP ECC 連接器，您需要透過 SAP 閘道透過 OData 服務公開 SAP ECC 實體。 具體而言：
 
-- **設定 SAP 閘道**。 如果伺服器使用 7.4 以後的 SAP NetWeaver 版本，則必須已安裝 SAP Gateway。 針對舊版，您必須先安裝內嵌 SAP Gateway 或 SAP Gateway 中樞系統，再透過 OData 服務公開 SAP ECC 資料。 若要安裝 SAP Gateway，請參閱 [Installation Guide](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm) (安裝指南)。
+- **設定 SAP 閘道** 。 如果伺服器使用 7.4 以後的 SAP NetWeaver 版本，則必須已安裝 SAP Gateway。 針對舊版，您必須先安裝內嵌 SAP Gateway 或 SAP Gateway 中樞系統，再透過 OData 服務公開 SAP ECC 資料。 若要安裝 SAP Gateway，請參閱 [Installation Guide](https://help.sap.com/saphelp_gateway20sp12/helpdata/en/c3/424a2657aa4cf58df949578a56ba80/frameset.htm) (安裝指南)。
 
-- **啟動及設定 SAP OData 服務**。 您可透過 TCODE SICF，在短短數秒內啟動 OData 服務。 您也可以設定哪些物件需要公開。 如需詳細資訊，請參閱 [Step-by-step guide](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/) (逐步指南)。
+- **啟動及設定 SAP OData 服務** 。 您可透過 TCODE SICF，在短短數秒內啟動 OData 服務。 您也可以設定哪些物件需要公開。 如需詳細資訊，請參閱 [Step-by-step guide](https://blogs.sap.com/2012/10/26/step-by-step-guide-to-build-an-odata-service-based-on-rfcs-part-1/) (逐步指南)。
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -70,7 +77,7 @@ ms.locfileid: "87529597"
 
 SAP ECC 連結服務支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | `type` | `type` 屬性必須設定為 `SapEcc`。 | 是 |
 | `url` | SAP ECC OData 服務的 URL。 | 是 |
@@ -109,7 +116,7 @@ SAP ECC 連結服務支援下列屬性：
 
 以下是支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | `path` | SAP ECC OData 實體的路徑。 | 是 |
 
@@ -142,12 +149,12 @@ SAP ECC 連結服務支援下列屬性：
 
 複製活動的 `source` 區段支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | `type` | 複製活動 `source` 區段的 `type` 屬性必須設定為 `SapEccSource`。 | 是 |
 | `query` | 用來篩選資料的 OData 查詢選項。 例如：<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>SAP ECC 連接器會從以下組合的 URL 複製資料：<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>如需詳細資訊，請參閱 [OData URL 元件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
 | `sapDataColumnDelimiter` | 用來做為分隔符號的單一字元，可傳遞至 SAP RFC 以分割輸出資料。 | 否 |
-| `httpRequestTimeout` | 用來取得回應的 HTTP 要求會有的逾時值 (**TimeSpan** 值)。 此值是取得回應的逾時值，而非讀取回應資料的逾時值。 如果未指定，預設值為 **00:30:00** (30 分鐘) 。 | 否 |
+| `httpRequestTimeout` | 用來取得回應的 HTTP 要求會有的逾時值 ( **TimeSpan** 值)。 此值是取得回應的逾時值，而非讀取回應資料的逾時值。 如果未指定，預設值為 **00:30:00** (30 分鐘) 。 | 否 |
 
 ### <a name="example"></a>範例
 

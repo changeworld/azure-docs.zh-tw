@@ -4,12 +4,12 @@ description: 瞭解可將程式碼部署到 Azure Functions 的不同方式。
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 3865e6906b39633e14c86619770188f1c73fed8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3988f30d0e6429a8cac450711d4033e4b2603d46
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88641954"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900171"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技術
 
@@ -33,7 +33,7 @@ ms.locfileid: "88641954"
 
 Azure Functions 支援在 Windows 和 Linux 上進行跨平臺本機開發和裝載。 目前有三種主控方案可用：
 
-+ [耗用量](functions-scale.md#consumption-plan)
++ [消費](functions-scale.md#consumption-plan)
 + [高級](functions-scale.md#premium-plan)
 + [專用 (App Service) ](functions-scale.md#app-service-plan)
 
@@ -128,7 +128,7 @@ Azure Functions 可以在 zip 部署之後，自動對它所收到的程式碼�
 
 >__使用方式：__ 在 Premium 或專用方案中建立 Linux 函數應用程式，並指定要執行的容器映射。 您可以使用兩種方式執行此動作：
 >
->* 在 Azure 入口網站的 Azure App Service 方案上建立 Linux 函數應用程式。 針對 [ **發佈**]，請選取 [ **Docker 映射**]，然後設定容器。 輸入裝載映射的位置。
+>* 在 Azure 入口網站的 Azure App Service 方案上建立 Linux 函數應用程式。 針對 [ **發佈** ]，請選取 [ **Docker 映射** ]，然後設定容器。 輸入裝載映射的位置。
 >* 使用 Azure CLI 在 App Service 方案上建立 Linux 函數應用程式。 若要深入瞭解，請參閱 [使用自訂映射在 Linux 上建立](functions-create-function-linux-custom-image.md#create-supporting-azure-resources-for-your-function)函式。
 >
 >若要使用自訂容器部署至現有的應用程式，請在 [Azure Functions Core Tools](functions-run-local.md)中使用 [`func deploy`](functions-run-local.md#publish) 命令。
@@ -139,7 +139,7 @@ Azure Functions 可以在 zip 部署之後，自動對它所收到的程式碼�
 
 Web Deploy 套件，並將您的 Windows 應用程式部署到任何 IIS 伺服器，包括在 Azure 的 Windows 上執行的函式應用程式。
 
->__使用方式：__ 使用 [Visual Studio 工具進行 Azure Functions](functions-create-your-first-function-visual-studio.md)。 清除 [ **從封裝檔案執行 (建議的) ** ] 核取方塊。
+>__使用方式：__ 使用 [Visual Studio 工具進行 Azure Functions](functions-create-your-first-function-visual-studio.md)。 清除 [ **從封裝檔案執行 (建議的)** ] 核取方塊。
 >
 >您也可以下載 [Web Deploy 3.6](https://www.iis.net/downloads/microsoft/web-deploy) 並 `MSDeploy.exe` 直接呼叫。
 
@@ -185,7 +185,7 @@ Web Deploy 套件，並將您的 Windows 應用程式部署到任何 IIS 伺服�
 
 >__使用時機：__ 入口網站是開始使用 Azure Functions 的好方法。 針對更密集的開發工作，建議您使用下列其中一種用戶端工具：
 >
->* [Visual Studio Code](functions-create-first-function-vs-code.md) \(英文\)
+>* [Visual Studio Code](functions-create-first-function-vs-code.md)
 >* [Azure Functions Core Tools (命令列) ](functions-run-local.md)
 >* [Visual Studio](functions-create-your-first-function-visual-studio.md)
 
@@ -212,9 +212,9 @@ Web Deploy 套件，並將您的 Windows 應用程式部署到任何 IIS 伺服�
 
 ## <a name="deployment-slots"></a>部署位置
 
-當您將函數應用程式部署至 Azure 時，您可以部署到個別的部署位置，而不是直接部署到生產環境。 如需部署位置的詳細資訊，請參閱 [Azure Functions 部署](../app-service/deploy-staging-slots.md) 位置檔以取得詳細資料。
+當您將函數應用程式部署至 Azure 時，您可以部署到個別的部署位置，而不是直接部署到生產環境。 如需部署位置的詳細資訊，請參閱 [Azure Functions 部署](functions-deployment-slots.md) 位置檔以取得詳細資料。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 若要深入瞭解如何部署函數應用程式，請參閱下列文章：
 

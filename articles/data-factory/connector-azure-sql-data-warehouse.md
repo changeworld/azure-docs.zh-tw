@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/12/2020
-ms.openlocfilehash: 79bc9a238b7c36392ff2ba519078713089156f6e
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 7dd23f481409eb3498893c1c7f9c0fd8311b9af2
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638205"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92901602"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure Data Factory，在 Azure Synapse Analytics (先前的 SQL 資料倉儲) 中複製和轉換資料
 
@@ -271,7 +271,7 @@ ms.locfileid: "92638205"
 | partitionOptions | 指定用來從 Azure Synapse Analytics 載入資料的資料分割選項。 <br>允許的值為： **無** (預設值) 、 **PhysicalPartitionsOfTable** 和 **DynamicRange** 。<br>當您啟用分割區選項時 (也就是不 `None`) ，從 Azure Synapse Analytics 並行載入資料的平行處理原則程度，是由 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 複製活動上的設定所控制。 | 否 |
 | partitionSettings | 指定資料分割的設定群組。 <br>當資料分割選項不適用時套用 `None` 。 | 否 |
 | **_在 `partitionSettings` ：_* _ | | |
-| partitionColumnName | *以 [整數] 或 [日期/日期/日期/日期/時間類型* *] 中的來源資料行名稱，指定將用於平行複製的範圍分割。 如果未指定，則會自動偵測資料表的索引或主鍵，並將其當做資料分割資料行使用。<br>當分割選項是 `DynamicRange` 時套用。 如果您使用查詢來取出來源資料，請  `?AdfDynamicRangePartitionCondition ` 在 WHERE 子句中掛上。 如需範例，請參閱 [SQL database 的平行複製](#parallel-copy-from-synapse-analytics) 一節。 | 否 |
+| partitionColumnName | *以整數或日期/日期時間類型* * (`int` 、、、、、、 `smallint` `bigint` `date` `smalldatetime` `datetime` `datetime2` 或 `datetimeoffset`) ，指定將用於平行複製的範圍資料分割之來源資料行 _ 的名稱。 如果未指定，則會自動偵測資料表的索引或主鍵，並將其當做資料分割資料行使用。<br>當分割選項是 `DynamicRange` 時套用。 如果您使用查詢來取出來源資料，請  `?AdfDynamicRangePartitionCondition ` 在 WHERE 子句中掛上。 如需範例，請參閱 [SQL database 的平行複製](#parallel-copy-from-synapse-analytics) 一節。 | 否 |
 | partitionUpperBound | 分割區範圍分割之分割區資料行的最大值。 這個值是用來決定資料分割 stride，而不是用來篩選資料表中的資料列。 資料表或查詢結果中的所有資料列都會進行分割和複製。 如果未指定，複製活動會自動偵測該值。  <br>當分割選項是 `DynamicRange` 時套用。 如需範例，請參閱 [SQL database 的平行複製](#parallel-copy-from-synapse-analytics) 一節。 | 否 |
 | partitionLowerBound | 分割區範圍分割之分割區資料行的最小值。 這個值是用來決定資料分割 stride，而不是用來篩選資料表中的資料列。 資料表或查詢結果中的所有資料列都會進行分割和複製。 如果未指定，複製活動會自動偵測該值。<br>當分割選項是 `DynamicRange` 時套用。 如需範例，請參閱 [SQL database 的平行複製](#parallel-copy-from-synapse-analytics) 一節。 | 否 |
 
@@ -478,7 +478,7 @@ WHERE s.name='[your schema]' AND t.name = '[your table name]'
 - 如果您的來源資料存放區與格式不受 PolyBase 支援，您可以改用 **[使用 PolyBase 分段複製](#staged-copy-by-using-polybase)** 功能。 分段複製功能也能提供更好的輸送量。 它會自動將資料轉換成 PolyBase 相容的格式，將資料儲存在 Azure Blob 儲存體中，然後呼叫 PolyBase 將資料載入 Azure Synapse Analytics 中。
 
 > [!TIP]
-> 深入瞭解[使用 PolyBase 的最佳做法](#best-practices-for-using-polybase)。
+> 深入瞭解[使用 PolyBase 的最佳做法](#best-practices-for-using-polybase)。 使用 PolyBase 搭配 Azure Integration Runtime 時，有效的資料整合單位 (Diu) 一律為2。 調整 DIU 並不會影響效能，因為從儲存體載入資料是由 Synapse 引擎提供技術支援。
 
 在複製活動的 `polyBaseSettings` 下支援下列 PolyBase 設定：
 
@@ -671,6 +671,9 @@ Azure Synapse Analytics [COPY 語句](/sql/t-sql/statements/copy-into-transact-s
 
 >[!NOTE]
 >目前 Data Factory 僅支援從複製陳述式相容來源複製，如下所述。
+
+>[!TIP]
+>搭配 Azure Integration Runtime 使用 COPY 語句時，有效的資料整合單位 (Diu) 一律為2。 調整 DIU 並不會影響效能，因為從儲存體載入資料是由 Synapse 引擎提供技術支援。
 
 使用 COPY 陳述式支援下列設定：
 

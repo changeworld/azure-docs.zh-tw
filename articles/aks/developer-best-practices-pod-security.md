@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: fab4943cad1a87bda70a4c4332ab6135ed99bf1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c7143b6d3479cf3083cfc730301c68dcf4eb705
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022270"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900814"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) 中的 Pod 安全性最佳做法
 
@@ -29,15 +29,15 @@ ms.locfileid: "89022270"
 
 **最佳做法指引** - 若要以不同使用者或群組來執行，並限制基礎節點處理序與服務的存取，請定義 Pod 資訊安全內容設定。 指派所需的最少量權限。
 
-Pod 的執行身分應為定義的使用者或群組，而非「根」，您的應用程式才能正確執行。 Pod 或容器的 `securityContext` 可讓您定義如 *runAsUser* 或 *fsGroup* 的設定，取得適當的權限。 僅指派所需的使用者或群組的權限，並不使用資訊安全內容作為取得其他權限的方式。 *runAsUser*、權限提升和其他 Linux 功能設定僅適用於 Linux 節點和 Pod。
+Pod 的執行身分應為定義的使用者或群組，而非「根」，您的應用程式才能正確執行。 Pod 或容器的 `securityContext` 可讓您定義如 *runAsUser* 或 *fsGroup* 的設定，取得適當的權限。 僅指派所需的使用者或群組的權限，並不使用資訊安全內容作為取得其他權限的方式。 *runAsUser* 、權限提升和其他 Linux 功能設定僅適用於 Linux 節點和 Pod。
 
 當您的執行身分為非根使用者時，容器無法繫結至具特殊權限的連接埠 1024。 在此案例中，Kubernetes 服務可用來偽裝應用程式在特定連接埠上執行的事實。
 
 Pod 資訊安全內容也可以定義存取處理序和服務的其他功能或權限。 您可以設定下列常見資訊安全內容定義：
 
-* **allowPrivilegeEscalation** 定義 Pod 能否取得「根」權限。 設計應用程式時，此設定一律設為 *false*。
-* **Linux 功能**可讓 Pod 存取基礎節點處理序。 請謹慎地指派這些功能。 指派所需的最少量權限。 如需詳細資訊，請參閱 [Linux 功能][linux-capabilities]。
-* **SELinux 標籤**是 Linux 核心安全模組，可讓您定義服務、處理序及檔案系統存取的存取原則。 請再次指派所需的最少量權限。 如需詳細資訊，請參閱 [Kubernetes 中的 SELinux 選項][selinux-labels]
+* **allowPrivilegeEscalation** 定義 Pod 能否取得「根」權限。 設計應用程式時，此設定一律設為 *false* 。
+* **Linux 功能** 可讓 Pod 存取基礎節點處理序。 請謹慎地指派這些功能。 指派所需的最少量權限。 如需詳細資訊，請參閱 [Linux 功能][linux-capabilities]。
+* **SELinux 標籤** 是 Linux 核心安全模組，可讓您定義服務、處理序及檔案系統存取的存取原則。 請再次指派所需的最少量權限。 如需詳細資訊，請參閱 [Kubernetes 中的 SELinux 選項][selinux-labels]
 
 下列範例 Pod YAML 資訊清單會設定資訊安全內容來定義：
 
@@ -55,7 +55,7 @@ spec:
     fsGroup: 2000
   containers:
     - name: security-context-demo
-      image: nginx:1.15.5
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
       securityContext:
         runAsUser: 1000
         allowPrivilegeEscalation: false

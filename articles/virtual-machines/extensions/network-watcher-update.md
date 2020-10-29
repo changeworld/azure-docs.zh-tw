@@ -12,16 +12,16 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
-ms.openlocfilehash: 640b148dc22aa87592a6adcfca99c8ed35731934
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 23520a0249e22b3f81c7f7c598ef10d8c3acb550
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220568"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900182"
 ---
 # <a name="update-the-network-watcher-extension-to-the-latest-version"></a>將網路監看員延伸模組更新為最新版本
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 [Azure 網路](../../network-watcher/network-watcher-monitoring-overview.md) 監看員是一種網路效能監視、診斷和分析服務，可監視 Azure 網路。  (VM) 擴充功能的網路監看員代理程式虛擬機器，是視需要捕獲網路流量，以及在 Azure Vm 上使用其他 advanced 功能的必要條件。 網路監看員延伸模組是由連線監視器、連線監視器 (預覽) 、連線疑難排解和封包捕獲等功能使用。
 
@@ -79,10 +79,10 @@ Get-AzVM -ResourceGroupName "SampleRG" -Name "Sample-VM" -Status
 
 ```powershell
 #Linux command
-Set-AzVMExtension `  -ResourceGroupName "myResourceGroup1" `  -Location "WestUS" `  -VMName "myVM1" `  -Name "AzureNetworkWatcherExtension" `  -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentLinux"   
+Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentLinux"
 
 #Windows command
-Set-AzVMExtension `  -ResourceGroupName "myResourceGroup1" `  -Location "WestUS" `  -VMName "myVM1" `  -Name "AzureNetworkWatcherExtension" `  -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows"   
+Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows"
 ```
 
 如果無法運作。 使用下列步驟，再次移除並安裝擴充功能。 這會自動新增最新版本。
@@ -130,10 +130,10 @@ az vm extension delete --resource-group "myResourceGroup1" --vm-name "myVM1" -n 
 
 ```azurecli
 #Linux command
-az vm extension set --resource-group "DALANDEMO" --vm-name "Linux-01" --name "NetworkWatcherAgentLinux" --publisher "Microsoft.Azure.NetworkWatcher"  
+az vm extension set --resource-group "DALANDEMO" --vm-name "Linux-01" --name "NetworkWatcherAgentLinux" --publisher "Microsoft.Azure.NetworkWatcher"
 
 #Windows command
-az vm extension set --resource-group "DALANDEMO" --vm-name "Linux-01" --name "NetworkWatcherAgentWindows" --publisher "Microsoft.Azure.NetworkWatcher" 
+az vm extension set --resource-group "DALANDEMO" --vm-name "Linux-01" --name "NetworkWatcherAgentWindows" --publisher "Microsoft.Azure.NetworkWatcher"
 
 ```
 
@@ -143,4 +143,4 @@ az vm extension set --resource-group "DALANDEMO" --vm-name "Linux-01" --name "Ne
 
 ## <a name="support"></a>支援
 
-如果您在本文的任何時間點需要更多協助，請參閱 [Linux](./network-watcher-linux.md) 或 [Windows](./network-watcher-windows.md)的網路監看員延伸模組檔。 您也可以洽詢 [MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 azure 專家。 或者，提出 Azure 支援事件。 移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [ **取得支援**]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
+如果您在本文的任何時間點需要更多協助，請參閱 [Linux](./network-watcher-linux.md) 或 [Windows](./network-watcher-windows.md)的網路監看員延伸模組檔。 您也可以洽詢 [MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 azure 專家。 或者，提出 Azure 支援事件。 移至 [Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [ **取得支援** ]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。

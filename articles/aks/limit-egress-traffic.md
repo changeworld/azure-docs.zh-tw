@@ -7,12 +7,12 @@ ms.author: jpalma
 ms.date: 06/29/2020
 ms.custom: fasttrack-edit, devx-track-azurecli
 author: palma21
-ms.openlocfilehash: fe6907ac659b94494472a327ff0b47e630ed89a0
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: dcc015b9ff4cb9b980c7163f526eafbe5cd36119
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735582"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900476"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes Service (AKS) 中叢集節點的連出流量
 
@@ -49,11 +49,11 @@ _ IP 位址相依性適用于 (TCP 和 UDP 流量的非 HTTP/S 流量)
 
 | 目的地端點                                                             | 通訊協定 | 連接埠    | 使用  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Or* <br/> [區域 Cidr](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Or* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | 用於節點和控制平面之間的通道通訊安全通訊。 [私人](private-clusters.md)叢集不需要這項功能|
-| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Or* <br/> [區域 Cidr](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Or* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | 用於節點和控制平面之間的通道通訊安全通訊。 [私人](private-clusters.md)叢集不需要這項功能 |
+| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Or* <br/> [區域 Cidr](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Or* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | 用於節點和控制平面之間的通道通訊安全通訊。 [私人](private-clusters.md)叢集不需要這項功能|
+| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Or* <br/> [區域 Cidr](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Or* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | 用於節點和控制平面之間的通道通訊安全通訊。 [私人](private-clusters.md)叢集不需要這項功能 |
 | **`*:123`** 或者， **`ntp.ubuntu.com:123`** 如果使用 Azure 防火牆網路規則，則 ()   | UDP      | 123     | 網路時間通訊協定需要 (NTP) Linux 節點上的時間同步處理。                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | 如果您使用自訂的 DNS 伺服器，則必須確定叢集節點可存取它們。 |
-| **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | 如果執行存取 API 伺服器的 pod/部署，則為必要項，這些 pod/部署會使用 API IP。 [私人](private-clusters.md)叢集不需要這項功能  |
+| **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | 如果執行存取 API 伺服器的 pod/部署，則為必要項，這些 pod/部署會使用 API IP。 [私人](private-clusters.md)叢集不需要這項功能  |
 
 ### <a name="azure-global-required-fqdn--application-rules"></a>Azure 全域必要的 FQDN/應用程式規則 
 
@@ -76,12 +76,12 @@ _ IP 位址相依性適用于 (TCP 和 UDP 流量的非 HTTP/S 流量)
 
 | 目的地端點                                                             | 通訊協定 | 連接埠    | 使用  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.Region:1194`** <br/> *Or* <br/> [區域 Cidr](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Or* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | 用於節點和控制平面之間的通道通訊安全通訊。 |
-| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Or* <br/> [區域 Cidr](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Or* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | 用於節點和控制平面之間的通道通訊安全通訊。 |
-| **`*:22`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:22`** <br/> *Or* <br/> [區域 Cidr](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:22`** <br/> *Or* <br/> **`APIServerIP:22`** `(only known after cluster creation)`  | TCP           | 22      | 用於節點和控制平面之間的通道通訊安全通訊。 |
+| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.Region:1194`** <br/> *Or* <br/> [區域 Cidr](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Or* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | 用於節點和控制平面之間的通道通訊安全通訊。 |
+| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Or* <br/> [區域 Cidr](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Or* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | 用於節點和控制平面之間的通道通訊安全通訊。 |
+| **`*:22`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:22`** <br/> *Or* <br/> [區域 Cidr](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:22`** <br/> *Or* <br/> **`APIServerPublicIP:22`** `(only known after cluster creation)`  | TCP           | 22      | 用於節點和控制平面之間的通道通訊安全通訊。 |
 | **`*:123`** 或者， **`ntp.ubuntu.com:123`** 如果使用 Azure 防火牆網路規則，則 ()   | UDP      | 123     | 網路時間通訊協定需要 (NTP) Linux 節點上的時間同步處理。                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | 如果您使用自訂的 DNS 伺服器，則必須確定叢集節點可存取它們。 |
-| **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | 如果執行存取 API 伺服器的 pod/部署，則為必要項，這些 pod/部署會使用 API IP。  |
+| **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | 如果執行存取 API 伺服器的 pod/部署，則為必要項，這些 pod/部署會使用 API IP。  |
 
 ### <a name="azure-china-21vianet-required-fqdn--application-rules"></a>Azure 中國世紀需要 FQDN/應用程式規則
 
@@ -105,11 +105,11 @@ _ IP 位址相依性適用于 (TCP 和 UDP 流量的非 HTTP/S 流量)
 
 | 目的地端點                                                             | 通訊協定 | 連接埠    | 使用  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Or* <br/> [區域 Cidr](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Or* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | 用於節點和控制平面之間的通道通訊安全通訊。 |
-| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Or* <br/> [區域 Cidr](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Or* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | 用於節點和控制平面之間的通道通訊安全通訊。 |
+| **`*:1194`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Or* <br/> [區域 Cidr](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Or* <br/> **`APIServerPublicIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | 用於節點和控制平面之間的通道通訊安全通訊。 |
+| **`*:9000`** <br/> *Or* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Or* <br/> [區域 Cidr](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Or* <br/> **`APIServerPublicIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | 用於節點和控制平面之間的通道通訊安全通訊。 |
 | **`*:123`** 或者， **`ntp.ubuntu.com:123`** 如果使用 Azure 防火牆網路規則，則 ()   | UDP      | 123     | 網路時間通訊協定需要 (NTP) Linux 節點上的時間同步處理。                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | 如果您使用自訂的 DNS 伺服器，則必須確定叢集節點可存取它們。 |
-| **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | 如果執行存取 API 伺服器的 pod/部署，則為必要項，這些 pod/部署會使用 API IP。  |
+| **`APIServerPublicIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | 如果執行存取 API 伺服器的 pod/部署，則為必要項，這些 pod/部署會使用 API IP。  |
 
 ### <a name="azure-us-government-required-fqdn--application-rules"></a>Azure 美國政府需要 FQDN/應用程式規則 
 

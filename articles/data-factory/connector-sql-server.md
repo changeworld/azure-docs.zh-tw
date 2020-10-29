@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/21/2020
-ms.openlocfilehash: 2a175ea2f6672329179127d78a45cfabfa5f72b7
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 69eda15660cbfe6befee3835a63f937a475f4c80
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637270"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92901649"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製到 SQL Server 或從中複製資料
 
@@ -50,7 +50,7 @@ ms.locfileid: "92637270"
 >[!NOTE]
 >此連接器目前不支援 SQL Server [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 。 若要解決這個問題，您可以使用 [一般 odbc 連接器](connector-odbc.md) 和 SQL Server ODBC 驅動程式。 使用 ODBC 驅動程式下載和連接字串設定來遵循 [此指引](/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -197,7 +197,7 @@ ms.locfileid: "92637270"
 | partitionOptions | 指定用來從 SQL Server 載入資料的資料分割選項。 <br>允許的值為： **無** (預設值) 、 **PhysicalPartitionsOfTable** 和 **DynamicRange** 。<br>當您啟用分割區選項時 (也就是不 `None`) ，從 SQL Server 並行載入資料的平行處理原則程度，是由 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 複製活動上的設定所控制。 | 否 |
 | partitionSettings | 指定資料分割的設定群組。 <br>當資料分割選項不適用時套用 `None` 。 | 否 |
 | **_在 `partitionSettings` ：_* _ | | |
-| partitionColumnName | *以 [整數] 或 [日期/日期/日期/日期/時間類型* *] 中的來源資料行名稱，指定將用於平行複製的範圍分割。 如果未指定，則會自動偵測資料表的索引或主鍵，並將其當做資料分割資料行使用。<br>當分割選項是 `DynamicRange` 時套用。 如果您使用查詢來取出來源資料，請  `?AdfDynamicRangePartitionCondition ` 在 WHERE 子句中掛上。 如需範例，請參閱 [SQL database 的平行複製](#parallel-copy-from-sql-database) 一節。 | 否 |
+| partitionColumnName | *以整數或日期/日期時間類型* * (`int` 、、、、、、 `smallint` `bigint` `date` `smalldatetime` `datetime` `datetime2` 或 `datetimeoffset`) ，指定將用於平行複製的範圍資料分割之來源資料行 _ 的名稱。 如果未指定，則會自動偵測資料表的索引或主鍵，並將其當做資料分割資料行使用。<br>當分割選項是 `DynamicRange` 時套用。 如果您使用查詢來取出來源資料，請  `?AdfDynamicRangePartitionCondition ` 在 WHERE 子句中掛上。 如需範例，請參閱 [SQL database 的平行複製](#parallel-copy-from-sql-database) 一節。 | 否 |
 | partitionUpperBound | 分割區範圍分割之分割區資料行的最大值。 這個值是用來決定資料分割 stride，而不是用來篩選資料表中的資料列。 資料表或查詢結果中的所有資料列都會進行分割和複製。 如果未指定，複製活動會自動偵測該值。  <br>當分割選項是 `DynamicRange` 時套用。 如需範例，請參閱 [SQL database 的平行複製](#parallel-copy-from-sql-database) 一節。 | 否 |
 | partitionLowerBound | 分割區範圍分割之分割區資料行的最小值。 這個值是用來決定資料分割 stride，而不是用來篩選資料表中的資料列。 資料表或查詢結果中的所有資料列都會進行分割和複製。 如果未指定，複製活動會自動偵測該值。<br>當分割選項是 `DynamicRange` 時套用。 如需範例，請參閱 [SQL database 的平行複製](#parallel-copy-from-sql-database) 一節。 | 否 |
 
@@ -405,7 +405,7 @@ GO
 使用資料分割選項載入資料的最佳作法：
 
 1. 選擇獨特的資料行做為資料分割資料行 (例如 primary key 或 unique key) ，以避免資料扭曲。 
-2. 如果資料表有內建的資料分割，請使用資料分割選項「資料表的實體分割區」來取得較佳的效能。  
+2. 如果資料表有內建的資料分割，請使用資料分割選項「資料表的實體分割區」來取得較佳的效能。    
 3. 如果您使用 Azure Integration Runtime 複製資料，您可以將較大的「[資料整合單位 (DIU) ](copy-activity-performance-features.md#data-integration-units)」 ( # B0 4) ，以利用更多計算資源。 查看該處適用的案例。
 4. 「[複製平行](copy-activity-performance-features.md#parallel-copy)處理原則的程度」控制資料分割編號，設定此數目太大有時會影響效能，建議將此數目設定為 (DIU 或自我裝載 IR 節點的數目) * (2 到 4) 。
 
@@ -590,11 +590,11 @@ END
 | text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
-| TINYINT |Int16 |
+| tinyint |Int16 |
 | UNIQUEIDENTIFIER |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
-| Xml |String |
+| xml |String |
 
 >[!NOTE]
 > 針對對應至 Decimal 過渡型別的資料類型，目前的複製活動最多可支援28個精確度。 如果您的資料需要大於 28 個有效位數，請考慮轉換成 SQL 查詢中的字串。

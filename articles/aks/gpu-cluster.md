@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 4dfaa329dd0472b52de2d3306e6a3b61f660e666
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52fd4867532832e0304a27317b21950bf131de79
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89443053"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900787"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 上使用 GPU 處理計算密集型工作負載
 
-圖形處理單元 (GPU) 通常用來處理計算密集型工作負載 (例如圖形和視覺效果工作負載)。 AKS 可讓您建立已啟用 GPU 的節點集區，以便在 Kubernetes 中執行這些計算密集型工作負載。 若要深入了解已啟用 GPU 的可用 VM，請參閱 [Azure 中的 GPU 最佳化 VM 大小][gpu-skus]。 針對 AKS 節點，我們建議使用最小的大小：Standard_NC6**。
+圖形處理單元 (GPU) 通常用來處理計算密集型工作負載 (例如圖形和視覺效果工作負載)。 AKS 可讓您建立已啟用 GPU 的節點集區，以便在 Kubernetes 中執行這些計算密集型工作負載。 若要深入了解已啟用 GPU 的可用 VM，請參閱 [Azure 中的 GPU 最佳化 VM 大小][gpu-skus]。 針對 AKS 節點，我們建議使用最小的大小：Standard_NC6  。
 
 > [!NOTE]
 > 已啟用 GPU 的 VM 包含特定硬體，該特定硬體受限於較高的定價和區域可用性。 如需詳細資訊，請參閱[定價][azure-pricing]工具和[區域可用性][azure-availability]。
@@ -26,13 +26,13 @@ ms.locfileid: "89443053"
 
 本文假設您的現有 AKS 叢集具有支援 GPU 的節點。 您的 AKS 叢集必須執行 Kubernetes 1.10 或更新版本。 如果您需要符合這些需求的 AKS 叢集，請參閱本文的第一節：[建立 AKS 叢集](#create-an-aks-cluster)。
 
-您也需要安裝並設定 Azure CLI 2.0.64 版版或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您也需要安裝並設定 Azure CLI 2.0.64 版版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][install-azure-cli]。
 
 ## <a name="create-an-aks-cluster"></a>建立 AKS 叢集
 
 如果您需要符合最低需求的 AKS 叢集 (已啟用 GPU 的節點和使用 Kubernetes 1.10 或更新版本)，請完成下列步驟。 如果您已經有符合這些需求的 AKS 叢集，請 [跳到下一節](#confirm-that-gpus-are-schedulable)。
 
-首先，使用 [az group create][az-group-create] 命令來建立叢集的資源群組。 下列範例會在 eastus** 地區建立名為 myResourceGroup** 的資源群組：
+首先，使用 [az group create][az-group-create] 命令來建立叢集的資源群組。 下列範例會在 eastus  地區建立名為 myResourceGroup  的資源群組：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -58,13 +58,13 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 在可以使用節點中的 Gpu 之前，您必須先為 NVIDIA 裝置外掛程式部署 DaemonSet。 此 DaemonSet 會在每個節點上執行 Pod，為 GPU 提供必要的驅動程式。
 
-首先，使用 [kubectl create namespace][kubectl-create] 命令建立命名空間，例如 gpu-resources**：
+首先，使用  ：
 
 ```console
 kubectl create namespace gpu-resources
 ```
 
-建立名為 nvidia-device-plugin-ds.yaml** 的檔案，並貼上下列 YAML 資訊清單。 此資訊清單會作為 [Kubernetes 專案的 NVIDIA 裝置外掛程式][nvidia-github]的一部分來提供。
+建立名為 nvidia-device-plugin-ds.yaml  的檔案，並貼上下列 YAML 資訊清單。 此資訊清單會作為 [Kubernetes 專案的 NVIDIA 裝置外掛程式][nvidia-github]的一部分來提供。
 
 ```yaml
 apiVersion: apps/v1
@@ -97,7 +97,7 @@ spec:
         operator: Exists
         effect: NoSchedule
       containers:
-      - image: nvidia/k8s-device-plugin:1.11
+      - image: mcr.microsoft.com/oss/nvidia/k8s-device-plugin:1.11
         name: nvidia-device-plugin-ctr
         securityContext:
           allowPrivilegeEscalation: false
@@ -196,9 +196,9 @@ NAME                       STATUS   ROLES   AGE   VERSION
 aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
 ```
 
-現在，使用 [kubectl describe node][kubectl-describe] 命令確認 GPU 可進行排程。 在 [容量]** 區段下，GPU 應顯示為 `nvidia.com/gpu:  1`。
+現在，使用 [kubectl describe node][kubectl-describe] 命令確認 GPU 可進行排程。 在 [容量]  區段下，GPU 應顯示為 `nvidia.com/gpu:  1`。
 
-下列精簡範例顯示名為 aks-nodepool1-18821093-0** 的節點上有 GPU：
+下列精簡範例顯示名為 aks-nodepool1-18821093-0  的節點上有 GPU：
 
 ```console
 $ kubectl describe node aks-nodepool1-28993262-0
@@ -252,7 +252,7 @@ Non-terminated Pods:         (9 in total)
 
 若要查看運作中的 GPU，請使用適當的資源要求對已啟用 GPU 的工作負載進行排程。 在此範例中，我們要針對 [MNIST 資料集](http://yann.lecun.com/exdb/mnist/)執行 [Tensorflow](https://www.tensorflow.org/) 作業。
 
-建立名為 samples-tf-mnist-demo.yaml** 的檔案，並貼上下列 YAML 資訊清單。 下列作業資訊清單包含 `nvidia.com/gpu: 1` 的資源限制：
+建立名為 samples-tf-mnist-demo.yaml  的檔案，並貼上下列 YAML 資訊清單。 下列作業資訊清單包含 `nvidia.com/gpu: 1` 的資源限制：
 
 > [!NOTE]
 > 如果您在呼叫驅動程式時發生版本不符的錯誤，例如，CUDA 驅動程式版本不足以 CUDA 執行階段版本，請參閱 NVIDIA 驅動程式矩陣相容性圖表- [https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
@@ -289,7 +289,7 @@ kubectl apply -f samples-tf-mnist-demo.yaml
 
 ## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>檢視已啟用 GPU 的工作負載狀態和輸出
 
-使用 [kubectl get jobs][kubectl-get] 命令和 `--watch` 引數監視作業進度。 這可能需要幾分鐘來執行第一次的影像提取和資料集處理。 當 [ *完成* ] 資料行顯示 *1/1*時，表示作業已順利完成。 `kubetctl --watch`使用*Ctrl + C*來結束命令：
+使用 [kubectl get jobs][kubectl-get] 命令和 `--watch` 引數監視作業進度。 這可能需要幾分鐘來執行第一次的影像提取和資料集處理。 當 [ *完成* ] 資料行顯示 *1/1* 時，表示作業已順利完成。 `kubetctl --watch`使用 *Ctrl + C* 來結束命令：
 
 ```console
 $ kubectl get jobs samples-tf-mnist-demo --watch

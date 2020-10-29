@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90993ea2ee66a23b5b629dfaf5bb34298ce15d9b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93d90232fb530a6c14c40558fc6a9974a1da42de
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936277"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900925"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>在 C# 中根據自訂字詞清單檢查文字
 
@@ -41,9 +41,9 @@ Azure Content Moderator 中的預設全域字詞清單已可滿足大部分內�
 
 ## <a name="create-your-visual-studio-project"></a>建立 Visual Studio 專案
 
-1. 將一個新的 [主控台應用程式 (.NET Framework)]**** 專案新增到您的解決方案。
+1. 將一個新的 [主控台應用程式 (.NET Framework)]  專案新增到您的解決方案。
 
-1. 將專案命名為 **TermLists**。 選取此專案作為解決方案的單一啟始專案。
+1. 將專案命名為 **TermLists** 。 選取此專案作為解決方案的單一啟始專案。
 
 ### <a name="install-required-packages"></a>安裝必要的套件
 
@@ -134,10 +134,10 @@ private const double latencyDelay = 0.5;
 
 ## <a name="create-a-term-list"></a>建立字詞清單
 
-使用 **ContentModeratorClient.ListManagementTermLists.Create** 建立字詞清單。 要**建立**的第一個參數是包含 MIME 類型的字串，這應該是 "application/json"。 如需詳細資訊，請參閱 [API 參考](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) \(英文\)。 第二個參數是**主體**物件，其中包含新字詞清單的名稱和描述。
+使用 **ContentModeratorClient.ListManagementTermLists.Create** 建立字詞清單。 要 **建立** 的第一個參數是包含 MIME 類型的字串，這應該是 "application/json"。 如需詳細資訊，請參閱 [API 參考](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) \(英文\)。 第二個參數是 **主體** 物件，其中包含新字詞清單的名稱和描述。
 
 > [!NOTE]
-> 上限是 **5 個字詞清單**，其中每個清單**不可超過 10,000 個字詞**。
+> 上限是 **5 個字詞清單** ，其中每個清單 **不可超過 10,000 個字詞** 。
 
 將下列方法定義新增至 TermLists 命名空間、Program 類別。
 
@@ -172,7 +172,7 @@ static string CreateTermList (ContentModeratorClient client)
 
 ## <a name="update-term-list-name-and-description"></a>更新字詞清單的名稱和描述
 
-使用 **ContentModeratorClient.ListManagementTermLists.Update** 更新字詞清單資訊。 第一個要**更新**的參數是字詞清單識別碼。 第二個參數是 MIME 類型，這應該是 "application/json"。 如需詳細資訊，請參閱 [API 參考](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f685) \(英文\)。 第三個參數是**主體**物件，其中包含新的名稱和描述。
+使用 **ContentModeratorClient.ListManagementTermLists.Update** 更新字詞清單資訊。 第一個要 **更新** 的參數是字詞清單識別碼。 第二個參數是 MIME 類型，這應該是 "application/json"。 如需詳細資訊，請參閱 [API 參考](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f685) \(英文\)。 第三個參數是 **主體** 物件，其中包含新的名稱和描述。
 
 將下列方法定義新增至 TermLists 命名空間、Program 類別。
 
@@ -264,13 +264,13 @@ static void RefreshSearchIndex (ContentModeratorClient client, string list_id)
 - 字詞清單中的字詞語言。
 - MIME 類型，其可以是 "text/html"、"text/xml"、"text/markdown" 或 "text/plain"。
 - 要審查的文字。
-- 布林值。 將此欄位設為 **true**，可在審查文字前自動校正文字。
+- 布林值。 將此欄位設為 **true** ，可在審查文字前自動校正文字。
 - 布林值。 將此欄位設定為 **true** ，以偵測文字中的個人資料。
 - 字詞清單識別碼。
 
 如需詳細資訊，請參閱 [API 參考](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) \(英文\)。
 
-**ScreenText** 會傳回 **Screen** 物件，其中具有 **Terms** 屬性，可列出 Content Moderator 在審查中偵測到的所有字詞。 請注意，如果 Content Moderator 在審查期間未偵測到任何字詞，**Terms** 屬性的值為 **null**。
+**ScreenText** 會傳回 **Screen** 物件，其中具有 **Terms** 屬性，可列出 Content Moderator 在審查中偵測到的所有字詞。 請注意，如果 Content Moderator 在審查期間未偵測到任何字詞， **Terms** 屬性的值為 **null** 。
 
 將下列方法定義新增至 TermLists 命名空間、Program 類別。
 
@@ -296,7 +296,7 @@ static void ScreenText (ContentModeratorClient client, string list_id, string te
             Console.WriteLine(String.Format("Found term: \"{0}\" from list ID {1} at index {2}.", term.Term, term.ListId, term.Index));
         }
     }
-    read.Sleep(throttleRate);
+    Thread.Sleep(throttleRate);
 }
 ```
 
@@ -304,9 +304,9 @@ static void ScreenText (ContentModeratorClient client, string list_id, string te
 
 刪除字詞或清單相當簡單。 您可以使用 SDK 來執行下列工作：
 
-- 刪除字詞。 (**ContentModeratorClient.ListManagementTerm.DeleteTerm**)
-- 刪除清單中的所有字詞，但不刪除清單。 (**ContentModeratorClient.ListManagementTerm.DeleteAllTerms**)
-- 刪除清單及其所有內容。 (**ContentModeratorClient.ListManagementTermLists.Delete**)
+- 刪除字詞。 ( **ContentModeratorClient.ListManagementTerm.DeleteTerm** )
+- 刪除清單中的所有字詞，但不刪除清單。 ( **ContentModeratorClient.ListManagementTerm.DeleteAllTerms** )
+- 刪除清單及其所有內容。 ( **ContentModeratorClient.ListManagementTermLists.Delete** )
 
 ### <a name="delete-a-term"></a>刪除字詞
 
@@ -365,7 +365,7 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 
 ## <a name="compose-the-main-method"></a>撰寫 Main 方法
 
-將 **Main** 方法定義新增至 **TermLists** 命名空間、**Program** 類別。 最後，關閉 **Program** 類別和 **TermLists** 命名空間。
+將 **Main** 方法定義新增至 **TermLists** 命名空間、 **Program** 類別。 最後，關閉 **Program** 類別和 **TermLists** 命名空間。
 
 ```csharp
 static void Main(string[] args)

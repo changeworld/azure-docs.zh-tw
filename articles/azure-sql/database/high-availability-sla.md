@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: sashan
 ms.author: sashan
 ms.reviewer: sstein, sashan
-ms.date: 08/12/2020
-ms.openlocfilehash: c616ba1971fcbb0674a42583b30c25f6ccda6874
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 10/28/2020
+ms.openlocfilehash: c0c925f68e8edbae00f980d9445c59d7213a4b25
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791778"
+ms.locfileid: "92901312"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database 和 SQL 受控執行個體的高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -116,7 +116,7 @@ Premium 和業務關鍵服務層級會利用高階可用性模型，將計算資
 
 ## <a name="testing-application-fault-resiliency"></a>測試應用程式錯誤復原
 
-高可用性是 SQL Database 和 SQL 受控執行個體平台的基礎部分，可為您的資料庫應用程式提供透明的運作。 不過，我們認為您可能想要測試在計劃性或非計劃性事件期間起始的自動容錯移轉作業對應用程式有何影響，然後再將其部署到生產環境。 您可以手動觸發容錯移轉，方法是呼叫特殊 API 來重新開機資料庫、彈性集區或受控實例。 在區域冗余資料庫或彈性集區的情況下，API 呼叫會導致將用戶端連線重新導向至可用性區域中的新主資料庫，而不同于舊的主要複本的可用性區域。 因此，除了測試容錯移轉如何影響現有的資料庫會話，您也可以確認它是否因為網路延遲的變更而變更了端對端效能。 由於重新開機作業是侵入式的，且有大量的作業可能會讓平臺壓力，因此每個資料庫、彈性集區或受控實例只能每隔30分鐘執行一次容錯移轉呼叫。
+高可用性是 SQL Database 和 SQL 受控執行個體平台的基礎部分，可為您的資料庫應用程式提供透明的運作。 不過，我們認為您可能想要測試在計劃性或非計劃性事件期間起始的自動容錯移轉作業對應用程式有何影響，然後再將其部署到生產環境。 您可以手動觸發容錯移轉，方法是呼叫特殊 API 來重新開機資料庫、彈性集區或受控實例。 在區域冗余資料庫或彈性集區的情況下，API 呼叫會導致將用戶端連線重新導向至可用性區域中的新主資料庫，而不同于舊的主要複本的可用性區域。 因此，除了測試容錯移轉如何影響現有的資料庫會話，您也可以確認它是否因為網路延遲的變更而變更了端對端效能。 由於重新開機作業是侵入式的，且有大量的作業可能會讓平臺壓力，因此每個資料庫、彈性集區或受控實例的每15分鐘只允許一個容錯移轉呼叫。
 
 您可以使用 PowerShell、REST API 或 Azure CLI 來起始容錯移轉：
 

@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a0851e9d032d4d1bf9751d63061141839e95d510
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: edd79d08d18e95d27e557a26f0adc36868097bb3
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491286"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900278"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure 春季雲端常見問題
 
@@ -39,6 +39,9 @@ Azure 春季 Cloud 藉由整合 Azure 監視器、Application Insights 和 Log A
 
 美國東部、美國東部2、美國中部、美國中南部、美國西部2、西歐、歐洲北部、英國南部、東南亞及澳大利亞東部。
 
+### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>是否有任何客戶資料儲存在指定的區域之外？
+
+Azure 春季 Cloud 是一項區域服務。 Azure 春季雲端中的所有客戶資料都會儲存到指定區域的相同地理位置內的多個區域，以供進行複製。 若要深入瞭解地理區域和區域，請參閱 [Azure 中的資料](https://azure.microsoft.com/global-infrastructure/data-residency/)存放區。
 
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Azure 春季雲端的已知限制為何？
 
@@ -72,7 +75,7 @@ Azure Spring Cloud 支援 Java 8 和 11。 請參閱 [JAVA 執行時間和作業
 
 在 [應用程式概觀] 索引標籤和 [Azure 監視器](../azure-monitor/platform/data-platform-metrics.md#interacting-with-azure-monitor-metrics) \(部分機器翻譯\) 索引標籤中尋找計量。
 
-Azure 春季雲端支援將春季雲端應用程式記錄和計量匯出至 Azure 儲存體、EventHub 及 [Log Analytics](../azure-monitor/platform/data-platform-logs.md#log-queries)。 Log Analytics 中的資料表名稱是 *AppPlatformLogsforSpring*。 若要瞭解如何啟用，請參閱 [診斷服務](diagnostic-services.md)。
+Azure 春季雲端支援將春季雲端應用程式記錄和計量匯出至 Azure 儲存體、EventHub 及 [Log Analytics](../azure-monitor/platform/data-platform-logs.md#log-queries)。 Log Analytics 中的資料表名稱是 *AppPlatformLogsforSpring* 。 若要瞭解如何啟用，請參閱 [診斷服務](diagnostic-services.md)。
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure Spring Cloud 是否支援分散式追蹤？
 
@@ -155,7 +158,7 @@ LTS 和 MTS JDK 版本會有每季的安全性更新和錯誤修正，並視需�
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>我是否可以存取 Kubernetes 來操作我的應用程式容器？
 
-不可以。  Azure Spring Cloud 將基礎架構對開發人員抽象化，讓您能夠專注於應用程式程式碼和商務邏輯。
+否。  Azure Spring Cloud 將基礎架構對開發人員抽象化，讓您能夠專注於應用程式程式碼和商務邏輯。
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure Spring Cloud 是否支援從來源建立容器？
 
@@ -206,6 +209,6 @@ RetryableEurekaHttpClient: Request execution failure with status code 401; retry
 我們將在不久的將來增強這個部分，並避免使用者的應用程式發生此錯誤。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如果您有其他問題，請參閱《 [Azure 春季雲端疑難排解指南》](spring-cloud-troubleshoot.md)。

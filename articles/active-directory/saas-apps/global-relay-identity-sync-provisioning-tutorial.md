@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2020
 ms.author: Zhchia
-ms.openlocfilehash: c1e2d64bb30b6451e232c85a5892771157d32928
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 400e82780abd08e0db4f49d72b352e290ea1f212
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514379"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900289"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的全域轉送身分識別同步處理
 
-本教學課程說明在全域轉送身分識別同步處理和 Azure Active Directory (Azure AD) 設定自動使用者布建時所需執行的步驟。 設定時，Azure AD 使用 Azure AD 布建服務，自動將使用者和群組布建和取消布建至 [全域轉送身分識別同步](https://portalalpha1.globalrelay.com/) 。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
+本教學課程說明在全域轉送身分識別同步處理和 Azure Active Directory (Azure AD) 設定自動使用者布建時所需執行的步驟。 設定時，Azure AD 使用 Azure AD 布建服務，自動將使用者和群組布建和取消布建至全域轉送身分識別同步。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支援的功能
@@ -34,7 +34,7 @@ ms.locfileid: "92514379"
 > * 在 Azure AD 和全域轉送身分識別同步之間保持使用者屬性同步
 > * 在全域轉送身分識別同步中布建群組和群組成員資格
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -71,7 +71,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [ **全域轉送身分識別同步**]。
+2. 在應用程式清單中，選取 [ **全域轉送身分識別同步** ]。
 
     ![應用程式清單中的全域轉送身分識別同步連結](common/all-applications.png)
 
@@ -83,7 +83,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![自動布建索引標籤](common/provisioning-automatic.png)
 
-5. 在 [系統 **管理員認證** ] 區段下，輸入您的全域轉送身分識別同步 **租使用者 url**。 按一下 [ **測試連接** ]，以確保 Azure AD 可以連線到全域轉送身分識別同步。如果連線失敗，請確定您的全域轉送身分識別同步處理帳戶具有系統管理員許可權，並洽詢您的全域轉送代表以解決此問題。
+5. 在 [系統 **管理員認證** ] 區段下，輸入您的全域轉送身分識別同步 **租使用者 url** 。 按一下 [ **測試連接** ]，以確保 Azure AD 可以連線到全域轉送身分識別同步。如果連線失敗，請確定您的全域轉送身分識別同步處理帳戶具有系統管理員許可權，並洽詢您的全域轉送代表以解決此問題。
 
     ![授權按鈕](media/global-relay-identity-sync-provisioning-tutorial/authorization.png)
 
@@ -93,7 +93,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 7. 選取 [儲存]。
 
-8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者到全域轉送身分識別同步**]。
+8. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 使用者到全域轉送身分識別同步** ]。
 
 9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理至全域轉送身分識別同步處理的使用者屬性。 選取為 [比對] 屬性 **的屬性會** 用來比對全域轉送身分識別同步中的使用者帳戶，以進行更新作業。 如果您選擇變更相符的 [目標屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，您將需要確定全域轉送身分識別同步 API 支援根據該屬性篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
 
@@ -103,7 +103,6 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |作用中|Boolean|
    |displayName|String|
    |title|String|
-   |emails[type eq "work"].value|String|
    |preferredLanguage|String|
    |name.givenName|String|
    |name.familyName|String|
@@ -170,7 +169,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 
 
-10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至全域轉送身分識別同步**]。
+10. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 群組至全域轉送身分識別同步** ]。
 
 11. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理至全域轉送身分識別同步處理的群組屬性。 選取為 [比對] 屬性 **的屬性會** 用來比對全域轉送身分識別同步中的群組以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
@@ -181,11 +180,11 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-13. 若要為全域轉送身分識別同步啟用 Azure AD 布建服務，請在 [**設定**] 區段中，將布建**狀態**變更為 [**開啟**]。
+13. 若要為全域轉送身分識別同步啟用 Azure AD 布建服務，請在 [ **設定** ] 區段中，將布建 **狀態** 變更為 [ **開啟** ]。
 
     ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-14. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建至全域轉送身分識別同步處理的使用者和/或群組。
+14. 在 [ **設定** ] 區段的 [ **範圍** ] 中選擇所需的值，以定義您想要布建至全域轉送身分識別同步處理的使用者和/或群組。
 
     ![佈建範圍](common/provisioning-scope.png)
 

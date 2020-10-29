@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/22/2020
 author: jluk
-ms.openlocfilehash: b833b45f5243e446ac507ee913abe256a12ac01d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5178aa30c3bfec014dd10e2c4f3de182aaef7e68
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368463"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900124"
 ---
 # <a name="secure-pods-with-azure-policy"></a>使用 Azure 原則保護 Pod
 
@@ -61,7 +61,7 @@ ms.locfileid: "92368463"
 下列限制僅適用于 AKS 的 Azure 原則附加元件：
 
 - [AKS Pod 安全性原則 (preview) ](use-pod-security-policies.md) ，而且無法同時啟用 AKS 的 Azure 原則附加元件。 
-- 評估的 Azure 原則附加元件會自動排除命名空間： _kube-system_、 _閘道管理員系統_和 _aks-periscope_。
+- 評估的 Azure 原則附加元件會自動排除命名空間： _kube-system_ 、 _閘道管理員系統_ 和 _aks-periscope_ 。
 
 ### <a name="recommendations"></a>建議
 
@@ -128,7 +128,7 @@ Azure 原則中的計畫是一組原則定義的集合，專為達成單一的�
 ### <a name="unsupported-built-in-policies-for-managed-aks-clusters"></a>受控 AKS 叢集不支援的內建原則
 
 > [!NOTE]
-> **AKS 中不支援**下列3個原則，原因是自訂 AKS 作為受控服務來管理和保護的層面。 這些原則專為具有未受管理控制平面的 Azure Arc 連線叢集所建立。
+> **AKS 中不支援** 下列3個原則，原因是自訂 AKS 作為受控服務來管理和保護的層面。 這些原則專為具有未受管理控制平面的 Azure Arc 連線叢集所建立。
 
 |[Pod 安全性原則控制項](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)|
 |---|
@@ -150,7 +150,7 @@ If the built-in initiatives to address pod security do not match your requiremen
 > [!WARNING]
 > 系統管理員命名空間（例如 kube 系統）中的 pod 必須執行，叢集才能維持狀況良好，從預設排除的命名空間清單中移除必要的命名空間，可能會因為必要的系統 pod 而觸發原則違規。
 
-AKS 需要在叢集上執行系統 pod，以提供重要的服務，例如 DNS 解析。 限制 pod 功能的原則可能會影響系統 pod 穩定性的能力。 因此，在 **建立、更新和原則審核期間**，會將下列命名空間排除在許可要求期間的原則評估之外。 這會強制將這些命名空間的新部署從 Azure 原則中排除。
+AKS 需要在叢集上執行系統 pod，以提供重要的服務，例如 DNS 解析。 限制 pod 功能的原則可能會影響系統 pod 穩定性的能力。 因此，在 **建立、更新和原則審核期間** ，會將下列命名空間排除在許可要求期間的原則評估之外。 這會強制將這些命名空間的新部署從 Azure 原則中排除。
 
 1. kube-系統
 1. 閘道管理員-系統
@@ -209,7 +209,7 @@ metadata:
 spec:
   containers:
     - name: nginx-privileged
-      image: nginx
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
       securityContext:
         privileged: true
 ```
@@ -244,7 +244,7 @@ metadata:
 spec:
   containers:
     - name: nginx-unprivileged
-      image: nginx
+      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 ```
 
 使用 [kubectl apply][kubectl-apply] 命令建立 pod，並指定 YAML 資訊清單的名稱：
@@ -253,7 +253,7 @@ spec:
 kubectl apply -f nginx-unprivileged.yaml
 ```
 
-Pod 已成功排程。 當您使用[kubectl get][kubectl-get] pod 命令檢查 pod 的*狀態時，pod 正在執行：*
+Pod 已成功排程。 當您使用 [kubectl get][kubectl-get] pod 命令檢查 pod 的 *狀態時，pod 正在執行：*
 
 ```console
 $ kubectl get pods
@@ -275,7 +275,7 @@ kubectl delete -f nginx-unprivileged.yaml
 若要移除基準計畫：
 
 1. 流覽至 Azure 入口網站上的 [原則] 窗格
-1. 從左窗格選取**指派**
+1. 從左窗格選取 **指派**
 1. 按一下 [...]按鈕（位於基準設定檔旁）
 1. 選取 [刪除指派]
 

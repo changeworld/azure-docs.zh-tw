@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 10/23/2020
+ms.date: 10/27/2020
 ms.custom: generated
-ms.openlocfilehash: ed5d7c3007cf8471da453db93be0ab716805908c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 60e9ec88fd07d8b04254c5d3917aab09d671f517
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742958"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900876"
 ---
 # <a name="azure-built-in-roles"></a>Azure 內建角色
 
@@ -9225,12 +9225,12 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/eventroutes/* |  |
-> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/* |  |
-> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/commands/* |  |
-> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/relationships/* |  |
-> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/models/* |  |
-> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/query/* |  |
+> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/eventroutes/* | 讀取、刪除、建立或更新任何事件路由 |
+> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/* | 讀取、建立、更新或刪除任何數位對應項 |
+> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/commands/* | 在數位對應項上叫用任何命令 |
+> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/relationships/* | 讀取、建立、更新或刪除任何數位對應項關聯性 |
+> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/models/* | 讀取、建立、更新或刪除任何模型 |
+> | [Microsoft. DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/query/* | 查詢任何數位 Twins 圖形 |
 > | **NotDataActions** |  |
 > | 無 |  |
 

@@ -4,12 +4,12 @@ description: 瞭解如何在 Azure Kubernetes Service (AKS) 叢集中啟用和�
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 3f15f075604c104b467af289f6f5d4b92dc12659
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 049c2682a8f61bb658083b0418a4fcf99dc477a5
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89420858"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900039"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Azure Kubernetes Service (preview 上使用 Azure ultra 磁片) 
 
@@ -32,13 +32,13 @@ ms.locfileid: "89420858"
 az feature register --namespace "Microsoft.ContainerService" --name "EnableUltraSSD"
 ```
 
-狀態需要幾分鐘的時間才會顯示「已註冊」**。 您可以使用 [az feature list][az-feature-list] 命令檢查註冊狀態：
+狀態需要幾分鐘的時間才會顯示「已註冊」  。 您可以使用 [az feature list][az-feature-list] 命令檢查註冊狀態：
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableUltraSSD')].{Name:name,State:properties.state}"
 ```
 
-當您準備好時，請使用[az provider register][az-provider-register]命令重新整理 *>microsoft.containerservice*資源提供者的註冊：
+當您準備好時，請使用 [az provider register][az-provider-register]命令重新整理 *>microsoft.containerservice* 資源提供者的註冊：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -48,7 +48,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="install-aks-preview-cli-extension"></a>安裝 aks-preview CLI 延伸模組
 
-若要建立可使用 Ultra 磁片的 AKS 叢集或節點集區，您需要最新的 *AKS-preview* CLI 擴充功能。 使用[az extension add][az-extension-add]命令安裝*aks-preview* Azure CLI 擴充功能，或使用[az extension update][az-extension-update]命令安裝任何可用的更新：
+若要建立可使用 Ultra 磁片的 AKS 叢集或節點集區，您需要最新的 *AKS-preview* CLI 擴充功能。 使用 [az extension add][az-extension-add]命令安裝 *aks-preview* Azure CLI 擴充功能，或使用 [az extension update][az-extension-update]命令安裝任何可用的更新：
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -59,7 +59,7 @@ az extension update --name aks-preview
 ``` 
 
 ### <a name="limitations"></a>限制
-- 查看[ **ULTRA 磁片 GA 範圍和限制**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations)
+- 查看 [ **ULTRA 磁片 GA 範圍和限制**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations)
 - Ultra 磁片的支援大小範圍介於100到1500之間
 
 ## <a name="create-a-new-cluster-that-can-use-ultra-disks"></a>建立可使用 Ultra 磁片的新叢集
@@ -130,7 +130,7 @@ storageclass.storage.k8s.io/ultra-disk-sc created
 
 永續性磁碟區宣告 (PVC) 可用來根據儲存體類別，動態佈建儲存體。 在此情況下，PVC 可以使用先前建立的儲存類別來建立 ultra 磁片。
 
-建立名為 `azure-ultra-disk-pvc.yaml` 的檔案，然後將下列資訊清單複製進來。 宣告會要求名為 `ultra-disk` 的磁片，其大小為 *1000 GB* ，且具有 *>readwriteonce* 存取權。 *Ultra 磁片 sc*儲存類別會指定為儲存類別。
+建立名為 `azure-ultra-disk-pvc.yaml` 的檔案，然後將下列資訊清單複製進來。 宣告會要求名為 `ultra-disk` 的磁片，其大小為 *1000 GB* ，且具有 *>readwriteonce* 存取權。 *Ultra 磁片 sc* 儲存類別會指定為儲存類別。
 
 ```yaml
 apiVersion: v1
@@ -168,7 +168,7 @@ metadata:
 spec:
   containers:
   - name: nginx-ultra
-    image: nginx
+    image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
     resources:
       requests:
         cpu: 100m
@@ -219,7 +219,7 @@ Events:
 ```
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 如需 ultra 磁片的詳細資訊，請參閱 [使用 Azure ultra 磁片](../virtual-machines/disks-enable-ultra-ssd.md)。
 - 如需儲存體最佳作法的詳細資訊，請參閱 [Azure Kubernetes Service (AKS 中儲存體和備份的最佳作法) ][operator-best-practices-storage]

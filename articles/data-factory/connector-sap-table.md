@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 608694c07894c8bdff8b1101d607e07ea4383764
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1970709dea67111bfd8b90f9fc315a3b044b2ab9
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279820"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900253"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP 資料表複製資料
 
@@ -51,18 +51,19 @@ ms.locfileid: "89279820"
 - 透過預設或自訂的 RFC 來抓取資料。
 
 7.01 版或更新版本指的是 SAP NetWeaver 版本，而不是 SAP ECC 版本。 例如，SAP ECC 6.0 EHP 7 一般都有 NetWeaver 版本 >= 7.4。 如果您不確定您的環境，以下是從您的 SAP 系統確認版本的步驟：
-1.  使用 SAP GUI 連接到 SAP 系統。 
-2.  移至 [**系統**  ->  **狀態**]。 
-3.  檢查 SAP_BASIS 的版本，確定它等於或大於701。  
+
+1. 使用 SAP GUI 連接到 SAP 系統。 
+2. 移至 [ **系統**  ->  **狀態** ]。 
+3. 檢查 SAP_BASIS 的版本，確定它等於或大於701。  
       ![檢查 SAP_BASIS](./media/connector-sap-table/sap-basis.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要使用此 SAP 資料表連接器，您需要：
 
 - 設定自我裝載整合執行時間 (3.17 版或更新版本的) 。 如需詳細資訊，請參閱 [建立和設定自我裝載整合運行](create-self-hosted-integration-runtime.md)時間。
 
-- 從 SAP 的網站下載64位 [Sap Connector For Microsoft .net 3.0](https://support.sap.com/en/product/connectors/msnet.html) ，並將其安裝在自我裝載整合執行時間電腦上。 在安裝期間，請確定您已在 [**選用設定步驟**] 視窗中選取 [將**元件安裝到 GAC** ] 選項。
+- 從 SAP 的網站下載64位 [Sap Connector For Microsoft .net 3.0](https://support.sap.com/en/product/connectors/msnet.html) ，並將其安裝在自我裝載整合執行時間電腦上。 在安裝期間，請確定您已在 [ **選用設定步驟** ] 視窗中選取 [將 **元件安裝到 GAC** ] 選項。
 
   ![安裝適用于 .NET 的 SAP Connector](./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
 
@@ -225,8 +226,8 @@ ms.locfileid: "89279820"
 | :------------------------------- | :----------------------------------------------------------- | :------- |
 | `type`                             | `type` 屬性必須設定為 `SapTableSource`。         | 是      |
 | `rowCount`                         | 要取出的資料列數目。                              | 否       |
-| `rfcTableFields`                 | 欄位 (資料行) 要從 SAP 資料表複製。 例如： `column0, column1` 。 | 否       |
-| `rfcTableOptions`                | 用來篩選 SAP 資料表中之資料列的選項。 例如： `COLUMN0 EQ 'SOMEVALUE'` 。 另請參閱本文稍後的 SAP 查詢操作員資料表。 | 否       |
+| `rfcTableFields`                 | 欄位 (資料行) 要從 SAP 資料表複製。 例如： `column0, column1`。 | 否       |
+| `rfcTableOptions`                | 用來篩選 SAP 資料表中之資料列的選項。 例如： `COLUMN0 EQ 'SOMEVALUE'`。 另請參閱本文稍後的 SAP 查詢操作員資料表。 | 否       |
 | `customRfcReadTableFunctionModule` | 可以用來從 SAP 資料表讀取資料的自訂 RFC 函數模組。<br>您可以使用自訂 RFC 函式模組來定義如何從 SAP 系統取出資料，並將其傳回 Data Factory。 自訂函式模組必須有實 (匯入、匯出、資料表) 的介面，其類似于 `/SAPDS/RFC_READ_TABLE2` Data Factory 所使用的預設介面。<br>Data Factory | 否       |
 | `partitionOption`                  | 從 SAP 資料表讀取的資料分割機制。 支援的選項包括： <ul><li>`None`</li><li>`PartitionOnInt` (左填補的一般整數或整數值，例如 `0000012345`) </li><li>`PartitionOnCalendarYear` (4 位數，格式為 "YYYY" ) </li><li>`PartitionOnCalendarMonth` (6 位數的格式為 "YYYYMM" ) </li><li>`PartitionOnCalendarDate` (8 位數，格式為 "YYYYMMDD" ) </li></ul> | 否       |
 | `partitionColumnName`              | 用來分割資料的資料行名稱。                | 否       |

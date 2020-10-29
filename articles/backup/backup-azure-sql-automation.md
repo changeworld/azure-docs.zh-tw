@@ -4,12 +4,12 @@ description: 使用 Azure 備份和 PowerShell 來備份和還原 Azure Vm 中�
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 37e2336b262311ea00e833ad91fe5e8c5c1ddf1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b3b943a53c1da0f6f1e938b5b234dc82541b46d
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975177"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92901677"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>使用 PowerShell 備份及還原 Azure Vm 中的 SQL 資料庫
 
@@ -56,10 +56,10 @@ ms.locfileid: "90975177"
 
     ![復原服務 Cmdlet 清單](./media/backup-azure-afs-automation/list-of-recoveryservices-ps-az.png)
 
-4. 使用連線 **disconnect-azaccount**來登入您的 Azure 帳戶。
+4. 使用連線 **disconnect-azaccount** 來登入您的 Azure 帳戶。
 5. 在出現的網頁中，系統會提示您輸入您的帳號憑證。
 
-    * 或者，您可以將您的帳號憑證納入 **disconnect-azaccount** 指令程式中的參數，並搭配 **-Credential**。
+    * 或者，您可以將您的帳號憑證納入 **disconnect-azaccount** 指令程式中的參數，並搭配 **-Credential** 。
     * 如果您是為租使用者工作的 CSP 合作夥伴，請使用其 tenantID 或租使用者主功能變數名稱稱將客戶指定為租使用者。 例如 **Connect-AzAccount -Tenant** fabrikam.com。
 
 6. 將您想要使用的訂用帳戶與帳戶建立關聯，因為帳戶可以有數個訂用帳戶。
@@ -80,7 +80,7 @@ ms.locfileid: "90975177"
     Get-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-9. 在命令輸出中，確認 [ **>registrationstate** ] 變更為 [ **已註冊**]。 如果沒有，請再次執行 **>register-azresourceprovider** Cmdlet。
+9. 在命令輸出中，確認 [ **>registrationstate** ] 變更為 [ **已註冊** ]。 如果沒有，請再次執行 **>register-azresourceprovider** Cmdlet。
 
 ## <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫
 
@@ -103,7 +103,7 @@ ms.locfileid: "90975177"
 3. 指定要用於保存庫儲存體的冗余類型。
 
     * 您可以使用 [本機多餘的儲存體](../storage/common/storage-redundancy.md#locally-redundant-storage)、 [異地多餘的](../storage/common/storage-redundancy.md#geo-redundant-storage) 儲存體或 [區域多餘的儲存體](../storage/common/storage-redundancy.md#zone-redundant-storage) 。
-    * 下列範例會針對**testvault**設定為**異地備援**的[AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd 設定 **-BackupStorageRedundancy**選項。
+    * 下列範例會針對 **testvault** 設定為 **異地備援** 的 [AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd 設定 **-BackupStorageRedundancy** 選項。
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -172,7 +172,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 > [!IMPORTANT]
 > 您只需要在30分鐘的倍數內提供開始時間。 在上述範例中，它只能是 "01:00:00" 或 "02:30:00"。 開始時間不能是 "01:15:00"。
 
-下列範例會將排程原則和保留原則儲存在變數中。 然後，它會使用這些變數作為新原則 (**NewSQLPolicy**) 的參數。 **NewSQLPolicy** 會採用每日「完整」備份，保留180天，並每隔2小時進行一次記錄備份
+下列範例會將排程原則和保留原則儲存在變數中。 然後，它會使用這些變數作為新原則 ( **NewSQLPolicy** ) 的參數。 **NewSQLPolicy** 會採用每日「完整」備份，保留180天，並每隔2小時進行一次記錄備份
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "MSSQL"
@@ -310,7 +310,7 @@ $FullRP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $bkpItem -VaultId $tar
 如果您想要將資料庫還原到特定時間點，請使用 [AzRecoveryServicesBackupRecoveryLogChain](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverylogchain) PowerShell Cmdlet。 指令程式會傳回日期清單，代表該 SQL 備份專案之未中斷、連續記錄鏈的開始和結束時間。 所需的時間點應該在此範圍內。
 
 ```powershell
-Get-AzRecoveryServicesBackupRecoveryLogChain -Item $bkpItem -Item -VaultId $targetVault.ID
+Get-AzRecoveryServicesBackupRecoveryLogChain -Item $bkpItem -VaultId $targetVault.ID
 ```
 
 輸出將類似下列範例。
@@ -499,7 +499,7 @@ MSSQLSERVER/m... Backup               InProgress           3/18/2019 8:41:27 PM 
 
 ### <a name="change-policy-for-backup-items"></a>變更備份專案的原則
 
-您可以將備份專案的原則從 *Policy1* 變更為 *Policy2*。 若要切換已備份專案的原則，請提取相關的原則和備份專案，並使用 [AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) 命令搭配備份專案作為參數。
+您可以將備份專案的原則從 *Policy1* 變更為 *Policy2* 。 若要切換已備份專案的原則，請提取相關的原則和備份專案，並使用 [AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) 命令搭配備份專案作為參數。
 
 ```powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
