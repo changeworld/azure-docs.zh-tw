@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: b26ee6d6e82903a3dad91ae931885f62daf5d15b
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: cb5ef751a3fc2241924eaee1c5da9507006389cc
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91821175"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92449246"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 GitHub 整合
 
@@ -25,7 +25,7 @@ ms.locfileid: "91821175"
 * 在 Azure AD 中控制可存取 GitHub Enterprise Cloud Organization 的人員。
 * 在一個集中位置 (也就是 Azure 入口網站) 管理 GitHub Enterprise Cloud Organization 的存取權。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -40,8 +40,8 @@ ms.locfileid: "91821175"
 
 * GitHub 支援 **SP** 起始的 SSO
 
-* GitHub 支援[**自動化**使用者佈建 (組織邀請)](github-provisioning-tutorial.md)
-* 設定 GitHub 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* GitHub 支援 [**自動化** 使用者佈建 (組織邀請)](github-provisioning-tutorial.md)
+* 設定 GitHub 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-github-from-the-gallery"></a>從資源庫新增 GitHub
 
@@ -51,7 +51,7 @@ ms.locfileid: "91821175"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **GitHub**。
+1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **GitHub** 。
 1. 從結果面板中選取 [GitHub]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-github"></a>設定及測試 GitHub 的 Azure AD 單一登入
@@ -72,7 +72,7 @@ ms.locfileid: "91821175"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [GitHub] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -89,7 +89,7 @@ ms.locfileid: "91821175"
     > [!NOTE]
     > 請注意這些不是真正的值。 您必須使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 在此建議您在 [識別碼] 中使用唯一的字串值。 移至 [GitHub 管理] 區段來擷取這些值。
 
-5. GitHub 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應加入 SAML Token 屬性組態。 下列螢幕擷取畫面顯示預設屬性清單，其中的**唯一的使用者識別碼 (名稱識別碼)** 與 **user.userprincipalname** 相對應。 GitHub 應用程式要求**唯一的使用者識別碼 (名稱識別碼)** 需與 **user.mail** 相對應，因此您必須按一下 [編輯] 圖示以編輯屬性對應，並變更屬性對應。
+5. GitHub 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應加入 SAML Token 屬性組態。 下列螢幕擷取畫面顯示預設屬性清單，其中的 **唯一的使用者識別碼 (名稱識別碼)** 與 **user.userprincipalname** 相對應。 GitHub 應用程式要求 **唯一的使用者識別碼 (名稱識別碼)** 需與 **user.mail** 相對應，因此您必須按一下 [編輯] 圖示以編輯屬性對應，並變更屬性對應。
 
     ![顯示 [使用者屬性] 區段的螢幕擷取畫面，其中已選取 [編輯] 圖示。](common/edit-attribute.png)
 
@@ -139,7 +139,7 @@ ms.locfileid: "91821175"
     ![使用者角色](./media/github-tutorial/user-role.png)
 
     > [!NOTE]
-    > **選取角色**選項將會停用，而預設角色是所選使用者的 USER。
+    > **選取角色** 選項將會停用，而預設角色是所選使用者的 USER。
 
 7. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
@@ -163,15 +163,15 @@ ms.locfileid: "91821175"
 
     ![顯示 [登入 URL]、[簽發者] 和 [公開憑證] 文字方塊的螢幕擷取畫面。](./media/github-tutorial/configure.png)
 
-    a. 在 [登入 URL] 文字方塊中，貼上您從 Azure 入口網站複製的**登入 URL** 值。
+    a. 在 [登入 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 **登入 URL** 值。
 
-    b. 在 [簽發者] 文字方塊中，貼上您從 Azure 入口網站複製的 **Azure AD 識別碼**值。
+    b. 在 [簽發者] 文字方塊中，貼上您從 Azure 入口網站複製的 **Azure AD 識別碼** 值。
 
     c. 在記事本中開啟從 Azure 入口網站下載的憑證，將內容貼至 [公開憑證] 文字方塊。
 
-    d. 按一下 [編輯] 圖示以編輯 [簽章方法] 和 [摘要方法]，將 **RSA-SHA1** 和 **SHA1** 改為 **RSA-SHA256** 和 **SHA256**，如下所示。
+    d. 按一下 [編輯] 圖示以編輯 [簽章方法] 和 [摘要方法]，將 **RSA-SHA1** 和 **SHA1** 改為 **RSA-SHA256** 和 **SHA256** ，如下所示。
     
-    e. 更新預設 URL 中的**判斷提示取用者服務 URL (回覆 URL)** ，讓 GitHub 中的 URL 符合 Azure 應用程式註冊中的 URL。
+    e. 更新預設 URL 中的 **判斷提示取用者服務 URL (回覆 URL)** ，讓 GitHub 中的 URL 符合 Azure 應用程式註冊中的 URL。
 
     ![image](./media/github-tutorial/tutorial_github_sha.png)
 
@@ -217,16 +217,16 @@ ms.locfileid: "91821175"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [GitHub] 圖格時，應該會自動登入您設定 SSO 的 GitHub。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [GitHub] 圖格時，應該會自動登入您設定 SSO 的 GitHub。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 GitHub](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)

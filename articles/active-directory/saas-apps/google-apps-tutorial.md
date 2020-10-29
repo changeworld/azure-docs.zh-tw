@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 7e6b4524523d0659126bcd6cbe1294d700e79ed9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a5cb1e589481bb424507d08879da8cc1b14ff1c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707810"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92448175"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Google Cloud (G Suite) Connector 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "90707810"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Google Cloud (G Suite) Connector。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -64,7 +64,7 @@ ms.locfileid: "90707810"
 
 5. **問：如果使用者透過 Windows 登入，他們是否會自動向 Google Cloud (G Suite) Connector 進行驗證，而不會收到輸入密碼的提示？**
 
-    A：有兩個選項可允許這樣的情況。 第一個是，使用者可以透過 [Azure Active Directory Join](../device-management-introduction.md)登入 Windows 10 裝置。 另一個是，使用者可以登入已加入某個內部部署 Active Directory 網域的 Windows 裝置，其中此內部部署 Active Directory 已透過 [Active Directory 同盟服務 (AD FS)](../hybrid/plan-connect-user-signin.md) 部署而能夠單一登入到 Azure AD。 這兩個選項都需要您執行下列教學課程的步驟，才能在 Azure AD 與 Google Cloud (G Suite) Connector 之間啟用單一登入。
+    A：有兩個選項可允許這樣的情況。 第一個是，使用者可以透過 [Azure Active Directory Join](../devices/overview.md)登入 Windows 10 裝置。 另一個是，使用者可以登入已加入某個內部部署 Active Directory 網域的 Windows 裝置，其中此內部部署 Active Directory 已透過 [Active Directory 同盟服務 (AD FS)](../hybrid/plan-connect-user-signin.md) 部署而能夠單一登入到 Azure AD。 這兩個選項都需要您執行下列教學課程的步驟，才能在 Azure AD 與 Google Cloud (G Suite) Connector 之間啟用單一登入。
 
 6. **問：當我收到「無效的電子郵件」錯誤訊息時該怎麼辦？**
 
@@ -82,8 +82,8 @@ ms.locfileid: "90707810"
 
 * Google Cloud (G Suite) Connector 支援由 **SP** 起始的 SSO
 
-* Google Cloud (G Suite) Connector 支援[自動  使用者佈建](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
-* 設定 Google Cloud (G Suite) Connector 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Google Cloud (G Suite) Connector 支援[自動  使用者佈建](./google-apps-provisioning-tutorial.md)
+* 設定 Google Cloud (G Suite) Connector 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-google-cloud-g-suite-connector-from-the-gallery"></a>從資源庫新增 Google Cloud (G Suite) Connector
 
@@ -93,7 +93,7 @@ ms.locfileid: "90707810"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Google Cloud (G Suite) Connector**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Google Cloud (G Suite) Connector** 。
 1. 從結果面板選取 [Google Cloud (G Suite) Connector]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-google-cloud-g-suite-connector"></a>設定及測試 Google Cloud (G Suite) Connector 的 Azure AD 單一登入
@@ -114,12 +114,12 @@ ms.locfileid: "90707810"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Google Cloud (G Suite) Connector]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 設定]  區段上，如果要設定 **Gmail**，執行下列步驟：
+1. 在 [基本 SAML 設定]  區段上，如果要設定 **Gmail** ，執行下列步驟：
 
     a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL︰ `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
 
@@ -139,7 +139,7 @@ ms.locfileid: "90707810"
     https://www.google.com/a/<yourdomain.com>
     ```
 
-1. 在 [基本 SAML 設定]  區段上，如果要設定 **Google Cloud Platform**，執行下列步驟：
+1. 在 [基本 SAML 設定]  區段上，如果要設定 **Google Cloud Platform** ，執行下列步驟：
 
     a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL︰ `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com`
 
@@ -162,7 +162,7 @@ ms.locfileid: "90707810"
     > [!NOTE]
     > 這些都不是真正的值。 使用實際的「登入 URL」及「識別碼」來更新這些值。 Google Cloud (G Suite) Connector 不會在單一登入設定上提供實體識別碼/識別碼值，因此，當您取消勾選 [網域特定簽發者]  選項時，識別碼值將會是 `google.com`。 如果您勾選 [網域特定簽發者]  選項，其將是 `google.com/a/<yourdomainname.com>`。 若要勾選/取消勾選 [網域特定簽發者]  選項，您必須移至 [設定 Google Cloud (G Suite) Connector SSO]  區段，此教學課程稍後將會說明此區段。 如需詳細資訊，請連絡 [Google Cloud (G Suite) Connector 用戶端支援小組](https://www.google.com/contact/)。
 
-1. Google Cloud (G Suite) Connector 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至您的 SAML 權杖屬性組態。 以下螢幕擷取畫面顯示上述的範例。 [唯一的使用者識別碼]  的預設值是 **user.userprincipalname**，但是 Google Cloud (G Suite) Connector 會預期這是與使用者電子郵件地址對應的值。 對此您可以使用清單中的 **user.mail** 屬性，或者根據組織組態使用適當的屬性值。
+1. Google Cloud (G Suite) Connector 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至您的 SAML 權杖屬性組態。 以下螢幕擷取畫面顯示上述的範例。 [唯一的使用者識別碼]  的預設值是 **user.userprincipalname** ，但是 Google Cloud (G Suite) Connector 會預期這是與使用者電子郵件地址對應的值。 對此您可以使用清單中的 **user.mail** 屬性，或者根據組織組態使用適當的屬性值。
 
     ![image](common/default-attributes.png)
 
@@ -242,7 +242,7 @@ ms.locfileid: "90707810"
 
 本節的目標是要[在 Google Cloud (G Suite) Connector 中建立名為 B.Simon 的使用者](https://support.google.com/a/answer/33310?hl=en)。 在 Google Cloud (G Suite) Connector 中手動建立使用者之後，使用者現在就可以使用其 Microsoft 365 登入認證進行登入。
 
-Google Cloud (G Suite) Connector 也支援自動使用者佈建。 若要設定自動使用者佈建，您必須先[設定 Google Cloud (G Suite) Connector 來自動佈建使用者](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)。
+Google Cloud (G Suite) Connector 也支援自動使用者佈建。 若要設定自動使用者佈建，您必須先[設定 Google Cloud (G Suite) Connector 來自動佈建使用者](./google-apps-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 在測試單一登入之前，如果尚未在 Azure AD 中開啟佈建，請確定您的使用者已經存在於 Google Cloud (G Suite) Connector 中。
@@ -254,23 +254,23 @@ Google Cloud (G Suite) Connector 也支援自動使用者佈建。 若要設定�
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Google Cloud (G Suite) Connector] 圖格時，應該會自動登入您已設定 SSO 的 Google Cloud (G Suite) Connector。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Google Cloud (G Suite) Connector] 圖格時，應該會自動登入您已設定 SSO 的 Google Cloud (G Suite) Connector。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
-- [設定使用者佈建](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
+- [設定使用者佈建](./google-apps-provisioning-tutorial.md)
 
 - [嘗試搭配 Azure AD 使用 Google Cloud (G Suite) Connector](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用進階可見性和控制項保護 Google Cloud (G Suite) Connector](https://docs.microsoft.com/cloud-app-security/protect-gsuite)
+- [如何使用進階可見性和控制項保護 Google Cloud (G Suite) Connector](/cloud-app-security/protect-gsuite)
 
 <!--Image references-->
 
