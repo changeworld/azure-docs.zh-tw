@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 649396b81402e9229eb9ea2c627b60f249f8c601
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ff7f6468b5556b56c5c2aeaba6107cac48d1ed4
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88530251"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456444"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-catchpoint"></a>教學課程：Azure Active Directory 單一登入與 Catchpoint 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88530251"
 * 為具有 Azure AD 帳戶的使用者啟用自動 Catchpoint 登入。
 * 在 Azure 入口網站中集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -41,7 +41,7 @@ ms.locfileid: "88530251"
 
 * Catchpoint 支援 SP 起始和 IDP 起始的 SSO。
 * Catchpoint 支援 Just-In-Time (JIT) 使用者佈建。
-* 設定 Catchpoint 後，您可以強制執行工作階段控制項。 這項預防措施可即時保護貴組織的敏感性資料免於外洩和遭到滲透。 工作階段控制項是條件式存取的延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 Catchpoint 後，您可以強制執行工作階段控制項。 這項預防措施可即時保護貴組織的敏感性資料免於外洩和遭到滲透。 工作階段控制項是條件式存取的延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-catchpoint-from-the-gallery"></a>從資源庫新增 Catchpoint
 
@@ -51,7 +51,7 @@ ms.locfileid: "88530251"
 1. 在左窗格中選取 [Azure Active Directory]  服務。
 1. 移至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增新的應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Catchpoint**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Catchpoint** 。
 1. 從結果面板中選取 [Catchpoint]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-catchpoint"></a>設定及測試 Catchpoint 的 Azure AD 單一登入
@@ -73,17 +73,17 @@ ms.locfileid: "88530251"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 1. 在 **Catchpoint** 應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
-1. 在 [以 SAML 設定單一登入]  頁面上，選取畫筆圖示以編輯**基本 SAML 組態**的設定。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [以 SAML 設定單一登入]  頁面上，選取畫筆圖示以編輯 **基本 SAML 組態** 的設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
 1. 設定 Catchpoint 的起始模式：
    - 針對 **IDP** 起始模式，請輸入以下欄位的值：
-     - 針對**識別碼**：`https://portal.catchpoint.com/SAML2`
-     - 針對**回覆 URL**：`https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
+     - 針對 **識別碼** ：`https://portal.catchpoint.com/SAML2`
+     - 針對 **回覆 URL** ：`https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
    - 針對 **SP** 起始模式，請選取 [設定其他 Url]  ，然後輸入下列值：
-     - 針對**登入 URL**：`https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
+     - 針對 **登入 URL** ：`https://portal.catchpoint.com/ui/Entry/SingleSignOn.aspx`
 
 1. Catchpoint 應用程式需要特定格式的 SAML 判斷提示。 將自訂屬性對應新增至 SAML 權杖屬性的組態中。 下表包含預設屬性清單。
 
@@ -104,9 +104,9 @@ ms.locfileid: "88530251"
     | 命名空間 | user.assignedrole |
 
     > [!NOTE]
-    > `namespace` 宣告必須與帳戶名稱對應。 此帳戶名稱應設定為 Azure AD 中的角色，並會在 SAML 回應中傳回。 若要深入了解 Azure AD 中的角色，請參閱[針對企業應用程式設定 SAML 權杖中發出的角色宣告](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)。
+    > `namespace` 宣告必須與帳戶名稱對應。 此帳戶名稱應設定為 Azure AD 中的角色，並會在 SAML 回應中傳回。 若要深入了解 Azure AD 中的角色，請參閱[針對企業應用程式設定 SAML 權杖中發出的角色宣告](../develop/active-directory-enterprise-app-role-management.md)。
 
-1. 移至**以 SAML 設定單一登入**頁面。 在 [SAML 簽署憑證]  區段中，找到 [憑證 (Base64)]  。 選取 [下載]  以將憑證儲存到您的電腦。
+1. 移至 **以 SAML 設定單一登入** 頁面。 在 [SAML 簽署憑證]  區段中，找到 [憑證 (Base64)]  。 選取 [下載]  以將憑證儲存到您的電腦。
 
     ![憑證下載連結](common/certificatebase64.png)
 
@@ -163,7 +163,7 @@ ms.locfileid: "88530251"
    **單一登入 URL** | Azure 入口網站中的 `Login URL` 值。
    **[MSSQLSERVER 的通訊協定內容]** | 從 Azure 入口網站下載的 `Certificate (Base64)` 檔案內容。 使用記事本來檢視和複製。
 
-   您也可以選取 [上傳中繼資料]  選項，來上傳**同盟中繼資料 XML**。
+   您也可以選取 [上傳中繼資料]  選項，來上傳 **同盟中繼資料 XML** 。
 
 1. 選取 [儲存]  。
 
@@ -175,21 +175,21 @@ Catchpoint 支援依預設啟用的 Just-In-Time 使用者佈建。 您在此區
 
 在本節中，您會使用 MyApps 入口網站來測試您的 Azure AD 單一登入組態。
 
-在我的應用程式入口網站中選取 [Catchpoint] 圖格時，應該會自動登入您已設定 SSO 的 Catchpoint。 如需我的應用程式入口網站的詳細資訊，請參閱[登入我的應用程式入口網站並啟動應用程式](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)。
+在我的應用程式入口網站中選取 [Catchpoint] 圖格時，應該會自動登入您已設定 SSO 的 Catchpoint。 如需我的應用程式入口網站的詳細資訊，請參閱[登入我的應用程式入口網站並啟動應用程式](../user-help/my-apps-portal-end-user-access.md)。
 
 > [!NOTE]
-> 當您透過登入頁面登入 Catchpoint 應用程式時，在提供 **Catchpoint 認證**後，請在 [公司認證 (SSO)]  欄位中輸入有效的**命名空間**值，然後選取 [登入]  。
+> 當您透過登入頁面登入 Catchpoint 應用程式時，在提供 **Catchpoint 認證** 後，請在 [公司認證 (SSO)]  欄位中輸入有效的 **命名空間** 值，然後選取 [登入]  。
 > 
 > ![Catchpoint 組態](./media/catchpoint-tutorial/loginimage.png)
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試使用 Catchpoint 搭配Azure AD](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)

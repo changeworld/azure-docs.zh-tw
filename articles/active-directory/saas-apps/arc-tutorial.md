@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
-ms.openlocfilehash: a28e81a0631db75107405576507fba36bdbfd11c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8227ea4df6ccce6a0e287e861ed9dc8efade1086
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88540519"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457753"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-arc-publishing---sso"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Arc Publishing - SSO 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88540519"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Arc Publishing - SSO。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -53,7 +53,7 @@ ms.locfileid: "88540519"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Arc Publishing - SSO**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Arc Publishing - SSO** 。
 1. 從結果面板選取 [Arc Publishing - SSO]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -75,7 +75,7 @@ ms.locfileid: "88540519"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Arc Publishing - SSO]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -91,7 +91,7 @@ ms.locfileid: "88540519"
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://arcpublishing-<Customer>.okta.com/sso/saml2/<Unique ID>`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Arc Publishing - SSO 用戶端支援小組](mailto:inf@washpost.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Arc Publishing - SSO 用戶端支援小組](mailto:inf@washpost.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. Arc Publishing - SSO 應用程式會預期要有特定格式的 SAML 判斷提示，這會要求您在 SAML 權杖屬性設定中新增自訂的屬性對應。 以下螢幕擷取畫面顯示預設屬性清單。
 
@@ -108,7 +108,7 @@ ms.locfileid: "88540519"
     | groups | user.assignedroles |
 
     > [!NOTE]
-    > 這裡的 **groups** 屬性會對應到 **user.assignedroles**。 這些自訂角色會建立於 Azure AD 中，以對應回應用程式中的群組名稱。 您可以在[這裡](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) \(機器翻譯\) 找到更多如何在 Azure AD 中建立自訂角色的指導方針
+    > 這裡的 **groups** 屬性會對應到 **user.assignedroles** 。 這些自訂角色會建立於 Azure AD 中，以對應回應用程式中的群組名稱。 您可以在[這裡](../develop/active-directory-enterprise-app-role-management.md) \(機器翻譯\) 找到更多如何在 Azure AD 中建立自訂角色的指導方針
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -163,15 +163,14 @@ ms.locfileid: "88540519"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Arc Publishing - SSO] 圖格時，應該會自動登入您已設定 SSO 的 Arc Publishing - SSO。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Arc Publishing - SSO] 圖格時，應該會自動登入您已設定 SSO 的 Arc Publishing - SSO。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Arc Publishing - SSO](https://aad.portal.azure.com/)
-

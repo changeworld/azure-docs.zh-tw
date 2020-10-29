@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 69ebc238d36223a4287ae1de668f60f9c2db014a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ef09ef7d2ca6dd68def732831f9341dcd3aa6d62
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713582"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458042"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>教學課程：Azure Active Directory 與 AnswerHub 整合
 
@@ -27,7 +27,7 @@ ms.locfileid: "91713582"
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 AnswerHub (單一登入)。
 * 您可以從一個位置集中管理您的帳戶：Azure 入口網站。
 
-若要深入了解 SaaS 應用程式與 Azure AD 的整合，請參閱 [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 的整合，請參閱 [Azure Active Directory 中的應用程式單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ ms.locfileid: "91713582"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **AnswerHub**。 在結果清單中選取 [AnswerHub]  ，然後選取 [新增]  。
+4. 在搜尋方塊中，輸入 **AnswerHub** 。 在結果清單中選取 [AnswerHub]  ，然後選取 [新增]  。
 
      ![結果清單中的 AnswerHub](common/search-new-app.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "91713582"
     b. 在 [識別碼 (實體識別碼)]  方塊中，輸入具有以下模式的 URL：`https://<company>.answerhub.com`
 
     > [!NOTE]
-    > 這些都不是真正的值。 使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [AnswerHub 客戶支援小組](mailto:success@answerhub.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [AnswerHub 客戶支援小組](mailto:success@answerhub.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 5. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，依據您的需求選取 [憑證 (Base64)] 旁邊的 [下載] 連結，並將憑證儲存在您的電腦上。
 
@@ -178,7 +178,7 @@ ms.locfileid: "91713582"
 
     ![使用者屬性](common/user-properties.png)
 
-    a. 在 [名稱]  方塊中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  方塊中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  方塊中，輸入 **brittasimon\@<yourcompanydomain.extension>** 。  
     例如： BrittaSimon@contoso.com 。
@@ -242,13 +242,12 @@ ms.locfileid: "91713582"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入組態。
 
-當您在存取面板中選取 AnswerHub 圖格時，應該會自動登入您已設定 SSO 的 AnswerHub。 如需存取面板的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 AnswerHub 圖格時，應該會自動登入您已設定 SSO 的 AnswerHub。 如需存取面板的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [用於整合 SaaS 應用程式與 Azure Active Directory 的教學課程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [用於整合 SaaS 應用程式與 Azure Active Directory 的教學課程](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

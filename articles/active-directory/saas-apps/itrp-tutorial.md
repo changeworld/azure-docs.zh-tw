@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: a49edf738586dce190fa90f7349f2c9b01e2050d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2dff68f98e2922d5fc7a4fca1e6de8740bc2ae68
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850363"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459674"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>教學課程：Azure Active Directory 與 ITRP 整合
 
@@ -27,7 +27,7 @@ ms.locfileid: "91850363"
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 ITRP (單一登入)。
 * 您可以集中管理您的帳戶：Azure 入口網站。
 
-若要深入了解 SaaS 應用程式與 Azure AD 的整合，請參閱 [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 的整合，請參閱 [Azure Active Directory 中的應用程式單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -60,7 +60,7 @@ ms.locfileid: "91850363"
 
     ![選取 [新增應用程式]](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **ITRP**。 在搜尋結果中，選取 [ITRP]  ，然後選取 [新增]  。
+4. 在搜尋方塊中，輸入 **ITRP** 。 在搜尋結果中，選取 [ITRP]  ，然後選取 [新增]  。
 
      ![搜尋結果](common/search-new-app.png)
 
@@ -123,11 +123,11 @@ ms.locfileid: "91850363"
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
-    1. **登入 URL**。
+    1. **登入 URL** 。
 
-    1. **Azure AD 識別碼**。
+    1. **Azure AD 識別碼** 。
 
-    1. **登出 URL**。
+    1. **登出 URL** 。
 
 ### <a name="configure-itrp-single-sign-on"></a>設定 ITRP 單一登入
 
@@ -173,7 +173,7 @@ ms.locfileid: "91850363"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    1. 在 [名稱]  方塊中，輸入 **BrittaSimon**。
+    1. 在 [名稱]  方塊中，輸入 **BrittaSimon** 。
   
     1. 在 [使用者名稱] 方塊中，輸入 **BrittaSimon@\<yourcompanydomain>.\<extension>** 。 (例如，BrittaSimon@contoso.com)。
 
@@ -242,12 +242,12 @@ ms.locfileid: "91850363"
 
 您現在必須使用存取面板來測試您的 Azure AD 單一登入組態。
 
-當您在存取面板中選取 [ITRP] 圖格時，應該會自動登入您已設定 SSO 的 ITRP 執行個體。 如需存取面板的詳細資訊，請參閱[在 My Apps 入口網站上存取和使用應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [ITRP] 圖格時，應該會自動登入您已設定 SSO 的 ITRP 執行個體。 如需存取面板的詳細資訊，請參閱[在 My Apps 入口網站上存取和使用應用程式](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

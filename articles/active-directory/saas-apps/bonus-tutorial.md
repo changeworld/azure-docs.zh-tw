@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 7c1bd1b3f9931eff2f19eac7b78881d4f7ad8ae0
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: d83a2bc4723686920b487998a2040e5be02d4e1a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91744312"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456954"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>教學課程：Azure Active Directory 與 Bonusly 整合
 
@@ -27,7 +27,7 @@ ms.locfileid: "91744312"
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Bonusly (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ ms.locfileid: "91744312"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Bonusly**，從結果面板中選取 [Bonusly]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Bonusly** ，從結果面板中選取 [Bonusly]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
     ![結果清單中的 Bonusly](common/search-new-app.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "91744312"
     在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://Bonus.ly/saml/<tenant-name>`
 
     > [!NOTE]
-    > 這不是真正的值。 請使用實際的「回覆 URL」來更新此值。 請連絡 [Bonusly 用戶端支援小組](https://bonus.ly/contact)以取得該值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這不是真正的值。 請使用實際的「回覆 URL」來更新此值。 請連絡 [Bonusly 用戶端支援小組](https://bonus.ly/contact)以取得該值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 5. 在 [SAML 簽署憑證]  區段中，按一下 [編輯]  按鈕以開啟 [SAML 簽署憑證]  對話方塊。
 
@@ -163,7 +163,7 @@ ms.locfileid: "91744312"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`。 例如， BrittaSimon@contoso.com
 
@@ -228,9 +228,9 @@ ms.locfileid: "91744312"
 
     ![顯示 [新增使用者] 對話方塊的螢幕擷取畫面，您可在其中輸入此資訊。](./media/bonus-tutorial/ic781045.png "新增使用者")  
 
-    a. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **Britta**。
+    a. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **Britta** 。
 
-    b. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon**。
+    b. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon** 。
 
     c. 在 [Email]  \(電子郵件\) 文字方塊中，輸入使用者的電子郵件，如 `brittasimon\@contoso.com`。
 
@@ -243,12 +243,12 @@ ms.locfileid: "91744312"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Bonusly] 圖格時，應該會自動登入您已設定 SSO 的 Bonusly。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Bonusly] 圖格時，應該會自動登入您已設定 SSO 的 Bonusly。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

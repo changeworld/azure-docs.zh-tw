@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e355241191a4bdcab12c7c0b6527706b044a70c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 79db0a7bb769d6138bfeeb4e765621a1cffb4d14
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714480"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457855"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>教學課程：整合 Appraisd 與 Azure Active Directory
 
@@ -26,7 +26,7 @@ ms.locfileid: "91714480"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Appraisd。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -47,7 +47,7 @@ ms.locfileid: "91714480"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Appraisd**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Appraisd** 。
 1. 從結果面板選取 [Appraisd]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
@@ -184,9 +184,9 @@ ms.locfileid: "91714480"
 
     ![顯示新增使用者頁面的螢幕擷取畫面。](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
 
-    a. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **Britta**。
+    a. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **Britta** 。
 
-    b. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon**。
+    b. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon** 。
 
     c. 在 [電子郵件]  文字方塊中，輸入使用者的電子郵件，例如 `B. Simon@contoso.com`。
 
@@ -194,12 +194,12 @@ ms.locfileid: "91714480"
 
 ### <a name="test-sso"></a>測試 SSO
 
-當您在存取面板中選取 [Appraisd] 圖格時，應該會自動登入您已設定 SSO 的 Appraisd。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [Appraisd] 圖格時，應該會自動登入您已設定 SSO 的 Appraisd。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

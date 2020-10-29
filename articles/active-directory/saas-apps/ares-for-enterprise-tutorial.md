@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: d5af58f886eccf0835941bd4a65982b17cf9cbbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e760ffa0dfc3bf080852da2fc401abd83fe4101
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88521462"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457736"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ares-for-enterprise"></a>教學課程：Azure Active Directory 與 ARES for Enterprise 整合
 
@@ -27,7 +27,7 @@ ARES for Enterprise 與 Azure AD 整合可提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 ARES for Enterprise (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -63,7 +63,7 @@ ARES for Enterprise 與 Azure AD 整合可提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中輸入 **ARES for Enterprise**，並從結果面板中選取 [ARES for Enterprise]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中輸入 **ARES for Enterprise** ，並從結果面板中選取 [ARES for Enterprise]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 ARES for Enterprise](common/search-new-app.png)
 
@@ -129,7 +129,7 @@ ARES for Enterprise 與 Azure AD 整合可提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -166,19 +166,18 @@ ARES for Enterprise 與 Azure AD 整合可提供下列優點：
 
 ### <a name="create-ares-for-enterprise-test-user"></a>建立 ARES for Enterprise 測試使用者
 
-本節會在 ARES for Enterprise 中建立名為 Britta Simon 的使用者。 ARES for Enterprise 支援依預設啟用的 **Just-In-Time 佈建**。 在這一節沒有您需要進行的動作項目。 如果 ARES for Enterprise 中還沒有使用者，當您嘗試存取 ARES for Enterprise 時，就會建立新的使用者。
+本節會在 ARES for Enterprise 中建立名為 Britta Simon 的使用者。 ARES for Enterprise 支援依預設啟用的 **Just-In-Time 佈建** 。 在這一節沒有您需要進行的動作項目。 如果 ARES for Enterprise 中還沒有使用者，當您嘗試存取 ARES for Enterprise 時，就會建立新的使用者。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [ARES for Enterprise] 圖格時，應該會自動登入您已設定 SSO 的 ARES for Enterprise。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [ARES for Enterprise] 圖格時，應該會自動登入您已設定 SSO 的 ARES for Enterprise。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 4aec6f266d7559656bca848801df54c83949e925
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: ffd93016a2cbde3aa2a5844cfdb72e4c0cc8b623
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91741222"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457107"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>教學課程：Azure Active Directory 與 SAML SSO for Bitbucket by resolution GmbH 整合
 
@@ -27,7 +27,7 @@ SAML SSO for Bitbucket by resolution GmbH 與 Azure AD 整合提供下列優點�
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 SAML SSO for Bitbucket by resolution GmbH (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -63,7 +63,7 @@ SAML SSO for Bitbucket by resolution GmbH 與 Azure AD 整合提供下列優點�
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **SAML SSO for Bitbucket by resolution GmbH**、從結果面板中選取 [SAML SSO for Bitbucket by resolution GmbH]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **SAML SSO for Bitbucket by resolution GmbH** 、從結果面板中選取 [SAML SSO for Bitbucket by resolution GmbH]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 SAML SSO for Bitbucket by resolution GmbH](common/search-new-app.png)
 
@@ -114,9 +114,9 @@ SAML SSO for Bitbucket by resolution GmbH 與 Azure AD 整合提供下列優點�
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<server-base-url>/plugins/servlet/samlsso`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [SAML SSO for Bitbucket by resolution GmbH 用戶端支援小組](https://marketplace.atlassian.com/apps/1217045/saml-single-sign-on-sso-bitbucket?hosting=server&tab=support)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [SAML SSO for Bitbucket by resolution GmbH 用戶端支援小組](https://marketplace.atlassian.com/apps/1217045/saml-single-sign-on-sso-bitbucket?hosting=server&tab=support)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -150,7 +150,7 @@ SAML SSO for Bitbucket by resolution GmbH 與 Azure AD 整合提供下列優點�
 
     ![識別設定](./media/bitbucket-tutorial/tutorial_bitbucket_identityconfig.png)
 
-7.  在 [匯入 SAML Idp 中繼資料]  頁面上，按一下 [載入檔案]  ，以上傳您已從 Azure 入口網站下載的**中繼資料 XML** 檔案。
+7.  在 [匯入 SAML Idp 中繼資料]  頁面上，按一下 [載入檔案]  ，以上傳您已從 Azure 入口網站下載的 **中繼資料 XML** 檔案。
 
     ![Idpmetadata](./media/bitbucket-tutorial/tutorial_bitbucket_idpmetadata.png)
     
@@ -176,7 +176,7 @@ SAML SSO for Bitbucket by resolution GmbH 與 Azure AD 整合提供下列優點�
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -219,13 +219,12 @@ SAML SSO for Bitbucket by resolution GmbH 與 Azure AD 整合提供下列優點�
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [SAML SSO for Bitbucket by resolution GmbH] 圖格時，應該會自動登入您已設定 SSO 的 SAML SSO for Bitbucket by resolution GmbH。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [SAML SSO for Bitbucket by resolution GmbH] 圖格時，應該會自動登入您已設定 SSO 的 SAML SSO for Bitbucket by resolution GmbH。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

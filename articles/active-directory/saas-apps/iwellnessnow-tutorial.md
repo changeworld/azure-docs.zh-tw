@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 8221abe3ff726a7f94d49f69ae18368f87925901
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4143d44591d92111d4d4a6cbba3e9059f201a29c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850824"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459606"
 ---
 # <a name="tutorial-integrate-iwellnessnow-with-azure-active-directory"></a>教學課程：整合 iWellnessNow 與 Azure Active Directory
 
@@ -26,7 +26,7 @@ ms.locfileid: "91850824"
 * 讓使用者使用其 Azure AD 帳戶自動登入 iWellnessNow。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -49,7 +49,7 @@ ms.locfileid: "91850824"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **iWellnessNow**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **iWellnessNow** 。
 1. 從結果面板選取 [iWellnessNow]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
@@ -75,13 +75,13 @@ ms.locfileid: "91850824"
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 設定]  區段上，如果您有**服務提供者中繼資料檔案**，而想要以 **IDP** 起始模式進行設定，請執行下列步驟：
+1. 在 [基本 SAML 設定]  區段上，如果您有 **服務提供者中繼資料檔案** ，而想要以 **IDP** 起始模式進行設定，請執行下列步驟：
 
     a. 按一下 [上傳中繼資料檔案]  。
 
     ![上傳中繼資料檔案](common/upload-metadata.png)
 
-    b. 按一下**資料夾圖示**以選取中繼資料檔案，然後按一下 [上傳]  。
+    b. 按一下 **資料夾圖示** 以選取中繼資料檔案，然後按一下 [上傳]  。
 
     ![選擇中繼資料檔案](common/browse-upload-metadata.png)
 
@@ -92,7 +92,7 @@ ms.locfileid: "91850824"
     > [!Note]
     > 如果 [識別碼]  和 [回覆 URL]  值未自動填入，則請根據您的需求手動填入這些值。
 
-1. 如果您沒有**服務提供者中繼資料檔案**並想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
+1. 如果您沒有 **服務提供者中繼資料檔案** 並想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
     ![[iWellnessNow 網域及 URL] 單一登入資訊](common/idp-intiated.png)
 
@@ -107,7 +107,7 @@ ms.locfileid: "91850824"
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<CustomerName>.iwellnessnow.com/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請連絡 [iWellnessNow 用戶端支援小組](mailto:info@iwellnessnow.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請連絡 [iWellnessNow 用戶端支援小組](mailto:info@iwellnessnow.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [中繼資料 XML]  ，然後選取 [下載]  來下載憑證，並將其儲存在電腦上。
 
@@ -159,13 +159,12 @@ ms.locfileid: "91850824"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [iWellnessNow] 圖格時，應該會自動登入您設定 SSO 的 iWellnessNow。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [iWellnessNow] 圖格時，應該會自動登入您設定 SSO 的 iWellnessNow。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

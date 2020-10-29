@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: b342731b953f7b68f8fcd9e55c49c907e5e8cc5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7690977f23b193bb3ba282df14d348b3fac0ad6b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90973502"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457532"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>教學課程：整合 Atlassian Cloud 與 Azure Active Directory
 
@@ -52,7 +52,7 @@ ms.locfileid: "90973502"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Atlassian Cloud**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Atlassian Cloud** 。
 1. 從結果面板選取 [Atlassian Cloud]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>設定並測試 Azure AD SSO
@@ -134,7 +134,7 @@ ms.locfileid: "90973502"
 
    ![憑證 1](./media/atlassian-cloud-tutorial/certificate-1.png)
 
-1. 在 Atlassian 中**新增/儲存** SAML 設定
+1. 在 Atlassian 中 **新增/儲存** SAML 設定
 
 1. 如果您想要以 **IDP** 起始的模式設定應用程式，請在 Azure 中編輯 [設定使用 SAML 的單一登入] 頁面的 [基本 SAML 設定] 區段，然後在 Atlassian 管理員入口網站上開啟 [SAML 單一登入頁面]
 
@@ -166,7 +166,7 @@ ms.locfileid: "90973502"
 
       ![屬性與宣告](./media/atlassian-cloud-tutorial/user-attributes-and-claims.png)
       
-      b. Atlassian Cloud 預期 **nameidentifier** (**唯一使用者識別碼**) 會對應到使用者的電子郵件 (**user.email**)。 編輯 [來源屬性]，並將其變更為 **user.mail**。 儲存宣告的變更。
+      b. Atlassian Cloud 預期 **nameidentifier** ( **唯一使用者識別碼** ) 會對應到使用者的電子郵件 ( **user.email** )。 編輯 [來源屬性]，並將其變更為 **user.mail** 。 儲存宣告的變更。
 
       ![唯一的使用者識別碼](./media/atlassian-cloud-tutorial/unique-user-identifier.png)
       
@@ -180,7 +180,7 @@ ms.locfileid: "90973502"
 
       ![影像 3](./media/atlassian-cloud-tutorial/email-address.png)
          
-      b. 雖然 Azure 不會針對在沒有 Microsoft 365 授權的 Azure AD 租用戶中建立的使用者填入 **user.mail** 屬性，並且會在 **userprincipalname** 屬性中儲存這類使用者的電子郵件。 Atlassian Cloud 預期 **nameidentifier** (**唯一使用者識別碼**) 會對應到使用者的電子郵件 (**user.userprincipalname**)。  編輯 [來源屬性]，並將其變更為 **user.userprincipalname**。 儲存宣告的變更。
+      b. 雖然 Azure 不會針對在沒有 Microsoft 365 授權的 Azure AD 租用戶中建立的使用者填入 **user.mail** 屬性，並且會在 **userprincipalname** 屬性中儲存這類使用者的電子郵件。 Atlassian Cloud 預期 **nameidentifier** ( **唯一使用者識別碼** ) 會對應到使用者的電子郵件 ( **user.userprincipalname** )。  編輯 [來源屬性]，並將其變更為 **user.userprincipalname** 。 儲存宣告的變更。
 
       ![設定電子郵件](./media/atlassian-cloud-tutorial/set-email.png)
          
@@ -247,9 +247,9 @@ ms.locfileid: "90973502"
 
 * 在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入您已設定 SSO 的 Atlassian Cloud 
 
-您也可以使用 Microsoft 存取面板，以任何模式測試應用程式。 當您按一下存取面板中的 Atlassian Cloud 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果在 IDP 模式中設定，您應該會自動登入已設定 SSO 的 Atlassian Cloud。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+您也可以使用 Microsoft 存取面板，以任何模式測試應用程式。 當您按一下存取面板中的 Atlassian Cloud 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果在 IDP 模式中設定，您應該會自動登入已設定 SSO 的 Atlassian Cloud。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-設定 Atlassian Cloud 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+設定 Atlassian Cloud 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。

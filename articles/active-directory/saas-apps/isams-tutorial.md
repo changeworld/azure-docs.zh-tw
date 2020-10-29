@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 5486752c8a1e36eba047ffd4d82b10cddfc771a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e994e39cc916c51e3ad6b00015d710bb422cccc9
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850009"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459691"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-isams"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 iSAMS 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91850009"
 * 讓使用者使用其 Azure AD 帳戶自動登入 iSAMS。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -41,7 +41,7 @@ ms.locfileid: "91850009"
 
 
 * iSAMS 支援由 **SP 和 IDP** 起始的 SSO
-* 設定 iSAMS 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 iSAMS 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-isams-from-the-gallery"></a>從資源庫新增 iSAMS
 
@@ -51,7 +51,7 @@ ms.locfileid: "91850009"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **iSAMS**。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **iSAMS** 。
 1. 從結果面板選取 [iSAMS]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -73,7 +73,7 @@ ms.locfileid: "91850009"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [iSAMS] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -89,7 +89,7 @@ ms.locfileid: "91850009"
     在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://<SUBDOMAIN>.isams.cloud/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [iSAMS 用戶端支援小組](mailto:support@isams.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [iSAMS 用戶端支援小組](mailto:support@isams.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]，並將資料儲存在您的電腦上。
 
@@ -129,7 +129,7 @@ ms.locfileid: "91850009"
 
 1. 以管理員身分登入 iSAMS。
 
-1. 瀏覽至控制台，然後開啟**驗證**模組。
+1. 瀏覽至控制台，然後開啟 **驗證** 模組。
 1. 從右側的功能表中，選取 [識別提供者]
 
     ![螢幕擷取畫面顯示已選取識別提供者的 Active Directory 設定。](./media/isams-tutorial/click-identity-provider.png)
@@ -143,13 +143,13 @@ ms.locfileid: "91850009"
 
     ![此螢幕擷取畫面顯示用於執行所述步驟的身分識別提供者精靈。](./media/isams-tutorial/configure-isams.png)
 
-    a. 在**名稱**文字方塊中提供有效的名稱，例如 `Saml2 Azure`。 這是將會出現在登入頁面上的名稱。
+    a. 在 **名稱** 文字方塊中提供有效的名稱，例如 `Saml2 Azure`。 這是將會出現在登入頁面上的名稱。
 
-    b. 在中繼資料 URL 文字方塊中，貼上您從 Azure 入口網站複製的**應用程式同盟中繼資料 URL** 值。
+    b. 在中繼資料 URL 文字方塊中，貼上您從 Azure 入口網站複製的 **應用程式同盟中繼資料 URL** 值。
     
     c. 按 [匯入]。
     
-    d. 在**啟用的用戶端應用程式**區段的**應用程式**清單方塊中，選取您希望提供者在登入頁面上顯示的所有 iSAMS 應用程式。
+    d. 在 **啟用的用戶端應用程式** 區段的 **應用程式** 清單方塊中，選取您希望提供者在登入頁面上顯示的所有 iSAMS 應用程式。
 
     e. 按一下 [儲存並關閉]。
 
@@ -157,12 +157,12 @@ ms.locfileid: "91850009"
 
 1. 以管理員身分登入 iSAMS。
 
-2.  移至**控制台首頁** -> **安全性和權限** -> **使用者帳戶** -> **使用者選項和工作** -> **修改使用者屬性**
+2.  移至 **控制台首頁** -> **安全性和權限** -> **使用者帳戶** -> **使用者選項和工作** -> **修改使用者屬性**
 
     ![此螢幕擷取畫面顯示已選取 [修改使用者屬性] 的 [使用者帳戶] 頁面。](./media/isams-tutorial/modify-user-properties.png)
 
 
-3. 在產生的快顯視窗中，選取**帳戶詳細資料**索引標籤，然後將**授權**變更為新建立的識別提供者。
+3. 在產生的快顯視窗中，選取 **帳戶詳細資料** 索引標籤，然後將 **授權** 變更為新建立的識別提供者。
 
     ![此螢幕擷取畫面顯示帳戶詳細資料及授權的值。](./media/isams-tutorial/account-details.png)
 
@@ -172,16 +172,16 @@ ms.locfileid: "91850009"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [iSAMS] 圖格時，應該會自動登入您已設定 SSO 的 iSAMS。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [iSAMS] 圖格時，應該會自動登入您已設定 SSO 的 iSAMS。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [ iSAMS](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)

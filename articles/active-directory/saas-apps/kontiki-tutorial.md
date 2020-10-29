@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: cb652cfdae0ce785d6a076b8b1592d9f700b3383
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bad9757bb62d5175e725bfe8e005155040dccf36
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88549954"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92458926"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>教學課程：Azure Active Directory 與 Kontiki 整合
 
@@ -28,7 +28,7 @@ Kontiki 與 Azure AD 整合提供下列優點：
 * 使用者可以使用其 Azure AD 帳戶自動登入 Kontiki (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-如需軟體即服務 (SaaS) 應用程式與 Azure AD 的整合詳細資訊，請參閱 [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如需軟體即服務 (SaaS) 應用程式與 Azure AD 的整合詳細資訊，請參閱 [Azure Active Directory 中的應用程式單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -64,7 +64,7 @@ Kontiki 支援下列功能︰
 
     ![新增應用程式選項](common/add-new-app.png)
 
-1. 在搜尋方塊中，輸入 **Kontiki**。 在搜尋結果中，選取 [Kontiki]  ，然後選取 [新增]  。
+1. 在搜尋方塊中，輸入 **Kontiki** 。 在搜尋結果中，選取 [Kontiki]  ，然後選取 [新增]  。
 
     ![結果清單中的 Kontiki](common/search-new-app.png)
 
@@ -104,7 +104,7 @@ Kontiki 支援下列功能︰
     ![Kontiki 網域與 URL 單一登入資訊](common/sp-signonurl.png)
 
     > [!NOTE]
-    > 請連絡 [Kontiki 用戶端支援小組](https://customersupport.kontiki.com/enterprise/contactsupport.html)以取得要使用的正確值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 請連絡 [Kontiki 用戶端支援小組](https://customersupport.kontiki.com/enterprise/contactsupport.html)以取得要使用的正確值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入] 窗格的 [SAML 簽署憑證] 區段中，選取 [同盟中繼資料 XML] 旁邊的 [下載]。 根據您的需求選取下載選項。 將憑證儲存在您的電腦上。
 
@@ -136,9 +136,9 @@ Kontiki 支援下列功能︰
 
 1. 在 [使用者]  窗格中，完成下列步驟：
 
-    1. 在 [名稱]  方塊中，輸入 **BrittaSimon**。
+    1. 在 [名稱]  方塊中，輸入 **BrittaSimon** 。
   
-    1. 在 [使用者名稱] 方塊中，輸入**brittasimon\@\<your-company-domain>.\<extension>** 。 例如，**brittasimon\@contoso.com**。
+    1. 在 [使用者名稱] 方塊中，輸入 **brittasimon\@\<your-company-domain>.\<extension>** 。 例如， **brittasimon\@contoso.com** 。
 
     1. 選取 [顯示密碼]  核取方塊。 記下 [密碼]  方塊中顯示的值。
 
@@ -186,6 +186,6 @@ Kontiki 支援下列功能︰
 
 若要深入了解，請檢閱下列文章：
 
-- [用於整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [用於整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](./tutorial-list.md)
+- [Azure Active Directory 中的應用程式單一登入](../manage-apps/what-is-single-sign-on.md)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

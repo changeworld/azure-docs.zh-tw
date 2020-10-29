@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 86ba8527a6da3e995fc3cf63937b11f1915c82a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec2c0089295cdd269b5bb3bccf0baaef3cb14849
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88556023"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456117"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>教學課程：Azure Active Directory 與 Cisco Umbrella 整合
 
@@ -27,7 +27,7 @@ ms.locfileid: "88556023"
 * 您可以讓使用者使用他們的 Azure AD 帳戶自動登入 Cisco Umbrella (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ ms.locfileid: "88556023"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Cisco Umbrella**，從結果面板中選取 [Cisco Umbrella]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Cisco Umbrella** ，從結果面板中選取 [Cisco Umbrella]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Cisco Umbrella](common/search-new-app.png)
 
@@ -167,7 +167,7 @@ ms.locfileid: "88556023"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -219,13 +219,13 @@ Cisco Umbrella 需以手動方式佈建。
 
     ![使用者](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_createuser.png)
 
-    a. 在 [名字]  欄位中輸入名字，例如 **Britta**。
+    a. 在 [名字]  欄位中輸入名字，例如 **Britta** 。
 
-    b. 在 [姓氏]  欄位中輸入姓氏，例如 **simon**。
+    b. 在 [姓氏]  欄位中輸入姓氏，例如 **simon** 。
 
     c. 從 [選擇委派管理員角色]  ，選取您的角色。
   
-    d. 在 [電子郵件地址]  欄位中，輸入使用者的電子郵件地址，例如 **brittasimon\@contoso.com**。
+    d. 在 [電子郵件地址]  欄位中，輸入使用者的電子郵件地址，例如 **brittasimon\@contoso.com** 。
 
     e. 在 [密碼]  欄位中，輸入您的密碼。
 
@@ -237,12 +237,12 @@ Cisco Umbrella 需以手動方式佈建。
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 Cisco Umbrella 圖格時，應該會自動登入您設定 SSO 的 Cisco Umbrella。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 Cisco Umbrella 圖格時，應該會自動登入您設定 SSO 的 Cisco Umbrella。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

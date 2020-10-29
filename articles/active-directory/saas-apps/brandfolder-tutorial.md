@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 67691aa20070ec77eab824255cefb7e06e142ba4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56d2a3355fac565fac65ac1ba3c7d0c4c2fd8429
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88525729"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456797"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brandfolder"></a>教學課程：Azure Active Directory 與 Brandfolder 整合
 
@@ -27,7 +27,7 @@ Brandfolder 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Brandfolder (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -63,13 +63,13 @@ Brandfolder 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Brandfolder**，從結果面板中選取 [Brandfolder]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Brandfolder** ，從結果面板中選取 [Brandfolder]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Brandfolder](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
-在本節中，您會以名為 **Britta Simon**. 的測試使用者為基礎，設定及測試與 Brandfolder 搭配運作的 Azure AD 單一登入。
+在本節中，您會以名為 **Britta Simon** . 的測試使用者為基礎，設定及測試與 Brandfolder 搭配運作的 Azure AD 單一登入。
 若要讓單一登入能夠運作，必須建立 Azure AD 使用者與 Brandfolder 中相關使用者之間的連結關聯性。
 
 若要使用 Brandfolder 來設定並測試 Azure AD 單一登入，您需要完成下列建置組塊：
@@ -108,7 +108,7 @@ Brandfolder 與 Azure AD 整合提供下列優點：
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://brandfolder.com/organizations/<ORG_SLUG>/saml`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [ 用戶端支援小組](mailto:support@brandfolder.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [ 用戶端支援小組](mailto:support@brandfolder.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]  ，並將其儲存在您的電腦上。
 
@@ -116,7 +116,7 @@ Brandfolder 與 Azure AD 整合提供下列優點：
 
 ### <a name="configure-brandfolder-single-sign-on"></a>設定 Brandfolder 單一登入
 
-若要在 **Brandfolder** 端設定單一登入，您必須將**應用程式同盟中繼資料 URL** 傳送給 [Brandfolder 支援小組](mailto:support@brandfolder.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Brandfolder** 端設定單一登入，您必須將 **應用程式同盟中繼資料 URL** 傳送給 [Brandfolder 支援小組](mailto:support@brandfolder.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
@@ -134,7 +134,7 @@ Brandfolder 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -171,19 +171,18 @@ Brandfolder 與 Azure AD 整合提供下列優點：
 
 ### <a name="create-brandfolder-test-user"></a>建立 Brandfolder 測試使用者
 
-本節會在 Brandfolder 中建立名為 Britta Simon 的使用者。 Brandfolder 支援依預設啟用的 **Just-In-Time 使用者佈建**。 在這一節沒有您需要進行的動作項目。 如果 Brandfolder 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
+本節會在 Brandfolder 中建立名為 Britta Simon 的使用者。 Brandfolder 支援依預設啟用的 **Just-In-Time 使用者佈建** 。 在這一節沒有您需要進行的動作項目。 如果 Brandfolder 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Brandfolder] 圖格時，應該會自動登入您設定 SSO 的 Brandfolder。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Brandfolder] 圖格時，應該會自動登入您設定 SSO 的 Brandfolder。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

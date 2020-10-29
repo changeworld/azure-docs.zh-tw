@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 6742253ad815ab8058a9c05d82200e77d9d18a43
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 06a4e8aa1ad74f47526f3a39931632953bfaaec2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945935"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459181"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>教學課程：Azure Active Directory 與 Kantega SSO for FishEye/Crucible 整合
 
@@ -27,7 +27,7 @@ Kantega SSO for FishEye/Crucible 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用他們的 Azure AD 帳戶自動登入 Kantega SSO for FishEye/Crucible (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ Kantega SSO for FishEye/Crucible 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Kantega SSO for FishEye/Crucible**，從結果面板中選取 [Kantega SSO for FishEye/Crucible]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Kantega SSO for FishEye/Crucible** ，從結果面板中選取 [Kantega SSO for FishEye/Crucible]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
     ![結果清單中的 Kantega SSO for FishEye/Crucible](common/search-new-app.png)
 
@@ -114,7 +114,7 @@ Kantega SSO for FishEye/Crucible 與 Azure AD 整合提供下列優點：
     > [!NOTE]
     > 這些都不是真正的值。 使用實際的識別碼、回覆 URL 和登入 URL 來更新這些值。 在設定 FishEye/Crucible 外掛程式 (本教學課程稍後會說明) 期間會收到這些值。
 
-6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -140,7 +140,7 @@ Kantega SSO for FishEye/Crucible 與 Azure AD 整合提供下列優點：
 
     ![顯示 [系統設定] 區段的螢幕擷取畫面，其中已選取 [尋找新的附加元件]。](./media/kantegassoforfisheyecrucible-tutorial/add-on2.png)
 
-1. 搜尋 **Kantega SSO for Crucible**，然後按一下 [安裝]  按鈕以安裝新的 SAML 外掛程式。
+1. 搜尋 **Kantega SSO for Crucible** ，然後按一下 [安裝]  按鈕以安裝新的 SAML 外掛程式。
 
     ![顯示 [Attlasian Marketplace for FishEye] 頁面的螢幕擷取畫面，其中包含搜尋方塊中的 [Kantega S S O for Crucible]，並已選取 [安裝] 按鈕。](./media/kantegassoforfisheyecrucible-tutorial/addon2.png)
 
@@ -234,7 +234,7 @@ Kantega SSO for FishEye/Crucible 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`。 例如， BrittaSimon@contoso.com
 
@@ -304,12 +304,12 @@ Kantega SSO for FishEye/Crucible 與 Azure AD 整合提供下列優點：
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Kantega SSO for FishEye/Crucible] 圖格時，應該會自動登入您已設定 SSO 的 Kantega SSO for FishEye/Crucible。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Kantega SSO for FishEye/Crucible] 圖格時，應該會自動登入您已設定 SSO 的 Kantega SSO for FishEye/Crucible。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
