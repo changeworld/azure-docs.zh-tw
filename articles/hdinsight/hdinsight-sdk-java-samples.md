@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 11/29/2019
-ms.openlocfilehash: 5876626ed4ba27c0f39b0c02af926c61261fca71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7c89706d749151b5a59667282eb6675fd18dc8c
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327424"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535360"
 ---
 # <a name="azure-hdinsight-java-samples"></a>Azure HDInsight：Java 範例
 
@@ -32,7 +32,7 @@ ms.locfileid: "87327424"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-[適用於 Java 的 Azure HDInsight SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight#sdk-installation)
+[適用於 Java 的 Azure HDInsight SDK](/java/api/overview/azure/hdinsight#sdk-installation)
 
 ## <a name="cluster-management---creation"></a>叢集管理 - 建立
 
@@ -45,4 +45,4 @@ ms.locfileid: "87327424"
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-可以在[適用於 Java 的 HDInsight SDK 參考文件](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview)中找到此額外 SDK 功能的程式碼片段。
+可以在[適用於 Java 的 HDInsight SDK 參考文件](/java/api/overview/azure/hdinsight)中找到此額外 SDK 功能的程式碼片段。

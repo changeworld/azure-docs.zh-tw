@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 5c5a3c9e66a4d25a84d7940f49ec332d57f4c818
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 730a6bfa627eafcab799fc811db4e20a1d4cec48
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85319186"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534578"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>教學課程：使用 Azure HDInsight 上的互動式查詢來擷取、轉換和載入資料
 
@@ -32,7 +32,7 @@ ms.locfileid: "85319186"
 
 * HDInsight 上的互動式查詢叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然後選取 [互動式查詢] 作為 [叢集類型]。
 
-* Azure SQL Database 中的資料庫。 您會使用 資料庫做為目的地資料存放區。 如果您在 Azure SQL Database 中沒有資料庫，請參閱[在 Azure 入口網站的 Azure SQL Database 中建立資料庫](/azure/sql-database/sql-database-single-database-get-started)，按照步驟建立資料庫。
+* Azure SQL Database 中的資料庫。 您會使用 資料庫做為目的地資料存放區。 如果您在 Azure SQL Database 中沒有資料庫，請參閱[在 Azure 入口網站的 Azure SQL Database 中建立資料庫](../../azure-sql/database/single-database-create-quickstart.md)，按照步驟建立資料庫。
 
 * SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
@@ -165,7 +165,7 @@ ms.locfileid: "85319186"
     FROM delays_raw;
     ```
 
-3. 若要儲存檔案，請依序按 **Ctrl + X**、**y** 和 Enter 鍵。
+3. 若要儲存檔案，請依序按 **Ctrl + X** 、 **y** 和 Enter 鍵。
 
 4. 若要啟動 Hive 並執行 **flightdelays.hql** 檔案，請使用下列命令：
 

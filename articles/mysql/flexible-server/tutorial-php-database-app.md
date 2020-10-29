@@ -8,19 +8,19 @@ ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc
-ms.openlocfilehash: 1bad9a7da6f0604f910ce1095b734043be8cf3c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38665cdf42450b09d14211f7ed44d62e4adb75b1
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90929395"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92537927"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>教學課程：在 Azure App Service 中建置 PHP (Laravel) 和 MySQL 彈性伺服器 (預覽) 應用程式
 
 
 :::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="Azure 中具有彈性伺服器的 PHP Web 應用程式":::
 
-[Azure App Service](https://docs.microsoft.com/azure/app-service/overview) 使用 Linux 作業系統提供可高度擴充、自我修復的 Web 主機服務。 本教學課程示範如何在 Azure 中建立 PHP 應用程式，並將它連線到 MySQL 資料庫。 完成後，Linux 上的 Azure App Service 上將會執行 [Laravel](https://laravel.com/) 應用程式。
+[Azure App Service](../../app-service/overview.md) 使用 Linux 作業系統提供可高度擴充、自我修復的 Web 主機服務。 本教學課程示範如何在 Azure 中建立 PHP 應用程式，並將它連線到 MySQL 資料庫。 完成後，Linux 上的 Azure App Service 上將會執行 [Laravel](https://laravel.com/) 應用程式。
 
 在本教學課程中，您會了解如何：
 > [!div class="checklist"]
@@ -31,7 +31,7 @@ ms.locfileid: "90929395"
 > * 將資料模型更新並將應用程式重新部署
 > * 在 Azure 入口網站中管理應用程式
 
-如果您沒有 [Azure 訂用帳戶](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+如果您沒有 [Azure 訂用帳戶](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -139,14 +139,14 @@ php artisan serve
 若要停止 PHP，請在終端機中輸入 `Ctrl + C`。
 
 ## <a name="create-a-mysql-flexible-server-preview"></a>建立 MySQL 彈性伺服器 (預覽)
-在此步驟中，您會在[適用於 MySQL 的 Azure 資料庫彈性伺服器](/azure/mysql) (目前為公開預覽) 中建立 MySQL 資料庫。 稍後，您要將 PHP 應用程式設定為連線至此資料庫。 在 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中，使用 [`az flexible-server create`](/cli/azure/mysql/server#az-mysql-flexible-server-create) 命令在其中建立伺服器。
+在此步驟中，您會在[適用於 MySQL 的 Azure 資料庫彈性伺服器](../index.yml) (目前為公開預覽) 中建立 MySQL 資料庫。 稍後，您要將 PHP 應用程式設定為連線至此資料庫。 在 [Azure Cloud Shell](../../cloud-shell/overview.md) 中，使用 [`az flexible-server create`](/cli/azure/mysql/server#az-mysql-flexible-server-create) 命令在其中建立伺服器。
 
 ```azurecli-interactive
 az mysql flexible-server create  --resource-group myResourceGroup --public-access <IP-Address>
 ```
 
 > [!IMPORTANT]
-> - 請記下**伺服器名稱**和**連接字串**，以便在下一個步驟中用來連線和執行 laravel 資料移轉。
+> - 請記下 **伺服器名稱** 和 **連接字串** ，以便在下一個步驟中用來連線和執行 laravel 資料移轉。
 > - 針對 **IP-Address** 引數，提供您用戶端電腦的 IP。 建立伺服器時系統會加以鎖定，您必須允許存取您的用戶端電腦，才能在本機管理伺服器。
 
 ### <a name="configure-server-firewall-to-allow-web-app-to-connect-to-the-server"></a>設定伺服器防火牆，允許 Web 應用程式連線到伺服器
@@ -219,9 +219,9 @@ MYSQL_SSL=true
 
 ### <a name="configure-tlsssl-certificate"></a>設定 TLS/SSL 憑證
 
-根據預設，MySQL 彈性伺服器會強制用戶端使用 TLS 連線。 若要連線至 Azure 中的 MySQL 資料庫，您必須使用適用於 MySQL 的 Azure 資料庫彈性伺服器所提供的 [.pem 憑證](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)。 下載[此憑證](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)) 並放在範例應用程式存放庫本機複本的 **ssl** 資料夾中。
+根據預設，MySQL 彈性伺服器會強制用戶端使用 TLS 連線。 若要連線至 Azure 中的 MySQL 資料庫，您必須使用適用於 MySQL 的 Azure 資料庫彈性伺服器所提供的 [.pem 憑證](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)。 下載 [此憑證](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)) 並放在範例應用程式存放庫本機複本的 **ssl** 資料夾中。
 
-開啟 _config/database.php_，在 `connections.mysql` 中新增 `sslmode` 和 `options` 參數，如下列程式碼所示。
+開啟 _config/database.php_ ，在 `connections.mysql` 中新增 `sslmode` 和 `options` 參數，如下列程式碼所示。
 
 ```php
 'mysql' => [
@@ -280,7 +280,7 @@ git commit -m "database.php updates"
 
 FTP 和本機 Git 可以透過使用「部署使用者」部署到 Azure Web 應用程式。 部署使用者只需設定一次，就能供所有 Azure 部署使用。 使用者名稱和密碼屬於帳戶等級部署，因此與 Azure 訂用帳戶認證不同。
 
-若要設定部署使用者，請在 Azure Cloud Shell 中執行 [az webapp deployment user set](https://docs.microsoft.com/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) 命令。 以部署使用者的使用者名稱和和密碼來取代&lt;username> 和 &lt;password>。
+若要設定部署使用者，請在 Azure Cloud Shell 中執行 [az webapp deployment user set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) 命令。 以部署使用者的使用者名稱和和密碼來取代&lt;username> 和 &lt;password>。
 
 使用者名稱在 Azure 服務及本機 Git 推送中都必須是唯一的，且不能包含 ‘@’ 符號。
 密碼長度必須至少為 8 個字元，包含下列三個元素其中兩個：字母、數字及符號。
@@ -293,7 +293,7 @@ JSON 輸出會將密碼顯示為 Null。 如果您收到的結果為「衝突」
 
 ### <a name="create-an-app-service-plan"></a>建立應用程式服務方案
 
-在 Cloud Shell 中，使用 [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az-appservice-plan-create) 命令在資源群組中建立 App Service 方案。 下列範例會在免費定價層 (--sku F1) 和 Linux 容器 (--is-linux) 中，建立名為 myAppServicePlan 的 App Service 方案。
+在 Cloud Shell 中，使用 [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) 命令在資源群組中建立 App Service 方案。 下列範例會在免費定價層 (--sku F1) 和 Linux 容器 (--is-linux) 中，建立名為 myAppServicePlan 的 App Service 方案。
 
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku F1 --is-linux
 
@@ -301,9 +301,9 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ### <a name="create-a-web-app"></a>建立 Web 應用程式
 
-在 myAppServicePlan App Service 方案中建立 [Web 應用程式](https://docs.microsoft.com/azure/app-service/overview#app-service-on-linux)。
+在 myAppServicePlan App Service 方案中建立 [Web 應用程式](../../app-service/overview.md#app-service-on-linux)。
 
-在 Cloud Shell 中，您可以使用 [az webapp create](https://docs.microsoft.com/cli/azure/webapp#az-webapp-create) 命令。 在下列範例中，使用全域唯一的應用程式名稱 (有效的字元為 `a-z`、`0-9` 和 `-`) 取代 &lt;app-name>。 執行階段設定為 `PHP|7.0`。 若要查看所有支援的執行階段，請執行 [az webapp list-runtimes --linux](https://docs.microsoft.com/cli/azure/webapp#az-webapp-list-runtimes)。
+在 Cloud Shell 中，您可以使用 [az webapp create](/cli/azure/webapp#az-webapp-create) 命令。 在下列範例中，使用全域唯一的應用程式名稱 (有效的字元為 `a-z`、`0-9` 和 `-`) 取代 &lt;app-name>。 執行階段設定為 `PHP|7.0`。 若要查看所有支援的執行階段，請執行 [az webapp list-runtimes --linux](/cli/azure/webapp#az-webapp-list-runtimes)。
 
 ```bash
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "PHP|7.3" --deployment-local-git
@@ -334,7 +334,7 @@ Local git is configured with url of 'https://<username>@<app-name>.scm.azurewebs
 
 ### <a name="configure-database-settings"></a>設定資料庫設定
 
-在 App Service 中，您可以使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) 命令將環境變數設定為「應用程式設定」__。
+在 App Service 中，您可以使用  。
 
 下列命令會設定 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`、`DB_PASSWORD` 應用程式設定。 取代預留位置 _&lt;app-name>_ 和 _&lt;mysql-server-name>_ 。
 
@@ -359,7 +359,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 Laravel 在 App Service 中需要應用程式金鑰。 您可以使用應用程式設定加以設定。
 
-在本機終端機視窗中，使用 `php artisan` 產生新的應用程式金鑰，而不將它儲存為 _.env_。
+在本機終端機視窗中，使用 `php artisan` 產生新的應用程式金鑰，而不將它儲存為 _.env_ 。
 
 ```bash
 php artisan key:generate --show
@@ -375,19 +375,19 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 ### <a name="set-the-virtual-application-path"></a>設定虛擬應用程式路徑
 
-[Laravel 應用程式生命週期](https://laravel.com/docs/5.4/lifecycle)是在「公用」目錄中啟動，而不是在應用程式的根目錄。 App Service 的預設 PHP Docker 映像會使用 Apache，且不會讓您自訂 Laravel 的 `DocumentRoot`。 不過，您可以使用 `.htaccess` 將所有要求重寫為指向 /public__，而不是指向根目錄。 在存放庫根路徑中，已針對此目的新增 `.htaccess`。 因此，您的 Laravel 應用程式已準備好進行部署。
+[Laravel 應用程式生命週期](https://laravel.com/docs/5.4/lifecycle)是在「公用」目錄中啟動，而不是在應用程式的根目錄。 App Service 的預設 PHP Docker 映像會使用 Apache，且不會讓您自訂 Laravel 的 `DocumentRoot`。 不過，您可以使用 `.htaccess` 將所有要求重寫為指向 /public  ，而不是指向根目錄。 在存放庫根路徑中，已針對此目的新增 `.htaccess`。 因此，您的 Laravel 應用程式已準備好進行部署。
 
-如需詳細資訊，請參閱[變更站台根目錄](https://docs.microsoft.com/azure/app-service/configure-language-php?pivots=platform-linux#change-site-root)。
+如需詳細資訊，請參閱[變更站台根目錄](../../app-service/configure-language-php.md?pivots=platform-linux#change-site-root)。
 
 ### <a name="push-to-azure-from-git"></a>從 Git 推送至 Azure
 
-回到本機終端視窗，將 Azure 遠端新增至本機 Git 存放庫。 將 _&lt;deploymentLocalGitUrl-from-create-step>_ 取代為您從[建立 Web 應用程式](#create-a-web-app)儲存之 Git 遠端的 URL。
+回到本機終端視窗，將 Azure 遠端新增至本機 Git 存放庫。 將 _&lt;deploymentLocalGitUrl-from-create-step>_ 取代為您從 [建立 Web 應用程式](#create-a-web-app)儲存之 Git 遠端的 URL。
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>
 ```
 
-推送到 Azure 遠端，使用下列命令來部署您的應用程式。 當 Git 認證管理員提示輸入認證時，請務必輸入您在**設定部署使用者**中建立的認證，而不是您用來登入 Azure 入口網站的認證。
+推送到 Azure 遠端，使用下列命令來部署您的應用程式。 當 Git 認證管理員提示輸入認證時，請務必輸入您在 **設定部署使用者** 中建立的認證，而不是您用來登入 Azure 入口網站的認證。
 
 ```bash
 git push azure master
@@ -466,7 +466,7 @@ public function down()
 php artisan migrate
 ```
 
-根據 [Laravel 命名慣例](https://laravel.com/docs/5.4/eloquent#defining-models)，依預設 `Task` 模型 (請看 app/Task.php__) 會對應至 `tasks` 資料表。
+根據  ) 會對應至 `tasks` 資料表。
 
 ### <a name="update-application-logic"></a>更新應用程式邏輯
 
@@ -572,6 +572,6 @@ az group delete --name myResourceGroup
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [如何管理 Azure 入口網站中的資源](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal) <br/>
+> [如何管理 Azure 入口網站中的資源](../../azure-resource-manager/management/manage-resources-portal.md) <br/>
 > [!div class="nextstepaction"]
 > [如何管理您的伺服器](how-to-manage-server-cli.md)

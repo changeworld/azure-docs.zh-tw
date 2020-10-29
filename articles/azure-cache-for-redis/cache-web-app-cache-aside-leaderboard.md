@@ -7,16 +7,16 @@ ms.service: cache
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: 71f1e2b50daf333e19bc11bce119f37cec28d146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90e60044e227ea1a18ea032d302b29abda1ea2e8
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88209189"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536839"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>教學課程：在 ASP.NET 上建立另行快取排行榜
 
-在本教學課程中，您將會更新 *ContosoTeamStats* ASP.NET Web 應用程式 (在 [Azure Redis 快取的 ASP.NET 快速入門](cache-web-app-howto.md)中所建立)，以包含會搭配「Azure Redis 快取」使用[另行快取模式](https://docs.microsoft.com/azure/architecture/patterns/cache-aside)的排行榜。 此範例應用程式會顯示來自資料庫的隊伍統計資料清單，並示範各種使用「Azure Redis 快取」在快取中儲存和擷取資料以改進效能的不同方式。 完成本教學課程時，您會擁有一個執行中的應用程式，此應用程式會對資料庫進行讀取和寫入、已使用「Azure Redis 快取」進行最佳化，並裝載在 Azure 中。
+在本教學課程中，您將會更新 *ContosoTeamStats* ASP.NET Web 應用程式 (在 [Azure Redis 快取的 ASP.NET 快速入門](cache-web-app-howto.md)中所建立)，以包含會搭配「Azure Redis 快取」使用 [另行快取模式](/azure/architecture/patterns/cache-aside)的排行榜。 此範例應用程式會顯示來自資料庫的隊伍統計資料清單，並示範各種使用「Azure Redis 快取」在快取中儲存和擷取資料以改進效能的不同方式。 完成本教學課程時，您會擁有一個執行中的應用程式，此應用程式會對資料庫進行讀取和寫入、已使用「Azure Redis 快取」進行最佳化，並裝載在 Azure 中。
 
 在本教學課程中，您會了解如何：
 
@@ -216,7 +216,7 @@ ms.locfileid: "88209189"
 
 ### <a name="configure-the-layout-view"></a>設定版面配置檢視
 
-1. 在 [方案總管] 中依序展開 [檢視] 資料夾和 [共用] 資料夾，然後按兩下 **_Layout.cshtml**。 
+1. 在 [方案總管] 中依序展開 [檢視] 資料夾和 [共用] 資料夾，然後按兩下 **_Layout.cshtml** 。 
 
     ![_Layout.cshtml](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml.png)
 
@@ -654,7 +654,7 @@ ms.locfileid: "88209189"
 
    | 設定       | 建議的值 | 描述 |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **資料庫名稱** | ContosoTeamsDatabase | 如需有效的資料庫名稱，請參閱[資料庫識別碼](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)。 |
+   | **資料庫名稱** | ContosoTeamsDatabase | 如需有效的資料庫名稱，請參閱[資料庫識別碼](/sql/relational-databases/databases/database-identifiers)。 |
    | **訂用帳戶** | *您的訂用帳戶*  | 選取您在建立快取和裝載 App Service 時所使用的相同訂用帳戶。 |
    | **資源群組**  | TestResourceGroup | 按一下 [使用現有的]，並使用您用來放置快取和 App Service 的相同資源群組。 |
    | **選取來源** | **空白資料庫** | 以空白資料庫開始。 |
@@ -664,7 +664,7 @@ ms.locfileid: "88209189"
    | 設定       | 建議的值 | 描述 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **伺服器名稱** | 任何全域唯一名稱 | 如需有效的伺服器名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming)。 |
-   | **伺服器管理員登入** | 任何有效名稱 | 如需有效的登入名稱，請參閱[資料庫識別碼](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)。 |
+   | **伺服器管理員登入** | 任何有效名稱 | 如需有效的登入名稱，請參閱[資料庫識別碼](/sql/relational-databases/databases/database-identifiers)。 |
    | **密碼** | 任何有效密碼 | 您的密碼至少要有 8 個字元，而且必須包含下列幾種字元的其中三種︰大寫字元、小寫字元、數字和非英數字元。 |
    | **位置** | 美國東部 | 選取您用來建立快取和 App Service 的相同區域。 |
 
@@ -674,13 +674,13 @@ ms.locfileid: "88209189"
 
     ![Show connection strings](./media/cache-web-app-cache-aside-leaderboard/cache-show-connection-strings.png)
 
-1. 在 Azure 入口網站中，瀏覽至 App Service 並按一下 [應用程式設定]，然後在 [連接字串] 區段底下**新增連接字串**。
+1. 在 Azure 入口網站中，瀏覽至 App Service 並按一下 [應用程式設定]，然後在 [連接字串] 區段底下 **新增連接字串** 。
 
 1. 新增名為 TeamContext 的連接字串以符合 Entity Framework 資料庫內容類別。 貼上新資料庫的連接字串作為值。 請務必取代連接字串中的下列預留位置，然後按一下 [儲存]：
 
     | 預留位置 | 建議的值 |
     | --- | --- |
-    | {your_username} | 針對您剛才建立的伺服器使用**伺服器管理員登入**。 |
+    | {your_username} | 針對您剛才建立的伺服器使用 **伺服器管理員登入** 。 |
     | {your_password} | 針對您剛才建立的伺服器使用密碼。 |
 
     藉由新增使用者名稱和密碼作為應用程式設定，程式碼中就不會包含使用者名稱和密碼。 這種方法可協助您保護這些認證。

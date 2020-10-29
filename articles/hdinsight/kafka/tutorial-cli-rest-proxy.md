@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 44951fc19f36bb6652caf79ded96484bcc4b38f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68dddcbc5771ef1a8b5d6ea423674a1c6845a5e6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503135"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539474"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>教學課程：使用 Azure CLI 在 HDInsight 中建立 Apache Kafka REST Proxy 啟用的叢集
 
-在本教學課程中，您會了解如何使用 Azure 命令列介面 (CLI)，在 Azure HDInsight 中建立 Apache Spark [REST Proxy 啟用](./rest-proxy.md)的叢集。 Azure HDInsight 是供企業使用的受控、全方位的開放原始碼分析服務。 Apache Kafka 是一個開放原始碼的分散式串流平台。 它通常會用來作為訊息代理程式，因為可以提供類似「發佈-訂閱」訊息佇列的功能。 Kafka REST Proxy 可讓您透過基於 HTTP 的 [REST API](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/)，與您的 Kafka 叢集互動。 Azure CLI 是用來管理 Azure 資源的 Microsoft 跨平台命令列體驗。
+在本教學課程中，您會了解如何使用 Azure 命令列介面 (CLI)，在 Azure HDInsight 中建立 Apache Spark [REST Proxy 啟用](./rest-proxy.md)的叢集。 Azure HDInsight 是供企業使用的受控、全方位的開放原始碼分析服務。 Apache Kafka 是一個開放原始碼的分散式串流平台。 它通常會用來作為訊息代理程式，因為可以提供類似「發佈-訂閱」訊息佇列的功能。 Kafka REST Proxy 可讓您透過基於 HTTP 的 [REST API](/rest/api/hdinsight-kafka-rest-proxy/)，與您的 Kafka 叢集互動。 Azure CLI 是用來管理 Azure 資源的 Microsoft 跨平台命令列體驗。
 
 Apache Kafka API 只能由同一個虛擬網路中的資源來存取。 您可以使用 SSH 直接存取叢集。 若要將其他服務、網路或虛擬機器連線到 Apache Kafka，您必須先建立虛擬網路，然後建立網路中的資源。 如需詳細資訊，請參閱[使用虛擬網路連線到 Apache Kafka](./apache-kafka-connect-vpn-gateway.md)。
 
@@ -27,7 +27,7 @@ Apache Kafka API 只能由同一個虛擬網路中的資源來存取。 您可�
 > * Kafka REST Proxy 的必要條件
 > * 使用 Azure CLI 建立 Apache Kafka 叢集
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -35,7 +35,7 @@ Apache Kafka API 只能由同一個虛擬網路中的資源來存取。 您可�
 
 * 您已註冊的應用程式為其成員的 Azure AD 安全性群組。 此安全性群組將用來控制哪些應用程式能與 REST Proxy 互動。 如需建立 Azure AD 群組的詳細資訊，請參閱[使用 Azure Active Directory 建立基本群組和新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
-* Azure CLI。 請確定您至少有 2.0.79 版。 請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+* Azure CLI。 請確定您至少有 2.0.79 版。 請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-an-apache-kafka-cluster"></a>建立 Apache Kafka 叢集
 
@@ -85,7 +85,7 @@ Apache Kafka API 只能由同一個虛擬網路中的資源來存取。 您可�
     export componentVersion=kafka=2.1
     ```
 
-1. 輸入以下命令來[建立資源群組](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create)：
+1. 輸入以下命令來[建立資源群組](/cli/azure/group#az-group-create)：
 
     ```azurecli
      az group create \
@@ -93,7 +93,7 @@ Apache Kafka API 只能由同一個虛擬網路中的資源來存取。 您可�
         --name $resourceGroupName
     ```
 
-1. 輸入以下命令來[建立 Azure 儲存體帳戶](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)：
+1. 輸入以下命令來[建立 Azure 儲存體帳戶](/cli/azure/storage/account#az-storage-account-create)：
 
     ```azurecli
     # Note: kind BlobStorage is not available as the default storage account.
@@ -106,7 +106,7 @@ Apache Kafka API 只能由同一個虛擬網路中的資源來存取。 您可�
         --sku Standard_LRS
     ```
 
-1. 輸入以下命令，從 Azure 儲存體帳戶[擷取主要金鑰](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list)並儲存至變數：
+1. 輸入以下命令，從 Azure 儲存體帳戶[擷取主要金鑰](/cli/azure/storage/account/keys#az-storage-account-keys-list)並儲存至變數：
 
     ```azurecli
     export storageAccountKey=$(az storage account keys list \
@@ -115,7 +115,7 @@ Apache Kafka API 只能由同一個虛擬網路中的資源來存取。 您可�
         --query [0].value -o tsv)
     ```
 
-1. 輸入以下命令來[建立 Azure 儲存體容器](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create)：
+1. 輸入以下命令來[建立 Azure 儲存體容器](/cli/azure/storage/container#az-storage-container-create)：
 
     ```azurecli
     az storage container create \
@@ -124,24 +124,24 @@ Apache Kafka API 只能由同一個虛擬網路中的資源來存取。 您可�
         --account-name $storageAccount
     ```
 
-1. [建立 HDInsight 叢集](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)。 輸入命令之前，請記下下列參數：
+1. [建立 HDInsight 叢集](/cli/azure/hdinsight#az-hdinsight-create)。 輸入命令之前，請記下下列參數：
 
     1. Kafka 叢集的必要參數：
 
         |參數 | 描述|
         |---|---|
-        |--type|此值必須是 **Kafka**。|
-        |--workernode-data-disks-per-node|每個背景工作節點要使用的資料磁碟數目。 只有資料磁碟支援 HDInsight Kafka。 本教學課程使用的值為 **2**。|
+        |--type|此值必須是 **Kafka** 。|
+        |--workernode-data-disks-per-node|每個背景工作節點要使用的資料磁碟數目。 只有資料磁碟支援 HDInsight Kafka。 本教學課程使用的值為 **2** 。|
 
     1. Kafka REST Proxy 的必要參數：
 
         |參數 | 描述|
         |---|---|
-        |--kafka-management-node-size|節點的大小。 本教學課程使用的值為 **Standard_D4_v2**。|
+        |--kafka-management-node-size|節點的大小。 本教學課程使用的值為 **Standard_D4_v2** 。|
         |--kafka-client-group-id|Kafka Rest Proxy 的用戶端 AAD 安全性群組識別碼。 此值會從 **$securityGroupID** 變數傳遞。|
         |--kafka-client-group-name|Kafka Rest Proxy 的用戶端 AAD 安全性群組名稱。 此值會從 **$securityGroupName** 變數傳遞。|
-        |--version|HDInsight 叢集版本必須至少為 4.0。 此值會從 **$clusterVersion**變數傳遞。|
-        |--component-version|Kafka 版本必須至少為 2.1。 此值會從 **$componentVersion**變數傳遞。|
+        |--version|HDInsight 叢集版本必須至少為 4.0。 此值會從 **$clusterVersion** 變數傳遞。|
+        |--component-version|Kafka 版本必須至少為 2.1。 此值會從 **$componentVersion** 變數傳遞。|
     
         如果您想要建立不含 REST Proxy 的叢集，請從 `az hdinsight create` 命令刪除 `--kafka-management-node-size`、`--kafka-client-group-id` 和 `--kafka-client-group-name`。
 

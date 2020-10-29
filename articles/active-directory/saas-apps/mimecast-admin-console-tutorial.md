@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 6a9599c20905168b425675d0b028545143c7d19f
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 8f0274aa15d965a4e06a096c21c0fd282ec1d12a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91941070"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522605"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-admin-console"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Mimecast Admin Console 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91941070"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Mimecast Admin Console。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -40,7 +40,7 @@ ms.locfileid: "91941070"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * Mimecast Admin Console 支援 **SP 和 IDP** 起始的 SSO
-* 設定 Mimecast Admin Console 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 Mimecast Admin Console 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-mimecast-admin-console-from-the-gallery"></a>從資源庫新增 Mimecast Admin Console
 
@@ -50,7 +50,7 @@ ms.locfileid: "91941070"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Mimecast Admin Console**。
+1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Mimecast Admin Console** 。
 1. 從結果面板中選取 [Mimecast Admin Console]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-mimecast-admin-console"></a>設定及測試 Mimecast Admin Console 的 Azure AD 單一登入
@@ -71,7 +71,7 @@ ms.locfileid: "91941070"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Mimecast Admin Console] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -205,7 +205,7 @@ ms.locfileid: "91941070"
 
     a. 在 [電子郵件地址] 文字方塊中，輸入 `B.Simon@yourdomainname.com` 之類的使用者電子郵件地址。
 
-    b. 在 [全域名字] 文字方塊中，輸入使用者的**全名**。
+    b. 在 [全域名字] 文字方塊中，輸入使用者的 **全名** 。
 
     c. 在 [密碼] 和 [確認密碼] 文字方塊中，輸入使用者的密碼。
 
@@ -221,18 +221,18 @@ ms.locfileid: "91941070"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 Mimecast Admin Console 圖格時，應該會自動登入您設定 SSO 的 Mimecast Admin Console。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 Mimecast Admin Console 圖格時，應該會自動登入您設定 SSO 的 Mimecast Admin Console。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [使用 Azure AD 嘗試 Mimecast personal portal 管理主控台](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用進階可見性和控制項保護 Mimecast Admin Console](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何使用進階可見性和控制項保護 Mimecast Admin Console](/cloud-app-security/proxy-intro-aad)

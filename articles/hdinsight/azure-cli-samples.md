@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d0d621728ac1956b2c036c9a45202c5d75ee9153
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a289a0d963c8e20a3b861ff9964e8afd6665de22
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87499563"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542347"
 ---
 # <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight：Azure CLI 範例
 
@@ -26,13 +26,13 @@ ms.locfileid: "87499563"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* Azure CLI。 請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 的步驟。
+* Azure CLI。 請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli) 的步驟。
 
-* 選擇性：Bash。 本文中的命令列範例會在 Windows 10 上使用 Bash 殼層。 如需安裝步驟，請參閱 [Windows 10 適用於 Linux 的 Windows 子系統的安裝指南](https://docs.microsoft.com/windows/wsl/install-win10)。  範例只需要略為修改，即可在 Windows 命令提示字元中使用。
+* 選擇性：Bash。 本文中的命令列範例會在 Windows 10 上使用 Bash 殼層。 如需安裝步驟，請參閱 [Windows 10 適用於 Linux 的 Windows 子系統的安裝指南](/windows/wsl/install-win10)。  範例只需要略為修改，即可在 Windows 命令提示字元中使用。
 
 ## <a name="az-login"></a>az login
 
-[登入 Azure](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login)。
+[登入 Azure](/cli/azure/reference-index#az-login)。
 
 ```azurecli
 az login
@@ -43,7 +43,7 @@ az login
 
 ## <a name="az-hdinsight-create"></a>az hdinsight create
 
-[建立新的叢集](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create)。
+[建立新的叢集](/cli/azure/hdinsight#az-hdinsight-create)。
 
 ### <a name="create-a-cluster-with-an-existing-storage-account"></a>建立搭配現有儲存體帳戶的叢集
 
@@ -176,7 +176,7 @@ az hdinsight create \
 
 ## <a name="az-hdinsight-application-create"></a>az hdinsight application create
 
-[建立 HDInsight 叢集的應用程式](https://docs.microsoft.com/cli/azure/hdinsight/application?view=azure-cli-latest#az-hdinsight-application-create)。
+[建立 HDInsight 叢集的應用程式](/cli/azure/hdinsight/application#az-hdinsight-application-create)。
 
 ### <a name="create-an-application-with-a-script-uri"></a>建立包含指令碼 URI 的應用程式
 
@@ -243,7 +243,7 @@ az hdinsight application create \
 
 ## <a name="az-hdinsight-script-action-execute"></a>az hdinsight script-action execute
 
-[在指定的 HDInsight 叢集上執行指令碼動作](https://docs.microsoft.com/cli/azure/hdinsight/script-action?view=azure-cli-latest#az-hdinsight-script-action-execute)。
+[在指定的 HDInsight 叢集上執行指令碼動作](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-execute)。
 
 ### <a name="execute-a-script-action-and-persist-on-success"></a>執行指令碼動作，並在成功時保存
 
