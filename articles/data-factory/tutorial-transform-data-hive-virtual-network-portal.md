@@ -10,12 +10,12 @@ manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
-ms.openlocfilehash: 52fba5064d656158a53ba71fec194cfa4f360df5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6e1f80ebba0aa67cf2bab4a772ebc1765cd8298
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360288"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634363"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory-using-the-azure-portal"></a>使用 Azure 入口網站，在 Azure 虛擬網路中使用 Azure Data Factory 的 Hive 活動轉換資料
 
@@ -38,15 +38,15 @@ ms.locfileid: "91360288"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure 儲存體帳戶**。 您會建立 hive 指令碼，並上傳至 Azure 儲存體。 Hive 指令碼的輸出會儲存在此儲存體帳戶中。 在此範例中，HDInsight 叢集會使用此 Azure 儲存體帳戶作為主要儲存體。 
+- **Azure 儲存體帳戶** 。 您會建立 hive 指令碼，並上傳至 Azure 儲存體。 Hive 指令碼的輸出會儲存在此儲存體帳戶中。 在此範例中，HDInsight 叢集會使用此 Azure 儲存體帳戶作為主要儲存體。 
 - **Azure 虛擬網路。** 如果您沒有 Azure 虛擬網路，請依照[這些指示](../virtual-network/quick-create-portal.md)建立。 在此範例中，HDInsight 在 Azure 虛擬網路中。 以下是 Azure 虛擬網路的設定範例。 
 
     ![建立虛擬網路](media/tutorial-transform-data-using-hive-in-vnet-portal/create-virtual-network.png)
-- **HDInsight 叢集。** 請遵循這篇文章來建立 HDInsight 叢集，並將它加入您在上一個步驟中建立的虛擬網路：[使用 Azure 虛擬網路延伸 Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md)。 以下是虛擬網路中的 HDInsight 設定範例。 
+- **HDInsight 叢集。** 請遵循這篇文章來建立 HDInsight 叢集，並將它加入您在上一個步驟中建立的虛擬網路：[使用 Azure 虛擬網路延伸 Azure HDInsight](../hdinsight/hdinsight-plan-virtual-network-deployment.md)。 以下是虛擬網路中的 HDInsight 設定範例。 
 
     ![虛擬網路中的 HDInsight](media/tutorial-transform-data-using-hive-in-vnet-portal/hdinsight-virtual-network-settings.png)
-- **Azure PowerShell**(英文)。 遵循[如何安裝並設定 Azure PowerShell](/powershell/azure/install-Az-ps) 中的指示。
-- **虛擬機器**。 建立 Azure 虛擬機器，並將它加入您 HDInsight 叢集所在的相同虛擬網路。 如需詳細資訊，請參閱[如何建立虛擬機器](../virtual-network/quick-create-portal.md#create-virtual-machines)。 
+- **Azure PowerShell** (英文)。 遵循[如何安裝並設定 Azure PowerShell](/powershell/azure/install-Az-ps) 中的指示。
+- **虛擬機器** 。 建立 Azure 虛擬機器，並將它加入您 HDInsight 叢集所在的相同虛擬網路。 如需詳細資訊，請參閱[如何建立虛擬機器](../virtual-network/quick-create-portal.md#create-virtual-machines)。 
 
 ### <a name="upload-hive-script-to-your-blob-storage-account"></a>將 Hive 指令碼上傳至 Blob 儲存體帳戶
 
@@ -81,10 +81,10 @@ ms.locfileid: "91360288"
       
      ![新增資料處理站頁面](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-azure-data-factory.png)
  
-   Azure Data Factory 的名稱必須是 **全域唯一的**。 如果您收到下列錯誤，請變更資料處理站的名稱 (例如 yournameMyAzureSsisDataFactory)，然後試著重新建立。 請參閱 [Data Factory - 命名規則](naming-rules.md)一文，以了解 Data Factory 成品的命名規則。
+   Azure Data Factory 的名稱必須是 **全域唯一的** 。 如果您收到下列錯誤，請變更資料處理站的名稱 (例如 yournameMyAzureSsisDataFactory)，然後試著重新建立。 請參閱 [Data Factory - 命名規則](naming-rules.md)一文，以了解 Data Factory 成品的命名規則。
   
     *Data factory 名稱 "MyAzureSsisDataFactory" 無法使用*
-3. 選取您要在其中建立資料處理站的 Azure **訂用帳戶**。 
+3. 選取您要在其中建立資料處理站的 Azure **訂用帳戶** 。 
 4. 針對 [資源群組]，請執行下列其中一個步驟︰
      
    - 選取 [使用現有的] ，然後從下拉式清單選取現有的資源群組。 
@@ -95,7 +95,7 @@ ms.locfileid: "91360288"
 5. 選取 Data Factory 的 [位置]  。 清單中只會顯示資料處理站建立所支援的位置。
 6. 選取 [釘選到儀表板]。     
 7. 按一下 [建立]。
-8. 在儀表板上，您會看到狀態如下的下列圖格︰**部署 Data Factory**。 
+8. 在儀表板上，您會看到狀態如下的下列圖格︰ **部署 Data Factory** 。 
 
      ![部署資料處理站圖格](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
 9. 建立完成之後，您會看到如圖中所示的 [Data Factory] 頁面。
@@ -121,13 +121,13 @@ ms.locfileid: "91360288"
 4. 輸入 **MySelfHostedIR** 作為 [名稱]，然後按一下 [下一步]。 
 
    ![指定整合執行階段名稱](./media/tutorial-transform-data-using-hive-in-vnet-portal/integration-runtime-name.png) 
-5. 按一下 [複製] 按鈕以複製整合執行階段的**驗證金鑰**，並加以儲存。 視窗保持開啟。 您需使用這個金鑰在虛擬機器註冊已安裝的 IR。 
+5. 按一下 [複製] 按鈕以複製整合執行階段的 **驗證金鑰** ，並加以儲存。 視窗保持開啟。 您需使用這個金鑰在虛擬機器註冊已安裝的 IR。 
 
    ![複製驗證金鑰](./media/tutorial-transform-data-using-hive-in-vnet-portal/copy-key.png)
 
 ### <a name="install-ir-on-a-virtual-machine"></a>在虛擬機器上安裝 IR
 
-1. 在 Azure VM 上，下載[自我裝載整合執行階段](https://www.microsoft.com/download/details.aspx?id=39717)。 使用上一個步驟取得的**驗證金鑰**，手動註冊自我裝載整合執行階段。 
+1. 在 Azure VM 上，下載[自我裝載整合執行階段](https://www.microsoft.com/download/details.aspx?id=39717)。 使用上一個步驟取得的 **驗證金鑰** ，手動註冊自我裝載整合執行階段。 
 
     ![監視整合執行階段](media/tutorial-transform-data-using-hive-in-vnet-portal/register-integration-runtime.png)
 
@@ -140,7 +140,7 @@ ms.locfileid: "91360288"
 
 ### <a name="self-hosted-ir-in-the-azure-data-factory-ui"></a>Azure Data Factory 使用者介面中的自我裝載 IR
 
-1. 在 **Azure Data Factory 使用者介面**中，您應該會看到自我裝載虛擬機器的名稱及其狀態。
+1. 在 **Azure Data Factory 使用者介面** 中，您應該會看到自我裝載虛擬機器的名稱及其狀態。
 
    ![現有的自我裝載節點](./media/tutorial-transform-data-using-hive-in-vnet-portal/existing-self-hosted-nodes.png)
 2. 按一下 [完成] 關閉 [整合執行階段設定] 視窗。 您會在整合執行階段的清單中看到自我裝載 IR。
@@ -151,8 +151,8 @@ ms.locfileid: "91360288"
 ## <a name="create-linked-services"></a>建立連結的服務
 
 在本節中，您會撰寫和部署兩個連結服務：
-- 將 Azure 儲存體帳戶連結至資料處理站的 **Azure 儲存體連結服務**。 此儲存體是您的 HDInsight 叢集使用的主要儲存體。 在此案例中，您也會使用此 Azure 儲存體帳戶來存放 Hive 指令碼和指令碼的輸出。
-- **HDInsight 連結服務**。 Azure Data Factory 會將 Hive 指令碼提交到此 HDInsight 叢集來執行。
+- 將 Azure 儲存體帳戶連結至資料處理站的 **Azure 儲存體連結服務** 。 此儲存體是您的 HDInsight 叢集使用的主要儲存體。 在此案例中，您也會使用此 Azure 儲存體帳戶來存放 Hive 指令碼和指令碼的輸出。
+- **HDInsight 連結服務** 。 Azure Data Factory 會將 Hive 指令碼提交到此 HDInsight 叢集來執行。
 
 ### <a name="create-azure-storage-linked-service"></a>建立 Azure 儲存體連結服務
 
@@ -220,10 +220,10 @@ ms.locfileid: "91360288"
     2. 在 [檔案路徑]，按一下 [瀏覽儲存體]。 
  
         ![瀏覽儲存體](./media/tutorial-transform-data-using-hive-in-vnet-portal/browse-storage-hive-script.png)
-    3. 在 [選擇檔案或資料夾] 視窗中，瀏覽至 **adftutorial** 容器的 **hivescripts** 資料夾，選取 **hivescript.hql**，然後按一下 [完成]。  
+    3. 在 [選擇檔案或資料夾] 視窗中，瀏覽至 **adftutorial** 容器的 **hivescripts** 資料夾，選取 **hivescript.hql** ，然後按一下 [完成]。  
         
         ![選擇檔案或資料夾](./media/tutorial-transform-data-using-hive-in-vnet-portal/choose-file-folder.png) 
-    4. 確認您在 [檔案路徑] 看到 **adftutorial/hivescripts/hivescript.hql**。
+    4. 確認您在 [檔案路徑] 看到 **adftutorial/hivescripts/hivescript.hql** 。
 
         ![指令碼設定](./media/tutorial-transform-data-using-hive-in-vnet-portal/confirm-hive-script-settings.png)
     5. 在 [指令碼] 索引標籤中，展開 [進階] 區段。 
@@ -276,6 +276,3 @@ ms.locfileid: "91360288"
 
 > [!div class="nextstepaction"]
 >[分支和鏈結 Data Factory 控制流程](tutorial-control-flow-portal.md)
-
-
-

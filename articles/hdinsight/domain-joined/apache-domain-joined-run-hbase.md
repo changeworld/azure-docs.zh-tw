@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 89e9faeb3c67d0fd0c57adea3a3f69ec5438e3a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5747de399e7ae0cfe99ba013f8da376be0ba1b2a
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73044650"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544948"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>教學課程：使用企業安全性套件在 HDInsight 中設定 Apache HBase 原則
 
@@ -45,7 +45,7 @@ ms.locfileid: "73044650"
 
 ## <a name="create-domain-users"></a>建立網域使用者
 
-請參閱[使用企業安全性套件建立 HDInsight 叢集](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds)，以了解如何建立 **sales_user1** 和 **marketing_user1** 網域使用者。 在生產情節中，網域使用者來自 Active Directory 租用戶。
+請參閱 [使用企業安全性套件建立 HDInsight 叢集](./apache-domain-joined-configure-using-azure-adds.md)，以了解如何建立 **sales_user1** 和 **marketing_user1** 網域使用者。 在生產情節中，網域使用者來自 Active Directory 租用戶。
 
 ## <a name="create-hbase-tables-and-import-sample-data"></a>建立 HBase 資料表並匯入範例資料
 
@@ -95,11 +95,11 @@ ms.locfileid: "73044650"
 
 為 **sales_user1** 和 **marketing_user1** 建立 Ranger 原則。
 
-1. 開啟 **Ranger 管理員 UI**。 按一下 [HBase] 底下的 [\<ClusterName>_hbase]。
+1. 開啟 **Ranger 管理員 UI** 。 按一下 [HBase] 底下的 [\<ClusterName>_hbase]。
 
    ![HDInsight Apache Ranger 系統管理員 UI](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
-2. **原則清單**畫面會顯示為此叢集建立的所有 Ranger 原則。 可能會列出其中一個預先設定的原則。 按一下 [新增原則]  。
+2. **原則清單** 畫面會顯示為此叢集建立的所有 Ranger 原則。 可能會列出其中一個預先設定的原則。 按一下 [新增原則]  。
 
     ![Apache Ranger HBase 原則清單](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
@@ -145,7 +145,7 @@ ms.locfileid: "73044650"
 
 ## <a name="test-the-ranger-policies"></a>測試 Ranger 原則
 
-根據所設定的 Ranger 原則，**sales_user1** 可以檢視 `Name` 和 `Contact` 資料行系列中所有資料行資料。 **Marketing_user1** 只能檢視 `Contact` 資料行系列中的資料。
+根據所設定的 Ranger 原則， **sales_user1** 可以檢視 `Name` 和 `Contact` 資料行系列中所有資料行資料。 **Marketing_user1** 只能檢視 `Contact` 資料行系列中的資料。
 
 ### <a name="access-data-as-sales_user1"></a>以 sales_user1 的身分存取資料
 
@@ -236,7 +236,7 @@ ms.locfileid: "73044650"
 如果您不打算繼續使用此應用程式，請使用下列步驟來刪除所建立的 HBase 叢集：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 在頂端的 [搜尋]  方塊中，輸入 **HDInsight**。 
+2. 在頂端的 [搜尋]  方塊中，輸入 **HDInsight** 。 
 1. 在 [服務]  底下，選取 [HDInsight 叢集]  。
 1. 從出現的 HDInsight 叢集清單中，在您為本教學課程建立的叢集旁按一下 [...]  。 
 1. 按一下 **[刪除]** 。 按一下 [是]  。

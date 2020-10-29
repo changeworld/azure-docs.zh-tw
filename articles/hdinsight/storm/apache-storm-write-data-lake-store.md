@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
-ms.openlocfilehash: 579163180f6c7ba19927ca66d20bd92d1b2de52e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cdcc60e6eeec22e202d670c3fc057711bd432a6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73241203"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545441"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>教學課程：從 Azure HDInsight 上的 Apache Storm 寫入 Apache Hadoop HDFS
 
@@ -32,7 +32,7 @@ ms.locfileid: "73241203"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* [Java Developer Kit (JDK) 第 8 版](https://aka.ms/azure-jdks)
+* [Java Developer Kit (JDK) 第 8 版](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 
 * 根據 Apache 正確[安裝](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是適用於 Java 專案的專案建置系統。
 
@@ -160,7 +160,7 @@ bolts:
     hdfs.url: wasbs:///
     ```
 
-    若要儲存檔案，使用 __Ctrl + X__，然後是 __Y__，最後按 __Enter__。 此檔案中的值會設定儲存體 URL，以及要寫入資料的目錄名稱。
+    若要儲存檔案，使用 __Ctrl + X__ ，然後是 __Y__ ，最後按 __Enter__ 。 此檔案中的值會設定儲存體 URL，以及要寫入資料的目錄名稱。
 
 1. 使用下列命令來啟動拓撲：
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: d32c4da4604307bca406f7f5d5e5a94b69efe7ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be98ff2a31e3216088fb9197fab477d9b1088f26
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541810"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634091"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>使用 PowerShell 以累加方式將 SQL Server 中多個資料表的資料載入到 Azure SQL Database
 
@@ -42,15 +42,15 @@ ms.locfileid: "91541810"
 ## <a name="overview"></a>概觀
 以下是建立此解決方案的重要步驟： 
 
-1. **選取水位線資料行**。
+1. **選取水位線資料行** 。
 
     為來源資料存放區中的每個資料表各選取一個資料行，以便您在每次執行時識別新增或更新的記錄。 一般來說，當建立或更新資料列時，這個選取的資料行 (例如，last_modify_time 或 ID) 中的資料會持續增加。 此資料行中的最大值就作為水位線。
 
-2. **準備資料存放區來儲存水位線值**。
+2. **準備資料存放區來儲存水位線值** 。
 
     在本教學課程中，您會將水位線值儲存在 SQL 資料庫中。
 
-3. **使用下列活動建立管線**：
+3. **使用下列活動建立管線** ：
     
     a. 建立 ForEach 活動，逐一查看以參數形式傳遞到管線的來源資料表名稱清單。 此活動會針對每個來源資料表叫用下列活動，以對該資料表執行差異載入。
 
@@ -69,14 +69,14 @@ ms.locfileid: "91541810"
 
 ## <a name="prerequisites"></a>必要條件
 
-* **SQL Server**。 在本教學課程中，您將使用 SQL Server 資料庫作為來源資料存放區。 
-* **Azure SQL Database**。 您會使用 Azure SQL Database 中的資料庫作為接收資料存放區。 如果您沒有 SQL 資料庫，請參閱[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)，按照步驟來建立 SQL 資料庫。 
+* **SQL Server** 。 在本教學課程中，您將使用 SQL Server 資料庫作為來源資料存放區。 
+* **Azure SQL Database** 。 您會使用 Azure SQL Database 中的資料庫作為接收資料存放區。 如果您沒有 SQL 資料庫，請參閱[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)，按照步驟來建立 SQL 資料庫。 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>在 SQL Server 資料庫中建立來源資料表
 
-1. 開啟 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 或 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)，然後連線至 SQL Server 資料庫。
+1. 開啟 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) 或 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)，然後連線至 SQL Server 資料庫。
 
-2. 在**伺服器總管 (SSMS)** 或 **[連線] 窗格 (Azure Data Studio)** 中，以滑鼠右鍵按一下資料庫，然後選擇 [新增查詢]。
+2. 在 **伺服器總管 (SSMS)** 或 **[連線] 窗格 (Azure Data Studio)** 中，以滑鼠右鍵按一下資料庫，然後選擇 [新增查詢]。
 
 3. 對您的資料庫執行下列 SQL 命令，以建立名為 `customer_table` 和 `project_table` 的資料表：
 
@@ -113,9 +113,9 @@ ms.locfileid: "91541810"
 
 ### <a name="create-destination-tables-in-your-azure-sql-database"></a>在 Azure SQL Database 中建立目的地資料表
 
-1. 開啟 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 或 [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)，然後連線至 SQL Server 資料庫。
+1. 開啟 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) 或 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)，然後連線至 SQL Server 資料庫。
 
-2. 在**伺服器總管 (SSMS)** 或 **[連線] 窗格 (Azure Data Studio)** 中，以滑鼠右鍵按一下資料庫，然後選擇 [新增查詢]。
+2. 在 **伺服器總管 (SSMS)** 或 **[連線] 窗格 (Azure Data Studio)** 中，以滑鼠右鍵按一下資料庫，然後選擇 [新增查詢]。
 
 3. 對您的資料庫執行下列 SQL 命令，以建立名為 `customer_table` 和 `project_table` 的資料表：  
 
@@ -537,15 +537,15 @@ END
 
 ## <a name="create-a-pipeline"></a>建立管線
 
-管線會使用資料表名稱清單作為參數。 **ForEach 活動**會逐一查看資料表名稱清單，並執行下列作業： 
+管線會使用資料表名稱清單作為參數。 **ForEach 活動** 會逐一查看資料表名稱清單，並執行下列作業： 
 
-1. 使用**查閱活動**擷取舊的水位線值 (初始值，或最後一次反覆運算中使用的值)。
+1. 使用 **查閱活動** 擷取舊的水位線值 (初始值，或最後一次反覆運算中使用的值)。
 
-2. 使用**查閱活動**擷取新的水位線值 (來源資料表中水位線資料行的最大值)。
+2. 使用 **查閱活動** 擷取新的水位線值 (來源資料表中水位線資料行的最大值)。
 
-3. 使用**複製活動**，在來源資料庫到目的地資料庫的這兩個水位線值之間複製資料。
+3. 使用 **複製活動** ，在來源資料庫到目的地資料庫的這兩個水位線值之間複製資料。
 
-4. 使用 **StoredProcedure 活動**，更新要在下一個反覆項目的第一個步驟中使用的舊水位線值。 
+4. 使用 **StoredProcedure 活動** ，更新要在下一個反覆項目的第一個步驟中使用的舊水位線值。 
 
 ### <a name="create-the-pipeline"></a>建立管線
 
@@ -934,7 +934,7 @@ PersonID    Name    LastModifytime
 5           Anny    2017-09-05 08:06:00.000
 ```
 
-請注意，**PersonID** 為 3 的 **Name** 和 **LastModifytime** 的新值。 
+請注意， **PersonID** 為 3 的 **Name** 和 **LastModifytime** 的新值。 
 
 **查詢**
 
@@ -994,5 +994,3 @@ project_table   2017-10-01 00:00:00.000
 
 > [!div class="nextstepaction"]
 >[使用變更追蹤技術，以累加方式將資料從 Azure SQL Database 載入到 Azure Blob 儲存體](tutorial-incremental-copy-change-tracking-feature-powershell.md)
-
-

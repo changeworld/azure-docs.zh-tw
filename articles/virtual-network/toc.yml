@@ -240,6 +240,8 @@
               href: virtual-network-public-ip-address.md
             - name: 管理公用 IP 首碼
               href: manage-public-ip-address-prefix.md
+            - name: 升級公用 IP 位址
+              href: virtual-network-public-ip-address-upgrade.md
             - name: 在 NIC 上新增 IP 位址或加以移除
               href: virtual-network-network-interface-addresses.md
             - name: 路由喜好設定

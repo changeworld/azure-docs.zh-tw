@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: tutorial
 ms.date: 3/20/2020
 ms.custom: mvc
-ms.openlocfilehash: d34be152a0d104e688abd6e53c97353b69012670
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6d0c4167192c42939e16dfd36bdc3eeef4b54b7
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906541"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543707"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-database-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站來設計「適用於 MySQL 的 Azure 資料庫」資料庫
 
@@ -37,7 +37,7 @@ ms.locfileid: "90906541"
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>建立適用於 MySQL 的 Azure 資料庫伺服器
 
-建立的「適用於 MySQL 的 Azure 資料庫」伺服器會有一組已定義的[計算和儲存體](./concepts-compute-unit-and-storage.md)資源。 伺服器會建立在 [Azure 資源群組](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)內。
+建立的「適用於 MySQL 的 Azure 資料庫」伺服器會有一組已定義的[計算和儲存體](./concepts-pricing-tiers.md)資源。 伺服器會建立在 [Azure 資源群組](../azure-resource-manager/management/overview.md)內。
 
 1. 選取入口網站左上角的 [建立資源]  按鈕 (+)。
 
@@ -55,17 +55,17 @@ ms.locfileid: "90906541"
     訂用帳戶 | 您的訂用帳戶 | 選取您要用於伺服器的 Azure 訂用帳戶。 如果您有多個訂用帳戶，請選擇資源計費的訂用帳戶。
     資源群組 | *myresourcegroup* | 提供新的或現有的資源群組名稱。
     選取來源 | 空白  | 選取 [空白]  ，從頭開始建立新的伺服器。 (如果您要從現有「適用於 MySQL 的 Azure 資料庫」伺服器的異地備份建立伺服器，請選取 [備份]  )。
-    伺服器管理員登入 | myadmin | 當您連線至伺服器時所要使用的登入帳戶。 系統管理員登入名稱不能是 **azure_superuser**、**admin**、**administrator**、**root**、**guest** 或 **public**。
+    伺服器管理員登入 | myadmin | 當您連線至伺服器時所要使用的登入帳戶。 系統管理員登入名稱不能是 **azure_superuser** 、 **admin** 、 **administrator** 、 **root** 、 **guest** 或 **public** 。
     密碼 | 您的選擇 | 為伺服器管理帳戶提供新密碼。 此密碼必須包含 8 到 128 個字元。 您的密碼必須包含下列類別中三種類別的字元：英文大寫字母、英文小寫字母、數字 (0-9) 及非英數字元 (!、$、#、% 等等)。
     確認密碼 | 您的選擇| 確認管理帳戶密碼。
     Location | *最接近使用者的區域*| 選擇最靠近您的使用者或其他 Azure 應用程式的位置。
     版本 | *最新版本*| 最新版本 (除非您有需要另一個版本的特定需求)。
-    定價層 | **一般用途**、**Gen 5**、**2 個虛擬核心**、**5 GB**、**7 天**、**異地備援** | 新伺服器的計算、儲存體和備份組態。 選取 [定價層]  。 接下來，選取 [一般用途]  索引標籤。Gen 5  、2 個虛擬核心  、5 GB  和 7 天  是**計算世代**、**虛擬核心**、**儲存體**和**備份保留期限**的預設值。 您可以讓這些滑桿保留原狀。 若要啟用異地備援儲存體中的伺服器備份，請從 [備份備援選項]  中選取 [異地備援]  。 若要儲存此定價層選取項目，請選取 [確定]  。 下方螢幕擷取畫面會擷取這些選取項目。
+    定價層 | **一般用途** 、 **Gen 5** 、 **2 個虛擬核心** 、 **5 GB** 、 **7 天** 、 **異地備援** | 新伺服器的計算、儲存體和備份組態。 選取 [定價層]  。 接下來，選取 [一般用途]  索引標籤。Gen 5  、2 個虛擬核心  、5 GB  和 7 天  是 **計算世代** 、 **虛擬核心** 、 **儲存體** 和 **備份保留期限** 的預設值。 您可以讓這些滑桿保留原狀。 若要啟用異地備援儲存體中的伺服器備份，請從 [備份備援選項]  中選取 [異地備援]  。 若要儲存此定價層選取項目，請選取 [確定]  。 下方螢幕擷取畫面會擷取這些選取項目。
 
    :::image type="content" source="./media/tutorial-design-database-using-portal/3-pricing-tier.png" alt-text="瀏覽至 MySQL":::
 
    > [!TIP]
-   > 啟用**自動成長**後，您的伺服器會在接近配置的限制時增加儲存體，而不會影響您的工作負載。
+   > 啟用 **自動成長** 後，您的伺服器會在接近配置的限制時增加儲存體，而不會影響您的工作負載。
 
 4. 按一下 [檢閱 + 建立]  。 您可以按一下工具列上的 [通知]  按鈕來監視部署程序。 部署最多需要 20 分鐘的時間。
 
@@ -91,7 +91,7 @@ ms.locfileid: "90906541"
 2. 記下 [概觀]  頁面中的 [伺服器名稱]  和 [伺服器管理員登入名稱]  。 您可以按一下每個欄位旁邊的 [複製] 按鈕，以複製到剪貼簿。
    :::image type="content" source="./media/tutorial-design-database-using-portal/2-server-properties.png" alt-text="瀏覽至 MySQL":::
 
-在此範例中，伺服器名稱為 *mydemoserver.mysql.database.azure.com*，而伺服器管理員登入為 *myadmin\@mydemoserver*。
+在此範例中，伺服器名稱為 *mydemoserver.mysql.database.azure.com* ，而伺服器管理員登入為 *myadmin\@mydemoserver* 。
 
 ## <a name="connect-to-the-server-using-mysql"></a>使用 mysql 來連線到伺服器
 
@@ -174,10 +174,10 @@ SELECT * FROM inventory;
 
    :::image type="content" source="./media/tutorial-design-database-using-portal/2-restore-form.png" alt-text="瀏覽至 MySQL":::
 
-   - **還原點**：從所列的時間範圍中，選取您想要還原的時間點。 務必將您的當地時區轉換成 UTC。
-   - **還原到新的伺服器**：提供要作為還原目的地的新伺服器名稱。
-   - **位置**：此區域與來源伺服器相同且無法變更。
-   - **定價層**：此定價層與來源伺服器相同且無法變更。
+   - **還原點** ：從所列的時間範圍中，選取您想要還原的時間點。 務必將您的當地時區轉換成 UTC。
+   - **還原到新的伺服器** ：提供要作為還原目的地的新伺服器名稱。
+   - **位置** ：此區域與來源伺服器相同且無法變更。
+   - **定價層** ：此定價層與來源伺服器相同且無法變更。
    
 3. 按一下 [確定]  ，將伺服器[還原到資料表刪除之前的時間點](./howto-restore-server-portal.md)。 還原伺服器可建立伺服器的新複本 (自您指定的時間點起)。
 

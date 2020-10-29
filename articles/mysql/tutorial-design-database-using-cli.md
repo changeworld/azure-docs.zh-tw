@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 6f79460f00ce52fd54d0cda34467d3df35185ba0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e851c47e67ac6e42d81b7688e457c2f9e17725b
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87496792"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543945"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>教學課程：使用 Azure CLI 來設計適用於 MySQL 的 Azure 資料庫
 
@@ -42,7 +42,7 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
 ## <a name="create-a-resource-group"></a>建立資源群組
-使用 [az group create](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 命令來建立 [Azure 資源群組](https://docs.microsoft.com/cli/azure/group#az-group-create)。 資源群組是在其中以群組方式部署與管理 Azure 資源的邏輯容器。
+使用 [az group create](../azure-resource-manager/management/overview.md) 命令來建立 [Azure 資源群組](/cli/azure/group#az-group-create)。 資源群組是在其中以群組方式部署與管理 Azure 資源的邏輯容器。
 
 下列範例會在 `westus` 位置建立名為 `myresourcegroup` 的資源群組。
 
@@ -85,7 +85,7 @@ az mysql server firewall-rule create --resource-group myresourcegroup --server m
 az mysql server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-結果會採用 JSON 格式。 請記下 **fullyQualifiedDomainName** 和 **administratorLogin**。
+結果會採用 JSON 格式。 請記下 **fullyQualifiedDomainName** 和 **administratorLogin** 。
 ```json
 {
   "administratorLogin": "myadmin",
@@ -185,9 +185,9 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 
 `az mysql server restore` 命令需要下列參數：
 
-| 設定 | 建議的值 | 描述  |
+| 設定 | 建議的值 | 描述  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  來源伺服器所在的資源群組。  |
+| resource-group |  myresourcegroup |  來源伺服器所在的資源群組。  |
 | NAME | mydemoserver-restored | 還原命令所建立之新伺服器的名稱。 |
 | restore-point-in-time | 2017-04-13T13:59:00Z | 選取所要還原的時間點。 這個日期和時間必須在來源伺服器的備份保留期限內。 請使用 ISO8601 日期和時間格式。 例如，您可能會使用您自己的本地時區，例如 `2017-04-13T05:59:00-08:00`，或使用 UTC Zulu 格式 `2017-04-13T13:59:00Z`。 |
 | source-server | mydemoserver | 要進行還原的來源伺服器之名稱或識別碼。 |

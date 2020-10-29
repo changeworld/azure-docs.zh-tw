@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 04/29/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 32efda0c97bec10f2c8aa29d6f83a28538d64468
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5dd66b16674e1441865f796153e7508acc854d0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87496758"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543741"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-powershell"></a>教學課程：使用 PowerShell 來設計適用於 MySQL 的 Azure 資料庫
 
@@ -54,9 +54,9 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) Cmdlet 來建立 [Azure 資源群組](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。 資源群組是一個邏輯容器，Azure 資源會在其中以群組方式部署及管理。
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) Cmdlet 來建立 [Azure 資源群組](../azure-resource-manager/management/overview.md)。 資源群組是一個邏輯容器，Azure 資源會在其中以群組方式部署及管理。
 
-下列範例會在 [美國西部]**** 區域中建立名為 myresourcegroup**** 的資源群組。
+下列範例會在 [美國西部]  區域中建立名為 myresourcegroup  的資源群組。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myresourcegroup -Location westus
@@ -66,7 +66,7 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 
 使用 `New-AzMySqlServer`Cmdlet 建立適用於 MySQL 伺服器的 Azure 資料庫。 一部伺服器可以管理多個資料庫。 一般而言，每個專案或每個使用者會使用個別的資料庫。
 
-下列範例會在 [美國西部]  區域中建立名為 **mydemoserver**的 MySQL 伺服器，其位於 **myresourcegroup** 資源群組中，且伺服器系統管理員登入為 **myadmin**。 這是一般用途定價層中的 Gen 5 伺服器，已啟用 2 個虛擬核心和異地備援備份。 記錄範例第一行中使用的密碼，因為這是 MySQL 伺服器系統管理員帳戶的密碼。
+下列範例會在 [美國西部]  區域中建立名為 **mydemoserver** 的 MySQL 伺服器，其位於 **myresourcegroup** 資源群組中，且伺服器系統管理員登入為 **myadmin** 。 這是一般用途定價層中的 Gen 5 伺服器，已啟用 2 個虛擬核心和異地備援備份。 記錄範例第一行中使用的密碼，因為這是 MySQL 伺服器系統管理員帳戶的密碼。
 
 > [!TIP]
 > 伺服器名稱會對應至 DNS 名稱，而且在 Azure 中必須是全域唯一的。
@@ -76,13 +76,13 @@ $Password = Read-Host -Prompt 'Please enter your password' -AsSecureString
 New-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup -Sku GP_Gen5_2 -GeoRedundantBackup Enabled -Location westus -AdministratorUsername myadmin -AdministratorLoginPassword $Password
 ```
 
-**Sku** 參數值會遵循慣例 **pricing-tier\_compute-generation\_vCores**，如下列範例所示。
+**Sku** 參數值會遵循慣例 **pricing-tier\_compute-generation\_vCores** ，如下列範例所示。
 
 - `-Sku B_Gen5_1` 對應於基本、第 5 代和 1 個虛擬核心。 此選項是最小的可用 SKU。
 - `-Sku GP_Gen5_32` 對應於一般用途、第 5 代和 32 個 vCore。
 - `-Sku MO_Gen5_2` 對應於記憶體最佳化、第 5 代和 2 個 vCore。
 
-如需各區域和各層有效 **Sku**值的相關資訊，請參閱[適用於 MySQL 的 Azure 資料庫定價層](./concepts-pricing-tiers.md)。
+如需各區域和各層有效 **Sku** 值的相關資訊，請參閱 [適用於 MySQL 的 Azure 資料庫定價層](./concepts-pricing-tiers.md)。
 
 如果您的工作負載只需要輕量計算和 I/O，請考慮使用基本定價層。
 
@@ -204,7 +204,7 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 已還原伺服器的位置與定價層值與原始伺服器相同。
 
-完成還原程序後，找出新的伺服器，確認資料如預期般還原。 新伺服器的伺服器管理員登入名稱和密碼，與還原啟動時有效的現有伺服器相同。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
+完成還原程序後，找出新的伺服器，確認資料如預期般還原。 新伺服器的伺服器管理員登入名稱和密碼，與還原啟動時有效的現有伺服器相同。 您可以從新伺服器的 [概觀]  頁面變更密碼。
 
 在還原期間建立的新伺服器不會有原始伺服器中的 VNet 服務端點。 您必須為新伺服器分別設定這些規則。 系統會還原原始伺服器的防火牆規則。
 

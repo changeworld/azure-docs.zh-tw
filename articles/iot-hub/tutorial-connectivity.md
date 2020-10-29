@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 0d886fc6797011ff3a0adeb69f50358ece9c5f57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf1c558474cfde85dd2c9ba8c85dc553fe5d9b56
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91252148"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92547498"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>教學課程：使用模擬裝置來測試與您 IoT 中樞的連線能力
 
@@ -76,7 +76,7 @@ node --version
 
 ![IoT 裝置工具](media/tutorial-connectivity/iot-devices-tool.png)
 
-若要註冊新裝置，請按一下 [+ 新增]，將 [裝置識別碼] 設定為 **MyTestDevice**，然後按一下 [儲存]：
+若要註冊新裝置，請按一下 [+ 新增]，將 [裝置識別碼] 設定為 **MyTestDevice** ，然後按一下 [儲存]：
 
 ![新增裝置](media/tutorial-connectivity/add-device.png)
 
@@ -84,7 +84,7 @@ node --version
 
 ![擷取裝置連接字串](media/tutorial-connectivity/copy-connection-string.png)
 
-若要模擬將遙測資料傳送至 IoT 中樞的 **MyTestDevice**，請執行您先前下載的 Node.js 模擬裝置應用程式。
+若要模擬將遙測資料傳送至 IoT 中樞的 **MyTestDevice** ，請執行您先前下載的 Node.js 模擬裝置應用程式。
 
 在開發機器的終端機視窗中，瀏覽至您下載的範例 Node.js 專案的根資料夾。 然後，瀏覽至 **iot-hub\Tutorials\ConnectivityTests** 資料夾。
 
@@ -232,7 +232,7 @@ az iot hub invoke-device-method --device-id MyTestDevice --method-name TestMetho
 
 ## <a name="check-twin-synchronization"></a>檢查對應項同步處理
 
-裝置會使用對應項來同步處理裝置與中樞之間的狀態。 在本節中，您會使用 CLI 命令將_所需的屬性_傳送至裝置，並讀取裝置所傳送的_報告屬性_。
+裝置會使用對應項來同步處理裝置與中樞之間的狀態。 在本節中，您會使用 CLI 命令將 _所需的屬性_ 傳送至裝置，並讀取裝置所傳送的 _報告屬性_ 。
 
 您在本節中使用的模擬裝置會在每次啟動時將報告的屬性傳送至中樞，並且在每次接收到所需的屬性時將其列印至主控台。
 
@@ -273,4 +273,4 @@ az iot hub device-twin update --set properties.desired='{"mydesiredproperty":"pr
 在本教學課程中，您已了解如何檢查裝置金鑰、檢查裝置到雲端的連線能力、檢查雲端到裝置的連線能力，以及檢查裝置對應項同步處理。 若要深入了解如何監視您的 IoT 中樞，請瀏覽 IoT 中樞監視的操作說明文章。
 
 > [!div class="nextstepaction"]
-> [監視與診斷](iot-hub-monitor-resource-health.md)
+> [監視 IoT 中樞](monitor-iot-hub.md)

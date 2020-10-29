@@ -10,12 +10,12 @@ manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: d2465a475371f2cf6b9379d474ccaee324adac10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57915e0b636124265adc8d5f3088cacd20d63746
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90524740"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92634006"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>在 Azure 虛擬網路中使用 Azure Data Factory 中的 Hive 活動轉換資料
 
@@ -38,14 +38,14 @@ ms.locfileid: "90524740"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure 儲存體帳戶**。 您會建立 hive 指令碼，並上傳至 Azure 儲存體。 Hive 指令碼的輸出會儲存在此儲存體帳戶中。 在此範例中，HDInsight 叢集會使用此 Azure 儲存體帳戶作為主要儲存體。 
+- **Azure 儲存體帳戶** 。 您會建立 hive 指令碼，並上傳至 Azure 儲存體。 Hive 指令碼的輸出會儲存在此儲存體帳戶中。 在此範例中，HDInsight 叢集會使用此 Azure 儲存體帳戶作為主要儲存體。 
 - **Azure 虛擬網路。** 如果您沒有 Azure 虛擬網路，請依照[這些指示](../virtual-network/quick-create-portal.md)建立。 在此範例中，HDInsight 在 Azure 虛擬網路中。 以下是 Azure 虛擬網路的設定範例。 
 
     ![建立虛擬網路](media/tutorial-transform-data-using-hive-in-vnet/create-virtual-network.png)
-- **HDInsight 叢集。** 請遵循這篇文章來建立 HDInsight 叢集，並將它加入您在上一個步驟中建立的虛擬網路：[使用 Azure 虛擬網路延伸 Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md)。 以下是虛擬網路中的 HDInsight 設定範例。 
+- **HDInsight 叢集。** 請遵循這篇文章來建立 HDInsight 叢集，並將它加入您在上一個步驟中建立的虛擬網路：[使用 Azure 虛擬網路延伸 Azure HDInsight](../hdinsight/hdinsight-plan-virtual-network-deployment.md)。 以下是虛擬網路中的 HDInsight 設定範例。 
 
     ![虛擬網路中的 HDInsight](media/tutorial-transform-data-using-hive-in-vnet/hdinsight-in-vnet-configuration.png)
-- **Azure PowerShell**(英文)。 遵循[如何安裝並設定 Azure PowerShell](/powershell/azure/install-Az-ps) 中的指示。
+- **Azure PowerShell** (英文)。 遵循[如何安裝並設定 Azure PowerShell](/powershell/azure/install-Az-ps) 中的指示。
 
 ### <a name="upload-hive-script-to-your-blob-storage-account"></a>將 Hive 指令碼上傳至 Blob 儲存體帳戶
 
@@ -93,7 +93,7 @@ ms.locfileid: "90524740"
     ```powershell
     $selfHostedIntegrationRuntimeName = "MySelfHostedIR09142017" 
     ```
-2. 啟動 **PowerShell**。 保持開啟 Azure PowerShell，直到本快速入門結束為止。 如果您關閉並重新開啟，則需要再次執行這些命令。 如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析] 以找出 [Data Factory]：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料處理站所使用的資料存放區 (Azure 儲存體、Azure SQL Database 等) 和計算 (HDInsight 等) 可位於其他區域。
+2. 啟動 **PowerShell** 。 保持開啟 Azure PowerShell，直到本快速入門結束為止。 如果您關閉並重新開啟，則需要再次執行這些命令。 如需目前可使用 Data Factory 的 Azure 區域清單，請在下列頁面上選取您感興趣的區域，然後展開 [分析] 以找出 [Data Factory]：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料處理站所使用的資料存放區 (Azure 儲存體、Azure SQL Database 等) 和計算 (HDInsight 等) 可位於其他區域。
 
     執行下列命令，並輸入您用來登入 Azure 入口網站的使用者名稱和密碼：
         
@@ -105,7 +105,7 @@ ms.locfileid: "90524740"
     ```powershell
     Get-AzSubscription
     ```
-    執行下列命令以選取您要使用的訂用帳戶。 以您的 Azure 訂用帳戶識別碼取代 **SubscriptionId**：
+    執行下列命令以選取您要使用的訂用帳戶。 以您的 Azure 訂用帳戶識別碼取代 **SubscriptionId** ：
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
@@ -168,7 +168,7 @@ ms.locfileid: "90524740"
 
 ### <a name="azure-storage-linked-service"></a>Azure 儲存體連結服務
 
-使用您慣用的編輯器建立 JSON 檔案、複製下列 Azure 儲存體連結服務的 JSON 定義，然後將檔案儲存為 **MyStorageLinkedService.json**。
+使用您慣用的編輯器建立 JSON 檔案、複製下列 Azure 儲存體連結服務的 JSON 定義，然後將檔案儲存為 **MyStorageLinkedService.json** 。
 
 ```json
 {
@@ -190,7 +190,7 @@ ms.locfileid: "90524740"
 
 ### <a name="hdinsight-linked-service"></a>HDInsight 連結服務
 
-使用您慣用的編輯器建立 JSON 檔案、複製下列 Azure HDInsight 連結服務的 JSON 定義，然後將檔案儲存為 **MyHDInsightLinkedService.json**。
+使用您慣用的編輯器建立 JSON 檔案、複製下列 Azure HDInsight 連結服務的 JSON 定義，然後將檔案儲存為 **MyHDInsightLinkedService.json** 。
 
 ```
 {
@@ -219,9 +219,9 @@ ms.locfileid: "90524740"
 
 在連結服務定義中更新下列屬性的值：
 
-- **userName**。 您在建立叢集時指定的叢集登入使用者名稱。 
-- **password**。 使用者的密碼。
-- **clusterUri**。 以下列格式指定 HDInsight 叢集的 URL：`https://<clustername>.azurehdinsight.net`。  本文假設您可以透過網際網路存取此叢集。 例如，您可以連線至位於 `https://clustername.azurehdinsight.net` 的叢集。 這個位址使用公用閘道，但如果您已使用網路安全性群組 (NSG) 或使用者定義的路由 (UDR) 來禁止從網際網路存取，則無法使用此位址。 為了讓 Data Factory 能夠將作業提交至 Azure 虛擬網路中的 HDInsight 叢集，您需要設定 Azure 虛擬網路，使得 URL 可解析成 HDInsight 所使用之閘道的私人 IP 位址。
+- **userName** 。 您在建立叢集時指定的叢集登入使用者名稱。 
+- **password** 。 使用者的密碼。
+- **clusterUri** 。 以下列格式指定 HDInsight 叢集的 URL：`https://<clustername>.azurehdinsight.net`。  本文假設您可以透過網際網路存取此叢集。 例如，您可以連線至位於 `https://clustername.azurehdinsight.net` 的叢集。 這個位址使用公用閘道，但如果您已使用網路安全性群組 (NSG) 或使用者定義的路由 (UDR) 來禁止從網際網路存取，則無法使用此位址。 為了讓 Data Factory 能夠將作業提交至 Azure 虛擬網路中的 HDInsight 叢集，您需要設定 Azure 虛擬網路，使得 URL 可解析成 HDInsight 所使用之閘道的私人 IP 位址。
 
   1. 從 Azure 入口網站，開啟 HDInsight 所在的虛擬網路。 開啟名稱開頭為 `nic-gateway-0` 的網路介面。 記下其私人 IP 位址。 例如，10.6.0.15。 
   2. 如果您的 Azure 虛擬網路有 DNS 伺服器，請更新 DNS 記錄，以便 HDInsight 叢集 URL `https://<clustername>.azurehdinsight.net` 可解析成 `10.6.0.15`。 這是建議的方法。 如果您的 Azure 虛擬網路中沒有 DNS 伺服器，您可以編輯所有已註冊為自我裝載整合執行階段節點之 VM 的 hosts 檔案 (C:\Windows\System32\drivers\etc)，在檔案中新增如下項目，以解決這個問題： 
@@ -244,7 +244,7 @@ ms.locfileid: "90524740"
     ```
 
 ## <a name="author-a-pipeline"></a>撰寫管道
-在此步驟中，您會建立具有 Hive 活動的新管道。 此活動會執行 Hive 指令碼，以傳回範例資料表的資料，並儲存到您定義的路徑。 在您慣用的編輯器中建立 JSON 檔案、複製下列管道定義 JSON 定義，然後儲存為 **MyHivePipeline.json**。
+在此步驟中，您會建立具有 Hive 活動的新管道。 此活動會執行 Hive 指令碼，以傳回範例資料表的資料，並儲存到您定義的路徑。 在您慣用的編輯器中建立 JSON 檔案、複製下列管道定義 JSON 定義，然後儲存為 **MyHivePipeline.json** 。
 
 
 ```json
@@ -408,6 +408,3 @@ Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName
 
 > [!div class="nextstepaction"]
 >[分支和鏈結 Data Factory 控制流程](tutorial-control-flow.md)
-
-
-
