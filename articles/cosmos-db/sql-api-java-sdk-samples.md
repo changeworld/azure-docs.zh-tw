@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 09/23/2020
 ms.custom: devx-track-java
 ms.author: anfeldma
-ms.openlocfilehash: ead5ab6f914db951027406e43437ac30a4f85247
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: afc9633c32174cbe1d94535d68e4c8f85f3d137b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279237"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478061"
 ---
 # <a name="azure-cosmos-db-sql-api-java-sdk-v4-examples"></a>Azure Cosmos DB SQL API：Java SDK v4 範例
 
@@ -124,7 +124,7 @@ com.azure.cosmos.examples.sample.synchronicity.MainClass
 
 ## <a name="autoscale-collection-examples"></a>自動調整集合範例
 
-若要在執行這些範例之前深入了解自動調整功能，請參閱這些指示，以在您的[帳戶](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-autoscale/)和[資料庫和容器](https://docs.microsoft.com/azure/cosmos-db/provision-throughput-autoscale)中啟用自動調整。
+若要在執行這些範例之前深入了解自動調整功能，請參閱這些指示，以在您的[帳戶](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-autoscale/)和[資料庫和容器](./provision-throughput-autoscale.md)中啟用自動調整。
 
 [自動調整資料庫 CRUD 範例](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/autoscaledatabasecrud/sync/AutoscaleDatabaseCRUDQuickstart.java)檔案會說明如何執行下列工作。
 
@@ -163,7 +163,7 @@ com.azure.cosmos.examples.sample.synchronicity.MainClass
 | [僅在文件變更時才讀取文件](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L266-L300) | AccessCondition.setType<br>AccessCondition.setCondition |
 
 ## <a name="indexing-examples"></a>索引範例
-[集合 CRUD 範例](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java)檔案會說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的索引功能，請參閱[索引原則](index-policy.md)、[索引類型](index-types.md)及[索引路徑](index-paths.md)概念性文章。 
+[集合 CRUD 範例](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java)檔案會說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的索引功能，請參閱[索引原則](index-policy.md)、[索引類型](index-overview.md#index-kinds)及[索引路徑](index-policy.md#include-exclude-paths)概念性文章。 
 
 | Task | API 參考資料 |
 | --- | --- |
@@ -180,7 +180,7 @@ com.azure.cosmos.examples.sample.synchronicity.MainClass
 如需索引編製的詳細資訊，請參閱 [Azure Cosmos DB 編製索引原則](index-policy.md)。
 
 ## <a name="query-examples"></a>查詢範例
-[查詢範例](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java)檔案會說明如何使用 SQL 查詢文法來執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的 SQL 查詢參考，請參閱[適用於 Azure Cosmos DB 的 SQL 查詢範例](how-to-sql-query.md)。 
+[查詢範例](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java)檔案會說明如何使用 SQL 查詢文法來執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的 SQL 查詢參考，請參閱[適用於 Azure Cosmos DB 的 SQL 查詢範例](./sql-query-getting-started.md)。 
 
 | Task | API 參考資料 |
 | --- | --- |

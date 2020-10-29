@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c32dbdafe8d2681d341cb7f2ee6f0ce45123cab
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: b76c2e346adb6c2afd146b0d73c8f20165145bac
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826393"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460354"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>教學課程：Azure Active Directory 與 Image Relay 整合
 
@@ -27,7 +27,7 @@ Image Relay 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Image Relay (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ Image Relay 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Image Relay**，從結果面板中選取 [Image Relay]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Image Relay** ，從結果面板中選取 [Image Relay]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
     ![結果清單中的 Image Relay](common/search-new-app.png)
 
@@ -106,7 +106,7 @@ Image Relay 與 Azure AD 整合提供下列優點：
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<companyname>.imagerelay.com/sso/metadata`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Image Relay 客戶支援小組](http://support.imagerelay.com/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Image Relay 客戶支援小組](http://support.imagerelay.com/)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 4. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
@@ -192,7 +192,7 @@ Image Relay 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -239,7 +239,7 @@ Image Relay 與 Azure AD 整合提供下列優點：
 
     ![顯示已從功能表中選取 [建立 SSO 使用者] 的螢幕擷取畫面。](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
 
-3. 輸入您要佈建的使用者的**電子郵件**、**名字**、**姓氏**和**公司**，選取只能透過單一登入來登入的權限群組 (例如 [SSO 基本])。
+3. 輸入您要佈建的使用者的 **電子郵件** 、 **名字** 、 **姓氏** 和 **公司** ，選取只能透過單一登入來登入的權限群組 (例如 [SSO 基本])。
 
     ![顯示 [建立 SSO 使用者] 頁面的螢幕擷取畫面，您可以在其中輸入必要的資訊。](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
 
@@ -249,12 +249,12 @@ Image Relay 與 Azure AD 整合提供下列優點：
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 Image Relay 圖格時，應該會自動登入您已設定 SSO 的 Image Relay。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 Image Relay 圖格時，應該會自動登入您已設定 SSO 的 Image Relay。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

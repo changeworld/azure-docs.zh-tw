@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: jeedes
-ms.openlocfilehash: e01bc36f0f30cec779652a603aaf7bdb496e5190
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0266e62af55f6d775ca1b1ae5ee31d5f10d4249
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850569"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459980"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>教學課程：整合 Sage Intacct 與 Azure Active Directory
 
@@ -26,7 +26,7 @@ ms.locfileid: "91850569"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Sage Intacct。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -40,7 +40,7 @@ ms.locfileid: "91850569"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * Sage Intacct 支援由 **IDP** 起始的 SSO
-* 設定 Sage Intacct 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 Sage Intacct 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-sage-intacct-from-the-gallery"></a>從資源庫新增 Sage Intacct
 
@@ -50,7 +50,7 @@ ms.locfileid: "91850569"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Sage Intacct**。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Sage Intacct** 。
 1. 從結果面板選取 [Sage Intacct]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-sso-for-sage-intacct"></a>設定和測試 Sage Intacct 的 Azure AD SSO
@@ -89,7 +89,7 @@ ms.locfileid: "91850569"
     | 屬性名稱  |  來源屬性|
     | ---------------| --------------- |
     | 公司名稱 | **Sage Intacct 公司識別碼** |
-    | NAME | 此值應等同 Sage Intacct 的**使用者識別碼** (您在 [建立 Sage Intacct 測試使用者] 區段中輸入的值)，本教學課程稍後會說明 |
+    | NAME | 此值應等同 Sage Intacct 的 **使用者識別碼** (您在 [建立 Sage Intacct 測試使用者] 區段中輸入的值)，本教學課程稍後會說明 |
 
     a. 按一下 [新增宣告] 以開啟 [管理使用者宣告] 對話方塊。
 
@@ -161,7 +161,7 @@ ms.locfileid: "91850569"
 
     a. 選取 [啟用單一登入] 。
 
-    b. 在 [身分識別提供者類型]，選取 **SAML 2.0**。
+    b. 在 [身分識別提供者類型]，選取 **SAML 2.0** 。
 
     c. 在 [簽發者 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼] 值。
 
@@ -194,7 +194,7 @@ ms.locfileid: "91850569"
     a. 在 [使用者資訊] 區段中，為您要佈建的 Azure AD 帳戶輸入 [使用者識別碼]、[姓氏]、[名字]、[電子郵件地址]、[職稱] 和 [電話]。
 
     > [!NOTE]
-    > 請確定上面螢幕擷取畫面中的**使用者識別碼**等同**來源屬性**值，也就是在 Azure 入口網站的 [使用者屬性] 區段中，與**名稱**屬性相對應的值。
+    > 請確定上面螢幕擷取畫面中的 **使用者識別碼** 等同 **來源屬性** 值，也就是在 Azure 入口網站的 [使用者屬性] 區段中，與 **名稱** 屬性相對應的值。
 
     b. 選取您要佈建之 Azure AD 帳戶的 [系統管理員權限]。
 
@@ -202,7 +202,7 @@ ms.locfileid: "91850569"
     
     d. Azure AD 帳戶的持有者會收到一封電子郵件，並依照連結在啟用其帳戶前進行確認。
 
-1. 按一下 [單一登入] 索引標籤，並確定下方螢幕擷取畫面中的**同盟 SSO 使用者識別碼**等同 Azure 入口網站中 [使用者屬性] 區段中與 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` 對應的**來源屬性**值。
+1. 按一下 [單一登入] 索引標籤，並確定下方螢幕擷取畫面中的 **同盟 SSO 使用者識別碼** 等同 Azure 入口網站中 [使用者屬性] 區段中與 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` 對應的 **來源屬性** 值。
 
     ![此螢幕擷取畫面顯示用來輸入同盟 SSO 使用者識別碼的 [使用者資訊] 區段。](./media/intacct-tutorial/ic790044.png "使用者資訊")
 
@@ -213,14 +213,14 @@ ms.locfileid: "91850569"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 Sage Intacct 圖格時，應該會自動登入您設定 SSO 的 Sage Intacct。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 Sage Intacct 圖格時，應該會自動登入您設定 SSO 的 Sage Intacct。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)

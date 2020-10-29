@@ -9,19 +9,19 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 587fe536e860f3039bfd3a2d2c1e3c76cb40e4d5
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 804330d44d63aa70076a7387aacfbbd3b4f742c9
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278465"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480984"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>教學課程：建置 .NET 主控台應用程式來管理 Azure Cosmos DB SQL API 帳戶中的資料
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
-> * [Java](sql-api-java-get-started.md)
-> * [非同步 Java](sql-api-async-java-get-started.md)
+> * [Java](./create-sql-api-java.md)
+> * [非同步 Java](./create-sql-api-java.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
 >
 
@@ -63,12 +63,12 @@ ms.locfileid: "92278465"
 
 1. 開啟 Visual Studio，然後選取 [建立新專案]。
 1. 在 [建立新專案] 中，針對 C# 選擇 [主控台應用程式 (.NET Framework)]，然後選取 [下一步]。
-1. 將您的專案命名為 *CosmosGettingStartedTutorial*，然後選取 [建立]。
+1. 將您的專案命名為 *CosmosGettingStartedTutorial* ，然後選取 [建立]。
 
     :::image type="content" source="./media/sql-api-get-started/configure-cosmos-getting-started-2019.png" alt-text="設定您的專案":::
 
 1. 在 [方案總管] 中，以滑鼠右鍵按一下 Visual Studio 解決方案底下的新主控台應用程式，然後選取 [管理 NuGet 套件]。
-1. 在 [NuGet 套件管理員] 中，選取 [瀏覽]並搜尋 *Microsoft.Azure.Cosmos*。 選擇 [Microsoft.Azure.Cosmos]，然後選取 [安裝]。
+1. 在 [NuGet 套件管理員] 中，選取 [瀏覽]並搜尋 *Microsoft.Azure.Cosmos* 。 選擇 [Microsoft.Azure.Cosmos]，然後選取 [安裝]。
 
    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-manage-nuget-2019.png" alt-text="設定您的專案":::
 
@@ -151,13 +151,13 @@ ms.locfileid: "92278465"
 
 1. 選取 F5 鍵執行您的應用程式。
 
-    主控台會顯示訊息：**示範結束，按任意鍵以結束。** 此訊息會確認您的應用程式已建立 Azure Cosmos DB 的連線。 您可以接著關閉主控台視窗。
+    主控台會顯示訊息： **示範結束，按任意鍵以結束。** 此訊息會確認您的應用程式已建立 Azure Cosmos DB 的連線。 您可以接著關閉主控台視窗。
 
 恭喜！ 您已成功連線至 Azure Cosmos DB 帳戶。
 
 ## <a name="step-4-create-a-database"></a>步驟 4：建立資料庫
 
-資料庫是分割於多個容器之項目的邏輯容器。 [CosmosClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclient) 類別的 `CreateDatabaseIfNotExistsAsync` 或 `CreateDatabaseAsync` 方法可以建立資料庫。
+資料庫是分割於多個容器之項目的邏輯容器。 [CosmosClient](/dotnet/api/microsoft.azure.cosmos.cosmosclient) 類別的 `CreateDatabaseIfNotExistsAsync` 或 `CreateDatabaseAsync` 方法可以建立資料庫。
 
 1. 將 `CreateDatabaseAsync` 方法複製並貼到 `GetStartedDemoAsync` 方法下方。
 
@@ -317,7 +317,7 @@ ms.locfileid: "92278465"
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs)]
 
 
-1. 回到 *Program.cs*中，在 `CreateContainerAsync` 方法後面新增 `AddItemsToContainerAsync` 方法。
+1. 回到 *Program.cs* 中，在 `CreateContainerAsync` 方法後面新增 `AddItemsToContainerAsync` 方法。
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=AddItemsToContainerAsync)]
 
@@ -345,7 +345,7 @@ ms.locfileid: "92278465"
 
 ## <a name="step-7-query-azure-cosmos-db-resources"></a><a id="Query"></a>步驟 7：查詢 Azure Cosmos DB 資源
 
-Azure Cosmos DB 支援對儲存於每個容器中的 JSON 文件進行豐富查詢。 如需詳細資訊，請參閱[開始使用 SQL 查詢](sql-api-sql-query.md)。 下列範例程式碼示範如何對上一個步驟中插入的項目執行查詢。
+Azure Cosmos DB 支援對儲存於每個容器中的 JSON 文件進行豐富查詢。 如需詳細資訊，請參閱[開始使用 SQL 查詢](./sql-query-getting-started.md)。 下列範例程式碼示範如何對上一個步驟中插入的項目執行查詢。
 
 1. 在 `AddItemsToContainerAsync` 方法之後複製並貼上 `QueryItemsAsync` 方法。
 
@@ -489,7 +489,7 @@ End of demo, press any key to exit.
 * [Azure Cosmos DB 帳戶][cosmos-db-create-account]。
 * 您可以在 GitHub 上找到 [GetStarted](https://github.com/Azure-Samples/cosmos-dotnet-getting-started) 方案。
 
-若要在 Visual Studio 中還原 Azure Cosmos DB .NET SDK 的參考，請在 [方案總管] 中的解決方案上按一下滑鼠右鍵，然後選取 [還原 NuGet 套件]。 接下來，在 *App.config* 檔案中，更新 `EndPointUri` 和 `PrimaryKey` 值，如[步驟 3：連線至 Azure Cosmos DB 帳戶](#Connect)所述。
+若要在 Visual Studio 中還原 Azure Cosmos DB .NET SDK 的參考，請在 [方案總管] 中的解決方案上按一下滑鼠右鍵，然後選取 [還原 NuGet 套件]。 接下來，在 *App.config* 檔案中，更新 `EndPointUri` 和 `PrimaryKey` 值，如 [步驟 3：連線至 Azure Cosmos DB 帳戶](#Connect)所述。
 
 建置就這麼容易，繼續努力！
 
@@ -497,8 +497,8 @@ End of demo, press any key to exit.
 
 * 需要更複雜的 ASP.NET MVC 教學課程嗎？ 請參閱[教學課程：使用 .NET SDK，透過 Azure Cosmos DB 開發 ASP NET Core MVC Web 應用程式](sql-api-dotnet-application.md)。
 * 想要使用 Azure Cosmos DB 進行規模和效能測試嗎？ 請參閱 [Azure Cosmos DB 的效能和級別測試](performance-testing.md)。
-* 若要了解如何監視 Azure Cosmos DB 要求、使用量及儲存體，請參閱[監視 Azure Cosmos DB 中的效能和儲存體計量](monitor-accounts.md)。
+* 若要了解如何監視 Azure Cosmos DB 要求、使用量及儲存體，請參閱[監視 Azure Cosmos DB 中的效能和儲存體計量](./monitor-cosmos-db.md)。
 * 若要對我們的範例資料集執行查詢，請參閱 [Query Playground](https://www.documentdb.com/sql/demo)。
-* 若要深入了解 Azure Cosmos DB，請參閱[歡迎使用 Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/introduction)。
+* 若要深入了解 Azure Cosmos DB，請參閱[歡迎使用 Azure Cosmos DB](./introduction.md)。
 
 [cosmos-db-create-account]: create-sql-api-java.md#create-a-database-account

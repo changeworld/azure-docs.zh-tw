@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: ef0f542a27f378b6132d8ef19b55f386d4102d53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2939b3b3beac55b537c1dcf844f702a0ad73f06e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90895256"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478604"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>教學課程：使用適用於 PostgreSQL 的 Azure 資料庫 – 超大規模 (Citus) 設計多租用戶資料庫
 
@@ -275,5 +275,5 @@ SELECT id
 
 在本教學課程中，您已了解如何佈建 Hyperscale (Citus) 伺服器群組。 您已使用 psql 連線到該群組、建立結構描述，並散發資料。 您已了解如何在租用戶內部和之間查詢資料，以及如何自訂每個租用戶的結構描述。
 
-- 了解伺服器群組[節點類型](https://aka.ms/hyperscale-concepts)
+- 了解伺服器群組[節點類型](./concepts-hyperscale-nodes.md)
 - 判斷伺服器群組的最佳[初始大小](howto-hyperscale-scaling.md#picking-initial-size)

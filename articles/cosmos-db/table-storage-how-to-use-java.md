@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-java
-ms.openlocfilehash: d50f3015be4ce12d5980fde7d039d87ef06da164
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e9df3343a89097b192c51d3b9f093805afe6b87
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330463"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477346"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>如何從 Java 使用 Azure 資料表儲存體或 Azure Cosmos DB 資料表 API
 
@@ -434,7 +434,7 @@ catch (Exception e)
 
 ## <a name="modify-an-entity"></a>修改實體
 
-若要修改實體，請從資料表服務擷取它，對實體物件進行變更，然後以取代或合併操作將變更儲存回資料表服務。 下列程式碼會變更現有客戶的電話號碼。 不像我們為了執行插入而呼叫 **TableOperation.insert**，這個程式碼會呼叫 **TableOperation.replace**。 **CloudTable.execute** 方法會呼叫資料表服務，然後實體就會被取代，除非有另一個應用程式在此應用程式擷取它後的這段時間變更了這個實體。 發生此情況時，系統會擲回例外狀況，且必須重新擷取、修改及儲存實體。 這種開放式並行存取重試模式在分散式儲存體系統中相當常見。
+若要修改實體，請從資料表服務擷取它，對實體物件進行變更，然後以取代或合併操作將變更儲存回資料表服務。 下列程式碼會變更現有客戶的電話號碼。 不像我們為了執行插入而呼叫 **TableOperation.insert** ，這個程式碼會呼叫 **TableOperation.replace** 。 **CloudTable.execute** 方法會呼叫資料表服務，然後實體就會被取代，除非有另一個應用程式在此應用程式擷取它後的這段時間變更了這個實體。 發生此情況時，系統會擲回例外狀況，且必須重新擷取、修改及儲存實體。 這種開放式並行存取重試模式在分散式儲存體系統中相當常見。
 
 ```java
 try
@@ -518,7 +518,7 @@ catch (Exception e)
 
 ## <a name="insert-or-replace-an-entity"></a>插入或取代實體
 
-您經常會想要新增實體至資料表，但不知道它是否已在資料表中。 插入或取代作業可讓您提出單一要求，其會在實體不存在時加以插入，或是在實體存在時取代現有實體。 以先前的範例為基礎，下列程式碼會插入或取代 "Walter Harp" 的實體。 建立新實體之後，此程式碼會呼叫 **TableOperation.insertOrReplace** 方法。 此程式碼接著會使用資料表以及插入或取代資料表作業當作參數，在 **Cloud Table** 物件上呼叫 **execute**。 若只要更新實體的某一部分，可以改用 **TableOperation.insertOrMerge** 方法。 不支援在本機儲存體模擬器上進行插入或取代，因此，此程式碼唯有在使用表格服務上的帳戶時才會執行。 您可以進一步了解插入或取代和插入或合併：[Azure 資料表：插入和查詢投影簡介][Azure 資料表：插入和查詢投影簡介]。
+您經常會想要新增實體至資料表，但不知道它是否已在資料表中。 插入或取代作業可讓您提出單一要求，其會在實體不存在時加以插入，或是在實體存在時取代現有實體。 以先前的範例為基礎，下列程式碼會插入或取代 "Walter Harp" 的實體。 建立新實體之後，此程式碼會呼叫 **TableOperation.insertOrReplace** 方法。 此程式碼接著會使用資料表以及插入或取代資料表作業當作參數，在 **Cloud Table** 物件上呼叫 **execute** 。 若只要更新實體的某一部分，可以改用 **TableOperation.insertOrMerge** 方法。 不支援在本機儲存體模擬器上進行插入或取代，因此，此程式碼唯有在使用表格服務上的帳戶時才會執行。 您可以進一步了解插入或取代和插入或合併：[Azure 資料表：插入和查詢投影簡介][Azure 資料表：插入和查詢投影簡介]。
 
 ```java
 try
@@ -630,5 +630,5 @@ catch (Exception e)
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
 [Azure 儲存體用戶端 SDK 參考]: https://azure.github.io/azure-storage-java/
-[Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
+[Azure Storage REST API]: /rest/api/storageservices/
 [Azure Storage Team Blog]: https://blogs.msdn.microsoft.com/windowsazurestorage/

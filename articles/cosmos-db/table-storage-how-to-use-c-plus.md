@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: ed3ea64bf76eafd965e13f4dab1911840ed8139a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50a34f2572e5e9feea0b5adc3e12f72451e5728b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282845"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477329"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>如何搭配 C++ 使用 Azure 表格儲存體和 Azure Cosmos DB 資料表 API
 
@@ -78,7 +78,7 @@ Azure 儲存體用戶端或 Cosmos DB 用戶端會使用連接字串來儲存端
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=<your_storage_account>;AccountKey=<your_storage_account_key>"));
 ```
 
-對於 `<your_storage_account>`，請使用儲存體帳戶的名稱。 對於 <your_storage_account_key>，請使用 [Azure 入口網站](https://portal.azure.com)中列出的儲存體帳戶存取金鑰。 如需有關儲存體帳戶和存取金鑰的資訊，請參閱[建立儲存體帳戶](../storage/common/storage-create-storage-account.md)。
+對於 `<your_storage_account>`，請使用儲存體帳戶的名稱。 對於 <your_storage_account_key>，請使用 [Azure 入口網站](https://portal.azure.com)中列出的儲存體帳戶存取金鑰。 如需有關儲存體帳戶和存取金鑰的資訊，請參閱[建立儲存體帳戶](../storage/common/storage-account-create.md)。
 
 ### <a name="set-up-an-azure-cosmos-db-connection-string"></a>設定 Azure Cosmos DB 連接字串
 
@@ -98,7 +98,7 @@ const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=ht
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-若要啟動 Azure 儲存體模擬器，請從 Windows 桌面選取 [開始] 按鈕或 Windows 鍵。 輸入並執行 *Microsoft Azure 儲存體模擬器*。 如需詳細資訊，請參閱[使用 Azure 儲存體模擬器進行開發和測試](../storage/common/storage-use-emulator.md)。
+若要啟動 Azure 儲存體模擬器，請從 Windows 桌面選取 [開始] 按鈕或 Windows 鍵。 輸入並執行 *Microsoft Azure 儲存體模擬器* 。 如需詳細資訊，請參閱[使用 Azure 儲存體模擬器進行開發和測試](../storage/common/storage-use-emulator.md)。
 
 ### <a name="retrieve-your-connection-string"></a>擷取連接字串
 
@@ -138,7 +138,7 @@ table.create_if_not_exists();
 
 ### <a name="add-an-entity-to-a-table"></a>將實體新增至資料表
 
-若要將實體新增至資料表，請建立新的 `table_entity` 物件，並將它傳遞給 `table_operation::insert_entity`。 下列程式碼會使用客戶名字做為資料列索引鍵，並使用姓氏做為資料分割索引鍵。 實體的資料分割索引鍵和資料列索引鍵共同唯一識別資料表中的實體。 相較於查詢具有不同資料分割索引鍵的實體，查詢具有相同資料分割索引鍵的實體速度會較快。 使用不同的分割索引鍵，可提供更大的平行作業延展性。 如需詳細資訊，請參閱 [Microsoft Azure 儲存體效能與延展性檢查清單](../storage/common/storage-performance-checklist.md)。
+若要將實體新增至資料表，請建立新的 `table_entity` 物件，並將它傳遞給 `table_operation::insert_entity`。 下列程式碼會使用客戶名字做為資料列索引鍵，並使用姓氏做為資料分割索引鍵。 實體的資料分割索引鍵和資料列索引鍵共同唯一識別資料表中的實體。 相較於查詢具有不同資料分割索引鍵的實體，查詢具有相同資料分割索引鍵的實體速度會較快。 使用不同的分割索引鍵，可提供更大的平行作業延展性。 如需詳細資訊，請參閱 [Microsoft Azure 儲存體效能與延展性檢查清單](../storage/blobs/storage-performance-checklist.md)。
 
 下列程式碼會建立 `table_entity` 的新執行個體，其中含有一些要儲存的客戶資料。 程式碼接著會呼叫 `table_operation::insert_entity` 來建立 `table_operation` 物件，以便將實體插入資料表中，並將新的資料表與該物件建立關聯。 最後，程式碼會針對 `cloud_table` 物件呼叫 `execute` 方法。 新的 `table_operation` 會傳送一個要求到表格服務，以便將新的客戶實體插入到 `people` 資料表。  
 
@@ -501,7 +501,7 @@ else
 
 對於 Visual Studio Community Edition，如果您的專案因為包含 *storage_account.h* 和 *table.h* 檔案而發生建置錯誤，請移除 **/permissive-** 編譯器參數：
 
-1. 在**方案總管**中，於您的專案上按一下滑鼠右鍵，然後選取 [屬性]  。
+1. 在 **方案總管** 中，於您的專案上按一下滑鼠右鍵，然後選取 [屬性]  。
 1. 在 [屬性頁]  對話方塊方塊中，依序展開 [組態屬性]  和 [C/C++]  ，然後選取 [語言]  。
 1. 將 [一致性模式]  設定為 [否]  。
 

@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-js
-ms.openlocfilehash: 6ce4354faec73f8fe42a936e677bee473796701d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43ac175e2c1caa39bfe88a7c1a5f42318db343fb
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318767"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477278"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>如何從 Node.js 使用 Azure 表格儲存體或 Azure Cosmos DB 資料表 API
 
@@ -41,7 +41,7 @@ ms.locfileid: "91318767"
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>使用 Node Package Manager (NPM) 安裝封裝
 
-1. 使用命令列介面，例如 **PowerShell** (Windows)、**終端機** (Mac) 或 **Bash** (Unix)，瀏覽至儲存所建立應用程式的資料夾。
+1. 使用命令列介面，例如 **PowerShell** (Windows)、 **終端機** (Mac) 或 **Bash** (Unix)，瀏覽至儲存所建立應用程式的資料夾。
 2. 在命令視窗中輸入 **npm install azure-storage** 。 此命令的輸出類似下列範例。
 
    ```bash
@@ -115,7 +115,7 @@ tableSvc.createTableIfNotExists('mytable', function(error, result, response){
 function handle (requestOptions, next)
 ```
 
-在對要求選項進行前處理之後，方法必須呼叫 **next**，傳遞具有下列簽章的回呼：
+在對要求選項進行前處理之後，方法必須呼叫 **next** ，傳遞具有下列簽章的回呼：
 
 ```javascript
 function (returnObject, finalCallback, next)
@@ -132,12 +132,12 @@ var tableSvc = azure.createTableService().withFilter(retryOperations);
 
 ## <a name="add-an-entity-to-a-table"></a>將實體新增至資料表
 
-若要新增實體，請先建立一個定義實體屬性的物件。 所有實體必須包含 **PartitionKey** 和 **RowKey**，這些是實體的唯一識別碼。
+若要新增實體，請先建立一個定義實體屬性的物件。 所有實體必須包含 **PartitionKey** 和 **RowKey** ，這些是實體的唯一識別碼。
 
 * **PartitionKey** - 可決定儲存實體的分割區。
 * **RowKey** - 可在分割區內唯一地識別實體。
 
-**PartitionKey** 和 **RowKey** 都必須是字串值。 如需詳細資訊，請參閱 [了解表格服務資料模型](https://msdn.microsoft.com/library/azure/dd179338.aspx)。
+**PartitionKey** 和 **RowKey** 都必須是字串值。 如需詳細資訊，請參閱 [了解表格服務資料模型](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)。
 
 以下是定義實體的範例。 **dueDate** 定義為 `Edm.DateTime` 的類型。 您可以視需要指定類型，若未指定，系統就會推斷類型。
 
@@ -220,7 +220,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 
 使用 `replaceEntity` 和 `mergeEntity` 時，如果所要更新的實體不存在，更新作業就會失敗；因此，如果您想要不論實體是否已經存在都儲存該實體，請使用 `insertOrReplaceEntity` 或 `insertOrMergeEntity`。
 
-成功的更新作業 `result` 會包含所更新實體的 **Etag**。
+成功的更新作業 `result` 會包含所更新實體的 **Etag** 。
 
 ## <a name="work-with-groups-of-entities"></a>使用實體群組
 
@@ -299,7 +299,7 @@ var query = new azure.TableQuery()
   .where('PartitionKey eq ?', 'hometasks');
 ```
 
-由於沒有使用 **select**，因此會傳回所有欄位。 若要對資料表執行查詢，請使用 **queryEntities**。 下列範例使用此查詢從 'mytable' 傳回實體。
+由於沒有使用 **select** ，因此會傳回所有欄位。 若要對資料表執行查詢，請使用 **queryEntities** 。 下列範例使用此查詢從 'mytable' 傳回實體。
 
 ```javascript
 tableSvc.queryEntities('mytable',query, null, function(error, result, response) {
@@ -309,7 +309,7 @@ tableSvc.queryEntities('mytable',query, null, function(error, result, response) 
 });
 ```
 
-如果作業成功，`result.entries` 就會包含符合查詢的實體陣列。 如果查詢無法傳回所有實體，`result.continuationToken` 便不是 *Null*，而可作為 **queryEntities** 的第三個參數來擷取更多結果。 在初始查詢中，第三個參數請使用 *null* 。
+如果作業成功，`result.entries` 就會包含符合查詢的實體陣列。 如果查詢無法傳回所有實體，`result.continuationToken` 便不是 *Null* ，而可作為 **queryEntities** 的第三個參數來擷取更多結果。 在初始查詢中，第三個參數請使用 *null* 。
 
 ### <a name="query-a-subset-of-entity-properties"></a>查詢實體屬性的子集
 
@@ -325,7 +325,7 @@ var query = new azure.TableQuery()
 
 ## <a name="delete-an-entity"></a>刪除實體
 
-您可以使用實體的資料分割和資料列索引鍵來刪除實體。 在此範例中，**task1** 物件包含要刪除之實體的 **RowKey** 及 **PartitionKey** 值。 然後物件會傳給 **deleteEntity** 方法。
+您可以使用實體的資料分割和資料列索引鍵來刪除實體。 在此範例中， **task1** 物件包含要刪除之實體的 **RowKey** 及 **PartitionKey** 值。 然後物件會傳給 **deleteEntity** 方法。
 
 ```javascript
 var task = {
@@ -357,7 +357,7 @@ tableSvc.deleteTable('mytable', function(error, response){
 });
 ```
 
-若不確定資料表是否存在，請使用 **deleteTableIfExists**。
+若不確定資料表是否存在，請使用 **deleteTableIfExists** 。
 
 ## <a name="use-continuation-tokens"></a>使用接續 Token
 
@@ -455,7 +455,7 @@ var sharedAccessPolicy = {
 };
 ```
 
-下列範例會取得 **hometasks**資料表的目前 ACL，然後使用 **setTableAcl** 來加入新的原則。 此方法允許：
+下列範例會取得 **hometasks** 資料表的目前 ACL，然後使用 **setTableAcl** 來加入新的原則。 此方法允許：
 
 ```javascript
 var extend = require('extend');
@@ -483,6 +483,6 @@ tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 
 * [Microsoft Azure 儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md) 是一個免費的獨立應用程式，可讓您在 Windows、MacOS 和 Linux 上以視覺化方式處理 Azure 儲存體資料。
 * GitHub 上的 [Azure Storage SDK for Node](https://github.com/Azure/azure-storage-node) \(英文\) 存放庫。
-* [適用於 Node.js 開發人員的 Azure](https://docs.microsoft.com/azure/developer/javascript/)
+* [適用於 Node.js 開發人員的 Azure](/azure/developer/javascript/)
 * [在 Azure 中建立 Node.js Web 應用程式](../app-service/quickstart-nodejs.md)
 * [建置 Node.js 應用程式並部署到 Azure 雲端服務](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (使用 Windows PowerShell)

@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 47b3706d1fb46ab7e115d79c2f06f6264c8b423e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9001d9982a26875f814b635533bebd7579339fa5
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666507"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476717"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>透過 .NET SDK 開始使用 Azure Cosmos DB 資料表 API 和 Azure 資料表儲存體
 
@@ -48,7 +48,7 @@ ms.locfileid: "91666507"
 
 1. 選擇 [主控台應用程式 (.NET Core)]，然後選取 [下一步]。
 
-1. 在 [專案名稱] 欄位中輸入應用程式的名稱，例如 **CosmosTableSamples**。 (您可以視需要提供不同的名稱。)
+1. 在 [專案名稱] 欄位中輸入應用程式的名稱，例如 **CosmosTableSamples** 。 (您可以視需要提供不同的名稱。)
 
 1. 選取 [建立]。
 
@@ -66,13 +66,13 @@ ms.locfileid: "91666507"
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，瀏覽至您的 Azure Cosmos 帳戶或資料表儲存體帳戶。 
 
-1. 開啟 [連接字串] 或 [存取金鑰] 窗格。 使用視窗右方的複製按鈕來複製**主要連接字串**。
+1. 開啟 [連接字串] 或 [存取金鑰] 窗格。 使用視窗右方的複製按鈕來複製 **主要連接字串** 。
 
    :::image type="content" source="./media/create-table-dotnet/connection-string.png" alt-text="在 [連接字串] 窗格中檢視及複製主要連接字串":::
    
-1. 若要設定連接字串，從 Visual Studio 中，以滑鼠右鍵按一下您的專案 **CosmosTableSamples**。
+1. 若要設定連接字串，從 Visual Studio 中，以滑鼠右鍵按一下您的專案 **CosmosTableSamples** 。
 
-1. 選取 [新增]，然後選取 [新增項目]。 建立檔案類型為 **TypeScript JSON 組態檔**的新檔案 **Settings.json**。 
+1. 選取 [新增]，然後選取 [新增項目]。 建立檔案類型為 **TypeScript JSON 組態檔** 的新檔案 **Settings.json** 。 
 
 1. 將 Settings.json 檔案中的程式碼取代為下列程式碼，並指派您的主要連接字串：
 
@@ -82,7 +82,7 @@ ms.locfileid: "91666507"
    }
    ```
 
-1. 以滑鼠右鍵按一下您的專案 **CosmosTableSamples**。 選取 [新增]、[新增項目]，然後新增名為 **AppSettings.cs** 的類別。
+1. 以滑鼠右鍵按一下您的專案 **CosmosTableSamples** 。 選取 [新增]、[新增項目]，然後新增名為 **AppSettings.cs** 的類別。
 
 1. 將下列程式碼新增至 AppSettings.cs 檔案。 此檔案會從 Settings.json 檔案中讀取連接字串，並將它指派給設定參數：
 
@@ -90,7 +90,7 @@ ms.locfileid: "91666507"
 
 ## <a name="parse-and-validate-the-connection-details"></a>剖析及驗證連線詳細資料
 
-1. 以滑鼠右鍵按一下您的專案 **CosmosTableSamples**。 選取 [新增]、[新增項目]，然後新增名為 **Common.cs** 的類別。 您將撰寫程式碼來驗證連線詳細資料，並在此類別內建立資料表。
+1. 以滑鼠右鍵按一下您的專案 **CosmosTableSamples** 。 選取 [新增]、[新增項目]，然後新增名為 **Common.cs** 的類別。 您將撰寫程式碼來驗證連線詳細資料，並在此類別內建立資料表。
 
 1. 定義 `CreateStorageAccountFromConnectionString` 方法，如下所示。 此方法將剖析連接字串詳細資料，並驗證 "Settings.json" 檔案中所提供的帳戶名稱和帳戶金鑰詳細資料為有效的。
 
@@ -98,7 +98,7 @@ ms.locfileid: "91666507"
 
 ## <a name="create-a-table"></a>建立資料表 
 
-[CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) 類別可讓您擷取表格儲存體中儲存的資料表。 因為我們在 Cosmos DB 資料表 API 帳戶中沒有任何資料表，讓我們在 **Common.cs** 類別中新增 `CreateTableAsync` 方法來建立資料表：
+[CloudTableClient](/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) 類別可讓您擷取表格儲存體中儲存的資料表。 因為我們在 Cosmos DB 資料表 API 帳戶中沒有任何資料表，讓我們在 **Common.cs** 類別中新增 `CreateTableAsync` 方法來建立資料表：
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Common.cs" id="CreateTable":::
 
@@ -110,25 +110,25 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 
 ## <a name="define-the-entity"></a>定義實體 
 
-使用衍生自 [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity)的自訂類別，將實體對應至 C# 物件。 若要將實體新增至資料表，請建立一個類別來定義實體的屬性。
+使用衍生自 [TableEntity](/dotnet/api/microsoft.azure.cosmos.table.tableentity)的自訂類別，將實體對應至 C# 物件。 若要將實體新增至資料表，請建立一個類別來定義實體的屬性。
 
-以滑鼠右鍵按一下您的專案 **CosmosTableSamples**。 選取 [新增]、[新增資料夾]，然後將其命名為 **Model**。 在 [Model] 資料夾內新增一個名為 **CustomerEntity.cs** 的類別，然後將下列程式碼新增至其中。
+以滑鼠右鍵按一下您的專案 **CosmosTableSamples** 。 選取 [新增]、[新增資料夾]，然後將其命名為 **Model** 。 在 [Model] 資料夾內新增一個名為 **CustomerEntity.cs** 的類別，然後將下列程式碼新增至其中。
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Model/CustomerEntity.cs":::
 
-此程式碼會定義一個實體類別，使用客戶名字作為資料列索引鍵，並使用姓氏作為分割區索引鍵。 系統會在資料表中以實體的資料分割和資料列索引鍵共同針對實體進行唯一識別。 查詢具有相同分割區索引鍵的實體，其速度快於查詢具有不同分割區索引鍵的實體，但使用不同的分割區索引鍵可針對平行作業提供更佳的延展性。 若要將實體儲存於資料表，其必須屬於支援的類型，例如衍生自 [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity) 類別。 您想要儲存在資料表中的實體屬性必須是該類型的公用屬性，而且同時支援值的取得和設定。 此外，您的實體類型必須公開無參數建構函式。
+此程式碼會定義一個實體類別，使用客戶名字作為資料列索引鍵，並使用姓氏作為分割區索引鍵。 系統會在資料表中以實體的資料分割和資料列索引鍵共同針對實體進行唯一識別。 查詢具有相同分割區索引鍵的實體，其速度快於查詢具有不同分割區索引鍵的實體，但使用不同的分割區索引鍵可針對平行作業提供更佳的延展性。 若要將實體儲存於資料表，其必須屬於支援的類型，例如衍生自 [TableEntity](/dotnet/api/microsoft.azure.cosmos.table.tableentity) 類別。 您想要儲存在資料表中的實體屬性必須是該類型的公用屬性，而且同時支援值的取得和設定。 此外，您的實體類型必須公開無參數建構函式。
 
 ## <a name="insert-or-merge-an-entity"></a>插入或合併實體
 
-下列程式碼範例會建立實體物件，並將它新增至資料表。 [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) \(英文\) 類別內的 InsertOrMerge 方法可用來插入或合併實體。 呼叫 [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?view=azure-dotnet&preserve-view=true) \(英文\) 方法來執行作業。 
+下列程式碼範例會建立實體物件，並將它新增至資料表。 [TableOperation](/dotnet/api/microsoft.azure.cosmos.table.tableoperation) \(英文\) 類別內的 InsertOrMerge 方法可用來插入或合併實體。 呼叫 [CloudTable.ExecuteAsync](/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?preserve-view=true&view=azure-dotnet) \(英文\) 方法來執行作業。 
 
-以滑鼠右鍵按一下您的專案 **CosmosTableSamples**。 選取 [新增]、[新增項目]，然後新增名為 **SamplesUtils.cs** 的類別。 此類別會儲存在實體上執行 CRUD 作業所需的所有程式碼。 
+以滑鼠右鍵按一下您的專案 **CosmosTableSamples** 。 選取 [新增]、[新增項目]，然後新增名為 **SamplesUtils.cs** 的類別。 此類別會儲存在實體上執行 CRUD 作業所需的所有程式碼。 
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="InsertItem":::
 
 ## <a name="get-an-entity-from-a-partition"></a>從分割區取得實體
 
-您也可以使用 [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) \(英文\) 類別下方的 Retrieve 方法，從分割區取得實體。 下列程式碼範例會取得分割區索引鍵的資料列索引鍵、客戶實體的電子郵件及電話號碼。 此範例也會列印出查詢實體所耗用的要求單位。 若要查詢實體，將下列程式碼附加至 **SamplesUtils.cs** 檔案：
+您也可以使用 [TableOperation](/dotnet/api/microsoft.azure.cosmos.table.tableoperation) \(英文\) 類別下方的 Retrieve 方法，從分割區取得實體。 下列程式碼範例會取得分割區索引鍵的資料列索引鍵、客戶實體的電子郵件及電話號碼。 此範例也會列印出查詢實體所耗用的要求單位。 若要查詢實體，將下列程式碼附加至 **SamplesUtils.cs** 檔案：
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="QueryData":::
 
@@ -140,7 +140,7 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 
 ## <a name="execute-the-crud-operations-on-sample-data"></a>針對範例資料執行 CRUD 作業
 
-當您定義方法來建立資料表、插入或合併實體之後，請針對範例資料執行這些方法。 若要執行此動作，以滑鼠右鍵按一下您的專案 **CosmosTableSamples**。 選取 [新增]、[新增項目]，然後新增名為 **BasicSamples.cs** 的類別，並將下列程式碼新增至其中。 此程式碼會建立資料表並將實體新增至其中。
+當您定義方法來建立資料表、插入或合併實體之後，請針對範例資料執行這些方法。 若要執行此動作，以滑鼠右鍵按一下您的專案 **CosmosTableSamples** 。 選取 [新增]、[新增項目]，然後新增名為 **BasicSamples.cs** 的類別，並將下列程式碼新增至其中。 此程式碼會建立資料表並將實體新增至其中。
 
 如果您想要在專案結束時刪除實體和資料表，請註解下列程式碼中的 `await table.DeleteIfExistsAsync()` 和 `SamplesUtils.DeleteEntityAsync(table, customer)` 方法。 在刪除資料表之前，最好先將這些方法註解化並驗證資料表。
 
@@ -152,7 +152,7 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 
 ## <a name="run-the-project"></a>執行專案
 
-從您的專案 **CosmosTableSamples**。 開啟名為 **Program.cs** 的類別，並在其中新增下列程式碼，以便在專案執行時呼叫 BasicSamples。
+從您的專案 **CosmosTableSamples** 。 開啟名為 **Program.cs** 的類別，並在其中新增下列程式碼，以便在專案執行時呼叫 BasicSamples。
 
 :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Program.cs":::
 

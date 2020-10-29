@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: 005473fa02dda2e5466ffbc5a32499006c41292c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb8d1cd2e3b481969059883919b9dc888955307e
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322694"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92478111"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>教學課程：使用 JavaScript SDK 建置 Node.js Web 應用程式來管理 Azure Cosmos DB 中的 SQL API 帳戶 
 
@@ -22,7 +22,7 @@ ms.locfileid: "91322694"
 > * [.NET](sql-api-dotnet-application.md)
 > * [Java](sql-api-java-application.md)
 > * [Node.js](sql-api-nodejs-application.md)
-> * [Python](sql-api-python-application.md)
+> * [Python](./create-sql-api-python.md)
 > * [Xamarin](mobile-apps-with-xamarin.md)
 > 
 
@@ -64,7 +64,7 @@ ms.locfileid: "91322694"
 
 1. 瀏覽至您想要在其中儲存新應用程式的目錄。
 
-1. 使用 Express 產生器來產生名為 **todo**的新應用程式。
+1. 使用 Express 產生器來產生名為 **todo** 的新應用程式。
 
    ```bash
    express todo
@@ -190,7 +190,7 @@ ms.locfileid: "91322694"
 
 1. 在專案的 **routes** 目錄中，建立名為 **tasklist.js** 的新檔案。  
 
-2. 在 **tasklist.js**中加入以下程式碼。 此程式碼會載入供 **tasklist.js** 使用的 CosmosClient 和 async 模組。 此程式碼也會定義 **TaskList** 類別，此類別會傳遞作為我們稍早定義的 **TaskDao** 物件執行個體：
+2. 在 **tasklist.js** 中加入以下程式碼。 此程式碼會載入供 **tasklist.js** 使用的 CosmosClient 和 async 模組。 此程式碼也會定義 **TaskList** 類別，此類別會傳遞作為我們稍早定義的 **TaskDao** 物件執行個體：
    
    ```javascript
     const TaskDao = require("../models/TaskDao");
@@ -381,7 +381,7 @@ ms.locfileid: "91322694"
        script(src='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js')
    ```
 
-    此程式碼會指示 **Jade** 引擎轉譯出我們應用程式的部分 HTML，並建立稱為 **content** 的**區塊**，讓我們能在其中提供內容頁面的配置。 儲存並關閉 **layout.jade** 檔案。
+    此程式碼會指示 **Jade** 引擎轉譯出我們應用程式的部分 HTML，並建立稱為 **content** 的 **區塊** ，讓我們能在其中提供內容頁面的配置。 儲存並關閉 **layout.jade** 檔案。
 
 3. 現在，開啟 **index.jade** 檔案 (應用程式即將使用的檢視)，並將檔案中的內容取代為下列程式碼：
 
@@ -487,4 +487,3 @@ ms.locfileid: "91322694"
 [Node.js]: https://nodejs.org/
 [Git]: https://git-scm.com/
 [GitHub]: https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-todo-app
-

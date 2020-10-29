@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: bd2b28b516f0043bb64e175bfa901557cdb78de4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b855f8d967e2812884f5be79652fcd33cd080ce
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334407"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476632"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>使用 Azure Cosmos DB 適用於 MongoDB 的 API 建立 Angular 應用程式
 
@@ -36,7 +36,7 @@ ms.locfileid: "91334407"
 
 * 在開始本教學課程之前，請完成[第 4 部分](tutorial-develop-mongodb-nodejs-part4.md)的步驟。
 
-* 此教學課程需要您在本機執行 Azure CLI。 您必須安裝 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+* 此教學課程需要您在本機執行 Azure CLI。 您必須安裝 Azure CLI 2.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI 2.0](/cli/azure/install-azure-cli)。
 
 * 本教學課程會為您解說逐步建置應用程式的步驟。 如果您需要下載已完成的專案，您可以從 GitHub 上的 [angular-cosmosdb 存放庫](https://github.com/Azure-Samples/angular-cosmosdb)取得已完成的應用程式。
 
@@ -110,7 +110,7 @@ Mongoose 是適用於 MongoDB 及 Node.js 的物件資料模型 (ODM) 程式庫�
     const port = 10255;
     ```
 
-1. 在 **environment.js** 中，將 `accountName` 的值變更為您在教學課程的[第 4 部分](tutorial-develop-mongodb-nodejs-part4.md)中建立的 Azure Cosmos DB 帳戶名稱。 
+1. 在 **environment.js** 中，將 `accountName` 的值變更為您在教學課程的 [第 4 部分](tutorial-develop-mongodb-nodejs-part4.md)中建立的 Azure Cosmos DB 帳戶名稱。 
 
 1. 在終端機視窗中使用下列的 CLI 命令，擷取 Azure Cosmos DB 帳戶的主索引鍵： 
 
@@ -136,7 +136,7 @@ Mongoose 是適用於 MongoDB 及 Node.js 的物件資料模型 (ODM) 程式庫�
    * 建立具有識別碼、名稱和招呼語的新結構描述。
    * 使用結構描述建立模型。
    * 匯出磁碟。 
-   * 將集合命名為 **Heroes** (而不是 **Heros**，這是以 Mongoose 複數命名規則為基礎的集合預設名稱)。
+   * 將集合命名為 **Heroes** (而不是 **Heros** ，這是以 Mongoose 複數命名規則為基礎的集合預設名稱)。
 
    ```javascript
    const mongoose = require('mongoose');
@@ -224,7 +224,7 @@ Mongoose 是適用於 MongoDB 及 Node.js 的物件資料模型 (ODM) 程式庫�
     function getHeroes(req, res) {
     ```
 
-讓我們花點時間檢閱和逐步解說程式碼。 首先，我們會進入 index.js 檔案，該檔案可設定節點伺服器。 請注意它會設定及定義您的路由。 接下來，routes.js 檔案會與 Hero 服務交談並告知取得您的函式 (例如 **getHeroes**)，然後傳遞要求和回應。 hero.service.js 檔案會取得模型並連線至 Mongo。 然後會在我們呼叫它時執行 **getHeroes**，並傳回回應 200。 
+讓我們花點時間檢閱和逐步解說程式碼。 首先，我們會進入 index.js 檔案，該檔案可設定節點伺服器。 請注意它會設定及定義您的路由。 接下來，routes.js 檔案會與 Hero 服務交談並告知取得您的函式 (例如 **getHeroes** )，然後傳遞要求和回應。 hero.service.js 檔案會取得模型並連線至 Mongo。 然後會在我們呼叫它時執行 **getHeroes** ，並傳回回應 200。 
 
 ## <a name="run-the-app"></a>執行應用程式
 

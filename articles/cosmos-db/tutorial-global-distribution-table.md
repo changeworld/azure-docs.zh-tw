@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 01/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f0d62ae3909bc886fa6a56ba7ed32d55d27302dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2497a1fe5bfd3618246c9590685d08894e897f3
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568664"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92476513"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>使用資料表 API 來設定 Azure Cosmos DB 全域散發
 
@@ -28,7 +28,7 @@ ms.locfileid: "91568664"
 
 ## <a name="connecting-to-a-preferred-region-using-the-table-api"></a>使用資料表 API 來連線到慣用的區域
 
-為了充分利用[全域散發](distribute-data-globally.md)，用戶端應用程式應指定其應用程式目前執行所在的位置。 此動作可藉由設定 `CosmosExecutorConfiguration.CurrentRegion` 屬性來完成。 `CurrentRegion` 屬性應包含單一位置。 每個用戶端執行個體都可指定本身的區域，以利進行低延遲讀取。 這類區域必須以其[顯示名稱](https://msdn.microsoft.com/library/azure/gg441293.aspx)命名，例如「美國西部」。 
+為了充分利用[全域散發](distribute-data-globally.md)，用戶端應用程式應指定其應用程式目前執行所在的位置。 此動作可藉由設定 `CosmosExecutorConfiguration.CurrentRegion` 屬性來完成。 `CurrentRegion` 屬性應包含單一位置。 每個用戶端執行個體都可指定本身的區域，以利進行低延遲讀取。 這類區域必須以其[顯示名稱](/previous-versions/azure/reference/gg441293(v=azure.100))命名，例如「美國西部」。 
 
 Azure Cosmos DB 資料表 API SDK 會根據帳戶組態和目前的區域可用性，自動挑選最適合通訊的端點。 它會排定最近區域的優先順序，為用戶端提供較短的延遲性。 設定目前的 `CurrentRegion` 屬性之後，會依照下列方式導入讀取和寫入要求：
 
@@ -47,4 +47,3 @@ Azure Cosmos DB 資料表 API SDK 會根據帳戶組態和目前的區域可用�
 > [!div class="checklist"]
 > * 使用 Azure 入口網站來設定全域散發
 > * 使用 Azure Cosmos DB 資料表 API 來設定全域散發
-

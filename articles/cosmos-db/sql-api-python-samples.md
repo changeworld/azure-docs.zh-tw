@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: ba4382e03e6fc1acfd606a375a062c05581f712c
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 10da2f3a84a4c1e6d761c86901f3249972cc0f5b
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278217"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92477839"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB Python 範例
 
@@ -38,7 +38,7 @@ ms.locfileid: "92278217"
     * 在 Azure 作用中訂用帳戶內：
         * [建立 Azure 免費帳戶](https://azure.microsoft.com/free) 或使用現有的訂用帳戶 
         * [Visual Studio 每月點數](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers)
-        * [Azure Cosmos DB 免費層](https://docs.microsoft.com/azure/cosmos-db/optimize-dev-test#azure-cosmos-db-free-tier)
+        * [Azure Cosmos DB 免費層](./optimize-dev-test.md#azure-cosmos-db-free-tier)
     * 若沒有作用中的 Azure 訂用帳戶：
         * [免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，此測試環境可使用 30 天。
         * [Azure Cosmos DB 模擬器](https://aka.ms/cosmosdb-emulator) 
@@ -90,7 +90,7 @@ ms.locfileid: "92278217"
 
 ## <a name="indexing-examples"></a>索引範例
 
-[index_management.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py) Python 範例示範如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的索引功能，請參閱[索引原則](index-policy.md)、[索引類型](index-types.md)及[索引路徑](index-paths.md)概念性文章。
+[index_management.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py) Python 範例示範如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的索引功能，請參閱[索引原則](index-policy.md)、[索引類型](index-overview.md#index-kinds)及[索引路徑](index-policy.md#include-exclude-paths)概念性文章。
 
 | Task | API 參考資料 |
 | --- | --- |

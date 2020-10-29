@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 06/12/2020
-ms.openlocfilehash: 0d2d7b0e8d4a67b2ff67a780a71ea46ec54df1de
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f8b7cfd79188ca742ee163a02c2b6c3b8f36e6c2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280008"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92481715"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-table-api-table-using-azure-powershell"></a>使用 Azure PowerShell 建立 Azure Cosmos 資料表 API 資料表的資源鎖定
 
@@ -42,11 +42,11 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 | Command | 注意 |
 |---|---|
 |**Azure 資源**| |
-| [New-AzResourceLock](https://docs.microsoft.com/PowerShell/module/az.resources/new-azresourcelock) | 建立資源鎖定。 |
-| [Get-AzResourceLock](https://docs.microsoft.com/PowerShell/module/az.resources/get-azresourcelock) | 取得資源鎖定，或列出資源鎖定。 |
-| [Remove-AzResourceLock](https://docs.microsoft.com/PowerShell/module/az.resources/remove-azresourcelock) | 移除資源鎖定。 |
+| [New-AzResourceLock](/PowerShell/module/az.resources/new-azresourcelock) | 建立資源鎖定。 |
+| [Get-AzResourceLock](/PowerShell/module/az.resources/get-azresourcelock) | 取得資源鎖定，或列出資源鎖定。 |
+| [Remove-AzResourceLock](/PowerShell/module/az.resources/remove-azresourcelock) | 移除資源鎖定。 |
 |||
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/PowerShell/)。
+如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](/PowerShell/)。
