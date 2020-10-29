@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
-ms.openlocfilehash: cfd7a007c8f26a96d929026e231cb412cdc70279
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7bb74732074482c12d3bc760e259bb014ccf006f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89440842"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454179"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Ekarda 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "89440842"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Ekarda。
 * 在 Azure 入口網站中集中管理您的帳戶。
 
-若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是單一登入 (SSO)？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是單一登入 (SSO)？](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -41,7 +41,7 @@ ms.locfileid: "89440842"
 
 * Ekarda 支援 SP 和 IDP 起始的 SSO。
 * Ekarda 支援 Just-In-Time 使用者佈建。
-* 設定 Ekarda 後，您可以強制執行工作階段控制項。 這項預防措施可即時保護貴組織的敏感性資料免於外洩和遭到滲透。 工作階段控制項會從條件式存取應用程式控制延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 Ekarda 後，您可以強制執行工作階段控制項。 這項預防措施可即時保護貴組織的敏感性資料免於外洩和遭到滲透。 工作階段控制項會從條件式存取應用程式控制延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-ekarda-from-the-gallery"></a>從資源庫新增 Ekarda
 
@@ -52,7 +52,7 @@ ms.locfileid: "89440842"
 1. 在左窗格中選取 [Azure Active Directory]  服務。
 1. 移至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Ekarda**。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Ekarda** 。
 1. 從結果面板選取 [Ekarda]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-ekarda"></a>設定及測試 Ekarda 的 Azure AD 單一登入
@@ -75,20 +75,20 @@ ms.locfileid: "89440842"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 1. 在 **Ekarda** 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
-1. 在 [以 SAML 設定單一登入] 頁面上，選取鉛筆圖示以編輯**基本 SAML 組態**的設定。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [以 SAML 設定單一登入] 頁面上，選取鉛筆圖示以編輯 **基本 SAML 組態** 的設定。
 
    ![以 SAML 設定單一登入頁面的螢幕擷取畫面，其中的鉛筆圖示已醒目提示。](common/edit-urls.png)
 
-1. 如果您看見**服務提供者中繼資料檔案**，請在 [基本 SAML 設定] 區段中遵循下列步驟：
-    1. 選取 [上傳中繼資料檔案]****。
+1. 如果您看見 **服務提供者中繼資料檔案** ，請在 [基本 SAML 設定] 區段中遵循下列步驟：
+    1. 選取 [上傳中繼資料檔案]  。
     1. 選取資料夾圖示以選取中繼資料檔案，然後選取 [上傳]。
     1. 成功上傳中繼資料檔案後，Ekarda 區段文字方塊中會自動出現 [識別碼] 和 [回覆 URL]。
 
     > [!Note]
     > 如果 [識別碼] 和 [回覆 URL] 值未自動出現，請根據您的需求手動填入這些值。
 
-1. 如果您在 [基本 SAML 設定] 區段中看不到**服務提供者中繼資料檔案**，而且想要以 IDP 起始模式設定應用程式，請輸入下列欄位的值：
+1. 如果您在 [基本 SAML 設定] 區段中看不到 **服務提供者中繼資料檔案** ，而且想要以 IDP 起始模式設定應用程式，請輸入下列欄位的值：
 
     1. 在 [識別碼] 文字方塊中，以下列模式輸入 URL：`https://my.ekarda.com/users/saml_metadata/<COMPANY_ID>`
     1. 在 [回覆 URL] 文字方塊中，以下列模式輸入 URL︰`https://my.ekarda.com/users/saml_acs/<COMPANY_ID>`
@@ -98,7 +98,7 @@ ms.locfileid: "89440842"
     * 在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://my.ekarda.com/users/saml_sso/<COMPANY_ID>`
 
     > [!NOTE]
-    > 上述兩個步驟中的值不是真實的。 請使用實際的識別碼、回覆 URL 及登入 URL 值來更新它們。 請連絡 [Ekarda 用戶端支援小組](mailto:contact@ekarda.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 上述兩個步驟中的值不是真實的。 請使用實際的識別碼、回覆 URL 及登入 URL 值來更新它們。 請連絡 [Ekarda 用戶端支援小組](mailto:contact@ekarda.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，選取 [下載] 以在電腦上儲存 [憑證 (Base64)]。
 
@@ -168,14 +168,14 @@ ms.locfileid: "89440842"
 
 在本節中，您會使用 MyApps 入口網站來測試您的 Azure AD 單一登入組態。
 
-當您在 [我的應用程式] 入口網站中選取 Ekarda 圖格時，應該會自動登入您設定 SSO 的 Ekarda 網站。 如需「我的應用程式」入口網站的詳細資訊，請參閱[我的應用程式入口網站簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在 [我的應用程式] 入口網站中選取 Ekarda 圖格時，應該會自動登入您設定 SSO 的 Ekarda 網站。 如需「我的應用程式」入口網站的詳細資訊，請參閱[我的應用程式入口網站簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [用於整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-* [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-* [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* [用於整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](./tutorial-list.md)
+* [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
+* [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 * [嘗試搭配 Azure AD 使用 Ekarda](https://aad.portal.azure.com/)
 * 使用 [Ekarda 的企業 eCard 解決方案](https://ekarda.com/ecards-ecards-with-logo-for-business-corporate-enterprise)來佈建任何數量的人員，以將加上您公司標誌的 eCard 傳送給用戶端和同事。 深入了解如何將 [Ekarda 佈建為 SSO 解決方案](https://support.ekarda.com/#SSO-Implementation)。
-* [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-* [如何使用進階可見性和控制項保護 Ekarda](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+* [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
+* [如何使用進階可見性和控制項保護 Ekarda](/cloud-app-security/proxy-intro-aad)

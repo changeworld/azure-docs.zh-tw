@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 199a443bf2f0c674f85fec0ecfd0083c92f17fe4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac41bf89a3c2997fe0c179ef1a64787b5fb8d617
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88555197"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453581"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>教學課程：Azure Active Directory 與 Fidelity NetBenefits 整合
 
@@ -27,7 +27,7 @@ Fidelity NetBenefits 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用他們的 Azure AD 帳戶自動登入 Fidelity NetBenefits (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -63,7 +63,7 @@ Fidelity NetBenefits 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Fidelity NetBenefits**，從結果面板中選取 **Fidelity NetBenefits**，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Fidelity NetBenefits** ，從結果面板中選取 **Fidelity NetBenefits** ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Fidelity NetBenefits](common/search-new-app.png)
 
@@ -116,9 +116,9 @@ Fidelity NetBenefits 與 Azure AD 整合提供下列優點：
     ![image](common/edit-attribute.png)
 
     >[!Note]
-    >Fidelity NetBenefits 支援靜態和動態同盟。 靜態代表不使用 SAML 型 Just-In-Time 使用者佈建，而動態則代表支援 Just-In-Time 使用者佈建。 若要使用 JIT 型佈建，客戶還必須在 Azure AD 中新增一些宣告，如使用者的生日等。這些詳細資料會由指派的 **Fidelity 用戶端服務管理員**提供，他們必須為您的執行個體啟用該動態同盟。
+    >Fidelity NetBenefits 支援靜態和動態同盟。 靜態代表不使用 SAML 型 Just-In-Time 使用者佈建，而動態則代表支援 Just-In-Time 使用者佈建。 若要使用 JIT 型佈建，客戶還必須在 Azure AD 中新增一些宣告，如使用者的生日等。這些詳細資料會由指派的 **Fidelity 用戶端服務管理員** 提供，他們必須為您的執行個體啟用該動態同盟。
 
-6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -152,7 +152,7 @@ Fidelity NetBenefits 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -189,21 +189,20 @@ Fidelity NetBenefits 與 Azure AD 整合提供下列優點：
 
 ### <a name="create-fidelity-netbenefits-test-user"></a>建立 Fidelity NetBenefits 測試使用者
 
-在本節中，您要在 Fidelity NetBenefits 中建立名為 Britta Simon 的使用者。 如果您要建立靜態同盟，請與指派的 **Fidelity 用戶端服務管理員**合作，在 Fidelity NetBenefits 平台中建立使用者。 您必須先建立和啟動這些使用者，然後才能使用單一登入。
+在本節中，您要在 Fidelity NetBenefits 中建立名為 Britta Simon 的使用者。 如果您要建立靜態同盟，請與指派的 **Fidelity 用戶端服務管理員** 合作，在 Fidelity NetBenefits 平台中建立使用者。 您必須先建立和啟動這些使用者，然後才能使用單一登入。
 
-若要使用動態同盟，您可以使用 Just-In-Time 使用者佈建來建立使用者。 若要使用 JIT 型佈建，客戶還必須在 Azure AD 中新增一些宣告，如使用者的生日等。這些詳細資料會由指派的 **Fidelity 用戶端服務管理員**提供，他們必須為您的執行個體啟用該動態同盟。
+若要使用動態同盟，您可以使用 Just-In-Time 使用者佈建來建立使用者。 若要使用 JIT 型佈建，客戶還必須在 Azure AD 中新增一些宣告，如使用者的生日等。這些詳細資料會由指派的 **Fidelity 用戶端服務管理員** 提供，他們必須為您的執行個體啟用該動態同盟。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Fidelity NetBenefits] 圖格時，應該會自動登入您已設定 SSO 的 Fidelity NetBenefits。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Fidelity NetBenefits] 圖格時，應該會自動登入您已設定 SSO 的 Fidelity NetBenefits。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

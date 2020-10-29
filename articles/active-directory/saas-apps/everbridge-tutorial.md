@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
-ms.openlocfilehash: 1da2fd879dbeac1836469d46567566769f6163a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 732362ef7099e93697320d8e47180c1207e8cb32
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88555377"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453853"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>教學課程：Azure Active Directory 與 Everbridge 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88555377"
 * 在 Azure AD 中控制可存取 Everbridge 的人員。
 * 讓使用者使用其 Azure AD 帳戶自動登入 Everbridge。 此存取控制稱為單一登入 (SSO)。
 * 使用 Azure 入口網站集中管理您的帳戶。
-如需有關軟體即服務 (SaaS) 應用程式與 Azure AD 整合的詳細資訊，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如需有關軟體即服務 (SaaS) 應用程式與 Azure AD 整合的詳細資訊，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -60,7 +60,7 @@ ms.locfileid: "88555377"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Everbridge**。 從結果面板中選取 [Everbridge]  ，然後選取 [新增]  。
+4. 在搜尋方塊中，輸入 **Everbridge** 。 從結果面板中選取 [Everbridge]  ，然後選取 [新增]  。
 
      ![結果清單中的 Everbridge](common/search-new-app.png)
 
@@ -100,7 +100,7 @@ ms.locfileid: "88555377"
     >[!NOTE]
     >在 Azure 入口網站和 Everbridge 入口網站上，將應用程式設定為管理員入口網站「或」  成員入口網站。
 
-4. 若要將 **Everbridge** 應用程式設為 **EverBridge 管理員入口網站**，請在 [基本 SAML 設定]  區段執行下列步驟：
+4. 若要將 **Everbridge** 應用程式設為 **EverBridge 管理員入口網站** ，請在 [基本 SAML 設定]  區段執行下列步驟：
 
     ![Everbridge 網域及 URL 單一登入資訊](common/idp-intiated.png)
 
@@ -109,9 +109,9 @@ ms.locfileid: "88555377"
     b. 在 [回覆 URL]  方塊中，輸入遵循 `https://manager.everbridge.net/saml/SSO/<API_Name>/alias/defaultAlias` 模式的 URL
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 值來更新這些值。 若要取得這些值，請連絡 [Everbridge 支援小組](mailto:support@everbridge.com)。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 值來更新這些值。 若要取得這些值，請連絡 [Everbridge 支援小組](mailto:support@everbridge.com)。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-5. 若要將  應用程式設為 **EverBridge 成員入口網站**，請在 [基本 SAML 設定]  區段執行下列步驟：
+5. 若要將  應用程式設為 **EverBridge 成員入口網站** ，請在 [基本 SAML 設定]  區段執行下列步驟：
 
   * 如果您想要以 IDP 起始模式設定應用程式，請遵循下列步驟：
 
@@ -128,9 +128,9 @@ ms.locfileid: "88555377"
      a. 在 [登入 URL]  方塊中，輸入遵循 `https://member.everbridge.net/saml/login/<API_Name>/<Organization_ID>/alias/defaultAlias?disco=true` 模式的 URL
 
      > [!NOTE]
-     > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」和「登入 URL」值更新這些值。 若要取得這些值，請連絡 [Everbridge 支援小組](mailto:support@everbridge.com)。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+     > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」和「登入 URL」值更新這些值。 若要取得這些值，請連絡 [Everbridge 支援小組](mailto:support@everbridge.com)。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-6. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，選取 [下載]  以下載**同盟中繼資料 XML**。 將其儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，選取 [下載]  以下載 **同盟中繼資料 XML** 。 將其儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -144,7 +144,7 @@ ms.locfileid: "88555377"
 
 ### <a name="configure-everbridge-as-everbridge-manager-portal-single-sign-on"></a>將 Everbridge 設定為 Everbridge 管理員入口網站單一登入
 
-若要在作為 **Everbridge 管理員入口網站**應用程式的 **Everbridge** 上設定 SSO，請遵循下列步驟。
+若要在作為 **Everbridge 管理員入口網站** 應用程式的 **Everbridge** 上設定 SSO，請遵循下列步驟。
  
 1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入 Everbridge。
 
@@ -168,7 +168,7 @@ ms.locfileid: "88555377"
 
 ### <a name="configure-everbridge-as-everbridge-member-portal-single-sign-on"></a>將 Everbridge 設定為 Everbridge 成員入口網站單一登入
 
-若要在作為 **Everbridge 成員入口網站**的 **Everbridge** 上設定單一登入，您需要將所下載的**同盟中繼資料 XML** 傳送至 [ 支援小組](mailto:support@everbridge.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在作為 **Everbridge 成員入口網站** 的 **Everbridge** 上設定單一登入，您需要將所下載的 **同盟中繼資料 XML** 傳送至 [ 支援小組](mailto:support@everbridge.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
@@ -186,7 +186,7 @@ ms.locfileid: "88555377"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  方塊中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  方塊中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  方塊中，輸入 `brittasimon@yourcompanydomain.extension`。 例如 BrittaSimon@contoso.com。
 
@@ -228,11 +228,10 @@ ms.locfileid: "88555377"
 
 使用存取面板來測試您的 Azure AD 單一登入組態。
 
-當您在存取面板中選取 Everbridge 圖格時，應該會自動登入您已設定 SSO 的 Everbridge 帳戶。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 Everbridge 圖格時，應該會自動登入您已設定 SSO 的 Everbridge 帳戶。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [如何整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](./tutorial-list.md)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

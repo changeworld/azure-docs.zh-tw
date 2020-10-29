@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/28/2020
 ms.author: jeedes
-ms.openlocfilehash: a9ace754a75d63bc24bea91dd6c88a3d004fd0eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55a66f3f287ffb50d932263e407772efffa839ba
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88555084"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453530"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-field-id"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與欄位識別碼整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88555084"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Field iD。
 * 在 Azure 入口網站中集中管理您的帳戶。
 
-若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88555084"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * Field iD 支援由 IDP 起始的 SSO。
-* 設定 Field iD 後，您可以強制執行工作階段控制項。 這可即時保護貴組織的敏感性資料免於外洩和遭到滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 Field iD 後，您可以強制執行工作階段控制項。 這可即時保護貴組織的敏感性資料免於外洩和遭到滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-field-id-from-the-gallery"></a>從資源庫新增 Field iD
 
@@ -50,7 +50,7 @@ ms.locfileid: "88555084"
 1. 在左瀏覽窗格中，選取 [Azure Active Directory]。
 1. 移至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入**欄位識別碼**。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **欄位識別碼** 。
 1. 從結果面板中選取 [Field iD]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-field-id"></a>設定及測試欄位識別碼的 Azure AD 單一登入
@@ -71,7 +71,7 @@ ms.locfileid: "88555084"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Field iD] 應用程式整合頁面上，尋找 [管理] 區段。 然後選取 [單一登入]。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入] 頁面上，選取 [基本 SAML 組態] 的鉛筆圖示，以編輯設定。
 
    ![以 SAML 設定單一登入頁面的螢幕擷取畫面，其中的鉛筆圖示已醒目提示](common/edit-urls.png)
@@ -83,7 +83,7 @@ ms.locfileid: "88555084"
    b. 在 [回覆 URL] 文字方塊中，以下列模式輸入 URL︰`https://<tenantname>.fieldid.com/fieldid/saml/SSO/alias/<Tenant Name>`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [Field iD 支援小組](mailto:support@ecompliance.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [Field iD 支援小組](mailto:support@ecompliance.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，選取 [複製] 圖示以複製 [應用程式同盟中繼資料 URL]。 將其儲存在您的電腦上。
 
@@ -121,7 +121,7 @@ ms.locfileid: "88555084"
 
 ## <a name="configure-field-id-sso"></a>設定欄位識別碼 SSO
 
-若要在 Field iD 端設定單一登入，請將**應用程式同盟中繼資料 URL** 傳送給 [Field iD 支援小組](mailto:support@ecompliance.com)。 他們會確保兩端的 SAML SSO 連線已正確設定。
+若要在 Field iD 端設定單一登入，請將 **應用程式同盟中繼資料 URL** 傳送給 [Field iD 支援小組](mailto:support@ecompliance.com)。 他們會確保兩端的 SAML SSO 連線已正確設定。
 
 ### <a name="create-a-field-id-test-user"></a>建立 Field iD 測試使用者
 
@@ -131,19 +131,18 @@ ms.locfileid: "88555084"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入組態。
 
-當您在存取面板中選取 [Field iD] 圖格時，應該會自動登入您已設定 SSO 的 Field iD。 如需詳細資訊，請參閱[登入我的應用程式入口網站並啟動應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [Field iD] 圖格時，應該會自動登入您已設定 SSO 的 Field iD。 如需詳細資訊，請參閱[登入我的應用程式入口網站並啟動應用程式](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試使用 Azure AD 的欄位識別碼](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用進階可見性和控制項來保護欄位識別碼](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [如何使用進階可見性和控制項來保護欄位識別碼](/cloud-app-security/proxy-intro-aad)

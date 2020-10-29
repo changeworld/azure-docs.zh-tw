@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 85b355981a50804f1c43441efa38c5db59967c1d
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 26109d4b8875dd0b442521513dbd219dc0de06e0
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760626"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455964"
 ---
 # <a name="tutorial-integrate-civic-platform-with-azure-active-directory"></a>教學課程：整合 Civic Platform 與 Azure Active Directory
 
@@ -26,7 +26,7 @@ ms.locfileid: "91760626"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Civic Platform。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -53,7 +53,7 @@ ms.locfileid: "91760626"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Civic Platform**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Civic Platform** 。
 1. 從結果面板選取 [Civic Platform]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -87,7 +87,7 @@ ms.locfileid: "91760626"
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，輸入 URL：`civicplatform.accela.com`
 
     > [!NOTE]
-    > [登入 URL] 的值不是真正的值。 使用實際的登入 URL 來更新此值。 請連絡 [Civic Platform 用戶端支援小組](mailto:skale@accela.com)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > [登入 URL] 的值不是真正的值。 使用實際的登入 URL 來更新此值。 請連絡 [Civic Platform 用戶端支援小組](mailto:skale@accela.com)以取得此值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]  ，並將其儲存在您的電腦上。
 
@@ -122,7 +122,7 @@ ms.locfileid: "91760626"
 
     ![顯示 Atlassian Cloud 網站的螢幕擷取畫面，其中具有在 [系統管理員工具] 底下呼叫的標準選項。](media/civic-platform-tutorial/standard-choices.png)
 
-1. 建立標準選擇 **ssoconfig**。
+1. 建立標準選擇 **ssoconfig** 。
 
 1. 搜尋 **ssoconfig** 並提交。
 
@@ -182,13 +182,12 @@ ms.locfileid: "91760626"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Civic Platform] 圖格時，應該會自動登入您設定 SSO 的 Civic Platform。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Civic Platform] 圖格時，應該會自動登入您設定 SSO 的 Civic Platform。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

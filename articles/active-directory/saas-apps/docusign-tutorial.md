@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 51ad28319a372cd791575b5a3e67cc0fd6934be2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00d4381c7af7fdf82ee1e895072d92d1e641f8c4
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981648"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454689"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 DocuSign 整合
 
@@ -44,9 +44,9 @@ ms.locfileid: "90981648"
 
 * DocuSign 支援 **just-in-time** 使用者佈建。
 
-* DocuSign 支援[自動使用者佈建](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial)。
+* DocuSign 支援[自動使用者佈建](./docusign-provisioning-tutorial.md)。
 
-* 設定 DocuSign 之後，您可以強制執行工作階段控制項，以即時防止組織的敏感性資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 設定 DocuSign 之後，您可以強制執行工作階段控制項，以即時防止組織的敏感性資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-docusign-from-the-gallery"></a>從資源庫新增 DocuSign
 
@@ -56,7 +56,7 @@ ms.locfileid: "90981648"
 1. 在左側導覽窗格中，選取 [Azure Active Directory] 服務。
 1. 移至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增新的應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **DocuSign**。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **DocuSign** 。
 1. 從結果面板選取 [DocuSign]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -78,7 +78,7 @@ ms.locfileid: "90981648"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO：
 
 1. 在 Azure 入口網站的 [DocuSign] 應用程式整合頁面上，尋找 [管理] 區段，然後選取 [單一登入]。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，選取 [基本 SAML 組態]  的畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -93,7 +93,7 @@ ms.locfileid: "90981648"
 
     `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
 
-    c. 在**回覆 URL** 文字方塊中，輸入下列其中一種 URL 模式：
+    c. 在 **回覆 URL** 文字方塊中，輸入下列其中一種 URL 模式：
     
     | 回覆 URL |
     |-------------|
@@ -118,7 +118,7 @@ ms.locfileid: "90981648"
 1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
 1. 在畫面頂端選取 [新增使用者]。
 1. 在 [使用者] 屬性中，執行下列步驟：
-   1. 在 [名稱] 欄位中，輸入 **B.Simon**。  
+   1. 在 [名稱] 欄位中，輸入 **B.Simon** 。  
    1. 在 [使用者名稱] 欄位中，輸入 `<username>@<companydomain>.<extension>`。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
    1. 選取 [建立]。
@@ -193,12 +193,12 @@ ms.locfileid: "90981648"
 
        ![自訂屬性對應 UI][62]
 
-    i. 選擇要對應至 Azure AD 宣告的欄位。 在此範例中，**emailaddress** 宣告的對應值是 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。 這是 Azure AD 針對電子郵件宣告所提供的預設宣告名稱。 選取 [儲存]。
+    i. 選擇要對應至 Azure AD 宣告的欄位。 在此範例中， **emailaddress** 宣告的對應值是 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。 這是 Azure AD 針對電子郵件宣告所提供的預設宣告名稱。 選取 [儲存]。
 
        ![自訂屬性對應欄位][57]
 
        > [!NOTE]
-       > 請使用適當的 **使用者識別碼**，將使用者從 Azure AD 對應到 DocuSign 使用者對應。 選取適當的欄位，並根據組織的設定輸入適當的值。
+       > 請使用適當的 **使用者識別碼** ，將使用者從 Azure AD 對應到 DocuSign 使用者對應。 選取適當的欄位，並根據組織的設定輸入適當的值。
 
     j. 在 [識別提供者憑證] 區段中選取 [新增憑證]，上傳您從 Azure AD 入口網站下載的憑證，然後選取 [儲存]。
 
@@ -216,7 +216,7 @@ ms.locfileid: "90981648"
        
        1. 複製 [服務提供者判斷提示取用者服務 URL]，並將其貼到 Azure 入口網站上 [基本 SAML 設定] 區段的 [回覆 URL] 方塊中。
        
-       1. 複製 [服務提供者登入 URL]，並將其貼到 Azure 入口網站上的 [基本 SAML 設定] 區段的 [登入 URL] 方塊中。 您會在**服務提供者登入 URL**取得 IDPID 值。
+       1. 複製 [服務提供者登入 URL]，並將其貼到 Azure 入口網站上的 [基本 SAML 設定] 區段的 [登入 URL] 方塊中。 您會在 **服務提供者登入 URL** 取得 IDPID 值。
 
        1. 選取 [關閉]。
 
@@ -235,12 +235,12 @@ ms.locfileid: "90981648"
 
 2. 直接移至 DocuSign 登入 URL，然後從該處起始登入流程。
 
-3. 您可以使用 Microsoft 存取面板。 當您在存取面板中按一下 [DocuSign] 圖格時，應該會自動登入您已設定 SSO 的 DocuSign。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+3. 您可以使用 Microsoft 存取面板。 當您在存取面板中按一下 [DocuSign] 圖格時，應該會自動登入您已設定 SSO 的 DocuSign。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-設定 DocuSign 之後，您可以強制執行工作階段控制項，以即時防止組織的敏感性資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+設定 DocuSign 之後，您可以強制執行工作階段控制項，以即時防止組織的敏感性資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-aad)
 
 <!--Image references-->
 

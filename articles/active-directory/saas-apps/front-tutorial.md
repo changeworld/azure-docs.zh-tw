@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: bbd39c85385d6690a80f540c9e0cd23a321e7e84
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 3edd1e9bf3b42b3d4ad0c7c533dedb23ea05e5ec
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91821225"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92450776"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>教學課程：Azure Active Directory 與 Front 整合
 
@@ -27,7 +27,7 @@ ms.locfileid: "91821225"
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Front (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ ms.locfileid: "91821225"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Front**，從結果面板中選取 [Front]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Front** ，從結果面板中選取 [Front]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Front](common/search-new-app.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "91821225"
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<companyname>.frontapp.com/sso/saml/callback`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [Front 用戶端支援小組](mailto:support@frontapp.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [Front 用戶端支援小組](mailto:support@frontapp.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
@@ -142,7 +142,7 @@ ms.locfileid: "91821225"
     
     ![顯示 [進入點] 文字方塊的螢幕擷取畫面。](./media/front-tutorial/tutorial_front_003.png)
 
-6. 在記事本中開啟您下載的**憑證 (Base64)** 檔案，將其內容複製到剪貼簿，然後貼到 [簽署憑證]  文字方塊中。
+6. 在記事本中開啟您下載的 **憑證 (Base64)** 檔案，將其內容複製到剪貼簿，然後貼到 [簽署憑證]  文字方塊中。
     
     ![顯示醒目提示 [簽署憑證]，且文字方塊呈現灰色的螢幕擷取畫面。](./media/front-tutorial/tutorial_front_004.png)
 
@@ -150,7 +150,7 @@ ms.locfileid: "91821225"
 
     ![在應用程式端設定單一登入](./media/front-tutorial/tutorial_front_005.png)
 
-    a. 複製**實體識別碼**值，並在 Azure 入口網站 [Front 網域與 URL] 區段的 [識別碼] 文字方塊中貼上。
+    a. 複製 **實體識別碼** 值，並在 Azure 入口網站 [Front 網域與 URL] 區段的 [識別碼] 文字方塊中貼上。
 
     b. 複製 **ACS URL** 的值，並在 Azure 入口網站 [前端網域與 URL] 區段的 [回覆 URL] 文字方塊中貼上。
     
@@ -172,7 +172,7 @@ ms.locfileid: "91821225"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -215,13 +215,12 @@ ms.locfileid: "91821225"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Front] 圖格時，應該會自動登入您已設定 SSO 的 Front。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Front] 圖格時，應該會自動登入您已設定 SSO 的 Front。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

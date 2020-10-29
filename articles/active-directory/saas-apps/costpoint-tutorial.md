@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 7b32c5576ef38f07d28777e1a72aafa935042930
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 16c9d64cc4dd49898245d74108cd6a4f2f0e4660
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91775656"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455165"
 ---
 # <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>教學課程：整合 Costpoint 與 Azure Active Directory
 
@@ -26,7 +26,7 @@ ms.locfileid: "91775656"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Costpoint。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -41,7 +41,7 @@ ms.locfileid: "91775656"
 
 ## <a name="generate-costpoint-metadata"></a>產生 Costpoint 中繼資料
 
-**DeltekCostpoint711Security.pdf** 指南提供了 Costpoint SAML SSO 組態的說明。 從 Deltek Costpoint 支援網站下載本指南，並參閱 **SAML 單一登入設定** > **在 Costpoint 與 Microsoft Azure 之間設定 SAML 單一登入**一節。 依照指示執行，並產生 **Costpoint SP 同盟中繼資料 XML** 檔案。 
+**DeltekCostpoint711Security.pdf** 指南提供了 Costpoint SAML SSO 組態的說明。 從 Deltek Costpoint 支援網站下載本指南，並參閱 **SAML 單一登入設定** > **在 Costpoint 與 Microsoft Azure 之間設定 SAML 單一登入** 一節。 依照指示執行，並產生 **Costpoint SP 同盟中繼資料 XML** 檔案。 
 
 ![顯示 [產品設定公用程式] 的螢幕擷取畫面，其中已選取 [Weblogic - 安全性] 索引標籤。](./media/costpoint-tutorial/config-utility.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "91775656"
 
    ![新增應用程式按鈕](common/add-new-app.png)
 
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Costpoint**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Costpoint** 。
 
    ![結果清單中的 Costpoint](common/search-new-app.png)
 
@@ -104,9 +104,9 @@ ms.locfileid: "91775656"
       > [!NOTE]
       > 若未自動填入 [識別碼]  和 [回覆 URL]  ，請根據您的需求手動輸入這些值。 確認 [識別碼 (實體識別碼)]  和 [回覆 URL (判斷提示取用者服務 URL)]  皆已正確設定，且 [ACS URL]  是以 **/LoginServlet.cps** 結尾的有效 Costpoint URL。
 
-   1. 選取 [設定其他 URL]  。 針對 [轉送狀態]  ，使用下列模式輸入值：`system=[your system]` (例如 **system=DELTEKCP**)。
+   1. 選取 [設定其他 URL]  。 針對 [轉送狀態]  ，使用下列模式輸入值：`system=[your system]` (例如 **system=DELTEKCP** )。
 
-1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，選取 [複製]  圖示以複製**應用程式同盟中繼資料 URL**，並將它儲存到 [筆記本]。
+1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，選取 [複製]  圖示以複製 **應用程式同盟中繼資料 URL** ，並將它儲存到 [筆記本]。
 
    ![SAML 簽署憑證](common/copy-metadataurl.png)
 
@@ -134,7 +134,7 @@ ms.locfileid: "91775656"
 
    ![[使用者] 對話方塊](common/user-properties.png)
 
-   1. 在 [名稱]  欄位中，輸入 **B.Simon**。
+   1. 在 [名稱]  欄位中，輸入 **B.Simon** 。
    
    1. 在 [使用者名稱]  欄位中，輸入 `b.simon\@yourcompanydomain.extension` (例如 B.Simon@contoso.com)。
    
@@ -166,7 +166,7 @@ ms.locfileid: "91775656"
 
 ### <a name="create-a-costpoint-test-user"></a>建立 Costpoint 測試使用者
 
-在本節中，您將於 Costpoint 中建立使用者。 假設使用者識別碼為 **B.SIMON**，而使用者的名稱為 **B.Simon**。 請與 [Costpoint 用戶端支援小組](https://www.deltek.com/about/contact-us)合作，在 Costpoint 平台中新增使用者。 您必須先建立並啟動使用者，然後他們才能使用單一登入。
+在本節中，您將於 Costpoint 中建立使用者。 假設使用者識別碼為 **B.SIMON** ，而使用者的名稱為 **B.Simon** 。 請與 [Costpoint 用戶端支援小組](https://www.deltek.com/about/contact-us)合作，在 Costpoint 平台中新增使用者。 您必須先建立並啟動使用者，然後他們才能使用單一登入。
 
 建立使用者之後，該使用者的 [驗證方法]  選取項目必須是 [Active Directory]  、必須選取 [SAML 單一登入]  核取方塊，且 Azure Active Directory 中的使用者名稱必須是 [Active Directory 或憑證識別碼]  (如下列螢幕擷取畫面所示)。
 
@@ -174,12 +174,12 @@ ms.locfileid: "91775656"
 
 ### <a name="test-sso"></a>測試 SSO
 
-當您在存取面板中選取 [Costpoint] 圖格時，應該會自動登入 Costpoint 應用程式 (因為您已設定 SSO)。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [Costpoint] 圖格時，應該會自動登入 Costpoint 應用程式 (因為您已設定 SSO)。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) \(部分機器翻譯\)
+- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](./tutorial-list.md) \(部分機器翻譯\)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/18/2020
 ms.author: jeedes
-ms.openlocfilehash: bd15798e9b642f3abc617c0fa224c530d90b5dd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0433c0fdc1584ce209eb0409b0e8f5cbfc2719ed
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88555553"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454400"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bitbucket"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 EasySSO for BitBucket 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88555553"
 * 讓使用者使用其 Azure AD 帳戶自動登入 EasySSO for BitBucket。
 * 在 Azure 入口網站中集中管理您的帳戶。
 
-若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -41,7 +41,7 @@ ms.locfileid: "88555553"
 
 * EasySSO for BitBucket 支援由 SP 和 Idp 起始的 SSO。
 * EasySSO for BitBucket 支援 "Just-In-Time" 使用者佈建。
-* 在設定 EasySSO for BitBucket 之後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 在設定 EasySSO for BitBucket 之後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-easysso-for-bitbucket-from-the-gallery"></a>從資源庫新增 EasySSO for BitBucket
 
@@ -51,7 +51,7 @@ ms.locfileid: "88555553"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 移至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增新的應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **EasySSO for BitBucket**。
+1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **EasySSO for BitBucket** 。
 1. 從結果中選取 [EasySSO for BitBucket]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -73,7 +73,7 @@ ms.locfileid: "88555553"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [EasySSO for BitBucket] 應用程式整合頁面上，尋找 [管理] 區段。 選取 [單一登入]。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入] 頁面上，選取 [基本 SAML 組態] 的鉛筆圖示，以編輯設定。
 
    ![以 SAML 設定單一登入頁面的螢幕擷取畫面，其中的鉛筆圖示已醒目提示](common/edit-urls.png)
@@ -89,7 +89,7 @@ ms.locfileid: "88555553"
     - 在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://<server-base-url>/login.jsp`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 如有任何疑問，請連絡 [EasySSO 支援小組](mailto:support@techtime.co.nz)取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 如有任何疑問，請連絡 [EasySSO 支援小組](mailto:support@techtime.co.nz)取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. EasySSO for BitBucket 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。
 
@@ -105,13 +105,13 @@ ms.locfileid: "88555553"
     | urn:oid:2.5.4.4 | user.surname |
     | urn:oid:2.5.4.42 | user.givenname |
     
-    如果您的 Azure AD 使用者設定了 **sAMAccountName**，您必須將 **urn:oid:0.9.2342.19200300.100.1.1** 對應到 **sAMAccountName** 屬性。
+    如果您的 Azure AD 使用者設定了 **sAMAccountName** ，您必須將 **urn:oid:0.9.2342.19200300.100.1.1** 對應到 **sAMAccountName** 屬性。
     
 1. 在 [使用 SAML 設定單一登入] 頁面上的 [SAML 簽署憑證] 區段中，選取 [憑證 (Base64)] 或 [同盟中繼資料 XML] 選項的下載連結。 將任一項或兩者儲存到您的電腦。 您之後將會使用該資料設定 BitBucket EasySSO。
 
     ![[SAML 簽署憑證] 區段的螢幕擷取畫面，其中已醒目提示下載連結](./media/easysso-for-bitbucket-tutorial/certificate.png)
     
-    如果打算使用憑證手動執行 EasySSO for BitBucket，則您也需要複製**登入 URL** 與 **Azure AD 識別碼**，並將其儲存在您的電腦上。
+    如果打算使用憑證手動執行 EasySSO for BitBucket，則您也需要複製 **登入 URL** 與 **Azure AD 識別碼** ，並將其儲存在您的電腦上。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -148,7 +148,7 @@ ms.locfileid: "88555553"
 1. 使用管理員權限登入您的 Atlassia BitBucket 執行個體，然後移至 [管理] 區段。 
 
     ![BitBucket 執行個體的螢幕擷取畫面，其中已醒目顯示齒輪圖示](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-1.png)
-1. 尋找並選取 **EasySSO**。
+1. 尋找並選取 **EasySSO** 。
 
     ![EasySSO 選項的螢幕擷取畫面](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-2.png)
 
@@ -190,7 +190,7 @@ ms.locfileid: "88555553"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入組態。
 
-當您選取 EasySSO for BitBucket 圖格時，應該會自動登入您已設定 SSO 的 BitBucket 執行個體。 如需詳細資訊，請參閱[登入我的應用程式入口網站並啟動應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您選取 EasySSO for BitBucket 圖格時，應該會自動登入您已設定 SSO 的 BitBucket 執行個體。 如需詳細資訊，請參閱[登入我的應用程式入口網站並啟動應用程式](../user-help/my-apps-portal-end-user-access.md)。
 
 ### <a name="sp-initiated-workflow"></a>SP 起始的工作流程
 
@@ -204,20 +204,20 @@ ms.locfileid: "88555553"
 
 ![EasySSO 失敗畫面的螢幕擷取畫面，其中已醒目顯示參考編號](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-8.png)
 
-若是如此，請遵循[此頁面上的指示](https://techtime.co.nz/display/TECHTIME/EasySSO+How+to+get+the+logs#EasySSOHowtogetthelogs-RETRIEVINGTHELOGS)，取得 **atlassian-bitbucket.log** 檔案的存取權。 您可以使用錯誤的參考識別碼，在 EasySSO 錯誤頁面上找到該錯誤的詳細資料。
+若是如此，請遵循 [此頁面上的指示](https://techtime.co.nz/display/TECHTIME/EasySSO+How+to+get+the+logs#EasySSOHowtogetthelogs-RETRIEVINGTHELOGS)，取得 **atlassian-bitbucket.log** 檔案的存取權。 您可以使用錯誤的參考識別碼，在 EasySSO 錯誤頁面上找到該錯誤的詳細資料。
 
 如果您有任何問題，請連絡 [EasySSO 支援小組](mailto:support@techtime.co.nz)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 EasySSO for BitBucket](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
 
-- [使用進階可見性和控制項保護 EasySSO for BitBucket](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [使用進階可見性和控制項保護 EasySSO for BitBucket](/cloud-app-security/proxy-intro-aad)

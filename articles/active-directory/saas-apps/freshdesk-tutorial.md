@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 0bbfdc2463795770b52f5008fc633fe9e95244a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f120554574f8dc7d0b97744af6dad447b404005b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056501"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92451522"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>教學課程：Azure Active Directory 與 FreshDesk 整合
 
@@ -27,7 +27,7 @@ FreshDesk 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 FreshDesk (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -42,7 +42,7 @@ FreshDesk 與 Azure AD 整合提供下列優點：
 在本教學課程中，您會在測試環境中設定和測試 Azure AD 單一登入。
 
 * FreshDesk 支援 **SP** 起始的 SSO
-* 設定 FreshDesk 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 FreshDesk 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-freshdesk-from-the-gallery"></a>從資源庫新增 FreshDesk
 
@@ -52,7 +52,7 @@ FreshDesk 與 Azure AD 整合提供下列優點：
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **FreshDesk**。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **FreshDesk** 。
 1. 從結果面板選取 [FreshDesk]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-sso-for-freshdesk"></a>設定和測試 FreshDesk 的 Azure AD SSO
@@ -71,7 +71,7 @@ FreshDesk 與 Azure AD 整合提供下列優點：
 ## <a name="configure-azure-ad-single-sign-on"></a>設定 Azure AD 單一登入
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [FreshDesk] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -85,9 +85,9 @@ FreshDesk 與 Azure AD 整合提供下列優點：
     c. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://<tenant-name>.freshdesk.com/login/saml`
     
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」、「識別碼」和「回覆 URL」來更新這些值。 請連絡 [FreshDesk 用戶端支援小組](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「登入 URL」、「識別碼」和「回覆 URL」來更新這些值。 請連絡 [FreshDesk 用戶端支援小組](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-1. FreshDesk 應用程式需要特定格式的 SAML 判斷提示，需要您加入自訂屬性對應到您的 SAML 權杖屬性設定。 下列螢幕擷取畫面顯示預設屬性的清單，而**唯一的使用者識別碼**與 **user.userprincipalname** 對應，但 FreshDesk 預期此宣告必須與 **user.mail** 對應，因此您必須按一下 [編輯] 圖示並變更屬性對應，以編輯屬性對應。
+1. FreshDesk 應用程式需要特定格式的 SAML 判斷提示，需要您加入自訂屬性對應到您的 SAML 權杖屬性設定。 下列螢幕擷取畫面顯示預設屬性的清單，而 **唯一的使用者識別碼** 與 **user.userprincipalname** 對應，但 FreshDesk 預期此宣告必須與 **user.mail** 對應，因此您必須按一下 [編輯] 圖示並變更屬性對應，以編輯屬性對應。
 
     ![image](common/edit-attribute.png)
 
@@ -121,7 +121,7 @@ FreshDesk 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -161,7 +161,7 @@ FreshDesk 與 Azure AD 整合提供下列優點：
 
 1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入您的 Freshdesk 公司網站。
 
-2. 選取**安全性圖示**，並且在 [安全性] 區段中執行下列步驟：
+2. 選取 **安全性圖示** ，並且在 [安全性] 區段中執行下列步驟：
 
     ![單一登入](./media/freshdesk-tutorial/configure-1.png "單一登入")
   
@@ -175,9 +175,9 @@ FreshDesk 與 Azure AD 整合提供下列優點：
 
     e. 在 [簽署選項] 中，從下拉式清單中選取 [僅已簽署的判斷提示]。
 
-    f. 在 [登出 URL] 文字方塊中，貼上您從 Azure 入口網站複製的**登出 URL** 值。
+    f. 在 [登出 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 **登出 URL** 值。
 
-    g. 在 [安全性憑證] 文字方塊中，貼上您先前取得的**憑證 (Base64)** 值。
+    g. 在 [安全性憑證] 文字方塊中，貼上您先前取得的 **憑證 (Base64)** 值。
   
     h. 按一下 [檔案] 。
 
@@ -212,13 +212,12 @@ FreshDesk 需以手動的方式佈建。
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 FreshDesk 圖格時，應該會自動登入您設定 SSO 的 FreshDesk。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 FreshDesk 圖格時，應該會自動登入您設定 SSO 的 FreshDesk。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

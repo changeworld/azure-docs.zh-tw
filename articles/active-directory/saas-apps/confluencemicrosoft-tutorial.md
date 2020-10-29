@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 12f6e66140b3654f1283cad45c97325e2bfb1a28
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 73f5968f02e0f348c82d83b5b82d67748b4c3586
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91775658"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455335"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Confluence SAML SSO by Microsoft 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91775658"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Confluence SAML SSO by Microsoft。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="description"></a>描述：
 
@@ -103,7 +103,7 @@ ms.locfileid: "91775658"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Confluence SAML SSO by Microsoft] 應用程式整合分頁上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -170,13 +170,13 @@ ms.locfileid: "91775658"
     > [!NOTE]
     > 請先按照以下說明來設定伺服器，再安裝外掛程式。
 
-    a. 在 JIRA 伺服器應用程式的 **server.xml** 檔案中，於**連接器**連接埠新增下列屬性。
+    a. 在 JIRA 伺服器應用程式的 **server.xml** 檔案中，於 **連接器** 連接埠新增下列屬性。
 
     `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
 
     ![顯示 "server.xml" 檔案的螢幕擷取畫面，其中將屬性新增至 "connector" 連接埠。](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
 
-    b. 根據 Proxy/負載平衡器，變更**系統設定**中的**基底 URL**。
+    b. 根據 Proxy/負載平衡器，變更 **系統設定** 中的 **基底 URL** 。
 
     ![顯示 [系統管理 - 設定] 頁面的螢幕擷取畫面，其中醒目提示 [基底 URL]。](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
 
@@ -191,7 +191,7 @@ ms.locfileid: "91775658"
     > [!TIP]
     > 請確定只有一個對應至應用程式的憑證，解析中繼資料時就不會發生錯誤。 如果有多個憑證，則在解析中繼資料時，管理員會收到錯誤。
 
-    1. 在 [中繼資料 URL] 文字方塊中，貼上您從 Azure 入口網站複製的**應用程式同盟中繼資料 Url**值，然後按一下 [解析] 按鈕。 這樣會讀取 IdP 中繼資料 URL 並填入所有欄位資訊。
+    1. 在 [中繼資料 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 **應用程式同盟中繼資料 Url** 值，然後按一下 [解析] 按鈕。 這樣會讀取 IdP 中繼資料 URL 並填入所有欄位資訊。
 
     1. 複製 [識別碼]、[回覆 URL] 和 [登入 URL] 值，然後在 Azure 入口網站的 [基本 SAML 組態] 區段中，分別貼到 [識別碼]、[回覆 URL] 和 [登入 URL] 文字方塊中。
 
@@ -221,7 +221,7 @@ ms.locfileid: "91775658"
     1. 按一下 [儲存] 按鈕以儲存設定。
 
        > [!NOTE]
-       > 如需有關安裝和疑難排解的詳細資訊，請瀏覽 [MS Confluence SSO 連接器管理指南](../ms-confluence-jira-plugin-adminguide.md)。 另外也有[常見問題集](../ms-confluence-jira-plugin-faq.md)可協助您。
+       > 如需有關安裝和疑難排解的詳細資訊，請瀏覽 [MS Confluence SSO 連接器管理指南](./ms-confluence-jira-plugin-adminguide.md)。 另外也有[常見問題集](./ms-confluence-jira-plugin-adminguide.md)可協助您。
 
 ### <a name="create-confluence-saml-sso-by-microsoft-test-user"></a>建立 Confluence SAML SSO by Microsoft 測試使用者
 
@@ -255,14 +255,14 @@ ms.locfileid: "91775658"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 Confluence SAML SSO by Microsoft 圖格時，應該會自動登入您已設定 SSO 的 Confluence SAML SSO by Microsoft。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 Confluence SAML SSO by Microsoft 圖格時，應該會自動登入您已設定 SSO 的 Confluence SAML SSO by Microsoft。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Confluence SAML SSO by Microsoft](https://aad.portal.azure.com/)

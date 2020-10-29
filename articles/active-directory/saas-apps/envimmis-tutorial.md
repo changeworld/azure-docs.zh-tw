@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 1eb408025a45f09a6bdb854f4379a560842ef2d7
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 6ccf755a73cafa4b855f602aa18246d710e5e1ff
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826268"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454006"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>教學課程：Azure Active Directory 與 Envi MMIS 整合
 
@@ -27,7 +27,7 @@ Envi MMIS 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Envi MMIS (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ Envi MMIS 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Envi MMIS**，從結果面板中選取 [Envi MMIS]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Envi MMIS** ，從結果面板中選取 [Envi MMIS]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Envi MMIS](common/search-new-app.png)
 
@@ -112,7 +112,7 @@ Envi MMIS 與 Azure AD 整合提供下列優點：
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://www.<CUSTOMER DOMAIN>.com/Account`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [ 用戶端支援小組](mailto:support@ioscorp.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [ 用戶端支援小組](mailto:support@ioscorp.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 [同盟中繼資料 XML]  ，並儲存在您的電腦上。
 
@@ -178,7 +178,7 @@ Envi MMIS 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -233,17 +233,17 @@ Envi MMIS 與 Azure AD 整合提供下列優點：
 
     ![新增員工](./media/envimmis-tutorial/user3.png)
 
-    a. 在 [User Name] \(使用者名稱\)  文字方塊中，輸入 Britta Simon 帳戶的使用者名稱，例如 **brittasimon\@contoso.com**。
+    a. 在 [User Name] \(使用者名稱\)  文字方塊中，輸入 Britta Simon 帳戶的使用者名稱，例如 **brittasimon\@contoso.com** 。
     
-    b. 在 [名字]  文字方塊中，輸入 BrittaSimon 的名字，例如 **Britta**。
+    b. 在 [名字]  文字方塊中，輸入 BrittaSimon 的名字，例如 **Britta** 。
 
     c. 在 [姓氏]  文字方塊中，輸入 BrittaSimon 的姓氏，例如  。
 
     d. 在 [稱呼]  文字方塊中輸入使用者的職稱。
     
-    e. 在 [Email Address] \(電子郵件地址\)  文字方塊中，輸入 Britta Simon 帳戶的電子郵件地址，例如 **brittasimon\@contoso.com**。
+    e. 在 [Email Address] \(電子郵件地址\)  文字方塊中，輸入 Britta Simon 帳戶的電子郵件地址，例如 **brittasimon\@contoso.com** 。
 
-    f. 在 [SSO User Name] \(SSO 使用者名稱\)  文字方塊中，輸入 Britta Simon 帳戶的使用者名稱，例如 **brittasimon\@contoso.com**。
+    f. 在 [SSO User Name] \(SSO 使用者名稱\)  文字方塊中，輸入 Britta Simon 帳戶的使用者名稱，例如 **brittasimon\@contoso.com** 。
 
     g. 按一下 [檔案]  。
 
@@ -251,13 +251,12 @@ Envi MMIS 與 Azure AD 整合提供下列優點：
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Envi MMIS] 圖格時，應該會自動登入您已設定 SSO 的 Envi MMIS。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Envi MMIS] 圖格時，應該會自動登入您已設定 SSO 的 Envi MMIS。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

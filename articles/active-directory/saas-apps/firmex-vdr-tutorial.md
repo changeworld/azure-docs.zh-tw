@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: jeedes
-ms.openlocfilehash: ab480dd8dae00cd48811473a7b335291fb6300eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dbd39b5c56192ad2ca957c5500338b50e8c8963
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88555012"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92453377"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-firmex-vdr"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Firmex VDR 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88555012"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Firmex VDR。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -41,7 +41,7 @@ ms.locfileid: "88555012"
 
 * Firmex VDR 支援由 **SP 和 IDP** 起始的 SSO
 
-* 設定 Firmex 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 Firmex 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-firmex-vdr-from-the-gallery"></a>從資源庫新增 Firmex VDR
 
@@ -51,7 +51,7 @@ ms.locfileid: "88555012"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Firmex VDR**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Firmex VDR** 。
 1. 從結果面板中選取 [Firmex VDR]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -73,7 +73,7 @@ ms.locfileid: "88555012"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Firmex VDR]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -160,7 +160,7 @@ ms.locfileid: "88555012"
 
 ### <a name="step-2---contact-firmex-support-with-your-domains"></a>步驟 2 - 使用您的網域與 Firmex 支援聯絡
 
-將電子郵件傳送給 [Firmex 支援小組](mailto:support@firmex.com)，或致電 1888 688 4042 x.11，與 Firmex 支援人員通話。 傳遞您的網域資訊。 Firmex 支援會將網域新增為您 VDR 中的**宣告的網域**。 您的管理員此時必須設定 SSO。
+將電子郵件傳送給 [Firmex 支援小組](mailto:support@firmex.com)，或致電 1888 688 4042 x.11，與 Firmex 支援人員通話。 傳遞您的網域資訊。 Firmex 支援會將網域新增為您 VDR 中的 **宣告的網域** 。 您的管理員此時必須設定 SSO。
 
 警告：在站台管理員設定宣告的網域之前，公司的使用者將無法登入 VDR。 非公司使用者 (也就是來賓使用者) 仍可使用其電子郵件/密碼進行登入。 設定應需要幾分鐘的時間。
 
@@ -180,7 +180,7 @@ ms.locfileid: "88555012"
 
     b. 在 [識別提供者 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
 
-    c. **公開金鑰憑證** - 基於驗證目的，簽發者可能會以數位方式簽署 SAML 訊息。 若要驗證訊息上的簽章，訊息接收者必須使用確知屬於簽發者的公開金鑰。 同樣地，若要將訊息加密，屬於最終接收者的公開加密金鑰對簽發者而言也必須是已知的。 在這兩種情況下 (簽署和加密)，都必須事先共用信任的公開金鑰。  這是來自**同盟中繼資料 XML** 的 **X509Certificate**
+    c. **公開金鑰憑證** - 基於驗證目的，簽發者可能會以數位方式簽署 SAML 訊息。 若要驗證訊息上的簽章，訊息接收者必須使用確知屬於簽發者的公開金鑰。 同樣地，若要將訊息加密，屬於最終接收者的公開加密金鑰對簽發者而言也必須是已知的。 在這兩種情況下 (簽署和加密)，都必須事先共用信任的公開金鑰。  這是來自 **同盟中繼資料 XML** 的 **X509Certificate**
 
     d. 按一下 [儲存]  以完成 SSO 設定。 變更會立即生效。
 
@@ -194,18 +194,18 @@ ms.locfileid: "88555012"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Firmex VDR] 圖格時，應該會自動登入您設定 SSO 的 Firmex VDR。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Firmex VDR] 圖格時，應該會自動登入您設定 SSO 的 Firmex VDR。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Firmex VDR](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用進階可見性和控制項保護 Firmex](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何使用進階可見性和控制項保護 Firmex](/cloud-app-security/proxy-intro-aad)

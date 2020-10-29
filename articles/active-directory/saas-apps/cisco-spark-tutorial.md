@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: b6da84c1be38dde72b663de1db3756e77f4db915
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 49e92c485c1a6a66dfb12b3c7a91f29939851d82
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759769"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456099"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Cisco Webex 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91759769"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Cisco Webex。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -40,8 +40,8 @@ ms.locfileid: "91759769"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * Cisco Webex 支援由 **SP** 起始的 SSO。
-* Cisco Webex 支援**自動**使用者佈建。
-* 設定 Cisco Webex 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Cisco Webex 支援 **自動** 使用者佈建。
+* 設定 Cisco Webex 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-cisco-webex-from-the-gallery"></a>從資源庫新增 Cisco Webex
 
@@ -51,7 +51,7 @@ ms.locfileid: "91759769"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Cisco Webex**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Cisco Webex** 。
 1. 從結果面板中選取 [Cisco Webex]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-cisco-webex"></a>設定和測試 Cisco Webex 的 Azure AD 單一登入
@@ -77,14 +77,14 @@ ms.locfileid: "91759769"
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 在 [基本 SAML 組態]  區段上，執行下列步驟，以上傳已下載的**服務提供者中繼資料**檔案並設定應用程式：
+4. 在 [基本 SAML 組態]  區段上，執行下列步驟，以上傳已下載的 **服務提供者中繼資料** 檔案並設定應用程式：
 
     >[!Note]
     >您將會從 [設定 Cisco Webex]  區段取得服務提供者中繼資料檔案，本教學課程稍後會說明。 
 
     a. 按一下 [上傳中繼資料檔案]  。
 
-    b. 按一下**資料夾圖示**以選取中繼資料檔案，然後按一下 [上傳]  。
+    b. 按一下 **資料夾圖示** 以選取中繼資料檔案，然後按一下 [上傳]  。
 
     c. 成功完成上傳服務提供者中繼資料檔案之後，[基本 SAML 組態]  區段中會自動填入 [識別碼]  和 [回覆 URL]  值：
 
@@ -179,9 +179,9 @@ ms.locfileid: "91759769"
 
     ![顯示 [管理使用者] 對話方塊的螢幕擷取畫面，您可以在其中手動新增或修改使用者。](./media/cisco-spark-tutorial/tutorial-cisco-spark-13.png) 
 
-    a. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **B**。
+    a. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **B** 。
 
-    b. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon**。
+    b. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon** 。
 
     c. 在 [電子郵件地址]  文字方塊中，輸入像是 b.simon@contoso.com 的使用者電子郵件地址。
 
@@ -191,18 +191,18 @@ ms.locfileid: "91759769"
 
 ## <a name="test-sso"></a>測試 SSO
 
-當您在存取面板中選取 [Cisco Webex] 圖格時，應該會自動登入您已設定 SSO 的 Cisco Webex。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [Cisco Webex] 圖格時，應該會自動登入您已設定 SSO 的 Cisco Webex。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試 Cisco Webex 搭配 Azure AD](https://aad.portal.azure.com)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用進階可見性和控制項保護 Cisco Webex](https://docs.microsoft.com/cloud-app-security/protect-webex)
+- [如何使用進階可見性和控制項保護 Cisco Webex](/cloud-app-security/protect-webex)

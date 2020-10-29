@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 4ff6154e17408b9e2daaf3c81321ae31693de3aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8557c830aec2dd30de0a99a19d7950928d36e894
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544599"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456015"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-kerberos-based-authentication"></a>教學課程：Azure Active Directory 單一登入與 Citrix NetScaler (Kerberos 型驗證) 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88544599"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Citrix NetScaler。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -47,7 +47,7 @@ ms.locfileid: "88544599"
 
 * [Citrix NetScaler 的標頭型驗證](header-citrix-netscaler-tutorial.md#publish-the-web-server)
 
-* 設定 Citrix NetScaler 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 Citrix NetScaler 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-citrix-netscaler-from-the-gallery"></a>從資源庫新增 Citrix NetScaler
 
@@ -61,7 +61,7 @@ ms.locfileid: "88544599"
 
 1. 若要新增新的應用程式，請選取 [新增應用程式]  。
 
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Citrix NetScaler**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Citrix NetScaler** 。
 
 1. 從結果中選取 [Citrix NetScaler]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
@@ -95,18 +95,18 @@ ms.locfileid: "88544599"
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 組態]  區段中，以 **IDP 起始**模式設定應用程式：
+1. 在 [基本 SAML 組態]  區段中，以 **IDP 起始** 模式設定應用程式：
 
     1. 在 [識別碼]  文字方塊中，輸入具有下列模式的 URL：`https://<Your FQDN>`
 
     1. 在 [回覆 URL]  文字方塊中，輸入具有下列模式的 URL：`http(s)://<Your FQDN>.of.vserver/cgi/samlauth`
 
-1. 若要以 **SP 起始**模式設定應用程式，請選取 [設定其他 URL]  ，然後完成下列步驟：
+1. 若要以 **SP 起始** 模式設定應用程式，請選取 [設定其他 URL]  ，然後完成下列步驟：
 
     * 在 [登入 URL]  文字方塊中，輸入具有下列模式的 URL：`https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
 
     > [!NOTE]
-    > * 本節中使用的 URL 不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」值來更新這些值。 請連絡 [Citrix NetScaler 用戶端支援小組](https://www.citrix.com/contact/technical-support.html)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > * 本節中使用的 URL 不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」值來更新這些值。 請連絡 [Citrix NetScaler 用戶端支援小組](https://www.citrix.com/contact/technical-support.html)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
     > * 若要設定 SSO，您必須使用可從公用網站存取的 URL。 您必須在 Citrix NetScaler 端啟用防火牆或其他安全性設定，才能讓 Azure AD 在所設定的 URL 上公佈權杖。
 
 1. 在 [以 SAML 設定單一登入]  窗格的 [SAML 簽署憑證]  區段中，複製 [應用程式同盟中繼資料 URL]  的 URL，並貼到記事本中。
@@ -239,9 +239,9 @@ ms.locfileid: "88544599"
 
 1. 在 [建立驗證原則]  窗格中，輸入或選取下列值：
 
-    * **Name**：輸入驗證原則的名稱。
-    * **動作**：輸入 **SAML**，然後選取 [新增]  。
-    * **運算式**：輸入 **true**。     
+    * **Name** ：輸入驗證原則的名稱。
+    * **動作** ：輸入 **SAML** ，然後選取 [新增]  。
+    * **運算式** ：輸入 **true** 。     
     
     ![Citrix NetScaler 設定 - 建立驗證原則窗格](./media/citrix-netscaler-tutorial/policy01.png)
 
@@ -299,7 +299,7 @@ ms.locfileid: "88544599"
 
     ![Citrix NetScaler 設定 - 表單型虛擬伺服器窗格](./media/citrix-netscaler-tutorial/virtual03.png)
 
-1. 針對**驗證 FQDN**，請輸入完整網域名稱 (FQDN)(必要)。
+1. 針對 **驗證 FQDN** ，請輸入完整網域名稱 (FQDN)(必要)。
 
 1. 選擇您想要使用 Azure AD 驗證來保護的負載平衡虛擬伺服器。
 
@@ -347,16 +347,16 @@ ms.locfileid: "88544599"
 
 1.  選取 [新增]  ，然後輸入或選取下列值︰
 
-    * **Name**：輸入 KCD 帳戶的名稱。
+    * **Name** ：輸入 KCD 帳戶的名稱。
 
-    * **Realm**：以大寫輸入網域和擴充功能。
+    * **Realm** ：以大寫輸入網域和擴充功能。
 
-    * **服務 SPN**：`http/<host/fqdn>@<DOMAIN.COM>`。
+    * **服務 SPN** ：`http/<host/fqdn>@<DOMAIN.COM>`。
     
         > [!NOTE]
         > `@DOMAIN.COM` 是必要項目，而且必須是大寫。 範例： `http/cweb2@IDENTT.WORK`.
 
-    * **委派的使用者**：輸入委派的使用者名稱。
+    * **委派的使用者** ：輸入委派的使用者名稱。
 
     * 選取 [委派使用者的密碼]  核取方塊，然後輸入密碼並確認。
 
@@ -376,11 +376,11 @@ ms.locfileid: "88544599"
 
 1.  若要設定流量設定檔，請輸入或選取下列值。
 
-    * **Name**：輸入流量設定檔的名稱。
+    * **Name** ：輸入流量設定檔的名稱。
 
-    * **單一登入**：選取 [開啟]  。
+    * **單一登入** ：選取 [開啟]  。
 
-    * **KCD 帳戶**：選取您在先前小節中建立的 KCD 帳戶。
+    * **KCD 帳戶** ：選取您在先前小節中建立的 KCD 帳戶。
 
 1. 選取 [確定]  。
 
@@ -392,11 +392,11 @@ ms.locfileid: "88544599"
 
 1.  若要設定流量原則，請輸入或選取下列值：
 
-    * **Name**：輸入流量原則的名稱。
+    * **Name** ：輸入流量原則的名稱。
 
-    * **設定檔**：選取您在先前小節中建立的流量設定檔。
+    * **設定檔** ：選取您在先前小節中建立的流量設定檔。
 
-    * **運算式**：輸入 **true**。
+    * **運算式** ：輸入 **true** 。
 
 1. 選取 [確定]  。
 
@@ -447,20 +447,20 @@ ms.locfileid: "88544599"
 
 在本節中，您會使用存取面板來測試您的 Azure AD SSO 組態。
 
-當您在存取面板中選取 [Citrix NetScaler] 圖格時，應該會自動登入您已設定 SSO 的 Citrix NetScaler。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [Citrix NetScaler] 圖格時，應該會自動登入您已設定 SSO 的 Citrix NetScaler。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Citrix NetScaler](https://aad.portal.azure.com/)
 
 - [設定 Citrix NetScaler 單一登入以進行標頭型驗證](header-citrix-netscaler-tutorial.md)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用進階可見性和控制項保護 Citrix NetScaler](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何使用進階可見性和控制項保護 Citrix NetScaler](/cloud-app-security/proxy-intro-aad)
