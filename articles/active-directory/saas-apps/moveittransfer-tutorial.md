@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 4ec0a3082b5978e0c540a2e0a70843081201a29b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c79596747be655e372958e06021c50f23ff0fe03
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544118"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92508174"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>教學課程：Azure Active Directory 與 MOVEit Transfer - Azure AD integration 整合
 
@@ -27,7 +27,7 @@ ms.locfileid: "88544118"
 * 您可以讓使用者使用他們的 Azure AD 帳戶自動登入 MOVEit Transfer - Azure AD integration (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ ms.locfileid: "88544118"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **MOVEit Transfer - Azure AD integration**，從結果面板中選取 [MOVEit Transfer - Azure AD integration]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **MOVEit Transfer - Azure AD integration** ，從結果面板中選取 [MOVEit Transfer - Azure AD integration]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 MOVEit Transfer - Azure AD integration](common/search-new-app.png)
 
@@ -97,13 +97,13 @@ ms.locfileid: "88544118"
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 如果您有**服務提供者中繼資料檔案**，請在 [基本 SAML 設定] 區段上執行下列步驟：
+4. 如果您有 **服務提供者中繼資料檔案** ，請在 [基本 SAML 設定] 區段上執行下列步驟：
 
     a. 按一下 [上傳中繼資料檔案]  。
 
     ![上傳中繼資料檔案](common/upload-metadata.png)
 
-    b. 按一下**資料夾圖示**以選取中繼資料檔案，然後按一下 [上傳]  。
+    b. 按一下 **資料夾圖示** 以選取中繼資料檔案，然後按一下 [上傳]  。
 
     ![選擇中繼資料檔案](common/browse-upload-metadata.png)
 
@@ -114,9 +114,9 @@ ms.locfileid: "88544118"
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://contoso.com`
 
     > [!NOTE]
-    > [登入 URL]  的值不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [MOVEit Transfer - Azure AD integration 用戶端支援](https://community.ipswitch.com/s/support)小組來取得此值。 您可以從**服務提供者中繼資料 URL** 中下載**服務提供者中繼資料檔案**，稍後會在教學課程中的＜設定 MOVEit Transfer - Azure AD integration 單一登入＞一節中說明。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > [登入 URL]  的值不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [MOVEit Transfer - Azure AD integration 用戶端支援](https://community.ipswitch.com/s/support)小組來取得此值。 您可以從 **服務提供者中繼資料 URL** 中下載 **服務提供者中繼資料檔案** ，稍後會在教學課程中的＜設定 MOVEit Transfer - Azure AD integration 單一登入＞一節中說明。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-4. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+4. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -146,8 +146,8 @@ ms.locfileid: "88544118"
 
     ![服務提供者中繼資料 URL](./media/moveittransfer-tutorial/tutorial_moveittransfer_002.png)
     
-   * 請確認 **entityID** 符合**基本 SAML 組態**區段中的**識別碼**。
-   * 確認 [AssertionConsumerService] 位置 URL 符合 [基本 SAML 組態] 區段中的 **REPLY URL**。
+   * 請確認 **entityID** 符合 **基本 SAML 組態** 區段中的 **識別碼** 。
+   * 確認 [AssertionConsumerService] 位置 URL 符合 [基本 SAML 組態] 區段中的 **REPLY URL** 。
     
      ![在應用程式端設定單一登入](./media/moveittransfer-tutorial/tutorial_moveittransfer_007.png)
 
@@ -193,7 +193,7 @@ ms.locfileid: "88544118"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -239,13 +239,12 @@ ms.locfileid: "88544118"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在「存取面板」中按一下 [MOVEit Transfer - Azure AD integration] 圖格時，應該會自動登入您設定 SSO 的 MOVEit Transfer - Azure AD integration。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在「存取面板」中按一下 [MOVEit Transfer - Azure AD integration] 圖格時，應該會自動登入您設定 SSO 的 MOVEit Transfer - Azure AD integration。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.openlocfilehash: ab63e54589f68516b0106a1c96edced38539d252
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d7aa43a94c7b49eef5b3273617ad9038fd1202e4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108536"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92505692"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 PureCloud by Genesys 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "92108536"
 * 讓使用者使用其 Azure AD 帳戶自動登入 PureCloud by Genesys。
 * 在 Azure 入口網站中集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -215,14 +215,14 @@ ms.locfileid: "92108536"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入組態。
 
-當您在存取面板中選取 [PureCloud by Genesys]  圖格時，應該會自動登入您已設定了 SSO 的 PureCloud by Genesys 帳戶。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [PureCloud by Genesys]  圖格時，應該會自動登入您已設定了 SSO 的 PureCloud by Genesys 帳戶。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [有關如何整合 SaaS 應用程式與 Azure AD 的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有關如何整合 SaaS 應用程式與 Azure AD 的教學課程清單](./tutorial-list.md)
 
-- [什麼是應用程式存取與使用 Azure AD 進行單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是應用程式存取與使用 Azure AD 進行單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure AD 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure AD 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 PureCloud by Genesys](https://aad.portal.azure.com/)

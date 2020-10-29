@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 132da93bcb1e8138b63361cdb448c05b985cdf27
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: be63ea7ebf905b825ffe73dfc2b37dcdc3bb88fd
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940900"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92507511"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moxtra"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Moxtra 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91940900"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Moxtra。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -52,7 +52,7 @@ ms.locfileid: "91940900"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Moxtra**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Moxtra** 。
 1. 從結果面板選取 [Moxtra]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -74,7 +74,7 @@ ms.locfileid: "91940900"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Moxtra]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -162,22 +162,22 @@ ms.locfileid: "91940900"
    
     ![此螢幕擷取畫面顯示可輸入所述值的 [SAML] 頁面。](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
  
-    a. 在 [Name] \(名稱\)  文字方塊中，輸入您的設定名稱 (例如：*SAML*)。 
+    a. 在 [Name] \(名稱\)  文字方塊中，輸入您的設定名稱 (例如： *SAML* )。 
   
     b. 在 [IdP 實體識別碼]  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。 
  
     c. 在 [登入 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。 
  
-    d. 在 [AuthnContextClassRef]  文字方塊中，輸入 **urn:oasis:names:tc:SAML:2.0:ac:classes:Password**。 
+    d. 在 [AuthnContextClassRef]  文字方塊中，輸入 **urn:oasis:names:tc:SAML:2.0:ac:classes:Password** 。 
  
-    e. 在 [名稱識別碼格式]  文字方塊中，輸入 **urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**。 
+    e. 在 [名稱識別碼格式]  文字方塊中，輸入 **urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress** 。 
  
     f. 在記事本中開啟您從 Azure 入口網站下載的憑證，複製其內容，然後貼到 [憑證]  文字方塊中。    
  
     g. 在 SAML 電子郵件網域文字方塊中，輸入您的 SAML 電子郵件網域。    
   
     >[!NOTE]
-    >若要查看用來驗證網域的步驟，請按一下下方的 "**i**"。
+    >若要查看用來驗證網域的步驟，請按一下下方的 " **i** "。
 
     h. 按一下 [更新]  。
 
@@ -195,15 +195,15 @@ ms.locfileid: "91940900"
 
 1. 在 [加入使用者]  對話方塊中，執行下列步驟：
   
-    a. 在 [名字]  文字方塊中，輸入 **B**。
+    a. 在 [名字]  文字方塊中，輸入 **B** 。
   
-    b. 在 [姓氏]  文字方塊中，輸入 **Simon**。
+    b. 在 [姓氏]  文字方塊中，輸入 **Simon** 。
   
     c. 在 [電子郵件]  文字方塊中，輸入 B.simon 在 Azure 入口網站中的同一個電子郵件地址。
   
-    d. 在 [事業處]  文字方塊中，輸入 **Dev**。
+    d. 在 [事業處]  文字方塊中，輸入 **Dev** 。
   
-    e. 在 [部門]  文字方塊中，輸入 **IT**。
+    e. 在 [部門]  文字方塊中，輸入 **IT** 。
   
     f. 選取 [系統管理員]  。
   
@@ -213,15 +213,14 @@ ms.locfileid: "91940900"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Moxtra] 圖格時，應該會自動登入您已設定 SSO 的 Moxtra。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Moxtra] 圖格時，應該會自動登入您已設定 SSO 的 Moxtra。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Moxtra](https://aad.portal.azure.com/)
-
