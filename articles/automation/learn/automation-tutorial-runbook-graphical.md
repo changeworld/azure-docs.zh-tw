@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 81dc23c208ca9fb292c849bdf35d8b91311ed9ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b6c02778b0ee790d81c713283e653058c29c153
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987651"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899797"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>教學課程：建立圖形化 Runbook
 
@@ -78,7 +78,7 @@ ms.locfileid: "90987651"
 
    您可以使用來自這類來源的輸出，例如另一個活動、自動化資產或 PowerShell 運算式。 在此情況下，輸出就是 `Hello World`。 您可以使用 PowerShell 運算式，並指定字串。
 
-8. 在 [運算式] 欄位中，輸入 `Hello World`，然後按一下 [確定] 兩次以返回畫布。
+8. 在 [運算式] 欄位中，輸入 `"Hello World"`，然後按一下 [確定] 兩次以返回畫布。
 
 9. 按一下 [儲存] 來儲存 Runbook。
 
@@ -142,10 +142,10 @@ ms.locfileid: "90987651"
 
 4. 在 [新增變數] 頁面上，在所提供的欄位中進行下列設定。
 
-    * **名稱**：輸入 `AzureSubscriptionId`。
-    * **值**：輸入您的訂用帳戶 ID。
-    * **類型**：保留選取的字串。
-    * **加密**：使用預設值。
+    * **名稱** ：輸入 `AzureSubscriptionId`。
+    * **值** ：輸入您的訂用帳戶 ID。
+    * **類型** ：保留選取的字串。
+    * **加密** ：使用預設值。
 
 5. 按一下 [建立]  來建立變數。
 
@@ -184,23 +184,23 @@ ms.locfileid: "90987651"
 
 12. 在 [參數值] 頁面上，進行下列設定，然後按一下 [確定]。
 
-   * **資料來源**：選取 [活動輸出]。
+   * **資料來源** ：選取 [活動輸出]。
    * 資料來源清單：選取 [取得自動化連線]。
-   * **欄位路徑**：輸入 `ApplicationId`。 您會指定欄位路徑之屬性的名稱，因為活動會輸出具有多個屬性的物件。
+   * **欄位路徑** ：輸入 `ApplicationId`。 您會指定欄位路徑之屬性的名稱，因為活動會輸出具有多個屬性的物件。
 
 13. 按一下 [CERTIFICATETHUMBPRINT]，接著在 [參數值] 頁面上進行下列設定，然後按一下 [確定]。
 
-    * **資料來源**：選取 [活動輸出]。
+    * **資料來源** ：選取 [活動輸出]。
     * 資料來源清單：選取 [取得自動化連線]。
-    * **欄位路徑**：輸入 `CertificateThumbprint`。
+    * **欄位路徑** ：輸入 `CertificateThumbprint`。
 
 14. 按一下 [SERVICEPRINCIPAL]，並在 [參數值] 頁面中，針對 [資料來源] 欄位選取 [ConstantValue]。 按一下 [True] 選項，然後按一下 [確定]。
 
 15. 按一下 [TENANTID]，然後在 [參數值] 頁面上進行下列設定。 完成後，請按兩次 [確定]。
 
-    * **資料來源**：選取 [活動輸出]。
+    * **資料來源** ：選取 [活動輸出]。
     * 資料來源清單：選取 [取得自動化連線]。
-    * **欄位路徑**：輸入 `TenantId`。
+    * **欄位路徑** ：輸入 `TenantId`。
 
 16. 在 [程式庫] 控制項中，於搜尋欄位中輸入 `Set-AzContext`。
 
@@ -253,9 +253,9 @@ ms.locfileid: "90987651"
 2. 選取 [輸入和輸出]，然後選取 [新增輸入]，來開啟 [Runbook Input Parameter] \(Runbook 輸入參數) 窗格。
 
 3. 在所提供的欄位中進行下列設定，然後按一下 [確定]。
-   * **名稱**：指定 `VMName`。
-   * **類型**：保留字串設定。
-   * **必要**：將值變更為 [是]。
+   * **名稱** ：指定 `VMName`。
+   * **類型** ：保留字串設定。
+   * **必要** ：將值變更為 [是]。
 
 4. 建立稱為 `ResourceGroupName` 的第二個必要輸入參數，然後按一下 [確定] 來關閉 [輸入和輸出] 窗格。
 
@@ -285,7 +285,7 @@ ms.locfileid: "90987651"
 
 您現在可以修改 Runbook，使其只會在 VM 尚未啟動時嘗試加以啟動。 若要這麼做，請新增 [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM) Cmdlet 以擷取 VM 的執行個體層級狀態。 然後您可新增名為 `Get Status` 的 PowerShell 工作流程程式碼模組與 PowerShell 程式碼片段，以判斷 VM 狀態為執行中還是已停止。 只有當目前執行中狀態為已停止時，`Get Status`模組中的條件式連結才會執行 `Start-AzVM`。 在此程序結束時，您的 Runbook 會使用 `Write-Output` Cmdlet 來輸出訊息，以通知您 VM 是否已成功啟動。
 
-1. 在圖形化編輯器中開啟 **MyFirstRunbook-Graphical**。
+1. 在圖形化編輯器中開啟 **MyFirstRunbook-Graphical** 。
 
 2. 按一下 `Specify Subscription Id` 與 `Start-AzVM` 之間的連結，然後按 [刪除]，以移除該連結。
 
@@ -335,7 +335,7 @@ ms.locfileid: "90987651"
 
 18. 針對 [條件運算式]，輸入 `$ActivityOutput['Get Status'] -eq "Stopped"`。 如果 VM 已停止，則輸入 `Start-AzVM`。
 
-19. 在 [程式庫] 控制項中，展開 **Cmdlet**，然後展開 **Microsoft.PowerShell.Utility**。
+19. 在 [程式庫] 控制項中，展開 **Cmdlet** ，然後展開 **Microsoft.PowerShell.Utility** 。
 
 20. 將 `Write-Output` 新增至畫布兩次。
 

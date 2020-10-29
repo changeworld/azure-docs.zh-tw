@@ -3,12 +3,12 @@ title: 常見問題集 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供 Azure 事件中樞的常見問題集 (FAQ) 清單及其答案。
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: 051122c2030683eb2f3c57191dbbfa3bfd2bf6b7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3b55521c9f90192891b450e3e161607a334c3a00
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789364"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909704"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中樞常見問題集
 
@@ -119,6 +119,9 @@ Azure 事件中樞儲存客戶資料。 事件中樞會自動將此資料儲存�
     "Category": "EventHubVNetConnectionEvent"
 }
 ```
+
+> [!IMPORTANT]
+> 只有在命名空間允許 (IP 篩選規則) 的 **特定 ip 位址** 進行存取時，才會產生虛擬網路記錄檔。 如果您不想要使用這些功能來限制對命名空間的存取權，但仍想要取得虛擬網路記錄來追蹤連線至事件中樞命名空間之用戶端的 IP 位址，您可以使用下列因應措施：啟用 IP 篩選，並將可定址的 IPv4 範圍總計新增 (1.0.0.0/1-255.0.0.0/1) 。 事件中樞不支援 IPv6 位址範圍。 
 
 ## <a name="apache-kafka-integration"></a>Apache Kafka 整合
 

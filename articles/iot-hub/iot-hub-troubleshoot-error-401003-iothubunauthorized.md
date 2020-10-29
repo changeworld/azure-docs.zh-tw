@@ -11,12 +11,12 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 4979405c7675b5eff9f6940cd34e0c974ebad217
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: af057750e81086bf691b87057da97af3de19cd3b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538267"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909636"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
@@ -52,9 +52,9 @@ IoT 中樞的要求失敗，並出現下列其中一個錯誤訊息：
 
 ### <a name="cause-2"></a>原因 2
 
-IoT 中樞無法驗證驗證標頭、規則或金鑰。
+IoT 中樞無法驗證驗證標頭、規則或金鑰。 這可能是因為徵兆中提及的任何原因所致。
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 ### <a name="solution-1"></a>解決方案 1
 
@@ -66,10 +66,13 @@ IoT 中樞無法驗證驗證標頭、規則或金鑰。
 
 一般情況下，顯示的錯誤訊息應該會說明如何修正錯誤。 如果基於某些原因而無法存取錯誤訊息詳細資料，請確定：
 
-- 您使用的 SAS 或其他安全性權杖尚未過期。 
-- 授權認證的格式正確，適用于您所使用的通訊協定。 若要深入瞭解，請參閱 [IoT 中樞存取控制](iot-hub-devguide-security.md)。
+- 您使用的 SAS 或其他安全性權杖尚未過期。
+- 針對 x.509 憑證驗證，裝置憑證或與裝置相關聯的 CA 憑證未過期。 若要瞭解如何向 IoT 中樞註冊 x.509 CA 憑證，請參閱 [在您的 Azure IoT 中樞中設定 x.509 安全性](iot-hub-security-x509-get-started.md)。
+- 若為 x.509 憑證指紋驗證，則會向 IoT 中樞註冊裝置憑證的指紋。
+- 授權認證的格式正確，適用于您所使用的通訊協定。 若要深入瞭解，請參閱 [控制 IoT 中樞的存取權](iot-hub-devguide-security.md)。
 - 使用的授權規則具有所要求作業的許可權。
 
 ## <a name="next-steps"></a>下一步
 
-若要更輕鬆地向 IoT 中樞進行驗證，我們建議使用 [Azure IoT sdk](iot-hub-devguide-sdks.md)。
+- 若要更輕鬆地向 IoT 中樞進行驗證，我們建議使用 [Azure IoT sdk](iot-hub-devguide-sdks.md)。
+- 如需有關使用 IoT 中樞進行驗證的詳細資訊，請參閱 [控制 Iot 中樞的存取權](iot-hub-devguide-security.md)。

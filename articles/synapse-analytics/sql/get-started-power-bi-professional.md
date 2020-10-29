@@ -1,5 +1,5 @@
 ---
-title: 連線到 Power BI Professional
+title: 使用 Power BI Professional 連線到 Synapse SQL
 description: 在本教學課程中，我們將逐步解說如何將 Power BI Desktop 連線到 SQL 隨選 (預覽) 的步驟。
 services: synapse-analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 48b6639ad8228347737669fffca06eb660a25874
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d88406646099a136d196a104f9cf4352a367f6d2
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288693"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92899124"
 ---
 # <a name="connect-to-synapse-sql-with-power-bi-professional"></a>使用 Power BI Professional 連線到 Synapse SQL
 
@@ -75,7 +75,7 @@ DROP DATABASE IF EXISTS demo;
 > [!NOTE]
 > 您需要建立認證以存取儲存體帳戶。 雖然 SQL 隨選可以存取不同區域的儲存體，但在相同區域中擁有儲存體和 Azure Synapse 工作區可提供更好的效能體驗。
 
-**有關如何為人口普查資料容器建立認證的程式碼片段**，請執行：
+**有關如何為人口普查資料容器建立認證的程式碼片段** ，請執行：
 
 ```sql
 IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')

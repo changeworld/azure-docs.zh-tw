@@ -112,7 +112,7 @@
         - name: Kubernetes 網路原則
           href: kubernetes-network-policies.md
         - name: DDoS 保護
-          href: ddos-protection-overview.md
+          href: 'https://docs.microsoft.com/azure/ddos-protection/ddos-protection-overview'
         - name: 虛擬網路 TAP
           href: virtual-network-tap-overview.md
         - name: Azure 原則的安全性控制
@@ -299,9 +299,9 @@
                 - name: Azure CLI
                   href: virtual-network-service-endpoint-policies-cli.md
         - name: 管理 DDoS 保護
-          href: manage-ddos-protection.md
+          href: 'https://docs.microsoft.com/azure/ddos-protection/manage-ddos-protection'
         - name: 將合作夥伴上架至 DDoS 保護標準
-          href: ddos-protection-partner-onboarding.md
+          href: 'https://docs.microsoft.com/azure/ddos-protection/ddos-protection-partner-onboarding'
         - name: 管理網路安全性群組
           href: manage-network-security-group.md
         - name: 安全性案例
