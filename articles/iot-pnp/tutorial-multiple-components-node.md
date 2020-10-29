@@ -7,13 +7,13 @@ ms.date: 07/10/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: devx-track-js
-ms.openlocfilehash: ea7b1ba159aa5d11a20ff565390ce0b24e38c1d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 2f0bf3b4b6e7091222b98e1743f0fb4f431fdd12
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91577181"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92736053"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-multiple-component-device-application-to-iot-hub-nodejs"></a>教學課程：將範例 IoT 隨插即用多重元件裝置應用程式連線至 IoT 中樞 (Node.js)
 

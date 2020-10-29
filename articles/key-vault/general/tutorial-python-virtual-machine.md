@@ -8,13 +8,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 8980505ac34e32a29403060a7cf3cfaec077d8af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 89118f13bc009ce60d4fd1c82dfe7688bf1e551b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336695"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741269"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>教學課程：在 Python 中搭配使用 Azure Key Vault 與虛擬機器
 
@@ -148,7 +148,7 @@ print(f"The value of secret '{secretName}' in '{keyVaultName}' is: '{retrieved_s
 
 ## <a name="run-the-sample-python-app"></a>執行 Python 應用程式範例
 
-最後，執行 **sample.py**。 如果一切順利，系統應該會傳回您的祕密值：
+最後，執行 **sample.py** 。 如果一切順利，系統應該會傳回您的祕密值：
 
 ```bash
 python3 sample.py

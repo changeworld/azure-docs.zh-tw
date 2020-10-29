@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: e5a7984cd868e7fbac08ec80f92fe28ad13d84e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23a76e4007965c263671554bbcd937dbf3b4b0a6
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308090"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676202"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>使用 CLI 建立 Internet Analyzer 測試 (預覽)
 
@@ -25,19 +25,19 @@ ms.locfileid: "91308090"
 
 ## <a name="before-you-begin"></a>開始之前
 
-公開預覽可供全球各區域使用，不過，在預覽期間，資料儲存體限制為*美國西部 2*。
+公開預覽可供全球各區域使用，不過，在預覽期間，資料儲存體限制為 *美國西部 2* 。
 
 ## <a name="object-model"></a>物件模型
 Internet Analyzer CLI 會公開下列類型的資源：
-* **測試**：測試會比較一段時間後，兩個網際網路端點 (A 與 B) 的終端使用者效能。
-* **設定檔**：測試是在 Internet Analyzer 設定檔下建立的。 設定檔允許將相關的測試分組；單一設定檔可以包含一或多個測試。
-* **預先設定的端點**：我們已使用各種不同的設定 (區域、加速技術等) 來設定端點。 您可以在測試中使用這些任何預先設定的端點。
-* **計分卡**：計分卡可提供測量結果快速且有意義的摘要。 請參閱[解譯您的計分卡](internet-analyzer-scorecard.md)。
-* **時間序列**：時間序列會顯示計量隨著時間變更的方式。
+* **測試** ：測試會比較一段時間後，兩個網際網路端點 (A 與 B) 的終端使用者效能。
+* **設定檔** ：測試是在 Internet Analyzer 設定檔下建立的。 設定檔允許將相關的測試分組；單一設定檔可以包含一或多個測試。
+* **預先設定的端點** ：我們已使用各種不同的設定 (區域、加速技術等) 來設定端點。 您可以在測試中使用這些任何預先設定的端點。
+* **計分卡** ：計分卡可提供測量結果快速且有意義的摘要。 請參閱[解譯您的計分卡](internet-analyzer-scorecard.md)。
+* **時間序列** ：時間序列會顯示計量隨著時間變更的方式。
 
 ## <a name="profile-and-test-creation"></a>設定檔和測試建立
-1. 依照 [Azure Internet Analyzer 常見問題集](internet-analyzer-faq.md)中的**如何參與預覽？** 指示，取得 Internet Analyzer 預覽存取。
-2. [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+1. 依照 [Azure Internet Analyzer 常見問題集](internet-analyzer-faq.md)中的 **如何參與預覽？** 指示，取得 Internet Analyzer 預覽存取。
+2. [安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 3. 執行 `login` 命令以啟動 CLI 工作階段：
     ```azurecli-interactive
     az login
@@ -50,9 +50,9 @@ Internet Analyzer CLI 會公開下列類型的資源：
 
 5. 選取您的訂用帳戶識別碼 (必須已獲授權可存取 Internet Analyzer 公開預覽)。
 
-    登入之後，您會看到一份與 Azure 帳戶相關聯的訂用帳戶清單。 包含 `isDefault: true` 的訂用帳戶資訊是目前在登入之後會啟動的訂用帳戶。 若要選取另一個訂用帳戶，請使用 [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set) 命令搭配訂用帳戶識別碼以進行切換。 如需訂用帳戶選項的詳細資訊，請參閱[使用多個 Azure 訂用帳戶](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。
+    登入之後，您會看到一份與 Azure 帳戶相關聯的訂用帳戶清單。 包含 `isDefault: true` 的訂用帳戶資訊是目前在登入之後會啟動的訂用帳戶。 若要選取另一個訂用帳戶，請使用 [az account set](/cli/azure/account#az-account-set) 命令搭配訂用帳戶識別碼以進行切換。 如需訂用帳戶選項的詳細資訊，請參閱[使用多個 Azure 訂用帳戶](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。
 
-    非互動式的登入方法有很多種，[透過 Azure CLI 登入](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)中有詳細說明。
+    非互動式的登入方法有很多種，[透過 Azure CLI 登入](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)中有詳細說明。
 
 6. **[選擇性]** 建立新的 Azure 資源群組：
     ```azurecli-interactive
@@ -132,6 +132,6 @@ Internet Analyzer CLI 會公開下列類型的資源：
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瀏覽 [Internet Analyzer CLI 參考](https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest)，以取得支援的命令和使用方式範例的完整清單。
+* 瀏覽 [Internet Analyzer CLI 參考](/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest)，以取得支援的命令和使用方式範例的完整清單。
 * 請參閱 [Internet Analyzer 常見問題集](internet-analyzer-faq.md)。
-* 深入了解如何內嵌 [Internet Analyzer 用戶端](internet-analyzer-embed-client.md)以及如何建立[自訂端點](internet-analyzer-custom-endpoint.md)。 
+* 深入了解如何內嵌 [Internet Analyzer 用戶端](internet-analyzer-embed-client.md)以及如何建立[自訂端點](internet-analyzer-custom-endpoint.md)。

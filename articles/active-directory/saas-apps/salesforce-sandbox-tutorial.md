@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 277acbc84ab435ce1076c30a1e49f6ffdd2a0586
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc27b1fea97471e9ca1991467902e666c1451605
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543701"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675553"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce-sandbox"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Salesforce Sandbox 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543701"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Salesforce Sandbox。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -41,8 +41,8 @@ ms.locfileid: "88543701"
 
 * Salesforce Sandbox 支援由 **SP 和 IDP** 起始的 SSO
 * Salesforce Sandbox 支援 **Just In Time** 使用者佈建
-* Salesforce Sandbox 支援[**自動**使用者佈建](salesforce-sandbox-provisioning-tutorial.md)
-* 設定 Salesforce Sandbox 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Salesforce Sandbox 支援 [**自動** 使用者佈建](salesforce-sandbox-provisioning-tutorial.md)
+* 設定 Salesforce Sandbox 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-salesforce-sandbox-from-the-gallery"></a>從資源庫新增 Salesforce Sandbox
 
@@ -52,7 +52,7 @@ ms.locfileid: "88543701"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Salesforce Sandbox**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Salesforce Sandbox** 。
 1. 從結果面板中選取 [Salesforce Sandbox]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -74,18 +74,18 @@ ms.locfileid: "88543701"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Salesforce Sandbox]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 在 [基本 SAML 設定]  區段上，如果您有**服務提供者中繼資料檔案**，而想要以 **IDP** 起始模式進行設定，請執行下列步驟：
+4. 在 [基本 SAML 設定]  區段上，如果您有 **服務提供者中繼資料檔案** ，而想要以 **IDP** 起始模式進行設定，請執行下列步驟：
 
     a. 按一下 [上傳中繼資料檔案]  。
 
     ![上傳中繼資料檔案](common/upload-metadata.png)
 
-    b. 按一下**資料夾圖示**以選取中繼資料檔案，然後按一下 [上傳]  。
+    b. 按一下 **資料夾圖示** 以選取中繼資料檔案，然後按一下 [上傳]  。
 
     ![選擇中繼資料檔案](common/browse-upload-metadata.png)
 
@@ -147,7 +147,7 @@ ms.locfileid: "88543701"
 
 1. 在瀏覽器中開啟新索引標籤，登入您的 Salesforce Sandbox 系統管理員帳戶。
 
-2. 按一下分頁右上角**設定圖示**底下的 [設定]  。
+2. 按一下分頁右上角 **設定圖示** 底下的 [設定]  。
 
     ![設定單一登入](./media/salesforce-sandbox-tutorial/configure1.png)
 
@@ -167,7 +167,7 @@ ms.locfileid: "88543701"
 
     ![設定單一登入](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
-7. 按一下 [**選擇檔案**] 以上傳您從 Azure 入口網站下載的中繼資料 XML 檔案，然後按一下 [**建立**]。
+7. 按一下 [ **選擇檔案** ] 以上傳您從 Azure 入口網站下載的中繼資料 XML 檔案，然後按一下 [ **建立** ]。
 
     ![設定單一登入](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
@@ -200,7 +200,7 @@ ms.locfileid: "88543701"
 
 12. 在瀏覽器中開啟新索引標籤，登入您的 Salesforce Sandbox 系統管理員帳戶。
 
-13. 按一下分頁右上角**設定圖示**底下的 [設定]  。
+13. 按一下分頁右上角 **設定圖示** 底下的 [設定]  。
 
     ![設定單一登入](./media/salesforce-sandbox-tutorial/configure1.png)
 
@@ -224,7 +224,7 @@ ms.locfileid: "88543701"
 
     ![設定單一登入](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
-19. 在 [SAML 單一登入設定]  頁面上，欄位會自動填入資料，請在 [名稱]  文字方塊中輸入設定的名稱 (例如：*SPSSOWAAD_Test*)，然後按一下 [儲存]。
+19. 在 [SAML 單一登入設定]  頁面上，欄位會自動填入資料，請在 [名稱]  文字方塊中輸入設定的名稱 (例如： *SPSSOWAAD_Test* )，然後按一下 [儲存]。
 
     ![設定單一登入](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
 
@@ -253,20 +253,20 @@ ms.locfileid: "88543701"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Salesforce Sandbox] 圖格時，應該會自動登入您已設定 SSO 的 Salesforce Sandbox。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Salesforce Sandbox] 圖格時，應該會自動登入您已設定 SSO 的 Salesforce Sandbox。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Salesforce Sandbox](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/protect-salesforce)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/protect-salesforce)
 
 - [設定使用者佈建](salesforce-sandbox-provisioning-tutorial.md)
 
-- [如何使用進階可見性和控制項保護 Salesforce Sandbox](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何使用進階可見性和控制項保護 Salesforce Sandbox](/cloud-app-security/proxy-intro-aad)

@@ -107,7 +107,7 @@
           href: how-to-integrate-maps.md
         - name: 與 Azure 時間序列深入解析整合
           href: how-to-integrate-time-series-insights.md
-    - name: 疑難排解
+    - name: 監視及疑難排解
       items:
         - name: 檢視 Azure 監視器中的計量
           href: troubleshoot-metrics.md
@@ -115,6 +115,8 @@
           href: troubleshoot-diagnostics.md
         - name: 啟用警示
           href: troubleshoot-alerts.md
+        - name: 了解資源的健康情況
+          href: troubleshoot-resource-health.md
         - name: 已知問題
           href: troubleshoot-known-issues.md
         - name: 解決問題
@@ -144,7 +146,7 @@
             - name: Java SDK - 參考
               href: /java/api/overview/azure/digitaltwins/management?view=azure-java-preview
             - name: Java SDK - 來源
-              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins'
+              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31'
             - name: JavaScript SDK
               href: 'https://www.npmjs.com/package/@azure/arm-digitaltwins'
             - name: JavaScript SDK - 來源
@@ -152,9 +154,11 @@
             - name: Python SDK
               href: 'https://pypi.org/project/azure-mgmt-digitaltwins/'
             - name: Python SDK - 來源
-              href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-mgmt-digitaltwins'
+              href: 'https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins'
             - name: Go SDK
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
+            - name: Go - 來源
+              href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins'
         - name: 資料平面
           items:
             - name: Swagger

@@ -3,13 +3,13 @@ title: 封裝和部署容器
 description: 在本教學課程中，您會了解如何使用 Yeoman 來產生 Azure Service Fabric 應用程式定義以及封裝應用程式。
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.custom: mvc
-ms.openlocfilehash: 5840539b6c51a0070a98f03dbda3c596fd5c2516
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 995291a783d14a6d2db8ed8319c720f55c009d91
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539872"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738856"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>教學課程：使用 Yeoman 封裝和部署容器作為 Service Fabric 應用程式
 
@@ -99,7 +99,7 @@ Service Fabric 提供 Scaffolding 工具，可協助您使用 Yeoman 範本產�
    create TestContainer/azurevotebackPkg/code/Dummy.txt
 ```
 
-針對本教學課程的其餘部分，我們會在 **TestContainer** 目錄中運作。 例如， *./TestContainer/TestContainer*。 此目錄的內容應該如下所示。
+針對本教學課程的其餘部分，我們會在 **TestContainer** 目錄中運作。 例如， *./TestContainer/TestContainer* 。 此目錄的內容應該如下所示。
 
 ```bash
 $ ls
@@ -116,7 +116,7 @@ ApplicationManifest.xml azurevotefrontPkg azurevotebackPkg
 az acr login --name <acrName>
 ```
 
-此命令在完成之後會傳回**登入成功**訊息。
+此命令在完成之後會傳回 **登入成功** 訊息。
 
 接下來，執行下列命令以取得容器登錄的密碼。 Service Fabric 會使用此密碼來向 ACR 進行驗證以提取容器映像。
 
@@ -124,7 +124,7 @@ az acr login --name <acrName>
 az acr credential show -n <acrName> --query passwords[0].value
 ```
 
-在 **ApplicationManifest.xml** 中，針對前端服務，在 **ServiceManifestImport** 元素下方加入程式碼片段。 針對 **AccountName** 欄位插入您的 **acrName**，並針對 **Password** 欄位使用從前一個命令傳回的密碼。 本文件結尾會提供完整的 **ApplicationManifest.xml**。
+在 **ApplicationManifest.xml** 中，針對前端服務，在 **ServiceManifestImport** 元素下方加入程式碼片段。 針對 **AccountName** 欄位插入您的 **acrName** ，並針對 **Password** 欄位使用從前一個命令傳回的密碼。 本文件結尾會提供完整的 **ApplicationManifest.xml** 。
 
 ```xml
 <Policies>
@@ -165,11 +165,11 @@ az acr credential show -n <acrName> --query passwords[0].value
 </Resources>
 ```
 
-提供 **UriScheme**，就會自動向 Service Fabric 命名服務註冊容器端點以供搜尋。 本文結尾會針對後端服務提供完整的 ServiceManifest.xml 範例檔案作為範例。
+提供 **UriScheme** ，就會自動向 Service Fabric 命名服務註冊容器端點以供搜尋。 本文結尾會針對後端服務提供完整的 ServiceManifest.xml 範例檔案作為範例。
 
 ### <a name="map-container-ports-to-a-service"></a>將容器連接埠對應至服務
 
-為了公開叢集中的容器，我們也需要在 'ApplicationManifest.xml' 中建立連接埠繫結。 **PortBinding** 原則會參考我們在 **ServiceManifest.xml** 檔案中定義的 **Endpoints**。 將要求傳入這些端點，會對應至已在此處開啟並繫結的容器連接埠。 在 **ApplicationManifest.xml** 檔案中，新增下列程式碼，將連接埠 80 和 6379 繫結至端點。 本文件結尾會提供完整的 **ApplicationManifest.xml**。
+為了公開叢集中的容器，我們也需要在 'ApplicationManifest.xml' 中建立連接埠繫結。 **PortBinding** 原則會參考我們在 **ServiceManifest.xml** 檔案中定義的 **Endpoints** 。 將要求傳入這些端點，會對應至已在此處開啟並繫結的容器連接埠。 在 **ApplicationManifest.xml** 檔案中，新增下列程式碼，將連接埠 80 和 6379 繫結至端點。 本文件結尾會提供完整的 **ApplicationManifest.xml** 。
 
 ```xml
 <ContainerHostPolicies CodePackageRef="Code">

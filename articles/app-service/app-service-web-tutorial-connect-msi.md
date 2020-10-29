@@ -4,13 +4,13 @@ description: 了解如何使用受控識別，讓資料庫連線更加安全，�
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
-ms.custom: devx-track-csharp, mvc, cli-validate
-ms.openlocfilehash: 19e1d71cd766a99a32e90e2f83dc717ba56b795f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
+ms.openlocfilehash: 633e3a6386b9e6098e167c7fdd542d98c16fae48
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984040"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92737887"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教學課程：使用受控識別保護來自 App Service 的 Azure SQL Database 連線
 
@@ -37,7 +37,7 @@ ms.locfileid: "90984040"
 > * 使用 Azure AD 驗證從 Visual Studio 連線至 SQL Database
 
 > [!NOTE]
->Azure AD 驗證與內部部署 Active Directory (AD DS) 中的[整合式 Windows 驗證](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10))_不同_。 AD DS 和 Azure AD 使用完全不同的驗證通訊協定。 如需詳細資訊，請參閱 [Azure AD Domain Services 文件](../active-directory-domain-services/index.yml)。
+>Azure AD 驗證與內部部署 Active Directory (AD DS) 中的 [整合式 Windows 驗證](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10))_不同_ 。 AD DS 和 Azure AD 使用完全不同的驗證通訊協定。 如需詳細資訊，請參閱 [Azure AD Domain Services 文件](../active-directory-domain-services/index.yml)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -220,12 +220,12 @@ ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
 
-*\<identity-name>* 是 Azure AD 中的受控識別名稱。 如果身分識別是由系統指派的，則名稱一律會與您 App Service 應用程式名稱相同。 若要為 Azure AD 群組授與權限，請改用群組的顯示名稱 (例如 *myAzureSQLDBAccessGroup*)。
+*\<identity-name>* 是 Azure AD 中的受控識別名稱。 如果身分識別是由系統指派的，則名稱一律會與您 App Service 應用程式名稱相同。 若要為 Azure AD 群組授與權限，請改用群組的顯示名稱 (例如 *myAzureSQLDBAccessGroup* )。
 
 輸入 `EXIT` 以返回 Cloud Shell 提示字元。
 
 > [!NOTE]
-> 受控識別的後端服務也會[維護權杖快取](overview-managed-identity.md#obtain-tokens-for-azure-resources)，只有當目標資源過期時，才會更新其權杖。 如果您在設定 SQL Database 權限時發生錯誤，並在嘗試透過應用程式取得權杖*之後*嘗試修改權限，則在快取的權杖過期前，您實際上不會取得具有更新權限的新權杖。
+> 受控識別的後端服務也會[維護權杖快取](overview-managed-identity.md#obtain-tokens-for-azure-resources)，只有當目標資源過期時，才會更新其權杖。 如果您在設定 SQL Database 權限時發生錯誤，並在嘗試透過應用程式取得權杖 *之後* 嘗試修改權限，則在快取的權杖過期前，您實際上不會取得具有更新權限的新權杖。
 
 ### <a name="modify-connection-string"></a>修改連接字串
 
@@ -239,13 +239,13 @@ az webapp config connection-string delete --resource-group myResourceGroup --nam
 
 現在只剩下將您的變更發佈至 Azure。
 
-**如果您來自[教學課程：在 Azure 中搭配 SQL Database 來建置 ASP.NET 應用程式](app-service-web-tutorial-dotnet-sqldatabase.md)** ，請在 Visual Studio 中發佈變更。 在 [方案總管] 中，以滑鼠右鍵按一下 [DotNetAppSqlDb] 專案，然後選取 [發佈]。
+**如果您來自 [教學課程：在 Azure 中搭配 SQL Database 來建置 ASP.NET 應用程式](app-service-web-tutorial-dotnet-sqldatabase.md)** ，請在 Visual Studio 中發佈變更。 在 [方案總管] 中，以滑鼠右鍵按一下 [DotNetAppSqlDb] 專案，然後選取 [發佈]。
 
 ![從方案總管發佈](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
 在發佈頁面中，按一下 [發佈]。 
 
-**如果您來自[教學課程：在 Azure App Service 中建置 ASP.NET Core 和 SQL Database 應用程式](tutorial-dotnetcore-sqldb-app.md)** ，請使用 Git 和下列命令來發佈變更：
+**如果您來自 [教學課程：在 Azure App Service 中建置 ASP.NET Core 和 SQL Database 應用程式](tutorial-dotnetcore-sqldb-app.md)** ，請使用 Git 和下列命令來發佈變更：
 
 ```bash
 git commit -am "configure managed identity"

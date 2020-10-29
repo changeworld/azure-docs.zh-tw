@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 61807f90caad9e6be2a25e54dcaa837595afc729
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27512ac694f20544f1fdd5b79b27d7bf2cabdd66
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543148"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675495"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sensoscientific-wireless-temperature-monitoring-system"></a>教學課程︰Azure Active Directory 與 SensoScientific Wireless Temperature Monitoring System 整合
 
@@ -27,7 +27,7 @@ ms.locfileid: "88543148"
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 SensoScientific Wireless Temperature Monitoring System (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ ms.locfileid: "88543148"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中輸入 **SensoScientific Wireless Temperature Monitoring System**，並從結果面板中選取 [SensoScientific Wireless Temperature Monitoring System]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中輸入 **SensoScientific Wireless Temperature Monitoring System** ，並從結果面板中選取 [SensoScientific Wireless Temperature Monitoring System]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
     ![結果清單中的 SensoScientific Wireless Temperature Monitoring System](common/search-new-app.png)
 
@@ -151,7 +151,7 @@ ms.locfileid: "88543148"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`。 例如， BrittaSimon@contoso.com
 
@@ -167,7 +167,7 @@ ms.locfileid: "88543148"
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 **SensoScientific Wireless Temperature Monitoring System**。
+2. 在應用程式清單中，選取 **SensoScientific Wireless Temperature Monitoring System** 。
 
     ![應用程式清單中的 SensoScientific Wireless Temperature Monitoring System 連結](common/all-applications.png)
 
@@ -187,19 +187,18 @@ ms.locfileid: "88543148"
 
 ### <a name="create-sensoscientific-wireless-temperature-monitoring-system-test-user"></a>建立 SensoScientific Wireless Temperature Monitoring System 測試使用者
 
-若要讓 Azure AD 使用者能夠登入 SensoScientific Wireless Temperature Monitoring System，必須將他們佈建到 SensoScientific Wireless Temperature Monitoring System。 請與 [SensoScientific Wireless Temperature Monitoring System 支援小組](https://www.sensoscientific.com/contact-us/)合作，在 SensoScientific Wireless Temperature Monitoring System 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+若要讓 Azure AD 使用者能夠登入 SensoScientific Wireless Temperature Monitoring System，必須將他們佈建到 SensoScientific Wireless Temperature Monitoring System。 使用 [SensoScientific Wireless Temperature Monitoring System 支援小組](https://www.sensoscientific.com/contact-us/) 在 SensoScientific Wireless Temperature Monitoring System 平台新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ### <a name="test-single-sign-on"></a>測試單一登入
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [SensoScientific Wireless Temperature Monitoring System] 圖格時，應該會自動登入您已設定 SSO 的 SensoScientific Wireless Temperature Monitoring System。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [SensoScientific Wireless Temperature Monitoring System] 圖格時，應該會自動登入您已設定 SSO 的 SensoScientific Wireless Temperature Monitoring System。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

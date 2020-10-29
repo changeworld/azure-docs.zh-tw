@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: e233c7c4eb76e79e73d0c5fc386a9d908f0e35b5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 175c92c02196105e9fb1249e5b88d73bc8b87d48
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216686"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735231"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>教學課程：在 Azure 中監視變更及更新 Linux 虛擬機器
 

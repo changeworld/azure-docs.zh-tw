@@ -9,13 +9,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.custom: devx-track-csharp
-ms.openlocfilehash: e537bb74655bce5c8438e22fb9b990b72eab73d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 77845a91ed2d185c0fe05e2f40e53b2edf3d1ca7
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336678"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741391"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>教學課程：使用受控識別透過 .NET 將 Key Vault 連線至 Azure Web 應用程式
 
@@ -112,7 +112,7 @@ JSON 輸出會將密碼顯示為 `null`。 如果您收到 `'Conflict'. Details:
 
 ### <a name="create-an-app-service-plan"></a>建立應用程式服務方案
 
-使用 Azure CLI 的 [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest) 命令來建立 App Service 方案。 下面這個範例會在**免費**定價層中建立名為 `myAppServicePlan` 的 App Service 方案：
+使用 Azure CLI 的 [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest) 命令來建立 App Service 方案。 下面這個範例會在 **免費** 定價層中建立名為 `myAppServicePlan` 的 App Service 方案：
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
@@ -183,7 +183,7 @@ https://<your-webapp-name>.azurewebsites.net
 
 ### <a name="deploy-your-local-app"></a>部署您的本機應用程式
 
-回到本機終端機視窗，將 Azure 遠端新增至本機 Git 存放庫，並以您從[建立遠端 Web 應用程式](#create-a-remote-web-app)步驟中儲存的 Git 遠端 URL 取代 *\<deploymentLocalGitUrl-from-create-step>* 。
+回到本機終端機視窗，將 Azure 遠端新增至本機 Git 存放庫，並以您從 [建立遠端 Web 應用程式](#create-a-remote-web-app)步驟中儲存的 Git 遠端 URL 取代 *\<deploymentLocalGitUrl-from-create-step>* 。
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>
@@ -249,7 +249,7 @@ az webapp identity assign --name "<your-webapp-name>" --resource-group "myResour
 }
 ```
 
-若要向 Web 應用程式提供權限以便在金鑰保存庫上執行**取得**和**列出**作業，請將 principalID 傳遞給 Azure CLI 的 [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) 命令：
+若要向 Web 應用程式提供權限以便在金鑰保存庫上執行 **取得** 和 **列出** 作業，請將 principalID 傳遞給 Azure CLI 的 [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) 命令：
 
 ```azurecli-interactive
 az keyvault set-policy --name "<your-keyvault-name>" --object-id "<principalId>" --secret-permissions get list
@@ -323,7 +323,7 @@ git push azure master
 http://<your-webapp-name>.azurewebsites.net
 ```
 
-在看到 **Hello World** 之前，您現在應該會先看到秘密值顯示：**成功！**
+在看到 **Hello World** 之前，您現在應該會先看到秘密值顯示： **成功！**
 
 ## <a name="next-steps"></a>後續步驟
 

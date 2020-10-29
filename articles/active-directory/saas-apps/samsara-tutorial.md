@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: jeedes
-ms.openlocfilehash: b864f4204fa546fa1f06e50550376a8a899d5b8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9512287f656c6c64399cb8749b7451a5a780bba8
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91337730"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677640"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-samsara"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Samsara 整合
 
@@ -57,7 +57,7 @@ ms.locfileid: "91337730"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Samsara**。
+1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Samsara** 。
 
      ![結果清單中的 OneTrust Privacy Management Software](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "91337730"
 
     ![設定單一登入連結](common/select-sso.png)
 
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 
     ![單一登入選取模式](common/select-saml-option.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "91337730"
     c. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://samsara-dev.auth0.com/login/callback?connection=samlp-orgid-<ORGID>`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的 [登入 URL]、[回覆 URL] 和 [識別碼] 來更新這些值。 請連絡 [Samsara 用戶端支援小組](mailto:support@samsara.com)以取得這些值，或在 Samsara 中移至 [設定] > [單一登入] > [新增 SAML 連線] 以取得 \<ORGID\>。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的 [登入 URL]、[回覆 URL] 和 [識別碼] 來更新這些值。 請連絡 [Samsara 用戶端支援小組](mailto:support@samsara.com)以取得這些值，或在 Samsara 中移至 [設定] > [單一登入] > [新增 SAML 連線] 以取得 \<ORGID\>。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -152,11 +152,9 @@ ms.locfileid: "91337730"
 
 2. 直接移至 Samsara 登入 URL，然後從該處起始登入流程。
 
-3. 您可以使用 Microsoft 存取面板。 當您按一下存取面板中的 Samsara 圖格時，將會重新導向至 Samsara 登入 URL。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+3. 您可以使用 Microsoft 存取面板。 當您按一下存取面板中的 Samsara 圖格時，將會重新導向至 Samsara 登入 URL。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-設定 Samsara 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+設定 Samsara 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。

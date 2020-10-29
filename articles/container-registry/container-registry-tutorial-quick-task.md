@@ -3,17 +3,17 @@ title: 教學課程 - 快速容器映像建置
 description: 在本教學課程中，您將了解如何使用 Azure Container Registry 工作 (ACR 工作) 在 Azure 中建置 Docker 容器映像，然後將其部署至 Azure 容器執行個體。
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 7178d7171d4c9c0183eb744f19776f6b2fac09ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: 43d2c277fe3297c7e5ee55046118add352853640
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259493"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739530"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>教學課程：使用 Azure Container Registry 工作在雲端中建置和部署容器映像
 
-**ACR 工作**是 Azure Container Registry 內的一組功能，可在 Azure 中提供精簡而有效率的 Docker 容器映像組建。 在本文中，您將了解如何使用 ACR 工作的*快速工作*功能。
+**ACR 工作** 是 Azure Container Registry 內的一組功能，可在 Azure 中提供精簡而有效率的 Docker 容器映像組建。 在本文中，您將了解如何使用 ACR 工作的 *快速工作* 功能。
 
 「內部迴圈」開發週期是在認可至原始檔控制之前撰寫程式碼、建置和測試應用程式的反覆程序。 快速工作可將您的內部迴圈延伸至雲端，讓您能夠進行建置成功驗證，並將成功建置的映像自動推送至容器登錄。 您的映像依原生狀態會建置在雲端中接近您的登錄之處，因此有助於快速部署。
 
@@ -87,7 +87,7 @@ az group create --resource-group $RES_GROUP --location eastus
 az acr create --resource-group $RES_GROUP --name $ACR_NAME --sku Standard --location eastus
 ```
 
-現在您已具有登錄，接著請使用 ACR 工作，從範例程式碼建置容器映像。 請執行 [az acr build][az-acr-build] 命令以執行*快速工作*：
+現在您已具有登錄，接著請使用 ACR 工作，從範例程式碼建置容器映像。 請執行 [az acr build][az-acr-build] 命令以執行 *快速工作* ：
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
@@ -188,7 +188,7 @@ az keyvault create --resource-group $RES_GROUP --name $AKV_NAME
 
 您現在需要建立服務主體，並將它的認證儲存在金鑰保存庫中。
 
-使用 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 命令建立服務主體，並使用 [az keyvault secret set][az-keyvault-secret-set] 將服務主體的**密碼**儲存在保存庫中：
+使用 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] 命令建立服務主體，並使用 [az keyvault secret set][az-keyvault-secret-set] 將服務主體的 **密碼** 儲存在保存庫中：
 
 ```azurecli-interactive
 # Create service principal, store its password in AKV (the registry *password*)
@@ -205,7 +205,7 @@ az keyvault secret set \
 
 在前面的命令中，`--role` 引數設定服務主體具有 acrpull 角色，授與主體僅限提取登錄的存取權。 若要同時授與發送和提取存取權，請將 `--role` 引數變更為 acrpush。
 
-接下來，在保存庫中儲存服務主體的 appId，也就是您傳遞給 Azure Container Registry 進行驗證的**使用者名稱**：
+接下來，在保存庫中儲存服務主體的 appId，也就是您傳遞給 Azure Container Registry 進行驗證的 **使用者名稱** ：
 
 ```azurecli-interactive
 # Store service principal ID in AKV (the registry *username*)
@@ -217,8 +217,8 @@ az keyvault secret set \
 
 您已建立 Azure Key Vault，並在其中儲存兩個祕密：
 
-* `$ACR_NAME-pull-usr`:服務主體識別碼，用來作為容器登錄**使用者名稱**。
-* `$ACR_NAME-pull-pwd`:服務主體密碼，用來作為容器登錄**密碼**。
+* `$ACR_NAME-pull-usr`:服務主體識別碼，用來作為容器登錄 **使用者名稱** 。
+* `$ACR_NAME-pull-pwd`:服務主體密碼，用來作為容器登錄 **密碼** 。
 
 現在，當您或應用程式和服務從登錄提取映像時，您可以依名稱參考這些祕密。
 
@@ -286,7 +286,7 @@ Server running at http://localhost:80
 az container delete --resource-group $RES_GROUP --name acr-tasks
 ```
 
-若要移除您在本教學課程中建立的*所有*資源 (包括容器登錄、金鑰保存庫和服務主體)，請發出下列命令。 不過，本系列的[下一個教學課程](container-registry-tutorial-build-task.md)將會使用這些資源，因此如果您要直接移至下一個教學課程，可以選擇加以保留。
+若要移除您在本教學課程中建立的 *所有* 資源 (包括容器登錄、金鑰保存庫和服務主體)，請發出下列命令。 不過，本系列的[下一個教學課程](container-registry-tutorial-build-task.md)將會使用這些資源，因此如果您要直接移至下一個教學課程，可以選擇加以保留。
 
 ```azurecli-interactive
 az group delete --resource-group $RES_GROUP
@@ -295,7 +295,7 @@ az ad sp delete --id http://$ACR_NAME-pull
 
 ## <a name="next-steps"></a>後續步驟
 
-現在，您已使用快速工作測試您的內部迴圈，接下來請設定您將原始程式碼認可至 Git 存放庫時用來觸發容器映像建置的**建置工作**：
+現在，您已使用快速工作測試您的內部迴圈，接下來請設定您將原始程式碼認可至 Git 存放庫時用來觸發容器映像建置的 **建置工作** ：
 
 > [!div class="nextstepaction"]
 > [使用工作觸發自動建置](container-registry-tutorial-build-task.md)

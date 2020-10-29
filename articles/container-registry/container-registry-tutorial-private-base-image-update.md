@@ -3,13 +3,13 @@ title: 教學課程 - 在私人基礎映像更新時觸發映像建置
 description: 在本教學課程中，您會設定 Azure Container Registry 工作，以在另一個私人 Azure 容器登錄中的基礎映像更新時，自動觸發雲端中的容器映像建置。
 ms.topic: tutorial
 ms.date: 01/22/2020
-ms.custom: devx-track-js
-ms.openlocfilehash: 09b795981c1afe497e6adbb14f4f62d45293f0e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 7dda7c54c51c31e750083f302ca558ff7ef548ee
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91270962"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739561"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-another-private-container-registry"></a>教學課程：在另一個私人容器登錄中更新基礎映像時自動執行容器映像建置 
 
@@ -151,7 +151,7 @@ az acr task credential add \
 az acr task run --registry $ACR_NAME --name taskhelloworld
 ```
 
-工作完成後，如果您想要完成下列選擇性步驟，請記下**回合識別碼** (例如 "da6")。
+工作完成後，如果您想要完成下列選擇性步驟，請記下 **回合識別碼** (例如 "da6")。
 
 ### <a name="optional-run-application-container-locally"></a>選擇性：在本機執行應用程式容器
 
@@ -204,13 +204,13 @@ da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59
 
 ## <a name="update-the-base-image"></a>更新基底映像
 
-在此您將模擬基底映像中的架構修補程式。 請編輯 **Dockerfile-base**，並在 `NODE_VERSION` 中定義的版本號碼後面加上 "a"：
+在此您將模擬基底映像中的架構修補程式。 請編輯 **Dockerfile-base** ，並在 `NODE_VERSION` 中定義的版本號碼後面加上 "a"：
 
 ```Dockerfile
 ENV NODE_VERSION 9.11.2a
 ```
 
-執行快速工作，以建置經過修改的基底映像。 請記下輸出中的**回合識別碼**。
+執行快速工作，以建置經過修改的基底映像。 請記下輸出中的 **回合識別碼** 。
 
 ```azurecli-interactive
 az acr build --registry $BASE_ACR --image baseimages/node:9-alpine --file Dockerfile-base .
@@ -257,7 +257,7 @@ docker run -d -p 8081:80 --name updatedapp --rm $ACR_NAME.azurecr.io/helloworld:
 
 ![呈現在瀏覽器中的範例應用程式的螢幕擷取畫面][base-update-02]
 
-務必留意的是，您是使用新的版本號碼更新**基底**映像，但最後建置的**應用程式**映像會顯示新版本。 ACR 工作會取用您對基底映像的變更，並自動重建您的應用程式映像。
+務必留意的是，您是使用新的版本號碼更新 **基底** 映像，但最後建置的 **應用程式** 映像會顯示新版本。 ACR 工作會取用您對基底映像的變更，並自動重建您的應用程式映像。
 
 若要停止和移除容器，請執行下列命令：
 

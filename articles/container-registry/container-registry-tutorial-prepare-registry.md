@@ -3,13 +3,13 @@ title: 教學課程 - 建立異地複寫的登錄
 description: 建立 Azure Container Registry、設定異地複寫、準備 Docker 映像並將其部署至登錄。 三段式教學課程的第一段。
 ms.topic: tutorial
 ms.date: 06/30/2020
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 854b4eb35694f7498d0dc70567b19ccfdf7c8c82
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: seodec18, mvc, devx-track-azurecli
+ms.openlocfilehash: c473e3cd891214c2c5789bd43b0d293cb25d660a
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148387"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739493"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>教學課程：準備異地複寫的 Azure Container Registry
 
@@ -50,16 +50,16 @@ Azure Cloud Shell 不包括完成本教學課程每個步驟所需的 Docker 元
 
 為新的登錄進行以下設定。 在 [基本] 索引標籤中：
 
-* **登錄名稱**：建立登錄名稱，其必須在 Azure 中是全域唯一且包含 5-50 個英數字元
-* **資源群組**：**新建** > `myResourceGroup`
-* **位置**：`West US`
-* **SKU**：`Premium` (異地複寫的必要項目)
+* **登錄名稱** ：建立登錄名稱，其必須在 Azure 中是全域唯一且包含 5-50 個英數字元
+* **資源群組** ： **新建** > `myResourceGroup`
+* **位置** ：`West US`
+* **SKU** ：`Premium` (異地複寫的必要項目)
 
 選取 [檢閱+建立]，然後選取 [建立] 來建立登錄執行個體。
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="在 Azure 入口網站中建立容器登錄":::容器登錄
 
-在本教學課程的其餘部分，我們使用 `<acrName>` 作為您所選容器**登錄名稱**的預留位置。
+在本教學課程的其餘部分，我們使用 `<acrName>` 作為您所選容器 **登錄名稱** 的預留位置。
 
 > [!TIP]
 > 由於 Azure Container Registry 通常是存留較久且跨多部容器主機使用的資源，因此建議您在專屬的資源群組中建立您的登錄。 當您設定異地複寫登錄和 Webhook 時，這些額外的資源會放置在相同的資源群組中。
@@ -68,7 +68,7 @@ Azure Cloud Shell 不包括完成本教學課程每個步驟所需的 Docker 元
 
 現在，您已經具備進階登錄，即可設定異地複寫。 這樣一來，您的 Web 應用程式即可從最近的登錄來提取其容器映像 (在下一個教學課程中，您會將 Web 應用程式設為在兩個區域中執行)。
 
-在 Azure 入口網站中，瀏覽至您的新容器登錄，並選取**服務**下方的 [複寫]：
+在 Azure 入口網站中，瀏覽至您的新容器登錄，並選取 **服務** 下方的 [複寫]：
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="在 Azure 入口網站中建立容器登錄":::
 
@@ -89,7 +89,7 @@ Azure Cloud Shell 不包括完成本教學課程每個步驟所需的 Docker 元
 
 在後續的教學課程中，您會直接從登錄將容器映像部署到適用於容器的 Web App。 若要啟用這項功能，您也必須啟用登錄的[系統管理員帳戶](container-registry-authentication.md#admin-account)。
 
-在 Azure 入口網站中，瀏覽至您的新容器登錄，並選取**設定** 下方的 [存取金鑰]。 在 [管理使用者] 下，選取 [啟用]。
+在 Azure 入口網站中，瀏覽至您的新容器登錄，並選取 **設定** 下方的 [存取金鑰]。 在 [管理使用者] 下，選取 [啟用]。
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="在 Azure 入口網站中建立容器登錄":::
 
@@ -169,7 +169,7 @@ AcrLoginServer
 uniqueregistryname.azurecr.io
 ```
 
-接著，使用登錄的登入伺服器的 FQDN 更新 `ENV DOCKER_REGISTRY` 這一行。 此範例會反映範例登錄名稱 *uniqueregistryname*：
+接著，使用登錄的登入伺服器的 FQDN 更新 `ENV DOCKER_REGISTRY` 這一行。 此範例會反映範例登錄名稱 *uniqueregistryname* ：
 
 ```Dockerfile
 ENV DOCKER_REGISTRY uniqueregistryname.azurecr.io

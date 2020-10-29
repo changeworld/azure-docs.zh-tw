@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 6d653594cce20439a6e1214f104d875ec76bf1a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 625058b131ef5cb6180873806185a3202a766118
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979856"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675571"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Salesforce 整合
 
@@ -39,7 +39,7 @@ ms.locfileid: "90979856"
 
 * Salesforce 支援 **SP** 起始的 SSO
 
-* Salesforce 支援[**自動化的**使用者佈建和取消佈建](salesforce-provisioning-tutorial.md) (建議選項)
+* Salesforce 支援 [**自動化的** 使用者佈建和取消佈建](salesforce-provisioning-tutorial.md) (建議選項)
 
 * Salesforce 支援 **Just In Time** 使用者佈建
 
@@ -53,7 +53,7 @@ ms.locfileid: "90979856"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Salesforce**。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Salesforce** 。
 1. 從結果面板選取 [Salesforce]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-sso-for-salesforce"></a>設定和測試適用於 Salesforce 的 Azure AD SSO
@@ -74,7 +74,7 @@ ms.locfileid: "90979856"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 Azure 入口網站的 [Salesforce] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -146,7 +146,7 @@ ms.locfileid: "90979856"
 
 1. 如果您想要手動設定 Salesforce，請開啟新的網頁瀏覽器視窗，並以系統管理員身分登入 Salesforce 公司網站，然後執行下列步驟：
 
-1. 按一下分頁右上角**設定圖示**底下的 [設定]。
+1. 按一下分頁右上角 **設定圖示** 底下的 [設定]。
 
     ![設定單一登入設定圖示](./media/salesforce-tutorial/configure1.png)
 
@@ -169,7 +169,7 @@ ms.locfileid: "90979856"
 
     ![設定單一登入從中繼資料檔案新增](./media/salesforce-tutorial/sf-admin-sso-new.png)
 
-1. 按一下 [**選擇檔案**] 以上傳您從 Azure 入口網站下載的中繼資料 XML 檔案，然後按一下 [**建立**]。
+1. 按一下 [ **選擇檔案** ] 以上傳您從 Azure 入口網站下載的中繼資料 XML 檔案，然後按一下 [ **建立** ]。
 
     ![設定單一登入選擇檔案](./media/salesforce-tutorial/xmlchoose.png)
 
@@ -190,7 +190,7 @@ ms.locfileid: "90979856"
     ![設定單一登入驗證服務](./media/salesforce-tutorial/sf-auth-config.png)
 
     > [!NOTE]
-    > 如果選取了一個以上的驗證服務，當使用者嘗試啟動單一登入到您的 Salesforce 環境時，將會提示使用者選取登入時想要使用的驗證服務。 如果您不想發生這種情形，您應該**不要核取其他所有的驗證服務**。
+    > 如果選取了一個以上的驗證服務，當使用者嘗試啟動單一登入到您的 Salesforce 環境時，將會提示使用者選取登入時想要使用的驗證服務。 如果您不想發生這種情形，您應該 **不要核取其他所有的驗證服務** 。
 
 ### <a name="create-salesforce-test-user"></a>建立 Salesforce 測試使用者
 
@@ -204,7 +204,7 @@ ms.locfileid: "90979856"
 
 2. 直接移至 Salesforce 登入 URL，然後從該處起始登入流程。
 
-3. 您可以使用 Microsoft 存取面板。 當您在存取面板中按一下 [Salesforce] 圖格時，應該會自動登入您已設定 SSO 的 Salesforce。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+3. 您可以使用 Microsoft 存取面板。 當您在存取面板中按一下 [Salesforce] 圖格時，應該會自動登入您已設定 SSO 的 Salesforce。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="test-sso-for-salesforce-mobile"></a>測試 Salesforce 的 SSO (行動裝置)
 
@@ -230,4 +230,4 @@ ms.locfileid: "90979856"
 
 ## <a name="next-steps"></a>後續步驟
 
-設定 Salesforce 後，您可以強制執行工作階段控制項，以即時防止組織的敏感性資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+設定 Salesforce 後，您可以強制執行工作階段控制項，以即時防止組織的敏感性資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-aad)

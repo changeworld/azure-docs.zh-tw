@@ -6,13 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/22/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 4effdbf5fb924b59a540ce16e769633c484c641a
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 6023d1ebd27ebaccacfce85ce0f49b7ef87e17ad
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091061"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742667"
 ---
 # <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>教學課程：設定微服務應用程式的自動調整
 
@@ -48,7 +48,7 @@ ms.locfileid: "92091061"
 * 手動調整：維持固定的執行個體計數。 在標準層中，您可以擴增到最多 500 個執行個體。 此值會變更微服務應用程式個別執行中執行個體的數目。
 * 自訂自動調整：依據任何計量，依任何排程調整規模。
 
-在 Azure 入口網站中，選擇您想要調整的方式。  下圖顯示**自訂自動調整**選項和模式設定。
+在 Azure 入口網站中，選擇您想要調整的方式。  下圖顯示 **自訂自動調整** 選項和模式設定。
 
 ![自訂自動調整](./media/spring-cloud-autoscale/custom-autoscale.png)
 

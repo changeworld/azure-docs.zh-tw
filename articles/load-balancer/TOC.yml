@@ -110,7 +110,7 @@
         - name: Azure Resource Manager 範本
           href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
           displayName: ARM
-    - name: 設定負載平衡器的 TCP 閒置逾時
+    - name: 設定 TCP 重設和閒置逾時
       href: load-balancer-tcp-idle-timeout.md
     - name: 設定 Load Balancer 的分配模式
       href: load-balancer-distribution-mode.md
