@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 8b59bcf3f25921a348e9c5f25e83619d8596ebd5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7e455565a0cd5e1fc96a6fe7d9e0502da3214fcf
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489858"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909908"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>使用 Azure 入口網站設定適用於 PostgreSQL 的 Azure 資料庫超大規模 (Citus 的計量警示) 
 
@@ -33,17 +33,17 @@ ms.locfileid: "92489858"
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>從 Azure 入口網站建立計量的警示規則
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您想要監視的「適用於 PostgreSQL 的 Azure 資料庫」伺服器。
 
-2. 在資訊看板的 [監視]**** 區段底下，選取 [警示規則]****，如下所示：
+2. 在資訊看板的 [監視]  區段底下，選取 [警示規則]  ，如下所示：
 
    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/2-alert-rules.png" alt-text="選取警示規則":::
 
 3. 選取 [ **新增警示規則** ] (+ 圖示) 。
 
-4. [建立規則]**** 頁面隨即開啟，如下所示。 填寫必要資訊：
+4. [建立規則]  頁面隨即開啟，如下所示。 填寫必要資訊：
 
    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png" alt-text="選取警示規則":::
 
-5. 在 [ **條件** ] 區段中，選取 [ **新增**]。
+5. 在 [ **條件** ] 區段中，選取 [ **新增** ]。
 
 6. 從要提醒的訊號清單中選擇一個計量。 在此範例中，選取 "Storage percent"。
    
@@ -53,24 +53,24 @@ ms.locfileid: "92489858"
 
     * **運算子** (例如 「大於」 ) 
     * **臨界值** (例如 85%) 
-    * 在警示觸發之前，必須滿足計量規則的**匯總細微性**量（ (例如）。 「過去30分鐘內」 ) 
+    * 在警示觸發之前，必須滿足計量規則的 **匯總細微性** 量（ (例如）。 「過去30分鐘內」 ) 
     * **評估的頻率** (例如 「1分鐘」 ) 
    
-   完成時選取 [完成]****。
+   完成時選取 [完成]  。
 
    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png" alt-text="選取警示規則":::
 
-8. 在 [動作群組]**** 區段中，選取 [建立]**** 建立新的群組，以接收警示通知。
+8. 在 [動作群組]  區段中，選取 [建立]  建立新的群組，以接收警示通知。
 
 9. 使用名稱、簡短名稱、訂用帳戶和資源群組填寫 [新增動作群組] 表單。
 
     :::image type="content" source="./media/howto-hyperscale-alert-on-metric/9-add-action-group.png" alt-text="選取警示規則":::
 
-10. 設定 [電子郵件/簡訊/推播/語音]**** 動作類型。
+10. 設定 [電子郵件/簡訊/推播/語音]  動作類型。
     
     選擇 [電子郵件 Azure Resource Manager 角色]，將通知傳送給訂用帳戶擁有者、參與者和讀者。
    
-    完成時選取 [確定]****。
+    完成時選取 [確定]  。
 
     :::image type="content" source="./media/howto-hyperscale-alert-on-metric/10-action-group-type.png" alt-text="選取警示規則":::
 
@@ -78,7 +78,7 @@ ms.locfileid: "92489858"
 
     :::image type="content" source="./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png" alt-text="選取警示規則"::: 
 
-12. 選取 [建立警示規則]**** 以建立警示。
+12. 選取 [建立警示規則]  以建立警示。
 
     在幾分鐘之內，警示會開始作用，且先前所述觸發。
 
@@ -87,8 +87,8 @@ ms.locfileid: "92489858"
 建立警示之後，您可以選取它，並執行下列動作：
 
 * 檢視圖表，其中顯示與此警示相關的計量臨界值及前一天的實際值。
-* **編輯**或**刪除**警示規則。
-* 如果您想要暫時停止或恢復接收通知，可以將警示**停用**或**啟用**。
+* **編輯** 或 **刪除** 警示規則。
+* 如果您想要暫時停止或恢復接收通知，可以將警示 **停用** 或 **啟用** 。
 
 ## <a name="suggested-alerts"></a>建議的警示
 
@@ -108,6 +108,6 @@ ms.locfileid: "92489858"
 
 監視 CPU 使用量很適合用來建立效能的基準。 例如，您可能會注意到，CPU 使用量通常大約是40-60%。 如果 CPU 使用量突然開始停留在95%，您就可以辨識異常。 CPU 使用率可能會反映有機的成長，但可能也會顯示偏離的查詢。 建立 CPU 警示時，請設定長匯總的資料細微性來攔截長時間的增加，並忽略短暫的尖峰。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * 深入了解 [在警示中設定 webhook](../azure-monitor/platform/alerts-webhooks.md)。
 * 依照 [計量集合概觀](../azure-monitor/platform/data-platform.md) 中的做法，確保您的服務可使用且有回應。
