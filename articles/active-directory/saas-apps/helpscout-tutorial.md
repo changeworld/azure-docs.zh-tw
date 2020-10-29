@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 1c6faf2bb1811f7b27a49f8029c833499273d8a1
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 7c5e8210bc8b805d72149fd2ef3335c1d637a58f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91817101"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92445183"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>教學課程：Azure Active Directory 與 Help Scout 整合
 
@@ -27,7 +27,7 @@ Help Scout 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Help Scout (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -52,7 +52,7 @@ Help Scout 與 Azure AD 整合提供下列優點：
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Help Scout**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Help Scout** 。
 1. 從結果面板選取 [Help Scout]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
@@ -91,9 +91,9 @@ Help Scout 與 Azure AD 整合提供下列優點：
 
     ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入識別碼、回覆 URL 以及選取 [儲存]。](common/idp-intiated.png)
 
-    a. **識別碼**是 Help Scout 的**對象 URI (服務提供者實體識別碼)** ，以 `urn:` 開頭
+    a. **識別碼** 是 Help Scout 的 **對象 URI (服務提供者實體識別碼)** ，以 `urn:` 開頭
 
-    b. **回覆 URL** 是 Help Scout 的**回傳 URL (判斷提示取用者服務 URL)** ，以 `https://` 開頭 
+    b. **回覆 URL** 是 Help Scout 的 **回傳 URL (判斷提示取用者服務 URL)** ，以 `https://` 開頭 
 
     > [!NOTE]
     > 這些 URL 中的值僅供示範。 您必須從實際的「回覆 URL」和「識別碼」來更新這些值。 您可以從 [驗證] 區段下的 [單一登入]  索引標籤取得這些值，本教學課程稍後會說明。
@@ -134,7 +134,7 @@ Help Scout 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **B.Simon**。
+    a. 在 [名稱]  欄位中，輸入 **B.Simon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **B.Simon\@yourcompanydomain.extension**  
     例如， B.Simon@contoso.com
@@ -193,7 +193,7 @@ Help Scout 與 Azure AD 整合提供下列優點：
 
     ![顯示 [單一登入] 索引標籤的螢幕擷取畫面，您可以在其中輸入指定的資訊。](./media/helpscout-tutorial/settings3.png)
 
-    a. 複製**回傳 URL (判斷提示取用者服務 URL)** 值，並在 Azure 入口網站的 [基本 SAML 組態] 區段中的 [回覆 URL] 文字方塊內貼上該值。
+    a. 複製 **回傳 URL (判斷提示取用者服務 URL)** 值，並在 Azure 入口網站的 [基本 SAML 組態] 區段中的 [回覆 URL] 文字方塊內貼上該值。
 
     b. 複製 [對象 URl (服務提供者實體識別碼)] 值，並在 Azure 入口網站的 [基本 SAML 組態] 中的 [識別碼] 文字方塊內貼上該值。
 
@@ -203,7 +203,7 @@ Help Scout 與 Azure AD 整合提供下列優點：
 
     a. 在 [登入 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
 
-    b. 按一下 [上傳憑證]  以上傳從 Azure 入口網站下載的**憑證 (Base64)** 。
+    b. 按一下 [上傳憑證]  以上傳從 Azure 入口網站下載的 **憑證 (Base64)** 。
 
     c. 在 [電子郵件網域] 文字方塊中，輸入組織的電子郵件網域，如 `contoso.com`。 您可以使用逗號來分隔多個網域。 每當 Help Scout 使用者或系統管理員在 [Help Scout 登入頁面](https://secure.helpscout.net/members/login/)中輸入該特定網域時，便會路由傳送至「識別提供者」，以驗證其認證。
 
@@ -219,14 +219,14 @@ Help Scout 與 Azure AD 整合提供下列優點：
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Help Scout] 圖格時，應該會自動登入您已設定 SSO 的 Help Scout。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Help Scout] 圖格時，應該會自動登入您已設定 SSO 的 Help Scout。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Help Scout](https://aad.portal.azure.com/)

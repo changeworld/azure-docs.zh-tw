@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: jeedes
-ms.openlocfilehash: d39f46469d80b3e2d7bf361bd349a39afb16bd2d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: e3704f4ad7a879128d23d1b7e971943939353968
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826186"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92443879"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hightail"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Hightail 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91826186"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Hightail。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -53,7 +53,7 @@ ms.locfileid: "91826186"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Hightail**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Hightail** 。
 1. 從結果面板選取 [Hightail]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-hightail"></a>設定及測試 Hightail 的 Azure AD 單一登入
@@ -74,7 +74,7 @@ ms.locfileid: "91826186"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Hightail]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -153,7 +153,7 @@ ms.locfileid: "91826186"
 
 1. 如果您想要手動設定 Hightail，請在另一個瀏覽器視窗中開啟 [Hightail]  系統管理員入口網站。
 
-1. 按一下頁面右上角的**使用者圖示**。 
+1. 按一下頁面右上角的 **使用者圖示** 。 
 
     ![顯示 [使用者] 圖示的螢幕擷取畫面。](./media/hightail-tutorial/configure1.png)
 
@@ -184,14 +184,14 @@ ms.locfileid: "91826186"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Hightail] 圖格時，應該會自動登入您已設定 SSO 的 Hightail。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Hightail] 圖格時，應該會自動登入您已設定 SSO 的 Hightail。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Hightail](https://aad.portal.azure.com/)

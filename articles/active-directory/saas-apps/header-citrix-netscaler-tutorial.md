@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 73eb6938f4b43c204ab8bc91217e4828454e222d
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: de02e8ea995482b815734565f839c4cb1c348782
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91944184"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92445625"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-header-based-authentication"></a>教學課程：Azure Active Directory 單一登入與 Citrix NetScaler (標頭型驗證) 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91944184"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Citrix NetScaler。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -59,7 +59,7 @@ ms.locfileid: "91944184"
 
 1. 若要新增新的應用程式，請選取 [新增應用程式]  。
 
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Citrix NetScaler**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Citrix NetScaler** 。
 
 1. 從結果中選取 [Citrix NetScaler]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
@@ -93,18 +93,18 @@ ms.locfileid: "91944184"
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 組態]  區段中，以 **IDP 起始**模式設定應用程式：
+1. 在 [基本 SAML 組態]  區段中，以 **IDP 起始** 模式設定應用程式：
 
     1. 在 [識別碼]  文字方塊中，輸入具有下列模式的 URL：`https://<Your FQDN>`
 
     1. 在 [回覆 URL]  文字方塊中，輸入具有下列模式的 URL：`https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
 
-1. 若要以 **SP 起始**模式設定應用程式，請選取 [設定其他 URL]  ，然後完成下列步驟：
+1. 若要以 **SP 起始** 模式設定應用程式，請選取 [設定其他 URL]  ，然後完成下列步驟：
 
     * 在 [登入 URL]  文字方塊中，輸入具有下列模式的 URL：`https://<Your FQDN>/CitrixAuthService/AuthService.asmx`
 
     > [!NOTE]
-    > * 本節中使用的 URL 不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」值來更新這些值。 請連絡 [Citrix NetScaler 用戶端支援小組](https://www.citrix.com/contact/technical-support.html)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > * 本節中使用的 URL 不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」值來更新這些值。 請連絡 [Citrix NetScaler 用戶端支援小組](https://www.citrix.com/contact/technical-support.html)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
     > * 若要設定 SSO，您必須使用可從公用網站存取的 URL。 您必須在 Citrix NetScaler 端啟用防火牆或其他安全性設定，才能讓 Azure AD 在所設定的 URL 上公佈權杖。
 
 1. 在 [以 SAML 設定單一登入]  窗格的 [SAML 簽署憑證]  區段中，複製 [應用程式同盟中繼資料 URL]  的 URL，並貼到記事本中。
@@ -263,9 +263,9 @@ ms.locfileid: "91944184"
 
 1. 在 [建立驗證原則]  窗格中，輸入或選取下列值：
 
-    * **Name**：輸入驗證原則的名稱。
-    * **動作**：輸入 **SAML**，然後選取 [新增]  。
-    * **運算式**：輸入 **true**。     
+    * **Name** ：輸入驗證原則的名稱。
+    * **動作** ：輸入 **SAML** ，然後選取 [新增]  。
+    * **運算式** ：輸入 **true** 。     
     
     ![Citrix NetScaler 設定 - 建立驗證原則窗格](./media/header-citrix-netscaler-tutorial/policy01.png)
 
@@ -323,7 +323,7 @@ ms.locfileid: "91944184"
 
     ![Citrix NetScaler 設定 - 表單型虛擬伺服器窗格](./media/header-citrix-netscaler-tutorial/virtual03.png)
 
-1. 針對**驗證 FQDN**，請輸入完整網域名稱 (FQDN)(必要)。
+1. 針對 **驗證 FQDN** ，請輸入完整網域名稱 (FQDN)(必要)。
 
 1. 選擇您想要使用 Azure AD 驗證來保護的負載平衡虛擬伺服器。
 
@@ -354,7 +354,7 @@ ms.locfileid: "91944184"
 
     1. 在 [名稱]  中，輸入重寫動作的名稱。
 
-    1. 針對 [類型]  ，輸入 **INSERT_HTTP_HEADER**。
+    1. 針對 [類型]  ，輸入 **INSERT_HTTP_HEADER** 。
 
     1. 在 [標頭名稱]  中輸入標頭名稱 (在此範例中，我們使用 SecretID  )。
 
@@ -376,7 +376,7 @@ ms.locfileid: "91944184"
 
     1. 針對 [動作]  ，選取您在上一節中建立的重寫動作。
 
-    1. 針對 **[運算式]** ，輸入 **true**。
+    1. 針對 **[運算式]** ，輸入 **true** 。
 
     1. 選取 [建立]  。
 
@@ -437,15 +437,15 @@ ms.locfileid: "91944184"
 
 在本節中，您會使用存取面板來測試您的 Azure AD SSO 組態。
 
-當您在存取面板中選取 [Citrix NetScaler] 圖格時，應該會自動登入您已設定 SSO 的 Citrix NetScaler。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [Citrix NetScaler] 圖格時，應該會自動登入您已設定 SSO 的 Citrix NetScaler。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Citrix NetScaler](https://aad.portal.azure.com/)
 

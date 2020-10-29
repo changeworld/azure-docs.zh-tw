@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/31/2019
 ms.author: jeedes
-ms.openlocfilehash: 89467dcca75c72c3a868478cc3e46b9cb474ed19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f85f3c747c634e0118ac516fc83284350fc2584
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88540073"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92445009"
 ---
 # <a name="tutorial-integrate-helper-helper-with-azure-active-directory"></a>教學課程：整合 Helper Helper 與 Azure Active Directory
 
@@ -26,7 +26,7 @@ ms.locfileid: "88540073"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Helper Helper。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -47,7 +47,7 @@ ms.locfileid: "88540073"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Helper Helper**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Helper Helper** 。
 1. 從結果面板選取 [Helper Helper]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
@@ -73,14 +73,14 @@ ms.locfileid: "88540073"
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 設定]  區段上，如果您有**服務提供者中繼資料檔案**，而想要以 **IDP** 起始模式進行設定，請執行下列步驟：
+1. 在 [基本 SAML 設定]  區段上，如果您有 **服務提供者中繼資料檔案** ，而想要以 **IDP** 起始模式進行設定，請執行下列步驟：
 
     >[!NOTE]
     >移至 URL `https://sso.helperhelper.com/saml/<customer_id>` 以取得服務提供者中繼資料檔案。 請連絡 [Helper Helper 用戶端支援小組](mailto:info@helperhelper.com)以取得 `<customer_id>`。
 
     a. 按一下 [上傳中繼資料檔案]  。
 
-    b. 按一下**資料夾圖示**以選取中繼資料檔案，然後按一下 [上傳]  。
+    b. 按一下 **資料夾圖示** 以選取中繼資料檔案，然後按一下 [上傳]  。
 
     c. 成功上傳中繼資料檔案後，就會在 [基本 SAML 組態] 區段中自動填入 [識別碼]  和 [回覆 URL]  值。
 
@@ -142,12 +142,12 @@ ms.locfileid: "88540073"
 
 ### <a name="test-sso"></a>測試 SSO
 
-當您在存取面板中選取 Helper Helper 圖格時，應該會自動登入您已設定 SSO 的 Helper Helper。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 Helper Helper 圖格時，應該會自動登入您已設定 SSO 的 Helper Helper。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

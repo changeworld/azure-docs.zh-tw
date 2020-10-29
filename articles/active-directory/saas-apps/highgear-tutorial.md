@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: a48772c4325717a64bd36873675ff19c6a332de0
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: b3806d768e8335801e2dd097eac7a440b157de38
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91817156"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92444630"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-highgear"></a>教學課程：Azure Active Directory 與 HighGear 整合
 
@@ -27,7 +27,7 @@ HighGear 與 Azure AD 整合可提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 HighGear (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ HighGear 與 Azure AD 整合可提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中輸入 **HighGear**，並從結果面板中選取 [HighGear]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中輸入 **HighGear** ，並從結果面板中選取 [HighGear]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 HighGear](common/search-new-app.png)
 
@@ -125,7 +125,7 @@ HighGear 與 Azure AD 整合可提供下列優點：
     > [!NOTE]
     > 這些都不是真正的值。 請使用 HighGear 系統的 [單一登入設定]  頁面中包含的實際識別碼、回覆 URL 和登入 URL 來更新這些值。 如需協助，請連絡 [HighGear 支援小組](mailto:support@highgear.com)。
 
-4. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，按一下 [下載]  以下載**憑證 (Base64)** 並將其儲存在電腦上。 您在單一登入設定的後續步驟中將需要這項資料。
+4. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，按一下 [下載]  以下載 **憑證 (Base64)** 並將其儲存在電腦上。 您在單一登入設定的後續步驟中將需要這項資料。
 
     ![憑證下載連結](common/certificatebase64.png)
 
@@ -133,11 +133,11 @@ HighGear 與 Azure AD 整合可提供下列優點：
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
-    a. 登入 URL。 您在後續的**設定 HighGear 單一登入**底下的步驟 2 中將需要此值。
+    a. 登入 URL。 您在後續的 **設定 HighGear 單一登入** 底下的步驟 2 中將需要此值。
 
-    b. Azure AD 識別碼。 您在後續的**設定 HighGear 單一登入**底下的步驟 3 中將需要此值。
+    b. Azure AD 識別碼。 您在後續的 **設定 HighGear 單一登入** 底下的步驟 3 中將需要此值。
 
-    c. 登出 URL。 您在後續的**設定 HighGear 單一登入**底下的步驟 4 中將需要此值。
+    c. 登出 URL。 您在後續的 **設定 HighGear 單一登入** 底下的步驟 4 中將需要此值。
 
 ### <a name="configure-highgear-single-sign-on"></a>設定 HighGear 單一登入
 
@@ -153,7 +153,7 @@ HighGear 與 Azure AD 整合可提供下列優點：
 
 4. 在 HighGear 的 [單一登出 (SLO) URL]  欄位中，貼上在 Azure 的 [設定 HighGear]  區段中位於 [登出 URL]  欄位內的值。
 
-5. 使用「記事本」開啟您從 Azure 中的 [SAML 簽署憑證]  區段下載的憑證。 您應已下載**憑證 (Base64)** 格式。 從「記事本」中複製憑證的內容，並將其貼到 HighGear 的 [識別提供者憑證]  欄位中。
+5. 使用「記事本」開啟您從 Azure 中的 [SAML 簽署憑證]  區段下載的憑證。 您應已下載 **憑證 (Base64)** 格式。 從「記事本」中複製憑證的內容，並將其貼到 HighGear 的 [識別提供者憑證]  欄位中。
 
 6. 透過電子郵件向 [HighGear 支援小組](mailto:support@highgear.com)索取您的 HighGear 憑證。 請依照他們提供的指示填寫 [HighGear 憑證]  和 [HighGear 憑證密碼]  欄位。
 
@@ -175,7 +175,7 @@ HighGear 與 Azure AD 整合可提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -246,13 +246,12 @@ HighGear 與 Azure AD 整合可提供下列優點：
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [HighGear] 圖格時，應該會自動登入您已設定 SSO 的 HighGear。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [HighGear] 圖格時，應該會自動登入您已設定 SSO 的 HighGear。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
