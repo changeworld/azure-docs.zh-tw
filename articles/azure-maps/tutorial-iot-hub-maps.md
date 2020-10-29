@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3eb405783b16d1bb7de27f6638dba394457601c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdbc972d230988420a066c4b927388b885f99a17
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321827"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896740"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>教學課程：使用 Azure 地圖服務執行 IoT 空間分析
 
@@ -38,7 +38,7 @@ IoT 案例通常會捕捉及追蹤在空間和時間中發生的相關事件。 
 
 3. [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。 如需詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
 
-4. [建立資源群組](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups)。 在本教學課程中，我們會將資源群組命名為 ContosoRental，但您可以選擇任何您喜歡的名稱。
+4. [建立資源群組](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)。 在本教學課程中，我們會將資源群組命名為 ContosoRental，但您可以選擇任何您喜歡的名稱。
 
 5. 下載 [rentalCarSimulation C# 專案](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation)。
 
@@ -83,7 +83,7 @@ IoT 案例通常會捕捉及追蹤在空間和時間中發生的相關事件。 
 
 3. 由於 Azure 函式的事件訂用帳戶屬於裝置遙測事件，因此會觸發 Azure 函式。
 
-4. 函式會記錄車輛裝置位置座標、事件時間和裝置識別碼。 然後會使用 [Spatial Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) 來判斷車輛是否已行駛到地理柵欄之外。 如果已超出地理柵欄界限，函式會將從事件接收的位置資料儲存到 Blob 容器中。 函式也會查詢[反向位址搜尋](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)，將座標位置轉譯為街道位址，並連同其他裝置位置資料加以儲存。
+4. 函式會記錄車輛裝置位置座標、事件時間和裝置識別碼。 然後會使用 [Spatial Geofence Get API](/rest/api/maps/spatial/getgeofence) 來判斷車輛是否已行駛到地理柵欄之外。 如果已超出地理柵欄界限，函式會將從事件接收的位置資料儲存到 Blob 容器中。 函式也會查詢[反向位址搜尋](/rest/api/maps/search/getsearchaddressreverse)，將座標位置轉譯為街道位址，並連同其他裝置位置資料加以儲存。
 
 下圖顯示系統的高階概觀。
 
@@ -95,9 +95,9 @@ IoT 案例通常會捕捉及追蹤在空間和時間中發生的相關事件。 
 
 ## <a name="create-an-azure-storage-account"></a>建立 Azure 儲存體帳戶
 
-為了儲存車輛違規追蹤資料，我們將在您的資源群組中建立一個[一般用途 v2 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-overview#general-purpose-v2-accounts)。 如果您尚未建立資源群組，請依照[建立資源群組](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups)中的指示進行。 在本教學課程中，您會將資源群組命名為 ContosoRental。
+為了儲存車輛違規追蹤資料，我們將在您的資源群組中建立一個[一般用途 v2 儲存體帳戶](../storage/common/storage-account-overview.md#general-purpose-v2-accounts)。 如果您尚未建立資源群組，請依照[建立資源群組](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)中的指示進行。 在本教學課程中，您會將資源群組命名為 ContosoRental。
 
-若要建立儲存體帳戶，請依照[建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal)中的指示進行。 在本教學課程中，將儲存體帳戶命名為 contosorentalstorage，但是一般而言您可以隨意使用任何您喜歡的名稱。
+若要建立儲存體帳戶，請依照[建立儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-portal)中的指示進行。 在本教學課程中，將儲存體帳戶命名為 contosorentalstorage，但是一般而言您可以隨意使用任何您喜歡的名稱。
 
 成功建立儲存體帳戶之後，您必須建立容器來儲存記錄資料。
 
@@ -109,13 +109,13 @@ IoT 案例通常會捕捉及追蹤在空間和時間中發生的相關事件。 
 
      :::image type="content" source="./media/tutorial-iot-hub-maps/container-new.png" alt-text="系統概觀的圖表。":::
 
-3. 在您的儲存體帳戶中移至 [存取金鑰] 窗格，並複製**儲存體帳戶名稱**和 [key1] 區段中的**金鑰**值。 您在「建立 Azure 函式並新增事件方格訂用帳戶」區段中會需要這兩個值。
+3. 在您的儲存體帳戶中移至 [存取金鑰] 窗格，並複製 **儲存體帳戶名稱** 和 [key1] 區段中的 **金鑰** 值。 您在「建立 Azure 函式並新增事件方格訂用帳戶」區段中會需要這兩個值。
 
     :::image type="content" source="./media/tutorial-iot-hub-maps/access-keys.png" alt-text="系統概觀的圖表。":::
 
 ## <a name="upload-a-geofence"></a>上傳地理柵欄
 
-接下來，使用 [Postman 應用程式](https://www.getpostman.com)，[將地理柵欄上傳](https://docs.microsoft.com/azure/azure-maps/geofence-geojson)至 Azure 地圖服務。 地理柵欄會定義出租車輛的授權地理區域。 您會在 Azure 函式中使用地理柵欄，以判斷車輛是否已行駛到地理柵欄區域外。
+接下來，使用 [Postman 應用程式](https://www.getpostman.com)，[將地理柵欄上傳](./geofence-geojson.md)至 Azure 地圖服務。 地理柵欄會定義出租車輛的授權地理區域。 您會在 Azure 函式中使用地理柵欄，以判斷車輛是否已行駛到地理柵欄區域外。
 
 請遵循下列步驟，使用 Azure 地圖服務 Data Upload API 來上傳地理柵欄： 
 
@@ -176,20 +176,20 @@ Azure Functions 是無伺服器計算服務，可讓您執行一小段程式碼 
 
 現在，請設定您的 Azure 函式。
 
-1. 在 Azure 入口網站儀表板中，選取 [建立資源]。 在 [搜尋] 文字方塊中輸入**函式應用程式**。 選取 [函數應用程式]  >  [建立]。
+1. 在 Azure 入口網站儀表板中，選取 [建立資源]。 在 [搜尋] 文字方塊中輸入 **函式應用程式** 。 選取 [函數應用程式]  >  [建立]。
 
-1. 在 [函式應用程式建立]**** 頁面上，為您的函式應用程式命名。 在 [資源群組] 下的下拉式清單中選取 ContosoRental。 選取 [.NET Core] 作為**執行階段堆疊**。 選取頁面底部的 [下一步：裝載 >]。
+1. 在 [函式應用程式建立]  頁面上，為您的函式應用程式命名。 在 [資源群組] 下的下拉式清單中選取 ContosoRental。 選取 [.NET Core] 作為 **執行階段堆疊** 。 選取頁面底部的 [下一步：裝載 >]。
 
     :::image type="content" source="./media/tutorial-iot-hub-maps/rental-app.png" alt-text="系統概觀的圖表。":::
 
-1. 在**儲存體帳戶**中，選取您在[建立 Azure 儲存體帳戶](#create-an-azure-storage-account)中建立的儲存體帳戶。 選取 [檢閱 + 建立]。
+1. 在 **儲存體帳戶** 中，選取您在 [建立 Azure 儲存體帳戶](#create-an-azure-storage-account)中建立的儲存體帳戶。 選取 [檢閱 + 建立]。
 
 1. 檢閱函數應用程式詳細資料，然後選取 [建立]。
 
 1. 建立應用程式後，您要為其新增函式。 返回函數應用程式。 選取 [函式] 窗格。 從頁面頂端選取 [+ 新增]。 函式範本面板隨即顯示。 在面板中向下捲動，然後選取 [Azure 事件方格觸發程序]。
 
      >[!IMPORTANT]
-    > **Azure 事件中樞觸發程序**和 **Azure 事件方格觸發程序**範本的名稱十分類似。 請確定您選取了 **Azure 事件方格觸發程序**範本。
+    > **Azure 事件中樞觸發程序** 和 **Azure 事件方格觸發程序** 範本的名稱十分類似。 請確定您選取了 **Azure 事件方格觸發程序** 範本。
 
     :::image type="content" source="./media/tutorial-iot-hub-maps/function-create.png" alt-text="系統概觀的圖表。":::
 
@@ -200,17 +200,17 @@ Azure Functions 是無伺服器計算服務，可讓您執行一小段程式碼 
      :::image type="content" source="./media/tutorial-iot-hub-maps/function-code.png" alt-text="系統概觀的圖表。":::
 
 1. 在 C# 程式碼中，取代下列參數：
-    * 以您的 Azure 地圖服務帳戶主要訂用帳戶金鑰取代 **SUBSCRIPTION_KEY**。
-    * 以您在[上傳地理柵欄](#upload-a-geofence)中上傳的地理柵欄 `udid` 取代 **UDID**。
-    * 指令碼中的 `CreateBlobAsync` 函式會在資料儲存體帳戶中為每個事件建立一個 Blob。 將 **ACCESS_KEY**、**ACCOUNT_NAME** 和 **STORAGE_CONTAINER_NAME** 取代為您儲存體帳戶的存取金鑰、帳戶名稱和資料儲存體容器。 當您在[建立 Azure 儲存體帳戶](#create-an-azure-storage-account)中建立儲存體帳戶時，會產生這些值 。
+    * 以您的 Azure 地圖服務帳戶主要訂用帳戶金鑰取代 **SUBSCRIPTION_KEY** 。
+    * 以您在 [上傳地理柵欄](#upload-a-geofence)中上傳的地理柵欄 `udid` 取代 **UDID** 。
+    * 指令碼中的 `CreateBlobAsync` 函式會在資料儲存體帳戶中為每個事件建立一個 Blob。 將 **ACCESS_KEY** 、 **ACCOUNT_NAME** 和 **STORAGE_CONTAINER_NAME** 取代為您儲存體帳戶的存取金鑰、帳戶名稱和資料儲存體容器。 當您在[建立 Azure 儲存體帳戶](#create-an-azure-storage-account)中建立儲存體帳戶時，會產生這些值 。
 
 1. 在左側功能表中，選取 [整合] 窗格。 選取圖表中的 [事件方格觸發程序]。 輸入觸發程序的名稱 eventGridEvent，然後選取 [建立事件方格訂用帳戶]。
 
      :::image type="content" source="./media/tutorial-iot-hub-maps/function-integration.png" alt-text="系統概觀的圖表。":::
 
-1. 填妥訂用帳戶詳細資料。 為事件訂用帳戶命名。 針對「事件結構描述」，選取 [事件方格結構描述]。 針對**主題類型**，請選取 [Azure IoT 中樞帳戶]。 針對**資源群組**，選取您一開始為此教學課程建立的資源群組。 針對**資源**，請選取您在「建立 Azure IoT 中樞」中所建立的 IoT 中樞。 針對**事件種類篩選**，選取 [裝置遙測]。
+1. 填妥訂用帳戶詳細資料。 為事件訂用帳戶命名。 針對「事件結構描述」，選取 [事件方格結構描述]。 針對 **主題類型** ，請選取 [Azure IoT 中樞帳戶]。 針對 **資源群組** ，選取您一開始為此教學課程建立的資源群組。 針對 **資源** ，請選取您在「建立 Azure IoT 中樞」中所建立的 IoT 中樞。 針對 **事件種類篩選** ，選取 [裝置遙測]。
 
-   選擇這些選項後，您會看到**主題類型**自動變更為「IoT 中樞」。 針對**系統主題名稱**，您可以使用與資源相同的名稱。 最後，在 [端點詳細資料] 區段中選取 [選取端點]。 接受所有設定，然後選取 [確認選取]。
+   選擇這些選項後，您會看到 **主題類型** 自動變更為「IoT 中樞」。 針對 **系統主題名稱** ，您可以使用與資源相同的名稱。 最後，在 [端點詳細資料] 區段中選取 [選取端點]。 接受所有設定，然後選取 [確認選取]。
 
     :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription.png" alt-text="系統概觀的圖表。":::
 
@@ -218,7 +218,7 @@ Azure Functions 是無伺服器計算服務，可讓您執行一小段程式碼 
 
     :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription-confirm.png" alt-text="系統概觀的圖表。":::
 
-1. 現在您已經回到**編輯觸發程序**面板。 選取 [儲存]。
+1. 現在您已經回到 **編輯觸發程序** 面板。 選取 [儲存]。
 
 ## <a name="filter-events-by-using-iot-hub-message-routing"></a>使用 IoT 中樞訊息路由來篩選事件
 
@@ -226,7 +226,7 @@ Azure Functions 是無伺服器計算服務，可讓您執行一小段程式碼 
 
 :::image type="content" source="./media/tutorial-iot-hub-maps/hub-route.png" alt-text="系統概觀的圖表。":::
 
-在範例案例中，您只想要在出租車輛移動時收到訊息。 建立路由查詢，篩選在 `Engine` 屬性等於 **「ON」** 的事件。 若要建立路由查詢，請選取 **RouteToEventGrid** 路由，並將**路由查詢**取代為 **"Engine='ON'"** 。 然後選取 [儲存]。 IoT 中樞現在只會發佈引擎已開啟的裝置遙測。
+在範例案例中，您只想要在出租車輛移動時收到訊息。 建立路由查詢，篩選在 `Engine` 屬性等於 **「ON」** 的事件。 若要建立路由查詢，請選取 **RouteToEventGrid** 路由，並將 **路由查詢** 取代為 **"Engine='ON'"** 。 然後選取 [儲存]。 IoT 中樞現在只會發佈引擎已開啟的裝置遙測。
 
 :::image type="content" source="./media/tutorial-iot-hub-maps/hub-filter.png" alt-text="系統概觀的圖表。":::
 
@@ -270,14 +270,14 @@ Azure Functions 是無伺服器計算服務，可讓您執行一小段程式碼 
 
 若要探索本教學課程中使用的 Azure 地圖服務 API，請參閱：
 
-* [取得位址反轉搜尋](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)
-* [取得地理柵欄](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence)
+* [取得位址反轉搜尋](/rest/api/maps/search/getsearchaddressreverse)
+* [取得地理柵欄](/rest/api/maps/spatial/getgeofence)
 
 如需 Azure 地圖服務 REST API 的完整清單，請參閱：
 
-* [Azure 地圖服務 REST API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence)
+* [Azure 地圖服務 REST API](/rest/api/maps/spatial/getgeofence)
 
-* [IoT 隨插即用](https://docs.microsoft.com/azure/iot-pnp)
+* [IoT 隨插即用](../iot-pnp/index.yml)
 
 若要取得 Azure 認證的 IoT 裝置清單，請造訪：
 
@@ -289,4 +289,4 @@ Azure Functions 是無伺服器計算服務，可讓您執行一小段程式碼 
 
 
 > [!div class="nextstepaction"]
-> [從裝置傳送遙測資料](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet)
+> [從裝置傳送遙測資料](../iot-hub/quickstart-send-telemetry-dotnet.md)

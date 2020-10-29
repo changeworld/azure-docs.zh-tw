@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 42ba92a0134ae1e8da91bbe7513668fa24c4718f
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: be0b2a3a15c77ae0de303f02be078f115b283eb9
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876510"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897138"
 ---
 # <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>教學課程 - 從 Bing 地圖服務遷移 Web 應用程式
 
 使用 Bing 地圖服務的 Web 應用程式通常會使用 Bing 地圖服務 V8 JavaScript SDK。 Azure 地圖服務 Web SDK 是適合作為遷移目的地的 Azure 型 SDK。 Azure 地圖服務 Web SDK 可讓您以自己的內容和圖像，自訂顯示在 Web 或行動應用程式中的互動式地圖。 此控制項使用 WebGL，可讓您以高效能轉譯大型資料集。 您可以使用 JavaScript 或 TypeScript 以此 SDK 進行開發。
 
-如果要遷移現有的 Web 應用程式，請檢查其是否使用開放原始碼地圖控制項程式庫，例如 Cesium、Leaflet 和 OpenLayers。 如果是，而且您想要繼續使用該程式庫，可以將其連線到 Azure 地圖服務地圖底圖服務 ([道路地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [衛星地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile))。 以下連結提供詳細說明如何在某些常用的開放原始碼地圖控制項程式庫中使用 Azure 地圖服務。
+如果要遷移現有的 Web 應用程式，請檢查其是否使用開放原始碼地圖控制項程式庫，例如 Cesium、Leaflet 和 OpenLayers。 如果是，而且您想要繼續使用該程式庫，可以將其連線到 Azure 地圖服務地圖底圖服務 ([道路地圖底圖](/rest/api/maps/render/getmaptile) \| [衛星地圖底圖](/rest/api/maps/render/getmapimagerytile))。 以下連結提供詳細說明如何在某些常用的開放原始碼地圖控制項程式庫中使用 Azure 地圖服務。
 
 -   Cesium - 適用於 Web 的3D 地圖控制項。 [程式碼範例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [文件](https://cesiumjs.org/)
 -   Leaflet – 適用於 Web 的輕量型 2D 地圖控制項。 [程式碼範例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [文件](https://leafletjs.com/)
@@ -68,7 +68,7 @@ Azure 地圖服務也有許多[適用於 web SDK 的其他開放原始碼模組]
 
 以下是 Bing 地圖服務與 Azure 地圖服務 Web SDK 之間需要注意的一些主要差異：
 
--   除了提供主控端點以供存取 Azure 地圖服務 Web SDK 外，如果您想要的話，也可使用 NPM 套件來將 Web SDK 內嵌至應用程式。 如需詳細資訊，請參閱[文件](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)。 此套件也包含 TypeScript 定義。
+-   除了提供主控端點以供存取 Azure 地圖服務 Web SDK 外，如果您想要的話，也可使用 NPM 套件來將 Web SDK 內嵌至應用程式。 如需詳細資訊，請參閱[文件](./how-to-use-map-control.md)。 此套件也包含 TypeScript 定義。
 -   Bing 地圖服務提供兩個其 SDK 的主控分支；「發行」和「實驗性」。 「實驗性」分支在進行新的開發時，可能會一天收到多個更新。 Azure 地圖服務只會主控發行分支，不過，實驗性功能會建立為開放原始碼 Azure 地圖服務程式碼範例專案中的自訂模組。 Bing 地圖服務也用來擁有已凍結的分支，但較不頻繁地更新，因而降低因發行而中斷變更的風險。 在 Azure 地圖服務中，您可以使用 NPM 模組並指向任何先前的次要版本發行。
 
 > [!TIP]
@@ -78,20 +78,20 @@ Azure 地圖服務也有許多[適用於 web SDK 的其他開放原始碼模組]
 -   這兩種平台都會針對基底地圖使用類似的地圖底圖系統，不過，Bing 地圖服務中的地圖底圖維度是 256 像素，而 Azure 地圖服務中的地圖底圖維度則是 512 像素。 因此，若要在 Azure 地圖服務中獲得和 Bing 地圖服務相同的地圖檢視，則 Bing 地圖服務中所使用的縮放層級，在 Azure 地圖服務中就必須減一。
 -   Bing 地圖服務中的座標是 `latitude, longitude`，而 Azure 地圖服務是使用 `longitude, latitude`。 此格式與大多數 GIS 平台所遵循的標準 `[x, y]` 相符。
 
--   Azure 地圖服務 Web SDK 中的圖形依據的是 GeoJSON 結構描述。 協助程式類別則會透過 [atlas.data namespace](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) 來公開。 另外還有 [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) 類別可用來包裝 GeoJSON 物件，這可讓您以資料可繫結的方式來更新和維護這些物件。
+-   Azure 地圖服務 Web SDK 中的圖形依據的是 GeoJSON 結構描述。 協助程式類別則會透過 [atlas.data namespace](/javascript/api/azure-maps-control/atlas.data) 來公開。 另外還有 [atlas.Shape](/javascript/api/azure-maps-control/atlas.shape) 類別可用來包裝 GeoJSON 物件，這可讓您以資料可繫結的方式來更新和維護這些物件。
 -   Azure 地圖服務中的座標會定義為 Position 物件，並可指定為 `[longitude, latitude]` 或 `new atlas.data.Position(longitude, latitude)` 格式的簡單數字陣列。
 
 > [!TIP]
-> Position 類別具有靜態協助程式函式，可用於匯入 `latitude, longitude` 格式的座標。 [atlas.data.Position.fromLatLng](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position) 函式通常會取代 Bing 地圖服務程式碼中的 `new Microsoft.Maps.Location` 函式。
+> Position 類別具有靜態協助程式函式，可用於匯入 `latitude, longitude` 格式的座標。 [atlas.data.Position.fromLatLng](/javascript/api/azure-maps-control/atlas.data.position) 函式通常會取代 Bing 地圖服務程式碼中的 `new Microsoft.Maps.Location` 函式。
 
 -   Azure 地圖服務並不會在每個新增至地圖的圖形上指定樣式資訊，而是會將樣式與資料分開。 資料會儲存在資料來源中，並連結至 Azure 地圖服務程式碼用來呈現資料的呈現圖層。 這種方法可提供增強的效能優勢。 此外，許多圖層都支援資料驅動的樣式，也就是可將商務邏輯新增至圖層樣式選項，以根據圖形中定義的屬性來變更圖層內個別圖形的呈現方式。
 -   Azure 地圖服務在 `atlas.math` 命名空間中提供了許多實用的空間數學函式，不過這些函式與 Bing 地圖服務空間數學模組中的不同。 主要的差異在於，Azure 地圖服務不會提供二進位作業的內建函式 (例如聯合與交集)，不過，由於 Azure 地圖服務是以開放式標準的 GeoJSON 為基礎，因此有許多開放原始碼程式庫可供使用。 一個適用於 Azure 地圖服務並提供大量空間數學功能的熱門選項為 [turf js](http://turfjs.org/)。
 
-另請參閱 [Azure 地圖服務詞彙](https://docs.microsoft.com/azure/azure-maps/glossary)，以取得與 Azure 地圖服務相關聯術語的深入清單。
+另請參閱 [Azure 地圖服務詞彙](./glossary.md)，以取得與 Azure 地圖服務相關聯術語的深入清單。
 
 ## <a name="web-sdk-side-by-side-examples"></a>Web SDK 對照範例
 
-以下是每個平台的程式碼範例集合，集合內涵蓋了常見的使用案例，可協助您將 Web 應用程式從 Bing 地圖服務 V8 JavaScript SDK 遷移至 Azure 地圖服務 Web SDK。 與 Web 應用程式相關的程式碼範例會以 JavaScript 提供；不過，Azure 地圖服務也會透過 [NPM 模組](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)來提供 TypeScript 定義作為額外的選項。
+以下是每個平台的程式碼範例集合，集合內涵蓋了常見的使用案例，可協助您將 Web 應用程式從 Bing 地圖服務 V8 JavaScript SDK 遷移至 Azure 地圖服務 Web SDK。 與 Web 應用程式相關的程式碼範例會以 JavaScript 提供；不過，Azure 地圖服務也會透過 [NPM 模組](./how-to-use-map-control.md)來提供 TypeScript 定義作為額外的選項。
 
 **主題**
 
@@ -230,14 +230,14 @@ Azure 地圖服務也有許多[適用於 web SDK 的其他開放原始碼模組]
 
 ![Azure 地圖服務地圖](media/migrate-bing-maps-web-app/azure-maps-load-map.jpg)</center>
 
-如需如何在 Web 應用程式中設定及使用 Azure 地圖服務地圖控制項的詳細文件，請參閱[這裡](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)。
+如需如何在 Web 應用程式中設定及使用 Azure 地圖服務地圖控制項的詳細文件，請參閱[這裡](./how-to-use-map-control.md)。
 
 > [!TIP]
 > Azure 地圖服務會同時發行 SDK 的縮製和解除縮製版本。 移除檔案名稱中的 `.min`。 解除縮製版本在偵錯問題時很有用，但請務必使用生產環境中的縮製版本以利用較小的檔案大小。
 
 **其他資源**
 
--   Azure 地圖服務也會提供導覽控制項以供您旋轉地圖和傾斜地圖檢視角度，如[這裡](https://docs.microsoft.com/azure/azure-maps/map-add-controls)所述。
+-   Azure 地圖服務也會提供導覽控制項以供您旋轉地圖和傾斜地圖檢視角度，如[這裡](./map-add-controls.md)所述。
 
 ### <a name="localizing-the-map"></a>將地圖當地語系化
 
@@ -281,7 +281,7 @@ map = new atlas.Map('myMap', {
 ```
 
 > [!NOTE]
-> 在使用 Azure 地圖服務時，您可以在相同頁面上使用不同語言和區域設定載入多個地圖執行個體。 此外，在地圖載入後，也可以在地圖中更新這些設定。 如需 Azure 地圖服務所支援語言的詳細清單，請參閱[這裡](https://docs.microsoft.com/azure/azure-maps/supported-languages)。
+> 在使用 Azure 地圖服務時，您可以在相同頁面上使用不同語言和區域設定載入多個地圖執行個體。 此外，在地圖載入後，也可以在地圖中更新這些設定。 如需 Azure 地圖服務所支援語言的詳細清單，請參閱[這裡](./supported-languages.md)。
 
 以下範例會示範語言設為 "fr" 且使用者區域設為 "fr-FR" 的 Azure 地圖服務。
 
@@ -333,8 +333,8 @@ map.setStyle({
 
 **其他資源**
 
--   [選擇地圖樣式](https://docs.microsoft.com/azure/azure-maps/choose-map-style)
--   [支援的地圖樣式](https://docs.microsoft.com/azure/azure-maps/supported-map-styles)
+-   [選擇地圖樣式](./choose-map-style.md)
+-   [支援的地圖樣式](./supported-map-styles.md)
 
 ### <a name="adding-a-pushpin"></a>新增圖釘
 
@@ -462,16 +462,16 @@ map.markers.add(new atlas.HtmlMarker({
 
 **其他資源**
 
--   [建立資料來源](https://docs.microsoft.com/azure/azure-maps/create-data-source-web-sdk)
--   [新增符號圖層](https://docs.microsoft.com/azure/azure-maps/map-add-pin)
--   [新增泡泡圖層](https://docs.microsoft.com/azure/azure-maps/map-add-bubble-layer)
--   [群集位置點資料](https://docs.microsoft.com/azure/azure-maps/clustering-point-data-web-sdk)
--   [新增 HTML 標記](https://docs.microsoft.com/azure/azure-maps/map-add-custom-html)
--   [使用資料驅動樣式運算式](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
--   [符號圖層圖示選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)
--   [符號圖層文字選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions)
--   [HTML 標記類別](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)
--   [HTML 標記選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
+-   [建立資料來源](./create-data-source-web-sdk.md)
+-   [新增符號圖層](./map-add-pin.md)
+-   [新增泡泡圖層](./map-add-bubble-layer.md)
+-   [群集位置點資料](./clustering-point-data-web-sdk.md)
+-   [新增 HTML 標記](./map-add-custom-html.md)
+-   [使用資料驅動樣式運算式](./data-driven-style-expressions-web-sdk.md)
+-   [符號圖層圖示選項](/javascript/api/azure-maps-control/atlas.iconoptions)
+-   [符號圖層文字選項](/javascript/api/azure-maps-control/atlas.textoptions)
+-   [HTML 標記類別](/javascript/api/azure-maps-control/atlas.htmlmarker)
+-   [HTML 標記選項](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
 
 ### <a name="adding-a-custom-pushpin"></a>新增自訂圖釘
 
@@ -593,14 +593,14 @@ Azure 地圖服務中的符號圖層也支援自訂影像，但影像必須先�
 
 **其他資源**
 
--   [建立資料來源](https://docs.microsoft.com/azure/azure-maps/create-data-source-web-sdk)
--   [新增符號圖層](https://docs.microsoft.com/azure/azure-maps/map-add-pin)
--   [新增 HTML 標記](https://docs.microsoft.com/azure/azure-maps/map-add-custom-html)
--   [使用資料驅動樣式運算式](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
--   [符號圖層圖示選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)
--   [符號圖層文字選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions)
--   [HTML 標記類別](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker)
--   [HTML 標記選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
+-   [建立資料來源](./create-data-source-web-sdk.md)
+-   [新增符號圖層](./map-add-pin.md)
+-   [新增 HTML 標記](./map-add-custom-html.md)
+-   [使用資料驅動樣式運算式](./data-driven-style-expressions-web-sdk.md)
+-   [符號圖層圖示選項](/javascript/api/azure-maps-control/atlas.iconoptions)
+-   [符號圖層文字選項](/javascript/api/azure-maps-control/atlas.textoptions)
+-   [HTML 標記類別](/javascript/api/azure-maps-control/atlas.htmlmarker)
+-   [HTML 標記選項](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
 
 ### <a name="adding-a-polyline"></a>新增聚合線條
 
@@ -668,9 +668,9 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 **其他資源**
 
--   [將線條新增至地圖](https://docs.microsoft.com/azure/azure-maps/map-add-shape#add-lines-to-the-map)
--   [線條圖層選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
--   [使用資料驅動樣式運算式](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [將線條新增至地圖](./map-add-line-layer.md)
+-   [線條圖層選項](/javascript/api/azure-maps-control/atlas.linelayeroptions)
+-   [使用資料驅動樣式運算式](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="adding-a-polygon"></a>新增多邊形
 
@@ -744,11 +744,11 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 **其他資源**
 
--   [將多邊形新增至地圖](https://docs.microsoft.com/azure/azure-maps/map-add-shape#add-a-polygon-to-the-map)
--   [將圓形新增至地圖](https://docs.microsoft.com/azure/azure-maps/map-add-shape#add-a-circle-to-the-map)
--   [多邊形圖層選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
--   [線條圖層選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions)
--   [使用資料驅動樣式運算式](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [將多邊形新增至地圖](./map-add-shape.md#use-a-polygon-layer)
+-   [將圓形新增至地圖](./map-add-shape.md#add-a-circle-to-the-map)
+-   [多邊形圖層選項](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
+-   [線條圖層選項](/javascript/api/azure-maps-control/atlas.linelayeroptions)
+-   [使用資料驅動樣式運算式](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="display-an-infobox"></a>顯示 InfoBox
 
@@ -820,12 +820,12 @@ map.events.add('click', marker, function () {
 
 **其他資源**
 
--   [新增快顯](https://docs.microsoft.com/azure/azure-maps/map-add-popup)
+-   [新增快顯](./map-add-popup.md)
 -   [具有媒體內容的快顯視窗](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popup%20with%20Media%20Content)
 -   [圖形上的快顯視窗](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popups%20on%20Shapes)
 -   [重複使用具有多個圖釘的快顯視窗](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Reusing%20Popup%20with%20Multiple%20Pins)
--   [Popup 類別](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup)
--   [快顯視窗選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions)
+-   [Popup 類別](/javascript/api/azure-maps-control/atlas.popup)
+-   [快顯視窗選項](/javascript/api/azure-maps-control/atlas.popupoptions)
 
 ### <a name="pushpin-clustering"></a>圖釘叢集
 
@@ -947,7 +947,7 @@ map.events.add('click', marker, function () {
 | `getClusterExpansionZoom(clusterId: number)`                         | `Promise<number>`                            | 計算叢集將開始擴大或分解的臨界縮放層級。    |
 | `getClusterLeaves(clusterId: number, limit: number, offset: number)` | `Promise<Feature<Geometry, any> | Shape>` | 擷取群集中的所有位置點。 設定 `limit` 可傳回位置點的子集，使用 `offset` 則可逐頁查看位置點。    |
 
-在地圖上呈現已群集的資料時，最簡單的方式往往是使用兩個以上的圖層。 下列範例會使用三個圖層，泡泡圖層會根據叢集大小繪製經過縮放的彩色圓形、符號圖層會以文字呈現叢集大小，第二個符號圖層則用來呈現未叢集的位置點。 [群集位置點資料](https://docs.microsoft.com/azure/azure-maps/clustering-point-data-web-sdk)文件中會重點指出其他許多可在 Azure 地圖服務中呈現已群集資料的方式。
+在地圖上呈現已群集的資料時，最簡單的方式往往是使用兩個以上的圖層。 下列範例會使用三個圖層，泡泡圖層會根據叢集大小繪製經過縮放的彩色圓形、符號圖層會以文字呈現叢集大小，第二個符號圖層則用來呈現未叢集的位置點。 [群集位置點資料](./clustering-point-data-web-sdk.md)文件中會重點指出其他許多可在 Azure 地圖服務中呈現已群集資料的方式。
 
 您可以在 `DataSource` 類別上使用 `importDataFromUrl` 函式，於 Azure 地圖服務中直接匯入 GeoJSON 資料。
 
@@ -1051,10 +1051,10 @@ map.events.add('click', marker, function () {
 
 **其他資源**
 
--   [新增符號圖層](https://docs.microsoft.com/azure/azure-maps/map-add-pin)
--   [新增泡泡圖層](https://docs.microsoft.com/azure/azure-maps/map-add-bubble-layer)
--   [群集位置點資料](https://docs.microsoft.com/azure/azure-maps/clustering-point-data-web-sdk)
--   [使用資料驅動樣式運算式](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [新增符號圖層](./map-add-pin.md)
+-   [新增泡泡圖層](./map-add-bubble-layer.md)
+-   [群集位置點資料](./clustering-point-data-web-sdk.md)
+-   [使用資料驅動樣式運算式](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="add-a-heat-map"></a>新增熱度圖
 
@@ -1183,10 +1183,10 @@ map.events.add('click', marker, function () {
 
 **其他資源**
 
--   [新增熱度圖圖層](https://docs.microsoft.com/azure/azure-maps/map-add-heat-map-layer)
--   [熱度圖圖層類別](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.heatmaplayer)
--   [熱度圖圖層選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
--   [使用資料驅動樣式運算式](https://docs.microsoft.com/azure/azure-maps/data-driven-style-expressions-web-sdk)
+-   [新增熱度圖圖層](./map-add-heat-map-layer.md)
+-   [熱度圖圖層類別](/javascript/api/azure-maps-control/atlas.layer.heatmaplayer)
+-   [熱度圖圖層選項](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
+-   [使用資料驅動樣式運算式](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="overlay-a-tile-layer"></a>覆蓋地圖底圖圖層
 
@@ -1238,9 +1238,9 @@ map.layers.add(new atlas.layer.TileLayer({
 
 **其他資源**
 
--   [新增地圖底圖圖層](https://docs.microsoft.com/azure/azure-maps/map-add-tile-layer)
--   [地圖底圖圖層類別](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer)
--   [地圖底圖圖層選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.tilelayeroptions)
+-   [新增地圖底圖圖層](./map-add-tile-layer.md)
+-   [地圖底圖圖層類別](/javascript/api/azure-maps-control/atlas.layer.tilelayer)
+-   [地圖底圖圖層選項](/javascript/api/azure-maps-control/atlas.tilelayeroptions)
 
 ### <a name="show-traffic-data"></a>顯示流量資料
 
@@ -1284,7 +1284,7 @@ map.setTraffic({
 
 **其他資源**
 
--   [在地圖上顯示路況](https://docs.microsoft.com/azure/azure-maps/map-show-traffic)
+-   [在地圖上顯示路況](./map-show-traffic.md)
 -   [交通的覆蓋選項](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Traffic%20Overlay%20Options)
 -   [交通控制](https://azuremapscodesamples.azurewebsites.net/?sample=Traffic%20controls)
 
@@ -1344,7 +1344,7 @@ Bing 地圖服務和 Azure 地圖服務都支援在地圖上覆蓋有地理參�
 在 Azure 地圖服務中，您可以使用 `atlas.layer.ImageLayer` 類別來覆蓋有地理參考的影像。 此類別需要影像的 URL 和影像四個角落所組成的一組座標。 影像必須裝載於相同網域上或啟用 CORS。
 
 > [!TIP]
-> 如果您只有北側、南側、東側、西側和旋轉資訊，而沒有影像各個角落的座標，則可以使用靜態的 [atlas.layer.ImageLayer.getCoordinatesFromEdges](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer#getcoordinatesfromedges-number--number--number--number--number-) 函式。
+> 如果您只有北側、南側、東側、西側和旋轉資訊，而沒有影像各個角落的座標，則可以使用靜態的 [atlas.layer.ImageLayer.getCoordinatesFromEdges](/javascript/api/azure-maps-control/atlas.layer.imagelayer#getcoordinatesfromedges-number--number--number--number--number-) 函式。
 
 ```html
 <!DOCTYPE html>
@@ -1404,8 +1404,8 @@ Bing 地圖服務和 Azure 地圖服務都支援在地圖上覆蓋有地理參�
 
 **其他資源**
 
--   [覆蓋影像](https://docs.microsoft.com/azure/azure-maps/map-add-image-layer)
--   [影像圖層類別](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer)
+-   [覆蓋影像](./map-add-image-layer.md)
+-   [影像圖層類別](/javascript/api/azure-maps-control/atlas.layer.imagelayer)
 
 ### <a name="add-kml-data-to-the-map"></a>將 KML 資料新增至地圖
 
@@ -1467,7 +1467,7 @@ Azure 地圖服務和 Bing 地圖服務都可以在地圖上匯入及呈現 KML�
 
 **之後：Azure 地圖服務**
 
-在 Azure 地圖服務中，GeoJSON 是 Web SDK 中使用的主要資料格式，您可使用 [空間 IO 模組](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)輕鬆地將其他空間資料格式整合在其中。 此模組具有可供讀取和寫入空間資料的函式，也包含可輕鬆地從這些空間資料格式轉譯資料的簡單資料層。 若要讀取空間資料檔案中的資料，以字串或 Blob 的形式將 URL 或原始資料傳入  `atlas.io.read` 函式。 這會從檔案傳回所有已剖析的資料，然後再將該檔案新增至地圖。 相較於大部分的空間資料格式，KML 稍微複雜一點，因為其包含更多樣式資訊。  `SpatialDataLayer` 類別支援轉譯大多數的樣式，不過，在載入特徵資料之前，必須先將圖示影像載入地圖中，且地面覆蓋必須分別新增為地圖的圖層。 透過 URL 載入資料時，應將其裝載於已啟用 COR 的端點上，或應將 Proxy 服務當作選項傳入讀取函式。
+在 Azure 地圖服務中，GeoJSON 是 Web SDK 中使用的主要資料格式，您可使用[空間 IO 模組](/javascript/api/azure-maps-spatial-io/)輕鬆地將其他空間資料格式整合在其中。 此模組具有可供讀取和寫入空間資料的函式，也包含可輕鬆地從這些空間資料格式轉譯資料的簡單資料層。 若要讀取空間資料檔案中的資料，以字串或 Blob 的形式將 URL 或原始資料傳入 `atlas.io.read` 函式。 這會從檔案傳回所有已剖析的資料，然後再將該檔案新增至地圖。 相較於大部分的空間資料格式，KML 稍微複雜一點，因為其包含更多樣式資訊。 `SpatialDataLayer` 類別支援轉譯大多數的樣式，不過，在載入特徵資料之前，必須先將圖示影像載入地圖中，且地面覆蓋必須分別新增為地圖的圖層。 透過 URL 載入資料時，應將其裝載於已啟用 COR 的端點上，或應將 Proxy 服務當作選項傳入讀取函式。
 
 ```html
 <!DOCTYPE html>
@@ -1564,9 +1564,9 @@ Azure 地圖服務和 Bing 地圖服務都可以在地圖上匯入及呈現 KML�
 
 **其他資源**
 
--   [atlas.io.read 函式](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io#read-string---arraybuffer---blob--spatialdatareadoptions-)
--   [SimpleDataLayer](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
--   [SimpleDataLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
+-   [atlas.io.read 函式](/javascript/api/azure-maps-spatial-io/atlas.io#read-string---arraybuffer---blob--spatialdatareadoptions-)
+-   [SimpleDataLayer](/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
+-   [SimpleDataLayerOptions](/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
 
 ### <a name="add-drawing-tools"></a>新增繪製工具
 
@@ -1683,7 +1683,7 @@ Bing 地圖服務和 Azure 地圖服務都會提供模組，讓使用者能夠�
 
 **其他資源**
 
--   [文件集](https://docs.microsoft.com/azure/azure-maps/set-drawing-options)
+-   [文件集](./set-drawing-options.md)
 -   [程式碼範例](https://azuremapscodesamples.azurewebsites.net/#Drawing-Tools-Module)
 
 ## <a name="next-steps"></a>下一步
@@ -1703,16 +1703,16 @@ Bing 地圖服務和 Azure 地圖服務都會提供模組，讓使用者能夠�
 **服務**
 
 > [!div class="nextstepaction"]
-> [使用 Azure 地圖服務的服務模組](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module)
+> [使用 Azure 地圖服務的服務模組](./how-to-use-services-module.md)
 
 > [!div class="nextstepaction"]
-> [搜尋興趣點](https://docs.microsoft.com/azure/azure-maps/map-search-location)
+> [搜尋興趣點](./map-search-location.md)
 
 > [!div class="nextstepaction"]
-> [從座標取得資訊 (反向地理編碼)](https://docs.microsoft.com/azure/azure-maps/map-get-information-from-coordinate)
+> [從座標取得資訊 (反向地理編碼)](./map-get-information-from-coordinate.md)
 
 > [!div class="nextstepaction"]
-> [顯示從甲地到乙地的指示](https://docs.microsoft.com/azure/azure-maps/map-route)
+> [顯示從甲地到乙地的指示](./map-route.md)
 
 > [!div class="nextstepaction"]
 > [使用 JQuery UI 的搜尋自動建議](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Search%20Autosuggest%20and%20JQuery%20UI)
@@ -1729,7 +1729,7 @@ Bing 地圖服務和 Azure 地圖服務都會提供模組，讓使用者能夠�
 > [如何使用繪圖工具模組](set-drawing-options.md)
 
 > [!div class="nextstepaction"]
-> [程式碼範例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [程式碼範例](/samples/browse/?products=azure-maps)
 
 > [!div class="nextstepaction"]
-> [Azure 地圖服務 Web SDK 服務 API 參考文件](https://docs.microsoft.com/javascript/api/azure-maps-control/)
+> [Azure 地圖服務 Web SDK 服務 API 參考文件](/javascript/api/azure-maps-control/)

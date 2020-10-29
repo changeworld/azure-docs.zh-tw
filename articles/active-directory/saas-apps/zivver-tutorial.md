@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 3f55fed72d61597f61cb246c6c74d525b51702e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d500270d579558a88cc4e5127ee7946b58bddda1
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546022"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894707"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zivver"></a>教學課程：Azure Active Directory 與 ZIVVER 整合
 
@@ -27,7 +27,7 @@ ZIVVER 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 ZIVVER (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ ZIVVER 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **ZIVVER**，從結果面板中選取 [ZIVVER]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **ZIVVER** ，從結果面板中選取 [ZIVVER]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 ZIVVER](common/search-new-app.png)
 
@@ -105,7 +105,7 @@ ZIVVER 與 Azure AD 整合提供下列優點：
 
 5. ZIVVER 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應加入 SAML 權杖屬性設定中。 下列螢幕擷取畫面顯示預設屬性清單，其中的 **nameidentifier** 與 **user.userprincipalname** 相對應。 ZIVVER 應用程式要求 **nameidentifier** 需與 **user.mail** 相對應，因此您必須按一下 [編輯]  圖示以編輯屬性對應，並變更屬性對應。
 
-    ![image](common/edit-attribute.png)
+    ![顯示使用者屬性的螢幕擷取畫面，其中已選取 [編輯] 圖示。](common/edit-attribute.png)
 
 6. 除了以上屬性外，ZIVVER 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
 
@@ -118,9 +118,9 @@ ZIVVER 與 Azure AD 整合提供下列優點：
 
     a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
 
-    ![image](common/new-save-attribute.png)
+    ![顯示使用者宣告的螢幕擷取畫面，其中具有新增新宣告的選項。](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![顯示管理使用者宣告對話方塊的螢幕擷取畫面，您可以在其中輸入所述的值。](common/new-attribute-details.png)
 
     b. 在 [名稱]  文字方塊中，輸入該資料列所顯示的屬性名稱。
 
@@ -132,7 +132,7 @@ ZIVVER 與 Azure AD 整合提供下列優點：
 
     f. 按一下 [檔案]  。
 
-7. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，依據您的需求從指定選項按一下 [下載]  以下載**同盟中繼資料 XML**，然後按一下 [複製]  圖示來複製 [應用程式同盟中繼資料 URL]  並儲存在您的電腦上。
+7. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，依據您的需求從指定選項按一下 [下載]  以下載 **同盟中繼資料 XML** ，然後按一下 [複製]  圖示來複製 [應用程式同盟中繼資料 URL]  並儲存在您的電腦上。
 
     ![憑證 URL 下載連結](./media/zivver-tutorial/metadataxmlurl.png)
 
@@ -156,7 +156,7 @@ ZIVVER 與 Azure AD 整合提供下列優點：
 
 4. 開啟您從 Azure 入口網站下載的同盟中繼資料 XML 檔案。
 
-5. 在 [識別提供者中繼資料 URL]  文字方塊中，貼上您先前從 Azure 入口網站儲存的**應用程式同盟中繼資料 URL**。
+5. 在 [識別提供者中繼資料 URL]  文字方塊中，貼上您先前從 Azure 入口網站儲存的 **應用程式同盟中繼資料 URL** 。
 
 6. 核取 [開啟 SSO]  核取方塊。
 
@@ -178,7 +178,7 @@ ZIVVER 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`。 例如， BrittaSimon@contoso.com
 
@@ -220,13 +220,12 @@ ZIVVER 與 Azure AD 整合提供下列優點：
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [ZIVVER] 圖格時，應該會自動登入您設定 SSO 的 ZIVVER。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [ZIVVER] 圖格時，應該會自動登入您設定 SSO 的 ZIVVER。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

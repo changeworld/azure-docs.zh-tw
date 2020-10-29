@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: baa33e79b3bba8eccb2d0fc03e110e1a3c4defde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa63cc2c76d8bd47ca80050a369bda7211f5db24
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546000"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896713"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>教學課程：Azure Active Directory 與 Zoho One 整合
 
@@ -27,7 +27,7 @@ ms.locfileid: "88546000"
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Zoho One (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ ms.locfileid: "88546000"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Zoho One**，從結果面板中選取 [Zoho One]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Zoho One** ，從結果面板中選取 [Zoho One]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Zoho One](common/search-new-app.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "88546000"
 
 4. 在 [基本 SAML 設定]  區段上，如果您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![[Zoho One 網域及 URL] 單一登入資訊](common/idp-relay.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入識別碼、回覆 URL 以及選取 [儲存]。](common/idp-relay.png)
 
     a. 在 [識別碼]  文字方塊中，鍵入 URL：`one.zoho.com`
 
@@ -114,8 +114,7 @@ ms.locfileid: "88546000"
 
 5. 如果您想要在 **SP** 起始模式中設定應用程式，請執行下列步驟：
 
-
-    ![[Zoho One 網域及 URL] 單一登入資訊](common/both-signonurl.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/both-signonurl.png)
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://accounts.zoho.com/samlauthrequest/<domain_name>?serviceurl=https://one.zoho.com` 
 
@@ -152,7 +151,7 @@ ms.locfileid: "88546000"
 
     b. 在 [登出 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登出 URL]  值。
 
-    c. 按一下 [Browse]\(瀏覽\)  以上傳您從 Azure 入口網站下載的**憑證 (Base64)** 。
+    c. 按一下 [Browse]\(瀏覽\)  以上傳您從 Azure 入口網站下載的 **憑證 (Base64)** 。
 
     d. 按一下 [檔案]  。
 
@@ -191,7 +190,7 @@ ms.locfileid: "88546000"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`。 例如， BrittaSimon@contoso.com
 
@@ -233,7 +232,7 @@ ms.locfileid: "88546000"
 
 1. 以安全性系統管理員身分登入 Zoho One。
 
-2. 在 [Users]\(使用者\)  索引標籤上，按一下**使用者標誌**。
+2. 在 [Users]\(使用者\)  索引標籤上，按一下 **使用者標誌** 。
 
     ![Zoho One：使用者](./media/zohoone-tutorial/tutorial_zohoone_users.png)
 
@@ -241,7 +240,7 @@ ms.locfileid: "88546000"
 
     ![Zoho One：新增使用者](./media/zohoone-tutorial/tutorial_zohoone_adduser.png)
     
-    a. 在 [Name] \(名稱\)  文字方塊中，輸入使用者的名稱，例如 **Britta Simon**。
+    a. 在 [Name] \(名稱\)  文字方塊中，輸入使用者的名稱，例如 **Britta Simon** 。
     
     b. 在 [電子郵件地址]  文字方塊中，輸入使用者的電子郵件，例如 brittasimon@contoso.com。
 
@@ -254,13 +253,12 @@ ms.locfileid: "88546000"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Zoho One] 圖格時，應該會自動登入您已設定 SSO 的 Zoho One。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Zoho One] 圖格時，應該會自動登入您已設定 SSO 的 Zoho One。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

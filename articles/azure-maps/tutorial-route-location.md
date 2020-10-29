@@ -9,22 +9,22 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 3cb9bee65ab7fa2c29185c40ecb48fd531192187
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0004a250173ce6707462b852016d205782479717
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321708"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896675"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>教學課程：如何使用 Azure 地圖服務路線規劃服務和地圖控制項顯示路線方向
 
-本教學課程說明如何使用 Azure 地圖服務[路線規劃服務 API](https://docs.microsoft.com/rest/api/maps/route) 以及[地圖控制項](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)顯示從起點到終點的路線方向。 在本教學課程中，您將了解如何：
+本教學課程說明如何使用 Azure 地圖服務[路線規劃服務 API](/rest/api/maps/route) 以及[地圖控制項](./how-to-use-map-control.md)顯示從起點到終點的路線方向。 在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
 > * 在網頁上建立和顯示地圖控制項。 
 > * 定義[符號圖層](map-add-pin.md)和[線條圖層](map-add-line-layer.md)，以定義路線的顯示呈現。
 > * 建立 GeoJSON 物件並新增至地圖，以代表起點和終點。
-> * 使用[取得路線指示 API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)，取得起點和終點的路線方向。
+> * 使用[取得路線指示 API](/rest/api/maps/route/getroutedirections)，取得起點和終點的路線方向。
 
 您可以在[這裡](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)取得範例的完整原始程式碼。 您可以在[這裡](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)找到即時範例。
 
@@ -39,7 +39,7 @@ ms.locfileid: "91321708"
 
 下列步驟示範如何在網頁中建立和顯示地圖控制項。
 
-1. 在您的本機機器上建立新檔案，並將其命名為 **MapRoute.html**。
+1. 在您的本機機器上建立新檔案，並將其命名為 **MapRoute.html** 。
 2. 複製下列 HTML 標記並貼到檔案中。
 
     ```HTML
@@ -170,7 +170,7 @@ ms.locfileid: "91321708"
 
     此程式碼會建立兩個 [GeoJSON 點物件](https://en.wikipedia.org/wiki/GeoJSON)，代表起點和終點，此資訊也會新增到資料來源。 
 
-    最後一個程式碼區塊會使用起點和終點的經緯度設定相機檢視。 起點和終點會新增至資料來源。 系統會使用 `atlas.data.BoundingBox.fromData` 函式計算起點和終點的週框方塊。 此週框方塊會用來透過 `map.setCamera` 函式設定整個路線的地圖相機檢視。 系統會加入邊框間距，以補償符號圖示的像素維度。 如需地圖控制項的 setCamera 屬性詳細資訊，請參閱 [setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) 屬性。
+    最後一個程式碼區塊會使用起點和終點的經緯度設定相機檢視。 起點和終點會新增至資料來源。 系統會使用 `atlas.data.BoundingBox.fromData` 函式計算起點和終點的週框方塊。 此週框方塊會用來透過 `map.setCamera` 函式設定整個路線的地圖相機檢視。 系統會加入邊框間距，以補償符號圖示的像素維度。 如需地圖控制項的 setCamera 屬性詳細資訊，請參閱 [setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) 屬性。
 
 3. 儲存 **MapRoute.html** 並重新整理瀏覽器。 現在地圖會以西雅圖作為中心。 淚珠形藍色圖釘會標示起點。 圓形藍色圖釘會標示終點。
 
@@ -183,7 +183,7 @@ ms.locfileid: "91321708"
 本節說明如何使用 Azure 地圖服務路線指示 API 來取得路線指示，以及從某個點到達另一個點的預估時間。
 
 >[!TIP]
->Azure 地圖服務路線服務提供 API 以根據不同的路線類型 (例如「最快速」、「最短」、「最環保」或「驚心動魄」*thrilling*的路線) 以及根據距離、交通流量條件和使用的運輸模式，來規劃路線。 服務也可讓使用者根據歷程記錄交通流量條件來規劃未來的路由。 使用者可以查看任何指定時間的路由持續期間預測。 如需詳細資訊，請參閱[取得路線方向 API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)。
+>Azure 地圖服務路線服務提供 API 以根據不同的路線類型 (例如「最快速」、「最短」、「最環保」或「驚心動魄」 *thrilling* 的路線) 以及根據距離、交通流量條件和使用的運輸模式，來規劃路線。 服務也可讓使用者根據歷程記錄交通流量條件來規劃未來的路由。 使用者可以查看任何指定時間的路由持續期間預測。 如需詳細資訊，請參閱[取得路線方向 API](/rest/api/maps/route/getroutedirections)。
 
 1. 在 `GetMap` 函式之控制項的 `ready` 事件處理常式內，將下列內容新增至 JavaScript 程式碼。
 
@@ -198,7 +198,7 @@ ms.locfileid: "91321708"
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   `SubscriptionKeyCredential` 會建立 `SubscriptionKeyCredentialPolicy`，以使用訂用帳戶金鑰驗證對「Azure 地圖服務」的 HTTP 要求。 `atlas.service.MapsURL.newPipeline()` 會採用 `SubscriptionKeyCredential` 原則，並建立[管線](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline)執行個體。 `routeURL` 代表 Azure 地圖服務[路線規劃](https://docs.microsoft.com/rest/api/maps/route)作業的 URL。
+   `SubscriptionKeyCredential` 會建立 `SubscriptionKeyCredentialPolicy`，以使用訂用帳戶金鑰驗證對「Azure 地圖服務」的 HTTP 要求。 `atlas.service.MapsURL.newPipeline()` 會採用 `SubscriptionKeyCredential` 原則，並建立[管線](/javascript/api/azure-maps-rest/atlas.service.pipeline)執行個體。 `routeURL` 代表 Azure 地圖服務[路線規劃](/rest/api/maps/route)作業的 URL。
 
 2. 設定認證和 URL 後，請在控制項的 `ready` 事件處理常式中附加下列程式碼。 此程式碼會從起點到終點來建構路線。 `routeURL` 會要求 Azure 地圖服務路線規劃服務 API 計算路線方向。 接著，系統會使用 `geojson.getFeatures()` 方法擷取回應中的 GeoJSON 特性集合，並將其新增至資料來源。
 

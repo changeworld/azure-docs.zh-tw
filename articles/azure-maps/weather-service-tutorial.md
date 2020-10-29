@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 717cb600f1bdae228f45409cb271ab04d1d51a19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f020f3d9e23b9f834fd203f6d030656581fb4416
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91310096"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896594"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>教學課程：使用 Azure Notebooks (Python) 來聯結感應器資料與氣象預報資料
 
@@ -23,11 +23,11 @@ ms.locfileid: "91310096"
 在本教學課程中，您將：
 
 > [!div class="checklist"]
-> * 使用雲端中 [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) 的資料檔案。
+> * 使用雲端中 [Azure Notebooks](../notebooks/index.yml) 的資料檔案。
 > * 從檔案載入示範資料。
 > * 在 Python 中呼叫 Azure 地圖服務 REST API。
 > * 在地圖上呈現位置資料。
-> * 使用 Azure 地圖服務的[每日預報](https://aka.ms/AzureMapsWeatherDailyForecast)天氣資料來擴充示範資料。
+> * 使用 Azure 地圖服務的[每日預報](/rest/api/maps/weather/getdailyforecastpreview)天氣資料來擴充示範資料。
 > * 在圖表中繪製預報資料。
 
 
@@ -41,7 +41,7 @@ ms.locfileid: "91310096"
 
 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](./how-to-manage-authentication.md)。
 
-若要熟悉 Azure Notebooks 以及了解如何開始使用，請遵循[建立 Azure Notebook](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook) 中的指示。
+若要熟悉 Azure Notebooks 以及了解如何開始使用，請遵循[建立 Azure Notebook](./tutorial-ev-routing.md#create-an-azure-notebooks-project) 中的指示。
 
 > [!Note]
 > 此專案的 Jupyter 筆記本檔案可從[氣象地圖 Jupyter 筆記本存放庫](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data)下載。
@@ -68,7 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>要求每日預報資料
 
-在我們的案例中，我們會要求每個感應器位置的每日預報。 下列指令碼會呼叫 Azure 地圖服務氣象服務的[每日預測 API](https://aka.ms/AzureMapsWeatherDailyForecast)。 此 API 會針對每個風力發電機，傳回目前日期後 15 天內的氣象預報。
+在我們的案例中，我們會要求每個感應器位置的每日預報。 下列指令碼會呼叫 Azure 地圖服務氣象服務的[每日預測 API](/rest/api/maps/weather/getdailyforecastpreview)。 此 API 會針對每個風力發電機，傳回目前日期後 15 天內的氣象預報。
 
 
 ```python
@@ -107,7 +107,7 @@ for i in range(0, len(coords), 2):
 await session.close()
 ```
 
-下列指令碼會藉由呼叫 Azure 地圖服務的[取得地圖影像服務](https://docs.microsoft.com/rest/api/maps/render/getmapimage)，在地圖上呈現發電機組的所在位置。
+下列指令碼會藉由呼叫 Azure 地圖服務的[取得地圖影像服務](/rest/api/maps/render/getmapimage)，在地圖上呈現發電機組的所在位置。
 
 ```python
 # Render the turbine locations on the map by calling the Azure Maps Get Map Image service
@@ -184,18 +184,18 @@ windsPlot.set_ylabel("Wind direction")
 
 在本教學課程中，您已了解如何呼叫 Azure 地圖服務 REST API 來取得氣象預報資料。 您也了解如何將圖表上的資料視覺化。
 
-若要深入了解如何在 Azure Notebooks 內呼叫 Azure 地圖服務 REST API，請參閱[使用 Azure Notebooks 的 EV 路由](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing)。
+若要深入了解如何在 Azure Notebooks 內呼叫 Azure 地圖服務 REST API，請參閱[使用 Azure Notebooks 的 EV 路由](./tutorial-ev-routing.md)。
 
 若要探索此教學課程中所使用的 Azure 地圖服務 API，請參閱：
 
-* [每日預報](https://aka.ms/AzureMapsWeatherDailyForecast)
-* [轉譯 - 取得地圖影像](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
+* [每日預報](/rest/api/maps/weather/getdailyforecastpreview)
+* [轉譯 - 取得地圖影像](/rest/api/maps/render/getmapimage)
 
-如需 Azure 地圖服務 REST API 的完整清單，請參閱 [Azure 地圖服務 REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model) \(部分機器翻譯\)。
+如需 Azure 地圖服務 REST API 的完整清單，請參閱 [Azure 地圖服務 REST API](./consumption-model.md) \(部分機器翻譯\)。
 
 ## <a name="next-steps"></a>後續步驟
 
 若要深入了解 Azure Notebooks，請參閱
 
 > [!div class="nextstepaction"]
-> [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)
+> [Azure Notebooks](../notebooks/index.yml)

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 7a0c39b6d2369a1279fee3905083f0660a4aabb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee32749e2c6f0118507fcfc6d4994a04ea3a6d69
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335189"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896795"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>教學課程：使用 Azure 地圖服務設定地理柵欄
 
@@ -25,10 +25,10 @@ ms.locfileid: "91335189"
 Azure 地圖服務提供許多服務，以支援在設備進入和離開建築區域時加以追蹤。 在本教學課程中，您：
 
 > [!div class="checklist"]
-> * 上傳 [Geofencing GeoJSON 資料](geofence-geojson.md)，以定義您想要監視的工地區域。 您會使用[資料上傳 API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)，將地理柵欄當作多邊形座標上傳至您的 Azure 地圖服務帳戶。
-> * 設定兩個[邏輯應用程式](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps)；當觸發時，會在設備進入並離開地理柵欄區域時，傳送電子郵件通知給網站建構的 Operations Manager。
-> * 使用 [Azure 事件方格](https://docs.microsoft.com/azure/event-grid/overview)來訂閱 Azure 地圖服務地理柵欄進入和退出事件。 您會設定兩個 Webhook 事件訂用帳戶，以呼叫您在兩個邏輯應用程式中定義的 HTTP 端點。 然後，邏輯應用程式會在設備移動或進入地理柵欄時，傳送適當的電子郵件通知。
-> * 使用 [Search Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence)，在設備離開並進入地理柵欄區域時接收通知。
+> * 上傳 [Geofencing GeoJSON 資料](geofence-geojson.md)，以定義您想要監視的工地區域。 您會使用[資料上傳 API](/rest/api/maps/data/uploadpreview)，將地理柵欄當作多邊形座標上傳至您的 Azure 地圖服務帳戶。
+> * 設定兩個[邏輯應用程式](../event-grid/handler-webhooks.md#logic-apps)；當觸發時，會在設備進入並離開地理柵欄區域時，傳送電子郵件通知給網站建構的 Operations Manager。
+> * 使用 [Azure 事件方格](../event-grid/overview.md)來訂閱 Azure 地圖服務地理柵欄進入和退出事件。 您會設定兩個 Webhook 事件訂用帳戶，以呼叫您在兩個邏輯應用程式中定義的 HTTP 端點。 然後，邏輯應用程式會在設備移動或進入地理柵欄時，傳送適當的電子郵件通知。
+> * 使用 [Search Geofence Get API](/rest/api/maps/spatial/getgeofence)，在設備離開並進入地理柵欄區域時接收通知。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -42,7 +42,7 @@ Azure 地圖服務提供許多服務，以支援在設備進入和離開建築�
 針對本教學課程，您會上傳包含 `FeatureCollection` 的地理柵欄 GeoJSON 資料。 `FeatureCollection` 包含在工地內定義多邊形區域的兩個地理柵欄。 第一個地理柵欄沒有到期時間或限制。 第二個地理柵欄只能根據上班時間 (太平洋時區上午 9:00 - 下午 5:00) 進行查詢，在 2022 年 1 月 1 日之後即失效。 如需關於GeoJSON 格式的詳細資訊，請參閱 [Geofencing GeoJSON 資料](geofence-geojson.md)。
 
 >[!TIP]
->您可以隨時更新您的地理柵欄資料。 如需詳細資訊，請參閱[資料上傳 API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)。
+>您可以隨時更新您的地理柵欄資料。 如需詳細資訊，請參閱[資料上傳 API](/rest/api/maps/data/uploadpreview)。
 
 1. 開啟 Postman 應用程式。 在頂端附近，選取 [新增]。 在 [新建] 視窗中，選取 [集合]。 為集合命名，然後選取 [建立]。
 
@@ -56,7 +56,7 @@ Azure 地圖服務提供許多服務，以支援在設備進入和離開建築�
 
     URL 路徑中的 `geojson` 參數代表上傳資料的資料格式。
 
-4. 選取 [Body] \(本文\) 索引標籤。選取 [原始]，然後選取 JSON 作為輸入格式。 將下列 GeoJSON 資料複製並貼到**主體** 文字區域中：
+4. 選取 [Body] \(本文\) 索引標籤。選取 [原始]，然後選取 JSON 作為輸入格式。 將下列 GeoJSON 資料複製並貼到 **主體** 文字區域中：
 
    ```JSON
    {
@@ -186,13 +186,13 @@ Azure 地圖服務提供許多服務，以支援在設備進入和離開建築�
 
 ## <a name="create-workflows-in-azure-logic-apps"></a>在 Azure Logic Apps 中建立工作流程
 
-接下來，您會建立兩個[邏輯應用程式](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps)端點，以觸發電子郵件通知。 以下是建立第一個邏輯應用程式的方式：
+接下來，您會建立兩個[邏輯應用程式](../event-grid/handler-webhooks.md#logic-apps)端點，以觸發電子郵件通知。 以下是建立第一個邏輯應用程式的方式：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
 2. 在 Azure 入口網站的左上角，選取 [建立資源]。
 
-3. 在 [搜尋 Marketplace] 方塊中，輸入 **Logic App**。
+3. 在 [搜尋 Marketplace] 方塊中，輸入 **Logic App** 。
 
 4. 從結果中選取 [邏輯應用程式]  >  [建立]。
 
@@ -205,13 +205,13 @@ Azure 地圖服務提供許多服務，以支援在設備進入和離開建築�
 
     :::image type="content" source="./media/tutorial-geofence/logic-app-create.png" alt-text="建立邏輯應用程式的螢幕擷取畫面。":::
 
-6. 選取 [檢閱 + 建立]。 檢閱設定，然後選取 [建立] 以提交部署。 當部署成功完成時，選取 [移至資源]。 您會進入**邏輯應用程式設計工具**。
+6. 選取 [檢閱 + 建立]。 檢閱設定，然後選取 [建立] 以提交部署。 當部署成功完成時，選取 [移至資源]。 您會進入 **邏輯應用程式設計工具** 。
 
 7. 選取觸發程序類型。 向下捲動到 [從通用觸發程序開始] 區段。 選取 [收到 HTTP 要求時]。
 
      :::image type="content" source="./media/tutorial-geofence/logic-app-trigger.png" alt-text="建立邏輯應用程式的螢幕擷取畫面。":::
 
-8. 在邏輯應用程式設計工具的右上角，選取 [儲存]。 系統會自動產生 **HTTP POST URL**。 儲存 URL。 您在下一節中需要使用此資訊來建立事件端點。
+8. 在邏輯應用程式設計工具的右上角，選取 [儲存]。 系統會自動產生 **HTTP POST URL** 。 儲存 URL。 您在下一節中需要使用此資訊來建立事件端點。
 
     :::image type="content" source="./media/tutorial-geofence/logic-app-httprequest.png" alt-text="建立邏輯應用程式的螢幕擷取畫面。":::
 
@@ -224,7 +224,7 @@ Azure 地圖服務提供許多服務，以支援在設備進入和離開建築�
     :::image type="content" source="./media/tutorial-geofence/logic-app-email.png" alt-text="建立邏輯應用程式的螢幕擷取畫面。":::
 
     >[!TIP]
-    > 您可以在電子郵件通知中，取出 GeoJSON 回應資料，例如 `geometryId` 或 `deviceId`。 您可以設定 Logic Apps 來讀取事件方格所傳送的資料。 如需如何設定 Logic Apps 以取用並將事件資料傳遞至電子郵件通知的詳細資訊，請參閱[教學課程：使用事件方格和 Logic Apps 來傳送 Azure IoT 中樞事件的相關電子郵件通知](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps)。
+    > 您可以在電子郵件通知中，取出 GeoJSON 回應資料，例如 `geometryId` 或 `deviceId`。 您可以設定 Logic Apps 來讀取事件方格所傳送的資料。 如需如何設定 Logic Apps 以取用並將事件資料傳遞至電子郵件通知的詳細資訊，請參閱[教學課程：使用事件方格和 Logic Apps 來傳送 Azure IoT 中樞事件的相關電子郵件通知](../event-grid/publish-iot-hub-events-to-logic-apps.md)。
 
 11. 在邏輯應用程式設計工具的左上角，選取 [儲存]。
 
@@ -232,7 +232,7 @@ Azure 地圖服務提供許多服務，以支援在設備進入和離開建築�
 
 ## <a name="create-azure-maps-events-subscriptions"></a>建立 Azure 地圖服務事件訂用帳戶
 
-Azure 地圖服務支援[三種事件類型](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps)。 您必須在這裡建立兩個不同的事件訂用帳戶：一個用於地理柵欄進入事件，另一個用於地理柵欄退出事件。
+Azure 地圖服務支援[三種事件類型](../event-grid/event-schema-azure-maps.md)。 您必須在這裡建立兩個不同的事件訂用帳戶：一個用於地理柵欄進入事件，另一個用於地理柵欄退出事件。
 
 下列步驟示範如何建立地理柵欄進入事件的事件訂用帳戶。 您可以用類似的方式重複這些步驟，以訂閱地理柵欄退出事件。
 
@@ -260,13 +260,13 @@ Azure 地圖服務支援[三種事件類型](https://docs.microsoft.com/azure/ev
 
 ## <a name="use-spatial-geofence-get-api"></a>使用 Spatial Geofence Get API
 
-使用 [Spatial Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence)，在設備進入或離開地理柵欄時，傳送電子郵件通知給 Operations Manager。
+使用 [Spatial Geofence Get API](/rest/api/maps/spatial/getgeofence)，在設備進入或離開地理柵欄時，傳送電子郵件通知給 Operations Manager。
 
 每一項設備都有 `deviceId`。 在本教學課程中，您會追蹤單一設備，其唯一識別碼為 `device_1`。
 
 下圖顯示裝置在一段時間內的五個位置，從「開始」位置開始，也就是地理柵欄以外的地方。 基於本教學課程的目的，「開始」位置並未定義，因為您不會在該位置查詢裝置。
 
-當您查詢 [Spatial Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) 了解指出初始地理柵欄進入或結束的設備位置時，事件方格會呼叫適當的邏輯應用程式端點，將電子郵件通知傳送至 Operations Manager。
+當您查詢 [Spatial Geofence Get API](/rest/api/maps/spatial/getgeofence) 了解指出初始地理柵欄進入或結束的設備位置時，事件方格會呼叫適當的邏輯應用程式端點，將電子郵件通知傳送至 Operations Manager。
 
 下列各節會使用五個不同的設備位置座標，讓 API 發出要求。
 
@@ -470,9 +470,9 @@ Azure 地圖服務支援[三種事件類型](https://docs.microsoft.com/azure/ev
 在上述的 GeoJSON 回應中，設備已離開主要位置地理柵欄。 因此，`isEventPublished` 參數會設定為 `true`，而 Operations Manager 會收到電子郵件通知，指出設備已離開地理柵欄。
 
 
-您也可以[使用事件方格和 Logic Apps 來傳送電子郵件通知](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps)，並使用 Azure 地圖服務來檢查[事件方格中支援的事件處理常式](https://docs.microsoft.com/azure/event-grid/event-handlers)。
+您也可以[使用事件方格和 Logic Apps 來傳送電子郵件通知](../event-grid/publish-iot-hub-events-to-logic-apps.md)，並使用 Azure 地圖服務來檢查[事件方格中支援的事件處理常式](../event-grid/event-handlers.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [在 Azure 邏輯應用程式中處理內容類型](https://docs.microsoft.com/azure/logic-apps/logic-apps-content-type)
+> [在 Azure 邏輯應用程式中處理內容類型](../logic-apps/logic-apps-content-type.md)

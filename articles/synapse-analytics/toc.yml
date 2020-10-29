@@ -115,8 +115,6 @@
                   href: ../data-factory/concepts-data-flow-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: 維護排程
           href: ./sql-data-warehouse/maintenance-scheduling.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: 備份及還原
-          href: ./sql-data-warehouse/backup-and-restore.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: 監視
       items:
         - name: 集區監視
@@ -259,6 +257,8 @@
               href: sql/best-practices-sql-on-demand.md
             - name: SQL 集區最佳做法
               href: sql/best-practices-sql-pool.md
+        - name: 備份及還原
+          href: ./sql-data-warehouse/backup-and-restore.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: 資料內嵌和準備
           items:
             - name: 概觀
@@ -431,8 +431,6 @@
               href: ./sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 監視工作負載 - 入口網站
               href: ./sql-data-warehouse/sql-data-warehouse-monitor-workload-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: 還原資料倉儲
-              href: ./sql-data-warehouse/backup-and-restore.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 管理工作負載
               items:
                 - name: 分析工作負載

@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 0d57e86088ee472c63b433bde14a0e4316cc20a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 125ca501dbad74263f32632db44eebd097c3b0a1
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91321742"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896696"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>教學課程：使用 Azure 地圖服務尋找並顯示不同移動模式的路線
 
-本教學課程會示範如何使用 Azure 地圖服務[路線規劃服務](https://docs.microsoft.com/rest/api/maps/route)和[地圖控制項](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)，以 `USHazmatClass2` 貨物類型顯示私人車輛和商用車輛 (卡車) 的路線指示。 此外，我們將逐步引導您了解如何在地圖上將即時流量資料視覺化。 在本教學課程中，您會了解如何：
+本教學課程會示範如何使用 Azure 地圖服務[路線規劃服務](/rest/api/maps/route)和[地圖控制項](./how-to-use-map-control.md)，以 `USHazmatClass2` 貨物類型顯示私人車輛和商用車輛 (卡車) 的路線指示。 此外，我們將逐步引導您了解如何在地圖上將即時流量資料視覺化。 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 在網頁上建立和顯示地圖控制項
@@ -39,7 +39,7 @@ ms.locfileid: "91321742"
 
 下列步驟示範如何在網頁中建立和顯示地圖控制項。
 
-1. 在您的本機機器上建立新檔案，並將其命名為 **MapTruckRoute.html**。
+1. 在您的本機機器上建立新檔案，並將其命名為 **MapTruckRoute.html** 。
 2. 複製下列 HTML 標記並貼到檔案中。
 
     ```HTML
@@ -117,7 +117,7 @@ ms.locfileid: "91321742"
     });
     ```
 
-    在地圖 `ready` 事件處理常式中，地圖上的流量設定會設為 `relative`，這是相對於自由流量的道路速度。 如需更多流量選項，請參閱 [TrafficOptions 介面](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.trafficoptions?view=azure-maps-typescript-latest&preserve-view=false)。
+    在地圖 `ready` 事件處理常式中，地圖上的流量設定會設為 `relative`，這是相對於自由流量的道路速度。 如需更多流量選項，請參閱 [TrafficOptions 介面](/javascript/api/azure-maps-control/atlas.trafficoptions?preserve-view=false&view=azure-maps-typescript-latest)。
 
 2. 儲存 **MapTruckRoute.html** 檔案，並重新整理瀏覽器頁面。 如果您放大任何城市 (例如洛杉磯)，您會看到街道顯示目前的交通流量資料。
 
@@ -193,7 +193,7 @@ ms.locfileid: "91321742"
 
     此程式碼會建立兩個 [GeoJSON 點物件](https://en.wikipedia.org/wiki/GeoJSON)，代表起點和終點，此資訊也會新增到資料來源。
 
-    最後一個程式碼區塊會使用起點和終點的經緯度設定相機檢視。 起點和終點會新增至資料來源。 系統會使用 `atlas.data.BoundingBox.fromData` 函式計算起點和終點的週框方塊。 此週框方塊會用來透過 `map.setCamera` 函式設定整個路線的地圖相機檢視。 系統會加入邊框間距，以補償符號圖示的像素維度。 如需地圖控制項的 setCamera 屬性詳細資訊，請參閱 [setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) 屬性。
+    最後一個程式碼區塊會使用起點和終點的經緯度設定相機檢視。 起點和終點會新增至資料來源。 系統會使用 `atlas.data.BoundingBox.fromData` 函式計算起點和終點的週框方塊。 此週框方塊會用來透過 `map.setCamera` 函式設定整個路線的地圖相機檢視。 系統會加入邊框間距，以補償符號圖示的像素維度。 如需地圖控制項的 setCamera 屬性詳細資訊，請參閱 [setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) 屬性。
 
 3. 儲存 **TruckRoute.html** 並重新整理瀏覽器。 現在地圖會以西雅圖作為中心。 淚珠形藍色圖釘會標示起點。 圓形藍色圖釘會標示終點。
 
@@ -206,7 +206,7 @@ ms.locfileid: "91321742"
 本節說明如何使用 Azure 地圖服務路線規劃服務，根據您的運輸模式，取得從某個點到另一個點的方向。 我們將使用兩種運輸模式：卡車和汽車。
 
 >[!TIP]
->路線規劃服務會提供 API，根據距離、交通流量條件和使用的運輸模式，來規劃「最快速」、「最短」、「最環保」或「驚心動魄」的路線。 服務也可讓使用者根據歷程記錄交通流量條件來規劃未來的路由。 使用者可以查看任何指定時間的路由持續期間預測。 如需詳細資訊，請參閱[取得路線方向 API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)。
+>路線規劃服務會提供 API，根據距離、交通流量條件和使用的運輸模式，來規劃「最快速」、「最短」、「最環保」或「驚心動魄」的路線。 服務也可讓使用者根據歷程記錄交通流量條件來規劃未來的路由。 使用者可以查看任何指定時間的路由持續期間預測。 如需詳細資訊，請參閱[取得路線方向 API](/rest/api/maps/route/getroutedirections)。
 
 1. 在 `GetMap` 函式之控制項的 `ready` 事件處理常式內，將下列內容新增至 JavaScript 程式碼。
 
@@ -221,7 +221,7 @@ ms.locfileid: "91321742"
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   `SubscriptionKeyCredential` 會建立 `SubscriptionKeyCredentialPolicy`，以使用訂用帳戶金鑰驗證對「Azure 地圖服務」的 HTTP 要求。 `atlas.service.MapsURL.newPipeline()` 會採用 `SubscriptionKeyCredential` 原則，並建立[管線](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline)執行個體。 `routeURL` 代表 Azure 地圖服務[路線規劃](https://docs.microsoft.com/rest/api/maps/route)作業的 URL。
+   `SubscriptionKeyCredential` 會建立 `SubscriptionKeyCredentialPolicy`，以使用訂用帳戶金鑰驗證對「Azure 地圖服務」的 HTTP 要求。 `atlas.service.MapsURL.newPipeline()` 會採用 `SubscriptionKeyCredential` 原則，並建立[管線](/javascript/api/azure-maps-rest/atlas.service.pipeline)執行個體。 `routeURL` 代表 Azure 地圖服務[路線規劃](/rest/api/maps/route)作業的 URL。
 
 2. 設定認證和 URL 之後，請新增下列 JavaScript 程式碼以建構從起點到終點的卡車路線。 此路線是針對裝載 `USHazmatClass2` 類別貨物的卡車而建立和顯示。
 
@@ -250,10 +250,10 @@ ms.locfileid: "91321742"
     });
     ```
 
-    上述程式碼會透過 [Azure 地圖服務路線指示 API](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-) 來查詢 Azure 地圖服務路線規劃服務。 接著，系統會從回應中的 GeoJSON 特性集合擷取路線；這些特性是使用 `geojson.getFeatures()` 方法擷取的。 最後，路線會新增至資料來源。 我們會將其新增到 0 的索引處，以確保卡車路線會在資料來源中的任何其他路線之前呈現，因為卡車路線計算通常會比汽車路線計算慢。 如果卡車路線在汽車路線之後新增至資料來源，則會呈現於汽車路線之上。 系統會將兩個屬性新增至卡車路線：一個呈現為藍色的筆觸色彩，和一個寬度為九個像素的筆觸。
+    上述程式碼會透過 [Azure 地圖服務路線指示 API](/javascript/api/azure-maps-rest/atlas.service.routeurl#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-) 來查詢 Azure 地圖服務路線規劃服務。 接著，系統會從回應中的 GeoJSON 特性集合擷取路線；這些特性是使用 `geojson.getFeatures()` 方法擷取的。 最後，路線會新增至資料來源。 我們會將其新增到 0 的索引處，以確保卡車路線會在資料來源中的任何其他路線之前呈現，因為卡車路線計算通常會比汽車路線計算慢。 如果卡車路線在汽車路線之後新增至資料來源，則會呈現於汽車路線之上。 系統會將兩個屬性新增至卡車路線：一個呈現為藍色的筆觸色彩，和一個寬度為九個像素的筆觸。
 
     >[!TIP]
-    > 若要查看 Azure 地圖服務路線指示 API 的所有可能選項和值，請參閱 [Post 路線指示的 URI 參數](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#uri-parameters)。
+    > 若要查看 Azure 地圖服務路線指示 API 的所有可能選項和值，請參閱 [Post 路線指示的 URI 參數](/rest/api/maps/route/postroutedirections#uri-parameters)。
 
 3. 現在附加下列 JavaScript 程式碼以建構汽車的行車路線。
 
@@ -273,7 +273,7 @@ ms.locfileid: "91321742"
     });
     ```
 
-    上述程式碼會透過 [Azure 地圖服務路線指示 API](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-) 方法來查詢 Azure 地圖服務路線規劃服務。 接著，系統會從回應中的 GeoJSON 特性集合擷取路線；這些特性是使用 `geojson.getFeatures()` 方法擷取的。 最後，路線會新增至資料來源。 系統會將兩個屬性新增至卡車路線：一個呈現為紫色的筆觸色彩，和一個寬度為五個像素的筆觸。
+    上述程式碼會透過 [Azure 地圖服務路線指示 API](/javascript/api/azure-maps-rest/atlas.service.routeurl#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-) 方法來查詢 Azure 地圖服務路線規劃服務。 接著，系統會從回應中的 GeoJSON 特性集合擷取路線；這些特性是使用 `geojson.getFeatures()` 方法擷取的。 最後，路線會新增至資料來源。 系統會將兩個屬性新增至卡車路線：一個呈現為紫色的筆觸色彩，和一個寬度為五個像素的筆觸。
 
 4. 儲存 **TruckRoute.html** 檔案並重新整理網頁瀏覽器。 地圖現在應該會顯示卡車和汽車路線。
 
