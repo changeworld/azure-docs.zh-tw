@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 66c8f72c82e04bafe9582c4a5dc6967e5470d3ea
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: c5af77da0ed2c579a478c8ebaaa924882d9a15c6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147886"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927697"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>建立示範憑證來測試 IoT Edge 裝置功能
 
@@ -36,7 +36,7 @@ IoT Edge 裝置需要憑證，才能在執行時間、模組和任何下游裝�
    * 在閘道案例中，為 IoT Edge 裝置[建立 IoT Edge 的裝置 CA 憑證](#create-iot-edge-device-ca-certificates)。
    * [建立下游裝置憑證](#create-downstream-device-certificates) 來驗證閘道案例中的下游裝置。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 已安裝 Git 的開發電腦。
 
@@ -59,7 +59,7 @@ GitHub 上的 IoT Edge 存放庫包含可供您用來建立示範憑證的憑證
 
 * **更簡單：** 下載並安裝任何 [協力廠商 OpenSSL 二進位](https://wiki.openssl.org/index.php/Binaries)檔，例如，從 [OpenSSL on SourceForge](https://sourceforge.net/projects/openssl/)。 將 openssl.exe 的完整路徑加入至您的 PATH 環境變數。
 
-* **建議**：自行下載 OpenSSL 原始程式碼，並在您的電腦上建置二進位檔，或是透過 [vcpkg](https://github.com/Microsoft/vcpkg) 來執行。 下列指示會使用 vcpkg 下載原始程式碼，並在 Windows 電腦上編譯並安裝 OpenSSL，且各項作業都能以輕鬆的步驟完成。
+* **建議** ：自行下載 OpenSSL 原始程式碼，並在您的電腦上建置二進位檔，或是透過 [vcpkg](https://github.com/Microsoft/vcpkg) 來執行。 下列指示會使用 vcpkg 下載原始程式碼，並在 Windows 電腦上編譯並安裝 OpenSSL，且各項作業都能以輕鬆的步驟完成。
 
    1. 瀏覽至要安裝 vcpkg 的目錄。 依照指示下載並安裝 [vcpkg](https://github.com/Microsoft/vcpkg)。
 
@@ -163,7 +163,7 @@ Azure IoT Edge 的 git 存放庫包含可供您用來產生測試憑證的腳本
    New-CACertsCertChain rsa
    ```
 
-   此指令碼命令會建立數個憑證和金鑰檔案，但當發行項要求 **根 CA 憑證**時，請使用下列檔案：
+   此指令碼命令會建立數個憑證和金鑰檔案，但當發行項要求 **根 CA 憑證** 時，請使用下列檔案：
 
    * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
@@ -177,7 +177,7 @@ Azure IoT Edge 的 git 存放庫包含可供您用來產生測試憑證的腳本
    ./certGen.sh create_root_and_intermediate
    ```
 
-   此指令碼命令會建立數個憑證和金鑰檔案，但當發行項要求 **根 CA 憑證**時，請使用下列檔案：
+   此指令碼命令會建立數個憑證和金鑰檔案，但當發行項要求 **根 CA 憑證** 時，請使用下列檔案：
 
    * `<WRKDIR>/certs/azure-iot-test-only.root.ca.cert.pem`  
 
@@ -185,7 +185,7 @@ Azure IoT Edge 的 git 存放庫包含可供您用來產生測試憑證的腳本
 
 裝置身分識別憑證可用來透過 Azure IoT 中樞裝置布建服務（ (DPS) ）布建 IoT Edge 裝置。
 
-裝置身分識別憑證會進入 IoT Edge 裝置上 yaml**檔案的布建區段。**
+裝置身分識別憑證會進入 IoT Edge 裝置上 yaml **檔案的布建區段。**
 
 繼續進行本節中的步驟之前，請先依照 [設定腳本](#set-up-scripts) 和 [建立根 CA 憑證](#create-root-ca-certificate) 一節中的步驟進行。
 
@@ -255,7 +255,7 @@ New-CACertsEdgeDeviceIdentity "<name>"
 2. 使用下列命令建立 IoT Edge 裝置 CA 憑證和私密金鑰。 提供 CA 憑證的名稱。
 
    ```bash
-   ./certGen.sh create_edge_device_certificate "<CA cert name>"
+   ./certGen.sh create_edge_device_ca_certificate "<CA cert name>"
    ```
 
    此指令碼命令會建立數個憑證和金鑰檔。 下列憑證和金鑰組必須複製到 IoT Edge 裝置，並在 yaml 檔案中參考：
@@ -263,7 +263,7 @@ New-CACertsEdgeDeviceIdentity "<name>"
    * `<WRKDIR>/certs/iot-edge-device-<CA cert name>-full-chain.cert.pem`
    * `<WRKDIR>/private/iot-edge-device-<CA cert name>.key.pem`
 
-傳遞給 **create_edge_device_certificate** 命令的名稱不應與 yaml 中的 hostname 參數或 IoT 中樞內的裝置識別碼相同。
+傳遞給 **create_edge_device_ca_certificate** 命令的名稱不應與 yaml 中的 hostname 參數或 IoT 中樞內的裝置識別碼相同。
 
 ## <a name="create-downstream-device-certificates"></a>建立下游裝置憑證
 

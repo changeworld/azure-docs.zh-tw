@@ -8,12 +8,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.openlocfilehash: a0349a3fe21bdc0b73252bce1207c9f3b53dc15f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d41629dd9a56272af89a06cb55e9bd88b604baee
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143730"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927901"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure 監視器活頁簿資料來源
 
@@ -77,7 +77,7 @@ Azure 監視器具有可主動監視 Windows 或 Linux 客體作業系統可用�
 
 若要讓查詢控制項使用此資料來源，請使用 [ **查詢類型** ] 下拉式清單來選擇 [Azure health]，然後選取要設為目標的資源。 使用 [健康情況篩選器] 下拉式清單，為您的分析需求選取一個有趣的資源問題子集。
 
-![警示查詢的螢幕擷取畫面](./media/workbooks-overview/resource-health.png)
+![顯示健全狀況篩選清單的警示查詢螢幕擷取畫面。](./media/workbooks-overview/resource-health.png)
 
 ## <a name="json"></a>JSON
 
@@ -94,13 +94,13 @@ JSON 提供者可讓您從靜態 JSON 內容建立查詢結果。 它最常用�
 
 活頁簿可讓使用者以視覺化方式呈現與其資源相關的作用中警示。 限制：警示資料來源需要訂用帳戶的讀取權限，才能查詢資源，而且可能不會顯示較新的警示類型。 
 
-若要讓查詢控制項使用此資料來源，請使用 [ _資料來源_ ] 下拉式清單來選擇 _警示 (預覽) _ 並選取要設為目標的訂用帳戶、資源群組或資源。 使用 [警示篩選器] 下拉式清單，為您的分析需求選取一個有趣的警示子集。
+若要讓查詢控制項使用此資料來源，請使用 [ _資料來源_ ] 下拉式清單來選擇 _警示 (預覽)_ 並選取要設為目標的訂用帳戶、資源群組或資源。 使用 [警示篩選器] 下拉式清單，為您的分析需求選取一個有趣的警示子集。
 
 ## <a name="custom-endpoint"></a>自訂端點
 
 活頁簿支援從任何外部來源取得資料。 如果您的資料位於 Azure 外部，您可以使用此資料來源類型將它帶入活頁簿。
 
-若要讓查詢控制項使用這個資料來源，請使用 [ _資料來源_ ] 下拉式清單選擇 [ _自訂端點_]。 提供適當的參數，例如 `Http method` 、 `url` 、 `headers` `url parameters` 和/或 `body` 。 請確定您的資料來源支援 [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) ，否則要求將會失敗。
+若要讓查詢控制項使用這個資料來源，請使用 [ _資料來源_ ] 下拉式清單選擇 [ _自訂端點_ ]。 提供適當的參數，例如 `Http method` 、 `url` 、 `headers` `url parameters` 和/或 `body` 。 請確定您的資料來源支援 [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) ，否則要求將會失敗。
 
 若要避免在使用範本時自動呼叫不受信任的主機，使用者必須將使用的主機標示為受信任。 這可以藉由按一下 [ _新增為受信任_ ] 按鈕來完成，或在活頁簿設定中將它新增為信任的主機。 這些設定會儲存在支援 web 背景工作 IndexDb 的瀏覽器中，請參閱 [這裡](https://caniuse.com/#feat=indexeddb)的詳細資訊。
 

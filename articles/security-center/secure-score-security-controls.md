@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/21/2020
 ms.author: memildin
-ms.openlocfilehash: 920f6cc7eaef6d25fa700e2f8ca8277efee671d1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 0bc8b4f7bd2bf02d4d034ebacc0fc45b17cd3e15
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425377"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92928088"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure 資訊安全中心的安全分數
 
@@ -29,7 +29,7 @@ Azure 資訊安全中心有兩個主要目標：
 - 協助您瞭解目前的安全性狀況
 - 協助您有效率且有效地改善安全性
 
-安全中心的集中功能，可讓您達成這些目標的 **安全分數**。
+安全中心的集中功能，可讓您達成這些目標的 **安全分數** 。
 
 資訊安全中心會持續評估資源、訂用帳戶、組織的安全性問題。 然後將所有的發現彙總成一個分數，讓您可以立即得知目前的安全性情況：分數越高，風險層級越低。
 
@@ -39,7 +39,7 @@ Azure 資訊安全中心有兩個主要目標：
 
 若要提高安全性，請參閱「安全性中心」的建議頁面，以瞭解提高分數所需的未完成動作。 每個建議都包含可協助您補救特定問題的指示。
 
-建議會分組為 **安全性控制項**。 每個控制項都是相關安全性建議的邏輯群組，並反映您的易受攻擊面。 只有在您補救控制項內單一資源的「所有」建議後，分數才會改善。 若要瞭解您的組織如何保護每個個別的受攻擊面，請參閱每個安全性控制的分數。
+建議會分組為 **安全性控制項** 。 每個控制項都是相關安全性建議的邏輯群組，並反映您的易受攻擊面。 只有在您補救控制項內單一資源的「所有」建議後，分數才會改善。 若要瞭解您的組織如何保護每個個別的受攻擊面，請參閱每個安全性控制的分數。
 
 如需詳細資訊，請參閱下方的 [安全分數計算方式](secure-score-security-controls.md#how-your-secure-score-is-calculated) 。 
 
@@ -88,7 +88,7 @@ Azure Resource Graph 可讓您透過強大的篩選、分組和排序功能，�
 
 若要使用 ARG 來存取多個訂用帳戶的安全分數：
 
-1. 在 Azure 入口網站中，開啟 **Azure Resource Graph Explorer**。
+1. 在 Azure 入口網站中，開啟 **Azure Resource Graph Explorer** 。
 
     :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="以入口網站顯示的整體安全分數" :::
 
@@ -112,7 +112,7 @@ Azure Resource Graph 可讓您透過強大的篩選、分組和排序功能，�
         | project SecureControl , unhealthy, currentscore, maxscore
         ```
 
-1. 選取 [ **執行查詢**]。
+1. 選取 [ **執行查詢** ]。
 
 ## <a name="how-your-secure-score-is-calculated"></a>如何計算您的安全分數 
 
@@ -162,6 +162,14 @@ Azure Resource Graph 可讓您透過強大的篩選、分組和排序功能，�
 
 下表列出 Azure 資訊安全中心中的安全性控制項。 在每個控制項下，您可以看到當您為「所有」資源補救控制項中列出的「所有」建議時，能為安全分數增加的最高點數。 
 
+針對每個組織環境中的可用資源，各有一組針對安全性中心提供的安全性建議。 您可以藉由 [停用原則](tutorial-security-policy.md#disable-security-policies-and-disable-recommendations) ，並 [從建議排除特定資源](exempt-resource.md)，進一步自訂建議。 
+ 
+我們建議每個組織仔細審核其指派的 Azure 原則計畫。 
+
+> [!TIP]
+> 如需審核和編輯您的計畫的詳細資訊，請參閱 [使用安全性原則](tutorial-security-policy.md)。 
+
+雖然資訊安全中心的預設安全性計畫是根據業界最佳作法和標準，但在某些情況下，下列內建建議可能無法完全符合您的組織。 因此，有時需要調整預設的計畫，而不會危及安全性，以確保其符合您組織本身的原則。 符合您義務的產業標準、法規標準和基準測試。<br><br>
 <div class="foo">
 
 <style type="text/css"> .tg  {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:18px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-cly1{text-align:left;vertical-align:middle} .tg .tg-lboi{border-color:inherit;text-align:left;vertical-align:middle} </style>

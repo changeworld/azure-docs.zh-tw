@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2020
 ms.author: Zhchia
-ms.openlocfilehash: 400e82780abd08e0db4f49d72b352e290ea1f212
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 9445004170fb06a3d563982da51f89535464e328
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900289"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927986"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的全域轉送身分識別同步處理
 
@@ -33,6 +33,10 @@ ms.locfileid: "92900289"
 > * 當使用者不再需要存取權時，請移除全域轉送身分識別同步處理中的使用者
 > * 在 Azure AD 和全域轉送身分識別同步之間保持使用者屬性同步
 > * 在全域轉送身分識別同步中布建群組和群組成員資格
+
+
+> [!NOTE]
+> 全域轉送身分識別同步布建連接器會利用由於安全性考慮而不再受支援的 SCIM 授權方法。 致力於使用全球轉送來切換至更安全的授權方法。
 
 ## <a name="prerequisites"></a>Prerequisites
 

@@ -8,12 +8,12 @@ author: georgewallace
 ms.author: gwallace
 keywords: aro, openshift, az aro, red hat, cli
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3082f30f46a1e450a9ac42958163894c014de66d
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 3864d48399f00d5cfbdfa0a94939be0d88a73322
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737215"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92928054"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>建立 Azure Red Hat OpenShift 4 私人叢集
 
@@ -229,7 +229,7 @@ az aro list-credentials \
 
 在瀏覽器中啟動主控台 URL，並使用 `kubeadmin` 認證登入。
 
-![Azure Red Hat OpenShift 登入畫面](media/aro4-login.png)
+![顯示 Azure Red Hat OpenShift 登入畫面的螢幕擷取畫面。](media/aro4-login.png)
 
 ## <a name="install-the-openshift-cli"></a>安裝 OpenShift CLI
 

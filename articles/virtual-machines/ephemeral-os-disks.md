@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: a79a030c4f57c3dabdd14c01aa2062cab7026cd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f915652110524aac06d641d636155bc6a5fcd256
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611515"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927918"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Azure Vm 的暫時作業系統磁片
 
@@ -34,7 +34,7 @@ ms.locfileid: "91611515"
 
 |                             | 持續性 OS 磁片                          | 暫時性 OS 磁碟                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
-| **OS 磁片的大小限制**      | 2 TiB                                                                                        | VM 大小或2TiB 的快取大小，以較小者為准。 如需 **GiB 中**的快取大小，請參閱 [DS](sizes-general.md)、 [ES](sizes-memory.md)、 [M](sizes-memory.md)、 [FS](sizes-compute.md)和 [GS](sizes-previous-gen.md#gs-series)              |
+| **OS 磁片的大小限制**      | 2 TiB                                                                                        | VM 大小或2TiB 的快取大小，以較小者為准。 如需 **GiB 中** 的快取大小，請參閱 [DS](sizes-general.md)、 [ES](sizes-memory.md)、 [M](sizes-memory.md)、 [FS](sizes-compute.md)和 [GS](sizes-previous-gen.md#gs-series)              |
 | **支援的 VM 大小**          | 全部                                                                                          | 支援 Premium 儲存體的 VM 大小，例如 DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、M                                               |
 | **磁片類型支援**           | 受控和非受控 OS 磁片                                                                | 僅限受控 OS 磁片                                                               |
 | **區域支援**              | 所有區域                                                                                  | 所有區域                              |
@@ -42,7 +42,8 @@ ms.locfileid: "91611515"
 | **停止-解除配置狀態**      | Vm 和擴展集實例可以停止/解除配置，並從停止配置的狀態重新開機 | Vm 和擴展集實例無法停止-解除配置                                  |
 | **特製化 OS 磁片支援** | 是                                                                                          | 否                                                                                 |
 | **OS 磁片調整大小**              | 在 VM 建立期間以及在 VM 停止後解除配置時支援                                | 僅在 VM 建立期間支援                                                  |
-| **調整為新的 VM 大小**   | 保留作業系統磁片資料                                                                    | 作業系統磁片上的資料已刪除，作業系統已重新布建                                      |
+| **調整為新的 VM 大小**   | 保留作業系統磁片資料                                                                    | 作業系統磁片上的資料已刪除，作業系統已重新布建       
+| **分頁檔案放置**   | 針對 Windows，分頁檔案會儲存在資源磁片上                                              | 針對 Windows，分頁檔案會儲存在 OS 磁片上   |
 
 ## <a name="size-requirements"></a>大小需求
 
@@ -87,13 +88,13 @@ az vm create \
 
 ## <a name="portal"></a>入口網站   
 
-在 Azure 入口網站中，您可以選擇在部署 VM 時使用暫時磁片，方法是開啟 [**磁片**] 索引標籤的 [ **Advanced** ] 區段。若是**使用暫時性 OS 磁片**，請選取 **[是]**。
+在 Azure 入口網站中，您可以選擇在部署 VM 時使用暫時磁片，方法是開啟 [ **磁片** ] 索引標籤的 [ **Advanced** ] 區段。若是 **使用暫時性 OS 磁片** ，請選取 **[是]** 。
 
 ![顯示選擇使用暫時性 OS 磁片之選項按鈕的螢幕擷取畫面](./media/virtual-machines-common-ephemeral/ephemeral-portal.png)
 
 如果使用暫時磁片的選項呈現灰色，表示您可能選取的 VM 大小沒有大於 OS 映射的快取大小，或不支援 Premium 儲存體的 VM 大小。 返回到 [ **基本** ] 頁面，然後嘗試選擇其他 VM 大小。
 
-您也可以使用入口網站來建立具有暫時 OS 磁片的擴展集。 只要確定您選取的 VM 大小具有夠大的快取大小，然後 **使用暫時性 OS 磁片** ，請選取 **[是]**。
+您也可以使用入口網站來建立具有暫時 OS 磁片的擴展集。 只要確定您選取的 VM 大小具有夠大的快取大小，然後 **使用暫時性 OS 磁片** ，請選取 **[是]** 。
 
 ![顯示選項按鈕的螢幕擷取畫面，可供選擇針對擴展集使用暫時的 OS 磁片](./media/virtual-machines-common-ephemeral/scale-set.png)
 

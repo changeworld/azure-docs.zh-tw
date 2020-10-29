@@ -8,16 +8,16 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 506336ad80c1f30b937bc71724ca39cee24bb2fd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: dc6706d4ec9090c59d4dd668d2ae1dd3ce7d188a
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968917"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92928037"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列高載虛擬機器大小
 
-B 系列 Vm 非常適合不需要持續完整 CPU 效能的工作負載，例如 web 伺服器、概念證明、小型資料庫和開發組建環境。 這些工作負載通常具有高載的效能需求。 B 系列可讓您購買基準效能的 VM 大小，並在 VM 執行個體使用低於其基準時再向上建立點數。 當 VM 累積點數時，VM 可以在您的應用程式需要較高的 CPU 效能時，使用最多 100% 的 vCPU 來高載高於基準。
+B 系列 Vm 非常適合不需要持續完整 CPU 效能的工作負載，例如 web 伺服器、概念證明、小型資料庫和開發組建環境。 這些工作負載通常具有高載的效能需求。 B 系列可讓您購買具有基準效能的 VM 大小，以在使用低於其基準時建立點數。 當 VM 已累積點數時，VM 可以在您的應用程式需要較高的 CPU 效能時，使用最多100% 的 vCPU 來高載高於基準。
 
 B 系列有下列 VM 大小：
 
@@ -93,25 +93,24 @@ B16 特性：
 
 ## <a name="q--a"></a>問答集
 
-### <a name="q-what-happens-if-the-credits-run-out"></a>問：當點數用盡時，會發生什麼事？
-**答**：當點數用盡時，VM 會回到基準效能。
+### <a name="q-what-happens-when-my-credits-run-out"></a>問：當我的點數用盡時，會發生什麼事？
+**答** ：當點數用盡時，VM 會回到基準效能。
 
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>問：如何從 VM 取得 135% 的基準效能？
 
-**答**：會在構成 VM 大小的 8 個 vCPU 之間共用 135%。 例如，如果您的應用程式將 8 個核心其中 4 個用於批次處理，而這 4 個 vCPU 每個都以 30% 的使用率執行，VM CPU 效能的總數就會等於 120%。  這表示 VM 會以您基準效能的 15% 差異作為基礎來建置點數時間。  但這也表示，當您有可用點數時，該相同 VM 可以 100% 使用所有 8 個 vCPU，使該 VM 擁有 800% 的最大 CPU 效能。
-
+**答** ：會在構成 VM 大小的 8 個 vCPU 之間共用 135%。 例如，如果您的應用程式將 8 個核心其中 4 個用於批次處理，而這 4 個 vCPU 每個都以 30% 的使用率執行，VM CPU 效能的總數就會等於 120%。  這表示 VM 會以您基準效能的 15% 差異作為基礎來建置點數時間。  但這也表示，當您有可用點數時，該相同 VM 可以 100% 使用所有 8 個 vCPU，使該 VM 擁有 800% 的最大 CPU 效能。
 
 ### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>問：如何監視我的點數餘額和耗用量？
 
-**答**：我們在未來幾週會推出 2 個新的計量，**點數**計量可讓您檢視 VM 累積了多少點數，而**已耗用點數**計量會顯示 VM 從撲滿中耗用了多少 CPU 點數。    您可以在入口網站中的 [計量] 窗格檢視這些計量，或透過 Azure 監視器 API 以程式設計方式檢視。
+**答** ：點數計量可讓您查看 vm 已累積 **的點數，** 而 **ConsumedCredit** 計量會顯示您的 vm 已從銀行取用多少個 CPU 點數。    您可以在入口網站中的 [計量] 窗格檢視這些計量，或透過 Azure 監視器 API 以程式設計方式檢視。
 
 如需如何存取 Azure 計量資料的詳細資訊，請參閱 [Microsoft Azure 的計量概觀](../azure-monitor/platform/data-platform.md)。
 
 ### <a name="q-how-are-credits-accumulated-and-consumed"></a>問：點數如何累積和取用？
 
-**答**：VM 累積與消耗率設定的方式，是以基礎效能層級執行的 VM 會具有高載點數的淨累積或耗用量。  每當 VM 在其基礎效能層級下執行時，點數淨值都會增加，且每當 VM 利用 CPU 超過其基礎效能層級時，點數淨值就會降低。
+**答** ：VM 累積與消耗率設定的方式，是以基礎效能層級執行的 VM 會具有高載點數的淨累積或耗用量。  每當 VM 在其基礎效能層級下執行時，點數淨值都會增加，且每當 VM 利用 CPU 超過其基礎效能層級時，點數淨值就會降低。
 
-**範例**：我針對短暫的時間使用 B1ms 大小及現身資料庫應用程式來部署 VM。 這個大小可讓我的應用程式使用最多 20% 的 vCPU 作為基準，也就是我每分鐘可以使用或累積 0.2 個點數。
+**範例** ：我針對短暫的時間使用 B1ms 大小及現身資料庫應用程式來部署 VM。 這個大小可讓我的應用程式使用最多 20% 的 vCPU 作為基準，也就是我每分鐘可以使用或累積 0.2 個點數。
 
 我的應用程式從我員工的工作日開始運作到員工下班，時間是上午 7:00-9:00 和下午 4:00 - 6:00 之間。 一天的其他 20 小時內，我的應用程式通常為閒置狀態，只會使用 10% 的 vCPU。 在非尖峰時間，我每分鐘獲得 0.2 個點數，但每分鐘只使用 0.1 個點數，因此我的 VM 每小時會累積 0.1 x 60 = 6 個點數。  在離峰的 20 小時內，我會累積 120 個點數。  
 
@@ -121,7 +120,7 @@ B16 特性：
 
 ### <a name="q-how-can-i-calculate-credits-accumulated-and-used"></a>問：如何計算已累積和使用的點數？
 
-**答**：您可以使用下列公式：
+**答** ：您可以使用下列公式：
 
 VM 的 (基礎 CPU 效能-CPU 使用量) /100 = 點數 bank 或每分鐘使用
 
@@ -129,11 +128,11 @@ VM 的 (基礎 CPU 效能-CPU 使用量) /100 = 點數 bank 或每分鐘使用
 
 ### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>問：B 系列是否支援進階儲存體資料磁碟？
 
-**答**：是的，所有 B 系列大小都支援進階儲存體資料磁碟。
+**答** ：是的，所有 B 系列大小都支援進階儲存體資料磁碟。
 
 ### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>問：為何在重新部署或停止/啟動之後，剩餘信用額度會設定為 0？
 
-**答**：當虛擬機器「重新部署」且虛擬機器移到另一個節點時，累積的信用額度會遺失。 如果虛擬機器停止/啟動，但仍留在相同節點上，則虛擬機器會保留累積的信用額度。 每當虛擬機器在節點上以全新方式啟動時，它會取得初始信用額度，如果是 Standard_B8ms，額度為 240 分鐘。
+**答** ：當虛擬機器「重新部署」且虛擬機器移到另一個節點時，累積的信用額度會遺失。 如果虛擬機器停止/啟動，但仍留在相同節點上，則虛擬機器會保留累積的信用額度。 每當 VM 在節點上啟動時，它就會取得初始點數，Standard_B8ms 為240。
 
 ### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>問：如果我在 B1ls 上部署不支援的 OS 映射，會發生什麼事？
 
