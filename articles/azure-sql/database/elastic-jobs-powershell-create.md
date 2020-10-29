@@ -4,19 +4,19 @@ description: 了解如何使用 PowerShell 建立彈性作業代理程式。
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurepowershell
+ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: tutorial
 author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
-ms.date: 03/13/2019
-ms.openlocfilehash: aaf749708b49c57d08a63581f3d911b04aba2103
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/21/2020
+ms.openlocfilehash: 27cd35eba7320022ea9b137a7b8bb079a1226751
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408662"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427297"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>使用 PowerShell 建立彈性作業代理程式 (預覽)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -53,7 +53,7 @@ Find-Package PowerShellGet | Install-Package -Force
 # Restart your powershell session with administrative access
 
 # Install and import the Az.Sql module, then confirm
-Install-Module -Name Az.Sql
+Install-Module -Name Az.Sql
 Import-Module Az.Sql
 
 Get-Module Az.Sql
@@ -135,7 +135,7 @@ Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Mic
 
 彈性作業代理程式是用來建立、執行和管理作業的 Azure 資源。 代理程式會根據排程來執行作業，或執行一次性的作業。
 
-**New-AzSqlElasticJobAgent** Cmdlet 會要求 Azure SQL Database 中必須已有資料庫存在，因此 *resourceGroupName*、*rerverName* 與 *databaseName* 參數全都必須指向現有的資源。
+**New-AzSqlElasticJobAgent** Cmdlet 會要求 Azure SQL Database 中必須已有資料庫存在，因此 *resourceGroupName* 、 *rerverName* 與 *databaseName* 參數全都必須指向現有的資源。
 
 ```powershell
 Write-Output "Creating job agent..."
@@ -165,12 +165,12 @@ $params = @{
   'username' = $adminLogin
   'password' = $adminPassword
   'outputSqlErrors' = $true
-  'query' = "CREATE LOGIN masteruser WITH PASSWORD='password!123'"
+  'query' = 'CREATE LOGIN masteruser WITH PASSWORD=''password!123'''
 }
 Invoke-SqlCmd @params
 $params.query = "CREATE USER masteruser FROM LOGIN masteruser"
 Invoke-SqlCmd @params
-$params.query = "CREATE LOGIN jobuser WITH PASSWORD='password!123'"
+$params.query = 'CREATE LOGIN jobuser WITH PASSWORD=''password!123'''
 Invoke-SqlCmd @params
 
 # for each target database
@@ -192,7 +192,7 @@ $targetDatabases | % {
 
 # create job credential in Job database for master user
 Write-Output "Creating job credentials..."
-$loginPasswordSecure = (ConvertTo-SecureString -String "password!123" -AsPlainText -Force)
+$loginPasswordSecure = (ConvertTo-SecureString -String 'password!123' -AsPlainText -Force)
 
 $masterCred = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList "masteruser", $loginPasswordSecure
 $masterCred = $jobAgent | New-AzSqlElasticJobCredential -Name "masteruser" -Credential $masterCred
@@ -205,7 +205,7 @@ $jobCred = $jobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential
 
 [目標群組](job-automation-overview.md#target-group)可定義一或多個將會執行作業步驟的資料庫。
 
-下列程式碼片段會建立兩個目標群組：*serverGroup* 和 *serverGroupExcludingDb2*。 *serverGroup* 會以執行時存在於伺服器上的所有資料庫為目標，*serverGroupExcludingDb2* 則會以伺服器上的所有資料庫為目標，但 *targetDb2* 除外：
+下列程式碼片段會建立兩個目標群組： *serverGroup* 和 *serverGroupExcludingDb2* 。 *serverGroup* 會以執行時存在於伺服器上的所有資料庫為目標， *serverGroupExcludingDb2* 則會以伺服器上的所有資料庫為目標，但 *targetDb2* 除外：
 
 ```powershell
 Write-Output "Creating test target groups..."
@@ -221,7 +221,7 @@ $serverGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $targetServerNa
 
 ### <a name="create-a-job-and-steps"></a>建立作業和步驟
 
-此範例會為要執行的作業定義一項作業和兩個作業步驟。 第一個作業步驟 (*步驟 1*) 會在目標群組 *ServerGroup* 的每個資料庫中 建立新的資料表 (*Step1Table*)。 第二個作業步驟 (*步驟 2*) 會在每個資料庫中建立新的資料表 (*Step2Table*)，但 *TargetDb2* 除外，因為先前定義的目標群組指定要加以排除。
+此範例會為要執行的作業定義一項作業和兩個作業步驟。 第一個作業步驟 ( *步驟 1* ) 會在目標群組 *ServerGroup* 的每個資料庫中 建立新的資料表 ( *Step1Table* )。 第二個作業步驟 ( *步驟 2* ) 會在每個資料庫中建立新的資料表 ( *Step2Table* )，但 *TargetDb2* 除外，因為先前定義的目標群組指定要加以排除。
 
 ```powershell
 Write-Output "Creating a new job..."

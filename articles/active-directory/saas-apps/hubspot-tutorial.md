@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 51e27526b10bcdd74d6e2bffb8bf620d7b022aac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c53b7fed17ba4ef2000b905b202286338cd461ed
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551432"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442894"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>教學課程：Azure Active Directory 與 HubSpot 整合
 
@@ -28,7 +28,7 @@ HubSpot 與 Azure AD 整合提供下列優點：
 * 使用者可以使用其 Azure AD 帳戶自動登入 HubSpot (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-如需軟體即服務 (SaaS) 應用程式與 Azure AD 的整合詳細資訊，請參閱 [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如需軟體即服務 (SaaS) 應用程式與 Azure AD 的整合詳細資訊，請參閱 [Azure Active Directory 中的應用程式單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -64,7 +64,7 @@ HubSpot 支援下列功能︰
 
     ![新增應用程式選項](common/add-new-app.png)
 
-1. 在搜尋方塊中，輸入 **HubSpot**。 在搜尋結果中，選取 [HubSpot]  ，然後選取 [新增]  。
+1. 在搜尋方塊中，輸入 **HubSpot** 。 在搜尋結果中，選取 [HubSpot]  ，然後選取 [新增]  。
 
     ![結果清單中的 HubSpot](common/search-new-app.png)
 
@@ -101,9 +101,9 @@ HubSpot 支援下列功能︰
 
 1. 若要在 [基本 SAML 組態]  窗格中設定「IDP 起始模式」  ，請完成下列步驟：
 
-    1. 在**識別碼**方塊中輸入具有下列模式的 URL：https:\//api.hubspot.com/login-api/v1/saml/login?portalId=\<CUSTOMER ID\>。
+    1. 在 **識別碼** 方塊中輸入具有下列模式的 URL：https:\//api.hubspot.com/login-api/v1/saml/login?portalId=\<CUSTOMER ID\>。
 
-    1. 在**回覆 URL** 方塊中輸入具有下列模式的 URL：https:\//api.hubspot.com/login-api/v1/saml/acs?portalId=\<CUSTOMER ID\>。
+    1. 在 **回覆 URL** 方塊中輸入具有下列模式的 URL：https:\//api.hubspot.com/login-api/v1/saml/acs?portalId=\<CUSTOMER ID\>。
 
     ![HubSpot 網域與 URL 單一登入資訊](common/idp-intiated.png)
 
@@ -114,7 +114,7 @@ HubSpot 支援下列功能︰
 
     1. 選取 [設定其他 URL]  。
 
-    1. 在 [登入 URL]  方塊中，輸入 **https:\//app.hubspot.com/login**。
+    1. 在 [登入 URL]  方塊中，輸入 **https:\//app.hubspot.com/login** 。
 
     ![[設定其他 URL] 選項](common/metadata-upload-additional-signon.png)
 
@@ -176,9 +176,9 @@ HubSpot 支援下列功能︰
 
 1. 在 [使用者]  窗格中，完成下列步驟：
 
-    1. 在 [名稱]  方塊中，輸入 **BrittaSimon**。
+    1. 在 [名稱]  方塊中，輸入 **BrittaSimon** 。
   
-    1. 在 [使用者名稱] 方塊中，輸入 **brittasimon\@\<your-company-domain>.\<extension\>** 。 例如，**brittasimon\@contoso.com**。
+    1. 在 [使用者名稱] 方塊中，輸入 **brittasimon\@\<your-company-domain>.\<extension\>** 。 例如， **brittasimon\@contoso.com** 。
 
     1. 選取 [顯示密碼]  核取方塊。 記下 [密碼]  方塊中顯示的值。
 
@@ -257,6 +257,6 @@ HubSpot 支援下列功能︰
 
 若要深入了解，請檢閱下列文章：
 
-- [用於整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [用於整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](./tutorial-list.md)
+- [Azure Active Directory 中的應用程式單一登入](../manage-apps/what-is-single-sign-on.md)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

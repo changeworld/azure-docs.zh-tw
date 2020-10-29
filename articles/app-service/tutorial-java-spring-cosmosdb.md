@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 9320abb46c45b4bd151839eda40b03b445a2675f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7e63f770763d1960148dfdfa184d0b4e2b76754c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152019"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427093"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>教學課程：使用 Linux 上的 Azure App Service 和 Azure Cosmos DB 建置 Java Spring Boot Web 應用程式
 
@@ -238,7 +238,7 @@ Spring TODO 應用程式啟動之後，您可以使用以下連結從本機存�
 
 ## <a name="deploy-to-app-service-on-linux"></a>在 Linux 上部署 Azure App Service
 
-使用 `azure-webapp:deploy` Maven 目標將 TODO 應用程式部署至 Linux 上的 Azure App Service。
+使用 `mvn azure-webapp:deploy` Maven 目標將 TODO 應用程式部署至 Linux 上的 Azure App Service。
 
 ```bash
 
@@ -275,7 +275,7 @@ bash-3.2$ mvn azure-webapp:deploy
 輸出會包含您已部署的應用程式 URL (在此範例中為 `https://spring-todo-app.azurewebsites.net`)。 您可以將此 URL 複製到網頁瀏覽器，或在終端機視窗中執行下列命令來載入您的應用程式。
 
 ```bash
-open https://spring-todo-app.azurewebsites.net
+curl https://spring-todo-app.azurewebsites.net
 ```
 
 您應該會看到應用程式正以網址列中的遠端 URL 執行：
