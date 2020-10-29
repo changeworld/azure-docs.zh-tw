@@ -4,12 +4,12 @@ description: 在本文中，探索使用 Azure 備份服務備份 Azure Vm 的�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: f318d785fdfa5b72050bdd805ecfe801d307b9a7
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 74e2facfd9fd6073acc1f939c3d2ba922e3ac931
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172833"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925572"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常見問題-備份 Azure Vm
 
@@ -53,7 +53,7 @@ ms.locfileid: "92172833"
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>我在最近一些 VM 上啟用了 Azure 磁碟加密。 我的備份是否會繼續運作？
 
-提供 Azure 備份存取 Key Vault 的許可權。 在 PowerShell 中指定權限，如 [Azure 備份 PowerShell](backup-azure-vms-automation.md) 文件的**啟用備份**一節中所述。
+提供 Azure 備份存取 Key Vault 的許可權。 在 PowerShell 中指定權限，如 [Azure 備份 PowerShell](backup-azure-vms-automation.md) 文件的 **啟用備份** 一節中所述。
 
 ### <a name="i-migrated-vm-disks-to-managed-disks-will-my-backups-continue-to-work"></a>我已將 VM 磁碟遷移至受控磁碟。 我的備份是否會繼續運作？
 
@@ -76,6 +76,10 @@ ms.locfileid: "92172833"
 如果您鎖定 Azure 備份服務所建立的資源群組，則備份會開始失敗，因為有最多18個還原點的限制。
 
 移除鎖定，並清除該資源群組中的還原點集合，讓未來的備份成功。 [請遵循下列步驟](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) 來移除還原點集合。
+
+### <a name="i-have-a-lock-at-the-resource-group-level-that-contains-all-the-resources-related-to-my-virtual-machine-will-my-backup-work"></a>我有資源群組層級的鎖定，其中包含與我的虛擬機器相關的所有資源。 我的備份是否能運作？
+
+Azure 備份會以儲存 ResourcePointCollections 物件的格式來建立個別的資源群組 `AzureBackupRG_<geo>_<number>` 。 因為此資源群組是由服務所擁有，所以鎖定會導致備份失敗。 鎖定只能套用至客戶建立的資源群組。
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>Azure 備份是否支援標準 SSD 受控磁片？
 
@@ -145,7 +149,7 @@ Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇�
 
 ### <a name="how-do-i-restore-a-vm-to-the-same-availability-sets"></a>如何? 將 VM 還原至相同的可用性設定組？
 
-針對受控磁片 Azure Vm，在還原為受控磁片時，可在範本中提供選項，藉以啟用還原至可用性設定組。 此範本具有稱為**可用性設定組**的輸入參數。
+針對受控磁片 Azure Vm，在還原為受控磁片時，可在範本中提供選項，藉以啟用還原至可用性設定組。 此範本具有稱為 **可用性設定組** 的輸入參數。
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>我們該如何取得更快速的還原效能？
 
@@ -181,7 +185,7 @@ VM 會使用已修改或新的原則中的排程和保留期設定來備份。
 
    1. 尋找虛擬機器的位置。
    2. 尋找具有下列命名模式的資源群組： `AzureBackupRG_<location of your VM>_1` 。 例如， *AzureBackupRG_westus2_1*
-   3. 在 [Azure 入口網站中，選取 [ **顯示隱藏的類型**]。
+   3. 在 [Azure 入口網站中，選取 [ **顯示隱藏的類型** ]。
    4. 尋找具有命名模式的 **restorePointCollections** 類型的資源 `AzureBackup_<name of your VM that you're trying to move>_###########` 。
    5. 刪除此資源。 此作業只會刪除立即復原點，而不會刪除保存庫中備份的資料。
    6. 刪除作業完成之後，您就可以移動虛擬機器。
@@ -199,7 +203,7 @@ VM 會使用已修改或新的原則中的排程和保留期設定來備份。
 
 如果需要，舊的 VM 還原點將可供還原。 如果您不需要此備份資料，您可以使用刪除資料來停止保護舊的 VM。
 
-### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy"></a>可以與相同備份原則建立關聯的 Vm 數目是否有限制？
+### <a name="is-there-a-limit-on-number-of-vms-that-can-be-associated-with-the-same-backup-policy"></a>可以與相同備份原則建立關聯的 Vm 數目是否有限制？
 
 是，有100個 Vm 的限制，可與入口網站中的相同備份原則建立關聯。 建議您針對100以上的 Vm，以相同的排程或不同排程建立多個備份原則。
 

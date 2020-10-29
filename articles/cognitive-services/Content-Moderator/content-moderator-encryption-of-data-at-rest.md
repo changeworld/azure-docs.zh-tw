@@ -9,12 +9,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: 38fc21ee45db25f015a6b8b534b0d922efa636f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1401108a594e30790e842ec379724603f11d493f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84310541"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913699"
 ---
 # <a name="content-moderator-encryption-of-data-at-rest"></a>靜態資料的內容仲裁加密
 
@@ -36,9 +36,8 @@ ms.locfileid: "84310541"
 > [!NOTE]
 > 您必須提供具有內容仲裁 E0 定價層的 _資源識別碼_ 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * 如需支援 CMK 的服務完整清單，請參閱 [客戶管理的認知服務金鑰](../encryption/cognitive-services-encryption-keys-portal.md)
-* [什麼是 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)？
+* [什麼是 Azure Key Vault](../../key-vault/general/overview.md)？
 * [認知服務 Customer-Managed 金鑰要求表單](https://aka.ms/cogsvc-cmk)
-

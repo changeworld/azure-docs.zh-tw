@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 68a393865038722f2fd7fa5e42334f8d5e760951
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3de5a449e90452307f3c9b02c725050df6fdd873
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "70078860"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925674"
 ---
 # <a name="sap-hana-availability-across-azure-regions"></a>跨 Azure 區域的 SAP HANA 可用性
 
@@ -74,13 +74,13 @@ SAP 引進了[多目標系統複寫](https://help.sap.com/viewer/42668af650f84f9
 
 如果組織在次要 (DR) Azure 區域中有高可用性整備的需求時，則架構如下所示：
 
-![兩個區域有三部 VM (多目標) 的圖表](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
+![此圖顯示在第二個 (DR) Azure 區域中，具有高可用性需求的組織。](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
 
 
 此設定使用 logreplay 做為作業模式，會在主要區域內以低 RTO 提供 RPO=0。 如果程序涉及移動至第二個區域，此設定也會提供不錯的 RPO。 第二個區域中的 RTO 時間取決於資料是否會預先載入。 許多客戶會使用次要區域中的 VM 來執行測試系統。 在該使用案例中，系統無法預先載入資料。
 
 > [!IMPORTANT]
-> 在不同層之間的作業模式必須有同質性。 您**無法**在第 1 層和第 2 層以及 delta_datashipping 之間使用 logreply 做為作業模式來提供第 3 層。 您只能選擇需要對於所有層級保持一致的一個或另一個作業模式。 由於 delta_datashipping 不適用提供 RPO=0，因此，針對這類多層組態而言合理的作業模式仍然是 logreplay。 如需作業模式和一些限制的詳細資料，請參閱 SAP 文章 [SAP HANA 系統複寫的作業模式](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html)。 
+> 在不同層之間的作業模式必須有同質性。 您 **無法** 在第 1 層和第 2 層以及 delta_datashipping 之間使用 logreply 做為作業模式來提供第 3 層。 您只能選擇需要對於所有層級保持一致的一個或另一個作業模式。 由於 delta_datashipping 不適用提供 RPO=0，因此，針對這類多層組態而言合理的作業模式仍然是 logreplay。 如需作業模式和一些限制的詳細資料，請參閱 SAP 文章 [SAP HANA 系統複寫的作業模式](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html)。 
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/09/2020
-ms.openlocfilehash: 187d430e1475a85118be3811520824d6f8ca3aa7
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 10/28/2020
+ms.openlocfilehash: aedaedd29082c9ad51c03aa919181649a6dcf281
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636505"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913342"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure Data Lake Storage Gen2 中複製和轉換資料
 
@@ -46,10 +46,6 @@ Azure Data Lake Storage Gen2 (ADLS Gen2) 是一組巨量資料分析的專屬功
 - [複製期間保留檔案中繼資料](#preserve-metadata-during-copy)。
 - 從 Azure Data Lake Storage Gen1/Gen2 複製時，[保留 ACLl](#preserve-acls)。
 
->[!IMPORTANT]
->如果您啟用 Azure 儲存體防火牆設定的 [允許信任的 Microsoft 服務存取此儲存體帳戶] 選項，而且想要使用 Azure Integration Runtime 連線到 Data Lake Storage Gen2，則必須對 ADLS Gen2 使用[受控識別驗證](#managed-identity)。
-
-
 ## <a name="get-started"></a>開始使用
 
 >[!TIP]
@@ -68,7 +64,8 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 - [Azure 資源的受控識別驗證](#managed-identity)
 
 >[!NOTE]
->使用 PolyBase 將資料載入 Azure Synapse Analytics (先前的 SQL 資料倉儲) 中，如果您的來源 Data Lake Storage Gen2 已設定為使用虛擬網路端點，您必須使用 PolyBase 所要求的受控識別驗證。 如需更多設定必要條件，請參閱[受控識別驗證](#managed-identity)一節。
+>- 如果您想要使用公用 Azure integration runtime，藉由利用 Azure 儲存體防火牆上啟用的 [ **允許信任的 Microsoft 服務存取此儲存體帳戶** ] 選項來連線 Data Lake Storage Gen2，您必須使用 [受控識別驗證](#managed-identity)。
+>- 當您使用 PolyBase 或 COPY 語句將資料載入 Azure Synapse Analytics 中，如果您的來源或預備 Data Lake Storage Gen2 已設定 Azure 虛擬網路端點，您必須使用 Synapse 所要求的受控識別驗證。 如需更多設定必要條件，請參閱[受控識別驗證](#managed-identity)一節。
 
 ### <a name="account-key-authentication"></a>帳戶金鑰驗證
 
@@ -210,7 +207,7 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 >如果您使用 Data Factory UI 進行撰寫，而且未在 IAM 中使用「儲存體 Blob 資料讀取者/參與者」角色設定受控識別，則在進行測試連線或瀏覽/導覽資料夾時，請選擇 [測試與檔案路徑的連線] 或 [從指定的路徑瀏覽]，然後指定具有 [讀取 + 執行] 權限的路徑以繼續。
 
 >[!IMPORTANT]
->如果您使用 PolyBase 將資料從 Data Lake Storage Gen2 載入至 Azure Synapse Analytics (先前為 SQL 資料倉儲) ，則在使用適用于 Data Lake Storage Gen2 的受控識別驗證時，請確定您也遵循 [本指南](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) 中的步驟1和步驟2，以將您的) Azure Active Directory (Azure AD 和 2) 將儲存體 Blob 資料參與者角色指派給您的伺服器;其餘部分則由 Data Factory 處理。 如果已設定您的 Data Lake Storage Gen2 搭配 Azure 虛擬網路端點使用，若要使用 PolyBase 來載入資料，您必須使用 PolyBase 所要求的受控識別驗證。
+>如果您使用 PolyBase 或 COPY 語句將資料從 Data Lake Storage Gen2 載入 Azure Synapse Analytics 中，當您使用受控識別驗證進行 Data Lake Storage Gen2 時，請確定您也遵循 [本指南](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)中的步驟1到3。 這些步驟會向 Azure AD 註冊您的伺服器，並將「儲存體 Blob 資料參與者」角色指派給您的伺服器。 Data Factory 會處理其餘部分。 如果您使用 Azure 虛擬網路端點來設定 Blob 儲存體，您也需要讓 [允許信任的 Microsoft 服務] 在 Synapse 所要求的 [Azure 儲存體帳戶 **防火牆和虛擬網路** 設定] 功能表下， **存取此儲存體帳戶** 。
 
 以下是連結服務支援的屬性：
 

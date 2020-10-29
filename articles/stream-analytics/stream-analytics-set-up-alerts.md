@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 06/21/2019
-ms.openlocfilehash: 271cae3504601ffa42c077029541cef8c7726053
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35fb02717f706f026862790b7d618036d764c7a8
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461031"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92914005"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>設定 Azure 串流分析工作的警示
 
@@ -48,11 +48,11 @@ ms.locfileid: "91461031"
 
 7. [資源]、[條件] 和 [動作群組] 應該各有一個項目。 請注意，若要引發警示，則必須符合所定義的條件。 例如，您可以在過去 15 分鐘內每隔 5 分鐘測量計量的平均值。
 
-   ![建立串流分析警示規則](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
+   ![螢幕擷取畫面顯示 [建立規則] 對話方塊，其中包含資源、條件和動作群組。](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
 
    將 [警示規則名稱]、[描述] 和您的 [資源群組] 新增至 [警示詳細資料]，然後按一下 [建立警示規則] 來建立串流分析作業的規則。
 
-   ![建立串流分析警示規則](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
+   ![螢幕擷取畫面顯示 [建立規則] 對話方塊，其中包含警示詳細資料。](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
    
 ## <a name="scenarios-to-monitor"></a>要監視的案例
 
@@ -65,7 +65,7 @@ ms.locfileid: "91461031"
 |浮水印延遲|大於|最大值|當此計量在過去 15 分鐘的平均值大於延遲傳入容許 (以秒為單位)。 如果您尚未修改延遲傳入容錯，則預設值會設為 5 秒。|請嘗試增加 SU 數目，或將您的查詢平行化。 如需 SU 詳細資訊，請參閱[了解及調整串流單位](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job)。 如需查詢平行化的詳細資訊，請參閱[利用 Azure 串流分析中的查詢平行化作業](stream-analytics-parallelization.md)。|
 |輸入還原序列化錯誤|大於|總計|0|檢查活動或資源記錄，並且對輸入進行適當的變更。 如需資源記錄的詳細資訊，請參閱[使用資源記錄為 Azure 串流分析疑難排解](stream-analytics-job-diagnostic-logs.md)|
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
 * [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 10/29/2020
 ms.author: jingwang
-ms.openlocfilehash: 663bd56104893259ad9d2ead54ebe5b2d25e01f4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e0d8d5c833460838c28c7bc20b3ab764ed3ae659
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636352"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927000"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure Data Factory 中的 JSON 格式
 
@@ -34,8 +34,8 @@ ms.locfileid: "92636352"
 | location         | 檔案 (s) 的位置設定。 每個以檔案為基礎的連接器都有自己的位置類型和支援的屬性 `location` 。 **請參閱連接器文章中的詳細資料-> 資料集屬性一節** 。 | 是      |
 | encodingName     | 用來讀取/寫入測試檔的編碼類型。 <br>允許的值如下：「UTF-8」、「UTF-16」、「UTF-16BE」、「32 UTF-8」、「UTF-32BE」、「美國-ASCII」、「UTF-7」、「BIG5」、「EUC-JP」、「EUC-KR」、」 GB2312 "、" GB18030 "、" JOHAB "、" SHIFT-JIS "、" CP875 "、" CP866 "、" IBM00858 "、" IBM037 "、" IBM273 "、" IBM437 "、" IBM500 "、" IBM737 "、" IBM775 "、" IBM850 "、" IBM852 "、" IBM855 "、" IBM857 "、" IBM860 "和" IBM861 "、" IBM863 "、" IBM864 "、" IBM865 "、" IBM869 "、" IBM870 "、" IBM01140 "、" IBM01141 "、" IBM01142 "、" IBM01143 "、" IBM01144 "、" IBM01145 "、" IBM01146 "、" IBM01147 "、" IBM01148 "、" IBM01149 "、" ISO-2022-JP "，" ISO-2022-KR "，" ISO-8859-1 "，" ISO-8859-2 "，" ISO-8859-3 "，" ISO-8859-4 "，" ISO-8859-5 "，" ISO-8859-6 "，" ISO-8859-7 "，" iso-8859-8 "，" ISO-8859-9 "，" iso-8859-13 "，"ISO-8859-15"、"WINDOWS-874"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252"、"WINDOWS-1253"、"WINDOWS-1254"、"WINDOWS-1255"、"WINDOWS-1256"、"WINDOWS-1257"、"WINDOWS-1258"。| 否       |
 | compression | 用來設定檔案壓縮的屬性群組。 當您想要在活動執行期間執行壓縮/解壓縮時，請設定此區段。 | 否 |
-| type<br/>) *下 `compression`* 的 ( | 用來讀取/寫入 JSON 檔案的壓縮編解碼器。 <br>允許的值為 **bzip2** 、 **gzip** 、 **deflate** 、 **ZipDeflate** 、 **TarGzip** 、 **snappy** 或 **lz4** 。 預設值不會壓縮。<br>**注意：** 目前的複製活動不支援 "snappy" & "lz4"，而且對應資料流程不支援 "ZipDeflate"。<br>**請注意** ，使用複製活動來將 **ZipDeflate** / **TarGzip** 檔解壓縮 (s) 並寫入至檔案型接收資料存放區時，預設會將檔案解壓縮到資料夾： `<path specified in dataset>/<folder named as source compressed file>/` ， `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` 在 [複製活動來源](#json-as-source)上使用，以控制是否要將壓縮檔案的名稱保留為資料夾結構 () 。| 否。  |
-| 等級<br/>) *下 `compression`* 的 ( | 壓縮比例。 <br>允許的值為 **最佳** 或 **最快速** 。<br>- **最快：** 即使產生的檔案未以最佳方式壓縮，壓縮作業也應該儘快完成。<br>- **最佳** ：即使作業需要較長的時間才能完成，壓縮作業也應以最佳方式壓縮。 如需詳細資訊，請參閱 [壓縮層級](/dotnet/api/system.io.compression.compressionlevel) 主題。 | 否       |
+| type<br/>) *下 `compression`* 的 ( | 用來讀取/寫入 JSON 檔案的壓縮編解碼器。 <br>允許的值為 **bzip2** 、 **gzip** 、 **deflate** 、 **ZipDeflate** 、 **TarGzip** 、 **Tar** 、 **snappy** 或 **lz4** 。 預設值不會壓縮。<br>**注意：** 目前的複製活動不支援 "snappy" & "lz4"，而且對應資料流程不支援 "ZipDeflate" "、" TarGzip "和" Tar "。<br>**請注意** ，使用「複製活動」將 **ZipDeflate** / **TarGzip** /)  ( **Tar** 檔案解壓縮，並將其寫入檔案型接收資料存放區時，根據預設，檔案會解壓縮到資料夾： `<path specified in dataset>/<folder named as source compressed file>/` ，請 `preserveZipFileNameAsFolder` / `preserveCompressionFileNameAsFolder` 在 [複製活動來源](#json-as-source)上使用，以控制是否要將壓縮檔案的名稱保留為資料夾結構 () 。| 否。  |
+| 等級<br/>) *下 `compression`* 的 ( | 壓縮比例。 <br>允許的值為 **最佳** 或 **最快速** 。<br>- **最快：** 即使產生的檔案未以最佳方式壓縮，壓縮作業也應該儘快完成。<br>- **最佳** ：即使作業需要較長的時間才能完成，壓縮作業也應以最佳方式壓縮。 如需詳細資訊，請參閱 [壓縮層級](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) 主題。 | 否       |
 
 以下是 Azure Blob 儲存體上的 JSON 資料集範例：
 
@@ -86,7 +86,7 @@ ms.locfileid: "92636352"
 | type          | FormatSettings 的類型必須設定為 **JsonReadSettings** 。 | 是      |
 | compressionProperties | 一組屬性，說明如何將指定壓縮編解碼器的資料解壓縮。 | 否       |
 | preserveZipFileNameAsFolder<br> ( *下 `compressionProperties` -> `type` 的 `ZipDeflateReadSettings`* )   | 適用于設定 **ZipDeflate** 壓縮的輸入資料集時。 指出複製期間是否要將來源 ZIP 檔案名保留為資料夾結構。<br>-當設定為 **true (預設)** 時，Data Factory 會將解壓縮的檔案寫入 `<path specified in dataset>/<folder named as source zip file>/` 。<br>-當設定為 **false** 時，Data Factory 會將解壓縮的檔案直接寫入至 `<path specified in dataset>` 。 請確定您在不同的來源 zip 檔案中沒有重複的檔案名，以避免發生賽車或非預期的行為。  | 否 |
-| preserveCompressionFileNameAsFolder<br> ( *下 `compressionProperties` -> `type` 的 `TarGZipReadSettings`* )  | 適用于設定 **TarGzip** 壓縮的輸入資料集時。 指出複製期間是否要將來源壓縮檔案名稱保留為資料夾結構。<br>-當設定為 **true (預設)** 時，Data Factory 會將解壓縮檔案寫入至 `<path specified in dataset>/<folder named as source compressed file>/` 。 <br>-當設定為 **false** 時，Data Factory 會將解壓縮的檔案直接寫入至 `<path specified in dataset>` 。 請確定您在不同的來源檔案中沒有重複的檔案名，以避免發生賽車或非預期的行為。 | 否 |
+| preserveCompressionFileNameAsFolder<br> ( *下 `compressionProperties` -> `type` 的 `TarGZipReadSettings` 或 `TarReadSettings`* )  | 適用于使用 **TarGzip** / **Tar** 壓縮設定輸入資料集時。 指出複製期間是否要將來源壓縮檔案名稱保留為資料夾結構。<br>-當設定為 **true (預設)** 時，Data Factory 會將解壓縮檔案寫入至 `<path specified in dataset>/<folder named as source compressed file>/` 。 <br>-當設定為 **false** 時，Data Factory 會將解壓縮的檔案直接寫入至 `<path specified in dataset>` 。 請確定您在不同的來源檔案中沒有重複的檔案名，以避免發生賽車或非預期的行為。 | 否 |
 
 ### <a name="json-as-sink"></a>JSON 作為接收
 
@@ -225,7 +225,7 @@ ms.locfileid: "92636352"
 
 ![JSON 設定](media/data-flow/json-settings.png "JSON 設定")
 
-#### <a name="default"></a>Default
+#### <a name="default"></a>預設
 
 根據預設，JSON 資料會以下列格式讀取。
 

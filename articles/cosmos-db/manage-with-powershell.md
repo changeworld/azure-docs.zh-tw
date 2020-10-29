@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: c56f3b561dbced9f00bb2616f5709a51fa02fbcb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3b5cc1dd61b4f01e40c1cc812e93a448855ad92d
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92481001"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926507"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>使用 PowerShell 管理 Azure Cosmos DB Core (SQL) API 資源
 
-下列指南說明如何使用 PowerShell 來編寫腳本並自動化管理 Azure Cosmos DB Core (SQL) API 資源，包括 Cosmos 帳戶、資料庫、容器和輸送量。 針對其他 Api 的 PowerShell Cmdlet，請參閱適用于[Cassandra 的 powershell](powershell-samples-cassandra.md)範例、[適用于 MongoDB API 的 powershell 範例](powershell-samples-mongodb.md)、[適用于 Gremlin 的 Powershell](powershell-samples-gremlin.md)範例、適用[于資料表](powershell-samples-table.md)的 powershell 範例
+下列指南說明如何使用 PowerShell 來編寫腳本並自動化管理 Azure Cosmos DB Core (SQL) API 資源，包括 Cosmos 帳戶、資料庫、容器和輸送量。 如需適用於其他 API 的 PowerShell Cmdlet，請參閱[適用於 Cassandra 的 PowerShell 範例](powershell-samples-cassandra.md)、[適用於 MongoDB API 的 PowerShell 範例](powershell-samples-mongodb.md)、[適用於 Gremlin 的 PowerShell 範例](powershell-samples-gremlin.md)、[適用於資料表的 PowerShell 範例](powershell-samples-table.md)
 
 > [!NOTE]
 > 本文中的範例使用 [Az.CosmosDB](/powershell/module/az.cosmosdb) 管理 Cmdlet。 如需有關最新變更的相關資訊，請參閱 [Az.CosmosDB](/powershell/module/az.cosmosdb) API 參考頁面。
@@ -78,7 +78,7 @@ New-AzCosmosDBAccount `
 * `$resourceGroupName` 要在其中部署 Cosmos 帳戶的 Azure 資源群組。 此項目必須已經存在。
 * `$locations` 資料庫帳戶的區域，包含的區域 `FailoverPriority 0` 是寫入區域。
 * `$accountName` Azure Cosmos 帳戶的名稱。 必須是唯一的、小寫的，且僅包含英數字元和 '-' 字元，且長度介於 3 到 31 個字元之間。
-* `$apiKind` 要建立的 Cosmos 帳戶類型。 如需詳細資訊，請參閱 [Cosmos DB 中的 API](introduction.md#develop-applications-on-cosmos-db-using-popular-open-source-software-oss-apis)。
+* `$apiKind` 要建立的 Cosmos 帳戶類型。 如需詳細資訊，請參閱 [Cosmos DB 中的 API](introduction.md#simplified-application-development)。
 * `$consistencyPolicy`、`$maxStalenessInterval`和 `$maxStalenessPrefix` Azure Cosmos 帳戶的預設一致性層級與設定。 如需詳細資訊，請參閱 [Azure Cosmos DB 的一致性層級](consistency-levels.md)。
 
 您可以為 Azure Cosmos 帳戶設定 IP 防火牆以、虛擬網路服務端點及私人端點。 如需如何為 Azure Cosmos DB 設定 IP 防火牆的相關資訊，請參閱[設定 IP 防火牆](how-to-configure-firewall.md)。 如需如何為 Azure Cosmos DB 啟用服務端點的詳細資訊，請參閱[設定從虛擬網路存取](how-to-configure-vnet-service-endpoint.md)。 如需如何為 Azure Cosmos DB 啟用私人端點的詳細資訊，請參閱[設定來自私人端點的存取](how-to-configure-private-endpoints.md)。

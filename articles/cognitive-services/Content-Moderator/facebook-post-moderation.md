@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 478f7b7671a71d0d1f1f56c5d1d9889db81f7d37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e930e5d125a8f1ee90448e293e2e0ca2c5c28465
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760188"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913665"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>教學課程：使用 Azure Content Moderator 仲裁 Facebook 文章和留言
 
@@ -39,7 +39,7 @@ ms.locfileid: "91760188"
 
 ## <a name="prerequisites"></a>必要條件
 
-- Content Moderator 訂用帳戶金鑰。 請依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示，訂閱 Content Moderator 服務並取得金鑰。
+- Content Moderator 訂用帳戶金鑰。 請依照[建立認知服務帳戶](../cognitive-services-apis-create-account.md)中的指示，訂閱 Content Moderator 服務並取得金鑰。
 - [Facebook 帳戶](https://www.facebook.com/)。
 
 ## <a name="create-a-review-team"></a>建立檢閱小組
@@ -48,11 +48,11 @@ ms.locfileid: "91760188"
 
 ## <a name="configure-image-moderation-workflow"></a>設定影像仲裁工作流程
 
-請參閱[定義、測試和使用工作流程](review-tool-user-guide/workflows.md)指南來建立自訂影像工作流程。 Content Moderator 會使用此工作流程來自動檢查 Facebook 上的影像，並將部分影像傳送給檢閱工具。 請記下工作流程的**名稱**。
+請參閱[定義、測試和使用工作流程](review-tool-user-guide/workflows.md)指南來建立自訂影像工作流程。 Content Moderator 會使用此工作流程來自動檢查 Facebook 上的影像，並將部分影像傳送給檢閱工具。 請記下工作流程的 **名稱** 。
 
 ## <a name="configure-text-moderation-workflow"></a>設定文字仲裁工作流程
 
-同樣地，請參閱[定義、測試和使用工作流程](review-tool-user-guide/workflows.md)指南，但這次要建立自訂文字工作流程。 Content Moderator 會使用此工作流程來自動檢查文字內容。 請記下工作流程的**名稱**。
+同樣地，請參閱[定義、測試和使用工作流程](review-tool-user-guide/workflows.md)指南，但這次要建立自訂文字工作流程。 Content Moderator 會使用此工作流程來自動檢查文字內容。 請記下工作流程的 **名稱** 。
 
 ![設定文字工作流程](images/text-workflow-configure.PNG)
 
@@ -64,14 +64,14 @@ ms.locfileid: "91760188"
 
 登入 [Azure 入口網站](https://portal.azure.com/)並遵循下列步驟：
 
-1. 建立「Azure 函數應用程式」，如[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal)所示。
+1. 建立「Azure 函數應用程式」，如[Azure Functions](../../azure-functions/functions-create-function-app-portal.md)所示。
 1. 移至新建立的「函式應用程式」。
 1. 在應用程式中，移至 [平台功能] 索引標籤，然後選取 [設定]。 在下一頁的 [應用程式設定] 區段中，選取 [新增應用程式設定] 來新增下列索引鍵/值組：
     
     | 應用程式設定名稱 | value   | 
     | -------------------- |-------------|
     | `cm:TeamId`   | 您的 Content Moderator TeamId  | 
-    | `cm:SubscriptionKey` | 您的 Content Moderator 訂用帳戶金鑰 - 請參閱 [Credentials](review-tool-user-guide/credentials.md) |
+    | `cm:SubscriptionKey` | 您的 Content Moderator 訂用帳戶金鑰 - 請參閱 [Credentials](./review-tool-user-guide/configure.md#credentials) |
     | `cm:Region` | 您的 Content Moderator 區域名稱 (不含空格)。 您可以在 Azure 資源 [概觀] 索引標籤的 [位置] 欄位中找到此名稱。|
     | `cm:ImageWorkflow` | 要在「影像」上執行之工作流程的名稱 |
     | `cm:TextWorkflow` | 要在「文字」上執行之工作流程的名稱 |
@@ -85,14 +85,14 @@ ms.locfileid: "91760188"
 
     ![醒目提示新增函式按鈕的 Azure Functions 窗格。](images/new-function.png)
 
-    1. 按一下顯示 **Http 觸發程序**的圖格。
-    1. 輸入名稱 **FBListener**。 [授權等級] 欄位應該設定為 [函式]。
+    1. 按一下顯示 **Http 觸發程序** 的圖格。
+    1. 輸入名稱 **FBListener** 。 [授權等級] 欄位應該設定為 [函式]。
     1. 按一下 [建立]。
     1. 使用來自 **FbListener/run.csx** 的內容取代 **run.csx** 的內容
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]
 
-1. 建立名為 **CMListener** 的新 **Http 觸發程序**函式。 此函式會從 Content Moderator 接收事件。 使用來自 **CMListener/run.csx** 的內容取代 **run.csx** 的內容
+1. 建立名為 **CMListener** 的新 **Http 觸發程序** 函式。 此函式會從 Content Moderator 接收事件。 使用來自 **CMListener/run.csx** 的內容取代 **run.csx** 的內容
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/CmListener/run.csx?range=1-110)]
 
@@ -119,7 +119,7 @@ ms.locfileid: "91760188"
     > [!IMPORTANT]
     > 在 2018 年，Facebook 已對 Facebook 應用程式實作更嚴格的調查。 如果您的應用程式未經過 Facebook 檢閱小組的檢閱與核准，您將無法執行第 2 節、第 3 節及第 4 節。
 
-    1. 瀏覽至 [Facebook](https://www.facebook.com/bookmarks/pages)，然後建立一個**新的 Facebook 頁面**。
+    1. 瀏覽至 [Facebook](https://www.facebook.com/bookmarks/pages)，然後建立一個 **新的 Facebook 頁面** 。
     1. 依照下列步驟來允許「Facebook 應用程式」存取此頁面：
         1. 瀏覽至[圖形 API 測試工具](https://developers.facebook.com/tools/explorer/)。
         1. 選取 [應用程式]。
@@ -134,11 +134,11 @@ ms.locfileid: "91760188"
     2. 選取 [應用程式] 選項。
     3. 選取 [取得用戶存取權杖] 選項。
     4. 在 [選擇權限] 底下，選取 [manage_pages] 和 [publish_pages] 選項。
-    5. 我們將在下一個步驟中使用**存取權杖** (短期權杖)。
+    5. 我們將在下一個步驟中使用 **存取權杖** (短期權杖)。
 
 4. 我們會在接下來幾個步驟中使用 Postman。
 
-    1. 開啟 **Postman** (或從[這裡](https://www.getpostman.com/)取得)。
+    1. 開啟 **Postman** (或從 [這裡](https://www.getpostman.com/)取得)。
     2. 匯入兩個檔案：
         1. [Postman 集合](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/Facebook%20Permanant%20Page%20Access%20Token.postman_collection.json)
         2. [Postman 環境](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FB%20Page%20Access%20Token%20Environment.postman_environment.json)       

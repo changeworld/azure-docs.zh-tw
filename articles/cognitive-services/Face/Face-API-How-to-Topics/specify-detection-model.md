@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3278a1522fe3967dd1de5551e90732e63b7666f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a70b10f7d22c9cc04427bdfbb44243fad457ba0
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88931551"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913478"
 ---
 # <a name="specify-a-face-detection-model"></a>指定臉部偵測模式
 
@@ -28,7 +28,7 @@ ms.locfileid: "88931551"
 
 如果您不確定是否應使用最新的模型，請跳至 [ [評估不同的模型](#evaluate-different-models) ] 區段，以評估新的模型，並使用您目前的資料集來比較結果。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您應該熟悉 AI 臉部偵測的概念。 如果不是，請參閱臉部偵測概念性指南或操作說明指南：
 
@@ -57,7 +57,7 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, rec
 
 ## <a name="add-face-to-person-with-specified-model"></a>使用指定的模型將臉部新增至人員
 
-臉部辨識服務可以從影像中提取臉部資料，並透過[PersonGroup Person-新增臉部](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)API 將其與**person**物件產生關聯。 在此 API 呼叫中，您可以用與 [臉部]偵測相同的方式來指定偵測模型。
+臉部辨識服務可以從影像中提取臉部資料，並透過 [PersonGroup Person-新增臉部](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)API 將其與 **person** 物件產生關聯。 在此 API 呼叫中，您可以用與 [臉部]偵測相同的方式來指定偵測模型。
 
 請參閱下列 .NET 用戶端程式庫的程式碼範例。
 
@@ -75,7 +75,7 @@ await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imag
 此程式碼會建立具有識別碼的 **PersonGroup** `mypersongroupid` ，並在其中新增 **人員** 。 然後，它會使用模型將臉部新增至這個 **人員** `detection_02` 。 如果您未指定 *detectionModel* 參數，則 API 會使用預設模型 `detection_01` 。
 
 > [!NOTE]
-> 您不需要針對**person**物件中的所有臉部使用相同的偵測模型，而且在偵測新臉部與[臉部辨識]API 中的**Person**物件 (時，不需要使用相同的偵測模型，例如) 。
+> 您不需要針對 **person** 物件中的所有臉部使用相同的偵測模型，而且在偵測新臉部與 [臉部辨識]API 中的 **Person** 物件 (時，不需要使用相同的偵測模型，例如) 。
 
 ## <a name="add-face-to-facelist-with-specified-model"></a>使用指定的模型將臉部新增至 FaceList
 
@@ -91,7 +91,7 @@ await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: 
 這段程式碼會建立名為的 **FaceList** `My face collection` ，並使用模型將臉部新增至其中 `detection_02` 。 如果您未指定 *detectionModel* 參數，則 API 會使用預設模型 `detection_01` 。
 
 > [!NOTE]
-> **FaceList**物件中的所有臉部都不需要使用相同的偵測模型，而且在偵測新臉部以與**FaceList**物件進行比較時，不需要使用相同的偵測模型。
+> **FaceList** 物件中的所有臉部都不需要使用相同的偵測模型，而且在偵測新臉部以與 **FaceList** 物件進行比較時，不需要使用相同的偵測模型。
 
 ## <a name="evaluate-different-models"></a>評估不同的模型
 
@@ -106,13 +106,13 @@ await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: 
 
 比較和模型效能的最佳方式， `detection_01` `detection_02` 是在範例資料集上使用它們。 建議您在各種不同的影像上呼叫 [臉部] 偵測 API，特別是在許多臉部或臉部的影像中，使用每個偵測模型都很難查看。 請注意每個模型傳回的臉部數目。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在本文中，您已瞭解如何指定要搭配不同臉部 Api 使用的偵測模型。 接下來，請遵循快速入門以開始使用臉部偵測。
 
-* [臉部 .NET SDK](../Quickstarts/csharp-sdk.md)
-* [臉部 Python SDK](../Quickstarts/python-sdk.md)
-* [臉部 Go SDK](../Quickstarts/go-sdk.md)
+* [臉部 .NET SDK](../quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)
+* [臉部 Python SDK](../quickstarts/client-libraries.md?pivots=programming-language-python%253fpivots%253dprogramming-language-python)
+* [臉部 Go SDK](../quickstarts/client-libraries.md?pivots=programming-language-go%253fpivots%253dprogramming-language-go)
 
 [臉部 - 偵測]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Face - Find Similar]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237

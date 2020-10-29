@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: 2809fce890e1a7bcc47163c8a5d4c0210d6aa9d4
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: a2d5234b3c80456a98fde4547b9665ca1b0a83dd
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106122"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913540"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 GitHub 動作進行持續傳遞
 
@@ -25,86 +25,41 @@ ms.locfileid: "92106122"
 
 | 區段 | 工作 |
 | ------- | ----- |
-| **驗證** | <ol><li>下載發行設定檔或定義服務主體。</li><li>建立 GitHub 秘密。</li></ol>|
-| **建置** | <ol><li>設定環境。</li><li>建置函式應用程式。</li></ol> |
-| **部署** | <ol><li>部署函數應用程式。</li></ol>|
+| **驗證** | 下載發行設定檔。<br/>建立 GitHub 秘密。|
+| **建置** | 設定環境。<br/>建置函式應用程式。|
+| **部署** | 部署函數應用程式。|
 
-> [!NOTE]
-> 如果您決定使用發行設定檔進行驗證，則不需要建立服務主體。
+## <a name="prerequisites"></a>Prerequisites
 
-## <a name="downloading-and-using-a-publish-profile-as-deployment-credential-recommended"></a>下載並使用發佈設定檔作為部署認證 (建議的) 
-
-若要下載函數應用程式的發行設定檔：
-
-1. 選取函數應用程式的 **[總覽** ] 頁面，然後選取 [ **取得發行設定檔**]。
-
-   :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="Download publish profile":::
-
-1. 儲存並複製發佈設定檔案的內容。
-
-## <a name="create-a-service-principal-deprecated"></a>建立服務主體 (已淘汰) 
-=======
-## <a name="prerequisites"></a>必要條件
-
-- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - GitHub 帳戶。 如果您沒有帳戶，請 [免費](https://github.com/join)註冊。  
 - 裝載在 Azure 上的運作中函式應用程式與 GitHub 存放庫。   
     - [快速入門：使用 Visual Studio Code 在 Azure 中建立函式](functions-create-first-function-vs-code.md)
 
-
 ## <a name="generate-deployment-credentials"></a>產生部署認證
 
-向 Azure Functions 驗證 GitHub Actions 的建議方式是使用發行設定檔。 您也可以使用服務主體進行驗證，但此程式需要更多步驟。 
+您可以使用發行設定檔，以 Azure Functions 進行 GitHub Actions 驗證的建議方式。 您也可以使用服務主體進行驗證。 若要深入瞭解，請參閱 [此 GitHub Actions 存放庫](https://github.com/Azure/functions-action)。 
 
-## <a name="configure-the-github-secret"></a>設定 GitHub 密碼
-= = = = = = = 將您的發佈設定檔認證或服務主體儲存為 [GitHub 秘密](https://docs.github.com/en/actions/reference/encrypted-secrets) ，以向 Azure 進行驗證。 您將會在工作流程記憶體取秘密。 
+將您的發佈設定檔認證儲存為 [GitHub 秘密](https://docs.github.com/en/actions/reference/encrypted-secrets)之後，您會在工作流程中使用此秘密來向 Azure 進行驗證。 
 
-# <a name="publish-profile"></a>[發行設定檔](#tab/publish-profile)
+#### <a name="download-your-publish-profile"></a>下載您的發行設定檔
 
 若要下載函數應用程式的發行設定檔：
 
-1. 選取函數應用程式的 **[總覽** ] 頁面，然後選取 [ **取得發行設定檔**]。
+1. 選取函數應用程式的 **[總覽** ] 頁面，然後選取 [ **取得發行設定檔** ]。
 
    :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="Download publish profile":::
 
 1. 儲存並複製檔案的內容。
 
 
-# <a name="service-principal"></a>[服務主體](#tab/service-principal)
+### <a name="add-the-github-secret"></a>新增 GitHub 秘密
 
-您可以針對[Azure CLI](/cli/azure/)使用[az ad sp 建立-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true)命令來建立[服務主體](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 使用 Azure 入口網站中的 [Azure Cloud Shell](https://shell.azure.com) 或選取 [ **試試看** ] 按鈕，以執行此命令。
-
-```azurecli-interactive
-az ad sp create-for-rbac --name "<MY-APP-NAME>" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
-```
-
-在此範例中，請以您的訂用帳戶識別碼、資源群組和函數應用程式名稱取代資源中的預留位置。 輸出是提供函數應用程式存取權的角色指派認證。 複製這個 JSON 物件，您可以用它從 GitHub 進行驗證。 
-
-```output 
-  {
-    "clientId": "<GUID>",
-    "clientSecret": "<GUID>",
-    "subscriptionId": "<GUID>",
-    "tenantId": "<GUID>",
-    (...)
-  }
-```
-
-> [!IMPORTANT]
-> 授與最小存取權永遠是最佳作法。 這就是上述範例中的範圍僅限於特定的函式應用程式，而非整個資源群組的原因。
-
----
-
-## <a name="add-the-github-secret"></a>新增 GitHub 秘密
-
-1. 在[GitHub](https://github.com)中，流覽至您的存放庫，並選取 [**設定**  >  **秘密**  >  **新增密碼**]。
+1. 在 [GitHub](https://github.com)中，流覽至您的存放庫，並選取 [ **設定**  >  **秘密**  >  **新增密碼** ]。
 
    :::image type="content" source="media/functions-how-to-github-actions/add-secret.png" alt-text="Download publish profile":::
 
-1. 新增秘密。
-
-   * 如果您使用的是使用 Azure CLI 所建立的服務主體，請使用做 `AZURE_CREDENTIALS` 為 **名稱**。 然後，貼上已複製的 JSON 物件輸出 **值**，然後選取 [ **加入秘密**]。
-   * 如果您是使用發行設定檔，請使用做 `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` 為 **名稱**。 然後，使用發行設定檔的檔案內容作為 **值**，然後選取 [ **新增密碼**]。
+1. 使用 `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` [ **名稱** ]、[發佈設定檔] 的 [ **值** ] 內容，然後選取 [新增 **密碼** ]，以新增秘密。
 
 GitHub 現在可以驗證您在 Azure 中的函數應用程式。
 
@@ -112,18 +67,10 @@ GitHub 現在可以驗證您在 Azure 中的函數應用程式。
 
 您可以使用特定語言的發佈設定動作來設定環境。
 
-|**語言**  |**設定動作**  |
-|---------|---------|
-|**.NET**     | `actions/setup-dotnet` |
-|**ASP.NET**     | `actions/setup-dotnet` |
-|**Java**     | `actions/setup-java` |
-|**JavaScript** | `actions/setup-node` |
-|**Python**     | `actions/setup-python` |
-
-
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-下列範例顯示使用動作設定環境的工作流程部分 `actions/setup-dotnet` ：
+包含 ASP.NET) 的 .NET (會使用 `actions/setup-dotnet` 動作。  
+下列範例顯示設定環境的工作流程部分：
 
 ```yaml
     - name: Setup DotNet 2.2.402 Environment
@@ -134,7 +81,8 @@ GitHub 現在可以驗證您在 Azure 中的函數應用程式。
 
 # <a name="java"></a>[Java](#tab/java)
 
-下列範例顯示使用動作設定環境的工作流程部分  `actions/setup-java` ：
+JAVA 會使用  `actions/setup-java` 動作。  
+下列範例顯示設定環境的工作流程部分：
 
 ```yaml
     - name: Setup Java 1.8.x
@@ -147,7 +95,8 @@ GitHub 現在可以驗證您在 Azure 中的函數應用程式。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-下列範例顯示使用動作設定環境的工作流程部分 `actions/setup-node` ：
+JavaScript ( # A0) 使用該 `actions/setup-node` 動作。  
+下列範例顯示設定環境的工作流程部分：
 
 ```yaml
 
@@ -159,7 +108,8 @@ GitHub 現在可以驗證您在 Azure 中的函數應用程式。
 
 # <a name="python"></a>[Python](#tab/python)
 
-下列範例顯示使用動作設定環境的工作流程部分 `actions/setup-python` ：
+Python 會使用 `actions/setup-python` 動作。  
+下列範例顯示設定環境的工作流程部分：
 
 ```yaml
     - name: Setup Python 3.7 Environment
@@ -245,11 +195,7 @@ GitHub 現在可以驗證您在 Azure 中的函數應用程式。
 |_**位置名稱**_ |  (選擇性) 要部署的 [部署](functions-deployment-slots.md) 位置名稱。 您的函數應用程式中必須已定義位置。 |
 |_**publish-profile**_ |  (選擇性) 發佈設定檔的 GitHub 秘密名稱。 |
 
-
-### <a name="publish-profile-deploy"></a>發行設定檔部署
-
-下列範例使用第1版的 `functions-action` 和 `publish profile` 來進行驗證：
-
+下列範例會使用第1版的 `functions-action` 和 `publish profile` 來進行驗證。 
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -549,367 +495,7 @@ jobs:
 
 ---
 
-### <a name="service-principal-deploy"></a>服務主體部署
-
-下列範例會使用第1版的 `functions-action` 和 `service principal` 來進行驗證。 工作流程會設定 Windows .NET 環境。 
-
-# <a name="net"></a>[.NET](#tab/dotnet)
-
-設定使用服務主體的 .NET Linux 工作流程。
-
-```yaml
-name: Deploy DotNet project to Azure function app with a Linux environment
-
-on:
-  [push]
-
-env:
-  AZURE_FUNCTIONAPP_NAME: your-app-name  # set this to your application's name
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'    # set this to the path to your web app project, defaults to the repository root
-  DOTNET_VERSION: '2.2.402'              # set this to the dotnet version to use
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
-
-    - name: 'Resolve Project Dependencies Using Dotnet'
-      shell: bash
-      run: |
-        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-        dotnet build --configuration Release --output ./output
-        popd
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
-
-     - name: logout
-        run: |
-          az logout
-```
-
-設定使用服務主體的 .NET Windows 工作流程。
-
-```yaml
-name: Deploy DotNet project to Azure function app with a Windows environment
-
-on:
-  [push]
-
-env:
-  AZURE_FUNCTIONAPP_NAME: your-app-name  # set this to your application's name
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'    # set this to the path to your web app project, defaults to the repository root
-  DOTNET_VERSION: '2.2.402'              # set this to the dotnet version to use
-
-jobs:
-  build-and-deploy:
-    runs-on: windows-latest
-    steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
-
-    - name: 'Resolve Project Dependencies Using Dotnet'
-      shell: pwsh
-      run: |
-        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-        dotnet build --configuration Release --output ./output
-        popd
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
-
-     - name: logout
-        run: |
-          az logout
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-設定使用服務主體的 JAVA Linux 工作流程。
-
-```yaml
-name: Deploy Java project to Azure Function App
-
-on:
-  [push]
-
-env:
-  AZURE_FUNCTIONAPP_NAME: your-app-name      # set this to your function app name on Azure
-  POM_XML_DIRECTORY: '.'                     # set this to the directory which contains pom.xml file
-  POM_FUNCTIONAPP_NAME: your-app-name        # set this to the function app name in your local development environment
-  JAVA_VERSION: '1.8.x'                      # set this to the dotnet version to use
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-
-    - name: Setup Java Sdk ${{ env.JAVA_VERSION }}
-      uses: actions/setup-java@v1
-      with:
-        java-version: ${{ env.JAVA_VERSION }}
-
-    - name: 'Restore Project Dependencies Using Mvn'
-      shell: bash
-      run: |
-        pushd './${{ env.POM_XML_DIRECTORY }}'
-        mvn clean package
-        mvn azure-functions:package
-        popd
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: './${{ env.POM_XML_DIRECTORY }}/target/azure-functions/${{ env.POM_FUNCTIONAPP_NAME }}'
-
-     - name: logout
-        run: |
-          az logout
-```
-
-設定使用服務主體的 JAVA Windows 工作流程。
-
-```yaml
-name: Deploy Java project to Azure Function App
-
-on:
-  [push]
-
-env:
-  AZURE_FUNCTIONAPP_NAME: your-app-name      # set this to your function app name on Azure
-  POM_XML_DIRECTORY: '.'                     # set this to the directory which contains pom.xml file
-  POM_FUNCTIONAPP_NAME: your-app-name        # set this to the function app name in your local development environment
-  JAVA_VERSION: '1.8.x'                      # set this to the java version to use
-
-jobs:
-  build-and-deploy:
-    runs-on: windows-latest
-    steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Setup Java Sdk ${{ env.JAVA_VERSION }}
-      uses: actions/setup-java@v1
-      with:
-        java-version: ${{ env.JAVA_VERSION }}
-
-    - name: 'Restore Project Dependencies Using Mvn'
-      shell: pwsh
-      run: |
-        pushd './${{ env.POM_XML_DIRECTORY }}'
-        mvn clean package
-        mvn azure-functions:package
-        popd
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: './${{ env.POM_XML_DIRECTORY }}/target/azure-functions/${{ env.POM_FUNCTIONAPP_NAME }}'
-
-     - name: logout
-        run: |
-          az logout
-```
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-設定使用服務主體的 Node.JS Linux 工作流程。
-
-```yaml
-name: Deploy Node.js project to Azure Function App
-
-on:
-  [push]
-
-env:
-  AZURE_FUNCTIONAPP_NAME: your-app-name    # set this to your application's name
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
-  NODE_VERSION: '12.x'                     # set this to the node version to use (supports 8.x, 10.x, 12.x)
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Setup Node ${{ env.NODE_VERSION }} Environment
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-
-    - name: 'Resolve Project Dependencies Using Npm'
-      shell: bash
-      run: |
-        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-        npm install
-        npm run build --if-present
-        npm run test --if-present
-        popd
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-
-     - name: logout
-        run: |
-          az logout
-```
-
-設定使用服務主體 Node.JS Windows 工作流程。
-
-```yaml
-name: Deploy Node.js project to Azure Function App
-
-on:
-  [push]
-
-env:
-  AZURE_FUNCTIONAPP_NAME: your-app-name    # set this to your application's name
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
-  NODE_VERSION: '10.x'                     # set this to the node version to use (supports 8.x, 10.x, 12.x)
-
-jobs:
-  build-and-deploy:
-    runs-on: windows-latest
-    steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Setup Node ${{ env.NODE_VERSION }} Environment
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ env.NODE_VERSION }}
-
-    - name: 'Resolve Project Dependencies Using Npm'
-      shell: pwsh
-      run: |
-        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-        npm install
-        npm run build --if-present
-        npm run test --if-present
-        popd
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-
-     - name: logout
-        run: |
-          az logout
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-設定使用服務主體的 Python Linux 工作流程。
-
-```yaml
-name: Deploy Python project to Azure Function App
-
-on:
-  [push]
-
-env:
-  AZURE_FUNCTIONAPP_NAME: your-app-name # set this to your application's name
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'   # set this to the path to your web app project, defaults to the repository root
-  PYTHON_VERSION: '3.7'                 # set this to the python version to use (supports 3.6, 3.7, 3.8)
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: 'Checkout GitHub Action'
-      uses: actions/checkout@master
-
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Setup Python ${{ env.PYTHON_VERSION }} Environment
-      uses: actions/setup-python@v1
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
-
-    - name: 'Resolve Project Dependencies Using Pip'
-      shell: bash
-      run: |
-        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt --target=".python_packages/lib/site-packages"
-        popd
-    - name: 'Run Azure Functions Action'
-      uses: Azure/functions-action@v1
-      id: fa
-      with:
-        app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-        package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
-
-     - name: logout
-        run: |
-          az logout
-```
-
----
-
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [深入瞭解 Azure 和 GitHub 整合](/azure/developer/github/)

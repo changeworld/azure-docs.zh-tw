@@ -2,19 +2,18 @@
 title: 使用執行設定檔來評估 Azure Cosmos DB Gremlin API 中的查詢
 description: 瞭解如何使用執行設定檔步驟來疑難排解和改進您的 Gremlin 查詢。
 services: cosmos-db
-author: jasonwhowell
-manager: kfile
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 03/27/2019
-ms.author: jasonh
-ms.openlocfilehash: 2d34c91cab157fcd51d58521d739fcb081fe03ea
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.author: chrande
+ms.openlocfilehash: ff49889977bc4e5d9097d81ea7b05387900bedd4
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490589"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926371"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>如何使用執行設定檔步驟來評估您的 Gremlin 查詢
 
@@ -139,12 +138,12 @@ ms.locfileid: "92490589"
 ## <a name="execution-profile-response-objects"></a>執行設定檔回應物件
 
 ExecutionProfile ( # A1 函數的回應會產生具有下列結構的 JSON 物件階層：
-  - **Gremlin operation 物件**：代表已執行的整個 Gremlin 作業。 包含下列屬性。
+  - **Gremlin operation 物件** ：代表已執行的整個 Gremlin 作業。 包含下列屬性。
     - `gremlin`：已執行的明確 Gremlin 語句。
     - `totalTime`：執行所產生步驟的時間（以毫秒為單位）。 
     - `metrics`：陣列，其中包含每個已執行來滿足查詢的 Cosmos DB 執行時間運算子。 這份清單會依執行順序排序。
     
-  - **Cosmos DB 執行時間運算子**：代表整個 Gremlin 作業的每個元件。 這份清單會依執行順序排序。 每個物件都包含下列屬性：
+  - **Cosmos DB 執行時間運算子** ：代表整個 Gremlin 作業的每個元件。 這份清單會依執行順序排序。 每個物件都包含下列屬性：
     - `name`：操作員的名稱。 這是已評估和執行的步驟類型。 請參閱下表中的詳細資訊。
     - `time`：指定操作員花費的時間量（以毫秒為單位）。
     - `annotations`：包含已執行之運算子特有的其他資訊。
@@ -155,7 +154,7 @@ ExecutionProfile ( # A1 函數的回應會產生具有下列結構的 JSON 物�
     - `storeOps.count`：表示此儲存體作業傳回的結果數目。
     - `storeOps.size`：表示給定儲存體作業結果的大小（以位元組為單位）。
 
-Cosmos DB Gremlin 執行時間運算子|說明
+Cosmos DB Gremlin 執行時間運算子|描述
 ---|---
 `GetVertices`| 此步驟會從持續性層取得一組前提的物件。 
 `GetEdges`| 此步驟會取得與一組頂點連續的邊緣。 此步驟可能會導致一或多個儲存體作業。
@@ -177,7 +176,7 @@ Cosmos DB Gremlin 執行時間運算子|說明
 
 ### <a name="blind-fan-out-query-patterns"></a>盲人展開查詢模式
 
-假設有來自 **分割圖表**的下列執行設定檔回應：
+假設有來自 **分割圖表** 的下列執行設定檔回應：
 
 ```json
 [
@@ -220,7 +219,7 @@ Cosmos DB Gremlin 執行時間運算子|說明
 
 您可以從它進行下列結論：
 - 此查詢是單一識別碼查閱，因為 Gremlin 語句會遵循此模式 `g.V('id')` 。
-- 從計量中判斷出 `time` ，此查詢的延遲似乎很高，因為它的 [單一點讀取作業10毫秒超過](./introduction.md#guaranteed-low-latency-at-99th-percentile-worldwide)此值。
+- 從計量中判斷出 `time` ，此查詢的延遲似乎很高，因為它的 [單一點讀取作業10毫秒超過](./introduction.md#guaranteed-speed-at-any-scale)此值。
 - 如果要查看 `storeOps` 物件，我們可以看到 `fanoutFactor` ，這表示這項作業 `5` 已存取 [5 個](./partitioning-overview.md) 資料分割。
 
 在這項分析結束時，我們可以判斷第一個查詢所存取的資料分割是否比所需的還多。 將查詢中的分割索引鍵指定為述詞，即可解決此問題。 這會導致較低的延遲，而且每個查詢的成本較低。 深入了解[圖表分割](graph-partitioning.md)。 更理想的查詢就是 `g.V('tt0093640').has('partitionKey', 't1001')` 。

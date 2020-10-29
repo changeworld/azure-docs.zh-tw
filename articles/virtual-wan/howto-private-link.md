@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: jomore
 ms.custom: fasttrack-new
-ms.openlocfilehash: fa4828d8b2752168d5f66a4f80c00611f80f0176
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc8e7314c941035207ecf809a9d85ef46bd58379
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306628"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913750"
 ---
 # <a name="use-private-link-in-virtual-wan"></a>在虛擬 WAN 中使用 Private Link
 
@@ -72,7 +72,7 @@ $ sqlcmd -S wantest.database.windows.net -U $username -P $password -Q "$query"
 10.1.3.75
 ```
 
-如您所見，我們使用的是一個特殊的 SQL 查詢，提供 SQL server 從用戶端看到的來源 IP 位址。 在此情況下，伺服器會看到用戶端的私人 IP (`10.1.3.75`) ，這表示流量不會透過公用網際網路傳送，而是直接進入私人端點。
+如您所見，我們使用的是一個特殊的 SQL 查詢，提供 SQL server 從用戶端看到的來源 IP 位址。 在此情況下，伺服器會看到用戶端的私人 IP (`10.1.3.75`) ，這表示流量會直接從 VNet 進入私人端點。
 
 請注意，您必須設定變數 `username` ，並 `password` 符合 Azure SQL Database 中定義的認證，才能讓本指南中的範例運作。
 

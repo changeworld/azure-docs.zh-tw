@@ -5,23 +5,23 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/02/2020
-ms.openlocfilehash: ad3287651716580aaf6ab8c5e819fd92a70e695d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.date: 10/29/2020
+ms.openlocfilehash: 4075e27c3711cbc4c584005126b53f7c99942049
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144106"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926720"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>OperationalInsights API 版本淘汰
-Microsoft 在淘汰 API 之前，至少會提供12個月的通知，以順利轉換至較新/支援的版本。 我們發行了新版本 (2020-08-01) **OperationalInsights** 資源提供者 api，並將于2023年10月31日淘汰任何先前的 API 版本。
+Microsoft 在淘汰 API 之前，至少會提供12個月的通知，以順利轉換至較新/支援的版本。 我們發行了新版本 (2020-08-01) **OperationalInsights** 資源提供者 api，並且將于2014年2月29日淘汰任何先前的 API 版本。
 
 建議您立即開始使用2020-08-01 版，以獲得新功能的優點，例如 [專用](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters)叢集、 [客戶管理的金鑰](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys)、 [私用連結](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security) 和 [資料匯出](https://docs.microsoft.com/azure/azure-monitor/platform/logs-data-export)。 此外，新的特性和功能和優化只會新增至目前的 API。
 
-2023年10月31日之後，Azure 監視器將不再支援比2020-08-01 更早的 Api 版本。 如果您不想要升級，則在2023年10月31日前，Azure 監視器服務將繼續提供之前的版本所傳送的要求。
+2014年2月29日之後 Azure 監視器將不再支援比2020-08-01 更早的 Api 版本。 如果您不想要進行升級，Azure 監視器服務會繼續提供舊版傳送的要求，直到2014年2月29日為止。
 
 ## <a name="migration-steps"></a>移轉步驟
-視您使用的設定方法而定，您應該更新 **REST** 要求和 **Resource Manager 範本**中的新版本。 請遵循下列範例來更新 API 版本：
+視您使用的設定方法而定，您應該更新 **REST** 要求和 **Resource Manager 範本** 中的新版本。 請遵循下列範例來更新 API 版本：
 
 1. REST API 要求會在要求的 URL 中使用 API 版本。 將該版本取代為最新版本 (2020-08-01) ，如下列範例所示。
 

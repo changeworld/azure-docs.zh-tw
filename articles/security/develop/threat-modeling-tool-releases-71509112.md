@@ -8,12 +8,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/15/2019
-ms.openlocfilehash: 780ddc614feef492dafa54862abbea9552496274
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b0afdd90f2a1413c7f8364fc4518c4d1116454a
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87539810"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913580"
 ---
 # <a name="threat-modeling-tool-ga-release-71509112---9122018"></a>Threat Modeling Tool GA 版本 7.1.50911.2 - 9/12/2018
 
@@ -65,13 +65,13 @@ ms.locfileid: "87539810"
 
 預覽版本的「從 OneDrive 開啟」功能已移除。 使用者若有已儲存至 OneDrive 的「最近開啟的模型」，將會看到下列錯誤。
 
-![已移除 OneDrive 功能](./media/threat-modeling-tool-releases-71509112/tmt_save_error-300x131.png)
+![螢幕擷取畫面顯示錯誤：開啟檔案物件參考未設定為物件的實例時發生錯誤。](./media/threat-modeling-tool-releases-71509112/tmt_save_error-300x131.png)
 
 #### <a name="workaround"></a>因應措施
 
 我們建議 OneDrive 的使用者使用 Microsoft 的 [Windows 版 OneDrive](https://onedrive.live.com/about/en-us/download/) 用戶端，透過標準的 [開啟模型] 對話方塊存取他們在 OneDrive 上儲存的檔案。
 
-![已移除 OneDrive 功能](./media/threat-modeling-tool-releases-71509112/tmt_save_onedrive-300x149.png)
+![螢幕擷取畫面：顯示 [開啟模型] 對話方塊中所選取的 OneDrive。](./media/threat-modeling-tool-releases-71509112/tmt_save_onedrive-300x149.png)
 
 ### <a name="my-organization-uses-the-2016-version-of-the-tool-can-i-use-the-azure-stencil-set"></a>組織使用 2016 版的工具，我可以使用 Azure 樣板集嗎？
 
@@ -92,6 +92,6 @@ ms.locfileid: "87539810"
 
 - Threat Modeling Tool 的文件位於 [docs.microsoft.com](threat-modeling-tool.md)，其中包含[關於使用工具](threat-modeling-tool-getting-started.md)的資訊。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 下載最新版的 [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool)。

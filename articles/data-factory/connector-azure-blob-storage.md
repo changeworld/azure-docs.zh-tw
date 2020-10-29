@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/12/2020
-ms.openlocfilehash: af03dde724b4f1ec75c9505bb2f9311ad09f5fd0
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 10/28/2020
+ms.openlocfilehash: 5969c449afe203ec9a014d2da78b56eeeb837590
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635910"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913359"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure Blob 儲存體中複製和轉換資料
 
@@ -48,9 +48,6 @@ ms.locfileid: "92635910"
 - 依原樣複製 blob，或使用 [支援的檔案格式和壓縮編解碼器](supported-file-formats-and-compression-codecs.md)來剖析或產生 blob。
 - [在複製期間保留檔案中繼資料](#preserving-metadata-during-copy)。
 
->[!IMPORTANT]
->如果您在 Azure 儲存體防火牆設定中啟用 [ **允許信任的 Microsoft 服務存取此儲存體帳戶** ] 選項，而且想要使用 Azure integration runtime 連線到 Blob 儲存體，您必須使用 [受控識別驗證](#managed-identity)。
-
 ## <a name="get-started"></a>開始使用
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
@@ -67,7 +64,8 @@ ms.locfileid: "92635910"
 - [適用于 Azure 資源驗證的受控識別](#managed-identity)
 
 >[!NOTE]
->當您使用 PolyBase 將資料載入 Azure Synapse Analytics (先前的 SQL 資料倉儲) 中，如果您的來源或暫存 Blob 儲存體已設定 Azure 虛擬網路端點，您必須使用 PolyBase 所要求的受控識別驗證。 您也必須使用具有3.18 版或更新版本的自我裝載整合執行時間。 如需更多設定的必要條件，請參閱「 [受控識別驗證](#managed-identity) 」一節。
+>- 如果您想要使用公用 Azure integration runtime，藉由利用 Azure 儲存體防火牆上啟用的 [ **允許信任的 Microsoft 服務來存取此儲存體帳戶** ] 選項來連線到您的 Blob 儲存體，您必須使用 [受控識別驗證](#managed-identity)。
+>- 當您使用 PolyBase 或 COPY 語句將資料載入 Azure Synapse Analytics 中，如果您的來源或暫存 Blob 儲存體已設定 Azure 虛擬網路端點，您必須使用 Synapse 所要求的受控識別驗證。 如需更多設定的必要條件，請參閱「 [受控識別驗證](#managed-identity) 」一節。
 
 >[!NOTE]
 >Azure HDInsight 和 Azure Machine Learning 活動僅支援使用 Azure Blob 儲存體帳戶金鑰的驗證。
@@ -286,7 +284,7 @@ Data Factory 支援使用共用存取簽章驗證的下列屬性：
     - **作為接收** ，在 **存取控制 (IAM)** 中，請至少授與 **儲存體 Blob 資料參與者** 角色。
 
 >[!IMPORTANT]
->如果您使用 PolyBase 將資料從 Blob 儲存體 (載入作為來源的資料，或) 到先前的 SQL 資料) 倉儲 Azure Synapse Analytics (，則當您針對 Blob 儲存體使用受控識別驗證時，請確定您也遵循 [本指南](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)中的步驟1和步驟2。 這些步驟會向 Azure AD 註冊您的伺服器，並將「儲存體 Blob 資料參與者」角色指派給您的伺服器。 Data Factory 會處理其餘部分。 如果您已使用 Azure 虛擬網路端點設定 Blob 儲存體，若要使用 PolyBase 載入資料，您必須使用 PolyBase 所要求的受控識別驗證。
+>如果您使用 PolyBase 或 COPY 語句將資料從 Blob 儲存體 (載入作為來源，或作為暫存) 至 Azure Synapse Analytics，則當您針對 Blob 儲存體使用受控識別驗證時，請確定您也遵循 [本指南](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)中的步驟1到3。 這些步驟會向 Azure AD 註冊您的伺服器，並將「儲存體 Blob 資料參與者」角色指派給您的伺服器。 Data Factory 會處理其餘部分。 如果您使用 Azure 虛擬網路端點來設定 Blob 儲存體，您也需要讓 [允許信任的 Microsoft 服務] 在 Synapse 所要求的 [Azure 儲存體帳戶 **防火牆和虛擬網路** 設定] 功能表下， **存取此儲存體帳戶** 。
 
 以下是支援 Azure Blob 儲存體連結服務的屬性：
 

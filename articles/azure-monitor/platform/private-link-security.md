@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 42419247de537f9a166c3cdca2fd5a832ade6a5f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 61073ce7e8d3abc43d1db031608da72e6d3e0791
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461425"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926796"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 私人連結將網路安全地連線到 Azure 監視器
 
@@ -90,7 +90,7 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 
 首先，建立 Azure 監視器私人連結範圍資源。
 
-1. 在 Azure 入口網站中移至 [建立資源]，搜尋 **Azure 監視器私人連結範圍**。
+1. 在 Azure 入口網站中移至 [建立資源]，搜尋 **Azure 監視器私人連結範圍** 。
 
    ![尋找 Azure 監視器 Private Link 範圍](./media/private-link-security/ampls-find-1c.png)
 
@@ -112,6 +112,9 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 
     ![選取範圍 UX 的螢幕擷取畫面](./media/private-link-security/ampls-select-2.png)
 
+> [!NOTE]
+> 若要刪除 Azure 監視器資源，您必須先將這些資源與所連接的任何 AMPLS 物件中斷連接。 無法刪除連線至 AMPLS 的資源。
+
 ### <a name="connect-to-a-private-endpoint"></a>連線到私人端點
 
 現在您已將資源連線到您的 AMPLS，請建立私人端點，用來與我們的網路連線。 您可以在 [Azure 入口網站私人連結中心](https://portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/privateendpoints)，或在 Azure 監視器私人連結範圍內執行這項工作，如同此範例中所示。
@@ -122,7 +125,7 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 
 2. 挑選訂用帳戶、資源群組、端點的名稱，及其應存在的區域。 區域必須與您要連線的虛擬網路位於相同的區域。
 
-3. 按一下 **[下一步**資源]。 
+3. 按一下 **[下一步** 資源]。 
 
 4. 在 [資源] 畫面中，
 
@@ -140,6 +143,8 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
    a.    選擇您想要連線到 Azure 監視器資源的 [虛擬網路] 和 [子網路]。 
  
    b.    請在 [與私人 DNS 區域整合] 選擇 [是] ，讓它自動建立新的私人 DNS 區域。 實際的 DNS 區域可能與下列螢幕擷取畫面中顯示的不同。 
+   > [!NOTE]
+   > 如果您選擇 [ **否** ] 並偏好手動管理 DNS 記錄，請先完成您的 Private Link （包括此私人端點和 AMPLS 設定）。 然後，根據 [Azure 私人端點 DNS](https://docs.microsoft.com/azure/private-link/private-endpoint-dns)設定中的指示來設定您的 DNS。 請務必建立空白記錄，以準備 Private Link 安裝。 您所建立的 DNS 記錄可以覆寫現有的設定，並影響您與 Azure 監視器的連線能力。
  
    c.    按一下 [檢閱 + 建立]。
  
@@ -235,11 +240,11 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-若要使用 Azure 監視器的入口網站體驗，例如 Application Insights 和 Log Analytics，您必須允許在私人網路上存取 Azure 入口網站和 Azure 監視器擴充功能。 將**AzureActiveDirectory**、 **AzureResourceManager**、 **AzureFrontDoor. FirstParty**和**AzureFrontDoor. 前端**[服務標記](../../firewall/service-tags.md)新增至您的網路安全性群組。
+若要使用 Azure 監視器的入口網站體驗，例如 Application Insights 和 Log Analytics，您必須允許在私人網路上存取 Azure 入口網站和 Azure 監視器擴充功能。 將 **AzureActiveDirectory** 、 **AzureResourceManager** 、 **AzureFrontDoor. FirstParty** 和 **AzureFrontDoor. 前端**[服務標記](../../firewall/service-tags.md)新增至您的網路安全性群組。
 
 ### <a name="programmatic-access"></a>以程式設計方式存取
 
-若要在私人網路上使用 REST API、[CLI](/cli/azure/monitor?view=azure-cli-latest) 或具有 Azure 監視器的 PowerShell，請在您的防火牆新增 **AzureActiveDirectory** 和 **AzureResourceManager** [服務標記](../../virtual-network/service-tags-overview.md)。
+若要在私人網路上使用 REST API、 [CLI](/cli/azure/monitor?view=azure-cli-latest) 或具有 Azure 監視器的 PowerShell，請在您的防火牆新增 **AzureActiveDirectory** 和 **AzureResourceManager** [服務標記](../../virtual-network/service-tags-overview.md)。
 
 新增這些標記可讓您執行一些動作，例如查詢記錄資料、建立和管理 Log Analytics 工作區和 Application Insights 元件。
 

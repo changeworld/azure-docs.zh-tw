@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: e89a7d9bc71d48be1b7d7ea40246b2394c95e84b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 000de084cf9375347704cc4d3905ca36bdd77ff8
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543775"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926184"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>在 Azure 中選擇正確的 MySQL 伺服器選項
 
@@ -55,8 +55,8 @@ ms.locfileid: "92543775"
 | 高可用性 | 單一可用性區域內的內建 HA| 可用性區域內和跨可用性區域的內建 HA | 使用群集、複寫等自訂受控|
 | 區域備援 | 不支援 | 支援 | 支援|
 | 混合式案例 | 支援 [資料輸入複寫](./concepts-data-in-replication.md)| 預覽版中並未提供 | 由終端使用者管理 |
-| 讀取複本 | 支援| 支援 | 由終端使用者管理 |
-| 備份 | 自動保留7-35 天 | 自動保留1-35 天 | 由終端使用者管理 |
+| 讀取複本 | 最多 (5 個複本的支援) | 最多支援10個複本) 的 (| 由終端使用者管理 |
+| Backup | 自動保留7-35 天 | 自動保留1-35 天 | 由終端使用者管理 |
 | 監視資料庫作業 | 支援 | 支援 | 由終端使用者管理 |
 | 災害復原 | 支援異地冗余備份儲存體和跨區域讀取複本 | 預覽中不支援| 使用複寫技術進行自訂管理 |
 | 查詢效能深入解析 | 支援 | 預覽版中並未提供| 由終端使用者管理 |
@@ -129,7 +129,7 @@ Microsoft 可以透過 PaaS：
 
 因為不需要變更簡報、應用程式和資料層，所以您可以節省重新架構現有解決方案的時間和預算。 相反地，您可以專注于將所有解決方案遷移至 Azure，並解決 Azure 平臺可能需要的一些效能優化。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 請參閱 [適用於 MySQL 的 Azure 資料庫定價](https://azure.microsoft.com/pricing/details/MySQL/)。
 - 從[建立您的第一部伺服器](./quickstart-create-mysql-server-database-using-azure-portal.md)開始。

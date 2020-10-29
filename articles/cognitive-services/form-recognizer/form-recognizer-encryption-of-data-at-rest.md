@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: c959231826125349ecd6a62afe529248f7ac2eec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a8b331c1295ed19afa64e95318bfa14414e6d9f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326791"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913053"
 ---
 # <a name="form-recognizer-encryption-of-data-at-rest"></a>靜止資料的表單辨識器加密
 
@@ -27,7 +27,7 @@ ms.locfileid: "91326791"
 
 [!INCLUDE [cognitive-services-cmk](../includes/configure-customer-managed-keys.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [表單辨識器 Customer-Managed 金鑰要求表單](https://aka.ms/cogsvc-cmk)
-* [深入瞭解 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [深入瞭解 Azure Key Vault](../../key-vault/general/overview.md)

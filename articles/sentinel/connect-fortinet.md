@@ -1,6 +1,6 @@
 ---
 title: 將 Fortinet 資料連線到 Azure Sentinel |Microsoft Docs
-description: 將您的 Fortinet 設備連線到 Azure Sentinel 以查看儀表板、建立自訂警示，以及改進調查。 
+description: 將您的 Fortinet 設備連線到 Azure Sentinel 以查看儀表板、建立自訂警示，以及改進調查。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 8aa8599cbaab6af00d7b4122b94c9e24870881f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60be22f439547d006f54e489833b63171e617e3e
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511325"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913988"
 ---
 # <a name="connect-fortinet-to-azure-sentinel"></a>將 Fortinet 連接到 Azure Sentinel
 
@@ -38,19 +38,19 @@ ms.locfileid: "86511325"
 
     ```console
     config log syslogd setting
+    set status enable
     set format cef
     set port 514
     set server <ip_address_of_Receiver>
-    set status enable
     end
     ```
 
     - 將伺服器的 **ip 位址** 取代為代理程式的 ip 位址。
     - 將 **syslog 埠** 設定為 **514** 或代理程式上設定的埠。
-    - 若要在早期 FortiOS 版本中啟用 CEF 格式，您可能需要執行命令集 **csv disable**。
+    - 若要在早期 FortiOS 版本中啟用 CEF 格式，您可能需要執行命令集 **csv disable** 。
  
    > [!NOTE] 
-   > 如需詳細資訊，請移至 [Fortinet 文件庫](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary)。 選取您的版本，並使用 **手冊** 和 **記錄訊息參考**。
+   > 如需詳細資訊，請移至 [Fortinet 文件庫](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary)。 選取您的版本，並使用 **手冊** 和 **記錄訊息參考** 。
 
 1. 若要在 Azure 監視器 Log Analytics 中針對 Fortinet 事件使用相關的架構，請搜尋 `CommonSecurityLog` 。
 

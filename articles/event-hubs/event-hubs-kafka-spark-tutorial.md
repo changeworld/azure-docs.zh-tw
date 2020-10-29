@@ -3,12 +3,12 @@ title: 與 Apache Spark 應用程式連線 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供有關如何將 Apache Spark 與「適用於 Kafka 的 Azure 事件中樞」搭配使用的資訊。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 8535b7dc81da8c46685e12c3861793b919296cb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84184ed3dffee97863b93c592d1cd577df313605
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061575"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913733"
 ---
 # <a name="connect-your-apache-spark-application-with-azure-event-hubs"></a>使用 Azure 事件中樞連接您的 Apache Spark 應用程式
 本教學課程會逐步引導您將 Spark 應用程式連接到事件中樞，以進行即時串流。 這種整合可讓您不需要變更通訊協定用戶端或執行您自己的 Kafka 或 Zookeeper 叢集，即可進行串流處理。 本教學課程需要 Apache Spark 2.4 版 + 和 Apache Kafka v2.0 +。
@@ -48,7 +48,7 @@ cd azure-event-hubs-for-kafka/tutorials/spark
 ```
 
 ## <a name="read-from-event-hubs-for-kafka"></a>讀取適用於 Kafka 的事件中樞
-透過一些組態變更，您即可開始讀取適用於 Kafka 的事件中樞。 使用您的命名空間詳細資料更新 **BOOTSTRAP_SERVERS** 和 **EH_SASL**，您即可開始使用事件中樞進行串流處理，如同使用 Kafka 一般。 如需完整的範例程式碼，請參閱 GitHub 上的 sparkConsumer.scala 檔案。 
+透過一些組態變更，您即可開始讀取適用於 Kafka 的事件中樞。 使用您的命名空間詳細資料更新 **BOOTSTRAP_SERVERS** 和 **EH_SASL** ，您即可開始使用事件中樞進行串流處理，如同使用 Kafka 一般。 如需完整的範例程式碼，請參閱 GitHub 上的 sparkConsumer.scala 檔案。 
 
 ```scala
 //Read from your Event Hub!
@@ -62,7 +62,7 @@ val df = spark.readStream
     .option("kafka.request.timeout.ms", "60000")
     .option("kafka.session.timeout.ms", "30000")
     .option("kafka.group.id", GROUP_ID)
-    .option("failOnDataLoss", "false")
+    .option("failOnDataLoss", "true")
     .load()
 
 //Use dataframe like normal (in this example, write to console)
@@ -73,7 +73,7 @@ val df_write = df.writeStream
 ```
 
 ## <a name="write-to-event-hubs-for-kafka"></a>寫入適用於 Kafka 的事件中樞
-您也可以用寫入 Kafka 的相同方式來寫入事件中樞。 別忘了使用您事件中樞命名空間中的資訊來更新組態，以變更 **BOOTSTRAP_SERVERS** 和 **EH_SASL**。  如需完整的範例程式碼，請參閱 GitHub 上的 sparkProducer.scala 檔案。 
+您也可以用寫入 Kafka 的相同方式來寫入事件中樞。 別忘了使用您事件中樞命名空間中的資訊來更新組態，以變更 **BOOTSTRAP_SERVERS** 和 **EH_SASL** 。  如需完整的範例程式碼，請參閱 GitHub 上的 sparkProducer.scala 檔案。 
 
 ```scala
 df = /**Dataframe**/

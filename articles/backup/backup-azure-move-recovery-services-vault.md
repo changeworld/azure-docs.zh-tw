@@ -4,12 +4,12 @@ description: 如何跨 Azure 訂用帳戶和資源群組移動復原服務保存
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: bd1870e803f5051e2a65a6cddbb72406421d4fc3
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 5a73963970b5fad7b3992d501d9aac5cc7229622
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171606"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926677"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>跨 Azure 訂用帳戶和資源群組移動復原服務保存庫
 
@@ -17,11 +17,7 @@ ms.locfileid: "92171606"
 
 ## <a name="supported-regions"></a>支援區域
 
-澳大利亞東部、澳大利亞東南部、加拿大中部、加拿大東部、南部東亞、東亞、美國中部、美國中北部、美國東部、美國東部2、美國中南部、美國中西部、美國中西部2、美國西部、美國西部2、巴西南部、印度中部、印度南部、日本東部、日本西部、韓國中部、南韓南部中支援復原服務保存庫的資源移動、北歐、西歐、南非北部、南非西部、英國南部和英國西部。
-
-## <a name="unsupported-regions"></a>不支援的區域
-
-法國中部、法國南部、德國東北部、德國中部、US Gov 愛荷華州、中國北部、中國北部2、中國東部、中國東部2
+除了法國中部、法國南部、德國東北部、德國中部、中國北部、中國北部2、中國東部及中國東部2以外，還支援所有公用區域和主權區域。
 
 ## <a name="prerequisites-for-moving-recovery-services-vault"></a>移動復原服務保存庫的必要條件
 
@@ -46,14 +42,14 @@ ms.locfileid: "92171606"
 
 > [!NOTE]
 > 不支援在 Azure 區域間移動 Azure 備份的復原服務保存庫。<br><br>
-> 如果您已設定任何 Vm (Azure IaaS、Hyper-v、VMware) 或實體機器以使用 **Azure Site Recovery**進行嚴重損壞修復，移動作業將會遭到封鎖。 如果您想要移動 Azure Site Recovery 的保存庫，請參閱 [這篇文章](../site-recovery/move-vaults-across-regions.md) 以瞭解如何手動移動保存庫。
+> 如果您已設定任何 Vm (Azure IaaS、Hyper-v、VMware) 或實體機器以使用 **Azure Site Recovery** 進行嚴重損壞修復，移動作業將會遭到封鎖。 如果您想要移動 Azure Site Recovery 的保存庫，請參閱 [這篇文章](../site-recovery/move-vaults-across-regions.md) 以瞭解如何手動移動保存庫。
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>使用 Azure 入口網站將復原服務保存庫移至不同的資源群組
 
 若要將復原服務保存庫和其相關聯的資源移至不同的資源群組：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 開啟**復原服務保存庫**的清單，然後選取您想要移動的保存庫。 保存庫儀表板開啟時會如下圖所示。
+2. 開啟 **復原服務保存庫** 的清單，然後選取您想要移動的保存庫。 保存庫儀表板開啟時會如下圖所示。
 
    ![開啟復原服務保存庫](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
@@ -61,7 +57,7 @@ ms.locfileid: "92171606"
 
    ![[基本資訊] 索引標籤](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. 在保存庫總覽功能表中，選取**資源群組**旁的 [**變更**]，以開啟 [**移動資源**] 窗格。
+3. 在保存庫總覽功能表中，選取 **資源群組** 旁的 [ **變更** ]，以開啟 [ **移動資源** ] 窗格。
 
    ![變更資源群組](./media/backup-azure-move-recovery-services/change-resource-group.png)
 
@@ -90,20 +86,20 @@ ms.locfileid: "92171606"
 
     ![[基本資訊] 索引標籤](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. 在保存庫總覽功能表中，選取 [**訂**用帳戶] 旁的 [**變更**]，以開啟 [**移動資源**] 窗格。
+3. 在保存庫總覽功能表中，選取 [ **訂** 用帳戶] 旁的 [ **變更** ]，以開啟 [ **移動資源** ] 窗格。
 
    ![變更訂用帳戶](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
 
-4. 選取要移動的資源，建議您在這裡使用 [全選]**** 選項來選取所有列出的選擇性資源。
+4. 選取要移動的資源，建議您在這裡使用 [全選]  選項來選取所有列出的選擇性資源。
 
    ![移動資源](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
 
-5. 從 [訂用帳戶]**** 下拉式清單選取您想要作為保存庫移動目的地的目標訂用帳戶。
+5. 從 [訂用帳戶]  下拉式清單選取您想要作為保存庫移動目的地的目標訂用帳戶。
 6. 若要新增目標資源群組，請在 [ **資源群組** ] 下拉式清單中選取現有的資源群組，或選取 [ **建立新群組** ] 選項。
 
    ![新增訂用帳戶](./media/backup-azure-move-recovery-services/add-subscription.png)
 
-7. 選取 [ **我瞭解與移動的資源相關聯的工具和腳本在更新為使用新的資源識別碼] 選項之前將無法運作** ，然後選取 **[確定]**。
+7. 選取 [ **我瞭解與移動的資源相關聯的工具和腳本在更新為使用新的資源識別碼] 選項之前將無法運作** ，然後選取 **[確定]** 。
 
 > [!NOTE]
 > 跨訂用帳戶備份 (RS 保存庫和受保護的 Vm 位於不同的訂用帳戶，) 不是支援的案例。 此外，在保存庫移動作業期間，無法修改本機冗余儲存體中的儲存體冗余選項 (LRS) 至全域冗余儲存體 (GRS) ，反之亦然。
@@ -161,9 +157,9 @@ az resource move --destination-group <destinationResourceGroupName> --ids <Vault
 
 1. 停用保存庫屬性中的虛刪除。 請遵循下列 [步驟](backup-azure-security-feature-cloud.md#disabling-soft-delete-using-azure-portal) 來停用虛刪除。
 
-2. 停止保護並刪除目前保存庫中的備份。 在保存庫儀表板功能表中，選取 [ **備份專案**]。 此處所列的專案必須移至新的保存庫，並與其備份資料一起移除。 瞭解如何 [在雲端中刪除受保護的專案](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) ，以及 [刪除內部部署的受保護專案](backup-azure-delete-vault.md#delete-protected-items-on-premises)。
+2. 停止保護並刪除目前保存庫中的備份。 在保存庫儀表板功能表中，選取 [ **備份專案** ]。 此處所列的專案必須移至新的保存庫，並與其備份資料一起移除。 瞭解如何 [在雲端中刪除受保護的專案](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) ，以及 [刪除內部部署的受保護專案](backup-azure-delete-vault.md#delete-protected-items-on-premises)。
 
-3. 如果您打算將 AFS (Azure 檔案共用) 、SQL server 或 SAP Hana 伺服器，則您也需要將其取消註冊。 在保存庫儀表板功能表中，選取 [ **備份基礎結構**]。 瞭解如何 [取消註冊 SQL server](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance)、 [取消登錄與 Azure 檔案共用相關聯的儲存體帳戶](manage-afs-backup.md#unregister-a-storage-account)，以及 [取消註冊 SAP Hana 實例](sap-hana-db-manage.md#unregister-an-sap-hana-instance)。
+3. 如果您打算將 AFS (Azure 檔案共用) 、SQL server 或 SAP Hana 伺服器，則您也需要將其取消註冊。 在保存庫儀表板功能表中，選取 [ **備份基礎結構** ]。 瞭解如何 [取消註冊 SQL server](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance)、 [取消登錄與 Azure 檔案共用相關聯的儲存體帳戶](manage-afs-backup.md#unregister-a-storage-account)，以及 [取消註冊 SAP Hana 實例](sap-hana-db-manage.md#unregister-an-sap-hana-instance)。
 
 4. 移除舊的保存庫後，請繼續在新的保存庫中為您的工作負載設定備份。
 

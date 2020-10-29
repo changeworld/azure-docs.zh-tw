@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: 5e2f5e067f0a1d5c13179b3d6175b3aebf6a43fd
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a8f9c46487422deb4513768dff04f559af952f7b
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548506"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926252"
 ---
 # <a name="monitoring-azure-iot-hub"></a>監視 Azure IoT 中樞
 
@@ -54,11 +54,14 @@ Azure IoT 中樞會收集與 [azure 資源監視資料](/azure/azure-monitor/ins
 
 在您建立診斷設定並將其路由傳送至一或多個位置之前，不會收集並儲存資源記錄。
 
-計量和記錄可以路由傳送至 Log Analytics 工作區，您可以在其中使用 Azure 監視器記錄來分析這些計量和記錄;若要 Azure 儲存體封存和離線分析;或可供外部應用程式讀取的事件中樞端點，例如，協力廠商 SIEM 工具。
+計量和記錄可以路由傳送到數個位置，包括：
+- Azure 監視器會透過相關聯的 Log Analytics 工作區來記錄存放區。 您可以使用 Log Analytics 進行分析。
+- 用於封存和離線分析的 Azure 儲存體 
+- 可供外部應用程式讀取的事件中樞端點，例如協力廠商 SIEM 工具。
 
 在 Azure 入口網站中，您可以在 IoT 中樞的左側窗格中選取 [ **監視** ] 底下的 **診斷** 設定，然後選取 [ **新增診斷設定** ]，以建立您的 iot 中樞所發出的記錄和平臺計量範圍的診斷設定。
 
-下列螢幕擷取畫面顯示的診斷設定會將資源記錄和所有平臺計量中的連線作業路由傳送至 Log Analytics 工作區。
+下列螢幕擷取畫面顯示診斷設定，可將資源記錄類型的連線 *作業* 和所有平臺計量路由傳送至 log Analytics 工作區。
 
 :::image type="content" source="media/monitor-iot-hub/diagnostic-setting-portal.png" alt-text="IoT 中樞總覽頁面上的預設度量圖表。":::
 
@@ -86,7 +89,7 @@ Azure IoT 中樞會收集與 [azure 資源監視資料](/azure/azure-monitor/ins
 
 ## <a name="analyzing-logs"></a>分析記錄
 
-Azure 監視器記錄檔中的資料會儲存在資料表中，其中每個資料表都有自己的唯一屬性集。 若要深入瞭解 Azure 監視器記錄，請參閱 Azure 監視器檔中的 [Azure 監視器記錄檔總覽](/azure/azure-monitor/platform/data-platform-logs) 。 
+Azure 監視器記錄檔中的資料會儲存在資料表中，其中每個資料表都有自己的唯一屬性集。 這些資料表中的資料會與 Log Analytics 工作區相關聯，並可在 Log Analytics 中查詢。 若要深入瞭解 Azure 監視器記錄，請參閱 Azure 監視器檔中的 [Azure 監視器記錄檔總覽](/azure/azure-monitor/platform/data-platform-logs) 。 
 
 若要將資料路由傳送至 Azure 監視器記錄，您必須建立診斷設定，以將資源記錄或平臺計量傳送至 Log Analytics 工作區。 若要深入瞭解，請參閱 [收集和路由](#collection-and-routing)。
 
@@ -114,7 +117,7 @@ IoT 中樞資源記錄中的某些作業會傳回 `sdkVersion` 其物件中的�
 
 下表顯示用於不同 Azure IoT Sdk 的 SDK 名稱：
 
-| SdkVersion 屬性中的 SDK 名稱 | 語言 |
+| SdkVersion 屬性中的 SDK 名稱 | Language |
 |----------|----------|
 | .NET | .NET (C#) |
 | microsoft azure. 裝置 | .NET (c # ) service SDK |
@@ -287,7 +290,7 @@ class Program
 
 根據平臺計量建立警示規則時，請注意，針對以計數單位收集的 IoT 中樞平臺計量，某些匯總可能無法使用或無法使用。 若要深入瞭解，請參閱 [監視 Azure IoT 中樞資料參考中支援的](monitor-iot-hub-reference.md#supported-aggregations)匯總。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 如需 [服務名稱] 所建立的計量、記錄和其他重要值的參考，請參閱 [監視 Azure IoT 中樞資料參考](monitor-iot-hub-reference.md) 。
 

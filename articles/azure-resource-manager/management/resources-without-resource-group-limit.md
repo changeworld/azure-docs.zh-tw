@@ -2,13 +2,13 @@
 title: 沒有800計數限制的資源
 description: 列出可在資源群組中有超過800個實例的 Azure 資源類型。
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: e7a15607b144f1d7916f310948f15dc28d76a205
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/28/2020
+ms.openlocfilehash: cec7ea87bbe81d3bfcca37f3133ac650e66f849f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330752"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913495"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>資源不限於每個資源群組800個實例
 
@@ -81,6 +81,7 @@ ms.locfileid: "91330752"
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
+* labs/virtualMachines-預設限制為800個實例。 您可以聯繫支援人員來增加該限制。
 * schedules
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
@@ -173,6 +174,10 @@ ms.locfileid: "91330752"
 
 * workspaceCollections-預設限制為800個實例。 您可以聯繫支援人員來增加該限制。
 
+## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
+
+* 容量-預設限制為800個實例。 您可以聯繫支援人員來增加該限制。
+
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
 * 命名空間
@@ -185,24 +190,27 @@ ms.locfileid: "91330752"
 
 * 命名空間
 
-## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
+## <a name="microsoftsingularity"></a>Singularity
 
-* 應用程式所需
-* containerGroups
-* gateways
-* networks
-* 密碼
-* 磁碟區
+* accounts
+* 帳戶/accountQuotaPolicies
+* 帳戶/groupPolicies
+* 帳戶/作業
+* 帳戶/storageContainers
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 * storageAccounts
+
+## <a name="microsoftsql"></a>Microsoft.Sql
+
+* servers/databases
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
 * apiManagementAccounts/apis
 * sites
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需配額和限制的完整清單，請參閱 [Azure 訂用帳戶和服務限制、配額和條件約束](azure-subscription-service-limits.md)。

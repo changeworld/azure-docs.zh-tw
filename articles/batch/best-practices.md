@@ -3,12 +3,12 @@ title: 最佳作法
 description: 了解開發 Azure Batch 解決方案的最佳做法和實用秘訣。
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0663d1910e2b67b8302e41a96509bdd84cd1a3a0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: dff6668050e45d9179cd985aa10670b56afe5377
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102773"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913223"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
@@ -20,7 +20,7 @@ ms.locfileid: "92102773"
 
 ### <a name="pool-configuration-and-naming"></a>集區設定和命名
 
-- **集區配置模式** 建立 Batch 帳戶時，您可以選擇兩個集區配置模式：**Batch 服務** 或**使用者訂用帳戶**。 在大部分情況下，您應該使用預設 Batch 服務模式，以在幕後將集區配置在 Batch 管理的訂用帳戶中。 在其他使用者訂用帳戶模式中，在建立集區時，會直接在您的訂用帳戶中建立 Batch VM 和其他資源。 使用者訂用帳戶主要是用來啟用重要但較小的案例子集。 若要深入了解使用者訂用帳戶模式，請參閱[使用者訂用帳戶模式的其他設定](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)。
+- **集區配置模式** 建立 Batch 帳戶時，您可以選擇兩個集區配置模式： **Batch 服務** 或 **使用者訂用帳戶** 。 在大部分情況下，您應該使用預設 Batch 服務模式，以在幕後將集區配置在 Batch 管理的訂用帳戶中。 在其他使用者訂用帳戶模式中，在建立集區時，會直接在您的訂用帳戶中建立 Batch VM 和其他資源。 使用者訂用帳戶主要是用來啟用重要但較小的案例子集。 若要深入了解使用者訂用帳戶模式，請參閱[使用者訂用帳戶模式的其他設定](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)。
 
 - **判斷作業與集區的對應時，請考慮作業和工作執行時間。**
     如果您的作業主要是由短期執行的作業所組成，而且預期的總工作計數很少，所以作業的整體預期執行時間不會太長，那麼請不要為每個工作配置新的集區。 節點的配置時間將會降低作業的執行時間。
@@ -41,7 +41,7 @@ ms.locfileid: "92102773"
 集區存留期可能會因為配置的方法和套用至集區設定的選項而有所不同。 集區在任何時間點都可以有不固定的存留期和不同數目的計算節點。 您必須負責明確地或透過服務所提供的功能 (自動調整或 autopool)，來管理集區中的計算節點。
 
 - **讓集區保持在最新狀態。**
-    您應該每隔幾個月就將集區大小調整為零，以確保您能取得最新的節點代理程式更新和錯誤修正程式。 如果未重新建立集區或將其大小調整為 0 個計算節點，您的集區將不會收到節點代理程式更新。 在您重新建立集區或調整其大小之前，建議您下載所有節點代理程式記錄來進行偵錯，如[節點](#nodes)一節中所述。
+    您應該每隔幾個月將集區大小調整為零，以確保您取得 [最新的節點代理程式更新和錯誤修正](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)。 如果未重新建立集區或將其大小調整為 0 個計算節點，您的集區將不會收到節點代理程式更新。 在您重新建立集區或調整其大小之前，建議您下載所有節點代理程式記錄來進行偵錯，如[節點](#nodes)一節中所述。
 
 - **集區重新建立** 同樣地，我們不建議您每日刪除並重新建立您的集區。 相反地，請建立新的集區，並更新現有作業來指向新的集區。 當所有工作都已移至新集區之後，再刪除舊的集區。
 

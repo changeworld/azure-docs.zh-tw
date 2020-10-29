@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/14/2020
+ms.date: 10/29/2020
 ms.author: jingwang
-ms.openlocfilehash: ecca75f294cf70ba8f7d82fcce7bdd3e9611b21a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 74cfabff22074ee405d7b417e306da62ef69ae19
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636335"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927103"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure Data Factory 中的 Excel 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -38,8 +38,8 @@ ms.locfileid: "92636335"
 | firstRowAsHeader | 指定是否將指定工作表/範圍中的第一個資料列視為具有資料行名稱的標頭行。<br>允許的值為 **true** 和 **false** (預設) 。 | 否       |
 | nullValue        | 指定 null 值的字串表示。 <br>預設值為 **空字串** 。 | 否       |
 | compression | 用來設定檔案壓縮的屬性群組。 當您想要在活動執行期間執行壓縮/解壓縮時，請設定此區段。 | 否 |
-| type<br/>) *下 `compression`* 的 ( | 用來讀取/寫入 JSON 檔案的壓縮編解碼器。 <br>允許的值為 **bzip2** 、 **gzip** 、 **deflate** 、 **ZipDeflate** 、 **TarGzip** 、 **snappy** 或 **lz4** 。 預設值不會壓縮。<br>**注意：** 目前的複製活動不支援 "snappy" & "lz4"，而且對應資料流程不支援 "ZipDeflate"。<br>**請注意** ，使用複製活動將 **ZipDeflate** 檔解壓縮 (s) 並寫入檔案型接收資料存放區時，檔案會解壓縮到資料夾： `<path specified in dataset>/<folder named as source zip file>/` 。 | 否。  |
-| 等級<br/>) *下 `compression`* 的 ( | 壓縮比例。 <br>允許的值為 **最佳** 或 **最快速** 。<br>- **最快：** 即使產生的檔案未以最佳方式壓縮，壓縮作業也應該儘快完成。<br>- **最佳** ：即使作業需要較長的時間才能完成，壓縮作業也應以最佳方式壓縮。 如需詳細資訊，請參閱 [壓縮層級](/dotnet/api/system.io.compression.compressionlevel) 主題。 | 否       |
+| type<br/>) *下 `compression`* 的 ( | 用來讀取/寫入 JSON 檔案的壓縮編解碼器。 <br>允許的值為 **bzip2** 、 **gzip** 、 **deflate** 、 **ZipDeflate** 、 **TarGzip** 、 **Tar** 、 **snappy** 或 **lz4** 。 預設值不會壓縮。<br>**注意：** 目前的複製活動不支援 "snappy" & "lz4"，而且對應資料流程不支援 "ZipDeflate"、"TarGzip" 和 "Tar"。<br>**請注意** ，使用複製活動將 **ZipDeflate** 檔解壓縮 (s) 並寫入檔案型接收資料存放區時，檔案會解壓縮到資料夾： `<path specified in dataset>/<folder named as source zip file>/` 。 | 否。  |
+| 等級<br/>) *下 `compression`* 的 ( | 壓縮比例。 <br>允許的值為 **最佳** 或 **最快速** 。<br>- **最快：** 即使產生的檔案未以最佳方式壓縮，壓縮作業也應該儘快完成。<br>- **最佳** ：即使作業需要較長的時間才能完成，壓縮作業也應以最佳方式壓縮。 如需詳細資訊，請參閱 [壓縮層級](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) 主題。 | 否       |
 
 以下是 Azure Blob 儲存體上的 Excel 資料集範例：
 

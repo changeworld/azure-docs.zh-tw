@@ -7,8 +7,6 @@
       href: overview.md
 - name: 快速入門
   items:
-    - name: 探索示範網站
-      href: quickstarts/explore-demo.md
     - name: 使用 Web 入口網站
       href: quickstarts/web-portal.md
     - name: 使用 REST API
@@ -40,9 +38,9 @@
     - name: Metrics Advisor API
       href: 'https://go.microsoft.com/fwlink/?linkid=2141634'
     - name: Azure CLI 參考
-      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+      href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
     - name: PowerShell 參考
-      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+      href: /powershell/module/azurerm.cognitiveservices/
 - name: 資源
   items:
     - name: 支援和說明選項

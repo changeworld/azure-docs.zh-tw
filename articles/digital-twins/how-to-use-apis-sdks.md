@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 52ecc1f7de2afb83d3f37ddae6b1b618a8a8e34d
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 1ad9d72d69e23e4029de163ded1a71ae4dfb82fb
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636012"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913767"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure Digital Twins API 和 SDK
 
@@ -63,10 +63,12 @@ Azure 數位 Twins 隨附 **控制平面 api** 和 **資料平面 api** ，可�
    - 您可以在 GitHub 中找到 SDK 來源： [適用于 JAVA 的 Azure IoT 數位 Twins 用戶端程式庫](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
    - 您可以查看 [SDK 參考檔](/java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-preview)
 * 您可以使用 **JavaScript** SDK。 使用 JavaScript SDK .。。
-   - 您可以從 npm： [適用于 JavaScript 的 Azure Azure 數位 Twins 用戶端程式庫](https://www.npmjs.com/package/@azure/digital-twins)，查看並安裝套件。
+   - 您可以從 npm： [適用于 JavaScript 的 Azure Azure 數位 Twins 用戶端程式庫](https://www.npmjs.com/package/@azure/digital-twins-core)，查看並安裝套件。
    - 您可以查看 [SDK 參考檔](/javascript/api/@azure/digital-twins/?preserve-view=true&view=azure-node-latest)。
+   - 您可以在 GitHub 中找到 SDK 來源： [適用于 JavaScript 的 Azure Azure 數位 Twins Core 用戶端程式庫](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/digital-twins-core)
 * 您可以使用 **Python** SDK。 使用 Python SDK .。。
    - 您可以查看並安裝套件： [適用于 Python 的 Azure Azure 數位 Twins Core 用戶端程式庫](https://pypi.org/project/azure-digitaltwins-core/1.0.0b1/)。
+   - 您可以在 GitHub 中找到 SDK 來源： [適用于 Python 的 Azure Azure 數位 Twins Core 用戶端程式庫](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
 * 您可以使用 AutoRest 來產生另一種語言的 SDK。 遵循 how [*to：使用 AutoRest 建立 Azure 數位 Twins 的自訂 sdk*](how-to-create-custom-sdks.md)中的指示。
 
 您也可以透過 [CLI](how-to-use-cli.md)與 Azure 數位 Twins 互動，來練習日期平面 api。
@@ -301,7 +303,7 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 
 您可以從這裡查看實例的計量，並建立自訂的視圖。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 瞭解如何使用 Api 來設定 Azure 數位 Twins 實例和驗證：
 * [*How to：設定實例和驗證*](how-to-set-up-instance-portal.md)

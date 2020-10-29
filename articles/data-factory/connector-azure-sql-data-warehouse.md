@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/12/2020
-ms.openlocfilehash: 7dd23f481409eb3498893c1c7f9c0fd8311b9af2
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 0a06bbeb4946f03b9cb6e5b1400521a0abffdd7f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901602"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913529"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure Data Factory，在 Azure Synapse Analytics (先前的 SQL 資料倉儲) 中複製和轉換資料
 
@@ -42,7 +42,7 @@ ms.locfileid: "92901602"
 
 - 使用 SQL 驗證和 Azure Active Directory (Azure AD) 應用程式權杖驗證搭配服務主體或 Azure 資源的受控識別來複製資料。
 - 作為來源時，使用 SQL 查詢或預存程序來擷取資料。 您也可以選擇從 Azure Synapse Analytics 來源進行平行複製，如需詳細資料，請參閱 [Synapse Analytics 的並行複製](#parallel-copy-from-synapse-analytics) 一節。
-- 做為接收時，使用 [PolyBase](#use-polybase-to-load-data-into-azure-synapse-analytics) 或 [COPY 陳述式](#use-copy-statement) (預覽) 或大量插入來載入資料。 我們建議 PolyBase 或 COPY 陳述式 (預覽)，以獲得較佳的複製效能。 連接器也支援根據來源架構，自動建立目的地資料表（如果不存在的話）。
+- 作為接收，使用 [PolyBase](#use-polybase-to-load-data-into-azure-synapse-analytics) 或 [COPY 語句](#use-copy-statement) 或 bulk insert 來載入資料。 我們建議 PolyBase 或 COPY 語句，以獲得較佳的複製效能。 連接器也支援根據來源架構，自動建立目的地資料表（如果不存在的話）。
 
 > [!IMPORTANT]
 > 如果您使用 Azure Data Factory Integration Runtime 來複製資料，請設定 [伺服器層級的防火牆規則](../azure-sql/database/firewall-configure.md) ，讓 Azure 服務可以存取 [邏輯 SQL server](../azure-sql/database/logical-servers.md)。
@@ -51,7 +51,7 @@ ms.locfileid: "92901602"
 ## <a name="get-started"></a>開始使用
 
 > [!TIP]
-> 若要達到最佳效能，請使用 PolyBase 將資料載入 Azure Synapse Analytics。 如需詳細資訊，請參閱 [使用 PolyBase 將資料載入 Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics)小節。 如需使用案例的逐步解說，請參閱[使用 Azure Data Factory 在 15 分鐘內將 1 TB 載入至 Azure Synapse Analytics](load-azure-sql-data-warehouse.md)。
+> 若要達到最佳效能，請使用 PolyBase 或 COPY 語句將資料載入 Azure Synapse Analytics 中。 [使用 PolyBase 將資料載入 Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) ，並[使用 COPY 語句將資料載入 Azure Synapse Analytics 區段中](#use-copy-statement)的詳細資料。 如需使用案例的逐步解說，請參閱[使用 Azure Data Factory 在 15 分鐘內將 1 TB 載入至 Azure Synapse Analytics](load-azure-sql-data-warehouse.md)。
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -478,7 +478,7 @@ WHERE s.name='[your schema]' AND t.name = '[your table name]'
 - 如果您的來源資料存放區與格式不受 PolyBase 支援，您可以改用 **[使用 PolyBase 分段複製](#staged-copy-by-using-polybase)** 功能。 分段複製功能也能提供更好的輸送量。 它會自動將資料轉換成 PolyBase 相容的格式，將資料儲存在 Azure Blob 儲存體中，然後呼叫 PolyBase 將資料載入 Azure Synapse Analytics 中。
 
 > [!TIP]
-> 深入瞭解[使用 PolyBase 的最佳做法](#best-practices-for-using-polybase)。 使用 PolyBase 搭配 Azure Integration Runtime 時，有效的資料整合單位 (Diu) 一律為2。 調整 DIU 並不會影響效能，因為從儲存體載入資料是由 Synapse 引擎提供技術支援。
+> 深入瞭解[使用 PolyBase 的最佳做法](#best-practices-for-using-polybase)。 使用 PolyBase 搭配 Azure Integration Runtime 時，有效的 [資料整合單位 (](copy-activity-performance-features.md#data-integration-units) 適用于直接或暫存儲存體對 SYNAPSE 的 DIU) 一律為2。 調整 DIU 並不會影響效能，因為從儲存體載入資料是由 Synapse 引擎提供技術支援。
 
 在複製活動的 `polyBaseSettings` 下支援下列 PolyBase 設定：
 
@@ -507,7 +507,8 @@ Azure Synapse Analytics PolyBase 直接支援 Azure Blob、Azure Data Lake Stora
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) \(部分機器翻譯\) | 帳戶金鑰驗證、受控識別驗證 |
 
     >[!IMPORTANT]
-    >如果您的 Azure 儲存體設定了 VNet 服務端點，您必須使用受控識別驗證 - 請參閱[使用 VNet 服務端點搭配 Azure 儲存體的影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 從 [Azure Blob 受控識別驗證](connector-azure-blob-storage.md#managed-identity)和 [Azure Data Lake Storage Gen2 受控識別驗證](connector-azure-data-lake-storage.md#managed-identity)一節的 Data Factory 中，瞭解所需的設定。
+    >- 當您將受控識別驗證用於儲存體連結服務時，請分別瞭解 [Azure Blob](connector-azure-blob-storage.md#managed-identity) 和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) 所需的設定。
+    >- 如果您的 Azure 儲存體設定了 VNet 服務端點，您必須使用在儲存體帳戶上啟用「允許信任的 Microsoft 服務」的受控識別驗證，請參閱 [使用 VNet 服務端點搭配 Azure 儲存體的影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。
 
 2. **來源資料格式** 是 **Parquet** 、 **ORC** 或 **分隔的文字** ，並具有下列設定：
 
@@ -567,7 +568,8 @@ Azure Synapse Analytics PolyBase 直接支援 Azure Blob、Azure Data Lake Stora
 若要使用這項功能，請建立 [Azure Blob 儲存體連結服務](connector-azure-blob-storage.md#linked-service-properties) 或 [Azure Data Lake Storage Gen2 連結服務](connector-azure-data-lake-storage.md#linked-service-properties) ，其中包含以 **帳戶金鑰或受控識別身分驗證** 來參考 Azure 儲存體帳戶作為暫時儲存體。
 
 >[!IMPORTANT]
->如果您的暫存 Azure 儲存體設定了 VNet 服務端點，您必須使用受控識別驗證 - 請參閱[使用 VNet 服務端點搭配 Azure 儲存體的影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 從 [Azure Blob 受控身分識別驗證](connector-azure-blob-storage.md#managed-identity) 和 [Azure Data Lake Storage Gen2 受控身分識別驗證](connector-azure-data-lake-storage.md#managed-identity)Data Factory 瞭解所需的設定。
+>- 當您針對暫存連結服務使用受控識別驗證時，請分別瞭解 [Azure Blob](connector-azure-blob-storage.md#managed-identity) 和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) 所需的設定。
+>- 如果您的預備 Azure 儲存體已設定 VNet 服務端點，您必須在儲存體帳戶上使用啟用「允許信任的 Microsoft 服務」的受控識別驗證，請參閱 [使用 VNet 服務端點搭配 Azure 儲存體的影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 
 
 ```json
 "activities":[
@@ -673,7 +675,7 @@ Azure Synapse Analytics [COPY 語句](/sql/t-sql/statements/copy-into-transact-s
 >目前 Data Factory 僅支援從複製陳述式相容來源複製，如下所述。
 
 >[!TIP]
->搭配 Azure Integration Runtime 使用 COPY 語句時，有效的資料整合單位 (Diu) 一律為2。 調整 DIU 並不會影響效能，因為從儲存體載入資料是由 Synapse 引擎提供技術支援。
+>搭配 Azure Integration Runtime 使用 COPY 語句時，有效的 [資料整合單位 (DIU) ](copy-activity-performance-features.md#data-integration-units) 一律為2。 調整 DIU 並不會影響效能，因為從儲存體載入資料是由 Synapse 引擎提供技術支援。
 
 使用 COPY 陳述式支援下列設定：
 
@@ -687,7 +689,8 @@ Azure Synapse Analytics [COPY 語句](/sql/t-sql/statements/copy-into-transact-s
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) \(部分機器翻譯\) | [分隔符號文字](format-delimited-text.md)<br/>[Parquet](format-parquet.md)<br/>[ORC](format-orc.md) | 帳戶金鑰驗證、服務主體驗證、受控識別驗證 |
 
     >[!IMPORTANT]
-    >如果您的 Azure 儲存體設定了 VNet 服務端點，您必須使用受控識別驗證 - 請參閱[使用 VNet 服務端點搭配 Azure 儲存體的影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 從 [Azure Blob 受控識別驗證](connector-azure-blob-storage.md#managed-identity)和 [Azure Data Lake Storage Gen2 受控識別驗證](connector-azure-data-lake-storage.md#managed-identity)一節的 Data Factory 中，瞭解所需的設定。
+    >- 當您將受控識別驗證用於儲存體連結服務時，請分別瞭解 [Azure Blob](connector-azure-blob-storage.md#managed-identity) 和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) 所需的設定。
+    >- 如果您的 Azure 儲存體設定了 VNet 服務端點，您必須使用在儲存體帳戶上啟用「允許信任的 Microsoft 服務」的受控識別驗證，請參閱 [使用 VNet 服務端點搭配 Azure 儲存體的影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。
 
 2. 格式設定使用下列各項︰
 
@@ -769,7 +772,10 @@ Azure Synapse Analytics [COPY 語句](/sql/t-sql/statements/copy-into-transact-s
 
 **輸入** 選取您的來源是否指向) 的資料表 (相等， ```Select * from <table-name>``` 或輸入自訂的 SQL 查詢。
 
-**啟用預備** 環境強烈建議您在生產工作負載中搭配 Synapse DW 來源使用此選項。 當您從管線執行具有 Synapase 來源的資料流程活動時，ADF 會提示您輸入預備位置儲存體帳戶，並將其用於暫存資料載入。 它是從 Synapse DW 載入資料的最快機制。
+**啟用預備** 環境強烈建議您在生產工作負載中搭配 Azure Synapse Analytics 來源使用此選項。 當您從管線執行具有 Azure Synapse Analytics 來源的 [資料流程活動](control-flow-execute-data-flow-activity.md) 時，ADF 會提示您輸入預備位置儲存體帳戶，並將其用於暫存資料載入。 它是從 Azure Synapse Analytics 載入資料的最快機制。
+
+- 當您將受控識別驗證用於儲存體連結服務時，請分別瞭解 [Azure Blob](connector-azure-blob-storage.md#managed-identity) 和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) 所需的設定。
+- 如果您的 Azure 儲存體設定了 VNet 服務端點，您必須使用在儲存體帳戶上啟用「允許信任的 Microsoft 服務」的受控識別驗證，請參閱 [使用 VNet 服務端點搭配 Azure 儲存體的影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。
 
 **查詢** ：如果您在 [輸入] 欄位中選取 [查詢]，請對於您的來源輸入 SQL 查詢。 此設定會覆寫您在資料集中選擇的任何資料表。 這裡不支援 **Order By** 子句，但您可以設定完整的 SELECT FROM 陳述式。 您也可使用使用者定義的資料表函數。 **select * from udfGetData()** 是 SQL 中傳回資料表的 UDF。 此查詢會產生您可以在資料流程中使用的來源資料表。 使用查詢也是縮減資料列以進行測試或查閱的絕佳方式。
 
@@ -798,7 +804,10 @@ SQL 範例：```Select * from MyTable where customerId > 1000 and customerId < 2
 - 重新建立：資料表會遭到捨棄並重新建立。 如果要動態建立新的資料表，則為必要。
 - Truncate：會移除目標資料表中的所有資料列。
 
-**啟用暫存：** 決定在寫入 Azure Synapse 分析時，是否要使用 [PolyBase](/sql/relational-databases/polybase/polybase-guide)
+**啟用預備環境：** 決定寫入 Azure Synapse Analytics 時，是否要使用 [PolyBase](/sql/relational-databases/polybase/polybase-guide) 。 暫存儲存體是在「 [執行資料流程」活動](control-flow-execute-data-flow-activity.md)中設定。 
+
+- 當您將受控識別驗證用於儲存體連結服務時，請分別瞭解 [Azure Blob](connector-azure-blob-storage.md#managed-identity) 和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) 所需的設定。
+- 如果您的 Azure 儲存體設定了 VNet 服務端點，您必須使用在儲存體帳戶上啟用「允許信任的 Microsoft 服務」的受控識別驗證，請參閱 [使用 VNet 服務端點搭配 Azure 儲存體的影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。
 
 **批次大小** ：控制要在每個值區中寫入的資料列數目。 較大的批次大小會改善壓縮和記憶體優化，但會導致在快取資料時發生記憶體例外狀況的風險。
 

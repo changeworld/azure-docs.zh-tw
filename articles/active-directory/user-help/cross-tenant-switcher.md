@@ -12,12 +12,12 @@ ms.date: 10/27/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: a8e3b6cfce9bff76ec3989273cadadebb23d6d40
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1af7f2918af7071320244dd35882a8de9717654f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795169"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913240"
 ---
 # <a name="switching-organizations-in-a-portal"></a>在入口網站中切換組織
 
@@ -34,7 +34,7 @@ ms.locfileid: "92795169"
 
 ## <a name="switch-organizations"></a>切換組織
 
-以下說明如何切換到另一個組織。 此範例會在 **我的帳戶** 入口網站中使用，但切換器圖示和位置在其他入口網站中也很類似。
+以下說明如何切換到另一個組織。 此範例使用 **我的帳戶** 入口網站，但切換器圖示和位置在其他入口網站中也很類似。
 
 1. 登入您的公司或學校帳戶，然後開啟 [ [我的帳戶](https://myaccount.microsoft.com) ] 頁面。
 1. 在頁面頂端的帳戶相片旁邊，選取組織切換器的 :::image type="content" source="media/cross-tenant-switcher/switcher-icon.png" alt-text="圖示"::: 。

@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: kgremban
-ms.openlocfilehash: b1aa12bd73772b5d6332a36d749ec4d7d10d4026
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: abb3aa9ca7c9697fef1cf456964154249f0d69f3
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048180"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913971"
 ---
 # <a name="set-up-an-azure-iot-edge-device-with-x509-certificate-authentication"></a>使用 x.509 憑證驗證設定 Azure IoT Edge 裝置
 
@@ -26,17 +26,17 @@ ms.locfileid: "92048180"
 
 針對手動布建，您有兩個選項可驗證 IoT Edge 裝置：
 
-* **對稱金鑰**：當您在 IoT 中樞中建立新的裝置身分識別時，服務會建立兩個金鑰。 您可以將其中一個金鑰放在裝置上，並在驗證時向 IoT 中樞顯示金鑰。
+* **對稱金鑰** ：當您在 IoT 中樞中建立新的裝置身分識別時，服務會建立兩個金鑰。 您可以將其中一個金鑰放在裝置上，並在驗證時向 IoT 中樞顯示金鑰。
 
   這種驗證方法會更快速地開始使用，但不是安全的。
 
-* **X.509 自我簽署**：您會建立兩個 x.509 身分識別憑證，並將其放在裝置上。 當您在 IoT 中樞中建立新的裝置身分識別時，您會提供這兩個憑證的指紋。 當裝置向 IoT 中樞進行驗證時，它會呈現其憑證，而 IoT 中樞可以驗證它們是否符合指紋。
+* **X.509 自我簽署** ：您會建立兩個 x.509 身分識別憑證，並將其放在裝置上。 當您在 IoT 中樞中建立新的裝置身分識別時，您會提供這兩個憑證的指紋。 當裝置向 IoT 中樞進行驗證時，它會呈現其憑證，而 IoT 中樞可以驗證它們是否符合指紋。
 
   這種驗證方法較為安全，建議用於生產案例。
 
 本文將逐步解說使用 x.509 憑證驗證的註冊和布建程式。 如果您想要瞭解如何使用對稱金鑰來設定裝置，請參閱 [使用對稱金鑰驗證設定 Azure IoT Edge 裝置](how-to-manual-provision-symmetric-key.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 遵循本文中的步驟之前，您應該已在其上安裝 IoT Edge 執行時間的裝置。 如果沒有，請依照 [安裝或卸載 Azure IoT Edge 運行](how-to-install-iot-edge.md)時間中的步驟執行。
 
@@ -44,9 +44,24 @@ ms.locfileid: "92048180"
 
 ## <a name="create-certificates-and-thumbprints"></a>建立憑證和指紋
 
+裝置身分識別憑證是透過憑證授權單位單位（CA） x.509 憑證授權單位單位 (CA) 憑證的分葉憑證。 裝置身分識別憑證必須具有其一般名稱 (CN) 設定為您想要裝置在 IoT 中樞內擁有的裝置識別碼。
 
+裝置身分識別憑證僅用於布建 IoT Edge 裝置，以及使用 Azure IoT 中樞驗證裝置。 它們不會簽署憑證，與 IoT Edge 裝置提供給模組或分葉裝置以進行驗證的 CA 憑證不同。 如需詳細資訊，請參閱 [Azure IoT Edge 憑證使用方式詳細資料](iot-edge-certs.md)。
 
-<!-- TODO -->
+建立裝置身分識別憑證之後，您應該會有兩個檔案： .cer 或 pem 檔案，其中包含憑證的公開部分，以及副檔名為 .cer 或 pem 檔案的憑證的私密金鑰。
+
+您需要下列檔案，才能使用 x.509 進行手動布建：
+
+* 兩組裝置身分識別憑證和私密金鑰憑證。 IoT Edge 執行時間提供一組憑證/金鑰檔。
+* 從這兩個裝置身分識別憑證取得的指紋。 憑證指紋值為 40-SHA-1 雜湊的十六進位字元或 SHA-256 雜湊的 64-十六進位字元。 在註冊裝置時，會提供兩個指紋給 IoT 中樞。
+
+如果您沒有可用的憑證，您可以 [建立示範憑證來測試 IoT Edge 的裝置功能](how-to-create-test-certificates.md)。 遵循該文章中的指示來設定憑證建立腳本、建立根 CA 憑證，然後建立兩個 IoT Edge 的裝置身分識別憑證。
+
+從憑證取出指紋的其中一種方式是使用下列 openssl 命令：
+
+```cmd
+openssl x509 -in <certificate filename>.pem -text -fingerprint
+```
 
 ## <a name="register-a-new-device"></a>註冊新裝置
 
@@ -54,7 +69,7 @@ ms.locfileid: "92048180"
 
 若為 x.509 憑證驗證，則會以從您的裝置身分識別憑證取得的 *指紋* 形式來提供此資訊。 在裝置註冊時，系統會將這些指紋提供給 IoT 中樞，讓服務可以在裝置連線時辨識該裝置。
 
-您可以使用數個工具在 IoT 中樞註冊新的 IoT Edge 裝置，並上傳其憑證指紋。 
+您可以使用數個工具在 IoT 中樞註冊新的 IoT Edge 裝置，並上傳其憑證指紋。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -68,7 +83,7 @@ Azure 訂閱的免費或標準 [IoT 中樞](../iot-hub/iot-hub-create-through-po
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，然後瀏覽至 IoT 中樞。
 
-1. 在左窗格中，從功能表中選取 **IoT Edge** ，然後選取 [ **新增 IoT Edge 裝置**]。
+1. 在左窗格中，從功能表中選取 **IoT Edge** ，然後選取 [ **新增 IoT Edge 裝置** ]。
 
    ![從 Azure 入口網站新增 IoT Edge 裝置](./media/how-to-manual-provision-symmetric-key/portal-add-iot-edge-device.png)
 
@@ -121,7 +136,7 @@ Azure 訂閱的免費或標準 [IoT 中樞](../iot-hub/iot-hub-create-through-po
 
 新增旗標 `--edge-enabled` 或 `--ee` 只列出 IoT 中樞內 IoT Edge 裝置。
 
-任何註冊為 IoT Edge 裝置的裝置，其 **capabilities.iotEdge** 屬性都會設定成 **true**。
+任何註冊為 IoT Edge 裝置的裝置，其 **capabilities.iotEdge** 屬性都會設定成 **true** 。
 
 --- 
 
@@ -141,9 +156,9 @@ Azure 訂閱的免費或標準 [IoT 中樞](../iot-hub/iot-hub-create-through-po
 
 1. 尋找檔案的 [布建設定] 區段。 
 
-1. **使用連接字串區段來批註手動**布建設定。
+1. **使用連接字串區段來批註手動** 布建設定。
 
-1. **使用 x.509 身分識別憑證**區段取消批註手動布建設定。 請確定布建 **：** 行沒有先前的空格，而且嵌套的專案是以兩個空格縮排。
+1. **使用 x.509 身分識別憑證** 區段取消批註手動布建設定。 請確定布建 **：** 行沒有先前的空格，而且嵌套的專案是以兩個空格縮排。
 
    ```yml
    # Manual provisioning configuration using a connection string
@@ -160,10 +175,10 @@ Azure 訂閱的免費或標準 [IoT 中樞](../iot-hub/iot-hub-create-through-po
 
 1. 更新下欄欄位：
 
-   * **iothub_hostname**：裝置將連接的 IoT 中樞主機名稱。 例如 `{IoT hub name}.azure-devices.net`。
-   * **device_id**：您在註冊裝置時所提供的識別碼。
-   * **identity_cert**：裝置上身分識別憑證的 URI。 例如 `file:///path/identity_certificate.pem`。
-   * **identity_pk**：提供的身分識別憑證之私密金鑰檔案的 URI。 例如 `file:///path/identity_key.pem`。
+   * **iothub_hostname** ：裝置將連接的 IoT 中樞主機名稱。 例如： `{IoT hub name}.azure-devices.net`。
+   * **device_id** ：您在註冊裝置時所提供的識別碼。
+   * **identity_cert** ：裝置上身分識別憑證的 URI。 例如： `file:///path/identity_certificate.pem`。
+   * **identity_pk** ：提供的身分識別憑證之私密金鑰檔案的 URI。 例如： `file:///path/identity_key.pem`。
 
 1. 儲存並關閉檔案。
 
@@ -202,10 +217,10 @@ Azure 訂閱的免費或標準 [IoT 中樞](../iot-hub/iot-hub-create-through-po
 
 3. 出現提示時，請提供下列資訊：
 
-   * **IotHubHostName**：裝置將連接的 IoT 中樞主機名稱。 例如 `{IoT hub name}.azure-devices.net`。
-   * **DeviceId**：您在註冊裝置時所提供的識別碼。
-   * **X509IdentityCertificate**：裝置上身分識別憑證的絕對路徑。 例如 `C:\path\identity_certificate.pem`。
-   * **X509IdentityPrivateKey**：所提供身分識別憑證之私密金鑰檔案的絕對路徑。 例如 `C:\path\identity_key.pem`。
+   * **IotHubHostName** ：裝置將連接的 IoT 中樞主機名稱。 例如： `{IoT hub name}.azure-devices.net`。
+   * **DeviceId** ：您在註冊裝置時所提供的識別碼。
+   * **X509IdentityCertificate** ：裝置上身分識別憑證的絕對路徑。 例如： `C:\path\identity_certificate.pem`。
+   * **X509IdentityPrivateKey** ：所提供身分識別憑證之私密金鑰檔案的絕對路徑。 例如： `C:\path\identity_key.pem`。
 
 當您手動布建裝置時，您可以使用其他參數來修改進程，包括：
 
@@ -218,6 +233,6 @@ Azure 訂閱的免費或標準 [IoT 中樞](../iot-hub/iot-hub-create-through-po
 
 [!INCLUDE [Verify and troubleshoot installation](../../includes/iot-edge-verify-troubleshoot-install.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 繼續 [部署 IoT Edge 課程模組](how-to-deploy-modules-portal.md) ，以瞭解如何將模組部署到您的裝置。

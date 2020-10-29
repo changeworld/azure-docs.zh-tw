@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad1567a3a6cba2c2fbc519ffe5d384aba25ab51d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec29b6489712eeb67783aef03261a3606a390125
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88648984"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926609"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure 虛擬機器支援案例上的 SAP 工作負載
 在 Azure 中設計 SAP NetWeaver、Business one `Hybris` 或 S/4HANA 系統架構，為各種不同的架構和工具提供許多不同的機會，讓您可以使用這些不同的架構和工具來取得可擴充、有效率且高可用性的部署。 但相依于所使用的作業系統或 DBMS，有一些限制。 此外，並非所有支援內部部署的案例都是在 Azure 中以相同的方式支援。 本檔將引導您使用 Azure Vm，以提供支援的非高可用性設定和高可用性設定和架構。 對於 [Hana 大型實例](./hana-overview-architecture.md)所支援的案例，請參閱 [適用于 hana 大型實例的支援案例](./hana-supported-scenario.md)。 
@@ -46,7 +46,7 @@ SAP 2 層設定會被視為是在相同伺服器或 VM 上執行的 SAP DBMS 和
 
 圖形化標記法如下所示：
 
-![簡單的2層設定](./media/sap-planning-supported-configurations/three-tier-simple-configuration.png)
+![顯示簡單的三層式設定的圖表。](./media/sap-planning-supported-configurations/three-tier-simple-configuration.png)
 
 這種類型的設定可在 Windows、Red Hat、SUSE 和 Oracle Linux （適用于 SQL Server、Oracle、Db2、SAP Hana、maxDB 和 SAP ASE 的 DBMS 系統）中，用於生產和非生產案例。 這是 [AZURE HANA 大型實例](./hana-overview-architecture.md)的預設部署設定。 為了簡化，我們並未區別 sap 中央服務與 sap 應用層中的 SAP 對話實例。 在這種簡單的三層式設定中，不會有 SAP Central Services 的高可用性保護。
 
@@ -83,7 +83,7 @@ HANA 大型實例的磁片設定已設定，並在 [Hana 大型實例的支援�
 
 在 Azure Vm 中執行多個 SAP 對話方塊實例的三層式設定下，可能會如下所示：
 
-![一個單位中的多個 DBMS 實例](./media/sap-planning-supported-configurations/multiple-dialog-instances.png)
+![此圖顯示在 Azure Vm 中執行多個 SAP 對話方塊實例的三層式設定。](./media/sap-planning-supported-configurations/multiple-dialog-instances.png)
 
 為了簡化，我們並未區別 sap 中央服務與 sap 應用層中的 SAP 對話實例。 在這種簡單的三層式設定中，不會有 SAP Central Services 的高可用性保護。 若為生產系統，則不建議將 SAP Central Services 保持未受保護。 如需有關所謂的詳細資訊，請參閱 SAP 中央實例的多重 SID 設定和這類多重 SID 設定的高可用性，請參閱本檔稍後的章節。
 
@@ -208,7 +208,7 @@ SAP Central Services 是 SAP 設定的第二次失敗點。 因此，您也需�
 
 具有排入佇列複寫伺服器架構上的多重 SID 叢集看起來像
 
-![DBMS 和 ASCS HA 設定](./media/sap-planning-supported-configurations/high-available-multi-system-configuration.png)
+![顯示具有排入佇列複寫伺服器之多重 SID 叢集的圖表。](./media/sap-planning-supported-configurations/high-available-multi-system-configuration.png)
 
 
 ## <a name="sap-hana-scale-out-scenarios"></a>SAP Hana 相應放大案例
@@ -278,7 +278,7 @@ SAP Hana 的向外延展案例支援 [SAP Hana 硬體目錄](https://www.sap.com
 
 
 ## <a name="non-supported-scenario"></a>不支援的案例
-Azure 架構上的 SAP 工作負載不支援案例清單。 「**不支援**」表示 SAP 和 Microsoft 將無法支援這些設定，且需要延遲至最終相關的協力廠商，以提供軟體來建立這類架構。 其中兩個類別為：
+Azure 架構上的 SAP 工作負載不支援案例清單。 「 **不支援** 」表示 SAP 和 Microsoft 將無法支援這些設定，且需要延遲至最終相關的協力廠商，以提供軟體來建立這類架構。 其中兩個類別為：
 
 - 存放裝置軟設備： Azure marketplace 中提供了一些儲存體軟體設備。 有些廠商會提供自己的檔，說明如何在 Azure 上使用與 SAP 軟體相關的存放裝置軟設備。 這些存放裝置軟設備的廠商必須提供支援此類存放裝置軟設備的設定或部署。 這項事實也會在 [SAP 支援附注中指出 #2015553](https://launchpad.support.sap.com/#/notes/2015553)
 - 高可用性架構： Azure 上的 SAP 工作負載只有 Pacemaker 和 Windows Server 容錯移轉叢集支援高可用性架構。 如先前所述，將會說明 SIOS 的解決方案， `Datakeeper` 並記載于 Microsoft。 不過，必須 `Datakeeper` 透過 sios 來支援 sios 的元件，因為廠商提供這些元件。 SAP 也列出各種 SAP 附注中的其他經認證的高可用性架構。 其中有些是由 Azure 的協力廠商廠商認證。 不過，支援使用這些產品的設定必須由產品廠商提供。 不同的廠商在 SAP 支援流程中有不同的整合。 在決定在 Azure 上部署的 SAP 設定中使用該產品之前，您應該先瞭解哪些支援流程最適合特定廠商。

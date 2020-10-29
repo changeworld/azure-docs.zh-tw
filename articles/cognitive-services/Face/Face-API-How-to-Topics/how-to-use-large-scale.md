@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5341c2613624c6a52f1649dcd8a64b6746b84f67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b35b66615bd5c577dd73faca77d3ea20468442f8
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332384"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913512"
 ---
 # <a name="example-use-the-large-scale-feature"></a>範例：使用大型功能
 
@@ -232,7 +232,7 @@ LargePersonGroup 或 LargeFaceList 中的人員或臉部只有在定型後才可
 
 如果可以接受相對較長的延遲，就不需要在新增資料後立即觸發定型作業。 可以改為將「定型」作業從主要邏輯中分割出來，而以定期方式觸發。 此策略適用於可接受延遲的動態案例。 它可以套用至靜態案例，以進一步降低定型頻率。
 
-假設有一個類似於 `TrainLargeFaceList` 的 `TrainLargePersonGroup` 函式。 透過叫用 `System.Timers` 中的 [`Timer`](https://msdn.microsoft.com/library/system.timers.timer(v=vs.110).aspx) \(部分機器翻譯\) 類別，以在 LargePersonGroup 上進行獨立定型的一般實作為：
+假設有一個類似於 `TrainLargeFaceList` 的 `TrainLargePersonGroup` 函式。 透過叫用 `System.Timers` 中的 [`Timer`](/dotnet/api/system.timers.timer) \(部分機器翻譯\) 類別，以在 LargePersonGroup 上進行獨立定型的一般實作為：
 
 ```csharp
 private static void Main()

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: eba175eb831ef0c472c2e11d2d03f134a0d3b052
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8e24dd6cb8a1fa90f1a6caf9117ab3c344c00b12
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547668"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913869"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-cli"></a>使用 Azure CLI 管理適用於 PostgreSQL 的 Azure 資料庫彈性的伺服器
 
@@ -20,7 +20,7 @@ ms.locfileid: "92547668"
 
 本文說明如何管理您在 Azure 中部署的彈性伺服器。 管理工作包括計算和儲存體調整、管理員密碼重設，以及查看伺服器詳細資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。 本文需要您以本機方式執行 Azure CLI 2.0 版或更新版本。 若要查看所安裝的版本，請執行 `az --version` 命令。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 您必須使用 [az login](/cli/azure/reference-index#az-login) 命令登入您的帳戶。 請注意 **id** 屬性，這是指您的 Azure 帳戶的 **訂用帳戶識別碼** 。
@@ -40,7 +40,7 @@ az account set --subscription <subscription id>
 
 ## <a name="scale-compute-and-storage"></a>調整計算和儲存體
 
-您可以使用下列命令，輕鬆地擴大計算層級、虛擬核心和儲存體。 您可以查看所有伺服器操作，您可以執行 [az postgres 有彈性的伺服器伺服器總覽](https://azure.microsoft.com/services/postgresql/)
+您可以使用下列命令，輕鬆地擴大計算層級、虛擬核心和儲存體。 您可以查看所有伺服器操作，您可以執行 [az postgres 有彈性的伺服器伺服器總覽](https://docs.microsoft.com/cli/azure/postgres/flexible-server)
 
 ```azurecli-interactive
 az postgres flexible-server update --resource-group myresourcegroup --name mydemoserver --sku-name Standard_D4ds_v3 --storage-size 6144
@@ -123,7 +123,7 @@ az postgres flexible-server update --resource-group myresourcegroup --name mydem
 
 ## <a name="delete-a-server"></a>刪除伺服器
 
-如果您只想要刪除于 postgresql 彈性伺服器，您可以執行 [az postgres 彈性伺服器刪除](/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) 命令。
+如果您只想要刪除于 postgresql 彈性伺服器，您可以執行 [az postgres 彈性伺服器刪除](https://docs.microsoft.com/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) 命令。
 
 ```azurecli-interactive
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver

@@ -3,12 +3,12 @@ title: Azure Batch 中的節點和集區
 description: 從開發觀點了解計算節點和集區，以及如何在 Azure Batch 工作流程中使用。
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: a6422976f5362e9ff32cd41cc167a00441ab7aec
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c85c50d0b30e30563390d2ffb05942f199047d67
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371438"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913801"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch 中的節點和集區
 
@@ -66,13 +66,13 @@ Batch 中有兩種類型的集區設定可供使用。
 
 ### <a name="virtual-machine-configuration"></a>虛擬機器設定
 
-**虛擬機器設定**會指定集區是由 Azure 虛擬機器所組成。 這些 VM 可能會從 Linux 或 Windows 映像加以建立。
+**虛擬機器設定** 會指定集區是由 Azure 虛擬機器所組成。 這些 VM 可能會從 Linux 或 Windows 映像加以建立。
 
-以虛擬機器設定作為基礎建立集區時，您不僅需要指定節點的大小和用來建立這些節點的映像來源，也必須在節點上安裝**虛擬機器映像參考**和 Batch **節點代理程式 SKU**。 如需指定這些集區屬性的詳細資訊，請參閱 [在 Azure Batch 集區中佈建 Linux 計算節點](batch-linux-nodes.md)。 您可以選擇性地將一或多個空的資料磁碟連結至從 Marketplace 映像建立的集區 VM，或是在自訂映像中包含資料磁碟，以建立 VM。 包含資料磁碟時，您必須在 VM 內掛接並格式化磁碟，才能使用這些磁碟。
+[Batch-節點代理](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)程式是在集區中的每個節點上執行的程式，並在節點與 Batch 服務之間提供命令和控制介面。 節點代理程式對不同作業系統有不同的實作方式，稱為 SKU。 以虛擬機器設定作為基礎建立集區時，您不僅需要指定節點的大小和用來建立這些節點的映像來源，也必須在節點上安裝 **虛擬機器映像參考** 和 Batch **節點代理程式 SKU** 。 如需指定這些集區屬性的詳細資訊，請參閱 [在 Azure Batch 集區中佈建 Linux 計算節點](batch-linux-nodes.md)。 您可以選擇性地將一或多個空的資料磁碟連結至從 Marketplace 映像建立的集區 VM，或是在自訂映像中包含資料磁碟，以建立 VM。 包含資料磁碟時，您必須在 VM 內掛接並格式化磁碟，才能使用這些磁碟。
 
 ### <a name="cloud-services-configuration"></a>雲端服務設定
 
-**雲端服務設定**會指定集區是由 Azure 雲端服務節點所組成。 雲端服務「只」提供 Windows 計算節點。
+**雲端服務設定** 會指定集區是由 Azure 雲端服務節點所組成。 雲端服務「只」提供 Windows 計算節點。
 
 雲端服務組態集區可用的作業系統列於 [Azure 客體 OS 版次與 SDK 相容性矩陣](../cloud-services/cloud-services-guestos-update-matrix.md)。 建立包含雲端服務節點的集區時，您需要指定節點大小及其「作業系統系列」(這會決定作業系統所安裝的 .NET 版本)。 雲端服務部署至 Azure 的速度比執行 Windows 的虛擬機器還快。 如果您需要 Windows 計算節點的集區，可能會發現雲端服務提供了部署時間方面的效能優勢。
 
@@ -80,7 +80,7 @@ Batch 中有兩種類型的集區設定可供使用。
 
 ### <a name="node-agent-skus"></a>節點代理程式 SKU
 
-當您建立一個集區時，必須選取適當的 **nodeAgentSkuId**，視您 VHD 的基礎映像 OS 而定。 您可以呼叫[列出受支援節點代理程式 SKU 的清單](/rest/api/batchservice/list-supported-node-agent-skus)作業，藉此取得對應至其 OS 映像參考的可用節點代理程式 SKU 識別碼。
+當您建立一個集區時，必須選取適當的 **nodeAgentSkuId** ，視您 VHD 的基礎映像 OS 而定。 您可以呼叫[列出受支援節點代理程式 SKU 的清單](/rest/api/batchservice/list-supported-node-agent-skus)作業，藉此取得對應至其 OS 映像參考的可用節點代理程式 SKU 識別碼。
 
 ### <a name="custom-images-for-virtual-machine-pools"></a>適用於虛擬機器集區的自訂映像
 
@@ -127,7 +127,7 @@ Azure 多餘的容量不足時，可能會佔用低優先順序的節點。 如�
 
 - **時間度量** 是以指定時數內每隔五分鐘收集的統計資料為基礎。
 - **資源度量** 是以 CPU 使用量、頻寬使用量、記憶體使用量和節點的數目為基礎。
-- **工作計量**是以工作狀態為基礎，例如 [作用中] \(已排入佇列)、[執行中] 或 [已完成]。
+- **工作計量** 是以工作狀態為基礎，例如 [作用中] \(已排入佇列)、[執行中] 或 [已完成]。
 
 當自動調整減少集區中的計算節點數目時，您必須考量如何處理在減少作業時正在執行的工作。 為了配合這一點，Batch 會提供您可以納入公式中的[「節點解除配置選項」](/rest/api/batchservice/pool/removenodes#computenodedeallocationoption)。 例如，您可以指定執行中的工作立即停止，然後重新排入佇列以便在另一個節點上執行，或允許先完成再從集區中移除節點。 請注意，將節點解除配置選項設定為 `taskcompletion` 或 `retaineddata` 會避免集區調整大小作業，直到所有工作都完成，或所有工作保留期間都已過期為止。
 
@@ -148,7 +148,7 @@ Azure 多餘的容量不足時，可能會佔用低優先順序的節點。 如�
 
 大部分情況下，工作會獨立運作，並不需要彼此通訊。 不過，有一些工作必須進行通訊的應用程式，例如 [MPI 案例](batch-mpi.md)。
 
-您可以設定集區來允許**節點間通訊**，以便集區內的節點可在執行階段進行通訊。 啟用節點間通訊時，[雲端服務組態] 集區中的節點可以在超過 1100 個連接埠上彼此通訊，而且 [虛擬機器組態] 集區並不會限制任何連接埠的流量。
+您可以設定集區來允許 **節點間通訊** ，以便集區內的節點可在執行階段進行通訊。 啟用節點間通訊時，[雲端服務組態] 集區中的節點可以在超過 1100 個連接埠上彼此通訊，而且 [虛擬機器組態] 集區並不會限制任何連接埠的流量。
 
 啟用節點間通訊也會影響叢集內的節點位置，且由於部署限制，可能會限制集區中的節點數目上限。 如果您的應用程式不需要節點之間的通訊，Batch 服務可將許多不同叢集和資料中心的大量節點配置給集區，以發揮更強大的平行處理能力。
 

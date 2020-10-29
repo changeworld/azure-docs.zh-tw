@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f4e429d9c5eeee382d59a294a11204f674b1f546
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 2d5a6949c5dbe1e4c3c668dcb9eae6e51e5806f7
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911506"
+ms.locfileid: "92926031"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>適用於 Linux 的金鑰保存庫虛擬機器擴充功能
 
@@ -216,12 +216,11 @@ Azure CLI 可以用來將金鑰保存庫 VM 擴充功能部署到現有的虛擬
   - 部署時必須存在 
   - 您必須使用受控識別來設定 VM/VMSS 身分識別的 Key Vault 存取原則。 瞭解 [如何驗證 Key Vault](../../key-vault/general/authentication.md) 並 [指派 Key Vault 存取原則](../../key-vault/general/assign-access-policy-cli.md)。
 
-## <a name="troubleshoot-and-support"></a>疑難排解與支援
-
 ### <a name="frequently-asked-questions"></a>常見問題集
 
 * 您可以設定的 observedCertificates 數目是否有限制？
   否，Key Vault VM 擴充功能沒有 observedCertificates 數目的限制。
+
 
 ### <a name="troubleshoot"></a>疑難排解
 
@@ -243,6 +242,14 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 /var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/*
 /var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-<most recent version>/config/*
 ```
+### <a name="using-symlink"></a>使用符號符號
+
+符號連結或符號連結基本上是先進的快捷方式。 若要避免監視資料夾並自動取得最新的憑證，您可以使用此符號 `([VaultName].[CertificateName])` 來取得 Linux 上的最新憑證版本。
+
+### <a name="frequently-asked-questions"></a>常見問題集
+
+* 您可以設定的 observedCertificates 數目是否有限制？
+  否，Key Vault VM 擴充功能沒有 observedCertificates 數目的限制。
 
 ### <a name="support"></a>支援
 
