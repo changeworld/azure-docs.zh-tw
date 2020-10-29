@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 2c4349662b06ff281ef028c833c6c43dd2707051
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 5a6fc8e9b316f7c4740ee27fe72c5f056f071d73
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905102"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912685"
 ---
 # <a name="configure-ddos-attack-mitigation-reports-and-flow-logs"></a>設定 DDoS 攻擊風險降低報告和流量記錄 
 
@@ -91,6 +91,22 @@ Azure DDoS 保護標準透過 DDoS 攻擊分析，提供詳細的攻擊見解和
 ![DDoS 保護活頁簿](./media/ddos-attack-telemetry/ddos-attack-analytics-workbook.png)
 
 只有在公用 IP 位址的虛擬網路上啟用 DDoS 保護標準時，攻擊分析才會運作。 
+
+## <a name="sample-log-outputs"></a>範例記錄檔輸出
+
+下列螢幕擷取畫面是範例記錄檔輸出：
+
+### <a name="ddosmitigationflowlogs"></a>DDoSMitigationFlowLogs
+
+![DDoS 保護 DDoSMitigationFlowLogs](./media/ddos-attack-telemetry/ddos-mitigation-flow-logs.png)
+
+### <a name="ddosprotectionnotifications"></a>DDoSProtectionNotifications
+
+![DDoS 保護 DDoSProtectionNotifications](./media/ddos-attack-telemetry/ddos-protection-notifications.png)
+
+### <a name="ddosmitigationreports"></a>DDoSMitigationReports
+
+![DDoS 保護 DDoSMitigationReports](./media/ddos-attack-telemetry/ddos-mitigation-reports.png)
 
 ## <a name="next-steps"></a>後續步驟
 

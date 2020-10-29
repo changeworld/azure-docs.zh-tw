@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 6ddb2ecef3a70ed6a56b404e64cef5b78b7abd13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb0aff6692a12ca7fb00090c0585e46f37c84ace
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980477"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913019"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>威脅模型化工具使用者入門
 
-Microsoft Threat Modeling Tool 2018 已於 2018 年 9 月正式發行，**[按一下即可免費下載](https://aka.ms/threatmodelingtool)**。 傳遞機制中的變更可讓我們在客戶每次開啟它時，將最新的增強功能和錯誤修正傳送給客戶，讓它更容易維護及使用。
+Microsoft Threat Modeling Tool 2018 已於 2018 年 9 月正式發行， **[按一下即可免費下載](https://aka.ms/threatmodelingtool)** 。 傳遞機制中的變更可讓我們在客戶每次開啟它時，將最新的增強功能和錯誤修正傳送給客戶，讓它更容易維護及使用。
 本文章會引導您開始使用 Microsoft SDL 威脅模型化方法的程序，並且示範如何使用工具來開發很棒的威脅模型，作為安全性程序的骨幹。
 
-這篇文章是根據 SDL 威脅模型化方法的現有知識所建置的。 如需快速檢閱，請參閱**[威脅模型化 Web 應用程式](https://msdn.microsoft.com/library/ms978516.aspx)** 和 2006 年發佈的**[使用 STRIDE 方法發現安全性缺陷](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** MSDN 文件的封存版本。
+這篇文章是根據 SDL 威脅模型化方法的現有知識所建置的。 如需快速檢閱，請參閱 **[威脅模型化 Web 應用程式](https://msdn.microsoft.com/library/ms978516.aspx)** 和 2006 年發佈的 **[使用 STRIDE 方法發現安全性缺陷](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** MSDN 文件的封存版本。
 
 若要快速摘要，方法牽涉到建立圖表、識別威脅、緩和它們及驗證每個風險降低。 以下反白顯示此程序的圖表：
 
@@ -43,9 +43,9 @@ Microsoft Threat Modeling Tool 2018 已於 2018 年 9 月正式發行，**[按�
 
 | 元件                                   | 詳細資料                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **意見反應、建議和問題按鈕** | 針對所有 SDL 的事項，將您導向 **[MSDN 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=sdlprocess)**。 它會讓您閱讀其他使用者做了什麼，以及因應措施和建議。 如果您仍然找不到您要尋找的項目，請傳送電子郵件至 tmtextsupport@microsoft.com，讓我們的支援小組協助您                                                                                                                            |
+| **意見反應、建議和問題按鈕** | 針對所有 SDL 的事項，將您導向 **[MSDN 論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=sdlprocess)** 。 它會讓您閱讀其他使用者做了什麼，以及因應措施和建議。 如果您仍然找不到您要尋找的項目，請傳送電子郵件至 tmtextsupport@microsoft.com，讓我們的支援小組協助您                                                                                                                            |
 | **建立模型**                          | 開啟空白的畫布，讓您繪製圖表。 請務必選取您想要用於模型的範本                                                                                                                                                                                                                                                                                                                                                                       |
-| **新模型的範本**                 | 您必須在建立模型之前選取要使用哪個範本。 我們的主要範本是 Azure 威脅模型範本範本，其中包含 Azure 特定樣板、威脅和風險降低。 對於一般模型，請從下拉式功能表選取 SDL TM 知識庫。 想要建立您自己的範本或為所有使用者提交新範本嗎？ 請參閱我們的**[範本存放庫](https://github.com/Microsoft/threat-modeling-templates)** GitHub 分頁，以進一步了解                              |
+| **新模型的範本**                 | 您必須在建立模型之前選取要使用哪個範本。 我們的主要範本是 Azure 威脅模型範本範本，其中包含 Azure 特定樣板、威脅和風險降低。 對於一般模型，請從下拉式功能表選取 SDL TM 知識庫。 想要建立您自己的範本或為所有使用者提交新範本嗎？ 請參閱我們的 **[範本存放庫](https://github.com/Microsoft/threat-modeling-templates)** GitHub 分頁，以進一步了解                              |
 | **開啟模型**                            | <p>會開啟先前儲存的威脅模型。 如果您需要開啟最新的檔案，「最近開啟的模型」功能是很好的選項。 當您將滑鼠停留在選取項目時，您會發現有 2 種方法可以開啟模型：</p><p><ul><li>從這部電腦開啓 – 使用本機儲存體開啟檔案的傳統方法</li><li>從 OneDrive 開啟 – 小組可以使用 OneDrive 中的資料夾，在單一位置中儲存及共用他們的所有威脅模型，以協助增進生產力和共同作業</li></ul></p> |
 | **消費者入門指南**                   | 開啟 **[Microsoft 威脅模型化工具](threat-modeling-tool.md)** 主要分頁                                                                                                                                                                                                                                                                                                                                                                                            |
 
@@ -80,7 +80,7 @@ Microsoft Threat Modeling Tool 2018 已於 2018 年 9 月正式發行，**[按�
 > - 他們將命令傳送給我們的 Web 伺服器 — 圓形
 > - Web 伺服器已諮詢資料庫 (兩條平行線)
 
-Ricardo 剛剛為 Cristina 顯示的是 DFD，**[資料流程圖表](https://en.wikipedia.org/wiki/Data_flow_diagram)** 的簡稱。 威脅模型化工具可讓使用者指定信任界限，以紅色虛線表示，來顯示控制不同實體的位置。 例如，IT 系統管理員需要 Active Directory 系統用於驗證目的，因此 Active Directory 會在其控制之外。
+Ricardo 剛剛為 Cristina 顯示的是 DFD， **[資料流程圖表](https://en.wikipedia.org/wiki/Data_flow_diagram)** 的簡稱。 威脅模型化工具可讓使用者指定信任界限，以紅色虛線表示，來顯示控制不同實體的位置。 例如，IT 系統管理員需要 Active Directory 系統用於驗證目的，因此 Active Directory 會在其控制之外。
 
 > Cristina：就我看來是正確的。 威脅呢？
 > Ricardo：我來示範給您看。
@@ -101,7 +101,7 @@ Ricardo 從選取清單上的第一個項目開始。 排程狀況如下：
 
 第二，威脅的其他資訊已顯示在威脅屬性視窗中
 
-![互動資訊](./media/threat-modeling-tool-getting-started/interactioninfo.png)
+![螢幕擷取畫面顯示威脅屬性視窗，其中包含標題、類別、描述、互動和優先順序。](./media/threat-modeling-tool-getting-started/interactioninfo.png)
 
 產生的潛在威脅可協助他了解可能的設計缺陷。 STRIDE 分類讓他了解潛在攻擊媒介的概念，而額外描述則確切地告訴他什麼是錯誤的，以及緩和這種情況的可能方式。 他可以使用可編輯欄位在理由詳細資料中寫入附註，或根據其組織的 錯誤列來變更優先順序評等。
 
@@ -118,7 +118,7 @@ Ricardo 進入 [資訊洩漏] 底下的威脅時，他理解到存取控制計�
 
 一旦 Ricardo 說明完整份清單且 Cristina 新增重要注意事項，風險降低/理由、優先順序和狀態會變更，他選取 [報告] -> [建立完整報告] -> [儲存報告]，這樣會列印出良好的清單供他與同事瀏覽，確保已實作適當的安全性工作。
 
-![互動資訊](./media/threat-modeling-tool-feature-overview/report.png)
+![螢幕擷取畫面顯示代表性的威脅模型報告。](./media/threat-modeling-tool-feature-overview/report.png)
 
 如果 Ricardo 想要改為共用檔案，他可以籍由在組織的 OneDrive 帳戶中儲存，來完成這項操作。 一旦他那樣做，就可以複製文件連結，並且與同事共用。 
 

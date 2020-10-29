@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 1aba86efb9ea76fbf060e80b47f9f2f6cdf8ee71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69a66c49d64ab9ba589050e1f20399f7f193b76e
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91872046"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912951"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>內容仲裁審核、工作流程和作業
 
@@ -35,7 +35,7 @@ ms.locfileid: "91872046"
 
 ### <a name="view-workflows"></a>查看工作流程
 
-若要查看您現有的工作流程，請移至[審核工具](https://contentmoderator.cognitive.microsoft.com/)，然後選取 [**設定**  >  **工作流程**]。
+若要查看您現有的工作流程，請移至 [審核工具](https://contentmoderator.cognitive.microsoft.com/)，然後選取 [ **設定**  >  **工作流程** ]。
 
 ![預設工作流程](images/default-workflow-listed.PNG)
 
@@ -72,8 +72,8 @@ ms.locfileid: "91872046"
 
 若要開始使用作業，請參閱 [REST API 指南](./try-review-api-job.md) 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 試用[作業 API 主控台](try-review-api-job.md)，並使用 REST API 程式碼範例。 如果您已熟悉 Visual Studio 和 C#，也請參閱[作業 .NET 快速入門](moderation-jobs-quickstart-dotnet.md)。 
-* 若為檢閱者，請開始使用[檢閱 API 主控台](try-review-api-review.md)，並使用 REST API 程式碼範例。 然後查看 [.net 快速入門](dotnet-sdk-quickstart.md)的 [評論] 區段。
+* 若為檢閱者，請開始使用[檢閱 API 主控台](try-review-api-review.md)，並使用 REST API 程式碼範例。 然後查看 [.net 快速入門](./client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)的 [評論] 區段。
 * 若為影片檢閱者，請使用[影片檢閱快速入門](video-reviews-quickstart-dotnet.md)，並了解如何[在影片檢閱中新增文字記錄](video-transcript-reviews-quickstart-dotnet.md)。

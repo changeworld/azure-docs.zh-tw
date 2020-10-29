@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: hamusa
-ms.openlocfilehash: 433f3cc29e334a9034fa073d4ace735fc7e7e3ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e7c54f47db645f218ea68ea475146143f806de1
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75725867"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912985"
 ---
 # <a name="troubleshoot-azure-migrate"></a>為 Azure Migrate 疑難排解
 
@@ -28,7 +28,7 @@ ms.locfileid: "75725867"
 
 ## <a name="machines-arent-discovered"></a>未探索到機器
 
-檢查常見的探索問題。
+檢查 [常見的探索問題](common-questions-discovery-assessment.md)。
 
 ## <a name="app-discovery-isnt-working"></a>應用程式探索無法運作
 

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: fa292f0441369ed13f3f85035a2ec8cc3f5c6723
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae49a8738ba711ac6c77f2e299852ad61f70be56
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85800086"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912900"
 ---
 # <a name="learn-text-moderation-concepts"></a>了解文字仲裁概念
 
@@ -34,7 +34,7 @@ ms.locfileid: "85800086"
 
 ## <a name="profanity"></a>不雅內容
 
-如果 API 偵測到以任何[支援的語言](Text-Moderation-API-Languages.md)表達的任何粗話字詞，這些字詞就會包含在回應中。 此回應也會包含它們在原始文字中的位置 (`Index`)。 以下範例 JSON 中的 `ListId` 係指在 [自訂字詞清單](try-terms-list-api.md) \(如果有的話\) 中找到的字詞。
+如果 API 偵測到以任何[支援的語言](./language-support.md)表達的任何粗話字詞，這些字詞就會包含在回應中。 此回應也會包含它們在原始文字中的位置 (`Index`)。 以下範例 JSON 中的 `ListId` 係指在 [自訂字詞清單](try-terms-list-api.md) \(如果有的話\) 中找到的字詞。
 
 ```json
 "Terms": [
@@ -47,13 +47,13 @@ ms.locfileid: "85800086"
 ```
 
 > [!NOTE]
-> 針對 **language** 參數，請指派 `eng` 或將其保留空白，以查看電腦輔助**分類** 回應 (預覽版功能)。 **此功能僅支援英文**。
+> 針對 **language** 參數，請指派 `eng` 或將其保留空白，以查看電腦輔助 **分類** 回應 (預覽版功能)。 **此功能僅支援英文** 。
 >
-> 針對**粗話字詞**偵測，請使用本文中所列支援語言的 [ISO 639-3 代碼](http://www-01.sil.org/iso639-3/codes.asp)或將其保留空白。
+> 針對 **粗話字詞** 偵測，請使用本文中所列支援語言的 [ISO 639-3 代碼](http://www-01.sil.org/iso639-3/codes.asp)或將其保留空白。
 
 ## <a name="classification"></a>分類
 
-內容仲裁的電腦輔助 **文字分類功能** 僅支援 **英文**，而且有助於偵測可能不想要的內容。 所標幟的內容可能是依據上下文而被評估為不當的內容。 它會傳遞每個類別的可能性，而且可能會建議人工審核。 此功能使用定型模型來識別可能的濫用、毀謗性或歧視性語言。 這包括要供審核的俚語、縮寫單字、冒犯性及刻意拼錯的單字。 
+內容仲裁的電腦輔助 **文字分類功能** 僅支援 **英文** ，而且有助於偵測可能不想要的內容。 所標幟的內容可能是依據上下文而被評估為不當的內容。 它會傳遞每個類別的可能性，而且可能會建議人工審核。 此功能使用定型模型來識別可能的濫用、毀謗性或歧視性語言。 這包括要供審核的俚語、縮寫單字、冒犯性及刻意拼錯的單字。 
 
 以下 JSON 擷取內容顯示一個範例輸出︰
 
@@ -142,7 +142,7 @@ ms.locfileid: "85800086"
 雖然預設的全域字詞清單適用於大多數案例，但您可能會想要依據業務需求特定的字詞來進行過濾。 例如，您可能會想要從使用者的文章中篩選掉任何競爭的品牌名稱。
 
 > [!NOTE]
-> 上限是 **5 個字詞清單**，其中每個清單**不可超過 10,000 個字詞**。
+> 上限是 **5 個字詞清單** ，其中每個清單 **不可超過 10,000 個字詞** 。
 >
 
 以下範例顯示相符的「清單識別碼」：
@@ -159,6 +159,6 @@ ms.locfileid: "85800086"
 
 Content Moderator 有提供一個[字詞清單 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)，其中含有可管理自訂字詞清單的作業。 請從[字詞清單 API 主控台](try-terms-list-api.md)開始著手，然後使用 REST API 程式碼範例。 此外，如果您已熟悉 Visual Studio 和 C#，請一併參閱[字詞清單 .NET 快速入門](term-lists-quickstart-dotnet.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 使用 [文字仲裁 api 主控台](try-text-api.md)測試 api。 另請參閱 [評論、工作流程和工作](./review-api.md) ，以瞭解如何設定人工審核。

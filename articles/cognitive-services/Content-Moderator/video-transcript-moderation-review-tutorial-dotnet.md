@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1f5a68bcf0069663d8ef1101407bea7ee26e9e8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1648bd9a073bca696299e9ed703536db745e7edb
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919283"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912832"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>教學課程：影片及文字記錄仲裁
 
@@ -35,7 +35,7 @@ ms.locfileid: "88919283"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- 註冊 [Content Moderator 審核工具](https://contentmoderator.cognitive.microsoft.com/)網站，並建立自訂標記。 如果您需要此步驟的說明，請參閱[使用標記](Review-Tool-User-Guide/tags.md)。
+- 註冊 [Content Moderator 審核工具](https://contentmoderator.cognitive.microsoft.com/)網站，並建立自訂標記。 如果您需要此步驟的說明，請參閱[使用標記](./review-tool-user-guide/configure.md#tags)。
 
     ![影片審核自訂標記的螢幕擷取畫面](images/video-tutorial-custom-tags.png)
 - 若要執行範例應用程式，您需要 Azure 帳戶、Azure 媒體服務資源、Azure Content Moderator 資源和 Azure Active Directory 認證。 如需有關如何取得這些資源的指示，請參閱[影片審核 API](video-moderation-api.md) 指南。
@@ -83,7 +83,7 @@ ms.locfileid: "88919283"
 如果沒有命令列引數，`Main()` 會呼叫 `GetUserInputs()`。 此方法會提示使用者輸入單一影片檔的路徑，並指定是否應產生文字記錄。
 
 > [!NOTE]
-> 主控台應用程式會使用 [Azure 媒體索引器 API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) 從已上傳視訊的音軌中產生文字記錄。結果會以 WebVTT 格式提供。 如需有關此格式的詳細資訊，請參閱 [Web 影片文字播放軌格式](https://developer.mozilla.org/docs/Web/API/WebVTT_API)。
+> 主控台應用程式會使用 [Azure 媒體索引器 API](../../media-services/previous/legacy-components.md) 從已上傳視訊的音軌中產生文字記錄。結果會以 WebVTT 格式提供。 如需有關此格式的詳細資訊，請參閱 [Web 影片文字播放軌格式](https://developer.mozilla.org/docs/Web/API/WebVTT_API)。
 
 ### <a name="initialize-and-processvideo-methods"></a>Initialize 和 ProcessVideo 方法
 
@@ -224,7 +224,7 @@ ms.locfileid: "88919283"
 如果設定 `GenerateVTT` 旗標，則也會產生影片中的音訊文字記錄。
 
 > [!NOTE]
-> 主控台應用程式會使用 [Azure 媒體索引器 API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) 從已上傳視訊的音軌中產生文字記錄。結果會以 WebVTT 格式提供。 如需有關此格式的詳細資訊，請參閱 [Web 影片文字播放軌格式](https://developer.mozilla.org/docs/Web/API/WebVTT_API)。
+> 主控台應用程式會使用 [Azure 媒體索引器 API](../../media-services/previous/legacy-components.md) 從已上傳視訊的音軌中產生文字記錄。結果會以 WebVTT 格式提供。 如需有關此格式的詳細資訊，請參閱 [Web 影片文字播放軌格式](https://developer.mozilla.org/docs/Web/API/WebVTT_API)。
 
 ## <a name="create-a-human-review"></a>建立人工審核
 
@@ -249,7 +249,7 @@ ms.locfileid: "88919283"
 
 ## <a name="process-the-transcript"></a>處理文字記錄
 
-到目前為止，本教學課程中出現的程式碼都著重於視覺內容。 語音內容檢閱是個別且選用的處理程序，它會使用從音訊產生的文字記錄 (如前面所述)。 現在該來看看文字記錄如何在檢閱程序中建立及使用。 產生文字記錄的工作會落在 [Azure 媒體索引器](https://docs.microsoft.com/azure/media-services/media-services-index-content)服務上。
+到目前為止，本教學課程中出現的程式碼都著重於視覺內容。 語音內容檢閱是個別且選用的處理程序，它會使用從音訊產生的文字記錄 (如前面所述)。 現在該來看看文字記錄如何在檢閱程序中建立及使用。 產生文字記錄的工作會落在 [Azure 媒體索引器](../../media-services/previous/media-services-index-content.md)服務上。
 
 此應用程式會執行下列工作：
 

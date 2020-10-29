@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b389841bdba107ba27371387d4a6e5d1f009d41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd813c6db9d03b0b7c84497e5b44f6ecdb591437
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88919347"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912849"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>使用 C# 分析視訊內容中的不當題材
 
@@ -29,21 +29,21 @@ ms.locfileid: "88919347"
 
 ## <a name="set-up-azure-resources"></a>設定 Azure 資源
 
-Content Moderator 的影片仲裁功能是以 Azure 媒體服務 (AMS) 中免費公開預覽**媒體處理器**的形式提供。 Azure 媒體服務是適用於整理和串流處理視訊內容的特殊化 Azure 服務。 
+Content Moderator 的影片仲裁功能是以 Azure 媒體服務 (AMS) 中免費公開預覽 **媒體處理器** 的形式提供。 Azure 媒體服務是適用於整理和串流處理視訊內容的特殊化 Azure 服務。 
 
 ### <a name="create-an-azure-media-services-account"></a>建立 Azure 媒體服務帳戶
 
-請依照[使用 Azure 入口網站建立 Azure 媒體服務帳戶](https://docs.microsoft.com/azure/media-services/media-services-portal-create-account)中的指示，來訂閱 AMS 和建立相關聯的 Azure 儲存體帳戶。 在該儲存體帳戶中，建立新的 Blob 儲存體容器。
+請依照[使用 Azure 入口網站建立 Azure 媒體服務帳戶](../../media-services/previous/media-services-portal-create-account.md)中的指示，來訂閱 AMS 和建立相關聯的 Azure 儲存體帳戶。 在該儲存體帳戶中，建立新的 Blob 儲存體容器。
 
 ### <a name="create-an-azure-active-directory-application"></a>建立 Azure Active Directory 應用程式
 
-在 Azure 入口網站中瀏覽至您新的 AMS 訂用帳戶，然後從側邊功能表選取 **API 存取**。 選取 [使用服務主體連線到 Azure 媒體服務]****。 記下 [REST API 端點]**** 欄位中的值，稍後會需要它。
+在 Azure 入口網站中瀏覽至您新的 AMS 訂用帳戶，然後從側邊功能表選取 **API 存取** 。 選取 [使用服務主體連線到 Azure 媒體服務]  。 記下 [REST API 端點]  欄位中的值，稍後會需要它。
 
-在 [Azure AD 應用程式]**** 區段中，選取 [新建]****，並為您新的 Azure AD 應用程式註冊命名 (例如 "VideoModADApp")。 按一下 [儲存]****，在設定應用程式的同時，請稍候幾分鐘。 然後，您應該會在頁面的 [Azure AD 應用程式]**** 區段底下看到您新增的應用程式註冊。
+在 [Azure AD 應用程式]  區段中，選取 [新建]  ，並為您新的 Azure AD 應用程式註冊命名 (例如 "VideoModADApp")。 按一下 [儲存]  ，在設定應用程式的同時，請稍候幾分鐘。 然後，您應該會在頁面的 [Azure AD 應用程式]  區段底下看到您新增的應用程式註冊。
 
-選取您的應用程式註冊，然後按一下其下方 [管理應用程式]**** 按鈕。 記下 [應用程式識別碼]**** 欄位中的值，稍後會需要它。 選取 [**設定**機  >  **碼**]，然後輸入新金鑰 (的描述，例如 "VideoModKey" ) 。 按一下 [儲存]****，然後留意到新的金鑰值。 複製這個字串，並將它儲存在安全的位置。
+選取您的應用程式註冊，然後按一下其下方 [管理應用程式]  按鈕。 記下 [應用程式識別碼]  欄位中的值，稍後會需要它。 選取 [ **設定** 機  >  **碼** ]，然後輸入新金鑰 (的描述，例如 "VideoModKey" ) 。 按一下 [儲存]  ，然後留意到新的金鑰值。 複製這個字串，並將它儲存在安全的位置。
 
-如需上述程序更完整的逐步解說，請參閱[利用 Azure 入口網站開始使用 Azure AD 驗證](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad)。
+如需上述程序更完整的逐步解說，請參閱[利用 Azure 入口網站開始使用 Azure AD 驗證](../../media-services/previous/media-services-portal-get-started-with-aad.md)。
 
 完成之後，您就有兩種方法可以使用影片仲裁媒體處理器。
 
@@ -55,9 +55,9 @@ Azure 媒體服務總管是方便使用的 AMS 前端。 您可以使用它來�
 
 ## <a name="create-the-visual-studio-project"></a>建立 Visual Studio 專案
 
-1. 在 Visual Studio 中建立新的**主控台應用程式 (.NET Framework)** 專案，並將它命名為 **VideoModeration**。 
+1. 在 Visual Studio 中建立新的 **主控台應用程式 (.NET Framework)** 專案，並將它命名為 **VideoModeration** 。 
 1. 如果您的解決方案中有其他專案，請選取此專案作為單一啟始專案。
-1. 取得必要的 NuGet 套件。 以滑鼠右鍵按一下 [方案總管] 中的專案，並選取 [管理 NuGet 套件]****，然後尋找並安裝下列套件：
+1. 取得必要的 NuGet 套件。 以滑鼠右鍵按一下 [方案總管] 中的專案，並選取 [管理 NuGet 套件]  ，然後尋找並安裝下列套件：
     - windowsazure.mediaservices
     - windowsazure.mediaservices.extensions
 
@@ -84,7 +84,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>設定資源參考
 
-將下列靜態欄位新增至_Program.cs_中的**Program**類別。 這些欄位持有連線到您的 AMS 訂用帳戶的必要資訊。 使用您在上述步驟中取得的值填入這些欄位。 請注意，`CLIENT_ID` 是您 Azure AD 應用程式的**應用程式識別碼**值，而 `CLIENT_SECRET` 是您為該應用程式建立的 "VideoModKey"。
+將下列靜態欄位新增至 _Program.cs_ 中的 **Program** 類別。 這些欄位持有連線到您的 AMS 訂用帳戶的必要資訊。 使用您在上述步驟中取得的值填入這些欄位。 請注意，`CLIENT_ID` 是您 Azure AD 應用程式的 **應用程式識別碼** 值，而 `CLIENT_SECRET` 是您為該應用程式建立的 "VideoModKey"。
 
 ```csharp
 // declare constants and globals
@@ -197,7 +197,7 @@ static void CreateStorageContext()
 
 ### <a name="add-the-code-to-create-azure-media-assets-from-local-file-and-blob"></a>新增程式碼以從本機檔案和 blob 建立 Azure 媒體資產
 
-內容仲裁媒體處理器會針對 Azure 媒體服務平台中的**資產**執行工作。
+內容仲裁媒體處理器會針對 Azure 媒體服務平台中的 **資產** 執行工作。
 這些方法可從本機檔案或相關聯的 blob 建立資產。
 
 ```csharp
@@ -365,9 +365,9 @@ static void StateChanged(object sender, JobStateChangedEventArgs e)
 內容仲裁工作完成後，分析 JSON 回應。 其中包含下列項目：
 
 - 影片資訊摘要
-- 以 "**fragments**" 表示的**畫面**
-- 以 "**events**" 表示**主要畫面格**，其 **reviewRecommended" (= true 或 false)"** 旗標視**成人**和**猥褻**分數而定
-- **start**、**duration**、**totalDuration** 和 **timestamp** 是以「刻度」為單位。 除以 **timescale** 以取得秒數。
+- 以 " **fragments** " 表示的 **畫面**
+- 以 " **events** " 表示 **主要畫面格** ，其 **reviewRecommended" (= true 或 false)"** 旗標視 **成人** 和 **猥褻** 分數而定
+- **start** 、 **duration** 、 **totalDuration** 和 **timestamp** 是以「刻度」為單位。 除以 **timescale** 以取得秒數。
  
 > [!NOTE]
 > - `adultScore` 代表可能有在特定情況下被視為明顯色情或成人內容存在，以及其預測分數。
@@ -427,7 +427,7 @@ static void StateChanged(object sender, JobStateChangedEventArgs e)
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 了解如何從仲裁輸出產生[影片檢閱](video-reviews-quickstart-dotnet.md)。
 
