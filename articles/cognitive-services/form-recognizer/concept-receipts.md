@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 16d90aea8edc47750dfb7e64de7b50885971f632
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 5125fff0ef8987d313c6611e4d5de08d090f2263
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893681"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913189"
 ---
 # <a name="receipt-concepts"></a>回條概念
 
@@ -449,9 +449,9 @@ Azure 表單辨識器可以使用其中一個預先建立的模型來分析收�
 
 回條包含有用的資料，可供您用來分析消費者行為和購物趨勢。
 
-收據 API 也會為 [>aibuilder 收據處理功能](https://docs.microsoft.com/ai-builder/prebuilt-receipt-processing)提供技術支援。
+收據 API 也會為 [>aibuilder 收據處理功能](/ai-builder/prebuilt-receipt-processing)提供技術支援。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 完成 [表單辨識器用戶端程式庫快速入門](quickstarts/client-library.md) ，以使用您所選語言的表單辨識器來開始撰寫收據處理應用程式。
 - 或者，遵循 [收據 API Python 快速入門](./quickstarts/python-receipts.md) ，使用 REST API 辨識收據。
@@ -459,4 +459,4 @@ Azure 表單辨識器可以使用其中一個預先建立的模型來分析收�
 ## <a name="see-also"></a>請參閱
 
 * [什麼是表單辨識器？](./overview.md)
-* [REST API 參考檔](https://docs.microsoft.com/azure/cognitive-services/form-recognizer)
+* [REST API 參考檔](./index.yml)

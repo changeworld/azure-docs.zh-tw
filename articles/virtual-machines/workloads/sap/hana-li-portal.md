@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d81a8b3a1596e8a447f7a2434e52df8c89b416b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 887adb3e8b0a5f0410fc9a7732e2220049b7ba6c
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87085260"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927187"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>透過 Azure 入口網站控制 Azure HANA Large Instances
 本檔涵蓋了 [Hana 大型實例](./hana-overview-architecture.md) 在 [Azure 入口網站](https://portal.azure.com) 中的呈現方式，以及可透過 Azure 入口網站與為您部署的 hana 大型實例單位進行的活動。 Azure 入口網站中的 HANA 大型實例可見度是透過適用于 HANA 大型實例的 Azure 資源提供者所提供，其目前處於公開預覽狀態
@@ -54,13 +54,13 @@ az provider register --namespace Microsoft.HanaOnAzure
 
 若要尋找新的 Azure 資源群組，您可以在您的訂用帳戶中列出資源群組，方法是流覽 Azure 入口網站的左方流覽窗格
 
-![Azure 入口網站中的流覽窗格](./media/hana-li-portal/portal-resource-group.png)
+![醒目顯示 [資源群組] 選項的螢幕擷取畫面。](./media/hana-li-portal/portal-resource-group.png)
 
 在您要列出的資源群組清單中，您可能需要篩選您用來部署 HANA 大型實例的訂用帳戶
 
 ![篩選 Azure 入口網站中的資源群組](./media/hana-li-portal/portal-filtering-subscription.png)
 
-篩選正確的訂用帳戶之後，您仍然可能會有一長的資源群組清單。 尋找一個具有 **-Txxx** 的修正後，其中 "xxx" 是三位數，例如 **-T050**。 
+篩選正確的訂用帳戶之後，您仍然可能會有一長的資源群組清單。 尋找一個具有 **-Txxx** 的修正後，其中 "xxx" 是三位數，例如 **-T050** 。 
 
 當您找到資源群組時，請列出它的詳細資料。 您收到的清單看起來可能像這樣：
 
@@ -94,7 +94,7 @@ az provider register --namespace Microsoft.HanaOnAzure
 標頭右側資料行中的額外欄位會告知 HANA 大型實例單位的電源狀態。
 
 > [!NOTE]
-> 電源狀態原因硬體單元是否開啟電源或關閉電源。 它不會提供正在啟動並執行之作業系統的相關資訊。 當您重新開機 HANA 大型實例單位時，您將會遇到一小段時間，其中的單位狀態會變更為 [ **開始** ] 狀態，並進入 [ **已啟動**] 狀態。 處於 [ **已啟動** ] 狀態表示作業系統正在啟動，或作業系統已完全啟動。 如此一來，在重新開機單元之後，您就無法預期只要狀態切換為 [ **已啟動**]，就會立即登入單位。
+> 電源狀態原因硬體單元是否開啟電源或關閉電源。 它不會提供正在啟動並執行之作業系統的相關資訊。 當您重新開機 HANA 大型實例單位時，您將會遇到一小段時間，其中的單位狀態會變更為 [ **開始** ] 狀態，並進入 [ **已啟動** ] 狀態。 處於 [ **已啟動** ] 狀態表示作業系統正在啟動，或作業系統已完全啟動。 如此一來，在重新開機單元之後，您就無法預期只要狀態切換為 [ **已啟動** ]，就會立即登入單位。
 > 
 
 如果您按 [查看更多]，則會顯示其他資訊。 另外還有一項資訊，是在中顯示「HANA 大型實例」戳記的修訂。 請參閱「 [Azure (大型實例上的 SAP Hana ](./hana-overview-architecture.md) 」一文，以瞭解不同的 HANA 大型實例戳記版本) 
@@ -106,7 +106,7 @@ az provider register --namespace Microsoft.HanaOnAzure
 
 記錄的其中一個主要活動是重新開機單位。 列出的資料包含活動的狀態、觸發活動的時間戳記、觸發活動的訂用帳戶識別碼，以及觸發活動的 Azure 使用者。 
 
-另一個正在記錄的活動是 Azure 中繼資料中的單位變更。 除了啟動重新開機之外，您還可以看到 **寫入 HANAInstances**的活動。 這種類型的活動不會在 HANA 大型實例單位本身執行任何變更，而是在 Azure 中記錄單位中繼資料的變更。 在列出的案例中，我們已新增並刪除標記 (請參閱下一節) 。
+另一個正在記錄的活動是 Azure 中繼資料中的單位變更。 除了啟動重新開機之外，您還可以看到 **寫入 HANAInstances** 的活動。 這種類型的活動不會在 HANA 大型實例單位本身執行任何變更，而是在 Azure 中記錄單位中繼資料的變更。 在列出的案例中，我們已新增並刪除標記 (請參閱下一節) 。
 
 ## <a name="add-and-delete-an-azure-tag-to-a-hana-large-instance-unit"></a>在 HANA 大型實例單位中新增和刪除 Azure 標記
 另一個可能的情況是將 [標記](../../../azure-resource-manager/management/tag-resources.md) 新增至 HANA 大型實例單位。 指派標籤的方式與將標籤指派給 Vm 並無不同。 如同 Vm，標記存在於 Azure 中繼資料中，而針對 HANA 大型實例，與 Vm 的標記具有相同的限制。
@@ -131,14 +131,14 @@ az provider register --namespace Microsoft.HanaOnAzure
 當您按下 [重新開機] 按鈕時，系統會詢問您是否真的想要重新開機單位。 當您按下 [是] 按鈕進行確認時，該單位將會重新開機。
 
 > [!NOTE]
-> 在重新開機過程中，您將會遇到一小段時間，讓單元的狀態變更 **為「開始」** 進入 [ **已啟動**] 狀態。 處於 [ **已啟動** ] 狀態表示作業系統正在啟動，或作業系統已完全啟動。 如此一來，在重新開機單元之後，您就無法預期只要狀態切換為 [ **已啟動**]，就會立即登入單位。
+> 在重新開機過程中，您將會遇到一小段時間，讓單元的狀態變更 **為「開始」** 進入 [ **已啟動** ] 狀態。 處於 [ **已啟動** ] 狀態表示作業系統正在啟動，或作業系統已完全啟動。 如此一來，在重新開機單元之後，您就無法預期只要狀態切換為 [ **已啟動** ]，就會立即登入單位。
 
 > [!IMPORTANT]
 > 視您的 HANA 大型實例單位中的記憶體數量而定，重新開機和重新開機硬體和作業系統最多可能需要一小時的時間。
 
 
 ## <a name="open-a-support-request-for-hana-large-instances"></a>開啟 HANA 大型實例的支援要求
-在 HANA 大型實例單位的 Azure 入口網站顯示中，您也可以特別針對 HANA 大型實例單位建立支援要求。 當您遵循連結**新的支援要求**時 
+在 HANA 大型實例單位的 Azure 入口網站顯示中，您也可以特別針對 HANA 大型實例單位建立支援要求。 當您遵循連結 **新的支援要求** 時 
 
 ![在 Azure 入口網站中起始服務要求步驟 #1](./media/hana-li-portal/portal-initiate-support-request.png)
 
@@ -146,7 +146,7 @@ az provider register --namespace Microsoft.HanaOnAzure
 
 ![選取 Azure 入口網站中的所有服務](./media/hana-li-portal/portal-create-service-request.png)
 
-在服務清單中，您可以找到 **SAP Hana 大型實例**的服務。 當您選擇該服務時，您可以選取特定的問題類型，如下所示：
+在服務清單中，您可以找到 **SAP Hana 大型實例** 的服務。 當您選擇該服務時，您可以選取特定的問題類型，如下所示：
 
 
 ![在 Azure 入口網站中選取問題類別](./media/hana-li-portal/portal-select-problem-class.png)
@@ -157,7 +157,7 @@ az provider register --namespace Microsoft.HanaOnAzure
 
 當您回答問題並提供其他詳細資料時，您可以前往下一個步驟，以審查支援要求並提交。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [如何監視 Azure 上的 SAP HANA (大型執行個體)](./troubleshooting-monitoring.md)
 - [從 HANA 端進行監視和疑難排解](./hana-monitor-troubleshoot.md)

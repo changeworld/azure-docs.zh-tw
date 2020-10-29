@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e4e85de2fad5c08f296d8089f48fa8614f7f1739
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3aee0497f79b57699a44641488c1f09bbae79960
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88925176"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913138"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>安裝及執行表單辨識器容器 (預覽) 
 
@@ -31,7 +31,7 @@ Azure 表單辨識器會套用機器學習技術來識別和解壓縮表單中�
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 使用表單辨識器容器之前，您必須符合下列必要條件：
 
@@ -39,9 +39,9 @@ Azure 表單辨識器會套用機器學習技術來識別和解壓縮表單中�
 |----------|---------|
 | Docker 引擎 | 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> 在 Windows 上，也必須將 Docker 設定為支援 Linux 容器。<br><br> |
 | 熟悉 Docker | 您應該對 Docker 概念有基本的瞭解，例如登錄、存放庫、容器和容器映射，以及基本命令的知識 `docker` 。 |
-| Azure CLI | 在您的主機上安裝 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 。 |
-| 電腦視覺 API 資源 | 若要處理掃描的檔和影像，您需要電腦視覺資源。 您可以使用 Azure 資源 (REST API 或 SDK) 或*認知服務辨識文字*[容器](../Computer-vision/computer-vision-how-to-install-containers.md#get-the-container-image-with-docker-pull)來存取辨識文字功能。 適用一般計費費用。 <br><br>將電腦視覺資源的 API 金鑰和端點傳遞 (Azure 雲端或認知服務容器) 。 使用此 API 金鑰和端點作為 **{COMPUTER_VISION_API_KEY}** 和 **{COMPUTER_VISION_ENDPOINT_URI}**。<br><br> 如果您使用 *認知服務辨識文字* 容器，請確定：<br><br>表單辨識器容器的電腦視覺金鑰是 `docker run` *認知服務辨識文字* 容器的電腦視覺命令中指定的金鑰。<br>您的帳單端點是容器的端點 (例如 `http://localhost:5000`) 。 如果您同時在同一部主機上同時使用電腦視覺容器和表單辨識器容器，則無法同時以預設通訊埠 *5000*來啟動它們。 |
-| 表單辨識器資源 | 若要使用這些容器，您必須具備：<br><br>Azure **表單辨識器** 資源，用來取得相關聯的 API 金鑰和端點 URI。 這兩個值都可在 Azure 入口網站 **表單辨識器** 總覽和索引鍵頁面上取得，而這兩個值都需要用來啟動容器。<br><br>**{FORM_RECOGNIZER_API_KEY}**： [金鑰] 頁面上兩個可用資源金鑰的其中一個<br><br>**{FORM_RECOGNIZER_ENDPOINT_URI}**：總覽頁面上提供的端點 |
+| Azure CLI | 在您的主機上安裝 [Azure CLI](/cli/azure/install-azure-cli) 。 |
+| 電腦視覺 API 資源 | 若要處理掃描的檔和影像，您需要電腦視覺資源。 您可以使用 Azure 資源 (REST API 或 SDK) 或 *認知服務辨識文字*[容器](../Computer-vision/computer-vision-how-to-install-containers.md#get-the-container-image-with-docker-pull)來存取辨識文字功能。 適用一般計費費用。 <br><br>將電腦視覺資源的 API 金鑰和端點傳遞 (Azure 雲端或認知服務容器) 。 使用此 API 金鑰和端點作為 **{COMPUTER_VISION_API_KEY}** 和 **{COMPUTER_VISION_ENDPOINT_URI}** 。<br><br> 如果您使用 *認知服務辨識文字* 容器，請確定：<br><br>表單辨識器容器的電腦視覺金鑰是 `docker run` *認知服務辨識文字* 容器的電腦視覺命令中指定的金鑰。<br>您的帳單端點是容器的端點 (例如 `http://localhost:5000`) 。 如果您同時在同一部主機上同時使用電腦視覺容器和表單辨識器容器，則無法同時以預設通訊埠 *5000* 來啟動它們。 |
+| 表單辨識器資源 | 若要使用這些容器，您必須具備：<br><br>Azure **表單辨識器** 資源，用來取得相關聯的 API 金鑰和端點 URI。 這兩個值都可在 Azure 入口網站 **表單辨識器** 總覽和索引鍵頁面上取得，而這兩個值都需要用來啟動容器。<br><br>**{FORM_RECOGNIZER_API_KEY}** ： [金鑰] 頁面上兩個可用資源金鑰的其中一個<br><br>**{FORM_RECOGNIZER_ENDPOINT_URI}** ：總覽頁面上提供的端點 |
 
 > [!NOTE]
 > 電腦視覺資源名稱應該是單一單字，不含連字號 `-` 或任何其他特殊字元。 這項限制可確保表單辨識器和辨識文字容器相容性。
@@ -52,7 +52,7 @@ Azure 表單辨識器會套用機器學習技術來識別和解壓縮表單中�
 
 ### <a name="endpoint-uri-computer_vision_endpoint_uri-and-form_recognizer_endpoint_uri"></a>端點 URI `{COMPUTER_VISION_ENDPOINT_URI}` 和 `{FORM_RECOGNIZER_ENDPOINT_URI}`
 
-**端點**URI 值可在對應認知服務資源的 Azure 入口網站*總覽*] 頁面上取得。 流覽至 [ *總覽* ] 頁面，將滑鼠停留在端點上，隨即會 `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> 出現一個圖示。 在需要時複製並使用。
+**端點** URI 值可在對應認知服務資源的 Azure 入口網站 *總覽* ] 頁面上取得。 流覽至 [ *總覽* ] 頁面，將滑鼠停留在端點上，隨即會 `Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> 出現一個圖示。 在需要時複製並使用。
 
 ![收集端點 uri 以供稍後使用](../containers/media/overview-endpoint-uri.png)
 
@@ -93,7 +93,7 @@ Azure 表單辨識器會套用機器學習技術來識別和解壓縮表單中�
 | 表單辨識器 | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
 | 辨識文字 | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
 
-您將需要這兩個容器，請注意，[這篇文章外部會詳細](../Computer-vision/computer-vision-how-to-install-containers.md#get-the-container-image-with-docker-pull)說明辨識**器文字**容器。
+您將需要這兩個容器，請注意， [這篇文章外部會詳細](../Computer-vision/computer-vision-how-to-install-containers.md#get-the-container-image-with-docker-pull)說明辨識 **器文字** 容器。
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -248,7 +248,7 @@ services:
 
 ### <a name="form-recognizer"></a>表單辨識器
 
-容器會提供以 websocket 為基礎的查詢端點 Api，您可以透過 [表單辨識器服務 SDK 檔](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/)存取此 api。
+容器會提供以 websocket 為基礎的查詢端點 Api，您可以透過 [表單辨識器服務 SDK 檔](./index.yml)存取此 api。
 
 根據預設，表單辨識器 SDK 會使用線上服務。 若要使用容器，您必須變更初始化方法。 請參閱以下的範例。
 
@@ -333,7 +333,7 @@ formrecognizer_config =
 > [!IMPORTANT]
 >  認知服務容器在未連線至 Azure 以進行計量的情況下，將無法被授權以執行。 客戶必須啟用容器以持續與計量服務進行帳單資訊的通訊。 認知服務容器不會將客戶資料 (例如正在分析的影像或文字) 傳送至 Microsoft。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 請參閱 [設定容器](form-recognizer-container-configuration.md) 以進行設定。
 * 使用更多 [認知服務容器](../cognitive-services-container-support.md)。
