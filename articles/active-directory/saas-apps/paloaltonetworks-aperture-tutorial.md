@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 8f2603ce055d18e1ad7e202e0c662e042a1d1d48
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: a70d075ae25b0059e4e1ab75c44907f584e15350
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996104"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92512795"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>教學課程：Azure Active Directory 與 Palo Alto Networks - Aperture 整合
 
@@ -48,7 +48,7 @@ ms.locfileid: "91996104"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Palo Alto Networks - Aperture**。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Palo Alto Networks - Aperture** 。
 1. 從結果面板中選取 [Palo Alto Networks - Aperture]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>設定並測試 Azure AD SSO
@@ -70,7 +70,7 @@ ms.locfileid: "91996104"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 Azure 入口網站的 **Palo Alto Networks - Aperture** 應用程式整合頁面上，找到 [管理] 區段並選取 [單一登入]。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -90,13 +90,13 @@ ms.locfileid: "91996104"
     在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/sign_in`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Palo Alto Networks - Aperture 用戶端支援小組](https://live.paloaltonetworks.com/t5/custom/page/page-id/Support) \(英文\) 以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Palo Alto Networks - Aperture 用戶端支援小組](https://live.paloaltonetworks.com/t5/custom/page/page-id/Support) \(英文\) 以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 6. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，按一下 [下載]，以依據您的需求從指定選項下載 [憑證 (Base64)]，並儲存在您的電腦上。
 
     ![憑證下載連結](common/certificatebase64.png)
 
-7. 在 [設定 Palo Alto Networks - Aperture]**** 區段上，依據您的需求複製適當的 URL。
+7. 在 [設定 Palo Alto Networks - Aperture]  區段上，依據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -117,7 +117,7 @@ ms.locfileid: "91996104"
 在本節中，您會把 Palo Alto Networks - Aperture 的存取權授與 B.Simon，讓她能夠使用 Azure 單一登入。
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 [Palo Alto Networks - Aperture]****。
+1. 在應用程式清單中，選取 [Palo Alto Networks - Aperture]  。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
 1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
 1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
@@ -128,11 +128,11 @@ ms.locfileid: "91996104"
 
 1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入 Palo Alto Networks - Aperture。
 
-2. 按一下頂端功能表列上的 [SETTINGS] \(設定\)****。
+2. 按一下頂端功能表列上的 [SETTINGS] \(設定\)  。
 
     ![[SETTINGS] \(設定\) 索引標籤](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_settings.png)
 
-3. 瀏覽至 [APPLICATION] \(應用程式\)**** 區段，然後從功能表左側按一下 [Authentication] \(驗證\)****。
+3. 瀏覽至 [APPLICATION] \(應用程式\)  區段，然後從功能表左側按一下 [Authentication] \(驗證\)  。
 
     ![[Authentication] \(驗證\) 索引標籤](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_auth.png)
     
@@ -140,15 +140,15 @@ ms.locfileid: "91996104"
     
     ![[Authentication] \(驗證\) 索引標籤](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_singlesignon.png)
 
-    a. 從 [單一登入]**** 欄位中，選取 [啟用單一登入 (支援的 SSP 提供者為 Okta、One login)]****。
+    a. 從 [單一登入]  欄位中，選取 [啟用單一登入 (支援的 SSP 提供者為 Okta、One login)]  。
 
-    b. 在 [識別提供者識別碼]**** 文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]**** 值。
+    b. 在 [識別提供者識別碼]  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
 
-    c. 按一下 [Identity Provider Certificate] \(身分識別提供者憑證\)**** 欄位中的 [Choose File] \(選擇檔案\)****，以上傳從 Azure AD 下載的憑證。
+    c. 按一下 [Identity Provider Certificate] \(身分識別提供者憑證\)  欄位中的 [Choose File] \(選擇檔案\)  ，以上傳從 Azure AD 下載的憑證。
 
     d. 在 [識別提供者 SSO URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL] 值。
 
-    e. 檢閱來自 [Aperture Info] \(Aperture 資訊\)**** 區段的 IdP 資訊，然後從 [Aperture Key] \(Aperture 金鑰\)**** 欄位下載憑證。
+    e. 檢閱來自 [Aperture Info] \(Aperture 資訊\)  區段的 IdP 資訊，然後從 [Aperture Key] \(Aperture 金鑰\)  欄位下載憑證。
 
     f. 按一下 [檔案] 。
 
@@ -171,9 +171,9 @@ ms.locfileid: "91996104"
 
 * 在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入您已設定 SSO 的 Palo Alto Networks - Aperture 
 
-您也可以使用 Microsoft 存取面板，以任何模式測試應用程式。 當您按一下存取面板中的 Palo Alto Networks - Aperture 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果是在 IDP 模式中設定，則應該會自動登入已設定 SSO 的 Palo Alto Networks - Aperture。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+您也可以使用 Microsoft 存取面板，以任何模式測試應用程式。 當您按一下存取面板中的 Palo Alto Networks - Aperture 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果是在 IDP 模式中設定，則應該會自動登入已設定 SSO 的 Palo Alto Networks - Aperture。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-設定 Palo Alto Networks - Aperture 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+設定 Palo Alto Networks - Aperture 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。

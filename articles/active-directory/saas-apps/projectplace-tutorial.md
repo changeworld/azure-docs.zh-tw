@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/29/2019
 ms.author: jeedes
-ms.openlocfilehash: cbc65e64dfd18cdc16873a2d82aecadabeec4c28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 508a3ca02ec6c0475e78d16691f6597e1a389f97
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553504"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92511846"
 ---
 # <a name="tutorial-integrate-projectplace-with-azure-active-directory"></a>教學課程：整合 Projectplace 與 Azure Active Directory
 
@@ -27,7 +27,7 @@ ms.locfileid: "88553504"
 * 在 Azure 入口網站集中管理您的帳戶。
 * 使用者可以自動佈建在 Projectplace 中。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -48,7 +48,7 @@ ms.locfileid: "88553504"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Projectplace**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Projectplace** 。
 1. 從結果面板選取 [Projectplace]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
@@ -80,7 +80,7 @@ ms.locfileid: "88553504"
 
     在 [登入 URL]  文字方塊中，輸入 URL：`https://service.projectplace.com`
 
-1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下複製**圖示**，依據您的需求複製 [應用程式同盟中繼資料 URL]  並儲存在 [記事本] 中。
+1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下複製 **圖示** ，依據您的需求複製 [應用程式同盟中繼資料 URL]  並儲存在 [記事本] 中。
 
    ![憑證下載連結](common/copy-metadataurl.png)
 
@@ -112,7 +112,7 @@ ms.locfileid: "88553504"
 在本節中，您會將 Projectplace 的存取權授與 B. Simon，讓其能夠使用 Azure 單一登入。
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 **Projectplace**。
+1. 在應用程式清單中，選取 **Projectplace** 。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
@@ -160,12 +160,12 @@ ms.locfileid: "88553504"
 
 ### <a name="test-sso"></a>測試 SSO
 
-當您在存取面板中選取 Projectplace 圖格時，應該會自動登入您設定 SSO 的 Projectplace。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 Projectplace 圖格時，應該會自動登入您設定 SSO 的 Projectplace。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

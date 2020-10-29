@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
-ms.openlocfilehash: f5a01d74d22d6ea010d80ef1ef8ce1a53fbd4422
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 649a26e474c7c4d6b4f51a035b3f8f9da35b9dd1
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548808"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92511149"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-raketa"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Raketa 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88548808"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Raketa。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88548808"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * Raketa 支援 **SP** 起始的 SSO。
-* 設定 Raketa 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 Raketa 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-raketa-from-the-gallery"></a>從資源庫新增 Raketa
 
@@ -51,15 +51,15 @@ ms.locfileid: "88548808"
 
     ![rkt_1](./media/raketa-tutorial/azure-active-directory.png)
 
-1. 瀏覽至**企業應用程式** [2]，然後選取 [所有應用程式] [3]。
+1. 瀏覽至 **企業應用程式** [2]，然後選取 [所有應用程式] [3]。
 
 1. 若要新增應用程式，請選取 [新增應用程式] [4]。 
 
     ![rkt_2](./media/raketa-tutorial/new-app.png)
 
-1. 在 [從資源庫新增] [5] 區段的搜尋方塊 [6] 中輸入 **Raketa**。
+1. 在 [從資源庫新增] [5] 區段的搜尋方塊 [6] 中輸入 **Raketa** 。
 
-1. 從結果面板 [7] 選取 **Raketa**，然後按一下 [新增] 按鈕 [8]。 
+1. 從結果面板 [7] 選取 **Raketa** ，然後按一下 [新增] 按鈕 [8]。 
 
     ![rkt_3](./media/raketa-tutorial/add-btn.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "88548808"
 
     ![rkt_4](./media/raketa-tutorial/manage-sso.png)
 
-1. 在 [**選取單一登入方法**] 頁面 [9] 上，選取 **SAML** [10]。
+1. 在 [ **選取單一登入方法** ] 頁面 [9] 上，選取 **SAML** [10]。
 
     ![rkt_5](./media/raketa-tutorial/saml.png)
 
@@ -93,16 +93,16 @@ ms.locfileid: "88548808"
 
 1. 在 [基本 SAML 組態] 區段上，輸入下列欄位的值：
 
-    1. 在 **識別碼 (實體識別碼)** [12] 和**登入 URL** [14] 文字方塊中，輸入 URL：`https://raketa.travel/`。
+    1. 在 **識別碼 (實體識別碼)** [12] 和 **登入 URL** [14] 文字方塊中，輸入 URL：`https://raketa.travel/`。
 
-    1. 在**回覆 URL** [13] 文字方塊中，使用下列模式來輸入 URL：`https://raketa.travel/sso/acs?clientId=<CLIENT_ID>`。  
+    1. 在 **回覆 URL** [13] 文字方塊中，使用下列模式來輸入 URL：`https://raketa.travel/sso/acs?clientId=<CLIENT_ID>`。  
 
     ![rkt_6](./media/raketa-tutorial/enter-urls.png)
 
     > [!NOTE]
-    > [回覆 URL] 不是真實的值。 請使用實際的「回覆 URL」來更新此值。 請連絡 [Raketa 用戶端支援小組](mailto:help@raketa.travel)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > [回覆 URL] 不是真實的值。 請使用實際的「回覆 URL」來更新此值。 請連絡 [Raketa 用戶端支援小組](mailto:help@raketa.travel)以取得此值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，尋找**憑證 (Base64)** 並選取 [下載] [15]，以下載憑證並將其儲存在電腦上。
+1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，尋找 **憑證 (Base64)** 並選取 [下載] [15]，以下載憑證並將其儲存在電腦上。
 
 1. 在 [設定 Raketa] 區段上，根據您的需求複製適當的 URL。
 
@@ -176,18 +176,18 @@ ms.locfileid: "88548808"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Raketa] 圖格時，應該會自動登入您已設定 SSO 的 Raketa。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Raketa] 圖格時，應該會自動登入您已設定 SSO 的 Raketa。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Raketa](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用進階可見性和控制項保護 Raketa](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何使用進階可見性和控制項保護 Raketa](/cloud-app-security/proxy-intro-aad)

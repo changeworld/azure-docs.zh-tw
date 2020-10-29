@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 991201429bdc09a03ddc46c5beb9d0f4d6744ed5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: eed0ea075c5e9eb39810259be2aa6781a59f2f22
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108621"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92511625"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>教學課程：Azure Active Directory 與 Rackspace SSO 整合
 
@@ -27,7 +27,7 @@ Rackspace SSO 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Rackspace SSO (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ Rackspace SSO 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Rackspace SSO**，從結果面板中選取 [Rackspace SSO]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Rackspace SSO** ，從結果面板中選取 [Rackspace SSO]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Rackspace SSO](common/search-new-app.png)
 
@@ -97,13 +97,13 @@ Rackspace SSO 與 Azure AD 整合提供下列優點：
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 在 [基本 SAML 組態]  區段上，上傳可從 [URL](https://login.rackspace.com/federate/sp.xml) 下載的**服務提供者中繼資料檔案**，然後執行下列步驟：
+4. 在 [基本 SAML 組態]  區段上，上傳可從 [URL](https://login.rackspace.com/federate/sp.xml) 下載的 **服務提供者中繼資料檔案** ，然後執行下列步驟：
 
     a. 按一下 [上傳中繼資料檔案]  。
 
     ![此螢幕擷取畫面顯示具有上傳中繼資料檔案連結的基本 SAML 設定。](common/upload-metadata.png)
 
-    b. 按一下**資料夾圖示**以選取中繼資料檔案，然後按一下 [上傳]  。
+    b. 按一下 **資料夾圖示** 以選取中繼資料檔案，然後按一下 [上傳]  。
 
     ![此螢幕擷取畫面顯示您可以在其中選取並上傳檔案的對話方塊。](common/browse-upload-metadata.png)
 
@@ -113,7 +113,7 @@ Rackspace SSO 與 Azure AD 整合提供下列優點：
 
     ![Rackspace SSO 網域與 URL 單一登入資訊](common/sp-signonurl.png)   
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -127,7 +127,7 @@ Rackspace SSO 與 Azure AD 整合提供下列優點：
 1. 其會引導您完成下列相關步驟：
     1. 建立新的識別提供者
     1. 指定使用者將會在登入時用來識別貴公司的電子郵件網域。
-    1. 上傳先前從 Azure 控制台下載的**同盟中繼資料 XML**。
+    1. 上傳先前從 Azure 控制台下載的 **同盟中繼資料 XML** 。
 
 這會正確地設定要讓 Azure 和 Rackspace 能夠連線所需的基本 SSO 設定。
 
@@ -147,7 +147,7 @@ Rackspace SSO 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`。 例如， BrittaSimon@contoso.com
 
@@ -183,9 +183,9 @@ Rackspace SSO 與 Azure AD 整合提供下列優點：
 
 ### <a name="set-up-attribute-mapping-in-the-rackspace-control-panel"></a>在 Rackspace 控制台中設定屬性對應
 
-Rackspace 使用**屬性對應原則**來將 Rackspace 角色和群組指派給單一登入使用者。 **屬性對應原則**會將 Azure AD SAML 宣告轉譯成 Rackspace 所需的使用者設定欄位。 您可以在 Rackspace 的[屬性對應基本概念文件](https://developer.rackspace.com/docs/rackspace-federation/appendix/map/)中找到更多文件。 一些考量事項如下：
+Rackspace 使用 **屬性對應原則** 來將 Rackspace 角色和群組指派給單一登入使用者。 **屬性對應原則** 會將 Azure AD SAML 宣告轉譯成 Rackspace 所需的使用者設定欄位。 您可以在 Rackspace 的[屬性對應基本概念文件](https://developer.rackspace.com/docs/rackspace-federation/appendix/map/)中找到更多文件。 一些考量事項如下：
 
-* 如果您想要使用 Azure AD 群組來指派各種 Rackspace 存取層級，則必須在 Azure 的 **Rackspace SSO** 單一登入設定中啟用群組宣告。 然後，系統就會使用**屬性對應原則**來比對這些群組與所需的 Rackspace 角色和群組：
+* 如果您想要使用 Azure AD 群組來指派各種 Rackspace 存取層級，則必須在 Azure 的 **Rackspace SSO** 單一登入設定中啟用群組宣告。 然後，系統就會使用 **屬性對應原則** 來比對這些群組與所需的 Rackspace 角色和群組：
 
     ![群組宣告設定](common/sso-groups-claim.png)
 
@@ -193,7 +193,7 @@ Rackspace 使用**屬性對應原則**來將 Rackspace 角色和群組指派給�
 
     ![群組宣告名稱設定](common/sso-groups-claims-names.png)
 
-下例**屬性對應原則**範例會示範：
+下例 **屬性對應原則** 範例會示範：
 1. 將 Rackspace 使用者的名稱設定為 `user.name` SAML 宣告。 可使用任何宣告，但最常會將此宣告設定為包含使用者電子郵件地址的欄位。
 1. 藉由比對 Azure AD 群組 (根據群組名稱或群組 UID)，來對使用者設定 Rackspace 角色 `admin` 和 `billing:admin`。 `roles` 欄位中的 `"{0}"` 會使用「替代字元」  ，並由 `remote` 規則運算式的結果加以取代。
 1. 使用 `"{D}"`「預設替代字元」  讓 Rackspace 藉由尋找 SAML 交換中的標準與已知 SAML 宣告來擷取其他 SAML 欄位。
@@ -228,7 +228,7 @@ mapping:
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Rackspace SSO] 圖格時，應該會自動登入您已設定 SSO 的 Rackspace SSO。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Rackspace SSO] 圖格時，應該會自動登入您已設定 SSO 的 Rackspace SSO。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 您也可以使用 **Rackspace SSO** 單一登入設定中的 [驗證]  按鈕：
 
@@ -236,9 +236,8 @@ mapping:
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

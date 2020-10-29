@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 4df9b28d7a0d3e6b96aca3c99b5dacda3d41a676
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: a70b6bb50b397429af1af41869bbe9ecf7e8bad9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828024"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92510761"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>教學課程：Azure Active Directory 與 Silverback 整合
 
@@ -27,7 +27,7 @@ Silverback 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Silverback (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ Silverback 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Silverback**，從結果面板中選取 [Silverback]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Silverback** ，從結果面板中選取 [Silverback]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Silverback](common/search-new-app.png)
 
@@ -108,7 +108,7 @@ Silverback 與 Azure AD 整合提供下列優點：
     c. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<YOURSILVERBACKURL>.com/sts/authorize/login`
 
     > [!NOTE]
-    > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請連絡 [Silverback 用戶端支援小組](mailto:helpdesk@matrix42.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請連絡 [Silverback 用戶端支援小組](mailto:helpdesk@matrix42.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]  ，並將其儲存在您的電腦上。
 
@@ -138,7 +138,7 @@ Silverback 與 Azure AD 整合提供下列優點：
 
     g.  按一下 [選擇檔案]  ，上傳 [圖示]  。
 
-    h.  為按鈕選取**彩色**背景。
+    h.  為按鈕選取 **彩色** 背景。
 
     i.  按一下 [檔案]  。
 
@@ -158,7 +158,7 @@ Silverback 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -201,19 +201,19 @@ Silverback 與 Azure AD 整合提供下列優點：
 
 1. 以系統管理員身分登入 Silverback Server。
 
-2. 瀏覽至 [使用者]  ，並**新增新的裝置使用者**。
+2. 瀏覽至 [使用者]  ，並 **新增新的裝置使用者** 。
 
 3. 在 [基本]  頁面上，執行下列步驟：
 
     ![使用者](./media/silverback-tutorial/tutorial_silverback_user.png)
 
-    a. 在 [使用者名稱]  文字方塊中，輸入使用者的名稱，例如 **Britta**。
+    a. 在 [使用者名稱]  文字方塊中，輸入使用者的名稱，例如 **Britta** 。
 
-    b. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **Britta**。
+    b. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **Britta** 。
 
-    c. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon**。
+    c. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon** 。
 
-    d. 在 [電子郵件地址] 文字方塊中，輸入使用者的電子郵件地址，例如 **Brittasimon\@contoso.com**。
+    d. 在 [電子郵件地址] 文字方塊中，輸入使用者的電子郵件地址，例如 **Brittasimon\@contoso.com** 。
 
     e. 在 [密碼]  文字方塊中，輸入您的密碼。
 
@@ -228,13 +228,12 @@ Silverback 與 Azure AD 整合提供下列優點：
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Silverback] 圖格時，應該會自動登入您已設定 SSO 的 Silverback。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Silverback] 圖格時，應該會自動登入您已設定 SSO 的 Silverback。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

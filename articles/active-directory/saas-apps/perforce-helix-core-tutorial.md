@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 94464827f0a3cb797fa0e1b0249131e5a110dbad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5958b46c36623cf9f409927a9eaa6aa50966c45
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553859"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92511982"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-perforce-helix-core---helix-authentication-service"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Perforce Helix Core - Helix Authentication Service 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88553859"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Perforce Helix Core - Helix Authentication Service。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -40,7 +40,7 @@ ms.locfileid: "88553859"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * Perforce Helix Core - Helix Authentication Service 支援由 **SP** 起始的 SSO
-* 設定 Perforce Helix Core - Helix Authentication Service 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 Perforce Helix Core - Helix Authentication Service 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-perforce-helix-core---helix-authentication-service-from-the-gallery"></a>從資源庫新增 Perforce Helix Core - Helix Authentication Service
 
@@ -50,7 +50,7 @@ ms.locfileid: "88553859"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Perforce Helix Core - Helix Authentication Service**。
+1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Perforce Helix Core - Helix Authentication Service** 。
 1. 從結果面板中選取 [Perforce Helix Core - Helix Authentication Service]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-perforce-helix-core---helix-authentication-service"></a>設定和測試 Perforce Helix Core - Helix Authentication Service 的 Azure AD 單一登入
@@ -71,7 +71,7 @@ ms.locfileid: "88553859"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Perforce Helix Core - Helix Authentication Service] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -85,7 +85,7 @@ ms.locfileid: "88553859"
     c. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://<HELIX-AUTH-SERVICE>.<CUSTOMER-HOSTNAME>.com/saml/sso`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」、「識別碼」和「回覆 URL」來更新這些值。 請聯絡 [Perforce Helix Core - Helix Authentication Service 用戶端支援小組](mailto:support@perforce.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「登入 URL」、「識別碼」和「回覆 URL」來更新這些值。 請聯絡 [Perforce Helix Core - Helix Authentication Service 用戶端支援小組](mailto:support@perforce.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]，並將資料儲存在您的電腦上。
 
@@ -123,7 +123,7 @@ ms.locfileid: "88553859"
 
 ## <a name="configure-perforce-helix-core---helix-authentication-service-sso"></a>設定 Perforce Helix Core - Helix Authentication Service SSO
 
-若要從 **Perforce Helix Core - Helix Authentication Service** 端設定單一登入，您需要將**應用程式同盟中繼資料 URL** 傳送給 [Perforce Helix Core - Helix Authentication Service 支援小組](mailto:support@perforce.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要從 **Perforce Helix Core - Helix Authentication Service** 端設定單一登入，您需要將 **應用程式同盟中繼資料 URL** 傳送給 [Perforce Helix Core - Helix Authentication Service 支援小組](mailto:support@perforce.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-perforce-helix-core---helix-authentication-service-test-user"></a>建立 Perforce Helix Core - Helix Authentication Service 測試使用者
 
@@ -133,18 +133,18 @@ ms.locfileid: "88553859"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在 [存取面板] 中按一下 [Helix Core - Helix Authentication Service] 圖格時，應該會自動登入您已設定 SSO 的 Perforce Helix Core - Helix Authentication Service。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在 [存取面板] 中按一下 [Helix Core - Helix Authentication Service] 圖格時，應該會自動登入您已設定 SSO 的 Perforce Helix Core - Helix Authentication Service。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 的 Perforce Helix Core - Helix Authentication Service](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
 
-- [如何藉由進階可見性和控制項保護 Perforce Helix Core - Helix Authentication Service](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何藉由進階可見性和控制項保護 Perforce Helix Core - Helix Authentication Service](/cloud-app-security/proxy-intro-aad)
