@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
-ms.openlocfilehash: c95fceaa90ca379519379d37c19fb15dcd1de321
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 077af1e8add63aac9f3d866c5d665ad4a47b133f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546338"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520042"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workteam"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Workteam 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88546338"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Workteam。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -49,7 +49,7 @@ ms.locfileid: "88546338"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Workteam**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Workteam** 。
 1. 從結果面板選取 [Workteam]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-workteam"></a>設定及測試 Workteam 的 Azure AD 單一登入
@@ -70,7 +70,7 @@ ms.locfileid: "88546338"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Workteam]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -106,7 +106,7 @@ ms.locfileid: "88546338"
 在本節中，您會將 Workteam 的存取權授與 B.Simon，讓其能夠使用 Azure 單一登入。
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 **Workteam**。
+1. 在應用程式清單中，選取 **Workteam** 。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
@@ -131,7 +131,7 @@ ms.locfileid: "88546338"
 
 3. 如果您想要手動設定 Workteam，請開啟新的網頁瀏覽器視窗，並以系統管理員身分登入 Workteam 公司網站，然後執行下列步驟：
 
-4. 在右上角按一下**設定檔標誌**，然後按一下 [組織設定]  。 
+4. 在右上角按一下 **設定檔標誌** ，然後按一下 [組織設定]  。 
 
     ![Workteam 設定](./media/workteam-tutorial/tutorial_workteam_settings.png)
 
@@ -143,13 +143,13 @@ ms.locfileid: "88546338"
 
      ![Workteam saml](./media/workteam-tutorial/tutorial_workteam_saml.png)
 
-    a. 選取 [SAML IdP]  作為 **AD Azure**。
+    a. 選取 [SAML IdP]  作為 **AD Azure** 。
 
     b. 在 [SAML 單一登入服務 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
 
     c. 在 [SAML 實體識別碼]  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
 
-    d. 在 [記事本] 中開啟從 Azure 入口網站下載的 **Base-64 編碼憑證**，複製其內容，然後貼到 [SAML 簽署憑證 (Base64)]  方塊中。
+    d. 在 [記事本] 中開啟從 Azure 入口網站下載的 **Base-64 編碼憑證** ，複製其內容，然後貼到 [SAML 簽署憑證 (Base64)]  方塊中。
 
     e. 按一下 [確定]  。
 
@@ -179,15 +179,14 @@ ms.locfileid: "88546338"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Workteam] 圖格時，應該會自動登入您已設定 SSO 的 Workteam。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Workteam] 圖格時，應該會自動登入您已設定 SSO 的 Workteam。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Workteam](https://aad.portal.azure.com/)
-

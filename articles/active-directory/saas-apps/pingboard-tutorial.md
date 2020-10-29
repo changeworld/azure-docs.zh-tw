@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: f96f7eb358907bc27303735f4d8a111efeb6a3dc
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: d7b090eb5228a449212ceebd6cd299c5f8860089
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996651"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520790"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>教學課程：Azure Active Directory 與 Pingboard 整合
 
@@ -27,7 +27,7 @@ Pingboard 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用他們的 Azure AD 帳戶自動登入 Pingboard (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -43,7 +43,7 @@ Pingboard 與 Azure AD 整合提供下列優點：
 
 * Pingboard 支援由 **SP** 和 **IDP** 初始化的 SSO
 
-* Pingboard 支援[自動使用者佈建](https://docs.microsoft.com/azure/active-directory/saas-apps/pingboard-provisioning-tutorial) 
+* Pingboard 支援[自動使用者佈建](./pingboard-provisioning-tutorial.md) 
 
 ## <a name="adding-pingboard-from-the-gallery"></a>從資源庫新增 Pingboard
 
@@ -63,7 +63,7 @@ Pingboard 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Pingboard**並從結果面板中選取 [Pingboard]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Pingboard** 並從結果面板中選取 [Pingboard]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Pingboard](common/search-new-app.png)
 
@@ -114,9 +114,9 @@ Pingboard 與 Azure AD 整合提供下列優點：
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<sub-domain>.pingboard.com/sign_in`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的回覆 URL 與登入 URL 更新這些值。 請連絡 [Pingboard 用戶端支援小組](https://support.pingboard.com/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的回覆 URL 與登入 URL 更新這些值。 請連絡 [Pingboard 用戶端支援小組](https://support.pingboard.com/)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -146,7 +146,7 @@ Pingboard 與 Azure AD 整合提供下列優點：
 
     ![Pingboard 設定按鈕](./media/pingboard-tutorial/Pingboard_configure.png)
 
-5. 在下列頁面上，您會注意到「Azure SSO 整合已啟用」。 在記事本中開啟下載的中繼資料 XML 檔案，並且將內容貼上到 **IDP 中繼資料**。
+5. 在下列頁面上，您會注意到「Azure SSO 整合已啟用」。 在記事本中開啟下載的中繼資料 XML 檔案，並且將內容貼上到 **IDP 中繼資料** 。
 
     ![Pingboard SSO 組態畫面](./media/pingboard-tutorial/Pingboard_sso_configure.png)
 
@@ -168,7 +168,7 @@ Pingboard 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 brittasimon@yourcompanydomain.extension。 例如， BrittaSimon@contoso.com
 
@@ -218,7 +218,7 @@ Pingboard 與 Azure AD 整合提供下列優點：
 
     ![邀請人員](./media/pingboard-tutorial/create_testuser_name.png)
 
-    a. 在 [全名]  文字方塊中，輸入使用者的全名，例如 **Britta Simon**。
+    a. 在 [全名]  文字方塊中，輸入使用者的全名，例如 **Britta Simon** 。
 
     b. 在 [電子郵件]  文字方塊中，輸入使用者的電子郵件地址，例如 **brittasimon@contoso.com** 。
 
@@ -239,14 +239,14 @@ Pingboard 與 Azure AD 整合提供下列優點：
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Pingboard] 圖格時，應該會自動登入您設定 SSO 的 Pingboard。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Pingboard] 圖格時，應該會自動登入您設定 SSO 的 Pingboard。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
-- [設定使用者佈建](https://docs.microsoft.com/azure/active-directory/saas-apps/pingboard-provisioning-tutorial)
+- [設定使用者佈建](./pingboard-provisioning-tutorial.md)

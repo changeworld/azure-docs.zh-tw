@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: b67e280824c5e2336aa79e14d3e09d3a670118a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a4df1ff0561e180ca0a3fd36363ceff7da042df
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554323"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522422"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nitro-productivity-suite"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Nitro Productivity Suite 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88554323"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Nitro Productivity Suite。
 * 在 Azure 入口網站中集中管理您的帳戶。
 
-若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -41,7 +41,7 @@ ms.locfileid: "88554323"
 
 * Nitro Productivity Suite 支援由 **SP** 和 **IDP** 起始的 SSO。
 * Nitro Productivity Suite 支援 **Just In Time** 使用者佈建。
-* 設定 Nitro Productivity Suite 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 如需詳細資訊，請參閱[了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 Nitro Productivity Suite 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 如需詳細資訊，請參閱[了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-nitro-productivity-suite-from-the-gallery"></a>從資源庫新增 Nitro Productivity Suite
 
@@ -51,7 +51,7 @@ ms.locfileid: "88554323"
 1. 在左窗格上，選取 [Azure Active Directory]  。
 1. 移至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增新的應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Nitro Productivity Suite**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Nitro Productivity Suite** 。
 1. 從結果中選取 [Nitro Productivity Suite]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -73,7 +73,7 @@ ms.locfileid: "88554323"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Nitro Productivity Suite]  應用程式整合頁面上，尋找 [管理]  區段。 選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  。 選取 [下載]  以下載憑證，並將其儲存在您的電腦上。
 
     ![已醒目提示 [下載] 連結的 [SAML 簽署憑證] 區段螢幕擷取畫面](common/certificatebase64.png)
@@ -162,19 +162,18 @@ Nitro Productivity Suite 支援依預設啟用的 Just-In-Time 使用者佈建�
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入組態。
 
-當您在存取面板中選取 Nitro Productivity Suite 圖格時，您會自動登入您已設定 SSO 的 Nitro Productivity Suite。 如需詳細資訊，請參閱[登入我的應用程式入口網站並啟動應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 Nitro Productivity Suite 圖格時，您會自動登入您已設定 SSO 的 Nitro Productivity Suite。 如需詳細資訊，請參閱[登入我的應用程式入口網站並啟動應用程式](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Nitro Productivity Suite](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
 
-- [使用進階可見性和控制項保護 Nitro Productivity Suite](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [使用進階可見性和控制項保護 Nitro Productivity Suite](/cloud-app-security/proxy-intro-aad)

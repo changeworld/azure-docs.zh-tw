@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 310a42d25ce7fb7970777e8f36abbbee562ab01d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd9a04c2324af2ec36d8fa1d43a079e9f2c32dd8
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88523868"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520297"
 ---
 # <a name="tutorial-integrate-way-we-do-with-azure-active-directory"></a>教學課程：整合 Way We Do 與 Azure Active Directory
 
@@ -26,7 +26,7 @@ ms.locfileid: "88523868"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Way We Do。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -50,7 +50,7 @@ ms.locfileid: "88523868"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Way We Do**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Way We Do** 。
 1. 從結果面板選取 [Way We Do]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
@@ -83,7 +83,7 @@ ms.locfileid: "88523868"
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<SUBDOMAIN>.waywedo.com`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Way We Do 用戶端支援小組](mailto:support@waywedo.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Way We Do 用戶端支援小組](mailto:support@waywedo.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (原始)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -105,11 +105,11 @@ ms.locfileid: "88523868"
 
 1. 如果您想要手動設定 Way We Do，請開啟新的網頁瀏覽器視窗，並以系統管理員身分登入 Way We Do 公司網站，然後執行下列步驟：
 
-1. 在 Way We Do 中的任何頁面上，按一下右上角的**人員圖示**，然後在下拉式清單中按一下 [Account]  \(帳戶\)。
+1. 在 Way We Do 中的任何頁面上，按一下右上角的 **人員圖示** ，然後在下拉式清單中按一下 [Account]  \(帳戶\)。
 
     ![Way We Do [Account] \(帳戶\)](./media/waywedo-tutorial/tutorial_waywedo_account.png)
 
-1. 按一下**功能表圖示**以開啟推送導覽功能表，然後按一下 [Single Sign On]  \(單一登入\)。
+1. 按一下 **功能表圖示** 以開啟推送導覽功能表，然後按一下 [Single Sign On]  \(單一登入\)。
 
     ![Way We Do 單一登入](./media/waywedo-tutorial/tutorial_waywedo_single.png)
 
@@ -123,7 +123,7 @@ ms.locfileid: "88523868"
 
     c. 在 [實體識別碼]  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
 
-    d. 在 [SAML SSO URL]  文字方塊中，貼上您從 Azure 入口網站複製的**登入 URL** 值。
+    d. 在 [SAML SSO URL]  文字方塊中，貼上您從 Azure 入口網站複製的 **登入 URL** 值。
 
     e. 按一下 [Certificate]  \(憑證\) 旁的 [select]  \(選取\) 按鈕來上傳憑證。
 
@@ -177,12 +177,12 @@ ms.locfileid: "88523868"
 
 ### <a name="test-sso"></a>測試 SSO
 
-當您在存取面板中選取 [Way We Do] 圖格時，應該會自動登入您已設定 SSO 的 Way We Do。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [Way We Do] 圖格時，應該會自動登入您已設定 SSO 的 Way We Do。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

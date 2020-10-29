@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 8c7347aabb3aa6f122ea82a46ad8a09f53e271bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaef5c01e554ac226828f601dc6144d13846198a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545674"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517407"
 ---
 # <a name="tutorial-integrate-zscaler-private-access-zpa-with-azure-active-directory"></a>教學課程：整合 Zscaler Private Access (ZPA) 與 Azure Active Directory
 
@@ -26,7 +26,7 @@ ms.locfileid: "88545674"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Zscaler Private Access (ZPA)。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -83,7 +83,7 @@ ms.locfileid: "88545674"
     1. 在 [識別碼 (實體識別碼)] 文字方塊中，輸入 URL：`https://samlsp.private.zscaler.com/auth/metadata`
 
     > [!NOTE]
-    > [登入 URL] 的值不是真正的值。 使用實際的登入 URL 來更新此值。 請連絡 [Zscaler Private Access (ZPA) 用戶端支援小組](https://help.zscaler.com/zpa-submit-ticket)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > [登入 URL] 的值不是真正的值。 使用實際的登入 URL 來更新此值。 請連絡 [Zscaler Private Access (ZPA) 用戶端支援小組](https://help.zscaler.com/zpa-submit-ticket)以取得此值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入] 頁面上的 [SAML 簽署憑證] 區段中，尋找 [同盟中繼資料 XML]，然後選取 [下載] 來下載憑證，並將其儲存在電腦上。
 
@@ -119,7 +119,7 @@ ms.locfileid: "88545674"
 
     a. 按一下 [IdP Metadata File Upload] \(IdP 中繼資料檔案上傳\)  欄位中的 [Select File] \(選取檔案)  ，以上傳從 Azure AD 下載的中繼資料檔案。
 
-    b. 它會從 Azure AD 讀取 **IdP 中繼資料**，並填入所有欄位資訊，如下所示。
+    b. 它會從 Azure AD 讀取 **IdP 中繼資料** ，並填入所有欄位資訊，如下所示。
 
     ![Zscaler Private Access Administrator 設定](./media/zscalerprivateaccess-tutorial/config.png)
 
@@ -153,7 +153,7 @@ ms.locfileid: "88545674"
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組] 對話方塊中，從使用者清單選取 **Britta Simon**，然後按一下畫面底部的 [選取] 按鈕。
+1. 在 [使用者和群組] 對話方塊中，從使用者清單選取 **Britta Simon** ，然後按一下畫面底部的 [選取] 按鈕。
 1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
 1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
@@ -163,12 +163,12 @@ ms.locfileid: "88545674"
 
 ### <a name="test-sso"></a>測試 SSO
 
-當您在存取面板中選取 [Zscaler Private Access (ZPA)] 圖格時，應該會自動登入您已設定 SSO 的 Zscaler Private Access (ZPA)。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [Zscaler Private Access (ZPA)] 圖格時，應該會自動登入您已設定 SSO 的 Zscaler Private Access (ZPA)。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

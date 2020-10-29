@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 84db28348baebc4f6b62f9cacb0035b4df1f6145
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bedcaa414328f9d876b212ff931acfb193f51ca
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89660763"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517118"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Meraki Dashboard 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "89660763"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Meraki Dashboard。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -40,7 +40,7 @@ ms.locfileid: "89660763"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * Meraki Dashboard 支援由 **IDP** 起始的 SSO
-* 設定 Meraki Dashboard 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 Meraki Dashboard 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 > [!NOTE]
 > 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
@@ -53,7 +53,7 @@ ms.locfileid: "89660763"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Meraki Dashboard**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Meraki Dashboard** 。
 1. 從結果面板選取 [Meraki Dashboard]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-sso-for-meraki-dashboard"></a>設定及測試 Meraki Dashboard 的 Azure AD SSO
@@ -74,7 +74,7 @@ ms.locfileid: "89660763"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Meraki Dashboard]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -100,7 +100,7 @@ ms.locfileid: "89660763"
     | `https://dashboard.meraki.com/saml/attributes/role` | user.assignedroles |
 
     > [!NOTE]
-    > 若要了解如何在 Azure AD 中設定角色，請參閱[此文章](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)。
+    > 若要了解如何在 Azure AD 中設定角色，請參閱[此文章](../develop/active-directory-enterprise-app-role-management.md)。
 
 1. 在 [SAML 簽署憑證]  區段中，按一下 [編輯]  按鈕以開啟 [SAML 簽署憑證]  對話方塊。
 
@@ -176,7 +176,7 @@ ms.locfileid: "89660763"
 
     ![Meraki Dashboard 新增 SAML 角色按鈕](./media/meraki-dashboard-tutorial/user2.png)
 
-1. 輸入角色 **meraki_full_admin**，將 [組織存取]  標示為 [完整]  ，然後按一下 [建立角色]  。 針對 **meraki_readonly_admin**重複此程序，這次會將 [組織存取]  標示為 [唯讀]  方塊。
+1. 輸入角色 **meraki_full_admin** ，將 [組織存取]  標示為 [完整]  ，然後按一下 [建立角色]  。 針對 **meraki_readonly_admin** 重複此程序，這次會將 [組織存取]  標示為 [唯讀]  方塊。
  
     ![Meraki Dashboard 建立使用者](./media/meraki-dashboard-tutorial/user3.png)
 
@@ -184,16 +184,16 @@ ms.locfileid: "89660763"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 Meraki Dashboard 圖格時，應該會自動登入您設定 SSO 的 Meraki Dashboard。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 Meraki Dashboard 圖格時，應該會自動登入您設定 SSO 的 Meraki Dashboard。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Meraki Dashboard](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)

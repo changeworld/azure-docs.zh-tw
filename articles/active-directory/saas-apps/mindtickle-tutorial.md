@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 73401e8e34230896fd2412d5f8a133f93002f719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db2cfc8ba0389f98d6f9407d7b4a31612e28b46a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544106"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519005"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindtickle"></a>教學課程：Azure Active Directory 與 MindTickle 整合
 
@@ -27,7 +27,7 @@ MindTickle 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 MindTickle (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -63,7 +63,7 @@ MindTickle 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **MindTickle**，從結果面板中選取 [MindTickle]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **MindTickle** ，從結果面板中選取 [MindTickle]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 MindTickle](common/search-new-app.png)
 
@@ -99,13 +99,13 @@ MindTickle 與 Azure AD 整合提供下列優點：
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 如果您有**服務提供者中繼資料檔案**，請在 [基本 SAML 設定]  區段上執行下列步驟：
+4. 如果您有 **服務提供者中繼資料檔案** ，請在 [基本 SAML 設定]  區段上執行下列步驟：
 
     a. 按一下 [上傳中繼資料檔案]  。
 
     ![上傳中繼資料檔案](common/upload-metadata.png)
 
-    b. 按一下**資料夾圖示**以選取中繼資料檔案，然後按一下 [上傳]  。
+    b. 按一下 **資料夾圖示** 以選取中繼資料檔案，然後按一下 [上傳]  。
 
     ![選擇中繼資料檔案](common/browse-upload-metadata.png)
 
@@ -118,7 +118,7 @@ MindTickle 與 Azure AD 整合提供下列優點：
     > [!Note]
     > 如果 [識別碼]  值未自動填入，請根據您的需求手動填入這些值。 [登入 URL] 的值不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [MindTickle 支援小組](mailto:support@mindtickle.com)以取得此值。
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -152,7 +152,7 @@ MindTickle 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -189,19 +189,18 @@ MindTickle 與 Azure AD 整合提供下列優點：
 
 ### <a name="create-mindtickle-test-user"></a>建立 MindTickle 測試使用者
 
-本節會在 MindTickle 中建立名為 Britta Simon 的使用者。 MindTickle 支援依預設啟用的 **Just-In-Time 使用者佈建**。 在這一節沒有您需要進行的動作項目。 如果 MindTickle 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
+本節會在 MindTickle 中建立名為 Britta Simon 的使用者。 MindTickle 支援依預設啟用的 **Just-In-Time 使用者佈建** 。 在這一節沒有您需要進行的動作項目。 如果 MindTickle 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [MindTickle] 圖格時，應該會自動登入您已設定 SSO 的 MindTickle。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [MindTickle] 圖格時，應該會自動登入您已設定 SSO 的 MindTickle。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

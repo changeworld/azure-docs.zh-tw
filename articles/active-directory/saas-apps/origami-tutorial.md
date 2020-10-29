@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 39f2f592601f60f060cce8ded2b5303dc6b10e8a
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 02c79e8385c7a7e9d60a3dcbed603ca94cb1dc43
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995825"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522258"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-origami"></a>教學課程：Azure Active Directory 與 Origami 整合
 
@@ -27,7 +27,7 @@ Origami 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Origami (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ Origami 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Origami**，從結果面板中選取 [Origami]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Origami** ，從結果面板中選取 [Origami]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Origami](common/search-new-app.png)
 
@@ -104,7 +104,7 @@ Origami 與 Azure AD 整合提供下列優點：
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://live.origamirisk.com/origami/account/login?account=<companyname>`
 
     > [!NOTE]
-    > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Origami 客戶支援小組](https://wordpress.org/support/theme/origami)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Origami 客戶支援小組](https://wordpress.org/support/theme/origami)以取得此值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
@@ -158,7 +158,7 @@ Origami 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -215,21 +215,21 @@ Origami 與 Azure AD 整合提供下列優點：
    
     ![顯示 [新增使用者] 對話方塊的螢幕擷取畫面，其中已反白顯示 [使用者名稱]、[名字] 和 [姓氏] 文字方塊。](./media/origami-tutorial/tutorial_origami_56.png)
 
-    a. 在 [使用者名稱]  文字方塊中，輸入使用者的電子郵件地址，例如 **brittasimon\@contoso.com**。
+    a. 在 [使用者名稱]  文字方塊中，輸入使用者的電子郵件地址，例如 **brittasimon\@contoso.com** 。
 
     b. 在 [密碼]  文字方塊中輸入密碼。
 
     c. 在 [確認密碼]  文字方塊中再次輸入密碼。
 
-    d. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **Britta**。
+    d. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **Britta** 。
 
-    e. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon**。
+    e. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon** 。
 
     f. 按一下 [檔案]  。
    
     ![顯示已選取 [儲存] 按鈕的螢幕擷取畫面。](./media/origami-tutorial/tutorial_origami_57.png)
 
-6. 將**使用者角色**和**用戶端存取**指派給使用者。 
+6. 將 **使用者角色** 和 **用戶端存取** 指派給使用者。 
    
     ![設定單一登入](./media/origami-tutorial/tutorial_origami_58.png)
 
@@ -237,13 +237,12 @@ Origami 與 Azure AD 整合提供下列優點：
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Origami] 圖格時，應該會自動登入您已設定 SSO 的 Origami。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Origami] 圖格時，應該會自動登入您已設定 SSO 的 Origami。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

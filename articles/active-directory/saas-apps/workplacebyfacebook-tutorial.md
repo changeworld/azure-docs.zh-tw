@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2020
 ms.author: jeedes
-ms.openlocfilehash: fade4176cbbf432aabae4422553a3caf0235ebed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f20849e4085adcca909d990a2ae9fb7b9751220b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88526409"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520093"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Workplace by Facebook 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88526409"
 * 讓使用者使用他們的 Azure AD 帳戶自動登入 Workplace by Facebook。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -46,7 +46,7 @@ ms.locfileid: "88526409"
 * Workplace by Facebook 支援 **Just-In-Time 佈建**
 * Workplace by Facebook 支援 **[自動使用者佈建](workplacebyfacebook-provisioning-tutorial.md)**
 * Workplace by Facebook 行動應用程式現在可以搭配 Azure AD 設定來啟用 SSO。 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
-* 設定 Workplace by Facebook 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 設定 Workplace by Facebook 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-workplace-by-facebook-from-the-gallery"></a>從資源庫新增 Workplace by Facebook
 
@@ -56,7 +56,7 @@ ms.locfileid: "88526409"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Workplace by Facebook**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Workplace by Facebook** 。
 1. 從結果面板選取 [Workplace by Facebook]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-sso-for-workplace-by-facebook"></a>針對 Workplace by Facebook 設定並測試 Azure AD SSO
@@ -162,11 +162,11 @@ ms.locfileid: "88526409"
 
     a. 在 [SSO 提供者的名稱]  中，輸入 SSO 執行個體名稱，例如 Azureadsso。
 
-    b. 在 [SAML URL]  文字方塊中，貼上您從 Azure 入口網站複製的**登入 URL** 值。
+    b. 在 [SAML URL]  文字方塊中，貼上您從 Azure 入口網站複製的 **登入 URL** 值。
 
-    c. 在 [SAML 簽發者 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 **Azure AD 識別碼**值。
+    c. 在 [SAML 簽發者 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 **Azure AD 識別碼** 值。
 
-    d. 在從 Azure 入口網站下載的記事本檔案中開啟您的 **base-64 編碼憑證**，將憑證的內容複製到剪貼簿，再貼到 [SAML 憑證]  文字方塊。
+    d. 在從 Azure 入口網站下載的記事本檔案中開啟您的 **base-64 編碼憑證** ，將憑證的內容複製到剪貼簿，再貼到 [SAML 憑證]  文字方塊。
 
     e. 複製執行個體的 [Audience URL] \(對象 URL\)  ，並將其貼到 Azure 入口網站上 [基本 SAML 設定]  區段中的 [識別碼 (實體識別碼)]  文字方塊內。
 
@@ -208,7 +208,7 @@ ms.locfileid: "88526409"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Workplace by Facebook] 圖格時，應該會自動登入您設定 SSO 的 Workplace by Facebook。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Workplace by Facebook] 圖格時，應該會自動登入您設定 SSO 的 Workplace by Facebook。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="test-sso-for-workplace-by-facebook-mobile"></a>測試 Workplace by Facebook 的 SSO (行動裝置)
 
@@ -234,14 +234,14 @@ ms.locfileid: "88526409"
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [設定使用者佈建](workplacebyfacebook-provisioning-tutorial.md)
 
 - [嘗試搭配 Azure AD 使用 Workplace by Facebook](https://aad.portal.azure.com)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)

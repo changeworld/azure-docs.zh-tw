@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 7e2087fdd5568156a96645b25cb105cc5f3ca6b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 230f7fd9c62f657ce8ab893db2256808dce9a7ba
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544939"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518359"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>教學課程：Azure Active Directory 與 Symantec Web Security Service (WSS) 整合
 
@@ -30,7 +30,7 @@ Symantec Web Security Service (WSS) 與 Azure AD 整合提供下列優點：
 
 - 強制執行 WSS 帳戶中所定義的使用者和群組層級原則規則。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -109,15 +109,15 @@ Symantec Web Security Service (WSS) 與 Azure AD 整合提供下列優點：
     b. 在 [回覆 URL]  文字方塊中，鍵入 URL：`https://saml.threatpulse.net:8443/saml/saml_realm/bcsamlpost`
 
     > [!NOTE]
-    > 如果 [識別碼] 和 [回覆 URL] 的值因為某些原因而沒有作用，請連絡 [Symantec Web Security Service (WSS) 客戶支援小組](https://www.symantec.com/contact-us)。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 如果 [識別碼] 和 [回覆 URL] 的值因為某些原因而沒有作用，請連絡 [Symantec Web Security Service (WSS) 客戶支援小組](https://www.symantec.com/contact-us)。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
 ### <a name="configure-symantec-web-security-service-wss-single-sign-on"></a>設定 Symantec Web Security Service (WSS) 單一登入
 
-若要在 Symantec Web Security Service (WSS) 端設定單一登入，請參閱 WSS 線上文件。 所下載的**同盟中繼資料 XML** 必須匯入到 WSS 入口網站。 如果您需要協助進行 WSS 入口網站設定，請連絡 [Symantec Web Security Service (WSS) 支援小組](https://www.symantec.com/contact-us)。
+若要在 Symantec Web Security Service (WSS) 端設定單一登入，請參閱 WSS 線上文件。 所下載的 **同盟中繼資料 XML** 必須匯入到 WSS 入口網站。 如果您需要協助進行 WSS 入口網站設定，請連絡 [Symantec Web Security Service (WSS) 支援小組](https://www.symantec.com/contact-us)。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
@@ -135,7 +135,7 @@ Symantec Web Security Service (WSS) 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -185,9 +185,8 @@ Symantec Web Security Service (WSS) 與 Azure AD 整合提供下列優點：
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

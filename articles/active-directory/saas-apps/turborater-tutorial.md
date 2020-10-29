@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
-ms.openlocfilehash: 0c22993baa6a9095bddba67bdc9d18a40021db6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7483e7a9300088d07e85d238ad897522d59c5464
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546384"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519379"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>教學課程：Azure Active Directory 與 TurboRater 整合
 
@@ -28,7 +28,7 @@ TurboRater 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 TurboRater (單一登入)。
 * 您可以集中管理您的帳戶：Azure 入口網站。
 
-如需軟體即服務 (SaaS) 應用程式與 Azure AD 整合的詳細資訊，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如需軟體即服務 (SaaS) 應用程式與 Azure AD 整合的詳細資訊，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -60,7 +60,7 @@ TurboRater 支援由 IDP 起始的單一登入 (SSO)。
 
     ![新增應用程式選項](common/add-new-app.png)
 
-1. 在搜尋方塊中，輸入 **TurboRater**。 在搜尋結果中選取 [TurboRater]  ，然後選取 [新增]  以新增應用程式。
+1. 在搜尋方塊中，輸入 **TurboRater** 。 在搜尋結果中選取 [TurboRater]  ，然後選取 [新增]  以新增應用程式。
 
     ![結果清單中的 TurboRater](common/search-new-app.png)
 
@@ -145,9 +145,9 @@ TurboRater 支援由 IDP 起始的單一登入 (SSO)。
 
     ![[使用者] 窗格](common/user-properties.png)
 
-    1. 在 [名稱]  方塊中，輸入 **BSimon**。
+    1. 在 [名稱]  方塊中，輸入 **BSimon** 。
   
-    1. 在**使用者名稱**方塊中，輸入 **BSimon\@\<yourcompanydomain>.\<extension>** 。 例如 **BSimon\@contoso.com**。
+    1. 在 **使用者名稱** 方塊中，輸入 **BSimon\@\<yourcompanydomain>.\<extension>** 。 例如 **BSimon\@contoso.com** 。
 
     1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
 
@@ -187,12 +187,12 @@ TurboRater 支援由 IDP 起始的單一登入 (SSO)。
 
 在本節中，您會使用 MyApps 入口網站來測試您的 Azure AD 單一登入組態。
 
-當您在「我的應用程式」入口網站中選取 [TurboRater]  時，應該會自動登入您已設定單一登入的 TurboRater 訂用帳戶。 如需 My Apps 入口網站的詳細資訊，請參閱[在 My Apps 入口網站上存取和使用應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在「我的應用程式」入口網站中選取 [TurboRater]  時，應該會自動登入您已設定單一登入的 TurboRater 訂用帳戶。 如需 My Apps 入口網站的詳細資訊，請參閱[在 My Apps 入口網站上存取和使用應用程式](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* [整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](./tutorial-list.md)
 
-* [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+* [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-* [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

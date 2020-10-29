@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: a28bfbb7fcfd357dc3aac521db24788607cd2212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc6b90be8e951c0e30c99d0bb16f85e49cf991f2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543851"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522320"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>教學課程：Azure Active Directory 與 OrgChart Now 整合
 
@@ -27,7 +27,7 @@ OrgChart Now 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 OrgChart Now (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ OrgChart Now 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **OrgChart Now**，從結果面板中選取 [OrgChart Now]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **OrgChart Now** ，從結果面板中選取 [OrgChart Now]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 OrgChart Now](common/search-new-app.png)
 
@@ -112,7 +112,7 @@ OrgChart Now 與 Azure AD 整合提供下列優點：
     > [!NOTE]
     > `<YourEntityID>` 是從＜設定 OrgChart Now＞一節複製的 [Azure AD 識別碼]，稍後會在教學課程中說明。
 
-6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -146,7 +146,7 @@ OrgChart Now 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -185,9 +185,9 @@ OrgChart Now 與 Azure AD 整合提供下列優點：
 
 若要讓 Azure AD 使用者可以登入 OrgChart Now，則必須將他們佈建到 OrgChart Now。 
 
-1. OrgChart Now 支援預設啟用的 Just-In-Time 佈建。 當您嘗試存取 OrgChart Now 時，如果 OrgChart Now 還沒有使用者，它將會建立新的使用者。 當 SSO 要求是來自已辨識的 IDP，且在使用者清單中找不到 SAML 判斷提示中的電子郵件時，Just-In-Time 使用者佈建功能只會建立**唯讀**使用者。 針對此自動佈建功能，您必須在 OrgChart Now 中建立標題為「一般」  的存取群組。 請依照以下步驟建立存取群組：
+1. OrgChart Now 支援預設啟用的 Just-In-Time 佈建。 當您嘗試存取 OrgChart Now 時，如果 OrgChart Now 還沒有使用者，它將會建立新的使用者。 當 SSO 要求是來自已辨識的 IDP，且在使用者清單中找不到 SAML 判斷提示中的電子郵件時，Just-In-Time 使用者佈建功能只會建立 **唯讀** 使用者。 針對此自動佈建功能，您必須在 OrgChart Now 中建立標題為「一般」  的存取群組。 請依照以下步驟建立存取群組：
 
-    a. 在按一下 UI 右上角的**齒輪**之後，移至 [管理群組] 選項。
+    a. 在按一下 UI 右上角的 **齒輪** 之後，移至 [管理群組] 選項。
 
     ![OrgChart Now 群組](./media/orgchartnow-tutorial/tutorial_orgchartnow_manage.png)    
 
@@ -199,11 +199,11 @@ OrgChart Now 與 Azure AD 整合提供下列優點：
 
     ![OrgChart Now 資料夾](./media/orgchartnow-tutorial/tutorial_orgchartnow_chart.png)
 
-    d. **鎖定**資料夾，只有系統管理員使用者可以修改它們。 然後按 [確定]  。
+    d. **鎖定** 資料夾，只有系統管理員使用者可以修改它們。 然後按 [確定]  。
 
     ![OrgChart Now 鎖定](./media/orgchartnow-tutorial/tutorial_orgchartnow_lock.png)
 
-2. 若要建立**系統管理員**使用者和**讀/寫**使用者，您必須手動建立使用者以便透過 SSO 取得其權限層級。 若要佈建使用者帳戶，請執行下列步驟：
+2. 若要建立 **系統管理員** 使用者和 **讀/寫** 使用者，您必須手動建立使用者以便透過 SSO 取得其權限層級。 若要佈建使用者帳戶，請執行下列步驟：
 
     a. 以安全性系統管理員身分登入 OrgChart Now。
 
@@ -215,9 +215,9 @@ OrgChart Now 與 Azure AD 整合提供下列優點：
 
     ![OrgChart Now 管理](./media/orgchartnow-tutorial/tutorial_orgchartnow_manageusers.png)
 
-    * 在 [使用者識別碼]  文字方塊中，輸入使用者識別碼，例如 **brittasimon\@contoso.com**。
+    * 在 [使用者識別碼]  文字方塊中，輸入使用者識別碼，例如 **brittasimon\@contoso.com** 。
 
-    * 在 [Email Address] \(電子郵件地址\)  文字方塊中，輸入使用者的電子郵件地址，例如 **brittasimon\@contoso.com**。
+    * 在 [Email Address] \(電子郵件地址\)  文字方塊中，輸入使用者的電子郵件地址，例如 **brittasimon\@contoso.com** 。
 
     * 按一下 [新增]  。
 
@@ -225,13 +225,12 @@ OrgChart Now 與 Azure AD 整合提供下列優點：
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [OrgChart Now] 圖格時，應該會自動登入您已設定 SSO 的 OrgChart Now。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [OrgChart Now] 圖格時，應該會自動登入您已設定 SSO 的 OrgChart Now。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: cc42414d4aae6a575429e17d577b175f55bf3c01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e10045eb14f6a72648fb9534ade077faaa4ef918
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88518737"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517271"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-menlo-security"></a>教學課程：Azure Active Directory 與 Menlo Security 整合
 
@@ -27,7 +27,7 @@ ms.locfileid: "88518737"
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Menlo Security (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ ms.locfileid: "88518737"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Menlo Security**，從結果面板中選取 [Menlo Security]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Menlo Security** ，從結果面板中選取 [Menlo Security]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Menlo Security](common/search-new-app.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "88518737"
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<subdomain>.menlosecurity.com/safeview-auth-server/saml/metadata`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Menlo Security 用戶端支援小組](https://www.menlosecurity.com/menlo-contact)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Menlo Security 用戶端支援小組](https://www.menlosecurity.com/menlo-contact)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
@@ -140,7 +140,7 @@ ms.locfileid: "88518737"
 
     e. **Service Identifier (Issuer)** \(服務識別碼 (簽發者)\)：貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  。
 
-    f. **X.509 Certificate** \(X.509 憑證\)：在記事本中開啟您從 Azure 入口網站下載的**憑證 (Base64)** ，然後將其貼在此方塊中。
+    f. **X.509 Certificate** \(X.509 憑證\)：在記事本中開啟您從 Azure 入口網站下載的 **憑證 (Base64)** ，然後將其貼在此方塊中。
 
     g. 按一下 [儲存]  來儲存這些設定。
 
@@ -160,7 +160,7 @@ ms.locfileid: "88518737"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -203,13 +203,12 @@ ms.locfileid: "88518737"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 Menlo Security 圖格時，應該會自動登入您已設定 SSO 的 Menlo Security。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 Menlo Security 圖格時，應該會自動登入您已設定 SSO 的 Menlo Security。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

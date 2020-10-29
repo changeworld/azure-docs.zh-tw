@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: b147037a58e4af59c0c3ccd56b6f6b241d775308
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e33664501483280978c67b100cd56a714ef63a30
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553314"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520756"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>教學課程：Azure Active Directory 與 Riskware 整合
 
@@ -27,7 +27,7 @@ ms.locfileid: "88553314"
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Riskware (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ ms.locfileid: "88553314"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Riskware**，從結果面板中選取 [Riskware]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Riskware** ，從結果面板中選取 [Riskware]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
     ![結果清單中的 Riskware](common/search-new-app.png)
 
@@ -105,24 +105,24 @@ ms.locfileid: "88553314"
     
     | 環境| URL 模式|
     |--|--|
-    | UAT|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
-    | PROD| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
-    | 示範| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
+    | UAT|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
+    | PROD| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
+    | 示範| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
     |||
 
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，輸入 URL：
     
     | 環境| URL 模式|
     |--|--|
-    | UAT| `https://riskcloud.net/uat` |
-    | PROD| `https://riskcloud.net/prod` |
-    | 示範| `https://riskcloud.net/demo` |
+    | UAT| `https://riskcloud.net/uat` |
+    | PROD| `https://riskcloud.net/prod` |
+    | 示範| `https://riskcloud.net/demo` |
     |||
 
     > [!NOTE]
-    > [登入 URL] 的值不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Riskware 用戶端支援小組](mailto:support@pansoftware.com.au)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > [登入 URL] 的值不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Riskware 用戶端支援小組](mailto:support@pansoftware.com.au)以取得此值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -166,11 +166,11 @@ ms.locfileid: "88553314"
 
     g. 在 [XML Identity Tag Name] \(XML 身分識別標記名稱\)  文字方塊中，輸入 SAML 回應中包含唯一識別碼的屬性，例如 NameID。
 
-    h. 在記事本中開啟從 Azure 入口網站下載的 **Metadata Xml**，複製中繼資料檔中的憑證，然後將其貼到 [Certificate]\(憑證\)  文字方塊中
+    h. 在記事本中開啟從 Azure 入口網站下載的 **Metadata Xml** ，複製中繼資料檔中的憑證，然後將其貼到 [Certificate]\(憑證\)  文字方塊中
 
-    i. 在 [Consumer URL]\(取用者 URL\)  文字方塊中，貼上您向支援小組取得的**回覆 URL** 值。
+    i. 在 [Consumer URL]\(取用者 URL\)  文字方塊中，貼上您向支援小組取得的 **回覆 URL** 值。
 
-    j. 在 [簽發者]  文字方塊中，貼上您向支援小組取得的**識別碼**值。
+    j. 在 [簽發者]  文字方塊中，貼上您向支援小組取得的 **識別碼** 值。
 
     > [!Note]
     > 請連絡 [Riskware 用戶端支援小組](mailto:support@pansoftware.com.au)以取得這些值
@@ -197,7 +197,7 @@ ms.locfileid: "88553314"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`  
     例如， BrittaSimon@contoso.com
@@ -254,9 +254,9 @@ ms.locfileid: "88553314"
 
     a. 選取 [Person Type]\(人員類型\)  ，例如 [Employee] \(員工\)。
 
-    b. 在 [First Name]\(名字\)  文字方塊中，輸入使用者的名字，例如 **Britta**。
+    b. 在 [First Name]\(名字\)  文字方塊中，輸入使用者的名字，例如 **Britta** 。
 
-    c. 在 [Surname]\(姓氏\)  文字方塊中，輸入使用者的姓氏，例如 **Simon**。
+    c. 在 [Surname]\(姓氏\)  文字方塊中，輸入使用者的姓氏，例如 **Simon** 。
 
 1. 在 [安全性]  索引標籤上執行下列步驟：。
 
@@ -284,12 +284,12 @@ ms.locfileid: "88553314"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Riskware] 圖格時，應該會自動登入您已設定 SSO 的 Riskware。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Riskware] 圖格時，應該會自動登入您已設定 SSO 的 Riskware。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

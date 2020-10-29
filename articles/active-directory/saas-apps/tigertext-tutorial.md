@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 995cd8470d4fbbf3dc340139a86275593a3d5d28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6831e96ebd8fd2db51d640ff3d93955b1a9f1477
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88815210"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516370"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigerconnect-secure-messenger"></a>教學課程：Azure Active Directory 與 TigerConnect Secure Messenger 整合
 
@@ -28,7 +28,7 @@ ms.locfileid: "88815210"
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 TigerConnect Secure Messenger (單一登入)。
 * 您可以集中管理您的帳戶：Azure 入口網站。
 
-如需軟體即服務 (SaaS) 應用程式與 Azure AD 整合的詳細資訊，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如需軟體即服務 (SaaS) 應用程式與 Azure AD 整合的詳細資訊，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -42,7 +42,7 @@ ms.locfileid: "88815210"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD 單一登入，並整合 TigerConnect Secure Messenger 與 Azure AD。
 
 * TigerConnect Secure Messenger 支援由 **SP** 起始的 SSO
-* 設定 TigerConnect Secure Messenger 後，您可以強制執行工作階段控制，以即時防止組織的敏感性資料遭到外洩及滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 TigerConnect Secure Messenger 後，您可以強制執行工作階段控制，以即時防止組織的敏感性資料遭到外洩及滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-tigerconnect-secure-messenger-from-the-gallery"></a>從資源庫新增 TigerConnect Secure Messenger
 
@@ -52,7 +52,7 @@ ms.locfileid: "88815210"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **TigerConnect Secure Messenger**。
+1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **TigerConnect Secure Messenger** 。
 1. 從結果面板中選取 [TigerConnect Secure Messenger]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>設定並測試 Azure AD SSO
@@ -75,29 +75,29 @@ ms.locfileid: "88815210"
 若要設定與 TigerConnect Secure Messenger 搭配運作的 Azure AD 單一登入，請執行下列步驟：
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 **TigerConnect Secure Messenger** 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在**基本 SAML 組態**區段上，輸入下列欄位的值：
+1. 在 **基本 SAML 組態** 區段上，輸入下列欄位的值：
 
-    1. 在 [登入 URL]**** 方塊中，輸入 URL：
+    1. 在 [登入 URL]  方塊中，輸入 URL：
 
        `https://home.tigertext.com`
 
-    1. 在 [識別碼 (實體識別碼)]**** 方塊中，以下列模式輸入 URL：
+    1. 在 [識別碼 (實體識別碼)]  方塊中，以下列模式輸入 URL：
 
        `https://saml-lb.tigertext.me/v1/organization/<instance ID>`
 
     > [!NOTE]
-    > [識別碼 (實體識別碼)]**** 值並非實際值。 請使用實際的識別碼來更新此值。 若要取得此值，請連絡 [TigerConnect Secure Messenger 支援小組](mailto:prosupport@tigertext.com)。 您也可以參考 Azure 入口網站中 [基本 SAML 組態]  窗格所示的模式。
+    > [識別碼 (實體識別碼)]  值並非實際值。 請使用實際的識別碼來更新此值。 若要取得此值，請連絡 [TigerConnect Secure Messenger 支援小組](mailto:prosupport@tigertext.com)。 您也可以參考 Azure 入口網站中 [基本 SAML 組態]  窗格所示的模式。
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，選取 [下載]  ，以從指定的選項下載 [同盟中繼資料 XML]  並儲存在電腦上。
 
     ![同盟中繼資料 XML 下載選項](common/metadataxml.png)
 
-1. 在**設定 TigerConnect Secure Messenger** 區段上，依據您的需求複製適當的 URL。
+1. 在 **設定 TigerConnect Secure Messenger** 區段上，依據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -144,16 +144,16 @@ ms.locfileid: "88815210"
 
 在本節中，您會使用 MyApps 入口網站來測試您的 Azure AD 單一登入組態。
 
-當您在「我的應用程式」入口網站中選取 [TigerConnect Secure Messenger] 時，應該會自動登入您已設定單一登入的 TigerConnect Secure Messenger 訂用帳戶。 如需 My Apps 入口網站的詳細資訊，請參閱[在 My Apps 入口網站上存取和使用應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在「我的應用程式」入口網站中選取 [TigerConnect Secure Messenger] 時，應該會自動登入您已設定單一登入的 TigerConnect Secure Messenger 訂用帳戶。 如需 My Apps 入口網站的詳細資訊，請參閱[在 My Apps 入口網站上存取和使用應用程式](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [用於整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [用於整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [搭配 Azure AD 試用 TigerConnect Secure Messenger](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)

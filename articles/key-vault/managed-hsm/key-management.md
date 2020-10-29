@@ -8,17 +8,17 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 846153dd482130bbb3b35c38a3dbb791e0d0d32e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f054638e09061c652946c9c2db1a32db73c23d9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448279"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521028"
 ---
 # <a name="manage-a-managed-hsm-using-the-azure-cli"></a>使用 Azure CLI 管理受控 HSM
 
 > [!NOTE]
-> Key Vault 支援兩種類型的資源：保存庫和受控 HSM。 本文討論**受控 HSM**。 如果您想要了解如何管理保存庫，請參閱[使用 Azure CLI 來管理 Key Vault](../general/manage-with-cli2.md)。
+> Key Vault 支援兩種類型的資源：保存庫和受控 HSM。 本文討論 **受控 HSM** 。 如果您想要了解如何管理保存庫，請參閱[使用 Azure CLI 來管理 Key Vault](../general/manage-with-cli2.md)。
 
 如需受控 HSM 的概觀，請參閱[什麼是受控 HSM？](overview.md)
 
@@ -69,7 +69,7 @@ az keyvault key create --id https://ContosoMHSM.managedhsm.azure.net/keys/myrsak
 
 ### <a name="create-an-ec-key"></a>建立 EC 金鑰
 
-下列範例說明如何建立具有 P-256 曲線的 **EC** 金鑰，此金鑰只會用於**簽署和驗證**作業 (--ops)，且具有 **usage** 和 **appname** 兩個標籤。 這些標籤可協助您將其他中繼資料新增至金鑰，以進行追蹤和管理。
+下列範例說明如何建立具有 P-256 曲線的 **EC** 金鑰，此金鑰只會用於 **簽署和驗證** 作業 (--ops)，且具有 **usage** 和 **appname** 兩個標籤。 這些標籤可協助您將其他中繼資料新增至金鑰，以進行追蹤和管理。
 
 ```azurecli-interactive
 az keyvault key create --hsm-name ContosoMHSM --name myec256key --ops sign verify  --tags ‘usage=signing] appname=myapp’ --kty EC-HSM --curve P-256
@@ -82,7 +82,7 @@ az keyvault key create --id https://ContosoMHSM.managedhsm.azure.net/keys/myec25
 
 ### <a name="create-a-256-bit-symmetric-key"></a>建立 256 位元對稱金鑰
 
-下列範例說明如何建立僅用於**加密和解密** 作業 (--ops) 的 256 位元**對稱**金鑰。
+下列範例說明如何建立僅用於 **加密和解密** 作業 (--ops) 的 256 位元 **對稱** 金鑰。
 
 ```azurecli-interactive
 az keyvault key create --hsm-name ContosoMHSM --name myaeskey --ops encrypt decrypt  --tags --kty oct-HSM --size 256
@@ -90,7 +90,7 @@ az keyvault key create --hsm-name ContosoMHSM --name myaeskey --ops encrypt decr
 ## OR
 # Note the key name (myaeskey) in the URI
 
-az keyvault key create --id https://ContosoMHSM.managedhsm.azure.net/keys/myaeskey --ops sign verify  --tags ‘usage=signing] appname=myapp’ --kty EC-HSM --curve P-256
+az keyvault key create --id https://ContosoMHSM.managedhsm.azure.net/keys/myaeskey --ops encrypt decrypt  --tags ‘usage=signing] appname=myapp’ --kty oct-HSM --size 256
 ```
 
 ## <a name="view-key-attributes-and-tags"></a>檢視金鑰屬性和標籤

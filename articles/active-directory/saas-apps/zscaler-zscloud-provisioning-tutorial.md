@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 0454ffc1ed68056b2aedc10a6e904a9a934ab223
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4579fa3c6dd1e34072a31747fda5113a5ac1be2a
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333489"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517424"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>教學課程：設定 Zscaler ZSCloud 來自動佈建使用者
 
 在此教學課程中，您將了解如何設定 Azure Active Directory (Azure AD) 來對 Zscaler ZSCloud 自動佈建及取消佈建使用者和/或群組。
 
 > [!NOTE]
-> 此教學課程會描述建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題答案等重要詳細資訊，請參閱[使用 Azure Active Directory 自動對 SaaS 應用程式進行和取消使用者的佈建](../active-directory-saas-app-provisioning.md)。
+> 此教學課程會描述建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題答案等重要詳細資訊，請參閱[使用 Azure Active Directory 自動對 SaaS 應用程式進行和取消使用者的佈建](../app-provisioning/user-provisioning.md)。
 
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -53,7 +53,7 @@ ms.locfileid: "91333489"
 
 ![選取 [新增應用程式]](common/add-new-app.png)
 
-在搜尋方塊中，輸入 **Zscaler ZSCloud**。 在結果中選取 [Zscaler ZSCloud]  ，然後選取 [新增]  。
+在搜尋方塊中，輸入 **Zscaler ZSCloud** 。 在結果中選取 [Zscaler ZSCloud]  ，然後選取 [新增]  。
 
 ![結果清單](common/search-new-app.png)
 
@@ -61,13 +61,13 @@ ms.locfileid: "91333489"
 
 Azure AD 使用者必須先獲得所選應用程式的存取權，才能使用它們。 在自動使用者佈建的內容中，只會同步處理已指派至 Azure AD 中應用程式的使用者或群組。
 
-設定並啟用自動使用者佈建之前，您應該先決定 Azure AD 中的哪些使用者和/或群組需要存取 Zscaler ZSCloud。 做好決定之後，您可依照[將使用者或群組指派給企業應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)中的指示，將這些使用者和群組指派至 Zscaler ZSCloud。
+設定並啟用自動使用者佈建之前，您應該先決定 Azure AD 中的哪些使用者和/或群組需要存取 Zscaler ZSCloud。 做好決定之後，您可依照[將使用者或群組指派給企業應用程式](../manage-apps/assign-user-or-group-access-portal.md)中的指示，將這些使用者和群組指派至 Zscaler ZSCloud。
 
 ### <a name="important-tips-for-assigning-users-to-zscaler-zscloud"></a>將使用者指派給 Zscaler ZSCloud 的重要提示
 
 * 建議先將單一 Azure AD 使用者指派至 Zscaler ZSCloud，以測試自動使用者佈建設定。 您可以稍後指派更多的使用者和群組。
 
-* 將使用者指派至 Zscaler ZSCloud 時，您必須在 [指派] 對話方塊中選取任何有效的應用程式特定角色 (如果有的話)。 具有**預設存取**角色的使用者會從佈建中排除。
+* 將使用者指派至 Zscaler ZSCloud 時，您必須在 [指派] 對話方塊中選取任何有效的應用程式特定角色 (如果有的話)。 具有 **預設存取** 角色的使用者會從佈建中排除。
 
 ## <a name="set-up-automatic-user-provisioning"></a>設定自動使用者佈建
 
@@ -130,7 +130,7 @@ Azure AD 使用者必須先獲得所選應用程式的存取權，才能使用�
 
     ![[屬性對應] 區段的螢幕擷取畫面，其中顯示三個對應。](./media/zscaler-zscloud-provisioning-tutorial/groupattributemappings.png)
 
-14. 若要設定範圍篩選條件，請參閱[範圍篩選條件教學課程](./../active-directory-saas-scoping-filters.md)中的指示。
+14. 若要設定範圍篩選條件，請參閱[範圍篩選條件教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中的指示。
 
 15. 若要啟用 Zscaler ZSCloud 的 Azure AD 佈建服務，在 [設定]  區段中，將 [佈建狀態]  變更為 [開啟]  ：
 
@@ -146,7 +146,7 @@ Azure AD 使用者必須先獲得所選應用程式的存取權，才能使用�
 
 此作業會對在 [設定]  區段的 [範圍]  下定義的所有使用者和群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 您可以在 [同步處理詳細資料]  區段中監視進度。 您也可以遵循連結來佈建活動報告，該報告會說明 Zscaler ZSCloud 上的 Azure AD 佈建服務所執行的所有動作。
 
-如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../active-directory-saas-provisioning-reporting.md)。
+如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -155,7 +155,7 @@ Azure AD 使用者必須先獲得所選應用程式的存取權，才能使用�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解如何針對佈建活動檢閱記錄和取得報告](../active-directory-saas-provisioning-reporting.md)
+* [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/zscaler-zscloud-provisioning-tutorial/tutorial-general-01.png

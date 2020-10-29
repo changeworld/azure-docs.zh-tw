@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
-ms.openlocfilehash: fdd9a0e72b9fee374de810ce6e18bb0f5c2fbe25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7838e4f2ced5f47a0fb52b6e0f07d30edd770dca
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548611"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522068"
 ---
 # <a name="tutorial-integrate-shmoop-for-schools-with-azure-active-directory"></a>教學課程：整合 Shmoop For Schools 與 Azure Active Directory
 
@@ -26,7 +26,7 @@ ms.locfileid: "88548611"
 * 讓使用者使用他們的 Azure AD 帳戶自動登入 Shmoop For Schools。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -50,7 +50,7 @@ ms.locfileid: "88548611"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Shmoop For Schools**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Shmoop For Schools** 。
 1. 從結果面板選取 [Shmoop For Schools]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-shmoop-for-schools"></a>設定和測試 Shmoop For Schools 的 Azure AD 單一登入
@@ -83,14 +83,14 @@ ms.locfileid: "88548611"
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://schools.shmoop.com/<uniqueid>`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Shmoop For Schools 用戶端支援小組](mailto:support@shmoop.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Shmoop For Schools 用戶端支援小組](mailto:support@shmoop.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. Shmoop For Schools 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至 SAML 權杖屬性組態。 以下螢幕擷取畫面顯示預設屬性清單。
 
     ![image](common/default-attributes.png)
 
     > [!NOTE]
-    > Shmoop For Schools 支援兩種使用者角色：**老師**和**學生**。 在 Azure AD 中設定這些角色，以便您可以將使用者指派為適當的角色。 若要了解如何在 Azure AD 中設定角色，請參閱[此文章](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)。
+    > Shmoop For Schools 支援兩種使用者角色： **老師** 和 **學生** 。 在 Azure AD 中設定這些角色，以便您可以將使用者指派為適當的角色。 若要了解如何在 Azure AD 中設定角色，請參閱[此文章](../develop/active-directory-enterprise-app-role-management.md)。
 
 1. 除了以上屬性外，Shmoop For Schools 應用程式還需要在 SAML 回應中傳回更多屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
 
@@ -134,7 +134,7 @@ ms.locfileid: "88548611"
 
 ## <a name="configure-shmoop-for-schools-sso"></a>設定 Shmoop For Schools SSO
 
-若要在 **Shmoop For Schools** 端設定單一登入，您必須將**應用程式同盟中繼資料 URL** 傳送給 [Shmoop For Schools 支援小組](mailto:support@shmoop.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Shmoop For Schools** 端設定單一登入，您必須將 **應用程式同盟中繼資料 URL** 傳送給 [Shmoop For Schools 支援小組](mailto:support@shmoop.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-shmoop-for-schools-test-user"></a>建立 Shmoop For Schools 測試使用者
 
@@ -147,14 +147,14 @@ ms.locfileid: "88548611"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 Shmoop For Schools 圖格時，應該會自動登入您設定 SSO 的 Shmoop For Schools。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 Shmoop For Schools 圖格時，應該會自動登入您設定 SSO 的 Shmoop For Schools。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [搭配 Azure AD 使用 Shmoop For Schools](https://aad.portal.azure.com/)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: be48e4bb4f8364e9fafff69e2dc9eb6aa8db223c
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: bafec2c1b857d3220089e2ca41190987de33edb6
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940976"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519464"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-namely"></a>教學課程：將 Azure Active Directory 與 Namely 整合
 
@@ -27,7 +27,7 @@ ms.locfileid: "91940976"
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Namely (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ ms.locfileid: "91940976"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Namely**，從結果面板中選取 [Namely]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Namely** ，從結果面板中選取 [Namely]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Namely](common/search-new-app.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "91940976"
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<subdomain>.namely.com/saml/metadata`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Namely 客戶支援小組](https://www.namely.com/contact/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Namely 客戶支援小組](https://www.namely.com/contact/)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
@@ -166,7 +166,7 @@ ms.locfileid: "91940976"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -217,17 +217,17 @@ ms.locfileid: "91940976"
    
     ![顯示已選取 [人員目錄] 索引標籤的螢幕擷取畫面。](./media/namely-tutorial/tutorial_namely_11.png) 
 
-4. 按一下 [ **新增人員**]。
+4. 按一下 [ **新增人員** ]。
 
     ![顯示 [新增人員] 選項的螢幕擷取畫面。](./media/namely-tutorial/tutorial_namely_12.png)
 
 5. 在 [ **新增人員** ] 對話方塊上，執行下列步驟：
 
-    a. 在 [名字]  文字方塊中，輸入 **Britta**。
+    a. 在 [名字]  文字方塊中，輸入 **Britta** 。
 
-    b. 在 [姓氏]  文字方塊中，輸入 **Simon**。
+    b. 在 [姓氏]  文字方塊中，輸入 **Simon** 。
 
-    c. 在 [電子郵件]  文字方塊中，輸入 BrittaSimon 的**電子郵件地址**。
+    c. 在 [電子郵件]  文字方塊中，輸入 BrittaSimon 的 **電子郵件地址** 。
 
     d. 按一下 [檔案]  。
 
@@ -235,13 +235,12 @@ ms.locfileid: "91940976"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Namely] 圖格時，應該會自動登入您已設定 SSO 的 Namely。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Namely] 圖格時，應該會自動登入您已設定 SSO 的 Namely。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

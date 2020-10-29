@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: be9f2163813d1dc52a593c110fa4cef9b561614e
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 913ffc0670e40e749bd28382d492a16891fdc5c9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995416"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522252"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>教學課程：Azure Active Directory 與 Percolate 整合
 
@@ -28,7 +28,7 @@ ms.locfileid: "91995416"
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Percolate (單一登入)。
 * 您可以集中管理您的帳戶：Azure 入口網站。
 
-若要深入了解 SaaS 應用程式與 Azure AD 的整合，請參閱 [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 的整合，請參閱 [Azure Active Directory 中的應用程式單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -61,7 +61,7 @@ ms.locfileid: "91995416"
 
     ![選取 [新增應用程式]](common/add-new-app.png)
 
-4. 在搜尋方塊中輸入 **Percolate**。 在搜尋結果中，選取 [Percolate]  ，然後選取 [新增]  。
+4. 在搜尋方塊中輸入 **Percolate** 。 在搜尋結果中，選取 [Percolate]  ，然後選取 [新增]  。
 
      ![搜尋結果](common/search-new-app.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "91995416"
 5. 若要在 SP 起始的模式中設定應用程式，請選取 [設定額外的 URL]  ，然後在 [登入 URL]  方塊中輸入 **https://percolate.com/app/login** ：
 
    ![顯示選取了 [設定其他 U R L] 的螢幕擷取畫面，其中已反白顯示 [登入 U R L] 文字方塊。](common/metadata-upload-additional-signon.png)
-6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，選取 [複製]  圖示以複製**應用程式同盟中繼資料 URL**。 要儲存此 URL。
+6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，選取 [複製]  圖示以複製 **應用程式同盟中繼資料 URL** 。 要儲存此 URL。
 
     ![複製應用程式同盟中繼資料 URL](common/copy-metadataurl.png)
 
@@ -112,11 +112,11 @@ ms.locfileid: "91995416"
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
-    1. **登入 URL**。
+    1. **登入 URL** 。
 
-    1. **Azure AD 識別碼**。
+    1. **Azure AD 識別碼** 。
 
-    1. **登出 URL**。
+    1. **登出 URL** 。
 
 ### <a name="configure-percolate-single-sign-on"></a>設定 Percolate 單一登入
 
@@ -130,15 +130,15 @@ ms.locfileid: "91995416"
 
     ![選取組織下方的 SSO](./media/percolate-tutorial/configure02.png)
 
-    1. 在 [登入 URL]  方塊中，貼上您從 Azure 入口網站複製的**登入 URL** 值。
+    1. 在 [登入 URL]  方塊中，貼上您從 Azure 入口網站複製的 **登入 URL** 值。
 
     1. 在 [實體識別碼]  方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
 
     1. 在記事本中開啟您從 Azure 入口網站下載的 base-64 編碼憑證。 複製其內容，並將其貼至 [x509 憑證]  方塊中。
 
-    1. 在 [電子郵件屬性]  方塊中，輸入**電子郵件地址**。
+    1. 在 [電子郵件屬性]  方塊中，輸入 **電子郵件地址** 。
 
-    1. [識別提供者中繼資料 URL]  方塊是選擇性欄位。 如果您已從 Azure 入口網站複製**應用程式同盟中繼資料 URL**，您可以將其貼到此方塊中。
+    1. [識別提供者中繼資料 URL]  方塊是選擇性欄位。 如果您已從 Azure 入口網站複製 **應用程式同盟中繼資料 URL** ，您可以將其貼到此方塊中。
 
     1. 在 [是否應簽署 AuthNRequests？]  清單中，選取 [否]  。
 
@@ -162,7 +162,7 @@ ms.locfileid: "91995416"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    1. 在 [名稱]  方塊中，輸入 **BrittaSimon**。
+    1. 在 [名稱]  方塊中，輸入 **BrittaSimon** 。
   
     1. 在 [使用者名稱] 方塊中，輸入 **BrittaSimon@\<yourcompanydomain>.\<extension>** 。 (例如，BrittaSimon@contoso.com)。
 
@@ -214,7 +214,7 @@ ms.locfileid: "91995416"
 
     1. 在 [電子郵件]  方塊中，輸入使用者的電子郵件地址。 例如： brittasimon@contoso.com 。
 
-    1. 在 [全名]  方塊中，輸入使用者的名稱。 例如，**Brittasimon**。
+    1. 在 [全名]  方塊中，輸入使用者的名稱。 例如， **Brittasimon** 。
 
     1. 選取 [建立使用者]  。
 
@@ -222,12 +222,12 @@ ms.locfileid: "91995416"
 
 您現在必須使用存取面板來測試您的 Azure AD 單一登入組態。
 
-當您在存取面板中選取 [Percolate] 圖格時，應該會自動登入您已設定 SSO 的 Percolate 執行個體。 如需詳細資訊，請參閱[在「我的應用程式」入口網站上存取和使用應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [Percolate] 圖格時，應該會自動登入您已設定 SSO 的 Percolate 執行個體。 如需詳細資訊，請參閱[在「我的應用程式」入口網站上存取和使用應用程式](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

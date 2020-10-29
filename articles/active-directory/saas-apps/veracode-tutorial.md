@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: jeedes
-ms.openlocfilehash: a8c7c70e7956868bf069704eb5fe34db014dd135
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a62863607798e7f64a74926ebea4f1a1d05cbd6c
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88532461"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517713"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-veracode"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Veracode 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88532461"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Veracode。
 * 在 Azure 入口網站中集中管理您的帳戶。
 
-若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -68,7 +68,7 @@ ms.locfileid: "88532461"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Veracode]  應用程式整合頁面上，尋找 [管理]  區段。 選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，選取 [基本 SAML 組態]  的鉛筆圖示，以編輯設定。
 
    ![[以 SAML 設定單一登入] 的螢幕擷取畫面，其中已醒目提示鉛筆圖示](common/edit-urls.png)
@@ -109,7 +109,7 @@ ms.locfileid: "88532461"
 
     ![[組織 SAML 設定] 區段的螢幕擷取畫面](./media/veracode-tutorial/ic802912.png "系統管理")
 
-    a.  請在 [簽發者]  貼上您從 Azure 入口網站複製的 **Azure AD 識別碼**值。
+    a.  請在 [簽發者]  貼上您從 Azure 入口網站複製的 **Azure AD 識別碼** 值。
 
     b. 在 [判斷提示簽署憑證]  選取 [選擇檔案]  ，從 Azure 入口網站上傳您下載的憑證。
 
@@ -177,14 +177,14 @@ ms.locfileid: "88532461"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入組態。
 
-您在存取面板中選取 [Veracode]  時，應該會自動登入您設定 SSO 的 Veracode。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+您在存取面板中選取 [Veracode]  時，應該會自動登入您設定 SSO 的 Veracode。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Veracode](https://aad.portal.azure.com/)

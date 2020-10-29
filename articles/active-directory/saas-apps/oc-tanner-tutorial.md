@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 6d402816b39f0db3ff1e1c2e61e56a58effa6747
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 683cfc65e8154d4f409f5d4a33bf7ccf61c6f7c6
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554170"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518580"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oc-tanner---appreciatehub"></a>教學課程：整合 Azure Active Directory 單一登入 (SSO) 與 O.C. Tanner - AppreciateHub 的人員
 
@@ -26,7 +26,7 @@ ms.locfileid: "88554170"
 * 讓使用者使用其 Azure AD 帳戶自動登入 O.C. Tanner - AppreciateHub。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -41,7 +41,7 @@ ms.locfileid: "88554170"
 
 * 已啟用 O.C. Tanner - AppreciateHub 支援由 **IDP** 起始的 SSO
 
-* 設定 O.C. Tanner - AppreciateHub 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 O.C. Tanner - AppreciateHub 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-oc-tanner---appreciatehub-from-the-gallery"></a>從組件庫新增 O.C. Tanner - AppreciateHub
 
@@ -51,7 +51,7 @@ ms.locfileid: "88554170"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **O.C.Tanner - AppreciateHub**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **O.C.Tanner - AppreciateHub** 。
 1. 從結果面板中選取 [O.C.  Tanner - AppreciateHub]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-oc-tanner---appreciatehub"></a>設定及測試 O.C. Tanner - AppreciateHub 的 Azure AD 單一登入 Tanner - AppreciateHub 的人員
@@ -72,14 +72,14 @@ ms.locfileid: "88554170"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 **[O.C.Tanner - AppreciateHub]** 應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
 1. 在 [基本 SAML 組態]  區段中，使用者不需要執行任何步驟，因為應用程式已預先與 Azure 整合。
 
-1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -110,7 +110,7 @@ ms.locfileid: "88554170"
 在本節中，您會將 O.C. Tanner - AppreciateHub 的存取權授與 B.Simon，讓其能夠使用 Azure 單一登入。 Tanner - AppreciateHub 中建立名為 Britta Simon 的使用者。
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 **O.C.Tanner - AppreciateHub**。
+1. 在應用程式清單中，選取 **O.C.Tanner - AppreciateHub** 。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
@@ -139,18 +139,18 @@ ms.locfileid: "88554170"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在 存取面板 按一下 O.C. Tanner - AppreciateHub 圖格時，應該會自動登入您已設定 SSO 的 O.C. Tanner - AppreciateHub。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在 存取面板 按一下 O.C. Tanner - AppreciateHub 圖格時，應該會自動登入您已設定 SSO 的 O.C. Tanner - AppreciateHub。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 O.C.Tanner - AppreciateHub](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用進階可見性和控制項保護 O.C.Tanner - AppreciateHub](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何使用進階可見性和控制項保護 O.C.Tanner - AppreciateHub](/cloud-app-security/proxy-intro-aad)

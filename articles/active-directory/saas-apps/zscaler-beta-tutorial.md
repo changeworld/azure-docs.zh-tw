@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: f342371ec065c4fb60c492c4354c6f8c717c9bb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fec471e4047707f2b7cbaa55fdc7f2256bebe93
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545993"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519859"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>教學課程：Azure Active Directory 與 Zscaler Beta 整合
 
@@ -27,7 +27,7 @@ ms.locfileid: "88545993"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Zscaler Beta。 此存取控制稱為單一登入 (SSO)。
 * 使用 Azure 入口網站集中管理您的帳戶。
 
-如需有關軟體即服務 (SaaS) 應用程式與 Azure AD 整合的詳細資訊，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如需有關軟體即服務 (SaaS) 應用程式與 Azure AD 整合的詳細資訊，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -62,7 +62,7 @@ ms.locfileid: "88545993"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Zscaler Beta**。 在結果面板中選取 [Zscaler Beta]  ，然後選取 [新增]  。
+4. 在搜尋方塊中，輸入 **Zscaler Beta** 。 在結果面板中選取 [Zscaler Beta]  ，然後選取 [新增]  。
 
      ![結果清單中的 Zscaler Beta](common/search-new-app.png)
 
@@ -136,7 +136,7 @@ ms.locfileid: "88545993"
     g. 選取 [儲存]  。
 
     > [!NOTE]
-    > 若要了解如何設定 Azure AD 中的角色，請參閱[設定角色宣告](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)。
+    > 若要了解如何設定 Azure AD 中的角色，請參閱[設定角色宣告](../develop/active-directory-enterprise-app-role-management.md)。
 
 7. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，選取 [下載]  以下載 [憑證 (Base64)]  。 將其儲存在您的電腦上。
 
@@ -176,17 +176,17 @@ ms.locfileid: "88545993"
     
     a. 在 [SAML 入口網站 URL]  方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  。
 
-    b. 在 [登入名稱屬性]  方塊中，輸入 **NameID**。
+    b. 在 [登入名稱屬性]  方塊中，輸入 **NameID** 。
 
     c. 在 [公開 SSL 憑證]  方塊中選取 [上傳]  ，以上傳您從 Azure 入口網站下載的 Azure SAML 簽署憑證。
 
     d. 切換 [啟用 SAML 自動佈建]  。
 
-    e. 如果您想要啟用 displayName 屬性的 SAML 自動佈建，請在 [使用者顯示名稱屬性]  方塊中輸入 **displayName**。
+    e. 如果您想要啟用 displayName 屬性的 SAML 自動佈建，請在 [使用者顯示名稱屬性]  方塊中輸入 **displayName** 。
 
-    f. 如果您想要啟用 memberOf 屬性的 SAML 自動佈建，請在 [群組名稱屬性]  方塊中輸入 **memberOf**。
+    f. 如果您想要啟用 memberOf 屬性的 SAML 自動佈建，請在 [群組名稱屬性]  方塊中輸入 **memberOf** 。
 
-    g. 如果您想要啟用 department 屬性的 SAML 自動佈建，請在 [部門名稱屬性]  方塊中輸入 **department**。
+    g. 如果您想要啟用 department 屬性的 SAML 自動佈建，請在 [部門名稱屬性]  方塊中輸入 **department** 。
 
     h. 選取 [儲存]  。
 
@@ -201,7 +201,7 @@ ms.locfileid: "88545993"
 ## <a name="configure-proxy-settings"></a>進行 Proxy 設定
 若要在 Internet Explorer 中進行 Proxy 設定，請執行下列步驟。
 
-1. 啟動 **Internet Explorer**。
+1. 啟動 **Internet Explorer** 。
 
 2. 從 [工具] 功能表選取 [網際網路選項]，以開啟 [網際網路選項] 對話方塊。 
     
@@ -219,9 +219,9 @@ ms.locfileid: "88545993"
 
     a. 選取 [在您的區域網路使用 Proxy 伺服器]  核取方塊。
 
-    b. 在 [位址]  方塊中輸入 **gateway.Zscaler Beta.net**。
+    b. 在 [位址]  方塊中輸入 **gateway.Zscaler Beta.net** 。
 
-    c. 在 [連接埠]  方塊中，輸入 **80**。
+    c. 在 [連接埠]  方塊中，輸入 **80** 。
 
     d. 選取 [近端網址不使用 Proxy 伺服器]  核取方塊。
 
@@ -245,7 +245,7 @@ ms.locfileid: "88545993"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  方塊中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  方塊中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  方塊中，輸入 `brittasimon@yourcompanydomain.extension`。 例如 BrittaSimon@contoso.com。
 
@@ -296,11 +296,10 @@ ms.locfileid: "88545993"
 
 使用存取面板來測試您的 Azure AD 單一登入組態。
 
-當您在存取面板中選取 [Zscaler Beta] 圖格時，應該會自動登入您已設定 SSO 的 Zscaler Beta。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [Zscaler Beta] 圖格時，應該會自動登入您已設定 SSO 的 Zscaler Beta。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [如何整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](./tutorial-list.md)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
-ms.openlocfilehash: aa0fe40ec28aea7f82ee0e635b3c42140a472816
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b639ee45bfa6356054d93a1b6fcc8a7959173acd
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552436"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516081"
 ---
 # <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>教學課程：整合 MyWorkDrive 與 Azure Active Directory
 
@@ -26,7 +26,7 @@ ms.locfileid: "88552436"
 * 讓使用者使用其 Azure AD 帳戶自動登入 MyWorkDrive。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -47,7 +47,7 @@ ms.locfileid: "88552436"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **MyWorkDrive**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **MyWorkDrive** 。
 1. 從結果面板選取 [MyWorkDrive]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
@@ -106,7 +106,7 @@ ms.locfileid: "88552436"
 
 1. 如果您要手動設定 MyWorkDrive，請在不同的網頁瀏覽器視窗中，以安全性系統管理員身分登入 MyWorkDrive。
 
-1. 在管理面板中的 MyWorkDrive 伺服器上按一下 **ENTERPRISE**，並執行下列步驟：
+1. 在管理面板中的 MyWorkDrive 伺服器上按一下 **ENTERPRISE** ，並執行下列步驟：
 
     ![管理員](./media/myworkdrive-tutorial/tutorial_myworkdrive_admin.png)
 
@@ -147,7 +147,7 @@ ms.locfileid: "88552436"
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組]  對話方塊中，從使用者清單選取 **Britta Simon**，然後按一下畫面底部的 [選取]  按鈕。
+1. 在 [使用者和群組]  對話方塊中，從使用者清單選取 **Britta Simon** ，然後按一下畫面底部的 [選取]  按鈕。
 1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
 1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 
@@ -157,12 +157,12 @@ ms.locfileid: "88552436"
 
 ### <a name="test-sso"></a>測試 SSO
 
-當您在存取面板中選取 [MyWorkDrive] 圖格時，應該會自動登入您設定 SSO 的 MyWorkDrive。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [MyWorkDrive] 圖格時，應該會自動登入您設定 SSO 的 MyWorkDrive。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
