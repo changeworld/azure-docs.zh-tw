@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3366f39f3aca8ad0114244c122d1003b5e9b91a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bcc9ca0175e0e03c62c2ce2b91d8ec337756a3cc
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90929359"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490096"
 ---
 # <a name="tutorial-deploy-django-app-with-app-service-and-azure-database-for-postgresql---flexible-server-preview"></a>教學課程：使用 App Service 和適用於 PostgreSQL 的 Azure 資料庫 - 彈性伺服器 (預覽) 部署 Django 應用程式
 
@@ -28,13 +28,13 @@ ms.locfileid: "90929359"
 
 本文需要您以本機方式執行 Azure CLI 2.0 版或更新版本。 若要查看所安裝的版本，請執行 `az --version` 命令。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
-您必須使用 [az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) 命令登入您的帳戶。 請記下命令輸出中的**識別碼**屬性，以取得對應的訂用帳戶名稱。
+您必須使用 [az login](/cli/azure/authenticate-azure-cli) 命令登入您的帳戶。 請記下命令輸出中的 **識別碼** 屬性，以取得對應的訂用帳戶名稱。
 
 ```azurecli
 az login
 ```
 
-如果您有多個訂用帳戶，請選擇資源計費的適當訂用帳戶。 使用 [az account set](/cli/azure/account) 命令來選取您帳戶底下的特定訂用帳戶 ID。 以訂用帳戶之 **az login** 輸出中的**訂用帳戶識別碼**屬性，替代訂用帳戶識別碼的預留位置。
+如果您有多個訂用帳戶，請選擇資源計費的適當訂用帳戶。 使用 [az account set](/cli/azure/account) 命令來選取您帳戶底下的特定訂用帳戶 ID。 以訂用帳戶之 **az login** 輸出中的 **訂用帳戶識別碼** 屬性，替代訂用帳戶識別碼的預留位置。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -69,7 +69,7 @@ djangoapp 範例包含資料驅動的 Django 投票應用程式，您可以依�
 
 此範例也會修改為在實際執行環境中執行，例如 App Service：
 
-- 實際執行設定位於 *azuresite/production.py* 檔案中。 開發詳細資料位於 *azuresite/settings.py*。
+- 實際執行設定位於 *azuresite/production.py* 檔案中。 開發詳細資料位於 *azuresite/settings.py* 。
 - 將 `DJANGO_ENV` 環境變數設定為 "production" 時，應用程式就會使用實際執行設定。 您稍後會在教學課程中建立此環境變數，以及用於 PostgreSQL 資料庫設定的其他變數。
 
 這些變更專門用來將 Django 設定為在任何實際執行環境中執行，而不是特別針對 App Service。 如需詳細資訊，請參閱 [Django 部署檢查清單](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/) \(英文\)。
@@ -88,9 +88,9 @@ az postgres flexible-server create --resource-group myresourcegroup --location w
 
 - 建立資源群組 (若尚不存在)。
 - 若未提供，系統會產生伺服器名稱。
-- 為新的 postgreSQL 伺服器建立新的虛擬網路。 **記下為伺服器建立的虛擬網路名稱和子網路名稱**，因為您必須將 Web 應用程式新增至相同的虛擬網路。
-- 建立伺服器的管理使用者名稱、密碼 (如果未提供)。 將後續步驟會用到的**使用者名稱和密碼記下**。
-- 建立可用於開發的資料庫 ```postgres```。 您可以執行 [**psql** 以連線到資料庫 ](quickstart-create-server-portal.md#connect-to-the-postgresql-database-using-psql)，建立不同的資料庫。
+- 為新的 postgreSQL 伺服器建立新的虛擬網路。 **記下為伺服器建立的虛擬網路名稱和子網路名稱** ，因為您必須將 Web 應用程式新增至相同的虛擬網路。
+- 建立伺服器的管理使用者名稱、密碼 (如果未提供)。 將後續步驟會用到的 **使用者名稱和密碼記下** 。
+- 建立可用於開發的資料庫 ```postgres```。 您可以執行 [**psql** 以連線到資料庫](quickstart-create-server-portal.md#connect-to-the-postgresql-database-using-psql)，建立不同的資料庫。
 
 > [!NOTE]
 > 記下您的密碼，如果未提供，系統會產生密碼。 如果忘記密碼，就必須使用 ``` az postgres flexible-server update``` 命令重設
@@ -132,7 +132,7 @@ az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<pos
 - 應用程式程式碼預期會在數個環境變數中尋找資料庫資訊。 若要在 App Service 中設定環境變數，您可以使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) 命令來建立「應用程式設定」。
 
 > [!TIP]
-> 許多 Azure CLI 命令會將一般參數 (例如，資源群組的名稱和 App Service 方案) 快取到檔案 *.azure/config*。因此，您不需使用後續命令來指定所有相同參數。 例如，若要在進行變更之後重新部署應用程式，只需再次執行 `az webapp up`，而不需任何參數。
+> 許多 Azure CLI 命令會將一般參數 (例如，資源群組的名稱和 App Service 方案) 快取到檔案 *.azure/config* 。因此，您不需使用後續命令來指定所有相同參數。 例如，若要在進行變更之後重新部署應用程式，只需再次執行 `az webapp up`，而不需任何參數。
 
 ### <a name="run-django-database-migrations"></a>執行 Django 資料庫移轉
 
@@ -159,9 +159,9 @@ Django 資料庫移轉可確保 Azure 資料庫上 PostgreSQL 中的結構描述
 
 ### <a name="create-a-poll-question-in-the-app"></a>在應用程式中建立投票問題
 
-1. 在瀏覽器中，開啟 URL *http:\//\<app-name>.azurewebsites.net*。 應用程式應該會顯示訊息「沒有可用的投票」，因為資料庫中尚未有特定的投票。
+1. 在瀏覽器中，開啟 URL *http:\//\<app-name>.azurewebsites.net* 。 應用程式應該會顯示訊息「沒有可用的投票」，因為資料庫中尚未有特定的投票。
 
-1. 瀏覽至 *http:\//\<app-name>.azurewebsites.net/admin*。使用上一節的超級使用者認證 (`root` 和 `postgres1`) 登入。 在 [投票] 下方，選取 [問題] 旁的 [新增]，然後建立具有一些選項的投票問題。
+1. 瀏覽至 *http:\//\<app-name>.azurewebsites.net/admin* 。使用上一節的超級使用者認證 (`root` 和 `postgres1`) 登入。 在 [投票] 下方，選取 [問題] 旁的 [新增]，然後建立具有一些選項的投票問題。
 
 1. 再次瀏覽至 *http:\//\<app-name>.azurewebsites.net/* ，以確認現在可向使用者呈現問題。 回答問題，但是您想要在資料庫中產生一些資料。
 
@@ -198,11 +198,11 @@ python manage.py runserver
 
 使用下列步驟，在本機測試應用程式：
 
-1. 在瀏覽器中移至 *http:\//localhost:8000*，應該會顯示「沒有可用的投票」訊息。
+1. 在瀏覽器中移至 *http:\//localhost:8000* ，應該會顯示「沒有可用的投票」訊息。
 
-1. 移至 *http:\//localhost:8000/admin*，然後使用您先前建立的管理使用者進行登入。 在 [投票] 下方，再次選取 [問題] 旁的 [新增]，然後建立具有一些選項的投票問題。
+1. 移至 *http:\//localhost:8000/admin* ，然後使用您先前建立的管理使用者進行登入。 在 [投票] 下方，再次選取 [問題] 旁的 [新增]，然後建立具有一些選項的投票問題。
 
-1. 再次移至 *http:\//localhost:8000*，然後回答問題以測試應用程式。
+1. 再次移至 *http:\//localhost:8000* ，然後回答問題以測試應用程式。
 
 1. 按 **Ctrl**+**C** 以停止 Django 伺服器。
 
@@ -247,7 +247,7 @@ az webapp up
 
 因為您對資料模型進行了變更，所以需要在 App Service 中重新執行資料庫移轉。
 
-瀏覽至 *https://\<app-name>.scm.azurewebsites.net/webssh/host*，再次於瀏覽器中開啟 SSH 工作階段。 然後，執行下列命令：
+瀏覽至 *https://\<app-name>.scm.azurewebsites.net/webssh/host* ，再次於瀏覽器中開啟 SSH 工作階段。 然後，執行下列命令：
 
 ```
 cd site/wwwroot
@@ -260,7 +260,7 @@ python manage.py migrate
 
 ### <a name="review-app-in-production"></a>檢閱生產環境中的應用程式
 
-瀏覽至 *http:\//\<app-name>.azurewebsites.net*，再次於實際執行環境中測試應用程式。 (因為您只變更了資料庫欄位的長度，所以，只有當您在建立問題時嘗試輸入較長的回應時，此變更才會引起注意)。
+瀏覽至 *http:\//\<app-name>.azurewebsites.net* ，再次於實際執行環境中測試應用程式。 (因為您只變更了資料庫欄位的長度，所以，只有當您在建立問題時嘗試輸入較長的回應時，此變更才會引起注意)。
 
 > [!TIP]
 > 您可以使用 [django-storages](https://django-storages.readthedocs.io/en/latest/backends/azure.html) 來存放 Azure 儲存體中的靜態和媒體資產。 您可以使用 Azure CDN 將靜態檔案解壓縮。

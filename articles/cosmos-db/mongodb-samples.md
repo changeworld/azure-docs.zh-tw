@@ -9,18 +9,18 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: devx-track-js
-ms.openlocfilehash: 5a1a3b28e7bf0ef5d6aa7c3339925d4f66f1e3a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93e80c3ecba7544a8e31eca1b4df443c41523579
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322660"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488396"
 ---
 # <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>使用 Node.js 和 Azure Cosmos DB 適用於 MongoDB 的 API 建置應用程式 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
-> * [.NET Core](sql-api-dotnetcore-get-started.md)
-> * [Java](sql-api-java-get-started.md)
+> * [.NET Core](./sql-api-get-started.md)
+> * [Java](./create-sql-api-java.md)
 > * [Node.js for MongoDB](mongodb-samples.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
 >
@@ -116,7 +116,7 @@ ms.locfileid: "91322660"
     });
     ```
     
-    **選擇性**：如果您使用 **MongoDB Node.js 2.2 驅動程式**，請取代以下程式碼片段：
+    **選擇性** ：如果您使用 **MongoDB Node.js 2.2 驅動程式** ，請取代以下程式碼片段：
 
     原始：
 
@@ -153,14 +153,14 @@ ms.locfileid: "91322660"
     });
     ```
     
-2. 在 *app.js* 中根據每個帳戶設定 (了解如何尋找您的[連接字串](connect-mongodb-account.md)) 修改下列變數：
+2. 在 *app.js* 中根據每個帳戶設定 (了解如何尋找您的 [連接字串](connect-mongodb-account.md)) 修改下列變數：
 
     > [!IMPORTANT]
-    > **MongoDB Node.js 3.0 驅動程式**要求您為 Cosmos DB 密碼中的特殊字元編碼。 請務必將 '=' 字元編碼為 %3D
+    > **MongoDB Node.js 3.0 驅動程式** 要求您為 Cosmos DB 密碼中的特殊字元編碼。 請務必將 '=' 字元編碼為 %3D
     >
     > 範例：密碼 *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv==* 應編碼為 *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv%3D%3D*
     >
-    > **MongoDB Node.js 2.2 驅動程式**不要求您為 Cosmos DB 密碼中的特殊字元編碼。
+    > **MongoDB Node.js 2.2 驅動程式** 不要求您為 Cosmos DB 密碼中的特殊字元編碼。
     >
     >
    
@@ -168,7 +168,7 @@ ms.locfileid: "91322660"
     var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10255/?ssl=true';
     ```
      
-3. 開啟您最愛的終端機，執行 **npm install mongodb --save**，然後使用 **node app.js** 執行您的應用程式
+3. 開啟您最愛的終端機，執行 **npm install mongodb --save** ，然後使用 **node app.js** 執行您的應用程式
 
 ## <a name="next-steps"></a>後續步驟
 

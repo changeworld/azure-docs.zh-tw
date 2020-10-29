@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 427facaffa277ec44ee99d70681928f49fe31df8
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 2aa4e7d063141f74dc94e5f23cd227fcc16ba84f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278477"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487410"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>教學課程：使用 Xamarin 和 Azure Cosmos DB 建置行動應用程式
 
@@ -21,7 +21,7 @@ ms.locfileid: "92278477"
 > * [.NET](sql-api-dotnet-application.md)
 > * [Java](sql-api-java-application.md)
 > * [Node.js](sql-api-nodejs-application.md)
-> * [Python](sql-api-python-application.md)
+> * [Python](./create-sql-api-python.md)
 > * [Xamarin](mobile-apps-with-xamarin.md)
 > 
 
@@ -34,12 +34,12 @@ Azure Cosmos DB 為行動應用程式開發人員提供了下列重要功能：
 
 :::image type="content" source="media/mobile-apps-with-xamarin/documentdb-for-mobile.png" alt-text="適用於行動應用程式的 Azure Cosmos DB 功能":::
 
-* 豐富的無結構描述資料查詢。 Azure Cosmos DB 會將資料以無結構描述 JSON 文件的形式儲存在異質集合中。 它提供[豐富且快速的查詢](how-to-sql-query.md)，不需要擔心結構描述或索引。
+* 豐富的無結構描述資料查詢。 Azure Cosmos DB 會將資料以無結構描述 JSON 文件的形式儲存在異質集合中。 它提供[豐富且快速的查詢](./sql-query-getting-started.md)，不需要擔心結構描述或索引。
 * 快速的輸送量。 只需要幾毫秒就能使用 Azure Cosmos DB 讀取和寫入文件。 開發人員可以指定他們需要的輸送量，Azure Cosmos DB 則以 99.99% 可用性的 SLA 加以實現，適用於一致性很寬鬆的所有單一區域帳戶和所有多重區域帳戶，而所有多重區域資料庫帳戶則有 99.999% 的讀取可用性。
 * 規模無限制。 您的 Azure Cosmos 容器可[隨著應用程式成長](partitioning-overview.md)。 您可以從小型資料大小和每秒數百個要求的輸送量著手。 您的集合或資料庫可以成長至數 PB 的資料以及每秒數億個要求的極大輸送量。
 * 散布世界各地。 行動應用程式使用者總是忙個不停，經常在世界各地奔波。 Azure Cosmos DB 是[分散在世界各地的資料庫](distribute-data-globally.md)。 按一下地圖，讓使用者能夠存取您的資料。
 * 內建豐富授權。 使用 Azure Cosmos DB 就能輕鬆實作熱門模式，例如[每位使用者的資料](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems)或多位使用者共用的資料，而不需要複雜的自訂授權程式碼。
-* 地理空間查詢。 許多行動應用程式目前都有提供地理情境體驗。 透過一流的[地理空間類型](geospatial.md)支援，Azure Cosmos DB 可讓您輕鬆實現這些體驗。
+* 地理空間查詢。 許多行動應用程式目前都有提供地理情境體驗。 透過一流的[地理空間類型](./sql-query-geospatial-intro.md)支援，Azure Cosmos DB 可讓您輕鬆實現這些體驗。
 * 二進位附件。 您的應用程式資料通常包含二進位 Blob。 原生的附件支援可讓您更輕鬆地使用 Azure Cosmos DB 做為應用程式資料的集散中心。
 
 ## <a name="azure-cosmos-db-and-xamarin-tutorial"></a>Azure Cosmos DB 和 Xamarin 教學課程
@@ -106,8 +106,5 @@ Azure Cosmos DB 是受控資料庫即服務。 隨著使用者人數成長，您
 * 檢視 [GitHub 上的 Xamarin 和 Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin) 原始程式碼。
 * 下載 [Azure Cosmos DB .NET Core SDK](sql-api-sdk-dotnet-core.md)。
 * 尋找更多 [.NET 應用程式](sql-api-dotnet-samples.md)的程式碼範例。
-* 了解 [Azure Cosmos DB 豐富查詢功能](how-to-sql-query.md)。
-* 了解 [Azure Cosmos DB 中的地理空間支援](geospatial.md)。
-
-
-
+* 了解 [Azure Cosmos DB 豐富查詢功能](./sql-query-getting-started.md)。
+* 了解 [Azure Cosmos DB 中的地理空間支援](./sql-query-geospatial-intro.md)。

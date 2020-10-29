@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 913bc4373785d9341064e505ddce84fe43f727b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74a4178cc6b9645f3cb22bf3d1c7c0ee942c3f5f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801591"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92485285"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>教學課程：使用 Azure Cosmos DB 和 SQL API 來建置 Java Web 應用程式
 
@@ -22,7 +22,7 @@ ms.locfileid: "91801591"
 > * [.NET](sql-api-dotnet-application.md)
 > * [Java](sql-api-java-application.md)
 > * [Node.js](sql-api-nodejs-application.md)
-> * [Python](sql-api-python-application.md)
+> * [Python](./create-sql-api-python.md)
 > * [Xamarin](mobile-apps-with-xamarin.md)
 > 
 
@@ -73,7 +73,7 @@ ms.locfileid: "91801591"
 
 1. 在 Eclipse 的 [專案總管] 檢視中，展開您的專案。 在 [WebContent] 上按一下滑鼠右鍵、按一下 [新增]，然後按一下 [JSP 檔案]。
 
-1. 在 [新增 JSP 檔案] 對話方塊中，將檔案命名為 **index.jsp**。 將上層資料夾保持為 **WebContent**，如下圖所示，然後按 [下一步]。
+1. 在 [新增 JSP 檔案] 對話方塊中，將檔案命名為 **index.jsp** 。 將上層資料夾保持為 **WebContent** ，如下圖所示，然後按 [下一步]。
    
     :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="我的待辦事項清單 Java 應用程式":::
 
@@ -183,13 +183,13 @@ ms.locfileid: "91801591"
 
    :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/WebContent/assets/todo.js":::
 
-1. 現在只剩下測試應用程式。 在本機執行應用程式，並填入項目名稱和類別，然後按一下 [ **新增工作**] 來新增一些待辦事項。 在項目出現後，您可以切換勾選核取方塊，然後按一下 [更新工作]，來更新其完成狀態。
+1. 現在只剩下測試應用程式。 在本機執行應用程式，並填入項目名稱和類別，然後按一下 [ **新增工作** ] 來新增一些待辦事項。 在項目出現後，您可以切換勾選核取方塊，然後按一下 [更新工作]，來更新其完成狀態。
 
 ## <a name="deploy-your-java-application-to-azure-web-sites"></a><a id="Deploy"></a>將 Java 應用程式部署至 Azure 網站
 
 Azure 網站讓部署 Java 應用程式變得相當簡單，您只需將應用程式匯出成 WAR 檔案，然後透過原始檔控制 (例如 Git) 或 FTP 上傳它即可。
 
-1. 若要將應用程式匯出成 WAR 檔案，請以滑鼠右鍵按一下您在**專案總管**中的專案，按一下 [匯出]，然後按一下 [WAR 檔案]。
+1. 若要將應用程式匯出成 WAR 檔案，請以滑鼠右鍵按一下您在 **專案總管** 中的專案，按一下 [匯出]，然後按一下 [WAR 檔案]。
 
 1. 在 [WAR 匯出]  視窗中，執行下列動作：
    
@@ -197,7 +197,7 @@ Azure 網站讓部署 Java 應用程式變得相當簡單，您只需將應用�
    * 在 [目的地] 方塊中，選擇用來儲存 WAR 檔案的目的地。
    * 按一下 [完成] 。
 
-1. 現在您手上已經有了 WAR 檔案，您只需將它上傳至您 Azure 網站的 **webapps** 目錄即可。 如需上傳檔案的相關指示，請參閱[將 Java 應用程式新增至 Azure App Service Web Apps](../app-service/web-sites-java-add-app.md)。 將 WAR 檔案上傳至 webapps 目錄之後，執行階段環境便會偵測到您已新增該檔案並自動將其載入。
+1. 現在您手上已經有了 WAR 檔案，您只需將它上傳至您 Azure 網站的 **webapps** 目錄即可。 如需上傳檔案的相關指示，請參閱[將 Java 應用程式新增至 Azure App Service Web Apps](../app-service/quickstart-java.md)。 將 WAR 檔案上傳至 webapps 目錄之後，執行階段環境便會偵測到您已新增該檔案並自動將其載入。
 
 1. 若要檢視您已完成的產品，請瀏覽至 `http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/` 並開始新增您的工作！
 
@@ -227,7 +227,7 @@ Azure 網站讓部署 Java 應用程式變得相當簡單，您只需將應用�
 
 1. 在 [專案總管] 中，瀏覽至 azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java，並將 [主機] 和 [MASTER_KEY] 值取代為您 Azure Cosmos DB 帳戶的 [URI] 和 [主要金鑰]，然後儲存檔案。 如需詳細資訊，請參閱[步驟 1。建立 Azure Cosmos 資料庫帳戶](#CreateDB)。
 
-1. 在 [專案總管] 中，以滑鼠右鍵按一下 **azure-documentdb-java-sample**，按一下 [組建路徑]，然後按一下 [設定組建路徑]。
+1. 在 [專案總管] 中，以滑鼠右鍵按一下 **azure-documentdb-java-sample** ，按一下 [組建路徑]，然後按一下 [設定組建路徑]。
 
 1. 在 [Java 組建路徑] 畫面的右側窗格中，選取 [程式庫] 索引標籤，然後按一下 [新增外部 JAR]。 瀏覽至 lombok.jar 檔案的位置，按一下 [開啟]，然後按一下 [確定]。
 
