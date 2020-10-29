@@ -4,12 +4,12 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
-ms.openlocfilehash: c9a0d4387511bbfa033bcb90d9f83e1a7bb39719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31e61069c95be9bd1c7a684bb83ebcd93bcb14be
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67173684"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548164"
 ---
 1. 啟動 Azure Site Recovery UnifiedSetup.exe
 2. 在 [開始之前] 中，選取 [新增額外處理序伺服器以擴增部署]。
@@ -39,7 +39,7 @@ ms.locfileid: "67173684"
      ![新增處理序伺服器 5](./media/site-recovery-add-process-server/ps-page-5.png)
 
 7. 在 [安裝位置]  中，選取您要安裝二進位檔及儲存快取的位置。 您選取的磁碟機至少必須有 5 GB 的可用磁碟空間，但我們建議快取磁碟機至少有 600 GB 的可用空間。
-     ![新增處理序伺服器 5](./media/site-recovery-add-process-server/ps-page-6.png)
+     ![螢幕擷取畫面：顯示二進位檔和快取儲存體的安裝位置。](./media/site-recovery-add-process-server/ps-page-6.png)
 
 8. 在 [網路選取] 中，指定組態伺服器用來傳送和接收複寫資料的接聽程式 (網路介面卡和 SSL 連接埠)。 連接埠 9443 是用來傳送及接收複寫流量的預設連接埠，但您可以修改此連接埠號碼，以符合您的環境需求。 除了連接埠 9443 之外，我們也會開啟網頁伺服器用來協調複寫作業的連接埠 443。 請勿使用連接埠 443 來傳送或接收複寫流量。
 

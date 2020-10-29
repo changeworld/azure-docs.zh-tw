@@ -79,7 +79,33 @@
         - name: TypeScript
           href: /samples/browse/?products=azure-functions&languages=typescript
     - name: Azure CLI
-      href: functions-cli-samples.md
+      items:
+        - name: CLI 範例索引
+          href: functions-cli-samples.md
+        - name: 建立函數應用程式
+          items:
+            - name: 無伺服器函數應用程式
+              href: ./scripts/functions-cli-create-serverless.md
+            - name: 無伺服器 Python 應用程式
+              href: ./scripts/functions-cli-create-serverless-python.md
+            - name: 可調整的進階方案應用程式
+              href: ./scripts/functions-cli-create-premium-plan.md
+            - name: 專用 (App Service) 方案應用程式
+              href: ./scripts/functions-cli-create-app-service-plan.md
+        - name: 整合服務
+          items:
+            - name: 連接 Azure 儲存體
+              href: ./scripts/functions-cli-create-function-app-connect-to-storage-account.md
+            - name: 連線 Azure Cosmos DB
+              href: ./scripts/functions-cli-create-function-app-connect-to-cosmos-db.md
+            - name: Python 掛接檔案共用
+              href: ./scripts/functions-cli-mount-files-storage-linux.md
+        - name: 連續部署
+          items:
+            - name: GitHub 部署
+              href: ./scripts/functions-cli-create-function-app-github-continuous.md
+            - name: DevOps 部署
+              href: ./scripts/functions-cli-create-function-app-vsts-continuous.md
 - name: 概念
   items:
     - name: 比較執行階段版本

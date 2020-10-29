@@ -56,8 +56,8 @@
       href: network-overview.md
     - name: 最佳作法
       href: network-best-practices.md
-    - name: DDoS保護
-      href: ddos-best-practices.md
+    - name: DDoS 保護最佳做法
+      href: 'https://docs.microsoft.com/azure/ddos-protection/fundamental-best-practices'
     - name: DDoS 保護安全性基準
       href: ddos-protection-security-baseline.md
     - name: 懸空 DNS 和子網域接管
@@ -131,7 +131,7 @@
       href: management.md
     - name: 作業安全性
       items:
-        - name: 總覽
+        - name: 概觀
           href: operational-overview.md
         - name: 最佳作法
           href: operational-best-practices.md

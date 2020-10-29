@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: defe7cb8ec727ac358789368f0897639fa109b16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 592d96195d1c70c73e32589fe764a8747b0b66e6
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308600"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92546767"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-offline-using-dms"></a>教學課程：使用 DMS 將 SQL Server 離線遷移到 Azure SQL 受控執行個體
 
@@ -66,7 +66,7 @@ ms.locfileid: "91308600"
     >[!NOTE]
     >根據預設，Azure 資料庫移轉服務僅支援遷移 SQL 登入。 不過，您可以藉由下列方式啟用遷移 Windows 登入的功能：
     >
-    >- 確保目標 SQL 受控執行個體具有 AAD 讀取權限，可以由具有**公司系統管理員**或**全域管理員**角色的使用者透過 Azure 入口網站來設定。
+    >- 確保目標 SQL 受控執行個體具有 AAD 讀取權限，可以由具有 **公司系統管理員** 或 **全域管理員** 角色的使用者透過 Azure 入口網站來設定。
     >- 設定您的 Azure 資料庫移轉服務執行個體，以啟用 Windows 使用者/群組登入移轉，此功能是透過 Azure 入口網站在 [設定] 頁面上設定。 啟用此設定之後，請重新啟動服務，變更才會生效。
     >
     > 重新啟動服務之後，Windows 使用者/群組登入就會出現在可供移轉的登入清單中。 對於您遷移的任何 Windows 使用者/群組登入，系統會提示您提供相關聯的網域名稱。 不支援服務使用者帳戶 (具有 NT AUTHORITY 網域名稱的帳戶) 和虛擬使用者帳戶 (具有 NT SERVICE 網域名稱的帳戶)。
@@ -81,7 +81,7 @@ ms.locfileid: "91308600"
     
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>註冊 Microsoft.DataMigration 資源提供者
 
-1. 登入 Azure 入口網站，選取 [所有服務]****，然後選取 [訂用帳戶]****。
+1. 登入 Azure 入口網站，選取 [所有服務]  ，然後選取 [訂用帳戶]  。
 
     ![顯示入口網站訂用帳戶](media/tutorial-sql-server-to-managed-instance/portal-select-subscriptions.png)
 
@@ -99,11 +99,11 @@ ms.locfileid: "91308600"
 
     ![Azure Marketplace](media/tutorial-sql-server-to-managed-instance/portal-marketplace.png)
 
-2. 在 [Azure 資料庫移轉服務]**** 畫面上，選取 [建立]****。
+2. 在 [Azure 資料庫移轉服務]  畫面上，選取 [建立]  。
 
     ![建立 Azure 資料庫移轉服務執行個體](media/tutorial-sql-server-to-managed-instance/dms-create1.png)
 
-3. 在 [建立移轉服務]**** 畫面上，指定服務的名稱、訂用帳戶，以及新的或現有的資源群組。
+3. 在 [建立移轉服務]  畫面上，指定服務的名稱、訂用帳戶，以及新的或現有的資源群組。
 
 4. 選取您要建立 DMS 執行個體的位置。
 
@@ -121,19 +121,19 @@ ms.locfileid: "91308600"
 
     ![建立 DMS 服務](media/tutorial-sql-server-to-managed-instance/dms-create-service2.png)
 
-7. 選取 [建立]**** 以建立服務。
+7. 選取 [建立]  以建立服務。
 
 ## <a name="create-a-migration-project"></a>建立移轉專案
 
 建立服務執行個體之後，請在 Azure 入口網站中找出該服務，然後建立新的移轉專案。
 
-1. 在 Azure 入口網站中，選取 [所有服務]****，搜尋 Azure 資料庫移轉服務，然後選取 [Azure 資料庫移轉服務]****。
+1. 在 Azure 入口網站中，選取 [所有服務]  ，搜尋 Azure 資料庫移轉服務，然後選取 [Azure 資料庫移轉服務]  。
 
     ![找出 Azure 資料庫移轉服務的所有執行個體](media/tutorial-sql-server-to-managed-instance/dms-search.png)
 
 2. 在 [Azure 資料庫移轉服務] 畫面上，搜尋您建立的執行個體名稱，然後選取該執行個體。
 
-3. 選取 [+ 新增移轉專案]****。
+3. 選取 [+ 新增移轉專案]  。
 
 4. 在 [新增移轉專案] 畫面上指定專案名稱、在 [來源伺服器類型] 文字方塊中選取 [SQL Server]、在 [目標伺服器類型] 文字方塊中選取 [Azure SQL 受控執行個體]，然後針對 [選擇活動類型]，選取 [離線資料移轉]。
 
@@ -143,9 +143,9 @@ ms.locfileid: "91308600"
 
 ## <a name="specify-source-details"></a>指定來源詳細資料
 
-1. 在 [移轉來源詳細資料]**** 畫面上，指定來源 SQL Server 的連線詳細資料。
+1. 在 [移轉來源詳細資料]  畫面上，指定來源 SQL Server 的連線詳細資料。
 
-2. 如果您尚未在伺服器上安裝信任的憑證，請選取 [信任伺服器憑證]**** 核取方塊。
+2. 如果您尚未在伺服器上安裝信任的憑證，請選取 [信任伺服器憑證]  核取方塊。
 
     未安裝信任的憑證時，SQL Server 會在執行個體啟動時產生自我簽署憑證。 此憑證用來加密用戶端連線的認證。
 
@@ -156,7 +156,7 @@ ms.locfileid: "91308600"
 
 3. 選取 [儲存]。
 
-4. 在 [選取來源資料庫]**** 畫面上，選取 [Adventureworks2012]**** 資料庫進行移轉。
+4. 在 [選取來源資料庫]  畫面上，選取 [Adventureworks2012]  資料庫進行移轉。
 
    ![選取來源資料庫](media/tutorial-sql-server-to-managed-instance/dms-source-database1.png)
 
@@ -177,7 +177,7 @@ ms.locfileid: "91308600"
 
 ## <a name="select-source-databases"></a>選取來源資料庫
 
-1. 在 [選取來源資料庫]**** 畫面上，選取您要遷移的來源資料庫。
+1. 在 [選取來源資料庫]  畫面上，選取您要遷移的來源資料庫。
 
     ![選取來源資料庫](media/tutorial-sql-server-to-managed-instance/select-source-databases.png)
 
@@ -185,10 +185,10 @@ ms.locfileid: "91308600"
 
 ## <a name="select-logins"></a>選取登入
 
-1. 在 [選取登入]**** 畫面上，選取您要移轉的登入。
+1. 在 [選取登入]  畫面上，選取您要移轉的登入。
 
     >[!NOTE]
-    >根據預設，Azure 資料庫移轉服務僅支援遷移 SQL 登入。 若要啟用對遷移 Windows 登入的支援，請參閱本教學課程的**必要條件**一節。
+    >根據預設，Azure 資料庫移轉服務僅支援遷移 SQL 登入。 若要啟用對遷移 Windows 登入的支援，請參閱本教學課程的 **必要條件** 一節。
 
     ![選取登入](media/tutorial-sql-server-to-managed-instance/select-logins.png)
 
@@ -196,16 +196,16 @@ ms.locfileid: "91308600"
 
 ## <a name="configure-migration-settings"></a>設定移轉設定
 
-1. 在 [設定移轉設定]**** 畫面上，提供下列詳細資料：
+1. 在 [設定移轉設定]  畫面上，提供下列詳細資料：
 
     | | |
     |--------|---------|
-    |**選擇來源備份選項** | 當您已有可供 DMS 用於資料庫移轉的完整備份檔案時，請選擇 [我會提供最新的備份檔案]**** 選項。 如果您想要讓 DMS 先建立來源資料庫完整備份，並將其用於移轉，請選擇 [我允許 Azure 資料庫移轉服務建立備份檔案]**** 選項。 |
+    |**選擇來源備份選項** | 當您已有可供 DMS 用於資料庫移轉的完整備份檔案時，請選擇 [我會提供最新的備份檔案]  選項。 如果您想要讓 DMS 先建立來源資料庫完整備份，並將其用於移轉，請選擇 [我允許 Azure 資料庫移轉服務建立備份檔案]  選項。 |
     |**網路位置共用** | Azure 資料庫移轉服務可將來源資料庫備份移入的本機 SMB 網路共用。 執行來源 SQL Server 執行個體的服務帳戶在此網路共用上必須具有寫入權限。 在網路共用中提供伺服器的 FQDN 或 IP 位址，例如，'\\\servername.domainname.com\backupfolder' 或 '\\\IP address\backupfolder'。|
     |**使用者名稱** | 請確定 Windows 使用者對於您先前提供的網路共用具有完整控制權限。 Azure 資料庫移轉服務將會模擬該使用者認證，以便將備份檔案上傳至 Azure 儲存體容器以進行還原作業。 如果選取已啟用 TDE 的資料庫進行移轉，則上述的 Windows 使用者必須是內建的系統管理員帳戶，且必須停用 Azure 資料庫移轉服務的[使用者帳戶控制](https://docs.microsoft.com/windows/security/identity-protection/user-account-control/user-account-control-overview)，才能上傳及刪除憑證檔案。 |
     |**密碼** | 使用者的密碼。 |
     |**儲存體帳戶設定** | 此 SAS URI 會向 Azure 資料庫移轉服務提供您儲存體帳戶容器的存取權，此容器會作為服務上傳備份檔案時的目的地，且會用於將資料庫遷移至 SQL 受控執行個體。 [了解如何取得 Blob 容器的 SAS URI](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)。 此 SAS URI 必須適用於 Blob 容器，而不是儲存體帳戶。|
-    |**TDE 設定** | 如果您要移轉已啟用透明資料加密 (TDE) 的來源資料庫，您必須具備目標 SQL 受控執行個體的寫入權限。  請從下拉式功能表中選取用來佈建 SQL 受控執行個體的訂用帳戶。  在下拉式功能表中選取目標 **Azure SQL 資料庫受控執行個體**。 |
+    |**TDE 設定** | 如果您要移轉已啟用透明資料加密 (TDE) 的來源資料庫，您必須具備目標 SQL 受控執行個體的寫入權限。  請從下拉式功能表中選取用來佈建 SQL 受控執行個體的訂用帳戶。  在下拉式功能表中選取目標 **Azure SQL 資料庫受控執行個體** 。 |
 
     ![設定移轉設定](media/tutorial-sql-server-to-managed-instance/dms-configure-migration-settings3.png)
 
@@ -213,9 +213,9 @@ ms.locfileid: "91308600"
 
 ## <a name="review-the-migration-summary"></a>檢閱移轉摘要
 
-1. 在 [移轉摘要]**** 畫面上的 [活動名稱]**** 文字方塊中，指定移轉活動的名稱。
+1. 在 [移轉摘要]  畫面上的 [活動名稱]  文字方塊中，指定移轉活動的名稱。
 
-2. 展開 [驗證選項]**** 區段以顯示 [選擇驗證選項]**** 畫面，指定是否驗證已遷移資料庫的查詢正確性，然後選取 [儲存]****。
+2. 展開 [驗證選項]  區段以顯示 [選擇驗證選項]  畫面，指定是否驗證已遷移資料庫的查詢正確性，然後選取 [儲存]  。
 
 3. 檢閱並確認與移轉專案相關聯的詳細資料。
 
@@ -225,21 +225,21 @@ ms.locfileid: "91308600"
 
 ## <a name="run-the-migration"></a>執行移轉
 
-- 選取 [執行移轉]****。
+- 選取 [執行移轉]  。
 
-  [移轉活動] 視窗隨即出現，而且活動的狀態為 [擱置]****。
+  [移轉活動] 視窗隨即出現，而且活動的狀態為 [擱置]  。
 
 ## <a name="monitor-the-migration"></a>監視移轉
 
-1. 在移轉活動畫面中，選取 [重新整理]**** 以更新顯示。
+1. 在移轉活動畫面中，選取 [重新整理]  以更新顯示。
 
-   ![移轉活動進行中](media/tutorial-sql-server-to-managed-instance/dms-monitor-migration1.png)
+   ![螢幕擷取畫面：顯示 [移轉活動] 畫面和 [重新整理] 按鈕。](media/tutorial-sql-server-to-managed-instance/dms-monitor-migration1.png)
 
     您可以進一步展開資料庫和登入類別，以監視個別伺服器物件的移轉狀態。
 
    ![移轉活動進行中](media/tutorial-sql-server-to-managed-instance/dms-monitor-migration-extend.png)
 
-2. 移轉完成之後，請選取 [下載報告]**** 以取得報告，其中會列出與移轉程序相關聯的詳細資料。
+2. 移轉完成之後，請選取 [下載報告]  以取得報告，其中會列出與移轉程序相關聯的詳細資料。
 
 3. 確認目標 SQL 受控執行個體環境上的目標資料庫。
 

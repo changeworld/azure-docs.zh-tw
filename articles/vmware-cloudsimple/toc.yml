@@ -52,6 +52,8 @@
           href: node-quota.md
         - name: 維護和更新
           href: cloudsimple-maintenance-updates.md
+        - name: 禁止的動作
+          href: forbidden-actions.md
         - name: 常見問題集
           href: cloudsimple-faq.md
     - name: 教學課程
