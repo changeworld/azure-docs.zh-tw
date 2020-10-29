@@ -10,35 +10,35 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: b02324923e3f004395105b8e04165390cb950fe7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfda4d7970c734d92c9f2355d553721ef6165e43
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73044119"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911846"
 ---
 # <a name="create-human-reviews"></a>建立人工審核
 
 在本指南中，您將瞭解如何在審核工具網站上設定 [評論](../review-api.md#reviews) 。 審核儲存和顯示內容，讓人力仲裁者進行評估。 仲裁者可以改變套用的標籤，並視需要套用自己的自訂標記。 當使用者完成審核時，會將結果傳送至指定的回呼端點，並從網站移除內容。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 在內容仲裁者 [審核工具](https://contentmoderator.cognitive.microsoft.com/) 網站上登入或建立帳戶。
 
 ## <a name="image-reviews"></a>影像檢閱
 
 1. 移至 [ [審核] 工具](https://contentmoderator.cognitive.microsoft.com/)，選取 [ **試用** ] 索引標籤，並上傳一些要審核的影像。
-1. 上傳的映射完成處理之後，請移至 [ **審核** ] 索引標籤並選取 [ **影像**]。
+1. 上傳的映射完成處理之後，請移至 [ **審核** ] 索引標籤並選取 [ **影像** ]。
 
     ![顯示審核工具的 Chrome 瀏覽器，其中 [審核影像] 選項已反白顯示](images/review-images-1.png)
 
     影像會顯示自動審核程式所指派的任何標籤。 其他審核者看不到您透過審核工具提交的影像。
 
-1. 您也可以選擇移動 **評論來顯示** 滑杆 (1) 來調整螢幕上顯示的影像數目。 按一下已標記或未**標記****的按鈕** (2) ，據以排序影像。 按一下標記面板 (3) 來開啟或關閉。
+1. 您也可以選擇移動 **評論來顯示** 滑杆 (1) 來調整螢幕上顯示的影像數目。 按一下已標記或未 **標記****的按鈕** (2) ，據以排序影像。 按一下標記面板 (3) 來開啟或關閉。
 
     ![顯示含已標記影像供審核之審核工具的 Chrome 瀏覽器](images/review-images-2.png)
 
-1. 若要查看影像的詳細資訊，請按一下縮圖中的省略號，然後選取 [ **視圖詳細資料**]。 您可以使用 [ **移至** ] 選項將影像指派給子小組 (請參閱 [小組] 區段，以深入瞭解子 [小組](./configure.md#manage-team-and-subteams)) 。
+1. 若要查看影像的詳細資訊，請按一下縮圖中的省略號，然後選取 [ **視圖詳細資料** ]。 您可以使用 [ **移至** ] 選項將影像指派給子小組 (請參閱 [小組] 區段，以深入瞭解子 [小組](./configure.md#manage-team-and-subteams)) 。
 
     ![[檢視詳細資料] 選項已反白顯示的影像](images/review-images-3.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "73044119"
 
     ![仲裁詳細資料列在不同窗格的影像](images/review-images-4.png)
 
-1. 在您視需要審查並更新標記指派後，請按 [下一步]**** 以提交您的審查。 在您提交之後，您大約有五秒的時間可按 [上一步]**** 按鈕，以返回上一個畫面並再次審查影像。 在這之後，影像不再存在於 [提交] 佇列中，而且無法再使用 [上一步]**** 按鈕。
+1. 在您視需要審查並更新標記指派後，請按 [下一步]  以提交您的審查。 在您提交之後，您大約有五秒的時間可按 [上一步]  按鈕，以返回上一個畫面並再次審查影像。 在這之後，影像不再存在於 [提交] 佇列中，而且無法再使用 [上一步]  按鈕。
 
 ## <a name="text-reviews"></a>文字檢閱
 
@@ -54,6 +54,6 @@ ms.locfileid: "73044119"
 
 ![審查工具的螢幕擷取畫面，其中顯示在 Chrome 瀏覽器視窗中加上旗標的文字](../images/reviewresults_text.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-在本指南中，您已瞭解如何設定和使用內容仲裁 [審核工具](https://contentmoderator.cognitive.microsoft.com)的評論。 接下來，請參閱 [REST API 指南](../try-review-api-review.md) 或 [.net SDK 快速入門](../dotnet-sdk-quickstart.md) ，以瞭解如何以程式設計方式建立評論。
+在本指南中，您已瞭解如何設定和使用內容仲裁 [審核工具](https://contentmoderator.cognitive.microsoft.com)的評論。 接下來，請參閱 [REST API 指南](../try-review-api-review.md) 或 [.net SDK 快速入門](../client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp) ，以瞭解如何以程式設計方式建立評論。

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 41fb34055b9992b83a11bc3e4d47e3a389147860
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 14a532e7809db3359d90a03c169c27a19cf89a9a
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164222"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911625"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>針對 Azure 檔案同步進行移難排解
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
@@ -70,7 +70,7 @@ Register-AzureRmStorageSyncServer -SubscriptionId "<guid>" -ResourceGroupName "<
 
 若要在 PowerShell 5.1 上安裝 Az 或 AzureRM 模組，請執行下列步驟：
 
-1. 在提升權限的命令提示字元中輸入 **powershell**，然後按下 Enter。
+1. 在提升權限的命令提示字元中輸入 **powershell** ，然後按下 Enter。
 2. 參閱下列文件來安裝最新的 Az 或 AzureRM 模組：
     - [Az 模組 (需要 .NET 4.7.2)](https://go.microsoft.com/fwlink/?linkid=2062890)
     - [AzureRM 模組]( https://go.microsoft.com/fwlink/?linkid=856959)
@@ -93,7 +93,7 @@ Reset-StorageSyncServer
 > 如果伺服器是叢集的一部分，您可以使用選擇性的 *Reset-StorageSyncServer -CleanClusterRegistration* 參數，一併移除叢集的註冊。
 
 <a id="web-site-not-trusted"></a>**我在註冊伺服器時收到多個「網站不受信任」回應，原因為何？**  
-如果在伺服器註冊期間啟用了**增強的 Internet Explorer 安全性**原則，便會發生此問題。 若想進一步了解如何正確停用**增強的 Internet Explorer 安全性**原則，請參閱[準備 Windows Server 以搭配 Azure 檔案同步使用](storage-sync-files-deployment-guide.md#prepare-windows-server-to-use-with-azure-file-sync)和[如何部署 Azure 檔案同步](storage-sync-files-deployment-guide.md)。
+如果在伺服器註冊期間啟用了 **增強的 Internet Explorer 安全性** 原則，便會發生此問題。 若想進一步了解如何正確停用 **增強的 Internet Explorer 安全性** 原則，請參閱 [準備 Windows Server 以搭配 Azure 檔案同步使用](storage-sync-files-deployment-guide.md#prepare-windows-server-to-use-with-azure-file-sync)和 [如何部署 Azure 檔案同步](storage-sync-files-deployment-guide.md)。
 
 <a id="server-registration-missing"></a>**伺服器未列在 Azure 入口網站的 [已註冊的伺服器] 下**  
 如果伺服器未列在儲存體同步服務的 [已註冊的伺服器] 下：
@@ -102,15 +102,18 @@ Reset-StorageSyncServer
 3. 執行 ServerRegistration.exe，然後完成精靈的指示向儲存體同步服務註冊伺服器。
 
 ## <a name="sync-group-management"></a>同步群組管理
+
+### <a name="cloud-endpoint-creation-errors"></a>雲端端點建立錯誤
+
 <a id="cloud-endpoint-using-share"></a>**雲端端點建立失敗，發生此錯誤：「指定的 Azure 檔案共用已由不同雲端端點使用中」**  
 如果 Azure 檔案共用已由另一個雲端端點使用中，則會發生這個錯誤。 
 
 如果您看到這個訊息，而 Azure 檔案共用目前未由雲端端點使用中，請執行下列步驟，以清除 Azure 檔案共用上的 Azure 檔案同步中繼資料：
 
 > [!Warning]  
-> 刪除 Azure 檔案共用上目前正由雲端端點使用中的中繼資料時，會導致 Azure 檔案同步作業失敗。 
+> 刪除 Azure 檔案共用上目前正由雲端端點使用中的中繼資料時，會導致 Azure 檔案同步作業失敗。 
 
-1. 在 Azure 入口網站中，移至您的 Azure 檔案共用。  
+1. 在 Azure 入口網站中，移至您的 Azure 檔案共用。  
 2. 以滑鼠右鍵按一下 Azure 檔案共用，然後選取 [編輯中繼資料]。
 3. 以滑鼠右鍵按一下 [SyncService]，然後選取 [刪除]。
 
@@ -136,6 +139,8 @@ Reset-StorageSyncServer
     * [角色指派] 應具有 [讀取] 和 [寫入] 權限。
     * [角色定義] 應具有 [讀取] 和 [寫入] 權限。
 
+### <a name="server-endpoint-creation-and-deletion-errors"></a>伺服器端點建立和刪除錯誤
+
 <a id="-2134375898"></a>**伺服器端點建立失敗，發生此錯誤："MgmtServerJobFailed" (錯誤碼：-2134375898 或 0x80c80226)**  
 如果伺服器端點路徑位於系統磁碟區上，而且已啟用雲端階層處理，就會發生此錯誤。 系統磁碟區上不支援雲端階層。 若要在系統磁碟區上建立伺服器端點，請於建立伺服器端點時，停用雲端階層處理。
 
@@ -149,7 +154,7 @@ Reset-StorageSyncServer
 發生此錯誤的原因是 Azure 檔案同步不支援磁碟區上的伺服器端點，因為這些磁碟區具有壓縮的「系統磁碟區資訊」資料夾。 若要解決此問題，請將「系統磁碟區資訊」資料夾解壓縮。 如果「系統磁碟區資訊」資料夾是磁碟區上唯一已壓縮的資料夾，請執行下列步驟：
 
 1. 下載 [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) 工具。
-2. 從提升權限的命令提示字元執行下列命令，以啟動在系統帳戶下執行的命令提示字元：**PsExec.exe -i -s -d cmd**
+2. 從提升權限的命令提示字元執行下列命令，以啟動在系統帳戶下執行的命令提示字元： **PsExec.exe -i -s -d cmd**
 3. 從系統帳戶下執行的命令提示字元中，輸入下列命令，然後按 Enter 鍵：   
     **cd /d "drive letter:\System Volume Information"**  
     **compact /u /s**
@@ -165,6 +170,8 @@ Reset-StorageSyncServer
 
 <a id="-2134347757"></a>**伺服器端點刪除失敗，發生此錯誤："MgmtServerJobExpired" (錯誤碼：-2134347757 或 0x80c87013)**  
 如果伺服器離線或沒有網路連線能力，就會發生此錯誤。 如果伺服器已無法再使用，請在入口網站中取消註冊伺服器，從而刪除伺服器端點。 若要刪除伺服器端點，請依照[向 Azure 檔案同步取消註冊伺服器](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service)中所述的步驟進行。
+
+### <a name="server-endpoint-health"></a>伺服器端點健全狀況
 
 <a id="server-endpoint-provisioningfailed"></a>**無法開啟伺服器端點屬性頁面，或更新雲端階層處理原則**  
 如果伺服器端點上的管理作業失敗，就會發生此問題。 如果伺服器端點屬性頁面未在 Azure 入口網站中開啟，則從伺服器使用 PowerShell 命令來更新伺服器端點可修正此問題。 
@@ -189,15 +196,15 @@ Set-AzStorageSyncServerEndpoint `
 
 在入口網站中 [顯示為離線] 的伺服器上，查看遙測事件記錄檔中的事件識別碼 9301 (位於 [事件檢視器] 中的 Applications and Services\Microsoft\FileSync\Agent)，以判斷伺服器無法存取 Azure 檔案同步服務的原因。 
 
-- 如果記錄**已完成 GetNextJob，且狀態為：0**，則該伺服器便可與 Azure 檔案同步服務進行通訊。 
+- 如果記錄 **已完成 GetNextJob，且狀態為：0** ，則該伺服器便可與 Azure 檔案同步服務進行通訊。 
     - 在伺服器上開啟工作管理員，並確認儲存體同步監視器 (AzureStorageSyncMonitor.exe) 程序正在執行。 如果此程序未執行，先嘗試重新啟動伺服器。 如果重新啟動伺服器無法解決此問題，請升級至最新版 Azure 檔案同步[代理程式版本](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes)。 
 
-- 如果記錄**已完成 GetNextJob，且狀態為：-2134347756**，則表示伺服器會因防火牆或 Proxy 而無法與 Azure 檔案同步服務進行通訊。 
+- 如果記錄 **已完成 GetNextJob，且狀態為：-2134347756** ，則表示伺服器會因防火牆或 Proxy 而無法與 Azure 檔案同步服務進行通訊。 
     - 如果伺服器位於防火牆後方，請確認允許連接埠 443 輸出。 如果防火牆限制僅允許對特定網域的流量，請確認您可以存取防火牆[文件](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall)中列出的網域。
     - 如果伺服器位於 Proxy 後方，請依照 Proxy [文件](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy)中的步驟設定整部電腦或應用程式專屬的 Proxy 設定。
     - 使用 Test-StorageSyncNetworkConnectivity Cmdlet 來檢查與服務端點的網路連線能力。 若要深入了解，請參閱[測試與服務端點的網路連線能力](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#test-network-connectivity-to-service-endpoints) (機器翻譯)。
 
-- 如果記錄**已完成 GetNextJob，且狀態為：-2134347764**，則表示伺服器的憑證已到期或刪除，所以無法與 Azure 檔案同步服務進行通訊。  
+- 如果記錄 **已完成 GetNextJob，且狀態為：-2134347764** ，則表示伺服器的憑證已到期或刪除，所以無法與 Azure 檔案同步服務進行通訊。  
     - 在伺服器上執行下列 PowerShell 命令，以重新設定要用於驗證的憑證：
     ```powershell
     Reset-AzStorageSyncServerCertificate -ResourceGroupName <string> -StorageSyncServiceName <string>
@@ -338,7 +345,9 @@ PerItemErrorCount: 1006.
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | 無法同步檔案，因為已達到衝突檔案的最大數目。 Azure 檔案同步支援每個檔案可具有 100 個衝突檔案。 若要深入了解檔案衝突，請參閱 Azure 檔案同步[常見問題集](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution) (機器翻譯)。 | 若要解決此問題，請減少衝突檔案的數目。 一旦衝突檔案的數目小於 100，檔案就會同步處理。 |
 
 #### <a name="handling-unsupported-characters"></a>處理不支援的字元
-如果 **FileSyncErrorsReport.ps1** PowerShell 腳本顯示每個專案的同步錯誤，因為不支援的字元 (錯誤碼0x8007007b 或 0x80c80255) ，您應該從個別的檔案名中移除或重新命名錯誤的字元。 由於這些字元大多沒有標準的視覺編碼，PowerShell 可能會將這些字元列印為問號或空的矩形。 [評估工具](storage-sync-files-planning.md#evaluation-cmdlet)可用來識別不受支援的字元。 如果您的資料集有多個檔案有不正確字元，請使用 [ScanUnsupportedChars](https://github.com/Azure-Samples/azure-files-samples/tree/master/ScanUnsupportedChars) 腳本來重新命名包含不受支援字元的檔案。
+如果 **FileSyncErrorsReport.ps1** PowerShell 腳本顯示每個專案的同步錯誤，因為不支援的字元 (錯誤碼0x8007007b 或 0x80c80255) ，您應該從個別的檔案名中移除或重新命名錯誤的字元。 由於這些字元大多沒有標準的視覺編碼，PowerShell 可能會將這些字元列印為問號或空的矩形。 
+> [!Note]  
+> [評估工具](storage-sync-files-planning.md#evaluation-cmdlet)可用來識別不受支援的字元。 如果您的資料集有多個檔案有不正確字元，請使用 [ScanUnsupportedChars](https://github.com/Azure-Samples/azure-files-samples/tree/master/ScanUnsupportedChars) 腳本來重新命名包含不受支援字元的檔案。
 
 下表列出 Azure 檔案同步尚不支援的所有 Unicode 字元。
 
@@ -843,10 +852,10 @@ PerItemErrorCount: 1006.
 若要解決此問題，請執行下列步驟：
 
 1. 下載 [Psexec](https://docs.microsoft.com/sysinternals/downloads/psexec) 工具。
-2. 從提升權限的命令提示字元執行下列命令，以使用系統帳戶啟動命令提示字元：**PsExec.exe -i -s -d cmd** 
-3. 在系統帳戶所執行的命令提示字元中，執行下列命令以確認 NT AUTHORITY\SYSTEM 帳戶沒有 [系統磁碟區資訊] 資料夾的存取權：**cacls "drive letter:\system volume information" /T /C**
-4. 如果 NT AUTHORITY\SYSTEM 帳戶沒有 [系統磁碟區資訊] 資料夾的存取權，請執行下列命令：**cacls  "drive letter:\system volume information" /T /E /G "NT AUTHORITY\SYSTEM:F"**
-    - 如果步驟 #4 因存取遭拒而失敗，請執行下列命令來取得 [系統磁碟區資訊] 資料夾的擁有權，然後重複步驟 #4：**takeown /A /R /F "drive letter:\System Volume Information"**
+2. 從提升權限的命令提示字元執行下列命令，以使用系統帳戶啟動命令提示字元： **PsExec.exe -i -s -d cmd** 
+3. 在系統帳戶所執行的命令提示字元中，執行下列命令以確認 NT AUTHORITY\SYSTEM 帳戶沒有 [系統磁碟區資訊] 資料夾的存取權： **cacls "drive letter:\system volume information" /T /C**
+4. 如果 NT AUTHORITY\SYSTEM 帳戶沒有 [系統磁碟區資訊] 資料夾的存取權，請執行下列命令： **cacls  "drive letter:\system volume information" /T /E /G "NT AUTHORITY\SYSTEM:F"**
+    - 如果步驟 #4 因存取遭拒而失敗，請執行下列命令來取得 [系統磁碟區資訊] 資料夾的擁有權，然後重複步驟 #4： **takeown /A /R /F "drive letter:\System Volume Information"**
 
 <a id="-2134375810"></a>**因為已刪除並重新建立 Azure 檔案共用，所以同步失敗。**  
 
@@ -995,7 +1004,7 @@ if ($fileShare -eq $null) {
 <a id="troubleshoot-rbac"></a>**確定 Azure 檔案同步具有儲存體帳戶的存取權。**  
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 1. 按一下左側目錄的 [存取控制 (IAM)]。
-1. 按一下 [角色指派] 索引標籤，列出可存取儲存體帳戶的使用者和應用程式 (*服務主體*)。
+1. 按一下 [角色指派] 索引標籤，列出可存取儲存體帳戶的使用者和應用程式 ( *服務主體* )。
 1. 確認 [Microsoft.StorageSync] 或 [混合式檔案同步服務] (舊的應用程式名稱) 出現在清單中，且包含 [讀者及資料存取] 角色。 
 
     ![此螢幕擷取畫面顯示儲存體帳戶的存取控制索引標籤所包含的「混合式檔案同步服務」服務主體](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
@@ -1004,7 +1013,7 @@ if ($fileShare -eq $null) {
 
     - 按一下 [新增] 。
     - 在 [角色] 欄位中，選取 [讀取者及資料存取]。
-    - 在 [選取] 欄位中，輸入 **Microsoft.StorageSync**，選取角色並按一下 [儲存]。
+    - 在 [選取] 欄位中，輸入 **Microsoft.StorageSync** ，選取角色並按一下 [儲存]。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
@@ -1271,7 +1280,7 @@ $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 
 3. 針對 Azure 檔案同步核心模式追蹤層級，輸入 **1** (除非為了建立更詳細的追蹤而指定其他值)，然後按 Enter。
 4. 針對 Azure 檔案同步使用者模式追蹤層級，輸入 **1** (除非為了建立更詳細的追蹤而指定其他值)，然後按 Enter。
-5. 重現問題。 完成時，輸入 **D**。
+5. 重現問題。 完成時，輸入 **D** 。
 6. 含有記錄和追蹤檔案的 .zip 檔案將會儲存在指定的輸出目錄中。
 
 ## <a name="see-also"></a>另請參閱

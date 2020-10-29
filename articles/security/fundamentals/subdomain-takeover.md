@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2020
 ms.author: memildin
-ms.openlocfilehash: bde4b21f9dfff62ef43afc9c9d8e5a858631d304
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1837d84c97227ba3d8743c3717e2f68dafd6b95
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447367"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911387"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>防止無關聯的 DNS 專案，並避免子域接管
 
@@ -51,7 +51,7 @@ ms.locfileid: "91447367"
 
     1. 威脅執行者會布建具有您先前所控制資源之相同 FQDN 的 Azure 資源。 在此範例中是 `app-contogreat-dev-001.azurewebsites.net`。
 
-    1. 傳送至子域的流量 `myapp.contoso.com` 現在會路由傳送至惡意執行者的資源，以控制其內容。
+    1. 傳送至子域的流量 `greatapp.contoso.com` 現在會路由傳送至惡意執行者的資源，以控制其內容。
 
 
 
@@ -86,7 +86,7 @@ ms.locfileid: "91447367"
 此工具支援下表所列的 Azure 資源。 此工具會將所有租使用者的 Cname 解壓縮或做為輸入。
 
 
-| 服務                   | 類型                                        | FQDNproperty                               | 範例                         |
+| Service                   | 類型                                        | FQDNproperty                               | 範例                         |
 |---------------------------|---------------------------------------------|--------------------------------------------|---------------------------------|
 | Azure Front Door          | microsoft.network/frontdoors                | 屬性 cName                           | `abc.azurefd.net`               |
 | Azure Blob 儲存體        | microsoft.storage/storageaccounts           | >primaryendpoints.blob blob           | `abc. blob.core.windows.net`    |
@@ -100,7 +100,7 @@ ms.locfileid: "91447367"
 
 
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 以具有下列許可權的使用者身分執行查詢：
 
@@ -119,7 +119,7 @@ ms.locfileid: "91447367"
 
 ### <a name="run-the-script"></a>執行指令碼
 
-深入瞭解 PowerShell 腳本、 **Get-DanglingDnsRecords.ps1**，並從 GitHub 下載： https://aka.ms/DanglingDNSDomains 。
+深入瞭解 PowerShell 腳本、 **Get-DanglingDnsRecords.ps1** ，並從 GitHub 下載： https://aka.ms/DanglingDNSDomains 。
 
 ## <a name="remediate-dangling-dns-entries"></a>補救無關聯的 DNS 專案 
 
@@ -198,7 +198,7 @@ Azure DNS 的 [別名記錄](../../dns/dns-alias.md#scenarios) 可讓 DNS 記錄
     - 請刪除不再使用的 DNS 記錄，或將其指向您的組織所擁有的正確 Azure 資源 (FQDN) 。
  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入瞭解您可以用來防禦子域接管的相關服務和 Azure 功能，請參閱下列頁面。
 

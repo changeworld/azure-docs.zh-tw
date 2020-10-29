@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: f8f173291448d9da4d8967ff56b0fa027ca73409
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82182c24f87a82df5ee040b7853588f74dda449f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334543"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909942"
 ---
 # <a name="business-card-concepts"></a>名片概念
 
@@ -385,9 +385,9 @@ Azure 表單辨識器可以使用其中一個預先建立的模型，分析和�
 * 追蹤銷售潛在客戶。  
 * 從現有的名片影像大量解壓縮連絡人資訊。 
 
-名片 API 也會為 [>aibuilder 名片處理功能](https://docs.microsoft.com/ai-builder/prebuilt-business-card)供電。
+名片 API 也會為 [>aibuilder 名片處理功能](/ai-builder/prebuilt-business-card)供電。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 遵循 [名片 API Python 快速入門](./quickstarts/python-business-cards.md) ，開始辨識名片。
 

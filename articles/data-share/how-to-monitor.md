@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
-ms.openlocfilehash: 2a986afa1916d179834c516a26f76a2789f82452
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc400922115f348090677661cd1b30434be19b72
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87511882"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910469"
 ---
 # <a name="monitor-azure-data-share"></a>監視 Azure Data Share  
 
@@ -36,13 +36,13 @@ ms.locfileid: "87511882"
 
 ## <a name="monitor-share-subscriptions"></a>監視共用訂閱
 
-流覽至 [已傳送的共用]，以查看共用訂閱的狀態-> 共用訂閱]。 這會提供您的資料取用者在接受邀請之後所建立之作用中訂閱的詳細資料。 您可以選取共用訂用帳戶，然後選取 *[撤銷]*，以停止未來的資料取用者更新。 
+流覽至 [已傳送的共用]，以查看共用訂閱的狀態-> 共用訂閱]。 這會提供您的資料取用者在接受邀請之後所建立之作用中訂閱的詳細資料。 您可以選取共用訂用帳戶，然後選取 *[撤銷]* ，以停止未來的資料取用者更新。 
 
 ## <a name="snapshot-history"></a>快照集歷程記錄 
 
 在共用的 [歷程 **記錄** ] 索引標籤中，您可以查看資料從資料提供者複製到資料取用者的資料存放區的時間。 您可以監視每個快照集的頻率、持續時間和狀態。 
 
-![快照集歷程記錄](./media/sent-shares.png "快照集歷程記錄") 
+![螢幕擷取畫面顯示 Azure 入口網站中已傳送的共用。](./media/sent-shares.png "快照集歷程記錄") 
 
 您可以按一下 [執行開始日期]，以查看每個快照集執行的更多詳細資料。 然後，按一下每個資料集的狀態，以查看傳輸的資料量、複製的檔案/記錄數目、快照集的持續時間、已使用的虛擬核心數目和錯誤訊息（如果有的話）。 
 
@@ -50,9 +50,9 @@ ms.locfileid: "87511882"
 
 ## <a name="diagnostic-setting"></a>診斷設定
 
-您可以設定診斷設定來儲存記錄資料或事件。 流覽至 [監視]-> 診斷設定]，然後選取 [ **新增診斷設定**]。 選取您感興趣的記錄資料或事件，以及要儲存或傳送的事件。 
+您可以設定診斷設定來儲存記錄資料或事件。 流覽至 [監視]-> 診斷設定]，然後選取 [ **新增診斷設定** ]。 選取您感興趣的記錄資料或事件，以及要儲存或傳送的事件。 
 
-![快照集歷程記錄](./media/diagnostic-settings.png "診斷設定") 
+![螢幕擷取畫面顯示 Azure 入口網站中的 [診斷設定] 頁面。](./media/diagnostic-settings.png "診斷設定") 
 
 ## <a name="next-steps"></a>後續步驟 
 

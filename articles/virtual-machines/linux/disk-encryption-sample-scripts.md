@@ -8,34 +8,43 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: dcfae72d5f15399dc4c759ab859ad8059134f11d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d178ae39d3af6b39047501f0bc47acbc6e792f48
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91279785"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911489"
 ---
 # <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>適用于 Linux Vm 的 Azure 磁碟加密範例腳本
 
-本文提供準備預先加密的 Vhd 和其他工作的範例腳本。
+本文提供準備預先加密的 Vhd 和其他工作的範例腳本。  
 
- 
+> [!NOTE]
+> 所有腳本都會參考最新的非 AAD 版本的 ADE，除非有注明。
 
 ## <a name="sample-powershell-scripts-for-azure-disk-encryption"></a>Azure 磁碟加密的範例 PowerShell 指令碼 
 
 - **列出訂用帳戶中的所有已加密 VM**
+  
+  您可以使用 [此 PowerShell 腳本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VM.ps1)，在訂用帳戶中的所有資源群組中，找到所有已加密的 ADE vm 和延伸模組版本。
 
-     ```azurepowershell-interactive
-     $osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
-     $dataVolEncrypted= {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
-     Get-AzVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
-     ```
+  此外，這些 Cmdlet 會顯示 (的所有 ADE 加密 Vm，但不會顯示) 的延伸模組版本：
+
+   ```azurepowershell-interactive
+   $osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
+   $dataVolEncrypted= {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
+   Get-AzVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
+   ```
+
+- **列出您訂用帳戶中所有已加密的 VMSS 實例**
+    
+    您可以使用 [此 PowerShell 腳本](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/Find_1passAdeVersion_VMSS.ps1)，在訂用帳戶中的所有資源群組中，找到所有的 ADE 加密 VMSS 實例和延伸模組版本。
 
 - **列出所有用來加密金鑰保存庫中 VM 的磁碟加密祕密** 
 
-     ```azurepowershell-interactive
-     Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
-     ```
+   ```azurepowershell-interactive
+   Get-AzKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
+   ```
 
 ### <a name="using-the-azure-disk-encryption-prerequisites-powershell-script"></a> 使用 Azure 磁碟加密先決條件 PowerShell 指令碼
 如果您已經熟悉 Azure 磁碟加密的必要條件，您可以使用 [Azure 磁碟加密必要條件 PowerShell 指令碼](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )。 如需使用此 PowerShell 指令碼的範例，請參閱[加密 VM 快速入門](disk-encryption-powershell-quickstart.md)。 您可以從指令碼區段 (起自 211 行) 中移除註解，以對現有資源群組中現有 VM 的所有磁碟加密。 
@@ -45,14 +54,13 @@ ms.locfileid: "91279785"
 
 |參數|描述|是否為強制？|
 |------|------|------|
-|$resourceGroupName| 金鑰保存庫所屬資源群組的名稱。  如果不存在此名稱的應用程式，將會以此名稱建立新的資源群組。| True|
-|$keyVaultName|要用來放置加密金鑰的金鑰保存庫名稱。 如果不存在此名稱的應用程式，將會以此名稱建立新的保存庫。| True|
-|$location|金鑰保存庫的位置。 請確定金鑰保存庫和要加密的 VM 位於相同位置。 使用 `Get-AzLocation` 取得位置清單。|True|
-|$subscriptionId|要使用的 Azure 訂用帳戶識別碼。  您可以使用 `Get-AzSubscription` 取得您的訂用帳戶識別碼。|True|
-|$aadAppName|會用來將祕密寫入到金鑰保存庫的 Azure AD 應用程式名稱。 如果不存在此名稱的應用程式，將會以此名稱建立新的應用程式。 如果此應用程式已經存在，請將 aadClientSecret 參數傳遞至指令碼。|False|
-|$aadClientSecret|稍早建立的 Azure AD 應用程式用戶端密碼。|False|
-|$keyEncryptionKeyName|金鑰保存庫中選用金鑰加密金鑰的名稱。 如果不存在此名稱的應用程式，將會以此名稱建立新的金鑰。|False|
-
+|$resourceGroupName| 金鑰保存庫所屬資源群組的名稱。  如果不存在此名稱的應用程式，將會以此名稱建立新的資源群組。| 是|
+|$keyVaultName|要用來放置加密金鑰的金鑰保存庫名稱。 如果不存在此名稱的應用程式，將會以此名稱建立新的保存庫。| 是|
+|$location|金鑰保存庫的位置。 請確定金鑰保存庫和要加密的 VM 位於相同位置。 使用 `Get-AzLocation` 取得位置清單。|是|
+|$subscriptionId|要使用的 Azure 訂用帳戶識別碼。  您可以使用 `Get-AzSubscription` 取得您的訂用帳戶識別碼。|是|
+|$aadAppName|會用來將祕密寫入到金鑰保存庫的 Azure AD 應用程式名稱。 如果不存在此名稱的應用程式，將會以此名稱建立新的應用程式。 如果此應用程式已經存在，請將 aadClientSecret 參數傳遞至指令碼。|否|
+|$aadClientSecret|稍早建立的 Azure AD 應用程式用戶端密碼。|否|
+|$keyEncryptionKeyName|金鑰保存庫中選用金鑰加密金鑰的名稱。 如果不存在此名稱的應用程式，將會以此名稱建立新的金鑰。|否|
 
 ### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>加密或解密沒有 Azure AD 應用程式的 VM
 
@@ -60,7 +68,7 @@ ms.locfileid: "91279785"
 - [在執行中 Linux VM 上停用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
     - 只能在 Linux VM 的資料磁碟區上停用加密。  
 
-### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>加密或解密具有 Azure AD 應用程式 (舊版) 的 VM 
+### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>加密或解密具有 Azure AD 應用程式 (舊版) 的 VM
  
 - [在現有或執行中的 Linux VM 上啟用磁片加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)    
 
@@ -71,10 +79,6 @@ ms.locfileid: "91279785"
 
 - [從預先加密的 VHD/儲存體 Blob 建立新加密的受控磁碟](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
     - 建立已加密的新受控磁碟，新的受控磁碟具備預先加密的 VHD 以及對應的加密設定
-
-
-
-
 
 ## <a name="encrypting-an-os-drive-on-a-running-linux-vm"></a>在執行中的 Linux VM 上加密 OS 磁碟機
 
@@ -166,7 +170,7 @@ ms.locfileid: "91279785"
 ### <a name="ubuntu-16"></a>Ubuntu 16
 在發佈安裝期間執行下列步驟以設定加密︰
 
-1. 在分割磁碟時選取 [設定加密的磁碟區]****。
+1. 在分割磁碟時選取 [設定加密的磁碟區]  。
 
    ![Ubuntu 16.04 設定 - 設定加密的磁碟區](./media/disk-encryption/ubuntu-1604-preencrypted-fig1.png)
 
@@ -236,7 +240,7 @@ ms.locfileid: "91279785"
    ```
     chmod +x /usr/local/sbin/azure_crypt_key.sh
    ```
-5. 以加上程式碼行的方式編輯 /etc/initramfs-tools/modules**：
+5. 以加上程式碼行的方式編輯 /etc/initramfs-tools/modules  ：
    ```
     vfat
     ntfs
@@ -254,7 +258,7 @@ ms.locfileid: "91279785"
 
 ### <a name="opensuse-132"></a>openSUSE 13.2
 若要在發佈安裝期間設定加密，請執行下列步驟︰
-1. 分割磁碟時，請選取 [加密磁碟區群組]****，然後輸入密碼。 這是您要上傳到金鑰保存庫的密碼。
+1. 分割磁碟時，請選取 [加密磁碟區群組]  ，然後輸入密碼。 這是您要上傳到金鑰保存庫的密碼。
 
    ![openSUSE 13.2 設定 - 加密磁碟區群組](./media/disk-encryption/opensuse-encrypt-fig1.png)
 
@@ -323,11 +327,11 @@ ms.locfileid: "91279785"
 ### <a name="centos-7-and-rhel-7"></a>CentOS 7 和 RHEL 7
 
 若要在發佈安裝期間設定加密，請執行下列步驟︰
-1. 在分割磁碟時選取 [加密資料]****。
+1. 在分割磁碟時選取 [加密資料]  。
 
    ![CentOS 7 設定 - 安裝目的地](./media/disk-encryption/centos-encrypt-fig1.png)
 
-2. 確定已為根分割選取 [加密]****。
+2. 確定已為根分割選取 [加密]  。
 
    ![CentOS 7 設定 - 為根分割選取加密](./media/disk-encryption/centos-encrypt-fig2.png)
 

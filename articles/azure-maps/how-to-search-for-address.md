@@ -3,21 +3,22 @@ title: 使用 Azure 地圖服務搜尋服務來搜尋位置
 description: 瞭解 Azure 地圖服務搜尋服務。 瞭解如何針對地理編碼、反向地理編碼、模糊搜尋及反向交叉街道搜尋使用這組 Api。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/21/2020
+ms.date: 10/05/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9628ecada2e427f6220ae2a5154cebb8e4958bd0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 00ddb53276c052d538d658f2c40384e86cf72aee
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895693"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910979"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>使用 Azure 地圖服務搜尋服務來搜尋位置
 
 [Azure 地圖服務搜尋服務](/rest/api/maps/search)是一組 RESTful api，其設計目的是要協助開發人員依名稱、類別和其他地理資訊來搜尋位址、地點和商務清單。 除了支援傳統的地理編碼，服務也可以根據緯度和經度來反轉地理編碼位址和交叉街道。 搜尋所傳回的緯度和經度值可用來作為其他 Azure 地圖服務服務中的參數，例如 [路線](/rest/api/maps/route) 和 [氣象](/rest/api/maps/weather) 服務業。
+
 
 在本文中，您將學會如何：
 
@@ -44,9 +45,7 @@ ms.locfileid: "92895693"
 
 2. 若要建立要求，請再次選取 [新增]。 在 [新建] 視窗中，選取 [要求]。 輸入要求的 [要求名稱]。 選取您在先前的步驟中建立的集合，然後選取 [儲存]。
 
-3. 在 [建立器] 索引標籤中選取 [ **取得** HTTP 方法]，並輸入下列 URL。 在此要求中，我們要搜尋特定位址： `400 Braod St, Seattle, WA 98109` 。
-
-    對於此要求以及本文中提及的其他要求，請將 `{Azure-Maps-Primary-Subscription-key}` 取代為您的主要訂用帳戶金鑰。 要求應會類似於下列 URL：
+3. 在 [建立器] 索引標籤中選取 [ **取得** HTTP 方法]，並輸入下列 URL。 在此要求中，我們要搜尋特定位址： `400 Braod St, Seattle, WA 98109` 。 對於此要求以及本文中提及的其他要求，請將 `{Azure-Maps-Primary-Subscription-key}` 取代為您的主要訂用帳戶金鑰。
 
     ```http
     https://atlas.microsoft.com/search/address/json?&subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&language=en-US&query=400 Broad St, Seattle, WA 98109
@@ -60,7 +59,7 @@ ms.locfileid: "92895693"
 
 6. 接下來，嘗試將 `query` 金鑰設為 `400 Broa` 。
 
-7. 按一下 [傳送] 按鈕。  您現在可以看到回應包含來自多個國家（地區）的回應。 若要為您的使用者 geobias 相關區域的結果，請一律盡可能將最多位置詳細資料加入至要求。
+7. 按一下 [傳送] 按鈕。 您現在可以看到回應包含來自多個國家（地區）的回應。 若要為您的使用者 geobias 相關區域的結果，請一律盡可能將最多位置詳細資料加入至要求。
 
 ## <a name="using-fuzzy-search-api"></a>使用模糊搜尋 API
 
@@ -78,7 +77,7 @@ Azure 地圖服務 [模糊搜尋 API](/rest/api/maps/search/getsearchfuzzy) 支�
 
 1. 開啟 Postman 應用程式，按一下 [ **新增** ]，然後選取 [ **要求** ]。 輸入要求的 [要求名稱]。 選取您在上一節中建立的集合，或建立一個新的集合，然後選取 [ **儲存** ]。
 
-2. 在 [建立器] 索引標籤中選取 [ **取得** HTTP 方法]，並輸入下列 URL。 對於此要求以及本文中提及的其他要求，請將 `{Azure-Maps-Primary-Subscription-key}` 取代為您的主要訂用帳戶金鑰。 要求應會類似於下列 URL：
+2. 在 [建立器] 索引標籤中選取 [ **取得** HTTP 方法]，並輸入下列 URL。 對於此要求以及本文中提及的其他要求，請將 `{Azure-Maps-Primary-Subscription-key}` 取代為您的主要訂用帳戶金鑰。
 
     ```http
    https://atlas.microsoft.com/search/fuzzy/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=pizza
@@ -172,7 +171,7 @@ Azure 地圖服務 [取得搜尋位址反向 API]( https://docs.microsoft.com/re
   
 3. 按一下 [ **傳送** ]，然後檢查回應主體。 您會發現回應包含的 `crossStreet` 值 `Occidental Avenue South` 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [Azure 地圖服務搜尋服務 REST API](/rest/api/maps/search)

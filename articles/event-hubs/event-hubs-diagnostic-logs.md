@@ -2,13 +2,13 @@
 title: 設定診斷記錄 - Azure 事件中樞 | Microsoft Docs
 description: 了解如何為 Azure 中的事件中樞設定活動記錄和診斷記錄。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: ccd38d8924765df7bfd91b4fc26bb5304f6f180d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/27/2020
+ms.openlocfilehash: a7230746dc4225b04b0507c872416368aa14442b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88927726"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912594"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>為 Azure 事件中樞設定診斷記錄
 
@@ -28,7 +28,7 @@ ms.locfileid: "88927726"
 2. 在左窗格中，選取 [監視] 底下的 [診斷設定]，然後選取 [+ 新增診斷設定]。 
 
     ![[診斷設定] 頁面 - 新增診斷設定](./media/event-hubs-diagnostic-logs/diagnostic-settings-page.png)
-4. 在 [類別詳細資料] 區段中，選取您想要啟用的**診斷記錄類型**。 您稍後會在此文章中找到關於這些類別的詳細資料。 
+4. 在 [類別詳細資料] 區段中，選取您想要啟用的 **診斷記錄類型** 。 您稍後會在此文章中找到關於這些類別的詳細資料。 
 5. 在 [目的地詳細資料] 區段中，設定您想要的封存目標 (目的地)，例如儲存體帳戶、事件中樞或 Log Analytics 工作區。
 
     ![[新增診斷設定] 頁面](./media/event-hubs-diagnostic-logs/aDD-diagnostic-settings-page.png)
@@ -188,7 +188,6 @@ Kafka 使用者錯誤記錄 JSON 包括下表所列的元素：
 | `Message` | 參考訊息，其能提供錯誤的詳細資料 |
 
 ## <a name="event-hubs-virtual-network-connection-event-schema"></a>事件中樞虛擬網路連線事件結構描述
-
 事件中樞虛擬網路 (VNet) 連線事件 JSON 包括下表所列的元素：
 
 | 名稱 | 描述 |
@@ -200,6 +199,8 @@ Kafka 使用者錯誤記錄 JSON 包括下表所列的元素：
 | `Reason` | 提供完成動作的原因 |
 | `Count` | 指定動作的出現次數 |
 | `ResourceId` | Azure Resource Manager 資源識別碼。 |
+
+只有在命名空間允許從 **選取的網路** 或從 **特定 ip 位址** 存取 (IP 篩選器規則) 時，才會產生虛擬網路記錄檔。 如果您不想要使用這些功能來限制對命名空間的存取權，但仍想要取得虛擬網路記錄來追蹤連接至事件中樞命名空間的用戶端 IP 位址，您可以使用下列因應措施。 啟用 IP 篩選，並將可定址的 IPv4 範圍總計新增 (1.0.0.0/1-255.0.0.0/1) 。 事件中樞不支援 IPv6 範圍。 
 
 ### <a name="example"></a>範例
 
@@ -221,7 +222,7 @@ Kafka 使用者錯誤記錄 JSON 包括下表所列的元素：
 
 | 名稱 | 描述 |
 | ---- | ----------- | 
-| `Category` | 訊息的類別類型。 其為下列其中一個值：**error** 和 **info** |
+| `Category` | 訊息的類別類型。 其為下列其中一個值： **error** 和 **info** |
 | `ResourceId` | 內部資源識別碼，其包括 Azure 訂用帳戶識別碼和命名空間名稱 |
 | `KeyVault` | 金鑰保存庫資源的名稱 |
 | `Key` | 金鑰保存庫金鑰的名稱。 |

@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
-ms.date: 03/31/2020
+ms.date: 10/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1fa9a8aa24cf6a8c8c2223836ae80b8b47807c81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c063fec3eac962d22ead12e0ca11f4b9fc155b5d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87903182"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910146"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>對 Azure 串流分析輸出進行疑難排解
 
@@ -81,7 +81,29 @@ ms.locfileid: "87903182"
 
 * 您無法在主索引鍵或是使用 ALTER INDEX 的唯一條件約束上設定 IGNORE_DUP_KEY。 您必須卸除索引並重新加以建立。  
 * 您可以針對唯一索引使用 ALTER INDEX 來設定 IGNORE_DUP_KEY。 此執行個體與 PRIMARY KEY/UNIQUE 條件約束不同，並且是使用 CREATE INDEX 或 INDEX 定義所建立。  
-* IGNORE_DUP_KEY 選項不適用於資料行存放區索引，因為您無法在其上方強制執行唯一性。  
+* IGNORE_DUP_KEY 選項不適用於資料行存放區索引，因為您無法在其上方強制執行唯一性。
+
+## <a name="sql-output-retry-logic"></a>SQL 輸出重試邏輯
+
+當具有 SQL 輸出的串流分析作業收到第一個批次的事件時，會發生下列步驟：
+
+1. 作業嘗試連接至 SQL。
+2. 作業會提取目的地資料表的架構。
+3. 作業會根據目的地資料表架構來驗證資料行名稱和類型。
+4. 此作業會從批次中的輸出記錄準備記憶體中的資料表。
+5. 作業會使用 BulkCopy [API](/dotnet/api/system.data.sqlclient.sqlbulkcopy.writetoserver?view=dotnet-plat-ext-3.1)將資料表寫入至 SQL。
+
+在這些步驟中，SQL 輸出可能會遇到下列類型的錯誤：
+
+* 使用指數輪詢重試策略重試的暫時性 [錯誤](/azure/azure-sql/database/troubleshoot-common-errors-issues#transient-fault-error-messages-40197-40613-and-others) 。 最小重試間隔取決於個別的錯誤碼，但間隔通常小於60秒。 上限最多可以是五分鐘。 
+
+   [登入失敗](/azure/azure-sql/database/troubleshoot-common-errors-issues#unable-to-log-in-to-the-server-errors-18456-40531) 和 [防火牆問題](/azure/azure-sql/database/troubleshoot-common-errors-issues#cannot-connect-to-server-due-to-firewall-issues) 在上一次嘗試後至少會重試5分鐘，然後重試直到成功為止。
+
+* 資料錯誤（例如轉換錯誤和架構條件約束違規）會以輸出錯誤原則來處理。 這些錯誤的處理方式是重試二進位分割批次，直到會由 skip 或 retry 處理造成錯誤的個別記錄為止。 [一律會處理](./stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output)主要的唯一索引鍵條件約束違規。
+
+* 當有 SQL 服務問題或內部程式碼缺失時，可能會發生非暫時性錯誤。 例如，當 (代碼1132之類的錯誤) 彈性集區達到其儲存空間限制時，重試不會解決錯誤。 在這些案例中，串流分析作業的效能會 [降低](job-states.md)。
+* `BulkCopy` 在步驟5期間可能會發生超時狀況 `BulkCopy` 。 `BulkCopy` 可能會偶爾遇到作業超時。 預設的最小設定 timeout 為五分鐘，當連續叫用時，會加倍。
+一旦 timeout 超過15分鐘，最大的批次大小提示 `BulkCopy` 會降至一半，直到每個批次的100事件保留為止。
 
 ## <a name="column-names-are-lowercase-in-azure-stream-analytics-10"></a>Azure 串流分析 (1.0) 中的資料行名稱為小寫
 

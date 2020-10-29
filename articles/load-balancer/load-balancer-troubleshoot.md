@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 231b6ffa3730721d4e44ecb15c2fc58591b80178
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 22922972049ec78cc26f4d060fa1981d1f23a3ce
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314805"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912441"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>針對 Azure Load Balancer 進行疑難排解
 
@@ -35,10 +35,10 @@ ms.locfileid: "92314805"
 
 **驗證和解決方式**
 
-標準 Ilb **預設是安全**的。 基本 Ilb 允許 *透過隱藏* 的公用 IP 位址連接到網際網路。 這不會針對生產工作負載建議您使用，因為 IP 位址不是靜態，也不會透過您所擁有的 Nsg 鎖定。 如果您最近從基本 ILB 移至標準 ILB，您應該透過 [僅限輸出](egress-only.md) 的設定（透過 NSG 鎖定 IP）來明確建立公用 IP。 
+標準 Ilb **預設是安全** 的。 基本 Ilb 允許 *透過隱藏* 的公用 IP 位址連接到網際網路。 這不會針對生產工作負載建議您使用，因為 IP 位址不是靜態，也不會透過您所擁有的 Nsg 鎖定。 如果您最近從基本 ILB 移至標準 ILB，您應該透過 [僅限輸出](egress-only.md) 的設定（透過 NSG 鎖定 IP）來明確建立公用 IP。 您也可以使用子網上的 [NAT 閘道](../virtual-network/nat-overview.md) 。
 
 ## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>徵兆：負載平衡器後方的 VM 未回應健康狀態探查
-如果後端伺服器要參與負載平衡器集合，就必須通過探查檢查。 如需健康狀態探查的詳細資訊，請參閱[了解負載平衡器探查](load-balancer-custom-probe-overview.md)。 
+如果後端伺服器要參與負載平衡器集合，就必須通過探查檢查。 如需健康狀態探查的詳細資訊，請參閱[了解負載平衡器探查](load-balancer-custom-probe-overview.md)。 
 
 負載平衡器後端集區 VM 可能因為下列任何一個原因未回應探查︰ 
 - 負載平衡器後端集區 VM 的健康狀態不良 
@@ -50,7 +50,7 @@ ms.locfileid: "92314805"
 
 **驗證和解決方式**
 
-若要解決此問題，請登入參與的 VM，檢查 VM 的健康狀態是否良好，而且可以從集區中的另一個 VM 回應 **PsPing** 或 **TCPing**。 如果 VM 的健康狀態不良，或無法回應探查，您必須修正問題並且讓 VM 回復健康狀態，VM 才能再參與負載平衡。
+若要解決此問題，請登入參與的 VM，檢查 VM 的健康狀態是否良好，而且可以從集區中的另一個 VM 回應 **PsPing** 或 **TCPing** 。 如果 VM 的健康狀態不良，或無法回應探查，您必須修正問題並且讓 VM 回復健康狀態，VM 才能再參與負載平衡。
 
 ### <a name="cause-2-load-balancer-backend-pool-vm-is-not-listening-on-the-probe-port"></a>原因 2：負載平衡器後端集區 VM 未接聽探查連接埠
 如果 VM 健康狀態良好，但未回應探查，則其中一個原因可能是參與的 VM 上未開啟探查連接埠，或 VM 未接聽該連接埠。
@@ -58,12 +58,12 @@ ms.locfileid: "92314805"
 **驗證和解決方式**
 
 1. 登入後端 VM。 
-2. 開啟命令提示字元並執行下列命令以驗證有應用程式正在接聽探查連接埠︰   
+2. 開啟命令提示字元並執行下列命令以驗證有應用程式正在接聽探查連接埠︰   
             netstat -an
-3. 如果連接埠狀態未列為 **LISTENING**，請設定適當的連接埠。 
-4. 或者，選取其他已列為 **LISTENING** 的連接埠，並據此更新負載平衡器組態。              
+3. 如果連接埠狀態未列為 **LISTENING** ，請設定適當的連接埠。 
+4. 或者，選取其他已列為 **LISTENING** 的連接埠，並據此更新負載平衡器組態。              
 
-### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>原因 3：防火牆或網路安全性群組封鎖負載平衡器後端集區 VM 上的連接埠  
+### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>原因 3：防火牆或網路安全性群組封鎖負載平衡器後端集區 VM 上的連接埠  
 如果 VM 上的防火牆封鎖探查連接埠，或者子網路或 VM 上已設定一或多個網路安全性群組不允許探查連接埠，VM 就無法回應健康狀態探查。          
 
 **驗證和解決方式**
@@ -71,7 +71,7 @@ ms.locfileid: "92314805"
 * 如果已啟用防火牆，請檢查它是否已設定為允許探查連接埠。 如果不允許，請將防火牆設定為允許探查連接埠上的流量，然後重新測試。 
 * 從網路安全性群組的清單中，檢查探查連接埠上的傳入或傳出流量是否有干擾。 
 * 此外，檢查 VM 之 NIC 上或子網路上的 [全部拒絕] 網路安全性群組規則的優先順序是否高於允許 LB 探查與流量的預設規則 (網路安全性群組必須允許 168.63.129.16 的負載平衡器 IP)。 
-* 如果有任何規則封鎖探查流量，請移除並重新設定規則以允許探查流量。  
+* 如果有任何規則封鎖探查流量，請移除並重新設定規則以允許探查流量。  
 * 測試 VM 現在是否已開始回應健康狀態探查。 
 
 ### <a name="cause-4-other-misconfigurations-in-load-balancer"></a>原因 4：負載平衡器中的其他設定錯誤
@@ -93,7 +93,7 @@ ms.locfileid: "92314805"
 
 如果後端集區 VM 列為健康狀態良好，而且會回應健康狀態探查，但仍未參與負載平衡，或未回應資料流量，可能是因為下列其中一個原因︰ 
 * 負載平衡器後端集區 VM 未接聽資料連接埠 
-* 網路安全性群組封鎖負載平衡器後端集區 VM 上的連接埠  
+* 網路安全性群組封鎖負載平衡器後端集區 VM 上的連接埠  
 * 從相同的 VM 和 NIC 存取負載平衡器 
 * 從參與的負載平衡器後端集區 VM 存取網際網路負載平衡器前端 
 
@@ -103,11 +103,12 @@ ms.locfileid: "92314805"
 **驗證和解決方式**
 
 1. 登入後端 VM。 
-2. 開啟命令提示字元並執行下列命令，以驗證是否有應用程式正在接聽資料連接埠︰  netstat -an 
+2. 開啟命令提示字元並執行下列命令以驗證有應用程式正在接聽資料連接埠︰  
+            netstat -an 
 3. 如果連接埠未列為 "LISTENING" 狀態，請設定正確的接聽程式連接埠。 
 4. 如果連接埠標示為 LISTENING，則請檢查該連接埠上的目標應用程式是否有任何可能的問題。
 
-### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>原因 2：網路安全性群組封鎖負載平衡器後端集區 VM 上的連接埠  
+### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>原因 2：網路安全性群組封鎖負載平衡器後端集區 VM 上的連接埠  
 
 如果在子網路或 VM 上設定的一或多個網路安全性群組封鎖來源 IP 或連接埠，VM 就無法回應。
 
@@ -117,7 +118,7 @@ ms.locfileid: "92314805"
 1. 從網路安全性群組的清單中，檢查︰
     - 資料連接埠上的傳入或傳出流量是否有干擾。 
     - VM 之 NIC 上或子網路上的 [全部拒絕] 網路安全性群組規則的優先順序是否高於允許負載平衡器探查與流量的預設規則 (網路安全性群組必須允許 168.63.129.16 的負載平衡器 IP，亦即探查連接埠)。
-1. 如果有任何規則封鎖流量，請移除並重新設定這些規則以允許資料流量。  
+1. 如果有任何規則封鎖流量，請移除並重新設定這些規則以允許資料流量。  
 1. 測試 VM 現在是否已開始回應健康狀態探查。
 
 ### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>原因 3：從相同的 VM 和網路介面存取負載平衡器 
@@ -134,7 +135,7 @@ ms.locfileid: "92314805"
 
 **解決方式** 有數種方式可為此案例排除障礙，包括使用 Proxy。 請評估使用應用程式閘道或其他第三方 Proxy (例如 nginx 或 haproxy)。 如需應用程式閘道的詳細資訊，請參閱[應用程式閘道的概觀](../application-gateway/application-gateway-introduction.md)
 
-**詳細資料**內部 Load Balancer 不會將輸出起始連線轉譯為內部 負載平衡器的前端，因為這兩者都位於私人 IP 位址空間中。 公用 Load Balancer 提供從虛擬網路內的私人 IP 位址到公用 IP 位址的[輸出連線](load-balancer-outbound-connections.md)。 對於內部 Load Balancer，此方法可避免在無需轉譯的專屬內部 IP 位址空間中將 SNAT 連接埠耗盡。
+**詳細資料** 內部 Load Balancer 不會將輸出起始連線轉譯為內部 負載平衡器的前端，因為這兩者都位於私人 IP 位址空間中。 公用 Load Balancer 提供從虛擬網路內的私人 IP 位址到公用 IP 位址的[輸出連線](load-balancer-outbound-connections.md)。 對於內部 Load Balancer，此方法可避免在無需轉譯的專屬內部 IP 位址空間中將 SNAT 連接埠耗盡。
 
 其副作用是，如果後端集區 VM 的輸出流程嘗試將流量流程至其集區中的內部 Load Balancer 前端，並且對應回本身，則這兩個流程互不相符。 由於兩者不相符，流程將會失敗。 如果流程未對應回後端集區中建立前端流程的相同 VM，流程就會成功。
 

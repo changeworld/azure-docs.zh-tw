@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 04/30/2020
-ms.openlocfilehash: 5593b0d633b133c8a8295634b674218d5e6c6daf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/28/2020
+ms.openlocfilehash: 753d72b31e4f813d0e7abbbd223e050fd3390411
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89485032"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910758"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory 中的資料流程活動
 
@@ -60,8 +60,8 @@ ms.locfileid: "89485032"
 integrationRuntime | 執行資料流程的計算環境。 如果未指定，將會使用自動解析 Azure integration runtime。 | IntegrationRuntimeReference | 否
 compute. coreCount | Spark 叢集中使用的核心數目。 只有在使用自動解析 Azure Integration runtime 時才能指定 | 8、16、32、48、80、144、272 | 否
 compute. computeType | Spark 叢集中使用的計算類型。 只有在使用自動解析 Azure Integration runtime 時才能指定 | "General"、"ComputeOptimized"、"MemoryOptimized" | 否
-暫存. linkedService | 如果您使用 Azure Synapse Analytics 來源或接收，則用於 PolyBase 暫存的儲存體帳戶 | LinkedServiceReference | 只有當資料流程讀取或寫入 Azure Synapse Analytics
-暫存. folderPath | 如果您使用 Azure Synapse Analytics 來源或接收器，則為用於 PolyBase 暫存的 blob 儲存體帳戶中的資料夾路徑 | 字串 | 只有當資料流程讀取或寫入 Azure Synapse Analytics
+暫存. linkedService | 如果您使用 Azure Synapse Analytics 來源或接收，請指定用於 PolyBase 暫存的儲存體帳戶。<br/><br/>如果您的 Azure 儲存體設定了 VNet 服務端點，您必須使用在儲存體帳戶上啟用「允許信任的 Microsoft 服務」的受控識別驗證，請參閱 [使用 VNet 服務端點搭配 Azure 儲存體的影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)。 此外，也會分別瞭解 [Azure Blob](connector-azure-blob-storage.md#managed-identity) 和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) 所需的設定。<br/> | LinkedServiceReference | 只有當資料流程讀取或寫入 Azure Synapse Analytics
+暫存. folderPath | 如果您使用 Azure Synapse Analytics 來源或接收器，則為用於 PolyBase 暫存的 blob 儲存體帳戶中的資料夾路徑 | String | 只有當資料流程讀取或寫入 Azure Synapse Analytics
 
 ![執行資料流程](media/data-flow/activity-data-flow.png "執行資料流程")
 
@@ -116,7 +116,7 @@ Debug 管線會針對使用中的 debug 叢集執行，而不是針對資料流�
 
 ## <a name="monitoring-the-data-flow-activity"></a>監視資料流程活動
 
-資料流程活動具有特殊的監視體驗，您可以在其中查看分割、階段時間和資料歷程資訊。 在 [ **動作**] 底下，透過眼鏡圖示開啟 [監視] 窗格。 如需詳細資訊，請參閱 [監視資料流程](concepts-data-flow-monitoring.md)。
+資料流程活動具有特殊的監視體驗，您可以在其中查看分割、階段時間和資料歷程資訊。 在 [ **動作** ] 底下，透過眼鏡圖示開啟 [監視] 窗格。 如需詳細資訊，請參閱 [監視資料流程](concepts-data-flow-monitoring.md)。
 
 ### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>在後續活動中使用資料流程活動結果
 
@@ -155,7 +155,7 @@ Debug 管線會針對使用中的 debug 叢集執行，而不是針對資料流�
 > [!NOTE]
 > 如果接收的資料列數為零，則不會顯示在計量中。 您可以使用函式來驗證是否存在 `contains` 。 例如， `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` 會檢查是否有任何資料列寫入 sink1。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 請參閱 Data Factory 支援的控制流程活動： 
 

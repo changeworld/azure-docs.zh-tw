@@ -118,10 +118,6 @@
           href: concepts-data-in-replication.md
         - name: 讀取複本
           href: concepts-read-replicas.md
-    - name: 在區域間移動
-      items:
-        - name: Azure 入口網站
-          href: howto-move-regions-portal.md
 - name: 操作指南
   items:
     - name: 管理伺服器
@@ -240,6 +236,10 @@
           href: howto-restart-server-cli.md
         - name: Azure PowerShell
           href: howto-restart-server-powershell.md
+    - name: 在區域間移動
+      items:
+        - name: Azure 入口網站
+          href: howto-move-regions-portal.md
 - name: 參考
   items:
     - name: Azure CLI

@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
-ms.openlocfilehash: 540cdc2948cbcd97bf7c8872f3aace2862280434
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bfa911921e9bacde2649ee8c4f0d4bc31b56f54
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87513484"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910537"
 ---
 # <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share"></a>如何在 Azure Data Share 中將資料集新增至現有的共用
 
@@ -23,13 +23,13 @@ ms.locfileid: "87513484"
 
 在 Azure Data Share 中，流覽至您已傳送的共用，然後選取 [ **資料集** ] 索引標籤。按一下 [ **+ 加入資料集** ] 按鈕，以新增更多資料集。
 
-![新增資料集](./media/how-to/how-to-add-datasets/add-datasets.png)
+![螢幕擷取畫面顯示已選取 [新增資料集]。](./media/how-to/how-to-add-datasets/add-datasets.png)
 
-在右側面板中，選取您要新增的資料集類型，然後按 **[下一步]**。 選取您要新增之資料的訂用帳戶和資源群組。 使用下拉箭號，尋找並選取要加入之資料旁的方塊。
+在右側面板中，選取您要新增的資料集類型，然後按 **[下一步]** 。 選取您要新增之資料的訂用帳戶和資源群組。 使用下拉箭號，尋找並選取要加入之資料旁的方塊。
 
-![新增資料集](./media/how-to/how-to-add-datasets/add-datasets-side.png)
+![螢幕擷取畫面顯示 [新增 Blob 儲存體] 窗格，您可以在其中選取資料。](./media/how-to/how-to-add-datasets/add-datasets-side.png)
 
-一旦您按一下 [ **新增資料集**]，就會將資料集新增至您的共用。 注意：您的取用者必須觸發快照集，才能看到新的資料集。 如果已設定快照集設定，則在下一個排程的快照集完成後，取用者會看到新的資料集。 若未設定快照集設定，取用者必須手動觸發資料的完整或增量複本，才能接收更新。 如需快照集的詳細資訊，請參閱 [快照](terminology.md)集。
+一旦您按一下 [ **新增資料集** ]，就會將資料集新增至您的共用。 注意：您的取用者必須觸發快照集，才能看到新的資料集。 如果已設定快照集設定，則在下一個排程的快照集完成後，取用者會看到新的資料集。 若未設定快照集設定，取用者必須手動觸發資料的完整或增量複本，才能接收更新。 如需快照集的詳細資訊，請參閱 [快照](terminology.md)集。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 深入瞭解如何將收件者 [新增至現有的資料共用](how-to-add-recipients.md)。

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 073f1361771ded96b33158d040efd77306acd846
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 513d98ae274c668197b066c742119055248f37f9
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276931"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911710"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>建立自訂模型的訓練資料集
 
@@ -41,9 +41,9 @@ ms.locfileid: "91276931"
 
 ## <a name="upload-your-training-data"></a>上傳定型資料
 
-當您將用於定型的一組表單檔彙集在一起時，您需要將它上傳至 Azure blob 儲存體容器。 如果您不知道如何使用容器建立 Azure 儲存體帳戶，請遵循 [Azure 入口網站的 Azure 儲存體快速入門](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。 使用標準效能層級。
+當您將用於定型的一組表單檔彙集在一起時，您需要將它上傳至 Azure blob 儲存體容器。 如果您不知道如何使用容器建立 Azure 儲存體帳戶，請遵循 [Azure 入口網站的 Azure 儲存體快速入門](../../storage/blobs/storage-quickstart-blobs-portal.md)。 使用標準效能層級。
 
-如果您想要使用手動加上標籤的資料，您也必須上傳 *.labels.json* ，並.ocr.js對應至訓練檔的檔案 * 上* 。 您可以使用 [範例標籤工具](./quickstarts/label-tool.md) (或您自己的 UI) 來產生這些檔案。
+如果您想要使用手動加上標籤的資料，您也必須上傳 *.labels.json* ，並.ocr.js對應至訓練檔的檔案 *上* 。 您可以使用 [範例標籤工具](./quickstarts/label-tool.md) (或您自己的 UI) 來產生這些檔案。
 
 ### <a name="organize-your-data-in-subfolders-optional"></a>在子資料夾中組織您的資料 (選擇性) 
 
@@ -68,7 +68,7 @@ ms.locfileid: "91276931"
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 現在您已瞭解如何建立訓練資料集，接下來請遵循快速入門來訓練自訂表單辨識器模型，並開始在您的表單上使用它。
 

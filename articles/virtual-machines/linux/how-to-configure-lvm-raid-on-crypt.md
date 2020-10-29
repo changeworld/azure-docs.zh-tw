@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: b65c37ab06092be63cbb2ad9fb5e23cdb8324e80
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c8ffe78e885eedd84c4cf6948954a7d3477a5cff
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476156"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911812"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>設定加密裝置上的 LVM 和 RAID
 
@@ -42,7 +42,7 @@ ms.locfileid: "92476156"
 
 以類似的方式，會在磁片上的加密層級上建立 RAID 裝置。 系統會在 RAID 裝置上建立檔案系統，並新增至/etc/fstab 作為一般裝置。
 
-## <a name="considerations"></a>考量
+## <a name="considerations"></a>考量事項
 
 我們建議您在 crypt 上使用 LVM。 當 LVM 因為特定的應用程式或環境限制而無法使用時，可以選擇使用 RAID。
 
@@ -287,7 +287,7 @@ cat /etc/fstab
 
 ### <a name="configure-lvm-on-top-of-the-encrypted-layers"></a>在加密層級上設定 LVM
 #### <a name="create-the-physical-volumes"></a>建立實體磁片區
-您會收到一則警告，詢問您是否確定要清除檔案系統簽章。 輸入 **y**以繼續，或使用 **echo "y"** ，如下所示：
+您會收到一則警告，詢問您是否確定要清除檔案系統簽章。 輸入 **y** 以繼續，或使用 **echo "y"** ，如下所示：
 
 ```bash
 echo "y" | pvcreate /dev/mapper/c49ff535-1df9-45ad-9dad-f0846509f052
@@ -298,7 +298,7 @@ echo "y" | pvcreate /dev/mapper/4159c60a-a546-455b-985f-92865d51158c
 ![確認已建立實體磁片區](./media/disk-encryption/lvm-raid-on-crypt/014-lvm-raid-pvcreate.png)
 
 >[!NOTE] 
->您必須根據 **lsblk**的輸出，將此處的/dev/mapper/device 名稱取代為實際值。
+>您必須根據 **lsblk** 的輸出，將此處的/dev/mapper/device 名稱取代為實際值。
 
 #### <a name="verify-the-information-for-physical-volumes"></a>驗證實體磁片區的資訊
 ```bash
@@ -368,9 +368,9 @@ mount -a
 lsblk -fs
 df -h
 ```
-![已掛接檔案系統的資訊](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
+![螢幕擷取畫面顯示已將檔案系統掛接為 data0 和 data1 的主控台視窗。](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
 
-在這種 **lsblk**變化下，我們會列出以相反順序顯示相依性的裝置。 此選項有助於識別依邏輯磁片區分組的裝置，而不是原始的/dev/sd [磁片] 裝置名稱。
+在這種 **lsblk** 變化下，我們會列出以相反順序顯示相依性的裝置。 此選項有助於識別依邏輯磁片區分組的裝置，而不是原始的/dev/sd [磁片] 裝置名稱。
 
 請務必確定 **nofail** 選項已新增至在裝置上建立的 LVM 磁片區的掛接點選項，該磁片區是透過 Azure 磁碟加密加密的裝置上所建立。 它可防止作業系統在開機程式期間停滯 (或處於維護模式) 。
 
@@ -406,7 +406,7 @@ mdadm --create /dev/md10 \
 ![透過 mdadm 命令設定 RAID 的資訊](./media/disk-encryption/lvm-raid-on-crypt/019-lvm-raid-md-creation.png)
 
 >[!NOTE] 
->此處的/dev/mapper/device 名稱必須以您的實際值取代，並以 **lsblk**的輸出為基礎。
+>此處的/dev/mapper/device 名稱必須以您的實際值取代，並以 **lsblk** 的輸出為基礎。
 
 ### <a name="checkmonitor-raid-creation"></a>檢查/監視 RAID 建立
 ```bash
@@ -437,7 +437,7 @@ done
 lsblk -fs
 df -h
 ```
-![已掛接檔案系統的資訊](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
+![螢幕擷取畫面顯示將檔案系統掛接為 raiddata 的主控台視窗。](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
 
 請務必確定 **nofail** 選項已新增至在裝置上所建立之 RAID 磁片區的掛接點選項，該磁片區是透過 Azure 磁碟加密加密的裝置上所建立。 它可防止作業系統在開機程式期間停滯 (或處於維護模式) 。
 
@@ -458,7 +458,7 @@ shutdown -r now
 lsblk
 df -h
 ```
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [調整以 Azure 磁碟加密加密的邏輯磁片區管理裝置大小](how-to-resize-encrypted-lvm.md)
 - [Azure 磁碟加密的疑難排解](disk-encryption-troubleshooting.md)
