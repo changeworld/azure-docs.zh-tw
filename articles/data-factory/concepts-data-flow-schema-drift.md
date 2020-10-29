@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: 5edea4b3d3834d8f99159546c0279394ec3986f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11ddb2f40ee56b51c5ecbae11465093abb8e4feb
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324343"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027477"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>對應資料流程中的架構漂移
 
@@ -43,7 +43,7 @@ Azure Data Factory 原本就支援從執行變更為執行的彈性架構，如�
 
 ![架構漂移來源](media/data-flow/schemadrift001.png "架構漂移來源")
 
-啟用架構漂移時，在執行期間會從來源讀取所有傳入的欄位，並將整個流程傳遞至接收。 根據預設，所有新偵測到的資料行（稱為 *漂移資料行*）都會抵達為字串資料類型。 如果您希望資料流程自動推斷漂移資料行的資料類型，請在來源設定中檢查 **推斷漂移資料行類型** 。
+啟用架構漂移時，在執行期間會從來源讀取所有傳入的欄位，並將整個流程傳遞至接收。 根據預設，所有新偵測到的資料行（稱為 *漂移資料行* ）都會抵達為字串資料類型。 如果您希望資料流程自動推斷漂移資料行的資料類型，請在來源設定中檢查 **推斷漂移資料行類型** 。
 
 ## <a name="schema-drift-in-sink"></a>接收中的架構漂移
 
@@ -69,11 +69,11 @@ Azure Data Factory 原本就支援從執行變更為執行的彈性架構，如�
 
 若要明確地參考漂移資料行，您可以透過資料預覽快速動作，快速產生這些資料行的對應。 開啟 [偵錯工具模式](concepts-data-flow-debug-mode.md) 之後，請移至 [資料預覽] 索引標籤， **然後按一下 [** 重新整理] 以提取資料預覽。 如果 data factory 偵測到漂移資料行存在，您可以按一下 [ **地圖漂移** ] 並產生衍生的資料行，讓您在下游的架構視圖中參考所有漂移資料行。
 
-![地圖漂移](media/data-flow/mapdrifted1.png "地圖漂移")
+![螢幕擷取畫面顯示已呼叫 Map 漂移的 [資料預覽] 索引標籤。](media/data-flow/mapdrifted1.png "地圖漂移")
 
 在產生的「衍生的資料行」轉換中，每個漂移資料行都會對應至其偵測到的名稱和資料類型。 在上述的資料預覽中，會將資料行 ' movieId ' 偵測為整數。 按一下 **Map 漂移** 之後，movieId 會定義在衍生的資料行中， `toInteger(byName('movieId'))` 並包含在下游轉換的架構視圖中。
 
-![地圖漂移](media/data-flow/mapdrifted2.png "地圖漂移")
+![螢幕擷取畫面：顯示衍生資料行的 [設定] 索引標籤。](media/data-flow/mapdrifted2.png "地圖漂移")
 
 ## <a name="next-steps"></a>後續步驟
 在 [資料流程運算式語言](data-flow-expression-functions.md)中，您可以找到資料行模式和架構漂移的額外功能，包括 "byName" 和 "byPosition"。

@@ -3,12 +3,12 @@ title: ACR 工作概觀
 description: ACR 工作的簡介，這是 Azure Container Registry 中的一組功能，可在雲端提供安全、自動化的容器映射組建、管理及修補。
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: 24cc0415fe8756e900a8ea0ce7039f6b4710cf6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14758e363e74450a10f1a2cbfc889f3e24782771
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89488638"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027661"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>使用 ACR 工作自動化容器映射組建和維護
 
@@ -16,7 +16,7 @@ ms.locfileid: "89488638"
 
 ## <a name="what-is-acr-tasks"></a>什麼是 ACR 工作？
 
-「ACR 工作」**** 是 Azure Container Registry 內的一套功能。 它提供以雲端為基礎的容器映射，適用于 [平臺](#image-platforms) （包括 Linux、WINDOWS 和 ARM），並可將 Docker 容器的 [作業系統和架構修補](#automate-os-and-framework-patching) 自動化。 ACR 工作不僅會使用隨需容器映射組建將您的「內部迴圈」開發週期延伸至雲端，還可讓您透過原始程式碼更新、容器的基底映射更新或計時器來觸發自動化的組建。 例如，使用基底映射更新觸發程式，您可以將作業系統和應用程式架構修補工作流程自動化，以維護安全的環境，同時遵守不可變容器的原則。
+「ACR 工作」  是 Azure Container Registry 內的一套功能。 它提供以雲端為基礎的容器映射，適用于 [平臺](#image-platforms) （包括 Linux、WINDOWS 和 ARM），並可將 Docker 容器的 [作業系統和架構修補](#automate-os-and-framework-patching) 自動化。 ACR 工作不僅會使用隨需容器映射組建將您的「內部迴圈」開發週期延伸至雲端，還可讓您透過原始程式碼更新、容器的基底映射更新或計時器來觸發自動化的組建。 例如，使用基底映射更新觸發程式，您可以將作業系統和應用程式架構修補工作流程自動化，以維護安全的環境，同時遵守不可變容器的原則。
 
 ## <a name="task-scenarios"></a>工作案例
 
@@ -70,7 +70,7 @@ Azure CLI 中的 [az acr build][az-acr-build]命令會使用熟悉的 `docker bu
 
 ## <a name="automate-os-and-framework-patching"></a>自動進行作業系統和架構修補
 
-真正增強容器組建工作流程的 ACR 工作功能，來自于偵測 *基底映射*更新的能力。 大部分容器映射的功能，基底映射是一個或多個應用程式映射所依據的父映射。 基底映射通常包含作業系統，有時也包含應用程式架構。 
+真正增強容器組建工作流程的 ACR 工作功能，來自于偵測 *基底映射* 更新的能力。 大部分容器映射的功能，基底映射是一個或多個應用程式映射所依據的父映射。 基底映射通常包含作業系統，有時也包含應用程式架構。 
 
 您可以設定 ACR 工作，以在建立應用程式映射時追蹤基底映射的相依性。 當更新的基底映射推送至您的登錄，或在公用存放庫中更新基底映射（例如 Docker Hub）時，ACR 工作可以根據它自動建立任何應用程式映射。
 透過這個自動偵測和重建功能，「ACR 工作」便可讓您針對參考已更新之基底映像的每個應用程式映像，省下手動追蹤及更新通常所需的時間與精力。
@@ -138,10 +138,6 @@ Azure CLI 中的 [az acr build][az-acr-build]命令會使用熟悉的 `docker bu
 您可以選擇性地安裝[適用於 Visual Studio Code 的 Docker 擴充功能](https://code.visualstudio.com/docs/azure/docker)和 [Azure 帳戶](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)擴充功能，來搭配 Azure 容器登錄使用。 向 Azure 容器登錄提取及推送映像，或是執行 ACR 工作，都可以在 Visual Studio Code 內完成。
 
 <!-- LINKS - External -->
-[base-alpine]: https://hub.docker.com/_/alpine/
-[base-dotnet]: https://hub.docker.com/r/microsoft/dotnet/
-[base-node]: https://hub.docker.com/_/node/
-[base-windows]: https://hub.docker.com/r/microsoft/nanoserver/
 [sample-archive]: https://github.com/Azure-Samples/acr-build-helloworld-node/archive/master.zip
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 

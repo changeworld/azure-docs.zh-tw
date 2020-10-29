@@ -1,0 +1,59 @@
+### YamlMime:Landing
+title: Azure DDoS 保護標準文件
+summary: 了解 Azure DDoS 保護標準與應用程式設計最佳做法結合後，如何提供對 DDoS 攻擊的防禦。
+metadata:
+  description: 了解 Azure DDoS 保護標準與應用程式設計最佳做法結合後，如何提供對 DDoS 攻擊的防禦。
+  keywords: azure ddos protection standard
+  author: yitoh
+  ms.author: yitoh
+  ms.date: 09/04/2019
+  ms.service: ddos-protection
+  ms.topic: landing-page
+  ms.custom: azure-ddos-protection
+  ms.openlocfilehash: cfc0a8c4856711c4f011805322e2b28942866573
+  ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 10/28/2020
+  ms.locfileid: "92904697"
+landingContent:
+- title: 了解 Azure DDoS 保護標準
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是 Azure DDoS 保護標準？
+      url: ddos-protection-overview.md
+  - linkListType: architecture
+    links:
+    - text: Azure DDoS 保護標準功能
+      url: ddos-protection-standard-features.md
+    - text: 參考架構
+      url: ddos-protection-reference-architectures.md
+- title: 開始使用
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 建立 DDoS 保護計劃 - 入口網站
+      url: manage-ddos-protection.md
+- title: 設定攻擊分析
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 檢視和設定 DDoS 保護遙測
+      url: telemetry-monitoring-alerting.md
+    - text: 設定 DDoS 攻擊風險降低報告和流量記錄
+      url: reports-and-flow-logs.md
+- title: 回應 DDoS 攻擊
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 攻擊類型
+      url: types-of-attacks.md
+    - text: 基本的最佳做法
+      url: fundamental-best-practices.md
+    - text: DDoS 回應策略的元件
+      url: ddos-response-strategy.md
+  - linkListType: how-to-guide
+    links:
+    - text: 參與 DDoS 快速回應 (DRR)
+      url: ddos-rapid-response.md

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: e00ab059c68d7a3f2288d94894199773cab63ac5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ae5908fe3ab95dcd62da976988bd7ce107217e5
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86039291"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027370"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>將來自 SQL Database 的參考資料用於 Azure 串流分析作業
 
@@ -109,7 +109,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
    ![Visual Studio 中的輸入程式碼後置](./media/sql-reference-data/once-or-periodically-codebehind.png)
 
-   如果您選擇 [搭配差異定期重新整理]，系統會產生兩個 SQL 程式碼後置檔案： **[Input Alias].snapshot.sql** 和 **[Input Alias].delta.sql**。
+   如果您選擇 [搭配差異定期重新整理]，系統會產生兩個 SQL 程式碼後置檔案： **[Input Alias].snapshot.sql** 和 **[Input Alias].delta.sql** 。
 
    ![方案總管中的程式碼後置](./media/sql-reference-data/periodically-delta-codebehind.png)
 
@@ -147,7 +147,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
    ```
 2. 撰寫快照集查詢。 
 
-   使用** \@ snapshotTime**參數來指示串流分析執行時間，從在系統時間有效的 SQL Database 時態表中取得參考資料集。 如果您不提供此參數，則可能會因時鐘誤差而取得不正確的基底參考資料集。 完整快照集查詢的範例如下所示：
+   使用 **\@ snapshotTime** 參數來指示串流分析執行時間，從在系統時間有效的 SQL Database 時態表中取得參考資料集。 如果您不提供此參數，則可能會因時鐘誤差而取得不正確的基底參考資料集。 完整快照集查詢的範例如下所示：
    ```SQL
       SELECT DeviceId, GroupDeviceId, [Description]
       FROM dbo.DeviceTemporal
@@ -156,7 +156,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
  
 2. 撰寫差異查詢。 
    
-   此查詢會抓取在開始時間、 ** \@ deltaStartTime**和結束時間** \@ deltaEndTime**中插入或刪除之 SQL Database 中的所有資料列。 差異查詢必須傳回和快照集查詢相同的資料行，以集 **_operation_** 資料行。 此資料行會定義資料列是否是在 **\@deltaStartTime** 和 **\@deltaEndTime** 之間插入或刪除。 如果記錄已插入，結果的資料列會被標示為 **1**；如果已刪除，則會被標示為 **2**。 查詢也必須新增來自 SQL Server 端的**浮水印**，以確保系統能適當地擷取差異期間中的所有更新。 在沒有**浮水印**的情況下使用差異查詢，可能會導致不正確的參考資料集。  
+   此查詢會抓取在開始時間、 **\@ deltaStartTime** 和結束時間 **\@ deltaEndTime** 中插入或刪除之 SQL Database 中的所有資料列。 差異查詢必須傳回和快照集查詢相同的資料行，以集 **_operation_** 資料行。 此資料行會定義資料列是否是在 **\@deltaStartTime** 和 **\@deltaEndTime** 之間插入或刪除。 如果記錄已插入，結果的資料列會被標示為 **1** ；如果已刪除，則會被標示為 **2** 。 查詢也必須新增來自 SQL Server 端的 **浮水印** ，以確保系統能適當地擷取差異期間中的所有更新。 在沒有 **浮水印** 的情況下使用差異查詢，可能會導致不正確的參考資料集。  
 
    針對已更新的記錄，時態表會透過擷取插入和刪除作業來進行記錄。 串流分析執行階段接著便會將差異查詢的結果套用到先前的快照集，以將參考資料保持為最新狀態。 差異查詢的範例如下所示：
 
@@ -174,6 +174,35 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 ## <a name="test-your-query"></a>測試查詢
    請務必確認您的查詢會傳回串流分析作業將作為參考資料使用的預期資料集。 若要測試查詢，請移至入口網站上 [工作拓撲] 區段底下的 [輸入]。 您接著可以選取您 SQL Database 參考輸入上的 [範例資料]。 在範例可供使用之後，您便可以下載該檔案，並檢查傳回的資料是否與預期一致。 如果您想要將開發和測試反覆項目最佳化，建議您使用[適用於 Visual Studio 的串流分析工具](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install) \(部分機器翻譯\)。 您也可以使用您偏好的任何其他工具，來先確認查詢能從 Azure SQL Database 傳回正確的結果，再將其用於您的串流分析作業。 
+
+### <a name="test-your-query-with-visual-studio-code"></a>使用 Visual Studio Code 測試您的查詢
+
+   在 Visual Studio Code 上安裝 [Azure 串流分析工具](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) 和 [SQL Server (mssql) ](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) ，並設定 ASA 專案。 如需詳細資訊，請參閱 [快速入門：在 Visual Studio Code 中建立 Azure 串流分析作業](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code) ，以及 [SQL Server (mssql) 延伸模組教學](https://aka.ms/mssql-getting-started)課程。
+
+1. 設定您的 SQL 參考資料輸入。
+   
+   ![設定 SQL 參考資料輸入](./media/sql-reference-data/configure-sql-reference-data-input.png)
+
+2. 選取 SQL Server 圖示，然後按一下 [ **新增連接** ]。
+   
+   ![按一下 SQL Server 圖示，然後按一下 [新增連接]](./media/sql-reference-data/add-sql-connection.png)
+
+3. 填寫連接資訊。
+   
+   ![Visual Studio 中的串流分析輸入設定](./media/sql-reference-data/fill-connection-information.png)
+
+4. 以滑鼠右鍵按一下 [參考 SQL]，然後選取 [ **執行查詢** ]。
+   
+   ![Visual Studio 中的串流分析輸入設定](./media/sql-reference-data/execute-query.png)
+
+5. 選擇您的連接。
+   
+   ![Visual Studio 中的串流分析輸入設定](./media/sql-reference-data/choose-connection.png)
+
+6. 檢查並驗證您的查詢結果。
+   
+   ![Visual Studio 中的串流分析輸入設定](./media/sql-reference-data/verify-result.png)
+
 
 ## <a name="faqs"></a>常見問題集
 

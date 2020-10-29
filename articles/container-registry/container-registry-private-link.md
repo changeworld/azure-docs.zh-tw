@@ -3,12 +3,12 @@ title: 設定私人連結
 description: 在容器登錄上設定私人端點，並透過本機虛擬網路中的私人連結來啟用存取。 Private link 存取是 Premium 服務層級的功能。
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 6bea4b2a6bedeac9dd0ff36631ba46adf4be4f8f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d5193efc1b1def2dc51411630ab6a2305d369cf4
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148485"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026117"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>使用 Azure Private Link 私下連接到 Azure container registry
 
@@ -17,14 +17,14 @@ ms.locfileid: "92148485"
 
 您可以設定登錄私人端點的 [DNS 設定](../private-link/private-endpoint-overview.md#dns-configuration) ，讓設定解析為登錄的已配置私人 IP 位址。 透過 DNS 組態，網路中的用戶端和服務可繼續以登錄的完整網域名稱 (例如 myregistry.azurecr.io) 來存取登錄。 
 
-**進階**容器登錄服務層級中提供這項功能。 目前，最多可以為登錄設定10個私人端點。 如需登錄服務層級和限制的相關資訊，請參閱 [Azure 容器登錄層級](container-registry-skus.md)。
+**進階** 容器登錄服務層級中提供這項功能。 目前，最多可以為登錄設定10個私人端點。 如需登錄服務層級和限制的相關資訊，請參閱 [Azure 容器登錄層級](container-registry-skus.md)。
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * 若要使用本文中的 Azure CLI 步驟，建議使用 Azure CLI 2.6.0 版或更新版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli]。 或在 [Azure Cloud Shell](../cloud-shell/quickstart.md) 中執行。
-* 如果您還沒有容器登錄，請建立一個 (需要進階層級)，然後[匯入](container-registry-import-images.md)範例映像，例如 Docker Hub 中的 `hello-world`。 例如，使用 [Azure 入口網站][quickstart-portal]或 [Azure CLI][quickstart-cli] 來建立登錄。
+* 如果您還沒有容器登錄，請建立一個 (進階層) ，然後[import](container-registry-import-images.md) `mcr.microsoft.com/hello-world` 從 Microsoft container registry 匯入範例公用映射。 例如，使用 [Azure 入口網站][quickstart-portal]或 [Azure CLI][quickstart-cli] 來建立登錄。
 * 若要使用不同 Azure 訂用帳戶中的私人連結來設定登錄存取，您必須在該訂用帳戶中註冊 Azure Container Registry 的資源提供者。 例如：
 
   ```azurecli
@@ -50,7 +50,7 @@ VM_NAME=<virtual-machine-name>
 
 如果您還沒有這些項目，將需要虛擬網路和子網路的名稱，才能設定私人連結。 在此範例中，您會對 VM 和登錄的私人端點使用相同的子網路。 不過，在許多情況下，您會在不同的子網路中設定端點。 
 
-當您建立 VM 時，Azure 預設會在相同的資源群組中建立虛擬網路。 虛擬網路的名稱是以虛擬機器的名稱為基礎。 例如，如果您將虛擬機器命名為 *myDockerVM*，預設的虛擬網路名稱會是 *myDockerVMVNET*，子網路名為 *myDockerVMSubnet*。 藉由執行 [az network vnet list][az-network-vnet-list] 命令，在環境變數中設定這些值：
+當您建立 VM 時，Azure 預設會在相同的資源群組中建立虛擬網路。 虛擬網路的名稱是以虛擬機器的名稱為基礎。 例如，如果您將虛擬機器命名為 *myDockerVM* ，預設的虛擬網路名稱會是 *myDockerVMVNET* ，子網路名為 *myDockerVMSubnet* 。 藉由執行 [az network vnet list][az-network-vnet-list] 命令，在環境變數中設定這些值：
 
 ```azurecli
 NETWORK_NAME=$(az network vnet list \
@@ -81,7 +81,7 @@ az network vnet subnet update \
 
 建立私人 Azure container registry 網域的 [私人 DNS 區域](../dns/private-dns-privatednszone.md) 。 在後續步驟中，您會在此 DNS 區域中建立登錄網域的 DNS 記錄。
 
-若要使用私人區域來覆寫 Azure Container Registry 的預設 DNS 解析，區域必須命名為 **privatelink.azurecr.io**。 執行下列 [az network private-dns zone create][az-network-private-dns-zone-create] 命令以建立私人區域：
+若要使用私人區域來覆寫 Azure Container Registry 的預設 DNS 解析，區域必須命名為 **privatelink.azurecr.io** 。 執行下列 [az network private-dns zone create][az-network-private-dns-zone-create] 命令以建立私人區域：
 
 ```azurecli
 az network private-dns zone create \
@@ -249,7 +249,7 @@ az network private-dns record-set a add-record \
     | ------- | ----- |
     |連線方法  | 選取 [連線到我目錄中的 Azure 資源]。|
     | 訂用帳戶| 選取您的訂用帳戶。 |
-    | 資源類型 | 選取 **Microsoft.ContainerRegistry/registries**。 |
+    | 資源類型 | 選取 **Microsoft.ContainerRegistry/registries** 。 |
     | 資源 |選取您登錄的名稱|
     |目標子資源 |選取 [登錄]|
     |||

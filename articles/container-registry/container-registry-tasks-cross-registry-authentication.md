@@ -3,12 +3,12 @@ title: 從 ACR 工作進行跨登錄驗證
 description: 使用 Azure 資源的受控識別來設定 Azure Container Registry 工作 (ACR 工作)，以存取另一個私人 Azure 容器登錄
 ms.topic: article
 ms.date: 07/06/2020
-ms.openlocfilehash: 8b961a2ff6a795f03798cc6f6a7d303391036ef8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a460102eafa5c1eda2f37330887d985387d5df5
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86057345"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026253"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>在 ACR 工作中使用 Azure 受控識別進行跨登錄驗證 
 
@@ -39,16 +39,12 @@ ms.locfileid: "86057345"
 
 ## <a name="prepare-base-registry"></a>準備基礎登錄
 
-請先建立工作目錄，然後使用下列內容建立名為 Dockerfile 的檔案。 這個簡易範例會從 Docker Hub 中的公用映像建置 Node.js 基礎映像。
-    
-```bash
-echo FROM node:9-alpine > Dockerfile
-```
+基於示範目的，請執行 [az acr import] [az-acr-import]，將公用 Node.js 映射從 Docker Hub 匯入至您的基底登錄。 在實務上，組織中的另一個小組或流程可能會在基底登錄中維護映射。
 
-在目前的目錄中，執行 [az acr build][az-acr-build] 命令，以建置基礎映像並將其推送至基礎登錄。 實際上，組織中的另一個小組或程序可能會維護基礎登錄。
-    
 ```azurecli
-az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file Dockerfile .
+az acr import --name mybaseregistry \
+  --source docker.io/library/node:9-alpine \
+  --image baseimages/node:9-alpine 
 ```
 
 ## <a name="define-task-steps-in-yaml-file"></a>定義 YAML 檔案中的工作步驟

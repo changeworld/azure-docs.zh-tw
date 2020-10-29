@@ -3,12 +3,12 @@ title: 使用服務端點來限制存取
 description: 使用 Azure 虛擬網路中的服務端點來限制對 Azure container registry 的存取。 服務端點存取是 Premium 服務層級的功能。
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 3472549827781c6ed2f6be0417866747c81edd93
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 5f9bc7c9a6c8f2061765510a6396611502fd4a2a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215496"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026219"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>使用 Azure 虛擬網路中的服務端點來限制對容器登錄的存取
 
@@ -19,7 +19,7 @@ ms.locfileid: "92215496"
 > [!IMPORTANT]
 > Azure Container Registry 現在支援 [Azure Private Link](container-registry-private-link.md)，可讓虛擬網路中的私人端點放在登錄上。 您可以使用私人 IP 位址，從虛擬網路內部存取私人端點。 在大部分的網路案例中，建議您使用私人端點而非服務端點。
 
-您可以在**進階**容器登錄服務層級中設定登錄服務端點。 如需登錄服務層級和限制的相關資訊，請參閱 [Azure Container Registry 服務層級](container-registry-skus.md)。
+您可以在 **進階** 容器登錄服務層級中設定登錄服務端點。 如需登錄服務層級和限制的相關資訊，請參閱 [Azure Container Registry 服務層級](container-registry-skus.md)。
 
 ## <a name="preview-limitations"></a>預覽限制
 
@@ -53,7 +53,7 @@ ms.locfileid: "92215496"
 
 ### <a name="add-a-service-endpoint-to-a-subnet"></a>將服務端點新增至子網路
 
-當您建立 VM 時，Azure 預設會在相同的資源群組中建立虛擬網路。 虛擬網路的名稱是以虛擬機器的名稱為基礎。 例如，如果您將虛擬機器命名為 *myDockerVM*，預設的虛擬網路名稱會是 *myDockerVMVNET*，子網路名為 *myDockerVMSubnet*。 使用 [az network vnet list][az-network-vnet-list] 命令來確認這一點：
+當您建立 VM 時，Azure 預設會在相同的資源群組中建立虛擬網路。 虛擬網路的名稱是以虛擬機器的名稱為基礎。 例如，如果您將虛擬機器命名為 *myDockerVM* ，預設的虛擬網路名稱會是 *myDockerVMVNET* ，子網路名為 *myDockerVMSubnet* 。 使用 [az network vnet list][az-network-vnet-list] 命令來確認這一點：
 
 ```azurecli
 az network vnet list \
@@ -189,7 +189,6 @@ az group delete --name myResourceGroup
 
 
 <!-- LINKS - External -->
-[aci-helloworld]: https://hub.docker.com/r/microsoft/aci-helloworld/
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

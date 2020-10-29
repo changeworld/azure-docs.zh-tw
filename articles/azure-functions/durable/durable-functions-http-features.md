@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 4f84ccbddc6f5244ac8f4334b716d770e0ed4afc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64d40de50f21811a56318971de1836abc8fbf8c9
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328916"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027256"
 ---
 # <a name="http-features"></a>HTTP 功能
 
@@ -57,7 +57,7 @@ Durable Functions 擴充功能會自動將一組 HTTP Api 新增至 Azure Functi
 
 # <a name="python"></a>[Python](#tab/python)
 
-**__ __.py**
+ .py**
 
 ```python
 import logging
@@ -140,7 +140,7 @@ Retry-After: 10
 
 ### <a name="async-operation-tracking"></a>非同步作業追蹤
 
-先前所述之 HTTP 回應的設計目的，是協助搭配長期函式實作長時間執行 HTTP 非同步 API。 此模式有時稱為 *輪詢取用者模式*。 用戶端/伺服器流量運作方式如下：
+先前所述之 HTTP 回應的設計目的，是協助搭配長期函式實作長時間執行 HTTP 非同步 API。 此模式有時稱為 *輪詢取用者模式* 。 用戶端/伺服器流量運作方式如下：
 
 1. 用戶端會發出 HTTP 要求，以啟動長時間執行的進程，例如協調器函式。
 1. 目標 HTTP 觸發程式會傳回具有值為 "statusQueryGetUri" 之位置標頭的 HTTP 202 回應。
@@ -304,7 +304,7 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 
     # get a list of the Azure subscriptions that I have access to
     restart_response = yield context.call_http("POST", 
-        f"https://management.azure.com/subscriptions/${subscription_id}/resourceGroups/${resource_group}/providers/Microsoft.Compute/virtualMachines/${vm_name}/restart?api-version=${api_version}",
+        f"https://management.azure.com/subscriptions/{subscription_id}/resourceGroups/{resource_group}/providers/Microsoft.Compute/virtualMachines/{vm_name}/restart?api-version={api_version}",
         None,
         None,
         token_source)

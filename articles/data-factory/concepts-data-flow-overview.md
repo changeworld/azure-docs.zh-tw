@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 09/02/2020
-ms.openlocfilehash: 7d73d832f96d087964c46c6c735c0385832c08db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32f1602c91d17ef2ad3283d4bc03d00d432641aa
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91370907"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027596"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>對應 Azure Data Factory 中的資料流程
 
@@ -27,7 +27,7 @@ ms.locfileid: "91370907"
 
 ## <a name="getting-started"></a>開始使用
 
-資料流程是從管線和資料集等工廠資源窗格建立的。 若要建立資料流程，請選取 [ **Factory 資源**] 旁的加號，然後選取 [**資料流程]。** 
+資料流程是從管線和資料集等工廠資源窗格建立的。 若要建立資料流程，請選取 [ **Factory 資源** ] 旁的加號，然後選取 [ **資料流程]。** 
 
 ![新增資料流程](media/data-flow/new-data-flow.png "新增資料流程")
 
@@ -37,13 +37,13 @@ ms.locfileid: "91370907"
 
 對應資料流程有獨特的撰寫畫布，其設計目的是讓建立轉換邏輯變得更容易。 資料流程畫布分為三個部分：頂端列、圖形和設定面板。 
 
-![畫布](media/data-flow/canvas1.png "畫布")
+![螢幕擷取畫面顯示已標示頂端橫條圖、圖形和設定面板的資料流程畫布。](media/data-flow/canvas1.png "畫布")
 
 ### <a name="graph"></a>圖形
 
-圖形會顯示轉換資料流程。 它會顯示來源資料流入一或多個接收時的歷程。 若要加入新的來源，請選取 [ **新增來源**]。 若要加入新的轉換，請選取現有轉換右下角的加號。 深入瞭解如何 [管理資料流程圖形](concepts-data-flow-manage-graph.md)。
+圖形會顯示轉換資料流程。 它會顯示來源資料流入一或多個接收時的歷程。 若要加入新的來源，請選取 [ **新增來源** ]。 若要加入新的轉換，請選取現有轉換右下角的加號。 深入瞭解如何 [管理資料流程圖形](concepts-data-flow-manage-graph.md)。
 
-![畫布](media/data-flow/canvas2.png "畫布")
+![螢幕擷取畫面顯示畫布的圖形元件，其中包含 [搜尋] 文字方塊。](media/data-flow/canvas2.png "畫布")
 
 ### <a name="configuration-panel"></a>Configuration 面板
 
@@ -131,7 +131,7 @@ Azure Data Factory 小組已建立 [效能微調指南](concepts-data-flow-perfo
 | 南韓中部 | ✓ |  |
 | 南韓南部 | | |
 | 美國中北部  | ✓ | ✓ |
-| 北歐  | ✓ |    |
+| 歐洲北部  | ✓ |    |
 | 挪威東部 | | |
 | 挪威西部 | | |
 | 南非北部    | ✓ | |

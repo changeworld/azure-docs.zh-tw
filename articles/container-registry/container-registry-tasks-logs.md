@@ -3,12 +3,12 @@ title: 查看工作執行記錄-工作
 description: 如何查看和管理 ACR 工作所產生的執行記錄。
 ms.topic: article
 ms.date: 03/09/2020
-ms.openlocfilehash: f7098f470a3f8a0cdac019f4bf8eb8fe14330337
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2a10d4a3a2746acf38445673af994c6317c77de
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91871927"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027171"
 ---
 # <a name="view-and-manage-task-run-logs"></a>查看和管理工作執行記錄
 
@@ -65,14 +65,14 @@ Azure Container Registry 會儲存所有工作的執行記錄。 您可以在 Az
 若要在入口網站中查看執行記錄：
 
 1. 瀏覽至您的容器登錄。
-1. 在 [**服務**] 中 **，選取 [** 工作  >  **執行**]。
+1. 在 [ **服務** ] 中 **，選取 [** 工作  >  **執行** ]。
 1. 選取 **執行識別碼** 以查看執行狀態和執行記錄。 記錄檔包含與資料流程處理的記錄檔相同的資訊（如果有產生的話）。
 
 ![View task run login portal](./media/container-registry-tasks-logs/portal-task-run-logs.png)
 
 若要使用 Azure CLI 來查看記錄，請執行 [az acr task logs](/cli/azure/acr/task#az-acr-task-logs) ，並指定執行識別碼、工作名稱或由組建工作建立的特定映射。 如果指定了工作名稱，命令就會顯示上次建立之執行的記錄檔。
 
-下列範例會輸出執行識別碼 *cf4*的記錄檔：
+下列範例會輸出執行識別碼 *cf4* 的記錄檔：
 
 ```azurecli
 az acr task logs --registry mycontainerregistry1220 \
@@ -94,18 +94,10 @@ az acr task logs --registry mycontainerregistry1220 \
 
 您也可以將本機記錄檔儲存至 Azure 儲存體。 例如，使用 [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md)、 [Azure 入口網站](../storage/blobs/storage-quickstart-blobs-portal.md)或其他方法，將檔案上傳至儲存體帳戶。
 
-
 ## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解 [Azure Container Registry 工作](container-registry-tasks-overview.md)
 
-<!-- LINKS - External -->
-[base-alpine]: https://hub.docker.com/_/alpine/
-[base-dotnet]: https://hub.docker.com/r/microsoft/dotnet/
-[base-node]: https://hub.docker.com/_/node/
-[base-windows]: https://hub.docker.com/r/microsoft/nanoserver/
-[sample-archive]: https://github.com/Azure-Samples/acr-build-helloworld-node/archive/master.zip
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli

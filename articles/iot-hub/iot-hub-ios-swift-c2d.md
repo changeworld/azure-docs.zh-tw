@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
 ms.custom: mqtt
-ms.openlocfilehash: d8552391e8e8c389a44174595305b8f28224a833
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15c0df33b8f09ec71f2be913d72f0785dc766375
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81732544"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027528"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>使用 IoT 中樞傳送雲端到裝置訊息 (iOS)
 
@@ -33,9 +33,9 @@ Azure IoT 中樞是一項完全受控的服務，有助於讓數百萬個裝置�
 
 在本文最後，您會執行兩個 Swift iOS 專案：
 
-* **sample-device**：在[將遙測資料從裝置傳送到 IoT 中樞](quickstart-send-telemetry-ios.md)中建立的範例應用程式，其可連線到您的 IoT 中樞並接收雲端到裝置的訊息。
+* **sample-device** ：在 [將遙測資料從裝置傳送到 IoT 中樞](quickstart-send-telemetry-ios.md)中建立的範例應用程式，其可連線到您的 IoT 中樞並接收雲端到裝置的訊息。
 
-* **範例-服務**，此服務會透過 IoT 中樞將雲端到裝置訊息傳送至模擬裝置應用程式，然後接收其傳遞通知。
+* **範例-服務** ，此服務會透過 IoT 中樞將雲端到裝置訊息傳送至模擬裝置應用程式，然後接收其傳遞通知。
 
 > [!NOTE]
 > IoT 中樞會透過 Azure IoT 裝置 SDK 為許多裝置平台和語言 (包括 C、Java、Python 及 JavaScript) 提供 SDK 支援。 如需有關如何將您的裝置與本教學課程中的程式碼連接 (通常是連接到「Azure IoT 中樞」) 的逐步指示，請參閱 [Azure IoT 開發人員中樞](https://www.azure.com/develop/iot)。
@@ -92,7 +92,7 @@ pod install
    open "MQTT Client Sample.xcworkspace"
    ```
 
-2. 展開 [MQTT 用戶端範例]**** 專案，然後展開同名的資料夾。  
+2. 展開 [MQTT 用戶端範例]  專案，然後展開同名的資料夾。  
 
 3. 開啟 **ViewController.swift** 以便在 XCode 中編輯。 
 
@@ -102,11 +102,11 @@ pod install
 
 6. 使用 [建置並執行]  按鈕或 **Command + r** 按鍵組合，在裝置模擬器中執行專案。
 
-   ![執行專案](media/iot-hub-ios-swift-c2d/run-sample.png)
+   ![螢幕擷取畫面顯示裝置模擬器中的 [組建] 和 [執行] 按鈕。](media/iot-hub-ios-swift-c2d/run-sample.png)
 
 ## <a name="get-the-iot-hub-connection-string"></a>取得 IoT 中樞連接字串
 
-在本文中，您會建立後端服務，透過在[將遙測從裝置傳送至 IoT 中樞](quickstart-send-telemetry-ios.md)內建立的 IoT 中樞來傳送雲端到裝置訊息。 若要傳送雲端到裝置訊息，則服務需要**服務連線**權限。 根據預設，每個 IoT 中樞都是透過授與此權限且名為**服務**的共用存取原則所建立。
+在本文中，您會建立後端服務，透過在[將遙測從裝置傳送至 IoT 中樞](quickstart-send-telemetry-ios.md)內建立的 IoT 中樞來傳送雲端到裝置訊息。 若要傳送雲端到裝置訊息，則服務需要 **服務連線** 權限。 根據預設，每個 IoT 中樞都是透過授與此權限且名為 **服務** 的共用存取原則所建立。
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
@@ -140,33 +140,33 @@ pod install
    open AzureIoTServiceSample.xcworkspace
    ```
 
-2. 展開 [AzureIoTServiceSample]**** 專案，然後展開同名的資料夾。  
+2. 展開 [AzureIoTServiceSample]  專案，然後展開同名的資料夾。  
 
 3. 開啟 **ViewController.swift** 以便在 XCode 中編輯。 
 
 4. 搜尋 **connectionString** 變數，並使用您先前在 [取得 IoT 中樞連接字串](#get-the-iot-hub-connection-string)中所複製的服務連接字串來更新此值。
 
-5. 儲存您的變更。
+5. 儲存變更。
 
 6. 在 Xcode 中，將模擬器設定變更為與您用來執行 IoT 裝置的不同 iOS 裝置。 XCode 無法執行多個同類型的模擬器。
 
    ![變更模擬器裝置](media/iot-hub-ios-swift-c2d/change-device.png)
 
-7. 使用 [ **組建] 和 [執行** ] 按鈕或按鍵組合 **命令 + r**，在裝置模擬器中執行專案。
+7. 使用 [ **組建] 和 [執行** ] 按鈕或按鍵組合 **命令 + r** ，在裝置模擬器中執行專案。
 
-   ![執行專案](media/iot-hub-ios-swift-c2d/run-app.png)
+   ![螢幕擷取畫面顯示 [組建] 和 [執行] 按鈕。](media/iot-hub-ios-swift-c2d/run-app.png)
 
 ## <a name="send-a-cloud-to-device-message"></a>傳送雲端到裝置訊息
 
 您現在可以使用兩個應用程式來傳送和接收雲端到裝置的訊息。
 
-1. 在模擬 IoT 裝置上執行的 [iOS 應用程式範例]**** 應用程式中，按一下 [啟動]****。 應用程式會開始傳送裝置到雲端的訊息，但也會開始接聽雲端到裝置的訊息。
+1. 在模擬 IoT 裝置上執行的 [iOS 應用程式範例]  應用程式中，按一下 [啟動]  。 應用程式會開始傳送裝置到雲端的訊息，但也會開始接聽雲端到裝置的訊息。
 
    ![檢視範例 IoT 裝置應用程式](media/iot-hub-ios-swift-c2d/view-d2c.png)
 
-2. 在模擬服務裝置上執行的 [IoT 中樞服務用戶端範例]**** 應用程式中，針對您要傳送訊息的目標 IoT 裝置輸入識別碼。 
+2. 在模擬服務裝置上執行的 [IoT 中樞服務用戶端範例]  應用程式中，針對您要傳送訊息的目標 IoT 裝置輸入識別碼。 
 
-3. 撰寫純文字訊息，然後按一下 [傳送]****。
+3. 撰寫純文字訊息，然後按一下 [傳送]  。
 
     當您按一下 [傳送] 時就會發生數個動作。 服務範例會將訊息傳送到您的 IoT 中樞，而應用程式因為您所提供的服務連線字串而具有該 IoT 中樞的存取權。 IoT 中樞會檢查裝置識別碼、將訊息傳送到目的地裝置，並將確認回條傳送給來源裝置。 在模擬 IoT 裝置上執行的應用程式會檢查來自 IoT 中樞的訊息，並且在畫面上顯示最新一則訊息的文字。
 

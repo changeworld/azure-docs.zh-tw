@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: a706ced5c65b9de3cb3bfdb623d810bb1ea43623
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 879ea141a4621fac9e1774df64a63e9e56549012
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707977"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026950"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>關於 Microsoft 商業 marketplace 的常見問題
 
@@ -20,7 +20,7 @@ ms.locfileid: "91707977"
 
 ## <a name="general"></a>一般
 
-### <a name="what-is-the-microsoft-commercial-marketplace"></a>什麼是 Microsoft 商業 marketplace？
+### <a name="what-is-the-microsoft-commercial-marketplace"></a>何謂 Microsoft 商業市集？
 
 商業市集會使用我們合作夥伴所建置的解決方案，連接商業和政府機構。 我們的合作夥伴會在合作夥伴中心中建立及管理供應專案，而客戶可以透過內建的體驗（例如 Microsoft AppSource、Azure Marketplace、雲端解決方案提供者計畫中的轉銷商，以及我們的銷售團隊透過共同銷售計畫來探索及購買解決方案。
 
@@ -58,9 +58,9 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 客戶可以使用商業市集供應項目的方式，取決於您建立供應項目的方式。
 
-- 對於您自動提供的解決方案，無論它們是付費、自備授權 (BYOL) 或免費，都會激勵客戶*立即取得*。
-- 支援試用產品 (示範) 的供應項目會要求客戶*試用產品*。 
-- 軟體即服務 (SaaS) 供應專案，可在商業市場外部提供試用版，例如 *免費試用版*。
+- 對於您自動提供的解決方案，無論它們是付費、自備授權 (BYOL) 或免費，都會激勵客戶 *立即取得* 。
+- 支援試用產品 (示範) 的供應項目會要求客戶 *試用產品* 。 
+- 軟體即服務 (SaaS) 供應專案，可在商業市場外部提供試用版，例如 *免費試用版* 。
 - 簡單清單可讓客戶要求「與我連絡」。
 
 ### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>如何為商業市集建立供應項目？
@@ -99,12 +99,12 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 有四個相關角色可管理合作夥伴中心的存取權。
 
-- *管理員*：提供管理目錄中合作夥伴中心使用者的權限，以及建立和更新供應項目的權限。
-- *開發人員*：允許使用者建立和更新供應項目。
-- *財務參與者*：提供檢視支出報告的權限。
-- *擁有者*：可以設定支出帳戶和稅賦設定檔。 根據預設，接受發行者合約的使用者會成為擁有者。
+- *管理員* ：提供管理目錄中合作夥伴中心使用者的權限，以及建立和更新供應項目的權限。
+- *開發人員* ：允許使用者建立和更新供應項目。
+- *財務參與者* ：提供檢視支出報告的權限。
+- *擁有者* ：可以設定支出帳戶和稅賦設定檔。 根據預設，接受發行者合約的使用者會成為擁有者。
 
-在基礎目錄中建立新的使用者帳戶或邀請來賓帳戶時，需要 Azure Active Directory (Azure AD) *全域管理員*權限。 合作夥伴中心會將 Azure AD 套用至身分識別模型，而且組織的 Azure AD 執行個體通常是由其 IT 或安全小組管理及控制。
+在基礎目錄中建立新的使用者帳戶或邀請來賓帳戶時，需要 Azure Active Directory (Azure AD) *全域管理員* 權限。 合作夥伴中心會將 Azure AD 套用至身分識別模型，而且組織的 Azure AD 執行個體通常是由其 IT 或安全小組管理及控制。
 
 若要深入了解，請參閱[指派使用者角色和權限](https://docs.microsoft.com/partner-center/permissions-overview)。
 
@@ -140,7 +140,7 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 ### <a name="can-my-offer-appear-in-both-microsoft-appsource-and-azure-marketplace"></a>我的供應項目可以同時出現在 Microsoft AppSource 和 Azure Marketplace 嗎？
 
-Microsoft AppSource 是商務和產業解決方案的目的地，而 Azure Marketplace 則是針對 IT 和開發人員解決方案所設計。 每個線上商店都有提供供應專案，這些供應專案是根據您在供應專案建立期間選取的類別和產業。 在極少數的情況下，供應專案與兩個線上商店的使用者有關，它可能會出現在兩者中。
+Microsoft AppSource 是商務和產業解決方案的目的地，而 Azure Marketplace 則是針對 IT 和開發人員解決方案所設計。 每個線上商店都有提供供應專案，這些供應專案是根據您在供應專案建立期間選取的類別和產業。 在極少數的情況下，此供應項目會與這兩家線上商店的使用者有關，這時其可以同時出現在兩者中。
 
 ### <a name="what-is-the-cloud-solution-provider-program"></a>什麼是雲端解決方案提供者計畫？
 
@@ -175,7 +175,7 @@ Microsoft AppSource 是商務和產業解決方案的目的地，而 Azure Marke
 
 ### <a name="what-offer-types-are-transacted-through-microsoft"></a>哪些供應項目類型會透過 Microsoft 進行交易？
 
-對於某些交付模型，*立即取得*供應項目可透過 Microsoft 處理。 目前受到下列交付模型的支援：
+對於某些交付模型， *立即取得* 供應項目可透過 Microsoft 處理。 目前受到下列交付模型的支援：
 - VM 映像
 - Azure 應用程式 (受控應用程式)
 - SaaS 應用程式
@@ -195,7 +195,7 @@ Microsoft AppSource 是商務和產業解決方案的目的地，而 Azure Marke
 是，有多種方式可以提供免費試用版：
 
 - 偏好方法是在付費 SaaS 供應項目 (一個月) 和 VM 映像供應項目 (一或三個月) 的開頭新增免費期間。 客戶將會收到 $0.00 的費用，而且在試用期結束之後，訂用帳戶會自動變更為付費。 然後，合約期限會從該點開始。
-- 您可以建立 SaaS 供應項目清單，讓客戶前往您選擇的網址，以在商業市集外啟動試用版。 某些供應項目類型支援*試用產品*，可讓您為客戶提供示範。
+- 您可以建立 SaaS 供應項目清單，讓客戶前往您選擇的網址，以在商業市集外啟動試用版。 某些供應項目類型支援 *試用產品* ，可讓您為客戶提供示範。
 
 ### <a name="who-pays-for-the-underlying-azure-consumption"></a>誰支付基礎 Azure 使用量？
 
@@ -223,7 +223,7 @@ Microsoft AppSource 支援信用卡付款。 Azure Marketplace 支援信用卡�
 
 ### <a name="what-azure-subscription-permissions-are-required-to-complete-a-purchase"></a>需要哪些 Azure 訂用帳戶權限才能完成購買？
 
-使用者帳戶必須對 Azure 訂用帳戶具有*擁有者*或*參與者*權限。
+使用者帳戶必須對 Azure 訂用帳戶具有 *擁有者* 或 *參與者* 權限。
 
 ### <a name="in-what-countriesregions-can-customers-purchase-from-microsoft-appsource-and-azure-marketplace"></a>在哪些國家/地區，客戶可以從 Microsoft AppSource 和 Azure Marketplace 購買？
 
@@ -264,7 +264,7 @@ Microsoft AppSource 支援信用卡付款。 Azure Marketplace 支援信用卡�
 
 若為 Microsoft AppSource，客戶必須擁有信用卡，其帳單地址與客戶的 Azure AD 執行個體位於相同的國家/地區中，而且客戶的 Azure AD 管理員必須確保系統不會防止驗證 Microsoft AppSource。
 
-若為 Azure Marketplace，客戶必須擁有作用中的 Azure 訂用帳戶，以及對該訂用帳戶具有*擁有者*或*參與者*權限的使用者帳戶。 客戶的 Azure 管理員必須確定 Azure 原則不會與所使用的供應項目發生衝突，而且無法設定成本管理來停用 Azure Marketplace。
+若為 Azure Marketplace，客戶必須擁有作用中的 Azure 訂用帳戶，以及對該訂用帳戶具有 *擁有者* 或 *參與者* 權限的使用者帳戶。 客戶的 Azure 管理員必須確定 Azure 原則不會與所使用的供應項目發生衝突，而且無法設定成本管理來停用 Azure Marketplace。
 
 ## <a name="collection-and-payouts"></a>集合和支出
 
@@ -291,19 +291,19 @@ Microsoft AppSource 支援信用卡付款。 Azure Marketplace 支援信用卡�
 
 ### <a name="where-can-i-find-payout-reporting-for-the-commercial-marketplace"></a>哪裡可以找到商業市集的支出報告？
 
-在合作夥伴中心內，具有*擁有者*或*財務參與者*權限的使用者可以檢視支出報告。 這些使用者可以在右上方存取報告，方法是選取其中顯示手拿帳單的圖示。
+在合作夥伴中心內，具有 *擁有者* 或 *財務參與者* 權限的使用者可以檢視支出報告。 這些使用者可以在右上方存取報告，方法是選取其中顯示手拿帳單的圖示。
 
 如需詳細資訊，請參閱付款 [聲明](/partner-center/payout-statement?context=/azure/marketplace/context/context)。
 
 ### <a name="how-do-i-configure-my-payout-method-and-destination"></a>如何設定我的支出方法和目的地？
 
-搭配合作夥伴中心，具有*擁有者*權限的使用者可以設定支出帳戶和稅單。 使用者可以選取右上方的 [設定] 按鈕 (齒輪圖示) 來執行這項操作。
+搭配合作夥伴中心，具有 *擁有者* 權限的使用者可以設定支出帳戶和稅單。 使用者可以選取右上方的 [設定] 按鈕 (齒輪圖示) 來執行這項操作。
 
 如需詳細資訊，請參閱 [設定您的支出帳戶和稅務表單](/partner-center/set-up-your-payout-account?context=/azure/marketplace/context/context)。
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>商業市集支援退貨和退款嗎？
 
-若要接收退款，客戶可以在指定的時間範圍內取消訂閱。 若為每月訂閱，其為 24 小時，若為每年訂閱，其為 14 天。 在使用解決方案之後根據使用量計費的供應項目不適合退款。
+退款適用于特定條件下的客戶，以及特定費用。 您必須在購買或續約24小時內，收到每月計費的週期性收費要求。 同樣地，您必須在購買或續約14天內，收到每年計費之週期性費用的退款要求。 這種類型的退款不適用於從虛擬機器供應專案或計量付費) 使用 (所產生的費用。
 
 ## <a name="resources"></a>資源
 
@@ -311,7 +311,7 @@ Microsoft AppSource 支援信用卡付款。 Azure Marketplace 支援信用卡�
 
 以下是一些讓您開始的資源：
 
-- [什麼是 Microsoft 商業 marketplace？](overview.md)
+- [何謂 Microsoft 商業市集？](overview.md)
 - [Microsoft 商業市集合作夥伴中樞](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
 
 ### <a name="how-can-i-engage-with-microsoft-and-other-partners"></a>如何與 Microsoft 和其他合作夥伴交流？

@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f7bfa15b12618715bf0d911e4b4927a1fa327107
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b93ac774dffb837d93853353e83b8da4ab4d8d4
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539124"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027154"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Application Insights 中記錄型和預先彙總的計量
 
@@ -41,6 +41,28 @@ ms.locfileid: "91539124"
 
 值得一提的是收集端點會在擷取取樣前預先彙總事件，這表示不論您使用哪個版本的 SDK 搭配您的應用程式，[擷取取樣](./sampling.md)決不會影響預先彙總的計量精確度。  
 
+### <a name="sdk-supported-pre-aggregated-metrics-table"></a>SDK 支援的預先匯總計量資料表
+
+| 目前的生產環境 Sdk | 標準計量 (SDK 預先匯總)  | 自訂計量 (沒有 SDK 預先匯總)  | 使用 SDK 預先匯總) 的自訂計量 (|
+|------------------------------|-----------------------------------|----------------------------------------------|---------------------------------------|
+| .NET Core 和 .NET Framework | 支援的 (V 2.13.1 +) | 支援 via [TrackMetric](api-custom-events-metrics.md#trackmetric)| 支援 (V 2.7.2 +) via [>getmetric](get-metric.md) |
+| Java                         | 不支援       | 支援 via [TrackMetric](api-custom-events-metrics.md#trackmetric)| 不支援                           |
+| Node.js                      | 不支援       | 支援 via  [TrackMetric](api-custom-events-metrics.md#trackmetric)| 不支援                           |
+| Python                       | 不支援       | 支援                                 | 支援 via [OpenCensus](opencensus-python.md#metrics) |  
+
+
+### <a name="codeless-supported-pre-aggregated-metrics-table"></a>無程式碼支援的預先匯總計量資料表
+
+| 目前的生產環境 Sdk | 標準計量 (SDK 預先匯總)  | 自訂計量 (沒有 SDK 預先匯總)  | 使用 SDK 預先匯總) 的自訂計量 (|
+|-------------------------|--------------------------|-------------------------------------------|-----------------------------------------|
+| ASP.NET                 | 支援 <sup> 1<sup>    | 不支援                             | 不支援                           |
+| ASP.NET Core            | 支援的 <sup> 2<sup>    | 不支援                             | 不支援                           |
+| Java                    | 不支援            | 不支援                             | [支援](java-in-process-agent.md#metrics) |
+| Node.js                 | 不支援            | 不支援                             | 不支援                           |
+
+1. ASP.NET 無程式碼 attach on App Service 只會在「完整」監視模式下發出度量。 ASP.NET 無程式碼 attach on App Service、VM/VMSS 和內部部署會在沒有維度的情況下發出標準計量。 所有維度都需要 SDK。
+2. App Service 上的 ASP.NET Core 無程式碼附加會發出沒有維度的標準度量。 所有維度都需要 SDK。
+
 ## <a name="using-pre-aggregation-with-application-insights-custom-metrics"></a>使用預先彙總搭配 Application Insights 自訂計量
 
 您可以使用預先彙總搭配自訂計量。 有兩個主要優勢：能夠設定自訂計量的維度和發出警示，以及減少從 SDK 傳送至 Application Insights 收集端點的資料量。
@@ -67,7 +89,7 @@ ms.locfileid: "91539124"
 
 將計量擷取至 Application Insights （無論是以記錄為基礎或預先匯總）將會根據內嵌資料的大小產生成本[，如下所述。](./pricing.md#pricing-model) 您的自訂計量（包括其所有維度）一律會儲存在 Application Insights 的記錄存放區;此外，預設會將自訂計量 (不含維度的預先匯總版本，) 轉送到計量存放區。
 
-選取 [[啟用自訂計量維度的警示](#custom-metrics-dimensions-and-pre-aggregation)] 選項，以將預先匯總計量的所有維度儲存在計量存放區中，可以根據[自訂計量定價](https://azure.microsoft.com/pricing/details/monitor/)產生**額外**的成本。
+選取 [ [啟用自訂計量維度的警示](#custom-metrics-dimensions-and-pre-aggregation)] 選項，以將預先匯總計量的所有維度儲存在計量存放區中，可以根據 [自訂計量定價](https://azure.microsoft.com/pricing/details/monitor/)產生 **額外** 的成本。
 
 ## <a name="next-steps"></a>後續步驟
 

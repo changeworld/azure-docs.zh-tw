@@ -11,12 +11,12 @@ ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4d66a1174b1b4adc94b24c6aecd55b2b8679f2f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa5025e0a2bd260adeb23b4ab7c4d5f8bd83a43a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85211879"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026797"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>如何監視 Gen2 快取
 
@@ -26,15 +26,15 @@ ms.locfileid: "85211879"
  
 ## <a name="troubleshoot-using-the-azure-portal"></a>使用 Azure 入口網站進行疑難排解
 
-您可以使用 Azure 監視器來檢視 Gen2 快取計量，以針對查詢效能進行疑難排解。 先移至 Azure 入口網站，然後按一下 [ **監視**]、[ **計量** ] 和 [ **選取範圍**]：
+您可以使用 Azure 監視器來檢視 Gen2 快取計量，以針對查詢效能進行疑難排解。 先移至 Azure 入口網站，然後按一下 [ **監視** ]、[ **計量** ] 和 [ **選取範圍** ]：
 
-![Azure 監視器](./media/sql-data-warehouse-how-to-monitor-cache/cache-0.png)
+![螢幕擷取畫面顯示從 Azure 入口網站中的計量選取選取的範圍。](./media/sql-data-warehouse-how-to-monitor-cache/cache-0.png)
 
 您可以使用 [搜尋] 和 [下拉式清單] 來找出您的資料倉儲。 然後選取 [套用]。
 
-![Azure 監視器](./media/sql-data-warehouse-how-to-monitor-cache/cache-1.png)
+![螢幕擷取畫面顯示 [選取範圍] 窗格，您可以在其中選取資料倉儲。](./media/sql-data-warehouse-how-to-monitor-cache/cache-1.png)
 
-用於疑難排解 Gen2 快取的關鍵計量是 [快取命中百分比]**** 和 [已用快取百分比]****。 選取 [快取 **命中百分比** ]，然後使用 [ **新增度量** ] 按鈕來新增快取 **使用百分比**。 
+用於疑難排解 Gen2 快取的關鍵計量是 [快取命中百分比]  和 [已用快取百分比]  。 選取 [快取 **命中百分比** ]，然後使用 [ **新增度量** ] 按鈕來新增快取 **使用百分比** 。 
 
 ![快取計量](./media/sql-data-warehouse-how-to-monitor-cache/cache-2.png)
 

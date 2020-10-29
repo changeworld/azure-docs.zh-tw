@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2020
-ms.openlocfilehash: 0cdad47123d69ca7cee468c5bb0cea3268d73bfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15a4a0ea78ef169480d4494683cb929cfefd16f2
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89420071"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026967"
 ---
 # <a name="managing-the-mapping-data-flow-graph"></a>管理對應的資料流程圖
 
@@ -27,7 +27,7 @@ ms.locfileid: "89420071"
 
 ## <a name="moving-transformations"></a>移動轉換
 
-在對應資料流程中，一組連接的轉換邏輯稱為 **資料流程**。 [內送 **資料流程** ] 欄位會指出目前轉換的資料串流。 每個轉換都有一或兩個傳入的資料流程，視其函式而定，並代表輸出資料流程。 傳入資料流程的輸出架構會決定目前轉換可以參考的資料行中繼資料。
+在對應資料流程中，一組連接的轉換邏輯稱為 **資料流程** 。 [內送 **資料流程** ] 欄位會指出目前轉換的資料串流。 每個轉換都有一或兩個傳入的資料流程，視其函式而定，並代表輸出資料流程。 傳入資料流程的輸出架構會決定目前轉換可以參考的資料行中繼資料。
 
 ![移動節點](media/data-flow/move-nodes.png "移動節點")
 
@@ -39,7 +39,7 @@ ms.locfileid: "89420071"
 
 ![隱藏圖形](media/data-flow/hide-graph.png "隱藏圖形")
 
-隱藏圖形時，您可以按一下 **[下一步]** 或 [ **上**一步]，在資料流程內的轉換之間移動。 按一下向下箭號箭號以顯示圖形。
+隱藏圖形時，您可以按一下 **[下一步]** 或 [ **上** 一步]，在資料流程內的轉換之間移動。 按一下向下箭號箭號以顯示圖形。
 
 ![顯示圖形](media/data-flow/show-graph.png "顯示圖形")
 
@@ -47,15 +47,15 @@ ms.locfileid: "89420071"
 
 若要在圖形中快速尋找轉換，請按一下 [縮放] 設定上方的 [ **搜尋** ] 圖示。
 
-![搜尋](media/data-flow/search-1.png "搜尋圖表")
+![螢幕擷取畫面：顯示 [搜尋] 按鈕。](media/data-flow/search-1.png "搜尋圖表")
 
 您可以依轉換名稱或描述來搜尋，以找出轉換。
 
-![搜尋](media/data-flow/search-2.png "搜尋圖表")
+![螢幕擷取畫面：顯示 [搜尋] 文字方塊。](media/data-flow/search-2.png "搜尋圖表")
 
 ## <a name="hide-reference-nodes"></a>隱藏參考節點
 
-如果您的資料流程具有任何聯結、查閱、存在或等位轉換，資料流程會顯示所有傳入資料流程的參考節點。 如果您想要將所花費的垂直空間量降至最低，您可以最小化您的參考節點。 若要這樣做，請以滑鼠右鍵按一下畫布，然後選取 [ **隱藏參考節點**]。
+如果您的資料流程具有任何聯結、查閱、存在或等位轉換，資料流程會顯示所有傳入資料流程的參考節點。 如果您想要將所花費的垂直空間量降至最低，您可以最小化您的參考節點。 若要這樣做，請以滑鼠右鍵按一下畫布，然後選取 [ **隱藏參考節點** ]。
 
 ![隱藏參考節點](media/data-flow/hide-reference-nodes.png "隱藏參考節點")
 

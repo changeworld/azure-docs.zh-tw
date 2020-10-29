@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: f4bddf1746a9d680897428f1aa0afdb35d93e470
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b8ef1c14089744defaf6de5b3cf9e72d281452b6
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631269"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027103"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常見問題集
 
@@ -35,6 +35,10 @@ ExpressRoute 連線不會經過公用網際網路。 相較於網際網路一般
 ### <a name="how-much-does-expressroute-cost"></a>ExpressRoute 需要多少錢？
 
 如需價格資訊，請查看 [價格詳細資訊](https://azure.microsoft.com/pricing/details/expressroute/) 。
+
+### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-this-bandwidth-allocated-for-ingress-and-egress-traffic-separately"></a>如果我支付指定頻寬的 ExpressRoute 線路，是否另外配置了此頻寬給輸入和輸出流量？
+
+是的，ExpressRoute 線路頻寬是雙工。 例如，如果您購買 200 mbps ExpressRoute 線路，則會採購 200 mbps 的輸入流量，以及 200 mbps 的輸出流量。
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>如果我支付指定頻寬的 ExpressRoute 電路，則我是否必須從網路服務提供者購買相同速度的 VPN 連線？
 

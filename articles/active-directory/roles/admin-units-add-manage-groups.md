@@ -1,6 +1,6 @@
 ---
 title: 新增、移除及列出管理單位中的群組-Azure Active Directory |Microsoft Docs
-description: 在 Azure Active Directory 的管理單位中管理群組及其角色權限
+description: 在 Azure Active Directory 的管理單位中管理群組及其角色許可權。
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,38 +14,56 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec566fecb0dd14a4e56a2a3b9a59745bfe549faf
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: eee8ae8eeebfff61dd90aedc35a3dc04a88d6758
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375174"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026729"
 ---
-# <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>在 Azure Active Directory 中的管理單位新增和管理群組
+# <a name="add-and-manage-groups-in-an-administrative-unit-in-azure-active-directory"></a>在 Azure Active Directory 的管理單位中新增和管理群組
 
-在 Azure Active Directory (Azure AD) 中，您可以將群組新增至管理單位 (AU)，以取得更細微的控制管理範圍。
+在 Azure Active Directory (Azure AD) ，您可以將群組新增至管理單位，以取得更細微的控制管理範圍。
 
-如需準備使用 PowerShell 和 Microsoft Graph 進行管理單位管理的步驟，請參閱[快速入門](admin-units-manage.md#get-started)。
+若要準備使用 PowerShell 和 Microsoft Graph 來管理管理單位，請參閱 [開始](admin-units-manage.md#get-started)使用。
 
-## <a name="add-groups-to-an-au"></a>將群組新增至 AU
+## <a name="add-groups-to-an-administrative-unit"></a>將群組新增至管理單位
 
-### <a name="azure-portal"></a>Azure 入口網站
+您可以使用 Azure 入口網站、PowerShell 或 Microsoft Graph，將群組新增至管理單位。
 
-您只能將群組個別指派給管理單位。 沒有將群組大量指派給管理單位的選項。 您可以使用入口網站中的兩種方式之一，將群組指派給管理單位：
+### <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
-1. 從 **Azure AD > 群組**頁面
+您只能將個別群組指派給管理單位。 沒有任何選項可將群組指派為大量操作。 在 Azure 入口網站中，您可以使用下列兩種方式之一，將群組指派給管理單位：
 
-    開啟 Azure AD 中的群組概觀頁面，然後選取需要指派給管理單位的群組。 在左側，選取 [管理單位] 以列出群組指派目的地的管理單位。 在頂端，您會發現 [指派給管理單位] 選項，按一下系統會在右側提供一個面板來選擇管理單位。
+* 從 [ **群組** ] 窗格：
 
-    ![將群組個別指派給管理單位](./media/admin-units-add-manage-groups/assign-to-group-1.png)
+  1. 在 Azure 入口網站中，移至 **Azure AD** 。
+  1. 選取 [ **群組** ]，然後選取您要指派給管理單位的群組。 
+  1. 在左窗格中，選取 [ **管理單位** ]，以顯示指派給群組的管理單位清單。 
 
-1. 從 **Azure AD > 群組單位 > 所有群組** 頁面
+     ![[管理單位] 窗格上 [指派給管理單位] 連結的螢幕擷取畫面。](./media/admin-units-add-manage-groups/assign-to-group-1.png)
 
-    在 Azure AD > 管理單位中開啟 [所有群組] 刀鋒視窗。 如果有已指派給管理單位的群組，則會顯示在右側。 選取頂端的 [新增]，右側面板會列出您 Azure AD 組織中可用的群組。 選取要指派給管理單位的一或多個群組。
+  1. 選取 [ **指派給管理單位** ]。
+  1. 選取右窗格中的管理單位。
 
-    ![選取管理單位，然後選取新增成員](./media/admin-units-add-manage-groups/assign-to-admin-unit.png)
+* 從 [ **管理單位**  >  **所有群組** ] 窗格：
 
-### <a name="powershell"></a>PowerShell
+  1. 在 Azure 入口網站中，移至 **Azure AD** 。
+  
+  1. 在左窗格中，選取 [ **管理單位** ]，然後選取 [ **所有群組** ]。 
+     任何已指派給管理單位的群組都會顯示在右窗格中。 
+
+  1. 在 [ **群組** ] 窗格中，選取 [ **新增** ]。
+    右窗格會列出您 Azure AD 組織中的所有可用群組。 
+
+     ![將群組新增至管理單位的 [新增] 按鈕的螢幕擷取畫面。](./media/admin-units-add-manage-groups/assign-to-admin-unit.png)
+
+  1. 選取一或多個要指派給管理單位的群組，然後選取 [ **選取** ] 按鈕。
+
+### <a name="use-powershell"></a>使用 PowerShell
+
+在下列範例中，使用 `Add-AzureADMSAdministrativeUnitMember` Cmdlet 將群組新增至管理單位。 系統管理單位的物件識別碼和要加入之群組的物件識別碼都會被當作引數。 變更您特定環境所需的醒目提示區段。
+
 
 ```powershell
 $administrative unitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
@@ -53,9 +71,9 @@ $GroupObj = Get-AzureADGroup -Filter "displayname eq 'TestGroup'"
 Add-AzureADMSAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId -RefObjectId $GroupObj.ObjectId
 ```
 
-在此範例中，會使用 Cmdlet Add-AzureADMSAdministrativeUnitMember 將群組新增至管理單位。 管理單位的物件識別碼，以及要新增的群組物件識別碼會作為引數。 反白顯示的區段可能會視特定環境的需要而變更。
+### <a name="use-microsoft-graph"></a>使用 Microsoft Graph
 
-### <a name="microsoft-graph"></a>Microsoft Graph
+執行下列命令：
 
 ```http
 Http request
@@ -75,22 +93,28 @@ Request body
 }
 ```
 
-## <a name="list-groups-in-an-au"></a>列出 AU 中的群組
+## <a name="view-a-list-of-groups-in-an-administrative-unit"></a>在管理單位中查看群組清單
 
-### <a name="azure-portal"></a>Azure 入口網站
+### <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
-在入口網站中，移至 **Azure AD > 管理單位**。 選取您要列出使用者的管理單位。 根據預設，左側面板上已選取 [所有使用者]。 選取 [所有群組]，然後您會在右側找到屬於所選管理單位成員的群組清單。
+1. 在 Azure 入口網站中，移至 **Azure AD** 。
 
-![列出管理單位中的群組](./media/admin-units-add-manage-groups/list-groups-in-admin-units.png)
+1. 在左窗格中，選取 [ **管理單位** ]，然後選取您想要查看其群組的管理單位。 依預設，會在左窗格中選取 [ **所有使用者** ]。 
 
-### <a name="powershell"></a>PowerShell
+1. 在左窗格中，選取 [ **群組** ]。 右窗格會顯示屬於所選管理單位成員的群組清單。
+
+   ![[群組] 窗格的螢幕擷取畫面，其中顯示管理單位中的群組清單。](./media/admin-units-add-manage-groups/list-groups-in-admin-units.png)
+
+### <a name="use-powershell"></a>使用 PowerShell
+
+若要顯示管理單位所有成員的清單，請執行下列命令： 
 
 ```powershell
 $administrative unitObj = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
 Get-AzureADMSAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId
 ```
 
-這可協助您取得管理單位的所有成員。 如果您要顯示屬於管理單位成員的所有群組，可以使用下列程式碼片段：
+若要顯示屬於管理單位成員的所有群組，請使用下列程式碼片段：
 
 ```http
 foreach ($member in (Get-AzureADMSAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId)) 
@@ -102,7 +126,9 @@ Get-AzureADGroup -ObjectId $member.ObjectId
 }
 ```
 
-### <a name="microsoft-graph"></a>Microsoft Graph
+### <a name="use-microsoft-graph"></a>使用 Microsoft Graph
+
+執行下列命令：
 
 ```http
 HTTP request
@@ -111,54 +137,71 @@ Request body
 {}
 ```
 
-## <a name="list-aus-for-a-group"></a>列出群組的 AU
+## <a name="view-a-list-of-administrative-units-for-a-group"></a>查看群組的系統管理單位清單
 
-### <a name="azure-portal"></a>Azure 入口網站
+### <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
-在 Azure AD 入口網站中，您可以透過開啟**群組**，開啟群組的詳細資料。 選取群組以開啟群組的設定檔。 選取 [管理單位] 以列出群組為所屬成員的所有管理單位。
+1. 在 Azure 入口網站中，移至 **Azure AD** 。
 
-![列出群組的管理單位](./media/admin-units-add-manage-groups/list-group-au.png)
+1. 在左窗格中，選取 [ **群組** ] 以顯示群組清單。
 
-### <a name="powershell"></a>PowerShell
+1. 選取群組以開啟群組的設定檔。 
+
+1. 在左窗格中，選取 [ **管理單位** ]，以列出群組為其成員的所有管理單位。
+
+   ![[管理單位] 窗格的螢幕擷取畫面，其中顯示指派給群組的清單管理單位。](./media/admin-units-add-manage-groups/list-group-au.png)
+
+### <a name="use-powershell"></a>使用 PowerShell
+
+執行下列命令：
 
 ```powershell
 Get-AzureADMSAdministrativeUnit | where { Get-AzureADMSAdministrativeUnitMember -ObjectId $_.ObjectId | where {$_.ObjectId -eq $groupObjId} }
 ```
 
-### <a name="microsoft-graph"></a>Microsoft Graph
+### <a name="use-microsoft-graph"></a>使用 Microsoft Graph
+
+執行下列命令：
 
 ```http
 https://graph.microsoft.com/v1.0/groups/<group-id>/memberOf/$/Microsoft.Graph.AdministrativeUnit
 ```
 
-## <a name="remove-a-group-from-an-au"></a>從 AU 移除群組
+## <a name="remove-a-group-from-an-administrative-unit"></a>從管理單位移除群組
 
-### <a name="azure-portal"></a>Azure 入口網站
+### <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
-有兩種方式可從 Azure 入口網站中的管理單位移除群組。
+您可以使用下列兩種方式之一，從 Azure 入口網站中的管理單位移除群組：
 
-- 從群組中移除總覽
+- 將它從群組中移除總覽：
 
-  1. 開啟**Azure AD**  >  **群組**，然後開啟您想要從管理單位中移除之群組的設定檔。
-  1. 選取左側窗格中的 [管理單位]，以列出群組為所屬成員的所有管理單位。 選取您要移除群組的管理單位，然後選取 [從管理單位移除]。
+  1. 在 Azure 入口網站中，移至 **Azure AD** 。
+  1. 在左窗格中，選取 [ **群組** ]，然後針對您要從管理單位移除的群組開啟設定檔。
+  1. 在左窗格中，選取 [ **管理單位** ]，以列出指派給群組的所有管理單位。 
+  1. 選取您要移除群組的管理單位，然後選取 [從管理單位移除]。
 
-    ![從管理單位移除群組](./media/admin-units-add-manage-groups/group-au-remove.png)
+     ![[管理單位] 窗格的螢幕擷取畫面，其中顯示指派給所選管理單位的群組清單。](./media/admin-units-add-manage-groups/group-au-remove.png)
 
-- 從管理單位移除
+- 從管理單位移除：
 
-  1. 開啟**Azure AD**  >  **管理單位**]，然後選取群組所屬的管理單位。
-  1. 選取左側面板中的 [群組] 以列出成員群組。
-  1. 選取要從管理單位移除的群組，然後選取 [移除群組]。
+  1. 在 Azure 入口網站中，移至 **Azure AD** 。
+  1. 在左窗格中，選取 [ **管理單位** ]，然後選取指派給群組的管理單位。
+  1. 在左窗格中，選取 [ **群組** ] 以列出指派給管理單位的所有群組。
+  1. 選取您要移除的群組，然後選取 [ **移除群組** ]。
 
-    ![列出管理單位中的群組](./media/admin-units-add-manage-groups/list-groups-in-admin-units.png)
+    ![[群組] 窗格的螢幕擷取畫面，其中顯示管理單位中的群組清單。](./media/admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
-### <a name="powershell"></a>PowerShell
+### <a name="use-powershell"></a>使用 PowerShell
+
+執行下列命令：
 
 ```powershell
 Remove-AzureADMSAdministrativeUnitMember -ObjectId $auId -MemberId $memberGroupObjId
 ```
 
-### <a name="microsoft-graph"></a>Microsoft Graph
+### <a name="use-microsoft-graph"></a>使用 Microsoft Graph
+
+執行下列命令：
 
 ```http
 https://graph.microsoft.com/v1.0/directory/AdministrativeUnits/<adminunit-id>/members/<group-id>/$ref

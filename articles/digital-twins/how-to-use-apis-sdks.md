@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1ad9d72d69e23e4029de163ded1a71ae4dfb82fb
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 89fb0e8435bd1804193db5b0f8c0596733a7e674
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913767"
+ms.locfileid: "93026134"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure Digital Twins API 和 SDK
 
@@ -303,10 +303,10 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 
 您可以從這裡查看實例的計量，並建立自訂的視圖。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何使用 Api 來設定 Azure 數位 Twins 實例和驗證：
-* [*How to：設定實例和驗證*](how-to-set-up-instance-portal.md)
+* [*How to：設定實例和驗證*](how-to-set-up-instance-cli.md)
 
 或者，逐步解說建立用戶端應用程式的步驟，例如本操作說明中所使用的應用程式：
 * [*教學課程：撰寫用戶端應用程式的程式碼*](tutorial-code.md)

@@ -14,41 +14,47 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b47ea3cc55be26521dfa6e2b3230b477f82f442
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: aa0abffc9bfb1a0c6511af331d1e8dbc10cff455
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375150"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026525"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>在 Azure Active Directory 中管理管理單位
 
-若要在 Azure Active Directory (Azure AD) 中進行更細微的系統管理控制，您可以將使用者指派至範圍限制為一或多個系統管理單位 Azure AD au (的) 角色。
+若要在 Azure Active Directory (Azure AD) 中進行更細微的系統管理控制，您可以將使用者指派至範圍限制為一或多個系統管理單位的 Azure AD 角色。
 
 ## <a name="get-started"></a>開始使用
 
 1. 若要透過 [Graph Explorer](https://aka.ms/ge)從下列指示執行查詢，請執行下列動作：
 
-    a. 在 Azure 入口網站中，移至 Azure AD。 在應用程式清單中，選取 [ **Graph Explorer]**，然後選取 **[將管理員同意授與 graph explorer]**。
+    a. 在 Azure 入口網站中，移至 Azure AD。 
+    
+    b. 在應用程式清單中，選取 [ **Graph 總管** ]。
+    
+    c. 在 [ **許可權** ] 窗格中，選取 **[授與系統管理員同意以進行 Graph 總管** ]。
 
-    ![顯示 [授與系統管理員同意] 連結的螢幕擷取畫面](./media/admin-units-manage/select-graph-explorer.png)
+    ![顯示 [授與 Graph 總管的系統管理員同意] 連結的螢幕擷取畫面。](./media/admin-units-manage/select-graph-explorer.png)
 
 
 1. 使用 Azure AD PowerShell 的預覽版本。
 
 ## <a name="add-an-administrative-unit"></a>新增管理單位
 
+您可以使用 Azure 入口網站或 PowerShell 來新增管理單位。
+
 ### <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
-1. 在 [Azure 入口網站中，移至 [Azure AD]，然後在左窗格中選取 [ **管理單位**]。
+1. 在 Azure 入口網站中，移至 Azure AD。 然後，在左窗格中選取 [ **管理單位** ]。
 
-    ![Azure AD 中系統管理 unitslink 的螢幕擷取畫面](./media/admin-units-manage/nav-to-admin-units.png)
+    ![Azure AD 中 [管理單位] 連結的螢幕擷取畫面。](./media/admin-units-manage/nav-to-admin-units.png)
 
-1. 選取 [ **新增** ]，然後輸入管理單位的名稱。 （選擇性）加入管理單位的描述。
+1. 選取窗格上半部的 [ **新增** ] 按鈕，然後在 [ **名稱** ] 方塊中輸入管理單位的名稱。 （選擇性）加入管理單位的描述。
 
-    ![[新增] 按鈕的螢幕擷取畫面，以及用於輸入管理單位名稱的文字方塊](./media/admin-units-manage/add-new-admin-unit.png)
+    ![顯示 [新增] 按鈕的螢幕擷取畫面，以及用於輸入管理單位名稱的 [名稱] 方塊。](./media/admin-units-manage/add-new-admin-unit.png)
 
-1. 選取 [ **新增** ] 以完成管理單位。
+1. 選取藍色的 [ **新增** ] 按鈕以完成管理單位。
 
 ### <a name="use-powershell"></a>使用 PowerShell
 
@@ -79,11 +85,11 @@ Request body
 
 ### <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
-1. 在 Azure 入口網站中，移至**Azure AD**  >  **管理單位**。 
-1. 選取要刪除的管理單位，然後選取 [ **刪除**]。 
-1. 若要確認您想要刪除管理單位，請選取 **[是]**。 系統管理單位已刪除。
+1. 在 Azure 入口網站中，移至 [ **Azure AD** ]，然後選取 [ **管理單位** ]。 
+1. 選取要刪除的管理單位，然後選取 [ **刪除** ]。 
+1. 若要確認您想要刪除管理單位，請選取 **[是]** 。 系統管理單位已刪除。
 
-![系統管理單位刪除按鈕和確認視窗的螢幕擷取畫面](./media/admin-units-manage/select-admin-unit-to-delete.png)
+![系統管理單位刪除按鈕和確認視窗的螢幕擷取畫面。](./media/admin-units-manage/select-admin-unit-to-delete.png)
 
 ### <a name="use-powershell"></a>使用 PowerShell
 

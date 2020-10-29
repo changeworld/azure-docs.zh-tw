@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 10/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2ea8840a4c66ff05bea22c5c7c063e31d09f9dc8
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: f9e770557bc600c6eae084e36ad7c5816ee5ad16
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911744"
+ms.locfileid: "93027494"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>管理 Azure 數位 Twins 中的端點和路由 (Api 和 CLI) 
 
@@ -27,7 +27,7 @@ ms.locfileid: "92911744"
 ## <a name="prerequisites"></a>Prerequisites
 
 * 您將需要 **Azure 帳戶** (您可以在 [這裡](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 免費設定一個帳戶) 
-* 您將需要 azure 訂用帳戶中的 **Azure 數位 Twins 實例** 。 如果您還沒有實例，可以使用 how [*to：設定實例和驗證*](how-to-set-up-instance-portal.md)中的步驟來建立一個實例。 設定中的下列值可方便用於本文稍後：
+* 您將需要 azure 訂用帳戶中的 **Azure 數位 Twins 實例** 。 如果您還沒有實例，可以使用 how [*to：設定實例和驗證*](how-to-set-up-instance-cli.md)中的步驟來建立一個實例。 設定中的下列值可方便用於本文稍後：
     - 執行個體名稱
     - 資源群組
     
@@ -248,7 +248,7 @@ private async static Task CreateEventRoute(DigitalTwinsClient client, String rou
 
 [!INCLUDE [digital-twins-route-metrics](../../includes/digital-twins-route-metrics.md)]
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 瞭解您可以接收的不同事件訊息類型：
 * [*How to：解讀事件資料*](how-to-interpret-event-data.md)

@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57d66c844b7e73f1e3326d628f854a9811ca96fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22b0ba97a0f3eddda9a0e0d4f5e5392d12f21eef
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91802696"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026083"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>將應用程式驗證從 Active Directory 同盟服務移至 Azure Active Directory
 
@@ -39,7 +39,7 @@ ms.locfileid: "91802696"
 
 ![直接連線至內部部署的應用程式](media/migrate-adfs-apps-to-azure/app-integration-before-migration1.png)
 
-**為了提高應用程式安全性，您的目標是在內部部署和雲端環境中擁有一組存取控制和原則**。
+**為了提高應用程式安全性，您的目標是在內部部署和雲端環境中擁有一組存取控制和原則** 。
 
 ![透過 Azure AD 連接的應用程式](media/migrate-adfs-apps-to-azure/app-integration-after-migration1.png)
 
@@ -86,7 +86,7 @@ ms.locfileid: "91802696"
 
 更新生產環境應用程式的設定，以指向您的生產 Azure 租使用者。
 
-![遷移階段1 ](media/migrate-adfs-apps-to-azure/stage4.jpg)
+![遷移階段4 ](media/migrate-adfs-apps-to-azure/stage4.jpg)
 
  使用 AD FS 進行驗證的應用程式可能會使用 Active Directory 群組來取得許可權。 在開始進行遷移之前，請使用 [Azure AD Connect 同步](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) 處理，在內部部署環境和 Azure AD 之間同步處理身分識別資料。 請先確認這些群組和成員資格再進行遷移，讓您可以在應用程式遷移時授與存取權給相同的使用者。
 
@@ -133,7 +133,7 @@ LOB 應用程式是由您的組織在內部開發，或作為安裝在您資料�
 
 針對將 SaaS 應用程式上架的任何問題，您可以聯絡 [Saas 應用程式整合支援別名](mailto:SaaSApplicationIntegrations@service.microsoft.com)。
 
-**Sso 的 SAML 簽署憑證**：簽署憑證是任何 sso 部署的重要部分。 Azure AD 會建立簽署憑證，以針對您的 SaaS 應用程式建立以 SAML 為基礎的同盟 SSO。 當您新增資源庫或非資源庫應用程式之後，您將使用同盟 SSO 選項設定新增的應用程式。 請參閱 [在 Azure Active Directory 中管理同盟單一登入的憑證](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on)。
+**Sso 的 SAML 簽署憑證** ：簽署憑證是任何 sso 部署的重要部分。 Azure AD 會建立簽署憑證，以針對您的 SaaS 應用程式建立以 SAML 為基礎的同盟 SSO。 當您新增資源庫或非資源庫應用程式之後，您將使用同盟 SSO 選項設定新增的應用程式。 請參閱 [在 Azure Active Directory 中管理同盟單一登入的憑證](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on)。
 
 ### <a name="apps-and-configurations-that-can-be-moved-today"></a>可以立即移動的應用程式和設定
 
@@ -199,12 +199,12 @@ LOB 應用程式是由您的組織在內部開發，或作為安裝在您資料�
 | 組態設定| AD FS| 如何在 Azure AD 中設定| SAML 權杖 |
 | - | - | - | - |
 | **應用程式登入 URL** <p>使用者用來登入服務提供者中應用程式的 URL， (SP) 起始的 SAML 流程。| N/A| 從 SAML 型登入開啟基本 SAML 設定| N/A |
-| **應用程式回覆 URL** <p>從身分識別提供者 (IdP 的) 觀點來看，應用程式的 URL。 IdP 會在使用者登入 IdP 之後，將使用者和權杖傳送到此處。  這也稱為 SAML 判斷提示取用 **者端點**。| 選取 [ **端點** ] 索引標籤| 從 SAML 型登入開啟基本 SAML 設定| SAML 權杖中的 Destination 元素。 值範例： `https://contoso.my.salesforce.com` |
+| **應用程式回覆 URL** <p>從身分識別提供者 (IdP 的) 觀點來看，應用程式的 URL。 IdP 會在使用者登入 IdP 之後，將使用者和權杖傳送到此處。  這也稱為 SAML 判斷提示取用 **者端點** 。| 選取 [ **端點** ] 索引標籤| 從 SAML 型登入開啟基本 SAML 設定| SAML 權杖中的 Destination 元素。 值範例： `https://contoso.my.salesforce.com` |
 | **應用程式登出 URL** <p>這是使用者登出應用程式時，會傳送「登出清除」要求的 URL。 IdP 會傳送要求，以將使用者從其他所有應用程式登出。| 選取 [ **端點** ] 索引標籤| 從 SAML 型登入開啟基本 SAML 設定| N/A |
 | **應用程式識別碼** <p>這是來自 IdP 觀點的應用程式識別碼。 登入 URL 值經常用於識別碼 (但不一定是) 。  有時候，應用程式會將此稱為「實體識別碼」。| 選取 [ **識別碼** ] 索引標籤|從 SAML 型登入開啟基本 SAML 設定| 對應至 SAML 權杖中的 **物件** 元素。 |
 | **應用程式同盟中繼資料** <p>這是應用程式同盟中繼資料的位置。 IdP 會使用此位置來自動更新特定組態設定，例如端點或加密憑證。| 選取 [ **監視** ] 索引標籤| N/A。 Azure AD 不支援直接取用應用程式同盟中繼資料。 您可以手動匯入同盟中繼資料。| N/A |
-| **使用者識別碼/名稱識別碼** <p>此屬性用來唯一表示由 Azure AD 或 AD FS 提供給應用程式的使用者識別。  這個屬性通常是 UPN 或使用者的電子郵件地址。| 宣告規則。 在大部分情況下，宣告規則會發出具有以 NameIdentifier 結尾之類型的宣告。| 您可以在標頭 **使用者屬性和宣告**下找到識別碼。 預設會使用 UPN| 對應至 SAML 權杖中的 **NameID** 元素。 |
-| **其他宣告** <p>通常會從 IdP 傳送至應用程式的其他宣告資訊範例包括名字、姓氏、電子郵件地址和群組成員資格。| 在 AD FS 中，您可以在信賴憑證者上的其他宣告規則中找到此項目。| 您可以在 & 宣告的標頭 **使用者屬性**下找到識別碼。 選取 [檢視]**** 並編輯所有其他使用者屬性。| N/A |
+| **使用者識別碼/名稱識別碼** <p>此屬性用來唯一表示由 Azure AD 或 AD FS 提供給應用程式的使用者識別。  這個屬性通常是 UPN 或使用者的電子郵件地址。| 宣告規則。 在大部分情況下，宣告規則會發出具有以 NameIdentifier 結尾之類型的宣告。| 您可以在標頭 **使用者屬性和宣告** 下找到識別碼。 預設會使用 UPN| 對應至 SAML 權杖中的 **NameID** 元素。 |
+| **其他宣告** <p>通常會從 IdP 傳送至應用程式的其他宣告資訊範例包括名字、姓氏、電子郵件地址和群組成員資格。| 在 AD FS 中，您可以在信賴憑證者上的其他宣告規則中找到此項目。| 您可以在 & 宣告的標頭 **使用者屬性** 下找到識別碼。 選取 [檢視]  並編輯所有其他使用者屬性。| N/A |
 
 
 ### <a name="map-identity-provider-idp-settings"></a>對應識別提供者 (IdP) 設定
@@ -236,11 +236,11 @@ SaaS 應用程式必須知道傳送驗證要求的位置，以及如何驗證所
 
 | 組態設定| AD FS| 如何在 Azure AD 中設定 |
 | - | - | - |
-| **IdP 登入 URL** <p>從應用程式的觀點 (來看，IdP 的登入 URL，使用者會被重新導向以進行登入) 。| AD FS 登入 URL 是 AD FS federation service 名稱後面接著 "/adfs/ls/." <p>例如： `https://fs.contoso.com/adfs/ls/`| 將 {租使用者識別碼} 取代為您的租使用者識別碼。 <p> 針對使用 SAML-P 通訊協定的應用程式： [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p>針對使用 WS-Federation 通訊協定的應用程式： [https://login.microsoftonline.com/{tenant-id}/wsfed](https://login.microsoftonline.com/{tenant-id}/wsfed) |
-| **IdP 登出 URL**<p>從應用程式的觀點來看，IdP 的登出 URL (當使用者選擇登出應用程式) 時重新導向。| 登出 URL 與登入 URL 相同，或附加 "wa = wsignout1.0 1.0" 的相同 URL。 例如： `https://fs.contoso.com/adfs/ls/?wa=wsignout1.0`| 將 {租使用者識別碼} 取代為您的租使用者識別碼。<p>針對使用 SAML-P 通訊協定的應用程式：<p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> 針對使用 WS-Federation 通訊協定的應用程式： [https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
-| **權杖簽署憑證**<p>IdP 會使用憑證的私密金鑰來簽署已發行的權杖。 它會驗證權杖是否來自應用程式設定要信任的相同 IdP。| 在 AD FS 管理的 [憑證]**** 之下可找到 AD FS 權杖簽署憑證。| 在應用程式的 [ **單一登入] 屬性** 的 [標頭 **SAML 簽署憑證**] 底下的 Azure 入口網站中找到它。 您可以在該處下載憑證以便上傳至應用程式。  <p>如果應用程式有一個以上的憑證，您可以在同盟中繼資料 XML 檔案中找到所有憑證。 |
-| **識別碼/「簽發者」**<p>從應用程式觀點來看，IdP 的識別碼 (有時稱為「簽發者識別碼」 ) 。<p>在 SAML 權杖中，此值會顯示為簽發者元素。| AD FS 的識別碼通常是 [服務] 下的 [AD FS 管理] 中的同盟服務識別碼， **> 編輯同盟服務屬性**。 例如： `http://fs.contoso.com/adfs/services/trust`| 將 {租使用者識別碼} 取代為您的租使用者識別碼。<p>HTTPs： \/ /sts.windows.net/{tenant-id}/ |
-| **IdP 同盟中繼資料**<p>IdP 公開可用同盟中繼資料的位置。 (有些應用程式會使用同盟中繼資料，作為系統管理員個別設定 URL、識別碼和權杖簽署憑證的替代方式)。| 在 [服務 > 端點] 下的 [AD FS 管理] 中，尋找 AD FS 同盟中繼資料 URL **> 中繼資料 > 類型：同盟中繼資料**。 例如： `https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`| Azure AD 的對應值會遵循此模式 [https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml) 。 將 {TenantDomainName} 取代為您租使用者的名稱，格式為 "contoso.onmicrosoft.com"。   <p>如需詳細資訊，請參閱[同盟中繼資料](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata)。 |
+| **IdP 登入 URL** <p>從應用程式的觀點 (來看，IdP 的登入 URL，使用者會被重新導向以進行登入) 。| AD FS 登入 URL 是 AD FS federation service 名稱後面接著 "/adfs/ls/." <p>例如：`https://fs.contoso.com/adfs/ls/`| 將 {租使用者識別碼} 取代為您的租使用者識別碼。 <p> 針對使用 SAML-P 通訊協定的應用程式： [https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p>針對使用 WS-Federation 通訊協定的應用程式： [https://login.microsoftonline.com/{tenant-id}/wsfed](https://login.microsoftonline.com/{tenant-id}/wsfed) |
+| **IdP 登出 URL**<p>從應用程式的觀點來看，IdP 的登出 URL (當使用者選擇登出應用程式) 時重新導向。| 登出 URL 與登入 URL 相同，或附加 "wa = wsignout1.0 1.0" 的相同 URL。 例如：`https://fs.contoso.com/adfs/ls/?wa=wsignout1.0`| 將 {租使用者識別碼} 取代為您的租使用者識別碼。<p>針對使用 SAML-P 通訊協定的應用程式：<p>[https://login.microsoftonline.com/{tenant-id}/saml2](https://login.microsoftonline.com/{tenant-id}/saml2) <p> 針對使用 WS-Federation 通訊協定的應用程式： [https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0](https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0) |
+| **權杖簽署憑證**<p>IdP 會使用憑證的私密金鑰來簽署已發行的權杖。 它會驗證權杖是否來自應用程式設定要信任的相同 IdP。| 在 AD FS 管理的 [憑證]  之下可找到 AD FS 權杖簽署憑證。| 在應用程式的 [ **單一登入] 屬性** 的 [標頭 **SAML 簽署憑證** ] 底下的 Azure 入口網站中找到它。 您可以在該處下載憑證以便上傳至應用程式。  <p>如果應用程式有一個以上的憑證，您可以在同盟中繼資料 XML 檔案中找到所有憑證。 |
+| **識別碼/「簽發者」**<p>從應用程式觀點來看，IdP 的識別碼 (有時稱為「簽發者識別碼」 ) 。<p>在 SAML 權杖中，此值會顯示為簽發者元素。| AD FS 的識別碼通常是 [服務] 下的 [AD FS 管理] 中的同盟服務識別碼， **> 編輯同盟服務屬性** 。 例如：`http://fs.contoso.com/adfs/services/trust`| 將 {租使用者識別碼} 取代為您的租使用者識別碼。<p>HTTPs： \/ /sts.windows.net/{tenant-id}/ |
+| **IdP 同盟中繼資料**<p>IdP 公開可用同盟中繼資料的位置。 (有些應用程式會使用同盟中繼資料，作為系統管理員個別設定 URL、識別碼和權杖簽署憑證的替代方式)。| 在 [服務 > 端點] 下的 [AD FS 管理] 中，尋找 AD FS 同盟中繼資料 URL **> 中繼資料 > 類型：同盟中繼資料** 。 例如：`https://fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`| Azure AD 的對應值會遵循此模式 [https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml) 。 將 {TenantDomainName} 取代為您租使用者的名稱，格式為 "contoso.onmicrosoft.com"。   <p>如需詳細資訊，請參閱[同盟中繼資料](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-federation-metadata)。 |
 
 
 ## <a name="represent-ad-fs-security-policies-in-azure-ad"></a>代表 Azure AD 中 AD FS 安全性原則
@@ -257,7 +257,7 @@ SaaS 應用程式必須知道傳送驗證要求的位置，以及如何驗證所
 
 允許對所有使用者的存取權在 AD FS 中看起來像這樣：
 
-![遷移階段1 ](media/migrate-adfs-apps-to-azure/sso-saml-user-attributes-claims.png)
+![螢幕擷取畫面顯示 [以 SAML 設定單一 Sign-On] 對話方塊。](media/migrate-adfs-apps-to-azure/sso-saml-user-attributes-claims.png)
 
 
 這會以下列其中一種方式對應至 Azure AD：
@@ -279,7 +279,7 @@ SaaS 應用程式必須知道傳送驗證要求的位置，以及如何驗證所
 AD FS 中的明確群組授權：
 
 
-![發佈授權規則 ](media/migrate-adfs-apps-to-azure/allow-a-group-explicitly-1.png)
+![螢幕擷取畫面：顯示 [允許網域管理員宣告] 規則的 [編輯規則] 對話方塊。](media/migrate-adfs-apps-to-azure/allow-a-group-explicitly-1.png)
 
 
 這是規則對應至 Azure AD 的方式：
@@ -293,7 +293,7 @@ AD FS 中的明確群組授權：
 
 AD FS 中的明確使用者授權：
 
-![發佈授權規則 ](media/migrate-adfs-apps-to-azure/authorize-a-specific-user-1.png)
+![螢幕擷取畫面顯示 [允許網域系統管理員宣告] 規則的 [編輯規則] 對話方塊，其中包含 [主要 S I D] 的 [輸入宣告類型]。](media/migrate-adfs-apps-to-azure/authorize-a-specific-user-1.png)
 
 這是規則對應至 Azure AD 的方式：
 
@@ -310,7 +310,7 @@ Multi-Factor Authentication 的內部部署 [ (MFA) ](https://docs.microsoft.com
 
 AD FS 中的 MFA 規則設定：
 
-![Azure AD MFA 設定](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
+![螢幕擷取畫面顯示 Azure 入口網站中的 Azure A D 的條件。](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
 
 
 #### <a name="example-1-enforce-mfa-based-on-usersgroups"></a>範例1：根據使用者/群組強制執行 MFA
@@ -326,7 +326,7 @@ AD FS 中的 MFA 規則設定：
 
 3. 設定 **存取控制** 選項，如下所示：
 
-![AAD MFA 設定](media/migrate-adfs-apps-to-azure/mfa-usersorgroups.png)
+![螢幕擷取畫面顯示可授與存取權的 [授與] 窗格。](media/migrate-adfs-apps-to-azure/mfa-usersorgroups.png)
 
 
  #### <a name="example-2-enforce-mfa-for-unregistered-devices"></a>範例2：針對未註冊的裝置強制執行 MFA
@@ -335,11 +335,11 @@ AD FS 中的 MFA 規則設定：
 
 1. 建立 [新的條件式存取原則](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json)。
 
-2. 將 **指派** 設定為 [ **所有使用者**]。
+2. 將 **指派** 設定為 [ **所有使用者** ]。
 
 3. 設定 **存取控制** 選項，如下所示：
 
-![AAD MFA 設定](media/migrate-adfs-apps-to-azure/mfa-unregistered-devices.png)
+![螢幕擷取畫面顯示 [授與] 窗格，您可以在其中授與存取權並指定其他限制。](media/migrate-adfs-apps-to-azure/mfa-unregistered-devices.png)
 
 
 當您將 [針對多個控制項] 選項設定為需要其中一個選取的控制項時，就表示如果使用者完成了核取方塊所指定的任一個條件，他們就會被授與您應用程式的存取權。
@@ -350,13 +350,13 @@ AD FS 中的 MFA 規則設定：
 
 1. 建立 [新的條件式存取原則](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json)。
 
-1. 將 **指派** 設定為 [ **所有使用者**]。
+1. 將 **指派** 設定為 [ **所有使用者** ]。
 
 1. [在 Azure AD 中設定指定的位置](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations) ，否則會信任您公司網路內部的同盟。
 
 1. 設定 **條件規則** ，以指定您想要強制執行 MFA 的位置。
 
-![Azure AD MFA 設定](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
+![螢幕擷取畫面：顯示條件規則的 [位置] 窗格。](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
 
 5. 設定 **存取控制** 選項，如下所示：
 
@@ -368,14 +368,14 @@ AD FS 中的 MFA 規則設定：
 
 以下是在 AD FS 中對應屬性的範例：
 
-![Azure AD MFA 設定](media/migrate-adfs-apps-to-azure/map-emit-attributes-as-claimsrule-1.png)
+![螢幕擷取畫面顯示 [編輯規則] 對話方塊，可發出屬性作為宣告。](media/migrate-adfs-apps-to-azure/map-emit-attributes-as-claimsrule-1.png)
 
 
 這是規則對應至 Azure AD 的方式：
 
-在 [ [Azure 入口網站](https://portal.azure.com/)中，選取 [ **企業應用程式**]、[ **單一登入**]，然後新增 **SAML 權杖屬性** ，如下所示：
+在 [ [Azure 入口網站](https://portal.azure.com/)中，選取 [ **企業應用程式** ]、[ **單一登入** ]，然後新增 **SAML 權杖屬性** ，如下所示：
 
-![Azure AD MFA 設定](media/migrate-adfs-apps-to-azure/map-emit-attributes-as-claimsrule-2.png)
+![螢幕擷取畫面顯示您企業應用程式的單一登入頁面。](media/migrate-adfs-apps-to-azure/map-emit-attributes-as-claimsrule-2.png)
 
 
 
@@ -397,7 +397,7 @@ AD FS 2016 有數個內建存取控制原則，您可以從中選擇：
 
 | 選項 | 如何在 Azure AD 中設定允許選項？| 如何在 Azure AD 中設定 Except 選項？ |
 | - | - | - |
-| 從特定網路| 對應至 Azure AD 中的[命名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)| 針對[信任的位置](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition)使用 [**排除**] 選項 |
+| 從特定網路| 對應至 Azure AD 中的[命名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)| 針對 [信任的位置](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition)使用 [ **排除** ] 選項 |
 | 從特定群組| [設定使用者/群組指派](https://docs.microsoft.com/azure/active-directory/manage-apps/assign-user-or-group-access-portal)| 在 [使用者和群組] 中使用 [ **排除** ] 選項 |
 | 從具有特定信任層級的裝置| 從 [指派-> 條件] 下的 [裝置狀態] 控制項設定此設定| 使用 [裝置狀態條件] 下的 [ **排除** ] 選項，並包含 **所有裝置** |
 | 使用要求中的特定宣告| 無法遷移此設定| 無法遷移此設定 |
@@ -444,11 +444,11 @@ AD FS 2016 有數個內建存取控制原則，您可以從中選擇：
 遵循本文中詳述的遷移程式。
 
 然後移至 [Azure 入口網站](https://aad.portal.azure.com/) ，以測試遷移是否成功。 請遵循下列指示：
-1. 從清單中選取 [**企業應用**程式  >  **所有應用程式**]，並尋找您的應用程式。
+1. 從清單中選取 [ **企業應用** 程式  >  **所有應用程式** ]，並尋找您的應用程式。
 
-1. 選取 [**管理**  >  **使用者和群組**]，將至少一個使用者或群組指派給應用程式。
+1. 選取 [ **管理**  >  **使用者和群組** ]，將至少一個使用者或群組指派給應用程式。
 
-1. 選取 [**管理**  >  **條件式存取**]。 檢查您的原則清單，並確保您不會封鎖具有 [條件式存取原則](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)的應用程式存取。
+1. 選取 [ **管理**  >  **條件式存取** ]。 檢查您的原則清單，並確保您不會封鎖具有 [條件式存取原則](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)的應用程式存取。
 
 根據您設定應用程式的方式，確認 SSO 是否正常運作。
 
@@ -456,7 +456,7 @@ AD FS 2016 有數個內建存取控制原則，您可以從中選擇：
 | - | - |
 | OAuth/OpenID Connect| 選取 [ **企業應用程式] > 許可權** ，並確定您已同意應用程式在您的組織中用於應用程式的使用者設定。
 ‎ |
-| 以 SAML 為基礎的 SSO| 使用 [**單一登入**] 下的 [[測試 SAML 設定](https://docs.microsoft.com/azure/active-directory/develop/howto-v1-debug-saml-sso-issues)] 按鈕。
+| 以 SAML 為基礎的 SSO| 使用 [ **單一登入** ] 下的 [ [測試 SAML 設定](https://docs.microsoft.com/azure/active-directory/develop/howto-v1-debug-saml-sso-issues)] 按鈕。
 ‎ |
 | Password-Based SSO| 下載並安裝[MyApps Secure Sign](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [in 擴充](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)功能。 此延伸模組可協助您啟動任何組織的雲端應用程式，而這些應用程式需要您使用 SSO 進程。
 ‎ |
