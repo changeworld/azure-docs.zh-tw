@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: a833fd808049cfce95b182910e50e38d3c39f4e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 248799d70e0741efcaea1714c12f4d92a42cef25
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84691334"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041903"
 ---
 # <a name="scenes-shots-and-keyframes"></a>場景、擷取畫面和主要畫面格
 
@@ -46,9 +46,9 @@ ms.locfileid: "84691334"
 
 #### <a name="with-the-video-indexer-website"></a>使用影片索引子網站
 
-若要使用影片索引子網站來解壓縮主要畫面格，請上傳影片並為其編制索引。 索引工作完成後，請按一下 [ **下載** ] 按鈕，然後選取 [成品] ** (ZIP) **。 這會將構件資料夾下載至您的電腦。 
+若要使用影片索引子網站來解壓縮主要畫面格，請上傳影片並為其編制索引。 索引工作完成後，請按一下 [ **下載** ] 按鈕，然後選取 [成品] **(ZIP)** 。 這會將構件資料夾下載至您的電腦。 
 
-![關鍵 幀](./media/scenes-shots-keyframes/extracting-keyframes2.png)
+![螢幕擷取畫面，顯示已選取 [成品] 的 [下載] 下拉式清單。](./media/scenes-shots-keyframes/extracting-keyframes2.png)
  
 解壓縮並開啟資料夾。 在 [ *_KeyframeThumbnail* ] 資料夾中，您會發現所有從影片解壓縮的主要畫面格。 
 
@@ -127,6 +127,6 @@ ms.locfileid: "84691334"
 * 多個臉部：兩個以上的人員。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [檢查 API 所產生的影片索引子輸出](video-indexer-output-json-v2.md#scenes)

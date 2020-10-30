@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 05/13/2019
 ms.author: kenwith
-ms.openlocfilehash: 00c4dec329456409bc8d5b77dca72f25daf9f5c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cecdda27139aa1dd0733b50898db9db70aa34dc3
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84781068"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040982"
 ---
 # <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>將屬性從內部部署 Active Directory 同步處理至 Azure AD 以布建至應用程式
 
@@ -27,21 +27,21 @@ Azure AD 必須包含在將使用者帳戶從 Azure AD 布建至 SaaS 應用程�
  
 ## <a name="sync-an-attribute"></a>同步處理屬性 
 
-1. 開啟 Azure AD Connect wizard，選擇 [工作]，然後選擇 [ **自訂同步處理選項**]。
+1. 開啟 Azure AD Connect wizard，選擇 [工作]，然後選擇 [ **自訂同步處理選項** ]。
 
    ![Azure Active Directory Connect wizard 其他工作] 頁面](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-customize.png)
  
 2. 以 Azure AD 全域管理員身分登入。 
 
-3. 在 [ **選用功能** ] 頁面上，選取 [ **目錄擴充屬性同步**處理]。
+3. 在 [ **選用功能** ] 頁面上，選取 [ **目錄擴充屬性同步** 處理]。
  
    ![Azure Active Directory Connect wizard 選用功能頁面](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-directory-extension-attribute-sync.png)
 
 4. 選取您要延伸至 Azure AD 的) 屬性 (s。
    > [!NOTE]
-   > **可用屬性**下的搜尋會區分大小寫。
+   > **可用屬性** 下的搜尋會區分大小寫。
 
-   ![Azure Active Directory Connect wizard 目錄擴充功能選取頁面](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-directory-extensions.png)
+   ![顯示 [目錄擴充功能] 選項頁面的螢幕擷取畫面](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-directory-extensions.png)
 
 5. 完成 Azure AD Connect wizard，並允許執行完整的同步處理週期。 當迴圈完成時，架構會擴充，而且新的值會在您的內部部署 AD 與 Azure AD 之間進行同步處理。
  
@@ -50,8 +50,8 @@ Azure AD 必須包含在將使用者帳戶從 Azure AD 布建至 SaaS 應用程�
    ![Azure Active Directory Connect wizard 目錄擴充功能選取頁面](./media/user-provisioning-sync-attributes-for-mapping/attribute-mapping-extensions.png)
 
 > [!NOTE]
-> 目前不支援從內部部署 AD （例如 **managedby** 或 **DN/DistinguishedName**）布建參考屬性的功能。 您可以在 [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory)上要求這項功能。 
+> 目前不支援從內部部署 AD （例如 **managedby** 或 **DN/DistinguishedName** ）布建參考屬性的功能。 您可以在 [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory)上要求這項功能。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [定義在布建範圍內的人員](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)

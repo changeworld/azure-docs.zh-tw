@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: joflore
-ms.openlocfilehash: e914c273adc632449ed31915127fe6d261a8d56c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 32ec3eface215330aba9e40b46e45b97b5c07091
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960944"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041111"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>使用 Azure PowerShell 建立對內部部署網域 Azure Active Directory Domain Services 資源樹系和輸出樹系信任
 
@@ -36,7 +36,7 @@ ms.locfileid: "91960944"
 > [!IMPORTANT]
 > 受控網域資源樹系目前不支援 Azure HDInsight 或 Azure 檔案儲存體。 預設的受控網域使用者樹系支援這兩個額外的服務。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本文章，您需要下列資源和權限：
 
@@ -51,7 +51,7 @@ ms.locfileid: "91960944"
 * 安裝並設定 Azure AD PowerShell。
     * 請依需要遵循指示，[安裝 Azure AD PowerShell 模組並連線至 Azure AD](/powershell/azure/active-directory/install-adv2)。
     * 務必使用 [Connect-AzureAD][Connect-AzureAD] Cmdlet 登入您的 Azure AD 租用戶。
-* 您必須擁有 Azure AD 租用戶的*全域管理員*權限，才能啟用 Azure AD DS。
+* 您必須擁有 Azure AD 租用戶的 *全域管理員* 權限，才能啟用 Azure AD DS。
 * 您需要 Azure 訂用帳戶中的「參與者」權限，才能建立必要的 Azure AD DS 資源。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
@@ -74,12 +74,12 @@ ms.locfileid: "91960944"
 
 Azure AD DS 需要服務主體從 Azure AD 同步處理資料。 您必須先在 Azure AD 租使用者中建立此主體，才能建立受控網域資源樹系。
 
-建立 Azure AD DS 的 Azure AD 服務主體來進行通訊和驗證。 系統會使用特定的應用程式識別碼，其名稱為「網域控制站服務」以及 2565bd9d-da50-47d4-8b85-4c97f669dc36 的識別碼。 請勿變更此應用程式識別碼。
+建立 Azure AD DS 的 Azure AD 服務主體來進行通訊和驗證。 特定的應用程式識別碼會使用識別碼為 *6ba9a5d4-8456-4118-b521-9c5ca10cdf84* 的 *網域控制站服務* 。 請勿變更此應用程式識別碼。
 
 使用 [New-AzureADServicePrincipal][New-AzureADServicePrincipal] Cmdlet 來建立 Azure AD 服務主體：
 
 ```powershell
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 ```
 
 ## <a name="create-a-managed-domain-resource-forest"></a>建立受控網域資源樹系
@@ -106,7 +106,7 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
     |:-----------------------------|---------------------------|:------------|
     | 訂用帳戶                 | *-azureSubscriptionId*    | 用於 Azure AD DS 帳單的訂用帳戶識別碼。 您可以使用 [AzureRMSubscription][Get-AzureRMSubscription] Cmdlet 取得訂用帳戶清單。 |
     | 資源群組               | *-aaddsResourceGroupName* | 受控網域和相關聯資源的資源組名。 |
-    | Location                     | *-aaddsLocation*          | 裝載受控網域的 Azure 區域。 如需可用的區域，請參閱 [AZURE AD DS 支援的區域。](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all) |
+    | 位置                     | *-aaddsLocation*          | 裝載受控網域的 Azure 區域。 如需可用的區域，請參閱 [AZURE AD DS 支援的區域。](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all) |
     | Azure AD DS 系統管理員    | *-aaddsAdminUser*         | 第一個受控網域系統管理員的使用者主體名稱。 此帳戶必須是您 Azure Active Directory 中的現有雲端使用者帳戶。 使用者和執行腳本的使用者會新增至 *AAD DC 系統管理員* 群組。 |
     | Azure AD DS 功能變數名稱      | *-aaddsDomainName*        | 受控網域的 FQDN，根據先前有關如何選擇樹系名稱的指引。 |
 
@@ -117,9 +117,9 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
     | 虛擬網路名稱              | *-aaddsVnetName*                  | 受控網域的虛擬網路名稱。|
     | 位址空間                     | *-aaddsVnetCIDRAddressSpace*      | 以 CIDR 標記法表示的虛擬網路位址範圍 (如果建立虛擬網路) 。|
     | Azure AD DS 子網名稱           | *-aaddsSubnetName*                | 裝載受控網域之 *aaddsVnetName* 虛擬網路的子網名稱。 請勿將您自己的 Vm 和工作負載部署到此子網。 |
-    | Azure AD DS 位址範圍         | *-aaddsSubnetCIDRAddressRange*    | AAD DS 實例的 CIDR 標記法中的子網位址範圍，例如 *192.168.1.0/24*。 位址範圍必須包含在虛擬網路的位址範圍內，且不同于其他子網。 |
-    | 工作負載子網名稱 (選擇性)    | *-workloadSubnetName*             | *AaddsVnetName*虛擬網路中要為您自己的應用程式工作負載建立的子網的選擇性名稱。 Vm 和應用程式，也會改為連線到對等互連的 Azure 虛擬網路。 |
-    | 工作負載位址範圍 (選擇性)  | *-workloadSubnetCIDRAddressRange* | 適用于應用程式工作負載的選擇性子網位址範圍（以 CIDR 標記法表示），例如 *192.168.2.0/24*。 位址範圍必須包含在虛擬網路的位址範圍內，且不同于其他子網。|
+    | Azure AD DS 位址範圍         | *-aaddsSubnetCIDRAddressRange*    | AAD DS 實例的 CIDR 標記法中的子網位址範圍，例如 *192.168.1.0/24* 。 位址範圍必須包含在虛擬網路的位址範圍內，且不同于其他子網。 |
+    | 工作負載子網名稱 (選擇性)    | *-workloadSubnetName*             | *AaddsVnetName* 虛擬網路中要為您自己的應用程式工作負載建立的子網的選擇性名稱。 Vm 和應用程式，也會改為連線到對等互連的 Azure 虛擬網路。 |
+    | 工作負載位址範圍 (選擇性)  | *-workloadSubnetCIDRAddressRange* | 適用于應用程式工作負載的選擇性子網位址範圍（以 CIDR 標記法表示），例如 *192.168.2.0/24* 。 位址範圍必須包含在虛擬網路的位址範圍內，且不同于其他子網。|
 
 1. 現在使用腳本建立受控網域資源樹系 `New-AzureAaaddsForest` 。 下列範例會建立名為 *addscontoso.com* 的樹系，並建立工作負載子網。 提供您自己的參數名稱和 IP 位址範圍，或現有的虛擬網路。
 
@@ -163,7 +163,7 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
     * 例如，確認您的內部部署網域控制站可以使用或遠端桌面連線到受控 VM `ping` 。
     * 確認您的管理 VM 可以使用公用程式（例如），再次連接到您的內部部署網域控制站 `ping` 。
 
-1. 在 Azure 入口網站中，搜尋並選取 [Azure AD Domain Services]。 選擇您的受控網域（例如*aaddscontoso.com* ），並等候狀態回報為執行**中。**
+1. 在 Azure 入口網站中，搜尋並選取 [Azure AD Domain Services]。 選擇您的受控網域（例如 *aaddscontoso.com* ），並等候狀態回報為執行 **中。**
 
     執行時，請 [更新 Azure 虛擬網路的 DNS 設定](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network) ，然後 [啟用 Azure AD DS 的使用者帳戶](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) ，以完成受控網域資源樹系的設定。
 
@@ -200,9 +200,9 @@ Install-Script -Name Add-AaddsResourceForestTrust
 | 信任易記名稱                | *-TrustFriendlyName* | 信任關係的易記名稱。 |
 | 內部部署 AD DS DNS IP 位址 | *-TrustDnsIPs*       | 列出之受信任網域的 DNS 伺服器 IPv4 地址清單（以逗號分隔）。 |
 | 信任密碼                     | *-TrustPassword*     | 信任關係的複雜密碼。 在內部部署 AD DS 中建立單向輸入信任時，也會輸入此密碼。 |
-| 認證                        | *-認證*       | 用來向 Azure 驗證的認證。 使用者必須在 *AAD DC 系統管理員群組*中。 如果未提供，腳本會提示您進行驗證。 |
+| 認證                        | *-認證*       | 用來向 Azure 驗證的認證。 使用者必須在 *AAD DC 系統管理員群組* 中。 如果未提供，腳本會提示您進行驗證。 |
 
-下列範例會建立名為 *myAzureADDSTrust* 的信任關係以 *onprem.contoso.com*。 使用您自己的參數名稱和密碼：。
+下列範例會建立名為 *myAzureADDSTrust* 的信任關係以 *onprem.contoso.com* 。 使用您自己的參數名稱和密碼：。
 
 ```azurepowershell
 Add-AaddsResourceForestTrust `
@@ -220,10 +220,10 @@ Add-AaddsResourceForestTrust `
 
 若要從內部部署環境正確地解析受控網域，建議您將轉寄站新增至現有的 DNS 伺服器。 如果您尚未將內部部署環境設定為可與受控網域通訊，請從內部部署 AD DS 網域的管理工作站完成下列步驟：
 
-1. 選取**開始 | 系統管理工具 | DNS**
-1. 以滑鼠右鍵選取 DNS 伺服器，例如 *myAD01*，然後選取 [屬性]****
-1. 選擇 [轉寄站]****，然後選擇 [編輯]**** 新增其他轉寄站。
-1. 新增受控網域的 IP 位址，例如 *10.0.1.4* 和 *10.0.1.5*。
+1. 選取 **開始 | 系統管理工具 | DNS**
+1. 以滑鼠右鍵選取 DNS 伺服器，例如 
+1. 選擇 [轉寄站]  ，然後選擇 [編輯]  新增其他轉寄站。
+1. 新增受控網域的 IP 位址，例如 *10.0.1.4* 和 *10.0.1.5* 。
 1. 從本機命令提示字元，使用受控網域資源樹系功能變數名稱的 **nslookup** 來驗證名稱解析。 例如， `Nslookup aaddscontoso.com` 應該會傳回受控網域資源樹系的兩個 IP 位址。
 
 ## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>在內部部署網域中建立輸入樹系信任
@@ -233,12 +233,12 @@ Add-AaddsResourceForestTrust `
 若要在內部部署 AD DS 網域設定輸入信任，請從內部部署 AD DS 網域的管理工作站完成下列步驟：
 
 1. 選取 **開始 | 系統管理工具 | Active Directory 網域及信任**
-1. 以滑鼠右鍵選取網域，例如 *onprem.contoso.com*，然後選取 [屬性]****
-1. 選擇 [信任]**** 索引標籤，然後選擇 [新增信任]****
-1. 輸入受控網域的名稱（例如 *aaddscontoso.com*），然後選取 **[下一步]**
-1. 選取選項以建立**樹系信任**，然後建立**單向: 連入** 信任。
-1. 選擇為**僅此網域**建立信任。 在下一個步驟中，您會在 Azure 入口網站中建立受控網域的信任。
-1. 選擇使用**全樹系驗證**，然後輸入並確認信任密碼。 在下一節中，也需要在 Azure 入口網站中輸入相同的密碼。
+1. 以滑鼠右鍵選取網域，例如 
+1. 選擇 [信任]  索引標籤，然後選擇 [新增信任] 
+1. 輸入受控網域的名稱（例如 *aaddscontoso.com* ），然後選取 **[下一步]**
+1. 選取選項以建立 **樹系信任** ，然後建立 **單向: 連入** 信任。
+1. 選擇為 **僅此網域** 建立信任。 在下一個步驟中，您會在 Azure 入口網站中建立受控網域的信任。
+1. 選擇使用 **全樹系驗證** ，然後輸入並確認信任密碼。 在下一節中，也需要在 Azure 入口網站中輸入相同的密碼。
 1. 使用預設選項逐步執行接下來的幾個視窗，然後選擇 [否，不要確認外寄信任] 的選項。 您無法驗證信任關係，因為受控網域資源樹系的委派系統管理員帳戶沒有必要的許可權。 這是設計的行為。
 1. 選取 [完成]  。
 
@@ -288,34 +288,34 @@ Add-AaddsResourceForestTrust `
     > [!TIP]
     > 若要安全地連線到已加入 Azure AD Domain Services 的 Vm，您可以在支援的 Azure 區域中使用 [Azure 堡壘主機服務](../bastion/bastion-overview.md) 。
 
-1. 開啟 **Windows 設定**，然後搜尋並選取 [網路和共用中心]。
+1. 開啟 **Windows 設定** ，然後搜尋並選取 [網路和共用中心]。
 1. 選擇 [變更進階共用] 設定選項。
 1. 在 [網域設定檔]下，選取 [開啟檔案及印表機共用] 然後選取 [儲存變更]。
-1. 關閉**網路和共用中心**。
+1. 關閉 **網路和共用中心** 。
 
 #### <a name="create-a-security-group-and-add-members"></a>建立安全性群組並新增成員
 
 1. 開啟 [Active Directory 使用者及電腦]。
 1. 在網域名稱上按一下滑鼠右鍵，選擇 [新增]，然後選取 [組織單位]。
 1. 在 [名稱] 方塊中，輸入 LocalObjects，然後選取 [確定]。
-1. 選取並以滑鼠右鍵按一下瀏覽窗格中的 **LocalObjects**。 選取 [新增]，然後選取 [群組]。
+1. 選取並以滑鼠右鍵按一下瀏覽窗格中的 **LocalObjects** 。 選取 [新增]，然後選取 [群組]。
 1. 在 [群組名稱] 方塊中，輸入 FileServerAccess。 在 [群組範圍] 中，選取 [網域本機]，然後選擇 [確定]。
-1. 在內容窗格中，按兩下 **FileServerAccess**。 選取 [成員]，選擇 [新增]，然後選取 [位置]。
-1. 從**位置**檢視中選取您的內部部署 Active Directory，然後選擇 [確定]。
+1. 在內容窗格中，按兩下 **FileServerAccess** 。 選取 [成員]，選擇 [新增]，然後選取 [位置]。
+1. 從 **位置** 檢視中選取您的內部部署 Active Directory，然後選擇 [確定]。
 1. 在 [輸入要選取的物件名稱] 方塊中輸入「網域使用者」。 選取 [檢查名稱]並提供內部部署 Active Directory 的認證，然後選取 [確定]。
 
     > [!NOTE]
     > 您必須提供認證，因為信任關係只有單向。 這表示來自受控網域的使用者無法存取資源，或搜尋信任 (內部部署) 網域中的使用者或群組。
 
-1. 來自內部部署 Active Directory 的**網域使用者**群組應該是 **FileServerAccess** 群組的成員。 選取 [確定] 儲存群組並關閉視窗。
+1. 來自內部部署 Active Directory 的 **網域使用者** 群組應該是 **FileServerAccess** 群組的成員。 選取 [確定] 儲存群組並關閉視窗。
 
 #### <a name="create-a-file-share-for-cross-forest-access"></a>建立跨樹系存取的檔案共用
 
-1. 在已加入受控網域資源樹系的 Windows Server VM 上，建立資料夾並提供名稱，例如 *CrossForestShare*。
+1. 在已加入受控網域資源樹系的 Windows Server VM 上，建立資料夾並提供名稱，例如 *CrossForestShare* 。
 1. 以滑鼠右鍵按一下資料夾，然後選擇 [屬性]。
 1. 選取 [安全性] 索引標籤，接著選取 [編輯]。
 1. 在 [CrossForestShare 權限] 對話方塊中，選取 [新增]。
-1. 在 **輸入物件名稱以選取**中輸入 FileServerAccess，然後選取 [確定]。
+1. 在 **輸入物件名稱以選取** 中輸入 FileServerAccess，然後選取 [確定]。
 1. 從 [群組或使用者名稱] 清單中選取 FileServerAccess。 在 [FileServerAccess 權限] 清單中，針對 [修改] 和 [寫入] 權限選擇 [允許]，然後選取 [確定]。
 1. 選取 [共用] 索引標籤，然後選擇 [進階共用...]
 1. 選擇 [共用此資料夾]，然後在 [共用名稱] 中，為檔案共用輸入易記的名稱，例如 CrossForestShare。
@@ -325,12 +325,12 @@ Add-AaddsResourceForestTrust `
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>驗證資源的跨樹系驗證
 
 1. 使用內部部署 Active Directory 的使用者帳戶，登入已加入內部部署 Active Directory 的 Windows 電腦。
-1. 使用 **Windows 檔案總管**連線到您使用完整主機名稱和共用 (例如 `\\fs1.aaddscontoso.com\CrossforestShare`) 所建立的共用。
-1. 若要驗證寫入權限，請在資料夾中按一下滑鼠右鍵，選擇 [新增]，然後選取 [文字文件]。 使用預設名稱**新增文字檔**。
+1. 使用 **Windows 檔案總管** 連線到您使用完整主機名稱和共用 (例如 `\\fs1.aaddscontoso.com\CrossforestShare`) 所建立的共用。
+1. 若要驗證寫入權限，請在資料夾中按一下滑鼠右鍵，選擇 [新增]，然後選取 [文字文件]。 使用預設名稱 **新增文字檔** 。
 
     如果已正確設定寫入權限，則會建立新的文字檔。 接下來的步驟將會適當地開啟、編輯及刪除檔案。
-1. 若要驗證讀取權限，請開啟**新增文字文件**。
-1. 若要驗證修改權限，請將文字新增至檔案，然後關閉**記事本**。 當系統提示您儲存變更時，請選擇 [儲存]。
+1. 若要驗證讀取權限，請開啟 **新增文字文件** 。
+1. 若要驗證修改權限，請將文字新增至檔案，然後關閉 **記事本** 。 當系統提示您儲存變更時，請選擇 [儲存]。
 1. 若要驗證刪除權限，請以滑鼠右鍵選取 [新增文字文件]，然後選擇 [刪除]。 選擇 [是] 確認檔案刪除。
 
 ## <a name="update-or-remove-outbound-forest-trust"></a>更新或移除輸出樹系信任
@@ -349,7 +349,7 @@ Add-AaddsResourceForestTrust `
     Install-Script -Name Get-AaddsResourceForestTrusts,Set-AaddsResourceForestTrust
     ```
 
-1. 在您可以更新現有信任之前，請先使用腳本取得信任資源 `Get-AaddsResourceForestTrusts` 。 在下列範例中，現有的信任會指派給名為 *existingTrust*的物件。 指定您自己的受控網域樹系名稱和內部部署樹系名稱以進行更新：
+1. 在您可以更新現有信任之前，請先使用腳本取得信任資源 `Get-AaddsResourceForestTrusts` 。 在下列範例中，現有的信任會指派給名為 *existingTrust* 的物件。 指定您自己的受控網域樹系名稱和內部部署樹系名稱以進行更新：
 
     ```powershell
     $existingTrust = Get-AaddsResourceForestTrust `
@@ -376,7 +376,7 @@ Add-AaddsResourceForestTrust `
     Install-Script -Name Remove-AaddsResourceForestTrust
     ```
 
-1. 現在請使用腳本移除樹系信任 `Remove-AaddsResourceForestTrust` 。 在下列範例中，已移除名為*aaddscontoso.com*和內部部署樹系*onprem.contoso.com*的受控網域樹系之間名為*myAzureADDSTrust*的信任。 指定您自己的受控網域樹系名稱和內部部署樹系名稱以移除：
+1. 現在請使用腳本移除樹系信任 `Remove-AaddsResourceForestTrust` 。 在下列範例中，已移除名為 *aaddscontoso.com* 和內部部署樹系 *onprem.contoso.com* 的受控網域樹系之間名為 *myAzureADDSTrust* 的信任。 指定您自己的受控網域樹系名稱和內部部署樹系名稱以移除：
 
     ```powershell
     Remove-AaddsResourceForestTrust `
@@ -388,9 +388,9 @@ Add-AaddsResourceForestTrust `
 若要從內部部署 AD DS 樹系移除單向輸入信任，請連線到可存取內部部署 AD DS 樹系的管理電腦，並完成下列步驟：
 
 1. 選取 **開始 | 系統管理工具 | Active Directory 網域及信任**
-1. 以滑鼠右鍵選取網域，例如 *onprem.contoso.com*，然後選取 [屬性]****
+1. 以滑鼠右鍵選取網域，例如 
 1. 選擇 [ **信任** ] 索引標籤，然後從您的受控網域樹系中選取現有的連入信任。
-1. 選取 [ **移除**]，然後確認您想要移除連入信任。
+1. 選取 [ **移除** ]，然後確認您想要移除連入信任。
 
 ## <a name="next-steps"></a>後續步驟
 

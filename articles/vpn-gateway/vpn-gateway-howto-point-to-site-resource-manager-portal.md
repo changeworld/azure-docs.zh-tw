@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 18260867f0258ebe3cc885c5a1b1754f143bfccc
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: fd95de8033fc5a986ac30677a4272336b1e17244
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541599"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041511"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>使用原生 Azure 憑證驗證設定 VNet 的點對站 VPN 連線： Azure 入口網站
 
@@ -73,11 +73,11 @@ ms.locfileid: "92541599"
 
 憑證是 Azure 用於驗證透過點對站 VPN 連線來連線至 VNet 的用戶端。 一旦您取得根憑證，您可將公開金鑰資訊[上傳](#uploadfile)至 Azure。 根憑證則會被視為 Azure「信任的」，可供透過 P2S 連線至虛擬網路。 您也可以從受信任的根憑證產生用戶端憑證，然後將它們安裝在每部用戶端電腦上。 在用戶端初始 VNet 連線時，用戶端憑證用來驗證用戶端。 
 
-### <a name="1-obtain-the-cer-file-for-the-root-certificate"></a><a name="getcer"></a>1. 取得根憑證的 .cer 檔案
+### <a name="1-root-certificate"></a><a name="getcer"></a>1. 根憑證
 
 [!INCLUDE [root-certificate](../../includes/vpn-gateway-p2s-rootcert-include.md)]
 
-### <a name="2-generate-a-client-certificate"></a><a name="generateclientcert"></a>2. 產生用戶端憑證
+### <a name="2-client-certificate"></a><a name="generateclientcert"></a>2. 用戶端憑證
 
 [!INCLUDE [generate-client-cert](../../includes/vpn-gateway-p2s-clientcert-include.md)]
 
@@ -142,21 +142,7 @@ VPN 用戶端組態檔所包含的設定，可用來將裝置設定為透過 P2S
 
 ### <a name="to-connect-from-a-windows-vpn-client"></a>從 Windows VPN 用戶端連線
 
->[!NOTE]
->您必須在您所連線的 Windows 用戶端電腦上具有系統管理員權限。
->
->
-
-1. 若要連接至您的 VNet，在用戶端電腦上瀏覽到 VPN 連線，然後找出所建立的 VPN 連線。 其名稱會與虛擬網路相同。 選取 [連接]。 可能會出現與使用憑證有關的快顯訊息。 選取 [ **繼續** ] 以使用較高的許可權。
-
-2. 在 [連線]  狀態頁面上，選取 [連線]  以便開始連線。 如果出現 [選取憑證]  畫面，請確認顯示的用戶端憑證是要用來連接的憑證。 如果不是，請使用下拉箭頭來選取正確的憑證，然後選取 **[確定]** 。
-
-   ![VPN 用戶端連線至 Azure](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/clientconnect.png "連線")
-3. 已建立您的連線。
-
-   ![連線已建立](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/connected.png "已建立連接")
-
-#### <a name="troubleshoot-windows-p2s-connections"></a>針對 Windows P2S 連線進行疑難排解
+[!INCLUDE [Connect from a Windows client](../../includes/vpn-gateway-p2s-connect-windows-client.md)]
 
 [!INCLUDE [verifies client certificates](../../includes/vpn-gateway-certificates-verify-client-cert-include.md)]
 
@@ -234,7 +220,7 @@ VPN 用戶端組態檔所包含的設定，可用來將裝置設定為透過 P2S
 
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 一旦完成您的連接，就可以將虛擬機器加入您的虛擬網路。 如需詳細資訊，請參閱[虛擬機器](https://docs.microsoft.com/azure/)。 若要了解網路與虛擬機器的詳細資訊，請參閱 [Azure 與 Linux VM 網路概觀](../virtual-machines/linux/azure-vm-network-overview.md)。
 
 如需有關為 P2S 疑難排解的資訊，請參閱[針對 Azure 點對站連線進行疑難排解](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)。

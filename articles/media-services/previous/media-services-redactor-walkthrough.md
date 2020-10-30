@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: 5fdec829ceeefce2426a5fd08b4245e66bd0a08c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 1a106874277f64a006584f9deb98fb9729263b1b
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016666"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040719"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>使用 Azure 媒體分析修訂臉部逐步解說
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 **Azure 媒體修訂器** 是 [Azure 媒體分析](./legacy-components.md) 媒體處理器 (MP)，可在雲端提供可調整的臉部修訂。 臉部修訂可讓您修改視訊，以模糊所選人物的臉部。 在公共安全和新聞媒體案例中，您可能會想要使用臉部修訂服務。 若要手動修訂包含多個臉部的幾分鐘影片，可能要花上數小時的時間，若使用此服務，則只需要幾個簡單的步驟就能完成臉部修訂程序。 如需詳細資訊，請參閱 [這](https://azure.microsoft.com/blog/azure-media-redactor/) 篇 blog。
 
-如需 **Azure 媒體修訂器**的詳細資訊，請參閱[臉部修訂概觀](media-services-face-redaction.md)主題。
+如需 **Azure 媒體修訂器** 的詳細資訊，請參閱 [臉部修訂概觀](media-services-face-redaction.md)主題。
 
 本主題逐步說明如何使用 Azure 媒體服務總管 (AMSE) 和 Azure 媒體修訂器視覺化檢視 (開放原始碼工具) 來執行完整的修訂工作流程。
 
@@ -38,7 +38,7 @@ ms.locfileid: "92016666"
 
 ## <a name="azure-media-services-explorer-workflow"></a>Azure 媒體服務總管工作流程
 
-開始使用修訂器最簡單的方法，是使用 GitHub 上的開放原始碼 AMSE 工具。 如果您不需要註解 json 或臉部 jpg 影像的存取權，您可以透過 [Combined] \(合併)**** 模式執行簡單的工作流程。
+開始使用修訂器最簡單的方法，是使用 GitHub 上的開放原始碼 AMSE 工具。 如果您不需要註解 json 或臉部 jpg 影像的存取權，您可以透過 [Combined] \(合併)  模式執行簡單的工作流程。
 
 ### <a name="download-and-setup"></a>下載及安裝
 
@@ -47,7 +47,7 @@ ms.locfileid: "92016666"
 
     若要取得帳戶名稱和金鑰資訊，請移至 [Azure 入口網站](https://portal.azure.com/)，然後選取 AMS 帳戶。 選取 [Settings] \(設定) > [Keys] \(金鑰)。 [管理金鑰] 視窗會顯示帳戶名稱以及主要和次要金鑰。 複製帳戶名稱和主要金鑰的值。
 
-![臉部修訂](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough001.png)
+![螢幕擷取畫面顯示 Microsoft Azure 媒體服務您可以在其中輸入您的帳戶名稱和金鑰。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough001.png)
 
 ### <a name="first-pass--analyze-mode"></a>第一階段 – 分析模式
 
@@ -55,32 +55,32 @@ ms.locfileid: "92016666"
 1. 按一下滑鼠右鍵，使用 [Media Analytics] \(媒體分析) –> [Azure Media Redactor] \(Azure 媒體修訂器) –> [Analyze mode] \(分析模式) 處理您的媒體檔案。 
 
 
-![臉部修訂](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough002.png)
+![螢幕擷取畫面顯示有 Azure 媒體修訂器的流程資產 (s) 的功能表。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough002.png)
 
-![臉部修訂](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough003.png)
+![螢幕擷取畫面顯示第一次行程 Azure 媒體修訂器：選取的分析模式。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough003.png)
 
 輸出會包含具有臉部位置資料的註解 json 檔案，以及每個所偵測臉部的 jpg。 
 
-![臉部修訂](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough004.png)
+![螢幕擷取畫面：顯示分析的輸出。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough004.png)
 
 ### <a name="second-pass--redact-mode"></a>第二階段 – 修訂模式
 
 1. 將原始的視訊資產上傳至第一階段中的輸出，並設為主要資產。 
 
-    ![臉部修訂](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough005.png)
+    ![螢幕擷取畫面顯示上傳並設定為主要按鈕。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough005.png)
 
 2. (選擇性) 上傳包含您想修訂之識別碼清單 (以新行分隔) 的 'Dance_idlist.txt' 檔案。 
 
-    ![臉部修訂](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
+    ![螢幕擷取畫面顯示上傳文字檔的選項。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
 
 3. (選擇性) 編輯 annotations.json 檔案，例如增加周框方塊界限。 
-4. 以滑鼠右鍵按一下第一階段中的輸出資產，選取修訂器，並以 [Redact] \(修訂)**** 模式執行。 
+4. 以滑鼠右鍵按一下第一階段中的輸出資產，選取修訂器，並以 [Redact] \(修訂)  模式執行。 
 
-    ![臉部修訂](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
+    ![螢幕擷取畫面顯示 Azure 媒體修訂器第二個階段：選取了修訂模式。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
 
 5. 下載或分享最終修訂的輸出資產。 
 
-    ![臉部修訂](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
+    ![螢幕擷取畫面：顯示 [下載] 按鈕。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
 
 ## <a name="azure-media-redactor-visualizer-open-source-tool"></a>Azure 媒體修訂器視覺化檢視開放原始碼工具
 
@@ -94,12 +94,12 @@ ms.locfileid: "92016666"
 
 1.  下載和建置整個方案。 
 
-    ![臉部修訂](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
+    ![螢幕擷取畫面：顯示從功能表選取的組建方案。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
 
 2.  從[這裡](https://ffmpeg.org/download.html)下載 FFMPEG。 此專案原先是使用含靜態連結的版本 be1d324 (2016-10-04) 所開發。 
 3.  將 ffmpeg.exe 和 ffprobe.exe 複製到和 AzureMediaRedactor.exe 相同的輸出資料夾。 
 
-    ![臉部修訂](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
+    ![螢幕擷取畫面：顯示資料夾的內容，包括 ffmpeg 和 ffprobe。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
 
 4. 執行 AzureMediaRedactor.exe。 
 
@@ -109,11 +109,11 @@ ms.locfileid: "92016666"
 2. 下載原始視訊檔和「修訂 - 分析」工作的輸出。 
 3. 執行視覺化檢視應用程式，然後選擇上述檔案。 
 
-    ![臉部修訂](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough011.png)
+    ![螢幕擷取畫面顯示 Azure 媒體修訂器上傳檔案。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough011.png)
 
 4. 預覽檔案。 透過右側資訊看板選取您想要模糊化的臉部。 
     
-    ![臉部修訂](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
+    ![螢幕擷取畫面顯示 Azure 媒體修訂器，您可以在其中預覽和選取要模糊的臉部。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
 
 5.  下方的文字欄位會更新為臉部識別碼。 建立名為 "idlist.txt" 的檔案，其中包含這些識別碼清單 (以新行分隔)。 
 

@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 8e88e5e8a9fbe1881959c5183dc01b11ac681bdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 564c7cf6e9627db08d543b964ce476e71bfb473d
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82780365"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040745"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>將已對應的資料流參數化
 
@@ -28,7 +28,7 @@ Azure Data Factory 中的對應資料流程支援使用參數。 定義您的資
 
 ## <a name="create-parameters-in-a-mapping-data-flow"></a>在對應資料流程中建立參數
 
-若要將參數加入至您的資料流程，請按一下 [資料流程] 畫布的空白部分，以查看一般屬性。 在 [設定] 窗格中，您會看到一個名為 [ **參數**] 的索引標籤。 選取 [ **新增** ] 以產生新的參數。 針對每個參數，您必須指派名稱、選取類型，並選擇性地設定預設值。
+若要將參數加入至您的資料流程，請按一下 [資料流程] 畫布的空白部分，以查看一般屬性。 在 [設定] 窗格中，您會看到一個名為 [ **參數** ] 的索引標籤。 選取 [ **新增** ] 以產生新的參數。 針對每個參數，您必須指派名稱、選取類型，並選擇性地設定預設值。
 
 ![建立資料流程參數](media/data-flow/create-params.png "建立資料流程參數")
 
@@ -36,11 +36,11 @@ Azure Data Factory 中的對應資料流程支援使用參數。 定義您的資
 
 您可以在任何資料流程運算式中參考參數。 參數以 $ 開頭，且不可變。 您可以在 [ **參數** ] 索引標籤下的 [運算式產生器] 中找到可用參數的清單。
 
-![資料流程參數運算式](media/data-flow/parameter-expression.png "資料流程參數運算式")
+![螢幕擷取畫面：顯示 [參數] 索引標籤中可用的參數。](media/data-flow/parameter-expression.png "資料流程參數運算式")
 
 您可以藉由選取 [ **新增參數** ] 並指定名稱和類型，快速新增其他參數。
 
-![資料流程參數運算式](media/data-flow/new-parameter-expression.png "資料流程參數運算式")
+![螢幕擷取畫面：顯示 [參數] 索引標籤中已新增參數的參數。](media/data-flow/new-parameter-expression.png "資料流程參數運算式")
 
 ## <a name="assign-parameter-values-from-a-pipeline"></a>從管線指派參數值
 
@@ -48,13 +48,13 @@ Azure Data Factory 中的對應資料流程支援使用參數。 定義您的資
 
 指派參數值時，您可以使用 [管線運算式語言](control-flow-expression-language-functions.md) 或以 spark 類型為基礎的資料流程 [運算式語言](data-flow-expression-functions.md) 。 每個對應資料流程可以有任意組合的管線和資料流程運算式參數。
 
-![設定資料流程參數](media/data-flow/parameter-assign.png "設定資料流程參數")
+![螢幕擷取畫面顯示 [參數] 索引標籤，其中包含針對 myparam 值選取的資料流程運算式。](media/data-flow/parameter-assign.png "設定資料流程參數")
 
 ### <a name="pipeline-expression-parameters"></a>管線運算式參數
 
-管線運算式參數可讓您參考類似于其他管線活動的系統變數、函式、管線參數和變數。 當您按一下 [ **管線運算式**] 時，會開啟側邊導覽，讓您可以使用運算式產生器來輸入運算式。
+管線運算式參數可讓您參考類似于其他管線活動的系統變數、函式、管線參數和變數。 當您按一下 [ **管線運算式** ] 時，會開啟側邊導覽，讓您可以使用運算式產生器來輸入運算式。
 
-![設定資料流程參數](media/data-flow/parameter-pipeline.png "設定資料流程參數")
+![螢幕擷取畫面：顯示 [運算式產生器] 窗格。](media/data-flow/parameter-pipeline.png "設定資料流程參數")
 
 參考時，會評估管線參數，然後在資料流程運算式語言中使用它們的值。 管線運算式類型不需要符合資料流程參數類型。 
 
@@ -62,7 +62,7 @@ Azure Data Factory 中的對應資料流程支援使用參數。 定義您的資
 
 指派字串類型的管線運算式參數時，會加入預設的引號，並將值評估為常值。 若要將參數值讀取為數據流運算式，請核取參數旁的 [運算式] 方塊。
 
-![設定資料流程參數](media/data-flow/string-parameter.png "設定資料流程參數")
+![螢幕擷取畫面：顯示為參數選取的 [資料流程參數] 窗格運算式。](media/data-flow/string-parameter.png "設定資料流程參數")
 
 若資料流程參數 `stringParam` 參考具有值的管線參數 `upper(column1)` 。 
 
@@ -73,7 +73,7 @@ Azure Data Factory 中的對應資料流程支援使用參數。 定義您的資
 
 在管線運算式語言中，系統變數（例如和函式）會將 `pipeline().TriggerTime` `utcNow()` 時間戳記傳回為格式為 ' Yyyy-mm-dd \' T \' HH： MM： ss 的字串。SSSSSSZ'. 若要將這些參數轉換為 timestamp 類型的資料流程參數，請使用字串插補在函式中包含所需的時間戳記 `toTimestamp()` 。 例如，若要將管線觸發時間轉換成資料流程參數，您可以使用 `toTimestamp(left('@{pipeline().TriggerTime}', 23), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS')` 。 
 
-![設定資料流程參數](media/data-flow/parameter-timestamp.png "設定資料流程參數")
+![螢幕擷取畫面顯示 [參數] 索引標籤，您可以在其中輸入觸發時間。](media/data-flow/parameter-timestamp.png "設定資料流程參數")
 
 > [!NOTE]
 > 資料流程最多隻能支援3毫秒的數位。 `left()`函數是用來修剪其他數位。
@@ -82,15 +82,15 @@ Azure Data Factory 中的對應資料流程支援使用參數。 定義您的資
 
 假設您有一個整數參數， `intParam` 參考字串類型的管線參數 `@pipeline.parameters.pipelineParam` 。 
 
-![設定資料流程參數](media/data-flow/parameter-pipeline-2.png "設定資料流程參數")
+![螢幕擷取畫面顯示 [參數] 索引標籤，其中包含名為 stringParam 和 intParam 的參數。](media/data-flow/parameter-pipeline-2.png "設定資料流程參數")
 
 `@pipeline.parameters.pipelineParam` 會 `abs(1)` 在執行時間指派值給。
 
-![設定資料流程參數](media/data-flow/parameter-pipeline-4.png "設定資料流程參數")
+![螢幕擷取畫面顯示 [參數] 索引標籤的 [參數] 索引標籤值為 b s (1) 選取。](media/data-flow/parameter-pipeline-4.png "設定資料流程參數")
 
 當 `$intParam` 在衍生資料行之類的運算式中參考時，它將會評估 `abs(1)` return `1` 。 
 
-![設定資料流程參數](media/data-flow/parameter-pipeline-3.png "設定資料流程參數")
+![顯示資料行值的螢幕擷取畫面。](media/data-flow/parameter-pipeline-3.png "設定資料流程參數")
 
 ### <a name="data-flow-expression-parameters"></a>資料流程運算式參數
 
@@ -108,6 +108,6 @@ Azure Data Factory 中的對應資料流程支援使用參數。 定義您的資
 
 ![以參數形式傳遞資料行名稱](media/data-flow/parameterize-column-name.png "以參數形式傳遞資料行名稱")
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [執行資料流程活動](control-flow-execute-data-flow-activity.md)
 * [控制流程運算式](control-flow-expression-language-functions.md)

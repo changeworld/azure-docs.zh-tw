@@ -50,6 +50,8 @@
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
     - name: 管理 QnA Maker 應用程式
       href: How-To/manage-qna-maker-app.md
+    - name: 開啟主動式學習
+      href: How-To/use-active-learning.md
     - name: 管理知識庫
       items:
         - name: 建立知識庫

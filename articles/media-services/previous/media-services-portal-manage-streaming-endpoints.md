@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: b7ea61a1f09a9340661f333e452f70c5ad8cf877
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 496c5de8f9ead0773dfef7e65051344645ffa9de
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266641"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041974"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>透過 Azure 入口網站管理串流端點
 
@@ -38,9 +38,9 @@ ms.locfileid: "89266641"
 若要開始管理您帳戶的串流端點，請執行下列作業。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您的 Azure 媒體服務帳戶。
-2. 在 [設定]**** 刀鋒視窗中，選取 [串流端點]****。
+2. 在 [設定]  刀鋒視窗中，選取 [串流端點]  。
    
-    ![串流端點](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints1.png)
+    ![顯示 [媒體服務] 頁面的螢幕擷取畫面，其中已從 [設定] 分頁選取「串流端點」。](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints1.png)
 
 > [!NOTE]
 > 只有當串流端點處於執行中狀態時，才會向您收取費用。
@@ -52,14 +52,14 @@ ms.locfileid: "89266641"
 
 若要使用 Azure 入口網站來新增或移除串流端點，以執行下列作業：
 
-1. 若要新增串流端點，請按一下頁面頂端的 [+端點] **** 。 
+1. 若要新增串流端點，請按一下頁面頂端的 [+端點]  。 
 
     如果您打算有不同的 CDN 或一個 CDN 和直接存取，您可能需要有多個串流端點。
 
-2. 若要刪除串流端點，請按下 [刪除] **** 按鈕。      
+2. 若要刪除串流端點，請按下 [刪除]  按鈕。      
 3. 按一下 [ **開始** ] 按鈕以啟動串流端點。
    
-    ![串流端點](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
+    ![顯示已選取 [端點] 動作的螢幕擷取畫面，並顯示 [串流端點詳細資料] 窗格。](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
 
 
 ## <a name="configuring-the-streaming-endpoint"></a><a id="configure_streaming_endpoints"></a>設定串流端點
@@ -77,11 +77,11 @@ ms.locfileid: "89266641"
 若要設定串流端點，請執行以下作業：
 
 1. 選取您想要設定的串流端點。
-2. 按一下 [設定]。
+2. 按一下 [設定]  。
 
 隨時顯示簡要的欄位說明。
 
-![串流端點](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints4.png)
+![顯示針對串流端點選取之 [設定] 動作的螢幕擷取畫面。](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints4.png)
 
 1. 最大快取原則：用來設定透過此串流端點所提供的資源快取存留期。 如果沒有設定任何值，則會使用預設值。 預設值也可以直接在 Azure 儲存體中定義。 如果 Azure CDN 已針對串流端點啟用，您便不應該將快取原則值設定成少於 600 秒。  
 2. 允許的 IP 位址：用來指定能夠連接到已發佈之串流端點的 IP 位址。 若未指定 IP 位址，則任何 IP 位址都可連接。 IP 位址可以指定為單一 IP 位址 (例如 ‘10.0.0.1’)、使用 IP 位址和 CIDR 子網路遮罩的 IP 範圍 (例如 ‘10.0.0.1/22’)，或是使用 IP 位址和小數點十進位子網路遮罩的 IP 範圍 (例如 ‘10.0.0.1(255.255.255.0)’)。
@@ -95,25 +95,25 @@ ms.locfileid: "89266641"
 
 當您建立新的帳戶時，依預設會啟用預設串流端點 Azure CDN 整合。
 
-如果您稍後想要停用/啟用 CDN，串流端點必須處於**已停止**狀態。 可能需要將近 2 小時，Azure CDN 整合才會啟用，變更也才會遍及所有 CDN POP。 不過，您可以啟動串流端點，並從串流端點不停地串流，等到整合完成後，則會從 CDN 傳送資料流。 在佈建期間，您的串流端點會處於**啟動中**狀態，而且您可能會發現效能下降。
+如果您稍後想要停用/啟用 CDN，串流端點必須處於 **已停止** 狀態。 可能需要將近 2 小時，Azure CDN 整合才會啟用，變更也才會遍及所有 CDN POP。 不過，您可以啟動串流端點，並從串流端點不停地串流，等到整合完成後，則會從 CDN 傳送資料流。 在佈建期間，您的串流端點會處於 **啟動中** 狀態，而且您可能會發現效能下降。
 
 中國和聯邦政府區域除外，其他所有 Azure 資料中心都啟用 CDN 整合。
 
-啟用之後，就會停用 [ **存取控制**]、[自訂主機名稱] 和 [Akamai 簽章 **驗證** ] 設定。
+啟用之後，就會停用 [ **存取控制** ]、[自訂主機名稱] 和 [Akamai 簽章 **驗證** ] 設定。
  
 > [!IMPORTANT]
-> 如果是標準串流端點，Azure 媒體服務與 Azure CDN 的整合是在**來自 Verizon 的 Azure CDN** 上實作。 您可以使用所有 **Azure CDN 定價層和提供者**來設定進階串流端點。 如需 Azure CDN 功能的詳細資訊，請參閱 [CDN 概觀](../../cdn/cdn-overview.md)。
+> 如果是標準串流端點，Azure 媒體服務與 Azure CDN 的整合是在 **來自 Verizon 的 Azure CDN** 上實作。 您可以使用所有 **Azure CDN 定價層和提供者** 來設定進階串流端點。 如需 Azure CDN 功能的詳細資訊，請參閱 [CDN 概觀](../../cdn/cdn-overview.md)。
  
 ### <a name="additional-considerations"></a>其他考量
 
 * 對串流端點啟用 CDN 時，用戶端無法直接從來源要求內容。 如果您需要在具有 CDN 或不具有 CDN 的情況下測試您內容的能力，您可以建立另一個未啟用 CDN 的串流端點。
 * 您的串流端點主機名稱在啟用 CDN 之後維持不變。 您在啟用 CDN 之後不需要對您的媒體服務工作流程進行任何變更。 例如，如果您的串流端點主機名稱是 strasbourg.streaming.mediaservices.windows.net，則在啟用 CDN 之後，會使用完全相同的主機名稱。
 * 對於新的串流端點，只要建立新的端點就會啟用 CDN；對於現有的串流端點，您必須先停止端點，然後啟用/停用 CDN。
-* 只有透過 Azure 傳統入口網站使用 **Verizon 標準 CDN 提供者**，才能設定標準串流端點。 不過，您可以使用 REST API 來啟用其他 Azure CDN 提供者。
+* 只有透過 Azure 傳統入口網站使用 **Verizon 標準 CDN 提供者** ，才能設定標準串流端點。 不過，您可以使用 REST API 來啟用其他 Azure CDN 提供者。
 
 ## <a name="configure-cdn-profile"></a>設定 CDN 設定檔
 
-您可以選取頂端的 [管理 CDN]**** 按鈕來設定 CDN 設定檔。
+您可以選取頂端的 [管理 CDN]  按鈕來設定 CDN 設定檔。
 
 ![串流端點](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints6.png)
 

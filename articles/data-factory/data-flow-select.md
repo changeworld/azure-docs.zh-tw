@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/02/2020
-ms.openlocfilehash: 70e0a95a85920562af8bf9d3fffa6633709dccc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d8c4d1915e22ccabf193f1b34c5fc4797ead549
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84322085"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040241"
 ---
 # <a name="select-transformation-in-mapping-data-flow"></a>在對應資料流程中選取轉換
 
@@ -44,13 +44,13 @@ ms.locfileid: "84322085"
 
 如果您想要一次對應許多資料行或傳遞漂移資料行，請使用以規則為基礎的對應，利用資料行模式來定義您的對應。 根據 `name` 、、和資料 `type` 行進行比對 `stream` `position` 。 您可以使用固定和以規則為基礎的對應組合。 依預設，具有大於50資料行的所有投影都會預設為以規則為基礎的對應，以符合每個資料行，並輸出輸入的名稱。 
 
-若要加入以規則為基礎的對應，請按一下 [ **新增對應** ]，然後選取 [ **規則型對應**]。
+若要加入以規則為基礎的對應，請按一下 [ **新增對應** ]，然後選取 [ **規則型對應** ]。
 
-![以規則為基礎的對應](media/data-flow/rule2.png "規則型對應")
+![螢幕擷取畫面顯示從 [新增對應] 選取的規則型對應。](media/data-flow/rule2.png "規則型對應")
 
 每個以規則為基礎的對應都需要兩個輸入：要比對的條件，以及命名每個對應資料行的名稱。 這兩個值都是透過 [運算式](concepts-data-flow-expression-builder.md)產生器來輸入的。 在 [左運算式] 方塊中，輸入您的布林值比對條件。 在 [右運算式] 方塊中，指定要對應的相符資料行。
 
-![以規則為基礎的對應](media/data-flow/rule-based-mapping.png "規則型對應")
+![螢幕擷取畫面顯示對應。](media/data-flow/rule-based-mapping.png "規則型對應")
 
 使用 `$$` 語法來參考相符資料行的輸入名稱。 使用上述影像作為範例，假設使用者想要比對名稱少於六個字元的所有字串資料行。 如果有一個傳入的資料行命名為 `test` ，運算式 `$$ + '_short'` 就會將資料行重新命名 `test_short` 。 如果這是唯一存在的對應，就會從輸出資料中卸載不符合條件的所有資料行。
 
@@ -60,7 +60,7 @@ ms.locfileid: "84322085"
 
 如果您按一下向下箭號圖示，則可以指定 RegEx 對應條件。 Regex 對應條件符合所有符合指定之 RegEx 條件的資料行名稱。 這可以與標準規則型對應搭配使用。
 
-![以規則為基礎的對應](media/data-flow/regex-matching.png "規則型對應")
+![螢幕擷取畫面顯示具有階層層級和名稱相符專案的 RegEx 對應條件。](media/data-flow/regex-matching.png "規則型對應")
 
 上述範例符合 RegEx 模式 `(r)` 或包含小寫 r 的任何資料行名稱。 類似于標準規則型對應，所有相符的資料行都是使用語法來改變右邊的條件 `$$` 。
 
@@ -70,7 +70,7 @@ ms.locfileid: "84322085"
 
 如果您定義的投射具有階層，您可以使用以規則為基礎的對應來對應階層個子。 指定要對應其個子的比對條件和複雜資料行。 每個相符的 subcolumn 都會使用右側指定的「名稱即」規則進行輸出。
 
-![以規則為基礎的對應](media/data-flow/rule-based-hierarchy.png "規則型對應")
+![螢幕擷取畫面顯示針對階層使用以規則為基礎的對應。](media/data-flow/rule-based-hierarchy.png "規則型對應")
 
 上述範例符合複雜資料行的所有個子 `a` 。 `a` 包含兩個個子 `b` 和 `c` 。 輸出架構會包含兩個數據行 `b` ，而「 `c` 名稱」條件為 `$$` 。
 
@@ -132,5 +132,5 @@ DerivedColumn1 select(mapColumn(
     skipDuplicateMapOutputs: true) ~> Select1
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 使用 Select 重新命名、重新排序和別名資料行之後，請使用 [接收轉換](data-flow-sink.md) 將資料放入資料存放區。

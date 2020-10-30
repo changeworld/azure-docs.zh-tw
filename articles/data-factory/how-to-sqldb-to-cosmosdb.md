@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: makromer
-ms.openlocfilehash: 3d2ef6fb0cd7af444b9bff755eee4eee70d03d15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d93cb49c77a4c8164a8b4e9bca349a805f39678
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82691890"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041630"
 ---
 # <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>將正規化資料庫結構從 Azure SQL Database 遷移至 Azure CosmosDB 的反正規化容器
 
@@ -50,7 +50,7 @@ FROM SalesLT.SalesOrderHeader o;
 
 2. 新增資料流程活動
 
-3. 在 [資料流程] 活動中，選取 [ **新增對應資料流程**]。
+3. 在 [資料流程] 活動中，選取 [ **新增對應資料流程** ]。
 
 4. 我們將在下方建立此資料流程圖
 
@@ -96,15 +96,15 @@ FROM SalesLT.SalesOrderHeader o;
 
 19. 在 [接收設定] 中，將 [資料分割索引鍵 ```\SalesOrderID``` ] 和 [集合] 動作重新建立。 請確定您的 [對應] 索引標籤看起來像這樣：
 
-![接收設定](media/data-flow/cosmosb7.png)
+![螢幕擷取畫面：顯示 [對應] 索引標籤。](media/data-flow/cosmosb7.png)
 
 20. 按一下 [資料預覽] 以確定您看到這些32資料列已設定為在新的容器中插入新的檔：
 
-![接收設定](media/data-flow/cosmosb8.png)
+![螢幕擷取畫面：顯示 [資料預覽] 索引標籤。](media/data-flow/cosmosb8.png)
 
 如果一切看起來都沒問題，您現在可以開始建立新的管線，將此資料流程活動新增至該管線，然後執行它。 您可以從 debug 或觸發的執行執行。 幾分鐘後，您的 CosmosDB 資料庫中應該會有一個名為 "orders" 的新反正規化容器。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 使用對應資料流程 [轉換](concepts-data-flow-overview.md)來建立其餘的資料流程邏輯。
 * 下載此教學課程[的已完成管線範本](https://github.com/kromerm/adfdataflowdocs/blob/master/sampledata/SQL%20Orders%20to%20CosmosDB.zip)，然後將範本匯入您的 factory。

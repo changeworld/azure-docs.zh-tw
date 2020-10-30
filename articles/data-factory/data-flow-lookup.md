@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/28/2020
-ms.openlocfilehash: a4fcdad0efda1ab2a43be65865e3aac59f7ef3e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70787f1d918064b48d37ce051bfdd2aba49472ea
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84187603"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040182"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>對應資料流程中的查閱轉換
 
@@ -27,7 +27,7 @@ ms.locfileid: "84187603"
 
 ## <a name="configuration"></a>組態
 
-![查閱轉換](media/data-flow/lookup1.png "查閱")
+![螢幕擷取畫面顯示 [查閱設定] 索引標籤，其中包含下列文字所述的標籤。](media/data-flow/lookup1.png "查閱")
 
 **主要串流：** 傳入的資料串流。 此串流相當於聯結的左側。
 
@@ -85,7 +85,7 @@ ms.locfileid: "84187603"
 ```
 ### <a name="example"></a>範例
 
-![查閱轉換](media/data-flow/lookup-dsl-example.png "查閱")
+![螢幕擷取畫面：顯示下列程式碼的 [查閱設定] 索引標籤。](media/data-flow/lookup-dsl-example.png "查閱")
 
 上述查閱設定的資料流程指令碼位於下列程式碼片段中。
 

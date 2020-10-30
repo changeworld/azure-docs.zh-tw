@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 9d304767cf28c0e9230c93d5b9e7504b03ed25d4
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 1ac27f8fe0c6c608bfc261e9ac2d96651c94b341
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018877"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040084"
 ---
 # <a name="animated-character-detection-preview"></a>動畫角色偵測 (預覽)
 
@@ -75,11 +75,11 @@ Azure 媒體服務影片索引子可透過與 [認知服務自訂視覺](https:/
     > [!NOTE]
     > 若要提供所有的金鑰，您必須在自訂視覺中有兩個不同的資源，一個用於定型，另一個用於預測。
 1. 流覽並登入 [影片索引子](https://vi.microsoft.com/)。
-1. 按一下頁面右上角的問號，然後選擇 [ **API 參考**]。
+1. 按一下頁面右上角的問號，然後選擇 [ **API 參考** ]。
 1. 按一下 [ **產品** ] 索引標籤，確認您已訂閱 API 管理。如果您有已連線的 API，您可以繼續進行下一個步驟，否則請訂閱。 
-1. 在開發人員入口網站上，按一下 [ **完整 API 參考** ]，然後流覽至 [ **作業**]。  
-1. 選取 **[連接自訂視覺帳戶] (預覽) ** 然後按一下 [ **試試看**]。
-1. 填寫必要欄位以及存取權杖，然後按一下 [ **傳送**]。 
+1. 在開發人員入口網站上，按一下 [ **完整 API 參考** ]，然後流覽至 [ **作業** ]。  
+1. 選取 **[連接自訂視覺帳戶] (預覽)** 然後按一下 [ **試試看** ]。
+1. 填寫必要欄位以及存取權杖，然後按一下 [ **傳送** ]。 
 
     如需如何取得影片索引子存取權杖的詳細資訊，請移至 [開發人員入口網站](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token?)，並查看 [相關的檔](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api)。  
 1. 一旦呼叫傳回 200 OK 回應，您的帳戶就會連線。
@@ -96,9 +96,9 @@ Azure 媒體服務影片索引子可透過與 [認知服務自訂視覺](https:/
 1. 瀏覽至[影片索引子](https://vi.microsoft.com/)網站並登入。
 1. 按一下頁面右上角的 [內容模型自訂] 按鈕。
 
-    ![內容模型自訂](./media/animated-characters-recognition/content-model-customization.png)
+    ![顯示 [影片索引子] 頁面的螢幕擷取畫面，其中已在右上角選取 [內容模型自訂] 按鈕。](./media/animated-characters-recognition/content-model-customization.png)
 1. 移至 [模型自訂] 區段中的 [ **動畫字元** ] 索引標籤。
-1. 按一下 [ **加入模型**]。
+1. 按一下 [ **加入模型** ]。
 1. 命名您的模型，然後按一下 enter 儲存名稱。
 
 > [!NOTE]
@@ -108,11 +108,11 @@ Azure 媒體服務影片索引子可透過與 [認知服務自訂視覺](https:/
 
 1. 按一下頂端功能表中的 [上 **傳** ] 按鈕。
 1. 選擇要從檔案或 URL) 上傳 (的影片。
-1. 按一下 [ **Advanced options**]。
-1. 在 [ **人員/動畫字元** ] 下，選擇 [ **動畫模型**]。
+1. 按一下 [ **Advanced options** ]。
+1. 在 [ **人員/動畫字元** ] 下，選擇 [ **動畫模型** ]。
 1. 如果您有一個模型，它會自動選擇，如果您有多個模型，您可以從下拉式功能表中選擇相關的模型。
 1. 按一下 [上傳]。
-1. 影片編制索引之後，您會在 [**見解**] 窗格的 [**動畫字元**] 區段中看到偵測到的字元。
+1. 影片編制索引之後，您會在 [ **見解** ] 窗格的 [ **動畫字元** ] 區段中看到偵測到的字元。
 
 > [!NOTE] 
 > 標記和定型模型之前，所有的動畫字元將會命名為「未知 #X」。 定型模型之後，也會加以辨識。
@@ -129,7 +129,7 @@ Azure 媒體服務影片索引子可透過與 [認知服務自訂視覺](https:/
 
         開啟 [自訂] 頁面，按一下 [ **動畫字元** ] 索引標籤，然後按一下 [ **定型** ] 按鈕以定型您的模型。
          
-        如果您有付費帳戶，您可以按一下 [ **在客戶視覺上管理模型** ] 連結 (，如下所示) 。 然後，您將會在 **自訂視覺**中轉送至模型的頁面。
+        如果您有付費帳戶，您可以按一下 [ **在客戶視覺上管理模型** ] 連結 (，如下所示) 。 然後，您將會在 **自訂視覺** 中轉送至模型的頁面。
  
         ![內容模型自訂](./media/animated-characters-recognition/content-model-customization-tab.png)
 

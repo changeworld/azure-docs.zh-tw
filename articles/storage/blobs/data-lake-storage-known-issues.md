@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/08/2020
+ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 1c887093972507904b007c696214708eb0e2b039
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: bffe69dd5b7d3cdfcba1df3420d494dcffc33f9a
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282199"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042669"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知問題
 
@@ -68,13 +68,13 @@ Blob API 和 Data Lake Storage Gen2 API 可運作於相同的資料上。
 
 ## <a name="azcopy"></a>AzCopy
 
-請僅使用最新版本的 AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json))。 不支援舊版的 AzCopy (例如 AzCopy 8.1)。
+請僅使用最新版本的 AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json))。  不支援舊版的 AzCopy (例如 AzCopy 8.1)。
 
 <a id="storage-explorer"></a>
 
 ## <a name="azure-storage-explorer"></a>Azure 儲存體總管
 
-請僅使用  `1.6.0`  版或更高版本。
+只使用版本 `1.6.0` 或更高版本。
 
 <a id="explorer-in-portal"></a>
 
@@ -84,7 +84,7 @@ Blob API 和 Data Lake Storage Gen2 API 可運作於相同的資料上。
 
 <a id="third-party-apps"></a>
 
-## <a name="thirdpartyapplications"></a>協力廠商應用程式
+## <a name="third-party-applications"></a>協力廠商應用程式
 
 如果使用利用 REST API 的協力廠商應用程式，並將其與呼叫 Blob API 的 Data Lake Storage Gen2 應用程式搭配使用，其將會繼續運作。
 
@@ -92,38 +92,15 @@ Blob API 和 Data Lake Storage Gen2 API 可運作於相同的資料上。
 
 如果已將[匿名讀取權限](storage-manage-access-to-resources.md)授與容器，則 ACL 不會影響該容器或該容器中的檔案。
 
-### <a name="diagnostic-logs"></a>診斷記錄
+## <a name="diagnostic-logs"></a>診斷記錄
 
 尚不支援保留天數的設定，但您可以使用任何支援的工具（例如 Azure 儲存體總管、REST 或 SDK）手動刪除記錄。
 
-## <a name="issues-specific-to-premium-performance-blockblobstorage-storage-accounts"></a>Premium 效能 BlockBlobStorage 儲存體帳戶的特定問題
+## <a name="lifecycle-management-policies-with-premium-tier-for-azure-data-lake-storage"></a>使用進階層進行 Azure Data Lake Storage 的生命週期管理原則
 
-### <a name="diagnostic-logs"></a>診斷記錄
+您無法在經常性存取層、非經常性存取層和封存層之間移動儲存在進階層中的資料。 不過，您可以將資料從進階層複製到不同帳戶中的經常性存取層。
 
-診斷記錄尚無法使用 Azure 入口網站啟用。 您可使用 PowerShell 來加以啟用。 例如：
-
-```powershell
-#To login
-Connect-AzAccount
-
-#Set default block blob storage account.
-Set-AzCurrentStorageAccount -Name premiumGen2Account -ResourceGroupName PremiumGen2Group
-
-#Enable logging
-Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays 14
-```
-
-### <a name="lifecycle-management-policies"></a>生命週期管理原則
-
-- 只有一般用途 v2 帳戶才支援生命週期管理原則。 Premium BlockBlobStorage 儲存體帳戶尚不支援這些功能。
-- 資料無法從進階層移至較低階層。
-
-
-### <a name="hdinsight-support"></a>HDInsight 支援
-
-當建立 n 個 HDInsight 叢集時，您尚無法選取已在其上啟用階層命名空間功能的 BlockBlobStorage 帳戶。 不過，您可在建立叢集後將該帳戶連結至叢集。
-
-### <a name="dremio-support"></a>Dremio 支援
+## <a name="dremio-support-with-premium-performance-blockblobstorage-storage-accounts"></a>Premium 效能 BlockBlobStorage 儲存體帳戶的 Dremio 支援
 
 Dremio 尚無法連線至已啟用階層命名空間功能的 BlockBlobStorage 帳戶。 
 

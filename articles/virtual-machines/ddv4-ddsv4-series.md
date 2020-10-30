@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 370e9e0df2a4fc2ee4aca43c01bfe0a98077d189
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 6367a3c3e6a946068498c92456ba42cd3c7c4bdd
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018843"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042642"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Ddv4 和 Ddsv4 系列
 
@@ -33,10 +33,10 @@ Ddv4 系列大小是在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 上�
 [進階儲存體](premium-storage-performance.md)快取：不支援<br>
 [即時移轉](maintenance-and-updates.md)：支援<br>
 [記憶體保留更新](maintenance-and-updates.md)：支援<br>
-[VM 世代支援](generation-2.md)：第1代<br>
+[VM 世代支援](generation-2.md)：第1代和第2代<br>
 <br> 
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | <sup>**</sup> 最大快取和暫存儲存體輸送量： IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|
 | Standard_D2d_v4 | 2 | 8 | 75 | 4 | 19000/120 | 2|1000 |
 | Standard_D4d_v4 | 4 | 16 | 150 | 8 | 38500/242 | 2|2000 |
@@ -45,6 +45,8 @@ Ddv4 系列大小是在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 上�
 | Standard_D32d_v4 | 32 | 128 | 1200 | 32 | 308000/1936 | 8|16000 |
 | Standard_D48d_v4 | 48 | 192 | 1800 | 32 | 462000/2904 | 8|24000 |
 | Standard_D64d_v4 | 64 | 256 | 2400 | 32 | 615000/3872 | 8|30000 |
+
+<sup>**</sup>您可以使用[Gen2 vm](generation-2.md)保證這些 IOPs 值
 
 ## <a name="ddsv4-series"></a>Ddsv4 系列
 
@@ -63,7 +65,7 @@ Ddv4 系列是在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 上執行�
 [VM 世代支援](generation-2.md)：第1代和第2代<br>
 <br> 
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps (GiB 中的快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | <sup>**</sup> 最大快取和暫存儲存體輸送量： IOPS/MBps (GiB 中的快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|---|
 | Standard_D2ds_v4 | 2 | 8 | 75 | 4 | 19000/120(50) | 3200/48 | 2|1000 |
 | Standard_D4ds_v4 | 4 | 16 | 150 | 8 | 38500/242(100) | 6400/96 | 2|2000 |
@@ -72,6 +74,8 @@ Ddv4 系列是在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 上執行�
 | Standard_D32ds_v4 | 32 | 128 | 1200 | 32 | 308000/1936(800) | 51200/768 | 8|16000 |
 | Standard_D48ds_v4 | 48 | 192 | 1800 | 32 | 462000/2904(1200) | 76800/1152 | 8|24000 |
 | Standard_D64ds_v4 | 64 | 256 | 2400 | 32 | 615000/3872(1600) | 80000/1200 | 8|30000 |
+
+<sup>**</sup>您可以使用[Gen2 vm](generation-2.md)保證這些 IOPs 值
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

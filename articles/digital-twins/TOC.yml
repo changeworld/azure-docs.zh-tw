@@ -45,12 +45,12 @@
           href: how-to-use-cli.md
         - name: 設定執行個體和驗證
           items:
-            - name: 已編寫指令碼版本
-              href: how-to-set-up-instance-scripted.md
-            - name: CLI 版本
-              href: how-to-set-up-instance-cli.md
             - name: 入口網站版本
               href: how-to-set-up-instance-portal.md
+            - name: CLI 版本
+              href: how-to-set-up-instance-cli.md
+            - name: 已編寫指令碼版本
+              href: how-to-set-up-instance-scripted.md
         - name: 撰寫應用程式驗證碼
           href: how-to-authenticate-client.md
         - name: 建立應用程式註冊

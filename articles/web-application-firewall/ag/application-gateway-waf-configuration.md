@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: ddf631601510e725d77cc391ad41192a47ab0cf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d34641fdecfe334e84347efe1a2f64482cae74b
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84752481"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040252"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web 應用程式防火牆要求大小限制與排除清單
 
@@ -38,11 +38,11 @@ WAF 排除清單可讓您略過 WAF 評估的特定要求屬性。 常見範例�
 
 以下是支援的比對條件運算子：
 
-- **等於**：此運算子適用於精確比對。 例如，若要選取名為 **bearerToken** 的標頭，請使用等於運算子搭配設定為 **bearerToken** 的選取器。
-- **開頭為**：此運算子會比對開頭與指定之選取器值相符的所有欄位。
-- **結尾為**：此運算子會比對結尾與指定之選取器值相符的所有欄位。
-- **包含**：此運算子會比對包含與指定之選取器值相符的所有欄位。
-- **等於 any**：此運算子符合所有要求欄位。 * 將會是選取器的值。
+- **等於** ：此運算子適用於精確比對。 例如，若要選取名為 **bearerToken** 的標頭，請使用等於運算子搭配設定為 **bearerToken** 的選取器。
+- **開頭為** ：此運算子會比對開頭與指定之選取器值相符的所有欄位。
+- **結尾為** ：此運算子會比對結尾與指定之選取器值相符的所有欄位。
+- **包含** ：此運算子會比對包含與指定之選取器值相符的所有欄位。
+- **等於 any** ：此運算子符合所有要求欄位。 * 將會是選取器的值。
 
 在所有情況下，比對都不會區分大小寫，且不允許使用規則運算式作為選取器。
 
@@ -81,7 +81,7 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
    -SelectorMatchOperator "StartsWith" `
    -Selector "user"
 ```
-因此，如果 URL `http://www.contoso.com/?user%281%29=fdafdasfda` 傳遞至 WAF，它將不會評估字串 **fdafdasfda**，但它仍會評估參數名稱 **使用者 %281 %29**。 
+因此，如果 URL `http://www.contoso.com/?user%281%29=fdafdasfda` 傳遞至 WAF，它將不會評估字串 **fdafdasfda** ，但它仍會評估參數名稱 **使用者 %281 %29** 。 
 
 ## <a name="waf-request-size-limits"></a>WAF 要求大小限制
 
@@ -89,7 +89,7 @@ $exclusion2 = New-AzApplicationGatewayFirewallExclusionConfig `
 
 Web 應用程式可讓您設定介於上下限範圍之間的要求大小限制。 下列是兩個可用的大小限制：
 
-- [要求本文大小上限] 欄位以 kb 來指定，並控制所有檔案上傳時的整體要求大小限制。 此欄位值的範圍可從最小 1 KB 到最大 128 KB。 要求本文大小的預設值為 128 KB。
+- [要求本文大小上限] 欄位以 kb 來指定，並控制所有檔案上傳時的整體要求大小限制。 此欄位的最小值為 1 KB，最大值為 128 KB。 要求本文大小的預設值為 128 KB。
 - 檔案上傳限制欄位是以 MB 為單位指定，而且它會控管允許的檔案上傳大小上限。 此欄位的最小值為 1 MB，且具有下列最大值：
 
    - 適用于 v1 中型 WAF 閘道的 100 MB
@@ -100,6 +100,6 @@ Web 應用程式可讓您設定介於上下限範圍之間的要求大小限制�
 
 WAF 也可提供可設定的旋鈕，以便開啟或關閉要求本文檢查。 根據預設，要求本文檢查是啟用的。 如果關閉要求本文檢查，WAF 就不會評估 HTTP 訊息內文的內容。 在此情況下，WAF 會繼續針對標頭、Cookie 與 URI 強制執行 WAF 規則。 如果要求本文檢查關閉，則最大要求本文大小欄位就不適用，而且也無法設定。 關閉要求本文檢查可讓要傳送給 WAF 的訊息大於 128 KB，但不會檢查訊息本文是否有漏洞。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在您設定 WAF 設定之後，您可以了解如何檢視 WAF 記錄。 如需詳細資訊，請參閱[應用程式閘道診斷](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)。

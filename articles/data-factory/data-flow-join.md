@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
-ms.openlocfilehash: f95f35fe0d17afdeec864674d3360fc3b172cad1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ac84ce17f53145ffd85ffa31b6633d8b4b184962
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83683393"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042647"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>對應資料流程中的聯結轉換
 
@@ -75,13 +75,13 @@ ms.locfileid: "83683393"
 
 ![聯結轉換最佳化](media/data-flow/joinoptimize.png "聯結最佳化")
 
-在聯結、查閱和存在轉換中，如果其中一個或兩個資料流納入背景工作角色節點記憶體中，您可以藉由啟用**廣播**來最佳化效能。 根據預設，Spark 引擎會自動決定是否要廣播一邊。 若要手動選擇廣播哪一邊，請選取 [固定]。
+在聯結、查閱和存在轉換中，如果其中一個或兩個資料流納入背景工作角色節點記憶體中，您可以藉由啟用 **廣播** 來最佳化效能。 根據預設，Spark 引擎會自動決定是否要廣播一邊。 若要手動選擇廣播哪一邊，請選取 [固定]。
 
 除非您的聯結遇到逾時錯誤，否則不建議透過 [關閉] 選項停用廣播。
 
 ## <a name="self-join"></a>自我聯結
 
-若要自我聯結資料流與本身，請使用選取轉換，為現有的資料流加上別名。 按一下轉換旁邊的加號圖示，然後選取 [新增分支]，以建立新的分支。 新增選取轉換，為原始資料流加上別名。 新增聯結轉換，然後選擇原始資料流做為**左方資料流**，然後選擇選取轉換做為**右方資料流**。
+若要自我聯結資料流與本身，請使用選取轉換，為現有的資料流加上別名。 按一下轉換旁邊的加號圖示，然後選取 [新增分支]，以建立新的分支。 新增選取轉換，為原始資料流加上別名。 新增聯結轉換，然後選擇原始資料流做為 **左方資料流** ，然後選擇選取轉換做為 **右方資料流** 。
 
 ![自我聯結](media/data-flow/selfjoin.png "自我聯結")
 
@@ -108,7 +108,7 @@ ms.locfileid: "83683393"
 
 在 Data Factory UX 中，這項轉換看起來如下圖所示：
 
-![聯結範例](media/data-flow/join-script1.png "聯結範例")
+![螢幕擷取畫面顯示已選取 [聯結設定] 索引標籤的轉換，以及 [內部] 的聯結類型。](media/data-flow/join-script1.png "聯結範例")
 
 此轉換的資料流程指令碼位於下列程式碼片段中：
 
@@ -130,7 +130,7 @@ TripData, TripFare
 
 在 Data Factory UX 中，這項轉換看起來如下圖所示：
 
-![聯結範例](media/data-flow/join-script2.png "聯結範例")
+![螢幕擷取畫面顯示已選取 [聯結設定] 索引標籤的轉換，以及 [自訂 (交叉) 的聯結類型。](media/data-flow/join-script2.png "聯結範例")
 
 此轉換的資料流程指令碼位於下列程式碼片段中：
 

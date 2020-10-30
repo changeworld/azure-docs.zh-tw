@@ -3,12 +3,12 @@ title: Azure 事件方格-疑難排解指南
 description: 本文提供錯誤碼、錯誤訊息、描述和建議動作的清單。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: ab52cea6ab43763cf2d9dc2b57b7f369072a399e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1dd464339e7654f8886224ff07cf368b4724ff82
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119033"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041393"
 ---
 # <a name="troubleshoot-azure-event-grid-errors"></a>針對 Azure 事件方格錯誤進行疑難排解
 這份疑難排解指南提供 Azure 事件方格錯誤碼清單、錯誤訊息、其描述，以及您在收到這些錯誤時應採取的建議動作。 
@@ -16,12 +16,12 @@ ms.locfileid: "86119033"
 ## <a name="error-code-400"></a>錯誤碼︰400
 | 錯誤碼 | 錯誤訊息 | 描述 | 建議 |
 | ---------- | ------------- | ----------- | -------------- | 
-| HttpStatusCode. BadRequest<br/>400 | 主題名稱的長度必須介於3到50個字元之間。 | 自訂主題名稱長度應介於3到50個字元之間。 主題名稱只允許英數位元字母、數位和 '-' 字元。 此外，名稱不應以下列保留字開頭： <ul><li>Microsoft</li><li>EventGrid</li><li>系統</li></ul> | 選擇遵守主題名稱需求的不同主題名稱。 |
-| HttpStatusCode. BadRequest<br/>400 | 功能變數名稱的長度必須介於3到50個字元之間。 | 功能變數名稱長度應該介於3到50個字元之間。 主題名稱只允許英數位元字母、數位和 '-' 字元。 此外，名稱不應以下列保留字開頭：<ul><li>Microsoft</li><li>EventGrid</li><li>系統</li> | 選擇符合功能變數名稱需求的其他功能變數名稱。 |
+| HttpStatusCode. BadRequest<br/>400 | 主題名稱的長度必須介於3到50個字元之間。 | 自訂主題名稱長度應介於3到50個字元之間。 主題名稱只允許英數位元字母、數位和 '-' 字元。 此外，名稱不應以下列保留字開頭： <ul><li>微軟</li><li>EventGrid</li><li>系統</li></ul> | 選擇遵守主題名稱需求的不同主題名稱。 |
+| HttpStatusCode. BadRequest<br/>400 | 功能變數名稱的長度必須介於3到50個字元之間。 | 功能變數名稱長度應該介於3到50個字元之間。 功能變數名稱中只允許英數位元字母、數位和 '-' 字元。 此外，名稱不應以下列保留字開頭：<ul><li>微軟</li><li>EventGrid</li><li>系統</li> | 選擇符合功能變數名稱需求的其他功能變數名稱。 |
 | HttpStatusCode. BadRequest<br/>400 | 不正確到期時間。 | 事件訂閱的到期時間會決定何時會淘汰事件訂用帳戶。 此值在未來應該是有效的日期時間值。| 請確定事件訂閱的到期時間是有效的日期時間格式，且設定為未來的日期。 |
 
 ## <a name="error-code-409"></a>錯誤碼：409
-| 錯誤碼 | 錯誤訊息 | 說明 | 建議的動作 |
+| 錯誤碼 | 錯誤訊息 | 描述 | 建議的動作 |
 | ---------- | ------------- | ----------- | -------------- | 
 | HttpStatusCode。衝突 <br/>409 | 具有指定名稱的主題已經存在。 選擇不同的主題名稱。   | 自訂主題名稱在單一 Azure 區域中必須是唯一的，以確保正確的發佈作業。 相同的名稱可用於不同的 Azure 區域。 | 為主題選擇不同的名稱。 |
 | HttpStatusCode。衝突 <br/> 409 | 具有指定的網域已經存在。 選擇不同的功能變數名稱。 | 功能變數名稱在單一 Azure 區域中必須是唯一的，以確保發佈作業正確無誤。 相同的名稱可用於不同的 Azure 區域。 | 為網域選擇不同的名稱。 |
@@ -29,7 +29,7 @@ ms.locfileid: "86119033"
 
 ## <a name="error-code-403"></a>錯誤碼：403
 
-| 錯誤碼 | 錯誤訊息 | 說明 | 建議的動作 |
+| 錯誤碼 | 錯誤訊息 | 描述 | 建議的動作 |
 | ---------- | ------------- | ----------- | ------------------ |
 | HttpStatusCode。禁止 <br/>403 | 由於 IpAddress 篩選規則的緣故，用戶端 {IpAddress} 發行至 {主題/網域} 遭到拒絕。 | 主題或網域已設定 IP 防火牆規則，且存取僅限於已設定的 IP 位址。 | 將 IP 位址新增至 IP 防火牆規則，請參閱 [設定 ip 防火牆](configure-firewall.md) |
 | HttpStatusCode。禁止 <br/> 403 | 因為來自私人端點的要求，且找不到任何與資源相符的私人端點連線，所以拒絕用戶端發佈至 {主題/網域}。 | 主題或網域已設定私人端點，且發佈要求來自未設定/核准的私人端點。 | 設定主題/網域的私人端點。 [設定私人端點](configure-private-endpoints.md) |

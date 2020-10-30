@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/01/2020
-ms.openlocfilehash: e6ad75178bdc8ce7db18555508e2b819f08352f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd0b708ac3a1b16804430584dfcb01b3d2a4fae2
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86121906"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042374"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure Blob 儲存體來管理商業市集潛在客戶
 
@@ -51,7 +51,7 @@ ms.locfileid: "86121906"
      DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net
      ```
 
-    ![Azure 儲存體金鑰](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-keys-2.png)
+    ![顯示 [存取金鑰] 頁面的螢幕擷取畫面，其中反白顯示 [連接字串] 文字方塊。](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-keys-2.png)
 
 6. 從您的儲存體帳戶頁面，選取 [Blob]。
 

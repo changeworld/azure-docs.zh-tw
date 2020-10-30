@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fde0afcd37cd464b0b87e5ccd257d4a7a684eeb0
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76277366"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040767"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>部署適用於 Cloud Foundry 系統監控的 Azure Log Analytics Nozzle
 
@@ -28,7 +28,7 @@ Log Analytics 噴嘴 (噴嘴) 是 Cloud Foundry (CF) 元件，可將 [Cloud Foun
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 下列步驟是部署 Nozzle 的必要條件。
 
@@ -59,15 +59,15 @@ Nozzle 也需要 Loggregator Firehose 和 Cloud Controller 的存取權限。 �
 #### <a name="to-create-the-workspace-manually"></a>若要手動建立工作區：
 
 1. 在 Azure 入口網站中，搜尋 Azure Marketplace 中的服務清單，然後選取 [Log Analytics 工作區]。
-2. 選取 [建立]  ，然後選取下列項目的選項：
+2. 選取 [建立]，然後選取下列項目的選項：
 
-   * **Log Analytics 工作區**：輸入您工作區的名稱。
-   * **訂用帳戶**：如果您擁有多個訂用帳戶，請選擇與 CF 部署相同的訂用帳戶。
-   * **資源群組**：您可以建立新的資源群組，或使用與 CF 部署相同的資源群組。
-   * **位置**：輸入位置。
-   * **定價層**：選取 [確定]**** 以完成。
+   * **Log Analytics 工作區** ：輸入您工作區的名稱。
+   * **訂用帳戶** ：如果您擁有多個訂用帳戶，請選擇與 CF 部署相同的訂用帳戶。
+   * **資源群組** ：您可以建立新的資源群組，或使用與 CF 部署相同的資源群組。
+   * **位置** ：輸入位置。
+   *  以完成。
 
-如需詳細資訊，請參閱[開始使用 Azure 監視器記錄](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)。
+如需詳細資訊，請參閱[開始使用 Azure 監視器記錄](../azure-monitor/overview.md)。
 
 #### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>透過來自 Azure Marketplace 的監視範本建立 Log Analytics 工作區：
 
@@ -76,13 +76,13 @@ Nozzle 也需要 Loggregator Firehose 和 Cloud Controller 的存取權限。 �
 1. 在搜尋視窗中輸入 "Cloud Foundry"，選取 [Cloud Foundry Monitoring Solution]。
 1. 這會載入 Cloud Foundry 監視解決方案範本首頁，按一下 [建立] 以啟動範本刀鋒視窗。
 1. 輸入必要參數：
-    * **訂用帳戶**：選取 Log Analytics 工作區的 Azure 訂用帳戶，通常與 Cloud Foundry 部署相同。
-    * **資源群組**：選取現有的資源群組，或為 Log Analytics 工作區建立一個新的資源群組。
-    * **資源群組位置**：選取資源群組的位置。
-    * **OMS_Workspace_Name**：如果工作區不存在，請輸入工作區名稱，範本會建立新的工作區。
-    * **OMS_Workspace_Region**：選取工作區的位置。
-    * **OMS_Workspace_Pricing_Tier**：選取 Log Analytics 工作區 SKU。 如需參考，請參閱[定價指引](https://azure.microsoft.com/pricing/details/log-analytics/)。
-    * **法律條款**：按一下 [法律條款]，然後按一下 [建立] 以接受法律條款。
+    * **訂用帳戶** ：選取 Log Analytics 工作區的 Azure 訂用帳戶，通常與 Cloud Foundry 部署相同。
+    * **資源群組** ：選取現有的資源群組，或為 Log Analytics 工作區建立一個新的資源群組。
+    * **資源群組位置** ：選取資源群組的位置。
+    * **OMS_Workspace_Name** ：如果工作區不存在，請輸入工作區名稱，範本會建立新的工作區。
+    * **OMS_Workspace_Region** ：選取工作區的位置。
+    * **OMS_Workspace_Pricing_Tier** ：選取 Log Analytics 工作區 SKU。 如需參考，請參閱[定價指引](https://azure.microsoft.com/pricing/details/log-analytics/)。
+    * **法律條款** ：按一下 [法律條款]，然後按一下 [建立] 以接受法律條款。
 1. 指定所有參數之後，按一下 [建立] 以部署範本。 部署完成時，會在 [通知] 索引標籤中顯示狀態。
 
 
@@ -183,15 +183,15 @@ cf apps
 
 ### <a name="1-import-the-oms-view"></a>1. 匯入 OMS 視圖
 
-從 OMS 入口網站，流覽至**View Designer**匯  >  **入**  >  **流覽**，然後選取其中一個 omsview 檔案。 例如，選取 Cloud Foundry.omsview**，然後儲存檢視。 圖格隨即會顯示在 [概觀]**** 頁面上。 選取以查看視覺化的計量。
+從 OMS 入口網站，流覽至 **View Designer** 匯  >  **入**  >  **流覽** ，然後選取其中一個 omsview 檔案。 例如，選取 Cloud Foundry.omsview  ，然後儲存檢視。 圖格隨即會顯示在 [概觀]  頁面上。 選取以查看視覺化的計量。
 
-您可以透過**檢視設計工具**來自訂這些檢視或建立新檢視。
+您可以透過 **檢視設計工具** 來自訂這些檢視或建立新檢視。
 
 *"Cloud Foundry.omsview"* 是 Cloud Foundry OMS 檢視範本的預覽版本。 這是完整設定的預設範本。 如果您有關於範本的建議或意見反應，請傳送至[問題區段](https://github.com/Azure/oms-log-analytics-firehose-nozzle/issues)。
 
 ### <a name="2-create-alert-rules"></a>2. 建立警示規則
 
-您可以視需要[建立警示](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts)，並自訂查詢和閾值。 以下是建議的警示：
+您可以視需要[建立警示](../azure-monitor/platform/alerts-overview.md)，並自訂查詢和閾值。 以下是建議的警示：
 
 | 搜尋查詢                                                                  | 產生警示的依據 | 描述                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |

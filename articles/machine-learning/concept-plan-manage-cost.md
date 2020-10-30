@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 031ec44cec473d9f2b2f05669aa3fc18084985f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e6e59ad237cdc1f23181375894512e69eba86ff
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704723"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042175"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>規劃和管理 Azure Machine Learning 的成本
 
@@ -33,7 +33,7 @@ ms.locfileid: "91704723"
 * 使用低優先順序的虛擬機器 (VM) 
 * 使用 Azure 保留的 VM 實例
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 成本分析支援不同的 Azure 帳戶類型。 若要檢視所支援帳戶類型的完整清單，請參閱[了解成本管理資料](../cost-management-billing/costs/understand-cost-mgt-data.md)。 若要檢視成本資料，您至少需要 Azure 帳戶的讀取存取。 
 
@@ -41,7 +41,7 @@ ms.locfileid: "91704723"
 
 ## <a name="estimate-costs"></a>預估成本
 
-在 Azure Machine Learning 帳戶中建立資源之前，請先使用 [Azure 定價計算機](https://azure.microsoft.com/pricing/calculator/) 來預估成本。 選取左側的 [ **AI + Machine Learning**，然後選取 **Azure Machine Learning** 以開始。  
+在 Azure Machine Learning 帳戶中建立資源之前，請先使用 [Azure 定價計算機](https://azure.microsoft.com/pricing/calculator/) 來預估成本。 選取左側的 [ **AI + Machine Learning** ，然後選取 **Azure Machine Learning** 以開始。  
 
 下列螢幕擷取畫面顯示使用計算機的成本估計：
 
@@ -61,7 +61,9 @@ ms.locfileid: "91704723"
 
 您可以在圖表和資料表中查看不同時間間隔的成本。 您也可以根據預算和預測成本來查看成本。 隨著時間切換至更長的視圖有助於找出花費趨勢，並查看可能發生超支的位置。 如果您已建立預算，請查看其超出的位置。  
 
-您將不會看到 Machine Learning 的個別服務區域。  相反地，您會看到已新增至 Machine Learning 工作區的各種資源。
+您將不會看到 Machine Learning 的個別服務區域。  相反地，您會看到已新增至 Machine Learning 工作區的各種資源。 
+
+請注意，雖然 Machine Learning 工作區本身沒有直接成本，但您會向受控計算資源收費。 因此，如果您將標籤新增至工作區，因為它不會直接產生費用，所以成本分析窗格將會反映此工作區。 若要透過標記精確地管理成本，您必須標記相關聯的計算資源。  
 
 ## <a name="use-azure-machine-learning-compute-cluster-amlcompute"></a>使用 Azure Machine Learning compute cluster (AmlCompute) 
 

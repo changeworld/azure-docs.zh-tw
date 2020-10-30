@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 7cc9e8a1cf51d57bf10523174179b5a9f2ef6e97
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 010e2a206ef08677651572c274cfc38fd516ecc9
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363686"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041126"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>規劃自動使用者佈建部署
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) 自動使用者布建可簡化此程式，方�
 
 請參閱 [使用 Azure Active Directory 自動化 SaaS 應用程式的使用者](../app-provisioning/user-provisioning.md) 布建和解除布建，以進一步瞭解其功能。
 
-## <a name="learn"></a>學習
+## <a name="learn"></a>Learn
 
 使用者布建會建立進行中身分識別治理的基礎，並增強依賴授權身分識別資料的商務程式品質。
 
@@ -34,13 +34,13 @@ Azure Active Directory (Azure AD) 自動使用者布建可簡化此程式，方�
 
 啟用自動使用者布建的主要優點包括：
 
-* **提高生產力**。 您可以使用單一使用者布建管理介面，跨 SaaS 應用程式管理使用者身分識別。 此介面有一組布建原則。
+* **提高生產力** 。 您可以使用單一使用者布建管理介面，跨 SaaS 應用程式管理使用者身分識別。 此介面有一組布建原則。
 
-* **管理風險**。 您可以根據定義角色及/或存取權的員工狀態或群組成員資格，將變更自動化，以提高安全性。
+* **管理風險** 。 您可以根據定義角色及/或存取權的員工狀態或群組成員資格，將變更自動化，以提高安全性。
 
-* **解決合規性和治理**。 Azure AD 支援每個使用者布建要求的原生審核記錄。 要求會在來源和目標系統中執行。 這可讓您從單一畫面追蹤誰可以存取應用程式。
+* **解決合規性和治理** 。 Azure AD 支援每個使用者布建要求的原生審核記錄。 要求會在來源和目標系統中執行。 這可讓您從單一畫面追蹤誰可以存取應用程式。
 
-* **降低成本**。 自動使用者布建可避免與手動布建相關的低效率和人為錯誤，以降低成本。 它可減少自訂開發的使用者布建解決方案、腳本和審核記錄的需求。
+* **降低成本** 。 自動使用者布建可避免與手動布建相關的低效率和人為錯誤，以降低成本。 它可減少自訂開發的使用者布建解決方案、腳本和審核記錄的需求。
 
 ### <a name="licensing"></a>授權
 
@@ -99,7 +99,7 @@ Azure AD 布建服務會藉由連接到每個應用程式廠商所提供的使�
 
 在此範例中，使用者會在 Azure AD 中建立，而 Azure AD 布建服務會管理自動使用者布建至目標 (SaaS) 應用程式。
 
-![圖2](./media/plan-auto-user-provisioning/cloudprovisioning.png)
+![此圖顯示透過 Azure A D 布建服務，從內部部署 H R 應用程式到目標 a 的應用程式的使用者/群組建立流程。](./media/plan-auto-user-provisioning/cloudprovisioning.png)
 
 **工作流程的描述：**
 

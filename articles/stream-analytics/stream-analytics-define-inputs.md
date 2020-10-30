@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: fb5aca1739fbb4a77cbcb7eed6b9dce1b3ccc182
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 467b8506eb0cafc61731a69804c70b8080ab21c2
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027579"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042451"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>將資料作為輸入串流處理至串流分析中
 
@@ -21,6 +21,7 @@ ms.locfileid: "93027579"
 - [Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)
 - [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/) 
 - [Azure Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/) 
+- [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) \(部分機器翻譯\) 
 
 這些輸入來源可存在於與串流分析作業相同的 Azure 訂用帳戶中，也可存在於不同的訂用帳戶。
 
@@ -125,18 +126,18 @@ Azure IoT 中樞是可高度調整的發佈/訂閱事件擷取器，已針對 Io
 | **IoTHub.EnqueuedTime** | IoT 中樞收到訊息的時間。 |
 
 
-## <a name="stream-data-from-blob-storage"></a>來自 Blob 儲存體的串流資料
-在要於雲端中儲存大量非結構化資料的情節中，Azure Blob 儲存體提供具有成本效益且可擴充的解決方案。 我們通常會將 Blob 儲存體 中的資料視為待用資料，但串流分析可將 Blob 資料視為資料流來加以處理。 
+## <a name="stream-data-from-blob-storage-or-data-lake-storage-gen2"></a>從 Blob 儲存體或 Data Lake Storage Gen2 串流資料
+針對有大量非結構化資料儲存在雲端中的案例，Azure Blob 儲存體或 Azure Data Lake Storage Gen2 (ADLS Gen2) 提供符合成本效益且可調整的解決方案。 Blob 儲存體或 ADLS Gen2 中的資料通常會被視為待用資料;不過，串流分析可將此資料當作資料流程來處理。 
 
-記錄處理是透過串流分析使用 Blob 儲存體輸入時的常用案例。 在此案例中，從系統擷取遙測資料檔案之後，必須加以剖析和處理，才能得到有意義的資料。
+記錄處理是在串流分析中使用這類輸入的常用案例。 在此案例中，從系統擷取遙測資料檔案之後，必須加以剖析和處理，才能得到有意義的資料。
 
-在串流分析中，Blob 儲存體事件的預設時間戳記是上次修改 blob 的時間戳記，也就是 `BlobLastModifiedUtcTime`。 如果在 13:00 將 blob 上傳至儲存體帳戶，然後在 13:01 使用 [現在] 選項啟動 Azure 串流分析作業，則不會選取該 blob，因為其修改時間落在作業執行期間以外。
+在串流分析中，Blob 儲存體或 ADLS Gen2 事件的預設時間戳記是上次修改的時間戳記，也就是 `BlobLastModifiedUtcTime` 。 如果 blob 已上傳至13:00 的儲存體帳戶，且 Azure 串流分析作業已使用 *現在* 的選項（在13:01 開始）開始，則不會在其修改的時間落在作業執行期間之外挑選。
 
 如果在 13:00 將 blob 上傳至儲存體帳戶容器，然後在 13:00 (含) 以前使用 [自訂時間] 啟動 Azure 串流分析作業，則會選取該 blob，因為其修改時間落在作業執行期間以內。
 
 如果在 13:00 使用 [現在] 來啟動 Azure 串流分析作業，然後在 13:01 將 blob 上傳至儲存體帳戶容器，則 Azure 串流分析會選取該 blob。 指派給每個 blob 的時間戳記只會依據 `BlobLastModifiedTime`。 blob 所在的資料夾與指派的時間戳記無關。 例如，如果有一個 blob *2019/10-01/00/b1.txt* ，其 `BlobLastModifiedTime` 為 2019-11-11，則指派給此 blob 的時間戳記為 2019-11-11。
 
-若要使用事件裝載中的時間戳記，將資料當作資料流處理，您必須使用 [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) 關鍵字。 串流分析作業在 Blob 檔案可用時，會每秒從 Azure Blob 儲存體輸入中提取資料。 如果 Blob 檔案無法使用，則會執行時間延遲上限為 90 秒的指數輪詢。
+若要使用事件裝載中的時間戳記，將資料當作資料流處理，您必須使用 [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) 關鍵字。 如果 Blob 檔案可供使用，串流分析作業會從 Azure Blob 儲存體提取資料，或每秒 ADLS Gen2 輸入。 如果 Blob 檔案無法使用，則會執行時間延遲上限為 90 秒的指數輪詢。
 
 CSV 格式的輸入需要以標頭資料列來定義資料集的欄位，且所有標頭資料列欄位都必須是唯一的。
 
@@ -152,10 +153,10 @@ CSV 格式的輸入需要以標頭資料列來定義資料集的欄位，且所�
 | 屬性 | 描述 |
 | --- | --- |
 | **輸入別名** | 在作業查詢中用來參考這個輸入的易記名稱。 |
-| **訂用帳戶** | 選擇 IoT 中樞資源所在的訂用帳戶。 | 
+| **訂用帳戶** | 選擇儲存體資源所在的訂用帳戶。 | 
 | **儲存體帳戶** | Blob 檔案所在的儲存體帳戶名稱。 |
-| **儲存體帳戶金鑰** | 與儲存體帳戶相關聯的密碼金鑰。 此選項會自動填入，除非您選取手動提供 Blob 儲存體設定的選項。 |
-| **容器** | Blob 輸入的容器。 容器提供邏輯分組給儲存在 Microsoft Azure Blob 服務中的 blob。 將 blob 上傳至 Azure Blob 儲存體服務時，您必須指定該 blob 的容器。 您可以選擇 **使用現有的** 容器，或選擇 **新建** 以使用新建立的容器。|
+| **儲存體帳戶金鑰** | 與儲存體帳戶相關聯的密碼金鑰。 此選項會自動填入，除非您選取手動提供設定的選項。 |
+| **容器** | 容器提供 blob 的邏輯群組。 您可以選擇 **使用現有的** 容器，或選擇 **新建** 以使用新建立的容器。|
 | **路徑模式** (選用) | 用來在指定的容器中找出 blob 的檔案路徑。 如果您想要從容器的根目錄讀取 blob，請勿設定路徑模式。 在該路徑內，您可以指定下列三個變數的一個或多個執行個體：`{date}`、`{time}` 或 `{partition}`<br/><br/>範例 1：`cluster1/logs/{date}/{time}/{partition}`<br/><br/>範例 2：`cluster1/logs/{date}`<br/><br/>`*` 字元不是路徑前置詞允許的值。 僅允許有效的 <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure blob 字元</a>。 請勿包含容器名稱或檔案名稱。 |
 | **日期格式** (選用) | 在路徑中使用日期變數時，用來組織檔案的日期格式。 範例： `YYYY/MM/DD` <br/><br/> 當 blob 輸入在其路徑中有 `{date}` 或 `{time}` 時，則會以遞增的時間順序來查看資料夾。|
 | **時間格式** (選用) |  在路徑中使用時間變數時，用來組織檔案的時間格式。 目前唯一支援的值為 `HH` (表示小時)。 |

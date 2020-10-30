@@ -8,23 +8,23 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/21/2020
+ms.date: 10/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 466e590ba22efe1c2fbb457c15bc7f979f8a172e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39b61815c33f933e0cdf08bd46382e74eea2f806
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259630"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040461"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>關於 Azure Active Directory B2C 自訂原則中的宣告解析程式
 
 Azure Active Directory B2C (Azure AD B2C 中的宣告解析程式) [自訂原則](custom-policy-overview.md) 會提供有關授權要求的內容資訊，例如原則名稱、要求相互關聯識別碼、使用者介面語言等等。
 
-若要在輸入或輸出宣告中使用宣告解析程式，您必須在 [ClaimsSchema](claimsschema.md) 元素下方定義字串 **ClaimType**，然後在輸入或輸出宣告元素中設定宣告解析程式的 **DefaultValue**。 Azure AD B2C 會讀取宣告解析程式的值，並在技術設定檔中使用該值。
+若要在輸入或輸出宣告中使用宣告解析程式，您必須在 [ClaimsSchema](claimsschema.md) 元素下方定義字串 **ClaimType** ，然後在輸入或輸出宣告元素中設定宣告解析程式的 **DefaultValue** 。 Azure AD B2C 會讀取宣告解析程式的值，並在技術設定檔中使用該值。
 
-在下列範例中，會定義名為 `correlationId`、**DataType** 為 `string` 的宣告類型。
+在下列範例中，會定義名為 `correlationId`、 **DataType** 為 `string` 的宣告類型。
 
 ```xml
 <ClaimType Id="correlationId">
@@ -86,7 +86,7 @@ Azure Active Directory B2C (Azure AD B2C 中的宣告解析程式) [自訂原則
 | {Context:BuildNumber} | 身分識別體驗架構版本 (組建編號)。  | 1.0.507.0 |
 | {Context:CorrelationId} | 相互關連識別碼。  | 00000000-0000-0000-0000-000000000000 |
 | {Context:DateTimeInUtc} |日期時間 (UTC)。  | 10/10/2018 12:00:00 PM |
-| {Context:DeploymentMode} |原則部署模式。  | 生產 |
+| {Context:DeploymentMode} |原則部署模式。  | Production |
 | {Context:IPAddress} | 使用者 IP 位址。 | 11.111.111.11 |
 | {CoNtext： KMSI} | 指出是否已選取 [ [讓我保持登入](custom-policy-keep-me-signed-in.md) ] 核取方塊。 |  true |
 
@@ -123,16 +123,17 @@ OIDC 或 OAuth2 要求中所包含的任何參數名稱均可對應至使用者�
 | {SAML： AuthnCoNtextClassReferences} | `AuthnContextClassRef`SAML 要求中的元素值。 | urn： oasis： names： tc： SAML：2.0： ac：類別： PasswordProtectedTransport |
 | {SAML： NameIdPolicyFormat} | `Format`從 SAML 要求的元素中的屬性 `NameIDPolicy` 。 | urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress |
 | {SAML： Issuer} |  `Issuer`Saml 要求的 saml 元素值。| `https://contoso.com` |
-| {SAML： AllowCreate} | `AllowCreate`從 SAML 要求的元素中的屬性值 `NameIDPolicy` 。 | True |
-| {SAML： ForceAuthn} | `ForceAuthN`從 SAML 要求的元素中的屬性值 `AuthnRequest` 。 | True |
+| {SAML： AllowCreate} | `AllowCreate`從 SAML 要求的元素中的屬性值 `NameIDPolicy` 。 | 是 |
+| {SAML： ForceAuthn} | `ForceAuthN`從 SAML 要求的元素中的屬性值 `AuthnRequest` 。 | 是 |
 | {SAML： ProviderName} | `ProviderName`從 SAML 要求的元素中的屬性值 `AuthnRequest` 。| Contoso.com |
 | {SAML： RelayState} | `RelayState` 查詢字串參數。| 
+| {SAML： Subject} | `Subject`來自 SAML 驗證要求之 NameId 元素的。| 
 
 ## <a name="using-claim-resolvers"></a>使用宣告解析程式
 
 您可以使用宣告解析程式搭配下列元素：
 
-| 項目 | 元素 | 設定 |
+| 項目 | 項目 | 設定 |
 | ----- | ----------------------- | --------|
 |Application Insights 技術設定檔 |`InputClaim` | |
 |[Azure Active Directory](active-directory-technical-profile.md) 技術設定檔| `InputClaim`, `OutputClaim`| 1, 2|
