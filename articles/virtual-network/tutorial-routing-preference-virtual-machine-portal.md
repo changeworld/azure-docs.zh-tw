@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: af3d9e9fcf0dad6a5e51a3db87b63567d701970e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2f3635c8280bdd95e8ad1259fe4ae35f8b531a4
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84687985"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042823"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-the-azure-portal"></a>使用 Azure 入口網站設定 VM 的路由喜好設定
 
-本文說明如何設定虛擬機器的路由喜好設定。 當您選擇**網際網路**作為路由喜好設定選項時，來自 VM 的網際網路繫結流量將會透過 ISP 網路路由傳送。 預設路由是透過 Microsoft 全球網路。
+本文說明如何設定虛擬機器的路由喜好設定。 當您選擇 **網際網路** 作為路由喜好設定選項時，來自 VM 的網際網路繫結流量將會透過 ISP 網路路由傳送。 預設路由是透過 Microsoft 全球網路。
 
 本文說明如何使用 Azure 入口網站來建立具有公用 IP 的虛擬機器，並將其設定為透過公用網際網路路由流量。
 
@@ -55,8 +55,8 @@ Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNa
     |Location| 選取 [美國東部]|
 
 4. 選取 VM 的大小，然後選取 [選取]。
-5. 在 [網路] 索引標籤下，針對**公用 IP 位址**按一下 [建立新的]。
-6. 輸入 *myPublicIpAddress*，選取 SKU 作為**標準**，然後選取路由喜好設定為 [網際網路]，然後按 [確定]，如下圖所示：
+5. 在 [網路] 索引標籤下，針對 **公用 IP 位址** 按一下 [建立新的]。
+6. 輸入 *myPublicIpAddress* ，選取 SKU 作為 **標準** ，然後選取路由喜好設定為 [網際網路]，然後按 [確定]，如下圖所示：
 
    ![選取靜態](./media/tutorial-routing-preference-virtual-machine-portal/routing-preference-internet-new.png)
 
@@ -66,13 +66,14 @@ Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNa
 
 7. 接受其餘的預設設定，然後選取 [確定]。
 8. 在 [摘要] 頁面上，選取 [建立]。 部署虛擬機器需要幾分鐘的時間。
-9. 部署虛擬機器後，請在入口網站頂端的搜尋方塊中輸入 *myPublicIpAddress*。 當 **myPublicIpAddress** 出現於搜尋結果時，請選取它。
+9. 部署虛擬機器後，請在入口網站頂端的搜尋方塊中輸入 *myPublicIpAddress* 。 當 **myPublicIpAddress** 出現於搜尋結果時，請選取它。
 10. 您可以檢視已指派的公用 IP 位址，並將此位址指派給 **myVM** 虛擬機器，如下圖所示：
 
-    ![檢視公用 IP 位址](./media/tutorial-routing-preference-virtual-machine-portal/pip-properties-new.png)
+    ![螢幕擷取畫面顯示網路介面 mynic 的 NIC 公用 I P。](./media/tutorial-routing-preference-virtual-machine-portal/pip-properties-new.png)
 
 11. 選取 [網路]，然後按一下 [nic mynic]，然後選取公用 IP 位址以確認路由喜好設定已指派為 [網際網路]。
-    ![檢視公用 IP 位址](./media/tutorial-routing-preference-virtual-machine-portal/pip-routing-internet-new.png)
+
+    ![螢幕擷取畫面顯示公用 I P 位址的 I P 位址和路由喜好設定。](./media/tutorial-routing-preference-virtual-machine-portal/pip-routing-internet-new.png)
 
 ## <a name="clean-up-resources"></a>清除資源
 

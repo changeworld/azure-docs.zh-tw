@@ -7,12 +7,12 @@ ms.date: 08/08/2019
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: 68af882bf240b354bdad1afe322135c048576ed4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ec9c102680496407106a3bf9b7683890c7a63ee
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83772831"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043243"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>將 App Service 或 Azure Functions 應用程式設定為使用 Microsoft 帳戶登入
 
@@ -25,7 +25,7 @@ ms.locfileid: "83772831"
 
 ## <a name="register-your-app-with-microsoft-account"></a><a name="register-microsoft-account"> </a>使用 Microsoft 帳戶註冊應用程式
 
-1. 在 Azure 入口網站中移至[**應用程式註冊**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)。 如有需要，請使用您的 Microsoft 帳戶登入。
+1. 在 Azure 入口網站中移至 [**應用程式註冊**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)。 如有需要，請使用您的 Microsoft 帳戶登入。
 1. 選取 [新增註冊]，然後輸入應用程式名稱。
 1. 在 [支援的帳戶類型] 底下，選取 [任何組織目錄中的帳戶 (任何 Azure AD 目錄 - 多租用戶) 和個人 Microsoft 帳戶 (例如 Skype、Xbox)]
 1. 在 [重新導向 URI] 底下，選取 [Web]，然後輸入 `https://<app-domain-name>/.auth/login/aad/callback`。 *\<app-domain-name>* 以您應用程式的功能變數名稱取代。  例如： `https://contoso.azurewebsites.net/.auth/login/aad/callback` 。 請務必在 URL 中使用 HTTPS 配置。
@@ -47,7 +47,7 @@ ms.locfileid: "83772831"
 
    App Service 會提供驗證，但不會限制對您網站內容和 API 的已授權存取。 您必須在應用程式程式碼中授權使用者。
 
-1. (選擇性) 若要限制 Microsoft 帳戶使用者的存取權，請將 [當要求未經驗證時所要採取的動作] 設定為 [使用 Azure Active Directory 登入]。 當您設定此功能時，您的應用程式會要求所有要求都必須經過驗證。 其也會將所有未驗證的要求重新導向為使用 AAD 進行驗證。 請注意，因為您已將 [簽發者 URL] 設定為使用 Microsoft 帳戶租用戶，所以只有個人帳戶會成功通過驗證。
+1. (選擇性) 若要限制 Microsoft 帳戶使用者的存取權，請將 [當要求未經驗證時所要採取的動作] 設定為 [使用 Azure Active Directory 登入]。 當您設定此功能時，您的應用程式會要求所有要求都必須經過驗證。 其也會將所有未驗證的要求重新導向為使用 AAD 進行驗證。 請注意，由於您已將 **簽發者 Url** 設定為使用 Microsoft 帳戶租使用者，因此只會成功驗證個人帳戶。
 
    > [!CAUTION]
    > 以這種方式限制存取，適用於對您應用程式的所有呼叫，不建議具有公開可用首頁的應用程式 (如許多單頁應用程式) 這麼做。 對於這類應用程式，您可能偏好 [允許匿名要求 (不執行動作)]，因此應用程式會自行手動啟動驗證。 如需詳細資訊，請參閱[驗證流程](overview-authentication-authorization.md#authentication-flow)。

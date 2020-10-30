@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: 99ea17dad4f99cdab3fb44b8031e60e6cf69879c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6617c778c0b79a55058eafb40fd9b49b627819ea
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543146"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043265"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID Broker (preview) 
 
@@ -83,7 +83,7 @@ HDInsight 識別碼訊息代理程式功能會將一個額外的 VM 新增至叢
         {
             "autoscale": null,
             "name": "idbrokernode",
-            "targetInstanceCount": 1,
+            "targetInstanceCount": 2,
             "hardwareProfile": {
                 "vmSize": "Standard_A2_V2"
             },
@@ -100,6 +100,9 @@ HDInsight 識別碼訊息代理程式功能會將一個額外的 VM 新增至叢
 .
 .
 ```
+
+若要查看 ARM 範本的完整範例，請參閱 [此處](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template)發佈的範本。
+
 
 ## <a name="tool-integration"></a>工具整合
 
@@ -133,7 +136,9 @@ HDInsight 工具會進行更新，以原生方式支援 OAuth。 使用這些工
 curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://<clustername>-int.azurehdinsight.net/livy/batches" -H "X-Requested-By:<username@domain.com>"
 ``` 
 
-## <a name="next-steps"></a>下一步
+若要使用 Beeline 和 Livy，您也可以遵循 [此處](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/HIB/HIBSamples) 提供的範例程式碼，將用戶端設定為使用 OAuth 並連接到叢集。
+
+## <a name="next-steps"></a>後續步驟
 
 * [使用 Azure Active Directory Domain Services 設定具有企業安全性套件的 HDInsight 叢集](apache-domain-joined-configure-using-azure-adds.md)
 * [將 Azure Active Directory 使用者同步至 HDInsight 叢集](../hdinsight-sync-aad-users-to-cluster.md)

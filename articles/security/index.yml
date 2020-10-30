@@ -14,12 +14,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 08/29/2019
-  ms.openlocfilehash: 6b090cd138b9b85ab05b35fe2993e76a85e9b7e6
-  ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+  ms.openlocfilehash: 26968a6cdc7682c7e94d3276832ae6cbd418294b
+  ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/28/2020
-  ms.locfileid: "92899237"
+  ms.lasthandoff: 10/30/2020
+  ms.locfileid: "93042743"
 highlightedContent:
   items:
   - title: Azure 安全性簡介
@@ -30,7 +30,7 @@ highlightedContent:
     url: ./fundamentals/best-practices-and-patterns.md
   - title: 什麼是 Azure 資訊安全中心？
     itemType: overview
-    url: ../security-center/security-center-intro.md
+    url: ../security-center/security-center-introduction.md
 conceptualContent:
   items:
   - title: 基礎
@@ -52,7 +52,7 @@ conceptualContent:
     - url: ./develop/secure-dev-overview.md
       itemType: overview
       text: 安全開發的最佳做法
-    - url: ./develop/secure-web-app.md
+    - url: /previous-versions/azure/security/develop/secure-web-app
       itemType: tutorial
       text: 開發安全的 Web 應用程式
     - url: ./develop/threat-modeling-tool.md
@@ -74,17 +74,17 @@ conceptualContent:
       text: 查看更多
   - title: 秘密和金鑰
     links:
-    - url: ../key-vault/key-vault-overview.md
+    - url: ../key-vault/general/overview.md
       itemType: overview
       text: 何謂 Azure Key Vault？
-    - url: ../key-vault/quick-create-cli.md
+    - url: ../key-vault/secrets/quick-create-cli.md
       itemType: quickstart
       text: 設定和擷取祕密
     - url: ../dedicated-hsm/overview.md
       itemType: overview
       text: 什麼是 Azure 專用硬體安全模組 (HSM)？
     footerLink:
-      url: /azure/key-vault/
+      url: ../key-vault/index.yml
       text: 查看更多
   - title: 資料保護
     links:
@@ -102,7 +102,7 @@ conceptualContent:
       text: 查看更多
   - title: 身分識別管理
     links:
-    - url: ./fundamentals/choose-ad-authn.md
+    - url: ../active-directory/hybrid/choose-ad-authn.md
       itemType: concept
       text: 選擇正確的驗證方法
     - url: ./fundamentals/steps-secure-identity.md
@@ -126,17 +126,17 @@ conceptualContent:
       itemType: how-to-guide
       text: 使用安全性原則
     footerLink:
-      url: /azure/security-center/
+      url: ../security-center/index.yml
       text: 查看更多
   - title: IoT 安全性監控
     links:
-    - url: ../asc-for-iot/overview.md
+    - url: ../defender-for-iot/overview.md
       itemType: overview
       text: 適用於 IoT 的 Azure 資訊安全中心的簡介
-    - url: ../asc-for-iot/architecture.md
+    - url: ../defender-for-iot/architecture.md
       itemType: how-to-guide
       text: 適用於 IoT 的 Azure 資訊安全中心架構
-    - url: ../asc-for-iot/getting-started.md
+    - url: ../defender-for-iot/getting-started.md
       itemType: how-to-guide
       text: 開始使用適用於 IoT 的 Azure 資訊安全中心
     footerLink:
@@ -154,17 +154,17 @@ conceptualContent:
       itemType: quickstart
       text: 開始使用 Azure Sentinel 預覽版
     footerLink:
-      url: /azure/sentinel/
+      url: ../sentinel/index.yml
       text: 查看更多
   - title: 威脅保護
     links:
     - url: ../security-center/security-center-alerts-overview.md
       itemType: concept
       text: Azure 資訊安全中心的安全性警示
-    - url: ../storage/common/storage-advanced-threat-protection.md
+    - url: ../storage/common/azure-defender-storage-configure.md
       itemType: concept
       text: Azure 儲存體的進階威脅防護
-    - url: ../sql-database/sql-database-threat-detection-overview.md
+    - url: ../azure-sql/database/threat-detection-overview.md
       itemType: concept
       text: Azure SQL 資料庫的進階威脅防護
     footerLink:
@@ -179,7 +179,7 @@ conceptualContent:
       itemType: overview
       text: 管理和監視概觀
     footerLink:
-      url: https://docs.microsoft.com/search/?search=security+audit+log&scope=azure&category=Documentation
+      url: /search/?category=Documentation&scope=azure&search=security%2baudit%2blog
       text: 搜尋更多資料
   - title: 網路安全性
     links:
@@ -237,5 +237,5 @@ conceptualContent:
       itemType: overview
       text: Azure 藍圖服務
     footerLink:
-      url: /azure/governance/
+      url: ../governance/index.yml
       text: 查看更多

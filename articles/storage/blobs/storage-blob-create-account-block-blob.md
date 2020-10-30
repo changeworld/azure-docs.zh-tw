@@ -5,27 +5,24 @@ author: tamram
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/10/2020
+ms.date: 10/28/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0af98993cc4b3c7d19cdaa61cd7a35e3b444a3df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19d70642a6c76239f62b2fd6f7e713430a7adfbb
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613793"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043091"
 ---
 # <a name="create-a-blockblobstorage-account"></a>建立 BlockBlobStorage 帳戶
 
 BlockBlobStorage 帳戶種類可讓您建立具有 premium 效能特性的區塊 blob。 這種類型的儲存體帳戶已針對具有高交易率的工作負載進行優化，或需要非常快速的存取時間。 本文說明如何使用 Azure 入口網站、Azure CLI 或 Azure PowerShell 來建立 BlockBlobStorage 帳戶。
 
-> [!NOTE]
-> 區塊 blob 儲存體帳戶中的階層式命名空間功能處於公開預覽狀態，可在美國東部、美國東部2、美國中部、美國中南部、美國西部2、英國南部、加拿大中部及澳大利亞東部區域中使用。 若要查看限制，請參閱 [Azure Data Lake Storage Gen2 中提供的 Blob 儲存體功能](data-lake-storage-supported-blob-storage-features.md) 和 [已知問題](data-lake-storage-known-issues.md)。 若要註冊預覽，請參閱 [這份表單](https://aka.ms/adlspremiumonboard)。
-
 如需 BlockBlobStorage 帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶總覽](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -91,13 +88,13 @@ az login
 ## <a name="portal"></a>[入口網站](#tab/azure-portal)
 若要在 Azure 入口網站中建立 BlockBlobStorage 帳戶，請遵循下列步驟：
 
-1. 在 [Azure 入口網站中，**選取 [儲存體**] 類別 > [儲存體**帳戶**] > 的**所有服務**。
+1. 在 [Azure 入口網站中， **選取 [儲存體** ] 類別 > [儲存體 **帳戶** ] > 的 **所有服務** 。
 
-2. 在 [ **儲存體帳戶**] 下，選取 [ **新增**]。
+2. 在 [ **儲存體帳戶** ] 下，選取 [ **新增** ]。
 
 3. 在 [ **訂** 用帳戶] 欄位中，選取要在其中建立儲存體帳戶的訂用帳戶。
 
-4. 在 [ **資源群組** ] 欄位中，選取現有的資源群組，或選取 [ **建立新**的]，然後輸入新資源群組的名稱。
+4. 在 [ **資源群組** ] 欄位中，選取現有的資源群組，或選取 [ **建立新** 的]，然後輸入新資源群組的名稱。
 
 5. 在 [ **儲存體帳戶名稱** ] 欄位中，輸入帳戶的名稱。 請注意下列指導方針：
 
@@ -112,23 +109,21 @@ az login
    |欄位     |值  |
    |---------|---------|
    |**效能**    |  選取 [Premium]。   |
-   |**帳戶類型**    | 選取 [ **BlockBlobStorage**]。      |
-   |**複寫**    |  保留 **本機冗余儲存體 (LRS) **的預設設定。      |
+   |**帳戶類型**    | 選取 [ **BlockBlobStorage** ]。      |
+   |**複寫**    |  保留 **本機冗余儲存體 (LRS)** 的預設設定。      |
 
    ![顯示用來建立區塊 blob 儲存體帳戶的入口網站 UI](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)
 
 8. 選擇 [ **Advanced （Advanced** ）] 索引標籤。
 
-9. 如果您想要將資料分析的儲存體帳戶優化，請將 **階層命名空間** 設定為 **已啟用**。 否則，請將此選項設定為預設值。
-
-   若要深入瞭解，請參閱 [Azure Data Lake Storage Gen2 簡介](data-lake-storage-introduction.md)。
+9. 如果您想要將資料分析的儲存體帳戶優化，請將 **階層命名空間** 設定為 **已啟用** 。 否則，請將此選項設定為預設值。 使用您的 BlockBlobStorage 帳戶啟用此設定，可提供您 [Data Lake Storage](premium-tier-for-data-lake-storage.md)的進階層。  若要深入瞭解 Data Lake Storage，請參閱 [Azure Data Lake Storage Gen2 簡介](data-lake-storage-introduction.md)。
 
    > [!NOTE]
-   > 區塊 blob 儲存體帳戶中的階層式命名空間功能處於公開預覽狀態，可在美國東部、美國東部2、美國中部、美國中南部、美國西部2、英國南部、加拿大中部及澳大利亞東部區域中使用。 若要查看限制，請參閱 [Azure Data Lake Storage Gen2 中提供的 Blob 儲存體功能](data-lake-storage-supported-blob-storage-features.md) 和 [已知問題](data-lake-storage-known-issues.md)。 若要註冊預覽，請參閱 [這份表單](https://aka.ms/adlspremiumonboard)。
+   > 區塊 blob 儲存體帳戶中的階層命名空間功能處於公開預覽狀態。 如需區域可用性的詳細資訊，請參閱 [區域可用性](premium-tier-for-data-lake-storage.md#regional-availability)。
 
 8. 選取 [ **審核 + 建立** ] 以檢查儲存體帳戶設定。
 
-9. 選取 [建立]****。
+9. 選取 [建立]。
 
 ## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -165,10 +160,10 @@ az login
 
    New-AzStorageAccount -ResourceGroupName $resourcegroup -Name $storageaccount -Location $location -Kind "BlockBlobStorage" -SkuName "Premium_LRS"
    ```
-   如果您想要將儲存體帳戶優化以進行資料分析，請新增 `-EnableHierarchicalNamespace $True` 至命令。 若要深入瞭解，請參閱 [Azure Data Lake Storage Gen2 簡介](data-lake-storage-introduction.md)。
+   如果您想要將儲存體帳戶優化以進行資料分析，請新增 `-EnableHierarchicalNamespace $True` 至命令。 使用您的 BlockBlobStorage 帳戶啟用此設定，可提供您 [Data Lake Storage](premium-tier-for-data-lake-storage.md)的進階層。  若要深入瞭解 Data Lake Storage，請參閱 [Azure Data Lake Storage Gen2 簡介](data-lake-storage-introduction.md)。
 
    > [!NOTE]
-   > 區塊 blob 儲存體帳戶中的階層式命名空間功能處於公開預覽狀態，可在美國東部、美國東部2、美國中部、美國中南部、美國西部2、英國南部、加拿大中部及澳大利亞東部區域中使用。 若要查看限制，請參閱 [Azure Data Lake Storage Gen2 中提供的 Blob 儲存體功能](data-lake-storage-supported-blob-storage-features.md) 和 [已知問題](data-lake-storage-known-issues.md)。 若要註冊預覽，請參閱 [這份表單](https://aka.ms/adlspremiumonboard)。
+   > 區塊 blob 儲存體帳戶中的階層命名空間功能處於公開預覽狀態。 如需區域可用性的詳細資訊，請參閱 [區域可用性](premium-tier-for-data-lake-storage.md#regional-availability)。
 
 ## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -199,10 +194,10 @@ az login
     --sku "Premium_LRS"
    ```
 
-   如果您想要將儲存體帳戶優化以進行資料分析，請新增 `--hierarchical-namespace true` 至命令。 若要深入瞭解，請參閱 [Azure Data Lake Storage Gen2 簡介](data-lake-storage-introduction.md)。
-
+   如果您想要將儲存體帳戶優化以進行資料分析，請新增 `--hierarchical-namespace true` 至命令。 使用您的 BlockBlobStorage 帳戶啟用此設定，可提供您 [Data Lake Storage](premium-tier-for-data-lake-storage.md)的進階層。  若要深入瞭解 Data Lake Storage，請參閱 [Azure Data Lake Storage Gen2 簡介](data-lake-storage-introduction.md)。
+   
    > [!NOTE]
-   > 區塊 blob 儲存體帳戶中的階層式命名空間功能處於公開預覽狀態，可在美國東部、美國東部2、美國中部、美國中南部、美國西部2、英國南部、加拿大中部及澳大利亞東部區域中使用。 若要查看限制，請參閱 [Azure Data Lake Storage Gen2 中提供的 Blob 儲存體功能](data-lake-storage-supported-blob-storage-features.md) 和 [已知問題](data-lake-storage-known-issues.md)。 若要註冊預覽，請參閱 [這份表單](https://aka.ms/adlspremiumonboard)。
+   > 區塊 blob 儲存體帳戶中的階層命名空間功能處於公開預覽狀態。 如需區域可用性的詳細資訊，請參閱 [區域可用性](premium-tier-for-data-lake-storage.md#regional-availability)。
    
 ---
 

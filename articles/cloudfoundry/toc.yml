@@ -8,15 +8,15 @@
 - name: 教學課程
   items:
     - name: 在 Azure 上建立 CF
-      href: /azure/cloudfoundry/create-cloud-foundry-on-azure
+      href: ./create-cloud-foundry-on-azure.md
     - name: 將 CF 應用程式部署至 Azure
-      href: /azure/cloudfoundry/cloudfoundry-deploy-your-first-app
+      href: ./cloudfoundry-deploy-your-first-app.md
     - name: Azure 上的 CloudFoundry
-      href: /azure/cloudfoundry/cloudfoundry-get-started
+      href: ./cloudfoundry-get-started.md
     - name: 部署 CF OMS Nozzle
-      href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
+      href: ./cloudfoundry-oms-nozzle.md
     - name: 整合 Cloud Foundry 與 Azure
-      href: /azure/cloudfoundry/how-cloud-foundry-integrates-with-azure
+      href: ./how-cloud-foundry-integrates-with-azure.md
 - name: 資源
   items:
     - name: Azure 藍圖

@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: reference
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: 166234711ce00f0ed1f45c35ef661aa5b35f8a3c
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 8cace120dc823f42f2b2e01e4234ea8d5ace7a69
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926320"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042932"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>監視 Azure IoT 中樞資料參考
 
@@ -60,9 +60,9 @@ ms.locfileid: "92926320"
 |計量顯示名稱|計量|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|
 |已過期的 C2D 訊息 (預覽)|C2DMessagesExpired|計數|總計|已過期的雲端到裝置訊息數目|無|
-|已完成的 C2D 訊息傳遞|c2d 輸出。<br>完成。成功|計數|總計|裝置已成功完成的雲端到裝置訊息傳遞數目|無|
-|已放棄的 C2D 訊息|c2d 輸出。<br>放棄。成功|計數|總計|裝置放棄的雲端到裝置訊息數目|無|
-|已拒絕的 C2D 訊息|c2d 輸出。<br>拒絕。成功|計數|總計|裝置拒絕的雲端到裝置訊息數目|無|
+|已完成的 C2D 訊息傳遞|c2d.commands.egress.complete.success|計數|總計|裝置已成功完成的雲端到裝置訊息傳遞數目|無|
+|已放棄的 C2D 訊息|c2d.commands.egress.abandon.success|計數|總計|裝置放棄的雲端到裝置訊息數目|無|
+|已拒絕的 C2D 訊息|c2d.commands.egress.reject.success|計數|總計|裝置拒絕的雲端到裝置訊息數目|無|
 
 針對 **單位** 值為 **Count** 的計量，只有總計) 匯總 (總計有效。 最小值、最大值和平均匯總一律會傳回1。 如需詳細資訊，請參閱 [支援](#supported-aggregations)的匯總。
 
@@ -113,7 +113,7 @@ ms.locfileid: "92926320"
 |計量顯示名稱|計量|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|
 |裝置總計 (已淘汰)|devices.totalDevices|計數|總計|向 IoT 中樞註冊的裝置數目|無|
-|連接的裝置 (已淘汰) |connectedDevices。<br>allProtocol|計數|總計|連接至 IoT 中樞的裝置數目|無|
+|連接的裝置 (已淘汰) |devices.connectedDevices.allProtocol|計數|總計|連接至 IoT 中樞的裝置數目|無|
 |裝置總計 (預覽)|totalDeviceCount|Count|Average|向 IoT 中樞註冊的裝置數目|無|
 |連接的裝置 (預覽)|connectedDeviceCount|Count|Average|連接至 IoT 中樞的裝置數目|無|
 
@@ -127,9 +127,9 @@ ms.locfileid: "92926320"
 
 |計量顯示名稱|計量|單位|彙總類型|描述|維度|
 |---|---|---|---|---|---|
-|節流錯誤數目|d2c。<br>sendThrottle|計數|總計|因裝置輸送量節流而導致的節流錯誤數目|無|
-|遙測訊息傳送嘗試|d2c。<br>allProtocol|計數|總計|要嘗試傳送至您 IoT 中樞的裝置到雲端遙測訊息數目|無|
-|已傳送的遙測訊息|d2c。<br>成功|計數|總計|成功傳送至您 IoT 中樞的裝置到雲端遙測訊息數目|無|
+|節流錯誤數目|d2c.telemetry.ingress.sendThrottle|計數|總計|因裝置輸送量節流而導致的節流錯誤數目|無|
+|遙測訊息傳送嘗試|d2c.telemetry.ingress.allProtocol|計數|總計|要嘗試傳送至您 IoT 中樞的裝置到雲端遙測訊息數目|無|
+|已傳送的遙測訊息|d2c.telemetry.ingress.success|計數|總計|成功傳送至您 IoT 中樞的裝置到雲端遙測訊息數目|無|
 
 針對 **單位** 值為 **Count** 的計量，只有總計) 匯總 (總計有效。 最小值、最大值和平均匯總一律會傳回1。 如需詳細資訊，請參閱 [支援](#supported-aggregations)的匯總。
 
@@ -161,13 +161,13 @@ ms.locfileid: "92926320"
 |---|---|---|---|---|---|
 |已完成的工作|jobs.completed|計數|總計|所有已完成的作業計數。|無|
 |呼叫列出作業失敗|jobs.listJobs.failure|計數|總計|所有呼叫列出作業失敗的計數。|無|
-|建立失敗的方法叫用作業|createDirectMethodJob。<br>失敗|計數|總計|所有建立失敗的直接方法叫用作業計數。|無|
-|建立失敗的對應項更新作業|createTwinUpdateJob。<br>失敗|計數|總計|所有建立失敗的對應項更新作業計數。|無|
+|建立失敗的方法叫用作業|jobs.createDirectMethodJob.failure|計數|總計|所有建立失敗的直接方法叫用作業計數。|無|
+|建立失敗的對應項更新作業|jobs.createTwinUpdateJob.failure|計數|總計|所有建立失敗的對應項更新作業計數。|無|
 |取消作業失敗|jobs.cancelJob.failure|計數|總計|所有呼叫取消作業失敗的計數。|無|
 |失敗作業查詢|jobs.queryJobs.failure|計數|總計|所有呼叫查詢作業失敗的計數。|無|
 |失敗作業|jobs.failed|計數|總計|所有失敗作業計數。|無|
 |成功呼叫列出作業|jobs.listJobs.success|計數|總計|所有成功呼叫列出作業的計數。|無|
-|成功建立的方法叫用作業|createDirectMethodJob。<br>成功|計數|總計|所有成功建立的直接方法叫用作業計數。|無|
+|成功建立的方法叫用作業|jobs.createDirectMethodJob.success|計數|總計|所有成功建立的直接方法叫用作業計數。|無|
 |成功建立的對應項更新作業|createTwinUpdateJob。<br>成功|計數|總計|所有成功建立的對應項更新作業計數。|無|
 |成功取消作業|jobs.cancelJob.success|計數|總計|所有成功呼叫取消作業的計數。|無|
 |成功作業查詢|jobs.queryJobs.success|計數|總計|所有成功呼叫查詢作業的計數。|無|
@@ -181,23 +181,23 @@ ms.locfileid: "92926320"
 | 路由傳送嘗試 (預覽)  |RoutingDeliveries | 計數 | 總計 |這是路由傳遞度量。 使用維度來識別特定端點或特定路由來源的傳遞狀態。| Result,<br>RoutingSource,<br>EndpointType<br>FailureReasonCategory,<br>EndpointName<br>*如需詳細資訊，請參閱計量 [維度](#metric-dimensions)* 。 |
 | 路由傳送資料大小（以位元組為單位） (預覽) |RoutingDataSizeInBytesDelivered| 位元組 | 總計 |IoT 中樞路由至自訂端點和內建端點的總位元組數。 使用維度來識別路由至特定端點或特定路由來源的資料大小。| RoutingSource,<br>EndpointType<br>EndpointName<br>*如需詳細資訊，請參閱計量 [維度](#metric-dimensions)* 。|
 |  (預覽版的路由延遲)  |RoutingDeliveryLatency| 毫秒 | Average |這是路由傳遞延遲度量。 使用維度來識別特定端點或特定路由來源的延遲。| RoutingSource,<br>EndpointType<br>EndpointName<br>*如需詳細資訊，請參閱計量 [維度](#metric-dimensions)* 。|
-|路由：傳遞至儲存體的 BLOB|d2c。輸出。<br>儲存體 blob|計數|總計|IoT 中樞路由將 BLOB 傳遞至儲存體端點的次數。|無|
-|路由：傳遞至儲存體的資料|d2c。輸出。<br>儲存體。位元組|位元組|總計|IoT 中樞路由傳遞至儲存體端點的資料量 (位元組)。|無|
-|路由：事件中樞的訊息延遲|d2c。延遲。<br>eventHubs|毫秒|Average|訊息輸入到 IoT 中樞與訊息輸入到事件中樞類型的自訂端點之間的平均延遲 (毫秒) 。 這不包括訊息路由至內建端點 (事件) 。|無|
-|路由：服務匯流排佇列的訊息延遲|d2c。延遲。<br>serviceBusQueues|毫秒|Average|訊息輸入到 IoT 中樞與訊息輸入到服務匯流排佇列端點之間的平均延遲 (毫秒) 。|無|
-|路由：服務匯流排主題的訊息延遲|d2c。延遲。<br>serviceBusTopics|毫秒|Average|訊息輸入到 IoT 中樞與訊息輸入到服務匯流排主題端點之間的平均延遲 (毫秒) 。|無|
-|路由：訊息/事件的訊息延遲|d2c。延遲。<br>內建。事件|毫秒|Average|在訊息輸入與 IoT 中樞之間的平均延遲 (毫秒) ，以及輸入至內建端點 (訊息/事件) 和回溯路由的訊息。|無|
-|路由：儲存體的訊息延遲|d2c。延遲。<br>儲存|毫秒|Average|訊息輸入到 IoT 中樞與訊息輸入到儲存體端點之間的平均延遲 (毫秒) 。|無|
-|路由：傳遞至事件中樞的訊息|d2c。輸出。<br>eventHubs|計數|總計|IoT 中樞路由成功將訊息傳遞至類型事件中樞自訂端點的次數。 這不包括訊息路由至內建端點 (事件) 。|無|
-|路由：傳遞至服務匯流排佇列的訊息|d2c。輸出。<br>serviceBusQueues|計數|總計|IoT 中樞路由成功將訊息傳遞至服務匯流排佇列端點的次數。|無|
-|路由：傳遞至服務匯流排主題的訊息|d2c。輸出。<br>serviceBusTopics|計數|總計|IoT 中樞路由成功將訊息傳遞至服務匯流排主題端點的次數。|無|
-|路由：傳遞至後援的訊息|d2c。<br>fallback|計數|總計|IoT 中樞路由傳遞訊息至與後援路由相關聯之端點的次數。|無|
-|路由：傳遞至訊息/事件的訊息|d2c。輸出。<br>內建。事件|計數|總計|IoT 中樞路由成功將訊息傳遞至內建端點的次數， (訊息/事件) 和退回路由。|無|
-|路由：傳遞至儲存體的訊息|d2c。輸出。<br>儲存|計數|總計|IoT 中樞路由成功將訊息傳遞至儲存體端點的次數。|無|
-|路由：已傳遞的遙測訊息|d2c。<br>成功|計數|總計|使用 IoT 中樞路由成功地將訊息傳遞到所有端點的次數。 如果將訊息路由至多個端點，這個值會為每一次成功傳遞加 1。 如果將訊息多次傳遞到同一個端點，這個值會為每一次成功傳遞加 1。|無|
-|路由：已捨棄的遙測訊息 |d2c。<br>下降|計數|總計|IoT 中樞路由因為端點無效而捨棄訊息的次數。 這個值不會計算傳遞到後援路由的訊息，因為捨棄的訊息不會傳遞到那裡。|無|
-|路由：不相容的遙測訊息|d2c。<br>無效|計數|總計|IoT 中樞路由因為與端點不相容而無法傳遞訊息的次數。 當 Iot 中樞嘗試將訊息傳遞至端點，且因非暫時性錯誤而失敗時，訊息與端點不相容。 不正確訊息不會重試。 這個值不包含重試次數。|無|
-|路由：已遺棄的遙測訊息 |d2c。<br>遺棄|計數|總計|當停用恢復路由時，由於 IoT 中樞路由不符合任何路由查詢，所以會將訊息孤立的次數。|無|
+|路由：傳遞至儲存體的 BLOB|d2c.endpoints.egress.storage.blobs|計數|總計|IoT 中樞路由將 BLOB 傳遞至儲存體端點的次數。|無|
+|路由：傳遞至儲存體的資料|d2c.endpoints.egress.storage.bytes|位元組|總計|IoT 中樞路由傳遞至儲存體端點的資料量 (位元組)。|無|
+|路由：事件中樞的訊息延遲|d2c.endpoints.latency.eventHubs|毫秒|Average|訊息輸入到 IoT 中樞與訊息輸入到事件中樞類型的自訂端點之間的平均延遲 (毫秒) 。 這不包括訊息路由至內建端點 (事件) 。|無|
+|路由：服務匯流排佇列的訊息延遲|d2c.endpoints.latency.serviceBusQueues|毫秒|Average|訊息輸入到 IoT 中樞與訊息輸入到服務匯流排佇列端點之間的平均延遲 (毫秒) 。|無|
+|路由：服務匯流排主題的訊息延遲|d2c.endpoints.latency.serviceBusTopics|毫秒|Average|訊息輸入到 IoT 中樞與訊息輸入到服務匯流排主題端點之間的平均延遲 (毫秒) 。|無|
+|路由：訊息/事件的訊息延遲|d2c.endpoints.latency.builtIn.events|毫秒|Average|在訊息輸入與 IoT 中樞之間的平均延遲 (毫秒) ，以及輸入至內建端點 (訊息/事件) 和回溯路由的訊息。|無|
+|路由：儲存體的訊息延遲|d2c.endpoints.latency.storage|毫秒|Average|訊息輸入到 IoT 中樞與訊息輸入到儲存體端點之間的平均延遲 (毫秒) 。|無|
+|路由：傳遞至事件中樞的訊息|d2c.endpoints.egress.eventHubs|計數|總計|IoT 中樞路由成功將訊息傳遞至類型事件中樞自訂端點的次數。 這不包括訊息路由至內建端點 (事件) 。|無|
+|路由：傳遞至服務匯流排佇列的訊息|d2c.endpoints.egress.serviceBusQueues|計數|總計|IoT 中樞路由成功將訊息傳遞至服務匯流排佇列端點的次數。|無|
+|路由：傳遞至服務匯流排主題的訊息|d2c.endpoints.egress.serviceBusTopics|計數|總計|IoT 中樞路由成功將訊息傳遞至服務匯流排主題端點的次數。|無|
+|路由：傳遞至後援的訊息|d2c.telemetry.egress.fallback|計數|總計|IoT 中樞路由傳遞訊息至與後援路由相關聯之端點的次數。|無|
+|路由：傳遞至訊息/事件的訊息|d2c.endpoints.egress.builtIn.events|計數|總計|IoT 中樞路由成功將訊息傳遞至內建端點的次數， (訊息/事件) 和退回路由。|無|
+|路由：傳遞至儲存體的訊息|d2c.endpoints.egress.storage|計數|總計|IoT 中樞路由成功將訊息傳遞至儲存體端點的次數。|無|
+|路由：已傳遞的遙測訊息|d2c.telemetry.egress.success|計數|總計|使用 IoT 中樞路由成功地將訊息傳遞到所有端點的次數。 如果將訊息路由至多個端點，這個值會為每一次成功傳遞加 1。 如果將訊息多次傳遞到同一個端點，這個值會為每一次成功傳遞加 1。|無|
+|路由：已捨棄的遙測訊息 |d2c.telemetry.egress.dropped|計數|總計|IoT 中樞路由因為端點無效而捨棄訊息的次數。 這個值不會計算傳遞到後援路由的訊息，因為捨棄的訊息不會傳遞到那裡。|無|
+|路由：不相容的遙測訊息|d2c.telemetry.egress.invalid|計數|總計|IoT 中樞路由因為與端點不相容而無法傳遞訊息的次數。 當 Iot 中樞嘗試將訊息傳遞至端點，且因非暫時性錯誤而失敗時，訊息與端點不相容。 不正確訊息不會重試。 這個值不包含重試次數。|無|
+|路由：已遺棄的遙測訊息 |d2c.telemetry.egress.orphaned|計數|總計|當停用恢復路由時，由於 IoT 中樞路由不符合任何路由查詢，所以會將訊息孤立的次數。|無|
 
 針對 **單位** 值為 **Count** 的計量，只有總計) 匯總 (總計有效。 最小值、最大值和平均匯總一律會傳回1。 如需詳細資訊，請參閱 [支援](#supported-aggregations)的匯總。
 
@@ -218,7 +218,7 @@ Azure IoT 中樞具有與部分路由和事件方格度量相關聯的下列維�
 |維度名稱 | 描述|
 |---|---|
 ||
-|**點**| 端點名稱。|
+|**EndpointName**| 端點名稱。|
 |**EndpointType**|下列其中一項： **eventHubs** 、 **serviceBusQueues** 、 **cosmosDB** 、 **serviceBusTopics** 。 內 **建** 或 **blobStorage** 。|
 |**EventType**| 下列其中一個事件方格事件種類： **DeviceCreated** 。 **DeviceDeleted** 、 **DeviceConnected** 、DeviceDisconnected 或，或，或 **Microsoft.Devices.DeviceDisconnected** 或 **DeviceTelemetry** 。 如需詳細資訊，請參閱 [事件種類](iot-hub-event-grid.md#event-types)。|
 |**FailureReasonCategory**| 下列其中一項： **無效** 、 **已卸載、****孤立** 或 **null** 。|

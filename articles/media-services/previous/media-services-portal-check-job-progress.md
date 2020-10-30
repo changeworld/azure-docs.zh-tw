@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 879b9f965a5ee76131a65bf3151be5c6114cd20c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ba8ccf3534cbb4a93983f81095b4ef2c20d6498
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89260878"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042790"
 ---
 # <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>透過 Azure 入口網站監視編碼作業進度
 
@@ -32,9 +32,9 @@ ms.locfileid: "89260878"
 
 執行作業時，您通常需要設法追蹤作業進度。 
 
-若要監視編碼作業的進度，請按一下 **[設定]** \(位於頁面頂端)，然後選取 [作業]****。
+若要監視編碼作業的進度，請按一下  。
 
-![工作](./media/media-services-portal-vod-get-started/media-services-jobs.png)
+![顯示從 [設定] 功能表中選取 [作業] 的螢幕擷取畫面。](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
 您可以按一下作業以查看更多詳細資料。
 

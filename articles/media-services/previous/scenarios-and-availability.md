@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 99604092ea901458062abd6423d74ad8f1f2c8d7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 58ecca6251e4c428ae5f834379e8b45059b0efc9
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014404"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042769"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>跨資料中心的媒體服務功能情節和可用性
 
@@ -35,15 +35,15 @@ AMS 在世界各地多個資料中心運作。 這些資料中心會依據地理
 
 ## <a name="overview"></a>概觀
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 若要開始使用 Azure 媒體服務，您應該具備下列項目：
 
-* 一個 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com)。
+* Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com)。
 * Azure 媒體服務帳戶。 如需詳細資訊，請參閱[建立帳戶](media-services-portal-create-account.md)。
-* 您想要串流內容的串流端點必須處於 [執行中]**** 狀態。
+* 您想要串流內容的串流端點必須處於 [執行中]  狀態。
 
-    建立 AMS 帳戶時，系統會將 **預設** 的串流端點新增至您的帳戶處於 **已停止** 狀態。 若要開始串流處理您的內容並利用動態封裝和動態加密功能，串流端點必須處於 [執行中]**** 狀態。
+    建立 AMS 帳戶時，系統會將 **預設** 的串流端點新增至您的帳戶處於 **已停止** 狀態。 若要開始串流處理您的內容並利用動態封裝和動態加密功能，串流端點必須處於 [執行中]  狀態。
 
 ### <a name="commonly-used-objects-when-developing-against-the-ams-odata-model"></a>針對 AMS OData 模型開發時常用的物件
 
@@ -123,7 +123,7 @@ AMS 在世界各地多個資料中心運作。 這些資料中心會依據地理
 
 下圖顯示 **即時通行** 工作流程中涉及的 AMS 平台主要部分。
 
-![即時工作流程](./media/scenarios-and-availability/media-services-live-streaming-current.png)
+![顯示「通過」工作流程中涉及之 M S 平臺主要部分的圖表。](./media/scenarios-and-availability/media-services-live-streaming-current.png)
 
 如需詳細資訊，請參閱 [使用通道，從內部部署編碼器接收多位元速率即時串流](media-services-live-streaming-with-onprem-encoders.md)。
 
@@ -149,11 +149,11 @@ Azure 媒體服務提供一些工具，供您用來建立適用於大部分平�
 
 AMS 客戶可以使用其 AMS 帳戶來調整串流端點、媒體處理和儲存體。
 
-* 媒體服務客戶可以選擇一個**標準**串流端點或一個**進階**串流端點。 大多數的串流工作負載都適合使用**標準**串流端點。 其所含的功能與**進階**串流端點相同，並會自動調整輸出頻寬。 
+* 媒體服務客戶可以選擇一個 **標準** 串流端點或一個 **進階** 串流端點。 大多數的串流工作負載都適合使用 **標準** 串流端點。 其所含的功能與 **進階** 串流端點相同，並會自動調整輸出頻寬。 
 
-    **進階**串流端點適合進階工作負載，提供專用並能靈活調整的頻寬容量。 擁有**進階**串流端點的客戶預設會取得一個串流單位 (SU)。 藉由新增 SU 可以調整串流端點。 每個 SU 都可為應用程式提供額外的頻寬容量。 如需調整**進階**串流端點的詳細資訊，請參閱[調整串流端點](media-services-portal-scale-streaming-endpoints.md)主題。
+    **進階** 串流端點適合進階工作負載，提供專用並能靈活調整的頻寬容量。 擁有 **進階** 串流端點的客戶預設會取得一個串流單位 (SU)。 藉由新增 SU 可以調整串流端點。 每個 SU 都可為應用程式提供額外的頻寬容量。 如需調整 **進階** 串流端點的詳細資訊，請參閱 [調整串流端點](media-services-portal-scale-streaming-endpoints.md)主題。
 
-* 媒體服務帳戶是與保留單元類型相關聯，後者決定媒體處理工作的速度。 您可以選擇下列的保留單元類型：**S1**、**S2** 或 **S3**。 例如，在執行相同編碼作業的前提下，使用 **S2** 保留單元類型的速度會比 **S1** 類型快。
+* 媒體服務帳戶是與保留單元類型相關聯，後者決定媒體處理工作的速度。 您可以選擇下列的保留單元類型： **S1** 、 **S2** 或 **S3** 。 例如，在執行相同編碼作業的前提下，使用 **S2** 保留單元類型的速度會比 **S1** 類型快。
 
     除了指定保留單元類型之外，您還可以指定使用 **保留單位** (ru) 來布建您的帳戶。 佈建的 RU 數目可決定指定帳戶中可同時處理的媒體工作數目。
 
@@ -175,11 +175,11 @@ AMS 客戶可以使用其 AMS 帳戶來調整串流端點、媒體處理和儲�
 
 ### <a name="streaming-endpoints"></a>串流端點 
 
-媒體服務客戶可以選擇一個**標準**串流端點或一個**進階**串流端點。 如需詳細資訊，請參閱[調整](#scaling)一節。
+媒體服務客戶可以選擇一個 **標準** 串流端點或一個 **進階** 串流端點。 如需詳細資訊，請參閱[調整](#scaling)一節。
 
 #### <a name="availability"></a>可用性
 
-|名稱|狀態|資料中心
+|Name|狀態|資料中心
 |---|---|---|
 |標準|GA|全部|
 |Premium|GA|全部|
@@ -192,7 +192,7 @@ AMS 客戶可以使用其 AMS 帳戶來調整串流端點、媒體處理和儲�
 
 ### <a name="encoding-media-processors"></a>編碼媒體處理器
 
-AMS 提供兩個隨選編碼器：**媒體編碼器標準**和**媒體編碼器進階工作流程**。 如需詳細資訊，請參閱 [Azure 隨選媒體編碼器的概觀和比較](media-services-encode-asset.md)。 
+AMS 提供兩個隨選編碼器： **媒體編碼器標準** 和 **媒體編碼器進階工作流程** 。 如需詳細資訊，請參閱 [Azure 隨選媒體編碼器的概觀和比較](media-services-encode-asset.md)。 
 
 #### <a name="availability"></a>可用性
 

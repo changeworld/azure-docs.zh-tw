@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 614c8e5f76475c7e7af35db37334eb645ad553a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 286c59938413a912c005181fca12f6698a7bc55e
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018598"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042889"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>針對叢集事件查詢 EventStore API
 
@@ -192,7 +192,7 @@ var clstrEvents = sfhttpClient.EventsStore.GetClusterEventListAsync(
 
 *"myApp" 中所有服務的健康情況歷程記錄：*
 
-目前，服務的健康情況報表事件會在相對應應用程式實體底下顯示為 `DeployedServicePackageNewHealthReport` 事件。 若要查看您的服務如何為 "App1" 執行作業，請使用以下查詢：`https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
+目前，服務的健康情況報表事件會在相對應應用程式實體底下顯示為 `DeployedServicePackageNewHealthReport` 事件。 若要查看您的服務如何為 "App1" 執行作業，請使用以下查詢：`https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
 
 *分割區重新設定：*
 

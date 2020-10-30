@@ -3,12 +3,12 @@ title: Azure Functions 的應用程式設定參考
 description: Azure Functions 應用程式設定或環境變數的參考文件。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: d22ab643fb4ed7eae477c8f77d9621266d9146be
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 3d3def7057eeb022b3e207cbecf06ee3074a91af
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165756"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043228"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的應用程式設定參考
 
@@ -88,7 +88,7 @@ Application Insights 的連接字串。 `APPLICATIONINSIGHTS_CONNECTION_STRING` 
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
-選擇性儲存體帳戶連接字串，用於儲存記錄並將它們顯示在入口網站的 [監視器]**** 索引標籤中。 這項設定僅適用于以 Azure Functions 執行時間1.x 版為目標的應用程式。 儲存體帳戶必須是一般用途的帳戶，支援 Blob、佇列和資料表。 若要深入了解，請參閱[儲存體帳戶需求](storage-considerations.md#storage-account-requirements)。
+選擇性儲存體帳戶連接字串，用於儲存記錄並將它們顯示在入口網站的 [監視器]  索引標籤中。 這項設定僅適用于以 Azure Functions 執行時間1.x 版為目標的應用程式。 儲存體帳戶必須是一般用途的帳戶，支援 Blob、佇列和資料表。 若要深入了解，請參閱[儲存體帳戶需求](storage-considerations.md#storage-account-requirements)。
 
 |答案|範例值|
 |---|------------|
@@ -226,6 +226,14 @@ _此設定目前為預覽狀態。_
 |答案|範例值|
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
+
+## <a name="website_contentovervnet"></a>網站 \_ CONTENTOVERVNET
+
+僅適用于 Premium 方案。 的值可讓您的函式 `1` 應用程式在您的儲存體帳戶限制為虛擬網路時進行調整。 將您的儲存體帳戶限制為虛擬網路時，您應該啟用此設定。 若要深入瞭解，請參閱將 [您的儲存體帳戶限制為虛擬網路](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network-preview)。 
+
+|答案|範例值|
+|---|------------|
+|WEBSITE_CONTENTOVERVNET|1|
 
 ## <a name="website_contentshare"></a>WEBSITE\_CONTENTSHARE
 

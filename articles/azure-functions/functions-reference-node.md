@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 86a512ea0e07f5eb2ce00ff27427139c5221d229
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 758e11a9c043fbd1238d1e3533a2d83804ec0b73
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164817"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043113"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 開發人員指南
 
@@ -270,7 +270,7 @@ context.done([err],[propertyBag])
 
 通知執行階段您的程式碼已完成。 當您的函數使用宣告時 [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) ，您不需要使用 `context.done()` 。 隱含地呼叫 `context.done` 回呼。 非同步函式可在 Node 8 或更新版本中使用，而這需要 2.x 版的 Functions 執行階段。
 
-如果您的函式不是非同步函式， **您必須呼叫**， `context.done` 以通知執行時間您的函式已完成。 如果沒有，執行將會逾時。
+如果您的函式不是非同步函式， **您必須呼叫** ， `context.done` 以通知執行時間您的函式已完成。 如果沒有，執行將會逾時。
 
 `context.done` 方法可讓您將使用者定義的錯誤傳回到執行階段，並傳回包含輸出繫結資料的 JSON 物件。 傳至 `context.done` 的屬性會覆寫 `context.bindings` 物件上設定的任何屬性。
 
@@ -325,10 +325,10 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 
 | 方法                 | 描述                                |
 | ---------------------- | ------------------------------------------ |
-| **_訊息_ (錯誤) **   | 在記錄檔中寫入錯誤層級事件。   |
-| **warn(_message_)**    | 將警告層級事件寫入記錄檔。 |
-| **info(_message_)**    | 寫入資訊層級或更低層級的記錄。    |
-| **verbose(_message_)** | 寫入詳細資訊層級記錄。           |
+| **_訊息_ (錯誤)**   | 在記錄檔中寫入錯誤層級事件。   |
+| **warn( _message_ )**    | 將警告層級事件寫入記錄檔。 |
+| **info( _message_ )**    | 寫入資訊層級或更低層級的記錄。    |
+| **verbose( _message_ )** | 寫入詳細資訊層級記錄。           |
 
 下列範例會在警告追蹤層級寫入相同的記錄，而不是在資訊層級上：
 
@@ -358,7 +358,7 @@ context.log.warn("Something has happened. " + context.invocationId);
 }  
 ```
 
-**consoleLevel** 的值對應至 `context.log` 方法的名稱。 若要停用主控台的所有追蹤記錄，請將 **consoleLevel** 設為 _off_。 如需詳細資訊，請參閱 [ v1. x 參考上的host.js](functions-host-json-v1.md)。
+**consoleLevel** 的值對應至 `context.log` 方法的名稱。 若要停用主控台的所有追蹤記錄，請將 **consoleLevel** 設為 _off_ 。 如需詳細資訊，請參閱 [ v1. x 參考上的host.js](functions-host-json-v1.md)。
 
 ---
 
@@ -543,14 +543,14 @@ module.exports = function(context) {
 
 
 ### <a name="using-kudu"></a>使用 Kudu
-1. 前往 `https://<function_app_name>.scm.azurewebsites.net`。
+1. 移至 `https://<function_app_name>.scm.azurewebsites.net`。
 
-2. 按一下**偵錯主控台**  >  **CMD**]。
+2. 按一下 **偵錯主控台**  >  **CMD** ]。
 
 3. 移至 `D:\home\site\wwwroot`，然後將 package.json 檔案拖曳至頁面上半部的 **wwwroot** 資料夾。  
     您也可以使用其他方法將檔案上傳至函數應用程式。 如需詳細資訊，請參閱[如何更新函式應用程式檔案](functions-reference.md#fileupdate)。 
 
-4. 上傳 package.json 檔案之後，請在 **Kudu 遠端執行主控台**中執行 `npm install` 命令。  
+4. 上傳 package.json 檔案之後，請在 **Kudu 遠端執行主控台** 中執行 `npm install` 命令。  
     此動作會下載 package.json 檔案中指出的套件，並重新啟動函數應用程式。
 
 ## <a name="environment-variables"></a>環境變數
@@ -720,7 +720,7 @@ func azure functionapp publish <APP_NAME>
 
 ### <a name="cold-start"></a>冷啟動
 
-在無伺服器裝載模型中開發 Azure Functions 時，可進行冷啟動。 *冷啟動*是指函數應用程式在閒置一段時間之後進行的第一次啟動，這需要較長的時間啟動。 尤其是對於大型相依性樹狀結構的 JavaScript 函式，冷啟動可能會有很大的影響。 若要加速執行冷啟動程序，請[盡可能以套件檔案的形式執行函式](run-functions-from-deployment-package.md)。 根據預設，許多部署方法都使用從套件執行的模式，但如果在進行許多冷啟動時未以此方式執行，此變更將可達到大幅改善的效果。
+在無伺服器裝載模型中開發 Azure Functions 時，可進行冷啟動。 *冷啟動* 是指函數應用程式在閒置一段時間之後進行的第一次啟動，這需要較長的時間啟動。 尤其是對於大型相依性樹狀結構的 JavaScript 函式，冷啟動可能會有很大的影響。 若要加速執行冷啟動程序，請[盡可能以套件檔案的形式執行函式](run-functions-from-deployment-package.md)。 根據預設，許多部署方法都使用從套件執行的模式，但如果在進行許多冷啟動時未以此方式執行，此變更將可達到大幅改善的效果。
 
 ### <a name="connection-limits"></a>連線限制
 

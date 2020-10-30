@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 300c4bcdb948665b2cdf4ce0eb429499208660b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0e8540d9488e9cc3756eb09c69349ac90d20b83
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970753"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043381"
 ---
 # <a name="availability-alerts"></a>可用性警示
 
@@ -24,15 +24,15 @@ ms.locfileid: "90970753"
 ![建立體驗](./media/availability-alerts/create-test.png)
 
 > [!NOTE]
->  利用[新的整合警示](../platform/alerts-overview.md)，警示規則的嚴重性和通知喜好設定[action groups](../platform/action-groups.md) **必須**在警示體驗中設定。 若不進行下列步驟，您只會收到入口網站內部通知。
+>  利用 [新的整合警示](../platform/alerts-overview.md)，警示規則的嚴重性和通知喜好設定 [action groups](../platform/action-groups.md) **必須** 在警示體驗中設定。 若不進行下列步驟，您只會收到入口網站內部通知。
 
 1. 儲存可用性測試之後，在 [詳細資料] 索引標籤上，按一下您剛剛建立之測試旁的省略符號。 按一下 [編輯警示]。
 
-   ![儲存後編輯](./media/availability-alerts/edit-alert.png)
+   ![螢幕擷取畫面：顯示從功能表選取的編輯警示。](./media/availability-alerts/edit-alert.png)
 
 2. 設定所需的嚴重性層級、規則描述以及，同時也是最重要的，您想要用於此警示規則的通知喜好設定出現在其中的動作群組。
 
-   ![儲存後編輯](./media/availability-alerts/set-action-group.png)
+   ![螢幕擷取畫面顯示 [規則管理] 頁面，您可以在其中編輯規則。](./media/availability-alerts/set-action-group.png)
 
 > [!NOTE]
 > 透過此體驗建立的可用性警示是以狀態為基礎。 這表示當符合警示準則時，當網站偵測為無法使用時，就會產生單一警示。 如果網站在下一次評估警示準則時仍處於關閉狀態，則不會產生新的警示。 如果您的網站已關閉一小時，而您已設定電子郵件警示，則在網站關機時，您只會收到一封電子郵件，而在網站備份時，則會收到後續的電子郵件。 您不會收到持續警示，提醒您網站仍無法使用。

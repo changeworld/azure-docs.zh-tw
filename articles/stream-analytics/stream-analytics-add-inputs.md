@@ -6,13 +6,13 @@ ms.author: krishmam
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: b58a2b4cb5cd083f837eb598d4e5f330783181c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/29/2020
+ms.openlocfilehash: f49ba8a907a65180061ef3973ae30b4438a945a2
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91279989"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043012"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>了解 Azure 串流分析的輸入
 
@@ -22,7 +22,7 @@ Azure 串流分析作業能連接一或多個資料輸入。 每個輸入都定�
 - [Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)
 - [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/) 
 - [Azure Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/) 
-- [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) \(部分機器翻譯\) 
+- [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) \(部分機器翻譯\) 
 
 這些輸入資源可以存留于與串流分析作業相同的 Azure 訂用帳戶中，或從不同的訂用帳戶。
 
@@ -37,7 +37,7 @@ Azure 串流分析作業能連接一或多個資料輸入。 每個輸入都定�
 如需串流資料輸入的詳細資訊，請參閱[將資料作為輸入串流處理至串流分析中](stream-analytics-define-inputs.md)
 
 ### <a name="reference-data-input"></a>參考資料輸入
-串流分析也支援稱為「參考資料」** 的輸入。 參考資料是完全靜態或緩慢變更的資料。 這些資料通常用來執行相互關聯和查閱。 比方說，您可能會將資料流輸入中的資料聯結至參考資料中的資料，很像是執行 SQL 聯結來查詢靜態值。 目前支援 Azure Blob 儲存體、Azure Data Lake Storage Gen2 和 Azure SQL Database 作為參考資料的輸入來源。 參考資料源 blob 的大小上限為 300 MB，視查詢複雜度和已配置的串流單位而定 (如需詳細資料，請參閱參考資料檔集的 [大小限制](stream-analytics-use-reference-data.md#size-limitation) 一節) 。
+串流分析也支援稱為「參考資料」  的輸入。 參考資料是完全靜態或緩慢變更的資料。 這些資料通常用來執行相互關聯和查閱。 比方說，您可能會將資料流輸入中的資料聯結至參考資料中的資料，很像是執行 SQL 聯結來查詢靜態值。 目前支援 Azure Blob 儲存體、Azure Data Lake Storage Gen2 和 Azure SQL Database 作為參考資料的輸入來源。 參考資料源 blob 的大小上限為 300 MB，視查詢複雜度和已配置的串流單位而定 (如需詳細資料，請參閱參考資料檔集的 [大小限制](stream-analytics-use-reference-data.md#size-limitation) 一節) 。
 
 如需參考資料輸入的詳細資訊，請參閱[使用參考資料在串流分析中進行查閱](stream-analytics-use-reference-data.md)
 

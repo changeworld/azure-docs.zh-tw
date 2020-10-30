@@ -5,18 +5,18 @@ description: Microsoft 身分識別平臺強制執行的重新導向 URI (回復
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 08/07/2020
+ms.date: 10/29/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
-ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: bd6f88db2b55a5f0f445659e4b5ef609d3e146e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: marsma, lenalepa, manrath
+ms.openlocfilehash: e7635aad85352887646a1319b4d0bfbf64924bf9
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030305"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042901"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>重新導向 URI (回復 URL) 限制和限制
 
@@ -24,7 +24,7 @@ ms.locfileid: "90030305"
 
  下列限制會套用至重新導向 URI：
 
-* 重新導向 URI 的開頭必須是配置 `https` 。
+* 重新導向 URI 的開頭必須是配置 `https` 。 Localhost 重新導向 Uri 有一些 [例外](#localhost-exceptions) 狀況。
 
 * 重新導向 URI 會區分大小寫。 其大小寫必須符合您執行中應用程式之 URL 路徑的大小寫。 例如，如果您的應用程式包含在它的路徑 `.../abc/response-oidc` 中，請勿 `.../ABC/response-oidc` 在重新導向 URI 中指定。 由於網頁瀏覽器會將路徑視為區分大小寫，因此，如果將與 `.../abc/response-oidc` 相關聯的 Cookie 重新導向至不相符的 `.../ABC/response-oidc` URL，可能就會予以排除。
 
@@ -64,11 +64,10 @@ Azure Active Directory (Azure AD) 應用程式模型目前支援在任何組織�
 
 * 請勿在埠不同的情況下註冊多個重新導向 Uri。 登入伺服器會任意挑選一個，並使用與該重新導向 URI 相關聯的行為 (例如，它是 `web` -、 `native` -或 `spa` -類型的重新導向) 。
 * 如果您需要在 localhost 上註冊多個重新導向 Uri，以在開發期間測試不同的流程，請使用 URI 的 *路徑* 元件來區分它們。 例如， `http://127.0.0.1/MyWebApp` 不符合 `http://127.0.0.1/MyNativeApp` 。
-* 根據 RFC 指導方針，您不應該 `localhost` 在重新導向 URI 中使用。 相反地，請使用實際的回送 IP 位址 `127.0.0.1` 。 這可防止您的應用程式因防火牆設定錯誤或重新命名網路介面而中斷。
+* 目前不支援 IPv6 回送位址 (`[::1]`) 。
+* 若要防止您的應用程式因防火牆設定錯誤或重新命名網路介面而中斷，請在您的重新導向 URI 中使用 IP 常值回送位址， `127.0.0.1` 而不是 `localhost` 。
 
-    若要使用 `http` 具有回送位址 (127.0.0.1) 而不是 localhost 的配置，您必須編輯 [應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#replyurls-attribute)。 
-
-    目前不支援 IPv6 回送位址 (`[::1]`) 。
+    若要使用 `http` 配置搭配 IP 常值回送位址 `127.0.0.1` ，您目前必須修改[應用程式資訊清單](reference-app-manifest.md)中的[replyUrlsWithType](reference-app-manifest.md#replyurlswithtype-attribute)屬性。
 
 ## <a name="restrictions-on-wildcards-in-redirect-uris"></a>重新導向 Uri 中的萬用字元限制
 
@@ -78,9 +77,9 @@ Azure Active Directory (Azure AD) 應用程式模型目前支援在任何組織�
 
 若要在登入工作或學校帳戶的應用程式註冊中新增具有萬用字元的重新導向 Uri，您需要在 Azure 入口網站的 [應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908) 中使用應用程式資訊清單編輯器。 雖然您可以使用資訊清單編輯器來設定具有萬用字元的重新導向 URI，但 *強烈* 建議您遵循 [RFC 6749 的3.1.2 一節](https://tools.ietf.org/html/rfc6749#section-3.1.2) ，並只使用絕對 uri。
 
-如果您的案例需要比允許的最大限制更多的重新導向 Uri，請考慮 [下列方法](#use-a-state-parameter) ，而不是新增萬用字元重新導向 URI。
+如果您的案例需要比允許的最大限制更多的重新導向 Uri，請考慮下列 [狀態參數方法](#use-a-state-parameter) ，而不是新增萬用字元重新導向 URI。
 
-### <a name="use-a-state-parameter"></a>使用狀態參數
+#### <a name="use-a-state-parameter"></a>使用狀態參數
 
 如果您有數個子域，而您的案例要求您在驗證成功後，將使用者重新導向至他們啟動的相同頁面，使用狀態參數可能會有説明。
 

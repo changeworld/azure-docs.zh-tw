@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0e14bba7b2982dd12fcca0d7aedc864b2a65288f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1683977d5c8be965cb329611c5a7fd6602a1cd97
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259946"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043373"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>使用 Azure Functions 管理 Azure Synapse Analytics SQL 集區中的計算資源
 
@@ -44,15 +44,15 @@ ms.locfileid: "91259946"
 
 ## <a name="change-the-compute-level"></a>變更計算層級
 
-1. 瀏覽到函式應用程式服務。 如果您部署的範本採用預設值，此服務應該命名為 DWOperations**。 您的函式應用程式開啟後，您應會注意到有五個函式部署到您的函式應用程式服務。
+1. 瀏覽到函式應用程式服務。 如果您部署的範本採用預設值，此服務應該命名為 DWOperations  。 您的函式應用程式開啟後，您應會注意到有五個函式部署到您的函式應用程式服務。
 
    ![使用範本部署的函式](./media/manage-compute-with-azure-functions/five-functions.png)
 
-2. 根據您是否要變更相應增加或相應減少時間，選取 [DWScaleDownTrigger]** 或 [DWScaleUpTrigger]**。 在下拉式功能表中，選取 [整合]。
+2. 根據您是否要變更相應增加或相應減少時間，選取 [DWScaleDownTrigger]  或 [DWScaleUpTrigger]  。 在下拉式功能表中，選取 [整合]。
 
    ![對函式選取整合](./media/manage-compute-with-azure-functions/select-integrate.png)
 
-3. 目前顯示的值應該為 %ScaleDownTime%** 或 %ScaleUpTime%**。 這些值表示排程是以[應用程式設定](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 中定義的值為基礎。 您現在可以忽略此值，並將排程變更為以後續步驟為基礎的慣用時間。
+3. 目前顯示的值應該為 %ScaleDownTime%  或 %ScaleUpTime%  。 這些值表示排程是以[應用程式設定](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 中定義的值為基礎。 您現在可以忽略此值，並將排程變更為以後續步驟為基礎的慣用時間。
 
 4. 在 [排程] 區域中，新增您想要的 CRON 運算式時間，以反映您希望 Azure Synapse Analytics 向上擴充的頻率。
 
@@ -64,21 +64,21 @@ ms.locfileid: "91259946"
    {second} {minute} {hour} {day} {month} {day-of-week}
    ```
 
-   例如，*"0 30 9 * * 1-5"* 會反映在每個工作日上午 9:30 執行的觸發程序。 如需詳細資訊，請瀏覽 Azure Functions [排程範例](../../azure-functions/functions-bindings-timer.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#example)。
+   例如， *"0 30 9 * * 1-5"* 會反映在每個工作日上午 9:30 執行的觸發程序。 如需詳細資訊，請瀏覽 Azure Functions [排程範例](../../azure-functions/functions-bindings-timer.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#example)。
 
 ## <a name="change-the-time-of-the-scale-operation"></a>變更調整規模作業的時間
 
-1. 瀏覽到函式應用程式服務。 如果您部署的範本採用預設值，此服務應該命名為 DWOperations**。 您的函式應用程式開啟後，您應會注意到有五個函式部署到您的函式應用程式服務。
+1. 瀏覽到函式應用程式服務。 如果您部署的範本採用預設值，此服務應該命名為 DWOperations  。 您的函式應用程式開啟後，您應會注意到有五個函式部署到您的函式應用程式服務。
 
-2. 根據您是否要變更相應增加或相應減少計算值，選取 DWScaleDownTrigger** 或 DWScaleUpTrigger**。 選取函式時，您的窗格應會顯示 index.js** 檔案。
+2. 根據您是否要變更相應增加或相應減少計算值，選取 DWScaleDownTrigger  或 DWScaleUpTrigger  。 選取函式時，您的窗格應會顯示 index.js  檔案。
 
    ![變更函式觸發程序計算層級](././media/manage-compute-with-azure-functions/index-js.png)
 
-3. 將 ServiceLevelObjective** 的值變更為您想要的層級，然後按 [儲存]。 這個值是您的資料倉儲執行個體將根據 [整合] 區段中定義的排程而調整至的計算層級。
+3. 將 ServiceLevelObjective  的值變更為您想要的層級，然後按 [儲存]。 這個值是您的資料倉儲執行個體將根據 [整合] 區段中定義的排程而調整至的計算層級。
 
 ## <a name="use-pause-or-resume-instead-of-scale"></a>使用暫停或繼續，而不是調整
 
-目前的函式預設為 DWScaleDownTrigger** 和 DWScaleUpTrigger**。 如果您想要改用暫停和繼續功能，您可以啟用 DWPauseTrigger** 或 DWResumeTrigger**。
+目前的函式預設為 DWScaleDownTrigger  和 DWScaleUpTrigger  。 如果您想要改用暫停和繼續功能，您可以啟用 DWPauseTrigger  或 DWResumeTrigger  。
 
 1. 瀏覽到 [函式] 窗格。
 
@@ -86,7 +86,7 @@ ms.locfileid: "91259946"
 
 2. 針對您要啟用的對應觸發程序，按一下滑動切換開關。
 
-3. 瀏覽至個別觸發程序的 [整合]** 索引標籤，以變更其排程。
+3. 瀏覽至個別觸發程序的 [整合]  索引標籤，以變更其排程。
 
    > [!NOTE]
    > 自動調整觸發程序和暫停/繼續觸發程序之間的功能差異是傳送給佇列的訊息。 如需詳細資訊，請參閱[新增觸發程序函式](manage-compute-with-azure-functions.md#add-a-new-trigger-function)。
@@ -97,9 +97,9 @@ ms.locfileid: "91259946"
 
 1. 建立新的空白函式。 選取您的函式 *+* 位置附近的按鈕，以顯示 [函式範本] 窗格。
 
-   ![建立新的函式](./media/manage-compute-with-azure-functions/create-new-function.png)
+   ![顯示 [函數應用程式] 功能表的螢幕擷取畫面，其中已選取 [函式] 旁的 [加號] 圖示。](./media/manage-compute-with-azure-functions/create-new-function.png)
 
-2. 從 [語言] 中，選取 [ *JavaScript*]，然後選取 [ *TimerTrigger*]。
+2. 從 [語言] 中，選取 [ *JavaScript* ]，然後選取 [ *TimerTrigger* ]。
 
    ![建立新的函式](./media/manage-compute-with-azure-functions/timertrigger-js.png)
 
@@ -107,7 +107,7 @@ ms.locfileid: "91259946"
 
    ![週六相應減少](./media/manage-compute-with-azure-functions/scale-down-saturday.png)
 
-4. 從其中一個其他觸發程序函式複製 index.js** 的內容。
+4. 從其中一個其他觸發程序函式複製 index.js  的內容。
 
    ![複製 index.js](././media/manage-compute-with-azure-functions/index-js.png)
 

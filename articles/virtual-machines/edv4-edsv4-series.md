@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: e8ecb0dde2208b367362f26f654ec8eb83c7a777
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5d02085fe4850dacf6e876b42cf301df2ea76713
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016190"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043332"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4 和 Edsv4 系列
 
@@ -29,10 +29,10 @@ Edv4 系列大小是在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 處�
 [進階儲存體](premium-storage-performance.md)快取：不支援<br>
 [即時移轉](maintenance-and-updates.md)：支援<br>
 [記憶體保留更新](maintenance-and-updates.md)：支援<br>
-[VM 世代支援](generation-2.md)：第1代<br>
+[VM 世代支援](generation-2.md)：第1代和第2代<br>
 <br>
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | <sup>**</sup> 最大快取和暫存儲存體輸送量： IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|
 | Standard_E2d_v4  | 2 | 16 | 75 | 4 | 19000/120 | 2|1000 |
 | Standard_E4d_v4  | 4 | 32 | 150 | 8 | 38500/242 | 2|2000 |
@@ -44,6 +44,8 @@ Edv4 系列大小是在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 處�
 | Standard_E64d_v4 | 64 | 504 | 2400 | 32 | 615000/3872 | 8|30000 |
 
 
+<sup>**</sup>您可以使用[Gen2 vm](generation-2.md)保證這些 IOPs 值
+
 ## <a name="edsv4-series"></a>Edsv4-series
 
 Edsv4 系列大小是在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 處理器上執行。 除了快速和大型本機 SSD 儲存體 (最多 2400 GiB) 之外，Edsv4 虛擬機器大小具備最多可達 504 GiB 的 RAM。 這些虛擬機器非常適合記憶體密集型的企業應用程式，以及可受益於低延遲、高速本機儲存體的應用程式。
@@ -53,10 +55,10 @@ Edsv4 系列大小是在 Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 處
 [進階儲存體](premium-storage-performance.md)快取：支援<br>
 [即時移轉](maintenance-and-updates.md)：支援<br>
 [記憶體保留更新](maintenance-and-updates.md)：支援<br>
-[VM 世代支援](generation-2.md)：第1代<br>
+[VM 世代支援](generation-2.md)：第1代和第2代<br>
 <br>
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps (GiB 中的快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | <sup>**</sup> 最大快取和暫存儲存體輸送量： IOPS/MBps (GiB 中的快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|---|
 | Standard_E2ds_v4  | 2 | 16 | 75 | 4 | 19000/120(50) | 3200/48 | 2|1000 |
 | Standard_E4ds_v4  | 4 | 32 | 150 | 8 | 38500/242(100) | 6400/96 | 2|2000 |

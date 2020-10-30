@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: 57fd36366eef284e2975633fbb34549f4316cde6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fcc79991918aecfc26933f2ef5b6e80ea7fa88c
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90988270"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043431"
 ---
 # <a name="create-an-azure-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>為 P2S OpenVPN 通訊協定連線建立 Azure Active Directory (AD) 租使用者
 
@@ -53,17 +53,17 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 
 2. 選取要與 VPN 伺服器設定產生關聯的中樞，然後按一下省略符號 (...)。
 
-    ![新網站](media/openvpn-azure-ad-tenant-multi-app/p2s4.jpg)
+    ![螢幕擷取畫面：顯示從功能表選取的 [編輯虛擬中樞]。](media/openvpn-azure-ad-tenant-multi-app/p2s4.jpg)
 
 3. 按一下 [編輯虛擬中樞]  。
 
 4. 勾選 [包含點對站閘道]  核取方塊，然後挑選您想要的 [閘道縮放單位]  。
 
-    ![新網站](media/openvpn-azure-ad-tenant-multi-app/p2s2.jpg)
+    ![螢幕擷取畫面顯示 [編輯虛擬中樞] 對話方塊，您可以在其中選取閘道縮放單位。](media/openvpn-azure-ad-tenant-multi-app/p2s2.jpg)
 
 5. 輸入要從中將 IP 位址指派給 VPN 用戶端的 [位址集區]  。
 
-6. 按一下 [確認]。
+6. 按一下 [確認]  。
 
 7. 此作業最多可能需要 30 分鐘才能完成。
 
@@ -99,53 +99,53 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 
 #### <a name="to-import-a-client-profile"></a><a name="import"></a>匯入用戶端設定檔
 
-1. 在頁面上，選取 [匯入]****。
+1. 在頁面上，選取 [匯入]  。
 
-    ![import](./media/openvpn-azure-ad-tenant-multi-app/import/import1.jpg)
+    ![螢幕擷取畫面：顯示從加號功能表選取的匯入。](./media/openvpn-azure-ad-tenant-multi-app/import/import1.jpg)
 
-2. 瀏覽至設定檔 xml 檔案，並加以選取。 選取檔案後，請選取 [開啟]****。
+2. 瀏覽至設定檔 xml 檔案，並加以選取。 選取檔案後，請選取 [開啟]  。
 
-    ![import](./media/openvpn-azure-ad-tenant-multi-app/import/import2.jpg)
+    ![螢幕擷取畫面顯示開啟的對話方塊，您可以在其中選取檔案。](./media/openvpn-azure-ad-tenant-multi-app/import/import2.jpg)
 
-3. 指定設定檔的名稱，然後選取 [儲存]****。
+3. 指定設定檔的名稱，然後選取 [儲存]  。
 
-    ![import](./media/openvpn-azure-ad-tenant-multi-app/import/import3.jpg)
+    ![螢幕擷取畫面會顯示已新增的連接名稱，並已選取 [儲存] 按鈕。](./media/openvpn-azure-ad-tenant-multi-app/import/import3.jpg)
 
-4. 選取 [連線]**** 以連線至 VPN。
+4. 選取 [連線]  以連線至 VPN。
 
-    ![import](./media/openvpn-azure-ad-tenant-multi-app/import/import4.jpg)
+    ![螢幕擷取畫面顯示您剛才建立之連接的 [連線] 按鈕。](./media/openvpn-azure-ad-tenant-multi-app/import/import4.jpg)
 
-5. 連線之後，圖示將會變成綠色，並顯示為 [已連線]****。
+5. 連線之後，圖示將會變成綠色，並顯示為 [已連線]  。
 
-    ![import](./media/openvpn-azure-ad-tenant-multi-app/import/import5.jpg)
+    ![螢幕擷取畫面顯示連接狀態中的連線，以及中斷連線的選項。](./media/openvpn-azure-ad-tenant-multi-app/import/import5.jpg)
 
 #### <a name="to-delete-a-client-profile"></a><a name="delete"></a>刪除用戶端設定檔
 
-1. 選取要刪除的用戶端設定檔旁的省略符號 (...)。 然後，選取 [移除]****。
+1. 選取要刪除的用戶端設定檔旁的省略符號 (...)。 然後，選取 [移除]  。
 
-    ![[刪除]](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
+    ![螢幕擷取畫面：顯示從功能表選取 [移除]。](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
 
-2. 選取 [移除]**** 以刪除。
+2. 選取 [移除]  以刪除。
 
-    ![[刪除]](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
+    ![螢幕擷取畫面顯示確認對話方塊，其中包含移除或取消的選項。](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
 
 #### <a name="to-diagnose-connection-issues"></a><a name="diagnose"></a>診斷連接問題
 
-1. 若要診斷連線問題，您可以使用**診斷**工具。 選取要診斷的 VPN 連線旁的省略符號 (...)，以顯示功能表。 然後，選取 [診斷]****。
+1. 若要診斷連線問題，您可以使用 **診斷** 工具。 選取要診斷的 VPN 連線旁的省略符號 (...)，以顯示功能表。 然後，選取 [診斷]  。
 
-    ![diagnose](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose1.jpg)
+    ![螢幕擷取畫面顯示從功能表選取診斷。](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose1.jpg)
 
-2. 在 [連線屬性]**** 頁面上，選取 [執行診斷]****。
+2. 在 [連線屬性]  頁面上，選取 [執行診斷]  。
 
-    ![diagnose](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose2.jpg)
+    ![螢幕擷取畫面：顯示連接的 [執行診斷] 按鈕。](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose2.jpg)
 
 3. 使用您的認證登入。
 
-    ![diagnose](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose3.jpg)
+    ![螢幕擷取畫面會顯示此動作的 [登入] 對話方塊。](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose3.jpg)
 
 4. 檢視診斷結果。
 
-    ![diagnose](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose4.jpg)
+    ![螢幕擷取畫面：顯示診斷的結果。](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose4.jpg)
 
 ## <a name="10-view-your-virtual-wan"></a><a name="viewwan"></a>10. 查看您的虛擬 WAN
 

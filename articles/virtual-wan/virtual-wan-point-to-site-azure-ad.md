@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: alzam
-ms.openlocfilehash: 1102e2dafcf1a78bc9c243f27549b13793ec5408
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 9cc68eb60096c4431acfc988c87ca9bf99f1f045
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079168"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043396"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>設定使用者 VPN 的 Azure Active Directory authentication
 
@@ -49,7 +49,7 @@ ms.locfileid: "92079168"
 
 透過瀏覽器瀏覽至 [Azure 入口網站](https://portal.azure.com) ，並使用您的 Azure 帳戶登入。
 
-1. 瀏覽至 [虛擬 WAN] 頁面。 在入口網站中，按一下 [+建立資源]  。 在搜尋方塊中鍵入**虛擬 WAN** 並選取 [輸入]。
+1. 瀏覽至 [虛擬 WAN] 頁面。 在入口網站中，按一下 [+建立資源]  。 在搜尋方塊中鍵入 **虛擬 WAN** 並選取 [輸入]。
 2. 從結果中選取 [虛擬 WAN]  。 在 [虛擬 WAN] 頁面中，按一下 [建立]  ，以開啟 [建立 WAN] 頁面。
 3. 在 [建立 WAN]  頁面的 [基本]  索引標籤中，填寫下列欄位：
 
@@ -61,13 +61,13 @@ ms.locfileid: "92079168"
    * **名稱** - 鍵入要用來稱呼 WAN 的名稱。
    * **類型：** 標準。 如果您建立基本 WAN，則只能建立基本中樞。 基本中樞只能進行 VPN 站對站連線。
 4. 填寫完欄位之後，選取 [檢閱 + 建立]  。
-5. 驗證通過後，選取 [建立]****，以建立虛擬 WAN。
+5. 驗證通過後，選取 [建立]  ，以建立虛擬 WAN。
 
 ## <a name="create-an-empty-virtual-hub"></a><a name="site"></a>建立空的虛擬中樞
 
-1. 在您的虛擬 WAN 底下，選取 [中樞]，然後按一下 [ **+ 新增中樞**]。
+1. 在您的虛擬 WAN 底下，選取 [中樞]，然後按一下 [ **+ 新增中樞** ]。
 
-   ![新網站](media/virtual-wan-point-to-site-azure-ad/hub1.jpg)
+   ![螢幕擷取畫面顯示已選取新中樞的 [中樞設定] 對話方塊。](media/virtual-wan-point-to-site-azure-ad/hub1.jpg)
 2. 在 [建立虛擬中樞] 頁面上，填入下列欄位。
 
    **區域** - 選取您要在其中部署虛擬中樞的區域。
@@ -76,45 +76,43 @@ ms.locfileid: "92079168"
 
    **中樞私人位址空間** - 採用 CIDR 標記法的中樞位址範圍。
 
-   ![新網站](media/virtual-wan-point-to-site-azure-ad/hub2.jpg)  
-3. 按一下 [檢閱 + 建立]。
-4. 在 [ **驗證** 成功] 頁面上，按一下 [ **建立**]。
+   ![螢幕擷取畫面顯示 [建立虛擬中樞] 窗格，您可以在其中輸入值。](media/virtual-wan-point-to-site-azure-ad/hub2.jpg)  
+3. 按一下 [檢閱 + 建立]  。
+4. 在 [ **驗證** 成功] 頁面上，按一下 [ **建立** ]。
 
 ## <a name="create-a-new-user-vpn-configuration"></a><a name="site"></a>建立新的使用者 VPN 設定
 
 使用者 VPN 設定會定義連接遠端用戶端的參數。
 
-1. 在您的虛擬 WAN 底下，選取 [使用者 VPN 設定]****。
+1. 在您的虛擬 WAN 底下，選取 [使用者 VPN 設定]  。
 
-   ![新增設定](media/virtual-wan-point-to-site-azure-ad/aadportal1.jpg)
+   ![螢幕擷取畫面顯示已選取使用者的 [V P N 設定] 功能表項目。](media/virtual-wan-point-to-site-azure-ad/aadportal1.jpg)
 
-2. 按一下 [+ 建立使用者 VPN 設定]****。
+2. 按一下 [+ 建立使用者 VPN 設定]  。
 
-   ![新增設定](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
+   ![螢幕擷取畫面顯示 [建立使用者] 的 [建立使用者] P N config 連結。](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
 
-3. 輸入資訊，然後按一下 [ **建立**]。
+3. 輸入資訊，然後按一下 [ **建立** ]。
 
-   * 設定**名稱**-輸入您想要用來呼叫使用者 VPN 設定的名稱。
-   * 通道**類型**-選取 [OpenVPN]。
+   * 設定 **名稱** -輸入您想要用來呼叫使用者 VPN 設定的名稱。
+   * 通道 **類型** -選取 [OpenVPN]。
    * **驗證方法** -選取 Azure Active Directory。
    * **物件** -輸入在您 Azure AD 租使用者中註冊之 [Azure VPN](openvpn-azure-ad-tenant.md) 企業應用程式的應用程式識別碼。 
    * **發行** - `https://sts.windows.net/<your Directory ID>/`
    * **AAD 租使用者** - `https://login.microsoftonline.com/<your Directory ID>`
   
-
-
-   ![新增設定](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
+   ![螢幕擷取畫面顯示 [建立新使用者] 的 [建立新使用者] 設定窗格，您可以在其中輸入值。](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
 
 ## <a name="edit-hub-assignment"></a><a name="hub"></a>編輯中樞指派
 
 1. 流覽至虛擬 WAN 底下的 [ **中樞** ] 分頁。
 2. 選取要與 VPN 伺服器設定產生關聯的中樞，然後按一下省略符號 (...)。
 
-   ![新網站](media/virtual-wan-point-to-site-azure-ad/p2s4.jpg)
+   ![螢幕擷取畫面：顯示從功能表選取的 [編輯虛擬中樞]。](media/virtual-wan-point-to-site-azure-ad/p2s4.jpg)
 3. 按一下 [編輯虛擬中樞]  。
 4. 勾選 [包含點對站閘道]  核取方塊，然後挑選您想要的 [閘道縮放單位]  。
 
-   ![新網站](media/virtual-wan-point-to-site-azure-ad/p2s2.jpg)
+   ![螢幕擷取畫面顯示 [編輯虛擬中樞] 對話方塊，您可以在其中選取閘道縮放單位。](media/virtual-wan-point-to-site-azure-ad/p2s2.jpg)
 5. 輸入要從中將 IP 位址指派給 VPN 用戶端的 [位址集區]  。
 6. 按一下 [確認]  。
 7. 此作業最多可能需要 30 分鐘的時間才能完成。
@@ -123,7 +121,7 @@ ms.locfileid: "92079168"
 
 使用 VPN 設定檔來設定用戶端。
 
-1. 在虛擬 WAN 的頁面上，按一下 [ **使用者 VPN**設定]。
+1. 在虛擬 WAN 的頁面上，按一下 [ **使用者 VPN** 設定]。
 2. 在頁面頂端，按一下 [下載使用者 VPN 設定]  。
 3. 檔案建立完成之後，您可以按一下連結來下載。
 4. 使用設定檔檔案來設定 VPN 用戶端。
@@ -142,53 +140,53 @@ ms.locfileid: "92079168"
 
 #### <a name="to-import-a-client-profile"></a><a name="import"></a>匯入用戶端設定檔
 
-1. 在頁面上，選取 [匯入]****。
+1. 在頁面上，選取 [匯入]  。
 
-    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import1.jpg)
+    ![螢幕擷取畫面：顯示從加號功能表選取的匯入。](./media/virtual-wan-point-to-site-azure-ad/import/import1.jpg)
 
-2. 瀏覽至設定檔 xml 檔案，並加以選取。 選取檔案後，請選取 [開啟]****。
+2. 瀏覽至設定檔 xml 檔案，並加以選取。 選取檔案後，請選取 [開啟]  。
 
-    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import2.jpg)
+    ![螢幕擷取畫面顯示開啟的對話方塊，您可以在其中選取檔案。](./media/virtual-wan-point-to-site-azure-ad/import/import2.jpg)
 
-3. 指定設定檔的名稱，然後選取 [儲存]****。
+3. 指定設定檔的名稱，然後選取 [儲存]  。
 
-    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import3.jpg)
+    ![螢幕擷取畫面會顯示已新增的連接名稱，並已選取 [儲存] 按鈕。](./media/virtual-wan-point-to-site-azure-ad/import/import3.jpg)
 
-4. 選取 [連線]**** 以連線至 VPN。
+4. 選取 [連線]  以連線至 VPN。
 
-    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import4.jpg)
+    ![螢幕擷取畫面顯示您剛才建立之連接的 [連線] 按鈕。](./media/virtual-wan-point-to-site-azure-ad/import/import4.jpg)
 
-5. 連線之後，圖示將會變成綠色，並顯示為 [已連線]****。
+5. 連線之後，圖示將會變成綠色，並顯示為 [已連線]  。
 
-    ![import](./media/virtual-wan-point-to-site-azure-ad/import/import5.jpg)
+    ![螢幕擷取畫面顯示連接狀態中的連線，以及中斷連線的選項。](./media/virtual-wan-point-to-site-azure-ad/import/import5.jpg)
 
 #### <a name="to-delete-a-client-profile"></a><a name="delete"></a>刪除用戶端設定檔
 
-1. 選取要刪除的用戶端設定檔旁的省略符號 (...)。 然後，選取 [移除]****。
+1. 選取要刪除的用戶端設定檔旁的省略符號 (...)。 然後，選取 [移除]  。
 
-    ![[刪除]](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
+    ![螢幕擷取畫面：顯示從功能表選取 [移除]。](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
 
-2. 選取 [移除]**** 以刪除。
+2. 選取 [移除]  以刪除。
 
-    ![[刪除]](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
+    ![螢幕擷取畫面顯示確認對話方塊，其中包含移除或取消的選項。](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
 
 #### <a name="diagnose-connection-issues"></a><a name="diagnose"></a>診斷連線問題
 
-1. 若要診斷連線問題，您可以使用**診斷**工具。 選取要診斷的 VPN 連線旁的省略符號 (...)，以顯示功能表。 然後，選取 [診斷]****。
+1. 若要診斷連線問題，您可以使用 **診斷** 工具。 選取要診斷的 VPN 連線旁的省略符號 (...)，以顯示功能表。 然後，選取 [診斷]  。
 
-    ![diagnose](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose1.jpg)
+    ![螢幕擷取畫面顯示從功能表選取診斷。](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose1.jpg)
 
-2. 在 [連線屬性]**** 頁面上，選取 [執行診斷]****。
+2. 在 [連線屬性]  頁面上，選取 [執行診斷]  。
 
-    ![diagnose](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose2.jpg)
+    ![螢幕擷取畫面：顯示連接的 [執行診斷] 按鈕。](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose2.jpg)
 
 3. 使用您的認證登入。
 
-    ![diagnose](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose3.jpg)
+    ![螢幕擷取畫面會顯示此動作的 [登入] 對話方塊。](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose3.jpg)
 
 4. 檢視診斷結果。
 
-    ![diagnose](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose4.jpg)
+    ![螢幕擷取畫面：顯示診斷的結果。](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose4.jpg)
 
 ## <a name="view-your-virtual-wan"></a><a name="viewwan"></a>檢視您的虛擬 WAN
 

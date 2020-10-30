@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: 7d91491a2f521d974f15878791739a70a31c1bbe
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2f7132ffa1fa55d1dfd8043677bf9695a589b7af
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745814"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043032"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>建立使用可用性區域的 Azure Kubernetes Service (AKS) 叢集
 
@@ -52,7 +52,7 @@ Azure Kubernetes Service (AKS) 叢集會在基本 Azure 基礎結構的邏輯區
 
 使用 Azure 受控磁碟的磁碟區目前並非區域備援資源。 磁片區無法跨區域附加，且必須與裝載目標 pod 的指定節點共置於相同的區域中。
 
-如果必須執行具狀態的工作負載，請使用 Pod 規格中的節點集區污點和容差，將 Pod 排程分類到與磁碟相同的區域中。 或者，使用以網路為基礎的儲存空間 (例如 Azure 檔案儲存體)，以在區域之間排程 Pod 時連結至 Pod。
+Kubernetes 可感知自1.12 版起的 Azure 可用性區域。 您可以在多區域 AKS 叢集中部署參考 Azure 受控磁片的 PersistentVolumeClaim 物件，而 [Kubernetes 將負責排程](https://kubernetes.io/docs/setup/best-practices/multiple-zones/#storage-access-for-zones) 任何在正確的可用性區域中宣告此 PVC 的 pod。
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>AKS 叢集的可用性區域概觀
 
@@ -120,7 +120,20 @@ Name:       aks-nodepool1-28993262-vmss000002
 
 當您將其他節點新增至代理程式集區時，Azure 平台會自動在指定的可用性區域之間散發基礎 VM。
 
-請注意，在較新的 Kubernetes 版本 (1.17.0 和以後版本) 中，除了已淘汰的 `failure-domain.beta.kubernetes.io/zone` 之外，AKS 還會使用較新的標籤 `topology.kubernetes.io/zone`。
+請注意，在較新的 Kubernetes 版本 (1.17.0 和以後版本) 中，除了已淘汰的 `failure-domain.beta.kubernetes.io/zone` 之外，AKS 還會使用較新的標籤 `topology.kubernetes.io/zone`。 您可以執行下列腳本，取得與上述相同的結果：
+
+```console
+kubectl get nodes -o custom-columns=NAME:'{.metadata.name}',REGION:'{.metadata.labels.topology\.kubernetes\.io/region}',ZONE:'{metadata.labels.topology\.kubernetes\.io/zone}'
+```
+
+這會提供更簡潔的輸出：
+
+```console
+NAME                                REGION   ZONE
+aks-nodepool1-34917322-vmss000000   eastus   eastus-1
+aks-nodepool1-34917322-vmss000001   eastus   eastus-2
+aks-nodepool1-34917322-vmss000002   eastus   eastus-3
+```
 
 ## <a name="verify-pod-distribution-across-zones"></a>驗證跨區域的 Pod 散發
 

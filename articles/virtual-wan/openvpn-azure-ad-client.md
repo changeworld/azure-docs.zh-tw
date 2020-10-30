@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: e64de987bd82f6b93350cdd706fc1a243d2855b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ecebaf9384bcb0dbbb6fe36df4dd474738422149
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90977831"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043409"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>設定 P2S OpenVPN 通訊協定連線的 VPN 用戶端：Azure AD 驗證
 
@@ -32,7 +32,7 @@ ms.locfileid: "90977831"
 
 1. 移至 [開始]，然後選取 [設定] > [隱私權] > 背景應用程式。
 2. 在 [背景應用程式] 底下，確定已開啟 **[讓應用程式在背景中執行** ]。
-3. 在 [選擇可在背景中執行的應用程式] 底下 **，將 [Azure VPN Client 的設定**開啟]。
+3. 在 [選擇可在背景中執行的應用程式] 底下 **，將 [Azure VPN Client 的設定** 開啟]。
 
   ![權限 (permission)](./media/openvpn-azure-ad-client/backgroundpermission.png)
 
@@ -54,111 +54,111 @@ ms.locfileid: "90977831"
 
 當您有工作設定檔，並需要將其散發給其他使用者時，您可以使用下列步驟匯出它：
 
-1. 反白顯示您要匯出的 VPN 用戶端設定檔，選取 [ **...**]，然後選取 [ **匯出**]。
+1. 反白顯示您要匯出的 VPN 用戶端設定檔，選取 [ **...** ]，然後選取 [ **匯出** ]。
 
-    ![匯出](./media/openvpn-azure-ad-client/export/export1.jpg)
+    ![螢幕擷取畫面：顯示從功能表選取 [匯出]。](./media/openvpn-azure-ad-client/export/export1.jpg)
 
 2. 選取您要儲存此設定檔的位置，將檔案名保持原狀，然後選取 [ **儲存** ] 以儲存 xml 檔案。
 
-    ![匯出](./media/openvpn-azure-ad-client/export/export2.jpg)
+    ![螢幕擷取畫面顯示 [另存新檔] 對話方塊，您可以在其中輸入檔案名。](./media/openvpn-azure-ad-client/export/export2.jpg)
 
 ### <a name="to-import-a-client-profile"></a><a name="import"></a>匯入用戶端設定檔
 
-1. 在頁面上，選取 [匯入]****。
+1. 在頁面上，選取 [匯入]  。
 
-    ![import](./media/openvpn-azure-ad-client/import/import1.jpg)
+    ![螢幕擷取畫面：顯示從加號功能表選取的匯入。](./media/openvpn-azure-ad-client/import/import1.jpg)
 
-2. 瀏覽至設定檔 xml 檔案，並加以選取。 選取檔案後，請選取 [開啟]****。
+2. 瀏覽至設定檔 xml 檔案，並加以選取。 選取檔案後，請選取 [開啟]  。
 
-    ![import](./media/openvpn-azure-ad-client/import/import2.jpg)
+    ![螢幕擷取畫面顯示開啟的對話方塊，您可以在其中選取檔案。](./media/openvpn-azure-ad-client/import/import2.jpg)
 
-3. 指定設定檔的名稱，然後選取 [儲存]****。
+3. 指定設定檔的名稱，然後選取 [儲存]  。
 
-    ![import](./media/openvpn-azure-ad-client/import/import3.jpg)
+    ![螢幕擷取畫面會顯示已新增的連接名稱，並已選取 [儲存] 按鈕。](./media/openvpn-azure-ad-client/import/import3.jpg)
 
-4. 選取 [連線]**** 以連線至 VPN。
+4. 選取 [連線]  以連線至 VPN。
 
-    ![import](./media/openvpn-azure-ad-client/import/import4.jpg)
+    ![螢幕擷取畫面顯示您剛才建立之連接的 [連線] 按鈕。](./media/openvpn-azure-ad-client/import/import4.jpg)
 
-5. 連線之後，圖示將會變成綠色，並顯示為 [已連線]****。
+5. 連線之後，圖示將會變成綠色，並顯示為 [已連線]  。
 
-    ![import](./media/openvpn-azure-ad-client/import/import5.jpg)
+    ![螢幕擷取畫面顯示連接狀態中的連線，以及中斷連線的選項。](./media/openvpn-azure-ad-client/import/import5.jpg)
 
 ### <a name="to-delete-a-client-profile"></a><a name="delete"></a>刪除用戶端設定檔
 
-1. 選取您要刪除之用戶端設定檔旁的省略號。 然後，選取 [移除]****。
+1. 選取您要刪除之用戶端設定檔旁的省略號。 然後，選取 [移除]  。
 
-    ![[刪除]](./media/openvpn-azure-ad-client/delete/delete1.jpg)
+    ![螢幕擷取畫面：顯示從功能表選取 [移除]。](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
-2. 選取 [移除]**** 以刪除。
+2. 選取 [移除]  以刪除。
 
-    ![[刪除]](./media/openvpn-azure-ad-client/delete/delete2.jpg)
+    ![螢幕擷取畫面顯示確認對話方塊，其中包含移除或取消的選項。](./media/openvpn-azure-ad-client/delete/delete2.jpg)
 
 ## <a name="create-a-connection"></a><a name="connection"></a>建立連接
 
-1. 在頁面上，選取 [] **+** ，然後選取 [ **+ 新增**]。
+1. 在頁面上，選取 [] **+** ，然後選取 [ **+ 新增** ]。
 
-    ![connection](./media/openvpn-azure-ad-client/create/create1.jpg)
+    ![螢幕擷取畫面：顯示從加號功能表選取 [新增]。](./media/openvpn-azure-ad-client/create/create1.jpg)
 
-2. 填寫連接資訊。 如果您不確定其值，請洽詢您的系統管理員。 填妥值之後，請選取 [ **儲存**]。
+2. 填寫連接資訊。 如果您不確定其值，請洽詢您的系統管理員。 填妥值之後，請選取 [ **儲存** ]。
 
-    ![connection](./media/openvpn-azure-ad-client/create/create2.jpg)
+    ![螢幕擷取畫面：顯示窗格，您可以在其中輸入所需的值。](./media/openvpn-azure-ad-client/create/create2.jpg)
 
-3. 選取 [連線]**** 以連線至 VPN。
+3. 選取 [連線]  以連線至 VPN。
 
-    ![connection](./media/openvpn-azure-ad-client/create/create3.jpg)
+    ![螢幕擷取畫面顯示連接的 [連線] 按鈕。](./media/openvpn-azure-ad-client/create/create3.jpg)
 
-4. 選取適當的認證，然後選取 [ **繼續**]。
+4. 選取適當的認證，然後選取 [ **繼續** ]。
 
-    ![connection](./media/openvpn-azure-ad-client/create/create4.jpg)
+    ![螢幕擷取畫面：顯示 [登入] 對話方塊。](./media/openvpn-azure-ad-client/create/create4.jpg)
 
-5. 成功連線後，圖示將會變成綠色，並說出 **已連線**。
+5. 成功連線後，圖示將會變成綠色，並說出 **已連線** 。
 
-    ![connection](./media/openvpn-azure-ad-client/create/create5.jpg)
+    ![螢幕擷取畫面會顯示上線狀態中的連接。](./media/openvpn-azure-ad-client/create/create5.jpg)
 
 ### <a name="to-connect-automatically"></a><a name="autoconnect"></a>自動連接
 
 這些步驟可協助您設定連線，以使用 Always on 自動連接。
 
-1. 在 VPN 用戶端的首頁上，選取 [ **Vpn 設定**]。
+1. 在 VPN 用戶端的首頁上，選取 [ **Vpn 設定** ]。
 
-    ![自動](./media/openvpn-azure-ad-client/auto/auto1.jpg)
+    ![螢幕擷取畫面顯示 V P N 連接，您可以在其中選取 V P N 設定。](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
 2. 在 [切換應用程式] 對話方塊中選取 **[是]** 。
 
-    ![自動](./media/openvpn-azure-ad-client/auto/auto2.jpg)
+    ![螢幕擷取畫面顯示有關切換應用程式的驗證訊息。](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
 3. 確定您要設定的連接尚未連接，然後反白顯示設定檔，然後選取 [自動連線 **]** 核取方塊。
 
-    ![自動](./media/openvpn-azure-ad-client/auto/auto3.jpg)
+    ![螢幕擷取畫面顯示 [設定] 對話方塊，您可以在其中選取 [自動連線]。](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
 4. 選取 **[連線]** 以起始 VPN 連線。
 
-    ![自動](./media/openvpn-azure-ad-client/auto/auto4.jpg)
+    ![螢幕擷取畫面：顯示 [連接] 按鈕。](./media/openvpn-azure-ad-client/auto/auto4.jpg)
 
 ## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>診斷連線問題
 
-1. 若要診斷連線問題，您可以使用**診斷**工具。 選取您要診斷的 VPN 連線旁的 **...** 以顯示功能表。 然後，選取 [診斷]****。
+1. 若要診斷連線問題，您可以使用 **診斷** 工具。 選取您要診斷的 VPN 連線旁的 **...** 以顯示功能表。 然後，選取 [診斷]  。
 
-    ![diagnose](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
+    ![螢幕擷取畫面顯示從功能表選取診斷。](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
 
-2. 在 [連線屬性]**** 頁面上，選取 [執行診斷]****。
+2. 在 [連線屬性]  頁面上，選取 [執行診斷]  。
 
-    ![diagnose](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
+    ![螢幕擷取畫面：顯示連接的 [執行診斷] 按鈕。](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
 
 3. 使用您的認證登入。
 
-    ![diagnose](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
+    ![螢幕擷取畫面會顯示此動作的 [登入] 對話方塊。](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
 
 4. 檢視診斷結果。
 
-    ![diagnose](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
+    ![螢幕擷取畫面：顯示診斷的結果。](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
 
 ## <a name="faq"></a>常見問題集
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>如何? 將 DNS 尾碼新增至 VPN 用戶端？
 
-您可以修改下載的設定檔 XML 檔案，並** \<dnssuffixes> \<dnssufix> \</dnssufix> \</dnssuffixes> **新增標記
+您可以修改下載的設定檔 XML 檔案，並 **\<dnssuffixes> \<dnssufix> \</dnssufix> \</dnssuffixes>** 新增標記
 
 ```
 <azvpnprofile>
@@ -176,7 +176,7 @@ ms.locfileid: "90977831"
 
 ### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>如何? 將自訂 DNS 伺服器新增至 VPN 用戶端？
 
-您可以修改下載的設定檔 XML 檔案，並** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> **新增標記
+您可以修改下載的設定檔 XML 檔案，並 **\<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers>** 新增標記
 
 ```
 <azvpnprofile>
@@ -197,7 +197,7 @@ ms.locfileid: "90977831"
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>如何? 將自訂路由新增至 VPN 用戶端？
 
-您可以修改下載的設定檔 XML 檔案，並** \<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes> **新增標記
+您可以修改下載的設定檔 XML 檔案，並 **\<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes>** 新增標記
 
 ```
 <azvpnprofile>
@@ -214,7 +214,7 @@ ms.locfileid: "90977831"
 ```
 ### <a name="how-do-i-direct-all-traffic-to-the-vpn-tunnel-force-tunnel"></a>如何? 將所有流量導向 VPN 通道 (強制通道) ？
 
-您可以修改下載的設定檔 XML 檔案，並** \<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes> **新增標記
+您可以修改下載的設定檔 XML 檔案，並 **\<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes>** 新增標記
 
 ```
 <azvpnprofile>
@@ -235,7 +235,7 @@ ms.locfileid: "90977831"
 
 ### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>如何? 區塊 (從 VPN 用戶端排除) 路由？
 
-您可以修改下載的設定檔 XML 檔案，並** \<excluderoutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</excluderoutes> **新增標記
+您可以修改下載的設定檔 XML 檔案，並 **\<excluderoutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</excluderoutes>** 新增標記
 
 ```
 <azvpnprofile>
