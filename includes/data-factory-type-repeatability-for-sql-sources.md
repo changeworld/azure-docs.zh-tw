@@ -76,7 +76,7 @@ ID    Product        Quantity    ModifiedDate
 > [!IMPORTANT]
 > 目前 Azure Synapse Analytics 不支援 sliceIdentifierColumnName。 time. 
 
-達成重複性的另一個機制是在目標資料表中使用專用資料行 (**sliceIdentifierColumnName**)。 Azure Data Factory 會使用這個資料行以確保來源和目的地保持同步。 當目的地 SQL 資料表結構描述可彈性變更或定義，就可以使用這種方法。 
+達成重複性的另一個機制是在目標資料表中使用專用資料行 ( **sliceIdentifierColumnName** )。 Azure Data Factory 會使用這個資料行以確保來源和目的地保持同步。 當目的地 SQL 資料表結構描述可彈性變更或定義，就可以使用這種方法。 
 
 基於重複性的目的，Azure Data Factory 會使用此資料行，且在程序中 Azure Data Factory 將不會對資料表進行任何結構描述變更。 如何使用這個方法：
 

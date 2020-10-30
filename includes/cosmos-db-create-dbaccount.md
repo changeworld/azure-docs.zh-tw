@@ -29,7 +29,7 @@ ms.locfileid: "88639216"
     |資源群組|資源群組名稱|選取資源群組，或選取 [新建]，然後輸入新資源群組的唯一名稱。 |
     |帳戶名稱|唯一的名稱|輸入名稱來識別您的 Azure Cosmos 帳戶。 因為 documents.azure.com 會附加到您所提供的名稱以建立 URI，請使用唯一名稱。<br><br>名稱只能包含小寫字母、數字及連字號 (-) 字元。 其長度必須介於 3 到 44 個字元之間。|
     |API|要建立的帳戶類型|選取 [Core(SQL)]，以使用 SQL 語法建立文件資料庫並進行查詢。 <br><br>API 會決定要建立的帳戶類型。 Azure Cosmos DB 提供五個 API：Core(SQL) 和 MongoDB (適用於文件資料)、Gremlin (適用於圖形資料)、Azure 資料表及 Cassandra。 目前，您必須為每個 API 建立個別個帳戶。 |
-    |容量模式|佈建輸送量或無伺服器|選取 [**佈建的輸送量**]，以 [[佈建的輸送量](../articles/cosmos-db/set-throughput.md)] 模式建立帳戶。 選取 [**無伺服器**]，以 [[無伺服器](../articles/cosmos-db/serverless.md)] 模式建立帳戶。<br><br>**注意**：無伺服器目前僅適用於 Core (SQL) API 帳戶。|
+    |容量模式|佈建輸送量或無伺服器|選取 [ **佈建的輸送量** ]，以 [ [佈建的輸送量](../articles/cosmos-db/set-throughput.md)] 模式建立帳戶。 選取 [ **無伺服器** ]，以 [ [無伺服器](../articles/cosmos-db/serverless.md)] 模式建立帳戶。<br><br>**注意** ：無伺服器目前僅適用於 Core (SQL) API 帳戶。|
     |申請免費層折扣|適用或不適用|使用 Azure Cosmos DB 免費層，您將可在帳戶中免費取得前 400 RU/秒和 5 GB 的儲存體。 深入了解[免費層](https://azure.microsoft.com/pricing/details/cosmos-db/)。|
     |Location|最接近使用者的區域|選取用來裝載 Azure Cosmos DB 帳戶的地理位置。 使用最接近使用者的位置，讓他們能以最快速度存取資料。|
     |帳戶類型|生產或非生產|如果帳戶將用於生產工作負載，請選取 [生產]。 如果帳戶將用於非生產工作負載 (例如開發、測試、QA 或預備)，請選取 [非生產]。 這是一種 Azure 資源標記設定，可調整入口網站體驗，但不會影響基礎 Azure Cosmos DB 帳戶。 您可以隨時變更此值。|

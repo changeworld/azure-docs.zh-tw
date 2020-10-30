@@ -5,32 +5,34 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/10/2020
+ms.date: 10/29/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 50ce8530aca40eed07741f35be1a57bbd7cc1868
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24d146da7946176c92902698d0f52ae01baf79ee
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77133611"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93061591"
 ---
-以較高的權限開啟 PowerShell 主控台。
+如果您在本機執行 PowerShell，請以較高的許可權開啟 PowerShell 主控台，並連接到您的 Azure 帳戶。 *Connect-AzAccount* Cmdlet 會提示您輸入認證。 驗證後即會下載您的帳戶設定供 Azure PowerShell 使用。
 
-如果您是以本機執行 Azure PowerShell，請連線到您的 Azure 帳戶。 *Connect-AzAccount* Cmdlet 會提示您輸入認證。 驗證後即會下載您的帳戶設定供 Azure PowerShell 使用。 如果您改為使用 Azure Cloud Shell，就不需要執行 *disconnect-azaccount*。 Azure Cloud Shell 會自動連接到您的 Azure 帳戶。
+如果您使用 Azure Cloud Shell 而不是在本機執行 PowerShell，您會發現您不需要執行 *disconnect-azaccount* 。 當您選取 [ **試試看** ] 之後，Azure Cloud Shell 會自動連接到您的 Azure 帳戶。
 
-```azurepowershell
-Connect-AzAccount
-```
+1. 如果您正在本機執行 PowerShell，請登入。
 
-如果您有多個訂用帳戶，請取得 Azure 訂用帳戶的清單。
+   ```azurepowershell
+   Connect-AzAccount
+   ```
 
-```azurepowershell-interactive
-Get-AzSubscription
-```
+1. 如果您有多個訂用帳戶，請取得 Azure 訂用帳戶的清單。
 
-指定您要使用的訂用帳戶。
+   ```azurepowershell-interactive
+   Get-AzSubscription
+   ```
 
-```azurepowershell-interactive
-Select-AzSubscription -SubscriptionName "Name of subscription"
-```
+1. 指定您要使用的訂用帳戶。
+
+   ```azurepowershell-interactive
+   Select-AzSubscription -SubscriptionName "Name of subscription"
+   ```
