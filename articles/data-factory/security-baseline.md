@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a917ade5da6938487076b983bd42ce9b27672c49
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 09c35ff8c045fa7d912324886fb31b02e606d2f8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636998"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089078"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>適用于 Azure Data Factory 的 Azure 安全性基準
 
@@ -688,9 +688,9 @@ Azure SQL Database 與 Azure Synapse Analytics (先前的 SQL 資料倉儲的所
 
 針對 Microsoft 管理的基礎平台，Microsoft 會將所有客戶內容視為敏感性資訊，並竭盡全力防範客戶資料外洩和暴露。 為確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制和功能。
 
-* [Azure 中的更新管理解決方案](https://docs.microsoft.com/azure/automation/automation-update-management)
+* [Azure 中的更新管理解決方案](https://docs.microsoft.com/azure/automation/update-management/overview)
 
-* [管理 Azure VM 的更新和修補程式](https://docs.microsoft.com/azure/automation/automation-tutorial-update-management)
+* [管理 Azure VM 的更新和修補程式](https://docs.microsoft.com/azure/automation/update-management/manage-updates-for-vm)
 
 * [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
@@ -702,9 +702,9 @@ Azure SQL Database 與 Azure Synapse Analytics (先前的 SQL 資料倉儲的所
 
 **指導** 方針：如果您要在 Azure 虛擬機器中執行 INTEGRATION RUNTIME (VM) ，您可以使用協力廠商修補程式管理解決方案。 您可以使用 Azure 更新管理解決方案來管理虛擬機器的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 System Center Updates Publisher (Updates Publisher) 之類的工具可讓您將自訂更新發佈至 Windows Server Update Services (WSUS) 。 此案例可讓更新管理修補使用 Configuration Manager 作為其更新存放庫（具有協力廠商軟體）的機器。
 
-* [Azure 中的更新管理解決方案](https://docs.microsoft.com/azure/automation/automation-update-management)
+* [Azure 中的更新管理解決方案](https://docs.microsoft.com/azure/automation/update-management/overview)
 
-* [管理 Azure VM 的更新和修補程式](https://docs.microsoft.com/azure/automation/automation-tutorial-update-management)
+* [管理 Azure VM 的更新和修補程式](https://docs.microsoft.com/azure/automation/update-management/manage-updates-for-vm)
 
 **Azure 資訊安全中心監視** ：目前無法使用
 

@@ -10,14 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: aahi
-ms.openlocfilehash: 004bd973651d5903db4254a8883be2c8a83d9b38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3519c9d6a62eaff036cf8f7006a0b443383f5131
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84310575"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090489"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Bing 自訂搜尋 API 支援的語言和區域
+
+> [!WARNING]
+> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
+> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
+> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
 Bing 自訂搜尋 API 支援三十多個國家/地區，許多國家/地區具有一個以上的語言。
 
@@ -29,7 +34,7 @@ Bing 自訂搜尋 API 支援三十多個國家/地區，許多國家/地區具�
 
 ## <a name="countriesregions"></a>國家/地區
 
-|國家/地區|程式碼|
+|國家/區域|程式碼|
 |-------|----|
 |阿根廷|AR|
 |澳大利亞|AU|
@@ -71,7 +76,7 @@ Bing 自訂搜尋 API 支援三十多個國家/地區，許多國家/地區具�
 
 ## <a name="markets"></a>市場
 
-|國家/地區|Language|市場代碼|
+|國家/區域|語言|市場代碼|
 |-------|--------|-----------|
 |阿根廷|西班牙文|es-AR|
 |澳洲|英文|en-AU|

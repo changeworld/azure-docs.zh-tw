@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: d3e7eca546adbcac8af882ff4cd5b09d3d643d4c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: e62128edf6558e461bf2c61f16d513c4085241e7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489263"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090387"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>設定及使用適用於 Azure Cosmos DB 的 Azure Synapse Link (預覽)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
 [適用于 Azure Cosmos DB 的 Azure Synapse 連結](synapse-link.md) 是雲端原生的混合式交易和分析處理 (HTAP) 功能，可讓您對 Azure Cosmos DB 中的運算元據執行近乎即時的分析。 Synapse Link 會在 Azure Cosmos DB 與 Azure Synapse Analytics 之間建立緊密順暢的整合。
 
@@ -58,7 +59,7 @@ Azure Synapse 連結適用于 Azure Cosmos DB SQL API 容器或適用于 Mongo D
 建立容器時，您可以在 Azure Cosmos 容器上開啟分析存放區。 您可以在建立容器期間使用 Azure Cosmos DB SDK，以使用 Azure 入口網站或設定 `analyticalTTL` 屬性。
 
 > [!NOTE]
-> 目前，只能為 (新的和現有的帳戶中) **新的**容器啟用分析存放區。 您可以使用[Azure Cosmos DB 的遷移工具](cosmosdb-migrationchoices.md)，將資料從您的現有容器遷移至新的容器。
+> 目前，只能為 (新的和現有的帳戶中) **新的** 容器啟用分析存放區。 您可以使用[Azure Cosmos DB 的遷移工具](cosmosdb-migrationchoices.md)，將資料從您的現有容器遷移至新的容器。
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
@@ -74,7 +75,7 @@ Azure Synapse 連結適用于 Azure Cosmos DB SQL API 容器或適用于 Mongo D
 
 1. 選取 [確定]，以建立已啟用分析存放區的 Azure Cosmos 容器。
 
-1. 建立容器之後，請按一下 [ **設定**]，然後在資料總管中的檔下方，確認已啟用分析存放區，並檢查是否已開啟 [ **分析存放區存留時間** ] 選項。
+1. 建立容器之後，請按一下 [ **設定** ]，然後在資料總管中的檔下方，確認已啟用分析存放區，並檢查是否已開啟 [ **分析存放區存留時間** ] 選項。
 
 ### <a name="net-sdk"></a>.NET SDK
 
@@ -217,7 +218,7 @@ container.replace(containerProperties).block();
 
 ## <a name="query-the-analytical-store-using-synapse-sql-serverless"></a><a id="query-analytical-store-sql-on-demand"></a> 使用 Synapse SQL 無伺服器查詢分析存放區
 
-Synapse SQL 無伺服器 (一項預覽功能，先前稱為 SQL 隨 **選**) 可讓您在使用 Azure Synapse 連結啟用的 Azure Cosmos DB 容器中查詢及分析資料。 您可以近乎即時地分析資料，而不會影響交易式工作負載的效能。 它提供了一個熟悉的 T-sql 語法，可從分析存放區查詢資料，並透過 T-sql 介面整合各種 BI 和臨機操作查詢工具的連接。 若要深入瞭解，請參閱 [使用 SYNAPSE SQL 無伺服器文章的查詢分析存放區](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) 。
+Synapse SQL 無伺服器 (一項預覽功能，先前稱為 SQL 隨 **選** ) 可讓您在使用 Azure Synapse 連結啟用的 Azure Cosmos DB 容器中查詢及分析資料。 您可以近乎即時地分析資料，而不會影響交易式工作負載的效能。 它提供了一個熟悉的 T-sql 語法，可從分析存放區查詢資料，並透過 T-sql 介面整合各種 BI 和臨機操作查詢工具的連接。 若要深入瞭解，請參閱 [使用 SYNAPSE SQL 無伺服器文章的查詢分析存放區](../synapse-analytics/sql/query-cosmos-db-analytical-store.md) 。
 
 ## <a name="use-synapse-sql-serverless-to-analyze-and-visualize-data-in-power-bi"></a><a id="analyze-with-powerbi"></a>使用 Synapse SQL 無伺服器來分析 Power BI 中的資料並將其視覺化
 

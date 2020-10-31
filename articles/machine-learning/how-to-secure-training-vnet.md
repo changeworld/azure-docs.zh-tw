@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 59e8c836a796a46cbf5a45c6ad4440e4b80d476d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 232260ada4d810127584e675480f91d0213e3953
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425107"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091492"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>使用虛擬網路保護 Azure Machine Learning 定型環境
 
@@ -36,7 +36,7 @@ ms.locfileid: "92425107"
 > - 虛擬機器
 > - HDInsight 叢集
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 + 閱讀 [網路安全性總覽](how-to-network-security-overview.md) 文章，以瞭解常見的虛擬網路案例和整體虛擬網路架構。
 
@@ -52,7 +52,7 @@ ms.locfileid: "92425107"
 
 ## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>計算叢集和執行個體 
 
-若要在虛擬網路中使用[受控 Azure Machine Learning __計算目標__](concept-compute-target.md#azure-machine-learning-compute-managed)或 [Azure Machine Learning 計算__執行個體__](concept-compute-instance.md)，您必須符合下列網路需求：
+若要在虛擬網路中使用 [受控 Azure Machine Learning __計算目標__](concept-compute-target.md#azure-machine-learning-compute-managed)或 [Azure Machine Learning 計算 __執行個體__](concept-compute-instance.md)，您必須符合下列網路需求：
 
 > [!div class="checklist"]
 > * 虛擬網路必須在與 Azure Machine Learning 工作區相同的訂用帳戶和區域中。
@@ -60,10 +60,11 @@ ms.locfileid: "92425107"
 > * 查看您對虛擬網路其訂用帳戶或資源群組的安全性原則或鎖定是否限制了管理虛擬網路的權限。 如果您打算透過限制流量來保護虛擬網路，請針對計算服務開放一些連接埠。 如需詳細資訊，請參閱[必要連接埠](#mlcports)一節。
 > * 如果您要將多個計算執行個體或叢集放在一個虛擬網路中，您可能必須要求一或多個資源的配額增加。
 > * 如果工作區的 Azure 儲存體帳戶也在虛擬網路中受到保護，則這些帳戶必須位於與 Azure Machine Learning 計算執行個體或叢集相同的虛擬網路中。 
-> * 若要讓計算執行個體 Jupyter 功能能夠運作，請確定您並未停用 Web 通訊端通訊。 請確定您的網路允許 websocket 連接到 *. instances.azureml.net 和 *. instances.azureml.ms。
-
+> * 若要讓計算執行個體 Jupyter 功能能夠運作，請確定您並未停用 Web 通訊端通訊。 請確定您的網路允許 websocket 連接到 *. instances.azureml.net 和 *. instances.azureml.ms。 
+> * 當計算實例部署在私人連結工作區時，只能從虛擬網路中存取。 如果您使用自訂 DNS 或 hosts 檔案，請新增 `<instance-name>.<region>.instances.azureml.ms` 具有工作區私人端點私人 IP 位址的專案。 如需詳細資訊，請參閱 [自訂 DNS](https://docs.microsoft.com/azure/machine-learning/how-to-custom-dns) 文章。
+    
 > [!TIP]
-> Machine Learning 計算執行個體或叢集會自動將額外的網路資源配置__在包含虛擬網路的資源群組中__。 針對每個計算執行個體或叢集，服務會配置下列資源：
+> Machine Learning 計算執行個體或叢集會自動將額外的網路資源配置 __在包含虛擬網路的資源群組中__ 。 針對每個計算執行個體或叢集，服務會配置下列資源：
 > 
 > * 一個網路安全性群組
 > * 一個公用 IP 位址
@@ -79,7 +80,7 @@ ms.locfileid: "92425107"
 
 Batch 服務會在連結至 VM 的網路介面 (NIC) 層級新增網路安全性群組 (NSG)。 這些 NSG 會自動設定輸入和輸出規則，以允許下列流量：
 
-- 連接埠 29876 和 29877 上的輸入 TCP 流量，來自 __BatchNodeManagement__ 的__服務標籤__。
+- 連接埠 29876 和 29877 上的輸入 TCP 流量，來自 __BatchNodeManagement__ 的 __服務標籤__ 。
 
     ![使用 BatchNodeManagement 服務標籤的輸入規則](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
 
@@ -89,7 +90,7 @@ Batch 服務會在連結至 VM 的網路介面 (NIC) 層級新增網路安全性
 
 - 任何連接埠上傳至網際網路的輸出流量。
 
-- 針對連接埠 44224 上的計算執行個體輸入 TCP 流量，來自 __AzureMachineLearning__ 的__服務標籤__。
+- 針對連接埠 44224 上的計算執行個體輸入 TCP 流量，來自 __AzureMachineLearning__ 的 __服務標籤__ 。
 
 > [!IMPORTANT]
 > 如果您要在 Batch 設定的 NSG 中修改或新增輸入或輸出規則，請謹慎操作。 如果 NSG 封鎖對計算節點的通訊，則計算服務會將計算節點的狀態設定為 [無法使用]。
@@ -110,19 +111,19 @@ Batch 服務會在連結至 VM 的網路介面 (NIC) 層級新增網路安全性
 
 - 使用 NSG 規則來拒絕輸出網際網路連線。
 
-- 針對__計算執行個體__或__計算叢集__，限制目的地為下列項目的輸出流量：
-   - Azure 儲存體，方法是使用 __Storage.RegionName__ 的__服務標籤__。 其中 `{RegionName}` 是 Azure 區域的名稱。
-   - Azure Container Registry，方法是使用 __AzureContainerRegistry.RegionName__ 的__服務標籤__。 其中 `{RegionName}` 是 Azure 區域的名稱。
-   - Azure Machine Learning，方法是使用 __AzureMachineLearning__ 的__服務標籤__
-   - Azure Resource Manager，方法是使用 __AzureResourceManager__ 的__服務標籤__
-   - Azure Active Directory，方法是使用 __AzureActiveDirectory__ 的__服務標籤__
+- 針對 __計算執行個體__ 或 __計算叢集__ ，限制目的地為下列項目的輸出流量：
+   - Azure 儲存體，方法是使用 __Storage.RegionName__ 的 __服務標籤__ 。 其中 `{RegionName}` 是 Azure 區域的名稱。
+   - Azure Container Registry，方法是使用 __AzureContainerRegistry.RegionName__ 的 __服務標籤__ 。 其中 `{RegionName}` 是 Azure 區域的名稱。
+   - Azure Machine Learning，方法是使用 __AzureMachineLearning__ 的 __服務標籤__
+   - Azure Resource Manager，方法是使用 __AzureResourceManager__ 的 __服務標籤__
+   - Azure Active Directory，方法是使用 __AzureActiveDirectory__ 的 __服務標籤__
 
 下圖顯示 Azure 入口網站中的 NSG 規則設定：
 
 [![Machine Learning Compute 的輸出 NSG 規則](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png)](./media/how-to-enable-virtual-network/limited-outbound-nsg-exp.png#lightbox)
 
 > [!NOTE]
-> 如果您打算使用 Microsoft 提供的預設 Docker 映射，以及啟用使用者管理的相依性，您也必須使用下列 __服務標記__：
+> 如果您打算使用 Microsoft 提供的預設 Docker 映射，以及啟用使用者管理的相依性，您也必須使用下列 __服務標記__ ：
 >
 > * __MicrosoftContainerRegistry__
 > * __AzureFrontDoor.FirstParty__
@@ -252,7 +253,7 @@ except ComputeTargetException:
 
 如果您在 Azure 計算實例上使用筆記本，您必須確定您的筆記本正在相同虛擬網路和子網後方的計算資源上執行，以作為您的資料。 
 
-您必須在 [**設定**  >  **虛擬網路**] 下的 [Advanced settings] 下，將您的計算實例設定為在相同的虛擬網路中。 您無法將現有的計算實例新增至虛擬網路。
+您必須在 [ **設定**  >  **虛擬網路** ] 下的 [Advanced settings] 下，將您的計算實例設定為在相同的虛擬網路中。 您無法將現有的計算實例新增至虛擬網路。
 
 ## <a name="azure-databricks"></a>Azure Databricks
 
@@ -261,7 +262,7 @@ except ComputeTargetException:
 > [!div class="checklist"]
 > * 虛擬網路必須在與 Azure Machine Learning 工作區相同的訂用帳戶和區域中。
 > * 如果工作區的 Azure 儲存體帳戶也在虛擬網路中受到保護，則這些帳戶必須位於與 Azure Databricks 叢集相同的虛擬網路中。
-> * 除了 Azure Databricks 所使用的 __databricks-private__ 和 __databricks-public__ 子網路外，還需要有針對虛擬網路所建立的__預設__子網路。
+> * 除了 Azure Databricks 所使用的 __databricks-private__ 和 __databricks-public__ 子網路外，還需要有針對虛擬網路所建立的 __預設__ 子網路。
 
 如需搭配虛擬網路使用 Azure Databricks 的特定資訊，請參閱[在 Azure 虛擬網路中部署 Azure Databricks](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html)。
 

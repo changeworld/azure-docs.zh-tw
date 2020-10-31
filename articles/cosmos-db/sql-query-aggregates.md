@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: tisande
-ms.openlocfilehash: 24acd1e9c13320244ff4c27abd13abeda6f70b2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d71b9b888c47847dd4a5f5c40504190e5c1ec84
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79464456"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090931"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Azure Cosmos DB 中的彙總函式
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 彙總函式會對子句中的一組值執行計算 `SELECT` ，並傳回單一值。 例如，下列查詢會傳回容器內的專案計數 `Families` ：
 
@@ -80,7 +81,7 @@ SQL API 支援下列彙總函式。 `SUM` 以及 `AVG` 處理數值、 `COUNT` `
 
 這些匯總系統函數將受益于 [範圍索引](index-policy.md#includeexclude-strategy)。 如果您想要在 `COUNT` `SUM` 屬性上進行、、 `MIN` 、或， `MAX` `AVG` 您應該 [在編制索引原則中包含相關的路徑](index-policy.md#includeexclude-strategy)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [Azure Cosmos DB 簡介](introduction.md)
 - [系統函數](sql-query-system-functions.md)

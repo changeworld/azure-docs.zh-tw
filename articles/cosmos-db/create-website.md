@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: 8e6a6d1c557a765e55152685f08e80ad54bbd903
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c206c89bf8e9abae219ce863a8b08f4b0e7041c3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362005"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089911"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本，從 GitHub 中的 web 應用程式部署 Azure Cosmos DB 和 Azure App Service
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本教學課程會示範如何在第一次執行時，對連接 Azure Cosmos DB 的 web 應用程式執行「不需要觸控」部署，而不需要將任何連接資訊從 Azure Cosmos DB 剪下和貼上至 `appsettings.json` Azure 入口網站中的 Azure App Services 應用程式設定。 所有這些動作都是在單一作業中使用 Azure Resource Manager 範本來完成。 在這裡的範例中，我們會從[Web 應用程式教學](sql-api-dotnet-application.md)課程部署[Azure Cosmos DB ToDo 範例](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app)。
 
@@ -27,7 +28,7 @@ Resource Manager 範本具有相當大的彈性，可讓您在 Azure 中的任�
 
 產生的部署具有功能完整的 web 應用程式，可以連接到 Azure Cosmos DB 而不需要從 Azure 入口網站剪下和貼上 Azure Cosmos DB 的端點 URL 或驗證金鑰。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 > [!TIP]
 > 雖然本教學課程沒有假設您先前已有使用 Azure Resource Manager 範本或 JSON 的經驗，但是，如果您需要修改參考的範本或部署選項，還是需要每個領域的知識。
@@ -47,7 +48,7 @@ Resource Manager 範本具有相當大的彈性，可讓您在 Azure 中的任�
 * **位置** ：您的資源部署所在的區域。
 * **App Service 方案層** 級 App Service 方案的定價層。
 * **App Service 方案實例** -App Service 方案的背景工作數目。
-* 存放**庫 URL** -GitHub 上的 web 應用程式存放庫。
+* 存放 **庫 URL** -GitHub 上的 web 應用程式存放庫。
 * **分支** -GitHub 存放庫的分支。
 * **資料庫名稱** -Azure Cosmos 資料庫名稱。
 * **容器名稱** -Azure Cosmos 容器名稱。

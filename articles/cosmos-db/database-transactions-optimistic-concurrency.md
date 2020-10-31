@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 17c01188f783664747b7c20b9703ee5d33a8ab3f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c1ecd3a3d29d6876a59a2fa039802966f348a09d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278740"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089826"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>交易和開放式並行存取控制
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 資料庫交易提供安全且可預測的程式設計模型來處理並行的資料變更。 傳統的關係資料庫，例如 SQL Server，可讓您使用預存程式和/或觸發程式撰寫商務邏輯，並將它傳送至伺服器，以便直接在資料庫引擎內執行。 使用傳統的關係資料庫時，您必須處理兩種不同的程式設計語言， (非交易式) 應用程式程式設計語言（例如 JavaScript、Python、c #、JAVA 等）和交易式程式設計語言 (例如資料庫原本執行的 T-sql) 。
 
@@ -49,7 +50,7 @@ JavaScript 型預存程序、觸發程序、UDF，以及合併程序，都包裝
 
 ## <a name="optimistic-concurrency-control"></a>樂觀並行控制
 
-開放式並行存取控制可讓您避免遺失更新和刪除。 並行、衝突的作業會受制於擁有項目之邏輯分割區所裝載的資料庫引擎所受到的一般封閉式鎖定限制。 當兩個並行作業嘗試更新邏輯分割區內某個項目的最新版本時，它們其中之一將會成功，另一個則會失敗。 但是，如果嘗試並行更新相同項目的一或兩個作業之前已讀取該項目的較舊版本時，資料庫不會知道兩個衝突作業的其中之一或兩者之前所讀取的值是否確實為項目的最新值。 幸運的是，這種情況可以使用 **開放式並行存取控制來 (OCC) ** ，然後讓這兩個作業進入 database engine 內的交易界限。 OCC 會保護您的資料，避免意外遭到其他人覆寫。 它也能防止其他人不小心覆寫您自己所做的變更。
+開放式並行存取控制可讓您避免遺失更新和刪除。 並行、衝突的作業會受制於擁有項目之邏輯分割區所裝載的資料庫引擎所受到的一般封閉式鎖定限制。 當兩個並行作業嘗試更新邏輯分割區內某個項目的最新版本時，它們其中之一將會成功，另一個則會失敗。 但是，如果嘗試並行更新相同項目的一或兩個作業之前已讀取該項目的較舊版本時，資料庫不會知道兩個衝突作業的其中之一或兩者之前所讀取的值是否確實為項目的最新值。 幸運的是，這種情況可以使用 **開放式並行存取控制來 (OCC)** ，然後讓這兩個作業進入 database engine 內的交易界限。 OCC 會保護您的資料，避免意外遭到其他人覆寫。 它也能防止其他人不小心覆寫您自己所做的變更。
 
 Azure Cosmos DB 的通訊通訊協定層項目的並行更新受制於 OCC。 Azure Cosmos 資料庫可確保您正在更新 (或刪除) 之項目的用戶端版本和 Azure Cosmos 容器中項目的版本相同。 這可確保您的寫入受到保護，而不會被他人的寫入不慎覆寫，反之亦然。 在多使用者環境中，開放式並行存取控制可防止您不小心刪除項目，或更新項目的錯誤版本。 因此，項目會收到保護，不會受到惡名昭彰的「遺失更新」或「遺失刪除」問題影響。
 
@@ -57,7 +58,7 @@ Azure Cosmos 容器中儲存的每個項目都有系統定義的 `_etag` 屬性�
 
 `_etag`每次更新專案時，專案的值都會變更。 針對取代專案作業， `if-match` 必須明確表示為要求選項的一部分。 如需範例，請參閱 [GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L676-L772) 中的範例程式碼。 `_etag` 系統會針對預存程式觸及的所有寫入專案，以隱含的方式檢查值。 如果偵測到任何衝突，預存程式將會回復交易並擲回例外狀況。 透過此方法，在預存程序內的所有寫入都會自動套用，或全部不會自動套用。 這是應用程式重新套用更新並重試原始用戶端要求的信號。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 深入了解下列文章中描述的資料庫交易和開放式並行存取控制：
 

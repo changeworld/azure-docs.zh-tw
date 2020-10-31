@@ -4,62 +4,31 @@ description: 瞭解如何使用鄰近放置群組來減少 AKS 叢集工作負�
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 10/19/2020
 author: jluk
-ms.openlocfilehash: 5b3dc3803cfb89f4a74d082b5913e69df1d03a00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a96489495abe3bfbed3030b3e08ff121c5c7cddf
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87986707"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090792"
 ---
-# <a name="reduce-latency-with-proximity-placement-groups-preview"></a>使用鄰近位置群組 (預覽版來降低延遲) 
+# <a name="reduce-latency-with-proximity-placement-groups"></a>使用鄰近位置群組減少延遲
 
 > [!Note]
 > 在 AKS 上使用鄰近位置群組時，共置只會套用至代理程式節點。 節點對節點和對應的託管 pod 至 pod 延遲已獲得改善。 共置不會影響叢集控制平面的放置。
 
 在 Azure 中部署您的應用程式時，跨區域或可用性區域將虛擬機器 (VM) 實例分散會建立網路延遲，這可能會影響應用程式的整體效能。 近接位置群組是用來確保 Azure 計算資源實際位於彼此附近的邏輯群組。 某些應用程式（像是遊戲、工程模擬和高頻率交易 (HFT) 需要低延遲和快速完成的工作。 針對 (HPC) 案例的高效能運算，請考慮針對叢集的節點集區使用 [鄰近放置群組](../virtual-machines/linux/co-location.md#proximity-placement-groups) (PPG) 。
 
-## <a name="limitations"></a>限制
+## <a name="before-you-begin"></a>開始之前
+
+本文會要求您執行 Azure CLI 2.14 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
+
+### <a name="limitations"></a>限制
 
 * 近接位置群組最多可以對應到一個可用性區域。
 * 節點集區必須使用虛擬機器擴展集來建立鄰近放置群組的關聯。
 * 節點集區只能在節點集區建立時建立鄰近位置群組的關聯。
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
-
-## <a name="before-you-begin"></a>開始之前
-
-您必須先安裝下列資源：
-
-- Aks-preview 0.4.53 延伸模組
-
-### <a name="set-up-the-preview-feature-for-proximity-placement-groups"></a>設定鄰近放置群組的預覽功能
-
-> [!IMPORTANT]
-> 使用具有 AKS 節點集區的近接位置群組時，共置只會套用至代理程式節點。 節點對節點和對應的託管 pod 至 pod 延遲已獲得改善。 共置不會影響叢集控制平面的放置。
-
-```azurecli-interactive
-# register the preview feature
-az feature register --namespace "Microsoft.ContainerService" --name "ProximityPlacementGroupPreview"
-```
-
-註冊可能需要幾分鐘的時間。 使用下列命令來確認已註冊功能：
-
-```azurecli-interactive
-# Verify the feature is registered:
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/ProximityPlacementGroupPreview')].{Name:name,State:properties.state}"
-```
-
-在預覽期間，您需要 *aks-preview* CLI 延伸模組，才能使用鄰近放置群組。 使用 [az extension add][az-extension-add] 命令，然後使用 [az extension update][az-extension-update] 命令檢查是否有任何可用的更新：
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
 
 ## <a name="node-pools-and-proximity-placement-groups"></a>節點集區和鄰近位置群組
 
@@ -80,7 +49,7 @@ az extension update --name aks-preview
 
 ## <a name="create-a-new-aks-cluster-with-a-proximity-placement-group"></a>使用鄰近位置群組建立新的 AKS 叢集
 
-下列範例會使用[az group create][az-group-create]命令，在*centralus*區域中建立名為*myResourceGroup*的資源群組。 接著會使用[az AKS create][az-aks-create]命令來建立名為*myAKSCluster*的 AKS 叢集。
+下列範例會使用 [az group create][az-group-create]命令，在 *centralus* 區域中建立名為 *myResourceGroup* 的資源群組。 接著會使用 [az AKS create][az-aks-create]命令來建立名為 *myAKSCluster* 的 AKS 叢集。
 
 加速網路可大幅提升虛擬機器的網路效能。 在理想的情況下，請使用鄰近放置群組搭配加速網路。 根據預設，AKS 會在支援的 [虛擬機器實例](../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints)上使用加速網路，其中包含具有兩個或多個個 vcpu 的大部分 Azure 虛擬機器。
 
@@ -151,7 +120,7 @@ az aks nodepool add \
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 深入瞭解 [鄰近放置群組][proximity-placement-groups]。
 

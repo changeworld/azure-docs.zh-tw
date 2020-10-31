@@ -8,18 +8,19 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/01/2019
-ms.openlocfilehash: 662b85bb2b928cbbcfb1b88adecb2c125c9ae5df
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d25e168e342e22af9dc41d31dd7e18530aaa22b8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486611"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090506"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>從 Spark 連線至 Azure Cosmos DB Cassandra API
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 本文是從 Spark 進行 Azure Cosmos DB Cassandra API 整合的一系列文章之一。 這些文章涵蓋連線能力、資料定義語言 (DDL) 作業、基本的資料操作語言 (DML) 作業，以及從 Spark 進行進階 Azure Cosmos DB Cassandra API 整合。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 * [提供 Azure Cosmos DB Cassandra API 帳戶。](create-cassandra-dotnet.md#create-a-database-account)
 
 * 布建您選擇的 spark 環境 [[Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)  |  [Azure HDInsight-spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) |其他專案]。
@@ -43,11 +44,11 @@ ms.locfileid: "92486611"
 | **屬性名稱** | **預設值** | **說明** |
 |---------|---------|---------|
 | spark.cassandra.output.batch.size.rows |  1 |每個單一批次的資料列數目。 將此參數設定為 1。 此參數用來為繁重的工作負載達到更高的輸送量。 |
-| spark.cassandra.connection.connections_per_executor_max  | 無 | 每個執行程式的每個節點連線數目上限。 10*n 相當於 n 個節點的 Cassandra 叢集中每個節點有 10 個連線。 因此，如果針對 5 個節點的 Cassandra 叢集，您需要每個執行程式的每個節點有 5 個連線，則您應該將此設定設為 25。 請根據 Spark 工作設定的平行處理原則程度或執行程式數目來修改此值。   |
+| spark.cassandra.connection.connections_per_executor_max  | None | 每個執行程式的每個節點連線數目上限。 10*n 相當於 n 個節點的 Cassandra 叢集中每個節點有 10 個連線。 因此，如果針對 5 個節點的 Cassandra 叢集，您需要每個執行程式的每個節點有 5 個連線，則您應該將此設定設為 25。 請根據 Spark 工作設定的平行處理原則程度或執行程式數目來修改此值。   |
 | spark.cassandra.output.concurrent.writes  |  100 | 定義每個執行程式可能發生的平行寫入數目。 因為您將 "batch.size.rows" 設定為 1，所以請務必據以相應增加此值。 請根據您想要針對工作負載達到的平行處理原則程度或輸送量來修改此值。 |
 | spark.cassandra.concurrent.reads |  512 | 定義每個執行程式可能發生的平行讀取數目。 請根據您想要針對工作負載達到的平行處理原則程度或輸送量來修改此值  |
-| spark.cassandra.output.throughput_mb_per_sec  | 無 | 定義每個執行程式的總寫入輸送量。 此參數可作為 spark 作業輸送量的上限，並以 Cosmos 容器的布建輸送量作為基礎。   |
-| spark.cassandra.input.reads_per_sec| 無   | 定義每個執行程式的總讀取輸送量。 此參數可作為 spark 作業輸送量的上限，並以 Cosmos 容器的布建輸送量作為基礎。  |
+| spark.cassandra.output.throughput_mb_per_sec  | None | 定義每個執行程式的總寫入輸送量。 此參數可作為 spark 作業輸送量的上限，並以 Cosmos 容器的布建輸送量作為基礎。   |
+| spark.cassandra.input.reads_per_sec| None   | 定義每個執行程式的總讀取輸送量。 此參數可作為 spark 作業輸送量的上限，並以 Cosmos 容器的布建輸送量作為基礎。  |
 | spark.cassandra.output.batch.grouping.buffer.size |  1000  | 定義每個單一 Spark 工作可在傳送至 Cassandra API 之前，先存放在記憶體中的批次數目 |
 | spark.cassandra.connection.keep_alive_ms | 60000 | 定義未使用的連線可供使用的期間。 | 
 
@@ -113,7 +114,7 @@ spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 下列文章會示範 Spark 如何與 Azure Cosmos DB Cassandra API 整合。 
  

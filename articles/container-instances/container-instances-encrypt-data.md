@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: macolso
 ms.author: macolso
-ms.openlocfilehash: 1c45999dbb354e8c2d550be82cdf37a6694d2dbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2cad98267ef1654c4f2d9ad2db75f769dbc0780
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825677"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091350"
 ---
 # <a name="encrypt-deployment-data"></a>加密部署資料
 
@@ -27,13 +27,13 @@ ACI 中的資料會使用256位 AES 加密進行加密和解密。 它會針對�
 |    |    Microsoft 管理的金鑰     |     客戶管理的金鑰     |
 |----|----|----|
 |    **加密/解密作業**    |    Azure    |    Azure    |
-|    **金鑰儲存體**    |    Microsoft 金鑰存放區    |    Azure 金鑰保存庫    |
+|    **金鑰儲存體**    |    Microsoft 金鑰存放區    |    Azure Key Vault    |
 |    **金鑰輪替責任**    |    Microsoft    |    客戶    |
 |    **金鑰存取**    |    僅限 Microsoft    |    Microsoft，客戶    |
 
 本檔的其餘部分涵蓋使用金鑰 (客戶管理的金鑰) 來加密 ACI 部署資料時所需的步驟。 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="encrypt-data-with-a-customer-managed-key"></a>使用客戶管理的金鑰來加密資料
 
@@ -73,7 +73,7 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 
 ### <a name="generate-a-new-key"></a>產生新的金鑰 
 
-建立金鑰保存庫之後，請流覽至 Azure 入口網站中的資源。 在資源分頁的左側導覽功能表上，按一下 [設定] 下的 [ **金鑰**]。 在 [索引鍵] 的 [查看] 上，按一下 [產生/匯入] 以產生新的金鑰。 針對此金鑰使用任何唯一的名稱，並根據您的需求使用任何其他喜好設定。 
+建立金鑰保存庫之後，請流覽至 Azure 入口網站中的資源。 在資源分頁的左側導覽功能表上，按一下 [設定] 下的 [ **金鑰** ]。 在 [索引鍵] 的 [查看] 上，按一下 [產生/匯入] 以產生新的金鑰。 針對此金鑰使用任何唯一的名稱，並根據您的需求使用任何其他喜好設定。 
 
 ![產生新的金鑰](./media/container-instances-encrypt-data/generate-key.png)
 
@@ -81,10 +81,10 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 
 建立新的存取原則，以允許 ACI 服務存取您的金鑰。
 
-* 一旦產生金鑰之後，請回到您的金鑰保存庫資源分頁，在 [設定] 底下，按一下 [ **存取原則**]。
-* 在金鑰保存庫的 [存取原則] 頁面上，按一下 [ **新增存取原則**]。
+* 一旦產生金鑰之後，請回到您的金鑰保存庫資源分頁，在 [設定] 底下，按一下 [ **存取原則** ]。
+* 在金鑰保存庫的 [存取原則] 頁面上，按一下 [ **新增存取原則** ]。
 * 設定 *金鑰許可權* ，以包含 **取得** 和解除包裝 **金鑰** ![ 集金鑰許可權](./media/container-instances-encrypt-data/set-key-permissions.png)
-* 針對 [*選取主體*]，選取 [ **Azure 容器實例服務**]
+* 針對 [ *選取主體* ]，選取 [ **Azure 容器實例服務** ]
 * 按一下底部的 [ **新增** ] 
 
 存取原則現在應該會顯示在金鑰保存庫的存取原則中。

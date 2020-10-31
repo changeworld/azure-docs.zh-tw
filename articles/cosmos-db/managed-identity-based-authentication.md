@@ -8,16 +8,17 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 07bfaabf051a016ca9617245ba8628ef6c7e80c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 918033f736a28534cd36a4637b41d0a6b3b4cdc7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91566613"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088568"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>使用系統指派的受控識別來存取 Azure Cosmos DB 資料
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-在本文中，您將使用[受控](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)識別來設定*健全、金鑰輪替中立*的解決方案，以存取 Azure Cosmos DB 金鑰。 本文中的範例使用 Azure Functions，但您可以使用任何支援受控識別的服務。 
+在本文中，您將使用 [受控](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)識別來設定 *健全、金鑰輪替中立* 的解決方案，以存取 Azure Cosmos DB 金鑰。 本文中的範例使用 Azure Functions，但您可以使用任何支援受控識別的服務。 
 
 您將瞭解如何建立可存取 Azure Cosmos DB 資料的函式應用程式，而不需要複製任何 Azure Cosmos DB 金鑰。 函數應用程式會每分鐘喚醒一次，並記錄水族箱魚箱的目前溫度。 若要瞭解如何設定計時器觸發的函式應用程式，請參閱在 [Azure 中建立由計時器觸發的函數](../azure-functions/functions-create-scheduled-function.md) 。
 
@@ -29,11 +30,11 @@ ms.locfileid: "91566613"
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，開啟 [ **Azure** 函式] 窗格，並移至您的函式應用程式。 
 
-1. 開啟 [**平臺功能**  >  **識別**] 索引標籤： 
+1. 開啟 [ **平臺功能**  >  **識別** ] 索引標籤： 
 
    :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-selection.png" alt-text="顯示函數應用程式平臺功能和識別選項的螢幕擷取畫面。":::
 
-1. 在 [身分 **識別** ] 索引卷 **標上，** 開啟 [系統識別] **狀態** ，然後選取 [ **儲存**]。 [身分 **識別** ] 窗格看起來應該如下所示：  
+1. 在 [身分 **識別** ] 索引卷 **標上，** 開啟 [系統識別] **狀態** ，然後選取 [ **儲存** ]。 [身分 **識別** ] 窗格看起來應該如下所示：  
 
    :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="顯示函數應用程式平臺功能和識別選項的螢幕擷取畫面。":::
 
@@ -56,7 +57,7 @@ ms.locfileid: "91566613"
 
 ### <a name="assign-the-role-using-azure-portal"></a>使用 Azure 入口網站指派角色
 
-1. 登入 Azure 入口網站並移至您的 Azure Cosmos DB 帳戶。 開啟 [ **存取控制] (IAM) ** 窗格，然後開啟 [ **角色指派** ] 索引標籤：
+1. 登入 Azure 入口網站並移至您的 Azure Cosmos DB 帳戶。 開啟 [ **存取控制] (IAM)** 窗格，然後開啟 [ **角色指派** ] 索引標籤：
 
    :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="顯示函數應用程式平臺功能和識別選項的螢幕擷取畫面。":::
 
@@ -66,13 +67,13 @@ ms.locfileid: "91566613"
 
    :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="顯示函數應用程式平臺功能和識別選項的螢幕擷取畫面。":::
 
-   * **角色**：選取 **DocumentDB 帳戶參與者**
-   * **將存取權指派給**：在 [ **選取系統指派的受控識別** ] 子區段下，選取 [ **函數應用程式**]。
-   * **選取**：此窗格將會填入訂用帳戶中具有 **受控系統身分識別**的所有函式應用程式。 在此情況下，請選取 **FishTankTemperatureService** 函式應用程式： 
+   * **角色** ：選取 **DocumentDB 帳戶參與者**
+   * **將存取權指派給** ：在 [ **選取系統指派的受控識別** ] 子區段下，選取 [ **函數應用程式** ]。
+   * **選取** ：此窗格將會填入訂用帳戶中具有 **受控系統身分識別** 的所有函式應用程式。 在此情況下，請選取 **FishTankTemperatureService** 函式應用程式： 
 
       :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="顯示函數應用程式平臺功能和識別選項的螢幕擷取畫面。":::
 
-1. 當您選取函數應用程式之後，請選取 [ **儲存**]。
+1. 當您選取函數應用程式之後，請選取 [ **儲存** ]。
 
 ### <a name="assign-the-role-using-azure-cli"></a>使用 Azure CLI 指派角色
 
@@ -214,7 +215,7 @@ namespace Monitor
 
 您現在已準備好 [部署函數應用程式](../azure-functions/functions-create-first-function-vs-code.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [以憑證為基礎的驗證與 Azure Cosmos DB 和 Azure Active Directory](certificate-based-authentication.md)
 * [使用 Azure Key Vault 保護 Azure Cosmos DB 金鑰](access-secrets-from-keyvault.md)

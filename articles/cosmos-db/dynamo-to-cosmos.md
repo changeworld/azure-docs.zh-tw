@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: mansha
-ms.openlocfilehash: 167d1f21a2eb7ea4c685b5bbbb5d8d64fcc1367e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c621f11e00d418ca46be1bc04676403e6b0e2357
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278701"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089758"
 ---
 # <a name="migrate-your-application-from-amazon-dynamodb-to-azure-cosmos-db"></a>將您的應用程式從 Amazon DynamoDB 遷移至 Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB 是可調整、全域散發的完全受控資料庫。 其可為您的資料提供保證低度延遲的存取。 若要深入了解 Azure Cosmos DB，請參閱[概觀](introduction.md)一文。 本文說明如何使用最少的程式碼變更，將您的 .NET 應用程式從 DynamoDB 遷移至 Azure Cosmos DB。
 
@@ -39,7 +40,7 @@ Azure Cosmos DB 是可調整、全域散發的完全受控資料庫。 其可為
 
 相較於 DynamoDB，Azure Cosmos DB 具有較簡單的 JSON 結構。 下列範例顯示差異
 
-**DynamoDB**：
+**DynamoDB** ：
 
 下列 JSON 物件代表 DynamoDB 中的資料格式
 
@@ -73,7 +74,7 @@ ProvisionedThroughput: {
 }
  ```
 
-**Azure Cosmos DB**：
+**Azure Cosmos DB** ：
 
 下列 JSON 物件代表 Azure Cosmos DB 中的資料格式
 
@@ -122,7 +123,7 @@ Install-Package Microsoft.Azure.Cosmos
 
 ### <a name="establish-connection"></a>建立連線
 
-**DynamoDB**：
+**DynamoDB** ：
 
 在 Amazon DynamoDB 中，下列程式碼是用來進行連線：
 
@@ -132,7 +133,7 @@ Install-Package Microsoft.Azure.Cosmos
         try { aws_dynamodbclient = new AmazonDynamoDBClient( addbConfig ); }
 ```
 
-**Azure Cosmos DB**：
+**Azure Cosmos DB** ：
 
 若要連線 Azure Cosmos DB，請將您的程式碼更新為：
 
@@ -164,7 +165,7 @@ client_documentDB = new CosmosClient("your connectionstring from the Azure porta
 
 ### <a name="provision-the-container"></a>佈建容器
 
-**DynamoDB**：
+**DynamoDB** ：
 
 若要將資料儲存到 Amazon DynamoDB 中，您必須先建立資料表。 在此程序中，您會定義結構描述、索引鍵類型和屬性，如下列程式碼所示：
 
@@ -220,7 +221,7 @@ request = new CreateTableRequest
 };
 ```
 
-**Azure Cosmos DB**：
+**Azure Cosmos DB** ：
 
 在 Amazon DynamoDB 中，您需要佈建讀取計算單位與寫入計算單位。 而在 Azure Cosmos DB 中，您會將輸送量指定為[要求單位 (RU/秒)](request-units.md)，以動態方式用於任何作業。 資料會組織成資料庫 --> 容器 --> 項目。 您可以指定資料庫層級和/或集合層級的輸送量。
 
@@ -238,7 +239,7 @@ await cosmosDatabase.CreateContainerIfNotExistsAsync(new ContainerProperties() {
 
 ### <a name="load-the-data"></a>載入資料
 
-**DynamoDB**：
+**DynamoDB** ：
 
 下列程式碼顯示如何在 Amazon DynamoDB 中載入資料。 moviesArray 是由 JSON 文件的清單所組成，因此您需要逐一查看 JSON 文件並將其載入 Amazon DynamoDB：
 
@@ -262,7 +263,7 @@ for( int i = 0, j = 99; i < n; i++ )
     await putItem;
 ```
 
-**Azure Cosmos DB**：
+**Azure Cosmos DB** ：
 
 在 Azure Cosmos DB 中，您可以選擇使用 `moviesContainer.CreateItemStreamAsync()` 來進行串流和寫入。 不過，在此範例中，JSON 會還原序列化為 MovieModel 類型，以示範類型轉換功能。 這段程式碼是多執行緒的，其會使用 Azure Cosmos DB 的分散式架構，並加快載入速度：
 
@@ -297,7 +298,7 @@ await Task.WhenAll(concurrentTasks);
 
 ### <a name="create-a-document"></a>建立文件
 
-**DynamoDB**：
+**DynamoDB** ：
 
 在 Amazon DynamoDB 中寫入新文件並非安全類型，下列範例會使用 newItem 做為文件類型：
 
@@ -306,7 +307,7 @@ Task<Document> writeNew = moviesTable.PutItemAsync(newItem, token);
 await writeNew;
 ```
 
-**Azure Cosmos DB**：
+**Azure Cosmos DB** ：
 
 Azure Cosmos DB 會透過資料模型提供您安全類型。 我們使用名為 'MovieModel' 的資料模型：
 
@@ -357,7 +358,7 @@ public class MovieModel
 
 ### <a name="read-a-document"></a>讀取文件
 
-**DynamoDB**：
+**DynamoDB** ：
 
 若要在 Amazon DynamoDB 中閱讀，您需要定義基本項目：
 
@@ -370,7 +371,7 @@ Primitive range = new Primitive(title, false);
   movie_record = await readMovie;
 ```
 
-**Azure Cosmos DB**：
+**Azure Cosmos DB** ：
 
 不過，使用 Azure Cosmos DB，則查詢是自然的 (linq)：
 
@@ -391,13 +392,13 @@ IQueryable<MovieModel> movieQuery = moviesContainer.GetItemLinqQueryable<MovieMo
 
 ### <a name="update-an-item"></a>更新項目
 
-**DynamoDB**：若要更新 Amazon DynamoDB 中的項目：
+**DynamoDB** ：若要更新 Amazon DynamoDB 中的項目：
 
 ```csharp
 updateResponse = await client.UpdateItemAsync( updateRequest );
 ````
 
-**Azure Cosmos DB**：
+**Azure Cosmos DB** ：
 
 在 Azure Cosmos DB 中，會將更新視為 Upsert 作業，這表示如果文件不存在，則會將其插入：
 
@@ -407,7 +408,7 @@ await moviesContainer.UpsertItemAsync<MovieModel>(updatedMovieModel);
 
 ### <a name="delete-a-document"></a>刪除文件
 
-**DynamoDB**：
+**DynamoDB** ：
 
 若要刪除 Amazon DynamoDB 中的項目，您還是必須執行基本項目：
 
@@ -422,7 +423,7 @@ Primitive hash = new Primitive(year.ToString(), true);
         deletedItem = await delItem;
 ```
 
-**Azure Cosmos DB**：
+**Azure Cosmos DB** ：
 
 在 Azure Cosmos DB 中，我們可以取得文件並以非同步方式加以刪除：
 
@@ -440,7 +441,7 @@ while (result.HasMoreResults)
 
 ### <a name="query-documents"></a>查詢文件
 
-**DynamoDB**：
+**DynamoDB** ：
 
 在 Amazon DynamoDB 中，需要 API 函式來查詢資料：
 
@@ -454,7 +455,7 @@ QueryOperationConfig config = new QueryOperationConfig( );
   search = moviesTable.Query( config ); 
 ```
 
-**Azure Cosmos DB**：
+**Azure Cosmos DB** ：
 
 在 Azure Cosmos DB 中，您可以在簡單的 SQL 查詢內進行投影和篩選：
 
@@ -494,7 +495,7 @@ var result = moviesContainer.GetItemQueryIterator<MovieModel>(
 
 ### <a name="delete-a-container"></a>刪除容器
 
-**DynamoDB**：
+**DynamoDB** ：
 
 若要刪除 Amazon DynamoDB 中的資料表，您可以指定：
 
@@ -502,7 +503,7 @@ var result = moviesContainer.GetItemQueryIterator<MovieModel>(
 client.DeleteTableAsync( tableName );
 ```
 
-**Azure Cosmos DB**：
+**Azure Cosmos DB** ：
 
 若要刪除 Azure Cosmos DB 中的集合，您可以指定：
 

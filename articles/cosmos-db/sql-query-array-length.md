@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 3596ce4bc702d5e54225d8c90db2f9563feab670
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8c27f2269171bd6121973ace4e535d375adf2de
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78303982"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089418"
 ---
 # <a name="array_length-azure-cosmos-db"></a>ARRAY_LENGTH (Azure Cosmos DB) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  傳回指定陣列運算式的元素數目。  
   
 ## <a name="syntax"></a>語法
@@ -50,7 +52,7 @@ SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"]) AS len
 
 這個系統函數將不會使用索引。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [陣列函數 Azure Cosmos DB](sql-query-array-functions.md)
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)

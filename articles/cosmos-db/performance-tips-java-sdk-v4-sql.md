@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: b14910bc37fc8f3d7f105f382de64ae52fd19a47
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 49827b7387edc1e914bbd58c63df2db74f4ed17b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475221"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091271"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 的效能秘訣
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
@@ -38,7 +39,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 * **連線模式：使用直接模式**
 <a id="direct-connection"></a>
     
-    JAVA SDK 預設連接模式是 direct。 您可以使用 *directMode ( # B1 * 或 *GatewayMode ( # B3 * 方法，在用戶端建立器中設定連接模式，如下所示。 若要使用預設值設定任一種模式，請呼叫其中一個沒有引數的方法。 否則，請將設定類別實例傳遞為引數 (*DirectConnectionConfig* for *DirectMode ( # B2 *，  *GatewayConnectionConfig* for *gatewayMode ( # B4 *. ) 。 若要深入瞭解不同的連線選項，請參閱連線 [模式](sql-sdk-connection-modes.md) 文章。
+    JAVA SDK 預設連接模式是 direct。 您可以使用 *directMode ( # B1* 或 *GatewayMode ( # B3* 方法，在用戶端建立器中設定連接模式，如下所示。 若要使用預設值設定任一種模式，請呼叫其中一個沒有引數的方法。 否則，請將設定類別實例傳遞為引數 ( *DirectConnectionConfig* for *DirectMode ( # B2* ，  *GatewayConnectionConfig* for *gatewayMode ( # B4* . ) 。 若要深入瞭解不同的連線選項，請參閱連線 [模式](sql-sdk-connection-modes.md) 文章。
     
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
@@ -56,7 +57,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
     --- 
 
-    *DirectMode ( # B1*方法有其他覆寫，原因如下。 控制平面作業（例如資料庫和容器 CRUD） *一律* 會使用閘道模式;當使用者已設定資料平面作業的直接模式時，控制平面作業會使用預設閘道模式設定。 這適合大部分的使用者。 不過，如果使用者想要直接模式進行資料平面作業，以及控制平面閘道模式參數的 tunability，則可以使用下列 *directMode ( # B1 * 覆寫：
+    *DirectMode ( # B1* 方法有其他覆寫，原因如下。 控制平面作業（例如資料庫和容器 CRUD） *一律* 會使用閘道模式;當使用者已設定資料平面作業的直接模式時，控制平面作業會使用預設閘道模式設定。 這適合大部分的使用者。 不過，如果使用者想要直接模式進行資料平面作業，以及控制平面閘道模式參數的 tunability，則可以使用下列 *directMode ( # B1* 覆寫：
 
     ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a> Java V4 SDK
 
@@ -87,7 +88,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
 建議您依照指示，在 [Windows (按一下以取得指示)](../virtual-network/create-vm-accelerated-networking-powershell.md) 或 [Linux (按一下以取得指示)](../virtual-network/create-vm-accelerated-networking-cli.md) Azure VM中啟用加速網路，以求達到最大效能。
 
-如果沒有加速網路，在 Azure VM 和其他 Azure 資源之間傳輸的 IO，可能反而會透過位於 VM 和其網路卡之間的主機和虛擬交換器來路由傳送。 將主機和虛擬交換器內嵌在資料路徑中，不僅會增加通道的延遲和抖動，還會佔用 VM 的 CPU 週期。 使用加速網路時，VM 會直接使用不含中繼的 NIC；由主機和虛擬交換器處理的任何網路原則詳細資料，都會在 NIC 的硬體中加以處理；完全略過主機和虛擬交換器。 一般來說可以預期降低延遲並提高輸送量，而且啟用加速網路時，延遲情形會更為*一致*，CPU 使用率也會降低。
+如果沒有加速網路，在 Azure VM 和其他 Azure 資源之間傳輸的 IO，可能反而會透過位於 VM 和其網路卡之間的主機和虛擬交換器來路由傳送。 將主機和虛擬交換器內嵌在資料路徑中，不僅會增加通道的延遲和抖動，還會佔用 VM 的 CPU 週期。 使用加速網路時，VM 會直接使用不含中繼的 NIC；由主機和虛擬交換器處理的任何網路原則詳細資料，都會在 NIC 的硬體中加以處理；完全略過主機和虛擬交換器。 一般來說可以預期降低延遲並提高輸送量，而且啟用加速網路時，延遲情形會更為 *一致* ，CPU 使用率也會降低。
 
 限制：VM OS 必須支援加速網路，而且只有在 VM 停止並解除配置時，才能啟用加速網路。 無法使用 Azure Resource Manager 部署 VM。
 
@@ -106,13 +107,13 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
 * **使用應用程式所需的最低一致性層級**
 
-    建立 *CosmosClient* 時，如果未明確設定為*工作階段*，則會使用預設的一致性。 如果您的應用程式邏輯不需要*工作階段*一致性，請將 [一致性] 設定為 [最終]。 注意：建議您在採用 Azure Cosmos DB 變更摘要處理器的應用程式中，至少使用*工作階段*一致性。
+    建立 *CosmosClient* 時，如果未明確設定為 *工作階段* ，則會使用預設的一致性。 如果您的應用程式邏輯不需要 *工作階段* 一致性，請將 [一致性] 設定為 [最終]。 注意：建議您在採用 Azure Cosmos DB 變更摘要處理器的應用程式中，至少使用 *工作階段* 一致性。
 
 * **使用非同步 API 盡可能利用佈建的輸送量**
 
     Azure Cosmos DB JAVA SDK v4 會組合兩個 API，也就是同步和非同步。 大致來說，非同步 API 會實作 SDK 功能，而同步 API 則是對非同步 API 發出封鎖呼叫的精簡包裝函式。 這與舊版 Azure Cosmos DB 非同步 JAVA SDK v2 (僅限非同步) 和舊版 Azure Cosmos DB 同步 JAVA SDK v2 (僅限同步處理，並具有完全獨立的實作方式) 相反。 
     
-    在用戶端初始化期間要決定所選擇的 API；*CosmosAsyncClient* 支援非同步 API，而 *CosmosClient* 支援同步 API。 
+    在用戶端初始化期間要決定所選擇的 API； *CosmosAsyncClient* 支援非同步 API，而 *CosmosClient* 支援同步 API。 
     
     非同步 API 會實作非封鎖 IO，而且如果目標是在對 Azure Cosmos DB 發出要求時，要達到最大的輸送量，這是最佳選擇。 
     
@@ -152,11 +153,11 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
         :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Azure Cosmos DB 連接原則的圖例" border="false":::
 
-        直接模式中採用的用戶端架構，能讓網路使用率得以預測，並實現對 Azure Cosmos DB 複本的多工存取。 上圖顯示直接模式如何將用戶端要求路由傳送到 Cosmos DB 後端複本。 直接模式架構會在用戶端為每個 DB 複本配置最多 10 _*通道**。 通道是前面加上要求緩衝區的 TCP 連線，深度為 30 個要求。 屬於複本的通道會視複本**服務端點**的需求動態配置。 當使用者在直接模式下發出要求時，**TransportClient** 會根據分割區索引鍵，將要求路由傳送到適當的服務端點。 **要求佇列**會在服務端點之前對要求進行緩衝處理。
+        直接模式中採用的用戶端架構，能讓網路使用率得以預測，並實現對 Azure Cosmos DB 複本的多工存取。 上圖顯示直接模式如何將用戶端要求路由傳送到 Cosmos DB 後端複本。 直接模式架構會在用戶端為每個 DB 複本配置最多 10 _ *通道* *。 通道是前面加上要求緩衝區的 TCP 連線，深度為 30 個要求。 屬於複本的通道會視複本 **服務端點** 的需求動態配置。 當使用者在直接模式下發出要求時， **TransportClient** 會根據分割區索引鍵，將要求路由傳送到適當的服務端點。 **要求佇列** 會在服務端點之前對要求進行緩衝處理。
 
-    * ***Direct mode 的設定選項**_
+    * ***Direct mode 的設定選項** _
 
-        如果需要非預設的直接模式行為，請建立 _DirectConnectionConfig * 實例，並自訂其屬性，然後將自訂的屬性實例傳遞至 Azure Cosmos DB 用戶端產生器中的 *directMode ( # B1 * 方法。
+        如果需要非預設的直接模式行為，請建立 _DirectConnectionConfig * 實例，並自訂其屬性，然後將自訂的屬性實例傳遞至 Azure Cosmos DB 用戶端產生器中的 *directMode ( # B1* 方法。
 
         這些設定會控制上述基礎直接模式架構的行為。
 
@@ -174,13 +175,13 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
     Azure Cosmos DB Java SDK v4 支援平行查詢，可讓您平行查詢分割的集合。 如需詳細資訊，請參閱使用 Azure Cosmos DB Java SDK v4 的相關[程式碼範例](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)。 平行查詢的設計目的是要改善其連續對應項目的查詢延遲和輸送量。
 
-    * ***微調 setMaxDegreeOfParallelism \: **_
+    * ***微調 setMaxDegreeOfParallelism \:** _
     
         平行查詢的運作方式是以平行方式查詢多個分割。 不過，對於查詢會以循序方式擷取來自個別分割集合的資料。 因此，使用 setMaxDegreeOfParallelism 設定分割數目會最有機會達到最高效能的查詢，但前提是其他所有系統條件皆維持不變。 如果您不知道分割數目，您可以使用 setMaxDegreeOfParallelism 設定為較高的數字，然後系統會選擇最小值 (分割數目、使用者提供的輸入) 作為平行處理原則的最大刻度。
 
         請務必注意，若對於查詢是以平均方式將資料分佈於所有分割，平行查詢便會產生最佳效益。 如果分割之集合的分割方式是查詢所傳回的所有或大多數資料集中在少數幾個分割中 (最差的情況是集中在一個分割)，則這些分割會成為查詢效能的瓶頸。
 
-    _ ***微調 setMaxBufferedItemCount \: **_
+    _ * **微調 setMaxBufferedItemCount \:** _
     
         Parallel query is designed to pre-fetch results while the current batch of results is being processed by the client. The pre-fetching helps in overall latency improvement of a query. setMaxBufferedItemCount limits the number of pre-fetched results. Setting setMaxBufferedItemCount to the expected number of results returned (or a higher number) enables the query to receive maximum benefit from pre-fetching.
 
@@ -231,11 +232,11 @@ _ **向外擴充您的用戶端-工作負載**
 
     您可能會基於各種原因，而想要或需要在產生高要求輸送量的執行緒中新增記錄。 如果您的目標是使用此執行緒產生的要求，使容器的佈建輸送量完全飽和，記錄最佳化即可大幅提升效能。
 
-    * ***設定非同步記錄器**_
+    * ***設定非同步記錄器** _
 
         同步記錄器的延遲一定會影響到產生要求的執行緒的整體延遲計算。 建議使用非同步記錄器 (例如 [log4j2](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flogging.apache.org%2Flog4j%2Flog4j-2.3%2Fmanual%2Fasync.html&data=02%7C01%7CCosmosDBPerformanceInternal%40service.microsoft.com%7C36fd15dea8384bfe9b6b08d7c0cf2113%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637189868158267433&sdata=%2B9xfJ%2BWE%2F0CyKRPu9AmXkUrT3d3uNA9GdmwvalV3EOg%3D&reserved=0))，從高效能應用程式執行緒將將記錄作業的額外負荷分離出去。
 
-    _ ***停用 netty 的記錄**_
+    _ * **停用 netty 的記錄** _
 
         Netty library logging is chatty and needs to be turned off (suppressing sign in the configuration may not be enough) to avoid additional CPU costs. If you are not in debugging mode, disable netty's logging altogether. So if you are using log4j to remove the additional CPU costs incurred by ``org.apache.log4j.Category.callAppenders()`` from netty add the following line to your codebase:
 

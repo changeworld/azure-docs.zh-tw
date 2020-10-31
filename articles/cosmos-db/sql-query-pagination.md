@@ -6,14 +6,15 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 2e899e76a1e68e120e0419926f8169785146bbfc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 08f8095670b48fcefccb0a9adf477b83ce2537d3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485030"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089231"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分頁
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 在 Azure Cosmos DB 中，查詢可能會有多個頁面的結果。 本檔說明 Azure Cosmos DB 的查詢引擎用來決定是否要將查詢結果分割成多個頁面的準則。 您可以選擇性地使用接續權杖來管理跨越多個頁面的查詢結果。
 
@@ -45,12 +46,13 @@ ms.locfileid: "92485030"
 
 ## <a name="continuation-tokens"></a>接續權杖
 
-在 .NET SDK 和 JAVA SDK 中，您可以選擇性地使用接續權杖作為查詢進度的書簽。 Azure Cosmos DB 查詢執行在伺服器端為無狀態，而且可以使用接續 token 隨時繼續執行。 Node.js SDK 或 Python SDK 不支援接續權杖。
+在 .NET SDK 和 JAVA SDK 中，您可以選擇性地使用接續權杖作為查詢進度的書簽。 Azure Cosmos DB 查詢執行在伺服器端為無狀態，而且可以使用接續 token 隨時繼續執行。 Node.js SDK 不支援接續權杖。 針對 Python SDK，它支援單一分割區查詢，而且必須在 options 物件中指定 PK，因為它並不足以查詢本身。
 
 以下是使用接續權杖的一些範例：
 
 - [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/samples/code-samples/Queries/Program.cs#L699-L734)
 - [Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L216)
+- [Python SDK](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/test/test_query.py#L533)
 
 如果查詢傳回接續 token，則會有其他查詢結果。
 
@@ -68,7 +70,7 @@ FROM c
 ORDER BY c.name
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [Azure Cosmos DB 簡介](introduction.md)
 - [Azure Cosmos DB .NET 範例](https://github.com/Azure/azure-cosmos-dotnet-v3)

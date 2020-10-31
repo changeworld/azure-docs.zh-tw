@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 26794f0d743bc701879a161f69e374340206e5d8
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 79ef46eef4da1beeea1c177ce39a09eea133f545
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488464"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089656"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>關於 Azure Cosmos DB 內不同 API 的常見問題集
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 ### <a name="what-are-the-typical-use-cases-for-azure-cosmos-db"></a>Azure Cosmos DB 有哪些一般使用案例？
 
@@ -104,7 +105,7 @@ Azure 入口網站中已提供 Azure Cosmos DB。 首先，請註冊 Azure 訂�
 
 ### <a name="what-is-a-primary-key"></a>什麼是主要金鑰？
 
-主要金鑰是用來存取帳戶所有資源的安全性權杖。 擁有此金鑰的人，對資料庫帳戶中的所有資源具有讀取和寫入存取權。 當您散發主鍵時，請特別小心。 主要主鍵和次要主要金鑰位於[Azure 入口網站][azure-portal]的 [**金鑰**] 分頁。 如需金鑰的詳細資訊，請參閱 [檢視、複製和重新產生存取金鑰](manage-with-cli.md#list-account-keys)。
+主要金鑰是用來存取帳戶所有資源的安全性權杖。 擁有此金鑰的人，對資料庫帳戶中的所有資源具有讀取和寫入存取權。 當您散發主鍵時，請特別小心。 主要主鍵和次要主要金鑰位於 [Azure 入口網站][azure-portal]的 [ **金鑰** ] 分頁。 如需金鑰的詳細資訊，請參閱 [檢視、複製和重新產生存取金鑰](manage-with-cli.md#list-account-keys)。
 
 ### <a name="what-are-the-regions-that-preferredlocations-can-be-set-to"></a>設定 PreferredLocations 的目標區域有哪些？
 

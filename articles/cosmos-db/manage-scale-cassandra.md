@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: cbd5dbd81cf8cda117447a15d4a73ae8a546f181
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0d5aded62c9c3990a3fa102863f4850bbfda6702
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482514"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088670"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>彈性調整 Azure Cosmos DB Cassandra API 帳戶
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 有各種不同的選項可用來探索適用於 Cassandra 的 Azure Cosmos DB API 的彈性特質。 若要了解如何在 Azure Cosmos DB 中有效進行調整，請務必了解如何佈建適當數量的要求單位 (RU/秒)，以因應系統中的效能需求。 若要深入了解要求單位，請參閱[要求單位](request-units.md)一文。 
 
@@ -62,7 +63,7 @@ Azure Cosmos DB 的 Cassandra API 可讓您使用我們的各種控制平面功�
 
 除了以標準 (手動) 或程式設計方式佈建輸送量以外，您也可以在自動調整佈建的輸送量中設定 Azure Cosmos 容器。 自動調整會自動並立即在指定的 RU 範圍內進行調整，以符合您的使用量需求，而不會影響到 SLA。 若要深入了解，請參閱[在自動調整中建立 Azure Cosmos 容器和資料庫](provision-throughput-autoscale.md)一文。
 
-此方法的優點是，您可以透過最簡單的方式在系統中管理調整需求。 它不會在 **設定的 RU 範圍內**套用速率限制。 其缺點是，如果您系統中的調整需求是可預測的，則相較於使用上述定制的控制平面或 SDK 層級方法，使用自動調整來處理調整需求的成本效益可能會較低。
+此方法的優點是，您可以透過最簡單的方式在系統中管理調整需求。 它不會在 **設定的 RU 範圍內** 套用速率限制。 其缺點是，如果您系統中的調整需求是可預測的，則相較於使用上述定制的控制平面或 SDK 層級方法，使用自動調整來處理調整需求的成本效益可能會較低。
 
 若要使用 CQL 設定或改變自動調整的最大輸送量 (RU)，請使用下列程式碼 (請據以取代 keyspace/資料表名稱)：
 

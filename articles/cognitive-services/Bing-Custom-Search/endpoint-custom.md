@@ -10,14 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 03ec22caedd4e317b9e1fe781dc3d983febc7a6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7aa2b75a6f6e95bdeff4176ee2ad852de3d7169
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74072795"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090693"
 ---
 # <a name="custom-search"></a>自訂搜尋
+
+> [!WARNING]
+> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
+> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
+> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 Bing 自訂搜尋可讓您針對感興趣的主題，建立量身訂做的搜尋經驗。 您的使用者會看到針對他們感興趣的內容量身訂做的搜尋結果，而不需要逐頁查看包含不相關內容的搜尋結果。
 
 ## <a name="custom-search-endpoint"></a>自訂搜尋端點
@@ -57,8 +62,8 @@ https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/images/search
 
 如需設定自訂搜尋執行個體的相關資訊，請參閱[設定您的自訂搜尋體驗](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/define-your-custom-view)。
 
-## <a name="next-steps"></a>後續步驟
-**Bing** API 支援根據類型傳回結果的搜尋動作。所有搜尋端點會傳回作為 JSON 回應物件的結果。 所有端點均可支援依照經度、緯度和搜尋半徑傳回特定語言及/或位置的查詢。
+## <a name="next-steps"></a>下一步
+**Bing** API 支援根據類型傳回結果的搜尋動作。 所有搜尋端點會傳回作為 JSON 回應物件的結果。  所有端點均可支援依照經度、緯度和搜尋半徑傳回特定語言及/或位置的查詢。
 
 如需每個端點支援的參數完整相關資訊，請參閱每種類型的參考頁面。
 如需透過範例了解使用自訂搜尋 API 的基本要求，請參閱[自訂搜尋快速入門](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/)

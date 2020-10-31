@@ -6,14 +6,15 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 7dface648f7bf219d4c66b038af62e3307560650
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 070c1ef4eeec2b4ed15f2f4720d9fbd8494fca0f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489280"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090421"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服務配額
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 本文概述提供給 Azure Cosmos DB 中不同資源的預設配額。
 
@@ -35,7 +36,7 @@ ms.locfileid: "92489280"
 | 每個容器的儲存體上限 | 無限制 |
 | 每個資料庫的儲存體上限 | 無限制 |
 | 每個帳戶的附件大小上限 (附件功能即將淘汰)  | 2 GB |
-| 每 1 GB 需要的最小 RU/秒 | 10 RU/秒<br>**注意：** 如果您的容器或資料庫包含超過 1 TB 的資料，您的帳戶可能符合「[高儲存體/低輸送量」計畫](set-throughput.md#high-storage-low-throughput-program)的資格 |
+| 每 1 GB 需要的最小 RU/秒 | 10 RU/秒<br>**注意：** 如果您的容器或資料庫包含超過 1 TB 的資料，您的帳戶可能符合「 [高儲存體/低輸送量」計畫](set-throughput.md#high-storage-low-throughput-program)的資格 |
 
 > [!NOTE]
 > 若要了解管理工作負載 (所含分割區索引鍵需要更高儲存體或輸送量限制) 的最佳做法，請參閱[建立綜合分割區索引鍵](synthetic-partition-keys.md)。

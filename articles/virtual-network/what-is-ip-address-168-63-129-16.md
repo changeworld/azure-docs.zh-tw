@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: 0f0bfa693086a3a097df219132d696a1d04e6f56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03c1badf984fb150631c157f3fdc07856b60e965
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87286031"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088892"
 ---
 # <a name="what-is-ip-address-1686312916"></a>IP 位址 168.63.129.16 是什麼？
 
@@ -32,17 +32,22 @@ IP 位址 168.63.129.16 是虛擬公用 IP 位址，有助於建構 Azure 平台
 - 允許 VM 從 Azure 中的 DHCP 服務取得動態 IP 位址。
 - 為 PaaS 角色啟用客體代理程式活動訊號訊息。
 
+> [!NOTE]
+> 在非虛擬網路案例 (傳統) 中，會使用私人 IP 位址而不是168.63.129.16。 透過 DHCP 可動態探索此私人 IP 位址。 168.63.129.16 特定的防火牆規則必須適當地調整。
+
 ## <a name="scope-of-ip-address-1686312916"></a>IP 位址 168.63.129.16 的範圍
 
 公用 IP 位址168.63.129.16 用於所有區域和所有國家雲端。 這個特殊的公用 IP 位址是由 Microsoft 所擁有，不會變更。 建議您在 VM) 防火牆原則的任何本機 (中允許此 IP 位址 (輸出方向) 。 此特殊 IP 位址與資源之間的通訊是安全的，因為只有內部 Azure 平台才可獲得來自此 IP 位址的訊息。 如果此位址遭到封鎖，可能在各種情況下發生非預期的行為。 168.63.129.16 是 [主機節點的虛擬 IP](../virtual-network/security-overview.md#azure-platform-considerations) ，因此不會受限於使用者定義的路由。
 
-- VM 代理程式需要透過埠80、443、32526與 WireServer (168.63.129.16) 進行輸出通訊。 這些應該在 VM 上的本機防火牆中開啟。 這些埠上與168.63.129.16 的通訊不受限於設定的網路安全性群組。
-- 168.63.129.16 可提供 DNS 服務給 VM。 如果這不是您想要的，您可以在 VM 上的本機防火牆封鎖此流量。 根據預設，DNS 通訊不受限於設定的網路安全性群組，除非特別以 [AzurePlatformDNS](../virtual-network/service-tags-overview.md#available-service-tags) 服務標籤為目標。 若要封鎖透過 NSG 的 DNS 流量 Azure DNS，請建立輸出規則以拒絕 [AzurePlatformDNS](../virtual-network/service-tags-overview.md#available-service-tags)的流量，並將 "*" 指定為「目的地埠範圍」和「任何」作為通訊協定。
+- VM 代理程式需要透過埠 80/tcp 和 32526/tcp 進行輸出通訊，且 WireServer (168.63.129.16) 。 這些應該在 VM 上的本機防火牆中開啟。 這些埠上與168.63.129.16 的通訊不受限於設定的網路安全性群組。
+
+- 168.63.129.16 可提供 DNS 服務給 VM。 如果不想要，168.63.129.16 埠 53/udp 和 53/tcp 的輸出流量可以在 VM 上的本機防火牆中封鎖。
+
+  根據預設，DNS 通訊不受限於設定的網路安全性群組，除非特別以 [AzurePlatformDNS](../virtual-network/service-tags-overview.md#available-service-tags) 服務標籤為目標。 若要封鎖透過 NSG 的 DNS 流量 Azure DNS，請建立輸出規則以拒絕 [AzurePlatformDNS](../virtual-network/service-tags-overview.md#available-service-tags)的流量，並將 "*" 指定為「目的地埠範圍」和「任何」作為通訊協定。
+
 - 當 VM 屬於負載平衡器後端集區的一部分時，應允許 [健康情況探查](../load-balancer/load-balancer-custom-probe-overview.md) 通訊源自于168.63.129.16。 預設的網路安全性群組設定具有允許此通訊的規則。 此規則會利用 [AzureLoadBalancer](../virtual-network/service-tags-overview.md#available-service-tags) 服務標記。 若有需要，您可以設定網路安全性群組來封鎖此流量，但這會導致探查失敗。
 
-在非虛擬網路案例中 (傳統) ，健康情況探查是源自于私人 IP，且不會使用168.63.129.16。
-
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - [安全性群組](security-overview.md)
 - [建立、變更或刪除網路安全性群組](manage-network-security-group.md)

@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: dech
-ms.openlocfilehash: f7fd40c48f94b4337c5ec342499203f83763299b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: d8a6471d53ad4b2428504f9c53cbec6bc1967c49
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909925"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089632"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>如何在標準 (手動) 和自動調整佈建輸送量之間進行選擇 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB 支援兩種佈建輸送量類型或供應項目：標準 (手動) 和自動調整。 這兩種輸送量類型適用於需要高效能和高度調整的任務關鍵性工作負載，並受到相同 Azure Cosmos DB SLA 的輸送量、可用性、延遲和一致性支援。
 

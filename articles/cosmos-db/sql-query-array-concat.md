@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8f2b37181e5d743809bb1f60be4056cb4442a8d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 137662ac27ea297a5f57ad784d7bb24cf3acebda
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78295873"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090914"
 ---
 # <a name="array_concat-azure-cosmos-db"></a>ARRAY_CONCAT (Azure Cosmos DB) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  傳回串連兩個或多個陣列值之結果的陣列。  
   
 ## <a name="syntax"></a>語法
@@ -26,7 +28,7 @@ ARRAY_CONCAT (<arr_expr1>, <arr_expr2> [, <arr_exprN>])
 ## <a name="arguments"></a>引數
   
 *arr_expr*  
-   這是要串連至其他值的陣列運算式。 `ARRAY_CONCAT`函數至少需要兩個*arr_expr*引數。  
+   這是要串連至其他值的陣列運算式。 `ARRAY_CONCAT`函數至少需要兩個 *arr_expr* 引數。  
   
 ## <a name="return-types"></a>傳回類型
   
@@ -50,7 +52,7 @@ SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"]) AS arrayConcat
 
 這個系統函數將不會使用索引。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [陣列函數 Azure Cosmos DB](sql-query-array-functions.md)
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)

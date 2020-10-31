@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: apimpm
-ms.openlocfilehash: c37224a3a455abcf3de62998cb65e1d66a1bb0f2
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 92d108304f788279a636b1dc5e1c4e6c103ede3d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910707"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088874"
 ---
 # <a name="cicd-for-api-management-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本進行 API 管理的 CI/CD
 
@@ -67,7 +67,8 @@ API 開發人員在使用 Resource Manager 範本時遇到挑戰：
 
 * API 發行者可以驗證提取要求，並確保變更安全且符合規範。 例如，他們可以檢查是否只允許 HTTPS 與 API 通訊。 大部分的驗證都可以自動化為 CI/CD 管線中的一個步驟。
 
-* 成功核准併合並變更之後，API 發行者可以選擇依排程或依需求將它們部署到生產實例。 他們可以使用 [GitHub Actions](https://github.com/Azure/apimanagement-devops-samples)、 [Azure Pipelines](/devops/pipelines/)、 [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)、 [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)或其他工具，將範本的部署自動化。
+* 一旦成功核准併合並變更，API 發行者可以選擇依排程或依需求將它們部署到生產環境實例。 範本的部署可以使用 [GitHub Actions](https://github.com/Azure/apimanagement-devops-samples)、 [Azure Pipelines](/azure/devops/pipelines)、 [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)、 [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)或其他工具來自動化。
+
 
 使用此方法時，組織可以將 API 變更的部署自動化至 API 管理實例，並輕鬆地將變更從一個環境升級至另一個環境。 因為不同的 API 開發小組將會處理不同組的 API 範本和檔案，所以可避免不同小組之間的干擾。
 

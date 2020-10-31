@@ -4,12 +4,12 @@ description: 在此教學課程中，您將了解如何使用 Azure Resource Man
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 5238d16af31e30a4ae3a7d4cc01fbbd93373cfeb
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: bc956bed8324398c2d60f4641cd0bcb821fb51c2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737580"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091339"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>教學課程：使用 Resource Manager 範本部署多容器群組
 
@@ -31,9 +31,9 @@ Azure 容器執行個體支援使用[容器群組](container-instances-container
 > [!NOTE]
 > 多容器群組目前僅限於 Linux 容器。 
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="configure-a-template"></a>設定範本
 
@@ -169,7 +169,7 @@ az container show --resource-group myResourceGroup --name myContainerGroup --out
 
 若要檢視執行中的應用程式，請在瀏覽器中瀏覽至其公用 IP 位址。 例如，在此範例輸出中，IP 是 `52.168.26.124`：
 
-```bash
+```console
 Name              ResourceGroup    Status    Image                                                                                               IP:ports              Network    CPU/Memory       OsType    Location
 ----------------  ---------------  --------  --------------------------------------------------------------------------------------------------  --------------------  ---------  ---------------  --------  ----------
 myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tutorial-sidecar,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
@@ -185,7 +185,7 @@ az container logs --resource-group myResourceGroup --name myContainerGroup --con
 
 輸出：
 
-```bash
+```console
 listening on port 80
 ::1 - - [02/Jul/2020:23:17:48 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ::1 - - [02/Jul/2020:23:17:51 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
@@ -200,7 +200,7 @@ az container logs --resource-group myResourceGroup --name myContainerGroup --con
 
 輸出：
 
-```bash
+```console
 Every 3s: curl -I http://localhost                          2020-07-02 20:36:41
 
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -218,7 +218,7 @@ Date: Thu, 02 Jul 2020 20:36:41 GMT
 Connection: keep-alive
 ```
 
-如您所見，Sidecar 會透過群組的區域網路定期地向主要 Web 應用程式提出 HTTP 要求，以確保它正在執行。 您可以擴充此 Sidecar 範例，以便在其收到 `200 OK` 以外的 HTTP 回應碼時觸發警示。
+如您所見，Sidecar 會透過群組的區域網路定期地向主要 Web 應用程式提出 HTTP 要求，以確保它正在執行。 您可以擴充此 Sidecar 範例，以在其收到 `200 OK` 以外的 HTTP 回應碼時觸發警示。
 
 ## <a name="next-steps"></a>後續步驟
 

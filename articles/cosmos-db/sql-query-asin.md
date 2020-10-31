@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8b70738a439b6c64a84a63adf63c83995530e92e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f2a3e87f464c2b5d0365785fcd7b81623ef09ef
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78302690"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93089248"
 ---
 # <a name="asin-azure-cosmos-db"></a>ASIN (Azure Cosmos DB) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  傳回角度，以弧度為單位，其正弦函數是指定的數值運算式。 這也稱為反正弦值。  
   
 ## <a name="syntax"></a>語法
@@ -50,7 +52,7 @@ SELECT ASIN(-1) AS asin
 
 這個系統函數將不會使用索引。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [數學函數 Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)

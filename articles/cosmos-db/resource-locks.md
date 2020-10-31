@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: mjbrown
-ms.openlocfilehash: b23fb22a99705e1bf37de7a7982513ff692d8f6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6db7bbf03b023a80032a4ed15f2f4f82dd2b0b98
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91771027"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088364"
 ---
 # <a name="prevent-azure-cosmos-db-resources-from-being-deleted-or-changed"></a>防止刪除或變更 Azure Cosmos DB 資源
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 如果您是系統管理員，您可能需要鎖定 Azure Cosmos 帳戶、資料庫或容器，以防止組織中的其他使用者不小心刪除或修改重要資源。 您可以將鎖定層級設定為 CanNotDelete 或 ReadOnly。
 
@@ -112,6 +113,6 @@ az lock create --name $lockName \
 ]
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [Azure Resource Manager 鎖定的總覽](../azure-resource-manager/management/lock-resources.md)

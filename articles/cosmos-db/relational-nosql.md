@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 613e0dbfc90586475fe0ba9820ede1359a99d3a6
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d986106337eb1ede2f6d61303d8a4c487bbed276
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482208"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088466"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>瞭解 NoSQL 與關係資料庫之間的差異
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 本文將列舉 NoSQL 資料庫在關係資料庫上的一些主要優點。 我們也將討論使用 NoSQL 的一些挑戰。 若要深入瞭解存在的不同資料存放區，請參閱我們的文章，以瞭解如何 [選擇正確的資料存放區](/azure/architecture/guide/technology-choices/data-store-overview)。
 
@@ -88,7 +89,7 @@ NoSQL 檔資料庫中的最佳作法是在「產品檔」中直接反正規化�
 
 同樣地，Azure Cosmos DB 提供比關係資料庫更多的彈性，以因應各種不同的取捨，但針對小規模的執行，此方法可能會新增更多設計考慮。 如需有關此主題的詳細資訊，請參閱關於 [一致性、可用性和效能取捨](./consistency-levels.md) 的文章。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 瞭解如何管理您的 Azure Cosmos 帳戶和其他概念：
 

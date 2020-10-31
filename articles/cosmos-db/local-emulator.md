@@ -7,14 +7,15 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: 9455ac3520192274e80f2d9e0fdfd1c8f8a238a3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b1a0382b6bb650b6761897f4a16f988e5ce00c1e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482616"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088722"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>安裝和使用 Azure Cosmos 模擬器進行本機開發和測試
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos 模擬器提供一個模擬 Azure Cosmos DB 服務的本機環境，以供開發之用。 您可以使用 Azure Cosmos 模擬器在本機開發及測試應用程式，而不需建立 Azure 訂用帳戶，也不會產生任何費用。 當您滿意應用程式在 Azure Cosmos 模擬器中的運作方式時，您可以切換到使用雲端中的 Azure Cosmos 帳戶。 本文說明如何在 Windows、Linux、macOS 和 Windows docker 環境上安裝和使用模擬器。
 
@@ -80,7 +81,7 @@ Azure Cosmos 模擬器提供 Azure Cosmos DB 服務的高精確度模擬。 它�
 
 ## <a name="use-the-emulator-on-windows"></a><a id="run-on-windows"></a>在 Windows 上使用模擬器
 
-預設會在位置安裝 Azure Cosmos 模擬器 `C:\Program Files\Azure Cosmos DB Emulator` 。 若要在 Windows 上啟動 Azure Cosmos 模擬器，請選取 [ **開始** ] 按鈕或按下 windows 鍵。 開始輸入 **Azure Cosmos 模擬器**，然後從應用程式清單中選取模擬器。
+預設會在位置安裝 Azure Cosmos 模擬器 `C:\Program Files\Azure Cosmos DB Emulator` 。 若要在 Windows 上啟動 Azure Cosmos 模擬器，請選取 [ **開始** ] 按鈕或按下 windows 鍵。 開始輸入 **Azure Cosmos 模擬器** ，然後從應用程式清單中選取模擬器。
 
 :::image type="content" source="./media/local-emulator/database-local-emulator-start.png" alt-text="選取 [開始] 按鈕或按 Windows 鍵，開始鍵入 Azure Cosmos 模擬器，然後從應用程式清單中選取模擬器":::
 
@@ -94,7 +95,7 @@ Azure Cosmos 模擬器提供 Azure Cosmos DB 服務的高精確度模擬。 它�
 
 您可以在 Windows Docker 容器上執行 Azure Cosmos 模擬器。 如需詳細資訊，請參閱 docker pull 命令和[GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker)的[Docker Hub](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/) `Dockerfile` 。 模擬器目前無法在 Docker 上適用于 Oracle Linux。 使用下列指示，在適用於 Windows 的 Docker 上執行模擬器：
 
-1. 安裝 [適用於 Windows 的 Docker](https://www.docker.com/docker-windows) 之後，請以滑鼠右鍵按一下工具列上的 Docker 圖示，然後選取 [ **切換至 windows 容器**]，切換至 windows 容器。
+1. 安裝 [適用於 Windows 的 Docker](https://www.docker.com/docker-windows) 之後，請以滑鼠右鍵按一下工具列上的 Docker 圖示，然後選取 [ **切換至 windows 容器** ]，切換至 windows 容器。
 
 1. 接下來，從最喜愛的殼層執行下列命令，即可從 Docker Hub 提取模擬器映像。
 
@@ -285,7 +286,7 @@ services:
 
 1. 將該 PFX 檔案複製到您的 Mac 環境中。
 
-1. 開啟*金鑰鏈存取*應用程式，並匯入 PFX 檔案。
+1. 開啟 *金鑰鏈存取* 應用程式，並匯入 PFX 檔案。
 
 1. 開啟憑證的清單，並找出名稱為 `localhost` 的憑證。
 
@@ -324,7 +325,7 @@ services:
 
 您可以在本機網路上執行模擬器。 若要啟用網路存取，請在[命令列](emulator-command-line-parameters.md)上指定 `/AllowNetworkAccess` 選項，這也需要您指定 `/Key=key_string` 或 `/KeyFile=file_name`。 您可以使用 `/GenKeyFile=file_name`，預先產生具有隨機金鑰的檔案。 然後可將該檔案傳遞至 `/KeyFile=file_name` 或 `/Key=contents_of_file`。
 
-若要在第一次啟用網路存取，使用者應該關閉模擬器，並刪除模擬器的資料目錄 *%LOCALAPPDATA%\CosmosDBEmulator*。
+若要在第一次啟用網路存取，使用者應該關閉模擬器，並刪除模擬器的資料目錄 *%LOCALAPPDATA%\CosmosDBEmulator* 。
 
 ## <a name="authenticate-connections-when-using-emulator"></a><a id="authenticate-requests"></a>使用模擬器時驗證連接
 
@@ -454,13 +455,13 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 使用下列步驟來卸載模擬器：
 
-1. 結束本機模擬器的所有開啟的實例，方法是以滑鼠右鍵按一下系統匣上的**Azure Cosmos 模擬器**圖示，然後選取 [結束 **]。** 結束所有執行個體可能需要數分鐘的時間。
+1. 結束本機模擬器的所有開啟的實例，方法是以滑鼠右鍵按一下系統匣上的 **Azure Cosmos 模擬器** 圖示，然後選取 [結束 **]。** 結束所有執行個體可能需要數分鐘的時間。
 
-1. 在 [Windows 搜尋] 方塊中，輸入 **應用程式 & 功能** ，並 ** (系統設定) 結果中選取應用程式 & 功能 ** 。
+1. 在 [Windows 搜尋] 方塊中，輸入 **應用程式 & 功能** ，並 **(系統設定) 結果中選取應用程式 & 功能** 。
 
-1. 在應用程式清單中，依序選取 [ **Azure Cosmos DB 模擬器**]、[卸載]，然後按一下 [ **卸載**]，然後再次選取 [ **卸載** ]。
+1. 在應用程式清單中，依序選取 [ **Azure Cosmos DB 模擬器** ]、[卸載]，然後按一下 [ **卸載** ]，然後再次選取 [ **卸載** ]。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在本文中，您已瞭解如何使用本機模擬器來進行免費的本機開發。 您現在可以繼續進行下一篇文章：
 
