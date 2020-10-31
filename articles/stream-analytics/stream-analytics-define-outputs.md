@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/2/2020
-ms.openlocfilehash: 5f109ad719ada9728938f6e37d4ec854d3950a24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdd610be1dd7c5fe9c7aa574fde33df866116dd2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708430"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128829"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Azure 串流分析的輸出
 
-Azure 串流分析作業是由輸入、查詢及輸出所組成。 有數種輸出類型可讓您傳送已轉換的資料。 本文列出支援的串流分析輸出。 在您設計串流分析查詢時，請使用 [INTO 子句](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics)來參考輸出的名稱。 您可以針對每個作業使用單一輸出，或針對每個串流作業使用多個輸出 (如果您需要將多個 INTO 子句加入至查詢來) 這些輸出。
+Azure 串流分析作業是由輸入、查詢及輸出所組成。 有數種輸出類型可讓您傳送已轉換的資料。 本文列出支援的串流分析輸出。 在您設計串流分析查詢時，請使用 [INTO 子句](/stream-analytics-query/into-azure-stream-analytics)來參考輸出的名稱。 您可以針對每個作業使用單一輸出，或針對每個串流作業使用多個輸出 (如果您需要將多個 INTO 子句加入至查詢來) 這些輸出。
 
-若要建立、編輯及測試串流分析作業輸出，您可以使用 [Azure 入口網站](stream-analytics-quick-create-portal.md#configure-job-output)、[Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job)、[.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet)、[REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output)，以及 [Visual Studio](stream-analytics-quick-create-vs.md)。
+若要建立、編輯及測試串流分析作業輸出，您可以使用 [Azure 入口網站](stream-analytics-quick-create-portal.md#configure-job-output)、[Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job)、[.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet)、[REST API](/rest/api/streamanalytics/)，以及 [Visual Studio](stream-analytics-quick-create-vs.md)。
 
 某些輸出類型支援[資料分割](#partitioning)，且[輸出批次大小](#output-batch-size)會變化以達到最佳輸送量。 下表顯示每個輸出類型所支援的功能：
 
@@ -41,7 +41,7 @@ Azure 串流分析作業是由輸入、查詢及輸出所組成。 有數種輸�
 
 串流分析支援所有輸出的磁碟分割，但 Power BI 除外。 如需資料分割索引鍵和輸出寫入器數目的詳細資訊，請參閱您感興趣之特定輸出類型的相關文章。 在上一節中會連結所有輸出文章。  
 
-此外，若要更先進地微調分割區，可以使用 (查看查詢中的) 子句來控制輸出寫入器的數目 `INTO <partition count>` ，這有助於 [達成](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 所需的作業拓撲。 如果您的輸出介面卡未分割，則在某個輸入分割區中缺少資料會導致延遲延遲到延遲的時間。 在這種情況下，輸出會合併為單一寫入器，這可能會在您的管線中產生瓶頸。 若要深入了解延遲傳入原則，請參閱 [Azure 串流分析事件的順序考量](stream-analytics-out-of-order-and-late-events.md)。
+此外，若要更先進地微調分割區，可以使用 (查看查詢中的) 子句來控制輸出寫入器的數目 `INTO <partition count>` ，這有助於 [達成](/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 所需的作業拓撲。 如果您的輸出介面卡未分割，則在某個輸入分割區中缺少資料會導致延遲延遲到延遲的時間。 在這種情況下，輸出會合併為單一寫入器，這可能會在您的管線中產生瓶頸。 若要深入了解延遲傳入原則，請參閱 [Azure 串流分析事件的順序考量](./stream-analytics-time-handling.md)。
 
 ## <a name="output-batch-size"></a>輸出批次大小
 
@@ -59,7 +59,7 @@ Azure 串流分析作業是由輸入、查詢及輸出所組成。 有數種輸�
 
    這是每一批次中的資料列數目下限。 針對 Parquet，每個批次都會建立新的檔案。 目前的預設值為 2,000 個資料列，允許的上限為 10,000 個資料列。
 
-只有 API 版本 **2017-04-01-preview**支援這些批次處理視窗屬性。 以下是 REST API 呼叫的 JSON 承載範例：
+只有 API 版本 **2017-04-01-preview** 支援這些批次處理視窗屬性。 以下是 REST API 呼叫的 JSON 承載範例：
 
 ```json
 "type": "stream",
@@ -91,5 +91,5 @@ Azure 串流分析作業是由輸入、查詢及輸出所組成。 有數種輸�
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

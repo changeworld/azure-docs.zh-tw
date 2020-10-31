@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: 34d64d70c657712bb44aa6331b53f014349a0dda
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: c28595458fea61f66b6930ce72fa0702e00aecd9
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283898"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129270"
 ---
 # <a name="how-to-create-a-virtual-machine-using-an-approved-base"></a>如何使用已核准的基底來建立虛擬機器
 
@@ -32,7 +32,7 @@ ms.locfileid: "92283898"
 
 ### <a name="linux"></a>Linux
 
-Azure 會提供一組已核准的 Linux 散發套件。 如需目前的清單，請參閱[經 Azure 背書的 Linux 發佈](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。
+Azure 會提供一組已核准的 Linux 散發套件。 如需目前的清單，請參閱[經 Azure 背書的 Linux 發佈](../virtual-machines/linux/endorsed-distros.md)。
 
 ## <a name="create-vm-on-the-azure-portal"></a>在 Azure 入口網站上建立 VM
 
@@ -49,9 +49,9 @@ Azure 會提供一組已核准的 Linux 散發套件。 如需目前的清單，
     :::image type="content" source="media/create-vm/create-virtual-machine-sizes.png" alt-text="選取 [第1代] 或 [第2代]。":::
 
 7. 提供建立 VM 所需的其他詳細資料。
-8. 選取 [檢閱 + 建立] 以檢閱選擇。 當 [ **通過驗證** ] 訊息出現時，請選取 [  **建立**]。
+8. 選取 [檢閱 + 建立] 以檢閱選擇。 當 [ **通過驗證** ] 訊息出現時，請選取 [  **建立** ]。
 
-Azure 會開始佈建所指定的虛擬機器。 選取左側功能表中的 [ **虛擬機器** ] 索引標籤，以追蹤其進度。 建立之後，虛擬機器的狀態會變更為 [ **正在**執行]。
+Azure 會開始佈建所指定的虛擬機器。 選取左側功能表中的 [ **虛擬機器** ] 索引標籤，以追蹤其進度。 建立之後，虛擬機器的狀態會變更為 [ **正在** 執行]。
 
 
 ## <a name="configure-the-vm"></a>設定 VM

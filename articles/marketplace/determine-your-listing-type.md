@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/04/2020
-ms.openlocfilehash: 4acdd8bfd567a317b954d58629468fa8cd929669
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0b4941d326359a51ff6a75385a74a8bcdabfa075
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90032379"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128992"
 ---
 # <a name="determine-your-publishing-option"></a>決定您的發佈選項
 
@@ -49,14 +49,14 @@ ms.locfileid: "90032379"
 
 ## <a name="choose-a-listing-option"></a>挑選清單選項
 
-可用的清單選項提供差異化的客戶參與，同時讓您存取潛在客戶共用和 [商業 marketplace 的權益](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)。 請注意與發行選項對應的清單選項：
+可用的清單選項提供差異化的客戶參與，同時讓您存取潛在客戶共用和 [商業 marketplace 的權益](./gtm-your-marketplace-benefits.md)。 請注意與發行選項對應的清單選項：
 
 | **發行選項**    | **說明**  |
 | :------------------- | :-------------------|
 | **清單** | 簡單的應用程式或服務清單，可讓商業 marketplace 使用者要求您透過 **Contact Me** 清單選項與客戶聯繫。 |
-| **試用版** | 使用商業市集來增強曝光度，並且將佈建解決方案的試用體驗自動化，讓潛在使用者在購買之前，在一段有限的時間內免費使用您的 SaaS、IaaS 或 Microsoft 應用程式內體驗。 試用版發行選項的清單選項可以是**免費試用版****或試用**產品。 |
-| **BYOL** | 使用商業市集增強解決方案的能見度和自動佈建能力，並個別完成財務交易。 BYOL 供應項目類型適用於內部部署至雲端的移轉。 清單選項 **立即取得**。
-| **交易** | 交易供應項目會透過商業市集銷售。 Microsoft 負責計費和收費。 清單選項 **立即取得**。|
+| **試用版** | 使用商業市集來增強曝光度，並且將佈建解決方案的試用體驗自動化，讓潛在使用者在購買之前，在一段有限的時間內免費使用您的 SaaS、IaaS 或 Microsoft 應用程式內體驗。 試用版發行選項的清單選項可以是 **免費試用版****或試用** 產品。 |
+| **BYOL** | 使用商業市集增強解決方案的能見度和自動佈建能力，並個別完成財務交易。 BYOL 供應項目類型適用於內部部署至雲端的移轉。 清單選項 **立即取得** 。
+| **交易** | 交易供應項目會透過商業市集銷售。 Microsoft 負責計費和收費。 清單選項 **立即取得** 。|
 
 > [!Note]
 > 當使用交易發佈選項時，請務必了解定價、計費、發票處理和付款考量，然後再選取供應項目類型與建立供應項目。 若要深入了解，請參閱[商業市集交易功能](./marketplace-commercial-transaction-capabilities-and-considerations.md)一文。

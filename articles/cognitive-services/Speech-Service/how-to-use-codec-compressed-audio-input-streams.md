@@ -12,18 +12,24 @@ ms.date: 03/30/2020
 ms.author: amishu
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-twenty-two
-ms.openlocfilehash: 4585538e552e73f8f7a4b7b105153a9d26eeb4c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d6a0388507d836050550a3a98255deabb826cde
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934086"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128315"
 ---
 # <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>搭配語音 SDK 使用編解碼器壓縮的音訊輸入
 
 語音服務 SDK **壓縮音訊輸入串流** API 提供一種方式，可使用或，將壓縮的音訊串流至語音服務 `PullStream` `PushStream` 。
 
-目前支援在 Windows 上進行 c #、c + +、JAVA 和 Python 的串流壓縮輸入音訊 (UWP 應用程式不支援) 和 Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7/8、CentOS 7/8) 。 Android 中的 JAVA 也支援此功能。
+平台 | 語言 | 支援的 GStreamer 版本
+| :--- | ---: | :---:
+Windows (不包括 UWP)   | C + +、c #、JAVA、Python | [1.15.1](https://gstreamer.freedesktop.org/data/pkg/windows/1.15.1/)
+Linux  | C + +、c #、JAVA、Python | [支援的 Linux 發行版本和目標架構](~/articles/cognitive-services/speech-service/speech-sdk.md)
+Android  | Java | [1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/)
+
+## <a name="speech-sdk-version-required-for-compressed-audio-input"></a>壓縮的音訊輸入需要語音 SDK 版本
 * RHEL 8 和 CentOS 8 需要語音 SDK 版本1.10.0 或更新版本
 * Windows 需要語音 SDK 版本1.11.0 或更新版本。
 
@@ -65,7 +71,7 @@ ms.locfileid: "88934086"
 [!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/python/examples.md)]
 ::: zone-end
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [瞭解如何辨識語音](quickstarts/speech-to-text-from-microphone.md)

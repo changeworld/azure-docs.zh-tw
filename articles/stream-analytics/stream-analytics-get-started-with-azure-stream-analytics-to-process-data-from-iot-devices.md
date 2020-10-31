@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/26/2019
-ms.openlocfilehash: a40f92e88d2d8e5ca253446b9c67ad30df538a5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 311aca139220622a0436d490e73a536c3fc898c9
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86043422"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129009"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>使用 Azure 串流分析處理即時 IoT 資料流程
 
@@ -44,13 +44,13 @@ Contoso 是一家工業自動化空間的公司，他們已完全自動化其製
 
 ## <a name="create-a-stream-analytics-job"></a>建立串流分析作業
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)中，從左側導覽功能表中選取 [ **+ 建立資源** ]。 然後，從**分析**中選取**串流分析作業**。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，從左側導覽功能表中選取 [ **+ 建立資源** ]。 然後，從 **分析** 中選取 **串流分析作業** 。
    
     ![建立新的串流分析作業](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
 
 1. 輸入唯一的工作名稱，並確認訂用帳戶為您作業適用的正確訂用帳戶。 建立新的資源群組，或從您的訂用帳戶中選取現有的資源群組。
 
-1. 選取作業的位置。 針對您的資源群組和所有資源使用相同的位置，以提高處理速度和降低成本。 進行設定之後，請選取 [ **建立**]。
+1. 選取作業的位置。 針對您的資源群組和所有資源使用相同的位置，以提高處理速度和降低成本。 進行設定之後，請選取 [ **建立** ]。
    
     ![建立新的串流分析作業詳細資料](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.png)
 
@@ -60,7 +60,7 @@ Contoso 是一家工業自動化空間的公司，他們已完全自動化其製
 從 GitHub 下載 [HelloWorldASA-InputStream.js](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json
 ) 。 然後，在 Azure 入口網站中，流覽至您的 Azure 串流分析作業。
 
-從左側功能表中選取 [**作業拓撲**] 下的 [**查詢**]。 然後選取 **[上傳範例輸入**]。 上傳檔案 `HelloWorldASA-InputStream.json` ，然後選取 **[確定]**。
+從左側功能表中選取 [ **作業拓撲** ] 下的 [ **查詢** ]。 然後選取 **[上傳範例輸入** ]。 上傳檔案 `HelloWorldASA-InputStream.json` ，然後選取 **[確定]** 。
 
 ![串流分析儀表板查詢圖格](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
@@ -125,7 +125,7 @@ HAVING Avg(temp)>100
 
 ![30 秒篩選查詢](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-10.png)
 
-您應該會看到只包含245個數據列的結果，以及平均溫度大於100的感應器名稱。 此查詢會依據 **dspl** 分組事件串流，dspl 是感應器名稱，而**輪轉視窗**為 30 秒。 時態性查詢必須陳述您需要時間的進度。 藉由使用 **TIMESTAMP BY** 子句，您已指定 **OUTPUTTIME** 資料行將時間與所有時態計算產生關聯。 如需詳細資訊，請參閱 [時間管理](https://docs.microsoft.com/stream-analytics-query/time-management-azure-stream-analytics) 和 [視窗化函數](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)。
+您應該會看到只包含245個數據列的結果，以及平均溫度大於100的感應器名稱。 此查詢會依據 **dspl** 分組事件串流，dspl 是感應器名稱，而 **輪轉視窗** 為 30 秒。 時態性查詢必須陳述您需要時間的進度。 藉由使用 **TIMESTAMP BY** 子句，您已指定 **OUTPUTTIME** 資料行將時間與所有時態計算產生關聯。 如需詳細資訊，請參閱 [時間管理](/stream-analytics-query/time-management-azure-stream-analytics) 和 [視窗化函數](/stream-analytics-query/windowing-azure-stream-analytics)。
 
 ### <a name="query-detect-absence-of-events"></a>查詢：測不存在的事件
 
@@ -148,9 +148,8 @@ WHERE t2.dspl IS NULL
 
 ![偵測不存在的事件](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-11.png)
 
-此處，我們對相同的資料串流使用 **LEFT OUTER** 聯結 (自我聯結)。 對於 **INNER** 聯結，只會在找到相符項目時傳回結果。  對於 **LEFT OUTER** 聯結，如果聯結左側的事件不相符，則會針對右側的所有資料行傳回具有 NULL 的資料列。 這項技術對於尋找不存在的事件很有用。 如需詳細資訊，請參閱 [聯結](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics)。
+此處，我們對相同的資料串流使用 **LEFT OUTER** 聯結 (自我聯結)。 對於 **INNER** 聯結，只會在找到相符項目時傳回結果。  對於 **LEFT OUTER** 聯結，如果聯結左側的事件不相符，則會針對右側的所有資料行傳回具有 NULL 的資料列。 這項技術對於尋找不存在的事件很有用。 如需詳細資訊，請參閱 [聯結](/stream-analytics-query/join-azure-stream-analytics)。
 
 ## <a name="conclusion"></a>結論
 
 本文的目的是要示範如何撰寫不同的串流分析查詢語言查詢，並在瀏覽器中查看結果。 但是，這只是為了讓您開始著手。 串流分析支援各種輸入和輸出，並甚至可以使用 Azure Machine Learning 中的函式，使其成為分析資料串流的健全工具。 如需如何撰寫查詢的詳細資訊，請閱讀有關[常見查詢模式](stream-analytics-stream-analytics-query-patterns.md)的文章。
-

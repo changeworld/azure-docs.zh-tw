@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: 24adbfe38a3d43a83307fb8726849f7c73def3f3
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ecbafe0d3f39b1bd6f7c494695ea17e067f0c79e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283889"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129268"
 ---
 ## <a name="generalize-the-image"></a>一般化映像
 
@@ -20,7 +20,7 @@ Azure Marketplace 中的所有映像通常都必須能夠重複使用。 若要�
 
 ### <a name="for-windows"></a>若為 Windows
 
-Windows 作業系統磁片會以 [sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview) 工具一般化。 如果您稍後更新或重新設定 OS，則必須再次執行 sysprep。
+Windows 作業系統磁片會以 [sysprep](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview) 工具一般化。 如果您稍後更新或重新設定 OS，則必須再次執行 sysprep。
 
 > [!WARNING]
 > 執行 sysprep 之後，請將 VM 關閉直到部署完成，因為更新可能會自動執行。 關閉動作可避免後續更新對作業系統或已安裝的服務進行執行個體特定變更。 如需執行 sysprep 的詳細資訊，請參閱[將 VHD 一般化的步驟](../../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep)。
@@ -41,12 +41,12 @@ Windows 作業系統磁片會以 [sysprep](https://docs.microsoft.com/windows-ha
 ### <a name="take-a-snapshot-of-the-vm-disk"></a>製作 VM 磁片的快照集
 
 1. 登入 [Azure 入口網站](https://ms.portal.azure.com/)。
-2. 從左上方開始，選取 [ **建立資源**]，然後搜尋並選取 [ **快照**集]。
-3. 在 [快照集] 分頁中，選取 [  **建立**]。
-4. 輸入快照集的 [名稱]****。
+2. 從左上方開始，選取 [ **建立資源** ]，然後搜尋並選取 [ **快照** 集]。
+3. 在 [快照集] 分頁中，選取 [  **建立** ]。
+4. 輸入快照集的 [名稱]  。
 5. 選取現有的資源群組，或輸入新的資源群組的名稱。
-6. 在 [來源磁碟]**** 中，選取要建立快照集的受控磁碟。
-7. 選取用來儲存快照集的 [帳戶類型]****。 除非需要存放在高效能的 SSD 上，否則請使用 [標準 HDD]****。
+6. 在 [來源磁碟]  中，選取要建立快照集的受控磁碟。
+7. 選取用來儲存快照集的 [帳戶類型]  。 除非需要存放在高效能的 SSD 上，否則請使用 [標準 HDD]  。
 8. 選取 [建立]。
 
 #### <a name="extract-the-vhd"></a>將 VHD 解壓縮

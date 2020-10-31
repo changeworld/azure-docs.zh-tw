@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: c84367a5e3ab57090f59196e8474c14cba87f32b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e90c023fa74711246c2e6e69eb576695e86a457
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250142"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128499"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>使用 Azure Functions 將 API 新增至 Azure 靜態 Web Apps 預覽版
 
@@ -33,7 +33,7 @@ ms.locfileid: "91250142"
 下列步驟示範如何建立新的存放庫，並將檔案複製到您的電腦。
 
 1. 請確定您已登入 GitHub，然後流覽至 https://github.com/staticwebdev/vanilla-basic/generate 以建立新的存放庫。
-1. 在 [存放庫名稱] 方塊中，輸入 **my-vanilla-api**。
+1. 在 [存放庫名稱] 方塊中，輸入 **my-vanilla-api** 。
 1. 按一下 [從範本建立存放庫]。
 
    :::image type="content" source="media/add-api/create-repository.png" alt-text="從 vanilla-basic 建立新的存放庫":::
@@ -63,10 +63,10 @@ ms.locfileid: "91250142"
 
 1. 依照提示提供下列資訊：
 
-    - _選取語言_：選擇 **JavaScript**
-    - _選取您的專案第一個函式的範本_：選擇 **HTTP 觸發程序**
-    - _提供_函式名稱：輸入 **GetMessage**
-    - _授權層級_選擇 [匿名]，讓任何人都能呼叫您的函式端點。
+    - _選取語言_ ：選擇 **JavaScript**
+    - _選取您的專案第一個函式的範本_ ：選擇 **HTTP 觸發程序**
+    - _提供_ 函式名稱：輸入 **GetMessage**
+    - _授權層級_ 選擇 [匿名]，讓任何人都能呼叫您的函式端點。
         - 若要了解授權層級，請參閱[授權金鑰](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)。
 
 Visual Studio Code 會產生具有 HTTP 觸發函式的 Azure Functions 專案。
@@ -90,7 +90,7 @@ Visual Studio Code 會產生具有 HTTP 觸發函式的 Azure Functions 專案�
 
 接下來，您將變更函式， `GetMessage` 以將訊息傳回至前端。
 
-1. `GetMessage`使用下列程式碼更新_Api/GetMessage/index.js_下的函式。
+1. `GetMessage`使用下列程式碼更新 _Api/GetMessage/index.js_ 下的函式。
 
     ```javascript
     module.exports = async function (context, req) {
@@ -195,7 +195,7 @@ Visual Studio Code 可與 [Azure Functions Core Tools](../azure-functions/functi
 
 1. 按 **F5** 以啟動 API 專案。
 
-1. 按 **F1** 鍵，然後選擇 [Live Server：**開啟即時伺服器]** ，以啟動即時伺服器。
+1. 按 **F1** 鍵，然後選擇 [Live Server： **開啟即時伺服器]** ，以啟動即時伺服器。
 
     您現在應該會在網頁中看到 API 訊息。
 
@@ -214,21 +214,21 @@ Visual Studio Code 可與 [Azure Functions Core Tools](../azure-functions/functi
 1. 輸入 **Git：全部認可**
 1. 新增認可訊息，然後按 **enter**
 1. 按下 **F1**
-1. 在**Git： push**中輸入，然後按**enter**鍵
+1. 在 **Git： push** 中輸入，然後按 **enter** 鍵
 
 ## <a name="create-a-static-web-app"></a>建立靜態 Web 應用程式
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)
 1. 按一下 [建立資源]
 1. 搜尋 **靜態 Web 應用程式**
-1. 按一下 [ **靜態 Web 應用程式 (預覽]) **
+1. 按一下 [ **靜態 Web 應用程式 (預覽])**
 1. 按一下 [建立] 
 
 接下來，新增應用程式特定的設定。
 
 1. 選取您的 _Azure 訂用帳戶_
 1. 選取或建立新的 [資源群組]
-1. 將應用程式命名為 **my-vanilla-api**。
+1. 將應用程式命名為 **my-vanilla-api** 。
 1. 選取最靠近您的 [區域]
 1. 選取 [免費] _SKU_
 1. 按一下 [使用 GitHub 登入] 按鈕，並向 GitHub 進行驗證
@@ -239,8 +239,8 @@ Visual Studio Code 可與 [Azure Functions Core Tools](../azure-functions/functi
 
 接下來，新增下列組建詳細資料。
 
-1. 輸入 **/** _應用程式位置_。
-1. 在 [API 位置] 方塊中，輸入 **api**。
+1. 輸入 **/** _應用程式位置_ 。
+1. 在 [API 位置] 方塊中，輸入 **api** 。
 1. 清除 [應用程式成品位置] 的預設值，並將此方塊保留空白。
 1. 按一下 [檢閱 + 建立]。
 1. 按一下 [建立] 按鈕
@@ -253,7 +253,7 @@ Visual Studio Code 可與 [Azure Functions Core Tools](../azure-functions/functi
 
     :::image type="content" source="media/add-api/github-action-flag.png" alt-text="從 vanilla-basic 建立新的存放庫":::
 
-1. 部署完成後，ou 可以按一下 [_總覽_] 頁面上顯示的_URL_連結，以流覽至 web 應用程式。
+1. 部署完成後，ou 可以按一下 [ _總覽_ ] 頁面上顯示的 _URL_ 連結，以流覽至 web 應用程式。
 
     :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="從 vanilla-basic 建立新的存放庫":::
 
@@ -262,7 +262,7 @@ Visual Studio Code 可與 [Azure Functions Core Tools](../azure-functions/functi
 如果您不想要保留此應用程式以供進一步使用，可以使用下列步驟來刪除 Azure 靜態 Web 應用程式及其相關資源。
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)
-1. 在頂端的搜尋列中，輸入**資源群組**
+1. 在頂端的搜尋列中，輸入 **資源群組**
 1. 按一下 [資源群組]
 1. 選取 **myResourceGroup**
 1. 在 [myResourceGroup] 頁面上，確定所列出的資源是您想要刪除的項目。

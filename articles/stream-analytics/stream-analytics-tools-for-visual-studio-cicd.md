@@ -7,26 +7,26 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 175abe54ce5476bece309bbfaf7858cd2e214f52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c05db2d9ba184da89665a236994c851355cc2644
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187654"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127428"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>使用 Azure 串流分析 CI/CD NuGet 套件進行整合和開發 
 本文說明如何使用 Azure 串流分析 CI/CD NuGet 套件來設定持續整合和部署程式。
 
-使用 2.3.0000.0 版或更新版本的[適用於 Visual Studio 的串流分析工具](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio)來取得 MSBuild 支援。
+使用 2.3.0000.0 版或更新版本的[適用於 Visual Studio 的串流分析工具](./stream-analytics-quick-create-vs.md)來取得 MSBuild 支援。
 
 Nuget 套件可供使用：[Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/)。 它提供 MSBuild、本機執行和部署工具，可支援 [串流分析 Visual Studio 專案](stream-analytics-vs-tools.md)的持續整合和部署程式。 
 > [!NOTE]
 > NuGet 套件僅能搭配 2.3.0000.0 或更新版本之適用於 Visual Studio 的串流分析工具使用。 如果您有使用舊版 Visual Studio 工具建立的專案，請直接使用 2.3.0000.0 或更新版本加以開啟並儲存。 接著啟用新功能。 
 
-如需詳細資訊，請參閱[適用於 Visual Studio 的串流分析工具](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio)。
+如需詳細資訊，請參閱[適用於 Visual Studio 的串流分析工具](./stream-analytics-quick-create-vs.md)。
 
 ## <a name="msbuild"></a>MSBuild
-與標準 Visual Studio MSBuild 體驗類似，若要建置專案，您有兩個選項。 您可以使用滑鼠右鍵按一下專案，然後選擇 [建置]****。 您也可以從命令列中使用 NuGet 套件中的 **MSBuild**。
+與標準 Visual Studio MSBuild 體驗類似，若要建置專案，您有兩個選項。 您可以使用滑鼠右鍵按一下專案，然後選擇 [建置]  。 您也可以從命令列中使用 NuGet 套件中的 **MSBuild** 。
 ```
 ./build/msbuild /t:build [Your Project Full Path] /p:CompilerTaskAssemblyFile=Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll  /p:ASATargetsFilePath="[NuGet Package Local Path]\build\StreamAnalytics.targets"
 
@@ -45,14 +45,14 @@ Nuget 套件可供使用：[Microsoft.Azure.Stream Analytics.CICD](https://www.n
 parameters.json 檔案中的預設參數來自 Visual Studio 專案中的設定。 如果您想要部署到其他環境，請據以取代參數。
 
 > [!NOTE]
-> 對於所有認證，預設值都會設為 null。 部署至雲端之前，「必須」**** 設定這些值。
+> 對於所有認證，預設值都會設為 null。 部署至雲端之前，「必須」  設定這些值。
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {
       "value": null
     },
 ```
-深入了解如何[使用 Resource Manager 範本檔案和 Azure PowerShell 部署](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)。 深入了解如何[在 Resource Manager 範本中使用物件作為參數](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters)。
+深入了解如何[使用 Resource Manager 範本檔案和 Azure PowerShell 部署](../azure-resource-manager/templates/deploy-powershell.md)。 深入了解如何[在 Resource Manager 範本中使用物件作為參數](/azure/architecture/building-blocks/extending-templates/objects-as-parameters)。
 
 若要使用 Azure Data Lake Store Gen1 的受控識別作為輸出接收端，您必須在部署至 Azure 之前，使用 PowerShell 提供服務主體的存取權。 深入了解如何[使用 Resource Manager 範本部署具有受控識別的 ADLS Gen1](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment)。
 
@@ -90,7 +90,7 @@ arm -JobTemplate <templateFilePath> -JobParameterFile <jobParameterFilePath> [-O
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [快速入門：在 Visual Studio 中建立 Azure 串流分析雲端作業](stream-analytics-quick-create-vs.md)
 * [使用 Visual Studio 在本機測試串流分析查詢](stream-analytics-vs-tools-local-run.md)

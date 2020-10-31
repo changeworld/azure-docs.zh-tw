@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
 ms.date: 10/19/2020
-ms.openlocfilehash: b927e90c60110d6922649b75b6549528a2a9a40f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ead367568762d4b76de7164feb56b7a31cd53e0d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283877"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129111"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>如何產生 VM 映射的 SAS URI
 
@@ -34,12 +34,12 @@ ms.locfileid: "92283877"
 
 ### <a name="using-tool-1-azure-storage-explorer"></a>使用工具1： Azure 儲存體總管
 
-1. 移至您的 **儲存體帳戶**。
-1. 開啟 **儲存體總管**。
+1. 移至您的 **儲存體帳戶** 。
+1. 開啟 **儲存體總管** 。
 
     :::image type="content" source="media/create-vm/storge-account-explorer.png" alt-text="[儲存體帳戶] 視窗。":::
 
-3. 在 **容器**中，以滑鼠右鍵按一下 VHD 檔案，然後選取 [ **取得共用存取**簽章]。
+3. 在 **容器** 中，以滑鼠右鍵按一下 VHD 檔案，然後選取 [ **取得共用存取** 簽章]。
 4. 在 [ **共用存取** 簽章] 對話方塊中，完成下欄欄位：
 
     1. 開始時間 – VHD 存取的權限開始日期。 提供目前日期前一天的日期。
@@ -59,7 +59,7 @@ ms.locfileid: "92283877"
 
 ### <a name="using-tool-2-azure-cli"></a>使用工具2： Azure CLI
 
-1. 下載並安裝 [MICROSOFT AZURE CL](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)I。 版本可供 Windows、macOS 和 Linux 的各種發佈。
+1. 下載並安裝 [MICROSOFT AZURE CL](/cli/azure/install-azure-cli)I。 版本可供 Windows、macOS 和 Linux 的各種發佈。
 2. 建立 PowerShell 檔案 (.ps1 副檔名)、複製下列程式碼，然後將其儲存到本機。
 
     ```JSON
@@ -82,7 +82,7 @@ ms.locfileid: "92283877"
 2. 使用下列其中一種方法，以系統管理權限執行此指令碼，以建立適用於容器層級存取的 SAS 連接字串：
 
     - 從主控台執行指令碼。 在 Windows 中，以滑鼠右鍵按一下指令碼，然後選取 [以系統管理員身分執行]。
-    - 從 PowerShell 指令碼編輯器 (例如 [Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/components/ise/introducing-the-windows-powershell-ise)) 執行指令碼。 此畫面會顯示如何在此編輯器中建立 SAS 連接字串：
+    - 從 PowerShell 指令碼編輯器 (例如 [Windows PowerShell ISE](/powershell/scripting/components/ise/introducing-the-windows-powershell-ise)) 執行指令碼。 此畫面會顯示如何在此編輯器中建立 SAS 連接字串：
 
     [![在 PowerShell 編輯器中建立 SAS 連接字串](media/vm/create-sas-uri-power-shell-ise.png)](media/vm/create-sas-uri-power-shell-ise.png#lightbox)
 

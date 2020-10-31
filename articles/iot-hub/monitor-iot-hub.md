@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: 577ec9e01310787dacb45a03e1efae128cbab872
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 71a7041ec02da9a85de411f1113814311c21cd4f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078215"
+ms.locfileid: "93128874"
 ---
 # <a name="monitoring-azure-iot-hub"></a>監視 Azure IoT 中樞
 
@@ -23,7 +23,9 @@ ms.locfileid: "93078215"
 
 :::image type="content" source="media/monitor-iot-hub/overview-portal.png" alt-text="IoT 中樞總覽頁面上的預設度量圖表。":::
 
-這項資訊很有用，但只代表可供 IoT 中樞使用的少量監視資料。 某些監視資料會自動收集，並且可在您建立 IoT 中樞時立即進行分析。 您可使用一些設定來啟用其他類型的資料收集。
+請注意，訊息計數值可能會延遲1分鐘，因此，基於與 IoT 中樞服務基礎結構有關的原因，該值有時可能會在重新整理時于較高和較低的值之間彈跳。 此計數器對於最後一分鐘所累積的值應該只是不正確的。
+
+顯示在 [總覽] 窗格中的資訊很有用，但只代表適用于 IoT 中樞的少量監視資料。 某些監視資料會自動收集，並且可在您建立 IoT 中樞時立即進行分析。 您可使用一些設定來啟用其他類型的資料收集。
 
 ## <a name="what-is-azure-monitor"></a>Azure 監視器是什麼？
 
@@ -290,7 +292,7 @@ class Program
 
 根據平臺計量建立警示規則時，請注意，針對以計數單位收集的 IoT 中樞平臺計量，某些匯總可能無法使用或無法使用。 若要深入瞭解，請參閱 [監視 Azure IoT 中樞資料參考中支援的](monitor-iot-hub-reference.md#supported-aggregations)匯總。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 如需 [服務名稱] 所建立的計量、記錄和其他重要值的參考，請參閱 [監視 Azure IoT 中樞資料參考](monitor-iot-hub-reference.md) 。
 

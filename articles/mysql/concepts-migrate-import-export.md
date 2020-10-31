@@ -5,17 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/22/2020
-ms.openlocfilehash: 6d0a29d8ef8123eafd6a1616a24003c1e36e6e59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/30/2020
+ms.openlocfilehash: 1b4959cbf082a589c90034f48d597907c9b7e6cc
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905932"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128924"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>使用匯入和匯出移轉您的 MySQL 資料庫
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 本文說明使用 MySQL Workbench 將資料匯入與匯出適用於 MySQL 伺服器的 Azure 資料庫的兩個常見方式。
+
+您也可以參閱 [資料庫移轉指南](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide) ，以取得有關將資料庫移轉至適用於 MySQL 的 Azure 資料庫的詳細資訊和使用案例。 本指南提供將 MySQL 遷移至 Azure 的成功規劃和執行的指引。
 
 ## <a name="before-you-begin"></a>開始之前
 若要逐步執行本作法指南，您需要︰
@@ -45,7 +47,7 @@ ms.locfileid: "90905932"
 - 當您從 MySQL 資料庫以外的外部資料來源移轉資料時，建立一般檔案，並且使用 [mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html) 來匯入它們。
 
 > [!Important]
-> 單一伺服器和彈性的伺服器 **僅支援 InnoDB 儲存引擎**。 將資料載入至適用於 MySQL 的 Azure 資料庫時，請確定資料庫中的所有資料表都使用 InnoDB 儲存引擎。
+> 單一伺服器和彈性的伺服器 **僅支援 InnoDB 儲存引擎** 。 將資料載入至適用於 MySQL 的 Azure 資料庫時，請確定資料庫中的所有資料表都使用 InnoDB 儲存引擎。
 > 如果您的源資料庫使用其他儲存引擎，請在遷移資料庫之前轉換成 InnoDB 引擎。 例如，如果您有使用 MyISAM 引擎的 WordPress 或 Web 應用程式，先將資料移轉至 InnoDB 資料表來轉換資料表。 使用子句 `ENGINE=INNODB` 以設定引擎來建立資料表，然後在移轉之前將資料傳送到相容的資料表。
 
    ```sql
@@ -72,47 +74,47 @@ ms.locfileid: "90905932"
 
 資料表資料的精靈支援使用 CSV 和 JSON 檔案的匯入和匯出作業。 它們包含數個設定選項，例如分隔符號、資料行選取和編碼選取項目。 您可以對本機或遠端連線的 MySQL 伺服器執行每個精靈。 匯入動作包括資料表、資料行和類型對應。
 
-您可以從物件瀏覽器的快顯功能表以滑鼠右鍵按一下資料表，來存取這些精靈。 然後選擇 [資料表資料匯出精靈]**** 或 [資料表資料匯入精靈]****。
+您可以從物件瀏覽器的快顯功能表以滑鼠右鍵按一下資料表，來存取這些精靈。 然後選擇 [資料表資料匯出精靈]  或 [資料表資料匯入精靈]  。
 
 #### <a name="table-data-export-wizard"></a>資料表資料匯出精靈
 下列範例會將資料表匯出至 CSV 檔案：
 1. 以滑鼠右鍵按一下要匯出之資料庫的資料表。
-2. 選取 [資料表資料匯出精靈]****。 選取要匯出的資料行、資料列位移 (如果有的話) 和計數 (如果有的話)。
-3. 在 [選取要匯出的資料]**** 分頁上，按 [下一步]****。 選取檔案路徑、CSV 或 JSON 檔案類型。 同時選取行分隔符號、字串封入方法和欄位分隔符號。
-4. 在 [選取輸出檔案位置]**** 分頁上，按 [下一步]****。
-5. 在 [匯出資料]**** 分頁上，按 [下一步]****。
+2. 選取 [資料表資料匯出精靈]  。 選取要匯出的資料行、資料列位移 (如果有的話) 和計數 (如果有的話)。
+3. 在 [選取要匯出的資料]  分頁上，按 [下一步]  。 選取檔案路徑、CSV 或 JSON 檔案類型。 同時選取行分隔符號、字串封入方法和欄位分隔符號。
+4. 在 [選取輸出檔案位置]  分頁上，按 [下一步]  。
+5. 在 [匯出資料]  分頁上，按 [下一步]  。
 
 #### <a name="table-data-import-wizard"></a>資料表資料匯入精靈
 下列範例會從 CSV 檔案匯入資料表：
 1. 以滑鼠右鍵按一下要匯入之資料庫的資料表。
-2. 瀏覽並選取要匯入的 CSV 檔案，然後按 [下一步]****。
-3. 選取目的地資料表 (新的或現有的)、選取或取消選取 [匯入前截斷資料表]**** 核取方塊。 按一下 [下一步]。
-4. 選取編碼方式和要匯入的資料行，然後按 [下一步]****。
-5. 在 [匯入資料]**** 分頁上，按 [下一步]****。 精靈會據以匯入資料。
+2. 瀏覽並選取要匯入的 CSV 檔案，然後按 [下一步]  。
+3. 選取目的地資料表 (新的或現有的)、選取或取消選取 [匯入前截斷資料表]  核取方塊。 按 [下一步]  。
+4. 選取編碼方式和要匯入的資料行，然後按 [下一步]  。
+5. 在 [匯入資料]  分頁上，按 [下一步]  。 精靈會據以匯入資料。
 
 ### <a name="sql-data-export-and-import-wizards-from-the-navigator-pane"></a>從導覽器窗格存取 SQL 資料匯出和匯入精靈
-使用精靈，匯出或匯入從 MySQL Workbench 或 mysqldump 命令產生的 SQL。 從 [導覽器]**** 窗格或從主功能表選取 [伺服器]****，來存取這些精靈。 然後選取 [資料匯出]**** 或 [資料匯入]****。
+使用精靈，匯出或匯入從 MySQL Workbench 或 mysqldump 命令產生的 SQL。 從 [導覽器]  窗格或從主功能表選取 [伺服器]  ，來存取這些精靈。 然後選取 [資料匯出]  或 [資料匯入]  。
 
 #### <a name="data-export"></a>資料匯出
 :::image type="content" source="./media/concepts-migrate-import-export/p2.png" alt-text="在 Azure 入口網站中尋找連線資訊":::
 
-您可以使用 [資料匯出]**** 索引標籤，匯出您的 MySQL 資料。
+您可以使用 [資料匯出]  索引標籤，匯出您的 MySQL 資料。
 1. 選取每個您想要匯出的結構描述、選擇性地從每個結構描述中選取特定的結構描述物件/資料表，然後產生匯出。 設定選項包含匯出到專案資料夾或自封式 SQL 檔案、傾印儲存的常式和事件，或略過資料表資料。
 
-   或者，在 SQL 編輯器中，使用 [匯出結果集]****，將特定的結果集匯出為另一種格式，例如 CSV、JSON、HTML 和 XML。
+   或者，在 SQL 編輯器中，使用 [匯出結果集]  ，將特定的結果集匯出為另一種格式，例如 CSV、JSON、HTML 和 XML。
 3. 選取要匯出的資料庫物件，並設定相關選項。
-4. 按一下 [重新整理]**** 以載入目前的物件。
-5. 選擇性開啟 [進階選項]**** 索引標籤，以調整匯出作業。 例如，新增資料表鎖定、使用 replace 而不是 insert 陳述式，以及使用反引號字元將識別項括起來。
-6. 按一下 [開始匯出]**** 開始匯出程序。
+4. 按一下 [重新整理]  以載入目前的物件。
+5. 選擇性開啟 [進階選項]  索引標籤，以調整匯出作業。 例如，新增資料表鎖定、使用 replace 而不是 insert 陳述式，以及使用反引號字元將識別項括起來。
+6. 按一下 [開始匯出]  開始匯出程序。
 
 
 #### <a name="data-import"></a>資料匯入
 :::image type="content" source="./media/concepts-migrate-import-export/p3.png" alt-text="在 Azure 入口網站中尋找連線資訊":::
 
-您可以使用 [資料匯入]**** 索引標籤，匯入或還原來自資料匯出作業或是來自 mysqldump 命令的已匯出資料。
-1. 選擇專案資料夾或自封式 SQL 檔案、選擇將匯入的結構描述，或選擇 [新增]**** 來定義新的結構描述。
-2. 按一下 [開始匯入]**** 開始匯入程序。
+您可以使用 [資料匯入]  索引標籤，匯入或還原來自資料匯出作業或是來自 mysqldump 命令的已匯出資料。
+1. 選擇專案資料夾或自封式 SQL 檔案、選擇將匯入的結構描述，或選擇 [新增]  來定義新的結構描述。
+2. 按一下 [開始匯入]  開始匯入程序。
 
 ## <a name="next-steps"></a>後續步驟
 - 至於另一個移轉方法，請參閱[在適用於 MySQL 的 Azure 資料庫中使用傾印和還原來移轉 MySQL 資料庫](concepts-migrate-dump-restore.md)。
-- 若要深入了解如何將資料庫移轉至適用於 MySQL 的 Azure 資料庫，請參閱[資料庫移轉指南](https://aka.ms/datamigration)。
+- 若要深入了解如何將資料庫移轉至適用於 MySQL 的 Azure 資料庫，請參閱[資料庫移轉指南](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide)。

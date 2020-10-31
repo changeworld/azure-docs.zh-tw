@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: 467b8506eb0cafc61731a69804c70b8080ab21c2
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 649abf6d07a95c7f20f6416f7d3155f8d115782b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042451"
+ms.locfileid: "93127564"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>將資料作為輸入串流處理至串流分析中
 
@@ -38,7 +38,7 @@ ms.locfileid: "93042451"
 
 Azure 事件中樞提供可高度擴充的發佈-訂閱事件投資人。 事件中樞每秒可收集數百萬個事件，因此其可供處理和分析連線的裝置和應用程式所產生大量資料。 事件中樞和串流分析搭配在一起，可提供即時分析所需的端對端解決方案。 事件中樞可讓您即時將事件饋送至 Azure，而串流分析作業則可即時處理這些事件。 例如，您可以將網頁點擊、感應器讀數或線上記錄事件傳送至事件中樞。 然後，您可以建立串流分析作業，將事件中樞當作輸入資料流來即時篩選、彙總和相互關聯。
 
-`EventEnqueuedUtcTime` 是事件在事件中樞的抵達時間戳記，也是事件從事件中樞到達串流分析的預設時間戳記。 若要使用事件裝載中的時間戳記，將資料當作資料流處理，您必須使用 [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) 關鍵字。
+`EventEnqueuedUtcTime` 是事件在事件中樞的抵達時間戳記，也是事件從事件中樞到達串流分析的預設時間戳記。 若要使用事件裝載中的時間戳記，將資料當作資料流處理，您必須使用 [TIMESTAMP BY](/stream-analytics-query/timestamp-by-azure-stream-analytics) 關鍵字。
 
 ### <a name="event-hubs-consumer-groups"></a>事件中樞取用者群組
 
@@ -56,7 +56,7 @@ Azure 事件中樞提供可高度擴充的發佈-訂閱事件投資人。 事件
 | **事件中樞名稱** | 作為輸入的事件中樞名稱。 |
 | **事件中樞原則名稱** | 支援存取事件中樞的共用存取原則。 每一個共用存取原則都會有名稱、權限 (由您設定) 和存取金鑰。 此選項會自動填入，除非您選取手動提供事件中樞設定的選項。|
 | **事件中樞取用者群組** (建議使用) | 強烈建議您為每一個串流分析作業使用不同的取用者群組。 此字串可識別要用來從事件中樞擷取資料的取用者群組。 若未指定取用者群組，串流分析作業會使用 $Default 取用者群組。  |
-| **分割區索引鍵** | 這是選擇性欄位，只有當您的作業設定為使用 [相容性層級](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) 1.2 或更高版本時，才能使用此欄位。 如果您的輸入是依屬性進行分割，您可以在這裡加入這個屬性的名稱。 如果您的查詢包含這個屬性的 PARTITION BY 或 GROUP BY 子句，就會使用這項功能來改善查詢的效能。 如果此作業使用相容性層級1.2 或更高版本，此欄位預設為 "PartitionId"。 |
+| **分割區索引鍵** | 這是選擇性欄位，只有當您的作業設定為使用 [相容性層級](./stream-analytics-compatibility-level.md) 1.2 或更高版本時，才能使用此欄位。 如果您的輸入是依屬性進行分割，您可以在這裡加入這個屬性的名稱。 如果您的查詢包含這個屬性的 PARTITION BY 或 GROUP BY 子句，就會使用這項功能來改善查詢的效能。 如果此作業使用相容性層級1.2 或更高版本，此欄位預設為 "PartitionId"。 |
 | **事件序列化格式** | 傳入資料流的序列化格式 (JSON、CSV、Avro 或[其他 (Protobuf、XML、專用...)](custom-deserializer.md))。  確認 JSON 格式與規格一致，並且不包含以 0 開頭的十進位數字。 |
 | **編碼方式** | UTF-8 是目前唯一支援的編碼格式。 |
 | **事件壓縮類型** | 用來讀取內送資料流的壓縮類型，例如無 (預設值)、GZip 或 Deflate。 |
@@ -80,14 +80,14 @@ FROM Input
 ```
 
 > [!NOTE]
-> 將事件中樞作為 IoT 中樞路由的端點時，您可以使用 [GetMetadataPropertyValue 函式](https://docs.microsoft.com/stream-analytics-query/getmetadatapropertyvalue)存取 IoT 中樞中繼資料。
+> 將事件中樞作為 IoT 中樞路由的端點時，您可以使用 [GetMetadataPropertyValue 函式](/stream-analytics-query/getmetadatapropertyvalue)存取 IoT 中樞中繼資料。
 > 
 
 ## <a name="stream-data-from-iot-hub"></a>來自 IoT 中樞的串流資料
 
 Azure IoT 中樞是可高度調整的發佈/訂閱事件擷取器，已針對 IoT 案例最佳化。
 
-在串流分析中，來自 IoT 中樞之事件的預設時間戳記是事件抵達 IoT 中樞的時間戳記，也就是 `EventEnqueuedUtcTime`。 若要使用事件裝載中的時間戳記，將資料當作資料流處理，您必須使用 [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) 關鍵字。
+在串流分析中，來自 IoT 中樞之事件的預設時間戳記是事件抵達 IoT 中樞的時間戳記，也就是 `EventEnqueuedUtcTime`。 若要使用事件裝載中的時間戳記，將資料當作資料流處理，您必須使用 [TIMESTAMP BY](/stream-analytics-query/timestamp-by-azure-stream-analytics) 關鍵字。
 
 ### <a name="iot-hub-consumer-groups"></a>IoT 中樞取用者群組
 
@@ -106,7 +106,7 @@ Azure IoT 中樞是可高度調整的發佈/訂閱事件擷取器，已針對 Io
 | **共用存取原則名稱** | 支援存取 IoT 中樞的共用存取原則。 每一個共用存取原則都會有名稱、權限 (由您設定) 和存取金鑰。 |
 | **共用存取原則金鑰** | 用來授與 IoT 中樞存取權的共用存取金鑰。  此選項會自動填入，除非您選取手動提供 IoT 中樞設定的選項。 |
 | **取用者群組** | 強烈建議讓每個串流分析作業使用不同的取用者群組。 用來從 IoT 中樞擷取資料的取用者群組。 串流分析會使用 $Default 取用者群組，除非您另有指定。  |
-| **分割區索引鍵** | 這是選擇性欄位，只有當您的作業設定為使用 [相容性層級](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) 1.2 或更高版本時，才能使用此欄位。 如果您的輸入是依屬性進行分割，您可以在這裡加入這個屬性的名稱。 如果您的查詢包含這個屬性的 PARTITION BY 或 GROUP BY 子句，就會使用這項功能來改善查詢的效能。 如果此作業使用相容性層級1.2 或更高版本，此欄位預設為 "PartitionId"。 |
+| **分割區索引鍵** | 這是選擇性欄位，只有當您的作業設定為使用 [相容性層級](./stream-analytics-compatibility-level.md) 1.2 或更高版本時，才能使用此欄位。 如果您的輸入是依屬性進行分割，您可以在這裡加入這個屬性的名稱。 如果您的查詢包含這個屬性的 PARTITION BY 或 GROUP BY 子句，就會使用這項功能來改善查詢的效能。 如果此作業使用相容性層級1.2 或更高版本，此欄位預設為 "PartitionId"。 |
 | **事件序列化格式** | 傳入資料流的序列化格式 (JSON、CSV、Avro 或[其他 (Protobuf、XML、專用...)](custom-deserializer.md))。  確認 JSON 格式與規格一致，並且不包含以 0 開頭的十進位數字。 |
 | **編碼方式** | UTF-8 是目前唯一支援的編碼格式。 |
 | **事件壓縮類型** | 用來讀取內送資料流的壓縮類型，例如無 (預設值)、GZip 或 Deflate。 |
@@ -137,7 +137,7 @@ Azure IoT 中樞是可高度調整的發佈/訂閱事件擷取器，已針對 Io
 
 如果在 13:00 使用 [現在] 來啟動 Azure 串流分析作業，然後在 13:01 將 blob 上傳至儲存體帳戶容器，則 Azure 串流分析會選取該 blob。 指派給每個 blob 的時間戳記只會依據 `BlobLastModifiedTime`。 blob 所在的資料夾與指派的時間戳記無關。 例如，如果有一個 blob *2019/10-01/00/b1.txt* ，其 `BlobLastModifiedTime` 為 2019-11-11，則指派給此 blob 的時間戳記為 2019-11-11。
 
-若要使用事件裝載中的時間戳記，將資料當作資料流處理，您必須使用 [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) 關鍵字。 如果 Blob 檔案可供使用，串流分析作業會從 Azure Blob 儲存體提取資料，或每秒 ADLS Gen2 輸入。 如果 Blob 檔案無法使用，則會執行時間延遲上限為 90 秒的指數輪詢。
+若要使用事件裝載中的時間戳記，將資料當作資料流處理，您必須使用 [TIMESTAMP BY](/stream-analytics-query/stream-analytics-query-language-reference) 關鍵字。 如果 Blob 檔案可供使用，串流分析作業會從 Azure Blob 儲存體提取資料，或每秒 ADLS Gen2 輸入。 如果 Blob 檔案無法使用，則會執行時間延遲上限為 90 秒的指數輪詢。
 
 CSV 格式的輸入需要以標頭資料列來定義資料集的欄位，且所有標頭資料列欄位都必須是唯一的。
 
@@ -157,10 +157,10 @@ CSV 格式的輸入需要以標頭資料列來定義資料集的欄位，且所�
 | **儲存體帳戶** | Blob 檔案所在的儲存體帳戶名稱。 |
 | **儲存體帳戶金鑰** | 與儲存體帳戶相關聯的密碼金鑰。 此選項會自動填入，除非您選取手動提供設定的選項。 |
 | **容器** | 容器提供 blob 的邏輯群組。 您可以選擇 **使用現有的** 容器，或選擇 **新建** 以使用新建立的容器。|
-| **路徑模式** (選用) | 用來在指定的容器中找出 blob 的檔案路徑。 如果您想要從容器的根目錄讀取 blob，請勿設定路徑模式。 在該路徑內，您可以指定下列三個變數的一個或多個執行個體：`{date}`、`{time}` 或 `{partition}`<br/><br/>範例 1：`cluster1/logs/{date}/{time}/{partition}`<br/><br/>範例 2：`cluster1/logs/{date}`<br/><br/>`*` 字元不是路徑前置詞允許的值。 僅允許有效的 <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure blob 字元</a>。 請勿包含容器名稱或檔案名稱。 |
+| **路徑模式** (選用) | 用來在指定的容器中找出 blob 的檔案路徑。 如果您想要從容器的根目錄讀取 blob，請勿設定路徑模式。 在該路徑內，您可以指定下列三個變數的一個或多個執行個體：`{date}`、`{time}` 或 `{partition}`<br/><br/>範例 1：`cluster1/logs/{date}/{time}/{partition}`<br/><br/>範例 2：`cluster1/logs/{date}`<br/><br/>`*` 字元不是路徑前置詞允許的值。 僅允許有效的 <a HREF="/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata">Azure blob 字元</a>。 請勿包含容器名稱或檔案名稱。 |
 | **日期格式** (選用) | 在路徑中使用日期變數時，用來組織檔案的日期格式。 範例： `YYYY/MM/DD` <br/><br/> 當 blob 輸入在其路徑中有 `{date}` 或 `{time}` 時，則會以遞增的時間順序來查看資料夾。|
 | **時間格式** (選用) |  在路徑中使用時間變數時，用來組織檔案的時間格式。 目前唯一支援的值為 `HH` (表示小時)。 |
-| **分割區索引鍵** | 這是選擇性欄位，只有當您的作業設定為使用 [相容性層級](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) 1.2 或更高版本時，才能使用此欄位。 如果您的輸入是依屬性進行分割，您可以在這裡加入這個屬性的名稱。 如果您的查詢包含這個屬性的 PARTITION BY 或 GROUP BY 子句，就會使用這項功能來改善查詢的效能。 如果此作業使用相容性層級1.2 或更高版本，此欄位預設為 "PartitionId"。 |
+| **分割區索引鍵** | 這是選擇性欄位，只有當您的作業設定為使用 [相容性層級](./stream-analytics-compatibility-level.md) 1.2 或更高版本時，才能使用此欄位。 如果您的輸入是依屬性進行分割，您可以在這裡加入這個屬性的名稱。 如果您的查詢包含這個屬性的 PARTITION BY 或 GROUP BY 子句，就會使用這項功能來改善查詢的效能。 如果此作業使用相容性層級1.2 或更高版本，此欄位預設為 "PartitionId"。 |
 | **輸入磁碟分割的計數** | 只有當路徑模式中有 {partition} 時，此欄位才會出現。 這個屬性的值是整數 >= 1。 在 pathPattern 中出現 {partition} 的任何地方，將會使用介於0和這個欄位1值之間的數位-1。 |
 | **事件序列化格式** | 傳入資料流的序列化格式 (JSON、CSV、Avro 或[其他 (Protobuf、XML、專用...)](custom-deserializer.md))。  確認 JSON 格式與規格一致，並且不包含以 0 開頭的十進位數字。 |
 | **編碼方式** | 對於 CSV 和 JSON 而言，UTF-8 是目前唯一支援的編碼格式。 |
@@ -194,5 +194,5 @@ FROM Input
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

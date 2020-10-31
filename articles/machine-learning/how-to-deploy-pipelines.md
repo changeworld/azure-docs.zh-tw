@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 46a5f4036be2d670689f7e936a31dc63e0690ddc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de2b12bca10382d7e885626222fe463af27f9953
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302378"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128770"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>發佈和追蹤機器學習管線
 
@@ -26,7 +26,7 @@ ms.locfileid: "91302378"
 
 機器學習管線是機器學習工作的可重複使用工作流程。 管線的其中一個優點是會增加共同作業。 您也可以在使用新版本時，讓客戶使用目前的模型，來為管線進行版本處理。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 建立 [Azure Machine Learning 工作區](how-to-manage-workspace.md) 以保存您的所有管線資源
 
@@ -95,9 +95,148 @@ response = requests.post(published_pipeline1.endpoint,
 | `DataSetDefinitionValueAssignments` | 用於變更資料集而不需要重新定型的字典 (請參閱下面的討論)  | 
 | `DataPathAssignments` | 用於變更 datapaths 而不需要重新定型的字典 (請參閱以下討論)  | 
 
+### <a name="run-a-published-pipeline-using-c"></a>使用 C 執行已發佈的管線# 
+
+下列程式碼示範如何以非同步方式從 c # 呼叫管線。 部分程式碼片段只會顯示呼叫結構，而不是 Microsoft 範例的一部分。 它不會顯示完整的類別或錯誤處理。 
+
+```csharp
+[DataContract]
+public class SubmitPipelineRunRequest
+{
+    [DataMember]
+    public string ExperimentName { get; set; }
+
+    [DataMember]
+    public string Description { get; set; }
+
+    [DataMember(IsRequired = false)]
+    public IDictionary<string, string> ParameterAssignments { get; set; }
+}
+
+// ... in its own class and method ... 
+const string RestEndpoint = "your-pipeline-endpoint";
+
+using (HttpClient client = new HttpClient())
+{
+    var submitPipelineRunRequest = new SubmitPipelineRunRequest()
+    {
+        ExperimentName = "YourExperimentName", 
+        Description = "Asynchronous C# REST api call", 
+        ParameterAssignments = new Dictionary<string, string>
+        {
+            {
+                // Replace with your pipeline parameter keys and values
+                "your-pipeline-parameter", "default-value"
+            }
+        }
+    };
+
+    string auth_key = "your-auth-key"; 
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", auth_key);
+
+    // submit the job
+    var requestPayload = JsonConvert.SerializeObject(submitPipelineRunRequest);
+    var httpContent = new StringContent(requestPayload, Encoding.UTF8, "application/json");
+    var submitResponse = await client.PostAsync(RestEndpoint, httpContent).ConfigureAwait(false);
+    if (!submitResponse.IsSuccessStatusCode)
+    {
+        await WriteFailedResponse(submitResponse); // ... method not shown ...
+        return;
+    }
+
+    var result = await submitResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+    var obj = JObject.Parse(result);
+    // ... use `obj` dictionary to access results
+}
+```
+
+### <a name="run-a-published-pipeline-using-java"></a>使用 JAVA 執行已發佈的管線
+
+下列程式碼顯示需要驗證之管線的呼叫 (請參閱 [設定 Azure Machine Learning 資源和工作流程](how-to-setup-authentication.md)) 的驗證。 如果您的管線是公開部署的，您就不需要產生的呼叫 `authKey` 。 部分程式碼片段不會顯示 JAVA 類別和例外狀況處理的重複套用。 程式碼會使用將可能會傳回空白的函式 `Optional.flatMap` 連結在一起 `Optional` 。 使用 `flatMap` 可縮短並清楚說明程式碼，但請注意， `getRequestBody()` 抑制例外狀況。
+
+```java
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.Optional;
+// JSON library
+import com.google.gson.Gson;
+
+String scoringUri = "scoring-endpoint";
+String tenantId = "your-tenant-id";
+String clientId = "your-client-id";
+String clientSecret = "your-client-secret";
+String resourceManagerUrl = "https://management.azure.com";
+String dataToBeScored = "{ \"ExperimentName\" : \"My_Pipeline\", \"ParameterAssignments\" : { \"pipeline_arg\" : \"20\" }}";
+
+HttpClient client = HttpClient.newBuilder().build();
+Gson gson = new Gson();
+
+HttpRequest tokenAuthenticationRequest = tokenAuthenticationRequest(tenantId, clientId, clientSecret, resourceManagerUrl);
+Optional<String> authBody = getRequestBody(client, tokenAuthenticationRequest);
+Optional<String> authKey = authBody.flatMap(body -> Optional.of(gson.fromJson(body, AuthenticationBody.class).access_token);;
+Optional<HttpRequest> scoringRequest = authKey.flatMap(key -> Optional.of(scoringRequest(key, scoringUri, dataToBeScored)));
+Optional<String> scoringResult = scoringRequest.flatMap(req -> getRequestBody(client, req));
+// ... etc (`scoringResult.orElse()`) ... 
+
+static HttpRequest tokenAuthenticationRequest(String tenantId, String clientId, String clientSecret, String resourceManagerUrl)
+{
+    String authUrl = String.format("https://login.microsoftonline.com/%s/oauth2/token", tenantId);
+    String clientIdParam = String.format("client_id=%s", clientId);
+    String resourceParam = String.format("resource=%s", resourceManagerUrl);
+    String clientSecretParam = String.format("client_secret=%s", clientSecret);
+
+    String bodyString = String.format("grant_type=client_credentials&%s&%s&%s", clientIdParam, resourceParam, clientSecretParam);
+
+    HttpRequest request = HttpRequest.newBuilder()
+        .uri(URI.create(authUrl))
+        .POST(HttpRequest.BodyPublishers.ofString(bodyString))
+        .build();
+    return request;
+}
+
+static HttpRequest scoringRequest(String authKey, String scoringUri, String dataToBeScored)
+{
+    HttpRequest request = HttpRequest.newBuilder()
+        .uri(URI.create(scoringUri))
+        .header("Authorization", String.format("Token %s", authKey))
+        .POST(HttpRequest.BodyPublishers.ofString(dataToBeScored))
+        .build();
+    return request;
+
+}
+
+static Optional<String> getRequestBody(HttpClient client, HttpRequest request) {
+    try {
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        if (response.statusCode() != 200) {
+            System.out.println(String.format("Unexpected server response %d", response.statusCode()));
+            return Optional.empty();
+        }
+        return Optional.of(response.body());
+    }catch(Exception x)
+    {
+        System.out.println(x.toString());
+        return Optional.empty();
+    }
+}
+
+class AuthenticationBody {
+    String access_token;
+    String token_type;
+    int expires_in;
+    String scope;
+    String refresh_token;
+    String id_token;
+    
+    AuthenticationBody() {}
+}
+```
+
 ### <a name="changing-datasets-and-datapaths-without-retraining"></a>在不重新訓練的情況下變更資料集和 datapaths
 
-您可能想要在不同的資料集和 datapaths 上進行定型和推斷。 例如，您可能想要針對較小、sparser 的資料集進行定型，但對完整資料集進行推斷。 您可以使用 `DataSetDefinitionValueAssignments` 要求的引數中的索引鍵來切換資料集 `json` 。 您可以使用切換 datapaths `DataPathAssignments` 。 兩者的技巧很類似：
+您可能想要在不同的資料集和 datapaths 上進行定型和推斷。 例如，您可能想要針對較小的資料集進行定型，但在整個資料集上進行推斷。 您可以使用 `DataSetDefinitionValueAssignments` 要求的引數中的索引鍵來切換資料集 `json` 。 您可以使用切換 datapaths `DataPathAssignments` 。 兩者的技巧很類似：
 
 1. 在您的管線定義腳本中， `PipelineParameter` 為資料集建立。 `DatasetConsumptionConfig` `DataPath` 從下列建立或 `PipelineParameter` ：
 
@@ -155,7 +294,7 @@ response = requests.post(published_pipeline1.endpoint,
 
 ## <a name="create-a-versioned-pipeline-endpoint"></a>建立已建立版本的管線端點
 
-您可以建立管線端點，其中包含多個已發佈的管線。 當您逐一查看和更新 ML 管線時，這會提供您固定的 REST 端點。
+您可以建立管線端點，其中包含多個已發佈的管線。 當您逐一查看和更新 ML 管線時，這項技術可提供您固定的 REST 端點。
 
 ```python
 from azureml.pipeline.core import PipelineEndpoint
@@ -201,9 +340,9 @@ response = requests.post(rest_endpoint,
 
 1. [查看您的工作區](how-to-manage-workspace.md#view)。
 
-1. 選取左側的 [ **端點**]。
+1. 選取左側的 [ **端點** ]。
 
-1. 在頂端，選取 **管線端點**。
+1. 在頂端，選取 **管線端點** 。
  ![機器學習已發佈管線的清單](./media/how-to-create-your-first-pipeline/pipeline-endpoints.png)
 
 1. 選取特定管線以執行、取用或查看管線端點先前執行的結果。

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 78a81a2d392363ac45979fd28138f838653a2358
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d84e1508dec4d4a5802f7a2ac8c0e6ada5a8044c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89380774"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128686"
 ---
 # <a name="how-to-add-technical-details-for-your-saas-offer"></a>如何為您的 SaaS 供應專案新增技術詳細資料
 
@@ -31,14 +31,14 @@ ms.locfileid: "89380774"
   > [!IMPORTANT]
   > 登陸頁面應該會啟動並執行24/7。 這是您在商業市集中購買 SaaS 供應專案的新資訊，或供應專案使用中訂用帳戶的設定要求時，您將收到通知的唯一方式。
 
-- 連線**webhook** (必要的) –針對 Microsoft 需要傳送給您的所有非同步事件 (例如，已取消) SaaS 訂用帳戶，我們會要求您提供連線 webhook URL。 我們會呼叫此 URL 來通知您活動。
+- 連線 **webhook** (必要的) –針對 Microsoft 需要傳送給您的所有非同步事件 (例如，已取消) SaaS 訂用帳戶，我們會要求您提供連線 webhook URL。 我們會呼叫此 URL 來通知您活動。
 
   > [!IMPORTANT]
   > 您的 webhook 應該啟動並執行24/7，因為這是您將透過商業 marketplace 購買的客戶 SaaS 訂用帳戶更新通知的唯一方式。
 
-- **Azure Active Directory 租使用者識別碼** (必要) -若要尋找 Azure Active Directory (Azure AD 應用程式的租使用者識別碼，請移 [至) 中應用程式註冊的分頁](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) 。 在 [ **顯示名稱** ] 欄中，選取應用程式。 然後尋找列出的 ** (租使用者) 識別碼** (例如) 的目錄 `50c464d3-4930-494c-963c-1e951d15360e` 。
+- **Azure Active Directory 租使用者識別碼** (必要) -若要尋找 Azure Active Directory (Azure AD 應用程式的租使用者識別碼，請移 [至) 中應用程式註冊的分頁](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) 。 在 [ **顯示名稱** ] 欄中，選取應用程式。 然後尋找列出的 **(租使用者) 識別碼** (例如) 的目錄 `50c464d3-4930-494c-963c-1e951d15360e` 。
 
-- **Azure Active Directory 應用程式識別碼** (必要) –若要尋找您的 [應用程式識別碼](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)，請移至 Azure Active Directory 中的 [應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) 分頁。 在 [ **顯示名稱** ] 欄中，選取應用程式。 然後尋找列出的應用程式 (用戶端) 識別碼 (例如 `50c464d3-4930-494c-963c-1e951d15360e`) 。
+- **Azure Active Directory 應用程式識別碼** (必要) –若要尋找您的 [應用程式識別碼](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)，請移至 Azure Active Directory 中的 [應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) 分頁。 在 [ **顯示名稱** ] 欄中，選取應用程式。 然後尋找列出的應用程式 (用戶端) 識別碼 (例如 `50c464d3-4930-494c-963c-1e951d15360e`) 。
 
 選取 [ **儲存草稿** ]，然後繼續進行下一個索引標籤： [計畫總覽]。
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 837a57ee6ce836fb781f5bf5d5362d7c56cba31e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: dbf38c303f024884971e95f7be9d4dfc50d118de
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746205"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127819"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>應用程式閘道與服務端點的整合
 App Service 的三種變化，需要與 Azure 應用程式閘道的整合設定稍有不同。 這些變化包括定期 App Service-也稱為多租使用者、內部 Load Balancer (ILB) App Service 環境 (ASE) 和外部 ASE。 本文將逐步解說如何使用 App Service (多租使用者) 進行設定，以及討論有關 ILB 和外部 ASE 的考慮。
@@ -27,7 +27,7 @@ App Service 的三種變化，需要與 Azure 應用程式閘道的整合設定�
 ## <a name="integration-with-app-service-multi-tenant"></a>與 App Service (多租使用者) 整合
 App Service (多租使用者) 具有公用網際網路面向端點。 您可以使用 [服務端點](../../virtual-network/virtual-network-service-endpoints-overview.md) ，只允許來自 Azure 虛擬網路內特定子網的流量，並封鎖其他所有專案。 在下列案例中，我們將使用這項功能來確保 App Service 實例只能接收來自特定應用程式閘道實例的流量。
 
-![應用程式閘道與 App Service 整合](./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png)
+![圖表顯示網際網路流向 Azure 虛擬網路中的應用程式閘道，並透過防火牆圖示從該處流向 App Service 中的應用程式實例。](./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png)
 
 除了建立 App Service 和應用程式閘道之外，此設定有兩個部分。 第一個部分是在部署應用程式閘道之虛擬網路的子網中啟用服務端點。 服務端點可確保將子網離開 App Service 的所有網路流量都會標記特定的子網識別碼。 第二個部分是設定特定 web 應用程式的存取限制，以確保只允許以這個特定子網識別碼標記的流量。 您可以根據喜好設定使用不同的工具來設定它。
 
@@ -40,7 +40,7 @@ App Service (多租使用者) 具有公用網際網路面向端點。 您可以�
 
 您現在可以透過應用程式閘道存取 App Service，但如果您嘗試直接存取 App Service，您應該會收到 403 HTTP 錯誤，表示網站已停止。
 
-![應用程式閘道與 App Service 整合](./media/app-gateway-with-service-endpoints/web-site-stopped.png)
+![螢幕擷取畫面顯示錯誤403的文字-此 web 應用程式已停止。](./media/app-gateway-with-service-endpoints/web-site-stopped.png)
 
 ## <a name="using-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本
 [Resource Manager 部署範本][template-app-gateway-app-service-complete]將會提供完整的案例。 此案例是由服務端點鎖定的 App Service 實例和存取限制所組成，只會接收來自應用程式閘道的流量。 此範本包含許多智慧型預設值，以及新增至資源名稱的唯一 postfixes，以簡化。 若要覆寫它們，您必須複製存放庫，或下載範本並加以編輯。 
