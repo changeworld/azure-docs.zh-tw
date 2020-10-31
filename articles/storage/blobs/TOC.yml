@@ -679,6 +679,8 @@
           href: data-lake-storage-best-practices.md
         - name: 查詢加速
           href: data-lake-storage-query-acceleration.md
+        - name: Data Lake Storage 的進階層
+          href: premium-tier-for-data-lake-storage.md
         - name: 架構
           items:
             - name: 適用於 Hadoop 的 Azure Blob 檔案系統驅動程式
@@ -879,7 +881,7 @@
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: 服務更新
           href: 'https://azure.microsoft.com/updates/?product=storage'
-        - name: 堆疊溢位
+        - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
         - name: 影片
           href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'

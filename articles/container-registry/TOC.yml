@@ -3,7 +3,7 @@
 - name: 容器登錄
   expanded: true
   items:
-    - name: 總覽
+    - name: 概觀
       expanded: false
       items:
         - name: 關於 Container Registry
@@ -59,6 +59,8 @@
           href: container-registry-geo-replication.md
         - name: 登錄最佳做法
           href: container-registry-best-practices.md
+        - name: 管理公用映像
+          href: buffer-gate-public-content.md
     - name: 操作指南
       expanded: false
       items:

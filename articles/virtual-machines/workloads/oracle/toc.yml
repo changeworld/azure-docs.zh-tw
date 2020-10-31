@@ -6,6 +6,8 @@
       href: oracle-vm-solutions.md
     - name: 什麼是在 Azure 虛擬機器上執行 Oracle WebLogic Server 的解決方案？
       href: oracle-weblogic.md
+    - name: 什麼是在 Azure Kubernetes Service 上執行 Oracle WebLogic Server 的解決方案？
+      href: weblogic-aks.md
     - name: 使用 OCI 的解決方案
       href: oracle-oci-overview.md
 - name: 快速入門
