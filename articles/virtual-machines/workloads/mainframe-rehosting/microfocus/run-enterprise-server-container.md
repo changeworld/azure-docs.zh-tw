@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: bfd40d39907c4e69ded0fa257305d346ca261836
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f34767c160c8229eb5b63806924926a46ea00cc2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319991"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127190"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>在 Azure 上的 Docker 容器中執行微焦點企業伺服器5。0
 
@@ -25,9 +25,9 @@ ms.locfileid: "91319991"
 
 Docker 可為應用程式新增可攜性和隔離。 例如，您可以從一部 Windows 虛擬機器 (VM) 匯出 Docker 映射，以在另一個 Windows 虛擬機器上執行，或從存放庫匯出至具有 Docker 的 Windows server。 Docker 映射在具有相同設定的新位置中執行，而不需要安裝 Enterprise Server。 它是映射的一部分。 授權考慮仍然適用。
 
-本教學課程會從 Azure Marketplace 安裝 **具有容器 VM 的 Windows 2016 Datacenter** 。 此 VM 包含 **Docker 18.09.0**。 接下來的步驟會示範如何部署容器、加以執行，然後使用3270模擬器連接到該容器。
+本教學課程會從 Azure Marketplace 安裝 **具有容器 VM 的 Windows 2016 Datacenter** 。 此 VM 包含 **Docker 18.09.0** 。 接下來的步驟會示範如何部署容器、加以執行，然後使用3270模擬器連接到該容器。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始使用之前，請先參閱下列必要條件：
 
@@ -44,7 +44,7 @@ Docker 可為應用程式新增可攜性和隔離。 例如，您可以從一部
 
 1.  保護 ent \_ server \_ dockerfile \_ 5.0windows.zip 檔案中的媒體 \_ 。  (建立 Docker 映射) 所需的異地-Docker-生產-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX mflic 授權檔。
 
-2.  建立 VM。 若要這樣做，請開啟 Azure 入口網站，從左上方的功能表中選取 [ **建立資源** ]，然後依 *windows server 作業系統*進行篩選。 在結果中，選取 [ **Windows Server]。** 在下一個畫面中，選取 [ **含容器的 Windows Server 2016 Datacenter –**]。
+2.  建立 VM。 若要這樣做，請開啟 Azure 入口網站，從左上方的功能表中選取 [ **建立資源** ]，然後依 *windows server 作業系統* 進行篩選。 在結果中，選取 [ **Windows Server]。** 在下一個畫面中，選取 [ **含容器的 Windows Server 2016 Datacenter –** ]。
 
     ![Azure 入口網站搜尋結果的螢幕擷取畫面](./media/run-image-1.png)
 
@@ -54,11 +54,11 @@ Docker 可為應用程式新增可攜性和隔離。 例如，您可以從一部
 
     2.  選取您想要部署的 **區域** 和 **資源群組** 。
 
-    3.  若為 **可用性選項**，請使用預設設定。
+    3.  若為 **可用性選項** ，請使用預設設定。
 
-    4.  針對 [使用者 **名稱**]，輸入您要使用的系統管理員帳戶和密碼。
+    4.  針對 [使用者 **名稱** ]，輸入您要使用的系統管理員帳戶和密碼。
 
-    5.  請確定 **埠 3389 RDP** 已開啟。 只有此埠需要公開公開，以便您可以登入 VM。 然後，接受所有預設值，然後按一下 [ **審核 + 建立**]。
+    5.  請確定 **埠 3389 RDP** 已開啟。 只有此埠需要公開公開，以便您可以登入 VM。 然後，接受所有預設值，然後按一下 [ **審核 + 建立** ]。
 
     ![[建立虛擬機器] 窗格的螢幕擷取畫面](./media/run-image-2.png)
 
@@ -66,7 +66,7 @@ Docker 可為應用程式新增可攜性和隔離。 例如，您可以從一部
 
 5.  選取 [ **移至資源** ] 以移至 VM 的 [ **總覽** ] 分頁。
 
-6.  選取右側的 **[連接]**。 [連線 **至虛擬機器]** 選項會顯示在右側。
+6.  選取右側的 **[連接]** 。 [連線 **至虛擬機器]** 選項會顯示在右側。
 
 7.  選取 [ **下載 RDP** 檔案] 按鈕，以下載遠端桌面通訊協定 (RDP) 檔案，讓您可以連結至 VM。
 
@@ -75,17 +75,17 @@ Docker 可為應用程式新增可攜性和隔離。 例如，您可以從一部
     > [!Note]    
     > 請勿使用您的公司認證登入。  (RDP 用戶端會假設您想要使用這些。 您沒有。 ) 
 
-9.  選取 **更多**選擇，然後選取您的 VM 認證。
+9.  選取 **更多** 選擇，然後選取您的 VM 認證。
 
 此時，VM 正在執行，並透過 RDP 連接。 您已登入，並已準備好進行下一個步驟。
 
 ## <a name="create-a-sandbox-directory-and-upload-the-zip-file"></a>建立沙箱目錄並上傳 zip 檔案
 
-1.  在 VM 上建立可上傳示範和授權檔案的目錄。 例如， **C： \\ 沙箱**。
+1.  在 VM 上建立可上傳示範和授權檔案的目錄。 例如， **C： \\ 沙箱** 。
 
 2.  將 **ent \_ 伺服器 \_ dockerfile \_ 5.0 \_windows.zip** 和 **ES-Docker-mflic** 檔案上傳至您所建立的目錄。
 
-3.  將 zip 檔案的內容解壓縮至解壓縮程式所建立的 **ent \_ server \_ dockerfile \_ 5.0 \_ windows** 目錄。 此目錄包含 (為 .html 和 .txt 檔案) 的讀我檔案，以及兩個子目錄、 **EnterpriseServer** 和 **範例**。
+3.  將 zip 檔案的內容解壓縮至解壓縮程式所建立的 **ent \_ server \_ dockerfile \_ 5.0 \_ windows** 目錄。 此目錄包含 (為 .html 和 .txt 檔案) 的讀我檔案，以及兩個子目錄、 **EnterpriseServer** 和 **範例** 。
 
 4.  將 **ES-mflic** 複製到 C： \\ 沙箱 \\ ent \_ server \_ dockerfile \_ 5.0 \_ windows \\ EnterpriseServer 和 C： \\ 沙箱 \\ ent \_ server \_ dockerfile \_ 5.0 \_ windows \\ 範例 \\ CICS 目錄。  
       
@@ -103,15 +103,15 @@ Docker 可為應用程式新增可攜性和隔離。 例如，您可以從一部
     例如，在寫入時，會18.09.0 版本。
 
 3.  若要變更目錄，請輸入：  
-    **cd \\沙箱 \\ ent \_ server \_ dockerfile \_ 5.0 \_ windows \\ EnterpriseServer**。
+    **cd \\沙箱 \\ ent \_ server \_ dockerfile \_ 5.0 \_ windows \\ EnterpriseServer** 。
 
 4.  輸入 **bld.bat IacceptEULA** 來開始初始基底映射的組建程式。 請等候幾分鐘，讓此進程執行。 在結果中，請注意已建立的兩個映射—一個用於 x64，另一個用於 x86：
 
     ![顯示影像的命令視窗](./media/run-image-3.png)
 
-5.  若要建立 CICS 示範的最終影像，請輸入 **cd \\ 沙箱 \\ ent \_ server \_ dockerfile \_ 5.0 \_ windows \\ 範例 \\ cics**來切換至 cics 目錄。
+5.  若要建立 CICS 示範的最終影像，請輸入 **cd \\ 沙箱 \\ ent \_ server \_ dockerfile \_ 5.0 \_ windows \\ 範例 \\ cics** 來切換至 cics 目錄。
 
-6.  若要建立映射，請輸入 **bld.bat x64**。 等候幾分鐘讓進程執行，並顯示訊息指出已建立映射。
+6.  若要建立映射，請輸入 **bld.bat x64** 。 等候幾分鐘讓進程執行，並顯示訊息指出已建立映射。
 
 7.  輸入 **docker 映射** 以顯示 VM 上已安裝的所有 docker 映射清單。 請確定 **microfocus/es-acctdemo** 是其中之一。
 
@@ -129,7 +129,7 @@ Docker 可為應用程式新增可攜性和隔離。 例如，您可以從一部
 
 2.  取得 acctdemo 容器的 IP 位址，讓 Docker 可以作為其所管理容器 (DHCP) 伺服器的動態主機設定通訊協定：
 
-    1.  取得執行中容器的識別碼。 在命令提示字元中輸入 **Docker ps** ，並記下此範例)  (**22a0fe3159d0** 識別碼。 將其儲存以進行下一個步驟。
+    1.  取得執行中容器的識別碼。 在命令提示字元中輸入 **Docker ps** ，並記下此範例)  ( **22a0fe3159d0** 識別碼。 將其儲存以進行下一個步驟。
 
     2.  若要取得 acctdemo 容器的 IP 位址，請使用上一個步驟中的容器識別碼，如下所示：
 
@@ -147,27 +147,27 @@ Docker 可為應用程式新增可攜性和隔離。 例如，您可以從一部
 
     ![顯示 IP 位址命令視窗的螢幕擷取畫面](./media/run-image-5.png)
 
-5. 使用模擬器掛接映射。 將模擬器設定為使用 acctdemo 映射和埠9040的位址。 在這裡，它是 **172.19.202.52： 9040**。 您將會很類似。 [登入 **CICS** ] 畫面隨即開啟。
+5. 使用模擬器掛接映射。 將模擬器設定為使用 acctdemo 映射和埠9040的位址。 在這裡，它是 **172.19.202.52： 9040** 。 您將會很類似。 [登入 **CICS** ] 畫面隨即開啟。
 
     ![登錄至 CICS 的螢幕擷取畫面](./media/run-image-6.png)
 
-6. 輸入**SYSAD**來登入 CICS 區域，然後輸入**密碼**的**USERID**和**SYSAD** 。
+6. 輸入 **SYSAD** 來登入 CICS 區域，然後輸入 **密碼** 的 **USERID** 和 **SYSAD** 。
 
 7. 使用模擬器的快速鍵清除畫面。 針對 [x3270]，選取 [ **快速鍵** 對應] 功能表選項。
 
-8. 若要啟動 acctdemo 應用程式，請輸入 [ **帳戶**]。 應用程式的初始畫面隨即顯示。
+8. 若要啟動 acctdemo 應用程式，請輸入 [ **帳戶** ]。 應用程式的初始畫面隨即顯示。
 
-     ![帳戶示範的螢幕擷取畫面](./media/run-image-7.png)
+     ![螢幕擷取畫面顯示顯示應用程式的主控台視窗。](./media/run-image-7.png)
 
-9. 使用顯示帳戶類型進行實驗。 例如，針對要求輸入**D** ，針對**帳戶**輸入**11111** 。 其他要嘗試的帳戶號碼為22222、33333等等。
+9. 使用顯示帳戶類型進行實驗。 例如，針對要求輸入 **D** ，針對 **帳戶** 輸入 **11111** 。 其他要嘗試的帳戶號碼為22222、33333等等。
 
-    ![帳戶示範的螢幕擷取畫面](./media/run-image-8.png)
+    ![螢幕擷取畫面顯示在應用程式中編輯不同的值。](./media/run-image-8.png)
 
-10. 若要顯示企業伺服器管理主控台，請移至命令提示字元，然後輸入 **start HTTP：172.19.202.52： 86**。
+10. 若要顯示企業伺服器管理主控台，請移至命令提示字元，然後輸入 **start HTTP：172.19.202.52： 86** 。
 
     ![企業伺服器管理主控台](media/run-image-9.png)
 
-這樣就完成了！ 現在您正在執行和管理 Docker 容器中的 CICS 應用程式。
+就這麼簡單！ 現在您正在執行和管理 Docker 容器中的 CICS 應用程式。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 3e5b747e55c8f246167bcf8bbde3542146e69706
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea775ef472687485dbd2f30c4f60adc33c0eaa73
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891956"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127343"
 ---
 # <a name="table-storage-output-from-azure-stream-analytics"></a>Azure 串流分析的資料表儲存體輸出
 
@@ -28,7 +28,7 @@ ms.locfileid: "90891956"
 | 資料表名稱 |資料表的名稱。 如果資料表不存在，則會建立資料表。 |
 | 資料分割索引鍵 |包含分割區索引鍵的輸出資料行名稱。 在構成實體主索引鍵第一個部分的資料表內，分割區索引鍵是資料分割的唯一識別碼。 大小最高為 1 KB 的字串值。 |
 | 列索引鍵 |其中包含資料列索引鍵的輸出資料行名稱。 資料列索引鍵是分割區內實體的唯一識別碼。 其可構成實體主索引鍵的第二個部分。 資料列索引鍵是大小可以高達 1 KB 的字串值。 |
-| 批次大小 |批次作業的記錄數目。 預設值 (100)通常足以應付大部分的作業。 如需修改此設定的詳細資料，請參閱[資料表批次作業規格](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.tablebatchoperation)。 |
+| 批次大小 |批次作業的記錄數目。 預設值 (100)通常足以應付大部分的作業。 如需修改此設定的詳細資料，請參閱[資料表批次作業規格](/java/api/com.microsoft.azure.storage.table.tablebatchoperation)。 |
 
 ## <a name="partitioning"></a>資料分割
 

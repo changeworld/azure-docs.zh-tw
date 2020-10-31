@@ -8,22 +8,22 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 5776c741bb69d345f191e5673fe388328d0fe7bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93e10baa5281481b57e945f93b7375060b574de5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89015589"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126850"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>管理 .NET SDK：透過適用於 .NET 的 Azure 串流分析 API 來設定及執行分析作業
 了解如何使用管理 .NET SDK，透過適用於 .NET 的串流分析 API 來設定及執行分析作業。 設定專案，建立輸入與輸出來源、轉換，以及開始和停止工作。 對於您的分析工作，您可以從 Blob 儲存體或從事件中樞串流資料。
 
-請參閱 [適用於 .NET 的串流分析 API 之管理參考文件](https://msdn.microsoft.com/library/azure/dn889315.aspx)。
+請參閱 [適用於 .NET 的串流分析 API 之管理參考文件](/previous-versions/azure/dn889315(v=azure.100))。
 
 Azure 資料流分析是完全受控的服務，可用來對雲端中的串流資料進行低延遲、高可用性、可延展的複雜事件處理。 串流分析可讓客戶設定串流工作以分析資料流，並可讓客戶以接近即時的方式進行分析。  
 
 > [!NOTE]
-> 我們已將本文中的範例程式碼更新為 Azure 串流分析管理 .NET SDK v2.x 版本。 如需查看使用舊版 (1.x) SDK 的範例程式碼，請參閱[使用適用於串流分析的管理 .NET SDK v1.x](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1)。
+> 我們已將本文中的範例程式碼更新為 Azure 串流分析管理 .NET SDK v2.x 版本。 如需查看使用舊版 (1.x) SDK 的範例程式碼，請參閱[使用適用於串流分析的管理 .NET SDK v1.x]()。
 
 ## <a name="prerequisites"></a>Prerequisites
 開始閱讀本文之前，您必須遵循下列必要條件：
@@ -167,7 +167,7 @@ Azure 資料流分析是完全受控的服務，可用來對雲端中的串流�
    ```
 
 ## <a name="create-a-stream-analytics-input-source"></a>建立資料流分析輸入來源
-下列程式碼會使用 Blob 輸入來源類型和 CSV 序列化，來建立資料流分析輸入來源。 若要建立事件中心輸入來源，請使用 **EventHubStreamInputDataSource**，而不是 **BlobStreamInputDataSource**。 同樣地，您可以自訂輸入來源的序列化類型。
+下列程式碼會使用 Blob 輸入來源類型和 CSV 序列化，來建立資料流分析輸入來源。 若要建立事件中心輸入來源，請使用 **EventHubStreamInputDataSource** ，而不是 **BlobStreamInputDataSource** 。 同樣地，您可以自訂輸入來源的序列化類型。
 
    ```csharp
    // Create an input
@@ -285,7 +285,7 @@ Azure 資料流分析是完全受控的服務，可用來對雲端中的串流�
    ```
 
 ## <a name="get-support"></a>取得支援
-如需進一步的協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
+如需進一步的協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>後續步驟
 您已經學到使用 .NET SDK 建立及執行分析作業的基本知識。 如需詳細資訊，請參閱下列文章：
@@ -293,9 +293,9 @@ Azure 資料流分析是完全受控的服務，可用來對雲端中的串流�
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
 * [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure 串流分析管理 .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx)。
-* [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure 串流分析管理 .NET SDK](/previous-versions/azure/dn889315(v=azure.100))。
+* [Azure Stream Analytics 查詢語言參考](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 串流分析管理 REST API 參考](/rest/api/streamanalytics/)
 
 <!--Image references-->
 [5]: ./media/markdown-template-for-new-articles/octocats.png
@@ -305,17 +305,17 @@ Azure 資料流分析是完全受控的服務，可用來對雲端中的串流�
 
 <!--Link references-->
 [azure.blob.storage]: https://azure.microsoft.com/documentation/services/storage/
-[azure.blob.storage.use]: https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-blobs/
+[azure.blob.storage.use]: ../storage/blobs/storage-quickstart-blobs-dotnet.md
 
 [azure.event.hubs]: https://azure.microsoft.com/services/event-hubs/
-[azure.event.hubs.developer.guide]: https://msdn.microsoft.com/library/azure/dn789972.aspx
+[azure.event.hubs.developer.guide]: /previous-versions/azure/dn789972(v=azure.100)
 
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
 [stream.analytics.forum]: https://go.microsoft.com/fwlink/?LinkId=512151
 
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
 [stream.analytics.developer.guide]: stream-analytics-developer-guide.md
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

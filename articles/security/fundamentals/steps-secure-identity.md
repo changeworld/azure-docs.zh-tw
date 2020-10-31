@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 18e04350260258b74d746a2796a56d7d3ba46346
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 43974258008e3813a368ab31891251db15060aff
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364111"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127054"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>可保護身分識別基礎結構的五個步驟
 
@@ -145,7 +145,7 @@ Azure Active Directory 有許多會自動攔截攻擊的功能，可讓偵測與
 
 使用者風險可指出使用者的身分識別已遭到入侵的可能性，並會根據與使用者身分識別相關聯的[使用者風險偵測](../../active-directory/identity-protection/overview.md)來算出。 使用者風險原則是條件式存取原則，可評估特定使用者或群組的風險層級。 根據低、中、高風險層級，原則可以設定為封鎖存取，也可以設定為必須使用多重要素驗證來進行安全密碼變更。 Microsoft 會建議您要求高風險使用者必須進行安全密碼變更。
 
-![標示有風險的使用者](./media/steps-secure-identity/azure-ad-sec-steps1.png)
+![螢幕擷取畫面顯示已選取使用者，並標示為有風險的使用者。](./media/steps-secure-identity/azure-ad-sec-steps1.png)
 
 ### <a name="implement-sign-in-risk-policy-using-azure-ad-identity-protection"></a>使用 Azure AD Identity Protection 來實作登入風險原則
 
@@ -175,7 +175,7 @@ Azure AD Identity Protection 能提供兩個您應該每天監視的重要報告
 1. 具風險的登入報告將能顯示您應該調查的使用者登入活動，因為執行該登入的可能不是帳戶的合法使用者。
 2. 具風險的使用者報告將能顯示可能已被入侵的使用者帳戶，例如偵測到外洩的認證，或是當使用者從兩個不可能在該時間範圍內於它們之間移動的不同位置登入時。
 
-![標示有風險的使用者](./media/steps-secure-identity/azure-ad-sec-steps3.png)
+![螢幕擷取畫面顯示 [Azure A D Identity Protection] 窗格，其中包含使用者及其風險層級。](./media/steps-secure-identity/azure-ad-sec-steps3.png)
 
 ### <a name="audit-apps-and-consented-permissions"></a>稽核應用程式和已同意的權限
 

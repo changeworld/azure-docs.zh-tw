@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/20/2020
-ms.openlocfilehash: 5964292d7037465456efe22283a5552a2bfc7ad8
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: bfd67688ce30b62002e26cea9f7be4df1cb6e622
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331255"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126442"
 ---
 # <a name="how-to-create-a-virtual-machine-offer-on-azure-marketplace"></a>如何在 Azure Marketplace 上建立虛擬機器供應專案
 
@@ -35,32 +35,32 @@ ms.locfileid: "92331255"
 > [!NOTE]
 > 供應項目發佈之後，您在合作夥伴中心對其進行的任何編輯，只有在您重新發佈供應項目之後，才會出現在 Azure Marketplace 上。 變更供應項目之後，請務必一律重新發佈該供應項目。
 
-輸入**供應項目識別碼**。 這是您帳戶中每個供應項目的唯一識別碼。
+輸入 **供應項目識別碼** 。 這是您帳戶中每個供應項目的唯一識別碼。
 
 - 客戶可以在 Azure Marketplace 供應項目和 Azure PowerShell 與 Azure CLI 的網址中看到此識別碼 (如果適用)。
-- 請一律使用小寫字母和數字。 識別碼可以包含連字號和底線，但不能有空格，且限制為 50 個字元。 例如，如果您輸入 **test-offer-1**，供應項目網址將為 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
+- 請一律使用小寫字母和數字。 識別碼可以包含連字號和底線，但不能有空格，且限制為 50 個字元。 例如，如果您輸入 **test-offer-1** ，供應項目網址將為 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
 - 選取 [建立] 之後，即無法變更供應項目識別碼。
 
-輸入**供應項目別名**。 供應項目別名是用於合作夥伴中心內供應項目的名稱。
+輸入 **供應項目別名** 。 供應項目別名是用於合作夥伴中心內供應項目的名稱。
 
 - Azure Marketplace 上不使用此名稱。 其與向客戶顯示的供應項目名稱和其他值不同。
 
 ## <a name="enable-a-test-drive-optional"></a>啟用 (選用) 的試用產品
 
-試用產品是為潛在客戶展示您的供應專案的絕佳方式，方法是讓他們能夠存取預先設定的環境一段固定的時數。 提供試用產品會產生更高的轉換率，並產生高度合格的潛在客戶。 若要深入瞭解試用產品，請參閱 [什麼是試用產品？](partner-center-portal/test-drive.md)。
+試用產品是為潛在客戶展示您的供應專案的絕佳方式，方法是讓他們能夠存取預先設定的環境一段固定的時數。 提供試用產品會產生更高的轉換率，並產生高度合格的潛在客戶。 若要深入瞭解試用產品，請參閱 [什麼是試用產品？](./what-is-test-drive.md)。
 
 > [!TIP]
 > 試用產品不同于免費試用版。 您可以提供試用產品、免費試用或兩者。 它們都能提供客戶一段固定時間的解決方案。 但是，試用產品也包含實際操作的自我引導式導覽，說明您產品的主要功能，以及在實際執行案例中所示範的優點。
 
 **啟用試用產品**
-1.  在 [ **測試磁片磁碟機**] 下，選取 [ **啟用試用** 產品] 核取方塊。
+1.  在 [ **測試磁片磁碟機** ] 下，選取 [ **啟用試用** 產品] 核取方塊。
 1.  從顯示的清單中選取 [試用產品] 類型。
 
 ## <a name="configure-lead-management"></a>設定潛在客戶管理
 
 當您使用合作夥伴中心將供應項目發佈到商業 Marketplace 時，將其連線到客戶關係管理 (CRM) 系統。 這可讓您在有人對您的產品感興趣或使用您的產品時，立即收到客戶連絡人資訊。 如果您想要啟用試用產品，則需要連接到 CRM (請參閱) 上一節。 否則，可以選擇連線到 CRM。
 
-1. 在 [ **客戶潛在客戶**] 下，選取 [連線 **]** 連結。
+1. 在 [ **客戶潛在客戶** ] 下，選取 [連線 **]** 連結。
 1. 在 [ **連接詳細資料** ] 對話方塊中，從清單中選取潛在客戶目的地。
 1. 完成顯示的欄位。 如需詳細步驟，請參閱下列文章：
 
@@ -71,7 +71,7 @@ ms.locfileid: "92331255"
    - [設定您的供應項目，以便將潛在客戶傳送至 Salesforce](./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md#configure-your-offer-to-send-leads-to-salesforce)
 
 1. 若要驗證您所提供的設定，請選取 [ **驗證** ] 連結。
-1. 若要關閉對話方塊，請選取 **[確定]**。
+1. 若要關閉對話方塊，請選取 **[確定]** 。
 
 ## <a name="resell-through-csps"></a>透過 CSP 轉售
 

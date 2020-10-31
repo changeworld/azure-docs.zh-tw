@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: 879ea141a4621fac9e1774df64a63e9e56549012
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: a5c5d7ae4dbf1126d171c78bbd4e353f11402260
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026950"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126714"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>關於 Microsoft 商業 marketplace 的常見問題
 
@@ -46,7 +46,7 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Microsoft 商業市集是否有清單費用嗎？
 
-否，可以免費在我們的商業市集中發佈供應項目。 我們會以交易費用的形式保留少量的銷售百分比，並將其投資在市集獎勵計畫、平台創新和商業市集作業中。 [AZURE IP 共同銷售](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell)受到激勵供應專案和 AppSource 上的付費 SaaS 供應專案（與一個 Microsoft 小組應用程式相關聯），或至少兩個 Microsoft 365 增益集 (Excel、PowerPoint、Word、Outlook 和 SharePoint) 中，會減少此交易費用。
+否，可以免費在我們的商業市集中發佈供應項目。 我們會以交易費用的形式保留少量的銷售百分比，並將其投資在市集獎勵計畫、平台創新和商業市集作業中。 [AZURE IP 共同銷售](./marketplace-co-sell.md)受到激勵供應專案和 AppSource 上的付費 SaaS 供應專案（與一個 Microsoft 小組應用程式相關聯），或至少兩個 Microsoft 365 增益集 (Excel、PowerPoint、Word、Outlook 和 SharePoint) 中，會減少此交易費用。
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>如何註冊為 Microsoft 商業市集中的發行者？
 
@@ -106,7 +106,7 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 在基礎目錄中建立新的使用者帳戶或邀請來賓帳戶時，需要 Azure Active Directory (Azure AD) *全域管理員* 權限。 合作夥伴中心會將 Azure AD 套用至身分識別模型，而且組織的 Azure AD 執行個體通常是由其 IT 或安全小組管理及控制。
 
-若要深入了解，請參閱[指派使用者角色和權限](https://docs.microsoft.com/partner-center/permissions-overview)。
+若要深入了解，請參閱[指派使用者角色和權限](/partner-center/permissions-overview)。
 
 ### <a name="do-customers-need-a-subscription-for-microsoft-azure-cloud-services"></a>客戶需要訂閱 Microsoft Azure 雲端服務嗎？
 

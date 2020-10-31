@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mathoma
-ms.openlocfilehash: 46adbfee24ab463acdc4687c0465bbf50527a329
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: f681c6c453c9c0955092c4f1574a54ea2c9973f5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790639"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126646"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器中的 SQL Server 應用程式模式和開發策略
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -191,11 +191,11 @@ ms.locfileid: "92790639"
 
 如圖所示，Azure Load Balancer 會將流量分配到多個虛擬機器，也會決定要連接到哪部 Web 伺服器或應用程式伺服器。 在負載平衡器後方有多個 Web 和應用程式伺服器執行個體，可確保展示層和商務層的高可用性。 如需詳細資訊，請參閱 [需要 SQL HADR 之應用程式模式的最佳作法](#best-practices-for-application-patterns-requiring-sql-hadr)。
 
-![應用程式模式搭配雲端服務](./media/application-patterns-development-strategies/IC728013.png)
+![圖表顯示透過 Azure 負載平衡器連線到 Azure 虛擬網路中 web 角色實例的內部部署實體或虛擬機器。](./media/application-patterns-development-strategies/IC728013.png)
 
 實作此應用程式模式的另一種方法是使用合併的 Web 角色 (包含展示層和商務層元件)，如下圖所示。 如果應用程式需要可設定狀態的設計，此應用程式模式就很實用。 由於 Azure 在 Web 和背景工作角色上提供無狀態的計算節點，因此建議您實作邏輯，以使用下列其中一種技術來儲存工作階段狀態：[Azure 快取](https://azure.microsoft.com/documentation/services/azure-cache-for-redis/)、[Azure 資料表儲存體](../../../cosmos-db/tutorial-develop-table-dotnet.md)或 [Azure SQL Database](../../database/sql-database-paas-overview.md)。
 
-![應用程式模式搭配雲端服務](./media/application-patterns-development-strategies/IC728014.png)
+![圖表顯示連接到 Azure 虛擬網路中合併 web/背景工作角色實例的內部部署實體或虛擬機器。](./media/application-patterns-development-strategies/IC728014.png)
 
 ## <a name="pattern-with-azure-virtual-machines-azure-sql-database-and-azure-app-service-web-apps"></a>使用 Azure 虛擬機器、Azure SQL Database 和 Azure App Service (Web Apps 的模式) 
 此應用程式模式的主要目標是示範如何在解決方案中，將 Azure 基礎結構即服務 (IaaS) 元件與 Azure 平台即服務元件 (PaaS) 加以結合。 此模式著重於關聯式資料存放區的 Azure SQL Database。 這不包括 Azure 虛擬機器中的 SQL Server，因為其已包含在 Azure 基礎結構即服務的供應項目中。

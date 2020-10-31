@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 09/22/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: e791e4ca3481bc0aea931abe946751415f1e1614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4e184f827875ebebd40ab976ef63e77ee702d49
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311813"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126034"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>在 Azure App Service 的程式碼中使用 TLS/SSL 憑證
 
@@ -20,7 +20,7 @@ ms.locfileid: "91311813"
 
 當您讓 App Service 管理 TLS/SSL 憑證時，您可以個別維護憑證和應用程式程式碼，並保護您的敏感性資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要遵循本操作說明指南：
 
@@ -31,7 +31,7 @@ ms.locfileid: "91311813"
 
 在 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>的左側功能表中，選取 [應用程式服務] > \<app-name>。
 
-從應用程式的左側導覽中，選取 [ **TLS/SSL 設定**]，然後選取 [ **私密金鑰憑證 ( .pfx) ** 或 [ **公開金鑰憑證] ( .cer) **。
+從應用程式的左側導覽中，選取 [ **TLS/SSL 設定** ]，然後選取 [ **私密金鑰憑證 ( .pfx)** 或 [ **公開金鑰憑證] ( .cer)** 。
 
 尋找您要使用的憑證，然後複製憑證指紋。
 
@@ -49,10 +49,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="load-certificate-in-windows-apps"></a>在 Windows 應用程式中載入憑證
 
-`WEBSITE_LOAD_CERTIFICATES`應用程式設定可讓您在 windows 憑證存放區中的 windows 裝載應用程式存取指定的憑證，而該位置取決於[定價層](overview-hosting-plans.md)：
-
-- **隔離** 層-在 [本機 Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores)中。 
-- 所有其他層級- [目前的 User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores)。
+`WEBSITE_LOAD_CERTIFICATES`應用程式設定可讓您在 windows 憑證存放區中的 windows 裝載應用程式存取指定的憑證（在[目前的 User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores)中）。
 
 在 c # 程式碼中，您會透過憑證指紋來存取憑證。 下列程式碼會載入指紋為 `E661583E8FABEF4C0BEF694CBC41C28FB81CD870` 的憑證。
 
@@ -151,7 +148,7 @@ var cert = new X509Certificate2(bytes);
 > App Service 將憑證路徑插入 Windows 容器中，作為下列環境變數 `WEBSITE_PRIVATE_CERTS_PATH` 、 `WEBSITE_INTERMEDIATE_CERTS_PATH` 、 `WEBSITE_PUBLIC_CERTS_PATH` 和 `WEBSITE_ROOT_CERTS_PATH` 。 最好是使用環境變數來參考憑證路徑，而不是硬式編碼憑證路徑，以防日後的憑證路徑變更。
 >
 
-此外， [Windows Server Core 容器](configure-custom-container.md#supported-parent-images) 會在 **LocalMachine\My**中自動將憑證載入至憑證存放區。 若要載入憑證，請遵循與 [Windows 應用程式中的載入憑證](#load-certificate-in-windows-apps)相同的模式。 針對以 Windows Nano 為基礎的容器，請使用上述提供的檔案路徑， [直接從檔案載入憑證](#load-certificate-from-file)。
+此外， [Windows Server Core 容器](configure-custom-container.md#supported-parent-images) 會在 **LocalMachine\My** 中自動將憑證載入至憑證存放區。 若要載入憑證，請遵循與 [Windows 應用程式中的載入憑證](#load-certificate-in-windows-apps)相同的模式。 針對以 Windows Nano 為基礎的容器，請使用上述提供的檔案路徑， [直接從檔案載入憑證](#load-certificate-from-file)。
 
 下列 c # 程式碼說明如何在 Linux 應用程式中載入公開憑證。
 

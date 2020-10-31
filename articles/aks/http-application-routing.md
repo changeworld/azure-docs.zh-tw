@@ -6,12 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: laevenso
-ms.openlocfilehash: 08835bda959fb4fe261e86e4d519ab85bd2a4625
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbedb20d9e5c75fd49c08950bbf5d459130206ce
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87495143"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125864"
 ---
 # <a name="http-application-routing"></a>HTTP 應用程式路由
 
@@ -26,8 +26,8 @@ HTTP 應用程式路由解決方案可讓您輕鬆存取已部署至 Azure Kuber
 
 附加元件會部署兩個元件： [Kubernetes 輸入控制器][ingress] 和 [外部 DNS][external-dns] 控制器。
 
-- **輸入控制器**：輸入控制器會使用 LoadBalancer 類型的 Kubernetes 服務來向網際網路公開。 輸入控制器會監看並實行 [Kubernetes 輸入資源][ingress-resource]，以建立應用程式端點的路由。
-- **External-DNS 控制器**：監看 Kubernetes 輸入資源，並在叢集特有的 DNS 區域中建立 DNS A 記錄。
+- **輸入控制器** ：輸入控制器會使用 LoadBalancer 類型的 Kubernetes 服務來向網際網路公開。 輸入控制器會監看並實行 [Kubernetes 輸入資源][ingress-resource]，以建立應用程式端點的路由。
+- **External-DNS 控制器** ：監看 Kubernetes 輸入資源，並在叢集特有的 DNS 區域中建立 DNS A 記錄。
 
 ## <a name="deploy-http-routing-cli"></a>部署 HTTP 路由：CLI
 
@@ -40,7 +40,7 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --enable-addo
 > [!TIP]
 > 如果您想要啟用多個附加元件，請以逗號分隔的清單來提供它們。 例如，若要啟用 HTTP 應用程式路由和監視，請使用格式 `--enable-addons http_application_routing,monitoring`。
 
-您也可以使用 [az aks enable-addons][az-aks-enable-addons] 命令，在現有 AKS 叢集上啟用 HTTP 路由。 若要在現有叢集上啟用 HTTP 路由，請新增 `--addons` 參數並指定 *http_application_routing*，如下列範例所示：
+您也可以使用 [az aks enable-addons][az-aks-enable-addons] 命令，在現有 AKS 叢集上啟用 HTTP 路由。 若要在現有叢集上啟用 HTTP 路由，請新增 `--addons` 參數並指定 *http_application_routing* ，如下列範例所示：
 
 ```azurecli
 az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing
@@ -78,7 +78,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query addonPr
 az aks install-cli
 ```
 
-若要設定 `kubectl` 以連線到 Kubernetes 叢集，請使用 [az aks get-credentials][] 命令。 下列範例會取得*MyResourceGroup*中名為*MyAKSCluster*之 AKS 叢集的認證：
+若要設定 `kubectl` 以連線到 Kubernetes 叢集，請使用 [az aks get-credentials][] 命令。 下列範例會取得 *MyResourceGroup* 中名為 *MyAKSCluster* 之 AKS 叢集的認證：
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKSCluster
@@ -112,7 +112,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -163,7 +163,7 @@ service/aks-helloworld created
 ingress.networking.k8s.io/aks-helloworld created
 ```
 
-開啟網頁瀏覽器以*aks-helloworld。 \<CLUSTER_SPECIFIC_DNS_ZONE\> *例如， *aks-helloworld.9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io*並確認您看到示範應用程式。 應用程式可能需要幾分鐘的時間才會出現。
+開啟網頁瀏覽器以 *aks-helloworld。 \<CLUSTER_SPECIFIC_DNS_ZONE\>* 例如， *aks-helloworld.9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io* 並確認您看到示範應用程式。 應用程式可能需要幾分鐘的時間才會出現。
 
 ## <a name="remove-http-routing"></a>移除 HTTP 路由
 
@@ -173,9 +173,9 @@ HTTP 路由解決方案可以使用 Azure CLI 來移除。 若要執行此動作
 az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myResourceGroup --no-wait
 ```
 
-停用 HTTP 應用程式路由附加元件時，某些 Kubernetes 資源可能會留在叢集中。 這些資源包括 configMaps** 和 secrets**，且會建立在 kube-system** 命名空間中。 為了讓叢集保持乾淨，建議您移除這些資源。
+停用 HTTP 應用程式路由附加元件時，某些 Kubernetes 資源可能會留在叢集中。 這些資源包括 configMaps  和 secrets  ，且會建立在 kube-system  命名空間中。 為了讓叢集保持乾淨，建議您移除這些資源。
 
-使用下列 [kubectl get][kubectl-get] 命令尋找 addon-http-application-routing** 資源：
+使用下列  資源：
 
 ```console
 kubectl get deployments --namespace kube-system
@@ -275,7 +275,7 @@ service "aks-helloworld" deleted
 ingress "aks-helloworld" deleted
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需在 AKS 中安裝 HTTPS 所保護之輸入控制器的相關資訊，請參閱 [Azure Kubernetes Service (AKS) 上的 HTTPS 輸入][ingress-https]。
 

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: 35aff26eac3dd456db55204b662cb9b8a6bb9f2b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 7c16e3b991bffd9c6bbcc4759a07b9e122ef5b72
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672987"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125337"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>建立和使用主動式異地複寫-Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -132,7 +132,7 @@ ms.locfileid: "92672987"
 > 主要複本上的交易記錄速率可能會因為與次要複本上較低計算大小無關的原因而受到節流。 即使次要資料庫具有與主資料庫相同或更高的計算大小，也可能會發生這種節流。 如需詳細資料，包括不同類型記錄速率節流的等候類型，請參閱 [交易記錄速率管理](resource-limits-logical-server.md#transaction-log-rate-governance)。
 
 > [!NOTE]
-> Azure SQL Database 可設定的備份儲存體冗余現已在東南亞 Azure 區域中正式推出。 使用本機冗余或區域重複的備份儲存體冗余建立源資料庫時，不支援在不同的 Azure 區域中建立次要資料庫。 
+> Azure SQL Database 可設定的備份儲存體冗余目前在巴西南部提供公開預覽，且僅在東南亞 Azure 區域正式推出。 使用本機冗余或區域重複的備份儲存體冗余建立源資料庫時，不支援在不同的 Azure 區域中建立次要資料庫。 
 
 如需 SQL Database 計算大小的詳細資訊，請參閱 [SQL Database 服務層是什麼](purchasing-models.md)。
 

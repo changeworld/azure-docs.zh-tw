@@ -1,6 +1,6 @@
 ---
 title: 啟用虛刪除 - Azure 檔案共用
-description: 瞭解如何在 Azure 檔案共用上啟用「虛刪除」 (預覽版) 以進行資料復原，並防止意外刪除。
+description: 了解如何在 Azure 檔案共用上啟用虛刪除以進行資料復原，以及防止意外刪除。
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -8,16 +8,16 @@ ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 2d2a000879a95f86a6cdda3324add5b692476eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7defa8611080027a67a0d1db1daa4c4a9d44edfe
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88590110"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126136"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>在 Azure 檔案共用上啟用虛刪除
 
-Azure 儲存體為檔案共用提供 (preview) 的虛刪除，讓您可以在應用程式或其他儲存體帳戶使用者錯誤地刪除資料時，更輕鬆地復原資料。 若要深入了解虛刪除，請參閱[如何防止意外刪除 Azure 檔案共用](storage-files-prevent-file-share-deletion.md)。
+Azure 儲存體提供檔案共用的虛刪除功能，因此，當應用程式或其他儲存體帳戶使用者錯誤地刪除您的資料時，您將可更輕鬆地復原資料。 若要深入了解虛刪除，請參閱[如何防止意外刪除 Azure 檔案共用](storage-files-prevent-file-share-deletion.md)。
 
 下列各節說明如何在現有的儲存體帳戶上，啟用和使用 Azure 檔案共用的虛刪除：
 
@@ -37,9 +37,9 @@ Azure 儲存體為檔案共用提供 (preview) 的虛刪除，讓您可以在應
 
 ## <a name="prerequisite"></a>必要條件
 
-虛刪除 Cmdlet 目前僅適用于 [2.1.1-preview](https://www.powershellgallery.com/packages/Az.Storage/2.1.1-preview) 和 [2.3.1-預覽](https://www.powershellgallery.com/packages/Az.Storage/2.3.1-preview) 版本的 Az. Storage 模組。 
+[3.0.0](https://www.powershellgallery.com/packages/Az.Storage/3.0.0)版的 Az. Storage 模組提供虛刪除 Cmdlet。 
 
-## <a name="getting-started"></a>開始使用
+## <a name="getting-started-with-powershell"></a>開始使用 PowerShell
 
 若要啟用虛刪除，您必須更新檔案用戶端的服務屬性。 下列範例會為儲存體帳戶中的所有檔案共用啟用虛刪除：
 
@@ -78,7 +78,7 @@ Get-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-您可以在 2.1.1-preview 版本的 Az. Storage 模組中使用虛刪除 Cmdlet。 若要還原虛刪除的檔案共用，請使用下列命令：
+3.0.0 版的 Az. Storage 模組提供虛刪除 Cmdlet。 若要還原虛刪除的檔案共用，請使用下列命令：
 
 ```azurepowershell-interactive
 Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $accountName -DeletedShareVersion 01D5E2783BDCDA97
@@ -99,13 +99,13 @@ Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $account
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-您可以在 2.1.1-preview 版本的 Az. Storage 模組中使用虛刪除 Cmdlet。 您可以使用下列命令，在儲存體帳戶上停用虛刪除：
+3.0.0 版的 Az. Storage 模組提供虛刪除 Cmdlet。 您可以使用下列命令，在儲存體帳戶上停用虛刪除：
 
 ```azurepowershell-interactive
 Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName $accountName -EnableShareDeleteRetentionPolicy $false
 ```
 ---
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要瞭解另一種形式的資料保護和復原，請參閱 [Azure 檔案儲存體的共用快照集簡介](storage-snapshots-files.md)。

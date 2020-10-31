@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: c421c730321213a9adbf0a0043874a21ba26bb05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2afebe61c4b2998692c823e66d8fc73584ec1dc2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906245"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125643"
 ---
 # <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>匯出 Azure 串流分析作業的 Azure Resource Manager 範本
 
@@ -24,7 +24,7 @@ ms.locfileid: "90906245"
 
 您必須先在 Visual Studio Code 中開啟現有的串流分析作業，才能匯出範本。 
 
-若要將作業匯出至本機專案，請在 Azure 入口網站的 **串流分析 Explorer** 中找出您想要匯出的作業。 在 [ **查詢** ] 頁面中，選取 [ **在 Visual Studio 中開啟**]。 然後選取 [ **Visual Studio Code**]。
+若要將作業匯出至本機專案，請在 Azure 入口網站的 **串流分析 Explorer** 中找出您想要匯出的作業。 在 [ **查詢** ] 頁面中，選取 [ **在 Visual Studio 中開啟** ]。 然後選取 [ **Visual Studio Code** ]。
 
 ![在 Visual Studio Code 中開啟串流分析作業](./media/resource-manager-export/open-job-vs-code.png)
 
@@ -42,13 +42,13 @@ ms.locfileid: "90906245"
 
 1. 請注意，[ **部署** ] 資料夾會出現在 [串流分析工作] 工作區中。
 
-1. 探索檔案 * 上的JobTemplate.js* ，這是用來部署的 Azure 資源管理範本。
+1. 探索檔案 *上的JobTemplate.js* ，這是用來部署的 Azure 資源管理範本。
 
 ## <a name="complete-the-parameters-file"></a>完成參數檔案
 
 接下來，完成 Azure 資源管理範本參數檔案。
 
-1. 在 Visual Studio Code 的串流分析作業工作區的 [部署] 資料夾中，開啟位於 [**部署**] 資料夾內的*JobTemplate.parameters.js* 。
+1. 在 Visual Studio Code 的串流分析作業工作區的 [部署] 資料夾中，開啟位於 [ **部署** ] 資料夾內的 *JobTemplate.parameters.js* 。
 
 1. 請注意，輸入和輸出索引鍵為 null。 將 null 值取代為輸入和輸出資源的實際存取金鑰。
 
@@ -58,9 +58,9 @@ ms.locfileid: "90906245"
 
 您已經準備好使用您在上一節中產生的 Azure Resource Manager 範本來部署 Azure 串流分析作業。
 
-在 PowerShell 視窗中，執行下列命令。 請務必使用您實際*JobTemplate.js*的資源組名來 reaplce *ResourceGroupName*、 *TemplateFile*和 *>templateparameterfile* ，並在工作區的 [**部署] 資料夾**中*JobTemplate.parameters.js*檔案的完整檔案路徑。
+在 PowerShell 視窗中，執行下列命令。 請務必使用您實際 *JobTemplate.js* 的資源組名來 reaplce *ResourceGroupName* 、 *TemplateFile* 和 *>templateparameterfile* ，並在工作區的 [ **部署] 資料夾** 中 *JobTemplate.parameters.js* 檔案的完整檔案路徑。
 
-如果您未設定 Azure PowerShell，請依照 [安裝 Azure PowerShell 課程模組](https://docs.microsoft.com/powershell/azure/install-Az-ps)中的步驟執行。
+如果您未設定 Azure PowerShell，請依照 [安裝 Azure PowerShell 課程模組](/powershell/azure/install-Az-ps)中的步驟執行。
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName "<your resource group>" -TemplateFile "<path to JobTemplate.json>" -TemplateParameterFile "<path to JobTemplate.parameters.json>"

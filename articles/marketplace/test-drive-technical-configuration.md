@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 1772a61f45d88e0b63346c41d557cfddf35ab4a7
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: bf253c4e3b273bc1500e5abbd4dfc045a7909ffd
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892616"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125677"
 ---
 # <a name="test-drive-technical-configuration"></a>試用產品技術設定
 
@@ -50,7 +50,7 @@ Microsoft 可以藉由裝載和維護服務布建和解除布建，來消除設�
 
 - **試用產品持續時間** (必要) – 輸入試用產品將維持可用的持續時間，以 # 小時數表示。 在此持續時間過後，試用產品將會自動終止。
 
-- **Azure 資源組名** (必要) –輸入您的邏輯應用程式試用產品儲存所在的 [azure 資源群組](../azure-resource-manager/resource-group-overview.md#resource-groups)) 名稱。
+- **Azure 資源組名** (必要) –輸入您的邏輯應用程式試用產品儲存所在的 [azure 資源群組](../azure-resource-manager/management/overview.md#resource-groups)) 名稱。
 
 - **Azure 邏輯應用程式名稱** (必要) – 輸入將試用產品指派給使用者的邏輯應用程式名稱。 此邏輯應用程式必須儲存在上述的 Azure 資源群組中。
 
@@ -60,7 +60,7 @@ Microsoft 可以藉由裝載和維護服務布建和解除布建，來消除設�
 
 若需要示範產品的互動式 Power BI 視覺效果，可以使用內嵌連結共用自訂建置儀表板作為其試用產品，無須進一步的技術設定。 您只需要上傳內嵌的 Power BI URL。
 
-如需設定 Power BI 應用程式的詳細資訊，請參閱 [什麼是 Power BI 應用程式？](https://docs.microsoft.com/power-bi/service-template-apps-overview)
+如需設定 Power BI 應用程式的詳細資訊，請參閱 [什麼是 Power BI 應用程式？](/power-bi/service-template-apps-overview)
 
 ## <a name="deployment-subscription-details"></a>部署訂閱詳細資料
 

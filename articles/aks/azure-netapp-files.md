@@ -4,12 +4,12 @@ description: 瞭解如何整合 Azure NetApp Files 與 Azure Kubernetes Service
 services: container-service
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: 78119d3d7ff83ca237c1e668785439d943dcfd14
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: bc65c3dfad4c27c1650054c6836fbbbf07a7dbf2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900403"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126248"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>整合 Azure NetApp Files 與 Azure Kubernetes Service
 
@@ -29,7 +29,6 @@ ms.locfileid: "92900403"
 
 * Azure NetApp Files 僅適用 [于所選的 azure 區域][anf-regions]。
 * 在您可以使用 Azure NetApp Files 之前，您必須先獲得 Azure NetApp Files 服務的存取權。 若要申請存取權，您可以使用 [Azure NetApp Files 等候清單提交表單][anf-waitlist]。 在您收到來自 Azure NetApp Files 團隊的官方確認電子郵件之前，您無法存取 Azure NetApp Files 服務。
-* 您的 Azure NetApp Files 服務必須建立在與 AKS 叢集相同的虛擬網路中。
 * 初始部署 AKS 叢集之後，只支援 Azure NetApp Files 的靜態布建。
 * 若要搭配 Azure NetApp Files 使用動態布建，請安裝和設定 [NetApp Trident](https://netapp-trident.readthedocs.io/) 19.07 版或更新版本。
 

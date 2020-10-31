@@ -3,16 +3,16 @@ title: 部署已啟用 GPU 的容器實例
 description: 瞭解如何部署 Azure 容器實例，以使用 GPU 資源來執行需要大量計算的容器應用程式。
 ms.topic: article
 ms.date: 07/22/2020
-ms.openlocfilehash: 19240560baa0cebdb6777d7b63d8c91832b12e1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d645d1fce24d1324e485d74e20bcf492d4444a7
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387079"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127003"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>部署使用 GPU 資源的容器執行個體
 
-若要在 Azure 容器實例上執行某些需要大量計算的工作負載，請使用*GPU 資源*部署[容器群組](container-instances-container-groups.md)。 群組中的容器執行個體可以存取一或多個 NVIDIA Tesla GPU，同時執行容器工作負載，例如 CUDA 和深度學習應用程式。
+若要在 Azure 容器實例上執行某些需要大量計算的工作負載，請使用 *GPU 資源* 部署 [容器群組](container-instances-container-groups.md)。 群組中的容器執行個體可以存取一或多個 NVIDIA Tesla GPU，同時執行容器工作負載，例如 CUDA 和深度學習應用程式。
 
 本文說明如何在使用 [YAML](container-instances-multi-container-yaml.md) 檔或 [Resource Manager 範本](container-instances-multi-container-group.md)部署容器群組時，新增 GPU 資源。 當您使用 Azure 入口網站部署容器實例時，也可以指定 GPU 資源。
 
@@ -27,18 +27,18 @@ ms.locfileid: "87387079"
 
 會隨時間新增其他區域的支援。
 
-**支援的 OS 類型**：僅限 Linux
+**支援的 OS 類型** ：僅限 Linux
 
-**其他限制**：將容器群組部署至 [虛擬網路](container-instances-vnet.md)時，無法使用 GPU 資源。
+**其他限制** ：將容器群組部署至 [虛擬網路](container-instances-vnet.md)時，無法使用 GPU 資源。
 
 ## <a name="about-gpu-resources"></a>關於 GPU 資源
 
 ### <a name="count-and-sku"></a>計數和 SKU
 
-若要在容器執行個體中使用 GPU，請使用下列資訊來指定「GPU 資源」**：
+若要在容器執行個體中使用 GPU，請使用下列資訊來指定「GPU 資源」  ：
 
-* **計數** -gpu 數目： **1**、 **2**或 **4**。
-* **SKU** -GPU SKU： **K80**、 **P100**或 **V100**。 每個 SKU 都對應到下列其中一個啟用 GPU 的 Azure VM 系列的 NVIDIA Tesla GPU：
+* **計數** -gpu 數目： **1** 、 **2** 或 **4** 。
+* **SKU** -GPU SKU： **K80** 、 **P100** 或 **V100** 。 每個 SKU 都對應到下列其中一個啟用 GPU 的 Azure VM 系列的 NVIDIA Tesla GPU：
 
   | SKU | VM 系列 |
   | --- | --- |
@@ -55,9 +55,9 @@ ms.locfileid: "87387079"
 
 ### <a name="things-to-know"></a>須知事項
 
-* **部署時間** - 建立包含 GPU 資源的容器群組需要最多 **8-10 分鐘**。 這是因為在 Azure 中佈建和設定 GPU VM 的額外時間。 
+* **部署時間** - 建立包含 GPU 資源的容器群組需要最多 **8-10 分鐘** 。 這是因為在 Azure 中佈建和設定 GPU VM 的額外時間。 
 
-* **定價** - 類似於沒有 GPU 資源的容器群組，Azure 是以含 GPU 資源的容器群組在其「持續時間」** 內所耗用的資源來計費。 持續時間是從提取您第一個容器的映像開始計算，直到容器群組終止。 不包含部署容器群組的時間。
+*  內所耗用的資源來計費。 持續時間是從提取您第一個容器的映像開始計算，直到容器群組終止。 不包含部署容器群組的時間。
 
   請參閱[定價詳細資料](https://azure.microsoft.com/pricing/details/container-instances/)。
 
@@ -91,7 +91,7 @@ properties:
   restartPolicy: OnFailure
 ```
 
-使用 [az container create][az-container-create] 命令部署容器群組，並指定參數的 YAML 檔名稱 `--file` 。 您需要提供資源群組的名稱和容器群組的位置，例如支援 GPU 資源的 *eastus*。  
+使用 [az container create][az-container-create] 命令部署容器群組，並指定參數的 YAML 檔名稱 `--file` 。 您需要提供資源群組的名稱和容器群組的位置，例如支援 GPU 資源的 *eastus* 。  
 
 ```azurecli
 az container create --resource-group myResourceGroup --file gpu-deploy-aci.yaml --location eastus
@@ -133,7 +133,7 @@ Done
     },
     "variables": {
       "containername": "gpucontainer",
-      "containerimage": "microsoft/samples-tf-mnist-demo:gpu"
+      "containerimage": "mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu"
     },
     "resources": [
       {
@@ -168,7 +168,7 @@ Done
 }
 ```
 
-使用 [az deployment group create][az-deployment-group-create] 命令部署範本。 您需要提供資源群組的名稱，且該資源群組需要是建立在支援 GPU 資源的區域 (如 *eastus*)。
+使用 [az deployment group create][az-deployment-group-create] 命令部署範本。 您需要提供資源群組的名稱，且該資源群組需要是建立在支援 GPU 資源的區域 (如 *eastus* )。
 
 ```azurecli-interactive
 az deployment group create --resource-group myResourceGroup --template-file gpudeploy.json

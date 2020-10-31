@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 08/27/2020
-ms.openlocfilehash: d794716fe1f4717acbabfd90643b72c682e475bc
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 9f58d03e2cfa7e1ab9c359cdb6600c42c8970a9a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370588"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125796"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>在合作夥伴中心管理您的商業市集帳戶
 
@@ -45,10 +45,10 @@ ms.locfileid: "92370588"
 ![合作夥伴中心的 [帳戶設定] 功能表](./media/dashboard-developer-settings.png)
 
 在 [帳戶設定] 內，您將能夠檢視：
-- **帳戶詳細資料**：帳戶類型和帳戶狀態
-- **發行者識別碼**：賣方識別碼、使用者識別碼、發行者識別碼、Azure AD 租用戶等
-- **連絡人資訊**：發行者顯示名稱、賣方連絡人名稱、電子郵件、電話和地址
-- **追蹤 GUID**：與您的帳戶相關聯的任何追蹤 GUID
+- **帳戶詳細資料** ：帳戶類型和帳戶狀態
+- **發行者識別碼** ：賣方識別碼、使用者識別碼、發行者識別碼、Azure AD 租用戶等
+- **連絡人資訊** ：發行者顯示名稱、賣方連絡人名稱、電子郵件、電話和地址
+- **追蹤 GUID** ：與您的帳戶相關聯的任何追蹤 GUID
 
 ### <a name="account-details"></a>帳戶詳細資料
 
@@ -70,8 +70,8 @@ ms.locfileid: "92370588"
 
 1. 請前往合作夥伴中心的[商業市集概觀頁面](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)。
 2. 在 [設定檔] 區段下的 [Payout Profile] \(支出設定檔\) 旁，選取 [更新]。
-3. **選擇付款方式**：銀行帳戶或 PayPal。
-4. **新增付款資訊**：這可能包括選擇帳戶類型 (支票或儲蓄)、輸入帳戶持有人姓名、帳號和匯款選路編號、帳單地址、電話號碼，或 PayPal 電子郵件地址。 *如需使用 PayPal 作為帳戶付款方式的詳細資訊，並想要了解您的市場區域是否支援該方式，請參閱 [PayPal 資訊](https://docs.microsoft.com/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info)。
+3. **選擇付款方式** ：銀行帳戶或 PayPal。
+4. **新增付款資訊** ：這可能包括選擇帳戶類型 (支票或儲蓄)、輸入帳戶持有人姓名、帳號和匯款選路編號、帳單地址、電話號碼，或 PayPal 電子郵件地址。 *如需使用 PayPal 作為帳戶付款方式的詳細資訊，並想要了解您的市場區域是否支援該方式，請參閱 [PayPal 資訊](/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info)。
 
 > [!IMPORTANT]
 > 變更您的付款帳戶會延遲您的付款最多一次付款週期。 會發生此延遲是因為我們必須確認帳戶變更，就像我們在第一次設定支出帳戶時所做的一樣。 您仍然會在帳戶確認之後收到全額款項。當期付款週期未付的款項會新增至下一期。  
@@ -98,7 +98,7 @@ ms.locfileid: "92370588"
 
 如果您居住在美國境外，則可利用租稅協定減免優惠。 這些減免優惠會因國家/地區而異，並可讓您減少 Microsoft 扣繳的稅額。 您可以填妥 W-8BEN 表單的第二部分，來申請租稅協定減免優惠。 我們建議您與您所在國家或地區的適當資源進行通訊，以判斷您是否適用這些減免優惠。
 
-[深入了解 Windows 應用程式/遊戲開發人員和 Azure Marketplace 發行者的稅務詳細資料](https://docs.microsoft.com/windows/uwp/publish/tax-details-for-paid-apps)。
+[深入了解 Windows 應用程式/遊戲開發人員和 Azure Marketplace 發行者的稅務詳細資料](/windows/uwp/publish/tax-details-for-paid-apps)。
 
 #### <a name="payout-hold-status"></a>支出保留狀態
 
@@ -109,11 +109,11 @@ ms.locfileid: "92370588"
 一旦您將支出保留狀態設定為 [開啟]，則會保留所有支出，直到您將滑桿切換回 [關閉] 為止。 當您這麼做時，系統會將您包含在下一個月支出週期中 (前提是已達到任何適用的付款閾值)。 例如，如果您已保留支出，但想要在 6 月產生支出，則請務必在 5 月底前將支出保留狀態切換至 [關閉]。
 
 > [!NOTE]
-> 您的 [Payout hold status] \(支出保留狀態\) 選項適用於**所有**透過 Microsoft 合作夥伴中心支付的收入來源，包括 Azure Marketplace、AppSource、Microsoft Store、廣告等。 您無法為每個收入來源選取不同的保留狀態。
+> 您的 [Payout hold status] \(支出保留狀態\) 選項適用於 **所有** 透過 Microsoft 合作夥伴中心支付的收入來源，包括 Azure Marketplace、AppSource、Microsoft Store、廣告等。 您無法為每個收入來源選取不同的保留狀態。
 
 ### <a name="devices"></a>裝置
 
-裝置管理設定僅適用於 UWP 發行。 [深入了解](https://docs.microsoft.com/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info)。
+裝置管理設定僅適用於 UWP 發行。 [深入了解](/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info)。
 
 ### <a name="tracking-guids"></a>追蹤 GUID
 
@@ -134,7 +134,7 @@ ms.locfileid: "92370588"
 
 ## <a name="create-a-billing-profile"></a>建立帳單設定檔
 
-如果您要發行 [Dynamics 365 for Customer Engagement & Power Apps](./create-new-customer-engagement-offer.md) 或 [Dynamics 365 for Operations](./create-new-operations-offer.md) 供應項目，您需要完成**帳單設定檔**。
+如果您要發行 [Dynamics 365 for Customer Engagement & Power Apps](./create-new-customer-engagement-offer.md) 或 [Dynamics 365 for Operations](./create-new-operations-offer.md) 供應項目，您需要完成 **帳單設定檔** 。
 
 系統會預先填入您法律實體的帳單地址，稍後可以更新此地址。 [稅金] 和 [加值稅識別碼] 欄位為選擇性。  無法編輯國家/地區名稱和公司名稱。
 
@@ -144,7 +144,7 @@ ms.locfileid: "92370588"
 
 ## <a name="manage-users"></a>管理使用者
 
-[合作夥伴中心] 的 [使用者] 區段 (在 [帳戶設定] 下) 可讓您使用 Azure AD 管理能存取合作夥伴中心帳戶的使用者、群組和 Azure AD 應用程式。 您的帳戶必須具有要新增或編輯使用者之[公司帳戶 (Azure AD 租用戶)](./company-work-accounts.md) 的[**管理員層級**](#define-user-roles-and-permissions)權限。 若要管理不同公司帳戶/租用戶中的使用者，您必須登出，然後以具有該公司帳戶/租用戶**管理員**權限的使用者身分重新登入。
+[合作夥伴中心] 的 [使用者] 區段 (在 [帳戶設定] 下) 可讓您使用 Azure AD 管理能存取合作夥伴中心帳戶的使用者、群組和 Azure AD 應用程式。 您的帳戶必須具有要新增或編輯使用者之 [公司帳戶 (Azure AD 租用戶)](./company-work-accounts.md) 的 [**管理員層級**](#define-user-roles-and-permissions)權限。 若要管理不同公司帳戶/租用戶中的使用者，您必須登出，然後以具有該公司帳戶/租用戶 **管理員** 權限的使用者身分重新登入。
 
 使用您的公司帳戶 (Azure AD 租用戶) 登入之後，您可以：
 
@@ -164,18 +164,18 @@ ms.locfileid: "92370588"
 1. 移至 [使用者] (在 [帳戶設定] 下)，然後選取 [新增使用者]。
 2. 從顯示的清單中選取一或多個使用者。 您可以使用搜尋方塊來搜尋特定使用者。
 *如果您要選取多個使用者新增至您的合作夥伴中心帳戶，您必須為其指派相同的角色或一組相同的自訂權限。 若要新增具有不同角色/權限的多個使用者，請針對每個角色或每組自訂權限重複這些步驟。
-3. 當您完成選擇使用者時，請選取 [ **新增選取**的]。
+3. 當您完成選擇使用者時，請選取 [ **新增選取** 的]。
 4. 在 [角色] 區段中，指定所選使用者的角色或自訂權限。
 5. 選取 [儲存]。
 
 ### <a name="create-new-users"></a>建立新的使用者
 
-若要建立全新的使用者帳戶，您必須擁有具備[**全域管理員**](../../active-directory/roles/permissions-reference.md)權限的帳戶。
+若要建立全新的使用者帳戶，您必須擁有具備 [**全域管理員**](../../active-directory/roles/permissions-reference.md)權限的帳戶。
 
 1. 移至 [使用者] (在 [帳戶設定] 下)，選取 [新增使用者]，然後選擇 [建立新的使用者]。
 1. 輸入每個新使用者的名字、姓氏和使用者名稱。 
 1. 如果您想要讓新使用者擁有您組織目錄中的全域管理員帳戶，請核取標示為 [Make this user a Global administrator in your Azure AD, with full control over all directory resources] \(將此使用者設為 Azure AD 中可完整控制所有目錄資源的全域管理員\) 的方塊。 這可讓使用者完整存取您公司 Azure AD 中的所有系統管理功能。 他們將能夠在您組織的公司帳戶 (Azure AD 租用戶) 中新增和管理使用者，但無法在合作夥伴中心進行，除非您將適當的角色/權限授與該帳戶。
-1. 如果您核取 [Make this user a Global administrator] \(將此使用者設為全域管理員\) 方塊，您就必須提供**密碼復原電子郵件**，以便使用者能夠在必要時復原其密碼。
+1. 如果您核取 [Make this user a Global administrator] \(將此使用者設為全域管理員\) 方塊，您就必須提供 **密碼復原電子郵件** ，以便使用者能夠在必要時復原其密碼。
 1. 在 [群組成員資格] 區段中，選取新使用者所屬的任意群組。
 1. 在 [角色] 區段中，指定使用者的角色或自訂權限。
 1. 選取 [儲存]。
@@ -184,7 +184,7 @@ ms.locfileid: "92370588"
 
 ### <a name="invite-new-users-by-email"></a>透過電子郵件邀請新的使用者
 
-若要透過電子郵件邀請目前不屬於您公司帳戶 (Azure AD 租用戶) 的使用者，您必須擁有具備[**全域管理員**](../../active-directory/roles/permissions-reference.md)權限的帳戶。
+若要透過電子郵件邀請目前不屬於您公司帳戶 (Azure AD 租用戶) 的使用者，您必須擁有具備 [**全域管理員**](../../active-directory/roles/permissions-reference.md)權限的帳戶。
 
 1. 移至 [使用者] (在 [帳戶設定] 下)，選取 [新增使用者]，然後選擇 [Invite users by email] \(透過電子郵件邀請使用者\)。
 2. 輸入一或多個電子郵件地址， (最多10個) （以逗號或分號分隔）。
@@ -196,7 +196,7 @@ ms.locfileid: "92370588"
 如果您需要重新傳送邀請，請前往 [使用者] 頁面，在使用者清單中尋找邀請，然後選取其電子郵件地址 (或顯示「待決邀請」的文字)。 然後，選取頁面底部的 [重新傳送邀請]。
 
 > [!NOTE]
-> 如果您的組織使用[目錄整合](https://go.microsoft.com/fwlink/p/?LinkID=724033)來同步內部部署目錄服務與您的 Azure AD，您將無法在合作夥伴中心建立新的使用者、群組或 Azure AD 應用程式。 您 (或您內部部署目錄中的其他系統管理員) 必須直接在內部部署目錄中建立這些項目，才能在合作夥伴中心看到並新增這些項目。
+> 如果您的組織使用[目錄整合](/previous-versions/azure/azure-services/jj573653(v=azure.100))來同步內部部署目錄服務與您的 Azure AD，您將無法在合作夥伴中心建立新的使用者、群組或 Azure AD 應用程式。 您 (或您內部部署目錄中的其他系統管理員) 必須直接在內部部署目錄中建立這些項目，才能在合作夥伴中心看到並新增這些項目。
 
 ### <a name="remove-a-user"></a>移除使用者
 
@@ -204,7 +204,7 @@ ms.locfileid: "92370588"
 
 ### <a name="change-a-user-password"></a>變更使用者密碼
 
-如果有使用者需要變更其密碼，而且您在建立使用者帳戶時已提供**密碼復原電子郵件**，則該使用者可以自行執行這項操作。 您也可以依照下列步驟來更新使用者的密碼。 若要變更您公司帳戶 (Azure AD 租用戶) 的使用者密碼，您必須使用[**全域管理員**](../../active-directory/roles/permissions-reference.md)權限登入帳戶。 這會變更您 Azure AD 租使用者中的使用者密碼，以及他們用來存取合作夥伴中心的密碼。
+如果有使用者需要變更其密碼，而且您在建立使用者帳戶時已提供 **密碼復原電子郵件** ，則該使用者可以自行執行這項操作。 您也可以依照下列步驟來更新使用者的密碼。 若要變更您公司帳戶 (Azure AD 租用戶) 的使用者密碼，您必須使用 [**全域管理員**](../../active-directory/roles/permissions-reference.md)權限登入帳戶。 這會變更您 Azure AD 租使用者中的使用者密碼，以及他們用來存取合作夥伴中心的密碼。
 
 1. 從 [使用者] 頁面 (在 [帳戶設定] 下)，選取您要編輯的使用者帳戶名稱。
 2. 選取頁面底部的 [重設密碼] 按鈕。
@@ -221,7 +221,7 @@ ms.locfileid: "92370588"
 1. 從 [使用者] 頁面 (在 [帳戶設定] 下)，選取 [新增群組]。
 2. 從顯示的清單中選取一或多個群組。 您可以使用搜尋方塊來搜尋特定群組。
 如果您要選取多個群組新增至您的合作夥伴中心帳戶，您必須為其指派相同的角色或一組相同的自訂權限。 若要新增具有不同角色/權限的多個群組，請對每個角色或每組自訂權限重複這些步驟。
-3. 當您完成選擇群組時，請選取 [ **新增選取**的]。
+3. 當您完成選擇群組時，請選取 [ **新增選取** 的]。
 4. 在 [角色] 區段中，指定所選群組的角色或自訂權限。 群組的所有成員都能以您套用至群組的權限，存取您的合作夥伴中心帳戶，而不論與其個別帳戶相關聯的角色和權限為何。
 5. 選取 [儲存]。
 
@@ -237,7 +237,7 @@ ms.locfileid: "92370588"
 4. 指定群組的角色或自訂權限。 群組的所有成員都能以您在這裡套用的權限，存取您的合作夥伴中心帳戶，而不論與其個別帳戶相關聯的角色/權限為何。
 5. 從顯示的清單中選取新群組的使用者。 您可以使用搜尋方塊來搜尋特定使用者。
 6. 當您完成選取使用者時，請選取 [新增 **選取** 專案] 將其新增至新群組。
-7. 選取 [儲存]。
+7. 選取 [儲存]  。
 
 這個新群組也會在您組織的工作帳戶中建立 (Azure AD 租使用者) ，而不只是在您的合作夥伴中心帳戶中。
 
@@ -255,7 +255,7 @@ ms.locfileid: "92370588"
 
 1. 從 [使用者] 頁面 (在 [帳戶設定] 下)，選取 [新增 Azure AD 應用程式]。
 2. 從顯示的清單中選取一或多個 Azure AD 應用程式。 您可以使用搜尋方塊來搜尋特定 Azure AD 應用程式。 如果您要選取多個 Azure AD 應用程式新增至您的合作夥伴中心帳戶，您必須為其指派相同的角色或一組相同的自訂權限。 若要新增具有不同角色/權限的多個 Azure AD 應用程式，請對每個角色或每組自訂權限重複這些步驟。
-3. 當您完成選取 Azure AD 的應用程式時，請選取 [ **新增選取**的]。
+3. 當您完成選取 Azure AD 的應用程式時，請選取 [ **新增選取** 的]。
 4. 在 [角色] 區段中，指定所選 Azure AD 應用程式的角色或自訂權限。
 5. 選取 [儲存]。
 
@@ -266,7 +266,7 @@ ms.locfileid: "92370588"
 1. 從 [使用者] 頁面 (在 [帳戶設定] 下)，選取 [新增 Azure AD 應用程式]。
 2. 在下一個頁面上，選取 [新增 Azure AD 應用程式]。
 3. 輸入新 Azure AD 應用程式的 [回覆 URL]。 這是使用者可以登入並使用您 Azure AD 應用程式的 URL (有時也稱為「應用程式 URL」或「登入 URL」)。 [回覆 URL] 的長度不能超過 256 個字元，而且在您的目錄中必須是唯一的。
-4. 輸入新 Azure AD 應用程式的 [應用程式識別碼 URI]。 這是將單一登入要求傳送至 Azure AD 時，所顯示 Azure AD 應用程式的邏輯識別碼。 **應用程式識別碼 URI**必須是目錄中每個 Azure AD 應用程式的唯一識別碼。 此識別碼的長度不能超過 256 個字元。 如需應用程式識別碼 URI 的詳細資訊，請參閱將 [應用程式與 Azure Active Directory) 整合](../../active-directory/develop/quickstart-modify-supported-accounts.md#change-the-application-registration-to-support-different-accounts) 。
+4. 輸入新 Azure AD 應用程式的 [應用程式識別碼 URI]。 這是將單一登入要求傳送至 Azure AD 時，所顯示 Azure AD 應用程式的邏輯識別碼。 **應用程式識別碼 URI** 必須是目錄中每個 Azure AD 應用程式的唯一識別碼。 此識別碼的長度不能超過 256 個字元。 如需應用程式識別碼 URI 的詳細資訊，請參閱將 [應用程式與 Azure Active Directory) 整合](../../active-directory/develop/quickstart-modify-supported-accounts.md#change-the-application-registration-to-support-different-accounts) 。
 5. 在 [角色] 區段中，指定 Azure AD 應用程式的角色或自訂權限。
 6. 選取 [儲存]。
 
@@ -302,13 +302,13 @@ ms.locfileid: "92370588"
 > [!NOTE]
 > 在商業市集計畫，不會使用全域管理員、商務參與者、財務參與者和行銷人員角色。 指派這些角色給使用者不會有任何作用。 只有管理員和開發人員角色可授與權限給使用者。
 
-如需在合作夥伴中心的其他區域中管理角色和權限的詳細資訊，例如 Azure Active Directory (AD)、雲端解決方案提供者 (CSP)、控制台廠商 (CPV)、來賓使用者或 Microsoft 合作夥伴網路 (MPN)，請參閱[在合作夥伴中心指派使用者角色和權限](https://docs.microsoft.com/partner-center/permissions-overview)。
+如需在合作夥伴中心的其他區域中管理角色和權限的詳細資訊，例如 Azure Active Directory (AD)、雲端解決方案提供者 (CSP)、控制台廠商 (CPV)、來賓使用者或 Microsoft 合作夥伴網路 (MPN)，請參閱[在合作夥伴中心指派使用者角色和權限](/partner-center/permissions-overview)。
 
 ## <a name="manage-tenants"></a>管理租用戶
 
 Azure Active Directory (AD) 租用戶 (在此文件中也稱為您的「公司帳戶」) 代表您在 Azure 入口網站中設定的組織，可協助您為內部與外部使用者管理 Microsoft 雲端服務的特定執行個體。 如果您的組織已訂閱 Microsoft 雲端服務（例如 Azure、Microsoft Intune 或 Microsoft 365），就會為您建立 Azure AD 租使用者。
 
-您可以設定多個租用戶來搭配合作夥伴中心使用。 在合作夥伴中心帳戶內，所有具有**管理員**角色的使用者，都可以選擇從帳戶新增和移除 Azure AD 租用戶。  
+您可以設定多個租用戶來搭配合作夥伴中心使用。 在合作夥伴中心帳戶內，所有具有 **管理員** 角色的使用者，都可以選擇從帳戶新增和移除 Azure AD 租用戶。  
 
 ### <a name="add-an-existing-tenant"></a>新增現有的租用戶
 
@@ -326,9 +326,9 @@ Azure Active Directory (AD) 租用戶 (在此文件中也稱為您的「公司�
 
 1. 從 [租用戶] 頁面 (在 [帳戶設定] 下)，選取 [建立新的 Azure AD 租用戶]。
 2. 輸入新 Azure AD 的目錄資訊：
-    - **網域名稱**：我們將用於 Azure AD 網域的唯一名稱，後面接著 "onmicrosoft.com"。 例如，如果您輸入 "example"，您的 Azure AD 網域會是 "example.onmicrosoft.com"。
-    - **連絡人電子郵件**：我們可以在必要時就帳戶相關問題連絡您的電子郵件地址。
-    - **全域管理員使用者帳戶資訊**：您想要用於新全域管理員帳戶的名字、姓氏、使用者名稱和密碼。
+    - **網域名稱** ：我們將用於 Azure AD 網域的唯一名稱，後面接著 "onmicrosoft.com"。 例如，如果您輸入 "example"，您的 Azure AD 網域會是 "example.onmicrosoft.com"。
+    - **連絡人電子郵件** ：我們可以在必要時就帳戶相關問題連絡您的電子郵件地址。
+    - **全域管理員使用者帳戶資訊** ：您想要用於新全域管理員帳戶的名字、姓氏、使用者名稱和密碼。
 3. 選取 [建立]，確認新的網域和帳戶資訊。
 4. 使用新的 Azure AD 全域管理員使用者名稱和密碼登入，開始[新增和管理使用者](#manage-users)。
 
@@ -341,10 +341,10 @@ Azure Active Directory (AD) 租用戶 (在此文件中也稱為您的「公司�
 當您移除租用戶時，從該租用戶新增至合作夥伴中心帳戶的所有使用者將無法再登入該帳戶。
 
 > [!TIP]
-> 如果您目前使用相同租用戶中的帳戶登入合作夥伴中心，則無法移除租用戶。 若要移除租用戶，您必須以另一個租用戶 (與帳戶相關聯) 的**管理員**身分登入合作夥伴中心。 如果只有一個租用戶與此帳戶相關聯，則只有在用以開啟帳戶的 Microsoft 帳戶登入之後，才能移除該租用戶。
+> 如果您目前使用相同租用戶中的帳戶登入合作夥伴中心，則無法移除租用戶。 若要移除租用戶，您必須以另一個租用戶 (與帳戶相關聯) 的 **管理員** 身分登入合作夥伴中心。 如果只有一個租用戶與此帳戶相關聯，則只有在用以開啟帳戶的 Microsoft 帳戶登入之後，才能移除該租用戶。
 
 ## <a name="agreements"></a>合約
 
-[**帳戶) 設定**] 下合作夥伴中心 (的 [**協定**] 區段可讓您查看已授權的發行合約清單。 這些合約會根據名稱和版本號碼列出，包括接受日期和接受合約的使用者名稱。
+[ **帳戶) 設定** ] 下合作夥伴中心 (的 [ **協定** ] 區段可讓您查看已授權的發行合約清單。 這些合約會根據名稱和版本號碼列出，包括接受日期和接受合約的使用者名稱。
 
 如果有需要注意的合約更新，此頁面頂端可能會出現 [需要採取動作]。 若要接受更新的合約，請先閱讀連結的合約版本，再選取 [接受合約]。

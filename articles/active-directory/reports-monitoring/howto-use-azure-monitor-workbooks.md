@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 510991c1afba9a5ffbfd77e855ee25d8b641bdd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76dc7693b1773038d610f9ed42eddad2c81e3eaf
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226976"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126629"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>如何使用 Azure 監視器活頁簿建立 Azure Active Directory 報表
 
@@ -174,7 +174,7 @@ ms.locfileid: "89226976"
 
 針對已停用的登入，您可取得依條件式存取狀態顯示的明細。
 
-![條件式存取狀態](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
+![螢幕擷取畫面會顯示條件式存取狀態和最近的登入。](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
 
 
 ## <a name="conditional-access-insights"></a>條件式存取深入解析
@@ -194,12 +194,12 @@ ms.locfileid: "89226976"
 
 - **資料檢視**
 
-![條件式存取狀態](./media/howto-use-azure-monitor-workbooks/access-insights.png)
+![螢幕擷取畫面：顯示 [條件式存取] 窗格，您可以在其中選取條件式存取原則。](./media/howto-use-azure-monitor-workbooks/access-insights.png)
 
 
 [影響摘要] 會顯示所選原則對其具有特定結果的使用者或登入數目。 [總計] 是在所選時間範圍內對其評估所選原則的使用者或登入數目。 按一下磚即可依結果類型來篩選活頁簿中的資料。 
 
-![條件式存取狀態](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
+![螢幕擷取畫面顯示用來篩選結果的磚，例如總計、成功和失敗。](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
 
 此活頁簿也會顯示所選原則依六個條件任一個細分的影響： 
 - **裝置狀態**
@@ -209,15 +209,11 @@ ms.locfileid: "89226976"
 - **位置**
 - **應用程式**
 
-![條件式存取狀態](./media/howto-use-azure-monitor-workbooks/device-platform.png)
+![螢幕擷取畫面顯示 [登入總數] 篩選準則的詳細資料。](./media/howto-use-azure-monitor-workbooks/device-platform.png)
 
 您也可以調查依活頁簿中所選參數篩選的個別登入。 搜尋個別使用者 (依登入頻率排序)，然後檢視其對應的登入事件。 
 
-![條件式存取狀態](./media/howto-use-azure-monitor-workbooks/filtered.png)
-
-
-
-
+![螢幕擷取畫面：顯示您可以複習的個別登入。](./media/howto-use-azure-monitor-workbooks/filtered.png)
 
 ## <a name="sign-ins-by-grant-controls"></a>透過授與控制項的登入
 

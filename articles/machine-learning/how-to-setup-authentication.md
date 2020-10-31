@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 8eb042b214ba1e4aea1eda1c65996d55ddde216e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a23f44e60bd68e51c26cc6a0bbf3e85e64914135
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741883"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125762"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>設定 Azure Machine Learning 資源和工作流程的驗證
 
@@ -280,6 +280,62 @@ print(token_response)
 ```
 
 使用 `token_response["accessToken"]` 來擷取驗證權杖。 如需如何使用權杖進行 API 呼叫的範例，請參閱 [REST API 文件](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API)。
+
+#### <a name="java"></a>Java
+
+在 JAVA 中，使用標準 REST 呼叫來取得持有人權杖：
+
+```java
+String tenantId = "your-tenant-id";
+String clientId = "your-client-id";
+String clientSecret = "your-client-secret";
+String resourceManagerUrl = "https://management.azure.com";
+
+HttpRequest tokenAuthenticationRequest = tokenAuthenticationRequest(tenantId, clientId, clientSecret, resourceManagerUrl);
+
+HttpClient client = HttpClient.newBuilder().build();
+Gson gson = new Gson();
+HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+if (response.statusCode == 200)
+{
+     body = gson.fromJson(body, AuthenticationBody.class);
+
+    // ... etc ... 
+}
+// ... etc ...
+
+static HttpRequest tokenAuthenticationRequest(String tenantId, String clientId, String clientSecret, String resourceManagerUrl){
+    String authUrl = String.format("https://login.microsoftonline.com/%s/oauth2/token", tenantId);
+    String clientIdParam = String.format("client_id=%s", clientId);
+    String resourceParam = String.format("resource=%s", resourceManagerUrl);
+    String clientSecretParam = String.format("client_secret=%s", clientSecret);
+
+    String bodyString = String.format("grant_type=client_credentials&%s&%s&%s", clientIdParam, resourceParam, clientSecretParam);
+
+    HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create(authUrl))
+            .POST(HttpRequest.BodyPublishers.ofString(bodyString))
+            .build();
+    return request;
+}
+
+class AuthenticationBody {
+    String access_token;
+    String token_type;
+    int expires_in;
+    String scope;
+    String refresh_token;
+    String id_token;
+    
+    AuthenticationBody() {}
+}
+```
+
+上述程式碼必須處理以外的例外狀況和狀態碼 `200 OK` ，但會顯示模式： 
+
+- 使用用戶端識別碼和密碼來驗證您的程式是否應該具有存取權
+- 使用您的租使用者識別碼來指定 `login.microsoftonline.com` 應查看的位置
+- 使用 Azure Resource Manager 作為授權權杖的來源
 
 ## <a name="web-service-authentication"></a>Web 服務驗證
 
