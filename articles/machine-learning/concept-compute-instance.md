@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: d840fe5b6fde72149893a15ab9096d3880c1c8ea
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d4ae18b335453f3e1d3512951675afe10c804c8d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425669"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094416"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什麼是 Azure Machine Learning 計算執行個體？
 
@@ -25,6 +25,8 @@ Azure Machine Learning 計算實例是適用于資料科學家的受控雲端架
 在雲端中使用計算實例作為機器學習的完整設定和受控開發環境。 它們也可用來做為用於開發和測試之定型和推斷的計算目標。  
 
 針對生產等級模型定型，請使用具有多節點調整功能的 [Azure Machine Learning 計算](how-to-create-attach-compute-cluster.md) 叢集。 針對生產等級模型部署，請使用 [Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)叢集。
+
+若要讓計算執行個體 Jupyter 功能能夠運作，請確定您並未停用 Web 通訊端通訊。 請確定您的網路允許 websocket 連接到 *. instances.azureml.net 和 *. instances.azureml.ms。
 
 ## <a name="why-use-a-compute-instance"></a>為何要使用計算執行個體？
 
@@ -130,7 +132,7 @@ Python 套件全都安裝在 **Python 3.6 - AzureML** 環境中。
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>建立計算執行個體
 
-在 Azure Machine Learning studio 的工作區中，從 [**計算**] 區段或 [**筆記本**] 區段中[建立新的計算實例](how-to-create-attach-compute-studio.md#compute-instance)（當您準備好要執行其中一個筆記本時）。 
+在 Azure Machine Learning studio 的工作區中，從 [ **計算** ] 區段或 [ **筆記本** ] 區段中 [建立新的計算實例](how-to-create-attach-compute-studio.md#compute-instance)（當您準備好要執行其中一個筆記本時）。 
 
 您也可以透過下列方式建立執行個體：
 * 直接從 [整合式筆記本體驗](tutorial-1st-experiment-sdk-setup.md#azure)

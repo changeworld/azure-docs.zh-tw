@@ -8,14 +8,15 @@ ms.devlang: javascript
 ms.topic: how-to
 ms.date: 12/26/2018
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: ec7f233db34b00ad3904a0bb117b2a97c6512e34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 415fed38490000cecf1eeb916c557b8b17ea70da
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322711"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094790"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 適用於 MongoDB 的 API 讓資料過期
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 存留時間 (TTL) 功能可讓資料庫的資料自動到期。 Azure Cosmos DB 適用於 MongoDB 的 API 會使用 Cosmos DB 的核心 TTL 功能。 支援的模式有兩種：設定整個集合的預設 TTL 值，以及為每份文件設定個別的 TTL 值。 在 Cosmos DB 適用於 MongoDB 的 API 中控管 TTL 索引和個別文件 TTL 值的邏輯[與 Azure Cosmos DB 相同](../cosmos-db/mongodb-indexing.md)。
 

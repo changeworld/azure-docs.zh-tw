@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 5129b4fffafb6918f655263cac2f5564635acf36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbec4033d093d83925d1682eb7882587e0dc6ca5
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78303965"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93093634"
 ---
 # <a name="upper-azure-cosmos-db"></a>高 (Azure Cosmos DB) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  傳回將小寫字元資料轉換成大寫之後的字串運算式。  
 
 UPPER 系統函數不使用索引。 如果您打算經常進行不區分大小寫的比較，則上層系統函數可能會耗用大量的 RU。 如果是這種情況，而不是使用大寫系統函式，每次進行比較時都將資料正規化，您可以在插入時將大小寫標準化。 然後查詢（例如 SELECT * FROM c，其中 UPPER (c.name) = ' BOB '）只會變成 SELECT * FROM c WHERE c.name = ' BOB '。

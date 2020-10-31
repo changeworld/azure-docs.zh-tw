@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: d4934d784e871988b5bc30f7b7cf8c09651576e2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: e07e12e82d96b591db324673f4c24b9074128065
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330356"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092988"
 ---
 # <a name="execute-python-script-module"></a>執行 Python 腳本模組
 
@@ -37,7 +37,7 @@ Azure Machine Learning 使用 Python 的 Anaconda 散發，其中包含許多常
 
 如需完整清單，請參閱 [預先安裝的 Python 套件](#preinstalled-python-packages)一節。
 
-若要安裝不在預先安裝清單中的套件 (例如 *scikit-learn-其他*) ，請將下列程式碼新增至您的腳本： 
+若要安裝不在預先安裝清單中的套件 (例如 *scikit-learn-其他* ) ，請將下列程式碼新增至您的腳本： 
 
 ```python
 import os
@@ -110,26 +110,29 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 1. 將 [ **執行 Python 腳本** ] 模組新增至您的管線。
 
-2. 從您想要用於輸入的設計工具中，新增並連接 **Dataset1** 任何資料集。 在您的 Python 腳本中，以 **DataFrame1**的形式參考此資料集。
+2. 從您想要用於輸入的設計工具中，新增並連接 **Dataset1** 任何資料集。 在您的 Python 腳本中，以 **DataFrame1** 的形式參考此資料集。
 
     資料集的使用是選擇性的。 如果您想要使用 Python 產生資料，或使用 Python 程式碼將資料直接匯入模組，請使用此方法。
 
-    此模組支援在 **Dataset2**上新增第二個資料集。 以 **DataFrame2**的形式參考 Python 腳本中的第二個資料集。
+    此模組支援在 **Dataset2** 上新增第二個資料集。 以 **DataFrame2** 的形式參考 Python 腳本中的第二個資料集。
 
     使用此模組載入時，儲存在 Azure Machine Learning 中的資料集會自動轉換成 pandas 資料框架。
 
     ![執行 Python 輸入對應](media/module/python-module.png)
 
-4. 若要包含新的 Python 套件或程式碼，請將包含這些自訂資源的壓縮檔案連接至 **腳本** 組合埠。 或者，如果您的腳本大於 16 KB，請使用 **腳本** 套件組合埠來避免像 *命令列一樣的錯誤超過16597個字元的限制*。 
+4. 若要包含新的 Python 套件或程式碼，請將包含這些自訂資源的壓縮檔案連接至 **腳本** 組合埠。 或者，如果您的腳本大於 16 KB，請使用 **腳本** 套件組合埠來避免像 *命令列一樣的錯誤超過16597個字元的限制* 。 
 
     
     1. 將腳本和其他自訂資源組合成 zip 檔案。
     1. 將 zip 檔案以檔案 **資料集** 的形式上傳至 studio。 
     1. 從 [設計師撰寫] 頁面左側模組窗格中的 [ *資料集* ] 清單，拖曳資料集模組。 
-    1. 將資料集模組連接至 [**執行 R 腳本**] 模組的**腳本**組合埠。
+    1. 將資料集模組連接至 [ **執行 R 腳本** ] 模組的 **腳本** 組合埠。
     
     在管線執行期間，可以使用上傳的 zip 封存中包含的任何檔案。 如果封存包含目錄結構，則會保留結構。
-    
+ 
+    > [!WARNING]
+    > **請勿** 使用 **應用程式** 作為資料夾或您的腳本名稱，因為 **應用程式** 是內建服務的保留字。 但是您可以使用其他命名空間，例如 `app123` 。
+   
     以下是腳本套件組合範例，其中包含 python 腳本檔案和 txt 檔案：
       
     > [!div class="mx-imgBorder"]
@@ -171,7 +174,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     > os.system(f"pip install scikit-misc")
     > ```
     
-    **Python 腳本**文字方塊已預先填入批註中的一些指示，以及資料存取和輸出的範例程式碼。 您必須編輯或取代此程式碼。 遵循適用于縮排和大小寫的 Python 慣例：
+    **Python 腳本** 文字方塊已預先填入批註中的一些指示，以及資料存取和輸出的範例程式碼。 您必須編輯或取代此程式碼。 遵循適用于縮排和大小寫的 Python 慣例：
 
     + 腳本必須包含名 `azureml_main` 為此模組的進入點的函式。
     + 輸入點函式必須有兩個輸入引數， `Param<dataframe1>` 而且 `Param<dataframe2>` 即使您的腳本中未使用這些引數，也是如此。
@@ -182,7 +185,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     您可以將兩個資料集傳回給設計工具，這必須是型別的序列 `pandas.DataFrame` 。 您可以在 Python 程式碼中建立其他輸出，並將它們直接寫入 Azure 儲存體。
 
     > [!WARNING]
-    > **不**建議您在**執行 Python 腳本模組**中連接到資料庫或其他外部儲存體。 您可以使用匯 [入資料模組](./import-data.md) 和 [匯出資料模組](./export-data.md)     
+    > **不** 建議您在 **執行 Python 腳本模組** 中連接到資料庫或其他外部儲存體。 您可以使用匯 [入資料模組](./import-data.md) 和 [匯出資料模組](./export-data.md)     
 
 6. 提交管線。
 
@@ -194,9 +197,9 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 此模組會傳回兩個資料集：  
   
-+ **結果資料集 1**，由 Python 腳本中第一個傳回的 pandas 資料框架所定義。
++ **結果資料集 1** ，由 Python 腳本中第一個傳回的 pandas 資料框架所定義。
 
-+ **結果資料集 2**，在 Python 腳本中由第二個傳回的 pandas 資料框架所定義。
++ **結果資料集 2** ，在 Python 腳本中由第二個傳回的 pandas 資料框架所定義。
 
 ## <a name="preinstalled-python-packages"></a>預先安裝的 Python 套件
 預先安裝的套件為：

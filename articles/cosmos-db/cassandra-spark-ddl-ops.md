@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 10/07/2020
-ms.openlocfilehash: 589114fa004c8b4479e1a14c5a99161dd972c5bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73d31fff362807937cbd87b8e1313cf601909802
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841096"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092172"
 ---
 # <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>從 Spark 進行 Azure Cosmos DB Cassandra API 的 DDL 作業
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 本文詳細說明如何從 Spark 針對 Azure Cosmos DB Cassandra API 進行 Keyspace 和資料表 DDL 作業。
 
@@ -135,7 +136,7 @@ USE books_ks;
 DESCRIBE tables;
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 建立 Keyspace 和資料表之後，請繼續閱讀下列文章以了解 CRUD 作業和其他功能：
  

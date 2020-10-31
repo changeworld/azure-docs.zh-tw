@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 56899b7d81f17e678026b1aad7f3e2d9f8b9b0b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ec44d20b763a98683d9b947c94ad6be75180113
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85260518"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092231"
 ---
 # <a name="createinsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>從 Spark 建立/插入資料至 Azure Cosmos DB Cassandra API
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
  
 本文將說明如何從 Spark 將範例資料插入 Azure Cosmos DB Cassandra API 中的資料表。
 
@@ -134,7 +135,7 @@ use books_ks;
 select * from books;
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 將資料插入 Azure Cosmos DB Cassandra AP 資料表後，請繼續閱讀下列文章，以對 Cosmos DB Cassandra API 中儲存的資料執行其他作業：
  

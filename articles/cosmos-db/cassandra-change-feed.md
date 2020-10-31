@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: 16110c8f48330d60d4d0b6a2affb870ffa5e349c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 5252993c560b30836c65bf2d395173513993c307
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482667"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092393"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Cassandra Azure Cosmos DB API 中的變更摘要
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Azure Cosmos DB API for Cassandra 中的[變更](change-feed.md)摘要支援可透過 Cassandra 查詢語言中的查詢述詞來取得， (CQL) 。 您可以使用這些述詞條件來查詢變更摘要 API。 應用程式可以使用主鍵來取得對資料表所做的變更 (也稱為分割區索引鍵) 在 CQL 中是必要的。 然後，您可以根據結果採取進一步的動作。 變更資料表中的資料列時，會依其修改時間的順序和每個資料分割索引鍵的排序次序來加以捕捉。
 
@@ -144,6 +145,6 @@ Azure Cosmos DB API for Cassandra 中的[變更](change-feed.md)摘要支援可�
 
 * **HTTP 錯誤碼 429** -變更摘要受到速率限制時，會傳回空白頁面。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [使用 Azure Resource Manager 範本管理 Azure Cosmos DB Cassandra API 資源](./templates-samples-cassandra.md)

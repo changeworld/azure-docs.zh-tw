@@ -10,17 +10,18 @@ ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 31baad997733c46cf3e9aa8dc92ac0613468f72f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7b97d702fffa7e65e24b8367892599b7bde5b669
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489382"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092614"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>使用大量執行程式 .NET 程式庫，在 Azure Cosmos DB 中執行大量作業
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!NOTE]
-> 本文所描述的大量執行程式程式庫是針對使用 .NET SDK 2.x 版的應用程式所維護。 針對新的應用程式，您可以使用[.NET SDK 3.x 版](tutorial-sql-api-dotnet-bulk-import.md)直接提供的**大量支援**，而不需要任何外部程式庫。 
+> 本文所描述的大量執行程式程式庫是針對使用 .NET SDK 2.x 版的應用程式所維護。 針對新的應用程式，您可以使用 [.NET SDK 3.x 版](tutorial-sql-api-dotnet-bulk-import.md)直接提供的 **大量支援** ，而不需要任何外部程式庫。 
 
 > 如果您目前使用大量執行程式程式庫，並打算遷移至較新 SDK 上的大量支援，請使用「 [遷移指南](how-to-migrate-from-bulk-executor-library.md) 」中的步驟來遷移您的應用程式。
 
@@ -28,11 +29,11 @@ ms.locfileid: "92489382"
 
 目前，只有 Azure Cosmos DB SQL API 和 Gremlin API 帳戶支援大量執行程式程式庫。 本文說明如何搭配 SQL API 帳戶使用大量執行程式 .NET 程式庫。 若要瞭解如何搭配 Gremlin API 帳戶使用大量執行程式 .NET 程式庫，請參閱 [在 Azure Cosmos DB GREMLIN api 中執行大量作業](bulk-executor-graph-dotnet.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 如果您還沒有安裝 Visual Studio 2019，可以下載並使用 [Visual Studio 2019 社區版](https://www.visualstudio.com/downloads/)。 請確定您在 Visual Studio 設定期間啟用「Azure 開發」。
 
-* 如尚未擁有 Azure 訂用帳戶，請在開始之前先建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+* 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 * 您可以[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，無須 Azure 訂用帳戶，也無須任何費用和約定付款。 或者，您可以使用 [Azure Cosmos DB 模擬器](./local-emulator.md) 搭配 `https://localhost:8081` 端點。 [驗證要求](local-emulator.md#authenticate-requests)中會提供主索引鍵。
 
@@ -114,7 +115,7 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
    |maxInMemorySortingBatchSize     |  從檔列舉值提取的檔數目上限，會傳遞至每個階段中的 API 呼叫。 針對大量匯入之前發生的記憶體中排序階段，將此參數設定為 null 將會導致程式庫使用預設的最小值 (檔。 count，1000000) 。       |
    |cancellationToken    |    要正常結束大量匯入作業的解除標記。     |
 
-   **大量匯入回應物件定義**大量匯入 API 呼叫的結果包含下列屬性：
+   **大量匯入回應物件定義** 大量匯入 API 呼叫的結果包含下列屬性：
 
    |**參數**  |**說明**  |
    |---------|---------|
@@ -163,7 +164,7 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
    |maxInMemorySortingBatchSize    |    在每個階段中傳遞給 API 呼叫的更新專案列舉值所提取的更新專案數目上限。 針對大量更新之前發生的記憶體中排序階段，將此參數設定為 null 將會導致程式庫使用預設的最小值 (updateItems，1000000) 。     |
    | cancellationToken|要正常結束大量更新作業的解除標記。 |
 
-   **大量更新回應物件定義**大量更新 API 呼叫的結果包含下列屬性：
+   **大量更新回應物件定義** 大量更新 API 呼叫的結果包含下列屬性：
 
    |**參數**  |**說明** |
    |---------|---------|
@@ -202,6 +203,6 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
   </system.diagnostics>
   ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 若要瞭解 NuGet 套件詳細資料和版本資訊，請參閱 [大量執行程式 SDK 詳細資料](sql-api-sdk-bulk-executor-dot-net.md)。

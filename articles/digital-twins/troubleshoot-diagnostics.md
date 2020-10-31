@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: f4abf78c153bd3d61068e4b7607794d6ccf1ed04
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 11a7b4876c773922d4b0ed28f7047912b738ee6a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047670"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091730"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>針對 Azure 數位 Twins 進行疑難排解：診斷記錄
 
@@ -26,13 +26,13 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
 
 1. 登入 [Azure 入口網站](https://portal.azure.com) ，然後流覽至您的 Azure 數位 Twins 實例。 您可以在入口網站的搜尋列中輸入其名稱來尋找它。 
 
-2. 從功能表選取 [ **診斷設定** ]，然後 **新增診斷設定**。
+2. 從功能表選取 [ **診斷設定** ]，然後 **新增診斷設定** 。
 
     :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="顯示診斷設定頁面和要新增之按鈕的螢幕擷取畫面":::
 
 3. 在接下來的頁面上，填入下列值：
-     * **診斷設定名稱**：提供診斷設定的名稱。
-     * **類別細節**：選擇您想要監視的作業，並核取方塊以啟用這些作業的診斷。 診斷設定可以報告的作業為：
+     * **診斷設定名稱** ：提供診斷設定的名稱。
+     * **類別細節** ：選擇您想要監視的作業，並核取方塊以啟用這些作業的診斷。 診斷設定可以報告的作業為：
         - DigitalTwinsOperation
         - EventRoutesOperation
         - ModelsOperation
@@ -40,7 +40,7 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
         - AllMetrics
         
         如需這些選項的詳細資訊，請參閱下面的 [*類別目錄詳細資料*](#category-details) 一節。
-     * **目的地詳細資料**：選擇您要傳送記錄的位置。 您可以選取這三個選項的任意組合：
+     * **目的地詳細資料** ：選擇您要傳送記錄的位置。 您可以選取這三個選項的任意組合：
         - 傳送至 Log Analytics
         - 封存至儲存體帳戶
         - 串流至事件中樞
@@ -132,7 +132,7 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
   "time": "2020-03-14T21:11:14.9918922Z",
   "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
   "operationName": "Microsoft.DigitalTwins/digitaltwins/write",
-  "operationVersion": "2020-05-31-preview",
+  "operationVersion": "2020-10-31",
   "category": "DigitalTwinOperation",
   "resultType": "Success",
   "resultSignature": "200",
@@ -142,7 +142,7 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
   "correlationId": "2f6a8e64-94aa-492a-bc31-16b9f0b16ab3",
   "level": "4",
   "location": "southcentralus",
-  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-05-31-preview"
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-10-31"
 }
 ```
 
@@ -153,7 +153,7 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
   "time": "2020-10-29T21:12:24.2337302Z",
   "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
   "operationName": "Microsoft.DigitalTwins/models/write",
-  "operationVersion": "2020-05-31-preview",
+  "operationVersion": "2020-10-31",
   "category": "ModelsOperation",
   "resultType": "Success",
   "resultSignature": "201",
@@ -163,7 +163,7 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
   "correlationId": "9dcb71ea-bb6f-46f2-ab70-78b80db76882",
   "level": "4",
   "location": "southcentralus",
-  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/Models?api-version=2020-05-31-preview",
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/Models?api-version=2020-10-31",
 }
 ```
 
@@ -174,7 +174,7 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
   "time": "2020-12-04T21:11:44.1690031Z",
   "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
   "operationName": "Microsoft.DigitalTwins/query/action",
-  "operationVersion": "2020-05-31-preview",
+  "operationVersion": "2020-10-31",
   "category": "QueryOperation",
   "resultType": "Success",
   "resultSignature": "200",
@@ -184,7 +184,7 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
   "correlationId": "1ee2b6e9-3af4-4873-8c7c-1a698b9ac334",
   "level": "4",
   "location": "southcentralus",
-  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/query?api-version=2020-05-31-preview",
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/query?api-version=2020-10-31",
 }
 ```
 
@@ -223,7 +223,7 @@ Azure 數位 Twins 會收集服務實例的 [計量](troubleshoot-metrics.md) �
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 如需有關設定診斷的詳細資訊，請參閱 [*收集和取用來自 Azure 資源的記錄資料*](../azure-monitor/platform/platform-logs-overview.md)。
 * 如需 Azure 數位 Twins 計量的詳細資訊，請參閱 [*疑難排解：使用 Azure 監視器來查看計量*](troubleshoot-metrics.md)。

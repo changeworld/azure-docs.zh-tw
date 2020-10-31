@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 7831ef4bbd65bce7329b1ecf0f602b110a16834b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf65daa1a765030efce5d1310a792df473571a5e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78302231"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091832"
 ---
 # <a name="radians-azure-cosmos-db"></a>弧度 (Azure Cosmos DB) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  當輸入數值運算式時，傳回弧度 (以角度為單位)。  
   
 ## <a name="syntax"></a>語法
@@ -56,7 +58,7 @@ SELECT RADIANS(-45.01) AS r1, RADIANS(-181.01) AS r2, RADIANS(0) AS r3, RADIANS(
 
 這個系統函數將不會使用索引。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [數學函數 Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)

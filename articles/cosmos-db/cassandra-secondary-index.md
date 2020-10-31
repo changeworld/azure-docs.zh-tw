@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 04/04/2020
 ms.author: thvankra
 ms.reviewer: sngun
-ms.openlocfilehash: 7de38097acdbfa1f9c9b90f3051c68dec5465b32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc9c7c2f06b9d39243b8593b20ddeb7ffa2f886c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80758023"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092359"
 ---
 # <a name="secondary-indexing-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 中的次要索引
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Azure Cosmos DB 中的 Cassandra API 會利用基礎索引基礎結構來公開平臺中固有的索引編制強度。 不過，不同于核心 SQL API，Azure Cosmos DB 中的 Cassandra API 預設不會編制所有屬性的索引。 相反地，它支援次要索引編制來建立某些屬性的索引，其行為方式與 Apache Cassandra 相同。  
 
@@ -71,6 +72,6 @@ CREATE INDEX ON sampleks.t1 (lastname);
 drop index sampleks.t1_lastname_idx;
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * 瞭解 Azure Cosmos DB 中 [自動編制索引](index-overview.md) 的運作方式
 * [Azure Cosmos DB Cassandra API 支援的 Apache Cassandra 功能](cassandra-support.md)

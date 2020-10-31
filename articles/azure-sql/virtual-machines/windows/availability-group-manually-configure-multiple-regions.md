@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f6d5a9da238c520e2e0ec70ac312dd112aad2fe8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 335cc707cb1192d3dbf08f51e78d4e82441dd05a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789976"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094450"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>跨不同的 Azure 區域設定 SQL Server Always On 可用性群組
 
@@ -31,7 +31,7 @@ ms.locfileid: "92789976"
 
 下圖顯示 Azure 虛擬機器上常見的可用性群組部署：
 
-   ![可用性群組](./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic.png)
+   ![顯示 Azure 負載平衡器和可用性設定組的圖表，其中包含「Windows Server 容錯移轉叢集」和「Always On 可用性群組」。](./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic.png)
 
 在此部署中，所有虛擬機器都位於一個 Azure 區域中。 可用性群組複本可以使用同步認可搭配在 SQL-1 和 SQL-2 上自動容錯移轉。 若要建置此架構，請參閱[可用性群組範本或教學課程](availability-group-overview.md)。
 
@@ -53,7 +53,7 @@ ms.locfileid: "92789976"
 
 下圖顯示資料中心之間的網路通訊方式。
 
-   ![可用性群組](./media/availability-group-manually-configure-multiple-regions/01-vpngateway-example.png)
+   ![此圖顯示不同 Azure 區域中的兩個虛擬網路，並使用 V P N 閘道進行通訊。](./media/availability-group-manually-configure-multiple-regions/01-vpngateway-example.png)
 
 >[!IMPORTANT]
 >此架構會針對 Azure 區域之間複寫的資料產生輸出資料費用。 請參閱[頻寬定價](https://azure.microsoft.com/pricing/details/bandwidth/)。  
@@ -98,7 +98,7 @@ ms.locfileid: "92789976"
 
    您可以在「容錯移轉叢集管理員」中建立 IP 位址資源。 選取叢集的名稱，然後在 [叢集核心資源] 下的叢集名稱上按一下滑鼠右鍵並選取 [屬性]： 
 
-   ![叢集屬性](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
+   ![螢幕擷取畫面，顯示已選取叢集名稱、「伺服器名稱」和「屬性」的「容錯移轉叢集管理員」。](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
 
    在 [屬性] 對話方塊上，選取 [IP 位址] 下的 [新增]，然後從遠端網路區域新增叢集名稱的 IP 位址。 在 [ **IP 位址** ] 對話方塊中選取 **[確定** ]，然後再次 **選取 [叢集內容] 對話方塊** 上的 **[確定** ]，以儲存新的 IP 位址。 
 
@@ -197,7 +197,7 @@ ms.locfileid: "92789976"
 - [執行可用性群組的已規劃手動容錯移轉 (SQL Server)](/sql/database-engine/availability-groups/windows/perform-a-planned-manual-failover-of-an-availability-group-sql-server)
 - [執行可用性群組的強制手動容錯移轉 (SQL Server)](/sql/database-engine/availability-groups/windows/perform-a-forced-manual-failover-of-an-availability-group-sql-server)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [AlwaysOn 可用性群組](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)
 * [Azure 虛擬機器](../../../virtual-machines/windows/index.yml)

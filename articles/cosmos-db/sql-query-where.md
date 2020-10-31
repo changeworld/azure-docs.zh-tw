@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: tisande
-ms.openlocfilehash: ceffb203ccc2cca1ff6e1c53644cde955c2e0acb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f1698390e759a4f347ed37157ca6b7073c44607
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86523497"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93093515"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 WHERE 子句
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 選擇性的 WHERE 子句 (`WHERE <filter_condition>`) 指定) 的條件，來源 JSON 專案必須滿足這些 (條件，查詢才會將它們包含在結果中。 JSON 專案必須評估要 `true` 針對結果考慮的指定條件。 索引層級會使用 WHERE 子句來判斷可作為結果一部分之來源專案的最小子集。
   

@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 66314155a8de5036009b8e42bf84a8ae8860d0ea
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 25c171cf20d86244958dbeb4565760115d6d7075
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278947"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092410"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>使用 Blitzz 將將資料從 Cassandra 遷移至 Azure Cosmos DB Cassandra API 帳戶
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Azure Cosmos DB 中的 Cassandra API 已成為在 Apache Cassandra 上執行之企業工作負載的絕佳選擇，原因如下： 
 
@@ -96,7 +97,7 @@ Blitzz 將的遷移解決方案遵循逐步方法來遷移複雜的操作工作�
 
    完成遷移之後，請降低輸送量。 根據每項作業所需的儲存資料量和 ru 數目，您可以估計資料移轉之後所需的輸送量。 若要深入瞭解如何估計所需的 RU，請參閱使用 Azure Cosmos DB 容量規劃文章，在 [容器和資料庫上](set-throughput.md) 布建輸送量，並 [預估 RU/秒](estimate-ru-with-capacity-planner.md) 。
 
-1. 從 [**連接字串**] 窗格取得 Azure Cosmos 帳戶的**連絡人點、埠、使用者名稱**和**主要密碼**。 您將在設定檔中使用這些值。
+1. 從 [ **連接字串** ] 窗格取得 Azure Cosmos 帳戶的 **連絡人點、埠、使用者名稱** 和 **主要密碼** 。 您將在設定檔中使用這些值。
 
 1. 從 CLI 終端機，設定目的地資料庫設定。 使用命令開啟設定檔， **`vi conf/conn/cosmosdb.yml`** 並新增主機 URI、埠號碼、使用者名稱、密碼及其他必要參數的逗號分隔清單。 下列範例顯示設定檔的內容：
 
@@ -141,7 +142,7 @@ Blitzz 將的遷移解決方案遵循逐步方法來遷移複雜的操作工作�
 
 若要深入瞭解資料移轉至目的地、即時移轉的詳細資訊，請參閱 [blitzz 將 replicant 示範](https://www.youtube.com/watch?v=fsUhF9LUZmM)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [在容器和資料庫中佈建輸送量](set-throughput.md) 
 * [分割區索引鍵的最佳作法](partitioning-overview.md#choose-partitionkey)

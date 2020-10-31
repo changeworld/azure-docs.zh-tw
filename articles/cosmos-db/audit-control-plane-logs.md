@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: sngun
-ms.openlocfilehash: 08cc3b08611947ac32973b2dfb01060140dc0798
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 683fc553e7712e2a760a0af1b601207cb20f2f55
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743891"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092801"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>如何 audit Azure Cosmos DB 控制平面作業
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB 中的控制平面是 RESTful 服務，可讓您在 Azure Cosmos 帳戶上執行不同的作業集。 它會公開公用資源模型 (例如：資料庫、帳戶) 和各種作業，以供終端使用者在資源模型上執行動作。 控制平面作業包括對 Azure Cosmos 帳戶或容器的變更。 例如，建立 Azure Cosmos 帳戶、新增區域、更新輸送量、區域容錯移轉、新增 VNet 等作業，都是一些控制平面作業。 本文說明如何在 Azure Cosmos DB 中審核控制平面作業。 您可以使用 Azure CLI、PowerShell 或 Azure 入口網站在 Azure Cosmos 帳戶上執行控制平面作業，而針對容器，請使用 Azure CLI 或 PowerShell。
 
@@ -29,7 +30,7 @@ Azure Cosmos DB 中的控制平面是 RESTful 服務，可讓您在 Azure Cosmos
 
 在 Azure Cosmos DB 中審核控制平面作業之前，請先停用帳戶上的金鑰型中繼資料寫入存取權。 停用金鑰型中繼資料寫入存取時，透過帳戶金鑰連接至 Azure Cosmos 帳戶的用戶端，將無法存取該帳戶。 您可以藉由將屬性設定為 true 來停用寫入存取 `disableKeyBasedMetadataWriteAccess` 。 設定此屬性之後，任何資源的變更都可以從具有適當角色型存取控制的使用者發生， (RBAC) 角色和認證。 若要深入瞭解如何設定此屬性，請參閱 [防止 sdk 的變更](role-based-access-control.md#prevent-sdk-changes) 文章。 
 
-開啟之後 `disableKeyBasedMetadataWriteAccess` ，如果以 SDK 為基礎的用戶端執行建立或更新作業，則 *不允許在資源 ' ContainerNameorDatabaseName ' 上* 的「作業 ' POST '」傳回 Azure Cosmos DB 端點。 您必須為您的帳戶開啟這類作業的存取權，或透過 Azure Resource Manager、Azure CLI 或 Azure PowerShell 來執行建立/更新作業。 若要切換回，請使用「[防止 COSMOS SDK 的變更](role-based-access-control.md#prevent-sdk-changes)」一文所述的 Azure CLI，將 disableKeyBasedMetadataWriteAccess 設定為**false** 。 請務必將的值變更 `disableKeyBasedMetadataWriteAccess` 為 false，而不是 true。
+開啟之後 `disableKeyBasedMetadataWriteAccess` ，如果以 SDK 為基礎的用戶端執行建立或更新作業，則 *不允許在資源 ' ContainerNameorDatabaseName ' 上* 的「作業 ' POST '」傳回 Azure Cosmos DB 端點。 您必須為您的帳戶開啟這類作業的存取權，或透過 Azure Resource Manager、Azure CLI 或 Azure PowerShell 來執行建立/更新作業。 若要切換回，請使用「 [防止 COSMOS SDK 的變更](role-based-access-control.md#prevent-sdk-changes)」一文所述的 Azure CLI，將 disableKeyBasedMetadataWriteAccess 設定為 **false** 。 請務必將的值變更 `disableKeyBasedMetadataWriteAccess` 為 false，而不是 true。
 
 關閉中繼資料寫入存取權時，請考慮下列幾點：
 
@@ -163,36 +164,36 @@ Azure Cosmos DB 中的控制平面是 RESTful 服務，可讓您在 Azure Cosmos
 * CassandraKeyspacesThroughputUpdate
 * SqlContainersUpdate
 
-*ResourceDetails*屬性包含整個資源主體作為要求承載，而且包含所有要求更新的屬性
+*ResourceDetails* 屬性包含整個資源主體作為要求承載，而且包含所有要求更新的屬性
 
 ## <a name="diagnostic-log-queries-for-control-plane-operations"></a>控制平面作業的診斷記錄查詢
 
 以下是取得控制平面作業診斷記錄的一些範例：
 
 ```kusto
-AzureDiagnostics 
-| where Category startswith "ControlPlane"
+AzureDiagnostics 
+| where Category startswith "ControlPlane"
 | where OperationName contains "Update"
-| project httpstatusCode_s, statusCode_s, OperationName, resourceDetails_s, activityId_g
+| project httpstatusCode_s, statusCode_s, OperationName, resourceDetails_s, activityId_g
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
 | where TimeGenerated >= todatetime('2020-05-14T17:37:09.563Z')
-| project TimeGenerated, OperationName, apiKind_s, apiKindResourceType_s, operationType_s, resourceDetails_s
+| project TimeGenerated, OperationName, apiKind_s, apiKindResourceType_s, operationType_s, resourceDetails_s
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersUpdate"
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersUpdate"
 ```
 
 ```kusto
-AzureDiagnostics 
-| where Category =="ControlPlaneRequests"
-| where  OperationName startswith "SqlContainersThroughputUpdate"
+AzureDiagnostics 
+| where Category =="ControlPlaneRequests"
+| where  OperationName startswith "SqlContainersThroughputUpdate"
 ```
 
 查詢以取得 activityId 和起始容器刪除作業的呼叫端：
@@ -226,7 +227,7 @@ AzureDiagnostics
 {id:skewed,indexingPolicy:{automatic:true,indexingMode:consistent,includedPaths:[{path:/*,indexes:[]}],excludedPaths:[{path:/_etag/?}],compositeIndexes:[],spatialIndexes:[]},partitionKey:{paths:[/pk],kind:Hash},defaultTtl:1000000,uniqueKeyPolicy:{uniqueKeys:[]},conflictResolutionPolicy:{mode:LastWriterWins,conflictResolutionPath:/_ts,conflictResolutionProcedure:}
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [探索適用於 Azure Cosmos DB 的 Azure 監視器](../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)
 * [使用 Azure Cosmos DB 中的計量進行監視及偵錯](use-metrics.md)

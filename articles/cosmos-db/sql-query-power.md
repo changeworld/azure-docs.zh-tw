@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 683c53c369f136ad4b917b93e9a92a71072d05e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41c5cc1a6032a0aee16f1922fc59349449c65b55
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71349645"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091917"
 ---
 # <a name="power-azure-cosmos-db"></a>POWER (Azure Cosmos DB) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  將指定之運算式的值傳回給指定的乘冪。  
   
 ## <a name="syntax"></a>語法
@@ -29,7 +31,7 @@ POWER (<numeric_expr1>, <numeric_expr2>)
    為數值運算式。  
   
 *numeric_expr2*  
-   這是 *numeric_expr1*引發的能力。  
+   這是 *numeric_expr1* 引發的能力。  
   
 ## <a name="return-types"></a>傳回類型
   
@@ -49,7 +51,7 @@ SELECT POWER(2, 3) AS pow1, POWER(2.5, 3) AS pow2
 [{pow1: 8, pow2: 15.625}]  
 ```  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [數學函數 Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)

@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: d821d6dacc2620988c32e63439ec2e039819e0a5
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: aeae1f1a99d1fa574df8202efd2405232855628b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495895"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93091798"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>服務要求失敗。 狀態： 403 (禁止的) 
 
@@ -25,7 +25,7 @@ ms.locfileid: "92495895"
 
 ### <a name="cause-1"></a>原因 #1
 
-最常見的情況是，此錯誤表示您的 Azure 角色型存取控制 (Azure RBAC) 服務的許可權未正確設定。 Azure 數位 Twins 實例的許多動作都要求您在**嘗試管理的實例上**擁有*Azure 數位 Twins 資料擁有*者角色。 
+最常見的情況是，此錯誤表示您的 Azure 角色型存取控制 (Azure RBAC) 服務的許可權未正確設定。 Azure 數位 Twins 實例的許多動作都要求您在 **嘗試管理的實例上** 擁有 *Azure 數位 Twins 資料擁有* 者角色。 
 
 [!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
@@ -42,7 +42,7 @@ ms.locfileid: "92495895"
 第一個解決方案是確認您的 Azure 使用者在您嘗試管理的實例上具有 _**Azure 數位 Twins 資料擁有**_ 者角色。 如果您沒有此角色，請進行設定。
 
 請注意，此角色不同于 .。。
-* 此角色先前的名稱在預覽期間， *Azure 數位 Twins 擁有者 (預覽版) * (角色相同，但名稱已變更) 
+* 此角色先前的名稱在預覽期間， *Azure 數位 Twins 擁有者 (預覽版)* (角色相同，但名稱已變更) 
 * 整個 Azure 訂用帳戶的 *擁有* 者角色。 *Azure 數位 Twins 資料擁有* 者是 Azure 數位 Twins 內的角色，其範圍為此個別 Azure 數位 Twins 實例。
 * Azure 數位 Twins 中的 *擁有* 者角色。 這些是兩個不同的 Azure 數位 Twins 管理角色，而 *Azure 數位 Twins 資料擁有* 者是在預覽期間用於管理的角色。
 
@@ -52,7 +52,7 @@ ms.locfileid: "92495895"
 
 #### <a name="fix-issues"></a>修正問題 
 
-如果您沒有此角色指派，則您的**azure 訂**用帳戶中具有「擁有者」角色的使用者應該執行下列命令，為您的 azure 使用者提供 Azure**數位 Twins 實例**上的*azure 數位 Twins 資料擁有*者角色。 
+如果您沒有此角色指派，則您的 **azure 訂** 用帳戶中具有「擁有者」角色的使用者應該執行下列命令，為您的 azure 使用者提供 Azure **數位 Twins 實例** 上的 *azure 數位 Twins 資料擁有* 者角色。 
 
 如果您是訂用帳戶的擁有者，您可以自行執行此命令。 如果不是，請洽詢擁有者，以代表您執行此命令。
 
@@ -60,7 +60,7 @@ ms.locfileid: "92495895"
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Data Owner"
 ```
 
-如需有關此角色需求和指派程式的詳細資訊，請參閱 how *to：設定實例和驗證 (CLI 或入口網站) *的「 [*設定使用者的存取權限*」一節](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)。
+如需有關此角色需求和指派程式的詳細資訊，請參閱 how *to：設定實例和驗證 (CLI 或入口網站)* 的「 [*設定使用者的存取權限* 」一節](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)。
 
 如果您已有此角色指派 *，且* 您使用 Azure AD 應用程式註冊來驗證用戶端應用程式，如果此解決方案未解決403問題，您可以繼續進行下一個解決方案。
 
@@ -90,10 +90,10 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 如果其中任何一項出現的方式不同于所述，請依照如何 [*：建立應用程式註冊*](how-to-create-app-registration.md)中的如何設定應用程式註冊的指示進行。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 請參閱建立和驗證新的 Azure 數位 Twins 實例的設定步驟：
-* [*如何： (CLI 設定實例和驗證) *](how-to-set-up-instance-cli.md)
+* [*如何： (CLI 設定實例和驗證)*](how-to-set-up-instance-cli.md)
 
 深入瞭解 Azure 數位 Twins 的安全性和許可權：
 * [*概念： Azure 數位 Twins 解決方案的安全性*](concepts-security.md)

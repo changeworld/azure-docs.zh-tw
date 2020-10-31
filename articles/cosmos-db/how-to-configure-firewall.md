@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fb97f9ee822c808057139bd25b2e4f43c48a2e48
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ec4ec5b3ea522200562d05d1891f46e69c9e5ca8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490504"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092155"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中設定 IP 防火牆
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 為了保護您的帳戶中所儲存的資料，Azure Cosmos DB 支援利用強式雜湊式訊息驗證碼 (HMAC) 的密碼型授權模型。 此外，Azure Cosmos DB 支援 IP 型存取控制，以提供輸入防火牆支援。 此模型與傳統資料庫系統的防火牆規則相類似，並可為您的帳戶提供額外的安全性層級。 有了防火牆，您可以設定只能從一組核准的電腦和 (或) 雲端服務存取 Azure Cosmos 帳戶。 經由這些核准的電腦和服務組合來存取 Azure Cosmos 資料庫中儲存的資料，仍然需要呼叫者出示有效的授權權杖。
 
@@ -34,7 +35,7 @@ ms.locfileid: "92490504"
 
 ## <a name="configure-an-ip-firewall-by-using-the-azure-portal"></a><a id="configure-ip-policy"></a> 使用 Azure 入口網站設定 IP 防火牆
 
-若要在 Azure 入口網站中設定 IP 存取控制原則，請移至 Azure Cosmos DB 帳戶頁面，然後在導覽功能表中選取 [防火牆與虛擬網路]****。 將 [允許從下項存取]**** 值變更為 [選取的網路]****，然後選取 [儲存]****。
+若要在 Azure 入口網站中設定 IP 存取控制原則，請移至 Azure Cosmos DB 帳戶頁面，然後在導覽功能表中選取 [防火牆與虛擬網路]  。 將 [允許從下項存取]  值變更為 [選取的網路]  ，然後選取 [儲存]  。
 
 :::image type="content" source="./media/how-to-configure-firewall/azure-portal-firewall.png" alt-text="顯示如何在 Azure 入口網站中開啟 [防火牆] 頁面的螢幕擷取畫面":::
 
@@ -75,7 +76,7 @@ ms.locfileid: "92490504"
 
 入口網站會自動偵測用戶端 IP 位址。 它可能是您電腦的用戶端 IP 位址或網路閘道的 IP 位址。 請務必在將您的工作負載投入生產環境之前移除此 IP 位址。
 
-若要將您目前的 IP 新增至 IP 清單，請選取 [新增我目前的 IP]****。 然後選取 [儲存]。
+若要將您目前的 IP 新增至 IP 清單，請選取 [新增我目前的 IP]  。 然後選取 [儲存]。
 
 :::image type="content" source="./media/how-to-configure-firewall/enable-current-ip.png" alt-text="顯示如何在 Azure 入口網站中開啟 [防火牆] 頁面的螢幕擷取畫面":::
 
@@ -108,7 +109,7 @@ ms.locfileid: "92490504"
 若要設定 Azure Cosmos DB 帳戶的存取控制，請確定 Resource Manager 範本指定 **ipRules** 屬性，其中包含允許的 IP 範圍陣列。 如果將 IP 防火牆設定為已部署的 Cosmos 帳戶，請確保 `locations` 陣列符合目前所部署的項目。 您無法同時修改 `locations` 陣列和其他屬性。 如需 Azure Cosmos DB 的 Azure Resource Manager 範本的詳細資訊和範例，請參閱 [Azure Resource Manager Azure Cosmos DB 的範本](./templates-samples-sql.md)
 
 > [!IMPORTANT]
-> **IpRules**屬性已在 API 版本2020-04-01 中引進。 先前的版本會改為公開 **ipRangeFilter** 屬性，這是以逗號分隔的 IP 位址清單。
+> **IpRules** 屬性已在 API 版本2020-04-01 中引進。 先前的版本會改為公開 **ipRangeFilter** 屬性，這是以逗號分隔的 IP 位址清單。
 
 下列範例顯示如何在 API 版本2020-04-01 或更新版本中公開 **ipRules** 屬性：
 
@@ -213,11 +214,11 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-藉由啟用 Azure Cosmos DB 帳戶的 IP 存取控制原則，您可以封鎖所允許 IP 位址範圍清單外部的電腦對您帳戶的所有要求。 若要啟用入口網站資料平面作業 (例如瀏覽容器和查詢文件)，則需要在入口網站中使用 [防火牆]**** 窗格，明確地允許 Azure 入口網站存取。
+藉由啟用 Azure Cosmos DB 帳戶的 IP 存取控制原則，您可以封鎖所允許 IP 位址範圍清單外部的電腦對您帳戶的所有要求。 若要啟用入口網站資料平面作業 (例如瀏覽容器和查詢文件)，則需要在入口網站中使用 [防火牆]  窗格，明確地允許 Azure 入口網站存取。
 
 ### <a name="sdks"></a>SDK
 
-當您從不在允許清單中的電腦使用 SDK 來存取 Azure Cosmos DB 資源時，將會傳回一般的 **403 禁止**回應，且沒有其他詳細資料。 請確認您帳戶的允許 IP 清單，並確保會將正確的原則設定套用至您的 Azure Cosmos DB 帳戶。
+當您從不在允許清單中的電腦使用 SDK 來存取 Azure Cosmos DB 資源時，將會傳回一般的 **403 禁止** 回應，且沒有其他詳細資料。 請確認您帳戶的允許 IP 清單，並確保會將正確的原則設定套用至您的 Azure Cosmos DB 帳戶。
 
 ### <a name="source-ips-in-blocked-requests"></a>已封鎖要求中的來源 IP
 
@@ -231,7 +232,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 使用包含私人 IP 位址的允許地址清單建立或更新 Azure Cosmos 帳戶將會失敗。 請確定清單中未指定任何私人 IP 位址。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要設定 Azure Cosmos DB 帳戶的虛擬網路服務端點，請參閱下列文章：
 

@@ -10,20 +10,21 @@ ms.date: 08/26/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: 03ef816632b73f46acaf1efdf2ddec28459fc9b8
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 89d21e4464cb3c7578b68d68009065ab7848ed19
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489331"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092529"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>在 Azure Cosmos DB 資料上使用大量執行程式 Java 程式庫執行大量作業
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本教學課程提供使用 Azure Cosmos DB 的大量執行程式 JAVA 程式庫來匯入和更新 Azure Cosmos DB 檔的指示。 若要深入了解大量執行程式程式庫，以及它如何協助您利用大量輸送量與儲存體，請參閱[大量執行程式程式庫概觀](bulk-executor-overview.md)一文。 在本教學課程中，您將建立會產生隨機檔的 JAVA 應用程式，並將其大量匯入 Azure Cosmos 容器中。 匯入之後，您會大量更新文件的某些屬性。 
 
 目前，只有 Azure Cosmos DB SQL API 和 Gremlin API 帳戶支援大量執行程式程式庫。 本文說明如何搭配 SQL API 帳戶使用大量執行程式 JAVA 程式庫。 若要了解如何搭配 Gremlin API 使用大量執行程式 .Net 程式庫，請參閱[在 Azure Cosmos DB Gremlin API 中執行大量作業](bulk-executor-graph-dotnet.md)。 此處所述的大量執行程式程式庫僅適用于 [Azure Cosmos DB java SYNC SDK v2](sql-api-sdk-java.md) ，而且是目前建議用於 java 大量支援的解決方案。 這項功能目前不適用於3.x、4.x 或其他更高版本的 SDK。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。  
 
@@ -112,7 +113,7 @@ ms.locfileid: "92489331"
    |disableAutomaticIdGeneration     |   停用自動產生識別碼的旗標。 預設會設定為 true。   |
    |maxConcurrencyPerPartitionRange    |  每個分割區索引鍵範圍的最大並行程度。 預設值為 20。  |
 
-   **大量匯入回應物件定義**大量匯入 API 呼叫的結果包含下列 get 方法：
+   **大量匯入回應物件定義** 大量匯入 API 呼叫的結果包含下列 get 方法：
 
    |**參數**  |**說明**  |
    |---------|---------|
@@ -176,7 +177,7 @@ ms.locfileid: "92489331"
    |---------|---------|
    |maxConcurrencyPerPartitionRange   |  每個分割區索引鍵範圍的最大並行程度。 預設值為 20。  |
  
-   **大量匯入回應物件定義**大量匯入 API 呼叫的結果包含下列 get 方法：
+   **大量匯入回應物件定義** 大量匯入 API 呼叫的結果包含下列 get 方法：
 
    |**參數** |**說明**  |
    |---------|---------|
@@ -213,5 +214,5 @@ ms.locfileid: "92489331"
 * 單一大量作業 API 執行會取用大量用戶端機器的 CPU 和網路 IO。 這是因為由內部繁衍出多個工作，因此請避免在每次執行大量作業 API 呼叫時，您的應用程式處理程序內繁衍出多個並行工作。 如果在單一虛擬機器上執行的單一大量作業 API 呼叫無法取用整個容器的輸送量 (如果容器的輸送量 > 1 百萬 RU/s)，建議您建立個別虛擬機器來並行執行大量作業 API 呼叫。
 
     
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * 若要深入了解 maven 套件及大量執行程式 Java 程式庫的版本資訊，請參閱[大量執行程式 SDK 詳細資料](sql-api-sdk-bulk-executor-java.md)。

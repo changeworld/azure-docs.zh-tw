@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: d88d52f67274d14836520494580e9208ce4eecbe
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 95396f28fd835091258bccbfdb0a0c0eafebea91
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283606"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93093549"
 ---
 # <a name="azure-cosmos-db-sql-sdk-connectivity-modes"></a>Azure Cosmos DB SQL SDK 連接模式
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 用戶端連線至 Azure Cosmos DB 的方式會影響重要的效能，特別是針對觀察到的用戶端延遲。 Azure Cosmos DB 透過 HTTPS （稱為「閘道模式」）提供簡單的開放 RESTful 程式設計模型。 此外，它還提供一個有效率的 TCP 通訊協定，它在通訊模型中也 RESTful，並使用 TLS 進行初始驗證和加密流量，稱為直接模式。
 
@@ -34,7 +35,7 @@ ms.locfileid: "92283606"
      
 :::image type="content" source="./media/performance-tips/connection-policy.png" alt-text="Azure Cosmos DB 連接模式" border="false":::
 
-這些連線模式基本上會將資料平面要求的路由（檔讀取和寫入）從您的用戶端電腦移至 Azure Cosmos DB 後端中的資料分割。 直接模式是最佳效能的最佳選項，可讓您的用戶端直接開啟 Azure Cosmos DB 後端中的資料分割的 TCP 連線，並傳送要求 *直接*lesson.ly 而不需要媒介。 相反地，在閘道模式中，用戶端所提出的要求會路由傳送至 Azure Cosmos DB 前端中的所謂「閘道」伺服器，然後將您對 Azure Cosmos DB 後端中的適當分割區)  (的要求進行風扇輸出。
+這些連線模式基本上會將資料平面要求的路由（檔讀取和寫入）從您的用戶端電腦移至 Azure Cosmos DB 後端中的資料分割。 直接模式是最佳效能的最佳選項，可讓您的用戶端直接開啟 Azure Cosmos DB 後端中的資料分割的 TCP 連線，並傳送要求 *直接* lesson.ly 而不需要媒介。 相反地，在閘道模式中，用戶端所提出的要求會路由傳送至 Azure Cosmos DB 前端中的所謂「閘道」伺服器，然後將您對 Azure Cosmos DB 後端中的適當分割區)  (的要求進行風扇輸出。
 
 ## <a name="service-port-ranges"></a>服務埠範圍
 
