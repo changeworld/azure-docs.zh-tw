@@ -7,14 +7,16 @@ ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 10/04/2019
 ms.author: sngun
-ms.openlocfilehash: 23a265f1ae6e925440e2804056348cb705b09da5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 4e638fdff67ad2d0bc6f191cdfd46867ab847923
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490555"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080102"
 ---
 # <a name="azure-cosmos-db-gremlin-limits"></a>Azure Cosmos DB Gremlin 限制
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
+
 本文討論 Azure Cosmos DB Gremlin 引擎的限制，並說明它們可能會對客戶周遊有何影響。
 
 Cosmos DB Gremlin 建置於 Cosmos DB 基礎結構之上。 因此， [Azure Cosmos DB 服務限制](./concepts-limits.md) 中所述的所有限制仍然適用。
@@ -33,6 +35,6 @@ Cosmos DB Gremlin 建置於 Cosmos DB 基礎結構之上。 因此， [Azure Cos
 *閒置連線逾時* | **1 小時** | Gremlin 服務將保持閒置 websocket 連接開啟的時間量。 TCP 保持連線的封包或 HTTP keep-alive 要求不會延長超過此限制的連接存留期。 Cosmos DB Graph 引擎會將 websocket 連線視為閒置，如果沒有任何正在執行的 Gremlin 要求。
 *每小時的資源權杖* | **100** | Gremlin 用戶端用來連線到區域中 Gremlin 帳戶的唯一資源權杖數目。 當應用程式超過每小時的唯一權杖限制時， `"Exceeded allowed resource token limit of 100 that can be used concurrently"` 將會在下一次驗證要求時傳回。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * [Azure Cosmos DB Gremlin 回應標頭](gremlin-headers.md)
 * [使用 Gremlin 搭配 Azure Cosmos DB 資源權杖](how-to-use-resource-tokens-gremlin.md)

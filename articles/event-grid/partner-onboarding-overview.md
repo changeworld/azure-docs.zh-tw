@@ -1,33 +1,32 @@
 ---
-title: 作為 Azure 事件方格合作夥伴上線
-description: 以 Azure 事件方格夥伴主題類型登入。 瞭解合作夥伴主題的資源模型和發佈流程。
+title: '合作夥伴上線總覽 (Azure 事件方格) '
+description: 提供如何上架為事件方格夥伴的總覽。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 36f2178b7c21af016f9074d6f973a01cedb873d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/29/2020
+ms.openlocfilehash: 2a2e33395cabd368d5d5d870dd0461e4cbd37e0d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87826784"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081190"
 ---
-# <a name="onboard-as-an-azure-event-grid-partner"></a>作為 Azure 事件方格合作夥伴上線
+# <a name="partner-onboarding-overview-azure-event-grid"></a>合作夥伴上線總覽 (Azure 事件方格) 
 
 本文說明如何私下使用 Azure 事件方格夥伴資源，以及如何成為公開可用的合作夥伴主題類型。
 
 您不需要特殊權限，即可開始使用事件方格合作夥伴發佈事件相關聯的事件方格資源類型。 事實上，您現在可以使用它們來私下將事件發佈至您自己的 Azure 訂用帳戶，並在考慮成為合作夥伴時測試資源模型。
 
-## <a name="become-an-event-grid-partner"></a>成為事件方格夥伴
+> [!NOTE]
+> 如需如何使用 Azure 入口網站作為事件方格夥伴上線的逐步指示，請參閱 [如何將 (Azure 入口網站) 中的事件方格夥伴上架 ](onboard-partner.md)。 
 
-如果您有興趣成為公用事件方格夥伴，請先填寫 [此表單](https://aka.ms/gridpartnerform)。 然後與事件方格小組聯絡 [GridPartner@microsoft.com](mailto:gridpartner@microsoft.com) 。
+## <a name="how-partner-events-work"></a>夥伴活動的運作方式
+「夥伴事件」功能可採用事件方格已用來從 Azure 資源（例如 Azure 儲存體和 Azure IoT 中樞）發佈事件的現有架構，並讓這些工具可公開供任何人使用。 根據預設，使用這些工具僅供您的 Azure 訂用帳戶私用。 若要公開提供您的活動，請填寫表單，並 [與事件方格小組聯繫](mailto:gridpartner@microsoft.com)。
 
-## <a name="how-partner-topics-work"></a>合作夥伴主題運作方式
-合作夥伴主題採用事件方格已用來從 Azure 資源（例如 Azure 儲存體和 Azure IoT 中樞）發佈事件的現有架構，並讓這些工具可公開供任何人使用。 根據預設，使用這些工具僅供您的 Azure 訂用帳戶私用。 若要公開提供您的活動，請填寫表單，並 [與事件方格小組聯繫](mailto:gridpartner@microsoft.com)。
+「夥伴事件」功能可讓您將事件發佈至 Azure 事件方格，以進行多租使用者耗用量。
 
-合作夥伴主題可讓您將事件發佈到 Azure 事件方格，以供多租用戶使用。
+## <a name="onboarding-and-event-publishing-overview"></a>上線和活動發佈概觀
 
-### <a name="onboarding-and-event-publishing-overview"></a>上線和活動發佈概觀
-
-#### <a name="partner-flow"></a>合作夥伴流程
+### <a name="partner-flow"></a>合作夥伴流程
 
 1. 建立 Azure 租用戶 (若尚未擁有)。
 1. 使用 Azure CLI 來建立新的事件方格 `partnerRegistration` 。 此資源包含顯示名稱、描述、安裝程式 URI 等資訊。
@@ -41,7 +40,7 @@ ms.locfileid: "87826784"
 1. 提供一種方法讓客戶在您的系統中註冊他們想要的夥伴主題。
 1. 請洽詢事件方格小組，讓他們知道您想要讓合作夥伴的主題類型成為公開的。
 
-#### <a name="customer-flow"></a>客戶流程
+### <a name="customer-flow"></a>客戶流程
 
 1. 您的客戶造訪 Azure 入口網站，以記下您想要在其中建立夥伴主題的 Azure 訂用帳戶識別碼和資源群組。
 1. 客戶透過您的系統要求合作夥伴主題。 在回應中，您會建立夥伴命名空間的事件通道。
@@ -54,9 +53,7 @@ ms.locfileid: "87826784"
     ![啟用夥伴主題](./media/partner-onboarding-how-to/activate-partner-topic.png)
 
 ## <a name="resource-model"></a>資源模型
-
-
-下列資源模型適用于合作夥伴主題。
+下列資源模型適用于夥伴事件。
 
 ### <a name="partner-registrations"></a>合作夥伴註冊
 * 資源：`partnerRegistrations`
@@ -69,7 +66,7 @@ ms.locfileid: "87826784"
 * 範圍：在合作夥伴的 Azure 訂用帳戶中建立。 客戶公開之後，就可以看到中繼資料。
 
 ### <a name="partner-namespaces"></a>夥伴命名空間
-* 資源：partnerNamespaces
+* 資源：`partnerNamespaces`
 * 使用者：合作夥伴
 * 描述：提供要發佈客戶事件的目標區域資源。 每個夥伴命名空間都有發行端點和驗證金鑰。 此命名空間也是合作夥伴為指定的客戶要求夥伴主題的方式，並列出作用中的客戶。
 * 範圍：位於合作夥伴的訂用帳戶中。
@@ -77,7 +74,7 @@ ms.locfileid: "87826784"
 ### <a name="event-channel"></a>事件通道
 * 資源：`partnerNamespaces/eventChannels`
 * 使用者：合作夥伴
-* 描述：事件通道是客戶合作夥伴主題的鏡像。 藉由建立事件通道，並在中繼資料中指定客戶的 Azure 訂用帳戶和資源群組，您可以向事件方格發出通知，以建立客戶的夥伴主題。 事件方格發出 ARM 呼叫，以在客戶的訂用帳戶中建立對應的 partnerTopic。 夥伴主題會以暫止狀態建立。 每個事件通道與夥伴主題之間都有一對一的連結。
+* 描述：事件通道是客戶合作夥伴主題的鏡像。 藉由建立事件通道，並在中繼資料中指定客戶的 Azure 訂用帳戶和資源群組，您可以向事件方格發出通知，以建立客戶的夥伴主題。 事件方格發出 Azure Resource Manager 呼叫，以在客戶的訂用帳戶中建立對應的夥伴主題。 夥伴主題會以暫止狀態建立。 每個事件通道與夥伴主題之間都有一對一的連結。
 * 範圍：位於合作夥伴的訂用帳戶中。
 
 ### <a name="partner-topics"></a>合作夥伴主題
@@ -105,7 +102,7 @@ ms.locfileid: "87826784"
 1.  發佈服務會對 `https://contoso.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01` 進行 HTTP POST。
 1.  在要求中，包含名為 aeg-sas-key 的標頭值，其中包含用於驗證的金鑰。 此金鑰會在建立夥伴命名空間期間布建。 例如，有效的標頭值為 aeg-sas-key：VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==.
 1.  將 Content-type 標頭設定為 "application/cloudevents-batch + json;字元集 = UTF-8a」。
-1.  使用對應至該區域的事件批次，對發佈 URL 執行 HTTP POST。 例如：
+1.  使用對應至該區域的事件批次，對發行 URL 執行 HTTP POST 查詢。 例如：
 
 ``` json
 [
@@ -140,7 +137,7 @@ ms.locfileid: "87826784"
 ]
 ```
 
-張貼至 partnerNamespace 端點之後，您會收到回應。 回應是標準的 HTTP 回應碼。 一些常見回應有：
+張貼至夥伴命名空間端點之後，您會收到回應。 回應是標準的 HTTP 回應碼。 一些常見回應有：
 
 | 結果                             | 回應              |
 |------------------------------------|-----------------------|
@@ -156,7 +153,7 @@ ms.locfileid: "87826784"
   * [ARM 範本](/azure/templates/microsoft.eventgrid/allversions)
   * [ARM 範本架構](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
   * [REST API](/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
-  * [CLI 擴充功能](/cli/azure/ext/eventgrid/?view=azure-cli-latest)
+  * [CLI 擴充功能](/cli/azure/ext/eventgrid/)
 
 ### <a name="sdks"></a>SDK
   * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/5.3.1-preview)
@@ -168,7 +165,7 @@ ms.locfileid: "87826784"
 
 
 ## <a name="next-steps"></a>後續步驟
-- [合作夥伴主題概觀](partner-topics-overview.md)
+- [合作夥伴主題概觀](partner-events-overview.md)
 - [合作夥伴主題上架表單](https://aka.ms/gridpartnerform)
 - [Auth0 合作夥伴主題](auth0-overview.md)
 - [如何使用 Auth0 合作夥伴主題](auth0-how-to.md)

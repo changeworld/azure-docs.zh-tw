@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8fbddbe82ae13585b8259a66dffaeef8024baf5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1af008889ece71bc2158e0a74c30ef17d24207f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71349373"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080051"
 ---
 # <a name="st_isvalid-azure-cosmos-db"></a>ST_ISVALID (Azure Cosmos DB) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  傳回布林值，指出指定的 GeoJSON Point、Polygon 或 LineString 運算式是否有效。  
   
 ## <a name="syntax"></a>語法
@@ -50,7 +52,7 @@ SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] }) AS b
 [{ "b": false }]  
 ```  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [空間函數 Azure Cosmos DB](sql-query-spatial-functions.md)
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)

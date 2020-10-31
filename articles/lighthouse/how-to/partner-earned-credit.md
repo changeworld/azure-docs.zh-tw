@@ -1,14 +1,14 @@
 ---
 title: 連結您的合作夥伴識別碼以追蹤您對委派資源的影響
 description: 瞭解如何與您的合作夥伴識別碼建立關聯，以在您透過 Azure Lighthouse 管理的客戶資源上取得合作夥伴所獲得的點數 (PEC) 。
-ms.date: 10/13/2020
+ms.date: 10/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 95483cfabb7632182a7c23ae4963f2d38a2bd2c3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: fcbcc70e380116b8e9f9b1c1e365dee1adb87a99
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019899"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080272"
 ---
 # <a name="link-your-partner-id-to-track-your-impact-on-delegated-resources"></a>連結您的合作夥伴識別碼以追蹤您對委派資源的影響 
 
@@ -20,9 +20,9 @@ ms.locfileid: "92019899"
 
 ## <a name="associate-your-partner-id-when-you-onboard-new-customers"></a>當您將新客戶上線時，請建立合作夥伴識別碼的關聯
 
-當您透過 Azure Resource Manager 範本 (ARM 範本) 來將客戶上線時，請使用下列程式將您的合作夥伴識別碼連結 (，並啟用合作夥伴所獲得的點數（如果適用）) 。 您必須知道您的 [MPN 合作夥伴識別碼](/partner-center/partner-center-account-setup#locate-your-mpn-id) ，才能完成這些步驟。 請務必使用您的合作夥伴設定檔上顯示的**相關聯 MPN 識別碼**。
+當您透過 Azure Resource Manager 範本 (ARM 範本) 來將客戶上線時，請使用下列程式將您的合作夥伴識別碼連結 (，並啟用合作夥伴所獲得的點數（如果適用）) 。 您必須知道您的 [MPN 合作夥伴識別碼](/partner-center/partner-center-account-setup#locate-your-mpn-id) ，才能完成這些步驟。 請務必使用您的合作夥伴設定檔上顯示的 **相關聯 MPN 識別碼** 。
 
-為了簡單起見，建議您在租使用者中建立服務主體帳戶，並將其連結至您的 **相關聯 MPN 識別碼**，然後將其存取權授與您上架的每個客戶，並提供 [適合 PEC 的 Azure 內建角色](/partner-center/azure-roles-perms-pec)。
+為了簡單起見，建議您在租使用者中建立服務主體帳戶，並將其連結至您的 **相關聯 MPN 識別碼** ，然後將其存取權授與您上架的每個客戶，並提供 [適合 PEC 的 Azure 內建角色](/partner-center/azure-roles-perms-pec)。
 
 1. 在您的管理租使用者中[建立服務主體帳戶](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。 在此範例中，我們將使用此服務主體的名稱 *提供者自動化帳戶* 。
 1. 使用該服務主體帳戶，連結至您管理租使用者中的 [相關聯 MPN 識別碼](../../cost-management-billing/manage/link-partner-id.md#link-to-a-partner-id) 。 您只需要進行一次。
@@ -42,9 +42,11 @@ ms.locfileid: "92019899"
 
 您可以 [在 Azure 入口網站中查看 pec 詳細資料](/partner-center/partner-earned-credit-explanation#azure-cost-management) ，並確認哪些成本已獲得 pec 的優點。 請記住，PEC 僅適用于已簽署 MCA 且位於 Azure 方案下的 CSP 客戶。
 
-如果您已遵循上述步驟，而且沒有看到關聯，請在 Azure 入口網站中開啟支援要求。
+如果您已遵循上述步驟，而且看不到預期的關聯，請在 Azure 入口網站中開啟支援要求。
 
-## <a name="next-steps"></a>後續步驟
+您也可以使用 [合作夥伴中心 SDK](/partner-center/develop/get-invoice-unbilled-consumption-lineitems) 並進行篩選， `rateOfPartnerEarnedCredit` 將訂用帳戶的 PEC 驗證自動化。
+
+## <a name="next-steps"></a>下一步
 
 - 深入瞭解 [Microsoft 合作夥伴網路](/partner-center/mpn-overview)。
 - 瞭解 [如何計算和支付 PEC](/partner-center/partner-earned-credit-explanation)。

@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: da74fde761d32802966d1f477beaf6138c77020e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 4cb07d9d19d85cd8dff9a52eeeb7e173b60f4d6d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475391"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080765"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>淘汰 S1、S2 和 S3 效能層級
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 > [!IMPORTANT] 
 > 本文所討論的 S1、S2 和 S3 效能層級即將淘汰，而且再也無法供新的 Azure Cosmos DB 帳戶使用。
@@ -129,7 +130,7 @@ S1、S2 和 S3 效能層級不提供標準 Azure Cosmos DB 所提供的彈性。
 
 EA 客戶將會受保護的價格，直到其目前合約結束。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 若要深入了解 Azure Cosmos DB 的價格和管理資料，請探索這些資源：
 
 1.  [在 Cosmos DB 中分割資料](partitioning-overview.md)。 了解單一資料分割容器和資料分割容器的差異，以及實作資料分割策略以順暢地調整的秘訣。

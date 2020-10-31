@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: a058e7a23c36dcaca16c3cce1be1ca826d472bc0
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: eb06d101170685bea5ff231612e9ffbf8df467da
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476989"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079286"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>擁有權 (TCO) 的擁有權總成本 Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB 採用更細緻的多租用戶和資源控管設計。 這項設計允許 Azure Cosmos DB以極低的成本運作，並協助使用者儲存。 目前，Azure Cosmos DB 在單一電腦上支援超過 280 多個客戶工作負載，密度持續增加，且叢集內有數千個客戶工作負載。 它會跨叢集中的不同電腦以及跨資料中心內的多個叢集，負載平衡客戶工作負載的複本。 若要深入瞭解，請參閱 [Azure Cosmos DB：推送全域散發資料庫的](https://azure.microsoft.com/blog/azure-cosmos-db-pushing-the-frontier-of-globally-distributed-databases/)領域。 由於資源控管、多租用戶和 Azure 基礎結構之其餘部分的原生整合，Azure Cosmos DB 平均比在 IaaS 上執行的 MongoDB、Cassandra 或其他 OSS NoSQL 便宜 4 到 6 倍，且比在內部部署執行的資料庫引擎便宜最高 10 倍。 請參閱 [NoSQL 資料庫雲端服務的擁有權總成本](https://documentdbportalstorage.blob.core.windows.net/papers/11.15.2017/NoSQL%20TCO%20paper.pdf)的相關文件。
 
@@ -34,7 +35,7 @@ Azure Cosmos DB 的無伺服器佈建模型不需要過度佈建的資料庫基�
 
 * **彈性規模的能力：** Azure Cosmos DB 輸送量可以擴大和縮小，讓您在非尖峰時間降低擁有權的成本。 部署在雲端基礎結構上的 OSS NoSQL 叢集提供的彈性有限，且根據定義，內部部署不具有彈性。 在 Azure Cosmos DB 中，如果您佈建更多的輸送量，則可確保您的輸送量呈線性成長。 這項保證由財務 SLA 和任何規模的第 99 個百分位數所支援。
 
-* 規模**經濟：** 受控服務（例如 Azure Cosmos DB）會與大量節點搭配運作，以原生方式與網路、儲存體和計算進行整合。 由於 Azure Cosmos DB 的大型規模，您可以節省成本。
+* 規模 **經濟：** 受控服務（例如 Azure Cosmos DB）會與大量節點搭配運作，以原生方式與網路、儲存體和計算進行整合。 由於 Azure Cosmos DB 的大型規模，您可以節省成本。
 
 * **針對雲端優化：** Azure Cosmos DB 是以更精細的多租使用者和效能隔離，從頭開始設計。 這樣可以跨叢集和資料中心，以最佳方式放置、執行和平衡數千個租用戶和其工作負載。 相比之下，目前世代的 OSS NoSQL 資料庫會在內部部署環境運行，假設整個虛擬機器執行單一租用戶的工作負載。 這些資料庫也不是為了充分利用雲端提供者的基礎結構和硬體而設計的。 例如，OSS NoSQL 資料庫引擎不會知道虛擬機器與例行的映像升級之間的差異，或者該進階磁碟其實已經三向複寫。 它無法利用這些優勢，並將優勢和節省量傳遞給客戶。
 
@@ -56,7 +57,7 @@ Azure Cosmos DB 的無伺服器佈建模型不需要過度佈建的資料庫基�
 
 * **使用保留容量最多可省下65% 的成本：** Azure Cosmos DB [保留容量](cosmos-db-reserved-capacity.md) 可協助您透過預先支付一年或三年的 Azure Cosmos DB 資源來節省成本。 透過一年或三年的預先承諾量，您可以大幅降低成本，相較於一般的定價可節省 20-65% 的折扣。 在任務關鍵性工作負載上，您可以在佈建容量方面取得更好的 SLA。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 深入了解 [Azure Cosmos DB 定價模型如何為客戶提供符合成本效益的解決方案](total-cost-ownership.md)
 * 深入了解[最佳化開發與測試](optimize-dev-test.md)

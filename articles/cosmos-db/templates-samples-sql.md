@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.author: mjbrown
-ms.openlocfilehash: 3247f35fec8615b9c5e277b7453c340caaf56ffd
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 7c060b20920ec17e5de0d10ec74b5619b1575ae2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283970"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079388"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>適用於 Azure Cosmos DB 的 Azure Resource Manager 範本
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文僅顯示 Core (SQL) API 帳戶的 Azure Resource Manager 範本範例。 您也可以尋找 [Cassandra](templates-samples-cassandra.md)、[Gremlin](templates-samples-gremlin.md)、[MongoDB](templates-samples-mongodb.md) 和[資料表](templates-samples-table.md) API 的範本範例。
 

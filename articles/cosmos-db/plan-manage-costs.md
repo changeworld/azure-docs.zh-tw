@@ -7,14 +7,15 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 278603887fe7d47b4be52b04f9f0864be1a1b75b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3a1bb36910b09d24c3328c8fc8ae94e1e3321642
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482242"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080697"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>規劃和管理 Azure Cosmos DB 的成本
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 本文說明如何規劃和管理 Azure Cosmos DB 的成本：
 
@@ -25,7 +26,7 @@ ms.locfileid: "92482242"
 
 瞭解 Azure Cosmos DB 的成本只是您 Azure 帳單中的每月成本的一部分。 如果您使用其他 Azure 服務，您必須針對 Azure 訂用帳戶中使用的所有 Azure 服務和資源（包括協力廠商服務）支付費用。 本文說明如何規劃和管理 Azure Cosmos DB 的成本。 在您熟悉 Azure Cosmos DB 的管理成本之後，您可以套用類似的方法來管理訂用帳戶中所使用之所有 Azure 服務的成本。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 成本分析支援不同的 Azure 帳戶類型。 若要檢視所支援帳戶類型的完整清單，請參閱[了解成本管理資料](../cost-management-billing/costs/understand-cost-mgt-data.md)。 若要檢視成本資料，您至少需要 Azure 帳戶的讀取存取。 如需 Azure 成本管理資料的存取權指派相關資訊，請參閱[指派資料的存取權](../cost-management-billing/costs/assign-access-acm-data.md)。
 
@@ -45,7 +46,7 @@ Azure Cosmos DB 支援兩種類型的容量模式：布 [建的輸送量](set-th
 
 如果您打算在無伺服器模式中使用 Azure Cosmos DB，您需要預估每月可能耗用的 [要求單位](request-units.md) 和 GB 儲存體數量。 您可以評估每個月發出的資料庫作業數目，並將其數量乘以對應的 RU 成本，以估計所需的要求單位數量。 下表列出一般資料庫作業的估計 RU 費用：
 
-| 作業 | 估計成本 | 附註 |
+| 作業 | 估計成本 | 備註 |
 | --- | --- | --- |
 | 建立項目 | 5 RU | 1 KB 專案中索引小於5個屬性的平均成本 |
 | 更新項目 | 10 RU | 1 KB 專案中索引小於5個屬性的平均成本 |
@@ -56,7 +57,7 @@ Azure Cosmos DB 支援兩種類型的容量模式：布 [建的輸送量](set-th
 > [!IMPORTANT] 
 > 請注意上表中的附注。 若要更精確地估計作業的實際成本，您可以使用 [Azure Cosmos 模擬器](local-emulator.md) ，並 [測量作業的確切 RU 成本](find-request-unit-charge.md)。 雖然 Azure Cosmos 模擬器不支援無伺服器，但它會報告資料庫作業的標準 RU 費用，並且可用於此估計。
 
-當您計算出每個月可能耗用的要求單位數和 GB 儲存體總數時，下列公式會傳回您的成本預估： ** ( [要求單位數目]/1000000 * $0.25) + ( [儲存空間] * $0.25) **。
+當您計算出每個月可能耗用的要求單位數和 GB 儲存體總數時，下列公式會傳回您的成本預估： **( [要求單位數目]/1000000 * $0.25) + ( [儲存空間] * $0.25)** 。
 
 > [!NOTE]
 > 上述範例所示的成本僅供示範之用。 如需最新定價資訊，請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/) 。
@@ -85,19 +86,19 @@ Azure Cosmos DB 支援兩種類型的容量模式：布 [建的輸送量](set-th
 
 當您使用成本分析時，可以在不同時間間隔的圖表和資料表中查看 Azure Cosmos DB 成本。 某些範例是依日、目前、上個月和年。 您也可以根據預算和預測成本來查看成本。 在一段時間內切換至更長的觀點，可協助您找出花費趨勢，並查看可能發生超支的位置。 如果您已建立預算，也可以輕鬆地查看其超出的位置。若要查看成本分析中的 Azure Cosmos DB 成本：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入[Azure 入口網站](https://portal.azure.com)。
 
-1. 開啟 [ **成本管理 + 計費** ] 視窗，從功能表中選取 [ **成本管理** ]，然後選取 [ **成本分析**]。 然後，您可以從 [ **領域** ] 下拉式清單中變更特定訂用帳戶的範圍。
+1. 開啟 [ **成本管理 + 計費** ] 視窗，從功能表中選取 [ **成本管理** ]，然後選取 [ **成本分析** ]。 然後，您可以從 [ **領域** ] 下拉式清單中變更特定訂用帳戶的範圍。
 
 1. 依預設，所有服務的成本都會顯示在第一個環圈圖中。 選取標示為 "Azure Cosmos DB" 的圖表區域。
 
-1. 若要縮小單一服務（例如 Azure Cosmos DB）的成本，請選取 [ **新增篩選** ]，然後選取 [ **服務名稱**]。 然後，從清單中選擇 [ **Azure Cosmos DB** ]。 以下範例顯示只 Azure Cosmos DB 的成本：
+1. 若要縮小單一服務（例如 Azure Cosmos DB）的成本，請選取 [ **新增篩選** ]，然後選取 [ **服務名稱** ]。 然後，從清單中選擇 [ **Azure Cosmos DB** ]。 以下範例顯示只 Azure Cosmos DB 的成本：
  
    :::image type="content" source="./media/plan-manage-costs/cost-analysis-pane.png" alt-text="Azure Cosmos DB 容量計算機中的成本預估":::
 
 在上述範例中，您會看到二月的目前 Azure Cosmos DB 成本。這些圖表也包含依位置和依資源群組 Azure Cosmos DB 的成本。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 請參閱下列文章，以深入瞭解定價在 Azure Cosmos DB 中的運作方式：
 

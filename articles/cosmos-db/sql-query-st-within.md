@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 07a339d82f5e4bea1ea0412a5d5b19522611b54a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da475ced067f19cddd4a20284ba556c8a0b52677
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78296111"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079966"
 ---
 # <a name="st_within-azure-cosmos-db"></a>ST_WITHIN (Azure Cosmos DB) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  傳回布林運算式，指出第一個引數中指定的 GeoJSON 物件 (Point、Polygon 或 LineString) 是否位在第二個引數中的 GeoJSON (Point、Polygon 或 LineString) 內。  
   
 ## <a name="syntax"></a>語法
@@ -55,7 +57,7 @@ WHERE ST_WITHIN(f.location, {
 
 這個系統函數將受益于 [地理空間索引](index-policy.md#spatial-indexes)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [空間函數 Azure Cosmos DB](sql-query-spatial-functions.md)
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)

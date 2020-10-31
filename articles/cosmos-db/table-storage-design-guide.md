@@ -8,14 +8,15 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 94aa699d8daab7e5e7ff4ae82e5d09ab1475c07e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 709b83ad3e71a932202cebb9c9cb6187feae4ed7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477584"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080000"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure 表格儲存體資料表設計指南：可擴充的高效能資料表
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
@@ -123,7 +124,7 @@ ms.locfileid: "92477584"
 </table>
 
 
-到目前為止，這項設計看起來類似關聯式資料庫中的資料表。 主要差異在於必要的資料行，以及能夠在相同資料表中儲存多個實體類型。 此外，每個使用者定義屬性 (例如 **FirstName** 或 **Age**) 都具有資料類型，例如整數或字串，就像關聯式資料庫中的資料行一樣。 然而，不同於關聯式資料庫，表格儲存體的無結構描述本質意味著，一個屬性在每個實體上不一定是相同的資料類型。 若要將複雜資料類型儲存在單一屬性中，您必須使用序列化格式，例如 JSON 或 XML。 如需詳細資訊，請參閱[了解表格儲存體資料模型](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)。
+到目前為止，這項設計看起來類似關聯式資料庫中的資料表。 主要差異在於必要的資料行，以及能夠在相同資料表中儲存多個實體類型。 此外，每個使用者定義屬性 (例如 **FirstName** 或 **Age** ) 都具有資料類型，例如整數或字串，就像關聯式資料庫中的資料行一樣。 然而，不同於關聯式資料庫，表格儲存體的無結構描述本質意味著，一個屬性在每個實體上不一定是相同的資料類型。 若要將複雜資料類型儲存在單一屬性中，您必須使用序列化格式，例如 JSON 或 XML。 如需詳細資訊，請參閱[了解表格儲存體資料模型](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)。
 
 您選擇的 `PartitionKey` 和 `RowKey` 極為重要，攸關資料表設計是否良好。 儲存在資料表中的每個實體，都必須有獨一無二的 `PartitionKey` 和 `RowKey` 組合。 如同關聯式資料庫資料表中的索引鍵，`PartitionKey` 和 `RowKey` 值會進行索引編製，以建立可啟用快速查閱的叢集索引。 不過，表格儲存體不會建立任何次要索引，因此這些是僅有的兩個索引屬性 (稍後描述的一些模式將說明如何解決這種明顯的限制)。  
 
@@ -210,7 +211,7 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用越多分割區
 * 「資料表掃描」不包含 `PartitionKey`，而且效率不佳，因為會在所有組成資料表的分割區中搜尋任何相符實體。 無論篩選條件是否使用 `RowKey`，都會執行資料表掃描。 例如： `$filter=LastName eq 'Jones'` 。  
 * 傳回多個實體的 Azure 表格儲存體查詢，依 `PartitionKey` 和 `RowKey` 順序來排序實體。 為了避免在用戶端重新排序實體，選擇的 `RowKey` 應該定義最常用的排序次序。 Azure Cosmos DB 中以 Azure 資料表 API 傳回的查詢結果，不會依分割區索引鍵或資料列索引鍵排序。 如需詳細的功能差異清單，請參閱 [Azure Cosmos DB 和 Azure 資料表儲存體中資料表 API 之間的差異](table-api-faq.md#table-api-vs-table-storage)。
 
-如果使用 "**or**" 來根據 `RowKey` 值指定篩選條件，將會導致分割區掃描，且不視為範圍查詢。 因此，請避免查詢使用像這樣的篩選條件：`$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')`。  
+如果使用 " **or** " 來根據 `RowKey` 值指定篩選條件，將會導致分割區掃描，且不視為範圍查詢。 因此，請避免查詢使用像這樣的篩選條件：`$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')`。  
 
 關於如何使用儲存體用戶端程式庫來執行有效率的查詢，如需用戶端程式碼範例，請參閱：  
 
@@ -252,7 +253,7 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用越多分割區
 > [!NOTE]
 > Azure Cosmos DB 中以 Azure 資料表 API 傳回的查詢結果，不會依分割區索引鍵或資料列索引鍵排序。 如需詳細的功能差異清單，請參閱 [Azure Cosmos DB 和 Azure 資料表儲存體中資料表 API 之間的差異](table-api-faq.md#table-api-vs-table-storage)。
 
-表格儲存體中的索引鍵是字串值。 為確保數值正確排序，您應該將數值轉換成固定長度，並以零填補。 例如，如果作為 `RowKey` 的員工識別碼值是整數值，您應該將員工識別碼 **123** 轉換為 **00000123**。 
+表格儲存體中的索引鍵是字串值。 為確保數值正確排序，您應該將數值轉換成固定長度，並以零填補。 例如，如果作為 `RowKey` 的員工識別碼值是整數值，您應該將員工識別碼 **123** 轉換為 **00000123** 。 
 
 許多應用程式都需要使用以不同順序排序的資料：例如，依名稱或加入日期為員工排序。 在[資料表設計模式](#table-design-patterns)一節中，下列模式指出如何替換實體的排序次序：  
 
@@ -550,7 +551,7 @@ EGT 可讓您在共用相的資料分割索引鍵的多個實體之間執行不�
 
 :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE12.png" alt-text="此圖顯示部門實體和員工實體":::
 
-用戶端會將訊息放入 Azure 佇列中，以起始封存作業 (在此範例中，封存員工 #456)。 背景工作角色會輪詢佇列中的新訊息；若找到新訊息，它會讀取訊息，並將隱藏的複本保留在佇列上。 背景工作角色接著會擷取來自**目前**資料表的實體複本、將複本插入**封存**資料表中，然後從**目前**資料表中刪除原始複本。 最後，如果前述步驟沒有任何錯誤，背景工作角色會從佇列中刪除隱藏的訊息。  
+用戶端會將訊息放入 Azure 佇列中，以起始封存作業 (在此範例中，封存員工 #456)。 背景工作角色會輪詢佇列中的新訊息；若找到新訊息，它會讀取訊息，並將隱藏的複本保留在佇列上。 背景工作角色接著會擷取來自 **目前** 資料表的實體複本、將複本插入 **封存** 資料表中，然後從 **目前** 資料表中刪除原始複本。 最後，如果前述步驟沒有任何錯誤，背景工作角色會從佇列中刪除隱藏的訊息。  
 
 在此範例中，圖表中的步驟 4 將員工插入 **Archive** 資料表中。 員工可新增至 Blob 儲存體中的 blob，或檔案系統中的檔案。  
 
@@ -700,7 +701,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 #### <a name="issues-and-considerations"></a>問題和考量
 當您決定如何實作此模式時，請考慮下列幾點：  
 
-* 您應該使用適當的分隔符號字元，以輕鬆剖析 `RowKey` 值：例如，**000123_2012**。  
+* 您應該使用適當的分隔符號字元，以輕鬆剖析 `RowKey` 值：例如， **000123_2012** 。  
 * 您也將此實體與包含同一員工相關資料的其他實體，一起儲存在相同的分割區。 這表示您可以使用 EGT 來維持強大的一致性。
 * 您應該考量查詢資料的頻率，以判斷此模式是否合適。 例如，如果您不常存取考核資料，但經常存取主要員工資料，則應該將這兩項資料保持為分開的實體。  
 

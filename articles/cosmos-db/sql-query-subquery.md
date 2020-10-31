@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 16be1b91d007ca2dbc88405cfc55ff519f51ee41
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74870559"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081530"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Azure Cosmos DB 的 SQL 子查詢範例
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 子查詢是在另一個查詢中嵌套的查詢。 子查詢也稱為內部查詢或內部 select。 包含子查詢的語句通常稱為外部查詢。
 
@@ -23,16 +24,16 @@ ms.locfileid: "74870559"
 
 子查詢有兩種主要類型：
 
-* 相互**關聯**：參考外部查詢值的子查詢。 針對外部查詢處理的每個資料列，都會評估子查詢一次。
-* **非相互關聯**：與外部查詢無關的子查詢。 您可以自行執行它，而不需要依賴外部查詢。
+* 相互 **關聯** ：參考外部查詢值的子查詢。 針對外部查詢處理的每個資料列，都會評估子查詢一次。
+* **非相互關聯** ：與外部查詢無關的子查詢。 您可以自行執行它，而不需要依賴外部查詢。
 
 > [!NOTE]
 > Azure Cosmos DB 僅支援相互關聯的子查詢。
 
 您可以根據傳回的資料列和資料行數目，進一步分類子查詢。 有三種類型：
-* **Table**：傳回多個資料列和多個資料行。
-* **多重值**：傳回多個資料列和單一資料行。
-* 純**量：傳回**單一資料列和單一資料行。
+* **Table** ：傳回多個資料列和多個資料行。
+* **多重值** ：傳回多個資料列和單一資料行。
+* 純 **量：傳回** 單一資料列和單一資料行。
 
 Azure Cosmos DB 中的 SQL 查詢一律會傳回單一資料行 (簡單值或複雜檔) 。 因此，Azure Cosmos DB 中只適用多重值與純量子查詢。 您只能在 FROM 子句中將多重值子查詢用作關聯式運算式。 您可以在 SELECT 或 WHERE 子句中使用純量子查詢做為純量運算式，或在 FROM 子句中做為關聯式運算式使用。
 
@@ -47,7 +48,7 @@ Azure Cosmos DB 中的 SQL 查詢一律會傳回單一資料行 (簡單值或複
 
 多重值子查詢可以將述詞推送到每個 select-many 運算式之後，而不是在 WHERE 子句中的所有交叉聯結之後，藉以優化聯結運算式。
 
-請考慮下列查詢：
+請考慮以下查詢：
 
 ```sql
 SELECT Count(1) AS Count
@@ -140,7 +141,7 @@ WHERE AvgNutritionValue > 80
 | Kj       | Kilojoule           | 1.00 e + 03       | 焦耳         |
 | Mj       | Megajoule           | 1.00 e + 06       | 焦耳         |
 | GJ       | Gigajoule           | 1.00 e + 09       | 焦耳         |
-| cal      | 熱量             | 1.00 e + 00       | 熱量       |
+| 卡爾      | 熱量             | 1.00 e + 00       | 熱量       |
 | 大卡     | 熱量             | 1.00 e + 03       | 熱量       |
 | IU       | 國際單位 |                |               |
 
@@ -517,7 +518,7 @@ JOIN n IN (SELECT VALUE ARRAY(SELECT t FROM t in c.tags WHERE t.name != 'infant 
 ]
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [Azure Cosmos DB .NET 範例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [模型文件資料](modeling-data.md)

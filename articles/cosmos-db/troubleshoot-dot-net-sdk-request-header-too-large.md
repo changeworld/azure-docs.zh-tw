@@ -8,14 +8,16 @@ ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: d5d66ca05390af5f6fef91ca959f1db3d547d3fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fff9bc55b324875601a2c4e68835a17c61c3769b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89014042"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079252"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-header-too-large-message"></a>診斷和疑難排解 Azure Cosmos DB 「要求標頭太大」訊息
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 「要求標頭太大」訊息擲回，並出現 HTTP 錯誤碼400。 如果要求標頭的大小成長得很大，而超過允許的最大大小，就會發生此錯誤。 建議您使用最新版本的 SDK。 請使用至少3.x 版或2.x 版，因為這些版本會將標頭大小追蹤新增至例外狀況訊息。
 
 ## <a name="troubleshooting-steps"></a>疑難排解步驟
@@ -45,6 +47,6 @@ ms.locfileid: "89014042"
 1. 遵循 [.net v3](performance-tips-dotnet-sdk-v3-sql.md) 或 [.net v2](performance-tips.md) 效能秘訣文章中的指導方針。 將應用程式轉換為使用直接連接模式與 TCP 通訊協定。 使用 TCP 通訊協定的直接連接模式沒有標頭大小限制，例如 HTTP 通訊協定，因此可避免此問題。 
 1. 如果使用 TCP 通訊協定的直接連接模式不是您工作負載的選項，請設定 `ResponseContinuationTokenLimitInKb` 選項。 您可以在 `FeedOptions` 中的 v2 或 v3 中找到這個選項 `QueryRequestOptions` 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * 當您使用 Azure Cosmos DB .NET SDK 時[，診斷和疑難排解](troubleshoot-dot-net-sdk.md)問題。
 * 瞭解 [.net v3](performance-tips-dotnet-sdk-v3-sql.md) 和 [.net v2](performance-tips.md)的效能指導方針。

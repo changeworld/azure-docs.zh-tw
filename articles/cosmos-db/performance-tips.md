@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 0fb783a6ad65ce17bff14b72e8d94d284769779f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 824c48646ab32e02c627fb623dbab60c3050ad96
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475153"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080714"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Azure Cosmos DB 和 .NET SDK v2 的效能秘訣
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
@@ -42,19 +43,19 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
 我們建議 Windows 64 位主機處理，以改善效能。 SQL SDK 包含原生 ServiceInterop.dll，可在本機剖析和最佳化查詢。 ServiceInterop.dll 只能在 Windows x64 平台上受到支援。 若為 Linux 和其他不支援 ServiceInterop.dll 的平臺，則會對閘道進行額外的網路呼叫，以取得優化的查詢。 下列類型的應用程式預設會使用32位主機處理。 若要將主機處理變更為64位處理，請根據應用程式的類型，遵循下列步驟：
 
-- 針對可執行檔應用程式，您可以在 [**專案屬性**] 視窗的 [**組建**] 索引標籤中，將 [[平臺目標](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019)] 設定為 [ **x64** ] 來變更主機處理
+- 針對可執行檔應用程式，您可以在 [ **專案屬性** ] 視窗的 [ **組建** ] 索引標籤中，將 [ [平臺目標](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019)] 設定為 [ **x64** ] 來變更主機處理
 
-- 針對以 VSTest 為基礎的測試專案，您可以在**Test**  >  [Visual Studio 測試] 功能表上選取 [測試**測試設定**  >  **預設處理器架構為 X64** **Test** ] 來變更主處理。
+- 針對以 VSTest 為基礎的測試專案，您可以在 **Test**  >  [Visual Studio 測試] 功能表上選取 [測試 **測試設定**  >  **預設處理器架構為 X64** **Test** ] 來變更主處理。
 
-- 針對本機部署的 ASP.NET web 應用程式，您可以在 [**工具**選項專案和方案 Web 專案] 下，選取 **[使用適用于網站和專案的64位版本 IIS Express** ] 來變更主機處理  >  **Options**  >  **Projects and Solutions**  >  ** **。
+- 針對本機部署的 ASP.NET web 應用程式，您可以在 [  。
 
-- 針對部署在 Azure 上的 ASP.NET web 應用程式，您可以在 Azure 入口網站的 [**應用程式設定**] 中選取**64**位平臺，以變更主機處理。
+- 針對部署在 Azure 上的 ASP.NET web 應用程式，您可以在 Azure 入口網站的 [ **應用程式設定** ] 中選取 **64** 位平臺，以變更主機處理。
 
 > [!NOTE] 
-> 根據預設，新 Visual Studio 專案會設定為 [ **任何 CPU**]。 建議您將專案設定為 **x64** ，使其不會切換至 **x86**。 如果加入僅限 x86 的相依性，則將專案設定為 **任何 CPU** 可以輕鬆地切換至 **x86** 。<br/>
+> 根據預設，新 Visual Studio 專案會設定為 [ **任何 CPU** ]。 建議您將專案設定為 **x64** ，使其不會切換至 **x86** 。 如果加入僅限 x86 的相依性，則將專案設定為 **任何 CPU** 可以輕鬆地切換至 **x86** 。<br/>
 > ServiceInterop.dll 必須在執行 SDK DLL 的資料夾中。 只有當您手動複製 Dll 或擁有自訂群組建/部署系統時，才需要考慮這一點。
     
-**開啟伺服器端垃圾收集 (GC) **
+**開啟伺服器端垃圾收集 (GC)**
 
 在某些情況下，降低垃圾收集的頻率可能會有所説明。 在 .NET 中，將 [>gcserver>](/dotnet/framework/configure-apps/file-schema/runtime/gcserver-element) 設定為 `true` 。
 
@@ -135,7 +136,7 @@ SQL .NET SDK 1.9.0 和更新版本支援平行查詢，可讓您以平行方式�
 - `MaxDegreeOfParallelism` 控制可以平行查詢的資料分割數目上限。 
 - `MaxBufferedItemCount` 控制預先提取的結果數目。
 
-**_調整平行處理原則的程度_*_
+**_調整平行處理原則的程度_* _
 
 平行查詢的運作方式是以平行方式查詢多個資料分割。 但是個別分割區中的資料會根據查詢順序提取。 `MaxDegreeOfParallelism`若將[SDK V2](sql-api-sdk-dotnet.md)中的資料分割設定為數據分割數目，就有機會達到最高效能的查詢，但前提是其他所有系統條件維持不變。 如果您不知道資料分割數目，您可以將平行處理原則的程度設定為較高的數位。 系統會選擇最小 (的資料分割數目、使用者提供的輸入) 作為平行處理原則的程度。
 
@@ -147,7 +148,7 @@ _*_微調 MaxBufferedItemCount_*_
 
 不論平行處理原則的程度為何，預先提取的運作方式都相同，而且所有分割區的資料都有一個緩衝區。  
 
-_ 依*RetryAfter 間隔執行*輪詢*
+_ 依 *RetryAfter 間隔執行* 輪詢*
 
 在效能測試期間，您應該增加負載，直到低比率的要求受到節流。 如果要求受到節流處理，用戶端應用程式應該會在伺服器指定的重試間隔中，針對伺服器指定的重試間隔關閉。 遵循輪詢可確保您在重試之間花費最少的等候時間。 
 
@@ -255,7 +256,7 @@ SDK 全都隱含地攔截這個回應，採用伺服器指定的 retry-after 標
 
 要求費用 (也就是指定作業的要求處理成本) 直接與檔案大小相互關聯。 大型檔的作業成本高於小型檔上的作業。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需在少數用戶端電腦上用來評估高效能案例 Azure Cosmos DB 的範例應用程式，請參閱 [Azure Cosmos DB 的效能和規模測試](performance-testing.md)。
 

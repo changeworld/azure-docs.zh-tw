@@ -7,14 +7,15 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
 ms.custom: contperfq1
-ms.openlocfilehash: af9122aaa0233fe5248f31ffe805e01a98831eae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf174d45f33c50ce93b45b19c6030cf42cb20983
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447425"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081445"
 ---
 # <a name="troubleshoot-issues-when-using-the-azure-cosmos-emulator"></a>針對使用 Azure Cosmos 模擬器時的問題進行疑難排解
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos 模擬器提供一個模擬 Azure Cosmos DB 服務的本機環境，以供開發之用。 使用本文中的秘訣，協助您針對安裝或使用 Azure Cosmos 模擬器時所遇到的問題進行疑難排解。 
 
@@ -34,11 +35,11 @@ Azure Cosmos 模擬器提供一個模擬 Azure Cosmos DB 服務的本機環境�
 
 * 如果發生連線問題，請[收集追蹤檔案](#trace-files)並加以壓縮，然後在 [Azure 入口網站](https://portal.azure.com)中開啟支援票證。
 
-* 如果您收到**服務無法使用**訊息，模擬器可能無法初始化網路堆疊。 由於 Pulse 安全用戶端或 Juniper 網路用戶端的網路篩選驅動程式可能會造成問題，因此請檢查是否已安裝這些驅動程式。 解除安裝協力廠商網路篩選驅動程式通常便會修正問題。 或者，使用 /DisableRIO 來啟動模擬器，將模擬器網路通訊切換為一般 Winsock。 
+* 如果您收到 **服務無法使用** 訊息，模擬器可能無法初始化網路堆疊。 由於 Pulse 安全用戶端或 Juniper 網路用戶端的網路篩選驅動程式可能會造成問題，因此請檢查是否已安裝這些驅動程式。 解除安裝協力廠商網路篩選驅動程式通常便會修正問題。 或者，使用 /DisableRIO 來啟動模擬器，將模擬器網路通訊切換為一般 Winsock。 
 
-* 如果您遇到「 **禁止」，則會使用傳輸通訊協定或加密中禁止的加密來發出「訊息」： "要求。檢查帳戶 SSL/TLS 的最小允許通訊協定設定 ...** 」連線問題，這可能是 OS 中的全域變更所造成的 (例如 Insider Preview 組建 20170) ，或啟用 TLS 1.3 作為預設值的瀏覽器設定。 使用 SDK 對 Cosmos 模擬器執行要求時，可能會發生類似的錯誤，例如 **Microsoft.Azure.Documents.DocumentClientException：使用傳輸通訊協定或加密中的禁止加密提出要求。檢查帳戶 SSL/TLS 允許的最小通訊協定設定**。 就目前而言，這是的預期行為，因為 Cosmos 模擬器僅接受並適用 TLS 1.2 通訊協定。 建議的解決辦法是將設定和預設值變更為 TLS 1.2;例如，在 [IIS 管理員] 中，流覽至 [網站]-> [預設的網站]，並找出埠8081的「網站系結」，並加以編輯以停用 TLS 1.3。 您可以透過 [設定] 選項對網頁瀏覽器執行類似的作業。
+* 如果您遇到「 **禁止」，則會使用傳輸通訊協定或加密中禁止的加密來發出「訊息」： "要求。檢查帳戶 SSL/TLS 的最小允許通訊協定設定 ...** 」連線問題，這可能是 OS 中的全域變更所造成的 (例如 Insider Preview 組建 20170) ，或啟用 TLS 1.3 作為預設值的瀏覽器設定。 使用 SDK 對 Cosmos 模擬器執行要求時，可能會發生類似的錯誤，例如 **Microsoft.Azure.Documents.DocumentClientException：使用傳輸通訊協定或加密中的禁止加密提出要求。檢查帳戶 SSL/TLS 允許的最小通訊協定設定** 。 就目前而言，這是的預期行為，因為 Cosmos 模擬器僅接受並適用 TLS 1.2 通訊協定。 建議的解決辦法是將設定和預設值變更為 TLS 1.2;例如，在 [IIS 管理員] 中，流覽至 [網站]-> [預設的網站]，並找出埠8081的「網站系結」，並加以編輯以停用 TLS 1.3。 您可以透過 [設定] 選項對網頁瀏覽器執行類似的作業。
 
-* 當模擬器執行時，如果您的電腦進入睡眠模式或執行任何作業系統更新，您應該會看見**服務目前無法使用**的訊息。 以滑鼠右鍵按一下視窗通知匣上出現的圖示，然後選取 [重設資料]，來重設模擬器的資料。
+* 當模擬器執行時，如果您的電腦進入睡眠模式或執行任何作業系統更新，您應該會看見 **服務目前無法使用** 的訊息。 以滑鼠右鍵按一下視窗通知匣上出現的圖示，然後選取 [重設資料]，來重設模擬器的資料。
 
 ## <a name="collect-trace-files"></a><a id="trace-files"></a>收集追蹤檔案
 
@@ -80,7 +81,7 @@ Azure Cosmos 模擬器提供一個模擬 Azure Cosmos DB 服務的本機環境�
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中開啟支援票證，並納入 .etl 檔案與重現步驟。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在本文中，您已瞭解如何使用本機模擬器來偵測問題。 您現在可以繼續進行下一篇文章：
 

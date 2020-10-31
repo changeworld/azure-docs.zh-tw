@@ -12,23 +12,23 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e907a3ec2e2521524cdf23e1403ae38a19275aa6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c7c002b57f2220ac0a9fba43a8081b2a4ed800e7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071314"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081054"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Azure API 管理執行個體的容量
 
 **容量** 是最重要的 [Azure 監視器](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis) 計量，可做出明智的決策，以決定是否要調整 API 管理實例以容納更多負載。 其建構非常複雜，而且會造成某些行為。
 
-本文說明**容量**是什麼及其行為方式。 文中會說明如何在 Azure 入口網站中存取**容量**計量，並建議何時該考慮調整或升級 API 管理執行個體。
+本文說明 **容量** 是什麼及其行為方式。 文中會說明如何在 Azure 入口網站中存取 **容量** 計量，並建議何時該考慮調整或升級 API 管理執行個體。
 
 > [!IMPORTANT]
 > 本文將討論如何根據 Azure API 管理實例的容量計量來進行監視和調整。 不過，請務必瞭解當個別的 API 管理實例實際 *達到* 其容量時，會發生什麼事。 Azure API 管理不會套用任何服務層級的節流，以防止實例的實體多載。 當實例達到其實體容量時，其行為會類似于任何無法處理傳入要求的多載 web 伺服器：延遲會增加、中斷連線、將會發生逾時錯誤等。這表示 API 用戶端應該準備好處理這種可能的情況，就像使用任何其他外部服務一樣 (例如藉由套用重試原則) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要依照本文中的步驟進行，您必須有：
 
@@ -42,7 +42,7 @@ ms.locfileid: "92071314"
 
 ## <a name="what-is-capacity"></a>容量是什麼
 
-![容量計量](./media/api-management-capacity/capacity-ingredients.png)
+![說明容量度量的圖表。](./media/api-management-capacity/capacity-ingredients.png)
 
 **容量** 是 API 管理實例上的負載指標。 這項指標會反映資源使用量 (CPU、記憶體) 和網路佇列長度。 CPU 和記憶體使用量會揭露下列項目所取用的資源數量：
 
@@ -50,26 +50,26 @@ ms.locfileid: "92071314"
 + API 管理管理平面服務，例如透過 Azure 入口網站或 ARM 套用的管理動作，或來自 [開發人員入口網站](api-management-howto-developer-portal.md)的負載。
 + 選取的作業系統進程，包括與新連線上的 TLS 交握成本相關的處理常式。
 
-總**容量**是每個 API 管理執行個體單位本身所擁有數值的平均值。
+總 **容量** 是每個 API 管理執行個體單位本身所擁有數值的平均值。
 
-雖然 **容量** 計量是設計用來呈現 API 管理實例的問題，但在某些情況下， **容量**計量的變更將不會反映問題。
+雖然 **容量** 計量是設計用來呈現 API 管理實例的問題，但在某些情況下， **容量** 計量的變更將不會反映問題。
 
 ## <a name="capacity-metric-behavior"></a>容量計量行為
 
-由於本身建構的關係，在現實生活中**容量**會受到許多變數所影響，例如：
+由於本身建構的關係，在現實生活中 **容量** 會受到許多變數所影響，例如：
 
 + 連線模式 (要求新連線與重複使用現有連線)
 + 要求和回應的大小
 + 每個 API 上所設定的原則或傳送要求的用戶端數目。
 
-要求上的作業越複雜，所取用的**容量**越高。 例如，複雜的轉換原則所取用的 CPU，會比簡單要求轉送所取用的還多。 後端服務回應緩慢也會增加容量。
+要求上的作業越複雜，所取用的 **容量** 越高。 例如，複雜的轉換原則所取用的 CPU，會比簡單要求轉送所取用的還多。 後端服務回應緩慢也會增加容量。
 
 > [!IMPORTANT]
-> **容量**不是所處理要求數目的直接量值。
+> **容量** 不是所處理要求數目的直接量值。
 
 ![容量計量突增](./media/api-management-capacity/capacity-spikes.png)
 
-**容量**也可能會間歇性突增，即使沒有要處理的要求，容量也可能大於零。 之所以如此，是因為在決定是否要調整執行個體時，不應將系統或平台特有的動作列入考量。
+**容量** 也可能會間歇性突增，即使沒有要處理的要求，容量也可能大於零。 之所以如此，是因為在決定是否要調整執行個體時，不應將系統或平台特有的動作列入考量。
 
 低 **容量** 計量不一定表示您的 API 管理實例不會遇到任何問題。
   
@@ -79,12 +79,12 @@ ms.locfileid: "92071314"
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，流覽至您的 APIM 實例。
 2. 選取 [計量]。
-3. 從紫色區段中，選取可用計量中的 [容量]**** 計量，並保留預設的 [平均值]**** 彙總。
+3. 從紫色區段中，選取可用計量中的 [容量]  計量，並保留預設的 [平均值]  彙總。
 
     > [!TIP]
-    > 請隨時看一下每個位置的 [容量]**** 計量細項，以免錯誤解譯。
+    > 請隨時看一下每個位置的 [容量]  計量細項，以免錯誤解譯。
 
-4. 從綠色區段中，選取 [位置]**** 來依維度分割計量。
+4. 從綠色區段中，選取 [位置]  來依維度分割計量。
 5. 從區段頂端列選取所需的時間範圍。
 
     您可以設定計量警示，以得知有非預期的情況發生。 例如，當您的 APIM 實例超過其預期尖峰容量超過20分鐘時，就會收到通知。
@@ -95,16 +95,16 @@ ms.locfileid: "92071314"
 
 ## <a name="use-capacity-for-scaling-decisions"></a>使用容量來做出調整決策
 
-**容量**計量可供用來明智地決定是否要調整 API 管理執行個體以容納更多負載。 考量：
+**容量** 計量可供用來明智地決定是否要調整 API 管理執行個體以容納更多負載。 考量：
 
 + 查看一下長期趨勢和平均。
 + 忽略很可能與負載增加無關的突增 (請參閱＜容量計量行為＞一節的說明)。
-+ 在**容量**值長時間 (例如 30 分鐘) 超過 60% 或 70% 時，升級或調整執行個體。 不同的值或許更適合您的服務或案例。
++ 在 **容量** 值長時間 (例如 30 分鐘) 超過 60% 或 70% 時，升級或調整執行個體。 不同的值或許更適合您的服務或案例。
 
 >[!TIP]  
 > 如果您可以事先評估流量，請在您預期的工作負載上測試 APIM 執行個體。 您可以逐漸增加租用戶的要求負載，並監視尖峰負載對應的容量計量值。 請遵循上一節的步驟，使用 Azure 入口網站來了解任何特定時刻使用了多少容量。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [如何調整或升級 Azure API 管理服務執行個體](upgrade-and-scale.md)
 - [優化並節省您的雲端費用](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: d4462fc407093b23510bddfae4d9f55d68f8c0fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6cb96270d1db970230e3abb528b58b7341d652f0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78303693"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081462"
 ---
 # <a name="substring-azure-cosmos-db"></a>子字串 (Azure Cosmos DB) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  傳回字串運算式的部分，從指定字元以零為起始的位置開始，直到指定的長度，或直到字串的結尾。  
   
 ## <a name="syntax"></a>語法
@@ -29,7 +31,7 @@ SUBSTRING(<str_expr>, <num_expr1>, <num_expr2>)
    是字串運算式。
   
 *num_expr1*  
-   這是表示起始字元的數值運算式。 0值是 *str_expr*的第一個字元。
+   這是表示起始字元的數值運算式。 0值是 *str_expr* 的第一個字元。
   
 *num_expr2*  
    這是數值運算式，表示要傳回之 *str_expr* 的最大字元數。 0或較小的值會產生空字串。

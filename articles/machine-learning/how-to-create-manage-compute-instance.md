@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: f0dfa137e42d60246ce8f5281f002d5ca567c2ae
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: ac134e6a371ea85a20094e688adc57da8550a03d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427531"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078980"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>建立及管理 Azure Machine Learning 計算實例
 
@@ -42,7 +42,7 @@ ms.locfileid: "92427531"
 
 ## <a name="create"></a>建立
 
-**預估時間**：大約5分鐘。
+**預估時間** ：大約5分鐘。
 
 建立計算實例是工作區的一次性進程。 您可以將此計算重複使用於開發工作站或作為定型的計算目標。 您可以將多個計算實例附加至工作區。
 
@@ -256,7 +256,9 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 * Python：新增安裝程式碼，並在 Jupyter Notebook 儲存格中執行。
 
 或者，您也可以從終端機視窗進行安裝。 將 Python 套件安裝至 **python 3.6-AzureML** 環境。  將 R 套件安裝到 **R** 環境中。
-% pip 和% conda 魔術函數會自動將套件安裝到 Jupyter 筆記本會話中目前執行的核心。
+
+> [!NOTE]
+> 針對筆記本內的套件管理，請使用 **% pip** 或 **% conda** 魔術函式將套件自動安裝 **到目前** 執行中的核心，而不是代表所有套件的 **！ pip** 或 **！ conda** ， (包括目前執行中核心以外的套件) 
 
 ## <a name="add-new-kernels"></a>加入新的核心程序
 
@@ -290,6 +292,6 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [提交定型回合](how-to-set-up-training-targets.md) 

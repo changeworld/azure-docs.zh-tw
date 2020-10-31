@@ -7,18 +7,19 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 6ec1d83b97fadf3954a936847e8e8faeb47d1458
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 26f1a402c4ad070b0834efe545bebea0ee3c2f0a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276082"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079796"
 ---
 # <a name="string-functions-azure-cosmos-db"></a>字串函式 (Azure Cosmos DB) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 字串函數可讓您對 Azure Cosmos DB 中的字串執行作業。
 
-## <a name="functions"></a>函式
+## <a name="functions"></a>函數
 
 下列純量函數會對字串輸入值執行運算，並傳回字串、數值或布林值：
   
@@ -47,7 +48,7 @@ ms.locfileid: "92276082"
 * [TRIM](sql-query-trim.md)
 * [UPPER](sql-query-upper.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 簡介](introduction.md)

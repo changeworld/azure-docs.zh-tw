@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 09/10/2019
 author: SnehaGunda
 ms.author: sngun
-ms.openlocfilehash: c03e4db30d590df21a8ceb3c483ece4b59e548d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61814082ebe9828a08da1e8786890b500c239082
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397312"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081836"
 ---
 # <a name="system-document-properties"></a>系統文件屬性
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Azure Cosmos DB [system properties](/rest/api/cosmos-db/databases) ```_ts``` ```_self``` ```_attachments``` ```_rid``` ```_etag``` 在每個檔上都有系統屬性，例如、、、和。 此外，Gremlin 引擎會在邊緣上新增 ```inVPartition``` 和 ```outVPartition``` 屬性。 根據預設，這些屬性都可以周遊。 不過，可以在 Gremlin 周遊中納入特定屬性或所有屬性。
 
@@ -34,12 +35,12 @@ g.withStrategies(ProjectionStrategy.build().IncludeSystemProperties('_etag').cre
 
 如果集合已啟用文件到期功能，且文件上已設定 ```ttl``` 屬性，則這個屬性可作為一般頂點或邊線屬性在 Gremlin 周遊中使用。 ```ProjectionStrategy``` 對於公開存留時間屬性不是必要的。
 
-使用下列周遊建立的頂點會在 **123 秒**後自動刪除。
+使用下列周遊建立的頂點會在 **123 秒** 後自動刪除。
 
 ```
 g.addV('vertex-one').property('ttl', 123)
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * [Cosmos DB 開放式並行存取](faq.md#how-does-the-sql-api-provide-concurrency)
 * Azure Cosmos DB 中的[存留時間 (TTL)](time-to-live.md)

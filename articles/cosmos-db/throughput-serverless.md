@@ -6,14 +6,15 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 0adb346a693beaa905438cfdc1249c1646c28811
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d16343864d9602d644b31d34a2b66e39211b6ece
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88608741"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93079333"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>如何在布建的輸送量和無伺服器之間進行選擇
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB 有兩種不同的容量模式：布 [建的輸送量](set-throughput.md) 和 [無伺服器](serverless.md)。 您可以在這兩種模式中執行完全相同的資料庫作業，但您對這些作業計費的方式完全不同。 下列影片說明這些模式之間的核心差異，以及它們如何符合不同類型的工作負載：
 
@@ -42,20 +43,20 @@ Azure Cosmos DB 有兩種不同的容量模式：布 [建的輸送量](set-throu
 在某些情況下，應該不清楚是否應針對指定的工作負載選擇布建的輸送量或無伺服器。 若要協助進行這種決策，您可以預估：
 
 - 您工作負載的 **burstability** 需求，也就是您在一秒內需要取用的 ru 數量上限
-- 您的整體 **預期耗用量**，也就是您可以在一個月內取用的 ru 總數 (您可以 [使用如下所示的](plan-manage-costs.md#estimating-serverless-costs) 表格協助來評估這一點) 
+- 您的整體 **預期耗用量** ，也就是您可以在一個月內取用的 ru 總數 (您可以 [使用如下所示的](plan-manage-costs.md#estimating-serverless-costs) 表格協助來評估這一點) 
 
 如果您的工作負載需要高載超過每秒 5000 RU，則應該選擇布建的輸送量，因為無伺服器容器無法高載超過此限制。 如果沒有，您可以根據預期的耗用量來比較這兩種模式的成本。
 
-**範例 1**：工作負載預期會高載至最多 10000 RU/秒，並在一個月內耗用總計20000000個 RU。
+**範例 1** ：工作負載預期會高載至最多 10000 RU/秒，並在一個月內耗用總計20000000個 RU。
 
 - 只有布建的輸送量模式可以提供 10000 RU/秒的輸送量
 
-**範例 2**：工作負載預期會高載至最多 500 RU/秒，並在一個月內耗用總計20000000個 RU。
+**範例 2** ：工作負載預期會高載至最多 500 RU/秒，並在一個月內耗用總計20000000個 RU。
 
 - 在布建的輸送量模式中，您會布建 500 RU/秒的容器，每月成本： $0.008 * 5 * 730 = **$29.20**
 - 在無伺服器模式中，您需要支付已使用的 ru： $0.25 * 20 = **$5.00**
 
-**範例 3**：工作負載預期會高載至最多 500 RU/秒，並在一個月內耗用總計250000000個 RU。
+**範例 3** ：工作負載預期會高載至最多 500 RU/秒，並在一個月內耗用總計250000000個 RU。
 
 - 在布建的輸送量模式中，您會布建 500 RU/秒的容器，每月成本： $0.008 * 5 * 730 = **$29.20**
 - 在無伺服器模式中，您需要支付已使用的 ru： $0.25 * 250 = **$62.50**
@@ -65,7 +66,7 @@ Azure Cosmos DB 有兩種不同的容量模式：布 [建的輸送量](set-throu
 > [!NOTE]
 > 上述範例所示的成本僅供示範之用。 如需最新定價資訊，請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/) 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - 深入瞭解如何[在 Azure Cosmos DB 上](set-throughput.md)布建輸送量
 - 深入瞭解 [Azure Cosmos DB 無伺服器](serverless.md)

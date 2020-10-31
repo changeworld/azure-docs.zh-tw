@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: thweiss
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c9821e53abcdf95c6cf235cb9d39cd310fcfb66f
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 4ba4e5f462a3cc88de5b23b32a5e749f9363e93f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279727"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081887"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>設定 Azure Cosmos 帳戶的 Azure Private Link
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 藉由使用 Azure Private Link，即可透過私人端點連線到 Azure Cosmos 帳戶。 私人端點是虛擬網路內子網路中的一組私人 IP 位址。 您可接著限制透過私人 IP 位址對 Azure Cosmos 帳戶進行存取。 當 Private Link 與受限制的 NSG 原則結合時，即有助於降低資料外洩的風險。 若要深入了解私人端點，請參閱 [Azure Private Link](../private-link/private-link-overview.md) 一文。
 
@@ -55,9 +56,9 @@ Private Link 可讓使用者從虛擬網路內或從任何對等互連的虛擬�
     | ------- | ----- |
     |連線方法  | 選取 [連線到我目錄中的 Azure 資源]。 <br/><br/> 然後，您可選擇其中一個資源來設定 Private Link。 或者，您可使用其他人與您共用的資源識別碼或別名來連線到其資源。|
     | 訂用帳戶| 選取您的訂用帳戶。 |
-    | 資源類型 | 選取 **Microsoft.AzureCosmosDB/databaseAccounts**。 |
+    | 資源類型 | 選取 **Microsoft.AzureCosmosDB/databaseAccounts** 。 |
     | 資源 |選取 Azure Cosmos 帳戶。 |
-    |目標子資源 |選取想要對應的 Azure Cosmos DB API 類型。 這會預設為 SQL、MongoDB 和 Cassandra API 只有一個選項。 針對 Gremlin 和資料表 API，您還可選擇 **Sql**，因為這些 API 可與 SQL API 互通。 |
+    |目標子資源 |選取想要對應的 Azure Cosmos DB API 類型。 這會預設為 SQL、MongoDB 和 Cassandra API 只有一個選項。 針對 Gremlin 和資料表 API，您還可選擇 **Sql** ，因為這些 API 可與 SQL API 互通。 |
     |||
 
 1. 完成時，選取 [下一步:組態]。
@@ -70,7 +71,7 @@ Private Link 可讓使用者從虛擬網路內或從任何對等互連的虛擬�
     | 子網路 | 選取子網路。 |
     |**私人 DNS 整合**||
     |與私人 DNS 區域整合 |選取 [是]。 <br><br/> 若要私下與私人端點連線，則需要 DNS 記錄。 我們建議將私人端點與私人 DNS 區域整合。 您也可以使用自己的 DNS 伺服器，或藉由使用虛擬機器上的主機檔案來建立 DNS 記錄。 |
-    |私人 DNS 區域 |選取 **privatelink.documents.azure.com**。 <br><br/> 系統會自動決定私人 DNS 區域。 您無法使用 Azure 入口網站來加以變更。|
+    |私人 DNS 區域 |選取 **privatelink.documents.azure.com** 。 <br><br/> 系統會自動決定私人 DNS 區域。 您無法使用 Azure 入口網站來加以變更。|
     |||
 
 1. 選取 [檢閱 + 建立]。 在 [檢閱 + 建立] 頁面上，Azure 會驗證設定。
@@ -95,7 +96,7 @@ Private Link 可讓使用者從虛擬網路內或從任何對等互連的虛擬�
 佈建私人端點之後，即可查詢 IP 位址。 若要從 Azure 入口網站檢視 IP 位址：
 
 1. 選取 [所有資源]。
-1. 搜尋稍早建立的私人端點。 在本案例中，這是 **cdbPrivateEndpoint3**。
+1. 搜尋稍早建立的私人端點。 在本案例中，這是 **cdbPrivateEndpoint3** 。
 1. 選取 [概觀] 索引標籤，以查看 DNS 設定和 IP 位址。
 
 :::image type="content" source="./media/how-to-configure-private-endpoints/private-ip-addresses-portal.png" alt-text="在 Azure 入口網站中建立私人端點的選項":::

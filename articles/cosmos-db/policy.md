@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 493064bc22b1144df6878d71c99e50fd7c15ba1d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1390f5db6e0f0370788bef60d5a2cafee1e8a96d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482225"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080646"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>使用 Azure 原則來實作 Azure Cosmos DB 資源的治理和控制
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 [Azure 原則](../governance/policy/overview.md)有助於強制執行組織治理標準、評估資源合規性，以及實作自動補救。 常見的使用案例包括安全性、成本管理和設定一致性。
 
@@ -24,7 +25,7 @@ Azure 原則提供內建原則定義。 您可以針對內建原則定義未解�
 
 ## <a name="assign-a-built-in-policy-definition"></a>指派內建原則定義
 
-原則定義會描述資源合規性條件，以及符合條件時所要採取的效果。 原則_指派_會從原則_定義_來建立。 您可以將內建或自訂原則定義用於您的 Azure Cosmos DB 資源。 原則指派的範圍限於 Azure 管理群組、Azure 訂用帳戶或資源群組，並且會套用至所選範圍內的資源。 您可以選擇性從範圍中排除特定資源。
+原則定義會描述資源合規性條件，以及符合條件時所要採取的效果。 原則 _指派_ 會從原則 _定義_ 來建立。 您可以將內建或自訂原則定義用於您的 Azure Cosmos DB 資源。 原則指派的範圍限於 Azure 管理群組、Azure 訂用帳戶或資源群組，並且會套用至所選範圍內的資源。 您可以選擇性從範圍中排除特定資源。
 
 您可以使用 [Azure 入口網站](../governance/policy/assign-policy-portal.md)、[Azure PowerShell](../governance/policy/assign-policy-powershell.md)、[Azure CLI](../governance/policy/assign-policy-azurecli.md) 或 [ARM 範本](../governance/policy/assign-policy-template.md)來建立原則指派。
 
@@ -39,7 +40,7 @@ Azure 原則提供內建原則定義。 您可以針對內建原則定義未解�
 
 ## <a name="create-a-custom-policy-definition"></a>建立自訂原則定義
 
-針對內建原則未解決的特定案例，您可以建立[自訂原則定義](../governance/policy/tutorials/create-custom-policy-definition.md)。 稍後您會從自訂原則_定義_建立原則_指派_。
+針對內建原則未解決的特定案例，您可以建立[自訂原則定義](../governance/policy/tutorials/create-custom-policy-definition.md)。 稍後您會從自訂原則 _定義_ 建立原則 _指派_ 。
 
 ### <a name="property-types-and-property-aliases-in-policy-rules"></a>原則規則中的屬性類型和屬性別名
 
@@ -108,7 +109,7 @@ az provider show --namespace Microsoft.DocumentDB --expand "resourceTypes/aliase
 
 ## <a name="policy-compliance"></a>原則相容性
 
-建立原則指派之後，Azure 原則會評估指派範圍中的資源。 會評估每個資源對於原則的_合規性_。 原則中指定的_效果_接著會套用至不符合規範的資源。
+建立原則指派之後，Azure 原則會評估指派範圍中的資源。 會評估每個資源對於原則的 _合規性_ 。 原則中指定的 _效果_ 接著會套用至不符合規範的資源。
 
 您可以在 [Azure 入口網站](../governance/policy/how-to/get-compliance-data.md#portal)中，或透過 [Azure CLI](../governance/policy/how-to/get-compliance-data.md#command-line) 或 [Azure 監視器記錄](../governance/policy/how-to/get-compliance-data.md#azure-monitor-logs)，來檢閱合規性結果和補救詳細資料。
 
@@ -130,7 +131,7 @@ az provider show --namespace Microsoft.DocumentDB --expand "resourceTypes/aliase
 
 若要修復不符合規範的資源，請參閱 [如何使用 Azure 原則來補救資源](../governance/policy/how-to/remediate-resources.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 請[參閱 Azure Cosmos DB 的範例自訂原則定義](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB)，包括以上顯示的多個寫入位置和 VNet 篩選原則。
 - [在 Azure 入口網站中建立原則指派](../governance/policy/assign-policy-portal.md)

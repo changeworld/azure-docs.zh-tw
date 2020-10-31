@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 09/25/2019
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 01e61abacac63d698456c3ab25826f9799d2837e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ffd1ff6d18769998dd3a168992566a376ea1cd27
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482276"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080068"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>將未分割的容器遷移至分割的容器
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB 支援建立沒有分割區索引鍵的容器。 目前，您可以使用 Azure CLI 和 Azure Cosmos DB Sdk ( .Net、JAVA、NodeJs) 版本小於或等於2.x 來建立非資料分割的容器。 您無法使用 Azure 入口網站建立非資料分割的容器。 不過，這類非分割的容器不是彈性的，且具有 20 GB 的固定儲存體容量，且輸送量限制為 10K RU/秒。
 
@@ -127,7 +128,7 @@ await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>(
 
 如果針對分割區索引鍵使用不同的值來插入新專案，在中傳遞適當的金鑰來查詢這類專案計數 `FeedOptions` 將不會有任何問題。 使用分割區索引鍵插入新檔之後，如果您只需要查詢檔計數而沒有分割區索引鍵值，則該查詢可能會再次產生更高的 RU/s，類似于一般分割的集合。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [Azure Cosmos DB 中的資料分割](partitioning-overview.md)
 * [Azure Cosmos DB 中的要求單位](request-units.md)

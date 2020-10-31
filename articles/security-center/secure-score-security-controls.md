@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/21/2020
 ms.author: memildin
-ms.openlocfilehash: 0bc8b4f7bd2bf02d4d034ebacc0fc45b17cd3e15
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 55a4e50e3a85eccb9517cf682b67268e633abecc
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928088"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081224"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure 資訊安全中心的安全分數
 
@@ -190,7 +190,7 @@ Azure Resource Graph 可讓您透過強大的篩選、分組和排序功能，�
     <td class="tg-lboi"; width=55%>- 虛擬機器的管理埠應使用即時網路存取控制來保護<br>-虛擬機器應與網路安全性群組建立關聯<br>-應關閉虛擬機器上的管理連接埠</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">套用系統更新 (最高分數 6)</p></strong>系統更新讓組織能夠維持營運效率、減少安全性弱點，並為使用者提供更穩定的環境。 不套用更新會留下未修補的弱點，造成容易遭受攻擊的環境。 這些弱點可能會遭到入侵，並導致資料遺失、資料外洩、勒索軟體、資源濫用。 若要部署系統更新，您可以使用<a href="/azure/automation/automation-update-management">更新管理解決方案</a>來管理虛擬機器的修補程式和更新。 更新管理就是控制軟體發行的部署和維護。</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">套用系統更新 (最高分數 6)</p></strong>系統更新讓組織能夠維持營運效率、減少安全性弱點，並為使用者提供更穩定的環境。 不套用更新會留下未修補的弱點，造成容易遭受攻擊的環境。 這些弱點可能會遭到入侵，並導致資料遺失、資料外洩、勒索軟體、資源濫用。 若要部署系統更新，您可以使用<a href="/azure/automation/update-management/overview">更新管理解決方案</a>來管理虛擬機器的修補程式和更新。 更新管理就是控制軟體發行的部署和維護。</td>
     <td class="tg-lboi"; width=55%>- 應解決機器上的監視代理程式健康情況問題<br>- 應於虛擬機器擴展集上安裝監視代理程式<br>- 應於機器上安裝監視代理程式<br>- 應更新雲端服務角色的作業系統版本<br>- 應在虛擬機器擴展集上安裝系統更新<br>- 應在機器上安裝系統更新<br>- 應重新啟動機器以套用系統更新<br>- 應將 Kubernetes Service 升級為不易受攻擊的 Kubernetes 版本<br>- 應在虛擬機器上安裝監視代理程式<br>- Log Analytics 代理程式應該安裝在以 Windows 為基礎的 Azure Arc 電腦上 (Preview) <br>- Log Analytics 代理程式應該安裝在以 Linux 為基礎的 Azure Arc 電腦上 (Preview) </td>
   </tr>
   <tr>
