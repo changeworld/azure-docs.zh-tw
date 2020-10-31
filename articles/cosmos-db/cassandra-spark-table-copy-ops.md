@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: e680182a4d1ba64a954d8d03aef5e9331bec0341
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0471ef799689f67a2079c4fa4a6a53851c626392
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85257460"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073310"
 ---
 # <a name="table-copy-operations-on-azure-cosmos-db-cassandra-api-from-spark"></a>從 Spark 對 Azure Cosmos DB Cassandra API 進行資料表複製作業
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 本文詳細說明如何從 Spark 在 Azure Cosmos DB Cassandra API 中的資料表之間複製資料。 本文中所述的命令也可用來將資料從 Apache Cassandra 資料表複製到 Azure Cosmos DB Cassandra API 資料表。
 
@@ -144,7 +145,7 @@ readBooksDF: org.apache.spark.sql.DataFrame = [book_id: string, book_author: str
 newBooksDF: org.apache.spark.sql.DataFrame = [book_id: string, book_author: string ... 3 more fields]
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
  * 開始使用 Java 應用程式來[建立 Cassandra API 帳戶、資料庫與資料表](create-cassandra-api-account-java.md)。
  * 使用 Java 應用程式[將範例資料載入至 Azure Cosmos DB Cassandra API 資料表](cassandra-api-load-data.md)。

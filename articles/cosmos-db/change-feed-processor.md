@@ -9,14 +9,15 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 377165c94303a4a44d481009700cdef9169b3d78
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: dfd96e7c62d700ccec2ecd4b223668d7aca4f18f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475799"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93072801"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 中的變更摘要處理器
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 變更摘要處理器是 [Azure Cosmos DB SDK V3](https://github.com/Azure/azure-cosmos-dotnet-v3) 的一部分。 它可簡化讀取變更摘要的程序，並有效地將事件處理散發到多個取用者。
 
@@ -30,7 +31,7 @@ ms.locfileid: "92475799"
 
 1. **租用容器：** 租用容器是作為狀態儲存體，會協調如何處理多個背景工作角色的變更摘要。 租用容器可以儲存在與受監視容器相同的帳戶中，或儲存在個別帳戶中。
 
-1. **主機：** 主機是應用程式執行個體，會使用變更摘要處理器來接聽變更。 具有相同租用設定的多個執行個體可以平行執行，但是每個執行個體應該有不同的**執行個體名稱**。
+1. **主機：** 主機是應用程式執行個體，會使用變更摘要處理器來接聽變更。 具有相同租用設定的多個執行個體可以平行執行，但是每個執行個體應該有不同的 **執行個體名稱** 。
 
 1. **委派：** 委派是一種程式碼，定義身為開發人員的您想要對變更摘要處理器讀取的每個批次變更進行哪些動作。 
 
@@ -61,8 +62,8 @@ ms.locfileid: "92475799"
 
 1. 讀取變更摘要。
 1. 如果沒有任何變更，則睡眠一段預先定義的時間 (可使用建立器中的 `WithPollInterval` 自訂)，然後移至 #1。
-1. 如果有變更，則將其傳送至**委派**。
-1. 當委派**成功**完成處理變更時，請以最新的處理時間點更新租用存放區，並移至 #1。
+1. 如果有變更，則將其傳送至 **委派** 。
+1. 當委派 **成功** 完成處理變更時，請以最新的處理時間點更新租用存放區，並移至 #1。
 
 ## <a name="error-handling"></a>錯誤處理
 
@@ -104,7 +105,7 @@ ms.locfileid: "92475799"
 
 ### <a name="reading-from-a-previous-date-and-time"></a>從上一個日期和時間讀取
 
-您可以初始化會從**特定的日期和時間**開始讀取變更的變更摘要處理器，只要將 `DateTime` 的執行個體傳至 `WithStartTime` 建立器延伸模組即可：
+您可以初始化會從 **特定的日期和時間** 開始讀取變更的變更摘要處理器，只要將 `DateTime` 的執行個體傳至 `WithStartTime` 建立器延伸模組即可：
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
 
@@ -112,7 +113,7 @@ ms.locfileid: "92475799"
 
 ### <a name="reading-from-the-beginning"></a>從頭開始讀取
 
-在其他案例中 (例如資料移轉，或分析容器的整個歷程記錄)，我們必須從**該容器存留期的開端**開始讀取變更摘要。 若要這麼做，我們可以在建立器延伸模組上使用 `WithStartTime`，但傳遞 `DateTime.MinValue.ToUniversalTime()`，這會產生 `DateTime` 最小值的 UTC 表示法，如下所示：
+在其他案例中 (例如資料移轉，或分析容器的整個歷程記錄)，我們必須從 **該容器存留期的開端** 開始讀取變更摘要。 若要這麼做，我們可以在建立器延伸模組上使用 `WithStartTime`，但傳遞 `DateTime.MinValue.ToUniversalTime()`，這會產生 `DateTime` 最小值的 UTC 表示法，如下所示：
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartFromBeginningInitialization)]
 

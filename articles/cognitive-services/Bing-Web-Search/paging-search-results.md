@@ -11,14 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: aahi
-ms.openlocfilehash: ea883bb294a8769b3c9be1e0eafc2e3e7c811b48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7613f4b6bb301c603ae5ded98f271f3cb98b340
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73481736"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074092"
 ---
 # <a name="how-to-page-through-results-from-the-bing-search-apis"></a>如何逐頁流覽 Bing 搜尋 Api 的結果
+
+> [!WARNING]
+> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
+> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
+> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
 當您將呼叫傳送至 Bing Web、自訂、影像、新聞或影片搜尋 Api 時，Bing 會傳回可能與查詢相關之結果總數的子集。 若要取得估計的可用結果總數，請存取回應物件的 `totalEstimatedMatches` 欄位。 
 
@@ -72,7 +77,7 @@ Host: api.cognitive.microsoft.com
 >
 > 如果您在 `responseFilter` 未指定任何篩選值的情況下使用 query 參數，請不要使用 `count` 和 `offset` 參數。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [Bing Web 搜尋 Api 有哪些？](bing-api-comparison.md)
 * [Bing Web 搜尋 API v7參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

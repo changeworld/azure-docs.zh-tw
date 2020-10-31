@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 30a6a73768db7b073258487435ddbe6c0daccf16
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 30487218fc95be75d22b5a9ea5a6dbc224ffd025
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317828"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074792"
 ---
 # <a name="overview-of-the-developer-portal"></a>開發人員入口網站總覽
 
@@ -33,7 +33,7 @@ ms.locfileid: "92317828"
 ## <a name="migration-from-the-legacy-portal"></a>從舊版入口網站遷移
 
 > [!IMPORTANT]
-> 舊版開發人員入口網站現已淘汰，而且只會收到安全性更新。 您可以繼續使用它，就像平常一樣，直到2023年10月淘汰為止（當它從所有 API 管理服務中移除）。
+> 舊版開發人員入口網站現已淘汰，而且只會收到安全性更新。 您可以照舊繼續使用，直到其在 2023 年 10 月淘汰，屆時便會將其從所有 API 管理服務中移除。
 
 [專用檔文章](developer-portal-deprecated-migration.md)中會說明遷移至新的開發人員入口網站。
 
@@ -47,10 +47,10 @@ ms.locfileid: "92317828"
 
 如果您需要使用不支援的自訂邏輯來擴充它，您可以修改其程式碼基底。 入口網站的程式碼基底 [可在 GitHub 存放庫中][1]取得。 例如，您可以執行與協力廠商支援系統整合的新 widget。 當您執行新功能時，您可以選擇下列其中一個選項：
 
-- 將產生的入口網站**自我裝載**在您的 API 管理服務外部。 當您自行裝載入口網站時，您會成為其維護程式，並負責其升級。 Azure 支援的協助僅限於自我裝載入口網站的基本設定，如存放 [庫的 Wiki 區段][2]中所述。
+- 將產生的入口網站 **自我裝載** 在您的 API 管理服務外部。 當您自行裝載入口網站時，您會成為其維護程式，並負責其升級。 Azure 支援的協助僅限於自我裝載入口網站的基本設定，如存放 [庫的 Wiki 區段][2]中所述。
 - 開啟 API 管理小組的提取要求，以將新功能合併到 **受控** 入口網站的程式碼基底。
 
-如需擴充性的詳細資料和指示，請參閱 [GitHub 存放庫][1] 和 [執行 widget 的教學][3]課程。 [自訂受控入口網站的教學](api-management-howto-developer-portal-customize.md)課程會逐步引導您完成入口網站的系統管理面板，此面板常見於**受控**和**自我**裝載版本。
+如需擴充性的詳細資料和指示，請參閱 [GitHub 存放庫][1] 和 [執行 widget 的教學][3]課程。 [自訂受控入口網站的教學](api-management-howto-developer-portal-customize.md)課程會逐步引導您完成入口網站的系統管理面板，此面板常見於 **受控** 和 **自我** 裝載版本。
 
 ## <a name="frequently-asked-questions"></a><a name="faq"></a> 常見問題集
 
@@ -62,7 +62,7 @@ ms.locfileid: "92317828"
 
 如果您是根據預覽版本的內容而高度自訂入口網站，您可以繼續使用它，並在入口網站的頁面上手動放置新的小工具。 否則，建議您以新的預設內容取代您的入口網站內容。
 
-若要在受控入口網站中重設內容，請在 [**作業**] 功能表區段中選取 [**重設內容**]。 這項作業會移除入口網站的所有內容，並提供新的預設內容。 您將會遺失所有開發人員入口網站的自訂和變更。 **您無法復原此動作**。
+若要在受控入口網站中重設內容，請在 [ **作業** ] 功能表區段中選取 [ **重設內容** ]。 這項作業會移除入口網站的所有內容，並提供新的預設內容。 您將會遺失所有開發人員入口網站的自訂和變更。 **您無法復原此動作** 。
 
 ![重設入口網站內容](media/api-management-howto-developer-portal/reset-content.png)
 
@@ -90,11 +90,11 @@ ms.locfileid: "92317828"
 
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>入口網站支援 Azure Resource Manager 範本和/或相容于 API 管理 DevOps 資源套件嗎？
 
-不正確。
+否。
 
 ### <a name="is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management"></a>入口網站的內容是否以「API 管理」中的備份/還原功能儲存？
 
-不正確。
+否。
 
 ### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>我是否需要為受控入口網站相依性啟用額外的 VNet 連線？
 
@@ -126,14 +126,14 @@ ms.locfileid: "92317828"
 
 您可以在 Azure 入口網站中的 API 管理服務的 **入口網站總覽** 區段中，檢查 CORS 原則的狀態。 警告方塊表示原則不存在或設定不正確。
 
-![API Management developer portal](media/api-management-howto-developer-portal/cors-azure-portal.png)
+![顯示您可以在何處檢查 CORS 原則狀態的螢幕擷取畫面。](media/api-management-howto-developer-portal/cors-azure-portal.png)
 
 按一下 [ **啟用 cors** ] 按鈕，自動套用 cors 原則。
 
 您也可以手動啟用 CORS。
 
 1. 選取 [在 **全域層級上手動** 套用] 連結，以查看產生的原則代碼。
-2. 在 Azure 入口網站的 API 管理服務的 [ **api** ] 區段中，流覽至 [api] 區段中的**所有 api** 。
+2. 在 Azure 入口網站的 API 管理服務的 [ **api** ] 區段中，流覽至 [api] 區段中的 **所有 api** 。
 3. 選取 **</>** [ **輸入處理** ] 區段中的圖示。
 4. 在 XML 檔案的區段中插入原則 **<inbound>** 。 請確定 **<origin>** 值符合開發人員入口網站的網域。
 
@@ -173,7 +173,7 @@ $customRole.AssignableScopes.Add('/subscriptions/<subscription-id>')
 New-AzRoleDefinition -Role $customRole 
 ```
  
-角色建立之後，就可以從 Azure 入口網站中的 **存取控制 (IAM) ** 區段授與給任何使用者。 將此角色指派給使用者，將會在服務範圍指派許可權。 使用者將能夠代表服務中的 *任何* 使用者產生 SAS 權杖。 至少需要將此角色指派給服務的系統管理員。 下列 PowerShell 命令示範如何在最低範圍將角色指派給使用者 `user1` ，以避免授與不必要的許可權給使用者： 
+角色建立之後，就可以從 Azure 入口網站中的 **存取控制 (IAM)** 區段授與給任何使用者。 將此角色指派給使用者，將會在服務範圍指派許可權。 使用者將能夠代表服務中的 *任何* 使用者產生 SAS 權杖。 至少需要將此角色指派給服務的系統管理員。 下列 PowerShell 命令示範如何在最低範圍將角色指派給使用者 `user1` ，以避免授與不必要的許可權給使用者： 
 
 ```powershell
 New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM New Portal Admin" -Scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1" 
@@ -201,7 +201,7 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 
  <small><sup>1</sup> 兩個最新的生產版本支援。</small>
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 深入瞭解新的開發人員入口網站：
 

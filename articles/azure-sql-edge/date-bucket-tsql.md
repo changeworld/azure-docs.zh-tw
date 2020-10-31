@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
-ms.openlocfilehash: 896caae2dfd79c4678ffb34c531fb56835e9bd66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d81419721e94a2e181f094c0e0e64b1b23544a8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90886836"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073514"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
 
@@ -41,16 +41,19 @@ DATE_BUCKET (datePart, number, date, origin)
   
 |*datePart*|縮寫|  
 |---|---|
-|**day**|**dd**, **d**|  
-|**week**|**wk**, **ww**|  
+|**day**|**dd** , **d**|  
+|**week**|**wk** , **ww**| 
+|**month**|**mm** , **m**|
+|**quarter**|**qq** , **q**|  
+|**year**|**yy** , **yyyy**|  
 |**hour**|**hh**|  
-|**minute**|**mi**, **n**|  
-|**second**|**ss**, **s**|  
+|**minute**|**mi** , **n**|  
+|**second**|**ss** , **s**|  
 |**millisecond**|**ms**|  
 
 *number*
 
-決定值區寬度並與 *datePart* 引數結合的整數。 這代表從原始時間起算的 dataPart 值區寬度。 **`This argument cannot be a negative integer value`**. 
+決定值區寬度並與 *datePart* 引數結合的整數。 這代表從原始時間起算的 dataPart 值區寬度。 **`This argument cannot be a negative integer value`** . 
 
 *date*
 
@@ -63,9 +66,9 @@ DATE_BUCKET (datePart, number, date, origin)
 + **smalldatetime**
 + **time**
 
-針對 *date*，`DATE_BUCKET` 會接受資料行運算式、運算式或使用者定義的變數，前提是其必須解析為上述任何資料類型。
+針對 *date* ，`DATE_BUCKET` 會接受資料行運算式、運算式或使用者定義的變數，前提是其必須解析為上述任何資料類型。
 
-**來源** 
+**起源** 
 
 可解析成下列其中一個值的選擇性運算式：
 
@@ -122,11 +125,11 @@ Select DATE_BUCKET(wk, 5, @date, @origin)
 
 ## <a name="datepart-argument"></a>datepart 引數
 
-**dayofyear**、**day** 和 **weekday** 都會傳回相同的值。 每個 *datepart* 及其縮寫都會傳回相同的值。
+**dayofyear** 、 **day** 和 **weekday** 都會傳回相同的值。 每個 *datepart* 及其縮寫都會傳回相同的值。
   
 ## <a name="number-argument"></a>number 引數
 
-*number* 引數不得超過正數 **int** 值的範圍。 在下列陳述式中，*number* 引數超過 **int** 的範圍 (超過 1)。 下列陳述式會傳回下列錯誤訊息："`Msg 8115, Level 16, State 2, Line 2. Arithmetic overflow error converting expression to data type int."`
+*number* 引數不得超過正數 **int** 值的範圍。 在下列陳述式中， *number* 引數超過 **int** 的範圍 (超過 1)。 下列陳述式會傳回下列錯誤訊息："`Msg 8115, Level 16, State 2, Line 2. Arithmetic overflow error converting expression to data type int."`
   
 ```sql
 declare @date datetime2 = '2020-04-30 00:00:00'
@@ -166,7 +169,7 @@ Select DATE_BUCKET(dd, 10, SYSUTCDATETIME())
 
 ### <a name="a-calculating-date_bucket-with-a-bucket-width-of-1-from-the-origin-time"></a>A. 使用值區寬度 1 從原始時間計算 Date_Bucket
 
-這些陳述式各自會從原始時間以值區寬度 1 遞增 *date_bucket*：
+這些陳述式各自會從原始時間以值區寬度 1 遞增 *date_bucket* ：
 
 ```sql
 declare @date datetime2 = '2020-04-30 21:21:21'

@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/23/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: be37ab43db9b5b696a619cb1539981c064b4cb0e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 9260f2892bdcc6a694e1e54e29cb06bae90298eb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537791"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074466"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>使用 Azure 儲存體總管管理 Azure Cosmos DB 資源
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 您可以使用 Azure 儲存體 explorer 連接到 Azure Cosmos DB。 它可讓您連線到 Azure 上裝載的 Azure Cosmos DB 帳戶，以及從 Windows、macOS 或 Linux 主權雲端。
 
@@ -23,7 +24,7 @@ ms.locfileid: "92537791"
 > [!NOTE]
 > Azure Cosmos DB 與儲存體總管的整合已被取代。 在此版本中，將不會移除任何現有的功能至少一年。 您應改為使用 [Azure 入口網站](https://portal.azure.com/)、 [azure 入口網站的桌面應用程式](https://portal.azure.com/App/Download) 或獨立的 [azure Cosmos explorer](data-explorer.md) 。 替代選項包含儲存體總管目前不支援的許多新功能。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 具有 SQL API 的 Cosmos 帳戶，或適用于 MongoDB 的 Azure Cosmos DB API。 如果您沒有帳戶，可以在 Azure 入口網站中建立一個帳戶。 如需詳細資訊，請參閱 [Azure Cosmos DB：使用 .Net 建立 SQL API web 應用程式和 Azure 入口網站](create-sql-api-dotnet.md) 。
 

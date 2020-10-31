@@ -7,14 +7,15 @@ ms.author: sngun
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 986db85ddbf741dc459625dbd763b9cbbba1c429
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ccd9f10bcf8be5539528be1f513f7e7dd74549e7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85263342"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073684"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>將 Qlik Sense 連線到 Azure Cosmos DB 並將資料視覺化
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
 Qlik Sense 是一種資料視覺效果工具，可將不同來源的資料組合為單一檢視。 Qlik Sense 會在您的資料中為每個可能的關聯性編製索引，如此一來，您就能立即深入解析該資料。 您可以使用 Qlik Sense 來將 Azure Cosmos DB 資料視覺化。 本文說明將 Azure Cosmos DB 連線到 Qlik Sense 並將資料視覺化所需的步驟。 
 
@@ -34,7 +35,7 @@ Qlik Sense 是一種資料視覺效果工具，可將不同來源的資料組合
 
 本文將說明使用 ODBC 連接器連線到 Cosmos DB SQL API 的詳細資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 依照本文的指示進行之前，請確定已備妥下列資源：
 
@@ -52,15 +53,15 @@ Qlik Sense 是一種資料視覺效果工具，可將不同來源的資料組合
 
 ## <a name="connect-qlik-sense-to-cosmos-db"></a>將 Qlik Sense 連線到 Cosmos DB
 
-1. 開啟 Qlik Sense，然後選取 [建立新的應用程式]****。 提供應用程式的名稱，然後選取 [建立]****。
+1. 開啟 Qlik Sense，然後選取 [建立新的應用程式]  。 提供應用程式的名稱，然後選取 [建立]  。
 
    :::image type="content" source="./media/visualize-qlik-sense/create-new-qlik-sense-app.png" alt-text="建立新的 Qlik Sense 應用程式":::
 
-2. 成功建立新的應用程式之後，選取 [開啟應用程式]****，然後選擇 [從檔案和其他來源新增資料]****。 
+2. 成功建立新的應用程式之後，選取 [開啟應用程式]  ，然後選擇 [從檔案和其他來源新增資料]  。 
 
-3. 從資料來源中，選取 [ODBC]**** 以開啟新的連線設定視窗。 
+3. 從資料來源中，選取 [ODBC]  以開啟新的連線設定視窗。 
 
-4. 切換至 [使用者 DSN]****，然後選擇您稍早建立的 ODBC 連線。 提供連線的名稱，然後選取 [建立]****。 
+4. 切換至 [使用者 DSN]  ，然後選擇您稍早建立的 ODBC 連線。 提供連線的名稱，然後選取 [建立]  。 
 
    :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="建立新的 Qlik Sense 應用程式":::
 
@@ -68,7 +69,7 @@ Qlik Sense 是一種資料視覺效果工具，可將不同來源的資料組合
 
    :::image type="content" source="./media/visualize-qlik-sense/choose-database-and-collection.png" alt-text="建立新的 Qlik Sense 應用程式"::: 
 
-6. 接下來，選取 [新增資料]****，將資料載入至 Qlik Sense。 當您將資料載入至 Qlik Sense 之後，您可以產生資料的深入解析並執行分析。 您可以使用深入解析或建置自己的應用程式，來探索視訊遊戲銷售。 下圖說明 
+6. 接下來，選取 [新增資料]  ，將資料載入至 Qlik Sense。 當您將資料載入至 Qlik Sense 之後，您可以產生資料的深入解析並執行分析。 您可以使用深入解析或建置自己的應用程式，來探索視訊遊戲銷售。 下圖說明 
 
    :::image type="content" source="./media/visualize-qlik-sense/visualize-data.png" alt-text="建立新的 Qlik Sense 應用程式":::
 

@@ -2,13 +2,13 @@
 title: Azure Event Grid 概念
 description: 說明 Azure Event Grid 與其概念。 定義 Event Grid 的數個重要元件。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 003139374a056da6ddc22dd1453d28761ff58871
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/29/2020
+ms.openlocfilehash: 6cfb8b3aaf16a0080b9864ce5198b8a7232e8bc8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86116483"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075104"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure Event Grid 中的概念
 
@@ -37,11 +37,11 @@ ms.locfileid: "86116483"
 
 Event Grid 主題提供來源傳送事件的端點。 發行者會建立 Event Grid 主題，並決定事件來源是否需要一個主題或多個主題。 主題可用於相關事件的集合。 若要回應某些類型的事件，訂閱者會決定要訂閱的主題。
 
-系統主題是 Azure 服務（例如 Azure 儲存體、Azure 事件中樞和 Azure 服務匯流排）所提供的內建主題。 您可以在 Azure 訂用帳戶中建立系統主題，並加以訂閱。 如需詳細資訊，請參閱 [系統主題的總覽](system-topics.md)。 
+**系統主題** 是 Azure 服務（例如 Azure 儲存體、Azure 事件中樞和 Azure 服務匯流排）所提供的內建主題。 您可以在 Azure 訂用帳戶中建立系統主題，並加以訂閱。 如需詳細資訊，請參閱 [系統主題的總覽](system-topics.md)。 
 
-自訂主題是應用程式和協力廠商的主題。 當您建立或獲指派可存取自訂主題時，您會在訂用帳戶中看見該自訂主題。 如需詳細資訊，請參閱 [自訂主題](custom-topics.md)。
+**自訂主題** 是應用程式和協力廠商主題。 當您建立或獲指派可存取自訂主題時，您會在訂用帳戶中看見該自訂主題。 如需詳細資訊，請參閱 [自訂主題](custom-topics.md)。 在設計應用程式時，您將有足夠的彈性可決定要建立多少個主題。 對於大型解決方案，請為每個類別的相關事件建立一個自訂主題。 例如，請考慮使用應用程式來傳送與修改使用者帳戶和處理訂單有關的事件。 任何事件處理常式不太需要兩種類別的事件。 建立兩個自訂主題，並讓事件處理常式訂閱其感興趣的自訂主題。 對於小型解決方案，您可能會想要將所有事件傳送至單一主題。 事件訂閱者可以篩選出他們想要的事件類型。
 
-在設計應用程式時，您將有足夠的彈性可決定要建立多少個主題。 對於大型解決方案，請為每個類別的相關事件建立一個自訂主題。 例如，請考慮使用應用程式來傳送與修改使用者帳戶和處理訂單有關的事件。 任何事件處理常式不太需要兩種類別的事件。 建立兩個自訂主題，並讓事件處理常式訂閱其感興趣的自訂主題。 對於小型解決方案，您可能會想要將所有事件傳送至單一主題。 事件訂閱者可以篩選出他們想要的事件類型。
+還有另一種主題： **合作夥伴主題** 。 「 [夥伴事件](partner-events-overview.md) 」功能可讓協力廠商 SaaS 提供者從其服務發佈事件，讓可訂閱這些事件的取用者可以使用這些事件。 SaaS 提供者會公開主題類型，也就是「訂閱者」用來取用事件的 **夥伴主題** 。 它也提供乾淨的 pub sub 模型，方法是分隔事件發行者和訂閱者所使用之資源的考慮和擁有權。
 
 ## <a name="event-subscriptions"></a>事件訂閱
 

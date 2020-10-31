@@ -6,14 +6,15 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: ebd1c4f71d71ca70f6d10763d538b1877b0c3539
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0c890d50bbfe498f9d90698394b2cc2d373c0d8b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489348"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93072989"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>變更 Azure Cosmos DB 中的摘要設計模式
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB 變更摘要可有效處理具有大量寫入的大型資料集。 變更摘要也提供了替代方式，以查詢整個資料集來識別已變更的項目。 本文件著重於常見的變更摘要設計模式、設計取捨和變更摘要限制。
 

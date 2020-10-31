@@ -4,12 +4,12 @@ description: 在本快速入門中，您可以針對容器登錄啟用事件方�
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3e9e9a7d6016f53225c1b2f31fb8eef91e202c7a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 6058fceb873e2b26da2d30dadba456e2a625f3f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736859"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074211"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>快速入門：將事件從私用容器登錄傳送至事件方格
 
@@ -19,11 +19,11 @@ Azure 事件方格是完全受控的事件路由服務，可使用發佈-訂閱�
 
 ![呈現包含三個已接收事件之範例 Web 應用程式的網頁瀏覽器][sample-app-01]
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶][azure-account]。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-本文中的 Azure CLI 命令已針對 **Bash** 殼層進行格式化。 如果您使用不同的殼層 (例如 PowerShell 或命令提示字元)，您可能需要據以調整行接續字元或變數指派行。 本文使用變數來將需要編輯的命令數量降至最低。
+- 本文中的 Azure CLI 命令已針對 **Bash** 殼層進行格式化。 如果您使用不同的殼層 (例如 PowerShell 或命令提示字元)，您可能需要據以調整行接續字元或變數指派行。 本文使用變數來將需要編輯的命令數量降至最低。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -218,7 +218,7 @@ az group delete --name $RESOURCE_GROUP_NAME
 
 [Container Registry 的 Azure Event Grid 事件結構描述](../event-grid/event-schema-container-registry.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在本快速入門中，您已部署容器登錄、使用 ACR 工作來建置映像、刪除它，並已使用範例應用程式從事件方格中取用您的登錄事件。 接下來，前往 ACR 工作教學課程，以深入了解如何在雲端中建置容器映像，包括基底映像更新上的自動化組建：
 

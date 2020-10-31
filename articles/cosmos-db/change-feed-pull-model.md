@@ -8,14 +8,15 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.reviewer: sngun
-ms.openlocfilehash: aa0586ab2a0ff21e3187bba070dd4be7ef325288
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6d2f39eae94b217ad1f95a6a559aa3e1044d10da
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784672"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93072669"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Azure Cosmos DB 中的變更摘要提取模型
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 您可以透過變更摘要提取模型，依自己的步調使用 Azure Cosmos DB 變更摘要。 如同您已可以透過[變更摘要處理器](change-feed-processor.md)進行的動作，您可以使用變更摘要提取模型，平行處理多個變更摘要取用者之間的變更。
 

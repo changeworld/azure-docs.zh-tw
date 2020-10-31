@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 7ec511400d1e00d37993f2f4ee581bce1bccb897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17b2ab53c0154a29f9084f9dd999a53bcf477b72
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715992"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075121"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>針對 Windows (SMB) 中的 Azure 檔案儲存體問題進行疑難排解
 
-本文列出當您從 Windows 用戶端連線時，與 Microsoft Azure 檔案服務相關的常見問題。 文中也會提供這些問題的可能原因和解決方案。 除了本文中的疑難排解步驟之外，您也可以使用[AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)   來確保 Windows 用戶端環境具備正確的必要條件。 AzFileDiagnostics 會自動偵測本文中提及的大部分徵兆，並協助設定您的環境以取得最佳效能。
+本文列出當您從 Windows 用戶端連線時，與 Microsoft Azure 檔案服務相關的常見問題。 文中也會提供這些問題的可能原因和解決方案。 除了本文中的疑難排解步驟，您也可以使用 [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) \(英文\) 來確保 Windows 用戶端環境具備正確的必要條件。 AzFileDiagnostics 會自動偵測本文中提及的大部分徵兆，並協助設定您的環境以取得最佳效能。
 
 > [!IMPORTANT]
 > 本文內容僅適用于 SMB 共用。 如需 NFS 共用的詳細資訊，請參閱 [疑難排解 AZURE nfs 檔案共用](storage-troubleshooting-files-nfs.md)。
@@ -26,7 +26,7 @@ ms.locfileid: "91715992"
 
 您嘗試掛接檔案共用時，可能會收到下列錯誤：
 
-- 發生系統錯誤 5。 拒絕存取。
+- 發生系統錯誤 5。 存取遭到拒絕。
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>原因 1：通訊通道未加密
 
@@ -45,7 +45,7 @@ Windows 8、Windows Server 2012 和更新版本的每個系統交涉都要求包
 
 ### <a name="solution-for-cause-2"></a>原因 2 的解決方案
 
-確認已經在儲存體帳戶上正確設定虛擬網路和防火牆規則。 若要測試虛擬網路或防火牆規則是否造成問題，請暫時將儲存體帳戶上的設定變更為 [允許來自所有網路的存取]****。 若要深入了解，請參閱[設定 Azure 儲存體防火牆和虛擬網路](https://docs.microsoft.com/azure/storage/common/storage-network-security)。
+確認已經在儲存體帳戶上正確設定虛擬網路和防火牆規則。 若要測試虛擬網路或防火牆規則是否造成問題，請暫時將儲存體帳戶上的設定變更為 [允許來自所有網路的存取]  。 若要深入了解，請參閱[設定 Azure 儲存體防火牆和虛擬網路](https://docs.microsoft.com/azure/storage/common/storage-network-security)。
 
 ### <a name="cause-3-share-level-permissions-are-incorrect-when-using-identity-based-authentication"></a>原因3：使用以身分識別為基礎的驗證時，共用層級許可權不正確
 
@@ -55,10 +55,10 @@ Windows 8、Windows Server 2012 和更新版本的每個系統交涉都要求包
 
 驗證是否已正確設定許可權：
 
-- **Active Directory (AD) ** 請參閱 [將共用層級許可權指派給身分識別](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions)。
+- **Active Directory (AD)** 請參閱 [將共用層級許可權指派給身分識別](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions)。
 
     針對已從 Active Directory (AD) 同步至 Azure Active Directory (使用 Azure AD) Azure AD Connect 的群組和使用者，支援共用層級的許可權指派。  確認指派共用層級許可權的群組和使用者，不支援「僅限雲端」群組。
-- **Azure Active Directory Domain Services (AZURE AD DS) ** 請參閱 [將存取權限指派給身分識別](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable?tabs=azure-portal#assign-access-permissions-to-an-identity)。
+- **Azure Active Directory Domain Services (AZURE AD DS)** 請參閱 [將存取權限指派給身分識別](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable?tabs=azure-portal#assign-access-permissions-to-an-identity)。
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>當您嘗試掛接或取消掛接 Azure 檔案共用時發生錯誤 53、錯誤 67 或錯誤 87
@@ -167,33 +167,92 @@ Azure 檔案同步可以將您的內部部署 Windows Server 轉換成 Azure 檔
 
 ### <a name="solution-for-cause-1"></a>原因 1 的解決方案
 
-確認已經在儲存體帳戶上正確設定虛擬網路和防火牆規則。 若要測試虛擬網路或防火牆規則是否造成問題，請暫時將儲存體帳戶上的設定變更為 [允許來自所有網路的存取]****。 若要深入了解，請參閱[設定 Azure 儲存體防火牆和虛擬網路](https://docs.microsoft.com/azure/storage/common/storage-network-security)。
+確認已經在儲存體帳戶上正確設定虛擬網路和防火牆規則。 若要測試虛擬網路或防火牆規則是否造成問題，請暫時將儲存體帳戶上的設定變更為 [允許來自所有網路的存取]  。 若要深入了解，請參閱[設定 Azure 儲存體防火牆和虛擬網路](https://docs.microsoft.com/azure/storage/common/storage-network-security)。
 
 ### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>原因2：您的使用者帳戶沒有儲存體帳戶的存取權
 
 ### <a name="solution-for-cause-2"></a>原因 2 的解決方案
 
-瀏覽至 Azure 檔案共用所在的儲存體帳戶，按一下 [存取控制 (IAM)]****，並確認您的使用者帳戶擁有儲存體帳戶的存取權。 若要深入瞭解，請參閱 [如何使用 azure 角色型存取控制來保護儲存體帳戶 (AZURE RBAC) ](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)。
+瀏覽至 Azure 檔案共用所在的儲存體帳戶，按一下 [存取控制 (IAM)]  ，並確認您的使用者帳戶擁有儲存體帳戶的存取權。 若要深入瞭解，請參閱 [如何使用 azure 角色型存取控制來保護儲存體帳戶 (AZURE RBAC) ](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)。
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>無法刪除 Azure 檔案共用中的檔案或目錄
-當您嘗試刪除檔案時，可能會收到下列錯誤：
+檔案共用的主要用途之一，就是多個使用者和應用程式可以同時與共享中的檔案和目錄互動。 為了協助進行此互動，檔案共用提供數種方式來調節檔案和目錄的存取權。
 
-指定的資源已標示為可供 SMB 用戶端刪除。
+當您透過 SMB 從掛接的 Azure 檔案共用開啟檔案時，您的應用程式/作業系統要求檔案控制代碼，也就是檔案的參考。 此外，您的應用程式會在要求檔案控制代碼時指定檔案共用模式，以指定 Azure 檔案儲存體強制執行之檔案的存取層級獨佔性： 
 
-### <a name="cause"></a>原因
-如果檔案或目錄具有開啟的控制碼，通常就會發生此問題。 
+- `None`：您有獨佔存取權。 
+- `Read`：當您開啟檔案時，其他人可能會讀取該檔案。
+- `Write`：當您開啟檔案時，其他人可能會寫入檔案。 
+- `ReadWrite`： `Read` 和 `Write` 共用模式的組合。
+- `Delete`：其他人可能會在您開啟檔案時將其刪除。 
 
-### <a name="solution"></a>解決方法
+雖然這是無狀態的通訊協定，但 FileREST 通訊協定並沒有檔案控制代碼的概念，但它提供了類似的機制，可協調您的腳本、應用程式或服務可能會使用的檔案和資料夾的存取：檔案租用。 當檔案被租用時，它會被視為相當於檔案共用模式的檔案控制代碼 `None` 。 
 
-如果 SMB 用戶端已關閉所有開啟的控制碼，且問題持續發生，請執行下列動作：
+雖然檔案控制代碼和租用有很重要的用途，有時檔案控制代碼和租用可能是孤立的。 發生這種情況時，可能會導致修改或刪除檔案時發生問題。 您可能會看到類似下列的錯誤訊息：
 
-- 使用 [>get-azstoragefilehandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell Cmdlet 來查看開啟的控制碼。
+- 由於已有另一個處理序正在使用該檔案，所以此處理序無法存取該檔案。
+- 因為檔案已在另一個程式中開啟，所以無法完成此動作。
+- 另一位使用者已鎖定檔以進行編輯。
+- 指定的資源已標示為可供 SMB 用戶端刪除。
 
-- 使用 [>get-azstoragefilehandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell Cmdlet 來關閉開啟的控制碼。 
+此問題的解決方式取決於是否由孤立的檔案控制代碼或租用所造成。 
+
+### <a name="cause-1"></a>原因 1
+檔案控制代碼防止修改或刪除檔案/目錄。 您可以使用 [>get-azstoragefilehandle](https://docs.microsoft.com/powershell/module/az.storage/get-azstoragefilehandle) PowerShell Cmdlet 來查看開啟的控制碼。 
+
+如果所有 SMB 用戶端已關閉其檔案/目錄的開啟控制碼，且問題持續發生，您可以強制關閉檔案控制代碼。
+
+### <a name="solution-1"></a>解決方案 1
+若要強制關閉檔案控制代碼，請使用 [>get-azstoragefilehandle](https://docs.microsoft.com/powershell/module/az.storage/close-azstoragefilehandle) PowerShell Cmdlet。 
 
 > [!Note]  
 > Get-AzStorageFileHandle 和 Close-AzStorageFileHandle Cmdlet 包含在 Az PowerShell 模組2.4 版或更新版本中。 若要安裝最新的 Az PowerShell 模組，請參閱 [安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+
+### <a name="cause-2"></a>原因 2
+檔案租用防止修改或刪除檔案。 您可以使用下列 PowerShell 來檢查檔案是否有檔案租用，並將、、和取代為 `<resource-group>` `<storage-account>` `<file-share>` `<path-to-file>` 您環境的適當值：
+
+```PowerShell
+# Set variables 
+$resourceGroupName = "<resource-group>"
+$storageAccountName = "<storage-account>"
+$fileShareName = "<file-share>"
+$fileForLease = "<path-to-file>"
+
+# Get reference to storage account
+$storageAccount = Get-AzStorageAccount `
+        -ResourceGroupName $resourceGroupName `
+        -Name $storageAccountName
+
+# Get reference to file
+$file = Get-AzStorageFile `
+        -Context $storageAccount.Context `
+        -ShareName $fileShareName `
+        -Path $fileForLease
+
+$fileClient = $file.ShareFileClient
+
+# Check if the file has a file lease
+$fileClient.GetProperties().Value
+```
+
+如果檔案有租用，則傳回的物件應該包含下列屬性：
+
+```Output
+LeaseDuration         : Infinite
+LeaseState            : Leased
+LeaseStatus           : Locked
+```
+
+### <a name="solution-2"></a>解決方案 2
+若要從檔案中移除租用，您可以釋放租用或中斷租用。 若要釋放租用期，您需要租用的 LeaseId，這是您在建立租用時所設定的租用。 您不需要 LeaseId 來中斷租用。
+
+下列範例會示範如何中斷原因2中指出的檔案租用 (此範例會繼續來自原因 2) 的 PowerShell 變數：
+
+```PowerShell
+$leaseClient = [Azure.Storage.Files.Shares.Specialized.ShareLeaseClient]::new($fileClient)
+$leaseClient.Break() | Out-Null
+```
 
 <a id="slowfilecopying"></a>
 ## <a name="slow-file-copying-to-and-from-azure-files-in-windows"></a>從 Windows 中的 Azure 檔案服務複製檔案或將檔案複製到其中的速度變慢

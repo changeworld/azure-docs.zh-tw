@@ -6,14 +6,15 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: b8d74f9da62b0f5a596c811efa9f93b55c99f1d7
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 04de6dce6cbab4dc0716ae841707b1d61d6bc375
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476343"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073752"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>常見的 Azure Cosmos DB 使用案例
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 本文提供數個常見的 Azure Cosmos DB 使用案例概觀。  本文中的建議可作為使用 Cosmos DB 來開發應用程式時的起點。
 
@@ -100,7 +101,7 @@ JSON (Cosmos DB 所支援的格式) 是一種呈現 UI 配置資料的有效格�
 
 :::image type="content" source="./media/use-cases/personalization.png" alt-text="Azure Cosmos DB IoT 參考架構" border="false":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 若要開始使用 Azure Cosmos DB，請依照我們的[快速入門](create-sql-api-dotnet.md)操作，這會逐步引導您建立帳戶及開始使用 Cosmos DB。
 

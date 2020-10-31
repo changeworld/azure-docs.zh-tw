@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 7/29/2020
 ms.author: tisande
-ms.openlocfilehash: 4f5e88e7201c4097e2f8d654b8780ea12816b15d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c7d47b0bb167b3211b3859a47b0c8e11876b1614
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485098"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075396"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ 至 SQL 轉譯
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB 查詢提供者會執行從 LINQ 查詢到 Cosmos DB SQL 查詢的最佳對應。 如果您想要取得從 LINQ 轉譯的 SQL 查詢，請 `ToString()` 在產生的物件上使用方法 `IQueryable` 。 下列說明假設您已對 [LINQ](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)有基本的熟悉度。
 
@@ -79,19 +80,19 @@ using (FeedIterator<Book> setIterator = container.GetItemLinqQueryable<Book>()
 
 SQL .NET SDK 隨附的 LINQ 提供者支援下列運算子：
 
-- **Select**：投射轉譯為 [Select](sql-query-select.md)，包括物件結構。
-- **Where**：篩選器會轉譯為 [where](sql-query-where.md)，並支援將、和轉換成 `&&` `||` `!` SQL 運算子
-- **SelectMany**：允許將陣列回溯至 [JOIN](sql-query-join.md) 子句。 用來鏈狀或嵌套運算式以篩選陣列元素。
-- **OrderBy** 和 **ORDERBYDESCENDING**：使用 ASC 或 DESC 轉譯為 [ORDER BY](sql-query-order-by.md) 。
-- **Count**、 **Sum**、 **Min**、 **Max**和 **Average** 運算子（用於 [匯總](sql-query-aggregates.md)）及其 async 對等 **CountAsync**、 **SumAsync**、 **MinAsync**、 **MaxAsync**和 **AverageAsync**。
-- **CompareTo**：轉譯為範圍比較。 常用於字串，因為它們在 .NET 中是無法比較的。
-- **Skip** 和 **Take**：轉譯為 [位移和限制](sql-query-offset-limit.md) ，以限制查詢的結果並執行分頁。
-- **數學**函式：支援從 .net、、、、、、、、、、、、、、、 `Abs` `Acos` `Asin` `Atan` `Ceiling` `Cos` `Exp` `Floor` `Log` `Log10` `Pow` `Round` `Sign` `Sin` `Sqrt` `Tan` 和 `Truncate` 到相等 [內建數學函數](sql-query-mathematical-functions.md)的轉譯。
-- **字串函數**：支援從 .net、、、、、、、、、、、 `Concat` `Contains` `Count` 和轉換 `EndsWith` `IndexOf` `Replace` `Reverse` `StartsWith` `SubString` `ToLower` `ToUpper` `TrimEnd` `TrimStart` 成相等的 [內建字串函數](sql-query-string-functions.md)。
-- **陣列**函式：支援從 .net `Concat` 、 `Contains` 和轉換 `Count` 為相等的 [內建陣列函數](sql-query-array-functions.md)。
-- **地理空間延伸**模組函式：支援從存根方法 `Distance` 、、 `IsValid` `IsValidDetailed` 和 `Within` 到相等 [內建地理空間函數](sql-query-geospatial-query.md)的轉譯。
-- **使用者定義函數延伸函式**：支援從 stub 方法轉譯 `UserDefinedFunctionProvider.Invoke` 為對應的 [使用者定義函數](sql-query-udfs.md)。
-- **其他**：支援 `Coalesce` 和條件 [運算子](sql-query-operators.md)的轉譯。 視內容而定，可以轉譯 `Contains` 為字串 CONTAINS、ARRAY_CONTAINS 或 IN。
+- **Select** ：投射轉譯為 [Select](sql-query-select.md)，包括物件結構。
+- **Where** ：篩選器會轉譯為 [where](sql-query-where.md)，並支援將、和轉換成 `&&` `||` `!` SQL 運算子
+- **SelectMany** ：允許將陣列回溯至 [JOIN](sql-query-join.md) 子句。 用來鏈狀或嵌套運算式以篩選陣列元素。
+- **OrderBy** 和 **ORDERBYDESCENDING** ：使用 ASC 或 DESC 轉譯為 [ORDER BY](sql-query-order-by.md) 。
+- **Count** 、 **Sum** 、 **Min** 、 **Max** 和 **Average** 運算子（用於 [匯總](sql-query-aggregates.md)）及其 async 對等 **CountAsync** 、 **SumAsync** 、 **MinAsync** 、 **MaxAsync** 和 **AverageAsync** 。
+- **CompareTo** ：轉譯為範圍比較。 常用於字串，因為它們在 .NET 中是無法比較的。
+- **Skip** 和 **Take** ：轉譯為 [位移和限制](sql-query-offset-limit.md) ，以限制查詢的結果並執行分頁。
+- **數學** 函式：支援從 .net、、、、、、、、、、、、、、、 `Abs` `Acos` `Asin` `Atan` `Ceiling` `Cos` `Exp` `Floor` `Log` `Log10` `Pow` `Round` `Sign` `Sin` `Sqrt` `Tan` 和 `Truncate` 到相等 [內建數學函數](sql-query-mathematical-functions.md)的轉譯。
+- **字串函數** ：支援從 .net、、、、、、、、、、、 `Concat` `Contains` `Count` 和轉換 `EndsWith` `IndexOf` `Replace` `Reverse` `StartsWith` `SubString` `ToLower` `ToUpper` `TrimEnd` `TrimStart` 成相等的 [內建字串函數](sql-query-string-functions.md)。
+- **陣列** 函式：支援從 .net `Concat` 、 `Contains` 和轉換 `Count` 為相等的 [內建陣列函數](sql-query-array-functions.md)。
+- **地理空間延伸** 模組函式：支援從存根方法 `Distance` 、、 `IsValid` `IsValidDetailed` 和 `Within` 到相等 [內建地理空間函數](sql-query-geospatial-query.md)的轉譯。
+- **使用者定義函數延伸函式** ：支援從 stub 方法轉譯 `UserDefinedFunctionProvider.Invoke` 為對應的 [使用者定義函數](sql-query-udfs.md)。
+- **其他** ：支援 `Coalesce` 和條件 [運算子](sql-query-operators.md)的轉譯。 視內容而定，可以轉譯 `Contains` 為字串 CONTAINS、ARRAY_CONTAINS 或 IN。
 
 ## <a name="examples"></a>範例
 
@@ -342,7 +343,7 @@ SQL .NET SDK 隨附的 LINQ 提供者支援下列運算子：
       WHERE c.familyName = f.parents[0].familyName
   ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [Azure Cosmos DB .NET 範例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [模型文件資料](modeling-data.md)

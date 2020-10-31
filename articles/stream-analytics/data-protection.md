@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: b54076413d3a6cabf2e3ef0b06e8e17875efbf97
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e823322803958f092cee3b6d77e6a0ca7bc6e3f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746414"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074245"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure 串流分析中的資料保護 
 
@@ -73,8 +73,29 @@ Azure 串流分析會儲存客戶資料和以上所述的其他中繼資料。 �
 
    ![私用資料儲存體帳戶設定](./media/data-protection/storage-account-create.png)
 
+## <a name="private-data-assets-that-are-stored"></a>儲存的私用資料資產
 
-## <a name="next-steps"></a>後續步驟
+串流分析所需保存的任何私用資料都會儲存在您的儲存體帳戶中。 私用資料資產的範例包括： 
+
+* 您所撰寫的查詢及其相關設定  
+
+* 使用者自訂函數 
+
+* 串流分析執行時間所需的檢查點
+
+* 參考資料的快照集 
+
+也會儲存您的串流分析作業所使用資源的連線詳細資料。 加密您的儲存體帳戶，以保護您的所有資料。 
+
+為了協助您符合任何管制產業或環境中的合規性義務，您可以閱讀更多有關 [Microsoft 合規性供應](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)專案的資訊。 
+
+## <a name="enables-data-residency"></a>啟用資料存放區 
+您可以使用這項功能，視需要提供儲存體帳戶來強制執行任何資料落地需求。
+
+## <a name="known-issues"></a>已知問題
+有一個已知問題，就是使用受控識別來驗證任何輸入或輸出時，使用客戶管理金鑰的作業會失敗。 
+
+## <a name="next-steps"></a>下一步
 
 * [建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md)
 * [了解 Azure 串流分析的輸入](stream-analytics-add-inputs.md)

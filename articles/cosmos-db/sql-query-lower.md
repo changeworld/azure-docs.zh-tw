@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 80dba57d4fe05630eb5ae4f8fc96bd0aa214c6d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 163b893b74b5f6d3950ae92e209f96abde8cd90e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78302265"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075274"
 ---
 # <a name="lower-azure-cosmos-db"></a>較低的 (Azure Cosmos DB) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  傳回將大寫字元資料轉換成小寫之後的字串運算式。  
 
 較低的系統函數不使用索引。 如果您打算經常進行不區分大小寫的比較，則較低的系統函數可能會耗用大量的 RU。 如果是這種情況，而不是使用較低的系統函數，在每次進行比較時將資料標準化，您可以在插入時標準化大小寫。 然後查詢（例如 SELECT * FROM c，其中較低的 (c.name) = ' bob '）只會變成 SELECT * FROM c WHERE c.name = ' bob '。

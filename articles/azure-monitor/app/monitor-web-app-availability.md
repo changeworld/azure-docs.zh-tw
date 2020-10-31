@@ -4,12 +4,12 @@ description: 在 Application Insights 中設定 Web 測試。 如果網站無法
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: a5bee2da5059213e85e03d5a0e4df0ef88c26b03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56644a4eb2f91dcce3bc2ee557542da75408ca83
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986028"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075138"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>監視任何網站的可用性
 
@@ -31,13 +31,13 @@ ms.locfileid: "90986028"
 
 為了建立可用性測試，您必須先建立 Application Insights 資源。 如果您已經建立資源，請繼續下一節來 [建立 URL Ping 測試](#create-a-url-ping-test)。
 
-從 Azure 入口網站中，選取 [**建立資源**  >  **開發人員工具**]  >  **Application Insights**並[建立 Application Insights 資源](create-new-resource.md)。
+從 Azure 入口網站中，選取 [ **建立資源**  >  **開發人員工具** ]  >  **Application Insights** 並 [建立 Application Insights 資源](create-new-resource.md)。
 
 ## <a name="create-a-url-ping-test"></a>建立 URL Ping 測試
 
 「URL ping 測試」名稱有點 misnomer。 顯然，這項測試不會使用 ICMP (網際網路控制訊息通訊協定) 檢查您網站的可用性。 相反地，它會使用更先進的 HTTP 要求功能來驗證端點是否回應。 此外，它也會測量與該回應相關聯的效能，並新增設定自訂成功準則的能力，結合更先進的功能，例如剖析相依的要求，並允許重試。
 
-若要建立您的第一個可用性要求，請開啟 [可用性] 窗格，然後選取 [ **建立測試**]。
+若要建立您的第一個可用性要求，請開啟 [可用性] 窗格，然後選取 [ **建立測試** ]。
 
 ![Fill at least the URL of your website](./media/monitor-web-app-availability/availability-create-test-001.png)
 
@@ -47,14 +47,14 @@ ms.locfileid: "90986028"
 |----|----|----|
 |**URL** |  URL 可以是您想要測試的任何網頁，但必須可從公用網際網路看見它。 URL 可以包含查詢字串。 例如，您可以訓練一下您的資料庫。 如果 URL 解析為重新導向，我們會跟隨它，最多 10 個重新導向。|
 |**剖析相依要求**| 測試要求影像、腳本、樣式檔案以及其他屬於受測試網頁的檔案。 記錄的回應時間包含取得這些檔案所需的時間。 如果無法在整個測試的超時時間內成功下載任何這些資源，測試就會失敗。 如果未核取這個選項，測試只會要求您指定之 URL 中的檔案。 啟用此選項會產生更嚴格的檢查。 測試可能會因案例而失敗，這在手動流覽網站時可能不會很明顯。
-|**啟用重試**|當測試失敗時，會在短時間間隔後重試。 只有在連續三次重試失敗後，才會回報失敗。 後續測試則會以一般測試頻率執行。 重試會暫時停止，直到下次成功為止。 此規則可個別套用在每個測試位置。 **我們建議採用此選項**。 平均來說，大約 80% 失敗會在重試後消失。|
+|**啟用重試**|當測試失敗時，會在短時間間隔後重試。 只有在連續三次重試失敗後，才會回報失敗。 後續測試則會以一般測試頻率執行。 重試會暫時停止，直到下次成功為止。 此規則可個別套用在每個測試位置。 **我們建議採用此選項** 。 平均來說，大約 80% 失敗會在重試後消失。|
 |**測試頻率**| 設定從每個測試位置執行測試的頻率。 預設頻率為 5 分鐘且有五個測試位置，則您的網站平均每一分鐘會執行測試。|
-|**測試位置**| 是我們的伺服器將 Web 要求傳送至您的 URL 的位置。 **建議的測試位置數目下限為五個**，以確保您可以區分網站問題與網路問題。 您最多可以選取 16 個位置。
+|**測試位置**| 是我們的伺服器將 Web 要求傳送至您的 URL 的位置。 **建議的測試位置數目下限為五個** ，以確保您可以區分網站問題與網路問題。 您最多可以選取 16 個位置。
 
-**如果公用網際網路看不到您的 URL，您可以選擇選擇性地開啟您的防火牆，只允許通過測試交易**。 若要深入瞭解可用性測試代理程式的防火牆例外狀況，請參閱 [IP 位址指南](./ip-addresses.md#availability-tests)。
+**如果公用網際網路看不到您的 URL，您可以選擇選擇性地開啟您的防火牆，只允許通過測試交易** 。 若要深入瞭解可用性測試代理程式的防火牆例外狀況，請參閱 [IP 位址指南](./ip-addresses.md#availability-tests)。
 
 > [!NOTE]
-> 強烈建議您從 **最少五**個位置的多個位置進行測試。 這樣做可避免因特定位置發生暫時性問題，而造成誤判。 此外，我們發現最佳設定是讓 **測試位置數目等於警示位置閾值 + 2**。
+> 強烈建議您從 **最少五** 個位置的多個位置進行測試。 這樣做可避免因特定位置發生暫時性問題，而造成誤判。 此外，我們發現最佳設定是讓 **測試位置數目等於警示位置閾值 + 2** 。
 
 ### <a name="success-criteria"></a>成功準則
 
@@ -70,7 +70,56 @@ ms.locfileid: "90986028"
 |----|----|----|
 |**近乎即時 (預覽)** | 我們建議使用近乎即時的警示。 您的可用性測試建立後，此類型的警示會設定完成。  |
 |**傳統** | 我們不再建議使用傳統警示來進行新的可用性測試。|
-|**警示位置閾值**|建議至少為位置數的 3/5。 警示位置閾值與測試位置數目之間的最佳關聯性，就是**警示位置閾值** = **測試位置數目 - 2 (最少五個測試位置)。**|
+|**警示位置閾值**|建議至少為位置數的 3/5。 警示位置閾值與測試位置數目之間的最佳關聯性，就是 **警示位置閾值** = **測試位置數目 - 2 (最少五個測試位置)。**|
+
+### <a name="location-population-tags"></a>位置填入標記
+
+使用 Azure Resource Manager 部署可用性 URL ping 測試時，可使用下列人口標記來作為地理位置屬性。
+
+#### <a name="azure-gov"></a>Azure Gov
+
+| 顯示名稱   | 人口名稱     |
+|----------------|---------------------|
+| USGov 維吉尼亞 | 美國政府-va-ms-azr-0003p        |
+| USGov 亞歷桑那  | 美國政府-phx-ms-azr-0003p       |
+| USGov 德州    | 美國政府-德克薩斯州-ms-azr-0003p        |
+| US DoD 東部     | 美國政府-ddeast-ms-azr-0003p    |
+| US DoD 中部  | 美國政府-ddcentral-ms-azr-0003p |
+
+#### <a name="us-sec"></a>US Sec
+
+| 顯示名稱 | 人口名稱 |
+|--------------|-----------------|
+| USSec 西部   | ussec-西-ms-azr-0003p  |
+| USSec 東部   | ussec-東部-ms-azr-0003p  |
+
+#### <a name="us-nat"></a>美國 Nat
+
+| 顯示名稱 | 人口名稱 |
+|--------------|-----------------|
+| USNat 東部   | usnat-東部-ms-azr-0003p  |
+| USNat 西部   | usnat-西-ms-azr-0003p  |
+
+#### <a name="azure"></a>Azure
+
+| 顯示名稱                           | 人口名稱   |
+|----------------------------------------|-------------------|
+| 澳大利亞東部                         | emea-au-syd-邊緣  |
+| 巴西南部                           | latam-br-gru-edge |
+| 美國中部                             | 美國 fl-mia-邊緣    |
+| 東亞                              | apac-hk-hkn-ms-azr-0003p   |
+| 美國東部                                | 美國-va-聖 ms-azr-0003p     |
+| 先前法國中部的法國南部 ()  | emea-ch-zrh-edge  |
+| 法國中部                         | emea-fr-pra-邊緣  |
+| 日本東部                             | apac-jp-kaw-edge  |
+| 歐洲北部                           | emea-gb-db3-ms-azr-0003p   |
+| 美國中北部                       | us-il-ch1-ms-azr-0003p     |
+| 美國中南部                       | 美國-德克薩斯-sn1-ms-azr-0003p     |
+| 東南亞                         | apac-sg-sin-ms-azr-0003p   |
+| 英國西部                                | emea-se-停止-邊緣  |
+| 西歐                            | emea-nl-ams-ms-azr-0003p   |
+| 美國西部                                | us-ca-sjc-ms-azr-0003p     |
+| 英國南部                               | emea-ru-msa-edge  |
 
 ## <a name="see-your-availability-test-results"></a>查看可用性測試結果
 

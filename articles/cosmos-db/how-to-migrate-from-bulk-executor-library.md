@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 62a31750fe0c058624c4f69848abb56e7b5095b4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: f7f51f6944de48e58ff53e7685164df3a04afe56
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491014"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075580"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>從大量執行程式程式庫遷移至 Azure Cosmos DB .NET V3 SDK 的大量支援
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文描述將使用 [.net 大量執行](bulk-executor-dot-net.md) 程式程式庫的現有應用程式程式碼遷移至最新版 .net SDK 中的 [大量支援](tutorial-sql-api-dotnet-bulk-import.md) 功能所需的步驟。
 
@@ -48,7 +49,7 @@ SDK 中沒有任何單一方法可將您的檔或作業清單做為輸入參數�
 
 ## <a name="capture-task-result-state"></a>捕捉工作結果狀態
 
-在先前的程式碼範例中，我們建立了一份並行的工作清單，並 `CaptureOperationResponse` 在每個工作上呼叫方法。 此方法是一個延伸模組，可讓我們藉由捕捉任何錯誤並追蹤[要求單位使用量](request-units.md)，來維持與 BulkExecutor*類似的回應架構*。
+在先前的程式碼範例中，我們建立了一份並行的工作清單，並 `CaptureOperationResponse` 在每個工作上呼叫方法。 此方法是一個延伸模組，可讓我們藉由捕捉任何錯誤並追蹤 [要求單位使用量](request-units.md)，來維持與 BulkExecutor *類似的回應架構* 。
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="CaptureOperationResult":::
 
@@ -88,13 +89,13 @@ SDK 中沒有任何單一方法可將您的檔或作業清單做為輸入參數�
 > [!NOTE]
 > 如果布建的要求單位遠低於預期的資料量，您可能會想要考慮將這些單位設定為高值。 大量作業需要較長的時間，但由於重試次數較高，所以會有較高的機率。
 
-## <a name="performance-improvements"></a>效能改善
+## <a name="performance-improvements"></a>效能改進
 
 如同使用 .NET SDK 的其他作業，使用串流 Api 會產生較佳的效能，並避免任何不必要的序列化。 
 
 只有當您使用的資料本質與位元組資料流程的本質相符時，才可能使用 stream Api (例如，) 的檔案資料流程。 在這種情況下，使用 `CreateItemStreamAsync` 、 `ReplaceItemStreamAsync` 或 `DeleteItemStreamAsync` 方法，並使用 `ResponseMessage` (而不是 `ItemResponse`) 會提高可達到的輸送量。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 若要深入瞭解 .NET SDK 版本，請參閱 [AZURE COSMOS DB sdk](sql-api-sdk-dotnet.md) 文章。
 * 從 GitHub 取得完整的 [遷移原始碼](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration) 。

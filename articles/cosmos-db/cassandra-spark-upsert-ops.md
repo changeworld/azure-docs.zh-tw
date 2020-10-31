@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 5ad2cf5dee43f0345017930377a3ed9d2e4624bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e65d526db2861bc0d30a40651bbf9cf46111eaf5
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85257477"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073191"
 ---
 # <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>從 Spark 將資料更新插入至 Azure Cosmos DB Cassandra API
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 此文章說明如何從 Spark 將資料更新插入至 Azure Cosmos DB Cassandra API。
 
@@ -87,7 +88,7 @@ cdbConnector.withSessionDo(session => session.execute("update books_ks.books set
 > [!NOTE]
 > 從 RDD API 更新插入等同於建立作業 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 繼續閱讀下列文章，以對 Azure Cosmos DB Cassandra API 資料表中儲存的資料執行其他作業：
  
