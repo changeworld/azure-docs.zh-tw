@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: dd1652781d7eae8beb400c52137a8f16891e2b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2f79e2ca751ce9c1016f32effeca532d6ffe7fb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87498832"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101233"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB 中的運算子
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文詳細說明 Azure Cosmos DB 支援的各種運算子。
 
@@ -54,8 +55,8 @@ WHERE 7 = 'a'
 |  | **True** | **False** | **定義** |
 | --- | --- | --- | --- |
 | **True** |True |True |True |
-| **False** |True |False |未定義 |
-| **定義** |True |未定義 |未定義 |
+| **False** |是 |否 |未定義 |
+| **定義** |是 |未定義 |未定義 |
 
 **AND 運算子**
 
@@ -63,9 +64,9 @@ WHERE 7 = 'a'
 
 |  | **True** | **False** | **定義** |
 | --- | --- | --- | --- |
-| **True** |True |False |未定義 |
+| **True** |是 |否 |未定義 |
 | **False** |False |False |False |
-| **定義** |未定義 |False |未定義 |
+| **定義** |未定義 |否 |未定義 |
 
 **NOT 運算子**
 
@@ -73,8 +74,8 @@ WHERE 7 = 'a'
 
 |  | **NOT** |
 | --- | --- |
-| **True** |False |
-| **False** |True |
+| **True** |否 |
+| **False** |是 |
 | **定義** |未定義 |
 
 **運算子優先順序**
@@ -118,7 +119,7 @@ WHERE 7 = 'a'
     FROM Families f
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - [Azure Cosmos DB .NET 範例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [關鍵字](sql-query-keywords.md)

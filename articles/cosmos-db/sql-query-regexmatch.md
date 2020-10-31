@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 620ffcb379f9fa1402e422c13bcadf8da4047409
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 16004ece7877358be54ba67c2f72eb3210f16fb0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283842"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098122"
 ---
 # <a name="regexmatch-azure-cosmos-db"></a>REGEXMATCH (Azure Cosmos DB) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 提供正則運算式功能。 正則運算式是精確且彈性的標記法，用來尋找文字的模式。 Azure Cosmos DB 使用 [與 PERL 相容的正則運算式 (PCRE) ](http://www.pcre.org/)。 
 

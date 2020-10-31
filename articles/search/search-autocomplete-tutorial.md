@@ -9,21 +9,21 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 1796566c0a775e5810c387a01e0b54983727fa37
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 04123d06d22786c9dd2aa08c2dab1153f6d43375
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951395"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098445"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>將自動完成和建議新增至用戶端應用程式
 
-搜尋即您類型是改善使用者起始查詢生產力的常見技術。 在 Azure 認知搜尋中，您可以透過 *自動完成*來支援此體驗，這項功能會根據部分輸入完成詞彙或片語， (以「microsoft」 ) 完成「微」。 另一種形式是 *建議*：相符檔的簡短清單 (以識別碼傳回書籍標題，以便您可以連結到詳細資料頁面) 。 自動完成和建議都會針對索引中的相符前提。 服務不會提供傳回零結果的查詢。
+搜尋即您類型是改善使用者起始查詢生產力的常見技術。 在 Azure 認知搜尋中，您可以透過 *自動完成* 來支援此體驗，這項功能會根據部分輸入完成詞彙或片語， (以「microsoft」 ) 完成「微」。 另一種形式是 *建議* ：相符檔的簡短清單 (以識別碼傳回書籍標題，以便您可以連結到詳細資料頁面) 。 自動完成和建議都會針對索引中的相符前提。 服務不會提供傳回零結果的查詢。
 
 若要在 Azure 認知搜尋中執行這些體驗，您將需要：
 
 + 後端上的 *建議工具* 。
-+ 在要求上指定[自動完成](/rest/api/searchservice/autocomplete)或[建議](/rest/api/searchservice/suggestions)API 的*查詢*。
++ 在要求上指定 [自動完成](/rest/api/searchservice/autocomplete)或 [建議](/rest/api/searchservice/suggestions)API 的 *查詢* 。
 + 用來處理用戶端應用程式中搜尋型別互動的 *UI 控制項* 。 基於此目的，我們建議使用現有的 JavaScript 程式庫。
 
 在 Azure 認知搜尋中，autocompleted 查詢和建議的結果會從搜尋索引中，從您向建議工具註冊的選取欄位中取出。 建議工具是索引的一部分，而且它會指定哪些欄位將提供完成查詢的內容、建議結果，或兩者都有。 建立並載入索引時，會在內部建立建議工具資料結構，以儲存用於比對部分查詢的前置詞。 若要取得建議，請選擇唯一的適當欄位，或至少不重複的欄位，這對體驗而言是不可或缺的。 如需詳細資訊，請參閱 [建立建議工具](index-add-suggesters.md)。
@@ -42,9 +42,9 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 }
 ```
 
-**SuggesterName**會提供您用來完成條款或建議的建議工具感知欄位。 針對特別建議，欄位清單應由可在相符結果之間提供明確選擇的專案所組成。 在銷售電腦遊戲的網站上，此欄位可能是遊戲的標題。
+**SuggesterName** 會提供您用來完成條款或建議的建議工具感知欄位。 針對特別建議，欄位清單應由可在相符結果之間提供明確選擇的專案所組成。 在銷售電腦遊戲的網站上，此欄位可能是遊戲的標題。
 
-**搜尋**參數提供部分查詢，其中的字元會透過 JQuery 自動完成控制項送至查詢要求。 在上述範例中，"minecraf" 是控制項可能傳入的靜態圖例。
+**搜尋** 參數提供部分查詢，其中的字元會透過 JQuery 自動完成控制項送至查詢要求。 在上述範例中，"minecraf" 是控制項可能傳入的靜態圖例。
 
 Api 不會對部分查詢強加最小長度需求;它可以只是一個字元。 不過，jQuery 自動完成提供最小長度。 通常最少兩個或三個字元。
 
@@ -67,7 +67,7 @@ Api 不會對部分查詢強加最小長度需求;它可以只是一個字元。
 
 針對建議，您應該進一步精簡回應以避免重複，或看似不相關的結果。 若要控制結果，請在要求中包含更多參數。 下列參數適用于自動完成和建議，但可能更是建議的必要項，特別是在建議工具組含多個欄位時。
 
-| 參數 | 使用量 |
+| 參數 | 使用方式 |
 |-----------|-------|
 | **$select** | 如果您在建議工具中有多個 **sourceFields** ，請使用 **$select** 選擇 () 中提供值的欄位 `$select=GameTitle` 。 |
 | **searchFields** | 將查詢限制為特定欄位。 |
@@ -117,7 +117,7 @@ $(function () {
 });
 ```
 
-會 `source` 告知 JQUERY UI 自動完成函式，以取得要在搜尋方塊下顯示的專案清單。 因為這個專案是 MVC 專案，所以它會呼叫**HomeController.cs**中的**建議**函式，其中包含傳回查詢建議的邏輯。 此函式也會傳遞幾個參數來控制醒目提示、模糊比對和字詞。 自動完成 JavaScript API 會新增字詞參數。
+會 `source` 告知 JQUERY UI 自動完成函式，以取得要在搜尋方塊下顯示的專案清單。 因為這個專案是 MVC 專案，所以它會呼叫 **HomeController.cs** 中的 **建議** 函式，其中包含傳回查詢建議的邏輯。 此函式也會傳遞幾個參數來控制醒目提示、模糊比對和字詞。 自動完成 JavaScript API 會新增字詞參數。
 
 `minLength: 3`可確保只有在搜尋方塊中至少有三個字元時，才會顯示建議。
 
@@ -131,7 +131,7 @@ source: "/home/suggest?highlights=false&fuzzy=true&",
 
 ### <a name="enable-highlighting"></a>啟用反白顯示
 
-醒目提示會將字型樣式套用至結果中對應至輸入的字元。 例如，如果部分輸入為「微」，則結果會顯示為 **微型**軟、 **微**範圍等等。 醒目提示是以 HighlightPreTag 和 HighlightPostTag 參數為基礎，以內嵌于建議函式的方式定義。
+醒目提示會將字型樣式套用至結果中對應至輸入的字元。 例如，如果部分輸入為「微」，則結果會顯示為 **微型** 軟、 **微** 範圍等等。 醒目提示是以 HighlightPreTag 和 HighlightPostTag 參數為基礎，以內嵌于建議函式的方式定義。
 
 ```javascript
 source: "/home/suggest?highlights=true&fuzzy=true&",
@@ -181,7 +181,7 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 
 ## <a name="autocomplete"></a>自動完成
 
-到目前為止，搜尋 UX 程式碼已集中于建議。 下一個程式碼區塊會使用 >xdsoft jQuery UI 自動完成函式來顯示自動完成，並在要求中傳遞 Azure 認知搜尋自動完成的功能。 如同建議，在 c # 應用程式中，支援使用者互動的程式碼會進入 **索引. cshtml**。
+到目前為止，搜尋 UX 程式碼已集中于建議。 下一個程式碼區塊會使用 >xdsoft jQuery UI 自動完成函式來顯示自動完成，並在要求中傳遞 Azure 認知搜尋自動完成的功能。 如同建議，在 c # 應用程式中，支援使用者互動的程式碼會進入 **索引. cshtml** 。
 
 ```javascript
 $(function () {
@@ -247,10 +247,10 @@ public ActionResult AutoComplete(string term)
 
 自動完成函式會取用搜尋字詞輸入。 此方法會建立 [AutoCompleteParameters 物件](/rest/api/searchservice/autocomplete)。 結果接著會轉換為 JSON，以供在用戶端中顯示。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 請遵循下列連結以取得端對端指示，或示範搜尋即用類型體驗的程式碼。 這兩個程式碼範例都包含混合的建議和自動完成。
 
 + [教學課程：以 c # 建立您的第一個應用程式 (第3課) ](tutorial-csharp-type-ahead-and-suggestions.md)
 + [C # 程式碼範例： azure-搜尋-dotnet-sample/create-first-app/3-add-自動提示/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead)
-+ [使用 REST 並行程式碼的 c # 和 JavaScript 範例](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)
++ [使用 REST 並行程式碼的 c # 和 JavaScript 範例](https://github.com/wantedfast/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)

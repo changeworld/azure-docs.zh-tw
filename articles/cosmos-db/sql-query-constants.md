@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: cca62c358037dbe99fd16746ee081b1540161df2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebc1f66e68d4cf37546e7d33a9b723385330395c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74873415"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100859"
 ---
 # <a name="azure-cosmos-db-sql-query-constants"></a>Azure Cosmos DB SQL 查詢常數  
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
  常數也稱為常值或純量值，是一個代表特定資料值的符號。 常數的格式會隨著所代表之值的資料類型而不同。  
   
@@ -22,12 +23,12 @@ ms.locfileid: "74873415"
 |**型別**|**值順序**|  
 |-|-|  
 |**定義**|單一值： **未定義**|  
-|**Null**|單一值：**Null**|  
-|**布林值**|值：**False**，**True**。|  
+|**Null**|單一值： **Null**|  
+|**布林值**|值： **False** ， **True** 。|  
 |**Number**|雙精確度浮點數，符合 IEEE 754 標準。|  
 |**String**|零或更多 Unicode 字元的序列。 字串必須以單引號或雙引號括住。|  
-|**陣列**|零或更多元素的序列。 除了 **Undefined**之外，每個元素可以是任何純量資料類型的值。|  
-|**Object**|未排序的零或更多名稱/值組。 名稱為 Unicode 字串；除了**未定義**的類型，值可以是任何純量資料類型。|  
+|**陣列**|零或更多元素的序列。 除了 **Undefined** 之外，每個元素可以是任何純量資料類型的值。|  
+|**Object**|未排序的零或更多名稱/值組。 名稱為 Unicode 字串；除了 **未定義** 的類型，值可以是任何純量資料類型。|  
   
 ## <a name="syntax"></a><a name="bk_syntax"></a>語法
   
@@ -103,7 +104,7 @@ ms.locfileid: "74873415"
   
   允許下列逸出序列：  
   
-|**逸出序列**|**描述**|**Unicode 字元**|  
+|**逸出序列**|**說明**|**Unicode 字元**|  
 |-|-|-|  
 |\\'|apostrophe (')|U+0027|  
 |\\"|引號 (")|U+0022|  

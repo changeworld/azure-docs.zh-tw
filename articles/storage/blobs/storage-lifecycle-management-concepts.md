@@ -1,22 +1,22 @@
 ---
-title: 管理 Azure 儲存體生命週期
-description: 了解如何建立生命週期原則規則，以將過時資料從「經常性」層轉換到「非經常性」層和「封存」層。
+title: 藉由自動化 Azure Blob 儲存體存取層來將成本優化
+description: 建立自動化規則，在經常性存取層、非經常性存取層和封存層之間移動資料。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/15/2020
+ms.date: 10/29/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: ee04ad28d6b52e63becd2991d77b453cd411f683
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: a4a338a4d13715ba1ff7cb30c011757d5050ba05
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309806"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100064"
 ---
-# <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 儲存體生命週期
+# <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>藉由自動化 Azure Blob 儲存體存取層來將成本優化
 
 資料集具有唯一的生命週期。 在早期的生命週期中，使用者經常會存取某些資料。 但資料的存取需求會隨著資料存在的時間越來越久而大幅降低。 有些資料在雲端維持閒置狀態，而且在儲存後就很少存取。 有些資料集會在建立後幾天或幾個月過期，而其他資料集在其生命週期內會積極地讀取及修改。 Azure Blob 儲存體生命週期管理為 GPv2 和 Blob 儲存體帳戶提供了以規則為基礎的豐富原則。 使用原則可將資料轉換到適當的存取層，或在資料的生命週期結束時過期。
 
@@ -31,12 +31,13 @@ ms.locfileid: "92309806"
 假設在生命週期初期階段，資料會經常存取，但偶爾會在兩周後發生。 第一個月過後，就已經很少會存取該資料集。 在這種情況下，經常性儲存層最適合早期階段。 非經常性儲存體最適合偶爾存取。 在每個月的資料過期之後，封存儲存體是最佳層選項。 藉由根據資料存在時間來調整儲存層，您就可以按照自己的需求設計最便宜的儲存體選項。 若要達成這項轉換，可使用生命週期管理原則規則將過時資料移至較少存取的階層。
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+
 >[!NOTE]
 >如果您需要資料以保持可讀取（例如，當 StorSimple 使用）時，請勿設定原則以將 blob 移至封存層。
 
 ## <a name="availability-and-pricing"></a>可用性和價格
 
-生命週期管理功能適用于一般用途 v2 的所有 Azure 區域 (GPv2) 帳戶、Blob 儲存體帳戶、高階區塊 Blob 儲存體帳戶，以及 Azure Data Lake Storage Gen2 帳戶。 在 Azure 入口網站中，您可以將現有的一般用途 (GPv1) 帳戶升級至 GPv2 帳戶。 如需有關儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../common/storage-account-overview.md)。
+生命週期管理功能適用于一般用途 v2 的所有 Azure 區域 (GPv2) 帳戶、blob 儲存體帳戶、高階區塊 Blob 儲存體帳戶，以及 Azure Data Lake Storage Gen2 帳戶。 在 Azure 入口網站中，您可以將現有的一般用途 (GPv1) 帳戶升級至 GPv2 帳戶。 如需有關儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../common/storage-account-overview.md)。
 
 生命週期管理功能是免費的。 客戶需支付 [設定 Blob 層](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API 呼叫的一般操作成本。 刪除作業是免費的。 如需定價的詳細資訊，請參閱[區塊 Blob 價格](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
@@ -69,11 +70,11 @@ ms.locfileid: "92309806"
 
 1. 在 Azure 入口網站中，搜尋並選取您的儲存體帳戶。 
 
-1. 在 [ **Blob 服務**] 底下，選取 [ **生命週期管理** ] 以查看或變更您的規則。
+1. 在 [ **Blob 服務** ] 底下，選取 [ **生命週期管理** ] 以查看或變更您的規則。
 
 1. 選取 [ **清單視圖** ] 索引標籤。
 
-1. 選取 [ **新增規則** ]，然後在 [ **詳細資料** ] 表單上命名您的規則。 您也可以設定 **規則範圍**、 **Blob 類型**和 **blob 子類型** 值。 下列範例會將範圍設定為篩選 blob。 這會導致加入 [ **篩選] 設定** 索引標籤。
+1. 選取 [ **新增規則** ]，然後在 [ **詳細資料** ] 表單上命名您的規則。 您也可以設定 **規則範圍** 、 **Blob 類型** 和 **blob 子類型** 值。 下列範例會將範圍設定為篩選 blob。 這會導致加入 [ **篩選] 設定** 索引標籤。
 
    :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-details.png" alt-text="生命週期管理在 Azure 入口網站中新增規則詳細資料頁面":::
 
@@ -90,7 +91,7 @@ ms.locfileid: "92309806"
 
 1. 在 Azure 入口網站中，搜尋並選取您的儲存體帳戶。
 
-1. 在 [ **Blob 服務**] 底下，選取 [ **生命週期管理** ] 以查看或變更您的原則。
+1. 在 [ **Blob 服務** ] 底下，選取 [ **生命週期管理** ] 以查看或變更您的原則。
 
 1. 下列 JSON 是可貼到 [程式 **代碼** ] 索引標籤中的原則範例。
 
@@ -123,7 +124,7 @@ ms.locfileid: "92309806"
    }
    ```
 
-1. 選取 [儲存]。
+1. 選取 [儲存]  。
 
 1. 如需此 JSON 範例的詳細資訊，請參閱 [原則](#policy) 和 [規則](#rules) 區段。
 
@@ -225,13 +226,13 @@ Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountN
 
 原則是規則的集合：
 
-| 參數名稱 | 參數類型 | 注意 |
+| 參數名稱 | 參數類型 | 備註 |
 |----------------|----------------|-------|
 | `rules`        | 規則物件的陣列 | 原則中至少需要一個規則。 您可以在原則中定義最多100個規則。|
 
 原則中的每個規則都有數個參數：
 
-| 參數名稱 | 參數類型 | 注意 | 必要 |
+| 參數名稱 | 參數類型 | 備註 | 必要 |
 |----------------|----------------|-------|----------|
 | `name`         | String |規則名稱最多可包含256個英數位元。 規則名稱會區分大小寫。 它在原則內必須是唯一的。 | 是 |
 | `enabled`      | Boolean | 選擇性的布林值，允許暫時停用規則。 如果未設定，預設值為 true。 | 否 | 
@@ -301,14 +302,14 @@ Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountN
 
 篩選器包括：
 
-| 篩選名稱 | 篩選類型 | 注意 | 必要 |
+| 篩選名稱 | 篩選類型 | 備註 | 必要 |
 |-------------|-------------|-------|-------------|
 | blobTypes   | 預先定義的列舉值陣列。 | 目前的版本支援 `blockBlob` 和 `appendBlob` 。 僅支援刪除 `appendBlob` ，不支援設定層。 | 是 |
 | prefixMatch | 要比對之前置詞的字串陣列。 每個規則最多可以定義10個前置詞。 前置詞字串必須以容器名稱開頭。 例如，如果您想要比對規則下的所有 blob `https://myaccount.blob.core.windows.net/container1/foo/...` ，則 prefixMatch 為 `container1/foo` 。 | 如果您未定義 prefixMatch，規則會套用至儲存體帳戶內的所有 blob。 | 否 |
 | blobIndexMatch | 字典值的陣列，其中包含要比對的 Blob 索引標記索引鍵和值條件。 每個規則最多可以定義10個 Blob 索引標記條件。 例如，如果您想要讓規則的所有 blob `Project = Contoso` 符合 `https://myaccount.blob.core.windows.net/` ，blobIndexMatch 為 `{"name": "Project","op": "==","value": "Contoso"}` 。 | 如果您未定義 blobIndexMatch，規則會套用至儲存體帳戶內的所有 blob。 | 否 |
 
 > [!NOTE]
-> Blob 索引處於公開預覽狀態，可在 **加拿大中部**、 **加拿大東部**、 **法國中部**和 **法國南部** 區域中使用。 若要深入了解這項功能以及已知的問題和限制，請參閱[使用 Blob 索引 (預覽) 來管理和尋找 Azure Blob 儲存體上的資料](storage-manage-find-blobs.md)。
+> Blob 索引處於公開預覽狀態，可在 **加拿大中部** 、 **加拿大東部** 、 **法國中部** 和 **法國南部** 區域中使用。 若要深入了解這項功能以及已知的問題和限制，請參閱[使用 Blob 索引 (預覽) 來管理和尋找 Azure Blob 儲存體上的資料](storage-manage-find-blobs.md)。
 
 ### <a name="rule-actions"></a>規則動作
 
@@ -370,7 +371,7 @@ Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountN
 
 您可以啟用 [上次存取時間追蹤]，以保留上次讀取或寫入 blob 的時間記錄。 您可以使用上次存取時間作為篩選器，來管理 blob 資料的分層和保留。
 
-**上次存取**的選項在下欄區域中提供預覽：
+**上次存取** 的選項在下欄區域中提供預覽：
 
  - 法國中部
  - 加拿大東部
@@ -379,7 +380,7 @@ Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountN
 > [!IMPORTANT]
 > 上次存取時間追蹤預覽僅供非生產環境使用。 生產環境的服務等級協定 (SLA) 目前無法使用。
 
-若要使用 [**上次存取**] 選項，請在 Azure 入口網站的 [**生命週期管理**] 頁面上選取 [**啟用存取追蹤**]。
+若要使用 [ **上次存取** ] 選項，請在 Azure 入口網站的 [ **生命週期管理** ] 頁面上選取 [ **啟用存取追蹤** ]。
 
 #### <a name="how-last-access-time-tracking-works"></a>上次存取時間追蹤的運作方式
 
@@ -526,7 +527,7 @@ Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountN
 
 ### <a name="manage-versions"></a>管理版本
 
-對於在其存留期內定期修改和存取的資料，您可以啟用 Blob 儲存體版本設定，以自動維護舊版的物件。 您可以建立原則，以分層或刪除先前的版本。 版本的存留期是藉由評估版本建立時間來決定。 此原則規則 `activedata` 會在版本建立至非經常性存取層之後，于90天或更舊版本的容器內建立舊版，並刪除365天以上的舊版。
+對於在其存留期內定期修改和存取的資料，您可以啟用 blob 儲存體版本設定，以自動維護舊版的物件。 您可以建立原則，以分層或刪除先前的版本。 版本的存留期是藉由評估版本建立時間來決定。 此原則規則 `activedata` 會在版本建立至非經常性存取層之後，于90天或更舊版本的容器內建立舊版，並刪除365天以上的舊版。
 
 ```json
 {
@@ -574,7 +575,7 @@ Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountN
 
 當 blob 從某個存取層移至另一個存取層時，其上次修改時間並不會變更。 如果您手動將封存的 blob 解除凍結至經常性存取層，則生命週期管理引擎會將它移回封存層。 請暫時停用影響此 blob 的規則，以防止它再次被封存。 當 blob 可以安全地移回封存層時，請重新啟用規則。 如果 blob 需要永久保留在經常性存取層或非經常性存取層，您也可以將它複製到另一個位置。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 了解如何復原意外刪除的資料：
 

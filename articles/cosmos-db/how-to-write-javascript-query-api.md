@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 4251a9ec0766f6e1956e4885b58dc874e01b0960
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ad2b9bcbfdd4353c16d890d1857727b685a5e59
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253066"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098853"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>如何使用 JavaScript 查詢 API 在 Azure Cosmos DB 中撰寫預存程序和觸發程序
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB 可讓您使用流暢的 JavaScript 介面來執行最佳化查詢，而無須具備任何可用來撰寫預存程序或觸發程序的 SQL 語言知識。 若要深入了解 Azure Cosmos DB 中的 JavaScript 查詢 API 支援，請參閱[在 Azure Cosmos DB 中使用 JavaScript 語言整合式查詢 API](javascript-query-api.md) 一文。
 

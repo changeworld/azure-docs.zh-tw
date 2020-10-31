@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: d27eb4dc6c4e4bd8f0a744ad925d91aee0faa8d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8add203fabf867e22dbfe98b2bc9c632e62018b8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567140"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100519"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>什麼是 Azure Cosmos DB 分析存放區 (預覽)？
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
 > [!IMPORTANT]
 > Azure Cosmos DB 分析存放區目前為預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -149,11 +150,11 @@ salary: 1000000
 | Double |  "float64" |    24.99|
 | Array | ". array" |    ["a"，"b"]|
 |Binary | "binary" |0|
-|布林值    | "bool"   |True|
+|Boolean    | "bool"   |是|
 |Int32  | "int32"  |123|
 |Int64  | "int64"  |255486129307|
 |Null   | ". null"   | null|
-|字串|    "system.string" | "ABC"|
+|String|    "system.string" | "ABC"|
 |時間戳記 |    ". timestamp" |  時間戳記 (0，0) |
 |Datetime   |". date"    | ISODate ( "2020-08-21T07：43： 07.375 Z" ) |
 |ObjectId   |"objectId"    | ObjectId ( "5f3f7b59330ec25c132623a2" ) |

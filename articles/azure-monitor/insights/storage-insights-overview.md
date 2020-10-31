@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: c030c1548a931bc749ad799a5aa88813c35d19cd
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 250a06d81f929d0e3d3befa1e7494db13044fc97
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91997024"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101267"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>使用適用於儲存體的 Azure 監視器監視儲存體服務
 
@@ -25,11 +25,11 @@ ms.locfileid: "91997024"
 
 將其合併可提供：
 
-* **大規模檢視方塊**，以根據儲存體服務或 API 作業的健康情況來顯示其可用性的快照集檢視；使用率，以顯示儲存體服務所接收的要求總數；以及延遲，以顯示儲存體服務或 API 作業類型處理要求所花費的平均時間。 您也可以依 Blob、檔案、資料表和佇列來檢視容量。
+* **大規模檢視方塊** ，以根據儲存體服務或 API 作業的健康情況來顯示其可用性的快照集檢視；使用率，以顯示儲存體服務所接收的要求總數；以及延遲，以顯示儲存體服務或 API 作業類型處理要求所花費的平均時間。 您也可以依 Blob、檔案、資料表和佇列來檢視容量。
 
-* 特定儲存體帳戶的**向下切入分析**，有助於依類別 (可用性、效能、失敗及容量) 來診斷問題或執行詳細的分析。 選取這其中任一個選項可讓您深入檢視計量。  
+* 特定儲存體帳戶的 **向下切入分析** ，有助於依類別 (可用性、效能、失敗及容量) 來診斷問題或執行詳細的分析。 選取這其中任一個選項可讓您深入檢視計量。  
 
-* **可自訂的**，讓您能夠變更想要查看的計量、修改或設定符合限制的閾值，並另存為自己的活頁簿。 活頁簿中的圖表均可釘選到 Azure 儀表板。  
+* **可自訂的** ，讓您能夠變更想要查看的計量、修改或設定符合限制的閾值，並另存為自己的活頁簿。 活頁簿中的圖表均可釘選到 Azure 儀表板。  
 
 此功能不會要求您啟用或設定任何項目，預設會從您的儲存體帳戶收集儲存體計量。 如果您不熟悉 Azure 儲存體上可用的計量，請藉由檢閱 [Azure 儲存體計量](../../storage/blobs/monitor-blob-storage.md)來檢視 Azure 儲存體計量中的描述和定義。
 
@@ -56,20 +56,20 @@ ms.locfileid: "91997024"
 
 在所選訂用帳戶的 **總覽** 活頁簿中，資料表會顯示最多5個儲存體帳戶（群組在訂用帳戶內）的互動式儲存體計量和服務可用性狀態。 您可以根據您從下列下拉式清單中選取的選項，篩選結果：
 
-* **訂用帳戶**：僅列出具有儲存體帳戶的訂用帳戶。  
+* **訂用帳戶** ：僅列出具有儲存體帳戶的訂用帳戶。  
 
 * **儲存體帳戶** -預設會預先選取5個儲存體帳戶。 如果您在範圍選取器中選取所有或多個儲存體帳戶，最多將傳回 200 個儲存體帳戶。 例如，如果您所選取的三個訂用帳戶共有 573 個儲存體帳戶，則只會顯示 200 個帳戶。 
 
-* **時間範圍**：預設會根據對應的選取項目，顯示過去 4 小時的資訊。
+* **時間範圍** ：預設會根據對應的選取項目，顯示過去 4 小時的資訊。
 
 位於下拉式清單底下的計數器磚會彙總訂用帳戶中的儲存體帳戶總數，並反映已選取的總數。 活頁簿中會針對資料行顯示條件式色彩編碼或熱度圖，可用來報告交易計量或錯誤。 最深的色彩具有最高的值，而較淺的色彩是以最低值為基礎。 針對以錯誤為基礎的資料行，此值為紅色，而針對以計量為基礎的資料行，此值為藍色。
 
 在 [可用性]、[E2E 延遲]、[伺服器延遲] 與 [交易錯誤類型/錯誤] 資料行中選取一個值，可將您導向至為特定儲存體帳戶類型量身打造的報表，其符合針對該儲存體帳戶所選取的資料行。 如需適用於每個類別之活頁簿的詳細資訊，請參閱以下[詳細的儲存體活頁簿](#detailed-storage-workbooks)一節。 
 
 >[!NOTE]
->如需可在報表中顯示哪些錯誤的詳細資訊，請參閱[回應類型結構描述](../../storage/blobs/monitor-blob-storage-reference.md#metrics-dimensions)，並尋找 **ServerOtherError**、**ClientOtherError**、**ClientThrottlingError** 之類的回應類型。 視選取的儲存體帳戶而定，如果報告的錯誤類型超過三種，所有其他錯誤都會顯示於**其他**類別底下。
+>如需可在報表中顯示哪些錯誤的詳細資訊，請參閱 [回應類型結構描述](../../storage/blobs/monitor-blob-storage-reference.md#metrics-dimensions)，並尋找 **ServerOtherError** 、 **ClientOtherError** 、 **ClientThrottlingError** 之類的回應類型。 視選取的儲存體帳戶而定，如果報告的錯誤類型超過三種，所有其他錯誤都會顯示於 **其他** 類別底下。
 
-預設的**可用性**閾值為：
+預設的 **可用性** 閾值為：
 
 * 警告：99%
 * 重大：90%
@@ -94,7 +94,7 @@ ms.locfileid: "91997024"
 
 2. 從清單中，選擇儲存體帳戶。 在 [監視] 區段中，選擇 [見解]。
 
-    ![所選取儲存體帳戶的 [概觀] 頁面](./media/storage-insights-overview/storage-account-direct-overview-01.png)
+    ![顯示儲存體帳戶總覽活頁簿頁面的螢幕擷取畫面。](./media/storage-insights-overview/storage-account-direct-overview-01.png)
 
 在儲存體帳戶的 [概觀] 活頁簿上，其會顯示數個可協助您快速評估的儲存體效能計量：
 
@@ -120,7 +120,7 @@ ms.locfileid: "91997024"
 
     ![效能報表範例](./media/storage-insights-overview/storage-account-performance-01.png)
 
-* 選取方格中列出的任何錯誤類別，即會開啟 [失敗] 活頁簿。 此報表顯示所有其他用戶端錯誤的計量磚 (已描述的錯誤除外)，以及成功的要求、用戶端節流的錯誤、ClientOtherError 屬性特定之交易 [回應類型] 維度計量的效能圖表，以及兩個資料表：**依 API 名稱排序的交易**和**依回應類型排序的交易**。
+* 選取方格中列出的任何錯誤類別，即會開啟 [失敗] 活頁簿。 此報表顯示所有其他用戶端錯誤的計量磚 (已描述的錯誤除外)，以及成功的要求、用戶端節流的錯誤、ClientOtherError 屬性特定之交易 [回應類型] 維度計量的效能圖表，以及兩個資料表： **依 API 名稱排序的交易** 和 **依回應類型排序的交易** 。
 
    ![失敗報表範例](./media/storage-insights-overview/storage-account-failures-01.png)
 
@@ -198,7 +198,7 @@ ms.locfileid: "91997024"
 
 1. 在計量方格中，選取 [資料行設定]。
 
-2. 在 [**編輯資料行設定**] 窗格中，選取 [ **microsoft. 儲存體/storageaccounts-容量-UsedCapacity $ `|` microsoft. 儲存體/Storageaccounts/Blobservices-容量-BlobCapacity $ `|` microsoft. 儲存體/storageaccounts/fileservices-容量-FileCapacity $ microsoft `|` . 儲存體/storageaccounts/ `|` **queueservices]**的 [容量**-QueueCapacity]。 在 [調色盤] 下拉式清單中，選取 [綠色]。
+2. 在 [ **編輯資料行設定** ] 窗格中，選取 [ **microsoft. 儲存體/storageaccounts-容量-UsedCapacity $ `|` microsoft. 儲存體/Storageaccounts/Blobservices-容量-BlobCapacity $ `|` microsoft. 儲存體/storageaccounts/fileservices-容量-FileCapacity $ microsoft `|` . 儲存體/storageaccounts/ `|`** queueservices] **的 [容量** -QueueCapacity]。 在 [調色盤] 下拉式清單中，選取 [綠色]。
 
 3. 選取 [儲存後關閉] 以認可變更。
 
@@ -220,7 +220,7 @@ ms.locfileid: "91997024"
 
 5. 選取 [資料行設定]，然後在 [編輯資料行設定] 窗格的 [資料行] 區段底下，選取 [可用性 (%) (閾值 + 已格式化)]。
 
-6. 將 [重大] 健全狀態的值從 **90** 變更為 **85**，然後按一下 [儲存後關閉]。
+6. 將 [重大] 健全狀態的值從 **90** 變更為 **85** ，然後按一下 [儲存後關閉]。
 
     ![修改重大狀態的可用性閾值](./media/storage-insights-overview/edit-column-settings-capacity-workbook-01.png)
 

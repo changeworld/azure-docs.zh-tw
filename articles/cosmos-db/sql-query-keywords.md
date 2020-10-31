@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: f00e757f9b51da850c49924f6ae49bf00c9c53d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4a48cd5e8d06fa6346dd6ab94df53cf4985b0b8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87496676"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100757"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB 中的關鍵字
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文詳述可在 Azure Cosmos DB SQL 查詢中使用的關鍵字。
 

@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 76d614264124e1ce4138663b702ff6d899b3aa4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d12ab39474f1df139bf2f9064d43f5ab7ecda16b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74873313"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100264"
 ---
 # <a name="exp-azure-cosmos-db"></a>EXP (Azure Cosmos DB) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  傳回指定之數值運算式的指數值。  
   
 ## <a name="syntax"></a>語法
@@ -36,7 +38,7 @@ EXP (<numeric_expr>)
   
   常數 **e** (2.718281...) 是自然對數的底數。  
   
-  數字的指數是提高至數字乘冪的常數 **e**。 例如 EXP(1.0) = e^1.0 = 2.71828182845905 和 EXP(10) = e^10 = 22026.4657948067。  
+  數字的指數是提高至數字乘冪的常數 **e** 。 例如 EXP(1.0) = e^1.0 = 2.71828182845905 和 EXP(10) = e^10 = 22026.4657948067。  
   
   數字的自然對數之指數為數字本身：EXP (LOG (n)) = n。 而數字指數的自然對數則是該數值本身：LOG (EXP (n)) = n。  
   

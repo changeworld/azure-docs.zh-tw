@@ -6,18 +6,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/24/2020
 ms.author: tisande
-ms.openlocfilehash: a95fe72df152e297114f4bde59b11137c6accdb6
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ee38e076e76111f4f4e6bf3b8fa8dde8c3debcfc
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488141"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100808"
 ---
 # <a name="getting-started-with-sql-queries"></a>開始使用 SQL 查詢
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 在 Azure Cosmos DB SQL API 帳戶中，有兩種方式可以讀取資料：
 
-**點讀取** -您可以針對單一 *專案識別碼* 和資料分割索引鍵進行索引鍵/值查閱。 *專案識別碼*和資料分割索引鍵組合是索引鍵，而專案本身是值。 若是 1 KB 檔，點讀取通常是成本 1 [要求單位](request-units.md) ，延遲低於10毫秒。 點讀取會傳回單一專案。
+**點讀取** -您可以針對單一 *專案識別碼* 和資料分割索引鍵進行索引鍵/值查閱。 *專案識別碼* 和資料分割索引鍵組合是索引鍵，而專案本身是值。 若是 1 KB 檔，點讀取通常是成本 1 [要求單位](request-units.md) ，延遲低於10毫秒。 點讀取會傳回單一專案。
 
 **Sql 查詢** -您可以使用結構化查詢語言 (SQL)  (SQL) 作為 JSON 查詢語言來撰寫查詢，以查詢資料。 查詢一律會產生至少2.3 的要求單位，而且通常會有比點讀取更高且更有變化的延遲。 查詢可能會傳回許多專案。
 
@@ -178,7 +179,7 @@ Azure Cosmos DB 上大部分的大量讀取工作負載都會使用點讀取和 
 
 * Cosmos 容器是 JSON 專案的無架構集合。 容器專案內和跨容器專案的關聯性會由內含專案（而非主鍵和外鍵關聯）隱含地捕捉。 這項功能對於本文稍後討論的專案內聯接很重要。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [Azure Cosmos DB 簡介](introduction.md)
 - [Azure Cosmos DB .NET 範例](https://github.com/Azure/azure-cosmos-dotnet-v3)

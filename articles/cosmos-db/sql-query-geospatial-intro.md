@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: b874ad4ce566cfca3b0dbd28bdfe48bf30272121
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 10882a0f4daf5c0d9aa1d4aeb53b2f14f9d1dea0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482820"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100825"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB 中的地理空間和 GeoJSON 位置資料
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文將介紹 Azure Cosmos DB 中的地理空間功能。 目前只有 Azure Cosmos DB SQL API 帳戶支援儲存和存取地理空間資料。 閱讀我們的地理空間索引編制檔之後，您將能夠回答下列問題：
 
@@ -38,7 +39,7 @@ ms.locfileid: "92482820"
 
 Azure Cosmos DB 的 SQL API 支援兩種空間資料類型： **geometry** 資料類型和 **geography** 資料類型。
 
-- **Geometry**型別代表 Euclidean (平面) 座標系統中的資料
+- **Geometry** 型別代表 Euclidean (平面) 座標系統中的資料
 - **geography** 類型代表圓形表面座標系統中的資料。
 
 ## <a name="supported-data-types"></a>支援的資料類型
@@ -110,7 +111,7 @@ Azure Cosmos DB 會依照 WGS-84 參考系統所表示的方式來解譯座標�
 
 ### <a name="polygons"></a>多邊形
 
-**多邊形**是形成封閉 LineString 之連接點的界限。 多邊形常用來代表自然構成物，例如湖泊，或代表政治管轄權，例如城市和州省。 以下是 Azure Cosmos DB 中的多邊形範例：
+**多邊形** 是形成封閉 LineString 之連接點的界限。 多邊形常用來代表自然構成物，例如湖泊，或代表政治管轄權，例如城市和州省。 以下是 Azure Cosmos DB 中的多邊形範例：
 
 **GeoJSON 中的多邊形**
 
@@ -136,7 +137,7 @@ Azure Cosmos DB 會依照 WGS-84 參考系統所表示的方式來解譯座標�
 
 ### <a name="multipolygons"></a>MultiPolygons
 
-**MultiPolygon**是零或多個多邊形的陣列。 **MultiPolygons** 不能重迭邊或具有任何通用區域。 他們可以接觸一或多個點。
+**MultiPolygon** 是零或多個多邊形的陣列。 **MultiPolygons** 不能重迭邊或具有任何通用區域。 他們可以接觸一或多個點。
 
 **GeoJSON 中的 MultiPolygons**
 
@@ -212,7 +213,7 @@ await container.CreateItemAsync( new UserProfile
 
 如果您沒有緯度和經度資訊，但具有實體位址或位置名稱（例如城市或國家/地區），您可以使用地理編碼服務（例如 Bing 地圖服務 REST 服務）來查閱實際的座標。 在 [這裡](/bingmaps/rest-services/)深入了解 Bing Maps 地理編碼。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 既然您已了解如何開始使用 Azure Cosmos DB 中的地理空間支援，您可以接著：
 

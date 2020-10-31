@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 8f56538470b8a52697e2d5c4154a6a6807a0cfde
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 549e1808a3b449f7d29b968cde76ef29391880b3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489008"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100606"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure 數位 Twins 的已知問題
 
@@ -32,7 +32,7 @@ ms.locfileid: "92489008"
 
 或者，您可以在 Azure 入口網站中開啟 [Cloud Shell] 窗格，並從該處完成 Cloud Shell 工作：
 
-:::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="醒目提示 [Cloud Shell] 圖示的 Azure 入口網站視圖，而且 Cloud Shell 出現在入口網站視窗的底部":::
+:::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="已醒目提示 [Cloud Shell] 圖示的 Azure 入口網站檢視，而且 Cloud Shell 顯示在入口網站視窗底部" lightbox="media/includes/portal-cloud-shell.png":::
 
 最後，另一個解決方法是在您的電腦上 [安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) ，讓您可以在本機執行 Azure CLI 命令。 本機 CLI 不會遇到此問題。
 
@@ -46,7 +46,7 @@ ms.locfileid: "92489008"
 
 ## <a name="missing-role-assignment-after-scripted-setup"></a>腳本安裝之後遺失角色指派
 
-某些使用者可能會遇到 [*如何：設定實例和驗證 (腳本) *](how-to-set-up-instance-scripted.md)的角色指派部分問題。 腳本不會指出失敗，但 *Azure 數位 Twins 資料擁有* 者角色未成功指派給使用者，而此問題將會影響在途中建立其他資源的能力。
+某些使用者可能會遇到 [*如何：設定實例和驗證 (腳本)*](how-to-set-up-instance-scripted.md)的角色指派部分問題。 腳本不會指出失敗，但 *Azure 數位 Twins 資料擁有* 者角色未成功指派給使用者，而此問題將會影響在途中建立其他資源的能力。
 
 [!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
@@ -66,9 +66,9 @@ ms.locfileid: "92489008"
 
 ## <a name="issue-with-interactive-browser-authentication"></a>互動式瀏覽器驗證的問題
 
-當您在 Azure 數位 Twins 應用程式中使用** [Azure 身分識別](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)程式庫**的版本**1.2.0**來撰寫驗證碼時，您可能會遇到[InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true)方法的問題。
+當您在 Azure 數位 Twins 應用程式中使用 **[Azure 身分識別](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)程式庫** 的版本 **1.2.0** 來撰寫驗證碼時，您可能會遇到 [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true)方法的問題。
 
-這不是最新版本的程式庫。 最新版本是 **1.2.2**。
+這不是最新版本的程式庫。 最新版本是 **1.2.2** 。
 
 下列文章中使用受影響的方法： 
 * [*教學課程：撰寫用戶端應用程式的程式碼*](tutorial-code.md)
@@ -79,15 +79,15 @@ ms.locfileid: "92489008"
 
 ### <a name="troubleshooting-steps"></a>疑難排解步驟
 
-若要解決此問題，請更新您的應用程式以使用 `Azure.Identity` 版本 **1.2.2**。 使用此版本的程式庫時，瀏覽器應該會如預期般載入和驗證。
+若要解決此問題，請更新您的應用程式以使用 `Azure.Identity` 版本 **1.2.2** 。 使用此版本的程式庫時，瀏覽器應該會如預期般載入和驗證。
 
 ### <a name="possible-causes"></a>可能的原因
 
-這與程式庫最新版本的開啟問題有關 `Azure.Identity` (版本 **1.2.0**) ： [*當使用 InteractiveBrowserCredential 時，無法進行驗證*](https://github.com/Azure/azure-sdk-for-net/issues/13940)。
+這與程式庫最新版本的開啟問題有關 `Azure.Identity` (版本 **1.2.0** ) ： [*當使用 InteractiveBrowserCredential 時，無法進行驗證*](https://github.com/Azure/azure-sdk-for-net/issues/13940)。
 
 如果您在 Azure 數位 Twins 應用程式中使用版本 **1.2.0** ，或將程式庫新增至您的專案，但未指定 (的版本，這也會預設為此最新版本) ，您將會看到此問題。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 深入瞭解 Azure 數位 Twins 的安全性和許可權：
 * [*概念： Azure 數位 Twins 解決方案的安全性*](concepts-security.md)

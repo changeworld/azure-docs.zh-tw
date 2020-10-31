@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 08/14/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 2ca76d75edba6688dbe93f11a51a0ad67942677a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4841c374454dea9afdf0dbc4094311ded54cfbb6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88606939"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098513"
 ---
 # <a name="getcurrentticks-azure-cosmos-db"></a>GetCurrentTicks (Azure Cosmos DB) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 傳回自00:00:00 星期四（1月1970）以來經過的 100-毫微秒滴答數。
   
@@ -50,7 +51,7 @@ SELECT GetCurrentTicks() AS CurrentTimeInTicks
 ]
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [日期和時間函數 Azure Cosmos DB](sql-query-date-time-functions.md)
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)

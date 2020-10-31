@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 3edaf55c8acb4def4f074c0d8f96eb399d98b6ce
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7370642f5a325867c901d7ebd362e6dfa68e098f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491082"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101499"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中管理衝突解決原則
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 使用多重區域寫入時，如果有多個用戶端寫入至同一個項目，便可能會發生衝突。 發生衝突時，您可使用不同的衝突解決原則來解決衝突。 本文說明如何管理衝突解決原則。
 
@@ -134,10 +135,10 @@ udp_collection = self.try_create_document_collection(
 
 您必須使用如下所示的函式簽章來實作自訂衝突解決預存程序。 函式名稱不需要符合向容器註冊預存程序時所使用的名稱，但符合的話可簡化命名程序。 下面會說明必須為此預存程序實作的參數。
 
-- **incomingItem**：正在產生衝突的認可中所插入或更新的專案。 若為刪除作業，此參數為 null。
-- **existingItem**：目前認可的專案。 在更新中，此值為非 Null，若為插入或刪除作業，則為 Null。
-- **isTombstone**：布林值，指出 incomingItem 是否與先前刪除的專案衝突。 若為 true，則 existingItem 也是 null。
-- **conflictingItems**：容器中所有專案的認可版本陣列，這些專案與識別碼或任何其他唯一索引屬性上的 incomingItem 衝突。
+- **incomingItem** ：正在產生衝突的認可中所插入或更新的專案。 若為刪除作業，此參數為 null。
+- **existingItem** ：目前認可的專案。 在更新中，此值為非 Null，若為插入或刪除作業，則為 Null。
+- **isTombstone** ：布林值，指出 incomingItem 是否與先前刪除的專案衝突。 若為 true，則 existingItem 也是 null。
+- **conflictingItems** ：容器中所有專案的認可版本陣列，這些專案與識別碼或任何其他唯一索引屬性上的 incomingItem 衝突。
 
 > [!IMPORTANT]
 > 和任何預存程序一樣，自訂衝突解決程序可以存取任何具有相同分割索引鍵的資料，並可執行任何插入、更新或刪除作業來解決衝突。
@@ -508,7 +509,7 @@ while conflict:
     conflict = next(conflicts_iterator, None)
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 深入了解下列 Azure Cosmos DB 概念：
 

@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: bbfc31e810e2c11cde4907c9d5120b66195191af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ee221acb9ff045716e3a8015b20b467ab6d0b10
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764973"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098547"
 ---
 # <a name="querying-geospatial-data-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 查詢地理空間資料
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文將討論如何使用 SQL 和 LINQ 查詢 Azure Cosmos DB 中的地理空間資料。 目前只有 Azure Cosmos DB SQL API 帳戶支援儲存和存取地理空間資料。 Azure Cosmos DB 支援下列開放地理空間協會 (OGC) 內建的地理空間查詢函式。 如需 SQL 語言中完整內建函數集的詳細資訊，請參閱 [Azure Cosmos DB 中的查詢系統函數](sql-query-system-functions.md)。
 
@@ -21,7 +22,7 @@ ms.locfileid: "84764973"
 
 以下是可用來查詢 Azure Cosmos DB 的地理空間系統函數清單：
 
-|**使用量**|**描述**|
+|**使用量**|**說明**|
 |---|---|
 | ST_DISTANCE (spatial_expr, spatial_expr) | 傳回兩個 GeoJSON Point、Polygon 或 LineString 運算式之間的距離。|
 |ST_WITHIN (spatial_expr, spatial_expr) | 傳回布林運算式，指出第一個 GeoJSON 物件 (Point、Polygon 或 LineString) 是否位在第二個 GeoJSON 物件 (Point、Polygon 或 LineString) 內。|
@@ -73,7 +74,7 @@ ms.locfileid: "84764973"
 ```
 
 > [!NOTE]
-> 與 Azure Cosmos DB 查詢中不相符類型的運作方式類似，如果任一引數中指定的位置值格式不正確或無效，則會評估為**未定義**，且會在查詢結果中略過已評估的文件。 如果您的查詢未傳回任何結果，請執行 `ST_ISVALIDDETAILED` 以偵測空間類型不正確原因。
+> 與 Azure Cosmos DB 查詢中不相符類型的運作方式類似，如果任一引數中指定的位置值格式不正確或無效，則會評估為 **未定義** ，且會在查詢結果中略過已評估的文件。 如果您的查詢未傳回任何結果，請執行 `ST_ISVALIDDETAILED` 以偵測空間類型不正確原因。
 >
 >
 
@@ -176,7 +177,7 @@ SQL .NET SDK 也是虛設常式方法 `Distance()` 和 `Within()` 的提供者�
     }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 既然您已了解如何開始使用 Azure Cosmos DB 中的地理空間支援，您可以接著：
 

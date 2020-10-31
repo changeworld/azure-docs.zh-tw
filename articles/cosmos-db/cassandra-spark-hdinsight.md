@@ -8,14 +8,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 4848bdceef084d587c839f2af93d1ff5a43c850b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cee5181bf3dda3f0fb609d5aa344697e989ae6c3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85260564"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098887"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>透過 HDInsight 從 Spark on YARN 存取 Azure Cosmos DB Cassandra API
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 本文說明如何透過 Spark-Shell 中的 HDInsight-Spark 從 Spark on YARN 存取 Azure Cosmos DB Cassandra API。 HDInsight 是 Microsoft 在 Azure 上的 Hortonworks Hadoop PaaS，可將物件儲存體用於 HDFS，且隨附數種選項，包括 [Spark](../hdinsight/spark/apache-spark-overview.md)。  雖然本文件的內容參考 HDInsight Spark，但仍適用於所有的 Hadoop 散發套件。  
 
@@ -130,7 +131,7 @@ HDInsight-Spark 隨附 Zeppelin 和 Jupyter Notebook 服務。 兩者都是以 W
 
 在生產環境中執行自動化程序時，會透過 [spark-submit](https://spark.apache.org/docs/latest/submitting-applications.html) 將 Spark 程式提交至叢集。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [如何在 IDE 中建立 Spark Scala 程式，並透過 Livy 將其提交至 HDInsight Spark 叢集執行](../hdinsight/spark/apache-spark-create-standalone-application.md)
 

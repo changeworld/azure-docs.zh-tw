@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 09/28/2019
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1de6aa5450a42bbc8fe35b220e810726f7dd2cda
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a93bf4fe92cc7b2240a7411b093a7bab5a1a275e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488430"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098819"
 ---
 # <a name="create-containers-with-large-partition-key"></a>建立具有大型分割區索引鍵的容器
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB 使用以雜湊為基礎的資料分割配置來達到水準的資料調整。 在 3 2019 年5月之前建立的所有 Azure Cosmos 容器，都會使用雜湊函式，根據分割區索引鍵的前100個位元組來計算雜湊。 如果有多個資料分割索引鍵具有相同的前100個位元組，則服務會將這些邏輯分割區視為相同的邏輯分割區。 這可能會導致問題，例如分割區大小的配額錯誤，以及跨資料分割索引鍵套用的唯一索引。 引進大型分割區索引鍵來解決此問題。 Azure Cosmos DB 現在支援具有最多 2 KB 值的大型資料分割索引鍵。
 

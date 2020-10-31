@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: mjbrown
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 95337f88133c9493250e9197654288dc0af59ed1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 35c0b5529cd9ada612caf4884683fbeaacb25b33
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486135"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100128"
 ---
 # <a name="configure-multi-region-writes-in-your-applications-that-use-azure-cosmos-db"></a>在您的應用程式中設定使用 Azure Cosmos DB 的多重區域寫入
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 一旦建立的帳戶已啟用多個寫入區域，您必須在應用程式中對 ConnectionPolicy 進行兩項變更，才能讓 DocumentClient 在 Azure Cosmos DB 中啟用多重區域寫入和多路連接功能。 在 ConnectionPolicy 內，將 UseMultipleWriteLocations 設定為 true，並將應用程式部署所在區域的名稱傳遞至 SetCurrentLocation。 這會根據所傳入位置的地理鄰近性填入 PreferredLocations 屬性。 如果之後在帳戶中新增新的區域，應用程式便不必更新或重新部署，而是會自動偵測較接近的區域，並在發生區域性事件時自動以該處作為主要位置。
 

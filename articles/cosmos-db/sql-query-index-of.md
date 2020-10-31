@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 50e489fdf57398d486b07944782ecbb3fd1d6a43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f757f4517bb8c45708c9d25f39052f7f95aad2b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71350997"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101420"
 ---
 # <a name="index_of-azure-cosmos-db"></a>INDEX_OF (Azure Cosmos DB) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  傳回第一個指定的字串運算式中，第二個字串運算式第一次出現的開始位置，或者如果找不到字串，則為 -1。  
   
 ## <a name="syntax"></a>語法
@@ -31,7 +33,7 @@ INDEX_OF(<str_expr1>, <str_expr2> [, <numeric_expr>])
 *str_expr2*  
    這是要搜尋的字串運算式。  
 
-*numeric_expr* 選擇性的數值運算式，會設定搜尋的開始位置。 *Str_expr1*中的第一個位置是0。 
+*numeric_expr* 選擇性的數值運算式，會設定搜尋的開始位置。 *Str_expr1* 中的第一個位置是0。 
   
 ## <a name="return-types"></a>傳回類型
   

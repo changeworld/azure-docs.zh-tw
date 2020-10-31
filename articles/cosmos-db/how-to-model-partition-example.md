@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 8e9d11ed39d6e4dc7ad432659534e7dd14fcf1ec
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 92d15337f511f534c23ff97d274b344714812a5e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277984"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100245"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>如何使用實際範例在 Azure Cosmos DB 上建立資料的模型及加以分割
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文以數個 Azure Cosmos DB 概念為基礎，例如 [資料模型](modeling-data.md)化、資料 [分割](partitioning-overview.md)和布 [建的輸送量](request-units.md) ，以示範如何處理實際的資料設計練習。
 
@@ -22,10 +23,10 @@ ms.locfileid: "92277984"
 
 ## <a name="the-scenario"></a>案例
 
-在此練習中，我們將考量*使用者*可建立*貼文*的部落格平台領域。 使用者也可對這些貼文*按讚*及新增*留言*。
+在此練習中，我們將考量 *使用者* 可建立 *貼文* 的部落格平台領域。 使用者也可對這些貼文 *按讚* 及新增 *留言* 。
 
 > [!TIP]
-> 某些字詞會以*斜體*醒目提示；這些字詞表示我們的模型必須操作的某些「事物」。
+> 某些字詞會以 *斜體* 醒目提示；這些字詞表示我們的模型必須操作的某些「事物」。
 
 對我們的規格新增更多需求：
 
@@ -145,7 +146,7 @@ ms.locfileid: "92277984"
 
 ### <a name="c2-createedit-a-post"></a>[C2] 建立/編輯貼文
 
-類似於 **[C1]**，我們只需寫入 `posts` 容器即可。
+類似於 **[C1]** ，我們只需寫入 `posts` 容器即可。
 
 :::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="將單一項目寫入使用者容器" border="false":::
 
@@ -204,7 +205,7 @@ ms.locfileid: "92277984"
 
 ### <a name="c4-like-a-post"></a>[C4] 對貼文按讚
 
-如同 **[C3]**，我們在 `posts` 容器中建立對應的項目。
+如同 **[C3]** ，我們在 `posts` 容器中建立對應的項目。
 
 :::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="將單一項目寫入使用者容器" border="false":::
 
@@ -214,7 +215,7 @@ ms.locfileid: "92277984"
 
 ### <a name="q5-list-a-posts-likes"></a>[Q5] 列出貼文的讚
 
-如同 **[Q4]**，我們查詢該貼文的讚，然後彙總其使用者名稱。
+如同 **[Q4]** ，我們查詢該貼文的讚，然後彙總其使用者名稱。
 
 :::image type="content" source="./media/how-to-model-partition-example/V1-Q5.png" alt-text="將單一項目寫入使用者容器" border="false":::
 
@@ -291,7 +292,7 @@ ms.locfileid: "92277984"
 
 我們想要達到的結果是，每當我們新增留言或讚時，對應貼文中的 `commentCount` 或 `likeCount` 也會遞增。 由於我們的 `posts` 容器是以 `postId` 分割的，因此新的項目 (留言或讚) 及其對應的貼文會位於相同的邏輯分割區中。 因此，我們可以使用[預存程序](stored-procedures-triggers-udfs.md)來執行該作業。
 
-現在，在建立留言時 (**[C3]**)，除了在 `posts` 容器中新增項目以外，我們還會對該容器呼叫下列預存程序：
+現在，在建立留言時 ( **[C3]** )，除了在 `posts` 容器中新增項目以外，我們還會對該容器呼叫下列預存程序：
 
 ```javascript
 function createComment(postId, comment) {
@@ -405,7 +406,7 @@ function updateUsernames(userId, username) {
 
 ## <a name="v3-making-sure-all-requests-are-scalable"></a>V3：確定所有要求都可調整
 
-檢視整體效能的改進時，我們發現還有兩個要求未完全最佳化：**[Q3]** 和 **[Q6]**。 這些要求牽涉到不會依目標容器的分割區索引鍵進行篩選的查詢。
+檢視整體效能的改進時，我們發現還有兩個要求未完全最佳化： **[Q3]** 和 **[Q6]** 。 這些要求牽涉到不會依目標容器的分割區索引鍵進行篩選的查詢。
 
 ### <a name="q3-list-a-users-posts-in-short-form"></a>[Q3] 以簡短形式列出使用者的貼文
 
@@ -417,9 +418,9 @@ function updateUsernames(userId, username) {
 
 對此情況的思考方向其實很明確：
 
-1. 此要求*必須*依 `userId` 進行篩選，因為我們想要擷取特定使用者的所有貼文
+1. 此要求 *必須* 依 `userId` 進行篩選，因為我們想要擷取特定使用者的所有貼文
 1. 其執行效果不佳，因為執行依據為 `posts` 容器，但其分割依據並非 `userId`
-1. 顯而易見，我們會對分割依據為**`userId` 的容器執行此要求，以解決效能問題
+1. 顯而易見，我們會對分割依據為 `userId` 的容器執行此要求，以解決效能問題
 1. 而其實我們已有這樣的容器：`users` 容器！
 
 因此，我們藉由將所有貼文複製到 `users` 容器，來導入第二層反正規化。 藉由這麼做，我們有效地取得以不同維度分割的貼文複本，使其能更有效地依 `userId` 擷取。
@@ -574,7 +575,7 @@ function truncateFeed() {
 
 這相對而言是合理的，因為部落格平台 (例如大部分的社交應用程式) 具有大量讀取的特性，這表示它所須處理的讀取要求數量通常遠高於寫入要求數量 (呈指數性的比例)。 因此，為了讓讀取要求以較低成本和較高的效率執行，而讓寫入要求的成本較為昂貴，是合理的做法。
 
-在我們完成的最佳化之中，**[Q6]** 是最極致的一個，它從 2000 多個 RU 陡降到 17 個 RU；這是我們以每個項目約 10 個 RU 的成本將貼文反正規化所達到的成果。 由於我們處理的摘要要求量遠高於建立或更新貼文的數量，考量到整體的節省效果，這項反正規化的成本是可忽略的。
+在我們完成的最佳化之中， **[Q6]** 是最極致的一個，它從 2000 多個 RU 陡降到 17 個 RU；這是我們以每個項目約 10 個 RU 的成本將貼文反正規化所達到的成果。 由於我們處理的摘要要求量遠高於建立或更新貼文的數量，考量到整體的節省效果，這項反正規化的成本是可忽略的。
 
 ### <a name="denormalization-can-be-applied-incrementally"></a>反正規化可以累加方式套用
 
@@ -582,7 +583,7 @@ function truncateFeed() {
 
 我們用來將更新散佈到其他容器的變更摘要，會持續完整地儲存這些更新。 如此，即使您的系統已有許多資料，您仍可要求容器建立後的所有更新，和以一次性追趕作業的形式啟動反正規化檢視。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在看完這些關於實際資料模型化和分割的簡介之後，您可以查看下列文章，以檢閱我們所說明的概念：
 

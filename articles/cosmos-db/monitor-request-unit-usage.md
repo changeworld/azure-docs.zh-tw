@@ -6,16 +6,17 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 04/09/2020
-ms.openlocfilehash: e3ec3bc0e0c6028eb5d7a90ee1920938d792941b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6f0f30d7437b6f8ecc1d915eb3d3195f2504fec
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85260741"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098241"
 ---
 # <a name="how-to-monitor-throughput-or-request-unit-usage-of-an-operation-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中監視作業的輸送量或要求單位使用量
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB 的 Azure 監視器會提供計量視圖，以監視您的帳戶和建立儀表板。 預設會收集 Azure Cosmos DB 計量，這項功能不會要求您明確啟用或設定任何設定。 **要求單位計量總計**用來取得不同類型作業的要求單位使用量。 您稍後可以分析哪些作業使用大部分的輸送量。 依預設，輸送量資料會以一分鐘的間隔匯總。 不過，您可以藉由變更時間細微性選項來變更摘要單位。
+Azure Cosmos DB 的 Azure 監視器會提供計量視圖，以監視您的帳戶和建立儀表板。 預設會收集 Azure Cosmos DB 計量，這項功能不會要求您明確啟用或設定任何設定。 **要求單位計量總計** 用來取得不同類型作業的要求單位使用量。 您稍後可以分析哪些作業使用大部分的輸送量。 依預設，輸送量資料會以一分鐘的間隔匯總。 不過，您可以藉由變更時間細微性選項來變更摘要單位。
 
 有兩種方式可以分析要求單位的使用量資料：
 
@@ -36,11 +37,11 @@ Azure Cosmos DB 的 Azure 監視器會提供計量視圖，以監視您的帳戶
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 從左側導覽列中選取 [ **監視** ]，然後選取 [ **計量**]。
+1. 從左側導覽列中選取 [ **監視** ]，然後選取 [ **計量** ]。
 
    :::image type="content" source="./media/monitor-request-unit-usage/monitor-metrics-blade.png" alt-text="Azure 監視器中的 [計量] 窗格":::
 
-1. 從 [計量] 窗格 > **選取資源** > 選擇必要的**訂用帳戶**和**資源群組**。 在 [資源類型] 中，選取 [Azure Cosmos DB 帳戶]，然後選擇其中一個現有的 Azure Cosmos 帳戶並選取 [套用]。
+1. 從 [計量] 窗格 > **選取資源** > 選擇必要的 **訂用帳戶** 和 **資源群組** 。 在 [資源類型] 中，選取 [Azure Cosmos DB 帳戶]，然後選擇其中一個現有的 Azure Cosmos 帳戶並選取 [套用]。
 
    :::image type="content" source="./media/monitor-request-unit-usage/select-cosmos-db-account.png" alt-text="Azure 監視器中的 [計量] 窗格":::
 
@@ -50,7 +51,7 @@ Azure Cosmos DB 的 Azure 監視器會提供計量視圖，以監視您的帳戶
 
 ## <a name="filters-for-request-unit-usage"></a>要求單位使用方式的篩選
 
-您也可以篩選計量，並取得特定 **CollectionName**、 **DatabaseName**、 **OperationType**、 **Region**、 **Status**和 **StatusCode**所顯示的圖表。 [ **加入篩選** ] 和 [套用 **分割** ] 選項可讓您篩選要求單位使用方式，並將計量分組。
+您也可以篩選計量，並取得特定 **CollectionName** 、 **DatabaseName** 、 **OperationType** 、 **Region** 、 **Status** 和 **StatusCode** 所顯示的圖表。 [ **加入篩選** ] 和 [套用 **分割** ] 選項可讓您篩選要求單位使用方式，並將計量分組。
 
 若要取得每項作業的要求單位使用量（依 total (sum) 或 average），請選取 [套用 **分割** ]，然後選擇 [作業 **類型** ] 和 [篩選] 值，如下圖所示：
 
@@ -60,7 +61,7 @@ Azure Cosmos DB 的 Azure 監視器會提供計量視圖，以監視您的帳戶
 
    :::image type="content" source="./media/monitor-request-unit-usage/request-unit-usage-collection.png" alt-text="Azure 監視器中的 [計量] 窗格":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 使用 Azure 中的 [診斷設定](cosmosdb-monitor-resource-logs.md) 來監視 Azure Cosmos DB 資料。
 * [Audit Azure Cosmos DB 控制平面作業](audit-control-plane-logs.md)

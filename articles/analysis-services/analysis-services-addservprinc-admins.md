@@ -8,16 +8,16 @@ ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8e751d210ab472d82e4abd613d37069a8c591f52
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b1d5f8ec628245756c53e4dfeeecdeb3a4bebc2e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013928"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100723"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>將服務主體新增至伺服器管理員角色 
 
- 若要將無人看管的 PowerShell 工作自動化，服務主體必須擁有受控 Analysis Services 伺服器的**伺服器管理員**權限。 本文說明如何將服務主體新增至 Azure AS 伺服器上的伺服器管理員角色。 您可使用 SQL Server Management Studio 或 Resource Manager 範本來執行此操作。 
+ 若要將無人看管的 PowerShell 工作自動化，服務主體必須擁有受控 Analysis Services 伺服器的 **伺服器管理員** 權限。 本文說明如何將服務主體新增至 Azure AS 伺服器上的伺服器管理員角色。 您可使用 SQL Server Management Studio 或 Resource Manager 範本來執行此操作。 
 
 > [!NOTE]
 > 服務主體必須直接新增至伺服器管理員角色。 將服務主體新增至安全性群組，然後將該安全性群組新增至伺服器管理員角色並不受支援。 
@@ -40,11 +40,11 @@ ms.locfileid: "92013928"
 
 4. 確認服務主體帳戶識別碼，然後按一下 [確定]。
     
-    ![搜尋服務主體帳戶](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
+    ![顯示服務主體帳戶識別碼的螢幕擷取畫面，並反白顯示 [確定] 按鈕。](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 
 ## <a name="using-a-resource-manager-template"></a>使用 Resource Manager 範本
 
-您也可以使用 Azure Resource Manager 範本來部署 Analysis Services 伺服器以設定伺服器管理員。 執行部署的身分識別必須屬於[azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md)中資源的「**參與者**」角色。
+您也可以使用 Azure Resource Manager 範本來部署 Analysis Services 伺服器以設定伺服器管理員。 執行部署的身分識別必須屬於 [azure 角色型存取控制 (AZURE RBAC)](../role-based-access-control/overview.md)中資源的「 **參與者** 」角色。
 
 > [!IMPORTANT]
 > 服務主體必須使用 `app:{service-principal-client-id}@{azure-ad-tenant-id}` 格式來新增。

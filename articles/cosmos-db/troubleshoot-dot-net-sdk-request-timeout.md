@@ -8,14 +8,16 @@ ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 211121e21502e9cd4929169053a8ad58a9d7b21b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 735c098fcf6fed76019850a1cb58d9eb6c485b7a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476921"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101012"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout-exceptions"></a>診斷和疑難排解 Azure Cosmos DB .NET SDK 要求超時例外狀況
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 如果 SDK 無法在發生超時限制之前完成要求，就會發生 HTTP 408 錯誤。
 
 ## <a name="customize-the-timeout-on-the-azure-cosmos-db-net-sdk"></a>自訂 Azure Cosmos DB .NET SDK 上的超時
@@ -87,6 +89,6 @@ Azure Cosmos DB 會將整體布建的輸送量平均分散到實體分割區。 
 ### <a name="failure-rate-violates-the-azure-cosmos-db-sla"></a>失敗率違反 Azure Cosmos DB SLA
 請聯絡 [Azure 支援](https://aka.ms/azure-support)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * 當您使用 Azure Cosmos DB .NET SDK 時[，診斷和疑難排解](troubleshoot-dot-net-sdk.md)問題。
 * 瞭解 [.net v3](performance-tips-dotnet-sdk-v3-sql.md) 和 [.net v2](performance-tips.md)的效能指導方針。

@@ -6,20 +6,21 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: 38e80f1597a08b8db7cbfa852d1bcf38ac768b1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4c754455e2a686274eab8b1f77713b8983251a4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74871137"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100791"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Azure Cosmos DB 中的聯結
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-在關係資料庫中，跨資料表的聯結是設計正規化架構的邏輯必然結果。 相反地，SQL API 會使用無架構專案的反正規化資料模型，這是 *自我聯結*的邏輯對等專案。
+在關係資料庫中，跨資料表的聯結是設計正規化架構的邏輯必然結果。 相反地，SQL API 會使用無架構專案的反正規化資料模型，這是 *自我聯結* 的邏輯對等專案。
 
 內部聯結是參與聯結之集的完整交叉乘積。 N 方聯結的結果為一組 N 元素 Tuple，其中 Tuple 中的每個值都與參與聯結的別名集相關聯，而且可以透過參考其他子句中的別名加以存取。
 
-## <a name="syntax"></a>語法
+## <a name="syntax"></a>Syntax
 
 語言支援語法 `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>` 。 此查詢會傳回一組具有值的元組 `N` 。 每個 Tuple 所擁有的值，都是將所有容器別名在其個別集合上反覆運算所產生的。 
 

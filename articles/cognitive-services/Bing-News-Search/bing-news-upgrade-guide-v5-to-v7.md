@@ -10,14 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7999ed5296f2ff4e64b9edc0fb355f72b7d7a04e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 564af32b724c8b4883cd27d01813e246e5fa4901
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316642"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100196"
 ---
 # <a name="news-search-api-upgrade-guide"></a>新聞搜尋 API 升級指南
+
+> [!WARNING]
+> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
+> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
+> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
 本升級指南會識別 Bing 新聞搜尋 API 第 5 版和第 7 版之間的變更。 本指南可協助您識別出應用程式有哪些部分需要更新以使用第 7 版。
 
@@ -54,7 +59,7 @@ RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
 ResourceAccessDenied|InsufficientAuthorization
 ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
-已停用|InsufficientAuthorization.AuthorizationDisabled
+停用|InsufficientAuthorization.AuthorizationDisabled
 UnexpectedError|ServerError.UnexpectedError
 DataSourceErrors|ServerError.ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
@@ -90,4 +95,4 @@ InsufficientScope|InsufficientAuthorization
 
 - 已將 `sort` 欄位新增至 [News](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) 物件。 `sort` 欄位會顯示文章的排序順序。 例如，文章依關聯性 (預設值) 或日期來排序。
 
-- 已新增 [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) 物件，以便定義排序次序。 `isSelected` 欄位會指出回應是否使用排序次序。 若為 **true**，則表示回應使用了排序次序。 如果 `isSelected` 是 **false**，則可以在 `url` 欄位中使用 URL，來要求不同的排序次序。
+- 已新增 [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) 物件，以便定義排序次序。 `isSelected` 欄位會指出回應是否使用排序次序。 若為 **true** ，則表示回應使用了排序次序。 如果 `isSelected` 是 **false** ，則可以在 `url` 欄位中使用 URL，來要求不同的排序次序。

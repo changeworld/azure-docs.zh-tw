@@ -10,14 +10,19 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: a17ed0f13e352fb185d20d9dc2d7bfffa74ac957
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ece9d191460323a917579c5a32cff429f52139fa
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334764"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098224"
 ---
 # <a name="using-the-bing-spell-check-api"></a>使用 Bing 拼字檢查 API
+
+> [!WARNING]
+> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
+> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
+> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
 請使用本文以了解如何使用 Bing 拼字檢查 API 來對內容執行文法與拼字檢查。 大部分的拼字檢查工具都依賴以字典為基礎的規則集，但 Bing 拼字檢查工具卻是利用機器學習和統計機器翻譯來對內容提供正確的校正。 
 
@@ -120,7 +125,7 @@ text=when+its+your+turn+turn,+john,+come+runing
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [什麼是 Bing 拼字檢查 API？](../overview.md)
 - [Bing 拼字檢查 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

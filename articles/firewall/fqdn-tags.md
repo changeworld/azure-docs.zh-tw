@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: e29e568786881f663414dcdf3eff72d4d72ab181
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed34bf755023ab866e95c51aca6d1bfb1dd7bf71
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85610603"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099448"
 ---
 # <a name="fqdn-tags-overview"></a>FQDN 標籤概觀
 
@@ -28,9 +28,9 @@ FQDN 標籤代表一群與知名 Microsoft 服務相關聯的完整網域名稱 
 
 ## <a name="current-fqdn-tags"></a>目前的 FQDN 標記
 
-|FQDN 標籤  |說明  |
+|FQDN 標籤  |描述  |
 |---------|---------|
-|Windows Update     |允許對 Microsoft Update 進行輸出存取，如[如何為軟體更新設定防火牆](https://technet.microsoft.com/library/bb693717.aspx)中所述。|
+|Windows Update     |允許對 Microsoft Update 進行輸出存取，如[如何為軟體更新設定防火牆](https://docs.microsoft.com/mem/configmgr/sum/get-started/install-a-software-update-point)中所述。|
 |Windows 診斷|允許對所有 [Windows 診斷端點](https://docs.microsoft.com/windows/privacy/configure-windows-diagnostic-data-in-your-organization#endpoints)進行輸出存取。|
 |Microsoft Active Protection Service (MAPS)|允許對 [MAPS](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/) 進行輸出存取。|
 |App Service Environment (ASE)|允許對 ASE 平台流量進行輸出存取。 此標籤未涵蓋客戶專屬的儲存體和 ASE 所建立的 SQL 端點。 這些應該透過 [服務端點](../virtual-network/tutorial-restrict-network-access-to-resources.md) 來啟用，或手動加入。<br><br>如需整合 Azure 防火牆與 ASE 的詳細資訊，請參閱 [鎖定 App Service 環境](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)。|
@@ -40,8 +40,8 @@ FQDN 標籤代表一群與知名 Microsoft 服務相關聯的完整網域名稱 
 |Azure Kubernetes Service (AKS)|允許對 AKS 的輸出存取。 如需詳細資訊，請參閱 [使用 Azure 防火牆來保護 Azure Kubernetes Service (AKS) 部署](protect-azure-kubernetes-service.md)。|
 
 > [!NOTE]
-> 選取應用程式規則中的 FQDN 標籤時，[通訊協定:連接埠] 欄位必須設定為 [https]****。
+> 選取應用程式規則中的 FQDN 標籤時，[通訊協定:連接埠] 欄位必須設定為 [https]  。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要了解如何部署 Azure 防火牆，請參閱[教學課程：使用 Azure 入口網站部署和設定 Azure 防火牆](tutorial-firewall-deploy-portal.md)。

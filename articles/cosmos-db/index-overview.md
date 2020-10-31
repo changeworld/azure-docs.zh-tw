@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: fcb6e004c86289e2efa89a988b362e76145a9538
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: acb0396ece32c568a4d8c384bebcbabd7480eb09
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490419"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101454"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>在 Azure Cosmos DB 中編製索引 - 概觀
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB 是一個無從驗證結構描述的資料庫，可讓您逐一查看應用程式，而不需處理結構描述或索引管理。 根據預設，Azure Cosmos DB 會自動為[容器](account-databases-containers-items.md#azure-cosmos-containers)中的所有項目編製索引，而不需要界定任何結構描述或設定次要索引。
 
@@ -68,7 +69,7 @@ Azure Cosmos DB 目前支援三種索引。
 
 ### <a name="range-index"></a>範圍索引
 
-**範圍**索引是以排序好的樹狀結構型結構為基礎。 範圍索引種類用於：
+**範圍** 索引是以排序好的樹狀結構型結構為基礎。 範圍索引種類用於：
 
 - 相等查詢：
 
@@ -124,7 +125,7 @@ Azure Cosmos DB 目前支援三種索引。
 
 ### <a name="spatial-index"></a>空間索引
 
-**空間**索引可有效率地查詢地理空間物件，例如點、線、多邊形和多多邊形。 這些查詢會使用 ST_DISTANCE、ST_WITHIN ST_INTERSECTS 關鍵字。 以下是一些使用空間索引的範例：
+**空間** 索引可有效率地查詢地理空間物件，例如點、線、多邊形和多多邊形。 這些查詢會使用 ST_DISTANCE、ST_WITHIN ST_INTERSECTS 關鍵字。 以下是一些使用空間索引的範例：
 
 - 地理空間距離查詢：
 
@@ -148,7 +149,7 @@ Azure Cosmos DB 目前支援三種索引。
 
 ### <a name="composite-indexes"></a>複合式索引
 
-**複合式**索引可提高在多個欄位上執行作業時的效率。 複合式索引用於：
+**複合式** 索引可提高在多個欄位上執行作業時的效率。 複合式索引用於：
 
 - 多種屬性的 `ORDER BY` 查詢：
 

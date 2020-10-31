@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5be1cfc097da4f1f10bb775c9b20043096b9fb8b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 14c18d0cae335f96cc2d95c79bcf39bf85ef6a2b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279636"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101539"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>建立多個 Azure Functions 的 Cosmos DB 觸發程序
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文說明如何將多個「Azure Functions 的 Cosmos DB 觸發程序」設定為以平行方式運作並獨立回應變更。
 
@@ -24,15 +25,15 @@ ms.locfileid: "92279636"
 
 使用 [Azure Functions](../azure-functions/functions-overview.md) 建置無伺服器架構時，[建議](../azure-functions/functions-best-practices.md#avoid-long-running-functions)您建立一起運作的小型函式集，而不是大量長時間執行的函式。
 
-當您使用 [Azure Functions 的 Cosmos DB 觸發程序](./change-feed-functions.md)建置以事件為基礎的無伺服器流程時，您會遇到以下情況：每當特定 [Azure Cosmos 容器](./account-databases-containers-items.md#azure-cosmos-containers)中有新事件時，您就想執行多個動作。 如果您想要觸發的動作彼此獨立，則理想的解決方式是為您想執行的**每個動作各建立一個 Azure Functions 的 Cosmos DB 觸發程序**，且全都接聽相同 Azure Cosmos 容器的變更。
+當您使用 [Azure Functions 的 Cosmos DB 觸發程序](./change-feed-functions.md)建置以事件為基礎的無伺服器流程時，您會遇到以下情況：每當特定 [Azure Cosmos 容器](./account-databases-containers-items.md#azure-cosmos-containers)中有新事件時，您就想執行多個動作。 如果您想要觸發的動作彼此獨立，則理想的解決方式是為您想執行的 **每個動作各建立一個 Azure Functions 的 Cosmos DB 觸發程序** ，且全都接聽相同 Azure Cosmos 容器的變更。
 
 ## <a name="optimizing-containers-for-multiple-triggers"></a>最佳化多個觸發程序的容器
 
-考慮到「Azure Functions 的 Cosmos DB 觸發程序」的需求**，我們需要第二個容器來儲存狀態，該容器也稱為「租用容器」**。 這表示每個 Azure 函式都需要個別的租用容器嗎？
+考慮到「Azure Functions 的 Cosmos DB 觸發程序」的需求  ，我們需要第二個容器來儲存狀態，該容器也稱為「租用容器」  。 這表示每個 Azure 函式都需要個別的租用容器嗎？
 
 在此，您有兩個選項：
 
-* **針對每個函式建立一個租用容器**：除非您使用的是[共用輸送量資料庫](./set-throughput.md#set-throughput-on-a-database)，否則此方法可能會轉譯為額外成本。 請記住，容器層級的最小輸送量為 400 個[要求單位](./request-units.md)，而在租用容器的案例中，只會用來檢查進度及維護狀態。
+* **針對每個函式建立一個租用容器** ：除非您使用的是 [共用輸送量資料庫](./set-throughput.md#set-throughput-on-a-database)，否則此方法可能會轉譯為額外成本。 請記住，容器層級的最小輸送量為 400 個[要求單位](./request-units.md)，而在租用容器的案例中，只會用來檢查進度及維護狀態。
 * 擁有 **一個租用容器，並** 為您所有的函式共用：第二個選項可讓您更有效地使用容器上布建的要求單位，因為它可讓多個 Azure Functions 共用和使用相同的布建輸送量。
 
 本文的目標是引導您完成第二個選項。
@@ -43,7 +44,7 @@ ms.locfileid: "92279636"
 
 例如，如果您有三個觸發程序：一個會傳送電子郵件、一個會進行彙總以建立具體化檢視，還有一個會將變更傳送至另一個儲存體以供稍後分析，您可以將 `LeaseCollectionPrefix` 為 "emails" 指派給第一個、將其值為 "materialized" 指派給第二個，以及將其值為 "analytics" 指派給第三個。
 
-重點是這三個觸發程序**可以使用相同的租用容器組態** (帳戶、資料庫和容器名稱)。
+重點是這三個觸發程序 **可以使用相同的租用容器組態** (帳戶、資料庫和容器名稱)。
 
 在 C# 中使用 `LeaseCollectionPrefix` 屬性的非常簡單程式碼範例，如下所示：
 
@@ -107,7 +108,7 @@ public static void MaterializedViews([CosmosDBTrigger(
 > [!NOTE]
 > 一律監視在您的共用租用容器上佈建的要求單位。 共用該容器的每個觸發程序都會增加輸送量平均耗用量，因此當您增加使用容器的 Azure 函式數目時，可能需要增加佈建的輸送量。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 請參閱 [Azure Functions 的 Cosmos DB 觸發程序](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)的完整組態
 * 請檢查擴充的[範例清單](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)以取得所有語言。

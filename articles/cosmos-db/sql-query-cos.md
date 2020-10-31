@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 40d277ff38691e2cb74bd4d5d78a666c304acfcd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5f60b9f321b7d1ef75a1927310c788ff3ee3270
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78304016"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100842"
 ---
 # <a name="cos-azure-cosmos-db"></a>COS (Azure Cosmos DB) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  在指定運算式中傳回指定角度的三角餘弦函數，以弧度為單位。  
   
 ## <a name="syntax"></a>語法

@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: eb9e8caff81e86b7db732c970eee1e1a08be5241
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 302c5d6e8e523a11b8773f10bb6089e3bea09bdd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491099"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101556"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-sql-api"></a>在 Azure Cosmos DB SQL API 中建立容器
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文說明在 Azure Cosmos DB SQL API 中建立容器的不同方式。 它會顯示如何使用 Azure 入口網站、Azure CLI、PowerShell 或支援的 Sdk 來建立容器。 本文將示範如何建立容器、指定分割區索引鍵，以及佈建輸送量。
 
@@ -30,13 +31,13 @@ ms.locfileid: "92491099"
 
 1. [建立新的 Azure Cosmos 帳戶](create-sql-api-dotnet.md#create-account)，或選取現有帳戶。
 
-1. 開啟 **資料總管** 窗格，然後選取 [ **新增容器**]。 接下來，提供下列詳細資料：
+1. 開啟 **資料總管** 窗格，然後選取 [ **新增容器** ]。 接下來，提供下列詳細資料：
 
    * 指出您正在建立新的資料庫，還是使用現有的帳戶。
    * 輸入容器識別碼。
    * 輸入分割區索引鍵。
    * 輸入要佈建的輸送量 (例如 1000 RU)。
-   * 選取 [確定]。
+   * 選取 [確定]  。
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-sql.png" alt-text="資料總管窗格的螢幕擷取畫面，其中已醒目提示新的容器":::
 
@@ -64,7 +65,7 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 1000 });
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [Azure Cosmos DB 中的資料分割](partitioning-overview.md)
 * [Azure Cosmos DB 中的要求單位](request-units.md)

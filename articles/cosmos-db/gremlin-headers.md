@@ -7,19 +7,21 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: jasonwhowell
 ms.author: jasonh
-ms.openlocfilehash: 4b082c89684bc06346fa933aad6be97dc371bc3f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 00394e60ad1cf86bfd75a86a0b6630505c7d7356
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490572"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100383"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin 伺服器回應標頭
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
+
 本文涵蓋 Cosmos DB Gremlin 伺服器在要求執行時傳回給呼叫者的標頭。 這些標頭有助於針對要求效能進行疑難排解、建立與 Cosmos DB 服務原生整合的應用程式，以及簡化客戶支援。
 
 請記住，相依于這些標頭，您會將應用程式的可攜性限制為其他 Gremlin 的實現。 然後，您就可以與 Cosmos DB Gremlin 緊密整合。 這些標頭不是 TinkerPop 標準。
 
-## <a name="headers"></a>headers
+## <a name="headers"></a>標題
 
 | 標頭 | 類型 | 範例值 | 包含時 | 說明 |
 | --- | --- | --- | --- | --- |
@@ -106,7 +108,7 @@ try {
 
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * [Azure Cosmos DB 的 HTTP 狀態碼](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) 
 * [常見 Azure Cosmos DB REST 回應標頭](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)
 * [TinkerPop Graph 驅動程式提供者需求]( http://tinkerpop.apache.org/docs/current/dev/provider/#_graph_driver_provider_requirements)

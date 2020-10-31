@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: tisande
-ms.openlocfilehash: c4ae66884602989284a427bdc33de7612bd9a8df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdbe0f9754cc82ef790409cf2b36a7203b90855b
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84484330"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099278"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 ORDER BY 子句
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 選擇性 `ORDER BY` 子句會指定查詢所傳回之結果的排序次序。
 
@@ -79,7 +80,7 @@ ORDER BY <sort_specification>
     ]
 ```
 
-下列查詢會依 `id` 專案的建立日期順序來抓取系列。 專案 `creationDate` 是代表 *epoch 時間*的數位，或從1970年1月1日起經過的時間（以秒為單位）。
+下列查詢會依 `id` 專案的建立日期順序來抓取系列。 專案 `creationDate` 是代表 *epoch 時間* 的數位，或從1970年1月1日起經過的時間（以秒為單位）。
 
 ```sql
     SELECT f.id, f.creationDate
@@ -102,7 +103,7 @@ ORDER BY <sort_specification>
     ]
 ```
 
-此外，您可以依多個屬性排序。 依多個屬性排序的查詢需要 [複合索引](index-policy.md#composite-indexes)。 請考慮下列查詢：
+此外，您可以依多個屬性排序。 依多個屬性排序的查詢需要 [複合索引](index-policy.md#composite-indexes)。 請考慮以下查詢：
 
 ```sql
     SELECT f.id, f.creationDate

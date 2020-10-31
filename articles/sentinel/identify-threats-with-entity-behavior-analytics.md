@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 6597baa67bcd2e26f3b8aeaa98c1776b5fc47430
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad0486c9d2eb6c651b507f4b0a44f4a6fc2b018f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994621"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100655"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>在 Azure Sentinel 中找出使用者和實體行為分析 (UEBA) 的 advanced 威脅
 
@@ -64,11 +64,43 @@ Azure Sentinel 提供成品，可協助您的安全性分析師清楚瞭解內�
 
 請參閱如何在 [Microsoft Cloud App Security](https://techcommunity.microsoft.com/t5/microsoft-security-and/prioritize-user-investigations-in-cloud-app-security/ba-p/700136) 中使用行為分析，以瞭解其運作方式的範例。
 
+## <a name="entities-in-azure-sentinel"></a>Azure Sentinel 中的實體
 
+### <a name="entity-identifiers"></a>實體識別碼
 
-## <a name="entity-pages"></a>實體頁面
+當警示傳送至 Azure Sentinel 時，它們會包含 Azure Sentinel 識別和分類為實體的資料元素，例如使用者帳戶、主機、IP 位址和其他專案。 有時，如果警示未包含足夠的實體相關資訊，則此識別可能會是一項挑戰。
 
-當您在搜尋、警示或調查中遇到目前限制為使用者和主機) 的任何實體 (時，您可以選取實體，然後將其移至 **實體頁面**，這是與該實體相關的實用資訊資料表。 您將在此頁面上找到的資訊類型包括關於實體的基本事實、與此實體相關的值得注意事件時間軸，以及實體行為的見解。
+例如，您可以使用一種以上的方式來識別使用者帳戶：使用 Azure AD 帳戶的數值識別碼 (GUID) ，或其使用者主體名稱 (UPN) 值，或使用其使用者名稱及其 NT 功能變數名稱的組合。 不同的資料來源可以用不同的方式來識別相同的使用者。 因此，在可能的情況下，Azure Sentinel 會將這些識別碼合併成單一實體，以便能夠正確識別。
+
+不過，您的其中一個資源提供者會建立警示，其中的實體無法充分識別，例如，沒有功能變數名稱內容的使用者名稱。 在這種情況下，使用者實體無法與相同使用者帳戶的其他實例合併，這會識別為個別的實體，而這兩個實體會維持不變而不是統一。
+
+為了將這種情況發生的風險降至最低，您應該確認所有警示提供者都能正確地識別其產生的警示中的實體。 此外，使用 Azure Active Directory 同步處理使用者帳戶實體，可能會建立統一的目錄，讓您能夠合併使用者帳戶實體。
+
+以下是目前在 Azure Sentinel 中識別的實體類型：
+
+- 使用者帳戶 (帳戶) 
+- 主機
+- IP 位址 (IP) 
+- 惡意程式碼
+- 檔案
+- 程序
+- 雲端應用程式 (CloudApplication) 
+- DNS)  (的功能變數名稱
+- Azure 資源
+- File (Get-filehash) 
+- 登錄機碼
+- 登錄值
+- 安全性群組
+- URL
+- IoT 裝置
+- Mailbox
+- 郵件叢集
+- 郵件訊息
+- 提交郵件
+
+### <a name="entity-pages"></a>實體頁面
+
+當您在搜尋、警示或調查中遇到目前限制為使用者和主機) 的任何實體 (時，您可以選取實體，然後將其移至 **實體頁面** ，這是與該實體相關的實用資訊資料表。 您將在此頁面上找到的資訊類型包括關於實體的基本事實、與此實體相關的值得注意事件時間軸，以及實體行為的見解。
  
 實體頁面包含三個部分：
 - 左邊的面板包含實體的識別資訊，從資料來源（例如 Azure Active Directory、Azure 監視器、Azure 資訊安全中心和 Microsoft Defender）收集。
@@ -87,7 +119,7 @@ Azure Sentinel 提供成品，可協助您的安全性分析師清楚瞭解內�
 
 時間軸包含下列類型的專案：
 
-- 警示-實體定義為 **對應實體**的任何警示。 請注意，如果您的組織已 [流量分析規則建立自訂警示](./tutorial-detect-threats-custom.md)，您應該確定規則的實體對應已正確完成。
+- 警示-實體定義為 **對應實體** 的任何警示。 請注意，如果您的組織已 [流量分析規則建立自訂警示](./tutorial-detect-threats-custom.md)，您應該確定規則的實體對應已正確完成。
 
 - 書簽-包含頁面上顯示之特定實體的任何書簽。
 
@@ -164,7 +196,7 @@ Azure Sentinel 會根據使用者的 Azure AD 安全性群組成員資格、郵�
 
 許可權分析有助於判斷攻擊者危害組織資產的潛在影響。 這項影響也稱為資產的「群發半徑」。 安全性分析師可以使用此資訊來排列調查和事件處理的優先順序。
 
-Azure Sentinel 藉由評估使用者可以直接存取的 Azure 訂用帳戶，或透過群組或服務主體，來判斷指定使用者對 Azure 資源所持有的直接和可轉移存取權。 這項資訊以及使用者 Azure AD 安全性群組成員資格的完整清單會儲存在 **UserAccessAnalytics** 資料表中。 下列螢幕擷取畫面顯示 [使用者 Alex] Johnson 的 UserAccessAnalytics 資料表中的範例資料列。 **來源實體** 是使用者或服務主體帳戶，而 **目標實體** 是來源實體可存取的資源。 **存取層級**和**存取類型**的值取決於目標實體的存取控制模型。 您可以看到 Alex 具有 Azure 訂用帳戶 *Contoso 旅館租*使用者的參與者存取權。 訂用帳戶的存取控制模型是 RBAC。   
+Azure Sentinel 藉由評估使用者可以直接存取的 Azure 訂用帳戶，或透過群組或服務主體，來判斷指定使用者對 Azure 資源所持有的直接和可轉移存取權。 這項資訊以及使用者 Azure AD 安全性群組成員資格的完整清單會儲存在 **UserAccessAnalytics** 資料表中。 下列螢幕擷取畫面顯示 [使用者 Alex] Johnson 的 UserAccessAnalytics 資料表中的範例資料列。 **來源實體** 是使用者或服務主體帳戶，而 **目標實體** 是來源實體可存取的資源。 **存取層級** 和 **存取類型** 的值取決於目標實體的存取控制模型。 您可以看到 Alex 具有 Azure 訂用帳戶 *Contoso 旅館租* 使用者的參與者存取權。 訂用帳戶的存取控制模型是 RBAC。   
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="實體行為分析架構":::
 

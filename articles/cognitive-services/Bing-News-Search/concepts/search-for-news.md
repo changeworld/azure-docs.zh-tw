@@ -10,14 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: 6fa12febe99e77efde45bcd2d538de78f618e641
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e14f13d0e9fba407a983fb182d25c77593e4d3c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710587"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098394"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>使用 Bing 新聞搜尋 API 來搜尋新聞
+
+> [!WARNING]
+> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
+> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
+> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
 Bing 影像搜尋 API 可讓您輕鬆地將 Bing 的認知新聞搜尋功能整合到應用程式中。
 
@@ -27,7 +32,7 @@ Bing 新聞搜尋 API 主要用於尋找及傳回相關的新聞文章，同時�
 
 若您提供使用者可在其中輸入其搜尋字詞的搜尋方塊，請使用 [Bing 自動建議 API](../../bing-autosuggest/get-suggested-search-terms.md) 來改善使用經驗。 API 會根據部分搜尋字詞傳回建議的查詢字串，作為使用者類型。
 
-在使用者輸入其搜尋字詞之後，URL 會先將此字詞編碼，再設定 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query) 查詢參數。 例如，如果使用者輸入 *sailing dinghies*，請將 `q` 設定為 `sailing+dinghies` 或 `sailing%20dinghies`。
+在使用者輸入其搜尋字詞之後，URL 會先將此字詞編碼，再設定 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query) 查詢參數。 例如，如果使用者輸入 *sailing dinghies* ，請將 `q` 設定為 `sailing+dinghies` 或 `sailing%20dinghies`。
 
 ## <a name="get-general-news"></a>取得一般新聞
 
@@ -155,7 +160,7 @@ Host: api.cognitive.microsoft.com
 
 請勿包含 [category](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) 查詢參數。
 
-取得頭條新聞的回應和取得今天的熱門新聞相同。 如果文章是頭條新聞文章，其 `headline` 欄位會設定為 **true**。
+取得頭條新聞的回應和取得今天的熱門新聞相同。 如果文章是頭條新聞文章，其 `headline` 欄位會設定為 **true** 。
 
 根據預設，回應中最多會包含 12 篇頭條新聞文章。 若要變更所傳回的頭條新聞文章數目，請指定 [headlineCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#headlinecount) 查詢參數。 回應中也會針對每個新聞類別包含最多四個非頭條新聞文章。
 
@@ -261,7 +266,7 @@ Host: api.cognitive.microsoft.com
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [如何逐頁檢視 Bing 新聞搜尋結果](../paging-news.md)

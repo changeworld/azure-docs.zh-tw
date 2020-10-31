@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/22/2020
 tags: connectors
-ms.openlocfilehash: 674d496485f89bee1904e3588a0fb81c6140945b
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: f8dccca1d1264492a4e7c8dab568e13eec9d2557
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426613"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100706"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 將 SQL database 的工作流程自動化
 
@@ -38,7 +38,7 @@ ms.locfileid: "92426613"
 
   * 針對 Azure SQL Database，您可以在連接字串中找到這些詳細資料。
   
-    例如，若要在 Azure 入口網站中尋找這個字串，請開啟您的資料庫。 在 [資料庫] 功能表上，選取 [ **連接字串** ] 或 [ **屬性**]：
+    例如，若要在 Azure 入口網站中尋找這個字串，請開啟您的資料庫。 在 [資料庫] 功能表上，選取 [ **連接字串** ] 或 [ **屬性** ]：
 
     `Server=tcp:{your-server-name}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
 
@@ -72,7 +72,7 @@ ms.locfileid: "92426613"
 
 當您第一次新增 [sql 觸發](#add-sql-trigger) 程式或 [sql 動作](#add-sql-action)，但您尚未建立與資料庫的連線時，系統會提示您完成這些步驟：
 
-1. 在 [ **驗證類型**] 中，選取您的資料庫在 Azure SQL Database 或 Azure SQL 受控執行個體中所需和啟用的驗證：
+1. 在 [ **驗證類型** ] 中，選取您的資料庫在 Azure SQL Database 或 Azure SQL 受控執行個體中所需和啟用的驗證：
 
    | 驗證 | 描述 |
    |----------------|-------------|
@@ -80,11 +80,11 @@ ms.locfileid: "92426613"
    | [**SQL Server 驗證**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -支援非 ISE 和 ISE SQL Server 連接器。 <p><p>-需要在您的資料庫中建立並儲存有效的使用者名稱和強式密碼。 <p>如需詳細資訊，請參閱下列主題： <p>- [Azure SQL 安全性概觀-驗證](../azure-sql/database/security-overview.md#authentication) <br>- [授權資料庫存取 Azure SQL-驗證和授權](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
    |||
 
-   此範例會繼續 **Azure AD 整合**式：
+   此範例會繼續 **Azure AD 整合** 式：
 
    ![顯示 [SQL Server] 連線視窗的螢幕擷取畫面，其中已選取 [驗證類型] 清單和 [Azure AD 整合]。](./media/connectors-create-api-sqlazure/select-azure-ad-authentication.png)
 
-1. 選取 [ **Azure AD 整合**] 之後，請選取 [登 **入**]。 根據您是否使用 Azure SQL Database 或 Azure SQL 受控執行個體，請選取您的使用者認證以進行驗證。
+1. 選取 [ **Azure AD 整合** ] 之後，請選取 [登 **入** ]。 根據您是否使用 Azure SQL Database 或 Azure SQL 受控執行個體，請選取您的使用者認證以進行驗證。
 
 1. 為您的資料庫選取下列值：
 
@@ -116,7 +116,7 @@ ms.locfileid: "92426613"
 
    否則，當您建立連線時，您的資料閘道資源將不會出現在連線 **閘道** 清單中。
 
-1. 針對 [ **驗證類型**]，選取您的 SQL Server 所需且已啟用的驗證：
+1. 針對 [ **驗證類型** ]，選取您的 SQL Server 所需且已啟用的驗證：
 
    | 驗證 | 描述 |
    |----------------|-------------|
@@ -124,7 +124,7 @@ ms.locfileid: "92426613"
    | [**SQL Server 驗證**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -支援非 ISE 和 ISE SQL Server 連接器。 <p><p>-需要在您的 SQL Server 中建立並儲存有效的使用者名稱和強式密碼。 <p>如需詳細資訊，請參閱 [SQL Server Authentication](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)。 |
    |||
 
-   此範例會繼續進行 **Windows 驗證**：
+   此範例會繼續進行 **Windows 驗證** ：
 
    ![選取要使用的驗證類型](./media/connectors-create-api-sqlazure/select-windows-authentication.png)
 
@@ -137,7 +137,7 @@ ms.locfileid: "92426613"
    | **使用者名稱** | 是 | SQL server 和資料庫的使用者名稱 |
    | **密碼** | 是 | SQL server 和資料庫的密碼 |
    | **訂用帳戶** |  是，適用于 Windows 驗證 | 您先前在 Azure 中建立之資料閘道資源的 Azure 訂用帳戶 |
-   | **連接閘道** | 是，適用于 Windows 驗證 | 您先前在 Azure 中建立之資料閘道資源的名稱 <p><p>**秘訣**：如果您的閘道未出現在清單中，請檢查您是否已正確 [設定閘道](../logic-apps/logic-apps-gateway-connection.md)。 |
+   | **連接閘道** | 是，適用于 Windows 驗證 | 您先前在 Azure 中建立之資料閘道資源的名稱 <p><p>**秘訣** ：如果您的閘道未出現在清單中，請檢查您是否已正確 [設定閘道](../logic-apps/logic-apps-gateway-connection.md)。 |
    |||
 
    > [!TIP]
@@ -176,7 +176,7 @@ ms.locfileid: "92426613"
    
    例如，若要檢視此資料列中的資料，您可以新增其他動作來建立檔案，使其包含傳回資料列中的欄位，然後傳送電子郵件警示。 若要深入了解此連接器的其他可用動作，請參閱[連接器的參考頁面](/connectors/sql/)。
 
-1. 在設計工具的工具列上，選取 [儲存]。
+1. 在設計工具的工具列上，選取 [儲存]  。
 
    雖然這個步驟會在 Azure 中自動啟用併發布您的邏輯應用程式，但您的邏輯應用程式目前所採用的唯一動作，就是根據指定的間隔和頻率來檢查您的資料庫。
 
@@ -194,7 +194,7 @@ ms.locfileid: "92426613"
 
    或者，若要在現有步驟之間新增動作，請將滑鼠移至連接箭號上方。 選擇所顯示的加號 ( **+** )，然後選取 [新增動作]。
 
-1. 在 [選擇動作] 底下的搜尋方塊中，輸入 `sql server`。 從動作清單中，選取您想要的任何 SQL 動作。 此範例會使用**取得資料列**動作來取得單一記錄。
+1. 在 [選擇動作] 底下的搜尋方塊中，輸入 `sql server`。 從動作清單中，選取您想要的任何 SQL 動作。 此範例會使用 **取得資料列** 動作來取得單一記錄。
 
    ![選取 SQL 「取得資料列」動作](./media/connectors-create-api-sqlazure/select-sql-get-row-action.png)
 
@@ -210,6 +210,8 @@ ms.locfileid: "92426613"
 
    此步驟會自動在 Azure 中即時啟用並發佈邏輯應用程式。
 
+<a name="handle-bulk-data"></a>
+
 ## <a name="handle-bulk-data"></a>處理大量資料
 
 有時候，您必須處理的結果集很大，導致連接器無法一次傳回所有結果，或是您想要對結果集的大小和結構擁有更好的控制能力。 以下是用於處理這類大型結果集的一些方法：
@@ -218,12 +220,14 @@ ms.locfileid: "92426613"
 
 * 建立 [*預存*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) 程式，以您想要的方式組織結果。 SQL connector 提供許多可利用 Azure Logic Apps 存取的後端功能，讓您可以更輕鬆地將使用 SQL database 資料表的商務工作自動化。
 
-  在取得或插入多個資料列時，邏輯應用程式可在這些[限制](../logic-apps/logic-apps-limits-and-config.md)內使用 [*until 迴圈*](../logic-apps/logic-apps-control-flow-loops.md#until-loop)，來逐一查看這些資料列。 但是，當邏輯應用程式必須處理的記錄集很大時 (例如，數千或數百萬個資料列)，您應將資料庫的呼叫成本降至最低。
+  在取得或插入多個資料列時，邏輯應用程式可在這些 [限制](../logic-apps/logic-apps-limits-and-config.md)內使用 [*until 迴圈*](../logic-apps/logic-apps-control-flow-loops.md#until-loop)，來逐一查看這些資料列。 但是，當邏輯應用程式必須處理的記錄集很大時 (例如，數千或數百萬個資料列)，您應將資料庫的呼叫成本降至最低。
 
-  為了以所需方式組織結果，您可以轉而建立預存程序，其可在 SQL 執行個體中執行，並使用 **SELECT - ORDER BY** 陳述式。 此解決方案可讓您對結果的大小和結構擁有更好的控制能力。 邏輯應用程式會使用 SQL Server 連接器的**執行預存程序**動作來呼叫預存程序。 如需詳細資訊，請參閱 [SELECT-ORDER By 子句](/sql/t-sql/queries/select-order-by-clause-transact-sql)。
+  為了以所需方式組織結果，您可以轉而建立預存程序，其可在 SQL 執行個體中執行，並使用 **SELECT - ORDER BY** 陳述式。 此解決方案可讓您對結果的大小和結構擁有更好的控制能力。 邏輯應用程式會使用 SQL Server 連接器的 **執行預存程序** 動作來呼叫預存程序。 如需詳細資訊，請參閱 [SELECT-ORDER By 子句](/sql/t-sql/queries/select-order-by-clause-transact-sql)。
 
   > [!NOTE]
-  > 使用此連接器時，預存程式執行限制為 [小於2分鐘的超時限制](/connectors/sql/#known-issues-and-limitations)。 某些預存程式的處理時間可能會超過此限制，而且會產生 `504 TIMEOUT` 錯誤。 實際上，某些長時間執行的進程會針對此用途明確編碼為預存程式。 從 Azure Logic Apps 呼叫這些程式可能會因為這個超時限制而造成問題。 雖然 SQL connector 原本就不支援非同步模式，但您可以使用 SQL 完成觸發程式、原生 SQL 傳遞查詢、狀態資料表和伺服器端作業，藉由使用 [Azure 彈性作業代理程式](../azure-sql/database/elastic-jobs-overview.md)來模擬此模式。
+  > SQL 連接器的預存程式超時限制 [小於2分鐘](/connectors/sql/#known-issues-and-limitations)。 某些預存程式可能需要超過此限制才能完成，因而導致 `504 Timeout` 錯誤。 您可以使用 SQL 完成觸發程式、原生 SQL 傳遞查詢、狀態資料表和伺服器端作業來解決此問題。
+  > 
+  > 針對這項工作，您可以使用適用于[Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md)的[Azure 彈性作業代理程式](../azure-sql/database/elastic-jobs-overview.md)。 針對 [SQL Server 內部部署](/sql/sql-server/sql-server-technical-documentation) 和 [Azure SQL 受控執行個體](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)，您可以使用 [SQL Server Agent](/sql/ssms/agent/sql-server-agent)。 若要深入瞭解，請參閱在 [SQL connector 中處理長時間執行的預存程式超時以進行 Azure Logic Apps](../logic-apps/handle-long-running-stored-procedures-sql-connector.md)。
 
 ### <a name="handle-dynamic-bulk-data"></a>處理動態大量資料
 
@@ -235,16 +239,16 @@ ms.locfileid: "92426613"
 
 1. 在設計工具中，於您呼叫預存程序的動作底下，選取 [新增步驟]。
 
-1. 在 **[選擇動作**] 底下，尋找並選取 [ [**剖析 JSON**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) ] 動作。
+1. 在 **[選擇動作** ] 底下，尋找並選取 [ [**剖析 JSON**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) ] 動作。
 
-1. 在**剖析 JSON** 動作中，選取 [使用範例承載來產生結構描述]。
+1. 在 **剖析 JSON** 動作中，選取 [使用範例承載來產生結構描述]。
 
-1. 在 [ **輸入或貼上範例 JSON** 承載] 方塊中，貼上您的範例輸出，然後選取 [ **完成**]。
+1. 在 [ **輸入或貼上範例 JSON** 承載] 方塊中，貼上您的範例輸出，然後選取 [ **完成** ]。
 
    > [!NOTE]
    > 如果您收到 Logic Apps 無法產生結構描述的錯誤，請檢查您輸出範例的語法格式是否正確。 如果您仍然無法產生架構，請在 [ **架構** ] 方塊中，手動輸入架構。
 
-1. 在設計工具的工具列上，選取 [儲存]。
+1. 在設計工具的工具列上，選取 [儲存]  。
 
 1. 若要參考 JSON 內容屬性，請在您想要參考這些屬性的編輯方塊內按一下，以顯示動態內容清單。 在清單中的 [ [**剖析 json**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) ] 標題下，選取您要的 JSON 內容屬性的資料標記。
 

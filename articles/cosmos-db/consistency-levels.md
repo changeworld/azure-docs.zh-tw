@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: 77af5a66ba349e5985e3b27b07c82a1595ccc8a1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 742ff2e6cff4569b5b7eeb131cd4394277b6c3cd
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547073"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100451"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB 中的一致性層級
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 依賴複寫來達到高可用性、低延遲或兩者的分散式資料庫，必須在讀取一致性、可用性、延遲和輸送量之間進行基本取捨，如 [PACLC 定理](https://en.wikipedia.org/wiki/PACELC_theorem)所定義。 強式一致性模型的線性化能力是資料可程式性的黃金標準。 但因為資料必須跨大型距離進行複寫和認可，所以它可從較高的寫入延遲增加陡價。 因為資料無法在每個區域中複寫和認可，所以在失敗期間，強式一致性可能也會受到降低的可用性 (影響) 。 最終一致性提供更高的可用性和更佳的效能，但因為資料在所有區域之間可能不會完全一致，所以對應用程式更難進行程式設計。
 

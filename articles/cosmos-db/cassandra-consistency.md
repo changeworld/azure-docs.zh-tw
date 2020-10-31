@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 155e1ed5b089c16887c845c94f36c9c6d9f0af6e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f640ad85fd34dd5a4803e7dd96f1c0283f0c859a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283802"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100420"
 ---
 # <a name="apache-cassandra-and-azure-cosmos-db-consistency-levels"></a>Apache Cassandra 和 Azure Cosmos DB 一致性層級
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 不同于 Azure Cosmos DB，Apache Cassandra 本身並不提供精確定義的一致性保證。 取而代之的是，Apache Cassandra 會提供「寫入」一致性層級和「讀取」一致性層級，以實現高可用性、一致性和延遲的取捨。 使用 Azure Cosmos DB 的 Cassandra API 時：
 

@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: thweiss
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 968ae8e582587564f1e268f16c18cf6d562d4333
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b814100097897aff6047b8b6d6cc0e8ebaa409ba
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279552"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101522"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>定義 Azure Cosmos 容器的唯一索引鍵
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文提供不同方式來定義建立 Azure Cosmos 容器時的[唯一索引鍵](unique-keys.md)。 目前可執行這項作業的方式是使用 Azure 入口網站或透過其中一個 SDK。
 
@@ -24,15 +25,15 @@ ms.locfileid: "92279552"
 
 1. [建立新的 Azure Cosmos 帳戶](create-sql-api-dotnet.md#create-account)，或選取現有帳戶。
 
-1. 開啟 [資料總管]**** 窗格，然後選取您要處理的容器。
+1. 開啟 [資料總管]  窗格，然後選取您要處理的容器。
 
-1. 按一下 [新容器]****。
+1. 按一下 [新容器]  。
 
-1. 在 [新增容器]**** 對話方塊中，按一下 [+ 新增唯一索引鍵]**** 來新增唯一索引鍵項目。
+1. 在 [新增容器]  對話方塊中，按一下 [+ 新增唯一索引鍵]  來新增唯一索引鍵項目。
 
 1. 輸入唯一索引鍵條件限制的路徑
 
-1. 如有需要，可按一下 [+ 新增唯一索引鍵]**** 來新增更多唯一索引鍵項目
+1. 如有需要，可按一下 [+ 新增唯一索引鍵]  來新增更多唯一索引鍵項目
 
     :::image type="content" source="./media/how-to-define-unique-keys/unique-keys-portal.png" alt-text="Azure 入口網站中唯一索引鍵條件限制項目的螢幕擷取畫面":::
 
@@ -149,7 +150,7 @@ client.CreateContainer('dbs/' + config['DATABASE'], {
 })
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 深入瞭解 [分割](partitioning-overview.md)
 - 探索[如何為工作編製索引](index-overview.md)

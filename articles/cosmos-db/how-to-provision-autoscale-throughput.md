@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/15/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 452259015cf78234aa6a96194342de20db9a3724
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 615ce7da3ec480b766ceaeb307c50f7cb759fd4a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740880"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100111"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>在 Azure Cosmos DB-SQL API 中的資料庫或容器上布建自動調整輸送量
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文說明如何在資料庫或容器上布建自動調整輸送量 (集合、圖表或資料表) Azure Cosmos DB SQL API 中。 您可在單一容器上啟用自動調整，或在資料庫上佈建自動調整輸送量，並在資料庫中的所有容器之間共用。
 

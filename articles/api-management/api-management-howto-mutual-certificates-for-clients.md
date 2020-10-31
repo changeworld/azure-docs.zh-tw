@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 19e0d741d959eba704f26e7e8f7b5d311aa77775
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e5522c162e08f0257bd6f20b058bf8bb858cff3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87904853"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099341"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>如何使用 API 管理中的用戶端憑證驗證保護 API
 
@@ -93,9 +93,8 @@ API 管理提供以用戶端憑證保護對 API 之存取 (例如，用戶端對
 
 > [!TIP]
 > 本文所述的用戶端憑證鎖死 [問題可能會](https://techcommunity.microsoft.com/t5/Networking-Blog/HTTPS-Client-Certificate-Request-freezes-when-the-Server-is/ba-p/339672) 以數種方式資訊清單，例如要求凍結，要求 `403 Forbidden` 會在超時後產生狀態碼 `context.Request.Certificate` `null` 。 此問題通常會 `POST` 影響 `PUT` 內容長度大約60KB 或更大的要求。
-> 若要避免發生此問題，請在 [自訂網域] 分頁上，針對所需的主機名稱開啟 [Negotiate 用戶端憑證] 設定，如下所示。 這項功能不適用於使用量層。
+> 若要避免發生此問題，請在 [自訂網域] 分頁上，針對所需的主機名稱開啟 [Negotiate 用戶端憑證] 設定，如本檔的第一個影像所示。 這項功能不適用於使用量層。
 
-![Negotiate 用戶端憑證](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 
 ## <a name="next-steps"></a>後續步驟
 

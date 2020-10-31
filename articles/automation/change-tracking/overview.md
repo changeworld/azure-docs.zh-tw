@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: f4fc464da08128b7f2ecd0a037213d5f40aa65e0
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 35b1b07bd4d9eef555be26e1c24356b7c352bf38
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670735"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100689"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>變更追蹤和清查概觀
 
@@ -93,7 +93,7 @@ ms.locfileid: "92670735"
 
 ## <a name="tracking-file-content-changes"></a>追蹤檔案內容變更
 
-變更追蹤和清查可讓您查看 Windows 或 Linux 檔案的內容。 對於檔案的每項變更，變更追蹤和清查都會將檔案的內容儲存在 [Azure 儲存體帳戶](/storage/common/storage-account-create)中。 當您要追蹤檔案時，可以在變更之前或之後查看其內容。 檔案內容可以內嵌或並排查看。
+變更追蹤和清查可讓您查看 Windows 或 Linux 檔案的內容。 對於檔案的每項變更，變更追蹤和清查都會將檔案的內容儲存在 [Azure 儲存體帳戶](/azure/storage/common/storage-account-create)中。 當您要追蹤檔案時，可以在變更之前或之後查看其內容。 檔案內容可以內嵌或並排查看。
 
 ![檢視檔案中的變更](./media/overview/view-file-changes.png)
 

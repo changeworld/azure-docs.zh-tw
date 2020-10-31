@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db61a3f9034908043695bc7db3a16551bf4659c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95c589289d77597be2550673944c8fa21902e0fb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86024072"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098462"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection - 安全性概觀
 
@@ -27,7 +27,7 @@ Azure 入口網站的 [安全性總覽](https://aka.ms/IdentityProtectionRefresh
 - 趨勢位於左側，會提供組織中的風險時間軸。
 - 圖格位於右側，會顯示組織當前的重要問題，並提供快速因應的建議策略。
 
-![安全性概觀](./media/concept-identity-protection-security-overview/01.png)
+:::image type="content" source="./media/concept-identity-protection-security-overview/01.png" alt-text="Azure 入口網站安全性總覽的螢幕擷取畫面。橫條圖會顯示一段時間的風險計數。磚摘要說明使用者和登入的資訊。" border="false":::
   
 ## <a name="trends"></a>趨勢
 
@@ -45,7 +45,7 @@ Azure 入口網站的 [安全性總覽](https://aka.ms/IdentityProtectionRefresh
 
 [高度風險使用者] 圖格會顯示身分識別遭入侵機率偏高的最新使用者計數。 這應該是調查的首要任務。 按一下 [高度風險使用者] 圖格將會重新導向至 [具風險的使用者] 報告的篩選檢視，其中僅顯示風險層級為「高」的使用者。 使用此報告可了解詳情，並透過密碼重設來修正這些使用者。
 
-![安全性概觀](./media/concept-identity-protection-security-overview/02.png)
+:::image type="content" source="./media/concept-identity-protection-security-overview/02.png" alt-text="Azure 入口網站安全性總覽的螢幕擷取畫面。橫條圖會顯示一段時間的風險計數。磚摘要說明使用者和登入的資訊。" border="false":::
 
 ### <a name="medium-risk-users"></a>中度風險使用者
 [中度風險使用者] 圖格會顯示身分識別遭入侵的機率中等的最新使用者計數。 按一下 [中度風險使用者] 圖格將會重新導向至 [具風險的使用者] 報告的篩選檢視，其中僅顯示風險層級為「中」的使用者。 使用此報告可進一步調查並修正這些使用者。
@@ -62,7 +62,7 @@ Azure 入口網站的 [安全性總覽](https://aka.ms/IdentityProtectionRefresh
 
 身分識別安全分數會測量安全性狀態，並與產業模式比較。 如果您按一下 [身分識別安全分數 (預覽) ] 圖格，則會重新導向至 [身分識別安全分數] 分頁，您可以在此深入瞭解如何改善安全性狀態。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - [什麼是風險](concept-identity-protection-risks.md)
 

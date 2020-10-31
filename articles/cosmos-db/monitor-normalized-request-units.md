@@ -6,24 +6,25 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 06/25/2020
-ms.openlocfilehash: 183b161039b86ce824fd0bfde82cf291d54024fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc47f2f7a0f1586b197d14015fe2167293c806c6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91801472"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099329"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>如何監視 Azure Cosmos 容器或帳戶的正規化 RU/秒
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB 的 Azure 監視器會提供計量視圖，以監視您的帳戶和建立儀表板。 預設會收集 Azure Cosmos DB 計量，這項功能不會要求您明確啟用或設定任何設定。
 
-**正規化的 RU 耗用量**計量是用來查看分割區索引鍵範圍對於流量的飽和程度。 Azure Cosmos DB 會在所有分割區索引鍵範圍內平均分配輸送量。 此計量會提供資料分割索引鍵範圍的最大輸送量使用率的每秒查看量。 使用此計量來計算指定容器之分割區索引鍵範圍內的 RU/秒使用量。 藉由使用此計量，如果您在 Azure 監視器中看到所有分割區索引鍵範圍的要求單位使用率百分比很高，您應該增加輸送量以符合工作負載的需求。 範例-標準化使用率會定義為所有資料分割索引鍵範圍的 RU/秒使用率上限。 例如，假設您的最大輸送量為 20000 RU/秒，而您有兩個分割區索引鍵範圍，P_1 和 P_2，每個都可以調整為 10000 RU/秒。 在指定的秒數內，如果 P_1 已使用 6000 RU，P_2 已使用 8000 RU，則標準化使用率為 MAX(6000 RU / 10,000 RU，8000 RU / 10,000 RU) = 0.8。
+**正規化的 RU 耗用量** 計量是用來查看分割區索引鍵範圍對於流量的飽和程度。 Azure Cosmos DB 會在所有分割區索引鍵範圍內平均分配輸送量。 此計量會提供資料分割索引鍵範圍的最大輸送量使用率的每秒查看量。 使用此計量來計算指定容器之分割區索引鍵範圍內的 RU/秒使用量。 藉由使用此計量，如果您在 Azure 監視器中看到所有分割區索引鍵範圍的要求單位使用率百分比很高，您應該增加輸送量以符合工作負載的需求。 範例-標準化使用率會定義為所有資料分割索引鍵範圍的 RU/秒使用率上限。 例如，假設您的最大輸送量為 20000 RU/秒，而您有兩個分割區索引鍵範圍，P_1 和 P_2，每個都可以調整為 10000 RU/秒。 在指定的秒數內，如果 P_1 已使用 6000 RU，P_2 已使用 8000 RU，則標準化使用率為 MAX(6000 RU / 10,000 RU，8000 RU / 10,000 RU) = 0.8。
 
 ## <a name="what-to-expect-and-do-when-normalized-rus-is-higher"></a>當正規化的 RU/秒較高時的預期和效果
 
 當正規化的 RU/s 耗用量達到指定分割區索引鍵範圍的100% 時，而且如果用戶端仍在該時間範圍內對該特定分割區索引鍵範圍提出要求，則會收到速率限制錯誤。 用戶端應該遵守建議的等候時間，然後重試要求。 SDK 可讓您藉由適當等候來重試預先設定的時間，藉此輕鬆處理這種情況。  您不一定會看到 RU 速率限制錯誤，因為正規化的 RU 已達100%。 這是因為正規化的 RU 是單一值，表示所有資料分割索引鍵範圍的最大使用量，一個資料分割索引鍵範圍可能會很忙碌，但是其他資料分割索引鍵範圍可以提供要求而不會有問題。 例如，在分割區索引鍵範圍上取用所有 RU/s 的單一作業（例如預存程式），會導致正規化的 RU/秒耗用量出現短暫的尖峰。 在這種情況下，如果要求速率很低，或對不同分割區索引鍵範圍上的其他資料分割提出要求，將不會有任何立即速率限制錯誤。 
 
-Azure 監視器計量可協助您使用「 **要求總數** 」度量來尋找 SQL API 的每個狀態碼作業。 您稍後可以依429狀態碼篩選這些要求，並依作業 **類型**進行分割。  
+Azure 監視器計量可協助您使用「 **要求總數** 」度量來尋找 SQL API 的每個狀態碼作業。 您稍後可以依429狀態碼篩選這些要求，並依作業 **類型** 進行分割。  
 
 若要尋找速率受限的要求，建議的方法是透過診斷記錄取得這項資訊。
 
@@ -41,7 +42,7 @@ Azure 監視器計量可協助您使用「 **要求總數** 」度量來尋找 S
 
    :::image type="content" source="./media/monitor-normalized-request-units/monitor-metrics-blade.png" alt-text="Azure 監視器中的 [計量] 窗格":::
 
-3. 從 [計量] 窗格 > **選取資源** > 選擇必要的**訂用帳戶**和**資源群組**。 在 [資源類型] 中，選取 [Azure Cosmos DB 帳戶]，然後選擇其中一個現有的 Azure Cosmos 帳戶並選取 [套用]。
+3. 從 [計量] 窗格 > **選取資源** > 選擇必要的 **訂用帳戶** 和 **資源群組** 。 在 [資源類型] 中，選取 [Azure Cosmos DB 帳戶]，然後選擇其中一個現有的 Azure Cosmos 帳戶並選取 [套用]。
 
    :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="Azure 監視器中的 [計量] 窗格":::
 
@@ -53,7 +54,7 @@ Azure 監視器計量可協助您使用「 **要求總數** 」度量來尋找 S
 
 ### <a name="filters-for-normalized-request-unit-consumption"></a>標準化要求單位耗用量的篩選
 
-您也可以篩選特定 **CollectionName**、 **DatabaseName**、 **PartitionKeyRangeID**和 **區域**所顯示的計量和圖表。 若要篩選計量，請選取 [ **加入篩選** ]，然後選擇必要的屬性，例如 **CollectionName** 和您感興趣的對應值。 然後，圖形會顯示所選期間內針對容器取用的正規化 RU 耗用量單位。  
+您也可以篩選特定 **CollectionName** 、 **DatabaseName** 、 **PartitionKeyRangeID** 和 **區域** 所顯示的計量和圖表。 若要篩選計量，請選取 [ **加入篩選** ]，然後選擇必要的屬性，例如 **CollectionName** 和您感興趣的對應值。 然後，圖形會顯示所選期間內針對容器取用的正規化 RU 耗用量單位。  
 
 您可以使用 [套用分割] 選項來將計量分組。  
 
@@ -61,7 +62,7 @@ Azure 監視器計量可協助您使用「 **要求總數** 」度量來尋找 S
 
 :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="Azure 監視器中的 [計量] 窗格":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 使用 Azure 中的 [診斷設定](cosmosdb-monitor-resource-logs.md) 來監視 Azure Cosmos DB 資料。
 * [Audit Azure Cosmos DB 控制平面作業](audit-control-plane-logs.md)

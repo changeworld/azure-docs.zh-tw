@@ -7,24 +7,25 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: e12bae14ede90a3b93a69d963981f097818e65ab
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7dc81581846f8abdae81fa3552d9fa4645f32a05
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480219"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101301"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>預存程序、觸發程序和使用者定義函式
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB 提供 JavaScript 的語言整合式、交易式執行。 使用 Azure Cosmos DB 中的 SQL API 時，您可以在 JavaScript 語言中 (Udf) 來撰寫 **預存程式**、 **觸發**程式和 **使用者定義函數 ** 。 您可以使用 JavaScript 寫入在資料庫引擎內執行的邏輯。 您可以使用 [Azure 入口網站](https://portal.azure.com/)、 [Azure Cosmos DB 中的 JavaScript 語言整合式查詢 API](javascript-query-api.md) 或 [Cosmos DB SQL API 用戶端 sdk](how-to-use-stored-procedures-triggers-udfs.md)，來建立和執行觸發程式、預存程式和 udf。
+Azure Cosmos DB 提供 JavaScript 的語言整合式、交易式執行。 使用 Azure Cosmos DB 中的 SQL API 時，您可以在 JavaScript 語言中 (Udf) 來撰寫 **預存程式** 、 **觸發** 程式和 **使用者定義函數** 。 您可以使用 JavaScript 寫入在資料庫引擎內執行的邏輯。 您可以使用 [Azure 入口網站](https://portal.azure.com/)、 [Azure Cosmos DB 中的 JavaScript 語言整合式查詢 API](javascript-query-api.md) 或 [Cosmos DB SQL API 用戶端 sdk](how-to-use-stored-procedures-triggers-udfs.md)，來建立和執行觸發程式、預存程式和 udf。
 
 ## <a name="benefits-of-using-server-side-programming"></a>使用伺服器端程式設計的好處
 
 以 JavaScript 撰寫預存程序、觸發程序和使用者定義函數 (UDF)，可讓您建置豐富應用程式，其優點如下：
 
-* 程式**邏輯：** JavaScript 是高階程式設計語言，可提供豐富且熟悉的介面來表達商務邏輯。 您可以對資料執行一連串的複雜作業。
+* 程式 **邏輯：** JavaScript 是高階程式設計語言，可提供豐富且熟悉的介面來表達商務邏輯。 您可以對資料執行一連串的複雜作業。
 
-* 不可部分完成的**交易：** Azure Cosmos DB 在單一預存程式或觸發程式內執行的資料庫作業是不可部分完成的。 這個不可部分完成的功能可讓應用程式將相關作業合併在單一批次中，讓所有作業不是一起成功就是一起失敗。
+* 不可部分完成的 **交易：** Azure Cosmos DB 在單一預存程式或觸發程式內執行的資料庫作業是不可部分完成的。 這個不可部分完成的功能可讓應用程式將相關作業合併在單一批次中，讓所有作業不是一起成功就是一起失敗。
 
 * **效能：** JSON 資料本質上是對應至 JavaScript 語言類型系統。 此對應可提供許多最佳化功能，例如在緩衝集區中對 JSON 文件執行滯後具體化，並讓執行中程式碼可以依需求使用這些文件。 除此之外，還有其他與將商務邏輯傳送至資料庫相關聯的效能優點，包括：
 
@@ -41,7 +42,7 @@ Azure Cosmos DB 提供 JavaScript 的語言整合式、交易式執行。 使用
 
 ## <a name="transactions"></a>交易
 
-一般資料庫中的交易可以定義為以單一工作邏輯單位執行的一連串作業。 每個交易都提供 **ACID 屬性保證**。 ACID 是知名的縮寫，代表 **： tomicity、** **C**onsistency、 **I**、和 **D**耐用性。 
+一般資料庫中的交易可以定義為以單一工作邏輯單位執行的一連串作業。 每個交易都提供 **ACID 屬性保證** 。 ACID 是知名的縮寫，代表 **： tomicity、** **C** onsistency、 **I** 、和 **D** 耐用性。 
 
 * 「不可部分完成性」保證會將交易內完成的所有作業視為單一單位，所有工作不是全部認可就是一個都不認可。 
 

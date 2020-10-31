@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 7caa29807f2779ee1f52cb22de2bf95fdb9cb37e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4d03e651006661a2fa82901d64f8fb6ac2236210
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367120"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098768"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>簡介 Azure Cosmos DB 中的佈建輸送量
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB 可讓您在資料庫和容器上設定佈建輸送量。 佈建輸送量有兩種類型：標準 (手動) 或自動調整。 本文概述布建的輸送量的運作方式。 
 
@@ -79,11 +80,11 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 您可以結合這兩個模型， 就能同時在資料庫和容器上佈建輸送量。 下列範例說明如何在 Azure Cosmos 資料庫和容器上佈建標準(手動) 佈建輸送量：
 
 * 您可以使用 *"K"* 個 RU 的標準 (手動) 佈建輸送量來建立名為 *Z* 的 Azure Cosmos 資料庫。 
-* 接下來，在資料庫中建立五個容器，名稱分別為 *A*、*B*、*C*、*D* 和 *E*。 建立容器 B 時，請務必啟用 [為此容器佈建專用輸送量] 選項，並在此容器上明確設定 *"P"* 個 RU 的佈建輸送量。 只有在建立資料庫和容器時，您才能設定共用和專用輸送量。 
+* 接下來，在資料庫中建立五個容器，名稱分別為 *A* 、 *B* 、 *C* 、 *D* 和 *E* 。 建立容器 B 時，請務必啟用 [為此容器佈建專用輸送量] 選項，並在此容器上明確設定 *"P"* 個 RU 的佈建輸送量。 只有在建立資料庫和容器時，您才能設定共用和專用輸送量。 
 
    :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="裝載容器的一或多個邏輯分割區的實體分割區":::
 
-* *"K"* RU 輸送量會在四個容器 *A*、*C*、*D* 和 *E*之間共用。*A*、*C*、*D* 或 *E* 可用的確切輸送量數量會有所不同。 沒有適用於每個個別容器輸送量的 SLA。
+* *"K"* RU 輸送量會在四個容器 *A* 、 *C* 、 *D* 和 *E* 之間共用。 *A* 、 *C* 、 *D* 或 *E* 可用的確切輸送量數量會有所不同。 沒有適用於每個個別容器輸送量的 SLA。
 * 容器 *B* 保證能夠隨時取得 *"P"* 個 RU 的輸送量， 並受到 SLA 支援。
 
 > [!NOTE]
@@ -119,9 +120,9 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 * .NET SDK 上的[ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) 。
 * JAVA SDK 上的[CosmosContainer. replaceThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput?view=azure-java-stable&preserve-view=true) 。
 
-如果您要 **減少布建的輸送量**，您將能夠達到 [最小值](#current-provisioned-throughput)。
+如果您要 **減少布建的輸送量** ，您將能夠達到 [最小值](#current-provisioned-throughput)。
 
-如果您要 **增加布建的輸送量**，大部分的情況下，作業會立即進行。 不過，在某些情況下，作業可能需要較長的時間，因為系統工作會布建所需的資源。 在此情況下，嘗試在此作業進行時修改布建的輸送量將會產生 HTTP 423 回應，並顯示錯誤訊息，說明另一個調整作業正在進行中。
+如果您要 **增加布建的輸送量** ，大部分的情況下，作業會立即進行。 不過，在某些情況下，作業可能需要較長的時間，因為系統工作會布建所需的資源。 在此情況下，嘗試在此作業進行時修改布建的輸送量將會產生 HTTP 423 回應，並顯示錯誤訊息，說明另一個調整作業正在進行中。
 
 > [!NOTE]
 > 如果您正在規劃非常大型的內嵌工作負載，且需要大幅增加布建的輸送量，請記住調整規模作業沒有 SLA，而在上一段所述的情況下，可能會花很長的時間來提高規模。 您可能想要在工作負載啟動之前事先規劃並開始調整，並使用下列方法來檢查進度。

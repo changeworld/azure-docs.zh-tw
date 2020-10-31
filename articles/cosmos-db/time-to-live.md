@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 2700b18797db3805a081b549605369e73889867b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d4815f4be3c8ef1a2c262d6715756776a537eac1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476972"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101046"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB 中的存留時間 (TTL)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 透過生存 **時間** 或 TTL，Azure Cosmos DB 可讓您在一段時間後自動從容器中刪除專案。 根據預設，您可以在容器層級設定存留時間，且覆寫每個項目的值。 在容器或項目層級設定 TTL 之後，Azure Cosmos DB 會在自從上次修改以來的時間週期後自動移除這些項目。 存留時間值會以秒設定。 當您設定 TTL 時，系統會根據 TTL 值自動刪除過期的專案，而不需要用戶端應用程式明確發出的刪除操作。 TTL 的最大值是2147483647。
 
@@ -84,7 +85,7 @@ ms.locfileid: "92476972"
 |ttl =-1   |已啟用 TTL。 專案永遠不會過期。|
 |ttl = 2000 |已啟用 TTL。 專案將在2000秒後過期。|
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在下列文章中瞭解如何設定存留時間：
 

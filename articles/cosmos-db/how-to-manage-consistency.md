@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 2b3433d969611fabe1b12a8dcabfe6e50066a8c1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 4be2b8cdd987b6357df283f0791593c51417dfc7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491184"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101488"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的一致性層級
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文說明如何管理 Azure Cosmos DB 中的一致性層級。 您會了解如何設定預設一致性、覆寫預設一致性、手動管理工作階段權杖，並了解概率限定過期 (PBS) 計量。
 
@@ -26,7 +27,7 @@ ms.locfileid: "92491184"
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-若要檢視或修改預設一致性層級，請登入 Azure 入口網站。 尋找您的 Azure Cosmos 帳戶，然後開啟 [預設一致性]**** 窗格。 選取要作為新預設值的一致性層級，然後選取 [儲存]****。 Azure 入口網站也會提供不同一致性層級 (含音符) 的視覺效果。 
+若要檢視或修改預設一致性層級，請登入 Azure 入口網站。 尋找您的 Azure Cosmos 帳戶，然後開啟 [預設一致性]  窗格。 選取要作為新預設值的一致性層級，然後選取 [儲存]  。 Azure 入口網站也會提供不同一致性層級 (含音符) 的視覺效果。 
 
 :::image type="content" source="./media/how-to-manage-consistency/consistency-settings.png" alt-text="Azure 入口網站中的一致性功能表":::
 
@@ -162,7 +163,7 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
 
 ## <a name="utilize-session-tokens"></a>使用工作階段權杖
 
-Azure Cosmos DB 中的其中一個一致性層級是「工作階段」** 一致性。 這是預設套用至 Cosmos 帳戶的預設層級。 使用「工作階段」** 一致性時，用戶端會搭配每個讀取/查詢要求在內部使用工作階段權杖，以確保維持已設定的一致性層級。
+Azure Cosmos DB 中的其中一個一致性層級是「工作階段」  一致性。 這是預設套用至 Cosmos 帳戶的預設層級。 使用「工作階段」  一致性時，用戶端會搭配每個讀取/查詢要求在內部使用工作階段權杖，以確保維持已設定的一致性層級。
 
 若要手動管理工作階段權杖，請從回應中取得工作階段權杖，並就個別要求加以設定。 如果不需要手動管理工作階段權杖，則不需要使用下列範例。 SDK 會自動持續追蹤工作階段權杖。 如果未手動設定工作階段權杖，則 SDK 預設會使用最新的工作階段權杖。
 
@@ -279,7 +280,7 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>監視機率限定過期 (PBS) 計量
 
-最終一致性的界定標準為何？ 針對平均案例，我們可根據版本記錄和時間來提供過期界限。 [**機率限定過期 (PBS)**](https://pbs.cs.berkeley.edu/) 計量會嘗試量化過期的機率，並將其顯示為計量。 若要檢視 PBS 計量，請在 Azure 入口網站中移至您的 Azure Cosmos 帳戶。 開啟 [ **計量** ] 窗格，然後選取 [ **一致性** ] 索引標籤。查看以 **您的工作負載為基礎的強式一致讀取的圖表， (查看 PBS) **。
+最終一致性的界定標準為何？ 針對平均案例，我們可根據版本記錄和時間來提供過期界限。 [**機率限定過期 (PBS)**](https://pbs.cs.berkeley.edu/) 計量會嘗試量化過期的機率，並將其顯示為計量。 若要檢視 PBS 計量，請在 Azure 入口網站中移至您的 Azure Cosmos 帳戶。 開啟 [ **計量** ] 窗格，然後選取 [ **一致性** ] 索引標籤。查看以 **您的工作負載為基礎的強式一致讀取的圖表， (查看 PBS)** 。
 
 :::image type="content" source="./media/how-to-manage-consistency/pbs-metric.png" alt-text="Azure 入口網站中的一致性功能表":::
 

@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 758ac13530752df481d27e7e253f025f5c8d6430
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb3afd2524949b1209ac42542a012b74559234d5
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78302197"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098105"
 ---
 # <a name="replace-azure-cosmos-db"></a>取代 (Azure Cosmos DB) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  將指定字串值的所有相符項目取代成另一個字串值。  
   
 ## <a name="syntax"></a>語法
@@ -32,7 +34,7 @@ REPLACE(<str_expr1>, <str_expr2>, <str_expr3>)
    這是要尋找的字串運算式。  
   
 *str_expr3*  
-   這是用來取代*str_expr1*中之*str_expr2*出現次數的字串運算式。  
+   這是用來取代 *str_expr1* 中之 *str_expr2* 出現次數的字串運算式。  
   
 ## <a name="return-types"></a>傳回類型
   

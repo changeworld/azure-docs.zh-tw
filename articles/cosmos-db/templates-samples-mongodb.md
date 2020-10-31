@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: mjbrown
-ms.openlocfilehash: 974ddf4e5e6353eeb53ad90a16740909466016cf
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 821bf1329f32c8d4ca759baf2a5bbb5baed70674
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477057"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101082"
 ---
 # <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本管理 Azure Cosmos DB MongoDB API 資源
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 在本文中，您會了解如何使用 Azure Resource Manager 範本來部署和管理適用於 MongoDB API、資料庫和集合的 Azure Cosmos DB 帳戶。
 

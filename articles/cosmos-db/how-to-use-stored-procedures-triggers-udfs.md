@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 3744029b72a12cee1543a17bf1dee67a080904c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56c6327d2ecd3ae3721a7ee33565543405088d1c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253049"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098870"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中註冊和使用預存程序、觸發程序和使用者定義函式
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB 中的 SQL API 支援註冊和叫用以 JavaScript 撰寫的預存程序、觸發程序和使用者定義函式 (UDF)。 您可以使用 SQL API [.net](sql-api-sdk-dotnet.md)、 [.Net Core](sql-api-sdk-dotnet-core.md)、 [JAVA](sql-api-sdk-java.md)、 [JavaScript](sql-api-sdk-node.md)、 [Node.js](sql-api-sdk-node.md)或 [Python](sql-api-sdk-python.md) sdk 來註冊及叫用預存程式。 定義一個或多個預存程式、觸發程式和使用者定義函數之後，您可以使用資料總管在 [Azure 入口網站](https://portal.azure.com/) 中載入和查看這些預存程式、觸發程式和使用者定義函數。
 
@@ -707,7 +708,7 @@ results = list(container.query_items(
     'query': 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 了解更多概念，以及如何在 Azure Cosmos DB 中寫入或使用預存程序、觸發程序和使用者定義函式：
 

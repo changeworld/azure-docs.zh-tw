@@ -6,14 +6,15 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: d85f020152fa3cadb1d437c125d327f5e895e14e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46170a0f723e912c370eb6e068542a02b9959948
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85262883"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101471"
 ---
 # <a name="import-notebooks-from-a-github-repo-into-azure-cosmos-db"></a>將筆記本從 GitHub 存放庫匯入 Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 為您的 Azure Cosmos 帳戶[啟用筆記本支援](enable-notebooks.md)之後，您可以建立筆記本、從本機電腦上傳新的筆記本，或從您的 GitHub 帳戶匯入現有的筆記本。 本文示範如何將您的筆記本工作區連線至 GitHub，並將筆記本從 GitHub 存放庫匯入您的 Azure Cosmos 帳戶。 匯入之後，您可以執行這些筆記本、進行變更，並將變更儲存回 GitHub。
 
@@ -27,7 +28,7 @@ ms.locfileid: "85262883"
 
 1. 選取 [連線到 GitHub] 功能表項目。
 
-1. 隨即開啟索引標籤，您可以從中選擇僅連線到**公用存放庫**，或連線到**公用和私人存放庫**。  選擇所需的選項後，請選取 [授與存取權]。 Azure Cosmos DB 需要授權，才能存取您 GitHub 帳戶中的存放庫。
+1. 隨即開啟索引標籤，您可以從中選擇僅連線到 **公用存放庫** ，或連線到 **公用和私人存放庫** 。  選擇所需的選項後，請選取 [授與存取權]。 Azure Cosmos DB 需要授權，才能存取您 GitHub 帳戶中的存放庫。
 
    :::image type="content" source="./media/import-github-notebooks/authorize-access-github.png" alt-text="授與 Azure Cosmos DB 存取 GitHub 存放庫的權限":::
 
