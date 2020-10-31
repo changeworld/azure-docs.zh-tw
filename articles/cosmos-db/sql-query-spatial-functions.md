@@ -7,18 +7,19 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 87d73787998d1a49d7512723b212c26b7107513f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 515e6da43a115c092ba48fdfcd2457f0b0c60623
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85559801"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082431"
 ---
 # <a name="spatial-functions-azure-cosmos-db"></a>空間函式 (Azure Cosmos DB) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Cosmos DB 支援下列「開放地理空間協會」(OGC) 內建地理空間查詢函數。 
 
-## <a name="functions"></a>函式
+## <a name="functions"></a>函數
 
 下列純量值函式會對空間物件輸入值執行作業，並傳回數值或布林值。  
 
@@ -33,7 +34,7 @@ Cosmos DB 支援下列「開放地理空間協會」(OGC) 內建地理空間查�
 
   
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 簡介](introduction.md)

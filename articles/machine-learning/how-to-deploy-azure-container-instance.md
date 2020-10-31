@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: e64914118409332f6a1c08b6d5e1669685529d76
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: ff071373706759576f80426d61a27851bfc4e1b6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999160"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082159"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>將模型部署到 Azure 容器執行個體
 
@@ -60,7 +60,7 @@ ms.locfileid: "91999160"
 
 ## <a name="deploy-to-aci"></a>部署到 ACI
 
-若要將模型部署至 Azure 容器實例，請建立 __部署__ 設定，以描述所需的計算資源。 例如，核心和記憶體數目。 您也需要 __推斷__設定，其中描述裝載模型和 web 服務所需的環境。 如需有關建立推斷設定的詳細資訊，請參閱 [部署模型的方式和位置](how-to-deploy-and-where.md)。
+若要將模型部署至 Azure 容器實例，請建立 __部署__ 設定，以描述所需的計算資源。 例如，核心和記憶體數目。 您也需要 __推斷__ 設定，其中描述裝載模型和 web 服務所需的環境。 如需有關建立推斷設定的詳細資訊，請參閱 [部署模型的方式和位置](how-to-deploy-and-where.md)。
 
 > [!NOTE]
 > * ACI 只適用于大小小於 1 GB 的小型模型。 
@@ -104,8 +104,10 @@ az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploy
 > [!IMPORTANT]
 > 您不需要事先建立 ACI 容器來進行測試。 ACI 容器會視需要建立。
 
+> [!IMPORTANT]
+> 我們會將雜湊工作區識別碼附加至所有建立的基礎 ACI 資源，相同工作區中的所有 ACI 名稱都有相同的尾碼。 Azure Machine Learning 服務的名稱仍會與提供給「service_name」的客戶相同，且所有使用者 Azure Machine Learning SDK Api 都不需要任何變更。 我們不會提供所建立基礎資源名稱的任何保證。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [如何使用自訂 Docker 映射部署模型](how-to-deploy-custom-docker-image.md)
 * [部署疑難排解](how-to-troubleshoot-deployment.md)

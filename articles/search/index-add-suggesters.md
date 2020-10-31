@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e439f7d2b0232a2e1c36517f24723e4e16f7e6bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1ee42b5b5884b0ce3491282d256d4bea87f44e1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537594"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083536"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>建立建議工具，以在查詢中啟用自動完成和建議的結果
 
-在 Azure 認知搜尋中，您可以透過新增至[搜尋索引](search-what-is-an-index.md)的**建議工具**結構來啟用「搜尋即輸入」。 建議工具支援兩種體驗： *自動*完成（完成整個詞彙查詢的部分輸入），以及邀請按一下以進行特定相符的 *建議* 。 自動完成會產生查詢。 建議產生相符的檔。
+在 Azure 認知搜尋中，您可以透過新增至 [搜尋索引](search-what-is-an-index.md)的 **建議工具** 結構來啟用「搜尋即輸入」。 建議工具支援兩種體驗： *自動* 完成（完成整個詞彙查詢的部分輸入），以及邀請按一下以進行特定相符的 *建議* 。 自動完成會產生查詢。 建議產生相符的檔。
 
 下列 [以 c # 建立第一個應用程式](tutorial-csharp-type-ahead-and-suggestions.md) 的螢幕擷取畫面說明這兩者。 自動完成會預見可能的詞彙，以 "in" 完成「臺灣」。 建議是迷你搜尋結果，其中的欄位（例如旅館名稱）表示來自索引的相符旅館搜尋檔。 建議您可以呈現任何提供描述性資訊的欄位。
 
@@ -52,7 +52,7 @@ ms.locfileid: "91537594"
 
 另一方面，建議您在欄位選擇是選擇性時產生更好的結果。 請記住，建議是搜尋檔的 proxy，所以您會想要最能代表單一結果的欄位。 可區別多個相符專案的名稱、標題或其他唯一欄位的效果最佳。 如果欄位包含重複的值，則建議會由相同的結果組成，而且使用者不會知道要按一下哪一個。
 
-為了滿足搜尋的型別體驗，請新增自動完成所需的所有欄位，但接著使用 **$select**、 **$top**、 **$filter**和 **searchFields** 來控制建議的結果。
+為了滿足搜尋的型別體驗，請新增自動完成所需的所有欄位，但接著使用 **$select** 、 **$top** 、 **$filter** 和 **searchFields** 來控制建議的結果。
 
 ### <a name="choose-analyzers"></a>選擇分析器
 
@@ -167,9 +167,9 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 
 + 使用[c # 建立您的第一個應用程式 (第3課-新增搜尋](tutorial-csharp-type-ahead-and-suggestions.md)型別) 範例示範建議工具結構、建議的查詢、自動完成和多面向導覽。 這個程式碼範例會在沙箱 Azure 認知搜尋服務上執行，並使用預先載入的旅館索引，所以您只需要按 F5 來執行應用程式即可。 不需要訂用帳戶或登入。
 
-+ [>dotnethowtoautocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) 是包含 c # 和 JAVA 程式碼的較舊範例。 它也會示範建議工具結構、建議的查詢、自動完成和多面向導覽。 這個程式碼範例會使用 hosted [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) 範例資料。 
++ [>dotnethowtoautocomplete](https://github.com/wantedfast/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) 是包含 c # 和 JAVA 程式碼的較舊範例。 它也會示範建議工具結構、建議的查詢、自動完成和多面向導覽。 這個程式碼範例會使用 hosted [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) 範例資料。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 建議您閱讀下列文章，以深入瞭解要求的表述。
 

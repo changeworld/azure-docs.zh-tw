@@ -10,14 +10,19 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 5ffd9f05bb429ba611a08d7985dbc9d509a9df0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b4e4eb84cecf2f68c50f0a40630cc2e6f34554f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "66390171"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084200"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>Bing 拼字檢查 API 支援的語言和區域
+
+> [!WARNING]
+> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
+> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
+> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
 Bing 拼字檢查 API 支援這些語言 (僅限 `spell` 模式)。
 
@@ -66,7 +71,7 @@ Bing 拼字檢查 API 支援這些語言 (僅限 `spell` 模式)。
 | 瑞典文     | `sv`          |
 | 土耳其文     | `tr`          |
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [認知服務文件頁面](https://docs.microsoft.com/azure/cognitive-services/)
 - [認知服務產品頁面](https://azure.microsoft.com/services/cognitive-services/)

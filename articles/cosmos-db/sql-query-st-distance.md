@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 02844569137a46ea030b2189191b84a9db24ed22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0796ec0b69f7a6a1c3ab6beb2b74f04c8fe94af7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79537290"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082329"
 ---
 # <a name="st_distance-azure-cosmos-db"></a>ST_DISTANCE (Azure Cosmos DB) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  傳回兩個 GeoJSON 點、多邊形、MultiPolygon 或 LineString 運算式之間的距離。 若要深入瞭解，請參閱 [地理空間和 GeoJSON 位置資料](sql-query-geospatial-intro.md) 文章。
   
 ## <a name="syntax"></a>語法
@@ -54,7 +56,7 @@ WHERE ST_DISTANCE(f.location, {'type': 'Point', 'coordinates':[31.9, -4.8]}) < 3
 
 這個系統函數將受益于 [地理空間索引](index-policy.md#spatial-indexes)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [空間函數 Azure Cosmos DB](sql-query-spatial-functions.md)
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)

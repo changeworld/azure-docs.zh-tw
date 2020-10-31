@@ -11,14 +11,19 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: d833b017004365e9dad7241e360f42ff41a55883
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f697449fffe6c93d8e5082b210678d3f51c0c736
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67542747"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084405"
 ---
 # <a name="customize-and-suggest-image-search-queries"></a>自訂和建議影像搜尋查詢
+
+> [!WARNING]
+> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
+> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
+> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
 您可以使用本文來瞭解如何自訂查詢，以及建議要傳送至 Bing 影像搜尋 API 的搜尋字詞。
 
@@ -28,9 +33,9 @@ ms.locfileid: "67542747"
 
 ## <a name="pivot-the-query"></a>樞紐分析查詢
 
-如果 Bing 可以分割原始搜尋查詢，則傳回的 [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 物件會包含 `pivotSuggestions` 欄位。 樞紐分析建議能以選用搜尋字詞的形式向使用者呈現。 例如，如果原始查詢為 Microsoft Surface**，則 Bing 可能會將查詢分割為 Microsoft** 和 Surface**，並提供每個字詞的建議樞紐。 這些建議能以選用查詢自詞的形式向使用者呈現。
+如果 Bing 可以分割原始搜尋查詢，則傳回的 [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 物件會包含 `pivotSuggestions` 欄位。 樞紐分析建議能以選用搜尋字詞的形式向使用者呈現。 例如，如果原始查詢為 Microsoft Surface  ，則 Bing 可能會將查詢分割為 Microsoft  和 Surface  ，並提供每個字詞的建議樞紐。 這些建議能以選用查詢自詞的形式向使用者呈現。
 
-下列範例示範 Microsoft Surface** 的樞紐建議：  
+下列範例示範 Microsoft Surface  的樞紐建議：  
 
 ```json
 {
@@ -101,11 +106,11 @@ The following shows an example of the pivot queries.
 
 ## <a name="expand-the-query"></a>擴展查詢
 
-如果 Bing 可以擴展查詢來縮小原始搜尋範圍，則 [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 物件會包含 `queryExpansions` 欄位。 例如，如果查詢為 *Microsoft Surface*，則擴展後的查詢可能會是：
-- Microsoft Surface **Pro 3**。
-- Microsoft Surface **RT**。
-- Microsoft Surface **Phone**。
-- Microsoft Surface **Hub**。
+如果 Bing 可以擴展查詢來縮小原始搜尋範圍，則 [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) 物件會包含 `queryExpansions` 欄位。 例如，如果查詢為 *Microsoft Surface* ，則擴展後的查詢可能會是：
+- Microsoft Surface **Pro 3** 。
+- Microsoft Surface **RT** 。
+- Microsoft Surface **Phone** 。
+- Microsoft Surface **Hub** 。
 
 下列範例示範 *Microsoft Surface* 的擴展查詢。
 
@@ -160,6 +165,6 @@ The following shows an example Bing implementation that uses expanded queries. I
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如果您從未試用過 Bing 影像搜尋 API，請透過[快速入門](../quickstarts/csharp.md)試用此功能。 如果您想要尋找更複雜的內容，請嘗試可建立[單頁 Web 應用程式](../tutorial-bing-image-search-single-page-app.md)的教學課程。

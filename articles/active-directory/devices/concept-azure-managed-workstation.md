@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84d0731a67ac47b8b0fc73cb485857458b3febbb
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 6837bbdb63caf0fb1ecb3f6e520d5f3623483b44
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093305"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083230"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>瞭解安全、受 Azure 管理的工作站
 
@@ -94,12 +94,15 @@ ms.locfileid: "92093305"
 
 針對此解決方案，根信任目錄將會使用 [Microsoft Autopilot](/windows/deployment/windows-autopilot/windows-autopilot) 技術來部署，而硬體符合現代化的技術需求。 為了保護工作站，Autopilot 可讓您利用 Microsoft OEM 優化的 Windows 10 裝置。 這些裝置從製造商進入已知的良好狀態。 Autopilot 可以將 Windows 裝置轉換成「企業就緒」狀態，而不是重新製作可能不安全裝置的映射。 它會套用設定和原則、安裝應用程式，甚至變更 Windows 10 的版本。 例如，Autopilot 可能會將裝置的 Windows 安裝從 Windows 10 專業版變更為 Windows 10 企業版，讓它可以使用先進的功能。
 
-![安全工作站層級](./media/concept-azure-managed-workstation/supplychain.png)
+:::image type="complex" source="./media/concept-azure-managed-workstation/supplychain.png" alt-text="顯示安全工作站生命週期的圖表。" border="false":::
+在圖表頂端附近，會顯示裝置廠商。 箭號會指向購買工作站的客戶，以及標示為履行和交貨的貨車。 從貨車中，箭號指向標示為「使用工作站的人」來部署圖片的影像。 標示為 [自助服務體驗] 的箭號會從該人員延伸至標示為 [已準備好商務] 的螢幕。 在該畫面下方，會顯示標示為受管理保護的圖示。 標示為穩定狀態使用方式的箭號，管理並保留畫面的目前點到生命週期結束圖示和修正重設圖示。 最後箭號會從修正程式的圖示回復為 [已準備好商務] 畫面。
+:::image-end:::
 
 ## <a name="device-roles-and-profiles"></a>裝置角色和設定檔
 
 本指南參考數個安全性設定檔和角色，可協助您為使用者、開發人員和 IT 人員建立更安全的解決方案。 這些設定檔會針對可從增強或安全工作站獲益的一般使用者，平衡可用性和風險。 此處提供的設定是根據業界接受的標準。 本指南說明如何強化 Windows 10，並減少裝置或使用者入侵的相關風險。 為了充分利用新式硬體技術和信任裝置的根目錄，我們將使用 [裝置健康情況證明](https://techcommunity.microsoft.com/t5/Intune-Customer-Success/Support-Tip-Using-Device-Health-Attestation-Settings-as-Part-of/ba-p/282643)，其會從 **高安全性** 設定檔開始啟用。 這項功能的存在，可確保攻擊者在裝置早期開機期間無法持續。 它是藉由使用原則和技術來協助管理安全性功能和風險。
-![安全工作站層級](./media/concept-azure-managed-workstation/seccon-levels.png)
+
+:::image type="content" source="./media/concept-azure-managed-workstation/seccon-levels.png" alt-text="顯示安全工作站生命週期的圖表。" border="false":::
 
 * **基本安全性** -受管理的標準工作站提供了一個不錯的起點，讓您能夠在家庭和小型企業中使用。 這些裝置會在 Azure AD 中註冊，並使用 Intune 進行管理。 此設定檔允許使用者執行任何應用程式，並流覽任何網站。 應啟用反惡意程式碼解決方案（例如 [Microsoft Defender](https://www.microsoft.com/windows/comprehensive-security) ）。
 
@@ -124,6 +127,6 @@ ms.locfileid: "92093305"
    * [Intune 網路通訊需求](/intune/network-bandwidth-use)
    * [ATP 網路通訊需求](/azure-advanced-threat-protection/configure-proxy)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [部署安全的 Azure 管理工作站](howto-azure-managed-workstation.md)。

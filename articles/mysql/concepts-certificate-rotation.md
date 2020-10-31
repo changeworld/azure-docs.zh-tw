@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 57d077e1631fa89058d67ba54d72e7713db17371
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 65a19910c9aa1ed78154fb77ee86d22d40ea5b49
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747383"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082125"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>瞭解適用於 MySQL 的 Azure 資料庫的根 CA 變更變更
 
@@ -104,7 +104,7 @@ ms.locfileid: "92747383"
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-mysql"></a>4. 使用 App Service 搭配適用於 MySQL 的 Azure 資料庫會有什麼影響？
 針對 Azure 應用程式服務，連接到適用於 MySQL 的 Azure 資料庫，我們可以有兩個可能的案例，而這取決於您在應用程式中使用 SSL 的方式。
 *   此新憑證已新增至平台層級的 App Service。 如果您在應用程式中使用包含在 App Service 平臺上的 SSL 憑證，則不需要採取任何動作。
-*   如果您在程式碼中明確包含 SSL 憑證檔案的路徑，則需要下載新的憑證，並更新程式碼以使用新的憑證。此案例的一個良好範例是當您在 App Service 中使用自訂容器，如[App Service 檔](/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress.md)中所共用
+*   如果您在程式碼中明確包含 SSL 憑證檔案的路徑，則需要下載新的憑證，並更新程式碼以使用新的憑證。此案例的一個良好範例是當您在 App Service 中使用自訂容器，如[App Service 檔](/azure/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress)中所共用
 
 ### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-mysql"></a>5. 使用 Azure Kubernetes Services (AKS) 搭配適用於 MySQL 的 Azure 資料庫時的影響為何？
 如果您嘗試使用 Azure Kubernetes Services (AKS) 來連線至適用於 MySQL 的 Azure 資料庫，其類似于從專用客戶主機環境進行存取。 請參閱 [此處](../aks/ingress-own-tls.md)的步驟。

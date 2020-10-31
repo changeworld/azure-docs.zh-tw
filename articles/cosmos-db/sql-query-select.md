@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: f33cf20b76655a893fe7eebd9e6e6569d35de98f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d518461f8526a742a59d92140e2cf323e8bfc16
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83005942"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082550"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 SELECT 子句
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 每個查詢都是由 `SELECT` 每個 ANSI SQL 標準的子句以及選擇性的 [From](sql-query-from.md) 和 [WHERE](sql-query-where.md) 子句所組成。 通常 `FROM` 會列舉子句中的來源，而 `WHERE` 子句會在來源上套用篩選，以取得 JSON 專案的子集。 `SELECT`子句接著會在選取清單中投射要求的 JSON 值。
 

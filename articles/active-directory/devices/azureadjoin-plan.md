@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de383bfa9f943cd5644d35ed83db8a80ec8017bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a559b29502adb1c507b1543463d84eb3bd15d5a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653208"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083281"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>如何：規劃 Azure AD Join 實作
 
@@ -24,7 +24,7 @@ Azure AD Join 可讓您直接將裝置加入 Azure AD，而不需要加入內部
 
 本文將為您提供規劃 Azure AD Join 實作所需的資訊。
  
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您熟悉 [Azure Active Directory 中的裝置管理簡介](./overview.md)。
 
@@ -90,8 +90,8 @@ Azure AD Join 在受控和同盟環境中均可運作。
 
 如果您將使用者建立於：
 
-- **內部部署 Active Directory**，您必須使用 [Azure AD Connect](../hybrid/how-to-connect-sync-whatis.md) 將其同步至 Azure AD。 
-- **Azure AD**，則不需另行設定。
+- **內部部署 Active Directory** ，您必須使用 [Azure AD Connect](../hybrid/how-to-connect-sync-whatis.md) 將其同步至 Azure AD。 
+- **Azure AD** ，則不需另行設定。
 
 內部部署 UPN 與 Azure AD UPN 不同，加入 Azure AD 的裝置上並不支援它。 如果您使用內部部署 UPN，您應規劃改為使用它們在 Azure AD 中的主要 UPN。
 
@@ -187,7 +187,7 @@ Azure AD 聯結裝置的裝置管理是以 MDM 平臺（例如 Intune）和 MDM 
 從 Windows 10 2004 更新開始，使用者也可以使用遠端桌面，從 Azure AD 註冊的 Windows 10 裝置到 Azure AD 加入的裝置。 
 
 ## <a name="understand-your-provisioning-options"></a>了解您的佈建選項
-**注意**： Azure AD 加入的裝置無法使用系統準備工具部署 (Sysprep) 或類似的映射工具
+**注意** ： Azure AD 加入的裝置無法使用系統準備工具部署 (Sysprep) 或類似的映射工具
 
 您可以使用下列方法來佈建 Azure AD Join：
 
@@ -197,7 +197,7 @@ Azure AD 聯結裝置的裝置管理是以 MDM 平臺（例如 Intune）和 MDM 
  
 以下是這三種方法的比較 
  
-| 元素 | 自助式設定 | Windows Autopilot | 大量註冊 |
+| 項目 | 自助式設定 | Windows Autopilot | 大量註冊 |
 | --- | --- | --- | --- |
 | 需要使用者手動設定 | 是 | 是 | 否 |
 | 需要 IT 工作 | 否 | 是 | 是 |
@@ -219,23 +219,23 @@ Azure AD 聯結裝置的裝置管理是以 MDM 平臺（例如 Intune）和 MDM 
 
 ## <a name="configure-your-device-settings"></a>設定您的裝置設定
 
-Azure 入口網站可讓您控制如何將已加入 Azure AD 的裝置部署到您的組織中。 若要設定相關設定，請在 [Azure Active Directory ]**** 頁面上選取 `Devices > Device settings`。
+Azure 入口網站可讓您控制如何將已加入 Azure AD 的裝置部署到您的組織中。 若要設定相關設定，請在 [Azure Active Directory ]  頁面上選取 `Devices > Device settings`。
 
 ### <a name="users-may-join-devices-to-azure-ad"></a>使用者可以將裝置加入至 Azure AD
 
-請根據您部署的範圍，和您要允許哪些人設定已加入 Azure AD 的裝置，將此選項設為 [全部]**** 或 [選取的]****。 
+請根據您部署的範圍，和您要允許哪些人設定已加入 Azure AD 的裝置，將此選項設為 [全部]  或 [選取的]  。 
 
 ![使用者可以將裝置加入至 Azure AD](./media/azureadjoin-plan/01.png)
 
 ### <a name="additional-local-administrators-on-azure-ad-joined-devices"></a>加入 Azure AD 的裝置上其他本機系統管理員
 
-選擇 [選取的]****，然後選取您要在所有已加入 Azure AD 的裝置上新增至本機系統管理員群組的使用者。 
+選擇 [選取的]  ，然後選取您要在所有已加入 Azure AD 的裝置上新增至本機系統管理員群組的使用者。 
 
 ![加入 Azure AD 的裝置上其他本機系統管理員](./media/azureadjoin-plan/02.png)
 
 ### <a name="require-multi-factor-auth-to-join-devices"></a>需要多因素驗證才能加入裝置
 
-如果您要求使用者在將裝置加入 Azure AD 時必須執行 MFA，請選取 [是]****。 針對使用 MFA 將裝置加入 Azure AD 的使用者，裝置本身會成為第 2 個因素。
+如果您要求使用者在將裝置加入 Azure AD 時必須執行 MFA，請選取 [是]  。 針對使用 MFA 將裝置加入 Azure AD 的使用者，裝置本身會成為第 2 個因素。
 
 ![需要多因素驗證才能加入裝置](./media/azureadjoin-plan/03.png)
 
@@ -243,26 +243,26 @@ Azure 入口網站可讓您控制如何將已加入 Azure AD 的裝置部署到�
 
 您可能必須先新增 MDM 提供者，才能設定行動性設定。
 
-**若要新增 MDM 提供者**：
+**若要新增 MDM 提供者** ：
 
-1. 在 [Azure Active Directory]**** 頁面的 [管理]**** 區段中，按一下 `Mobility (MDM and MAM)`。 
+1. 在 [Azure Active Directory]  頁面的 [管理]  區段中，按一下 `Mobility (MDM and MAM)`。 
 1. 按一下 [新增應用程式]。
 1. 從清單中選取您的 MDM 提供者。
 
-   ![新增應用程式](./media/azureadjoin-plan/04.png)
+   :::image type="content" source="./media/azureadjoin-plan/04.png" alt-text="[新增應用程式] 頁面 Azure Active Directory 的螢幕擷取畫面。列出數個 M D 的提供者。" border="false":::
 
 選取您的 MDM 提供者以設定相關設定。 
 
 ### <a name="mdm-user-scope"></a>MDM 使用者範圍
 
-根據您的部署範圍選取 [部分]**** 或 [全部]****。 
+根據您的部署範圍選取 [部分]  或 [全部]  。 
 
 ![MDM 使用者範圍](./media/azureadjoin-plan/05.png)
 
 根據您的範圍，會出現下列其中一種情況： 
 
-- **使用者在 MDM 範圍內**：如果您具有 Azure AD Premium 訂用帳戶，則會隨著 Azure AD Join 自動執行 MDM 註冊。 範圍內的所有使用者皆必須具有適當的 MDM 授權。 在此情況下，如果 MDM 註冊失敗，Azure AD Join 也將回復。
-- **使用者不在 MDM 範圍內**：如果使用者不在 MDM 範圍內，則 Azure AD Join 會逕自完成而不進行 MDM 註冊。 這會導致裝置未受管理。
+- **使用者在 MDM 範圍內** ：如果您具有 Azure AD Premium 訂用帳戶，則會隨著 Azure AD Join 自動執行 MDM 註冊。 範圍內的所有使用者皆必須具有適當的 MDM 授權。 在此情況下，如果 MDM 註冊失敗，Azure AD Join 也將回復。
+- **使用者不在 MDM 範圍內** ：如果使用者不在 MDM 範圍內，則 Azure AD Join 會逕自完成而不進行 MDM 註冊。 這會導致裝置未受管理。
 
 ### <a name="mdm-urls"></a>MDM URL
 
@@ -272,7 +272,7 @@ Azure 入口網站可讓您控制如何將已加入 Azure AD 的裝置部署到�
 - MDM 探索 URL 
 - MDM 合規性 URL
 
-![新增應用程式](./media/azureadjoin-plan/06.png)
+:::image type="content" source="./media/azureadjoin-plan/06.png" alt-text="[新增應用程式] 頁面 Azure Active Directory 的螢幕擷取畫面。列出數個 M D 的提供者。" border="false":::
 
 每個 URL 都有預先定義的預設值。 如果這些欄位是空的，請連絡您的 MDM 提供者以取得詳細資訊。
 
@@ -284,7 +284,7 @@ MAM 不適用於 Azure AD Join。
 
 如果您想要啟用 Azure AD 的狀態漫遊，讓使用者可在裝置間同步其設定，請參閱[在 Azure Active Directory 中啟用企業狀態漫遊](enterprise-state-roaming-enable.md)。 
 
-**建議**：即使對混合式 Azure AD Join 裝置也可啟用此設定。
+**建議** ：即使對混合式 Azure AD Join 裝置也可啟用此設定。
 
 ## <a name="configure-conditional-access"></a>設定條件式存取
 
@@ -294,7 +294,7 @@ MAM 不適用於 Azure AD Join。
 
 您可以使用此實 [作為要求受管理的裝置，以使用條件式存取來存取雲端應用程式](../conditional-access/require-managed-devices.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [在第一次執行期間加入具有 Azure AD 的新 Windows 10 裝置](azuread-joined-devices-frx.md) 

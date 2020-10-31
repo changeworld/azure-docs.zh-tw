@@ -10,14 +10,19 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 110cef117683b20170649a231226c8193496edf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5fbecd9c2fd6e3a9f1be29598bad50da4b77bbb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68423910"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93084607"
 ---
 # <a name="using-ranking-to-display-entity-search-results"></a>使用排名來顯示實體搜尋結果  
+
+> [!WARNING]
+> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
+> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
+> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
 每個實體搜尋回應都包含 [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) 回應，可指定您必須以何種方式顯示 Bing 實體搜尋 API 所傳回的搜尋結果。 排名回應會將結果分組為 pole、mainline 和 sidebar 內容。 pole 結果是最重要或顯著的結果，應該優先顯示。 如果您未以傳統 mainline 和 sidebar 格式顯示其餘結果，您必須提供比 sidebar 內容更高的 mainline 內容可見度。 
   

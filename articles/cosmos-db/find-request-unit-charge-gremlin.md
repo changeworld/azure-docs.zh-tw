@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: ea9ab661fce1cd88bf1bdc065c2b26ccad73c30d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8393fb431c5148d3f4885135c90fe4d0b8970d52
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490708"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082006"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-gremlin-api"></a>針對 Azure Cosmos DB Gremlin API 中執行的作業尋找要求單位費用
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 Azure Cosmos DB 支援許多 API，例如 SQL、MongoDB、Cassandra、Gremlin 和資料表。 每個 API 都有它自己的一組資料庫作業。 這些作業的範圍可從簡單的點讀取和寫入到複雜查詢。 每個資料庫作業都會根據作業的複雜度來取用系統資源。
 
@@ -31,11 +32,11 @@ Gremlin API 所傳回的標頭會對應至目前透過 Gremlin.NET 和 Java SDK 
 
 1. [建立新的 Azure Cosmos 帳戶](create-graph-gremlin-console.md#create-a-database-account)並為其提供資料，或選取已包含資料的現有帳戶。
 
-1. 前往 [資料總管]**** 窗格，然後選取您要處理的容器。
+1. 前往 [資料總管]  窗格，然後選取您要處理的容器。
 
-1. 輸入有效的查詢，然後選取 [ **執行 Gremlin 查詢**]。
+1. 輸入有效的查詢，然後選取 [ **執行 Gremlin 查詢** ]。
 
-1. 選取下 [查詢統計資料]****，以顯示您執行的要求實際的要求費用。
+1. 選取下 [查詢統計資料]  ，以顯示您執行的要求實際的要求費用。
 
 :::image type="content" source="./media/find-request-unit-charge/portal-gremlin-query.png" alt-text="在 Azure 入口網站中取得 Gremlin 查詢要求費用的螢幕擷取畫面":::
 
@@ -61,7 +62,7 @@ Double requestCharge = (Double)results.statusAttributes().get().get("x-ms-reques
 
 如需詳細資訊，請參閱 [快速入門：使用 JAVA SDK 在 Azure Cosmos DB 中建立圖形資料庫](create-graph-java.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要了解如何最佳化您的 RU 耗用量，請參閱下列文章：
 

@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 08/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 8d04c670010e3595d8f30c7ffcd34d99e27374cb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: cd80e98d0838cb06228c92c7ea7efeb3fc30a0ed
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488447"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082873"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos DB 做為金鑰值存放區–成本總覽
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB 是全域散發的多模型資料庫服務，可用來輕鬆建置具高可用性的大規模應用程式。 依預設，Azure Cosmos DB 會自動並有效率地編制其內嵌的所有資料索引。 這可讓您快速且一致地對資料進行 [SQL](./sql-query-getting-started.md) (和 [JavaScript](stored-procedures-triggers-udfs.md)) 查詢。 
 
@@ -22,7 +23,7 @@ Azure Cosmos DB 是全域散發的多模型資料庫服務，可用來輕鬆建�
 
 ## <a name="why-we-use-request-units-rus"></a>為什麼我們要使用「要求單位」(RU)
 
-Azure Cosmos DB 的效能取決於 [要求單位中以要求單位](request-units.md) （ (RU/秒) ）表示的布建輸送量量。 布建為第二個數據細微性，且以 RU/秒購買 ([不會與每小時計費) 混淆](https://azure.microsoft.com/pricing/details/cosmos-db/) 。 Ru 應視為邏輯抽象 (貨幣) ，可簡化應用程式所需的輸送量布建。 使用者不需要考慮區分讀取和寫入輸送量。 RU 的單一貨幣模型可有效率地共用讀取和寫入之間已佈建的容量。 此布建容量模型可讓服務提供 **可預測且一致的輸送量、保證低延遲和高可用性**。 最後，雖然 RU 模型是用來描述輸送量，但每個布建的 RU 也會有定義的資源數量 (例如，記憶體、核心/CPU 和 IOPS) 。
+Azure Cosmos DB 的效能取決於 [要求單位中以要求單位](request-units.md) （ (RU/秒) ）表示的布建輸送量量。 布建為第二個數據細微性，且以 RU/秒購買 ([不會與每小時計費) 混淆](https://azure.microsoft.com/pricing/details/cosmos-db/) 。 Ru 應視為邏輯抽象 (貨幣) ，可簡化應用程式所需的輸送量布建。 使用者不需要考慮區分讀取和寫入輸送量。 RU 的單一貨幣模型可有效率地共用讀取和寫入之間已佈建的容量。 此布建容量模型可讓服務提供 **可預測且一致的輸送量、保證低延遲和高可用性** 。 最後，雖然 RU 模型是用來描述輸送量，但每個布建的 RU 也會有定義的資源數量 (例如，記憶體、核心/CPU 和 IOPS) 。
 
 做為全域散發的資料庫系統，Cosmos DB 是唯一提供涵蓋延遲、輸送量、一致性和高可用性的完整 Sla 的 Azure 服務。 您布建的輸送量會套用到與您的 Cosmos 帳戶相關聯的每個區域。 針對讀取，Cosmos DB 提供多個定義完善的[一致性層級](consistency-levels.md)，以供您選擇。 
 
@@ -45,6 +46,6 @@ Azure Cosmos DB 的效能取決於 [要求單位中以要求單位](request-unit
 
 大部分基本的 Blob 或物件存放區的服務收費，為每百萬次讀取交易 $0.40，以及每百萬次寫入交易 $5。 如果以最佳方式使用，Cosmos DB 可) 的 1 KB 交易 (，比這些其他解決方案更便宜98%。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 使用 [RU 計算機](https://cosmos.azure.com/capacitycalculator/) 來預估工作負載的輸送量。

@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: f3c3878956b90ffb45556ed819046af9eb7618f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f39dbfc33bfc34e8f5e339a489d0c74bebb415e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78303132"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082278"
 ---
 # <a name="st_intersects-azure-cosmos-db"></a>ST_INTERSECTS (Azure Cosmos DB) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
  傳回布林運算式，指出第一個引數交集中指定的 GeoJSON 物件 (Point、Polygon 或 LineString) 是否位在第二個引數中的 GeoJSON (Point、Polygon 或 LineString) 內。  
   
 ## <a name="syntax"></a>語法
@@ -55,7 +57,7 @@ WHERE ST_INTERSECTS(a.location, {
 
 這個系統函數將受益于 [地理空間索引](index-policy.md#spatial-indexes)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [空間函數 Azure Cosmos DB](sql-query-spatial-functions.md)
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)

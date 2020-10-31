@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea5d24fd36e668fc52a8b5c9a20472c42ef3c420
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7651f84e14d6ea7dcb4e12d57e2bf494d5aeff1e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825960"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083179"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>如何：管理 Azure AD 中的過時裝置
 
@@ -37,7 +37,7 @@ Azure AD 中若有過時裝置，可能會干擾您組織中裝置的一般生�
 
 ## <a name="detect-stale-devices"></a>偵測過時裝置
 
-由於過時裝置的定義是：已註冊但在特定時間範圍內未存取任何雲端應用程式的裝置，因此偵測過時裝置需要與時間戳記相關的屬性。 在 Azure AD 中，此屬性稱為 **ApproximateLastLogonTimestamp** 或**活動時間戳記**。 如果目前時間和**活動時間戳記**值之間的差異超過您為作用中裝置定義的時間範圍，則裝置會被視為過時。 此**活動時間戳記**現在處於公開預覽狀態。
+由於過時裝置的定義是：已註冊但在特定時間範圍內未存取任何雲端應用程式的裝置，因此偵測過時裝置需要與時間戳記相關的屬性。 在 Azure AD 中，此屬性稱為 **ApproximateLastLogonTimestamp** 或 **活動時間戳記** 。 如果目前時間和 **活動時間戳記** 值之間的差異超過您為作用中裝置定義的時間範圍，則裝置會被視為過時。 此 **活動時間戳記** 現在處於公開預覽狀態。
 
 ## <a name="how-is-the-value-of-the-activity-timestamp-managed"></a>如何管理活動時間戳記的值？  
 
@@ -53,13 +53,13 @@ Azure AD 中若有過時裝置，可能會干擾您組織中裝置的一般生�
 
 您有兩個選項可擷取活動時間戳記值：
 
-- Azure 入口網站[裝置頁面](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)上的**活動**資料行
+- Azure 入口網站 [裝置頁面](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)上的 **活動** 資料行
 
-    ![活動時間戳記](./media/manage-stale-devices/01.png)
+    :::image type="content" source="./media/manage-stale-devices/01.png" alt-text="頁面的螢幕擷取畫面，其中 Azure 入口網站列出裝置上的名稱、擁有者和其他資訊。一個資料行列出啟用時間戳。" border="false":::
 
 - [Get-azureaddevice](/powershell/module/azuread/Get-AzureADDevice)指令 Cmdlet
 
-    ![活動時間戳記](./media/manage-stale-devices/02.png)
+    :::image type="content" source="./media/manage-stale-devices/02.png" alt-text="頁面的螢幕擷取畫面，其中 Azure 入口網站列出裝置上的名稱、擁有者和其他資訊。一個資料行列出啟用時間戳。" border="false":::
 
 ## <a name="plan-the-cleanup-of-your-stale-devices"></a>規劃過時裝置的清除作業
 
@@ -177,8 +177,8 @@ Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-ob
 
 - **混合式 Azure AD 加入的裝置** -使用者可能可以使用裝置來登入其內部部署網域。 不過，他們無法存取 Azure AD 資源，例如 Microsoft 365。
 - **加入 Azure AD 的裝置** - 使用者不能使用裝置來登入。 
-- 行動**裝置**-使用者無法存取 Azure AD 資源，例如 Microsoft 365。 
+- 行動 **裝置** -使用者無法存取 Azure AD 資源，例如 Microsoft 365。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要取得在 Azure 入口網站中管理裝置的概觀，請參閱[使用 Azure 入口網站來管理裝置](device-management-azure-portal.md)

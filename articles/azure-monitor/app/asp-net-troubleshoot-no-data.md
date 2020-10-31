@@ -4,12 +4,12 @@ description: 在 Azure Application Insights 中看不到資料？ 試試這裡�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 2bf9b50c9b378d8624c311af5935b8cd0a28a31a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c053796dd887722d1d767229621c0a1ae004b5c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91757974"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93083162"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>針對沒有資料進行疑難排解 - Application Insights for .NET/.NET Core
 
@@ -35,7 +35,7 @@ ms.locfileid: "91757974"
 * 可能是防火牆問題。 [設定 Application Insights 的防火牆例外狀況以傳送資料](./ip-addresses.md)。
 * IIS 伺服器可能會遺漏某些先決條件：.NET 擴充性 4.5 和 ASP.NET 4.5。
 
-*我已在 Web 伺服器上[安裝狀態監視器](./monitor-performance-live-website-now.md)來監視現有的應用程式。我沒有看到任何結果。*
+*我已在 Web 伺服器上 [安裝狀態監視器](./monitor-performance-live-website-now.md)來監視現有的應用程式。我沒有看到任何結果。*
 
 * 請參閱 [疑難排解狀態監視器](./monitor-performance-live-website-now.md#troubleshoot)。
 
@@ -239,14 +239,14 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 ```
 
 您可以視需要修改這些參數：
-- **MaxCollectSec**。 設定此參數可防止 PerfView 永無止盡地執行，而影響到伺服器的效能。
-- **OnlyProviders**。 將此參數設定為只從 SDK 收集記錄。 您可以根據特定調查來自訂此清單。 
-- **NoGui**。 設定此參數可在不使用 GUI 的情況下收集記錄。
+- **MaxCollectSec** 。 設定此參數可防止 PerfView 永無止盡地執行，而影響到伺服器的效能。
+- **OnlyProviders** 。 將此參數設定為只從 SDK 收集記錄。 您可以根據特定調查來自訂此清單。 
+- **NoGui** 。 設定此參數可在不使用 GUI 的情況下收集記錄。
 
 
 如需詳細資訊，
 - [使用 PerfView 記錄效能追蹤](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView)。
-- [Application Insights 事件來源](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/ETW)
+- [Application Insights 事件來源](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/ETW)
 
 ## <a name="collect-logs-with-dotnet-trace"></a>使用 dotnet-trace 收集記錄
 

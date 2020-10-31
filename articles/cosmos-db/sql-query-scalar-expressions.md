@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c40916d975b8acabaa7083cf57259291f09b40a9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74870729"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082601"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Azure Cosmos DB SQL 查詢中的純量運算式
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 [SELECT 子句](sql-query-select.md)支援純量運算式。 純量運算式結合了符號及運算子，可以加以評估以取得單一值。 純量運算式的範例包括：常數、屬性參考、陣列元素參考、別名參考或函式呼叫。 您可以使用運算子將純量運算式合併為複雜運算式。
 
@@ -55,7 +56,7 @@ ms.locfileid: "74870729"
 - `input_alias`  
   
    代表在 `FROM` 子句中導入，且由 `input_alias` 定義的值。  
-  此值不保證為**未定義** – 輸入中的**未定義值**會略過。  
+  此值不保證為 **未定義** – 輸入中的 **未定義值** 會略過。  
   
 - `<scalar_expression>.property_name`  
   
@@ -103,7 +104,7 @@ ms.locfileid: "74870729"
   
   建立物件時，會略過任何指派未定義值的屬性，且不會納入已建立的物件中。  
   
-  建立陣列時，會略過任何指派**未定義**值的元素值，且不會納入已建立的物件中。 這會讓下一個定義的元素以相同方式取代其位置，而建立的陣列將不會具備已略過的索引。  
+  建立陣列時，會略過任何指派 **未定義** 值的元素值，且不會納入已建立的物件中。 這會讓下一個定義的元素以相同方式取代其位置，而建立的陣列將不會具備已略過的索引。  
 
 ## <a name="examples"></a>範例
 
