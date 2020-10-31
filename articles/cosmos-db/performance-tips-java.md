@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 633cfe64e5978b1802a7c4b6c1f7842872ab665a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 4b5c8e1a1e810deb9e5315816c122c0ac09ce778
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475204"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085542"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Azure Cosmos DB 同步 Java SDK v2 的效能提示
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
@@ -91,15 +92,15 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
     Azure Cosmos DB 同步 Java SDK 1.9.0 版和更新版本支援平行查詢，可讓您平行查詢分割的集合。 如需詳細資訊，請參閱使用 SDK 的相關[程式碼範例](https://github.com/Azure/azure-documentdb-java/tree/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples)。 平行查詢的設計目的是要改善其連續對應項目的查詢延遲和輸送量。
 
-     () **_微調 setMaxDegreeOfParallelism \: _*_ 平行查詢的運作方式是以平行方式查詢多個資料分割。 不過，對於查詢會以循序方式擷取來自個別分割集合的資料。 因此，使用 [setMaxDegreeOfParallelism](/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxdegreeofparallelism) 設定分割數目會最有機會達到最高效能的查詢，但前提是其他所有系統條件皆維持不變。 如果您不知道分割數目，您可以使用 setMaxDegreeOfParallelism 設定為較高的數字，然後系統會選擇最小值 (分割數目、使用者提供的輸入) 作為平行處理原則的最大刻度。 
+     () * *_微調 setMaxDegreeOfParallelism \:_* _ 平行查詢的運作方式是以平行方式查詢多個資料分割。 不過，對於查詢會以循序方式擷取來自個別分割集合的資料。 因此，使用 [setMaxDegreeOfParallelism](/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxdegreeofparallelism) 設定分割數目會最有機會達到最高效能的查詢，但前提是其他所有系統條件皆維持不變。 如果您不知道分割數目，您可以使用 setMaxDegreeOfParallelism 設定為較高的數字，然後系統會選擇最小值 (分割數目、使用者提供的輸入) 作為平行處理原則的最大刻度。 
 
     請務必注意，若對於查詢是以平均方式將資料分佈於所有分割，平行查詢便會產生最佳效益。 如果分割之集合的分割方式是查詢所傳回的所有或大多數資料集中在少數幾個分割中 (最差的情況是集中在一個分割)，則這些分割會成為查詢效能的瓶頸。
 
-     (b) _*_微調 setMaxBufferedItemCount \: _*_ 平行查詢的設計目的是要在用戶端處理目前的結果批次時預先提取結果。 預先擷取有助於改善查詢的整體延遲。 setMaxBufferedItemCount 可限制預先擷取的結果數目。 藉由將 [setMaxBufferedItemCount](/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxbuffereditemcount) 設定為預期傳回的結果數目 (或更高的數目)，即可讓查詢透過預先擷取獲得最大效益。
+     (b) _*_微調 setMaxBufferedItemCount \:_*_ 平行查詢的設計目的是要在用戶端處理目前的結果批次時預先提取結果。 預先擷取有助於改善查詢的整體延遲。 setMaxBufferedItemCount 可限制預先擷取的結果數目。 藉由將 [setMaxBufferedItemCount](/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxbuffereditemcount) 設定為預期傳回的結果數目 (或更高的數目)，即可讓查詢透過預先擷取獲得最大效益。
 
     預先擷取會以相同方式運作，不受 MaxDegreeOfParallelism 的影響，而且來自所有分割的資料會有單一緩衝區。  
 
-5. _ 依 *>getretryafterinmilliseconds 間隔執行*輪詢*
+5. _ 依 *>getretryafterinmilliseconds 間隔執行* 輪詢*
 
     在進行效能測試期間，您應該增加負載，直到系統對小部分要求進行節流處理為止。 如果進行節流處理，用戶端應用程式應該在節流時降速，且持續時間達伺服器指定的重試間隔。 採用降速可確保您在重試之間花費最少的等待時間。 [Azure Cosmos DB 同步 Java SDK](./sql-api-sdk-java.md) 1.8.0 版和更新版本包含重試原則支援。 如需詳細資訊，請參閱 [getRetryAfterInMilliseconds](/java/api/com.microsoft.azure.documentdb.documentclientexception.getretryafterinmilliseconds) \(英文\)。
 

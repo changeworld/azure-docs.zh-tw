@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 08/15/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 40a909b111d5e667f7554cf727ab26bf9bc39650
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b785479a1f3169c32be0d9fbd7accf37bc7ba8ed
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485846"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085778"
 ---
 # <a name="use-the-change-feed-estimator"></a>使用變更摘要估算器
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文說明如何在[變更摘要處理器](./change-feed-processor.md)執行個體讀取變更摘要時，監視處理器的進度。
 
@@ -42,7 +43,7 @@ ms.locfileid: "92485846"
 
 處理器和估算器會共用相同的 `leaseContainer` 和相同的名稱。
 
-另外兩個參數是委派，其收到的數字代表處理器**有多少項變更等候讀取**，以及您要取得此測量的時間間隔。
+另外兩個參數是委派，其收到的數字代表處理器 **有多少項變更等候讀取** ，以及您要取得此測量的時間間隔。
 
 接收估計的委派範例如下：
 

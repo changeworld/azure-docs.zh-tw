@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5a8351b8c74f9219cf14575cc326fa8049264ed7
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 4977a9ef8af75797f1e1989975688d7904f0c7b1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491116"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086443"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>管理 Azure Cosmos 帳戶
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文說明如何使用 Azure 入口網站、Azure PowerShell、Azure CLI 和 Azure Resource Manager 範本管理 Azure Cosmos 帳戶的各項工作。
 
@@ -41,13 +42,13 @@ ms.locfileid: "92491116"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 移至 Azure Cosmos 帳戶，然後開啟 [全域複寫資料]**** 功能表。
+1. 移至 Azure Cosmos 帳戶，然後開啟 [全域複寫資料]  功能表。
 
-1. 若要新增區域，請選取地圖上的六邊形，以及 **+** 對應至所需區域 (s) 的標籤。 或者，若要新增區域，請選取 [+ 新增區域]**** 選項，然後從下拉式功能表中選擇區域，藉以新增區域。
+1. 若要新增區域，請選取地圖上的六邊形，以及 **+** 對應至所需區域 (s) 的標籤。 或者，若要新增區域，請選取 [+ 新增區域]  選項，然後從下拉式功能表中選擇區域，藉以新增區域。
 
 1. 若要移除區域，請選取具有核取記號的藍色六邊形，以清除地圖中的一或多個區域。 或者，選取右側區域旁邊的「垃圾桶」(🗑) 圖示。
 
-1. 若要儲存變更，請選取 [確定]****。
+1. 若要儲存變更，請選取 [確定]  。
 
    :::image type="content" source="./media/how-to-manage-database-account/add-region.png" alt-text="新增或移除區域功能表":::
 
@@ -67,7 +68,7 @@ ms.locfileid: "92491116"
 
 ### <a name="azure-portal"></a><a id="configure-multiple-write-regions-portal"></a>Azure 入口網站
 
-開啟 [全域複寫資料]**** 索引標籤，並選取 [啟用]**** 以啟用多重區域寫入。 啟用多重區域寫入後，您目前在帳戶上擁有的所有讀取區域都將成為讀取和寫入區域。
+開啟 [全域複寫資料]  索引標籤，並選取 [啟用]  以啟用多重區域寫入。 啟用多重區域寫入後，您目前在帳戶上擁有的所有讀取區域都將成為讀取和寫入區域。
 
 :::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="新增或移除區域功能表":::
 
@@ -145,15 +146,15 @@ ms.locfileid: "92491116"
 
 ### <a name="azure-portal"></a><a id="enable-automatic-failover-via-portal"></a>Azure 入口網站
 
-1. 從 Azure Cosmos 帳戶，開啟 [全域複寫資料]**** 窗格。
+1. 從 Azure Cosmos 帳戶，開啟 [全域複寫資料]  窗格。
 
-2. 在窗格頂端，選取 [自動容錯移轉]****。
+2. 在窗格頂端，選取 [自動容錯移轉]  。
 
    :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="新增或移除區域功能表":::
 
-3. 在 [自動容錯移轉]**** 窗格中，確定 [啟用自動容錯移轉]**** 設定為 [開啟]****。 
+3. 在 [自動容錯移轉]  窗格中，確定 [啟用自動容錯移轉]  設定為 [開啟]  。 
 
-4. 選取 [儲存]。
+4. 選取 [儲存]  。
 
    :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="新增或移除區域功能表":::
 
@@ -174,17 +175,17 @@ Cosmos 帳戶設定自動容錯移轉後，可以變更區域的容錯移轉優�
 
 ### <a name="azure-portal"></a><a id="set-failover-priorities-via-portal"></a>Azure 入口網站
 
-1. 從 Azure Cosmos 帳戶，開啟 [全域複寫資料]**** 窗格。
+1. 從 Azure Cosmos 帳戶，開啟 [全域複寫資料]  窗格。
 
-2. 在窗格頂端，選取 [自動容錯移轉]****。
+2. 在窗格頂端，選取 [自動容錯移轉]  。
 
    :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="新增或移除區域功能表":::
 
-3. 在 [自動容錯移轉]**** 窗格中，確定 [啟用自動容錯移轉]**** 設定為 [開啟]****。
+3. 在 [自動容錯移轉]  窗格中，確定 [啟用自動容錯移轉]  設定為 [開啟]  。
 
 4. 若要修改容錯移轉優先順序，請透過當您暫留其上時出現在資料列左側的三個點拖曳讀取區域。
 
-5. 選取 [儲存]。
+5. 選取 [儲存]  。
 
    :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="新增或移除區域功能表":::
 
@@ -208,15 +209,15 @@ Cosmos 帳戶設定自動容錯移轉後，可以變更區域的容錯移轉優�
 
 ### <a name="azure-portal"></a><a id="enable-manual-failover-via-portal"></a>Azure 入口網站
 
-1. 移至 Azure Cosmos 帳戶，然後開啟 [全域複寫資料]**** 功能表。
+1. 移至 Azure Cosmos 帳戶，然後開啟 [全域複寫資料]  功能表。
 
-2. 在功能表的頂端，選取 [手動容錯移轉]****。
+2. 在功能表的頂端，選取 [手動容錯移轉]  。
 
    :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="新增或移除區域功能表":::
 
-3. 在 [手動容錯移轉]**** 功能表上，選取新的寫入區域。 選取核取方塊，表示您了解此選項會變更您的寫入區域。
+3. 在 [手動容錯移轉]  功能表上，選取新的寫入區域。 選取核取方塊，表示您了解此選項會變更您的寫入區域。
 
-4. 若要觸發容錯移轉，請選取 [確定]****。
+4. 若要觸發容錯移轉，請選取 [確定]  。
 
    :::image type="content" source="./media/how-to-manage-database-account/manual-failover.png" alt-text="新增或移除區域功能表":::
 
@@ -228,7 +229,7 @@ Cosmos 帳戶設定自動容錯移轉後，可以變更區域的容錯移轉優�
 
 請參閱 [使用 PowerShell 觸發手動容錯移轉](manage-with-powershell.md#trigger-manual-failover)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需關於如何管理 Azure Cosmos 帳戶以及資料庫和容器的詳細資訊和範例，閱讀下列文章：
 

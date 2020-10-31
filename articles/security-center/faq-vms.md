@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 1d91f8242e31aa1efdf9301101307d5bad39a459
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: ff8d726203c5ddfae63a74a7a364c6f2b9ca783e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342207"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085134"
 ---
 # <a name="faq---questions-about-virtual-machines"></a>常見問題-虛擬機器的相關問題
 
 
 ## <a name="what-types-of-virtual-machines-are-supported"></a>支援哪些類型的虛擬機器？
 
-對於使用[傳統與 Resource Manager 部署模型](/azure/security-center/./azure-resource-manager/management/deployment-models)建立的虛擬機器 (VM)，提供監視和建議。
+對於使用[傳統與 Resource Manager 部署模型](/azure/azure-resource-manager/management/deployment-models)建立的虛擬機器 (VM)，提供監視和建議。
 
 如需支援之平台的清單，請參閱 [Azure 資訊安全中心支援的平台](security-center-os-coverage.md)。
 

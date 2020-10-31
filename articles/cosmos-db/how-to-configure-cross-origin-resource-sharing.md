@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: eb1cbed7b974b6f0015591df01674e40aac2d8c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 863c31ecac13337ea3f91d7a7ced49b0f7141e58
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85390868"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086409"
 ---
 # <a name="configure-cross-origin-resource-sharing-cors"></a>設定跨原始來源資源共用 (CORS)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 跨原始來源資源共用 (CORS) 是一項 HTTP 功能，可讓在某個網域下執行的 Web 應用程式存取其他網域中的資源。 網頁瀏覽器會實作稱為相同原始原則的安全性限制，它可防止網頁呼叫不同網域中的 API。 不過，CORS 提供了安全的方式來允許來源網域呼叫其他網域中的 API。 Azure Cosmos DB 中的 Core (SQL) API 現在支援使用 "allowedOrigins" 標頭 (CORS) 的跨原始來源資源分享。 在為 Azure Cosmos 帳戶啟用 CORS 支援後，就只會對已通過驗證的要求進行評估，以根據您指定的規則來判斷是否允許這些要求。
 
@@ -26,9 +27,9 @@ ms.locfileid: "85390868"
 
 使用下列步驟，透過 Azure 入口網站來啟用跨原始來源資源共用：
 
-1. 瀏覽至 Azure cosmos DB 帳戶。 開啟 [CORS]**** 刀鋒視窗。
+1. 瀏覽至 Azure cosmos DB 帳戶。 開啟 [CORS]  刀鋒視窗。
 
-2. 指定可對您 Azure Cosmos DB 帳戶發出跨原始來源呼叫的原始來源逗號分隔清單。 例如，`https://www.mydomain.com`、`https://mydomain.com`、`https://api.mydomain.com`。 您也可以使用萬用字元 “\*” 來允許所有原始來源，然後選取 [提交]****。 
+2. 指定可對您 Azure Cosmos DB 帳戶發出跨原始來源呼叫的原始來源逗號分隔清單。 例如，`https://www.mydomain.com`、`https://mydomain.com`、`https://api.mydomain.com`。 您也可以使用萬用字元 “\*” 來允許所有原始來源，然後選取 [提交]  。 
 
    > [!NOTE]
    > 目前，您不能在網域名稱中使用萬用字元。 例如，尚未支援 `https://*.mydomain.net` 格式。 
@@ -83,7 +84,7 @@ module.exports = {
 以下[程式碼範例](https://github.com/christopheranderson/cosmos-browser-sample)搭配使用 TypeScript 和 Webpack 與 Azure Cosmos DB JavaScript SDK 程式庫，來建置會在有新項目建立時傳送即時更新的待辦事項應用程式。
 最佳做法是不要使用主索引鍵從瀏覽器中與 Azure Cosmos DB 通訊。 相反地，請使用資源權杖來進行通訊。 如需資源權杖的詳細資訊，請參閱[保護對 Azure Cosmos DB 的存取](secure-access-to-data.md#resource-tokens)一文。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要了解其他可保護 Azure Cosmos 帳戶的方式，請參閱下列文章：
 

@@ -3,12 +3,12 @@ title: 在 Windows 上設定 Azure Service Fabric Linux 叢集
 description: 本文說明如何設定在 Windows 開發電腦上執行的 Service Fabric Linux 叢集。 這種方法適用于跨平臺開發。
 ms.topic: conceptual
 ms.date: 10/16/2020
-ms.openlocfilehash: e25c6adf5e5f5101025aa883ef2ff9750c113a76
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 7b25a84e76773baea9f17430df1b7ba13aa661aa
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164103"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087072"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>在 Windows 開發人員電腦上設定 Linux Service Fabric 叢集
 
@@ -57,7 +57,7 @@ ms.locfileid: "92164103"
     ```
 
     >[!TIP]
-    > 根據預設，這會提取包含最新版 Service Fabric 的映像。 如需特定的修訂，請造訪 [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) 頁面。
+    > 根據預設，這會提取包含最新版 Service Fabric 的映像。 如需特定的修訂，請參閱 Docker Hub 上的 [Service Fabric Onebox](https://hub.docker.com/_/microsoft-service-fabric-onebox) 頁面。
 
 
 
@@ -127,7 +127,7 @@ ms.locfileid: "92164103"
  * DNS 服務未執行，而且目前在容器中不受支援。 [問題 #132](https://github.com/Microsoft/service-fabric/issues/132)
  * 執行以容器為基礎的應用程式需要在 Linux 主機上執行 SF。 目前不支援嵌套容器應用程式。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * [使用 Yeoman 在 Linux 上建立和部署第一個 Service Fabric Java 應用程式](service-fabric-create-your-first-linux-application-with-java.md)
 * 開始使用 [Eclipse](./service-fabric-get-started-eclipse.md)
 * 查看其他 [Java 範例](https://github.com/Azure-Samples/service-fabric-java-getting-started)

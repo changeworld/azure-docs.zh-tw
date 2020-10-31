@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 8fa2fdf23a0d71b854e043b66c0aed7e944c5f39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9eb55030c7ec52f9b2ac79fbab19944f0a3e190
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87450082"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087820"
 ---
 # <a name="automated-recommendations-for-azure-cosmos-db"></a>Azure Cosmos DB 的自動化建議
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 所有的雲端服務（包括 Azure Cosmos DB）都會定期更新，並提供新功能、功能和增強功能。 您的應用程式必須隨時掌握最新的效能和安全性更新。 Azure 入口網站提供自訂的建議，可讓您將應用程式的效能最大化。 Azure Cosmos DB 的諮詢引擎會持續分析您 Azure Cosmos DB 資源的使用量歷程記錄，並根據您的工作負載模式提供建議。 這些建議對應于分割、索引、網路、安全性等領域。這些自訂的建議可協助您改善應用程式的效能。
 
@@ -26,7 +27,7 @@ ms.locfileid: "87450082"
 
    :::image type="content" source="./media/automated-recommendations/cosmos-db-pane-recommendations.png" alt-text="從 Azure Cosmos DB 窗格查看建議":::
 
-- 您也可以透過不同的值區（例如成本、安全性、可靠性、效能及卓越營運）來分類 [Azure Advisor](../advisor/advisor-overview.md) 中的建議。 您可以選取特定的訂用帳戶，並依資源類型進行篩選，也就是 **Azure Cosmos DB 帳戶**。  當您選取特定的建議時，它會顯示您可採取的動作來受益于您的工作負載。
+- 您也可以透過不同的值區（例如成本、安全性、可靠性、效能及卓越營運）來分類 [Azure Advisor](../advisor/advisor-overview.md) 中的建議。 您可以選取特定的訂用帳戶，並依資源類型進行篩選，也就是 **Azure Cosmos DB 帳戶** 。  當您選取特定的建議時，它會顯示您可採取的動作來受益于您的工作負載。
 
    :::image type="content" source="./media/automated-recommendations/advisor-pane-recommendations.png" alt-text="從 Azure Cosmos DB 窗格查看建議":::
 
@@ -82,7 +83,7 @@ Azure Cosmos DB 窗格中所顯示的建議並非都可在 Azure Advisor 中使�
 |---------|---------|
 | 具有固定頁面大小的查詢 | 偵測以固定頁面大小發出的查詢，並建議使用-1 (沒有頁面大小的限制) 而不是定義特定的值。 此選項可減少取出所有結果所需的網路來回行程次數。 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [調整 Azure Cosmos DB 中的查詢效能](sql-api-query-metrics.md)
 * 針對使用 Azure Cosmos DB 時的[查詢問題進行疑難排解](troubleshoot-query-performance.md)

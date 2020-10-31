@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 5c1a7de386baeb4b89fd12bd89236ea2e0348a57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5627aa614a7e2819b6f3cc1401c8458552e57219
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357211"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085168"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>使用 Service Fabric 總管視覺化叢集
 
@@ -69,7 +69,7 @@ Service Fabric 叢集中的節點會橫跨容錯網域和升級網域的二維�
 
 您可以使用應用程式檢視瀏覽 Service Fabric 的邏輯階層：應用程式、服務、資料分割，以及複本。
 
-在以下範例中，**MyApp** 應用程式是由 **MyStatefulService** 與 **WebService** 兩個服務組成。 由於 **MyStatefulService** 可設定狀態，因此它包含一個具有一個主要複本和兩個次要複本的資料分割。 對比之下，WebSvcService 則無狀態，而且只包含單一執行個體。
+在以下範例中， **MyApp** 應用程式是由 **MyStatefulService** 與 **WebService** 兩個服務組成。 由於 **MyStatefulService** 可設定狀態，因此它包含一個具有一個主要複本和兩個次要複本的資料分割。 對比之下，WebSvcService 則無狀態，而且只包含單一執行個體。
 
 ![Service Fabric 總管應用程式檢視][sfx-application-tree]
 
@@ -83,7 +83,7 @@ Service Fabric 叢集中的節點會橫跨容錯網域和升級網域的二維�
 ## <a name="actions"></a>動作
 「Service Fabric 總管」提供一個對您叢集內的節點、應用程式及服務快速叫用動作的方式。
 
-例如，若要刪除應用程式實例，請從左邊的樹狀目錄中選擇應用程式，然後選擇 [**動作**  >  **刪除應用程式**]。
+例如，若要刪除應用程式實例，請從左邊的樹狀目錄中選擇應用程式，然後選擇 [ **動作**  >  **刪除應用程式** ]。
 
 ![在 Service Fabric 總管中刪除應用程式][sfx-delete-application]
 
@@ -94,7 +94,7 @@ Service Fabric 叢集中的節點會橫跨容錯網域和升級網域的二維�
 >
 >
 
-您也可以使用 Service Fabric Explorer，為指定的應用程式類型和版本建立應用程式執行個體。 在樹狀檢視中選擇應用程式類型，然後在右邊窗格中按一下您想要的版本旁邊的 [建立應用程式執行個體] **** 連結。
+您也可以使用 Service Fabric Explorer，為指定的應用程式類型和版本建立應用程式執行個體。 在樹狀檢視中選擇應用程式類型，然後在右邊窗格中按一下您想要的版本旁邊的 [建立應用程式執行個體]  連結。
 
 ![在 Service Fabric Explorer 中建立應用程式執行個體][sfx-create-app-instance]
 
@@ -117,7 +117,7 @@ EventStore 是平台所提供的功能，可提供可在 Service Fabric Explorer
 ## <a name="image-store-viewer"></a>映射存放區檢視器
 映射存放區檢視器是使用原生映射存放區的功能，可讓您查看映射存放區的目前內容，以及取得檔案和資料夾資訊，以及移除檔案/資料夾。
 
-![Service Fabric 總管叢集對應][sfx-imagestore]
+![顯示映射存放區檢視器的螢幕擷取畫面。][sfx-imagestore]
 
 ## <a name="backup-and-restore"></a>備份與還原
 Service Fabric Explorer 提供與 [備份和還原](./service-fabric-reliable-services-backup-restore.md)互動的能力。 若要查看 SFX 中的備份和還原功能，必須啟用 [advanced] 模式。
@@ -133,7 +133,7 @@ Service Fabric Explorer 提供與 [備份和還原](./service-fabric-reliable-se
 * 觸發和追蹤磁碟分割的還原。
 
 如需有關備份和還原服務的詳細資訊，請參閱 [REST API 參考](/rest/api/servicefabric/sfclient-index-backuprestore)。
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * [在 Visual Studio 中管理您的 Service Fabric 應用程式](service-fabric-manage-application-in-visual-studio.md)
 * [使用 PowerShell 部署 Service Fabric 應用程式](service-fabric-deploy-remove-applications.md)
 

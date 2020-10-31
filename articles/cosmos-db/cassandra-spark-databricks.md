@@ -8,18 +8,19 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 861e3994ad9aa0d7c6fd4dee68631f78418c8a64
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: f76fdb1559c90073d15ecad7acea58b6c7ed8b2e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482565"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087497"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>從 Azure Databricks 存取 Azure Cosmos DB Cassandra API 資料
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 此文章詳細說明如何從 [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) 上的 Spark 使用 Azure Cosmos DB Cassandra API。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [佈建 Azure Cosmos DB Cassandra API 帳戶](create-cassandra-dotnet.md#create-a-database-account)
 
@@ -64,6 +65,6 @@ ms.locfileid: "92482565"
 * [如何在 Azure Databricks 上將 Spark Scala 應用程式當成自動化作業來執行](https://docs.azuredatabricks.net/user-guide/jobs.html) \(英文\)
 * [使用 Cassandra API 的程式碼範例完整清單](cassandra-spark-generic.md#next-steps)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 開始使用 Java 應用程式來[建立 Cassandra API 帳戶、資料庫與資料表](create-cassandra-api-account-java.md)。

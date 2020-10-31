@@ -7,14 +7,15 @@ ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
 ms.custom: devx-track-python, devx-track-java, contperfq1
-ms.openlocfilehash: f747cc6405cef07510766bcfa4c826aec9d9857b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 79e2b58ea342c9449faba108881c65d0bd8de856
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490402"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085797"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>匯出 Azure Cosmos DB 模擬器憑證以與 JAVA、Python 和 Node.js 應用程式搭配使用
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB 模擬器提供了一個模擬 Azure Cosmos DB 服務的本機環境，以供開發之用。 Azure Cosmos 模擬器僅支援透過 TLS 連接的安全通訊。
 
@@ -34,11 +35,11 @@ Azure Cosmos DB 模擬器提供了一個模擬 Azure Cosmos DB 服務的本機�
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-1.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 1":::
 
-1. 按一下 [詳細資料]****，然後按一下 [確定]****。
+1. 按一下 [詳細資料]  ，然後按一下 [確定]  。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 1":::
 
-1. 按一下 [複製到檔案...]****。
+1. 按一下 [複製到檔案...]  。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 1":::
 
@@ -46,15 +47,15 @@ Azure Cosmos DB 模擬器提供了一個模擬 Azure Cosmos DB 服務的本機�
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 1":::
 
-1. 按一下 [否，不要匯出私密金鑰 ]****，然後按 [下一步]****。
+1. 按一下 [否，不要匯出私密金鑰 ]  ，然後按 [下一步]  。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 1":::
 
-1. 按一下 [Base-64 編碼的 X.509 (.CER)]****，然後按 [下一步]****。
+1. 按一下 [Base-64 編碼的 X.509 (.CER)]  ，然後按 [下一步]  。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 1":::
 
-1. 指定憑證的名稱。 此案例中為 **documentdbemulatorcert**，然後按 [下一步]****。
+1. 指定憑證的名稱。 此案例中為  。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 1":::
 
@@ -102,7 +103,7 @@ sudo $JAVA_HOME/bin/keytool -cacerts -importcert -alias cosmos_emulator -file $E
 
 如果您已將憑證安裝到 JAVA 憑證存放區或在其他位置使用，則需要使用目前的憑證重新匯入。 在您更新憑證之前，您的應用程式無法連接到本機模擬器。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [使用命令列參數和 PowerShell 命令來控制模擬器](emulator-command-line-parameters.md)
 * [模擬器的偵錯工具問題](troubleshoot-local-emulator.md)

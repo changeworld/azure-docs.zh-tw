@@ -6,16 +6,17 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 08/05/2020
 ms.author: thweiss
-ms.openlocfilehash: f3a5106fcc7f1b55db22ee13ced34328cc38096d
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 21bb594f4e374d41cfc4184f3a72aea1717c85d8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486203"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086137"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>使用 Azure Key Vault 為您的 Azure Cosmos 帳戶設定客戶管理的金鑰
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-儲存在 Azure Cosmos 帳戶中的資料，會使用由 Microsoft 管理的金鑰 (**服務管理的金鑰**) 自動進行縝密的加密。 (選擇性) 您可以選擇使用您所管理的金鑰 (**客戶管理的金鑰**) 來新增第二層加密。
+儲存在 Azure Cosmos 帳戶中的資料，會使用由 Microsoft 管理的金鑰 ( **服務管理的金鑰** ) 自動進行縝密的加密。 (選擇性) 您可以選擇使用您所管理的金鑰 ( **客戶管理的金鑰** ) 來新增第二層加密。
 
 :::image type="content" source="./media/how-to-setup-cmk/cmk-intro.png" alt-text="客戶資料周圍的加密層":::
 
@@ -36,7 +37,7 @@ ms.locfileid: "92486203"
 
 ## <a name="configure-your-azure-key-vault-instance"></a>設定您的 Azure Key Vault 執行個體
 
-若要將客戶管理的金鑰用於 Azure Cosmos DB，您必須在您打算用來裝載加密金鑰的 Azure Key Vault 執行個體上設定兩個屬性：**虛刪除**和**清除保護**。
+若要將客戶管理的金鑰用於 Azure Cosmos DB，您必須在您打算用來裝載加密金鑰的 Azure Key Vault 執行個體上設定兩個屬性： **虛刪除** 和 **清除保護** 。
 
 如果您建立新的 Azure Key Vault 執行個體，請在建立期間啟用這些屬性：
 
@@ -59,7 +60,7 @@ ms.locfileid: "92486203"
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png" alt-text="客戶資料周圍的加密層":::
 
-1. 在 [選取主體] 底下，選取 [未選取任何項目]。 然後，搜尋 **Azure Cosmos DB** 主體並加以選取 (您也可以依主體識別碼搜尋，以便找出：任何 Azure 區域的識別碼皆為 `a232010e-820c-4083-83bb-3ace5fc29d0b`，但 Azure Government 區域除外，其主體識別碼為 `57506a73-e302-42a9-b869-6f12d9ec29e9`)。 最後，選擇底部的 [選取]。 如果 **Azure Cosmos DB** 主體不在清單中，您可能必須重新註冊 **Microsoft.DocumentDB** 資源提供者，如本文的[註冊資源提供者](#register-resource-provider)一節所說明。
+1. 在 [選取主體] 底下，選取 [未選取任何項目]。 然後，搜尋 **Azure Cosmos DB** 主體並加以選取 (您也可以依主體識別碼搜尋，以便找出：任何 Azure 區域的識別碼皆為 `a232010e-820c-4083-83bb-3ace5fc29d0b`，但 Azure Government 區域除外，其主體識別碼為 `57506a73-e302-42a9-b869-6f12d9ec29e9`)。 最後，選擇底部的 [選取]。 如果 **Azure Cosmos DB** 主體不在清單中，您可能必須重新註冊 **Microsoft.DocumentDB** 資源提供者，如本文的 [註冊資源提供者](#register-resource-provider)一節所說明。
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap.png" alt-text="客戶資料周圍的加密層":::
 
@@ -135,7 +136,7 @@ Get-AzResource -ResourceGroupName $resourceGroupName -Name $accountName `
 
 當您透過 Azure Resource Manager 範本建立新的 Azure Cosmos 帳戶時：
 
-- 在**屬性**物件中，傳入您先前在 **keyVaultKeyUri** 屬性下複製的 Azure Key Vault 金鑰的 URI。
+- 在 **屬性** 物件中，傳入您先前在 **keyVaultKeyUri** 屬性下複製的 Azure Key Vault 金鑰的 URI。
 
 - 使用 **2019-12-12** 或更新版本作為 API 版本。
 
@@ -234,7 +235,7 @@ az cosmosdb show \
 
     :::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="客戶資料周圍的加密層":::
 
-    然後，將 **金鑰 URI** 取代為您想要使用的新金鑰，然後選取 [ **儲存**]：
+    然後，將 **金鑰 URI** 取代為您想要使用的新金鑰，然後選取 [ **儲存** ]：
 
     :::image type="content" source="./media/how-to-setup-cmk/portal-key-swap.png" alt-text="客戶資料周圍的加密層":::
 

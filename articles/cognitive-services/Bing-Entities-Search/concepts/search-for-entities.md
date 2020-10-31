@@ -10,20 +10,25 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 1805f6f7a61f7e0b0a6e4d5bd6931c0a7d1f1b6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 532bf806789476c1ec901c1e4ac8522451819625
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91872063"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085117"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>使用 Bing 實體 API 搜尋實體
+
+> [!WARNING]
+> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
+> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
+> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
 ## <a name="suggest-search-terms-with-the-bing-autosuggest-api"></a>使用 Bing 自動建議 API 建議搜尋字詞
 
 若您提供使用者可在其中輸入其搜尋字詞的搜尋方塊，請使用 [Bing 自動建議 API](../../bing-autosuggest/get-suggested-search-terms.md) 來改善使用經驗。 API 會根據部分搜尋字詞傳回建議的查詢字串，作為使用者類型。
 
-在使用者輸入其搜尋字詞之後，URL 會先將此字詞編碼，再設定 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) 查詢參數。 例如，若使用者輸入 *Marcus Appel*，請將 `q` 設定為 *Marcus+Appel* 或 *Marcus%20Appel*。
+在使用者輸入其搜尋字詞之後，URL 會先將此字詞編碼，再設定 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) 查詢參數。 例如，若使用者輸入 *Marcus Appel* ，請將 `q` 設定為 *Marcus+Appel* 或 *Marcus%20Appel* 。
 
 若搜尋字詞包含拼字錯誤，搜尋回應會包含 [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) 物件。 物件會顯示 Bing 用於搜尋的原始拼字和已更正的拼字。
 
@@ -189,7 +194,7 @@ API 回應包含 [SearchResponse](https://docs.microsoft.com/rest/api/cognitives
 > [!NOTE]
 > 實體回應支援多個市場，但地點回應支援僅美國公司地點。 
 
-本地感知實體查詢 (例如「我附近的餐廳」**) 需要使用者的位置以提供精確的結果。 您的要求應該一律使用 X-Search-Location 和 X-MSEdge-ClientIP 標頭來指定使用者的位置。 若 Bing 認為使用者的位置對查詢有利，則會將 [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) 的 `askUserForLocation` 欄位設定為 **true**。 
+本地感知實體查詢 (例如「我附近的餐廳」  ) 需要使用者的位置以提供精確的結果。 您的要求應該一律使用 X-Search-Location 和 X-MSEdge-ClientIP 標頭來指定使用者的位置。 若 Bing 認為使用者的位置對查詢有利，則會將 [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#querycontext) 的 `askUserForLocation` 欄位設定為 **true** 。 
 
 ```json
 {
@@ -296,7 +301,7 @@ Bing 實體 API 回應包含第三方所擁有的資訊。 您會負責確定使
 
 ![授權屬性](../media/cognitive-services-bing-entities-api/licenseattribution.png)
 
-您顯示的授權通知必須包括網站的超連結，其中包含授權的相關資訊。 一般而言，您會將授權名稱設為超連結。 例如，若通知是 **CC-BY-SA 授權文字**，而 CC-BY-SA 是授權名稱，您會將 CC-BY-SA 設為超連結。
+您顯示的授權通知必須包括網站的超連結，其中包含授權的相關資訊。 一般而言，您會將授權名稱設為超連結。 例如，若通知是 **CC-BY-SA 授權文字** ，而 CC-BY-SA 是授權名稱，您會將 CC-BY-SA 設為超連結。
 
 ### <a name="link-and-text-attribution"></a>連結和文字屬性
 
@@ -331,6 +336,6 @@ Bing 實體 API 回應包含第三方所擁有的資訊。 您會負責確定使
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 嘗試透過[快速入門](../quickstarts/csharp.md)開始使用 Bing 實體搜尋 API 來搜尋實體。

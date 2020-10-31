@@ -4,12 +4,12 @@ description: 在 Linux 上安裝執行階段和 SDK，並建立本機開發叢�
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 39ed4a394a54112c03145c0d481e5459ecbf6d8b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 14b8a278605a908b4182c724831b2e42de54a753
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675268"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086885"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上準備您的開發環境
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "92675268"
 您可以使用 Azure Service Fabric 命令列介面 (CLI) ，管理裝載于雲端或內部部署環境 Service Fabric 實體。 如需如何安裝 CLI 的資訊，請參閱[設定 Service Fabric CLI](./service-fabric-cli.md)。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 以下為支援開發的作業系統版本。
 
@@ -175,7 +175,7 @@ SDK 安裝程式隨附的 Service Fabric 執行階段包含下表中的套件。
 
 # <a name="container-based-local-cluster"></a>[以容器為基礎的本機叢集](#tab/localclusteroneboxcontainer)
 
-啟動以容器為基礎的 [單一 box Service Fabric 叢集中](https://hub.docker.com/r/microsoft/service-fabric-onebox/)。
+啟動以容器為基礎的 [Service Fabric Onebox](https://hub.docker.com/_/microsoft-service-fabric-onebox) 叢集。
 
 1. 安裝 Moby，以便能夠部署 Docker 容器。
     ```bash
@@ -304,7 +304,7 @@ Service Fabric 提供的 Scaffolding 工具可協助您從終端機使用 Yeoman
 
 3. 在 [ **工作** ] 方塊中，輸入 **HTTPs： \/ /dl.microsoft.com/eclipse** 。
 
-4. 選取 [新增]  。
+4. 選取 [新增]。
 
     ![可用的軟體頁面][sf-eclipse-plugin]
 
@@ -350,7 +350,7 @@ sudo apt-get install servicefabric servicefabricsdkcommon
     npm uninstall -g generator-azuresfguest
     ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [使用 Yeoman 在 Linux 上建立和部署第一個 Service Fabric Java 應用程式](service-fabric-create-your-first-linux-application-with-java.md)
 * [在 Linux 上使用適用於 Eclipse 的 Service Fabric 外掛程式建立和部署第一個 Service Fabric Java 應用程式](service-fabric-get-started-eclipse.md)

@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 10/25/2020
-ms.openlocfilehash: af82b9e2feee3e03d2a0703d771c68b67ddd08c9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a6ada3557350cd3f2f67dad54152eafded6639ec
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791574"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087021"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>對適用於 MySQL 的 Azure 資料庫中的複寫延遲進行疑難排解
 
@@ -236,6 +236,9 @@ ALTER TABLE table_name ADD INDEX index_name (column), ALGORITHM=INPLACE, LOCK=NO
 Binlog_group_commit_sync_delay 參數會控制在同步處理二進位記錄檔之前，二進位記錄檔認可等候的毫秒數。 此參數的優點是，它不會立即套用每個認可的交易，而是讓來源伺服器大量傳送二進位記錄檔更新。 此延遲會減少複本上的 IO，並協助提升效能。 
 
 將 binlog_group_commit_sync_delay 參數設定為1000或這樣可能會很有用。 然後監視複寫延遲。 請小心設定此參數，並只將其用於高平行存取工作負載。 
+
+> [!IMPORTANT] 
+> 在 [複本伺服器] 中，建議 binlog_group_commit_sync_delay 參數為0。 這是建議的作法，因為與來源伺服器不同的是，複本伺服器不會有高平行存取，而且增加複本伺服器上 binlog_group_commit_sync_delay 的值可能會不慎導致複寫延遲增加。
 
 針對包含許多單一交易的低並行工作負載，binlog_group_commit_sync_delay 設定可能會增加延遲。 延遲可能會增加，因為 IO 執行緒會等待大量二進位記錄檔更新，即使只有少數交易才會認可。 
 

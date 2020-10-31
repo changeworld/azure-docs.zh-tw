@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: maquaran
-ms.openlocfilehash: 152454b3da0ff1efd33ac463aecec78155a8e6f7
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c47d18726d9581b1b03aa2e676a71d6ca1bc1b7d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490470"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086460"
 ---
 # <a name="how-to-configure-logging-and-connectivity-with-the-azure-functions-trigger-for-cosmos-db"></a>如何使用 Cosmos DB 的 Azure Functions 觸發程式來設定記錄和連接
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文說明使用 Cosmos DB 的 Azure Functions 觸發程式時，您可以設定的 advanced configuration 選項。
 
@@ -39,7 +40,7 @@ Azure Functions 的 Cosmos DB 觸發程序會在內部使用[變更摘要處理�
 }
 ```
 
-在 Azure Function 中部署更新的設定之後，您會看到追蹤功能中包含 Azure Functions 的 Cosmos DB 觸發程序記錄。 您可以在「類別」** `Host.Triggers.CosmosDB` 底下，自己設定的記錄提供者中檢視記錄。
+在 Azure Function 中部署更新的設定之後，您會看到追蹤功能中包含 Azure Functions 的 Cosmos DB 觸發程序記錄。 您可以在「類別」  `Host.Triggers.CosmosDB` 底下，自己設定的記錄提供者中檢視記錄。
 
 ### <a name="query-the-logs"></a>查詢記錄檔
 
@@ -52,11 +53,11 @@ traces
 
 ## <a name="configuring-the-connection-policy"></a>設定連接原則
 
-有兩種連線模式 - 直接模式和閘道模式。 若要深入瞭解這些連接模式，請參閱 [連接模式](sql-sdk-connection-modes.md) 的文章。 依預設會使用**閘道**來建立 Azure Functions 的 Cosmos DB 觸發程序的所有連線。 不過，它可能不是效能導向案例的最佳選項。
+有兩種連線模式 - 直接模式和閘道模式。 若要深入瞭解這些連接模式，請參閱 [連接模式](sql-sdk-connection-modes.md) 的文章。 依預設會使用 **閘道** 來建立 Azure Functions 的 Cosmos DB 觸發程序的所有連線。 不過，它可能不是效能導向案例的最佳選項。
 
 ### <a name="changing-the-connection-mode-and-protocol"></a>變更連接模式和通訊協定
 
-有兩個重要組態設定可用來設定用戶端連線原則 - **連線模式**和**連線通訊協定**。 您可以變更 Azure Functions 的 Cosmos DB 觸發程序所使用的預設連線模式和通訊協定，以及所有的 [Azure Cosmos DB 繫結](../azure-functions/functions-bindings-cosmosdb-v2-output.md)。 若要變更預設設定，您需要在您的 Azure Functions 專案或 Azure Functions 應用程式中找出 `host.json` 檔案，並新增下列[額外設定](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings)：
+有兩個重要組態設定可用來設定用戶端連線原則 - **連線模式** 和 **連線通訊協定** 。 您可以變更 Azure Functions 的 Cosmos DB 觸發程序所使用的預設連線模式和通訊協定，以及所有的 [Azure Cosmos DB 繫結](../azure-functions/functions-bindings-cosmosdb-v2-output.md)。 若要變更預設設定，您需要在您的 Azure Functions 專案或 Azure Functions 應用程式中找出 `host.json` 檔案，並新增下列[額外設定](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings)：
 
 ```js
 {

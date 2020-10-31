@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: f12919cd35441c6c198269e2f79c705c1d304acd
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: ba615d3e41393afe007238a0fe1e694732ad123e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278817"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087633"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 中的資料分割
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 本文說明資料分割在 Azure Cosmos DB Cassandra API 中的運作方式。 
 
@@ -110,7 +111,7 @@ CREATE TABLE uprofile.user (
    PRIMARY KEY ((firstname, lastname), id) );
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 瞭解 [Azure Cosmos DB 中的資料分割和水準調整](partitioning-overview.md)。
 * 瞭解 [Azure Cosmos DB 中布建的輸送量](request-units.md)。

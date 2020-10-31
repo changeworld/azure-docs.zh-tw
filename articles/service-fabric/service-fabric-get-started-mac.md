@@ -4,12 +4,12 @@ description: 安裝執行階段、SDK 和工具，並建立本機開發叢集。
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: adec05a4d8e34374fe260343c73b1ecd14ba04f1
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: d08046c8f29901dd9650a1edc886efa2ff226e00
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168166"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086772"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>在 Mac OS X 上設定開發環境
 > [!div class="op_single_selector"]
@@ -19,7 +19,7 @@ ms.locfileid: "92168166"
 
 您可以建置 Azure Service Fabric 應用程式，以使用 Mac OS X 在 Linux 叢集上執行。本文件涵蓋如何設定您的 Mac 進行開發。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 Azure Service Fabric 不會在 Mac OS X 上以原生方式執行。若要執行本機 Service Fabric 叢集，我們提供預先設定的 Docker 容器映像。 開始之前，您需要：
 
 * 至少 4 GB 的 RAM。
@@ -41,7 +41,7 @@ Azure Service Fabric 不會在 Mac OS X 上以原生方式執行。若要執行�
         "fixed-cidr-v6": "fd00::/64"
     }
     ```
-    您可以直接在 Docker 安裝路徑的 daemon.json 檔案中更新這些設定。 您可以直接修改 Docker 中的精靈組態設定。 選取 [Docker 圖示]****，然後選取 [喜好設定]**** > [精靈]**** > [進階]****。
+    您可以直接在 Docker 安裝路徑的 daemon.json 檔案中更新這些設定。 您可以直接修改 Docker 中的精靈組態設定。 選取 [Docker 圖示]  ，然後選取 [喜好設定]  > [精靈]  > [進階]  。
     
     >[!NOTE]
     >
@@ -49,7 +49,7 @@ Azure Service Fabric 不會在 Mac OS X 上以原生方式執行。若要執行�
     >
 
     >[!TIP]
-    >測試大型應用程式時，建議提高配置給 Docker 的資源。 選取 [Docker 圖示]****，然後選取 [進階]**** 來調整核心數目和記憶體，即可完成此作業。
+    >測試大型應用程式時，建議提高配置給 Docker 的資源。 選取 [Docker 圖示]  ，然後選取 [進階]  來調整核心數目和記憶體，即可完成此作業。
 
 2. 啟動叢集。<br/>
     <b>Ubuntu 18.04 LTS：</b>
@@ -63,7 +63,7 @@ Azure Service Fabric 不會在 Mac OS X 上以原生方式執行。若要執行�
     ```
 
     >[!TIP]
-    > 根據預設，這會提取包含最新版 Service Fabric 的映像。 如需特定的修訂，請造訪 [Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) 頁面。
+    > 根據預設，這會提取包含最新版 Service Fabric 的映像。 如需特定的修訂，請造訪 Docker Hub 上的 [Service Fabric Onebox](https://hub.docker.com/_/microsoft-service-fabric-onebox) 頁面。
 
 
 
@@ -218,7 +218,7 @@ docker run -itd -p 19080:19080 -v /Users/sayantan/work/workspaces/mySFWorkspace:
 >如果您使用 `sfonebox` 以外的名稱來啟動容器，請在您 Service Fabric 執行者 Java 應用程式中的 testclient.sh 檔案更新該名稱值。
 >
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 <!-- Links -->
 * [使用 Yeoman 在 Linux 上建立和部署第一個 Service Fabric Java 應用程式](service-fabric-create-your-first-linux-application-with-java.md)
 * [使用適用于 Eclipse 的 Service Fabric 外掛程式，在 Linux 上建立及部署您的第一個 Service Fabric JAVA 應用程式](service-fabric-get-started-eclipse.md)

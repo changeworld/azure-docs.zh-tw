@@ -8,20 +8,21 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/06/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df25ab4b0f5593ab21336d002ad2f9f10795bdcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74d851a28712beb80bf2a7aa196e471ef4f15074
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570564"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085729"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>搭配 Gremlin SDK 使用 Azure Cosmos DB 資源權杖
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 本文說明如何使用 [Azure Cosmos DB 的資源權杖](secure-access-to-data.md)，透過 Gremlin SDK 存取圖形資料庫。
 
 ## <a name="create-a-resource-token"></a>建立資源權杖
 
-Apache TinkerPop Gremlin SDK 沒有 API 可用來建立資源權杖。 「資源權杖」** 一詞是 Azure Cosmos DB 的概念。 若要建立資源權杖，請下載 [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)。 如果您的應用程式需要建立資源權杖，並使用它們來存取圖形資料庫，則需要 2 個不同的 SDK。
+Apache TinkerPop Gremlin SDK 沒有 API 可用來建立資源權杖。 「資源權杖」  一詞是 Azure Cosmos DB 的概念。 若要建立資源權杖，請下載 [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)。 如果您的應用程式需要建立資源權杖，並使用它們來存取圖形資料庫，則需要 2 個不同的 SDK。
 
 下方將概要說明資源權杖上的物件模型階層：
 
@@ -100,8 +101,8 @@ builder.authProperties(authenticationProperties);
 
 ## <a name="permission"></a>權限
 
-應用程式在使用資源權杖時常遇到的錯誤是：「未在對應要求的授權標頭中提供足夠的權限。 請使用另一個授權標頭並重試。」 當 Gremlin 周遊嘗試寫入邊線或頂點，但資源權杖僅授與「讀取」** 權限時，就會傳回此錯誤。 檢查您的周遊是否包含下列任一步驟：.addV()**、.addE()**、.drop()** 或 .property()**。
+應用程式在使用資源權杖時常遇到的錯誤是：「未在對應要求的授權標頭中提供足夠的權限。 請使用另一個授權標頭並重試。」 當 Gremlin 周遊嘗試寫入邊線或頂點，但資源權杖僅授與「讀取」  權限時，就會傳回此錯誤。 檢查您的周遊是否包含下列任一步驟：.addV()  、.addE()  、.drop()  或 .property()  。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * [Azure 角色型存取控制 (Azure Cosmos DB 中的 AZURE RBAC) ](role-based-access-control.md)
 * [了解如何保護對 Azure Cosmos DB 中資料的存取](secure-access-to-data.md)

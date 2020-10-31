@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 869513d5a668544b2aa8afb13bb56e8293788b06
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 61e8ee2cbcd1252704b2d1e220fcfaaff17c2f28
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368718"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085984"
 ---
 # <a name="restrict-user-access-to-data-operations-in-azure-cosmos-db"></a>限制使用者存取 Azure Cosmos DB 中的資料作業
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 在 Azure Cosmos DB 中，有兩種方式可以驗證與資料庫服務的互動：
 
@@ -95,7 +96,7 @@ $cdba.Properties.disableKeyBasedMetadataWriteAccess="True"
 $cdba | Set-AzResource -Force
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 深入瞭解 [Cosmos DB 的角色型存取控制](role-based-access-control.md)
 - 取得[Cosmos DB 中資料的安全存取](secure-access-to-data.md)總覽

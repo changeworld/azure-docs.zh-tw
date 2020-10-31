@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 1178a5e2850279820925c9bd02554ec7d5adf9e6
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 23adbd289ae2be484f1aef86b2224097c6ba489c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283798"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087922"
 ---
 # <a name="azure-cosmos-db-resource-model"></a>Azure Cosmos DB 資源模型
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB 是完全受控的平台即服務 (PaaS)。 若要開始使用 Azure Cosmos DB，您應該一開始先在 Azure 訂用帳戶中建立 Azure Cosmos 帳戶，並在其下建立資料庫、容器和專案。 本文說明資源模型階層中 Azure Cosmos DB 資源模型和不同的實體。
 
@@ -63,16 +64,16 @@ Azure Cosmos 容器是布建輸送量和儲存體的擴充性單位。 容器會
 
 當您建立容器時，您可以使用下列其中一種模式來設定輸送量：
 
-* **專用布建的輸送量模式**：在容器上布建的輸送量是專為該容器保留的，且由 sla 所支援。 若要深入瞭解，請參閱 [如何在容器上](how-to-provision-container-throughput.md)布建輸送量。
+* **專用布建的輸送量模式** ：在容器上布建的輸送量是專為該容器保留的，且由 sla 所支援。 若要深入瞭解，請參閱 [如何在容器上](how-to-provision-container-throughput.md)布建輸送量。
 
-* **共用布建的輸送量模式**：這些容器與相同資料庫中的其他容器共用布建的輸送量 (排除已設定專用布建輸送量) 的容器。 換句話說，在資料庫上布建的輸送量會在所有「共用輸送量」容器之間共用。 若要深入瞭解，請參閱 [如何在資料庫上](how-to-provision-database-throughput.md)布建輸送量。
+* **共用布建的輸送量模式** ：這些容器與相同資料庫中的其他容器共用布建的輸送量 (排除已設定專用布建輸送量) 的容器。 換句話說，在資料庫上布建的輸送量會在所有「共用輸送量」容器之間共用。 若要深入瞭解，請參閱 [如何在資料庫上](how-to-provision-database-throughput.md)布建輸送量。
 
 > [!NOTE]
 > 只有在建立資料庫和容器時，您才能設定共用和專用輸送量。 若要在建立容器後從專用輸送量模式切換為共用輸送量模式 (反之亦然)，您必須建立新的容器，並將資料遷移至新的容器。 您可以使用 Azure Cosmos DB 變更摘要] 功能來遷移資料。
 
 無論您是使用專用或共用布建的輸送量模式建立容器，Azure Cosmos 容器都可以調整彈性。
 
-容器是專案的不限架構容器。 容器中的專案可以有任意的架構。 例如，代表人員的專案和代表汽車的專案可以放在 *相同的容器*中。 根據預設，您新增至容器的所有專案都會自動編制索引，而不需要明確的索引或架構管理。 您可以藉由在容器上設定 [編制索引原則](index-overview.md) 來自訂索引行為。 
+容器是專案的不限架構容器。 容器中的專案可以有任意的架構。 例如，代表人員的專案和代表汽車的專案可以放在 *相同的容器* 中。 根據預設，您新增至容器的所有專案都會自動編制索引，而不需要明確的索引或架構管理。 您可以藉由在容器上設定 [編制索引原則](index-overview.md) 來自訂索引行為。 
 
 您可以在容器中的選取專案上設定 [存留時間 (TTL) ](time-to-live.md) 或整個容器，以正常地從系統清除這些專案。 Azure Cosmos DB 會在專案到期時自動將其刪除。 也可確保在容器上執行的查詢不會傳回固定系結中已過期的專案。 若要深入瞭解，請參閱在 [您的容器上設定 TTL](how-to-time-to-live.md)。
 

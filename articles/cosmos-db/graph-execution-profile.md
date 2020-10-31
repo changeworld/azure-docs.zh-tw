@@ -8,14 +8,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: chrande
-ms.openlocfilehash: ff49889977bc4e5d9097d81ea7b05387900bedd4
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 18cefb1dd80368a8ccdad9f6f3ffc30881a8a889
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926371"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087480"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>如何使用執行設定檔步驟來評估您的 Gremlin 查詢
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
 
 本文概述如何使用 Azure Cosmos DB Gremlin API 圖形資料庫的執行設定檔步驟。 此步驟提供疑難排解和查詢最佳化的相關資訊，並與可針對 Cosmos DB Gremlin API 帳戶執行的任何 Gremlin 查詢相容。
 
@@ -386,6 +387,6 @@ Cosmos DB Gremlin 執行時間運算子|描述
 - `metrics[0].time`第一個回應中的值較高，表示這個單一步驟花費較長的時間來解決。
 - `metrics[0].counts.resultsCount`第一個回應中也會有較高的值，這表示初始工作資料集較大。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * 瞭解 Azure Cosmos DB 中 [支援的 Gremlin 功能](gremlin-support.md) 。 
 * [在 Azure Cosmos DB 中深入瞭解 GREMLIN API](graph-introduction.md)。

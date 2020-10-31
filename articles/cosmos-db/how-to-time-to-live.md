@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 340ec7c16c5ed3e477cc2c4505c8b018d2d39a06
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7cf0f91a655901373b02a51004cf77eb25c8cf8e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485999"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085882"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中設定存留時間
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 在 Azure Cosmos DB 中，您可以選擇在容器層級設定存留時間 (TTL)，也可以在為容器設定後於項目層級加以覆寫。 您可以使用 Azure 入口網站或語言專屬 SDK，來為容器設定 TTL。 項目層級的 TTL 覆寫可使用 SDK 來加以設定。
 
@@ -28,12 +29,12 @@ ms.locfileid: "92485999"
 
 2. 建立新的 Azure Cosmos 帳戶，或選取現有帳戶。
 
-3. 開啟 [資料總管]**** 窗格。
+3. 開啟 [資料總管]  窗格。
 
 4. 選取現有容器，加以展開並修改下列值：
 
    * 開啟 [規模與設定] 視窗。
-   * 在 [設定]**** 底下，尋找 [存留時間]****。
+   * 在 [設定]  底下，尋找 [存留時間]  。
    * 選取 [開啟 (無預設值)]，或選取 [開啟] 並設定 TTL 值
    * 按一下 [儲存]  儲存變更。
 
@@ -212,16 +213,16 @@ async function createcontainerWithTTL(db: Database, containerDefinition: Contain
 
 2. 建立新的 Azure Cosmos 帳戶，或選取現有帳戶。
 
-3. 開啟 [資料總管]**** 窗格。
+3. 開啟 [資料總管]  窗格。
 
 4. 選取現有容器，加以展開並修改下列值：
 
    * 開啟 [規模與設定] 視窗。
-   * 在 [設定]**** 底下，尋找 [存留時間]****。
-   * 選取 [ **開啟 (沒有預設) ** ]，或選取 [ **開啟** ] 並設定 TTL 值。 
+   * 在 [設定]  底下，尋找 [存留時間]  。
+   * 選取 [ **開啟 (沒有預設)** ]，或選取 [ **開啟** ] 並設定 TTL 值。 
    * 按一下 [儲存] 儲存變更。
 
-5. 接著瀏覽至您要設定存留時間的項目、新增 `ttl` 屬性，然後選取 [更新]****。 
+5. 接著瀏覽至您要設定存留時間的項目、新增 `ttl` 屬性，然後選取 [更新]  。 
 
    ```json
    {
@@ -558,7 +559,7 @@ container = database.createContainerIfNotExists(containerProperties, 400).block(
 ```
 ---
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 請於下列文章深入了解存留時間：
 

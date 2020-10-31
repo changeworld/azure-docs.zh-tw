@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 3/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: e948031d3d1d03890bfcfccd65424a15e6e314cd
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 3c363552d1a196bed49e1ef3448a8216b7bcae2f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92276113"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086052"
 ---
 # <a name="query-an-azure-cosmos-container"></a>查詢 Azure Cosmos 容器
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文說明如何查詢 Azure Cosmos DB 中的容器 (集合、圖表或資料表) 的輸送量。 尤其是，它涵蓋了分割區和跨資料分割查詢在 Azure Cosmos DB 中的運作方式。
 
@@ -57,9 +58,9 @@ Azure Cosmos DB SDK 1.9.0 和更新版本支援平行查詢執行選項。 跨�
 
 若要管理平行執行查詢，您可以調整下列參數︰
 
-- **>maxconcurrency**：設定容器磁碟分割的同時網路連接數目上限。 如果您將此屬性設定為 `-1` ，則 SDK 會管理平行處理原則的程度。 如果  `MaxConcurrency` 設定為 `0` ，則會有與容器分割區的單一網路連接。
+- **>maxconcurrency** ：設定容器磁碟分割的同時網路連接數目上限。 如果您將此屬性設定為 `-1` ，則 SDK 會管理平行處理原則的程度。 如果  `MaxConcurrency` 設定為 `0` ，則會有與容器分割區的單一網路連接。
 
-- **MaxBufferedItemCount**：權衡取捨查詢延遲性和用戶端記憶體使用量。 如果省略此選項或將其設定為 -1，則 SDK 會管理在平行查詢執行期間緩衝處理的項目數。
+- **MaxBufferedItemCount** ：權衡取捨查詢延遲性和用戶端記憶體使用量。 如果省略此選項或將其設定為 -1，則 SDK 會管理在平行查詢執行期間緩衝處理的項目數。
 
 由於 Azure Cosmos DB 平行處理跨資料分割查詢的能力，因此查詢延遲通常會隨著系統新增 [實體](partitioning-overview.md#physical-partitions)分割區而調整。 不過，當實體分割區總數增加時，RU 費用會大幅增加。
 
@@ -99,7 +100,7 @@ Azure Cosmos DB SDK 1.9.0 和更新版本支援平行查詢執行選項。 跨�
 - 您計畫布建超過 30000 RU
 - 您計畫儲存超過 100 GB 的資料
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 請參閱下列文章，以了解 Azure Cosmos DB 中的資料分割：
 

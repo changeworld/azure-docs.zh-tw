@@ -8,27 +8,29 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/09/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5537b70f9852f5b5a17362c13e2c9b8e8e9fc43c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9350682f7c636979df4dcde0c43a3b4941ad6ebb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570616"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085763"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Azure Cosmos DB 圖形帳戶的區域端點
+[!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
+
 Azure Cosmos DB 圖形資料庫是[全域散發的](distribute-data-globally.md)，因此應用程式可以使用多個讀取端點。 需要在多個位置具有寫入存取權的應用程式，應該啟用 [多區域寫入](how-to-multi-master.md) 功能。
 
 選擇多個區域的原因：
 1. **水平讀取延展性** - 隨著應用程式負載增加，將讀取流量路由傳送至不同的 Azure 區域是較明智的做法。
 2. **延遲較低** - 您可以將讀取和寫入流量路由傳送至最接近的 Azure 區域，以減少每個周遊的網路延遲負荷。
 
-藉由設定 Cosmos DB 帳戶的 Azure Resource Manager 原則來達成**資料落地**需求。 客戶可以限制 Cosmos DB 要將資料複寫到哪些區域。
+藉由設定 Cosmos DB 帳戶的 Azure Resource Manager 原則來達成 **資料落地** 需求。 客戶可以限制 Cosmos DB 要將資料複寫到哪些區域。
 
 ## <a name="traffic-routing"></a>流量路由
 
 Cosmos DB 圖形資料庫引擎是在多個區域中執行，其中每個都包含多個叢集。 每個叢集都有數百部機器。 Cosmos DB 圖形帳戶 DNS CNAME *accountname.gremlin.cosmos.azure.com* 會解析為叢集的 DNS A 記錄。 負載平衡器的單一 IP 位址會隱藏內部叢集拓撲。
 
-系統會為 Cosmos DB 圖形帳戶的每個區域都建立區域 DNS CNAME 記錄。 區域端點的格式為 *accountname-region.gremlin.cosmos.azure.com*。 區域端點的區域區段是藉由移除 [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions)名稱中的所有空格來取得。 例如，`"contoso"` 全域資料庫帳戶的 `"East US 2"` 區域會有 DNS CNAME *contoso-eastus2.gremlin.cosmos.azure.com*
+系統會為 Cosmos DB 圖形帳戶的每個區域都建立區域 DNS CNAME 記錄。 區域端點的格式為 *accountname-region.gremlin.cosmos.azure.com* 。 區域端點的區域區段是藉由移除 [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions)名稱中的所有空格來取得。 例如，`"contoso"` 全域資料庫帳戶的 `"East US 2"` 區域會有 DNS CNAME *contoso-eastus2.gremlin.cosmos.azure.com*
 
 TinkerPop Gremlin 用戶端是設計來與單一伺服器搭配使用。 應用程式可以將全域可寫入 DNS CNAME 用於讀取和寫入流量。 區域感知應用程式應該將區域端點用於讀取流量。 只有在特定區域已設定為接受寫入時，才將區域端點用於寫入流量。 
 
@@ -109,7 +111,7 @@ foreach (string location in readLocations)
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * [如何在 Azure Cosmos DB 中管理資料庫帳戶控管](how-to-manage-database-account.md)
 * Azure Cosmos DB 中的[高可用性](high-availability.md)
 * [透過 Azure Cosmos DB 全域散發 - 運作原理](global-dist-under-the-hood.md)

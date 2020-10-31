@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/10/2020
-ms.openlocfilehash: 4b91a9a73035b3add309e72ce544375520cf279e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d28138b251cf159b7cbc5cc6942bb287e57a95d7
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91278612"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93088092"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>使用 Key Vault 的 Azure 監視器監視您的金鑰保存庫服務
 適用于 Key Vault 的 Azure 監視器可提供您 Key Vault 要求、效能、失敗和延遲的統一觀點，藉以全面監視您的金鑰保存庫。
@@ -20,9 +20,9 @@ ms.locfileid: "91278612"
 ## <a name="introduction-to-azure-monitor-for-key-vault"></a>Key Vault 的 Azure 監視器簡介
 
 開始處理體驗之前，您應先了解其呈現和視覺化資訊的方式。
--    **整體觀點**會根據要求、失敗的細節，以及作業和延遲的概觀，顯示效能的快照集檢視。
--   **向下切入分析**特定的金鑰保存庫，可執行詳細的分析。
--    **可自訂項目**可讓您變更想要查看的計量、修改或設定對應於限制的閾值，以及儲存您自己的活頁簿。 活頁簿中的圖表可釘選到 Azure 儀表板。
+-    **整體觀點** 會根據要求、失敗的細節，以及作業和延遲的概觀，顯示效能的快照集檢視。
+-   **向下切入分析** 特定的金鑰保存庫，可執行詳細的分析。
+-    **可自訂項目** 可讓您變更想要查看的計量、修改或設定對應於限制的閾值，以及儲存您自己的活頁簿。 活頁簿中的圖表可釘選到 Azure 儀表板。
 
 Key Vault 的 Azure 監視器結合了記錄和計量，以提供全域監視解決方案。 所有使用者都可存取以計量為基礎的監視資料，但若要納入以記錄為基礎的視覺效果，使用者可能必須[啟用 Azure Key Vault 的記錄](../../key-vault/general/logging.md)。
 
@@ -34,7 +34,7 @@ Key Vault 的 Azure 監視器結合了記錄和計量，以提供全域監視解
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)
 
-2. 從 Azure 入口網站的左側窗格中選取 [ **監視** ]，然後在 [見解] 區段下選取 [ **金鑰保存庫**]。
+2. 從 Azure 入口網站的左側窗格中選取 [ **監視** ]，然後在 [見解] 區段下選取 [ **金鑰保存庫** ]。
 
 ![概觀體驗的螢幕擷取畫面，其中包含多個圖表](./media/key-vaults-insights-overview/overview.png)
 
@@ -90,7 +90,7 @@ Key Vault 的 Azure 監視器結合了記錄和計量，以提供全域監視解
 
 「作業」活頁簿可讓使用者深入檢視所有交易的完整詳細資料，並且可使用頂層磚依「結果狀態」篩選這些資料。
 
-![作業檢視的螢幕擷取畫面](./media/key-vaults-insights-overview/info.png)
+![顯示作業活頁簿的螢幕擷取畫面，其中包含所有交易的完整詳細資料。](./media/key-vaults-insights-overview/info.png)
 
 使用者也可以根據上方資料表中的特定交易類型來界定檢視的範圍，而以動態方式更新下方資料表，讓使用者可在快顯內容窗格中檢視完整的作業詳細資料。
 

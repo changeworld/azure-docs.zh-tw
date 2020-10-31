@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 4744b974cd20c15d8abf22f52b64b8d3dc5a7f55
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: db717394ba102fb646a4194d0be2722e17251f48
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743003"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087157"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>瞭解適用於 MariaDB 的 Azure 資料庫的根 CA 變更變更
 
@@ -103,7 +103,7 @@ ms.locfileid: "92743003"
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-mariadb"></a>4. 使用 App Service 搭配適用於 MariaDB 的 Azure 資料庫會有什麼影響？
 針對 Azure 應用程式服務，連接到適用於 MariaDB 的 Azure 資料庫，我們可以有兩個可能的案例，而這取決於您在應用程式中使用 SSL 的方式。
 *   此新憑證已新增至平台層級的 App Service。 如果您在應用程式中使用包含在 App Service 平臺上的 SSL 憑證，則不需要採取任何動作。
-*   如果您在程式碼中明確包含 SSL 憑證檔案的路徑，則需要下載新的憑證，並更新程式碼以使用新的憑證。此案例的一個良好範例是當您在 App Service 中使用自訂容器，如[App Service 檔](/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress.md)中所共用
+*   如果您在程式碼中明確包含 SSL 憑證檔案的路徑，則需要下載新的憑證，並更新程式碼以使用新的憑證。此案例的一個良好範例是當您在 App Service 中使用自訂容器，如[App Service 檔](/azure/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress)中所共用
 
 ### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-mariadb"></a>5. 使用 Azure Kubernetes Services (AKS) 搭配適用於 MariaDB 的 Azure 資料庫時的影響為何？
 如果您嘗試使用 Azure Kubernetes Services (AKS) 來連線至適用於 MariaDB 的 Azure 資料庫，其類似于從專用客戶主機環境進行存取。 請參閱 [此處](../aks/ingress-own-tls.md)的步驟。

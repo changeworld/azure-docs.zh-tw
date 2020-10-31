@@ -8,14 +8,15 @@ ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: b7e57656a6749f600d07b679aad6b8c77ac96551
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3979e5e904eb54db9566eb014f7e455ebaceaff0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92476700"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93087174"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>針對使用 Azure Cosmos DB 時發生的查詢問題進行疑難排解
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文會逐步解說針對 Azure Cosmos DB 中查詢進行疑難排解的一般建議方法。 雖然您不應將本文所述的步驟視為潛在查詢問題的完整防禦方法，但我們已在此納入最常見的效能秘訣。 您應該使用本文作為 Azure Cosmos DB 核心 (SQL) API 中查詢緩慢或成本高昂的疑難排解起點。 您也可以使用[診斷記錄](cosmosdb-monitor-resource-logs.md)來識別緩慢或耗用大量輸送量的查詢。 如果您使用 Azure Cosmos DB 適用于 MongoDB 的 API，則應使用 [Azure Cosmos DB 適用于 mongodb 的 api 查詢疑難排解指南](mongodb-troubleshoot-query.md)
 
@@ -48,9 +49,9 @@ Azure Cosmos DB 中的查詢優化廣泛分類如下：
 
 :::image type="content" source="./media/troubleshoot-query-performance/obtain-query-metrics.png" alt-text="取得查詢計量" lightbox="./media/troubleshoot-query-performance/obtain-query-metrics.png":::
 
-取得查詢計量之後，請將**擷取的文件計數**與查詢的**輸出文件計數**進行比較。 使用此比較來識別本文中要檢查的相關章節。
+取得查詢計量之後，請將 **擷取的文件計數** 與查詢的 **輸出文件計數** 進行比較。 使用此比較來識別本文中要檢查的相關章節。
 
-**擷取的文件計數**是查詢引擎需要載入的文件數目。 **輸出文件計數**是查詢結果所需的文件數目。 如果**擷取的文件計數**明顯高於**輸出文件計數**，則表示查詢中至少有一個部分無法使用索引，而且需要進行掃描。
+**擷取的文件計數** 是查詢引擎需要載入的文件數目。 **輸出文件計數** 是查詢結果所需的文件數目。 如果 **擷取的文件計數** 明顯高於 **輸出文件計數** ，則表示查詢中至少有一個部分無法使用索引，而且需要進行掃描。
 
 請參閱下列各節，以了解您案例適用的相關查詢最佳化。
 
@@ -92,7 +93,7 @@ Azure Cosmos DB 中的查詢優化廣泛分類如下：
 
 ## <a name="queries-where-retrieved-document-count-exceeds-output-document-count"></a>擷取的文件計數超過輸出文件計數的查詢
 
- **擷取的文件計數**是查詢引擎需要載入的文件數目。 **輸出文件計數**是查詢所傳回的文件數目。 如果**擷取的文件計數**明顯高於**輸出文件計數**，則表示查詢中至少有一個部分無法使用索引，而且需要進行掃描。
+ **擷取的文件計數** 是查詢引擎需要載入的文件數目。 **輸出文件計數** 是查詢所傳回的文件數目。 如果 **擷取的文件計數** 明顯高於 **輸出文件計數** ，則表示查詢中至少有一個部分無法使用索引，而且需要進行掃描。
 
 以下是未完全由索引處理的掃描查詢範例：
 
@@ -130,7 +131,7 @@ Client Side Metrics
   Request Charge                         :        4,059.95 RUs
 ```
 
-**擷取的文件計數** (60,951) 明顯高於**輸出文件計數** (7)，表示此查詢會促使文件進行掃描。 在此情況下，系統函數 [UPPER()](sql-query-upper.md) 不會使用索引。
+**擷取的文件計數** (60,951) 明顯高於 **輸出文件計數** (7)，表示此查詢會促使文件進行掃描。 在此情況下，系統函數 [UPPER()](sql-query-upper.md) 不會使用索引。
 
 ### <a name="include-necessary-paths-in-the-indexing-policy"></a>在編製索引原則中包含必要的路徑
 
@@ -384,7 +385,7 @@ JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 
 ## <a name="queries-where-retrieved-document-count-is-equal-to-output-document-count"></a>擷取的文件計數等於輸出文件計數的查詢
 
-如果**擷取的文件計數**大約等於**輸出文件計數**，則查詢引擎就不需要掃描許多不必要的文件。 對於許多查詢，例如使用 `TOP` 關鍵字的查詢，**擷取的文件計數**可能會比**輸出文件計數**多出 1 個。 此狀況無須擔心。
+如果 **擷取的文件計數** 大約等於 **輸出文件計數** ，則查詢引擎就不需要掃描許多不必要的文件。 對於許多查詢，例如使用 `TOP` 關鍵字的查詢， **擷取的文件計數** 可能會比 **輸出文件計數** 多出 1 個。 此狀況無須擔心。
 
 ### <a name="minimize-cross-partition-queries"></a>將跨分割區查詢最小化
 

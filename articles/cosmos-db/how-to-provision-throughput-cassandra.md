@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 6b8b145c919a1f4e2ea9129a032da69bd30e6b71
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 63b633ed67c03a006a154bc69a1aafb4cb4aa6d0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283810"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086273"
 ---
 # <a name="provision-database-container-or-autoscale-throughput-on-azure-cosmos-db-cassandra-api-resources"></a>在 Azure Cosmos DB Cassandra API 資源上布建資料庫、容器或自動調整輸送量
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 本文說明如何在 Azure Cosmos DB Cassandra API 中布建輸送量。 您可以在容器或資料庫上布建標準 (手動) 或自動調整輸送量，並在資料庫內的容器之間共用。 您可以使用 Azure 入口網站、Azure CLI 或 Azure Cosmos DB Sdk 來布建輸送量。
 
@@ -27,7 +28,7 @@ ms.locfileid: "92283810"
 
 1. [建立新的 Azure Cosmos 帳戶](create-mongodb-dotnet.md#create-a-database-account)，或選取現有 Azure Cosmos 帳戶。
 
-1. 開啟 **資料總管** 窗格，然後選取 [ **新增資料表**]。 接下來，提供下列詳細資料：
+1. 開啟 **資料總管** 窗格，然後選取 [ **新增資料表** ]。 接下來，提供下列詳細資料：
 
    * 指出您是要建立新的 keyspace，還是使用現有的。 如果您想要在 keyspace 層級布建輸送量，請選取 [布建 **資料庫輸送量** ] 選項。
    * 在 CQL 命令中輸入資料表識別碼。

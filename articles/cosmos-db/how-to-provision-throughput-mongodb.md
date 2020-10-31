@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mjbrown
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 44a69581f0763972dd30a016bf0826b31657a3d4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 25eaa4a66fb4a73f976edbd30e6f82015ce84f6f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283608"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086120"
 ---
 # <a name="provision-database-container-or-autoscale-throughput-on-azure-cosmos-db-api-for-mongodb-resources"></a>在適用于 MongoDB 資源的 Azure Cosmos DB API 上布建資料庫、容器或自動調整輸送量
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 本文說明如何在適用于 MongoDB 的 Azure Cosmos DB API 中布建輸送量。 您可以在容器或資料庫上布建標準 (手動) 或自動調整輸送量，並在資料庫內的容器之間共用。 您可以使用 Azure 入口網站、Azure CLI 或 Azure Cosmos DB Sdk 來布建輸送量。
 
