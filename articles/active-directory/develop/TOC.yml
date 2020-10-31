@@ -559,6 +559,7 @@
           href: howto-add-branding-in-azure-ad-apps.md
         - name: 設定發行者網域
           href: howto-configure-publisher-domain.md
+          displayName: 'verified domain, verified publisher domain'
         - name: 設定服務條款和隱私權聲明
           href: howto-add-terms-of-service-privacy-statement.md
         - name: 設定應用程式的發行者驗證

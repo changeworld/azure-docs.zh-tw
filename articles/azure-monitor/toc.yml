@@ -123,8 +123,6 @@
           href: platform/data-platform-metrics.md
         - name: 將資料串流至事件中樞
           href: platform/stream-monitoring-data-event-hubs.md
-    - name: 深入解析
-      href: insights/insights-overview.md
     - name: 資料安全性
       items:
         - name: 記錄資料
@@ -1062,7 +1060,7 @@
               href: insights/container-insights-optout-hybrid.md
         - name: 疑難排解
           href: insights/container-insights-troubleshoot.md
-    - name: 其他見解
+    - name: 深入解析
       items:
         - name: Azure Cache for Redis (預覽)
           href: insights/redis-cache-insights-overview.md
@@ -1079,61 +1077,61 @@
           href: insights/resource-group-insights.md
         - name: 疑難排解深入解析
           href: insights/troubleshoot-workbooks.md
-    - name: 方案
-      items:
-        - name: 概觀
-          href: insights/solutions.md
-          displayName: 'Azure CLI, az monitor log-analytics'
-        - name: 目標解決方案
-          href: insights/solution-targeting.md
-        - name: 可用的解決方案
+        - name: 方案
           items:
-            - name: AD 健康情況評估
-              href: insights/ad-assessment.md
-            - name: AD 複寫狀態
-              href: insights/ad-replication-status.md
-            - name: 容量和效能解決方案
-              href: insights/capacity-performance.md
-            - name: Docker 和 Windows 容器監視
-              href: insights/containers.md
-            - name: 網路
+            - name: 概觀
+              href: insights/solutions.md
+              displayName: 'Azure CLI, az monitor log-analytics'
+            - name: 目標解決方案
+              href: insights/solution-targeting.md
+            - name: 可用的解決方案
               items:
-                - name: 網路分析
-                  href: insights/azure-networking-analytics.md
-                - name: DNS
-                  href: insights/dns-analytics.md
-                - name: 網路效能監視器
+                - name: AD 健康情況評估
+                  href: insights/ad-assessment.md
+                - name: AD 複寫狀態
+                  href: insights/ad-replication-status.md
+                - name: 容量和效能解決方案
+                  href: insights/capacity-performance.md
+                - name: Docker 和 Windows 容器監視
+                  href: insights/containers.md
+                - name: 網路
                   items:
-                    - name: 解決方案概觀
-                      href: insights/network-performance-monitor.md
-                    - name: 效能監視器
-                      href: insights/network-performance-monitor-performance-monitor.md
-                    - name: 服務連線能力監視
-                      href: insights/network-performance-monitor-service-connectivity.md
-                    - name: ExpressRoute
-                      href: insights/network-performance-monitor-expressroute.md
-                    - name: 定價
-                      href: insights/network-performance-monitor-pricing-faq.md
-                    - name: 常見問題集
-                      href: insights/network-performance-monitor-faq.md
-            - name: Office 365
-              href: insights/solution-office-365.md
-            - name: 服務對應解決方案
-              href: insights/service-map.md
-            - name: 服務對應和 Operations Manager
-              href: insights/service-map-scom.md
-            - name: Azure SQL
-              href: insights/azure-sql.md
-            - name: SQL Server
-              href: insights/sql-assessment.md
-            - name: Surface Hub
-              href: insights/surface-hubs.md
-            - name: VMware Analytics 解決方案
-              href: insights/vmware.md
-            - name: Wire Data 解決方案
-              href: insights/wire-data.md
-            - name: 警示管理解決方案
-              href: platform/alert-management-solution.md
+                    - name: 網路分析
+                      href: insights/azure-networking-analytics.md
+                    - name: DNS
+                      href: insights/dns-analytics.md
+                    - name: 網路效能監視器
+                      items:
+                        - name: 解決方案概觀
+                          href: insights/network-performance-monitor.md
+                        - name: 效能監視器
+                          href: insights/network-performance-monitor-performance-monitor.md
+                        - name: 服務連線能力監視
+                          href: insights/network-performance-monitor-service-connectivity.md
+                        - name: ExpressRoute
+                          href: insights/network-performance-monitor-expressroute.md
+                        - name: 定價
+                          href: insights/network-performance-monitor-pricing-faq.md
+                        - name: 常見問題集
+                          href: insights/network-performance-monitor-faq.md
+                - name: Office 365
+                  href: insights/solution-office-365.md
+                - name: 服務對應解決方案
+                  href: insights/service-map.md
+                - name: 服務對應和 Operations Manager
+                  href: insights/service-map-scom.md
+                - name: Azure SQL
+                  href: insights/azure-sql.md
+                - name: SQL Server
+                  href: insights/sql-assessment.md
+                - name: Surface Hub
+                  href: insights/surface-hubs.md
+                - name: VMware Analytics 解決方案
+                  href: insights/vmware.md
+                - name: Wire Data 解決方案
+                  href: insights/wire-data.md
+                - name: 警示管理解決方案
+                  href: platform/alert-management-solution.md
     - name: 活頁簿
       items:
         - name: 概觀

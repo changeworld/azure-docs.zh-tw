@@ -38,6 +38,8 @@
   items:
     - name: JavaScript SDK
       href: reference.md
+    - name: 版本資訊
+      href: release-notes.md
 - name: 資源
   items:
     - name: 支援和說明選項

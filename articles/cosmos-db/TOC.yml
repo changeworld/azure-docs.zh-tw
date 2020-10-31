@@ -731,6 +731,10 @@
               items:
                 - name: 針對 Java SDK v4 進行疑難排解
                   href: troubleshoot-java-sdk-v4-sql.md
+                - name: 針對要求逾時進行疑難排解
+                  href: troubleshoot-request-timeout-java-sdk-v4-sql.md
+                - name: 針對服務無法使用進行疑難排解
+                  href: troubleshoot-service-unavailable-java-sdk-v4-sql.md
                 - name: 疑難排解 - 非同步 Java SDK v2
                   href: troubleshoot-java-async-sdk.md
         - name: 變更摘要
@@ -877,8 +881,6 @@
         - name: Resource Manager 範本
           href: /azure/templates/microsoft.documentdb/allversions
           displayName: ARM
-        - name: 模擬器版本資訊
-          href: local-emulator-release-notes.md
         - name: Azure 原則內建
           displayName: 'samples, policies, definitions'
           href: ./policy-reference.md
@@ -1279,6 +1281,8 @@
               href: emulator-command-line-parameters.md
             - name: 模擬器疑難排解
               href: troubleshoot-local-emulator.md
+            - name: 模擬器版本資訊
+              href: local-emulator-release-notes.md
             - name: Visual Studio Code 擴充功能
               href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
         - name: 設定 Azure DevOps 的 CI/CD 管線
