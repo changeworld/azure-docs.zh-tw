@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 61ced7eda78d3ce56d78dfd6cc54e0e92d376e68
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0b79fa22d3203504e63161aba03b32830d74d016
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100672"
+ms.locfileid: "93131270"
 ---
 # <a name="remove-vms-from-change-tracking-and-inventory"></a>從變更追蹤和清查中移除 VM
 
@@ -22,7 +22,7 @@ ms.locfileid: "93100672"
 
 ## <a name="to-remove-your-vms"></a>移除 Vm
 
-1. 在 Azure 入口網站中，從 Azure 入口網站的頂端導覽啟動 **Cloud Shell** 。 如果您不熟悉 Azure Cloud Shell，請參閱 [Azure Cloud Shell 的總覽](/azure/cloud-shell/overview)。
+1. 在 Azure 入口網站中，從 Azure 入口網站的頂端導覽啟動 **Cloud Shell** 。 如果您不熟悉 Azure Cloud Shell，請參閱 [Azure Cloud Shell 的總覽](../../cloud-shell/overview.md)。
 
 2. 使用下列命令來識別您想要從管理中移除之電腦的 UUID。
 
@@ -43,6 +43,6 @@ ms.locfileid: "93100672"
 >[!NOTE]
 >取消註冊之後仍會顯示電腦，因為我們會報告過去24小時內評估的所有機器。 移除機器之後，您需要等候24小時，再也不會再列出。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要重新啟用這項功能，請參閱 [從自動化帳戶啟用變更追蹤和清查](enable-from-automation-account.md)、 [流覽 Azure 入口網站來啟用變更追蹤和清查](enable-from-portal.md)、 [從 runbook 啟用變更追蹤和清查](enable-from-runbook.md)，或 [從 Azure VM 啟用變更追蹤和清查](enable-from-vm.md)。

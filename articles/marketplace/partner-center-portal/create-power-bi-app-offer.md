@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: e0dcd5db36e41093bf1cd75779770b04df2fc26a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99c60cf541b3997f2aeca2ccef5a5af6b9c88e08
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710646"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131491"
 ---
 # <a name="create-a-power-bi-app-offer"></a>建立 Power BI 應用程式供應項目
 
@@ -39,7 +39,7 @@ ms.locfileid: "91710646"
 輸入 [供應項目識別碼]。 這是您帳戶中每個供應項目的唯一識別碼。
 
 - 客戶可以在市集供應項目和 Azure Resource Manager 範本 (如果適用) 的網址中看到此識別碼。
-- 請一律使用小寫字母和數字。 識別碼可以包含連字號和底線，但不能有空格，且限制為 50 個字元。 例如，如果您在此輸入 **test-offer-1**，供應項目網址將為 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
+- 請一律使用小寫字母和數字。 識別碼可以包含連字號和底線，但不能有空格，且限制為 50 個字元。 例如，如果您在此輸入 **test-offer-1** ，供應項目網址將為 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
 - 選取 [建立] 之後，即無法變更 [供應項目識別碼]。
 
 輸入 [供應項目別名]。 這是用於合作夥伴中心內供應項目的名稱。
@@ -55,10 +55,10 @@ ms.locfileid: "91710646"
 
 其包含根據您所做的選擇，在此供應項目上執行作業的連結。 例如：
 
-- 如果供應項目為草稿 - [刪除草稿供應項目](update-existing-offer.md#delete-a-draft-offer) \(部分機器翻譯\)
+- 如果供應項目為草稿 - 刪除草稿供應項目 \(部分機器翻譯\)
 - 如果供應項目已上線 - [停止銷售供應項目](update-existing-offer.md#stop-selling-an-offer-or-plan) \(部分機器翻譯\)
-- 如果供應項目處於預覽階段 - [上線](publishing-status.md#publisher-approval) \(部分機器翻譯\)
-- 如果您尚未完成發佈- [取消發行](update-existing-offer.md#cancel-publishing)
+- 如果供應項目處於預覽階段 - [上線](../review-publish-offer.md#previewing-and-approving-your-offer) \(部分機器翻譯\)
+- 如果您尚未完成發行者登出 - [取消發行。](../review-publish-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>供應項目設定
 
@@ -97,7 +97,7 @@ ms.locfileid: "91710646"
 選取類別和子類別，以將您的供應專案放在適當的 marketplace 搜尋區域中。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
 
 - 至少一個和多個類別，包括主要和次要類別 (選擇性) 。
-- 每個主要和/或次要類別最多可有兩個子類別。 如果沒有任何子類別適用于您的供應專案，請選取 [ **不適用**]。
+- 每個主要和/或次要類別最多可有兩個子類別。 如果沒有任何子類別適用于您的供應專案，請選取 [ **不適用** ]。
 
 請參閱 [供應專案清單最佳做法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。
 
@@ -211,7 +211,7 @@ ms.locfileid: "91710646"
 
 提供 **大型** 大小標誌的 PNG 檔案。 合作夥伴中心將會使用此來建立 **小型** 標誌。 您可以選擇性地將此取代為不同的映射。
 
-- 從 216 x 216 到 350 x 350 px 的**大型** (，需要) 
+- 從 216 x 216 到 350 x 350 px 的 **大型** (，需要) 
 - **Small** (48 x 48 px，選擇性) 
 
 這些標誌可用於清單中的不同位置：
@@ -234,7 +234,7 @@ ms.locfileid: "91710646"
 
 ## <a name="technical-configuration"></a>技術設定
 
-在 Power BI 服務中將您的應用程式升階至生產環境，並提供 Power BI 應用程式安裝程式連結，來讓客戶得以安裝您的應用程式。 如需詳細資訊，請參閱[在 Power BI 中搭配儀表板和報表發佈應用程式](https://docs.microsoft.com/power-bi/service-create-distribute-apps)。
+在 Power BI 服務中將您的應用程式升階至生產環境，並提供 Power BI 應用程式安裝程式連結，來讓客戶得以安裝您的應用程式。 如需詳細資訊，請參閱[在 Power BI 中搭配儀表板和報表發佈應用程式](/power-bi/service-create-distribute-apps)。
 
 ## <a name="supplemental-content"></a>補充內容
 
@@ -260,4 +260,4 @@ ms.locfileid: "91710646"
 
 若要提交供應項目進行發佈，請選取 [發佈]。
 
-我們會傳送一封電子郵件給您，讓您知道供應項目的預覽版本何時可供檢閱及核准。 若要將您的供應專案發佈至公用，請移至合作夥伴中心並選取 [ **上線**]。
+我們會傳送一封電子郵件給您，讓您知道供應項目的預覽版本何時可供檢閱及核准。 若要將您的供應專案發佈至公用，請移至合作夥伴中心並選取 [ **上線** ]。

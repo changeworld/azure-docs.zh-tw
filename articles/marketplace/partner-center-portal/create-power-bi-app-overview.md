@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: 2f34723bec6dc2212f8897eca849e6535d737fc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af77f18771d8e18ee86b79360ac03307d3330cb0
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397414"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131423"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI 應用程式建立總覽
 
@@ -33,22 +33,22 @@ ms.locfileid: "91397414"
 
 以下是主要的發佈步驟：
 
-1. 在 Power BI 中建立您的應用程式。 您將會收到 [套件安裝] 連結，這是供應專案的主要技術資產。 在合作夥伴中心中建立供應專案之前，請先將測試套件傳送至生產階段前。 如需詳細資訊，請參閱 [什麼是 Power BI apps？](https://docs.microsoft.com/power-bi/service-template-apps-overview)。
+1. 在 Power BI 中建立您的應用程式。 您將會收到 [套件安裝] 連結，這是供應專案的主要技術資產。 在合作夥伴中心中建立供應專案之前，請先將測試套件傳送至生產階段前。 如需詳細資訊，請參閱 [什麼是 Power BI apps？](/power-bi/service-template-apps-overview)。
 2. 新增行銷材質，例如官方名稱、描述和標誌。
 3. 包含供應專案的法律和支援檔，例如使用條款、隱私權原則、支援原則和使用者說明。
 4. 建立供應專案–使用合作夥伴中心編輯詳細資料，包括供應專案說明、行銷資料、法律資訊、支援資訊，以及資產規格。
 5. 提交以供發行。
 6. 在合作夥伴中心中監視程式，AppSource 上架小組會測試、驗證和認證您的應用程式。
 7. 通過認證後，請在其測試環境中檢查應用程式，並加以發行。 這將會在 AppSource 上列出它 (「上線」 ) 。
-8. 在 Power BI 中，將套件傳送到生產環境。 如需詳細資訊，請參閱 [管理 Power BI 應用程式版本](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release)。
+8. 在 Power BI 中，將套件傳送到生產環境。 如需詳細資訊，請參閱 [管理 Power BI 應用程式版本](/power-bi/service-template-apps-create#manage-the-template-app-release)。
 
 ## <a name="before-you-begin"></a>開始之前
 
 請參閱下列連結，其中提供範本、秘訣和範例。
 
-- [建立 Power BI 應用程式](https://docs.microsoft.com/power-bi/service-template-apps-create)
-- [撰寫 Power BI 應用程式的秘訣](https://docs.microsoft.com/power-bi/service-template-apps-tips)
-- [範例](https://docs.microsoft.com/power-bi/service-template-apps-samples)
+- [建立 Power BI 應用程式](/power-bi/service-template-apps-create)
+- [撰寫 Power BI 應用程式的秘訣](/power-bi/service-template-apps-tips)
+- [範例](/power-bi/service-template-apps-samples)
 
 ## <a name="requirements"></a>需求
 
@@ -56,13 +56,13 @@ ms.locfileid: "91397414"
 
 ### <a name="technical-requirements"></a>技術需求
 
-您需要的主要技術資產是 [Power BI 應用程式](https://go.microsoft.com/fwlink/?linkid=2028636)。 這是主要資料集、報表或儀表板的集合。 它也包含選用的已連接服務和內嵌資料集，之前稱為 [內容套件](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction)。 如需有關開發這種應用程式類型的詳細資訊，請參閱 [什麼是 Power BI apps？](https://go.microsoft.com/fwlink/?linkid=2028636)。
+您需要的主要技術資產是 [Power BI 應用程式](/power-bi/connect-data/service-template-apps-overview)。 這是主要資料集、報表或儀表板的集合。 它也包含選用的已連接服務和內嵌資料集，之前稱為 [內容套件](/power-bi/service-organizational-content-pack-introduction)。 如需有關開發這種應用程式類型的詳細資訊，請參閱 [什麼是 Power BI apps？](/power-bi/connect-data/service-template-apps-overview)。
 
 #### <a name="get-an-installation-web-address"></a>取得安裝網址
 
 您只能在 [Power BI](https://powerbi.microsoft.com/) 環境內建立 Power BI 應用程式。
 
-1. 使用 [Power BI Pro 授權](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro)登入。
+1. 使用 [Power BI Pro 授權](/power-bi/service-admin-purchasing-power-bi-pro)登入。
 2. 在 Power BI 中建立並測試您的應用程式。
 3. 當您收到應用程式安裝網址時，請將它新增至合作夥伴中心中的 **技術** 設定頁面。
 

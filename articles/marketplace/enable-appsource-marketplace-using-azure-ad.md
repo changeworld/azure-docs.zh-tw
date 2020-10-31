@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/24/2020
-ms.openlocfilehash: a6e304e5ffeab8f0a44cbdfe1566465f2b9bf34a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c70d976a05cbeed058243829d0658693341636e9
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88607415"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131202"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>整合您的商業市集清單與 Azure Active Directory
 
@@ -80,7 +80,7 @@ Microsoft AppSource 與 Azure Marketplace 客戶使用產品內體驗來搜尋�
 
 使用 Azure AD 來支援下列其中一個動作：
 
-- 使用 [Azure AD B2B](../active-directory/b2b/what-is-b2b.md) 將來賓使用者新增至目錄。
+- 使用 [Azure AD B2B](../active-directory/external-identities/what-is-b2b.md) 將來賓使用者新增至目錄。
 - 使用 [與我連絡] 發佈選項，為客戶手動設定試用版。
 - 開發每個客戶的「試用產品」。
 - 建置使用 SSO 的多租用戶範例示範應用程式。

@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 08/07/2020
-ms.openlocfilehash: 48f178a74dea0403ff8926cf34fd64cdd9c6839f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 416e6cb29ab2816d53cb837f72233a9fe098f659
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071994"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131372"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure 串流分析資料錯誤
 
@@ -168,7 +168,7 @@ ms.locfileid: "92071994"
 * 原因：應用程式時間與抵達時間之間的差異大於延遲抵達容錯時間範圍。
 * 提供的入口網站通知：否
 * 資源記錄層級：資訊
-* 影響：在作業設定的事件順序區段中，根據「處理其他事件」設定來處理晚期輸入事件。 如需詳細資訊，請參閱 [時間處理原則](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)。
+* 影響：在作業設定的事件順序區段中，根據「處理其他事件」設定來處理晚期輸入事件。 如需詳細資訊，請參閱 [時間處理原則](/stream-analytics-query/time-skew-policies-azure-stream-analytics)。
 * 記錄詳細資料
    * 應用程式時間與抵達時間。 
    * 實際的承載，最多可達千位元組。
@@ -184,7 +184,7 @@ ms.locfileid: "92071994"
 * 原因：應用程式時間與抵達時間之間的差異大於5分鐘。
 * 提供的入口網站通知：否
 * 資源記錄層級：資訊
-* 影響：提早輸入事件會根據作業設定的事件順序區段中的「處理其他事件」設定來處理。 如需詳細資訊，請參閱 [時間處理原則](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)。
+* 影響：提早輸入事件會根據作業設定的事件順序區段中的「處理其他事件」設定來處理。 如需詳細資訊，請參閱 [時間處理原則](/stream-analytics-query/time-skew-policies-azure-stream-analytics)。
 * 記錄詳細資料
    * 應用程式時間與抵達時間。 
    * 實際的承載，最多可達千位元組。
@@ -200,7 +200,7 @@ ms.locfileid: "92071994"
 * 原因：根據定義的順序容錯時間範圍，事件被視為不按照順序。
 * 提供的入口網站通知：否
 * 資源記錄層級：資訊
-* 影響：系統會根據作業設定之事件排列區段中的「處理其他事件」設定來處理順序不對事件。 如需詳細資訊，請參閱 [時間處理原則](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)。
+* 影響：系統會根據作業設定之事件排列區段中的「處理其他事件」設定來處理順序不對事件。 如需詳細資訊，請參閱 [時間處理原則](/stream-analytics-query/time-skew-policies-azure-stream-analytics)。
 * 記錄詳細資料
    * 實際的承載，最多可達千位元組。
 
@@ -221,7 +221,7 @@ Azure 串流分析可以根據設定，識別輸出接收的輸出資料錯誤�
 * 原因：輸出所需的資料行不存在。 例如，定義為 Azure 資料表 PartitionKey 不的資料行存在。
 * 提供的入口網站通知：是
 * 資源記錄層級：警告
-* 影響：系統會根據 [輸出資料原則](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) 設定來處理所有輸出資料轉換錯誤，包括遺漏必要的資料行。
+* 影響：系統會根據 [輸出資料原則](./stream-analytics-output-error-policy.md) 設定來處理所有輸出資料轉換錯誤，包括遺漏必要的資料行。
 * 記錄詳細資料
    * 資料行的名稱，以及記錄識別碼或記錄的一部分。
 
@@ -236,7 +236,7 @@ Azure 串流分析可以根據設定，識別輸出接收的輸出資料錯誤�
 * 原因：資料行值不符合輸出。 例如，資料行名稱不是有效的 Azure 資料表資料行。
 * 提供的入口網站通知：是
 * 資源記錄層級：警告
-* 影響：系統會根據 [輸出資料原則](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) 設定來處理所有輸出資料轉換錯誤，包括不正確資料行名稱。
+* 影響：系統會根據 [輸出資料原則](./stream-analytics-output-error-policy.md) 設定來處理所有輸出資料轉換錯誤，包括不正確資料行名稱。
 * 記錄詳細資料
    * 資料行的名稱，以及記錄識別碼或記錄的一部分。
 
@@ -251,7 +251,7 @@ Azure 串流分析可以根據設定，識別輸出接收的輸出資料錯誤�
 * 原因：無法將資料行轉換成輸出中的有效類型。 例如，資料行的值與 SQL 資料表中定義的條件約束或類型不相容。
 * 提供的入口網站通知：是
 * 資源記錄層級：警告
-* 影響：所有輸出資料轉換錯誤（包括類型轉換錯誤）都會根據 [輸出資料原則](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) 設定來處理。
+* 影響：所有輸出資料轉換錯誤（包括類型轉換錯誤）都會根據 [輸出資料原則](./stream-analytics-output-error-policy.md) 設定來處理。
 * 記錄詳細資料
    * 資料行的名稱。
    * 記錄識別碼或記錄的一部分。
@@ -267,7 +267,7 @@ Azure 串流分析可以根據設定，識別輸出接收的輸出資料錯誤�
 * 原因：訊息的值大於支援的輸出大小。 例如，事件中樞輸出的記錄大於 1 MB。
 * 提供的入口網站通知：是
 * 資源記錄層級：警告
-* 影響：所有輸出資料轉換錯誤（包括記錄超過大小限制）都會根據 [輸出資料原則](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) 設定來處理。
+* 影響：所有輸出資料轉換錯誤（包括記錄超過大小限制）都會根據 [輸出資料原則](./stream-analytics-output-error-policy.md) 設定來處理。
 * 記錄詳細資料
    * 記錄識別碼或記錄的一部分。
 
@@ -282,7 +282,7 @@ Azure 串流分析可以根據設定，識別輸出接收的輸出資料錯誤�
 * 原因：記錄已包含與系統資料行同名的資料行。 例如，當 ID 資料行指向不同的資料行時，CosmosDB 的輸出會有一個名為 ID 的資料行。
 * 提供的入口網站通知：是
 * 資源記錄層級：警告
-* 影響：所有輸出資料轉換錯誤（包括重複的索引鍵）都會根據 [輸出資料原則](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) 設定來處理。
+* 影響：所有輸出資料轉換錯誤（包括重複的索引鍵）都會根據 [輸出資料原則](./stream-analytics-output-error-policy.md) 設定來處理。
 * 記錄詳細資料
    * 資料行的名稱。
    * 記錄識別碼或記錄的一部分。

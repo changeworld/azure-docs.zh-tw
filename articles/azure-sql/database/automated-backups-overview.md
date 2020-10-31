@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
-ms.date: 10/05/2020
-ms.openlocfilehash: dc6d083efd1d39d96f9df995fe5e7e4bcc95abff
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 10/30/2020
+ms.openlocfilehash: a97e39314b4dc15a360a01408f183a3f9a19c76f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675315"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131355"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自動備份-Azure SQL Database & SQL 受控執行個體
 
@@ -50,7 +50,7 @@ SQL Database 和 SQL 受控執行個體使用 SQL Server 技術來每週建立 [
 > 區域-多餘的儲存體目前僅適用于 [某些區域](../../storage/common/storage-redundancy.md#zone-redundant-storage)。 
 
 > [!NOTE]
-> 適用于 Azure SQL Database 的可設定備份儲存體複本目前已在東南亞 Azure 區域中正式推出。 超大規模層尚無法使用這項功能。 
+> 適用于 Azure SQL Database 的可設定備份儲存體冗余目前在巴西南部提供公開預覽，且僅在東南亞 Azure 區域正式推出。 超大規模層尚無法使用這項功能。 
 
 ### <a name="backup-usage"></a>備份使用量
 
@@ -371,7 +371,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 ## <a name="configure-backup-storage-redundancy"></a>設定備份儲存體冗余
 
 > [!NOTE]
-> 只有在建立受控實例進程期間，才能指定適用于 SQL 受控執行個體的可設定儲存體冗余。 布建資源之後，您就無法變更備份儲存體的冗余選項。 針對 SQL Database，這項功能的公開預覽版目前僅適用于東南亞 Azure 區域。 
+> 只有在建立受控實例進程期間，才能指定適用于 SQL 受控執行個體的可設定儲存體冗余。 布建資源之後，您就無法變更備份儲存體的冗余選項。 針對 SQL Database，這項功能的公開預覽目前在巴西南部正式推出，且已在東南亞 Azure 區域正式推出。 
 
 只有在建立實例時，才可以設定受控實例的備份儲存體冗余。 針對 SQL Database 可以在建立資料庫時設定，也可以針對現有的資料庫進行更新。 預設值是異地冗余儲存體 (GRS) 。 如需在本機冗余 (LRS) 、區域冗余 (ZRS) 和異地冗余 (RA-GRS) 備份儲存體之間的定價差異，請造訪 [受控實例定價頁面](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)。
 
