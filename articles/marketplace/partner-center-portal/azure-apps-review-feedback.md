@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: aecc64c5fa923bc29d34efd3969c2c12f30153c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 351a9742e9d839a8e217fdea35cad922acc3339f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320097"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095667"
 ---
 # <a name="handling-review-feedback-for-azure-application-offers"></a>處理 Azure 應用程式供應項目的檢閱意見反應
 
-本文說明如何存取 [Azure DevOps](https://azure.microsoft.com/services/devops/) 中來自 Microsoft Azure Marketplace 檢閱小組的意見反映。 如果在 **Microsoft 檢閱**步驟中，您的 Azure 應用程式供應項目中發現了嚴重問題，則可以登入此系統以檢視這些問題的詳細資訊 (檢閱意見反應)。 修正所有問題之後，您必須重新提交供應項目，才能繼續將其發佈到 Azure Marketplace。 下圖說明此意見反應程序如何與發佈程序相關。
+本文說明如何存取 [Azure DevOps](https://azure.microsoft.com/services/devops/) 中來自 Microsoft Azure Marketplace 檢閱小組的意見反映。 如果在 **Microsoft 檢閱** 步驟中，您的 Azure 應用程式供應項目中發現了嚴重問題，則可以登入此系統以檢視這些問題的詳細資訊 (檢閱意見反應)。 修正所有問題之後，您必須重新提交供應項目，才能繼續將其發佈到 Azure Marketplace。 下圖說明此意見反應程序如何與發佈程序相關。
 
 ![檢閱意見反應程序](./media/review-feedback-process.png)
 
@@ -39,11 +39,11 @@ ms.locfileid: "87320097"
     [![](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)提取要求首頁
     <br/> 按一下以展開此影像。
 
-1. (選擇性) 在視窗右側的 [原則] 區段中，選取問題訊息 (在此範例中：**原則驗證失敗**) 調查問題的低層級詳細資料，包括相關的記錄檔。 錯誤通常會顯示在記錄檔的底部。
+1. (選擇性) 在視窗右側的 [原則] 區段中，選取問題訊息 (在此範例中： **原則驗證失敗** ) 調查問題的低層級詳細資料，包括相關的記錄檔。 錯誤通常會顯示在記錄檔的底部。
 
 1. 在首頁左側的功能表中，選取 [檔案] 以顯示包含此供應項目之技術資產的清單檔案。 Microsoft 檢閱者應該加上描述發現的重大問題的註解。 在下列範例中，已發現兩個問題。
 
-    [![提取要求首頁](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
+    [![醒目顯示檔案的螢幕擷取畫面，以及探索到的兩個問題。](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
     <br/> 按一下以展開此影像。
 
 1. 選取左側樹狀目錄中的每個註解節點，以瀏覽至周圍程式碼內容中的註解。 修正小組專案中的原始程式碼，以更正註解中所述的問題。

@@ -7,14 +7,16 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 905560094afa9338d44ba73120d316b3c81b5580
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 10917ce51ff64292809f2fa8799c84b5cdeb3d6c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277157"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097901"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-rate-too-large-exceptions"></a>針對 Azure Cosmos DB 要求率太大的例外狀況進行診斷和疑難排解
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 「要求速率太大」訊息或錯誤碼429表示要求正在進行節流。
 
 ## <a name="troubleshooting-steps"></a>疑難排解步驟
@@ -30,6 +32,6 @@ ms.locfileid: "92277157"
 1. 使用 [入口網站或 SDK](set-throughput.md) 來增加布建的輸送量。
 1. 將資料庫或容器切換為 [自動](provision-throughput-autoscale.md)調整。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * 當您使用 Azure Cosmos DB .NET SDK 時[，診斷和疑難排解](troubleshoot-dot-net-sdk.md)問題。
 * 瞭解 [.net v3](performance-tips-dotnet-sdk-v3-sql.md) 和 [.net v2](performance-tips.md)的效能指導方針。

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 0307fcee207f045c2808b3c66e9911623391d486
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 47733f4b141b0064e966d0c083fd6414405f65f9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905253"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095538"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>快速入門：使用 Azure CLI 建立及設定 Azure DDoS 保護 Standard
 
@@ -107,8 +107,6 @@ az network ddos-protection show \
 
 確認命令會傳回您 DDoS 保護計劃的正確詳細資料。
 
-透過模擬測試
-
 ## <a name="clean-up-resources"></a>清除資源
 
 您可以保留資源以供下一個教學課程之用。 如果不再需要，請刪除 _MyResourceGroup_ 資源群組。 當您刪除資源群組時，也會刪除 DDoS 保護計劃及其所有相關資源。 
@@ -131,9 +129,9 @@ az network vnet update \
 
 如果您想要刪除 DDoS 保護計劃，您必須先中斷所有虛擬網路與其的關聯。 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要瞭解如何為您的 DDoS 保護計劃查看及設定遙測，請繼續進行教學課程。
 
 > [!div class="nextstepaction"]
-> [查看及設定 DDoS 保護遙測](telemetry-monitoring-alerting.md)
+> [檢視和設定 DDoS 保護遙測](telemetry-monitoring-alerting.md)

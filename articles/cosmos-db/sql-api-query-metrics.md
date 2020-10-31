@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 38f21ec32d14261c7f1bb5e285180d9721b9dca7
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: fedcdd55a465f5c09c331a0fa917811c349b15b1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477822"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097221"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 調整查詢效能
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB 提供一個[適用於查詢資料的 SQL API](./sql-query-getting-started.md)，而不需結構描述或次要索引。 本文可為開發人員提供下列資訊：
 
@@ -39,7 +40,7 @@ Azure Cosmos DB 提供一個[適用於查詢資料的 SQL API](./sql-query-getti
 
 SDK 提供適用於查詢執行的各種選項。 例如，在 .NET 中，下列選項適用於 `FeedOptions` 類別。 下表描述這些選項，以及它們如何影響查詢執行時間。 
 
-| 選項 | 說明 |
+| 選項 | 描述 |
 | ------ | ----------- |
 | `EnableCrossPartitionQuery` | 必須針對任何需要跨多個分割區執行的查詢設定為 true。 這是一個明確的旗標，讓您能夠在開發期間進行明智的效能取捨。 |
 | `EnableScanInQuery` | 如果您已選擇不編製索引，但仍想透過掃描繼續執行查詢，就必須設定為 true。 只有在已停用針對所要求篩選路徑編製索引的功能時才適用。 | 
@@ -125,7 +126,7 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 
 從查詢傳回的索引鍵回應標頭包括下列項目：
 
-| 選項 | 說明 |
+| 選項 | 描述 |
 | ------ | ----------- |
 | `x-ms-item-count` | 在回應中傳回的項目數。 這相依於所提供的 `x-ms-max-item-count`、最大回應承載大小內可容納的項目數、佈建的輸送量，以及查詢執行時間。 |  
 | `x-ms-continuation:` | 要繼續執行查詢的接續 Token (如果有其他結果可供使用)。 | 
@@ -238,7 +239,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| 計量 | Unit | 說明 | 
+| 計量 | 單位 | 描述 | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | 毫秒 | 查詢執行時間 | 
 | `queryCompileTimeInMs` | 毫秒 | 查詢編譯時間  | 
@@ -260,7 +261,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 以下是一些範例查詢，以及如何解譯從查詢執行傳回的部分計量資訊： 
 
-| 查詢 | 範例計量 | 說明 | 
+| 查詢 | 範例計量 | 描述 | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | 擷取的文件數目為 100 + 1，可符合 TOP 子句。 查詢時間大部分花費在 `WriteOutputTime` 和 `DocumentLoadTime`，因為它是一次掃描。 | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount 現在較高 (500+1 以符合 TOP 子句)。 | 
@@ -272,7 +273,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 | `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(LOWER(c.Name), 'den')` | `"IndexLookupTime": "00:00:00", "RetrievedDocumentCount": 2491,  "OutputDocumentCount": 500` | 查詢會當作掃描來執行，因為它使用 `LOWER`，而且會傳回 2491 份擷取文件中的 500 份。 |
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * 若要了解支援的 SQL 查詢運算子和關鍵字，請參閱 [SQL 查詢](sql-query-getting-started.md)。 
 * 若要了解要求單位，請參閱[要求單位](request-units.md)。
 * 若要了解編製索引原則，請參閱[編製索引原則](index-policy.md)

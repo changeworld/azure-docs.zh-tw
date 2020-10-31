@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 06/05/2020
 author: jasonwhowell
 ms.author: jasonh
-ms.openlocfilehash: 15b4e6515f98a4d5a65bb5a56bdd5a5f40f90fe8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2016f00249da9abfa2f0904b14d6a34298973f99
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91408606"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096609"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>使用 MongoDB Compass 連線至 Azure Cosmos DB 的 MongoDB 版 API
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 本教學課程示範在 Cosmos DB 中儲存和 (或) 管理資料時如何使用 [MongoDB Compass](https://www.mongodb.com/products/compass)。 我們使用 Azure Cosmos DB 的 MongoDB 版 API 進行此逐步解說。 簡單介紹一下，Compass 是 MongoDB 的 GUI。 它通常用來將資料視覺化、執行特定查詢，以及管理您的資料。
 
@@ -38,21 +39,21 @@ Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以�
 
     :::image type="content" source="./media/mongodb-compass/mongodb-compass-connection.png" alt-text="[連接字串] 刀鋒視窗的螢幕擷取畫面":::
 
-2. 在 Cosmos DB 中的 [主要/次要連接字串]**** 旁，按一下顯示為 [複製到剪貼簿]**** 的按鈕。 按一下此按鈕，會將您的整個連接字串複製到剪貼簿。
+2. 在 Cosmos DB 中的 [主要/次要連接字串]  旁，按一下顯示為 [複製到剪貼簿]  的按鈕。 按一下此按鈕，會將您的整個連接字串複製到剪貼簿。
 
     :::image type="content" source="./media/mongodb-compass/mongodb-connection-copy.png" alt-text="[連接字串] 刀鋒視窗的螢幕擷取畫面":::
 
-3. 在您的桌面/電腦上開啟 Compass，並按一下 [連線]****，然後按一下 [連線至...]****。
+3. 在您的桌面/電腦上開啟 Compass，並按一下 [連線]  ，然後按一下 [連線至...]  。
 
-4. Compass 會自動偵測剪貼簿中的連接字串，並出現提示詢問您是否要使用該連接字串來連線。 按一下 [是]****，如下列螢幕擷取畫面所示。
+4. Compass 會自動偵測剪貼簿中的連接字串，並出現提示詢問您是否要使用該連接字串來連線。 按一下 [是]  ，如下列螢幕擷取畫面所示。
 
     :::image type="content" source="./media/mongodb-compass/mongodb-compass-detect.png" alt-text="[連接字串] 刀鋒視窗的螢幕擷取畫面":::
 
-5. 在上述步驟中按一下 [是]**** 後，將會自動填入連接字串中的詳細資料。 請移除在 [複本集名稱]**** 欄位中自動填入的值，以確定該欄位保留為空白。
+5. 在上述步驟中按一下 [是]  後，將會自動填入連接字串中的詳細資料。 請移除在 [複本集名稱]  欄位中自動填入的值，以確定該欄位保留為空白。
 
     :::image type="content" source="./media/mongodb-compass/mongodb-compass-replica.png" alt-text="[連接字串] 刀鋒視窗的螢幕擷取畫面":::
 
-6. 按一下頁面底部的 [連線]****。 您的 Cosmos DB 帳戶和資料庫現在應該會顯示在 MongoDB Compass 內。
+6. 按一下頁面底部的 [連線]  。 您的 Cosmos DB 帳戶和資料庫現在應該會顯示在 MongoDB Compass 內。
 
 ## <a name="next-steps"></a>後續步驟
 

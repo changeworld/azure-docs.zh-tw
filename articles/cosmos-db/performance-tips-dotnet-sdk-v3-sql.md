@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 05fe22ed0dc7d03148f66fd02aa648e1b63ab319
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 21821bbb41126a53c2b137bf1f5e5684ff1ae267
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475323"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096274"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB 和 .NET 的效能祕訣
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
@@ -39,16 +40,16 @@ Azure Cosmos DB 是快速、彈性的分散式資料庫，可透過保證的延�
 
 此處列出的四個應用程式類型預設使用32位主機處理。 若要針對您的應用程式類型將主機處理變更為64位處理，請執行下列動作：
 
-- **針對可執行檔應用程式**：在 [ **專案屬性** ] 視窗的 [ **組建** ] 窗格中，將 [ [平臺目標](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) ] 設定為 [ **x64**]。
+- **針對可執行檔應用程式** ：在 [ **專案屬性** ] 視窗的 [ **組建** ] 窗格中，將 [ [平臺目標](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) ] 設定為 [ **x64** ]。
 
-- **針對以 VSTest 為基礎的測試專案**：在 [Visual Studio**測試**] 功能表上，選取 [**測試**  >  **測試設定**]，然後將 [**預設處理器架構**] 設定為 [ **X64**]。
+- **針對以 VSTest 為基礎的測試專案** ：在 [Visual Studio **測試** ] 功能表上，選取 [ **測試**  >  **測試設定** ]，然後將 [ **預設處理器架構** ] 設定為 [ **X64** ]。
 
-- **針對本機部署的 ASP.NET web 應用程式**：選取 [**工具**  >  **選項**  >  **專案和方案**  >  **Web 專案**]，然後選取 **[使用 web sites 和專案的64位版 IIS Express**]。
+- **針對本機部署的 ASP.NET web 應用程式** ：選取 [ **工具**  >  **選項**  >  **專案和方案**  >  **Web 專案** ]，然後選取 **[使用 web sites 和專案的64位版 IIS Express** ]。
 
-- **針對部署在 Azure 上的 ASP.NET web 應用程式**：在 Azure 入口網站的 [ **應用程式設定**] 中，選取 **64 位** 平臺。
+- **針對部署在 Azure 上的 ASP.NET web 應用程式** ：在 Azure 入口網站的 [ **應用程式設定** ] 中，選取 **64 位** 平臺。
 
 > [!NOTE] 
-> 根據預設，新 Visual Studio 專案會設定為 [ **任何 CPU**]。 建議您將專案設定為 **x64** ，使其不會切換至 **x86**。 如果加入僅限 x86 的相依性，則設定為 **任何 CPU** 的專案可以輕鬆地切換至 **x86** 。<br/>
+> 根據預設，新 Visual Studio 專案會設定為 [ **任何 CPU** ]。 建議您將專案設定為 **x64** ，使其不會切換至 **x86** 。 如果加入僅限 x86 的相依性，則設定為 **任何 CPU** 的專案可以輕鬆地切換至 **x86** 。<br/>
 > ServiceInterop.dll 檔案必須位於執行 SDK DLL 的資料夾中。 只有當您手動複製 Dll 或擁有自訂群組建或部署系統時，才需要考慮這一點。
     
 **開啟伺服器端垃圾收集**
@@ -62,7 +63,7 @@ Azure Cosmos DB 是快速、彈性的分散式資料庫，可透過保證的延�
 > [!NOTE] 
 > 高 CPU 使用率可能會導致延遲增加和要求超時例外狀況。
 
-## <a name="networking"></a>網路功能
+## <a name="networking"></a>網路
 <a id="direct-connection"></a>
 
 **原則︰使用直接連接模式**
@@ -154,13 +155,13 @@ SQL .NET SDK 支援平行查詢，可讓您以平行方式查詢分割的容器�
 
 平行查詢提供兩個參數，可供您調整以符合您的需求： 
 
-- **>maxconcurrency**：控制可平行查詢的資料分割數目上限。
+- **>maxconcurrency** ：控制可平行查詢的資料分割數目上限。
 
    平行查詢的運作方式是以平行方式查詢多個資料分割。 但是個別分割區中的資料會根據查詢順序提取。 `MaxConcurrency`若將[SDK V3](https://github.com/Azure/azure-cosmos-dotnet-v3)設定為分割區數目，就有機會達到最高效能的查詢，但前提是其他所有系統條件維持不變。 如果您不知道資料分割數目，您可以將平行處理原則的程度設定為較高的數位。 系統會選擇最小 (的資料分割數目、使用者提供的輸入) 作為平行處理原則的程度。
 
     如果資料平均分佈在與查詢相關的所有資料分割中，平行查詢會產生最大效益。 如果分割的集合已分割，以便查詢所傳回的所有或大部分資料都集中在少數幾個資料分割中 (一個資料分割是最糟的情況) ，則這些資料分割將會造成查詢的效能瓶頸。
    
-- **MaxBufferedItemCount**：控制預先提取的結果數目。
+- **MaxBufferedItemCount** ：控制預先提取的結果數目。
 
    平行查詢的設計是可在用戶端處理目前的結果批次時，先預先擷取結果。 這項預先提取有助於改善查詢的整體延遲。 `MaxBufferedItemCount`參數會限制預先提取的結果數目。 設定 `MaxBufferedItemCount` 為預期傳回的結果數目 (或更高的數目) ，讓查詢能獲得預先提取的最大效益。
 
@@ -255,7 +256,7 @@ SDK 全都隱含地攔截這個回應，採用伺服器指定的 retry-after 標
 
 要求費用 (也就是說，指定作業的要求處理成本) 會直接與檔案大小相互關聯。 大型檔的作業成本高於小型檔上的作業。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 如需在少數用戶端電腦上用來評估高效能案例 Azure Cosmos DB 的範例應用程式，請參閱 [Azure Cosmos DB 的效能和規模測試](performance-testing.md)。
 
 若要深入了解如何針對規模和高效能設計您的應用程式，請參閱 [Azure Cosmos DB 的資料分割與調整規模](partitioning-overview.md)。

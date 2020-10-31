@@ -10,14 +10,19 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: f469196f96b97903f69e29d1a38900369653e02f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41acc956d4eca2accc16c46cdc52336c3cd89065
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86200517"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095419"
 ---
 # <a name="search-categories-for-the-bing-local-business-search-api"></a>搜尋 Bing 當地商家搜尋 API 的類別
+
+> [!WARNING]
+> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
+> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
+> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
 Bing 當地商家搜尋 API 可讓您搜尋各種類別的當地商家實體，且優先考慮接近使用者的位置。 您可以在搜尋中包含這些搜尋以及 `localCircularView` 和 `localMapView` [參數](specify-geographic-search.md)。
 
@@ -184,7 +189,7 @@ X-MSEdge-Ref: Ref A: 68AFB51807C6485CAB8AAF20E232EFFF Ref B: CO1EDGE0108 Ref C: 
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 - [地理搜尋界限](specify-geographic-search.md)
 - [查詢和回應](local-search-query-response.md)
 - [C# 快速入門](quickstarts/local-quickstart.md)

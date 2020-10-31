@@ -8,14 +8,15 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 57d319d54d15b72747da029d365137f5b5bb384c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d8398dbded8753bac193f973026fb63d5f1fc6b3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489246"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097714"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB 的進階威脅防護 (預覽)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB 提供「進階威脅防護」來增加額外的安全智慧層級，用於偵測 Azure Cosmos DB 帳戶中異常且可能有害的存取意圖或攻擊。 這個防護層讓您不需是安全性專家就能解決威脅，並且可使用中央安全性監視系統整合威脅。
 
@@ -32,9 +33,9 @@ Azure Cosmos DB 提供「進階威脅防護」來增加額外的安全智慧層�
 
 Azure Cosmos DB 進階威脅防護會偵測異常活動，這些活動表示有不尋常及可能有害的活動試圖存取或惡意探索資料庫。 這些活動目前會觸發下列警示：
 
-- **從不尋常的位置存取**：有人從不尋常的地理位置登入 Azure Cosmos DB 端點，而使 Azure Cosmos 帳戶的存取模式有所變更時，會觸發此警示。 在某些情況下，警示會偵測到合法的動作，代表新的應用程式或開發人員維護作業。 在其他情況下，警示則會偵測惡意動作來 (離職員工、外部攻擊者等)。
+- **從不尋常的位置存取** ：有人從不尋常的地理位置登入 Azure Cosmos DB 端點，而使 Azure Cosmos 帳戶的存取模式有所變更時，會觸發此警示。 在某些情況下，警示會偵測到合法的動作，代表新的應用程式或開發人員維護作業。 在其他情況下，警示則會偵測惡意動作來 (離職員工、外部攻擊者等)。
 
-- **不尋常的資料擷取**：當用戶端從 Azure Cosmos DB 帳戶擷取不尋常的資料量時，會觸發此警示。 這可能是部分資料外洩的徵兆，藉此將帳戶中所有儲存資料傳輸到外部資料存放區。
+- **不尋常的資料擷取** ：當用戶端從 Azure Cosmos DB 帳戶擷取不尋常的資料量時，會觸發此警示。 這可能是部分資料外洩的徵兆，藉此將帳戶中所有儲存資料傳輸到外部資料存放區。
 
 
 

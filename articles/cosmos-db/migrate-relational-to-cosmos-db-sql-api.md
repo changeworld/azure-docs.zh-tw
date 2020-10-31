@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 3aec6cf2fa515d71b93d84cf8c4fc901fc847162
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 53a3317f38cc22ffa3745f5f0e58cc01a54b825c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487427"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096742"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>將一對多關聯性型資料移轉至 Azure Cosmos DB SQL API 帳戶
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 若要從關係資料庫移轉至 Azure Cosmos DB SQL API，您可能需要變更資料模型以進行優化。
 
@@ -54,7 +55,7 @@ FROM Orders o;
 
 我們可以透過下列其中一種方式解決目前的限制：
 
-* **使用具有兩個複製活動的 Azure Data Factory**： 
+* **使用具有兩個複製活動的 Azure Data Factory** ： 
   1. 從 SQL 取得 JSON 格式的資料到中繼 blob 儲存位置中的文字檔，以及 
   2. 從 JSON 文字檔將資料載入 Azure Cosmos DB 中的容器。
 
@@ -335,6 +336,6 @@ pool.map(writeOrder, orderids)
 
 :::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/databricks4.png" alt-text="顯示 SQL 資料庫中 Orders 和 OrderDetails 資料表的螢幕擷取畫面。":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * 瞭解 [Azure Cosmos DB 中的資料模型](./modeling-data.md)
 * 瞭解 [如何在 Azure Cosmos DB 上建立資料模型和資料分割](./how-to-model-partition-example.md)

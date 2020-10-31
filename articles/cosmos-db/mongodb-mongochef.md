@@ -8,14 +8,15 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 6c9ea401a4a62f617b5acf6f96c60532d929ff1c
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: a02aaadf8c774557eb182acf041b6f19337a0de8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167962"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096507"
 ---
 # <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>使用 Studio 3T 連接到 Azure Cosmos 帳戶
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 若要使用 Studio 3T 連接到 Azure Cosmos DB 的 MongoDB API，您必須：
 
@@ -30,35 +31,35 @@ ms.locfileid: "92167962"
 
     :::image type="content" source="./media/mongodb-mongochef/ConnectionStringBlade.png" alt-text="[連接字串] 頁面的螢幕擷取畫面":::
 
-2. 按一下 [連接]**** 以開啟 [連接管理員]，然後按一下 [新增連線]****
+2. 按一下 [連接]  以開啟 [連接管理員]，然後按一下 [新增連線] 
 
     :::image type="content" source="./media/mongodb-mongochef/ConnectionManager.png" alt-text="[連接字串] 頁面的螢幕擷取畫面":::
 3. 在 [ **新增** 連線] 視窗的 [ **伺服器** ] 索引標籤上，輸入 AZURE Cosmos 帳戶和埠的主機 (FQDN) 。
 
     :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerServerTab.png" alt-text="[連接字串] 頁面的螢幕擷取畫面":::
-4. 在 [新增連線]**** 視窗中，請在 [驗證]**** 索引標籤上選擇驗證模式 [基本 (MONGODB-CR 或 SCARM-SHA-1)]****，並輸入使用者名稱和密碼。  接受預設的驗證資料庫 (管理員)，或提供您自己的值。
+4. 在 [新增連線]  視窗中，請在 [驗證]  索引標籤上選擇驗證模式 [基本 (MONGODB-CR 或 SCARM-SHA-1)]  ，並輸入使用者名稱和密碼。  接受預設的驗證資料庫 (管理員)，或提供您自己的值。
 
     :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png" alt-text="[連接字串] 頁面的螢幕擷取畫面":::
-5. 在 [新增連接]**** 視窗的 [SSL]**** 索引標籤上，勾選 [使用 SSL 通訊協定連接]**** 核取方塊和 [接受自我簽署的 SSL 憑證]**** 選項按鈕。
+5. 在 [新增連接]  視窗的 [SSL]  索引標籤上，勾選 [使用 SSL 通訊協定連接]  核取方塊和 [接受自我簽署的 SSL 憑證]  選項按鈕。
 
     :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerSSLTab.png" alt-text="[連接字串] 頁面的螢幕擷取畫面":::
-6. 按一下 [測試連接]**** 按鈕以驗證連接資訊，按一下 [確定]**** 以返回 [新增連線] 視窗，然後按一下 [儲存]****。
+6. 按一下 [測試連接]  按鈕以驗證連接資訊，按一下 [確定]  以返回 [新增連線] 視窗，然後按一下 [儲存]  。
 
     :::image type="content" source="./media/mongodb-mongochef/TestConnectionResults.png" alt-text="[連接字串] 頁面的螢幕擷取畫面":::
 
 ## <a name="use-studio-3t-to-create-a-database-collection-and-documents"></a>使用 Studio 3T 建立資料庫、集合和文件
 若要使用 Studio 3T 建立資料庫、集合和文件，請執行下列步驟：
 
-1. 在 [連接管理員]**** 中，反白顯示連接，然後按一下 [連接]****。
+1. 在 [連接管理員]  中，反白顯示連接，然後按一下 [連接]  。
 
     :::image type="content" source="./media/mongodb-mongochef/ConnectToAccount.png" alt-text="[連接字串] 頁面的螢幕擷取畫面":::
-2. 以滑鼠右鍵按一下主機，然後選擇 [新增資料庫]****。  提供資料庫名稱，然後按一下 [確定] ****。
+2. 以滑鼠右鍵按一下主機，然後選擇 [新增資料庫]  。  提供資料庫名稱，然後按一下 [確定]  。
 
     :::image type="content" source="./media/mongodb-mongochef/AddDatabase1.png" alt-text="[連接字串] 頁面的螢幕擷取畫面":::
-3. 以滑鼠右鍵按一下資料庫，然後選擇 [新增集合]****。  提供集合名稱，然後按一下 [建立] ****。
+3. 以滑鼠右鍵按一下資料庫，然後選擇 [新增集合]  。  提供集合名稱，然後按一下 [建立]  。
 
     :::image type="content" source="./media/mongodb-mongochef/AddCollection.png" alt-text="[連接字串] 頁面的螢幕擷取畫面":::
-4. 按一下 [集合]**** 功能表項目，然後按一下 [新增文件]****。
+4. 按一下 [集合]  功能表項目，然後按一下 [新增文件]  。
 
     :::image type="content" source="./media/mongodb-mongochef/AddDocument1.png" alt-text="[連接字串] 頁面的螢幕擷取畫面" },
         "isRegistered": false
@@ -69,7 +70,7 @@ ms.locfileid: "92167962"
 
     :::image type="content" source="./media/mongodb-mongochef/QueryDocument1.png" alt-text="[連接字串] 頁面的螢幕擷取畫面":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 了解如何[使用 Robo 3T](mongodb-robomongo.md) 搭配 Azure Cosmos DB 適用於 MongoDB 的 API。
 - 使用 Azure Cosmos DB 適用於 MongoDB 的 API 瀏覽 Cosmos DB [範例](mongodb-samples.md)。

@@ -7,14 +7,15 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
 ms.custom: contperfq1
-ms.openlocfilehash: f8bcadf25ac8e001657f2be012f99ddb507e672d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb6d1cb684f4c2e3f563d5690c804d64c97ff70c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445175"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096728"
 ---
 # <a name="command-line-and-powershell-reference-for-azure-cosmos-db-emulator"></a>Azure Cosmos DB 模擬器的命令列和 PowerShell 參考
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos 模擬器提供一個模擬 Azure Cosmos DB 服務的本機環境，以供本機開發之用。 [安裝模擬器](local-emulator.md)之後，您可以使用命令列和 PowerShell 命令來控制模擬器。 本文說明如何使用命令列和 PowerShell 命令來啟動和停止模擬器、設定選項，以及執行其他作業。 您必須從安裝位置執行命令。
 
@@ -135,7 +136,7 @@ Cmdlet 可確保在解除安裝之前停止模擬器。
 
 若要變更 Azure Cosmos 模擬器中可用的容器數目，請執行下列步驟：
 
-1. 以滑鼠右鍵按一下系統匣上的 **Azure Cosmos DB 模擬器** ] 圖示，然後按一下 [ **重設資料**]，以刪除所有本機 Azure Cosmos 模擬器資料 .。。
+1. 以滑鼠右鍵按一下系統匣上的 **Azure Cosmos DB 模擬器** ] 圖示，然後按一下 [ **重設資料** ]，以刪除所有本機 Azure Cosmos 模擬器資料 .。。
 
 1. 刪除此資料夾 `%LOCALAPPDATA%\CosmosDBEmulator` 中的所有模擬器資料。
 

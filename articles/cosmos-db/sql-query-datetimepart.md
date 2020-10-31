@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 08/14/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 87663c18ddaa5da6740a0f54aa5f2812cbb06af8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd88f8d6a0f5271da97d6f2f95eecb60bf94ed78
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88227079"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095793"
 ---
 # <a name="datetimepart-azure-cosmos-db"></a>DateTimePart (Azure Cosmos DB) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 傳回指定之日期時間之間指定之 DateTimePart 的值。
   
@@ -32,7 +33,7 @@ DateTimePart (<DateTimePart> , <DateTime>)
 | DateTimePart | 縮寫        |
 | ------------ | -------------------- |
 | Year         | 「year」、「yyyy」、「yy」 |
-| Month        | "month"、"mm"、"m"   |
+| 月        | "month"、"mm"、"m"   |
 | 天          | "day"、"dd"、"d"     |
 | 小時         | "hour"、"hh"         |
 | Minute       | "minute"、"mi"、"n"  |
@@ -87,7 +88,7 @@ SELECT DateTimePart("mcs", "2020-01-02T03:04:05.6789123Z") AS MicrosecondsValue
 ]
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [日期和時間函數 Azure Cosmos DB](sql-query-date-time-functions.md)
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)

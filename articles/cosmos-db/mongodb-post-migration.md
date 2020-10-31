@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: jasonh
-ms.openlocfilehash: 6733e0f6447d055da8d349940bc7c7665e003e33
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 3b0c291f942cd970f7996f0b9fa599ee8cabfdab
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475595"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096439"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>使用 Azure Cosmos DB 適用于 MongoDB 的 API 時的遷移後優化步驟
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 將 MongoDB 資料庫中儲存的資料遷移至 Azure Cosmos DB 的 MongoDB 版 API 之後，您就可以連線到 Azure Cosmos DB 並管理這些資料。 本指南提供您在移轉後應考慮進行的步驟。 如需遷移步驟，請參閱將 [Mongodb 遷移至 Azure Cosmos DB 適用于 mongodb 的 API 教學](../dms/tutorial-mongodb-cosmos-db.md) 課程。
 
@@ -60,7 +61,7 @@ Azure Cosmos DB 提供五個定義完善的 [一致性層級](consistency-levels
 
 大部分的使用者會將其一致性層級保留在預設的會話一致性設定中。 不過，有 [各種一致性層級的可用性和效能權衡取捨](./consistency-levels.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [將 MongoDB 應用程式連線至 Azure Cosmos DB](connect-mongodb-account.md)
 * [使用 Studio 3T 連接到 Azure Cosmos DB 帳戶](mongodb-mongochef.md)

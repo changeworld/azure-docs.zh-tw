@@ -6,14 +6,15 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: bd0ec4cf085fb19c89c6be48d4f4534383560fd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a105df6b27be943b14a29bb25fd048bfd294c867
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707773"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097425"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL 移轉和應用程式開發合作夥伴
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 要從 NoSQL 移轉到應用程式開發，您有各式各樣資深的系統整合者合作夥伴和工具可以選擇，以支援您 Azure Cosmos DB 的解決方案。 本文列出使用 Azure Cosmos DB 的解決方案或服務的合作夥伴。 這份清單會隨著時間而改變，Microsoft 對於這些合作夥伴的解決方案所做的任何變更或更新，概不負責。
 
@@ -25,7 +26,7 @@ ms.locfileid: "91707773"
 | [10thMagnitude](https://www.10thmagnitude.com/) | IoT，零售 (清查) ，作業分析 (Spark) 、無伺服器架構、應用程式開發 | USA |
 |[Altoros 開發 LLC](https://www.altoros.com/)  |  IoT、個人化零售 (清查) 、無伺服器架構 NoSQL 遷移、應用程式開發|   USA |
 |[Avanade](https://www.avanade.com/) | IoT，零售 (清查) ，無伺服器架構，應用程式開發 | 奧地利、德國、瑞士、義大利、挪威、西班牙、英國、加拿大 |
-|[Accenture](https://www.accenture.com/) | IoT，零售 (清查) ，無伺服器架構，應用程式開發 |全域|
+|[Accenture](https://www.accenture.com/) | IoT，零售 (清查) ，無伺服器架構，應用程式開發 |全球|
 |[Capax Global LLC](https://www.capaxglobal.com/) | IoT、個人化、零售 (清查) 、營運分析 (Spark) 、無伺服器架構、應用程式開發|    USA     |  
 | [Capgemini](https://www.capgemini.com/) | 零售 (清查) 、IoT、營運分析 (Spark) 、應用程式開發 | 美國、法國、英國、荷蘭、芬蘭  |
 | [Cognizant](https://www.cognizant.com/) | IoT、個人化、零售 (清查) 、營運分析 (Spark) 、應用程式開發 |美國、加拿大、英國、丹麥、荷蘭、瑞士、澳大利亞、日本 |

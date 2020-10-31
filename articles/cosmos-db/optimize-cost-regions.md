@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2020
-ms.openlocfilehash: 723a1fbe05919f2e797c7b29715cd3995bf42cad
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 010ca40f4f3aacd6353aecd150e944672cc09066
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926287"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097498"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中最佳化多重區域成本
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 您可以隨時在 Azure Cosmos 帳戶中新增及移除區域。 您為各種 Azure Cosmos 資料庫和容器設定的輸送量，將保留在與您的帳戶相關聯的每個區域中。 如果每小時布建的輸送量，也就是在 Azure Cosmos 帳戶的所有資料庫和容器中設定的 RU/秒總和， `T` 以及與您資料庫帳戶相關聯的 Azure 區域數量 `N` ，則 Cosmos 帳戶的總布建輸送量會等於 `T x N RU/s` 。
 
@@ -38,7 +39,7 @@ ms.locfileid: "92926287"
 
 如果您的使用率不佳（例如，一或多個使用量過低的讀取區域），您可以在讀取區域中使用變更摘要，採取步驟來充分利用讀取區域中的 ru，或在過度使用時將其移至另一個次要資料庫。 您必須先確定將布建的輸送量優化 (ru 在寫入區域中) 。 除非非常大型的查詢才會將成本寫入超過讀取成本，否則可能會有挑戰性。 整體來說，請監視您區域中已取用的輸送量，並視需要新增或移除區域以調整讀取和寫入輸送量，以確定瞭解部署在相同區域中的任何應用程式對延遲的影響。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 接下來，您可以利用下列文章繼續深入了解 Azure Cosmos DB 中有關成本最佳化的詳細資訊：
 

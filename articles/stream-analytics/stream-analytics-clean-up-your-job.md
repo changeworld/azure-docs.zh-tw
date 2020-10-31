@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: f078ab217a5c4911fbd132338883504897db899f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a771ac1a831bc7994f28ba15139b66be346af02
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044595"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097748"
 ---
 # <a name="stop-or-delete-your-azure-stream-analytics-job"></a>停止或刪除您的 Azure 串流分析作業
 
@@ -30,7 +30,7 @@ ms.locfileid: "86044595"
 
 2. 找到執行中的串流分析作業並加以選取。
 
-3. 在 [串流分析作業] 頁面上，選取 [停止]**** 以停止作業。 
+3. 在 [串流分析作業] 頁面上，選取 [停止]  以停止作業。 
 
    ![停止 Azure 串流分析作業](./media/stream-analytics-clean-up-your-job/stop-stream-analytics-job.png)
 
@@ -44,7 +44,7 @@ ms.locfileid: "86044595"
 
 2. 找到現有的串流分析作業並加以選取。
 
-3. 在 [串流分析作業] 頁面上，選取 [刪除]**** 以刪除作業。 
+3. 在 [串流分析作業] 頁面上，選取 [刪除]  以刪除作業。 
 
    ![刪除 Azure 串流分析作業](./media/stream-analytics-clean-up-your-job/delete-stream-analytics-job.png)
 
@@ -61,4 +61,4 @@ ms.locfileid: "86044595"
 
 ## <a name="stop-or-delete-a-job-using-rest-api"></a>使用 REST API 停止或刪除作業
 
-若要使用 REST API 停止作業，請參閱 [Stop](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job#stop) 方法。 若要使用 REST API 刪除作業，請參閱 [Delete](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job#delete) 方法。
+若要使用 REST API 停止作業，請參閱 [Stop](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#stop) 方法。 若要使用 REST API 刪除作業，請參閱 [Delete](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#delete) 方法。

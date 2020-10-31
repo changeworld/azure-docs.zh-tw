@@ -7,14 +7,15 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: 0e8859eebf97b8d2788153e74e36f31fda3323c5
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0f286b5586a0d74afed0bb185179454bb1efff95
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282473"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097544"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>從 CouchBase 遷移至 Azure Cosmos DB SQL API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB 是可調整、全域散發的完全受控資料庫。 其可為您的資料提供保證低度延遲的存取。 若要深入了解 Azure Cosmos DB，請參閱[概觀](introduction.md)一文。 本文提供指示，說明如何將連線至 Couchbase 的 JAVA 應用程式遷移至 Azure Cosmos DB 中的 SQL API 帳戶。
 
@@ -37,7 +38,7 @@ Azure Cosmos DB 是可調整、全域散發的完全受控資料庫。 其可為
 
 * 在 Azure Cosmos DB 中，最上層階層不需要表示集合，因為集合名稱已經存在。 這項功能可讓 JSON 結構變得更簡單。 以下範例會顯示 Couchbase 與 Azure Cosmos DB 之間資料模型的差異：
 
-   **Couchbase**：Document ID =  "99FF4444"
+   **Couchbase** ：Document ID =  "99FF4444"
 
     ```json
     {
@@ -67,7 +68,7 @@ Azure Cosmos DB 是可調整、全域散發的完全受控資料庫。 其可為
     }
    ```
 
-   **Azure Cosmos DB**：請參閱文件中的「識別碼」，如下所示
+   **Azure Cosmos DB** ：請參閱文件中的「識別碼」，如下所示
 
     ```json
     {

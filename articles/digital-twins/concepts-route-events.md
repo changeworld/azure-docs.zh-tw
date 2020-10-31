@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: f124eb24dcdc9e6437c803d1066d6ca86d5c32ab
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 9c7b08b92fad07cddbdb2783f2d68cdb9be034a4
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92440802"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097068"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>在 Azure 數位 Twins 內外路由傳送事件
 
 Azure 數位 twins 會使用 **事件路由** 將資料傳送給服務外的取用者。 
 
-在預覽期間，傳送 Azure 數位 Twins 資料有兩種主要案例：
+傳送 Azure 數位 Twins 資料有兩種主要案例：
 * 將資料從 Azure 數位 Twins 圖形中的一個對應項傳送到另一個對應項。 例如，當某個數位對應項上的屬性變更時，您可能會想要通知並據此更新另一個數位對應項。
 * 將資料傳送至下游資料服務以進行額外的儲存或處理 (也稱為 *資料* 輸出) 。 例如，
   - 醫院可能會想要將 Azure 數位 Twins 事件資料傳送到 [時間序列深入解析 (TSI) ](../time-series-insights/overview-what-is-tsi.md)，以記錄大量分析之 handwashing 相關事件的時間序列資料。
@@ -38,7 +38,7 @@ Azure 數位 twins 會使用 **事件路由** 將資料傳送給服務外的取�
 
 ### <a name="event-routes-for-internal-digital-twin-events"></a>內部數位對應項事件的事件路由
 
-在目前的預覽版本中，事件路由也會用來處理對應項圖形內的事件，並將資料從數位對應項傳送至數位對應項。 這是藉由將事件路由透過事件方格連接到計算資源（例如 [Azure Functions](../azure-functions/functions-overview.md)）來完成。 然後，這些函式會定義 twins 應該如何接收和回應事件。 
+事件路由也會用來處理對應項圖形內的事件，並將資料從數位對應項傳送至數位對應項。 這是藉由將事件路由透過事件方格連接到計算資源（例如 [Azure Functions](../azure-functions/functions-overview.md)）來完成。 然後，這些函式會定義 twins 應該如何接收和回應事件。 
 
 當計算資源想要根據透過事件路由收到的事件來修改對應項圖表時，它會很有説明，讓它知道要事先修改的對應項。 
 
@@ -50,7 +50,7 @@ Azure 數位 twins 會使用 **事件路由** 將資料傳送給服務外的取�
 
 ## <a name="create-an-endpoint"></a>建立端點
 
-若要定義事件路由，開發人員必須先定義端點。 **端點**是 Azure 數位 Twins 外部的目的地，可支援路由連接。 目前預覽版本中支援的目的地為：
+若要定義事件路由，開發人員必須先定義端點。 **端點** 是 Azure 數位 Twins 外部的目的地，可支援路由連接。 支援的目的地包括：
 * 事件方格自訂主題
 * 事件中樞
 * 服務匯流排
@@ -73,7 +73,7 @@ Azure 數位 twins 會使用 **事件路由** 將資料傳送給服務外的取�
  
 若要建立事件路由，您可以使用 Azure 數位 Twins [**資料平面 api**](how-to-manage-routes-apis-cli.md#create-an-event-route)、 [**CLI 命令**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)或 [**Azure 入口網站**](how-to-manage-routes-portal.md#create-an-event-route)。 
 
-以下範例示範如何使用 `CreateEventRoute` [.Net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview) 呼叫，在用戶端應用程式中建立事件路由： 
+以下範例示範如何使用 `CreateEventRoute` [.Net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) 呼叫，在用戶端應用程式中建立事件路由： 
 
 ```csharp
 EventRoute er = new EventRoute("endpointName");
@@ -94,7 +94,7 @@ await client.CreateEventRoute("routeName", er);
 
 ## <a name="dead-letter-events"></a>無效信件事件
 
-當端點無法在某段時間內或在嘗試傳遞事件一段特定的次數之後傳遞事件時，它可以將未傳遞的事件傳送至儲存體帳戶。 此處理程式稱為無效**信件。** 當符合 **下列其中一個** 條件時，Azure 數位 Twins 將會寄不出信件給您的事件。 
+當端點無法在某段時間內或在嘗試傳遞事件一段特定的次數之後傳遞事件時，它可以將未傳遞的事件傳送至儲存體帳戶。 此處理程式稱為無效 **信件。** 當符合 **下列其中一個** 條件時，Azure 數位 Twins 將會寄不出信件給您的事件。 
 
 * 事件不會在存留時間期間傳遞
 * 嘗試傳遞事件的次數已超過限制
@@ -103,9 +103,9 @@ await client.CreateEventRoute("routeName", er);
 
 在設定無效信件位置之前，您必須先有具備容器的儲存體帳戶。 建立端點時，您會提供此容器的 URL。 寄不出的信件是以具有 SAS 權杖的容器 URL 提供。 該權杖只需要 `write` 儲存體帳戶內目的地容器的許可權。 完整格式的 URL 將採用下列格式： `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
-若要深入瞭解 SAS 權杖，請參閱： [*使用共用存取簽章 (SAS 將有限存取權授與 Azure 儲存體資源) *](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
+若要深入瞭解 SAS 權杖，請參閱： [*使用共用存取簽章 (SAS 將有限存取權授與 Azure 儲存體資源)*](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)
 
-若要瞭解如何使用無效信件來設定端點，請參閱作法 [*：在 Azure 數位 Twins 中管理端點和路由 (api 和 CLI) *](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering)。
+若要瞭解如何使用無效信件來設定端點，請參閱作法 [*：在 Azure 數位 Twins 中管理端點和路由 (api 和 CLI)*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering)。
 
 ### <a name="types-of-event-messages"></a>事件訊息的類型
 

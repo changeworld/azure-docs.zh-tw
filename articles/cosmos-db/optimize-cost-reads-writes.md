@@ -6,14 +6,15 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 58b57bd592ec0b302724f9339c0e0d48fed42d15
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 3f4c33a88d9a8fbf2c3d64135d93da54cf75fab3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281189"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097494"
 ---
 # <a name="optimize-request-cost-in-azure-cosmos-db"></a>優化 Azure Cosmos DB 中的要求成本
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 本文說明如何將讀取和寫入要求轉譯為 [要求單位](request-units.md) ，以及如何將這些要求的成本優化。 讀取作業包括點讀取和查詢。 寫入作業包括插入、取代、刪除和 upsert 專案。
 
@@ -34,7 +35,7 @@ Azure Cosmos DB 提供一組豐富的資料庫作業，可操作容器內的專�
 
 ### <a name="role-of-the-consistency-level"></a>一致性層級的角色
 
-使用**強**式或**限定過期**[一致性層級](consistency-levels.md)時，任何讀取作業 (點讀取或查詢) 的 RU 成本都會加倍。
+使用 **強** 式或 **限定過期**[一致性層級](consistency-levels.md)時，任何讀取作業 (點讀取或查詢) 的 RU 成本都會加倍。
 
 ### <a name="point-reads"></a>點讀取
 

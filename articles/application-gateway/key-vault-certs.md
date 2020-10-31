@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: victorh
-ms.openlocfilehash: e7c4842494c144f5cd64d46f53f7a99266064680
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 3569ae130813eb0aaf14ec3d8d4e5cfac3e98c6f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993650"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095642"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>使用 Key Vault 憑證的 TLS 終止
 
@@ -47,8 +47,11 @@ Key Vault 整合提供兩種模型來進行 TLS 終止：
 
 1. **設定您的金鑰保存庫**
 
-   然後，您可以匯入現有的憑證，或在金鑰保存庫中建立新的憑證。 透過應用程式閘道執行的應用程式將會使用此憑證。 在此步驟中，您也可以使用儲存為無密碼、base-64 編碼的 PFX 檔案的金鑰保存庫秘密。 基於金鑰保存庫中的憑證類型物件所提供的自動更新功能，我們建議使用憑證類型。 建立憑證或密碼之後，您可以在金鑰保存庫中定義存取原則，以允許授與身分識別存取秘密*的許可權。*
+   然後，您可以匯入現有的憑證，或在金鑰保存庫中建立新的憑證。 透過應用程式閘道執行的應用程式將會使用此憑證。 在此步驟中，您也可以使用儲存為無密碼、base-64 編碼的 PFX 檔案的金鑰保存庫秘密。 基於金鑰保存庫中的憑證類型物件所提供的自動更新功能，我們建議使用憑證類型。 建立憑證或密碼之後，您可以在金鑰保存庫中定義存取原則，以允許授與身分識別存取秘密 *的許可權。*
    
+   > [!IMPORTANT]
+   > 應用程式閘道目前需要 Key Vault 允許來自所有網路的存取，才能利用整合。 當 Key Vault 設定為只允許私人端點並選取網路存取權時，不支援 Key Vault 整合。 私用和選取網路的支援，在與應用程式閘道的 Key Vault 的完整整合中是有效的。 
+
    > [!NOTE]
    > 如果您透過 ARM 範本部署應用程式閘道（使用 Azure CLI 或 PowerShell），或透過從 Azure 入口網站部署的 Azure 應用程式，則 SSL 憑證會以 base64 編碼的 PFX 檔案儲存在金鑰保存庫中。 您必須完成「使用 Azure Key Vault 中的步驟 [，以在部署期間傳遞安全的參數值](../azure-resource-manager/templates/key-vault-parameter.md)。 
    >
@@ -72,6 +75,6 @@ Key Vault 整合提供兩種模型來進行 TLS 終止：
 
    ![Key vault 憑證](media/key-vault-certs/ag-kv.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 [使用 Azure PowerShell Key Vault 憑證設定 TLS 終止](configure-keyvault-ps.md)

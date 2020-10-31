@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 06/04/2020
 ms.author: rosouz
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 97a887b9fbb0edd4b1574d3e68399ea83fe11451
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46164a5cd96941609c8a6484470fff863680f9d3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326740"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096592"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB 適用於 MongoDB 的 API 中的變更資料流
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Azure Cosmos DB 適用於 MongoDB 的 API 中的[變更摘要](change-feed.md)支援，是透過使用變更資料流 API 來提供。 透過使用變更資料流 API，您的應用程式可以取得對集合或單一分區中項目所做的變更。 您稍後可以根據結果採取進一步動作。 系統會依對集合中項目所做變更的修改時間加以擷取，且會針對每個分區索引鍵保證排序次序。
 

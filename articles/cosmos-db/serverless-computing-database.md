@@ -6,14 +6,15 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 0167dc0b1cbf8cf3b95995645ef24548a05c4343
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5264fb44f8088ae8f942abf95bc8c0ef6d917413
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538641"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096133"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>使用 Azure Cosmos DB 和 Azure Functions 的無伺服器資料庫計算
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 無伺服器計算是關於著重在可重複和無狀態之個別邏輯項目的能力。 這些項目不需要任何基礎結構管理，而且它們只會針對執行的項目耗用資源數秒或數毫秒。 無伺服器計算移動的核心是 [Azure Functions](https://azure.microsoft.com/services/functions) 在 Azure 生態系統中提供的函式。 若要了解 Azure 中的其他無伺服器執行環境，請參閱 [Azure 中的無伺服器](https://azure.microsoft.com/solutions/serverless/)頁面。 
 
@@ -142,7 +143,7 @@ Azure Functions 的優點：
 
 如果您不確定 Flow、Logic Apps、Azure Functions 或 WebJobs 是否適合您的實作，請參閱[在 Flow、Logic Apps、Functions 和 WebJobs 之間做選擇](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 現在，讓我們實際連接 Azure Cosmos DB 與 Azure Functions： 
 

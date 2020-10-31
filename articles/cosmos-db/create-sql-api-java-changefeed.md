@@ -9,14 +9,15 @@ ms.topic: how-to
 ms.date: 06/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 86fcdde72145cf25ee289ef3869976fecd628707
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 765fd3afc7fe688d3e6b0e3394e7dc8c39af69b3
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362039"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096847"
 ---
 # <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>如何建立 Java 應用程式，以使用 Azure Cosmos DB SQL API 和變更摘要處理器
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本操作指南會逐步引導您了解簡單的 Java 應用程式，其會使用 Azure Cosmos DB SQL API 來將文件插入到 Azure Cosmos DB 容器，同時會使用變更摘要和變更摘要處理器來維護容器的具體化檢視。 Java 應用程式會使用 Azure Cosmos DB Java SDK v4 來與 Azure Cosmos DB SQL API 通訊。
 
@@ -34,7 +35,7 @@ ms.locfileid: "91362039"
 
 ## <a name="background"></a>背景
 
-Azure Cosmos DB 變更摘要會提供事件驅動介面，以觸發動作來回應文件插入。 這有許多用途。 例如，在讀取和寫入繁重的應用程式中，變更摘要的主要用途是要在內嵌文件時，建立容器的即時**具體化檢視**。 具體化檢視容器會保存相同的資料，但會加以分割以便有效率的讀取，讓應用程式能夠有效率的讀取和寫入。
+Azure Cosmos DB 變更摘要會提供事件驅動介面，以觸發動作來回應文件插入。 這有許多用途。 例如，在讀取和寫入繁重的應用程式中，變更摘要的主要用途是要在內嵌文件時，建立容器的即時 **具體化檢視** 。 具體化檢視容器會保存相同的資料，但會加以分割以便有效率的讀取，讓應用程式能夠有效率的讀取和寫入。
 
 管理變更摘要事件的工作，主要是由 SDK 內建的變更摘要處理器程式庫負責處理。 此程式庫的功能強大，足以將變更摘要事件分散於多個背景工作角色 (如有需要的話)。 您只需要對變更摘要程式庫提供回呼。
 
@@ -56,7 +57,7 @@ mvn clean package
 
 ## <a name="walkthrough"></a>逐步介紹
 
-1. 第一次檢查時，您應該會有 Azure Cosmos DB 帳戶。 在您的瀏覽器中開啟 **Azure 入口網站**，移至您的 Azure Cosmos DB 帳戶，然後在左窗格中巡覽至 [資料總管]。
+1. 第一次檢查時，您應該會有 Azure Cosmos DB 帳戶。 在您的瀏覽器中開啟 **Azure 入口網站** ，移至您的 Azure Cosmos DB 帳戶，然後在左窗格中巡覽至 [資料總管]。
 
    :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_account_empty.JPG" alt-text="Azure Cosmos DB 帳戶":::
 
@@ -72,7 +73,7 @@ mvn clean package
     Press enter to create the grocery store inventory system...
     ```
 
-    然後在瀏覽器中返回 Azure 入口網站資料總管。 您會看到已新增三個空白容器的資料庫 **GroceryStoreDatabase**： 
+    然後在瀏覽器中返回 Azure 入口網站資料總管。 您會看到已新增三個空白容器的資料庫 **GroceryStoreDatabase** ： 
 
     * **InventoryContainer** - 我們的範例雜貨店的清查記錄，其依據項目 ```id``` (這是 UUID) 分割。
     * **InventoryContainer-pktype** - 清查記錄的具體化檢視，已針對項目 ```type``` 的查詢最佳化
@@ -104,11 +105,11 @@ mvn clean package
 
     [!code-java[](~/azure-cosmos-java-sql-app-example/src/main/java/com/azure/cosmos/workedappexample/SampleGroceryStore.java?name=CFPCallback)]
 
-1. 允許程式碼執行 5-10 秒。 然後返回 Azure 入口網站資料總管，並巡覽至 **InventoryContainer > items**。 您應會看到項目插入清查容器中；請記下資料分割索引鍵 (```id```)。
+1. 允許程式碼執行 5-10 秒。 然後返回 Azure 入口網站資料總管，並巡覽至 **InventoryContainer > items** 。 您應會看到項目插入清查容器中；請記下資料分割索引鍵 (```id```)。
 
     :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_items.JPG" alt-text="Azure Cosmos DB 帳戶":::
 
-1. 現在，在資料總管中導覽至 **InventoryContainer-pktype > items**。 這是具體化檢視 - 此容器鏡像 **InventoryContainer** 中的項目，因為其由變更摘要以程式設計方式插入。 請記下資料分割索引鍵 (```type```)。 所以此具體化檢視已針對篩選 ```type``` 的查詢最佳化，這在 **InventoryContainer** 上沒有效率，因為其依據 ```id``` 進行分割。
+1. 現在，在資料總管中導覽至 **InventoryContainer-pktype > items** 。 這是具體化檢視 - 此容器鏡像 **InventoryContainer** 中的項目，因為其由變更摘要以程式設計方式插入。 請記下資料分割索引鍵 (```type```)。 所以此具體化檢視已針對篩選 ```type``` 的查詢最佳化，這在 **InventoryContainer** 上沒有效率，因為其依據 ```id``` 進行分割。
 
     :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="Azure Cosmos DB 帳戶":::
 

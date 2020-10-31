@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 254ab7a10eb9779706ee31e5a16d51fe03b7122b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1aa5671a73c8a4de945a2013d8678d7f0f74625e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92375114"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097986"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>在 Azure Active Directory 中建立及指派自訂角色
 
@@ -169,7 +169,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 和內建角色一樣，自訂角色預設也會指派到預設的整個組織範圍，以授與組織中所有應用程式註冊的存取權限。 但與內建角色不同的是，自訂角色也可以指派到單一 Azure AD 資源的範圍。 這可讓您向使用者提供可更新單一應用程式認證和基本屬性的權限，而不需要建立第二個自訂角色。
 
 1. 使用 Azure AD 組織中應用程式開發人員的許可權登入 [Azure AD admin center](https://aad.portal.azure.com) 。
-1. 選取 **應用程式註冊**。
+1. 選取 **應用程式註冊** 。
 1. 選取所要授與的管理存取權適用的應用程式註冊。 您可能必須選取 [所有應用程式] 才能查看 Azure AD 組織中的完整應用程式註冊清單。
 
     ![選取 [應用程式註冊] 作為角色指派的資源範圍](./media/custom-create/appreg-all-apps.png)
@@ -183,4 +183,4 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 
 - 歡迎在 [Azure AD 系統管理角色論壇](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)上與我們共用資訊。
 - 如需角色和管理員角色指派的詳細資訊，請參閱[指派管理員角色](permissions-reference.md)。
-- 如需預設使用者權限，請參閱[預設來賓和成員使用者權限的比較](/azure/active-directory/fundamentals/users-default-permissions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context)。
+- 如需預設使用者權限，請參閱[預設來賓和成員使用者權限的比較](/azure/active-directory/fundamentals/users-default-permissions)。

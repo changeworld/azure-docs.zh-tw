@@ -6,16 +6,17 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: 7118a12a5a92912c51bb35d8b516d5b8e2f45388
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 329c4b40f11b36de80581d4a1396813bc8de5c73
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478145"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097323"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 跨足社交
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-在當今大幅互連的社會當中，您的生活或多或少都成為 **社交網路**的一部分。 您會使用社交網路與朋友、同事、家人保持連絡，有時候還可以跟擁有共同興趣的人交流這份愛好。
+在當今大幅互連的社會當中，您的生活或多或少都成為 **社交網路** 的一部分。 您會使用社交網路與朋友、同事、家人保持連絡，有時候還可以跟擁有共同興趣的人交流這份愛好。
 
 身為工程師或開發人員，您可能會好奇這些網路如何儲存資料以及與其互連。 或者，您可能已針對特定利基市場，建立或建構新的社交網路。 此時就會出現這個重大問題︰如何儲存所有這些資料？
 
@@ -238,21 +239,21 @@ Azure 認知搜尋會執行其呼叫 [索引子](/rest/api/searchservice/Indexer
 
 ## <a name="a-planet-scale-social-experience"></a>全球規模的社交體驗
 
-最後，還有一項重要的主題必須和各位分享，那就是「延展性」****。 在設計架構時，每個元件都應該自行調整。 您最終會需要處理更多資料，或者，會想要有更廣泛的地理涵蓋範圍。 幸好，透過 Cosmos DB，您便能**輕鬆完成**這兩項工作。
+最後，還有一項重要的主題必須和各位分享，那就是「延展性」  。 在設計架構時，每個元件都應該自行調整。 您最終會需要處理更多資料，或者，會想要有更廣泛的地理涵蓋範圍。 幸好，透過 Cosmos DB，您便能 **輕鬆完成** 這兩項工作。
 
-Cosmos DB 預設支援動態分割。 它會根據特定**資料分割索引鍵** (定義為您文件中的其中一項屬性) 自動建立資料分割。 定義正確的分割區索引鍵必須在設計階段完成。 如需詳細資訊，請參閱 [Azure Cosmos DB 中的資料分割](partitioning-overview.md)。
+Cosmos DB 預設支援動態分割。 它會根據特定 **資料分割索引鍵** (定義為您文件中的其中一項屬性) 自動建立資料分割。 定義正確的分割區索引鍵必須在設計階段完成。 如需詳細資訊，請參閱 [Azure Cosmos DB 中的資料分割](partitioning-overview.md)。
 
 針對社交體驗，您的分割策略必須符合您查詢及寫入的方式。  (例如，您需要在相同分割區內進行讀取，並藉由將寫入分散在多個分割區，以避免「作用點」。 ) 部分選項為：根據時態索引鍵的資料分割 (日/月/周) 、依內容分類、依地理區域或使用者。 這完全視您查詢資料及將它顯示於社交體驗的方式而定。
 
 Cosmos DB 會透明地在所有資料分割上執行您的查詢 (包括[彙總](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/) (英文))，因此您不需要隨資料增加而新增任何邏輯。
 
-流量最終會隨時間增長，而您的資源消耗 (以 [RU](request-units.md) (要求單位) 為單位) 也會增加。 隨著使用者群的增長，讀取及寫入也會變得更頻繁。 使用者群將會開始建立及讀取更多內容。 因此**調整輸送量**的能力極為重要。 增加 RU 非常容易。 只要在 Azure 入口網站上按幾下，或是[透過 API 發出命令](/rest/api/cosmos-db/replace-an-offer)即可。
+流量最終會隨時間增長，而您的資源消耗 (以 [RU](request-units.md) (要求單位) 為單位) 也會增加。 隨著使用者群的增長，讀取及寫入也會變得更頻繁。 使用者群將會開始建立及讀取更多內容。 因此 **調整輸送量** 的能力極為重要。 增加 RU 非常容易。 只要在 Azure 入口網站上按幾下，或是[透過 API 發出命令](/rest/api/cosmos-db/replace-an-offer)即可。
 
 :::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="說明相對關聯式模型的圖表":::
 
 如果情況持續好轉會怎樣？ 假設有來自其他地區、國家或洲的使用者注意到您的平台，並開始使用它。 這還真是個好消息！
 
-但別著急！ 您很快就發現他們無法從您的平台取得最佳的體驗。 因為他們離您的作業區域太遠，使延遲變得非常嚴重。 但您當然也不希望他們因此而放棄使用。 要是有方法能輕鬆**觸達全球使用者**就好了。 當然有！
+但別著急！ 您很快就發現他們無法從您的平台取得最佳的體驗。 因為他們離您的作業區域太遠，使延遲變得非常嚴重。 但您當然也不希望他們因此而放棄使用。 要是有方法能輕鬆 **觸達全球使用者** 就好了。 當然有！
 
 Cosmos DB 可讓您按幾下就能透明地[將資料複寫至全球](../cosmos-db/tutorial-global-distribution-sql-api.md)，並且自動從您的[用戶端程式碼](../cosmos-db/tutorial-global-distribution-sql-api.md)選取可用的區域。 這個程序也表示您可以擁有[多個容錯移轉區域](high-availability.md)。
 
@@ -268,6 +269,6 @@ Cosmos DB 可讓您按幾下就能透明地[將資料複寫至全球](../cosmos-
 
 事實上，這類案例並沒有萬靈丹。 它是由絕佳服務組合所建立的協力，可讓我們建立絕佳的體驗： Azure Cosmos DB 的速度和自由，提供絕佳的社交應用程式、頂級搜尋解決方案背後的情報（例如 Azure 認知搜尋）、Azure App 服務的彈性，不僅能裝載不受語言限制的應用程式，還能提供強大的背景程式，以及可展開的 Azure 儲存體與 Azure SQL Database，以儲存大量資料和 Azure Machine 的分析能力學習如何建立可提供意見反應給您流程的知識和智慧，並協助我們將正確的內容傳遞給正確的使用者。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入了解 Cosmos DB 的使用案例，請參閱[常見 Cosmos DB 使用案例](use-cases.md)。

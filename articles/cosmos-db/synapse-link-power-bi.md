@@ -6,20 +6,21 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
-ms.openlocfilehash: 6e77746d21d63cf1460b9e460e470a3bd12ce656
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 8599ebf1932d7c30622855cbf38af867d30b52b8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480032"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098054"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>使用 Power BI 和無伺服器 Synapse SQL 集區，透過 Synapse 連結 (預覽來分析 Azure Cosmos DB 資料)  
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
 在本文中，您將瞭解如何建立無伺服器 Synapse SQL 集區 (它先前稱為 **sql 隨選** 的) 資料庫，以及 Azure Cosmos DB 的 Synapse 連結。 您將會查詢 Azure Cosmos 容器，然後使用這些視圖 Power BI 建立模型，以反映該查詢。
 
 在此案例中，您將會在合作夥伴零售商店中使用有關 Surface product sales 的虛擬資料。 您將根據大型家庭的鄰近程度，以及對特定周廣告的影響，分析每個商店的收入。 在本文中，您會建立兩個名為 **RetailSales** 和 **StoreDemographics** 的視圖，以及兩者之間的查詢。 您可以從這個 [GitHub](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) 存放庫取得範例產品資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請務必先建立下列資源：
 
@@ -31,21 +32,21 @@ ms.locfileid: "92480032"
 
 * 將產品資料載入至 Azure Cosmos 容器，如此 [批次資料](https://github.com/Azure-Samples/Synapse/blob/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/spark-notebooks/pyspark/1CosmoDBSynapseSparkBatchIngestion.ipynb) 內嵌筆記本中所述。
 
-* 建立名為**SynapseLinkBI**[的 Synapse 工作區](../synapse-analytics/quickstart-create-workspace.md)。
+* 建立名為 **SynapseLinkBI**[的 Synapse 工作區](../synapse-analytics/quickstart-create-workspace.md)。
 
 * 將[Azure Cosmos 資料庫連線至 Synapse 工作區](../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)。
 
 ## <a name="create-a-database-and-views"></a>建立資料庫和 views
 
-在 [Synapse] 工作區中，移至 [ **開發** ] 索引標籤，選取 **+** 圖示，然後選取 [ **SQL 腳本**]。
+在 [Synapse] 工作區中，移至 [ **開發** ] 索引標籤，選取 **+** 圖示，然後選取 [ **SQL 腳本** ]。
 
 :::image type="content" source="./media/synapse-link-power-bi/add-sql-script.png" alt-text="將 SQL 腳本新增至 Synapse Analytics 工作區":::
 
-每個工作區都有無伺服器 SQL 端點。 建立 SQL 腳本之後，請從頂端的工具列中，依需求連接至 **SQL**。
+每個工作區都有無伺服器 SQL 端點。 建立 SQL 腳本之後，請從頂端的工具列中，依需求連接至 **SQL** 。
 
 :::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="將 SQL 腳本新增至 Synapse Analytics 工作區":::
 
-建立名為 **RetailCosmosDB**的新資料庫，並在已啟用 Synapse 連結的容器上建立 SQL view。 下列命令顯示如何建立資料庫：
+建立名為 **RetailCosmosDB** 的新資料庫，並在已啟用 Synapse 連結的容器上建立 SQL view。 下列命令顯示如何建立資料庫：
 
 ```sql
 -- Create database
@@ -109,38 +110,38 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 
 接著，開啟 Power BI desktop，然後使用下列步驟連接到無伺服器 SQL 端點：
 
-1. 開啟 Power BI Desktop 應用程式。 選取 [ **取得資料** ]，然後選取 [ **其他**]。
+1. 開啟 Power BI Desktop 應用程式。 選取 [ **取得資料** ]，然後選取 [ **其他** ]。
 
-1. 從連線選項清單中選擇 **Azure Synapse Analytics (SQL DW) ** 。
+1. 從連線選項清單中選擇 **Azure Synapse Analytics (SQL DW)** 。
 
-1. 輸入資料庫所在 SQL 端點的名稱。 在 `SynapseLinkBI-ondemand.sql.azuresynapse.net` [ **伺服器** ] 欄位內輸入。 在此範例中，  **SynapseLinkBI** 是工作區的名稱。 如果您的工作區指定了不同的名稱，請取代此名稱。 選取 [ **直接查詢** 資料連線模式]，然後選取 **[確定]**。
+1. 輸入資料庫所在 SQL 端點的名稱。 在 `SynapseLinkBI-ondemand.sql.azuresynapse.net` [ **伺服器** ] 欄位內輸入。 在此範例中，  **SynapseLinkBI** 是工作區的名稱。 如果您的工作區指定了不同的名稱，請取代此名稱。 選取 [ **直接查詢** 資料連線模式]，然後選取 **[確定]** 。
 
 1. 選取慣用的驗證方法，例如 Azure AD。
 
-1. 選取 **RetailCosmosDB** 資料庫和 **RetailSales**， **StoreDemographics** views。
+1. 選取 **RetailCosmosDB** 資料庫和 **RetailSales** ， **StoreDemographics** views。
 
 1. 選取 [ **載入** ]，將兩個觀點載入至 [直接查詢] 模式。
 
 1. 選取 [ **模型** ] 可透過 **storeId** 資料行建立兩個視圖之間的關聯性。
 
-1. 將 [ **StoreId** ] 資料行從 [ **RetailSales** ] 視圖拖曳至 [ **StoreDemographics**視圖] 中的 [ **StoreId** ] 資料行。
+1. 將 [ **StoreId** ] 資料行從 [ **RetailSales** ] 視圖拖曳至 [ **StoreDemographics** 視圖] 中的 [ **StoreId** ] 資料行。
 
 1. 選取 [多對一] ( *： 1) 關聯性，因為 **RetailSales** view 中有多個資料列具有相同的商店識別碼。 **StoreDemographics** 只有一個商店識別碼資料列 (它是維度資料表) 。
 
 現在流覽至 [ **報表** ] 視窗並建立報表，以根據分散的收益和 LargeHH 指數標記法，將家庭大小的相對重要性與每位商店的平均收益進行比較：
 
-1. 選取 [ **散佈圖**]。
+1. 選取 [ **散佈圖** ]。
 
 1. 將 **LargeHH** 從 **StoreDemographics** 視圖拖放至 X 軸。
 
 1. 將 **收益** 從 **RetailSales** View 拖放到 Y 軸。 選取 [ **平均** ]，以取得每個商店和每週的每一產品平均銷售額。
 
-1. 從**RetailSales** view 將 [ **productCode** ] 拖放到 [圖例] 中，以選取特定的產品線。
+1. 從 **RetailSales** view 將 [ **productCode** ] 拖放到 [圖例] 中，以選取特定的產品線。
 選擇這些選項之後，您應該會看到類似下列螢幕擷取畫面的圖表：
 
 :::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="將 SQL 腳本新增至 Synapse Analytics 工作區":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [使用 T-sql 利用 Azure Synapse Link 查詢 Azure Cosmos DB 資料](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)
 

@@ -6,16 +6,17 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 author: markjbrown
 ms.author: mjbrown
-ms.openlocfilehash: a50de7154bd768f5cc4c25062ec3ce05c0f37328
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d6868859247fc430ee96581ae85fb7077af04999
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279859"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098020"
 ---
 # <a name="create-a-synthetic-partition-key"></a>建立綜合分割區索引鍵
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-最佳做法是讓分割區索引鍵具有許多相異值，例如數百個或數千個。 目標是在與這些分割區索引鍵值相關聯的項目上平均散發您的資料和工作負載。 如果您的資料中沒有這類屬性，您可以建立 *綜合分割*區索引鍵。 本檔說明為您的 Cosmos 容器產生綜合分割區索引鍵的幾個基本技巧。
+最佳做法是讓分割區索引鍵具有許多相異值，例如數百個或數千個。 目標是在與這些分割區索引鍵值相關聯的項目上平均散發您的資料和工作負載。 如果您的資料中沒有這類屬性，您可以建立 *綜合分割* 區索引鍵。 本檔說明為您的 Cosmos 容器產生綜合分割區索引鍵的幾個基本技巧。
 
 ## <a name="concatenate-multiple-properties-of-an-item"></a>串連項目的多個屬性
 

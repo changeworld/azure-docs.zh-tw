@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 2ae06a8ed59f7987f58aba8b8017833315e6529f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 98cca99ab0e088bbae047fa64ec52429e531dfed
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428850"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096065"
 ---
 # <a name="tutorial-configure-alertmedia-for-automatic-user-provisioning"></a>教學課程：設定 AlertMedia 來自動布建使用者
 
@@ -51,8 +51,8 @@ ms.locfileid: "92428850"
 
 ## <a name="step-2-configure-alertmedia-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 AlertMedia 以支援 Azure AD 的布建
 
-1. 登入您的 AlertMedia 帳戶。 流覽至 **公司 > API**。
-2. 按一下 [ **加入新**的]。
+1. 登入您的 AlertMedia 帳戶。 流覽至 **公司 > API** 。
+2. 按一下 [ **加入新** 的]。
 3. 選擇為您的 **API 整合** 提供名稱，以協助您輕鬆辨識金鑰的使用位置。
 4. 選取您要與整合相關聯的系統管理員。
 5. 按一下 [ **產生金鑰** ] 和 [ **儲存** ] 按鈕。
@@ -67,7 +67,7 @@ ms.locfileid: "92428850"
 
 Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的範圍篩選條件。 
 
-* 將使用者和群組指派給 AlertMedia 時，您必須選取 **預設存取**以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) \(部分機器翻譯\) 以新增其他角色。 
+* 將使用者和群組指派給 AlertMedia 時，您必須選取 **預設存取** 以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) \(部分機器翻譯\) 以新增其他角色。 
 
 * 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可將一或兩個使用者或群組指派給應用程式來控制這點。 當範圍設為所有使用者和群組時，您可指定[以屬性為基礎的範圍篩選條件](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
@@ -95,9 +95,9 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
     ![自動布建索引標籤](common/provisioning-automatic.png)
 
 5. 在 [系統 **管理員認證** ] 區段下，輸入您的 AlertMedia **租使用者 URL** 作為下列其中一項。
-      *  (沒有自訂網域) https://dashboard.alertmedia.com/api/scim/v3
+      *  (沒有自訂網域) https://docs.gitlab.com/ee/api/scim.html
 
-      *  (自訂網域) https://subdomain.alertmedia.com/api/scim/v3
+      *  (自訂網域) https://developer.github.com/v3/scim/
 
       輸入稍早在步驟2中取出的 **秘密權杖** 。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連線至 AlertMedia。 如果連接失敗，請確定您的 AlertMedia 帳戶具有系統管理員許可權，然後再試一次。
 
@@ -109,7 +109,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 7. 選取 [儲存]。
 
-8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 AlertMedia**]。
+8. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 使用者至 AlertMedia** ]。
 
 9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 AlertMedia 的使用者屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 AlertMedia 中的使用者帳戶以進行更新作業。 如果您選擇變更相符的 [目標屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，您將必須確定 AlertMedia API 支援根據該屬性篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
 
@@ -143,7 +143,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |urn： ietf： params： scim：架構： extension： alertmedia：2.0： CustomAttribute： User： customer_user_id|String|
    |urn： ietf： params： scim：架構： extension： alertmedia：2.0： CustomAttribute： User： user_type|String|
 
-10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 AlertMedia**]。
+10. **在 [對應** ] 區段下，選取 [ **同步處理 Azure Active Directory 群組至 AlertMedia** ]。
 
 11. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 AlertMedia 的群組屬性。 選取為 [比對 **] 屬性的屬性會** 用來比對 AlertMedia 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
@@ -154,11 +154,11 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-13. 若要啟用 AlertMedia Azure AD 的布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
+13. 若要啟用 AlertMedia Azure AD 的布建服務，請在 [ **設定** ] 區段中，將 [布建 **狀態** ] 變更為 [ **開啟** ]。
 
     ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-14. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建到 AlertMediaAlertMedia 的使用者和/或群組。
+14. 在 [ **設定** ] 區段的 [ **範圍** ] 中選擇所需的值，以定義您想要布建到 AlertMediaAlertMedia 的使用者和/或群組。
 
     ![佈建範圍](common/provisioning-scope.png)
 

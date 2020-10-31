@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: c2228c99dba2dd99c0afa44457642235e08ac011
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 02fd0a4c7d931f439ab85af8d90de323105e21f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480916"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096694"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>將數百 TB 的資料遷移至 Azure Cosmos DB 
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB 可以儲存 TB 級的資料。 您可以執行大規模資料移轉來將生產工作負載移動到 Azure Cosmos DB。 本文說明將大規模資料移至 Azure Cosmos DB 所涉及的挑戰，並介紹有助於因應這些挑戰以及將資料遷移至 Azure Cosmos DB 的工具。 在此案例研究中，客戶使用 Cosmos DB SQL API。  
 
@@ -28,11 +29,11 @@ Azure Cosmos DB 的遷移策略目前會根據 API 選擇和資料大小而有�
 
 用來將資料移轉至 Azure Cosmos DB 的現有工具有一些限制，在大型規模中特別明顯：
 
- * **有限的 scale out 功能**：為了盡可能快速地將數 tb 的資料移轉至 Azure Cosmos DB，並有效取用整個布建的輸送量，遷移用戶端應該能夠無限期地相應放大。  
+ * **有限的 scale out 功能** ：為了盡可能快速地將數 tb 的資料移轉至 Azure Cosmos DB，並有效取用整個布建的輸送量，遷移用戶端應該能夠無限期地相應放大。  
 
-* **缺少進度追蹤和檢查**點：請務必追蹤遷移進度，並且在遷移大型資料集時有檢查點。 否則，在遷移期間發生的任何錯誤都會停止遷移，而您必須從頭開始處理。 當99% 的時間已完成時，重新開機整個遷移程式並不具生產力。  
+* **缺少進度追蹤和檢查** 點：請務必追蹤遷移進度，並且在遷移大型資料集時有檢查點。 否則，在遷移期間發生的任何錯誤都會停止遷移，而您必須從頭開始處理。 當99% 的時間已完成時，重新開機整個遷移程式並不具生產力。  
 
-* 缺少寄不出**的信件佇列**：在大型資料集中，某些情況下可能會有來源資料的部分問題。 此外，用戶端或網路可能會有暫時性的問題。 這兩種情況都不應該讓整個遷移失敗。 雖然大部分的遷移工具都具有可抵禦間歇性問題的強大重試功能，但並不一定足夠。 例如，如果源資料檔案的小於0.01% 大小超過 2 MB，則會導致檔寫入在 Azure Cosmos DB 失敗。 在理想的情況下，遷移工具會將這些「失敗」的檔保存到另一個無效信件佇列，以在遷移後進行處理。 
+* 缺少寄不出 **的信件佇列** ：在大型資料集中，某些情況下可能會有來源資料的部分問題。 此外，用戶端或網路可能會有暫時性的問題。 這兩種情況都不應該讓整個遷移失敗。 雖然大部分的遷移工具都具有可抵禦間歇性問題的強大重試功能，但並不一定足夠。 例如，如果源資料檔案的小於0.01% 大小超過 2 MB，則會導致檔寫入在 Azure Cosmos DB 失敗。 在理想的情況下，遷移工具會將這些「失敗」的檔保存到另一個無效信件佇列，以在遷移後進行處理。 
 
 這些限制中有許多是針對 Azure Data factory、Azure 資料移轉服務等工具進行修正。 
 
@@ -148,7 +149,7 @@ Azure Cosmos DB 的遷移策略目前會根據 API 選擇和資料大小而有�
 :::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="遷移工具設定":::
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 試用使用 [.net](bulk-executor-dot-net.md) 和 [JAVA](bulk-executor-java.md)大量執行程式程式庫的範例應用程式，以深入瞭解。 
 * 大量執行程式程式庫已整合到 Cosmos DB Spark 連接器中，若要深入瞭解，請參閱 [Azure Cosmos DB Spark 連接器](spark-connector.md) 文章。  

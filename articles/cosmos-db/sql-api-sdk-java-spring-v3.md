@@ -9,14 +9,16 @@ ms.topic: reference
 ms.date: 08/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 1695fb04872e505842318d21e856a9a01b1b1f3a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 64054a2bb5c1f7e17eef87c3babb28137b6c912a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92477363"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097119"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>適用于 Core (SQL) API 的春季資料 Azure Cosmos DB v3：版本資訊和資源
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
 > * [.NET SDK v2](sql-api-sdk-dotnet.md)
@@ -57,7 +59,7 @@ ms.locfileid: "92477363"
 
 ## <a name="start-here"></a>從這裡開始
 
-# <a name="explore"></a>[探討](#tab/explore)
+# <a name="explore"></a>[探索](#tab/explore)
 
 <img src="media/sql-api-sdk-java-spring-v3/up-arrow.png" alt="explore the tabs above" width="80"/>
 
@@ -100,9 +102,9 @@ cosmos.queryMetricsEnabled=true
 
 ## <a name="resources"></a>資源
 
-* **參與 SDK**： [GitHub 上的春季資料 Azure Cosmos DB](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-cosmos)存放庫
+* **參與 SDK** ： [GitHub 上的春季資料 Azure Cosmos DB](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-cosmos)存放庫
 
-* **教學**課程： [GitHub 上的春季資料 Azure Cosmos DB 教學](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started)課程 
+* **教學** 課程： [GitHub 上的春季資料 Azure Cosmos DB 教學](https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started)課程 
 
 [!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-spring-data-cosmos/CHANGELOG.md)]
 

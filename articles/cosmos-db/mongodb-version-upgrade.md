@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-mongo
 ms.topic: guide
 ms.date: 09/22/2020
 ms.author: jasonh
-ms.openlocfilehash: c6369be39d0a964f07c64083e3269bb1c0c49c7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb12fc909b5165cbc759bbb7c531864cde16bb88
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91409658"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096303"
 ---
 # <a name="upgrade-the-mongodb-wire-protocol-version-of-your-azure-cosmos-dbs-api-for-mongodb-account"></a>升級 Azure Cosmos DB 適用于 MongoDB 的 API 帳戶的 MongoDB 有線通訊協定版本
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 本文說明如何升級 Azure Cosmos DB 適用于 MongoDB 的 API 帳戶的有線通訊協定版本。 升級網路通訊協定版本之後，您可以使用 Azure Cosmos DB 的 MongoDB API 中的最新功能。 升級程式不會中斷您帳戶的可用性，且不會取用 RU/秒，也不會在任何時間點減少資料庫的容量。 此進程不會影響任何現有的資料或索引。
 
@@ -37,7 +38,7 @@ ms.locfileid: "91409658"
 
 ### <a name="changes-from-version-32"></a>版本3.2 的變更
 
-- 已**移除 RequestRateIsLarge 錯誤**。 來自用戶端應用程式的要求不會再傳回16500錯誤。 相反地，要求將會繼續執行，直到完成或完成時間。
+- 已 **移除 RequestRateIsLarge 錯誤** 。 來自用戶端應用程式的要求不會再傳回16500錯誤。 相反地，要求將會繼續執行，直到完成或完成時間。
 - 每個要求的超時時間設定為60秒。
 - 在新的網路通訊協定版本上建立的 MongoDB 集合，預設只會 `_id` 編制屬性的索引。
 
@@ -49,7 +50,7 @@ ms.locfileid: "91409658"
 <your_database_account_name>.mongo.cosmos.azure.com
 ```
 
-您必須將應用程式和驅動程式中的現有端點取代為此資料庫帳戶。 **只有使用新端點的連線才能存取 MongoDB 3.6 版中的功能**。 先前的端點應該有尾碼 `.documents.azure.com` 。
+您必須將應用程式和驅動程式中的現有端點取代為此資料庫帳戶。 **只有使用新端點的連線才能存取 MongoDB 3.6 版中的功能** 。 先前的端點應該有尾碼 `.documents.azure.com` 。
 
 >[!Note]
 > 如果您的帳戶是在主權、政府或受限制的 Azure 雲端中建立，此端點可能會有些微差異。
@@ -80,11 +81,11 @@ ms.locfileid: "91409658"
 
     :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="使用 MongoDB 帳戶的 Azure 入口網站總覽" border="false":::
 
-7. **若要開始使用升級後的資料庫帳戶版本**，請返回分頁 `Overview` ，並複製新的連接字串，以在您的應用程式中使用。 應用程式會在連接到新端點時，立即開始使用升級版本。 現有的連線不會中斷，而且可以在您方便的情況中更新。 為了確保一致的體驗，您的所有應用程式都必須使用新的端點。
+7. **若要開始使用升級後的資料庫帳戶版本** ，請返回分頁 `Overview` ，並複製新的連接字串，以在您的應用程式中使用。 應用程式會在連接到新端點時，立即開始使用升級版本。 現有的連線不會中斷，而且可以在您方便的情況中更新。 為了確保一致的體驗，您的所有應用程式都必須使用新的端點。
 
     :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="使用 MongoDB 帳戶的 Azure 入口網站總覽" border="false":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 瞭解 [MongoDB 版本 3.6](mongodb-feature-support-36.md)支援和不支援的功能。
 - 如需詳細資訊，請參閱 [Mongo 3.6 版功能](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)

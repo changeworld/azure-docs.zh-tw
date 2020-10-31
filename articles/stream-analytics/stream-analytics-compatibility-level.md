@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: a82f3c347c75d658e3e7ec52d51107f5a240ee5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b49cdb423e8fd2e70175d4ac71f6dcd07b459f9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88056511"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097731"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 串流分析作業的相容性層級
 
@@ -33,13 +33,13 @@ Azure 串流分析目前支援三種相容性層級：
 
 ## <a name="set-the-compatibility-level"></a>設定相容性層級
 
-您可以在 Azure 入口網站中設定串流分析作業的相容性層級，或使用 [建立作業 REST API 呼叫](/rest/api/streamanalytics/stream-analytics-job)來設定相容性層級。
+您可以在 Azure 入口網站中設定串流分析作業的相容性層級，或使用 [建立作業 REST API 呼叫](/azure/stream-analytics/stream-analytics-quick-create-portal)來設定相容性層級。
 
 若要更新 Azure 入口網站中作業的相容性層級：
 
 1. 使用 [Azure 入口網站](https://portal.azure.com) 來尋找您的串流分析作業。
-2. 更新相容性層級之前，請先**停止**作業。 如果您的作業處於執行中狀態，則無法更新相容性層級。
-3. 在 [ **設定** ] 標題下，選取 [ **相容性層級**]。
+2. 更新相容性層級之前，請先 **停止** 作業。 如果您的作業處於執行中狀態，則無法更新相容性層級。
+3. 在 [ **設定** ] 標題下，選取 [ **相容性層級** ]。
 4. 選擇您想要的相容性層級值。
 5. 選取頁面底部的 [ **儲存** ]。
 
@@ -53,7 +53,7 @@ Azure 串流分析目前支援三種相容性層級：
 
 ###  <a name="amqp-messaging-protocol"></a>AMQP 訊息通訊協定
 
-**1.2 層級**： Azure 串流分析使用 [Advanced Message 佇列通訊協定 (AMQP) ](../service-bus-messaging/service-bus-amqp-overview.md) 訊息通訊協定寫入至服務匯流排佇列和主題。 透過開放式標準通訊協定，AMQP 可讓您打造一個跨平台的混合式應用程式。
+**1.2 層級** ： Azure 串流分析使用 [Advanced Message 佇列通訊協定 (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) 訊息通訊協定寫入至服務匯流排佇列和主題。 透過開放式標準通訊協定，AMQP 可讓您打造一個跨平台的混合式應用程式。
 
 ### <a name="geospatial-functions"></a>GeoSpatial 函式
 
@@ -75,11 +75,11 @@ Azure 串流分析支援地理空間參考資料索引。 您可以為包含地�
 
 ### <a name="native-bulk-api-integration-with-cosmosdb-output"></a>原生大量 API 與 CosmosDB 輸出整合
 
-**先前的層級：** Upsert 行為為 *insert 或 merge*。
+**先前的層級：** Upsert 行為為 *insert 或 merge* 。
 
 **1.2 層級：** 原生大量 API 與 CosmosDB 輸出整合可將輸送量最大化，並有效率地處理節流要求。 如需詳細資訊，請參閱 [Azure Cosmos DB 頁面的 Azure 串流分析輸出](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12)。
 
-Upsert 行為為 *insert 或 replace*。
+Upsert 行為為 *insert 或 replace* 。
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>寫入 SQL 輸出時的 DateTimeOffset
 
@@ -125,7 +125,7 @@ Upsert 行為為 *insert 或 replace*。
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 
-**1.1 層級：** 訊息內容直接包含沒有其他標記的資料流程。 例如： `{ "SensorId":"1", "Temperature":64}`
+**1.1 層級：** 訊息內容直接包含沒有其他標記的資料流程。 例如：`{ "SensorId":"1", "Temperature":64}`
 
 ### <a name="persisting-case-sensitivity-for-field-names"></a>欄位名稱保持大小寫區分
 
@@ -148,7 +148,7 @@ Upsert 行為為 *insert 或 replace*。
 
 **1.1 層級：** 不會自動將具有日期/時間/區域資訊的字串值轉換成 DATETIME 類型。 因此，會保留時區資訊和原始格式。 但是，如果在查詢中使用 NVARCHAR (MAX) 欄位做為 DATETIME 運算式的一部分 (DATEADD 函數，例如) ，它就會轉換成 DATETIME 類型來執行計算，並失去其原始形式。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [對 Azure 串流分析輸入進行疑難排解](stream-analytics-troubleshoot-input.md)
 * [串流分析資源健康狀態](stream-analytics-resource-health.md)

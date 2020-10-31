@@ -7,14 +7,15 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: a4f51b641ca38b2b6f74bb77928537270d12f1e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 860748c7114017dcd1120551d9539e0d098fa1fa
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88870845"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097834"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-unauthorized-exceptions"></a>診斷和疑難排解 Azure Cosmos DB 未授權的例外狀況
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 HTTP 401：在 HTTP 要求中找到的 MAC 簽名碼與計算的簽章不同。
 如果您收到401錯誤訊息「在 HTTP 要求中找到的 MAC 簽章與計算的簽章不同」，則可能是下列案例所造成。
@@ -48,6 +49,6 @@ HTTP 401：在 HTTP 要求中找到的 MAC 簽名碼與計算的簽章不同。
 #### <a name="solution"></a>解決方案：
 建立容器時有競爭情形。 應用程式實例正在嘗試在容器建立完成之前存取容器。 此競爭情形最常見的案例是，如果應用程式正在執行，且容器已刪除，並以相同的名稱重新建立。 SDK 會嘗試使用新的容器，但建立的容器仍在進行中，因此沒有金鑰。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 當您使用 Azure Cosmos DB .NET SDK 時[，診斷和疑難排解](troubleshoot-dot-net-sdk.md)問題。
 * 瞭解 [.net v3](performance-tips-dotnet-sdk-v3-sql.md) 和 [.net v2](performance-tips.md)的效能指導方針。

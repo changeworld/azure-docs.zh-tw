@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 0b2741a3d2b013ba7bd97038eb4ba4512f36af11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6177426ce62f3369092403c52344fa764bcf2e6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86261826"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095844"
 ---
 # <a name="datetimeadd-azure-cosmos-db"></a>DateTimeAdd (Azure Cosmos DB) 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 傳回將指定的數值 (為帶正負號的整數) 至指定的日期時間字串所產生的日期時間字串值  
   
@@ -32,7 +33,7 @@ DateTimeAdd (<DateTimePart> , <numeric_expr> ,<DateTime>)
 | DateTimePart | 縮寫        |
 | ------------ | -------------------- |
 | Year         | 「year」、「yyyy」、「yy」 |
-| Month        | "month"、"mm"、"m"   |
+| 月        | "month"、"mm"、"m"   |
 | 天          | "day"、"dd"、"d"     |
 | 小時         | "hour"、"hh"         |
 | Minute       | "minute"、"mi"、"n"  |
@@ -47,7 +48,7 @@ DateTimeAdd (<DateTimePart> , <numeric_expr> ,<DateTime>)
 *DateTime*  
    UTC 日期和時間 ISO 8601 字串值，格式為 `YYYY-MM-DDThh:mm:ss.fffffffZ` ：
   
-  |[格式]|描述|
+  |格式|描述|
   |-|-|
   |YYYY|四位數年份|
   |MM|兩位數的月份 (01 = 一月，依此類推 ) |
@@ -65,7 +66,7 @@ DateTimeAdd (<DateTimePart> , <numeric_expr> ,<DateTime>)
 
 以下列格式傳回 UTC 日期和時間 ISO 8601 字串值 `YYYY-MM-DDThh:mm:ss.fffffffZ` ：
   
-  |[格式]|描述|
+  |格式|描述|
   |-|-|
   |YYYY|四位數年份|
   |MM|兩位數的月份 (01 = 一月，依此類推 ) |
@@ -115,7 +116,7 @@ SELECT DateTimeAdd("hh", -2, "2020-07-09T23:20:13.4575530Z") AS TwoHoursEarlier
 ]
 ```  
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - [日期和時間函數 Azure Cosmos DB](sql-query-date-time-functions.md)
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)

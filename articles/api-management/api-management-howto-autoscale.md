@@ -11,23 +11,23 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 9ddee5991efd5bde3bd139257ad154f02f5d0371
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 41a97c639d9148f2bff3e4f530363ea05a65a7b8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071297"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095946"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>自動調整 Azure API 管理執行個體  
 
-Azure API 管理服務執行個體可以根據一組規則進行自動調整。 此行為可透過 Azure 監視器來啟用及設定，而且只能在 Azure API 管理服務的**標準**與**進階**層中加以支援。
+Azure API 管理服務執行個體可以根據一組規則進行自動調整。 此行為可透過 Azure 監視器來啟用及設定，而且只能在 Azure API 管理服務的 **標準** 與 **進階** 層中加以支援。
 
 本文將逐步解說設定自動調整的程序，並建議自動調整規則的最佳設定。
 
 > [!NOTE]
-> **使用量**層中的 API 管理服務會根據流量自動調整，而不需要任何額外的設定。
+> **使用量** 層中的 API 管理服務會根據流量自動調整，而不需要任何額外的設定。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要依照本文中的步驟進行，您必須：
 
@@ -42,31 +42,31 @@ Azure API 管理服務執行個體可以根據一組規則進行自動調整。 
 
 設定自動調整行為之前，需要先考量調整決策的某些限制與後果。
 
-+ 自動調整僅能針對 Azure API 管理服務的**標準**與**進階**層加以啟用。
++ 自動調整僅能針對 Azure API 管理服務的 **標準** 與 **進階** 層加以啟用。
 + 定價層也會指定服務執行個體的單位數目上限。
 + 調整程序至少需要 20 分鐘的時間。
 + 如果服務已由另一個作業鎖定，調整要求將會失敗並自動重試。
-+ 如果服務具有多區域部署，則只能調整**主要位置**的單位。 無法調整其他位置的單位。
++ 如果服務具有多區域部署，則只能調整 **主要位置** 的單位。 無法調整其他位置的單位。
 
 ## <a name="enable-and-configure-autoscale-for-azure-api-management-service"></a>啟用及設定 Azure API 管理服務的自動調整
 
 請依照下列步驟來設定 Azure API 管理服務的自動調整：
 
-1. 在 Azure 入口網站中，瀏覽至**監視器**執行個體。
+1. 在 Azure 入口網站中，瀏覽至 **監視器** 執行個體。
 
     ![Azure 監視器](media/api-management-howto-autoscale/01.png)
 
-2. 從左側功能表中選取 [自動調整]****。
+2. 從左側功能表中選取 [自動調整]  。
 
     ![Azure 監視器的自動調整資源](media/api-management-howto-autoscale/02.png)
 
 3. 在下拉式功能表中，根據篩選條件找出您的 Azure API 管理服務。
 4. 選取所需的 Azure API 管理服務執行個體。
-5. 在新開啟的區段中，按一下 [啟用自動調整規模]**** 按鈕。
+5. 在新開啟的區段中，按一下 [啟用自動調整規模]  按鈕。
 
     ![Azure 監視器的啟用自動調整](media/api-management-howto-autoscale/03.png)
 
-6. 在 [規則]**** 區段中，按一下 [+ 新增規則]****。
+6. 在 [規則]  區段中，按一下 [+ 新增規則]  。
 
     ![Azure 監視器中自動調整的新增規則](media/api-management-howto-autoscale/04.png)
 
@@ -93,7 +93,7 @@ Azure API 管理服務執行個體可以根據一組規則進行自動調整。 
 
     ![Azure 監視器的相應放大規則](media/api-management-howto-autoscale/05.png)
 
-9. 再按一下 [+ 新增規則]****。
+9. 再按一下 [+ 新增規則]  。
 
     這次，需定義相應縮小規則。 它將可在 API 的使用量減少時，確保資源不會浪費。
 
@@ -120,16 +120,16 @@ Azure API 管理服務執行個體可以根據一組規則進行自動調整。 
 
     ![Azure 監視器的相應縮小規則](media/api-management-howto-autoscale/06.png)
 
-12. 設定 Azure API 管理單位的**最大**數目。
+12. 設定 Azure API 管理單位的 **最大** 數目。
 
     > [!NOTE]
     > Azure API 管理具有執行個體可相應放大的單位限制。 此限制取決於服務層級。
 
-    ![Azure 監視器的相應縮小規則](media/api-management-howto-autoscale/07.png)
+    ![強調設定 Azure API 管理單位最大數目的螢幕擷取畫面。](media/api-management-howto-autoscale/07.png)
 
 13. 按一下 [儲存]。 您已設定自動調整。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [如何將 Azure API 管理服務執行個體部署到多個 Azure 區域](api-management-howto-deploy-multi-region.md)
 - [優化並節省您的雲端費用](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

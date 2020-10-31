@@ -10,14 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: a11bf408f06b5c4e621f0af1f71f23c335dc2069
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5df94f95ea486f069ece264b8d09de1d9fc8607
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86512634"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095011"
 ---
 # <a name="default-insights-tag"></a>預設深入解析標記
+
+> [!WARNING]
+> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
+> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
+> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
 預設深入解析標記是 `displayName` 欄位設定為空字串的標記。 下列範例顯示預設深入解析 (動作) 的可能清單。 回應包含的動作清單取決於影像。 此外，針對每個動作，屬性清單可能會因為影像而有所不同，因此，請在嘗試使用屬性之前，先確認該屬性是否存在。
 
@@ -421,7 +426,7 @@ DocumentLevelSuggestions 深入解析會根據影像的內容，提供建議的�
       }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 查看 [bing 深入解析使用方式的範例](bing-insights-usage.md) ，以瞭解 bing 如何顯示視覺效果見解。
 

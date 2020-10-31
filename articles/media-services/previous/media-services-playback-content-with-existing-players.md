@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: bd09b734f1ac5ac3c98b6c0c717a48de19b0106f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2036fa056932f9bbd2f14b4005fa54321b1a382
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261065"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095708"
 ---
 # <a name="playing-your-content-with-existing-players"></a>使用現有播放器來播放您的內容
 
@@ -28,7 +28,7 @@ ms.locfileid: "89261065"
 Azure 媒體服務支援許多熱門的串流格式，例如 Smooth Streaming、HTTP 即時資料流和 MPEG-Dash。 本主題會指引您可用來測試串流的現有播放程式。
 
 ### <a name="the-azure-portal-media-services-content-player"></a>Azure 入口網站媒體服務內容播放程式
-**Azure**入口網站提供內容播放程式，可讓您用來測試影片。
+**Azure** 入口網站提供內容播放程式，可讓您用來測試影片。
 
 按一下想用的視訊 (請確定它 [已發行](media-services-portal-publish.md))，按一下入口網站底部的 [ **播放** ] 按鈕。
 
@@ -51,11 +51,11 @@ Azure 媒體服務支援許多熱門的串流格式，例如 Smooth Streaming、
 
 #### <a name="playready-with-token"></a>PlayReady 與權杖
 
-[https://sltoken.azurewebsites.net](https://sltoken.azurewebsites.net)
+[http://reference.dashif.org/dash.js/nightly/samples/dash-if-reference-player/index.html](http://reference.dashif.org/dash.js/nightly/samples/dash-if-reference-player/index.html)
 
 ### <a name="dash-players"></a>DASH 播放程式
 
-[https://dashplayer.azurewebsites.net](https://dashplayer.azurewebsites.net)
+"https://dashplayer.azurewebsites.net"
 
 [https://dashif.org](https://dashif.org)
 

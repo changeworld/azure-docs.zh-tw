@@ -10,18 +10,23 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: ca3821b6088e45730334d1b0971e270b1d86dfce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7037804f1a0984cee2d1756adf80bfe2eec3918
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68881911"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095522"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>Bing 影像搜尋 API 支援的語言和區域
 
+> [!WARNING]
+> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
+> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
+> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
+
 Bing 影像搜尋 API 支援三十多個國家/地區，許多國家/地區具有一個以上的語言。 使用查詢指定國家/地區，主要是為了根據該國家/地區的興趣，縮小搜尋結果範圍。 此外，結果可能包含 Bing 的連結，而且這些連結可能會根據指定的國家/地區或語言，將 Bing 的使用者體驗當地語系化。
 
-若要指定國家/地區和語言，請將 `mkt` (market) 查詢參數設定為下面「市場」**** 表格中的代碼。 市場可指定國家/地區和語言。 如果使用者較希望以不同語言查看顯示文字，請將 `setLang` 查詢參數設為合適的語言代碼。
+若要指定國家/地區和語言，請將 `mkt` (market) 查詢參數設定為下面「市場」  表格中的代碼。 市場可指定國家/地區和語言。 如果使用者較希望以不同語言查看顯示文字，請將 `setLang` 查詢參數設為合適的語言代碼。
 
 或者，您可以使用 `cc` 查詢參數指定國家/地區。 如果您指定國家/地區，您也必須使用 `Accept-Language` HTTP 標頭指定一或多個語言代碼。 支援的語言視國家/地區而異；「市場」表格中提供針對每個國家/地區支援的語言。
 
@@ -34,7 +39,7 @@ Bing 影像搜尋 API 支援三十多個國家/地區，許多國家/地區具�
 
 ## <a name="countriesregions"></a>國家/地區
 
-|國家/地區|程式碼|
+|國家/區域|程式碼|
 |-------|----|
 |阿根廷|AR|
 |澳大利亞|AU|
@@ -76,7 +81,7 @@ Bing 影像搜尋 API 支援三十多個國家/地區，許多國家/地區具�
 
 ## <a name="markets"></a>市場
 
-|國家/地區|Language|市場代碼|
+|國家/區域|語言|市場代碼|
 |-------|--------|-----------|
 |阿根廷|西班牙文|es-AR|
 |澳洲|英文|en-AU|
@@ -118,5 +123,5 @@ Bing 影像搜尋 API 支援三十多個國家/地區，許多國家/地區具�
 |美國|英文|zh-TW|
 |美國|西班牙文|es-US|
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 如需更多 Bing 新聞搜尋端點的相關資訊，請參閱[新聞影像搜尋 API v7 參考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)。

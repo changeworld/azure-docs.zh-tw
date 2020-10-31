@@ -11,21 +11,21 @@ author: jhirono
 ms.date: 10/05/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 1d215c9564d89e5bd410e68839807f5c2c752356
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b16c8873a1778b907b288486c204d74ee31683cb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91828423"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097952"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>如何搭配使用您的工作區與自訂 DNS 伺服器
 
-使用 Azure Machine Learning 搭配虛擬網路時，有 [數種方式可處理 DNS 名稱解析](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)。 根據預設，Azure 會自動為您的工作區和私人端點處理名稱解析。 不過， __使用您自己的自訂 DNS 伺服器時__，您必須手動建立工作區的 DNS 專案。
+使用 Azure Machine Learning 搭配虛擬網路時，有 [數種方式可處理 DNS 名稱解析](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)。 根據預設，Azure 會自動為您的工作區和私人端點處理名稱解析。 不過， __使用您自己的自訂 DNS 伺服器時__ ，您必須手動建立工作區的 DNS 專案。
 
 > [!IMPORTANT]
 > 本文僅說明如何尋找 (FQDN 的完整功能變數名稱) 以及這些專案的 IP 位址，而不會提供設定這些專案之 DNS 記錄的相關資訊。 如需有關如何新增記錄的詳細資訊，請參閱您的 DNS 軟體檔。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 使用 [您自己的 DNS 伺服器](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)的 Azure 虛擬網路。
 
@@ -46,7 +46,7 @@ ms.locfileid: "91828423"
 * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 * `<workspace-GUID>.workspace.<region>.aether.ms`
 * `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.ml`
-* 如果您建立計算實例，則也必須加入的專案 `<instance-name>.<region>.instances.azureml.ms` 。
+* 如果您建立計算實例，則也必須新增 `<instance-name>.<region>.instances.azureml.ms` 具有工作區私人端點私人 IP 的專案。 請注意，您只能從虛擬網路記憶體取計算實例。
 
 若要尋找 VNet 中 Fqdn 的內部 IP 位址，請使用下列其中一種方法：
 
@@ -68,8 +68,8 @@ $workspaceDns.CustomDnsConfigs | format-table
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/azure-portal)
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取您的 Azure Machine Learning __工作區__。
-1. 從 [ __設定__ ] 區段中，選取 [ __私人端點__連線]。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取您的 Azure Machine Learning __工作區__ 。
+1. 從 [ __設定__ ] 區段中，選取 [ __私人端點__ 連線]。
 1. 選取顯示的 [ __私人端點__ ] 資料行中的連結。
 1. 工作區私人端點的完整功能變數名稱 (FQDN) 和 IP 位址的清單位於頁面底部。
 
@@ -92,10 +92,10 @@ $workspaceDns.CustomDnsConfigs | format-table
 > * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 > * `<workspace-GUID>.workspace.<region>.aether.ms`
-> * 如果您有計算實例，請使用 `<instance-name>.<region>.instances.azureml.ms` ，其中 `<instance-name>` 是您的計算實例名稱。
+> * 如果您有計算實例，請使用 `<instance-name>.<region>.instances.azureml.ms` ，其中 `<instance-name>` 是您的計算實例名稱。 請使用工作區私人端點的私人 IP 位址。 請注意，您只能從虛擬網路記憶體取計算實例。
 >
 > 針對所有這些 IP 位址，請使用與 `*.api.azureml.ms` 上一個步驟所傳回專案相同的位址。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需搭配虛擬網路使用 Azure Machine Learning 的詳細資訊，請參閱 [虛擬網路總覽](how-to-network-security-overview.md)。

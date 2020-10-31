@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d50c273e50a7faf2d8c24982fbd39cecdff0bf7f
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 5ba765f03e7ac700fb4338e14358fc55e6423c47
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044372"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097034"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Azure 數位 Twins 中的查詢單位 
 
-Azure 數位 Twins**查詢單位 (QU) **是一種隨選計算單位，可用來執行使用[查詢 API](/rest/api/digital-twins/dataplane/query)的[Azure 數位 Twins 查詢](how-to-query-graph.md)。 
+Azure 數位 Twins **查詢單位 (QU)** 是一種隨選計算單位，可用來執行使用 [查詢 API](/rest/api/digital-twins/dataplane/query)的 [Azure 數位 Twins 查詢](how-to-query-graph.md)。 
 
 它會將執行 Azure 數位 Twins 所支援的查詢作業所需的系統資源（例如 CPU、IOPS 和記憶體）抽象化出來，讓您可以改為追蹤查詢單位的使用量。
 
@@ -70,4 +70,4 @@ await foreach (Page<string> page in asyncPageableResponseWithCharge.AsPages())
 * [*How to：查詢對應項圖形*](how-to-query-graph.md)
 * [查詢 API 參考檔](/rest/api/digital-twins/dataplane/query/querytwins)
 
-您可以在下列參考中找到 Azure 數位 Twins 查詢相關限制 [*：公開預覽中的服務限制*](reference-service-limits.md)。
+您可以在 [*參考：服務限制*](reference-service-limits.md)中找到與 Azure 數位 Twins 查詢相關的限制。

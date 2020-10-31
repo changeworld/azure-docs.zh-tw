@@ -8,14 +8,15 @@ ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: d43305040e7896a9d3a58929537f19c2bd1f526c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: b1c2377ba26b4ca64f5028fb1a51ca4e64f6a67c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319372"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097884"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>在 dns 多區域性環境中診斷 Azure Cosmos Sdk 的可用性並進行疑難排解
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文說明當您看到特定區域發生連線問題或發生區域容錯移轉時，最新版 Azure Cosmos Sdk 的行為。
 
@@ -34,7 +35,7 @@ ms.locfileid: "92319372"
 | 單一寫入區域 | 慣用區域 | 主要區域  |
 | 多個寫入區域 | 慣用區域 | 慣用區域  |
 
-如果您 **未設定慣用區域**，SDK 用戶端會預設為主要區域：
+如果您 **未設定慣用區域** ，SDK 用戶端會預設為主要區域：
 
 |帳戶類型 |讀取 |寫入 |
 |------------------------|--|--|
@@ -46,11 +47,11 @@ ms.locfileid: "92319372"
 
 在正常情況下，除非發生下列任何一種情況，否則 SDK 用戶端會連線到慣用的區域 (如果區域偏好設定) 或主要區域中 (如果沒有設定) 的喜好設定，則作業將會限制為該區域。
 
-在這些情況下，使用 Azure Cosmos SDK 的用戶端會公開記錄，並在作業 **診斷資訊**中包含重試資訊：
+在這些情況下，使用 Azure Cosmos SDK 的用戶端會公開記錄，並在作業 **診斷資訊** 中包含重試資訊：
 
 * .NET V2 SDK 回應中的 *RequestDiagnosticsString* 屬性。
 * .NET V3 SDK 中回應和例外狀況的 *診斷* 屬性。
-* *GetDiagnostics ( # B1*方法來回應 JAVA V4 SDK 中的回應和例外狀況。
+* *GetDiagnostics ( # B1* 方法來回應 JAVA V4 SDK 中的回應和例外狀況。
 
 依喜好設定順序決定下一個區域時，SDK 用戶端會使用帳戶區域清單，將慣用區域的優先順序設定為 (如果有任何) 。
 
@@ -86,7 +87,7 @@ Azure Cosmos SDK 用戶端每隔5分鐘會讀取帳戶設定，並重新整理�
 
 如果使用者已設定一個具有多個區域的慣用區域清單，且 Azure Cosmos 帳戶為多個寫入區域或單一寫入區域，且此作業為讀取要求，則用戶端會從喜好設定清單中的下一個區域重試該單一作業。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 檢查 [可用性 sla](high-availability.md#slas-for-availability)。
 * 使用最新的 [.NET SDK](sql-api-sdk-dotnet-standard.md)

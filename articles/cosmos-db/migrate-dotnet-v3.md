@@ -6,14 +6,15 @@ ms.author: esarroyo
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: c86121bfd78452f613109c59cbc7a8b763755124
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cddf76ae0157c6729e6f58e40ee3f1725a9d395
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842983"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096660"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-net-sdk-v3"></a>遷移您的應用程式以使用 Azure Cosmos DB .NET SDK v3
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!IMPORTANT]
 > 若要瞭解 Azure Cosmos DB .NET SDK v3，請參閱 [版本](sql-api-sdk-dotnet-standard.md)資訊、 [.net GitHub 存放庫](https://github.com/Azure/azure-cosmos-dotnet-v3)、.Net sdk V3 [效能秘訣](performance-tips-dotnet-sdk-v3-sql.md)和 [疑難排解指南](troubleshoot-dot-net-sdk.md)。
@@ -638,7 +639,7 @@ private static async Task DeleteItemAsync(DocumentClient client)
 ```
 ---
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [建立主控台應用程式](sql-api-get-started.md) ，以使用 v3 SDK 來管理 AZURE COSMOS DB SQL API 資料
 * 深入瞭解[您可以使用 V3 SDK 進行的](sql-api-dotnet-v3sdk-samples.md)作業

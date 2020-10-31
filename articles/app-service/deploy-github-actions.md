@@ -7,18 +7,18 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure
-ms.openlocfilehash: 638dfc63b6a37bae3905703bbd5ecabaa94d2020
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6c768df964d46364a8ca501c078dbecaf1aaa21f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783074"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095555"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>使用 GitHub Actions 部署到 App Service
 
 開始使用 [GitHub Actions](https://help.github.com/en/articles/about-github-actions) 將您的工作流程自動化，並從 GitHub 部署到 [Azure App Service](overview.md) 。 
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - GitHub 帳戶。 如果您沒有帳戶，請 [免費](https://github.com/join)註冊。  
@@ -74,6 +74,9 @@ ms.locfileid: "92783074"
 1. 在 [ **總覽** ] 頁面上，選取 [ **取得發行設定檔** ]。
 
 1. 儲存下載的檔案。 您將使用檔案的內容來建立 GitHub 秘密。
+
+> [!NOTE]
+> 從2020年10月起，Linux web 應用程式在 `WEBSITE_WEBDEPLOY_USE_SCM` `true` **下載發行設定檔之前** ，必須先將應用程式設定設為。 未來將會移除這項需求。
 
 # <a name="service-principal"></a>[服務主體](#tab/userlevel)
 

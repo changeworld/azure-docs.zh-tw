@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0a68c2b9c857205dda7f5da846085f9f3823da20
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 68f3fd34081868884782e007885befff59fa05da
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927629"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096116"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>安全存取 Azure Cosmos DB 中的資料
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文概述如何保護 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)中儲存之資料的存取。
 

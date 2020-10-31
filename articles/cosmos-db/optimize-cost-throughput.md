@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d7d77bdb223e8c3b71ef03febd4081d1f63bd1a3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 76f4f9ddaa1e4aec9409e96a0088ec51b8c2645e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475459"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097459"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中最佳化已佈建的輸送量成本
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB 可藉由提供所佈建的輸送量模型，於任何規模提供可預測的效能。 事先保留或佈建輸送量，效能就能避免出現「擾鄰效果」。 請指定您所需的確切輸送量，如此一來，Azure Cosmos DB 便可根據 SLA 來保證您所設定的輸送量。
 
@@ -30,7 +31,7 @@ Azure Cosmos DB 可藉由提供所佈建的輸送量模型，於任何規模提�
 
 用來決定佈建輸送量策略的一些指導方針如下：
 
-**考慮在下列情況中，在包含一組容器的 Azure Cosmos 資料庫上布建輸送量 () **：
+**考慮在下列情況中，在包含一組容器的 Azure Cosmos 資料庫上布建輸送量 ()** ：
 
 1. 您有幾十個 Azure Cosmos 容器，並想要在全部或其中一部分共用輸送量。 
 
@@ -54,7 +55,7 @@ Azure Cosmos DB 可藉由提供所佈建的輸送量模型，於任何規模提�
 
 如下表所示，您可以根據所選擇的 API，在不同的資料粒度佈建輸送量。
 
-|API|針對**共用**輸送量，請設定 |針對**專用**輸送量，請設定 |
+|API|針對 **共用** 輸送量，請設定 |針對 **專用** 輸送量，請設定 |
 |----|----|----|
 |SQL API|資料庫|容器|
 |適用於 MongoDB 的 Azure Cosmos DB API|資料庫|集合|
@@ -174,7 +175,7 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 10. 運用 Azure Cosmos DB 的保留容量，您可以獲得為期三年最多 65% 的大幅折扣。 使用 Azure Cosmos DB 保留容量模型，即代表您承諾會為一段時間內所需的要求單位量預付費用。 折扣會分層提供，您在一段較長時間內所使用的要求單位量越多，折扣就會越高。 這些折扣會立即適用。 若使用的 RU 超過您佈建的值，則會根據非保留容量的成本來收費。 如需詳細資訊，請參閱 [Cosmos DB 保留容量](cosmos-db-reserved-capacity.md))。 您可以考慮購買保留容量，以進一步降低所佈建輸送量的成本。  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 接下來，您可以利用下列文章繼續深入了解 Azure Cosmos DB 中有關成本最佳化的詳細資訊：
 

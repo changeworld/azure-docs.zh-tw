@@ -9,20 +9,21 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: 84d96344f20c56c9fab9eb5b3affcca3a437c096
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eab24c317513382afdd452843bc09e845ca90452
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324547"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096490"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>將 Node.js Mongoose 應用程式連線至 Azure Cosmos DB
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 本教學課程示範在 Cosmos DB 中儲存資料時如何使用 [Mongoose 架構](https://mongoosejs.com/) \(英文\)。 我們會針對此逐步解說使用適用於 MongoDB 的 Azure Cosmos DB API。 對於不熟悉的你們而言，Mongoose 是 Node.js 中適用於 MongoDB 的物件模型建構架構，提供簡單、以結構描述為基礎的解決方案來為您的應用程式資料建立模型。
 
 Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以快速建立及查詢文件、索引鍵/值及圖形資料庫，所有這些都受惠於位於 Cosmos DB 核心的全域散發和水平調整功能。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -38,11 +39,11 @@ Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以�
 
 ### <a name="create-a-database"></a>建立資料庫 
 在此應用程式中，我們將討論在 Azure Cosmos DB 中建立集合的兩種方式： 
-- **將每個物件模型儲存在不同的集合中**：建議您 [建立具有專用輸送量的資料庫](set-throughput.md#set-throughput-on-a-database)。 使用此容量模型可提供更佳的成本效益。
+- **將每個物件模型儲存在不同的集合中** ：建議您 [建立具有專用輸送量的資料庫](set-throughput.md#set-throughput-on-a-database)。 使用此容量模型可提供更佳的成本效益。
 
     :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text="Node.js 教學課程-Azure 入口網站的螢幕擷取畫面，顯示如何在 Azure Cosmos DB 帳戶的資料總管中建立資料庫，以與 Mongoose Node 模組搭配使用":::
 
-- 將**所有物件模型儲存在單一 Cosmos DB 集合中**：如果您想要將所有模型儲存在單一集合中，您可以直接建立新的資料庫，而不需選取 [布建輸送量] 選項。 使用此容量模型將會為每個物件模型建立每個集合，其擁有自己的輸送量容量。
+- 將 **所有物件模型儲存在單一 Cosmos DB 集合中** ：如果您想要將所有模型儲存在單一集合中，您可以直接建立新的資料庫，而不需選取 [布建輸送量] 選項。 使用此容量模型將會為每個物件模型建立每個集合，其擁有自己的輸送量容量。
 
 建立資料庫之後，您將會在下列環境變數中使用該名稱 `COSMOSDB_DBNAME` 。
 

@@ -9,14 +9,15 @@ ms.date: 10/21/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 6e084a890dd5c772fbf576ddc50fd26b2d1774f0
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a1144560b8bd8638477828f1aeafcacbc8b77f1d
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487376"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096473"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>管理 Azure Cosmos DB 的 MongoDB API 中的編制索引
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Azure Cosmos DB 適用于 MongoDB 的 API 會利用 Azure Cosmos DB 的核心索引管理功能。 本文著重于如何使用 Azure Cosmos DB 適用于 MongoDB 的 API 來新增索引。 您也可以閱讀在與所有 Api 相關的 [Azure Cosmos DB 中建立索引的總覽](index-overview.md) 。
 
@@ -121,7 +122,7 @@ Azure Cosmos DB 適用于 MongoDB 的 API 目前不支援文字索引。 針對�
 
 `db.coll.createIndex({"children.$**" : 1})`
 
-**與 MongoDB 不同的是，萬用字元索引可以支援查詢述詞中的多個欄位**。 如果您使用一個單一萬用字元索引，而不是為每個屬性建立個別的索引，則查詢效能不會有差異。
+**與 MongoDB 不同的是，萬用字元索引可以支援查詢述詞中的多個欄位** 。 如果您使用一個單一萬用字元索引，而不是為每個屬性建立個別的索引，則查詢效能不會有差異。
 
 您可以使用萬用字元語法來建立下列索引類型：
 
@@ -147,7 +148,7 @@ Azure Cosmos DB 適用于 MongoDB 的 API 目前不支援文字索引。 針對�
 - TTL
 - 唯一
 
-**不同于 mongodb**，在 Azure Cosmos DB 適用于 MONGODB 的 API 中，您 **無法** 使用萬用字元索引來進行下列動作：
+**不同于 mongodb** ，在 Azure Cosmos DB 適用于 MONGODB 的 API 中，您 **無法** 使用萬用字元索引來進行下列動作：
 
 - 建立包含多個特定欄位的萬用字元索引
 
@@ -237,7 +238,7 @@ globaldb:PRIMARY> db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
 上述命令會刪除 ```db.coll``` 集合中過去10秒內未修改的任何檔。
 
 > [!NOTE]
-> **_Ts**欄位是 Azure Cosmos DB 專屬的，而且無法從 MongoDB 用戶端存取。 它是保留的 (系統) 屬性，其中包含檔上次修改的時間戳記。
+> **_Ts** 欄位是 Azure Cosmos DB 專屬的，而且無法從 MongoDB 用戶端存取。 它是保留的 (系統) 屬性，其中包含檔上次修改的時間戳記。
 
 ## <a name="track-index-progress"></a>追蹤索引進度
 
@@ -364,7 +365,7 @@ globaldb:PRIMARY> db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
 
 如果您想要建立萬用字元索引，請 [升級至3.6 版](mongodb-version-upgrade.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [Azure Cosmos DB 中的編製索引](../cosmos-db/index-policy.md)
 * [利用存留時間讓 Azure Cosmos DB 中的資料自動過期](../cosmos-db/time-to-live.md)

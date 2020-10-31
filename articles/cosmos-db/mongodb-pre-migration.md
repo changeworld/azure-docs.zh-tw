@@ -7,14 +7,15 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: jasonh
-ms.openlocfilehash: 2ad56bf0295efca45ee958e1ce135d79ed850d62
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8e3a0ac6996762bc7f4bd1a6d9dde8cfb59db662
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277593"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096422"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>將資料從 MongoDB 移轉到「適用於 MongoDB 的 Azure Cosmos DB API」的預先移轉步驟
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 將資料從 MongoDB (內部部署或在雲端中) 移轉到「適用於 MongoDB 的 Azure Cosmos DB API」之前，您應該：
 
@@ -30,13 +31,13 @@ ms.locfileid: "92277593"
 
 以下是關於「適用於 MongoDB 的 Azure Cosmos DB API」的特色：
 
-- **容量模型**：Azure Cosmos DB 的資料庫容量是以輸送量為基礎的模型做為根據。 此模型是以[每秒要求單位](request-units.md)為基礎，此單位表示每秒鐘可對一個集合所執行的資料庫作業數目。 此容量可以在[資料庫或集合層級](set-throughput.md)進行配置，而且可以在配置模型上佈建容量，或使用[自動調整佈建輸送量](provision-throughput-autoscale.md)。
+- **容量模型** ：Azure Cosmos DB 的資料庫容量是以輸送量為基礎的模型做為根據。 此模型是以[每秒要求單位](request-units.md)為基礎，此單位表示每秒鐘可對一個集合所執行的資料庫作業數目。 此容量可以在[資料庫或集合層級](set-throughput.md)進行配置，而且可以在配置模型上佈建容量，或使用[自動調整佈建輸送量](provision-throughput-autoscale.md)。
 
-- **要求單位**：每個資料庫作業在 Azure Cosmos DB 中都有相關聯的要求單位 (RU) 成本。 執行時，會從給定秒數的可用要求單位層級減去此要求單位。 如果要求所需的 RU 超過目前配置的 RU/秒，有兩個選項可解決此問題 - 增加 RU 數量，或等到下一秒開始後再重試作業。
+- **要求單位** ：每個資料庫作業在 Azure Cosmos DB 中都有相關聯的要求單位 (RU) 成本。 執行時，會從給定秒數的可用要求單位層級減去此要求單位。 如果要求所需的 RU 超過目前配置的 RU/秒，有兩個選項可解決此問題 - 增加 RU 數量，或等到下一秒開始後再重試作業。
 
-- **彈性容量**：給定集合或資料庫的容量可隨時變更。 這讓資料庫可彈性地適應工作負載的輸送量需求。
+- **彈性容量** ：給定集合或資料庫的容量可隨時變更。 這讓資料庫可彈性地適應工作負載的輸送量需求。
 
-- **自動分區化**：Azure Cosmos DB 提供一個只需要分區 (或分割區索引鍵) 的自動資料分割系統。 [自動資料分割機制](partitioning-overview.md)會在所有 Azure Cosmos DB API 之間共用，可透過水平發佈，順暢地進行資料和輸送量調整。
+- **自動分區化** ：Azure Cosmos DB 提供一個只需要分區 (或分割區索引鍵) 的自動資料分割系統。 [自動資料分割機制](partitioning-overview.md)會在所有 Azure Cosmos DB API 之間共用，可透過水平發佈，順暢地進行資料和輸送量調整。
 
 ## <a name="migration-options-for-azure-cosmos-dbs-api-for-mongodb"></a><a id="options"></a>「適用於 MongoDB 的 Azure Cosmos DB API」的移轉選項
 
@@ -56,11 +57,11 @@ ms.locfileid: "92277593"
 您可以使用 [Azure Cosmos DB 容量計算機](https://cosmos.azure.com/capacitycalculator/)，根據資料庫帳戶設定、資料量、文件大小和所需的每秒讀寫次數，來確定要求單位的數量。
 
 以下是影響所需 RU 數量的重要因素：
-- **文件大小**：當項目/文件大小增加時，取用來讀取或寫入該項目/文件的 RU 數目也會增加。
+- **文件大小** ：當項目/文件大小增加時，取用來讀取或寫入該項目/文件的 RU 數目也會增加。
 
-- **文件屬性計數**：建立或更新文件所耗用的 RU 數目，與數量、複雜性及其屬性長度有關。 您可以藉由[限制已編製索引的屬性數目](mongodb-indexing.md)，來減少寫入作業的要求單位取用量。
+- **文件屬性計數** ：建立或更新文件所耗用的 RU 數目，與數量、複雜性及其屬性長度有關。 您可以藉由[限制已編製索引的屬性數目](mongodb-indexing.md)，來減少寫入作業的要求單位取用量。
 
-- **查詢模式**：查詢的複雜性會影響查詢用的要求單位數目。 
+- **查詢模式** ：查詢的複雜性會影響查詢用的要求單位數目。 
 
 了解查詢成本的最佳方式是，使用 Azure Cosmos DB 中的樣本資料，並使用 `getLastRequestStastistics` 命令，[從 MongoDB Shell 執行樣本查詢](connect-mongodb-account.md)，以取得要求費用，這將會輸出取用的 RU 數量：
 

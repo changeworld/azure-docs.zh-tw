@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37dc60fd14eb26ab4c8f5a867b97369a066b743b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f08efc8a10c50dcfcc6da884396dea88695dbb2a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362751"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096014"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能？
 
@@ -38,6 +38,19 @@ Azure AD 會持續不斷進行改進。 為了讓您隨時掌握最新的開發�
 此頁面會每月更新，因此請定期瀏覽。 如果您要尋找早于六個月的專案，您可以在封存中找到 [Azure Active Directory 的新功能](whats-new-archive.md)。
 
 ---
+## <a name="october-2020"></a>2020 年 10 月
+
+### <a name="azure-ad-on-premises-hybrid-agents-impacted-by-azure-tls-certificate-changes"></a>Azure AD 受 Azure TLS 憑證變更影響的內部部署混合式代理程式
+
+**類型：** 方案變更  
+**服務類別：** N/A  
+**產品功能：** 平台
+
+Microsoft 正在更新 Azure 服務，以使用來自一組不同根憑證授權單位 (CA) 的 TLS 憑證。 這項更新是因為目前的 CA 憑證不符合其中一個 CA/瀏覽器論壇基準需求。 這項變更將會影響在內部部署環境中安裝的 Azure AD 混合式代理程式，其具有具有固定的根憑證清單的強化環境，而且必須更新以信任新的憑證簽發者。
+
+如果您未立即採取行動，這項變更會導致服務中斷。 這些代理套裝程式括可遠端存取內部部署的 [應用程式 Proxy 連接器](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AppProxy) 、 [通過驗證](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AzureADConnect) 代理程式，可讓您的使用者使用相同的密碼登入應用程式，以及執行 AD 來 Azure AD 同步處理的雲端布建 [預覽](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AzureADConnect) 代理程式。 
+
+如果您的環境中的防火牆規則設定為只允許對特定憑證撤銷清單進行輸出呼叫 (CRL) 下載，您將需要允許下列 CRL 和 OCSP Url。 如需變更和 CRL 和 OCSP Url 的完整詳細資料以啟用存取，請參閱  [AZURE TLS 憑證變更](../../security/fundamentals/tls-certificate-changes.md)。
 
 ## <a name="september-2020"></a>2020 年 9 月
 
@@ -1223,9 +1236,9 @@ Office 正在啟動一系列行動優先的商務應用程式，這些應用程�
 
 **產品功能：** 存取控制
 
-**印表機系統管理員**：具備此角色的使用者可以註冊印表機，並管理 Microsoft 通用列印解決方案中所有印表機設定的所有層面，包括通用列印連接器設定。 他們可以同意所有委派的列印權限要求。 印表機管理員也具有列印報告的權限。 
+**印表機系統管理員** ：具備此角色的使用者可以註冊印表機，並管理 Microsoft 通用列印解決方案中所有印表機設定的所有層面，包括通用列印連接器設定。 他們可以同意所有委派的列印權限要求。 印表機管理員也具有列印報告的權限。 
 
-**印表機技術人員**：具備此角色的使用者可以在 Microsoft 通用列印解決方案中登錄印表機及管理印表機狀態。 他們也可以讀取所有連接器資訊。 印表機技術人員無法進行的主要工作，是設定印表機和共用印表機的使用者權限。 [深入了解。](../roles/permissions-reference.md#printer-administrator)
+**印表機技術人員** ：具備此角色的使用者可以在 Microsoft 通用列印解決方案中登錄印表機及管理印表機狀態。 他們也可以讀取所有連接器資訊。 印表機技術人員無法進行的主要工作，是設定印表機和共用印表機的使用者權限。 [深入了解。](../roles/permissions-reference.md#printer-administrator)
 
 ---
 

@@ -7,14 +7,15 @@ ms.topic: troubleshooting
 ms.date: 10/12/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 7a34b4a3a0f9fe75b5e252f20a8b0924b0ce01d7
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ece814ea316fe62bc2b8b64036b08983f65ccbef
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488379"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096354"
 ---
 # <a name="troubleshoot-query-issues-when-using-the-azure-cosmos-db-api-for-mongodb"></a>針對使用適用于 MongoDB 的 Azure Cosmos DB API 時的查詢問題進行疑難排解
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 本文會逐步解說針對 Azure Cosmos DB 中查詢進行疑難排解的一般建議方法。 雖然您不應將本文所述的步驟視為潛在查詢問題的完整防禦方法，但我們已在此納入最常見的效能秘訣。 您應使用本文作為在 Azure Cosmos DB 的 MongoDB API 中針對緩慢或昂貴的查詢進行疑難排解的起點。 如果您使用 Azure Cosmos DB core (SQL) API，請參閱《 [SQL API 查詢疑難排解指南》](troubleshoot-query-performance.md) 一文。
 

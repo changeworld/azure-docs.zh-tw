@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 7c506d66c101c2770cffb8cc8d105b2f841c539a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 43625a80df76ff35b8bb1804df5f5fd1524326c5
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279474"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097527"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中進行線上備份及隨選資料還原
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB 會自動地定期備份您的資料。 自動備份的進行不會影響資料庫作業的效能或可用性。 所有備份會儲存在另外的儲存體服務中，而且系統會全域複寫這些備份，以便為區域性災害提供復原功能。 當您不小心刪除或更新 Azure Cosmos 帳戶、資料庫或容器，並在之後需要復原資料時，自動備份會很有幫助。
 
@@ -53,13 +54,13 @@ Azure Cosmos DB 會每隔4小時自動取得資料的完整備份，而且在任
 
    :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="GRS Azure 儲存體中所有 Cosmos DB 實體的定期完整備份" border="true":::
 
-如果您在帳戶建立期間設定備份選項，就可以設定 **備份原則**，也就是 **定期** 或 **連續**。 定期原則可讓您設定備份間隔和備份保留期。 持續的原則目前僅供註冊之用。 Azure Cosmos DB 團隊將會評估您的工作負載，並核准您的要求。
+如果您在帳戶建立期間設定備份選項，就可以設定 **備份原則** ，也就是 **定期** 或 **連續** 。 定期原則可讓您設定備份間隔和備份保留期。 持續的原則目前僅供註冊之用。 Azure Cosmos DB 團隊將會評估您的工作負載，並核准您的要求。
 
 :::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="GRS Azure 儲存體中所有 Cosmos DB 實體的定期完整備份" border="true":::
 
 ## <a name="request-data-restore-from-a-backup"></a>從備份要求資料還原
 
-如果您不小心刪除資料庫或容器，您可以提出 [支援票證](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 或 [呼叫 Azure 支援](https://azure.microsoft.com/support/options/) ，以從自動線上備份還原資料。 Azure 支援僅適用于所選方案，例如 **標準**、 **開發人員**和方案（高於這些方案）。 Azure 支援不適用於**基本**方案。 若要深入了解不同的支援方案，請參閱 [Azure 支援方案](https://azure.microsoft.com/support/plans/)頁面。
+如果您不小心刪除資料庫或容器，您可以提出 [支援票證](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 或 [呼叫 Azure 支援](https://azure.microsoft.com/support/options/) ，以從自動線上備份還原資料。 Azure 支援僅適用于所選方案，例如 **標準** 、 **開發人員** 和方案（高於這些方案）。 Azure 支援不適用於 **基本** 方案。 若要深入了解不同的支援方案，請參閱 [Azure 支援方案](https://azure.microsoft.com/support/plans/)頁面。
 
 若要還原特定的備份快照集，Azure Cosmos DB 需要該資料在該快照的備份週期持續時間內為可用狀態。
 要求還原之前，您應該有下列詳細資料：

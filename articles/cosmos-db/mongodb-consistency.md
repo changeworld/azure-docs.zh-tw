@@ -7,14 +7,15 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 19dcc0f7605ae771e2ff826299413eaa073f212b
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 37c128a42ca68134b770b32c940d59834261ce44
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283805"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096575"
 ---
 # <a name="consistency-levels-for-azure-cosmos-db-and-the-api-for-mongodb"></a>適用于 MongoDB 的 Azure Cosmos DB 和 API 的一致性層級
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 不同于 Azure Cosmos DB，原生 MongoDB 不提供精確定義的一致性保證。 相反地，原生 MongoDB 可讓使用者設定下列一致性保證：寫入考慮、讀取考慮和 isMaster 指示詞，以將讀取作業導向至主要或次要複本，以達成所需的一致性層級。
 
@@ -41,7 +42,7 @@ ms.locfileid: "92283805"
 
 機率性限定過期會顯示您最終一致性的最終結果。 此計量可讓您深入瞭解您在 Azure Cosmos 帳戶上目前設定的一致性層級時，可以獲得更強的一致性的頻率。 換句話說，您可以看到針對寫入和讀取區域的組合取得強式一致性讀取的機率 (以毫秒來測量)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 深入瞭解 Azure Cosmos DB 的全域散發和一致性層級：
 
