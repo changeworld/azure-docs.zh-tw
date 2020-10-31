@@ -7,12 +7,12 @@ ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 08/07/2020
-ms.openlocfilehash: 34af52b32d9e31ad003c5e95e288f88b157a944a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d253bda69839c76aed0170f9a79a03b7d4bf1a79
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710612"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130101"
 ---
 # <a name="create-a-managed-service-offer"></a>建立受控服務供應項目
 
@@ -33,13 +33,13 @@ ms.locfileid: "91710612"
 
 ## <a name="new-offer"></a>新增供應項目
 
-輸入**供應項目識別碼**。 這是您帳戶中每個供應項目的唯一識別碼。
+輸入 **供應項目識別碼** 。 這是您帳戶中每個供應項目的唯一識別碼。
 
 * 客戶可以在市集供應項目和 Azure Resource Manager 範本 (如果適用) 的網址中看到此識別碼。
-* 請一律使用小寫字母和數字。 其可以包含連字號和底線，但不能有空格，且限制為 50 個字元。 例如，如果您輸入 **test-offer-1**，供應項目網址將為 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
+* 請一律使用小寫字母和數字。 其可以包含連字號和底線，但不能有空格，且限制為 50 個字元。 例如，如果您輸入 **test-offer-1** ，供應項目網址將為 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
 * 選取 [建立] 之後，即無法變更供應項目識別碼。
 
-輸入**供應項目別名**。 這是用於合作夥伴中心內供應項目的名稱。
+輸入 **供應項目別名** 。 這是用於合作夥伴中心內供應項目的名稱。
 
 * 此名稱不會在市集中使用，且與向客戶顯示的供應項目名稱和其他值不同。
 * 在您選取 [建立] 之後，就無法變更供應項目別名。
@@ -52,7 +52,7 @@ ms.locfileid: "91710612"
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
-根據[受控服務認證原則](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) \(英文\)，必須要有**潛在客戶目的地**。 這會在每次客戶部署您的供應項目時，於您的 CRM 系統中建立一筆記錄。
+根據 [受控服務認證原則](/legal/marketplace/certification-policies#700-managed-services) \(英文\)，必須要有 **潛在客戶目的地** 。 這會在每次客戶部署您的供應項目時，於您的 CRM 系統中建立一筆記錄。
 
 如需詳細資訊，請參閱[潛在客戶管理概觀](./commercial-marketplace-get-customer-leads.md)。
 
@@ -92,7 +92,7 @@ ms.locfileid: "91710612"
 
 ### <a name="name"></a>名稱
 
-您在此處輸入的名稱會作為供應項目清單標題向客戶顯示。 當您建立供應項目時，此欄位會預先填入您為**供應項目別名**輸入的文字，但您可以變更此值。 此名稱可以是商標 (您也可以包含商標或著作權符號)。 名稱不能超過 50 個字元，而且不能包含任何表情圖示。
+您在此處輸入的名稱會作為供應項目清單標題向客戶顯示。 當您建立供應項目時，此欄位會預先填入您為 **供應項目別名** 輸入的文字，但您可以變更此值。 此名稱可以是商標 (您也可以包含商標或著作權符號)。 名稱不能超過 50 個字元，而且不能包含任何表情圖示。
 
 ### <a name="search-results-summary"></a>搜尋結果摘要
 
@@ -124,7 +124,7 @@ ms.locfileid: "91710612"
 
 ### <a name="support-urls"></a>支援 URL
 
-如果您擁有 **Azure 全球客戶**和/或 **Azure Government 客戶**的支援網站，請在此處提供那些 URL。
+如果您擁有 **Azure 全球客戶** 和/或 **Azure Government 客戶** 的支援網站，請在此處提供那些 URL。
 
 ### <a name="marketplace-images"></a>Marketplace 映像
 
@@ -139,7 +139,7 @@ ms.locfileid: "91710612"
 
 提供 **大型** 大小標誌的 PNG 檔案。 合作夥伴中心將使用這個來建立 **小型** 和 **中型** 標誌。 您可以選擇性地使用不同的映射取代這些映射。
 
-- 從 216 x 216 到 350 x 350 px 的**大型** (，需要) 
+- 從 216 x 216 到 350 x 350 px 的 **大型** (，需要) 
 - **中型** (90 x 90 px，選擇性) 
 - **Small** (48 x 48 px，選擇性) 
 
@@ -179,19 +179,19 @@ ms.locfileid: "91710612"
 
 您最多可以為每個供應專案建立100個方案：這些供應專案的最高45個都可以是私用。 深入瞭解 [Microsoft 商業市場中私](../private-offers.md)用供應專案的私人方案。
 
-在 [方案概觀] 頁面上，選取 [+ 建立新方案]。 然後，輸入**方案識別碼**和**方案名稱**。 這兩個值都只能包含小寫英數字元、連字號與底線，且最多 50 個字元。 這些值可能會向客戶顯示，而且在您發佈供應項目之後，即無法變更。
+在 [方案概觀] 頁面上，選取 [+ 建立新方案]。 然後，輸入 **方案識別碼** 和 **方案名稱** 。 這兩個值都只能包含小寫英數字元、連字號與底線，且最多 50 個字元。 這些值可能會向客戶顯示，而且在您發佈供應項目之後，即無法變更。
 
-當您輸入這些值以繼續處理您的方案時，請選取 [建立]。 有三個區段需要完成：**方案清單**、**定價和可用性**，以及**技術設定**。
+當您輸入這些值以繼續處理您的方案時，請選取 [建立]。 有三個區段需要完成： **方案清單** 、 **定價和可用性** ，以及 **技術設定** 。
 
 ### <a name="plan-listing"></a>方案清單
 
-首先，提供方案的**搜尋結果摘要**。 這是您方案的簡短描述 (最多 100 個字元)，可用於市集搜尋結果。
+首先，提供方案的 **搜尋結果摘要** 。 這是您方案的簡短描述 (最多 100 個字元)，可用於市集搜尋結果。
 
-接下來，輸入**描述**，以提供更詳細的方案說明。
+接下來，輸入 **描述** ，以提供更詳細的方案說明。
 
 ### <a name="pricing-and-availability"></a>價格與可用性
 
-目前，只有一個可用於受控服務供應項目的定價模型：**自備授權 (BYOL)** 。 這表示您會直接向您的客戶收取此供應項目的相關費用，而且 Microsoft 不會向您收取任何費用。
+目前，只有一個可用於受控服務供應項目的定價模型： **自備授權 (BYOL)** 。 這表示您會直接向您的客戶收取此供應項目的相關費用，而且 Microsoft 不會向您收取任何費用。
 
 [方案可視性] 區段可讓您指出此方案是否應為[私人](../../marketplace/private-offers.md)。 如果您未核取 [這是私人方案] 方塊，則您的方案將不限於特定客戶 (或特定數目的客戶)。
 
@@ -210,7 +210,7 @@ ms.locfileid: "91710612"
 請務必檢閱 [Azure Lighthouse 案例中的租用戶、角色和使用者](../../lighthouse/concepts/tenants-users-roles.md#best-practices-for-defining-users-and-roles)，以了解支援哪些角色，以及定義授權的最佳做法。
 
 > [!NOTE]
-> 如先前所述，您**授權**項目中的使用者和角色將適用於購買方案的每位客戶。 如果您想要限制對特定客戶的存取，則必須發佈私人方案以供其專屬使用。
+> 如先前所述，您 **授權** 項目中的使用者和角色將適用於購買方案的每位客戶。 如果您想要限制對特定客戶的存取，則必須發佈私人方案以供其專屬使用。
 
 #### <a name="manifest"></a>資訊清單
 
@@ -229,14 +229,14 @@ ms.locfileid: "91710612"
 > [!TIP]
 > 在多數情況下，建議您指派角色給 Azure AD 使用者群組或服務主體，而不是指派給一系列個別使用者帳戶。 如此一來，當您的存取需求變更時，就可以新增或移除個別使用者的存取權，而不需要更新並重新發佈方案。 將角色指派給 Azure AD 群組時，[請確定 [群組類型] 是 [安全性]，而不是 [Office 365]](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。 如需其他建議，請參閱 [Azure Lighthouse 案例中的租用戶、角色和使用者](../../lighthouse/concepts/tenants-users-roles.md)。
 
-您必須為每個**授權**提供下列項目。 接著，您要新增多少使用者和角色定義，就視需要選取多少次 [+ 新增授權]。
+您必須為每個 **授權** 提供下列項目。 接著，您要新增多少使用者和角色定義，就視需要選取多少次 [+ 新增授權]。
 
-- **Azure AD 物件識別碼**：使用者、使用者群組或應用程式的 Azure AD 識別碼，系統將會授與其您客戶資源的特定權限 (按角色定義所定義)。
-- **Azure AD 物件顯示名稱**：協助客戶了解此授權用途的易記名稱。 客戶會在委派資源時看到此名稱。
-- **角色定義**：從清單中選取其中一個可用的 Azure AD 內建角色。 此角色將會決定 [Azure AD 物件識別碼] 欄位中的使用者，對於您的客戶資源會有那些權限。 如需這些角色的說明，請參閱 Azure Lighthouse 的 [內建角色](../../role-based-access-control/built-in-roles.md) 和 [角色支援](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-lighthouse)。
+- **Azure AD 物件識別碼** ：使用者、使用者群組或應用程式的 Azure AD 識別碼，系統將會授與其您客戶資源的特定權限 (按角色定義所定義)。
+- **Azure AD 物件顯示名稱** ：協助客戶了解此授權用途的易記名稱。 客戶會在委派資源時看到此名稱。
+- **角色定義** ：從清單中選取其中一個可用的 Azure AD 內建角色。 此角色將會決定 [Azure AD 物件識別碼] 欄位中的使用者，對於您的客戶資源會有那些權限。 如需這些角色的說明，請參閱 Azure Lighthouse 的 [內建角色](../../role-based-access-control/built-in-roles.md) 和 [角色支援](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-lighthouse)。
   > [!NOTE]
   > 當適用的新內建角色新增至 Azure 時，將會在這裡加以提供，雖然其出現之前可能會有所延遲。
-- **可指派的角色**：如果您為此授權在 [角色定義] 中選取 [使用者存取系統管理員]，才會顯示此選項。 若是如此，您必須在此新增一或多個可指派的角色。 [Azure AD 物件識別碼] 欄位中的使用者將能夠將這些角色指派給[受控識別](../../active-directory/managed-identities-azure-resources/overview.md)，[部署可補救的原則](../../lighthouse/how-to/deploy-policy-remediation.md)時需要這些角色。 請注意，不會有其他一般與「使用者存取系統管理員」角色相關聯的權限套用至此使用者。
+- **可指派的角色** ：如果您為此授權在 [角色定義] 中選取 [使用者存取系統管理員]，才會顯示此選項。 若是如此，您必須在此新增一或多個可指派的角色。 [Azure AD 物件識別碼] 欄位中的使用者將能夠將這些角色指派給[受控識別](../../active-directory/managed-identities-azure-resources/overview.md)，[部署可補救的原則](../../lighthouse/how-to/deploy-policy-remediation.md)時需要這些角色。 請注意，不會有其他一般與「使用者存取系統管理員」角色相關聯的權限套用至此使用者。
 
 > [!TIP]
 > 若要確保您可以[移除委派的存取權](../../lighthouse/how-to/remove-delegation.md) (如有需要)，請包含 [角色定義] 設定為[受控服務註冊指派刪除角色](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)的 [授權]。 如果未指派此角色，則只有客戶租用戶中的使用者可以移除委派的資源。

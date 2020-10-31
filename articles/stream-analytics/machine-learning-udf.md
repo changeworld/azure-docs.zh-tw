@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: a24d1716448363a199151a50a260bbdbd1e8e634
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14f7462aec65d2a13eb36b291331c347b995d281
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91249479"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130675"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>整合 Azure 串流分析與 Azure Machine Learning (預覽)
 
@@ -23,13 +23,13 @@ ms.locfileid: "91249479"
 
 請先完成下列步驟，再將機器學習模型新增為串流分析作業的函式：
 
-1. 使用 Azure Machine Learning [將您的模型部署為 Web 服務](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)。
+1. 使用 Azure Machine Learning [將您的模型部署為 Web 服務](../machine-learning/how-to-deploy-and-where.md)。
 
 2. 您的評分指令碼應該會有[範例輸入和輸出](../machine-learning/how-to-deploy-and-where.md)，由 Azure Machine Learning 用來產生結構描述規格。 串流分析會使用結構描述來了解 Web 服務的函式簽章。 您可以使用這個 [範例 swagger 定義](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) 作為參考，以確保您已正確設定。
 
 3. 請確定您的 Web 服務接受並傳回 JSON 序列化資料。
 
-4. 將模型部署到 [Azure Kubernetes Service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) 上以進行大規模生產部署。 如果 Web 服務無法處理來自您作業的要求數，串流分析作業的效能會降低，因而影響延遲。 只有當您使用 Azure 入口網站時，才支援在 Azure 容器執行個體上部署的模型。 串流分析尚未支援使用 [Azure Machine Learning 設計](https://docs.microsoft.com/azure/machine-learning/concept-designer) 工具建立的模型。
+4. 將模型部署到 [Azure Kubernetes Service](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) 上以進行大規模生產部署。 如果 Web 服務無法處理來自您作業的要求數，串流分析作業的效能會降低，因而影響延遲。 只有當您使用 Azure 入口網站時，才支援在 Azure 容器執行個體上部署的模型。 串流分析尚未支援使用 [Azure Machine Learning 設計](../machine-learning/concept-designer.md) 工具建立的模型。
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>將機器學習模型新增至您的作業
 
@@ -37,17 +37,17 @@ ms.locfileid: "91249479"
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-1. 在 Azure 入口網站中瀏覽至您的串流分析作業，然後選取 [作業拓撲] 底下的 [函式]。 然後，從 [ **+ 新增**] 下拉式功能表選取 [ **Azure Machine Learning 服務**]。
+1. 在 Azure 入口網站中瀏覽至您的串流分析作業，然後選取 [作業拓撲] 底下的 [函式]。 然後，從 [ **+ 新增** ] 下拉式功能表選取 [ **Azure Machine Learning 服務** ]。
 
    ![新增 Azure Machine Learning UDF](./media/machine-learning-udf/add-azure-machine-learning-udf.png)
 
-2. 以下列屬性值填入 **Azure Machine Learning 服務函式**表單：
+2. 以下列屬性值填入 **Azure Machine Learning 服務函式** 表單：
 
    ![設定 Azure Machine Learning UDF](./media/machine-learning-udf/configure-azure-machine-learning-udf.png)
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-1. 在 Visual Studio Code 中開啟您的串流分析專案，然後以滑鼠右鍵按一下 [ **函數** ] 資料夾。 然後選擇 [ **新增**函式]。 從下拉式清單中選取 **MACHINE LEARNING UDF** 。
+1. 在 Visual Studio Code 中開啟您的串流分析專案，然後以滑鼠右鍵按一下 [ **函數** ] 資料夾。 然後選擇 [ **新增** 函式]。 從下拉式清單中選取 **MACHINE LEARNING UDF** 。
 
    :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="在 VS Code 中新增 UDF":::
 

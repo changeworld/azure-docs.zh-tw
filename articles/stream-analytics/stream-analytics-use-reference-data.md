@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/11/2020
-ms.openlocfilehash: 8aae9a0ff3ffdbd4f6bc93db5c6f15dcb938080e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a08b73a74d30a99ba3c360f012d5917f1d0c8bf
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84196429"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129723"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>使用參考資料在串流分析中進行查閱
 
-參考資料 (也稱為查閱資料表，) 是靜態或緩慢變更的有限資料集，可用來執行查閱或增強您的資料流程。 比方說，在 IoT 案例中，您可以在參考資料中儲存有關感應器 (不常變更) 的中繼資料，並將其與即時 IoT 資料流聯結。 Azure 串流分析會將參考資料載入記憶體，以達到低延遲的串流處理。 若要利用 Azure 串流分析作業中的參考資料，您通常會在查詢中使用 [參考資料聯結](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) 。 
+參考資料 (也稱為查閱資料表，) 是靜態或緩慢變更的有限資料集，可用來執行查閱或增強您的資料流程。 比方說，在 IoT 案例中，您可以在參考資料中儲存有關感應器 (不常變更) 的中繼資料，並將其與即時 IoT 資料流聯結。 Azure 串流分析會將參考資料載入記憶體，以達到低延遲的串流處理。 若要利用 Azure 串流分析作業中的參考資料，您通常會在查詢中使用 [參考資料聯結](/stream-analytics-query/reference-data-join-azure-stream-analytics) 。 
 
 ## <a name="example"></a>範例  
 當汽車通過收費亭時，您可能會產生事件的即時串流。 收費亭可以即時捕捉授權，並加入具有註冊詳細資料的靜態資料集，以識別已過期的授權印板。  
@@ -33,11 +33,11 @@ WHERE R.Expired = '1'
 
 ## <a name="azure-blob-storage"></a>Azure Blob 儲存體
 
-參考資料會依 Blob 名稱中指定之日期/時間的遞增順序，以 Blob 序列的形式建立模型 (在輸入組態中定義)。 它「只」**** 支援使用比序列中最後一個 Blob 指定之日期/時間「大」**** 的日期/時間來新增到序列的結尾。
+參考資料會依 Blob 名稱中指定之日期/時間的遞增順序，以 Blob 序列的形式建立模型 (在輸入組態中定義)。 它「只」  支援使用比序列中最後一個 Blob 指定之日期/時間「大」  的日期/時間來新增到序列的結尾。
 
 ### <a name="configure-blob-reference-data"></a>設定 Blob 參考資料
 
-若要設定參考資料，您必須先建立屬於「 **參考資料**」類型的輸入。 下表說明您在建立參考資料輸入及其描述時必須提供的每個屬性：
+若要設定參考資料，您必須先建立屬於「 **參考資料** 」類型的輸入。 下表說明您在建立參考資料輸入及其描述時必須提供的每個屬性：
 
 |**屬性名稱**  |**說明**  |
 |---------|---------|
@@ -62,7 +62,7 @@ WHERE R.Expired = '1'
 Azure 串流分析會每隔一分鐘自動掃描已重新整理的參考資料 blob。 如果以較小的延遲上傳具有時間戳記10:30:00 的 blob (例如 10:30:30) ，您會注意到串流分析作業中參考此 blob 有短暫的延遲。 為了避免這種情況，建議您上傳早于目標有效時間早于此範例中的 blob (10:30:00) ，以允許串流分析作業足夠的時間來探索並載入記憶體並執行作業。 
 
 > [!NOTE]
-> 目前串流分析作業只有在機器時間朝向 Blob 名稱中編碼的時間時，才會尋求 Blob 重新整理。 例如，作業會儘速尋找 `sample/2015-04-16/17-30/products.csv` ，但不早於 UTC 時區 2015 年 4 月 16 日的下午 5:30。 它「決不會」** 尋找編碼時間早於最後一個探索到的 blob。
+> 目前串流分析作業只有在機器時間朝向 Blob 名稱中編碼的時間時，才會尋求 Blob 重新整理。 例如，作業會儘速尋找 `sample/2015-04-16/17-30/products.csv` ，但不早於 UTC 時區 2015 年 4 月 16 日的下午 5:30。 它「決不會」  尋找編碼時間早於最後一個探索到的 blob。
 > 
 > 例如，在作業找到 blob 之後， `sample/2015-04-16/17-30/products.csv` 它會忽略編碼日期早于5:30 年4月16日下午的任何檔案，如果延遲抵達的 `sample/2015-04-16/17-25/products.csv` blob 是在相同的容器中建立2015，則作業將不會使用它。
 > 
@@ -78,7 +78,7 @@ Azure 串流分析會每隔一分鐘自動掃描已重新整理的參考資料 b
 2. 重新整理參考資料的建議方式是：
     * 在路徑模式中使用 {date}/{time}
     * 使用作業輸入中定義的相同容器和路徑模式來新增 blob
-    * 使用比序列中最後一個 Blob 指定的日期/時間**大**的日期/時間。
+    * 使用比序列中最後一個 Blob 指定的日期/時間 **大** 的日期/時間。
 3. 參考資料 blob **不** 會依 blob 的「上次修改時間」時間來排序，而是只依 blob 名稱中使用 {date} 和 {time} 替代來指定的時間和日期來排序。
 3. 若要避免必須列出大量 Blob，請考慮刪除再也不會進行處理且非常舊的 Blob。 請注意，ASA 在某些案例 (例如重新啟動) 中可能需要重新處理很少數舊的 Blob。
 
@@ -94,9 +94,9 @@ Azure 串流分析會每隔一分鐘自動掃描已重新整理的參考資料 b
 
 ### <a name="configure-sql-database-reference"></a>設定 SQL Database 參考
 
-若要設定 SQL Database 參考資料，您必須先建立**參考資料**的輸入。 下表說明您在建立參考資料輸入及其描述時必須提供的每個屬性。 如需詳細資訊，請參閱[將來自 SQL Database 的參考資料用於 Azure 串流分析作業](sql-reference-data.md)。
+若要設定 SQL Database 參考資料，您必須先建立 **參考資料** 的輸入。 下表說明您在建立參考資料輸入及其描述時必須提供的每個屬性。 如需詳細資訊，請參閱[將來自 SQL Database 的參考資料用於 Azure 串流分析作業](sql-reference-data.md)。
 
-您可以使用 [AZURE SQL 受控執行個體](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) 作為參考資料輸入。 您必須 [在 SQL 受控執行個體中設定公用端點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) ，然後在 Azure 串流分析中手動設定下列設定。 以附加資料庫執行 SQL Server 的 Azure 虛擬機器，也可以透過手動進行下列設定來支援。
+您可以使用 [AZURE SQL 受控執行個體](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) 作為參考資料輸入。 您必須 [在 SQL 受控執行個體中設定公用端點](../azure-sql/managed-instance/public-endpoint-configure.md) ，然後在 Azure 串流分析中手動設定下列設定。 以附加資料庫執行 SQL Server 的 Azure 虛擬機器，也可以透過手動進行下列設定來支援。
 
 |**屬性名稱**|**說明**  |
 |---------|---------|
@@ -146,6 +146,6 @@ JOIN    refData2 ON refData2.Desc = Step1.Desc
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.get.started]: stream-analytics-get-started.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.get.started]: ./stream-analytics-real-time-fraud-detection.md
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

@@ -6,16 +6,16 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/14/2020
-ms.openlocfilehash: f2dd759203655746601699f665436c78ee0758f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb1a1a0b9f3a5996af56ff2c4e2de91d78a6c260
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90885498"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129332"
 ---
 # <a name="azure-stream-analytics-jobconfigjson-fields"></a>欄位上的 Azure 串流分析 JobConfig.js
 
-在用來[建立使用 Visual Studio Code 的 Azure 串流分析作業](quick-create-visual-studio-code.md)的*JobConfig.js*檔案中，支援下欄欄位。
+在用來 [建立使用 Visual Studio Code 的 Azure 串流分析作業](quick-create-visual-studio-code.md)的 *JobConfig.js* 檔案中，支援下欄欄位。
 
 ```json
 {
@@ -41,10 +41,10 @@ ms.locfileid: "90885498"
 |----|----|--------|-----|
 |DataLocale|字串|No|串流分析作業的資料地區設定。 值應該是支援的名稱。 如果未指定，則預設為 ' en-us '。|
 |OutputErrorPolicy|字串|No|指出要套用至抵達輸出之事件的原則，而且由於 (遺漏資料行值、錯誤類型或大小) 的資料行值的格式錯誤，因此無法寫入外部儲存體。 -Stop 或 Drop|
-|EventsLateArrivalMaxDelayInSeconds|整數|否|可以包含延遲延遲的最大可容忍延遲（以秒為單位）。 支援的範圍為-1 至 1814399 (20.23：59：59天) ，而-1 用來指定無限期等候。 如果屬性不存在，則會將其解釋為值-1。|
-|EventsOutOfOrderMaxDelayInSeconds|整數|否|可依序調整順序外事件的最大可容忍延遲（以秒為單位）。|
+|EventsLateArrivalMaxDelayInSeconds|integer|否|可以包含延遲延遲的最大可容忍延遲（以秒為單位）。 支援的範圍為-1 至 1814399 (20.23：59：59天) ，而-1 用來指定無限期等候。 如果屬性不存在，則會將其解釋為值-1。|
+|EventsOutOfOrderMaxDelayInSeconds|integer|否|可依序調整順序外事件的最大可容忍延遲（以秒為單位）。|
 |EventsOutOfOrderPolicy|字串|No|表示要套用至輸入事件資料流程中依順序抵達之事件的原則。 -調整或捨棄|
-|StreamingUnits|整數|是|指定串流作業所使用的串流單位數目。|
+|StreamingUnits|integer|是|指定串流作業所使用的串流單位數目。|
 |CompatibilityLevel|字串|No|控制串流作業的特定執行時間行為。 -可接受的值為 "1.0"、"1.1"、"1.2"|
 |UseSystemAssignedIdentity|boolean|否|設定 true 可讓此工作使用受控 Azure Active Directory 身分識別，與其他 Azure 服務通訊。|
 |GlobalStorage AccountName|字串|No|全域儲存體帳戶是用來儲存與您的串流分析作業相關的內容，例如 SQL 參考資料快照集。|
@@ -58,4 +58,4 @@ ms.locfileid: "90885498"
 * [在 Visual Studio Code 中建立 Azure 串流分析作業](quick-create-visual-studio-code.md)
 * [使用 Visual Studio Code 和範例資料在本機測試串流分析查詢](visual-studio-code-local-run.md)
 * [使用 Visual Studio Code 在本機針對即時資料流輸入測試串流分析查詢](visual-studio-code-local-run-live-input.md) 
-*[使用 CI/CD npm 套件部署 Azure 串流分析作業](setup-cicd-vs-code.md)
+*[使用 CI/CD npm 套件部署 Azure 串流分析作業](./cicd-overview.md)

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 0ed8533b093c5af0d8aefdcd5175bed63f37a76c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57cd9b55f529bde3f6bcb0a25a95c70333f6d8dd
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85507665"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130947"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>使用 StorSimple 裝置管理員服務來登錄 StorSimple Virtual Array 的支援要求
 
 ## <a name="overview"></a>概觀
 
-StorSimple 裝置管理員可讓您在服務摘要刀鋒視窗中**登錄新的支援要求**。 本文說明如何從入口網站登錄新的支援要求並管理其生命週期。
+StorSimple 裝置管理員可讓您在服務摘要刀鋒視窗中 **登錄新的支援要求** 。 本文說明如何從入口網站登錄新的支援要求並管理其生命週期。
 
 ## <a name="new-support-request"></a>新增支援要求
 
@@ -33,27 +33,27 @@ StorSimple 裝置管理員可讓您在服務摘要刀鋒視窗中**登錄新的�
 
 #### <a name="to-log-a-new-request"></a>若要登錄新的要求
 
-1. 移至您的 StorSimple 裝置管理員服務。 在服務摘要刀鋒視窗的設定中，移至 [支援 + 疑難排解]**** 區段，然後按一下 [新增支援要求]****。
+1. 移至您的 StorSimple 裝置管理員服務。 在服務摘要刀鋒視窗的設定中，移至 [支援 + 疑難排解]  區段，然後按一下 [新增支援要求]  。
    
-    ![新增支援要求](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
+    ![螢幕擷取畫面：顯示新支援要求的 [基本] 窗格。](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
 
-2. 在 [基本]**** 刀鋒視窗上，執行下列動作：
+2. 在 [基本]  刀鋒視窗上，執行下列動作：
 
     1. 從 [問題類型] 下拉式清單中，選取 [技術]。 
     
-    2. 自動會選擇目前的 [訂用帳戶]****、[服務]**** 類型和 [資源]**** \(StorSimple 裝置管理員服務)。 
+    2. 自動會選擇目前的 [訂用帳戶]  、[服務]  類型和 [資源]  \(StorSimple 裝置管理員服務)。 
 
     3. 指定一或多個已向服務註冊的有問題裝置。
 
-    4. 如果您的訂用帳戶有多個相關聯的方案，請選擇適當的**支援方案**。 您必須已付費購買支援方案，才能啟用技術支援。
+    4. 如果您的訂用帳戶有多個相關聯的方案，請選擇適當的 **支援方案** 。 您必須已付費購買支援方案，才能啟用技術支援。
 
-3. 在**步驟 2** 中，選擇 [嚴重性]****，並指定問題是與陣列還是 StorSimple 裝置管理員服務有關。 同時，選擇這個問題的 [類別]****，並提供問題的其他 [詳細資料]****。
+3. 在  ，並指定問題是與陣列還是 StorSimple 裝置管理員服務有關。 同時，選擇這個問題的 [類別]  ，並提供問題的其他 [詳細資料]  。
    
-    ![新增支援要求](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
+    ![螢幕擷取畫面顯示 [問題] 窗格，您可以在其中輸入支援要求的問題類型、類別和詳細資料。](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
 
-4. 在**步驟 3** 中，提供您的連絡資訊。 Microsoft 支援服務會利用此資訊來連絡您，以取得進一步資訊、進行診斷及解決。
+4. 在 **步驟 3** 中，提供您的連絡資訊。 Microsoft 支援服務會利用此資訊來連絡您，以取得進一步資訊、進行診斷及解決。
    
-    ![新增支援要求](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
+    ![螢幕擷取畫面：顯示 [連絡人資訊] 窗格。](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
 
 ## <a name="manage-a-support-request"></a>管理支援要求
 
@@ -65,7 +65,7 @@ StorSimple 裝置管理員可讓您在服務摘要刀鋒視窗中**登錄新的�
 
 ![管理支援要求](./media/storsimple-virtual-array-log-support-ticket/manage-support-tickets.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 了解如何[診斷並解決 StorSimple Virtual Array 的相關問題](storsimple-virtual-array-diagnose-problems.md)
 

@@ -7,18 +7,22 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 399ae682028479f801b82b6273f7d1429cfa1b97
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: e50c2bb73f56017a047e6c657c866b61e5eaa465
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494847"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130372"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 數位 Twins 模型
 
-您可以使用[**DigitalTwinModels api**](/rest/api/digital-twins/dataplane/models)、 [.Net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)或[azure 數位 Twins CLI](how-to-use-cli.md)來管理 azure 數位 Twins 實例所知道的[模型](concepts-models.md)。 
+您可以使用 [**DigitalTwinModels api**](/rest/api/digital-twins/dataplane/models)、 [.Net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)或 [azure 數位 Twins CLI](how-to-use-cli.md)來管理 azure 數位 Twins 實例所知道的 [模型](concepts-models.md)。 
 
 管理作業包括上傳、驗證、抓取和刪除模型。 
+
+## <a name="prerequisites"></a>Prerequisites
+
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
 ## <a name="create-models"></a>建立模型
 
@@ -61,7 +65,7 @@ Azure 數位 Twins 的模型會以 DTDL 撰寫，並儲存為 *json* 檔案。 �
 > [!NOTE]
 > 這是 json 檔案的範例主體，其中定義和儲存模型，以便上傳做為用戶端專案的一部分。 另一方面，REST API 呼叫會採用類似上述的模型定義陣列， (對應至 `IEnumerable<string>` .NET SDK) 中的。 因此，若要直接在 REST API 中使用此模型，請以括弧括住。
 
-此模型會定義病人房間的名稱和唯一識別碼，並使用屬性來代表訪客計數和手擦洗狀態 (這些計數器將會從動作感應器和智慧型 soap 機更新，並會一起用來計算 *handwash 百分比* 屬性) 。 此模型也會定義關聯性*hasDevices*，此關聯性會用來將任何以此*房間*模型為基礎的[數位 twins](concepts-twins-graph.md)連接至實際裝置。
+此模型會定義病人房間的名稱和唯一識別碼，並使用屬性來代表訪客計數和手擦洗狀態 (這些計數器將會從動作感應器和智慧型 soap 機更新，並會一起用來計算 *handwash 百分比* 屬性) 。 此模型也會定義關聯性 *hasDevices* ，此關聯性會用來將任何以此 *房間* 模型為基礎的 [數位 twins](concepts-twins-graph.md)連接至實際裝置。
 
 在此方法之後，您可以繼續為醫院的 wards、區域或醫院本身定義模型。
 
@@ -200,7 +204,7 @@ Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
 
 這也表示上傳新版本的模型不會自動影響現有的 twins。 現有的 twins 只會保留舊模型版本的實例。
 
-您可以藉由修補，將這些現有的 twins 更新為新的模型版本，如「*如何：管理數位 twins*」的「[*更新數位對應項的模型*](how-to-manage-twin.md#update-a-digital-twins-model)」一節中所述。 在相同的修補程式中，您必須將 **模型識別碼** (更新為新版本) 以及 **必須在對應項上更改的任何欄位，使其符合新的模型**。
+您可以藉由修補，將這些現有的 twins 更新為新的模型版本，如「 *如何：管理數位 twins* 」的「 [*更新數位對應項的模型*](how-to-manage-twin.md#update-a-digital-twins-model)」一節中所述。 在相同的修補程式中，您必須將 **模型識別碼** (更新為新版本) 以及 **必須在對應項上更改的任何欄位，使其符合新的模型** 。
 
 ### <a name="remove-models"></a>移除模型
 
@@ -227,7 +231,7 @@ client.DecommissionModel(dtmiOfPlanetInterface);
 
 您可以一次刪除實例中的所有模型，也可以在個別的基礎上進行。
 
-如需如何刪除所有模型的範例，請下載教學課程中使用的範例應用程式 [*：使用範例用戶端應用程式探索基本概念*](tutorial-command-line-app.md)。 *CommandLoop.cs*檔案會在函式中執行此 `CommandDeleteAllModels` 工作。
+如需如何刪除所有模型的範例，請下載教學課程中使用的範例應用程式 [*：使用範例用戶端應用程式探索基本概念*](tutorial-command-line-app.md)。 *CommandLoop.cs* 檔案會在函式中執行此 `CommandDeleteAllModels` 工作。
 
 本節的其餘部分會將模型刪除細分為更詳細的資料，並顯示如何針對個別模型執行此作業。
 

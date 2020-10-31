@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: c74535b8cf11ec4beb413654bdddedb5ba847eea
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 06a2a5bbe637cd2366dbdf218c0278cd683635df
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275540"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130029"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>商業 marketplace 中的 SaaS 履行 Api 第2版
 
@@ -28,7 +28,7 @@ ms.locfileid: "92275540"
 
 ![Marketplace 中 SaaS 訂用帳戶的生命週期](./media/saas-subscription-lifecycle-api-v2.png)
 
-#### <a name="purchased-but-not-yet-activated-pendingfulfillmentstart"></a>已購買但尚未啟用 (*PendingFulfillmentStart*) 
+#### <a name="purchased-but-not-yet-activated-pendingfulfillmentstart"></a>已購買但尚未啟用 ( *PendingFulfillmentStart* ) 
 
 在終端客戶 (或 CSP) 在 marketplace 中購買 SaaS 供應專案後，發行者應會收到購買通知，以便在發行者端為終端客戶建立及設定新的 SaaS 帳戶。
 
@@ -51,7 +51,7 @@ ms.locfileid: "92275540"
 發行者應執行 SSO 登入，以提供 Microsoft 在此流程中所需的使用者體驗。  設定 SSO 時，請務必使用多租使用者 Azure AD 應用程式，同時允許公司和學校帳戶或個人 Microsoft 帳戶。  這項需求只適用于登陸頁面，以及在已使用 Microsoft 認證登入的情況下，重新導向至 SaaS 服務的使用者。 它不適用於 SaaS 服務的所有登入。
 
 > [!NOTE]
->如果 SSO 登入需要系統管理員授與應用程式的許可權，合作夥伴中心中的供應專案描述必須公開需要系統管理員層級的存取權。 這是為了符合 [商業 marketplace 認證原則](https://docs.microsoft.com/legal/marketplace/certification-policies#10003-authentication-options)。
+>如果 SSO 登入需要系統管理員授與應用程式的許可權，合作夥伴中心中的供應專案描述必須公開需要系統管理員層級的存取權。 這是為了符合 [商業 marketplace 認證原則](/legal/marketplace/certification-policies#10003-authentication-options)。
 
 登入之後，客戶應該在發行者端完成 SaaS 設定。 然後，發行者必須呼叫 [啟用訂](#activate-a-subscription) 用帳戶 API，以將 SaaS 帳戶布建完成的信號傳送給 Marketplace。
 這將會啟動客戶的計費週期。 如果「啟用訂用帳戶 API」呼叫不成功，則不會向客戶收取購買費用。
@@ -63,7 +63,7 @@ ms.locfileid: "92275540"
 
 此狀態是已布建之 SaaS 訂用帳戶的穩定狀態。 一旦在 Microsoft 端處理 [啟用訂閱 API](#activate-a-subscription) 呼叫，SaaS 訂用帳戶就會標示為已訂閱。 SaaS 服務現在已準備好供客戶在發行者端使用，而且客戶會向客戶收費。
 
-當 SaaS 訂用帳戶已在使用中，而且客戶選擇從 Azure 入口網站或 M365 系統管理中心啟動**管理**saas 體驗時，Microsoft 會再次使用*權杖*參數來呼叫**登陸頁面 URL** ，如同在啟動流程中一樣。  發行者應區別現有 SaaS 帳戶的新購買與管理，並據此處理此登陸頁面 URL 呼叫。
+當 SaaS 訂用帳戶已在使用中，而且客戶選擇從 Azure 入口網站或 M365 系統管理中心啟動 **管理** saas 體驗時，Microsoft 會再次使用 *權杖* 參數來呼叫 **登陸頁面 URL** ，如同在啟動流程中一樣。  發行者應區別現有 SaaS 帳戶的新購買與管理，並據此處理此登陸頁面 URL 呼叫。
 
 #### <a name="being-updated-subscribed"></a> (訂閱) 更新
 
@@ -108,7 +108,7 @@ Marketplace 起始之更新案例的 API 呼叫順序如下所示。
 
 #### <a name="suspended-suspended"></a>擱置的 (已 *暫* 止) 
 
-此狀態表示尚未收到客戶的 SaaS 服務付款。 Microsoft 將會在 SaaS 訂用帳戶狀態中通知發行者此項變更。 通知是透過呼叫 webhook，並將 *action* 參數設定為 [已 *暫停*] 來完成。
+此狀態表示尚未收到客戶的 SaaS 服務付款。 Microsoft 將會在 SaaS 訂用帳戶狀態中通知發行者此項變更。 通知是透過呼叫 webhook，並將 *action* 參數設定為 [已 *暫停* ] 來完成。
 
 「發行者」不一定會在「發行者」端變更 SaaS 服務。 我們建議發行者將此資訊提供給已被擱置的客戶使用，並限制或封鎖客戶對 SaaS 服務的存取。  永遠不會收到付款的機率。
 
@@ -135,7 +135,7 @@ Microsoft 會為客戶提供30天的寬限期，然後再自動取消訂用帳�
 
 只有已暫止的訂閱可以恢復。  當 SaaS 訂用帳戶恢復時，其狀態會維持在暫停狀態。  這項作業完成後，訂用帳戶的狀態將會變成作用中狀態。
 
-#### <a name="renewed-subscribed"></a> (*訂閱*) 更新
+#### <a name="renewed-subscribed"></a> ( *訂閱* ) 更新
 
 訂用帳戶期限 (在一個月或一年) 之後，Microsoft 會自動更新 SaaS 訂用帳戶。  所有 SaaS 訂閱的自動續約設定預設值都是 *true* 。 使用中的 SaaS 訂用帳戶將繼續以定期更新。 當訂用帳戶更新時，Microsoft 不會通知發行者。 客戶可以透過 M365 系統管理員入口網站或 Azure 入口網站，關閉 SaaS 訂用帳戶的自動續約。  在此情況下，SaaS 訂用帳戶將會在目前的帳單期限結束時自動取消。  客戶也可以在任何時間點取消 SaaS 訂用帳戶。
 
@@ -151,7 +151,7 @@ Microsoft 會為客戶提供30天的寬限期，然後再自動取消訂用帳�
 
 SaaS 訂用帳戶可在其生命週期中的任何時間點取消。 一旦取消，就無法重新啟用訂用帳戶。
 
-## <a name="api-reference"></a>應用程式開發介面參考
+## <a name="api-reference"></a>API 參考資料
 
 本節記載 SaaS 訂用帳戶和作業 Api。
 
@@ -674,7 +674,7 @@ TLS 1.2 版將會在最基本版本的 HTTPS 通訊之後強制執行。 請務�
 
 取消訂閱指定的 SaaS 訂用帳戶。  發行者不需要使用此 API，我們建議將客戶導向 marketplace，以取消 SaaS 訂閱。
 
-如果發行者決定執行在發行者端的 marketplace 中購買的 SaaS 訂用帳戶取消，則必須呼叫此 API。  完成此呼叫後，訂用帳戶的狀態將*會在 Microsoft 端取消訂閱。*
+如果發行者決定執行在發行者端的 marketplace 中購買的 SaaS 訂用帳戶取消，則必須呼叫此 API。  完成此呼叫後，訂用帳戶的狀態將 *會在 Microsoft 端取消訂閱。*
 
 如果在下列寬限期內取消訂用帳戶，則不會向客戶收費：
 
@@ -788,9 +788,9 @@ TLS 1.2 版將會在最基本版本的 HTTPS 通訊之後強制執行。 請務�
 
 #### <a name="get-operation-status"></a>取得作業狀態
 
-讓發行者追蹤指定之非同步作業的狀態：  **取消訂閱**、 **ChangePlan**或 **ChangeQuantity**。
+讓發行者追蹤指定之非同步作業的狀態：  **取消訂閱** 、 **ChangePlan** 或 **ChangeQuantity** 。
 
-`operationId`此 API 呼叫的可以從作業 **-位置**、取得暫止的作業 API 呼叫，或 `<id>` 在 webhook 呼叫中收到的參數值的值中取出。
+`operationId`此 API 呼叫的可以從作業 **-位置** 、取得暫止的作業 API 呼叫，或 `<id>` 在 webhook 呼叫中收到的參數值的值中取出。
 
 ##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>獲取 `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
@@ -850,7 +850,7 @@ Response body:
 
 更新暫止作業的狀態，以指出作業在發行者端的成功或失敗。
 
-`operationId`此 API 呼叫的可以從作業 **-位置**傳回的值、取得暫止的作業 API 呼叫，或 `<id>` 在 webhook 呼叫中收到的參數值抓取。
+`operationId`此 API 呼叫的可以從作業 **-位置** 傳回的值、取得暫止的作業 API 呼叫，或 `<id>` 在 webhook 呼叫中收到的參數值抓取。
 
 ##### <a name="patch-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>補丁 `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
@@ -962,7 +962,7 @@ Response body:
 
 您可以根據供應專案發佈的位置，從 Azure 入口網站或 Microsoft AppSource 的網站觸發購買流程。
 
-*變更計畫*、 *變更數量*和 *取消訂閱* 動作都會從發行者端進行測試。  從 Microsoft 端開始 *，您* 可以從 Azure 入口網站和系統管理中心 (入口網站中的 Microsoft AppSource 購買) 進行管理。  您只能從系統管理中心觸發*變更數量和方案*。
+*變更計畫* 、 *變更數量* 和 *取消訂閱* 動作都會從發行者端進行測試。  從 Microsoft 端開始 *，您* 可以從 Azure 入口網站和系統管理中心 (入口網站中的 Microsoft AppSource 購買) 進行管理。  您只能從系統管理中心觸發 *變更數量和方案* 。
 
 ## <a name="get-support"></a>取得支援
 

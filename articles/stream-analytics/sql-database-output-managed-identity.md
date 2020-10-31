@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 8b5c106c1464ec6d77305b1985cc8dbd51e2b4db
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: c703dd4053cc27d469d83d344da910e8e5b23ddb
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519472"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129893"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>使用受控識別從 Azure 串流分析作業 (預覽) 存取 Azure SQL Database
 
@@ -44,7 +44,7 @@ Azure 串流分析支援 Azure SQL Database 輸出接收的[受控識別驗證](
 
    ![顯示為主體識別碼的物件識別碼](./media/sql-db-output-managed-identity/principal-id.png)
 
-   服務主體與串流分析作業的名稱相同。 例如，如果作業的名稱是 *MyASAJob*，則服務主體的名稱也會是 *MyASAJob*。
+   服務主體與串流分析作業的名稱相同。 例如，如果作業的名稱是 *MyASAJob* ，則服務主體的名稱也會是 *MyASAJob* 。
 
 ## <a name="select-an-active-directory-admin"></a>選取 Active Directory 管理員
 
@@ -60,7 +60,7 @@ Azure 串流分析支援 Azure SQL Database 輸出接收的[受控識別驗證](
 
    ![新增 Active Directory 管理員](./media/sql-db-output-managed-identity/add-admin.png)
 
-   [Active Directory 系統管理員] 頁面會顯示您 Active Directory 的所有成員和群組。 無法選取灰色的使用者或群組，因為這些使用者或群組不受 Azure Active Directory 系統管理員的支援。 請參閱 **Azure Active Directory Features and Limitations**    [使用 Azure Active Directory 驗證 SQL Database 或 Azure Synapse 的驗證](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)Azure Active Directory 功能和限制一節中支援的系統管理員清單。 Azure 角色型存取控制 (Azure RBAC) 只適用于入口網站，不會傳播至 SQL Server。 此外，選取的使用者或群組就是在下一節中能夠建立**自主資料庫使用者**的使用者。
+   [Active Directory 系統管理員] 頁面會顯示您 Active Directory 的所有成員和群組。 無法選取灰色的使用者或群組，因為這些使用者或群組不受 Azure Active Directory 系統管理員的支援。 請參閱 **Azure Active Directory Features and Limitations**    [使用 Azure Active Directory 驗證 SQL Database 或 Azure Synapse 的驗證](../azure-sql/database/authentication-aad-overview.md#azure-ad-features-and-limitations)Azure Active Directory 功能和限制一節中支援的系統管理員清單。 Azure 角色型存取控制 (Azure RBAC) 只適用于入口網站，不會傳播至 SQL Server。 此外，選取的使用者或群組就是在下一節中能夠建立 **自主資料庫使用者** 的使用者。
 
 1. 在 [Active Directory 管理員] 頁面上選取 [儲存]。 變更管理員的程序需要幾分鐘的時間。
 
@@ -102,7 +102,7 @@ Azure 串流分析支援 Azure SQL Database 輸出接收的[受控識別驗證](
 
 ## <a name="grant-stream-analytics-job-permissions"></a>授與串流分析作業權限
 
-當您在入口網站中建立自主資料庫使用者並取得 Azure 服務的存取權 (如上一節所述) 之後，您的串流分析作業會從受控識別獲得權限，可透過受控識別**連線**到您的 SQL Database 資源。 建議您將 SELECT 和 INSERT 權限授與串流分析作業，因為稍後在串流分析工作流程中需要用到。 **SELECT** 權限可讓作業測試其與 SQL Database 中資料表的連線。 **INSERT** 權限可讓您在設定輸入和 SQL Database 輸出之後，測試端對端串流分析查詢。您可以使用 SQL Server Management Studio 將這些權限授與串流分析作業。 如需詳細資訊，請參閱 GRANT (Transact-sql) 參考。
+當您在入口網站中建立自主資料庫使用者並取得 Azure 服務的存取權 (如上一節所述) 之後，您的串流分析作業會從受控識別獲得權限，可透過受控識別 **連線** 到您的 SQL Database 資源。 建議您將 SELECT 和 INSERT 權限授與串流分析作業，因為稍後在串流分析工作流程中需要用到。 **SELECT** 權限可讓作業測試其與 SQL Database 中資料表的連線。 **INSERT** 權限可讓您在設定輸入和 SQL Database 輸出之後，測試端對端串流分析查詢。您可以使用 SQL Server Management Studio 將這些權限授與串流分析作業。 如需詳細資訊，請參閱 GRANT (Transact-sql) 參考。
 
 若只要授與資料庫中特定資料表或物件的權限，請使用下列 T-SQL 語法並執行查詢。 
 

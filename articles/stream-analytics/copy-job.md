@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/11/2019
-ms.openlocfilehash: e0214cb9515a5974f1de9a27760dc037f7593f30
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba63358347cf9722d2cafa35598b9b3b37f49dc3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90892304"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129451"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>複製或備份 Azure 串流分析作業
 
-您可以使用 Visual Studio Code 或 Visual Studio 來複製或備份已部署的 Azure 串流分析作業。 將作業複製到另一個區域時，並不會複製最後的輸出時間。 因此，當您啟動複製的作業時，無法使用 [ [**上次停止時間**](https://docs.microsoft.com/azure/stream-analytics/start-job#start-options) ] 選項。
+您可以使用 Visual Studio Code 或 Visual Studio 來複製或備份已部署的 Azure 串流分析作業。 將作業複製到另一個區域時，並不會複製最後的輸出時間。 因此，當您啟動複製的作業時，無法使用 [ [**上次停止時間**](./start-job.md#start-options) ] 選項。
 
 ## <a name="before-you-begin"></a>開始之前
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/)。
@@ -45,7 +45,7 @@ ms.locfileid: "90892304"
 
 ## <a name="visual-studio"></a>Visual Studio
 
-1. 遵循將已 [部署的 Azure 串流分析作業匯出至專案指示](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-vs-tools#export-jobs-to-a-project)。
+1. 遵循將已 [部署的 Azure 串流分析作業匯出至專案指示](./stream-analytics-vs-tools.md#export-jobs-to-a-project)。
 
 2. 在 \* [查詢編輯器] 中開啟 >script.asaql 檔案，選取腳本編輯器中的 [ **提交至 Azure** ]，然後依照指示將作業發佈到另一個區域，或使用新的名稱來備份。
 

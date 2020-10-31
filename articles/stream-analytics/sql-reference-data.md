@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 1ae5908fe3ab95dcd62da976988bd7ce107217e5
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 1826b66b0548b7567af59de64549c7eb700025c3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027370"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130896"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>將來自 SQL Database 的參考資料用於 Azure 串流分析作業
 
@@ -173,11 +173,11 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
    請注意，除了差異查詢之外，串流分析執行階段可能會定期執行快照集查詢以儲存檢查點。
 
 ## <a name="test-your-query"></a>測試查詢
-   請務必確認您的查詢會傳回串流分析作業將作為參考資料使用的預期資料集。 若要測試查詢，請移至入口網站上 [工作拓撲] 區段底下的 [輸入]。 您接著可以選取您 SQL Database 參考輸入上的 [範例資料]。 在範例可供使用之後，您便可以下載該檔案，並檢查傳回的資料是否與預期一致。 如果您想要將開發和測試反覆項目最佳化，建議您使用[適用於 Visual Studio 的串流分析工具](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install) \(部分機器翻譯\)。 您也可以使用您偏好的任何其他工具，來先確認查詢能從 Azure SQL Database 傳回正確的結果，再將其用於您的串流分析作業。 
+   請務必確認您的查詢會傳回串流分析作業將作為參考資料使用的預期資料集。 若要測試查詢，請移至入口網站上 [工作拓撲] 區段底下的 [輸入]。 您接著可以選取您 SQL Database 參考輸入上的 [範例資料]。 在範例可供使用之後，您便可以下載該檔案，並檢查傳回的資料是否與預期一致。 如果您想要將開發和測試反覆項目最佳化，建議您使用[適用於 Visual Studio 的串流分析工具](./stream-analytics-tools-for-visual-studio-install.md) \(部分機器翻譯\)。 您也可以使用您偏好的任何其他工具，來先確認查詢能從 Azure SQL Database 傳回正確的結果，再將其用於您的串流分析作業。 
 
 ### <a name="test-your-query-with-visual-studio-code"></a>使用 Visual Studio Code 測試您的查詢
 
-   在 Visual Studio Code 上安裝 [Azure 串流分析工具](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) 和 [SQL Server (mssql) ](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) ，並設定 ASA 專案。 如需詳細資訊，請參閱 [快速入門：在 Visual Studio Code 中建立 Azure 串流分析作業](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code) ，以及 [SQL Server (mssql) 延伸模組教學](https://aka.ms/mssql-getting-started)課程。
+   在 Visual Studio Code 上安裝 [Azure 串流分析工具](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) 和 [SQL Server (mssql) ](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql) ，並設定 ASA 專案。 如需詳細資訊，請參閱 [快速入門：在 Visual Studio Code 中建立 Azure 串流分析作業](./quick-create-visual-studio-code.md) ，以及 [SQL Server (mssql) 延伸模組教學](/sql/tools/visual-studio-code/sql-server-develop-use-vscode)課程。
 
 1. 設定您的 SQL 參考資料輸入。
    

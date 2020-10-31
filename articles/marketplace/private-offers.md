@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: 2808f0d3b99257d52b2d400424f256f980005863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bb5dccfc99a693ec89ed08ac31b77eb16442f73
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88607194"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129961"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft 商業 marketplace 中的私人優惠
 
@@ -22,26 +22,26 @@ ms.locfileid: "88607194"
 
 有愈來愈多的企業客戶利用線上市集來尋找、試用及購買雲端解決方案。 現在透過私人供應項目，發行者可以利用市集私下與目標客戶分享自訂解決方案，其中包含企業所需的功能：
 
-- 「交涉定價」** 可讓發行者延長公開上市供應項目的定價折扣。
-- 「私人條款及條件」** 可讓發行者量身打造適合特定客戶的條款及條件。
-- 「特製化的設定」** 可讓發行者依據個別客戶的需求，量身打造其虛擬機器、Azure 應用程式和 SaaS 應用程式供應項目。 此選項也可讓發行者提供新產品功能的預覽權限，再更廣泛地推出給所有客戶。
+- 「交涉定價」  可讓發行者延長公開上市供應項目的定價折扣。
+- 「私人條款及條件」  可讓發行者量身打造適合特定客戶的條款及條件。
+- 「特製化的設定」  可讓發行者依據個別客戶的需求，量身打造其虛擬機器、Azure 應用程式和 SaaS 應用程式供應項目。 此選項也可讓發行者提供新產品功能的預覽權限，再更廣泛地推出給所有客戶。
 
 私人供應項目可讓發行者利用公用市集的規模和整體可用性，並享有交涉及達成自訂交易和設定所需的彈性和控制。 這些功能共同創造企業加強採用雲端市集的機會。 企業現在可以按照預期及所需的方式來進行買賣。
 
 私人供應項目目前適用於虛擬機器、Azure 應用程式 (實作為解決方案範本或受控應用程式) 及 SaaS 應用程式供應項目。
 
-<!--- Like public offers, private offers can be created and managed via the [Cloud Partner Portal](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md). Customers can be granted or revoked access to private offers in minutes.
+<!--- Like public offers, private offers can be created and managed via the [Cloud Partner Portal](). Customers can be granted or revoked access to private offers in minutes.
 --->
 
 ## <a name="creating-private-offers-using-plans"></a>使用方案建立私人優惠
 
-若為 *新的或現有的方案*，發行者可以建立新的方案， (先前稱為 sku) ，並將其標示為私用，以輕鬆建立新的私用變數。 每個供應專案最多可有45個私人方案。
+若為 *新的或現有的方案* ，發行者可以建立新的方案， (先前稱為 sku) ，並將其標示為私用，以輕鬆建立新的私用變數。 每個供應專案最多可有45個私人方案。
 
-<!--- [Private SKUs](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) --->
+<!--- [Private SKUs]() --->
 
 私用計畫是供應專案的元件，只由目標客戶看到及可購買。 私人方案可以重複使用已為公用方案發佈的基底映射及/或供應專案中繼資料。 此選項可讓發行者建立公用供應項目的多種私人變體，而不需要發行相同基底映像和供應項目中繼資料的多種版本。 針對虛擬機器和 Azure 應用程式供應專案，當私人方案與公用方案共用基礎映射時，對供應專案基底映射所做的任何變更，都會使用該基底映射傳播到所有公用和私人方案。
 
-針對 *只包含私人方案的新*供應專案，發行者可以建立其供應專案做為任何其他供應專案，然後將方案標示為私用。 只有私人方案的供應專案將無法透過 Microsoft 商業 marketplace 或未與供應專案相關聯的客戶 [Azure 入口網站](https://azure.microsoft.com/features/azure-portal/) 來探索或存取。
+針對 *只包含私人方案的新* 供應專案，發行者可以建立其供應專案做為任何其他供應專案，然後將方案標示為私用。 只有私人方案的供應專案將無法透過 Microsoft 商業 marketplace 或未與供應專案相關聯的客戶 [Azure 入口網站](https://azure.microsoft.com/features/azure-portal/) 來探索或存取。
 
 >[!NOTE]
 >公用 Azure Marketplace 或 AppSource 中不會顯示僅包含私人方案的供應專案。
@@ -69,5 +69,5 @@ ms.locfileid: "88607194"
 <!---
 ## Next steps
 
-To start using private offers, follow the steps in the [Private SKUs and Plans](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) guide.
+To start using private offers, follow the steps in the [Private SKUs and Plans]() guide.
 --->

@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.topic: how-to
 ms.date: 10/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7a084b2d0582f53d4372ba3332194629ad29a4ec
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: cba81b8415f0f9cf7253e674e90ae09718b94d54
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041876"
+ms.locfileid: "93130471"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure IoT Edge 串流分析
  
@@ -32,11 +32,11 @@ IoT Edge 上的 Azure 串流分析是在 [Azure IoT Edge](https://azure.microsof
 ## <a name="edge-jobs-in-azure-stream-analytics"></a>Azure 串流分析中的 Edge 作業
 ### <a name="what-is-an-edge-job"></a>什麼是 "Edge" 作業？
 
-ASA Edge 作業在部署到 [Azure IoT Edge 裝置](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)的容器中執行。 它們是由兩個部分組成：
+ASA Edge 作業在部署到 [Azure IoT Edge 裝置](../iot-edge/about-iot-edge.md)的容器中執行。 它們是由兩個部分組成：
 1.  負責作業定義的雲端部分：使用者在雲端中定義輸入、輸出、查詢和其他設定 (出問題的事件等)。
 2.  在您的 IoT 裝置上執行的模組。 它包含 ASA 引擎，並會從雲端接收作業定義。 
 
-ASA 會使用 IoT 中樞將 Edge 作業部署到裝置。 關於 [IoT Edge 部署的詳細資訊可以在這裡看到](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring)。
+ASA 會使用 IoT 中樞將 Edge 作業部署到裝置。 關於 [IoT Edge 部署的詳細資訊可以在這裡看到](../iot-edge/module-deployment-monitoring.md)。
 
 ![Azure 串流分析 Edge 作業](media/stream-analytics-edge/stream-analytics-edge-job.png)
 
@@ -48,24 +48,24 @@ ASA 會使用 IoT 中樞將 Edge 作業部署到裝置。 關於 [IoT Edge 部�
 | --- | --- |
 | **建立儲存體容器** | 儲存體容器是用來儲存您的作業定義，您的 IoT 裝置可在其中加以存取。 <br>  您可以重複使用任何現有的儲存體容器。 |
 | **建立 ASA Edge 作業** | 建立新作業，請選取 **Edge** 作為 **裝載環境** 。 <br> 這些作業會從雲端建立/管理，並在您自己的 IoT Edge 裝置上執行。 |
-| **在您的裝置上設定 IoT Edge 環境** | 適用於 [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) 或 [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) 的指示。|
+| **在您的裝置上設定 IoT Edge 環境** | 適用於 [Windows](../iot-edge/quickstart.md) 或 [Linux](../iot-edge/quickstart-linux.md) 的指示。|
 | **在 IoT Edge 裝置上部署 ASA** | ASA 作業定義已匯出至先前建立的儲存體容器。 |
 
-您可以遵循[此逐步教學課程](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)，在 IoT Edge 在部署您的第一個 ASA 作業。 下列影片應可協助您了解在 IoT Edge 裝置上執行串流分析作業的程序：  
+您可以遵循[此逐步教學課程](../iot-edge/tutorial-deploy-stream-analytics.md)，在 IoT Edge 在部署您的第一個 ASA 作業。 下列影片應可協助您了解在 IoT Edge 裝置上執行串流分析作業的程序：  
 
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T157/player]
 
 #### <a name="create-a-storage-container"></a>建立儲存體容器
 需要儲存體容器，才能匯出 ASA 已編譯查詢和作業組態。 它可用來設定包含您特定查詢的 ASA Docker 映像。 
-1. 依照[這些指示](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)從 Azure 入口網站建立儲存體帳戶。 您可以保留所有預設選項將此帳戶用於 ASA。
+1. 依照[這些指示](../storage/common/storage-account-create.md)從 Azure 入口網站建立儲存體帳戶。 您可以保留所有預設選項將此帳戶用於 ASA。
 2. 在新建立的儲存體帳戶中，建立 blob 儲存體容器：
     1. 按一下 [Blob]，然後按一下 [+ 容器]。 
     2. 輸入名稱，並將容器保留為 **私人** 。
 
 #### <a name="create-an-asa-edge-job"></a>建立 ASA Edge 作業
 > [!Note]
-> 本教學課程著重於使用 Azure 入口網站建立 ASA 作業。 您也可以[使用 Visual Studio 外掛程式建立 ASA Edge 作業](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
+> 本教學課程著重於使用 Azure 入口網站建立 ASA 作業。 您也可以[使用 Visual Studio 外掛程式建立 ASA Edge 作業](./stream-analytics-tools-for-visual-studio-edge-jobs.md)
 
 1. 從 Azure 入口網站中，建立新的「串流分析作業」。 [在這裡導向連結以建立新的 ASA 作業](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob)。
 
@@ -81,7 +81,7 @@ ASA 會使用 IoT 中樞將 Edge 作業部署到裝置。 關於 [IoT Edge 部�
 4. 在 [IoT Edge 設定] 功能表中設定儲存體容器資訊。
 
 5. 設定選擇性設定
-    1. **事件順序** 。 您可以在入口網站中設定順序錯亂的事件。 您可以在[這裡](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)取得文件。
+    1. **事件順序** 。 您可以在入口網站中設定順序錯亂的事件。 您可以在[這裡](/stream-analytics-query/time-skew-policies-azure-stream-analytics)取得文件。
     2. **地區設定** 。 設定國際化格式。
 
 
@@ -97,7 +97,7 @@ ASA 會使用 IoT 中樞將 Edge 作業部署到裝置。 關於 [IoT Edge 部�
 - 在 Edge 裝置上安裝 Docker 和 IoT Edge 執行階段。
 - 在 IoT 中樞中將您的裝置設定為 **IoT Edge 裝置** 。
 
-適用於 [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) 或 [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) 的 IoT Edge 文件中會說明這些步驟。  
+適用於 [Windows](../iot-edge/quickstart.md) 或 [Linux](../iot-edge/quickstart-linux.md) 的 IoT Edge 文件中會說明這些步驟。  
 
 
 ####  <a name="deployment-asa-on-your-iot-edge-devices"></a>在 IoT Edge 裝置上部署 ASA
@@ -113,11 +113,11 @@ ASA 會使用 IoT 中樞將 Edge 作業部署到裝置。 關於 [IoT Edge 部�
 > 當您將作業部署到 IoT Edge 裝置時，ASA 會建立作業定義檔的共用存取簽章 (SAS)。 SAS 索引鍵會使用裝置對應項安全地傳輸至 IoT Edge 裝置。 這個索引鍵的到期日是從其建立起的三年。 當您更新 IoT Edge 作業時，SAS 將會變更，但映像版本則不會變更。 在 **更新** 後，請遵循部署工作流程，並在裝置上記錄更新通知。
 
 
-如需 IoT Edge 部署的詳細資訊，請參閱[此頁面](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring)。
+如需 IoT Edge 部署的詳細資訊，請參閱[此頁面](../iot-edge/module-deployment-monitoring.md)。
 
 
 ##### <a name="configure-routes"></a>設定路由
-IoT Edge 提供方法以宣告方式在模組之間及模組與 IoT 中樞之間路由訊息。 [這裡](https://docs.microsoft.com/azure/iot-edge/module-composition)說明完整語法。
+IoT Edge 提供方法以宣告方式在模組之間及模組與 IoT 中樞之間路由訊息。 [這裡](../iot-edge/module-composition.md)說明完整語法。
 ASA 作業中建立的輸入和輸出名稱可用來作為路由的端點。  
 
 ###### <a name="example"></a>範例
@@ -145,7 +145,7 @@ ASA 作業中建立的輸入和輸出名稱可用來作為路由的端點。
 ### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>相較於雲端作業，IoT Edge 作業的目前限制
 目標是在 IoT Edge 與業和雲端作業之間進行同位檢查。 支援大部份的 SQL 查詢語言功能，使其讓能夠在雲端和 IoT Edge 上執行相同的邏輯。
 不過，Edge 作業尚未支援下列功能：
-* JavaScript 中的使用者定義函式 (UDF)。 您可以在[適用於 IoT Edge 的 C# 作業](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf) (預覽版) 中找到 UDF。
+* JavaScript 中的使用者定義函式 (UDF)。 您可以在[適用於 IoT Edge 的 C# 作業](./stream-analytics-edge-csharp-udf.md) (預覽版) 中找到 UDF。
 * 使用者定義彙總 (UDA)。
 * Azure ML 函式。
 * 在單一步驟中使用超過 14 個彙總。
@@ -165,7 +165,7 @@ IoT Edge 上的 ASA 可供作為 Windows 和 Linux 映像，能在 x86-64 或 AR
 
 ### <a name="input-and-output"></a>輸入和輸出
 #### <a name="input-and-output-streams"></a>輸入和輸出資料流
-ASA Edge 作業可以從 IoT Edge 裝置上執行的其他模組取得輸入和輸出。 若要連線進出特定模組，您可以在部署期間設定路由組態。 [IoT Edge 模組複合文件](https://docs.microsoft.com/azure/iot-edge/module-composition)中會說明詳細資訊。
+ASA Edge 作業可以從 IoT Edge 裝置上執行的其他模組取得輸入和輸出。 若要連線進出特定模組，您可以在部署期間設定路由組態。 [IoT Edge 模組複合文件](../iot-edge/module-composition.md)中會說明詳細資訊。
 
 輸入與輸出都支援 CSV 和 JSON 格式。
 
@@ -176,7 +176,7 @@ ASA Edge 作業可以從 IoT Edge 裝置上執行的其他模組取得輸入和�
 
 
 ##### <a name="reference-data"></a>參考資料
-參考資料 (也稱為查詢資料表) 基本上是靜態或不常變更的有限資料集。 可用來執行查閱或與資料流相互關聯。 若要使用 Azure 串流分析作業中的參考資料，您通常會在查詢中使用[參考資料聯結](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics)。 如需詳細資訊，請參閱[使用參考資料在串流分析中進行查閱](stream-analytics-use-reference-data.md)。
+參考資料 (也稱為查詢資料表) 基本上是靜態或不常變更的有限資料集。 可用來執行查閱或與資料流相互關聯。 若要使用 Azure 串流分析作業中的參考資料，您通常會在查詢中使用[參考資料聯結](/stream-analytics-query/reference-data-join-azure-stream-analytics)。 如需詳細資訊，請參閱[使用參考資料在串流分析中進行查閱](stream-analytics-use-reference-data.md)。
 
 目前僅支援本機參考資料。 當作業部署到 IoT Edge 裝置時，它會從使用者定義的檔案路徑載入參考資料。
 
@@ -226,13 +226,13 @@ IoT Edge 上的參考資料更新會由部署觸發。 觸發之後，ASA 模組
       
       
 ## <a name="get-help"></a>取得說明
-如需進一步的協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
+如需進一步的協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Azure Iot Edge 的詳細資訊](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
-* [ASA IoT Edge 教學課程](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
-* [使用 Visual Studio 工具來開發串流分析 Edge 作業](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
+* [Azure Iot Edge 的詳細資訊](../iot-edge/about-iot-edge.md)
+* [ASA IoT Edge 教學課程](../iot-edge/tutorial-deploy-stream-analytics.md)
+* [使用 Visual Studio 工具來開發串流分析 Edge 作業](./stream-analytics-tools-for-visual-studio-edge-jobs.md)
 * [使用 API 實作適用於串流分析的 CI/CD](stream-analytics-cicd-api.md)
 
 <!--Link references-->
@@ -240,5 +240,5 @@ IoT Edge 上的參考資料更新會由部署觸發。 觸發之後，ASA 模組
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: /stream-analytics-query/stream-analytics-query-language-reference
+[stream.analytics.rest.api.reference]: /rest/api/streamanalytics/

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a771ac1a831bc7994f28ba15139b66be346af02
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 124d2cf4380153bd3ea68de9233f6a1b5eb6ba78
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097748"
+ms.locfileid: "93130692"
 ---
 # <a name="stop-or-delete-your-azure-stream-analytics-job"></a>停止或刪除您的 Azure 串流分析作業
 
@@ -53,12 +53,12 @@ ms.locfileid: "93097748"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-若要使用 PowerShell 停止作業，請使用 [AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob) Cmdlet。 若要使用 PowerShell 來刪除作業，請使用 [AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/Remove-azStreamAnalyticsJob) Cmdlet。
+若要使用 PowerShell 停止作業，請使用 [AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob) Cmdlet。 若要使用 PowerShell 來刪除作業，請使用 [AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/Remove-azStreamAnalyticsJob) Cmdlet。
 
 ## <a name="stop-or-delete-a-job-using-azure-sdk-for-net"></a>使用適用於 .NET 的 Azure SDK 停止或刪除作業
 
-若要使用適用於 .NET 的 Azure SDK 停止作業，請使用 [StreamingJobsOperationsExtensions.BeginStop](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.beginstop?view=azure-dotnet) 方法。 若要使用適用於 .NET 的 Azure SDK 刪除作業，請使用 [StreamingJobsOperationsExtensions.BeginDelete](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.begindelete?view=azure-dotnet) 方法。
+若要使用適用於 .NET 的 Azure SDK 停止作業，請使用 [StreamingJobsOperationsExtensions.BeginStop](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.beginstop?view=azure-dotnet) 方法。 若要使用適用於 .NET 的 Azure SDK 刪除作業，請使用 [StreamingJobsOperationsExtensions.BeginDelete](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.begindelete?view=azure-dotnet) 方法。
 
 ## <a name="stop-or-delete-a-job-using-rest-api"></a>使用 REST API 停止或刪除作業
 
-若要使用 REST API 停止作業，請參閱 [Stop](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#stop) 方法。 若要使用 REST API 刪除作業，請參閱 [Delete](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#delete) 方法。
+若要使用 REST API 停止作業，請參閱 [Stop](/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#stop) 方法。 若要使用 REST API 刪除作業，請參閱 [Delete](/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#delete) 方法。

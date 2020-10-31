@@ -6,21 +6,18 @@ ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 10/28/2020
+ms.date: 10/30/2020
 ms.author: normesta
-ms.openlocfilehash: 9704ff7dec02a0de044863ec2da6280d65b30ef0
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: dc0b620629b5dce651e02e5fe95b0619c1d42a78
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043491"
+ms.locfileid: "93131151"
 ---
 # <a name="premium-tier-for-azure-data-lake-storage"></a>Azure Data Lake Storage 的進階層
 
-Azure Data Lake Storage Gen2 現在支援 [premium 效能層級](storage-blob-performance-tiers.md#premium-performance)。 Premium 效能層級適用于需要低一致性延遲且擁有大量交易的大型資料分析應用程式和工作負載。 
-
-> [!NOTE]
-> 適用于 Azure Data Lake Storage 的進階層目前為公開預覽狀態。 請參閱 [區域可用性](#regional-availability)。
+Azure Data Lake Storage Gen2 現在支援 [premium 效能層級](storage-blob-performance-tiers.md#premium-performance)。 Premium 效能層級適用于需要低一致性延遲且擁有大量交易的大型資料分析應用程式和工作負載。
 
 ## <a name="workloads-that-can-benefit-from-the-premium-performance-tier"></a>可受益于 premium 效能層的工作負載
 
@@ -106,8 +103,3 @@ Premium 效能層級的儲存體成本較高，但相較于標準效能層級的
 |澳大利亞東部|LRS、ZRS|
 |澳大利亞東南部|LRS|
 |巴西南部|LRS|
-
-
-## <a name="next-steps"></a>後續步驟
-
-請參閱 Azure Data Lake Storage 版 [blog 公告](https://www.microsoft.com)的進階層。

@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/02/2019
-ms.openlocfilehash: 9792641da4b3aebad047179e2c02dad757027801
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90d8c70ac0a34470e8121d2234fd6b898cfed1ab
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045258"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130590"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>使用 Azure 串流分析的地理柵欄和地理空間匯總案例
 
@@ -122,7 +122,7 @@ GROUP BY RegionsRefDataInput.RegionName, hoppingwindow(minute, 1, 15)
 ![Power BI 儀表板上的結果輸出](./media/geospatial-scenarios/power-bi-output.png)
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [串流分析地理空間函式簡介](stream-analytics-geospatial-functions.md)
-* [Azure 串流分析) 的地理空間函式 (](https://docs.microsoft.com/stream-analytics-query/geospatial-functions)
+* [Azure 串流分析) 的地理空間函式 (](/stream-analytics-query/geospatial-functions)

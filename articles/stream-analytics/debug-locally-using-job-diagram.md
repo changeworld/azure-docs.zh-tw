@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
-ms.openlocfilehash: e9d6bbdf325c0da96b81c1f2146da284ea744def
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: c32ba468979e4566d8e349d481eddca7d407b659
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218250"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130981"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>使用 Visual Studio 中的工作圖表在本機進行 Azure 串流分析查詢的調試
 
@@ -32,7 +32,7 @@ Azure 串流分析腳本可用來將輸入資料轉換成輸出資料。 作業�
 > [!NOTE]
 > 如果您將作業匯出至本機專案，而且想要針對即時輸入資料流程進行測試，您必須再次指定所有輸入的認證。  
 
-從腳本編輯器中選擇輸入和輸出來源，然後選取 [在 **本機執行**]。 工作圖表會出現在右側。
+從腳本編輯器中選擇輸入和輸出來源，然後選取 [在 **本機執行** ]。 工作圖表會出現在右側。
 
 ### <a name="view-the-intermediate-result-set"></a>查看中繼結果集  
 
@@ -119,7 +119,7 @@ Azure 串流分析腳本可用來將輸入資料轉換成輸出資料。 作業�
 
 * 因為驗證模型的限制，所以不支援 Power BI 和 Azure Data Lake Storage Gen1 輸出接收。
 
-* 只有雲端輸入選項具備[時間原則](stream-analytics-out-of-order-and-late-events.md)支援，而本機輸入選項則沒有。
+* 只有雲端輸入選項具備[時間原則](./stream-analytics-time-handling.md)支援，而本機輸入選項則沒有。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/01/2020
-ms.openlocfilehash: cd0b708ac3a1b16804430584dfcb01b3d2a4fae2
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: dea9c0eec275c6a0596636c8625e52b8978bb9a6
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042374"
+ms.locfileid: "93130539"
 ---
 # <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure Blob 儲存體來管理商業市集潛在客戶
 
@@ -33,7 +33,7 @@ ms.locfileid: "93042374"
 3. 在 Azure 入口網站中，使用下列程序建立儲存體帳戶。  
     1. 在左側功能表列中，選取 [+ 建立資源]。  [新增] 窗格 (刀鋒視窗) 將會顯示於右側。
     2. 在 [新增] 窗格中，選取 [儲存體]。  [精選] 清單會顯示於右側。
-    3. 選取 [儲存體帳戶] 以開始建立帳戶。  遵循[建立儲存體帳戶](../../storage/common/storage-quickstart-create-account.md?tabs=azure-portal) \(部分機器翻譯\) 一文中的指示。
+    3. 選取 [儲存體帳戶] 以開始建立帳戶。  遵循[建立儲存體帳戶](../../storage/common/storage-account-create.md?tabs=azure-portal) \(部分機器翻譯\) 一文中的指示。
 
     ![建立 Azure 儲存體帳戶的步驟](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-create.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "93042374"
 
 5. 從您的儲存體帳戶窗格，選取 [存取金鑰] 並複製該金鑰的 [連接字串] 值。 請儲存此值，因為其為您必須在發佈入口網站中加以提供，以便接收您市集供應項目之潛在客戶的「儲存體帳戶連接字串」。
 
-     以下是連接字串的範例：
+     連接字串的範例如下：
 
      ```sql
      DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net
@@ -55,11 +55,11 @@ ms.locfileid: "93042374"
 
 6. 從您的儲存體帳戶頁面，選取 [Blob]。
 
-   ![Azure 儲存體金鑰](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
+   ![Azure 儲存體帳戶頁面的螢幕擷取畫面，其中已選取 Blob](./media/commercial-marketplace-lead-management-instructions-azure-blob/select-blobs.png)
 
 7. 在 Blob 頁面上，選取 [+ 容器] 按鈕。
 
-8. 輸入新容器的 [名稱]。 容器名稱必須是小寫，以字母或數字開頭，並且只能包含字母、數字和虛線 (-) 字元。 如需關於容器和 Blob 名稱的詳細資訊，請參閱[命名和參考容器、Blob 及中繼資料](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
+8. 輸入新容器的 [名稱]。 容器名稱必須是小寫，以字母或數字開頭，並且只能包含字母、數字和虛線 (-) 字元。 如需關於容器和 Blob 名稱的詳細資訊，請參閱[命名和參考容器、Blob 及中繼資料](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
     請儲存此值，因為其為您必須在發佈入口網站中加以提供，以便接收您市集供應項目之潛在客戶的「容器名稱」。
 
@@ -91,5 +91,3 @@ ms.locfileid: "93042374"
 
     > [!NOTE]
     > 您必須完成供應項目的其餘設定並加以發佈，才能接收到該供應項目的潛在客戶。
-
-

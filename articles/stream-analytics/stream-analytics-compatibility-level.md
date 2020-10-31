@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 1b49cdb423e8fd2e70175d4ac71f6dcd07b459f9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 87ee8a9c57fc456ba02f97bf56db25e4c91e9398
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097731"
+ms.locfileid: "93129808"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 串流分析作業的相容性層級
 
@@ -33,7 +33,7 @@ Azure 串流分析目前支援三種相容性層級：
 
 ## <a name="set-the-compatibility-level"></a>設定相容性層級
 
-您可以在 Azure 入口網站中設定串流分析作業的相容性層級，或使用 [建立作業 REST API 呼叫](/azure/stream-analytics/stream-analytics-quick-create-portal)來設定相容性層級。
+您可以在 Azure 入口網站中設定串流分析作業的相容性層級，或使用 [建立作業 REST API 呼叫](./stream-analytics-quick-create-portal.md)來設定相容性層級。
 
 若要更新 Azure 入口網站中作業的相容性層級：
 
@@ -77,13 +77,13 @@ Azure 串流分析支援地理空間參考資料索引。 您可以為包含地�
 
 **先前的層級：** Upsert 行為為 *insert 或 merge* 。
 
-**1.2 層級：** 原生大量 API 與 CosmosDB 輸出整合可將輸送量最大化，並有效率地處理節流要求。 如需詳細資訊，請參閱 [Azure Cosmos DB 頁面的 Azure 串流分析輸出](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12)。
+**1.2 層級：** 原生大量 API 與 CosmosDB 輸出整合可將輸送量最大化，並有效率地處理節流要求。 如需詳細資訊，請參閱 [Azure Cosmos DB 頁面的 Azure 串流分析輸出](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12)。
 
 Upsert 行為為 *insert 或 replace* 。
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>寫入 SQL 輸出時的 DateTimeOffset
 
-**先前的層級：** [DateTimeOffset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) 類型已調整為 UTC。
+**先前的層級：** [DateTimeOffset](/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) 類型已調整為 UTC。
 
 **1.2 層級：** DateTimeOffset 不再調整。
 
@@ -148,7 +148,7 @@ Upsert 行為為 *insert 或 replace* 。
 
 **1.1 層級：** 不會自動將具有日期/時間/區域資訊的字串值轉換成 DATETIME 類型。 因此，會保留時區資訊和原始格式。 但是，如果在查詢中使用 NVARCHAR (MAX) 欄位做為 DATETIME 運算式的一部分 (DATEADD 函數，例如) ，它就會轉換成 DATETIME 類型來執行計算，並失去其原始形式。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [對 Azure 串流分析輸入進行疑難排解](stream-analytics-troubleshoot-input.md)
-* [串流分析資源健康狀態](stream-analytics-resource-health.md)
+* [串流分析資源健康狀態](./stream-analytics-troubleshoot-query.md)

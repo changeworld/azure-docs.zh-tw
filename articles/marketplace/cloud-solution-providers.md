@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: bdd2dacbba4ef8b7c439a345ea70771354b7fb5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c906d37a01f0fca2d4114e8ba07078fc46eec88b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708589"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131168"
 ---
 # <a name="cloud-solution-provider-program"></a>雲端解決方案提供者計畫
 
@@ -64,7 +64,7 @@ ms.locfileid: "91708589"
 
 ![選取 CSP 功能表](media/marketplace-publishers-guide/csp-pop-up-module.png)
 
-您可以套用搜尋篩選條件，例如**國家**、**專長認證**或**技能**。
+您可以套用搜尋篩選條件，例如 **國家** 、 **專長認證** 或 **技能** 。
 
 ![用來搜尋合作夥伴的國家/地區、專長認證和技能篩選條件](media/marketplace-publishers-guide/csp-add-resellers.png)
 
@@ -81,11 +81,11 @@ CSP 轉銷商的對象頁面上隨即會出現資料表，裡面會顯示您所�
 如果此供應項目尚未發行，則必須發佈供應項目才能將其提供給選取的合作夥伴。
 
 >[!NOTE]
->如果您在某個指定區域授權 CSP 計畫中的某個合作夥伴，其便可將供應項目銷售給屬於該特定區域的任何客戶。 如需有關如何在區域下分類 CSP 供應專案的詳細資訊，請參閱 [雲端解決方案提供者計畫區域市場與貨幣](https://docs.microsoft.com/partner-center/regional-authorization-overview)。
+>如果您在某個指定區域授權 CSP 計畫中的某個合作夥伴，其便可將供應項目銷售給屬於該特定區域的任何客戶。 如需有關如何在區域下分類 CSP 供應專案的詳細資訊，請參閱 [雲端解決方案提供者計畫區域市場與貨幣](/partner-center/regional-authorization-overview)。
 
 如果您要更新已發佈供應項目的 CSP 清單，請新增其他合作夥伴，然後選取 [同步 CSP 對象]。
 
-如果您的供應項目已有授權合作夥伴清單，而您想要讓其他供應項目使用同一份清單，請使用**匯入/匯出**。 瀏覽至具有 CSP 清單的供應項目，然後選取 [匯出 CSP]。 此功能會開發可供匯入至其他供應項目的 .csv 檔案。
+如果您的供應項目已有授權合作夥伴清單，而您想要讓其他供應項目使用同一份清單，請使用 **匯入/匯出** 。 瀏覽至具有 CSP 清單的供應項目，然後選取 [匯出 CSP]。 此功能會開發可供匯入至其他供應項目的 .csv 檔案。
 
 #### <a name="option-3-no-partners-in-the-csp-program"></a>選項3： CSP 方案中沒有合作夥伴
 
@@ -116,7 +116,7 @@ CSP 轉銷商的對象頁面上隨即會出現資料表，裡面會顯示您所�
 
 ### <a name="navigate-from-option-one-any-partner-in-the-csp-program"></a>從選項一瀏覽：CSP 計畫中的任何合作夥伴
 
-如果您的供應項目目前為**選項 1：CSP 計畫中的任何合作夥伴**，而您想要瀏覽至其他兩個選項的其中一個，請使用下列指示來建立要求：
+如果您的供應項目目前為 **選項 1：CSP 計畫中的任何合作夥伴** ，而您想要瀏覽至其他兩個選項的其中一個，請使用下列指示來建立要求：
 
 1. 移至 [[支援要求] 頁面](https://aka.ms/marketplacepublishersupport)。 系統會自動為您填入前幾個下拉式功能表。
 
@@ -134,7 +134,7 @@ CSP 轉銷商的對象頁面上隨即會出現資料表，裡面會顯示您所�
 
 ### <a name="navigate-from-option-two-specific-partners-in-the-csp-program-i-select"></a>從選項二瀏覽：CSP 計畫中我選定的特定合作夥伴
 
-如果您的供應項目目前為**選項 2：CSP 計畫中我選定的特定合作夥伴**，而您想要瀏覽至**選項一：CSP 計畫中的任何合作夥伴**，請使用下列指示來建立要求：
+如果您的供應項目目前為 **選項 2：CSP 計畫中我選定的特定合作夥伴** ，而您想要瀏覽至 **選項一：CSP 計畫中的任何合作夥伴** ，請使用下列指示來建立要求：
 
 1. 移至 [[支援要求] 頁面](https://aka.ms/marketplacepublishersupport)。 系統會自動為您填入前幾個下拉式功能表。
 
@@ -147,7 +147,7 @@ CSP 轉銷商的對象頁面上隨即會出現資料表，裡面會顯示您所�
 5. 選取 [下一步] 以導向至可供輸入更多問題詳細資料的 [問題詳細資料] 頁面。
 6. 使用 [將 CSP 取消授權] 作為問題的標題，並填寫其餘必要區段。
 
- 如果您的供應項目目前為**選項 2：CSP 計畫中我選定的特定合作夥伴**，而您想要瀏覽至**選項 3：不提供給 CSP 計畫中的任何合作夥伴**，則必須在您先前授權的 CSP 計畫合作夥伴尚未轉銷您的供應項目給終端客戶時，才能瀏覽至該選項。 使用下列指示來建立要求：
+ 如果您的供應項目目前為 **選項 2：CSP 計畫中我選定的特定合作夥伴** ，而您想要瀏覽至 **選項 3：不提供給 CSP 計畫中的任何合作夥伴** ，則必須在您先前授權的 CSP 計畫合作夥伴尚未轉銷您的供應項目給終端客戶時，才能瀏覽至該選項。 使用下列指示來建立要求：
 
 1. 移至 [[支援要求] 頁面](https://aka.ms/marketplacepublishersupport)。 系統會自動為您填入前幾個下拉式功能表。
 
@@ -162,7 +162,7 @@ CSP 轉銷商的對象頁面上隨即會出現資料表，裡面會顯示您所�
 
 ### <a name="navigate-from-option-3-no-partners-in-the-csp-program"></a>從選項 3 瀏覽：不提供給 CSP 計畫中的任何合作夥伴
 
-如果您的供應項目目前為**選項 3：不提供給 CSP 計畫中的任何合作夥伴**，則您可以隨時瀏覽至其他兩個選項的其中一個。
+如果您的供應項目目前為 **選項 3：不提供給 CSP 計畫中的任何合作夥伴** ，則您可以隨時瀏覽至其他兩個選項的其中一個。
 
 ## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>與 CSP 計畫合作夥伴共用銷售和支援材料
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: b760ad03318b3c31b39b6470251847150dc5a70a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db396bbd2f26638c39f2573fb6014cd2602279d0
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88869417"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129740"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure 串流分析輸出至 Azure SQL Database
 
@@ -27,21 +27,21 @@ Azure 串流分析中的 SQL 輸出支援平行寫入作為選項。 此選項�
 - **繼承資料分割** – 此 SQL 輸出設定選項可繼承您先前查詢步驟或輸入的資料分割配置。 啟用此選項時，寫入磁碟式資料表及針對您的作業採用[完全平行](stream-analytics-parallelization.md#embarrassingly-parallel-jobs)拓撲，可預期取得更佳的輸送量。 此資料分割已會針對許多其他[輸出](stream-analytics-parallelization.md#partitions-in-inputs-and-outputs)自動進行。 使用此選項進行的大量插入 (Bulk Insert) 也會停用資料表鎖定 (TABLOCK)。
 
 > [!NOTE] 
-> 當輸入資料分割超過 8 個時，繼承輸入資料分割配置可能不會是適當的選擇。 此上限可在擁有單一識別欄位和叢集索引的資料表上觀察到。 在此情況下，請考慮在查詢中使用 [為](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 8，以明確指定輸出寫入器的數目。 根據您的結構描述和選擇的索引，您的觀察結果可能會有所不同。
+> 當輸入資料分割超過 8 個時，繼承輸入資料分割配置可能不會是適當的選擇。 此上限可在擁有單一識別欄位和叢集索引的資料表上觀察到。 在此情況下，請考慮在查詢中使用 [為](/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 8，以明確指定輸出寫入器的數目。 根據您的結構描述和選擇的索引，您的觀察結果可能會有所不同。
 
-- **批次大小** - SQL 輸出設定允許您根據目的地資料表/工作負載的性質，指定 Azure 串流分析 SQL 輸出中的批次大小上限。 批次大小是每一次大量插入交易中傳送的記錄數上限。 在叢集資料行存放區索引中，使用約 [100K](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) 的批次大小可允許更多平行化、最小記錄及鎖定最佳化。 在磁碟式資料表中，10K (預設) 或更低的批次大小可能會是您解決方案的最佳選擇，因為更大的批次大小可能會在大量插入時觸發鎖定擴大。
+- **批次大小** - SQL 輸出設定允許您根據目的地資料表/工作負載的性質，指定 Azure 串流分析 SQL 輸出中的批次大小上限。 批次大小是每一次大量插入交易中傳送的記錄數上限。 在叢集資料行存放區索引中，使用約 [100K](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) 的批次大小可允許更多平行化、最小記錄及鎖定最佳化。 在磁碟式資料表中，10K (預設) 或更低的批次大小可能會是您解決方案的最佳選擇，因為更大的批次大小可能會在大量插入時觸發鎖定擴大。
 
 - **輸入訊息調整** – 若您已使用繼承資料分割及批次大小進行最佳化，增加每個資料分割每個訊息的輸入事件數可更進一步協助提高寫入輸送量。 輸入訊息調整允許 Azure 串流分析中之批次大小提高到指定的批次大小，以改善輸送量。 這可以藉由在 EventHub 或 Blob 中使用 [壓縮](stream-analytics-define-inputs.md) 或增加輸入訊息大小來達成。
 
 ## <a name="sql-azure"></a>SQL Azure
 
-- **資料分割資料表及索引** – 使用[資料分割](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) SQL 資料表及資料表上具有與您分割區索引鍵相同資料行的資料分割索引 (例如 PartitionId) 可大幅減少寫入期間資料分割間的競爭。 針對資料分割資料表，您將需要在 PRIMARY 檔案群組上建立[資料分割函數](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017)及[資料分割配置](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017)。 這也會在載入新資料時，增加現有資料的可用性。 根據資料分割數可能會到達記錄 IO 限制，您可以透過升級 SKU 來提高此限制。
+- **資料分割資料表及索引** – 使用 [資料分割](/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) SQL 資料表及資料表上具有與您分割區索引鍵相同資料行的資料分割索引 (例如 PartitionId) 可大幅減少寫入期間資料分割間的競爭。 針對資料分割資料表，您將需要在 PRIMARY 檔案群組上建立[資料分割函數](/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017)及[資料分割配置](/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017)。 這也會在載入新資料時，增加現有資料的可用性。 根據資料分割數可能會到達記錄 IO 限制，您可以透過升級 SKU 來提高此限制。
 
-- **避免唯一索引鍵違規** – 若您在 Azure 串流分析活動記錄中收到[多重索引鍵違規警告訊息](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output)，請確認您的作業並未受到復原案例期間容易發生的唯一條件約束違規影響。 這可透過在您的索引上設定 [IGNORE\_DUP\_KEY](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) 選項來避免。
+- **避免唯一索引鍵違規** – 若您在 Azure 串流分析活動記錄中收到 [多重索引鍵違規警告訊息](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output)，請確認您的作業並未受到復原案例期間容易發生的唯一條件約束違規影響。 這可透過在您的索引上設定 [IGNORE\_DUP\_KEY](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) 選項來避免。
 
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Azure Data Factory 及記憶體內部資料表
 
-- 記憶體內部**資料表為臨時表**-[記憶體中的資料表](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)允許非常高速的資料載入，但資料必須符合記憶體。 效能評定顯示從記憶體內部資料表大量載入磁碟式資料表的速度，大約是使用單一寫入器直接大量插入具有識別欄位和叢集索引磁碟式資料表的 10 倍。 若要利用此大量插入效能，請[使用 Azure Data Factory 設定複製作業](../data-factory/connector-azure-sql-database.md)，從記憶體內部資料表將資料複製到以磁碟為基礎的資料表。
+- 記憶體內部 **資料表為臨時表** - [記憶體中的資料表](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)允許非常高速的資料載入，但資料必須符合記憶體。 效能評定顯示從記憶體內部資料表大量載入磁碟式資料表的速度，大約是使用單一寫入器直接大量插入具有識別欄位和叢集索引磁碟式資料表的 10 倍。 若要利用此大量插入效能，請[使用 Azure Data Factory 設定複製作業](../data-factory/connector-azure-sql-database.md)，從記憶體內部資料表將資料複製到以磁碟為基礎的資料表。
 
 ## <a name="avoiding-performance-pitfalls"></a>避免效能陷阱
 大量插入資料比使用單一插入載入資料快許多，因為傳送資料的重複負荷、剖析 insert 語句、執行語句，以及發出交易記錄都是避免的。 相反地，儲存引擎會使用更有效率的路徑來串流資料。 但是，這個路徑的設定成本比以磁片為基礎的資料表中的單一 insert 語句高出許多。 這點通常是大約100的資料列，但大量載入幾乎一律較有效率。 

@@ -7,22 +7,22 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/06/2020
-ms.openlocfilehash: b4e34befbf28de2b985ff49ce17a87a25842015e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80567a211f08d6322c80b6645f8b70ec7df64b59
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87901686"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130658"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>設定 Azure 串流分析的事件順序原則
 
-本文說明如何設定和使用 Azure 串流分析中的延遲抵達和不按照順序的事件原則。 只有當您在查詢中使用 [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) 子句時，才會套用這些原則，而且只適用于雲端輸入來源。
+本文說明如何設定和使用 Azure 串流分析中的延遲抵達和不按照順序的事件原則。 只有當您在查詢中使用 [TIMESTAMP BY](/stream-analytics-query/timestamp-by-azure-stream-analytics) 子句時，才會套用這些原則，而且只適用于雲端輸入來源。
 
 ## <a name="event-time-and-arrival-time"></a>事件時間和抵達時間
 
-您的串流分析作業可以根據 *事件時間* 或 *抵達時間*處理事件。 **事件/應用程式時間** 是事件) 產生事件時，事件裝載 (中的時間戳記。 **抵達時間** 是在輸入來源收到事件 (事件中樞/IoT 中樞/Blob 儲存體) 的時間戳記。 
+您的串流分析作業可以根據 *事件時間* 或 *抵達時間* 處理事件。 **事件/應用程式時間** 是事件) 產生事件時，事件裝載 (中的時間戳記。 **抵達時間** 是在輸入來源收到事件 (事件中樞/IoT 中樞/Blob 儲存體) 的時間戳記。 
 
-根據預設，串流分析會依*抵達時間*處理事件，但您可以選擇在查詢中使用[TIMESTAMP by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)子句，依*事件時間*處理事件。 只有當您依事件時間處理事件時，才會出現延遲抵達和不按照順序的原則。 進行這些設定時，請考慮您案例的延遲性和正確性需求。 
+根據預設，串流分析會依 *抵達時間* 處理事件，但您可以選擇在查詢中使用 [TIMESTAMP by](/stream-analytics-query/timestamp-by-azure-stream-analytics)子句，依 *事件時間* 處理事件。 只有當您依事件時間處理事件時，才會出現延遲抵達和不按照順序的原則。 進行這些設定時，請考慮您案例的延遲性和正確性需求。 
 
 ## <a name="what-is-late-arrival-policy"></a>什麼是延遲傳入原則？
 
@@ -83,4 +83,4 @@ ms.locfileid: "87901686"
 
 ## <a name="next-steps"></a>後續步驟
 * [時間掌握考量](stream-analytics-time-handling.md)
-* [串流分析中的可用計量](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-monitoring#metrics-available-for-stream-analytics)
+* [串流分析中的可用計量](./stream-analytics-monitoring.md#metrics-available-for-stream-analytics)

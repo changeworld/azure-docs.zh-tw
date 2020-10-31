@@ -5,12 +5,12 @@ author: dlepow
 ms.topic: article
 ms.author: danlep
 ms.date: 10/29/2020
-ms.openlocfilehash: c7beddda0d344f6b7606f3e2d3624bee39009c66
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: e5fd70cdde6be431f7bb1950a42ca43e81b34e36
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043490"
+ms.locfileid: "93130845"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>使用 Azure Container Registry 管理公用內容
 
@@ -21,7 +21,7 @@ ms.locfileid: "93043490"
 
 您的環境可能相依于公開內容，例如公用容器映射、 [Helm 圖](https://helm.sh/)、 [開啟原則代理程式](https://www.openpolicyagent.org/) (OPA) 原則或其他成品。 例如，您可以執行 [nginx](https://hub.docker.com/_/nginx) 進行服務路由，或 `docker build FROM alpine` 直接從 Docker Hub 或其他公用登錄中提取映射。 
 
-若沒有適當的控制項，擁有公用登錄內容的相依性可能會導致您的映射開發和部署工作流程產生風險。 若要降低風險，請盡可能保留公用內容的本機複本。 如需詳細資訊，請參閱 [Open Container 方案的 blog](https://opencontainers.org/posts/blog)。 
+若沒有適當的控制項，擁有公用登錄內容的相依性可能會導致您的映射開發和部署工作流程產生風險。 若要降低風險，請盡可能保留公用內容的本機複本。 如需詳細資訊，請參閱 [Open Container 方案的 blog](https://opencontainers.org/posts/blog/2020-10-30-consuming-public-content/)。 
 
 ## <a name="authenticate-with-docker-hub"></a>使用 Docker Hub 進行驗證
 
@@ -33,8 +33,6 @@ ms.locfileid: "93043490"
 > 當您在評估提取要求的數目時，請考慮在使用雲端提供者服務或在公司 NAT 後方工作時，會將多個使用者呈現 Docker Hub 在匯總中，做為 IP 位址的子集。  將 Docker 付費帳戶驗證新增至對 Docker Hub 提出的要求，將可避免因速率限制節流而造成的服務中斷。
 >
 > 如需詳細資訊，請參閱 [docker 定價和](https://www.docker.com/pricing) 訂用帳戶和 [docker 服務條款](https://www.docker.com/legal/docker-terms-service)。
-
-
 
 如需驗證範例和案例，請參閱 [下載速率限制](https://docs.docker.com/docker-hub/download-rate-limit/)。
 
@@ -72,7 +70,7 @@ Docker Hub 在向 Docker Hub 進行驗證時，支援 [個人存取權杖](https
 
 作為建議的一次性步驟，請將基底映射和其他公用內容匯 [入](container-registry-import-images.md) 至您的 Azure container registry。 Azure CLI 中的 [az acr import](/cli/azure/acr#az_acr_import) 命令支援從公用登錄（例如 Docker Hub 和 Microsoft container Registry，以及來自其他私用容器登錄）進行映射匯入。 
 
-`az acr import` 不需要本機 Docker 安裝。 您可以使用 Azure CLI 的本機安裝來執行它，或直接在支援任何作業系統類型的映射、多架構影像或 OCI 成品（例如 Helm 圖表）的 Azure Cloud Shell 中執行。
+`az acr import` 不需要本機 Docker 安裝。 您可以使用 Azure CLI 的本機安裝或直接在 Azure Cloud Shell 中執行它。 它支援任何 OS 類型、多重架構影像或 OCI 成品（例如 Helm 圖）的映射。
 
 範例：
 
@@ -82,7 +80,7 @@ az acr import \
   --source docker.io/library/hello-world:latest \
   --image hello-world:latest \
   --username <Docker Hub username> \
-  --password <Docker Hub password>
+  --password <Docker Hub token>
 ```
 
 視組織的需求而定，您可以匯入至專屬的登錄或共用登錄中的存放庫。
@@ -93,7 +91,7 @@ az acr import \
 
 展開映射匯入時，設定 [Azure Container Registry](container-registry-tasks-overview.md) 工作，以在基底映射更新時自動執行應用程式映射組建。 自動化組建工作可以追蹤 [基底映射更新](container-registry-tasks-base-images.md) 和 [原始程式碼更新](container-registry-tasks-overview.md#trigger-task-on-source-code-update)。
 
-如需詳細範例，請參閱 [如何使用 Azure Container Registry 工作來取用和維護公開內容](https://github.com/SteveLasker/azure-docs/blob/consuming-public-content/articles/container-registry/container-registry-consuming-public-content.md)。 
+如需詳細範例，請參閱 [如何使用 Azure Container Registry 工作來取用和維護公開內容](tasks-consume-public-content.md)。 
 
 > [!NOTE]
 > 單一預先設定的工作可以自動重建參考相依基礎映射的每個應用程式映射。 
@@ -101,4 +99,5 @@ az acr import \
 ## <a name="next-steps"></a>後續步驟
  
 * 深入瞭解在 Azure 中建立、執行、推送和修補容器映射的 [ACR 工作](container-registry-tasks-overview.md) 。
+* 瞭解如何使用 Azure Container Registry 工作的自動化控制工作流程來取用 [和維護公開內容](tasks-consume-public-content.md) ，以將基礎映射更新至您的環境。 
 * 如需將映射組建和更新自動化的範例，請參閱 [ACR 工作教學](container-registry-tutorial-quick-task.md) 課程。

@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 9ea85449d3980f46e88eddc7e06e4a5384b8cea3
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 3fbd9016bcbfa83574d894af7ca728b863f54344
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027545"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129315"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>使用自訂連接器與 Logic Apps 整合
 
@@ -33,34 +33,11 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 您也需要在必要條件設定中完成下列專案。 本節的其餘部分將逐步引導您完成下列步驟：
 - 設定 Azure Digital Twins 執行個體
-- 取得應用程式註冊用戶端密碼
 - 新增數位對應項
 
 ### <a name="set-up-azure-digital-twins-instance"></a>設定 Azure Digital Twins 執行個體
 
-若要將 Azure 數位 Twins 實例連線到本文中的 Logic Apps，您必須已設定 **Azure 數位 Twins 實例** 。 
-
-首先， **設定 Azure Digital Twins 執行個體** ，及其正常運作所需的驗證。 若要這麼做，請依照指示操作： [*操作說明：設定執行個體和驗證*](how-to-set-up-instance-portal.md)。
-* 設定您的 Azure 數位 Twins 實例之後，您將需要實例的 **_主機名稱_** ( [在 Azure 入口網站) 中找到](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values) 。
-
-若要驗證連接器，您也需要設定 **應用程式註冊** 。 請遵循 [操作說明： *建立應用程式註冊*](how-to-create-app-registration.md)以進行此設定。 
-* 註冊應用程式之後，您將需要註冊的 **_應用程式 (用戶端) 識別碼_** 和 **_目錄 (租使用者) 識別碼_** ( [在 Azure 入口網站) 中找到](how-to-create-app-registration.md#collect-client-id-and-tenant-id) 。
-
-### <a name="get-app-registration-client-secret"></a>取得應用程式註冊用戶端密碼
-
-您也需要建立 Azure AD 應用程式註冊的 **_用戶端密碼_** 。 若要這樣做，請流覽至 Azure 入口網站中的 [ [應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ] 頁面 (您可以使用此連結，或是在入口網站的搜尋列) 中尋找它。 從清單中選取您在上一節中建立的註冊，以便開啟其詳細資料。 
-
-從註冊的功能表點擊 *憑證和密碼* ，然後選取 [ *+ 新增用戶端密碼* ]。
-
-:::image type="content" source="media/how-to-integrate-logic-apps/client-secret.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。":::
-
-輸入您想要用於描述和到期的任何值，然後按 [ *新增* ]。
-
-:::image type="content" source="media/how-to-integrate-logic-apps/add-client-secret.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。":::
-
-現在，請在 [ _憑證 & 秘密_ ] 頁面上確認用戶端密碼顯示為 [ _到期_ ] 和 [ _值_ ] 欄位。 記下其 _值_ 以供稍後使用 (您也可以使用複製圖示將它複製到剪貼簿) 
-
-:::image type="content" source="media/how-to-integrate-logic-apps/client-secret-value.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。":::
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
 ### <a name="add-a-digital-twin"></a>新增數位對應項
 
@@ -70,9 +47,29 @@ Azure 數位 Twins 目前沒有認證 (預先建立的) 連接器可供 Logic Ap
 
 您必須在您所建立的實例中，對應項的對應項 **_識別碼_** 。
 
+## <a name="set-up-app-registration"></a>設定應用程式註冊
+
+[!INCLUDE [digital-twins-prereq-registration.md](../../includes/digital-twins-prereq-registration.md)]
+
+### <a name="get-app-registration-client-secret"></a>取得應用程式註冊用戶端密碼
+
+您也需要建立 Azure AD 應用程式註冊的 **_用戶端密碼_** 。 若要這樣做，請流覽至 Azure 入口網站中的 [ [應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ] 頁面 (您可以使用此連結，或是在入口網站的搜尋列) 中尋找它。 從清單中選取您在上一節中建立的註冊，以便開啟其詳細資料。 
+
+從註冊的功能表點擊 *憑證和密碼* ，然後選取 [ *+ 新增用戶端密碼* ]。
+
+:::image type="content" source="media/how-to-integrate-logic-apps/client-secret.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。":::
+
+輸入您想要用於 *描述* 和 *到期* 的任何值，然後按 [ *新增* ]。
+
+:::image type="content" source="media/how-to-integrate-logic-apps/add-client-secret.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。":::
+
+現在，請在 [ _憑證 & 秘密_ ] 頁面上確認用戶端密碼顯示為 [ _到期_ ] 和 [ _值_ ] 欄位。 記下其 _值_ 以供稍後使用 (您也可以使用複製圖示將它複製到剪貼簿) 
+
+:::image type="content" source="media/how-to-integrate-logic-apps/client-secret-value.png" alt-text="Azure AD 應用程式註冊的入口網站觀看。[資源] 功能表中的 [憑證和秘密] 周圍有一個醒目提示，並在 [新用戶端密碼] 周圍的頁面上醒目提示。":::
+
 ## <a name="create-custom-logic-apps-connector"></a>建立自訂 Logic Apps 連接器
 
-在此步驟中，您將建立 Azure 數位 Twins Api 的 [自訂 Logic Apps 連接器](../logic-apps/custom-connector-overview.md) 。 這麼做之後，在下一節中建立邏輯應用程式時，您將能夠連結 Azure 數位 Twins。
+現在，您已經準備好建立 Azure 數位 Twins Api 的 [自訂 Logic Apps 連接器](../logic-apps/custom-connector-overview.md) 。 這麼做之後，在下一節中建立邏輯應用程式時，您將能夠連結 Azure 數位 Twins。
 
 流覽至 Azure 入口網站中的 [ [Logic Apps 自訂連接器](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Web%2FcustomApis) ] 頁面 (您可以使用此連結，或是在入口網站的搜尋列中搜尋) 。 按 *+ 新增* 。
 

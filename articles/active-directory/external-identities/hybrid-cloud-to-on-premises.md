@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 10/10/2018
+ms.date: 10/30/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61f82e94f506cc403106912e24532f9d5263a60d
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cd91d1d2c9f5a4a413f9ea64cfdef649823d0f09
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896461"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131015"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>對 Azure AD 中的 B2B 使用者授與內部部署應用程式的存取權
 
@@ -77,7 +77,7 @@ ms.locfileid: "92896461"
 
 有 PowerShell 範例指令碼可供您作為起點，以在內部部署 Active Directory 中建立來賓使用者物件。
 
-您可以從[下載中心](https://www.microsoft.com/download/details.aspx?id=51495)下載指令碼和讀我檔案。 請選擇 **Script and Readme to pull Azure AD B2B users on-prem.zip** 檔案。
+您可以從 [Microsoft Identity Manager 2016 和 Forefront Identity Manager 2010 R2 的連接器](https://www.microsoft.com/download/details.aspx?id=51495)下載腳本和讀我檔案。 在下載套件中，選擇 **要提取 AZURE AD B2B 使用者 on-prem.zip檔案的腳本和自述** 檔。
 
 使用指令碼之前，請確定您已檢閱相關讀我檔案中的先決條件和重要考量。 此外，也請了解指令碼僅供作為範例。 您的開發團隊或合作夥伴必須自訂和檢閱指令碼後再執行。
 

@@ -7,20 +7,20 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/16/2020
-ms.openlocfilehash: 4c8d2143d2b6e18de2669a6b45961e601cc394bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4ddffa5f9e9ff4b313f05c9cedb3cb207695225
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707552"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129698"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>串流分析時間範圍函式簡介
 
 在即時串流案例中，針對時間範圍中內含的資料執行作業是常見的模式。 串流分析具備對時間範圍函式的原生支援，可讓開發人員輕鬆地撰寫複雜的串流處理工作。
 
-有五種可供選擇的時態性視窗： [**輪轉**](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics)、 [**跳動**](https://docs.microsoft.com/stream-analytics-query/hopping-window-azure-stream-analytics)、 [**滑動**](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics)、 [**會話**](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics)和 [**快照**](https://docs.microsoft.com/stream-analytics-query/snapshot-window-azure-stream-analytics) 視窗。  您要在串流分析工作的查詢語法子句 [**GROUP BY**](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) 中使用時間範圍函式。 您也可以使用[ **windows ( # B1**函數](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics)來匯總多個視窗的事件。
+有五種可供選擇的時態性視窗： [**輪轉**](/stream-analytics-query/tumbling-window-azure-stream-analytics)、 [**跳動**](/stream-analytics-query/hopping-window-azure-stream-analytics)、 [**滑動**](/stream-analytics-query/sliding-window-azure-stream-analytics)、 [**會話**](/stream-analytics-query/session-window-azure-stream-analytics)和 [**快照**](/stream-analytics-query/snapshot-window-azure-stream-analytics) 視窗。  您要在串流分析工作的查詢語法子句 [**GROUP BY**](/stream-analytics-query/group-by-azure-stream-analytics) 中使用時間範圍函式。 您也可以使用 [ **windows ( # B1** 函數](/stream-analytics-query/windows-azure-stream-analytics)來匯總多個視窗的事件。
 
-所有[時間範圍](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)作業都會在時間範圍**結束**時輸出結果。 請注意，當您啟動串流分析作業時，您可以指定 *作業輸出開始時間* ，而系統將會自動提取傳入串流中的先前事件，以在指定的時間輸出第一個視窗;例如，當您從 *Now* 選項開始時，它會開始立即發出資料。 時間範圍的輸出會是以使用的彙總函式為基礎的單一事件。 此輸出事件會有時間範圍結束的時間戳記，所有時間範圍函式都是以固定長度定義。 
+所有 [時間範圍](/stream-analytics-query/windowing-azure-stream-analytics)作業都會在時間範圍 **結束** 時輸出結果。 請注意，當您啟動串流分析作業時，您可以指定 *作業輸出開始時間* ，而系統將會自動提取傳入串流中的先前事件，以在指定的時間輸出第一個視窗;例如，當您從 *Now* 選項開始時，它會開始立即發出資料。 時間範圍的輸出會是以使用的彙總函式為基礎的單一事件。 此輸出事件會有時間範圍結束的時間戳記，所有時間範圍函式都是以固定長度定義。 
 
 ![串流分析時間範圍函式概念](media/stream-analytics-window-functions/stream-analytics-window-functions-conceptual.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "91707552"
 
 ## <a name="snapshot-window"></a>快照集視窗
 
-快照集視窗群組具有相同時間戳記的事件。 不同于其他視窗型別（需要特定的視窗函數 (例如 [SessionWindow ( # B2 ](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics)），您可以將 system.string ( # A4 加入 GROUP by 子句，藉以套用快照集視窗。
+快照集視窗群組具有相同時間戳記的事件。 不同于其他視窗型別（需要特定的視窗函數 (例如 [SessionWindow ( # B2 ](/stream-analytics-query/session-window-azure-stream-analytics)），您可以將 system.string ( # A4 加入 GROUP by 子句，藉以套用快照集視窗。
 
 ![串流分析快照集視窗](media/stream-analytics-window-functions/snapshot.png)
 
@@ -61,6 +61,5 @@ ms.locfileid: "91707552"
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
 * [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
+* [Azure Stream Analytics 查詢語言參考](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 串流分析管理 REST API 參考](/rest/api/streamanalytics/)

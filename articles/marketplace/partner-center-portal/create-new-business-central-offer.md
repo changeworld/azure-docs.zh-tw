@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: bc34d2044c3a91fe18e900b21d589dde855754d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71cbc09f21e21c325665809953f209615d835124
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91774573"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130148"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>建立 Dynamics 365 Business Central 供應項目
 
@@ -33,14 +33,14 @@ ms.locfileid: "91774573"
 
 ## <a name="new-offer"></a>新增供應項目
 
-輸入**供應項目識別碼**。 這是您帳戶中每個供應項目的唯一識別碼。
+輸入 **供應項目識別碼** 。 這是您帳戶中每個供應項目的唯一識別碼。
 
 - 客戶可以在市集供應項目和 Azure Resource Manager 範本 (如果適用) 的網址中看到此識別碼。
 - 與發行者識別碼結合的供應專案識別碼長度必須低於40個字元。
 - 請一律使用小寫字母和數字。 它可以包括連字號和底線，但不能包含空格。 例如，如果您的發行者識別碼是 testpublisherid，而您在此輸入了 **測試供應專案-1** ，則供應專案的網址將會是 `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` 。
 - 選取 [建立] 之後，即無法變更供應項目識別碼。
 
-輸入**供應項目別名**。 這是用於合作夥伴中心內供應項目的名稱。
+輸入 **供應項目別名** 。 這是用於合作夥伴中心內供應項目的名稱。
 
 - 此名稱不會在市集中使用，且不同於向客戶顯示的供應項目名稱及其他值。
 - 在您選取 [建立] 之後，就無法變更供應項目別名。
@@ -91,7 +91,7 @@ ms.locfileid: "91774573"
 選取類別和子類別，以將您的供應專案放在適當的 marketplace 搜尋區域中。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
 
 - 至少一個和多個類別，包括主要和次要類別 (選擇性) 。
-- 每個主要和/或次要類別最多可有兩個子類別。 如果沒有任何子類別適用于您的供應專案，請選取 [ **不適用**]。
+- 每個主要和/或次要類別最多可有兩個子類別。 如果沒有任何子類別適用于您的供應專案，請選取 [ **不適用** ]。
 
 請參閱 [供應專案清單最佳做法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。
 
@@ -135,7 +135,7 @@ ms.locfileid: "91774573"
 
 ### <a name="name"></a>名稱
 
-您在此處輸入的名稱會作為供應項目清單標題向客戶顯示。 當您建立供應項目時，此欄位會預先填入您為**供應項目別名**輸入的文字，但您可以變更此值。 此名稱可以是商標 (您也可以包含商標或著作權符號)。 名稱不能超過 50 個字元，而且不能包含任何表情圖示。
+您在此處輸入的名稱會作為供應項目清單標題向客戶顯示。 當您建立供應項目時，此欄位會預先填入您為 **供應項目別名** 輸入的文字，但您可以變更此值。 此名稱可以是商標 (您也可以包含商標或著作權符號)。 名稱不能超過 50 個字元，而且不能包含任何表情圖示。
 
 ### <a name="short-description"></a>簡短描述
 
@@ -163,7 +163,7 @@ ms.locfileid: "91774573"
 
 #### <a name="help-link"></a>說明連結
 
-輸入客戶可以深入了解供應項目的 URL。 您的**說明連結**不能與**支援 URL** 相同 (如下所述)。
+輸入客戶可以深入了解供應項目的 URL。 您的 **說明連結** 不能與 **支援 URL** 相同 (如下所述)。
 
 #### <a name="privacy-policy-link"></a>隱私權原則連結
 
@@ -173,7 +173,7 @@ ms.locfileid: "91774573"
 
 在此區段中，您必須提供 [支援連絡人] 與 [工程連絡人] 的姓名、電子郵件和電話號碼。 此資訊不會向客戶顯示，但可供 Microsoft 使用，且可能也會提供給雲端解決方案提供者合作夥伴。
 
-在 [支援連絡人] 區段中，您還必須提供 [支援 URL]，其中雲端解決方案提供者合作夥伴可以在此找到供應項目的支援。 您的支援 URL 不能與**說明連結**相同。
+在 [支援連絡人] 區段中，您還必須提供 [支援 URL]，其中雲端解決方案提供者合作夥伴可以在此找到供應項目的支援。 您的支援 URL 不能與 **說明連結** 相同。
 
 ### <a name="supporting-documents"></a>支援文件
 
@@ -183,7 +183,7 @@ ms.locfileid: "91774573"
 
 提供 **大型** 大小標誌的 PNG 檔案。 合作夥伴中心將會使用此來建立 **小型** 標誌。 您可以選擇性地將此取代為不同的映射。
 
-- 從 216 x 216 到 350 x 350 px 的**大型** (，需要) 
+- 從 216 x 216 到 350 x 350 px 的 **大型** (，需要) 
 - **Small** (48 x 48 px，選擇性) 
 
 這些標誌可用於清單中的不同位置：
@@ -228,7 +228,7 @@ ms.locfileid: "91774573"
 
 ### <a name="preview-audience"></a>預覽對象
 
-將供應項目在更廣泛的市集供應項目上線之前，您必須先將其提供給有限的**預覽對象**。 在此輸入 [隱藏金鑰] (任何僅用小寫字母及/或數字的字串)。 預覽對象的成員可以使用此隱藏金鑰做為權杖，並在市集中檢視供應項目的預覽。
+將供應項目在更廣泛的市集供應項目上線之前，您必須先將其提供給有限的 **預覽對象** 。 在此輸入 [隱藏金鑰] (任何僅用小寫字母及/或數字的字串)。 預覽對象的成員可以使用此隱藏金鑰做為權杖，並在市集中檢視供應項目的預覽。
 
 然後，當準備好讓供應項目可供使用並移除預覽限制時，您將需要移除 [隱藏金鑰] 並重新發佈。
 
@@ -242,12 +242,12 @@ ms.locfileid: "91774573"
 
 選取適用於您供應項目的選項：
 
-* **附加元件** – 附加元件應用程式會擴充 Dynamics 365 Business Central 的體驗和現有功能。 如需詳細資訊，請參閱[附加元件應用程式](https://docs.microsoft.com/dynamics365/business-central/dev-itpro/developer/readiness/readiness-add-on-apps)。
-* **連線** – 當您必須在 Dynamics 365 Business Central 與第三方解決方案或服務之間建立點對點連線時，您就可以使用連線應用程式。 如需詳細資訊，請參閱[連線應用程式](https://docs.microsoft.com/dynamics365/business-central/dev-itpro/developer/readiness/readiness-connect-apps)。
+* **附加元件** – 附加元件應用程式會擴充 Dynamics 365 Business Central 的體驗和現有功能。 如需詳細資訊，請參閱[附加元件應用程式](/dynamics365/business-central/dev-itpro/developer/readiness/readiness-add-on-apps)。
+* **連線** – 當您必須在 Dynamics 365 Business Central 與第三方解決方案或服務之間建立點對點連線時，您就可以使用連線應用程式。 如需詳細資訊，請參閱[連線應用程式](/dynamics365/business-central/dev-itpro/developer/readiness/readiness-connect-apps)。
 
 ### <a name="file-upload"></a>檔案上傳
 
-如果您選取了上方的**附加元件**，則您會在其中上傳供應項目的套件檔案，以及其所有相依擴充功能的套件檔案。
+如果您選取了上方的 **附加元件** ，則您會在其中上傳供應項目的套件檔案，以及其所有相依擴充功能的套件檔案。
 
 #### <a name="extensions-package-file"></a>擴充功能套件檔案
 
@@ -280,7 +280,7 @@ ms.locfileid: "91774573"
 
 ### <a name="target-release"></a>目標版本
 
-指出解決方案鎖定的 Microsoft Dynamics Business Central 版本：**目前**、**下一個主要版本**或**下一個次要版本**。 此資訊可讓我們適當地測試您的解決方案。
+指出解決方案鎖定的 Microsoft Dynamics Business Central 版本： **目前** 、 **下一個主要版本** 或 **下一個次要版本** 。 此資訊可讓我們適當地測試您的解決方案。
 
 ### <a name="supported-editions"></a>支援的版本
 
@@ -292,11 +292,11 @@ ms.locfileid: "91774573"
 
 ### <a name="app-tests-automation"></a>應用程式測試自動化
 
-如果您的供應項目是附加元件應用程式，您必須上傳**應用程式測試自動化** 檔案 (.app)。 此檔案不適用於連線應用程式。
+如果您的供應項目是附加元件應用程式，您必須上傳 **應用程式測試自動化** 檔案 (.app)。 此檔案不適用於連線應用程式。
 
 ### <a name="test-accounts"></a>測試帳戶
 
-如果需要測試帳戶才能讓認證小組正確地檢閱供應項目，請上傳包含**測試帳戶**資訊的 .pdf、.doc 或 .docx 檔案。
+如果需要測試帳戶才能讓認證小組正確地檢閱供應項目，請上傳包含 **測試帳戶** 資訊的 .pdf、.doc 或 .docx 檔案。
 
 ## <a name="publish"></a>發佈
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: aee5cb077604e5fc95647eca0e6570ea3582a785
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29bd4dc5cabe8b29efe7b89395c5e7d36bd0347a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823002"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129774"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Azure 串流分析的 Power BI 輸出
 
@@ -51,7 +51,7 @@ Power BI 是使用先進先出(FIFO) 保留原則。 將會在資料表中收集
 
 如果輸出結構描述變更，則 Azure 串流分析會在執行階段動態更新資料模型。 所有資料行名稱變更、資料行類型變更以及資料行新增或移除都會加以追蹤。
 
-如果 Power BI 資料集和資料表不存在，此資料表包含從[串流分析資料類型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)至 Power BI [實體資料模型 (EDM) 類型](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model)的資料類型轉換。
+如果 Power BI 資料集和資料表不存在，此資料表包含從[串流分析資料類型](/stream-analytics-query/data-types-azure-stream-analytics)至 Power BI [實體資料模型 (EDM) 類型](/dotnet/framework/data/adonet/entity-data-model)的資料類型轉換。
 
 從串流分析 | 至 Power BI
 -----|-----
@@ -71,12 +71,12 @@ FLOAT | Double
 -----------------|-------|--------|----------|-------
 Int64 | Int64 | String | String | Double
 Double | Double | String | String | Double
-String | 字串 | 字串 | 字串 | String 
+String | String | String | String | String 
 Datetime | String | String |  Datetime | String
 
 ## <a name="output-batch-size"></a>輸出批次大小
 
-如需輸出批次大小，請參閱 [Power BI REST API 限制](https://msdn.microsoft.com/library/dn950053.aspx)。
+如需輸出批次大小，請參閱 [Power BI REST API 限制](/power-bi/developer/automation/api-rest-api-limitations)。
 
 ## <a name="next-steps"></a>後續步驟
 

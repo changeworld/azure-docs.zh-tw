@@ -12,12 +12,12 @@ ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b00d4be72aaed980e2604291d8c67c9fec0fb25b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5cff53ee9e742e93a6183eb5d506bf8f1a08deb
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88115096"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130182"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 驗證與授權錯誤碼 \(部分機器翻譯\)
 
@@ -156,7 +156,7 @@ ms.locfileid: "88115096"
 | AADSTS50136 | RedirectMsaSessionToApp - 偵測到單一 MSA 工作階段。 |
 | AADSTS50139 | SessionMissingMsaOAuth2RefreshToken - 工作階段無效，因為遺漏外部重新整理權杖。 |
 | AADSTS50140 | KmsiInterrupt - 由於在使用者登入時出現「讓我保持登入」插斷，所以發生此錯誤。 請使用相互關聯識別碼、要求識別碼和錯誤碼[開啟支援票證](../fundamentals/active-directory-troubleshooting-support-howto.md)，以取得更多詳細資料。 |
-| AADSTS50143 | 工作階段不符 - 工作階段無效，原因是由於資源不同而導致使用者租用戶與網域提示不符。請使用相互關聯識別碼、要求識別碼和錯誤碼 [開啟支援票證](../fundamentals/active-directory-troubleshooting-support-howto.md)，以取得更多詳細資料。 |
+| AADSTS50143 | 工作階段不符 - 工作階段無效，原因是由於資源不同而導致使用者租用戶與網域提示不符。 請使用相互關聯識別碼、要求識別碼和錯誤碼[開啟支援票證](../fundamentals/active-directory-troubleshooting-support-howto.md)，以取得更多詳細資料。 |
 | AADSTS50144 | InvalidPasswordExpiredOnPremPassword - 使用者的 Active Directory 密碼已到期。 為使用者產生新密碼，或讓使用者使用自助式重設工具來重設其密碼。 |
 | AADSTS50146 | MissingCustomSigningKey - 在設定此應用程式時，必須使用應用程式專屬的簽署金鑰。 在設定應用程式時未使用這樣的金鑰，或該金鑰已過期或尚未生效。 |
 | AADSTS50147 | MissingCodeChallenge - 程式碼挑戰參數大小無效。 |
@@ -200,7 +200,7 @@ ms.locfileid: "88115096"
 | AADSTS70007 | UnsupportedResponseMode - 應用程式在要求權杖時傳回的 `response_mode` 值不受支援。  |
 | AADSTS70008 | ExpiredOrRevokedGrant - 重新整理權杖因為非使用狀態而過期。 此權杖是在 XXX 發出，而且有一段時間為非使用中。 |
 | AADSTS70011 | InvalidScope - 應用程式所要求的範圍無效。 |
-| AADSTS70012 | MsaServerError - 在驗證 MSA (取用者) 使用者時，發生伺服器錯誤。 然後再試一次。 如果持續失敗，請 [開啟支援票證](../fundamentals/active-directory-troubleshooting-support-howto.md) |
+| AADSTS70012 | MsaServerError - 在驗證 MSA (取用者) 使用者時，發生伺服器錯誤。 然後再試一次。 如果持續失敗，請[開啟支援票證](../fundamentals/active-directory-troubleshooting-support-howto.md) |
 | AADSTS70016 | AuthorizationPending - OAuth 2.0 裝置流程錯誤。 授權已擱置。 裝置會重試輪詢要求。 |
 | AADSTS70018 | BadVerificationCode - 驗證碼無效，因為使用者針對裝置碼流程所輸入的使用者代碼錯誤。 授權未獲核准。 |
 | AADSTS70019 | CodeExpired - 驗證碼過期。 請讓使用者重試登入。 |
@@ -250,7 +250,7 @@ ms.locfileid: "88115096"
 | AADSTS90043 | NationalCloudAuthCodeRedirection - 此功能已停用。 |
 | AADSTS90051 | InvalidNationalCloudId - 全國性雲端識別碼包含無效的雲端識別碼。 |
 | AADSTS90055 | TenantThrottlingError - 有太多傳入要求。 此例外狀況因為封鎖的租用戶而擲回。 |
-| AADSTS90056 | BadResourceRequest - 若要兌換存取權杖的程式碼，應用程式應將 POST 要求傳送至 `/token` 端點。 此外，在此之前，您應該提供授權碼並以 POST 要求將它傳送到 `/token` 端點。 請參閱這篇文章，以瞭解 OAuth 2.0 授權碼流程的總覽： [.。。/azuread-dev/v1-protocols-oauth-code.md](../azuread-dev/v1-protocols-oauth-code.md)。 將使用者導向 `/authorize` 端點，這會傳回 authorization_code。 將要求張貼至 `/token` 端點，使用者就會取得存取權杖。 登入 Azure 入口網站，然後檢查 [應用程式註冊] > [端點]****，確認已正確設定兩個端點。 |
+| AADSTS90056 | BadResourceRequest - 若要兌換存取權杖的程式碼，應用程式應將 POST 要求傳送至 `/token` 端點。 此外，在此之前，您應該提供授權碼並以 POST 要求將它傳送到 `/token` 端點。 請參閱這篇文章，以瞭解 OAuth 2.0 授權碼流程的總覽： [.。。/azuread-dev/v1-protocols-oauth-code.md](../azuread-dev/v1-protocols-oauth-code.md)。 將使用者導向 `/authorize` 端點，這會傳回 authorization_code。 將要求張貼至 `/token` 端點，使用者就會取得存取權杖。 登入 Azure 入口網站，然後檢查 [應用程式註冊] > [端點]  ，確認已正確設定兩個端點。 |
 | AADSTS90072 | PassThroughUserMfaError - 使用者登入的外部帳戶不存在於已登入的租用戶，因此使用者不符合租用戶的 MFA 需求。 必須先在租用戶中將帳戶新增為外部使用者。 請登出並使用其他 Azure AD 使用者帳戶登入。 |
 | AADSTS90081 | OrgIdWsFederationMessageInvalid - 服務嘗試處理 WS-同盟訊息時發生錯誤。 訊息無效。 |
 | AADSTS90082 | OrgIdWsFederationNotSupported - 目前不支援針對要求選取的驗證原則。 |
@@ -320,6 +320,7 @@ ms.locfileid: "88115096"
 | AADSTS1000000 | UserNotBoundError - 繫結 API 需要 Azure AD 使用者也向外部 IDP 進行驗證，但尚未發生。 |
 | AADSTS1000002 | BindCompleteInterruptError - 繫結已順利完成，但必須通知使用者。 |
 | AADSTS7000112 | UnauthorizedClientApplicationDisabled-應用程式已停用。 |
+| AADSTS7000114| 應用程式 ' appIdentifier ' 不允許進行應用程式的呼叫。|
 | AADSTS7500529 | 值 ' SAMLId-Guid ' 不是有效的 SAML 識別碼-Azure AD 使用這個屬性來填入所傳迴響應的 InResponseTo 屬性。 識別碼的開頭不能是數字，因此常見的策略是在 GUID 的字串表示法前面加上 "id" 等字串。 例如，id6c1c178c166d486687be4aaf5e482730 是有效的識別碼。 |
 
 ## <a name="next-steps"></a>後續步驟

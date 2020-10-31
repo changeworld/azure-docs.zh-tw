@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/22/2020
 tags: connectors
-ms.openlocfilehash: f8dccca1d1264492a4e7c8dab568e13eec9d2557
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ce7679fff86d2c96588cf2b704d44238535963b3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100706"
+ms.locfileid: "93130930"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 將 SQL database 的工作流程自動化
 
@@ -96,9 +96,14 @@ ms.locfileid: "93100706"
    ||||
 
    > [!TIP]
-   > 您可以在資料庫的連接字串中找到這項資訊。 例如，在 Azure 入口網站中，尋找並開啟您的資料庫。 在 [資料庫] 功能表上，選取 [ **連接字串** ] 或 [ **屬性** ]，您可以在其中找到這個字串：
+   > 若要提供您的資料庫和資料表資訊，您可以使用下列選項：
+   > 
+   > * 在資料庫的連接字串中尋找此資訊。 例如，在 Azure 入口網站中，尋找並開啟您的資料庫。 在 [資料庫] 功能表上，選取 [ **連接字串** ] 或 [ **屬性** ]，您可以在其中找到這個字串：
    >
-   > `Server=tcp:{your-server-address}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
+   >   `Server=tcp:{your-server-address}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
+   >
+   > * 根據預設，系統資料庫中的資料表會被篩選掉，因此當您選取系統資料庫時，可能不會自動顯示它們。 或者，您可以在從資料庫清單中選取 [ **輸入自訂值** ] 之後，手動輸入資料表名稱。
+   >
 
    這個範例會顯示這些值的外觀：
 

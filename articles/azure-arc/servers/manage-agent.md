@@ -1,18 +1,18 @@
 ---
 title: 管理已啟用 Azure Arc 的伺服器代理程式
 description: 本文說明在啟用 Azure Arc 的伺服器連線的機器代理程式生命週期期間，您通常會執行的不同管理工作。
-ms.date: 10/21/2020
+ms.date: 10/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 184b0425b956232b4485047cafb00a7ced21c7dd
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 63db1177b193cad66208964ec377fab0779f23ba
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371421"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130964"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理和維護 Connected Machine 代理程式
 
-初始部署適用于 Windows 或 Linux 的已連接 Azure Arc 伺服器電腦代理程式之後，您可能需要重新設定代理程式、進行升級，或將它從電腦中移除（如果已在其生命週期中達到淘汰階段）。 您可以手動或自動的方式輕鬆地管理這些例行維護工作，後者可以降低操作錯誤和費用。
+初始部署適用于 Windows 或 Linux 的已連接 Azure Arc 伺服器電腦代理程式之後，您可能需要重新設定代理程式、加以升級，或將它從電腦中移除。 您可以手動或自動的方式輕鬆地管理這些例行維護工作，後者可以降低操作錯誤和費用。
 
 ## <a name="before-uninstalling-agent"></a>卸載代理程式之前
 
@@ -38,7 +38,11 @@ ms.locfileid: "92371421"
 
 ## <a name="upgrading-agent"></a>升級代理程式
 
-您可以根據需求，以手動或自動方式將適用於 Windows 和 Linux 的 Azure Connected Machine 代理程式升級為最新版本。 下表描述執行代理程式升級的支援方法。
+Azure Connected Machine 代理程式會定期更新，以解決錯誤修正、穩定性增強功能和新功能。 [Azure Advisor](../../advisor/advisor-overview.md) 識別未使用最新版電腦代理程式的資源，並建議您升級至最新版本。 當您選取 [ **總覽** ] 頁面上的橫幅，或透過 Azure 入口網站存取 Advisor 時，它會在您選取已啟用 Arc 的伺服器時通知您。
+
+您可以根據需求，以手動或自動方式將適用於 Windows 和 Linux 的 Azure Connected Machine 代理程式升級為最新版本。
+
+下表描述執行代理程式升級的支援方法。
 
 | 作業系統 | 升級方法 |
 |------------------|----------------|
@@ -160,10 +164,10 @@ Azcmagent 工具 ( # A0) 用來在安裝期間設定已連線到 Azure Arc 的�
 
 * **-v 或 --verbose** - 啟用詳細資訊記錄
 
-您可以在以互動方式登入，或使用您用來登入多個代理程式的相同服務主體，或使用 Microsoft 身分識別平臺[存取權杖](../../active-directory/develop/access-tokens.md)來自動化，以手動方式執行連線和**中斷****連接**。 如果您未使用服務主體在已啟用 Azure Arc 的伺服器上註冊電腦，請參閱下列 [文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) 來建立服務主體。
+您可以在以互動方式登入，或使用您用來登入多個代理程式的相同服務主體，或使用 Microsoft 身分識別平臺 [存取權杖](../../active-directory/develop/access-tokens.md)來自動化，以手動方式執行連線和 **中斷****連接** 。 如果您未使用服務主體在已啟用 Azure Arc 的伺服器上註冊電腦，請參閱下列 [文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) 來建立服務主體。
 
 >[!NOTE]
->您必須具有 Linux 電腦的 *根* 存取權限，才能執行 **azcmagent**。
+>您必須具有 Linux 電腦的 *根* 存取權限，才能執行 **azcmagent** 。
 
 ### <a name="connect"></a>連線
 

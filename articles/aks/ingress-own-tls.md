@@ -5,12 +5,12 @@ description: 了解如何安裝及設定 NGINX 輸入控制器，而該控制器
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 42e9f2128063caa13cf3fca1a28ec7e6465ba74e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8ea245444fa5e8e042644bd3f7a34ed021ccd1d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855701"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131032"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 上建立 HTTPS 輸入控制器及使用自有的 TLS 憑證
 
@@ -33,15 +33,15 @@ ms.locfileid: "88855701"
 
 ## <a name="create-an-ingress-controller"></a>建立輸入控制器
 
-若要建立輸入控制器，請使用 `Helm` 以安裝 *nginx-ingress*。 為了新增備援，您必須使用 `--set controller.replicaCount` 參數部署兩個 NGINX 輸入控制器複本。 為充分享有執行輸入控制器複本的好處，請確定 AKS 叢集中有多個節點。
+若要建立輸入控制器，請使用 `Helm` 以安裝 *nginx-ingress* 。 為了新增備援，您必須使用 `--set controller.replicaCount` 參數部署兩個 NGINX 輸入控制器複本。 為充分享有執行輸入控制器複本的好處，請確定 AKS 叢集中有多個節點。
 
 輸入控制器也需要在 Linux 節點上排程。 Windows Server 節點不應執行輸入控制器。 您可以使用 `--set nodeSelector` 參數來指定節點選取器，以告知 Kubernetes 排程器在 Linux 式節點上執行 NGINX 輸入控制器。
 
 > [!TIP]
-> 下列範例會建立名為「輸入 *-基本*」之輸入資源的 Kubernetes 命名空間。 視需要指定您自己環境的命名空間。 如果您的 AKS 叢集未啟用 RBAC，請新增 `--set rbac.create=false` 至 Helm 命令。
+> 下列範例會建立名為「輸入 *-基本* 」之輸入資源的 Kubernetes 命名空間。 視需要指定您自己環境的命名空間。 如果您的 AKS 叢集未啟用 RBAC，請新增 `--set rbac.create=false` 至 Helm 命令。
 
 > [!TIP]
-> 如果您想要針對叢集中的容器要求啟用 [用戶端來源 IP 保留][client-source-ip] ，請新增 `--set controller.service.externalTrafficPolicy=Local` 至 Helm 安裝命令。 用戶端來源 IP 會儲存在要求標頭中，以 *X 轉送-表示*。 使用已啟用用戶端來源 IP 保留的輸入控制器時，TLS 傳遞將無法運作。
+> 如果您想要針對叢集中的容器要求啟用 [用戶端來源 IP 保留][client-source-ip] ，請新增 `--set controller.service.externalTrafficPolicy=Local` 至 Helm 安裝命令。 用戶端來源 IP 會儲存在要求標頭中，以 *X 轉送-表示* 。 使用已啟用用戶端來源 IP 保留的輸入控制器時，TLS 傳遞將無法運作。
 
 ```console
 # Create a namespace for your ingress resources
@@ -81,11 +81,11 @@ nginx-ingress-ingress-nginx-controller   LoadBalancer   10.0.74.133   EXTERNAL_I
 
 ## <a name="generate-tls-certificates"></a>產生 TLS 憑證
 
-在本文中，使用 `openssl` 產生自我簽署的憑證。 針對生產用途，您應該透過提供者或自己的憑證授權單位 (CA) 來要求受信任、已簽署的憑證。 在下一個步驟中，您會使用 OpenSSL 所產生的 TLS 憑證和私密金鑰來產生 Kubernetes「祕密」**。
+在本文中，使用 `openssl` 產生自我簽署的憑證。 針對生產用途，您應該透過提供者或自己的憑證授權單位 (CA) 來要求受信任、已簽署的憑證。 在下一個步驟中，您會使用 OpenSSL 所產生的 TLS 憑證和私密金鑰來產生 Kubernetes「祕密」  。
 
-下列範例會產生名為 aks-ingress-tls.crt** 的 2048 位元 RSA X509 憑證，有效期為 365 天。 此私密金鑰檔案名為 aks-ingress-tls.key**。 Kubernetes TLS 祕密需要這兩個檔案。
+下列範例會產生名為 aks-ingress-tls.crt  的 2048 位元 RSA X509 憑證，有效期為 365 天。 此私密金鑰檔案名為 aks-ingress-tls.key  。 Kubernetes TLS 祕密需要這兩個檔案。
 
-這篇文章使用 demo.azure.com** 主體一般名稱，而且不需要變更。 針對生產用途，指定自己組織的 `-subj` 參數值：
+這篇文章使用 demo.azure.com  主體一般名稱，而且不需要變更。 針對生產用途，指定自己組織的 `-subj` 參數值：
 
 ```console
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
@@ -98,7 +98,7 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 
 若要允許 Kubernetes 使用輸入控制器的 TLS 憑證和私密金鑰，您可建立及使用祕密。 定義祕密一次，並使用在上一個步驟中建立的憑證和金鑰檔案。 您會接著在定義輸入路由時參考此祕密。
 
-下列範例會建立祕密名稱 aks-ingress-tls**：
+下列範例會建立祕密名稱 aks-ingress-tls  ：
 
 ```console
 kubectl create secret tls aks-ingress-tls \
@@ -132,7 +132,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -170,7 +170,7 @@ spec:
     spec:
       containers:
       - name: ingress-demo
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -205,7 +205,7 @@ kubectl apply -f ingress-demo.yaml --namespace ingress-basic
 > [!TIP]
 > 如果在憑證要求程式期間指定的主機名稱（CN 名稱）與輸入路由中所定義的主機不相符，則輸入控制器會顯示 *Kubernetes 輸入控制器假憑證* 警告。 請確定您的憑證與輸入路由主機名稱相符。
 
-tls** 區段會告知輸入路由對主機 demo.azure.com** 使用名為 aks-ingress-tls** 的祕密。 同樣地，針對生產用途，指定您自己的主機位址。
+tls  區段會告知輸入路由對主機 demo.azure.com  使用名為 aks-ingress-tls  的祕密。 同樣地，針對生產用途，指定您自己的主機位址。
 
 建立名為 `hello-world-ingress.yaml` 的檔案，並複製到下列範例 YAML 中。
 
@@ -258,7 +258,7 @@ ingress.extensions/hello-world-ingress created
 
 ## <a name="test-the-ingress-configuration"></a>測試輸入組態
 
-若要使用假的 demo.azure.com** 主機測試憑證，請使用 `curl` 並指定 --resolve** 參數。 此參數可讓您將 demo.azure.com** 名稱對應到輸入控制器的公用 IP 位址。 指定您自有輸入控制器的公用 IP 位址，如下列範例所示：
+若要使用假的 demo.azure.com  主機測試憑證，請使用 `curl` 並指定 --resolve  參數。 此參數可讓您將 demo.azure.com  名稱對應到輸入控制器的公用 IP 位址。 指定您自有輸入控制器的公用 IP 位址，如下列範例所示：
 
 ```
 curl -v -k --resolve demo.azure.com:443:EXTERNAL_IP https://demo.azure.com
@@ -278,7 +278,7 @@ $ curl -v -k --resolve demo.azure.com:443:EXTERNAL_IP https://demo.azure.com
 [...]
 ```
 
-`curl` 命令中的 -v** 參數會輸出詳細資訊，包括所收到的 TLS 憑證。 在 curl 輸出的中途，您可驗證是否已使用自有的 TLS 憑證。 即使我們使用自我簽署的憑證，-k** 參數會繼續載入頁面。 下列範例顯示已使用 issuer: CN=demo.azure.com; O=aks-ingress-tls** 憑證：
+`curl` 命令中的 -v  參數會輸出詳細資訊，包括所收到的 TLS 憑證。 在 curl 輸出的中途，您可驗證是否已使用自有的 TLS 憑證。 即使我們使用自我簽署的憑證，-k  參數會繼續載入頁面。 下列範例顯示已使用 issuer: CN=demo.azure.com; O=aks-ingress-tls  憑證：
 
 ```
 [...]
@@ -373,7 +373,7 @@ kubectl delete secret aks-ingress-tls
 kubectl delete namespace ingress-basic
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 本文包含 AKS 的一些外部元件。 若要深入了解這些元件，請參閱下列專案頁面：
 

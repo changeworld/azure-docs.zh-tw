@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 5c02812d4c97b94667fcddcb275243e7a9b36b29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01fb93a4b74a35501d0684b822ea83fc7b20770a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87321899"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130573"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立動作群組
 本文章將說明如何使用 [Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)設定動作群組。 您可以使用範本自動設定可在特定類型的警示中重複使用的動作群組。 這些動作群組能確定觸發警示時，所有正確的對象都會收到通知。
@@ -23,11 +23,11 @@ ms.locfileid: "87321899"
 
 2. [使用任何部署方法部署範本](../../azure-resource-manager/templates/deploy-powershell.md)。
 
-首先，我們會說明如何建立動作群組的 Resource Manager 範本，其中的動作定義是在範本中硬式編碼。 其次，我們會說明如何建立範本部署時，採用 Webhook 組態資訊作為輸入參數的範本。
-
 ## <a name="resource-manager-templates-for-an-action-group"></a>動作群組的 Resource Manager 範本
 
 若要使用 Resource Manager 範本建立動作群組，您要建立 `Microsoft.Insights/actionGroups` 類型的資源。 然後要填入所有相關的屬性。 以下是兩個建立動作群組的範例範本。
+
+第一個範本，描述如何建立動作群組的 Resource Manager 範本，其中動作定義是在範本中硬式編碼。 第二個範本，描述如何建立範本，以在部署範本時採用 webhook 設定資訊作為輸入參數。
 
 ```json
 {
@@ -162,7 +162,7 @@ ms.locfileid: "87321899"
 ```
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 深入了解[動作群組](./action-groups.md)。
 * 深入瞭解 [警示](alerts-overview.md)。
 * 了解如何[使用 Resource Manager 範本新增警示](./alerts-activity-log.md)。

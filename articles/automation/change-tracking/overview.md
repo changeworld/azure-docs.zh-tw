@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 35b1b07bd4d9eef555be26e1c24356b7c352bf38
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 39caa60196eca1afb7df1b0acbecddb557796fc3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100689"
+ms.locfileid: "93130335"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>變更追蹤和清查概觀
 
@@ -93,7 +93,7 @@ ms.locfileid: "93100689"
 
 ## <a name="tracking-file-content-changes"></a>追蹤檔案內容變更
 
-變更追蹤和清查可讓您查看 Windows 或 Linux 檔案的內容。 對於檔案的每項變更，變更追蹤和清查都會將檔案的內容儲存在 [Azure 儲存體帳戶](/azure/storage/common/storage-account-create)中。 當您要追蹤檔案時，可以在變更之前或之後查看其內容。 檔案內容可以內嵌或並排查看。
+變更追蹤和清查可讓您查看 Windows 或 Linux 檔案的內容。 對於檔案的每項變更，變更追蹤和清查都會將檔案的內容儲存在 [Azure 儲存體帳戶](../../storage/common/storage-account-create.md)中。 當您要追蹤檔案時，可以在變更之前或之後查看其內容。 檔案內容可以內嵌或並排查看。
 
 ![檢視檔案中的變更](./media/overview/view-file-changes.png)
 
@@ -158,7 +158,7 @@ ms.locfileid: "93100689"
 |服務|250|
 |精靈|250|
 
-對於使用變更追蹤和清查的機器，其 Log Analytics 資料使用量平均大約是每月 40 MB (視您的環境而定)。 使用 Log Analytics 工作區的使用量和估計成本功能，您可以在使用量圖表中變更追蹤和清查來查看內嵌的資料。 使用此資料檢視來評估您的資料使用量，並判斷它對您的帳單有何影響。 請參閱[了解您的使用量並估算成本](/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs)。
+對於使用變更追蹤和清查的機器，其 Log Analytics 資料使用量平均大約是每月 40 MB (視您的環境而定)。 使用 Log Analytics 工作區的使用量和估計成本功能，您可以在使用量圖表中變更追蹤和清查來查看內嵌的資料。 使用此資料檢視來評估您的資料使用量，並判斷它對您的帳單有何影響。 請參閱[了解您的使用量並估算成本](../../azure-monitor/platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs)。
 
 ### <a name="microsoft-service-data"></a>Microsoft 服務資料
 

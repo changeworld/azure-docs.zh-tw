@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 18817a426bacc1ddf144c1d64b611c55245cc21e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a7e56758a1a76933d6bb18883aa15ce33ce2e89e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097782"
+ms.locfileid: "93130913"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>為 IoT Edge 串流分析實作 CI/CD
 
@@ -255,8 +255,8 @@ curl -d –X GET https://management.azure.com/subscriptions/{subscriptionid}/res
 部署資訊清單設定完成後，請參閱[使用 Azure CLI 部署 Azure IoT Edge 模組](../iot-edge/how-to-deploy-modules-cli.md)進行部署。
 
 
-## <a name="next-steps"></a>下一步 
+## <a name="next-steps"></a>後續步驟 
  
 * [Azure IoT Edge 串流分析](stream-analytics-edge.md)
-* [ASA IoT Edge 教學課程](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
+* [ASA IoT Edge 教學課程](../iot-edge/tutorial-deploy-stream-analytics.md)
 * [使用 Visual Studio 工具來開發串流分析 Edge 作業](stream-analytics-tools-for-visual-studio-edge-jobs.md)

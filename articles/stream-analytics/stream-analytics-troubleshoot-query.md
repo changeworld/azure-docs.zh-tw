@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: ead175cbcaa9467cb5263ad95100facdda096991
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2c199b2366f2708af19c1868cce09e0ba38fc96
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87337801"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130250"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>對 Azure 串流分析查詢進行疑難排解
 
@@ -32,19 +32,19 @@ ms.locfileid: "87337801"
 
     ![作業圖表預覽結果](./media/debug-locally-using-job-diagram-vs-code/preview-result.png)
 
-3.  如果您使用 [**Timestamp By**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)，請確定事件有大於[作業開始時間](stream-analytics-out-of-order-and-late-events.md)的時間戳記。
+3.  如果您使用 [**Timestamp By**](/stream-analytics-query/timestamp-by-azure-stream-analytics)，請確定事件有大於 [作業開始時間](./stream-analytics-time-handling.md)的時間戳記。
 
 4.  排除常見的錯誤，例如︰
-    - 查詢中的 [**WHERE**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) 子句篩選出所有事件，造成無法產生任何輸出作業。
-    - [**CAST**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) 函式失敗，導致作業失敗。 若要避免 cast 類型的失敗，請改為使用 [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics)。
+    - 查詢中的 [**WHERE**](/stream-analytics-query/where-azure-stream-analytics) 子句篩選出所有事件，造成無法產生任何輸出作業。
+    - [**CAST**](/stream-analytics-query/cast-azure-stream-analytics) 函式失敗，導致作業失敗。 若要避免 cast 類型的失敗，請改為使用 [**TRY_CAST**](/stream-analytics-query/try-cast-azure-stream-analytics)。
     - 當您使用視窗函式時，請等候完整的視窗運作時間，以查看查詢的輸出。
     - 事件的時間戳記早於作業開始時間，因此會捨棄事件。
-    - [**JOIN**](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) 條件不相符。 如果沒有相符項目，則不會有輸出。
+    - [**JOIN**](/stream-analytics-query/join-azure-stream-analytics) 條件不相符。 如果沒有相符項目，則不會有輸出。
 
-5.  確定事件排序原則已如預期設定。 移至 [設定]，然後選取 [事件排序][](stream-analytics-out-of-order-and-late-events.md)。 如果您使用 [測試] 按鈕測試查詢，則不會套用原則。 此結果是在瀏覽器中進行測試與在生產環境中執行作業之間的一個差異。 
+5.  確定事件排序原則已如預期設定。 移至 [設定]，然後選取 [事件排序][](./stream-analytics-time-handling.md)。 如果您使用 [測試] 按鈕測試查詢，則不會套用原則。 此結果是在瀏覽器中進行測試與在生產環境中執行作業之間的一個差異。 
 
 6. 使用活動和資源記錄來偵錯：
-    - 使用[活動記錄](../azure-resource-manager/resource-group-audit.md)，篩選找出錯誤並進行偵錯。
+    - 使用[活動記錄](../azure-resource-manager/management/view-activity-logs.md)，篩選找出錯誤並進行偵錯。
     - 使用[作業資源記錄](stream-analytics-job-diagnostic-logs.md)找出錯誤並進行偵錯。
 
 ## <a name="resource-utilization-is-high"></a>資源使用率偏高
@@ -55,13 +55,13 @@ ms.locfileid: "87337801"
 
 在即時的資料處理中，了解資料在查詢進行中所呈現的樣子將會相當有幫助。 您可以在 Visual Studio 中使用作業圖表來看到資料。 如果您沒有 Visual Studio，您可以採取額外的步驟來輸出中間資料。
 
-由於 Azure 串流分析作業的輸入或步驟可以讀取多次，因此您可以寫入額外的 SELECT INTO 陳述式。 這種方式會將中繼資料輸出到儲存體，讓您可以檢查資料的正確性，就像您對程式進行偵錯時*監看變數*的動作一樣。
+由於 Azure 串流分析作業的輸入或步驟可以讀取多次，因此您可以寫入額外的 SELECT INTO 陳述式。 這種方式會將中繼資料輸出到儲存體，讓您可以檢查資料的正確性，就像您對程式進行偵錯時 *監看變數* 的動作一樣。
 
 下列 Azure 串流分析作業中的查詢範例有一個串流輸入、兩個的參考資料輸入和要傳送至 Azure 資料表儲存體的輸出。 查詢會聯結事件中樞的資料和兩個參考 Blob 以取得名稱和類別資訊︰
 
 ![範例串流分析 SELECT INTO 查詢](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
 
-請注意，雖然作業正在執行，但不會在輸出中產生任何事件。 在 [監視]圖格上 (如此處所示)，您可以看到輸入正在產生資料，但您無法知道哪一個**聯結**步驟會造成所有資料遭到捨棄。
+請注意，雖然作業正在執行，但不會在輸出中產生任何事件。 在 [監視]圖格上 (如此處所示)，您可以看到輸入正在產生資料，但您無法知道哪一個 **聯結** 步驟會造成所有資料遭到捨棄。
 
 ![串流分析監視圖格](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
 
@@ -103,12 +103,12 @@ ms.locfileid: "87337801"
 
 ## <a name="get-help"></a>取得說明
 
-如需進一步的協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
+如需進一步的協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
 * [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics 查詢語言參考](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 串流分析管理 REST API 參考](/rest/api/streamanalytics/)

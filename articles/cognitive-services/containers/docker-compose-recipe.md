@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 10/29/2020
 ms.author: aahi
-ms.openlocfilehash: 740311226a662ea3d3f8bba3ee5156e14f74516b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cedcf8a3fcd656c4af0ca7493c598791d35d20d9
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88244290"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130556"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>使用 Docker Compose 來部署多個容器
 
@@ -25,34 +25,27 @@ ms.locfileid: "88244290"
 
 在單一主機電腦上協調多個容器映射可能會很有用。 在本文中，我們會將讀取和表單辨識器容器一起提取起來。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 此程式需要幾個必須在本機上安裝和執行的工具：
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services)。
 * [Docker 引擎](https://www.docker.com/products/docker-engine)。 確認 Docker CLI 可在主控台視窗中運作。
 * 具有正確定價層的 Azure 資源。 只有下列定價層適用于此容器：
-  * 只有 F0 或標準定價層的**電腦視覺**資源。
-  * 僅限 F0 或標準定價層的**表單辨識器**資源。
-  * 有 S0 定價層的**認知服務**資源。
-
-## <a name="request-access-to-the-container-registry"></a>要求存取容器登錄
-
-完成並提交 [認知服務語音容器要求表單](https://aka.ms/speechcontainerspreview/)。 
-
-[!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
-
-[!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
+  * 只有 F0 或標準定價層的 **電腦視覺** 資源。
+  * 僅限 F0 或標準定價層的 **表單辨識器** 資源。
+  * 有 S0 定價層的 **認知服務** 資源。
+* 如果您使用的是閘道預覽容器，則必須完成 [線上要求表單](https://aka.ms/csgate/) 才能使用。
 
 ## <a name="docker-compose-file"></a>Docker Compose 檔案
 
-YAML 檔案會定義要部署的所有服務。 這些服務依賴 `DockerFile` 或現有的容器映射。 在此情況下，我們將使用兩個預覽映射。 複製並貼上下列 YAML 檔，並將它儲存為 *YAML*。 在檔案中提供適當的 **apikey**、 **帳單**和 **EndpointUri** 值。
+YAML 檔案會定義要部署的所有服務。 這些服務依賴 `DockerFile` 或現有的容器映射。 在此情況下，我們將使用兩個預覽映射。 複製並貼上下列 YAML 檔，並將它儲存為 *YAML* 。 在檔案中提供適當的 **apikey** 、 **帳單** 和 **EndpointUri** 值。
 
 ```yaml
 version: '3.7'
 services:
   forms:
-    image: "containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer"
+    image: "mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout"
     environment:
        eula: accept
        billing: # < Your form recognizer billing URL >
@@ -70,7 +63,7 @@ services:
       - "5010:5000"
 
   ocr:
-    image: "containerpreview.azurecr.io/microsoft/cognitive-services-read"
+    image: "mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview"
     environment:
       eula: accept
       apikey: # < Your computer vision API key >
@@ -98,8 +91,8 @@ docker-compose up
 Docker 第一次使用此 **設定執行 docker 撰寫** 命令時，會提取在 [ **服務** ] 節點下設定的映射，然後下載並掛接這些映射：
 
 ```console
-Pulling forms (containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:)...
-latest: Pulling from microsoft/cognitive-services-form-recognizer
+Pulling forms (mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout:)...
+latest: Pulling from azure-cognitive-services/form-recognizer/layout
 743f2d6c1f65: Pull complete
 72befba99561: Pull complete
 2a40b9192d02: Pull complete
@@ -113,8 +106,8 @@ fd93b5f95865: Pull complete
 ef41dcbc5857: Pull complete
 4d05c86a4178: Pull complete
 34e811d37201: Pull complete
-Pulling ocr (containerpreview.azurecr.io/microsoft/cognitive-services-read:)...
-latest: Pulling from microsoft/cognitive-services-read
+Pulling ocr (mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview:)...
+latest: Pulling from /azure-cognitive-services/vision/read:3.1-preview
 f476d66f5408: Already exists
 8882c27f669e: Already exists
 d9af21273955: Already exists
@@ -166,13 +159,13 @@ ocr_1    | Application started. Press Ctrl+C to shut down.
 
 ```
 IMAGE ID            REPOSITORY                                                                 TAG
-2ce533f88e80        containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer   latest
-4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-read              latest
+2ce533f88e80        mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout          latest
+4be104c126c5        mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview         latest
 ```
 
 ### <a name="test-containers"></a>測試容器
 
-在主機電腦上開啟瀏覽器，然後從 yaml 檔案中使用指定的埠（例如），移至**localhost** *。* http://localhost:5021/swagger/index.html 例如，您可以使用 API 中的 [ **試用** ] 功能來測試表單辨識器端點。 這兩個容器 swagger 頁面應可供使用且可進行測試。
+在主機電腦上開啟瀏覽器，然後從 yaml 檔案中使用指定的埠（例如），移至 **localhost** *。* http://localhost:5021/swagger/index.html 例如，您可以使用 API 中的 [ **試用** ] 功能來測試表單辨識器端點。 這兩個容器 swagger 頁面應可供使用且可進行測試。
 
 ![表單辨識器容器](media/form-recognizer-swagger-page.png)
 

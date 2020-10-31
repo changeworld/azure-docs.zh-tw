@@ -6,16 +6,16 @@ author: su-jie
 ms.author: sujie
 ms.date: 4/11/2020
 ms.topic: how-to
-ms.openlocfilehash: bd72866e3e3db21691fda6aaec864a76af7414a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 756604b71efd1715ae3b4ca3d5eebf0fdfa41e34
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903728"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129791"
 ---
 # <a name="intellisense-in-azure-stream-analytics-tools-for-visual-studio-code"></a>適用于 Visual Studio Code 的 Azure 串流分析工具中的 IntelliSense
 
-IntelliSense 適用于適用于[VS Code 的 Azure 串流分析工具](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa&ssr=false#overview)中的[串流分析查詢語言](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?toc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fstream-analytics%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fbread%2Ftoc.json)。 IntelliSense 是包含一些功能的程式碼完成輔助工具：列出成員、參數資訊、快速諮詢和自動完成文字。 IntelliSense 功能有時會由其他名稱（例如「程式碼完成」、「內容輔助」和「程式碼提示」）來呼叫。
+IntelliSense 適用于適用于[VS Code 的 Azure 串流分析工具](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa&ssr=false#overview)中的[串流分析查詢語言](/stream-analytics-query/stream-analytics-query-language-reference?bc=https%253a%252f%252fdocs.microsoft.com%252fazure%252fbread%252ftoc.json&toc=https%253a%252f%252fdocs.microsoft.com%252fazure%252fstream-analytics%252ftoc.json)。 IntelliSense 是包含一些功能的程式碼完成輔助工具：列出成員、參數資訊、快速諮詢和自動完成文字。 IntelliSense 功能有時會由其他名稱（例如「程式碼完成」、「內容輔助」和「程式碼提示」）來呼叫。
 
 ![IntelliSense 示範](./media/vs-code-intellisense/intellisense.gif)
 
@@ -37,7 +37,7 @@ IntelliSense 適用于適用于[VS Code 的 Azure 串流分析工具](https://ma
 |Completion     |  類型       |
 | ----- | ------- |
 | 關鍵字 | `keyword`
-| 函式 | `build-in function`, `user defined function`  |
+| 函數 | `build-in function`, `user defined function`  |
 | 資料集名稱| `input`, `output`, `intermediate result set`|
 | 資料集資料行名稱|`input`, `intermediate result set`|
 

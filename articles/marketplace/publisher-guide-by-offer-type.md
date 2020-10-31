@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 10/06/2020
-ms.openlocfilehash: ff31e29b8c2a36c9aaa3d72eab86340ed405b1ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54775d7e9923505c6e68a47feed6726b9cb84c47
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91772646"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129927"
 ---
 # <a name="publishing-guide-by-offer-type"></a>依供應項目類型的發行指南
 
-本文說明商用 marketplace 中可用的供應專案類型。 *供應專案類型*會定義供應專案結構，其中包含商業市集中顯示的中繼資料、成品和其他內容。
+本文說明商用 marketplace 中可用的供應專案類型。 *供應專案類型* 會定義供應專案結構，其中包含商業市集中顯示的中繼資料、成品和其他內容。
 
 在您 [決定發佈選項](determine-your-listing-type.md)之後，必須先選擇供應專案類型，才能開始在合作夥伴中心中建立供應專案。 供應項目類型會對應至您想要發佈的解決方案、應用程式服務供應項目類型，以及對等的 Microsoft 產品和服務。
 
@@ -37,7 +37,7 @@ ms.locfileid: "91772646"
 | [**諮詢服務**](consulting-services.md) | 諮詢服務可協助您將客戶與服務連線，以支援及擴充其 Azure、Dynamics 365 或 Power Suite 服務的使用。|
 | [**Dynamics 365**](appsource-offer-publishing-guide.md) | 您可以發佈建置於或擴充 Dynamics 365 Business Central、Dynamics 365 Customer Engagement、Power Apps 和財務和營運應用程式的 AppSource 供應專案。|
 | [**IoT Edge 模組**](iot-edge-module.md) | Azure IoT Edge 模組是 IoT Edge 所管理的最小計算單位，並可包含 Microsoft 服務 (例如「Azure 串流分析」)、第三方服務，或您自己的解決方案特定程式碼。 |
-| [**受控服務**](partner-center-portal/create-new-managed-service-offer.md) | 您可以透過 [Azure Lighthouse](/azure/lighthouse/overview)建立受控服務供應專案，以及管理客戶委派的訂用帳戶或資源群組。|
+| [**受控服務**](partner-center-portal/create-new-managed-service-offer.md) | 您可以透過 [Azure Lighthouse](../lighthouse/overview.md)建立受控服務供應專案，以及管理客戶委派的訂用帳戶或資源群組。|
 | [**Power BI 應用程式** <br/>**Microsoft 365**](appsource-offer-publishing-guide.md) | 您可以發佈建置於或擴充 Power BI 和 Microsoft 365 的 AppSource 供應專案。|
 | [**軟體即服務**](plan-saas-offer.md) | 使用「軟體即服務」 (SaaS) 供應專案類型，讓客戶以訂用帳戶的形式購買您的 SaaS 型技術解決方案。 |
 

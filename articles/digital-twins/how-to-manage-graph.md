@@ -7,21 +7,25 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3b8dafd6d2347cf7cca4100f577476b8dfdf6c81
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 28551cb201ab964a21461d6b3f97ce439e446011
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495772"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130284"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>使用關聯性管理數位 twins 的圖形
 
-Azure 數位 Twins 的核心是代表整個環境的對應項 [圖形](concepts-twins-graph.md) 。 對應項圖形是由透過 **關聯**性連接的個別數位 twins 所組成。 
+Azure 數位 Twins 的核心是代表整個環境的對應項 [圖形](concepts-twins-graph.md) 。 對應項圖形是由透過 **關聯** 性連接的個別數位 twins 所組成。 
 
 一旦您有運作中的 [Azure 數位 Twins 實例](how-to-set-up-instance-portal.md) ，並已在用戶端應用程式中設定 [驗證](how-to-authenticate-client.md) 程式碼，您就可以使用 [**DigitalTwins api**](/rest/api/digital-twins/dataplane/twins) 來建立、修改和刪除 Azure 數位 Twins 實例中的數位 Twins 及其關聯性。 您也可以使用 [.net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)或 [AZURE 數位 Twins CLI](how-to-use-cli.md)。
 
 本文著重于管理關聯性和整個圖形;若要使用個別的數位 twins，請參閱 how [*to：管理數位 twins*](how-to-manage-twin.md)。
 
+## <a name="prerequisites"></a>Prerequisites
+
+[!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
+    
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
 ## <a name="create-relationships"></a>建立關聯性
@@ -33,11 +37,11 @@ Azure 數位 Twins 的核心是代表整個環境的對應項 [圖形](concepts-
 若要建立關聯性，您必須指定：
 * 下列程式碼範例中的來源對應項識別碼 (`srcId`) ：關聯性來源之對應項的識別碼。
 * 下列程式碼範例中的目標對應項識別碼 (`targetId`) ：關聯性抵達之對應項的識別碼。
-* 下列程式碼範例中 (的關聯性名稱 `relName`) ：關聯性的泛型型別，類似于 _contains_。
-* 下列程式碼範例中 (的關聯性識別碼 `relId`) ：此關聯性的特定名稱，類似 _Relationship1_。
+* 下列程式碼範例中 (的關聯性名稱 `relName`) ：關聯性的泛型型別，類似于 _contains_ 。
+* 下列程式碼範例中 (的關聯性識別碼 `relId`) ：此關聯性的特定名稱，類似 _Relationship1_ 。
 
 關聯性識別碼在給定的來源對應項內必須是唯一的。 它不需要是全域唯一的。
-例如，針對對應項 *foo*，每個特定的關聯性識別碼都必須是唯一的。 但是，另一個對應項 *列可以有* 符合 *foo* 關聯性相同識別碼的外寄關聯性。
+例如，針對對應項 *foo* ，每個特定的關聯性識別碼都必須是唯一的。 但是，另一個對應項 *列可以有* 符合 *foo* 關聯性相同識別碼的外寄關聯性。
 
 下列程式碼範例說明如何在您的 Azure 數位 Twins 實例中建立關聯性。
 
@@ -81,9 +85,9 @@ await CreateRelationship(client, srcId, targetId, "contains");
 
 您可以有兩個 twins 之間的關聯性數目沒有限制，您可以視需要在 twins 之間擁有任意數量的關聯性。 
 
-這表示您可以一次表達兩個 twins 之間的幾種不同類型的關聯性。 例如，對應項*a*可以同時具有*預存*關聯性和對應項*B*的*製造*關聯性。
+這表示您可以一次表達兩個 twins 之間的幾種不同類型的關聯性。 例如，對應項 *a* 可以同時具有 *預存* 關聯性和對應項 *B* 的 *製造* 關聯性。
 
-您甚至可以在相同的兩個 twins 之間建立多個相同類型之關聯性的實例（如有需要）。 在此範例中，對應項*A*可以有兩個與對應項*B*不同的*預存*關聯性，只要關聯性具有不同的關聯性識別碼即可。
+您甚至可以在相同的兩個 twins 之間建立多個相同類型之關聯性的實例（如有需要）。 在此範例中，對應項 *A* 可以有兩個與對應項 *B* 不同的 *預存* 關聯性，只要關聯性具有不同的關聯性識別碼即可。
 
 ## <a name="list-relationships"></a>列出關聯性
 
@@ -132,7 +136,7 @@ await FindOutgoingRelationshipsAsync(client, twin_Id);
 
 ### <a name="find-incoming-relationships-to-a-digital-twin"></a>尋找數位對應項的連入關聯性
 
-Azure 數位 Twins 也有 API 可尋找指定對應項的*所有 _ 內*送 * 關聯性。 這通常適用于反向導覽或刪除對應項。
+Azure 數位 Twins 也有 API 可尋找指定對應項的 *所有 _ 內* 送 * 關聯性。 這通常適用于反向導覽或刪除對應項。
 
 先前的程式碼範例著重于尋找對應項的傳出關聯性。 下列範例的結構類似，但會改為尋找對應項的連 *入* 關聯性。
 

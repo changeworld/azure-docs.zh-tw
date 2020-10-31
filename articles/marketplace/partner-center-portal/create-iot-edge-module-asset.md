@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/03/2020
-ms.openlocfilehash: dec0711c4763983e520d247fd8b775b1810e0479
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d55186874e6f5be67a04e4a04d54a89dc09f9cd
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324636"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130437"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>準備 IoT Edge 模組的技術資產
 
@@ -66,11 +66,11 @@ IoT Edge 模組維度 (例如目標 IoT Edge 裝置上的 CPU、RAM、存放裝�
 
 ### <a name="configuration"></a>組態
 
-您的模組必須包含預設的設定，才能盡可能以最簡單的方式將部署到 IoT Edge 的裝置。 您可以在[合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace)的方案的**技術**設定頁面中提供這項資訊。 容器也可能包含 IoT Edge 模組 SDK，以啟用與 Edge 中樞和 IoT 中樞的通訊。
+您的模組必須包含預設的設定，才能盡可能以最簡單的方式將部署到 IoT Edge 的裝置。 您可以在 [合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace)的方案的 **技術** 設定頁面中提供這項資訊。 容器也可能包含 IoT Edge 模組 SDK，以啟用與 Edge 中樞和 IoT 中樞的通訊。
 
 #### <a name="default-configuration"></a>預設組態
 
-IoT Edge 模組必須能夠以[合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace)方案的 [**技術**設定] 頁面中提供的預設設定為開頭。 可用的預設設定如下：
+IoT Edge 模組必須能夠以 [合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace)方案的 [ **技術** 設定] 頁面中提供的預設設定為開頭。 可用的預設設定如下：
 
 - 預設 **路由**
 - 預設 **模組對應項所需屬性**
@@ -85,7 +85,7 @@ ServerIPAddress = <MY_SERVER_IP_ADDRESS>
 
 #### <a name="configuration-documentation"></a>設定文件
 
-IoT Edge 模組的所有設定都必須清楚記載。 例如，您必須記錄如何使用其路由、對應項所需屬性、環境變數、createOptions 等等。 您必須提供檔的連結，或將它設為供應專案或方案描述的一部分。 您可以在[合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace)的供應專案**清單**和**方案清單**頁面中提供這項資訊。
+IoT Edge 模組的所有設定都必須清楚記載。 例如，您必須記錄如何使用其路由、對應項所需屬性、環境變數、createOptions 等等。 您必須提供檔的連結，或將它設為供應專案或方案描述的一部分。 您可以在 [合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace)的供應專案 **清單** 和 **方案清單** 頁面中提供這項資訊。
 
 #### <a name="tags-and-versioning"></a>標籤與版本控制
 
@@ -107,10 +107,10 @@ IoT Edge 模組的所有設定都必須清楚記載。 例如，您必須記錄�
 
 使用 IoT 模組 Sdk 的下列其中一種方法，將 ProductInfo 設定為此識別碼：
 
-- [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo)
+- [C#](/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo)
 - [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
-- [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
+- [Java](/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
 
 針對未使用 IoT 模組 SDK 的模組，可透過合作夥伴中心取得較不精確的深入解析，例如下載數目。
 
@@ -141,6 +141,6 @@ IoT Edge 模組必須避免具有特殊 [許可權的模組](https://docs.docker
 
 若要將 IoT Edge 模組上傳至 Azure Marketplace，您必須先將它裝載于 [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) (ACR) 。 此模組必須包含您想要發佈的所有標記，包括資訊清單標記所參考的影像標記。 如需詳細資訊，請參閱教學課程： [建立 Azure container registry 並推送容器映射](../../container-instances/container-instances-tutorial-prepare-acr.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [建立 IoT Edge 模組供應項目](azure-iot-edge-module-creation.md)

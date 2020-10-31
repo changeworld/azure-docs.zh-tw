@@ -7,12 +7,12 @@ ms.topic: how-to
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 6bd43f89ff6e341756c1706eb96d07510c6fb1a4
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9ae770a21e93a0c8ab3827e91f15e163d7a875b4
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428210"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130199"
 ---
 # <a name="create-an-azure-application-offer"></a>建立 Azure 應用程式供應項目
 
@@ -34,25 +34,25 @@ ms.locfileid: "92428210"
 
 當您準備好用於商業 Marketplace 的 Azure 應用程式供應項目時，請檢閱下列資源。
 
-* [了解 Azure Resource Manager 範本](../../azure-resource-manager/resource-group-authoring-templates.md)
+* [了解 Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)
 
 * 快速入門：
 
     * [Azure 快速入門範本](https://azure.microsoft.com/documentation/templates/)
     * [Azure 範本最佳作法指南](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
-    * [發佈應用程式定義](../../managed-applications/publish-service-catalog-app.md)
-    * [部署服務目錄應用程式](../../managed-applications/deploy-service-catalog-quickstart.md)
+    * [發佈應用程式定義](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md)
+    * [部署服務目錄應用程式](../../azure-resource-manager/managed-applications/deploy-service-catalog-quickstart.md)
 
 * 教學課程：
 
-    * [建立定義檔案](../../managed-applications/publish-service-catalog-app.md)
-    * [發佈 Marketplace 應用程式](../../managed-applications/publish-marketplace-app.md)
+    * [建立定義檔案](../../azure-resource-manager/managed-applications/publish-service-catalog-app.md)
+    * [發佈 Marketplace 應用程式]()
 
 * 範例：
 
-    * [Azure CLI](../../managed-applications/cli-samples.md)
-    * [Azure PowerShell](../../managed-applications/powershell-samples.md)
-    * [受控應用程式解決方案](../../managed-applications/sample-projects.md)
+    * [Azure CLI](../../azure-resource-manager/managed-applications/cli-samples.md)
+    * [Azure PowerShell](../../azure-resource-manager/managed-applications/powershell-samples.md)
+    * [受控應用程式解決方案](../../azure-resource-manager/managed-applications/sample-projects.md)
 
 [為 Azure Marketplace 建置解決方案範本和受控應用程式](https://channel9.msdn.com/Events/Build/2018/BRK3603) \(英文\) 這部影片可針對 Azure 應用程式供應項目類型提供完整的介紹：
 
@@ -67,8 +67,8 @@ ms.locfileid: "92428210"
 
 選擇下列其中一種指令碼環境，或兩者均使用，以協助管理 Azure 應用程式：
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
-* [Azure CLI](https://docs.microsoft.com/cli/azure)
+* [Azure PowerShell](/powershell/azure/)
+* [Azure CLI](/cli/azure)
 
 建議您將下列工具新增至開發環境：
 
@@ -84,17 +84,17 @@ ms.locfileid: "92428210"
 
 Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
-* **解決方案範本**是在 Marketplace 中發佈解決方案的其中一個主要方法。 當您的解決方案除了單一虛擬機器 (VM) 之外，還需要以自動化方式進行額外的部署和設定時，請使用此方案類型。 透過解決方案範本，您可以自動提供多個資源，包括 VM、網路和儲存體資源，以提供複雜的 IaaS 解決方案。  如需有關建置解決方案範本的詳細資訊，請參閱 [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)。
+* **解決方案範本** 是在 Marketplace 中發佈解決方案的其中一個主要方法。 當您的解決方案除了單一虛擬機器 (VM) 之外，還需要以自動化方式進行額外的部署和設定時，請使用此方案類型。 透過解決方案範本，您可以自動提供多個資源，包括 VM、網路和儲存體資源，以提供複雜的 IaaS 解決方案。  如需有關建置解決方案範本的詳細資訊，請參閱 [Azure Resource Manager](../../azure-resource-manager/management/overview.md)。
 
-* **受控應用程式**與解決方案範本類似，只有一個主要差異。 在受控應用程式中，資源會部署到應用程式發行者所管理的資源群組。 資源群組存在於客戶的訂用帳戶，但發行者租用戶中的身分識別可以存取資源群組。 身為發行者，您可以指定解決方案持續支援的成本。 使用受控應用程式可輕鬆建置完全受控的周全應用程式並提供給您的客戶。  如需受控應用程式的優點與類型詳細資訊，請參閱 [Azure 受控應用程式概觀](../../managed-applications/overview.md)。
+* **受控應用程式** 與解決方案範本類似，只有一個主要差異。 在受控應用程式中，資源會部署到應用程式發行者所管理的資源群組。 資源群組存在於客戶的訂用帳戶，但發行者租用戶中的身分識別可以存取資源群組。 身為發行者，您可以指定解決方案持續支援的成本。 使用受控應用程式可輕鬆建置完全受控的周全應用程式並提供給您的客戶。  如需受控應用程式的優點與類型詳細資訊，請參閱 [Azure 受控應用程式概觀](../../azure-resource-manager/managed-applications/overview.md)。
 
 ## <a name="technical-requirements"></a>技術需求
 
 所有 Azure 應用程式在 `.zip` 封存的根資料夾中都至少包含兩個檔案：
 
-* Resource Manager 範本檔案，名為 [mainTemplate.json](../../azure-resource-manager/resource-group-overview.md)。  此範本會定義要部署到客戶 Azure 訂用帳戶中的資源。 如需 Resource Manager 範本的範例，請參閱 [Azure 快速入門範本資源庫](https://azure.microsoft.com/resources/templates/)或對應的 [GitHub：Azure Resource Manager 快速入門範本](https://github.com/azure/azure-quickstart-templates)存放庫。
+* Resource Manager 範本檔案，名為 [mainTemplate.json](../../azure-resource-manager/management/overview.md)。  此範本會定義要部署到客戶 Azure 訂用帳戶中的資源。 如需 Resource Manager 範本的範例，請參閱 [Azure 快速入門範本資源庫](https://azure.microsoft.com/resources/templates/)或對應的 [GitHub：Azure Resource Manager 快速入門範本](https://github.com/azure/azure-quickstart-templates)存放庫。
 
-* Azure 應用程式建立體驗的使用者介面定義，名為 [createUiDefinition.json](../../managed-applications/create-uidefinition-overview.md)。  在使用者介面中，您可以指定讓取用者提供參數值的項目。
+* Azure 應用程式建立體驗的使用者介面定義，名為 [createUiDefinition.json](../../azure-resource-manager/managed-applications/create-uidefinition-overview.md)。  在使用者介面中，您可以指定讓取用者提供參數值的項目。
 
 所有新的 Azure 應用程式供應項目都必須包含一個 [Azure 合作夥伴客戶使用方式屬性 GUID](../azure-partner-customer-usage-attribution.md) \(部分機器翻譯\)。 
 
@@ -116,10 +116,10 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 1. 在 [新增供應項目] 頁面上，輸入 [供應項目識別碼]。 這是您帳戶中每個供應項目的唯一識別碼。
 
      * 客戶可以在市集供應項目和 Azure Resource Manager 範本 (如果適用) 的網址中看到此識別碼。
-     * 請一律使用小寫字母和數字。 其可以包含連字號和底線，但不能有空格，且限制為 50 個字元。 例如，如果您輸入 **test-offer-1**，供應項目網址將為 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
+     * 請一律使用小寫字母和數字。 其可以包含連字號和底線，但不能有空格，且限制為 50 個字元。 例如，如果您輸入 **test-offer-1** ，供應項目網址將為 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
      * 選取 [建立] 之後，即無法變更供應項目識別碼。
 
-1. 輸入**供應項目別名**。 這是用於合作夥伴中心內供應項目的名稱。
+1. 輸入 **供應項目別名** 。 這是用於合作夥伴中心內供應項目的名稱。
 
      * 此名稱不會在市集中使用，且與向客戶顯示的供應項目名稱和其他值不同。
      * 在您選取 [建立] 之後，就無法變更供應項目別名。
@@ -136,7 +136,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 若要在固定時間啟用試用產品，請選取 [啟用試用產品] 核取方塊。 若要從您的供應項目中移除試用產品，請清除此核取方塊。 如何設定試用產品環境會在本主題稍後的[試用產品技術設定](#test-drive-technical-configuration)一節中提及。
 
-如需詳細資訊，請參閱[試用商業 Marketplace 中的供應項目](test-drive.md) \(部分機器翻譯\)。 您也可以閱讀[試用產品最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices) \(英文\)，並下載[試用產品概觀 PDF](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) \(英文\) (請確定您的快顯封鎖程式已關閉)
+如需詳細資訊，請參閱[試用商業 Marketplace 中的供應項目](../what-is-test-drive.md) \(部分機器翻譯\)。 您也可以閱讀[試用產品最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices) \(英文\)，並下載[試用產品概觀 PDF](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) \(英文\) (請確定您的快顯封鎖程式已關閉)
 
 >[!Note]
 >所有 Azure 應用程式都是使用 Azure Resource Manager 範本實作的，因此 Azure 應用程式唯一可用的試用產品類型是 [Azure Resource Manager 試用產品](../azure-resource-manager-test-drive.md) \(部分機器翻譯\)。
@@ -158,7 +158,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 選取類別和子類別，以將您的供應專案放在適當的 marketplace 搜尋區域中。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
 
 - 至少一個和多個類別，包括主要和次要類別 (選擇性) 。
-- 每個主要和/或次要類別最多可有兩個子類別。 如果沒有任何子類別適用于您的供應專案，請選取 [ **不適用**]。
+- 每個主要和/或次要類別最多可有兩個子類別。 如果沒有任何子類別適用于您的供應專案，請選取 [ **不適用** ]。
 
 請參閱 [供應專案清單最佳做法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。
 
@@ -173,7 +173,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 ### <a name="marketplace-details"></a>Marketplace 詳細資料
 
 > [!NOTE]
-> 供應項目清單內容 (例如描述、文件、螢幕擷取畫面與使用規定) 不一定要使用英文，只要供應項目用以下句子描述開頭即可：「此應用程式僅適用於 [非英文語言]」。 也可利用不同於供應項目清單內容中所使用的語言，來提供供應項目內容的*有用連結 URL*。
+> 供應項目清單內容 (例如描述、文件、螢幕擷取畫面與使用規定) 不一定要使用英文，只要供應項目用以下句子描述開頭即可：「此應用程式僅適用於 [非英文語言]」。 也可利用不同於供應項目清單內容中所使用的語言，來提供供應項目內容的 *有用連結 URL* 。
 
 以下是供應專案資訊在 Azure Marketplace 中的顯示方式範例 (任何列出的價格僅供範例用途，不適合反映實際成本) ：
 
@@ -187,7 +187,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 4. 使用規定
 5. 隱私權原則位址 (連結) 
 6. 供應項目名稱
-7. 總結
+7. 摘要
 8. 描述
 9. 螢幕擷取畫面/影片
 
@@ -204,7 +204,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 #### <a name="name"></a>名稱
 
-您在此處輸入的名稱會作為供應項目清單標題向客戶顯示。 當您建立供應項目時，此欄位會預先填入您為**供應項目別名**輸入的文字，但您可以變更此值。 此名稱可以是商標 (您也可以包含商標或著作權符號)。 名稱不能超過 50 個字元，而且不能包含任何表情圖示。
+您在此處輸入的名稱會作為供應項目清單標題向客戶顯示。 當您建立供應項目時，此欄位會預先填入您為 **供應項目別名** 輸入的文字，但您可以變更此值。 此名稱可以是商標 (您也可以包含商標或著作權符號)。 名稱不能超過 50 個字元，而且不能包含任何表情圖示。
 
 #### <a name="search-results-summary"></a>搜尋結果摘要
 
@@ -251,7 +251,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 提供 **大型** 大小標誌的 PNG 檔案。 合作夥伴中心將使用這個來建立 **小型** 和 **中型** 標誌。 您可以選擇性地使用不同的映射取代這些映射。
 
-- 從 216 x 216 到 350 x 350 px 的**大型** (，需要) 
+- 從 216 x 216 到 350 x 350 px 的 **大型** (，需要) 
 - **中型** (90 x 90 px，選擇性) 
 - **Small** (48 x 48 px，選擇性) 
 
@@ -287,13 +287,13 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 藉由分別 (最多 10 個) 或上傳 CSV 檔案 (最多 100 個)，新增至少一個 Azure 訂用帳戶識別碼。 您可以藉由新增這些訂用帳戶識別碼，定義哪些人員可以在即時發佈之前預覽您的供應項目。 如果您的供應項目已上線，您仍然可以定義預覽對象，以測試您供應項目的變更或更新。
 
 > [!NOTE]
-> 預覽對象與私人對象不同。 預覽對象可以在供應項目即時發佈到 Marketplace 上*之前*先存取。 預覽對象可以查看並驗證所有方案，包括只有在您的供應項目完全發佈到 Marketplace 之後，才供私人對象使用的方案。 私人對象 (在方案的 [定價和可用性] 索引標籤中定義) 對特定方案具有獨佔式存取權。
+> 預覽對象與私人對象不同。 預覽對象可以在供應項目即時發佈到 Marketplace 上 *之前* 先存取。 預覽對象可以查看並驗證所有方案，包括只有在您的供應項目完全發佈到 Marketplace 之後，才供私人對象使用的方案。 私人對象 (在方案的 [定價和可用性] 索引標籤中定義) 對特定方案具有獨佔式存取權。
 
 選取 [儲存草稿] 後再繼續。
 
 ## <a name="technical-configuration"></a>技術設定
 
-只有在您的供應項目包含將使用 Marketplace 計量服務 API 發出計量事件的受控應用程式時，才完成此節。 輸入您的服務將在發出計量事件時使用的 **Azure Active Directory 租用戶識別碼**和 **Azure Active Directory 應用程式識別碼**。
+只有在您的供應項目包含將使用 Marketplace 計量服務 API 發出計量事件的受控應用程式時，才完成此節。 輸入您的服務將在發出計量事件時使用的 **Azure Active Directory 租用戶識別碼** 和 **Azure Active Directory 應用程式識別碼** 。
 
 選取 [儲存草稿] 後再繼續。
 
@@ -304,7 +304,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 技術設定會定義用來識別服務的詳細資料 (租用戶識別碼和應用程式識別碼)，這將使用 [Marketplace 計量服務 API](./marketplace-metering-service-apis.md) 發出受控應用程式的計量事件。  輸入您的服務將在發出計量事件時使用的身分識別。
 
-* **Azure AD 租使用者識別碼** (必要) ：在 Azure 入口網站內，您必須 [建立 Azure Active Directory (AD) 應用程式](../../active-directory/develop/howto-create-service-principal-portal.md) ，讓我們可以驗證這兩個服務之間的連線是否在經過驗證的通訊之後。 若要尋找) 的 [租使用者識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) ，請移至您的 Azure Active Directory 並選取 [ **屬性**]，然後尋找列出的 **目錄識別碼** (例如 50c464d3-4930-494c-963c-1e951d15360e) 。
+* **Azure AD 租使用者識別碼** (必要) ：在 Azure 入口網站內，您必須 [建立 Azure Active Directory (AD) 應用程式](../../active-directory/develop/howto-create-service-principal-portal.md) ，讓我們可以驗證這兩個服務之間的連線是否在經過驗證的通訊之後。 若要尋找) 的 [租使用者識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) ，請移至您的 Azure Active Directory 並選取 [ **屬性** ]，然後尋找列出的 **目錄識別碼** (例如 50c464d3-4930-494c-963c-1e951d15360e) 。
 * **Azure AD 應用程式識別碼** (必要) ：您也需要 [應用程式識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) 和驗證金鑰。 若要取得那些值，請前往 Azure Active Directory，並選取 [應用程式註冊]，然後尋找列出的 [應用程式識別碼] 號碼 (例如 50c464d3-4930-494c-963c-1e951d15360e)。 若要尋找驗證金鑰，請移至 [設定] 並選取 [金鑰]。 您將必須提供描述與持續時間，然後才會提供數值。
 
 >[!Note]
@@ -328,7 +328,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 ### <a name="create-new-plan"></a>建立新的方案
 
-**_方案識別碼_*_ –為此供應專案中的每個方案建立唯一的方案識別碼。 客戶將可在產品 URL 中看到此識別碼。  只能使用小寫英數字元、連字號或底線。 針對此方案識別碼，最多允許 50 個字元。 選取 [建立] 之後，就無法修改此識別碼。
+**_方案識別碼_* _ –為此供應專案中的每個方案建立唯一的方案識別碼。 客戶將可在產品 URL 中看到此識別碼。  只能使用小寫英數字元、連字號或底線。 針對此方案識別碼，最多允許 50 個字元。 選取 [建立] 之後，就無法修改此識別碼。
 
 _*_方案名稱_*_ -當您決定要在您的供應專案內選取哪一個方案時，客戶會看到此名稱。 為此供應項目中的每個方案建立唯一的供應項目名稱。 方案名稱是用來區分可能屬於相同供應項目的軟體方案 (例如，供應項目名稱：Windows 伺服器；方案：Windows Server 2016、Windows Server 2019)。
 
@@ -337,7 +337,7 @@ _*_方案名稱_*_ -當您決定要在您的供應專案內選取哪一個方案
 此索引標籤可讓您設定方案類型的高階設定、是否重複使用來自另一個方案的套件，以及該方案應該用於哪些雲端。 您在此索引標籤上的答案將會影響要顯示在相同方案的其他索引標籤上的欄位。
 
 #### <a name="plan-type"></a>方案類型
-選取供應項目的方案類型。 _*方案範本** 方案完全由客戶管理。 **受控應用程式**方案可讓發行者代表客戶管理應用程式。 如需詳細資訊，請參閱 [Azure 應用程式方案類型](#types-of-azure-application-plans)。
+選取供應項目的方案類型。 _ *方案範本* * 方案完全由客戶管理。 **受控應用程式** 方案可讓發行者代表客戶管理應用程式。 如需詳細資訊，請參閱 [Azure 應用程式方案類型](#types-of-azure-application-plans)。
 
 #### <a name="re-use-technical-configuration"></a>重複使用技術設定
 
@@ -395,10 +395,10 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 選取 [這是私人方案]，將您的方案設定為私人，而且只有您選擇的限制對象可以看到。 發佈為私人方案之後，您可以更新對象，也可以選擇將方案提供給所有人使用。 一旦發佈每個人都可以看到的方案之後，必須保持每個人都可以看到的狀態 (無法重新設定為私人方案)。
 
-如果您將方案設定為私人，請輸入 **Azure 訂用帳戶識別碼**及其描述。 每個都是可以存取此私人方案的對象。 存取權是使用 Azure 訂用帳戶識別碼指派的，而且可以選擇包含指派給每個 Azure 訂用帳戶識別碼的描述。 個別新增最多 10 個客戶訂用帳戶識別碼；透過匯入 CSV 檔案，則最多可新增 20,000 個客戶訂用帳戶識別碼。 Azure 訂用帳戶識別碼會以 GUID 表示，而且字母必須是小寫。
+如果您將方案設定為私人，請輸入 **Azure 訂用帳戶識別碼** 及其描述。 每個都是可以存取此私人方案的對象。 存取權是使用 Azure 訂用帳戶識別碼指派的，而且可以選擇包含指派給每個 Azure 訂用帳戶識別碼的描述。 個別新增最多 10 個客戶訂用帳戶識別碼；透過匯入 CSV 檔案，則最多可新增 20,000 個客戶訂用帳戶識別碼。 Azure 訂用帳戶識別碼會以 GUID 表示，而且字母必須是小寫。
 
 >[!Note]
->私人對象或有限對象不同於您在 [預覽] 索引標籤上定義的預覽對象。預覽對象可以在供應項目即時發佈到 Marketplace 上_之前_先存取。 雖然私人對象選擇僅適用於特定方案，但預覽對象可以基於驗證目的，檢視所有方案 (無論是否為私人方案)。
+>私人對象或有限對象不同於您在 [預覽] 索引標籤上定義的預覽對象。預覽對象可以在供應項目即時發佈到 Marketplace 上 _之前_ 先存取。 雖然私人對象選擇僅適用於特定方案，但預覽對象可以基於驗證目的，檢視所有方案 (無論是否為私人方案)。
 
 #### <a name="hide-plan"></a>隱藏方案
 
@@ -441,9 +441,9 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 選取 [這是私人方案]，將您的方案設定為私人，而且只有您選擇的限制對象可以看到。 發佈為私人方案之後，您可以更新對象，也可以選擇將方案提供給所有人使用。 一旦發佈每個人都可以看到的方案之後，必須保持每個人都可以看到的狀態 (無法重新設定為私人方案)。
 
 >[!Note]
->私人對象或有限對象不同於您在 [預覽] 索引標籤上定義的預覽對象。預覽對象可以在供應項目即時發佈到 Marketplace 上_之前_先存取。 雖然私人對象選擇僅適用於特定方案，但預覽對象可以基於驗證目的，檢視所有方案 (無論是否為私人方案)。
+>私人對象或有限對象不同於您在 [預覽] 索引標籤上定義的預覽對象。預覽對象可以在供應項目即時發佈到 Marketplace 上 _之前_ 先存取。 雖然私人對象選擇僅適用於特定方案，但預覽對象可以基於驗證目的，檢視所有方案 (無論是否為私人方案)。
 
-如果您將方案設定為私人，請輸入 **Azure 訂用帳戶識別碼**及其描述。 每個都是可以存取此私人方案的對象。 存取權是使用 Azure 訂用帳戶識別碼指派的，而且可以選擇包含指派給每個 Azure 訂用帳戶識別碼的描述。 個別新增最多 10 個客戶訂用帳戶識別碼；透過匯入 CSV 檔案，則最多可新增 20,000 個客戶訂用帳戶識別碼。 Azure 訂用帳戶識別碼會以 GUID 表示，而且字母必須是小寫。
+如果您將方案設定為私人，請輸入 **Azure 訂用帳戶識別碼** 及其描述。 每個都是可以存取此私人方案的對象。 存取權是使用 Azure 訂用帳戶識別碼指派的，而且可以選擇包含指派給每個 Azure 訂用帳戶識別碼的描述。 個別新增最多 10 個客戶訂用帳戶識別碼；透過匯入 CSV 檔案，則最多可新增 20,000 個客戶訂用帳戶識別碼。 Azure 訂用帳戶識別碼會以 GUID 表示，而且字母必須是小寫。
 
 >[!Note]
 >透過雲端解決方案提供者方案 (CSP) 的轉銷商所建立的 Azure 訂用帳戶不支援私人優惠。
@@ -465,8 +465,8 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 所有 Azure 應用程式方案套件在 `.zip` 封存的根資料夾中都至少包含這兩個檔案：
 
-* Resource Manager 範本檔案，名為 [mainTemplate.json](../../azure-resource-manager/resource-group-overview.md)。 此範本會自動將資源部署到客戶的 Azure 訂用帳戶。  如需 Resource Manager 範本的範例，請參閱 [Azure 快速入門範本資源庫](https://azure.microsoft.com/documentation/templates/)或對應的 [GitHub：Azure Resource Manager 快速入門範本](https://github.com/azure/azure-quickstart-templates)存放庫。
-* Azure 應用程式建立體驗的使用者介面定義，名為 [createUiDefinition.json](../../azure-resource-manager/managed-application-createuidefinition-overview.md)。
+* Resource Manager 範本檔案，名為 [mainTemplate.json](../../azure-resource-manager/management/overview.md)。 此範本會自動將資源部署到客戶的 Azure 訂用帳戶。  如需 Resource Manager 範本的範例，請參閱 [Azure 快速入門範本資源庫](https://azure.microsoft.com/documentation/templates/)或對應的 [GitHub：Azure Resource Manager 快速入門範本](https://github.com/azure/azure-quickstart-templates)存放庫。
+* Azure 應用程式建立體驗的使用者介面定義，名為 [createUiDefinition.json](../../azure-resource-manager/managed-applications/create-uidefinition-overview.md)。
 
 支援的檔案大小上限為：
 
@@ -486,19 +486,19 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 #### <a name="enable-just-in-time-jit-access"></a>啟用 Just-In-Time (JIT) 存取
 
-選取此選項，以啟用此方案的 Just-In-Time (JIT) 存取。  JIT 存取可讓您對受控應用程式的資源要求更高的存取權，以進行疑難排解或維護。 您一律會擁有資源的唯讀存取權，但在特定期間內，您可以擁有更高的存取權。  如需詳細資訊，請參閱[啟用並要求 Azure 受控應用程式的 Just-In-Time 存取](../../managed-applications/request-just-in-time-access.md) \(部分機器翻譯\)。  若要要求受控應用程式的取用者授與您的帳戶永久存取權，請將此選項保留為未核取狀態。
+選取此選項，以啟用此方案的 Just-In-Time (JIT) 存取。  JIT 存取可讓您對受控應用程式的資源要求更高的存取權，以進行疑難排解或維護。 您一律會擁有資源的唯讀存取權，但在特定期間內，您可以擁有更高的存取權。  如需詳細資訊，請參閱[啟用並要求 Azure 受控應用程式的 Just-In-Time 存取](../../azure-resource-manager/managed-applications/request-just-in-time-access.md) \(部分機器翻譯\)。  若要要求受控應用程式的取用者授與您的帳戶永久存取權，請將此選項保留為未核取狀態。
 
 >[!Note]
 >請務必更新您的 `createUiDefinition.json` 檔案，才能支援此功能。  
 
 #### <a name="deployment-mode"></a>部署模式
 
-選取是否要在部署此方案時，設定**完整**或**漸進式部署模式**： 
+選取是否要在部署此方案時，設定 **完整** 或 **漸進式部署模式** ： 
 
-* 在**完整模式**下，如果未在 `mainTemplate.json` 中定義資源，客戶重新部署應用程式將會導致移除受控資源群組中的資源。 
-* 在**漸進式模式**下，重新部署應用程式不會變更現有的資源。
+* 在 **完整模式** 下，如果未在 `mainTemplate.json` 中定義資源，客戶重新部署應用程式將會導致移除受控資源群組中的資源。 
+* 在 **漸進式模式** 下，重新部署應用程式不會變更現有的資源。
 
-若要深入了解部署模式，請參閱 [Azure Resource Manager 部署模式](../../azure-resource-manager/deployment-modes.md) \(部分機器翻譯\)。
+若要深入了解部署模式，請參閱 [Azure Resource Manager 部署模式](../../azure-resource-manager/templates/deployment-modes.md) \(部分機器翻譯\)。
 
 #### <a name="notification-endpoint-url"></a>通知端點 URL
 
@@ -543,19 +543,19 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 ## <a name="test-drive"></a>試用產品
 
-設定示範 (試用產品)，讓客戶在購買之前先試用您的供應項目。 若要建立示範環境，讓客戶可在一段固定時間內試用您的供應項目，請參閱[試用商業 Marketplace 中的供應項目](test-drive.md) \(部分機器翻譯\)。
+設定示範 (試用產品)，讓客戶在購買之前先試用您的供應項目。 若要建立示範環境，讓客戶可在一段固定時間內試用您的供應項目，請參閱[試用商業 Marketplace 中的供應項目](../what-is-test-drive.md) \(部分機器翻譯\)。
 
 若要啟用試用產品，請在[[供應項目設定]](#test-drive) 索引標籤中，選取 [啟用試用產品] 核取方塊。若要從您的供應項目中移除試用產品，請清除此核取方塊。
 
 ### <a name="test-drive-technical-configuration"></a>試用產品技術設定
 
-- **Azure AD 應用程式識別碼** (必要) ：輸入 AZURE ACTIVE DIRECTORY (AD) [應用程式識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) 。 若要尋找此識別碼，請登入 [Azure 入口網站](https://portal.azure.com/)，選取左側功能表中的 [Active Directory] 索引標籤，選取 [ **應用程式註冊**]，然後尋找列出的 **應用程式識別碼** 號碼 (例如 50c464d3-4930-494c-963c-1e951d15360e) 。
+- **Azure AD 應用程式識別碼** (必要) ：輸入 AZURE ACTIVE DIRECTORY (AD) [應用程式識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) 。 若要尋找此識別碼，請登入 [Azure 入口網站](https://portal.azure.com/)，選取左側功能表中的 [Active Directory] 索引標籤，選取 [ **應用程式註冊** ]，然後尋找列出的 **應用程式識別碼** 號碼 (例如 50c464d3-4930-494c-963c-1e951d15360e) 。
 
 #### <a name="deployment-subscription-details"></a>部署訂用帳戶詳細資料
 
 若要允許代表您部署試用產品，請建立並提供另一個唯一的 Azure 訂用帳戶 (Power BI 試用產品則不需要)。
 
-* **Azure 訂用帳戶識別碼** (Azure Resource Manager 和邏輯應用程式為必要) – 輸入訂用帳戶識別碼以授與您的 Azure 帳戶服務存取權，並用於資源使用量報告和計費。 建議您考慮[建立個別的 Azure 訂閱](../../billing/billing-create-subscription.md)，以便用於試用產品 (如果您沒有訂閱的話)。 您可以透過登入 [Azure 入口網站](https://portal.azure.com/)並瀏覽到左側功能表的 [訂用帳戶] 索引標籤，以尋找 Azure 訂用帳戶識別碼。 選取此索引標籤會顯示您的訂用帳戶識別碼 (例如 "a83645ac-1234-5ab6-6789-1h234g764ghty" ) 。
+* **Azure 訂用帳戶識別碼** (Azure Resource Manager 和邏輯應用程式為必要) – 輸入訂用帳戶識別碼以授與您的 Azure 帳戶服務存取權，並用於資源使用量報告和計費。 建議您考慮[建立個別的 Azure 訂閱](../../cost-management-billing/manage/create-subscription.md)，以便用於試用產品 (如果您沒有訂閱的話)。 您可以透過登入 [Azure 入口網站](https://portal.azure.com/)並瀏覽到左側功能表的 [訂用帳戶] 索引標籤，以尋找 Azure 訂用帳戶識別碼。 選取此索引標籤會顯示您的訂用帳戶識別碼 (例如 "a83645ac-1234-5ab6-6789-1h234g764ghty" ) 。
 * **Azure AD 租使用者識別碼** (必要) –請輸入 AZURE ACTIVE DIRECTORY (AD) [租使用者識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) 。 若要尋找此識別碼，請登入 [Azure 入口網站](https://portal.azure.com/)，選取左側功能表中的 [Active Directory] 索引標籤，選取 [內容]，然後尋找列出的 [目錄識別碼] 號碼 (例如 50c464d3-4930-494c-963c-1e951d15360e)。 您也可以在 [https://www.whatismytenantid.com](https://www.whatismytenantid.com) 中，使用網域名稱 URL 來查閱組織的租用戶識別碼。
 * **Azure AD 租用戶名稱** (Dynamic 365 為必要) – 輸入您的 Azure Active Directory (AD) 名稱。 若要尋找此名稱，請登入 [Azure 入口網站](https://portal.azure.com/)，位於右上角的租用戶名稱會列在您的帳戶名稱底下。
 * **Azure AD 應用程式識別碼** (必要) –請輸入 AZURE ACTIVE DIRECTORY (AD) [應用程式識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) 。 若要尋找此識別碼，請登入 [Azure 入口網站](https://portal.azure.com/)，選取左側導覽功能表中的 [Active Directory] 索引標籤，選取 [應用程式註冊]，然後尋找列出的 [應用程式識別碼] 號碼 (例如 50c464d3-4930-494c-963c-1e951d15360e)。

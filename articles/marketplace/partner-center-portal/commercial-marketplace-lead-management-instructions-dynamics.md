@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/30/2020
-ms.openlocfilehash: 31dba5489db3778d738fc2856cf6aacfd6987711
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54754f4c7753661b247f3f90942fb3074c34a38b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030747"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130607"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>為 Dynamics 365 Customer Engagement 設定潛在客戶管理
 
-本文描述如何設定 Dynamics 365 Customer Engagement (前稱為 Dynamics CRM Online)。 深入了解[設定 Customer Engagement 和 SharePoint Online 的伺服器架構驗證](https://docs.microsoft.com/dynamics365/customerengagement/on-premises/admin/on-prem-server-based-sharepoint-online)變更，以處理商業市集供應項目中的銷售潛在客戶。
+本文描述如何設定 Dynamics 365 Customer Engagement (前稱為 Dynamics CRM Online)。 深入了解[設定 Customer Engagement 和 SharePoint Online 的伺服器架構驗證](/dynamics365/customerengagement/on-premises/admin/on-prem-server-based-sharepoint-online)變更，以處理商業市集供應項目中的銷售潛在客戶。
 
 >[!NOTE]
 >這些指示特定於適用於 Dynamics 365 Customer Engagement 的 Microsoft 託管雲端環境。 目前不支援直接連線到 Dynamics 內部部署環境。 您還有其他選項可收到潛在客戶，例如設定 [HTTPS 端點](./commercial-marketplace-lead-management-instructions-https.md)或 [Azure 資料表](./commercial-marketplace-lead-management-instructions-azure-table.md)。
@@ -47,7 +47,7 @@ ms.locfileid: "90030747"
 
     ![Dynamics 365 [解決方案] 選項](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-solutions.png)
 
-1. 在 [解決方案] 頁面上，選取 [匯入]，然後移至在步驟 1 所下載 **Microsoft Marketplace 潛在客戶寫入器**解決方案的儲存位置。
+1. 在 [解決方案] 頁面上，選取 [匯入]，然後移至在步驟 1 所下載 **Microsoft Marketplace 潛在客戶寫入器** 解決方案的儲存位置。
 
     ![匯入按鈕](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-crm-import.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "90030747"
 
     ![建立新的使用者](./media/commercial-marketplace-lead-management-instructions-dynamics/application-users.png)
 
-1. 在 [新增使用者] 窗格中，確認選取 [USER: APPLICATION USER] \(使用者:應用程式使用者\)。 提供想要搭配此連線使用的使用者其名稱、全名和電子郵件地址。 另在 Azure 入口網站中，貼上在步驟 8 所建立應用程式的**應用程式識別碼**。 選取 [儲存後關閉] 以結束新增使用者。
+1. 在 [新增使用者] 窗格中，確認選取 [USER: APPLICATION USER] \(使用者:應用程式使用者\)。 提供想要搭配此連線使用的使用者其名稱、全名和電子郵件地址。 另在 Azure 入口網站中，貼上在步驟 8 所建立應用程式的 **應用程式識別碼** 。 選取 [儲存後關閉] 以結束新增使用者。
 
     ![[新增使用者] 窗格](./media/commercial-marketplace-lead-management-instructions-dynamics/new-user-info.png)
 
@@ -146,7 +146,7 @@ ms.locfileid: "90030747"
 
     ![[管理角色] 索引標籤](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-roles.png)
 
-1. 搜尋角色名稱 **Microsoft Marketplace 潛在客戶寫入器**，然後選取此名稱以將角色指派給使用者。
+1. 搜尋角色名稱 **Microsoft Marketplace 潛在客戶寫入器** ，然後選取此名稱以將角色指派給使用者。
 
     ![[管理使用者角色] 窗格](./media/commercial-marketplace-lead-management-instructions-dynamics/security-manage-user-roles.png)
 
@@ -180,14 +180,14 @@ ms.locfileid: "90030747"
 
     ![[潛在客戶目的地] 方塊](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
 
-1. 輸入 Dynamics 365 執行個體的 **URL**，例如 `https://contoso.crm4.dynamics.com`。
+1. 輸入 Dynamics 365 執行個體的 **URL** ，例如 `https://contoso.crm4.dynamics.com`。
 
-1. 選取 Azure Active Directory 或 Office 365 的**驗證**方法。 
-1. 如果選取 **Azure Active Directory**，請輸入 [應用程式 (用戶端) 識別碼] (例如 `23456052-aaaa-bbbb-8662-1234df56788f`)、[目錄識別碼] (例如 `12345678-8af1-4asf-1234-12234d01db47`)，以及 [用戶端密碼] (例如 `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`)。
+1. 選取 Azure Active Directory 或 Office 365 的 **驗證** 方法。 
+1. 如果選取 **Azure Active Directory** ，請輸入 [應用程式 (用戶端) 識別碼] (例如 `23456052-aaaa-bbbb-8662-1234df56788f`)、[目錄識別碼] (例如 `12345678-8af1-4asf-1234-12234d01db47`)，以及 [用戶端密碼] (例如 `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`)。
 
     ![使用選取的 Azure Active Directory 進行驗證](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-application-id.png)
 
-1. 如果選取 **Office 365**，請輸入 [使用者名稱] (例如 `contoso@contoso.onmicrosoft.com`) 和 [密碼] (例如 `P@ssw0rd`)。
+1. 如果選取 **Office 365** ，請輸入 [使用者名稱] (例如 `contoso@contoso.onmicrosoft.com`) 和 [密碼] (例如 `P@ssw0rd`)。
 
     ![Office 365 的 [使用者名稱]方塊](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
 

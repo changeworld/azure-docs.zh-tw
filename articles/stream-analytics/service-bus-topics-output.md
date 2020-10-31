@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: cc09912bb0c9ab553d180ff5cc06fc52c4c5cc0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2a9063a202ba542279efd8017d282fe0aa78d42
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261035"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129859"
 ---
 # <a name="service-bus-topics-output-from-azure-stream-analytics"></a>Azure 串流分析的服務匯流排主題輸出
 
-服務匯流排佇列提供從傳送者到接收者的一對一通訊方法。 [服務匯流排主題](https://msdn.microsoft.com/library/azure/hh367516.aspx)提供一對多的通訊形式。
+服務匯流排佇列提供從傳送者到接收者的一對一通訊方法。 [服務匯流排主題](/previous-versions/azure/hh367516(v=azure.100))提供一對多的通訊形式。
 
 下表列出屬性名稱及其描述以建立服務匯流排主題輸出。
 
@@ -65,7 +65,7 @@ ms.locfileid: "91261035"
 
 ## <a name="system-properties"></a>系統屬性
 
-您可以將查詢資料行當做[系統屬性](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true)附加至外寄服務匯流排佇列或主題訊息。 這些資料行不會進入承載，而是以查詢資料行值填入的對應 BrokeredMessage [系統屬性](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true)。
+您可以將查詢資料行當做[系統屬性](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true)附加至外寄服務匯流排佇列或主題訊息。 這些資料行不會進入承載，而是以查詢資料行值填入的對應 BrokeredMessage [系統屬性](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true)。
 支援這些系統屬性 - `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`。
 
 這些資料行的字串值會剖析為對應的系統屬性值類型，而任何剖析失敗都會被視為資料錯誤。

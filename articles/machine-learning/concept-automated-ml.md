@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
-ms.date: 04/22/2020
-ms.openlocfilehash: 49c3e5602834576e8d3de86ac7d6683f9b6f7b89
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 10/27/2020
+ms.openlocfilehash: 8ffdd8c15cf225e4f5b99a0b84b71bdbed456234
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367511"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130080"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什麼是自動化機器學習 (AutoML)？
 
@@ -70,20 +70,20 @@ ms.locfileid: "92367511"
 
 在定型期間，Azure Machine Learning 會以平行方式建立數個管道，這些管道分別會為您嘗試不同的演算法與參數。 服務會逐一查看與特徵選取項目配對的 ML 演算法，其中每個反覆項目都會產生具有定型分數的模型。 分數越高，模型就越「適合」您的資料。  一旦達到實驗中定義的允出準則，其就會停止。 
 
-使用 **Azure Machine Learning**，您可以使用下列步驟來設計和執行自動化 ML 定型實驗：
+使用 **Azure Machine Learning** ，您可以使用下列步驟來設計和執行自動化 ML 定型實驗：
 
-1. **識別要解決的 ML 問題**：分類、預測或迴歸
+1. **識別要解決的 ML 問題** ：分類、預測或迴歸
 
-1. **選擇您是否要使用 Python SDK 或 Studio Web 體驗**：了解 [Python SDK 和 Studio Web 體驗](#parity)之間的同位檢查。
+1. **選擇您是否要使用 Python SDK 或 Studio Web 體驗** ：了解 [Python SDK 和 Studio Web 體驗](#parity)之間的同位檢查。
 
    * 針對有限或無程式碼體驗，請嘗試 Azure Machine Learning Studio Web 體驗，網址為：[https://ml.azure.com](https://ml.azure.com/)  
    * 針對 Python 開發人員，請參閱 [Azure Machine Learning Python SDK](how-to-configure-auto-train.md) 
     
-1. **指定標記定型資料的來源和格式**：Numpy 陣列或 Pandas 資料框架
+1. **指定標記定型資料的來源和格式** ：Numpy 陣列或 Pandas 資料框架
 
-1. **設定模型定型的計算目標**，例如您的[本機電腦、Azure Machine Learning Compute、遠端 VM 或 Azure Databricks](how-to-set-up-training-targets.md)。  深入了解[遠端資源上](how-to-auto-train-remote.md)的自動化定型。
+1. **設定模型定型的計算目標** ，例如您的 [本機電腦、Azure Machine Learning Compute、遠端 VM 或 Azure Databricks](how-to-set-up-training-targets.md)。  深入了解[遠端資源上](how-to-auto-train-remote.md)的自動化定型。
 
-1. **設定自動化機器學習參數**，這些參數決定不同模型上有多少反覆項目、超參數設定、進階前置處理/特徵化，以及決定最佳模型時要查看的計量。  
+1. **設定自動化機器學習參數** ，這些參數決定不同模型上有多少反覆項目、超參數設定、進階前置處理/特徵化，以及決定最佳模型時要查看的計量。  
 1. **提交定型回合。**
 
 1. **檢閱結果** 
@@ -140,8 +140,8 @@ ms.locfileid: "92367511"
 
 自動化機器學習支援預設會啟用的集團模型。 集團學習藉由結合多個模型來改善機器學習結果和預測效能，而不是使用單一模型。 集團反覆項目顯示為回合的最終反覆項目。 自動化機器學習會使用投票和堆疊集團方法兩者來結合模型：
 
-* **投票**：根據預測類別機率 (適用於分類工作) 或預測迴歸目標 (適用於迴歸工作) 的加權平均值進行預測。
-* **堆疊**：堆疊結合了異質性模型，並根據個別模型的輸出來定型中繼模型。 目前的預設中繼模型是用於分類工作的 LogisticRegression，和用於迴歸/預測工作的 ElasticNet。
+* **投票** ：根據預測類別機率 (適用於分類工作) 或預測迴歸目標 (適用於迴歸工作) 的加權平均值進行預測。
+* **堆疊** ：堆疊結合了異質性模型，並根據個別模型的輸出來定型中繼模型。 目前的預設中繼模型是用於分類工作的 LogisticRegression，和用於迴歸/預測工作的 ElasticNet。
 
 包含排序集團初始化的 [Caruana 集團選取項目演算法](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)，用於決定要在集團中使用的模型。 概括而言，此演算法使用最多五個具有最佳個別分數的模型來初始化集團，並確認這些模型是否在最佳分數的 5% 閾值內，以避免不佳的初始集團。 然後，針對每個集團反覆項目，會將新的模型加入至現有的集團，並計算產生的分數。 如果新模型已改善現有的集團分數，則會更新集團以包含新的模型。
 
@@ -151,14 +151,14 @@ ms.locfileid: "92367511"
 
 自動化 ML 的 Web 介面一律會使用遠端[計算目標](concept-compute-target.md)。  但當您使用 Python SDK 時，您將選擇本機計算或遠端計算目標來進行自動化 ML 定型。
 
-* **本機計算**：定型在本機膝上型電腦或 VM 計算上進行。 
-* **遠端計算**：定型在 Machine Learning 計算叢集上進行。  
+* **本機計算** ：定型在本機膝上型電腦或 VM 計算上進行。 
+* **遠端計算** ：定型在 Machine Learning 計算叢集上進行。  
 
 ### <a name="choose-compute-target"></a>選擇計算目標
 選擇您的計算目標時，請考慮下列因素：
 
- * **選擇本機計算**：如果您的案例是關於使用小型資料和簡短定型 (也就是每個子回合的秒數或幾分鐘) 進行的初始探勘或示範，則在本機電腦上進行定型可能是一個更好的選擇。  沒有設定時間，可以直接使用基礎結構資源 (您的電腦或 VM)。
- * **選擇遠端 ML 計算**叢集：如果您要使用較大型的資料集進行定型，例如在生產訓練中建立需要較長定型的模型，則遠端計算將可提供更好的端對端時間效能，因為會平行處理叢集 `AutoML` 節點上的訓練。 在遠端計算上，內部基礎結構的啟動時間會在每個子回合大約1.5 分鐘內增加，如果 Vm 尚未啟動並執行，則需要額外幾分鐘的時間來執行叢集基礎結構。
+ * **選擇本機計算** ：如果您的案例是關於使用小型資料和簡短定型 (也就是每個子回合的秒數或幾分鐘) 進行的初始探勘或示範，則在本機電腦上進行定型可能是一個更好的選擇。  沒有設定時間，可以直接使用基礎結構資源 (您的電腦或 VM)。
+ * **選擇遠端 ML 計算** 叢集：如果您要使用較大型的資料集進行定型，例如在生產訓練中建立需要較長定型的模型，則遠端計算將可提供更好的端對端時間效能，因為會平行處理叢集 `AutoML` 節點上的訓練。 在遠端計算上，內部基礎結構的啟動時間會在每個子回合大約1.5 分鐘內增加，如果 Vm 尚未啟動並執行，則需要額外幾分鐘的時間來執行叢集基礎結構。
 
 ### <a name="pros-and-cons"></a>優缺點
 選擇使用本機與遠端時，請考慮這些優缺點。
@@ -263,7 +263,7 @@ Azure Machine Learning 提供兩種使用自動化 ML 的體驗：
 
 [在此 Jupyter 筆記本範例中](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) \(英文\)，了解如何轉換為 ONNX 格式。 了解 [ONNX 支援哪些演算法](how-to-configure-auto-train.md#select-your-experiment-type)。
 
-ONNX 執行階段也支援 C#，因此您可以使用在 C# 應用程式中自動建置的模型，而無需重新編碼或 REST 端點引入的任何網路延遲。 深入了解[使用 ONNX 執行階段 C# API 推斷 ONNX 模型](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md) \(英文\)。 
+ONNX 執行階段也支援 C#，因此您可以使用在 C# 應用程式中自動建置的模型，而無需重新編碼或 REST 端點引入的任何網路延遲。 若要深入瞭解如何 [在 .net 應用程式中使用 AUTOML ONNX 模型](./how-to-use-automl-onnx-model-dotnet.md) ，請使用 [ONNX 執行時間 c # API 搭配 ML.NET 和推斷 ONNX 模型](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md)。 
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -271,11 +271,11 @@ ONNX 執行階段也支援 C#，因此您可以使用在 C# 應用程式中自�
 
 ### <a name="tutorials-how-tos"></a>教學課程/how-to
 教學課程是 AutoML 案例的端對端入門範例。
-+ **如需程式碼優先體驗**，請遵循 [教學課程：使用 Azure Machine Learning Python SDK 自動定型回歸模型](tutorial-auto-train-models.md)。
++ **如需程式碼優先體驗** ，請遵循 [教學課程：使用 Azure Machine Learning Python SDK 自動定型回歸模型](tutorial-auto-train-models.md)。
 
- + **如需低或無程式碼的體驗**，請參閱 [教學課程：使用 Azure Machine Learning STUDIO 建立自動化 ML 分類模型](tutorial-first-experiment-automated-ml.md)。
+ + **如需低或無程式碼的體驗** ，請參閱 [教學課程：使用 Azure Machine Learning STUDIO 建立自動化 ML 分類模型](tutorial-first-experiment-automated-ml.md)。
 
-How to 文章提供 AutoML 所提供之功能的其他詳細資料。 例如， 
+How to 文章提供 AutoML 所提供之功能的其他詳細資料。 例如，套用至物件的 
 
 + 設定自動定型實驗的設定
     + 在 Azure Machine Learning Studio 中，[使用這些步驟](how-to-use-automated-ml-for-ml-models.md)。 

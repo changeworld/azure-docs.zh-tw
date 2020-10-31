@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: bad81e8929cd0c5c66c87fd9f6cc11dc746b3e5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bba7da0343f234d8cc057ac4ecfa2a4f2e5b7242
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317768"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129876"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>服務匯流排將 Azure 串流分析的輸出排在佇列
 
@@ -34,7 +34,7 @@ ms.locfileid: "91317768"
 | 事件序列化格式 |輸出資料的序列化格式。 支援 JSON、CSV 和 Avro。 |
 | 編碼 |對於 CSV 和 JSON 而言，UTF-8 是目前唯一支援的編碼格式。 |
 | 分隔符號 |僅適用於 CSV 序列化。 串流分析可支援多種以 CSV 格式序列化資料常用的分隔符號。 支援的值是逗號、分號、空格、索引標籤和分隔號。 |
-| [格式] |僅適用於 JSON 類型。 **分隔的行**會指定輸出的格式化方式為利用新行分隔每個 JSON 物件。 如果您選取**分隔的行**，JSON 會一次讀取一個物件。 整個內容本身不是有效的 JSON。 **陣列**會指定輸出將會格式化為 JSON 物件的陣列。 |
+| [格式] |僅適用於 JSON 類型。 **分隔的行** 會指定輸出的格式化方式為利用新行分隔每個 JSON 物件。 如果您選取 **分隔的行** ，JSON 會一次讀取一個物件。 整個內容本身不是有效的 JSON。 **陣列** 會指定輸出將會格式化為 JSON 物件的陣列。 |
 | 屬性資料行 | 選擇性。 以逗號分隔的資料行，必須附加為外寄郵件的使用者屬性，而不是承載。 如需這項功能的詳細資訊，請參閱[輸出的自訂中繼資料屬性](#custom-metadata-properties-for-output)一節。 |
 | 系統屬性資料行 | 選擇性。 系統屬性的索引鍵值組，以及必須附加至外寄郵件而非承載的對應資料行名稱。  |
 
@@ -70,9 +70,9 @@ ms.locfileid: "91317768"
 
 ## <a name="system-properties"></a>系統屬性
 
-您可以將查詢資料行當做[系統屬性](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true)附加至外寄服務匯流排佇列或主題訊息。
+您可以將查詢資料行當做[系統屬性](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true)附加至外寄服務匯流排佇列或主題訊息。
 
-這些資料行不會進入承載，而是以查詢資料行值填入的對應 BrokeredMessage [系統屬性](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true)。
+這些資料行不會進入承載，而是以查詢資料行值填入的對應 BrokeredMessage [系統屬性](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties&preserve-view=true)。
 支援這些系統屬性 - `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`。
 
 這些資料行的字串值會剖析為對應的系統屬性值類型，而任何剖析失敗都會被視為資料錯誤。
