@@ -6,18 +6,21 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: d435a33ba45daf2c8a6a42e51c3e0d58f3abc23b
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7f177a7801e18bcdb2c2d6ef737f0c790cf6b1d1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057751"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075784"
 ---
-# <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>以網路共用的形式從 App Service 中的容器存取 Azure 儲存體
+# <a name="access-azure-storage-preview-as-a-network-share-from-a-container-in-app-service"></a>存取 Azure 儲存體 (預覽) 做為 App Service 中容器的網路共用
 
 ::: zone pivot="container-windows"
 
 本指南說明如何將 Azure 儲存體檔案以網路共用的形式附加至 App Service 中的 windows 容器。 僅支援 [Azure 檔案儲存體共用](../storage/files/storage-how-to-use-files-cli.md) 和 [Premium 檔案共用](../storage/files/storage-how-to-create-premium-fileshare.md) 。 好處包括受保護的內容、內容可攜性、可存取多個應用程式，以及多個傳輸方法。
+
+> [!NOTE]
+>App Service 中的 Azure 儲存體處於 **預覽** 狀態，且 **不支援****生產案例** 。
 
 ::: zone-end
 
@@ -25,9 +28,12 @@ ms.locfileid: "92057751"
 
 本指南說明如何將 Azure 儲存體連結至 Linux 容器 App Service。 優點包括安全的內容、內容可攜性、持續性儲存體、多個應用程式的存取，以及多個傳輸方法。
 
+> [!NOTE]
+>App Service 中的 Azure 儲存體為 Linux 上的 App Service 和用於容器的 Web App 的 **預覽** 狀態。 但 **不支援****生產案例** 。
+
 ::: zone-end
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ::: zone pivot="container-windows"
 
@@ -53,7 +59,6 @@ ms.locfileid: "92057751"
 
 ::: zone pivot="container-windows"
 
-- App Service 中的 Azure 儲存體處於**預覽**狀態，且**不支援****生產案例**。
 - App Service 中的 Azure 儲存體目前 **不支援** 將您自己的程式碼案例提供給 (非容器化 Windows 應用程式) 。
 - App Service 中的 Azure 儲存體 **不支援** 使用 **儲存體防火牆** 設定，因為基礎結構的限制。
 - Azure 儲存體與 App Service 可讓您針對每個應用程式指定 **最多五個** 掛接點。
@@ -63,7 +68,6 @@ ms.locfileid: "92057751"
 
 ::: zone pivot="container-linux"
 
-- App Service 中的 Azure 儲存體為 Linux 上的 App Service 和用於容器的 Web App 的 **預覽** 狀態。 但**不支援****生產案例**。
 - App Service 中的 Azure 儲存體支援裝載 **Azure 檔案儲存體容器** (讀取/寫入) 和 **Azure Blob 容器** (唯讀) 
 - App Service 中的 Azure 儲存體可讓您針對每個應用程式指定 **最多五個** 掛接點。
 - 無法透過 App Service FTP/FTPs 端點來存取掛接至應用程式 Azure 儲存體。 使用 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)。
@@ -113,7 +117,7 @@ az webapp config storage-account add --resource-group <group-name> --name <app-n
 az webapp config storage-account list --resource-group <resource-group> --name <app-name>
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 ::: zone pivot="container-windows"
 

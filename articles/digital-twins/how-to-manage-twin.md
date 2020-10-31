@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4945e89232ee9a15b2700dac49ccd829b7a52dac
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 425ee90306de3961c64766f42bd28f668fc9396e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494788"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077943"
 ---
 # <a name="manage-digital-twins"></a>管理 Digital Twins
 
@@ -35,14 +35,19 @@ await client.CreateDigitalTwinAsync("myTwinId", initData);
 * 數位對應項所需的識別碼
 * 您要使用的[模型](concepts-models.md)
 
-（選擇性）您可以提供數位對應項之所有屬性的初始值。 
+（選擇性）您可以提供數位對應項之所有屬性的初始值。 屬性會被視為選擇性，並可在稍後設定，但在 **設定之前，它們不會顯示為對應項的一部分。**
 
-模型和初始屬性值是透過參數提供的 `initData` ，這是包含相關資料的 JSON 字串。 如需結構化此物件的詳細資訊，請繼續下一節。
+>[!NOTE]
+>雖然不需要初始化對應項屬性，但對應項上的任何 [元件](concepts-models.md#elements-of-a-model)**都必須在** 建立對應項時設定。 它們可以是空的物件，但是元件本身必須存在。
+
+模型和任何初始屬性值都是透過參數提供的 `initData` ，這是包含相關資料的 JSON 字串。 如需結構化此物件的詳細資訊，請繼續下一節。
 
 > [!TIP]
 > 建立或更新對應項之後，最多可能會有10秒的延遲時間，變更才會反映在 [查詢](how-to-query-graph.md)中。 本文 `GetDigitalTwin` 稍後所述的 API () 不會遇到這 [種](#get-data-for-a-digital-twin) 延遲，因此如果您需要立即回應，請使用 api 呼叫而不是查詢來查看您新建立的 twins。 
 
 ### <a name="initialize-model-and-properties"></a>初始化模型和屬性
+
+您可以在建立對應項時，初始化對應項的屬性。 
 
 對應項建立 API 會接受序列化為對應項屬性之有效 JSON 描述的物件。 請參閱 [*概念：數位 twins 和*](concepts-twins-graph.md) 對應項圖表，以取得對應項的 JSON 格式描述。 
 
@@ -110,7 +115,7 @@ foreach (string prop in twin.CustomProperties.Keys)
 
 若要使用單一 API 呼叫來取出多個 twins，請參閱 [*如何：查詢*](how-to-query-graph.md)對應項圖形中的查詢 API 範例。
 
-請考慮下列模型 (以 [數位 Twins 定義語言撰寫 (DTDL) ](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)) 定義 *月亮*：
+請考慮下列模型 (以 [數位 Twins 定義語言撰寫 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)) 定義 *月亮* ：
 
 ```json
 {
@@ -276,8 +281,8 @@ await client.UpdateDigitalTwinAsync(twin_Id, uou.Serialize());
 只有當修補程式所修改的數位對應項符合新的模型時，這項作業才會成功。 
 
 請考慮下列範例：
-1. 想像一個具有 *foo_old*模型的數位對應項。 *foo_old* 定義必要的屬性 *品質*。
-2. 新模型 *foo_new* 定義屬性品質，並新增必要的屬性 *溫度*。
+1. 想像一個具有 *foo_old* 模型的數位對應項。 *foo_old* 定義必要的屬性 *品質* 。
+2. 新模型 *foo_new* 定義屬性品質，並新增必要的屬性 *溫度* 。
 3. 在修補之後，數位對應項必須同時有大量和溫度屬性。 
 
 這種情況的修補程式必須更新模型和對應項的溫度屬性，如下所示：
@@ -304,9 +309,9 @@ Azure 數位 Twins 可確保所有連入要求都會在另一個之後處理。 
 此行為是以每個對應項為基礎。 
 
 例如，假設這三個呼叫同時抵達的案例： 
-*   在*Twin1*上撰寫屬性 A
-*   在*Twin1*上寫入屬性 B
-*   在*Twin2*上撰寫屬性 A
+*   在 *Twin1* 上撰寫屬性 A
+*   在 *Twin1* 上寫入屬性 B
+*   在 *Twin2* 上撰寫屬性 A
 
 修改 *Twin1* 的兩個呼叫會在另一個之後執行，並針對每個變更產生變更訊息。 修改 *Twin2* 的呼叫可能會在一到達時，同時執行，而不會發生衝突。
 
@@ -375,7 +380,7 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 ```
 ### <a name="delete-all-digital-twins"></a>刪除所有數位 twins
 
-如需如何一次刪除所有 twins 的範例，請下載 _Tutorial 中使用的範例應用程式 [：探索範例用戶端應用程式的基本概念 *](tutorial-command-line-app.md)。 *CommandLoop.cs*檔案會在函式中執行此 `CommandDeleteAllTwins()` 工作。
+如需如何一次刪除所有 twins 的範例，請下載 _Tutorial 中使用的範例應用程式 [：探索範例用戶端應用程式的基本概念 *](tutorial-command-line-app.md)。 *CommandLoop.cs* 檔案會在函式中執行此 `CommandDeleteAllTwins()` 工作。
 
 ## <a name="manage-twins-using-runnable-code-sample"></a>使用可執行檔程式碼範例來管理 twins
 
@@ -574,7 +579,7 @@ SELECT *
 FROM DIGITALTWINS
 ``` 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 瞭解如何建立和管理數位 twins 之間的關聯性：
 * [*How to：使用關聯性管理對應項圖表*](how-to-manage-graph.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 419de27ad87b113de62dacb0dc384702420afbd6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 980d3ca52016c65301ea72e4e669c4bafea4c053
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071110"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077178"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>如何在 Azure API 管理中使用用戶端憑證驗證來保護後端服務
 
@@ -26,7 +26,7 @@ API 管理可讓您使用用戶端憑證來保護對 API 後端服務的存取�
 
 如需使用 API 管理 REST API 來管理憑證的詳細資訊，請參閱 <a href="/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API 管理 REST API 憑證實體</a>。
 
-## <a name="prerequisites"></a><a name="prerequisites"> </a>必要條件
+## <a name="prerequisites"></a><a name="prerequisites"> </a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -43,22 +43,22 @@ API 管理可讓您使用用戶端憑證來保護對 API 後端服務的存取�
 
 1. 在 Azure 入口網站中瀏覽至您的 Azure API 管理服務執行個體。
 2. 從功能表選取 [ **憑證** ]。
-3. 按一下 [+新增]**** 按鈕。
-    ![新增用戶端憑證](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
+3. 按一下 [+新增]  按鈕。
+    ![醒目顯示 [+ 新增] 按鈕的螢幕擷取畫面。](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
 4. 瀏覽憑證，並提供其識別碼和密碼。
-5. 按一下 [建立]。
+5. 按一下頁面底部的 [新增]  。
 
 > [!NOTE]
 > 憑證必須是 **.pfx** 格式。 可接受自我簽署憑證。
 
-憑證上傳後，會顯示在 **憑證**中。  如果您有許多憑證，請記下所需憑證的指紋，以[設定 API 以使用用戶端憑證來驗證閘道][Configure an API to use a client certificate for gateway authentication]。
+憑證上傳後，會顯示在 **憑證** 中。  如果您有許多憑證，請記下所需憑證的指紋，以[設定 API 以使用用戶端憑證來驗證閘道][Configure an API to use a client certificate for gateway authentication]。
 
 > [!NOTE]
 > 若要在使用自我簽署的憑證時關閉憑證鏈結驗證，請遵循此常見問題集[項目](api-management-faq.md#can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end)中所述的步驟。
 
 ## <a name="delete-a-client-certificate"></a><a name="step1a"> </a>刪除用戶端憑證
 
-若要刪除憑證，請按一下內容功能表的 **...**，然後選取憑證旁的 [刪除]****。
+若要刪除憑證，請按一下內容功能表的  。
 
 ![刪除用戶端憑證](media/api-management-howto-mutual-certificates/apim-client-cert-delete-new.png)
 
@@ -68,12 +68,12 @@ API 管理可讓您使用用戶端憑證來保護對 API 後端服務的存取�
 
 ## <a name="configure-an-api-to-use-a-client-certificate-for-gateway-authentication"></a><a name="step2"> </a>設定 API 以使用用戶端憑證來驗證閘道
 
-1. 從左側的 [API 管理]**** 功能表按一下 [API]****，然後瀏覽至 API。
+1. 從左側的 [API 管理]  功能表按一下 [API]  ，然後瀏覽至 API。
     ![啟用用戶端憑證](media/api-management-howto-mutual-certificates/apim-client-cert-enable.png)
 
-2. 在 [設計]**** 索引標籤中，按一下 [後端]**** 區段的鉛筆圖示。
-3. 將 [閘道認證]**** 變更為 [用戶端憑證]****，並從下拉式清單中選取您的憑證。
-    ![啟用用戶端憑證](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
+2. 在 [設計]  索引標籤中，按一下 [後端]  區段的鉛筆圖示。
+3. 將 [閘道認證]  變更為 [用戶端憑證]  ，並從下拉式清單中選取您的憑證。
+    ![顯示如何變更閘道認證並選取憑證的螢幕擷取畫面。](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
 
 4. 按一下 [儲存]。
 

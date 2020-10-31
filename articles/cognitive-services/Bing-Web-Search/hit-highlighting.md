@@ -11,14 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
-ms.openlocfilehash: a6d394fec6e7cf0a230f61ad05c236a1f84dad9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea9cd9cf064b9c07016bc5e166cc4ec4c041b146
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68854036"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078538"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>使用裝飾標記醒目提示文字
+
+> [!WARNING]
+> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
+> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
+> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
 Bing 支援搜尋結果醒目提示，這會將查詢詞彙標示 (或 Bing 在某些答案的顯示字串中找到相關) 的其他詞彙。 例如，網頁結果的 `name` 、 `displayUrl` 和 `snippet` 欄位可能包含標示的查詢詞彙。 
 
@@ -76,7 +81,7 @@ Bing 可以傳回數種不同的文字裝飾。 例如， `Computation` 答案�
 |U+E018|\<sup>|標示上標內容的結尾
 |U+E019|\</sup>|標示上標內容的開頭
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [什麼是 Bing Web 搜尋 API？](overview.md) 
 * [調整大小和裁剪縮圖](resize-and-crop-thumbnails.md)

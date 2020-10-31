@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: d8c1237b1bf4fac743ad5e70fee857337d9624c4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 9d0694a76bca832887d30601711894b953fe22e1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490657"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078436"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-sql-api"></a>找出 Azure Cosmos DB SQL API 中執行之作業的要求單位費用
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB 支援許多 API，例如 SQL、MongoDB、Cassandra、Gremlin 和資料表。 每個 API 都有它自己的一組資料庫作業。 這些作業的範圍可從簡單的點讀取和寫入到複雜查詢。 每個資料庫作業都會根據作業的複雜度來取用系統資源。
 
@@ -31,13 +32,13 @@ Azure Cosmos DB 支援許多 API，例如 SQL、MongoDB、Cassandra、Gremlin �
 
 1. [建立新的 Azure Cosmos 帳戶](create-sql-api-dotnet.md#create-account)並為其提供資料，或選取已包含資料的現有 Azure Cosmos 帳戶。
 
-1. 前往 [資料總管]**** 窗格，然後選取您要處理的容器。
+1. 前往 [資料總管]  窗格，然後選取您要處理的容器。
 
 1. 選取 [新增 SQL 查詢]。
 
-1. 輸入有效的查詢，然後選取 [執行查詢]****。
+1. 輸入有效的查詢，然後選取 [執行查詢]  。
 
-1. 選取下 [查詢統計資料]****，以顯示您執行的要求實際的要求費用。
+1. 選取下 [查詢統計資料]  ，以顯示您執行的要求實際的要求費用。
 
 :::image type="content" source="./media/find-request-unit-charge/portal-sql-query.png" alt-text="Azure 入口網站之中 SQL 查詢要求費用的螢幕擷取畫面":::
 
@@ -169,7 +170,7 @@ request_charge = client.last_response_headers['x-ms-request-charge']
 
 如需詳細資訊，請參閱 [快速入門：使用 AZURE COSMOS DB SQL API 帳戶建立 Python 應用程式](create-sql-api-python.md)。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要了解如何最佳化您的 RU 耗用量，請參閱下列文章：
 

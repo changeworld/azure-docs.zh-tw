@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 10/29/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f78dadc0eb1570018320aa77a390f94adf708a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7aebe6fafea7cbbb0b37469a13262529b568e342
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371897"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077960"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 功能部署指南
 
@@ -26,16 +26,16 @@ ms.locfileid: "92371897"
 
 此外，客戶可以檢查其[身分識別安全分數](identity-secure-score.md)，以了解他們符合 Microsoft 最佳做法的程度。 在實作這些建議前後檢查您的安全分數，以了解相較於您產業中的其他人和規模與您相同的其他組織，您的表現如何。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 本指南中的許多建議都可以使用 Azure AD Free 或完全沒有授權的方式來執行。 若需要授權，我們會陳述至少需要哪一個授權才能完成工作。
 
 在下列頁面可以找到額外的授權資訊：
 
 * [Azure AD 授權](https://azure.microsoft.com/pricing/details/active-directory/)
-* [Microsoft 365 企業版 ](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
+* [Microsoft 365 企業](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
 * [企業行動力 + 安全性](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
-* [Azure AD B2B 授權指導方針](../external-identities/licensing-guidance.md)
+* [Azure AD 外部身分識別定價](../external-identities/external-identities-pricing.md)
 
 ## <a name="phase-1-build-a-foundation-of-security"></a>第1階段：打造安全性基礎
 
@@ -70,7 +70,7 @@ ms.locfileid: "92371897"
 | [實作密碼回寫](../authentication/tutorial-enable-sspr-writeback.md) | 可讓雲端中的密碼變更回寫至內部部署 Windows Server Active Directory 環境。 | Azure AD Premium P1 |
 | [實作 Azure AD Connect Health](../hybrid/whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) | 能夠監視 Azure AD Connect 伺服器、AD FS 伺服器和網域控制站的主要健康情況統計資料。 | Azure AD Premium P1 |
 | [依據 Azure Active Directory 中的群組成員資格將授權指派給使用者](../enterprise-users/licensing-groups-assign.md) | 建立可依照群組啟用或停用功能 (而非依據每位使用者設定) 的授權群組，以節省時間和精力。 | |
-| [建立來賓使用者存取權的計劃](../external-identities/what-is-b2b.md) | 讓來賓使用者使用自己的公司、學校或社交身分識別登入您的應用程式與服務，藉此與他們共同作業。 | [Azure AD B2B 授權指導方針](../external-identities/licensing-guidance.md) |
+| [建立來賓使用者存取權的計劃](../external-identities/what-is-b2b.md) | 讓來賓使用者使用自己的公司、學校或社交身分識別登入您的應用程式與服務，藉此與他們共同作業。 | [Azure AD 外部身分識別定價](../external-identities/external-identities-pricing.md) |
 | [決定裝置管理策略](../devices/overview.md) | 決定貴組織允許的裝置相關事項。 註冊與加入，攜帶您自己的裝置與公司提供。 | |
 | [在組織中部署 Windows Hello 企業版](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | 使用 Windows Hello 準備進行無密碼 authentication | |
 | [為您的使用者部署無密碼 authentication 方法](../authentication/concept-authentication-passwordless.md) | 為您的使用者提供便利的無密碼 authentication 方法 | Azure AD Premium P1 |

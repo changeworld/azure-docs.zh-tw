@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 7d860ad28ff54a9f300f5c90314b9a7c9f6943dd
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1d7a12e436fd3bc1700dc4a1d76dc2b80d861144
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490674"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078453"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-table-api"></a>找出 Azure Cosmos DB 中執行之作業的要求單位費用資料表 API
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 Azure Cosmos DB 支援許多 API，例如 SQL、MongoDB、Cassandra、Gremlin 和資料表。 每個 API 都有它自己的一組資料庫作業。 這些作業的範圍可從簡單的點讀取和寫入到複雜查詢。 每個資料庫作業都會根據作業的複雜度來取用系統資源。
 
@@ -38,7 +39,7 @@ if (tableResult.RequestCharge.HasValue) // would be false when using Azure Stora
 
 如需詳細資訊，請參閱 [快速入門：使用 .NET SDK 和 Azure Cosmos DB 建立資料表 API 應用程式](create-table-dotnet.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要了解如何最佳化您的 RU 耗用量，請參閱下列文章：
 

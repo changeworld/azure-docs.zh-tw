@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 03/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 52344b665b00329c80fb651657fbbd19d5ffd7a4
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: bb6229f602e4171cc88af6a452da69a02d2f7ad6
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743083"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078181"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>使用 TLS 來透過 Azure Machine Learning 保護 Web 服務
 
@@ -28,7 +28,7 @@ ms.locfileid: "92743083"
 > [!TIP]
 > Azure Machine Learning SDK 會針對與安全通訊相關的屬性使用「SSL」一詞。 這並不表示您的 web 服務不會使用 *TLS* 。 SSL 只是較常辨識的詞彙。
 >
-> 具體而言，透過 Azure Machine Learning 部署的 web 服務只支援適用于 ACI 的 TLS 1.1 版和 AKS 的 TLS 1.2 版。
+> 具體而言，透過 Azure Machine Learning 部署的 web 服務支援 AKS 和 ACI 的 TLS 1.2 版。 針對 ACI 部署，如果您是在較舊的 TLS 版本上，建議您重新部署以取得最新的 TLS 版本。
 
 TLS 和 SSL 都依賴 *數位憑證* ，可協助進行加密和身分識別驗證。 如需有關數位憑證運作方式的詳細資訊，請參閱維琪百科主題 [公開金鑰基礎結構](https://en.wikipedia.org/wiki/Public_key_infrastructure)。
 

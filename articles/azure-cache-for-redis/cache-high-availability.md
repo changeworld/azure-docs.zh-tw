@@ -4,27 +4,27 @@ description: 瞭解 Azure Cache for Redis 高可用性功能和選項
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
-ms.date: 08/19/2020
+ms.date: 10/28/2020
 ms.author: yegu
-ms.openlocfilehash: f0bb8fd2d0b0ac271a167ad5474a55646bdafc65
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e44aed1415f85bf4ea597eac6720207301946b97
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536788"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93076906"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Azure Cache for Redis 的高可用性
 
 Azure Cache for Redis 具有內建的高可用性。 其高可用性架構的目標是確保您的受控 Redis 實例可以正常運作，即使其基礎虛擬機器 (Vm) 受到規劃或非計畫中斷的影響。 它提供的百分比比在單一 VM 上裝載 Redis 可達成的速率高出許多。
 
-Azure Cache for Redis 使用多個 Vm （稱為 *節點* ）來執行快取，以獲得高可用性。 它會設定這些節點，以便在協調形式中進行資料複寫和容錯移轉。 它也會協調維護作業，例如 Redis 軟體修補。 標準層和進階層中提供各種高可用性選項：
+Azure Cache for Redis 使用多個 Vm （稱為 *節點* ）來執行快取，以獲得高可用性。 它會設定這些節點，以便在協調形式中進行資料複寫和容錯移轉。 它也會協調維護作業，例如 Redis 軟體修補。 標準、高階和企業層都提供各種高可用性選項：
 
-| 選項 | 描述 | 可用性 | 標準 | Premium |
-| ------------------- | ------- | ------- | :------: | :---: |
-| [標準複寫](#standard-replication)| 單一資料中心或可用性區域中的雙重節點複寫設定 (AZ) ，具有自動容錯移轉 | 99.9% |✔|✔|
-| [多個複本](#multiple-replicas) | 一或多個 Az 中具有自動容錯移轉的多重節點複寫設定 | 具有區域冗余) 的 99.95% ( |-|✔|
-| [區域備援](#zone-redundancy) | 跨 Az 的多重節點複寫設定，具有自動容錯移轉 | 具有多個複本的 99.95% ()  |-|✔|
-| [異地複寫](#geo-replication) | 兩個區域中的連結快取實例，具有使用者控制的容錯移轉 | 適用于單一區域的 99.9% ()  |-|✔|
+| 選項 | 描述 | 可用性 | 標準 | Premium | Enterprise |
+| ------------------- | ------- | ------- | :------: | :---: | :---: |
+| [標準複寫](#standard-replication)| 單一資料中心或可用性區域中的雙重節點複寫設定 (AZ) ，具有自動容錯移轉 | 99.9% |✔|✔|-|
+| [企業叢集](#enterprise-cluster) | 具有自動容錯移轉的兩個區域中的連結快取實例 | 99.9% |-|-|✔|
+| [區域備援](#zone-redundancy) | 跨 Az 的多重節點複寫設定，具有自動容錯移轉 | 99.95% (標準複寫) ，99.99% (企業叢集)  |-|✔|✔|
+| [異地複寫](#geo-replication) | 兩個區域中的連結快取實例，具有使用者控制的容錯移轉 | 適用于單一區域的 99.9% ()  |-|✔|-|
 
 ## <a name="standard-replication"></a>標準複寫
 
@@ -41,14 +41,23 @@ Azure Cache for Redis 使用多個 Vm （稱為 *節點* ）來執行快取，�
 
 主要節點可能會在規劃的維護活動（例如 Redis 軟體或作業系統更新）中離開服務。 它也可能因為未規劃的事件（例如基礎硬體、軟體或網路失敗）而停止運作。 [Azure Cache for Redis 的容錯移轉和修補](cache-failover.md) 提供 Redis 容錯移轉類型的詳細說明。 Azure Cache for Redis 將會在其存留期內經歷許多容錯移轉。 高可用性架構的設計，是為了讓快取內的這些變更盡可能透明地在其用戶端上進行。
 
-## <a name="multiple-replicas"></a>多個複本
+>[!NOTE]
+>以下是預覽版本。
+>
+>
+
+此外，Azure Cache for Redis 允許進階層中的額外複本節點。 [多複本](cache-how-to-multi-replicas.md)快取最多可以設定三個複本節點。 有更多複本通常會改善復原能力，因為有其他節點備份主要複本。 即使有更多複本，Azure Cache for Redis 實例還是可能會嚴重受到資料中心或 AZ 個中斷的影響。 您可以使用多個複本搭配 [區域冗余](#zone-redundancy)來提高快取可用性。
+
+## <a name="enterprise-cluster"></a>企業叢集
 
 >[!NOTE]
 >這會以預覽形式提供。
 >
 >
 
-Azure Cache for Redis 允許進階層中的其他複本節點。 [多複本](cache-how-to-multi-replicas.md)快取最多可以設定三個複本節點。 有更多複本通常會改善復原能力，因為有其他節點備份主要複本。 即使有更多複本，Azure Cache for Redis 實例還是可能會嚴重受到資料中心或 AZ 個中斷的影響。 您可以使用多個複本搭配 [區域冗余](#zone-redundancy)來提高快取可用性。
+任一企業層中的快取都是在 Redis Enterprise 叢集上執行。 它需要有奇數數目的伺服器節點，才能形成仲裁。 依預設，它是由三個節點所組成，每個節點都裝載于專用 VM 上。 企業快取有兩個相同大小的 *資料節點* 和一個較小的 *仲裁節點* 。 企業 Flash 快取有三個相同大小的資料節點。 企業叢集會將 Redis 資料分成內部的資料分割。 每個分割區都有一個 *主要* 複本和至少一個 *複本* 。 每個資料節點都會保存一或多個資料分割。 企業叢集可確保任何資料分割的主要和複本 (的) 都不會共置於相同的資料節點上。 資料分割會以非同步方式將資料從主要複本複寫到其對應的複本。
+
+當資料節點變成無法使用或發生網路分割時，會發生類似于 [標準](#standard-replication) 複寫中所述的容錯移轉。 企業叢集使用以仲裁為基礎的模型，來判斷哪些存活的節點將參與新的仲裁。 它也會視需要將這些節點內的複本分割區升級為主要複本。
 
 ## <a name="zone-redundancy"></a>區域備援
 
@@ -57,7 +66,7 @@ Azure Cache for Redis 允許進階層中的其他複本節點。 [多複本](cac
 >
 >
 
-Azure Cache for Redis 支援進階層中的區域重複設定。 [區域冗余](cache-how-to-zone-redundancy.md)快取可將其節點放在相同區域中的不同[Azure 可用性區域](../availability-zones/az-overview.md)。 它會將資料中心或 AZ 中斷排除為單一失敗點，並提高快取的整體可用性。
+Azure Cache for Redis 支援 Premium 和 Enterprise 層中的區域多餘設定。 [區域冗余](cache-how-to-zone-redundancy.md)快取可將其節點放在相同區域中的不同[Azure 可用性區域](../availability-zones/az-overview.md)。 它會將資料中心或 AZ 中斷排除為單一失敗點，並提高快取的整體可用性。
 
 下圖說明區域冗余設定：
 

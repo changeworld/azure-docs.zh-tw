@@ -7,14 +7,15 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: bd53feb175c5be77f559a4d2e724a55e41df48eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6b2c47d5a4cb71ecf46d1eb1c33e2f667fa8052
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85562833"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078249"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>數學函式 (Azure Cosmos DB)   
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 每個數學函式都會執行計算，通常以提供來作為引數的輸入值為基礎，並傳回數值。
 
@@ -30,7 +31,7 @@ ms.locfileid: "85562833"
     [4]
 ```
 
-## <a name="functions"></a>函式
+## <a name="functions"></a>函數
 
 下列支援的內建數學函數會執行計算（通常是根據輸入引數），並傳回數值運算式：
  
@@ -62,7 +63,7 @@ ms.locfileid: "85562833"
   
 除了 RAND，所有數學函數都是具決定性的函數。 這表示每次利用一組特定輸入值來呼叫它們時，都會傳回相同的結果。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB 簡介](introduction.md)

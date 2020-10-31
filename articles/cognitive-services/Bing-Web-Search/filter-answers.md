@@ -11,14 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
-ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad021b4d219353a6037988c164bb34cac6761682
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84696706"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93078623"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>篩選搜尋回應所包含的答案  
+
+> [!WARNING]
+> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
+> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
+> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
 當您查詢 Web 時，Bing 會傳回它針對該搜尋找到的所有相關內容。 例如，如果搜尋查詢為 "sailing + dinghies"，回應可能包含下列答案：
 
@@ -131,7 +136,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:con
 
 ## <a name="limiting-the-number-of-answers-in-the-response"></a>限制回應中的答案數目
 
-Bing 可以在 JSON 回應中傳回多個答案類型。 例如，如果您查詢 *sailing + dinghies*，Bing 可能會傳回 `webpages` 、 `images` 、 `videos` 和 `relatedSearches` 。
+Bing 可以在 JSON 回應中傳回多個答案類型。 例如，如果您查詢 *sailing + dinghies* ，Bing 可能會傳回 `webpages` 、 `images` 、 `videos` 和 `relatedSearches` 。
 
 ```json
 {

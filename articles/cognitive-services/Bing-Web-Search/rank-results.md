@@ -11,14 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
-ms.openlocfilehash: 677f6089f649aae720a6303a7e1512e3c7ebeca7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c328c681874ba171eab1341a16cf059e359feea
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "66390128"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93076273"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>如何使用排名顯示 Bing Web 搜尋 API 結果  
+
+> [!WARNING]
+> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
+> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
+> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
 每個搜尋回應都包含 [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) 答案，可指定您必須以何種方式顯示搜尋結果。 針對傳統搜尋結果頁面，排名回應會依主線內容和資訊看板內容為結果分組。 如果您未以傳統的主線和資訊看板格式顯示結果，您必須為主線內容提供比資訊看板內容更高的可見度。  
 
@@ -218,7 +223,7 @@ ms.locfileid: "66390128"
 -   所有相關搜尋  
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需將未排名的結果升階的相關資訊，請參閱[升階未排名的答案](./filter-answers.md#promoting-answers-that-are-not-ranked)。
 

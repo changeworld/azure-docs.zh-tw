@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 34f71dfeb0b4e5f94d953137fd45777bf14baa4e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 11c3de703a4b37318b7b99f60d74190fe8ec8610
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790758"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077365"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL 受控執行個體資源限制概觀
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -72,7 +72,7 @@ SQL 受控執行個體有兩個服務層級： [一般用途](../database/servic
 |  (保留) 的實例儲存體大小上限 | -2 TB 適用于4虛擬核心 (僅第5代) <br/>-8 TB 適用于其他大小 | 第4代： 1 TB <br/> 第 5 代： <br/>-1 TB （4、8、16虛擬核心）<br/>- 2 TB (適用於 24 個虛擬核心)<br/>- 4 TB (適用於 32、40、64、80 個虛擬核心) |
 | 資料庫大小上限 | 根據虛擬核心) 數目，最高可達目前可用的實例大小 (最大 2 TB-8 TB。 | 根據虛擬核心) 數目，最高可達目前可用的實例大小 (最大 1 TB-4 TB。 |
 | 最大 tempDB 大小 | 受限於 24 GB/vCore (96-1920 GB) 和目前可用的實例儲存體大小。<br/>加入更多虛擬核心以取得更多 TempDB 空間。<br/> 記錄檔大小限制為 120 GB。| 目前可用的實例儲存體大小上限。 |
-| 每個執行個體的資料庫數目上限 | 100，除非已達到實例儲存體大小限制。 | 100，除非已達到實例儲存體大小限制。 |
+| 每個執行個體的資料庫數目上限 | 100使用者資料庫，除非已達到實例儲存體大小限制。 | 100使用者資料庫，除非已達到實例儲存體大小限制。 |
 | 每個實例的資料庫檔案數目上限 | 最高280，除非已達到實例儲存體大小或 [Azure Premium 磁片儲存體配置空間](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files) 的限制。 | 32767每個資料庫的檔案，除非已達到實例儲存體大小限制。 |
 | 資料檔案大小上限 | 受限於目前可用的實例儲存體大小 (最大值為 2 TB-8 TB) 和 [Azure Premium 磁片儲存體配置空間](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files)。 | 受限於目前可用的實例儲存體大小 (高達 1 TB-4 TB) 。 |
 | 記錄檔大小上限 | 受限於 2 TB 和目前可用的實例儲存體大小。 | 受限於 2 TB 和目前可用的實例儲存體大小。 |
@@ -161,7 +161,7 @@ SQL 受控執行個體目前僅支援在下列類型的訂閱上進行部署：
 
 如果您在目前的區域中需要更多實例，請使用 Azure 入口網站傳送支援要求以延伸配額。 如需詳細資訊，請參閱 [Azure SQL Database 的要求配額增加](../database/quota-increase-request.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 如需 SQL 受控執行個體的詳細資訊，請參閱 [何謂 sql 受控執行個體？](sql-managed-instance-paas-overview.md)。
 - 如需定價資訊，請參閱 [SQL 受控執行個體定價](https://azure.microsoft.com/pricing/details/sql-database/managed/)。

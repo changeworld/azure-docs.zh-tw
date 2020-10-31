@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 67d542ffe0279abe72bc74ab207cd5fddd1a4362
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 96ae4162c78f66b75d8c1ef2a8cec16995a5f016
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491031"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93075699"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引編製原則
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB 會遵循針對每個容器所定義的[索引編製原則](index-policy.md)來為資料編製索引。 新建立的容器所套用的預設索引編製原則，會對任何字串或數字強制執行範圍索引。 您可使用自己的自訂索引編製原則來覆寫此原則。
 
@@ -142,7 +143,7 @@ Azure Cosmos DB 會遵循針對每個容器所定義的[索引編製原則](inde
 ```
 
 > [!NOTE]
-> 一般會建議您使用**退出**索引編製原則來讓 Azure Cosmos DB 主動地對可能會新增至模型的新屬性編製索引。
+> 一般會建議您使用 **退出** 索引編製原則來讓 Azure Cosmos DB 主動地對可能會新增至模型的新屬性編製索引。
 
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>僅對特定屬性路徑使用空間索引
 
@@ -357,13 +358,13 @@ Azure Cosmos 容器會將其索引編製原則儲存為 JSON 文件，並可從 
 
 1. 建立新的 Azure Cosmos 帳戶，或選取現有帳戶。
 
-1. 開啟 [資料總管]**** 窗格，然後選取您要處理的容器。
+1. 開啟 [資料總管]  窗格，然後選取您要處理的容器。
 
-1. 按一下 [規模與設定]****。
+1. 按一下 [規模與設定]  。
 
 1. 修改索引編製原則 JSON 文件 (請參閱[下面](#indexing-policy-examples)範例)
 
-1. 當您完成時，按一下 [儲存]****。
+1. 當您完成時，按一下 [儲存]  。
 
 :::image type="content" source="./media/how-to-manage-indexing-policy/indexing-policy-portal.png" alt-text="使用 Azure 入口網站管理索引編制":::
 
@@ -757,7 +758,7 @@ container_client.read(populate_quota_info = True,
 
 ---
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在下列文章中深入了解編製索引：
 

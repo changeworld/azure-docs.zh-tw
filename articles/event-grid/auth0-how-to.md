@@ -3,12 +3,12 @@ title: 如何使用 Azure 事件方格將事件從 Auth0 傳送至 Azure
 description: 如何使用 Azure 事件方格結束從 Auth0 到 Azure 服務的事件。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 6cd440075c6400b58c23f879b53da26abe4f9e75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a66a60cb926b933a6b0628a67506d0d52ab7a905
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86103275"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077858"
 ---
 # <a name="integrate-azure-event-grid-with-auth0"></a>整合 Azure 事件方格與 Auth0
 
@@ -67,7 +67,7 @@ ms.locfileid: "86103275"
 1. 在 Auth0 整合的 [合作夥伴主題] 刀鋒視窗上，選取頂端的 [+ 事件訂閱]。
 1. 在 [建立事件訂閱] 頁面上：
     1. 輸入事件訂閱的名稱。
-    1. 選取您已建立的 Azure 服務或 WebHook 作為端點類型。
+    1. 選取您為端點類型建立的 Azure 服務或 Webhook。
     1. 依照特定服務的指示操作。
     1. 按一下 [建立]。
 
@@ -90,5 +90,5 @@ Auth0 事件會透過串流機制傳遞至 Azure。 每個事件在 Auth0 中受
 ## <a name="next-steps"></a>後續步驟
 
 - [Auth0 合作夥伴主題](auth0-overview.md)
-- [合作夥伴主題概觀](partner-topics-overview.md)
+- [合作夥伴主題概觀](partner-events-overview.md)
 - [變成事件方格合作夥伴](partner-onboarding-overview.md)

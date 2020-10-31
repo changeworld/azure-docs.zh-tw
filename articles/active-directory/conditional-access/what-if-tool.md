@@ -11,28 +11,28 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bebd32d2773ca86638de221d305079bb262e3e5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3ac799203cade3a907acbe28dee3a8023891db2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631421"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077637"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>在條件式存取中使用 What If 工具進行疑難排解
 
-[條件式存取](./overview.md) 是 Azure Active Directory (Azure AD) 的功能，可讓您控制授權使用者如何存取您的雲端應用程式。 您如何知道環境中的條件式存取原則會有什麼預期？ 若要回答這個問題，您可以使用 **條件式存取 What If 工具**。
+[條件式存取](./overview.md) 是 Azure Active Directory (Azure AD) 的功能，可讓您控制授權使用者如何存取您的雲端應用程式。 您如何知道環境中的條件式存取原則會有什麼預期？ 若要回答這個問題，您可以使用 **條件式存取 What If 工具** 。
 
 本文說明如何使用此工具來測試您的條件式存取原則。
 
 ## <a name="what-it-is"></a>內容
 
-**條件式存取 What If 原則工具**可讓您瞭解條件式存取原則對您環境的影響。 這個工具並非要讓您以手動方式執行多個登入來測試原則，而是要讓您評估使用者的模擬登入。 該模擬可評估此登入對原則所造成的影響，並產生模擬報告。 報表不只會列出已套用的條件式存取原則，也會列出 [傳統原則](policy-migration.md#classic-policies) （如果有的話）。    
+**條件式存取 What If 原則工具** 可讓您瞭解條件式存取原則對您環境的影響。 這個工具並非要讓您以手動方式執行多個登入來測試原則，而是要讓您評估使用者的模擬登入。 該模擬可評估此登入對原則所造成的影響，並產生模擬報告。 報表不只會列出已套用的條件式存取原則，也會列出 [傳統原則](policy-migration.md#classic-policies) （如果有的話）。    
 
-**What If**工具提供一種方式，可快速判斷適用于特定使用者的原則。 例如，如果您需要針對問題進行疑難排解，就可以使用這項資訊。    
+**What If** 工具提供一種方式，可快速判斷適用于特定使用者的原則。 例如，如果您需要針對問題進行疑難排解，就可以使用這項資訊。    
 
 ## <a name="how-it-works"></a>運作方式
 
-在 **條件式存取 What If 工具**中，您必須先設定要模擬之登入案例的設定。 這些設定包括：
+在 **條件式存取 What If 工具** 中，您必須先設定要模擬之登入案例的設定。 這些設定包括：
 
 - 您要測試的使用者 
 - 使用者會嘗試存取的雲端應用程式
@@ -44,11 +44,11 @@ ms.locfileid: "91631421"
 
 ## <a name="running-the-tool"></a>執行工具
 
-您可以在 Azure 入口網站的 [**[條件式存取-原則](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)**] 頁面上找到**What If**工具。
+您可以在 Azure 入口網站的 [ **[條件式存取-原則](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** ] 頁面上找到 **What If** 工具。
 
-若要啟動工具，請在原則清單頂端的工具列中按一下 [ **What If**]。
+若要啟動工具，請在原則清單頂端的工具列中按一下 [ **What If** ]。
 
-![What If](./media/what-if-tool/01.png)
+:::image type="content" source="./media/what-if-tool/01.png" alt-text="Azure 入口網站中 [條件式存取-原則] 頁面的螢幕擷取畫面。在工具列中，會反白顯示 [if] 專案。" border="false":::
 
 您必須先進行設定，才能執行評估。
 
@@ -56,7 +56,7 @@ ms.locfileid: "91631421"
 
 本節為您提供模擬執行設定的相關資訊。
 
-![What If](./media/what-if-tool/02.png)
+:::image type="content" source="./media/what-if-tool/02.png" alt-text="Azure 入口網站中 [條件式存取-原則] 頁面的螢幕擷取畫面。在工具列中，會反白顯示 [if] 專案。" border="false":::
 
 ### <a name="user"></a>User
 
@@ -64,7 +64,7 @@ ms.locfileid: "91631421"
 
 ### <a name="cloud-apps"></a>雲端應用程式
 
-這項設定的預設值是 [所有雲端應用程式]****。 此預設設定會對環境中的所有可用原則進行評估。 您可以將此範圍縮小至會影響特定雲端應用程式的原則。
+這項設定的預設值是 [所有雲端應用程式]  。 此預設設定會對環境中的所有可用原則進行評估。 您可以將此範圍縮小至會影響特定雲端應用程式的原則。
 
 ### <a name="ip-address"></a>IP 位址
 
@@ -72,15 +72,15 @@ IP 位址是用來模擬[位置條件](location-condition.md)的單一 IPv4 位�
 
 ### <a name="device-platforms"></a>裝置平台
 
-這項設定會模擬[裝置平台條件](concept-conditional-access-conditions.md#device-platforms)，並代表**所有平台 (包括不支援平台)** 的同等項目。 
+這項設定會模擬 [裝置平台條件](concept-conditional-access-conditions.md#device-platforms)，並代表 **所有平台 (包括不支援平台)** 的同等項目。 
 
 ### <a name="client-apps"></a>用戶端應用程式
 
 這項設定會模擬[用戶端應用程式條件](concept-conditional-access-conditions.md#client-apps)。
-根據預設，此設定會導致系統評估已選取 [瀏覽器]**** 和 (或) [行動裝置應用程式和桌面用戶端]**** 的所有原則。 此外，還會偵測強制執行 **Exchange ActiveSync (EAS)** 的原則。 您可以選取下列選項來縮小此設定的範圍：
+根據預設，此設定會導致系統評估已選取 [瀏覽器]  和 (或) [行動裝置應用程式和桌面用戶端]  的所有原則。 此外，還會偵測強制執行 **Exchange ActiveSync (EAS)** 的原則。 您可以選取下列選項來縮小此設定的範圍：
 
-- **瀏覽器**：可評估所有至少已選取 [瀏覽器]**** 的原則。 
-- **行動裝置應用程式和桌面用戶端**：可評估所有至少已選取 [行動裝置應用程式和桌面用戶端]**** 的原則。 
+-  的原則。 
+-  的原則。 
 
 ### <a name="sign-in-risk"></a>登入風險
 
@@ -88,9 +88,9 @@ IP 位址是用來模擬[位置條件](location-condition.md)的單一 IPv4 位�
 
 ## <a name="evaluation"></a>評估 
 
-您可以按一下 [ **What If**開始進行評估。 評估結果所提供的報告中會包含： 
+您可以按一下 [ **What If** 開始進行評估。 評估結果所提供的報告中會包含： 
 
-![What If](./media/what-if-tool/03.png)
+:::image type="content" source="./media/what-if-tool/03.png" alt-text="Azure 入口網站中 [條件式存取-原則] 頁面的螢幕擷取畫面。在工具列中，會反白顯示 [if] 專案。" border="false":::
 
 - 環境中是否存在傳統原則的指標
 - 套用至使用者的原則
@@ -102,7 +102,7 @@ IP 位址是用來模擬[位置條件](location-condition.md)的單一 IPv4 位�
 
 在未套用至使用者的原則清單中，您也可以找到未套用這些原則的原因。 每個所列出原則的原因各代表其第一個未符合的條件。 原則已停用是之所以未套用原則的可能原因之一，因為已停用的原則不會進行進一步的評估。   
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 有關條件式存取原則應用程式的詳細資訊，可以使用 [條件式存取深入解析和報告](howto-conditional-access-insights-reporting.md)來使用原則報告模式。
 - 如果您已準備好設定環境的條件式存取原則，請參閱 [條件式存取一般原則](concept-conditional-access-policy-common.md)。
