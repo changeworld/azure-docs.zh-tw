@@ -12,12 +12,12 @@ ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: f2774750b61ce92b3b34f6a5cbd961e4faa7d3e7
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: cff1298f12d26b1260213d75701c282e0a82511d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277469"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124147"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>在我的應用程式入口網站中更新您的群組資訊
 
@@ -166,6 +166,6 @@ ms.locfileid: "92277469"
 
 - [在我的應用程式入口網站上存取和使用應用程式](my-apps-portal-end-user-access.md)。
 
-- [變更設定檔資訊](my-apps-portal-end-user-update-profile.md)。
+- [變更設定檔資訊](./my-account-portal-settings.md)。
 
 - [執行您自己的存取權檢閱](my-apps-portal-end-user-access-reviews.md)。

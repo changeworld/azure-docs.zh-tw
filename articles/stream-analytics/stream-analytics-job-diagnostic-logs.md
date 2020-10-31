@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.custom: contperfq1
 ms.date: 06/18/2020
-ms.openlocfilehash: 18270a2f435428824714067749fc18ce2addc535
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 0e7777cba93706baea815521757b495209431ce6
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913036"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124012"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>使用資源記錄對 Azure 串流分析進行疑難排解
 
@@ -48,7 +48,7 @@ ms.locfileid: "92913036"
 
    ![Stream Analytics 活動記錄作業摘要](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
 
-4. 向下捲動至 JSON 的 [屬性]  區段，該區段提供導致作業失敗的錯誤的詳細資料。 在此範例中，失敗是由於超出範圍的緯度值的執行階段錯誤。 串流分析作業所處理的資料差異會導致資料錯誤。 您可以瞭解不同的 [輸入和輸出資料錯誤，以及它們發生的原因](https://docs.microsoft.com/azure/stream-analytics/data-errors)。
+4. 向下捲動至 JSON 的 [屬性]  區段，該區段提供導致作業失敗的錯誤的詳細資料。 在此範例中，失敗是由於超出範圍的緯度值的執行階段錯誤。 串流分析作業所處理的資料差異會導致資料錯誤。 您可以瞭解不同的 [輸入和輸出資料錯誤，以及它們發生的原因](./data-errors.md)。
 
    ![JSON 錯誤詳細資料](./media/stream-analytics-job-diagnostic-logs/error-details.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "92913036"
 
     ![將流覽至資源記錄](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  在 [ **診斷設定名稱** ] 中提供 **名稱** ，並核取 [ **記錄** 檔] 和 [ **AllMetrics** ] 底下的 [ **執行** ] 和 [ **撰寫** 中] **方塊。** 然後選取 [ **傳送至 Log Analytics** ]，然後選擇您的工作區。 按一下 [檔案]  。
+2.  在 [ **診斷設定名稱** ] 中提供 **名稱** ，並核取 [ **記錄** 檔] 和 [ **AllMetrics** ] 底下的 [ **執行** ] 和 [ **撰寫** 中] **方塊。** 然後選取 [ **傳送至 Log Analytics** ]，然後選擇您的工作區。 按一下 [儲存]。
 
     ![資源記錄的設定](./media/stream-analytics-job-diagnostic-logs/logs-setup.png)
 
@@ -95,7 +95,7 @@ Azure 串流分析會捕獲兩種類別的資源記錄：
 
 所有記錄會儲存為 JSON 格式。 每個項目皆包含下列常見的字串欄位︰
 
-Name | 描述
+名稱 | 描述
 ------- | -------
 time | 記錄的時間戳記 (UTC 時間)。
 resourceId | 作業執行資源的識別碼 (大寫)。 其中包含訂用帳戶識別碼、資源群組，以及作業名稱。 例如， **/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB** 。
@@ -111,9 +111,9 @@ properties | 記錄項目特定詳細資料 (序列化為 JSON 字串)。 如需
 
 ### <a name="data-errors"></a>資料錯誤
 
-作業處理資料時發生的任何錯誤皆包含於此類記錄中。 這些記錄最常於資料讀取、序列化和寫入作業時建立。 這些記錄不包含連線錯誤。 連線錯誤視為一般事件。 您可以深入瞭解各種不同的 [輸入和輸出資料錯誤](https://docs.microsoft.com/azure/stream-analytics/data-errors)的原因。
+作業處理資料時發生的任何錯誤皆包含於此類記錄中。 這些記錄最常於資料讀取、序列化和寫入作業時建立。 這些記錄不包含連線錯誤。 連線錯誤視為一般事件。 您可以深入瞭解各種不同的 [輸入和輸出資料錯誤](./data-errors.md)的原因。
 
-Name | 描述
+名稱 | 描述
 ------- | -------
 來源 | 發生錯誤的作業輸入或輸出名稱。
 訊息 | 與錯誤相關的訊息。
@@ -134,14 +134,14 @@ Name | 描述
 
 一般事件涵蓋所有其他事件。
 
-Name | 描述
+名稱 | 描述
 -------- | --------
-[錯誤] | (選用) 錯誤資訊。 這通常是例外狀況資訊 (如果有的話)。
+錯誤 | (選用) 錯誤資訊。 這通常是例外狀況資訊 (如果有的話)。
 訊息| 記錄訊息。
 類型 | 訊息類型。 對應至錯誤的內部分類。 例如， **JobValidationError** 或 **BlobOutputAdapterInitializationFailure** 。
 相互關連識別碼 | 唯一識別作業執行的 GUID (英文)。 從作業開始直到作業停止的所有執行記錄項目皆具有同一個 **相互關聯識別碼** 值。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
-* [串流分析資料錯誤](https://docs.microsoft.com/azure/stream-analytics/data-errors)
-* [串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [串流分析資料錯誤](./data-errors.md)
+* [串流分析查詢語言參考](/stream-analytics-query/stream-analytics-query-language-reference)

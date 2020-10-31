@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: keferna
 author: keferna
-ms.openlocfilehash: 8ccc4cb6a6f95cfc51fb7e265e455131bc6393c2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1af2793bc32c1f3cdbdcd016562b761e05427073
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735605"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125133"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager 試用產品
 
 如果您有 Azure Marketplace 或 AppSource 的供應專案，但只想要建立只有 Azure 資源的試用產品，請使用此類型。 Azure Resource Manager (ARM) 範本是一種 Azure 資源的編碼容器，您可以將其設計為最能代表您的解決方案。 試用產品會採用提供的 ARM 範本，並將它所需的所有資源部署到資源群組。 這是虛擬機器或 Azure 應用程式供應專案的唯一試用產品選項。
 
-如果您不熟悉什麼是 ARM 範本，請閱讀 [Azure Resource Manager 的內容](../azure-resource-manager/resource-group-overview.md) ，並 [瞭解 arm 範本的結構和語法](../azure-resource-manager/resource-group-authoring-templates.md) ，以進一步瞭解如何建立及測試您自己的範本。
+如果您不熟悉什麼是 ARM 範本，請閱讀 [Azure Resource Manager 的內容](../azure-resource-manager/management/overview.md) ，並 [瞭解 arm 範本的結構和語法](../azure-resource-manager/templates/template-syntax.md) ，以進一步瞭解如何建立及測試您自己的範本。
 
 如需 **託管** 或 **邏輯應用程式** 試用產品的相關資訊，請參閱 [什麼是試用產品？](what-is-test-drive.md)
 
@@ -34,7 +34,7 @@ ms.locfileid: "92735605"
 
   - **非經常性存取層** – 此類型的執行個體代表每個區域可能部署的執行個體總數。 在客戶要求時試用產品時，「非經常性存取層」執行個體需要整個試用產品 Resource Manager 範本執行部署程序，因此較「經常性存取層」執行個體緩慢許多。 這個類型的好處在於您只需要支付試用產品持續時間的費用，而不像「經常性存取層」執行個體一樣，須一律在 Azure 訂閱上執行。
 
-- **試用產品 Azure Resource Manager 範本** – 上傳包含您的 Azure Resource Manager 範本的 .zip 檔案。 在快速入門文章中，深入了解如何建立 Azure Resource Manager 範本，[使用 Azure 入口網站建立及部署 ARM 範本](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)。
+- **試用產品 Azure Resource Manager 範本** – 上傳包含您的 Azure Resource Manager 範本的 .zip 檔案。 在快速入門文章中，深入了解如何建立 Azure Resource Manager 範本，[使用 Azure 入口網站建立及部署 ARM 範本](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 
     > [!note]
     > 若要成功發佈，請務必驗證 ARM 範本的格式。 有兩種方式可以使用 [線上 API 工具](https://docs.microsoft.com/rest/api/resources/deployments/validate) (1) ，或使用 [測試部署](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal)的 (2) 。
@@ -316,7 +316,7 @@ ms.locfileid: "92735605"
    6. 選取 [建立]。
    7. 建立應用程式之後，選取 [ **屬性** ]  >  **將應用程式設定為多租** 使用者，然後 **儲存** 。
 
-4. 選取 [儲存]。
+4. 選取 [儲存]  。
 
 5. 複製此已註冊應用程式的應用程式識別碼，並將它貼到 [試用產品] 欄位中。
 
@@ -325,7 +325,7 @@ ms.locfileid: "92735605"
 6. 由於我們使用應用程式部署至訂用帳戶，因此我們必須將應用程式新增為訂用帳戶的參與者：
 
    1. 選取您要用於試用產品的 **訂** 用帳戶類型。
-   1. 選取 [存取控制 (IAM)]。
+   1. 選取 [存取控制 (IAM)]  。
    1. 選取 [ **角色指派** ] 索引標籤，然後 **新增角色指派** 。
 
       ![新增新的存取控制原則](media/test-drive/access-control-principal.jpg)
@@ -334,7 +334,7 @@ ms.locfileid: "92735605"
 
       ![新增權限](media/test-drive/access-control-permissions.jpg)
 
-   1. 選取 [儲存]。
+   1. 選取 [儲存]  。
 
 7. 產生 **Azure AD App** 的驗證金鑰。 在 [ **金鑰** ] 下，新增 **金鑰描述** 、將持續時間設為 [ **永不過期** ] (到期的金鑰會將您的試用產品分成生產) ，然後選取 [ **儲存** ]。 將此值複製並貼到 [需要的試用產品] 欄位中。
 

@@ -16,12 +16,12 @@ ms.subservice: report-monitor
 ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b3db86137207ae726c7befc393f62590fd1456d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c7cc68c84cc9f137ba5b51206526ff96111fe9a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74008271"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122736"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 入口網站中的使用方式和見解報表
 
@@ -31,7 +31,7 @@ ms.locfileid: "74008271"
 *   哪些應用程式的登入失敗？ 
 *   每個應用程式的最常見登入錯誤為何？
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 若要從使用方式和見解報表存取資料，您需要：
 
@@ -42,10 +42,10 @@ ms.locfileid: "74008271"
 ## <a name="access-the-usage-and-insights-report"></a>存取使用量和見解報表
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
-2. 選取正確的目錄，然後選取 [ **Azure Active Directory** 並選擇 [ **企業應用程式**]。
+2. 選取正確的目錄，然後選取 [ **Azure Active Directory** 並選擇 [ **企業應用程式** ]。
 3. 從 [ **活動** ] 區段中，選取 [ **使用量 & 見解** ] 以開啟報表。 
 
-![使用量和深入解析報告](./media/concept-usage-insights-report/main-menu.png)
+![螢幕擷取畫面顯示從活動區段選取的使用量 & 見解。](./media/concept-usage-insights-report/main-menu.png)
                                      
 
 ## <a name="use-the-report"></a>使用報表
@@ -58,7 +58,7 @@ ms.locfileid: "74008271"
 
 當您在應用程式使用量圖表中選取一天時，會取得應用程式的登入活動的詳細清單。  
 
-![使用量和深入解析報告](./media/concept-usage-insights-report/usage-and-insights-report.png)
+![螢幕擷取畫面顯示應用程式活動的使用量 & 見解，您可以在其中為不同的應用程式選取範圍和查看登入活動。](./media/concept-usage-insights-report/usage-and-insights-report.png)
 
 ## <a name="next-steps"></a>後續步驟
 

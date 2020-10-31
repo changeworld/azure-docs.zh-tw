@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 8/6/2020
-ms.openlocfilehash: 4c6d1d3877629150493ee2a57a04573760d2772a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a130345a755644874b4547a5906101b593664a6
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88870012"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123460"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>串流分析及 Power BI：適用於串流資料的即時分析儀表板
 
@@ -42,7 +42,7 @@ Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Micr
 3. 選取 [+ 新增] > [Power BI]。 然後，在表單中填入下列詳細資料，然後選取 [授權] 以使用您自己的使用者 **身分** 識別來連線至 Power BI (權杖的有效時間為90天) 。 
 
 >[!NOTE]
->針對生產作業，建議您連線以 [使用受控識別來驗證您的 Azure 串流分析作業，以 Power BI](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)。
+>針對生產作業，建議您連線以 [使用受控識別來驗證您的 Azure 串流分析作業，以 Power BI](./powerbi-output-managed-identity.md)。
 
    |**設定**  |**建議的值**  |
    |---------|---------|
@@ -64,11 +64,11 @@ Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Micr
 系統會使用下列設定來建立資料集：
 
 * **defaultRetentionPolicy:BasicFIFO** - 資料為 FIFO，具有最多 200,000 個資料列。
-* **defaultMode: pushStreaming**：資料集同時支援串流磚和傳統報表型視覺效果 (也稱為推送)。
+* **defaultMode: pushStreaming** ：資料集同時支援串流磚和傳統報表型視覺效果 (也稱為推送)。
 
 您目前無法建立具有其他旗標的資料集。
 
-如需 Power BI 資料集的詳細資訊，請參閱 [Power BI REST API](https://msdn.microsoft.com/library/mt203562.aspx) 參考。
+如需 Power BI 資料集的詳細資訊，請參閱 [Power BI REST API](/rest/api/power-bi/) 參考。
 
 
 ## <a name="write-the-query"></a>撰寫查詢
@@ -231,6 +231,6 @@ Power BI 在重新整理過授權後，授權區域就會出現綠色警示，�
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
 * [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [串流分析輸出](stream-analytics-define-outputs.md)
-* [Azure 串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-* [使用受控識別來驗證您的 Azure 串流分析作業，以 Power BI](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)
+* [Azure 串流分析查詢語言參考](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 串流分析管理 REST API 參考](/rest/api/streamanalytics/)
+* [使用受控識別來驗證您的 Azure 串流分析作業，以 Power BI](./powerbi-output-managed-identity.md)

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: f4f79a28dbe8a49e608ca6fae1781a1e19646619
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 760c98ce9464e4d40f01256a973e07d9084c6dfe
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87448879"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123280"
 ---
 # <a name="troubleshoot-input-connections"></a>針對輸入連線進行疑難排解
 
@@ -25,9 +25,9 @@ ms.locfileid: "87448879"
 
 2.  檢查您的輸入資料。
 
-    1. 針對每個輸入使用 [[範例資料](stream-analytics-sample-data-input.md)] 按鈕。 下載輸入範例資料。
+    1. 針對每個輸入使用 [[範例資料](./stream-analytics-test-query.md)] 按鈕。 下載輸入範例資料。
         
-    1. 檢查範例資料以了解結構描述和[資料類型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics) \(英文\)。
+    1. 檢查範例資料以了解結構描述和[資料類型](/stream-analytics-query/data-types-azure-stream-analytics) \(英文\)。
     
     1. 檢查[事件中樞計量](../event-hubs/event-hubs-metrics-azure-monitor.md)以確保系統會傳送事件。 如果事件中樞能接收到訊息，則訊息計量應該要大於零。
 
@@ -93,11 +93,11 @@ AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1.
 
 讀取器數量 (每個分割區) 超過事件中樞上限 (5 個) 的情況如下：
 
-* 多個 SELECT 陳述式：如果您使用多個 SELECT 陳述式參照**相同**的事件中樞輸入，則每個 SELECT 陳述式皆會造成新的接收器建立。
+* 多個 SELECT 陳述式：如果您使用多個 SELECT 陳述式參照 **相同** 的事件中樞輸入，則每個 SELECT 陳述式皆會造成新的接收器建立。
 
-* UNION：當您使用 UNION 時，就有可能會有多個輸入參照**相同**的事件中樞和取用者群組。
+* UNION：當您使用 UNION 時，就有可能會有多個輸入參照 **相同** 的事件中樞和取用者群組。
 
-* SELF JOIN：當您使用 SELF JOIN 作業時，就可能發生參照**相同**事件中樞多次的情形。
+* SELF JOIN：當您使用 SELF JOIN 作業時，就可能發生參照 **相同** 事件中樞多次的情形。
 
 以下最佳做法可減少讀取器數量 (每個分割區) 超過事件中樞上限 (5 個) 的情況。
 
@@ -163,16 +163,16 @@ SELECT foo FROM DataTwo
 
 ## <a name="readers-per-partition-exceeds-iot-hub-limit"></a>每個分割區的讀取器超過 IoT 中樞限制
 
-串流分析作業會使用 IoT 中樞內建的 [事件中樞相容端點](../iot-hub/iot-hub-devguide-messages-read-builtin.md) 來連線和讀取來自 IoT 中樞的事件。 如果您讀取的每個資料分割超過 IoT 中樞的限制，您可以使用 [事件中樞的解決方案](#readers-per-partition-exceeds-event-hubs-limit) 來解決此問題。 您可以透過 IoT 中樞入口網站端點會話或透過 [Iot 中樞 SDK](https://docs.microsoft.com/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup)，建立內建端點的取用者群組。
+串流分析作業會使用 IoT 中樞內建的 [事件中樞相容端點](../iot-hub/iot-hub-devguide-messages-read-builtin.md) 來連線和讀取來自 IoT 中樞的事件。 如果您讀取的每個資料分割超過 IoT 中樞的限制，您可以使用 [事件中樞的解決方案](#readers-per-partition-exceeds-event-hubs-limit) 來解決此問題。 您可以透過 IoT 中樞入口網站端點會話或透過 [Iot 中樞 SDK](/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup)，建立內建端點的取用者群組。
 
 ## <a name="get-help"></a>取得說明
 
-如需進一步的協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
+如需進一步的協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
 * [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics 查詢語言參考](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 串流分析管理 REST API 參考](/rest/api/streamanalytics/)

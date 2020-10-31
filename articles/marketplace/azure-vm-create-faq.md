@@ -7,12 +7,12 @@ ms.topic: guide
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/15/2020
-ms.openlocfilehash: 131cd9b1de82213d89ee07f30aed25544f6fcb18
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 88ec58ca9bcfa5c64036d3b65e77f3248e26357d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283933"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124946"
 ---
 # <a name="common-questions-about-vm-in-azure-marketplace"></a>Azure Marketplace 中 VM 的常見問題
 
@@ -22,7 +22,7 @@ ms.locfileid: "92283933"
 
 如果您使用的是 Azure Resource Manager 部署模型，則有以下三個選項：
 
-- [使用 Azure 入口網站建立路由型 VPN 閘道](../vpn-gateway/create-routebased-vpn-gateway-portal.md)
+- [使用 Azure 入口網站建立路由型 VPN 閘道](../vpn-gateway/tutorial-create-gateway-portal.md)
 - [使用 Azure PowerShell 來建立路由型 VPN 閘道](../vpn-gateway/create-routebased-vpn-gateway-powershell.md)
 - [使用 CLI 來建立路由型 VPN 閘道](../vpn-gateway/create-routebased-vpn-gateway-cli.md)
 
@@ -32,15 +32,15 @@ ms.locfileid: "92283933"
 
 ## <a name="in-a-vm-how-do-i-manage-the-custom-script-extension-in-the-startup-task"></a>在 VM 中，如何在啟動工作中管理自訂指令碼延伸模組？
 
-如需如何透過 Azure PowerShell 模組、Azure Resource Manager 範本以及 Windows 系統上的疑難排解步驟使用自訂指令碼延伸模組的詳細資料，請參閱[自訂適用於 Windows 的指令碼延伸模組](/azure/virtual-machines/extensions/custom-script-windows)。
+如需如何透過 Azure PowerShell 模組、Azure Resource Manager 範本以及 Windows 系統上的疑難排解步驟使用自訂指令碼延伸模組的詳細資料，請參閱[自訂適用於 Windows 的指令碼延伸模組](../virtual-machines/extensions/custom-script-windows.md)。
 
 ## <a name="are-32-bit-applications-or-services-supported-in-azure-marketplace"></a>Azure Marketplace 是否支援 32 位元應用程式或服務？
 
-不正確。 適用於 Azure 虛擬機器的支援作業系統和標準服務，皆為 64 位元。 雖然大部分的 64 位作業系統都支援 32 位版本的應用程式以提供回溯相容性，但在 VM 解決方案中不支援使用 32 位應用程式，且非常不鼓勵。 將您的應用程式重新建立為 64 位元專案。
+否。 適用於 Azure 虛擬機器的支援作業系統和標準服務，皆為 64 位元。 雖然大部分的 64 位作業系統都支援 32 位版本的應用程式以提供回溯相容性，但在 VM 解決方案中不支援使用 32 位應用程式，且非常不鼓勵。 將您的應用程式重新建立為 64 位元專案。
 
 如需詳細資訊，請參閱這些文章：
 
-- [執行 32 位元應用程式](https://docs.microsoft.com/windows/desktop/WinProg64/running-32-bit-applications) (英文)
+- [執行 32 位元應用程式](/windows/desktop/WinProg64/running-32-bit-applications) (英文)
 - [在 Azure 的虛擬機器中的 32 位元作業系統的支援](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)
 - [適用於 Microsoft Azure 虛擬機器的 Microsoft 伺服器軟體支援](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)
 

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 529b1ce8026d9880bbc8caf87ab59148baf92df3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 9b08b59090d9dd23405f8a0ba86ce608e3a64902
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019455"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123756"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>使用 Azure 串流分析和 Azure Machine Learning Studio (傳統) 進行情感分析
 
@@ -43,7 +43,7 @@ ms.locfileid: "92019455"
 
 在此步驟中，您會將 CSV 檔案上傳至儲存體容器。
 
-1. 在 Azure 入口網站中，選取 [**建立資源**  >  **儲存體**  >  **帳戶**]。
+1. 在 Azure 入口網站中，選取 [ **建立資源**  >  **儲存體**  >  **帳戶** ]。
 
 2. 在 [ *基本* ] 索引標籤中填寫下列詳細資料，並保留其餘欄位的預設值：
 
@@ -52,7 +52,7 @@ ms.locfileid: "92019455"
    |訂用帳戶|選擇您的訂用帳戶。|
    |資源群組|選擇您的資源群組。|
    |儲存體帳戶名稱|輸入儲存體帳戶的名稱。 此名稱在整個 Azure 中必須是唯一的。|
-   |Location|選擇位置。 所有資源都應該使用相同的位置。|
+   |位置|選擇位置。 所有資源都應該使用相同的位置。|
    |帳戶類型|BlobStorage|
 
    ![提供儲存體帳戶詳細資料](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
@@ -63,11 +63,11 @@ ms.locfileid: "92019455"
 
    ![建立供輸入使用的 Blob 儲存體容器](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account2.png)
 
-5. 提供容器的名稱，並確認 **公用存取層級** 設為 [ **私**用]。 當您完成時，選取 [建立]。
+5. 提供容器的名稱，並確認 **公用存取層級** 設為 [ **私** 用]。 當您完成時，選取 [建立]  。
 
    ![指定 Blob 容器詳細資料](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account3.png)
 
-6. 流覽至新建立的容器，然後選取 **[上傳**]。 上傳您稍早下載的 **sampleinput.csv** 檔案。
+6. 流覽至新建立的容器，然後選取 **[上傳** ]。 上傳您稍早下載的 **sampleinput.csv** 檔案。
 
    ![容器的 [上傳] 按鈕](./media/stream-analytics-machine-learning-integration-tutorial/create-sa-upload-button.png)
 
@@ -77,7 +77,7 @@ ms.locfileid: "92019455"
 
 1. 移至 Cortana 智慧資源庫中的[預測情感分析模型](https://gallery.cortanaintelligence.com/Experiment/Predictive-Mini-Twitter-sentiment-analysis-Experiment-1) \(英文\) 頁面。  
 
-2. 選取 [ **在 Studio 中開啟] (傳統) **。  
+2. 選取 [ **在 Studio 中開啟] (傳統)** 。  
    
    ![串流分析 Azure Machine Learning Studio (傳統) 、open Studio (傳統) ](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-open-ml-studio.png)  
 
@@ -87,7 +87,7 @@ ms.locfileid: "92019455"
 
    ![在 Studio (傳統) 中執行實驗](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-run-experiment.png)  
 
-5. 程序成功執行之後，請選取頁面底部的 [部署 Web 服務]****。
+5. 程序成功執行之後，請選取頁面底部的 [部署 Web 服務]  。
 
    ![以 web 服務的形式在 Studio (傳統) 中部署實驗](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-deploy-web-service.png)  
 
@@ -115,7 +115,7 @@ ms.locfileid: "92019455"
 
 工作會從您稍早上傳到 Blob 儲存體的 CSV 檔案取得輸入。
 
-1. 瀏覽至您的串流分析作業。 在 [ **作業拓撲**] 下，選取 [ **輸入** ] 選項。 選取 [**新增資料流程輸入**  > **Blob 儲存體**]。
+1. 瀏覽至您的串流分析作業。 在 [ **作業拓撲** ] 下，選取 [ **輸入** ] 選項。 選取 [ **新增資料流程輸入**  > **Blob 儲存體** ]。
 
 2. 使用下列值填寫 **Blob 儲存體** 詳細資料：
 
@@ -127,13 +127,13 @@ ms.locfileid: "92019455"
    |容器|選取您在上一個步驟中建立的容器。|
    |事件序列化格式|CSV|
 
-3. 選取 [儲存]。
+3. 選取 [儲存]  。
 
 ### <a name="configure-the-job-output"></a>設定工作輸出
 
 工作會將結果傳送至取得輸入的相同 Blob 儲存體。
 
-1. 瀏覽至您的串流分析作業。 在 [ **作業拓撲**] 下，選取 [ **輸出** ] 選項。 選取 [**新增**  >  **Blob 儲存體**]。
+1. 瀏覽至您的串流分析作業。 在 [ **作業拓撲** ] 下，選取 [ **輸出** ] 選項。 選取 [ **新增**  >  **Blob 儲存體** ]。
 
 2. 以下列值填寫 **Blob 儲存體** 表單：
 
@@ -145,7 +145,7 @@ ms.locfileid: "92019455"
    |容器|選取您在上一個步驟中建立的容器。|
    |事件序列化格式|CSV|
 
-3. 選取 [儲存]。
+3. 選取 [儲存]  。
 
 ### <a name="add-the-studio-classic-function"></a>新增 Studio (傳統) 函數
 
@@ -155,13 +155,13 @@ ms.locfileid: "92019455"
 
 1. 請確定您有稍早下載的 Web 服務 URL 和 API 金鑰 (在 Excel 活頁簿中)。
 
-2. 瀏覽至您的串流分析作業。 然後選取**函數**  >  **+ 新增**  >  **Azure ML Studio**
+2. 瀏覽至您的串流分析作業。 然後選取 **函數**  >  **+ 新增**  >  **Azure ML Studio**
 
 3. 在 **Azure Machine Learning** 函式表單中填入下列值：
 
    |欄位  |值  |
    |---------|---------|
-   | 函式別名 | 使用 [名稱] `sentiment` 並選取 [ **提供 Azure Machine Learning**函式設定]，這可讓您選擇輸入 URL 和金鑰。      |
+   | 函式別名 | 使用 [名稱] `sentiment` 並選取 [ **提供 Azure Machine Learning** 函式設定]，這可讓您選擇輸入 URL 和金鑰。      |
    | URL| 貼上 Web 服務 URL。|
    |答案 | 貼上 API 金鑰。 |
 
@@ -202,16 +202,16 @@ ms.locfileid: "92019455"
 
 2. 選取頁面頂端的 [ **開始** ]。
 
-3. 在 [ **啟動工作**] 中選取 [ **自訂**]，然後選取您將 CSV 檔案上傳至 blob 儲存體之前的一天。 完成時，選取 [啟動]****。  
+3. 在 [ **啟動工作** ] 中選取 [ **自訂** ]，然後選取您將 CSV 檔案上傳至 blob 儲存體之前的一天。 完成時，選取 [啟動]  。  
 
 ### <a name="check-the-output"></a>查看輸出
 
-1. 讓工作執行幾分鐘，直到您在 [監視]**** 方塊中看到活動。
+1. 讓工作執行幾分鐘，直到您在 [監視]  方塊中看到活動。
 
 2. 如果您的工具通常用來檢查 blob 儲存體的內容，請使用該工具來檢查容器。 或者，請在 Azure 入口網站中執行下列步驟：
 
       1. 在 Azure 入口網站中，尋找您的儲存體帳戶，並在帳戶中尋找容器。 您會在容器中看到兩個檔案：包含範例推文的檔案，和串流分析工作所產生的 CSV 檔案。
-      2. 以滑鼠右鍵按一下所產生的檔案，然後選取 [下載]****。
+      2. 以滑鼠右鍵按一下所產生的檔案，然後選取 [下載]  。
 
 3. 開啟產生的 CSV 檔案。 您會看到類似下列範例的畫面：  
 
@@ -227,6 +227,6 @@ ms.locfileid: "92019455"
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
-* [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics 查詢語言參考](/stream-analytics-query/stream-analytics-query-language-reference)
 * [整合 REST API 和 Machine Learning Studio (傳統) ](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
-* [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure 串流分析管理 REST API 參考](/rest/api/streamanalytics/)

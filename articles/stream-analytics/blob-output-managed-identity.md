@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/11/2020
-ms.openlocfilehash: 99b23b65a0ce1693bcd04d5828fe062f2f43ea73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99b7891f332298024c82103322cc6b58d066f587
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044221"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123229"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>使用受控識別來驗證您的 Azure 串流分析作業，以 Azure Blob 儲存體輸出
 
@@ -21,11 +21,11 @@ ms.locfileid: "86044221"
 
 ## <a name="create-the-stream-analytics-job-using-the-azure-portal"></a>使用 Azure 入口網站建立串流分析作業
 
-1. 建立新的串流分析作業，或在 Azure 入口網站中開啟現有的作業。 從位於畫面左側的功能表列中，選取位於 [**設定**] 下的 [**受控識別**]。 確定已選取 [使用系統指派的受控識別]，然後按一下畫面底部的 [ **儲存** ] 按鈕。
+1. 建立新的串流分析作業，或在 Azure 入口網站中開啟現有的作業。 從位於畫面左側的功能表列中，選取位於 [ **設定** ] 下的 [ **受控識別** ]。 確定已選取 [使用系統指派的受控識別]，然後按一下畫面底部的 [ **儲存** ] 按鈕。
 
    ![設定串流分析受控識別](./media/common/stream-analytics-enable-managed-identity.png)
 
-2. 在 Azure Blob 儲存體輸出接收的 [輸出屬性] 視窗中，選取 [驗證模式] 下拉式清單，然後選擇 [ **受控識別**]。 如需其他輸出屬性的相關資訊，請參閱 [瞭解 Azure 串流分析的輸出](./stream-analytics-define-outputs.md)。 當您完成後，請按一下 [儲存]****。
+2. 在 Azure Blob 儲存體輸出接收的 [輸出屬性] 視窗中，選取 [驗證模式] 下拉式清單，然後選擇 [ **受控識別** ]。 如需其他輸出屬性的相關資訊，請參閱 [瞭解 Azure 串流分析的輸出](./stream-analytics-define-outputs.md)。 當您完成後，請按一下 [儲存]  。
 
    ![設定 Azure Blob 儲存體輸出](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
 
@@ -33,7 +33,7 @@ ms.locfileid: "86044221"
 
 ## <a name="azure-resource-manager-deployment"></a>Azure Resource Manager 部署
 
-使用 Azure Resource Manager 可讓您將串流分析作業的部署作業完全自動化。 您可以使用 Azure PowerShell 或 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)來部署 Resource Manager 範本。 下列範例會使用 Azure CLI。
+使用 Azure Resource Manager 可讓您將串流分析作業的部署作業完全自動化。 您可以使用 Azure PowerShell 或 [Azure CLI](/cli/azure/?view=azure-cli-latest)來部署 Resource Manager 範本。 下列範例會使用 Azure CLI。
 
 
 1. 您可以在 Resource Manager 範本的資源區段中包含下列屬性，以使用受控識別建立 **>mslearn-streamanalytics/streamingjobs** 資源：
@@ -166,16 +166,16 @@ ms.locfileid: "86044221"
 
 1. 在您的儲存體帳戶中流覽至容器的設定窗格。
 
-2. 選取左側的 [ **存取控制] (IAM) ** 。
+2. 選取左側的 [ **存取控制] (IAM)** 。
 
-3. 在 [新增角色指派] 區段下，按一下 [ **新增**]。
+3. 在 [新增角色指派] 區段下，按一下 [ **新增** ]。
 
 4. 在 [角色指派] 窗格中：
 
     1. 將 **角色** 設定為「儲存體 Blob 資料參與者」
     2. 確定 [ **將存取權指派** 給] 下拉式清單設定為 [Azure AD 使用者、群組或服務主體]。
     3. 在 [搜尋] 欄位中輸入串流分析作業的名稱。
-    4. 選取您的串流分析作業，然後按一下 [ **儲存**]。
+    4. 選取您的串流分析作業，然後按一下 [ **儲存** ]。
 
    ![授與容器存取權](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-container-access-portal.png)
 
@@ -183,16 +183,16 @@ ms.locfileid: "86044221"
 
 1. 瀏覽至儲存體帳戶。
 
-2. 選取左側的 [ **存取控制] (IAM) ** 。
+2. 選取左側的 [ **存取控制] (IAM)** 。
 
-3. 在 [新增角色指派] 區段下，按一下 [ **新增**]。
+3. 在 [新增角色指派] 區段下，按一下 [ **新增** ]。
 
 4. 在 [角色指派] 窗格中：
 
     1. 將 **角色** 設定為「儲存體 Blob 資料參與者」
     2. 確定 [ **將存取權指派** 給] 下拉式清單設定為 [Azure AD 使用者、群組或服務主體]。
     3. 在 [搜尋] 欄位中輸入串流分析作業的名稱。
-    4. 選取您的串流分析作業，然後按一下 [ **儲存**]。
+    4. 選取您的串流分析作業，然後按一下 [ **儲存** ]。
 
    ![授與帳戶存取權](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-account-access-portal.png)
 
@@ -216,11 +216,11 @@ ms.locfileid: "86044221"
 
 ## <a name="enable-vnet-access"></a>啟用 VNET 存取
 
-設定儲存體帳戶的 **防火牆和虛擬網路**時，您可以選擇性地允許來自其他受信任 Microsoft 服務的網路流量。 當串流分析使用受控識別進行驗證時，它會提供要求源自受信任服務的證明。 以下是啟用此 VNET 存取例外狀況的指示。
+設定儲存體帳戶的 **防火牆和虛擬網路** 時，您可以選擇性地允許來自其他受信任 Microsoft 服務的網路流量。 當串流分析使用受控識別進行驗證時，它會提供要求源自受信任服務的證明。 以下是啟用此 VNET 存取例外狀況的指示。
 
 1.  流覽至儲存體帳戶的 [設定] 窗格中的 [防火牆和虛擬網路] 窗格。
 2.  確定已啟用 [允許信任的 Microsoft 服務存取此儲存體帳戶] 選項。
-3.  如果您已啟用它，請按一下 [ **儲存**]。
+3.  如果您已啟用它，請按一下 [ **儲存** ]。
 
    ![啟用 VNET 存取](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-vnet-exception.png)
 

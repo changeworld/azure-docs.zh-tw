@@ -18,12 +18,12 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4353ed5413f76b13425a59d31bb6108542e3bd23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25f3402864e2ba873ce63acb6cedcd3f2ea018f7
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231124"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123127"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>適用於報表的 Azure AD PowerShell Cmdlet
 
@@ -49,7 +49,7 @@ Install-module AzureADPreview
 您可以使用 ' AzureADAuditDirectoryLogs Cmdlet 取得審核記錄的存取權。
 
 
-| 狀況                      | PowerShell 命令 |
+| 案例                      | PowerShell 命令 |
 | :--                           | :--                |
 | 應用程式顯示名稱      | Get-AzureADAuditDirectoryLogs-Filter "initiatedBy/app/displayName eq ' Azure AD Cloud Sync '" |
 | 類別                      | Get-AzureADAuditDirectoryLogs 篩選 "category eq ' ApplicationManagement '" |
@@ -59,7 +59,7 @@ Install-module AzureADPreview
 
 下圖顯示此命令的範例。 
 
-![[資料摘要] 按鈕](./media/reference-powershell-reporting/get-azureadauditdirectorylogs.png)
+![螢幕擷取畫面顯示 Get-Azure D Audit Directory Logs 命令的結果。](./media/reference-powershell-reporting/get-azureadauditdirectorylogs.png)
 
 
 
@@ -70,7 +70,7 @@ Install-module AzureADPreview
 您可以使用 ' AzureADAuditSignInLogs Cmdlet 取得登入記錄的存取權。
 
 
-| 狀況                      | PowerShell 命令 |
+| 案例                      | PowerShell 命令 |
 | :--                           | :--                |
 | 使用者顯示名稱             | Get-AzureADAuditSignInLogs-Filter "userDisplayName eq ' Timothy Perkins '" |
 | 建立日期時間              | Get-AzureADAuditSignInLogs 篩選 "createdDateTime gt 2019-04-18T17：30： 00.0 Z" (4/18) 上下午5:30 之後的所有專案 |
@@ -81,7 +81,7 @@ Install-module AzureADPreview
 
 下圖顯示此命令的範例。 
 
-![[資料摘要] 按鈕](./media/reference-powershell-reporting/get-azureadauditsigninlogs.png)
+![螢幕擷取畫面顯示 Get-Azure D Audit Sign In Logs 命令的結果。](./media/reference-powershell-reporting/get-azureadauditsigninlogs.png)
 
 
 

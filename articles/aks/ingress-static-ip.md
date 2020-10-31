@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 叢集中，使用�
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: be4856beac69d11de12ec764f313fa59f3b24e9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50e3e052915b6bcc1f6dee89f5ed5e2acf13dd78
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89290543"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124351"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中使用靜態公用 IP 位址建立輸入控制器
 
@@ -43,16 +43,16 @@ ms.locfileid: "89290543"
 az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
 ```
 
-接下來，使用 [az network public-ip create][az-network-public-ip-create] 命令，建立具有「靜態」** 配置方法的公用 IP 位址。 下列範例會在上一個步驟所取得的 AKS 叢集資源群組中，建立名為 myAKSPublicIP** 的公用 IP 位址：
+接下來，使用  配置方法的公用 IP 位址。 下列範例會在上一個步驟所取得的 AKS 叢集資源群組中，建立名為 myAKSPublicIP  的公用 IP 位址：
 
 ```azurecli-interactive
 az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --sku Standard --allocation-method static --query publicIp.ipAddress -o tsv
 ```
 
 > [!NOTE]
-> 上述命令會建立將會刪除的 IP 位址（如果您刪除 AKS 叢集）。 或者，您可以在不同的資源群組中建立 IP 位址，此 IP 位址可以與您的 AKS 叢集分開管理。 如果您在不同的資源群組中建立 IP 位址，請確定 AKS 叢集所使用的服務主體具有其他資源群組（例如 *網路參與者*）的委派許可權。 如需詳細資訊，請參閱搭配 [使用靜態公用 IP 位址和 DNS 標籤與 AKS 負載平衡器][aks-static-ip]。
+> 上述命令會建立將會刪除的 IP 位址（如果您刪除 AKS 叢集）。 或者，您可以在不同的資源群組中建立 IP 位址，此 IP 位址可以與您的 AKS 叢集分開管理。 如果您在不同的資源群組中建立 IP 位址，請確定 AKS 叢集所使用的服務主體具有其他資源群組（例如 *網路參與者* ）的委派許可權。 如需詳細資訊，請參閱搭配 [使用靜態公用 IP 位址和 DNS 標籤與 AKS 負載平衡器][aks-static-ip]。
 
-現在，使用 Helm 部署 nginx-ingress** 圖表。 為了新增備援，您必須使用 `--set controller.replicaCount` 參數部署兩個 NGINX 輸入控制器複本。 為充分享有執行輸入控制器複本的好處，請確定 AKS 叢集中有多個節點。
+現在，使用 Helm 部署 nginx-ingress  圖表。 為了新增備援，您必須使用 `--set controller.replicaCount` 參數部署兩個 NGINX 輸入控制器複本。 為充分享有執行輸入控制器複本的好處，請確定 AKS 叢集中有多個節點。
 
 您必須將兩個額外的參數傳遞至 Helm 版本，以便輸入控制器知道要配置給輸入控制器服務的負載平衡器的靜態 IP 位址，以及套用至公用 IP 位址資源的 DNS 名稱標籤。 若要讓 HTTPS 憑證正常運作，您可以使用 DNS 名稱標籤來設定輸入控制器 IP 位址的 FQDN。
 
@@ -62,10 +62,10 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 輸入控制器也需要在 Linux 節點上排程。 Windows Server 節點不應執行輸入控制器。 您可以使用 `--set nodeSelector` 參數來指定節點選取器，以告知 Kubernetes 排程器在 Linux 式節點上執行 NGINX 輸入控制器。
 
 > [!TIP]
-> 下列範例會建立名為「輸入 *-基本*」之輸入資源的 Kubernetes 命名空間。 視需要指定您自己環境的命名空間。 如果您的 AKS 叢集未啟用 RBAC，請新增 `--set rbac.create=false` 至 Helm 命令。
+> 下列範例會建立名為「輸入 *-基本* 」之輸入資源的 Kubernetes 命名空間。 視需要指定您自己環境的命名空間。 如果您的 AKS 叢集未啟用 RBAC，請新增 `--set rbac.create=false` 至 Helm 命令。
 
 > [!TIP]
-> 如果您想要針對叢集中的容器要求啟用 [用戶端來源 IP 保留][client-source-ip] ，請新增 `--set controller.service.externalTrafficPolicy=Local` 至 Helm 安裝命令。 用戶端來源 IP 會儲存在要求標頭中，以 *X 轉送-表示*。 使用已啟用用戶端來源 IP 保留的輸入控制器時，TLS 傳遞將無法運作。
+> 如果您想要針對叢集中的容器要求啟用 [用戶端來源 IP 保留][client-source-ip] ，請新增 `--set controller.service.externalTrafficPolicy=Local` 至 Helm 安裝命令。 用戶端來源 IP 會儲存在要求標頭中，以 *X 轉送-表示* 。 使用已啟用用戶端來源 IP 保留的輸入控制器時，TLS 傳遞將無法運作。
 
 以您輸入控制器的 **IP 位址** 和您要用於 FQDN 首碼的 **唯一名稱** ，更新下列腳本。
 
@@ -199,7 +199,7 @@ spec:
     spec:
       containers:
       - name: aks-helloworld
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -237,7 +237,7 @@ spec:
     spec:
       containers:
       - name: ingress-demo
-        image: neilpeterson/aks-helloworld:v1
+        image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
         ports:
         - containerPort: 80
         env:
@@ -378,7 +378,7 @@ certificate.cert-manager.io/tls-secret created
 
 ![應用程式範例一](media/ingress/app-one.png)
 
-現在，將 */hello-world-two* 路徑新增至 FQDN，例如 *`https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two`*。 即會顯示第二個具有自訂標題的示範應用程式：
+現在，將 */hello-world-two* 路徑新增至 FQDN，例如 *`https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two`* 。 即會顯示第二個具有自訂標題的示範應用程式：
 
 ![應用程式範例二](media/ingress/app-two.png)
 
@@ -435,7 +435,7 @@ kubectl delete -f ingress-demo.yaml --namespace ingress-basic
 kubectl delete namespace ingress-basic
 ```
 
-最後，移除針對輸入控制器所建立的靜態公用 IP 位址。 提供您在本文第一個步驟中取得的 MC_** 叢集資源群組名稱，例如 MC_myResourceGroup_myAKSCluster_eastus**：
+最後，移除針對輸入控制器所建立的靜態公用 IP 位址。 提供您在本文第一個步驟中取得的 MC_  叢集資源群組名稱，例如 MC_myResourceGroup_myAKSCluster_eastus  ：
 
 ```azurecli-interactive
 az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP

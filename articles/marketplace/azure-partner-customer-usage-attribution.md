@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 09/01/2020
+ms.date: 10/30/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 167c2f091d4d8a7d7d5c32009b484125d7275796
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 91de9aff154dec1a61360477edebc90b7a13cf24
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282360"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93125167"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商業 marketplace 夥伴和客戶使用方式屬性
 
@@ -33,15 +33,18 @@ ms.locfileid: "92282360"
 >- 客戶使用狀況歸因適用於新的部署，「不」支援標記已部署的現有資源。
 >
 >- 發佈至 Azure Marketplace 的 [Azure 應用程式](./partner-center-portal/create-new-azure-apps-offer.md)供應項目需要客戶使用狀況歸因。
+>
+>- 並非所有 Azure 服務都與客戶使用方式屬性相容。 Azure Kubernetes Services (AKS) 和 VM 擴展集目前有已知的問題，這些問題會導致使用中的報告。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-guids"></a>建立 GUID
 
-GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立 GUID 來進行追蹤，您應該使用 GUID 產生器。 Azure 儲存體小組已建立 [GUID 產生器表單](https://aka.ms/StoragePartners)，其會透過電子郵件傳送正確格式的 GUID 給您，且可跨不同追蹤系統重複使用。
+GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立追蹤的 Guid，您應該使用 GUID 產生器，例如透過 PowerShell。
 
-> [!NOTE]
-> 強烈建議您使用 [Azure 儲存體的 GUID 產生器表單](https://aka.ms/StoragePartners)來建立 GUID。 如需詳細資訊，請參閱[常見問題集](#faq)。
+```powershell
+[guid]::NewGuid()]
+```
 
 建議您為每個產品的每個供應項目與散發通道建立唯一的 GUID。 如果您不想要分割報告，您可以讓產品的多個散發通道使用單一 GUID。
 
@@ -67,7 +70,7 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立 
 
 1. 註冊為[商業市集發行者](https://aka.ms/JoinMarketplace)。
 
-   * 合作夥伴[在合作夥伴中心需要有設定檔](become-publisher.md)。 我們鼓勵您在 Azure Marketplace 或 AppSource 中列出該供應項目。
+   * 合作夥伴[在合作夥伴中心需要有設定檔](./partner-center-portal/create-account.md)。 我們鼓勵您在 Azure Marketplace 或 AppSource 中列出該供應項目。
    * 合作夥伴可以註冊多個 GUID。
    * 合作夥伴可以註冊非市集解決方案範本和供應項目的 GUID。
 
@@ -97,9 +100,9 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立 
 
 1. 開啟 Resource Manager 範本。
 
-1. 在主要範本檔案中，新增類型為 [Microsoft .resources/部署](https://docs.microsoft.com/azure/templates/microsoft.resources/deployments) 的新資源。 資源只需要置於 **mainTemplate.json** 或 **azuredeploy.json** 檔案中，而非任何巢狀或連結的範本中。
+1. 在主要範本檔案中，新增類型為 [Microsoft .resources/部署](/azure/templates/microsoft.resources/deployments) 的新資源。 資源只需要置於 **mainTemplate.json** 或 **azuredeploy.json** 檔案中，而非任何巢狀或連結的範本中。
 
-1. 輸入 `pid-` 前置詞作為資源名稱之後的 GUID 值。 例如，如果 GUID 是 eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063-pid-eb7927c8-dd66-43e1-b0cf-c346a422063，則資源名稱將會是 _pid-eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063_-eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063-pid-eb7927c8-dd66-43e1-b0cf-c346a422063。
+1. 輸入 `pid-` 前置詞作為資源名稱之後的 GUID 值。 例如，如果 GUID 是 eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063-pid-eb7927c8-dd66-43e1-b0cf-c346a422063，則資源名稱將會是 _pid-eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063_ -eb7927c8-dd66-43e1-b0cf-c346a422063-eb7927c8-dd66-43e1-b0cf-c346a422063-pid-eb7927c8-dd66-43e1-b0cf-c346a422063。
 
 1. 檢查範本是否有任何錯誤。
 
@@ -132,7 +135,7 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立 
 
 ## <a name="use-the-resource-manager-apis"></a>使用 Resource Manager API
 
-在某些情況下，您可能會想要直接對 Resource Manager REST API 進行呼叫，以部署 Azure 服務。 [Azure 支援多個 SDK](https://docs.microsoft.com/azure/?pivot=sdkstools) 以啟用此作業。 您可以使用其中一個 SDK，或直接呼叫 REST API 來部署資源。
+在某些情況下，您可能會想要直接對 Resource Manager REST API 進行呼叫，以部署 Azure 服務。 [Azure 支援多個 SDK](../index.yml?pivot=sdkstools) 以啟用此作業。 您可以使用其中一個 SDK，或直接呼叫 REST API 來部署資源。
 
 如果您使用 Resource Manager 範本，應該依照稍早的指示標記您的解決方案。 如果您不是使用 Resource Manager 範本，並進行直接 API 呼叫，仍可標記您的部署以與 Azure 資源的使用量建立關聯。
 
@@ -156,7 +159,7 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立 
 
 #### <a name="example-the-net-sdk"></a>範例： .NET SDK
 
-針對 .NET，請務必設定使用者代理程式。 您可以使用 c # ) [中的下列](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.fluent?view=azure-dotnet) 程式碼 (範例來設定使用者代理程式：
+針對 .NET，請務必設定使用者代理程式。 您可以使用 c # ) [中的下列](/dotnet/api/microsoft.azure.management.fluent?view=azure-dotnet) 程式碼 (範例來設定使用者代理程式：
 
 ```csharp
 
@@ -183,7 +186,7 @@ var azure = Microsoft.Azure.Management.Fluent.Azure
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
-如需詳細資訊，請參閱 [Azure SDK for Go](https://docs.microsoft.com/azure/developer/go/)。
+如需詳細資訊，請參閱 [Azure SDK for Go](/azure/developer/go/)。
 
 ## <a name="use-terraform"></a>使用 Terraform
 

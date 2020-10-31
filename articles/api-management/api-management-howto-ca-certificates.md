@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: apimpm
-ms.openlocfilehash: e42e976e57dd69ffcbd9065cfb3aaf3af9c4b972
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 124bc053aa2c6e59e205bb6f33a9a96190799499
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852067"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93102032"
 ---
 # <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>如何在 Azure API 管理中新增自訂 CA 憑證
 
@@ -37,26 +37,26 @@ Azure API 管理可允許在信任根存放區和中繼憑證存放區內的機�
 
 1. 在 Azure 入口網站中瀏覽至您的 Azure API 管理服務執行個體。
 
-2. 從功能表中選取 [CA 憑證]****。
+2. 從功能表中選取 [CA 憑證]  。
 
-3. 按一下 [+新增]**** 按鈕。  
+3. 按一下 [+新增]  按鈕。  
 
-    ![新增 CA 憑證](media/api-management-howto-ca-certificates/01.png)  
+    ![顯示新增 CA 憑證之 [+ 新增] 按鈕的螢幕擷取畫面。](media/api-management-howto-ca-certificates/01.png)  
 
 4. 瀏覽憑證並決定憑證存放區。 僅需要公開金鑰，因此不需要密碼。
 
-    ![新增 CA 憑證](media/api-management-howto-ca-certificates/02.png)  
+    ![顯示如何流覽憑證的螢幕擷取畫面。](media/api-management-howto-ca-certificates/02.png)  
 
-5. 按一下 **[儲存]** 。 這項作業可能需要幾分鐘的時間。
+5. 按一下 [儲存]。 這項作業可能需要幾分鐘的時間。
 
-    ![新增 CA 憑證](media/api-management-howto-ca-certificates/03.png)  
+    ![顯示如何儲存憑證的螢幕擷取畫面。](media/api-management-howto-ca-certificates/03.png)  
 
 > [!NOTE]
 > 您可以使用 `New-AzApiManagementSystemCertificate` Powershell 命令來上傳 CA 憑證。
 
 ## <a name="delete-a-client-certificate"></a><a name="step1a"> </a>刪除用戶端憑證
 
-若要刪除憑證，請按一下內容功能表的 **...**，然後選取憑證旁的 [刪除]****。
+若要刪除憑證，請按一下內容功能表的  。
 
 ![刪除 CA 憑證](media/api-management-howto-ca-certificates/04.png)  
 

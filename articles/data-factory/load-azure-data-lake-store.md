@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/17/2018
-ms.openlocfilehash: 1b1b19814709451bdbbea97462c459149484e71f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a111a1a44b508d721f16a038d0919334383d2c5
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81415854"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124997"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料載入 Azure Data Lake Storage Gen1
 
@@ -28,10 +28,10 @@ Azure Data Factory 是完全受控的雲端式資料整合服務。 您可以使
 
 Azure Data Factory 可針對將資料載入到 Data Lake Storage Gen1 的作業提供下列優勢：
 
-* **容易設定**：直覺式的 5 步驟精靈，無須任何指令碼。
-* **支援豐富的資料存放區**：內建各種內部部署和雲端式資料存放區的支援。 如需詳細清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)的資料表。
-* **安全且符合規範**：資料會透過 HTTPS 或 ExpressRoute 傳輸。 具有全域服務，可確保資料絕不會離開地理界限。
-* **高效能**：將資料載入到 Data Lake Storage Gen1 的速度高達 1 GB/s。 如需詳細資料，請參閱[複製活動效能](copy-activity-performance.md)。
+* **容易設定** ：直覺式的 5 步驟精靈，無須任何指令碼。
+* **支援豐富的資料存放區** ：內建各種內部部署和雲端式資料存放區的支援。 如需詳細清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)的資料表。
+* **安全且符合規範** ：資料會透過 HTTPS 或 ExpressRoute 傳輸。 具有全域服務，可確保資料絕不會離開地理界限。
+* **高效能** ：將資料載入到 Data Lake Storage Gen1 的速度高達 1 GB/s。 如需詳細資料，請參閱[複製活動效能](copy-activity-performance.md)。
 
 此文章將示範如何使用 Data Factory 資料複製工具，將資料從 Amazon S3 載入到 Data Lake Storage Gen1。 您可以依照類似的步驟，從其他類型的資料存放區複製資料。
 
@@ -54,11 +54,11 @@ Azure Data Factory 可針對將資料載入到 Data Lake Storage Gen1 的作業�
       
    ![新增資料處理站頁面](./media/load-data-into-azure-data-lake-store//new-azure-data-factory.png)
  
-    * **Name**：輸入 Azure 資料處理站的全域唯一名稱。 如果您收到「Data Factory 名稱 \"LoadADLSG1Demo\" 無法使用」的錯誤，請為該資料處理站輸入其他名稱。 例如，您可以使用_**您的名稱**_**ADFTutorialDataFactory**。 請嘗試再次建立資料處理站。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
+    * **Name** ：輸入 Azure 資料處理站的全域唯一名稱。 如果您收到「Data Factory 名稱 \"LoadADLSG1Demo\" 無法使用」的錯誤，請為該資料處理站輸入其他名稱。 例如，您可以使用 _**您的名稱**_**ADFTutorialDataFactory** 。 請嘗試再次建立資料處理站。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
     * 訂用帳戶：選取用來在其中建立資料處理站的 Azure 訂用帳戶。 
-    * **資源群組**：從下拉式清單中選取現有的資源群組，或選取 [新建] 選項，然後輸入資源群組的名稱。 若要了解資源群組，請參閱 [使用資源群組管理您的 Azure 資源](../azure-resource-manager/management/overview.md)。  
-    * **版本**：選取 [V2]。
-    * **位置**：選取資料處理站的位置。 只有受到支援的位置會顯示在下拉式清單中。 資料處理站所使用的資料存放區可位於其他位置和區域。 這些資料存放區包含 Azure Data Lake Storage Gen1、Azure 儲存體、Azure SQL Database 等等。
+    * **資源群組** ：從下拉式清單中選取現有的資源群組，或選取 [新建] 選項，然後輸入資源群組的名稱。 若要了解資源群組，請參閱 [使用資源群組管理您的 Azure 資源](../azure-resource-manager/management/overview.md)。  
+    * **版本** ：選取 [V2]。
+    * **位置** ：選取資料處理站的位置。 只有受到支援的位置會顯示在下拉式清單中。 資料處理站所使用的資料存放區可位於其他位置和區域。 這些資料存放區包含 Azure Data Lake Storage Gen1、Azure 儲存體、Azure SQL Database 等等。
 
 3. 選取 [建立]。
 4. 建立完成後，請移至資料處理站。 您會看到如下圖所示的 [Data Factory] 首頁： 
@@ -88,11 +88,11 @@ Azure Data Factory 可針對將資料載入到 Data Lake Storage Gen1 的作業�
    2. 指定 [祕密存取金鑰] 值。
    3. 選取 [完成]。
    
-      ![指定 Amazon S3 帳戶](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
+      ![螢幕擷取畫面顯示 [新增連結服務] 窗格，您可以在其中輸入值。](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
    4. 您會看到新的連線。 選取 [下一步] 。
    
-   ![指定 Amazon S3 帳戶](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
+   ![螢幕擷取畫面會顯示您的新連接。](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
    
 5. 在 [選擇輸入檔案或資料夾] 頁面中，瀏覽至您要複製過去的資料夾和檔案。 選取資料夾/檔案，選取 [選擇]，然後選取 [下一步]：
 
@@ -100,7 +100,7 @@ Azure Data Factory 可針對將資料載入到 Data Lake Storage Gen1 的作業�
 
 6. 選取 [以遞迴方式複製檔案] 和 [二進位複製] (依原樣複製檔案) 選項來選擇複製行為。 選取 [下一步]：
 
-    ![指定輸出資料夾](./media/load-data-into-azure-data-lake-store/specify-binary-copy.png)
+    ![螢幕擷取畫面顯示選擇輸入檔案或資料夾，您可以在其中選取以遞迴方式複製檔案和二進位複製。](./media/load-data-into-azure-data-lake-store/specify-binary-copy.png)
     
 7. 在 [目的地資料存放區] 頁面中，按一下 [+ 建立新連線]，然後選取 [Azure Data Lake Storage Gen1]，並選取 [繼續]：
 
@@ -108,7 +108,7 @@ Azure Data Factory 可針對將資料載入到 Data Lake Storage Gen1 的作業�
 
 8. 在 [新增連結的服務 (Azure Data Lake Storage Gen1)] 頁面中，執行下列步驟： 
 
-   1. 選取您的 Data Lake Storage Gen1 帳戶作為 **Data Lake Store 帳戶名稱**。
+   1. 選取您的 Data Lake Storage Gen1 帳戶作為 **Data Lake Store 帳戶名稱** 。
    2. 指定 [租用戶]，然後選取 [完成]。
    3. 選取 [下一步] 。
    
@@ -118,7 +118,7 @@ Azure Data Factory 可針對將資料載入到 Data Lake Storage Gen1 的作業�
    ![指定 Data Lake Storage Gen1 帳戶](./media/load-data-into-azure-data-lake-store/specify-adls.png)
 9. 在 [選擇輸出檔案或資料夾] 頁面中，輸入 [copyfroms3] 作為輸出資料夾名稱，然後選取 [下一步]： 
 
-    ![指定輸出資料夾](./media/load-data-into-azure-data-lake-store/specify-adls-path.png)
+    ![螢幕擷取畫面：顯示您輸入的資料夾路徑。](./media/load-data-into-azure-data-lake-store/specify-adls-path.png)
 
 10. 在 [設定] 頁面中，選取 [下一步]：
 
@@ -126,7 +126,7 @@ Azure Data Factory 可針對將資料載入到 Data Lake Storage Gen1 的作業�
 11. 在 [摘要] 頁面中檢閱設定，然後選取 [下一步]：
 
     ![摘要頁面](./media/load-data-into-azure-data-lake-store/copy-summary.png)
-12. 在**部署頁面**上選取 [監視] 來監視管線 (工作)：
+12. 在 **部署頁面** 上選取 [監視] 來監視管線 (工作)：
 
     ![部署頁面](./media/load-data-into-azure-data-lake-store/deployment-page.png)
 13. 請注意，系統會自動選取左側的 [監視] 索引標籤。 [動作] 資料行中會有連結可供檢視活動執行詳細資料，以及重新執行管線：

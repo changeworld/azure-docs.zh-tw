@@ -7,19 +7,19 @@ ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 67bcd6fbf04cb92deaae034d289990dfec309fe6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c2eb4225cb014b3251d12470e4e9827150a5cf2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91280006"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123348"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>在 Azure 串流分析中剖析 JSON 和 Avro 資料
 
 Azure 串流分析支援處理資料格式為 CSV、JSON 和 Avro 的事件。 JSON 和 Avro 資料都可以結構化並包含某些複雜類型，例如巢狀物件 (資料列) 和陣列。 
 
 >[!NOTE]
->由事件中樞擷取所建立的 AVRO 檔案是使用特定的格式，其會要求您使用「自訂還原序列化程式」功能。 如需詳細資訊，請參閱[使用 .NET 自訂還原序列化程式來讀取任何格式的輸入](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples) \(部分機器翻譯\)。
+>由事件中樞擷取所建立的 AVRO 檔案是使用特定的格式，其會要求您使用「自訂還原序列化程式」功能。 如需詳細資訊，請參閱[使用 .NET 自訂還原序列化程式來讀取任何格式的輸入](./custom-deserializer-examples.md) \(部分機器翻譯\)。
 >
 >串流分析 AVRO 還原序列化並不支援對應類型。 串流分析無法讀取事件中樞擷取 Blob，因為事件中樞擷取會使用對應。
 
@@ -89,9 +89,9 @@ FROM input
 
 ### <a name="access-nested-fields-when-property-name-is-a-variable"></a>在屬性名稱為變數時存取巢狀欄位
 
-如果屬性名稱為變數，請使用 [GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics) \(英文\) 函式。 這可讓您在無需對屬性名稱進行硬式編碼的情況下建置動態查詢。
+如果屬性名稱為變數，請使用 [GetRecordPropertyValue](/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics) \(英文\) 函式。 這可讓您在無需對屬性名稱進行硬式編碼的情況下建置動態查詢。
 
-例如，假設範例資料流需要與包含每個裝置感應器閾值的**參考資料聯結**。 下列顯示這類參考資料的程式碼片段。
+例如，假設範例資料流需要與包含每個裝置感應器閾值的 **參考資料聯結** 。 下列顯示這類參考資料的程式碼片段。
 
 ```json
 {
@@ -131,7 +131,7 @@ WHERE
 
 ### <a name="convert-record-fields-into-separate-events"></a>將記錄欄位轉換為個別事件
 
-若要將資料列欄位轉換成個別的事件，請搭配使用 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 運算子和 [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) 函式。
+若要將資料列欄位轉換成個別的事件，請搭配使用 [APPLY](/stream-analytics-query/apply-azure-stream-analytics) 運算子和 [GetRecordProperties](/stream-analytics-query/getrecordproperties-azure-stream-analytics) 函式。
 
 使用原始範例資料時，下列查詢可用來將屬性擷取為不同的事件。
 
@@ -154,7 +154,7 @@ CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
 |12345|CustomSensor02|99|
 |12345|SensorMetadata|[object Object]|
 
-透過使用 [WITH](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) \(英文\)，便可以將那些事件路由到不同的目的地：
+透過使用 [WITH](/stream-analytics-query/with-azure-stream-analytics) \(英文\)，便可以將那些事件路由到不同的目的地：
 
 ```SQL
 WITH Stage0 AS
@@ -205,7 +205,7 @@ return JSON.parse(string);
 
 ## <a name="array-data-types"></a>陣列資料類型
 
-陣列資料類型是已排序的值集合。 以下詳述陣列值的一些典型作業。 這些範例使用函式 [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics)、[GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics)、[GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics)，以及 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 運算子。
+陣列資料類型是已排序的值集合。 以下詳述陣列值的一些典型作業。 這些範例使用函式 [GetArrayElement](/stream-analytics-query/getarrayelement-azure-stream-analytics)、[GetArrayElements](/stream-analytics-query/getarrayelements-azure-stream-analytics)、[GetArrayLength](/stream-analytics-query/getarraylength-azure-stream-analytics)，以及 [APPLY](/stream-analytics-query/apply-azure-stream-analytics) 運算子。
 
 以下是單一事件的範例。 `CustomSensor03` 和 `SensorMetadata` 都是 **array** 類型：
 
@@ -265,7 +265,7 @@ FROM input
 
 ### <a name="convert-array-elements-into-separate-events"></a>將陣列元素轉換為個別事件
 
-以個別事件選取所有陣列元素。 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 運算子和 [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) 內建函式一起擷取所有陣列元素且視為個別事件：
+以個別事件選取所有陣列元素。 [APPLY](/stream-analytics-query/apply-azure-stream-analytics) 運算子和 [GetArrayElements](/stream-analytics-query/getarrayelements-azure-stream-analytics) 內建函式一起擷取所有陣列元素且視為個別事件：
 
 ```SQL
 SELECT
@@ -301,7 +301,7 @@ CROSS APPLY GetArrayElements(SensorMetadata) AS SensorMetadataRecords
 |12345|製造商|ABC|
 |12345|版本|1.2.45|
 
-如果擷取的欄位必須出現在資料行中，您可以搭配 [JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) \(英文\) 作業使用 [WITH](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) \(英文\) 語法來對資料集進行樞紐分析。 該聯結將會需要能避免重複的[時間界限](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff) \(英文\) 條件：
+如果擷取的欄位必須出現在資料行中，您可以搭配 [JOIN](/stream-analytics-query/join-azure-stream-analytics) \(英文\) 作業使用 [WITH](/stream-analytics-query/with-azure-stream-analytics) \(英文\) 語法來對資料集進行樞紐分析。 該聯結將會需要能避免重複的[時間界限](/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff) \(英文\) 條件：
 
 ```SQL
 WITH DynamicCTE AS (
@@ -330,4 +330,4 @@ LEFT JOIN DynamicCTE M ON M.smKey = 'Manufacturer' and M.DeviceId = i.DeviceId A
 |12345|47|122|1.2.45|ABC|
 
 ## <a name="see-also"></a>另請參閱
-[Azure 串流分析中的資料類型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics) \(英文\)
+[Azure 串流分析中的資料類型](/stream-analytics-query/data-types-azure-stream-analytics) \(英文\)

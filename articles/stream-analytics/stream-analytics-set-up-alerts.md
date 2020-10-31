@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 06/21/2019
-ms.openlocfilehash: 35fb02717f706f026862790b7d618036d764c7a8
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 6353fe988b9b94c27ab777741bf63d3869579d9e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92914005"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124436"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>設定 Azure 串流分析工作的警示
 
@@ -65,8 +65,7 @@ ms.locfileid: "92914005"
 |浮水印延遲|大於|最大值|當此計量在過去 15 分鐘的平均值大於延遲傳入容許 (以秒為單位)。 如果您尚未修改延遲傳入容錯，則預設值會設為 5 秒。|請嘗試增加 SU 數目，或將您的查詢平行化。 如需 SU 詳細資訊，請參閱[了解及調整串流單位](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job)。 如需查詢平行化的詳細資訊，請參閱[利用 Azure 串流分析中的查詢平行化作業](stream-analytics-parallelization.md)。|
 |輸入還原序列化錯誤|大於|總計|0|檢查活動或資源記錄，並且對輸入進行適當的變更。 如需資源記錄的詳細資訊，請參閱[使用資源記錄為 Azure 串流分析疑難排解](stream-analytics-job-diagnostic-logs.md)|
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-
+* [Azure Stream Analytics 查詢語言參考](/stream-analytics-query/stream-analytics-query-language-reference)

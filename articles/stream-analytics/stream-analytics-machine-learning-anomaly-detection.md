@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
-ms.openlocfilehash: 69824df1b84f6cdfafa08a662816281442ad44fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c57a3920dac3e18e248109fafdf61fdfa871c54d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044374"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123705"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure 串流分析中的異常偵測
 
@@ -42,7 +42,7 @@ Azure 串流分析 (在雲端和 Azure IoT Edge 中都可取得) 提供內建的
 
 ## <a name="spike-and-dip"></a>峰值和谷值
 
-時間序列事件資料流中的暫存異常狀況也稱為峰值和谷值。 您可以使用 Machine Learning 型運算子[AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+時間序列事件資料流中的暫存異常狀況也稱為峰值和谷值。 您可以使用 Machine Learning 型運算子[AnomalyDetection_SpikeAndDip](/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
 ) 來監視峰值和谷值。
 
 ![峰值和谷值異常的範例](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
@@ -74,7 +74,7 @@ FROM AnomalyDetectionStep
 
 ## <a name="change-point"></a>變更點
 
-時間序列事件資料流中的持續性異常狀況是事件資料流中值分佈的變更，如等級變更和趨勢。 在串流分析中，使用 Machine Learning 型 [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) 運算子偵測這類異常。
+時間序列事件資料流中的持續性異常狀況是事件資料流中值分佈的變更，如等級變更和趨勢。 在串流分析中，使用 Machine Learning 型 [AnomalyDetection_ChangePoint](/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) 運算子偵測這類異常。
 
 持續性變更會比峰值和谷值持續更久，並可能表示發生重大事件。 肉眼通常無法看見持續性變更，但可以使用 **AnomalyDetection_ChangePoint** 運算子進行偵測。
 
@@ -114,10 +114,10 @@ FROM AnomalyDetectionStep
 
 這些模型的效能取決於記錄大小、視窗持續時間、事件裝載，以及是否使用函數層級分割。 本節將討論這些設定，並提供如何維持每秒1千、中和1萬個事件的內嵌速率範例。
 
-* 歷程**記錄大小**-這些模型會以線性方式以**記錄大小**執行。 歷程記錄大小愈久，模型花在為新事件評分的時間越長。 這是因為模型會將新事件與歷程記錄緩衝區中的每個過去事件進行比較。
+* 歷程 **記錄大小** -這些模型會以線性方式以 **記錄大小** 執行。 歷程記錄大小愈久，模型花在為新事件評分的時間越長。 這是因為模型會將新事件與歷程記錄緩衝區中的每個過去事件進行比較。
 * **視窗持續期間** - **視窗持續時間** 應該反映接收記錄大小所指定的事件數目所需的時間。 在視窗中，如果沒有這麼多事件，Azure 串流分析會插補遺漏值。 因此，CPU 耗用量是記錄大小的功能。
-* **事件裝載** - **事件裝載**愈大，模型所執行的工作越多，就會影響 CPU 耗用量。 您可以藉由使其窘迫平行來相應放大作業，假設商務邏輯可使用更多輸入資料分割。
-* **函數層級資料分割**  - **函數層級資料分割**是藉由在 ```PARTITION BY``` 異常偵測函式呼叫中使用來完成。 這種類型的資料分割會增加額外負荷，因為必須同時維護多個模型的狀態。 在裝置層級分割之類的案例中，會使用函式層級資料分割。
+* **事件裝載** - **事件裝載** 愈大，模型所執行的工作越多，就會影響 CPU 耗用量。 您可以藉由使其窘迫平行來相應放大作業，假設商務邏輯可使用更多輸入資料分割。
+* **函數層級資料分割**  - **函數層級資料分割** 是藉由在 ```PARTITION BY``` 異常偵測函式呼叫中使用來完成。 這種類型的資料分割會增加額外負荷，因為必須同時維護多個模型的狀態。 在裝置層級分割之類的案例中，會使用函式層級資料分割。
 
 ### <a name="relationship"></a>關聯性
 記錄大小、視窗持續時間和事件裝載總計是以下列方式相關：
@@ -159,6 +159,5 @@ windowDuration (in ms) = 1000 * historySize/ (每秒輸入的事件總數/輸入
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
 * [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
+* [Azure Stream Analytics 查詢語言參考](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 串流分析管理 REST API 參考](/rest/api/streamanalytics/)

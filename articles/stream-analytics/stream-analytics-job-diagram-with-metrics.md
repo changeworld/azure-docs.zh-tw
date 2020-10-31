@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/01/2017
-ms.openlocfilehash: fdb3c5c12af8e9022f5babc84126badda890dce5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4ee868125ee30d40ef0d9ca5a42881ad003e9a8
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86044476"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123977"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>使用作業圖表進行資料導向偵錯
 
@@ -75,15 +75,15 @@ ms.locfileid: "86044476"
  
 ### <a name="are-we-falling-behind-in-reading-data"></a>讀取資料的速度太慢了嗎？
 
-*   **Input Events Backlogged (Total)** 會告訴您事件中樞及 Azure IoT 中樞輸入還需要讀取多少訊息數量。 當這個數目大於 0 時，表示您的作業無法以資料進來的速度處理資料。 此時，您可能需要增加串流單位數目，並/或確定您的工作可平行處理。 您可以在[查詢平行化作業頁面](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)參閱相關的詳細資訊。 
+*   **Input Events Backlogged (Total)** 會告訴您事件中樞及 Azure IoT 中樞輸入還需要讀取多少訊息數量。 當這個數目大於 0 時，表示您的作業無法以資料進來的速度處理資料。 此時，您可能需要增加串流單位數目，並/或確定您的工作可平行處理。 您可以在[查詢平行化作業頁面](./stream-analytics-parallelization.md)參閱相關的詳細資訊。 
 
 
 ## <a name="get-help"></a>取得說明
-如需其他協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。 
+如需其他協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](/answers/topics/azure-stream-analytics.html)。 
 
 ## <a name="next-steps"></a>後續步驟
 * [串流分析介紹](stream-analytics-introduction.md)
 * [開始使用串流分析](stream-analytics-real-time-fraud-detection.md)
 * [調整串流分析作業](stream-analytics-scale-jobs.md)
-* [串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [串流分析查詢語言參考](/stream-analytics-query/stream-analytics-query-language-reference)
+* [串流分析管理 REST API 參考](/rest/api/streamanalytics/)

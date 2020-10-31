@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 54b58a07e3d6d4b330b6f97ef0f4a7bdd10293da
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 01030a563c15eee7786058c2eae30d23803dfe42
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490453"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101641"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-cassandra-api"></a>在 Azure Cosmos DB Cassandra API 中建立容器
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 本文說明在 Azure Cosmos DB Cassandra API 中建立容器的不同方式。 它會顯示如何使用 Azure 入口網站、Azure CLI、PowerShell 或支援的 Sdk 來建立容器。 本文將示範如何建立容器、指定分割區索引鍵，以及佈建輸送量。
 
@@ -30,13 +31,13 @@ ms.locfileid: "92490453"
 
 1. [建立新的 Azure Cosmos 帳戶](create-cassandra-dotnet.md#create-a-database-account)，或選取現有的帳戶。
 
-1. 開啟 **資料總管** 窗格，然後選取 [ **新增資料表**]。 接下來，提供下列詳細資料：
+1. 開啟 **資料總管** 窗格，然後選取 [ **新增資料表** ]。 接下來，提供下列詳細資料：
 
    * 指出您正在建立新的 Keyspace，還是使用現有的 Keyspace。
    * 輸入資料表名稱。
    * 輸入屬性並指定主索引鍵。
    * 輸入要佈建的輸送量 (例如 1000 RU)。
-   * 選取 [確定]。
+   * 選取 [確定]  。
 
     :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="Cassandra API 中 [新增資料表] 對話方塊的螢幕擷取畫面":::
 

@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d18cf248aa94e23abfa6e2b9467bb1167a32a6f1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2bbdbc7a0ed71634522bd68dbf0807264a409525
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490521"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101692"
 ---
 # <a name="configure-access-to-azure-cosmos-db-from-virtual-networks-vnet"></a>設定從虛擬網路 (VNet) 存取 Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 您可以設定 Azure Cosmos 帳戶，以只允許從虛擬網路 (VNet) 的特定子網路存取。 藉由啟用[服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)，即可存取虛擬網路內子網路中的 Azure Cosmos DB，來自該子網路的流量會傳送至 Azure Cosmos DB，並具備子網路和虛擬網路的身分識別。 Azure Cosmos DB 服務端點啟用之後，可以將它新增至您的 Azure Cosmos 帳戶以限制對子網路的存取。
 
@@ -37,13 +38,13 @@ ms.locfileid: "92490521"
 
 ### <a name="configure-a-service-endpoint-for-an-existing-azure-virtual-network-and-subnet"></a>對現有的 Azure 虛擬網路和子網路設定服務端點
 
-1. 從 [所有資源]**** 刀鋒視窗中，尋找要保護的 Azure Cosmos DB 帳戶。
+1. 從 [所有資源]  刀鋒視窗中，尋找要保護的 Azure Cosmos DB 帳戶。
 
-1. 從設定功能表中選取 [防火牆與虛擬網路]****，並選擇允許從 [選取的網路]**** 進行存取。
+1. 從設定功能表中選取 [防火牆與虛擬網路]  ，並選擇允許從 [選取的網路]  進行存取。
 
-1. 若要將存取權授與現有虛擬網路的子網路，請在 [虛擬網路]**** 下選取 [新增現有 Azure 虛擬網路]****。
+1. 若要將存取權授與現有虛擬網路的子網路，請在 [虛擬網路]  下選取 [新增現有 Azure 虛擬網路]  。
 
-1. 選取您要從中新增 Azure 虛擬網路的**訂用帳戶**。 選取要提供 Azure Cosmos DB 帳戶存取權的 Azure **虛擬網路**和**子網路**。 接下來，選取 [啟用]**** 以啟用具有 "Microsoft.AzureCosmosDB" 服務端點的選定網路。 完成時，請選取 [ **新增**]。
+1. 選取您要從中新增 Azure 虛擬網路的 **訂用帳戶** 。 選取要提供 Azure Cosmos DB 帳戶存取權的 Azure **虛擬網路** 和 **子網路** 。 接下來，選取 [啟用]  以啟用具有 "Microsoft.AzureCosmosDB" 服務端點的選定網路。 完成時，請選取 [ **新增** ]。
 
    :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png" alt-text="選取虛擬網路和子網路":::
 
@@ -61,27 +62,27 @@ ms.locfileid: "92490521"
 
 ### <a name="configure-a-service-endpoint-for-a-new-azure-virtual-network-and-subnet"></a>對新的 Azure 虛擬網路和子網路設定服務端點
 
-1. 從 [所有資源]**** 刀鋒視窗中，尋找要保護的 Azure Cosmos DB 帳戶。  
+1. 從 [所有資源]  刀鋒視窗中，尋找要保護的 Azure Cosmos DB 帳戶。  
 
-1. 從設定功能表中選取 [防火牆與 Azure 虛擬網路]****，並選擇允許從 [選取的網路]**** 進行存取。  
+1. 從設定功能表中選取 [防火牆與 Azure 虛擬網路]  ，並選擇允許從 [選取的網路]  進行存取。  
 
-1. 若要授與新 Azure 虛擬網路的存取權，請在 [虛擬網路]**** 下選取 [新增虛擬網路]****。  
+1. 若要授與新 Azure 虛擬網路的存取權，請在 [虛擬網路]  下選取 [新增虛擬網路]  。  
 
-1. 提供建立新虛擬網路所需的詳細資料，然後選取 [建立]****。 這會建立已啟用 "Microsoft.AzureCosmosDB" 服務端點的子網路。
+1. 提供建立新虛擬網路所需的詳細資料，然後選取 [建立]  。 這會建立已啟用 "Microsoft.AzureCosmosDB" 服務端點的子網路。
 
    :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png" alt-text="選取虛擬網路和子網路":::
 
-如果您的 Azure Cosmos DB 帳戶會由其他 Azure 服務（例如 Azure 認知搜尋）使用，或從串流分析或 Power BI 存取，您可以選取 [ **接受來自全球 Azure 資料中心內的**連線]，以允許存取。
+如果您的 Azure Cosmos DB 帳戶會由其他 Azure 服務（例如 Azure 認知搜尋）使用，或從串流分析或 Power BI 存取，您可以選取 [ **接受來自全球 Azure 資料中心內的** 連線]，以允許存取。
 
-若要確保您可以從入口網站存取 Azure Cosmos DB 計量，您必須啟用 [允許從 Azure 入口網站存取]**** 選項。 若要深入了解這些選項，請參閱[設定 IP 防火牆](how-to-configure-firewall.md)一文。 啟用存取之後，請選取 [儲存]**** 以儲存設定。
+若要確保您可以從入口網站存取 Azure Cosmos DB 計量，您必須啟用 [允許從 Azure 入口網站存取]  選項。 若要深入了解這些選項，請參閱[設定 IP 防火牆](how-to-configure-firewall.md)一文。 啟用存取之後，請選取 [儲存]  以儲存設定。
 
 ## <a name="remove-a-virtual-network-or-subnet"></a><a id="remove-vnet-or-subnet"></a>移除現有虛擬網路或子網路
 
-1. 從 [所有資源]**** 刀鋒視窗中，尋找您要對其指派端點的 Azure Cosmos DB 帳戶。  
+1. 從 [所有資源]  刀鋒視窗中，尋找您要對其指派端點的 Azure Cosmos DB 帳戶。  
 
-1. 從設定功能表中選取 [防火牆與虛擬網路]****。  
+1. 從設定功能表中選取 [防火牆與虛擬網路]  。  
 
-1. 若要移除虛擬網路或子網路規則，請選取該虛擬網路或子網路旁的 […]****，然後選取 [移除]****。
+1. 若要移除虛擬網路或子網路規則，請選取該虛擬網路或子網路旁的 […]  ，然後選取 [移除]  。
 
    :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png" alt-text="選取虛擬網路和子網路":::
 

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3bfc03dd7a04bea7e69aa1b62cef267a81b650f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba216e41672e1d19e552b3f82a2ea65da7d3a435
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86037608"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124572"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>開始使用 Azure 串流分析：即時詐欺偵測
 
@@ -43,11 +43,11 @@ ms.locfileid: "86037608"
     >[!NOTE]
     >Windows 可能會封鎖下載的 .zip 檔案。 請無法解壓縮，請以滑鼠右鍵按一下檔案，然後選取 [內容]。 如果看到「這個檔案來自另一部電腦，可能會封鎖以協助保護您的電腦」訊息，請選取 [解除封鎖] 選項，並按一下 [套用]。
 
-如果想要檢查串流分析作業的結果，您也需要工具來檢視 Azure Blob 儲存體容器的內容。 如果您使用 Visual Studio，您可以使用 [Azure Tools for Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) 或 [Visual Studio Cloud Explorer](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer)。 或者，您可以安裝獨立工具，例如 [Azure 儲存體總管](https://storageexplorer.com/)或 [Cerulean](https://www.cerebrata.com/products/cerulean/features/azure-storage) \(英文\)。 
+如果想要檢查串流分析作業的結果，您也需要工具來檢視 Azure Blob 儲存體容器的內容。 如果您使用 Visual Studio，您可以使用 [Azure Tools for Visual Studio](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) 或 [Visual Studio Cloud Explorer](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer)。 或者，您可以安裝獨立工具，例如 [Azure 儲存體總管](https://storageexplorer.com/)或 [Cerulean](https://www.cerebrata.com/products/cerulean/features/azure-storage) \(英文\)。 
 
 ## <a name="create-an-azure-event-hubs-to-ingest-events"></a>建立 Azure 事件中樞來內嵌事件
 
-若要分析資料流，您需要將資料流「內嵌」到 Azure。 內嵌資料的一般做法是使用 [Azure 事件中樞](../event-hubs/event-hubs-what-is-event-hubs.md)，這可讓您每秒內嵌數百萬個事件，然後處理並儲存事件資訊。 在本教學課程中，您將建立事件中樞，然後由通話事件產生器應用程式將通話資料傳送至該事件中樞。
+若要分析資料流，您需要將資料流「內嵌」到 Azure。 內嵌資料的一般做法是使用 [Azure 事件中樞](../event-hubs/event-hubs-about.md)，這可讓您每秒內嵌數百萬個事件，然後處理並儲存事件資訊。 在本教學課程中，您將建立事件中樞，然後由通話事件產生器應用程式將通話資料傳送至該事件中樞。
 
 >[!NOTE]
 >如需此程序的詳細資訊，請參閱[使用 Azure 入口網站建立事件中樞命名空間和事件中樞](../event-hubs/event-hubs-create.md)。 
@@ -221,7 +221,7 @@ ms.locfileid: "86037608"
 
 您在此處建立的查詢只是在螢幕上顯示轉換後的資料。 在稍後一節中，您將設定輸出接收，並設定查詢將轉換後的資料寫入該接收。
 
-若要深入了解語言，請參閱 [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)。
+若要深入了解語言，請參閱 [Azure Stream Analytics 查詢語言參考](/stream-analytics-query/stream-analytics-query-language-reference)。
 
 ### <a name="get-sample-data-for-testing-queries"></a>取得範例資料來測試查詢
 
@@ -263,7 +263,7 @@ TelcoGenerator 應用程式正在將通話記錄傳送到事件中樞，而串�
 
     在此查詢中，`CallStream` 是您建立輸入時所指定的別名。 如果您使用不同的別名，請改為使用該名稱。
 
-2. 按一下 [ **測試**]。
+2. 按一下 [ **測試** ]。
 
     串流分析作業會查詢範例資料，然後在視窗底部顯示輸出。 結果指出事件中樞和串流分析作業都正確設定。 (如前所述，稍後您將建立輸出接收供查詢寫入資料)。
 
@@ -303,11 +303,11 @@ TelcoGenerator 應用程式正在將通話記錄傳送到事件中樞，而串�
     GROUP BY TUMBLINGWINDOW(s, 5), SwitchNum
     ```
 
-    此查詢在 `FROM` 子句中使用 `Timestamp By` 關鍵字，以指定使用輸入資料流中的哪個時間戳記欄位來定義輪轉視窗。 在此案例中，視窗會將每一筆記錄的資料依 `CallRecTime` 欄位分段。 (如果未指定欄位，則時間範圍作業會使用每個事件抵達事件中樞的時間。 請參閱[串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)中的＜抵達時間與應用時間的比較＞。 
+    此查詢在 `FROM` 子句中使用 `Timestamp By` 關鍵字，以指定使用輸入資料流中的哪個時間戳記欄位來定義輪轉視窗。 在此案例中，視窗會將每一筆記錄的資料依 `CallRecTime` 欄位分段。 (如果未指定欄位，則時間範圍作業會使用每個事件抵達事件中樞的時間。 請參閱[串流分析查詢語言參考](/stream-analytics-query/stream-analytics-query-language-reference)中的＜抵達時間與應用時間的比較＞。 
 
     投影包含 `System.Timestamp`，它會傳回每個視窗結尾的時間戳記。 
 
-    若要指定使用輪轉視窗，請在 `GROUP BY` 子句中使用 [TUMBLINGWINDOW](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) 函式。 在此函式中，您可以指定時間單位 (從一微秒到一天即可) 和視窗大小 (單位數量)。 在本範例中，輪轉視窗由 5 秒的間隔組成，所以會依國家/地區產生每 5 秒的來電計數。
+    若要指定使用輪轉視窗，請在 `GROUP BY` 子句中使用 [TUMBLINGWINDOW](/stream-analytics-query/tumbling-window-azure-stream-analytics) 函式。 在此函式中，您可以指定時間單位 (從一微秒到一天即可) 和視窗大小 (單位數量)。 在本範例中，輪轉視窗由 5 秒的間隔組成，所以會依國家/地區產生每 5 秒的來電計數。
 
 2. 再按一次 [測試]。 在結果中，可看見 **WindowEnd** 底下的時間戳記是以 5 秒為增量單位。
 
@@ -407,7 +407,7 @@ TelcoGenerator 應用程式正在將通話記錄傳送到事件中樞，而串�
 
 ## <a name="clean-up-resources"></a>清除資源
 
-我們還有其他文章繼續探討詐騙偵測案例，而且會使用您在本教學課程中所建立的資源。 如果您想要繼續，請參閱在**後續步驟**下方的建議。
+我們還有其他文章繼續探討詐騙偵測案例，而且會使用您在本教學課程中所建立的資源。 如果您想要繼續，請參閱在 **後續步驟** 下方的建議。
 
 不過，如果您已完成，也不需要您已建立的資源，則可以刪除它們，以免產生不必要的 Azure 費用。 在此情況下，建議您採取下列動作：
 
@@ -420,7 +420,7 @@ TelcoGenerator 應用程式正在將通話記錄傳送到事件中樞，而串�
 
 ## <a name="get-support"></a>取得支援
 
-如需進一步的協助，請嘗試 [Microsoft 問與答的 Azure 串流分析問題頁面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
+如需進一步的協助，請嘗試 [Microsoft 問與答的 Azure 串流分析問題頁面](/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -432,5 +432,5 @@ TelcoGenerator 應用程式正在將通話記錄傳送到事件中樞，而串�
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics 查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure Stream Analytics 查詢語言參考](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 串流分析管理 REST API 參考](/rest/api/streamanalytics/)

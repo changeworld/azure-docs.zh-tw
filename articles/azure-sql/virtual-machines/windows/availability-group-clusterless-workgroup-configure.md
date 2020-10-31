@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 6bfea42c6fca3369485ccf7a47158f7420df9c9c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 5714a2fd79d01f4cbc445c1ec1a726209ab6d427
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790027"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124929"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>設定工作群組可用性群組 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -62,11 +62,11 @@ ms.locfileid: "92790027"
 1. 選取 [其他] 以開啟 [DNS 尾碼和 NetBIOS 電腦名稱] 對話方塊。 
 1. 在 [這部電腦的主要 DNS 尾碼] 下輸入 DNS 尾碼的名稱 (例如 `ag.wgcluster.example.com`)，然後選取 [確定]： 
 
-   ![新增 DNS 尾碼](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
+   ![螢幕擷取畫面顯示 [D N S 尾碼和 NetBIOS 電腦名稱稱] 對話方塊，您可以在其中輸入值。](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
 
 1. 確認 [完整電腦名稱] 現在已顯示 DNS 尾碼，然後選取 [確定] 以儲存變更： 
 
-   ![新增 DNS 尾碼](./media/availability-group-clusterless-workgroup-configure/3-confirm-full-computer-name.png)
+   ![螢幕擷取畫面：顯示要在哪裡查看完整的電腦名稱稱。](./media/availability-group-clusterless-workgroup-configure/3-confirm-full-computer-name.png)
 
 1. 請在系統提示時，將伺服器重新開機。 
 1. 在要用於可用性群組的任何其他節點上重複這些步驟。 

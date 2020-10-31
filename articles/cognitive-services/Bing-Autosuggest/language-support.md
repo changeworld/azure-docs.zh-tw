@@ -10,14 +10,19 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 6fe2e78501024983544b399762fb936d86e5c9d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6971dafc7e3157b3de62284b400ebdc6ddc19c0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60547331"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101896"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Bing 自動建議 API 支援的語言和區域
+
+> [!WARNING]
+> Bing 搜尋 Api 會從認知服務移至 Bing 搜尋服務。 從 **2020 年10月 30** 日開始，任何新的 Bing 搜尋實例都必須依照 [此處](https://aka.ms/cogsvcs/bingmove)所述的程式進行布建。
+> 接下來的三年或 Enterprise 合約結束之前，將支援使用認知服務布建的 Bing 搜尋 Api （以先發生者為准）。
+> 如需遷移指示，請參閱 [Bing 搜尋服務](https://aka.ms/cogsvcs/bingmigration)。
 
 以下列出 Bing 自動建議 API 支援的語言。
 
@@ -64,7 +69,7 @@ ms.locfileid: "60547331"
 | 瑞典文     | `sv`          |
 | 土耳其文     | `tr`          |
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [Azure 認知服務文件頁面](https://docs.microsoft.com/azure/cognitive-services/)
 - [Azure 認知服務產品頁面](https://azure.microsoft.com/services/cognitive-services/)

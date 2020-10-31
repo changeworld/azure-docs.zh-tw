@@ -7,14 +7,15 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: vitrinh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ff66c2cb355e2070cdf30444c52d1accacac8964
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ece181d06c7d3dbd00ba2f1262a3887ad966d088
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490436"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101658"
 ---
 # <a name="convert-session-token-formats-in-net-sdk"></a>在 .NET SDK 中轉換會話權杖格式
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 本文說明如何在不同的會話權杖格式之間進行轉換，以確保 SDK 版本之間的相容性。
 
@@ -26,7 +27,7 @@ ms.locfileid: "92490436"
 
 ## <a name="session-token-formats"></a>會話權杖格式
 
-有兩種會話權杖格式： **simple** 和 **vector**。  這兩種格式不是可互換的，因此在傳遞至具有不同版本的用戶端應用程式時，應該轉換格式。
+有兩種會話權杖格式： **simple** 和 **vector** 。  這兩種格式不是可互換的，因此在傳遞至具有不同版本的用戶端應用程式時，應該轉換格式。
 - .NET SDK V1 ( # B0 umentDB-1.x 版) 使用 **簡單** 會話權杖格式
 - .NET SDK V2 ( # B0 umentDB-2.x 版) 使用 **向量** 會話權杖格式
 

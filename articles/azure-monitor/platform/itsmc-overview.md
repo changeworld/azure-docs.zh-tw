@@ -1,25 +1,26 @@
 ---
-title: Azure Log Analytics 中的 IT 服務管理連接器 | Microsoft Docs
-description: 本文提供 IT Service Management Connector (ITSMC) 的概觀，以及說明如何使用此解決方案，在 Azure Log Analytics 集中監視及管理 ITSM 工作項目，並快速解決所有問題。
+title: Log Analytics 中的 IT 服務管理連接器
+description: 本文提供 IT 服務管理連接器 (ITSMC) 的總覽，以及如何使用它來監視和管理 Log Analytics 中的 ITSM 工作專案並快速解決問題的相關資訊。
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 1da7221b511cb07e5000f09e4015fc8bd4a0a928
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.custom: references_regions
+ms.openlocfilehash: ecafc0c81a6614a914d8cad3d2c35fd04544b8f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043306"
+ms.locfileid: "93102015"
 ---
-# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>使用 IT Service Management Connector 將 Azure 連線到 ITSM 工具
+# <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>使用 IT 服務管理連接器將 Azure 連接至 ITSM 工具
 
-![IT 服務管理連接器符號](media/itsmc-overview/itsmc-symbol.png)
+:::image type="icon" source="media/itsmc-overview/itsmc-symbol.png":::
 
-IT Service Management Connector (ITSMC) 可讓您連線 Azure 和支援的 IT 服務管理 (ITSM) 產品/服務。
+IT 服務管理連接器 (ITSMC) 可讓您將 Azure 連線到支援的 IT 服務管理 (ITSM) 產品或服務。
 
-諸如 Log Analytics 和 Azure 監視器等 Azure 服務會提供工具，來偵測及分析您的 Azure 與非 Azure 資源問題並進行疑難排解。 不過，與問題相關的工作項目通常位於 ITSM 產品/服務中。 ITSM Connector 提供 Azure 與 ITSM 工具之間的雙向連線，以協助您更快速地解決問題。
+Azure 服務（例如 Azure Log Analytics 和 Azure 監視器）提供工具來偵測、分析和疑難排解 Azure 和非 Azure 資源的問題。 但是與問題相關的工作專案通常位於 ITSM 產品或服務中。 ITSMC 會提供 Azure 與 ITSM 工具之間的雙向連線，以協助您更快速地解決問題。
 
 ITSMC 支援與下列 ITSM 工具連線：
 
@@ -30,164 +31,164 @@ ITSMC 支援與下列 ITSM 工具連線：
 
 使用 ITSMC，您可以：
 
--  根據您的 Azure 警示 (計量警示、活動記錄警示和 Log Analytics 警示)，在 ITSM 工具中建立工作項目。
+-  根據您的 Azure 警示 (計量警示、活動記錄警示及 Log Analytics 警示) ，在您的 ITSM 工具中建立工作專案。
 -  您可以選擇將事件和變更要求資料從您的 ITSM 工具同步處理到 Azure Log Analytics 工作區。
 
-深入了解[法律條款及隱私權原則](https://go.microsoft.com/fwLink/?LinkID=522330&clcid=0x9)。
+如需法律條款和隱私權原則的詳細資訊，請參閱 [Microsoft 隱私權聲明](https://go.microsoft.com/fwLink/?LinkID=522330&clcid=0x9)。
 
-您可以使用下列步驟，開始使用 ITSM Connector：
+您可以藉由完成下列步驟來開始使用 ITSMC：
 
-1.  [新增 ITSM Connector 解決方案](#adding-the-it-service-management-connector-solution)
-2.  建立 ITSM 連線
-3.  [使用連線](#using-the-solution)
+1.  [新增 ITSMC。](#add-it-service-management-connector)
+2.  [建立 ITSM 連接。](#create-an-itsm-connection)
+3.  [使用連接。](#use-itsmc)
 
 
-##  <a name="adding-the-it-service-management-connector-solution"></a>新增 IT 服務管理連接器解決方案
+##  <a name="add-it-service-management-connector"></a>新增 IT 服務管理連接器
 
-您需要先新增 ITSM Connector 解決方案，才能建立連線。
+您必須先新增 ITSMC，才能建立連接。
 
-1. 在 Azure 入口網站中，按一下 [+新增] 圖示。
+1. 在 [Azure 入口網站中，選取 [ **建立資源** ：
 
-   ![Azure 新增資源](media/itsmc-overview/azure-add-new-resource.png)
+   ![顯示 [建立資源] 功能表項目的螢幕擷取畫面。](media/itsmc-overview/azure-add-new-resource.png)
 
-2. 在 Marketplace 中搜尋 **IT Service Management Connector** ，然後按一下 [建立]。
+2. 搜尋 Azure Marketplace 中的 **IT 服務管理連接器** 。 選取 [ **建立** ]：
 
-   ![新增 ITSMC 解決方案](media/itsmc-overview/add-itsmc-solution.png)
+   ![顯示 Azure Marketplace 中 [建立] 按鈕的螢幕擷取畫面。](media/itsmc-overview/add-itsmc-solution.png)
 
-3. 在 [OMS 工作區] 區段中，選取您要安裝解決方案的 Azure Log Analytics 工作區。
+3. 在 [ **OMS 工作區** ] 區段中，選取您要安裝 ITSMC 的 Azure Log Analytics 工作區。
    >[!NOTE]
-   > * 因屬於 Microsoft Operations Management Suite (OMS) 轉換為 Azure 監視器的一環，OMS 工作區現在稱為 Log Analytics 工作區。
-   > * ITSM 連接器只能安裝在下欄區域的 Log Analytics 工作區：美國東部、西歐美國2、美國中南部、美國中西部、US Gov 亞利桑那州、US Gov 維吉尼亞州、加拿大中部、西歐、英國、東南亞、日本東部、印度中部、東南亞。
+   > * 在從 Microsoft Operations Management Suite (OMS) 到 Azure 監視器的持續轉換過程中，OMS 工作區現在稱為 *Log Analytics 工作區* 。
+   > * ITSMC 只能安裝在下欄區域的 Log Analytics 工作區中：美國東部、美國西部2、美國中南部、美國中西部、US Gov 亞利桑那州、US Gov 維吉尼亞州、加拿大中部、西歐、英國、東南亞、日本東部、印度中部和澳大利亞東南部。
 
-4. 在 [OMS 工作區設定] 區段中，選取您要建立解決方案資源的資源群組。
 
-   ![ITSMC 工作區](media/itsmc-overview/itsmc-solution-workspace.png)
+4. 在 [ **Log Analytics 工作區** ] 區段中，選取您要在其中建立 ITSMC 資源的資源群組：
+
+   ![顯示 Log Analytics 工作區區段的螢幕擷取畫面。](media/itsmc-overview/itsmc-solution-workspace.png)
    >[!NOTE]
-   >因屬於 Microsoft Operations Management Suite (OMS) 轉換為 Azure 監視器的一環，OMS 工作區現在稱為 Log Analytics 工作區。
+   >在從 Microsoft Operations Management Suite (OMS) 到 Azure 監視器的持續轉換過程中，OMS 工作區現在稱為 *Log Analytics 工作區* 。
 
-5. 按一下 [確定]。
+5. 選取 [確定]  。
 
-部署解決方案資源時，通知會出現在視窗右上方。
+部署 ITSMC 資源時，視窗右上角會出現通知。
 
 
-## <a name="creating-an-itsm--connection"></a>建立 ITSM 連線
+## <a name="create-an-itsm-connection"></a>建立 ITSM 連線
 
-一旦您安裝解決方案之後，就可以建立連線。
+安裝 ITSMC 之後，您可以建立連接。
 
-若要建立連線，您將需要準備 ITSM 工具，以允許來自 ITSM Connector 解決方案的連線。  
+若要建立連線，您必須準備 ITSM 工具以允許來自 ITSMC 的連接。  
 
-根據您所連線的 ITSM 產品，使用下列步驟：
+根據您要連線的 ITSM 產品，選取下列其中一個連結以取得指示：
 
-- [System Center Service Manager (SCSM)](./itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
+- [System Center Service Manager](./itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
 - [ServiceNow](./itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
 - [Provance](./itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
 - [Cherwell](./itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
 
-一旦您備妥 ITSM 工具之後，請遵循下列步驟來建立連線：
+備妥您的 ITSM 工具之後，請完成下列步驟來建立連接：
 
-1. 移至 [所有資源]、尋找 **ServiceDesk(YourWorkspaceName)** 。
-2. 在左窗格的 [工作區資料來源] 下方，按一下 [ITSM 連線]。
-   ![ITSM 連線](media/itsmc-overview/itsm-connections.png)
+1. 在 [ **所有資源** ] 中，尋找 **>servicedesk ( *您的工作區名稱* )** ：
 
+   ![顯示 Azure 入口網站中最近資源的螢幕擷取畫面。](media/itsmc-overview/itsm-connections.png)
+
+1. 在左窗格的 [ **工作區資料來源** ] 底下，選取 [ **ITSM 連接** ：
+
+   ![顯示 [ITSM 連接] 功能表項目的螢幕擷取畫面。](media/itsmc-overview/add-new-itsm-connection.png)
    此頁面會顯示連線的清單。
-3. 按一下 [ **加入連接** ]。
+1. 選取 [ **新增連接** ]。
 
-   ![新增 ITSM 連線](media/itsmc-overview/add-new-itsm-connection.png)
-
-4. 指定連線設定，如[設定與 ITSM 產品/服務的 ITSMC 連線](./itsmc-connections.md)中所述。
+4. [依照設定與 ITSM 產品/服務的 ITSMC](./itsmc-connections.md)連線中所述，指定連線設定。
 
    > [!NOTE]
    >
-   > 根據預設，ITSMC 每隔 24 小時就會將連線的設定資料重新整理一次。 若要針對所做的任何編輯或範本更新將連線的資料立即重新整理，按一下連線刀鋒視窗上的 [同步] 按鈕。
+   > 依預設，ITSMC 會每隔24小時重新整理一次連線的設定資料。 若要立即重新整理連線的資料以反映您所做的任何編輯或範本更新，請在連線的分頁上選取 [ **同步** 處理] 按鈕：
+   >
+   > ![顯示連接分頁上 [同步處理] 按鈕的螢幕擷取畫面。](media/itsmc-overview/itsmc-connections-refresh.png)
 
-   ![連線重新整理](media/itsmc-overview/itsmc-connections-refresh.png)
 
-
-## <a name="using-the-solution"></a>使用解決方案
-   藉由使用 ITSM Connector 解決方案，您可以從 Azure 警示、Log Analytics 警示及 Log Analytics 記錄檔記錄中建立工作項目。
+## <a name="use-itsmc"></a>使用 ITSMC
+   您可以使用 ITSMC 從 Azure 警示、Log Analytics 警示和 Log Analytics 記錄檔記錄中建立工作專案。
 
 ## <a name="template-definitions"></a>範本定義
-   有一些工作專案類型可以使用 ITSM 工具所定義的範本。
-使用範本可讓客戶定義欄位，這些欄位會根據定義為動作群組一部分的固定值來自動填入欄位。 範本的定義是在 ITSM 工具中完成。
+   有工作專案類型可以使用 ITSM 工具所定義的範本。
+藉由使用範本，您可以定義欄位，這些欄位會根據定義為動作群組一部分的固定值來自動填入。 您可以在 ITSM 工具中定義範本。
       
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>從 Azure 警示建立 ITSM 工作項目
 
-一旦建立 ITSM 連線之後，就可使用 [動作群組] 中的 [ITSM 動作]，根據 Azure 警示，在您的 ITSM 工具中建立工作項目。
+建立 ITSM 連線之後，您可以在 ITSM 工具中根據 Azure 警示建立工作專案。 若要建立工作專案，您將使用動作群組中的 ITSM 動作。
 
-動作群組提供以模組化且可重複使用的方式來針對 Azure 警示觸發動作。 您可以在 Azure 入口網站中，搭配計量警示、活動記錄警示及 Azure Log Analytics 警示使用動作群組。
+動作群組提供模組化且可重複使用的方式來觸發 Azure 警示的動作。 您可以在 Azure 入口網站中使用具有計量警示、活動記錄警示和 Azure Log Analytics 警示的動作群組。
 
 > [!NOTE]
-> 一旦建立 ITSM 連線，就必須在建立連接器之後等候30分鐘之後，才會完成同步處理常式
+> 建立 ITSM 連線之後，您需要等候30分鐘，同步處理常式才會完成。
 > 
 
-請使用下列程序：
+使用下列程式建立工作專案：
 
-1. 在 Azure 入口網站中，按一下 [  **警示** ]。
-2. 在上方窗格中，按一下 [  **管理動作** ]。 [新增動作群組] 視窗隨即出現。
+1. 在 [Azure 入口網站中，選取 [  **警示** ]。
+2. 在畫面頂端的功能表中，選取 [ **管理動作** ：
 
-    [![動作群組](media/itsmc-overview/action-groups-selection.png)](media/itsmc-overview/action-groups-selection-big.png)
+    ![顯示 [管理動作] 功能表項目的螢幕擷取畫面。](media/itsmc-overview/action-groups-selection-big.png)
 
-3. 選取您要在其中建立動作群組的 **訂** 用帳戶和 **資源群組** 。 提供動作群組的 **動作組名** 和 **顯示名稱** 。 按一下 **[下一步：通知]** 。
+   [ **建立動作群組** ] 視窗隨即出現。
 
-    ![動作群組詳細資料](media/itsmc-overview/action-groups-details.png)
+3. 選取您要在其中建立動作群組的 **訂** 用帳戶和 **資源群組** 。 提供動作群組的 **動作組名** 和 **顯示名稱** 。 選取 **[下一步：通知]** 。
 
-4. 在通知清單中，按一下 [ **嵌套：動作** ]。
-5. 在 [動作] 清單中，從 [動作類型] 的下拉式功能表選取 [ITSM]。 提供動作的 **名稱** ，然後按一下代表 **編輯詳細資料** 的畫筆。
-6. 選取 Log Analytics 工作區所在位置的 [訂用帳戶]。 選取 **連線** 名稱 (您的 ITSM 連接器名稱)，後面接著您的工作區名稱。 例如，"MyITSMMConnector(MyWorkspace)"。
+    ![顯示 [建立動作群組] 視窗的螢幕擷取畫面。](media/itsmc-overview/action-groups-details.png)
 
-    ![ITSM 動作詳細資料](media/itsmc-overview/itsm-action-configuration.png)
+4. 在通知清單中選取 **[下一步：動作]** 。
+5. 在 [動作] 清單中，選取 [ **動作類型** ] 清單中的 [ **ITSM** ]。 提供動作的 **名稱** 。 選取代表 **編輯詳細資料** 的畫筆按鈕。
+6. 在 **訂** 用帳戶清單中，選取您的 Log Analytics 工作區所在的訂用帳戶。 在 [ **連接** ] 清單中，選取您的 ITSM 連接器名稱。 它後面會接著您的工作區名稱。 例如，MyITSMConnector (MyWorkspace) 。
 
-7. 從下拉式功能表選取 [工作項目] 類型。
+7. 選取 **工作專案** 類型。
 
-8. 如果您想要以固定值填寫方塊欄位，請選取 [使用自訂範本] 的核取方塊，否則請選擇使用下拉式清單中的現有 [範本](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) ，然後以固定值填滿範本欄位。
+8. 如果您想要以固定值填滿現成的欄位，請選取 [ **使用自訂範本** ]。 否則，請在 **範本** 清單中選擇現有的 [範本](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions)，然後在範本欄位中輸入固定值。
 
-9. 選取 [ **為每個設定專案建立個別的工作專案** ] 核取方塊，每個設定專案都會有自己的工作專案。 這表示每個設定專案都會有一個工作專案，而且會根據將建立的警示進行更新。
-如果您取消選取 [ **為每個設定專案建立個別的工作專案** ] 核取方塊，每個警示都會建立新的工作專案，這表示每個設定專案可能會有1個以上的警示。
+9. 如果您 **針對每個設定專案選取 [建立個別的工作專案** ]，則每個設定專案都會有自己的工作專案。 每個設定專案都會有一個工作專案。 它會根據將建立的警示進行更新。
 
-10. 按一下 [確定]。
+   如果您清除 [ **為每個設定專案建立個別的工作專案** ] 核取方塊，則每個警示都會建立新的工作專案。 每個設定專案可能會有一個以上的警示。
 
-建立/編輯 Azure 警示規則時，請使用具有 ITSM 動作的動作群組。 警示觸發時，會在 ITSM 工具中建立/更新工作項目。
+   ![顯示 ITSM 票證視窗的螢幕擷取畫面。](media/itsmc-overview/itsm-action-configuration.png)
+
+10. 選取 [確定]  。
+
+當您建立或編輯 Azure 警示規則時，請使用具有 ITSM 動作的動作群組。 當警示觸發時，會在 ITSM 工具中建立或更新工作專案。
 
 > [!NOTE]
 >
-> 如需 ITSM 動作的價格相關資訊，請參閱動作群組的[價格頁面](https://azure.microsoft.com/pricing/details/monitor/)。
-
-> [!NOTE]
+>- 如需 ITSM 動作價格的詳細資訊，請參閱動作群組的 [定價頁面](https://azure.microsoft.com/pricing/details/monitor/) 。
 >
-> 警示規則定義中的簡短描述欄位，會在使用 ITSM 動作傳送時限制為40個字元。
+>
+>- 當您使用 [ITSM] 動作傳送警示規則時，警示規則定義中的 [簡短描述] 欄位限制為40個字元。
 
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>將事件和變更要求資料視覺化並加以分析
 
-根據您在設定連線時的設定，ITSM Connector 最多可將 120 天的事件和變更要求資料同步處理。 [下一節](#additional-information)會提供適用於此資料的記錄檔記錄結構描述。
+視您設定連線時的設定而定，ITSMC 最多可以同步處理120天的事件和變更要求資料。 本文的 [下一節](#additional-information) 將提供此資料的記錄檔記錄架構。
 
-事件和變更要求資料可以使用解決方案中的 ITSM Connector 儀表板進行視覺化。
+您可以使用 ITSMC 儀表板，將事件視覺化並變更要求資料：
 
-![顯示 ITSM 連接器儀表板的螢幕擷取畫面。](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
+![顯示 ITSMC 儀表板的螢幕擷取畫面。](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
-儀表板也會提供連接器狀態的相關資訊，可用來作為分析任何連線問題的起點。
+儀表板也會提供連接器狀態的相關資訊，您可以使用此資訊作為起點來分析連接問題。
 
-您也可以在服務對應解決方案中，將針對受影響電腦同步處理的事件視覺化。
+您也可以在服務對應中將與受影響電腦同步的事件視覺化。
 
-服務對應可自動探索 Windows 和 Linux 系統上的應用程式元件，並對應服務之間的通訊。 如果您想到您的伺服器，ADM 可讓您以互連系統 (提供重要服務) 的形式檢視它們。 不需要進行任何設定，只要安裝了代理程式，服務對應就會顯示橫跨任何 TCP 連接架構的伺服器、處理程序和連接埠之間的連接。 [深入了解](../insights/service-map.md)。
+服務對應可自動探索 Windows 和 Linux 系統上的應用程式元件，並對應服務之間的通訊。 它可讓您依自己的想法來查看您的伺服器：做為提供重要服務的互連系統。 服務對應顯示任何 TCP 連線架構的伺服器、進程和埠之間的連接。 除了安裝代理程式以外，不需要進行任何設定。 如需詳細資訊，請參閱 [使用服務對應](../insights/service-map.md)。
 
-如果您使用服務對應解決方案，則可檢視 ITSM 解決方案中建立的服務台項目，如下列範例中所示：
+如果您使用服務對應，可以查看 ITSM 方案中建立的服務台專案，如下所示：
 
-![Log Analytics 畫面](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
-
-詳細資訊：[服務對應](../insights/service-map.md)
+![顯示 Log Analytics 畫面的螢幕擷取畫面。](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
 
 ## <a name="additional-information"></a>其他資訊
 
-### <a name="data-synced-from-itsm-product"></a>從 ITSM 產品同步的資料
-事件和變更要求會根據連線的設定，從您的 ITSM 產品同步處理到您的 Log Analytics 工作區。
+### <a name="data-synced-from-your-itsm-product"></a>從您的 ITSM 產品同步的資料
+事件和變更要求會根據連線的設定，從您的 ITSM 產品同步至 Log Analytics 工作區。
 
-下列資訊說明 ITSMC 所收集的資料範例：
+本節說明 ITSMC 所收集資料的一些範例。
 
-> [!NOTE]
->
-> 根據匯入 Log Analytics 的工作項目類型， **ServiceDesk_CL** 會包含下列欄位︰
+**ServiceDesk_CL** 中的欄位會根據您匯入至 Log Analytics 的工作專案類型而有所不同。 以下是兩個工作專案類型的欄位清單：
 
 **工作項目：** **事件**  
 ServiceDeskWorkItemType_s="Incident"
@@ -298,28 +299,28 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 
 ## <a name="troubleshoot-itsm-connections"></a>針對 ITSM 連線進行疑難排解
-1. 如果從已連線的來源 UI 連線失敗，並顯示 [儲存連線時發生錯誤] 訊息，請執行下列步驟：
-   - 對於 ServiceNow、 Cherwell 和 Provance 連線，  
-   - 請確定您已正確輸入每個連線的使用者名稱、密碼、用戶端識別碼及用戶端密碼。  
-   - 請檢查您在對應的 ITSM 產品中是否擁有足夠權限來進行連線。  
-   - 對於服務管理連線，  
-   - 請確定已成功部署 Web 應用程式，且已建立混合式連線。 若要確認是否已成功與內部部署 Service Manager 機器建立連線，請瀏覽 Web 應用程式 URL，如文件中針對建立[混合式連線](./itsmc-connections.md#configure-the-hybrid-connection)所述。  
+- 如果連接的來源 UI 連線失敗，而您 **在儲存連接訊息時發生錯誤** ，請執行下列步驟：
+   - 針對 ServiceNow、Cherwell 和 Provance 連線：  
+     - 確定您已正確輸入每個連線的使用者名稱、密碼、用戶端識別碼和用戶端密碼。  
+     - 請確定您在對應的 ITSM 產品中有足夠的許可權，才能建立連接。  
+   - 針對 Service Manager 連接：  
+     - 確定已成功部署 web 應用程式，且已建立混合式連接。 若要確認是否已成功建立與內部部署 Service Manager 電腦的連線，請移至 web 應用程式 URL，如建立 [混合](./itsmc-connections.md#configure-the-hybrid-connection)式連線的檔中所述。  
 
-2. 如果 ServiceNow 的資料未同步處理至 Log Analytics，請確定 ServiceNow 執行個體並非處在睡眠中。 ServiceNow 開發人員執行個體閒置很長的時間時，有時會進入睡眠狀態。 否則，請回報問題。
-3. 如果引發 Log Analytics 警示，但未在 ITSM 產品中建立工作項目，或未將設定項目建立為/連結至工作項目，或需任何其他一般資訊，請查看下列位置：
-   -  ITSMC：解決方案會顯示連線/工作項目/電腦等的摘要。按一下顯示 [連接器狀態] 的磚，這會利用相關的查詢帶您前往 [記錄搜尋]。 如需詳細資訊，請查看 ERROR 為 LogType_S 的記錄檔記錄。
-   - [記錄搜尋] 頁面：使用查詢 `*`ServiceDeskLog_CL`*` 直接檢視錯誤/相關資訊。
+- 如果 ServiceNow 的資料未同步處理至 Log Analytics，請確定 ServiceNow 實例未進入睡眠狀態。 當 ServiceNow 開發人員實例閒置很長一段時間時，有時會進入睡眠狀態。 如果發生這種情況，請回報問題。
+- 如果記錄分析警示引發但未在 ITSM 產品中建立工作專案，如果設定專案未建立/連結至工作專案，或其他資訊，請參閱下列資源：
+   -  ITSMC：解決方案會顯示連線、工作專案、電腦等的摘要。 選取具有 **連接器狀態** 標籤的磚。 這樣做會讓您使用相關查詢來 **記錄搜尋** 。 查看記錄檔記錄，以 `LogType_S` `ERROR` 取得詳細資訊。
+   - **記錄搜尋** 頁面：使用查詢直接查看錯誤和相關資訊 `*ServiceDeskLog_CL*` 。
 
-## <a name="troubleshoot-service-manager-web-app-deployment"></a>針對 Service Manager Web 應用程式部署進行疑難排解
-1.  如果是有關 Web 應用程式部署的任何問題，請確定您在所述的訂用帳戶中擁有足夠權限來建立/部署資源。
-2.  當您執行[指令碼](itsmc-service-manager-script.md)時，如果收到「物件參考未設定為物件的執行個體」錯誤訊息，請確定您已在 [使用者設定] 區段中輸入有效值。
-3.  如果您無法建立服務匯流排轉送命名空間，請確定所需的資源提供者已在訂用帳戶中註冊。 如果未註冊，請以手動方式從 Azure 入口網站建立服務匯流排轉送命名空間。 您也可以在建立它時，同時從 Azure 入口網站[建立混合式連線](./itsmc-connections.md#configure-the-hybrid-connection)。
+## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager web 應用程式部署進行疑難排解
+-   如果您有 web 應用程式部署的問題，請確定您有權在訂用帳戶中建立/部署資源。
+-   如果您在執行 [腳本](itsmc-service-manager-script.md)時取得 **未設定為物件錯誤實例的物件參考** ，請確定您已在 [ **使用者** 設定] 區段中輸入有效的值。
+-   如果您無法建立服務匯流排轉送命名空間，請確定已在訂用帳戶中註冊必要的資源提供者。 如果未註冊，請從 Azure 入口網站手動建立服務匯流排轉送命名空間。 您也可以在 Azure 入口網站中 [建立混合](./itsmc-connections.md#configure-the-hybrid-connection) 式連線時建立它。
 
 
 ## <a name="contact-us"></a>與我們連絡
 
-如需關於 IT 服務管理連接器的任何查詢或意見反應，請與我們連絡：[omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com)。
+如果您有關于 IT 服務管理連接器的查詢或意見反應，請與我們聯絡 [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com) 。
 
-## <a name="next-steps"></a>後續步驟
-[將 ITSM 產品/服務新增至 IT 服務管理連接器](./itsmc-connections.md)。
+## <a name="next-steps"></a>下一步
+[將 ITSM 產品/服務新增至 IT 服務管理連接器](./itsmc-connections.md)
 

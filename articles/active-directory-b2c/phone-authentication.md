@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4a429314d4a992ea93f4c068203371cda769a4ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3d044be923e5d7a621b72a926db0b4ce9a09b72
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90029125"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122719"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>使用 Azure AD B2C 中的自訂原則設定電話註冊和登入
 
@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) 中的手機註冊和登入，可讓�
 
 ## <a name="pricing"></a>定價
 
-單次密碼會使用 SMS 文字訊息傳送給您的使用者，而您可能會針對每個傳送的訊息付費。 如需定價資訊，請參閱[Azure Active Directory B2C 定價](https://azure.microsoft.com/pricing/details/active-directory-b2c/)的**個別費用**區段。
+單次密碼會使用 SMS 文字訊息傳送給您的使用者，而您可能會針對每個傳送的訊息付費。 如需定價資訊，請參閱 [Azure Active Directory B2C 定價](https://azure.microsoft.com/pricing/details/active-directory-b2c/)的 **個別費用** 區段。
 
 ## <a name="user-experience-for-phone-sign-up-and-sign-in"></a>手機註冊與登入的使用者體驗
 
@@ -35,7 +35,7 @@ Azure Active Directory B2C (Azure AD B2C) 中的手機註冊和登入，可讓�
 > [!NOTE]
 > 強烈建議您在註冊和登入體驗中包含同意資訊，類似于下列範例文字。 此範例文字僅供參考之用。 請參閱 [CTIA 網站](https://www.ctia.org/programs) 上的簡短程式碼監視手冊，並洽詢您自己的法律或合規性專家，以取得最終文字和功能設定的指引，以符合您自己的合規性需求：
 >
-> *藉由提供您的電話號碼，您同意收到文字訊息所傳送的單次密碼，協助您登入* &lt; 插入：您的應用程式名稱 &gt; *。可能適用標準訊息和資料費率。*
+> *藉由提供您的電話號碼，您同意收到文字訊息所傳送的單次密碼，協助您登入 *&lt; 插入：您的應用程式名稱 &gt;* 。可能適用標準訊息和資料費率。*
 >
 > *&lt;插入：隱私權聲明的連結&gt;*<br/>*&lt;插入：服務條款的連結&gt;*
 
@@ -56,27 +56,27 @@ Azure Active Directory B2C (Azure AD B2C) 中的手機註冊和登入，可讓�
 
 ### <a name="phone-sign-up-experience"></a>電話註冊體驗
 
-如果使用者還沒有您應用程式的帳戶，可以選擇 [ **立即註冊** ] 連結建立一個帳戶。 註冊頁面隨即出現，使用者會在其中選取其 **國家/地區**、輸入其電話號碼，然後選取 [ **傳送程式碼**]。
+如果使用者還沒有您應用程式的帳戶，可以選擇 [ **立即註冊** ] 連結建立一個帳戶。 註冊頁面隨即出現，使用者會在其中選取其 **國家/地區** 、輸入其電話號碼，然後選取 [ **傳送程式碼** ]。
 
 ![使用者開始電話註冊](media/phone-authentication/phone-signup-start.png)
 
-一次性驗證碼會傳送至使用者的電話號碼。 使用者在註冊頁面上輸入 **驗證碼** ，然後選取 [ **驗證程式代碼**]。  (如果使用者無法取得程式碼，則可以選取 [ **傳送新程式碼**]。 ) 
+一次性驗證碼會傳送至使用者的電話號碼。 使用者在註冊頁面上輸入 **驗證碼** ，然後選取 [ **驗證程式代碼** ]。  (如果使用者無法取得程式碼，則可以選取 [ **傳送新程式碼** ]。 ) 
 
 ![使用者在電話註冊期間驗證程式代碼](media/phone-authentication/phone-signup-verify-code.png)
 
- 使用者會在註冊頁面上輸入任何其他所要求的資訊，例如 **顯示名稱**、 **名字**和 **姓氏** (國家/地區與電話號碼仍會填入) 。 如果使用者想要使用不同的電話號碼，可以選擇 [ **變更號碼** ] 重新開機註冊。 完成時，使用者會選取 [ **繼續**]。
+ 使用者會在註冊頁面上輸入任何其他所要求的資訊，例如 **顯示名稱** 、 **名字** 和 **姓氏** (國家/地區與電話號碼仍會填入) 。 如果使用者想要使用不同的電話號碼，可以選擇 [ **變更號碼** ] 重新開機註冊。 完成時，使用者會選取 [ **繼續** ]。
 
 ![使用者提供其他資訊](media/phone-authentication/phone-signup-additional-info.png)
 
-接下來，系統會要求使用者提供修復電子郵件。 使用者輸入其電子郵件地址，然後選取 [ **傳送驗證碼**]。 系統會將程式碼傳送至使用者的電子郵件收件匣，並在 [ **驗證碼** ] 方塊中輸入。 然後，使用者選取 [ **驗證程式代碼**]。 
+接下來，系統會要求使用者提供修復電子郵件。 使用者輸入其電子郵件地址，然後選取 [ **傳送驗證碼** ]。 系統會將程式碼傳送至使用者的電子郵件收件匣，並在 [ **驗證碼** ] 方塊中輸入。 然後，使用者選取 [ **驗證程式代碼** ]。 
 
-驗證程式代碼之後，使用者會選取 [ **建立** ] 以建立他們的帳戶。 或者，如果使用者想要使用不同的電子郵件地址，他們可以選擇 [ **變更電子郵件**]。
+驗證程式代碼之後，使用者會選取 [ **建立** ] 以建立他們的帳戶。 或者，如果使用者想要使用不同的電子郵件地址，他們可以選擇 [ **變更電子郵件** ]。
 
 ![使用者建立帳戶](media/phone-authentication/email-verification.png)
 
 ### <a name="phone-sign-in-experience"></a>手機登入體驗
 
-如果使用者有一個具有電話號碼的現有帳戶做為其識別碼，使用者會輸入他們的電話號碼，然後選取 [ **繼續**]。 他們會選取 [ **繼續**] 來確認國家/地區和電話號碼，並將一次性驗證碼傳送到其電話。 使用者輸入驗證碼，然後選取 [ **繼續** 登入]。
+如果使用者有一個具有電話號碼的現有帳戶做為其識別碼，使用者會輸入他們的電話號碼，然後選取 [ **繼續** ]。 他們會選取 [ **繼續** ] 來確認國家/地區和電話號碼，並將一次性驗證碼傳送到其電話。 使用者輸入驗證碼，然後選取 [ **繼續** 登入]。
 
 ![手機登入使用者體驗](media/phone-authentication/phone-signin-screens.png)
 
@@ -88,7 +88,7 @@ Azure Active Directory B2C (Azure AD B2C) 中的手機註冊和登入，可讓�
 
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 設定 OTP 之前，您需要有下列資源。
 
@@ -106,9 +106,9 @@ Azure Active Directory B2C (Azure AD B2C) 中的手機註冊和登入，可讓�
 
     `active-directory-b2c-custom-policy-starterpack/scenarios/`**`phone-number-passwordless`**
 
-1. 在每個檔案中，將字串取代 `yourtenant` 為您 Azure AD B2C 租使用者的名稱。 例如，如果您的 B2C 租使用者名稱是 *contosob2c*，則的所有實例都是 `yourtenant.onmicrosoft.com` `contosob2c.onmicrosoft.com` 。
+1. 在每個檔案中，將字串取代 `yourtenant` 為您 Azure AD B2C 租使用者的名稱。 例如，如果您的 B2C 租使用者名稱是 *contosob2c* ，則的所有實例都是 `yourtenant.onmicrosoft.com` `contosob2c.onmicrosoft.com` 。
 
-1. 完成「[開始使用自訂](custom-policy-get-started.md)原則」 Azure Active Directory B2C 中的 [[將應用程式識別碼新增至自訂原則](custom-policy-get-started.md#add-application-ids-to-the-custom-policy)] 區段中的步驟。 在此情況下，請更新 `/phone-number-passwordless/` **`Phone_Email_Base.xml`** **應用程式 (用戶端) **您在完成必要條件、 *IdentityExperienceFramework*和*ProxyIdentityExperienceFramework*時所註冊的兩個應用程式的識別碼。
+1. 完成「[開始使用自訂](custom-policy-get-started.md)原則」 Azure Active Directory B2C 中的 [[將應用程式識別碼新增至自訂原則](custom-policy-get-started.md#add-application-ids-to-the-custom-policy)] 區段中的步驟。 在此情況下，請更新 `/phone-number-passwordless/` **`Phone_Email_Base.xml`** **應用程式 (用戶端)** 您在完成必要條件、 *IdentityExperienceFramework* 和 *ProxyIdentityExperienceFramework* 時所註冊的兩個應用程式的識別碼。
 
 ## <a name="upload-the-policy-files"></a>上傳原則檔案
 
@@ -128,9 +128,9 @@ Azure Active Directory B2C (Azure AD B2C) 中的手機註冊和登入，可讓�
 
 ## <a name="test-the-custom-policy"></a>測試自訂原則
 
-1. 在 [ **自訂原則**] 底下，選取 [ **B2C_1A_SignUpOrSignInWithPhone**]。
-1. 在 [ **選取應用程式**] 下，選取您在完成必要條件時所註冊的 *webapp1* 應用程式。
-1. 在 [ **選取回復 url**] 中，選擇 `https://jwt.ms` 。
+1. 在 [ **自訂原則** ] 底下，選取 [ **B2C_1A_SignUpOrSignInWithPhone** ]。
+1. 在 [ **選取應用程式** ] 下，選取您在完成必要條件時所註冊的 *webapp1* 應用程式。
+1. 在 [ **選取回復 url** ] 中，選擇 `https://jwt.ms` 。
 1. 選取 [ **立即執行** ]，然後使用電子郵件地址或電話號碼註冊。
 1. 選取 [ **立即執行** 一次] 並使用相同的帳戶登入，以確認您有正確的設定。
 

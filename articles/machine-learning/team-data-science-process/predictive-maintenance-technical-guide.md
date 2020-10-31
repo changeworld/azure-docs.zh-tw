@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 6677f9275d3b6f0569216eb16046d096c574beab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 742dc4b613c180550a4b3ec02827061acbf0bf78
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030896"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122940"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>航太工業中預測性維護的解決方案範本的技術指南
 
@@ -91,18 +91,16 @@ Azure 事件中樞非常廣泛；資料可以 CSV 或 JSON 格式張貼至中樞
 可以透過以下方式找到 Azure 串流分析查詢：
 
 * 連線到 Azure 入口網站
-* 找出部署解決方案時產生的串流分析作業 ![串流分析圖示](./media/predictive-maintenance-technical-guide/icon-stream-analytics.png) (*例如*，預測性維護解決方案的 **maintenancesa02asapbi** 和 **maintenancesa02asablob**)
+* 找出部署解決方案時產生的串流分析作業 ![串流分析圖示](./media/predictive-maintenance-technical-guide/icon-stream-analytics.png) ( *例如* ，預測性維護解決方案的 **maintenancesa02asapbi** 和 **maintenancesa02asablob** )
 * 選取
   
-  * [輸入] 以檢視查詢輸入
-  * [查詢] 以檢視查詢本身
-  * [輸出] 以檢視不同的輸出
+  * ***輸入** _ 來查看查詢輸入 _ * **查詢** _ 以查看查詢本身 _ * **輸出** _ 以查看不同的輸出
 
 Azure 串流分析查詢建構的相關資訊可在 MSDN 上的 [串流分析查詢參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) 中找到。
 
 在此解決方案中，查詢會將三個資料集及內送資料串流近乎即時的分析資訊輸出到隨著這個解決方案範本提供的 Power BI 儀表板。 因為對於內送資料格式具有隱含知識，所以必須根據您的資料格式變更這些查詢。
 
-第二個串流分析作業 **maintenancesa02asablob** 中的查詢只是將所有[事件中樞](https://azure.microsoft.com/services/event-hubs/)事件輸出至 [Azure 儲存體](https://azure.microsoft.com/services/storage/)，不論資料格式為何，都不需進行修改，因為完整的事件資訊會串流至儲存體。
+第二個串流分析作業 _ *>maintenancesa02asablob* * 中的查詢只會將所有 [事件中樞](https://azure.microsoft.com/services/event-hubs/) 事件輸出到 [Azure 儲存體](https://azure.microsoft.com/services/storage/) ，因此不論您的資料格式為何，都不需要進行任何變更，因為系統會將完整的事件資訊串流至儲存體。
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) 服務會協調資料的移動和處理。 在航太解決方案的預測性維護範本中，Data Factory 包含三個 [管線](../../data-factory/concepts-pipelines-activities.md) ，會使用各種技術移動和處理資料。  請開啟隨解決方案部署所建立的解決方案範本圖表底端的 Data Factory 節點，以存取您的 Data Factory。 如果在資料集底下看到錯誤，這是因為在啟動資料產生器之前即已部署 Data Factory。 您可以忽略這些錯誤，且這些錯誤不會阻礙 Data Factory 運作。
@@ -120,20 +118,20 @@ Azure 串流分析查詢建構的相關資訊可在 MSDN 上的 [串流分析查
 #### <a name="aggregateflightinfopipeline"></a><bpt id="p1">*</bpt>AggregateFlightInfoPipeline<ept id="p1">*</ept>
 這個[管線](../../data-factory/concepts-pipelines-activities.md)包含單一活動 - 使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 的 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活動，會在 [Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)作業期間，執行 [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) 指令碼來分割放在 [Azure 儲存體](https://azure.microsoft.com/services/storage/)中的資料。
 
-此資料分割工作的 [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) 指令碼為 ***AggregateFlightInfo.hql***
+此分割工作的 [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start)腳本是 * **AggregateFlightInfo**
 
-#### <a name="mlscoringpipeline"></a><bpt id="p1">*</bpt>MLScoringPipeline<ept id="p1">*</ept>
+#### <a name="_mlscoringpipeline"></a>_MLScoringPipeline *
 這個[管線](../../data-factory/concepts-pipelines-activities.md)包含數個活動，而其最終結果為來自與這個解決方案範本相關聯的 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) 實驗評分的預測。
 
 包含的活動為：
 
 * 使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 的 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活動會執行 [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) 指令碼來執行 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) 實驗所需的彙總及特徵工程設計。
-  此資料分割工作的 [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) 指令碼是 ***PrepareMLInput.hql***。
-* [複製](https://msdn.microsoft.com/library/azure/dn835035.aspx)活動，它會將來自 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活動的結果移至 [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) 活動所存取的單一 [Azure 儲存體](https://azure.microsoft.com/services/storage/) Blob。
+  這項資料分割工作的 [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start)腳本是 * **PrepareMLInput。**
+  _[複製](https://msdn.microsoft.com/library/azure/dn835035.aspx)活動，可將[HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md)活動的結果移至[>azuremlbatchscoring](https://msdn.microsoft.com/library/azure/dn894009.aspx)活動所存取的單一[Azure 儲存體](https://azure.microsoft.com/services/storage/)blob。
 * 呼叫 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) 實驗的 [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) 活動，會導致將結果放入單一 [Azure 儲存體](https://azure.microsoft.com/services/storage/) Blob。
 
 #### <a name="copyscoredresultpipeline"></a><bpt id="p1">*</bpt>CopyScoredResultPipeline<ept id="p1">*</ept>
-這個[管線](../../data-factory/concepts-pipelines-activities.md)包含單一活動 - [複製](https://msdn.microsoft.com/library/azure/dn835035.aspx)活動，會將 [Azure Machine Learning](#azure-machine-learning) 實驗的結果從 ***MLScoringPipeline*** 移至隨解決方案範本安裝佈建的 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)。
+此 [管線](../../data-factory/concepts-pipelines-activities.md) 包含單一活動- [複製](https://msdn.microsoft.com/library/azure/dn835035.aspx) 活動，可將 [Azure Machine Learning](#azure-machine-learning) 實驗的結果從 * **>mlscoringpipeline** _ 移至作為解決方案範本安裝一部分佈建的 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) 。
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 用於此解決方案範本的 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) 實驗會提供飛機引擎的剩餘使用年限 (RUL)。 實驗會因取用的資料集而不同，因而需要特別針對帶入的資料進行修改或取代。
@@ -141,8 +139,8 @@ Azure 串流分析查詢建構的相關資訊可在 MSDN 上的 [串流分析查
 ## <a name="monitor-progress"></a>監視進度
 一旦資料產生器啟動，管線就會開始凍結，而且解決方案的不同元件會遵循 Data Factory 發出的命令開始動作。 有兩種方式可以監視管線。
 
-* 其中一個串流分析作業會將原始內送資料寫入 blob 儲存體。 如果您從成功部署解決方案的畫面按一下解決方案的 Blob 儲存體元件，然後在右窗格中按一下 [開啟]，系統就會帶您前往 [Azure 入口網站](https://portal.azure.com/)。 一旦在該網站中，按一下 Blobs。 在接下來的面板中，您會看到容器的清單。 按一下 [maintenancesadata]。 接下來的面板中會顯示 **rawdata** 資料夾。 在 rawdata 資料夾內則可以看到具有如 hour=17 和 hour=18 等名稱的資料夾。 出現這些資料夾表示原始資料已經在您的電腦上產生並儲存在 Blob 儲存體中。 您應該會在這些資料夾中看到具有有限大小 (MB) 的 csv 檔案。
-* 管線的最後一個步驟是將資料 (例如來自機器學習的預測) 寫入至 SQL Database。 您可能必須等候最多三個小時，資料才會出現在 SQL Database。 監視您的 SQL Database 中有多少資料可用的其中一個方法是透過 [Azure 入口網站](https://portal.azure.com/)。 在左側面板上找出 SQL DATABASES ![SQL 圖示](./media/predictive-maintenance-technical-guide/icon-SQL-databases.png)，然後按一下該圖示。 接著找到您的資料庫 **pmaintenancedb** 並按一下它。 在下一個頁面的底部，按一下 [管理]。
+_ 其中一個串流分析作業會將原始的傳入資料寫入 blob 儲存體。 如果您從成功部署解決方案的畫面按一下解決方案的 Blob 儲存體元件，然後在右窗格中按一下 [開啟]，系統就會帶您前往 [Azure 入口網站](https://portal.azure.com/)。 一旦在該網站中，按一下 Blobs。 在接下來的面板中，您會看到容器的清單。 按一下 [maintenancesadata]。 接下來的面板中會顯示 **rawdata** 資料夾。 在 rawdata 資料夾內則可以看到具有如 hour=17 和 hour=18 等名稱的資料夾。 出現這些資料夾表示原始資料已經在您的電腦上產生並儲存在 Blob 儲存體中。 您應該會在這些資料夾中看到具有有限大小 (MB) 的 csv 檔案。
+* 管線的最後一個步驟是將資料 (例如來自機器學習的預測) 寫入至 SQL Database。 您可能必須等候最多三個小時，資料才會出現在 SQL Database。 監視您的 SQL Database 中有多少資料可用的其中一個方法是透過 [Azure 入口網站](https://portal.azure.com/)。 在左面板中，找出 SQL 資料庫 :::image type="icon" source="./media/predictive-maintenance-technical-guide/icon-SQL-databases.png" border="false"::: 並按一下它。 接著找到您的資料庫 **pmaintenancedb** 並按一下它。 在下一個頁面的底部，按一下 [管理]。
    
     ![管理圖示](./media/predictive-maintenance-technical-guide/icon-manage.png)
    
@@ -170,17 +168,17 @@ Power BI 會連接到 Azure SQL Database 作為其資料來源，即預測結果
    * 一旦您的解決方案範本圖表上的 [Azure SQL Database] 變成綠色之後，請按一下它，然後按一下 [開啟]。
    * 您會看到新的瀏覽器索引標籤/視窗，其中顯示 Azure 入口網站頁面。 按一下左側面板上的 [資源群組]  。
    * 選取您用於部署解決方案的訂用帳戶，然後選取 [YourSolutionName\_ResourceGroup]。
-   * 在新的快顯面板中，按一下 ![SQL 圖示](./media/predictive-maintenance-technical-guide/icon-sql.png)圖示來存取您的資料庫。 您的資料庫名稱會在這個圖示旁邊 (例如 **'pmaintenancedb'** )，而**資料庫伺服器名稱**列在伺服器名稱屬性下方，看起來應該類似 **YourSoutionName.database.windows.net**。
-   * 您的資料庫**使用者名稱**和**密碼**使用解決方案部署期間記錄的相同使用者名稱和密碼。
+   * 在新的快顯面板中，按一下 :::image type="icon" source="./media/predictive-maintenance-technical-guide/icon-sql.png" border="false"::: 圖示來存取您的資料庫。 您的資料庫名稱會在這個圖示旁邊 (例如 **'pmaintenancedb'** )，而 **資料庫伺服器名稱** 列在伺服器名稱屬性下方，看起來應該類似 **YourSoutionName.database.windows.net** 。
+   * 您的資料庫 **使用者名稱** 和 **密碼** 使用解決方案部署期間記錄的相同使用者名稱和密碼。
 2. 使用 Power BI 桌面版來更新冷路徑報告檔案的資料來源。
    
    * 在您下載並將產生器檔案解壓縮的資料夾中，按兩下 **PowerBI\\PredictiveMaintenanceAerospace.pbix** 檔案。 如果您開啟檔案時看到任何警告訊息，請忽略它們。 在檔案的頂端按一下 [編輯查詢] 。
      
      ![編輯查詢](./media/predictive-maintenance-technical-guide/edit-queries.png)
-   * 您會看到兩個資料表，**RemainingUsefulLife** 和 **PMResult**。 選取第一個資料表，然後在右側 [查詢設定] 面板的 [套用的步驟] 下，按一下 [來源]旁的 ![Query settings icon](./media/predictive-maintenance-technical-guide/icon-query-settings.png)。 略過任何出現的警告訊息。
-   * 在快顯視窗中，將 [伺服器] 和 [資料庫] 取代為您自己的伺服器和資料庫名稱，然後按一下 [確定]。 針對伺服器名稱，請確定您指定連接埠 1433 (**YourSoutionName.database.windows.net, 1433**)。 讓 [資料庫] 欄位保持為 [pmaintenancedb]。 忽略畫面上出現的警告訊息。
-   * 在下一個快顯視窗中，您會在左側窗格上看到兩個選項 ([Windows] 和 [資料庫])。 按一下 [資料庫]，填入您的 [使用者名稱] 和 [密碼] (您首次部署解決方案並建立 Azure SQL Database 時輸入的使用者名稱和密碼)。 在 [選取要套用這些設定的層級] 中，請勾選資料庫層級選項。 然後按一下 [連接]。
-   * 按一下第二個資料表 **PMResult**，然後在右側 [查詢設定] 面板的 [套用的步驟] 下，按一下 [來源] 旁的 ![Navigation icon](./media/predictive-maintenance-technical-guide/icon-navigation.png)，依上述步驟所示更新伺服器和資料庫名稱，然後按一下 [確定]。
+   * 您會看到兩個資料表， **RemainingUsefulLife** 和 **PMResult** 。 選取第一個資料表，然後在右側 [查詢設定] 面板的 [套用的步驟] 下，按一下 [來源]旁的 ![Query settings icon](./media/predictive-maintenance-technical-guide/icon-query-settings.png)。 略過任何出現的警告訊息。
+   * 在快顯視窗中，將 [伺服器] 和 [資料庫] 取代為您自己的伺服器和資料庫名稱，然後按一下 [確定]。 針對伺服器名稱，請確定您指定連接埠 1433 ( **YourSoutionName.database.windows.net, 1433** )。 讓 [資料庫] 欄位保持為 [pmaintenancedb]。 忽略畫面上出現的警告訊息。
+   * 在下一個快顯視窗中，您會在左側窗格上看到兩個選項 ([Windows] 和 [資料庫])。 按一下 [資料庫]，填入您的 [使用者名稱] 和 [密碼] (您首次部署解決方案並建立 Azure SQL Database 時輸入的使用者名稱和密碼)。 在 [ **_選取要將這些設定套用至 _ 的層級_ ] 中 *，檢查 [資料庫層級] 選項。然後按一下 _* [連接]** 。
+   * 按一下第二個資料表 **PMResult** ，然後在右側 [查詢設定] 面板的 [套用的步驟] 下，按一下 [來源] 旁的 ![Navigation icon](./media/predictive-maintenance-technical-guide/icon-navigation.png)，依上述步驟所示更新伺服器和資料庫名稱，然後按一下 [確定]。
    * 一旦引導您回到上一頁，請關閉視窗。 此時會顯示一個訊息，請按一下 [套用]。 最後，按一下 [儲存]  按鈕以儲存變更。 您的 Power BI 檔案現在已建立與伺服器的連線。 如果視覺效果是空的，請確定將視覺效果上的選取範圍都清除，以將所有資料視覺化，成法是按一下圖例右上角的橡皮擦圖示。 使用重新整理按鈕在視覺效果上反映新的資料。 最初，您只會在視覺效果上看到種子資料，因為 Data Factory 排定為每 3 個小時重新整理。 3 小時後，當您重新整理資料時，您會看到新的預測反映在視覺效果中。
 3. (選擇性) 將冷路徑儀表板發佈至 [Power BI 線上版](https://www.powerbi.com/)。 此步驟需要 Power BI 帳戶 (或工作或學校帳戶) 。
    
@@ -208,18 +206,18 @@ Power BI 會連接到 Azure SQL Database 作為其資料來源，即預測結果
 1. 在 Azure 串流分析 (ASA) 中加入 Power BI 輸出。
    
    * 您必須遵照 [Azure 串流分析與 Power BI：適用於串流資料即時可見度的分析儀表板](../../stream-analytics/stream-analytics-power-bi-dashboard.md)中的指示，將 Azure 串流分析作業的輸出設定為 Power BI 儀表板。
-   * ASA 查詢有三個輸出，分別是 **aircraftmonitor**、**aircraftalert** 和 **flightsbyhour**。 按一下 [查詢] 索引標籤，就可以檢視查詢。對應至每一個資料表，您必須將輸出新增到 ASA。 當您新增第一個輸出 (**aircraftmonitor**) 時，請確定**輸出別名**、**資料集名稱**和**資料表名稱**皆相同 (**aircraftmonitor**)。 重複這些步驟來新增 **aircraftalert** 和 **flightsbyhour** 的輸出。 新增所有三個輸出資料表並啟動 ASA 作業後，應該會出現確認訊息 (「啟動串流分析作業 maintenancesa02asapbi 成功」)。
+   * ASA 查詢有三個輸出，分別是 **aircraftmonitor** 、 **aircraftalert** 和 **flightsbyhour** 。 按一下 [查詢] 索引標籤，就可以檢視查詢。對應至每一個資料表，您必須將輸出新增到 ASA。 當您新增第一個輸出 ( **aircraftmonitor** ) 時，請確定 **輸出別名** 、 **資料集名稱** 和 **資料表名稱** 皆相同 ( **aircraftmonitor** )。 重複這些步驟來新增 **aircraftalert** 和 **flightsbyhour** 的輸出。 新增所有三個輸出資料表並啟動 ASA 作業後，應該會出現確認訊息 (「啟動串流分析作業 maintenancesa02asapbi 成功」)。
 2. 登入 [Power BI 線上版](https://www.powerbi.com)
    
-   * [我的工作區] 左面板 [資料集] 區段中，應該會顯示 ***DATASET*** 名稱 **aircraftmonitor**、**aircraftalert** 及 **flightsbyhour**。 這是您在上一個步驟中從 Azure 串流分析推入的串流資料。 因為資料集背後之 SQL 查詢本質的緣故，資料集 **flightsbyhour** 可能不會與其他兩個資料集同時顯示。 不過，它應該會在一個小時之後出現。
-   * 請確定 [視覺效果]  窗格開啟，並顯示在螢幕的右邊。
+   * 在 [我的工作區] 的左側面板 [資料集] 區段中，應該會出現 * **DATASET** _ names _ * aircraftmonitor * *、 **>aircraftalert** 和 **>flightsbyhour** 。 這是您在上一個步驟中從 Azure 串流分析推入的串流資料。 因為資料集背後之 SQL 查詢本質的緣故，資料集 **flightsbyhour** 可能不會與其他兩個資料集同時顯示。 不過，它應該會在一個小時之後出現。
+   * 請確定 [ **視覺效果** ] 窗格已開啟，並顯示在畫面的右側。
 3. 將資料傳送到 Power BI 之後，您就可以開始視覺化串流資料。 以下是具有釘選了一些最忙碌路徑視覺效果的範例儀表板。 您可以根據適當的資料集建立其他儀表板磚。 根據執行資料產生器的時間長度，在視覺效果上的數字可能會不同。
 
     ![儀表板檢視](media/predictive-maintenance-technical-guide/dashboard-view.png)
 
 1. 以下是一些用來建立上述其中一個圖格的步驟 -「感應器 11 與閾值 48.26 的機隊檢視」磚：
    
-   * 在左側面板 [資料集] 區段中按一下資料集 **aircraftmonitor** 。
+   _ 按一下左側面板 [資料集] 區段上的 [資料集 **aircraftmonitor** ]。
    * 按一下 [折線圖]  圖示。
    * 按一下 [欄位] 窗格中的 [已處理]，使其顯示於 [視覺效果] 窗格中的「軸」下方。
    * 按一下 "s11" 和 "s11\_alert"，使它們都出現在「值」下方。 按一下 **s11** 和 **s11\_alert** 旁邊的小箭頭，將「總和」變更為「平均」。

@@ -12,27 +12,27 @@ ms.date: 10/19/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: fbea4ef39b970f667c5dddec52f56a428d401f65
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8da9e97aaa2c6d99990df4221d8b6e99ab18ac83
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92277456"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124807"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>從我的應用程式入口網站執行存取權檢閱
 
-您可以使用公司或學校帳戶搭配 Web 型**我的應用程式**入口網站，來針對您的應用程式和群組執行存取權檢閱。 存取審查可協助您管理過期的存取權，或變更存取需求，並確保其經過檢閱和更新。
+您可以使用公司或學校帳戶搭配 Web 型 **我的應用程式** 入口網站，來針對您的應用程式和群組執行存取權檢閱。 存取審查可協助您管理過期的存取權，或變更存取需求，並確保其經過檢閱和更新。
 
 如果您沒有 [我的應用程式] 入口網站的存取權，請連絡技術服務人員以取得權限。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->本內容適用於**我的應用程式**使用者。 如果您是系統管理員，可以在[應用程式管理文件](../manage-apps/index.yml)中找到更多關於如何設定和管理雲端式應用程式的資訊。
+>本內容適用於 **我的應用程式** 使用者。 如果您是系統管理員，可以在[應用程式管理文件](../manage-apps/index.yml)中找到更多關於如何設定和管理雲端式應用程式的資訊。
 
 ## <a name="manage-access-reviews"></a>管理存取權檢閱
 
-如果您的系統管理員已授與您自行執行存取權檢閱的權限，您可以從**我的應用程式**入口網站頁面上的 [存取權檢閱] 圖格，管理您的群組或應用程式存取權。
+如果您的系統管理員已授與您自行執行存取權檢閱的權限，您可以從 **我的應用程式** 入口網站頁面上的 [存取權檢閱] 圖格，管理您的群組或應用程式存取權。
 
 >[!Note]
 >如果您沒有看到 [存取權檢閱] 圖格，表示您沒有執行存取檢閱的權限，或者您沒有任何擱置中的評論正在等待您的核准。 如果您認為您應該有該圖格的存取權，請連絡您的技術服務人員以取得協助。
@@ -68,7 +68,7 @@ ms.locfileid: "92277456"
 
 7. 選取 [提交]。
 
-    您的存取權檢閱已完成，您將會返回**我的應用程式**入口網站。
+    您的存取權檢閱已完成，您將會返回 **我的應用程式** 入口網站。
 
     >[!Note]
     >您可以隨時變更您的存取權，直到存取權檢閱期間結束為止。 如果您移除對應用程式或群組的存取權，其不會立即移除。 當存取檢閱期間結束或系統管理員關閉檢閱時，就會進行移除。
@@ -76,5 +76,5 @@ ms.locfileid: "92277456"
 ## <a name="next-steps"></a>後續步驟
 
 - [在我的應用程式入口網站上存取和使用應用程式](my-apps-portal-end-user-access.md)
-- [變更設定檔資訊](my-apps-portal-end-user-update-profile.md)
+- [變更設定檔資訊](./my-account-portal-settings.md)
 - [檢視和更新您的群組相關資訊](my-apps-portal-end-user-groups.md)

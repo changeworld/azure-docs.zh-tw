@@ -12,12 +12,12 @@ ms.date: 03/21/2019
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: c5d1b08944417493d175de23c7738db58f1c7bd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c148e673b8ada549a6543f8f35634aaf29abff0
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88798001"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123943"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>針對我的應用程式入口網站的問題進行疑難排解
 
@@ -87,7 +87,7 @@ ms.locfileid: "88798001"
 
 - [在我的應用程式入口網站上存取和使用應用程式](my-apps-portal-end-user-access.md)。
 
-- [變更設定檔資訊](my-apps-portal-end-user-update-profile.md)。
+- [變更設定檔資訊](./my-account-portal-settings.md)。
 
 - [檢視和更新您的群組相關資訊](my-apps-portal-end-user-groups.md)。
 

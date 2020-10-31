@@ -5,16 +5,16 @@ author: tamram
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/28/2020
+ms.date: 10/30/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 19d70642a6c76239f62b2fd6f7e713430a7adfbb
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 53033226702ea1033fe4ae94f60c62cacbae6596
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043091"
+ms.locfileid: "93124963"
 ---
 # <a name="create-a-blockblobstorage-account"></a>建立 BlockBlobStorage 帳戶
 
@@ -118,9 +118,6 @@ az login
 
 9. 如果您想要將資料分析的儲存體帳戶優化，請將 **階層命名空間** 設定為 **已啟用** 。 否則，請將此選項設定為預設值。 使用您的 BlockBlobStorage 帳戶啟用此設定，可提供您 [Data Lake Storage](premium-tier-for-data-lake-storage.md)的進階層。  若要深入瞭解 Data Lake Storage，請參閱 [Azure Data Lake Storage Gen2 簡介](data-lake-storage-introduction.md)。
 
-   > [!NOTE]
-   > 區塊 blob 儲存體帳戶中的階層命名空間功能處於公開預覽狀態。 如需區域可用性的詳細資訊，請參閱 [區域可用性](premium-tier-for-data-lake-storage.md#regional-availability)。
-
 8. 選取 [ **審核 + 建立** ] 以檢查儲存體帳戶設定。
 
 9. 選取 [建立]。
@@ -162,9 +159,6 @@ az login
    ```
    如果您想要將儲存體帳戶優化以進行資料分析，請新增 `-EnableHierarchicalNamespace $True` 至命令。 使用您的 BlockBlobStorage 帳戶啟用此設定，可提供您 [Data Lake Storage](premium-tier-for-data-lake-storage.md)的進階層。  若要深入瞭解 Data Lake Storage，請參閱 [Azure Data Lake Storage Gen2 簡介](data-lake-storage-introduction.md)。
 
-   > [!NOTE]
-   > 區塊 blob 儲存體帳戶中的階層命名空間功能處於公開預覽狀態。 如需區域可用性的詳細資訊，請參閱 [區域可用性](premium-tier-for-data-lake-storage.md#regional-availability)。
-
 ## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要使用 Azure CLI 建立區塊 blob 帳戶，您必須先安裝 Azure CLI v。 >2.0.46 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
@@ -195,10 +189,7 @@ az login
    ```
 
    如果您想要將儲存體帳戶優化以進行資料分析，請新增 `--hierarchical-namespace true` 至命令。 使用您的 BlockBlobStorage 帳戶啟用此設定，可提供您 [Data Lake Storage](premium-tier-for-data-lake-storage.md)的進階層。  若要深入瞭解 Data Lake Storage，請參閱 [Azure Data Lake Storage Gen2 簡介](data-lake-storage-introduction.md)。
-   
-   > [!NOTE]
-   > 區塊 blob 儲存體帳戶中的階層命名空間功能處於公開預覽狀態。 如需區域可用性的詳細資訊，請參閱 [區域可用性](premium-tier-for-data-lake-storage.md#regional-availability)。
-   
+
 ---
 
 ## <a name="next-steps"></a>後續步驟

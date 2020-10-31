@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
 ms.custom: devx-track-js
-ms.openlocfilehash: 6e43a43d929d256bc2a12b6b243d9620c5bd1aba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8891bb5cd3b8bd8ae9e02c871d6d0ffe42078c0b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317696"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124759"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure 串流分析 JavaScript 使用者定義彙總
  
@@ -83,7 +83,7 @@ function main() {
 
 ### <a name="function-type"></a>函式類型
 
-就 UDA 而言，函式類型應該是 **Javascript UDA**。
+就 UDA 而言，函式類型應該是 **Javascript UDA** 。
 
 ### <a name="output-type"></a>輸出類型
 
@@ -114,7 +114,7 @@ deaccumulateState() 方法會根據先前的狀態和躍點的狀態來重新計
 computeResult() 方法會根據目前的狀態傳回彙總結果。 呼叫此方法的時機是在時間範圍 (TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW 或 SESSIONWINDOW) 結束時。
 
 ## <a name="javascript-uda-supported-input-and-output-data-types"></a>JavaScript UDA 支援的輸入和輸出資料類型
-針對 JavaScript UDA 資料類型，請參閱[整合 JavaScript UDF](stream-analytics-javascript-user-defined-functions.md) 的**串流分析與 JavaScript 類型轉換**一節。
+針對 JavaScript UDA 資料類型，請參閱 [整合 JavaScript UDF](stream-analytics-javascript-user-defined-functions.md) 的 **串流分析與 JavaScript 類型轉換** 一節。
 
 ## <a name="adding-a-javascript-uda-from-the-azure-portal"></a>從 Azure 入口網站新增 JavaScript UDA
 
@@ -226,12 +226,12 @@ GROUP BY TumblingWindow(minute, 5)
 
 ## <a name="get-help"></a>取得說明
 
-如需其他協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
+如需其他協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
 * [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure 串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure 串流分析查詢語言參考](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 串流分析管理 REST API 參考](/rest/api/streamanalytics/)

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 8/07/2020
-ms.openlocfilehash: 0020efea69fc684ff6ebebf286718aa2a720910e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4179b06759802025f97bd32a355b788c96c9eddb
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90900799"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123315"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure 串流分析預覽功能
 
@@ -48,7 +48,7 @@ Azure 串流分析的 Visual Studio 工具加強了本機測試功能，讓您�
 
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>適用於 Azure 串流分析的 Visual Studio Code
 
-Azure 串流分析作業可以在 Visual Studio Code 中撰寫。 請參閱 [VS Code 入門教學課程](https://docs.microsoft.com/azure/stream-analytics/quick-create-visual-studio-code)。
+Azure 串流分析作業可以在 Visual Studio Code 中撰寫。 請參閱 [VS Code 入門教學課程](./quick-create-visual-studio-code.md)。
 
 ### <a name="local-testing-with-live-data-in-visual-studio-code"></a>使用 Visual Studio Code 中即時資料的本機測試
 

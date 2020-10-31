@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: c063fec3eac962d22ead12e0ca11f4b9fc155b5d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: bc630fc5ea9407c284e2e2e879c349a83302cd9f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910146"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122618"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>對 Azure 串流分析輸出進行疑難排解
 
@@ -71,7 +71,7 @@ ms.locfileid: "92910146"
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Azure SQL Database 輸出的索引鍵違規警告
 
-當您設定 Azure SQL Database 作為串流分析作業的輸出時，其會將記錄大量插入至目的地資料表。 一般而言，Azure 串流分析會保證對輸出接收進行[至少一次的傳遞](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) \(英文\)。 在 SQL 資料表已定義唯一條件約束的情況下，您仍然可以對 SQL 輸出[達成剛好一次的傳遞]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) \(英文\)。
+當您設定 Azure SQL Database 作為串流分析作業的輸出時，其會將記錄大量插入至目的地資料表。 一般而言，Azure 串流分析會保證對輸出接收進行[至少一次的傳遞](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) \(英文\)。 在 SQL 資料表已定義唯一條件約束的情況下，您仍然可以對 SQL 輸出[達成剛好一次的傳遞]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) \(英文\)。
 
 當您在 SQL 資料表上設定唯一索引鍵條件約束時，Azure 串流分析會移除重複的記錄。 其會將資料分割為幾個批次，並以遞迴方式插入批次，直到找到單一重複的記錄。 分割和插入程序會一次忽略一個重複項目。 針對具有許多重複資料列的串流作業，此程序既沒效率且耗時。 如果您在過去一小時內於活動記錄中看到多個索引鍵違規警告訊息，很有可能是 SQL 輸出使整個作業變慢。
 
@@ -95,9 +95,9 @@ ms.locfileid: "92910146"
 
 在這些步驟中，SQL 輸出可能會遇到下列類型的錯誤：
 
-* 使用指數輪詢重試策略重試的暫時性 [錯誤](/azure/azure-sql/database/troubleshoot-common-errors-issues#transient-fault-error-messages-40197-40613-and-others) 。 最小重試間隔取決於個別的錯誤碼，但間隔通常小於60秒。 上限最多可以是五分鐘。 
+* 使用指數輪詢重試策略重試的暫時性 [錯誤](../azure-sql/database/troubleshoot-common-errors-issues.md#transient-fault-error-messages-40197-40613-and-others) 。 最小重試間隔取決於個別的錯誤碼，但間隔通常小於60秒。 上限最多可以是五分鐘。 
 
-   [登入失敗](/azure/azure-sql/database/troubleshoot-common-errors-issues#unable-to-log-in-to-the-server-errors-18456-40531) 和 [防火牆問題](/azure/azure-sql/database/troubleshoot-common-errors-issues#cannot-connect-to-server-due-to-firewall-issues) 在上一次嘗試後至少會重試5分鐘，然後重試直到成功為止。
+   [登入失敗](../azure-sql/database/troubleshoot-common-errors-issues.md#unable-to-log-in-to-the-server-errors-18456-40531) 和 [防火牆問題](../azure-sql/database/troubleshoot-common-errors-issues.md#cannot-connect-to-server-due-to-firewall-issues) 在上一次嘗試後至少會重試5分鐘，然後重試直到成功為止。
 
 * 資料錯誤（例如轉換錯誤和架構條件約束違規）會以輸出錯誤原則來處理。 這些錯誤的處理方式是重試二進位分割批次，直到會由 skip 或 retry 處理造成錯誤的個別記錄為止。 [一律會處理](./stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output)主要的唯一索引鍵條件約束違規。
 
@@ -107,16 +107,16 @@ ms.locfileid: "92910146"
 
 ## <a name="column-names-are-lowercase-in-azure-stream-analytics-10"></a>Azure 串流分析 (1.0) 中的資料行名稱為小寫
 
-使用原始的相容性層級 (1.0) 時，Azure 串流分析會將資料行名稱變更為小寫。 此行為已在較新的相容性層級中修正。 若要保留大小寫，請移至相容性層級 1.1 或更新版本。 如需詳細資訊，請參閱[串流分析作業的相容性層級](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level) \(部分機器翻譯\)。
+使用原始的相容性層級 (1.0) 時，Azure 串流分析會將資料行名稱變更為小寫。 此行為已在較新的相容性層級中修正。 若要保留大小寫，請移至相容性層級 1.1 或更新版本。 如需詳細資訊，請參閱[串流分析作業的相容性層級](./stream-analytics-compatibility-level.md) \(部分機器翻譯\)。
 
 ## <a name="get-help"></a>取得說明
 
-如需進一步的協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
+如需進一步的協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](/answers/topics/azure-stream-analytics.html)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
 * [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure 串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) \(英文\)
-* [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure 串流分析查詢語言參考](/stream-analytics-query/stream-analytics-query-language-reference) \(英文\)
+* [Azure 串流分析管理 REST API 參考](/rest/api/streamanalytics/)

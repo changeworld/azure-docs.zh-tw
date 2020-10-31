@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 9/22/2020
-ms.openlocfilehash: ec8f27d0376f7187fd36b3feba556dbced0946e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5057eb8c84e839f504060228986ea759c8bdc3d
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90933949"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123162"
 ---
 # <a name="continuous-integration-and-deployment-cicd-for-azure-stream-analytics"></a>適用于 Azure 串流分析的持續整合和部署 (CI/CD) 
 
@@ -27,7 +27,7 @@ ms.locfileid: "90933949"
 
 1. 開發 Azure 串流分析查詢。
 
-   使用適用于 [Visual Studio Code](quick-create-vs-code.md) 或 [Visual Studio](stream-analytics-quick-create-vs.md) 的 Azure 串流分析工具，在 [本機開發及測試查詢](develop-locally.md)。 您也可以將 [現有的作業匯出](visual-studio-code-explore-jobs.md#export-a-job-to-a-local-project) 到本機專案。
+   使用適用于 [Visual Studio Code](./quick-create-visual-studio-code.md) 或 [Visual Studio](stream-analytics-quick-create-vs.md) 的 Azure 串流分析工具，在 [本機開發及測試查詢](develop-locally.md)。 您也可以將 [現有的作業匯出](visual-studio-code-explore-jobs.md#export-a-job-to-a-local-project) 到本機專案。
 
 2. 將您的 Azure 串流分析專案認可到原始檔控制系統，例如 Git 儲存機制。
 
