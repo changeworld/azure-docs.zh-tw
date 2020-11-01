@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1fa14c4341c449c32fd6a5f6b3274b057478c01c
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: d2606f793c7ab2e3ac29b1eb869e60a2c8e634ad
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495824"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145917"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>將 IoT 中樞遙測內嵌到 Azure 數位 Twins
 
@@ -22,12 +22,12 @@ Azure 數位 Twins 是由來自 IoT 裝置和其他來源的資料所驅動。 A
 
 此操作說明文件將逐步解說撰寫可從 IoT 中樞內嵌遙測資料的 Azure 函式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 繼續進行此範例之前，您必須將下列資源設定為必要條件：
-* **IoT 中樞**。 如需相關指示，請參閱[此 Iot 中樞快速入門](../iot-hub/quickstart-send-telemetry-cli.md)的*建立 iot 中樞*一節。
-* 具有正確許可權可呼叫數位對應項實例的**Azure 函數**。 如需相關指示，請參閱作法 [*：設定 Azure 函式來處理資料*](how-to-create-azure-function.md)。 
-* 將會收到您裝置遙測的**Azure 數位 Twins 實例**。 如需指示，請參閱作法 [*：設定 Azure 數位 Twins 實例和驗證*](./how-to-set-up-instance-portal.md)。
+* **IoT 中樞** 。 如需相關指示，請參閱 [此 Iot 中樞快速入門](../iot-hub/quickstart-send-telemetry-cli.md)的 *建立 iot 中樞* 一節。
+* 具有正確許可權可呼叫數位對應項實例的 **Azure 函數** 。 如需相關指示，請參閱作法 [*：設定 Azure 函式來處理資料*](how-to-create-azure-function.md)。 
+* 將會收到您裝置遙測的 **Azure 數位 Twins 實例** 。 如需指示，請參閱作法 [*：設定 Azure 數位 Twins 實例和驗證*](./how-to-set-up-instance-portal.md)。
 
 ### <a name="example-telemetry-scenario"></a>範例遙測案例
 
@@ -62,13 +62,13 @@ Azure 數位 Twins 是由來自 IoT 裝置和其他來源的資料所驅動。 A
 }
 ```
 
-若要將 **此模型上傳至您的 twins 實例**，請開啟 Azure CLI，然後執行下列命令：
+若要將 **此模型上傳至您的 twins 實例** ，請開啟 Azure CLI，然後執行下列命令：
 
 ```azurecli-interactive
 az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
 ```
 
-然後，您必須 **使用此模型建立一個對應項**。 使用下列命令建立對應項，並將0.0 設定為初始溫度值。
+然後，您必須 **使用此模型建立一個對應項** 。 使用下列命令建立對應項，並將0.0 設定為初始溫度值。
 
 ```azurecli-interactive
 az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
@@ -117,9 +117,9 @@ var temperature = deviceMessage["body"]["Temperature"];
 
 ```csharp
 //Update twin using device temperature
-var uou = new UpdateOperationsUtility();
-uou.AppendReplaceOp("/Temperature", temperature.Value<double>());
-await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
+var updateTwinData = new JsonPatchDocument();
+updateTwinData.AppendReplace("/Temperature", temperature.Value<double>());
+await client.UpdateDigitalTwinAsync(deviceId, updateTwinData);
 ...
 ```
 
@@ -176,9 +176,9 @@ namespace IotHubtoTwins
                     log.LogInformation($"Device:{deviceId} Temperature is:{temperature}");
 
                     //Update twin using device temperature
-                    var uou = new UpdateOperationsUtility();
-                    uou.AppendReplaceOp("/Temperature", temperature.Value<double>());
-                    await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
+                    var updateTwinData = new JsonPatchDocument();
+                    updateTwinData.AppendReplace("/Temperature", temperature.Value<double>());
+                    await client.UpdateDigitalTwinAsync(deviceId, updateTwinData);
                 }
             }
             catch (Exception e)
@@ -189,7 +189,7 @@ namespace IotHubtoTwins
     }
 }
 ```
-儲存您的函式程式碼，並將函數應用程式發佈至 Azure。 若要這麼做，您可以參考[*如何：設定 Azure 函式來處理資料，以瞭解如何*](how-to-create-azure-function.md)發佈函式[*應用程式*](./how-to-create-azure-function.md#publish-the-function-app-to-azure)一節。
+儲存您的函式程式碼，並將函數應用程式發佈至 Azure。 若要這麼做，您可以參考 [*如何：設定 Azure 函式來處理資料，以瞭解如何*](how-to-create-azure-function.md)發佈函式 [*應用程式*](./how-to-create-azure-function.md#publish-the-function-app-to-azure)一節。
 
 成功發佈之後，您會在 Visual Studio 命令視窗中看到輸出，如下所示：
 
@@ -210,25 +210,25 @@ namespace IotHubtoTwins
 ## <a name="connect-your-function-to-iot-hub"></a>將您的函式連線到 IoT 中樞
 
 設定中樞資料的事件目的地。
-在 [Azure 入口網站](https://portal.azure.com/)中，流覽至您在 [*必要條件*](#prerequisites) 一節中建立的 IoT 中樞實例。 在 [ **事件**] 下，為您的 Azure function 建立訂用帳戶。
+在 [Azure 入口網站](https://portal.azure.com/)中，流覽至您在 [*必要條件*](#prerequisites) 一節中建立的 IoT 中樞實例。 在 [ **事件** ] 下，為您的 Azure function 建立訂用帳戶。
 
 :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="此圖表顯示流程圖。在圖表中，IoT 中樞裝置會透過 IoT 中樞將溫度遙測傳送至 Azure 函式，以更新 Azure 數位 Twins 中對應項的溫度屬性。":::
 
 在 [ **建立事件訂** 用帳戶] 頁面中，填寫欄位，如下所示：
-  1. 在 [ **名稱**] 底下，將訂用帳戶命名為您要的名稱。
-  2. 在 [ **事件架構**] 下，選擇 [ _事件方格架構_]。
-  3. 在 [ **事件種類**] 下，選擇 [ _裝置遙測_ ] 核取方塊，然後取消核取其他事件種類。
-  4. 在 [ **端點類型**] 下，選取 [ _Azure function_]。
-  5. 在 [ **端點**] 底下，選擇 [ _選取端點_ 連結] 以建立端點。
+  1. 在 [ **名稱** ] 底下，將訂用帳戶命名為您要的名稱。
+  2. 在 [ **事件架構** ] 下，選擇 [ _事件方格架構_ ]。
+  3. 在 [ **事件種類** ] 下，選擇 [ _裝置遙測_ ] 核取方塊，然後取消核取其他事件種類。
+  4. 在 [ **端點類型** ] 下，選取 [ _Azure function_ ]。
+  5. 在 [ **端點** ] 底下，選擇 [ _選取端點_ 連結] 以建立端點。
     
 :::image type="content" source="media/how-to-ingest-iot-hub-data/create-event-subscription.png" alt-text="此圖表顯示流程圖。在圖表中，IoT 中樞裝置會透過 IoT 中樞將溫度遙測傳送至 Azure 函式，以更新 Azure 數位 Twins 中對應項的溫度屬性。":::
 
 在開啟的 [ _選取 Azure Function_ ] 頁面中，確認下列詳細資料。
- 1. **訂用帳戶**：Azure 訂閱
- 2. **資源群組**：您的資源群組
- 3. **函數應用程式**：您的函數應用程式名稱
- 4. **Slot**位置：_生產環境_
- 5. **函數**：請從下拉式清單中選取您的 Azure 函式。
+ 1. **訂用帳戶** ：Azure 訂閱
+ 2. **資源群組** ：您的資源群組
+ 3. **函數應用程式** ：您的函數應用程式名稱
+ 4. **Slot** 位置： _生產環境_
+ 5. **函數** ：請從下拉式清單中選取您的 Azure 函式。
 
 選取 [ _確認選取專案_ ] 按鈕以儲存您的詳細資料。            
       
@@ -278,7 +278,7 @@ az dt twin query -q "select * from digitaltwins" -n {digital_twins_instance_name
 
 若要查看值變更，請重複執行上述查詢命令。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 閱讀 Azure 數位 Twins 的資料輸入和輸出：
 * [*概念：與其他服務整合*](concepts-integration.md)

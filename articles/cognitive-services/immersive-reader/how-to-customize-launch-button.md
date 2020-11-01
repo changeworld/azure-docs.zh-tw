@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metang
-ms.openlocfilehash: 6d6757af6619edd41709a4b8f06ef615cd35bf30
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b24a9dcb7a369708b1374f367186dc4d9a6ce475
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636573"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146870"
 ---
 # <a name="how-to-customize-the-immersive-reader-button"></a>如何自訂沈浸式閱讀程式按鈕
 
@@ -31,7 +31,7 @@ ms.locfileid: "92636573"
 
 ## <a name="customize-the-button-style"></a>自訂按鈕樣式
 
-您 `data-button-style` 可以使用屬性來設定按鈕的樣式。 允許的值為 `icon` 、 `text` 和 `iconAndText` 。 預設值為 `icon`。
+您 `data-button-style` 可以使用屬性來設定按鈕的樣式。 允許的值為 `icon` 、 `text` 和 `iconAndText` 。 預設值是 `icon`。
 
 ### <a name="icon-button"></a>圖示按鈕
 
@@ -41,7 +41,7 @@ ms.locfileid: "92636573"
 
 這會呈現下列內容：
 
-![圖示按鈕](./media/button-icon.png)
+![這是呈現的文字按鈕](./media/button-icon.png)
 
 ### <a name="text-button"></a>文字按鈕
 
@@ -51,7 +51,7 @@ ms.locfileid: "92636573"
 
 這會呈現下列內容：
 
-![圖示按鈕](./media/button-text.png)
+![這是轉譯的沈浸式閱讀程式按鈕。](./media/button-text.png)
 
 ### <a name="icon-and-text-button"></a>圖示和文字按鈕
 

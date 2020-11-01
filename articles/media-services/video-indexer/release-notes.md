@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 09/03/2020
+ms.date: 10/30/2020
 ms.author: juliako
-ms.openlocfilehash: e2b45ebf9acea7334678110015d8cfd3022675f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f7bf41bd864f6780eee00938f35bb34d2336eb5
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89505332"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145747"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒體服務影片索引子版本資訊
 
@@ -29,6 +29,21 @@ ms.locfileid: "89505332"
 * 已知問題
 * 錯誤修正
 * 已被取代的功能
+
+## <a name="october-2020"></a>2020 年 10 月
+
+### <a name="animated-character-identification-improvements"></a>動畫字元識別改進  
+
+影片索引子可透過與認知服務自訂視覺的整合，支援在動畫內容中偵測、群組和辨識字元。 我們在偵測和字元辨識中新增了此 AI 演算法的重大改進，進而大幅改善見解精確度和識別的字元。
+
+### <a name="planned-video-indexer-website-authenticatication-changes"></a>規劃的影片索引子網站 authenticatication 變更
+
+自2021年1月1日起，您將無法再使用 Facebook 或 LinkedIn 註冊並登入 [影片索引子](https://www.videoindexer.ai/) 網站 (試用版供應專案) 。
+
+您可以使用下列其中一個提供者來註冊並登入： Azure AD、Microsoft 和 Google。
+
+> [!NOTE]
+> 建議您在2021年1月1日之前匯出內容，因為連線至 LinkedIn 和 Facebook 的帳戶將會遭到刪除，而且將無法再存取該內容。
 
 ## <a name="august-2020"></a>2020 年 8 月
 
@@ -92,9 +107,9 @@ ms.locfileid: "89505332"
 
 ### <a name="new-widget-parameters-capabilities"></a>新的 widget 參數功能
 
-**深入**解析小工具包含新的參數： `language` 和 `control` 。
+**深入** 解析小工具包含新的參數： `language` 和 `control` 。
 
-**播放**程式 widget 有新的 `locale` 參數。 `locale`和參數都能 `language` 控制播放機的語言。
+**播放** 程式 widget 有新的 `locale` 參數。 `locale`和參數都能 `language` 控制播放機的語言。
 
 如需詳細資訊，請參閱 [widget 類型](video-indexer-embed-widgets.md#widget-types) 一節。 
 
@@ -123,7 +138,7 @@ ms.locfileid: "89505332"
     * 使用指向影片索引子小工具 Api 的 URL 來取代 URL (例如，深入解析 [小工具](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget)) 
     * 使用影片索引子網站來產生新的內嵌 URL：
          
-         按下 [**播放**] 以進入您的影片頁面-> 按一下 [ ** &lt; / &gt; 內嵌**] 按鈕-> 將 URL 複製到您的應用程式中：
+         按下 [ **播放** ] 以進入您的影片頁面-> 按一下 [ **&lt; / &gt; 內嵌** ] 按鈕-> 將 URL 複製到您的應用程式中：
    
     區域 Url 不受支援，將在未來幾周內封鎖。
 
@@ -143,7 +158,7 @@ ms.locfileid: "89505332"
  
 ### <a name="swagger-update"></a>Swagger 更新
 
-影片索引子整合 **驗證** 和 **作業** 成為單一 [影片索引子 OpenAPI 規格 (swagger) ](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson)。 開發人員可以在 [影片索引子開發人員入口網站](https://api-portal.videoindexer.ai/)中找到 api。
+影片索引子整合 **驗證** 和 **作業** 成為單一 [影片索引子 OpenAPI 規格 (swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson)。 開發人員可以在 [影片索引子開發人員入口網站](https://api-portal.videoindexer.ai/)中找到 api。
 
 ## <a name="december-2019"></a>2019 年 12 月
 

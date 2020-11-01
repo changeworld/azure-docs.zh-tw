@@ -9,10 +9,10 @@ ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 843d0b8cfd75e8cbdf45ac535cc9486aa42442d6
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "91761771"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站為 ExpressRoute 設定虛擬網路閘道
@@ -42,7 +42,7 @@ ms.locfileid: "91761771"
     * 子網路位址空間 = "192.168.1.0/24"
 * 資源群組 = "TestRG"
 * 位置 = "美國東部"
-* 閘道器子網路名稱："GatewaySubnet"，您必須一律將閘道器子網路命名為 *GatewaySubnet*。
+* 閘道器子網路名稱："GatewaySubnet"，您必須一律將閘道器子網路命名為 *GatewaySubnet* 。
     * 閘道子網路位址空間 = "192.168.200.0/26"
 * 閘道名稱 = "ERGW"
 * 閘道公用 IP 名稱 = "MyERGWVIP"
@@ -58,13 +58,13 @@ ms.locfileid: "91761771"
    
     :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-gateway-subnet.png" alt-text="新增閘道子網路":::
 
-1. 子網路的 [名稱]**** 會自動填入 'GatewaySubnet' 這個值。 為了讓 Azure 將此子網路視為閘道子網路，需要有這個值。 調整自動填入的 [位址範圍] 值，以符合您的組態需求。 建議您以 /27 或更大的值 (/26、/25 等) 建立閘道子網路。 然後，選取 [確定] 來儲存值並建立閘道子網路。
+1. 子網路的 [名稱]  會自動填入 'GatewaySubnet' 這個值。 為了讓 Azure 將此子網路視為閘道子網路，需要有這個值。 調整自動填入的 [位址範圍] 值，以符合您的組態需求。 建議您以 /27 或更大的值 (/26、/25 等) 建立閘道子網路。 然後，選取 [確定] 來儲存值並建立閘道子網路。
 
     :::image type="content" source="./media/expressroute-howto-add-gateway-portal-resource-manager/add-subnet-gateway.png" alt-text="新增閘道子網路":::
 
 ## <a name="create-the-virtual-network-gateway"></a>建立虛擬網路閘道
 
-1. 在入口網站中的左側選取 [建立資源]，並在搜尋中輸入「虛擬網路閘道」。 在搜尋傳回的結果中找出**虛擬網路閘道**，然後選取該項目。 在 [虛擬網路閘道] 頁面上，選取 [建立]。
+1. 在入口網站中的左側選取 [建立資源]，並在搜尋中輸入「虛擬網路閘道」。 在搜尋傳回的結果中找出 **虛擬網路閘道** ，然後選取該項目。 在 [虛擬網路閘道] 頁面上，選取 [建立]。
 1. 在 [建立虛擬網路閘道] 頁面上，輸入或選取下列設定：
 
     | 設定 | 值 |
@@ -76,7 +76,7 @@ ms.locfileid: "91761771"
     | 閘道類型 | 選取 [ExpressRoute]|
     | SKU | 從下拉式清單中選取閘道 SKU。 |
     | 虛擬網路 | 選取 [TestVNet]。 |
-    | 公用 IP 位址 | 選取 [建立新的]****。|
+    | 公用 IP 位址 | 選取 [建立新的]  。|
     | 公用 IP 位址名稱 | 提供公用 IP 位址的名稱。 |
 
 1. 選取 [檢閱+建立]，然後選取 [建立] 以開始建立閘道。 系統會驗證設定並部署閘道。 建立虛擬網路閘道最多可能需要花費 45 分鐘的時間來完成。

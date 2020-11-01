@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 0b6233552501fbe1578f3abe4e203d725ecddb4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2493a3a1e4fbb49c0b7f6dad29771b6e9faae8e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707790"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146802"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>隨選媒體服務和影片隨選 (VOD) 的高可用性
 
@@ -26,7 +26,7 @@ ms.locfileid: "91707790"
 
 ## <a name="high-availability-for-vod"></a>VOD 的高可用性
 
-Azure 架構檔中有一個稱為 [Geodes](/azure/architecture/patterns/geodes) 的高可用性設計模式。 它說明如何將重複的資源部署到不同的地理區域，以提供擴充性和復原能力。  您可以使用 Azure 服務來建立這類架構，以涵蓋許多高可用性設計考慮，例如冗余、健康情況監視、負載平衡和資料備份和復原。  下列其中一種架構如下所述，其中包含解決方案中所使用之每個服務的詳細資料，以及如何使用個別服務來建立 VOD 應用程式的高可用性架構。
+Azure 架構檔中有一個稱為 [Geodes](https://docs.microsoft.com/azure/architecture/patterns/geodes) 的高可用性設計模式。 它說明如何將重複的資源部署到不同的地理區域，以提供擴充性和復原能力。  您可以使用 Azure 服務來建立這類架構，以涵蓋許多高可用性設計考慮，例如冗余、健康情況監視、負載平衡和資料備份和復原。  下列其中一種架構如下所述，其中包含解決方案中所使用之每個服務的詳細資料，以及如何使用個別服務來建立 VOD 應用程式的高可用性架構。
 
 ### <a name="sample"></a>範例
 
@@ -85,6 +85,6 @@ Azure 架構檔中有一個稱為 [Geodes](/azure/architecture/patterns/geodes) 
     * 如果您的工作處於已排程狀態，但在指定區域的合理時間內尚未前進到處理狀態，請從目前使用的帳戶清單中移除該區域。 根據您的業務需求，您可以決定立即取消這些作業，並將其重新提交到另一個區域。 或者，您可以讓他們有更多時間移到下一個狀態。
     * 如果區域已從帳戶清單中移除，請監視該區域以進行復原，然後再將其新增回清單。 區域健康情況可以透過區域中現有的工作進行監視 (如果未取消和重新提交) ，請在一段時間後將帳戶新增回清單，以及藉由操作員監視可能會影響 Azure 媒體服務的中斷情況。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-* 查看程式 [代碼範例](/samples/browse/?products=azure-media-services)
+* 查看程式 [代碼範例](https://docs.microsoft.com/samples/browse/?products=azure-media-services)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: ebeee228d8c936732465359dfa264d822cbecb1e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3a4b7d68d7cd21ccb4b7eb8b97e0d331fb236e96
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793070"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146717"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 的儲存體組態
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,7 +44,7 @@ ms.locfileid: "92793070"
 
 使用 SQL Server 資源庫映像佈建 Azure VM 時，請在 [SQL Server 設定] 索引標籤上選取 [變更設定]，以開啟 [效能最佳化儲存體設定] 頁面。 您可以保留預設值，也可以根據您的工作負載，修改最符合您需求的磁碟設定類型。 
 
-![佈建期間的 SQL Server VM 儲存體設定](./media/storage-configuration/sql-vm-storage-configuration-provisioning.png)
+![醒目顯示 [SQL Server 設定] 索引標籤和 [變更設定] 選項的螢幕擷取畫面。](./media/storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
 在 [儲存體最佳化] 上，選取要為其部署 SQL Server 的工作負載類型。 使用 [一般] 最佳化選項時，根據預設您會有一個 IOPS 上限為 5000 的資料磁碟，而且您會使用此相同磁碟機來儲存資料、交易記錄和 TempDB。 選取 [交易處理] (OLTP) 或 [資料倉儲] 將會為資料建立個別磁碟、為交易記錄建立個別磁碟，並針對 TempDB 使用本機 SSD。 **交易處理** 和 **資料倉儲** 之間沒有任何儲存上的差異，但其卻會變更您的 [等量磁碟區設定和追蹤旗標](#workload-optimization-settings)。 根據 [SQL Server VM 效能最佳做法](performance-guidelines-best-practices.md)，選擇進階儲存體會將資料磁碟機的快取設定為 *唯讀* ，並將記錄磁碟機的快取設定為 *無* 。 
 
@@ -103,7 +103,7 @@ ms.locfileid: "92793070"
 
 若要修改儲存體設定，請選取 [設定] 底下的 [設定]。 
 
-![設定現有 SQL Server VM 的儲存體](./media/storage-configuration/sql-vm-storage-configuration-existing.png)
+![反白顯示 [設定] 選項和 [儲存使用量] 區段的螢幕擷取畫面。](./media/storage-configuration/sql-vm-storage-configuration-existing.png)
 
 您可以修改在 SQL Server VM 建立過程中所設定磁碟機的磁碟設定。 選取 [延伸磁碟機] 會開啟 [磁碟機修改] 頁面，讓您可以變更磁碟類型，以及新增額外的磁碟。 
 

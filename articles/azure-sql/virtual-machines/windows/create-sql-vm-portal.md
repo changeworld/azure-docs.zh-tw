@@ -14,12 +14,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6658dcd54c7290bbbad0c24c1cc0debd5ead8b18
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 347948734da439691bced01cf3693d0990567748
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789857"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146223"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>如何使用 Azure 入口網站以 SQL Server 布建 Windows 虛擬機器
 
@@ -196,7 +196,7 @@ ms.locfileid: "92789857"
 
 在 [SQL Server 設定] 索引標籤上，於 [儲存體設定] 下方，選取 [變更設定] 來開啟 [效能最佳化儲存體設定] 頁面並指定儲存體要求。
 
-![SQL VM 儲存體設定](./media/create-sql-vm-portal/sql-vm-storage-configuration-provisioning.png)
+![醒目顯示可變更儲存體設定的螢幕擷取畫面。](./media/create-sql-vm-portal/sql-vm-storage-configuration-provisioning.png)
 
 在 [儲存體最佳化] 底下，選取下列其中一個選項：
 

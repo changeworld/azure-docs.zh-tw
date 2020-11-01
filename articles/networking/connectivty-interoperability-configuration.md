@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 7be326e0f01ed6a00244c0f5b9ed6a960b2b6e0b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "86171851"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure 後端連線功能的互通性：測試組態詳細資料
@@ -23,17 +23,17 @@ ms.locfileid: "86171851"
 
 ## <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>使用 VNet 對等互連的輪輻 VNet 連線
 
-下圖顯示了輪輻虛擬網路 (VNet) 的 Azure 虛擬網路對等互連詳細資料。 若要了解如何設定兩個 Vnet 之間的對等互連，請參閱[管理 VNet 對等互連][VNet-Config]。 如要讓輪輻 VNet 使用連線至中樞 VNet 的閘道，請選取 [使用遠端閘道]****。
+下圖顯示了輪輻虛擬網路 (VNet) 的 Azure 虛擬網路對等互連詳細資料。 若要了解如何設定兩個 Vnet 之間的對等互連，請參閱[管理 VNet 對等互連][VNet-Config]。 如要讓輪輻 VNet 使用連線至中樞 VNet 的閘道，請選取 [使用遠端閘道]  。
 
 [![1]][1]
 
-下圖顯示中樞 VNet 的 VNet 對等互連詳細資料。 如果您希望中樞 VNet 允許輪輻 VNet 使用中樞的閘道，請選取 [ **允許閘道傳輸**]。
+下圖顯示中樞 VNet 的 VNet 對等互連詳細資料。 如果您希望中樞 VNet 允許輪輻 VNet 使用中樞的閘道，請選取 [ **允許閘道傳輸** ]。
 
 [![2]][2]
 
 ## <a name="branch-vnet-connectivity-by-using-a-site-to-site-vpn"></a>使用站對站 VPN 的分支 VNet 連線
 
-透過使用 Azure VPN 閘道中的 VPN 閘道，設定中樞和分支 VNet 間的站對站 VPN 連線。 根據預設，VPN 閘道和 Azure ExpressRoute 閘道使用私用的自發系統編號 (ASN) 值 **65515**。 您可以變更 VPN 閘道的 ASN 值。 在測試設定中，分支 VNet VPN 閘道的 ASN 值變更為 **65516**，以支援中樞和分支 VNet 之間的 eBGP 路由。
+透過使用 Azure VPN 閘道中的 VPN 閘道，設定中樞和分支 VNet 間的站對站 VPN 連線。 根據預設，VPN 閘道和 Azure ExpressRoute 閘道使用私用的自發系統編號 (ASN) 值 **65515** 。 您可以變更 VPN 閘道的 ASN 值。 在測試設定中，分支 VNet VPN 閘道的 ASN 值變更為 **65516** ，以支援中樞和分支 VNet 之間的 eBGP 路由。
 
 
 [![3]][3]
@@ -45,7 +45,7 @@ ms.locfileid: "86171851"
 
 下圖顯示 Azure 區域 1 ExpressRoute 線路至內部部署位置 1 客戶 Edge (CE) 路由器的設定：
 
-[![4]][4]
+[![億]][4]
 
 下圖顯示 ExpressRoute1 線路和中樞 VNet 之間的連線設定：
 
@@ -194,7 +194,7 @@ ExpressRoute 作為備援線路組可確保高可用性。 您可以在不同的
 
 如需詳細資訊，請參閱[什麼是 VPN 閘道？][VPN]和[部署高可用性 NVA][Deploy-NVA]。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 了解測試設定的[控制平面分析][Control-Analysis]以及拓撲中不同 VNet 或 VLAN 的檢視。
 

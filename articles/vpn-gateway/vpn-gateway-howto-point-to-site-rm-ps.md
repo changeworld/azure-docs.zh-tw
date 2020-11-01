@@ -1,6 +1,6 @@
 ---
 title: 從電腦連線到 VNet-P2S VPN 和原生 Azure 憑證驗證： PowerShell
-description: 使用 P2S 和自我簽署或 CA 核發的憑證，將 Windows 和 Mac OS X 用戶端安全地連線至 Azure 虛擬網路。 本文使用 PowerShell。
+description: 使用 P2S 和自我簽署或 CA 發出的憑證，將 Windows 和 macOS 用戶端安全地連線至 Azure 虛擬網路。 本文使用 PowerShell。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -8,29 +8,22 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5d2902222dea3e84ebed04d80d7349167f83cae1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b6df7aa919721576aad10d6a476be976ef81df7d
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93076010"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145866"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>使用原生 Azure 憑證驗證設定 VNet 的點對站 VPN 連線： PowerShell
 
-本文可協助您將執行 Windows、Linux 或 Mac OS X 的個別用戶端安全地連線至 Azure VNet。 當您想要從遠端位置連線到您的 VNet 時，例如從家用或會議住家時，點對站 VPN 連線會很有用。 如果您只有少數用戶端必須連線至 VNet，您也可以使用 P2S，而不使用站對站 VPN。 點對站連線不需要 VPN 裝置或公眾對應 IP 位址。 P2S 會建立透過 SSTP (安全通訊端通道通訊協定) 或 IKEv2 的 VPN 連線。
+本文可協助您將執行 Windows、Linux 或 macOS 的個別用戶端安全地連線至 Azure VNet。 當您想要從遠端位置連線到您的 VNet 時，例如從家用或會議住家時，點對站 VPN 連線會很有用。 如果您只有少數用戶端必須連線至 VNet，您也可以使用 P2S，而不使用站對站 VPN。 點對站連線不需要 VPN 裝置或公眾對應 IP 位址。 P2S 會建立透過 SSTP (安全通訊端通道通訊協定) 或 IKEv2 的 VPN 連線。
 
 :::image type="content" source="./media/vpn-gateway-how-to-point-to-site-rm-ps/point-to-site-diagram.png" alt-text="從電腦連線到 Azure VNet 點對站連接圖":::
 
 如需點對站 VPN 的詳細資訊，請參閱 [關於點對站 vpn](point-to-site-about.md)。 若要使用 Azure 入口網站建立此設定，請參閱 [使用 Azure 入口網站設定點對站 VPN](vpn-gateway-howto-point-to-site-resource-manager-portal.md)。
 
-## <a name="architecture"></a>架構
-
-點對站原生 Azure 憑證驗證連線使用下列專案，您可以在此練習中設定這些專案：
-
-* RouteBased VPN 閘道。
-* 已上傳至 Azure 之根憑證的公開金鑰 (.cer 檔案)。 一旦上傳憑證，憑證就會被視為受信任的憑證並且用於驗證。
-* 從根憑證產生的用戶端憑證。 此用戶端憑證須安裝在每部將連線至 VNet 的用戶端電腦上。 此憑證使用於用戶端憑證。
-* VPN 用戶端組態。 VPN 用戶端組態檔包含要讓用戶端連線到 VNet 所需的資訊。 此檔案會設定作業系統原生的現有 VPN 用戶端。 您必須使用組態檔中的設定來設定每個進行連線的用戶端。
+[!INCLUDE [P2S basic architecture](../../includes/vpn-gateway-p2s-architecture.md)]
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -42,7 +35,7 @@ ms.locfileid: "93076010"
 > 本文中的許多步驟都可以使用 Azure Cloud Shell。 不過，您無法使用 Cloud Shell 來產生憑證。 此外，若要上傳根憑證公開金鑰，您必須在本機使用 Azure PowerShell，或 Azure 入口網站。
 >
 
-[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
+[!INCLUDE [PowerShell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ## <a name="1-sign-in"></a><a name="signin"></a>1.登入
 

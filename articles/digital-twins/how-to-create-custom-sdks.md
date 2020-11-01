@@ -8,19 +8,19 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 53887b7487c3f0bb70c9f8cc7cd61246fabc0b37
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 158d22ffb3bc5486e0523c07cc2c022c49f2ee9c
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970124"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145594"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>使用 AutoRest 建立 Azure 數位 Twins 的自訂 Sdk
 
 現在，用來與 Azure 數位 Twins Api 互動的唯一已發佈資料平面 Sdk 適用于 .NET (c # ) 、JavaScript 和 JAVA。 您可以閱讀有關這些 Sdk 的資訊，以及有關 [*如何：使用 Azure 數位 Twins api 和 sdk*](how-to-use-apis-sdks.md)的 api。 如果您使用另一種語言，本文將說明如何使用 AutoRest，以您所選的語言產生您自己的資料平面 SDK。
 
 >[!NOTE]
-> 您也可以使用 AutoRest 來產生控制平面 SDK （如果您想要的話）。 若要這樣做，請使用最新的 **控制平面 swagger** (OpenAPI) 檔案從 [控制平面 swagger 資料夾]] (， https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) 而不是資料平面1，完成本文中的步驟。
+> 您也可以使用 AutoRest 來產生控制平面 SDK （如果您想要的話）。 若要這樣做，請使用最新的 **控制平面 swagger** (OpenAPI) 檔案從 [控制平面 swagger 資料夾](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/) （而不是資料平面1）來完成本文中的步驟。
 
 ## <a name="set-up-your-machine"></a>設定您的電腦
 
@@ -47,7 +47,7 @@ npm install -g autorest@2.0.4413
 autorest --input-file=digitaltwins.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
-因此，您會在工作目錄中看到名為 *ADTApi* 的新資料夾。 產生的 SDK 檔案將會具有命名空間 *ADTApi*。 您將繼續使用該命名空間，此命名空間是本文中其餘的使用範例。
+因此，您會在工作目錄中看到名為 *ADTApi* 的新資料夾。 產生的 SDK 檔案將會具有命名空間 *ADTApi* 。 您將繼續使用該命名空間，此命名空間是本文中其餘的使用範例。
 
 AutoRest 支援各種不同的語言程式碼產生器。
 
@@ -61,19 +61,19 @@ AutoRest 支援各種不同的語言程式碼產生器。
 
 1. 為類別庫建立新的 Visual Studio 方案
 2. 使用 *ADTApi* 做為專案名稱
-3. 在 [方案瀏覽器] 中，以滑鼠右鍵選取所產生方案的*ADTApi*專案，然後選擇 [*加入 > 現有專案*]。
+3. 在 [方案瀏覽器] 中，以滑鼠右鍵選取所產生方案的 *ADTApi* 專案，然後選擇 [ *加入 > 現有專案* ]。
 4. 尋找您產生 SDK 的資料夾，然後選取根目錄層級的檔案
 5. 按 [確定]
 6. 將資料夾新增至專案 (以滑鼠右鍵選取方案總管中的專案，然後選擇 [ *加入 > 新資料夾* ]) 
 7. 命名資料夾 *模型*
-8. 以滑鼠右鍵選取 [方案瀏覽器] 中的 [*模型*] 資料夾，然後選取 [*加入 > 現有專案*]。
+8. 以滑鼠右鍵選取 [方案瀏覽器] 中的 [ *模型* ] 資料夾，然後選取 [ *加入 > 現有專案* ]。
 9. 選取所產生 SDK 的 [ *模型* ] 資料夾中的檔案，然後按 [確定]
 
 若要成功建立 SDK，您的專案將需要下列參考：
 * `Microsoft.Rest.ClientRuntime`
 * `Microsoft.Rest.ClientRuntime.Azure`
 
-若要新增這些 *工具 > nuget 封裝管理員 > 管理解決方案的 Nuget 套件*...。
+若要新增這些 *工具 > nuget 封裝管理員 > 管理解決方案的 Nuget 套件* ...。
 
 1. 在面板中，確定已選取 [ *流覽* ] 索引標籤
 2. 搜尋 *Microsoft. Rest*
@@ -117,40 +117,25 @@ AutoRest 會針對 SDK 產生兩種類型的分頁模式：
 * 一個用於所有 Api （查詢 API 除外）
 * 一個用於查詢 API
 
-在非查詢分頁模式中，每個呼叫都有兩個版本：
-* 進行初始呼叫的版本 (例如 `DigitalTwins.ListEdges()`) 
-* 取得下列頁面的版本。 這些呼叫的尾碼為 "Next" (例如 `DigitalTwins.ListEdgesNext()`) 
+在非查詢分頁模式中，以下程式碼片段顯示如何從 Azure 數位 Twins 抓取傳出關聯性的分頁清單：
 
-以下程式碼片段顯示如何從 Azure 數位 Twins 取得傳出關聯性的分頁清單：
 ```csharp
-try
-{
-    // List to hold the results in
-    List<object> relList = new List<object>();
-    // Enumerate the IPage object returned to get the results
-    // ListAsync will throw if an error occurs
-    IPage<object> relPage = await client.DigitalTwins.ListEdgesAsync(id);
-    relList.AddRange(relPage);
-    // If there are more pages, the NextPageLink in the page is set
-    while (relPage.NextPageLink != null)
+ try 
+ {
+     // List the relationships.
+    AsyncPageable<BasicRelationship> results = client.GetRelationshipsAsync<BasicRelationship>(srcId);
+    Console.WriteLine($"Twin {srcId} is connected to:");
+    // Iterate through the relationships found.
+    int numberOfRelationships = 0;
+    await foreach (string rel in results)
     {
-        // Get more pages...
-        relPage = await client.DigitalTwins.ListEdgesNextAsync(relPage.NextPageLink);
-        relList.AddRange(relPage);
+         ++numberOfRelationships;
+         // Do something with each relationship found
+         Console.WriteLine($"Found relationship-{rel.Name}->{rel.TargetId}");
     }
-    Console.WriteLine($"Found {relList.Count} relationships on {id}");
-    // Do something with each object found
-    // As relationships are custom types, they are JSON.Net types
-    foreach (JObject r in relList)
-    {
-        string relId = r.Value<string>("$edgeId");
-        string relName = r.Value<string>("$relationship");
-        Console.WriteLine($"Found relationship {relId} from {id}");
-    }
-}
-catch (ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error retrieving relationships on {id}: {e.Response.StatusCode}");
+    Console.WriteLine($"Found {numberOfRelationships} relationships on {srcId}");
+} catch (RequestFailedException rex) {
+    Console.WriteLine($"Relationship retrieval error: {rex.Status}:{rex.Message}");   
 }
 ```
 
@@ -189,7 +174,7 @@ try
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 逐步解說建立用戶端應用程式的步驟，讓您可以在其中使用 SDK：
 * [*教學課程：撰寫用戶端應用程式的程式碼*](tutorial-code.md)

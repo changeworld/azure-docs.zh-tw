@@ -6,18 +6,20 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 08/21/2020
-ms.custom: contperfq1
-ms.openlocfilehash: f6d8f804fa26383435d191af27289ffd2ecb3e0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/28/2020
+ms.custom: contperfq1, contperfq2
+ms.openlocfilehash: 756c87299db85e426b4793d51bea833aa694a830
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88755087"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145951"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>使用 Apache Beeline 用戶端搭配 Apache Hive
 
-了解如何使用 [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) 在 HDInsight 上執行 Apache Hive 查詢。
+本文說明如何使用命令列 [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) 用戶端，透過 SSH 連線來建立和執行 Apache Hive 查詢。
+
+## <a name="background"></a>背景
 
 Beeline 是 Hive 用戶端，隨附於您的 HDInsight 叢集的前端節點。 若要連線到您的 HDInsight 叢集上安裝的 Beeline 用戶端，或在本機安裝 Beeline，請參閱 [連接到或安裝 Apache Beeline](connect-install-beeline.md)。 Beeline 會使用 JDBC 連線至 HiveServer2，它是裝載在 HDInsight 叢集上的服務。 您也可以使用 Beeline 透過網際網路從遠端存取 HDInsight 上的 Hive。 下列範例提供最常見的連接字串，用來從 Beeline 連接到 HDInsight。
 
@@ -27,9 +29,7 @@ Beeline 是 Hive 用戶端，隨附於您的 HDInsight 叢集的前端節點。 
 
 * 請注意叢集主要儲存體的 URI 配置。 例如，  `wasb://` 適用于 Azure 儲存體、 `abfs://` Azure Data Lake Storage Gen2 或 `adl://` Azure Data Lake Storage Gen1。 如果已針對 Azure 儲存體啟用安全傳輸，則 URI 為 `wasbs://` 。 如需詳細資訊，請參閱 [安全傳輸](../../storage/common/storage-require-secure-transfer.md)。
 
-* 選項1： SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。 本檔中的大部分步驟都假設您是使用 Beeline 從 SSH 會話連線到叢集。
-
-* 選項2：本機 Beeline 用戶端。
+* SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。 本檔中的大部分步驟都假設您是使用 Beeline 從 SSH 會話連線到叢集。 您也可以使用本機 Beeline 用戶端，但本文未涵蓋這些步驟。
 
 ## <a name="run-a-hive-query"></a>執行 HIVE 查詢
 
@@ -56,7 +56,7 @@ Beeline 是 Hive 用戶端，隨附於您的 HDInsight 叢集的前端節點。 
     show tables;
     ```
 
-    新的叢集上只會列出一個資料表：**hivesampletable**。
+    新的叢集上只會列出一個資料表： **hivesampletable** 。
 
 4. 使用下列命令來顯示 hivesampletable 的結構描述：
 
@@ -181,7 +181,7 @@ Beeline 是 Hive 用戶端，隨附於您的 HDInsight 叢集的前端節點。 
     > [!NOTE]  
     > 與外部資料表不同之處在於，捨棄內部資料表也會刪除基礎資料。
 
-1. 若要儲存檔案，請使用**Ctrl** + **X**，然後輸入**Y**，最後**輸入**。
+1. 若要儲存檔案，請使用 **Ctrl** + **X** ，然後輸入 **Y** ，最後 **輸入** 。
 
 1. 使用下列命令，以使用 Beeline 來執行檔案：
 
@@ -211,7 +211,7 @@ Beeline 是 Hive 用戶端，隨附於您的 HDInsight 叢集的前端節點。 
     3 rows selected (0.813 seconds)
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * 如需 HDInsight 中 Hive 的一般資訊，請參閱 [在 hdinsight 上搭配使用 Apache Hive 與 Apache Hadoop](hdinsight-use-hive.md)
 

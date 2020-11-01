@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 10/06/2020
-ms.openlocfilehash: 54775d7e9923505c6e68a47feed6726b9cb84c47
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0d22e10a71c3eee2026f55a73074ba02c68c2b78
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129927"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146172"
 ---
 # <a name="publishing-guide-by-offer-type"></a>依供應項目類型的發行指南
 
@@ -39,12 +39,10 @@ ms.locfileid: "93129927"
 | [**IoT Edge 模組**](iot-edge-module.md) | Azure IoT Edge 模組是 IoT Edge 所管理的最小計算單位，並可包含 Microsoft 服務 (例如「Azure 串流分析」)、第三方服務，或您自己的解決方案特定程式碼。 |
 | [**受控服務**](partner-center-portal/create-new-managed-service-offer.md) | 您可以透過 [Azure Lighthouse](../lighthouse/overview.md)建立受控服務供應專案，以及管理客戶委派的訂用帳戶或資源群組。|
 | [**Power BI 應用程式** <br/>**Microsoft 365**](appsource-offer-publishing-guide.md) | 您可以發佈建置於或擴充 Power BI 和 Microsoft 365 的 AppSource 供應專案。|
-| [**軟體即服務**](plan-saas-offer.md) | 使用「軟體即服務」 (SaaS) 供應專案類型，讓客戶以訂用帳戶的形式購買您的 SaaS 型技術解決方案。 |
+| [**軟體即服務**](plan-saas-offer.md) | 使用「軟體即服務」 (SaaS) 供應專案類型，讓客戶以訂用帳戶的形式購買您的 SaaS 型技術解決方案。 如需 SaaS 供應專案的單一登入需求的詳細資訊，請參閱在 [商業市場中 Azure AD 和可交易 saas](azure-ad-saas.md)供應專案。 |
 
 
-如需有關如何藉由列出選項和供應專案類型的單一登入需求的詳細資訊，請參閱 [**Azure AD 需求**](enable-appsource-marketplace-using-azure-ad.md)。
-
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 請參閱您的供應專案類型之對應文章中的資格需求，以完成供應專案的選取和設定。
 - 請參閱每個線上商店的發佈模式，以取得解決方案如何對應至供應專案類型和設定的範例。

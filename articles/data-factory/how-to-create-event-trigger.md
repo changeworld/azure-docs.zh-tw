@@ -5,18 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
+author: chez-charlie
+ms.author: chez
 manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: 10f0079f47e5d2fd99b358fcc5cfb4c80aa9bd91
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de416277de34e1c3717d581697f05c98c48d1959
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84508891"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146002"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>建立會執行管線來回應事件的觸發程序
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "84508891"
 
 
 > [!NOTE]
-> 本文章中說明的整合，仰賴 [Azure 事件方格](https://azure.microsoft.com/services/event-grid/)。 請確認您的訂用帳戶已向事件方格資源提供者註冊。 如需詳細資訊，請參閱[資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。 您必須能夠執行 *EventGrid/eventSubscriptions/** 動作。 此動作是 EventGrid EventSubscription 參與者內建角色的一部分。
+> 本文章中說明的整合，仰賴 [Azure 事件方格](https://azure.microsoft.com/services/event-grid/)。 請確認您的訂用帳戶已向事件方格資源提供者註冊。 如需詳細資訊，請參閱[資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)。 您必須能夠執行 *EventGrid/eventSubscriptions/* * 動作。 此動作是 EventGrid EventSubscription 參與者內建角色的一部分。
 
 ## <a name="data-factory-ui"></a>Data Factory UI
 
@@ -69,11 +69,11 @@ ms.locfileid: "84508891"
 
 1. 若要將管線連結到此觸發程序，請移至管線畫布，然後按一下 [新增觸發程序]，然後選取 [新增/編輯]。 當側邊導覽出現時，按一下 [選擇觸發程序...] 下拉式清單，然後選取您所建立的觸發程序。 按 [下一步：資料預覽] 以確認設定正確無誤，然後按 [下一步] 來驗證資料預覽是否正確。
 
-1. 如果您的管線具有參數，即可在觸發程序的 runs 參數側邊導覽上加以指定。 事件觸發程序會將 Blob 的資料夾路徑和檔案名稱擷取到 `@trigger().outputs.body.folderPath` 和 `@trigger().outputs.body.fileName` 屬性中。 若要在管線中使用這些屬性的值，您必須將屬性對應到管線參數。 在將屬性對應到參數之後，您可在整個管線中透過 `@pipeline().parameters.parameterName` 運算式存取觸發程序所擷取的值。 當您完成時按一下 [完成]。
+1. 如果您的管線具有參數，即可在觸發程序的 runs 參數側邊導覽上加以指定。 事件觸發程序會將 Blob 的資料夾路徑和檔案名稱擷取到 `@triggerBody().folderPath` 和 `@triggerBody().fileName` 屬性中。 若要在管線中使用這些屬性的值，您必須將屬性對應到管線參數。 在將屬性對應到參數之後，您可在整個管線中透過 `@pipeline().parameters.parameterName` 運算式存取觸發程序所擷取的值。 當您完成時按一下 [完成]。
 
     ![將屬性對應到管線參數](media/how-to-create-event-trigger/event-based-trigger-image4.png)
 
-在上述範例中，觸發程序已設定為在 ample-data 容器的 event-testing 資料夾中建立以 .csv 結尾的 Blob 路徑時引發。 [folderPath] 和 [fileName] 屬性都會擷取新 Blob 的位置。 例如，將 MoviesDB.csv 新增至 sample-data/event-testing 路徑時，`@trigger().outputs.body.folderPath` 的值為 `sample-data/event-testing`，而 `@trigger().outputs.body.fileName` 的值為 `moviesDB.csv`。 這些值會在範例中對應至管線參數 `sourceFolder` 和 `sourceFile`，其在管線中可分別作為 `@pipeline().parameters.sourceFolder` 和 `@pipeline().parameters.sourceFile` 使用。
+在上述範例中，觸發程序已設定為在 ample-data 容器的 event-testing 資料夾中建立以 .csv 結尾的 Blob 路徑時引發。 [folderPath] 和 [fileName] 屬性都會擷取新 Blob 的位置。 例如，將 MoviesDB.csv 新增至 sample-data/event-testing 路徑時，`@triggerBody().folderPath` 的值為 `sample-data/event-testing`，而 `@triggerBody().fileName` 的值為 `moviesDB.csv`。 這些值會在範例中對應至管線參數 `sourceFolder` 和 `sourceFile`，其在管線中可分別作為 `@pipeline().parameters.sourceFolder` 和 `@pipeline().parameters.sourceFile` 使用。
 
 ## <a name="json-schema"></a>JSON 結構描述
 
@@ -92,7 +92,7 @@ ms.locfileid: "84508891"
 本節提供事件型觸發程序設定的範例。
 
 > [!IMPORTANT]
-> 每當您指定容器與資料夾、容器與檔案，或容器、資料夾與檔案時，都必須包含路徑的 `/blobs/` 區段，如下列範例所示。 針對 **blobPathBeginsWith**，Data Factory UI 會自動在觸發程序 JSON 中的資料夾與容器名稱之間新增 `/blobs/`。
+> 每當您指定容器與資料夾、容器與檔案，或容器、資料夾與檔案時，都必須包含路徑的 `/blobs/` 區段，如下列範例所示。 針對 **blobPathBeginsWith** ，Data Factory UI 會自動在觸發程序 JSON 中的資料夾與容器名稱之間新增 `/blobs/`。
 
 | 屬性 | 範例 | 描述 |
 |---|---|---|

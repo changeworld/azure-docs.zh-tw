@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 69a66c49d64ab9ba589050e1f20399f7f193b76e
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: d98f2390be3b3f4b3770125185cb33daa5ff6371
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912951"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93143598"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>內容仲裁審核、工作流程和作業
 
@@ -23,9 +23,24 @@ ms.locfileid: "92912951"
 
 ## <a name="reviews"></a>評論
 
-在評論中，會將內容上傳到審核工具，並顯示在 [ **審核** ] 索引標籤底下。從這裡開始，使用者可以修改套用的標籤，並視需要套用自己的自訂標記。 當使用者提交評論時，會將結果傳送至指定的回呼端點，並從網站移除內容。
+在評論中，會將內容上傳到審核工具。 您可以按一下儀表板上 [ **審核** ] 索引標籤下的內容類型來加以查看。 從審核畫面中，您可以修改套用的標籤，並視需要套用您自己的自訂標記。 當您提交評論時，會將結果傳送至指定的回呼端點，並從網站移除內容。
 
-![在瀏覽器的 [審核] 索引標籤上開啟審核工具網站](./Review-Tool-user-Guide/images/image-workflow-review.png)
+> [!div class="mx-imgBorder"]
+> ![已選取 [審核] 索引標籤的審核工具網站](./Review-Tool-user-Guide/images/review-tab.png)
+
+### <a name="manage-reviews"></a>管理評論
+
+從儀表板中，流覽至 [ **管理員**  ->  **管理審核** ] 以查看管理畫面。 在這裡，您可以看到所有評論的清單 (暫止和已完成的) 。
+
+每個審核的三點 **動作** 按鈕可讓您移至審核畫面，或檢查該評論的歷程記錄。
+
+> [!div class="mx-imgBorder"]
+> ![審核工具網站的評論畫面](./Review-Tool-user-Guide/images/manage-reviews.png)
+
+您可以使用 [ **搜尋** ] 工具列，依各種類別來排序評論，例如審核狀態、標記、內容類型、子小組、指派的使用者，以及建立/修改日期。
+
+> [!div class="mx-imgBorder"]
+> ![已選取 [審核] 索引標籤的審核工具網站](./Review-Tool-user-Guide/images/review-search.png)
 
 請參閱 [審核工具指南](./review-tool-user-guide/review-moderated-images.md) 以開始建立評論，或參閱 [REST API 指南](./try-review-api-review.md) ，以瞭解如何以程式設計方式進行。
 
@@ -35,11 +50,12 @@ ms.locfileid: "92912951"
 
 ### <a name="view-workflows"></a>查看工作流程
 
-若要查看您現有的工作流程，請移至 [審核工具](https://contentmoderator.cognitive.microsoft.com/)，然後選取 [ **設定**  >  **工作流程** ]。
+若要查看您現有的工作流程，請移至 [ [審核] 工具](https://contentmoderator.cognitive.microsoft.com/)，然後選取 [ **管理**  >  **工作流程** ]。
 
-![預設工作流程](images/default-workflow-listed.PNG)
+> [!div class="mx-imgBorder"]
+> ![預設工作流程](images/default-workflow-list.png)
 
-工作流程可完整描述為 JSON 字串，使其可透過程式設計方式存取。 如果您針對工作流程選取 [ **編輯** ] 選項，然後選取 [ **json** ] 索引標籤，您會看到如下所示的 json 運算式：
+工作流程會定義為 JSON 字串，使其可透過程式設計方式存取。 如果您針對工作流程選取 [ **編輯** ] 選項，然後選取 [ **json** ] 索引標籤，您會看到如下所示的 json 運算式：
 
 ```json
 {

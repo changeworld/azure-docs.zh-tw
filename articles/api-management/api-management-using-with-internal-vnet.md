@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: 06d114c500722259d02a940633a76d043b83064a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 0832c975ecb410b97a24c975f9fc0f4799120abd
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077485"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145509"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>在內部虛擬網路中使用 Azure API 管理服務
 在 Azure 虛擬網路中，Azure API 管理可以管理無法在網際網路上存取的 API。 有許多 VPN 技術可讓您建立連線。 API 管理在虛擬網路內有兩種主要的部署模式：
@@ -39,15 +39,15 @@ ms.locfileid: "92077485"
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要執行本文所述的步驟，您必須具有：
 
-+ **有效的 Azure 訂**用帳戶。
++ **有效的 Azure 訂** 用帳戶。
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ **Azure API 管理執行個體**。 如需詳細資訊，請參閱[建立 Azure API 管理執行個體](get-started-create-service-instance.md)。
++ **Azure API 管理執行個體** 。 如需詳細資訊，請參閱[建立 Azure API 管理執行個體](get-started-create-service-instance.md)。
 + 在虛擬網路中部署 API 管理服務時，會使用並需要開啟 [埠清單](./api-management-using-with-vnet.md#required-ports) 。 
 
 ## <a name="creating-an-api-management-in-an-internal-virtual-network"></a><a name="enable-vpn"> </a>在內部虛擬網路中建立 API 管理
@@ -61,16 +61,18 @@ ms.locfileid: "92077485"
 
     ![用於在內部虛擬網路中設定 Azure API 管理的功能表][api-management-using-internal-vnet-menu]
 
-4. 選取 [儲存]。
+4. 選取 [儲存]  。
 
-部署成功後，您應該會在總覽分頁上看到 API 管理服務的 **私人** 虛擬 ip 位址和 **公用** 虛擬 ip 位址。 **私人**虛擬 ip 位址是 API 管理委派子網內的負載平衡 ip 位址，可透過其 `gateway` `portal` 存取、 `management` 和 `scm` 端點。 **公用**虛擬 IP 位址**僅**適用于透過埠3443對端點的控制平面流量 `management` ，並且可鎖定至[ApiManagement][ServiceTags] servicetag。
+部署成功後，您應該會在總覽分頁上看到 API 管理服務的 **私人** 虛擬 ip 位址和 **公用** 虛擬 ip 位址。 **私人** 虛擬 ip 位址是 API 管理委派子網內的負載平衡 ip 位址，可透過其 `gateway` `portal` 存取、 `management` 和 `scm` 端點。 **公用** 虛擬 IP 位址 **僅** 適用于透過埠3443對端點的控制平面流量 `management` ，並且可鎖定至 [ApiManagement][ServiceTags] servicetag。
 
 ![已設定內部虛擬網路的 API 管理儀表板][api-management-internal-vnet-dashboard]
 
 > [!NOTE]
-> Azure 入口網站上可用的測試主控台不適用於**內部** VNET 部署服務，因為並未在公用 DNS 上註冊閘道器 URL。 您應該改為使用**開發人員入口網站**上提供的測試主控台。
+> Azure 入口網站上可用的測試主控台不適用於 **內部** VNET 部署服務，因為並未在公用 DNS 上註冊閘道器 URL。 您應該改為使用 **開發人員入口網站** 上提供的測試主控台。
 
-### <a name="enable-a-virtual-network-connection-by-using-powershell-cmdlets"></a>使用 PowerShell Cmdlet 啟用虛擬網路連線
+### <a name="deploy-api-management-into-virtual-network"></a><a name="deploy-apim-internal-vnet"> </a>將 API 管理部署至虛擬網路
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-internal-vnet%2Fazuredeploy.json)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -125,7 +127,7 @@ ms.locfileid: "92077485"
 ## <a name="routing"></a><a name="routing"> </a> 路由
 
 * 子網範圍中的負載平衡 *私* 用虛擬 IP 位址將會保留，並用於從虛擬網路記憶體取 API 管理服務端點。 此 *私人* IP 位址可在 Azure 入口網站中服務的總覽分頁上找到。 此位址必須向虛擬網路所使用的 DNS 伺服器註冊。
-* 也會保留負載平衡的 *公用* IP 位址 (VIP) ，以透過埠3443提供管理服務端點的存取權。 此 *公用* IP 位址可以在 Azure 入口網站中服務的總覽分頁上找到。 *公用*IP 位址只會用於透過埠3443對端點的控制平面流量 `management` ，並且可以鎖定到[ApiManagement][ServiceTags] servicetag。
+* 也會保留負載平衡的 *公用* IP 位址 (VIP) ，以透過埠3443提供管理服務端點的存取權。 此 *公用* IP 位址可以在 Azure 入口網站中服務的總覽分頁上找到。 *公用* IP 位址只會用於透過埠3443對端點的控制平面流量 `management` ，並且可以鎖定到 [ApiManagement][ServiceTags] servicetag。
 * 來自子網 IP 範圍 (DIP) 的 IP 位址將會指派給服務中的每個 VM，並將用來存取虛擬網路內的資源。 公用 IP 位址 (VIP) 將用來存取虛擬網路外部的資源。 如果使用 IP 限制清單來保護虛擬網路內的資源，則必須指定要在其中部署 API 管理服務之子網的整個範圍，以授與或限制服務的存取權。
 * 負載平衡的公用和私人 IP 位址可以在 Azure 入口網站的總覽分頁上找到。
 * 如果服務已從移除，然後再新增回虛擬網路，則指派給公用和私用存取的 IP 位址可能會變更。 如果發生這種情況，可能需要更新虛擬網路內的 DNS 註冊、路由規則和 IP 限制清單。

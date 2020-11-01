@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4ddafd9fbeda1752a782085244597aea3ccbdd2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12ba0900f2499965f7843672183310dfecfbab2b
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271897"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146666"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>將記錄磁片遷移至 Ultra 磁片
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,15 +44,15 @@ VM 大小和區域的子集都支援 Ultra 磁片。 繼續之前，請先驗證
 
 1. 移至 [Azure 入口網站](https://portal.azure.com/)中的虛擬機器。 
 1. 停止/解除配置虛擬機器。 
-1. 在 [**設定**] 底下選取 [**磁片**]，然後選取 [**其他設定**]。 
+1. 在 [ **設定** ] 底下選取 [ **磁片** ]，然後選取 [ **其他設定** ]。 
 
    :::image type="content" source="media/storage-migrate-to-ultradisk/additional-disks-settings-azure-portal.png" alt-text="在 Azure 入口網站的 [設定] 底下，選取 [磁片] 的其他設定":::
 
-1. 選取 **[是]** 可 **啟用 Ultra 磁片相容性**。 
+1. 選取 **[是]** 可 **啟用 Ultra 磁片相容性** 。 
 
    :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="在 Azure 入口網站的 [設定] 底下，選取 [磁片] 的其他設定":::
 
-1. 選取 [儲存]****。 
+1. 選取 [儲存]  。 
 
 
 
@@ -83,7 +83,7 @@ VM 大小和區域的子集都支援 Ultra 磁片。 繼續之前，請先驗證
 1. 確認 SQL Server 所使用的服務帳戶。 您可以使用 SQL Server 組態管理員或 services.msc 來這麼做。
 1. 流覽至您的新磁片。 
 1. 建立資料夾 (或多個資料夾) 用於您的記錄檔。 
-1. 以滑鼠右鍵按一下該資料夾，然後選取 [屬性]****。
+1. 以滑鼠右鍵按一下該資料夾，然後選取 [屬性]  。
 1. 在 [ **安全性** ] 索引標籤上，將 [完全控制] 存取權授與 SQL Server 服務帳戶。 
 1. 選取 **[確定]**  以儲存您的設定。 
 1. 針對您計畫擁有 SQL 資料的每個根層級資料夾重複此步驟。 
@@ -97,7 +97,7 @@ VM 大小和區域的子集都支援 Ultra 磁片。 繼續之前，請先驗證
 
 
 
-# <a name="transact-sql-t-sql"></a>[Transact-SQL (T-SQL)](#tab/tsql)
+# <a name="transact-sql-t-sql"></a>[Transact-sql (T-sql) ](#tab/tsql)
 
 使用 T-sql 將現有的檔案移至新的位置：
 
@@ -143,14 +143,14 @@ VM 大小和區域的子集都支援 Ultra 磁片。 繼續之前，請先驗證
 使用 SSMS 將現有的檔案移至新的位置：
 
 1. SQL Server Management Studio (SSMS) 連接到您的資料庫。 
-1. 以滑鼠右鍵按一下資料庫 **，選取 [****屬性**]，然後選取 [檔案]。 
+1. 以滑鼠右鍵按一下資料庫 **，選取 [****屬性** ]，然後選取 [檔案]。 
 1. 記下現有檔案的路徑。 
-1. 選取 [確定]**** 關閉對話方塊。 
-1. 以滑鼠右鍵按一下資料庫 **，選取 [** 工作卸  >  **離**]。 
+1. 選取 [確定]  關閉對話方塊。 
+1. 以滑鼠右鍵按一下資料庫 **，選取 [** 工作卸  >  **離** ]。 
 1. 請依照嚮導來卸離資料庫。 
 1. 使用檔案總管手動將記錄檔移至新的位置。
 1. 在 SQL Server Management Studio 中附加資料庫
-   1. 在**物件總管**中，以滑鼠右鍵按一下 [**資料庫**]，然後選取 [**附加資料庫**]。 
+   1. 在 **物件總管** 中，以滑鼠右鍵按一下 [ **資料庫** ]，然後選取 [ **附加資料庫** ]。 
    1. 使用對話方塊，加入每個檔案，包括其新位置中的記錄檔。 
    1. 選取 **[確定]** 以附加資料庫。 
 
@@ -159,7 +159,7 @@ VM 大小和區域的子集都支援 Ultra 磁片。 繼續之前，請先驗證
 ---
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 請參閱 [效能最佳做法](performance-guidelines-best-practices.md) ，以取得可改善效能的其他設定。 
 

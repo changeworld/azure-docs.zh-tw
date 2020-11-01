@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 03/18/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: d93ced4b45befec207494909de61d30a98d2a67e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "91333727"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>收集搜尋流量分析的遙測資料
@@ -71,7 +71,7 @@ ms.locfileid: "91333727"
 
 **使用 C#**
 
-如果使用 C#，就會在您的應用程式設定中找到 **InstrumentationKey**，例如，如果專案為 ASP.NET，就會找到 appsettings.json。 如果您不確定金鑰位置，請回去參閱註冊指示。
+如果使用 C#，就會在您的應用程式設定中找到 **InstrumentationKey** ，例如，如果專案為 ASP.NET，就會找到 appsettings.json。 如果您不確定金鑰位置，請回去參閱註冊指示。
 
 ```csharp
 private static TelemetryClient _telemetryClient;
@@ -129,12 +129,12 @@ var searchId = request.getResponseHeader('x-ms-azs-searchid');
 
 每當使用者發出搜尋要求時，您應該將其記錄為搜尋事件，並包含下列關於 Application Insights 自訂事件的結構描述。 請記得只記錄使用者產生的搜尋查詢。
 
-+ **SearchServiceName**：(字串) 搜尋服務名稱
-+ **SearchId**：(guid) 搜尋查詢的唯一識別碼 (出現在搜尋回應中)
-+ **IndexName**：(字串) 要查詢的搜尋服務索引
-+ **QueryTerms**：(字串) 使用者輸入的搜尋字詞
-+ **ResultCount**：(int) 傳回文件的數目 (出現在搜尋回應中)
-+ **ScoringProfile**：(字串) 所使用評分設定檔的名稱 (如果有的話)
++ **SearchServiceName** ：(字串) 搜尋服務名稱
++ **SearchId** ：(guid) 搜尋查詢的唯一識別碼 (出現在搜尋回應中)
++ **IndexName** ：(字串) 要查詢的搜尋服務索引
++ **QueryTerms** ：(字串) 使用者輸入的搜尋字詞
++ **ResultCount** ：(int) 傳回文件的數目 (出現在搜尋回應中)
++ **ScoringProfile** ：(字串) 所使用評分設定檔的名稱 (如果有的話)
 
 > [!NOTE]
 > 請將 $count=true 新增至搜尋查詢，以要求使用者所產生查詢的計數。 如需詳細資訊，請參閱[搜尋文件 (REST)](/rest/api/searchservice/search-documents#counttrue--false)。
@@ -172,10 +172,10 @@ appInsights.trackEvent("Search", {
 
 每當使用者點選文件時，必須記錄這個訊號才可進行搜尋分析。 使用 Application Insights 自訂事件，記錄包含下列結構描述的這些事件：
 
-+ **ServiceName**：(字串) 搜尋服務名稱
-+ **SearchId**：(guid) 相關搜尋查詢的唯一識別碼
-+ **DocId**：(字串) 文件識別碼
-+ **Position**：(int) 搜尋結果頁面中文件的順位
++ **ServiceName** ：(字串) 搜尋服務名稱
++ **SearchId** ：(guid) 相關搜尋查詢的唯一識別碼
++ **DocId** ：(字串) 文件識別碼
++ **Position** ：(int) 搜尋結果頁面中文件的順位
 
 > [!NOTE]
 > 位置是指您應用程式中的基本順序。 您可以自由地設定這個數字 (只要它一律相同) 以便進行比較。

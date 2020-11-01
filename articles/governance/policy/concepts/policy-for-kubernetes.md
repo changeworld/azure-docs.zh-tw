@@ -3,12 +3,12 @@ title: 瞭解 Kubernetes 的 Azure 原則
 description: 了解 Azure 原則如何使用 Rego 和 Open Policy Agent 來管理在 Azure 或內部部署中執行 Kubernetes 的叢集。
 ms.date: 09/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: bd0dc08583b126b6260999ace14d8fc13c52c1f7
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1e85d7af26e52ea38c09ec0c052b5c6a2787bb80
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676704"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146291"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>了解適用於 Kubernetes 叢集的 Azure 原則 \(部分機器翻譯\)
 
@@ -37,7 +37,7 @@ Azure 原則會延伸 [Gatekeeper](https://github.com/open-policy-agent/gatekeep
    - [AKS 引擎](#install-azure-policy-add-on-for-aks-engine)
 
    > [!NOTE]
-   > 如需安裝的常見問題，請參閱 [疑難排解-Azure 原則附加](../troubleshoot/general.md#add-on-installation-errors)元件。
+   > 如需安裝的常見問題，請參閱 [疑難排解-Azure 原則附加](../troubleshoot/general.md#add-on-for-kubernetes-installation-errors)元件。
 
 1. [了解適用於 Kubernetes 的 Azure 原則語言](#policy-language)
 

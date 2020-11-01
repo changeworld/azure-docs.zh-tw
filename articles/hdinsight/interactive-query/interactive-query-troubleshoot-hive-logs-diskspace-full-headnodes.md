@@ -1,32 +1,32 @@
 ---
-title: 填滿磁碟空間的 Apache Hive 記錄-Azure HDInsight
-description: Apache Hive 記錄檔會將 Azure HDInsight 中前端節點的磁碟空間填滿。
+title: 疑難排解： Apache Hive 記錄填滿磁碟空間-Azure HDInsight
+description: 本文提供當 Apache Hive 記錄填滿 Azure HDInsight 中前端節點的磁碟空間時，所要遵循的疑難排解步驟。
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: nisgoel
 ms.author: nisgoel
 ms.reviewer: jasonh
 ms.date: 10/05/2020
-ms.openlocfilehash: 5554a66927fc70f22ec552b938ae62038a04acb9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 64bf5714f5eb99df9929a47fef414a827ec680af
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533014"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145628"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>案例： Apache Hive 記錄檔將會填滿前端節點上的磁碟空間 Azure HDInsight
 
-本文說明 Azure HDInsight 叢集中前端節點的磁碟空間不足的疑難排解步驟和可能的解決方式。
+本文說明 Azure HDInsight 叢集中前端節點的磁碟空間不足時的疑難排解步驟和可能的解決方式。
 
 ## <a name="issue"></a>問題
 
-在 Apache Hive/LLAP 叢集上，不需要的記錄會佔用前端節點上的整個磁碟空間。 基於此原因，可能會出現下列問題。
+在 Apache Hive/LLAP 叢集上，不需要的記錄會佔用前端節點上的整個磁碟空間。 這種情況可能會導致下列問題：
 
-1. SSH 存取失敗，因為前端節點上沒有空格。
-2. Ambari 提供 *HTTP 錯誤：503服務無法使用* 。
-3. HiveServer2 Interactive 無法重新開機。
+- SSH 存取失敗，因為前端節點上沒有空格。
+- Ambari 擲回 *HTTP 錯誤：503服務無法使用* 。
+- HiveServer2 Interactive 無法重新開機。
 
-`ambari-agent`當問題發生時，記錄檔會顯示下列各項。
+`ambari-agent`當問題發生時，記錄檔會包含下列專案：
 ```
 ambari_agent - Controller.py - [54697] - Controller - ERROR - Error:[Errno 28] No space left on device
 ```
@@ -36,17 +36,17 @@ ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckR
 
 ## <a name="cause"></a>原因
 
-在 advanced hive log4j 設定中，會根據上次修改日期，針對超過30天的檔案設定目前的預設刪除排程。
+在 advanced Hive log4j 設定中，目前的預設刪除排程是根據上次修改日期，刪除超過30天的檔案。
 
 ## <a name="resolution"></a>解決方案
 
-1. 流覽至 Ambari 入口網站上的 Hive 元件摘要，然後按一下 [] 索引標籤 `Configs` 。
+1. 移至 Ambari 入口網站上的 Hive 元件摘要，然後選取 [ **配置] 索引** 標籤。
 
-2. 移至 [ `Advanced hive-log4j` Advanced settings] 中的區段。
+2. 移至 [ `Advanced hive-log4j` **Advanced settings** ] 中的區段。
 
-3. 將 `appender.RFA.strategy.action.condition.age` 參數設定為您選擇的年齡。 14天的範例： `appender.RFA.strategy.action.condition.age = 14D`
+3. 將 `appender.RFA.strategy.action.condition.age` 參數設定為您選擇的年齡。 此範例會將年齡設定為14天： `appender.RFA.strategy.action.condition.age = 14D`
 
-4. 如果您沒有看到任何相關的設定，請附加下列設定。
+4. 如果您沒有看到任何相關的設定，請附加這些設定：
     ```
     # automatically delete hive log
     appender.RFA.strategy.action.type = Delete
@@ -57,7 +57,7 @@ ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckR
     appender.RFA.strategy.action.PathConditions.regex = hive*.*log.*
     ```
 
-5. 將設定 `hive.root.logger` 為， `INFO,RFA` 如下所示。 預設設定為 DEBUG，讓記錄變得非常大。
+5. 設定 `hive.root.logger` 為 `INFO,RFA` ，如下列範例所示。 預設設定為 `DEBUG` ，這會使記錄檔變大。
 
     ```
     # Define some default values that can be overridden by system properties
@@ -67,7 +67,7 @@ ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckR
     hive.log.file=hive.log
     ```
 
-6. 儲存這些參數，並重新啟動必要的元件。
+6. 儲存設定，然後重新開機必要的元件。
 
 ## <a name="next-steps"></a>後續步驟
 

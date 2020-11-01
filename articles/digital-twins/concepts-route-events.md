@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9c7b08b92fad07cddbdb2783f2d68cdb9be034a4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 91ba36a0bffab6c66020bab41ace65659ed084f7
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097068"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146308"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>在 Azure 數位 Twins 內外路由傳送事件
 
@@ -73,19 +73,19 @@ Azure 數位 twins 會使用 **事件路由** 將資料傳送給服務外的取�
  
 若要建立事件路由，您可以使用 Azure 數位 Twins [**資料平面 api**](how-to-manage-routes-apis-cli.md#create-an-event-route)、 [**CLI 命令**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)或 [**Azure 入口網站**](how-to-manage-routes-portal.md#create-an-event-route)。 
 
-以下範例示範如何使用 `CreateEventRoute` [.Net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) 呼叫，在用戶端應用程式中建立事件路由： 
+以下範例示範如何使用 `CreateOrReplaceEventRouteAsync` [.Net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) 呼叫，在用戶端應用程式中建立事件路由： 
 
 ```csharp
-EventRoute er = new EventRoute("endpointName");
-er.Filter("true"); //Filter allows all messages
-await client.CreateEventRoute("routeName", er);
+string eventFilter = "$eventType = 'DigitalTwinTelemetryMessages' or $eventType = 'DigitalTwinLifecycleNotification'";
+var er = new DigitalTwinsEventRoute("endpointName", eventFilter);
+await client.CreateOrReplaceEventRouteAsync("routeName", er);
 ```
 
-1. 首先 `EventRoute` 會建立物件，而此函式會採用端點的名稱。 此 `endpointName` 欄位會識別端點，例如事件中樞、事件方格或服務匯流排。 您必須在訂用帳戶中建立這些端點，並使用控制平面 Api 連接至 Azure 數位 Twins，然後再進行此註冊呼叫。
+1. 首先 `DigitalTwinsEventRoute` 會建立物件，而此函式會採用端點的名稱。 此 `endpointName` 欄位會識別端點，例如事件中樞、事件方格或服務匯流排。 您必須在訂用帳戶中建立這些端點，並使用控制平面 Api 連接至 Azure 數位 Twins，然後再進行此註冊呼叫。
 
 2. 事件路由物件也有 [**篩選**](how-to-manage-routes-apis-cli.md#filter-events) 欄位，可用來限制遵循此路由的事件種類。 篩選 `true` 可讓您不進行其他篩選， (篩選準則停用 `false` 路由) 。 
 
-3. 此事件路由物件接著會傳遞至 `CreateEventRoute` ，以及路由的名稱。
+3. 此事件路由物件接著會傳遞至 `CreateOrReplaceEventRouteAsync` ，以及路由的名稱。
 
 > [!TIP]
 > 所有 SDK 函式都有同步和非同步版本。
@@ -113,7 +113,7 @@ IoT 中樞和 Azure 數位 Twins 中的不同事件種類會產生不同類型�
 
 [!INCLUDE [digital-twins-notifications.md](../../includes/digital-twins-notifications.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 請參閱如何設定和管理事件路由：
 * [*如何：管理端點和路由*](how-to-manage-routes-apis-cli.md)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7f5ca063bcc784498dddf87f34f0f7974b95ecaf
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: b929632318de41470412811885b9f1bd3054783a
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027307"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145968"
 ---
 # <a name="write-client-app-authentication-code"></a>撰寫用戶端應用程式驗證碼
 
@@ -31,12 +31,14 @@ Azure 數位 Twins 會使用以 [OAUTH 2.0 為基礎的 Azure AD 安全性權杖
 ## <a name="common-authentication-methods-with-azureidentity"></a>使用 Azure 身分識別的常見驗證方法
 
 `Azure.Identity` 是一個用戶端程式庫，提供數個認證取得方法，可讓您用來取得持有人權杖，並使用您的 SDK 進行驗證。 雖然本文提供 c # 的範例，但您可以查看 `Azure.Identity` 數種語言，包括 .。。
+
 * [.NET (C#)](/dotnet/api/azure.identity?preserve-view=true&view=azure-dotnet)
 * [Java](/java/api/overview/azure/identity-readme?preserve-view=true&view=azure-java-stable)
 * [JavaScript](/javascript/api/overview/azure/identity-readme?preserve-view=true&view=azure-node-latest)
 * [Python](/python/api/overview/azure/identity-readme?preserve-view=true&view=azure-python)
 
 中有三種常見的認證取得方法 `Azure.Identity` ：
+
 * [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) `TokenCredential` 會針對將部署至 Azure 的應用程式提供預設驗證流程，而且是 **本機開發的建議選擇** 。 也可以啟用此功能，以嘗試本文中建議的其他兩種方法;它會包裝 `ManagedIdentityCredential` 和存取設定 `InteractiveBrowserCredential` 變數。
 * [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?preserve-view=true&view=azure-dotnet) 適用于您需要 [受控識別 (MSI) ](../active-directory/managed-identities-azure-resources/overview.md)的情況，而且是使用 Azure Functions 及部署至 Azure 服務的絕佳候選。
 * [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) 適用于互動式應用程式，可用於建立已驗證的 SDK 用戶端
@@ -154,7 +156,7 @@ try
 
 如果上述的醒目提示驗證案例並未涵蓋您應用程式的需求，您可以探索 [**Microsoft 身分識別平臺**](../active-directory/develop/v2-overview.md#getting-started)所提供的其他驗證類型。 此平臺的檔涵蓋其他驗證案例，依應用程式類型進行組織。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 深入瞭解 Azure 數位 Twins 中的安全性運作方式：
 * [*概念： Azure 數位 Twins 解決方案的安全性*](concepts-security.md)

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 09/03/2020
+ms.date: 10/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 2d895a6703123d8725a375e29e2e26b64b621f23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9090c778771436a4fcf60139f3ee59812051057a
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89436845"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145611"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：為您的應用程式提供選擇性宣告
 
@@ -42,7 +42,7 @@ ms.locfileid: "89436845"
 
 ## <a name="v10-and-v20-optional-claims-set"></a>v1.0 和 V2.0 選擇性宣告集
 
-以下列出預設可供應用程式使用的一組選擇性宣告。 若要為您的應用程式新增自訂選擇性宣告，請參閱下方的[目錄延伸模組](#configuring-directory-extension-optional-claims)。 請注意，將宣告新增至**存取權杖**時，宣告會套用至「為」應用程式 (Web API) 要求的存取權杖，而不是「由」應用程式要求的存取權杖。 無論用戶端如何存取您的 API，存取權杖中都有正確的資料，可用來向您的 API 驗證。
+以下列出預設可供應用程式使用的一組選擇性宣告。 若要為您的應用程式新增自訂選擇性宣告，請參閱下方的[目錄延伸模組](#configuring-directory-extension-optional-claims)。 請注意，將宣告新增至 **存取權杖** 時，宣告會套用至「為」應用程式 (Web API) 要求的存取權杖，而不是「由」應用程式要求的存取權杖。 無論用戶端如何存取您的 API，存取權杖中都有正確的資料，可用來向您的 API 驗證。
 
 > [!NOTE]
 > 這些宣告中大多數都可包含在 v1.0 和 v2.0 權杖的 JWT 中，但不可包含在 SAML 權杖中 (「權杖類型」欄中已註明者除外)。 取用者帳戶支援這些宣告的子集 (在「使用者類型」資料行中標示)。  列出的許多宣告不會套用至取用者使用者 (沒有租用戶，因此 `tenant_ctry` 沒有值)。
@@ -67,7 +67,7 @@ ms.locfileid: "89436845"
 | `email`                    | 此使用者可定址的電子郵件 (如果使用者有的話)。  | JWT、SAML | MSA、Azure AD | 如果使用者是租用戶中的來賓，則預設會包含此值。  若為受管理的使用者 (租用戶內的使用者)，則必須透過此選擇性宣告，或使用 OpenID 範圍 (僅限 v2.0) 來要求此值。  若為受管理的使用者，電子郵件地址必須設定於 [Office 管理入口網站](https://portal.office.com/adminportal/home#/users)。|
 | `acct`                | 租使用者中的使用者帳戶狀態 | JWT、SAML | | 如果使用者是租用戶的成員，則值為 `0`。 如果是來賓使用者，則值為 `1`。 |
 | `groups`| 群組宣告的選擇性格式化 |JWT、SAML| |與[應用程式資訊清單](reference-app-manifest.md)中的 GroupMembershipClaims 設定 (也必須設定) 搭配使用。 如需詳細資訊，請參閱下面的[群組宣告](#configuring-groups-optional-claims)。 如需群組宣告的詳細資訊，請參閱[如何設定群組宣告](../hybrid/how-to-connect-fed-group-claims.md)
-| `upn`                      | UserPrincipalName | JWT、SAML  |           | 雖然會自動包含此宣告，但在來賓使用者案例中，您可以將它指定為選擇性宣告來附加額外屬性，以修改其行為。  |
+| `upn`                      | UserPrincipalName | JWT、SAML  |           | 可與 username_hint 參數搭配使用的使用者識別碼。  不是使用者的持久性識別碼，也不能用來唯一識別使用者資訊 (例如，做為資料庫金鑰) 。 相反地，請使用使用者物件識別碼 (`oid`) 做為資料庫索引鍵。 使用 [替代登入識別碼登](/azure/active-directory/authentication/howto-authentication-use-email-signin) 入的使用者不應該顯示其使用者主體名稱 (UPN) 。 相反地，請使用下列識別碼權杖宣告來向使用者顯示登入狀態： `preferred_username` 或 `unique_name` 適用于 v1 權杖和 `preferred_username` v2 權杖。 雖然會自動包含此宣告，但在來賓使用者案例中，您可以將它指定為選擇性宣告來附加額外屬性，以修改其行為。  |
 | `idtyp`                    | Token 類型   | JWT 存取權杖 | 特殊：只在僅限應用程式的存取權杖中 |  值是 `app` 當令牌是僅限應用程式的權杖時。 這是 API 判斷權杖是否為應用程式權杖或應用程式 + 使用者權杖的最精確方式。|
 
 ## <a name="v20-specific-optional-claims-set"></a>v2.0 特有的選擇性宣告集
@@ -85,7 +85,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 | `in_corp`     | 公司網路內部        | 指出用戶端是否是從公司網路登入的。 如果不是，則不包含此宣告。   |  根據 MFA 中的[可信任 IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) 設定。    |
 | `family_name` | 姓氏                       | 提供使用者物件中定義的使用者姓氏。 <br>"family_name":"Miller" | MSA 和 Azure AD 支援。 需要 `profile` 範圍。   |
 | `given_name`  | 名字                      | 提供使用者物件上設定的使用者名字。<br>"given_name"："Frank"                   | MSA 和 Azure AD 支援。  需要 `profile` 範圍。 |
-| `upn`         | 使用者主體名稱 | 可與 username_hint 參數搭配使用的使用者識別碼。  不是使用者的持久識別碼，且不應該用於金鑰資料。 | 如需了解宣告的設定，請參閱下方的[額外屬性](#additional-properties-of-optional-claims)。 需要 `profile` 範圍。|
+| `upn`         | 使用者主體名稱 | 可與 username_hint 參數搭配使用的使用者識別碼。  不是使用者的持久性識別碼，也不能用來唯一識別使用者資訊 (例如，做為資料庫金鑰) 。 相反地，請使用使用者物件識別碼 (`oid`) 做為資料庫索引鍵。 使用 [替代登入識別碼登](/azure/active-directory/authentication/howto-authentication-use-email-signin) 入的使用者不應該顯示其使用者主體名稱 (UPN) 。 相反地，請使用下列識別碼權杖宣告來向使用者顯示登入狀態： `preferred_username` 或 `unique_name` 適用于 v1 權杖和 `preferred_username` v2 權杖。 | 如需了解宣告的設定，請參閱下方的[額外屬性](#additional-properties-of-optional-claims)。 需要 `profile` 範圍。|
 
 ### <a name="additional-properties-of-optional-claims"></a>選擇性宣告的額外屬性
 
@@ -120,7 +120,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 ## <a name="configuring-optional-claims"></a>設定選擇性宣告
 
 > [!IMPORTANT]
-> 系統**一律**使用資源 (而非用戶端) 的資訊清單來產生存取權杖。  所以，在 `...scope=https://graph.microsoft.com/user.read...` 要求中，資源是 Microsoft Graph API。  因此，系統會使用 Microsoft Graph API 資訊清單 (而不是用戶端的資訊清單) 來建立存取權杖。  即使變更應用程式的資訊清單，也絕不會導致 Microsoft Graph API 的權杖有所變化。  若要驗證 `accessToken` 變更是否生效，請為您的應用程式 (而不是另一個應用程式) 要求權杖。
+> 系統 **一律** 使用資源 (而非用戶端) 的資訊清單來產生存取權杖。  所以，在 `...scope=https://graph.microsoft.com/user.read...` 要求中，資源是 Microsoft Graph API。  因此，系統會使用 Microsoft Graph API 資訊清單 (而不是用戶端的資訊清單) 來建立存取權杖。  即使變更應用程式的資訊清單，也絕不會導致 Microsoft Graph API 的權杖有所變化。  若要驗證 `accessToken` 變更是否生效，請為您的應用程式 (而不是另一個應用程式) 要求權杖。
 
 針對您的應用程式，您可以透過 UI 或應用程式資訊清單來設定選擇性宣告。
 
@@ -238,7 +238,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 1. 從清單中，選取您要設定選擇性宣告的應用程式
 1. 在 [管理] 區段下，選取 [權杖設定]
 1. 選取 [新增群組宣告]
-1. 選取群組類型，以傳回 (**安全性群組**或 **目錄角色**、 **所有群組**，以及/或 **指派給應用程式) 的群組** 。 **指派給應用程式**選項的群組只會包含指派給應用程式的群組。 [ **所有群組** ] 選項包括 **SecurityGroup**、 **DirectoryRole**和 **DistributionList**，而不是 **指派給應用程式的群組**。 
+1. 選取群組類型，以傳回 ( **安全性群組** 或 **目錄角色** 、 **所有群組** ，以及/或 **指派給應用程式) 的群組** 。 **指派給應用程式** 選項的群組只會包含指派給應用程式的群組。 [ **所有群組** ] 選項包括 **SecurityGroup** 、 **DirectoryRole** 和 **DistributionList** ，而不是 **指派給應用程式的群組** 。 
 1. 選擇性：選取特定的權杖類型屬性，以將群組宣告值修改為包含內部部署群組屬性，或將宣告類型變更為角色
 1. 選取 [儲存]。
 

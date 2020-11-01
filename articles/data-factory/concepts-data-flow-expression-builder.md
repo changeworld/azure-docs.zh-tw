@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/14/2020
-ms.openlocfilehash: ee82d3f35b6b2b50b001e065eb81447738526b1c
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 10/30/2020
+ms.openlocfilehash: 8257be28344ac7a03738c80a003c1229282ae305
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635366"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145698"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>在對應資料流程中建立運算式
 
@@ -30,15 +30,15 @@ ms.locfileid: "92635366"
 
 在某些轉換（例如 [篩選]）中，按一下 [藍色運算式] 文字方塊將會開啟 [運算式產生 [器](data-flow-filter.md)]。 
 
-![藍色運算式方塊](media/data-flow/expressionbox.png "運算式產生器")
+![藍色運算式方塊](media/data-flow/expressionbox.png "藍色運算式方塊")
 
 當您參考相符或分組依據條件中的資料行時，運算式可以從資料行中解壓縮值。 若要建立運算式，請選取 [ **計算資料行** ]。
 
-![計算資料行選項](media/data-flow/computedcolumn.png "運算式產生器")
+![計算資料行選項](media/data-flow/computedcolumn.png "計算資料行選項")
 
 如果運算式或常值為有效輸入，請選取 [ **加入動態內容** ] 來建立評估為常值的運算式。
 
-![新增動態內容選項](media/data-flow/add-dynamic-content.png "運算式產生器")
+![新增動態內容選項](media/data-flow/add-dynamic-content.png "新增動態內容選項")
 
 ## <a name="expression-elements"></a>Expression 元素
 
@@ -46,7 +46,7 @@ ms.locfileid: "92635366"
 
 ![Expression 元素](media/data-flow/expression-elements.png "Expression 元素")
 
-### <a name="functions"></a>函式
+### <a name="functions"></a>函數
 
 對應資料流程具有可在運算式中使用的內建函數和運算子。 如需可用函數的清單，請參閱 [對應資料流程語言參考](data-flow-expression-functions.md)。
 
@@ -72,6 +72,16 @@ ms.locfileid: "92635366"
 ### <a name="parameters"></a>參數
 
 參數是在執行時間透過管線傳遞至資料流程的值。 若要參考參數，請按一下 [ **運算式** 專案] 視圖中的參數，或使用其名稱前面的貨幣符號來參考它。 例如，會參考名為 parameter1 的參數 `$parameter1` 。 若要深入瞭解，請參閱將 [對應資料流程參數](parameters-data-flow.md)化。
+
+### <a name="cached-lookup"></a>快取查閱
+
+快取查閱可讓您對快取接收的輸出進行內嵌查閱。 有兩個函數可用於每個接收、 `lookup()` 和 `outputs()` 。 參考這些函數的語法為 `cacheSinkName#functionName()` 。 如需詳細資訊，請參閱快取 [接收](data-flow-sink.md#cache-sink)。
+
+`lookup()` 接受目前轉換中的相符資料行做為參數，並傳回與快取接收中的索引鍵資料行相等的複雜資料行。 傳回的複雜資料行包含快取接收中所對應之每個資料行的 subcolumn。 例如，如果您的錯誤碼快取接收器具有與程式 `errorCodeCache` 代碼相符的索引鍵資料行，以及名為的資料行 `Message` 。 呼叫 `errorCodeCache#lookup(errorCode).Message` 會傳回與傳入的程式碼對應的訊息。 
+
+`outputs()` 不接受任何參數，而是以複雜資料行的陣列形式傳回整個快取接收。 如果在接收中指定索引鍵資料行，而且只有在快取接收器中有少量的資料列，就不能呼叫這個值。 常見的使用案例是附加遞增索引鍵的最大值。 如果快取的單一匯總資料 `CacheMaxKey` 列包含資料行 `MaxKey` ，您可以藉由呼叫來參考第一個值 `CacheMaxKey#outputs()[1].MaxKey` 。
+
+![快取查閱](media/data-flow/cached-lookup-example.png "快取查閱")
 
 ### <a name="locals"></a>本機
 
@@ -157,6 +167,6 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 
 toLong ( currentTimestamp ( # A2-toTimestamp ( ' 1970-01-01 00：00： 00.000 '，' yyyy-mm-dd HH： MM： ss。SSS ' ) ) * 1000l
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [開始建立資料轉換運算式](data-flow-expression-functions.md)

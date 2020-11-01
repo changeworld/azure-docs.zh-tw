@@ -4,10 +4,10 @@ description: 允許將現有的 Azure 服務匯流排標準命名空間遷移至
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1ed09a077f086390c658e6650171c552b361008d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "85340749"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>將現有的 Azure 服務匯流排標準命名空間遷移至 premium 層
@@ -21,11 +21,11 @@ ms.locfileid: "85340749"
 
 要注意的一些重點：
 
-- 這項遷移的目的是要進行，這表示現有的傳送者和接收者應用程式 **不需要對程式碼或設定進行任何變更**。 現有的連接字串會自動指向新的 premium 命名空間。
-- **Premium**命名空間應該沒有**任何實體**可讓遷移成功。
+- 這項遷移的目的是要進行，這表示現有的傳送者和接收者應用程式 **不需要對程式碼或設定進行任何變更** 。 現有的連接字串會自動指向新的 premium 命名空間。
+- **Premium** 命名空間應該沒有 **任何實體** 可讓遷移成功。
 - 標準命名空間中的所有 **實體** 都會在遷移過程中 **複製** 到 premium 命名空間。
 - 在進階層中，遷移支援 **每個訊息單位1000個實體** 。 若要識別您需要多少個訊息單位，請從您目前的標準命名空間上的實體數目開始。
-- 您無法直接從 **基本層** 遷移至進階層，但您可以在下一個步驟 **中，從**「基本」層首次遷移至「標準」和「高階」以間接執行。
+- 您無法直接從 **基本層** 遷移至進階層，但您可以在下一個步驟 **中，從** 「基本」層首次遷移至「標準」和「高階」以間接執行。
 
 ## <a name="migration-steps"></a>移轉步驟
 
@@ -45,7 +45,7 @@ ms.locfileid: "85340749"
 
 若要使用 Azure CLI 或 PowerShell 工具將您的服務匯流排標準命名空間遷移至 premium，請遵循下列步驟。
 
-1. 建立新的服務匯流排 premium 命名空間。 您可以參考 [Azure Resource Manager 範本](service-bus-resource-manager-namespace.md) 或 [使用 Azure 入口網站](service-bus-create-namespace-portal.md)。 請務必為**serviceBusSku**參數選取**premium** 。
+1. 建立新的服務匯流排 premium 命名空間。 您可以參考 [Azure Resource Manager 範本](service-bus-resource-manager-namespace.md) 或 [使用 Azure 入口網站](service-bus-create-namespace-portal.md)。 請務必為 **serviceBusSku** 參數選取 **premium** 。
 
 1. 設定下列環境變數，以簡化遷移命令。
 
@@ -89,14 +89,14 @@ ms.locfileid: "85340749"
 
 使用 Azure 入口網站的遷移與使用命令進行遷移的邏輯流程相同。 請遵循下列步驟，使用 Azure 入口網站來進行遷移。
 
-1. 在左窗格的 **導覽** 功能表上，選取 [ **遷移至 premium**]。 按一下 [ **開始** ] 按鈕以繼續前往下一個頁面。
+1. 在左窗格的 **導覽** 功能表上，選取 [ **遷移至 premium** ]。 按一下 [ **開始** ] 按鈕以繼續前往下一個頁面。
     ![遷移登陸頁面][]
 
-1. 完成 **安裝**。
+1. 完成 **安裝** 。
    ![安裝命名空間][]
    1. 建立並指派 premium 命名空間，以將現有的標準命名空間遷移至。
         ![安裝命名空間-建立 premium 命名空間][]
-   1. 選擇 **遷移後的名稱**。 完成遷移之後，您將使用此名稱來存取標準命名空間。
+   1. 選擇 **遷移後的名稱** 。 完成遷移之後，您將使用此名稱來存取標準命名空間。
         ![設定命名空間-選擇遷移後名稱][]
    1. 選取 **[下一步]** 以繼續。
 1. 在 standard 和 premium 命名空間之間同步實體。
@@ -208,7 +208,7 @@ az servicebus migration abort --resource-group $resourceGroup --name $standardNa
     >
     > 完成遷移之後，接收者應用程式會中斷與標準命名空間的連線，並自動連接到 premium 命名空間。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 深入瞭解 [標準與 Premium 訊息之間的差異](./service-bus-premium-messaging.md)。
 * 瞭解 [服務匯流排 premium 的高可用性和 Geo-Disaster 復原層面](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium)。

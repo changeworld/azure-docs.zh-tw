@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/29/2020
 ms.openlocfilehash: 8310c34e06d52dc12af42f8bc33f4a4d7e99d68d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "91598092"
 ---
 # <a name="data-flow-script-dfs"></a> (DFS) 的資料流程腳本
@@ -220,6 +220,6 @@ split(contains(array(columns()),isNull(#item)),
     disjoint: false) ~> LookForNULLs@(hasNULLs, noNULLs)
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 從[資料流程的總覽文章](concepts-data-flow-overview.md)開始探索資料流程
