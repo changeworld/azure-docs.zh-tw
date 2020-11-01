@@ -9,10 +9,10 @@ ms.date: 09/24/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 92a6fef3305891b47c4dc2e0f0432e1079df5a69
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "71266530"
 ---
 虛擬網路閘道會使用稱為閘道子網路的特定子網路。 閘道子網路是您設定虛擬網路時，所指定虛擬網路 IP 位址範圍的一部分。 其包含虛擬網路閘道資源和服務所使用的 IP 位址。 
