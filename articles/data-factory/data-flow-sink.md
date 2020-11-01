@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/27/2020
-ms.openlocfilehash: 6354b0a1df9d8c331de0731b230d628ac4e435df
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.date: 10/30/2020
+ms.openlocfilehash: 8a9c022400f739276060c3d8a275d06bc5ea8579
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891344"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147214"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>對應資料流程中的接收轉換
 
@@ -73,6 +73,23 @@ Azure Data Factory 可以存取90以上的 [原生連接器](connector-overview.
 
 ![Tempdb](media/data-flow/tempdb.png "Tempdb")
 
+## <a name="cache-sink"></a>快取接收
+ 
+當資料流程將資料寫入 Spark 快取，而不是資料存放區時，就會有快取 *接收器* 。 在對應資料流程中，您可以使用快取 *查閱* ，多次參考相同流程中的這項資料。 當您想要在運算式中參考資料，但是不想要明確地將資料行聯結至資料行時，這會很有用。 快取接收可協助查閱資料存放區的最大值，以及比對錯誤代碼與錯誤訊息資料庫的常見範例。 
+
+若要寫入至快取接收，請新增接收轉換， **然後選取 [** 快取] 作為接收類型。 與其他接收類型不同的是，您不需要選取資料集或連結服務，因為您不會寫入至外部存放區。 
+
+![選取快取接收](media/data-flow/select-cache-sink.png "選取快取接收")
+
+在 [接收設定] 中，您可以選擇性地指定快取接收的索引鍵資料行。 在快取查閱中使用函數時，這些會用來做為相符的條件 `lookup()` 。 如果您指定索引鍵資料行，就無法 `outputs()` 在快取查閱中使用函數。 若要深入瞭解快取查閱語法，請[參閱快取查閱。](concepts-data-flow-expression-builder.md#cached-lookup)
+
+![快取接收索引鍵資料行](media/data-flow/cache-sink-key-columns.png "快取接收索引鍵資料行")
+
+例如，如果我在呼叫的快取接收中指定單一索引鍵資料 `column1` `cacheExample` 行，則呼叫 `cacheExample#lookup()` 會有一個參數，以指定要比對快取接收中的哪一個資料列。 此函數會針對每個對應的資料行，輸出具有個子的單一複雜資料行。
+
+> [!NOTE]
+> 快取接收必須與透過快取查閱參考它的任何轉換在完全獨立的資料流程中。 快取接收也必須寫入第一個接收。 
+
 ## <a name="field-mapping"></a>欄位對應
 
 類似于「選取」轉換，您可以在接收的 [ **對應** ] 索引標籤上，決定要寫入的內送資料行。 預設會對應所有輸入資料行，包括漂移資料行。 這種行為稱為 *automapping* 。
@@ -89,5 +106,5 @@ Azure Data Factory 可以存取90以上的 [原生連接器](connector-overview.
 
 當您在偵錯工具叢集上提取資料預覽時，不會將任何資料寫入至您的接收。 將會傳回資料外觀的快照集，但不會將任何內容寫入目的地。 若要測試將資料寫入至您的接收，請從管線畫布執行管線偵錯工具。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 現在您已建立資料流程，請將 [資料流程活動新增至您的管線](concepts-data-flow-overview.md)。

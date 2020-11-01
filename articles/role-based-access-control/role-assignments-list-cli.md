@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/17/2020
+ms.date: 10/30/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9087722b54a805a0c217c236263bdcb39e5456e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 027cd8eb9c855afb845b08ce6aada7ddfd44daba
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84986256"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147006"
 ---
 # <a name="list-azure-role-assignments-using-azure-cli"></a>使用 Azure CLI 列出 Azure 角色指派
 
@@ -163,15 +163,15 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 
 ## <a name="list-role-assignments-for-a-managed-identity"></a>列出受控識別的角色指派
 
-1. 取得系統指派或使用者指派的受控識別的物件識別碼。
+1. 取得系統指派或使用者指派的受控識別的主體識別碼。
 
-    若要取得使用者指派的受控識別的物件識別碼，您可以使用 [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) 或 [az identity list](/cli/azure/identity#az-identity-list)。
+    若要取得使用者指派受控識別的主體識別碼，您可以使用 [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) 或 [az identity list](/cli/azure/identity#az-identity-list)。
 
     ```azurecli
     az ad sp list --display-name "{name}" --query [].objectId --output tsv
     ```
 
-    若要取得系統指派的受控識別的物件識別碼，您可以使用 [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list)。
+    若要取得系統指派的受控識別的主體識別碼，您可以使用 [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list)。
 
     ```azurecli
     az ad sp list --display-name "{vmname}" --query [].objectId --output tsv
@@ -185,6 +185,6 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
     az role assignment list --assignee {objectId}
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 - [使用 Azure CLI 新增或移除 Azure 角色指派](role-assignments-cli.md)

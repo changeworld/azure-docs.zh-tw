@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/28/2020
-ms.openlocfilehash: 70787f1d918064b48d37ce051bfdd2aba49472ea
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.date: 10/30/2020
+ms.openlocfilehash: 7ed1d9db09357b0702188c01a802600ff6350aff
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040182"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147261"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>對應資料流程中的查閱轉換
 
@@ -68,6 +68,10 @@ ms.locfileid: "93040182"
 在聯結、查閱和存在轉換中，如果其中一個或兩個資料流納入背景工作角色節點記憶體中，您可以藉由啟用 [廣播] 來最佳化效能。 根據預設，Spark 引擎會自動決定是否要廣播一邊。 若要手動選擇廣播哪一邊，請選取 [固定]。
 
 除非您的聯結遇到逾時錯誤，否則不建議透過 [關閉] 選項停用廣播。
+
+## <a name="cached-lookup"></a>快取查閱
+
+如果您要在相同的來源上執行多個較小的查閱，快取的接收和查閱可能會比查閱轉換更好的使用案例。 快取接收可能較佳的常見範例，是查閱資料存放區的最大值，並將錯誤碼對應至錯誤訊息資料庫。 如需詳細資訊，請瞭解快取 [接收](data-flow-sink.md#cache-sink) 和快取 [查閱](concepts-data-flow-expression-builder.md#cached-lookup)。
 
 ## <a name="data-flow-script"></a>資料流程指令碼
 

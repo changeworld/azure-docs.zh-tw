@@ -4,32 +4,32 @@ description: 瞭解如何從 Windows 電腦產生和使用 SSH 金鑰，以連�
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.date: 07/09/2020
+ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: 7e99c9191e93562211f6294cf671f431a5db455d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 183b601a4521c3ff3e4578784f7adadd01045b0e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87825560"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147142"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>如何在 Azure 上搭配 Windows 使用 SSH 金鑰
 
 本文適用于想要 [建立](#create-an-ssh-key-pair) 和使用 *安全 shell* (SSH) 金鑰的 Windows 使用者，以連線到 Azure [中的 Linux](#connect-to-your-vm) 虛擬機器 (vm) 。 您也可以在入口網站中建立 Vm 時，在要使用 [的 Azure 入口網站中產生並儲存 SSH 金鑰](../ssh-keys-portal.md) 。
 
 
-若要從 Linux 或 macOS 用戶端使用 SSH 金鑰，請參閱 [快速](mac-create-ssh-keys.md)。 如需 SSH 的詳細資訊，請參閱 [詳細步驟：在 Azure 中建立和管理 LINUX VM 的 ssh 金鑰以進行驗證](create-ssh-keys-detailed.md)。
+若要從 Linux 或 macOS 用戶端使用 SSH 金鑰，請參閱 [快速步驟](mac-create-ssh-keys.md)。 如需 SSH 的詳細資訊，請參閱 [詳細步驟：在 Azure 中建立和管理 LINUX VM 的 ssh 金鑰以進行驗證](create-ssh-keys-detailed.md)。
 
 ## <a name="overview-of-ssh-and-keys"></a>SSH 和金鑰的概觀
 
-[SSH](https://www.ssh.com/ssh/) 是允許透過不安全連線進行安全登入的加密連線通訊協定。 SSH 是 Azure 中裝載 Linux VM 的預設連線通訊協定。 雖然 SSH 本身提供加密的連線，但搭配使用密碼與 SSH 仍會讓 VM 容易遭受暴力密碼破解攻擊。 建議使用公開/私密金鑰組（也稱為 *SSH 金鑰*）透過 SSH 連線至 VM。 
+[SSH](https://www.ssh.com/ssh/) 是允許透過不安全連線進行安全登入的加密連線通訊協定。 SSH 是 Azure 中裝載 Linux VM 的預設連線通訊協定。 雖然 SSH 本身提供加密的連線，但搭配使用密碼與 SSH 仍會讓 VM 容易遭受暴力密碼破解攻擊。 建議使用公開/私密金鑰組（也稱為 *SSH 金鑰* ）透過 SSH 連線至 VM。 
 
-公開/私用金鑰組就像是您的前門鎖定。 鎖定會公開至 **公用**，任何具有適當索引鍵的人都可以開啟門。 金鑰是 **私**用的，而且只會提供給您信任的人員，因為它可用來解除鎖定大門。 
+公開/私用金鑰組就像是您的前門鎖定。 鎖定會公開至 **公用** ，任何具有適當索引鍵的人都可以開啟門。 金鑰是 **私** 用的，而且只會提供給您信任的人員，因為它可用來解除鎖定大門。 
 
 - 當您建立 VM 時，會將 *公開金鑰* 放在您的 Linux VM 上。 
 
-- 「私密金鑰」** 會保留在您的本機系統上。 保護此私密金鑰。 不要共用它。
+- 「私密金鑰」  會保留在您的本機系統上。 保護此私密金鑰。 不要共用它。
 
 當您連接到 Linux VM 時，VM 會測試 SSH 用戶端，以確定其具有正確的私密金鑰。 如果用戶端具有私密金鑰，則會獲得 VM 的存取權。 
 

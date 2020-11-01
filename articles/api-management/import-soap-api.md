@@ -9,15 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 58f2a102349baff0b70e2a0c9f72c8a4e0e44046
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81ded79ee72fb7c2d89898595602cb3e6d7ae5e2
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626814"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146972"
 ---
 # <a name="import-soap-api"></a>匯入 SOAP API
 
@@ -42,8 +42,8 @@ ms.locfileid: "91626814"
 2. 從 [加入新的 API]  清單選取 [WSDL]  。
 
     ![Soap API](./media/import-soap-api/wsdl-api.png)
-3. 在 **WSDL 規格**中，輸入 SOAP API 的所在 URL。
-4. **SOAP 傳遞**選項按鈕會預設為選取。 透過此選項，API 會公開為 SOAP。 取用者必須使用 SOAP 規則。 如果您想要「Restify」API，請遵循[匯入 SOAP API 並將其轉換成 REST](restify-soap-api.md) 中的步驟。
+3. 在 **WSDL 規格** 中，輸入 SOAP API 的所在 URL。
+4. **SOAP 傳遞** 選項按鈕會預設為選取。 透過此選項，API 會公開為 SOAP。 取用者必須使用 SOAP 規則。 如果您想要「Restify」API，請遵循[匯入 SOAP API 並將其轉換成 REST](restify-soap-api.md) 中的步驟。
 
     ![此螢幕擷取畫面顯示 [從 W S D L 建立] 對話方塊，您可以在其中輸入 W S D L 規格。](./media/import-soap-api/pass-through.png)
 5. 按 tab 鍵。
@@ -72,7 +72,7 @@ ms.locfileid: "91626814"
     頁面會顯示查詢參數的欄位和標頭的欄位。 其中一個標頭是 "Ocp-Apim-Subscription-Key"，它適用於與此 API 相關聯之產品的訂用帳戶金鑰。 如果您建立了 API 管理執行個體，您就已經是系統管理員，因此會自動填入此金鑰。 
 1. 按 [傳送]  。
 
-    後端會回應 **200 確定**與部分資料。
+    後端會回應 **200 確定** 與部分資料。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

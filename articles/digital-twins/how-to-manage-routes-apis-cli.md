@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 10/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f9e770557bc600c6eae084e36ad7c5816ee5ad16
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: e6e27ebfd1b6b44e355d4529f2838a1c5440147c
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027494"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93147091"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>管理 Azure 數位 Twins 中的端點和路由 (Api 和 CLI) 
 
@@ -176,12 +176,12 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 一個路由應該會允許選取多個通知和事件種類。 
 
-`CreateEventRoute` 是用來新增事件路由的 SDK 呼叫。 以下是其使用方式的範例：
+`CreateOrReplaceEventRouteAsync` 是用來新增事件路由的 SDK 呼叫。 以下是其使用方式的範例：
 
 ```csharp
-EventRoute er = new EventRoute("<your-endpointName>");
-er.Filter = "true"; //Filter allows all messages
-await CreateEventRoute(client, "routeName", er);
+string eventFilter = "$eventType = 'DigitalTwinTelemetryMessages' or $eventType = 'DigitalTwinLifecycleNotification'";
+var er = new DigitalTwinsEventRoute("<your-endpointName>", eventFilter);
+await CreateOrReplaceEventRouteAsync(client, "routeName", er);
 ```
     
 > [!TIP]
@@ -191,7 +191,7 @@ await CreateEventRoute(client, "routeName", er);
 
 下列範例方法顯示如何建立、列出和刪除事件路由：
 ```csharp
-private async static Task CreateEventRoute(DigitalTwinsClient client, String routeName, EventRoute er)
+private async static Task CreateEventRoute(DigitalTwinsClient client, String routeName, DigitalTwinsEventRoute er)
 {
   try
   {
@@ -199,15 +199,15 @@ private async static Task CreateEventRoute(DigitalTwinsClient client, String rou
             
     // Make a filter that passes everything
     er.Filter = "true";
-    await client.CreateEventRouteAsync(routeName, er);
+    await client.CreateOrReplaceEventRouteAsync(routeName, er);
     Console.WriteLine("Create route succeeded. Now listing routes:");
-    Pageable<EventRoute> result = client.GetEventRoutes();
-    foreach (EventRoute r in result)
+    Pageable<DigitalTwinsEventRoute> result = client.GetEventRoutes();
+    foreach (DigitalTwinsEventRoute r in result)
     {
         Console.WriteLine($"Route {r.Id} to endpoint {r.EndpointName} with filter {r.Filter} ");
     }
     Console.WriteLine("Deleting routes:");
-    foreach (EventRoute r in result)
+    foreach (DigitalTwinsEventRoute r in result)
     {
         Console.WriteLine($"Deleting route {r.Id}:");
         client.DeleteEventRoute(r.Id);
@@ -248,7 +248,7 @@ private async static Task CreateEventRoute(DigitalTwinsClient client, String rou
 
 [!INCLUDE [digital-twins-route-metrics](../../includes/digital-twins-route-metrics.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 瞭解您可以接收的不同事件訊息類型：
 * [*How to：解讀事件資料*](how-to-interpret-event-data.md)
