@@ -37,11 +37,13 @@
           href: onboard-service-principal.md
         - name: 使用 PowerShell DSC 將機器連線至 Azure Arc
           href: onboard-dsc.md
+        - name: 從 Windows Admin Center 連線機器
+          href: onboard-windows-admin-center.md
         - name: 使用 PowerShell 將機器連線至 Azure Arc
           href: onboard-powershell.md
     - name: 管理
       items:
-        - name: Azure VM 擴充功能
+        - name: VM 擴充功能
           items:
             - name: 概觀
               href: manage-vm-extensions.md

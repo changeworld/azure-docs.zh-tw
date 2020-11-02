@@ -6,6 +6,8 @@
     - name: 什麼是內容仲裁？
       href: overview.md
       expanded: true
+    - name: 新功能
+      href: whats-new.md
 - name: 快速入門
   items:
     - name: 在 Web 上試用 Content Moderator

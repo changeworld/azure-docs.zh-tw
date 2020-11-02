@@ -413,6 +413,8 @@
           href: how-to-use-automlstep-in-pipelines.md
         - name: 瞭解圖表和計量
           href: how-to-understand-automated-ml.md
+        - name: 在 .NET 應用程式中使用 ONNX 模型
+          href: how-to-use-automl-onnx-model-dotnet.md
     - name: 部署和提供模型
       items:
         - name: 部署的位置和方式
@@ -587,7 +589,7 @@
       href: resource-known-issues.md
     - name: 使用者論壇
       href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning.html'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: 比較 ML 產品
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/context/ml-context

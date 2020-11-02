@@ -14,14 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: ad0486c9d2eb6c651b507f4b0a44f4a6fc2b018f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d3c0ba55541baf3f31952b82a2fa357b48a5f1a9
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100655"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148349"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>在 Azure Sentinel 中找出使用者和實體行為分析 (UEBA) 的 advanced 威脅
+
+> [!IMPORTANT]
+>
+> - UEBA 和實體頁面功能現在已在下列 Azure Sentinel 地理位置和區域 **正式推出** ：
+>    - 美國地理位置
+>    - 歐洲西部區域
+>    - 澳大利亞地理位置
+>
+> - 在所有其他地理位置和區域中，這些功能會保留在 **公開預覽** 階段，並在沒有服務等級協定的情況下提供。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>什麼是使用者和實體行為分析 (UEBA) ？
 

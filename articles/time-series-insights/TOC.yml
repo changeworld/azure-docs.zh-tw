@@ -97,12 +97,10 @@
           items:
             - name: 如何佈建和管理
               href: how-to-provision-manage.md
-            - name: 如何診斷和疑難排解
-              href: how-to-diagnose-troubleshoot.md
-        - name: 輸入和儲存體
-          items:
             - name: 如何選取 TSID
               href: how-to-select-tsid.md
+            - name: 如何診斷和疑難排解
+              href: how-to-diagnose-troubleshoot.md
         - name: 模型
           items:
             - name: 如何編輯您的模型

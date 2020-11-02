@@ -32,6 +32,9 @@
     - name: 指派原則 - ARM 範本
       displayName: 'assign, compliance, resource manager'
       href: ./assign-policy-template.md
+    - name: 指派原則 - Terraform
+      displayName: 'assign, compliance, hcl, provider'
+      href: ./assign-policy-terraform.md
 - name: 教學課程
   items:
     - name: 建立和管理 Azure 原則
@@ -191,7 +194,15 @@
           href: ../../azure-monitor/deploy-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
         - name: 啟用適用於 VM 的 Azure 監視器 (預覽)
           displayName: 'monitor, insights, log analytics, builtin'
-          href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fgovernance%2fpolicy%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fgovernance%2fpolicy%2ftoc.json
+          href: ../../azure-monitor/insights/vminsights-enable-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+    - name: Azure 儲存體整合
+      items:
+        - name: 使用 Azure 原則的稽核 TLS
+          href: ../../storage/common/transport-layer-security-configure-minimum-version.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json#use-azure-policy-to-enforce-the-minimum-tls-version
+    - name: Azure Web 應用程式防火牆整合
+      items:
+        - name: 將 WAF 與 Azure 原則整合
+          href: ../../web-application-firewall/shared/waf-azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
 - name: 疑難排解
   items:
     - name: 常見問題
@@ -264,6 +275,16 @@
           href: /azure/templates/microsoft.authorization/policydefinitions
         - name: 計劃定義
           href: /azure/templates/microsoft.authorization/policysetdefinitions
+    - name: Terraform 資源
+      items:
+        - name: 指派
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_assignment.html'
+        - name: 定義
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_definition.html'
+        - name: 計畫 (設定定義)
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_set_definition.html'
+        - name: 修復
+          href: 'https://www.terraform.io/docs/providers/azurerm/r/policy_remediation.html'
 - name: 資源
   items:
     - name: GitHub - Azure 原則範例
@@ -280,6 +301,8 @@
           href: 'https://www.azadvertizer.net/'
         - name: Azure 控管視覺化檢視
           href: 'https://github.com/julianhayward/azure-mg-sub-governance-reporting'
+        - name: Azure 監視器的 Azure 原則指令碼
+          href: 'https://github.com/JimGBritt/AzurePolicy/tree/master/AzureMonitor/Scripts'
     - name: 意見反應與支援
       items:
         - name: 適用於 Azure 原則的 Microsoft 問答集

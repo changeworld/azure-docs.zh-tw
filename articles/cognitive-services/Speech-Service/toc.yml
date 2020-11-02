@@ -39,6 +39,8 @@
           href: how-to-automatic-language-detection.md
         - name: 使用批次轉譯 API
           href: batch-transcription.md
+        - name: 評估發音
+          href: how-to-pronunciation-assessment.md
     - name: 教學課程
       items:
         - name: 辨識儲存在 Blob 儲存體中的語音

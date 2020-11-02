@@ -79,8 +79,6 @@
   items:
     - name: 依供應項目類型的發行指南
       href: publisher-guide-by-offer-type.md
-    - name: 使用 Azure AD 啟用供應項目驗證
-      href: enable-appsource-marketplace-using-azure-ad.md
     - name: Azure 應用程式供應項目
       items:
         - name: 規劃解決方案範本供應項目

@@ -28,6 +28,8 @@
       href: deployment-overview.md
     - name: 安全性合作夥伴提供者
       href: trusted-security-partners.md
+    - name: 使用 Check Point Cloudguard Connect 保護中樞
+      href: check-point-overview.md
     - name: IP 群組
       href: ip-groups.md
     - name: 規則處理邏輯

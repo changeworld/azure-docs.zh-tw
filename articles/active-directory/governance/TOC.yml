@@ -9,6 +9,8 @@
       href: entitlement-management-overview.md
     - name: 什麼是存取權檢閱？
       href: access-reviews-overview.md
+    - name: 什麼是身分識別生命週期管理？
+      href: what-is-identity-lifecycle-management.md
 - name: 教學課程
   expanded: true
   items:
@@ -23,6 +25,16 @@
           href: entitlement-management-delegate.md
         - name: 要求程序和電子郵件
           href: entitlement-management-process.md
+    - name: 身分識別生命週期管理
+      items:
+        - name: 什麼是佈建？
+          href: what-is-provisioning.md
+        - name: 什麼是 HR 驅動佈建？
+          href: what-is-hr-driven-provisioning.md
+        - name: 什麼是應用程式佈建？
+          href: what-is-app-provisioning.md
+        - name: 什麼是目錄間的佈建？
+          href: what-is-inter-directory-provisioning.md
     - name: 存取權檢閱
       items:
         - name: 使用檢閱管理來賓存取權

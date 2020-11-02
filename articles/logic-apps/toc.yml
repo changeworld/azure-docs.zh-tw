@@ -101,7 +101,7 @@
           href: logic-apps-batch-process-send-receive-messages.md
         - name: 依順序傳送訊息 - 循序群組
           href: send-related-messages-sequential-convoy.md
-        - name: 製作 JSON 定義
+        - name: 以 JSON 撰寫工作流程定義
           href: logic-apps-author-definitions.md
         - name: 處理內容類型
           href: logic-apps-content-type.md
@@ -109,6 +109,8 @@
           href: logic-apps-exception-handling.md
         - name: 處理大型訊息
           href: logic-apps-handle-large-messages.md
+        - name: 處理 SQL 連接器的長時間執行預存程序
+          href: handle-long-running-stored-procedures-sql-connector.md
         - name: 處理節流問題或 429 錯誤
           href: handle-throttling-problems-429-errors.md
         - name: 開發自訂連接器

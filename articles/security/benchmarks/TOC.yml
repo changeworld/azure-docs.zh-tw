@@ -113,6 +113,8 @@
       href: ../../virtual-network/public-ip-security-baseline.md
     - name: Azure Resource Graph 安全性基準
       href: ../../governance/resource-graph/concepts/azure-security-benchmark-baseline.md
+    - name: Azure Resource Manager 安全性基準
+      href: ../../azure-resource-manager/management/security-baseline.md
     - name: Azure Sentinel 安全性基準
       href: ../../sentinel/security-baseline.md
     - name: Azure SQL Database 安全性基準

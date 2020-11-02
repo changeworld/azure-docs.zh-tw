@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: cefc6cc72ed8d74663464f4ac2d672369cd9d31c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 368d43283d713b8d4e101c2ee26724242f29756c
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288659"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148247"
 ---
 # <a name="statistics-in-synapse-sql"></a>Synapse SQL 中的統計資料
 
@@ -74,7 +74,7 @@ SET AUTO_CREATE_STATISTICS ON
 > [!NOTE]
 > 統計資料的建立會記錄在不同使用者內容下的 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
-當自動統計資料建立完成時，將採用以下格式：_WA_Sys_<十六進位的 8 位數資料行識別碼>_<十六進位的 8 位數資料表識別碼>。 您可以執行 [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 命令，來檢視已建立的統計資料：
+當自動統計資料建立完成時，將採用以下格式： _WA_Sys_ <十六進位的 8 位數資料行識別碼>_<十六進位的 8 位數資料表識別碼>。 您可以執行 [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 命令，來檢視已建立的統計資料：
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -137,7 +137,7 @@ WHERE
     st.[user_created] = 1;
 ```
 
-例如，資料倉儲中的**日期資料行**通常需要經常更新統計資料。 每次有新資料列載入資料倉儲時，就會加入新的載入日期或交易日期。 這些增加項目會造成資料散發變更，並使統計資料過時。
+例如，資料倉儲中的 **日期資料行** 通常需要經常更新統計資料。 每次有新資料列載入資料倉儲時，就會加入新的載入日期或交易日期。 這些增加項目會造成資料散發變更，並使統計資料過時。
 
 客戶資料表上性別資料行的統計資料可能永遠不需要更新。 假設客戶間的散發固定不變，將新資料列加入至資料表變化並不會改變資料散發情況。
 
@@ -245,7 +245,7 @@ CREATE STATISTICS stats_col1
 > [!NOTE]
 > 用來估計查詢結果中資料列數目的長條圖，只適用於統計資料物件定義中所列的第一個資料行。
 
-在此範例中，長條圖位於 *product\_category*。 跨資料行統計資料會依據 *product\_category* 和 *product\_sub_category* 計算：
+在此範例中，長條圖位於 *product\_category* 。 跨資料行統計資料會依據 *product\_category* 和 *product\_sub_category* 計算：
 
 ```sql
 CREATE STATISTICS stats_2cols
@@ -616,7 +616,7 @@ SQL 隨選可讓您手動建立統計資料。 對於 CSV 檔案，您必須手�
 以下提供指導原則，以便更新您的統計資料：
 
 - 確保資料集至少都更新一個統計資料物件。 這會在統計資料更新過程中更新大小 (資料列計數和頁面計數) 資訊。
-- 將焦點放在參與 JOIN、GROUP BY、ORDER BY 和 DISTINCT 子句的資料行。
+- 專注于參與 WHERE、JOIN、GROUP BY、ORDER BY 和 DISTINCT 子句的資料行。
 - 較為頻繁地更新「遞增索引鍵」資料行 (例如交易日期)，因為這些值不會包含在統計資料長條圖中。
 - 較不常更新靜態散發資料行。
 
@@ -629,12 +629,12 @@ SQL 隨選可讓您手動建立統計資料。 對於 CSV 檔案，您必須手�
 > [!NOTE]
 > 您目前只能建立單一資料行的統計資料。
 >
-> 程序 sp_create_file_statistics 將重新命名為 sp_create_openrowset_statistics。 公用伺服器角色已授與 ADMINISTER BULK OPERATIONS 權限，而公用資料庫角色具有 sp_create_file_statistics 和 sp_drop_file_statistics 的 EXECUTE 權限。 以後可能會變更。
+> 若要執行 sp_create_openrowset_statistics 和 sp_drop_openrowset_statistics，必須具備下列許可權：管理大量作業或管理資料庫大量作業。
 
 下列預存程序可用於建立統計資料：
 
 ```sql
-sys.sp_create_file_statistics [ @stmt = ] N'statement_text'
+sys.sp_create_openrowset_statistics [ @stmt = ] N'statement_text'
 ```
 
 引數：[ @stmt = ] N'statement_text' - Specifies a Transact-SQL 陳述式，將傳回要用於統計資料的資料行值。 您可以使用 TABLESAMPLE，以指定要使用的資料樣本。 如果未指定 TABLESAMPLE，將使用 FULLSCAN。
@@ -666,7 +666,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT year
+EXEC sys.sp_create_openrowset_statistics N'SELECT year
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv'',
         FORMAT = ''CSV'',
@@ -698,7 +698,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT payment_type
+EXEC sys.sp_create_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''
@@ -712,18 +712,18 @@ FROM OPENROWSET(
 若要更新統計資料，您需要置放和建立統計資料。 下列預存程序可用於置放統計資料：
 
 ```sql
-sys.sp_drop_file_statistics [ @stmt = ] N'statement_text'
+sys.sp_drop_openrowset_statistics [ @stmt = ] N'statement_text'
 ```
 
 > [!NOTE]
-> 程序 sp_drop_file_statistics 將重新命名為 sp_drop_openrowset_statistics。 公用伺服器角色已授與 ADMINISTER BULK OPERATIONS 權限，而公用資料庫角色具有 sp_create_file_statistics 和 sp_drop_file_statistics 的 EXECUTE 權限。 以後可能會變更。
+> 若要執行 sp_create_openrowset_statistics 和 sp_drop_openrowset_statistics，必須具備下列許可權：管理大量作業或管理資料庫大量作業。
 
 引數：[ @stmt = ] N'statement_text' - 指定建立統計資料時所使用的相同 Transact-SQL 陳述式。
 
 若要針對資料集的 [年] 資料行更新統計資料 (該資料集以 population.csv 檔案為基礎)，您必須置放和建立統計資料：
 
 ```sql
-EXEC sys.sp_drop_file_statistics N'SELECT payment_type
+EXEC sys.sp_drop_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''
@@ -743,7 +743,7 @@ SECRET = ''
 GO
 */
 
-EXEC sys.sp_create_file_statistics N'SELECT payment_type
+EXEC sys.sp_create_openrowset_statistics N'SELECT payment_type
 FROM OPENROWSET(
         BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2018/month=6/*.parquet'',
          FORMAT = ''PARQUET''

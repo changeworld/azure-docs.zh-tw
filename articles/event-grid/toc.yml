@@ -106,7 +106,7 @@
       items:
         - name: 系統主題概觀
           href: system-topics.md
-        - name: 事件來源
+        - name: 事件來源 (發行者)
           items:
             - name: Azure 應用程式組態
               href: event-schema-app-configuration.md
@@ -138,13 +138,15 @@
               href: event-schema-azure-signalr.md
             - name: Azure 訂用帳戶
               href: event-schema-subscriptions.md
-    - name: 合作夥伴主題
+    - name: 合作夥伴事件
       items:
-        - name: 合作夥伴主題概觀
-          href: partner-topics-overview.md
-        - name: Auth0
-          href: auth0-overview.md
-        - name: 變成事件方格合作夥伴
+        - name: 合作夥伴事件概觀
+          href: partner-events-overview.md
+        - name: 事件來源 (發行者)
+          items:
+            - name: Auth0
+              href: auth0-overview.md
+        - name: 合作夥伴上線概觀
           href: partner-onboarding-overview.md
     - name: 事件網域
       href: event-domains.md
@@ -210,12 +212,16 @@
           href: create-view-manage-system-topics-cli.md
         - name: Azure Resource Manager 範本
           href: create-view-manage-system-topics-arm.md
+    - name: 合作夥伴事件
+      items:
+        - name: 以合作夥伴身分上線
+          href: onboard-partner.md
+        - name: 訂閱 Auth0 事件
+          href: auth0-how-to.md
     - name: 取得主題或網域的存取金鑰
       href: get-access-keys.md
     - name: 張貼到自訂主題
       href: post-to-custom-topic.md
-    - name: 訂閱 Auth0 事件
-      href: auth0-how-to.md
     - name: 接收 HTTP 端點的事件
       href: receive-events.md
     - name: 設定無效信件的位置和重試原則
@@ -311,5 +317,5 @@
       href: 'https://azure.microsoft.com/pricing/details/event-grid/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-eventgrid'

@@ -1,15 +1,17 @@
 - name: 概觀
   href: overview.md
-- name: Red Hat 快速入門
-  items: null
-- name: 快速入門 - WildFly on CentOS
-  href: wildfly-on-centos.md
 - name: Red Hat Enterprise Linux 映像
   items:
-    - name: Red Hat Enterprise Linux 映像概觀
+    - name: RHEL 映像概觀
       href: redhat-images.md
-    - name: Red Hat Enterprise Linux 映像清單
+    - name: RHEL 映像清單
       href: redhat-imagelist.md
+- name: Red Hat Java 快速入門
+  items:
+    - name: VM/VMSS 上的 JBoss EAP + RHEL
+      href: jboss-eap-on-rhel.md
+    - name: VM 上的 WildFly + CentOS
+      href: wildfly-on-centos.md
 - name: Azure 中的 Red Hat 更新基礎結構
   href: redhat-rhui.md
 - name: Hat Enterprise Linux BYOS 映像供應項目
