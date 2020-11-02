@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d2f5b87fe313f7d152a80a35671bc7e0da3bb7c7
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: f142c8abfc9056e0f8ca1d921f2c6bfc72292730
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341544"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186615"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>保護您的 Synapse 工作區 (預覽) 
 
@@ -51,8 +51,6 @@ ms.locfileid: "92341544"
 - **WS1\_WSAdmins** – 適用於需要完整控制工作區的使用者
 - **WS1\_SparkAdmins** – 適用於需要完整控制工作區 Spark 層面的使用者
 - **WS1\_SQLAdmins** – 適用於需要完整控制工作區 SQL 層面的使用者
-- 將 **WS1\_WSAdmins** 新增至 **WS1\_SQLAdmins**
-- 將 **WS1\_WSAdmins** 新增至 **WS1\_SparkAdmins**
 
 ## <a name="step-2-prepare-your-data-lake-storage-gen2-account"></a>步驟 2：準備 Azure Data Lake Storage Gen2 帳戶
 
@@ -65,9 +63,9 @@ ms.locfileid: "92341544"
 
 - 使用 Azure 入口網站，將 CNT1 上的下列角色指派給安全性群組
 
-  - 將 **WS1\_WSAdmins** 指派給**儲存體 Blob 資料參與者**角色
-  - 將 **WS1\_SparkAdmins** 指派給**儲存體 Blob 資料參與者**角色
-  - 將 **WS1\_SQLAdmins** 指派給**儲存體 Blob 資料參與者**角色
+  - 將 **WS1\_WSAdmins** 指派給 **儲存體 Blob 資料參與者** 角色
+  - 將 **WS1\_SparkAdmins** 指派給 **儲存體 Blob 資料參與者** 角色
+  - 將 **WS1\_SQLAdmins** 指派給 **儲存體 Blob 資料參與者** 角色
 
 ## <a name="step-3-create-and-configure-your-synapse-workspace"></a>步驟 3：建立和設定您的 Synapse 工作區
 
@@ -90,7 +88,7 @@ Synapse 工作區需要 STG1 和 CNT1 的存取權，才能執行管線和系統
 - 開啟 Azure 入口網站
 - 找出 STG1
 - 瀏覽至 CNT1
-- 請確定 WS1 的 MSI (受控服務識別) 已指派給 CNT1 上的**儲存體 Blob 資料參與者**角色
+- 請確定 WS1 的 MSI (受控服務識別) 已指派給 CNT1 上的 **儲存體 Blob 資料參與者** 角色
   - 如果您沒有看到 MSI 已指派，請進行指派。
   - MSI 的名稱與工作區相同。 在案例中，此名稱會是 &quot;WS1&quot;。
 
@@ -98,7 +96,7 @@ Synapse 工作區需要 STG1 和 CNT1 的存取權，才能執行管線和系統
 
 - 開啟 Azure 入口網站
 - 瀏覽至 WS1
-- 在 [**設定**] 底下，選取 **[SQL Active Directory 管理員**]
+- 在 [ **設定** ] 底下，選取 **[SQL Active Directory 管理員** ]
 - 選取 [ **設定管理員** ] 並選擇 [WS1 \_ SQLAdmins]
 
 ## <a name="step-6-maintain-access-control"></a>步驟6：維護存取控制

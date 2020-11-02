@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: bffe69dd5b7d3cdfcba1df3420d494dcffc33f9a
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: f995750c1e009febcb9872c230e22921ff9c50c4
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042669"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186581"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知問題
 
@@ -41,7 +41,7 @@ Blob API 和 Data Lake Storage Gen2 API 可運作於相同的資料上。
 
 本節描述使用 Blob API 和 Data Lake Storage Gen2 API 來對相同資料進行操作時的問題和限制。
 
-* 您無法同時使用 API 和 Data Lake Storage Api 來寫入檔案的相同實例。 如果使用 Data Lake Storage Gen2 API 來寫入檔案，則呼叫[取得區塊清單](https://docs.microsoft.com/rest/api/storageservices/get-block-list) (機器翻譯) Blob API 將不會顯示該檔案的區塊。 唯一的例外是當您使用覆寫時。 您可以使用任一種 API 來覆寫檔案/blob。
+* 您無法使用 blob API 和 Data Lake Storage Api 寫入相同的檔案實例。 如果使用 Data Lake Storage Gen2 API 來寫入檔案，則呼叫[取得區塊清單](https://docs.microsoft.com/rest/api/storageservices/get-block-list) (機器翻譯) Blob API 將不會顯示該檔案的區塊。 唯一的例外是當您使用覆寫時。 您可以使用任一種 API 來覆寫檔案/blob。
 
 * 當使用 [列出 Blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 作業而不指定分隔符號時，結果會同時包含目錄和 Blob。 如果選擇使用分隔符號，請僅使用正斜線 (`/`)。 這是唯一支援的分隔符號。
 

@@ -10,19 +10,16 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: dfc554a57e99fa4ccd66b1bbeec0be46e463988f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b89112ab2384386d20b62f2510ec576d4a2075f1
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738644"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186751"
 ---
 # <a name="monitoring-azure-files"></a>監視 Azure 檔案儲存體
 
 當您有依賴 Azure 資源的重要應用程式和商務程序時，您會想要監視這些資源的可用性、效能和操作。 本文說明 Azure 檔案儲存體所產生的監視資料，以及如何使用 Azure 監視器的功能來分析此資料的警示。
-
-> [!NOTE]
-> Azure 監視器中的 Azure 儲存體記錄處於公開預覽狀態，可在所有公用雲端區域中進行預覽測試。 若要註冊預覽，請參閱[本頁](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)。 此預覽可讓 blob (記錄，其中包含 Azure Data Lake Storage Gen2) 、檔案、佇列和資料表。 這項功能適用于使用 Azure Resource Manager 部署模型建立的所有儲存體帳戶。 請參閱 [儲存體帳戶總覽](../common/storage-account-overview.md)。
 
 ## <a name="monitor-overview"></a>監視概觀
 
@@ -65,7 +62,10 @@ Azure 監視器中的計量和記錄只支援 Azure Resource Manager 儲存體�
 
 ## <a name="creating-a-diagnostic-setting"></a>建立診斷設定
 
-您可以使用 Azure 入口網站、PowerShell、Azure CLI 或 Azure Resource Manager 範本來建立診斷設定。 
+您可以使用 Azure 入口網站、PowerShell、Azure CLI 或 Azure Resource Manager 範本來建立診斷設定。
+
+> [!NOTE]
+> Azure 監視器中的 Azure 儲存體記錄處於公開預覽狀態，可在所有公用雲端區域中進行預覽測試。 若要註冊預覽，請參閱[本頁](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)。 此預覽可讓 blob (記錄，其中包含 Azure Data Lake Storage Gen2) 、檔案、佇列和資料表。 這項功能適用于使用 Azure Resource Manager 部署模型建立的所有儲存體帳戶。 請參閱 [儲存體帳戶總覽](../common/storage-account-overview.md)。
 
 如需一般指引，請參閱 [建立診斷設定以收集 Azure 中的平臺記錄和計量](../../azure-monitor/platform/diagnostic-settings.md)。
 
@@ -150,7 +150,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccoun
 
 您可以使用 `StorageRead` 、 `StorageWrite` 和做 `StorageDelete` 為 **Category** 參數的值。
 
-以下為範例：
+以下是範例：
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -StorageAccountId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount -Enabled $true -Category StorageWrite,StorageDelete`
 
@@ -164,7 +164,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccoun
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
-以下為範例：
+以下是範例：
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -EventHubAuthorizationRuleId /subscriptions/20884142-a14v3-4234-5450-08b10c09f4/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey -Enabled $true -Category StorageDelete`
 
@@ -178,7 +178,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAutho
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
-以下為範例：
+以下是範例：
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/fileServices/default -WorkspaceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace -Enabled $true -Category StorageDelete`
 
@@ -208,7 +208,7 @@ az monitor diagnostic-settings create --name <setting-name> --storage-account <s
 
 您可以使用 `StorageRead` 、 `StorageWrite` 和做 `StorageDelete` 為 **category** 參數的值。
 
-以下為範例：
+以下是範例：
 
 `az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
 
@@ -222,7 +222,7 @@ az monitor diagnostic-settings create --name <setting-name> --storage-account <s
 az monitor diagnostic-settings create --name <setting-name> --event-hub <event-hub-name> --event-hub-rule <event-hub-namespace-and-key-name> --resource <storage-account-resource-id> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
 ```
 
-以下為範例：
+以下是範例：
 
 `az monitor diagnostic-settings create --name setting1 --event-hub myeventhub --event-hub-rule /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --logs '[{"category": StorageDelete, "enabled": true }]'`
 
@@ -236,7 +236,7 @@ az monitor diagnostic-settings create --name <setting-name> --event-hub <event-h
 az monitor diagnostic-settings create --name <setting-name> --workspace <log-analytics-workspace-resource-id> --resource <storage-account-resource-id> --logs '[{"category": <category name>, "enabled": true "retentionPolicy": {"days": <days>, "enabled": <retention-bool}}]'
 ```
 
-以下為範例：
+以下是範例：
 
 `az monitor diagnostic-settings create --name setting1 --workspace /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/fileServices/default --logs '[{"category": StorageDelete, "enabled": true ]'`
 
@@ -563,7 +563,7 @@ StorageFileLogs
 
 下表列出一些要監視的範例案例，以及要用於警示的適當計量：
 
-| 案例 | 用於警示的度量 |
+| 狀況 | 用於警示的度量 |
 |-|-|
 | 檔案共用已進行節流處理。 | 度量：交易<br>維度名稱：回應類型 <br>維度名稱：僅限檔案共用 (premium 檔案共用)  |
 | 檔案共用的大小為80% 的容量。 | 度量：檔案容量<br>維度名稱：僅限檔案共用 (premium 檔案共用)  |

@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/13/2020
+ms.date: 11/02/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 0e9c669f2994e896205762c5f3f4df1b5fe214ae
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e73126cfc54294a7b9d54ff62c406d5e686ac470
+ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637219"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93186768"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>將 Azure-SSIS 整合執行階段加入虛擬網路
 
@@ -99,7 +99,7 @@ Data Factory 可讓您將 Azure-SSIS IR 加入透過傳統部署模型或 Azure 
 
 - 如果您攜帶自己的公用 IP 位址，請確定虛擬網路的資源群組 (或公用 IP 位址的資源群組) 可以建立和刪除特定的 Azure 網路資源。 如需詳細資訊，請參閱 [設定資源群組](#resource-group)。 
 
-- 如果您自訂 [Azure-SSIS IR 的自訂設定](./how-to-configure-azure-ssis-ir-custom-setup.md)中所述的 Azure-SSIS IR，則您的 Azure-SSIS IR 節點會從預先定義的172.16.0.0 範圍取得私人 IP 位址以進行172.31.255.255。 因此，請確定您虛擬或內部部署網路的私人 IP 位址範圍不會與此範圍發生衝突。
+- 如果您自訂 [Azure-SSIS IR 的自訂設定](./how-to-configure-azure-ssis-ir-custom-setup.md)中所述的 Azure-SSIS IR，我們管理其節點的內部程式將會使用預先定義的172.16.0.0 範圍中的私人 IP 位址來172.31.255.255。 因此，請確認您虛擬或內部部署網路的私人 IP 位址範圍不會與此範圍衝突。
 
 下圖顯示您的 Azure-SSIS IR 所需的連接：
 
