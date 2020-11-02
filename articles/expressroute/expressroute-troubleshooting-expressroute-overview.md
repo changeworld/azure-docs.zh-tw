@@ -9,10 +9,10 @@ ms.date: 10/31/2019
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: af4ef156cccded6afe2db09628446a6ffe1ad53a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92204634"
 ---
 # <a name="verifying-expressroute-connectivity"></a>確認 ExpressRoute 連線
@@ -83,9 +83,9 @@ ms.locfileid: "92204634"
 
 ![4][4]    
 
-在 ExpressRoute [基本資料] 中，[路線狀態]** 指出 Microsoft 端路線的狀態。 [提供者狀態]** 指出在服務提供者端是否「已佈建/未佈建」** 路線。 
+在 ExpressRoute [基本資料] 中，[路線狀態]  指出 Microsoft 端路線的狀態。 [提供者狀態]  指出在服務提供者端是否「已佈建/未佈建」  路線。 
 
-[路線狀態]** 必須是 [已啟用]**，且[提供者狀態]** 必須是 [已佈建]**，ExpressRoute 路線才能運作。
+[路線狀態]  必須是 [已啟用]  ，且[提供者狀態]  必須是 [已佈建]  ，ExpressRoute 路線才能運作。
 
 > [!NOTE]
 > 設定 ExpressRoute 線路之後，如果 *線路狀態* 為 [未啟用] 狀態，請聯絡 [Microsoft 支援服務][Support]。 另一方面，如果 *提供者狀態* 為 [未布建] 狀態，請洽詢您的服務提供者。
@@ -100,7 +100,7 @@ Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
 ```
 
 >[!TIP]
->如果您要尋找資源群組的名稱，您可以使用 *>new-azresourcegroup*命令，列出訂用帳戶中的所有資源群組，以取得資源群組的名稱。
+>如果您要尋找資源群組的名稱，您可以使用 *>new-azresourcegroup* 命令，列出訂用帳戶中的所有資源群組，以取得資源群組的名稱。
 >
 
 
@@ -165,7 +165,7 @@ ServiceProviderProvisioningState : Provisioned
 在上述範例中，我們已布建 azure 私人對等互連，而不會布建 Azure 公用和 Microsoft 對等互連。 成功布建的對等互連內容也會列出主要和次要點對點子網。 /30 子網是用於 Msee 和 CEs/PE Msee 的介面 IP 位址。 針對布建的對等互連，清單也會指出上次修改設定的人員。 
 
 > [!NOTE]
-> 如果啟用對等互連失敗，請檢查指派的主要和次要子網是否符合連結之 CE/PE MSEE 上的設定。 也請檢查 Msee 上是否使用正確的 *VlanId*、 *AzureASN*和 *PeerASN* ，以及這些值是否對應至連結的 CE/PE-MSEE 上所使用的值。 如果選擇 MD5 雜湊，MSEE 和 MSEE/CE 配對上的共用金鑰應該相同。 基於安全考慮，將不會顯示先前設定的共用金鑰。 如果您需要變更 MSEE 路由器上的任何設定，請參閱 [建立和修改 ExpressRoute 線路的路由][CreatePeering]。  
+> 如果啟用對等互連失敗，請檢查指派的主要和次要子網是否符合連結之 CE/PE MSEE 上的設定。 也請檢查 Msee 上是否使用正確的 *VlanId* 、 *AzureASN* 和 *PeerASN* ，以及這些值是否對應至連結的 CE/PE-MSEE 上所使用的值。 如果選擇 MD5 雜湊，MSEE 和 MSEE/CE 配對上的共用金鑰應該相同。 基於安全考慮，將不會顯示先前設定的共用金鑰。 如果您需要變更 MSEE 路由器上的任何設定，請參閱 [建立和修改 ExpressRoute 線路的路由][CreatePeering]。  
 >
 
 > [!NOTE]
@@ -228,7 +228,7 @@ At line:1 char:1
 ```
 
 > [!NOTE]
-> 如果啟用對等互連失敗，請檢查指派的主要和次要子網是否符合連結之 CE/PE MSEE 上的設定。 也請檢查 Msee 上是否使用正確的 *VlanId*、 *AzureASN*和 *PeerASN* ，以及這些值是否對應至連結的 CE/PE-MSEE 上所使用的值。 如果選擇 MD5 雜湊，MSEE 和 MSEE/CE 配對上的共用金鑰應該相同。 基於安全考慮，將不會顯示先前設定的共用金鑰。 如果您需要變更 MSEE 路由器上的任何設定，請參閱 [建立和修改 ExpressRoute 線路的路由][CreatePeering]。  
+> 如果啟用對等互連失敗，請檢查指派的主要和次要子網是否符合連結之 CE/PE MSEE 上的設定。 也請檢查 Msee 上是否使用正確的 *VlanId* 、 *AzureASN* 和 *PeerASN* ，以及這些值是否對應至連結的 CE/PE-MSEE 上所使用的值。 如果選擇 MD5 雜湊，MSEE 和 MSEE/CE 配對上的共用金鑰應該相同。 基於安全考慮，將不會顯示先前設定的共用金鑰。 如果您需要變更 MSEE 路由器上的任何設定，請參閱 [建立和修改 ExpressRoute 線路的路由][CreatePeering]。  
 >
 >
 
@@ -249,7 +249,7 @@ ARP 表格提供特定對等互連的 IP 位址和 MAC 位址對應。 適用於
 
 ## <a name="validate-bgp-and-routes-on-the-msee"></a>確認 MSEE 上的 BGP 和路由
 
-若要從 MSEE 取得*私人*路由內容*主要*路徑上的路由表，請使用下列命令：
+若要從 MSEE 取得 *私人* 路由內容 *主要* 路徑上的路由表，請使用下列命令：
 
 ```azurepowershell
 Get-AzExpressRouteCircuitRouteTable -DevicePath Primary -ExpressRouteCircuitName ******* -PeeringType AzurePrivatePeering -ResourceGroupName ****
@@ -278,7 +278,7 @@ Path    : 123##
 ```
 
 > [!NOTE]
-> 如果 MSEE 和 CE/PE MSEE 之間的 eBGP 對等互連狀態為 [作用中] 或 [閒置]，請檢查指派的主要和次要對等互連子網是否符合連結之 CE/PE MSEE 上的設定。 也請檢查 Msee 上是否使用正確的 *VlanId*、 *AzureAsn*和 *PeerAsn* ，以及這些值是否對應至連結的 PE-MSEE/CE 上所使用的值。 如果選擇 MD5 雜湊，MSEE 和 CE/PE MSEE 配對上的共用金鑰應該相同。 如果您需要變更 MSEE 路由器上的任何設定，請參閱 [建立和修改 ExpressRoute 線路的路由][CreatePeering]。
+> 如果 MSEE 和 CE/PE MSEE 之間的 eBGP 對等互連狀態為 [作用中] 或 [閒置]，請檢查指派的主要和次要對等互連子網是否符合連結之 CE/PE MSEE 上的設定。 也請檢查 Msee 上是否使用正確的 *VlanId* 、 *AzureAsn* 和 *PeerAsn* ，以及這些值是否對應至連結的 PE-MSEE/CE 上所使用的值。 如果選擇 MD5 雜湊，MSEE 和 CE/PE MSEE 配對上的共用金鑰應該相同。 如果您需要變更 MSEE 路由器上的任何設定，請參閱 [建立和修改 ExpressRoute 線路的路由][CreatePeering]。
 >
 
 

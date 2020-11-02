@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 05/25/2019
 ms.author: duau
 ms.openlocfilehash: 2a5730cd75ccb76d25897e9109555113f7355c2f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 11/01/2020
 ms.locfileid: "92202408"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>使用 ExpressRoute 私用對等互連設計災難復原
 
 ExpressRoute 的設計目的是為了提供高可用性，以提供對 Microsoft 資源的電訊公司私人網路連線能力。 換句話說，在 Microsoft 網路內的 ExpressRoute 路徑中不會有單一失敗點。 如需將 ExpressRoute 線路的可用性最大化的設計考慮，請參閱 [使用 Expressroute 設計高可用性][HA]。
 
-不過，Murphy 的熱門」古訓--*如果有任何錯誤，就會*在本文中考慮到，在本文中，我們將焦點放在可使用單一 ExpressRoute 線路來解決失敗的解決方案之外。 換句話說，在本文中，我們將探討網路架構考慮，以使用異地冗余 ExpressRoute 線路來建立強大的後端網路連線，以進行嚴重損壞修復。
+不過，Murphy 的熱門」古訓-- *如果有任何錯誤，就會* 在本文中考慮到，在本文中，我們將焦點放在可使用單一 ExpressRoute 線路來解決失敗的解決方案之外。 換句話說，在本文中，我們將探討網路架構考慮，以使用異地冗余 ExpressRoute 線路來建立強大的後端網路連線，以進行嚴重損壞修復。
 
 >[!NOTE]
 >本文所述的概念同樣適用于在虛擬 WAN 或其外部建立 ExpressRoute 線路時。
@@ -80,7 +80,7 @@ ExpressRoute 的設計目的是為了提供高可用性，以提供對 Microsoft
 
 下圖說明如何使用連接權數來影響 ExpressRoute 路徑選取專案。 預設連接權數為0。 在下列範例中，ExpressRoute 1 的連線權數設定為100。 當 VNet 收到透過多個 ExpressRoute 線路所通告的路由首碼時，VNet 會偏好最高權數的連接。
 
-[![4]][4]
+[![億]][4]
 
 如果 ExpressRoute 1 的兩個連線都停止運作，則 VNet 只會透過 ExpressRoute 2 查看 10.1.11.0/24 路由公告;因此，此失敗狀態會使用待命電路。
 
