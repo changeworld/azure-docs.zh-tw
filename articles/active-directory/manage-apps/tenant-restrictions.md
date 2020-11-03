@@ -12,12 +12,12 @@ ms.date: 10/26/2020
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce96eb5e91ccc4cb9f69711f9e6fd8fd59ce65bc
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d69755c36bf37dd591e81bea7983e25905798d4d
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669935"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286209"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租用戶限制來管理對 SaaS 雲端應用程式的存取
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) 對此查問所提出的解決方案是稱為�
 
 整體解決方案包含下列元件：
 
-1. **Azure AD** ：如果 `Restrict-Access-To-Tenants: <permitted tenant list>` 存在，Azure AD 便只會針對已允許的租用戶發出安全性權杖。
+1. **Azure AD** ：如果 `Restrict-Access-To-Tenants: <permitted tenant list>` 標頭存在，Azure AD 只會為允許的租使用者發出安全性權杖。
 
 2. **內部部署 Proxy 伺服器基礎結構** ：此基礎結構是能夠進行傳輸層安全性 (TLS) 檢查的 Proxy 裝置。 您必須將 Proxy 設定為會將包含已允許租用戶清單的標頭插入至目的地為 Azure AD 的流量。
 
@@ -63,7 +63,7 @@ Azure Active Directory (Azure AD) 對此查問所提出的解決方案是稱為�
 
 - 用戶端必須信任 Proxy 針對 TLS 通訊所出示的憑證鏈結。 例如，如果使用來自內部[公開金鑰基礎結構 (PKI)](/windows/desktop/seccertenroll/public-key-infrastructure) 的憑證，就必須信任內部發行的根憑證授權單位憑證。
 
-- 這項功能包含在 Microsoft 365 訂用帳戶中，但如果您想要使用「租使用者限制」來控制其他 SaaS 應用程式的存取權，則需要 Azure AD Premium 1 個授權。
+- 需要 Azure AD Premium 1 授權才能使用租使用者限制。 
 
 #### <a name="configuration"></a>組態
 

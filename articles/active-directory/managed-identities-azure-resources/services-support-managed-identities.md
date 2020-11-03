@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 7e971b4afe0719d74c8aa32c5f5103c4be971d9b
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 37a17105be0b6754bbdfd935c6c17933314114d4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426442"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289585"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支援適用於 Azure 資源的受控識別服務
 
@@ -202,8 +202,8 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](../../azure-arc/kuber
 
 | 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| 系統指派 | ![可用][check] | ![可用][check] | 無法使用 | ![可用][check] | 
-| 使用者指派 | ![可用][check] | ![可用][check] | 無法使用 | ![可用][check] |
+| 系統指派 | ![可用][check] | ![可用][check] | 無法使用 | 無法使用 | 
+| 使用者指派 | 預覽 | 無法使用 | 無法使用 | 無法使用 |
 
 
 如需詳細資訊，請參閱[在 Azure Kubernetes Service 中使用受控識別](../../aks/use-managed-identity.md) \(部分機器翻譯\)。
@@ -281,8 +281,8 @@ Azure Arc 啟用的 Kubernetes 目前 [支援系統指派](../../azure-arc/kuber
 
 |受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| 系統指派 | ![可用][check] | 預覽 | 預覽 | 預覽 |
-| 使用者指派 | ![可用][check] | 預覽 | 預覽 | 預覽 |
+| 系統指派 | ![可用][check] | ![可用][check] | 預覽 | 預覽 |
+| 使用者指派 | ![可用][check] | ![可用][check] | 預覽 | 預覽 |
 
 請參閱下列清單來設定 Azure 虛擬機器擴展集的受控識別 (若區域提供)：
 

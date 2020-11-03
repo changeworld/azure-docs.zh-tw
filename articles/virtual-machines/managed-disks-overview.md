@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperfq1
-ms.openlocfilehash: cb310861edc2ba1ee183bc6f996cb1593457e3c7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 839ba1f8a5215c9059cfeff6e2158165b154f1f7
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972028"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289346"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure 受控磁碟簡介
 
@@ -31,7 +31,7 @@ Azure 受控磁碟是由 Azure 管理並與 Azure 虛擬機器搭配使用的區
 
 ### <a name="simple-and-scalable-vm-deployment"></a>簡單且可調整的 VM 部署
 
-您可以使用受控磁碟在每個區域的一個訂用帳戶中建立最多 50,000 個同類型虛擬機器**磁碟**，這可讓您在單一訂用帳戶中建立數千部**虛擬機器**。 這項功能也可讓您使用 Marketplace 映像，在一個虛擬機器擴展集內建立最多 1,000 部虛擬機器，進一步增加[虛擬機器擴展集](../virtual-machine-scale-sets/overview.md)的延展性。
+您可以使用受控磁碟在每個區域的一個訂用帳戶中建立最多 50,000 個同類型虛擬機器 **磁碟** ，這可讓您在單一訂用帳戶中建立數千部 **虛擬機器** 。 這項功能也可讓您使用 Marketplace 映像，在一個虛擬機器擴展集內建立最多 1,000 部虛擬機器，進一步增加[虛擬機器擴展集](../virtual-machine-scale-sets/overview.md)的延展性。
 
 ### <a name="integration-with-availability-sets"></a>整合可用性設定組
 
@@ -59,7 +59,7 @@ Azure 受控磁碟是由 Azure 管理並與 Azure 虛擬機器搭配使用的區
 
 ### <a name="private-links"></a>Private Link
 
-目前對受控磁碟的 Private Link 支援處於預覽狀態，可用於匯入或匯出網絡內部的受控磁碟。 Private Link 可讓您為未連結的受控磁碟和快照集產生時間繫結的共用存取簽章 (SAS) URI，以供您用來將資料匯出至其他區域進行區域擴充、災害復原和鑑識分析。 您也可以使用 SAS URI，直接將 VHD 從內部部署環境上傳至空白磁碟。 現在您可以利用 [Private Link](../private-link/private-link-overview.md) 來限制受控磁碟的匯出和匯入，使其只能在您的 Azure 虛擬網路內進行。 Private Link 可讓您確保資料只會在安全的 Microsoft 骨幹網路內移動。
+受控磁片的 Private Link 支援可以用來匯入或匯出網路內部的受控磁片。 Private Link 可讓您為未連結的受控磁碟和快照集產生時間繫結的共用存取簽章 (SAS) URI，以供您用來將資料匯出至其他區域進行區域擴充、災害復原和鑑識分析。 您也可以使用 SAS URI，直接將 VHD 從內部部署環境上傳至空白磁碟。 現在您可以利用 [Private Link](../private-link/private-link-overview.md) 來限制受控磁碟的匯出和匯入，使其只能在您的 Azure 虛擬網路內進行。 Private Link 可讓您確保資料只會在安全的 Microsoft 骨幹網路內移動。
 
 若要了解如何啟用 Private Link 以便匯入或匯出受控磁碟，請參閱 [CLI](linux/disks-export-import-private-links-cli.md) 或[入口網站](disks-enable-private-links-for-import-export-portal.md)文章。
 
@@ -104,7 +104,7 @@ Azure 中有三個主要磁碟角色：資料磁碟、OS 磁碟和暫存磁碟�
 
 受控磁碟快照集是受控磁碟的絕對一致完整唯讀複本，預設會儲存為標準受控磁碟。 快照集可讓您在任何時間點備份受控磁碟。 這些快照集可在來源磁碟外獨立存在，還能用來建立新的受控磁碟。 
 
-快照集會根據使用的大小來計費。 例如，如果建立佈建容量為 64 GiB 的受控磁碟快照集，而實際使用資料大小為 10 GiB，則只會對已使用的 10 GiB 資料大小收取快照集費用。 您可以藉由檢查 [Azure 使用量報表](../cost-management-billing/understand/review-individual-bill.md)來查看已使用的快照大小。 例如，如果快照集的已使用資料大小為 10 GiB，則**每日**使用量報表會顯示已使用數量為 10 GiB/(31 天) = 0.3226。
+快照集會根據使用的大小來計費。 例如，如果建立佈建容量為 64 GiB 的受控磁碟快照集，而實際使用資料大小為 10 GiB，則只會對已使用的 10 GiB 資料大小收取快照集費用。 您可以藉由檢查 [Azure 使用量報表](../cost-management-billing/understand/review-individual-bill.md)來查看已使用的快照大小。 例如，如果快照集的已使用資料大小為 10 GiB，則 **每日** 使用量報表會顯示已使用數量為 10 GiB/(31 天) = 0.3226。
 
 若要深入了解如何建立受控磁碟的快照集，請參閱下列資源︰
 

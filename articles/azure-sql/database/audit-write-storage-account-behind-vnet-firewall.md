@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: f916fdcf632cc369d1fb7e2faefad6dddafd1e15
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: dde6cf40e7609e902540e08fcaff65d9fe32c85c
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677254"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289638"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>將 audit 寫入至 VNet 和防火牆後方的儲存體帳戶
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -33,14 +33,14 @@ ms.locfileid: "92677254"
 
 若要深入瞭解如何建立虛擬網路，請參閱 [快速入門：使用 Azure 入口網站建立虛擬網路](../../virtual-network/quick-create-portal.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要讓 audit 寫入 VNet 或防火牆後方的儲存體帳戶，需要下列必要條件：
 
 > [!div class="checklist"]
 >
 > * 一般用途 v2 儲存體帳戶。 如果您有一般用途 v1 或 blob 儲存體帳戶，請 [升級至一般用途 v2 儲存體帳戶](../../storage/common/storage-account-upgrade.md)。 如需詳細資訊，請參閱[儲存體帳戶類型](../../storage/common/storage-account-overview.md#types-of-storage-accounts)。
-> * 儲存體帳戶必須位於相同的訂用帳戶和 [邏輯 SQL 伺服器](logical-servers.md)的相同位置。
+> * 儲存體帳戶必須位於相同的訂用帳戶和 [邏輯 SQL Server](logical-servers.md)所在的相同位置。
 > * Azure 儲存體帳戶需要 `Allow trusted Microsoft services to access this storage account` 。 在儲存體帳戶 **防火牆和虛擬網路** 上設定此設定。
 > * 您必須具有 `Microsoft.Authorization/roleAssignments/write` 所選儲存體帳戶的許可權。 如需詳細資訊，請參閱 [Azure 內建角色](../../role-based-access-control/built-in-roles.md)。
 
@@ -77,7 +77,7 @@ ms.locfileid: "92677254"
 |:-----|:-----|
 |`<subscriptionId>`| Azure 訂用帳戶識別碼|
 |`<resource group>`| 資源群組|
-|`<logical SQL server>`| 伺服器名稱|
+|`<logical SQL Server>`| 伺服器名稱|
 |`<administrator login>`| 系統管理員帳戶 |
 |`<complex password>`| 系統管理員帳戶的複雜密碼|
 
@@ -153,7 +153,7 @@ ms.locfileid: "92677254"
 > [!IMPORTANT]
 > 若要使用虛擬網路和防火牆後方的儲存體帳戶，您必須將 **isStorageBehindVnet** 參數設定為 true
 
-- [部署啟用審核的 Azure SQL server，以將 audit 記錄寫入至 blob 儲存體](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
+- [部署啟用審核的 Azure SQL Server，以將審核記錄寫入至 blob 儲存體](https://azure.microsoft.com/resources/templates/201-sql-auditing-server-policy-to-blob-storage)
 
 > [!NOTE]
 > 連結的範例位於外部公用存放庫，並提供「原樣」且沒有擔保，且不受任何 Microsoft 支援方案/服務的支援。

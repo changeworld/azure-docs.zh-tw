@@ -13,34 +13,34 @@ ms.workload: iaas-sql-server
 ms.date: 09/21/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b83a44db98907f505c7bf0d8302470cf3031a967
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d6900d0fdf656fa8309b18971691bb35587f7f4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761255"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286072"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>向 SQL VM 資源提供者註冊多個 Azure 中的 SQL 虛擬機器
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-這篇文章說明如何在 Azure 中使用 `Register-SqlVMs` PowerShell Cmdlet 向 SQL VM 資源提供者大量註冊 SQL Server 虛擬機器 (VM)。
+這篇文章說明如何在 Azure 中使用 `Register-SqlVMs` PowerShell Cmdlet 向 SQL VM 資源提供者大量註冊 SQL Server 虛擬機器 (VM)。 向 SQL VM 資源提供者註冊會安裝 [Sql IaaS 代理程式擴充](sql-server-iaas-agent-extension-automate-management.md)功能。
 
 本文將指導您如何大量註冊 SQL Server Vm。 或者，您可以 [自動註冊所有 SQL Server vm](sql-vm-resource-provider-automatic-registration.md) ，或 [個別 SQL Server vm](sql-vm-resource-provider-register.md)。 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
-`Register-SqlVMs` Cmdlet 可用在指定的訂用帳戶、資源群組或特定虛擬機器清單中註冊所有虛擬機器。 此 Cmdlet 會在_輕量_管理模式下註冊虛擬機器，然後產生[報告和記錄檔](#output-description)。 
+`Register-SqlVMs` Cmdlet 可用在指定的訂用帳戶、資源群組或特定虛擬機器清單中註冊所有虛擬機器。 此 Cmdlet 會在 _輕量_ 管理模式下註冊虛擬機器，然後產生 [報告和記錄檔](#output-description)。 
 
 註冊程式不會產生任何風險、沒有停機時間，也不會重新啟動 SQL Server 或虛擬機器。 
 
-如需資源提供者的詳細資訊，請參閱 [SQL VM 資源提供者](sql-vm-resource-provider-register.md)。 
+如需詳細資訊，請參閱 [SQL VM 資源提供者](sql-vm-resource-provider-register.md)。 
 
 ## <a name="prerequisites"></a>必要條件
 
 若要向資源提供者註冊您的 SQL Server VM，您將需要下列項目： 
 
 - 已[向資源提供者註冊](sql-vm-resource-provider-register.md#register-subscription-with-rp)，且包含未註冊 SQL Server 虛擬機器的 [Azure 訂用帳戶](https://azure.microsoft.com/free/)。 
-- 用來註冊虛擬機器的用戶端認證存在於下列任何 Azure 角色中： **虛擬機器參與者**、 **參與者**或 **擁有**者。 
+- 用來註冊虛擬機器的用戶端認證存在於下列任何 Azure 角色中： **虛擬機器參與者** 、 **參與者** 或 **擁有** 者。 
 - 最新版的 [Az PowerShell](/powershell/azure/new-azureps-module-az)。 
 - 最新版 [Az. Microsoft.sqlvirtualmachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0)。
 
@@ -227,7 +227,7 @@ Please find the detailed report in  file RegisterSqlVMScriptReport1571314821.txt
 
 當您使用提供的指令碼向資源提供者註冊 SQL Server VM 時，請考慮下列事項：
 
-- 向資源提供者註冊需要在 SQL Server VM 上執行客體代理程式。 Windows Server 2008 映像沒有客體代理程式，因此這些虛擬機器將會失敗，而必須使用 [NoAgent 管理模式](sql-vm-resource-provider-register.md#management-modes)手動註冊。
+- 向資源提供者註冊需要在 SQL Server VM 上執行客體代理程式。 Windows Server 2008 映像沒有客體代理程式，因此這些虛擬機器將會失敗，而必須使用 [NoAgent 管理模式](sql-server-iaas-agent-extension-automate-management.md#management-modes)手動註冊。
 - 有內建的重試邏輯可克服透明錯誤。 如果虛擬機器已成功註冊，則是快速操作。 不過，如果註冊失敗，則會重試每部虛擬機器。  因此，您應該允許大量時間來完成註冊流程，不過實際時間需求取決於錯誤的類型和數量。 
 
 ## <a name="full-script"></a>完整指令碼

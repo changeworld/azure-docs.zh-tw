@@ -2,13 +2,13 @@
 title: 概念-儲存體
 description: 深入瞭解 Azure VMware Solution 私用雲端中的重要儲存體功能。
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 02378040061080d3c9abbfafb26180c9d22e9073
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/03/2020
+ms.openlocfilehash: 394b755f5dc8fdbcaa6092419e9451ae1691aa67
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316812"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289257"
 ---
 #  <a name="azure-vmware-solution-storage-concepts"></a>Azure VMware 解決方案儲存體概念
 
@@ -28,7 +28,7 @@ Azure VMware 解決方案私用雲端提供原生的全叢集儲存體與 VMware
 
 ## <a name="data-at-rest-encryption"></a>待用資料加密
 
-vSAN 資料存放區預設使用待用資料加密。 加密解決方案是以 KMS 為基礎，而且支援進行金鑰管理的 vCenter 作業。 金鑰會以 HSM 為基礎的 Azure Key Vault 主要金鑰來加密儲存。 當主機因為任何原因而從叢集移除時，Ssd 上的資料會立即失效。
+vSAN 資料存放區預設使用待用資料加密。 加密解決方案是以 KMS 為基礎，而且支援進行金鑰管理的 vCenter 作業。 金鑰會以加密方式儲存，並由 Azure Key Vault 主要金鑰包裝。 當主機因為任何原因而從叢集移除時，Ssd 上的資料會立即失效。
 
 ## <a name="scaling"></a>調整大小
 

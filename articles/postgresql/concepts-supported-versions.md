@@ -7,15 +7,16 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cfe4b92dbed69440ee2c07cff758faad7e01293f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f03016c9a44968db49cd68bfec025c328861fc07
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707909"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286430"
 ---
 # <a name="supported-postgresql-major-versions"></a>支援的于 postgresql 主要版本
-Microsoft 的目標是支援適用於 PostgreSQL 的 Azure 資料庫單一伺服器中的 n-2 版于 postgresql 引擎。 版本會是 Azure 上目前的主要版本 (n) 和兩個先前的主要版本 (-2)。
+
+如需支援原則的詳細資料，請參閱 [適用於 PostgreSQL 的 Azure 資料庫版本控制原則](concepts-version-policy.md) 。
 
 適用於 PostgreSQL 的 Azure 資料庫目前支援下列主要版本：
 
@@ -35,6 +36,7 @@ Microsoft 的目標是支援適用於 PostgreSQL 的 Azure 資料庫單一伺服
 于 postgresql 專案會定期發出次要版本來修正回報的錯誤。 適用於 PostgreSQL 的 Azure 資料庫在服務的每月部署期間自動修補具有次要版本的伺服器。 
 
 不支援主要版本的自動就地升級。 若要升級至下一個主要版本，您可以 
+   * 請參閱 [使用傾印和還原的主要版本升級](./how-to-upgrade-using-dump-and-restore.md)
    * 使用 [pg_dump 和 pg_restore](./howto-migrate-using-dump-and-restore.md) 將資料庫移至使用新引擎版本建立的伺服器
    * 或者，您可以使用[Azure 資料庫移轉服務](..\dms\tutorial-azure-postgresql-to-azure-postgresql-online-portal.md)，從于 postgresql 10 升級為11
 

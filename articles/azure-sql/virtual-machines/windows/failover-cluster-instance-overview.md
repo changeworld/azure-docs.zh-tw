@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 6f216a7f0851661efc61a771fc35feb71e77fd1f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1b8dae471729b42b1c302c6c45033ddc808c7b43
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792475"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289296"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上的 SQL Server 容錯移轉叢集執行個體
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -149,7 +149,7 @@ Azure 虛擬機器上的 SQL Server 容錯移轉叢集執行個體使用[分散�
 針對 Azure 虛擬機器上的 SQL Server 容錯移轉叢集執行個體，請考慮下列限制。 
 
 ### <a name="lightweight-resource-provider"></a>輕量資源提供者   
-目前，只能透過 [SQL Server IaaS 代理程式延伸模組](sql-server-iaas-agent-extension-automate-management.md)的[輕量管理模式](sql-vm-resource-provider-register.md#management-modes)來支援 Azure 虛擬機器上 SQL Server 容錯移轉叢集執行個體。 若要從完整的延伸模組模式變更為輕量，請刪除對應 VM 的 **SQL 虛擬機器** 資源，然後在輕量模式中使用 SQL VM 資源提供者來註冊這些資源。 使用 Azure 入口網站刪除 **SQL 虛擬機器** 資源時，請清除正確虛擬機器旁邊的核取方塊。 
+目前，只能透過 [SQL Server IaaS 代理程式延伸模組](sql-server-iaas-agent-extension-automate-management.md)的[輕量管理模式](sql-server-iaas-agent-extension-automate-management.md#management-modes)來支援 Azure 虛擬機器上 SQL Server 容錯移轉叢集執行個體。 若要從完整的延伸模組模式變更為輕量，請刪除對應 VM 的 **SQL 虛擬機器** 資源，然後在輕量模式中使用 SQL VM 資源提供者來註冊這些資源。 使用 Azure 入口網站刪除 **SQL 虛擬機器** 資源時，請清除正確虛擬機器旁邊的核取方塊。 
 
 完整的延伸模組支援自動化備份、修補和進階入口網站管理等功能。 以輕量管理模式重新安裝代理程式後，這些功能對 SQL Server VM 即不再有效。
 

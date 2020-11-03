@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: e22400016eae0642c4e25fcfd4fcaaaab22a27a8
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 8faf9c913ea9bab2feaf698efeb6fd5b3ca63179
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280581"
+ms.locfileid: "93289630"
 ---
 # <a name="speech-service-release-notes"></a>語音服務版本資訊
 
@@ -24,21 +24,13 @@ ms.locfileid: "93280581"
 
 **注意** ： Windows 上的語音 SDK 取決於 Visual Studio 2015、2017和2019的共用 Microsoft Visual C++ 可轉散發套件。 在 [這裡](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)下載。
 
-**語音 CLI (也稱為 SPX)**<br>
-SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命令列介面。 請在 [這裡](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-basics)下載最新版本。
-- `spx csr dataset upload --kind audio|language|acoustic` –從本機資料建立資料集，而不只是從 Url。
-- `spx csr evaluation create|status|list|update|delete` –比較新的模型與基準事實/其他模型。
-- `spx * list` –支援非分頁體驗 (不需要--top X--skip X) 。
-- `spx * --http header A=B` – (針對 Office 自訂驗證) 新增自訂標頭。 
-- `spx help` –改良的文字和反向刻度文字色彩 (藍色) 。
-
 **新功能**
 - **Linux** ：已新增 Debian 10 和 UBUNTU 20.04 LTS 的支援。
 - **Python/目標-C** ：已新增對 API 的支援 `KeywordRecognizer` 。 檔會在 [此](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-keyword-basics)。
 - **C + +/JAVA/C #** ：已新增透過設定任何索引 `HttpHeader` 鍵/值的支援 `ServicePropertyChannel::HttpHeader` 。
 - **JavaScript** ：已新增 API 的支援 `ConversationTranscriber` 。 請參閱 [此處](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-conversation-transcription?pivots=programming-language-javascript)的檔。 
-- **C + +/c #** ：已新增 `AudioDataStream FromFile` 要讀取 (方法。WAV 檔) [這裡 (c + +) ](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audiodatastream) 和 [這裡 (c # ) ](
-https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream.fromfile)。
+- **C + +/c #** ：已新增 `AudioDataStream FromWavFileInput` 要讀取 (方法。WAV 檔) [這裡 (c + +) ](https://docs.microsoft.com/cpp/cognitive-services/speech/audiodatastream) 和 [這裡 (c # ) ](
+https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet)。
 -  **C + +/c #/JAVA/Python/Objective-C/Swift** ：已新增 `stopSpeakingAsync()` 方法來停止文字轉換語音合成。 請參閱此處的參考檔 [ (c + +) ](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace)，此處 [ (c # ) ](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet)，此處 (了 [JAVA) ](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable)，此處 (了 [Python) ](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)， ([目標-C/Swift ](https://docs.microsoft.com/objectivec/cognitive-services/speech/)) 。
 - **C #、c + +、JAVA** ：將函式新增 `FromDialogServiceConnector()` 至 `Connection` 類別，可用於監視的連接和中斷連接事件 `DialogServiceConnector` 。 請參閱此處的參考檔 [ (c # ) ](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet)， [此處 (c + +) ](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)， [此處 (JAVA) ](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection?view=azure-java-stable)。
 <!-- - **C++/C#/Java/Python/Objective-C/Swift**: Added support for Pronunciation Assessment, which evaluates speech pronunciation and gives speakers feedback on the accuracy and fluency of spoken audio. Read the documentation [here](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment). -->
@@ -72,6 +64,16 @@ https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audioda
 
 **Covid-19-19 縮減測試：** 由於在過去幾周的遠端工作，我們無法像往常一樣執行手動驗證測試。 我們尚未進行任何變更，而且我們的自動化測試全都通過了。 在不太可能發生的情況下，請在 [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen)上讓我們知道。<br>
 保持狀況良好！
+
+## <a name="speech-cli-also-known-as-spx-2020-october-release"></a>語音 CLI (也稱為 SPX) ： 2020-10 月版本
+SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命令列介面。 請在 [這裡](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-basics)下載最新版本。 <br>
+
+**新功能**
+- `spx csr dataset upload --kind audio|language|acoustic` –從本機資料建立資料集，而不只是從 Url。
+- `spx csr evaluation create|status|list|update|delete` –比較新的模型與基準事實/其他模型。
+- `spx * list` –支援非分頁體驗 (不需要--top X--skip X) 。
+- `spx * --http header A=B` – (針對 Office 自訂驗證) 新增自訂標頭。 
+- `spx help` –改良的文字和反向刻度文字色彩 (藍色) 。
 
 
 ## <a name="text-to-speech-2020-august-release"></a>文字轉換語音 2020-8 月版本

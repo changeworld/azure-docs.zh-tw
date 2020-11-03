@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 156edbeda225b5457d6f5e7d29482e393b510736
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: c4873bded750186f072dd39ddcb8d78941848586
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998404"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289363"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>診斷 Azure Key Vault 上的私人連結設定問題
 
@@ -54,18 +54,18 @@ ms.locfileid: "91998404"
 
 ### <a name="if-you-use-a-managed-solution-refer-to-specific-documentation"></a>如果您使用受控解決方案，請參閱特定檔
 
-本指南不適用於 Microsoft 所管理的解決方案，其中金鑰保存庫是由獨立于客戶虛擬網路的 Azure 產品存取。 這類案例的範例有 Azure 儲存體或針對待用加密設定的 Azure SQL、Azure 事件中樞使用客戶提供的金鑰來加密資料、Azure Data Factory 存取儲存在金鑰保存庫中的服務認證、Azure Pipelines 從金鑰保存庫取得秘密，以及其他類似的案例。 在這些情況下， *您必須檢查產品是否支援啟用防火牆的金鑰保存庫*。 這項支援通常是使用 Key Vault 防火牆的「 [信任的服務](overview-vnet-service-endpoints.md#trusted-services) 」功能來執行。 不過，許多產品都不包含在受信任的服務清單中，原因有很多。 在此情況下，會觸及產品特定的支援。
+本指南不適用於 Microsoft 所管理的解決方案，其中金鑰保存庫是由獨立于客戶虛擬網路的 Azure 產品存取。 這類案例的範例有 Azure 儲存體或針對待用加密設定的 Azure SQL、Azure 事件中樞使用客戶提供的金鑰來加密資料、Azure Data Factory 存取儲存在金鑰保存庫中的服務認證、Azure Pipelines 從金鑰保存庫取得秘密，以及其他類似的案例。 在這些情況下， *您必須檢查產品是否支援啟用防火牆的金鑰保存庫* 。 這項支援通常是使用 Key Vault 防火牆的「 [信任的服務](overview-vnet-service-endpoints.md#trusted-services) 」功能來執行。 不過，許多產品都不包含在受信任的服務清單中，原因有很多。 在此情況下，會觸及產品特定的支援。
 
-少數 Azure 產品支援 *vnet 插入*的概念。 簡單來說，產品會將網路裝置新增至客戶虛擬網路，讓它能夠傳送要求，就像是部署至虛擬網路一樣。 [Azure Databricks](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)有一個值得注意的範例。 這類產品可以使用私用連結對金鑰保存庫提出要求，而這項疑難排解指南可能有所説明。
+少數 Azure 產品支援 *vnet 插入* 的概念。 簡單來說，產品會將網路裝置新增至客戶虛擬網路，讓它能夠傳送要求，就像是部署至虛擬網路一樣。 [Azure Databricks](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)有一個值得注意的範例。 這類產品可以使用私用連結對金鑰保存庫提出要求，而這項疑難排解指南可能有所説明。
 
 ## <a name="2-confirm-that-the-connection-is-approved-and-succeeded"></a>2. 確認連接已通過核准且成功
 
 下列步驟會驗證私人端點連線是否已通過核准且成功：
 
 1. 開啟 Azure 入口網站，然後開啟您的金鑰保存庫資源。
-2. 在左側功能表中，選取 [ **網路**]。
+2. 在左側功能表中，選取 [ **網路** ]。
 3. 按一下 [ **私人端點連接** ] 索引標籤。這會顯示所有私人端點連線及其各自的狀態。 如果沒有連線或虛擬網路的連線已遺失，您就必須建立新的私人端點。 稍後將會討論。
-4. 仍在 **私人端點**連線中，找出您要診斷的連線，並確認 [線上狀態] 已 **通過核准** ，且 [布建狀態] 已 **成功**。
+4. 仍在 **私人端點** 連線中，找出您要診斷的連線，並確認 [線上狀態] 已 **通過核准** ，且 [布建狀態] 已 **成功** 。
     - 如果連接處於「擱置中」狀態，您可能只需要核准它。
     - 如果連接「已拒絕」、「失敗」、「錯誤」、「已中斷連線」或其他狀態，則您必須建立新的私人端點資源才能生效。
 
@@ -79,7 +79,7 @@ ms.locfileid: "91998404"
 重要的概念是，私用連結 *功能只會* 在已關閉的虛擬網路中存取您的金鑰保存庫，以防止資料遭到外泄。 它不會 *移除* 任何現有的存取權。 若要有效地封鎖來自公用網際網路的存取，您必須明確啟用金鑰保存庫防火牆：
 
 1. 開啟 Azure 入口網站，然後開啟您的金鑰保存庫資源。
-2. 在左側功能表中，選取 [ **網路**]。
+2. 在左側功能表中，選取 [ **網路** ]。
 3. 確定已選取頂端的 [ **防火牆與虛擬網路** ] 索引標籤。
 4. 確定已選取 [ **私人端點] 和 [選取的網路** ] 選項。 如果您找到 **所有網路** ，請選取，這會說明外部用戶端仍然能夠存取金鑰保存庫的原因。
 
@@ -120,11 +120,11 @@ ms.locfileid: "91998404"
 您將需要診斷主機名稱解析，並且必須知道已啟用私人連結的金鑰保存庫確切私人 IP 位址。 若要尋找該位址，請遵循此程式：
 
 1. 開啟 Azure 入口網站，然後開啟您的金鑰保存庫資源。
-2. 在左側功能表中，選取 [ **網路**]。
+2. 在左側功能表中，選取 [ **網路** ]。
 3. 按一下 [ **私人端點連接** ] 索引標籤。這會顯示所有私人端點連線及其各自的狀態。
-4. 找出您正在診斷的帳戶，並確認「線上狀態」已 **核准** ，且布建狀態為「 **成功**」。 如果您看不到這個內容，請返回本檔的上一節。
+4. 找出您正在診斷的帳戶，並確認「線上狀態」已 **核准** ，且布建狀態為「 **成功** 」。 如果您看不到這個內容，請返回本檔的上一節。
 5. 當您找到正確的專案時，請按一下 [ **私人端點** ] 資料行中的連結。 這會開啟私人端點資源。
-6. [總覽] 頁面可能會顯示一個稱為 **自訂 DNS 設定**的區段。 確認只有一個符合金鑰保存庫主機名稱的專案。 該專案會顯示金鑰保存庫的私人 IP 位址。
+6. [總覽] 頁面可能會顯示一個稱為 **自訂 DNS 設定** 的區段。 確認只有一個符合金鑰保存庫主機名稱的專案。 該專案會顯示金鑰保存庫的私人 IP 位址。
 7. 您也可以按一下 [ **網路介面** ] 的連結，確認私人 IP 位址與上一個步驟中所顯示的相同。 網路介面是代表金鑰保存庫的虛擬裝置。
 
 IP 位址是 *在相同虛擬網路中* 執行的 vm 和其他裝置將用來連線到金鑰保存庫的位址。 請記下 IP 位址，或讓瀏覽器索引標籤保持開啟，而且不會在您進行進一步調查時觸碰。
@@ -229,7 +229,7 @@ Linux：
 
     privatelink.vaultcore.azure.net
 
-您可以前往入口網站中的 [訂用帳戶] 頁面，然後選取左側功能表上的 [資源]，來檢查此資源是否存在。 資源名稱必須是 `privatelink.vaultcore.azure.net` ，而且資源類型必須是 **私人 DNS 區域**。
+您可以前往入口網站中的 [訂用帳戶] 頁面，然後選取左側功能表上的 [資源]，來檢查此資源是否存在。 資源名稱必須是 `privatelink.vaultcore.azure.net` ，而且資源類型必須是 **私人 DNS 區域** 。
 
 當您使用一般程式建立私人端點時，通常會自動建立此資源。 但在某些情況下，不會自動建立此資源，您必須手動進行。 此資源也可能已被意外刪除。
 
@@ -267,7 +267,7 @@ Linux：
 
 如上一 [節](#key-vault-with-private-link-resolving-from-arbitrary-internet-machine)所述，具有私用連結的金鑰保存庫 `{vaultname}.privatelink.vaultcore.azure.net` 在其 *公開* 註冊中具有別名。 虛擬網路所使用的 DNS 伺服器會使用公開註冊，但它會檢查每個別名是否有 *私人* 註冊，如果找到的話，則會停止在公開註冊時定義的下列別名。
 
-此邏輯表示如果虛擬網路連結到具有名稱的私人 DNS 區域 `privatelink.vaultcore.azure.net` ，且金鑰保存庫的公用 dns 註冊有別名 `fabrikam.privatelink.vaultcore.azure.net` (請注意，金鑰保存庫主機名稱尾碼會與私人 dns 區功能變數名稱稱完全相符) ，然後 DNS 查詢會 `A` `fabrikam` *在私人 dns 區域中*尋找具有名稱的記錄。 如果 `A` 找到記錄，就會在 DNS 查詢中傳回其 IP 位址，且不會在公用 DNS 註冊中執行任何進一步的查閱。
+此邏輯表示如果虛擬網路連結到具有名稱的私人 DNS 區域 `privatelink.vaultcore.azure.net` ，且金鑰保存庫的公用 dns 註冊有別名 `fabrikam.privatelink.vaultcore.azure.net` (請注意，金鑰保存庫主機名稱尾碼會與私人 dns 區功能變數名稱稱完全相符) ，然後 DNS 查詢會 `A` `fabrikam` *在私人 dns 區域中* 尋找具有名稱的記錄。 如果 `A` 找到記錄，就會在 DNS 查詢中傳回其 IP 位址，且不會在公用 DNS 註冊中執行任何進一步的查閱。
 
 您可以看到，名稱解析是在您的控制之下。 此設計的原理後會有期是：
 
@@ -278,7 +278,7 @@ Linux：
 
 ### <a name="query-the-healthstatus-endpoint-of-the-key-vault"></a>查詢 `/healthstatus` 金鑰保存庫的端點
 
-您的金鑰保存庫 `/healthstatus` 會提供可用於診斷的端點。 回應標頭包含來源 IP 位址，如金鑰保存庫服務所見。 您可以使用下列命令來呼叫該端點 (**記得使用您的金鑰保存庫主機名稱**) ：
+您的金鑰保存庫 `/healthstatus` 會提供可用於診斷的端點。 回應標頭包含來源 IP 位址，如金鑰保存庫服務所見。 您可以使用下列命令來呼叫該端點 ( **記得使用您的金鑰保存庫主機名稱** ) ：
 
 Windows (PowerShell) ：
 
@@ -346,7 +346,7 @@ Linux 或最新版本的 Windows 10，其中包括 `curl` ：
 
 ### <a name="diagnose-custom-dns-servers-at-virtual-network"></a>診斷虛擬網路的自訂 DNS 伺服器
 
-在入口網站中，開啟虛擬網路資源。 在左側功能表中，開啟 [ **DNS 伺服器**]。 如果您使用「自訂」，則 DNS 解析可能不會如本檔中所述。 您必須診斷 DNS 伺服器解析金鑰保存庫主機名稱的方式。
+在入口網站中，開啟虛擬網路資源。 在左側功能表中，開啟 [ **DNS 伺服器** ]。 如果您使用「自訂」，則 DNS 解析可能不會如本檔中所述。 您必須診斷 DNS 伺服器解析金鑰保存庫主機名稱的方式。
 
 如果您使用預設的 Azure 提供的 DNS 伺服器，這整份檔都適用。
 

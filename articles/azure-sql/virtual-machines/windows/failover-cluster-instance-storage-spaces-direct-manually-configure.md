@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 848f3cd2d5719d62e39f46c166d51e09ec89bd4c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9b90d13d6f4fa5a33bff38aaa66728a5d0f3d70f
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792509"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289949"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>在 Azure Vm 上建立具有儲存空間直接存取 (SQL Server 的 FCI) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "92792509"
 若要深入瞭解，請參閱 [使用 Azure vm 上的 SQL Server](failover-cluster-instance-overview.md) 和叢集 [最佳作法](hadr-cluster-best-practices.md)的 FCI 總覽。 
 
 
-## <a name="overview"></a>概觀 
+## <a name="overview"></a>總覽 
 
 [儲存空間直接存取 (S2D) ](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) 支援兩種類型的架構：融合式和超融合式。 超融合式基礎結構會將存放裝置放置在裝載叢集應用程式的相同伺服器上，讓儲存體位於每個 SQL Server FCI 節點上。 
 
@@ -50,7 +50,7 @@ ms.locfileid: "92792509"
    > 您可在 Azure 中，從範本開始建立整個解決方案。 您可以在 GitHub [Azure 快速入門範本](https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad) 頁面上取得範本的範例。 本範例並非為任何特定工作負載設計或測試。 您可執行範本來建立 SQL Server FCI，並將儲存空間直接存取儲存體連線至網域。 您可評估此範本，並依需要進行修改。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在您完成本文中的指示之前，您應該已經有：
 
@@ -239,7 +239,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 - Azure 虛擬機器支援 Windows Server 2019 上的 Microsoft Distributed Transaction Coordinator (MSDTC) ，並在 Csv 和 [標準負載平衡器](../../../load-balancer/load-balancer-overview.md)上使用儲存體。
 - 只有在將存放裝置新增至叢集時，未核取或清除磁片資格選項時，才儲存空間直接存取可以搭配使用，以 NTFS 格式的磁片來連接的磁片。 
-- 只支援以 [輕量管理模式](sql-vm-resource-provider-register.md#management-modes) 向 SQL VM 資源提供者註冊。
+- 只支援以 [輕量管理模式](sql-server-iaas-agent-extension-automate-management.md#management-modes) 向 SQL VM 資源提供者註冊。
 
 ## <a name="next-steps"></a>後續步驟
 

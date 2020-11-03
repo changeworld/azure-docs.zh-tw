@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 1ab5ae7bf9f1d13458e3bbeeec564fe642eb3303
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca5842fb268c20f8ae58eb5f683229c4ae3919f4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88588723"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289159"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>在防火牆後存取 Azure 金鑰保存庫
 
@@ -43,7 +43,7 @@ ms.locfileid: "88588723"
 | 搭配使用公司帳戶或學校帳戶與 Azure AD 的使用者或服務主體 (例如，user@contoso.com) |**全域：**<br> login.microsoftonline.com:443<br><br> **Azure 中國︰**<br> login.chinacloudapi.cn:443<br><br>**Azure US Gov︰**<br> login.microsoftonline.us:443<br><br>**Azure 德國︰**<br> login.microsoftonline.de:443 |
 | 使用公司帳戶或學校帳戶加上 Active Directory 同盟服務 (AD FS) 或其他同盟端點的使用者或服務主體 (例如，user@contoso.com) |公司帳戶或學校帳戶的所有端點，加上 AD FS 或其他同盟端點 |
 
-還有其他可能的複雜案例。 如需其他資訊，請參閱 [Azure Active Directory 驗證流程](../../active-directory/develop/authentication-scenarios.md)、[整合應用程式與 Azure Active Directory](../../active-directory/develop/active-directory-how-to-integrate.md) 及 [Active Directory 驗證通訊協定](https://msdn.microsoft.com/library/azure/dn151124.aspx)。  
+還有其他可能的複雜案例。 如需其他資訊，請參閱 [Azure Active Directory 驗證流程](../../active-directory/develop/authentication-vs-authorization.md)、[整合應用程式與 Azure Active Directory](../../active-directory/develop/active-directory-how-to-integrate.md) 及 [Active Directory 驗證通訊協定](/previous-versions/azure/dn151124(v=azure.100))。  
 
 ## <a name="key-vault-management"></a>金鑰保存庫管理
 
@@ -74,4 +74,4 @@ ms.locfileid: "88588723"
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您對 Key Vault 有任何疑問，請造訪 [Microsoft 的 Azure Key Vault 問與答頁面](https://docs.microsoft.com/answers/topics/azure-key-vault.html)。
+如果您對 Key Vault 有任何疑問，請造訪 [Microsoft 的 Azure Key Vault 問與答頁面](/answers/topics/azure-key-vault.html)。

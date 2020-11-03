@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 10/27/2020
+ms.date: 11/03/2020
 ms.custom: generated
-ms.openlocfilehash: d9881fe91885a9a97b51da176be98a9ed6d007ba
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 3f192493dfd6bfc2fb3d5802b1dd94cd4ca3a9a9
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900773"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285225"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure 資源提供者作業
 
@@ -40,7 +40,7 @@ ms.locfileid: "92900773"
 | [Microsoft.Cdn](#microsoftcdn) |
 | [Microsoft.ClassicNetwork](#microsoftclassicnetwork) |
 | [Microsoft.Network](#microsoftnetwork) |
-| **Storage** |
+| **儲存體** |
 | [Microsoft.ClassicStorage](#microsoftclassicstorage) |
 | [Microsoft.DataBox](#microsoftdatabox) |
 | [Microsoft.ImportExport](#microsoftimportexport) |
@@ -843,7 +843,6 @@ Azure 服務： [應用程式閘道](../application-gateway/index.yml)、 [azure
 > | Microsoft. Network/azureFirewalls/networkRuleCollections/read | 取得 Azure 防火牆 NetworkRuleCollection |
 > | Microsoft. Network/azureFirewalls/networkRuleCollections/write | CreatesOrUpdates Azure 防火牆 NetworkRuleCollection |
 > | Microsoft. Network/azureFirewalls/networkRuleCollections/delete | 刪除 Azure 防火牆 NetworkRuleCollection |
-> | Microsoft. Network/azureWebCategories/read | 取得 Azure WebCategories |
 > | Microsoft.Network/bastionHosts/read | 取得堡壘主機 |
 > | Microsoft.Network/bastionHosts/write | 建立或更新堡壘主機 |
 > | Microsoft.Network/bastionHosts/delete | 刪除堡壘主機 |
@@ -1243,8 +1242,6 @@ Azure 服務： [應用程式閘道](../application-gateway/index.yml)、 [azure
 > | Microsoft. Network/virtualHubs/bgpConnections/read | 取得虛擬中樞的中樞 Bgp 連接子資源 |
 > | Microsoft. Network/virtualHubs/bgpConnections/write | 建立或更新虛擬中樞的中樞 Bgp 連接子資源 |
 > | Microsoft. Network/virtualHubs/bgpConnections/delete | 刪除虛擬中樞的中樞 Bgp 連接子資源 |
-> | Microsoft. Network/virtualHubs/bgpConnections/advertisedRoutes/action | 取得 virtualrouter 通告的路由 |
-> | Microsoft. Network/virtualHubs/bgpConnections/learnedRoutes/action | 取得 virtualrouter 學習的路由 |
 > | Microsoft. Network/virtualHubs/hubRouteTables/read | 取得虛擬中樞的路由表子資源 |
 > | Microsoft. Network/virtualHubs/hubRouteTables/write | 建立或更新虛擬中樞的路由表子資源 |
 > | Microsoft. Network/virtualHubs/hubRouteTables/delete | 刪除虛擬中樞的路由表子資源 |
@@ -1332,9 +1329,6 @@ Azure 服務： [應用程式閘道](../application-gateway/index.yml)、 [azure
 > | microsoft. network/vpngateways/startpacketcapture/action | 使用根據資源啟動 Vpn 閘道封包捕獲 |
 > | microsoft. network/vpngateways/stoppacketcapture/action | 使用 sasURL 停止 Vpn 閘道封包捕獲 |
 > | microsoft.network/vpngateways/listvpnconnectionshealth/action | 取得 VpnGateway 上所有或部分連線的連線健康情況 |
-> | microsoft. network/vpnGateways/natRules/read | 取得 NAT 規則資源 |
-> | microsoft. network/vpnGateways/natRules/write | 放置 NAT 規則資源 |
-> | microsoft. network/vpnGateways/natRules/delete | 刪除 NAT 規則資源 |
 > | microsoft.network/vpnGateways/vpnConnections/read | 取得 VpnConnection。 |
 > | microsoft.network/vpnGateways/vpnConnections/write | 放置 VpnConnection。 |
 > | microsoft.network/vpnGateways/vpnConnections/delete | 刪除 VpnConnection。 |
@@ -1522,6 +1516,7 @@ Azure 服務： [儲存體](../storage/index.yml)
 > | Microsoft.Storage/locations/usages/read | 傳回指定訂用帳戶資源的限制和目前的使用量計數 |
 > | Microsoft.Storage/operations/read | 輪詢非同步作業的狀態。 |
 > | Microsoft.Storage/skus/read | 列出 Microsoft.Storage 所支援的 SKU。 |
+> | Microsoft. Storage/storageAccounts/updateInternalProperties/action |  |
 > | Microsoft. Storage/storageAccounts/hnsonmigration/action | 客戶可以中止儲存體帳戶上進行中的 Hns 遷移 |
 > | Microsoft. Storage/storageAccounts/hnsonmigration/action | 客戶可以遷移至 hns 帳戶類型 |
 > | Microsoft. Storage/storageAccounts/restoreBlobRanges/action | 將 blob 範圍還原至指定時間的狀態 |
@@ -1572,6 +1567,7 @@ Azure 服務： [儲存體](../storage/index.yml)
 > | Microsoft. Storage/storageAccounts/fileServices/共用/讀取 | 列出檔案共用 |
 > | Microsoft. Storage/storageAccounts/fileServices/共用/寫入 | 建立或更新檔案共用 |
 > | Microsoft. Storage/storageAccounts/inventoryPolicies/delete |  |
+> | Microsoft. Storage/storageAccounts/inventoryPolicies/read |  |
 > | Microsoft. Storage/storageAccounts/inventoryPolicies/read |  |
 > | Microsoft. Storage/storageAccounts/inventoryPolicies/write |  |
 > | Microsoft. Storage/storageAccounts/localUsers/delete | 刪除本機使用者 |
@@ -2128,18 +2124,19 @@ Azure 服務： [Azure SignalR Service](../azure-signalr/index.yml)
 > | Microsoft.signalrservice/SignalR/privateEndpointConnections/read | 讀取私人端點連線 |
 > | Microsoft.signalrservice/SignalR/privateLinkResources/read | 列出所有 SignalR Private Link 資源 |
 > | **DataAction** | **說明** |
-> | Microsoft.signalrservice/SignalR/serverConnection/action | 啟動伺服器連接。 |
-> | Microsoft.signalrservice/SignalR/clientConnection/action | 新增/移除群組的用戶端連線，或關閉用戶端連接。 |
-> | Microsoft.signalrservice/SignalR/user/action | 新增/移除群組中的使用者。 |
-> | Microsoft.signalrservice/SignalR/clientConnection/read | 檢查連接是否存在。 |
-> | Microsoft.signalrservice/SignalR/clientConnection/write | 將訊息直接傳送至用戶端連接。 |
-> | Microsoft.signalrservice/SignalR/group/read | 檢查群組是否存在。 |
-> | Microsoft.signalrservice/SignalR/group/write | 將訊息廣播到群組/部分群組中的用戶端連接。 |
-> | Microsoft.signalrservice/SignalR/hub/write | 將訊息廣播到連接到此中樞的所有用戶端連線。 |
-> | Microsoft.signalrservice/SignalR/service/accessKey/action | 取得用於簽署 ClientTokens 的暫時 AccessKey。 |
-> | Microsoft.signalrservice/SignalR/service/clientToken/action | 取得開始用戶端連接的 ClientToken。 |
-> | Microsoft.signalrservice/SignalR/user/read | 檢查使用者是否存在，以及它是否在群組中。 |
-> | Microsoft.signalrservice/SignalR/user/write | 將訊息傳送給可能有多個用戶端連接的使用者。 |
+> | Microsoft.signalrservice/SignalR/auth/accessKey/action | 產生暫時 AccessKey 來簽署 ClientTokens。 |
+> | Microsoft.signalrservice/SignalR/auth/clientToken/action | 產生用來啟動用戶端連接的 ClientToken。 |
+> | Microsoft.signalrservice/SignalR/clientConnection/send/action | 將訊息直接傳送至用戶端連接。 |
+> | Microsoft.signalrservice/SignalR/clientConnection/read | 檢查用戶端連接是否存在。 |
+> | Microsoft.signalrservice/SignalR/clientConnection/write | 關閉用戶端連接。 |
+> | Microsoft.signalrservice/SignalR/group/send/action | 將訊息廣播到群組。 |
+> | Microsoft.signalrservice/SignalR/group/read | 檢查群組是否存在或使用者存在於群組中。 |
+> | Microsoft.signalrservice/SignalR/group/write | 加入/離開群組。 |
+> | Microsoft.signalrservice/SignalR/hub/send/action | 將訊息廣播至中樞內的所有用戶端連接。 |
+> | Microsoft.signalrservice/SignalR/serverConnection/write | 啟動伺服器連接。 |
+> | Microsoft.signalrservice/SignalR/user/send/action | 傳送訊息給使用者，其中可能包含多個用戶端連接。 |
+> | Microsoft.signalrservice/SignalR/user/read | 檢查使用者是否存在。 |
+> | Microsoft.signalrservice/SignalR/user/write |  |
 
 ### <a name="microsoftweb"></a>microsoft.web
 
@@ -3256,6 +3253,11 @@ Azure 服務： [Data Factory](../data-factory/index.yml)
 > | Microsoft.DataFactory/factories/linkedServices/read | 讀取連結服務。 |
 > | Microsoft.DataFactory/factories/linkedServices/delete | 刪除連結服務。 |
 > | Microsoft.DataFactory/factories/linkedServices/write | 建立或更新連結服務 |
+> | DataFactory/factory/managedVirtualNetworks/read | 讀取受管理的虛擬網路。 |
+> | DataFactory/factory/managedVirtualNetworks/write | 建立或更新受管理的虛擬網路。 |
+> | DataFactory/factory/managedVirtualNetworks/managedPrivateEndpoints/read | 讀取受控私人端點。 |
+> | DataFactory/factory/managedVirtualNetworks/managedPrivateEndpoints/write | 建立或更新受控私人端點。 |
+> | DataFactory/factory/managedVirtualNetworks/managedPrivateEndpoints/delete | 刪除受控私人端點。 |
 > | DataFactory/factory/operationResults/read | 取得作業結果。 |
 > | Microsoft.DataFactory/factories/pipelineruns/read | 讀取管線執行。 |
 > | Microsoft.DataFactory/factories/pipelineruns/cancel/action | 取消執行識別碼所指定的管線執行。 |
@@ -3862,6 +3864,8 @@ Azure 服務： [Azure SQL Database](../azure-sql/database/index.yml)、 [azure 
 > | Microsoft.Sql/instancePools/delete | 刪除執行個體集區 |
 > | Microsoft .Sql/instancePools/使用方式/讀取 | 取得實例集區的使用量資訊 |
 > | Microsoft.Sql/locations/read | 取得指定訂用帳戶的可用位置 |
+> | Microsoft .Sql/位置/administratorAzureAsyncOperation/讀取 | 取得受控實例的 azure async 系統管理員作業結果。 |
+> | Microsoft .Sql/位置/administratorOperationResults/讀取 | 取得受控實例系統管理員作業結果。 |
 > | Microsoft.Sql/locations/auditingSettingsAzureAsyncOperation/read | 擷取擴充伺服器的 Blob 稽核原則設定作業結果 |
 > | Microsoft.Sql/locations/auditingSettingsOperationResults/read | 擷取伺服器的「Blob 稽核原則設定」作業結果 |
 > | Microsoft.Sql/locations/capabilities/read | 在指定位置取得此訂用帳戶的功能 |
@@ -3883,6 +3887,8 @@ Azure 服務： [Azure SQL Database](../azure-sql/database/index.yml)、 [azure 
 > | Microsoft.Sql/locations/extendedAuditingSettingsOperationResults/read | 擷取擴充伺服器的 Blob 稽核原則設定作業結果 |
 > | Microsoft.Sql/locations/firewallRulesAzureAsyncOperation/read | 取得防火牆規則作業的狀態。 |
 > | Microsoft.Sql/locations/firewallRulesOperationResults/read | 取得防火牆規則作業的狀態。 |
+> | Microsoft .Sql/位置/hybridLinkAzureAsyncOperation/讀取 | 取得 Azure Sql 受控執行個體上長期混合連結非同步作業的狀態。 |
+> | Microsoft .Sql/位置/hybridLinkOperationResults/讀取 | 取得長期混合式連結非同步作業的狀態。 |
 > | Microsoft.Sql/locations/instanceFailoverGroups/read | 傳回執行個體容錯移轉群組的清單，或取得指定執行個體容錯移轉群組的屬性。 |
 > | Microsoft.Sql/locations/instanceFailoverGroups/write | 使用指定的參數建立實例容錯移轉群組，或更新指定實例容錯移轉群組的屬性或標記。 |
 > | Microsoft.Sql/locations/instanceFailoverGroups/delete | 刪除現有的執行個體容錯移轉群組。 |
@@ -3998,6 +4004,9 @@ Azure 服務： [Azure SQL Database](../azure-sql/database/index.yml)、 [azure 
 > | Microsoft .Sql/managedInstances/encryptionProtector/重新驗證/動作 | 更新指定伺服器加密保護裝置的屬性。 |
 > | Microsoft.Sql/managedInstances/encryptionProtector/read | 傳回伺服器加密保護裝置的清單，或取得指定伺服器加密保護裝置的屬性。 |
 > | Microsoft.Sql/managedInstances/encryptionProtector/write | 更新指定伺服器加密保護裝置的屬性。 |
+> | Microsoft .Sql/managedInstances/hybridLink/read | 傳回混合連結的清單，或取得指定之分散式可用性群組的屬性。 |
+> | Microsoft .Sql/managedInstances/hybridLink/write | 使用指定的參數建立或更新混合式連結。 |
+> | Microsoft .Sql/managedInstances/hybridLink/delete | 刪除具有指定之分散式可用性群組的混合式連結。 |
 > | Microsoft .Sql/managedInstances/inaccessibleManagedDatabases/read | 取得受控實例中無法存取的受控資料庫清單 |
 > | Microsoft.Sql/managedInstances/keys/read | 傳回受控執行個體金鑰的清單，或取得指定受控執行個體金鑰的屬性。 |
 > | Microsoft.Sql/managedInstances/keys/write | 使用指定參數建立金鑰，或更新指定受控執行個體金鑰的屬性或標記。 |
@@ -6541,6 +6550,9 @@ Azure 服務： [Key Vault](../key-vault/index.yml)
 > | KeyVault/保存庫/eventGridFilters/read | 通知 KeyVault，正在查看 Key Vault 的 EventGrid 訂用帳戶 |
 > | KeyVault/保存庫/eventGridFilters/寫入 | 通知 Microsoft KeyVault 正在建立 Key Vault 的新 EventGrid 訂用帳戶 |
 > | KeyVault/保存庫/eventGridFilters/刪除 | 通知 KeyVault，正在刪除 Key Vault 的 EventGrid 訂用帳戶 |
+> | KeyVault/保存庫/金鑰/讀取 | 列出指定之保存庫中的金鑰，或讀取指定之金鑰的目前版本。 |
+> | KeyVault/保存庫/金鑰/寫入 | 建立新的金鑰，或更新現有的金鑰。 |
+> | KeyVault/保存庫/金鑰/版本/讀取 | 列出指定之金鑰的版本，或讀取指定的金鑰版本。 |
 > | Microsoft.KeyVault/vaults/secrets/read | 查看秘密的屬性，而非其值。 |
 > | Microsoft.KeyVault/vaults/secrets/write | 建立新的秘密，或更新現有秘密的值。 |
 > | **DataAction** | **說明** |
@@ -8283,6 +8295,7 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | OperationalInsights/workspace/query/SqlDataClassification/read | 從 SqlDataClassification 資料表讀取資料 |
 > | Microsoft.OperationalInsights/workspaces/query/SQLQueryPerformance/read | 從 SQLQueryPerformance 資料表讀取資料 |
 > | OperationalInsights/workspace/query/SqlVulnerabilityAssessmentResult/read | 從 SqlVulnerabilityAssessmentResult 資料表讀取資料 |
+> | OperationalInsights/workspace/query/SqlVulnerabilityAssessmentScanStatus/read | 從 SqlVulnerabilityAssessmentScanStatus 資料表讀取資料 |
 > | OperationalInsights/workspace/query/StorageBlobLogs/read | 從 StorageBlobLogs 資料表讀取資料 |
 > | OperationalInsights/workspace/query/StorageFileLogs/read | 從 StorageFileLogs 資料表讀取資料 |
 > | OperationalInsights/workspace/query/StorageQueueLogs/read | 從 StorageQueueLogs 資料表讀取資料 |

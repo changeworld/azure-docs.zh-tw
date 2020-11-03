@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: d5370343ac83d75df94e7291d26c87ce0c419d0e
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: d36c6e8ebbb86f9027a4822daa4481b5481523c2
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327411"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289544"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>將 Key Vault 與 DigiCert 憑證授權單位整合
 
@@ -23,7 +23,7 @@ Azure Key Vault 可讓您輕鬆地布建、管理及部署網路的數位憑證�
 
 Azure Key Vault 使用者可以直接從其 Key Vault 產生 DigiCert 憑證。 Key Vault 會透過 Key Vault 與 DigiCert 憑證授權單位之間的信任關係，確保 DigiCert 所發行憑證的端對端憑證生命週期管理。
 
-如需更多有關憑證的一般資訊，請參閱 [Azure Key Vault 憑證](/azure/key-vault/certificates/about-certificates)。
+如需更多有關憑證的一般資訊，請參閱 [Azure Key Vault 憑證](./about-certificates.md)。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: b40afce24fad6bd793a625b11dc5a84f1f021ace
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d3d8908739d6dda76f4c3d44540c36b36115d6f5
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786491"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289402"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure Vm 上 SQL Server 的常見問題
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -175,9 +175,9 @@ ms.locfileid: "92786491"
 
    如果您決定要將預設執行個體解除安裝，則也會將 [SQL Server IaaS 代理程式擴充功能](sql-server-iaas-agent-extension-automate-management.md)解除安裝。 
 
-1. **是否可將 SQL Server 的具名執行個體與 IaaS 延伸模組搭配使用？**
+1. **我可以使用 SQL Server 的已命名實例搭配 IaaS 延伸模組嗎？**
    
-   是，如果具名執行個體是 SQL Server 上唯一的執行個體，且原始的預設執行個體[已適當地解除安裝](sql-server-iaas-agent-extension-automate-management.md#install-on-a-vm-with-a-single-named-sql-server-instance)。 如果沒有預設執行個體，且單一 SQL Server VM 上有多個具名執行個體，則 SQL Server IaaS 代理程式延伸模組將無法安裝。 
+   是，如果具名執行個體是 SQL Server 上唯一的執行個體，且原始的預設執行個體[已適當地解除安裝](sql-server-iaas-agent-extension-automate-management.md#named-instance-support)。 如果沒有預設執行個體，且單一 SQL Server VM 上有多個具名執行個體，則 SQL Server IaaS 代理程式延伸模組將無法安裝。  
 
 1. **我可以從 SQL Server VM 移除 SQL Server 和相關聯的授權計費嗎？**
 
@@ -210,7 +210,7 @@ ms.locfileid: "92786491"
 
 1. **是否可在 SQL Server 2008/2008 R2 執行個體註冊到 SQL Server VM 資源提供者之後，將其升級？**
 
-   是。 您可使用任何安裝媒體來升級 SQL Server 的版本與版次，然後將 [SQL IaaS 延伸模組模式](sql-vm-resource-provider-register.md#management-modes)從「無代理程式」升級為「完整」。 這麼做可供利用 SQL IaaS 延伸模組的所有優點，例如入口網站管理能力、自動備份和自動修補。 
+   如果作業系統是 Windows Server 2008 R2 或更新版本，則為 [是]。 您可使用任何安裝媒體來升級 SQL Server 的版本與版次，然後將 [SQL IaaS 延伸模組模式](sql-server-iaas-agent-extension-automate-management.md#management-modes)從「無代理程式」升級為「完整」。 這麼做可供利用 SQL IaaS 延伸模組的所有優點，例如入口網站管理能力、自動備份和自動修補。 如果作業系統版本是 Windows Server 2008，則僅支援 NoAgent 模式。 
 
 1. **如何取得不再提供支援的 SQL Server 2008 和 SQL Server 2008 R2 執行個體的免費擴充安全性更新？**
 

@@ -10,12 +10,12 @@ ms.date: 10/27/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 07f506ac46b8aa503138cec33918534ea309defc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 5098d87d63d4002c4f219c5d2703ec1375599e00
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785794"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289463"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>對儲存體帳戶的要求強制執行最小必要版本的傳輸層安全性 (TLS) 
 
@@ -69,7 +69,7 @@ StorageBlobLogs
 
 結果會顯示每個 TLS 版本所提出的要求數目計數：
 
-:::image type="content" source="media/transport-layer-security-configure-minimum-version/log-analytics-query-version.png" alt-text="顯示如何建立記錄要求之診斷設定的螢幕擷取畫面":::
+:::image type="content" source="media/transport-layer-security-configure-minimum-version/log-analytics-query-version.png" alt-text="顯示 log analytics 查詢傳回 TLS 版本的結果螢幕擷取畫面":::
 
 ### <a name="query-logged-requests-by-caller-ip-address-and-user-agent-header"></a>依呼叫端 IP 位址和使用者代理程式標頭查詢記錄的要求
 
@@ -89,7 +89,9 @@ StorageBlobLogs
 
 ### <a name="configure-the-minimum-tls-version-for-a-storage-account"></a>設定儲存體帳戶的最小 TLS 版本
 
-若要設定儲存體帳戶的最小 TLS 版本，請設定帳戶的 **MinimumTlsVersion** 版本。 此屬性適用于使用 Azure Resource Manager 部署模型建立的所有儲存體帳戶。 如需 Azure Resource Manager 部署模型的詳細資訊，請參閱 [儲存體帳戶總覽](storage-account-overview.md)。
+若要設定儲存體帳戶的最小 TLS 版本，請設定帳戶的 **MinimumTlsVersion** 版本。 此屬性適用于使用 Azure 公用雲端或 Azure Government 雲端中的 Azure Resource Manager 部署模型建立的所有儲存體帳戶。 如需 Azure Resource Manager 部署模型的詳細資訊，請參閱 [儲存體帳戶總覽](storage-account-overview.md)。
+
+預設不會設定 **MinimumTlsVersion** 屬性，而且在您明確設定之後，才會傳回值。  如果屬性值為 **null** ，則儲存體帳戶將允許以 TLS 1.0 或更高版本傳送的要求。
 
 # <a name="portal"></a>[入口網站](#tab/portal)
 
@@ -101,13 +103,11 @@ StorageBlobLogs
 1. 選取 [ **設定** ]。
 1. 在 [ **最小 tls 版本** ] 下，使用下拉式清單來選取存取此儲存體帳戶中資料所需的最低 tls 版本，如下圖所示。
 
-    :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="顯示如何建立記錄要求之診斷設定的螢幕擷取畫面":::
+    :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="螢幕擷取畫面，顯示如何在 Azure 入口網站中設定 TLS 的最小版本":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 若要使用 PowerShell 來設定儲存體帳戶的最小 TLS 版本，請安裝 [Azure PowerShell 4.4.0 版](https://www.powershellgallery.com/packages/Az/4.4.0) 或更新版本。 接下來，為新的或現有的儲存體帳戶設定 **MinimumTLSVersion** 屬性。 **MinimumTlsVersion** 的有效值為 `TLS1_0` 、 `TLS1_1` 和 `TLS1_2` 。
-
-當您使用 PowerShell 建立儲存體帳戶時，預設不會設定 **MinimumTlsVersion** 屬性。 除非您明確設定，否則此屬性不會傳回值。 如果屬性值為 **null** ，則儲存體帳戶允許以 TLS 1.0 或更高版本傳送的要求。
 
 下列範例會建立儲存體帳戶，並將 **MinimumTLSVersion** 設定為 tls 1.1，然後更新帳戶，並將 **MINIMUMTLSVERSION** 設定為 tls 1.2。 此範例也會在每個案例中捕獲屬性值。 請記得以您自己的值取代括弧中的預留位置值：
 
@@ -138,8 +138,6 @@ Set-AzStorageAccount -ResourceGroupName $rgName `
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要使用 Azure CLI 設定儲存體帳戶的最小 TLS 版本，請安裝 Azure CLI 2.9.0 版版或更新版本。 如需詳細資訊，請參閱 [安裝 Azure CLI](/cli/azure/install-azure-cli)。 接下來，為新的或現有的儲存體帳戶設定 **minimumTlsVersion** 屬性。 **MinimumTlsVersion** 的有效值為 `TLS1_0` 、 `TLS1_1` 和 `TLS1_2` 。
-
-當您使用 Azure CLI 建立儲存體帳戶時，預設不會設定 **minimumTlsVersion** 屬性。 除非您明確設定，否則此屬性不會傳回值。 如果屬性值為 **null** ，則儲存體帳戶允許以 TLS 1.0 或更高版本傳送的要求。
 
 下列範例會建立儲存體帳戶，並將 **minimumTLSVersion** 設定為 TLS 1.1。 然後，它會更新帳戶，並將 **minimumTLSVersion** 屬性設定為 TLS 1.2。 此範例也會在每個案例中捕獲屬性值。 請記得以您自己的值取代括弧中的預留位置值：
 
@@ -304,7 +302,7 @@ Azure 原則支援的效果，可決定針對資源評估原則規則時所發�
 1. 篩選您在上一個步驟中建立的原則指派名稱結果。 報表會顯示有多少資源不符合原則。
 1. 您可以向下切入報表以取得其他詳細資料，包括不符合規範的儲存體帳戶清單。
 
-    :::image type="content" source="media/transport-layer-security-configure-minimum-version/compliance-report-policy-portal.png" alt-text="顯示如何建立記錄要求之診斷設定的螢幕擷取畫面":::
+    :::image type="content" source="media/transport-layer-security-configure-minimum-version/compliance-report-policy-portal.png" alt-text="顯示最小 TLS 版本稽核原則合規性報告的螢幕擷取畫面":::
 
 ## <a name="use-azure-policy-to-enforce-the-minimum-tls-version"></a>使用 Azure 原則強制執行最低的 TLS 版本
 
@@ -340,7 +338,7 @@ Azure 原則藉由確保 Azure 資源遵守需求和標準，來支援雲端治�
 
 下圖顯示當您嘗試建立最小 TLS 版本設定為 TLS 1.0 的儲存體帳戶時所發生的錯誤 (新帳戶的預設值) 當具有 Deny 效果的原則需要將最低 TLS 版本設定為 TLS 1.2 時。
 
-:::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="顯示如何建立記錄要求之診斷設定的螢幕擷取畫面":::
+:::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="螢幕擷取畫面，顯示在違反原則時建立儲存體帳戶時所發生的錯誤":::
 
 ## <a name="network-considerations"></a>網路考量
 

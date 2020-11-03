@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 4022ca97f88e2f06d3b4c1eeb103bb60d1856eda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2968fd84febdd3b98aa5d8b42cbf3fb66cad2036
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962140"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289803"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>將 App Service 或 Azure Functions 應用程式設定為使用 Azure AD 登入
 
@@ -72,7 +72,7 @@ ms.locfileid: "88962140"
 
 執行下列步驟：
 
-1. 登入 [Azure 入口網站]，搜尋並選取 [應用程式服務]，然後選取您的應用程式。 請記下您應用程式的 **URL**。 您將使用該資訊來設定 Azure Active Directory 應用程式註冊。
+1. 登入 [Azure 入口網站]，搜尋並選取 [應用程式服務]，然後選取您的應用程式。 請記下您應用程式的 **URL** 。 您將使用該資訊來設定 Azure Active Directory 應用程式註冊。
 1. 選取 [Azure Active Directory] > [應用程式註冊] > [新註冊]。
 1. 在 [註冊應用程式] 頁面上，輸入您應用程式註冊的 [名稱]。
 1. 在 [重新導向 URI] 中，選取 [Web]，然後輸入 `<app-url>/.auth/login/aad/callback`。 例如： `https://contoso.azurewebsites.net/.auth/login/aad/callback` 。
@@ -86,7 +86,7 @@ ms.locfileid: "88962140"
    > 此值是應用程式註冊的 [應用程式識別碼 URI]。 如果 Web 應用程式需要存取雲端的 API，則在設定雲端 App Service 資源時，需要 Web 應用程式的 [應用程式識別碼 URI]。 例如，如果想要讓雲端服務明確授與 Web 應用程式的存取權，您可以使用此 URI。
 
 1. 選取 [新增範圍]。
-   1. 在 [範圍名稱] 中，輸入 *user_impersonation*。
+   1. 在 [範圍名稱] 中，輸入 *user_impersonation* 。
    1. 在文字方塊中，輸入您希望使用者在同意頁面上看到的同意範圍名稱和描述。 例如，輸入「存取我的應用程式」。
    1. 選取 [新增範圍]。
 1. (選擇性) 若要建立用戶端秘密，請選取 [憑證和秘密] > [新增用戶端秘密] > [新增]。 複製頁面中顯示的用戶端秘密值。 它將不會再次顯示。
@@ -103,7 +103,7 @@ ms.locfileid: "88962140"
     |欄位|描述|
     |-|-|
     |用戶端識別碼| 使用應用程式註冊的 [應用程式 (用戶端) 識別碼]。 |
-    |簽發者 URL| 使用 `<authentication-endpoint>/<tenant-id>/v2.0` ，並取代為 *\<authentication-endpoint>* [您雲端環境的驗證端點](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (例如 " https://login.microsoft.com " 適用于全域 Azure) ，也會 *\<tenant-id>* 以建立應用程式註冊的 **目錄 (租使用者) 識別碼** 來取代。 此值用來將使用者重新導向至正確的 Azure AD 租用戶，以及下載適當的中繼資料，以判斷適當的權杖簽署金鑰和權杖簽發者宣告值 (舉例而言)。 針對使用 Azure AD v1 和 Azure Functions 應用程式的應用程式，請 `/v2.0` 在 URL 中省略。|
+    |簽發者 URL| 使用 `<authentication-endpoint>/<tenant-id>/v2.0` ，並取代為 *\<authentication-endpoint>* [您雲端環境的驗證端點](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (例如 " https://login.microsoftonline.com " 適用于全域 Azure) ，也會 *\<tenant-id>* 以建立應用程式註冊的 **目錄 (租使用者) 識別碼** 來取代。 此值用來將使用者重新導向至正確的 Azure AD 租用戶，以及下載適當的中繼資料，以判斷適當的權杖簽署金鑰和權杖簽發者宣告值 (舉例而言)。 針對使用 Azure AD v1 和 Azure Functions 應用程式的應用程式，請 `/v2.0` 在 URL 中省略。|
     |用戶端秘密 (選用)| 使用您在應用程式註冊中產生的用戶端秘密。|
     |允許的權杖對象| 如果這是雲端或伺服器應用程式，而且您想允許來自 Web 應用程式的驗證權杖，請在這裡新增 Web 應用程式的 [應用程式識別碼 URI]。 所設定的 [用戶端識別碼]一律會被隱含地視為允許的對象。 |
 
@@ -113,7 +113,7 @@ ms.locfileid: "88962140"
 
 ## <a name="configure-a-native-client-application"></a>設定原生用戶端應用程式
 
-您可以註冊原生用戶端，以允許使用用戶端程式庫 (例如 **Active Directory 驗證程式庫**) 向您應用程式中裝載的 Web API 進行驗證。
+您可以註冊原生用戶端，以允許使用用戶端程式庫 (例如 **Active Directory 驗證程式庫** ) 向您應用程式中裝載的 Web API 進行驗證。
 
 1. 在 [Azure 入口網站]中，選取 [Active Directory] > [應用程式註冊] > [新增註冊]。
 1. 在 [註冊應用程式] 頁面上，輸入您應用程式註冊的 [名稱]。
@@ -124,7 +124,7 @@ ms.locfileid: "88962140"
 1. 選取 [建立]。
 1. 建立應用程式註冊之後，複製 [應用程式 (用戶端) 識別碼] 的值。
 1. 選取 [API 權限] > [新增權限] > [我的 API]。
-1. 選取您稍早為 App Service 應用程式建立的應用程式註冊。 如果沒看到應用程式註冊，請確定您已在[在 Azure AD 中為 App Service 應用程式建立應用程式註冊](#register)中新增了 **user_impersonation** 範圍。
+1. 選取您稍早為 App Service 應用程式建立的應用程式註冊。 如果沒看到應用程式註冊，請確定您已在 [在 Azure AD 中為 App Service 應用程式建立應用程式註冊](#register)中新增了 **user_impersonation** 範圍。
 1. 在 [委派權限] 底下，選取 [user_impersonation]，然後選取 [新增權限]。
 
 您現在已設定了可代表使用者存取您 App Service 應用程式的原生用戶端應用程式。
@@ -140,9 +140,9 @@ ms.locfileid: "88962140"
 1. 建立應用程式註冊之後，複製 [應用程式 (用戶端) 識別碼] 的值。
 1. 選取 [憑證及祕密] > [新增用戶端密碼] > [新增]。 複製頁面中顯示的用戶端秘密值。 它將不會再次顯示。
 
-您現在可以[使用用戶端識別碼和用戶端密碼來要求存取權杖](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret)，方法是將 `resource` 參數設定為目標應用程式的**應用程式識別碼 URI**。 接著，您可以使用標準 [OAuth 2.0 授權標頭](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#use-the-access-token-to-access-the-secured-resource)，將產生的存取權杖呈現給目標應用程式，然後 App Service 驗證/授權就會像往常一樣驗證並使用權杖，但現在會指出呼叫端 (在此案例中為應用程式，而非使用者) 已通過驗證。
+您現在可以 [使用用戶端識別碼和用戶端密碼來要求存取權杖](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret)，方法是將 `resource` 參數設定為目標應用程式的 **應用程式識別碼 URI** 。 接著，您可以使用標準 [OAuth 2.0 授權標頭](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#use-the-access-token-to-access-the-secured-resource)，將產生的存取權杖呈現給目標應用程式，然後 App Service 驗證/授權就會像往常一樣驗證並使用權杖，但現在會指出呼叫端 (在此案例中為應用程式，而非使用者) 已通過驗證。
 
-目前，這可讓您在 Azure AD 租用戶中的_任何_用戶端應用程式要求存取權杖，並向目標應用程式進行驗證。 如果您也想要強制讓_授權_僅允許特定的用戶端應用程式，就必須執行一些額外的設定。
+目前，這可讓您在 Azure AD 租用戶中的 _任何_ 用戶端應用程式要求存取權杖，並向目標應用程式進行驗證。 如果您也想要強制讓 _授權_ 僅允許特定的用戶端應用程式，就必須執行一些額外的設定。
 
 1. 在應用程式註冊 (代表您要保護的 App Service 或函式應用程式) 的資訊清單中[定義應用程式角色](../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md)。
 1. 在應用程式註冊 (代表需要授權的用戶端) 上，選取 [API 權限] > [新增權限] > [我的 API]。

@@ -2,13 +2,13 @@
 title: 'Azure 事件中樞-例外狀況 (舊版) '
 description: 本文提供 Azure 事件中樞傳訊例外狀況和建議的動作清單。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 5a7ca32893a106cd59df548ae3118665acaea654
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/02/2020
+ms.openlocfilehash: adaf7242530727a1f77a9662110a43341e57e80a
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318478"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289341"
 ---
 # <a name="event-hubs-messaging-exceptions---net-legacy"></a>事件中樞訊息例外狀況-.NET (舊版) 
 本節列出 .NET Framework Api 所產生的 .NET 例外狀況。 
@@ -70,7 +70,7 @@ ms.locfileid: "91318478"
 | [Microsoft.ServiceBus.Messaging MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception) <br /><br/> [Microsoft.Azure.EventHubs MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception) | 與作業相關聯的實體不存在或已被刪除。 | 確定實體已存在。 | 重試將無助益。 |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) | 用戶端無法建立事件中樞連線。 |確定提供的主機名稱正確，且主機可以連線。 | 如果有間歇性的連線問題，重試也許有幫助。 |
 | [ServerBusyException 的訊息](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) <br /> <br/>[Microsoft.Azure.EventHubs ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) | 服務目前無法處理要求。 | 用戶端可以等待一段時間，然後再重試作業。 <br /> 請參閱 [ServerBusyException](#serverbusyexception)。 | 用戶端可以在特定間隔後重試。 如果重試產生不同的例外狀況，請檢查該例外狀況的重試行為。 |
-| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) | 可能會在下列情況中擲回的一般傳訊例外狀況：利用屬於不同實體類型 (例如主題) 的名稱或路徑嘗試建立 [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) 。 嘗試傳送大於 1 MB 的訊息。 處理要求時伺服器或服務發生錯誤。 如需詳細資訊，請參閱例外狀況訊息。 此例外狀況通常是暫時性例外狀況。 | 查看程式碼，並確定訊息內文只使用可序列化的物件 (或使用自訂序列化程式)。 查看文件來了解支援的屬性值類型，並且只使用支援的類型。 查看 [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) 屬性。 如果該屬性為 **True**，您就可以重試作業。 | 重試行為未定義，而且可能沒有幫助。 |
+| [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) | 可能會在下列情況中擲回的一般傳訊例外狀況：利用屬於不同實體類型 (例如主題) 的名稱或路徑嘗試建立 [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient) 。 嘗試傳送大於 1 MB 的訊息。 處理要求時伺服器或服務發生錯誤。 如需詳細資訊，請參閱例外狀況訊息。 此例外狀況通常是暫時性例外狀況。 | 查看程式碼，並確定訊息內文只使用可序列化的物件 (或使用自訂序列化程式)。 查看文件來了解支援的屬性值類型，並且只使用支援的類型。 查看 [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) 屬性。 如果該屬性為 **True** ，您就可以重試作業。 | 重試行為未定義，而且可能沒有幫助。 |
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) | 嘗試在該服務命名空間中以另一個實體已在使用的名稱建立實體。 | 刪除現有的實體，或選擇不同的名稱來建立實體。 | 重試將無助益。 |
 | [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception) | 傳訊實體已達到允許的大小上限。 如果在個別取用者群組層級開啟的接收者數目已達到上限 (5)，便可能發生此例外狀況。 | 從實體或其子佇列接收訊息，在實體中建立空間。 <br /> 請參閱 [QuotaExceededException](#quotaexceededexception) | 如果在此同時已移除訊息，重試可能會有幫助。 |
 | [MessagingEntityDisabledException](/dotnet/api/microsoft.servicebus.messaging.messagingentitydisabledexception) | 在停用的實體上要求執行階段作業。 |啟用實體。 | 如實體在過渡期間被啟用，重試可能會有幫助。 |
@@ -107,17 +107,29 @@ ms.locfileid: "91318478"
 
 - 負載不會平均分散到事件中樞上的所有資料分割，而一個分割區會達到本機輸送量單位的限制。
     
-    **解決**方式：修改分割區散發策略或嘗試 [>eventhubclient。傳送 (eventDataWithOutPartitionKey) ](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) 可能會有所説明。
+    **解決** 方式：修改分割區散發策略或嘗試 [>eventhubclient。傳送 (eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) 可能會有所説明。
 
-- 事件中樞命名空間沒有足夠的輸送量單位 (您可以在[Azure 入口網站](https://portal.azure.com)的 [事件中樞命名空間] 視窗中檢查**計量**畫面，以確認) 。 入口網站會顯示匯總 (1 分鐘的) 資訊，但我們會即時測量輸送量–因此只是估計值。
+- 事件中樞命名空間沒有足夠的輸送量單位 (您可以在 [Azure 入口網站](https://portal.azure.com)的 [事件中樞命名空間] 視窗中檢查 **計量** 畫面，以確認) 。 入口網站會顯示匯總 (1 分鐘的) 資訊，但我們會即時測量輸送量–因此只是估計值。
 
-    **解決**方式：提高命名空間的輸送量單位可以提供協助。 您可以透過入口網站，在 [事件中樞命名空間] 畫面的 [調整]**** 視窗中執行此作業。 您也可以使用[自動擴充](event-hubs-auto-inflate.md)。
+    **解決** 方式：提高命名空間的輸送量單位可以提供協助。 
+
+    您可以在 Azure 入口網站的 [ **事件中樞命名空間** ] 頁面的 [ **調整規模** ] 頁面或 [ **總覽** ] 頁面上設定輸送量單位。 或者，您可以使用 [自動](event-hubs-auto-inflate.md)擴充，藉由增加輸送量單位的數目來自動擴大，以符合使用量需求。
+
+    輸送量單位 (Tu) 適用于事件中樞命名空間中的所有事件中樞。 這表示您要在命名空間層級購買 TU，並在該命名空間下方的事件中樞間共用。 每個 TU 都會為命名空間賦予下列功能：
+
+    - 最高每秒 1 MB 的輸入事件 (傳送到事件中樞的事件)，但不超過每秒 1000 個輸入事件、管理作業或控制 API 呼叫。
+    - 最高每秒 2MB 的輸出事件 (從事件中樞取用的事件)，但是不超過 4096 個輸出事件。
+    - 最多 84 GB 的事件儲存體 (足以應付預設的 24 小時保留期限)。
+    
+    在 [ **總覽** ] 頁面的 [ **顯示計量** ] 區段中，切換至 [ **輸送量** ] 索引標籤。選取圖表，在 X 軸上以1分鐘的間隔在較大的視窗中開啟它。 查看尖峰值並將它們除以60，以取得每秒傳入的位元組數或傳出位元組數。 在 [ **要求** ] 索引標籤上，使用類似的方法來計算尖峰時間的每秒要求數目。 
+
+    如果您看到的值高於 Tu * (每秒 1 MB 的輸入或1000要求輸入/秒、每秒 2 MB 用於輸出) ，請使用事件中樞命名空間的左側功能表) 頁面上的 [ **調整** ] (來增加 tu 數目，以手動調整更高或使用事件中樞的 [自動](event-hubs-auto-inflate.md) 擴充功能。 請注意，自動擴充只能增加到 20 TU。 若要將其提升為正好 40 Tu，請提交 [支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
 
 ### <a name="error-code-50001"></a>錯誤碼 50001
 
 此錯誤應該很少會發生。 它會在執行您命名空間的程式碼之容器的 CPU 不足時發生 – 就在事件中樞負載平衡器開始之前幾秒鐘。
 
-**解決**方式：限制對 GetRuntimeInformation 方法的呼叫。 Azure 事件中樞最多可支援每秒50個呼叫至 GetRuntimeInfo （每秒）。 一旦達到限制，您可能會收到類似下面的例外狀況：
+**解決** 方式：限制對 GetRuntimeInformation 方法的呼叫。 Azure 事件中樞最多可支援每秒50個呼叫至 GetRuntimeInfo （每秒）。 一旦達到限制，您可能會收到類似下面的例外狀況：
 
 ```
 ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.

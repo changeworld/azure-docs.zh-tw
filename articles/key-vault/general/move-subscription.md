@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: c92671028f851a456b3222100e33958c9e26466a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e0cd4cad74257dbf83ec8d30405eacca341a8d31
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785318"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289516"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>將 Azure Key Vault 移至另一個訂用帳戶
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 > [!IMPORTANT]
 > **將金鑰保存庫移至另一個訂用帳戶，將會對您的環境造成重大變更。**
@@ -54,7 +54,7 @@ ms.locfileid: "92785318"
 
 請確定您移至 Azure 入口網站上的 [Azure 原則] 頁面，並查看您目前訂用帳戶的原則指派，以及您要移動的訂用帳戶，並確定沒有任何不符的情況。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 目前訂用帳戶的參與者層級存取權或更高版本，您的金鑰保存庫存在。
 * 參與者層級存取權或更高版本，可存取您想要移動金鑰保存庫的訂用帳戶。
@@ -100,9 +100,9 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 
 既然您的保存庫已與正確的租用戶識別碼相關聯，而且移除了舊的存取原則項目，請使用 Azure PowerShell [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) Cmdlet 或 Azure CLI [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) 命令，設定新的存取原則項目。
 
-如果您使用適用于 Azure 資源的受控識別，您也必須將其更新為新的 Azure Active Directory 租使用者。 如需受控識別的詳細資訊，請 [流覽受控識別](/azure/active-directory/managed-identities-azure-resources/overview)。
+如果您使用適用于 Azure 資源的受控識別，您也必須將其更新為新的 Azure Active Directory 租使用者。 如需受控識別的詳細資訊，請 [流覽受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。
 
 如果您使用受控識別，您也必須更新身分識別，因為舊的身分識別將不再位於正確的 Azure Active Directory 租使用者中。 請參閱下列檔，以協助解決此問題。 
 
-* [更新 MSI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories)
-* [將訂用帳戶轉移至新的目錄](https://docs.microsoft.com/azure/role-based-access-control/transfer-subscription)
+* [更新 MSI](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)
+* [將訂用帳戶轉移至新的目錄](../../role-based-access-control/transfer-subscription.md)

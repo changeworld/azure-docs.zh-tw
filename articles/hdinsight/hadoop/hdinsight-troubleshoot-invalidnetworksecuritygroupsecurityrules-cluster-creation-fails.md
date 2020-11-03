@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/31/2019
-ms.openlocfilehash: 1662be3bedb9ec0f2dc21e98ffbd57d8f8ed5777
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b1423dc965a3169a5f615ccc371849cc177be244
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540613"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289097"
 ---
 # <a name="scenario-invalidnetworksecuritygroupsecurityrules---cluster-creation-fails-in-azure-hdinsight"></a>案例： InvalidNetworkSecurityGroupSecurityRules-叢集建立失敗 Azure HDInsight
 
@@ -26,16 +26,10 @@ ms.locfileid: "92540613"
 
 可能是針對您的叢集設定的輸入 [網路安全性群組](../../virtual-network/virtual-network-vnet-plan-design-arm.md) 規則發生問題。
 
-## <a name="resolution"></a>解決方案
+## <a name="resolution"></a>解決方法
 
 移至 Azure 入口網站並識別與部署叢集的子網相關聯的 NSG。 在 [ **輸入安全性規則** ] 區段中，確定規則允許針對 [此處](../control-network-traffic.md)所述的 IP 位址，對埠443進行輸入存取。
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
-
-* 透過 [Azure 社群支援](https://azure.microsoft.com/support/community/)獲得由 Azure 專家所提供的解答。
-
-* 與 [@AzureSupport](https://twitter.com/azuresupport) 聯繫 - 專為改善客戶體驗而設的官方 Microsoft Azure 帳戶，協助 Azure 社群連接至適當的資源，例如解答、支援及專家等。
-
-* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) 提交支援要求。 在功能表列選取 [支援] 或開啟 [說明 + 支援] 中心。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md) (機器翻譯)。 您可透過 Microsoft Azure 訂用帳戶來存取訂用帳戶管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

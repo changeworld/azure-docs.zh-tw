@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: cd4f2198721e0d92abe22b1b6d95dceda2dc874d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 59cfe7b990523e5cb165d1037291b3c1b1301624
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789177"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289232"
 ---
-# <a name="continuously-export-security-center-data"></a>持續匯出安全中心資料
+# <a name="continuously-export-security-center-data"></a>持續匯出資訊安全中心資料
 
 Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以在入口網站中或透過程式設計工具來加以查看。 您也可能需要匯出部分或全部資訊，以與您環境中的其他監視工具進行追蹤。 
 
@@ -41,7 +41,7 @@ Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以�
 |版本狀態：|正式上市 (GA)|
 |定價：|免費|
 |必要的角色和權限：|<ul><li>資源群組的 **安全性系統管理員** 或 **擁有** 者</li><li>目標資源的寫入權限</li><li>如果您使用下面所述的 Azure 原則 ' DeployIfNotExist ' 原則，您也需要指派原則的許可權</li></ul>|
-|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![是](./media/icons/yes-icon.png) 中國 Gov (事件中樞) ，其他 Gov|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov，其他 Gov<br>![是](./media/icons/yes-icon.png) Gov 至事件中樞) 的中國 (|
 |||
 
 
@@ -74,7 +74,7 @@ Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以�
     :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="在連續匯出設定中包含安全性結果切換" :::
 
 1. 從 [匯出目標] 區域中，選擇您想要儲存資料的位置。 資料可以儲存在不同訂用帳戶的目標中 (例如中央事件中樞實例或中央 Log Analytics 工作區) 。
-1. 選取 [儲存]。
+1. 選取 [儲存]  。
 
 ### <a name="use-the-rest-api"></a>[**使用 REST API**](#tab/rest-api)
 
@@ -124,11 +124,11 @@ API 提供 Azure 入口網站中無法使用的額外功能，例如：
     > [!TIP]
     > 您也可以藉由搜尋 Azure 原則來找到這些內容：
     > 1. 開啟 Azure 原則。
-    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="在連續匯出設定中包含安全性結果切換":::
+    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="存取 Azure 原則":::
     > 2. 在 [Azure 原則] 功能表中，選取 [ **定義** ] 並依名稱搜尋。 
 
 1. 從相關的 Azure 原則] 頁面中，選取 [ **指派** ]。
-    :::image type="content" source="./media/continuous-export/export-policy-assign.png" alt-text="在連續匯出設定中包含安全性結果切換":::
+    :::image type="content" source="./media/continuous-export/export-policy-assign.png" alt-text="指派 Azure 原則":::
 
 1. 開啟每個索引標籤，並視需要設定參數：
     1. 在 [ **基本** ] 索引標籤中，設定原則的範圍。 若要使用集中式管理，請將原則指派給包含要使用連續匯出設定之訂用帳戶的管理群組。 
@@ -137,7 +137,7 @@ API 提供 Azure 入口網站中無法使用的額外功能，例如：
         > 每個參數都有工具提示，說明您可以使用的選項。
         >
         > Azure 原則的 [參數] 索引標籤中 (1) 可存取與安全性中心的連續匯出頁面 (2) 類似的設定選項。
-        > :::image type="content" source="./media/continuous-export/azure-policy-next-to-continuous-export.png" alt-text="在連續匯出設定中包含安全性結果切換" lightbox="./media/continuous-export/azure-policy-next-to-continuous-export.png":::
+        > :::image type="content" source="./media/continuous-export/azure-policy-next-to-continuous-export.png" alt-text="比較連續匯出與 Azure 原則的參數" lightbox="./media/continuous-export/azure-policy-next-to-continuous-export.png":::
     1. （選擇性）若要將此指派套用至現有的訂用帳戶，請開啟 [ **補救** ] 索引標籤，然後選取建立補救工作的選項。
 1. 查看 [摘要] 頁面，然後選取 [ **建立** ]。
 

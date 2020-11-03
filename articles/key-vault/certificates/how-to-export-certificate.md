@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: 8a594d06fa84bb6e5ef502b02e1bec8244062ccb
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: e7ea3ef16b60e53450436bda66ce3dde091c81c2
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233962"
+ms.locfileid: "93289565"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>從 Azure Key Vault 匯出憑證
 
@@ -23,11 +23,11 @@ ms.locfileid: "93233962"
 
 ## <a name="about-azure-key-vault-certificates"></a>關於 Azure Key Vault 憑證
 
-Azure Key Vault 可讓您輕鬆地為您的網路佈建、管理及部署數位憑證。 其也會啟用應用程式的安全通訊。 如需詳細資訊，請參閱 [Azure Key Vault 憑證](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates)。
+Azure Key Vault 可讓您輕鬆地為您的網路佈建、管理及部署數位憑證。 其也會啟用應用程式的安全通訊。 如需詳細資訊，請參閱 [Azure Key Vault 憑證](./about-certificates.md)。
 
 ### <a name="composition-of-a-certificate"></a>憑證的構成要素
 
-建立 Key Vault 憑證時，會建立相同名稱的可定址「金鑰」和「秘密」。 Azure Key Vault 允許金鑰作業。 Key Vault 祕密允許擷取憑證值作為秘密。 Key Vault 憑證也會包含公用 x509 憑證的中繼資料。 如需詳細資訊，請移至[憑證的構成要素](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#composition-of-a-certificate)。
+建立 Key Vault 憑證時，會建立相同名稱的可定址「金鑰」和「秘密」。 Azure Key Vault 允許金鑰作業。 Key Vault 祕密允許擷取憑證值作為秘密。 Key Vault 憑證也會包含公用 x509 憑證的中繼資料。 如需詳細資訊，請移至[憑證的構成要素](./about-certificates.md#composition-of-a-certificate)。
 
 ### <a name="exportable-and-non-exportable-keys"></a>可匯出或不可匯出的金鑰
 
@@ -36,9 +36,9 @@ Azure Key Vault 可讓您輕鬆地為您的網路佈建、管理及部署數位�
 - **可匯出** ：用來建立憑證的原則指出金鑰是可匯出的。
 - **不可匯出** ：用來建立憑證的原則指出金鑰是不可匯出的。 在此情況下，當私密金鑰以秘密形式擷取時，不會將其視為值的一部分。
 
-支援的金鑰類型：RSA、RSA-HSM、EC、EC-HSM、oct (列於[此處](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)) 僅允許匯出 RSA、EC。 HSM 金鑰不可匯出。
+支援的金鑰類型：RSA、RSA-HSM、EC、EC-HSM、oct (列於[此處](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)) 僅允許匯出 RSA、EC。 HSM 金鑰不可匯出。
 
-如需詳細資訊，請參閱[關於 Azure Key Vault 憑證](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#exportable-or-non-exportable-key)。
+如需詳細資訊，請參閱[關於 Azure Key Vault 憑證](./about-certificates.md#exportable-or-non-exportable-key)。
 
 ## <a name="export-stored-certificates"></a>匯出儲存的憑證
 
@@ -61,7 +61,7 @@ az keyvault certificate download --file
                                  [--version]
 ```
 
-如需詳細資訊，請檢視[範例和參數定義](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-download)。
+如需詳細資訊，請檢視[範例和參數定義](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-download)。
 
 下載為憑證表示取得公開部分。 如果您想要私密金鑰和公用中繼資料兩者，則可以將其下載為祕密。
 
@@ -75,7 +75,7 @@ az keyvault secret download -–file {nameofcert.pfx}
                             [--version]
 ```
 
-如需詳細資訊，請參閱[參數定義](https://docs.microsoft.com/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-download)。
+如需詳細資訊，請參閱[參數定義](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-download)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -102,7 +102,7 @@ $pfxFileByte = $x509Cert.Export($type, $password)
 ```
 
 此命令會利用私密金鑰匯出整個憑證鏈。 憑證使用密碼保護。
-如需 **Get-AzKeyVaultCertificate** 命令和參數的詳細資訊，請參閱 [Get-AzKeyVaultCertificate - 範例 2](https://docs.microsoft.com/powershell/module/az.keyvault/Get-AzKeyVaultCertificate?view=azps-4.4.0)。
+如需 **Get-AzKeyVaultCertificate** 命令和參數的詳細資訊，請參閱 [Get-AzKeyVaultCertificate - 範例 2](/powershell/module/az.keyvault/Get-AzKeyVaultCertificate?view=azps-4.4.0)。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -121,4 +121,4 @@ Azure App Service 憑證是方便您購買 SSL 憑證的方式。 您可以從�
 ---
 
 ## <a name="read-more"></a>閱讀更多資訊
-* [各種憑證檔案類型和定義](https://docs.microsoft.com/archive/blogs/kaushal/various-ssltls-certificate-file-typesextensions)
+* [各種憑證檔案類型和定義](/archive/blogs/kaushal/various-ssltls-certificate-file-typesextensions)
