@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: e22908dc5d445f105c199e594443cd051eb4be41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82763842e6145b3883c46bcb9ddb45b7836c3cf2
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051350"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241815"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer 健康情況探查
 
@@ -44,7 +44,7 @@ ms.locfileid: "89051350"
 
 ## <a name="probe-configuration"></a><a name="probes"></a>探查設定
 
-健康情況探查設定包含下列元素：
+健康情況探查設定是由下列元素所組成：
 
 - 個別探查之間間隔的持續時間
 - 在探查轉換成不同狀態之前必須觀察到的探查回應數目
@@ -239,7 +239,7 @@ AzureLoadBalancer 服務標籤會在您的[網路安全性群組](../virtual-net
 
 如果您不允許防火牆原則中有此探查的[來源 IP](#probesource)，則健康情況探查將會失敗，因為它無法接觸您的執行個體。  接著，Load Balancer 會因為健康情況探查失敗而將您的執行個體標示為已關閉。  此種設定會造成負載已平衡的應用程式案例失敗。
 
-為了讓 Load Balancer 的健康情況探查將您的執行個體標示為已開啟，您**必須**在任何 Azure [網路安全性群組](../virtual-network/security-overview.md)和本機防火牆原則中允許此 IP 位址。  預設中，每個網路安全性群組皆含有[服務標籤](../virtual-network/security-overview.md#service-tags) AzureLoadBalancer，以許可健康情況探查流量。
+為了讓 Load Balancer 的健康情況探查將您的執行個體標示為已開啟，您 **必須** 在任何 Azure [網路安全性群組](../virtual-network/security-overview.md)和本機防火牆原則中允許此 IP 位址。  預設中，每個網路安全性群組皆含有[服務標籤](../virtual-network/security-overview.md#service-tags) AzureLoadBalancer，以許可健康情況探查流量。
 
 如果您想要測試健康情況探查的失敗，或將個別的執行個體標示為已關閉，您可以使用[網路安全性群組](../virtual-network/security-overview.md)明確封鎖健康情況探查 (目的地連接埠或[來源 IP](#probesource))，並模擬探查失敗。
 
@@ -260,7 +260,7 @@ AzureLoadBalancer 服務標籤會在您的[網路安全性群組](../virtual-net
 - HTTPS 探查不支援使用用戶端憑證進行相互驗證。
 - 您應該假設在啟用 TCP 時間戳記時，健康情況探查將會失敗。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 深入瞭解 [Standard Load Balancer](load-balancer-standard-overview.md)
 - [開始使用 PowerShell 在資源管理員中建立公用負載平衡器](quickstart-load-balancer-standard-public-powershell.md)

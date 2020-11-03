@@ -1,17 +1,17 @@
 ---
 title: 選取正確的部署類型-適用於 MariaDB 的 Azure 資料庫
 description: 本文說明在您將適用於 MariaDB 的 Azure 資料庫部署為基礎結構即服務 (IaaS) 或平臺即服務 (PaaS) 之前應考慮的因素。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 5be6b97ed1647ad09a2abc3360b4f3a42c25ad62
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d8885e374142b3d916803fc472ae18351ca6d470
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424904"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240268"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>在 Azure 中選擇正確的適用于 mariadb 伺服器選項
 
@@ -49,7 +49,7 @@ ms.locfileid: "92424904"
 
 有幾個因素會影響您的決定選擇 PaaS 或 IaaS 來裝載您的適用于 mariadb 資料庫。
 
-### <a name="cost"></a>成本
+### <a name="cost"></a>Cost
 
 有限的資金通常是決定裝載資料庫最佳解決方案的主要考慮。 無論是只有極少現金的新創公司，或是在有規模公司中受到嚴格的預算限制下運作的小組，都會以 TCO 作為主要考量。 本節說明 Azure 中適用于 Azure Vm 上適用於 MariaDB 的 Azure 資料庫和適用于 mariadb 的計費和授權基本概念。
 
@@ -99,7 +99,7 @@ ms.locfileid: "92424904"
 
   因為不需要變更簡報、應用程式和資料層，所以您可以節省重新架構現有解決方案的時間和預算。 相反地，您可以專注于將所有解決方案遷移至 Azure，並解決 Azure 平臺可能需要的一些效能優化。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 請參閱 [適用於 MariaDB 的 Azure 資料庫定價](https://azure.microsoft.com/pricing/details/MariaDB/)。
 * 從[建立您的第一部伺服器](quickstart-create-mariadb-server-database-using-azure-portal.md)開始。

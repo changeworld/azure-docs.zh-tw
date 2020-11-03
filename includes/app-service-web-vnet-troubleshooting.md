@@ -4,17 +4,17 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
-ms.openlocfilehash: b62e5057d8f144fc56d0e35927d17de27a1c8863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cec44bbabdb7d528c30a8d3396b819f2eb3c5386
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91255230"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93235898"
 ---
-這項功能很容易設定，但這並不表示您的體驗不會有任何問題。 如果您在存取所需端點時遇到問題，您可以使用一些公用程式來測試從應用程式主控台的連線能力。 有兩個您可以使用的主控台。 其中一個是 Kudu 主控台，另一個則是 Azure 入口網站中的主控台。 若要從您的應用程式連接到 Kudu 主控台，請移至 [**工具**  >  **Kudu**]。 您也可以在 [sitename]. azurewebsites.net 連接到 Kudo 主控台。 網站載入之後，請移至 [ **Debug 主控台**] 索引標籤。若要從您的應用程式取得 Azure 入口網站裝載的主控台，請移至 [**工具**  >  **主控台**]。
+這項功能很容易設定，但這並不表示您的體驗不會有任何問題。 如果您在存取所需端點時遇到問題，您可以使用一些公用程式來測試從應用程式主控台的連線能力。 有兩個您可以使用的主控台。 其中一個是 Kudu 主控台，另一個則是 Azure 入口網站中的主控台。 若要從您的應用程式連接到 Kudu 主控台，請移至 [ **工具**  >  **Kudu** ]。 您也可以在 [sitename]. azurewebsites.net 連接到 Kudo 主控台。 網站載入之後，請移至 [ **Debug 主控台** ] 索引標籤。若要從您的應用程式取得 Azure 入口網站裝載的主控台，請移至 [ **工具**  >  **主控台** ]。
 
 #### <a name="tools"></a>工具
-在原生 Windows 應用程式中，由於安全性限制 (可在[自訂 windows 容器](../articles/app-service/quickstart-custom-container.md)) 中運作，因此工具**ping**、 **nslookup**和**tracert**將無法透過主控台運作。 為了填滿 void，會新增兩個不同的工具。 為了測試 DNS 功能，我們新增了一個名為 **nameresolver.exe**的工具。 語法為：
+在原生 Windows 應用程式中，由於安全性限制 (可在 [自訂 windows 容器](../articles/app-service/quickstart-custom-container.md)) 中運作，因此工具 **ping** 、 **nslookup** 和 **tracert** 將無法透過主控台運作。 為了填滿 void，會新增兩個不同的工具。 為了測試 DNS 功能，我們新增了一個名為 **nameresolver.exe** 的工具。 語法為：
 
 ```console
 nameresolver.exe hostname [optional: DNS Server]
@@ -26,13 +26,13 @@ nameresolver.exe hostname [optional: DNS Server]
 > nameresolver.exe 目前無法在自訂 Windows 容器中運作。
 >
 
-您可以使用下一個工具來測試與主機和埠組合的 TCP 連線能力。 此工具稱為 **tcpping**，語法如下：
+您可以使用下一個工具來測試與主機和埠組合的 TCP 連線能力。 此工具稱為 **tcpping** ，語法如下：
 
 ```console
 tcpping.exe hostname [optional: port]
 ```
 
-**Tcpping**公用程式會告訴您是否可以連線到特定的主機和埠。 只有當應用程式接聽主機和埠組合，而且有從您的應用程式到指定主機和埠的網路存取時，才會顯示 [成功]。
+**Tcpping** 公用程式會告訴您是否可以連線到特定的主機和埠。 只有當應用程式接聽主機和埠組合，而且有從您的應用程式到指定主機和埠的網路存取時，才會顯示 [成功]。
 
 #### <a name="debug-access-to-virtual-network-hosted-resources"></a>對虛擬網路託管資源的調試存取
 有幾件事可以防止您的應用程式到達特定的主機和埠。 大部分的時候都是這種情況：
@@ -46,12 +46,12 @@ tcpping.exe hostname [optional: port]
 * 您的目的地是否為非 RFC1918 位址，而且您沒有 WEBSITE_VNET_ROUTE_ALL 設定為1？
 * 是否有 NSG 封鎖來自您的整合子網的輸出？
 * 如果您要跨 Azure ExpressRoute 或 VPN，您的內部部署閘道是否已設定為將流量路由傳送至 Azure？ 如果您可以連線到虛擬網路中的端點，但無法連線到內部部署，請檢查您的路由。
-* 您是否有足夠的許可權可以在整合子網上設定委派？ 在區域 VNet 整合設定期間，系統會將您的整合子網委派給 Microsoft Web。 VNet 整合 UI 會自動將子網委派給 Microsoft Web。 如果您的帳戶沒有足夠的網路許可權可設定委派，您將需要可在整合子網上設定屬性以委派子網的人員。 若要手動委派整合子網，請移至 Azure 虛擬網路子網 UI，然後設定適用于 Microsoft. Web 的委派。
+* 您是否有足夠的許可權可以在整合子網上設定委派？ 在區域 VNet 整合設定期間，系統會將您的整合子網委派給 Microsoft. Web/serverFarms。 VNet 整合 UI 會自動將子網委派給 Microsoft/serverFarms。 如果您的帳戶沒有足夠的網路許可權可設定委派，您將需要可在整合子網上設定屬性以委派子網的人員。 若要手動委派整合子網，請移至 Azure 虛擬網路子網 UI，然後設定適用于 Microsoft. Web/serverFarms 的委派。
 
 **閘道-必要的 VNet 整合**
 * 在 RFC 1918 範圍內的點對站位址範圍 (10.0.0.0-10.255.255.255/172.16.0.0-172.31.255.255/192.168.0.0-192.168.255.255) ？
 * 閘道是否顯示在入口網站中？ 如果您的閘道已關閉，請重新啟動。
-* 憑證是否顯示為同步，或您是否懷疑網路設定已變更？  如果您的憑證未同步，或您懷疑未與 Asp 同步的虛擬網路設定有變更，請選取 [ **同步處理網路**]。
+* 憑證是否顯示為同步，或您是否懷疑網路設定已變更？  如果您的憑證未同步，或您懷疑未與 Asp 同步的虛擬網路設定有變更，請選取 [ **同步處理網路** ]。
 * 如果您是跨 VPN，內部部署閘道是否設定為將流量路由傳送至 Azure？ 如果您可以連線到虛擬網路中的端點，但無法連線到內部部署，請檢查您的路由。
 * 您是否嘗試使用同時支援點對站和 ExpressRoute 的共存閘道？ VNet 整合不支援共存閘道。
 
@@ -68,13 +68,13 @@ tcpping.exe hostname [optional: port]
 
 其他偵錯步驟包括：
 
-* 連線至虛擬網路中的 VM，並嘗試從該處連接到您的資源主機：埠。 若要測試 TCP 存取，請使用 PowerShell 命令 **test-netconnection**。 語法為：
+* 連線至虛擬網路中的 VM，並嘗試從該處連接到您的資源主機：埠。 若要測試 TCP 存取，請使用 PowerShell 命令 **test-netconnection** 。 語法為：
 
 ```powershell
 test-netconnection hostname [optional: -Port]
 ```
 
-* 使用 **tcpping**在 VM 上啟動應用程式，並從您的應用程式使用主控台測試該主機和埠的存取。
+* 使用 **tcpping** 在 VM 上啟動應用程式，並從您的應用程式使用主控台測試該主機和埠的存取。
 
 #### <a name="on-premises-resources"></a>內部部署資源 ####
 

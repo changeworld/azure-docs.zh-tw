@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 1e6e59ad237cdc1f23181375894512e69eba86ff
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: f73643baa92956280d67d0d931459af3a80925ee
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042175"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233743"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>規劃和管理 Azure Machine Learning 的成本
 
@@ -96,7 +96,7 @@ az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 
 
 AmlCompute 隨附 [配額 (或限制) ](how-to-manage-quotas.md#azure-machine-learning-compute)設定。 此配額是由 VM 系列 (例如，Dv2 系列、NCv3 系列) ，而且每個訂用帳戶各有不同的區域。 訂用帳戶以小預設值開始進行，但使用此設定可控制可在訂用帳戶中啟動的 Amlcompute 資源數量。 
 
-也針對訂用帳戶內的每個工作區， [依 VM 系列設定工作區層級配額](how-to-manage-quotas.md#workspace-level-quota)。 這樣做可讓您更細微地控制每個工作區可能產生的成本，並限制特定的 VM 系列。 
+也針對訂用帳戶內的每個工作區， [依 VM 系列設定工作區層級配額](how-to-manage-quotas.md#workspace-level-quotas)。 這樣做可讓您更細微地控制每個工作區可能產生的成本，並限制特定的 VM 系列。 
 
 若要在工作區層級設定配額，請從 [Azure 入口網站](https://portal.azure.com)開始。  選取訂用帳戶中的任何工作區，然後選取左窗格中的 [ **使用方式 + 配額** ]。 然後，選取 [ **設定配額** ] 索引標籤以查看配額。 您需要訂用帳戶範圍的許可權才能設定配額，因為這是影響多個工作區的設定。
 

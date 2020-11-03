@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: kenwith
-ms.openlocfilehash: aaafd3833c63458f8403dfeb3620d76f631315b5
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: cac7b169232bb43ba1b1893b59dac81ce4c39c49
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899179"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233878"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>在 Azure Active Directory 中自訂 SaaS 應用程式的使用者佈建屬性對應
 
@@ -111,7 +111,7 @@ Azure AD 佈建服務可以部署在 "greenfield" 案例中 (使用者不存在�
 - SuccessFactors 至 Azure Active Directory 的 Active Directory/SuccessFactors
 - Azure Active Directory (支援 [Azure AD Graph API 預設屬性](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)和自訂目錄擴充功能)
 - 支援 [SCIM 2.0](https://tools.ietf.org/html/rfc7643) 的應用程式，定義於[核心結構描述](https://tools.ietf.org/html/rfc7643)中的屬性必須新增至此處
-- 針對 Azure Active Directory 回寫至 Workday 或 SuccessFactors，支援將支援的屬性的相關中繼資料更新 (XPATH 和 JSONPath) ，但不支援將新的 Workday 或 SuccessFactors 屬性加入預設架構中包含的屬性之外
+- 針對 Azure Active Directory 回寫至 Workday 或 SuccessFactors，支援 (XPATH 和 JSONPath) 更新支援屬性的相關中繼資料，但不支援將新的 Workday 或 SuccessFactors 屬性加入預設架構中包含的屬性之外
 
 
 > [!NOTE]

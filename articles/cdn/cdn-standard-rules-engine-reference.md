@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: b272426f865636640e0a2fafde46cbebbe6eb363
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a0f4456f38939632026645500dd48acbf7dbc88
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327488"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242203"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Azure CDN 的標準規則引擎參考
 
@@ -20,13 +20,13 @@ ms.locfileid: "91327488"
 
 規則引擎是設計來作為標準 Azure CDN 處理特定類型要求的最終授權。
 
-**規則的常見用法**：
+**規則的常見用法** ：
 
 - 覆寫或定義自訂快取原則。
 - 將要求重新導向。
 - 修改 HTTP 要求和回應標頭。
 
-## <a name="terminology"></a>詞彙
+## <a name="terminology"></a>術語
 
 若要在規則引擎中定義規則，請設定 [符合條件](cdn-standard-rules-engine-match-conditions.md) 和 [動作](cdn-standard-rules-engine-actions.md)：
 
@@ -34,7 +34,10 @@ ms.locfileid: "91327488"
 
 每個規則最多可以有十個相符條件和五個動作。 每個 Azure CDN 端點最多可有25個規則。 
 
-這項限制中包含了預設的 *全域規則*。 全域規則沒有符合條件;全域規則中所定義的動作一律會觸發。
+這項限制中包含了預設的 *全域規則* 。 全域規則沒有符合條件;全域規則中所定義的動作一律會觸發。
+
+   > [!IMPORTANT]
+   > 多項規則的排列順序會影響規則處理方式。 後續規則可能會覆寫某項規則中指定的動作。
 
 ## <a name="limits-and-pricing"></a>限制和定價 
 
@@ -43,7 +46,7 @@ ms.locfileid: "91327488"
 - 處理的要求：每百萬個要求 $0.60
 - 前5個規則將保持免費
 
-## <a name="syntax"></a>語法
+## <a name="syntax"></a>Syntax
 
 在規則中處理特殊字元的方式會根據不同的比對條件和動作處理文字值的方式而有所不同。 比對條件或動作可以用下列其中一種方式來解讀文字：
 
@@ -61,7 +64,7 @@ ms.locfileid: "91327488"
 
 目前我們支援標準規則引擎中 UrlPath 比對 **條件** 中的萬用字元。 \*字元是代表一或多個字元的萬用字元。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [標準規則引擎中的比對條件](cdn-standard-rules-engine-match-conditions.md)
 - [標準規則引擎中的動作](cdn-standard-rules-engine-actions.md)

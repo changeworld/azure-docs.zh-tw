@@ -1,17 +1,17 @@
 ---
 title: 停止/啟動-Azure 入口網站-適用於 MySQL 的 Azure 資料庫彈性伺服器
 description: 本文說明如何透過 Azure 入口網站停止/啟動適用於 MySQL 的 Azure 資料庫中的作業。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: e3e08ae9bbf00e1c9a44e6ba913cac1d842928b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15b08ea67afe0d307470b5a4fb0f7d26e0f4ea82
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567469"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241917"
 ---
 # <a name="stopstart-an-azure-database-for-mysql---flexible-server-preview"></a>停止/啟動適用於 MySQL 的 Azure 資料庫彈性的伺服器 (Preview) 
 
@@ -20,7 +20,7 @@ ms.locfileid: "91567469"
 
 本文提供的逐步程式，可讓您執行彈性伺服器的停止和啟動。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要完成本操作說明指南，您需要：
 
@@ -52,7 +52,7 @@ ms.locfileid: "91567469"
 > [!NOTE]
 > 一旦啟動伺服器，所有的管理作業現在都可供彈性的伺服器使用。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - 深入瞭解[適用於 MySQL 的 Azure 資料庫彈性伺服器中的網路](./concepts-networking.md)功能
 - [使用 Azure 入口網站建立和管理適用於 MySQL 的 Azure 資料庫彈性伺服器虛擬網路](./how-to-manage-virtual-network-portal.md)。
 

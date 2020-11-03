@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/01/2020
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 2e09f92e21743d39cbd132637cc63b27e8cfe944
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: c8d0f32821bbb3957d7787b7c3bfd733a880325b
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996141"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233911"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>用於整合 Microsoft Azure 與 Oracle Cloud Infrastructure 的 Oracle 應用程式解決方案
 
@@ -48,6 +48,7 @@ Microsoft 與 Oracle 合作提供高輸送量的低延遲跨雲端連線，以�
 * Azure 加拿大中部 (CanadaCentral) 與 OCI 多倫多 (加拿大東南部)
 * Azure 西歐 (WestEurope) & OCI 阿姆斯特丹 (荷蘭西北部)
 * Azure 日本東部 (JapanEast) 與 OCI 東京 (日本東部)
+* Azure 美國西部 (WestUS) & OCI 聖馬利諾 (美國西部) 
 
 ## <a name="networking"></a>網路功能
 

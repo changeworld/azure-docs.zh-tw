@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c3107be1c36f1c15a1bcb27c5e0dcf851cfb946
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1485c2abd24022dbfa6476e3c5a530413b9cb4f2
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145533"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233792"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用條件式存取封鎖對 Azure AD 的舊式驗證   
 
@@ -60,7 +60,7 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
 
 下列項目視為舊式驗證通訊協定
 
-- 經過驗證的 SMTP - 由 POP 與 IMAP 用戶端用於傳送電子郵件。
+- 已驗證的 SMTP-由 POP 和 IMAP 用戶端用來傳送電子郵件訊息。
 - 自動探索 - 由 Outlook 與 EAS 用戶端用於尋找及連線至 Exchange Online 中的信箱。
 - Exchange ActiveSync (EAS) -用來連線到 Exchange Online 中的信箱。
 - Exchange Online PowerShell - 用於透過 PowerShell 連線至 Exchange Online。 如果您封鎖 Exchange Online PowerShell 的基本驗證，則需使用 Exchange Online PowerShell 模組來連線。 如需相關說明，請參閱[使用多重要素驗證連線至 Exchange Online PowerShell](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。
@@ -82,7 +82,7 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
 
 1. 瀏覽至 [Azure 入口網站]  >  [Azure Active Directory]  >  [登入]。
 1. 如果未顯示 [用戶端應用程式] 欄，請按一下 [欄]  >  [用戶端應用程式] 來新增此欄。
-1. **新增篩選**  > **用戶端應用程式**> 選取所有舊版驗證通訊協定。 選取 [篩選] 對話方塊以外的範圍，以套用您的選取專案並關閉對話方塊。
+1. **新增篩選**  > **用戶端應用程式** > 選取所有舊版驗證通訊協定。 選取 [篩選] 對話方塊以外的範圍，以套用您的選取專案並關閉對話方塊。
 
 篩選後，只會顯示您使用舊式驗證通訊協定的登入嘗試。 按一下各項登入嘗試，即會顯示更多詳細資料。 [基本資訊] 索引標籤下方的 [用戶端應用程式] 欄位，會標明使用的舊式驗證通訊協定。
 
@@ -97,7 +97,7 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
  
 ### <a name="directly-blocking-legacy-authentication"></a>直接封鎖舊版驗證
 
-若要封鎖整個組織的舊版驗證，最簡單的方式就是設定適用于舊版驗證用戶端的條件式存取原則，並封鎖存取。 將使用者和應用程式指派給原則時，請務必排除仍需要使用舊版驗證登入的使用者和服務帳戶。 選取 [ **Exchange ActiveSync 用戶端** ] 和 [ **其他用戶端**] 來設定用戶端應用程式條件。 若要封鎖這些用戶端應用程式的存取，請設定存取控制以封鎖存取。
+若要封鎖整個組織的舊版驗證，最簡單的方式就是設定適用于舊版驗證用戶端的條件式存取原則，並封鎖存取。 將使用者和應用程式指派給原則時，請務必排除仍需要使用舊版驗證登入的使用者和服務帳戶。 選取 [ **Exchange ActiveSync 用戶端** ] 和 [ **其他用戶端** ] 來設定用戶端應用程式條件。 若要封鎖這些用戶端應用程式的存取，請設定存取控制以封鎖存取。
 
 ![設定為封鎖舊版驗證的用戶端應用程式條件](./media/block-legacy-authentication/client-apps-condition-configured-yes.png)
 
@@ -111,7 +111,7 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
 
 使用 [其他用戶端] 封鎖存取時，也會封鎖使用基本驗證的 Exchange Online PowerShell 和 Dynamics 365。
 
-為**其他用戶端**設定原則會讓整個組織封鎖特定用戶端，例如 SPConnect。 之所以執行此封鎖，是因為舊版用戶端以非預期的方式進行驗證。 主要的 Office 應用程式 (例如，較舊的 Office 用戶端) 不會有這個問題。
+為 **其他用戶端** 設定原則會讓整個組織封鎖特定用戶端，例如 SPConnect。 之所以執行此封鎖，是因為舊版用戶端以非預期的方式進行驗證。 主要的 Office 應用程式 (例如，較舊的 Office 用戶端) 不會有這個問題。
 
 原則最慢可能需要 24 小時才會生效。
 

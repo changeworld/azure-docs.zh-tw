@@ -1,18 +1,18 @@
 ---
 title: 管理區域冗余高可用性-Azure 入口網站適用於 MySQL 的 Azure 資料庫彈性的伺服器
 description: 本文說明如何透過 Azure 入口網站，在適用於 MySQL 的 Azure 資料庫彈性的伺服器中啟用或停用區域冗余高可用性。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: 09cd7428519cbf84c785efa16b61b9507a3c0b94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d65b074385311e74444929ef74901e402e29ec03
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936658"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241730"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-preview"></a>在適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽版中管理區域冗余高可用性) 
 
@@ -32,18 +32,18 @@ ms.locfileid: "90936658"
 
 本節特別針對 HA 相關的欄位提供詳細資料。 您可以遵循下列步驟來部署高可用性，同時建立彈性的伺服器。
 
-1.  在 [ [Azure 入口網站](https://portal.azure.com/)中，選擇 [彈性伺服器]，然後按一下 [ **建立**]。  如需有關如何填入詳細資料（例如 **訂**用帳戶、 **資源群組**、 **伺服器名稱**、 **區域**和其他欄位）的詳細資訊，請參閱伺服器建立的操作說明文件。
+1.  在 [ [Azure 入口網站](https://portal.azure.com/)中，選擇 [彈性伺服器]，然後按一下 [ **建立** ]。  如需有關如何填入詳細資料（例如 **訂** 用帳戶、 **資源群組** 、 **伺服器名稱** 、 **區域** 和其他欄位）的詳細資訊，請參閱伺服器建立的操作說明文件。
 
 2.  在可用性選項中，按一下 [ **區域冗余高可用性** ] 的核取方塊。
 
-3.  如果您想要變更預設的計算和儲存體，請按一下 [  **設定伺服器**]。
+3.  如果您想要變更預設的計算和儲存體，請按一下 [  **設定伺服器** ]。
 
 4.  如果選取 [高可用性] 選項，高載層將無法供選擇。 您可以選擇 **一般用途** 或 **記憶體優化** 計算層級。
 
     > [!IMPORTANT]
-    > 針對 ***一般用途*** 和 ***記憶體優化*** 定價層，我們僅支援區域冗余高可用性。
+    > 我們只支援「 *_一般用途_* _」和「 _*_記憶體優化_*_ 」定價層的區域冗余高可用性。
 
-5.  從下拉式清單中選取您選擇的 **計算大小** 。
+5.  從下拉式清單中選取 [_ *計算大小* ] * 供您選擇。
 
 6.  使用滑動軸在 GiB 中選取 [ **儲存體大小** ]，並選取7天到35天之間的 **備份保留期限** 。   
 
@@ -51,11 +51,11 @@ ms.locfileid: "90936658"
 
 請遵循下列步驟來停用已設定區域冗余之彈性伺服器的高可用性。
 
-1.  在 [ [Azure 入口網站](https://portal.azure.com/)中，選取您現有的適用於 MySQL 的 Azure 資料庫有彈性的伺服器。
+1.  在 [ [Azure 入口網站](https://portal.azure.com/)中，選取您現有的適用於 MySQL 的 Azure 資料庫有彈性的伺服器。
 
-2.  在 [彈性伺服器] 頁面上，按一下前端面板中的 [ **高可用性** ] 以開啟 [高可用性] 頁面。
+2.  在 [彈性伺服器] 頁面上，按一下前端面板中的 [ **高可用性** ] 以開啟 [高可用性] 頁面。
 
-3.  按一下 [**區域冗余高可用性**] 核取方塊以停用此選項，然後按一下 [ **儲存**]   以儲存變更。
+3.  按一下 [ **區域冗余高可用性** ] 核取方塊以停用此選項，然後按一下 [ **儲存** ] 以儲存變更。
 
 4.  確認對話方塊將會顯示，您可以在其中確認停用 HA。
 
@@ -63,7 +63,7 @@ ms.locfileid: "90936658"
 
 6.  通知將會顯示高可用性部署的解除委任正在進行中。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 -   瞭解 [商務持續性](./concepts-business-continuity.md)
--   深入瞭解 [區域冗余高可用性](./concepts-high-availability.md)
+-   深入瞭解 [區域冗余高可用性](./concepts-high-availability.md)

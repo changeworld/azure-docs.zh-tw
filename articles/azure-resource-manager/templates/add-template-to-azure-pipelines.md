@@ -3,12 +3,12 @@ title: 具有 Azure Pipelines 和範本的 CI/CD
 description: 說明如何使用 Azure Resource Manager 範本，在 Azure Pipelines 中設定持續整合。 它會顯示如何使用 PowerShell 腳本，或將檔案複製到預備位置，並從該處部署。
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: 6784df30340e4c54b8b1d6e82b45046666824315
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86ad2839375b73bf9595cf3369960e614ec03e67
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653395"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233809"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>整合 ARM 範本與 Azure Pipelines
 
@@ -16,17 +16,17 @@ ms.locfileid: "91653395"
 
 在本文中，您將瞭解使用 Azure Pipelines 部署範本的兩種方法。 本文將說明如何：
 
-* **新增執行 Azure PowerShell 腳本的**工作。 此選項的優點是在整個開發生命週期中提供一致性，因為您可以使用執行本機測試時所使用的相同腳本。 您的腳本會部署範本，但也可以執行其他作業，例如取得要做為參數的值。
+* **新增執行 Azure PowerShell 腳本的** 工作。 此選項的優點是在整個開發生命週期中提供一致性，因為您可以使用執行本機測試時所使用的相同腳本。 您的腳本會部署範本，但也可以執行其他作業，例如取得要做為參數的值。
 
    Visual Studio 提供包含 PowerShell 腳本的 [Azure 資源群組專案](create-visual-studio-deployment-project.md) 。 腳本會將專案中的成品構件至 Resource Manager 可以存取的儲存體帳戶。 構件是您專案中的專案，例如連結的範本、腳本和應用程式二進位檔。 如果您想要繼續使用專案中的腳本，請使用本文中所示的 PowerShell 腳本工作。
 
-* **新增工作以複製及部署**工作。 此選項提供專案腳本的便利替代方案。 您可以在管線中設定兩項工作。 一個工作會將成品階段到可存取的位置。 另一個工作會從該位置部署範本。
+* **新增工作以複製及部署** 工作。 此選項提供專案腳本的便利替代方案。 您可以在管線中設定兩項工作。 一個工作會將成品階段到可存取的位置。 另一個工作會從該位置部署範本。
 
 ## <a name="prepare-your-project"></a>準備您的專案
 
 本文假設您的 ARM 範本和 Azure DevOps 組織已準備好建立管線。 下列步驟說明如何確定您已經準備就緒：
 
-* 您有 Azure DevOps 的組織。 如果您沒有帳戶，請 [建立一個免費的](/azure/devops/pipelines/get-started/pipelines-sign-up)帳戶。 如果您的小組已經有 Azure DevOps 組織，請確定您是要使用之 Azure DevOps 專案的系統管理員。
+* 您有 Azure DevOps 的組織。 如果您沒有帳戶，請[免費建立一個](/azure/devops/pipelines/get-started/pipelines-sign-up)。 如果您的小組已經有 Azure DevOps 組織，請確定您是要使用之 Azure DevOps 專案的系統管理員。
 
 * 您已設定 Azure 訂用帳戶的 [服務連接](/azure/devops/pipelines/library/connect-to-azure) 。 管線中的工作會在服務主體的身分識別下執行。 如需建立連接的步驟，請參閱 [建立 DevOps 專案](deployment-tutorial-pipeline.md#create-a-devops-project)。
 
@@ -34,11 +34,11 @@ ms.locfileid: "91653395"
 
 ## <a name="create-pipeline"></a>建立管線
 
-1. 如果您先前尚未新增管線，則必須建立新的管線。 從您的 Azure DevOps 組織中，選取 [ **管線** ] 和 [ **新增管線**]。
+1. 如果您先前尚未新增管線，則必須建立新的管線。 從您的 Azure DevOps 組織中，選取 [ **管線** ] 和 [ **新增管線** ]。
 
    ![新增管線](./media/add-template-to-azure-pipelines/new-pipeline.png)
 
-1. 指定您的程式碼儲存位置。 下圖顯示如何選取 **Azure Repos Git**。
+1. 指定您的程式碼儲存位置。 下圖顯示如何選取 **Azure Repos Git** 。
 
    ![選取程式碼來源](./media/add-template-to-azure-pipelines/select-source.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "91653395"
 
    ![選取存放庫](./media/add-template-to-azure-pipelines/select-repo.png)
 
-1. 選取要建立的管線類型。 您可以選取 [ **入門管線**]。
+1. 選取要建立的管線類型。 您可以選取 [ **入門管線** ]。
 
    ![選取管線](./media/add-template-to-azure-pipelines/select-pipeline.png)
 
@@ -70,7 +70,7 @@ steps:
   inputs:
     azureSubscription: 'script-connection'
     ScriptType: 'FilePath'
-    ScriptPath: './Deploy-Template.ps1'
+    ScriptPath: './Deploy-AzTemplate.ps1'
     ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateFile templates\mainTemplate.json
     azurePowerShellVersion: 'LatestVersion'
 ```
@@ -101,7 +101,7 @@ ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
 ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateFile templates\mainTemplate.json
 ```
 
-當您選取 [ **儲存**] 時，組建管線會自動執行。 返回至組建管線的摘要，並監看狀態。
+當您選取 [ **儲存** ] 時，組建管線會自動執行。 返回至組建管線的摘要，並監看狀態。
 
 ![檢視結果](./media/add-template-to-azure-pipelines/view-results.png)
 
@@ -226,8 +226,8 @@ steps:
     deploymentName: 'deploy1'
 ```
 
-當您選取 [ **儲存**] 時，組建管線會自動執行。 返回至組建管線的摘要，並監看狀態。
+當您選取 [ **儲存** ] 時，組建管線會自動執行。 返回至組建管線的摘要，並監看狀態。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要瞭解如何搭配 GitHub Actions 使用 ARM 範本，請參閱 [使用 GitHub Actions 部署 Azure Resource Manager 範本](deploy-github-actions.md)。

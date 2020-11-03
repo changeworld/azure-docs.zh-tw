@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 99c74547d5f48f57af56af69f47190d80d9cd350
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5d74b17bdd9c264a983bfdd2e374001dd4a0e2c0
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074952"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242104"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure 應用程式組態常見問題
 
@@ -86,16 +86,16 @@ Azure App Service 可讓您定義每個 App Service 實例的應用程式設定�
 
 以下是選擇階層的考慮。
 
-- **每一訂**用帳戶的資源：資源是由單一設定存放區所組成。 每個訂用帳戶僅限免費層中的一個設定存放區。 訂用帳戶在標準層中可以有無限數量的設定存放區。
-- **每個資源的儲存體**：在免費層中，每個設定存放區的儲存空間限制為 10 MB。 在標準層中，每個設定存放區最多可使用 1 GB 的儲存體。
-- **金鑰歷程記錄**：應用程式設定會儲存對金鑰所做之所有變更的歷程記錄。 在免費層中，此歷程記錄會儲存七天。 在標準層中，此歷程記錄會儲存30天。
-- **每日要求**數：免費層存放區受限於每日1000個要求。 一旦商店抵達1000要求，它就會傳回所有要求的 HTTP 狀態碼429，直到 UTC 午夜為止。
+- **每一訂** 用帳戶的資源：資源是由單一設定存放區所組成。 每個訂用帳戶僅限免費層中的一個設定存放區。 訂用帳戶在標準層中可以有無限數量的設定存放區。
+- **每個資源的儲存體** ：在免費層中，每個設定存放區的儲存空間限制為 10 MB。 在標準層中，每個設定存放區最多可使用 1 GB 的儲存體。
+- **修訂歷程記錄** ：應用程式設定會儲存對金鑰所做之所有變更的歷程記錄。 在免費層中，此歷程記錄會儲存七天。 在標準層中，此歷程記錄會儲存30天。
+- **要求配額** ：免費層存放區受限於每日1000個要求。 當商店到達1000要求時，它會針對所有要求傳回 HTTP 狀態碼429，直到午夜 UTC 為止。
 
-    針對標準層商店，每日的前200000要求都會包含在每日費用中。 額外的要求會以超額部分的方式計費。
+    標準層存放區受限於每小時20000個要求。 當配額用盡時，會針對所有要求傳回 HTTP 狀態碼429，直到該小時結束為止。
 
-- **服務等級協定**：標準層具有99.9% 可用性的 SLA。 免費層沒有 SLA。
-- **安全性功能**：這兩個層級都包含基本安全性功能，包括使用 Microsoft 管理的金鑰進行加密、透過 HMAC 或 Azure Active Directory 進行驗證、Azure RBAC 支援和受控識別。 標準層提供更先進的安全性功能，包括使用客戶管理的金鑰來 Private Link 支援和加密。
-- **成本**：標準層商店具有每日使用量費用。 每日配置過去的要求也會收取超額費用。 使用免費層存放區不會產生任何費用。
+- **服務等級協定** ：標準層具有99.9% 可用性的 SLA。 免費層沒有 SLA。
+- **安全性功能** ：這兩個層級都包含基本安全性功能，包括使用 Microsoft 管理的金鑰進行加密、透過 HMAC 或 Azure Active Directory 進行驗證、Azure RBAC 支援、受控識別，以及服務標記。 標準層提供更先進的安全性功能，包括使用客戶管理的金鑰來 Private Link 支援和加密。
+- **成本** ：標準層商店具有每日使用量費用。 每日的前200000要求都會包含在每日費用中。 每日配置過去的要求也會收取超額費用。 使用免費層存放區不會產生任何費用。
 
 ## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>是否可以將商店從免費層升級至標準層？ 我可以將存放區從標準層降級至免費層嗎？
 
@@ -111,7 +111,7 @@ Azure App Service 可讓您定義每個 App Service 實例的應用程式設定�
 
 如果您的應用程式會定期遇到 HTTP 狀態碼429回應，請考慮重新設計，以減少提出的要求數目。 如需詳細資訊，請參閱 [減少對應用程式設定所提出的要求](./howto-best-practices.md#reduce-requests-made-to-app-configuration)
 
-## <a name="my-application-receives-http-status-code-429-responses-why"></a>我的應用程式收到 HTTP 狀態碼429回應。 為何會這樣？
+## <a name="my-application-receives-http-status-code-429-responses-why"></a>我的應用程式收到 HTTP 狀態碼429回應。 原因為何？
 
 在這些情況下，您將會收到 HTTP 狀態碼429回應：
 
@@ -130,6 +130,6 @@ Azure App Service 可讓您定義每個 App Service 實例的應用程式設定�
 
 您可以直接在 [GitHub](https://github.com/Azure/AppConfiguration/issues)上聯繫我們。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [關於 Azure 應用程式組態](./overview.md)

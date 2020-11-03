@@ -1,17 +1,17 @@
 ---
 title: 商務持續性總覽-適用於 MySQL 的 Azure 資料庫彈性的伺服器
 description: 瞭解適用於 MySQL 的 Azure 資料庫彈性伺服器的商務持續性概念
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 833031a787f8571a8f8aea8e536410d4abcca298
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c29e952e22aaccf31c10de8f6e16d240b4660a23
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546410"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240710"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql---flexible-server-preview"></a>使用適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽) 來瞭解商務持續性
 
@@ -22,7 +22,7 @@ ms.locfileid: "92546410"
 
 下表說明彈性伺服器所提供的功能。
 
-| **功能** | **描述** | **限制** |
+| **功能** | **說明** | **限制** |
 | ---------- | ----------- | ------------ |
 | **備份 & 復原** | 彈性伺服器會自動執行資料庫檔案的每日備份，並持續備份交易記錄。 備份可以保留1到35天之間的任何時間。 您將能夠將資料庫伺服器還原到備份保留期限內的任何時間點。 復原時間會取決於要還原的資料大小，以及執行記錄復原的時間。 如需詳細資料，請參閱 [概念-備份和還原](./concepts-backup-restore.md) 。 |備份資料會保留在區域內 |
 | **本機多餘備份** | 彈性的伺服器備份會自動並安全地儲存在區域和相同可用性區域內的本機多餘儲存體中。 本機多餘的備份會在主要區域中的單一實體位置內，將伺服器備份資料檔案複寫三次。 本地多餘的備份儲存體在指定的一年內提供至少 99.999999999% (11 個九) 物件的持久性。 如需詳細資料，請參閱 [概念-備份和還原](./concepts-backup-restore.md) 。| 適用于所有區域 |

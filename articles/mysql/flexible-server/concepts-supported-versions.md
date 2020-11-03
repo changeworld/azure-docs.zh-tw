@@ -1,17 +1,17 @@
 ---
 title: 支援的版本-適用於 MySQL 的 Azure 資料庫彈性的伺服器
 description: 瞭解適用於 MySQL 的 Azure 資料庫彈性伺服器支援哪些版本的 MySQL 伺服器
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 11cefb1a29f7139f137221ab6fb924cc656da15d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7ad6a576262b8e722b16c81af544a9370c2b49b3
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547192"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242257"
 ---
 # <a name="supported-versions-for-azure-database-for-mysql---flexible-server"></a>適用於 MySQL 的 Azure 資料庫彈性伺服器的支援版本
 

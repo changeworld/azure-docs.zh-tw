@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 422f8106ac52c85f0680d54e420d0f1b4d326910
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 185bb47677e978a3098f39024995da6399f90658
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017687"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241764"
 ---
 # <a name="outbound-proxy-azure-load-balancer"></a>輸出 proxy Azure Load Balancer
 
 Azure 負載平衡器可用來作為輸出網際網路連線的 proxy。 負載平衡器會提供後端實例的輸出連線能力。 
 
-此設定會使用 **來源網路位址轉譯 (SNAT) **。 SNAT 會將後端的 IP 位址重寫為負載平衡器的公用 IP 位址。 
+此設定會使用 **來源網路位址轉譯 (SNAT)** 。 SNAT 會將後端的 IP 位址重寫為負載平衡器的公用 IP 位址。 
 
 SNAT 可 **偽裝** 出後端實例的 IP。 這種偽裝會防止外部來源擁有後端實例的直接位址。 
 
@@ -42,9 +42,9 @@ SNAT 可 **偽裝** 出後端實例的 IP。 這種偽裝會防止外部來源�
 
 若要建立輸出連線，必須使用 **暫時埠** 來提供目的地埠，以用來進行通訊並維護不同的流量流程。 
 
-每個 IP 位址都有65535埠。 前1024埠會保留為 **系統埠**。 每個埠都可以用於 TCP 和 UDP 的輸入或輸出連接。 
+每個 IP 位址都有65535埠。 前1024埠會保留為 **系統埠** 。 每個埠都可以用於 TCP 和 UDP 的輸入或輸出連接。 
 
-在其餘的埠中，Azure 會提供64000作為 **暫時埠**使用。 將 IP 位址新增為前端 IP 設定時，這些暫時埠可用於 SNAT。
+在其餘的埠中，Azure 會提供64000作為 **暫時埠** 使用。 將 IP 位址新增為前端 IP 設定時，這些暫時埠可用於 SNAT。
 
 透過輸出規則，這些 SNAT 埠可以散發到後端實例，讓它們可以共用負載平衡器的公用 IP () 輸出連線。
 
@@ -52,7 +52,7 @@ SNAT 可 **偽裝** 出後端實例的 IP。 這種偽裝會防止外部來源�
 
 ## <a name="exhausting-ports"></a><a name="scenarios"></a> 耗盡埠
 
-相同目的地 IP 和目的地埠的每個連接都會使用 SNAT 埠。 此連接會維護從後端實例或**用戶端**到**伺服器**的相異**流量**。 此程式會為伺服器提供用來處理流量的不同埠。 如果沒有此程式，用戶端電腦就不會察覺封包所屬的流程。
+相同目的地 IP 和目的地埠的每個連接都會使用 SNAT 埠。 此連接會維護從後端實例或 **用戶端** 到 **伺服器** 的相異 **流量** 。 此程式會為伺服器提供用來處理流量的不同埠。 如果沒有此程式，用戶端電腦就不會察覺封包所屬的流程。
 
 假設有多個瀏覽器 https://www.microsoft.com 會進入，也就是：
 
@@ -92,7 +92,7 @@ SNAT 可 **偽裝** 出後端實例的 IP。 這種偽裝會防止外部來源�
 | 801-1,000 | 32 | 
 
 >[!NOTE]
-> 如果您的後端集區的大小上限為6，則如果您定義明確的輸出規則，則每個實例都可以有 64000/10 = 6400 埠。 根據上面的表格，如果您選擇自動設定，每個都只有1024。
+> 如果您的後端集區的大小上限為10，則如果您定義明確的輸出規則，則每個實例都可以有 64000/10 = 6400 埠。 根據上面的表格，如果您選擇自動設定，每個都只有1024。
 
 ## <a name="outbound-rules-and-virtual-network-nat"></a><a name="outboundrules"></a> 輸出規則和虛擬網路 NAT
 
@@ -114,7 +114,7 @@ Azure Load Balancer 輸出規則和虛擬網路 NAT 是可從虛擬網路輸出�
   * TCP SNAT 埠可用於多個連接至相同目的地 IP 的連線，但前提是目的地埠不同。
 *   當後端實例用盡指定的 SNAT 埠時，就會發生 SNAT 耗盡。 負載平衡器仍可以有未使用的 SNAT 埠。 如果後端實例的已使用 SNAT 埠超過其指定的 SNAT 埠，則將無法建立新的輸出連接。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 *   [針對發生 SNAT 耗盡的輸出連線失敗進行疑難排解](https://docs.microsoft.com/azure/load-balancer/troubleshoot-outbound-connection)
 *   [複習 SNAT 計量](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation) ，並熟悉其篩選、分割和查看的正確方式。

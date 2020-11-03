@@ -1,17 +1,17 @@
 ---
 title: Private Link-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 瞭解適用於 PostgreSQL 的 Azure 資料庫單一伺服器的 Private link 如何運作。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 9b93e3f42c6b635ced7fdca61cb2ffe4f74d19bc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a864ce42888aace385cf60a4122f204c8f76831d
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489501"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240421"
 ---
 # <a name="private-link-for-azure-database-for-postgresql-single-server"></a>適用于 PostgreSQL-Single 伺服器的 Azure 資料庫 Private Link
 
@@ -113,7 +113,7 @@ Private Link 可讓您為適用於 PostgreSQL 的 Azure 資料庫單一伺服器
 
 ## <a name="deny-public-access-for-azure-database-for-postgresql-single-server"></a>拒絕適用於 PostgreSQL 的 Azure 資料庫單一伺服器的公用存取
 
-如果您只想要依賴私人端點來存取其適用於 PostgreSQL 的 Azure 資料庫單一伺服器，您可以在資料庫伺服器上設定**拒絕公用網路存取**設定，以停用[防火牆規則](concepts-firewall-rules.md)和[VNet 服務) 端點](concepts-data-access-and-security-vnet.md) (的所有公用端點設定。 
+如果您只想要依賴私人端點來存取其適用於 PostgreSQL 的 Azure 資料庫單一伺服器，您可以在資料庫伺服器上設定 **拒絕公用網路存取** 設定，以停用 [防火牆規則](concepts-firewall-rules.md)和 [VNet 服務) 端點](concepts-data-access-and-security-vnet.md) (的所有公用端點設定。 
 
 當此設定設為 *[是]* 時，只允許透過私人端點透過私人端點連線到您的適用於 PostgreSQL 的 Azure 資料庫。 當此設定設為 [ *否* ] 時，用戶端可以根據您的防火牆或 VNet 服務端點設定來連線到您的適用於 PostgreSQL 的 Azure 資料庫。 此外，一旦設定私人網路的值之後，客戶就無法新增及/或更新現有的「防火牆規則」和「VNet 服務端點規則」。
 
@@ -124,7 +124,7 @@ Private Link 可讓您為適用於 PostgreSQL 的 Azure 資料庫單一伺服器
 
 若要瞭解如何從 Azure 入口網站設定適用於 PostgreSQL 的 Azure 資料庫單一伺服器的 **拒絕公用網路存取** ，請參閱如何設定 [拒絕公用網路存取](howto-deny-public-network-access.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入瞭解適用於 PostgreSQL 的 Azure 資料庫單一伺服器安全性功能，請參閱下列文章：
 

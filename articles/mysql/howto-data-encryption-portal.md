@@ -1,18 +1,18 @@
 ---
 title: 資料加密-Azure 入口網站-適用於 MySQL 的 Azure 資料庫
 description: 瞭解如何使用 Azure 入口網站來設定和管理適用於 MySQL 的 Azure 資料庫的資料加密。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 201459f4a7d2d23b384435493d6272e569698933
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dfc34699bb973dc1f5b74807043e9f208d64f4c
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90887170"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242142"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>使用 Azure 入口網站適用於 MySQL 的 Azure 資料庫的資料加密
 
@@ -42,15 +42,15 @@ ms.locfileid: "90887170"
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>設定金鑰作業的正確許可權
 
-1. 在 Key Vault 中，選取 [**存取**原則  >  **新增存取原則**]。
+1. 在 Key Vault 中，選取 [ **存取** 原則  >  **新增存取原則** ]。
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png" alt-text="醒目提示 [存取原則] 和 [新增存取原則] Key Vault 的螢幕擷取畫面":::
 
-2. 選取 [ **金鑰許可權**]，然後選取 [ **取得**]、[ **換行** **]、[** 解除包裝] 和 [ **主體**]，也就是 MySQL 伺服器的名稱。 如果您在現有主體清單中找不到您的伺服器主體，則需要加以註冊。 當您第一次嘗試設定資料加密時，系統會提示您註冊您的伺服器主體，而且它會失敗。
+2. 選取 [ **金鑰許可權** ]，然後選取 [ **取得** ]、[ **換行** **]、[** 解除包裝] 和 [ **主體** ]，也就是 MySQL 伺服器的名稱。 如果您在現有主體清單中找不到您的伺服器主體，則需要加以註冊。 當您第一次嘗試設定資料加密時，系統會提示您註冊您的伺服器主體，而且它會失敗。
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png" alt-text="醒目提示 [存取原則] 和 [新增存取原則] Key Vault 的螢幕擷取畫面":::
 
-3. 選取 [儲存]****。
+3. 選取 [儲存]  。
 
 ## <a name="set-data-encryption-for-azure-database-for-mysql"></a>設定適用於 MySQL 的 Azure 資料庫的資料加密
 
@@ -62,7 +62,7 @@ ms.locfileid: "90887170"
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png" alt-text="醒目提示 [存取原則] 和 [新增存取原則] Key Vault 的螢幕擷取畫面":::
 
-3. 選取 [儲存]****。
+3. 選取 [儲存]  。
 
 4. 為了確保所有檔案 (包括) 的暫存檔案都已完全加密，請重新開機伺服器。
 
@@ -70,11 +70,11 @@ ms.locfileid: "90887170"
 
 在「適用於 MySQL 的 Azure 資料庫」使用儲存於 Key Vault 的客戶管理金鑰加密之後，任何新建立的伺服器複本也會一併加密。 您可以透過本機或異地還原作業，或透過 (本機/跨區域) 作業的複本來建立這個新的複本。 因此，針對加密的 MySQL 伺服器，您可以使用下列步驟來建立加密的還原伺服器。
 
-1. 在您的伺服器上，選取 **[總覽**  >  **還原**]。
+1. 在您的伺服器上，選取 **[總覽**  >  **還原** ]。
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore.png" alt-text="醒目提示 [存取原則] 和 [新增存取原則] Key Vault 的螢幕擷取畫面":::
 
-   若為已啟用複寫的伺服器，**請選取 [****設定**] 標題下的 [複寫]。
+   若為已啟用複寫的伺服器， **請選取 [****設定** ] 標題下的 [複寫]。
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/mysql-replica.png" alt-text="醒目提示 [存取原則] 和 [新增存取原則] Key Vault 的螢幕擷取畫面":::
 
@@ -82,10 +82,10 @@ ms.locfileid: "90887170"
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png" alt-text="醒目提示 [存取原則] 和 [新增存取原則] Key Vault 的螢幕擷取畫面":::
 
-3. 若要讓伺服器可供存取，請在還原的伺服器上重新驗證金鑰。 選取**資料加密**重新  >  **驗證金鑰**。
+3. 若要讓伺服器可供存取，請在還原的伺服器上重新驗證金鑰。 選取 **資料加密** 重新  >  **驗證金鑰** 。
 
    > [!NOTE]
-   > 第一次嘗試重新驗證將會失敗，因為新伺服器的服務主體必須獲得金鑰保存庫的存取權。 若要產生服務主體，請選取 [重新 **驗證金鑰**]，這會顯示錯誤，但會產生服務主體。 之後，請參閱本文稍早的 [這些步驟](#set-the-right-permissions-for-key-operations) 。
+   > 第一次嘗試重新驗證將會失敗，因為新伺服器的服務主體必須獲得金鑰保存庫的存取權。 若要產生服務主體，請選取 [重新 **驗證金鑰** ]，這會顯示錯誤，但會產生服務主體。 之後，請參閱本文稍早的 [這些步驟](#set-the-right-permissions-for-key-operations) 。
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png" alt-text="醒目提示 [存取原則] 和 [新增存取原則] Key Vault 的螢幕擷取畫面":::
 
@@ -95,6 +95,6 @@ ms.locfileid: "90887170"
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/restore-successful.png" alt-text="醒目提示 [存取原則] 和 [新增存取原則] Key Vault 的螢幕擷取畫面":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
  若要深入瞭解資料加密，請參閱 [使用客戶管理的金鑰適用於 MySQL 的 Azure 資料庫資料加密](concepts-data-encryption-mysql.md)。

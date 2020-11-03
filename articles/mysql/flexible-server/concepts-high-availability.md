@@ -1,17 +1,17 @@
 ---
 title: 使用適用於 MySQL 的 Azure 資料庫彈性伺服器的區域冗余高可用性總覽
 description: 瞭解適用於 MySQL 的 Azure 資料庫彈性伺服器的區域冗余高可用性概念
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 9db5776a4d2395baf03a5ed7cf05db49de8d0321
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd7be998c49a710ee7652cf18c35bed743606ffd
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90933872"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241179"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽) 的高可用性概念
 
@@ -97,8 +97,8 @@ HA 的健康情況會持續受到監視，並在 [總覽] 頁面上報告。
 -   規劃的事件（例如調整計算和次要版本升級）會同時在主要和待命中進行。 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 -   瞭解 [商務持續性](./concepts-business-continuity.md)
--   深入瞭解 [區域冗余高可用性](./concepts-high-availability.md)
+-   深入瞭解 [區域冗余高可用性](./concepts-high-availability.md)
 -   瞭解[備份和](./concepts-backup-restore.md)復原

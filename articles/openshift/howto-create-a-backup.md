@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: aro, openshift, az aro, red hat, cli
 ms.custom: mvc
-ms.openlocfilehash: 49ffc33310564299131e2831b74154719b7cf7c7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: febee51a20f57d71d633243145a1aa0c8fb9b437
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078573"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233673"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>建立 Azure Red Hat OpenShift 4 叢集應用程式備份
 
@@ -22,6 +22,9 @@ ms.locfileid: "92078573"
 > [!div class="checklist"]
 > * 設定必要條件，並安裝必要的工具
 > * 建立 Azure Red Hat OpenShift 4 應用程式備份
+
+> [!NOTE] 
+> Velero 不會備份 Azure Red Hat OpenShift etcd 索引鍵/值存放區資料。 如果您需要備份 etcd，請參閱 [備份 etcd](https://docs.openshift.com/container-platform/4.5/backup_and_restore/backing-up-etcd.html)。
 
 如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.6.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
@@ -138,7 +141,7 @@ oc get backups -n velero <name of backup> -o yaml
 
 如需如何使用 Velero 建立備份和還原的詳細資訊，請參閱以 [原生方式備份 OpenShift 資源](https://www.openshift.com/blog/backup-openshift-resources-the-native-way)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在本文中，Azure Red Hat OpenShift 4 叢集應用程式已備份。 您已了解如何︰
 

@@ -9,12 +9,12 @@ ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 12f9a91995eb35fa61a7df5f3ead5255aea0f071
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a3d88c8d5d42e3dec2142df1ede7a9ee50898e92
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93089027"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242342"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure 空間錨點的驗證和授權
 
@@ -103,7 +103,7 @@ configuration.AccountKey(LR"(MyAccountKey)");
     3.  選取 [ **mixedreality** ] 下的 [ **mixedreality** ]。
     4.  選取 [新增權限]。
 3.  選取 **[授與系統管理員同意** ]。
-    
+
 2. 對您的應用程式或使用者授與資源的存取權：
    1.    移至 Azure 入口網站中的空間錨點資源。
    2.    移至 [ **存取控制] (IAM)** 索引標籤。
@@ -118,7 +118,7 @@ configuration.AccountKey(LR"(MyAccountKey)");
         1.    如果您的應用程式 **僅支援我的組織** ，請將此值取代為您的租使用者 **識別碼** 或租使用者 **名稱** 。 例如，contoso.microsoft.com。
         2.    如果您的應用程式支援 **任何組織目錄中的帳戶** ，請將此值取代為 **組織** 。
         3.    如果您的應用程式支援 **所有 Microsoft 帳戶使用者** ，請將此值取代為 **Common** 。
-3.    在您的權杖要求中，將 **範圍** 設定為 **" https://sts.mixedreality.azure.com//.default "** 。 此範圍會向 Azure AD 表示您的應用程式正在要求用於混合實境 Security Token Service (STS) 的權杖。
+3.    在您的權杖要求中，將 **範圍** 設定為 **" `https://sts.<account-domain>//.default` "** ，其中 `<account-domain>` 會取代為 Azure 空間錨點帳戶的 **帳戶網域** 。 美國東部2帳戶網域中的 Azure 空間錨點帳戶的範例範圍為 **" `https://sts.mixedreality.azure.com//.default` "** 。 此範圍會向 Azure AD 表示您的應用程式正在要求用於混合實境 Security Token Service (STS) 的權杖。
 
 完成這些步驟之後，您的應用程式應該能夠從 MSAL Azure AD token 取得。 您可以將該 Azure AD token 設定為 `authenticationToken` 雲端會話設定物件上的：
 
@@ -177,27 +177,27 @@ Azure AD 存取權杖是透過 [MSAL](../../active-directory/develop/msal-overvi
         1.    在 [Azure 入口網站中，選取 [ **Azure Active Directory** ]，然後選取 [ **應用程式註冊** ]。
         2.    選取 [新增註冊]。
         3.    輸入應用程式的名稱，選取 [Web 應用程式/API] 作為 [應用程式類型]，然後輸入服務的驗證 URL。 選取 [建立]。
-4.    在應用程式上，選取 [ **設定** ]，然後選取 [ **憑證和密碼** ] 索引標籤。建立新的用戶端密碼，選取持續時間，然後選取 [ **新增** ]。 務必儲存秘密值。 您必須將它包含在 web 服務的程式碼中。
-2.    對您的應用程式及 (或) 使用者授與資源的存取權：
+2.    在應用程式上，選取 [ **設定** ]，然後選取 [ **憑證和密碼** ] 索引標籤。建立新的用戶端密碼，選取持續時間，然後選取 [ **新增** ]。 務必儲存秘密值。 您必須將它包含在 web 服務的程式碼中。
+3.    對您的應用程式及 (或) 使用者授與資源的存取權：
         1.    移至 Azure 入口網站中的空間錨點資源。
         2.    移至 [ **存取控制] (IAM)** 索引標籤。
         3.    選取 [新增角色指派]。
-        1.    [選取角色](#azure-role-based-access-control)。
-        2.    在 [ **選取** ] 方塊中，輸入您要指派存取權的應用程式名稱或名稱。 如果您想要讓應用程式的使用者針對空間錨點帳戶使用不同的角色，請在 Azure AD 中註冊多個應用程式，並為每個應用程式指派個別的角色。 然後執行您的授權邏輯，為您的使用者使用正確的角色。
-        
-              > [!NOTE] 
-              > 在 [ **新增角色指派** ] 窗格的 [ **將存取權指派給** ] 中，選取 [ **Azure AD 使用者、群組或服務主體** ]。
-    
-      3.    選取 [儲存]  。
-    
-**在您的程式碼中** 
+        4.    [選取角色](#azure-role-based-access-control)。
+        5.    在 [ **選取** ] 方塊中，輸入您要指派存取權的應用程式名稱或名稱。 如果您想要讓應用程式的使用者針對空間錨點帳戶使用不同的角色，請在 Azure AD 中註冊多個應用程式，並為每個應用程式指派個別的角色。 然後執行您的授權邏輯，為您的使用者使用正確的角色。
 
->[!NOTE] 
+              > [!NOTE]
+              > 在 [ **新增角色指派** ] 窗格的 [ **將存取權指派給** ] 中，選取 [ **Azure AD 使用者、群組或服務主體** ]。
+
+        6.    選取 [儲存]  。
+
+**在您的程式碼中**
+
+>[!NOTE]
 > 您可以使用 GitHub 上提供的服務範例。
 
 1.    請務必使用您自己的 Azure AD 應用程式的應用程式識別碼、應用程式秘密和重新導向 URI，作為 MSAL 中的 **用戶端識別碼** 、 **秘密** 和 **RedirectUri** 參數。
 2.    在 MSAL 的 **授權** 參數中，將租使用者識別碼設定為您自己的 Azure AD 租使用者識別碼。
-3.    在您的權杖要求中，將 **範圍** 設定為 **" https://sts.mixedreality.azure.com//.default "** 。
+3.    在您的權杖要求中，將 **範圍** 設定為 **" `https://sts.<account-domain>//.default` "** ，其中 `<account-domain>` 會取代為 Azure 空間錨點帳戶的 **帳戶網域** 。 美國東部2帳戶網域中的 Azure 空間錨點帳戶的範例範圍為 **" `https://sts.mixedreality.azure.com//.default` "** 。
 
 完成這些步驟之後，您的後端服務就可以取出 Azure AD 的權杖。 然後將其交換為 MR 權杖，並傳回用戶端。 使用 Azure AD 權杖來擷取 MR 權杖是透過 REST 呼叫來完成的。 以下是範例呼叫：
 

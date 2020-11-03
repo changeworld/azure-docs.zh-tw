@@ -1,18 +1,18 @@
 ---
 title: 資料加密-Azure CLI-適用于適用於 PostgreSQL 的 Azure 資料庫單一伺服器
 description: 瞭解如何使用 Azure CLI 來設定和管理適用於 PostgreSQL 的 Azure 資料庫單一伺服器的資料加密。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7494135cd4912ec8e59a32592ebcca0e0a6813b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 757782e8842fbcaca9c8d95ec8086dd5791a817b
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797809"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240608"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>使用 Azure CLI 適用於 PostgreSQL 的 Azure 資料庫單一伺服器的資料加密
 
@@ -49,7 +49,7 @@ ms.locfileid: "87797809"
 * 金鑰必須具有下列屬性，才能做為客戶管理的金鑰：
   * 沒有到期日
   * 未停用
-  * 執行 **get**、 **wrap** 和 **解除** 包裝作業
+  * 執行 **get** 、 **wrap** 和 **解除** 包裝作業
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>設定金鑰作業的正確許可權
 
@@ -67,7 +67,7 @@ ms.locfileid: "87797809"
     az postgres server update --resource-group <resource_group> --name <server_name> --assign-identity
     ```
 
-2. 為**主體**設定 (**取得**、包裝 **、解除****包裝**) 的**金鑰許可權**，這是于 postgresql 單一伺服器伺服器的名稱。
+2. 為 **主體** 設定 ( **取得** 、包裝 **、解除****包裝** ) 的 **金鑰許可權** ，這是于 postgresql 單一伺服器伺服器的名稱。
 
     ```azurecli-interactive
     az keyvault set-policy --name -g <resource_group> --key-permissions get unwrapKey wrapKey --object-id <principal id of the server>
@@ -263,6 +263,6 @@ az postgres server key delete -g <resource_group> --kid <key url>
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
  若要深入瞭解資料加密，請參閱 [使用客戶管理的金鑰適用於 PostgreSQL 的 Azure 資料庫單一伺服器資料加密](concepts-data-encryption-postgresql.md)。

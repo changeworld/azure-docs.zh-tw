@@ -1,17 +1,17 @@
 ---
 title: 適用於 PostgreSQL 的 Azure 資料庫單一伺服器的憑證輪替
 description: 瞭解即將變更的根憑證變更，這些變更會影響單一伺服器適用於 PostgreSQL 的 Azure 資料庫
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 2f711ad269a4ea07cfbb1603b592b184779dcfdb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1bd02043183bd0477d8663300fcb7a1d7ac9ea55
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100740"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242070"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>瞭解適用於 PostgreSQL 的 Azure 資料庫單一伺服器的根 CA 變更變更
 

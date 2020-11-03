@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: c768f6564884ade5d27199a64843437f5ce725f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a594d06fa84bb6e5ef502b02e1bec8244062ccb
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90019150"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233962"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>從 Azure Key Vault 匯出憑證
 
@@ -33,8 +33,8 @@ Azure Key Vault 可讓您輕鬆地為您的網路佈建、管理及部署數位�
 
 在建立 Key Vault 憑證之後，您可以使用私密金鑰，從可定址秘密中擷取該憑證。 擷取 PFX 或 PEM 格式的憑證。
 
-- **可匯出**：用來建立憑證的原則指出金鑰是可匯出的。
-- **不可匯出**：用來建立憑證的原則指出金鑰是不可匯出的。 在此情況下，當私密金鑰以秘密形式擷取時，不會將其視為值的一部分。
+- **可匯出** ：用來建立憑證的原則指出金鑰是可匯出的。
+- **不可匯出** ：用來建立憑證的原則指出金鑰是不可匯出的。 在此情況下，當私密金鑰以秘密形式擷取時，不會將其視為值的一部分。
 
 支援的金鑰類型：RSA、RSA-HSM、EC、EC-HSM、oct (列於[此處](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)) 僅允許匯出 RSA、EC。 HSM 金鑰不可匯出。
 
@@ -49,7 +49,7 @@ Azure Key Vault 可讓您輕鬆地為您的網路佈建、管理及部署數位�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-在 Azure CLI 中使用下列命令，下載 Key Vault 憑證的**公開部分**。
+在 Azure CLI 中使用下列命令，下載 Key Vault 憑證的 **公開部分** 。
 
 ```azurecli
 az keyvault certificate download --file
@@ -79,18 +79,26 @@ az keyvault secret download -–file {nameofcert.pfx}
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-在 Azure PowerShell 中使用此命令，從名為 **ContosoKV01** 的金鑰保存庫取得名為 **TestCert01** 的憑證。 若要將憑證下載為 PFX 檔案，請執行下列命令。 這些命令會存取 **SecretId**，然後將內容儲存為 PFX 檔案。
+在 Azure PowerShell 中使用此命令，從名為 **ContosoKV01** 的金鑰保存庫取得名為 **TestCert01** 的憑證。 若要將憑證下載為 PFX 檔案，請執行下列命令。 這些命令會存取 **SecretId** ，然後將內容儲存為 PFX 檔案。
 
 ```azurepowershell
 $cert = Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
-$kvSecret = Get-AzKeyVaultSecret -VaultName "ContosoKV01" -Name $Cert.Name
-$kvSecretBytes = [System.Convert]::FromBase64String($kvSecret.SecretValueText)
-$certCollection = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2Collection
-$certCollection.Import($kvSecretBytes,$null,[System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable)
-$password = '******'
-$protectedCertificateBytes = $certCollection.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Pkcs12, $password)
-$pfxPath = [Environment]::GetFolderPath("Desktop") + "\MyCert.pfx"
-[System.IO.File]::WriteAllBytes($pfxPath, $protectedCertificateBytes)
+$secret = Get-AzKeyVaultSecret -VaultName $vaultName -Name $cert.Name
+$secretValueText = '';
+$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
+try {
+    $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
+} finally {
+    [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
+}
+$secretByte = [Convert]::FromBase64String($secretValueText)
+$x509Cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2
+$x509Cert.Import($secretByte, "", "Exportable,PersistKeySet")
+$type = [System.Security.Cryptography.X509Certificates.X509ContentType]::Pfx
+$pfxFileByte = $x509Cert.Export($type, $password)
+
+# Write to a file
+[System.IO.File]::WriteAllBytes("KeyVault.pfx", $pfxFileByte)
 ```
 
 此命令會利用私密金鑰匯出整個憑證鏈。 憑證使用密碼保護。
@@ -106,7 +114,7 @@ $pfxPath = [Environment]::GetFolderPath("Desktop") + "\MyCert.pfx"
 
 **匯出 Azure App Service 憑證**
 
-Azure App Service 憑證是方便您購買 SSL 憑證的方式。 您可以從入口網站內將其指派給 Azure 應用程式。 也可以從入口網站將這些憑證匯出為 PFX 檔案，以便在其他地方使用。 在您匯入 PFX 檔案之後，App Service 憑證位於**祕密**之下。
+Azure App Service 憑證是方便您購買 SSL 憑證的方式。 您可以從入口網站內將其指派給 Azure 應用程式。 也可以從入口網站將這些憑證匯出為 PFX 檔案，以便在其他地方使用。 在您匯入 PFX 檔案之後，App Service 憑證位於 **祕密** 之下。
 
 如需詳細資訊，請參閱[匯出 Azure App Service 憑證](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx)的步驟。
 

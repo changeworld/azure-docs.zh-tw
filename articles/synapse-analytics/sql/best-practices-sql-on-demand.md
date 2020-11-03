@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7bebfeba6da1493557d51777ba8438747e160750
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9de3e3503d63cf6dcaa98adc318d86df7700458d
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85476269"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241866"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 SQL 隨選最佳做法 (預覽)
 
@@ -60,17 +60,17 @@ SQL 隨選可讓您查詢 Azure 儲存體帳戶中的檔案。 其沒有本機�
 
 - 使用最小的資料大小，以容納最大的可能值。
   - 如果字元值的長度上限為 30 個字元，請使用長度為 30 的字元資料類型。
-  - 如果所有字元資料行的值都是固定大小，請使用 **char** 或 **nchar**。 否則的話，請使用 **varchar** 或 **nvarchar**。
-  - 如果整數資料行的最大值為 500，請使用 **smallint**，因為其為可容納此值的最小資料類型。 您可以在[本文](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=sql-server-ver15)中找到整數資料類型範圍。
-- 可能的話，請使用 **varchar** 和 **char**，而不是 **nvarchar** 和 **nchar**。
+  - 如果所有字元資料行的值都是固定大小，請使用 **char** 或 **nchar** 。 否則的話，請使用 **varchar** 或 **nvarchar** 。
+  - 如果整數資料行的最大值為 500，請使用 **smallint** ，因為其為可容納此值的最小資料類型。 您可以在[本文](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=sql-server-ver15&preserve-view=true)中找到整數資料類型範圍。
+- 可能的話，請使用 **varchar** 和 **char** ，而不是 **nvarchar** 和 **nchar** 。
 - 請盡可能使用以整數為基礎的資料類型。 排序、聯結和群組依據作業在整數上完成的速度比在字元資料上更快。
 - 如果您使用結構描述推斷，[請檢查推斷的資料類型](#check-inferred-data-types)。
 
 ## <a name="check-inferred-data-types"></a>檢查推斷的資料類型
 
-[結構描述推斷](query-parquet-files.md#automatic-schema-inference)可協助您快速撰寫查詢和探索資料，且不需要知道檔案結構描述。 這項便利的代價是，推斷的資料類型會大於實際的資料類型。 當來源檔案中的資訊不足以確保能使用適當的資料類型時，就會發生這種情況。 例如，Parquet 檔案不包含有關字元資料行長度上限的中繼資料。 因此 SQL 隨選將其推斷為 varchar(8000)。
+[結構描述推斷](query-parquet-files.md#automatic-schema-inference)可協助您快速撰寫查詢和探索資料，且不需要知道檔案結構描述。 這項便利的代價是，推斷的資料類型可能會大於實際的資料類型。 當來源檔案中的資訊不足以確保能使用適當的資料類型時，就會發生這種情況。 例如，Parquet 檔案不包含有關字元資料行長度上限的中繼資料。 因此 SQL 隨選將其推斷為 varchar(8000)。
 
-您可以使用 [sp_describe_first_results_set](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql?view=sql-server-ver15) 來檢查查詢的結果資料類型。
+您可以使用 [sp_describe_first_results_set](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql?view=sql-server-ver15&preserve-view=true) 來檢查查詢的結果資料類型。
 
 下列範例會示範如何最佳化推斷的資料類型。 我們使用此程序來顯示推斷的資料類型： 
 ```sql  

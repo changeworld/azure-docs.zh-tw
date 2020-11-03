@@ -1,17 +1,17 @@
 ---
 title: SSL/TLS 連線能力-適用於 MySQL 的 Azure 資料庫
 description: 用以設定適用於 MySQL 之 Azure 資料庫及相關聯應用程式以適當使用 SSL 連接的資訊
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 2969c963b491e4b08a0959d548e43ba11276d28a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 6fb0b6f38869192e89bb849950e8822a157b23c8
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126544"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241934"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的 SSL/TLS 連線能力
 
@@ -32,7 +32,7 @@ ms.locfileid: "92126544"
 
 透過 Azure 入口網站和 CLI 佈建新的適用於 MySQL 的 Azure 資料庫伺服器時，預設會強制執行 SSL 連接。 
 
-Azure 入口網站中會顯示多種程式設計語言的連接字串。 這些連接字串包含連接到您資料庫所需的 SSL 參數。 在 Azure 入口網站中選取您的伺服器。 在下 [設定]**** 標題之下，選取 [連接字串]****。 SSL 參數會根據連接器而有所不同，例如，"ssl=true" 或 "sslmode=require" 或 "sslmode=required" 及其他變化。
+Azure 入口網站中會顯示多種程式設計語言的連接字串。 這些連接字串包含連接到您資料庫所需的 SSL 參數。 在 Azure 入口網站中選取您的伺服器。 在下 [設定]  標題之下，選取 [連接字串]  。 SSL 參數會根據連接器而有所不同，例如，"ssl=true" 或 "sslmode=require" 或 "sslmode=required" 及其他變化。
 
 在某些情況下，應用程式需要由信任的憑證授權單位單位產生的本機憑證檔案 (CA) 憑證檔案，才能安全地連接。 目前的客戶 **只能使用** 預先定義的憑證來連接到位於的適用於 MySQL 的 Azure 資料庫伺服器 https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem 。 
 

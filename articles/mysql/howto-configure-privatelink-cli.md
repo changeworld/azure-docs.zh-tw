@@ -1,18 +1,18 @@
 ---
 title: Private Link-Azure CLI-適用於 MySQL 的 Azure 資料庫
 description: 瞭解如何從 Azure CLI 設定適用於 MySQL 的 Azure 資料庫的 private link
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b6c26c99d68e5b92477a4d7f2c6734190d112aba
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a2ec1c609fc0562c6c8181a934e742daa9a5a4f9
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538760"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241543"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>使用 CLI 建立和管理適用於 MySQL 的 Azure 資料庫的 Private Link
 
@@ -21,7 +21,7 @@ ms.locfileid: "92538760"
 > [!NOTE]
 > 私人連結功能僅適用于一般用途或記憶體優化定價層中的適用於 MySQL 的 Azure 資料庫伺服器。 確定資料庫伺服器是在其中一個定價層。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -172,7 +172,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
     | 設定 | 值 |
     | ------- | ----- |
     | 連線名稱| 選取您選擇的連接名稱。|
-    | 主機名稱 | 選取 *mydemoserver.privatelink.mysql.database.azure.com* |
+    | Hostname (主機名稱) | 選取 *mydemoserver.privatelink.mysql.database.azure.com* |
     | 使用者名稱 | 輸入 *username@servername* 在建立 MySQL 伺服器期間所提供的使用者名稱。 |
     | 密碼 | 輸入在建立 MySQL 伺服器期間所提供的密碼。 |
     ||

@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 3ee7761d43710e0833eb8002851e286ce5449983
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: c56c52193f433571f16e4acf7bd6e7b89641b26f
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636114"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233945"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>整頓資料流程中的轉換函數
 
@@ -25,7 +25,7 @@ Azure Data Factory 中的整頓資料流程可讓您以雲端規模進行無程�
 
 目前並不支援所有 Power Query M 函式進行資料整頓（儘管在撰寫期間可供使用）。 當您建立整頓資料流程時，如果函式不受支援，系統會提示您輸入下列錯誤訊息：
 
-`The wrangling data flow is invalid. Expression.Error: The transformation logic isn't supported. Please try a simpler expression`
+`The Wrangling Data Flow is invalid. Expression.Error: The transformation logic is not supported. Please try a simpler expression.`
 
 以下是支援的 Power Query M 函數清單。
 
@@ -76,7 +76,7 @@ Azure Data Factory 中的整頓資料流程可讓您以雲端規模進行無程�
 
 使用 [資料表群組](/powerquery-m/table-group) 來匯總值。
 * 必須搭配彙總函式使用
-* 支援的彙總函式：   [Table. RowCount](/powerquery-m/table-rowcount)、   [list. Sum](/powerquery-m/list-sum)、   [list. Count](/powerquery-m/list-count)、   [list、Average](/powerquery-m/list-average)、   [list](/powerquery-m/list-min).   [Max](/powerquery-m/list-max)、list   [. list.standarddeviation](/powerquery-m/list-standarddeviation)、list.   [First](/powerquery-m/list-first)、   [list. Last](/powerquery-m/list-last)
+* 支援的彙總函式   [： list. Sum](/powerquery-m/list-sum)、   [list、Count](/powerquery-m/list-count)、   [list. Average](/powerquery-m/list-average)、List.   [Min](/powerquery-m/list-min)、list.   [Max](/powerquery-m/list-max)、   [list. list.standarddeviation](/powerquery-m/list-standarddeviation)、list.   [First](/powerquery-m/list-first)、   [list. Last](/powerquery-m/list-last)
 
 ## <a name="sorting"></a>排序
 
@@ -96,7 +96,7 @@ Azure Data Factory 中的整頓資料流程可讓您以雲端規模進行無程�
 | Table.NestedJoin | 單純的聯結會導致驗證錯誤。 必須展開這些資料行才能運作。 |
 | Table.Distinct | 不支援移除重複的資料列。 |
 | Table.RemoveLastN | 不支援移除底部的資料列。 |
-| Table.RowCount | 不受支援，但可透過將所有資料格都空白的 [加入] 資料行 (條件] 資料行來使用，) 然後在該資料行上使用 group by。 Table。支援群組。 | 
+| Table.RowCount | 不受支援，但可以藉由加入包含值1的自訂資料行，然後以清單 Sum 來匯總該資料行來達成。 Table。支援群組。 | 
 | 資料列層級錯誤處理 | 目前不支援資料列層級錯誤處理。 例如，若要篩選出資料行中的非數值，其中一個方法就是將文字資料行轉換成數位。 無法轉換的每個資料格將會處於錯誤狀態，且需要進行篩選。 此案例無法在整頓資料流程中進行。 |
 | Table.Transpose | 不支援 |
 | Table.Pivot | 不支援 |

@@ -1,23 +1,23 @@
 ---
 title: 基礎結構雙重加密-Azure 入口網站-適用於 MySQL 的 Azure 資料庫
 description: 瞭解如何為您的適用於 MySQL 的 Azure 資料庫設定及管理基礎結構雙重加密。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: eafad5edf9dcac5745986d09060baf7e4278762d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f9c22a690859b459b6bb748c3b1001c4aa7660d
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903979"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241747"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫的基礎結構雙重加密
 
 瞭解如何使用設定和管理適用於 MySQL 的 Azure 資料庫的基礎結構雙重加密。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 您必須具有 Azure 訂用帳戶，並且是該訂用帳戶的系統管理員。
 
@@ -52,12 +52,12 @@ ms.locfileid: "90903979"
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
-下列範例會使用伺服器系統管理員登入 `myadmin` 在 `myresourcegroup` 您的資源群組中建立且名為 `mydemoserver` 的 MySQL 5.7 伺服器 (位於美國西部)。 這是**第 4 代** **一般用途**伺服器，它具有 **2 個 vCore**。 這也會為所建立的伺服器啟用基礎結構雙重加密。 將 `<server_admin_password>` 替換成您自己的值。
+下列範例會使用伺服器系統管理員登入 `myadmin` 在 `myresourcegroup` 您的資源群組中建立且名為 `mydemoserver` 的 MySQL 5.7 伺服器 (位於美國西部)。 這是 **第 4 代** **一般用途** 伺服器，它具有 **2 個 vCore** 。 這也會為所建立的伺服器啟用基礎結構雙重加密。 將 `<server_admin_password>` 替換成您自己的值。
 
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 5.7 --infrastructure-encryption <Enabled/Disabled>
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
  若要深入瞭解資料加密，請參閱 [適用於 MySQL 的 Azure 資料庫資料基礎結構雙重加密](concepts-Infrastructure-double-encryption.md)。

@@ -1,6 +1,6 @@
 ---
-title: 取得記錄以針對 Azure Arc 啟用的資料控制站進行疑難排解
-description: 取得服務記錄檔，以針對 Azure Arc 啟用的資料控制器進行疑難排解。
+title: 取得記錄以針對 Azure Arc 啟用的資料服務進行疑難排解
+description: 瞭解如何從資料控制器取得記錄檔，以針對 Azure Arc 啟用的資料服務進行疑難排解。
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,14 +9,14 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 625092e0557d40051e1ffd538a496c20edc0222f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0c4cff7583f08fe27649cee464fcef802cddd88f
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320209"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234033"
 ---
-# <a name="get-azure-arc-enabled-data-services-logs"></a>取得 Azure Arc 啟用的資料服務記錄
+# <a name="get-logs-to-troubleshoot-azure-arc-enabled-data-services"></a>取得記錄以針對 Azure Arc 啟用的資料服務進行疑難排解
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -24,12 +24,12 @@ ms.locfileid: "92320209"
 
 繼續進行之前，您需要：
 
-* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. [安裝指示](./install-client-tools.md)。
-* 用以登入 Azure Arc 啟用的資料服務控制器的系統管理員帳戶。
+* [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]. 如需詳細資訊，請參閱 [安裝用於部署和管理 Azure Arc 資料服務的用戶端工具](./install-client-tools.md)。
+* 用來登入已啟用 Azure Arc 的資料控制器的系統管理員帳戶。
 
-## <a name="get-azure-arc-enabled-data-services-logs"></a>取得 Azure Arc 啟用的資料服務記錄
+## <a name="get-log-files"></a>取得記錄檔
 
-您可以在所有 pod 或特定 pod 上取得 Azure Arc 啟用的資料服務記錄檔，以供疑難排解之用。 您可以使用標準 Kubernetes 工具（例如命令）來執行這 `kubectl logs` 項作業，或者在本文中，您將使用 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 工具，這可讓您更輕鬆地取得所有記錄檔。
+您可以在所有 pod 或特定 pod 上取得服務記錄，以供疑難排解之用。 其中一種方式是使用標準 Kubernetes 工具（例如 `kubectl logs` 命令）。 在本文中，您將使用 [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] 工具，這可讓您更輕鬆地同時取得所有記錄。
 
 1. 使用系統管理員帳戶登入資料控制器。
 
@@ -53,15 +53,15 @@ ms.locfileid: "92320209"
 
 ## <a name="options"></a>選項
 
-`azdata arc dc debug copy-logs` 提供下列選項來管理輸出。
+此 `azdata arc dc debug copy-logs` 命令會提供下列選項來管理輸出：
 
 * 使用參數將記錄檔輸出至不同的目錄 `--target-folder` 。
 * 藉由省略參數來壓縮檔案 `--skip-compress` 。
-* 藉由省略來觸發和包含記憶體傾印 `--exclude-dumps` 。 除非 Microsoft 支援服務已要求記憶體傾印，否則不建議使用此方法。 若要建立記憶體傾印，必須將資料控制器設定 `allowDumps` 設定為 `true` 資料控制器建立的時間。
+* 藉由省略來觸發和包含記憶體傾印 `--exclude-dumps` 。 除非 Microsoft 支援服務要求記憶體傾印，否則不建議採用此方法。 若要取得記憶體傾印，資料控制器設定必須在建立 `allowDumps` `true` 資料控制器時設定為。
 * 篩選以 `--pod` 依名稱 () 或容器 () 收集特定 pod 的記錄 `--container` 。
-* 藉由傳遞和參數，篩選以收集特定自訂資源的記錄 `--resource-kind` `--resource-name` 。 `resource-kind`參數值應該是可由命令抓取的其中一個自訂資源定義名稱 `kubectl get customresourcedefinition` 。
+* 藉由傳遞和參數，篩選以收集特定自訂資源的記錄 `--resource-kind` `--resource-name` 。 `resource-kind`參數值應為其中一個自訂資源定義名稱。 您可以使用命令來取得這些名稱 `kubectl get customresourcedefinition` 。
 
-您可以使用這些參數來取代 `<parameters>` 下列範例中的。 
+使用這些參數，您可以取代 `<parameters>` 下列範例中的： 
 
 ```console
 azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps --skip-compress -resource-kind <custom resource definition name> --resource-name <resource name> --namespace <namespace name>
@@ -73,7 +73,7 @@ azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps -
 #azdata arc dc debug copy-logs --target-folder C:\temp\logs --exclude-dumps --skip-compress --resource-kind postgresql-12 --resource-name pg1 --namespace arc
 ```
 
-資料夾階層的範例。 資料夾階層會依 pod 名稱、容器，以及容器內的目錄階層進行組織。
+下列資料夾階層為範例。 它會依 pod 名稱、容器，以及容器內的目錄階層進行組織。
 
 ```output
 <export directory>
@@ -194,6 +194,6 @@ azdata arc dc debug copy-logs --target-folder <desired folder> --exclude-dumps -
             └───openvpn
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [azdata arc dc debug copy-logs](/sql/azdata/reference/reference-azdata-arc-dc-debug#azdata-arc-dc-debug-copy-logs?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json)

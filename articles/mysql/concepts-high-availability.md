@@ -1,17 +1,17 @@
 ---
 title: 高可用性-適用於 MySQL 的 Azure 資料庫
 description: 本文提供適用於 MySQL 的 Azure 資料庫中高可用性的相關資訊。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: 668243f66deff67a923097c116c4b150d0256992
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b301946ce818559510b4e401b1f0aaf7c235d5a3
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90882549"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242291"
 ---
 # <a name="high-availability-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的高可用性
 適用於 MySQL 的 Azure 資料庫服務提供保證的高可用性，且具有 [99.99%](https://azure.microsoft.com/support/legal/sla/mysql) 執行時間的財務支援服務等級協定 (SLA) 。 適用於 MySQL 的 Azure 資料庫在規劃的事件（例如，使用者初始化規模計算作業）期間提供高可用性，而且也會在發生非計畫的事件（例如基礎硬體、軟體或網路失敗）時提供高可用性。 適用於 MySQL 的 Azure 資料庫可以從最重要的情況快速復原，以確保在使用此服務時幾乎不會有任何應用程式停機時間。
@@ -65,11 +65,11 @@ ms.locfileid: "90882549"
 
 
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 適用於 MySQL 的 Azure 資料庫可提供資料庫伺服器的快速重新開機功能、重複的儲存空間，以及從閘道有效率的路由。 針對額外的資料保護，您可以將備份設定為異地複寫，也可以在其他區域中部署一或多個讀取複本。 利用固有的高可用性功能，適用於 MySQL 的 Azure 資料庫保護您的資料庫不受最常見的中斷影響，並提供領先業界的財務支援 [99.99% 的執行時間 SLA](https://azure.microsoft.com/support/legal/sla/mysql)。 所有的可用性和可靠性功能都能讓 Azure 成為執行任務關鍵性應用程式的理想平臺。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - 深入瞭解 [Azure 區域](../availability-zones/az-overview.md)
 - 了解如何[處理暫時性連線錯誤](concepts-connectivity.md)
 - 了解如何[使用讀取複本來複寫資料](howto-read-replicas-portal.md)

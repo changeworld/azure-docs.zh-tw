@@ -1,17 +1,17 @@
 ---
 title: 適用於 MySQL 的 Azure 資料庫彈性伺服器中的備份與還原
 description: 瞭解適用於 MySQL 的 Azure 資料庫彈性伺服器的備份與還原概念
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 44cfe9bc6cd357cc0c649cecd022d3955bb5a2ce
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2d69427f9f11a47cedeccb4b1da38b770952f029
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545866"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240761"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server-preview"></a>適用於 MySQL 的 Azure 資料庫彈性的伺服器 (預覽版備份和還原) 
 
