@@ -7,18 +7,56 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 09/22/2020
+ms.date: 10/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3c20bbd3ab02cd1eccd00e2d36c14eebf2f63205
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e7312ffd4d55f0403359f8aad2d0a8433a716f77
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92360292"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280367"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>版本資訊-Azure Arc 啟用的資料服務 (預覽) 
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+
+## <a name="october-2020"></a>2020 年 10 月 
+
+### <a name="breaking-changes"></a>重大變更
+
+此版本引進了下列重大變更： 
+
+* 于 postgresql 自訂資源定義 (.CRD) 檔會取代該詞彙重新 `shards` 命名為 `workers` 。 這個詞彙 (`workers`) 符合命令列參數名稱。
+
+* `azdata arc postgres server delete` 在刪除 postgres 實例之前提示您確認。  使用 `--force` 略過提示。
+
+### <a name="additional-changes"></a>其他變更
+
+* 已加入新的選擇性參數，並被 `azdata arc postgres server create` 呼叫 `--volume-claim mounts` 。 值是以逗號分隔的磁片區索取裝載清單。 磁片區宣告掛接是一對磁片區類型和 PVC 名稱。 的磁片區類型現在只允許 `backup` 。  在於 postgresql 中，當磁片區類型為時 `backup` ，會將 PVC 載入至 `/mnt/db-backups` 。  這可讓您在 Postgres 實例之間共用備份，以便在另一個 Postgres 實例的備份中還原。
+
+* PostgresSQL 自訂資源定義的新簡短名稱： 
+
+  * `pg11` 
+
+  * `pg12`
+
+* 遙測上傳會提供使用者下列任一項：
+
+   * 上傳至 Azure 的點數
+
+     或 
+
+   * 如果未將任何資料載入 Azure，則會出現一次重試的提示。
+
+* `azdata arc dc debug copy-logs` 現在也會從 `/var/opt/controller/log` 資料夾讀取並收集 postgres 記錄。
+
+*   Postgres 建立及還原備份期間，顯示工作指標。
+
+* `azdata arc postrgres backup list` 現在包含備份大小資訊。
+
+* [SQL 受控執行個體管理員名稱] 屬性已新增至 Azure 入口網站中的 [總覽] 分頁的右欄資料行。
+
+
 
 ## <a name="september-2020"></a>2020 年 9 月
 
@@ -29,16 +67,24 @@ ms.locfileid: "92360292"
 
 如需相關指示，請參閱 [什麼是 Azure Arc 啟用的資料服務？](overview.md)
 
-### <a name="known-issues"></a>已知問題
+## <a name="known-limitations-and-issues"></a>已知限制及問題
 
-下列問題適用于此版本：
+- SQL 受控實例名稱不能超過13個字元
+- 沒有 Azure Arc 資料控制器或資料庫實例的就地升級。
+- 未簽署已啟用 Arc 的資料服務容器映像。  您可能需要設定 Kubernetes 節點，以允許提取未簽署的容器映像。  例如，如果您使用 Docker 作為容器執行時間，您可以設定 DOCKER_CONTENT_TRUST = 0 環境變數並重新啟動。  其他容器執行階段具有類似的選項，例如 [OpenShift](https://docs.openshift.com/container-platform/4.5/openshift_images/image-configuration.html#images-configuration-file_image-configuration) 中就是如此。
+- 無法從 Azure 入口網站建立 Azure Arc 啟用的 SQL 受控實例或于 postgresql 超大規模伺服器群組。
+- 現在，如果您使用 NFS，則在 `allowRunAsRoot` `true` 建立 Azure Arc 資料控制器之前，您必須在部署設定檔檔案中將設定為。
+- 僅限 SQL 和于 postgresql 登入驗證。  不支援 Azure Active Directory 或 Active Directory。
+- 在 OpenShift 上建立資料控制器需要寬鬆的安全性條件約束。  如需詳細資料，請參閱文件。
+- 不支援調整 PostgresSQL 超大規模背景 _工作節點的_ 數目。
+- 如果您使用 Azure Kubernetes Service 引擎 (AKS 引擎) Azure Stack Hub 使用 Azure Arc 資料控制器和資料庫實例，則不支援升級至較新的 Kubernetes 版本。 升級 Kubernetes 叢集之前，請先卸載 Azure Arc 資料控制器和所有資料庫實例。
+- 預覽不支援 Postgres 11 版引擎的備份/還原。 它只支援 Postgres 12 版的備份/還原。
+- Azure Kubernetes Service (AKS) ，Azure Arc 啟用的資料服務目前不支援跨越 [多個可用性區域](../../aks/availability-zones.md) 的叢集。 若要避免這個問題，當您在 Azure 入口網站中建立 AKS 叢集時，如果您選取區域可用的區域，請清除選取專案控制項中的所有區域。 請見下圖：
 
-* **刪除于 postgresql 超大規模伺服器群組**：如果您已變更伺服器群組或實例的設定，請先等候編輯作業完成，再刪除于 postgresql 超大規模伺服器群組。
-
-* ** `azdata notebook run` 可能會失敗**：若要解決此問題，請 `azdata notebook run` 在 Python 虛擬環境中執行。 此問題也會在嘗試使用 Azure Data Studio deployment wizard 建立 SQL 受控實例或于 postgresql 超大規模伺服器群組時失敗。 在此情況下，您可以開啟筆記本，然後按一下筆記本頂端的 [ **全部執行** ] 按鈕。
+   :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="清除每個區域的核取方塊，以指定 [無]。":::
 
 ## <a name="next-steps"></a>後續步驟
-
+  
 > **只想試試看嗎？**  
 > 在 Azure Kubernetes Service (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE) 或 Azure VM 中快速開始使用 [Azure Arc 快速入門](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services)。
 
@@ -49,21 +95,3 @@ ms.locfileid: "92360292"
 [在 Azure Arc 上建立 Azure SQL 受控執行個體](create-sql-managed-instance.md) (需要先建立 Azure Arc 資料控制項)
 
 [在 Azure Arc 上建立適用於 PostgreSQL 的超大規模 Azure 資料庫伺服器群組](create-postgresql-hyperscale-server-group.md) (必須先建立 Azure Arc 資料控制項)
-
-## <a name="known-limitations-and-issues"></a>已知限制及問題
-
-- SQL 受控實例名稱不能超過13個字元
-- 沒有 Azure Arc 資料控制器或資料庫實例的就地升級。
-- 未簽署已啟用 Arc 的資料服務容器映像。  您可能需要設定 Kubernetes 節點，以允許提取未簽署的容器映像。  例如，如果您使用 Docker 作為容器執行時間，您可以設定 DOCKER_CONTENT_TRUST = 0 環境變數並重新啟動。  其他容器執行階段具有類似的選項，例如 [OpenShift](https://docs.openshift.com/container-platform/4.5/openshift_images/image-configuration.html#images-configuration-file_image-configuration) 中就是如此。
-- 無法從 Azure 入口網站建立 Azure Arc 啟用的 SQL 受控實例或于 postgresql 超大規模伺服器群組。
-- 現在，如果您使用 NFS，則在建立 Azure Arc 資料控制器之前，您必須先將部署設定檔檔案中的 allowRunAsRoot 設定為 true。
-- 僅限 SQL 和于 postgresql 登入驗證。  不支援 Azure Active Directory 或 Active Directory。
-- 在 OpenShift 上建立資料控制器需要寬鬆的安全性條件約束。  如需詳細資料，請參閱文件。
-- 不支援調整 Postgres 超大規模背景 _工作節點的_ 數目。
-- 如果您使用 Azure Kubernetes Service 引擎 (AKS 引擎) Azure Stack Hub 使用 Azure Arc 資料控制器和資料庫實例，則不支援升級至較新的 Kubernetes 版本。 升級 Kubernetes 叢集之前，請先卸載 Azure Arc 資料控制器和所有資料庫實例。
-- 預覽不支援 Postgres 11 版引擎的備份/還原。 它只支援 Postgres 12 版的備份/還原。
-- Azure Kubernetes Service (AKS) ，Azure Arc 啟用的資料服務目前不支援跨越 [多個可用性區域](../../aks/availability-zones.md) 的叢集。 若要避免這個問題，當您在 Azure 入口網站中建立 AKS 叢集時，如果您選取區域可用的區域，請清除選取專案控制項中的所有區域。 請見下圖：
-
-   :::image type="content" source="media/release-notes/aks-zone-selector.png" alt-text="清除每個區域的核取方塊，以指定 [無]。":::
-
-  

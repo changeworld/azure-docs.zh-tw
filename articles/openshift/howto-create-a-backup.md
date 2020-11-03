@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: aro, openshift, az aro, red hat, cli
 ms.custom: mvc
-ms.openlocfilehash: febee51a20f57d71d633243145a1aa0c8fb9b437
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 264778d2d6d1ee0119ad8622043b7cd3a1088ec1
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233673"
+ms.locfileid: "93280126"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>建立 Azure Red Hat OpenShift 4 叢集應用程式備份
 
@@ -63,7 +63,7 @@ az storage container create -n $BLOB_CONTAINER --public-access off --account-nam
 Velero 需要備份和還原的許可權。 當您建立服務主體時，您會授與 Velero 許可權，以存取您在上一個步驟中定義的資源群組。 此步驟會取得叢集的資源群組：
 
 ```bash
-export AZURE_RESOURCE_GROUP=aro-$(az aro show --name <name of cluster> --resource-group <name of resource group> | jq -r '.clusterProfile.domain')
+export AZURE_RESOURCE_GROUP=$(az aro show --name <name of cluster> --resource-group <name of resource group> | jq -r .clusterProfile.resourceGroupId | cut -d '/' -f 5,5)
 ```
 
 
@@ -141,7 +141,7 @@ oc get backups -n velero <name of backup> -o yaml
 
 如需如何使用 Velero 建立備份和還原的詳細資訊，請參閱以 [原生方式備份 OpenShift 資源](https://www.openshift.com/blog/backup-openshift-resources-the-native-way)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，Azure Red Hat OpenShift 4 叢集應用程式已備份。 您已了解如何︰
 

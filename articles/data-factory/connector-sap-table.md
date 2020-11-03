@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 1970709dea67111bfd8b90f9fc315a3b044b2ab9
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 4505deaa4cc11c00c7283ef686827d6893c2742a
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900253"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280418"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP 資料表複製資料
 
@@ -226,10 +226,10 @@ ms.locfileid: "92900253"
 | :------------------------------- | :----------------------------------------------------------- | :------- |
 | `type`                             | `type` 屬性必須設定為 `SapTableSource`。         | 是      |
 | `rowCount`                         | 要取出的資料列數目。                              | 否       |
-| `rfcTableFields`                 | 欄位 (資料行) 要從 SAP 資料表複製。 例如： `column0, column1`。 | 否       |
-| `rfcTableOptions`                | 用來篩選 SAP 資料表中之資料列的選項。 例如： `COLUMN0 EQ 'SOMEVALUE'`。 另請參閱本文稍後的 SAP 查詢操作員資料表。 | 否       |
+| `rfcTableFields`                 | 欄位 (資料行) 要從 SAP 資料表複製。 例如： `column0, column1` 。 | 否       |
+| `rfcTableOptions`                | 用來篩選 SAP 資料表中之資料列的選項。 例如： `COLUMN0 EQ 'SOMEVALUE'` 。 另請參閱本文稍後的 SAP 查詢操作員資料表。 | 否       |
 | `customRfcReadTableFunctionModule` | 可以用來從 SAP 資料表讀取資料的自訂 RFC 函數模組。<br>您可以使用自訂 RFC 函式模組來定義如何從 SAP 系統取出資料，並將其傳回 Data Factory。 自訂函式模組必須有實 (匯入、匯出、資料表) 的介面，其類似于 `/SAPDS/RFC_READ_TABLE2` Data Factory 所使用的預設介面。<br>Data Factory | 否       |
-| `partitionOption`                  | 從 SAP 資料表讀取的資料分割機制。 支援的選項包括： <ul><li>`None`</li><li>`PartitionOnInt` (左填補的一般整數或整數值，例如 `0000012345`) </li><li>`PartitionOnCalendarYear` (4 位數，格式為 "YYYY" ) </li><li>`PartitionOnCalendarMonth` (6 位數的格式為 "YYYYMM" ) </li><li>`PartitionOnCalendarDate` (8 位數，格式為 "YYYYMMDD" ) </li></ul> | 否       |
+| `partitionOption`                  | 從 SAP 資料表讀取的資料分割機制。 支援的選項包括： <ul><li>`None`</li><li>`PartitionOnInt` (左填補的一般整數或整數值，例如 `0000012345`) </li><li>`PartitionOnCalendarYear` (4 位數，格式為 "YYYY" ) </li><li>`PartitionOnCalendarMonth` (6 位數的格式為 "YYYYMM" ) </li><li>`PartitionOnCalendarDate` (8 位數，格式為 "YYYYMMDD" ) </li><li>`PartitionOntime` (6 位數的格式為 "HHMMSS"，例如 `235959`) </li></ul> | 否       |
 | `partitionColumnName`              | 用來分割資料的資料行名稱。                | 否       |
 | `partitionUpperBound`              | 中指定之資料行的最大值 `partitionColumnName` 將用來繼續進行資料分割。 | 否       |
 | `partitionLowerBound`              | 在中指定之資料行的最小值 `partitionColumnName` ，將用來繼續進行資料分割。  (附注： `partitionLowerBound` 當分割區選項為) 時，不可以是 "0" `PartitionOnInt` | 否       |

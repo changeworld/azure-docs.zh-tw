@@ -7,13 +7,13 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: contperfq
-ms.openlocfilehash: da0eb80352409bbbbe29a80fe18a52f54540ae62
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: contperfq2
+ms.openlocfilehash: bd8fec0ae5b6ece1626049953b1f4afd3a581d97
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93071482"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280598"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>設定 Azure 數位 Twins 實例和驗證 (入口網站) 
 
@@ -38,7 +38,7 @@ ms.locfileid: "93071482"
 
 在搜尋方塊中搜尋 *Azure 數位 Twins* ，然後從結果中選擇 **azure 數位 Twins** 服務。 選取 [ _建立_ ] 按鈕，以建立服務的新實例。
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="從 Azure 入口網站的首頁中選取 [建立資源]":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="從 Azure 數位 Twins 服務頁面選取 [建立]":::
 
 在 [ *建立資源* ] 頁面上，填入下列值：
 * **訂** 用帳戶：您所使用的 Azure 訂用帳戶
@@ -46,7 +46,7 @@ ms.locfileid: "93071482"
 * **位置** ：適用于部署的 Azure 數位啟用 Twins 區域。 如需區域支援的詳細資訊，請造訪 [*依區域提供的 azure 產品 (Azure 數位 Twins)*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)。
 * **資源名稱** ： Azure 數位 Twins 實例的名稱。 新實例的名稱在訂用帳戶的區域內必須是唯一的 (也就是說，如果您的訂用帳戶在已使用您所選名稱的區域中有另一個 Azure 數位 Twins 實例，系統會要求您挑選不同的名稱) 。
 
-:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="從 Azure 入口網站的首頁中選取 [建立資源]":::
+:::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="填寫描述的值以建立 Azure 數位 Twins 資源":::
 
 完成時，選取 [ _審核 + 建立_ ]。 這會帶您前往 [摘要] 頁面，您可以在其中查看所輸入的實例詳細資料，並點擊 [ _建立_ ]。 
 
@@ -54,7 +54,7 @@ ms.locfileid: "93071482"
 
 推送 *建立* 之後，您可以在入口網站圖示列的 Azure 通知中，查看實例部署的狀態。 通知將會指出部署成功的時間，您將能夠選取 [ _移至資源_ ] 按鈕來查看您建立的實例。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="從 Azure 入口網站的首頁中選取 [建立資源]":::
+:::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="顯示成功部署並反白顯示 [移至資源] 按鈕的 Azure 通知的查看":::
 
 或者，如果部署失敗，通知將會指出原因。 觀察錯誤訊息的建議，然後重試建立實例。
 
@@ -63,7 +63,7 @@ ms.locfileid: "93071482"
 
 從實例的 *[總覽* ] 頁面中，記下其 *名稱* 、 *資源群組* 和 *主機名稱* 。 當您繼續使用 Azure 數位 Twins 實例時，這些都是您可能需要的重要值。 如果其他使用者將針對該實例進行程式設計，您應該與這些使用者共用這些值。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="從 Azure 入口網站的首頁中選取 [建立資源]":::
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="從實例的總覽頁面中反白顯示重要值":::
 
 您現在已準備好開始使用 Azure 數位 Twins 實例。 接下來，您將授與適當的 Azure 使用者權限來管理它。
 
@@ -73,7 +73,7 @@ ms.locfileid: "93071482"
 
 首先，在 Azure 入口網站中開啟 Azure 數位 Twins 實例的頁面。 從實例的功能表中，選取 [ *存取控制] (IAM)* 。 選取 [ *新增角色指派* ] 底下的 [ *新增* ] 按鈕。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="從 Azure 入口網站的首頁中選取 [建立資源]":::
+:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="從 [存取控制 (IAM) ] 頁面中選取要新增角色指派":::
 
 在 [ *新增角色指派* ] 頁面上，填入 [Azure 訂用帳戶) 中具有 [足夠許可權](#prerequisites-permission-requirements) 的使用者必須完成的值 (：
 * **角色** ：從下拉式功能表中選取 *Azure 數位 Twins 資料擁有* 者
@@ -82,7 +82,7 @@ ms.locfileid: "93071482"
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-2.png" alt-text="從 Azure 入口網站的首頁中選取 [建立資源]":::
+        :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-2.png" alt-text="將列出的欄位填入 [新增角色指派] 對話方塊":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -94,11 +94,11 @@ ms.locfileid: "93071482"
 
 您可以在 [ *存取控制] (IAM) > 角色指派* 下，查看您所設定的角色指派。 使用者應該會顯示在清單中，且具有 *Azure 數位 Twins 資料擁有* 者的角色。 
 
-:::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="從 Azure 入口網站的首頁中選取 [建立資源]":::
+:::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="在 Azure 入口網站中查看 Azure 數位 Twins 實例的角色指派":::
 
 您現在已準備好開始使用 Azure 數位 Twins 實例，並已獲指派管理該實例的許可權。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 使用 Azure 數位 Twins CLI 命令，在您的實例上測試個別 REST API 呼叫： 
 * [az dt 參考](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)

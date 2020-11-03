@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5bcb6df1b03b0c1c835e198818813ad8d914c630
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: b31e3d44cc66e97506b29b81cef5b8d981d05e39
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147108"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279426"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 數位 Twins 模型
 
-您可以使用 [**DigitalTwinModels api**](/rest/api/digital-twins/dataplane/models)、 [.Net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true)或 [azure 數位 Twins CLI](how-to-use-cli.md)來管理 azure 數位 Twins 實例所知道的 [模型](concepts-models.md)。 
+您可以使用 [**DigitalTwinModels api**](/rest/api/digital-twins/dataplane/models)、 [.Net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)或 [azure 數位 Twins CLI](how-to-use-cli.md)來管理 azure 數位 Twins 實例所知道的 [模型](concepts-models.md)。 
 
 管理作業包括上傳、驗證、抓取和刪除模型。 
 
@@ -286,7 +286,7 @@ Azure 數位 Twins 不會防止此狀態，因此請小心適當地修補 Twins�
 
 您也可以使用 Azure 數位 Twins CLI 來管理模型。 您可以在 how [*to：使用 Azure 數位 TWINS CLI*](how-to-use-cli.md)中找到這些命令。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何根據您的模型建立和管理數位 twins：
 * [*How to：管理數位 twins*](how-to-manage-twin.md)

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: ffda2b1d096b3c84e3f1df10e37c44922bab16ef
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 10/30/2020
+ms.openlocfilehash: dcf3db33818448116da53d8a01d0c62aca7bc1af
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632408"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280168"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料載入 Azure Synapse Analytics
 
@@ -114,9 +114,6 @@ Azure Data Factory 提供下列優點以將資料載入 Azure Synapse Analytics�
 
 7. 在 [資料表對應] 頁面上檢閱內容，然後選取 [下一步]。 隨即會顯示智慧型資料表對應。 來源資料表會根據資料表名稱來對應至目的地資料表。 如果有某個來源資料表未存在於目的地中，Azure Data Factory 預設會建立具有相同名稱的目的地資料表。 您也可以將來源資料表對應至現有的目的地資料表。
 
-   > [!NOTE]
-   > 當 SQL Server 或 Azure SQL Database 為來源時，會套用 Azure Synapse Analytics 接收器的自動建立資料表。 如果您從其他來源資料存放區複製資料，您必須先在接收 Azure Synapse Analytics 中預先建立架構，再執行資料複製。
-
    ![資料表對應頁面](./media/load-azure-sql-data-warehouse/table-mapping.png)
 
 8. 在 [資料 **行對應** ] 頁面中，檢查內容，然後選取 **[下一步]** 。 系統會根據資料行名稱來進行智慧型資料表對應。 如果您讓 Data Factory 自動建立資料表，而來源和目的地存放區之間有不相容的問題時，系統便會轉換資料類型。 如果來源和目的地資料行之間有不支援的資料類型轉換，您就會在對應的資料表旁看到一則錯誤訊息。
@@ -152,7 +149,7 @@ Azure Data Factory 提供下列優點以將資料載入 Azure Synapse Analytics�
 
     ![監視活動執行詳細資料秒](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-2.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 請繼續閱讀下列文章，以瞭解 Azure Synapse Analytics 支援：
 

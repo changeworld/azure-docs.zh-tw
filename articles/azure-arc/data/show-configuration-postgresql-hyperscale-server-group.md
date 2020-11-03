@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 716759fd6542cd473c236992ac88b69bfe5d0a66
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a268cd6b2fa3da6846554e3d1b170298abec7f18
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148011"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279396"
 ---
 # <a name="show-the-configuration-of-an-arc-enabled-postgresql-hyperscale-server-group"></a>顯示已啟用 Arc 的于 postgresql 超大規模伺服器群組設定
 
@@ -210,7 +210,7 @@ Spec:
       Name:  citus
       Name:  pg_stat_statements
   Scale:
-    Shards:  2
+    Workers:  2
   Scheduling:
     Default:
       Resources:
@@ -236,20 +236,50 @@ Status:
 Events:               <none>
 ```
 
+>[!NOTE]
+>在2020年10月之前 `Workers` 的版本中，是 `Shards` 在上一個範例中。 如需詳細資訊，請參閱 [版本資訊-Azure Arc 啟用的資料服務 (預覽) ](release-notes.md) 。
+
 讓我們在上面所示的描述中，呼叫一些特定的重點 `servergroup` 。 這會告訴我們此伺服器群組的相關資訊？
 
 - 它是 Postgres 的12版： 
-   > 類別         `postgresql-12`
+   > ```json
+   > Kind:         `postgresql-12`
+   > ```
 - 它是在2020年8月建立的：
-   > 建立時間戳記：  `2020-08-31T21:01:07Z`
+   > ```json
+   > Creation Timestamp:  `2020-08-31T21:01:07Z`
+   > ```
 - 此伺服器群組中建立了兩個 Postgres 延伸模組： `citus` 和 `pg_stat_statements`
-   > 引擎：延伸模組：名稱：  `citus` 名稱：  `pg_stat_statements`
+   > ```json
+   > Engine:
+   >    Extensions:
+   >      Name:  `citus`
+   >      Name:  `pg_stat_statements`
+   > ```
 - 它使用兩個背景工作節點
-   > 調整：分區：  `2`
+   > ```json
+   > Scale:
+   >    Workers:  `2`
+   > ```
 - 保證每個節點使用1個 cpu/vCore 和 512 MB 的 Ram。 它會使用超過4個 cpu/虛擬核心和1024MB 的記憶體：
-   > 排程：預設：資源：限制： Cpu：4記憶體：1024Mi 要求： Cpu：1記憶體：512Mi
+   > ```json
+   > Scheduling:
+   >    Default: 
+   >      Resources:
+   >        Limits:
+   >          Cpu:     4
+   >          Memory:  1024Mi
+   >        Requests:
+   >          Cpu:     1
+   >          Memory:  512Mi
+   > ```
  - 它可供查詢，而且沒有任何問題。 所有節點都已啟動且正在執行：
-   > 地位：。。。就緒 pod：3/3 狀態：就緒
+   > ```json
+   > Status:
+   >  ...
+   >  Ready Pods:         3/3
+   >  State:              Ready
+   > ```
 
 **使用 azdata：**
 
@@ -292,7 +322,7 @@ azdata arc postgres server show -n postgres02
       ]
     },
     "scale": {
-      "shards": 2
+      "workers": 2
     },
     "scheduling": {
       "default": {

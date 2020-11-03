@@ -11,21 +11,22 @@ ms.workload: identity
 ms.date: 02/29/2020
 ms.author: kenwith
 ms.reviewer: baselden
-ms.openlocfilehash: 327e59d3fee6f23d2635b846e9fb5ab422e0139e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a49dff0e4ac41670800073c02c5a507eb433c326
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87429033"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280442"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>將應用程式移轉至 Azure Active Directory 的資源
 
 協助您將應用程式存取權限和驗證移轉至 Azure Active Directory (Azure AD) 的資源。
 
-| 資源  | 說明  |
+| 資源  | 描述  |
 |:-----------|:-------------|
 |[將您的應用程式移轉至 Azure AD](https://aka.ms/migrateapps/whitepaper) \(英文\) | 此白皮書提供移轉的優點，並以下列四個清楚描述的階段，說明如何規劃移轉：探索、分類、移轉和持續管理。 您將會透過逐步引導，了解如何思考流程，並將您的專案細分成便於取用的片段。 此文件全篇都有在過程中可協助您的重要資源連結。 |
 |[解決方案指南：從 Active Directory 同盟服務 (AD FS) 將應用程式移轉到 Azure AD](https://aka.ms/migrateapps/adfssolutionguide) \(英文\) | 此解決方案指南將以比移轉白皮書中更概略的說明方式，引導您完成相同的規劃四階段，並執行應用程式移轉專案。 在本指南中，您將了解如何將那些階段，套用至從 Active Directory 同盟服務 (AD FS) 移動應用程式到 Azure AD 的特定目標。|
+|[開發人員教學課程：適用于開發人員的 Azure AD 應用程式遷移腳本 AD FS](https://aka.ms/adfsplaybook) | 這一組 ASP.NET 程式碼範例和隨附的教學課程可協助您瞭解如何安全地將與 Active Directory 同盟服務 (AD FS) 整合的應用程式遷移至 Azure Active Directory (Azure AD) 。 本教學課程著重于開發人員，而這些開發人員不只需要瞭解如何在 AD FS 和 Azure AD 上設定應用程式，同時也可感知其程式碼基底在此程式中所需的變更。|
 | [工具：Active Directory 同盟服務移轉整備指令碼](https://aka.ms/migrateapps/adfstools) \(英文\) | 這是您可以在內部部署 Active Directory 同盟服務 (AD FS) 伺服器上執行的指令碼，可用來判斷要移轉至 Azure AD 之應用程式的整備程度。|
 | [部署方案：從 AD FS 移轉至密碼雜湊同步處理](https://aka.ms/ADFSTOPHSDPDownload) \(英文\) | 使用密碼雜湊同步處理時，可以將使用者密碼的雜湊從內部部署 Active Directory 同步至 Azure AD。 這可讓 Azure AD 驗證使用者，而不需要與內部部署 Active Directory 互動。| 
 | [部署方案：從 AD FS 移轉至傳遞驗證](https://aka.ms/ADFSTOPTADPDownload) \(英文\)|Azure AD 傳遞驗證可協助使用者以相同的密碼，同時登入內部部署和雲端式應用程式。 此功能可為使用者提供更好的體驗，因為可以少記一個密碼。 因為當使用者只需要記住一個密碼時，就比較不會忘記如何登入，所以也能降低 IT 技術服務人員的成本。 當使用者使用 Azure AD 登入時，此功能會向您的內部部署 Active Directory 直接驗證使用者的密碼。|

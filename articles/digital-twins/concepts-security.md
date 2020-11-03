@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6784ca9dbc32811a02f4454be94d220c634318f5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 349f57299387b616373bb5fb4d295da8df8ee493
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503312"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93279900"
 ---
 # <a name="secure-azure-digital-twins"></a>保護 Azure 數位 Twins
 
-為了安全起見，Azure 數位 Twins 可讓您精確地控制部署中的特定資料、資源和動作。 它會透過稱為 **azure 角色型存取控制 (AZURE RBAC) **的細微角色和版權管理策略來執行此工作。 您可以在 [這裡](../role-based-access-control/overview.md)閱讀 Azure RBAC 的一般原則。
+為了安全起見，Azure 數位 Twins 可讓您精確地控制部署中的特定資料、資源和動作。 它會透過稱為 **azure 角色型存取控制 (AZURE RBAC)** 的細微角色和版權管理策略來執行此工作。 您可以在 [這裡](../role-based-access-control/overview.md)閱讀 Azure RBAC 的一般原則。
 
 Azure 數位 Twins 也支援靜態資料的加密。
 
@@ -24,13 +24,13 @@ Azure 數位 Twins 也支援靜態資料的加密。
 
 Azure RBAC 透過整合 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) ，提供給 Azure 數位 Twins。
 
-您可以使用 Azure RBAC 將許可權授與 *安全性主體，該安全性主體*可能是使用者、群組或應用程式服務主體。 安全性主體是由 Azure AD 進行驗證，並接收傳回的 OAuth 2.0 權杖。 此權杖可以用來授權對 Azure 數位 Twins 實例的存取要求。
+您可以使用 Azure RBAC 將許可權授與 *安全性主體，該安全性主體* 可能是使用者、群組或應用程式服務主體。 安全性主體是由 Azure AD 進行驗證，並接收傳回的 OAuth 2.0 權杖。 此權杖可以用來授權對 Azure 數位 Twins 實例的存取要求。
 
-### <a name="authentication-and-authorization"></a>驗證與授權
+### <a name="authentication-and-authorization"></a>驗證和授權
 
-使用 Azure AD，存取會有兩個步驟的程式。 當安全性主體 (使用者、群組或應用程式) 嘗試存取 Azure 數位 Twins 時，要求必須 *經過驗證* 和 *授權*。 
+使用 Azure AD，存取會有兩個步驟的程式。 當安全性主體 (使用者、群組或應用程式) 嘗試存取 Azure 數位 Twins 時，要求必須 *經過驗證* 和 *授權* 。 
 
-1. 首先，會驗證安全性主體的 *身分*識別，並傳回 OAuth 2.0 權杖。
+1. 首先，會驗證安全性主體的 *身分* 識別，並傳回 OAuth 2.0 權杖。
 2. 接下來，權杖會作為要求的一部分傳遞至 Azure 數位 Twins 服務，以 *授權* 存取指定的資源。
 
 驗證步驟需要在執行時間將任何應用程式要求包含 OAuth 2.0 存取權杖。 如果應用程式是在 Azure 實體中執行（例如 [Azure Functions](../azure-functions/functions-overview.md) 應用程式），則可以使用 **受控識別** 來存取資源。 在下一節中深入瞭解受控識別。
@@ -56,8 +56,8 @@ Azure 提供 **兩個 azure 內建角色** ，以授權存取 Azure 數位 Twins
 
 >[!NOTE]
 > 這些角色最近在預覽版中已重新命名為先前的名稱：
-> * *Azure 數位 Twins 資料擁有* 者先前為 *Azure 數位 Twins 擁有者 (預覽版) *。
-> * *Azure 數位 Twins 資料讀取器* 先前為 *Azure 數位 Twins 讀者 (預覽版) *。
+> * *Azure Digital Twins 資料擁有者* 先前稱為 *Azure Digital Twins 擁有者 (預覽)* 。
+> * *Azure 數位 Twins 資料讀取器* 先前為 *Azure 數位 Twins 讀者 (預覽版)* 。
 
 您可以透過兩種方式來指派角色：
 * 透過 Azure 入口網站 (中 Azure 數位 Twins 的 [存取控制] (IAM) 窗格，請參閱 [*使用 Azure 入口網站新增或移除 azure 角色指派*](../role-based-access-control/role-assignments-portal.md)) 
@@ -72,7 +72,7 @@ Azure 提供 **兩個 azure 內建角色** ，以授權存取 Azure 數位 Twins
 在自動化案例中參考角色時，建議您依 **識別碼** 來參考它們，而非其名稱。 版本之間的名稱可能會變更，但識別碼則不會變更，因此在自動化中會有更穩定的參考。
 
 > [!TIP]
-> 如果您要使用 Cmdlet 指派角色，例如 `New-AzRoleAssignment` ([參考](/powershell/module/az.resources/new-azroleassignment?view=azps-4.8.0)) ，您可以使用 `-RoleDefinitionId` 參數（而非） `-RoleDefinitionName` 來傳遞識別碼，而不是角色的名稱。
+> 如果您要使用 Cmdlet 指派角色，例如 `New-AzRoleAssignment` ([參考](/powershell/module/az.resources/new-azroleassignment)) ，您可以使用 `-RoleDefinitionId` 參數（而非） `-RoleDefinitionName` 來傳遞識別碼，而不是角色的名稱。
 
 ### <a name="permission-scopes"></a>權限範圍
 
@@ -87,7 +87,33 @@ Azure 提供 **兩個 azure 內建角色** ，以授權存取 Azure 數位 Twins
 
 ### <a name="troubleshooting-permissions"></a>疑難排解許可權
 
-如果使用者嘗試執行其角色不允許的動作，他們可能會收到來自服務要求讀取的錯誤 `403 (Forbidden)` 。 如需詳細資訊和疑難排解步驟，請參閱 [*疑難排解： Azure 數位 Twins 要求失敗，狀態： 403 (禁止) *](troubleshoot-error-403.md)。
+如果使用者嘗試執行其角色不允許的動作，他們可能會收到來自服務要求讀取的錯誤 `403 (Forbidden)` 。 如需詳細資訊和疑難排解步驟，請參閱 [*疑難排解： Azure 數位 Twins 要求失敗，狀態： 403 (禁止)*](troubleshoot-error-403.md)。
+
+## <a name="service-tags"></a>服務標籤
+
+**服務** 標籤代表來自指定 Azure 服務的一組 IP 位址首碼。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤，而盡可能簡化網路安全性規則頻繁的更新。 如需服務標記的詳細資訊，請參閱  [*虛擬網路標記*](../virtual-network/service-tags-overview.md)。 
+
+您可以使用服務標籤來定義 [網路安全性群組](../virtual-network/network-security-groups-overview.md#security-rules)   或 [Azure 防火牆](../firewall/service-tags.md)上的網路存取控制，方法是在建立安全性規則時使用服務標記來取代特定的 IP 位址。 藉由指定服務標籤名稱 (在此案例中， **AzureDigitalTwins** ) 在規則的適當 *來源*   或 *目的地*   欄位中，您可以允許或拒絕對應服務的流量。 
+
+以下是 **AzureDigitalTwins** 服務標記的詳細資料。
+
+| Tag | 目的 | 可以使用輸入或輸出？ | 是否可為區域性？ | 是否可與 Azure 防火牆搭配使用？ |
+| --- | --- | --- | --- | --- |
+| AzureDigitalTwins | Azure Digital Twins<br>注意：此標籤或此標記所涵蓋的 IP 位址，可用來限制對 [事件路由](concepts-route-events.md)設定之端點的存取。 | 輸入 | 否 | 是 |
+
+### <a name="using-service-tags-for-accessing-event-route-endpoints"></a>使用服務標記來存取事件路由端點 
+
+以下是使用服務標記搭配 Azure 數位 Twins 來存取 [事件路由](concepts-route-events.md) 端點的步驟。
+
+1. 首先，下載此 JSON 檔案參考，其中顯示 Azure IP 範圍和服務標記： [*AZURE Ip 範圍和服務*](https://www.microsoft.com/download/details.aspx?id=56519)標籤。 
+
+2. 在 JSON 檔案中尋找 "AzureDigitalTwins" IP 範圍。  
+
+3. 請參閱連接到端點的外部資源的檔 (例如，[事件方格](../event-grid/overview.md)、[事件中樞](../event-hubs/event-hubs-about.md)、[服務匯流排](../service-bus-messaging/service-bus-messaging-overview.md)或寄不出[信件事件](concepts-route-events.md#dead-letter-events)的[Azure 儲存體](../storage/blobs/storage-blobs-overview.md)) 查看如何設定該資源的 IP 篩選器。
+
+4. 使用 *步驟 2* 中的 ip 範圍，在外部資源 (s) 上設定 ip 篩選器。  
+
+5. 視需要定期更新 IP 範圍。 範圍可能會隨著時間而改變，因此建議您定期檢查這些範圍，並在需要時重新整理。 這些更新的頻率可能不同，但建議您每週檢查一次。
 
 ## <a name="encryption-of-data-at-rest"></a>待用資料加密
 
@@ -95,7 +121,7 @@ Azure 數位 Twins 會將待用資料和傳輸中的資料加密提供給資料�
 
 ## <a name="cross-origin-resource-sharing-cors"></a>跨原始來源資源分享 (CORS)
 
-Azure 數位 Twins 目前不支援 **跨原始來源資源分享 (CORS) **。 因此，如果您是從瀏覽器應用程式呼叫 REST API、 [API 管理 (APIM) ](../api-management/api-management-key-concepts.md) 介面或 [Power Apps](https://docs.microsoft.com/powerapps/powerapps-overview) 連接器，您可能會看到原則錯誤。
+Azure 數位 Twins 目前不支援 **跨原始來源資源分享 (CORS)** 。 因此，如果您是從瀏覽器應用程式呼叫 REST API、 [API 管理 (APIM) ](../api-management/api-management-key-concepts.md) 介面或 [Power Apps](https://docs.microsoft.com/powerapps/powerapps-overview) 連接器，您可能會看到原則錯誤。
 
 若要解決這個錯誤，您可以執行下列其中一項：
 * 從訊息中去除 CORS 標頭 `Access-Control-Allow-Origin` 。 此標頭會指出是否可以共用回應。 

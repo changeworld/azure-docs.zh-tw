@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 59ea0258d6262f652e9ac563bbda5ec89c4c5819
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40d1ae4da07e159c24970c065d1c39e22b89a29a
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91579957"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280196"
 ---
 # <a name="install-and-use-the-dtdl-authoring-tools"></a>安裝和使用 DTDL authoring tools
 
@@ -36,9 +36,9 @@ VS Code 的 DTDL 延伸模組會新增下列 DTDL 撰寫功能：
 
 - 當您編輯 DTDL 模型時，請使用 intellisense 和自動完成：
 
-    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense.png" alt-text="VS Code 中的模型驗證":::
+    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense.png" alt-text="在 VS Code 中使用 intellisense 來 DTDL 模型":::
 
-- 建立新的 DTDL 介面。 下列命令會建立具有新介面的 JSON 檔案。 此介面包含範例遙測、屬性和命令定義。
+- 建立新的 DTDL 介面。 **DTDL： Create interface** 命令會建立具有新介面的 JSON 檔案。 此介面包含範例遙測、屬性和命令定義。
 
 ## <a name="install-and-use-the-visual-studio-extension"></a>安裝和使用 Visual Studio 擴充功能
 
@@ -47,17 +47,17 @@ Visual Studio 2019 的 DTDL 延伸模組新增下列 DTDL 撰寫功能：
 - DTDL v2 語法驗證。
 - Intellisense （包括自動完成）可協助您使用語言語法。
 
-若要安裝 DTDL 延伸模組，請移至 [VS 2019 的 DTDL Language 支援](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16dtdllanguagesupport)。 您也可以在 Visual Studio 的 [**管理擴充**功能] 中搜尋**DTDL** 。
+若要安裝 DTDL 延伸模組，請移至 [VS 2019 的 DTDL Language 支援](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16dtdllanguagesupport)。 您也可以在 Visual Studio 的 [ **管理擴充** 功能] 中搜尋 **DTDL** 。
 
 當您已安裝擴充功能時，請使用它來協助您在 Visual Studio 中撰寫 DTDL 模型檔案：
 
 - 此延伸模組會在 DTDL 模型檔案中提供語法驗證，並反白顯示錯誤，如下列螢幕擷取畫面所示：
 
-    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-validation-2.png" alt-text="VS Code 中的模型驗證":::
+    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-validation-2.png" alt-text="Visual Studio 中的模型驗證":::
 
 - 當您編輯 DTDL 模型時，請使用 intellisense 和自動完成：
 
-    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense-2.png" alt-text="VS Code 中的模型驗證":::
+    :::image type="content" source="media/howto-use-dtdl-authoring-tools/model-intellisense-2.png" alt-text="在 Visual Studio 中使用 intellisense 來 DTDL 模型":::
 
 ## <a name="next-steps"></a>後續步驟
 

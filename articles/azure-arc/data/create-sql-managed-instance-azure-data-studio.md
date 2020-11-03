@@ -4,17 +4,17 @@ description: 使用 Azure Data Studio 建立 Azure SQL 受控實例
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-author: twright-msft
-ms.author: twright
+author: vin-yu
+ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: f4c1d4d83ad3c39bab8058ad29662891fe3678a1
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 651811384a8e831c41c48ca8c4849e5ee3852054
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320307"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280479"
 ---
 # <a name="create-sql-managed-instance---azure-arc-using-azure-data-studio"></a>使用 Azure Data Studio 建立 SQL 受控實例-Azure Arc
 
@@ -88,7 +88,7 @@ Name          Replicas    ServerEndpoint     State
 sqlinstance1  1/1         25.51.65.109:1433  Ready
 ```
 
-- 在 Azure Data Studio 的 [**連接**] 索引標籤下，按一下 [**伺服器**] 視圖上的 [**新增連接**]。
+- 在 Azure Data Studio 的 [ **連接** ] 索引標籤下，按一下 [ **伺服器** ] 視圖上的 [ **新增連接** ]。
 - 在 [ **連接** ] 分頁中，將 ServerEndpoint 貼到 [伺服器] 文字方塊中。
 - 選取 [ **SQL 登** 入] 作為驗證類型
 - 輸入 *sa* 作為使用者名稱

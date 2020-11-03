@@ -4,17 +4,17 @@ description: 使用 Kubernetes 工具建立 SQL 受控實例
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-author: twright-msft
-ms.author: twright
+author: vin-yu
+ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 290745f89c7978fdcbda8be566938b58167a4f5a
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 2902274cfff11ac256459abd4fe0378146ee067b
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040915"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280176"
 ---
 # <a name="create-azure-sql-managed-instance-using-kubernetes-tools"></a>使用 Kubernetes 工具建立 Azure SQL 受控實例
 
@@ -28,7 +28,7 @@ ms.locfileid: "93040915"
 
 [安裝 kubectl 工具](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 若要建立 SQL 受控實例，您必須建立 Kubernetes 秘密，以安全地儲存系統管理員登入和密碼，以及根據 sqlmanagedinstance 自訂資源定義的 SQL 受控實例自訂資源。
 
