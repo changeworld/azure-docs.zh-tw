@@ -8,14 +8,15 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: 84a39ade902bd22d67e9b3a7d40b392bfd83dfd3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1206d67b6a9d3823220b1ce1b7bd5b4b45e672fe
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475910"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93072700"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>使用 Azure Cosmos DB 變更摘要以視覺方式呈現即時資料分析
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB 變更摘要是一種機制，可在建立或修改這些記錄時，從 Azure Cosmos 容器取得記錄的連續和增量摘要。 變更摘要可藉由接聽容器是否有任何變更來支援工作。 然後變更摘要會輸出已排序的文件清單，這些文件已依其修改的順序變更過。 若要深入了解變更摘要，請參閱[使用變更摘要](change-feed.md)一文。 
 
@@ -54,7 +55,7 @@ Azure Cosmos DB 變更摘要是一種機制，可在建立或修改這些記錄�
 
 7. **Power BI：** Power BI 可以視覺方式呈現 Azure 串流分析所傳送的資料。 您可以建置儀表板，以即時查看計量的變化。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Microsoft .NET Framework 4.7.1 或更新版本
 
@@ -72,7 +73,7 @@ Azure Cosmos DB 變更摘要是一種機制，可在建立或修改這些記錄�
 
 建立 Azure 資源 - 解決方案所需的 Azure Cosmos DB、儲存體帳戶、事件中樞、串流分析。 您將透過 Azure Resource Manager 範本來部署這些資源。 請使用下列步驟部署這些資源： 
 
-1. 將 Windows PowerShell 執行原則設定為 [不受限]****。 若要這麼做，請**以系統管理員身分開啟 Windows PowerShell**，並執行下列命令：
+1. 將 Windows PowerShell 執行原則設定為 [不受限]。 若要這麼做，請 **以系統管理員身分開啟 Windows PowerShell** ，並執行下列命令：
 
    ```powershell
    Get-ExecutionPolicy
@@ -96,22 +97,22 @@ Azure Cosmos DB 變更摘要是一種機制，可在建立或修改這些記錄�
 
 1. 移至 [Azure 入口網站](https://portal.azure.com/) ，並尋找範本部署所建立的 **Azure Cosmos DB 帳戶** 。  
 
-2. 在 [資料總管]**** 窗格中選取 [新增集合]****，然後在表單中填寫下列詳細資料：  
+2. 在 [資料總管] 窗格中選取 [新增集合]，然後在表單中填寫下列詳細資料：  
 
-   * 針對 [資料庫識別碼]**** 欄位，選取 [新建]****，然後輸入 **changefeedlabdatabase**。 將 [佈建資料庫輸送量]**** 方塊保留為未核取。  
-   * 針對 [集合識別碼]**** 欄位，輸入 **changefeedlabcollection**。  
-   * 針對 [資料分割索引鍵]**** 欄位，輸入 **/Item**。 此欄位會區分大小寫，請務必正確輸入。  
-   * 針對 [輸送量]**** 欄位，輸入 **10000**。  
+   * 針對 [資料庫識別碼] 欄位，選取 [新建]，然後輸入 **changefeedlabdatabase** 。 將 [佈建資料庫輸送量] 方塊保留為未核取。  
+   * 針對 [集合識別碼] 欄位，輸入 **changefeedlabcollection** 。  
+   * 針對 [資料分割索引鍵] 欄位，輸入 **/Item** 。 此欄位會區分大小寫，請務必正確輸入。  
+   * 針對 [輸送量] 欄位，輸入 **10000** 。  
    * 選取 [ **確定]** 按鈕。  
 
 3. 接著，建立名為 **leases** 的另一個集合，以進行變更摘要處理。 租用集合會協調如何處理多個背景工作間的變更摘要。 另外會有一個集合用來儲存租用 (每個分割區一個租用)。  
 
-4. 回到 [資料總管]**** 窗格並選取 [新增集合]****，然後在表單中填寫下列詳細資料：
+4. 回到 [資料總管] 窗格並選取 [新增集合]，然後在表單中填寫下列詳細資料：
 
-   * 針對 [資料庫識別碼]**** 欄位，選取 [使用現有的]****，然後輸入 **changefeedlabdatabase**。  
-   * 針對 [集合識別碼]**** 欄位，輸入 **leases**。  
-   * 針對 [儲存體容量]****，選取 [固定]****。  
-   * 將 [輸送量]**** 欄位保留為預設值。  
+   * 針對 [資料庫識別碼] 欄位，選取 [使用現有的]，然後輸入 **changefeedlabdatabase** 。  
+   * 針對 [集合識別碼] 欄位，輸入 **leases** 。  
+   * 針對 [儲存體容量]，選取 [固定]。  
+   * 將 [輸送量] 欄位保留為預設值。  
    * 選取 [ **確定]** 按鈕。
 
 ## <a name="get-the-connection-string-and-keys"></a>取得連接字串和金鑰
@@ -120,7 +121,7 @@ Azure Cosmos DB 變更摘要是一種機制，可在建立或修改這些記錄�
 
 1. 移至 [Azure 入口網站](https://portal.azure.com/) ，並尋找範本部署所建立的 **Azure Cosmos DB 帳戶** 。  
 
-2. 瀏覽至 [金鑰]**** 窗格，然後將 PRIMARY CONNECTION STRING 複製到 [記事本] 或您在整個實驗室中都可存取的其他文件。 您應將其標示為 [Cosmos DB 連接字串]****。 您稍後必須將此字串複製到您的程式碼中，因此請將其記下，並記住其儲存位置。
+2. 瀏覽至 [金鑰] 窗格，然後將 PRIMARY CONNECTION STRING 複製到 [記事本] 或您在整個實驗室中都可存取的其他文件。 您應將其標示為 [Cosmos DB 連接字串]。 您稍後必須將此字串複製到您的程式碼中，因此請將其記下，並記住其儲存位置。
 
 ### <a name="get-the-storage-account-key-and-connection-string"></a>取得儲存體帳戶金鑰和連接字串
 
@@ -128,19 +129,19 @@ Azure 儲存體帳戶可讓使用者儲存資料。 在此實驗室中，您將�
 
 1. 返回您的資源群組，並開啟您先前建立的儲存體帳戶  
 
-2. 從左側的功能表中選取 [存取金鑰]****。  
+2. 從左側的功能表中選取 [存取金鑰]。  
 
-3. 將**金鑰 1** 下方的值複製到 [記事本]，或是您在整個實驗室中都可存取的其他文件。 您應將**金鑰**標示為 [儲存體金鑰]****，並將**連接字串**標示為 [儲存體連接字串]****。 您稍後必須將這些字串複製到您的程式碼中，因此請將其記下，並記住其儲存位置。  
+3. 將 **金鑰 1** 下方的值複製到 [記事本]，或是您在整個實驗室中都可存取的其他文件。 您應將 **金鑰** 標示為 [儲存體金鑰]，並將 **連接字串** 標示為 [儲存體連接字串]。 您稍後必須將這些字串複製到您的程式碼中，因此請將其記下，並記住其儲存位置。  
 
 ### <a name="get-the-event-hub-namespace-connection-string"></a>取得事件中樞命名空間的連接字串
 
 Azure 事件中樞會接收事件資料，並加以儲存、處理然後轉送。 在此實驗室中，每當有新的事件發生時 (也就是使用者檢視某個項目、將某項目新增至其購物車，或購買某項目時)，Azure 事件中樞就會接收文件，然後將其轉送至 Azure 串流分析。
 
-1. 返回您的資源群組，並開啟您先前在預先實驗室中建立並命名的 [事件中樞命名空間]****。  
+1. 返回您的資源群組，並開啟您先前在預先實驗室中建立並命名的 [事件中樞命名空間]。  
 
-2. 從左側的功能表中選取 [共用存取原則]****。  
+2. 從左側的功能表中選取 [共用存取原則]。  
 
-3. 選取 [RootManageSharedAccessKey]。 將 [[連接字串 – 主要金鑰]]**** 複製到 [記事本]，或是您在整個實驗室中都可存取的其他文件。 您應將其標示為 [事件中樞命名空間]**** 連接字串。 您稍後必須將此字串複製到您的程式碼中，因此請將其記下，並記住其儲存位置。
+3. 選取 [RootManageSharedAccessKey]。 將 [[連接字串 – 主要金鑰]] 複製到 [記事本]，或是您在整個實驗室中都可存取的其他文件。 您應將其標示為 [事件中樞命名空間] 連接字串。 您稍後必須將此字串複製到您的程式碼中，因此請將其記下，並記住其儲存位置。
 
 ## <a name="set-up-azure-function-to-read-the-change-feed"></a>設定用來讀取變更摘要的 Azure 函式
 
@@ -148,39 +149,39 @@ Azure 事件中樞會接收事件資料，並加以儲存、處理然後轉送�
 
 1. 返回您複製到裝置上的存放庫。  
 
-2. 以滑鼠右鍵按一下名為 **ChangeFeedLabSolution.sln** 的檔案，然後選取 [使用 Visual Studio 開啟]****。  
+2. 以滑鼠右鍵按一下名為 **ChangeFeedLabSolution.sln** 的檔案，然後選取 [使用 Visual Studio 開啟]。  
 
-3. 在 Visual Studio 中瀏覽至 **local.settings.json**。 接著，將您先前記錄的值填入空白處。  
+3. 在 Visual Studio 中瀏覽至 **local.settings.json** 。 接著，將您先前記錄的值填入空白處。  
 
-4. 瀏覽至 **ChangeFeedProcessor.cs**。 在 **Run** 函式的參數中，執行下列動作：  
+4. 瀏覽至 **ChangeFeedProcessor.cs** 。 在 **Run** 函式的參數中，執行下列動作：  
 
    * 將 **YOUR COLLECTION NAME HERE** 等文字取代為您的集合名稱。 如果您先前按照指示操作，則集合名稱會是 changefeedlabcollection。  
-   * 將 **YOUR LEASES COLLECTION NAME HERE** 等文字取代為您的租用集合名稱。 如果您先前按照指示操作，則租用集合名稱會是 **leases**。  
-   * 在 Visual Studio 頂端，確認綠色箭號左側的 [啟始專案] 方塊顯示為 **ChangeFeedFunction**。  
-   * 在頁面頂端選取 [啟動]**** 以執行程式  
+   * 將 **YOUR LEASES COLLECTION NAME HERE** 等文字取代為您的租用集合名稱。 如果您先前按照指示操作，則租用集合名稱會是 **leases** 。  
+   * 在 Visual Studio 頂端，確認綠色箭號左側的 [啟始專案] 方塊顯示為 **ChangeFeedFunction** 。  
+   * 在頁面頂端選取 [啟動] 以執行程式  
    * 當主控台應用程式顯示「作業主機已啟動」時，您即可確認函式正在執行中。
 
 ## <a name="insert-data-into-azure-cosmos-db"></a>將資料插入 Azure Cosmos DB 中 
 
 若要查看變更摘要如何處理電子商務網站上的新動作，必須要模擬資料，以呈現使用者檢視產品目錄中的項目、將這些項目新增至其購物車，以及購買其購物車中所含項目的情境。 這項資料可以是任意資料，旨在臨摹電子商務網站上呈現的資料。
 
-1. 在 [檔案總管] 中瀏覽回存放庫，並以滑鼠右鍵按一下 **ChangeFeedFunction.sln**，在新的 Visual Studio 視窗中重新加以開啟。  
+1. 在 [檔案總管] 中瀏覽回存放庫，並以滑鼠右鍵按一下 **ChangeFeedFunction.sln** ，在新的 Visual Studio 視窗中重新加以開啟。  
 
-2. 瀏覽至 **App.config** 檔案。在`<appSettings>`區塊內，新增您先前為 Azure Cosmos DB 帳戶擷取的端點和唯一 [主要金鑰]****。  
+2. 瀏覽至 **App.config** 檔案。在`<appSettings>`區塊內，新增您先前為 Azure Cosmos DB 帳戶擷取的端點和唯一 [主要金鑰]。  
 
-3. 新增**集合**和**資料庫**名稱。 (這些名稱應該是 **changefeedlabcollection** 和 **changefeedlabdatabase**，除非您選擇以不同方式命名。)
+3. 新增 **集合** 和 **資料庫** 名稱。 (這些名稱應該是 **changefeedlabcollection** 和 **changefeedlabdatabase** ，除非您選擇以不同方式命名。)
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="投影片":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="更新連接字串":::
  
 4. 儲存所有已編輯的檔案所做的變更。  
 
-5. 在 Visual Studio 頂端，確認綠色箭號左側的 [啟始專案]**** 方塊顯示為 **DataGenerator**。 然後，在頁面頂端選取 [啟動]**** 以執行程式。  
+5. 在 Visual Studio 頂端，確認綠色箭號左側的 [啟始專案] 方塊顯示為 **DataGenerator** 。 然後，在頁面頂端選取 [啟動] 以執行程式。  
  
 6. 等候程式執行。 出現星號時，表示資料即將產生！ 請讓程式持續執行 - 收集大量資料是很重要的。  
 
-7. 如果您流覽至 [Azure 入口網站](https://portal.azure.com/) ，然後移至資源群組中的 Cosmos DB 帳戶，然後 **資料總管**，您將會看到在 **>changefeedlabcollection** 中匯入的亂數據。
+7. 如果您流覽至 [Azure 入口網站](https://portal.azure.com/) ，然後移至資源群組中的 Cosmos DB 帳戶，然後 **資料總管** ，您將會看到在 **>changefeedlabcollection** 中匯入的亂數據。
  
-   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="投影片":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="在入口網站中產生的資料":::
 
 ## <a name="set-up-a-stream-analytics-job"></a>設定串流分析作業
 
@@ -188,41 +189,41 @@ Azure 串流分析是一項完全受控、可即時處理串流資料的雲端�
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，流覽至您的資源群組，然後 **>streamjob1** (您在預先實驗室) 中建立的串流分析作業。  
 
-2. 選取 [輸入]****，如下所示。  
+2. 選取 [輸入]，如下所示。  
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="投影片":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/create-input.png" alt-text="建立輸入":::
 
-3. 選取 [+ 新增串流輸入]****。 然後，從下拉式功能表中選取 [事件中樞]****。  
+3. 選取 [+ 新增串流輸入]。 然後，從下拉式功能表中選取 [事件中樞]。  
 
 4. 在新的輸入表單中填寫下列詳細資料：
 
-   * 在 [輸入別名]**** 欄位中，輸入 **input**。  
-   * 選取 [從訂用帳戶選取事件中樞]**** 的選項。  
-   * 將 [訂用帳戶]**** 欄位設定為您的訂用帳戶。  
-   * 在 [事件中樞命名空間]**** 欄位中，輸入您在預先實驗室期間建立的事件中樞命名空間名稱。  
-   * 在 [事件中樞名稱]**** 欄位中，選取 [使用現有的]**** 的選項，然後從下拉式功能表中選擇 **event-hub1**。  
-   * 將 [事件中樞原則名稱]**** 欄位保留為預設值。  
-   * 將 [事件序列化格式]**** 保留為 [JSON]****。  
-   * 將 [編碼]**** 欄位保留為 [UTF-8]****。  
-   * 將 [事件壓縮類型]**** 欄位保留為 [無]****。  
+   * 在 [輸入別名] 欄位中，輸入 **input** 。  
+   * 選取 [從訂用帳戶選取事件中樞] 的選項。  
+   * 將 [訂用帳戶] 欄位設定為您的訂用帳戶。  
+   * 在 [事件中樞命名空間] 欄位中，輸入您在預先實驗室期間建立的事件中樞命名空間名稱。  
+   * 在 [事件中樞名稱] 欄位中，選取 [使用現有的] 的選項，然後從下拉式功能表中選擇 **event-hub1** 。  
+   * 將 [事件中樞原則名稱] 欄位保留為預設值。  
+   * 將 [事件序列化格式] 保留為 [JSON]。  
+   * 將 [編碼] 欄位保留為 [UTF-8]。  
+   * 將 [事件壓縮類型] 欄位保留為 [無]。  
    * 選取 [儲存] 按鈕。
 
-5. 瀏覽回串流分析作業頁面，並選取 [輸出]****。  
+5. 瀏覽回串流分析作業頁面，並選取 [輸出]。  
 
-6. 選取 [+ 新增]。 然後，從下拉式功能表中選取 [Power BI]****。  
+6. 選取 [+ 新增]。 然後，從下拉式功能表中選取 [Power BI]。  
 
 7. 若要建立新的 Power BI 輸出並以視覺方式呈現平均價格，請執行下列動作：
 
-   * 在 [輸出別名]**** 欄位中，輸入 **averagePriceOutput**。  
-   * 將 [群組工作區]**** 欄位保留為 [授權連線以載入工作區]****。  
-   * 在 [資料集名稱]**** 欄位中，輸入 **averagePrice**。  
-   * 在 [資料表名稱]**** 欄位中，輸入 **averagePrice**。  
-   * 選取 [授權]**** 按鈕，然後依照指示授權對 Power BI 的連線。  
+   * 在 [輸出別名] 欄位中，輸入 **averagePriceOutput** 。  
+   * 將 [群組工作區] 欄位保留為 [授權連線以載入工作區]。  
+   * 在 [資料集名稱] 欄位中，輸入 **averagePrice** 。  
+   * 在 [資料表名稱] 欄位中，輸入 **averagePrice** 。  
+   * 選取 [授權] 按鈕，然後依照指示授權對 Power BI 的連線。  
    * 選取 [儲存] 按鈕。  
 
-8. 接著，返回 **streamjob1** 並選取 [編輯查詢]****。
+8. 接著，返回 **streamjob1** 並選取 [編輯查詢]。
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="投影片":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/edit-query.png" alt-text="編輯查詢":::
  
 9. 將下列查詢貼到查詢視窗中。 **AVERAGE PRICE** 查詢會對使用者所檢視的所有項目計算平均價格、對新增至使用者購物車的所有項目計算平均價格，以及對使用者所購買的所有項目計算平均價格。 此計量可協助電子商務公司決定商品的售價，以及應投資於哪些商品。 例如，如果檢視項目的平均價格遠高於購買項目的平均價格，公司即可選擇將售價較低的項目新增至商品目錄中。
 
@@ -233,33 +234,33 @@ Azure 串流分析是一項完全受控、可即時處理串流資料的雲端�
     FROM input  
     GROUP BY Action, TumblingWindow(second,5) 
    ```
-10. 然後，選取位於左上角的 [儲存]****。  
+10. 然後，選取位於左上角的 [儲存]。  
 
-11. 現在請返回 **streamjob1**，然後選取頁面頂端的 [啟動]**** 按鈕。 Azure 串流分析可能需要幾分鐘的時間才會啟動，但啟動後您就會看到它從「啟動中」變更為「執行中」。
+11. 現在請返回 **streamjob1** ，然後選取頁面頂端的 [啟動] 按鈕。 Azure 串流分析可能需要幾分鐘的時間才會啟動，但啟動後您就會看到它從「啟動中」變更為「執行中」。
 
 ## <a name="connect-to-power-bi"></a>連線至 Power BI
 
 Power BI 是一套商務分析工具，用來分析資料及分享見解。 它充分詮釋了您可如何策略性地以視覺方式呈現分析的資料。
 
-1. 登入 Power BI，並開啟頁面左側的功能表以瀏覽至 [我的工作區]****。  
+1. 登入 Power BI，並開啟頁面左側的功能表以瀏覽至 [我的工作區]。  
 
-2. 選取右上角的 [+ 建立]****，然後選取 [儀表板]**** 以建立儀表板。  
+2. 選取右上角的 [+ 建立]，然後選取 [儀表板] 以建立儀表板。  
 
-3. 選取位於右上角的 [+ 新增圖格]****。  
+3. 選取位於右上角的 [+ 新增圖格]。  
 
-4. 選取 [自訂串流資料]****，然後選取 [下一步]**** 按鈕。  
+4. 選取 [自訂串流資料]，然後選取 [下一步] 按鈕。  
  
-5. 從 [您的資料集]**** 中選取 **averagePrice**，然後選取 [下一步]****。  
+5. 從 [您的資料集] 中選取 **averagePrice** ，然後選取 [下一步]。  
 
-6. 在 [視覺效果類型]**** 欄位中，從下拉式功能表中選擇 [群組橫條圖]****。 在 [軸]**** 下方新增動作。 略過 [圖例]**** 而不新增任何項目。 然後，在名為 **Value**的下一個區段下，加入 **avg**。選取 **[下一步]**， **然後將圖表**標題，然後選取 [套用]。 您應該會在儀表板上看到新的圖表！  
+6. 在 [視覺效果類型] 欄位中，從下拉式功能表中選擇 [群組橫條圖]。 在 [軸] 下方新增動作。 略過 [圖例] 而不新增任何項目。 然後，在名為 **Value** 的下一個區段下，加入 **avg** 。選取 **[下一步]** ， **然後將圖表** 標題，然後選取 [套用]。 您應該會在儀表板上看到新的圖表！  
 
-7. 現在，如果您想要以視覺方式呈現更多計量，您可以返回 **streamjob1**，並以下列欄位再建立三個輸出。
+7. 現在，如果您想要以視覺方式呈現更多計量，您可以返回 **streamjob1** ，並以下列欄位再建立三個輸出。
 
    a. **輸出別名：** incomingRevenueOutput、資料集名稱：incomingRevenue、資料表名稱：incomingRevenue  
    b. **輸出別名：** top5Output、資料集名稱：top5、資料表名稱：top5  
    c. **輸出別名：** uniqueVisitorCountOutput、資料集名稱：uniqueVisitorCount、資料表名稱：uniqueVisitorCount
 
-   然後，選取 [編輯查詢]****，並在您已撰寫的查詢**上方**貼上下列查詢。
+   然後，選取 [編輯查詢]，並在您已撰寫的查詢 **上方** 貼上下列查詢。
 
    ```sql
     /*TOP 5*/
@@ -315,38 +316,38 @@ Power BI 是一套商務分析工具，用來分析資料及分享見解。 它�
 
    範例儀表板使用了這些圖表後，呈現如下：
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="投影片":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="螢幕擷取畫面顯示範例儀表板，其中包含名為 [依動作的平均價格]、[唯一的訪客]、[收入] 和 [前5個購買的專案":::
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>選擇性：電子商務網站的視覺化
 
 現在，您將觀察如何使用新的資料分析工具與實際的電子商務網站連線。 若要建立電子商務網站，請使用 Azure Cosmos 資料庫來儲存產品類別目錄清單 (女性、男性、Unisex) 、產品目錄，以及最受歡迎的專案清單。
 
-1. 流覽回到 [Azure 入口網站](https://portal.azure.com/)，然後流覽至您的 **Cosmos DB 帳戶**，然後 **資料總管**。  
+1. 流覽回到 [Azure 入口網站](https://portal.azure.com/)，然後流覽至您的 **Cosmos DB 帳戶** ，然後 **資料總管** 。  
 
-   在 **>changefeedlabdatabase**  -  **產品**和**分類**下新增兩個集合，並具有固定的儲存體容量。
+   在 **>changefeedlabdatabase**  -  **產品** 和 **分類** 下新增兩個集合，並具有固定的儲存體容量。
 
-   在 **changefeedlabdatabase** 下新增名為 **topItems**、分割區索引鍵為 **/Item** 的另一個集合。
+   在 **changefeedlabdatabase** 下新增名為 **topItems** 、分割區索引鍵為 **/Item** 的另一個集合。
 
-2. 選取 **topItems** 集合，然後在 [調整與設定]**** 下將 [存留時間]**** 設定為 **30 秒**，讓 topItems 每 30 秒更新一次。
+2. 選取 **topItems** 集合，然後在 [調整與設定] 下將 [存留時間] 設定為 **30 秒** ，讓 topItems 每 30 秒更新一次。
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="投影片":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="存留時間":::
 
-3. 若要在 **topItems** 集合中填入購買率最高的項目，請瀏覽回 **streamjob1**，並新增一個 [輸出]****。 選取 [Cosmos DB]。
+3. 若要在 **topItems** 集合中填入購買率最高的項目，請瀏覽回 **streamjob1** ，並新增一個 [輸出]。 選取 [Cosmos DB]。
 
 4. 填寫必要欄位，如下圖所示。
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="投影片":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/cosmos-output.png" alt-text="Cosmos 輸出":::
  
 5. 如果您在先前的實驗室步驟中新增了選擇性的 TOP 5 查詢，請繼續進行步驟 5a。 否則，請繼續進行步驟 5b。
 
-   5a. 在 **streamjob1** 中選取 [編輯查詢]****，然後在 Azure 串流分析查詢編輯器中，將下列查詢貼到 TOP 5 查詢下方、其餘查詢上方的位置。
+   5a. 在 **streamjob1** 中選取 [編輯查詢]，然後在 Azure 串流分析查詢編輯器中，將下列查詢貼到 TOP 5 查詢下方、其餘查詢上方的位置。
 
    ```sql
    SELECT arrayvalue.value.item AS Item, arrayvalue.value.price, arrayvalue.value.countEvents
    INTO topItems
    FROM arrayselect
    ```
-   5b. 在 **streamjob1** 中選取 [編輯查詢]****，然後在 Azure 串流分析查詢編輯器中，將下列查詢貼到所有其他查詢上方。
+   5b. 在 **streamjob1** 中選取 [編輯查詢]，然後在 Azure 串流分析查詢編輯器中，將下列查詢貼到所有其他查詢上方。
 
    ```sql
    /*TOP 5*/
@@ -375,17 +376,17 @@ Power BI 是一套商務分析工具，用來分析資料及分享見解。 它�
    FROM arrayselect
    ```
 
-6. 在**方案總管**中開啟 **EcommerceWebApp.sln**，並瀏覽至 **Web.config** 檔案。  
+6. 在 **方案總管** 中開啟 **EcommerceWebApp.sln** ，並瀏覽至 **Web.config** 檔案。  
 
-7. 在 `<appSettings>` 區塊內，將您先前儲存的 **URI** 和**主要金鑰**分別新增到顯示為 **your URI here** 和 **your primary key here** 之處。 然後，依指示新增您的**資料庫名稱**和**集合名稱**。 (這些名稱應該是 **changefeedlabdatabase** 和 **changefeedlabcollection**，除非您選擇以不同方式命名。)
+7. 在 `<appSettings>` 區塊內，將您先前儲存的 **URI** 和 **主要金鑰** 分別新增到顯示為 **your URI here** 和 **your primary key here** 之處。 然後，依指示新增您的 **資料庫名稱** 和 **集合名稱** 。 (這些名稱應該是 **changefeedlabdatabase** 和 **changefeedlabcollection** ，除非您選擇以不同方式命名。)
 
-   依指示填入您的**產品集合名稱**、**目錄集合名稱**和**最高排名項目集合名稱**。 (這些名稱應該是 **products、categories 和 topItems**，除非您選擇以不同方式命名。)  
+   依指示填入您的 **產品集合名稱** 、 **目錄集合名稱** 和 **最高排名項目集合名稱** 。 (這些名稱應該是 **products、categories 和 topItems** ，除非您選擇以不同方式命名。)  
 
-8. 瀏覽至 **EcommerceWebApp.sln** 內的**簽出資料夾**並加以開啟。 然後，開啟該資料夾中的 **Web.config** 檔案。  
+8. 瀏覽至 **EcommerceWebApp.sln** 內的 **簽出資料夾** 並加以開啟。 然後，開啟該資料夾中的 **Web.config** 檔案。  
 
-9. 在 `<appSettings>` 區塊內，將您先前儲存的 **URI** 和**主要金鑰**新增至指示之處。 然後，依指示新增您的**資料庫名稱**和**集合名稱**。 (這些名稱應該是 **changefeedlabdatabase** 和 **changefeedlabcollection**，除非您選擇以不同方式命名。)  
+9. 在 `<appSettings>` 區塊內，將您先前儲存的 **URI** 和 **主要金鑰** 新增至指示之處。 然後，依指示新增您的 **資料庫名稱** 和 **集合名稱** 。 (這些名稱應該是 **changefeedlabdatabase** 和 **changefeedlabcollection** ，除非您選擇以不同方式命名。)  
 
-10. 在頁面頂端按下 [啟動]**** 以執行程式。  
+10. 在頁面頂端按下 [啟動] 以執行程式。  
 
 11. 現在，您可以在電子商務網站上隨意逛逛。 當您檢視某個項目、將某項目新增至購物車、變更購物車內的項目數量，或購買某項目時，這些事件將會經由 Cosmos DB 變更摘要傳至事件中樞、ASA，最後傳到 Power BI。 建議您繼續執行 DataGenerator 以產生大量的 Web 流量資料，並在電子商務網站上提供真正的「熱門產品」集。
 
@@ -393,6 +394,6 @@ Power BI 是一套商務分析工具，用來分析資料及分享見解。 它�
 
 若要刪除您在此實驗室中建立的資源，請流覽至 [Azure 入口網站](https://portal.azure.com/)上的資源群組，然後從頁面頂端的功能表中選取 [ **刪除資源群組** ]，並依照提供的指示進行。
 
-## <a name="next-steps"></a>後續步驟 
+## <a name="next-steps"></a>下一步 
   
 * 若要深入了解變更摘要，請參閱[使用 Azure Cosmos DB 中的變更摘要支援](change-feed.md)

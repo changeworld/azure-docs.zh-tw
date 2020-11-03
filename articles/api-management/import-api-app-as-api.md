@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 入口網站匯入 API 應用程式作為 API | Microsoft Docs
-description: 本教學課程示範如何使用 API 管理 (APIM) 來匯入 API 應用程式作為 API。
+description: 本文示範如何使用 API 管理 (APIM) 來匯入 API 應用程式作為 API。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,15 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 007598046ae64b390d44e61438b69bd26024b1c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41209233ec59f578db4ff7fd344bb96aefeb975e
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626882"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146768"
 ---
 # <a name="import-an-api-app-as-an-api"></a>匯入 API 應用程式作為 API
 
@@ -70,7 +70,7 @@ ms.locfileid: "91626882"
     頁面會顯示查詢參數的欄位和標頭的欄位。 其中一個標頭是 "Ocp-Apim-Subscription-Key"，它適用於與此 API 相關聯之產品的訂用帳戶金鑰。 如果您建立了 APIM 執行個體，您就已經是系統管理員，因此會自動填入此金鑰。 
 1. 按 [傳送]  。
 
-    後端會回應 **200 確定**與部分資料。
+    後端會回應 **200 確定** 與部分資料。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

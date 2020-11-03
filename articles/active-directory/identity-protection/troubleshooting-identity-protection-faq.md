@@ -11,40 +11,43 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a249d5f3c47e8e8789f91f355c791cc50341ab01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42b1c0ef42454b085c5d4dbcdc14162b2c829c6a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91827901"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074809"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>常見問題身分識別保護 Azure Active Directory 的常見問題
 
 ## <a name="dismiss-user-risk-known-issues"></a>關閉使用者風險的已知問題
 
-關閉傳統 Identity Protection 中的**使用者風險**將 Identity protection 中使用者風險歷程記錄的執行者設定為**Azure AD**。
+關閉傳統 Identity Protection 中的 **使用者風險** 將 Identity protection 中使用者風險歷程記錄的執行者設定為 **Azure AD** 。
 
-關閉 Identity Protection 中的**使用者風險**將 identity protection 中使用者風險歷程記錄的執行者設定為 **\<Admin’s name with a hyperlink pointing to user’s blade\>** 。
+關閉 Identity Protection 中的 **使用者風險** 將 identity protection 中使用者風險歷程記錄的執行者設定為 **\<Admin’s name with a hyperlink pointing to user’s blade\>** 。
 
 目前已知的問題會導致使用者風險關閉流程中的延遲。 如果您有「使用者風險原則」，按一下 [解除使用者風險] 的幾分鐘內，此原則將會停止將套用至已解除的使用者。 不過，已知解除使用者的 [風險狀態] 有 UX 重新整理延遲。 因應措施是在瀏覽器層級重新整理頁面，以查看最新的使用者 [風險狀態]。
 
 ## <a name="risky-users-report-known-issues"></a>具風險使用者報告已知問題
 
-[使用者名稱]**** 欄位上的查詢區分大小寫，[名稱]**** 欄位上的查詢則為大小寫無從驗證。
+[使用者名稱] 欄位上的查詢區分大小寫，[名稱] 欄位上的查詢則為大小寫無從驗證。
 
-切換 [顯示日期為]**** 會隱藏 [RISK LAST UPDATED]**** 資料行。 若要讀取資料行，請按一下 [具風險的使用者] 刀鋒視窗頂端的 [資料行]****。
+切換 [顯示日期為] 會隱藏 [RISK LAST UPDATED] 資料行。 若要讀取資料行，請按一下 [具風險的使用者] 刀鋒視窗頂端的 [資料行]。
 
-關閉傳統 Identity Protection 中的**所有事件**，將風險偵測的狀態設定為**已關閉 (已解決) **。
+關閉傳統 Identity Protection 中的 **所有事件** ，將風險偵測的狀態設定為 **已關閉 (已解決)** 。
 
-## <a name="risky-sign-ins-report-known-issues"></a>有風險的登入報告已知問題
-
-**解決** 風險偵測會將狀態設定為 **由風險為基礎的原則所驅動的使用者通過 MFA**。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
 ### <a name="why-is-a-user-is-at-risk"></a>為什麼使用者有風險？
 
 如果您是 Azure AD Identity Protection 客戶，請前往 [具風險的 [使用者](howto-identity-protection-investigate-risk.md#risky-users) ] 視圖，然後按一下 [具風險的使用者]。 在底部的選單中，索引標籤的 [風險歷程記錄] 會顯示導致使用者風險變更的所有事件。 若要查看使用者的所有具風險登入，請按一下 [使用者的有風險的登入]。 若要查看此使用者的所有風險偵測，請按一下 [使用者的風險偵測]。
+
+## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>為什麼我的登入被封鎖，但 Identity Protection 未產生風險偵測？
+登入可能會因為許多原因而遭到封鎖。 請務必注意，只有在驗證要求中使用正確的認證時，身分識別保護才會產生風險偵測。 如果使用者使用不正確的認證，則不會受到 Identity Protection 的旗標，除非有不良執行者使用正確的認證，否則不會有認證洩漏的風險。 有一些原因會封鎖使用者不會產生身分識別保護偵測的簽章，包括：
+* 由於 IP 位址有惡意活動，因此 **ip 可能已被封鎖** 。 IP 封鎖的訊息不會區分認證是否正確。 如果 IP 遭到封鎖且未使用正確的認證，則不會產生身分識別保護偵測
+* **[Smart 鎖定](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)** 可以封鎖帳戶在多次嘗試失敗後登入
+* 可以強制執行 **條件式存取原則** ，以使用風險層級以外的條件來封鎖驗證要求
 
 ### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>如何取得特定類型偵測的報告？
 
@@ -76,21 +79,21 @@ IP 地理位置對應對整個產業而言是項挑戰。 如果您認為登入�
 
 **確認遭盜用** (登入時) – 告知 Azure AD Identity Protection：登入不是由身分擁有者所執行的，並表示遭到盜用。
 
-- 收到此意見反應時，我們會將登入和使用者風險狀態改為 [確認遭盜用]****，並將風險層級改為 [高]****。
+- 收到此意見反應時，我們會將登入和使用者風險狀態改為 [確認遭盜用]，並將風險層級改為 [高]。
 
 - 此外，我們會將資訊提供給我們的機器學習系統，以供未來改進風險評定之用。
 
     > [!NOTE]
-    > 如果已補救使用者，請不要按一下 [確認遭盜用]****，因為它會將登入與使用者風險狀態改為 [確認遭盜用]****，並將風險層級改為 [高]****。
+    > 如果已補救使用者，請不要按一下 [確認遭盜用]，因為它會將登入與使用者風險狀態改為 [確認遭盜用]，並將風險層級改為 [高]。
 
 **確認安全** (登入時) – 告知 Azure AD Identity Protection：登入是由身分擁有者執行的，不會表示遭到盜用。
 
-- 收到此意見反應時，我們會將登入 (非使用者) 風險狀態改為 [確認安全]****，並將風險層級改為 **-**。
+- 收到此意見反應時，我們會將登入 (非使用者) 風險狀態改為 [確認安全]，並將風險層級改為 **-** 。
 
 - 此外，我們會將資訊提供給我們的機器學習系統，以供未來改進風險評定之用。
 
     > [!NOTE]
-    > 如果您認為使用者未遭到盜用，請使用使用者層級上的 [解除使用者風險]****，而不是使用登入層級上的 [確認安全]****。 使用者層級的 **解除使用者風險** 會關閉使用者風險，以及所有過去有風險的登入和風險偵測。
+    > 如果您認為使用者未遭到盜用，請使用使用者層級上的 [解除使用者風險]，而不是使用登入層級上的 [確認安全]。 使用者層級的 **解除使用者風險** 會關閉使用者風險，以及所有過去有風險的登入和風險偵測。
 
 ### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-detections-are-shown-in-identity-protection"></a>為什麼我看到低 (或以上) 風險分數的使用者，即使 Identity Protection 中沒有顯示有風險的登入或風險偵測？
 

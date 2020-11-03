@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 0cbcfb65d7c7ac71b17e38dd72545a3d8fd2f162
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb3417cf765cd703d72d4a2db7a649400ab2d4de
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545874"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896760"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>教學課程：Azure Active Directory 與 Zscaler Internet Access Administrator 整合
 
@@ -27,7 +27,7 @@ ms.locfileid: "88545874"
 * 您可以讓使用者使用他們的 Azure AD 帳戶自動登入 Zscaler Internet Access Administrator (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -64,7 +64,7 @@ ms.locfileid: "88545874"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Zscaler Internet Access Administrator**，從結果面板中選取 [Zscaler Internet Access Administrator]，然後按一下 [新增] 按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Zscaler Internet Access Administrator** ，從結果面板中選取 [Zscaler Internet Access Administrator]，然後按一下 [新增] 按鈕以新增應用程式。
 
      ![結果清單中的 Zscaler Internet Access Administrator](common/search-new-app.png)
 
@@ -138,9 +138,9 @@ ms.locfileid: "88545874"
 
     a. 按一下 [新增宣告] 以開啟 [管理使用者宣告] 對話方塊。
 
-    ![image](./common/new-save-attribute.png)
+    ![顯示使用者宣告的螢幕擷取畫面，其中具有新增新宣告的選項。](./common/new-save-attribute.png)
     
-    ![image](./common/new-attribute-details.png)
+    ![顯示管理使用者宣告對話方塊的螢幕擷取畫面，您可以在其中輸入所述的值。](./common/new-attribute-details.png)
 
     b. 從 [來源屬性] 清單中，選取屬性值。
 
@@ -149,7 +149,7 @@ ms.locfileid: "88545874"
     d. 按一下 [檔案]  。
 
     > [!NOTE]
-    > 請按一下[這裡](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)，以了解如何在 Azure AD 中設定角色
+    > 請按一下[這裡](../develop/active-directory-enterprise-app-role-management.md)，以了解如何在 Azure AD 中設定角色
 
 7. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，按一下 [下載]，以依據您的需求從指定選項下載 [憑證 (Base64)]，並儲存在您的電腦上。
 
@@ -171,7 +171,7 @@ ms.locfileid: "88545874"
 
 2. 移至 管理員 > 管理員管理，執行下列步驟並按一下 儲存：
 
-    ![管理](./media/zscaler-internet-access-administrator-tutorial/AdminSSO.png "系統管理")
+    ![螢幕擷取畫面：顯示 [系統管理員管理]，其中有選項可供啟用 SAML 驗證、上傳 SSL 憑證並指定簽發者。](./media/zscaler-internet-access-administrator-tutorial/AdminSSO.png "系統管理")
 
     a. 核取 [啟用 SAML 驗證] 。
 
@@ -181,7 +181,7 @@ ms.locfileid: "88545874"
 
 3. 在 Admin UI 上，執行下列步驟：
 
-    ![系統管理](./media/zscaler-internet-access-administrator-tutorial/ic800207.png)
+    ![螢幕擷取畫面：顯示 [管理員 UI]，您可以在其中執行步驟。](./media/zscaler-internet-access-administrator-tutorial/ic800207.png)
 
     a. 將滑鼠停留在靠近左下方的 [啟用] 功能表上。
 
@@ -203,7 +203,7 @@ ms.locfileid: "88545874"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱] 欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -249,12 +249,12 @@ https://help.zscaler.com/zia/adding-admins
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在「存取面板」中按一下 Zscaler Internet Access Administrator 圖格時，應該會自動登入您設定 SSO 的 Zscaler Internet Access Admin UI。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在「存取面板」中按一下 Zscaler Internet Access Administrator 圖格時，應該會自動登入您設定 SSO 的 Zscaler Internet Access Admin UI。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

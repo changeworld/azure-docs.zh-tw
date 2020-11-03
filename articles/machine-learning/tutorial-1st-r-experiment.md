@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: bf89e99842efa726e6ca05a08998c9d058dc02e3
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5eb392fdfc1ffdb6d7cfee64734cca32c9abcd33
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019370"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913274"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>教學課程：使用 R 建立機器學習模型 (預覽)
 
@@ -45,12 +45,12 @@ ms.locfileid: "92019370"
 
 Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機器學習模型的基礎資源。 工作區可將您的 Azure 訂用帳戶和資源群組與服務中容易使用的物件結合。 
 
-您透過 Azure 入口網站建立工作區 (管理 Azure 資源的 Web 型主控台)。 
+有許多 [方式可以建立工作區](how-to-manage-workspace.md)。 在本教學課程中，您會透過 Azure 入口網站建立工作區 (管理 Azure 資源的 Web 型主控台)。 
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT] 
-> 記下您的**工作區**和**訂用帳戶**。 您會需要這些項目，以確保您在正確位置建立實驗。 
+> 記下您的 **工作區** 和 **訂用帳戶** 。 您會需要這些項目，以確保您在正確位置建立實驗。 
 
 
 ## <a name="open-rstudio"></a><a name="open"></a>開啟 RStudio
@@ -74,7 +74,7 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 
 1. 在終端機中執行 `git clone https://github.com/Azure/azureml-sdk-for-r` 以複製存放庫。
 
-1. 在 RStudio 中，瀏覽至複製 azureml-sdk-for-r 資料夾的「片段」資料夾。  在「片段」下，選取 train-and-deploy-first-model.Rmd 檔案，以尋找本教學課程中使用的片段。 用於片段的其他檔案位於 train-and-deploy-first-model 子資料夾中。 開啟片段之後，請透過 **工作階段 > 設定工作目錄 > 至來源檔案位置**，將工作目錄設定至檔案的位置。 
+1. 在 RStudio 中，瀏覽至複製 azureml-sdk-for-r 資料夾的「片段」資料夾。  在「片段」下，選取 train-and-deploy-first-model.Rmd 檔案，以尋找本教學課程中使用的片段。 用於片段的其他檔案位於 train-and-deploy-first-model 子資料夾中。 開啟片段之後，請透過 **工作階段 > 設定工作目錄 > 至來源檔案位置** ，將工作目錄設定至檔案的位置。 
 
 > [!Important]
 > 本文的其餘部分會包含您在 train-and-deploy-first-model.Rmd 檔案中看到的相同內容。 如果您曾使用過 RMarkdown，則可以使用該檔案中的程式碼。  或者，您也可以從該處複製/貼上程式碼片段，或從本文複製/貼到 R 指令碼或命令列中。 
@@ -184,7 +184,7 @@ upload_files_to_datastore(ds,
 * 提交工作
 
 ### <a name="prepare-the-training-script"></a>建立定型指令碼
-在 train-and-deploy-first-model 目錄中，提供了名為 `accidents.R` 的訓練指令碼。 請留意下列在**定型指令碼**中完成以利用 Azure Machine Learning 進行定型的詳細操作：
+在 train-and-deploy-first-model 目錄中，提供了名為 `accidents.R` 的訓練指令碼。 請留意下列在 **定型指令碼** 中完成以利用 Azure Machine Learning 進行定型的詳細操作：
 
 * 定型指令碼會使用引數 `-d` 尋找包含定型資料的目錄。 您在稍後定義並提交作業時，會指向此引數的資料存放區。 Azure ML 會將儲存體資料夾掛接至遠端叢集，以進行定型作業。
 * 定型指令碼會使用 `log_metric_to_run()`，將最終正確性以計量的形式記錄到 Azure ML 中的執行記錄。 Azure ML SDK 會提供一組記錄 API，用以記錄定型執行期間的各種計量。 這些計量會記錄並保存在實驗執行記錄中。 其後，您可以從 [Studio](https://ml.azure.com) 的執行詳細資料頁面中隨時存取或檢視這些計量。 如需完整的記錄方法集 `log_*()`，請參閱[參考](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation)。
@@ -212,7 +212,7 @@ est <- estimator(source_directory = "train-and-deploy-first-model",
 
 ### <a name="submit-the-job-on-the-remote-cluster"></a>將作業提交至叢集
 
-最後，提交要在您的叢集上執行的作業。 `submit_experiment()` 會傳回讓您後續用來與執行進行互動的執行物件。 第一次執行總計會花費**大約 10 分鐘的時間**。 但對於後續的執行，只要指令碼相依性不變，便會重複使用相同的 Docker 映像。  在此案例中會快取映像，因此容器啟動時間會快上許多。
+最後，提交要在您的叢集上執行的作業。 `submit_experiment()` 會傳回讓您後續用來與執行進行互動的執行物件。 第一次執行總計會花費 **大約 10 分鐘的時間** 。 但對於後續的執行，只要指令碼相依性不變，便會重複使用相同的 Docker 映像。  在此案例中會快取映像，因此容器啟動時間會快上許多。
 
 ```R
 run <- submit_experiment(exp, est)
@@ -305,7 +305,7 @@ model <- register_model(ws,
 ### <a name="define-the-inference-dependencies"></a>定義推斷相依性
 若要建立模型的 Web 服務，您必須先建立評分指令碼 (`entry_script`)；這是一個 R 指令碼，將作為 JSON 格式的輸入變數值，並輸出模型的預測。 在本教學課程中，請使用提供的評分檔案 `accident_predict.R`。 評分指令碼必須包含 `init()` 方法以載入您的模型，並傳回使用該模型根據輸入資料進行預測的函式。 如需詳細資訊，請參閱[文件](https://azure.github.io/azureml-sdk-for-r/reference/inference_config.html#details)。
 
-接著，請為指令碼的套件相依性定義 Azure ML **環境**。 針對環境，您可以指定執行指令碼所需的 R 套件 (來自 CRAN 或其他位置)。 您也可以提供可讓指令碼參考以修改其行為的環境變數值。 根據預設，Azure ML 會建置估計工具用於定型的相同預設 Docker 映像。 由於本教學課程沒有特殊需求，請建立不具特殊屬性的環境。
+接著，請為指令碼的套件相依性定義 Azure ML **環境** 。 針對環境，您可以指定執行指令碼所需的 R 套件 (來自 CRAN 或其他位置)。 您也可以提供可讓指令碼參考以修改其行為的環境變數值。 根據預設，Azure ML 會建置估計工具用於定型的相同預設 Docker 映像。 由於本教學課程沒有特殊需求，請建立不具特殊屬性的環境。
 
 ```R
 r_env <- r_environment(name = "basic_env")
@@ -313,7 +313,7 @@ r_env <- r_environment(name = "basic_env")
 
 如果您想要改用自己的 Docker 映像進行部署，請指定 `custom_docker_image` 參數。 如需用來定義環境的完整可設定選項集，請參閱 [`r_environment()`](https://azure.github.io/azureml-sdk-for-r/reference/r_environment.html) 參考。
 
-現在，建立**推斷設定**以封裝評分指令碼和環境相依性所需的一切，都已準備就緒。
+現在，建立 **推斷設定** 以封裝評分指令碼和環境相依性所需的一切，都已準備就緒。
 
 ```R
 inference_config <- inference_config(
@@ -329,7 +329,7 @@ inference_config <- inference_config(
 aci_config <- aci_webservice_deployment_config(cpu_cores = 1, memory_gb = 0.5)
 ```
 
-現在，您將模型部署為 Web 服務。 部署**可能需要數分鐘的時間**。 
+現在，您將模型部署為 Web 服務。 部署 **可能需要數分鐘的時間** 。 
 
 ```R
 aci_service <- deploy_model(ws, 

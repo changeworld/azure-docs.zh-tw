@@ -9,15 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.topic: tutorial
+ms.topic: article
 ms.date: 11/08/2017
 ms.author: apimpm
-ms.openlocfilehash: d3ce7318266f3fbaf818e5bcfa245ce5f64d74ba
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1c4e64251390936e8a63ee904ec69f173cac6114
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076924"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146700"
 ---
 # <a name="edit-an-api"></a>編輯 API
 
@@ -35,22 +35,22 @@ ms.locfileid: "92076924"
 
 ## <a name="edit-an-api-in-apim"></a>在 APIM 中編輯 API
 
-![編輯 API](./media/edit-api/edit-api001.png)
+![此螢幕擷取畫面醒目提示在 APIM 中編輯 API 的程序。](./media/edit-api/edit-api001.png)
 
-1. 按一下 [API]**** 索引標籤。
+1. 按一下 [API] 索引標籤。
 2. 選取其中一個您先前匯入的 API。
 3. 選取 [設計] 索引標籤。
 4. 選取您想要編輯的作業。
-5. 若要重新命名作業，請選取 [前端]**** 視窗中的**鉛筆**。
+5. 若要重新命名作業，請選取 [前端]視窗中的 **鉛筆** 。
 
 ## <a name="update-the-swagger"></a>更新 Swagger
 
 若要從 Azure 入口網站更新您的後端 API，您可以遵循下列步驟：
 
 1. 選取 [所有作業]
-2. 按一下 [前端]**** 視窗中的鉛筆。
+2. 按一下 [前端] 視窗中的鉛筆。
 
-    ![編輯 API](./media/edit-api/edit-api002.png)
+    ![此螢幕擷取畫面醒目提示前端畫面中的鉛筆圖示。](./media/edit-api/edit-api002.png)
 
     您 API 的 Swagger 會隨即出現。
 

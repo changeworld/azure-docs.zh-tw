@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/19/2020
-ms.openlocfilehash: 6d4d9fd901337b9c05c7d7d7f271974273e9fe37
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.openlocfilehash: 502c48a92f5b41c4434d03139335a0ce05fa451f
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170066"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896968"
 ---
 # <a name="tutorial-connect-to-a-web-app-using-an-azure-private-endpoint"></a>教學課程：使用 Azure 私人端點連線至 Web 應用程式
 
@@ -57,7 +57,7 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
     | 資源群組   | 選取 **myResourceGroup** |
     | **執行個體詳細資料** |                                                                 |
     | 名稱             | 輸入 **myVNet**                                    |
-    | 區域           | 選取 [美國東部] |
+    | 區域           | 選取 [西歐] |
 
 3. 選取 [IP 位址]  索引標籤，或選取頁面底部的 [下一步：  IP 位置] 按鈕。
 
@@ -78,7 +78,7 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
 
 7. 選取 [儲存]。
 
-8. 選取 [安全性]  索引標籤。
+8. 選取 [安全性] 索引標籤。
 
 9. 在 [BastionHost] 底下，選取 [啟用]。 輸入此資訊：
 
@@ -109,7 +109,7 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
     | 資源群組 | 選取 **myResourceGroup** |
     | **執行個體詳細資料** |  |
     | 虛擬機器名稱 | 輸入 myVM |
-    | 區域 | 選取 [美國東部] |
+    | 區域 | 選取 [西歐] |
     | 可用性選項 | 選取 [不需要基礎結構備援] |
     | 映像 | 選取 [Windows Server 2019 Datacenter - Gen1] |
     | Azure Spot 執行個體 | 選取 [否] |
@@ -154,10 +154,10 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
     | 發佈 | 選取 [程式碼]。 |
     | 執行階段堆疊 | 選取 .NET Core 3.1 (LTS)。 |
     | 作業系統 | 選取 [Windows]。 |
-    | 區域 | 選取 [美國東部] |
+    | 區域 | 選取 [西歐] |
     | **App Service 方案** |  |
-    | Windows 方案 (美國東部) | 選取 [建立新的]。 </br> 在 [名稱] 中輸入 **myServicePlan** 。 |
-    | SKU 和大小 | 選取 [變更大小]  。 </br> 在 [規格選擇器] 畫面中，選取 [P2V2]。 </br> 選取 [套用]  。 |
+    | Windows 方案 (西歐) | 選取 [建立新的]。 </br> 在 [名稱] 中輸入 **myServicePlan** 。 |
+    | SKU 和大小 | 選取 [變更大小]。 </br> 在 [規格選擇器] 畫面中，選取 [P2V2]。 </br> 選取 [套用]  。 |
    
 3. 選取 [檢閱 + 建立]。
 
@@ -196,7 +196,7 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
 
 2. 選取 **myResourceGroup** 。
 
-3. 選取 [myVM]  。
+3. 選取 [myVM]。
 
 4. 在 **myVM** 的 [概觀] 頁面上，選取 [連線] 然後 [堡壘]。
 
@@ -224,15 +224,15 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
 
 10. 確認您收到 **403** 頁面。 此頁面表示 Web 應用程式無法從外部存取。
 
-    :::image type="content" source="./media/tutorial-private-endpoint-webapp-portal/web-app-ext-403.png" alt-text="在 Azure 入口網站中建立 Web 應用程式的 [基本] 索引標籤。" border="true":::
+    :::image type="content" source="./media/tutorial-private-endpoint-webapp-portal/web-app-ext-403.png" alt-text="外部 Web 應用程式位址的 403 頁面。" border="true":::
 
 11. 在與 **myVM** 的堡壘連線中，開啟 Internet Explorer。
 
-12. 輸入 Web 應用程式的 URL： **https://\<webapp-name>.azurewebsites.net** .。
+12. 輸入 Web 應用程式的 URL： **https://\<webapp-name>.azurewebsites.net**.。
 
 13. 確認您收到預設的 Web 應用程式頁面。
 
-    :::image type="content" source="./media/tutorial-private-endpoint-webapp-portal/web-app-default-page.png" alt-text="在 Azure 入口網站中建立 Web 應用程式的 [基本] 索引標籤。" border="true":::
+    :::image type="content" source="./media/tutorial-private-endpoint-webapp-portal/web-app-default-page.png" alt-text="預設 Web 應用程式頁面。" border="true":::
 
 18. 關閉與 **myVM** 的連線。
 

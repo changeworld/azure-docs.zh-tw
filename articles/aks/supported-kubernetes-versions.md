@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: a36eb588c7128f13fb21b368d308ed00171fbb4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 649f02097a18a141d186434a91539563c64e72ba
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335529"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042129"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中支援的 Kubernetes 版本
 
@@ -95,7 +95,7 @@ New Supported Version List
 
 您可以使用 `kubectl` 相對於 *kube-apiserver* 版本的較舊版本或較新版本，這與 [kubectl 的 Kubernetes 支援原則](https://kubernetes.io/docs/setup/release/version-skew-policy/#kubectl)一致。
 
-例如，如果您的 *kube apiserver* 是在 *1.17*，則您可以使用 *1.16* 版的來 *1.18* 的 `kubectl` *kube apiserver*。
+例如，如果您的 *kube apiserver* 是在 *1.17* ，則您可以使用 *1.16* 版的來 *1.18* 的 `kubectl` *kube apiserver* 。
 
 若要安裝或更新您的版本 `kubectl` ，請執行 `az aks install-cli` 。
 
@@ -121,9 +121,9 @@ AKS 保留新增或移除新的/現有版本的許可權，這些版本已識別
 
 ## <a name="azure-portal-and-cli-versions"></a>Azure 入口網站和 CLI 版本
 
-當您在入口網站或 Azure CLI 部署 AKS 叢集時，叢集會預設為 N-1 次要版本和最新修補程式。 例如，如果 AKS 支援 *1.17. a*、 *1.17*、 *1.16*、 *1.16. d*、 *1.15*和 *1.15. f*，則選取的預設版本為 *1.16. c*。
+當您在入口網站或 Azure CLI 部署 AKS 叢集時，叢集會預設為 N-1 次要版本和最新修補程式。 例如，如果 AKS 支援 *1.17. a* 、 *1.17* 、 *1.16* 、 *1.16. d* 、 *1.15* 和 *1.15. f* ，則選取的預設版本為 *1.16. c* 。
 
-若要找出目前可供您訂用帳戶和區域使用的版本，請使用 [az aks get-versions][az-aks-get-versions] 命令。 下列範例會列出 EastUS** 區域的可用 Kubernetes 版本：
+若要找出目前可供您訂用帳戶和區域使用的版本，請使用 [az aks get-versions][az-aks-get-versions] 命令。 下列範例會列出 EastUS 區域的可用 Kubernetes 版本：
 
 ```azurecli-interactive
 az aks get-versions --location eastus --output table
@@ -131,15 +131,18 @@ az aks get-versions --location eastus --output table
 
 ## <a name="aks-kubernetes-release-calendar"></a>AKS Kubernetes 發行行事曆
 
-針對過去的版本歷程記錄，請參閱 [這裡](https://en.wikipedia.org/wiki/Kubernetes#History)。
+針對過去的版本歷程記錄，請參閱 [Kubernetes](https://en.wikipedia.org/wiki/Kubernetes#History)。
 
 |  K8s 版本 | 上游版本  | AKS 預覽  | AKS GA  | 生命週期結束 |
 |--------------|-------------------|--------------|---------|-------------|
-| 1.16  | Sep-19-19  | Jan 2019   | 三月2020  | 1.19 GA | 
+| 1.16  | Sep-19-19  | Jan 2019   | 三月2020  | Jan 2021 * | 
 | 1.17  | Dec-09-19  | Jan 2019   | 2020年7月  | 1.20 GA | 
 | 1.18  | Mar-23-20  | 2020 年 5 月   | 2020年8月  | 1.21 GA | 
 | 1.19  | 8月-04-20  | Sep 2020   | 11月2020  | 1.22 GA | 
-| 1.20  | Dec-08-20  | Jan 2021   | 三月2021  | 1.23 GA | 
+| 1.20  | Dec-08-20  | Jan 2021   | 三月2021  | 1.23 GA |
+
+\* 由於假日季節的緣故，AKS 將從11月2020日到1月2021，延長1.16 的存留期。 [閱讀其他資訊](https://github.com/Azure/AKS/releases/tag/2020-10-12)。
+
 
 ## <a name="faq"></a>常見問題集
 
@@ -174,9 +177,9 @@ az aks get-versions --location eastus --output table
 
 **在叢集升級期間可以略過多個 AKS 版本嗎？**
 
-當您升級支援的 AKS 叢集時，無法略過 Kubernetes 次要版本。 例如，允許在*1.12*2.x  ->  *.* x 或*1.13. x*  ->  *1.14*之間進行升級，但*1.12. x*  ->  *1.14*則否。
+當您升級支援的 AKS 叢集時，無法略過 Kubernetes 次要版本。 例如，允許在 *1.12* 2.x  ->  *.* x 或 *1.13. x*  ->  *1.14* 之間進行升級，但 *1.12. x*  ->  *1.14* 則否。
 
-若要升級，請從*1.12.* x  ->  *1.14*，先從*1.12*2.x. x 升級  ->  * *，然後再從*1.13. x*  ->  *1.14*進行升級。
+若要升級，請從 *1.12.* x  ->  *1.14* ，先從 *1.12* 2.x. x 升級  ->  ** ，然後再從 *1.13. x*  ->  *1.14* 進行升級。
 
 略過多個版本只能在從不支援的版本升級回支援的版本時進行。 例如，從不支援的 *1.10. x* 升級 > 支援的 *1.15。 x* 可以完成。
 

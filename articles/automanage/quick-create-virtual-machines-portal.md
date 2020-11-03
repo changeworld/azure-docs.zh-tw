@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: d66c19ce3a9786a5ca0f1390acb398c2a9cf502f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 69f43b626bb50171ceaca1b7a8761bec040d1dd6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91445791"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897223"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中啟用虛擬機器的 Azure Automanage
 
@@ -28,7 +28,7 @@ ms.locfileid: "91445791"
 > 免費試用帳戶無法存取本教學課程中使用的虛擬機器。 請升級為隨用隨付訂用帳戶。
 
 > [!IMPORTANT]
-> 您必須具有**參與者**角色，才能使用現有的 Automanage 帳戶來啟用 Automanage。 如果您要使用新的 Automanage 帳戶來啟用 Automanage，則需要下列權限：**擁有者**角色或**參與者**以及**使用者存取系統管理員**角色。
+> 您必須在包含 VM 的資源群組中具有 **參與者** 角色，才能使用現有的 Automanage 帳戶來啟用 Automanage。 如果您要使用新的 Automanage 帳戶來啟用 Automanage，則需要下列權限：您訂用帳戶中的 **擁有者** 角色或 **參與者** 以及 **使用者存取管理員** 角色。
 
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
@@ -47,21 +47,21 @@ ms.locfileid: "91445791"
 3. 在 [選取機器] 刀鋒視窗上：
     1. 依 [訂用帳戶] 和 [資源群組] 來篩選 VM 清單。
     1. 核取每部欲上線虛擬機器的核取方塊。
-    1. 按一下 [選取]**** 按鈕。
+    1. 按一下 [選取] 按鈕。
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="在現有 VM 上啟用。":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="從可用 VM 清單中選取現有 VM。":::
 
 4. 在 [組態設定檔] 底下，按一下 [瀏覽並變更設定檔及喜好設定]。
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="在現有 VM 上啟用。":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="瀏覽並變更設定檔及喜好設定。":::
 
 5. 在 [選取組態設定檔 + 喜好設定] 刀鋒視窗上：
     1. 選取左側的設定檔：[開發/測試] 可用於測試，[生產] 可用於生產。
-    1. 按一下 [選取]**** 按鈕。
+    1. 按一下 [選取] 按鈕。
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="在現有 VM 上啟用。":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="瀏覽生產組態設定檔。":::
 
-6. 按一下 [啟用]**** 按鈕。
+6. 按一下 [啟用] 按鈕。
 
 
 ## <a name="enable-automanage-for-vms-on-a-new-vm"></a>在新 VM 上啟用 VM 的 Automanage
@@ -72,29 +72,29 @@ ms.locfileid: "91445791"
 
 2. VM 部署好之後，您會進入 [部署狀態] 頁面，且頁面底部有建議的 [後續步驟]。
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\create-next-steps.png" alt-text="在現有 VM 上啟用。":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\create-next-steps.png" alt-text="位於 [部署] 頁面底部的 [後續步驟] 區段。":::
 
 3. 在 [後續步驟] 底下，選取 [啟用 Automanage 虛擬機器最佳做法]。
 
 4. 在 [Automanage – Azure 虛擬機器最佳做法] 頁面上，[機器] 會自動由新建立的 VM 填入。
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\create-new-enable-overview.png" alt-text="在現有 VM 上啟用。":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\create-new-enable-overview.png" alt-text="新建立的 VM 將會顯示為選取的機器。":::
 
 5. 在 [組態設定檔] 底下，按一下 [瀏覽並變更設定檔及喜好設定]。
 
 6. 在 [選取組態設定檔 + 喜好設定] 刀鋒視窗上：
     1. 選取左側的設定檔：[開發/測試] 可用於測試，[生產] 可用於生產。
-    1. 按一下 [選取]**** 按鈕。
+    1. 按一下 [選取] 按鈕。
 
-    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="在現有 VM 上啟用。":::
+    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="瀏覽生產組態設定檔。":::
 
-7. 按一下 [啟用]**** 按鈕。
+7. 按一下 [啟用] 按鈕。
 
 ## <a name="disable-automanage-for-vms"></a>停用 VM 的 Automanage
 
 停用自動管理即可快速停止使用虛擬機器的 Azure Automanage。
 
-:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="在現有 VM 上啟用。":::
+:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="在虛擬機器上停用 Automanage。":::
 
 1. 移至 [Automanage – Azure 虛擬機器最佳做法] 頁面，其中會列出所有自動管理的 VM。
 1. 選取所要停用虛擬機器旁的核取方塊。

@@ -7,18 +7,18 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 3fc8f205bff52fad6e55b7aa6692ec80ae5e954a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d0b66d2b4d89b512b34cb33a5607b471b7d1e84
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212161"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040937"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure 服務匯流排 Azure Functions 的輸出系結
 
 使用 Azure 服務匯流排輸出繫結來傳送佇列或主題訊息。
 
-如需安裝和設定詳細資料的相關資訊，請參閱[概觀](functions-bindings-service-bus-output.md)。
+如需安裝和設定詳細資料的相關資訊，請參閱[概觀](functions-bindings-service-bus.md)。
 
 ## <a name="example"></a>範例
 
@@ -38,7 +38,7 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, ILogger log)
 
 # <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-下列範例示範 function.json** 檔案中的服務匯流排輸出繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。 此函式會使用計時器觸發程序，每隔 15 秒傳送一則佇列訊息。
+下列範例示範 function.json 檔案中的服務匯流排輸出繫結，以及使用此繫結的 [C# 指令碼函式](functions-reference-csharp.md)。 此函式會使用計時器觸發程序，每隔 15 秒傳送一則佇列訊息。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -89,7 +89,7 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-下列範例示範 function.json** 檔案中的服務匯流排觸發程序繫結，以及使用此繫結的 [JavaScript 函式](functions-reference-node.md)。 此函式會使用計時器觸發程序，每隔 15 秒傳送一則佇列訊息。
+下列範例示範 function.json 檔案中的服務匯流排觸發程序繫結，以及使用此繫結的 [JavaScript 函式](functions-reference-node.md)。 此函式會使用計時器觸發程序，每隔 15 秒傳送一則佇列訊息。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -143,7 +143,7 @@ module.exports = function (context, myTimer) {
 
 下列範例示範如何在 Python 中寫出服務匯流排佇列。
 
-在*類型*設定為的*function.js*中，會定義服務匯流排系結定義 `serviceBus` 。
+在 *類型* 設定為的 *function.js* 中，會定義服務匯流排系結定義 `serviceBus` 。
 
 ```json
 {
@@ -175,7 +175,7 @@ module.exports = function (context, myTimer) {
 }
 ```
 
-在* _ \_ _ \_ .py*中，您可以將值傳遞給方法，以將訊息寫出至佇列 `set` 。
+在 *_\__ \_ .py* 中，您可以將值傳遞給方法，以將訊息寫出至佇列 `set` 。
 
 ```python
 import azure.functions as func
@@ -288,11 +288,11 @@ Python 指令碼不支援屬性。
 |**queueName**|**QueueName**|佇列的名稱。  只有在傳送佇列訊息時設定 (不適用於主題)。
 |**topicName**|**TopicName**|主題的名稱。 只有在傳送主題訊息時設定 (不適用於佇列)。|
 |**connection**|**[連接]**|應用程式設定的名稱包含要用於此繫結的服務匯流排連接字串。 如果應用程式設定名稱是以 "AzureWebJobs" 開頭，您只能指定名稱的其餘部分。 例如，如果您將設定 `connection` 為 "MyServiceBus"，則函式執行時間會尋找名為 "AzureWebJobsMyServiceBus" 的應用程式設定。 如果您將 `connection` 保留空白，則 Functions 執行階段會使用應用程式設定中名稱為 "AzureWebJobsServiceBus" 的預設服務匯流排連接字串。<br><br>若要取得連接字串，請遵循[取得管理認證](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)所示的步驟。 連接字串必須是用於服務匯流排命名空間，而不限於特定佇列或主題。|
-|僅限**accessRights** (v1) |**存取**|連接字串的存取權限。 可用值為 `manage` 和 `listen`。 預設值是 `manage`，這表示 `connection` 已具備**管理**權限。 如果您使用沒有**管理**權限的連接字串，請將 `accessRights` 設定為 "listen"。 否則，Functions 執行階段在嘗試執行需要管理權限的作業時可能會失敗。 在 Azure Functions 2.x 版和更新版本中，因為最新版的服務匯流排 SDK 不支援管理作業，所以無法使用此屬性。|
+|僅限 **accessRights** (v1) |**存取**|連接字串的存取權限。 可用值為 `manage` 和 `listen`。 預設值是 `manage`，這表示 `connection` 已具備 **管理** 權限。 如果您使用沒有 **管理** 權限的連接字串，請將 `accessRights` 設定為 "listen"。 否則，Functions 執行階段在嘗試執行需要管理權限的作業時可能會失敗。 在 Azure Functions 2.x 版和更新版本中，因為最新版的服務匯流排 SDK 不支援管理作業，所以無法使用此屬性。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>使用量
+## <a name="usage"></a>使用方式
 
 在 Azure Functions 1.x 中，執行階段會建立佇列 (如果佇列不存在)，且您已將 `accessRights` 設為 `manage`。 在2.x 版和更高版本的函式中，佇列或主題必須已經存在;如果您指定的佇列或主題不存在，此函式將會失敗。 
 

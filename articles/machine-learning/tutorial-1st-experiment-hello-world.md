@@ -11,18 +11,18 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 980347c658c65a0c08dfc50c08f50741fb9a00fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afc851be08e6708efc0138dc45931cda147c67c1
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372539"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895880"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>教學課程：執行 "Hello world!" Python 指令碼 (第 2 部分，共 4 部分)
 
 在本教學課程中，您將了解如何使用 Azure Machine Learning SDK for Python 來提交和執行 Python "Hello world!" 指令碼。
 
-本教學課程是*四部分教學課程系列的第 2 部分*，您會在其中了解 Azure Machine Learning 的基本概念，以及在 Azure 中完成作業型機器學習工作。 本教學課程建基於您在[第 1 部分：設定您 Azure Machine Learning 的本機電腦](tutorial-1st-experiment-sdk-setup-local.md)中所完成的工作。
+本教學課程是 *四部分教學課程系列的第 2 部分* ，您會在其中了解 Azure Machine Learning 的基本概念，以及在 Azure 中完成作業型機器學習工作。 本教學課程建基於您在[第 1 部分：設定您 Azure Machine Learning 的本機電腦](tutorial-1st-experiment-sdk-setup-local.md)中所完成的工作。
 
 在本教學課程中，您將：
 
@@ -142,6 +142,9 @@ print(aml_url)
 ```bash
 python 03-run-hello.py
 ```
+
+> [!TIP]
+> 如果執行此程式碼會顯示無法存取訂用帳戶的錯誤，請參閱[連線到工作區](how-to-manage-workspace.md?tab=python#connect-multi-tenant)以取得驗證選項的相關資訊。
 
 ## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a>使用 Studio 在雲端中監視您的程式碼
 

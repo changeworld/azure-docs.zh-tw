@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 05d7316ceccd67a8eeb1d081843307162ff210c1
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 989115224489ff8fff360a34b27c338ea3e33058
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558630"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145815"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>適用於容器登錄的 Azure Defender 簡介
 
@@ -32,6 +32,12 @@ Azure Container Registry (ACR) 是受控的私人 Docker 登錄服務，可在�
 
 資訊安全中心只會在發生問題時發出通知，藉以減少非必要的資訊警示。
 
+
+> [!TIP]
+> 若要深入了解資訊安全中心的容器安全性功能，請參閱：
+>
+> - [Azure 資訊安全中心和容器安全性](container-security.md)
+> - [適用於 Kubernetes 的 Azure Defender 簡介](defender-for-kubernetes-introduction.md)
 
 ## <a name="when-are-images-scanned"></a>何時會掃描映像？
 
@@ -81,10 +87,5 @@ Azure Container Registry (ACR) 是受控的私人 Docker 登錄服務，可在�
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解資訊安全中心的容器安全性功能，請參閱：
-
-- [Azure 資訊安全中心和容器安全性](container-security.md)
-
-- [適用於 Kubernetes 的 Azure Defender 簡介](defender-for-kubernetes-introduction.md)
-
-
+> [!div class="nextstepaction"]
+> [掃描映像的弱點](defender-for-container-registries-usage.md)

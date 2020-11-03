@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: fc3b5b096e339d0c0f4bca7afc92d7315246fcd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 748566cf5b25157fcb8a2938a3f4bd307c930874
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552277"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895122"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>教學課程：Azure Active Directory 與 SAP HANA 整合
 
@@ -27,7 +27,7 @@ SAP HANA 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 SAP HANA (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -72,7 +72,7 @@ SAP HANA 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **SAP HANA**，從結果面板中選取 [SAP HANA]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **SAP HANA** ，從結果面板中選取 [SAP HANA]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 SAP HANA](common/search-new-app.png)
 
@@ -117,17 +117,17 @@ SAP HANA 與 Azure AD 整合提供下列優點：
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<Customer-SAP-instance-url>/sap/hana/xs/saml/login.xscfunc`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [SAP HANA 客戶支援小組](https://cloudplatform.sap.com/contact.html)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [SAP HANA 客戶支援小組](https://cloudplatform.sap.com/contact.html)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 5. SAP HANA 應用程式需要特定格式的 SAML 判斷提示。 設定此應用程式的下列宣告。 您可以在應用程式整合頁面的 [使用者屬性]  區段中，管理這些屬性的值。 在 [以 SAML 設定單一登入]  頁面上，按一下 [編輯]  按鈕以開啟 [使用者屬性]  對話方塊。
 
-    ![image](common/edit-attribute.png)
+    ![顯示 [使用者屬性] 區段的螢幕擷取畫面，其中已選取 [編輯] 圖示。](common/edit-attribute.png)
 
 6. 在 [使用者屬性與宣告] 對話方塊的 [使用者屬性] 區段中，執行下列步驟：
  
-    a. 按一下 [**編輯**] 圖示以開啟 [**管理使用者宣告**] 對話方塊。
+    a. 按一下 [ **編輯** ] 圖示以開啟 [ **管理使用者宣告** ] 對話方塊。
 
-    ![image](./media/saphana-tutorial/tutorial_usermail.png)
+    ![顯示 [使用者屬性和宣告] 對話方塊的螢幕擷取畫面，其中已選取 [編輯] 圖示。](./media/saphana-tutorial/tutorial_usermail.png)
 
     ![image](./media/saphana-tutorial/tutorial_usermailedit.png)
 
@@ -137,13 +137,13 @@ SAP HANA 與 Azure AD 整合提供下列優點：
 
     d. 按一下 [檔案]  。
 
-7. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+7. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
 ### <a name="configure-sap-hana-single-sign-on"></a>設定 SAP HANA 單一登入
 
-1. 若要在 SAP Hana 端設定單一登入，請瀏覽至個別的 HTTPS 端點以登入您的 **HANA XSA Web 主控台**。
+1. 若要在 SAP Hana 端設定單一登入，請瀏覽至個別的 HTTPS 端點以登入您的 **HANA XSA Web 主控台** 。
 
     > [!NOTE]
     > 在預設組態中，URL 會將要求重新導向至登入畫面，這需要已通過驗證之 SAP Hana 資料庫使用者的認證。 登入的使用者必須擁有執行 SAML 管理工作的權限。
@@ -154,7 +154,7 @@ SAP HANA 與 Azure AD 整合提供下列優點：
 
     a. 在 [新增識別提供者資訊]  窗格中，將中繼資料 XML 內容 (從 Azure 入口網站下載) 貼到 [中繼資料]  方塊中。
 
-    ![[新增識別提供者] 設定](./media/saphana-tutorial/sap2.png)
+    ![螢幕擷取畫面：顯示 [新增識別提供者資訊] 窗格，並已醒目提示 [中繼資料] 和 [名稱] 方塊。](./media/saphana-tutorial/sap2.png)
 
     b. 如果 XML 文件的內容有效，剖析程序會擷取 [一般資料] 畫面區域中的 [主旨]、[實體識別碼] 和 [簽發者] 欄位所需的資訊。 該程序也會擷取 [目的地]  畫面區域中 URL 欄位的所需資訊，例如 [基底 URL] 和 [SingleSignOn URL]  \(*) 欄位。
 
@@ -169,7 +169,7 @@ SAP HANA 與 Azure AD 整合提供下列優點：
 
     ![[儲存] 按鈕](./media/saphana-tutorial/sap4.png)
 
-4. 在 HANA Studio 之 [設定]  索引標籤的系統屬性中，依 **saml** 篩選設定。 然後將 **assertion_timeout** 從 **10 秒**調整為 **120 秒**。
+4. 在 HANA Studio 之 [設定]  索引標籤的系統屬性中，依 **saml** 篩選設定。 然後將 **assertion_timeout** 從 **10 秒** 調整為 **120 秒** 。
 
     ![assertion_timeout 設定](./media/saphana-tutorial/sap7.png)
 
@@ -189,7 +189,7 @@ SAP HANA 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -260,13 +260,12 @@ SAP Hana 支援預設啟用的 **Just-In-Time** 佈建。
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [SAP HANA] 圖格時，應該會自動登入您設定 SSO 的 SAP HANA。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [SAP HANA] 圖格時，應該會自動登入您設定 SSO 的 SAP HANA。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

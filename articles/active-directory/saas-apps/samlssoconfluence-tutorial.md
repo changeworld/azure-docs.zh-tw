@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 87c24cf61974c284772aae23e48ffc907792895b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8f85c6dd42f1f4505474e03e378c0fe48d70005
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543477"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896458"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-confluence-by-resolution-gmbh"></a>教學課程：Azure Active Directory 與 SAML SSO for Confluence by resolution GmbH 整合
 
@@ -27,7 +27,7 @@ SAML SSO for Confluence by resolution GmbH 與 Azure AD 整合提供下列優點
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 SAML SSO for Confluence by resolution GmbH (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ SAML SSO for Confluence by resolution GmbH 與 Azure AD 整合提供下列優點
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **SAML SSO for Confluence by resolution GmbH**、從結果面板中選取 [SAML SSO for Confluence by resolution GmbH]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **SAML SSO for Confluence by resolution GmbH** 、從結果面板中選取 [SAML SSO for Confluence by resolution GmbH]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 SAML SSO for Confluence by resolution GmbH](common/search-new-app.png)
 
@@ -99,7 +99,7 @@ SAML SSO for Confluence by resolution GmbH 與 Azure AD 整合提供下列優點
 
 4. 若您想要以 **IDP** 起始模式設定應用程式，請在 [基本 SAML 組態]  區段執行下列步驟：
 
-    ![SAML SSO for Confluence by resolution GmbH 網域和 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示 [基本 SAML 設定] 的螢幕擷取畫面，其中已反白顯示 [識別碼] 和 [回覆 U R L] 文字方塊，並已選取 [儲存] 動作。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://<server-base-url>/plugins/servlet/samlsso`
 
@@ -112,95 +112,95 @@ SAML SSO for Confluence by resolution GmbH 與 Azure AD 整合提供下列優點
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<server-base-url>/plugins/servlet/samlsso`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [SAML SSO for Confluence by resolution GmbH 用戶端支援小組](https://www.resolution.de/go/support)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [SAML SSO for Confluence by resolution GmbH 用戶端支援小組](https://www.resolution.de/go/support)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-4. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+4. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
 ### <a name="configure-saml-sso-for-confluence-by-resolution-gmbh-single-sign-on"></a>設定 SAML SSO for Confluence by resolution GmbH 單一登入
 
-1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入您的 **SAML SSO for Confluence by resolution GmbH 系統管理入口網站**。
+1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入您的 **SAML SSO for Confluence by resolution GmbH 系統管理入口網站** 。
 
 2. 將滑鼠停留在 cog 上，然後按一下 [附加元件]  。
     
-    ![設定單一登入](./media/samlssoconfluence-tutorial/addon1.png)
+    ![顯示已選取 [齒輪] 圖示，並已從下拉式清單中選取 [附加元件] 的螢幕擷取畫面。](./media/samlssoconfluence-tutorial/addon1.png)
 
 3. 系統會將您重新導向至 [系統管理員存取] 頁面。 輸入密碼，然後按一下 [確認]  按鈕。
 
-    ![設定單一登入](./media/samlssoconfluence-tutorial/addon2.png)
+    ![顯示 [系統管理員存取權] 頁面的螢幕擷取畫面，其中已選取 [確認] 按鈕。](./media/samlssoconfluence-tutorial/addon2.png)
 
 4. 在 [ATLASSIAN MARKETPLACE]  索引標籤上，按一下 [尋找新的附加元件]  。 
 
-    ![設定單一登入](./media/samlssoconfluence-tutorial/addon.png)
+    ![顯示 [Attlassian Marketplace] 索引標籤的螢幕擷取畫面，其中已選取 [尋找新的附加元件]。](./media/samlssoconfluence-tutorial/addon.png)
 
-5. 搜尋 **SAML Single Sign On (SSO) for Confluence**，然後按一下 [安裝]  按鈕以安裝新的 SAML 外掛程式。
+5. 搜尋 **SAML Single Sign On (SSO) for Confluence** ，然後按一下 [安裝]  按鈕以安裝新的 SAML 外掛程式。
 
-    ![設定單一登入](./media/samlssoconfluence-tutorial/addon7.png)
+    ![顯示 [尋找新的附加元件] 頁面的螢幕擷取畫面，其中包含搜尋方塊中的 [SAML Single Sign On (SSO) for Confluence]，並已選取 [安裝] 按鈕。](./media/samlssoconfluence-tutorial/addon7.png)
 
 6. 外掛程式將會開始安裝。 按一下 [關閉]  。
 
-    ![設定單一登入](./media/samlssoconfluence-tutorial/addon8.png)
+    ![顯示 [安裝中] 對話方塊的螢幕擷取畫面。](./media/samlssoconfluence-tutorial/addon8.png)
 
-    ![設定單一登入](./media/samlssoconfluence-tutorial/addon9.png)
+    ![顯示 [已安裝並準備就緒!] 對話方塊的螢幕擷取畫面， 其中已選取「關閉」動作。](./media/samlssoconfluence-tutorial/addon9.png)
 
-7.  按一下 [管理]  。
+7.  按一下 [管理] 。
 
-    ![設定單一登入](./media/samlssoconfluence-tutorial/addon10.png)
+    ![螢幕擷取畫面：顯示已選取 [管理] 按鈕的 "SAML Single Sign On (SSO) for Confluence" 應用程式頁面。](./media/samlssoconfluence-tutorial/addon10.png)
     
-8. 按一下 [設定]  來設定新的外掛程式。
+8. 按一下 [設定] 來設定新的外掛程式。
 
-    ![設定單一登入](./media/samlssoconfluence-tutorial/addon11.png)
+    ![顯示 [管理] 頁面的螢幕擷取畫面，其中已選取 [設定] 按鈕。](./media/samlssoconfluence-tutorial/addon11.png)
 
 9. 您也可以在 [使用者與安全性]  索引標籤底下找到這個新的外掛程式。
 
-    ![設定單一登入](./media/samlssoconfluence-tutorial/addon3.png)
+    ![螢幕擷取畫面：顯示 [使用者和安全性] 索引標籤，並已選取 [SAML SingleSignOn]。](./media/samlssoconfluence-tutorial/addon3.png)
     
-10. 在 [SAML SingleSignOn 外掛程式組態]  頁面上，按一下 [新增識別提供者]  按鈕以進行識別提供者的設定。
+10. 在 [SAML SingleSignOn 外掛程式組態] 頁面上，按一下 [新增識別提供者] 按鈕以進行識別提供者的設定。
 
-    ![設定單一登入](./media/samlssoconfluence-tutorial/addon4.png)
+    ![顯示 [SAML SingleSignOn Plugin Configuration] 頁面的螢幕擷取畫面，其中已選取 [新增 IdP] 按鈕。](./media/samlssoconfluence-tutorial/addon4.png)
 
-11. 在 [選擇您的 SAML 識別提供者]  頁面上，執行下列步驟：
+11. 在 [選擇您的 SAML 識別提供者] 頁面上，執行下列步驟：
 
-    ![設定單一登入](./media/samlssoconfluence-tutorial/addon5a.png)
+    ![顯示 [選擇 SAML 識別提供者] 頁面的螢幕擷取畫面，其中已醒目提示 [IdP 類型]、[名稱] 和 [描述] 文字方塊。](./media/samlssoconfluence-tutorial/addon5a.png)
  
     a. 將 **Azure AD** 設定為識別提供者類型。
     
-    b. 新增識別提供者的**名稱** (例如 Azure AD)。
+    b. 新增識別提供者的 **名稱** (例如 Azure AD)。
     
-    c. 新增識別提供者的**描述** (例如 Azure AD)。
+    c. 新增識別提供者的 **描述** (例如 Azure AD)。
     
     d. 按 [下一步]  。
     
-12. 在 [識別提供者設定]  頁面上，按一下 [下一步]  按鈕。
+12. 在 [識別提供者設定] 頁面上，按一下 [下一步] 按鈕。
 
-    ![設定單一登入](./media/samlssoconfluence-tutorial/addon5b.png)
+    ![顯示 [識別提供者設定] 頁面的螢幕擷取畫面，其中已選取 [下一步] 按鈕。](./media/samlssoconfluence-tutorial/addon5b.png)
 
-13. 在 [匯入 SAML 識別提供者中繼資料]  頁面上，執行下列步驟：
+13. 在 [匯入 SAML 識別提供者中繼資料] 頁面上，執行下列步驟：
 
-    ![設定單一登入](./media/samlssoconfluence-tutorial/addon5c.png)
+    ![螢幕擷取畫面：顯示已選取 [匯入]、[載入檔案] 和 [下一步] 按鈕的 [匯入 SAML IdP 中繼資料] 頁面。](./media/samlssoconfluence-tutorial/addon5c.png)
 
-    a. 按一下 [載入檔案]  按鈕，然後選取您在步驟 5 下載的中繼資料 XML 檔案。
+    a. 按一下 [載入檔案] 按鈕，然後選取您在步驟 5 下載的中繼資料 XML 檔案。
 
-    b. 按一下 [匯入]  按鈕。
+    b. 按一下 [匯入] 按鈕。
     
     c. 請稍候，直到匯入成功。
     
-    d. 按一下 [下一步]  按鈕。
+    d. 按一下 [下一步] 按鈕。
     
-14. 在 [使用者識別碼屬性與轉換]  頁面上，按一下 [下一步]  按鈕。
+14. 在 [使用者識別碼屬性與轉換] 頁面上，按一下 [下一步] 按鈕。
 
-    ![設定單一登入](./media/samlssoconfluence-tutorial/addon5d.png)
+    ![螢幕擷取畫面：顯示 [使用者識別碼屬性和轉換] 頁面，並已選取 [下一步] 按鈕。](./media/samlssoconfluence-tutorial/addon5d.png)
     
-15. 在 [使用者建立與更新]  頁面上，按一下 [儲存並進行下一個]  ，以儲存設定。   
+15. 在 [使用者建立與更新] 頁面上，按一下 [儲存並進行下一個]，以儲存設定。   
     
-    ![設定單一登入](./media/samlssoconfluence-tutorial/addon6a.png)
+    ![顯示 [使用者建立和更新] 頁面的螢幕擷取畫面，其中已選取 [儲存並繼續下一步] 按鈕。](./media/samlssoconfluence-tutorial/addon6a.png)
     
-16. 在 [測試您的設定]  頁面上，按一下 [跳過測試和手動設定]  ，以跳過目前的使用者測試。 這將在下一節中進行，並需要在 Azure 入口網站中進行一些設定。 
+16. 在 [測試您的設定] 頁面上，按一下 [跳過測試和手動設定]，以跳過目前的使用者測試。 這將在下一節中進行，並需要在 Azure 入口網站中進行一些設定。 
     
-    ![設定單一登入](./media/samlssoconfluence-tutorial/addon6b.png)
+    ![顯示 [測試設定] 頁面的螢幕擷取畫面，其中已選取 [跳過測試和手動設定] 按鈕。](./media/samlssoconfluence-tutorial/addon6b.png)
     
-17. 在顯示的 [跳過測試表示...]  對話方塊中，按一下 [確定]  。
+17. 在顯示的 [跳過測試表示...] 對話方塊中，按一下 [確定]。
     
     ![設定單一登入](./media/samlssoconfluence-tutorial/addon6c.png)
 
@@ -220,7 +220,7 @@ SAML SSO for Confluence by resolution GmbH 與 Azure AD 整合提供下列優點
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -233,7 +233,7 @@ SAML SSO for Confluence by resolution GmbH 與 Azure AD 整合提供下列優點
 
 在本節中，您會將 SAML SSO for Confluence by resolution GmbH 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]  、[所有應用程式]  及 [SAML SSO for Confluence by resolution GmbH]  。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]、[所有應用程式] 及 [SAML SSO for Confluence by resolution GmbH]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
@@ -266,19 +266,19 @@ SAML SSO for Confluence by resolution GmbH 與 Azure AD 整合提供下列優點
 
 2. 將滑鼠停留在 cog 上，然後按一下 [使用者管理]  。
 
-    ![新增員工](./media/samlssoconfluence-tutorial/user1.png) 
+    ![顯示已選取 [齒輪] 圖示，並已從功能表中選取 [使用者管理] 的螢幕擷取畫面。](./media/samlssoconfluence-tutorial/user1.png) 
 
-3. 在 [使用者] 區段底下，按一下 [新增使用者]  索引標籤。在 [新增使用者]  對話頁面上，執行下列步驟：
+3. 在 [使用者] 區段底下，按一下 [新增使用者] 索引標籤。在 [新增使用者] 對話頁面上，執行下列步驟：
 
     ![新增員工](./media/samlssoconfluence-tutorial/user2.png) 
 
-    a. 在 [使用者名稱]  文字方塊中，輸入使用者 (例如 Britta Simon) 的電子郵件。
+    a. 在 [使用者名稱] 文字方塊中，輸入使用者 (例如 Britta Simon) 的電子郵件。
 
     b. 在 [全名]  文字方塊中，輸入使用者 (例如 Britta Simon) 的全名。
 
     c. 在 [電子郵件]  文字方塊中，輸入像是 Brittasimon@contoso.com 的使用者電子郵件地址。
 
-    d. 在 [密碼]  文字方塊中，輸入 Britta Simon 的密碼。
+    d. 在 [密碼] 文字方塊中，輸入 Britta Simon 的密碼。
 
     e. 按一下 [確認密碼]  以再次輸入密碼。
     
@@ -288,13 +288,12 @@ SAML SSO for Confluence by resolution GmbH 與 Azure AD 整合提供下列優點
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 SAML SSO for Confluence by resolution GmbH 圖格時，應該會自動登入您已設定 SSO 的 SAML SSO for Confluence by resolution GmbH。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 SAML SSO for Confluence by resolution GmbH 圖格時，應該會自動登入您已設定 SSO 的 SAML SSO for Confluence by resolution GmbH。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

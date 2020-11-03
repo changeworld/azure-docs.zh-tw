@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 9e24a652bb4e577ff9b604b6b4f5284883723ee5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36c5f0103908ea150cbe6eb373e25f7d741127f5
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906717"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913257"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>教學課程：建立多類別影像分類的標記專案 
 
@@ -42,7 +42,7 @@ ms.locfileid: "90906717"
 
 Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機器學習模型的基礎資源。 工作區可將您的 Azure 訂用帳戶和資源群組與服務中容易使用的物件結合。
 
-您透過 Azure 入口網站建立工作區 (管理 Azure 資源的 Web 型主控台)。
+有許多[方式可以建立工作區](how-to-manage-workspace.md)。 在本教學課程中，您會透過 Azure 入口網站建立工作區 (管理 Azure 資源的 Web 型主控台)。
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
@@ -66,8 +66,8 @@ Azure Machine Learning 資料存放區用來儲存連線資訊，例如您的訂
 
     欄位|描述 
     ---|---
-    資料存放區名稱 | 提供資料存放區的名稱。  我們在此使用 **labeling_tutorial**。
-    資料存放區類型 | 選取儲存體的類型。  我們還會使用 **Azure Blob 儲存體**，這是影像慣用的儲存體。
+    資料存放區名稱 | 提供資料存放區的名稱。  我們在此使用 **labeling_tutorial** 。
+    資料存放區類型 | 選取儲存體的類型。  我們還會使用 **Azure Blob 儲存體** ，這是影像慣用的儲存體。
     帳戶選取方法 | 選取 [手動輸入]。
     URL | `https://azureopendatastorage.blob.core.windows.net/openimagescontainer`
     驗證類型 | 選取 [SAS 權杖]。
@@ -91,7 +91,7 @@ Azure Machine Learning 資料存放區用來儲存連線資訊，例如您的訂
 
     欄位|描述 
     ---|---
-    專案名稱 | 為專案命名。  在此我們將使用 **tutorial-cats-n-dogs**。
+    專案名稱 | 為專案命名。  在此我們將使用 **tutorial-cats-n-dogs** 。
     標記工作類型 | 選取 [影像分類多類別]。  
     
     選取 [下一步] 以繼續建立專案。
@@ -102,11 +102,11 @@ Azure Machine Learning 資料存放區用來儲存連線資訊，例如您的訂
 
 1. 針對 [從資料存放區建立資料集] 表單，使用下列輸入：
 
-    1. 在 [基本資訊] 表單上，新增名稱，我們在此使用 **images-for-tutorial**。  視需要新增說明。  然後選取 [下一步]。
+    1. 在 [基本資訊] 表單上，新增名稱，我們在此使用 **images-for-tutorial** 。  視需要新增說明。  然後選取 [下一步]  。
     1. 在 [資料存放區選取] 表單上，使用下拉式清單來選取 [先前建立的資料存放區]，例如 **tutorial_images (Azure Blob 儲存體)**
     1. 接下來，仍然在 [資料存放區選取] 表單上，選取 [瀏覽]，然後選取 [MultiClass - DogsCats]。  選取 [儲存] 以使用 **/MultiClass - DogsCats** 作為路徑。
     1. 選取 [下一步] 以確認詳細資料，然後選取 [建立] 來建立資料集。
-    1. 選取清單中資料集名稱旁邊的圓形，例如 **images-for-tutorial**。
+    1. 選取清單中資料集名稱旁邊的圓形，例如 **images-for-tutorial** 。
 
 1. 選取 [下一步] 以繼續建立專案。
 

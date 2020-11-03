@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 4d2f6766fa32beb9cebaa8f77c04f6865e15e14d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35bb05eb019a1284a8a418df0197960130e8d013
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543388"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897291"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SAP Fiori 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543388"
 * 讓使用者使用其 Azure AD 帳戶自動登入 SAP Fiori。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -42,7 +42,7 @@ ms.locfileid: "88543388"
 * SAP Fiori 支援由 **SP** 起始的 SSO
 
 > [!NOTE]
-> 針對 SAP Fiori 起始的 iFrame 驗證，建議您在 SAML AuthnRequest 中使用 **IsPassive** 參數來進行無訊息驗證。 如需 **IsPassive** 參數的詳細資訊，請參閱 [Azure AD SAML 單一登入](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol) \(部分機器翻譯\) 資訊
+> 針對 SAP Fiori 起始的 iFrame 驗證，建議您在 SAML AuthnRequest 中使用 **IsPassive** 參數來進行無訊息驗證。 如需 **IsPassive** 參數的詳細資訊，請參閱 [Azure AD SAML 單一登入](../develop/single-sign-on-saml-protocol.md) \(部分機器翻譯\) 資訊
 
 ## <a name="adding-sap-fiori-from-the-gallery"></a>從資源庫新增 SAP Fiori
 
@@ -74,11 +74,11 @@ ms.locfileid: "88543388"
 
 1. 開啟新的 Web 瀏覽器視窗，以系統管理員身分登入您的 SAP Fiori 公司網站。
 
-1. 確定 **http** 和 **https** 服務為作用中，且相關連接埠已指派給交易代碼 **SMICM**。
+1. 確定 **http** 和 **https** 服務為作用中，且相關連接埠已指派給交易代碼 **SMICM** 。
 
 1. 登入 SAP 系統 **T01** 的 SAP 商務用戶端，此為需要單一登入之處。 接著，啟用 HTTP 安全性工作階段管理。
 
-    1. 移至交易代碼 **SICF_SESSIONS**。 此處會顯示所有的相關設定檔參數及其目前的值。 其內容如下範例所示：
+    1. 移至交易代碼 **SICF_SESSIONS** 。 此處會顯示所有的相關設定檔參數及其目前的值。 其內容如下範例所示：
 
         ```
         login/create_sso2_ticket = 2
@@ -110,7 +110,7 @@ ms.locfileid: "88543388"
         /sap/bc/webdynpro/sap/sec_diag_tool (This is only to enable / disable trace)
         ```
 
-1. 在 SAP 系統 [**T01/122**] 的商務用戶端中，移至交易代碼 **SAML2**。 設定 UI 會在新的瀏覽器視窗中開啟。 在此範例中，我們使用 SAP 系統 122 的商務用戶端。
+1. 在 SAP 系統 [ **T01/122** ] 的商務用戶端中，移至交易代碼 **SAML2** 。 設定 UI 會在新的瀏覽器視窗中開啟。 在此範例中，我們使用 SAP 系統 122 的商務用戶端。
 
     ![SAP Fiori 商務用戶端登入頁面](./media/sapfiori-tutorial/tutorial-sapnetweaver-sapbusinessclient.png)
 
@@ -118,7 +118,7 @@ ms.locfileid: "88543388"
 
     ![SAP 中的 [ABAP 系統 T01/122] 頁面的 SAML 2.0 組態](./media/sapfiori-tutorial/tutorial-sapnetweaver-userpwd.png)
 
-1. 在 [提供者名稱]  方塊中，將 **T01122** 取代為 **http:\//T01122**，然後選取 [儲存]  。
+1. 在 [提供者名稱]  方塊中，將 **T01122** 取代為 **http:\//T01122** ，然後選取 [儲存]  。
 
     > [!NOTE]
     > 根據預設，提供者名稱會採用 \<sid>\<client> 的格式。 Azure AD 預期該名稱應採用 \<protocol>://\<name> 的格式。 建議您保留 https\://\<sid>\<client> 格式的提供者名稱，以便在 Azure AD 中設定多個 SAP Fiori ABAP 引擎。
@@ -132,18 +132,18 @@ ms.locfileid: "88543388"
     ![SAP SAML 2.0 中繼資料對話方塊中的下載中繼資料連結](./media/sapfiori-tutorial/tutorial-sapnetweaver-generatesp.png)
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [SAP Fiori]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 如果您有**服務提供者中繼資料檔案**，請在 [基本 SAML 設定]  區段上執行下列步驟：
+1. 如果您有 **服務提供者中繼資料檔案** ，請在 [基本 SAML 設定]  區段上執行下列步驟：
 
     a. 按一下 [上傳中繼資料檔案]  。
 
     ![上傳中繼資料檔案](common/upload-metadata.png)
 
-    b. 按一下**資料夾圖示**以選取中繼資料檔案，然後按一下 [上傳]  。
+    b. 按一下 **資料夾圖示** 以選取中繼資料檔案，然後按一下 [上傳]  。
 
     ![選擇中繼資料檔案](common/browse-upload-metadata.png)
 
@@ -216,7 +216,7 @@ ms.locfileid: "88543388"
 
 ## <a name="configure-sap-fiori-sso"></a>設定 SAP Fiori SSO
 
-1. 登入 SAP 系統並移至交易代碼 **SAML2**。 此時會開啟含有 SAML 組態頁面的新瀏覽器視窗。
+1. 登入 SAP 系統並移至交易代碼 **SAML2** 。 此時會開啟含有 SAML 組態頁面的新瀏覽器視窗。
 
 1. 若要設定信任的識別提供者 (Azure AD) 的端點，請選取 [信任的提供者]  索引標籤。
 
@@ -230,11 +230,11 @@ ms.locfileid: "88543388"
 
     ![選取要在 SAP 中上傳的中繼資料檔案](./media/sapfiori-tutorial/tutorial-sapnetweaver-metadatafile.png)
 
-1. 在下一個頁面的 [別名]  方塊中，輸入別名名稱。 例如 **aadsts**。 選取 [下一步]  。
+1. 在下一個頁面的 [別名]  方塊中，輸入別名名稱。 例如 **aadsts** 。 選取 [下一步]  。
 
     ![SAP 中的 [別名] 方塊](./media/sapfiori-tutorial/tutorial-sapnetweaver-aliasname.png)
 
-1. 確定 [演算法]  方塊中的值為 **SHA-256**。 選取 [下一步]  。
+1. 確定 [演算法]  方塊中的值為 **SHA-256** 。 選取 [下一步]  。
 
     ![確認 SAP 中的摘要演算法值](./media/sapfiori-tutorial/tutorial-sapnetweaver-identityprovider.png)
 
@@ -268,17 +268,17 @@ ms.locfileid: "88543388"
 
     [使用者識別碼來源]  和 [使用者識別碼對應模式]  的值會決定 SAP 使用者與 Azure AD 宣告之間的連結。  
 
-    **案例 1**：SAP 使用者與 Azure AD 使用者的對應
+    **案例 1** ：SAP 使用者與 Azure AD 使用者的對應
 
     1. 在 SAP 中的 [NameID 格式「未指定」的詳細資料]  下方，記下詳細資料：
 
-        ![SAP 中的 [NameID 格式「未指定」的詳細資料] 對話方塊](./media/sapfiori-tutorial/nameiddetails.png)
+        ![螢幕擷取畫面：顯示 SAP 中 [「未指定」NameID 格式的詳細資料] 對話方塊。](./media/sapfiori-tutorial/nameiddetails.png)
 
     1. 在 Azure 入口網站中的 [使用者屬性和宣告]  下方，記下 Azure AD 中的必要宣告。
 
-        ![Azure 入口網站中的 [使用者屬性和宣告] 對話方塊](./media/sapfiori-tutorial/claimsaad1.png)
+        ![螢幕擷取畫面：顯示 [使用者屬性和宣告] 對話方塊。](./media/sapfiori-tutorial/claimsaad1.png)
 
-    **案例 2**：根據 SU01 中已設定的電子郵件地址選取 SAP 使用者識別碼。 在此情況下，應針對每個需要 SSO 的使用者在 SU01 中設定電子郵件識別碼。
+    **案例 2** ：根據 SU01 中已設定的電子郵件地址選取 SAP 使用者識別碼。 在此情況下，應針對每個需要 SSO 的使用者在 SU01 中設定電子郵件識別碼。
 
     1.  在 SAP 中的 [NameID 格式「未指定」的詳細資料]  下方，記下詳細資料：
 
@@ -318,10 +318,10 @@ ms.locfileid: "88543388"
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 SAP Fiori](https://aad.portal.azure.com/)

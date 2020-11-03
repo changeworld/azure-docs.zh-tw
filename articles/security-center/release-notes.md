@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: ed4bd97dfe64a85785cf7805da2cf7f942baecd4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 3ea8e944a004dc89dadc74e4ab2e3e4b295b3a9b
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367531"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900247"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -25,8 +25,11 @@ ms.locfileid: "92367531"
 
 此頁面會經常更新，因此請時常瀏覽。 
 
+若要了解即將推出的 *已規劃* 資訊安全中心變更，請參閱[未來 Azure 資訊安全中心的重要變更](upcoming-changes.md)。 
+
 > [!TIP]
 > 如果想要尋找超過 6 個月的項目，請前往[Azure 資訊安全中心內新功能的封存](release-notes-archive.md)。
+
 
 
 ## <a name="october-2020"></a>2020 年 10 月
@@ -34,6 +37,7 @@ ms.locfileid: "92367531"
 - [內部部署和多雲端電腦的弱點評量 (預覽)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview)
 - [已新增 Azure 防火牆建議 (預覽)](#azure-firewall-recommendation-added-preview)
 - [已使用快速修正更新「Kubernetes Service 上應定義授權 IP 範圍」建議](#authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix)
+- [法規合規性儀表板現在會包含用來移除標準的選項](#regulatory-compliance-dashboard-now-includes-option-to-remove-standards)
 - [已從 Azure Resource Graph (ARG) 中移除 Microsoft.Security/securityStatuses 資料表](#microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg)
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview"></a>內部部署和多雲端電腦的弱點評量 (預覽)
@@ -74,6 +78,15 @@ ms.locfileid: "92367531"
 :::image type="content" source="./media/release-notes/authorized-ip-ranges-recommendation.png" alt-text="具有快速修正選項的「Kubernetes Service 上應定義授權 IP 範圍」建議":::
 
 
+### <a name="regulatory-compliance-dashboard-now-includes-option-to-remove-standards"></a>法規合規性儀表板現在會包含用來移除標準的選項
+
+資訊安全中心的法規合規性儀表板會根據您符合特定合規性控制和需求的程度，提供合規性狀態的見解。
+
+此儀表板包含一組預設的法規標準。 如果所提供的標準中有任何一個與您的組織無關，現在從 UI 中移除訂用帳戶標準的流程變得很簡單。 標準只能在 *訂用帳戶* 層級移除；不能在管理群組範圍移除。
+
+若要深入了解，請參閱 [從儀表板移除標準](update-regulatory-compliance-packages.md#removing-a-standard-from-your-dashboard)。
+
+
 ### <a name="microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg"></a>已從 Azure Resource Graph (ARG) 中移除 Microsoft.Security/securityStatuses 資料表
 
 Azure Resource Graph 是 Azure 中的一項服務，透過大規模查詢一組指定訂用帳戶的能力，提供有效率的資源探索，讓您可以有效地治理環境。 
@@ -85,7 +98,33 @@ Azure Resource Graph 是 Azure 中的一項服務，透過大規模查詢一組�
 
 在 ARG 中，有可供您在查詢中使用的資料表。
 
-:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="具有快速修正選項的「Kubernetes Service 上應定義授權 IP 範圍」建議"
+:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="Azure Resource Graph Explorer 和可用的資料表":::
+
+> [!TIP]
+> ARG 文件會在 [Azure Resource Graph 資料表和資源類型參考](../governance/resource-graph/reference/supported-tables-resources.md)中列出所有可用的資料表。
+
+在此更新中，已移除 **Microsoft.Security/securityStatuses** 資料表。 securityStatuses API 仍然可供使用。
+
+資料取代可供 Microsoft.Security/Assessments 資料表使用。
+
+Microsoft.Security/securityStatuses 與 Microsoft.Security/Assessments 之間的主要差異在於，當第一個項目顯示評量的彙總時，第二個項目會為每個評量保留一筆記錄。
+
+例如，Microsoft.Security/securityStatuses 傳回的結果包含兩個 policyAssessments 的陣列：
+
+```
+{
+id: "/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet",
+name: "mico-rg-vnet",
+type: "Microsoft.Security/securityStatuses",
+properties:  {
+    policyAssessments: [
+        {assessmentKey: "e3deicce-f4dd-3b34-e496-8b5381bazd7e", category: "Networking", policyName: "Azure DDOS Protection Standard should be enabled",...},
+        {assessmentKey: "sefac66a-1ec5-b063-a824-eb28671dc527", category: "Compute", policyName: "",...}
+    ],
+    securitystateByCategory: [{category: "Networking", securityState: "None" }, {category: "Compute",...],
+    name: "GenericResourceHealthProperties",
+    type: "VirtualNetwork",
+    securitystate: "High"
 }
 ```
 然而，Microsoft.Security/Assessments 會針對每個這類原則評量保留一筆記錄，如下所示：
@@ -285,7 +324,7 @@ Azure 資訊安全中心現在會保護 Azure、Amazon Web Services (AWS) 和 Go
 
 現在，當您選取建議並啟用 [包含安全性結果] 選項時，即可透過連續匯出來匯出安全性結果。
 
-:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="具有快速修正選項的「Kubernetes Service 上應定義授權 IP 範圍」建議" :::
+:::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="在連續匯出設定中包含安全性結果切換" :::
 
 相關頁面：
 
@@ -350,7 +389,7 @@ Pod 安全性原則 (預覽) 功能即將淘汰，2020 年 10 月 15 日之後�
 
 預覽建議的範例：
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="具有快速修正選項的「Kubernetes Service 上應定義授權 IP 範圍」建議":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="使用預覽旗標的建議":::
 
 [深入了解安全分數](secure-score-security-controls.md)。
 
@@ -359,7 +398,7 @@ Pod 安全性原則 (預覽) 功能即將淘汰，2020 年 10 月 15 日之後�
 
 建議的詳細資料頁面現在包含時效性間隔指標 (如果適用)，並清楚顯示建議的嚴重性。
 
-:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="具有快速修正選項的「Kubernetes Service 上應定義授權 IP 範圍」建議":::
+:::image type="content" source="./media/release-notes/recommendations-severity-freshness-indicators.png" alt-text="顯示時效性和嚴重性的建議頁面":::
 
 
 
@@ -523,7 +562,7 @@ Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶上可能有害的�
 - **應在 Azure 儲存體帳戶上啟用進階威脅防護**
 - **應在虛擬機器上啟用進階威脅防護**
 
-這些新建議屬於 **啟用進階威脅防護** 安全性控制。
+這些新建議屬於 **啟用 Azure Defender** 安全性控制。
 
 這些建議也包含快速修正功能。 
 
@@ -644,7 +683,7 @@ Azure 資訊安全中心的 SQL 機器進階資料安全性現在會保護裝載
 
 若要深入了解 Azure 資訊安全中心如何使用代理程式，請參閱[什麼是 Log Analytics 代理程式？](faq-data-collection-agents.md#what-is-the-log-analytics-agent)。
 
-深入了解[適用於 Azure Arc 機器的擴充功能](../azure-arc/servers/manage-vm-extensions.md#enable-extensions-from-the-portal)。
+深入了解[適用於 Azure Arc 機器的擴充功能](../azure-arc/servers/manage-vm-extensions.md)。
 
 
 ### <a name="new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale"></a>可大規模建立連續匯出和工作流程自動化設定的新原則
@@ -666,7 +705,7 @@ Azure 資訊安全中心的 SQL 機器進階資料安全性現在會保護裝載
 
 開始使用[工作流程自動化範本](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation)。
 
-若要深入了解如何使用這兩個匯出原則，請參閱[透過原則連續匯出 Azure 資訊安全中心警示和建議](https://techcommunity.microsoft.com/t5/azure-security-center/continuously-export-azure-security-center-alerts-and/ba-p/1440745)。
+若要深入了解如何使用這兩個匯出原則，請參閱 [使用提供的原則大規模地設定工作流程自動化](workflow-automation.md#configure-workflow-automation-at-scale-using-the-supplied-policies) 和 [設定連續匯出](continuous-export.md#set-up-a-continuous-export)。
 
 
 ### <a name="new-recommendation-for-using-nsgs-to-protect-non-internet-facing-virtual-machines"></a>使用 NSG 來保護非網際網路面向虛擬機器的新建議
@@ -783,7 +822,7 @@ Azure 資訊安全中心的 SQL 機器進階資料安全性現在會保護裝載
 
 深入瞭解[在 Azure 資訊安全中心之內的增強型安全分數 (預覽)](secure-score-security-controls.md) 中出現的安全性控制項。
 
-:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="具有快速修正選項的「Kubernetes Service 上應定義授權 IP 範圍」建議":::
+:::image type="content" source="./media/secure-score-security-controls/recommendations-group-by-toggle.gif" alt-text="建議的「依據控制項分組」切換":::
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>擴充的安全性控制「實作安全性最佳做法」 
 

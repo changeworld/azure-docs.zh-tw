@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d902258c80467380518df3b55583cea1efa76609
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64767f83dfad2b0c2909e8a89b55c849d5c5a9a9
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119305"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896985"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>教學課程：使用 ARM 範本中的條件
 
@@ -84,11 +84,11 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
 
 進行變更的程序如下：
 
-1. 在 Visual Studio Code 中，開啟 **azuredeploy.json**。
+1. 在 Visual Studio Code 中，開啟 **azuredeploy.json** 。
 1. 在整個範本中以 **parameters('storageAccountName')** 來取代三個 **variables('storageAccountName')** 。
 1. 移除下列變數定義：
 
-    ![Resource Manager 範本使用條件圖](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
+    ![螢幕擷取畫面：醒目提示您需要移除的變數定義。](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
 
 1. 將下列兩個參數新增至參數區段的開頭：
 
@@ -117,11 +117,11 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
     "condition": "[equals(parameters('newOrExisting'),'new')]",
     ```
 
-    條件會檢查名為 **newOrExisting** 的參數值。 如果參數值是 **new**，則部署會建立儲存體帳戶。
+    條件會檢查名為 **newOrExisting** 的參數值。 如果參數值是 **new** ，則部署會建立儲存體帳戶。
 
     已更新的儲存體帳戶定義看起來如下：
 
-    ![Resource Manager 使用條件](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
+    ![螢幕擷取畫面：顯示已更新的儲存體帳戶定義。](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
 1. 使用下列值更新虛擬機器資源定義的 **storageUri** 屬性：
 
     ```json
@@ -172,7 +172,7 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
     ```
 
     > [!NOTE]
-    > 如果 **newOrExisting** 是 **new**，則部署會失敗，但是具有已指定儲存體帳戶名稱的儲存體帳戶已存在。
+    > 如果 **newOrExisting** 是 **new** ，則部署會失敗，但是具有已指定儲存體帳戶名稱的儲存體帳戶已存在。
 
 請嘗試將 **newOrExisting** 設為 "existing" 並且指定現有儲存體帳戶，來進行另一個部署。 若要事先建立儲存體帳戶，請參閱[建立儲存體帳戶](../../storage/common/storage-account-create.md)。
 

@@ -1,14 +1,14 @@
 ---
-title: Azure VMWare 解決方案網路和連線能力
-description: Azure VMWare 解決方案網路和連線能力描述。
+title: Azure VMware 解決方案網路和連線能力
+description: Azure VMware 解決方案網路和連線能力描述。
 ms.topic: include
 ms.date: 09/28/2020
-ms.openlocfilehash: 1d43a8a49fc56a6a5b534a89fd1dfc2f5ae2d478
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47b5fab8430f4e462f1e4a0e8cb6ddb69ec38c02
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91574446"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92924981"
 ---
 <!-- Used in introduction.md and concepts-networking.md -->
 
@@ -16,7 +16,4 @@ Azure VMware 解決方案提供私人雲端環境，可從內部部署和 Azure 
 
 部署私人雲端時，會建立用於管理、佈建和 vMotion 的私人網路。 使用這些私人網路來存取 vCenter 和 NSX-T 管理員，以及虛擬機器 vMotion 或部署。  ExpressRoute Global Reach 可用來將私人雲端連線至內部部署環境。 連線需要在您的訂用帳戶中具有 ExpressRoute 線路的虛擬網路。
 
-
-
->[!NOTE]
->在部署私人雲端時，會佈建並提供對網際網路和 Azure 服務的存取，以取用生產網路上的 VM。  預設會停用新私人雲端的網際網路存取，且可以隨時啟用或停用。
+您可透過 Azure 虛擬 WAN 公用 IP 功能，存取網際網路上的資源，例如 Web 伺服器和虛擬機器。  根據預設，新的私人雲端會停用網際網路存取。 如需詳細資訊，請參閱[如何使用 Azure VMware 解決方案中的公用 IP 功能](../public-ip-usage.md)。

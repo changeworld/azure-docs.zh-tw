@@ -80,7 +80,7 @@ ms.locfileid: "93096779"
 |使用強式密碼的系統管理帳戶|很難相信我們需要提到這個需求，但是與一些競爭者不同，Azure Cosmos DB 中的系統管理帳戶一定會有密碼。<br><br> 根據預設，透過 TLS 和 HMAC 密碼型驗證的安全性是內建。|
 |安全性和資料保護認證| 如需最新的認證清單，請參閱整體 [Azure 合規性網站](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) ，以及具備所有認證的最新 [Azure 合規性檔](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) (搜尋 Cosmos) 。 如需更詳細的資訊，請閱讀2018年4月25日的文章 [Azure #CosmosDB：安全、私密、符合規範，包括 SOCS 1/2 Type 2、HITRUST、PCI DSS Level 1、ISO 27001、HIPAA、FedRAMP High 和其他許多專案。
 
-以下螢幕擷取畫面顯示如何使用稽核記錄和活動記錄來監視您的帳戶：:::image type="content" source="./media/database-security/nosql-database-security-application-logging.png" alt-text="客戶和資料庫提供者的責任":::
+以下螢幕擷取畫面顯示如何使用稽核記錄和活動記錄來監視您的帳戶：:::image type="content" source="./media/database-security/nosql-database-security-application-logging.png" alt-text="Azure Cosmos DB 的活動記錄":::
 
 <a id="primary-keys"></a>
 
@@ -99,7 +99,7 @@ ms.locfileid: "93096779"
 
 您可以使用 Azure 入口網站來抓取和重新產生主要、次要、唯讀和讀寫的主要金鑰。 相關指示請參閱[檢視、複製和重新產生存取金鑰](manage-with-cli.md#regenerate-account-key)。
 
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="客戶和資料庫提供者的責任":::
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Azure 入口網站中的存取控制 (IAM) - 示範 NoSQL 資料庫安全性":::
 
 ## <a name="next-steps"></a>後續步驟
 

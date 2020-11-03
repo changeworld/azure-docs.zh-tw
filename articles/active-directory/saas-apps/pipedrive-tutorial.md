@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: jeedes
-ms.openlocfilehash: b3b2032d8cefe881e59fe339786877c4f03c9305
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f85cb97406e8b6cbb4811268696fc36f47ec3adb
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553779"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896526"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pipedrive"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Pipedrive 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88553779"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Pipedrive。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -40,7 +40,7 @@ ms.locfileid: "88553779"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * Pipedrive 支援由 **SP 和 IDP** 起始的 SSO
-* 設定 Pipedrive 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 Pipedrive 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 
 ## <a name="adding-pipedrive-from-the-gallery"></a>從資源庫新增 Pipedrive
@@ -51,7 +51,7 @@ ms.locfileid: "88553779"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Pipedrive**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Pipedrive** 。
 1. 從結果面板中選取 [Pipedrive]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-pipedrive"></a>設定及測試 Pipedrive 的 Azure AD 單一登入
@@ -72,7 +72,7 @@ ms.locfileid: "88553779"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Pipedrive]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -88,7 +88,7 @@ ms.locfileid: "88553779"
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<COMPANY-NAME>.pipedrive.com/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Pipedrive 用戶端支援小組](mailto:support@pipedrive.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Pipedrive 用戶端支援小組](mailto:support@pipedrive.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. Pipedrive 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。
 
@@ -144,15 +144,15 @@ ms.locfileid: "88553779"
 
 1. 按一下 [使用者設定檔]  ，然後選取 [設定]  。
 
-    ![Pipedrive 設定](./media/pipedrive-tutorial/configure1.png)
+    ![螢幕擷取畫面：顯示已從 [使用者設定檔] 功能表選取 [設定]。](./media/pipedrive-tutorial/configure1.png)
 
 1. 向下捲動至資訊安全中心，然後選取 [單一登入]  。
 
-    ![Pipedrive 設定](./media/pipedrive-tutorial/configure2.png)
+    ![螢幕擷取畫面：顯示已在 [資訊安全中心] 內選取 [單一登入]。](./media/pipedrive-tutorial/configure2.png)
 
 1. 在 [Pipedrive 的 SAML 設定]  區段中，執行下列步驟：
 
-    ![Pipedrive 設定](./media/pipedrive-tutorial/configure3.png)
+    ![顯示 [Pipedrive 的 SAML 設定] 區段的螢幕擷取畫面，其中已醒目提示所有文字方塊。](./media/pipedrive-tutorial/configure3.png)
 
     a. 在 [簽發者]  文字方塊中，貼上您從 Azure 入口網站複製的 [應用程式同盟中繼資料 URL]  值。
 
@@ -168,11 +168,11 @@ ms.locfileid: "88553779"
 
 1. 向下捲動至公司，然後選取 [管理使用者]  。
 
-    ![Pipedrive 設定](./media/pipedrive-tutorial/user1.png)
+    ![顯示已從 [公司] 功能表選取 [管理使用者] 的螢幕擷取畫面。](./media/pipedrive-tutorial/user1.png)
 
 1. 按一下 [新增使用者]  。
     
-    ![Pipedrive 設定](./media/pipedrive-tutorial/user2.png)
+    ![螢幕擷取畫面：顯示 [管理使用者] 頁面，並已在右側選取 [新增使用者] 按鈕。](./media/pipedrive-tutorial/user2.png)
 
 1. 在 [管理使用者]  區段上，執行下列步驟：
 
@@ -190,16 +190,16 @@ ms.locfileid: "88553779"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Pipedrive] 圖格時，應該會自動登入您已設定 SSO 的 Pipedrive。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Pipedrive] 圖格時，應該會自動登入您已設定 SSO 的 Pipedrive。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Pipedrive](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)

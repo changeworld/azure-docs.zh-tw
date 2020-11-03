@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 02/27/2020
 ms.author: jgao
-ms.openlocfilehash: cff67e99d40b092341e89c96a9f1e037d8572248
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 68c10ba5581ffe404e8e3c1ac8ce92832cfcd6c4
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88690624"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896424"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-an-arm-template"></a>快速入門：使用 ARM 範本從 Azure Key Vault 設定及擷取祕密
 
@@ -82,15 +82,15 @@ ms.locfileid: "88690624"
 
     除非有指定，否則就使用預設值來建立金鑰保存庫和密碼。
 
-    * **訂用帳戶**：選取 Azure 訂用帳戶。
+    * **訂用帳戶** ：選取 Azure 訂用帳戶。
     * [資源群組]選取 [新建]，輸入資源群組的唯一名稱，然後按一下 [確認]。
-    * **位置**：選取位置。 例如，**美國中部**。
-    * **Key Vault 名稱**：輸入金鑰保存庫的名稱，它在 vault.azure.net 命名空間內必須是全域唯一的。 當您在下一節中驗證部署時，會需要用到此名稱。
-    * **租用戶識別碼**：範本功能會自動擷取您的租用戶識別碼。 請勿變更預設值。
-    * **AD 使用者識別碼**：輸入您從[必要條件](#prerequisites)中擷取的 Azure AD 使用者物件識別碼。
-    * **祕密名稱**：輸入您在金鑰保存庫中儲存的祕密的名稱。 例如，**adminpassword**。
-    * **祕密值**：輸入祕密值。 如果您儲存密碼，建議使用您在必要條件中建立而產生的密碼。
-    * **我同意上方所述的條款及條件**：選取。
+    * **位置** ：選取位置。 例如， **美國中部** 。
+    * **Key Vault 名稱** ：輸入金鑰保存庫的名稱，它在 vault.azure.net 命名空間內必須是全域唯一的。 當您在下一節中驗證部署時，會需要用到此名稱。
+    * **租用戶識別碼** ：範本功能會自動擷取您的租用戶識別碼。 請勿變更預設值。
+    * **AD 使用者識別碼** ：輸入您從 [必要條件](#prerequisites)中擷取的 Azure AD 使用者物件識別碼。
+    * **祕密名稱** ：輸入您在金鑰保存庫中儲存的祕密的名稱。 例如， **adminpassword** 。
+    * **祕密值** ：輸入祕密值。 如果您儲存密碼，建議使用您在必要條件中建立而產生的密碼。
+    * **我同意上方所述的條款及條件** ：選取。
 3. 選取 [購買]。 成功部署金鑰保存庫之後，您會收到通知：
 
     ![ARM 範本、Key Vault 整合、部署入口網站通知](../media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
@@ -124,7 +124,7 @@ Write-Host "Press [ENTER] to continue..."
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
-![ARM 範本、Key Vault 整合、部署入口網站驗證輸出](../media/quick-create-template/resource-manager-template-portal-deployment-cli-output.png)
+![顯示在 CLI 中部署入口網站驗證輸出的螢幕擷取畫面。](../media/quick-create-template/resource-manager-template-portal-deployment-cli-output.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 

@@ -9,19 +9,19 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 06b56566108bb482109d02d8d4f9db66dc2a6995
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 9e0bdbc9cc197deb5028848731f031ff19d5ebf7
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755696"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897796"
 ---
 > [!IMPORTANT]
 > 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。
 
 [參考文件](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src) | [套件 (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer) | [範例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) 或目前版本的 [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
@@ -91,6 +91,9 @@ dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 
 在應用程式的 **Main** 方法中，新增對本快速入門中所用非同步工作的呼叫。 您稍後會加以實作。
 
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
+
+
 ## <a name="object-model"></a>物件模型 
 
 透過表單辨識器，您可以建立兩種不同的用戶端類型。 第一個是 `FormRecognizerClient`，可用來查詢服務，以辨識出表單欄位和內容。 第二個是 `FormTrainingClient`，可用來建立和管理自訂模型，以供您改善辨識效果。 
@@ -143,16 +146,11 @@ dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 
 ## <a name="get-assets-for-testing"></a>取得用於測試的資產 
 
-本指南中的程式碼片段會使用 URL 所存取的遠端表單。 如果您想要改為處理本機表單文件，請參閱[參考文件](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer)和[範例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)中的相關方法。
-
 您也需要為訓練和測試資料新增 URL 的參考。 將這些專案新增至 **Program** 類別的根目錄。
 
 * 若要為您的自訂模型訓練資料擷取 SAS URL，請開啟 Microsoft Azure 儲存體總管、以滑鼠右鍵按一下您的容器，然後選取 [取得共用存取簽章]。 確定 [讀取] 和 [列出] 權限均已勾選，再按一下 [建立]。 然後，複製 [URL] 區段的值。 其格式應該為：`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
 * 然後，使用上述步驟來取得 Blob 儲存體中個別文件的 SAS URL。
 * 最後，儲存下列範例中包含的範例收據影像 URL (也可在 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) 上取得)。 
-
-> [!NOTE]
-> 本指南中的程式碼片段會使用 URL 所存取的遠端表單。 如果您想要改為處理本機表單文件，請參閱[參考文件](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/)中的相關方法。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_urls)]
 
@@ -164,6 +162,9 @@ dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 若要辨識位於指定 URI 的檔案內容，請使用 `StartRecognizeContentFromUri` 方法。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_getcontent_call)]
+
+> [!TIP]
+> 您也可以從本機檔案取得內容。 請參閱 [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) 方法，例如 **StartRecognizeContent** 。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的範例程式碼。
 
 此工作的其餘部分會將內容資訊列印至主控台。
 
@@ -208,10 +209,12 @@ Table 0 has 2 rows and 6 columns.
 
 本節示範如何使用預先訓練的收據模型，辨識並擷取美國收據中的常見欄位。
 
-若要從 URI 辨識收據，請使用 `StartRecognizeReceiptsFromUri` 方法。 
+若要從 URL 辨識收據，請使用 `StartRecognizeReceiptsFromUri` 方法。 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_call)]
 
+> [!TIP]
+> 您也可以辨識本機收據映像。 請參閱 [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) 方法，例如 **StartRecognizeReceipts** 。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的範例程式碼。
 
 傳回的值會是 `RecognizedReceipt` 物件的集合：提交的文件每頁各一個。 下列程式碼會處理位於指定 URI 的收據，並將主要欄位和值列印至主控台。
 
@@ -401,12 +404,14 @@ Submodel Form Type: form-63c013e3-1cab-43eb-84b0-f4b20cb9214c
 > [!IMPORTANT]
 > 若要這樣做，您必須先訓練模型，才能將其識別碼傳遞至下列方法。
 
-您會使用 `StartRecognizeCustomFormsFromUri` 方法。 傳回的值會是 `RecognizedForm` 物件的集合：提交的文件每頁各一個。 
-
+您會使用 `StartRecognizeCustomFormsFromUri` 方法。 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_analyze)]
 
-下列程式碼會將分析結果列印至主控台。 列印內容包括辨識到的每個欄位和對應的值，以及信賴分數。
+> [!TIP]
+> 您也可以分析本機檔案。 請參閱 [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) 方法，例如 **StartRecognizeCustomForms** 。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) 上的範例程式碼。
+
+傳回的值會是 `RecognizedForm` 物件的集合：提交的文件每頁各一個。 下列程式碼會將分析結果列印至主控台。 列印內容包括辨識到的每個欄位和對應的值，以及信賴分數。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_analyze_response)]
 

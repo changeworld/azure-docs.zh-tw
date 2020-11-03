@@ -10,12 +10,12 @@ ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: c3026ac25d8da0e21c72ffa2d36f90e44a691aea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55370e7f279283e97f9baf736f22794e1d08e09d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330497"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911795"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>使用適用於 MongoDB 的 Azure Cosmos DB API 建立 Angular 應用程式 - 建立 Cosmos 帳戶
 
@@ -35,7 +35,7 @@ ms.locfileid: "91330497"
 
 開始本教學課程的這個部分之前，請確定您已完成本教學課程[第 3 部分](tutorial-develop-mongodb-nodejs-part3.md)中的步驟。 
 
-在本教學課程區段中，您可以使用 Azure Cloud Shell (在您的網際網路瀏覽器中) 或本機上安裝的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+在本教學課程區段中，您可以使用 Azure Cloud Shell (在您的網際網路瀏覽器中) 或本機上安裝的 [Azure CLI](/cli/azure/install-azure-cli)。
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -64,11 +64,11 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 1. 按一下左列上的 Azure Cosmos DB 標誌 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png":::，其會顯示您擁有的所有 Azure Cosmos DB。
 1. 按一下您剛建立的 Azure Cosmos DB 帳戶，請選取 [概觀] 索引標籤並向下捲動以檢視資料庫所在的地圖。 
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-angular-portal.png" alt-text="Azure 入口網站中的新 Azure Cosmos DB 帳戶":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-angular-portal.png" alt-text="螢幕擷取畫面：顯示 Azure Cosmos DB 帳戶的概觀。":::
 
 4. 向下捲動左側導覽列並按一下 [全域複寫資料] 索引標籤，這會顯示您可在其中查看可複寫至之不同區域的地圖。 例如，您可以按一下澳洲東南部或澳洲東部，並將您的資料複寫至澳洲。 您可以在[如何使用 Azure Cosmos DB 全域散發資料](distribute-data-globally.md)中深入了解全域複寫。 現在，我們只要保留一個執行個體，而當我們想要複寫時，我們就會知道怎麼做。
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png" alt-text="Azure 入口網站中的新 Azure Cosmos DB 帳戶":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png" alt-text="螢幕擷取畫面：顯示已選取 [全域複寫資料] 的 Azure Cosmos DB 帳戶。":::
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: df8e4c2728bd7487520164553d26dfd42e38b647
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 601e124c1ad87724babfabffc95e9265bc962d87
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841833"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913291"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>教學課程：在 Jupyter Notebook 中開始使用 Azure Machine Learning
 
@@ -34,12 +34,14 @@ ms.locfileid: "91841833"
 
 Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機器學習模型的基礎資源。 工作區可將您的 Azure 訂用帳戶和資源群組與服務中容易使用的物件結合。
 
-您透過 Azure 入口網站建立工作區 (管理 Azure 資源的 Web 型主控台)。
+如果您已經有 Azure Machine Learning 工作區，請跳到 [[複製筆記本資料夾](#clone)]。  
+
+有許多[方式可以建立工作區](how-to-manage-workspace.md)。  在本教學課程中，您會透過 Azure 入口網站建立工作區 (管理 Azure 資源的 Web 型主控台)。
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal.md)]
 
 >[!IMPORTANT]
-> 記下您的*工作區*和*訂用帳戶*。 您會需要此資訊，以確保您在正確位置建立實驗。
+> 記下您的 *工作區* 和 *訂用帳戶* 。 您會需要此資訊，以確保您在正確位置建立實驗。
 
 ## <a name="run-a-notebook-in-your-workspace"></a><a name="azure"></a>在您的工作區中執行筆記本
 
@@ -49,7 +51,7 @@ Azure Machine Learning 會在您的工作區中包含雲端 Notebook 伺服器�
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
 
-### <a name="clone-a-notebook-folder"></a>複製 Notebook 資料夾
+### <a name="clone-a-notebook-folder"></a><a name="clone"></a> 複製筆記本資料夾
 
 您將完成下列實驗設定，並在 Azure Machine Learning 工作室中執行步驟。 此整合介面包含機器學習工具，可為所有技能等級的資料科學從業人員執行資料科學案例。
 
@@ -80,7 +82,7 @@ Azure Machine Learning 會在您的工作區中包含雲端 Notebook 伺服器�
     
 1. 在您的 **tutorials/image-classification-mnist-data** 資料夾中選取 **tutorial-1st-experiment-sdk-train.ipynb** 檔案。
 
-    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="顯示複製教學課程資料夾的螢幕擷取畫面。":::
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="顯示開啟教學課程資料夾的螢幕擷取畫面。":::
 
 1. 在頂端列上，選取要用來執行筆記本的計算執行個體。 這些虛擬機器 (VM) 已預先設定[執行 Azure Machine Learning 所需的一切](concept-compute-instance.md#contents)。
 
@@ -101,7 +103,7 @@ Azure Machine Learning 會在您的工作區中包含雲端 Notebook 伺服器�
 
 1. 當 VM 可供使用時，其會出現在頂端工具列中。 您現在可以使用工具列中的 [全部執行] 來執行筆記本，或在筆記本的程式碼資料格中使用 **Shift+Enter** 來執行。
 
-如果您有自訂 widget，或想要使用 Jupyter 或 JupyterLab，請選取最右側的 [Jupyter] 下拉式清單。 然後選取 **Jupyter** 或 **JupyterLab**。 新的瀏覽器視窗會隨即開啟。
+如果您有自訂 widget，或想要使用 Jupyter 或 JupyterLab，請選取最右側的 [Jupyter] 下拉式清單。 然後選取 **Jupyter** 或 **JupyterLab** 。 新的瀏覽器視窗會隨即開啟。
 
 ## <a name="next-steps"></a>後續步驟
 

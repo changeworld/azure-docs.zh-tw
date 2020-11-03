@@ -4,12 +4,12 @@ description: 在 Azure Service Fabric 上建立第一個 Linux 容器應用程�
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: b9e22ada3da572d5025f56fca824089bb6e20465
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d085f8704850cdbb03e21b15b3cca7c8998b96fb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563704"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93092937"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>在 Linux 建立第一個 Service Fabric 容器應用程式
 > [!div class="op_single_selector"]
@@ -21,7 +21,7 @@ ms.locfileid: "90563704"
 > [!NOTE]
 > 本文適用於 Linux 開發環境。  Service Fabric 叢集執行階段與 Docker 執行階段必須在相同的作業系統上執行。  您無法在 Windows 叢集上執行 Linux 容器。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 * 執行下列項目的開發電腦︰
   * [SERVICE FABRIC SDK 和工具](service-fabric-get-started-linux.md)。
   * [Docker CE for Linux](https://docs.docker.com/engine/installation/#prior-releases). 
@@ -36,7 +36,7 @@ ms.locfileid: "90563704"
 
 在 Dockerfile 中指定您的 Docker 容器。 Dockerfile 包含下列相關指示：設定您容器內的環境、載入您要執行的應用程式，以及對應連接埠。 Dockerfile 是 `docker build` 命令的輸入，該命令可建立映像。 
 
-建立空的目錄並建立 Dockerfile** 檔案 (沒有副檔名)。 將下列內容新增至 Dockerfile** 並儲存變更：
+建立空的目錄並建立 Dockerfile 檔案 (沒有副檔名)。 將下列內容新增至 Dockerfile 並儲存變更：
 
 ```
 # Use an official Python runtime as a base image
@@ -64,12 +64,12 @@ CMD ["python", "app.py"]
 如需詳細資訊，請參閱 [Dockerfile 參考](https://docs.docker.com/engine/reference/builder/)。
 
 ## <a name="create-a-basic-web-application"></a>建立基本 Web 應用程式
-建立 Flask Web 應用程式，其會在連接埠 80 上接聽並傳回 "Hello World!"。 在相同的目錄中，建立 requirements.txt** 檔案。 新增下列內容並儲存變更：
+建立 Flask Web 應用程式，其會在連接埠 80 上接聽並傳回 "Hello World!"。 在相同的目錄中，建立 requirements.txt 檔案。 新增下列內容並儲存變更：
 ```
 Flask
 ```
 
-此外，建立 app.py** 檔案並新增下列程式碼片段：
+此外，建立 app.py 檔案並新增下列程式碼片段：
 
 ```python
 from flask import Flask
@@ -88,7 +88,7 @@ if __name__ == "__main__":
 ```
 
 ## <a name="build-the-image"></a>建立映像
-執行 `docker build` 命令來建立可執行 Web 應用程式的映像。 開啟 PowerShell 視窗並瀏覽至 *c:\temp\helloworldapp*。 執行以下命令：
+執行 `docker build` 命令來建立可執行 Web 應用程式的映像。 開啟 PowerShell 視窗並瀏覽至 *c:\temp\helloworldapp* 。 執行下列命令：
 
 ```bash
 docker build -t helloworldapp .
@@ -114,7 +114,7 @@ helloworldapp                 latest              86838648aab6        2 minutes 
 docker run -d -p 4000:80 --name my-web-site helloworldapp
 ```
 
-name** - 提供執行中容器的名稱 (而不是容器識別碼)。
+name - 提供執行中容器的名稱 (而不是容器識別碼)。
 
 連線到執行中的容器。 開啟網頁瀏覽器，指向埠4000上傳回的 IP 位址，例如 "HTTP： \/ /localhost： 4000"。 您應該會看到 "Hello World!" 標題 顯示在瀏覽器中。
 
@@ -209,11 +209,11 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 
 ## <a name="configure-docker-healthcheck"></a>設定 Docker HEALTHCHECK 
 
-從 6.1 版開始，Service Fabric 會自動將 [Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) 事件整合至其系統健康情況報告。 這表示，如果您的容器已啟用 **HEALTHCHECK**，每當 Docker 報告容器的健康情況狀態發生變更時，Service Fabric 就會報告健康情況。 如果 health_status** 為「狀況良好」**，則 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 中的健康情況報告會顯示 **OK (正常)**，如果 health_status** 為「狀況不良」**，則顯示 **WARNING (警告)**。 
+從 6.1 版開始，Service Fabric 會自動將 [Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) 事件整合至其系統健康情況報告。 這表示，如果您的容器已啟用 **HEALTHCHECK** ，每當 Docker 報告容器的健康情況狀態發生變更時，Service Fabric 就會報告健康情況。 如果 health_status 為「狀況良好」，則 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 中的健康情況報告會顯示 **OK (正常)** ，如果 health_status 為「狀況不良」，則顯示 **WARNING (警告)** 。 
 
-從6.4 的最新重新整理版本開始，您可以選擇是否要將 docker HEALTHCHECK 評估報告為錯誤。 如果啟用此選項，當*health_status*狀況*良好*時，即會出現 **[確定**健康情況] 報告，當*health_status*狀況*不良*時，將會出現**錯誤**。
+從6.4 的最新重新整理版本開始，您可以選擇是否要將 docker HEALTHCHECK 評估報告為錯誤。 如果啟用此選項，當 *health_status* 狀況 *良好* 時，即會出現 **[確定** 健康情況] 報告，當 *health_status* 狀況 *不良* 時，將會出現 **錯誤** 。
 
-**HEALTHCHECK**指令指向針對監視容器健康情況所執行的實際檢查，必須存在於產生容器映射時所使用的 Dockerfile 中。
+**HEALTHCHECK** 指令指向針對監視容器健康情況所執行的實際檢查，必須存在於產生容器映射時所使用的 Dockerfile 中。
 
 ![螢幕擷取畫面顯示已部署的服務封裝 NodeServicePackage 詳細資料。][1]
 
@@ -235,13 +235,13 @@ docker push myregistry.azurecr.io/samples/helloworldapp
     </Policies>
 </ServiceManifestImport>
 ```
-依預設， *IncludeDockerHealthStatusInSystemHealthReport* 設為 **true**， *>restartcontaineronunhealthydockerhealthstatus* 設定為 **false**，而 *TreatContainerUnhealthyStatusAsError* 設定為 **false**。 
+依預設， *IncludeDockerHealthStatusInSystemHealthReport* 設為 **true** ， *>restartcontaineronunhealthydockerhealthstatus* 設定為 **false** ，而 *TreatContainerUnhealthyStatusAsError* 設定為 **false** 。 
 
-如果 *RestartContainerOnUnhealthyDockerHealthStatus* 設為 **true**，則報告中重複出現狀況不良的容器就會重新啟動 (可能在其他節點上重新啟動)。
+如果 *RestartContainerOnUnhealthyDockerHealthStatus* 設為 **true** ，則報告中重複出現狀況不良的容器就會重新啟動 (可能在其他節點上重新啟動)。
 
-如果*TreatContainerUnhealthyStatusAsError*設定為**true**，當容器的*health_status*狀況*不良*時，將會出現**錯誤**健康情況報告。
+如果 *TreatContainerUnhealthyStatusAsError* 設定為 **true** ，當容器的 *health_status* 狀況 *不良* 時，將會出現 **錯誤** 健康情況報告。
 
-如果您需要停用整個 Service Fabric 叢集的 **HEALTHCHECK** 整合，就必須將 [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) 設為 **false**。
+如果您需要停用整個 Service Fabric 叢集的 **HEALTHCHECK** 整合，就必須將 [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) 設為 **false** 。
 
 ## <a name="deploy-the-application"></a>部署應用程式
 建置應用程式後，可以使用 Service Fabric CLI 將它部署到本機叢集。
@@ -373,7 +373,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 若要將其他容器服務新增至已使用 yeoman 建立的應用程式，請執行下列步驟︰
 
 1. 將目錄變更為現有應用程式的根目錄。 例如，如果 `MyApplication` 是 Yeoman 所建立的應用程式，則為 `cd ~/YeomanSamples/MyApplication`。
-2. 執行 `yo azuresfcontainer:AddService`
+2. `yo azuresfcontainer:AddService`執行
 
 <a id="manually"></a>
 
@@ -413,7 +413,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
           },
           {
                 "name": "ContainerImagesToSkip",
-                "value": "microsoft/windowsservercore|microsoft/nanoserver|microsoft/dotnet-frameworku|..."
+                "value": "mcr.microsoft.com/windows/servercore|mcr.microsoft.com/windows/nanoserver|mcr.microsoft.com/dotnet/framework/aspnet|..."
           }
           ...
           }
@@ -452,7 +452,7 @@ Service Fabric 執行階段會配置 20 分鐘來下載及擷取容器映像，�
 
 ## <a name="start-the-docker-daemon-with-custom-arguments"></a>使用自訂引數啟動 Docker 精靈
 
-若使用 6.2 版和更新版本的 Service Fabric 執行階段，您可以使用自訂引數啟動 Docker 精靈。 若指定了自訂引數，除了 `--pidfile` 引數外，Service Fabric 就不會再將任何其他引數傳遞至 Docker 引擎。 因此，不應該將 `--pidfile` 當作引數來傳遞。 此外，此引數也應該繼續讓 Docker 精靈在 Windows 的預設名稱管道 (若在 Linux 上，則是 Unix 網域通訊端) 上接聽，Service Fabric 才能與精靈通訊。 您可以在叢集資訊清單 [主控]**** 區段的 **ContainerServiceArguments** 底下指定自訂引數。 範例如下列程式碼片段所示： 
+若使用 6.2 版和更新版本的 Service Fabric 執行階段，您可以使用自訂引數啟動 Docker 精靈。 若指定了自訂引數，除了 `--pidfile` 引數外，Service Fabric 就不會再將任何其他引數傳遞至 Docker 引擎。 因此，不應該將 `--pidfile` 當作引數來傳遞。 此外，此引數也應該繼續讓 Docker 精靈在 Windows 的預設名稱管道 (若在 Linux 上，則是 Unix 網域通訊端) 上接聽，Service Fabric 才能與精靈通訊。 您可以在叢集資訊清單 [主控] 區段的 **ContainerServiceArguments** 底下指定自訂引數。 範例如下列程式碼片段所示： 
  
 
 ```json
@@ -468,7 +468,7 @@ Service Fabric 執行階段會配置 20 分鐘來下載及擷取容器映像，�
 
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * 深入了解如何[在 Service Fabric 上執行容器](service-fabric-containers-overview.md)。
 * 閱讀[在容器中部署 .NET 應用程式](service-fabric-host-app-in-a-container.md)教學課程。
 * 深入了解 Service Fabric [應用程式生命週期](service-fabric-application-lifecycle.md)。

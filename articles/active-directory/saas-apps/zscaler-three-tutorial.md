@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 00585105350e9858bbfd649a41273def162febcb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12bc1de62217a598a478d8d7e4d71a4b60e000b9
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545772"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896628"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler-three"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Zscaler Three 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88545772"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Zscaler Three。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -54,7 +54,7 @@ ms.locfileid: "88545772"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Zscaler Three**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Zscaler Three** 。
 1. 從結果面板選取 [Zscaler Three]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-zscaler-three"></a>設定及測試 Zscaler Three 的 Azure AD 單一登入
@@ -75,7 +75,7 @@ ms.locfileid: "88545772"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Zscaler Three]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -86,7 +86,7 @@ ms.locfileid: "88545772"
 
 1. Zscaler Three 應用程式會預期特定格式的 SAML 判斷提示，這會需要您將自訂屬性對應加入至您的 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。
 
-    ![image](common/edit-attribute.png)
+    ![顯示使用者屬性的螢幕擷取畫面，其中已選取 [編輯] 圖示。](common/edit-attribute.png)
 
 6. 除了上述屬性外，Zscaler Three 應用程式還需要在 SAML 回應中多傳回幾個屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
     
@@ -95,7 +95,7 @@ ms.locfileid: "88545772"
     | memberOf     | user.assignedroles |
 
     > [!NOTE]
-    > 請按一下[這裡](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)，以了解如何在 Azure AD 中設定角色
+    > 請按一下[這裡](../develop/active-directory-enterprise-app-role-management.md)，以了解如何在 Azure AD 中設定角色
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -123,17 +123,17 @@ ms.locfileid: "88545772"
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 在應用程式清單中，選取 [Zscaler Three]  。
-1. 在 [使用者和群組]  對話方塊中，從清單中選取使用者 (例如 **Britta Simon**)，然後按一下畫面底部的 [選取]  按鈕。
+1. 在 [使用者和群組]  對話方塊中，從清單中選取使用者 (例如 **Britta Simon** )，然後按一下畫面底部的 [選取]  按鈕。
 
-    ![image](./media/zscaler-three-tutorial/tutorial_zscalerthree_users.png)
+    ![螢幕擷取畫面：顯示 [使用者和群組] 對話方塊，您可以在其中選取使用者。](./media/zscaler-three-tutorial/tutorial_zscalerthree_users.png)
 
 1. 從 [選取角色]  對話方塊的清單中選擇適當的使用者角色，然後按一下畫面底部的 [選取]  按鈕。
 
-    ![image](./media/zscaler-three-tutorial/tutorial_zscalerthree_roles.png)
+    ![螢幕擷取畫面：顯示 [選取角色] 對話方塊，您可以在其中選擇使用者角色。](./media/zscaler-three-tutorial/tutorial_zscalerthree_roles.png)
 
 1. 在 [新增指派]  對話方塊中，選取 [指派]  按鈕。
 
-    ![image](./media/zscaler-three-tutorial/tutorial_zscalerthree_assign.png)
+    ![螢幕擷取畫面：顯示 [新增指派] 對話方塊，您可以在其中選取 [指派]。](./media/zscaler-three-tutorial/tutorial_zscalerthree_assign.png)
 
 ## <a name="configure-zscaler-three-sso"></a>設定 Zscaler Three SSO
 
@@ -149,7 +149,7 @@ ms.locfileid: "88545772"
 
 4. 移至 管理 > 驗證 > 驗證設定  並執行下列步驟：
    
-    ![管理](./media/zscaler-three-tutorial/ic800206.png "系統管理")
+    ![螢幕擷取畫面：顯示 Zscaler One 網站，並有所述的步驟。](./media/zscaler-three-tutorial/ic800206.png "系統管理")
 
     a. 在 [驗證類型] 下選擇 [SAML]  。
 
@@ -161,23 +161,23 @@ ms.locfileid: "88545772"
     
     a. 在 [SAML 入口網站 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  。
 
-    b. 在 [登入名稱屬性]  文字方塊中，輸入 **NameID**。
+    b. 在 [登入名稱屬性]  文字方塊中，輸入 **NameID** 。
 
     c. 按一下 [上傳]  ，以上傳您從 Azure 入口網站的 [公開 SSL 憑證]  下載的 Azure SAML 簽署憑證。
 
     d. 切換 [啟用 SAML 自動佈建]  。
 
-    e. 如果您想要啟用 displayName 屬性的 SAML 自動佈建，請在 [使用者顯示名稱屬性]  文字方塊中，輸入 **displayName**。
+    e. 如果您想要啟用 displayName 屬性的 SAML 自動佈建，請在 [使用者顯示名稱屬性]  文字方塊中，輸入 **displayName** 。
 
-    f. 如果您想要啟用 memberOf 屬性的 SAML 自動佈建，請在 [群組名稱屬性]  文字方塊中，輸入 **memberOf**。
+    f. 如果您想要啟用 memberOf 屬性的 SAML 自動佈建，請在 [群組名稱屬性]  文字方塊中，輸入 **memberOf** 。
 
-    g. 如果您想要啟用 department 屬性的 SAML 自動佈建，請在 [部門名稱屬性]  文字方塊中，輸入 **department**。
+    g. 如果您想要啟用 department 屬性的 SAML 自動佈建，請在 [部門名稱屬性]  文字方塊中，輸入 **department** 。
 
     h. 按一下 [檔案]  。
 
 6. 在 [設定使用者驗證]  對話方塊頁面上執行下列步驟：
 
-    ![系統管理](./media/zscaler-three-tutorial/ic800207.png)
+    ![螢幕擷取畫面：顯示已選取 [啟用] 的 [設定使用者驗證] 對話方塊。](./media/zscaler-three-tutorial/ic800207.png)
 
     a. 將滑鼠停留在靠近左下方的 [啟用]  功能表上。
 
@@ -186,7 +186,7 @@ ms.locfileid: "88545772"
 ## <a name="configuring-proxy-settings"></a>進行 Proxy 設定
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>在 Internet Explorer 中進行 Proxy 設定
 
-1. 啟動 **Internet Explorer**。
+1. 啟動 **Internet Explorer** 。
 
 2. 從 [工具]  功能表選取 [網際網路選項]  可開啟 [網際網路選項]  對話方塊。   
     
@@ -204,9 +204,9 @@ ms.locfileid: "88545772"
 
     a. 選取 [在您的區域網路使用 Proxy 伺服器]  。
 
-    b. 在 [位址] 文字方塊中輸入 **gateway.Zscaler Three.net**。
+    b. 在 [位址] 文字方塊中輸入 **gateway.Zscaler Three.net** 。
 
-    c. 在 [連接埠] 文字方塊中輸入 **80**。
+    c. 在 [連接埠] 文字方塊中輸入 **80** 。
 
     d. 選取 [近端網址不使用 Proxy 伺服器]  。
 
@@ -225,15 +225,14 @@ ms.locfileid: "88545772"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Zscaler Three] 圖格時，應該會自動登入您已設定 SSO 的 Zscaler Three。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Zscaler Three] 圖格時，應該會自動登入您已設定 SSO 的 Zscaler Three。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Zscaler Three](https://aad.portal.azure.com/)
-

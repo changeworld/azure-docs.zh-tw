@@ -3,12 +3,12 @@ title: 針對 Azure 備份代理程式進行疑難排解
 description: 在本文中，您將瞭解如何針對 Azure 備份代理程式的安裝和註冊進行疑難排解。
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 2e2e807a8b849af435fe82d54bbfdd96b729fa38
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 4ae4142652d9d38d5bf384e5a10d6eeb7e3cc608
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091452"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900377"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>針對 Microsoft Azure 復原服務 (MARS) 代理程式進行疑難排解
 
@@ -37,11 +37,11 @@ ms.locfileid: "92091452"
 
 ## <a name="invalid-vault-credentials-provided"></a>提供的保存庫認證無效
 
-**錯誤訊息**：提供的保存庫認證無效。 檔案已損毀或沒有與復原服務關聯的最新認證。 (識別碼：34513)
+**錯誤訊息** ：提供的保存庫認證無效。 檔案已損毀或沒有與復原服務關聯的最新認證。 (識別碼：34513)
 
 | 原因 | 建議動作 |
 | ---     | ---    |
-| **保存庫認證無效** <br/> <br/> 保存庫認證檔案可能已損毀或可能已過期。  (例如，在註冊時間之前，可能已下載超過48小時。 ) | 從 Azure 入口網站上的復原服務保存庫[下載新的認證](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file)。 然後視需要採取下列步驟： <ul><li> 如果您已經安裝並註冊 MARS，請開啟 Microsoft Azure 備份代理程式 MMC 主控台。 然後選取 [**動作**] 窗格中的 [**註冊伺服器**]，以使用新的認證來完成註冊。 <br/> <li> 如果新的安裝失敗，請嘗試使用新的認證重新安裝。</ul> **注意**：如果已下載多個保存庫認證檔案，則只有最新的檔案會在接下來的48小時內生效。 建議您下載新的保存庫認證檔。
+| **保存庫認證無效** <br/> <br/> 保存庫認證檔案可能已損毀、可能已過期，或副檔名可能與 *vaultCredentials* 不同。  (例如，在註冊時間之前，可能已下載超過48小時。 ) | 從 Azure 入口網站上的復原服務保存庫[下載新的認證](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file)。 然後視需要採取下列步驟： <ul><li> 如果您已經安裝並註冊 MARS，請開啟 Microsoft Azure 備份代理程式 MMC 主控台。 然後選取 [ **動作** ] 窗格中的 [ **註冊伺服器** ]，以使用新的認證來完成註冊。 <br/> <li> 如果新的安裝失敗，請嘗試使用新的認證重新安裝。</ul> **注意** ：如果已下載多個保存庫認證檔案，則只有最新的檔案會在接下來的48小時內生效。 建議您下載新的保存庫認證檔。
 | **Proxy 伺服器/防火牆封鎖註冊** <br/>或 <br/>**沒有網際網路連線能力** <br/><br/> 如果您的電腦或 proxy 伺服器具有有限的網際網路連線能力，且您不確定是否有必要 Url 的存取權，則註冊將會失敗。| 請執行下列步驟：<br/> <ul><li> 與您的 IT 小組合作，以確保系統具有網際網路連線能力。<li> 如果您沒有 proxy 伺服器，請確定當您註冊代理程式時，未選取 [proxy] 選項。 [檢查您的 proxy 設定](#verifying-proxy-settings-for-windows)。<li> 如果您有防火牆/proxy 伺服器，請與您的網路團隊合作，以確保這些 Url 和 IP 位址具有存取權：<br/> <br> **URL**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP 位址**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>完成上述的疑難排解步驟之後，請嘗試再次註冊。<br></br> 如果您的連線是透過 Azure ExpressRoute，請確定已設定 [Azure expressroute 支援](backup-support-matrix-mars-agent.md#azure-expressroute-support)中所述的設定。
 | **防毒軟體正在封鎖註冊** | 如果您已在伺服器上安裝防毒軟體，請將必要的排除規則新增至這些檔案和資料夾的防毒軟體掃描： <br/><ul> <li> CBengine.exe <li> CSC.exe<li> 暫存檔案夾。 其預設位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。 <li> C:\Program Files\Microsoft Azure Recovery Services Agent\Bin. 的 bin 資料夾
 
@@ -57,7 +57,7 @@ ms.locfileid: "92091452"
 1. `psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"`從提升許可權的命令提示字元執行。
 
    此命令會開啟 Internet Explorer。
-1. 移至 [**工具**  >  **網際網路選項**連線  >  **Connections**  >  **區域網路設定**]。
+1. 移至 [ **工具**  >  **網際網路選項** 連線  >  **Connections**  >  **區域網路設定** ]。
 1. 檢查系統帳戶的 proxy 設定。
 1. 如果未設定 proxy 並提供 proxy 詳細資料，請移除詳細資料。
 1. 如果已設定 proxy 且 proxy 詳細資料不正確，請確定 **PROXY IP** 和 **埠** 的詳細資料正確無誤。
@@ -73,7 +73,7 @@ ms.locfileid: "92091452"
 
 | 錯誤  | 可能的原因 | 建議動作 |
 | ---     | ---     | ---    |
-| <br /><ul><li>Microsoft Azure 復原服務代理程式無法連接到 Microsoft Azure 備份。  (識別碼： 100050) 檢查您的網路設定，並確定您能夠連線到網際網路。<li>(407) 需要 Proxy 驗證。 |Proxy 正在封鎖連接。 |  <ul><li>在 Internet Explorer 中，移至**Tools**  >  **internet options**  >  **Security**  >  **internet**。 選取 [ **自訂層級** ]，並向下滾動至 [檔案 **下載** ] 區段。 選取 [啟用]。<p>您可能也必須在 Internet Explorer 中，將 [url 和 IP 位址](install-mars-agent.md#verify-internet-access) 新增至信任的網站。<li>變更設定以使用 Proxy 伺服器。 接著提供 Proxy 伺服器詳細資料。<li> 如果您的電腦具有有限的網際網路存取權，請確定電腦或 proxy 上的防火牆設定允許這些 [url 和 IP 位址](install-mars-agent.md#verify-internet-access)。 <li>如果您已在伺服器上安裝防毒軟體，請從防毒軟體掃描中排除這些檔案： <ul><li>CBEngine.exe (而不是 dpmra.exe)。<li>CSC.exe (與 .NET Framework 相關)。 伺服器上安裝的每個 .NET Framework 版本都有一個 CSC.exe。 排除受影響伺服器上所有 .NET Framework 版本的 CSC.exe 檔案。 <li>暫存檔案夾或快取位置。 <br>暫存檔案夾或快取路徑的預設位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。<li>C:\Program Files\Microsoft Azure Recovery Services Agent\Bin. 的 bin 資料夾
+| <br /><ul><li>Microsoft Azure 復原服務代理程式無法連接到 Microsoft Azure 備份。  (識別碼： 100050) 檢查您的網路設定，並確定您能夠連線到網際網路。<li>(407) 需要 Proxy 驗證。 |Proxy 正在封鎖連接。 |  <ul><li>在 Internet Explorer 中，移至 **Tools**  >  **internet options**  >  **Security**  >  **internet** 。 選取 [ **自訂層級** ]，並向下滾動至 [檔案 **下載** ] 區段。 選取 [啟用]。<p>您可能也必須在 Internet Explorer 中，將 [url 和 IP 位址](install-mars-agent.md#verify-internet-access) 新增至信任的網站。<li>變更設定以使用 Proxy 伺服器。 接著提供 Proxy 伺服器詳細資料。<li> 如果您的電腦具有有限的網際網路存取權，請確定電腦或 proxy 上的防火牆設定允許這些 [url 和 IP 位址](install-mars-agent.md#verify-internet-access)。 <li>如果您已在伺服器上安裝防毒軟體，請從防毒軟體掃描中排除這些檔案： <ul><li>CBEngine.exe (而不是 dpmra.exe)。<li>CSC.exe (與 .NET Framework 相關)。 伺服器上安裝的每個 .NET Framework 版本都有一個 CSC.exe。 排除受影響伺服器上所有 .NET Framework 版本的 CSC.exe 檔案。 <li>暫存檔案夾或快取位置。 <br>暫存檔案夾或快取路徑的預設位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。<li>C:\Program Files\Microsoft Azure Recovery Services Agent\Bin. 的 bin 資料夾
 
 ## <a name="the-specified-vault-credential-file-cannot-be-used-as-it-is-not-downloaded-from-the-vault-associated-with-this-server"></a>無法使用指定的保存庫認證檔，因為未從與此伺服器相關聯的保存庫下載該檔案
 
@@ -117,13 +117,13 @@ ms.locfileid: "92091452"
 
 | 錯誤  | 可能的原因 | 建議動作 |
 |---------|---------|---------|
-|<br />啟動沒有成功完成。 由於發生內部服務錯誤 [0x1FC07]，導致目前的操作失敗。 請在一段時間之後重試此作業。 如果問題持續發生， 請連絡 Microsoft 支援服務。     | <li> 暫存檔案夾位於沒有足夠空間的磁片區上。 <li> 暫存檔案夾已不正確地移動。 <li> 遺失 OnlineBackup.KEK 檔案。         | <li>升級至 [最新版本](https://aka.ms/azurebackup_agent) 的 MARS 代理程式。<li>將暫存檔案夾或快取位置移至具有可用空間的磁片區，該磁片區的可用空間介於備份資料總大小的5% 到10% 之間。 若要正確地移動快取位置，請參閱 [備份檔案和資料夾的相關](./backup-azure-file-folder-backup-faq.md#manage-the-backup-cache-folder)常見問題中的步驟。<li> 確定 OnlineBackup.KEK 檔案存在。 <br>*暫存檔案夾或快取路徑的預設位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*。        |
+|<br />啟動沒有成功完成。 由於發生內部服務錯誤 [0x1FC07]，導致目前的操作失敗。 請在一段時間之後重試此作業。 如果問題持續發生， 請連絡 Microsoft 支援服務。     | <li> 暫存檔案夾位於沒有足夠空間的磁片區上。 <li> 暫存檔案夾已不正確地移動。 <li> 遺失 OnlineBackup.KEK 檔案。         | <li>升級至 [最新版本](https://aka.ms/azurebackup_agent) 的 MARS 代理程式。<li>將暫存檔案夾或快取位置移至具有可用空間的磁片區，該磁片區的可用空間介於備份資料總大小的5% 到10% 之間。 若要正確地移動快取位置，請參閱 [備份檔案和資料夾的相關](./backup-azure-file-folder-backup-faq.md#manage-the-backup-cache-folder)常見問題中的步驟。<li> 確定 OnlineBackup.KEK 檔案存在。 <br>*暫存檔案夾或快取路徑的預設位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch* 。        |
 
 ## <a name="encryption-passphrase-not-correctly-configured"></a>未正確設定加密複雜密碼
 
 | 錯誤  | 可能的原因 | 建議動作 |
 |---------|---------|---------|
-| <br />錯誤 34506。 未正確設定儲存於此電腦上的加密複雜密碼。    | <li> 暫存檔案夾位於沒有足夠空間的磁片區上。 <li> 暫存檔案夾已不正確地移動。 <li> 遺失 OnlineBackup.KEK 檔案。        | <li>升級至[最新版本](https://aka.ms/azurebackup_agent)的 MARS 代理程式。<li>將暫存檔案夾或快取位置移至具有可用空間的磁片區，該磁片區的可用空間介於備份資料總大小的5% 到10% 之間。 若要正確地移動快取位置，請參閱 [備份檔案和資料夾的相關](./backup-azure-file-folder-backup-faq.md#manage-the-backup-cache-folder)常見問題中的步驟。<li> 確定 OnlineBackup.KEK 檔案存在。 <br>*暫存檔案夾或快取路徑的預設位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*。         |
+| <br />錯誤 34506。 未正確設定儲存於此電腦上的加密複雜密碼。    | <li> 暫存檔案夾位於沒有足夠空間的磁片區上。 <li> 暫存檔案夾已不正確地移動。 <li> 遺失 OnlineBackup.KEK 檔案。        | <li>升級至[最新版本](https://aka.ms/azurebackup_agent)的 MARS 代理程式。<li>將暫存檔案夾或快取位置移至具有可用空間的磁片區，該磁片區的可用空間介於備份資料總大小的5% 到10% 之間。 若要正確地移動快取位置，請參閱 [備份檔案和資料夾的相關](./backup-azure-file-folder-backup-faq.md#manage-the-backup-cache-folder)常見問題中的步驟。<li> 確定 OnlineBackup.KEK 檔案存在。 <br>*暫存檔案夾或快取路徑的預設位置是 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch* 。         |
 
 ## <a name="backups-dont-run-according-to-schedule"></a>備份不會根據排程執行
 
@@ -131,11 +131,11 @@ ms.locfileid: "92091452"
 
 - 請確定 Windows Server 備份排程不會與 Azure 檔案與資料夾備份排程衝突。
 
-- 請確定 [線上備份] 狀態設定為 [ **啟用**]。 若要確認狀態，請執行下列步驟：
+- 請確定 [線上備份] 狀態設定為 [ **啟用** ]。 若要確認狀態，請執行下列步驟：
 
-  1. 在工作排程器中，展開 [ **Microsoft** ]，然後選取 [ **線上備份**]。
+  1. 在工作排程器中，展開 [ **Microsoft** ]，然後選取 [ **線上備份** ]。
   1. 按兩下 [ **Microsoft microsoft-onlinebackup** ]，然後移至 [ **觸發** 程式] 索引標籤。
-  1. 檢查狀態是否設為 [ **已啟用**]。 如果不是，請選取 [ **編輯**]，選取 [ **已啟用**]，然後選取 **[確定]**。
+  1. 檢查狀態是否設為 [ **已啟用** ]。 如果不是，請選取 [ **編輯** ]，選取 [ **已啟用** ]，然後選取 **[確定]** 。
 
 - 請確定為執行工作而選取的使用者帳戶是伺服器上的 [ **系統** ] 或 [本機系統 **管理員] 群組** 。 若要確認使用者帳戶，請移至 [ **一般** ] 索引標籤，並檢查 **安全性** 選項。
 
@@ -173,20 +173,20 @@ Set-ExecutionPolicy Unrestricted
 
 ## <a name="job-could-not-be-started-as-another-job-was-in-progress"></a>因為另一個作業正在進行中，所以無法啟動作業
 
-如果您注意到**MARS 主控台**作業歷程記錄中的警告訊息  >  ** **，指出「作業無法啟動，因為另一個作業正在進行中」，這可能是因為工作排程器所觸發的工作重複實例。
+如果您注意到 **MARS 主控台** 作業歷程記錄中的警告訊息  >  **** ，指出「作業無法啟動，因為另一個作業正在進行中」，這可能是因為工作排程器所觸發的工作重複實例。
 
 ![因為另一個作業正在進行中，所以無法啟動作業](./media/backup-azure-mars-troubleshoot/job-could-not-be-started.png)
 
 若要解決此問題：
 
 1. 在 [執行] 視窗中輸入 *taskschd.msc* 來啟動工作排程器嵌入式管理單元
-1. 在左窗格中，流覽至**工作排程器 Library**  ->  **Microsoft**  ->  **microsoft-onlinebackup**。
+1. 在左窗格中，流覽至 **工作排程器 Library**  ->  **Microsoft**  ->  **microsoft-onlinebackup** 。
 1. 針對此文件庫中的每個工作，按兩下工作以開啟 [屬性]，然後執行下列步驟：
     1. 切換到 [設定]  索引標籤。
 
          ![[設定] 索引標籤](./media/backup-azure-mars-troubleshoot/settings-tab.png)
 
-    1. **如果工作已在執行中，請變更的選項，則會套用下列規則**。 選擇 [不要 **啟動新的實例**]。
+    1. **如果工作已在執行中，請變更的選項，則會套用下列規則** 。 選擇 [不要 **啟動新的實例** ]。
 
          ![將規則變更為不啟動新實例](./media/backup-azure-mars-troubleshoot/change-rule.png)
 
@@ -196,23 +196,23 @@ Azure 備份可能未成功掛接復原磁碟區，即使數分鐘後仍未成�
 
 1. 如果裝載進程已在執行幾分鐘，請將其取消。
 
-2. 檢查您是否有最新版本的備份代理程式。 若要檢查版本，請在 MARS 主控台的 [ **動作** ] 窗格上，選取 [ **關於 Microsoft Azure 復原服務代理程式**]。 確認 [版本]**** 號碼等於或高於[這篇文章](https://go.microsoft.com/fwlink/?linkid=229525)中提到的版本。 選取此連結以 [下載最新版本](https://go.microsoft.com/fwLink/?LinkID=288905)。
+2. 檢查您是否有最新版本的備份代理程式。 若要檢查版本，請在 MARS 主控台的 [ **動作** ] 窗格上，選取 [ **關於 Microsoft Azure 復原服務代理程式** ]。 確認 [版本] 號碼等於或高於[這篇文章](https://go.microsoft.com/fwlink/?linkid=229525)中提到的版本。 選取此連結以 [下載最新版本](https://go.microsoft.com/fwLink/?LinkID=288905)。
 
-3. 移至**裝置管理員**  >  **存放裝置控制器**，並找出**Microsoft iSCSI 啟動器**。 如果您找到它，請直接移至步驟7。
+3. 移至 **裝置管理員**  >  **存放裝置控制器** ，並找出 **Microsoft iSCSI 啟動器** 。 如果您找到它，請直接移至步驟7。
 
-4. 如果您找不到 Microsoft iSCSI 啟動器服務，請嘗試在 [ **Device Manager**  >  具有硬體識別碼**ROOT\ISCSIPRT**的**未知裝置**] 裝置管理員**儲存控制器**中尋找專案。
+4. 如果您找不到 Microsoft iSCSI 啟動器服務，請嘗試在 [ **Device Manager**  >  具有硬體識別碼 **ROOT\ISCSIPRT** 的 **未知裝置** ] 裝置管理員 **儲存控制器** 中尋找專案。
 
-5. 在 [ **不明裝置** ] 上按一下滑鼠右鍵，然後選取 [ **更新驅動程式軟體**]。
+5. 在 [ **不明裝置** ] 上按一下滑鼠右鍵，然後選取 [ **更新驅動程式軟體** ]。
 
-6. 藉由選取 [自動搜尋更新的驅動程式軟體]**** 的選項，以更新驅動程式。 此更新應該會將 **未知的裝置** 變更為 **Microsoft iSCSI 啟動器**：
+6. 藉由選取 [自動搜尋更新的驅動程式軟體] 的選項，以更新驅動程式。 此更新應該會將 **未知的裝置** 變更為 **Microsoft iSCSI 啟動器** ：
 
     ![Azure 備份裝置管理員的螢幕擷取畫面，已反白顯示儲存體控制器](./media/backup-azure-restore-windows-server/UnknowniSCSIDevice.png)
 
-7. 移至**工作管理員**  >  **服務 (本機) **  >  **Microsoft iSCSI 啟動器服務**：
+7. 移至 **工作管理員**  >  **服務 (本機)**  >  **Microsoft iSCSI 啟動器服務** ：
 
     ![Azure 備份工作管理員的螢幕擷取畫面，已反白顯示服務 (本機)](./media/backup-azure-restore-windows-server/MicrosoftInitiatorServiceRunning.png)
 
-8. 重新啟動 Microsoft iSCSI 啟動器服務。 若要這樣做，請以滑鼠右鍵按一下服務，然後選取 [ **停止**]。 然後再以滑鼠右鍵按一下它，然後選取 [ **啟動**]。
+8. 重新啟動 Microsoft iSCSI 啟動器服務。 若要這樣做，請以滑鼠右鍵按一下服務，然後選取 [ **停止** ]。 然後再以滑鼠右鍵按一下它，然後選取 [ **啟動** ]。
 
 9. 使用 [立即還原][](backup-instant-restore-capability.md) 重試復原。
 
@@ -278,7 +278,7 @@ Microsoft Azure 復原服務代理程式無法存取臨時位置以初始化 VHD
 --|--
 找不到檔案中的變更。 這可能是由各種原因所造成。 請重試該作業 | 若要解決此問題，請確認下列步驟，然後再次嘗試操作：<br/> - [確定 MARS 代理程式是最新的](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [確認並解決影響備份暫存空間的儲存體問題](#prerequisites)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 取得有關 [如何使用 Azure 備份代理程式來備份 Windows Server](tutorial-backup-windows-server-to-azure.md)的詳細資料。
 - 如果您需要還原備份，請參閱將 [檔案還原到 Windows 電腦](backup-azure-restore-windows-server.md)。

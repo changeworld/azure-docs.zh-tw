@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: 63b93db314701d281f3f4fff195671f43cdb9dbc
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 0b80db15e4fafd5e5c63a4194039fbeca21d429b
+ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340881"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92900392"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Azure 資訊安全中心提供的其他威脅防護
 除了內建的 [Azure Defender 保護](azure-defender.md)以外，Azure 資訊安全中心也提供下列威脅防護功能。
@@ -23,7 +23,7 @@ ms.locfileid: "92340881"
 > [!TIP]
 > 若要啟用資訊安全中心的威脅防護功能，您必須在包含適用工作負載的訂用帳戶上啟用 Azure Defender。
 >
-> 您只能在資源層級為**適用於 MariaDB/MySQL/PostgreSQL 的 Azure 資料庫**啟用威脅防護。
+> 您只能在資源層級為 **適用於 MariaDB/MySQL/PostgreSQL 的 Azure 資料庫** 啟用威脅防護。
 
 
 ## <a name="threat-protection-for-azure-network-layer"></a>Azure 網路層的威脅防護 <a name="network-layer"></a>
@@ -32,7 +32,6 @@ ms.locfileid: "92340881"
 某些網路設定可能會妨礙資訊安全中心產生可疑網路活動的警示。 若要讓資訊安全中心產生網路警示，請確定：
 - 您的虛擬機器具有公用 IP 位址 (或位於具有公用 IP 位址的負載平衡器上)。
 - 虛擬機器的網路輸出流量不會遭到外部 IDS 解決方案封鎖。
-- 您的虛擬機器在發生可疑通訊的整個期間被指派的 IP 位址是相同的。 這也適用於在受控服務中建立的 VM (例如 AKS、Databricks)。
 
 如需 Azure 網路層警示的清單，請參閱[警示的參考資料表](alerts-reference.md#alerts-azurenetlayer)。
 
@@ -59,7 +58,7 @@ ms.locfileid: "92340881"
 
 1. 設定您要安裝代理程式的工作區。 請確定工作區位於您在資訊安全中心使用的相同訂用帳戶中，而且您具備工作區的讀取/寫入權限。
 
-1. 啟用 **Azure Defender**，然後選取 [儲存]。
+1. 啟用 **Azure Defender** ，然後選取 [儲存]。
 
 
 ## <a name="threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB 的威脅防護 (預覽)<a name="cosmos-db"></a>
@@ -101,4 +100,4 @@ DDoS 攻擊會嘗試耗盡應用程式的資源，讓合法使用者無法使用
 * [所有 Azure 資訊安全中心警示的參考資料表](alerts-reference.md)
 * [Azure 資訊安全中心的安全性警示](security-center-alerts-overview.md)
 * [在 Azure 資訊安全中心管理和回應安全性警示](security-center-managing-and-responding-alerts.md)
-* [匯出安全性警示和建議 (預覽)](continuous-export.md)
+* [持續匯出資訊安全中心資料](continuous-export.md)

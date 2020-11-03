@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
 ms.custom: subject-armqs
-ms.openlocfilehash: e7c3f2f50d9ac1fb1731f70f7b442ab4a2e44425
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 223006193219afe4179f3161d5e60e6439207b22
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088919"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896050"
 ---
 # <a name="quickstart-create-a-front-door-using-an-arm-template"></a>快速入門：使用 ARM 範本建立 Front Door
 
@@ -27,7 +27,7 @@ ms.locfileid: "92088919"
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure]**** 按鈕。 範本會在 Azure 入口網站中開啟。
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
 
 [![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-front-door-create-basic%2Fazuredeploy.json)
 
@@ -40,7 +40,7 @@ ms.locfileid: "92088919"
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-front-door-create-basic)。
 
-在本快速入門中，您將使用單一後端以及符合 "/*" 的單一預設路徑來建立 Front Door 設定。 
+在本快速入門中，您將使用單一後端以及符合 `/*` 的單一預設路徑來建立 Front Door 設定。
 
 :::code language="json" source="~/quickstart-templates/101-front-door-create-basic/azuredeploy.json":::
 
@@ -50,7 +50,7 @@ ms.locfileid: "92088919"
 
 ## <a name="deploy-the-template"></a>部署範本
 
-1. 選取以下程式碼區塊的 [試用]**** 以開啟 Azure Cloud Shell，然後遵循指示登入 Azure。 
+1. 選取以下程式碼區塊的 [試用] 以開啟 Azure Cloud Shell，然後遵循指示登入 Azure。
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -67,13 +67,13 @@ ms.locfileid: "92088919"
 
     等候直到您看見主控台的提示字元。
 
-1. 從先前的程式碼區塊選取 [複製]**** 以複製 PowerShell 指令碼。
+1. 從先前的程式碼區塊選取 [複製] 以複製 PowerShell 指令碼。
 
-1. 以滑鼠右鍵按一下殼層主控台窗格，然後選取 [貼上]****。
+1. 以滑鼠右鍵按一下殼層主控台窗格，然後選取 [貼上]。
 
 1. 輸入這些值。
 
-    範本部署會使用單一後端建立 Front Door。 在此範例中，會使用 *<span>microsoft.</span>com* 作為 **backendAddress**。
+    範本部署會使用單一後端建立 Front Door。 在此範例中，會使用 `microsoft.com` 作為 **backendAddress** 。
 
     資源群組名稱是附加 **rg** 的專案名稱。
 
@@ -90,13 +90,13 @@ Azure PowerShell 用於部署範本。 除了 Azure PowerShell 以外，您也�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 選取左側面板中的 [資源群組]****。
+1. 選取左側面板中的 [資源群組]。
 
 1. 選取您在上一節中建立的資源群組。 預設的資源群組名稱是附加 **rg** 的專案名稱。
 
 1. 選取您先前建立的 Front Door，然後按一下 [前端主機] 連結。 此連結會開啟網頁瀏覽器，將您重新導向至您在建立期間定義的後端 FQDN。
 
-    :::image type="content" source="./media/quickstart-create-front-door-template/front-door-overview.png" alt-text="Front Door Resource Manager 範本 PowerShell 部署輸出":::
+    :::image type="content" source="./media/quickstart-create-front-door-template/front-door-overview.png" alt-text="Front Door 入口網站概觀":::
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -110,8 +110,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已建立一個：
-* Front Door
+在本快速入門中，您已建立 Front Door。
 
 若要了解如何將自訂網域新增至您的 Front Door，請繼續進行 Front Door 教學課程。
 

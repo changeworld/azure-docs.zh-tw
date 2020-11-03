@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: cenkdin;anilmur
-ms.openlocfilehash: 7b11d7f577f0a2ceb7284d9f78ccf83a64c72fd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ecab0ee67dd1d5cee3fd9927c00c9f9d827b2f47
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89258107"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910044"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Wirecast 編碼器來傳送單一位元速率的即時串流
 
@@ -37,7 +37,7 @@ ms.locfileid: "89258107"
 > [!NOTE]
 > 使用 RTMPS 通訊協定時，編碼器必須支援 TLS 1.2。 使用 Wirecast 版本13.0.2 或更高版本，因為 TLS 1.2 需求。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 * [建立 Azure 媒體服務帳戶](media-services-portal-create-account.md)
 * 確定有執行中的「串流端點」。 如需詳細資訊，請參閱 [在媒體服務帳戶中管理串流端點](media-services-portal-manage-streaming-endpoints.md)
 * 安裝最新版的 [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) 工具。
@@ -49,17 +49,17 @@ ms.locfileid: "89258107"
 * 使用軟體型編碼器時，請關閉任何不必要的程式。
 
 ## <a name="create-a-channel"></a>建立通道
-1. 在 AMSE 工具中，瀏覽至 [Live]**** 索引標籤，然後在通道區域內按一下滑鼠右鍵。 從功能表選取 [建立通道...] **** 。
+1. 在 AMSE 工具中，瀏覽至 [Live] 索引標籤，然後在通道區域內按一下滑鼠右鍵。 從功能表選取 [建立通道...]  。
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
+    ![螢幕擷取畫面：顯示從功能表選取的 [建立頻道]。](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
 
-2. 指定通道名稱，描述欄位是選擇性的。 在 [頻道設定] 下方，針對 [即時編碼] 選項選取 [標準]****，並將 [輸入通訊協定] 設定為 [RTMP]****。 您可以將所有其他設定保留現狀。
+2. 指定通道名稱，描述欄位是選擇性的。 在 [頻道設定] 下方，針對 [即時編碼] 選項選取 [標準]，並將 [輸入通訊協定] 設定為 [RTMP]。 您可以將所有其他設定保留現狀。
 
     請確認已選取 [ **立即啟動新頻道** ]。
 
-3. 按一下 [ **建立頻道**]。
+3. 按一下 [ **建立頻道** ]。
 
-   ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast2.png)
+   ![螢幕擷取畫面顯示 [建立即時頻道] 對話方塊。](./media/media-services-wirecast-live-encoder/media-services-wirecast2.png)
 
 > [!NOTE]
 > 通道約需 20 分鐘的時間即可啟動。
@@ -76,7 +76,7 @@ ms.locfileid: "89258107"
 ## <a name="configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />設定 Telestream Wirecast 編碼器
 在本教學課程中，我們會使用下列輸出設定。 本章節的其餘部分將詳細說明組態步驟。
 
-**影片**：
+**影片** ：
 
 * 轉碼器：H.264
 * 設定檔：高 (層級 4.0)
@@ -84,7 +84,7 @@ ms.locfileid: "89258107"
 * 主要畫面格：2 秒 (60 秒)
 * 畫面播放速率：30
 
-**音訊**：
+**音訊** ：
 
 * 轉碼器：AAC (LC)
 * 位元速率：192 kbps
@@ -92,15 +92,15 @@ ms.locfileid: "89258107"
 
 ### <a name="configuration-steps"></a>組態步驟
 1. 在使用的機器上開啟 Telestream Wirecast 應用程式，並設定 RTMP 串流。
-2. 瀏覽至 [輸出]**** 索引標籤，並選取 [輸出設定...]**** 以設定輸出。
+2. 瀏覽至 [輸出] 索引標籤，並選取 [輸出設定...] 以設定輸出。
 
-    請確定 [輸出目的地]**** 已設為 [RTMP Server]****。
+    請確定 [輸出目的地] 已設為 [RTMP Server]。
 3. 按一下 [確定]。
-4. 在 [設定] 頁面上，將 [目的地]**** 欄位設為 [Azure 媒體服務]****。
+4. 在 [設定] 頁面上，將 [目的地] 欄位設為 [Azure 媒體服務]。
 
-    編碼設定檔已預先選取為 [Azure H.264 720p 16:9 (1280x720)] ****。 若要自訂這些設定，請選取下拉式清單右邊的齒輪圖示，然後選擇 [新增預設]****。
+    編碼設定檔已預先選取為 [Azure H.264 720p 16:9 (1280x720)] 。 若要自訂這些設定，請選取下拉式清單右邊的齒輪圖示，然後選擇 [新增預設]。
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast3.png)
+    ![螢幕擷取畫面顯示 [選擇範本] 對話方塊，其中已選取 [BlobTrigger]。](./media/media-services-wirecast-live-encoder/media-services-wirecast3.png)
 5. 設定編碼器預設。
 
     為預設命名，並檢查下列建議的設定：
@@ -118,57 +118,57 @@ ms.locfileid: "89258107"
    * 目標位元速率：192 kbit/秒
    * 取樣速率：44.100 kHz
 
-     ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)
+     ![顯示 AzureTest1 之編碼器預設值的螢幕擷取畫面。](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)
 6. 按下 [儲存] 。
 
     [編碼] 欄位現在會有可供選取的新建立設定檔。
 
     請確定已選取新的設定檔。
-7. 取得通道的輸入 URL，才能將它指派給 Wirecast 的 **RTMP 端點**。
+7. 取得通道的輸入 URL，才能將它指派給 Wirecast 的 **RTMP 端點** 。
 
-    瀏覽回到 AMSE 工具，並檢查通道的完成狀態。 狀態從 [啟動中]**** 變更為 [執行中]**** 後，您便可取得輸入 URL。
+    瀏覽回到 AMSE 工具，並檢查通道的完成狀態。 狀態從 [啟動中] 變更為 [執行中] 後，您便可取得輸入 URL。
 
-    頻道執行時，以滑鼠右鍵按一下頻道名稱，向下瀏覽讓滑鼠游標停留在 [複製輸入 URL 到剪貼簿]****，然後選取 [主要輸入 URL]****。  
+    頻道執行時，以滑鼠右鍵按一下頻道名稱，向下瀏覽讓滑鼠游標停留在 [複製輸入 URL 到剪貼簿]，然後選取 [主要輸入 URL]。  
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast6.png)
-8. 在 Wirecast [輸出設定]**** 視窗中，於輸出區段的 [位址]**** 欄位中貼上這項資訊，並指派串流名稱。
+    ![螢幕擷取畫面顯示主要輸入 U R L 的複製輸入 U R L to 剪貼簿選項。](./media/media-services-wirecast-live-encoder/media-services-wirecast6.png)
+8. 在 Wirecast [輸出設定] 視窗中，於輸出區段的 [位址] 欄位中貼上這項資訊，並指派串流名稱。
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast5.png)
+    ![顯示輸出設定的螢幕擷取畫面。](./media/media-services-wirecast-live-encoder/media-services-wirecast5.png)
 
 1. 選取 [確定]  。
-2. 在 **Wirecast** 主畫面上，確認視訊和音訊的輸入來源已就緒，然後按下左上角的 [資料流]****。
+2. 在 **Wirecast** 主畫面上，確認視訊和音訊的輸入來源已就緒，然後按下左上角的 [資料流]。
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
+    ![螢幕擷取畫面：顯示 [Wirecast 資料流程] 按鈕。](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
 
 > [!IMPORTANT]
-> 在您按一下 [資料流]**** 之前，**必須**確保通道已就緒。
+> 在您按一下 [資料流] 之前， **必須** 確保通道已就緒。
 > 此外，請務必不要讓通道在沒有輸入比重摘要的情況下，處於就緒狀態超過 15 分鐘。
 >
 >
 
 ## <a name="test-playback"></a>測試播放
 
-瀏覽至 AMSE 工具，然後以滑鼠右鍵按一下要測試的通道。 在功能表中，將滑鼠游標停留在 [播放預覽]****，並選取 [使用 Azure 媒體播放器]****。  
+瀏覽至 AMSE 工具，然後以滑鼠右鍵按一下要測試的通道。 在功能表中，將滑鼠游標停留在 [播放預覽]，並選取 [使用 Azure 媒體播放器]。  
 
-![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
+![螢幕擷取畫面顯示已選取 Azure 媒體播放機選項來播放預覽。](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
 
 如果播放器中出現串流，則編碼器已妥善設定為連接到 AMS。
 
 如果收到錯誤，則必須重設通道，且編碼器設定需要調整。 如需指引，請參閱[疑難排解](media-services-troubleshooting-live-streaming.md)一文。  
 
 ## <a name="create-a-program"></a>建立程式
-1. 一旦確認通道播放沒問題後，請建立程式。 在 AMSE 工具的 [Live]**** 索引標籤下，於程式區域內按一下滑鼠右鍵，並選取 [建立新的程式]****。  
+1. 一旦確認通道播放沒問題後，請建立程式。 在 AMSE 工具的 [Live] 索引標籤下，於程式區域內按一下滑鼠右鍵，並選取 [建立新的程式]。  
 
-    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast9.png)
-2. 為程式命名，並視需要調整 [封存時間長度]**** \(預設為 4 小時)。 您也可以指定儲存體位置，或保留為預設值。  
-3. 勾選 [現在啟動程式] **** 方塊。
-4. 按一下 [建立程式] ****。  
+    ![螢幕擷取畫面顯示已選取 [建立程式] 選項。](./media/media-services-wirecast-live-encoder/media-services-wirecast9.png)
+2. 為程式命名，並視需要調整 [封存時間長度] \(預設為 4 小時)。 您也可以指定儲存體位置，或保留為預設值。  
+3. 勾選 [現在啟動程式]  方塊。
+4. 按一下 [建立程式] 。  
 
    >[!NOTE]
    >建立程式時所使用的時間會比建立通道時少。
        
-5. 一旦程式開始執行，請在程式上按一下滑鼠右鍵，並瀏覽至 [播放程式]****，然後選取 [使用 Azure 媒體播放器]**** 確認播放。  
-6. 一經確認後，再次於該程式上按一下滑鼠右鍵，並選取 [複製輸出 URL 到剪貼簿]**** \(或從 [程式資訊和設定]**** 功能表選項擷取這項資訊)。
+5. 一旦程式開始執行，請在程式上按一下滑鼠右鍵，並瀏覽至 [播放程式]，然後選取 [使用 Azure 媒體播放器] 確認播放。  
+6. 一經確認後，再次於該程式上按一下滑鼠右鍵，並選取 [複製輸出 URL 到剪貼簿] \(或從 [程式資訊和設定] 功能表選項擷取這項資訊)。
 
 串流現在已經可以內嵌於播放程式中，或散發給某個對象，以供即時檢視。  
 

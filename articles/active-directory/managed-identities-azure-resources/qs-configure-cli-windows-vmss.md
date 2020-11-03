@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: caf37fcd236f1483580d007d1432284116f728ca
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a1366e60b21eb7a073f7f3e758cd53298d6946b2
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90969056"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897240"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>使用 Azure CLI 在虛擬機器擴展集上設定 Azure 資源受控識別
 
@@ -32,22 +32,24 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 - 在 Azure 虛擬機器擴展集上啟用和停用系統指派的受控識別
 - 在 Azure 虛擬機器擴展集上新增和移除使用者指派的受控識別
 
+如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#managed-identity-types)**。
-- 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
+- 如果不熟悉 Azure 資源的受控識別，請參閱 [什麼是 Azure 資源受控識別？](overview.md)。 若要了解系統指派和使用者指派的受控識別類型，請參閱 [受控識別類型](overview.md#managed-identity-types)。
+
 - 若要執行本文中的管理作業，您的帳戶需要下列 Azure 角色型存取控制指派：
 
-    > [!NOTE]
-    > 不需要其他 Azure AD 目錄角色指派。
+  - [虛擬機器參與者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)，可建立虛擬機器擴展集，並從虛擬機器擴展集啟用和移除系統和/或使用者指派的受控識別。
 
-    - [虛擬機器參與者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)，可建立虛擬機器擴展集，並從虛擬機器擴展集啟用和移除系統和/或使用者指派的受控識別。
-    - [受控識別參與者](../../role-based-access-control/built-in-roles.md#managed-identity-contributor)角色，可建立使用者指派的受控識別。
-    - [受控識別操作員](../../role-based-access-control/built-in-roles.md#managed-identity-operator)角色，可為虛擬機器擴展集指派和移除使用者指派的受控識別。
-- 若要執行範例指令碼，您有兩個選項：
-    - 使用 [Azure Cloud Shell](../../cloud-shell/overview.md)，您可以使用程式碼區塊右上角的 [試用] 按鈕來開啟。
-    - 藉由安裝最新版本的 [Azure CLI](/cli/azure/install-azure-cli)，在本機執行指令碼，然後使用 [az login](/cli/azure/reference-index#az-login) 來登入 Azure。 請使用您想用來建立資源，且已與 Azure 訂用帳戶建立關聯的帳戶。
+  - [受控識別參與者](../../role-based-access-control/built-in-roles.md#managed-identity-contributor)角色，可建立使用者指派的受控識別。
+
+  - [受控識別操作員](../../role-based-access-control/built-in-roles.md#managed-identity-operator)角色，可為虛擬機器擴展集指派和移除使用者指派的受控識別。
+
+  > [!NOTE]
+  > 不需要其他 Azure AD 目錄角色指派。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="system-assigned-managed-identity"></a>系統指派的受控識別
 

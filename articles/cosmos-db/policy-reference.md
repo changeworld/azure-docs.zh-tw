@@ -7,18 +7,19 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 3e3e8cd7a505b6f445a1a72cb9d5b2b77583ff87
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 97458f17bcb74e54e0b0453c2a279703bb392f9f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313076"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93080629"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cosmos-db"></a>適用於 Azure Cosmos DB 的 Azure 原則內建定義
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 此頁面是適用於 Azure Cosmos DB 的 [Azure 原則](../governance/policy/overview.md)內建原則定義的索引。 如需其他服務的其他內建 Azure 原則，請參閱 [Azure 原則內建定義](../governance/policy/samples/built-in-policies.md)。
 
-連結至 Azure 入口網站中原則定義的每個內建原則定義名稱。 使用 [版本]**** 資料行中的連結來查看 [Azure 原則 GitHub 存放庫](https://github.com/Azure/azure-policy)上的來源。
+連結至 Azure 入口網站中原則定義的每個內建原則定義名稱。 使用 [版本] 資料行中的連結來查看 [Azure 原則 GitHub 存放庫](https://github.com/Azure/azure-policy)上的來源。
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 

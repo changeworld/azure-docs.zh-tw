@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: c2738e1a6168440adee79ebaa599a313600153a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d87be085331c174b58e2a475e18efa54a78cfea
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546758"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895145"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>教學課程：Azure Active Directory 與 SAP 雲端平台整合
 
@@ -27,7 +27,7 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 SAP 雲端平台 (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -37,7 +37,7 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
 * Azure AD 訂用帳戶。 如果您沒有 Azure AD 環境，您可以在[這裡](https://azure.microsoft.com/pricing/free-trial/)取得一個月的試用帳戶
 * 已啟用 SAP 雲端平台單一登入的訂用帳戶
 
-完成本教學課程之後，您指派給 SAP 雲端平台的 Azure AD 使用者就能夠使用[存取面板簡介](../user-help/active-directory-saas-access-panel-introduction.md)對應用程式進行單一登入。
+完成本教學課程之後，您指派給 SAP 雲端平台的 Azure AD 使用者就能夠使用[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)對應用程式進行單一登入。
 
 >[!IMPORTANT]
 >您需要在 SAP 雲端平台帳戶上部署您自己的應用程式或訂閱應用程式來測試單一登入。 在本教學課程中，帳戶中已部署一個應用程式。
@@ -67,7 +67,7 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **SAP 雲端平台**，從結果面板中選取 [SAP 雲端平台]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **SAP 雲端平台** ，從結果面板中選取 [SAP 雲端平台]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 SAP 雲端平台](common/search-new-app.png)
 
@@ -107,7 +107,7 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
 
     ![SAP 雲端平台網域及 URL 單一登入資訊](common/sp-identifier-reply.png)
 
-    a. 在 [登入 URL]  文字方塊中，輸入使用者用來登入 **SAP 雲端平台**應用程式的 URL。 這是您的 SAP 雲端平台應用程式中受保護資源的帳戶特定 URL。 此 URL 根據下列模式：`https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
+    a. 在 [登入 URL]  文字方塊中，輸入使用者用來登入 **SAP 雲端平台** 應用程式的 URL。 這是您的 SAP 雲端平台應用程式中受保護資源的帳戶特定 URL。 此 URL 根據下列模式：`https://<applicationName><accountName>.<landscape host>.ondemand.com/<path_to_protected_resource>`
       
     >[!NOTE]
     >這是您 SAP 雲端平台應用程式中需要使用者驗證的 URL。
@@ -136,7 +136,7 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
     > [!NOTE] 
     > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請連絡[ SAP 雲端平台用戶端支援小組](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/5dd739823b824b539eee47b7860a00be.html)，以取得單一登入 URL 和識別碼。 您可以從信任管理區段取得的「回覆 URL」，稍後會在本教學課程中說明。
     > 
-4. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+4. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -150,7 +150,7 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
 
 3. 在 [信任管理] 區段的 [本機服務提供者]  下，執行下列步驟：
 
-    ![信任管理](./media/sap-hana-cloud-platform-tutorial/ic793931.png "信任管理")
+    ![螢幕擷取畫面：顯示 [信任管理] 區段，其中已選取 [本地服務提供者] 索引標籤，並已醒目提示所有文字方塊。](./media/sap-hana-cloud-platform-tutorial/ic793931.png "信任管理")
    
     a. 按一下 **[編輯]** 。
 
@@ -158,7 +158,7 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
 
     c. 針對 [本機提供者名稱]  ，保留預設值。 複製這個值，然後在 Azure AD 的 SAP 雲端平台設定中，貼到 [識別碼]  欄位中。
 
-    d. 若要產生**簽署金鑰**和**簽署憑證**金鑰組，請按一下 [產生金鑰組]  。
+    d. 若要產生 **簽署金鑰** 和 **簽署憑證** 金鑰組，請按一下 [產生金鑰組]  。
 
     e. 針對 [主體傳播]  ，選取 [已停用]  。
 
@@ -178,7 +178,7 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
 
 5. 按一下 [信任的識別提供者]  索引標籤，然後再按一下 [新增信任的識別提供者]  。
    
-    ![信任管理](./media/sap-hana-cloud-platform-tutorial/ic790802.png "信任管理")
+    ![螢幕擷取畫面：顯示 [信任管理] 頁面，其中已選取 [信任的識別提供者] 索引標籤。](./media/sap-hana-cloud-platform-tutorial/ic790802.png "信任管理")
    
     >[!NOTE]
     >若要管理信任的識別提供者清單，您必須已經在 [本機服務提供者] 區段中選擇了 [自訂組態類型]。 針對 [預設組態類型]，您對 SAP ID 服務有不可編輯且隱含的信任。 針對 [無]，您不具任何信任設定。
@@ -213,7 +213,7 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
     
     b. 螢幕擷取畫面中的 [預設屬性]  僅供說明之用。 其並不是案例進行所必須的要素。  
  
-    c. 螢幕擷取畫面所顯示的**主體屬性**名稱與值取決於應用程式是如何開發的。 您的應用程式很可能需要不同的對應。
+    c. 螢幕擷取畫面所顯示的 **主體屬性** 名稱與值取決於應用程式是如何開發的。 您的應用程式很可能需要不同的對應。
 
 ### <a name="assertion-based-groups"></a>以判斷提示為基礎的群組
 
@@ -241,7 +241,7 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -258,7 +258,7 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，輸入 **SAP 雲端平台**並加以選取。
+2. 在應用程式清單中，輸入 **SAP 雲端平台** 並加以選取。
 
     ![應用程式清單中的 SAP 雲端平台連結](common/all-applications.png)
 
@@ -282,7 +282,7 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
 
 **若要指派角色給使用者，請執行下列步驟：**
 
-1. 登入您的 **SAP 雲端平台**駕駛座。
+1. 登入您的 **SAP 雲端平台** 駕駛座。
 
 2. 請執行下列步驟：
    
@@ -302,13 +302,12 @@ SAP 雲端平台與 Azure AD 整合提供下列優點：
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [SAP 雲端平台] 圖格時，應該會自動登入您設定 SSO 的 SAP 雲端平台。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [SAP 雲端平台] 圖格時，應該會自動登入您設定 SSO 的 SAP 雲端平台。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
