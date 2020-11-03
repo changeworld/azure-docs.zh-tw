@@ -5,19 +5,20 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/20/2020
+ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 5eacd84d2ff37c10702896127adcb67f5459b6be
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7d969392c3245eb81ed07889bd956d2b8e8fb82f
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461663"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93234084"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>使用 Azure 匯入/匯出服務將資料匯入 Azure 檔案服務
 
-本文提供的逐步指示會說明如何使用 Azure 匯入/匯出服務，安全地將大量資料匯入 Azure 檔案服務。 若要將匯入資料，服務會要求您將包含資料的可支援磁碟機寄送到 Azure 資料中心。  
+本文提供的逐步指示會說明如何使用 Azure 匯入/匯出服務，安全地將大量資料匯入 Azure 檔案服務。 若要將匯入資料，服務會要求您將包含資料的可支援磁碟機寄送到 Azure 資料中心。
 
 匯入/匯出服務僅支援將 Azure 檔案服務匯入到 Azure 儲存體。 不支援將 Azure 檔案服務匯出。
 
@@ -29,8 +30,8 @@ ms.locfileid: "92461663"
 - 具有至少一個 Azure 儲存體帳戶。 請參閱[匯入/匯出服務支援的儲存體帳戶和儲存體類型](storage-import-export-requirements.md)清單。 如需建立新儲存體帳戶的詳細資訊，請參閱 [如何建立儲存體帳戶](storage-account-create.md)(英文)。
 - 具有屬於[支援類型](storage-import-export-requirements.md#supported-disks)的磁碟，且數量足夠。
 - 具有執行[受支援 OS 版本](storage-import-export-requirements.md#supported-operating-systems) 的 Windows 系統。
-- 請在 Windows 系統上[下載 WAImportExport 第 2 版](https://aka.ms/waiev2)。 將檔案解壓縮至預設資料夾 `waimportexport`。 例如： `C:\WaImportExport`。
-- 擁有 FedEx/DHL 帳戶。 如果您想要使用 FedEx/DHL 以外的電訊廠商，請聯絡 Azure 資料箱營運團隊 `adbops@microsoft.com` 。  
+- 請在 Windows 系統上[下載 WAImportExport 第 2 版](https://aka.ms/waiev2)。 將檔案解壓縮至預設資料夾 `waimportexport`。 例如： `C:\WaImportExport` 。
+- 擁有 FedEx/DHL 帳戶。 如果您想要使用 FedEx/DHL 以外的電訊廠商，請聯絡 Azure 資料箱營運團隊 `adbops@microsoft.com` 。
     - 帳戶必須是有效的、需要有餘額，且必須有退貨運送功能。
     - 產生匯出作業的追蹤號碼。
     - 每個作業都應該具有個別的追蹤號碼。 不支援多個作業使用相同的追蹤號碼。
@@ -48,16 +49,16 @@ ms.locfileid: "92461663"
 
 1. 透過 SATA 連接器將我們的磁碟機連線到 Windows 系統。
 2. 在每個磁碟機上建立單一 NTFS 磁碟區。 指派磁碟機代號給磁碟區。 請勿使用掛接點。
-3. 在工具所在的根資料夾中，修改 dataset.csv** 檔案。 根據您要匯入的是檔案、資料夾或兩者，將項目加入 dataset.csv** 檔案，類似下列範例。  
+3. 在工具所在的根資料夾中，修改 dataset.csv 檔案。 根據您要匯入的是檔案、資料夾或兩者，將項目加入 dataset.csv 檔案，類似下列範例。
 
-   - **若要匯入**檔案：在下列範例中，要複製的資料位於 F：磁片磁碟機中。 您的檔案 MyFile1.txt** 會複製到 MyAzureFileshare1** 的根目錄。 如果 MyAzureFileshare1** 不存在，則會建立在 Azure 儲存體帳戶中。 資料夾結構會保留。
+   - **若要匯入** 檔案：在下列範例中，要複製的資料位於 F：磁片磁碟機中。 您的檔案 MyFile1.txt 會複製到 MyAzureFileshare1 的根目錄。 如果 MyAzureFileshare1 不存在，則會建立在 Azure 儲存體帳戶中。 資料夾結構會保留。
 
        ```
            BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
 
        ```
-   - **若要匯入資料夾**：MyFolder2** 底下的所有檔案和資料夾會以遞迴方式複製到檔案共用。 資料夾結構會保留。
+   - **若要匯入資料夾** ：MyFolder2 底下的所有檔案和資料夾會以遞迴方式複製到檔案共用。 資料夾結構會保留。
 
        ```
            "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
@@ -70,28 +71,28 @@ ms.locfileid: "92461663"
            "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
 
        ```
-     深入了解[準備資料集 CSV 檔案](storage-import-export-tool-preparing-hard-drives-import.md)。
+     深入了解[準備資料集 CSV 檔案](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import)。
 
 
-4. 在工具所在的根資料夾中，修改 driveset.csv** 檔案。 將項目新增至 driveset.csv** 檔案，類似下列範例。 磁碟機集檔案有磁碟機清單和對應的磁碟機代號，因此工具可以正確地挑選要準備的磁碟清單。
+4. 在工具所在的根資料夾中，修改 driveset.csv 檔案。 將項目新增至 driveset.csv 檔案，類似下列範例。 磁碟機集檔案有磁碟機清單和對應的磁碟機代號，因此工具可以正確地挑選要準備的磁碟清單。
 
     此範例假設已連結兩個磁碟，並已建立基本 NTFS 磁碟區 G:\ 和 H:\。 當 G: 已加密時，H:\ 就不會加密。 此工具只會格式化和加密裝載 H:\ (不是 G:\)) 的磁碟。
 
-   - **針對未加密的磁碟**：指定「Encrypt」**，以在磁碟上啟用 BitLocker 加密。
+   - **針對未加密的磁碟** ：指定「Encrypt」，以在磁碟上啟用 BitLocker 加密。
 
        ```
        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
        H,Format,SilentMode,Encrypt,
        ```
 
-   - **針對已加密的磁碟**：指定「AlreadyEncrypted」**，並提供 BitLocker 金鑰。
+   - **針對已加密的磁碟** ：指定「AlreadyEncrypted」，並提供 BitLocker 金鑰。
 
        ```
        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
        G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631
        ```
 
-     您可以在對應至多個磁碟機的相同檔案中製造多個項目。 深入了解[準備磁碟機集 CSV 檔案](storage-import-export-tool-preparing-hard-drives-import.md)。
+     您可以在對應至多個磁碟機的相同檔案中製造多個項目。 深入了解[準備磁碟機集 CSV 檔案](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import)。
 
 5. 使用 `PrepImport` 選項可將資料複製到磁碟機並準備這些資料。 針對以新複製工作階段來複製目錄和/或檔案的第一複製工作階段，請執行下列命令：
 
@@ -118,17 +119,17 @@ ms.locfileid: "92461663"
 
 在 Azure 入口網站中執行下列步驟，以建立匯入作業。
 1. 登入 https://portal.azure.com/。
-2. 移至 [所有服務] > [儲存體] > [匯入/匯出作業]****。
+2. 移至 [所有服務] > [儲存體] > [匯入/匯出作業]。
 
     ![移至匯入/匯出](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
-3. 按一下 [ **建立匯入/匯出作業**]。
+3. 按一下 [ **建立匯入/匯出作業** ]。
 
     ![按一下 [匯入/匯出作業]](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
 4. 在 [基本] 中：
 
-    - 選取 [匯入至 Azure]****。
+    - 選取 [匯入至 Azure]。
     - 輸入匯入作業的描述性名稱。 當作業正在進行中和一旦完成後，使用此名稱來追蹤您的作業。
         -  此名稱只能包含小寫英文字母、數字、連字號和底線。
         -  名稱必須以字母開頭，並且不能包含空格。
@@ -137,7 +138,7 @@ ms.locfileid: "92461663"
 
         ![建立匯入作業 - 步驟 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
-3. 在 [作業詳細資料]**** 中：
+3. 在 [作業詳細資料] 中：
 
     - 上傳您在前面[步驟 1：準備磁碟機](#step-1-prepare-the-drives)中建立的日誌檔。
     - 選取將匯入資料的儲存體帳戶。
@@ -145,7 +146,7 @@ ms.locfileid: "92461663"
 
        ![建立匯入作業 - 步驟 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 
-4. 在 [寄返資訊]**** 中：
+4. 在 [寄返資訊] 中：
 
     - 從下拉式清單中選取貨運公司。 如果您想要使用 FedEx/DHL 以外的電訊廠商，請從下拉式清單中選擇現有的選項。 請與 `adbops@microsoft.com`  您打算使用的電訊廠商相關資訊，聯絡 Azure 資料箱營運團隊。
     - 輸入您在該貨運公司中建立的有效貨運帳戶號碼。 當匯入作業完成時，Microsoft 會透過此帳戶將磁碟機寄還給您。
@@ -157,10 +158,10 @@ ms.locfileid: "92461663"
        ![建立匯入工作 - 步驟 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
 
 
-5. 在 [摘要]**** 中：
+5. 在 [摘要] 中：
 
     - 提供 Azure 資料中心寄送地址，以便將磁碟機寄回 Azure。 請確認出貨標籤上有提及作業名稱和完整的地址。
-    - 按一下 [確定]****，完成建立匯入作業。
+    - 按一下 [確定]，完成建立匯入作業。
 
         ![建立匯入作業 - 步驟 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
@@ -242,6 +243,102 @@ ms.locfileid: "92461663"
     az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true
     ```
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+使用下列步驟，在 Azure PowerShell 中建立匯入作業。
+
+[!INCLUDE [azure-powershell-requirements-h3.md](../../../includes/azure-powershell-requirements-h3.md)]
+
+> [!IMPORTANT]
+> **Microsoft.importexport** PowerShell 模組目前為預覽狀態，您必須使用指令程式個別進行安裝 `Install-Module` 。 此 PowerShell 模組正式推出後，便會成為未來 Az PowerShell 模組版本的一部分，且預設可從 Azure Cloud Shell 內使用。
+
+```azurepowershell-interactive
+Install-Module -Name Az.ImportExport
+```
+
+### <a name="create-a-job"></a>建立作業
+
+1. 您可以使用現有的資源群組，或建立一個群組。 若要建立資源群組，請執行 [>new-azresourcegroup](/powershell/module/az.resources/new-azresourcegroup) Cmdlet：
+
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name myierg -Location westus
+   ```
+
+1. 您可以使用現有的儲存體帳戶或建立一個帳戶。 若要建立儲存體帳戶，請執行 [new-azstorageaccount](/powershell/module/az.storage/new-azstorageaccount) Cmdlet：
+
+   ```azurepowershell-interactive
+   New-AzStorageAccount -ResourceGroupName myierg -AccountName myssdocsstorage -SkuName Standard_RAGRS -Location westus -EnableHttpsTrafficOnly $true
+   ```
+
+1. 若要取得您可以寄送磁片的位置清單，請使用 [AzImportExportLocation](/powershell/module/az.importexport/get-azimportexportlocation) Cmdlet：
+
+   ```azurepowershell-interactive
+   Get-AzImportExportLocation
+   ```
+
+1. 使用 `Get-AzImportExportLocation` Cmdlet 搭配 `Name` 參數，以取得您區域的位置：
+
+   ```azurepowershell-interactive
+   Get-AzImportExportLocation -Name westus
+   ```
+
+1. 執行下列 [AzImportExport](/powershell/module/az.importexport/new-azimportexport) 範例來建立匯入作業：
+
+   ```azurepowershell-interactive
+   $driveList = @(@{
+     DriveId = '9CA995BA'
+     BitLockerKey = '439675-460165-128202-905124-487224-524332-851649-442187'
+     ManifestFile = '\\DriveManifest.xml'
+     ManifestHash = '69512026C1E8D4401816A2E5B8D7420D'
+     DriveHeaderHash = 'AZ31BGB1'
+   })
+
+   $Params = @{
+      ResourceGroupName = 'myierg'
+      Name = 'MyIEjob1'
+      Location = 'westus'
+      BackupDriveManifest = $true
+      DiagnosticsPath = 'waimportexport'
+      DriveList = $driveList
+      JobType = 'Import'
+      LogLevel = 'Verbose'
+      ShippingInformationRecipientName = 'Microsoft Azure Import/Export Service'
+      ShippingInformationStreetAddress1 = '3020 Coronado'
+      ShippingInformationCity = 'Santa Clara'
+      ShippingInformationStateOrProvince = 'CA'
+      ShippingInformationPostalCode = '98054'
+      ShippingInformationCountryOrRegion = 'USA'
+      ShippingInformationPhone = '4083527600'
+      ReturnAddressRecipientName = 'Gus Poland'
+      ReturnAddressStreetAddress1 = '1020 Enterprise way'
+      ReturnAddressCity = 'Sunnyvale'
+      ReturnAddressStateOrProvince = 'CA'
+      ReturnAddressPostalCode = '94089'
+      ReturnAddressCountryOrRegion = 'USA'
+      ReturnAddressPhone = '4085555555'
+      ReturnAddressEmail = 'gus@contoso.com'
+      ReturnShippingCarrierName = 'FedEx'
+      ReturnShippingCarrierAccountNumber = '123456789'
+      StorageAccountId = '/subscriptions/<SubscriptionId>/resourceGroups/myierg/providers/Microsoft.Storage/storageAccounts/myssdocsstorage'
+   }
+   New-AzImportExport @Params
+   ```
+
+   > [!TIP]
+   > 請提供群組電子郵件，而不是指定單一使用者的電子郵件地址。 這樣可以確保即使當系統管理員不在時，您也可以收到通知。
+
+1. 使用 [AzImportExport 指令程式](/powershell/module/az.importexport/get-azimportexport) 可查看 myierg 資源群組的所有工作：
+
+   ```azurepowershell-interactive
+   Get-AzImportExport -ResourceGroupName myierg
+   ```
+
+1. 若要更新您的作業或取消作業，請執行 [AzImportExport](/powershell/module/az.importexport/update-azimportexport) Cmdlet：
+
+   ```azurepowershell-interactive
+   Update-AzImportExport -Name MyIEjob1 -ResourceGroupName myierg -CancelRequested
+   ```
+
 ---
 
 ## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>步驟 3：將磁碟機寄送至 Azure 資料中心
@@ -258,9 +355,9 @@ ms.locfileid: "92461663"
 
 ## <a name="samples-for-journal-files"></a>日誌檔案的範例
 
-若要**新增更多磁碟機**，可以建立新的磁碟機集檔案並執行命令，如下所示。
+若要 **新增更多磁碟機** ，可以建立新的磁碟機集檔案並執行命令，如下所示。
 
-對於後續複製到不同磁碟機的工作階段 (不是 InitialDriveset.csv** 檔案中指定的磁碟機)，請指定新的磁碟機集 .csv** 檔案，並以值形式提供給參數 `AdditionalDriveSet`。 使用**相同的日誌檔**名稱，並提供**新的工作階段識別碼**。 AdditionalDriveset CSV 檔案的格式與 InitialDriveSet 格式相同 。
+對於後續複製到不同磁碟機的工作階段 (不是 InitialDriveset.csv 檔案中指定的磁碟機)，請指定新的磁碟機集 .csv 檔案，並以值形式提供給參數 `AdditionalDriveSet`。 使用 **相同的日誌檔** 名稱，並提供 **新的工作階段識別碼** 。 AdditionalDriveset CSV 檔案的格式與 InitialDriveSet 格式相同 。
 
 ```cmd
 WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AdditionalDriveSet:<driveset.csv>
@@ -275,7 +372,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3  /AdditionalDrive
 
 若要將其他資料新增至相同磁碟機集，請對後續複製工作階段使用 PrepImport 命令，以複製其他檔案/目錄。
 
-若要對 InitialDriveset.csv** 檔案中指定的同個硬碟進行後續複製工作階段，請指定**相同的日誌檔案**名稱並提供**新的工作階段識別碼**；不需要再次提供儲存體帳戶金鑰。
+若要對 InitialDriveset.csv 檔案中指定的同個硬碟進行後續複製工作階段，請指定 **相同的日誌檔案** 名稱並提供 **新的工作階段識別碼** ；不需要再次提供儲存體帳戶金鑰。
 
 ```cmd
 WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] DataSet:<dataset.csv>
@@ -287,7 +384,7 @@ WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /j:<JournalFile> /id:
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset-2.csv
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [檢視作業和磁碟機狀態](storage-import-export-view-drive-status.md)
 * [檢閱匯入/匯出的需求](storage-import-export-requirements.md)

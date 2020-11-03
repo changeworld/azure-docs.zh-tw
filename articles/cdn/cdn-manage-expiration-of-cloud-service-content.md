@@ -15,12 +15,12 @@ ms.custom: devx-track-csharp
 ms.topic: how-to
 ms.date: 02/15/2018
 ms.author: allensu
-ms.openlocfilehash: 562d5010458fc938d9d62fed5d0d2c8284f2055d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8eb450d2010bf2a525a26f1c5ff48f59732ce43
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936940"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93240965"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>在 Azure CDN 中管理 Web 內容的到期
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "88936940"
 
 來自可公開存取的原始 Web 伺服器的檔案均可在 Azure 內容傳遞網路 (CDN) 中加以快取，直到其存留時間 (TTL) 結束。 TTL 是由來自原始伺服器之 HTTP 回應中的 `Cache-Control` 標頭所決定。 本文說明如何設定 Microsoft Azure App Service 之 Web Apps 功能、Azure Cloud Services、ASP.NET 應用程式、Internet Information Services (IIS) 網站的 `Cache-Control` 標頭，上述所有項目的設定方式均類似。 您可以使用組態檔，或以程式設計方式來設定 `Cache-Control` 標頭。 
 
-您也可以藉由設定 CDN 快取 [規則](cdn-caching-rules.md)來控制 Azure 入口網站的快取設定。 如果您建立一個或多個快取規則，並將其快取行為設定為 [覆寫]**** 或 [略過快取]****，就會忽略本文所討論之原始提供的快取設定。 如需一般快取概念的相關資訊，請參閱[快取如何運作](cdn-how-caching-works.md)。
+您也可以藉由設定 CDN 快取 [規則](cdn-caching-rules.md)來控制 Azure 入口網站的快取設定。 如果您建立一個或多個快取規則，並將其快取行為設定為 [覆寫] 或 [略過快取]，就會忽略本文所討論之原始提供的快取設定。 如需一般快取概念的相關資訊，請參閱[快取如何運作](cdn-how-caching-works.md)。
 
 > [!TIP]
 > 您可以選擇不替檔案設定 TTL。 在此情況下，除非您已在 Azure 入口網站中設定快取規則，否則 Azure CDN 會自動套用七天的預設 TTL。 此預設 TTL 僅會套用至一般 Web 傳遞最佳化。 針對大型檔案的最佳化，預設 TTL 為一天；針對媒體串流最佳化，預設 TTL 則為一年。
@@ -42,9 +42,9 @@ ms.locfileid: "88936940"
 設定 Web 伺服器 `Cache-Control` 標頭的慣用方法為在 Azure 入口網站中使用快取規則。 如需 CDN 快取規則的詳細資訊，請參閱[使用快取規則控制 Azure CDN 快取行為](cdn-caching-rules.md)。
 
 > [!NOTE] 
-> 快取規則僅適用於「**來自 Verizon 的 Azure CDN 標準**」和「**來自 Akamai 的 Azure CDN 標準**」的設定檔。 針對「**來自 Verizon 的 Azure CDN 進階**」設定檔，您必須使用 [管理]**** 入口網站中的 [Azure CDN 規則引擎](cdn-rules-engine.md)來執行類似功能。
+> 快取規則僅適用於「 **來自 Verizon 的 Azure CDN 標準** 」和「 **來自 Akamai 的 Azure CDN 標準** 」的設定檔。 針對「 **來自 Verizon 的 Azure CDN 進階** 」設定檔，您必須使用 [管理] 入口網站中的 [Azure CDN 規則引擎](./cdn-verizon-premium-rules-engine.md)來執行類似功能。
 
-**瀏覽至 CDN 快取規則頁面**：
+**瀏覽至 CDN 快取規則頁面** ：
 
 1. 在 Azure 入口網站中，選取 CDN 設定檔，然後選取 Web 伺服器的端點。
 
@@ -59,29 +59,29 @@ ms.locfileid: "88936940"
 
 **若要使用全域快取規則設定 Web 伺服器的 Cache-Control 標頭：**
 
-1. 在 [全域快取規則]**** 下方，將 [查詢字串快取行為]**** 設定為 [忽略查詢字串]****，並將 [快取行為]**** 設定為 [覆寫]****。
+1. 在 [全域快取規則] 下方，將 [查詢字串快取行為] 設定為 [忽略查詢字串]，並將 [快取行為] 設定為 [覆寫]。
       
-1. 在 [快取到期期間]**** 的 [秒鐘]**** 方塊中輸入 3600 或在 [小時]**** 方塊中輸入 1。 
+1. 在 [快取到期期間] 的 [秒鐘] 方塊中輸入 3600 或在 [小時] 方塊中輸入 1。 
 
    ![CDN 全域快取規則範例](./media/cdn-manage-expiration-of-cloud-service-content/cdn-global-caching-rules-example.png)
 
    這個全域快取規則會設定一小時的快取期間，並影響針對端點的所有要求。 它會覆寫由端點指定之原始伺服器所傳送的任何 `Cache-Control` 或 `Expires` HTTP 標頭。   
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]  。
 
 **使用自訂快取規則設定 Web 伺服器檔案的 Cache-Control 標頭：**
 
-1. 在 [自訂快取規則]**** 下，建立兩個比對條件：
+1. 在 [自訂快取規則] 下，建立兩個比對條件：
 
-     a. 在第一個比對條件，將 [比對條件]**** 設為 [路徑]****，並在 [符合值]**** 輸入 `/webfolder1/*`。 將 [快取行為]**** 設定為 [覆寫]****，並在 [時數]**** 方塊中輸入 4。
+     a. 在第一個比對條件，將 [比對條件] 設為 [路徑]，並在 [符合值] 輸入 `/webfolder1/*`。 將快取 **行為** 設定為 [覆 **寫** ]，然後在 [ **天數** ] 方塊中輸入4。
 
-     b. 在第二個比對條件，將 [比對條件]**** 設為 [路徑]****，並在 [符合值]**** 輸入 `/webfolder1/file1.txt`。 將 [快取行為]**** 設定為 [覆寫]****，並在 [時數]**** 方塊中輸入 2。
+     b. 在第二個比對條件，將 [比對條件] 設為 [路徑]，並在 [符合值] 輸入 `/webfolder1/file1.txt`。 將快取 **行為** 設定為 [覆 **寫** ]，然後在 [ **天數** ] 方塊中輸入2。
 
     ![CDN 自訂快取規則範例](./media/cdn-manage-expiration-of-cloud-service-content/cdn-custom-caching-rules-example.png)
 
     第一個自訂快取規則會替您的端點指定之原始伺服器上 `/webfolder1` 資料夾中的所有檔案，設定四個小時的快取期間。 第二個規則只會針對 `file1.txt` 檔案覆寫第一個規則，並為其設定兩個小時的快取期間。
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]  。
 
 
 ## <a name="setting-cache-control-headers-by-using-configuration-files"></a>使用組態檔設定 Cache-Control 標頭
@@ -129,10 +129,10 @@ Response.Cache.SetLastModified(DateTime.Now);
 ```
 
 ## <a name="testing-the-cache-control-header"></a>測試 Cache-Control 標頭
-您可以輕鬆地驗證網頁內容的 TTL 設定。 使用瀏覽器的[開發人員工具](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)，測試網頁內容是否包含 `Cache-Control` 回應標頭。 您也可以使用 **wget**、[Postman](https://www.getpostman.com/) 或 [Fiddler](https://www.telerik.com/fiddler) 之類的工具來檢查回應標頭。
+您可以輕鬆地驗證網頁內容的 TTL 設定。 使用瀏覽器的[開發人員工具](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)，測試網頁內容是否包含 `Cache-Control` 回應標頭。 您也可以使用 **wget** 、 [Postman](https://www.getpostman.com/) 或 [Fiddler](https://www.telerik.com/fiddler) 之類的工具來檢查回應標頭。
 
 ## <a name="next-steps"></a>後續步驟
 * [深入了解 **clientCache** 項目](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
 * [閱讀 **HttpResponse.Cache** 屬性的文件](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) 
-* [閱讀**HttpCachePolicy 類別**的檔](/dotnet/api/system.web.httpcachepolicy)  
+* [閱讀 **HttpCachePolicy 類別** 的檔](/dotnet/api/system.web.httpcachepolicy)  
 * [了解快取概念](cdn-how-caching-works.md)

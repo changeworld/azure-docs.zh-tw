@@ -1,18 +1,18 @@
 ---
 title: Private Link-Azure CLI-適用於 MariaDB 的 Azure 資料庫
 description: 瞭解如何從 Azure CLI 設定適用於 MariaDB 的 Azure 資料庫的 private link
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fb3ed4e41125131538957addce5bf935b897b581
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c7f95b2009521b054958be48e444a129b0a59ed3
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537213"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242886"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>使用 CLI 建立和管理適用於 MariaDB 的 Azure 資料庫的 Private Link
 
@@ -176,7 +176,7 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
     | 設定 | 值 |
     | ------- | ----- |
     | 連線名稱| 選取您選擇的連接名稱。|
-    | 主機名稱 | 選取 *mydemoserver.privatelink.mariadb.database.azure.com* |
+    | Hostname (主機名稱) | 選取 *mydemoserver.privatelink.mariadb.database.azure.com* |
     | 使用者名稱 | 輸入 *username@servername* 在適用于 mariadb 伺服器建立期間提供的使用者名稱。 |
     | 密碼 | 輸入在適用于 mariadb 伺服器建立期間提供的密碼。 |
     ||

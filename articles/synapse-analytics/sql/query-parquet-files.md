@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 35eef6951f844ab60caec70033e41e23a7920d3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e00ecd6048239683951a2d1e60d3bcb0eb5aa68
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288302"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242427"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用 SQL 隨選 (預覽) 來查詢 Parquet 檔案
 
@@ -72,7 +72,7 @@ from openrowset(
 
 ## <a name="prerequisites"></a>Prerequisites
 
-第一步是**建立資料庫**，其資料來源是參考 [NYC Yellow Taxi](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) 儲存體帳戶。 然後在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)，將物件初始化。 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用於這些範例中的外部檔案格式。
+第一步是 **建立資料庫** ，其資料來源是參考 [NYC Yellow Taxi](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) 儲存體帳戶。 然後在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)，將物件初始化。 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用於這些範例中的外部檔案格式。
 
 ## <a name="dataset"></a>資料集
 
@@ -155,43 +155,7 @@ ORDER BY
 
 ## <a name="type-mapping"></a>類型對應
 
-Parquet 檔案包含每個資料行的類型描述。 下表說明 Parquet 類型如何對應至 SQL 原生類型。
-
-| Parquet 類型 | Parquet 邏輯類型 (註釋) | SQL 資料類型 |
-| --- | --- | --- |
-| BOOLEAN | | bit |
-| BINARY/BYTE_ARRAY | | varbinary |
-| DOUBLE | | FLOAT |
-| FLOAT | | real |
-| INT32 | | int |
-| INT64 | | BIGINT |
-| INT96 | |datetime2 |
-| FIXED_LEN_BYTE_ARRAY | |BINARY |
-| BINARY |UTF8 |varchar \*(UTF8 collation) |
-| BINARY |STRING |varchar \*(UTF8 collation) |
-| BINARY |ENUM|varchar \*(UTF8 collation) |
-| BINARY |UUID |UNIQUEIDENTIFIER |
-| BINARY |DECIMAL |decimal |
-| BINARY |JSON |varchar(max) \*(UTF8 collation) |
-| BINARY |BSON |varbinary(max) |
-| FIXED_LEN_BYTE_ARRAY |DECIMAL |decimal |
-| BYTE_ARRAY |INTERVAL |varchar(max)，序列化為標準格式 |
-| INT32 |INT(8, true) |SMALLINT |
-| INT32 |INT(16, true) |SMALLINT |
-| INT32 |INT(32, true) |int |
-| INT32 |INT(8, false) |TINYINT |
-| INT32 |INT(16, false) |int |
-| INT32 |INT(32, false) |BIGINT |
-| INT32 |日期 |date |
-| INT32 |DECIMAL |decimal |
-| INT32 |TIME (MILLIS)|time |
-| INT64 |INT(64, true) |BIGINT |
-| INT64 |INT(64, false) |decimal(20,0) |
-| INT64 |DECIMAL |decimal |
-| INT64 |TIME (MICROS / NANOS) |time |
-|INT64 |TIMESTAMP (MILLIS / MICROS / NANOS) |datetime2 |
-|[複雜類型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |清單 |varchar(max)，序列化為 JSON |
-|[複雜類型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|MAP|varchar(max)，序列化為 JSON |
+若為 Parquet 類型對應至 SQL 原生類型，請檢查 [Parquet 的類型對應](develop-openrowset.md#type-mapping-for-parquet)。
 
 ## <a name="next-steps"></a>後續步驟
 

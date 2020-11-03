@@ -1,17 +1,17 @@
 ---
 title: 使用客戶管理的金鑰加密資料 - 適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
 description: 適用於 PostgreSQL 單一伺服器的 Azure 資料庫使用客戶管理金鑰的資料加密，可讓您攜帶自己的金鑰 (BYOK) 來保護待用資料。 此外也可讓組織在金鑰和資料的管理中實作職責區分。
-author: kummanish
-ms.author: manishku
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: c07f59ae183c2d4ac920c6b3773fc6d177622ad2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 078b0fe63cf89f2736a8707ad561c798c4818317
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490181"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242410"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>適用於 PostgreSQL 的 Azure 資料庫單一伺服器會使用客戶管理的金鑰進行資料加密
 
@@ -47,9 +47,9 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 
 針對使用儲存於 Key Vault 中的客戶管理金鑰來加密 DEK 的 PostgreSQL 伺服器，Key Vault 系統管理員會授與伺服器下列存取權限：
 
-* **get**：用於在金鑰保存庫中，擷取金鑰的公開部分和屬性。
-* **wrapKey**：可以加密 DEK。 加密的 DEK 會儲存在適用於 PostgreSQL 的 Azure 資料庫中。
-* **unwrapKey**：可以解密 DEK。 適用於 PostgreSQL 的 Azure 資料庫需要解密 DEK 來加密/解密資料
+* **get** ：用於在金鑰保存庫中，擷取金鑰的公開部分和屬性。
+* **wrapKey** ：可以加密 DEK。 加密的 DEK 會儲存在適用於 PostgreSQL 的 Azure 資料庫中。
+* **unwrapKey** ：可以解密 DEK。 適用於 PostgreSQL 的 Azure 資料庫需要解密 DEK 來加密/解密資料
 
 金鑰保存庫管理員也可以[啟用 Key Vault 稽核事件的記錄](../azure-monitor/insights/key-vault-insights-overview.md)，以便稍後再進行稽核。
 
@@ -77,9 +77,9 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 * 在 Key Vault 上設定資源鎖定，藉此控制可刪除這個重要資源的人員，並防止意外或未經授權的刪除發生。
 * 啟用所有加密金鑰的稽核和報告功能。 Key Vault 提供可輕易插入其他安全性資訊和事件管理工具中的記錄。 例如，Azure 監視器 Log Analytics 即是已整合的服務之一。
 * 請確定 Key Vault 和適用於 PostgreSQL 單一伺服器的 Azure 資料庫都位於相同的區域，以確保存取 DEK 包裝和解除包裝作業更有效率。
-* 鎖定 Azure KeyVault 為只限**私人端點和選取的網路**，並僅允許*信任的 Microsoft* 服務以保護資源。
+* 鎖定 Azure KeyVault 為只限 **私人端點和選取的網路** ，並僅允許 *信任的 Microsoft* 服務以保護資源。
 
-    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="顯示「攜帶您自己的金鑰」總覽圖表":::
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="trusted-service-with-AKV":::
 
 以下是設定客戶管理的金鑰的建議：
 
@@ -135,7 +135,7 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 * 只有在支援最多 16 TB 儲存體的區域和伺服器上，才支援這項功能。 如需支援儲存體最多16TB 的 Azure 區域清單，請參閱[此處](concepts-pricing-tiers.md#storage)檔中的儲存體一節。
 
     > [!NOTE]
-    > - 在上欄區域中建立的所有新于 postgresql 伺服器，都有 **提供**使用客戶管理金鑰加密的支援。 還原的時間點 (PITR) 伺服器或讀取複本將不會有資格，但理論上是「新的」。
+    > - 在上欄區域中建立的所有新于 postgresql 伺服器，都有 **提供** 使用客戶管理金鑰加密的支援。 還原的時間點 (PITR) 伺服器或讀取複本將不會有資格，但理論上是「新的」。
     > - 若要驗證您布建的伺服器是否支援最多16TB，您可以移至入口網站中的 [定價層] 分頁，並查看您布建的伺服器所支援的儲存體大小上限。 如果您可以將滑杆移至4TB，則您的伺服器可能不支援使用客戶管理的金鑰進行加密。 不過，資料會隨時使用服務管理的金鑰進行加密。 AskAzureDBforPostgreSQL@service.microsoft.com如果您有任何問題，請與您聯繫。
 
 * 只有 RSA 2048 密碼編譯金鑰支援加密。
