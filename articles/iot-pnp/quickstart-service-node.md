@@ -7,13 +7,13 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc, devx-track-js
-ms.openlocfilehash: a6ade8d44e6c751f45849743c66d0a34075943b4
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.custom: mvc, devx-track-js, devx-track-azurecli
+ms.openlocfilehash: 9a71a45f69f7a2bd2fbc198292526a6928e421a2
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946122"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735998"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>快速入門：與已連線至解決方案的 IoT 隨插即用裝置互動 (Node.js)
 
@@ -51,7 +51,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 
 1. 開啟終端機視窗，並瀏覽至本機資料夾，此資料夾中包含從 GitHub 複製的適用於 Node.js 存放庫的 Microsoft Azure IoT SDK。
 
-1. 此終端機視窗會作為您的**裝置**終端機。 移至複製存放庫的資料夾，並瀏覽至 /azure-iot-sdk-node/device/samples/pnp 資料夾。 執行下列命令以安裝所有相依性：
+1. 此終端機視窗會作為您的 **裝置** 終端機。 移至複製存放庫的資料夾，並瀏覽至 /azure-iot-sdk-node/device/samples/pnp 資料夾。 執行下列命令以安裝所有相依性：
 
     ```cmd/sh
     npm install
@@ -69,12 +69,12 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 
 在 [設定 IoT 隨插即用的環境快速入門和教學課程](set-up-environment.md)，您建立了兩個環境變數，以設定連線至 IoT 中樞和裝置的範例：
 
-* **IOTHUB_CONNECTION_STRING**：您先前記下的 IoT 中樞連接字串。
-* **IOTHUB_DEVICE_ID**：`"my-pnp-device"`。
+* **IOTHUB_CONNECTION_STRING** ：您先前記下的 IoT 中樞連接字串。
+* **IOTHUB_DEVICE_ID** ：`"my-pnp-device"`。
 
 在本快速入門中，您會使用 Node.js 中的範例 IoT 解決方案，與您剛剛設定的範例裝置進行互動。
 
-1. 開啟另一個終端機視窗，作為您的**服務**終端機。
+1. 開啟另一個終端機視窗，作為您的 **服務** 終端機。
 
 1. 在複製的 Node SDK 存放庫中，瀏覽至 */azure-iot-sdk-node/service/samples/javascript* 資料夾。 執行下列命令以安裝所有相依性：
 
@@ -84,20 +84,20 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 
 ### <a name="read-a-property"></a>讀取屬性
 
-1. 當您在**裝置**終端機中執行範例控溫器裝置時，您會看到下列訊息，指出裝置處於線上狀態：
+1. 當您在 **裝置** 終端機中執行範例控溫器裝置時，您會看到下列訊息，指出裝置處於線上狀態：
 
     ```cmd/sh
     properties have been reported for component
     sending telemetry message 0...
     ```
 
-1. 移至**服務**終端機，並使用下列命令執行範例以讀取裝置資訊：
+1. 移至 **服務** 終端機，並使用下列命令執行範例以讀取裝置資訊：
 
     ```cmd/sh
     node twin.js
     ```
 
-1. 在**服務**終端機輸出中，請注意裝置對應項的回應。 您會看到已回報裝置的模型識別碼和相關聯的屬性：
+1. 在 **服務** 終端機輸出中，請注意裝置對應項的回應。 您會看到已回報裝置的模型識別碼和相關聯的屬性：
 
     ```json
     Model Id: dtmi:com:example:Thermostat;1
@@ -164,7 +164,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 在此案例中，會輸出 `Model Id: dtmi:com:example:Thermostat;1`。
 
 > [!NOTE]
-> 這些服務範例會使用 **IoT 中樞服務用戶端**中的 **Registry** 類別。 若要深入了解 API (包括數位對應項 API)，請參閱[服務開發人員指南](concepts-developer-guide-service.md)。
+> 這些服務範例會使用 **IoT 中樞服務用戶端** 中的 **Registry** 類別。 若要深入了解 API (包括數位對應項 API)，請參閱[服務開發人員指南](concepts-developer-guide-service.md)。
 
 ### <a name="update-a-writable-property"></a>更新可寫入屬性
 
@@ -187,13 +187,13 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 
     `targetTemperature` 屬性會在控溫器裝置型號中定義為可寫入的屬性。
 
-1. 在**服務**終端機，使用下列命令執行範例以更新屬性：
+1. 在 **服務** 終端機，使用下列命令執行範例以更新屬性：
 
     ```cmd/sh
     node twin.js
     ```
 
-1. 在您的**裝置**終端機中，您會看到裝置已接收更新：
+1. 在您的 **裝置** 終端機中，您會看到裝置已接收更新：
 
     ```cmd/sh
     The following properties will be updated for the default component:
@@ -208,13 +208,13 @@ git clone https://github.com/Azure/azure-iot-sdk-node
     updated the property
     ```
 
-1. 在您的 **服務**終端機中，執行下列命令以確認屬性已更新：
+1. 在您的 **服務** 終端機中，執行下列命令以確認屬性已更新：
 
     ```cmd/sh
     node twin.js
     ```
 
-1. 在**服務**終端機輸出中，您會在 ¬reported` 屬性區段中看到回報的更新目標溫度。 裝置可能需要一段時間才能完成更新。 重複此步驟，直到裝置處理屬性更新為止：
+1. 在 **服務** 終端機輸出中，您會在 `reported` 屬性區段中看到回報的更新目標溫度。 裝置可能需要一段時間才能完成更新。 重複此步驟，直到裝置處理屬性更新為止：
 
     ```json
     "reported": {
@@ -233,7 +233,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 
 1. 開啟檔案 device_method.js 並檢閱程式碼。
 
-1. 移至**服務**終端機。 使用下列命令來執行範例，以叫用命令：
+1. 移至 **服務** 終端機。 使用下列命令來執行範例，以叫用命令：
 
     ```cmd/sh
     set IOTHUB_METHOD_NAME=getMaxMinReport
@@ -241,7 +241,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
     node device_method.js
     ```
 
-1. **服務**終端機中的輸出應該會顯示下列確認：
+1. **服務** 終端機中的輸出應該會顯示下列確認：
 
     ```cmd/sh
     getMaxMinReport on my-pnp-device:
@@ -257,7 +257,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
     }
     ```
 
-1. 在**裝置**終端機，您會看到命令已認可：
+1. 在 **裝置** 終端機，您會看到命令已認可：
 
     ```cmd/sh
     MaxMinReport commandpayload

@@ -7,19 +7,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: include
-ms.date: 12/19/2019
+ms.date: 10/13/2019
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 2b305b1ffc5c72780f903c7798fbce24c630baba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ac0d09ea1641688dc59df1bbdbe19712d0cebe4f
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89321827"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886486"
 ---
 <a name="HOLTop"></a>
 
-[參考文件](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | [成品 (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-computervision) | [範例](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[參考文件](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-computervision) |[成品 (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-computervision) | [範例](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -29,7 +29,6 @@ ms.locfileid: "89321827"
 * 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="建立電腦視覺資源"  target="_blank">建立電腦視覺資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
     * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 電腦視覺服務。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
     * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
-* 為金鑰和端點 URL [建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，名稱分別為 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
 
 ## <a name="setting-up"></a>設定
 
@@ -41,13 +40,17 @@ ms.locfileid: "89321827"
 mkdir myapp && cd myapp
 ```
 
-從您的工作目錄執行 `gradle init` 命令。 此命令會建立 Gradle 的基本組建檔案，包括 *build.gradle.kts*，此檔案將在執行階段用來建立及設定您的應用程式。
+從您的工作目錄執行 `gradle init` 命令。 此命令會建立 Gradle 的基本組建檔案，包括 *build.gradle.kts* ，此檔案將在執行階段用來建立及設定您的應用程式。
 
 ```console
 gradle init --type basic
 ```
 
 出現選擇 **DSL** 的提示時，請選取 [Kotlin]。
+
+### <a name="install-the-client-library"></a>安裝用戶端程式庫
+
+本快速入門會使用 Gradle 相依性管理員。 您可以在 [Maven 中央存放庫](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-computervision)中找到用戶端程式庫和其他相依性管理員的資訊。
 
 找出 build.gradle.kts，並使用您慣用的 IDE 或文字編輯器加以開啟。 然後，在其中複製下列組建組態。 此組態會將專案定義為進入點為 **ComputerVisionQuickstarts** 類別的 Java 應用程式。 這會匯入電腦視覺程式庫。
 
@@ -62,7 +65,12 @@ application {
 repositories {
     mavenCentral()
 }
+dependencies {
+    compile(group = "com.microsoft.azure.cognitiveservices", name = "azure-cognitiveservices-computervision", version = "1.0.4-beta")
+}
 ```
+
+### <a name="create-a-java-file"></a>建立 Java 檔案
 
 在您的工作目錄中執行下列命令，以建立專案來源資料夾：
 
@@ -74,19 +82,23 @@ mkdir -p src/main/java
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_imports)]
 
-然後新增 **ComputerVisionQuickstarts** 的類別定義。
+> [!TIP]
+> 想要立刻檢視整個快速入門程式碼檔案嗎？ 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) 上找到該檔案，其中包含本快速入門中的程式碼範例。
 
-### <a name="install-the-client-library"></a>安裝用戶端程式庫
+在應用程式的 **ComputerVisionQuickstarts** 類別中，為資源的金鑰和端點建立變數。
 
-本快速入門會使用 Gradle 相依性管理員。 您可以在 [Maven 中央存放庫](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-computervision)中找到用戶端程式庫和其他相依性管理員的資訊。
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_creds)]
 
-在您專案的 build.gradle.kts 檔案中，將電腦視覺用戶端程式庫納入為相依性。
 
-```kotlin
-dependencies {
-    compile(group = "com.microsoft.azure.cognitiveservices", name = "azure-cognitiveservices-computervision", version = "1.0.4-beta")
-}
-```
+> [!IMPORTANT]
+> 前往 Azure 入口網站。 如果您在 [必要條件] 區段中建立的 [產品名稱] 資源成功部署，請按一下 [後續步驟] 底下的 [前往資源] 按鈕。 您可以在 [資源管理] 底下的 [金鑰和端點] 頁面中找到金鑰和端點。 
+>
+> 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)一文。
+
+在應用程式的 **main** 方法中，針對本快速入門中使用的方法新增呼叫。 稍後您會定義這些項目。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_maincalls)]
+
 
 ## <a name="object-model"></a>物件模型
 
@@ -108,32 +120,24 @@ dependencies {
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-> [!NOTE]
-> 本快速入門假設您已針對名為 `COMPUTER_VISION_SUBSCRIPTION_KEY` 的電腦視覺金鑰[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
 
-下列程式碼會將 `main` 方法新增至您的類別，並為您資源的 Azure 端點和金鑰建立變數。 您必須輸入自己的端點字串，該字串位在 Azure 入口網站的 [概觀] 區段中。 
+在新方法中，使用端點和金鑰將 [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) 物件具現化。
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_mainvars)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_auth)]
 
-接下來，新增下列程式碼來建立 [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) 物件，並將其傳遞至其他方法 (稍後會定義)。
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_client)]
-
-> [!NOTE]
-> 如果您在啟動應用程式後才建立環境變數，則必須先關閉執行該應用程式的編輯器、IDE 或殼層，再重新加以開啟，才能存取該變數。
 
 ## <a name="analyze-an-image"></a>分析影像
 
 下列程式碼會定義 `AnalyzeLocalImage` 方法，以使用用戶端物件來分析本機影像並輸出結果。 該方法會傳回文字描述、分類、標記清單、偵測到的臉部、成人內容旗標、主要色彩和影像類型。
 
+> [!TIP]
+> 您也可以使用其 URL 來分析遠端影像。 請參閱 [ComputerVision](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable) 方法，例如 **AnalyzeImage** 。 或如需遠端影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) 上的範例程式碼。
+
 ### <a name="set-up-test-image"></a>設定測試影像
 
-首先，在專案的 **src/main/** 資料夾中建立 **resources/** 資料夾，並新增您想要分析的影像。 然後，將下列方法定義新增至您的 **ComputerVisionQuickstarts** 類別。 如有必要，請變更 `pathToLocalImage` 的值，以符合您的影像檔案。 
+首先，在專案的 **src/main/** 資料夾中建立 **resources/** 資料夾，並新增您想要分析的影像。 然後，將下列方法定義新增至您的 **ComputerVisionQuickstarts** 類別。 請變更 `pathToLocalImage` 的值，以符合您的影像檔案。 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_refs)]
-
-> [!NOTE]
-> 您也可以使用其 URL 來分析遠端影像。 如需遠端影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) 上的範例程式碼。
 
 ### <a name="specify-visual-features"></a>指定視覺特徵
 
@@ -206,14 +210,14 @@ dependencies {
 
 電腦視覺可以讀取影像中的可見文字，並將它轉換成字元資料流。 此區段會定義一個方法 `ReadFromFile`，該方法採用本機檔案路徑並將影像的文字列印到主控台。
 
-> [!NOTE]
-> 您也可以使用其 URL 來讀取遠端影像中的文字。 如需遠端影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) 上的範例程式碼。
+> [!TIP]
+> 您也可以讀取由 URL 參考之遠端影像中的文字。 請參閱 [ComputerVision](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable) 方法，例如 **read** 。 或如需遠端影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) 上的範例程式碼。
 
 ### <a name="set-up-test-image"></a>設定測試影像
 
 在專案的 **src/main/** 資料夾中建立 **resources/** 資料夾，然後新增您想要從中讀取文字的影像。 您可以下載要在這裡使用的[範例映像](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg)。
 
-然後，將下列方法定義新增至您的 **ComputerVisionQuickstarts** 類別。 如有必要，請變更 `localFilePath` 的值，以符合您的影像檔案。 
+然後，將下列方法定義新增至您的 **ComputerVisionQuickstarts** 類別。 請變更 `localFilePath` 的值，以符合您的影像檔案。 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_setup)]
 

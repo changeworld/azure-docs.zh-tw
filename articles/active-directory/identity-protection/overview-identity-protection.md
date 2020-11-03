@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2dbb47371197d07b45f9144e2be66e992df4c97
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 9ed8d645c5bedf6df087fa9c948415c6a1df24e9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996529"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92783176"
 ---
 # <a name="what-is-identity-protection"></a>什麼是 Identity Protection？
 
@@ -39,9 +39,9 @@ Alex Weinert 是 Microsoft 身分識別安全性與保護小組的領導人，�
 >
 > 在去年的 Ignite 中，我談到了我們的身分識別系統遭受到的前 3 大攻擊。 以下是這些攻擊最近的數據
 >   
->   - **缺口重新執行**：在 2018 年 5 月偵測到 4.6BN 次攻擊
->   - **密碼噴灑**：2018 年 4 月 350k 次
->   - **網路釣魚**：這很難精確量化，但我們在 2018 年 3 月觀察到 23M 個風險事件，其中有許多都與網路釣魚有關
+>   - **缺口重新執行** ：在 2018 年 5 月偵測到 4.6BN 次攻擊
+>   - **密碼噴灑** ：2018 年 4 月 350k 次
+>   - **網路釣魚** ：這很難精確量化，但我們在 2018 年 3 月觀察到 23M 個風險事件，其中有許多都與網路釣魚有關
 
 ## <a name="risk-detection-and-remediation"></a>風險偵測和補救
 
@@ -107,9 +107,9 @@ Identity Protection 要求使用者必須是安全性讀取者、安全性操作
 | 風險原則 | 使用者風險原則 (透過 Identity Protection)  | 否 | 否 |是 | 
 | 風險原則 | 登入風險原則 (透過 Identity Protection 或條件式存取)  | 否 |  否 |是 |
 | 安全性報告 | 概觀 |  否 | 否 |是 |
-| 安全性報告 | 具風險使用者  | 有限資訊 | 有限資訊 | 完整存取|
-| 安全性報告 | 有風險的登入  | 有限資訊 | 有限資訊 | 完整存取|
-| 安全性報告 | 風險偵測   | 否 | 有限資訊| 完整存取|
+| 安全性報告 | 具風險使用者  | 有限資訊。 只會顯示具有中等和高風險的使用者。 沒有詳細資料選單，也沒有風險歷程記錄。 | 有限資訊。 只會顯示具有中等和高風險的使用者。 沒有詳細資料選單，也沒有風險歷程記錄。 | 完整存取|
+| 安全性報告 | 有風險的登入  | 有限資訊。 不會顯示任何風險詳細資料或風險層級。 | 有限資訊。 不會顯示任何風險詳細資料或風險層級。 | 完整存取|
+| 安全性報告 | 風險偵測   | 否 | 有限資訊。 沒有詳細資料選單。| 完整存取|
 | 通知 | 偵測到具風險使用者的警示  | 否 | 否 |是 |
 | 通知 | 每週提要| 否 | 否 | 是 | 
 | | MFA 註冊原則 | 否 | 否 | 是 |

@@ -3,13 +3,13 @@ title: 教學課程 - 使用 Azure CLI 來還原 VM
 description: 了解如何還原磁碟，並在 Azure 中使用備份與復原服務建立 VM。
 ms.topic: tutorial
 ms.date: 01/31/2019
-ms.custom: mvc
-ms.openlocfilehash: 861c911e84c9de02467d443751902e71d2504422
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 2d8ce7ab6d5a3ab244d0292ffe52847f18ea8795
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324975"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746745"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>使用 Azure CLI 來還原 VM
 
@@ -43,7 +43,7 @@ Azure 備份會建立復原點，並儲存在異地備援復原保存庫。 當�
 
 若要還原磁碟，您可選取復原點作為復原資料的來源。 由於預設原則會每天建立復原點並保留 30 天，您可保留一組復原點，讓您選取特定的時間點進行復原。
 
-若要查看可用的復原點清單，請使用 [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list)。 復原點**名稱**用來復原磁碟。 在本教學課程中，我們需要最近可用的復原點。 `--query [0].name` 參數可選取最近的復原點名稱，如下所示：
+若要查看可用的復原點清單，請使用 [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list)。 復原點 **名稱** 用來復原磁碟。 在本教學課程中，我們需要最近可用的復原點。 `--query [0].name` 參數可選取最近的復原點名稱，如下所示：
 
 ```azurecli-interactive
 az backup recoverypoint list \
@@ -65,7 +65,7 @@ az backup recoverypoint list \
 
 如果備份的 VM 具有受控磁碟，且其目的是要從復原點還原受控磁碟，您必須先提供 Azure 儲存體帳戶。 此儲存體帳戶會用來儲存 VM 組態和部署範本，以便後續用來從還原的磁碟部署 VM。 然後，您也可以為要還原的受控磁碟提供目標資源群組。
 
-1. 若要建立儲存體帳戶，請使用 [az storage account create](/cli/azure/storage/account#az-storage-account-create)。 儲存體帳戶名稱必須全部小寫，並且是全域唯一的。 以自己的唯一名稱取代 *mystorageaccount*：
+1. 若要建立儲存體帳戶，請使用 [az storage account create](/cli/azure/storage/account#az-storage-account-create)。 儲存體帳戶名稱必須全部小寫，並且是全域唯一的。 以自己的唯一名稱取代 *mystorageaccount* ：
 
     ```azurecli-interactive
     az storage account create \
@@ -74,7 +74,7 @@ az backup recoverypoint list \
         --sku Standard_LRS
     ```
 
-2. 使用 [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) 從您的復原點還原磁碟。 以您在上一個命令中建立的儲存體帳戶名稱取代 *mystorageaccount*。 以您在先前 [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) 命令的輸出中取得的復原點名稱取代 *myRecoveryPointName*。 ***也請提供要將受控磁碟還原到其中的目標資源群組***。
+2. 使用 [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) 從您的復原點還原磁碟。 以您在上一個命令中建立的儲存體帳戶名稱取代 *mystorageaccount* 。 以您在先前 [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) 命令的輸出中取得的復原點名稱取代 *myRecoveryPointName* 。 ***也請提供要將受控磁碟還原到其中的目標資源群組** _。
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -88,7 +88,7 @@ az backup recoverypoint list \
     ```
 
     > [!WARNING]
-    > 若未提供**目標資源群組**，則受控磁碟將會以非受控磁碟的形式還原至指定的儲存體帳戶。 這對還原時間會有明顯的影響，因為還原磁碟所花費的時間完全取決於指定的儲存體帳戶。 只有在指定 target-resource-group 參數時，您才能享有「立即還原」的好處。 如果想要將受控磁碟還原為非受控，則不要提供 **target-resource-group** 參數，而是改為提供 **restore-as-unmanaged-disk** 參數，如下所示。 此參數從 az 3.4.0 版之後開始提供。
+    > 若未提供 *目標資源群組* ，則受控磁碟將會以非受控磁碟的形式還原至指定的儲存體帳戶。 這對還原時間會有明顯的影響，因為還原磁碟所花費的時間完全取決於指定的儲存體帳戶。 只有在指定 target-resource-group 參數時，您才能享有「立即還原」的好處。 如果想要將受控磁碟還原為非受控，則不要提供 **target-resource-group** 參數，而是改為提供 **restore-as-unmanaged-disk** 參數，如下所示。 此參數從 az 3.4.0 版之後開始提供。
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -109,7 +109,7 @@ az backup recoverypoint list \
 
 在其他步驟中，已還原的磁碟用來建立 VM。
 
-1. 若要建立儲存體帳戶，請使用 [az storage account create](/cli/azure/storage/account#az-storage-account-create)。 儲存體帳戶名稱必須全部小寫，並且是全域唯一的。 以自己的唯一名稱取代 *mystorageaccount*：
+1. 若要建立儲存體帳戶，請使用 [az storage account create](/cli/azure/storage/account#az-storage-account-create)。 儲存體帳戶名稱必須全部小寫，並且是全域唯一的。 以自己的唯一名稱取代 *mystorageaccount* ：
 
     ```azurecli-interactive
     az storage account create \
@@ -118,7 +118,7 @@ az backup recoverypoint list \
         --sku Standard_LRS
     ```
 
-2. 使用 [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) 從您的復原點還原磁碟。 以您在上一個命令中建立的儲存體帳戶名稱取代 *mystorageaccount*。 以您在先前 [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) 命令的輸出中取得的復原點名稱取代 *myRecoveryPointName*：
+2. 使用 [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) 從您的復原點還原磁碟。 以您在上一個命令中建立的儲存體帳戶名稱取代 *mystorageaccount* 。 以您在先前 [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) 命令的輸出中取得的復原點名稱取代 *myRecoveryPointName* ：
 
     ```azurecli-interactive
     az backup restore restore-disks \

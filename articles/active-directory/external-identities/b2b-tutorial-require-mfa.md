@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bddf1642b2013567fbc23278b3d8d32692601d55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f5f7f823d6c5f5860c2e78fe8cacdd1d788c581
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87906879"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892690"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>教學課程：針對 B2B 來賓使用者強制執行多重要素驗證
 
@@ -47,8 +47,8 @@ ms.locfileid: "87906879"
 
 若要完成本教學課程中的案例，您需要：
 
- - **Azure AD Premium 版的存取權**，這包括條件式存取原則功能。 若要強制執行 MFA，您必須建立 Azure AD 條件式存取原則。 請注意，不論合作夥伴是否具備 MFA 功能，MFA 原則一律會在您個組織強制執行。 如果您已為組織設定 MFA，將必須確定您有足夠的 Azure AD Premium 授權可供來賓使用者使用。 
- - 一個可供您新增至租用戶目錄作為來賓使用者並用來登入的**有效外部電子郵件帳戶**。 如果您不知道如何建立來賓帳戶，請參閱[在 Azure 入口網站中新增 B2B 來賓使用者](add-users-administrator.md)。
+ - **Azure AD Premium 版的存取權** ，這包括條件式存取原則功能。 若要強制執行 MFA，您必須建立 Azure AD 條件式存取原則。 請注意，不論合作夥伴是否具備 MFA 功能，MFA 原則一律會在您個組織強制執行。 如果您已為組織設定 MFA，將必須確定您有足夠的 Azure AD Premium 授權可供來賓使用者使用。 
+ - 一個可供您新增至租用戶目錄作為來賓使用者並用來登入的 **有效外部電子郵件帳戶** 。 如果您不知道如何建立來賓帳戶，請參閱[在 Azure 入口網站中新增 B2B 來賓使用者](add-users-administrator.md)。
 
 ## <a name="create-a-test-guest-user-in-azure-ad"></a>在 Azure AD 中建立測試來賓使用者
 
@@ -89,7 +89,7 @@ ms.locfileid: "87906879"
 
 12. 在 [選取]  頁面上，選擇 [Microsoft Azure 管理]  ，然後選擇 [選取]  。
 
-    ![顯示已選取 [Microsoft Azure 管理] 應用程式的螢幕擷取畫面](media/tutorial-mfa/tutorial-mfa-policy-11.png)
+    ![螢幕擷取畫面：醒目提示 [Microsoft Azure 管理] 選項。](media/tutorial-mfa/tutorial-mfa-policy-11.png)
 
 13. 在 [雲端應用程式]  頁面上，選取 [完成]  。
 14. 在 [新增]  頁面的 [存取控制]  區段中，選取 [授與]  。
@@ -107,7 +107,7 @@ ms.locfileid: "87906879"
 
 1.  在 [條件式存取 - 原則]  頁面上，選取 [What If]  。 
 
-    ![顯示要在哪裡選取 [What If] 選項的螢幕擷取畫面](media/tutorial-mfa/tutorial-mfa-whatif-1.png)
+    ![螢幕擷取畫面：醒目提示可在 [條件式存取 - 原則] 頁面上的何處選取 [What If] 選項。](media/tutorial-mfa/tutorial-mfa-whatif-1.png)
 
 2.  選取 [使用者]  ，選擇您的測試來賓使用者，然後選擇 [選取]  。
 

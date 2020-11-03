@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 08/08/2018
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: cb4d30a2bb7704ef7d4d4760f3d8cf74788945c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: c5ddd5846be91e9fc99a251d6ad45ade8bde2937
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89611915"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745844"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>建立使用可用性區域的虛擬機器擴展集
 
@@ -22,21 +22,21 @@ ms.locfileid: "89611915"
 
 ## <a name="availability-considerations"></a>可用性考量
 
-當您將區域 (非區域) 擴展集部署到一或多個 API *2017-12-01*版的區域時，您會有下列可用性選項：
+當您將區域 (非區域) 擴展集部署到一或多個 API *2017-12-01* 版的區域時，您會有下列可用性選項：
 - 最大分配 (platformFaultDomainCount = 1) 
 - 靜態固定分配 (platformFaultDomainCount = 5) 
 - 分配對齊的儲存體磁片容錯網域 (platforFaultDomainCount = 2 或 3) 
 
 使用最大分配時，擴展集會盡量將 VM 分配至每個區域中的多個容錯網域。 您可以在每個區域中五個以上或以下的容錯網域中進行此分配。 使用靜態固定分配，擴展集會將 Vm 分散到每個區域正好五個容錯網域。 如果擴展集無法在每個區域中找到五個不同的容錯網域，來滿足配置要求，則要求會失敗。
 
-**我們建議您使用最大分配來為大部分工作負載進行部署**，因為此方法在大部分情況下能提供最佳分配。 如果您需要將複本分配到不同硬體的獨立單元，我們建議您在可用性區域之間進行分配，並在每個區域中使用最大分配。
+**我們建議您使用最大分配來為大部分工作負載進行部署** ，因為此方法在大部分情況下能提供最佳分配。 如果您需要將複本分配到不同硬體的獨立單元，我們建議您在可用性區域之間進行分配，並在每個區域中使用最大分配。
 
 > [!NOTE]
 > 使用最大分配時，無論您在多少個容錯網域間分配 VM，在擴展集 VM 執行個體檢視和執行個體中繼資料中只會看到一個容錯網域。 每個區域中的分配都是隱含的。
 
 ### <a name="placement-groups"></a>放置群組
 
-當您部署規模集時，也可以選擇使用每個可用性區域的單一[放置群組](./virtual-machine-scale-sets-placement-groups.md)進行部署，或者每個可用性區域使用多個進行部署。 針對區域 (非區域) 擴展集，選擇要在區域中有單一放置群組，或在區域中有多個放置群組。 針對大部分的工作負載，我們建議您使用多個放置群組，如此便能有更大的擴展性。 在 API 版本 *2017-12-01*中，擴展集預設為單一區域和跨區域擴展集的多個放置群組，但它們預設為區域 (非區域性) 擴展集的單一放置群組。
+當您部署規模集時，也可以選擇使用每個可用性區域的單一[放置群組](./virtual-machine-scale-sets-placement-groups.md)進行部署，或者每個可用性區域使用多個進行部署。 針對區域 (非區域) 擴展集，選擇要在區域中有單一放置群組，或在區域中有多個放置群組。 針對大部分的工作負載，我們建議您使用多個放置群組，如此便能有更大的擴展性。 在 API 版本 *2017-12-01* 中，擴展集預設為單一區域和跨區域擴展集的多個放置群組，但它們預設為區域 (非區域性) 擴展集的單一放置群組。
 
 > [!NOTE]
 > 如果您使用最大分配，您必須使用多個放置群組。
@@ -52,7 +52,7 @@ ms.locfileid: "89611915"
 
 若使用最佳區域平衡，擴展集會嘗試相應縮小或相應放大以維持平衡。 不過，如果基於某些原因而無法這麼做 (例如，如果某個區域停止運作，擴展集就無法在該區域中建立新的 VM) ，擴展集可允許暫時的不平衡，以成功縮小或放大。在後續的相應放大嘗試中，擴展集會將 Vm 新增至需要更多 Vm 的區域，擴展集才會進行平衡。 同樣地，在後續的相應縮小嘗試上，該擴展集會將 VM 從其擴展集需要減少 VM 以取得平衡的區域中移除。 使用「嚴格區域平衡」，擴展集無法嘗試任何相應縮小或放大，如果這樣做會導致不平衡。
 
-若要使用最佳區域平衡，請將 *zoneBalance* 設為 *false*。 在 API 版本 *2017-12-01* 中，這項設定是預設值。 若要使用嚴格區域平衡，請將 *>zonebalance* 設定為 *true*。
+若要使用最佳區域平衡，請將 *zoneBalance* 設為 *false* 。 在 API 版本 *2017-12-01* 中，這項設定是預設值。 若要使用嚴格區域平衡，請將 *>zonebalance* 設定為 *true* 。
 
 ## <a name="single-zone-and-zone-redundant-scale-sets"></a>單一區域和區域備援擴展集
 
@@ -79,7 +79,7 @@ ms.locfileid: "89611915"
 
 建立使用可用性區域之擴展集的流程，與[使用者入門文章](quick-create-cli.md)中所述的流程相同。 若要使用可用性區域，您必須在支援的 Azure 區域中建立擴展集。
 
-將 `--zones` 參數新增至 [az vmss create](/cli/azure/vmss) 命令，並指定要使用的區域 (例如區域 1**、2** 或 3**)。 下列範例會在區域 1** 中建立名為 myScaleSet** 的單一區域擴展集：
+將 `--zones` 參數新增至 [az vmss create](/cli/azure/vmss) 命令，並指定要使用的區域 (例如區域 1、2 或 3)。 下列範例會在區域 1 中建立名為 myScaleSet 的單一區域擴展集：
 
 ```azurecli
 az vmss create \
@@ -96,9 +96,9 @@ az vmss create \
 
 ### <a name="zone-redundant-scale-set"></a>區域備援擴展集
 
-若要建立區域備援擴展集，請使用標準** SKU 公用 IP 位址和負載平衡器。 為了增強備援能力，標準** SKU 會建立區域備援網路資源。 如需詳細資訊，請參閱 [Azure Load Balancer Standard 概觀](../load-balancer/load-balancer-overview.md)和[標準 Load Balancer 和可用性區域](../load-balancer/load-balancer-standard-availability-zones.md)。
+若要建立區域備援擴展集，請使用標準 SKU 公用 IP 位址和負載平衡器。 為了增強備援能力，標準 SKU 會建立區域備援網路資源。 如需詳細資訊，請參閱 [Azure Load Balancer Standard 概觀](../load-balancer/load-balancer-overview.md)和[標準 Load Balancer 和可用性區域](../load-balancer/load-balancer-standard-availability-zones.md)。
 
-若要建立區域備援擴展集，請使用 `--zones` 參數來指定多個區域。 下列範例會跨區域 1、2、3** 建立名為 myScaleSet** 的區域備援擴展集：
+若要建立區域備援擴展集，請使用 `--zones` 參數來指定多個區域。 下列範例會跨區域 1、2、3 建立名為 myScaleSet 的區域備援擴展集：
 
 ```azurecli
 az vmss create \
@@ -115,9 +115,9 @@ az vmss create \
 
 ## <a name="use-azure-powershell"></a>使用 Azure PowerShell
 
-若要使用可用性區域，您必須在支援的 Azure 區域中建立擴展集。 將 `-Zone` 參數新增至 [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) 命令，並指定要使用的區域 (例如區域 1**、2** 或 3**)。
+若要使用可用性區域，您必須在支援的 Azure 區域中建立擴展集。 將 `-Zone` 參數新增至 [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) 命令，並指定要使用的區域 (例如區域 1、2 或 3)。
 
-下列範例會在「美國東部 2」** 區域 *1* 中建立名為 *myScaleSet* 的單一區域擴展集。 系統會自動建立虛擬網路、公用 IP 位址和負載平衡器的 Azure 網路資源。 出現提示時，請為擴展集中的 VM 執行個體提供適當的系統管理認證：
+下列範例會在「美國東部 2」區域 *1* 中建立名為 *myScaleSet* 的單一區域擴展集。 系統會自動建立虛擬網路、公用 IP 位址和負載平衡器的 Azure 網路資源。 出現提示時，請為擴展集中的 VM 執行個體提供適當的系統管理認證：
 
 ```powershell
 New-AzVmss `
@@ -134,7 +134,7 @@ New-AzVmss `
 
 ### <a name="zone-redundant-scale-set"></a>區域備援擴展集
 
-若要建立區域備援擴展集，請使用 `-Zone` 參數來指定多個區域。 下列範例會跨「美國東部 2」** 區域 *1、2、3* 建立名為 *myScaleSet* 的區域備援擴展集。 系統會自動建立虛擬網路、公用 IP 位址和負載平衡器的區域備援 Azure 網路資源。 出現提示時，請為擴展集中的 VM 執行個體提供適當的系統管理認證：
+若要建立區域備援擴展集，請使用 `-Zone` 參數來指定多個區域。 下列範例會跨「美國東部 2」區域 *1、2、3* 建立名為 *myScaleSet* 的區域備援擴展集。 系統會自動建立虛擬網路、公用 IP 位址和負載平衡器的區域備援 Azure 網路資源。 出現提示時，請為擴展集中的 VM 執行個體提供適當的系統管理認證：
 
 ```powershell
 New-AzVmss `
@@ -151,9 +151,9 @@ New-AzVmss `
 
 ## <a name="use-azure-resource-manager-templates"></a>使用 Azure 資源管理員範本
 
-建立使用可用性區域之擴展集的流程，與 [Linux](quick-create-template-linux.md) 或 [Windows](quick-create-template-windows.md) 的使用者入門文章中所述的流程相同。 若要使用可用性區域，您必須在支援的 Azure 區域中建立擴展集。 將 `zones` 屬性新增至範本中的 Microsoft.Compute/virtualMachineScaleSets** 資源類型，並指定要使用的區域 (例如區域 1**、2** 或 3**)。
+建立使用可用性區域之擴展集的流程，與 [Linux](quick-create-template-linux.md) 或 [Windows](quick-create-template-windows.md) 的使用者入門文章中所述的流程相同。 若要使用可用性區域，您必須在支援的 Azure 區域中建立擴展集。 將 `zones` 屬性新增至範本中的 Microsoft.Compute/virtualMachineScaleSets 資源類型，並指定要使用的區域 (例如區域 1、2 或 3)。
 
-下列範例會在「美國東部 2」** 區域 1** 中建立名為 myScaleSet** 的 Linux 單一區域擴展集：
+下列範例會在「美國東部 2」區域 1 中建立名為 myScaleSet 的 Linux 單一區域擴展集：
 
 ```json
 {
@@ -197,7 +197,7 @@ New-AzVmss `
 
 ### <a name="zone-redundant-scale-set"></a>區域備援擴展集
 
-若要建立區域備援擴展集，請在 Microsoft.Compute/virtualMachineScaleSets** 資源類型的 `zones` 屬性中指定多個值。 下列範例會跨「美國東部 2」** 區域 1、2、3** 建立名為 myScaleSet** 的區域備援擴展集：
+若要建立區域備援擴展集，請在 Microsoft.Compute/virtualMachineScaleSets 資源類型的 `zones` 屬性中指定多個值。 下列範例會跨「美國東部 2」區域 1、2、3 建立名為 myScaleSet 的區域備援擴展集：
 
 ```json
 {
@@ -213,7 +213,7 @@ New-AzVmss `
 }
 ```
 
-如果您建立的是公用 IP 位址或負載平衡器，請指定「"sku": { "name": "Standard" }"」** 屬性，以建立區域備援網路資源。 您還必須建立網路安全性群組和規則，以便允許所有流量。 如需詳細資訊，請參閱 [Azure Load Balancer Standard 概觀](../load-balancer/load-balancer-overview.md)和[標準 Load Balancer 和可用性區域](../load-balancer/load-balancer-standard-availability-zones.md)。
+如果您建立的是公用 IP 位址或負載平衡器，請指定「"sku": { "name": "Standard" }"」屬性，以建立區域備援網路資源。 您還必須建立網路安全性群組和規則，以便允許所有流量。 如需詳細資訊，請參閱 [Azure Load Balancer Standard 概觀](../load-balancer/load-balancer-overview.md)和[標準 Load Balancer 和可用性區域](../load-balancer/load-balancer-standard-availability-zones.md)。
 
 如需區域備援擴展集和網路資源的完整範例，請參閱[這個 Resource Manager 範本範例](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 

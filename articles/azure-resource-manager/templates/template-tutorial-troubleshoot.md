@@ -5,12 +5,12 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 68ddb5c07ffac2aad4e2dafd16301fa29f391797
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0da6c614572e73a00db1087621eaca3bd790aad6
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119339"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92891800"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>教學課程：對 ARM 範本部署進行疑難排解
 
@@ -18,8 +18,8 @@ ms.locfileid: "86119339"
 
 範本部署有兩種類型的相關錯誤：
 
-- **驗證錯誤**來自可在部署之前判斷的情況。 其中包含您範本中的語法錯誤，或者嘗試部署會超出您訂用帳戶配額的資源。
-- **部署錯誤**來自在部署程序期間發生的狀況。 其中包括嘗試存取以平行方式部署的資源。
+- **驗證錯誤** 來自可在部署之前判斷的情況。 其中包含您範本中的語法錯誤，或者嘗試部署會超出您訂用帳戶配額的資源。
+- **部署錯誤** 來自在部署程序期間發生的狀況。 其中包括嘗試存取以平行方式部署的資源。
 
 這兩種錯誤類型都會傳回錯誤碼，以供您針對部署進行疑難排解。 這兩種錯誤類型都會出現在活動記錄檔中。 不過，驗證錯誤不會出現在部署歷程記錄中，因為部署永遠不會啟動。
 
@@ -60,7 +60,7 @@ ms.locfileid: "86119339"
     - **apiVersion1** 是無效的元素名稱。 這是驗證錯誤。
     - API 版本應為 "2018-07-01"。  這是部署錯誤。
 
-5. 選取 [檔案]>[另存新檔]，在您的本機電腦上將檔案另存為 **azuredeploy.json**。
+5. 選取 [檔案]>[另存新檔]，在您的本機電腦上將檔案另存為 **azuredeploy.json** 。
 
 ## <a name="troubleshoot-the-validation-error"></a>對驗證錯誤進行疑難排解
 
@@ -96,14 +96,14 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 依序選取 [資源群組] 和資源群組名稱，以開啟資源群組。 您應該會在 [部署] 下方看到 [1 失敗]。
 
-    ![Resource Manager 教學課程疑難排解](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
+    ![醒目提示失敗部署的螢幕擷取畫面。](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
 3. 選取 [錯誤詳細資料]。
 
-    ![Resource Manager 教學課程疑難排解](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
+    ![醒目提示 [錯誤詳細資料] 連結的螢幕擷取畫面。](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-details.png)
 
     錯誤訊息與先前顯示的相同：
 
-    ![Resource Manager 教學課程疑難排解](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-summary.png)
+    ![顯示錯誤詳細資料的螢幕擷取畫面。](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-error-summary.png)
 
 您也可以在活動記錄中找到錯誤：
 

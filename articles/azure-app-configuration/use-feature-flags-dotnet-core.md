@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: f8ad2558c664d1a8b577f01b707200d416d5348a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 6da2aa645549920cce2f5c0cfe8a32c98dc04708
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078896"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746135"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>教學課程：在 ASP.NET Core 應用程式中使用功能旗標
 
@@ -107,7 +107,7 @@ public class Startup
               .UseStartup<Startup>();
    ```
 
-2. 開啟 *Startup.cs* 並更新 `Configure` 方法，以新增中介軟體，讓功能旗標值依週期性間隔重新整理，同時讓 ASP.NET Core Web 應用程式繼續接收要求。
+2. 開啟 *Startup.cs* 並更新 `Configure` 方法，以新增名為 `UseAzureAppConfiguration` 的內建中介軟體。 此中介軟體可讓功能旗標值依週期性間隔重新整理，同時讓 ASP.NET Core Web 應用程式繼續接收要求。
 
    ```csharp
    public void Configure(IApplicationBuilder app, IHostingEnvironment env)

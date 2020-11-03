@@ -1,6 +1,6 @@
 ---
 title: 快速入門：建立 Azure Synapse 工作區 Azure Resource Manager 範本
-description: 了解如何使用 Azure Resource Manager 範本建立 Synapse 工作區。
+description: 了解如何使用 Azure Resource Manager 範本 (ARM 範本) 建立 Synapse 工作區。
 services: azure-resource-manager
 author: julieMSFT
 ms.service: azure-resource-manager
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 08/07/2020
-ms.openlocfilehash: 6ae5c4f20cc42ee3865726973a81e2ba90aeaf33
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 2b05220081dde4db6f07f21fb9978d9e466235ca
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093832"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92740370"
 ---
-# <a name="quickstart-create-an-azure-synapse-workspace-using-a-deployment-template"></a>快速入門：使用部署範本建立 Azure Synapse 工作區
+# <a name="quickstart-create-an-azure-synapse-workspace-using-an-arm-template"></a>快速入門：使用 ARM 範本建立 Azure Synapse 工作區
 
 此 Azure Resource Manager 範本 (ARM 範本) 會建立具有基礎 Data Lake Storage 的 Azure Synapse 工作區。 Azure Synapse 工作區是 Azure Synapse Analytics 中分析程序的安全性實體共同作業界限。
 
@@ -31,7 +31,7 @@ ms.locfileid: "92093832"
 
 ## <a name="review-the-template"></a>檢閱範本
 
-您可以選取**視覺化**連結來檢閱範本，如下所示：
+您可以選取 **視覺化** 連結來檢閱範本。 接著選取 [編輯範本]。
 
 [![視覺化](../media/template-deployments/template-visualize-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
 
@@ -43,25 +43,25 @@ ms.locfileid: "92093832"
 ## <a name="deploy-the-template"></a>部署範本
 
 1. 選取以下影像來登入 Azure 並開啟範本。 此範本會建立 Synapse 工作區。
-   
+
    [![部署至 Azure 2](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FSynapse%2Fmaster%2FManage%2FDeployWorkspace%2Fazuredeploy.json)
 
 1. 輸入或更新下列值：
 
-   * 訂用帳戶：選取 Azure 訂用帳戶。
-   * **資源群組**：選取 [新建]，並輸入資源群組的唯一名稱，然後選取 [確定]。 新的資源群組將有助於清除資源。
-   * **區域**：選取區域。  例如，**美國中部**。
-   * **Name**：輸入工作區的名稱。
-   * **SQL 管理員登入**：輸入 SQL Server 的管理員使用者名稱。
-   * **SQL 管理員密碼**：輸入 SQL Server 的管理員密碼。
-   * **標籤值**：接受預設值。 
-   * **檢閱並建立**：選取。
-   * **建立**：選取。
+   - 訂用帳戶：選取 Azure 訂用帳戶。
+   - **資源群組** ：選取 [新建]，並輸入資源群組的唯一名稱，然後選取 [確定]。 新的資源群組將有助於清除資源。
+   - **區域** ：選取區域。  例如， **美國中部** 。
+   - **Name** ：輸入工作區的名稱。
+   - **SQL 管理員登入** ：輸入 SQL Server 的管理員使用者名稱。
+   - **SQL 管理員密碼** ：輸入 SQL Server 的管理員密碼。
+   - **標籤值** ：接受預設值。
+   - **檢閱並建立** ：選取。
+   - **建立** ：選取。
 
 ## <a name="next-steps"></a>後續步驟
 
 若要深入了解 Azure Synapse Analytics 和 Azure Resource Manager，請繼續閱讀下列文章。
 
-- 閱讀 [Azure Synapse Analytics 的概觀](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 
+- 閱讀 [Azure Synapse Analytics 的概觀](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 - 深入了解 [Azure Resource Manager](../azure-resource-manager/management/overview.md)
 - [建立及部署您的第一個 ARM 範本](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

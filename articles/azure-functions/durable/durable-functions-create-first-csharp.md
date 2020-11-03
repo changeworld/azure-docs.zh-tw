@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
-ms.openlocfilehash: f5eb5f5ce6c6ded3fffc95b73d3ac86ae9e94ba2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d5b6ecc12cee983cee0772da8b6f8f26a3b5a8ae
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88055457"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890270"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>使用 C\# 建立第一個耐久函式
 
@@ -21,7 +21,7 @@ ms.locfileid: "88055457"
 
 在本文中，您將了解如何使用 Visual Studio Code，在本機建立及測試 "hello world" 耐久函式。  此函式會協調對其他函式的呼叫並鏈結在一起。 接著會將函式程式碼發佈至 Azure。 這些工具會在 VS Code [Azure Functions 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)中提供。
 
-![在 Azure 中執行耐久函式](./media/durable-functions-create-first-csharp/functions-vscode-complete.png)
+![螢幕擷取畫面顯示具有耐久函式的 Visual Studio Code 視窗。](./media/durable-functions-create-first-csharp/functions-vscode-complete.png)
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -102,12 +102,12 @@ ms.locfileid: "88055457"
 
 Azure Functions Core Tools 可讓您在本機開發電腦上執行 Azure Functions 專案。 第一次從 Visual Studio Code 啟動函式時，系統會提示您安裝這些工具。
 
-1. 若要測試您的函式，可在 `SayHello` 活動函式程式碼中設定中斷點，並按 F5 以啟動函式應用程式專案。 Core Tools 的輸出會顯示在**終端機**面板中。
+1. 若要測試您的函式，可在 `SayHello` 活動函式程式碼中設定中斷點，並按 F5 以啟動函式應用程式專案。 Core Tools 的輸出會顯示在 **終端機** 面板中。
 
     > [!NOTE]
     > 如需有關偵錯的詳細資訊，請參閱 [Durable Functions 診斷](durable-functions-diagnostics.md#debugging)。
 
-1. 在**終端機**面板中，複製 HTTP 觸發函式的 URL 端點。
+1. 在 **終端機** 面板中，複製 HTTP 觸發函式的 URL 端點。
 
     ![Azure 本機輸出](media/durable-functions-create-first-csharp/functions-vscode-f5.png)
 
@@ -136,7 +136,7 @@ Azure Functions Core Tools 可讓您在本機開發電腦上執行 Azure Functio
     }
     ```
 
-1. 若要停止偵錯，請在 VS Code 中按 **Shift + F5**。
+1. 若要停止偵錯，請在 VS Code 中按 **Shift + F5** 。
 
 確認函式在本機電腦上正確執行之後，就可以將專案發佈到 Azure。
 
@@ -165,13 +165,13 @@ Azure Functions Core Tools 可讓您在本機開發電腦上執行 Azure Functio
 
 在本文中，您將了解如何使用 Visual Studio 2019，在本機建立及測試 "hello world" 耐久函式。  此函式會協調對其他函式的呼叫並鏈結在一起。 接著會將函式程式碼發佈至 Azure。 這些工具可在 Visual Studio 2019 的 Azure 開發工作負載中取得。
 
-![在 Azure 中執行耐久函式](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
+![螢幕擷取畫面顯示具有耐久函式的 Visual Studio 2019 視窗。](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
 ## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程：
 
-* 安裝 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)。 確定也已經安裝 **Azure 開發**工作負載。 Visual Studio 2017 也支援 Durable Functions 開發，但 UI 和步驟有所不同。
+* 安裝 [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)。 確定也已經安裝 **Azure 開發** 工作負載。 Visual Studio 2017 也支援 Durable Functions 開發，但 UI 和步驟有所不同。
 
 * 確認您已安裝且正在執行 [Azure 儲存體模擬器](../../storage/common/storage-use-emulator.md)。
 
@@ -237,7 +237,7 @@ Azure Functions Core Tools 可讓您在本機開發電腦上執行 Azure Functio
 
 3. 將 HTTP 要求的 URL 貼到瀏覽器的網址列中，然後執行要求。 下圖顯示瀏覽器中對於函式傳回之本機 GET 要求所做出的回應︰
 
-    ![瀏覽器中的函式 localhost 回應](./media/durable-functions-create-first-csharp/functions-vs-status.png)
+    ![螢幕擷取畫面顯示具有 statusQueryGetUri 圖說文字的瀏覽器視窗。](./media/durable-functions-create-first-csharp/functions-vs-status.png)
 
     回應是 HTTP 函式的初始結果，讓我們知道耐久協調流程已成功啟動。  這還不是協調流程的最終結果。  回應包含一些實用的 URL。  讓現在我們查詢協調流程的狀態。
 
@@ -261,7 +261,7 @@ Azure Functions Core Tools 可讓您在本機開發電腦上執行 Azure Functio
     }
     ```
 
-5. 若要停止偵錯，請按 **Shift + F5**。
+5. 若要停止偵錯，請按 **Shift + F5** 。
 
 確認函式在本機電腦上正確執行之後，就可以將專案發佈到 Azure。
 

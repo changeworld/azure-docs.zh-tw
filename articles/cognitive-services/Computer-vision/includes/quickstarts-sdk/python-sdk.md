@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 744ef58b54dc3718c4693ce2aad69024e2d6e2fe
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: da9ff2ab1ce90b7b27d52c68dc27eb646fe62513
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89321828"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886487"
 ---
 <a name="HOLTop"></a>
 
@@ -27,26 +27,10 @@ ms.locfileid: "89321828"
 * 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="建立電腦視覺資源"  target="_blank">建立電腦視覺資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
     * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 電腦視覺服務。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
     * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
-* 為金鑰和端點 URL [建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，名稱分別為 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
 
-> [!NOTE]
-> 您可以下載以下所顯示[範例的完整原始程式碼](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py)，以及 [ComputerVisionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) 所提供的每個函式範例。
 
 ## <a name="setting-up"></a>設定
  
-### <a name="create-a-new-python-application"></a>建立新的 Python 應用程式
-
-建立新的 Python 指令碼&mdash;例如，quickstart-file.py。 在您慣用的編輯器或 IDE 中開啟該檔案，並匯入下列程式庫。
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_imports)]
-
-然後，為資源的 Azure 端點和金鑰建立變數。
-
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_vars)]
-
-> [!NOTE]
-> 如果您在啟動應用程式後才建立環境變數，則必須先關閉執行該應用程式的編輯器、IDE 或殼層，再重新加以開啟，才能存取該變數。
-
 ### <a name="install-the-client-library"></a>安裝用戶端程式庫
 
 您可以使用下列命令來安裝用戶端程式庫：
@@ -55,6 +39,25 @@ ms.locfileid: "89321828"
 pip install --upgrade azure-cognitiveservices-vision-computervision
 ```
 
+### <a name="create-a-new-python-application"></a>建立新的 Python 應用程式
+
+建立新的 Python 指令碼，例如 &mdash;*quickstart-file.py* 。 在您慣用的編輯器或 IDE 中開啟該檔案，並匯入下列程式庫。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_imports)]
+
+> [!TIP]
+> 想要立刻檢視整個快速入門程式碼檔案嗎？ 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py) 上找到該檔案，其中包含本快速入門中的程式碼範例。
+
+然後，為資源的 Azure 端點和金鑰建立變數。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_vars)]
+
+> [!IMPORTANT]
+> 前往 Azure 入口網站。 如果您在 [必要條件] 區段中建立的電腦視覺資源成功部署，請按一下 [後續步驟] 底下的 [前往資源] 按鈕。 您可以在 [資源管理] 底下的 [金鑰和端點] 頁面中找到金鑰和端點。 
+>
+> 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 例如，[Azure金鑰保存庫](https://docs.microsoft.com/azure/key-vault/key-vault-overview)。
+
+
 ## <a name="object-model"></a>物件模型
 
 下列類別和介面會處理電腦視覺 Python SDK 的一些主要功能。
@@ -62,7 +65,7 @@ pip install --upgrade azure-cognitiveservices-vision-computervision
 |名稱|描述|
 |---|---|
 |[ComputerVisionClientOperationsMixin](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin?view=azure-python)| 此類別會直接處理所有影像作業，例如影像分析、文字偵測和縮圖產生。|
-| [ComputerVisionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) | 所有電腦視覺功能都需要此類別。 您可以使用訂用帳戶資訊來具現化此類別，並用其來產生其他類別的執行個體。 它會實作 **ComputerVisionClientOperationsMixin**。|
+| [ComputerVisionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) | 所有電腦視覺功能都需要此類別。 您可以使用訂用帳戶資訊來具現化此類別，並用其來產生其他類別的執行個體。 它會實作 **ComputerVisionClientOperationsMixin** 。|
 |[VisualFeatureTypes](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-python)| 此列舉會定義可在標準分析作業中完成的不同影像分析類型。 視您的需求而定，您可以指定一組 **VisualFeatureTypes** 值。 |
 
 ## <a name="code-examples"></a>程式碼範例
@@ -75,18 +78,18 @@ pip install --upgrade azure-cognitiveservices-vision-computervision
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-> [!NOTE]
-> 本快速入門假設您已針對名為 `COMPUTER_VISION_SUBSCRIPTION_KEY` 的電腦視覺金鑰[建立環境變數](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication)。
-
 使用端點和金鑰來具現化用戶端。 使用金鑰建立 [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) 物件，並使用該物件與您的端點建立 [ComputerVisionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) 物件。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_client)]
 
 ## <a name="analyze-an-image"></a>分析影像
 
-將參考儲存至您要分析的影像 URL。
+使用您的用戶端物件來分析遠端影像的視覺功能。 首先將參考儲存至您要分析的影像 URL。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_remoteimage)]
+
+> [!TIP]
+> 您也可以分析本機影像。 請參閱 [ComputerVisionClientOperationsMixin](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin?view=azure-python) 方法，例如 **analyze_image_in_stream** 。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py) 上的範例程式碼。
 
 ### <a name="get-image-description"></a>取得影像說明
 
@@ -110,7 +113,7 @@ pip install --upgrade azure-cognitiveservices-vision-computervision
 
 下列程式碼會偵測影像中的一般物件，並將其輸出到主控台。 如需詳細資訊，請參閱[物件偵測](../../concept-object-detection.md)。
 
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_objects)]
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_objects)]        
 
 ### <a name="detect-brands"></a>偵測品牌
 
@@ -164,6 +167,9 @@ pip install --upgrade azure-cognitiveservices-vision-computervision
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_call)]
 
+> [!TIP]
+> 您也可以從本機影像讀取文字。 請參閱 [ComputerVisionClientOperationsMixin](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin?view=azure-python) 方法，例如 **read_in_stream** 。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py) 上的範例程式碼。
+
 ### <a name="get-read-results"></a>取得讀取結果
 
 接下來，取得從 **read** 呼叫傳回的作業識別碼，並使用該識別碼來查詢服務中的作業結果。 下列程式碼會以一秒的間隔檢查作業，直到傳回結果為止。 然後，它會將已解壓縮的文字資料輸出到主控台。
@@ -196,3 +202,4 @@ python quickstart-file.py
 
 * [什麼是電腦視覺？](../../overview.md)
 * 此範例的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py) 上找到。
+           

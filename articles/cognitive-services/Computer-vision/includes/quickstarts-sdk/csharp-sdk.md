@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6315ca68c8e58c3ba04e616967c233c81fda9b19
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: d48d0cbac4e0e8b366170d979be3bbc5dd3064ca
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92038516"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886490"
 ---
 <a name="HOLTop"></a>
 
@@ -39,11 +39,11 @@ ms.locfileid: "92038516"
 
 ### <a name="install-the-client-library"></a>安裝用戶端程式庫 
 
-建立新專案後，以滑鼠右鍵按一下 [方案總管] 中的專案解決方案，然後選取 [管理 NuGet 套件]，以安裝用戶端程式庫。 在開啟的套件管理員中，選取 [瀏覽]、核取 [包含發行前版本]，然後搜尋 `Microsoft.Azure.CognitiveServices.Vision.ComputerVision`。 選取版本 `6.0.0-preview.1`，然後 **安裝**。 
+建立新專案後，以滑鼠右鍵按一下 [方案總管] 中的專案解決方案，然後選取 [管理 NuGet 套件]，以安裝用戶端程式庫。 在開啟的套件管理員中，選取 [瀏覽]、核取 [包含發行前版本]，然後搜尋 `Microsoft.Azure.CognitiveServices.Vision.ComputerVision`。 選取版本 `6.0.0-preview.1`，然後 **安裝** 。 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `computer-vision-quickstart` 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔：*ComputerVisionQuickstart.cs*。
+在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `computer-vision-quickstart` 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔： *ComputerVisionQuickstart.cs* 。
 
 ```console
 dotnet new console -n (product-name)-quickstart
@@ -133,15 +133,14 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 
 下列程式碼會定義 `AnalyzeImageUrl` 方法，以使用用戶端物件來分析遠端影像並輸出結果。 該方法會傳回文字描述、分類、標記清單、偵測到的臉部、成人內容旗標、主要色彩和影像類型。
 
+> [!TIP]
+> 您也可以分析本機影像。 請參閱 [ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) 方法，例如 **AnalyzeImageInStreamAsync** 。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) 上的範例程式碼。
 
 ### <a name="set-up-test-image"></a>設定測試影像
 
 在 [程式] 類別中，儲存您要分析之影像的 URL 參考。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_analyze_url)]
-
-> [!NOTE]
-> 您也可以分析本機影像。 如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) 上的範例程式碼。
 
 ### <a name="specify-visual-features"></a>指定視覺特徵
 
@@ -233,15 +232,14 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 
 電腦視覺可以讀取影像中的可見文字，並將它轉換成字元資料流。 如需文字辨識的詳細資訊，請參閱[光學字元辨識 (OCR)](../../concept-recognizing-text.md#read-api) 概念文件。本節中的程式碼會使用最新的[讀取用電腦視覺 SDK 版本 3.0](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/6.0.0-preview.1) 並定義 `BatchReadFileUrl` 方法，其會使用用戶端物件來偵測和擷取影像中的文字。
 
+> [!TIP]
+> 您也可以從本機影像擷取文字。 請參閱 [ComputerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet) 方法，例如 **ReadInStreamAsync** 。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) 上的範例程式碼。
 
 ### <a name="set-up-test-image"></a>設定測試影像
 
 在 [程式] 類別中，儲存您要從中擷取文字的影像 URL 參考。 此程式碼片段包含印刷和手寫文字的範例影像。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_readtext_url)]
-
-> [!NOTE]
-> 您也可以從本機影像擷取文字。 如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) 上的範例程式碼。
 
 ### <a name="call-the-read-api"></a>呼叫讀取 API
 

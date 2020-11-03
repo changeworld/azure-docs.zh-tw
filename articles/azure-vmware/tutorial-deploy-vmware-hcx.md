@@ -3,12 +3,12 @@ title: 教學課程 - 部署及設定 VMWare HCX
 description: 了解如何為您的 Azure VMware 解決方案私人雲端部署及設定 VMware HCX 解決方案。
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: c78eae11497702054bb54b5980228fd0a3962577
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 424abeef567d88f7de37f7a7a4ab7a7a8b6ef3bc
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367766"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791404"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>部署及設定 VMWare HCX
 
@@ -17,7 +17,7 @@ ms.locfileid: "92367766"
 VMware HCX Advanced Connector 已預先部署在 Azure VMware 解決方案中。 最多可支援三個網站連線 (內部部署至雲端或雲端到雲端)。 如果您需要三個以上的網站連線，請提交[支援要求](https://rc.portal.azure.com/#create/Microsoft.Support)以啟用 [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) 附加元件。 此附加元件目前為預覽狀態。 
 
 >[!NOTE]
->VMware HCX Enterprise Edition (EE) 會作為 Azure VMware 解決方案的預覽服務來提供。 這是免費的附加元件，並且受限於預覽服務的條款及條件。 當 VMware HCX EE 服務正式發行後，您將會收到帳單將切換的 30 天通知。 您也可以選擇關閉或退出服務。
+>VMware HCX Enterprise Edition (EE) 會作為 Azure VMware 解決方案的預覽服務來提供。 這是免費的附加元件，並且受限於預覽服務的條款及條件。 當 VMware HCX EE 服務正式發行後，您將會收到帳單將切換的 30 天通知。 您也可以選擇關閉或退出服務。 請注意，目前沒有從 HCX Enterprise 到 HCX Advanced 的簡單降級路徑，而且選擇降級的客戶將必須重新部署產生停機時間。
 
 首先，[在開始之前](#before-you-begin)，請先仔細檢閱本文的[軟體版本需求](#software-version-requirements)和[先決條件](#prerequisites)區段。 
 
@@ -94,13 +94,13 @@ VMware HCX Advanced Connector 已預先部署在 Azure VMware 解決方案中。
 
 1. 選取名稱和位置，然後選取您要在其中部署 HCX 連接器的資源/叢集。 然後，檢閱詳細資料和所需的資源。  
 
-   :::image type="content" source="media/tutorial-vmware-hcx/configure-template.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/configure-template.png":::
+   :::image type="content" source="media/tutorial-vmware-hcx/configure-template.png" alt-text="檢閱範本詳細資料的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/configure-template.png":::
 
 1. 檢閱授權條款。 如果您同意，請選取所需的儲存體和網路，然後選取 [下一步]。
 
 1. 在 [自訂範本] 中，輸入全部所需的資訊。 
 
-   :::image type="content" source="media/tutorial-vmware-hcx/customize-template.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/customize-template.png":::
+   :::image type="content" source="media/tutorial-vmware-hcx/customize-template.png" alt-text="自訂範本的方塊螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/customize-template.png":::
 
 1. 選取 [下一步]、驗證設定，然後選取 [完成] 以部署 HCX Connector OVA。
      
@@ -149,7 +149,7 @@ VMware HCX Advanced Connector 已預先部署在 Azure VMware 解決方案中。
 
 在服務重新開機之後，請務必在出現的畫面上看到 [vCenter] 顯示為綠色。 VCenter 和 SSO 必須具有適當的組態參數，其應該與上一個畫面相同。
 
-:::image type="content" source="media/tutorial-vmware-hcx/activation-done.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/activation-done.png":::  
+:::image type="content" source="media/tutorial-vmware-hcx/activation-done.png" alt-text="具有綠色 vCenter 狀態的儀表板螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/activation-done.png":::  
 
 如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：啟用 HCX](https://www.youtube.com/embed/BkAV_TNYxdE) 的影片。
 
@@ -164,11 +164,11 @@ VMware HCX Advanced Connector 已預先部署在 Azure VMware 解決方案中。
 
 1. 登入您的內部部署 vCenter，然後在 [主資料夾] 底下，選取 [HCX]。
 
-   :::image type="content" source="media/tutorial-vmware-hcx/vcenter-vmware-hcx.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/vcenter-vmware-hcx.png":::
+   :::image type="content" source="media/tutorial-vmware-hcx/vcenter-vmware-hcx.png" alt-text="在捷徑中選取 HCX 的 vCenter 用戶端螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/vcenter-vmware-hcx.png":::
 
 1. 在 [基礎結構] 底下，選取 [網站配對]，然後選取 [連線到遠端網站] 選項 (在畫面中間)。 
 
-   :::image type="content" source="media/tutorial-vmware-hcx/connect-remote-site.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/connect-remote-site.png":::
+   :::image type="content" source="media/tutorial-vmware-hcx/connect-remote-site.png" alt-text="建立遠端網站的選項螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/connect-remote-site.png":::
 
 1. 輸入您稍早記下的遠端 HCX URL 或 IP 位址、Azure VMware 解決方案 cloudadmin@vsphere.local 的使用者名稱和密碼。 然後選取 [連線]  。
 
@@ -179,7 +179,7 @@ VMware HCX Advanced Connector 已預先部署在 Azure VMware 解決方案中。
 
    您會看到一個畫面，其中顯示您 Azure VMware 解決方案中的 HCX 雲端管理員，以及您的內部部署 HCX Connector 已連線 (配對)。
 
-   :::image type="content" source="media/tutorial-vmware-hcx/site-pairing-complete.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。":::
+   :::image type="content" source="media/tutorial-vmware-hcx/site-pairing-complete.png" alt-text="此螢幕擷取畫面顯示 Azure VMware 解決方案中的 HCX 管理員與 HCX 連接器的配對。":::
 
 如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：HCX 網站配對](https://www.youtube.com/embed/sKizDCRHOko)的影片。
 
@@ -198,11 +198,11 @@ VMware HCX 會部署需要多個 IP 區段的幾個虛擬設備 (自動化)。 �
 
 1. 在 [基礎結構] 下，選取 [互連] > [多網站服務網格] > [網路設定檔] > [建立網路設定檔]。
 
-   :::image type="content" source="media/tutorial-vmware-hcx/network-profile-start.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/network-profile-start.png":::
+   :::image type="content" source="media/tutorial-vmware-hcx/network-profile-start.png" alt-text="開始建立網路設定檔的選項螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/network-profile-start.png":::
 
 1. 針對每個網路設定檔選取網路和連接埠群組並提供名稱，然後建立該區段的 IP 集區。 然後選取 [建立]。 
 
-   :::image type="content" source="media/tutorial-vmware-hcx/example-configurations-network-profile.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。":::
+   :::image type="content" source="media/tutorial-vmware-hcx/example-configurations-network-profile.png" alt-text="新網路設定檔的詳細資料螢幕擷取畫面。":::
 
 如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：HCX 網路設定檔](https://www.youtube.com/embed/NhyEcLco4JY)的影片。
 
@@ -211,11 +211,11 @@ VMware HCX 會部署需要多個 IP 區段的幾個虛擬設備 (自動化)。 �
 
 1. 選取 [計算設定檔] > [建立計算設定檔]。
 
-   :::image type="content" source="media/tutorial-vmware-hcx/compute-profile-create.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/compute-profile-create.png":::
+   :::image type="content" source="media/tutorial-vmware-hcx/compute-profile-create.png" alt-text="顯示開始建立計算設定檔的選項螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/compute-profile-create.png":::
 
 1. 輸入設定檔的名稱，然後選取 [繼續]。  
 
-   :::image type="content" source="media/tutorial-vmware-hcx/name-compute-profile.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/name-compute-profile.png":::
+   :::image type="content" source="media/tutorial-vmware-hcx/name-compute-profile.png" alt-text="顯示計算設定檔名稱項目和 [繼續] 按鈕的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/name-compute-profile.png":::
 
 1. 選取要啟用的服務，例如移轉、網路延伸模組或災害復原，然後選取 [繼續]。
   
@@ -226,47 +226,47 @@ VMware HCX 會部署需要多個 IP 區段的幾個虛擬設備 (自動化)。 �
 
 1. 當您看到內部部署資料中心內的叢集時，請選取 [繼續]。
 
-   :::image type="content" source="media/tutorial-vmware-hcx/select-service-resource.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/select-service-resource.png":::
+   :::image type="content" source="media/tutorial-vmware-hcx/select-service-resource.png" alt-text="顯示所選服務資源和 [繼續] 按鈕的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/select-service-resource.png":::
 
 1. 從 [選取資料存放區] 中，選取用於部署 VMware HCX 互連設備的資料存放區儲存體資源。 然後選取 [繼續]。
 
    選取多個資源時，VMware HCX 會使用第一個選取的資源，直到其容量用盡為止。   
 
-   :::image type="content" source="media/tutorial-vmware-hcx/deployment-resources-and-reservations.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/deployment-resources-and-reservations.png":::  
+   :::image type="content" source="media/tutorial-vmware-hcx/deployment-resources-and-reservations.png" alt-text="顯示所選資料儲存體資源和 [繼續] 按鈕的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/deployment-resources-and-reservations.png":::  
 
 1. 從 [選取管理網路設定檔] 中，選取您在先前步驟中建立的管理網路設定檔。 然後選取 [繼續]。  
 
-   :::image type="content" source="media/tutorial-vmware-hcx/select-management-network-profile.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/select-management-network-profile.png":::
+   :::image type="content" source="media/tutorial-vmware-hcx/select-management-network-profile.png" alt-text="顯示管理網路設定檔和 [繼續] 按鈕選項的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/select-management-network-profile.png":::
 
    > [!NOTE]
    > 管理網路設定檔可讓 VMware HCX 設備與 vCenter 進行通訊。 您可以透過此設定檔來連線到 ESXi 主機。
 
 1. 從 [選取上行網路設定檔] 中，選取您在先前步驟中建立的上行網路設定檔。 然後選取 [繼續]。
 
-   :::image type="content" source="media/tutorial-vmware-hcx/select-uplink-network-profile.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/select-uplink-network-profile.png":::
+   :::image type="content" source="media/tutorial-vmware-hcx/select-uplink-network-profile.png" alt-text="顯示上行網路設定檔和 [繼續] 按鈕選項的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/select-uplink-network-profile.png":::
 
 1. 從 [選取 vMotion 網路設定檔] 中，選取您在先前步驟中建立的 vMotion 網路設定檔。 然後選取 [繼續]。
 
-   :::image type="content" source="media/tutorial-vmware-hcx/select-vmotion-network-profile.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/select-vmotion-network-profile.png":::
+   :::image type="content" source="media/tutorial-vmware-hcx/select-vmotion-network-profile.png" alt-text="顯示 vMotion 網路設定檔和 [繼續] 按鈕選項的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/select-vmotion-network-profile.png":::
 
 1. 從 [選取 vSphere複寫網路設定檔] 中，選取您在先前步驟中建立的複寫網路設定檔。 然後選取 [繼續]。
 
    在大多數情況下，複寫網路設定檔與管理網路設定檔相同。  
 
-   :::image type="content" source="media/tutorial-vmware-hcx/select-replication-network-profile.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/select-replication-network-profile.png":::
+   :::image type="content" source="media/tutorial-vmware-hcx/select-replication-network-profile.png" alt-text="顯示複寫網路設定檔和 [繼續] 按鈕選項的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/select-replication-network-profile.png":::
 
 1. 從 [選取網路延伸模組的分散式交換器] 中選取分散式虛擬交換器，其包含要遷移至第 2 層擴充網路上 Azure VMware 解決方案的虛擬機器。 然後選取 [繼續]。
 
-   :::image type=" content" source="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png":::
+   :::image type=" content" source="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png" alt-text="顯示分散式虛擬交換器和 [繼續] 按鈕選項的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png":::
 
 1. 檢閱連線規則，然後選取 [繼續]。  
 
-   :::image type="content" source="media/tutorial-vmware-hcx/review-connection-rules.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/review-connection-rules.png":::
+   :::image type="content" source="media/tutorial-vmware-hcx/review-connection-rules.png" alt-text="顯示連線規則和 [繼續] 按鈕的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/review-connection-rules.png":::
 
 1. 選取 [完成] 以建立計算設定檔。
 
 
-   :::image type="content" source="media/tutorial-vmware-hcx/compute-profile-done.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/compute-profile-done.png":::
+   :::image type="content" source="media/tutorial-vmware-hcx/compute-profile-done.png" alt-text="顯示計算設定檔資訊的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/compute-profile-done.png":::
 
 如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：計算設定檔](https://www.youtube.com/embed/qASXi5xrFzM)的影片。
 
@@ -283,7 +283,7 @@ VMware HCX 會部署需要多個 IP 區段的幾個虛擬設備 (自動化)。 �
 
 1. 在 [基礎結構] 下，選取 [互連] > [服務網格] > [建立服務網格]。    
 
-   :::image type="content" source="media/tutorial-vmware-hcx/create-service-mesh.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/create-service-mesh.png":::
+   :::image type="content" source="media/tutorial-vmware-hcx/create-service-mesh.png" alt-text="開始建立服務網格的選項螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/create-service-mesh.png":::
 
 1. 檢閱預先填入的網站，然後選取 [繼續]。 
 
@@ -294,9 +294,9 @@ VMware HCX 會部署需要多個 IP 區段的幾個虛擬設備 (自動化)。 �
 
    這些選項會定義 VM 可使用 VMware HCX 服務的資源。  
 
-   :::image type="content" source="media/tutorial-vmware-hcx/select-compute-profile-source.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/select-compute-profile-source.png":::
+   :::image type="content" source="media/tutorial-vmware-hcx/select-compute-profile-source.png" alt-text="顯示選取來源計算設定檔的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/select-compute-profile-source.png":::
 
-   :::image type="content" source="media/tutorial-vmware-hcx/select-compute-profile-remote.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/select-compute-profile-remote.png":::
+   :::image type="content" source="media/tutorial-vmware-hcx/select-compute-profile-remote.png" alt-text="顯示選取遠端計算設定檔的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/select-compute-profile-remote.png":::
 
 1. 檢閱將啟用的服務，然後選取 [繼續]。  
 
@@ -314,16 +314,16 @@ VMware HCX 會部署需要多個 IP 區段的幾個虛擬設備 (自動化)。 �
 
 1. 選取 [檢視工作] 監視部署。 
 
-   :::image type="content" source="media/tutorial-vmware-hcx/monitor-service-mesh.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。":::
+   :::image type="content" source="media/tutorial-vmware-hcx/monitor-service-mesh.png" alt-text="顯示檢視工作按鈕的螢幕擷取畫面。":::
 
    當服務網格部署成功完成時，您會看到服務為綠色。
 
-   :::image type="content" source="media/tutorial-vmware-hcx/service-mesh-green.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/service-mesh-green.png":::
+   :::image type="content" source="media/tutorial-vmware-hcx/service-mesh-green.png" alt-text="顯示服務上綠色指示器的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/service-mesh-green.png":::
 
 1. 檢查設備狀態，以確認服務網格的健康情況。 
 1. 選取 [互連] > [設備]。
 
-   :::image type="content" source="media/tutorial-vmware-hcx/interconnect-appliance-state.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/interconnect-appliance-state.png":::
+   :::image type="content" source="media/tutorial-vmware-hcx/interconnect-appliance-state.png" alt-text="顯示用來檢查設備狀態的選項螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/interconnect-appliance-state.png":::
 
 如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：服務網格](https://www.youtube.com/embed/FyZ0d3P_T24)的影片。
 
@@ -335,19 +335,19 @@ VMware HCX 會部署需要多個 IP 區段的幾個虛擬設備 (自動化)。 �
 
 1. 在 [服務] 底下，選取 [網路延伸模組]，然後選取 [建立網路延伸模組]。
 
-   :::image type="content" source="media/tutorial-vmware-hcx/create-network-extension.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/create-network-extension.png":::
+   :::image type="content" source="media/tutorial-vmware-hcx/create-network-extension.png" alt-text="顯示用來開始建立網路延伸模組的選項螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/create-network-extension.png":::
 
 1. 選取您想要延伸至 Azure VMware 解決方案的每個網路，然後選取 [下一步]。
 
-   :::image type="content" source="media/tutorial-vmware-hcx/select-extend-networks.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。":::
+   :::image type="content" source="media/tutorial-vmware-hcx/select-extend-networks.png" alt-text="顯示網路選取項目的螢幕擷取畫面。":::
 
 1. 針對您要延伸的每個網路輸入內部部署閘道 IP，然後選取 [提交]。 
 
-   :::image type="content" source="media/tutorial-vmware-hcx/extend-networks-gateway.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。":::
+   :::image type="content" source="media/tutorial-vmware-hcx/extend-networks-gateway.png" alt-text="顯示閘道 IP 位址項目的螢幕擷取畫面。":::
 
    網路延伸模組需要幾分鐘的時間才能完成。 當其執行時，您會看到狀態變更為 [延伸模組完成]。
 
-   :::image type="content" source="media/tutorial-vmware-hcx/extension-complete.png" alt-text="瀏覽至 OVF 範本的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/extension-complete.png":::
+   :::image type="content" source="media/tutorial-vmware-hcx/extension-complete.png" alt-text="顯示延伸模組完成狀態的螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/extension-complete.png":::
 
 如需此步驟的端對端概觀，請檢視 [Azure VMware 解決方案：網路延伸模組](https://www.youtube.com/embed/cNlp0f_tTr0)的影片。
 

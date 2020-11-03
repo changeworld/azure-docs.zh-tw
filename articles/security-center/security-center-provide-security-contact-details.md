@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: memildin
-ms.openlocfilehash: ac50b17826f9f3d06d01d3cce9704094fddf1b1d
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 6b54f02b39e233dcf35f0d18682ca102883d76c3
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945612"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791863"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>設定安全性警示的電子郵件通知 
 
@@ -31,9 +31,9 @@ ms.locfileid: "91945612"
 
 為避免警示疲勞，資訊安全中心會限制傳出郵件的數量。 針對每個訂用帳戶，資訊安全中心會傳送：
 
-- 每天最多**四封**有關**高嚴重性**警示的電子郵件
-- 每天最多**兩封**有關**中嚴重性**警示的電子郵件
-- 每天最多**一封**有關**低嚴重性**警示的電子郵件
+- 每天最多 **四封** 有關 **高嚴重性** 警示的電子郵件
+- 每天最多 **兩封** 有關 **中嚴重性** 警示的電子郵件
+- 每天最多 **一封** 有關 **低嚴重性** 警示的電子郵件
 
 :::image type="content" source="./media/security-center-provide-security-contacts/email-notification-settings.png" alt-text="設定要接收安全性警示相關電子郵件的連絡人詳細資料。" :::
  
@@ -62,9 +62,10 @@ ms.locfileid: "91945612"
 1. 若要將安全性連絡人資訊套用至您的訂用帳戶，請選取 [儲存]。
 
 
-## <a name="see-also"></a>另請參閱
+## <a name="next-steps"></a>後續步驟
+
 如要深入了解安全性警示，請參閱下列頁面：
 
 - [安全性警示 - 參考指南](alerts-reference.md) -- 了解可能會在 Azure 資訊安全中心威脅防護模組中看到的安全性警示
 - [管理與回應 Azure 資訊安全中心的安全性警示](security-center-managing-and-responding-alerts.md) -- 了解如何管理與回應安全性警示
-- [工作流程自動化](workflow-automation.md) -- 使用自訂通知邏輯自動回應警示
+- [將資訊安全中心觸發程式的回應自動化](workflow-automation.md)--使用自動化來回應具有自訂通知邏輯的資訊安全中心觸發程式

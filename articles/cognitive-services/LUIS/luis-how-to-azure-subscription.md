@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: adc0c253648ed7ae869a20b92c42e7f6478501b7
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: eecc93558625d3ae891ca589424aec218036adae
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151594"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744714"
 ---
 # <a name="create-luis-resources"></a>建立 LUIS 資源
 
@@ -29,7 +29,7 @@ LUIS 允許三種類型的 Azure 資源和一個非 Azure 資源：
 
 |資源|目的|認知服務 `kind`|認知服務 `type`|
 |--|--|--|--|
-|撰寫資源|可讓您建立、管理、定型、測試及發佈您的應用程式。 如果您想要在 programtically 或從 LUIS 入口網站撰寫 LUIS apps，請[建立 LUIS 編寫資源](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal)。 您需要先 [遷移您的 LUIS 帳戶](luis-migration-authoring.md#what-is-migration) ，才能將 Azure authroring 資源連結至您的應用程式。 您可以藉由將人員指派給「 [參與者」角色](#contributions-from-other-authors)，來控制撰寫資源的許可權。 <br><br> LUIS 撰寫資源有一層有：<br> * **免費的 F0 撰寫資源** ，可提供1百萬個免費的撰寫交易和1000個每月免費測試預測端點要求。 |`LUIS.Authoring`|`Cognitive Services`|
+|撰寫資源|可讓您建立、管理、定型、測試及發佈您的應用程式。 如果您想要在 programtically 或從 LUIS 入口網站撰寫 LUIS apps，請[建立 LUIS 編寫資源](luis-how-to-azure-subscription.md#create-luis-resources-in-azure-portal)。 您需要先 [遷移您的 LUIS 帳戶](luis-migration-authoring.md#what-is-migration) ，才能將 Azure 撰寫資源連結至您的應用程式。 您可以藉由將人員指派給「 [參與者」角色](#contributions-from-other-authors)，來控制撰寫資源的許可權。 <br><br> LUIS 撰寫資源有一個可用的層級：<br> * **免費的 F0 撰寫資源** ，可提供1百萬個免費的撰寫交易和1000個每月免費測試預測端點要求。 |`LUIS.Authoring`|`Cognitive Services`|
 |預測資源| 發佈 LUIS 應用程式之後，請使用預測資源/金鑰來查詢預測端點要求。 請先建立 LUIS 預測資源，用戶端應用程式才會要求在撰寫或入門資源所提供的1000要求之外進行預測。 <br><br> 預測資源有兩個層級 avialble：<br> * **免費的 F0 預測資源** ，每月提供10000個免費的預測端點要求<br> * **標準 S0 預測資源** ，也就是付費層。 [深入瞭解定價詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
 |入門/試用資源|可讓您建立、管理、定型、測試及發佈您的應用程式。 如果您在第一次註冊 tp LUIS 時選擇 [入門資源] 選項，deafult 就會建立此設定。 不過，入門金鑰最後會被取代，而且所有 LUIS 使用者都必須 [遷移其帳戶](luis-migration-authoring.md#what-is-migration) ，並將其 LUIS 應用程式連結至撰寫資源。 此資源並不會授與您 Azure 角色型存取控制（例如撰寫資源）的許可權。 <br><br> 就像撰寫資源一樣，入門資源提供了1百萬個免費的撰寫交易和1000個免費的測試預測端點要求。|-|不是 Azure 資源|
 |[認知服務的多服務資源金鑰](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|查詢與 LUIS 和其他支援的認知服務共用的預測端點要求。|`CognitiveServices`|`Cognitive Services`|
@@ -94,7 +94,7 @@ Azure 資源（例如 LUIS）由包含資源的訂用帳戶所擁有。
 
 ### <a name="contributions-from-other-authors"></a>其他作者的投稿
 
-針對 [撰寫資源遷移](luis-migration-authoring.md) 的應用程式： _參與者_ 是在撰寫資源的 Azure 入口網站中進行管理，並使用 **存取控制 (IAM) ** 頁面。 瞭解如何使用共同作業者的電子郵件地址和_參與者_角色[來新增使用者](luis-how-to-collaborate.md)。
+針對 [撰寫資源遷移](luis-migration-authoring.md) 的應用程式： _參與者_ 是在撰寫資源的 Azure 入口網站中進行管理，並使用 **存取控制 (IAM)** 頁面。 瞭解如何使用共同作業者的電子郵件地址和 _參與者_ 角色 [來新增使用者](luis-how-to-collaborate.md)。
 
 針對尚未遷移的應用程式：所有共同作業者都是在 LUIS 入口網站 _中，從_ [ **管理->** 共同作業者] 頁面進行管理。
 
@@ -109,7 +109,7 @@ Azure 資源（例如 LUIS）由包含資源的訂用帳戶所擁有。
 
 擁有者和所有參與者都具有編寫應用程式的存取權。
 
-|撰寫存取權包括|備註|
+|撰寫存取權包括|注意|
 |--|--|
 |新增或移除端點金鑰||
 |匯出版本||
@@ -125,7 +125,7 @@ Azure 資源（例如 LUIS）由包含資源的訂用帳戶所擁有。
 
 ### <a name="prediction-endpoint-runtime-access"></a>預測端點執行時間存取
 
-查詢預測端點的存取權是由 [**管理**] 區段中 [**應用程式資訊**] 頁面上的設定所控制。
+查詢預測端點的存取權是由 [ **管理** ] 區段中 [ **應用程式資訊** ] 頁面上的設定所控制。
 
 |[私人端點](#runtime-security-for-private-apps)|[公用端點](#runtime-security-for-public-apps)|
 |:--|:--|
@@ -145,9 +145,9 @@ Azure 資源（例如 LUIS）由包含資源的訂用帳戶所擁有。
 
 ### <a name="runtime-security-for-public-apps"></a>公用應用程式的執行時間安全性
 
-將應用程式設定為公用之後，「任何」__ 有效的 LUIS 撰寫金鑰或 LUIS 端點金鑰都能查詢您的應用程式，只要該金鑰尚未使用整個端點配額即可。
+將應用程式設定為公用之後，「任何」有效的 LUIS 撰寫金鑰或 LUIS 端點金鑰都能查詢您的應用程式，只要該金鑰尚未使用整個端點配額即可。
 
-如果使用者不是擁有者或參與者，則只能存取公用應用程式的執行時間（如果有提供應用程式識別碼）。 LUIS 沒有公用「市集」__ 或其他方式可供搜尋公用應用程式。
+如果使用者不是擁有者或參與者，則只能存取公用應用程式的執行時間（如果有提供應用程式識別碼）。 LUIS 沒有公用「市集」或其他方式可供搜尋公用應用程式。
 
 公用應用程式會在所有區域中發佈，以便具有區域型 LUIS 資源金鑰的使用者在與資源金鑰相關聯的區域中存取應用程式。
 
@@ -190,20 +190,20 @@ Azure 資源（例如 LUIS）由包含資源的訂用帳戶所擁有。
 
     這會開啟瀏覽器，讓您選取正確的帳戶並提供驗證。
 
-1. 建立 **LUIS 撰寫資源**（種類 `LUIS.Authoring` ），並 `my-luis-authoring-resource` 在名為之區域的 _現有_ 資源群組中命名 `my-resource-group` `westus` 。
+1. 建立 **LUIS 撰寫資源** （種類 `LUIS.Authoring` ），並 `my-luis-authoring-resource` 在名為之區域的 _現有_ 資源群組中命名 `my-resource-group` `westus` 。
 
     ```azurecli
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
-1. 建立類型的 **LUIS 預測端點資源**， `LUIS` 其名稱會 `my-luis-prediction-resource` 在名為之區域的 _現有_ 資源群組中命名 `my-resource-group` `westus` 。 如果您想要比免費層更高的輸送量，請將變更 `F0` 為 `S0` 。 深入瞭解 [定價層和輸送量](luis-limits.md#key-limits)。
+1. 建立類型的 **LUIS 預測端點資源** ， `LUIS` 其名稱會 `my-luis-prediction-resource` 在名為之區域的 _現有_ 資源群組中命名 `my-resource-group` `westus` 。 如果您想要比免費層更高的輸送量，請將變更 `F0` 為 `S0` 。 深入瞭解 [定價層和輸送量](luis-limits.md#key-limits)。
 
     ```azurecli
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
     ```
 
     > [!Note]
-    > LUIS 入口網站 **不** 會使用此金鑰，除非在 **Azure 管理 > 的 Azure 資源**上于 LUIS 入口網站中指派這些金鑰。
+    > LUIS 入口網站 **不** 會使用此金鑰，除非在 **Azure 管理 > 的 Azure 資源** 上于 LUIS 入口網站中指派這些金鑰。
 
 <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>
 
@@ -212,7 +212,7 @@ Azure 資源（例如 LUIS）由包含資源的訂用帳戶所擁有。
 您可以針對單一應用程式或 LUIS 中的所有應用程式，指派撰寫資源。 下列程式會將所有應用程式指派給單一撰寫資源。
 
 1. 登入 [LUIS 入口網站](https://www.luis.ai)。
-1. 在頂端導覽列的最右邊，選取您的使用者帳戶，然後選取 [ **設定**]。
+1. 在頂端導覽列的最右邊，選取您的使用者帳戶，然後選取 [ **設定** ]。
 1. 在 [ **使用者設定** ] 頁面上，選取 [ **新增撰寫資源** ]，然後選取現有的撰寫資源。 選取 [儲存]。
 
 ## <a name="assign-a-resource-to-an-app"></a>將資源指派給應用程式
@@ -227,7 +227,7 @@ Azure 資源（例如 LUIS）由包含資源的訂用帳戶所擁有。
     ![在 LUIS 入口網站中選取 [管理-> Azure 資源]，將資源指派給應用程式。](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
 
 1. 選取 [預測] 或 [撰寫資源] 索引標籤，然後選取 [ **新增預測資源** ] 或 [ **加入撰寫資源** ] 按鈕
-1. 選取表單中的欄位以尋找正確的資源，然後選取 [**儲存**]
+1. 選取表單中的欄位以尋找正確的資源，然後選取 [ **儲存** ]
 1. 如果您沒有現有的資源，您可以選取 [建立新的 LUIS 資源嗎？] 來建立它。 從視窗底部
 
 
@@ -281,18 +281,18 @@ Azure 資源（例如 LUIS）由包含資源的訂用帳戶所擁有。
 
 1.  在 [Azure](https://portal.azure.com) 中，尋找您的 LUIS 訂用帳戶。 選取 LUIS 訂用帳戶。
     ![尋找 LUIS 訂用帳戶](./media/luis-usage-tiers/find.png)
-1.  選取 [定價層]**** 以查看可用的定價層。
+1.  選取 [定價層] 以查看可用的定價層。
     ![檢視定價層](./media/luis-usage-tiers/subscription.png)
-1.  選取定價層，然後選取 [選取]**** 以儲存變更。
+1.  選取定價層，然後選取 [選取] 以儲存變更。
     ![變更 LUIS 付款層](./media/luis-usage-tiers/plans.png)
 1.  定價變更完成時，快顯視窗會確認新的定價層。
     ![驗證 LUIS 付款層](./media/luis-usage-tiers/updated.png)
-1. 請記得在 [發佈]**** 頁面上[指派此端點金鑰](#assign-a-resource-to-an-app)，然後將它使用於所有端點查詢。
+1. 請記得在 [發佈] 頁面上[指派此端點金鑰](#assign-a-resource-to-an-app)，然後將它使用於所有端點查詢。
 
 ## <a name="viewing-azure-resource-metrics"></a>查看 Azure 資源計量
 
 ### <a name="viewing-azure-resource-summary-usage"></a>查看 Azure 資源摘要使用量
-您可以在 Azure 中檢視 LUIS 使用量資訊。 [概觀]**** 頁面會顯示近期摘要資訊，包括呼叫和錯誤。 如果您提出 LUIS 端點要求，然後立即觀看 [概觀] 頁面****，允許使用量最多在五分鐘內出現。
+您可以在 Azure 中檢視 LUIS 使用量資訊。 [概觀] 頁面會顯示近期摘要資訊，包括呼叫和錯誤。 如果您提出 LUIS 端點要求，然後立即觀看 [概觀] 頁面，允許使用量最多在五分鐘內出現。
 
 ![檢視摘要使用量](./media/luis-usage-tiers/overview.png)
 
@@ -310,7 +310,7 @@ Azure 資源（例如 LUIS）由包含資源的訂用帳戶所擁有。
 
 ![預設警示](./media/luis-usage-tiers/alert-default.png)
 
-為一段時間的**呼叫總數**計量新增計量警示。 新增應收到警示的所有人員電子郵件地址。 為應收到警示的所有系統新增 Webhook。 您也可以在警示觸發時執行邏輯應用程式。
+為一段時間的 **呼叫總數** 計量新增計量警示。 新增應收到警示的所有人員電子郵件地址。 為應收到警示的所有系統新增 Webhook。 您也可以在警示觸發時執行邏輯應用程式。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 5b37417efdb99f6b90983b86954da70fa6f7c6a9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 154a7b17fc09c55e83b65eef8d479904c36e87eb
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91716086"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791183"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>教學課程：使用 AzCopy 將內部部署資料遷移至雲端儲存體
 
@@ -33,7 +33,7 @@ AzCopy 是命令列工具，可使用簡單的命令從 Azure Blob 儲存體、A
 
 若要完成本教學課程，請下載最新版本的 AzCopy。 請參閱[開始使用 AzCopy](storage-use-azcopy-v10.md)。
 
-如果您使用 Windows，您將需要 [Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx)，因為本教學課程會用它來排程工作。 Linux 使用者則應使用 crontab 命令。
+如果您使用 Windows，您將需要 [Schtasks](/windows/win32/taskschd/schtasks)，因為本教學課程會用它來排程工作。 Linux 使用者則應使用 crontab 命令。
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -46,7 +46,7 @@ AzCopy 是命令列工具，可使用簡單的命令從 Azure Blob 儲存體、A
 1. 選取主頁面中的 [儲存體帳戶]  按鈕，並選取您所建立的儲存體帳戶。
 2. 選取 [服務]  底下的 [Blob]  ，然後選取 [容器]  。
 
-   ![建立容器](media/storage-azcopy-migrate-on-premises-data/CreateContainer.png)
+   ![顯示容器建立的螢幕擷取畫面](media/storage-azcopy-migrate-on-premises-data/CreateContainer.png)
  
 容器名稱必須以字母或數字開頭。 它們可以包含字母、數字和連字號字元 (-)。 如需 Blob 和容器的其他命名規則，請參閱[命名和參考容器、Blob 及中繼資料](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)。
 
@@ -62,7 +62,7 @@ AzCopy 是命令列工具，可使用簡單的命令從 Azure Blob 儲存體、A
 
 ## <a name="authenticate-with-azure-ad"></a>使用 Azure AD 進行驗證
 
-首先，將[儲存體 Blob 資料參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)角色指派到您的身分識別。 請參閱[使用 Azure 入口網站來指派用於存取 Blob 和佇列資料的 Azure 角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)。
+首先，將[儲存體 Blob 資料參與者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)角色指派到您的身分識別。 請參閱[使用 Azure 入口網站來指派用於存取 Blob 和佇列資料的 Azure 角色](./storage-auth-aad-rbac-portal.md)。
 
 然後，開啟命令提示字元，輸入下列命令並按下 ENTER 鍵。
 
@@ -72,13 +72,13 @@ azcopy login
 
 此命令傳回驗證碼和網站的 URL。 開啟網站，提供程式碼，然後選擇 [下一步]  按鈕。
 
-![建立容器](media/storage-use-azcopy-v10/azcopy-login.png)
+![顯示登入提示的螢幕擷取畫面](media/storage-use-azcopy-v10/azcopy-login.png)
 
 隨即會出現登入視窗。 在該視窗中，使用您的 Azure 帳戶認證登入 Azure 帳戶。 順利登入之後，您可以關閉瀏覽器視窗，然後開始使用 AzCopy。
 
 ## <a name="upload-contents-of-a-folder-to-blob-storage"></a>將資料夾的內容上傳至 Blob 儲存體
 
-您可以在 [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) 或 [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) 上使用 AzCopy，將資料夾中的所有檔案都上傳至 Blob 儲存體。 若要上傳資料夾中的所有 blob，請輸入下列 AzCopy 命令：
+您可以在 [Windows](./storage-use-azcopy-v10.md) 或 [Linux](./storage-use-azcopy-v10.md) 上使用 AzCopy，將資料夾中的所有檔案都上傳至 Blob 儲存體。 若要上傳資料夾中的所有 blob，請輸入下列 AzCopy 命令：
 
 ```AzCopy
 azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
@@ -135,7 +135,7 @@ azcopy sync "C:\myFolder" "https://mystorageaccount.blob.core.windows.net/mycont
 
 ---
 
-在本教學課程中，[Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx) 會用來在 Windows 上建立排程工作。 [Crontab](http://crontab.org/) 命令會用來在 Linux 上建立 cron 作業。
+在本教學課程中，[Schtasks](/windows/win32/taskschd/schtasks) 會用來在 Windows 上建立排程工作。 [Crontab](http://crontab.org/) 命令會用來在 Linux 上建立 cron 作業。
 
  **Schtasks** 可讓系統管理員建立、刪除、查詢、變更、執行和結束本機或遠端電腦上的排程工作。 **Cron** 可讓 Linux 和 Unix 使用者在指定的日期和時間執行命令或指令碼，方法是使用 [cron 運算式](https://en.wikipedia.org/wiki/Cron#CRON_expression)。
 
@@ -166,7 +166,7 @@ schtasks /CREATE /SC minute /MO 5 /TN "AzCopy Script" /TR C:\script.bat
 - `/TN` 參數來指定工作名稱。
 - `/TR` 參數來指定 `script.bat` 檔案的路徑。
 
-若要深入了解在 Windows 上建立排程工作的相關資訊，請參閱 [Schtasks](https://technet.microsoft.com/library/cc772785(v=ws.10).aspx#BKMK_minutes)。
+若要深入了解在 Windows 上建立排程工作的相關資訊，請參閱 [Schtasks](/previous-versions/orphan-topics/ws.10/cc772785(v=ws.10)#BKMK_minutes)。
 
 ---
 
@@ -176,7 +176,7 @@ schtasks /CREATE /SC minute /MO 5 /TN "AzCopy Script" /TR C:\script.bat
 
 若要深入了解將內部部署資料移動至 Azure 儲存體 (或反向作業) 的相關方式，請參考下列連結：
 
-* [從 Azure 儲存體來回移動資料](https://docs.microsoft.com/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。  
+* [從 Azure 儲存體來回移動資料](./storage-choose-data-transfer-solution.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)。  
 
 如需有關 AzCopy 的詳細資訊，請參閱下列文章：
 

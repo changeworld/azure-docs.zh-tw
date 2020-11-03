@@ -3,14 +3,14 @@ title: 在 Linux 上使用自訂映像建立 Azure Functions
 description: 了解如何建立在自訂 Linux 映像上執行的 Azure Functions。
 ms.date: 03/30/2020
 ms.topic: tutorial
-ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
+ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 7940e0f90e29e5c69ccde79dfbec889dbe31fe63
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 846599414c0bca95a3f41e127dc01e06d0fd43f9
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91758977"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747105"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自訂容器建立函式
 
@@ -95,7 +95,10 @@ mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArti
 ```
 ---
 
-`-DjavaVersion` 參數會告知函式執行階段要使用哪個 JAVA 版本。 如果您希望函式在 Java 11 上執行 (目前為預覽版本)，請使用 `-DjavaVersion=11`。 若未指定 `-DjavaVersion`，Maven 預設為 JAVA 8。 如需詳細資訊，請參閱 [JAVA 版本](functions-reference-java.md#java-versions)。
+`-DjavaVersion` 參數會告知函式執行階段要使用哪個 JAVA 版本。 如果您希望函式在 Java 11 上執行，請使用 `-DjavaVersion=11`。 若未指定 `-DjavaVersion`，Maven 預設為 JAVA 8。 如需詳細資訊，請參閱 [JAVA 版本](functions-reference-java.md#java-versions)。
+
+> [!IMPORTANT]
+> `JAVA_HOME` 環境變數必須設定為正確 JDK 版本的安裝位置，才能完成本文。
 
 Maven 會要求您提供在部署時完成產生專案所需的值。   
 當系統提示時，提供下列值：
@@ -160,7 +163,7 @@ mvn azure-functions:run
 
 ## <a name="build-the-container-image-and-test-locally"></a>建立容器映像並在本機進行測試
 
-(選用) 檢查專案根資料夾中的 *Dockerfile*。 Dockerfile 描述在 Linux 上執行函式應用程式所需的環境。  在 [Azure Functions 基底映像頁面](https://hub.docker.com/_/microsoft-azure-functions-base)中可找到針對 Azure Functions 支援的完整基底映像清單。
+(選用) 檢查專案根資料夾中的 *Dockerfile* 。 Dockerfile 描述在 Linux 上執行函式應用程式所需的環境。  在 [Azure Functions 基底映像頁面](https://hub.docker.com/_/microsoft-azure-functions-base)中可找到針對 Azure Functions 支援的完整基底映像清單。
     
 在根專案資料夾中，執行 [docker build](https://docs.docker.com/engine/reference/commandline/build/) 命令，然後提供名稱、`azurefunctionsimage` 和標記 (`v1.0.0`)。 將 `<DOCKER_ID>` 取代為 Docker Hub 帳戶識別碼。 此命令會建置容器的 Docker 映像。
 
@@ -186,7 +189,7 @@ docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
 映像一旦在本機容器中執行，請瀏覽至 `http://localhost:8080/api/HttpExample?name=Functions`，這應會顯示如之前所示的相同 "hello" 訊息。 由於 Maven 原型會產生使用匿名授權的 HTTP 觸發函式，因此即使函式正在容器中執行，您仍然可以呼叫函式。 
 ::: zone-end  
 
-在容器中驗證過函式應用程式容器之後，請利用 **Ctrl**+**C**停止 Docker。
+在容器中驗證過函式應用程式容器之後，請利用 **Ctrl**+**C** 停止 Docker。
 
 ## <a name="push-the-image-to-docker-hub"></a>將映像推送至 Docker 中樞
 
@@ -438,7 +441,7 @@ SSH 可讓容器和用戶端之間進行安全通訊。 啟用 SSH 之後，您�
 
 ## <a name="write-to-an-azure-storage-queue"></a>寫入至 Azure 儲存體佇列
 
-Azure Functions 可讓您無須撰寫自己的整合程式碼，就能將函式連線到其他 Azure 服務與資源。 這些*繫結*同時代表輸入和輸出，會宣告於函式定義內。 繫結中的資料會提供給函式作為參數。 「觸發程序」是一種特殊的輸入繫結。 雖然函式只有一個觸發程序，但可以有多個輸入和輸出繫結。 若要深入了解，請參閱 [Azure Functions 觸發程序和繫結概念](functions-triggers-bindings.md)。
+Azure Functions 可讓您無須撰寫自己的整合程式碼，就能將函式連線到其他 Azure 服務與資源。 這些 *繫結* 同時代表輸入和輸出，會宣告於函式定義內。 繫結中的資料會提供給函式作為參數。 「觸發程序」是一種特殊的輸入繫結。 雖然函式只有一個觸發程序，但可以有多個輸入和輸出繫結。 若要深入了解，請參閱 [Azure Functions 觸發程序和繫結概念](functions-triggers-bindings.md)。
 
 本節說明如何將您的函式與 Azure 儲存體佇列整合。 您新增至此函式的輸出繫結，會將資料從 HTTP 要求寫入至佇列中的訊息。
 

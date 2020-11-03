@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 4867a1735f091085f64bbe7010969bd086f820a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7ee726c9a5501235123a393d144c56a0342a5ee
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88527156"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748399"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Workday 整合
 
@@ -26,9 +26,7 @@ ms.locfileid: "88527156"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Workday。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
-
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始，您需要下列項目：
 
@@ -41,24 +39,27 @@ ms.locfileid: "88527156"
 
 * Workday 支援 **SP** 起始的 SSO。
 
-* 設定 Workday 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Workday 行動應用程式現在可以搭配 Azure AD 設定來啟用 SSO。 如需如何設定的詳細資訊，請遵循[此](workday-mobile-tutorial.md)連結。
+
+> [!NOTE]
+> 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
 
 ## <a name="adding-workday-from-the-gallery"></a>從資源庫新增 Workday
 
 若要設定將 Workday 整合到 Azure AD 中，您需要從資源庫將 Workday 新增到受控 SaaS 應用程式清單。
 
-1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
+1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 Azure 入口網站。
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Workday**。
-1. 從結果面板選取 [Workday]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Workday** 。
+1. 從結果面板選取 [Workday]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-workday"></a>設定及測試 Workday 的 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso-for-workday"></a>設定及測試 Workday 的 Azure AD SSO
 
 以名為 **B.Simon** 的測試使用者，設定及測試與 Workday 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 Workday 中相關使用者之間的連結關聯性。
 
-若要設定及測試與 Workday 搭配運作的 Azure AD SSO，請完成下列建置組塊：
+若要設定及測試與 Workday 搭配運作的 Azure AD SSO，請執行下列步驟：
 
 1. **[設定 Azure AD SSO](#configure-azure-ad-sso)** ，讓您的使用者能夠使用此功能。
     1. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** ，以使用 B.Simon 測試 Azure AD 單一登入。
@@ -71,7 +72,7 @@ ms.locfileid: "88527156"
 
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Workday]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
+1. 在 Azure 入口網站的 [Workday] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
 1. 在 [選取單一登入方法]  頁面上，選取 [SAML]  。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
@@ -81,17 +82,17 @@ ms.locfileid: "88527156"
 
     a. 在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://impl.workday.com/<tenant>/login-saml2.flex`
 
-    b. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`http://www.workday.com`
+    b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://impl.workday.com/<tenant>/login-saml.htmld`
 
-    c. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://impl.workday.com/<tenant>/login-saml.htmld`
+    c. 在 [登出 URL] 文字方塊中，以下列模式輸入 URL：`https://impl.workday.com/<tenant>/login-saml.htmld`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「回覆 URL」來更新這些值。 您的回覆 URL 必須有子網域 (例如：www、wd2、wd3、wd3-impl、wd5、wd5-impl)。
-    > 使用 `http://www.myworkday.com` 之類的形式可以運作，但 `http://myworkday.com` 則不行。 請連絡 [Workday 客戶支援小組](https://www.workday.com/en-us/partners-services/services/support.html)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的 [登入 URL]、[回覆 URL] 和 [登出 URL] 來更新這些值。 您的回覆 URL 必須有子網域 (例如：www、wd2、wd3、wd3-impl、wd5、wd5-impl)。
+    > 使用 `http://www.myworkday.com` 之類的形式可以運作，但 `http://myworkday.com` 則不行。 請連絡 [Workday 客戶支援小組](https://www.workday.com/en-us/partners-services/services/support.html)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-6. Workday 應用程式會預期要有特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至 SAML 權杖屬性設定。 下列螢幕擷取畫面顯示預設屬性清單，其中的 **nameidentifier** 與 **user.userprincipalname** 相對應。 Workday 應用程式會預期 **nameidentifier** 與 **user.mail**、**UPN** 等對應，因此您必須按一下 [編輯]  圖示並變更屬性對應，來編輯屬性對應。
+1. Workday 應用程式會預期要有特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至 SAML 權杖屬性設定。 下列螢幕擷取畫面顯示預設屬性清單，其中的 **nameidentifier** 與 **user.userprincipalname** 相對應。 Workday 應用程式會預期 **nameidentifier** 與 **user.mail** 、 **UPN** 等對應，因此您必須按一下 [編輯] 圖示並變更屬性對應，來編輯屬性對應。
 
-    ![image](common/edit-attribute.png)
+    ![顯示使用者屬性的螢幕擷取畫面，其中已選取 [編輯] 圖示。](common/edit-attribute.png)
 
     > [!NOTE]
     > 依預設，這裡已使名稱識別碼和 UPN (user.userprincipalname) 相對應。 您必須將名稱識別碼對應至 Workday 帳戶中的實際使用者識別碼 (您的電子郵件或 UPN 等)，才能讓 SSO 順利運作。
@@ -100,17 +101,17 @@ ms.locfileid: "88527156"
 
    ![憑證下載連結](common/certificatebase64.png)
 
-1. 若要根據您的需求修改 [簽署]  選項，請按一下 [編輯]  按鈕以開啟 [SAML 簽署憑證]  對話方塊。
+1. 若要根據您的需求修改 [簽署] 選項，請按一下 [編輯] 按鈕以開啟 [SAML 簽署憑證] 對話方塊。
 
-    ![image](common/edit-certificate.png) 
+    ![憑證](common/edit-certificate.png) 
 
-    ![image](./media/workday-tutorial/signing-option.png)
+    ![SAML 簽署憑證](./media/workday-tutorial/signing-option.png)
 
-    a. 針對 [簽署選項]  選取 [簽署 SAML 回應及判斷提示]  。
+    a. 針對 [簽署選項] 選取 [簽署 SAML 回應及判斷提示]。
 
     b. 按一下 [儲存] 
 
-1. 在 [設定 Workday]  區段上，依據您的需求複製適當的 URL。
+1. 在 [設定 Workday] 區段上，依據您的需求複製適當的 URL。
 
    ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -131,134 +132,113 @@ ms.locfileid: "88527156"
 在本節中，您會將 Workday 的存取權授與 B.Simon，讓其能夠使用 Azure 單一登入。
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 [Workday]  。
+1. 在應用程式清單中，選取 [Workday]。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
-
-   ![[使用者和群組] 連結](common/users-groups-blade.png)
-
 1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
-
-    ![[新增使用者] 連結](common/add-assign-user.png)
-
-1. 在 [使用者和群組]  對話方塊的 [使用者] 清單中選取 [B.Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
-1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
+1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
+1. 如果您需要將角色指派給使用者，您可以從 [選取角色] 下拉式清單中選取。 如果未設定此應用程式的角色，您會看到已選取 [預設存取] 角色。
+1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ## <a name="configure-workday"></a>設定 Workday
 
 1. 在不同的 Web 瀏覽器視窗中，以系統管理員身分登入您的 Workday 公司網站。
 
-2. 在**搜尋方塊**中，使用首頁左上方的名稱 [Edit Tenant Setup – Security] \(編輯租用戶設定 – 安全性\)  來進行搜尋。
+1. 在 **搜尋方塊** 中，使用首頁左上方的名稱 [Edit Tenant Setup – Security] \(編輯租用戶設定 – 安全性\) 來進行搜尋。
 
     ![編輯租用戶安全性](./media/workday-tutorial/IC782925.png "編輯租用戶安全性")
 
-3. 在 [重新導向 URL]  區段中，執行下列步驟：
 
-    ![重新導向 URL](./media/workday-tutorial/IC7829581.png "重新導向 URL")
-
-    a. 按一下 [加入資料列]  。
-
-    b. 在 [登入重新導向 URL]  、[逾時重新導向 URL]  和 [行動裝置重新導向 URL]  文字方塊中，貼上您從 Azure 入口網站的 [設定 Workday]  區段所複製的 [登入 URL]  。
-
-    c. 在 [登出重新導向 URL]  文字方塊中，貼上您從 Azure 入口網站的 [設定 Workday]  區段所複製的 [登出 URL]  。
-
-    d. 在 [Used for Environments] \(用於環境\)  文字方塊中，選取環境名稱。  
-
-   > [!NOTE]
-   > [環境] 屬性的值會繫結至租用戶 URL 的值：  
-   > -如果 Workday 租用戶 URL 的網域名稱開頭為 impl (例如： *https://www.myworkday.com/"tenant"/login-saml2.htmld*)，則 **Environment** 屬性必須設為 Implementation。  
-   > -如果網域名稱的開頭是其他字元，您需要連絡 [Workday 客戶支援小組](https://www.workday.com/en-us/partners-services/services/support.html)以取得相符的 [環境]  值。
-
-4. 在 [SAML 設定]  區段中，執行下列步驟：
+1. 在 [SAML 設定] 區段中，執行下列步驟：
 
     ![SAML 設定](./media/workday-tutorial/IC782926.png "SAML 設定")
 
-    a.  按一下 [啟用 SAML 驗證]  。
+    a.  選取 [啟用 SAML 驗證]。
 
     b.  按一下 [加入資料列]  。
 
-5. 在 [SAML Identity Providers] \(SAML 身分識別提供者\)  區段中，執行下列步驟：
+1. 在 [SAML 識別提供者] 區段中，請對新建立的資料列執行下列動作。
 
-    ![SAML 身分識別提供者](./media/workday-tutorial/IC7829271.png "SAML 身分識別提供者")
+    a. 針對欄位執行下列動作，如下所示。
 
-    a. 在 [識別提供者名稱]  文字方塊中，輸入提供者名稱 (例如：*SPInitiatedSSO*)。
+    ![SAML 識別提供者 1](./media/workday-tutorial/IC7829271.png "SAML 身分識別提供者")
 
-    b. 在 Azure 入口網站的 [安裝 Workday]  區段上，複製 [Azure AD 識別碼]  值，然後將它貼到 [Issuer] \(簽發者\)  文字方塊中。
+    * 在 [識別提供者名稱] 文字方塊中，輸入提供者名稱 (例如： *SPInitiatedSSO* )。
 
-    ![SAML 身分識別提供者](./media/workday-tutorial/IC7829272.png "SAML 身分識別提供者")
+    * 在 Azure 入口網站的 [安裝 Workday] 區段上，複製 [Azure AD 識別碼] 值，然後將它貼到 [Issuer] \(簽發者\) 文字方塊中。
 
-    c. 在 Azure 入口網站的 [安裝 Workday]  區段上，複製 [登出 URL]  值，然後將它貼到 [Logout Response URL] \(登出回應 URL\)  文字方塊中。
+    * 以記事本開啟從 Azure 入口網站下載的 [憑證]，然後將內容貼到 [x.509 憑證] 文字方塊中。
 
-    d. 在 Azure 入口網站的 [安裝 Workday]  區段上，複製 [登入 URL]  值，然後將它貼到 [IdP SSO Service URL] \(IdP SSO 服務 URL\)  文字方塊中。
+    b. 針對欄位執行下列動作，如下所示。
 
-    e. 在 [Used for Environments] \(用於環境\)  文字方塊中，選取環境名稱。
+    ![SAML 識別提供者 2](./media/workday-tutorial/saml-identity-provider-2.png "SAML 身分識別提供者")
 
-    f. 按一下 [識別提供者公開金鑰憑證]  ，然後按一下 [建立]  。
+    * 按一下 [啟用 IDP 起始的登出] 核取方塊。
 
-    ![建立](./media/workday-tutorial/IC782928.png "建立")
+    * 在 [登出回應 URL] 文字方塊中，輸入 **http://www.workday.com** 。
 
-    g. 按一下 [建立 x509 公開金鑰]  。
+    * 在 [登出要求 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [登出 URL] 值。
 
-    ![建立](./media/workday-tutorial/IC782929.png "建立")
+    * 按一下 [SP 起始] 核取方塊。
 
-6. 在 [檢視 x509 公開金鑰]  區段中，執行下列步驟：
+    * 在 [服務提供者識別碼] 文字方塊中，輸入 **http://www.workday.com** 。
 
-    ![檢視 x509 公用金鑰](./media/workday-tutorial/IC782930.png "檢視 x509 公用金鑰")
 
-    a. 在 [名稱]  文字方塊中，輸入您的憑證名稱 (例如：*PPE\_SP*)。
+    * 選取 [不要對 SP 初始化驗證要求使用 Deflate 編碼]。
 
-    b. 在 [有效開始日期]  文字方塊中輸入憑證屬性值的有效開始日期。
+    c. 針對欄位執行下列動作，如下所示。
 
-    c.  在 [有效結束日期]  文字方塊中輸入憑證屬性值的有效結束日期。
+    ![SAML 識別提供者 3](./media/workday-tutorial/saml-identity-provider-3.png "SAML 身分識別提供者")
 
-    > [!NOTE]
-    > 按兩下所下載的憑證，即可取得有效開始日期和有效結束日期。  這些日期會列在 [詳細資料]  索引標籤之下。
-    >
-    >
+    * 在 Azure 入口網站的 [安裝 Workday] 區段上，複製 [登入 URL] 值，然後將它貼到 [IdP SSO Service URL] \(IdP SSO 服務 URL\) 文字方塊中。
 
-    d.  在記事本中開啟 base-64 編碼的憑證，然後複製其內容。
+    * 在 [用於環境] 文字方塊中，從下拉式清單中選取適當的環境名稱。
 
-    e.  在 [憑證]  文字方塊中貼上剪貼簿的內容。
+1. 執行下圖中的下列步驟。
 
-    f.  按一下 [確定]  。
+    ![Workday](./media/workday-tutorial/service-provider.png "SAML 身分識別提供者")
 
-7. 執行下列步驟：
+    a. 在 [服務提供者識別碼 (即將淘汰)] 文字方塊中，輸入 **http://www.workday.com** 。
 
-    ![SSO 組態](./media/workday-tutorial/WorkdaySSOConfiguratio.png "SSO 組態")
+    b. 在 [IDP SSO 服務 URL (即將淘汰)] 文字方塊中，輸入 [登入 URL] 值。
 
-    a.  在 [服務提供者識別碼]  文字方塊中，輸入 **http://www.workday.com** 。
+    c. 選取 [不要壓縮 SP 起始的驗證要求 (即將淘汰)]。
 
-    b. 選取 [不要壓縮 SP 起始的驗證要求]  。
+    d. 在 [驗證要求簽章方法] 中，選取 [SHA256]。
 
-    c. 選取 **SHA256** 做為 [驗證要求簽章方法]  。
-
-    ![驗證要求簽章方法](./media/workday-tutorial/WorkdaySSOConfiguration.png "驗證要求簽章方法")
-
-    d. 按一下 [確定]  。
-
-    ![確定](./media/workday-tutorial/IC782933.png "[確定]")
+    e。 按一下 [確定]。
 
     > [!NOTE]
     > 請確定您已正確設定單一登入。 如果您以不正確的設定啟用單一登入，您可能無法使用認證進入應用程式，並且會遭到鎖定。在此情況下，Workday 提供備份的登入 URL，使用者可以透過此格式：[Your Workday URL]/login.flex?redirect=n，使用他們的一般使用者名稱和密碼來登入
 
 ### <a name="create-workday-test-user"></a>建立 Workday 測試使用者
 
-在本節中，您要在 Workday 中建立名為 B.Simon 的使用者。 請與 [ 客戶支援小組](https://www.workday.com/en-us/partners-services/services/support.html)合作，在 Workday 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+1. 以系統管理員身分登入您的 Workday 公司網站。
+
+1. 按一下右上角的 [設定檔]，選取 [首頁]，然後在 [應用程式] 索引標籤中按一下 [目錄]。 
+
+1. 在 [目錄] 頁面中，選取 [檢視] 索引標籤中的 [尋找背景工作角色]。
+
+    ![尋找背景工作角色](./media/workday-tutorial/user-directory.png)
+
+1.  在 [尋找背景工作角色] 頁面上，從結果中選取使用者。
+
+1. 在下列頁面中，選取 [作業] > [背景工作角色安全性]，而且 [Workday 帳戶] 必須和 [名稱識別碼] 值一樣符合 Azure Active Directory。
+
+    ![背景工作角色安全性](./media/workday-tutorial/worker-security.png)
+
+> [!NOTE]
+> 如需如何建立 Workday 測試使用者的詳細資訊，請連絡 [Workday 用戶端支援小組](https://www.workday.com/en-us/partners-services/services/support.html)。
 
 ## <a name="test-sso"></a>測試 SSO
 
-當您在存取面板中選取 [Workday] 圖格時，應該會自動登入您已設定 SSO 的 Workday。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+在本節中，您會使用下列選項來測試您的 Azure AD 單一登入組態。 
 
-## <a name="additional-resources"></a>其他資源
+1. 在 Azure 入口網站中按一下 [測試此應用程式]。 這會重新導向至您可以在其中起始登入流程的 Workday 登入 URL。 
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+2. 直接移至 Workday 登入 URL，然後從該處起始登入流程。
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+3. 您可以使用 Microsoft 存取面板。 當您在存取面板中按一下 [Workday] 圖格時，應該會自動登入您已設定 SSO 的 Workday。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+## <a name="next-steps"></a>後續步驟
 
-- [嘗試搭配 Azure AD 使用 Workday](https://aad.portal.azure.com)
-
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [如何使用進階可見性和控制項保護 Workday](https://docs.microsoft.com/cloud-app-security/protect-workday)
+設定 Workday 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)

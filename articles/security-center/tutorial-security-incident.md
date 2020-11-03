@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2020
 ms.author: memildin
-ms.openlocfilehash: 02b0ee4d572290436cc45bab73921ae1298bc72f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b9f0b3219a75900a44a73ca0fc3e453f023bddb8
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92358993"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787154"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>教學課程：分級、調查及回應安全性警示
 資訊安全中心會使用進階分析和威脅情報，持續分析混合式雲端工作負載，提醒您有關您的雲端資源中的潛在惡意活動。 您也可以將來自其他安全性產品和服務的警示整合到資訊安全中心。 一旦提出警示，您便需要迅速採取行動來調查和補救潛在的安全性問題。 
@@ -49,7 +49,7 @@ ms.locfileid: "92358993"
 將安全性警示分級時，會根據警示嚴重性來排列警示優先順序，先解決嚴重性較高的警示。 若要深入了解警示嚴重性，請參閱[如何分類警示？](security-center-alerts-overview.md#how-are-alerts-classified)。
 
 > [!TIP]
-> 您可以將 Azure 資訊安全中心連線到最熱門的 SIEM 解決方案 (包括 Azure Sentinel)，並從您選擇的工具取用警示。 若要深入了解，請參閱[將警示匯出至 SIEM](continuous-export.md)。
+> 您可以將 Azure 資訊安全中心連線到最熱門的 SIEM 解決方案 (包括 Azure Sentinel)，並從您選擇的工具取用警示。 請於[將警示串流至 SIEM、SOAR 或 IT 服務管理解決方案](export-to-siem.md)中深入了解。
 
 
 ## <a name="investigate-a-security-alert"></a>調查安全性警示
@@ -60,7 +60,7 @@ ms.locfileid: "92358993"
 1. 從警示概觀頁面中，選取要先調查的資源。
 1. 從左窗格開始調查，其中會顯示有關安全性警示的高階資訊。
 
-    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="安全性警示清單頁面":::
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-left-pane.png" alt-text="警示詳細資料頁面的左窗格，其中醒目提示高階資訊":::
 
     此窗格會顯示：
     - 警示嚴重性、狀態和活動時間
@@ -80,7 +80,7 @@ ms.locfileid: "92358993"
 
 1.  開啟 [採取動作] 索引標籤，以查看建議的回應。
 
-    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="安全性警示清單頁面" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
+    :::image type="content" source="./media/tutorial-security-incident/alert-details-take-action.png" alt-text="安全性警示採取動作索引標籤" lightbox="./media/tutorial-security-incident/alert-details-take-action.png":::
 
 1.  請參閱 **降低威脅** 一節，以取得減輕問題所需的手動調查步驟。
 1.  若要強化您的資源並防止未來遭受這種攻擊，請在 [防止未來的攻擊] 區段中補救安全性建議。
@@ -89,7 +89,7 @@ ms.locfileid: "92358993"
 
 1.  當您完成警示的調查並以適當方式回應時，請將狀態變更為 [已關閉]。
 
-    :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="安全性警示清單頁面":::
+    :::image type="content" source="./media/tutorial-security-incident/set-status-dismissed.png" alt-text="設定警示的狀態":::
 
     這會從主要警示清單中移除警示。 您可以使用警示清單頁面中的篩選條件，檢視 [已關閉] 狀態的所有警示。
 
@@ -97,7 +97,7 @@ ms.locfileid: "92358993"
     1. 將警示標示為 [實用] 或 [不實用]。
     1. 選取原因並新增註解。
 
-        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="安全性警示清單頁面":::
+        :::image type="content" source="./media/tutorial-security-incident/alert-feedback.png" alt-text="針對警示的實用性提供意見反應給 Microsoft":::
 
     > [!TIP]
     > 我們會檢閱您的意見反應以改善我們的演算法，並提供更好的安全性警示。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 85e198def03ab4f6d3e18047ccea0152f96694fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4973a5f1311de23cf54e401a52fb083f497687a3
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88814995"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894469"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zendesk"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Zendesk 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88814995"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Zendesk。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -40,8 +40,8 @@ ms.locfileid: "88814995"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * Zendesk 支援 **SP** 起始的 SSO
-* Zendesk 支援[**自動**使用者佈建](zendesk-provisioning-tutorial.md)
-* 設定 Zendesk 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* Zendesk 支援 [**自動** 使用者佈建](zendesk-provisioning-tutorial.md)
+* 設定 Zendesk 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-zendesk-from-the-gallery"></a>從資源庫新增 Zendesk
 
@@ -51,7 +51,7 @@ ms.locfileid: "88814995"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Zendesk**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Zendesk** 。
 1. 從結果面板選取 [Zendesk]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-sso-for-zendesk"></a>設定和測試 Zendesk 的 Azure AD SSO
@@ -72,7 +72,7 @@ ms.locfileid: "88814995"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Zendesk]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -86,14 +86,14 @@ ms.locfileid: "88814995"
     c. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<subdomain>.zendesk.com/access/saml`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」、「識別碼」和「回覆 URL」來更新這些值。 請連絡 [Zendesk 用戶端支援小組](https://support.zendesk.com/hc/en-us/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「登入 URL」、「識別碼」和「回覆 URL」來更新這些值。 請連絡 [Zendesk 用戶端支援小組](https://support.zendesk.com/hc/en-us/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. Zendesk 應用程式需要特定格式的 SAML 判斷提示。 沒有任何必要 SAML 屬性，但您可以視需要從應用程式整合頁面的 [使用者屬性]  區段管理。 在 [以 SAML 設定單一登入]  頁面上，按一下 [編輯]  按鈕以開啟 [使用者屬性]  對話方塊。
 
-    ![image](common/edit-attribute.png)
+    ![顯示使用者屬性的螢幕擷取畫面，其中已選取 [編輯] 圖示。](common/edit-attribute.png)
 
     > [!NOTE]
-    > 您可以使用擴充屬性來新增預設不在 Azure AD 中的屬性。 按一下[可以在 SAML 中設定的使用者屬性](https://support.zendesk.com/hc/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise-)，以取得 **Zendesk**接受的完整 SAML 屬性清單。
+    > 您可以使用擴充屬性來新增預設不在 Azure AD 中的屬性。 按一下 [可以在 SAML 中設定的使用者屬性](https://support.zendesk.com/hc/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise-)，以取得 **Zendesk** 接受的完整 SAML 屬性清單。
 
 1. 在 [SAML 簽署憑證]  區段中，按一下 [編輯]  按鈕以開啟 [SAML 簽署憑證]  對話方塊。
 
@@ -139,9 +139,9 @@ ms.locfileid: "88814995"
 
 ## <a name="configure-zendesk-sso"></a>設定 Zendesk SSO
 
-1. 若要自動執行 **Zendesk** 內的設定，您必須按一下 [安裝延伸模組] 來安裝**我的應用程式安全登入瀏覽器延伸模組**。
+1. 若要自動執行 **Zendesk** 內的設定，您必須按一下 [安裝延伸模組] 來安裝 **我的應用程式安全登入瀏覽器延伸模組** 。
 
-    ![image](./media/target-process-tutorial/install_extension.png)
+    ![螢幕擷取畫面：顯示 [安裝擴充功能] 按鈕。](./media/target-process-tutorial/install_extension.png)
 
 1. 將延伸模組新增至瀏覽器之後，按一下 [安裝 Zendesk] 便會將您導向到 Zendesk 應用程式。 請從該處提供用以登入 Zendesk 的管理員認證。 瀏覽器擴充功能會自動為您設定應用程式，並自動執行步驟 3 到 6。
 
@@ -149,19 +149,19 @@ ms.locfileid: "88814995"
 
 1. 如果您想要手動設定 Zendesk，請開啟新的網頁瀏覽器視窗，並以管理員身分登入 Zendesk 公司網站，然後執行下列步驟：
 
-1. 在 **Zendesk 管理中心**中，按一下**安全性**索引標籤中的 [安全性設定]。
+1. 在 **Zendesk 管理中心** 中，按一下 **安全性** 索引標籤中的 [安全性設定]。
 
-    ![安全性](./media/zendesk-tutorial/settings.png "安全性")
+    ![螢幕擷取畫面：顯示已選取 [安全性設定] 的 Zendesk 系統管理中心。](./media/zendesk-tutorial/settings.png "安全性")
 
 1. 移至 [單一登入] 頁面，然後按一下 **SAML** 中的 [編輯]。
 
-    ![安全性](./media/zendesk-tutorial/saml-sso.png "安全性")
+    ![螢幕擷取畫面：顯示已選取 [編輯] 的 [單一登入] 頁面。](./media/zendesk-tutorial/saml-sso.png "安全性")
 
 1. 在 **SSO** 頁面中，執行下列步驟。
 
     ![單一登入](./media/zendesk-tutorial/saml-configuration.png "單一登入")
 
-    a. 在 [SAML SSO URL]  文字方塊中，貼上您從 Azure 入口網站複製的**登入 URL** 值。
+    a. 在 [SAML SSO URL]  文字方塊中，貼上您從 Azure 入口網站複製的 **登入 URL** 值。
 
     b. 在 [憑證指紋]  文字方塊中，貼上您從 Azure 入口網站複製的憑證 [指紋]  值。
 
@@ -177,20 +177,20 @@ ms.locfileid: "88814995"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 Zendesk 圖格時，應該會自動登入您已設定 SSO 的 Zendesk。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 Zendesk 圖格時，應該會自動登入您已設定 SSO 的 Zendesk。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Zendesk](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用進階可見性和控制項保護 Zendesk](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何使用進階可見性和控制項保護 Zendesk](/cloud-app-security/proxy-intro-aad)
 
 - [設定使用者佈建](zendesk-provisioning-tutorial.md)

@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: f7a61ed039a3d8ed643e3b1b3d79384e35847986
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: 7577c8510746d1140c1f8b70081f600d992ae512
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87029292"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92745826"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虛擬機器擴展集
 
@@ -23,7 +23,7 @@ ms.locfileid: "87029292"
 ## <a name="fundamental-concepts"></a>基本概念
 
 ### <a name="the-scale-set-model"></a>擴展集模型
-擴展集具有「擴展集模型」，可擷取擴展集整體的「預期」** 狀態。 若要查詢擴展集的模型，您可以使用 
+擴展集具有「擴展集模型」，可擷取擴展集整體的「預期」狀態。 若要查詢擴展集的模型，您可以使用 
 
 - REST API 執行 [compute/virtualmachinescalesets/get](/rest/api/compute/virtualmachinescalesets/get)，如下所示：
 
@@ -67,7 +67,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
 
 
 ### <a name="the-scale-set-instance-view"></a>擴展集執行個體檢視
-擴展集也具有「擴展集執行個體檢視」，可擷取擴展集整體的目前「執行階段」** 狀態。 若要查詢擴展集的執行個體檢視，您可以使用：
+擴展集也具有「擴展集執行個體檢視」，可擷取擴展集整體的目前「執行階段」狀態。 若要查詢擴展集的執行個體檢視，您可以使用：
 
 - REST API 執行 [compute/virtualmachinescalesets/getinstanceview](/rest/api/compute/virtualmachinescalesets/getinstanceview)，如下所示：
 
@@ -348,7 +348,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 ### <a name="properties-that-can-only-be-changed-based-on-the-current-value"></a>只能根據目前值變更的屬性
 有些屬性可以變更，但除非是根據目前的值。 這些屬性包括：
 
-- **singlePlacementGroup** - 如果 singlePlacementGroup 為 true，則可以修改成 false。 不過，如果 singlePlacementGroup 為 false，則**無法**修改成 true。
+- **singlePlacementGroup** - 如果 singlePlacementGroup 為 true，則可以修改成 false。 不過，如果 singlePlacementGroup 為 false，則 **無法** 修改成 true。
 - **subnet** - 只要擴展集的原始子網路與新子網路位於相同的虛擬網路中，便可以修改擴展集的子網路。
 
 ### <a name="properties-that-require-deallocation-to-change"></a>必須解除配置才能變更的屬性
@@ -364,22 +364,22 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 ## <a name="scenarios"></a>案例
 
 ### <a name="application-updates"></a>應用程式更新
-如果透過擴充功能將應用程式部署至擴展集，則更新擴充組態時，會造成應用程式根據升級原則進行更新。 比方說，如果您有要在自訂腳本擴充功能中執行的新版腳本，可以將 *fileUris* 屬性更新為指向新的腳本。 在某些情況下，即使擴充組態未變更 (例如，您已更新指令碼，但未變更指令碼的 URI)，您也可能會想要強制更新。 在這些情況下，您可以修改 *forceUpdateTag* 來強制更新。 Azure 平台不會解譯這個屬性。 如果您變更此值，並不會影響擴充功能的執行方式。 變更只會強制擴充功能重新執行。 如需 *forceUpdateTag*的詳細資訊，請參閱 [擴充功能的 REST API 檔](/rest/api/compute/virtualmachineextensions/createorupdate)。 請注意，forceUpdateTag** 可以搭配所有擴充功能使用，而不只是搭配自訂指令碼擴充功能。
+如果透過擴充功能將應用程式部署至擴展集，則更新擴充組態時，會造成應用程式根據升級原則進行更新。 比方說，如果您有要在自訂腳本擴充功能中執行的新版腳本，可以將 *fileUris* 屬性更新為指向新的腳本。 在某些情況下，即使擴充組態未變更 (例如，您已更新指令碼，但未變更指令碼的 URI)，您也可能會想要強制更新。 在這些情況下，您可以修改 *forceUpdateTag* 來強制更新。 Azure 平台不會解譯這個屬性。 如果您變更此值，並不會影響擴充功能的執行方式。 變更只會強制擴充功能重新執行。 如需 *forceUpdateTag* 的詳細資訊，請參閱 [擴充功能的 REST API 檔](/rest/api/compute/virtualmachineextensions/createorupdate)。 請注意，forceUpdateTag 可以搭配所有擴充功能使用，而不只是搭配自訂指令碼擴充功能。
 
 透過自訂映像來部署應用程式也是常見的做法。 在下一節中將會探討此案例。
 
 ### <a name="os-updates"></a>OS 更新
-如果您使用 Azure 平台映像，您可以修改 imageReference** (如需詳細資訊，請參閱 [REST API 文件](/rest/api/compute/virtualmachinescalesets/createorupdate)) 來更新映像。
+如果您使用 Azure 平台映像，您可以修改 imageReference (如需詳細資訊，請參閱 [REST API 文件](/rest/api/compute/virtualmachinescalesets/createorupdate)) 來更新映像。
 
 >[!NOTE]
-> 使用平台映像時，通常會指定 "latest" 作為映像參考版本。 當您建立、相應放大及重新安裝映像時，會使用最新可用版本來建立虛擬機器。 不過，這**並不**意謂著作業系統映像會隨著時間在新映像版本發行時自動更新。 獨立的功能目前為預覽狀態，可提供自動的作業系統升級。 如需詳細資訊，請參閱 [自動作業系統升級文件](virtual-machine-scale-sets-automatic-upgrade.md)。
+> 使用平台映像時，通常會指定 "latest" 作為映像參考版本。 當您建立、相應放大及重新安裝映像時，會使用最新可用版本來建立虛擬機器。 不過，這 **並不** 意謂著作業系統映像會隨著時間在新映像版本發行時自動更新。 獨立的功能目前為預覽狀態，可提供自動的作業系統升級。 如需詳細資訊，請參閱 [自動作業系統升級文件](virtual-machine-scale-sets-automatic-upgrade.md)。
 
-如果您使用自訂映像，您可以更新 imageReference** 識別碼 (如需詳細資訊，請參閱 [REST API 文件](/rest/api/compute/virtualmachinescalesets/createorupdate)) 來更新映像。
+如果您使用自訂映像，您可以更新 imageReference 識別碼 (如需詳細資訊，請參閱 [REST API 文件](/rest/api/compute/virtualmachinescalesets/createorupdate)) 來更新映像。
 
 ## <a name="examples"></a>範例
 
 ### <a name="update-the-os-image-for-your-scale-set"></a>更新擴展集的 OS 映像
-您可能有執行舊版 Ubuntu LTS 16.04 的擴展集。 您想要更新為較新版本的 Ubuntu LTS 16.04 (例如，版本 16.04.201801090**)。 映像參考版本屬性不是清單的一部分，因此您可以直接使用下列其中一個命令來修改這些屬性：
+您可能有執行舊版 Ubuntu LTS 16.04 的擴展集。 您想要更新為較新版本的 Ubuntu LTS 16.04 (例如，版本 16.04.201801090)。 映像參考版本屬性不是清單的一部分，因此您可以直接使用下列其中一個命令來修改這些屬性：
 
 - Azure PowerShell 搭配 [Update-AzVmss](/powershell/module/az.compute/update-azvmss)，如下所示：
 
@@ -447,8 +447,8 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
     ```
 
 >[!NOTE]
-> 這些命令會假設擴展集上只有一個 IP 設定和負載平衡器。 如果有多個，您可能需要使用 *0*以外的清單索引。
+> 這些命令會假設擴展集上只有一個 IP 設定和負載平衡器。 如果有多個，您可能需要使用 *0* 以外的清單索引。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 您也可以使用 [Azure CLI](virtual-machine-scale-sets-manage-cli.md) 或 [Azure PowerShell](virtual-machine-scale-sets-manage-powershell.md)，在擴展集上執行常見管理工作。

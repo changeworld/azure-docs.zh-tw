@@ -7,13 +7,13 @@ ms.subservice: security
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
-ms.custom: seodec18
-ms.openlocfilehash: 4b533fa23d3c128b5f9f75737fb88d39aec94905
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 3862a07eea2dcec3e67c0145fcdcff8140d19ec3
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88950063"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92746772"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release-for-linux-vms"></a>使用 Linux Vm 的 Azure AD (舊版) 建立和設定 Azure 磁碟加密的金鑰保存庫
 
@@ -61,7 +61,7 @@ Azure 磁碟加密會與 [Azure Key Vault](https://azure.microsoft.com/documenta
      New-AzKeyVault -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -Location 'East US'
      ```
 
-4. 記下傳回的**保存庫名稱**、**資源群組名稱**、**資源識別碼**、**保存庫 URI** 和**物件識別碼**，以供稍後在加密磁碟時使用。 
+4. 記下傳回的 **保存庫名稱** 、 **資源群組名稱** 、 **資源識別碼** 、 **保存庫 URI** 和 **物件識別碼** ，以供稍後在加密磁碟時使用。 
 
 
 ### <a name="create-a-key-vault-with-azure-cli"></a><a name="bkmk_KVCLI"></a> 使用 Azure CLI 建立金鑰保存庫
@@ -80,14 +80,14 @@ Azure 磁碟加密會與 [Azure Key Vault](https://azure.microsoft.com/documenta
      az keyvault create --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --location "East US"
      ```
 
-4. 記下傳回的**保存庫名稱** (名稱)、**資源群組名稱**、**資源識別碼** (識別碼)、**保存庫 URI** 和**物件識別碼**，以供稍後使用。 
+4. 記下傳回的 **保存庫名稱** (名稱)、 **資源群組名稱** 、 **資源識別碼** (識別碼)、 **保存庫 URI** 和 **物件識別碼** ，以供稍後使用。 
 
 ### <a name="create-a-key-vault-with-a-resource-manager-template"></a><a name="bkmk_KVRM"></a> 使用 Resource Manager 範本建立金鑰保存庫
 
 您可以使用 [Resource Manager 範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)來建立金鑰保存庫。
 
-1. 在 Azure 快速入門範本中，按一下 [部署至 Azure]****。
-2. 選取訂用帳戶、資源群組、資源群組位置、Key Vault 名稱、物件識別碼、法律條款和協議，然後按一下 [購買]****。 
+1. 在 Azure 快速入門範本中，按一下 [部署至 Azure]。
+2. 選取訂用帳戶、資源群組、資源群組位置、Key Vault 名稱、物件識別碼、法律條款與合約，然後按一下 [ **購買** ]。 
 
 
 ## <a name="set-up-an-azure-ad-app-and-service-principal"></a><a name="bkmk_ADapp"></a> 設定 Azure AD 應用程式和服務主體 
@@ -135,7 +135,7 @@ Azure 磁碟加密會與 [Azure Key Vault](https://azure.microsoft.com/documenta
 為了將加密祕密寫入指定的 Key Vault，Azure 磁碟加密需要有權將祕密寫入 Key Vault 的 Azure Active Directory 應用程式用戶端識別碼和用戶端密碼。 
 
 > [!NOTE]
-> 若要使用 Azure 磁碟加密，您必須對 Azure AD 用戶端應用程式設定下列存取原則：_WrapKey_ 和 _Set_ 權限。
+> 若要使用 Azure 磁碟加密，您必須對 Azure AD 用戶端應用程式設定下列存取原則： _WrapKey_ 和 _Set_ 權限。
 
 ### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-azure-powershell"></a><a name="bkmk_KVAPPSH"></a> 使用 Azure PowerShell 設定 Azure AD 應用程式的金鑰保存庫存取原則
 您的 Azure AD 應用程式需要權限，才能存取保存庫中的金鑰或密碼。 使用 [>set-azkeyvaultaccesspolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) 指令程式來授與應用程式許可權，使用在註冊應用程式時所產生的用戶端識別碼 () 為 _– ServicePrincipalName_ 參數值。 若要深入了解，請參閱部落格文章 [Azure Key Vault - 逐步解說](/archive/blogs/kv/azure-key-vault-step-by-step)。 
@@ -161,11 +161,11 @@ az keyvault set-policy --name "MySecureVault" --spn "<spn created with CLI/the A
 ### <a name="set-the-key-vault-access-policy-for-the-azure-ad-app-with-the-portal"></a><a name="bkmk_KVAPRM"></a> 使用入口網站設定 Azure AD 應用程式的金鑰保存庫存取原則
 
 1. 使用金鑰保存庫開啟資源群組。
-2. 選取金鑰保存庫，移至 [存取原則]****，然後按一下 [新增]****。
-3. 在 [選取主體]**** 底下，搜尋您所建立的 Azure AD 應用程式，並加以選取。 
-4. 針對 [金鑰權限]****，勾選 [密碼編譯作業]**** 底下的 [包裝金鑰]****。
-5. 針對 [祕密權限]****，勾選 [祕密管理作業]**** 底下的 [設定]****。
-6. 按一下 [確定]**** 以儲存存取原則。 
+2. 選取金鑰保存庫，移至 [存取原則]，然後按一下 [新增]。
+3. 在 [選取主體] 底下，搜尋您所建立的 Azure AD 應用程式，並加以選取。 
+4. 針對 [金鑰權限]，勾選 [密碼編譯作業] 底下的 [包裝金鑰]。
+5. 針對 [祕密權限]，勾選 [祕密管理作業] 底下的 [設定]。
+6. 按一下 [確定] 以儲存存取原則。 
 
 ![Azure Key Vault 密碼編譯作業 - 包裝金鑰](./media/disk-encryption/keyvault-portal-fig3.png)
 
@@ -175,7 +175,7 @@ az keyvault set-policy --name "MySecureVault" --spn "<spn created with CLI/the A
 Azure 平台需要存取您金鑰保存庫中的加密金鑰或密碼，讓該資訊可供 VM 用來開機和解密磁碟區。 在金鑰保存庫或部署上啟用磁碟加密將會失敗。  
 
 ### <a name="set-key-vault-advanced-access-policies-with-azure-powershell"></a><a name="bkmk_KVperPSH"></a> 使用 Azure PowerShell 設定金鑰保存庫進階存取原則
- 使用金鑰保存庫 PowerShell Cmdlet [設定->set-azkeyvaultaccesspolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) 來啟用金鑰保存庫的磁片加密。
+ 使用金鑰保存庫 PowerShell Cmdlet [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) 以啟用金鑰保存庫的磁碟加密。
 
   - **針對磁碟加密啟用 Key Vault：** Azure 磁碟加密需要 EnabledForDiskEncryption。
       
@@ -217,16 +217,16 @@ Azure 平台需要存取您金鑰保存庫中的加密金鑰或密碼，讓該�
 
 ### <a name="set-key-vault-advanced-access-policies-through-the-azure-portal"></a><a name="bkmk_KVperrm"></a> 透過 Azure 入口網站設定金鑰保存庫進階存取原則
 
-1. 選取金鑰保存庫，移至 [存取原則]****，然後**按一下以顯示進階存取原則**。
-2. 選取標示為**為磁碟區加密啟用對 Azure 磁碟加密的存取**的方塊。
-3. 視需要選取 [為部署啟用對 Azure 虛擬機器的存取]**** 及/或 [為範本部署啟用對 Azure Resource Manager 的存取]****。 
-4. 按一下 **[儲存]** 。
+1. 選取金鑰保存庫，移至 [存取原則]，然後 **按一下以顯示進階存取原則** 。
+2. 選取標示為 **為磁碟區加密啟用對 Azure 磁碟加密的存取** 的方塊。
+3. 視需要選取 [為部署啟用對 Azure 虛擬機器的存取] 及/或 [為範本部署啟用對 Azure Resource Manager 的存取]。 
+4. 按一下 [儲存]。
 
 ![Azure 金鑰保存庫進階存取原則](./media/disk-encryption/keyvault-portal-fig4.png)
 
 
 ## <a name="set-up-a-key-encryption-key-optional"></a><a name="bkmk_KEK"></a> (選用) 設定金鑰加密金鑰
-如果您想使用金鑰加密金鑰 (KEK) 來為加密金鑰額外添加一層安全性，請將 KEK 新增至金鑰保存庫。 使用 [AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) 指令 Cmdlet 在金鑰保存庫中建立金鑰加密金鑰。 您也可以從內部部署金鑰管理 HSM 匯入 KEK。 如需詳細資訊，請參閱 [Key Vault 檔](../../key-vault/keys/hsm-protected-keys.md)。 若指定了金鑰加密金鑰，Azure 磁碟加密會先使用該金鑰包裝加密祕密，再寫入 Key Vault。 
+如果您想使用金鑰加密金鑰 (KEK) 來為加密金鑰額外添加一層安全性，請將 KEK 新增至金鑰保存庫。 使用 [AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) 指令 Cmdlet 在金鑰保存庫中建立金鑰加密金鑰。 您也可以從內部部署金鑰管理 HSM 匯入 KEK。 如需詳細資訊，請參閱 [Key Vault 文件](../../key-vault/keys/hsm-protected-keys.md)。 若指定了金鑰加密金鑰，Azure 磁碟加密會先使用該金鑰包裝加密祕密，再寫入 Key Vault。 
 
 * 產生金鑰時，請使用 RSA 金鑰類型。 Azure 磁碟加密尚不支援使用橢圓曲線索引鍵。
 
@@ -460,6 +460,6 @@ Azure 平台需要存取您金鑰保存庫中的加密金鑰或密碼，讓該�
 ```
 
  
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [在 Linux Vm 上使用 Azure AD 啟用 Azure 磁碟加密 (舊版) ](disk-encryption-linux-aad.md)

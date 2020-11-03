@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: de6a416666866a4089d22f2fa047dc860c922d3c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 36c15907c0f45befacf35389652f6d91c0ab1958
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341238"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92787902"
 ---
 # <a name="planning-and-operations-guide"></a>規劃與操作指南
 本指南適用於計劃採用 Azure 資訊安全中心的資訊技術 (IT) 專業人員、IT 架構設計人員、資訊安全性分析師和雲端系統管理員。
@@ -71,8 +71,8 @@ ms.locfileid: "92341238"
 
 資訊安全中心會使用 [Azure 角色型存取控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)，以提供可在 Azure 中指派給使用者、群組與服務的[內建角色](../role-based-access-control/built-in-roles.md)。 當使用者開啟資訊安全中心時，他們只能看到與自己能夠存取的資源相關的資訊。 這表示會為使用者指派資源所屬訂用帳戶或資源群組的「擁有者」、「參與者」或「讀者」角色。 除了這些角色，有兩個特定的資訊安全中心角色：
 
-- **安全性讀取者**：屬於此角色的使用者僅能檢視資訊安全中心設定 (包括建議、警示、原則和健康情況)，但是無法進行變更。
-- **安全性管理員**：與安全性讀取者相同，但它也可以更新安全性原則，解除建議和警示。
+- **安全性讀取者** ：屬於此角色的使用者僅能檢視資訊安全中心設定 (包括建議、警示、原則和健康情況)，但是無法進行變更。
+- **安全性管理員** ：與安全性讀取者相同，但它也可以更新安全性原則，解除建議和警示。
 
 上述的資訊安全中心角色無法存取 Azure 的其他服務區域，例如儲存體、Web 和行動或物聯網。
 
@@ -152,8 +152,8 @@ Azure 資訊安全中心會使用 Log Analytics 代理程式 (這是 Azure 監�
 
 在 Azure 入口網站中，您可以瀏覽以查看 Log Analytics 工作區清單，包括 Azure 資訊安全中心所建立的任何工作區。 將會針對新的工作區建立相關的資源群組。 兩者都會遵照此命名慣例：
 
-* 工作區：*DefaultWorkspace-[subscription-ID]-[geo]*
-* 資源群組：*DefaultResourceGroup-[geo]*
+* 工作區： *DefaultWorkspace-[subscription-ID]-[geo]*
+* 資源群組： *DefaultResourceGroup-[geo]*
 
 若為 Azure 資訊安全中心所建立的工作區，資料會保留 30 天。 若為現有工作區，保留是以工作區定價層為基礎。 如果您想要的話，也可以使用現有的工作區。
 
@@ -175,7 +175,7 @@ Azure 資訊安全中心會使用 Log Analytics 代理程式 (這是 Azure 監�
 > [!NOTE]
 > 資訊安全中心不會干擾一般作業程序，它會被動地監視您的部署，並根據您啟用的安全性原則提供建議。
 
-當您第一次選擇在目前 Azure 環境中使用資訊安全中心時，請務必檢閱所有的建議，您可以在 [建議]**** 頁面中檢閱。
+當您第一次選擇在目前 Azure 環境中使用資訊安全中心時，請務必檢閱所有的建議，您可以在 [建議] 頁面中檢閱。
 
 計劃造訪威脅情報選項，作為每日安全性作業的一部分。 您可以在那裡識別會對環境造成威脅的安全性威脅，例如識別特定電腦是否為殭屍網路的一份子。
 
@@ -207,9 +207,9 @@ Azure 資訊安全中心會使用 Log Analytics 代理程式 (這是 Azure 監�
 
 在下列階段期間，您可以使用資訊安全中心警示︰
 
-* **偵測**︰識別一或多個資源中的可疑活動。
-* **評估**︰執行初始評估，以取得可疑活動的詳細資訊。
-* **診斷**︰使用補救步驟來進行解決問題的技術程序。
+* **偵測** ︰識別一或多個資源中的可疑活動。
+* **評估** ︰執行初始評估，以取得可疑活動的詳細資訊。
+* **診斷** ︰使用補救步驟來進行解決問題的技術程序。
 
 每個安全性警示都提供可用來進一步了解攻擊本質及建議可能補救措施的資訊。 有些警示也會提供更多資訊或 Azure 中其他資訊來源的連結。 您可以使用所提供的資訊進一步研究並開始補救，也可以搜尋儲存在工作區中的安全性相關資料。
 

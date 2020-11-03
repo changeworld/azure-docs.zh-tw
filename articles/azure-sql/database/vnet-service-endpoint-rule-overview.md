@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 1e8810e8b0c02aec33f55fb8f0689eec3c5bad8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efea5d6548814dc0f165bab9281e5234f3eae925
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91616698"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791319"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>在 Azure SQL Database 中使用伺服器的虛擬網路服務端點和規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -55,7 +55,7 @@ ms.locfileid: "91616698"
 - **網路管理員：** &nbsp;開啟端點。
 - **資料庫管理員：** &nbsp; 更新 (ACL) 的存取控制清單，以將指定的子網新增至伺服器。
 
-RBAC 替代方案：**
+RBAC 替代方案：
 
 「網路管理員」和「資料庫管理員」角色的能力已超過管理虛擬網路規則所需。 只需要其中一部分能力。
 
@@ -89,7 +89,7 @@ RBAC 替代方案：**
 
 使用 Azure SQL Database 的服務端點時，請檢閱下列注意事項：
 
-- **輸出至 Azure SQL Database 公用 IP 是必需的**：必須針對 Azure SQL Database IP 開啟網路安全性群組 (NSG)，才能夠進行連線。 為了完成此操作，您可以使用適用於 Azure SQL Database 的 NSG [服務標籤](../../virtual-network/security-overview.md#service-tags)。
+- **輸出至 Azure SQL Database 公用 IP 是必需的** ：必須針對 Azure SQL Database IP 開啟網路安全性群組 (NSG)，才能夠進行連線。 為了完成此操作，您可以使用適用於 Azure SQL Database 的 NSG [服務標籤](../../virtual-network/network-security-groups-overview.md#service-tags)。
 
 ### <a name="expressroute"></a>ExpressRoute
 
@@ -112,9 +112,9 @@ PolyBase 和 COPY 語句通常用來將資料從 Azure 儲存體帳戶載入 Azu
 
 #### <a name="prerequisites"></a>必要條件
 
-- 使用此[指南](https://docs.microsoft.com/powershell/azure/install-az-ps)安裝 Azure PowerShell。
-- 如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)先升級至一般用途 v2。
-- 您必須開啟 Azure 儲存體帳戶 [防火牆與虛擬網路] 設定功能表下方的 [允許信任的 Microsoft 服務存取此儲存體帳戶]。 啟用此設定可讓 PolyBase 和 COPY 語句使用強式驗證來連線到儲存體帳戶，其中網路流量會留在 Azure 骨幹上。 如需詳細資訊請參閱此[指南](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。
+- 使用此[指南](/powershell/azure/install-az-ps)安裝 Azure PowerShell。
+- 如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此[指南](../../storage/common/storage-account-upgrade.md)先升級至一般用途 v2。
+- 您必須開啟 Azure 儲存體帳戶 [防火牆與虛擬網路] 設定功能表下方的 [允許信任的 Microsoft 服務存取此儲存體帳戶]。 啟用此設定可讓 PolyBase 和 COPY 語句使用強式驗證來連線到儲存體帳戶，其中網路流量會留在 Azure 骨幹上。 如需詳細資訊請參閱此[指南](../../storage/common/storage-network-security.md#exceptions)。
 
 > [!IMPORTANT]
 > Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az.Sql 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到 Bug 修正。  Az 模組和 AzureRm 模組中命令的引數本質上完全相同。 如需其相容性的詳細資訊，請參閱[新的 Azure PowerShell Az 模組簡介](/powershell/azure/new-azureps-module-az)。
@@ -129,21 +129,21 @@ PolyBase 和 COPY 語句通常用來將資料從 Azure 儲存體帳戶載入 Azu
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
-1. 以此[指南](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)建立**一般用途的 v2 儲存體帳戶**。
+1. 以此 [指南](../../storage/common/storage-account-create.md)建立 **一般用途的 v2 儲存體帳戶** 。
 
    > [!NOTE]
    >
-   > - 如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此 [指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)**升級至 v2**。
-   > - 關於 Azure Data Lake Storage Gen2 的已知問題，請參閱此[指南](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)。
+   > - 如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此 [指南](../../storage/common/storage-account-upgrade.md)**升級至 v2** 。
+   > - 關於 Azure Data Lake Storage Gen2 的已知問題，請參閱此[指南](../../storage/blobs/data-lake-storage-known-issues.md)。
 
 1. 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將 **儲存體 Blob 資料參與者** Azure 角色指派給裝載您 Azure Synapse Analytics 的伺服器，您已向 AZURE ACTIVE DIRECTORY (AAD) 註冊，如同步驟 #1 中所述。
 
    > [!NOTE]
-   > 只有在儲存體帳戶上具有擁有者許可權的成員可以執行此步驟。 如需各種 Azure 內建角色，請參閱此[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
+   > 只有在儲存體帳戶上具有擁有者許可權的成員可以執行此步驟。 如需各種 Azure 內建角色，請參閱此[指南](../../role-based-access-control/built-in-roles.md)。
   
 1. **Polybase 連線至 Azure 儲存體帳戶：**
 
-   1. 建立資料庫**[主要金鑰](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql)** (如果先前尚未建立)：
+   1. 建立資料庫 **[主要金鑰](/sql/t-sql/statements/create-master-key-transact-sql)** (如果先前尚未建立)：
 
        ```sql
        CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
@@ -157,8 +157,8 @@ PolyBase 和 COPY 語句通常用來將資料從 Azure 儲存體帳戶載入 Azu
 
        > [!NOTE]
        >
-       > - 不需要使用 Azure 儲存體存取金鑰指定 SECRET，因為此機制會秘密使用[受控身分識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
-       > - PolyBase 連線的 IDENTITY 名稱應為 **'Managed Service Identity'**，才能搭配使用固定至 VNet 的 Azure 儲存體帳戶。
+       > - 不需要使用 Azure 儲存體存取金鑰指定 SECRET，因為此機制會秘密使用[受控身分識別](../../active-directory/managed-identities-azure-resources/overview.md)。
+       > - PolyBase 連線的 IDENTITY 名稱應為 **'Managed Service Identity'** ，才能搭配使用固定至 VNet 的 Azure 儲存體帳戶。
 
    1. 建立外部資料源，其 `abfss://` 配置可使用 PolyBase 連接到您的一般用途 v2 儲存體帳戶：
 
@@ -168,11 +168,11 @@ PolyBase 和 COPY 語句通常用來將資料從 Azure 儲存體帳戶載入 Azu
 
        > [!NOTE]
        >
-       > - 如果您已有與一般用途 v1 或 Blob 儲存體帳戶相關聯的外部資料表，請先卸除這些外部資料表，再卸除對應的外部資料來源。 然後，使用與 `abfss://` 上述一般用途 v2 儲存體帳戶連接的配置來建立外部資料源，然後使用這個新的外部資料源重新建立所有外部資料表。 您可以使用[產生和發佈指令碼精靈](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard)，輕鬆地為所有的外部資料表產生建立指令碼。
-       > - 如需配置的詳細資訊 `abfss://` ，請參閱本 [指南](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri)。
-       > - 如需 CREATE EXTERNAL DATA SOURCE 的詳細資訊，請參閱此[指南](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql) (英文)。
+       > - 如果您已有與一般用途 v1 或 Blob 儲存體帳戶相關聯的外部資料表，請先卸除這些外部資料表，再卸除對應的外部資料來源。 然後，使用與 `abfss://` 上述一般用途 v2 儲存體帳戶連接的配置來建立外部資料源，然後使用這個新的外部資料源重新建立所有外部資料表。 您可以使用[產生和發佈指令碼精靈](/sql/ssms/scripting/generate-and-publish-scripts-wizard)，輕鬆地為所有的外部資料表產生建立指令碼。
+       > - 如需配置的詳細資訊 `abfss://` ，請參閱本 [指南](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md)。
+       > - 如需 CREATE EXTERNAL DATA SOURCE 的詳細資訊，請參閱此[指南](/sql/t-sql/statements/create-external-data-source-transact-sql) (英文)。
 
-   1. 以一般方式使用[外部資料表](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)查詢。
+   1. 以一般方式使用[外部資料表](/sql/t-sql/statements/create-external-table-transact-sql)查詢。
 
 ### <a name="azure-sql-database-blob-auditing"></a>Azure SQL Database Blob 稽核
 
@@ -188,34 +188,34 @@ Blob 稽核會將稽核記錄推送到您自己的儲存體帳戶。 如果這�
 
 ## <a name="errors-40914-and-40615"></a>錯誤 40914 和 40615
 
-連線錯誤 40914 與「虛擬網路規則」** 有關，這些規則會在 Azure 入口網站中的 [防火牆] 窗格中指定。 錯誤 40615 很類似，但它與防火牆上的「IP 位址規則」** 相關。
+連線錯誤 40914 與「虛擬網路規則」有關，這些規則會在 Azure 入口網站中的 [防火牆] 窗格中指定。 錯誤 40615 很類似，但它與防火牆上的「IP 位址規則」相關。
 
 ### <a name="error-40914"></a>錯誤 40914
 
-訊息文字：** 無法開啟登入所要求的伺服器 '*[server-name]*'。 用戶端不得存取該伺服器。
+訊息文字：無法開啟登入所要求的伺服器 ' *[server-name]* '。 用戶端不得存取該伺服器。
 
-錯誤說明：** 用戶端所在的子網路含有虛擬網路伺服器端點。 但是伺服器沒有任何虛擬網路規則可將與資料庫通訊的許可權授與子網。
+錯誤說明：用戶端所在的子網路含有虛擬網路伺服器端點。 但是伺服器沒有任何虛擬網路規則可將與資料庫通訊的許可權授與子網。
 
-錯誤解決方式：** 在 Azure 入口網站的 [防火牆] 窗格上，使用虛擬網路規則控制來為子網路[新增虛擬網路規則](#anchor-how-to-by-using-firewall-portal-59j)。
+錯誤解決方式：在 Azure 入口網站的 [防火牆] 窗格上，使用虛擬網路規則控制來為子網路[新增虛擬網路規則](#anchor-how-to-by-using-firewall-portal-59j)。
 
 ### <a name="error-40615"></a>錯誤 40615
 
-訊息文字：** 無法開啟登入所要求的伺服器 '{0}'。 不允許 IP 位址為 '{1}' 的用戶端存取伺服器。
+訊息文字：無法開啟登入所要求的伺服器 '{0}'。 不允許 IP 位址為 '{1}' 的用戶端存取伺服器。
 
 *錯誤描述：* 用戶端嘗試從未獲授權連接至伺服器的 IP 位址進行連接。 伺服器防火牆沒有任何 IP 位址規則，可讓用戶端從指定的 IP 位址與資料庫進行通訊。
 
-錯誤解決方式：** 輸入用戶端的 IP 位址作為 IP 規則。 您可以使用 Azure 入口網站中的 [防火牆] 窗格來執行這項工作。
+錯誤解決方式：輸入用戶端的 IP 位址作為 IP 規則。 您可以使用 Azure 入口網站中的 [防火牆] 窗格來執行這項工作。
 
 <a name="anchor-how-to-by-using-firewall-portal-59j"></a>
 
 ## <a name="portal-can-create-a-virtual-network-rule"></a>入口網站可以建立虛擬網路規則
 
-本節說明如何使用 [Azure 入口網站][http-azure-portal-link-ref-477t] ，在 Azure SQL Database 的資料庫中建立 *虛擬網路規則* 。 此規則會告知您的資料庫接受已標記為 *虛擬網路服務端點*的特定子網的通訊。
+本節說明如何使用 [Azure 入口網站][http-azure-portal-link-ref-477t] ，在 Azure SQL Database 的資料庫中建立 *虛擬網路規則* 。 此規則會告知您的資料庫接受已標記為 *虛擬網路服務端點* 的特定子網的通訊。
 
 > [!NOTE]
 > 如果您想要將服務端點新增至伺服器的 VNet 防火牆規則，請先確定子網的服務端點已開啟。
 >
-> 若未在子網路上開啟服務端點，入口網站將會要求您加以啟用。 在您新增規則的相同刀鋒視窗上，按一下 [啟用]**** 按鈕。
+> 若未在子網路上開啟服務端點，入口網站將會要求您加以啟用。 在您新增規則的相同刀鋒視窗上，按一下 [啟用] 按鈕。
 
 ## <a name="powershell-alternative"></a>PowerShell 替代方案
 
@@ -229,9 +229,9 @@ SQL VNet 動作的 PowerShell cmdlet 會在內部呼叫 REST API。 您可以直
 
 ## <a name="prerequisites"></a>必要條件
 
-您必須已有一個子網路是以 Azure SQL Database 相關的特定虛擬網路服務端點「類型名稱」** 所標記。
+您必須已有一個子網路是以 Azure SQL Database 相關的特定虛擬網路服務端點「類型名稱」所標記。
 
-- 相關的端點類型名稱是 **Microsoft.Sql**。
+- 相關的端點類型名稱是 **Microsoft.Sql** 。
 - 如果您的子網路可能未標記類型名稱，請參閱[確認您的子網路是端點][sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100]。
 
 <a name="a-portal-steps-for-vnet-rule-200"></a>
@@ -240,26 +240,26 @@ SQL VNet 動作的 PowerShell cmdlet 會在內部呼叫 REST API。 您可以直
 
 1. 登入 [Azure 入口網站][http-azure-portal-link-ref-477t]。
 
-2. 搜尋並選取 **[SQL**server]，然後選取您的伺服器。 在 [ **安全性**] 底下，選取 [ **防火牆和虛擬網路**]。
+2. 搜尋並選取 **[SQL** server]，然後選取您的伺服器。 在 [ **安全性** ] 底下，選取 [ **防火牆和虛擬網路** ]。
 
-3. 將 [允許存取 Azure 服務]**** 控制項設為 [關閉]。
+3. 將 [允許存取 Azure 服務] 控制項設為 [關閉]。
 
     > [!IMPORTANT]
     > 如果您讓控制項保持設定為開啟，則您的伺服器會接受來自 Azure 界限內任何子網的通訊，亦即源自 Azure 資料中心定義範圍內的其中一個 IP 位址。 就安全性觀點而言，讓此控制項保持 [開啟] 可能使存取過多。 Microsoft Azure 虛擬網路服務端點功能，連同 SQL Database 的虛擬網路規則功能，可縮小安全性曝露面。
 
-4. 按一下 [虛擬網路]**** 區段中的 [+ 新增現有的]**** 控制項。
+4. 按一下 [虛擬網路] 區段中的 [+ 新增現有的] 控制項。
 
     ![按一下新增現有的 (子網路端點，作為 SQL 規則)。][image-portal-firewall-vnet-add-existing-10-png]
 
-5. 在新的 [建立/更新]**** 窗格中，將您的 Azure 資源名稱填入控制項中。
+5. 在新的 [建立/更新] 窗格中，將您的 Azure 資源名稱填入控制項中。
 
     > [!TIP]
-    > 必須包含子網路的正確 [位址首碼]****。 您可以在入口網站中找到值。
-    > 瀏覽 [所有資源]**** &gt; ** [所有類型]** &gt; ** [虛擬網路]**。 篩選條件會顯示您的虛擬網路。 按一下您的虛擬網路，然後按一下 [子網路]****。 [位址範圍]**** 資料行具有您需要的位址首碼。
+    > 必須包含子網路的正確 [位址首碼]。 您可以在入口網站中找到值。
+    > 瀏覽 [所有資源] &gt; **[所有類型]** &gt; **[虛擬網路]** 。 篩選條件會顯示您的虛擬網路。 按一下您的虛擬網路，然後按一下 [子網路]。 [位址範圍] 資料行具有您需要的位址首碼。
 
     ![填入新規則的欄位。][image-portal-firewall-create-update-vnet-rule-20-png]
 
-6. 按一下窗格底端附近的 [確定]**** 按鈕。
+6. 按一下窗格底端附近的 [確定]按鈕。
 
 7. 在防火牆窗格上查看產生的虛擬網路規則。
 
@@ -298,12 +298,12 @@ SQL VNet 動作的 PowerShell cmdlet 會在內部呼叫 REST API。 您可以直
 [sql-db-vnet-service-endpoint-rule-powershell-md-52d]:scripts/vnet-service-endpoint-rule-powershell-create.md
 [sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100]:scripts/vnet-service-endpoint-rule-powershell-create.md#a-verify-subnet-is-endpoint-ps-100
 [vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]: ../virtual-network/virtual-networks-static-private-ip-arm-pportal.md
-[vm-virtual-network-service-endpoints-overview-649d]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview
+[vm-virtual-network-service-endpoints-overview-649d]: ../../virtual-network/virtual-network-service-endpoints-overview.md
 [vpn-gateway-indexmd-608y]: ../../vpn-gateway/index.yml
 
 <!-- Link references, to text, Outside this GitHub repo (HTTP). -->
 [http-azure-portal-link-ref-477t]: https://portal.azure.com/
-[rest-api-virtual-network-rules-operations-862r]: https://docs.microsoft.com/rest/api/sql/virtualnetworkrules
+[rest-api-virtual-network-rules-operations-862r]: /rest/api/sql/virtualnetworkrules
 
 <!-- ??2
 #### Syntax related articles

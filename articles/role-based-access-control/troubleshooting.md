@@ -14,13 +14,13 @@ ms.topic: troubleshooting
 ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.custom: seohack1
-ms.openlocfilehash: 069c290de0278202b2e20d67f0ce792a0a79c345
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.custom: seohack1, devx-track-azurecli
+ms.openlocfilehash: 325931ea024221bc89df3b2e25f3e7844130f4dc
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368225"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92741059"
 ---
 # <a name="troubleshoot-azure-rbac"></a>針對 Azure RBAC 進行疑難排解
 
@@ -51,7 +51,7 @@ $ras.Count
 
 ## <a name="problems-with-azure-role-assignments"></a>Azure 角色指派的問題
 
-- 如果您因為 [**新增**新增角色指派] 選項已停用，或因為您收到許可權錯誤「具有物件識別碼的用戶端沒有執行動作的授權」，所以無法在存取控制的 Azure 入口網站中新增角色指派** (IAM) ** 。確認  >  **Add role assignment**您目前登入的使用者，具有在 `Microsoft.Authorization/roleAssignments/write` 您嘗試指派角色的範圍內，具有擁有者[Owner](built-in-roles.md#owner)或[使用者存取系統管理員](built-in-roles.md#user-access-administrator)許可權的角色。
+- 如果您因為 [ **新增** 新增角色指派] 選項已停用，或因為您收到許可權錯誤「具有物件識別碼的用戶端沒有執行動作的授權」，所以無法在存取控制的 Azure 入口網站中新增角色指派 **(IAM)** 。確認  >  **Add role assignment** 您目前登入的使用者，具有在 `Microsoft.Authorization/roleAssignments/write` 您嘗試指派角色的範圍內，具有擁有者 [Owner](built-in-roles.md#owner)或 [使用者存取系統管理員](built-in-roles.md#user-access-administrator)許可權的角色。
 - 如果您使用服務主體來指派角色，您可能會收到「許可權不足，無法完成作業」錯誤。 例如，假設您的服務主體已獲指派擁有者角色，而您嘗試使用 Azure CLI 建立下列角色指派作為服務主體：
 
     ```azurecli
@@ -120,7 +120,7 @@ $ras.Count
 
 但是，如果此安全性主體並非最近受邀的使用者，則可能是已刪除的安全性主體。 如果您將角色指派給安全性主體，然後在不先移除角色指派的情況下刪除該安全性主體，則會將安全性主體列為 **找不** 到身分識別和 **未知** 的類型。
 
-如果您使用 Azure PowerShell 列出此角色指派，您可能會看到空白 `DisplayName` 且已 `ObjectType` 設定為 **未知**。 例如， [>new-azroleassignment](/powershell/module/az.resources/get-azroleassignment) 會傳回類似下列輸出的角色指派：
+如果您使用 Azure PowerShell 列出此角色指派，您可能會看到空白 `DisplayName` 且已 `ObjectType` 設定為 **未知** 。 例如， [>new-azroleassignment](/powershell/module/az.resources/get-azroleassignment) 會傳回類似下列輸出的角色指派：
 
 ```
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -202,13 +202,13 @@ Web 應用程式因為幾個互有關聯的資源而顯得複雜。 以下是具
 
 如此一來，如果您只授予某人 Web 應用程式存取權限，Azure 入口網站的網站刀鋒視窗上的諸多功能即會停用。
 
-這些項目需要對應至您網站的「應用程式服務方案」**** 的**寫入**權：  
+這些項目需要對應至您網站的「應用程式服務方案」的 **寫入** 權：  
 
 * 檢視 Web 應用程式的定價層 (免費或標準)  
 * 調整組態 (執行個體數量、虛擬機器大小、自動調整設定)  
 * 配額 (儲存容量、頻寬、CPU)  
 
-這些項目都需要包含您網站的整個「資源群組」**** 的**寫入**權：  
+這些項目都需要包含您網站的整個「資源群組」的 **寫入** 權：  
 
 * Tls/SSL 憑證和系結 (TLS/SSL 憑證可以在相同資源群組和地理位置中的網站之間共用)   
 * 警示規則  
@@ -222,14 +222,14 @@ Web 應用程式因為幾個互有關聯的資源而顯得複雜。 以下是具
 
 虛擬機器與網域名稱、虛擬網路、儲存體帳戶及警示規則相關。
 
-這些項目都需要具備「虛擬機器」**** 的**寫入**權：
+這些項目都需要具備「虛擬機器」的 **寫入** 權：
 
 * 端點  
 * IP 位址  
 * 磁碟  
 * 延伸模組  
 
-這些項目都需要同時具備「虛擬機器」**** 與所屬之「資源群組」****(連同網域名稱) 的**寫入**權：  
+這些項目都需要同時具備「虛擬機器」與所屬之「資源群組」(連同網域名稱) 的 **寫入** 權：  
 
 * 可用性設定組  
 * 負載平衡集合  
@@ -239,11 +239,11 @@ Web 應用程式因為幾個互有關聯的資源而顯得複雜。 以下是具
 
 ## <a name="azure-functions-and-write-access"></a>Azure Functions 和寫入權限
 
-[Azure Functions](../azure-functions/functions-overview.md) 的某些功能需要寫入存取權。 例如，如果使用者被指派「 [讀取](built-in-roles.md#reader) 者」角色，他們將無法在函式應用程式中查看函式。 入口網站將顯示 **(無存取權)**。
+[Azure Functions](../azure-functions/functions-overview.md) 的某些功能需要寫入存取權。 例如，如果使用者被指派「 [讀取](built-in-roles.md#reader) 者」角色，他們將無法在函式應用程式中查看函式。 入口網站將顯示 **(無存取權)** 。
 
 ![函數應用程式無存取權](./media/troubleshooting/functionapps-noaccess.png)
 
-讀者可以按一下 [平台功能]**** 索引標籤，然後按一下 [所有設定]**** 以檢視與函數應用程式相關的一些設定 (類似於 Web 應用程式)，但他們不能修改這些設定。 若要存取這些功能，您將需要 [參與者](built-in-roles.md#contributor) 角色。
+讀者可以按一下 [平台功能] 索引標籤，然後按一下 [所有設定] 以檢視與函數應用程式相關的一些設定 (類似於 Web 應用程式)，但他們不能修改這些設定。 若要存取這些功能，您將需要 [參與者](built-in-roles.md#contributor) 角色。
 
 ## <a name="next-steps"></a>後續步驟
 

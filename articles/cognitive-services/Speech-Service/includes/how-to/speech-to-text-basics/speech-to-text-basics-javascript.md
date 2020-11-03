@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: 04d54afa6a2dc9aab778f927d55b270a1ca2a660
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: f16b0fb5cf241604c627925a7cd905c1683399fd
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92210927"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886483"
 ---
 語音服務的核心功能之一，就是能夠辨識並轉譯人類語音 (通常稱為語音轉文字)。 在本快速入門中，您將了解如何在您的應用程式和產品中使用語音 SDK，以執行高品質的語音轉換文字辨識。
 
@@ -34,22 +34,14 @@ class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 # <a name="script"></a>[指令碼](#tab/script)
 
-下載<a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">適用於 JavaScript 的語音 SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a> *microsoft.cognitiveservices.speech.sdk.bundle.js* 檔案並將其解壓縮，放在您的 HTML 檔案可存取的資料夾中。
+下載 <a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">適用於 JavaScript 的語音 SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a> *microsoft.cognitiveservices.speech.sdk.bundle.js* 檔案並將其解壓縮，放在您的 HTML 檔案可存取的資料夾中。
 
 ```html
 <script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>;
 ```
 
 > [!TIP]
-> 如果您是以網頁瀏覽器為目標，並使用 `<script>` 標籤，則不需要 `sdk` 前置詞。 `sdk` 前置詞是用來命名 `require` 模組的別名。
-
-# <a name="import"></a>[import](#tab/import)
-
-```javascript
-import * from "microsoft-cognitiveservices-speech-sdk";
-```
-
-如需 `import` 的詳細資訊，請參閱<a href="https://javascript.info/import-export" target="_blank">匯出和匯入<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+> 如果您是以網頁瀏覽器為目標，並使用 `<script>` 標籤，則參考類別不需要 `sdk` 前置詞。 `sdk` 前置詞是用來命名 `require` 模組的別名。
 
 # <a name="require"></a>[必要項目](#tab/require)
 
@@ -63,77 +55,106 @@ const sdk = require("microsoft-cognitiveservices-speech-sdk");
 
 ## <a name="create-a-speech-configuration"></a>建立語音設定
 
-若要使用語音 SDK 來呼叫語音服務，您必須建立 [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true)。 此類別包含訂用帳戶的相關資訊，例如您的金鑰和關聯的區域、端點、主機或授權權杖。
+若要使用語音 SDK 來呼叫語音服務，您必須建立 [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true)。 此類別包含訂用帳戶的相關資訊，例如您的金鑰和關聯的區域、端點、主機或授權權杖。 使用您的金鑰和區域建立 [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true)。 請參閱[區域支援](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)頁面，以尋找您的區域識別碼。
 
-> [!NOTE]
-> 無論您是執行語音辨識、語音合成、翻譯還是意圖辨識，都一定會建立設定。
+```javascript
+const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+```
 
-您可以透過數種方式將 [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true) 初始化：
+您可以透過其他數種方式將 [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true) 初始化：
 
-* 使用訂用帳戶：傳入金鑰和相關聯的區域。
 * 使用端點：傳入語音服務端點。 金鑰或授權權杖是選用項目。
 * 使用主機：傳入主機位址。 金鑰或授權權杖是選用項目。
 * 使用授權權杖：傳入授權權杖和相關聯的區域。
 
-我們來看看如何使用金鑰和區域建立 [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true)。 請參閱[區域支援](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)頁面，以尋找您的區域識別碼。
-
-```javascript
-const speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
-```
-
-## <a name="initialize-a-recognizer"></a>初始化辨識器
-
-建立 [`SpeechConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest&preserve-view=true) 之後，下一步是初始化 [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true)。 初始化 [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true) 時，您會傳遞您的 `speechConfig`。 這會提供語音服務驗證您的要求所需的認證。
-
-```javascript
-const recognizer = new SpeechRecognizer(speechConfig);
-```
-
-## <a name="recognize-from-microphone-or-file"></a>從麥克風或檔案辨識
-
-如果要指定音訊輸入裝置，必須建立 [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true)，並在初始化 [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true) 時提供參數。
-
-若要使用裝置麥克風辨識語音，請使用 `fromDefaultMicrophoneInput()` 建立 `AudioConfig`，然後在建立 `SpeechRecognizer` 物件時傳遞音訊設定。
-
-```javascript
-const audioConfig = AudioConfig.fromDefaultMicrophoneInput();
-const recognizer = new SpeechRecognizer(speechConfig, audioConfig);
-```
-
-> [!TIP]
-> [了解如何取得音訊輸入裝置的裝置識別碼](../../../how-to-select-audio-input-devices.md)。
-
-如果要辨識來自音訊檔案的語音而不使用麥克風，您仍然需要提供 `AudioConfig`。 不過，建立 [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true) 時，您不會呼叫 `fromDefaultMicrophoneInput()`，而是會呼叫 `fromWavFileInput()` 並傳遞 `filename` 參數。
-
-> [!IMPORTANT]
-> 「僅」 **Node.js** SDK 支援從檔案辨識語音
-
-```javascript
-const audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
-const recognizer = new SpeechRecognizer(speechConfig, audioConfig);
-```
-
-## <a name="recognize-speech"></a>辨識語音
-
-「適用於 JavaScript 的語音 SDK」的[辨識器類別](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true)會公開一些可供您用於語音辨識的方法。
-
-* 一次性辨識 (非同步) -在非封鎖 (非同步) 模式下執行辨識。 這將會辨識單一語句。 單一語句的結尾會藉由聽取結束時的靜默來決定，或是在處理音訊達 15 秒的上限時結束。
-* 連續辨識 (非同步) - 以非同步方式起始連續辨識作業。 使用者可註冊事件並處理各種應用程式狀態。 若要停止非同步連續識別，請呼叫 [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#stopcontinuousrecognitionasync)。
-
 > [!NOTE]
-> 深入了解如何[選擇語音辨識模式](../../../how-to-choose-recognition-mode.md)。
+> 無論您是執行語音辨識、語音合成、翻譯還是意圖辨識，都一定會建立設定。
 
-### <a name="single-shot-recognition"></a>一次性辨識
+## <a name="recognize-from-microphone"></a>從麥克風辨識
 
-以下是使用 [`recognizeOnceAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#recognizeonceasync) 進行非同步一次性辨識的範例：
+若要使用您的裝置麥克風辨識語音，請使用 `fromDefaultMicrophoneInput()` 建立 `AudioConfig`。 然後初始化 [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true)，傳遞您的 `speechConfig` 和 `audioConfig`。
 
 ```javascript
-recognizer.recognizeOnceAsync(result => {
-    // Interact with result
-});
+const sdk = require("microsoft-cognitiveservices-speech-sdk");
+const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+
+function fromMic() {
+    let audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
+    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+    
+    console.log('Speak into your microphone.');
+    recognizer.recognizeOnceAsync(result => {
+        console.log(`RECOGNIZED: Text=${result.text}`);
+    });
+}
+fromMic();
 ```
 
-您必須撰寫程式碼來處理結果。 此範例會評估 [`result.reason`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognitionresult?view=azure-node-latest&preserve-view=true#reason)：
+如果要使用「特定」的音訊輸入裝置，您需要在 `AudioConfig` 中指定裝置識別碼。 了解 [如何取得音訊輸入裝置的裝置識別碼](../../../how-to-select-audio-input-devices.md)。
+
+## <a name="recognize-from-file"></a>從檔案辨識 
+
+# <a name="browser"></a>[瀏覽器](#tab/browser)
+
+若要從以瀏覽器為基礎的 JavaScript 環境中的音訊檔案辨識語音，請使用 `fromWavFileInput()` 函式來建立 [`AudioConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest&preserve-view=true)。 函式 `fromWavFileInput()` 預期會使用 JavaScript [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File/File) 物件作為參數。
+
+```javascript
+const sdk = require("microsoft-cognitiveservices-speech-sdk");
+const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+
+function fromFile() {
+    // wavByteContent should be a byte array of the raw wav content
+    let file = new File([wavByteContent]);
+    let audioConfig = sdk.AudioConfig.fromWavFileInput(file);
+    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+    
+    recognizer.recognizeOnceAsync(result => {
+        console.log(`RECOGNIZED: Text=${result.text}`);
+    });
+}
+fromFile();
+```
+
+# <a name="nodejs"></a>[Node.js](#tab/node)
+
+若要從 Node.js 中的音訊檔案辨識語音，必須使用推送資料流的替代設計模式，因為 JavaScript [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File/File) 物件無法用於 Node.js 執行階段。 下列程式碼：
+
+* 使用 `createPushStream()` 建立推送資料流
+* 藉由建立讀取資料流並寫入推送資料流來開啟 `.wav` 檔案
+* 使用推送資料流建立音訊設定
+
+```javascript
+const fs = require('fs');
+const sdk = require("microsoft-cognitiveservices-speech-sdk");
+const speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
+
+function fromFile() {
+    let pushStream = sdk.AudioInputStream.createPushStream();
+
+    fs.createReadStream("YourAudioFile.wav").on('data', function(arrayBuffer) {
+        pushStream.write(arrayBuffer.slice());
+    }).on('end', function() {
+        pushStream.close();
+    });
+ 
+    let audioConfig = sdk.AudioConfig.fromStreamInput(pushStream);
+    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+    recognizer.recognizeOnceAsync(result => {
+        console.log(`RECOGNIZED: Text=${result.text}`);
+        recognizer.close();
+    });
+}
+fromFile();
+```
+
+使用推送資料流作為輸入時，會假設音訊資料是原始 PCM，例如略過任何標頭。
+如果未略過標頭，則此 API 仍然可以在某些情況下運作，但為了獲得最佳結果，請考慮執行邏輯以讀取標頭，讓 `fs` 從音訊資料開頭開始。
+
+---
+
+## <a name="error-handling"></a>錯誤處理
+
+先前的範例只會從 `result.text` 取得已辨識的文字，但是若要處理錯誤和其他回應，您必須撰寫一些程式碼來處理結果。 下列程式碼會評估 [`result.reason`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognitionresult?view=azure-node-latest&preserve-view=true#reason) 屬性和：
 
 * 列印辨識結果：`ResultReason.RecognizedSpeech`
 * 如果沒有任何相符的辨識，則通知使用者：`ResultReason.NoMatch`
@@ -143,7 +164,6 @@ recognizer.recognizeOnceAsync(result => {
 switch (result.reason) {
     case ResultReason.RecognizedSpeech:
         console.log(`RECOGNIZED: Text=${result.text}`);
-        console.log("    Intent not recognized.");
         break;
     case ResultReason.NoMatch:
         console.log("NOMATCH: Speech could not be recognized.");
@@ -161,17 +181,19 @@ switch (result.reason) {
     }
 ```
 
-### <a name="continuous-recognition"></a>連續辨識
+## <a name="continuous-recognition"></a>連續辨識
 
-連續辨識比一次性辨識略為複雜一些。 您必須訂閱 `Recognizing`、`Recognized` 和 `Canceled` 事件，才能取得辨識結果。 若要停止辨識，您必須呼叫 [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#stopcontinuousrecognitionasync)。 以下範例說明如何對音訊輸入檔執行連續辨識。
+先前的範例會使用可辨識單一語句的一次性辨識。 單一語句的結尾會藉由聽取結束時的靜默來決定，或是在處理音訊達 15 秒的上限時結束。
 
-首先，我們要定義輸入並初始化 [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true)：
+相反地，當您想要 **控制** 何時停止辨識時，可使用連續辨識。 您必須訂閱 `Recognizing`、`Recognized` 和 `Canceled` 事件，才能取得辨識結果。 若要停止辨識，您必須呼叫 [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#stopcontinuousrecognitionasync)。 以下範例說明如何對音訊輸入檔執行連續辨識。
+
+首先要定義輸入並初始化 [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true)：
 
 ```javascript
-const recognizer = new SpeechRecognizer(speechConfig);
+const recognizer = new sdk.SpeechRecognizer(speechConfig);
 ```
 
-我們會訂閱從 [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true) 傳送的事件。
+再來訂閱從 [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true) 傳送的事件。
 
 * [`recognizing`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#recognizing)：包含中繼辨識結果的事件訊號。
 * [`recognized`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#recognized)：包含最終辨識結果的事件訊號 (表示成功的辨識嘗試)。
@@ -210,13 +232,12 @@ recognizer.sessionStopped = (s, e) => {
 };
 ```
 
-完成所有設定後，我們可以呼叫 [`startContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#startcontinuousrecognitionasync)。
+設定好所有項目後，請呼叫 [`startContinuousRecognitionAsync`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest&preserve-view=true#startcontinuousrecognitionasync) 以開始辨識。
 
 ```javascript
-// Starts continuous recognition. Uses stopContinuousRecognitionAsync() to stop recognition.
 recognizer.startContinuousRecognitionAsync();
 
-// Something later can call, stops recognition.
+// make the following call at some point to stop recognition.
 // recognizer.StopContinuousRecognitionAsync();
 ```
 
@@ -252,7 +273,7 @@ speechConfig.speechRecognitionLanguage = "it-IT";
 [`PhraseListGrammar`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/phraselistgrammar?view=azure-node-latest&preserve-view=true) 的任何變更將會在下一次辨識時或重新連線至語音服務之後生效。
 
 ```javascript
-const phraseList = PhraseListGrammar.fromRecognizer(recognizer);
+const phraseList = sdk.PhraseListGrammar.fromRecognizer(recognizer);
 phraseList.addPhrase("Supercalifragilisticexpialidocious");
 ```
 

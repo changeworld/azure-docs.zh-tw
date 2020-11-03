@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
-ms.date: 04/15/2020
-ms.openlocfilehash: 143713649afd7f9e42f517713b6b2365ee1605a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/16/2020
+ms.openlocfilehash: f942525f1360a134f58f18e0ec76a84b0ceee50b
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91260269"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92738185"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>教學課程：在 Synapse Studio 中建立 Apache Spark 作業定義
 
@@ -34,7 +34,7 @@ ms.locfileid: "91260269"
 
 * Azure Synapse Analytics 工作區。 如需指示，請參閱[建立 Azure Synapse Analytics 工作區](../../machine-learning/how-to-manage-workspace.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#create-a-workspace)。
 * Apache Spark 集區。
-* ADLS Gen2 儲存體帳戶。 您必須是所要使用的 ADLS Gen2 檔案系統的**儲存體 Blob 資料擁有者**。 如果您還不是，則必須手動新增權限。
+* ADLS Gen2 儲存體帳戶。 您必須是所要使用的 ADLS Gen2 檔案系統的 **儲存體 Blob 資料擁有者** 。 如果您還不是，則必須手動新增權限。
 * 如果您不想要使用工作區預設儲存體，請在 Synapse Studio 中連結必要的 ADLS Gen2 儲存體帳戶。 
 
 ## <a name="create-an-apache-spark-job-definition-for-pyspark-python"></a>建立適用於 PySpark (Python) 的 Apache Spark 作業定義
@@ -43,11 +43,11 @@ ms.locfileid: "91260269"
 
 1. 開啟 [Azure Synapse Studio](https://web.azuresynapse.net/)。
 
-2. 您可以移至[用來建立 Apache Spark 作業定義的範例檔案](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python)，下載 **python.zip 的範例檔案**，然後將壓縮套件解壓縮，擷取 **wordcount.py** 和 **shakespeare.txt** 檔案。 
+2. 您可以移至 [用來建立 Apache Spark 作業定義的範例檔案](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python)，下載 **python.zip 的範例檔案** ，然後將壓縮套件解壓縮，擷取 **wordcount.py** 和 **shakespeare.txt** 檔案。 
 
      ![範例檔案](./media/apache-spark-job-definitions/sample-files.png)
 
-3. 選取 [資料] ****   -> [已連結] ****   -> [Azure Data Lake Storage Gen2] **** ，然後將  **wordcount.py**  和  **shakespeare.txt** 上傳至您的 ADLS Gen2 檔案系統。 
+3. 選取 [資料] -> [已連結] -> [Azure Data Lake Storage Gen2]，然後將 **wordcount.py** 和 **shakespeare.txt** 上傳至您的 ADLS Gen2 檔案系統。 
 
      ![上傳 Python 檔案](./media/apache-spark-job-definitions/upload-python-file.png)
 
@@ -85,15 +85,15 @@ ms.locfileid: "91260269"
 
  1. 開啟 [Azure Synapse Studio](https://web.azuresynapse.net/)。
 
- 2. 您可以移至[用來建立 Apache Spark 作業定義的範例檔案](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Scala)，下載 **scala.zip 的範例檔案**，然後將壓縮套件解壓縮，擷取 **wordcount.jar** 和 **shakespeare.txt** 檔案。 
+ 2. 您可以移至 [用來建立 Apache Spark 作業定義的範例檔案](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Scala)，下載 **scala.zip 的範例檔案** ，然後將壓縮套件解壓縮，擷取 **wordcount.jar** 和 **shakespeare.txt** 檔案。 
  
      ![範例檔案 scala](./media/apache-spark-job-definitions/sample-files-scala.png)
 
- 3. 選取 [資料] ****   -> [已連結] ****   -> [Azure Data Lake Storage Gen2] **** ，然後將  **wordcount.jar**  和  **shakespeare.txt** 上傳至您的 ADLS Gen2 檔案系統。
+ 3. 選取 [資料] -> [已連結] -> [Azure Data Lake Storage Gen2]，然後將 **wordcount.jar** 和 **shakespeare.txt** 上傳至您的 ADLS Gen2 檔案系統。
  
      ![準備 Scala 結構](./media/apache-spark-job-definitions/prepare-scala-structure.png)
 
- 4. 選取 [開發] 中樞，再選取 [+] 圖示，然後選取 [Spark 作業定義] 以建立新的 Spark 作業定義。 (範例影像與**針對 PySpark 建立 Apache Spark 作業定義 (Python)** 步驟 4 的影像相同。)
+ 4. 選取 [開發] 中樞，再選取 [+] 圖示，然後選取 [Spark 作業定義] 以建立新的 Spark 作業定義。 (範例影像與 **針對 PySpark 建立 Apache Spark 作業定義 (Python)** 步驟 4 的影像相同。)
 
  5. 從 Apache Spark 作業定義主視窗的 [語言] 下拉式清單中，選取 [Spark (Scala)]。
 
@@ -125,15 +125,15 @@ ms.locfileid: "91260269"
 在本節中，您會建立適用於 .NET Spark (C#/F#) 的 Apache Spark 作業定義。
  1. 開啟 [Azure Synapse Studio](https://web.azuresynapse.net/)。
 
- 2. 您可以移至[用來建立 Apache Spark 作業定義的範例檔案](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET)，下載 **dotnet.zip 的範例檔案**，然後將壓縮套件解壓縮，擷取 **wordcount.zip** 和 **shakespeare.txt** 檔案。 
+ 2. 您可以移至 [用來建立 Apache Spark 作業定義的範例檔案](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET)，下載 **dotnet.zip 的範例檔案** ，然後將壓縮套件解壓縮，擷取 **wordcount.zip** 和 **shakespeare.txt** 檔案。 
 
      ![範例 dotnet](./media/apache-spark-job-definitions/sample-dotnet.png)
 
- 3. 選取 [資料] ****   -> [已連結] ****   -> [Azure Data Lake Storage Gen2] **** ，然後將  **wordcount.zip**  和  **shakespeare.txt** 上傳至您的 ADLS Gen2 檔案系統。
+ 3. 選取 [資料] -> [已連結] -> [Azure Data Lake Storage Gen2]，然後將 **wordcount.zip** 和 **shakespeare.txt** 上傳至您的 ADLS Gen2 檔案系統。
  
      ![準備 Dotnet 結構](./media/apache-spark-job-definitions/prepare-dotnet-structure.png)
 
- 4. 選取 [開發] 中樞，再選取 [+] 圖示，然後選取 [Spark 作業定義] 以建立新的 Spark 作業定義。 (範例影像與**針對 PySpark 建立 Apache Spark 作業定義 (Python)** 步驟 4 的影像相同。)
+ 4. 選取 [開發] 中樞，再選取 [+] 圖示，然後選取 [Spark 作業定義] 以建立新的 Spark 作業定義。 (範例影像與 **針對 PySpark 建立 Apache Spark 作業定義 (Python)** 步驟 4 的影像相同。)
 
  5. 從 Apache Spark 作業定義主視窗的 [語言] 下拉式清單中，選取 [.NET Spark (C#/F#)]。
 
@@ -162,7 +162,7 @@ ms.locfileid: "91260269"
 
 ## <a name="submit-an-apache-spark-job-definition-as-a-batch-job"></a>以批次作業的形式提交 Apache Spark 作業定義
 
-在建立 Apache Spark 作業定義後，您可以將其提交至 Apache Spark 集區。 請確定您是所要使用的 ADLS Gen2 檔案系統的**儲存體 Blob 資料擁有者**。 如果您還不是，則必須手動新增權限。
+在建立 Apache Spark 作業定義後，您可以將其提交至 Apache Spark 集區。 請確定您是所要使用的 ADLS Gen2 檔案系統的 **儲存體 Blob 資料擁有者** 。 如果您還不是，則必須手動新增權限。
 
 ### <a name="scenario-1-submit-apache-spark-job-definition"></a>案例 1：提交 Apache Spark 作業定義
  1. 選取 Apache Spark 作業定義以開啟其視窗。

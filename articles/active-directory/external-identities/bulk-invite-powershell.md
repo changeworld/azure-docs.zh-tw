@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89e24d9ff76184c36aee5c14f15f9713b30f6f1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e047f11cc243ab1a36a8c61dd1b229d9e115115
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87906871"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892480"
 ---
 # <a name="tutorial-use-powershell-to-bulk-invite-azure-ad-b2b-collaboration-users"></a>教學課程：使用 PowerShell 大量邀請 Azure AD B2B 共同作業使用者
 
@@ -77,7 +77,7 @@ Get-Module -ListAvailable AzureAD*
 
 ![顯示等待使用者接受的 PowerShell 輸出](media/tutorial-bulk-invite/AddUsersExcel.png)
 
-請將檔案儲存為 **C:\BulkInvite\Invitations.csv**。 
+請將檔案儲存為 **C:\BulkInvite\Invitations.csv** 。 
 
 如果您沒有 Excel，則可以在任何文字編輯器 (例如「記事本」) 中建立 CSV 檔案。 請以逗點分隔每個值，並以換行分隔每個資料列。 
 
@@ -116,7 +116,7 @@ foreach ($email in $invitations)
 
 此指令碼會對 Invitations.csv 檔案中的電子郵件地址傳送邀請。 針對每位使用者，您應該會看到與以下類似的輸出：
 
-![顯示等待使用者接受的 PowerShell 輸出](media/tutorial-bulk-invite/B2BBulkImport.png)
+![螢幕擷取畫面：顯示包含擱置使用者接受的 PowerShell 輸出。](media/tutorial-bulk-invite/B2BBulkImport.png)
 
 ## <a name="verify-users-exist-in-the-directory"></a>確認使用者存在於目錄中
 
@@ -126,7 +126,7 @@ foreach ($email in $invitations)
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
 
-您應該會看到系統以 *emailaddress*#EXT#\@*domain*格式的使用者主體名稱 (UPN) 列出您所邀請的使用者。 例如 *lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com*，其中 contoso.onmicrosoft.com 是您傳送邀請時的來源組織。
+您應該會看到系統以 *emailaddress* #EXT#\@*domain* 格式的使用者主體名稱 (UPN) 列出您所邀請的使用者。 例如 *lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com* ，其中 contoso.onmicrosoft.com 是您傳送邀請時的來源組織。
 
 ## <a name="clean-up-resources"></a>清除資源
 

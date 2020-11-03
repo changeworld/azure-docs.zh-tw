@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: dad4262520da1ec88c634c98aa2af2bf66bab936
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4340bd0ffc4a060b1eb8884efa8078aaf18e1e28
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87322290"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893976"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>在 Azure 監視器中建立計量警示規則的 Resource Manager 範本範例
 
@@ -502,7 +502,7 @@ ms.locfileid: "87322290"
 - 在每個準則中，您只能為每個維度選取一個值。
 - 您不能使用 "\*" 作為維度值。
 - 當不同準則中設定的計量支援相同的維度時，則必須針對相關準則中的所有這些計量，以相同方式明確設定已設定的維度值。
-    - 在下列範例中，因為 **Transactions** 和 **SuccessE2ELatency** 計量都有 **ApiName** 維度，而且 *criterion1* 為 **ApiName** 維度指定了 *"GetBlob"* 值，所以 *criterion2* 也必須要為 **ApiName**維度設定 *"GetBlob"* 值。
+    - 在下列範例中，因為 **Transactions** 和 **SuccessE2ELatency** 計量都有 **ApiName** 維度，而且 *criterion1* 為 **ApiName** 維度指定了 *"GetBlob"* 值，所以 *criterion2* 也必須要為 **ApiName** 維度設定 *"GetBlob"* 值。
 
 ### <a name="template-file"></a>範本檔案
 
@@ -712,10 +712,10 @@ ms.locfileid: "87322290"
 2. **ApiName** - 只針對 **GetBlob** 和 **PutBlob** 維度值監視不同的時間序列。
 
 例如，此警示規則所監視的幾個可能時間序列為：
-- Metric = *Transactions*，ResponseType = *Success*，ApiName = *GetBlob*
-- Metric = *Transactions*，ResponseType = *Success*，ApiName = *PutBlob*
-- Metric = *Transactions*，ResponseType = *Server Timeout*，ApiName = *GetBlob*
-- Metric = *Transactions*，ResponseType = *Server Timeout*，ApiName = *PutBlob*
+- Metric = *Transactions* ，ResponseType = *Success* ，ApiName = *GetBlob*
+- Metric = *Transactions* ，ResponseType = *Success* ，ApiName = *PutBlob*
+- Metric = *Transactions* ，ResponseType = *Server Timeout* ，ApiName = *GetBlob*
+- Metric = *Transactions* ，ResponseType = *Server Timeout* ，ApiName = *PutBlob*
 
 ### <a name="template-file"></a>範本檔案
 
@@ -903,10 +903,10 @@ ms.locfileid: "87322290"
 2. **ApiName** - 只針對 **GetBlob** 和 **PutBlob** 維度值監視不同的時間序列。
 
 例如，此警示規則所監視的幾個可能時間序列為：
-- Metric = *Transactions*，ResponseType = *Success*，ApiName = *GetBlob*
-- Metric = *Transactions*，ResponseType = *Success*，ApiName = *PutBlob*
-- Metric = *Transactions*，ResponseType = *Server Timeout*，ApiName = *GetBlob*
-- Metric = *Transactions*，ResponseType = *Server Timeout*，ApiName = *PutBlob*
+- Metric = *Transactions* ，ResponseType = *Success* ，ApiName = *GetBlob*
+- Metric = *Transactions* ，ResponseType = *Success* ，ApiName = *PutBlob*
+- Metric = *Transactions* ，ResponseType = *Server Timeout* ，ApiName = *GetBlob*
+- Metric = *Transactions* ，ResponseType = *Server Timeout* ，ApiName = *PutBlob*
 
 >[!NOTE]
 > 使用動態閾值的計量警示規則目前不支援多個準則。
@@ -3132,7 +3132,7 @@ ms.locfileid: "87322290"
 > [!NOTE]
 > `&amp`; 是 & 的 HTML 實體參考。 URL 參數仍會以單一 & 來分隔，但如果您在 HTML 中提及 URL，則需要對其進行編碼。 因此，如果您的 pingURL 參數值中有任何 "&"，您就必須使用 "`&amp`;" 來替代
 
-### <a name="parameter-file"></a>參數檔案
+### <a name="template-file"></a>範本檔案
 
 ```json
 {
@@ -3234,8 +3234,6 @@ ms.locfileid: "87322290"
 }
 ```
 
-
-
 ### <a name="parameter-file"></a>參數檔案
 
 ```json
@@ -3254,12 +3252,53 @@ ms.locfileid: "87322290"
         },
         "location": {
             "value": "Replace with the location of your Application Insights resource"
-        }
+        },
+        "pingText": {
+            "defaultValue": "Optional parameter that allows you to perform a content-match for the presence of a specific string within the content returned from a pingURL response",
+            "type": "String"
+        },
     }
 }
 ```
 
+content-match `pingText` 參數的其他設定是在範本檔案的 `Configuration/Webtest` 部分中控制的。 具體而言是下面區段：
 
+```xml
+<RuleParameter Name=\"FindText\" Value=\"',parameters('pingText'), '\" />
+<RuleParameter Name=\"IgnoreCase\" Value=\"False\" />
+<RuleParameter Name=\"UseRegularExpression\" Value=\"False\" /> 
+<RuleParameter Name=\"PassIfTextFound\" Value=\"True\" />
+```
+### <a name="test-locations"></a>測試位置
+
+|Id                  | 區域           |
+|:-------------------|:-----------------|
+| `emea-nl-ams-azr`  | 西歐      |
+| `us-ca-sjc-azr`    | 美國西部          |
+| `emea-ru-msa-edge` | 英國南部         |
+| `emea-se-sto-edge` | 英國西部          |
+| `apac-sg-sin-azr`  | 東南亞   |
+| `us-tx-sn1-azr`    | 美國中南部 |
+| `us-il-ch1-azr`    | 美國中北部 |
+| `emea-gb-db3-azr`  | 歐洲北部     |
+| `apac-jp-kaw-edge` | 日本東部       |
+| `emea-fr-pra-edge` | 法國中部   |
+| `emea-ch-zrh-edge` | 法國南部     |
+| `us-va-ash-azr`    | 美國東部          |
+| `apac-hk-hkn-azr`  | 東亞        |
+| `us-fl-mia-edge`   | 美國中部       |
+| `latam-br-gru-edge`| 巴西南部      |
+| `emea-au-syd-edge` | 澳大利亞東部   |
+
+### <a name="us-government-test-locations"></a>美國政府測試位置
+
+|Id                    | 區域           |
+|----------------------|------------------|
+| `usgov-va-azr`       | `USGov Virginia` |
+| `usgov-phx-azr`      | `USGov Arizona`  |
+| `usgov-tx-azr`       | `USGov Texas`    |
+| `usgov-ddeast-azr`   | `USDoD East`     |
+| `usgov-ddcentral-azr`| `USDoD Central`  |
 
 ## <a name="next-steps"></a>後續步驟
 

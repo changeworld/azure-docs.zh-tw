@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 323d6324bc99028a3df4cb9cada133ad8cd990aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a9bcda4affa19cf8793cd078fdc5b96d842eb42b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88543256"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893588"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sd-elements"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SD Elements 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88543256"
 * 讓使用者使用其 Azure AD 帳戶自動登入 SD Elements。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -49,7 +49,7 @@ ms.locfileid: "88543256"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **SD Elements**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **SD Elements** 。
 1. 從結果面板選取 [SD Elements]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -71,7 +71,7 @@ ms.locfileid: "88543256"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [SD Elements]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -83,7 +83,7 @@ ms.locfileid: "88543256"
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<tenantname>.sdelements.com/sso/saml2/acs/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [SD Elements 用戶端支援小組](mailto:support@sdelements.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [SD Elements 用戶端支援小組](mailto:support@sdelements.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. SD Elements 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至 SAML 權杖屬性組態。 以下螢幕擷取畫面顯示預設屬性清單。
 
@@ -143,7 +143,7 @@ ms.locfileid: "88543256"
 
 1. 在頂端的功能表中按一下 [系統]  ，然後按一下 [單一登入]  。
 
-    ![設定單一登入](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
+    ![螢幕擷取畫面：顯示已選取 [系統]，並已從下拉式功能表中選取 [單一登入]。](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
 
 1. 在 [單一登入設定]  對話方塊上，執行下列步驟：
 
@@ -167,11 +167,11 @@ ms.locfileid: "88543256"
 
 1. 在頂端的功能表中，按一下 [使用者管理]  ，然後按一下 [使用者]  。
 
-    ![建立 SD Elements 測試使用者](./media/sd-elements-tutorial/tutorial_sd-elements_11.png) 
+    ![螢幕擷取畫面：顯示已從 [使用者管理] 下拉式選單中選取 [使用者]。](./media/sd-elements-tutorial/tutorial_sd-elements_11.png) 
 
 1. 按一下 [新增使用者]  。
 
-    ![建立 SD Elements 測試使用者](./media/sd-elements-tutorial/tutorial_sd-elements_12.png)
+    ![顯示已選取 [新增使用者] 按鈕的螢幕擷取畫面。](./media/sd-elements-tutorial/tutorial_sd-elements_12.png)
 
 1. 在 [新增使用者]  對話方塊上，執行下列步驟：
 
@@ -181,7 +181,7 @@ ms.locfileid: "88543256"
 
     b. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **B.** 。
 
-    c. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon**。
+    c. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon** 。
 
     d. 針對 [角色]  ，選取 [使用者]  。
 
@@ -191,14 +191,14 @@ ms.locfileid: "88543256"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 SD Elements 圖格時，應該會自動登入您設定 SSO 的 SD Elements。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 SD Elements 圖格時，應該會自動登入您設定 SSO 的 SD Elements。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 SD Elements](https://aad.portal.azure.com/)

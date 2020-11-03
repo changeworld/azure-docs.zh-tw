@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 19ce74046dd86885a01ad5e8dcc4bfda950dd884
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: dd7c5da84d6330e0214404f55aad9487c71b0a29
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201338"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792424"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>教學課程：使用 Azure Digital Twins API 撰寫程式碼
 
-開發人員使用 Azure Digital Twins 撰寫用戶端應用程式，與其 Azure Digital Twins 服務執行個體互動，是很常見的情況。 這項以開發人員為主的教學課程，會介紹使用[適用於 .NET 的 Azure IoT Digital Twin 用戶端程式庫 (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) (英文) 設計 Azure Digital Twins 服務的程式。 逐步引導您從頭開始撰寫 C# 主控台用戶端應用程式。
+開發人員使用 Azure Digital Twins 撰寫用戶端應用程式，與其 Azure Digital Twins 服務執行個體互動，是很常見的情況。 這項以開發人員為主的教學課程，會介紹使用[適用於 .NET 的 Azure Digital Twins SDK (C#)](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) (英文) 設計 Azure Digital Twins 服務的程式。 逐步引導您從頭開始撰寫 C# 主控台用戶端應用程式。
 
 > [!div class="checklist"]
 > * 設定專案
@@ -35,6 +35,8 @@ ms.locfileid: "92201338"
 
 [!INCLUDE [Azure Digital Twins tutorials: instance prereq](../../includes/digital-twins-tutorial-prereq-instance.md)]
 
+[!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
+
 ## <a name="set-up-project"></a>設定專案
 
 準備好使用您的 Azure Digital Twins 執行個體之後，請開始設定用戶端應用程式專案。 
@@ -43,7 +45,7 @@ ms.locfileid: "92201338"
 
 導覽到新目錄。
 
-進入專案目錄後，建立空白的 .NET 主控台應用程式專案。 在命令視窗中執行下列命令，以建立主控台的基礎 C# 專案：
+進入專案目錄後， **建立空白的 .NET 主控台應用程式專案** 。 在命令視窗中執行下列命令，以建立主控台的基礎 C# 專案：
 
 ```cmd/sh
 dotnet new console
@@ -51,16 +53,11 @@ dotnet new console
 
 這會在您的目錄中建立數個檔案，包括一個名為 *Program.cs* 的檔案，您將在此撰寫大部分的程式碼。
 
-接下來，新增兩個使用 Azure Digital Twins 的必要相依性：
-
-```cmd/sh
-dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-dotnet add package Azure.identity
-```
-
-第一個相依性是[適用於 .NET 的 Azure IoT Digital Twin 用戶端程式庫](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) (英文)。 第二個相依性會提供協助驗證 Azure 的工具。
-
 讓命令視窗保持開啟，因為整個教學課程都要繼續使用。
+
+接下來， **將兩個相依性新增至您的專案** ，以使用 Azure Digital Twins。 您可以使用下列連結瀏覽至 NuGet 上的套件，在其中找到主控台命令 (包括 .NET CLI 可用的命令)，將每個套件的最新版本新增至您的專案。
+* [**Azure.DigitalTwins.Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core)。 這是適用於[適用於 .NET 的 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet-preview&preserve-view=true) 的套件。 
+* [**Azure.Identity**](https://www.nuget.org/packages/Azure.Identity). 此程式庫會提供協助驗證 Azure 的工具。
 
 ## <a name="get-started-with-project-code"></a>開始使用專案程式碼
 
@@ -116,9 +113,6 @@ Console.WriteLine($"Service client created – ready to go");
 ```
 
 儲存檔案。 
-
->[!NOTE]
-> 這個範例是使用 `DefaultAzureCredential` 進行驗證。 如需其他認證類型的相關資訊，請參閱 [Microsoft 身分識別平台驗證程式庫](../active-directory/develop/reference-v2-libraries.md)的文件，或有關[驗證用戶端應用程式](how-to-authenticate-client.md)的 Azure Digital Twins 文章。
 
 在命令視窗中，使用此命令執行程式碼： 
 
@@ -266,12 +260,18 @@ Type name: : dtmi:com:contoso:SampleModel;1
 
 將模型上傳至 Azure Digital Twins 之後，您就可以使用此模型定義來建立 **數位分身** 。 [數位分身](concepts-twins-graph.md)是模型的執行個體，代表商務環境中的實體，例如伺服陣列上的感應器、建築物中的房間，或汽車的燈。 本節會根據您之前上傳的模型，建立一些數位分身。
 
-在頂端新增新的 `using` 陳述式，因為您在 `System.Text.Json` 中需要內建的 .NET Json 序列化程式：
+在頂端加入這些新的 `using` 陳述式，因為此程式碼範例會使用 `System.Text.Json` 中內建的 .NET Json 序列化程式，以及來自[適用於 .NET 的 Azure Digital Twins SDK (C#)](https://dev.azure.com/azure-sdk/public/_packaging?_a=package&feed=azure-sdk-for-net&view=overview&package=Azure.DigitalTwins.Core&version=1.0.0-alpha.20201020.1&protocolType=NuGet) [已修改連結以供預覽] 的 `Serialization` 命名空間：
 
 ```csharp
 using System.Text.Json;
 using Azure.DigitalTwins.Core.Serialization;
 ```
+
+>[!NOTE]
+>`Azure.DigitalTwins.Core.Serialization` 不一定要使用數位對應項和關聯性；這是選擇性命名空間，有助於將資料變成正確的格式。 其使用替代方案包括：
+>* 串連字串以形成 JSON 物件
+>* 使用 `System.Text.Json` 之類的 JSON 剖析器，以動態方式建立 JSON 物件
+>* 在 C# 中建立自訂類型的模型、將其具現化，並將其序列化為字串
 
 然後，將下列程式碼新增至 `Main` 方法的結尾，根據此模型建立並初始化三個數位分身。
 
@@ -301,17 +301,7 @@ for(int i=0; i<3; i++) {
 
 接下來，您可以建立已建立對應項之間的 **關聯性** ，將其連線到 **對應項圖形** 。 [對應項圖形](concepts-twins-graph.md)用來表示整個環境。
 
-為了協助建立關聯性，此程式碼範例會使用 `Azure.DigitalTwins.Core.Serialization` 命名空間。 您先前已使用此 `using` 陳述式將此新增至專案：
-
-```csharp
-using Azure.DigitalTwins.Core.Serialization;
-```
-
->[!NOTE]
->`Azure.DigitalTwins.Core.Serialization` 不一定要使用數位對應項和關聯性；這是選擇性命名空間，有助於將資料變成正確的格式。 其使用替代方案包括：
->* 串連字串以形成 JSON 物件
->* 使用 `System.Text.Json` 之類的 JSON 剖析器，以動態方式建立 JSON 物件
->* 在 C# 中建立自訂類型的模型、將其具現化，並將其序列化為字串
+為了協助建立關聯性，此程式碼範例會使用 `Azure.DigitalTwins.Core.Serialization` 命名空間。 您稍早已將此專案新增至 [建立數位對應項](#create-digital-twins) 一節中。
 
 將新的靜態方法新增至 `Main` 方法下的 `Program` 類別：
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 9786d0d84a1069e8bbee067b583e51d836ebfdd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f53072b106bedb8e49ba7f3728f39137f848a58
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88526439"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895013"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workstars"></a>教學課程：Azure Active Directory 與 Workstars 整合
 
@@ -27,7 +27,7 @@ Workstars 與 Azure AD 整合有下列好處：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Workstars (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必要條件
@@ -61,7 +61,7 @@ Workstars 與 Azure AD 整合有下列好處：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Workstars**，從結果面板中選取 [Workstars]，然後按一下 [新增] 按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Workstars** ，從結果面板中選取 [Workstars]，然後按一下 [新增] 按鈕以新增應用程式。
 
      ![結果清單中的 Workstars](common/search-new-app.png)
 
@@ -106,7 +106,7 @@ Workstars 與 Azure AD 整合有下列好處：
     b. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://<subdomain>.workstars.com/saml/login_check`
 
     > [!NOTE]
-    > 這不是真正的值。 請使用實際的「回覆 URL」來更新此值。 請連絡 [Workstars 用戶端支援小組](http://support.workstars.com/)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這不是真正的值。 請使用實際的「回覆 URL」來更新此值。 請連絡 [Workstars 用戶端支援小組](http://support.workstars.com/)以取得此值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 5. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，按一下 [下載]，以依據您的需求從指定選項下載 [憑證 (Base64)]，並儲存在您的電腦上。
 
@@ -128,19 +128,19 @@ Workstars 與 Azure AD 整合有下列好處：
 
 2. 在主要工具列中，按一下 [設定]。
 
-    ![Workstars 設定](./media/workstars-tutorial/tutorial_workstars_sett.png)
+    ![螢幕擷取畫面：顯示 [設定] 按鈕。](./media/workstars-tutorial/tutorial_workstars_sett.png)
 
 3. 移至 [登入] > [設定]。
 
     ![Workstars 登入](./media/workstars-tutorial/tutorial_workstars_signon.png)
 
-    ![Workstars 設定](./media/workstars-tutorial/tutorial_workstars_settings.png)
+    ![螢幕擷取畫面：顯示 [單一登入] 區段，您可以在其中選取 [設定]。](./media/workstars-tutorial/tutorial_workstars_settings.png)
 
 4. 在 [單一登入 (SAML) - 設定] 頁面，執行下列步驟：
     
     ![Workstars SAML](./media/workstars-tutorial/tutorial_workstars_saml.png)
 
-    a. 在 [識別提供者名稱] 文字方塊中，輸入 **Office 365**。
+    a. 在 [識別提供者名稱] 文字方塊中，輸入 **Office 365** 。
 
     b. 在 [識別提供者實體識別碼] 文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼] 值。
 
@@ -170,7 +170,7 @@ Workstars 與 Azure AD 整合有下列好處：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱] 欄位中，輸入 brittasimon@yourcompanydomain.extension。 例如， BrittaSimon@contoso.com
 
@@ -212,13 +212,12 @@ Workstars 與 Azure AD 整合有下列好處：
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Workstars] 圖格時，應該會自動登入您已設定 SSO 的 Workstars。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Workstars] 圖格時，應該會自動登入您已設定 SSO 的 Workstars。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

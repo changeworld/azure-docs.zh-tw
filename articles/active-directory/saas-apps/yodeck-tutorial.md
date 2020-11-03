@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 8eed884ed9d957ede4ae9fc192ae5a8e501b652e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68e961336d7e86f9983fea49044137894ab0f985
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546231"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895071"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>教學課程：Azure Active Directory 與 Yodeck 整合
 
@@ -27,7 +27,7 @@ Yodeck 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Yodeck (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ Yodeck 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Yodeck**，從結果面板中選取 [Yodeck]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Yodeck** ，從結果面板中選取 [Yodeck]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Yodeck](common/search-new-app.png)
 
@@ -105,7 +105,7 @@ Yodeck 與 Azure AD 整合提供下列優點：
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
-    ![image](common/both-preintegrated-signon.png)
+    ![此螢幕擷取畫面顯示具有上傳中繼資料檔案連結的基本 SAML 設定。](common/both-preintegrated-signon.png)
 
     在 [登入 URL]  文字方塊中，輸入 URL：`https://app.yodeck.com/login`
 
@@ -115,9 +115,9 @@ Yodeck 與 Azure AD 整合提供下列優點：
 
 ### <a name="configure-yodeck-single-sign-on"></a>設定 Yodeck 單一登入
 
-1. 若要自動執行 **Yodeck** 內的設定，您必須按一下 [安裝擴充功能] 來安裝**我的應用程式安全登入瀏覽器擴充功能**。
+1. 若要自動執行 **Yodeck** 內的設定，您必須按一下 [安裝擴充功能] 來安裝 **我的應用程式安全登入瀏覽器擴充功能** 。
 
-    ![image](./media/target-process-tutorial/install_extension.png)
+    ![螢幕擷取畫面：顯示 [安裝擴充功能] 按鈕。](./media/target-process-tutorial/install_extension.png)
 
 1. 將擴充功能新增至瀏覽器之後，按一下 [設定 Yodeck] 便會將您導向到 Yodeck 應用程式。 請從該處提供用以登入 Yodeck 的管理員認證。 瀏覽器擴充功能會自動為您設定應用程式，並自動執行步驟 3 到 5。
 
@@ -127,19 +127,19 @@ Yodeck 與 Azure AD 整合提供下列優點：
 
 1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入您的 Yodeck 公司網站。
 
-1. 按一下頁面右上角的 [使用者設定]**** 選項，然後選取 [帳戶設定]****。
+1. 按一下頁面右上角的 [使用者設定] 選項，然後選取 [帳戶設定]。
 
-    ![Yodeck 設定](./media/yodeck-tutorial/configure1.png)
+    ![顯示螢幕擷取畫面，並已為使用者選取 [帳戶設定]。](./media/yodeck-tutorial/configure1.png)
 
-1. 選取 [SAML]**** 並執行下列步驟：
+1. 選取 [SAML] 並執行下列步驟：
 
-    ![Yodeck 設定](./media/yodeck-tutorial/configure2.png)
+    ![螢幕擷取畫面：顯示 [SAML] 索引標籤，您可以在其中執行這些步驟。](./media/yodeck-tutorial/configure2.png)
 
-    a. 選取 [從 URL 匯入]****。
+    a. 選取 [從 URL 匯入]。
 
-    b. 在 [URL]**** 文字方塊中，貼上您從 Azure 入口網站複製的**應用程式同盟中繼資料 URL** 值，然後按一下 [匯入]****。
+    b. 在 [URL] 文字方塊中，貼上您從 Azure 入口網站複製的 **應用程式同盟中繼資料 URL** 值，然後按一下 [匯入]。
     
-    c. 匯入**應用程式同盟中繼資料 URL** 之後，即會自動填入其餘欄位。
+    c. 匯入 **應用程式同盟中繼資料 URL** 之後，即會自動填入其餘欄位。
 
     d. 按一下 [檔案]  。
 
@@ -159,7 +159,7 @@ Yodeck 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱] 欄位中，輸入 brittasimon@yourcompanydomain.extension。 例如， BrittaSimon@contoso.com
 
@@ -171,11 +171,11 @@ Yodeck 與 Azure AD 整合提供下列優點：
 
 在本節中，您會將 Yodeck 的存取權授與 Britta Simon，使其能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]****、[所有應用程式]**** 及 [Yodeck]****。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]、[所有應用程式] 及 [Yodeck]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [Yodeck]****。
+2. 在應用程式清單中，選取 [Yodeck]。
 
     ![應用程式清單中的 Yodeck 連結](common/all-applications.png)
 
@@ -201,25 +201,25 @@ Yodeck 與 Azure AD 整合提供下列優點：
 
 1. 以系統管理員身分登入您的 Yodeck 公司網站。
 
-2. 按一下頁面右上角的 [使用者設定]**** 選項，然後選取 [使用者]****。
+2. 按一下頁面右上角的 [使用者設定] 選項，然後選取 [使用者]。
 
-    ![新增員工](./media/yodeck-tutorial/user1.png)
+    ![顯示螢幕擷取畫面，並已為使用者選取 [使用者]。](./media/yodeck-tutorial/user1.png)
 
-3. 按一下 [+使用者]**** 以開啟 [使用者詳細資料]**** 索引標籤。
+3. 按一下 [+使用者] 以開啟 [使用者詳細資料] 索引標籤。
 
-    ![新增員工](./media/yodeck-tutorial/user2.png)
+    ![螢幕擷取畫面：顯示 [使用者] 按鈕。](./media/yodeck-tutorial/user2.png)
 
-4. 在 [使用者詳細資料]**** 對話方塊頁面上，執行下列步驟：
+4. 在 [使用者詳細資料] 對話方塊頁面上，執行下列步驟：
 
-    ![新增員工](./media/yodeck-tutorial/user3.png)
+    ![螢幕擷取畫面：顯示 [使用者詳細資料] 索引標籤，您可以在其中執行這些步驟。](./media/yodeck-tutorial/user3.png)
 
-    a. 在 [名字]**** 文字方塊中，輸入使用者的名字，例如 **Britta**。
+    a. 在 [名字] 文字方塊中，輸入使用者的名字，例如 **Britta** 。
 
-    b. 在 [姓氏]**** 文字方塊中，輸入使用者的姓氏，例如 **Simon**。
+    b. 在 [姓氏] 文字方塊中，輸入使用者的姓氏，例如 **Simon** 。
 
     c. 在 [電子郵件] 文字方塊中，輸入像是 brittasimon@contoso.com 的使用者電子郵件地址。
 
-    d. 根據您的組織需求，選取適當的**帳戶權限**選項。
+    d. 根據您的組織需求，選取適當的 **帳戶權限** 選項。
     
     e. 按一下 [檔案] 。
 
@@ -227,13 +227,12 @@ Yodeck 與 Azure AD 整合提供下列優點：
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Yodeck] 圖格時，應該會自動登入您已設定 SSO 的 Yodeck。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Yodeck] 圖格時，應該會自動登入您已設定 SSO 的 Yodeck。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

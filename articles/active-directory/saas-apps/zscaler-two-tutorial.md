@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: c76e37e56adc9fc282b0c6b869db1a2ad8e7ebad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6bf6c659ff589cf693f56c6c37e7f28daa376f8
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545795"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92894180"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>教學課程：Azure Active Directory 與 Zscaler Two 整合
 
@@ -27,7 +27,7 @@ ms.locfileid: "88545795"
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Zscaler Two (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -63,7 +63,7 @@ ms.locfileid: "88545795"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中輸入 **Zscaler Two**，並從結果面板中選取 [Zscaler Two]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中輸入 **Zscaler Two** ，並從結果面板中選取 [Zscaler Two]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Zscaler Two](common/search-new-app.png)
 
@@ -106,11 +106,11 @@ ms.locfileid: "88545795"
     在 [登入 URL] 文字方塊中，鍵入使用者用來登入您 Zscaler Two 的 URL。
 
     > [!NOTE]
-    > 您會使用實際的登入 URL 來更新此值。 請連絡 [Zscaler Two 用戶端支援小組](https://www.zscaler.com/company/contact)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 您會使用實際的登入 URL 來更新此值。 請連絡 [Zscaler Two 用戶端支援小組](https://www.zscaler.com/company/contact)以取得此值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 5. Zscaler Two 應用程式會預期特定格式的 SAML 判斷提示，這會需要您將自訂屬性對應新增至您的 SAML 權杖屬性組態。 以下螢幕擷取畫面顯示預設屬性清單。 按一下 **編輯** 圖示以開啟 [使用者屬性] 對話方塊。 
 
-    ![image](common/edit-attribute.png)
+    ![顯示使用者屬性的螢幕擷取畫面，其中已選取 [編輯] 圖示。](common/edit-attribute.png)
 
 6. 除了以上屬性外，Zscaler Two 應用程式還會預期 SAML 回應傳回更多屬性。 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
     
@@ -120,9 +120,9 @@ ms.locfileid: "88545795"
 
     a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
 
-    ![image](common/new-save-attribute.png)
+    ![顯示使用者宣告的螢幕擷取畫面，其中具有新增新宣告的選項。](common/new-save-attribute.png)
 
-    ![image](common/new-attribute-details.png)
+    ![顯示管理使用者宣告對話方塊的螢幕擷取畫面，您可以在其中輸入所述的值。](common/new-attribute-details.png)
 
     b. 在 [名稱]  文字方塊中，輸入該資料列所顯示的屬性名稱。
 
@@ -135,7 +135,7 @@ ms.locfileid: "88545795"
     f. 按一下 [檔案]  。
 
     > [!NOTE]
-    > 請按一下[這裡](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)，以了解如何在 Azure AD 中設定角色
+    > 請按一下[這裡](../develop/active-directory-enterprise-app-role-management.md)，以了解如何在 Azure AD 中設定角色
 
 7. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
@@ -165,7 +165,7 @@ ms.locfileid: "88545795"
 
 4. 移至 管理 > 驗證 > 驗證設定  並執行下列步驟：
    
-    ![管理](./media/zscaler-two-tutorial/ic800206.png "系統管理")
+    ![螢幕擷取畫面：顯示 Zscaler One 網站，並有所述的步驟。](./media/zscaler-two-tutorial/ic800206.png "系統管理")
 
     a. 在 [驗證類型] 下選擇 [SAML]  。
 
@@ -177,23 +177,23 @@ ms.locfileid: "88545795"
     
     a. 在 [SAML 入口網站 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  。
 
-    b. 在 [登入名稱屬性]  文字方塊中，輸入 **NameID**。
+    b. 在 [登入名稱屬性]  文字方塊中，輸入 **NameID** 。
 
     c. 按一下 [上傳]  ，以上傳您從 Azure 入口網站的 [公開 SSL 憑證]  下載的 Azure SAML 簽署憑證。
 
     d. 切換 [啟用 SAML 自動佈建]  。
 
-    e. 如果您想要啟用 displayName 屬性的 SAML 自動佈建，請在 [使用者顯示名稱屬性]  文字方塊中，輸入 **displayName**。
+    e. 如果您想要啟用 displayName 屬性的 SAML 自動佈建，請在 [使用者顯示名稱屬性]  文字方塊中，輸入 **displayName** 。
 
-    f. 如果您想要啟用 memberOf 屬性的 SAML 自動佈建，請在 [群組名稱屬性]  文字方塊中，輸入 **memberOf**。
+    f. 如果您想要啟用 memberOf 屬性的 SAML 自動佈建，請在 [群組名稱屬性]  文字方塊中，輸入 **memberOf** 。
 
-    g. 如果您想要啟用 department 屬性的 SAML 自動佈建，請在 [部門名稱屬性]  文字方塊中，輸入 **department**。
+    g. 如果您想要啟用 department 屬性的 SAML 自動佈建，請在 [部門名稱屬性]  文字方塊中，輸入 **department** 。
 
     h. 按一下 [檔案]  。
 
 6. 在 [設定使用者驗證]  對話方塊頁面上執行下列步驟：
 
-    ![系統管理](./media/zscaler-two-tutorial/ic800207.png)
+    ![螢幕擷取畫面：顯示已選取 [啟用] 的 [設定使用者驗證] 對話方塊。](./media/zscaler-two-tutorial/ic800207.png)
 
     a. 將滑鼠停留在靠近左下方的 [啟用]  功能表上。
 
@@ -202,7 +202,7 @@ ms.locfileid: "88545795"
 ## <a name="configuring-proxy-settings"></a>進行 Proxy 設定
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>在 Internet Explorer 中進行 Proxy 設定
 
-1. 啟動 **Internet Explorer**。
+1. 啟動 **Internet Explorer** 。
 
 2. 從 [工具] 功能表選取 [網際網路選項] 可開啟 [網際網路選項] 對話方塊。   
     
@@ -220,9 +220,9 @@ ms.locfileid: "88545795"
 
     a. 選取 [在您的區域網路使用 Proxy 伺服器]  。
 
-    b. 在 [位址] 文字方塊中輸入 **gateway.Zscaler Two.net**。
+    b. 在 [位址] 文字方塊中輸入 **gateway.Zscaler Two.net** 。
 
-    c. 在 [連接埠] 文字方塊中輸入 **80**。
+    c. 在 [連接埠] 文字方塊中輸入 **80** 。
 
     d. 選取 [近端網址不使用 Proxy 伺服器]  。
 
@@ -246,7 +246,7 @@ ms.locfileid: "88545795"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`。 例如， BrittaSimon@contoso.com
 
@@ -274,17 +274,17 @@ ms.locfileid: "88545795"
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
-5. 在 [使用者和群組]  對話方塊中，從清單中選取使用者 (例如 **Britta Simon**)，然後按一下畫面底部的 [選取]  按鈕。
+5. 在 [使用者和群組]  對話方塊中，從清單中選取使用者 (例如 **Britta Simon** )，然後按一下畫面底部的 [選取]  按鈕。
 
-    ![image](./media/zscaler-two-tutorial/tutorial_zscalertwo_users.png)
+    ![螢幕擷取畫面：顯示 [使用者和群組] 對話方塊，您可以在其中選取使用者。](./media/zscaler-two-tutorial/tutorial_zscalertwo_users.png)
 
 6. 從 [選取角色]  對話方塊的清單中選擇適當的使用者角色，然後按一下畫面底部的 [選取]  按鈕。
 
-    ![image](./media/zscaler-two-tutorial/tutorial_zscalertwo_roles.png)
+    ![螢幕擷取畫面：顯示 [選取角色] 對話方塊，您可以在其中選擇使用者角色。](./media/zscaler-two-tutorial/tutorial_zscalertwo_roles.png)
 
 7. 在 [新增指派]  對話方塊中，選取 [指派]  按鈕。
 
-    ![image](./media/zscaler-two-tutorial/tutorial_zscalertwo_assign.png)
+    ![螢幕擷取畫面：顯示 [新增指派] 對話方塊，您可以在其中選取 [指派]。](./media/zscaler-two-tutorial/tutorial_zscalertwo_assign.png)
 
 ### <a name="create-zscaler-two-test-user"></a>建立 Zscaler Two 測試使用者
 
@@ -297,13 +297,12 @@ ms.locfileid: "88545795"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 Zscaler Two 圖格時，應該會自動登入您已設定 SSO 的 Zscaler Two。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 Zscaler Two 圖格時，應該會自動登入您已設定 SSO 的 Zscaler Two。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

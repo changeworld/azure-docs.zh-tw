@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/07/2018
-ms.openlocfilehash: 1545f9cde15f010ba3d7d52c6fea1ef233d2fac5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 896f4edb1e94c1eca06b046382727a5042375e3b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91619467"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92793274"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>部署及探索使用 Azure SQL Database 的獨立單一租用戶應用程式
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,7 +43,7 @@ ms.locfileid: "91619467"
 
 部署三個所提供之租用戶的應用程式：
 
-1. 按一下每個藍色的 [部署至 Azure]**** 按鈕可在 [Azure 入口網站](https://portal.azure.com)中開啟部署範本。 每個範本需要兩個參數值：新資源群組的名稱，以及區分此部署與應用程式中其他部署的使用者名稱。 下一個步驟將詳細說明如何設定這些值。
+1. 按一下每個藍色的 [部署至 Azure] 按鈕可在 [Azure 入口網站](https://portal.azure.com)中開啟部署範本。 每個範本需要兩個參數值：新資源群組的名稱，以及區分此部署與應用程式中其他部署的使用者名稱。 下一個步驟將詳細說明如何設定這些值。
 
    **Contoso Concert Hall**   
    [![顯示標示為「部署至 Azure」的按鈕影像。](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-contoso)
@@ -57,21 +57,21 @@ ms.locfileid: "91619467"
 2. 輸入每個部署所需的參數值。
 
     > [!IMPORTANT]
-    > 為了示範的目的，已刻意將某些驗證和伺服器防火牆設為不安全。 為每個應用程式部署**建立新的新資源群組**。  請勿使用現有的資源群組。 請不要將此應用程式或任何它所建立的資源用於生產環境。 當您不使用應用程式時，請刪除所有資源群組，以停止相關計費。
+    > 為了示範的目的，已刻意將某些驗證和伺服器防火牆設為不安全。 為每個應用程式部署 **建立新的新資源群組** 。  請勿使用現有的資源群組。 請不要將此應用程式或任何它所建立的資源用於生產環境。 當您不使用應用程式時，請刪除所有資源群組，以停止相關計費。
 
     資源名稱中最好只使用小寫字母、數字和連字號。
-    * 針對**資源群組**選取 [新建]，並為資源群組提供小寫的 [名稱]。 **wingtip-sa-\<venueName\>-\<user\>** 是建議的模式。  針對 \<venueName\>，請取代場地名稱且不含空格。 針對 \<user\>，請取代為以下的使用者值。  採用此模式後，資源群組名稱可能會是 wingtip-sa-contosoconcerthall-af1**、wingtip-sa-dogwooddojo-af1**、wingtip-sa-fabrikamjazzclub-af1**。
+    * 針對 **資源群組** 選取 [新建]，並為資源群組提供小寫的 [名稱]。 **wingtip-sa-\<venueName\>-\<user\>** 是建議的模式。  針對 \<venueName\>，請取代場地名稱且不含空格。 針對 \<user\>，請取代為以下的使用者值。  採用此模式後，資源群組名稱可能會是 wingtip-sa-contosoconcerthall-af1、wingtip-sa-dogwooddojo-af1、wingtip-sa-fabrikamjazzclub-af1。
     * 從下拉式清單中選取 [位置]。
 
-    * 針對**使用者** - 建議您選擇簡短的使用者 值，可以用您的姓名首字母加上數字，例如：*af1*。
+    * 針對 **使用者** - 建議您選擇簡短的使用者 值，可以用您的姓名首字母加上數字，例如： *af1* 。
 
 
-3. **部署應用程式**。
+3. **部署應用程式** 。
 
     * 按一下以同意條款和條件。
     * 按一下 [購買]。
 
-4. 按一下 [通知]**** \(搜尋方塊右側的鈴鐺圖示) 來監視所有三個部署的部署狀態。 部署應用程式大約需要五分鐘的時間。
+4. 按一下 [通知]\(搜尋方塊右側的鈴鐺圖示) 來監視所有三個部署的部署狀態。 部署應用程式大約需要五分鐘的時間。
 
 
 ## <a name="run-the-applications"></a>執行應用程式
@@ -88,12 +88,12 @@ ms.locfileid: "91619467"
 
    ![事件](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
-為了控制連入要求的發佈，應用程式會使用 [*Azure 流量管理員*](../../traffic-manager/traffic-manager-overview.md)。 每個租用戶專屬的應用程式執行個體都包含租用戶名稱，以在 URL 中作為網域名稱的一部分。 所有租用戶 URL 都包含您的特定 [使用者]**** 值。 URL 的格式如下︰
+為了控制連入要求的發佈，應用程式會使用 [*Azure 流量管理員*](../../traffic-manager/traffic-manager-overview.md)。 每個租用戶專屬的應用程式執行個體都包含租用戶名稱，以在 URL 中作為網域名稱的一部分。 所有租用戶 URL 都包含您的特定 [使用者] 值。 URL 的格式如下︰
 - http://events.&lt;venuename&gt;.&lt;user&gt;.trafficmanager.net
 
 每個租用戶的資料庫 [位置] 都包含在對應已部署應用程式的應用程式設定中。
 
-在生產環境中，您通常會建立 CNAME DNS 記錄以[將公司網際網路網域指向**](../../traffic-manager/traffic-manager-point-internet-domain.md)流量管理員設定檔的 URL。
+在生產環境中，您通常會建立 CNAME DNS 記錄以[將公司網際網路網域指向](../../traffic-manager/traffic-manager-point-internet-domain.md)流量管理員設定檔的 URL。
 
 
 ## <a name="explore-the-servers-and-tenant-databases"></a>探索伺服器和租用戶資料庫
@@ -104,14 +104,14 @@ ms.locfileid: "91619467"
 2. 您應該會看到三個租用戶資源群組。
 3. 開啟 **wingtip-sa-fabrikam-&lt;user&gt;** 資源群組，其中包含給 Fabrikam Jazz Club 部署的資源。  **fabrikamjazzclub-&lt;user&gt;** 伺服器內含 **fabrikamjazzclub** 資料庫。
 
-每個租用戶資料庫都是 50 DTU 獨立** 資料庫。
+每個租用戶資料庫都是 50 DTU 獨立資料庫。
 
 ## <a name="additional-resources"></a>其他資源
 
 <!--
-* Additional [tutorials that build on the Wingtip SaaS application](../../sql-database/saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* Additional [tutorials that build on the Wingtip SaaS application](./saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * To learn about elastic pools, see [*What is an Azure SQL elastic pool*](elastic-pool-overview.md)
-* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](../../sql-database/elastic-jobs-overview.md)
+* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](./elastic-jobs-overview.md)
 -->
 
 - 若要了解多租用戶 SaaS 應用程式，請參閱[多租用戶 SaaS 應用程式的設計模式](saas-tenancy-app-design-patterns.md)。
@@ -131,5 +131,3 @@ ms.locfileid: "91619467"
 > * 如何刪除範例資源以停止相關計費。
 
 接下來請嘗試[佈建和目錄](saas-standaloneapp-provision-and-catalog.md)教學課程，探索如何使用租用戶目錄來滿足多種跨租用戶案例的需求，例如結構描述管理和租用戶分析。
- 
-

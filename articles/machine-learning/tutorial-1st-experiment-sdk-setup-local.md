@@ -11,21 +11,16 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: c0fe3c3808709de732bec8ce0599d380094405e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e01721b4b414455b47a394087192696e1ecb025
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91368476"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892729"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>教學課程：開始在開發環境中使用 Azure Machine Learning (第 1 部分，共 4 部分)
 
-在此「四部分教學課程系列」中，您將了解 Azure Machine Learning 的基礎概念，並在 Azure 雲端平台上完成作業型 Python 教學課程工作。 這些工作包括：
-
-1. 設定工作區和您本機機器學習的開發人員環境。
-2. 使用 Azure Machine Learning SDK for Python 在雲端中執行程式碼。
-3. 管理用於模型訓練的 Python 環境。
-4. 將資料上傳至 Azure，並在訓練中使用該資料。
+在此「四部分教學課程系列」中，您將了解 Azure Machine Learning 的基礎概念，並在 Azure 雲端平台上完成作業型 Python 教學課程工作。 
 
 在本教學課程系列的第 1 部分中，您將會：
 
@@ -36,20 +31,22 @@ ms.locfileid: "91368476"
 > * 設定本機開發環境。
 > * 設定計算叢集。
 
->[!NOTE]
-> 本教學課程系列著重於適用於 Python *作業型*機器學習工作的 Azure Machine Learning 概念，而這些工作需要大量計算和/或重現性。 如果您的機器學習工作不符合此設定檔，請使用 [Azure Machine Learning 計算執行個體上的 Jupyter 或 RStudio 功能](tutorial-1st-experiment-sdk-setup.md)來移動至 Azure Machine Learning。
+> [!NOTE]
+> 本教學課程系列著重於適用於 Python *作業型* 機器學習工作的 Azure Machine Learning 概念，而這些工作需要大量計算和/或重現性。 如果您對探索性工作流程比較有興趣，則可以改為[在 Azure Machine Learning 計算執行個體上使用 Jupyter 或 RStudio](tutorial-1st-experiment-sdk-setup.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 嘗試 [Azure Machine Learning](https://aka.ms/AMLFree)。
 - 熟悉 Python 和 [Machine Learning 概念](concept-azure-machine-learning-architecture.md)。 範例包括環境、訓練和評分。
-- 本機開發環境：已安裝 Python 的膝上型電腦和您慣用的 IDE (例如，Visual Studio Code、PyCharm 或 Jupyter)。
+- Visual Studio Code、Jupyter 或 PyCharm 等本機開發環境。
+- Python (版本 3.5 至 3.7)。
+
 
 ## <a name="install-the-azure-machine-learning-sdk"></a>安裝 Azure Machine Learning SDK
 
 在本教學課程中，我們將使用 Azure Machine Learning SDK for Python。
 
-您可以使用最熟悉的工具 (例如：Conda 和 pip) 來設定要在整個教學課程中使用的環境。 透過 pip 將 Azure Machine Learning SDK for Python 安裝到環境：
+您可以使用最熟悉的工具 (例如：Conda 和 pip) 來設定要在整個教學課程中使用的 Python 環境。 透過 pip 將 Azure Machine Learning SDK for Python 安裝到 Python 環境：
 
 ```bash
 pip install azureml-sdk
@@ -79,7 +76,7 @@ tutorial
 您可以在互動式工作階段中或以 Python 檔案形式執行程式碼。
 
 >[!NOTE]
-> 使用本機開發環境 (例如膝上型電腦) 時，系統會要求您在第一次執行下列程式碼時，使用「裝置代碼」向您的工作區進行驗證。 遵循畫面上的指示操作。
+> 使用本機開發環境 (例如您的電腦) 時，系統會要求您在第一次執行下列程式碼時，使用「裝置代碼」向您的工作區進行驗證。 遵循畫面上的指示操作。
 
 ```python
 # tutorial/01-create-workspace.py
@@ -102,7 +99,11 @@ cd <path/to/tutorial>
 python ./01-create-workspace.py
 ```
 
-執行上述程式碼片段之後，您的資料夾結構看起來會像這樣：
+> [!TIP]
+> 如果執行此程式碼會顯示無法存取訂用帳戶的錯誤，請參閱[建立工作區](how-to-manage-workspace.md?tab=python#create-multi-tenant)以取得驗證選項的相關資訊。
+
+
+成功執行 *01-create-workspace.py* 之後，您的資料夾結構看起來會像這樣：
 
 ```markdown
 tutorial
@@ -139,8 +140,7 @@ try:
     print('Found existing cluster, use it.')
 except ComputeTargetException:
     compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
-                                                            max_nodes=4, 
-                                                            idle_seconds_before_scaledown=2400)
+                                                           idle_seconds_before_scaledown=2400)
     cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
 
 cpu_cluster.wait_for_completion(show_output=True)
@@ -174,7 +174,13 @@ tutorial
 - 設定本機開發環境。
 - 建立 Azure Machine Learning 計算叢集。
 
-在下一個教學課程中，您會了解將指令碼提交至 Azure Machine Learning 計算叢集的步驟。
+在本教學課程的其他部分中，您將了解：
+
+* 第 2 部分： 使用 Azure Machine Learning SDK for Python 在雲端中執行程式碼。
+* 第 3 部分： 管理用於模型訓練的 Python 環境。
+* 第 4 部分： 將資料上傳至 Azure，並在訓練中使用該資料。
+
+繼續進行下一個教學課程，以了解將指令碼提交至 Azure Machine Learning 計算叢集的步驟。
 
 > [!div class="nextstepaction"]
 > [教學課程：執行 "Hello world!"Azure 上的 Python 指令碼](tutorial-1st-experiment-hello-world.md)

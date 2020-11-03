@@ -7,15 +7,15 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurepowershell
 ms.date: 09/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6ef7b17efc1f18009edffbacb2578f94fcf40b1c
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 1b70a8330f6350ef66244ae03e89f685162df5c7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743024"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92786321"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>快速入門：使用 PowerShell 從 Azure Key Vault 設定及擷取祕密
 
@@ -25,10 +25,10 @@ Azure Key Vault 是一項雲端服務，可作為安全的祕密存放區。 您
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 PowerShell，則在執行本教學課程時，您必須使用 Azure PowerShell 模組 1.0.0 版或更新版本。 執行 `$PSVersionTable.PSVersion` 以尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Login-AzAccount` 以建立與 Azure 的連線。
+如果您選擇在本機安裝和使用 PowerShell，則在執行本教學課程時，您必須使用 Azure PowerShell 模組 5.0.0 版或更新版本。 執行 `$PSVersionTable.PSVersion` 以尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 
 ```azurepowershell-interactive
-Login-AzAccount
+Connect-AzAccount
 ```
 
 ## <a name="create-a-resource-group"></a>建立資源群組
@@ -45,9 +45,9 @@ New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
 
 雖然我們在此快速入門中使用 "Contoso KeyVault2" 作為我們的 Key Vault 名稱，但您必須使用唯一的名稱。
 
-- **保存庫名稱**：Contoso-Vault2。
-- **資源群組名稱**：ContosoResourceGroup。
-- **位置**：美國東部。
+- **保存庫名稱** ：Contoso-Vault2。
+- **資源群組名稱** ：ContosoResourceGroup。
+- **位置** ：美國東部。
 
 ```azurepowershell-interactive
 New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
@@ -55,8 +55,8 @@ New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' 
 
 此 Cmdlet 的輸出會顯示新建立金鑰保存庫的屬性。 請記下下列兩個屬性：
 
-* **保存庫名稱**：在此範例中是 **Contoso-Vault2**。 您將在其他金鑰保存庫 Cmdlet 中使用此名稱。
-* **保存庫 URI**：在此範例中是 https://Contoso-Vault2.vault.azure.net/ 。 透過其 REST API 使用保存庫的應用程式必須使用此 URI。
+* **保存庫名稱** ：在此範例中是 **Contoso-Vault2** 。 您將在其他金鑰保存庫 Cmdlet 中使用此名稱。
+* **保存庫 URI** ：在此範例中是 https://Contoso-Vault2.vault.azure.net/ 。 透過其 REST API 使用保存庫的應用程式必須使用此 URI。
 
 在保存庫建立後，您的 Azure 帳戶是唯一能夠在這個新保存庫上執行任何作業的帳戶。
 
@@ -69,7 +69,7 @@ Set-AzKeyVaultAccessPolicy -VaultName 'Contoso-Vault2' -UserPrincipalName 'user@
 
 ## <a name="adding-a-secret-to-key-vault"></a>將祕密新增至 Key Vault
 
-若要將祕密新增至保存庫，您只需要採取一些步驟。 在此情況下，您會新增應用程式可以使用的密碼。 此密碼稱為 **ExamplePassword**，且其中會儲存 **hVFkk965BuUv** 值。
+若要將祕密新增至保存庫，您只需要採取一些步驟。 在此情況下，您會新增應用程式可以使用的密碼。 此密碼稱為 **ExamplePassword** ，且其中會儲存 **hVFkk965BuUv** 值。
 
 第一次將 **hVFkk965BuUv** 值轉換為安全的字串時，請輸入：
 
@@ -86,7 +86,7 @@ $secret = Set-AzKeyVaultSecret -VaultName 'Contoso-Vault2' -Name 'ExamplePasswor
 若要以純文字檢視包含在祕密中的值：
 
 ```azurepowershell-interactive
-(Get-AzKeyVaultSecret -vaultName "Contoso-Vault2" -name "ExamplePassword").SecretValueText
+(Get-AzKeyVaultSecret -VaultName "Contoso-Vault2" -Name "ExamplePassword").SecretValue | ConvertFrom-SecureString -AsPlainText
 ```
 
 現在，您已建立 Key Vault，儲存祕密，並擷取它。
@@ -106,5 +106,5 @@ Remove-AzResourceGroup -Name ContosoResourceGroup
 在本快速入門中，您已建立 Key Vault 並在其中儲存祕密。 若要深入了解 Key Vault 以及要如何將其與應用程式整合，請繼續閱讀下列文章。
 
 - 閱讀 [Azure Key Vault 概觀](../general/overview.md)
-- 請參閱 [Azure PowerShell Key Vault Cmdlet](/powershell/module/az.keyvault/?view=azps-2.6.0#key_vault) 的參考
+- 請參閱 [Azure PowerShell Key Vault Cmdlet](/powershell/module/az.keyvault/#key_vault) 的參考
 - 檢閱 [Azure Key Vault 最佳做法](../general/best-practices.md)

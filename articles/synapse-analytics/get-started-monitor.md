@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: monitoring
 ms.topic: tutorial
-ms.date: 07/27/2020
-ms.openlocfilehash: 752021e3838809cace8b5d1c71c2516645031f9d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.date: 10/15/2020
+ms.openlocfilehash: d497ff1a829902c0623740f01a457e6496db2401
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089769"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92744964"
 ---
 # <a name="monitor-your-synapse-workspace"></a>監視您的 Synapse 工作區
 
@@ -25,25 +25,25 @@ ms.locfileid: "92089769"
 
 開啟 Synapse Studio，然後瀏覽至 [監視] 中樞。 在此，您可以查看工作區中所發生之所有活動的歷程記錄，以及目前作用中的活動。 
 
-* 在 [協調流程] 底下，您可以監視管線、觸發程序和整合執行階段
+* 在 [整合] 底下，您可以監視管線、觸發程序和整合執行階段
 * 在 [活動] 底下，您可以監視 Spark 和 SQL 活動。 
 
-## <a name="orchestration"></a>協調流程
+## <a name="integration"></a>整合
 
-1. 瀏覽至 [協調流程] > [管線]。 在此檢視中，您可以在每次管線於工作區中執行時看到。 
+1. 瀏覽至 [整合] > [管線]。 在此檢視中，您可以在每次管線於工作區中執行時看到。 
 1. 找出您在上一個步驟中執行的管線，然後按一下其 [管線名稱]。
 1. 現在您可以看到該管線內的個別活動如何執行。
 1. 按一下 Synapse Studio 頂端附近的 [階層連結列]，然後按一下 [所有管線執行] 以返回上一個檢視。
 
 ## <a name="apache-spark-activities"></a>Apache Spark 活動
 
-1. 瀏覽至 [協調流程] > [活動] > [Apache Spark 應用程式]。 現在，您可以查看工作區中正在執行或已執行的所有 Spark 應用程式。
+1. 瀏覽至 [整合] > [活動] > [Apache Spark 應用程式]。 現在，您可以查看工作區中正在執行或已執行的所有 Spark 應用程式。
 1. 尋找不再執行的應用程式，然後按一下其 [應用程式名稱]。 現在您可以看到 Spark 應用程式的詳細資料。
 1. 如果您熟悉 Apache Spark，則可以按一下 [Spark 歷程記錄伺服器] 來找到標準的 Apache Spark 歷程記錄伺服器 UI。
 
 ## <a name="sql-activities"></a>SQL 活動
 
-1. 瀏覽至 [協調流程] > [活動] > [SQL 要求]。
+1. 瀏覽至 [整合] > [活動] > [SQL 要求]。
 1. 在此檢視中，您可以看到 SQL 要求。
 1. 選取要監視的 [集區]。 現在，您可以看到在該集區的工作區中正在執行或已執行的所有 SQL 要求。
 1. 尋找特定的 SQL 要求，並將滑鼠暫留在該項目上。 暫留之後，您會看到 [SQL 指令碼] 圖示隨即出現。

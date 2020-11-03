@@ -1,18 +1,17 @@
 ---
 title: 包含檔案
-description: 包含檔案
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/14/2020
 ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: 3d5b57330775af60341cd65fddc65c10645f2573
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: b17480c1a2a0bd8588289627a51780999e1f311c
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92116818"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92897732"
 ---
 共用映像庫服務可協助您圍繞映像來建置結構和組織。 共用映像資源庫提供：
 
@@ -33,10 +32,10 @@ ms.locfileid: "92116818"
 
 | 資源 | 描述|
 |----------|------------|
-| **映像來源** | 這是資源，可用來在映像庫中建立**映像版本**。 映像來源可以是現有的 Azure VM，其為[一般化或特殊化](#generalized-and-specialized-images)、受控映像、快照集、VHD 或另一個映像庫中的映像版本。 |
-| **映像庫** | 和 Azure Marketplace 一樣，**映像庫**是用於管理和共用映像的存放庫，但您可以控制哪些使用者能夠存取。 |
+| **映像來源** | 這是資源，可用來在映像庫中建立 **映像版本** 。 映像來源可以是現有的 Azure VM，其為[一般化或特殊化](#generalized-and-specialized-images)、受控映像、快照集、VHD 或另一個映像庫中的映像版本。 |
+| **映像庫** | 和 Azure Marketplace 一樣， **映像庫** 是用於管理和共用映像的存放庫，但您可以控制哪些使用者能夠存取。 |
 | **映像定義** | 映像定義會在資源庫內建立，並帶有映像資訊以及在內部使用時所需滿足的需求。 這包括映像是 Windows 還是 Linux、版本資訊以及最小和最大的記憶體需求。 這是映像類型的定義。 |
-| **映像版本** | **映像版本**是在使用資源庫時用來建立 VM 的項目。 您可以視需要為環境準備多個映像版本。 和受控映像一樣，當您使用**映像版本**來建立 VM 時，系統會使用映像版本來建立 VM 的新磁碟。 映像版本可以使用多次。 |
+| **映像版本** | **映像版本** 是在使用資源庫時用來建立 VM 的項目。 您可以視需要為環境準備多個映像版本。 和受控映像一樣，當您使用 **映像版本** 來建立 VM 時，系統會使用映像版本來建立 VM 的新磁碟。 映像版本可以使用多次。 |
 
 <br>
 
@@ -46,7 +45,7 @@ ms.locfileid: "92116818"
 
 映像定義是映像版本的邏輯群組。 映像定義包含建立映像的原因、目標作業系統，以及使用映像的其他相關資訊。 映像定義就像是關於建立特定映像的所有詳細資料計劃。 您不會從映像定義部署 VM，而是從定義所建立的映像版本。
 
-每個映像定義都有三個參數，組合使用：**發行者**、**供應項目** 和 **SKU**。 這些項目是用來尋找特定的映像定義。 不同的映像版本之間可以擁有一或兩個相同的值，但不能三個值都相同。  例如，以下是三個映像定義和其值：
+每個映像定義都有三個參數，組合使用： **發行者** 、 **供應項目** 和 **SKU** 。 這些項目是用來尋找特定的映像定義。 不同的映像版本之間可以擁有一或兩個相同的值，但不能三個值都相同。  例如，以下是三個映像定義和其值：
 
 |映像定義|發行者|供應項目|SKU|
 |---|---|---|---|
@@ -77,11 +76,11 @@ ms.locfileid: "92116818"
 
 ## <a name="image-versions"></a>映像版本
 
-**映像版本**是您用來建立 VM 的版本。 您可以視需要為環境準備多個映像版本。 當您使用**映像版本**來建立 VM 時，系統會使用映像版本來建立 VM 的新磁碟。 映像版本可以使用多次。
+**映像版本** 是您用來建立 VM 的版本。 您可以視需要為環境準備多個映像版本。 當您使用 **映像版本** 來建立 VM 時，系統會使用映像版本來建立 VM 的新磁碟。 映像版本可以使用多次。
 
 映像版本的屬性如下：
 
-- 版本號碼。 這會用作映像版本的名稱。 其格式一律如下：MajorVersion.MinorVersion.Patch。 若您指定在建立 VM 時使用**最新**，系統會依序根據最高的 MajorVersion、MinorVersion、Patch 來選擇最新的映像。 
+- 版本號碼。 這會用作映像版本的名稱。 其格式一律如下：MajorVersion.MinorVersion.Patch。 若您指定在建立 VM 時使用 **最新** ，系統會依序根據最高的 MajorVersion、MinorVersion、Patch 來選擇最新的映像。 
 - 來源。 來源可以是 VM、受控磁碟、快照集、受控映像或其他映像版本。 
 - 從最新中排除。 您可以保留某個版本，以免用作最新的映像版本。 
 - 生命週期結束日期。 在此日期之後，就無法從這個映像建立 VM。
@@ -95,7 +94,7 @@ ms.locfileid: "92116818"
 
 - 從特殊化映像建立的 VM 和擴展集，可以更快速地啟動並執行。 因為是從已通過第一次開機的來源所建立，所以從這些映像建立的 VM 開機更快速。
 - 可以用來登入 VM 的帳戶也可用於使用從該 VM 建立特殊化映像所建立的任何 VM。
-- VM 將會擁有從中取得映像的 VM **電腦名稱**。 您應該變更電腦名稱以避免發生衝突。
+- VM 將會擁有從中取得映像的 VM **電腦名稱** 。 您應該變更電腦名稱以避免發生衝突。
 - `osProfile` 是使用 `secrets` 將一些敏感性資訊傳遞至 VM 的方式。 這可能會導致使用 KeyVault、WinRM 和其他使用 `osProfile`中 `secrets` 功能的問題。 在某些情況下，您可以使用受管理的服務識別 (MSI) 來解決這些限制。
 
 ## <a name="regional-support"></a>區域支援
@@ -116,7 +115,7 @@ ms.locfileid: "92116818"
 ## <a name="scaling"></a>調整大小
 共用映像庫可讓您指定要讓 Azure 保留的映像複本數目。 這對於有多個 VM 的部署案例很有幫助，因為 VM 部署可以分散到不同複本，減少執行個體建立程序由於單一複本多載而遭到節流的機會。
 
-使用共用映像庫，您現在可以在虛擬機器擴展集中部署最多 1000 個 VM 執行個體 (從 600 個開始使用受控映像)。 映像複本提供更佳的部署效能、可靠性和一致性。  您可以根據區域的規模需求，在每個目標區域中設定不同的複本計數。 由於每個複本都是您映像的深層複本，因此可協助您使用每個額外的複本，以線性方式調整您的部署。 雖然我們了解映像或區域各不相同，但是以下是如何在區域中使用複本的一般指導方針：
+使用共用映像庫，您現在可以在虛擬機器擴展集中部署最多 1000 個 VM 執行個體 (從 600 個開始使用受控映像)。 映像複本提供更佳的部署效能、可靠性和一致性。   您可以根據區域的規模需求，在每個目標區域中設定不同的複本計數。 由於每個複本都是您映像的深層複本，因此可協助您使用每個額外的複本，以線性方式調整您的部署。 雖然我們了解映像或區域各不相同，但是以下是如何在區域中使用複本的一般指導方針：
 
 - 針對非虛擬機器擴展集 (VMSS) 部署 - 針對您同時建立的每 20 個 VM，我們建議您保留一個複本。 例如，如果您在區域中使用相同映像同時建立 120 個 VM，建議您至少保留 6 個映像複本。 
 - 針對虛擬機器擴展集 (VMSS) 部署 - 針對具有最多 600 個執行個體的每個擴展集部署，建議您至少保留一個複本。 例如，如果您在單一區域中使用相同映像同時建立 5 個擴展集，每個擴展集都具有 600 個 VM 執行個體，建議您至少保留 5 個映像複本。 
@@ -155,8 +154,11 @@ ms.locfileid: "92116818"
 
 ## <a name="billing"></a>計費
 使用共用映像庫服務不會有額外費用。 您只會支付下列資源的費用：
-- 儲存共用映像版本的儲存體成本。 成本取決於映像版本的複本數目以及作為版本複寫目的地的區域數目。 例如，如果您有 2 個映像，而且兩者都複寫到 3 個區域，則會根據其大小向您收取 6 個受控磁碟的費用。 如需詳細資訊，請參閱[受控磁碟定價](https://azure.microsoft.com/pricing/details/managed-disks/)。
-- 第一個映像版本從來源區域複寫至要複寫區域的網路輸出費用。 後續複本會在區域內處理，因此不會產生額外費用。 
+-   儲存每個複本的儲存成本。 儲存體成本是以快照集的形式計費，並以映像版本的已佔用大小、複本數目，以及複寫版本的區域數目為基礎。 
+-   第一個映像版本從來源區域複寫至要複寫區域的網路輸出費用。 後續複本會在區域內處理，因此不會產生額外費用。 
+
+例如，假設您有一個 127 GB OS 磁碟的映像，只佔用10 GB 的儲存空間，還有一個空的 32 GB 資料磁碟。 每個映像的已佔用大小只會是 10 GB。 映像會複寫至 3 個區域，而每個區域都有兩個複本。 總共會有六個快照集，每個都使用 10 GB。 系統會根據 10 GB 的所占大小，向您收取每個快照集的儲存成本。 您需支付第一個複本複製到其他兩個區域的網路輸出費用。 如需有關每個區域中快照集定價的詳細資訊，請參閱 [受控磁碟定價](https://azure.microsoft.com/pricing/details/managed-disks/)。 如需網路輸出詳細資訊，請參閱 [頻寬定價](https://azure.microsoft.com/pricing/details/bandwidth/)。
+
 
 ## <a name="updating-resources"></a>更新資源
 
@@ -230,13 +232,13 @@ ms.locfileid: "92116818"
    az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
 ```
 
-如需詳細資訊，請參閱使用 [Azure CLI](../articles/virtual-machines/update-image-resources-cli.md) 或 [PowerShell](../articles/virtual-machines/update-image-resources-powershell.md) **管理資源庫資源**。
+如需詳細資訊，請參閱使用 [Azure CLI](../articles/virtual-machines/update-image-resources-cli.md) 或 [PowerShell](../articles/virtual-machines/update-image-resources-powershell.md) **管理資源庫資源** 。
 
 ### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>是否可以將現有映像移至共用映像庫？
  
 是。 根據您可能擁有的映像類型，案例共有 3 種。
 
- 案例 1：如果您擁有受控映像，則可以透過該映像建立映像定義和映像版本。 如需詳細資訊，請參閱使用 [Azure CLI](../articles/virtual-machines/image-version-managed-image-cli.md) 或 [PowerShell](../articles/virtual-machines/image-version-managed-image-powershell.md) **從受控映像遷移至映像版本**。
+ 案例 1：如果您擁有受控映像，則可以透過該映像建立映像定義和映像版本。 如需詳細資訊，請參閱使用 [Azure CLI](../articles/virtual-machines/image-version-managed-image-cli.md) 或 [PowerShell](../articles/virtual-machines/image-version-managed-image-powershell.md) **從受控映像遷移至映像版本** 。
 
  案例 2：如果您擁有非受控映像，則可以透過該映像建立受控映像，繼而建立映像定義和映像版本。 
 

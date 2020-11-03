@@ -5,12 +5,12 @@ author: mumian
 ms.date: 06/29/2020
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: ff6c459f2f4178bee6b6b564e177c097d72592a3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c132d8337ccb46824b32ab4a6bcfc73bf5d0818b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85557294"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92890389"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立及部署 ARM 範本
 
@@ -41,7 +41,7 @@ ms.locfileid: "85557294"
     |名稱|值|
     |----|----|
     |**資源群組**|選取 [新建] 並指定您所選擇的資源群組名稱。 在螢幕擷取畫面上，資源群組名稱為 mystorage1016rg。 資源群組是 Azure 資源的容器。 資源群組可讓您更輕鬆地管理 Azure 資源。 |
-    |**名稱**|為儲存體帳戶指定唯一名稱。 儲存體帳戶名稱必須是整個 Azure 中的唯一名稱，並只包含小寫字母和數字。 名稱必須介於 3 到 24 個字元之間。 如果您收到錯誤訊息指出「儲存體帳戶名稱 'mystorage1016' 已有人使用"」，請嘗試使用 **&lt;您的名稱>storage&lt;MMDD 格式的今天日期>** ，例如 **johndolestorage1016**。 如需詳細資訊，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming)。|
+    |**名稱**|為儲存體帳戶指定唯一名稱。 儲存體帳戶名稱必須是整個 Azure 中的唯一名稱，並只包含小寫字母和數字。 名稱必須介於 3 到 24 個字元之間。 如果您收到錯誤訊息指出「儲存體帳戶名稱 'mystorage1016' 已有人使用"」，請嘗試使用 **&lt;您的名稱>storage&lt;MMDD 格式的今天日期>** ，例如 **johndolestorage1016** 。 如需詳細資訊，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming)。|
 
     您可以對其餘屬性使用預設值。
 
@@ -57,14 +57,14 @@ ms.locfileid: "85557294"
 
     主窗格會顯示範本。 這是具有六個最上層元素的 JSON 檔案 - `schema`、`contentVersion`、`parameters`、`variables`、`resources` 和 `output`。 如需詳細資訊，請參閱[了解 ARM 範本的結構和語法](./template-syntax.md)
 
-    已定義八個參數。 其中一個稱為**storageAccountName**。 在上述螢幕擷取畫面中，第二個醒目提示的部分會示範如何參考範本中的這個參數。 在下一節中，您會編輯此範本，以使用為儲存體帳戶所產生的名稱。
+    已定義八個參數。 其中一個稱為 **storageAccountName** 。 在上述螢幕擷取畫面中，第二個醒目提示的部分會示範如何參考範本中的這個參數。 在下一節中，您會編輯此範本，以使用為儲存體帳戶所產生的名稱。
 
     範本中已定義一個 Azure 資源。 類型是 `Microsoft.Storage/storageAccounts`。 請查看該資源的定義方式，以及定義結構。
 1. 從畫面頂端選取 [下載]。
 1. 開啟下載的 zip 檔案，然後將 **template.json** 儲存到您的電腦。 在下一節中，您會使用範本部署工具來編輯範本。
 1. 選取 [參數] 索引標籤，查看您所提供的參數值。 記下這些值，您在下一節中部署範本時需要用到。
 
-    ![從入口網站產生範本](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template-parameters.png)
+    ![反白顯示 [參數] 索引標籤的螢幕擷取畫面，其中顯示您所提供的值。](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template-parameters.png)
 
     您可以同時使用範本檔案和參數檔案來建立資源，也就是此教學課程中的 Azure 儲存體帳戶。
 
@@ -77,7 +77,7 @@ Azure 入口網站可用來執行一些基本範本編輯作業。 在本快速�
 
 Azure 會要求每個 Azure 服務都必須有唯一名稱。 如果您輸入已存在的儲存體帳戶名稱，部署可能會失敗。 若要避免發生此問題，您可以將範本修改為使用範本函式呼叫 `uniquestring()`，以產生唯一的儲存體帳戶名稱。
 
-1. 從 Azure 入口網站功能表的搜尋方塊中，輸入**部署**，然後選取 [部署自訂範本]。
+1. 從 Azure 入口網站功能表的搜尋方塊中，輸入 **部署** ，然後選取 [部署自訂範本]。
 
     ![Azure Resource Manager 範本程式庫](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-library.png)
 
@@ -163,14 +163,14 @@ Azure 會要求每個 Azure 服務都必須有唯一名稱。 如果您輸入已
     |名稱|值|
     |----|----|
     |**資源群組**|選取您在上一節中建立的資源群組名稱。 |
-    |**區域**|選取資源群組的位置。 例如，**美國中部**。 |
-    |**位置**|選取儲存體帳戶的位置。 例如，**美國中部**。 |
-    |**帳戶類型**|在本快速入門中請輸入 **Standard_LRS**。 |
-    |**種類**|在本快速入門中請輸入 **StorageV2**。 |
-    |**存取層**|在本快速入門中請輸入 **Hot**。 |
-    |**最低的 TLS 版本**|輸入 **TLS1_0**。 |
-    |**僅支援 HTTPS 流量**| 在本快速入門中請選取 **true**。 |
-    |**允許 Blob 公開存取**| 在本快速入門中請選取 **false**。 |
+    |**區域**|選取資源群組的位置。 例如， **美國中部** 。 |
+    |**位置**|選取儲存體帳戶的位置。 例如， **美國中部** 。 |
+    |**帳戶類型**|在本快速入門中請輸入 **Standard_LRS** 。 |
+    |**種類**|在本快速入門中請輸入 **StorageV2** 。 |
+    |**存取層**|在本快速入門中請輸入 **Hot** 。 |
+    |**最低的 TLS 版本**|輸入 **TLS1_0** 。 |
+    |**僅支援 HTTPS 流量**| 在本快速入門中請選取 **true** 。 |
+    |**允許 Blob 公開存取**| 在本快速入門中請選取 **false** 。 |
 
 1. 選取 [檢閱 + 建立]。
 1. 選取 [建立]。

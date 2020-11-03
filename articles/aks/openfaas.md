@@ -5,13 +5,13 @@ author: justindavies
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
-ms.custom: mvc
-ms.openlocfilehash: a4834ece4741b14981c08721e28bf528cab1da89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 319107127b79383fc3b49f0eeb856a0e6c5b09f8
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91368884"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92747772"
 ---
 # <a name="using-openfaas-on-aks"></a>在 AKS 上使用 OpenFaaS
 
@@ -132,7 +132,7 @@ echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 
 現在，OpenFaaS 已可正常運作，請使用 OpenFaas 入口網站建立函式。
 
-按一下 [部署新函式]****，並搜尋 **Figlet**。 選取 Figlet 函式，然後按一下 [部署]****。
+按一下 [部署新函式]，並搜尋 **Figlet** 。 選取 Figlet 函式，然後按一下 [部署]。
 
 ![螢幕擷取畫面顯示 [部署新的函式] 對話方塊，並在搜尋行上顯示文字 figlet。](media/container-service-serverless/figlet.png)
 

@@ -5,13 +5,13 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: gwallace
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 01cee3dc3f6b67aba1e6f8455ed7b538a44fc6f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: mvc, devcenter , devx-track-azurecli
+ms.openlocfilehash: 00addbe992bc113c67df08f73414107d51b3bce5
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842782"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748213"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>在 Service Fabric Mesh 應用程式中裝載以檔案儲存體為基礎的磁碟區 
 
@@ -75,9 +75,9 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 ```
 
 您也可以在 [Azure 入口網站](https://portal.azure.com)中尋找這些值：
-* `<storageAccountName>` - 位於 [儲存體帳戶]**** 下方，這是用來建立檔案共用的儲存體帳戶名稱。
-* `<storageAccountKey>` - 在 [儲存體帳戶]**** 下方選取您的儲存體帳戶，然後選取 [存取金鑰]****，並使用 **key1** 下方的值。
-* `<fileShareName>` - 在 [儲存體帳戶]**** 下方選取您的儲存體帳戶，然後選取 [檔案]****。 要使用的名稱是所建立檔案共用的名稱。
+* `<storageAccountName>` - 位於 [儲存體帳戶] 下方，這是用來建立檔案共用的儲存體帳戶名稱。
+* `<storageAccountKey>` - 在 [儲存體帳戶] 下方選取您的儲存體帳戶，然後選取 [存取金鑰]，並使用 **key1** 下方的值。
+* `<fileShareName>` - 在 [儲存體帳戶] 下方選取您的儲存體帳戶，然後選取 [檔案]。 要使用的名稱是所建立檔案共用的名稱。
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>宣告磁碟區資源並更新服務資源 (JSON)
 
@@ -195,7 +195,7 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-yaml"></a>宣告磁碟區資源並更新服務資源 (YAML)
 
-在應用程式的「App resources」** 目錄中新增 volume.yaml** 檔案。  指定名稱和提供者 (指定 "SFAzureFile" 可使用以檔案儲存體為基礎的磁碟區)。 `<fileShareName>`、`<storageAccountName>` 和 `<storageAccountKey>` 是您在上一個步驟中找到的值。
+在應用程式的「App resources」目錄中新增 volume.yaml 檔案。  指定名稱和提供者 (指定 "SFAzureFile" 可使用以檔案儲存體為基礎的磁碟區)。 `<fileShareName>`、`<storageAccountName>` 和 `<storageAccountKey>` 是您在上一個步驟中找到的值。
 
 ```yaml
 volume:
@@ -210,7 +210,7 @@ volume:
         accountKey: <storageAccountKey>
 ```
 
-更新「Service Resources」** 目錄中的 service.yaml** 檔案，以在服務中裝載磁碟區。  將 `volumeRefs` 元素新增至 `codePackages` 元素。  `name` 是磁碟區的資源識別碼 (或磁碟區資源的部署範本參數)，以及 volume.yaml 資源檔中所宣告磁碟區的名稱。  `destinationPath` 是要作為磁碟區裝載目的地的本機目錄。
+更新「Service Resources」目錄中的 service.yaml 檔案，以在服務中裝載磁碟區。  將 `volumeRefs` 元素新增至 `codePackages` 元素。  `name` 是磁碟區的資源識別碼 (或磁碟區資源的部署範本參數)，以及 volume.yaml 資源檔中所宣告磁碟區的名稱。  `destinationPath` 是要作為磁碟區裝載目的地的本機目錄。
 
 ```yaml
 ## Service definition ##

@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: c354447625d58f65615f8d3efb596e7a723e0bbf
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 002c718466b9e13d2f92fbea6dd055eb13d4d3a7
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331680"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789109"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender 簡介
 
@@ -65,7 +65,7 @@ Azure Defender 可為虛擬機器、SQL 資料庫、容器、Web 應用程式及
 
 Azure Defender 在您環境的任何區域中偵測到威脅時，將會產生警示。 這些警示會說明受影響資源的詳細資料、建議的補救步驟，以及在某些情況下會說明觸發邏輯應用程式以進行回應的選項。
 
-無論是由資訊安全中心產生的警示，還是資訊安全中心從整合式安全性產品接收到的警示，您都可以將其匯出。 若要將您的警示匯出至 Azure Sentinel、任何第三方 SIEM 或任何其他外部工具，請依照[將警示匯出至 SIEM](continuous-export.md) 中的指示操作。
+無論是由資訊安全中心產生的警示，還是資訊安全中心從整合式安全性產品接收到的警示，您都可以將其匯出。 若要將您的警示匯出至 Azure Sentinel、任何協力廠商 SIEM 或任何其他外部工具，請依照[將警示串流至 SIEM、SOAR 或 IT 服務管理解決方案](export-to-siem.md)中的指示操作。
 
 > [!NOTE]
 > 來自不同來源的警示顯示的所需時間可能不相同。 例如，需要分析網路流量的警示在顯示時，可能會比在虛擬機器上執行的可疑程序所產生的相關警示耗時。

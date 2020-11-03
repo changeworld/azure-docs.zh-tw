@@ -3,13 +3,13 @@ title: 驗證/AuthZ 的 Advanced 使用
 description: 瞭解如何針對不同的案例自訂 App Service 中的驗證和授權功能，以及取得使用者宣告和不同的權杖。
 ms.topic: article
 ms.date: 07/08/2020
-ms.custom: seodec18
-ms.openlocfilehash: 93c697162bfcb51b77c2e6f48b5824b81070bf51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: ad83e7ad5e1ffc03bf7c62df9b28512e19a62100
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91816419"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739794"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>在 Azure App Service 中進階使用驗證和授權
 
@@ -29,9 +29,9 @@ ms.locfileid: "91816419"
 
 入口網站設定不會提供周全的方式，向您的使用者顯示多個登入提供者 (例如 Facebook 和 Twitter)。 不過，要將功能新增至您的應用程式並不困難。 步驟概述如下：
 
-首先，在 Azure 入口網站的 [驗證/授權]**** 頁面中，設定您需要啟用的每一個識別提供者。
+首先，在 Azure 入口網站的 [驗證/授權] 頁面中，設定您需要啟用的每一個識別提供者。
 
-在 [當要求未經驗證時所要採取的動作]**** 中，選取 [允許匿名要求 (無動作)]****。
+在 [當要求未經驗證時所要採取的動作] 中，選取 [允許匿名要求 (無動作)]。
 
 在登入頁面或導覽列、或是您應用程式的任何其他位置中，將登入連結新增至您啟用的每個提供者 (`/.auth/login/<provider>`)。 例如：
 
@@ -170,13 +170,13 @@ App Service 會使用特殊標頭，將使用者宣告傳遞至您的應用程�
 
 當提供者的存取權杖 (而非[工作階段權杖](#extend-session-token-expiration-grace-period)) 到期時，您必須於再次使用該權杖之前重新驗證使用者。 您可以向應用程式的 `/.auth/refresh` 端點發出 `GET` 呼叫，以避免權杖到期。 當呼叫時，App Service 會自動重新整理已驗證使用者的 [權杖存放區](overview-authentication-authorization.md#token-store) 中的存取權杖。 您應用程式程式碼的後續權杖要求會取得重新整理過的權杖。 不過，若要進行權杖重新整理，權杖存放區必須包含您提供者的[重新整理權杖](https://auth0.com/learn/refresh-tokens/)。 每個提供者會記載其重新整理權杖的取得方法，而下列清單僅為簡短摘要：
 
-- **Google**：將 `access_type=offline` 查詢字串參數附加至您的 `/.auth/login/google` API 呼叫。 如果是使用 Mobile Apps SDK，您可以將參數新增至其中一個 `LogicAsync` 多載 (請參閱 [Google 重新整理權杖](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens))。
-- **Facebook**：不提供重新整理權杖。 長時間執行的權杖會在 60 天內到期 (請參閱 [Facebook 到期和存取權杖的擴充功能](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension))。
-- **Twitter**：存取權杖不會到期 (請參閱 [Twitter OAuth 常見問題集](https://developer.twitter.com/en/docs/basics/authentication/FAQ))。
-- **Microsoft 帳戶**：當您[設定 Microsoft 帳戶驗證設定](configure-authentication-provider-microsoft.md)時，請選取 `wl.offline_access` 範圍。
-- **Azure Active Directory**：在 [https://resources.azure.com](https://resources.azure.com) 中，執行下列步驟：
-    1. 在頁面的頂端，選取 [讀取/寫入]****。
-    2. 在左側瀏覽器中，流覽至 [訂用帳戶 **] > *** *_ \<subscription\_name_** > **resourceGroups** > *_* * * [ \<resource\_group\_name> _>**提供者**]  >  **Microsoft.Web**  >  **sites** > * *_ \<app\_name> _ * * > 設定**config**  >  **[authsettings**。 
+- **Google** ：將 `access_type=offline` 查詢字串參數附加至您的 `/.auth/login/google` API 呼叫。 如果是使用 Mobile Apps SDK，您可以將參數新增至其中一個 `LogicAsync` 多載 (請參閱 [Google 重新整理權杖](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens))。
+- **Facebook** ：不提供重新整理權杖。 長時間執行的權杖會在 60 天內到期 (請參閱 [Facebook 到期和存取權杖的擴充功能](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension))。
+- **Twitter** ：存取權杖不會到期 (請參閱 [Twitter OAuth 常見問題集](https://developer.twitter.com/en/docs/basics/authentication/FAQ))。
+- **Microsoft 帳戶** ：當您 [設定 Microsoft 帳戶驗證設定](configure-authentication-provider-microsoft.md)時，請選取 `wl.offline_access` 範圍。
+- **Azure Active Directory** ：在 [https://resources.azure.com](https://resources.azure.com) 中，執行下列步驟：
+    1. 在頁面的頂端，選取 [讀取/寫入]。
+    2. 在左側瀏覽器中，流覽至 [訂用帳戶 **] > *** * _\<subscription\_name_** > **resourceGroups** > *_ * * * [ \<resource\_group\_name> _> **提供者** ]  >  **Microsoft.Web**  >  **sites** > * *_ \<app\_name> _ * * > 設定 **config**  >  **[authsettings** 。 
     3. 按一下 **[編輯]** 。
     4. 修改下列屬性。 取代 _\<app\_id>_ 為您要存取之服務的 Azure Active Directory 應用程式識別碼。
 
@@ -184,7 +184,7 @@ App Service 會使用特殊標頭，將使用者宣告傳遞至您的應用程�
         "additionalLoginParams": ["response_type=code id_token", "resource=<app_id>"]
         ```
 
-    5. 按一下 [放置]****。 
+    5. 按一下 [放置]。 
 
 設定好提供者之後，您可以在權杖存放區中[尋找重新整理權杖和存取權杖的到期時間](#retrieve-tokens-in-app-code)。 
 
@@ -221,11 +221,11 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>限制登入帳戶的網域
 
-Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 例如，Microsoft 帳戶允許 _outlook.com_、_live.com_ 和 _hotmail.com_ 帳戶。 Azure AD 允許登入帳戶有任意數目的自訂網域。 不過，您可能會想要將使用者直接帶到您自己的品牌 Azure AD 登入頁面 (例如 `contoso.com`) 。 若要建議登入帳戶的功能變數名稱，請遵循下列步驟。
+Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 例如，Microsoft 帳戶允許 _outlook.com_ 、 _live.com_ 和 _hotmail.com_ 帳戶。 Azure AD 允許登入帳戶有任意數目的自訂網域。 不過，您可能會想要將使用者直接帶到您自己的品牌 Azure AD 登入頁面 (例如 `contoso.com`) 。 若要建議登入帳戶的功能變數名稱，請遵循下列步驟。
 
-在中，流覽至 [訂用帳戶] [https://resources.azure.com](https://resources.azure.com) > * *_ \<subscription\_name_** > **resourceGroups** > *_* * * [ **subscriptions** \<resource\_group\_name> _>**提供者**]  >  **Microsoft.Web**  >  > * *** ** _ \<app\_name> _ * * > 設定**config**  >  **[authsettings**。 
+在中，流覽至 [訂用帳戶] [https://resources.azure.com](https://resources.azure.com) > * * _\<subscription\_name_** > **resourceGroups** > *_ * * * [ **subscriptions** \<resource\_group\_name> _> **提供者** ]  >  **Microsoft.Web**  >  > * * ****_ \<app\_name> _ * * > 設定 **config**  >  **[authsettings** 。 
 
-按一下 [編輯]****、修改下列屬性，然後按一下 [放置]****。 請務必將取代為 _\<domain\_name>_ 您想要的網域。
+按一下 [編輯]、修改下列屬性，然後按一下 [放置]。 請務必將取代為 _\<domain\_name>_ 您想要的網域。
 
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
@@ -247,13 +247,13 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
 
 ### <a name="server-level-windows-apps-only"></a>伺服器層級 (僅限 Windows 應用程式) 
 
-針對任何 Windows 應用程式，您可以藉由編輯 *Web.config* 檔案來定義 IIS web 伺服器的授權行為。 Linux 應用程式不會使用 IIS，也無法透過 *Web.config*設定。
+針對任何 Windows 應用程式，您可以藉由編輯 *Web.config* 檔案來定義 IIS web 伺服器的授權行為。 Linux 應用程式不會使用 IIS，也無法透過 *Web.config* 設定。
 
 1. 巡覽到 `https://<app-name>.scm.azurewebsites.net/DebugConsole`
 
-1. 在 App Service 檔案的瀏覽器瀏覽器中，流覽至 *site/wwwroot*。 如果*Web.config*不存在，請選取 [新增檔案] 加以建立 **+**  >  ** **。 
+1. 在 App Service 檔案的瀏覽器瀏覽器中，流覽至 *site/wwwroot* 。 如果 *Web.config* 不存在，請選取 [新增檔案] 加以建立 **+**  >  **** 。 
 
-1. 選取 *Web.config* 的鉛筆來編輯它。 新增下列設定程式碼，然後按一下 [ **儲存**]。 如果 *Web.config* 已存在，只要 `<authorization>` 在其中新增專案。 在元素中新增您想要允許的帳戶 `<allow>` 。
+1. 選取 *Web.config* 的鉛筆來編輯它。 新增下列設定程式碼，然後按一下 [ **儲存** ]。 如果 *Web.config* 已存在，只要 `<authorization>` 在其中新增專案。 在元素中新增您想要允許的帳戶 `<allow>` 。
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -393,7 +393,7 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
             "graphApiVersion": "v3.3",
             "login": {
                 "scopes": [
-                    "profile",
+                    "public_profile",
                     "email"
                 ]
             },
@@ -531,7 +531,7 @@ az webapp auth update --name <my_app_name> \
 
 `<my_app_name>`以您的應用程式名稱取代。 也請 `<my_resource_group>` 以您應用程式的資源組名取代。 此外，請 `<version>` 以1.x 執行時間的有效版本或 `~1` 最新版本取代。 您可以在 [這裡 (] 的不同執行階段版本上找到版本 https://github.com/Azure/app-service-announcements) 資訊，以協助判斷要釘選的版本。
 
-您可以選擇上述程式碼範例中的 [試試看]****，從 [Azure Cloud Shell](../cloud-shell/overview.md) 執行此命令。 在執行 [az login](/cli/azure/reference-index#az-login) 登入之後，您也可以使用[本機 Azure CLI](/cli/azure/install-azure-cli) 來執行此命令。
+您可以選擇上述程式碼範例中的 [試試看]，從 [Azure Cloud Shell](../cloud-shell/overview.md) 執行此命令。 在執行 [az login](/cli/azure/reference-index#az-login) 登入之後，您也可以使用[本機 Azure CLI](/cli/azure/install-azure-cli) 來執行此命令。
 
 ## <a name="next-steps"></a>後續步驟
 

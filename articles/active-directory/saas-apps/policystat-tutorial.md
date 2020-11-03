@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 212bd1bc0b15ad985fc8037e99876d78132b2c22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d6274f3e1356a8ff8a997e830f0ebee43f50cff
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88547931"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92893010"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>教學課程：Azure Active Directory 與 PolicyStat 整合
 
@@ -27,7 +27,7 @@ PolicyStat 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 PolicyStat (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -66,7 +66,7 @@ PolicyStat 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **PolicyStat**，從結果面板中選取 [PolicyStat]，然後按一下 [新增] 按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **PolicyStat** ，從結果面板中選取 [PolicyStat]，然後按一下 [新增] 按鈕以新增應用程式。
 
      ![結果清單中的 PolicyStat](common/search-new-app.png)
 
@@ -110,15 +110,15 @@ PolicyStat 與 Azure AD 整合提供下列優點：
     b. 在 [識別碼 (實體識別碼)] 文字方塊中，使用下列模式輸入 URL：`https://<companyname>.policystat.com/saml2/metadata/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [PolicyStat 客戶支援小組](http://www.policystat.com/support/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [PolicyStat 客戶支援小組](http://www.policystat.com/support/)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-4. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中按一下 [下載]，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+4. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中按一下 [下載]，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
 5. PolicyStat 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增到 SAML 權杖屬性組態。 以下螢幕擷取畫面顯示預設屬性清單。 按一下 **編輯** 圖示以開啟 [使用者屬性] 對話方塊。
 
-    ![image](common/edit-attribute.png)
+    ![顯示 [使用者屬性] 對話方塊的螢幕擷取畫面，其中已選取 [編輯] 圖示。](common/edit-attribute.png)
 
 6. 除了以上屬性之外，PolicyStat 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，執行下列步驟以設定 SAML 權杖屬性，如下表所示：
 
@@ -128,9 +128,9 @@ PolicyStat 與 Azure AD 整合提供下列優點：
 
     a. 按一下 [新增宣告] 以開啟 [管理使用者宣告] 對話方塊。
     
-    ![image](common/new-save-attribute.png)
+    ![顯示 [使用者宣告] 區段的螢幕擷取畫面，其中醒目提示 [新增宣告] 和 [儲存] 動作。](common/new-save-attribute.png)
 
-    ![image](./media/policystat-tutorial/attribute01.png)
+    ![顯示 [管理使用者宣告] 對話方塊的螢幕擷取畫面，其中已醒目提示 [名稱]、[轉換] 和 [參數] 文字方塊，並已選取 [儲存] 按鈕。](./media/policystat-tutorial/attribute01.png)
 
     b. 在 [名稱] 文字方塊中，輸入該資料列所顯示的屬性名稱。
 
@@ -164,7 +164,7 @@ PolicyStat 與 Azure AD 整合提供下列優點：
 
 3. 按一下 [您的 IDP 中繼資料]，然後在 [您的 IDP 中繼資料] 區段中，執行下列步驟：
    
-    ![單一登入設定](./media/policystat-tutorial/ic808636.png "單一登入設定")
+    ![顯示已選取 [您的 IDP 中繼資料] 動作的螢幕擷取畫面。](./media/policystat-tutorial/ic808636.png "單一登入設定")
    
     a. 開啟您下載的中繼資料檔案，複製內容，然後貼到 [您的識別提供者中繼資料] 文字方塊中。
 
@@ -172,7 +172,7 @@ PolicyStat 與 Azure AD 整合提供下列優點：
 
 4. 按一下 [設定屬性]，然後在 [設定屬性]  區段中，執行下列步驟：
    
-    a. 在 [使用者名稱屬性] 文字方塊中，輸入 **uid**。
+    a. 在 [使用者名稱屬性] 文字方塊中，輸入 **uid** 。
 
     b. 在 [名字屬性] 文字方塊中，輸入來自 Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** 的名字屬性宣告名稱。
 
@@ -224,12 +224,12 @@ PolicyStat 與 Azure AD 整合提供下列優點：
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 PolicyStat 圖格時，應該會自動登入您設定 SSO 的 PolicyStat。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 PolicyStat 圖格時，應該會自動登入您設定 SSO 的 PolicyStat。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

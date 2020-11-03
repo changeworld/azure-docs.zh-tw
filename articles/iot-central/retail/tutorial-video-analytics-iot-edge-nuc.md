@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: c41a6679009f1467c5bcd04d9629ef9256238e00
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b74c7c3e9678c89edbe90d648520b9526c8fb569
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127040"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92748642"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>教學課程：建立適用於影片分析的 IoT Edge 執行個體 (Intel NUC)
 
@@ -115,11 +115,11 @@ Azure IoT Edge 是完全受控的服務，可透過部署和執行下列項目�
         symmetric_key: "{symmetric_key}"
     ```
 
-1. 將 `{scope_id}` 取代為上一個教學課程中，您從 scratchpad.txt 檔案中記下的**識別碼範圍**。
+1. 將 `{scope_id}` 取代為上一個教學課程中，您從 scratchpad.txt 檔案中記下的 **識別碼範圍** 。
 
 1. 將 `{registration_id}` 取代為 lva-gateway-001，也就是您在上一個教學課程中建立的裝置。
 
-1. 將 `{symmetric_key}` 取代為上一個教學課程中，您從 scratchpad.txt 檔案中記下的 **lva-gateway-001** 裝置**主要金鑰**。
+1. 將 `{symmetric_key}` 取代為上一個教學課程中，您從 scratchpad.txt 檔案中記下的 **lva-gateway-001** 裝置 **主要金鑰** 。
 
 1. 執行下列命令以重新啟動 IoT Edge 精靈：
 
@@ -140,7 +140,7 @@ Azure IoT Edge 是完全受控的服務，可透過部署和執行下列項目�
 
 如果 IoT Edge 模組無法正確啟動，請參閱[針對 IoT Edge 裝置進行疑難排解](../../iot-edge/troubleshoot.md)。
 
-## <a name="collect-the-rstp-stream-from-your-camera"></a>從您的相機收集 RSTP 串流
+## <a name="collect-the-rtsp-stream-from-your-camera"></a>從您的相機收集 RTSP 串流
 
 針對連線到您 IoT Edge 裝置的相機，識別其 RTSP 串流 URL，例如：
 

@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a7026757651d1b0510293101203f41a651c7b851
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ac4f41a36a2a18a65816be5ea74e88d0b364294
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850960"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92789058"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>適用於 App Service 的 Azure Defender 簡介
 
@@ -45,7 +45,7 @@ Azure App Service 是完全受控的平台，可讓您建置及裝載 Web 應用
 
 - 確定您有受支援且與專用機器相關聯的 App Service 方案。 支援的方案如前述的[可用性](#availability)所列。
 
-- 在您的訂用帳戶上啟用 **Azure Defender** (您可以選擇僅啟用**適用於 App Service 的 Azure Defender** 方案)，如 [Azure 資訊安全中心的定價](security-center-pricing.md)所說明
+- 在您的訂用帳戶上啟用 **Azure Defender** (您可以選擇僅啟用 **適用於 App Service 的 Azure Defender** 方案)，如 [Azure 資訊安全中心的定價](security-center-pricing.md)所說明
 
 資訊安全中心會與 App Service 原生整合，因此無須進行部署及上線 - 整合程序是透明的。
 
@@ -64,7 +64,7 @@ Azure App Service 是完全受控的平台，可讓您建置及裝載 Web 應用
 
 如需相關內容，請參閱下列文章： 
 
-- 無論是由資訊安全中心產生警示，還是由不同的安全性產品資訊安全中心接收的警示，您都可以將其匯出。 若要將您的警示匯出至 Azure Sentinel、任何第三方 SIEM 或任何其他外部工具，請依照[將警示匯出至 SIEM](continuous-export.md) 中的指示操作。
+- 無論是由資訊安全中心產生警示，還是由不同的安全性產品資訊安全中心接收的警示，您都可以將其匯出。 若要將您的警示匯出至 Azure Sentinel、任何協力廠商 SIEM 或任何其他外部工具，請依照[將警示串流至 SIEM、SOAR 或 IT 服務管理解決方案](export-to-siem.md)中的指示操作。
 - 如需 Azure App Service 警示的清單，請參閱[警示的參考資料表](alerts-reference.md#alerts-azureappserv)。
 - 如需 App Service 方案的詳細資訊，請參閱 [App Service 方案](https://azure.microsoft.com/pricing/details/app-service/plans/)。
 - > [!div class="nextstepaction"]

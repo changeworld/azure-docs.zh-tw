@@ -12,12 +12,12 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: sstein, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 46d8aab74f658b039fe07acab82f324ec6ad731f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8c94e36a1a6d1f675e9d6a7dde456dbf6eb8897
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777066"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92791353"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>針對 SQL Database 和 SQL 受控執行個體中的暫時性連接錯誤進行疑難排解
 
@@ -31,7 +31,7 @@ ms.locfileid: "91777066"
 
 暫時性錯誤 (也稱為暫時性故障) 具有很快就會自行解決的根本原因。 當 Azure 系統快速地將硬體資源轉移到負載平衡更好的各種工作負載時，偶爾會發生暫時性錯誤。 其中大部分重新設定事件會在不到 60 秒內完成。 在此重新設定時間範圍期間，您可能會在 SQL Database 中連接到資料庫時發生問題。 連接到您資料庫的應用程式應該建立成預期這些暫時性錯誤。 若要處理這些錯誤，請在其程式碼中實作重試邏輯，而不是對使用者呈現為應用程式錯誤。
 
-如果用戶端程式使用 ADO.NET，系統會擲回 **SqlException**，告知您的程式發生暫時性錯誤。
+如果用戶端程式使用 ADO.NET，系統會擲回 **SqlException** ，告知您的程式發生暫時性錯誤。
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 
@@ -70,7 +70,7 @@ ms.locfileid: "91777066"
 
 我們建議您在您第一次重試前等待 5 秒鐘。 在少於 5 秒的延遲後重試，雲端服務會有超過負荷的風險。 對於後續每次重試，延遲應以指數方式成長，最大值為 60 秒。
 
-如需使用 ADO.NET 的用戶端封鎖期間的討論，請參閱 [連接共用 (ADO.NET) ](https://msdn.microsoft.com/library/8xx3tyca.aspx)。
+如需使用 ADO.NET 的用戶端封鎖期間的討論，請參閱 [連接共用 (ADO.NET) ](/dotnet/framework/data/adonet/sql-server-connection-pooling)。
 
 您也可以設定在程式自行終止之前的重試次數上限。
 
@@ -126,17 +126,17 @@ ms.locfileid: "91777066"
 
 ## <a name="net-sqlconnection-parameters-for-connection-retry"></a>進行連線重試的.NET SqlConnection 參數
 
-如果您的用戶端程式使用 .NET Framework 類別 **SqlClient**連接到 SQL Database 中的資料庫，請使用 .net 4.6.1 或更新版本 (或 .net Core) ，讓您可以使用其連接重試功能。 如需此功能的詳細資訊，請參閱 [SqlConnection. ConnectionString 屬性](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring?view=netframework-4.8&preserve-view=true)。
+如果您的用戶端程式使用 .NET Framework 類別 **SqlClient** 連接到 SQL Database 中的資料庫，請使用 .net 4.6.1 或更新版本 (或 .net Core) ，讓您可以使用其連接重試功能。 如需此功能的詳細資訊，請參閱 [SqlConnection. ConnectionString 屬性](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring?view=netframework-4.8&preserve-view=true)。
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
 -->
 
-當您為 [SqlConnection](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) 物件建立**連接字串**時，請調整下列參數的值：
+當您為 [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring) 物件建立 **連接字串** 時，請調整下列參數的值：
 
-- **ConnectRetryCount**： &nbsp; &nbsp; 預設值為1。 範圍是 0 到 255。
-- **ConnectRetryInterval**： &nbsp; &nbsp; 預設值為10秒。 範圍是 1 到 60。
-- **連接逾時**： &nbsp; &nbsp; 預設值為15秒。 範圍是 0 到 2147483647。
+- **ConnectRetryCount** ： &nbsp; &nbsp; 預設值為1。 範圍是 0 到 255。
+- **ConnectRetryInterval** ： &nbsp; &nbsp; 預設值為10秒。 範圍是 1 到 60。
+- **連接逾時** ： &nbsp; &nbsp; 預設值為15秒。 範圍是 0 到 2147483647。
 
 具體來說，您選擇的值應該會讓下列等式成立：連線逾時 = ConnectRetryCount * ConnectionRetryInterval
 
@@ -151,7 +151,7 @@ ms.locfileid: "91777066"
 - SqlConnection. 開啟方法呼叫
 - SqlConnection.Exe刻意的方法呼叫
 
-有一些微妙的差異。 若在執行「查詢」** 時發生暫時性錯誤，您的 **SqlConnection** 物件並不會重試連線作業。 而且絕對不會重試查詢。 不過，在傳送您的查詢以供執行之前， **SqlConnection** 會先快速檢查連接。 如果快速檢查偵測到連接問題， **SqlConnection** 會重試連接作業。 如果重試成功，就會傳送您的查詢以供執行。
+有一些微妙的差異。 若在執行「查詢」 時發生暫時性錯誤，您的 **SqlConnection** 物件並不會重試連線作業。 而且絕對不會重試查詢。 不過，在傳送您的查詢以供執行之前， **SqlConnection** 會先快速檢查連接。 如果快速檢查偵測到連接問題， **SqlConnection** 會重試連接作業。 如果重試成功，就會傳送您的查詢以供執行。
 
 ### <a name="should-connectretrycount-be-combined-with-application-retry-logic"></a>是否應該將 ConnectRetryCount 與應用程式重試邏輯結合
 
@@ -189,7 +189,7 @@ ms.locfileid: "91777066"
 例如，當用戶端程式裝載在 Windows 電腦上時，您可在主機上使用 Windows 防火牆來開啟通訊埠 1433。
 
 1. 開啟 [控制台]。
-2. 選取**所有主控台專案**  >  **Windows 防火牆**  >  **Advanced Settings**  >  **輸出規則**  >  **動作**  >  的**新規則**。
+2. 選取 **所有主控台專案**  >  **Windows 防火牆**  >  **Advanced Settings**  >  **輸出規則**  >  **動作**  >  的 **新規則** 。
 
 如果您的用戶端程式裝載在 Azure 虛擬機器 (VM) 上，請閱讀[適用於 ADO.NET 4.5 和 SQL Database 的 1433 以外的連接埠](adonet-v12-develop-direct-route-ports.md)。
 
@@ -207,7 +207,7 @@ ms.locfileid: "91777066"
 
 #### <a name="starting-with-adonet-461"></a>開頭是 ADO.NET 4.6.1
 
-- 對於 SQL Database，使用 **SqlConnection.Open** 方法來開啟連線時，可靠性更高。 針對連線逾時期間內的特定錯誤，**Open** 方法現在包含最佳重試機制來因應暫時性錯誤。
+- 對於 SQL Database，使用 **SqlConnection.Open** 方法來開啟連線時，可靠性更高。 針對連線逾時期間內的特定錯誤， **Open** 方法現在包含最佳重試機制來因應暫時性錯誤。
 - 支援連線集區，包括其提供給您的程式的連線物件是否能運作的有效驗證。
 
 當您使用連線集區中的連線物件時，建議您的程式若未立即使用連線，則暫時將它關閉。 重新開啟連線並不會耗費很多資源，但是會建立新的連線。
@@ -227,7 +227,7 @@ ms.locfileid: "91777066"
 您可以在任何 Windows 電腦上，嘗試這些公用程式：
 
 - SQL Server Management Studio (SSMS.exe)，其使用 ADO.NET 進行連線
-- `sqlcmd.exe`，使用 [ODBC](https://msdn.microsoft.com/library/jj730308.aspx) 進行連線
+- `sqlcmd.exe`，使用 [ODBC](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server) 進行連線
 
 在您的程式連線之後，請測試簡短的 SQL SELECT 查詢是否能運作。
 
@@ -268,7 +268,7 @@ TCP port 1433 (ms-sql-s service): LISTENING
 
 您的用戶端可以記錄其遇到的所有錯誤來協助診斷。 您可以使記錄項目與 SQL Database 本身內部記錄的錯誤資料相互關聯。
 
-Enterprise Library 6 (EntLib60) 提供 .NET 受控類別來協助記錄。 如需詳細資訊，請參閱 [5 - 輕而易舉：使用記錄應用程式區塊](https://msdn.microsoft.com/library/dn440731.aspx)。
+Enterprise Library 6 (EntLib60) 提供 .NET 受控類別來協助記錄。 如需詳細資訊，請參閱 [5 - 輕而易舉：使用記錄應用程式區塊](/previous-versions/msp-n-p/dn440731(v=pandp.60))。
 
 <a id="h-diagnostics-examine-logs-errors" name="h-diagnostics-examine-logs-errors"></a>
 
@@ -278,8 +278,8 @@ Enterprise Library 6 (EntLib60) 提供 .NET 受控類別來協助記錄。 如�
 
 | 記錄查詢 | 描述 |
 |:--- |:--- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[Sys.event_log](https://msdn.microsoft.com/library/dn270018.aspx) 檢視可提供個別事件的資訊，包括會導致暫時性錯誤或連線失敗的某些事件。<br/><br/>在理想的情況下，您可以讓 **start_time** 或 **end_time** 值與用戶端程式發生問題時的相關資訊相互關聯。<br/><br/>您必須連線到 master** 資料庫來執行此查詢。 |
-| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[Sys.database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx)視圖會提供事件種類的匯總計數，以供其他診斷之用。<br/><br/>您必須連線到 master** 資料庫來執行此查詢。 |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[Sys.event_log](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database) 檢視可提供個別事件的資訊，包括會導致暫時性錯誤或連線失敗的某些事件。<br/><br/>在理想的情況下，您可以讓 **start_time** 或 **end_time** 值與用戶端程式發生問題時的相關資訊相互關聯。<br/><br/>您必須連線到 master 資料庫來執行此查詢。 |
+| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[Sys.database_connection_stats](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)視圖會提供事件種類的匯總計數，以供其他診斷之用。<br/><br/>您必須連線到 master 資料庫來執行此查詢。 |
 
 <a id="d-search-for-problem-events-in-the-sql-database-log" name="d-search-for-problem-events-in-the-sql-database-log"></a>
 
@@ -326,9 +326,9 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 
 ## <a name="enterprise-library-6"></a>Enterprise Library 6
 
-Enterprise Library 6 (EntLib60) 是 .NET 類別的架構，可協助您執行穩固的雲端服務用戶端，其中一個是 SQL Database 的。 若要找出 EntLib60 所能協助之每個領域的專用主題，請參閱 [Enterprise Library 6 - 2013 年 4 月](https://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)。
+Enterprise Library 6 (EntLib60) 是 .NET 類別的架構，可協助您執行穩固的雲端服務用戶端，其中一個是 SQL Database 的。 若要找出 EntLib60 所能協助之每個領域的專用主題，請參閱 [Enterprise Library 6 - 2013 年 4 月](/previous-versions/msp-n-p/dn169621(v=pandp.10))。
 
-在 EntLib60 可以協助的一個領域中用於處理暫時性錯誤的重試邏輯。 如需詳細資訊，請參閱 [4 - 堅持是所有成功的秘方：使用暫時性錯誤處理應用程式區塊](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)。
+在 EntLib60 可以協助的一個領域中用於處理暫時性錯誤的重試邏輯。 如需詳細資訊，請參閱 [4 - 堅持是所有成功的秘方：使用暫時性錯誤處理應用程式區塊](/previous-versions/msp-n-p/dn440719(v=pandp.60))。
 
 > [!NOTE]
 > EntLib60 的原始程式碼可從[下載中心](https://go.microsoft.com/fwlink/p/?LinkID=290898)公開下載。 Microsoft 沒有計劃進一步更新或維護 EntLib 的功能。
@@ -339,7 +339,7 @@ Enterprise Library 6 (EntLib60) 是 .NET 類別的架構，可協助您執行穩
 
 下列 EntLib60 類別特別有助於重試邏輯。 這些類別全都位於命名空間 **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** 之下。
 
-在命名空間中， **>microsoft.practices.enterpriselibrary.transientfaulthandling. >microsoft.practices.enterpriselibrary.transientfaulthandling**：
+在命名空間中， **>microsoft.practices.enterpriselibrary.transientfaulthandling. >microsoft.practices.enterpriselibrary.transientfaulthandling** ：
 
 - **RetryPolicy** 類別
   - **ExecuteAction** 方法
@@ -348,7 +348,7 @@ Enterprise Library 6 (EntLib60) 是 .NET 類別的架構，可協助您執行穩
 - **ReliableSqlConnection** 類別
   - **ExecuteCommand** 方法
 
-在命名空間 **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.TestSupport**中：
+在命名空間 **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.TestSupport** 中：
 
 - **AlwaysTransientErrorDetectionStrategy** 類別
 - **NeverTransientErrorDetectionStrategy** 類別
@@ -369,13 +369,13 @@ Enterprise Library 6 (EntLib60) 是 .NET 類別的架構，可協助您執行穩
   - 收集有助於偵錯和追蹤的內容資訊，以及用於稽核和一般記錄需求的內容資訊。
 - 記錄區塊可彙總來自記錄目的地的記錄功能，使應用程式程式碼能夠一致，而不必理會目標記錄存放區的的位置和類型。
 
-如需詳細資訊，請參閱 [5 - 輕而易舉：使用記錄應用程式區塊](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx)。
+如需詳細資訊，請參閱 [5 - 輕而易舉：使用記錄應用程式區塊](/previous-versions/msp-n-p/dn440731(v=pandp.60))。
 
 <a id="entlib60-istransient-method-source-code" name="entlib60-istransient-method-source-code"></a>
 
 ### <a name="entlib60-istransient-method-source-code"></a>EntLib60 IsTransient 方法的原始程式碼
 
-接下來，**IsTransient** 方法的 C# 原始程式碼來自 **SqlDatabaseTransientErrorDetectionStrategy** 類別。 原始程式碼會釐清哪些錯誤會被視為暫時性並值得重試 (從 2013 年 4 月起)。
+接下來， **IsTransient** 方法的 C# 原始程式碼來自 **SqlDatabaseTransientErrorDetectionStrategy** 類別。 原始程式碼會釐清哪些錯誤會被視為暫時性並值得重試 (從 2013 年 4 月起)。
 
 ```csharp
 public bool IsTransient(Exception ex)
@@ -446,11 +446,11 @@ public bool IsTransient(Exception ex)
 ## <a name="next-steps"></a>後續步驟
 
 - [SQL Database 和 SQL Server 的連線庫](connect-query-content-reference-guide.md#libraries)
-- [連接共用 (ADO.NET) ](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
-- [Retrying** 是 Apache 2.0 授權的一般用途重試程式庫 (以 Python 撰寫)](https://pypi.python.org/pypi/retrying)，可簡化可對任何案例新增重試行為的工作。
+- [連接共用 (ADO.NET) ](/dotnet/framework/data/adonet/sql-server-connection-pooling)
+- [Retrying 是 Apache 2.0 授權的一般用途重試程式庫 (以 Python 撰寫)](https://pypi.python.org/pypi/retrying)，可簡化可對任何案例新增重試行為的工作。
 
 <!-- Link references. -->
 
-[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: /sql/connect/ado-net/step-4-connect-resiliently-sql-ado-net
 
-[step-4-connect-resiliently-to-sql-with-php-p42h]: https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php
+[step-4-connect-resiliently-to-sql-with-php-p42h]: /sql/connect/php/step-4-connect-resiliently-to-sql-with-php

@@ -8,20 +8,20 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
-ms.date: 04/15/2020
-ms.openlocfilehash: cf899962f6e62b0943f48494bf5c3fe27a6327a9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/16/2020
+ms.openlocfilehash: a4583e7fbf1eeaf4447e1e717c716159af645bfa
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91651712"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92742562"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>快速入門：使用 Web 工具在 Azure Synapse Analytics 中建立 Apache Spark 集區
 
 在本快速入門中，您將了解如何使用 Web 工具在 Azure Synapse 中建立 Apache Spark 集區 (預覽)。 接著，您將了解如何連線到 Apache Spark 集區，並對檔案和資料表執行 Spark SQL 查詢。 Apache Spark 能夠運用記憶體內部處理，使得資料分析及叢集運算更為快速。 若要深入了解 Azure Synapse 中的 Spark，請參閱[概觀：Azure Synapse 上的 Apache Spark 集區](./spark/apache-spark-overview.md)。
 
 > [!IMPORTANT]
-> 無論使用與否，Spark 執行個體都是按分鐘計費。 當您使用完 Spark 執行個體之後，請務必將其關閉，或設定短暫的逾時時間。 如需詳細資訊，請參閱本文的**清除資源**一節。
+> 無論使用與否，Spark 執行個體都是按分鐘計費。 當您使用完 Spark 執行個體之後，請務必將其關閉，或設定短暫的逾時時間。 如需詳細資訊，請參閱本文的 **清除資源** 一節。
 
 如果您沒有 Azure 訂用帳戶，請[在開始前建立免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -42,9 +42,10 @@ ms.locfileid: "91651712"
 Notebook 是支援各種程式設計語言的互動式環境。 Notebook 可讓您與資料互動、將程式碼與 Markdown 文字相結合，並執行簡單的視覺效果。
 
 1. 在 Azure 入口網站檢視中，針對您想要使用的 Azure Synapse 工作區選取 [啟動 Synapse Studio]。
-2. Synapse Studio 啟動之後，請選取 [開發]。 然後，將滑鼠停留在 **Notebooks** 項目上。 選取省略符號 ( **...** )。
-3. 從該處選取 [新增 Notebook]。 新的 Notebook 會隨即建立，並且使用自動產生的名稱來開啟。
-  ![新增 Notebook](./media/quickstart-apache-spark-notebook/spark-get-started-new-notebook.png "新增筆記本")
+2. Synapse Studio 啟動之後，請選取 [開發]。 然後，選取「 **+** 」圖示，以新增新的資源。
+3. 從該處選取 [Notebook]。 新的 Notebook 會隨即建立，並且使用自動產生的名稱來開啟。
+ 
+     ![新增 Notebook](./media/quickstart-apache-spark-notebook/spark-get-started-new-notebook.png "新增筆記本")
 
 4. 在 [屬性] 視窗中，提供 Notebook 的名稱。
 5. 在工具列上，按一下 [發佈]。
@@ -60,15 +61,15 @@ Notebook 是支援各種程式設計語言的互動式環境。 Notebook 可讓�
 
 9. 現在，使用下列其中一種方法來執行資料格：
 
-   - 按下 **SHIFT + ENTER**。
+   - 按下 **SHIFT + ENTER** 。
    - 選取儲存格左邊的藍色播放圖示。
    - 選取工具列上的 [全部執行] 按鈕。
 
-   ![建立資料框架物件](./media/quickstart-apache-spark-notebook/spark-get-started-create-data-frame-object.png "Spark 作業的輸出")
+       ![建立資料框架物件](./media/quickstart-apache-spark-notebook/spark-get-started-create-data-frame-object.png)
 
 10. 如果 Apache Spark 集區執行個體尚未執行，則會自動啟動。 您可以在執行中的資料格底下，以及 Notebook 底部的狀態面板上，查看 Apache Spark 集區執行個體的狀態。 視集區的大小而定，啟動應該需要 2-5 分鐘的時間。 當程式碼完成執行之後，資料格下方的資訊會顯示其執行所花的時間及執行狀態。 在輸出儲存格中，您會看到輸出。
 
-    ![執行儲存格的輸出](./media/quickstart-apache-spark-notebook/run-cell-with-output.png "Spark 作業的輸出")
+    ![執行儲存格的輸出](./media/quickstart-apache-spark-notebook/run-cell-with-output.png)
 
 11. 資料現在存在於 DataFrame 中，您可以透過許多不同方式從中使用資料。 在本快速入門的其餘部分，您將需要不同的格式的資料。
 12. 在另一個儲存格中輸入下列程式碼並加以執行，這會建立一個 Spark 資料表、一個 CSV 和一個 Parquet 檔案，其中都會包含資料的複本：
@@ -119,7 +120,7 @@ Notebook 是支援各種程式設計語言的互動式環境。 Notebook 可讓�
 6. 在 [X 軸資料行] 欄位中，選取 [州]。
 7. 在 [Y 軸資料行] 欄位中，選取 [薪資]。
 8. 在 [彙總] 欄位中，選取 [平均]。
-9. 選取 [套用]。
+9. 選取 [套用]  。
 
    ![Azure Synapse Spark 中的圖表輸出](./media/quickstart-apache-spark-notebook/spark-get-started-query-chart-output.png "Azure Synapse Spark 中的圖表輸出")
 
@@ -129,7 +130,7 @@ Notebook 是支援各種程式設計語言的互動式環境。 Notebook 可讓�
     display(spark.sql('SELECT * FROM demo_df'))
     ```
 
-11. 先前執行的每個資料格都可以選擇移至**記錄伺服器**及**監視**。 按一下連結會帶您前往使用者體驗的不同部分。
+11. 先前執行的每個資料格都可以選擇移至 **記錄伺服器** 及 **監視** 。 按一下連結會帶您前往使用者體驗的不同部分。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -137,7 +138,7 @@ Azure Synapse 會將您的資料儲存在 Azure Data Lake Storage 中。 當 Spa
 
 由於集區費用是儲存體費用的許多倍，所以關閉非使用中的 Spark 執行個體較符合經濟效益。
 
-為確保 Spark 執行個體已關閉，請結束任何已連線的工作階段 (Notebook)。 當達到 Apache Spark 集區中指定的**閒置時間**時，集區就會關閉。 您也可以從 Notebook 底部的狀態列中選取 [結束工作階段]。
+為確保 Spark 執行個體已關閉，請結束任何已連線的工作階段 (Notebook)。 當達到 Apache Spark 集區中指定的 **閒置時間** 時，集區就會關閉。 您也可以從 Notebook 底部的狀態列中選取 [結束工作階段]。
 
 ## <a name="next-steps"></a>後續步驟
 

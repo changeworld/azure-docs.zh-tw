@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 659e7fcdbd2284110282d14fc89bd4d8d5ac2472
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 050252718e4796ff20d57be3fdeac98f0cf04fdf
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267018"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92785216"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>什麼是 Azure 應用程式閘道上的 Web 應用程式防火牆?
 
@@ -74,6 +74,7 @@ Azure 應用程式閘道上的 Azure Web 應用程式防火牆 (WAF) 可為 Web 
 - 建立自訂規則以符合您應用程式的特定需求。
 - 進行流量的地理篩選，以允許或阻止特定國家/區域取得應用程式的存取權。 (預覽)
 - 使用 Bot 風險降低規則集，保護您的應用程式不受 Bot 影響。 (預覽)
+- 檢查要求本文中的 JSON 和 XML
 
 ## <a name="waf-policy-and-rules"></a>WAF 原則和規則
 
@@ -121,8 +122,8 @@ Azure 應用程式閘道上的 Azure Web 應用程式防火牆 (WAF) 可為 Web 
 
 應用程式閘道 WAF 可以設定為在下列兩種模式中執行︰
 
-* **偵測模式**：監視並記錄所有威脅警示。 您應在 [診斷] 區段中開啟應用程式閘道的記錄診斷。 您也必須確保已選取並開啟 WAF 記錄。 在偵測模式中執行的 Web 應用程式防火牆不會封鎖傳入要求。
-* **預防模式**：封鎖規則偵測到的入侵和攻擊。 攻擊者會收到「403 未經授權存取」例外狀況，且連線會關閉。 預防模式會將這類攻擊記錄在 WAF 記錄中。
+* **偵測模式** ：監視並記錄所有威脅警示。 您應在 [診斷] 區段中開啟應用程式閘道的記錄診斷。 您也必須確保已選取並開啟 WAF 記錄。 在偵測模式中執行的 Web 應用程式防火牆不會封鎖傳入要求。
+* **預防模式** ：封鎖規則偵測到的入侵和攻擊。 攻擊者會收到「403 未經授權存取」例外狀況，且連線會關閉。 預防模式會將這類攻擊記錄在 WAF 記錄中。
 
 > [!NOTE]
 > 在實際執行環境中時，建議您以偵測模式短期執行新部署的 WAF。 這讓您有機會先取得[防火牆記錄](../../application-gateway/application-gateway-diagnostics.md#firewall-log)，並更新任何例外狀況或[自訂規則](./custom-waf-rules-overview.md)之後，再轉換到預防模式。 這有助於減少非預期的流量封鎖發生。

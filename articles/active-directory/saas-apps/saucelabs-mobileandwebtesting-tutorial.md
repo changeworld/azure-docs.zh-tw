@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 8dd5ca148474a1fe1464217f60c79e3815a5b26d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 087e2d7f2db8f27378b54675095e97256d6aae9b
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88547897"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92895094"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>教學課程：Azure Active Directory 與 Sauce Labs - 行動和 Web 測試整合
 
@@ -27,7 +27,7 @@ ms.locfileid: "88547897"
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Sauce Labs - Mobile and Web Testing (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -62,7 +62,7 @@ ms.locfileid: "88547897"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在 [搜尋] 方塊中，輸入 **Sauce Labs - 行動和 Web 測試**，從結果面板中選取 [Sauce Labs - 行動和 Web 測試]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在 [搜尋] 方塊中，輸入 **Sauce Labs - 行動和 Web 測試** ，從結果面板中選取 [Sauce Labs - 行動和 Web 測試]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
     ![結果清單中的 Sauce Labs - 行動和 Web 測試](common/search-new-app.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "88547897"
 
     ![Sauce Labs - 行動和 Web 測試網域及 URL 單一登入資訊](common/preintegrated.png)
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -122,15 +122,15 @@ ms.locfileid: "88547897"
 
 2. 按一下 [使用者圖示]  ，然後選取 [小組管理]  索引標籤。
 
-    ![設定單一登入](./media/saucelabs-mobileandwebtesting-tutorial/configure1.png)
+    ![螢幕擷取畫面：顯示 [使用者] 圖示並已選取 [小組管理] 下拉式選單。](./media/saucelabs-mobileandwebtesting-tutorial/configure1.png)
 
 3. 在文字方塊中輸入您的 [網域名稱]  。
 
-    ![設定單一登入](./media/saucelabs-mobileandwebtesting-tutorial/configure2.png)
+    ![螢幕擷取畫面：在文字方塊中顯示範例網域名稱。](./media/saucelabs-mobileandwebtesting-tutorial/configure2.png)
 
 4. 按一下 [設定]  索引標籤。
 
-    ![設定單一登入](./media/saucelabs-mobileandwebtesting-tutorial/configure3.png)
+    ![螢幕擷取畫面：顯示已在 [單一登入已啟用] 底下選取 [設定] 索引標籤。](./media/saucelabs-mobileandwebtesting-tutorial/configure3.png)
 
 5. 在 [設定單一登入]  區段中，執行下列步驟。
 
@@ -158,7 +158,7 @@ ms.locfileid: "88547897"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`  
     例如， BrittaSimon@contoso.com
@@ -198,19 +198,18 @@ ms.locfileid: "88547897"
 本節會在 Sauce Labs - Mobile and Web Testing 中建立名為 Britta Simon 的使用者。 Sauce Labs - Mobile and Web Testing 支援依預設啟用的 Just-In-Time 使用者佈建。 在這一節沒有您需要進行的動作項目。 如果 Sauce Labs - Mobile and Web Testing 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
 
 > [!Note]
-> 如果您需要手動建立使用者，請連絡  [Sauce Labs - Mobile and Web Testing 支援小組](mailto:support@saucelabs.com)。
+> 如果您需要手動建立使用者，請連絡 [Sauce Labs - 行動和 Web 測試支援小組](mailto:support@saucelabs.com)。
 
 ### <a name="test-single-sign-on"></a>測試單一登入
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您按一下存取面板中的 Sauce Labs - Mobile and Web Testing 圖格時，應該會自動登入您設定 SSO 的 Sauce Labs - Mobile and Web Testing。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您按一下存取面板中的 Sauce Labs - Mobile and Web Testing 圖格時，應該會自動登入您設定 SSO 的 Sauce Labs - Mobile and Web Testing。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

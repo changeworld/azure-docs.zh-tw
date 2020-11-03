@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb05660b15fc09eb0d24a869f16f466a99f91211
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 31e4f80aa8ffec96538b53ac64df6918c632a950
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90969016"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892463"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>使用 Azure CLI 在 Azure VM 上設定 Azure 資源的受控識別
 
@@ -33,13 +33,13 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 - 在 Azure VM 上啟用和停用系統指派受控識別
 - 在 Azure VM 上新增和移除使用者指派受控識別
 
-## <a name="prerequisites"></a>先決條件
+如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
 
-- 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#managed-identity-types)**。
-- 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
-- 若要執行範例指令碼，您有兩個選項：
-    - 使用 [Azure Cloud Shell](../../cloud-shell/overview.md)，您可以使用程式碼區塊右上角的 [試用] 按鈕來開啟。
-    - 藉由安裝最新版本的 [Azure CLI](/cli/azure/install-azure-cli)，在本機執行指令碼，然後使用 [az login](/cli/azure/reference-index#az-login) 來登入 Azure。 請使用您想用來建立資源，且已與 Azure 訂用帳戶建立關聯的帳戶。
+## <a name="prerequisites"></a>Prerequisites
+
+- 如果不熟悉 Azure 資源的受控識別，請參閱[什麼是 Azure 資源受控識別？](overview.md)。 若要了解系統指派和使用者指派的受控識別類型，請參閱[受控識別類型](overview.md#managed-identity-types)。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="system-assigned-managed-identity"></a>系統指派的受控識別
 
@@ -55,7 +55,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
    az group create --name myResourceGroup --location westus
    ```
 
-1. 使用 [az vm create](/cli/azure/vm/#az-vm-create) 建立 VM。 下列範例會根據 `--assign-identity` 參數的要求，建立具有系統指派受控識別且名為 myVM** 的虛擬機器。 `--admin-username` 和 `--admin-password` 參數會指定登入虛擬機器的系統管理使用者名稱和密碼帳戶。 請針對您的環境適當地更新這些值： 
+1. 使用 [az vm create](/cli/azure/vm/#az-vm-create) 建立 VM。 下列範例會根據 `--assign-identity` 參數的要求，建立具有系統指派受控識別且名為 myVM 的虛擬機器。 `--admin-username` 和 `--admin-password` 參數會指定登入虛擬機器的系統管理使用者名稱和密碼帳戶。 請針對您的環境適當地更新這些值： 
 
    ```azurecli-interactive 
    az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --generate-ssh-keys --assign-identity --admin-username azureuser --admin-password myPassword12

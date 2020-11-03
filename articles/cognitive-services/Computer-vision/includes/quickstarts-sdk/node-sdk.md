@@ -7,15 +7,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: include
-ms.date: 01/22/2020
+ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: d0e94066c6e8ab60a52761898e49bdf11997a062
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9c0ed50cc0f7ef3580d1441fe2f361065e6f8524
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91309809"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886488"
 ---
 <a name="HOLTop"></a>
 
@@ -28,7 +28,7 @@ ms.locfileid: "91309809"
 * 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="建立電腦視覺資源"  target="_blank">建立電腦視覺資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
     * 您需要所建立之資源的金鑰和端點，以將應用程式連線至電腦視覺服務。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
     * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
-* 為金鑰和端點 URL [建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)，名稱分別為 `COMPUTER_VISION_SUBSCRIPTION_KEY` 和 `COMPUTER_VISION_ENDPOINT`。
+
 
 ## <a name="setting-up"></a>設定
 
@@ -56,17 +56,21 @@ npm install @azure/cognitiveservices-computervision
 
 您應用程式的 `package.json` 檔案會隨著相依性而更新。
 
-### <a name="prepare-the-nodejs-script"></a>准辦 Node.js 指令碼
-
 建立新檔案 index.js，並在文字編輯器中開啟它。 新增下列 import 陳述式。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imports)]
 
-然後，定義函式 `computerVision`，然後使用主要函式和回呼函式宣告非同步序列。 您會將快速入門程式碼新增至主要函式，然後在指令碼底部呼叫 `computerVision`。
+> [!TIP]
+> 想要立刻檢視整個快速入門程式碼檔案嗎？ 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上找到該檔案，其中包含本快速入門中的程式碼範例。
 
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_begin)]
+為資源的 Azure 端點和金鑰建立變數。
 
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_end)]
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_vars)]
+
+> [!IMPORTANT]
+> 前往 Azure 入口網站。 如果您在 [必要條件] 區段中建立的 [產品名稱] 資源成功部署，請按一下 [後續步驟] 底下的 [前往資源] 按鈕。 您可以在 [資源管理] 底下的 [金鑰和端點] 頁面中找到金鑰和端點。 
+>
+> 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)一文。
 
 ## <a name="object-model"></a>物件模型
 
@@ -87,20 +91,23 @@ npm install @azure/cognitiveservices-computervision
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-為資源的 Azure 端點和金鑰建立變數。 如果您在啟動應用程式後才建立環境變數，則必須先關閉執行該應用程式的編輯器、IDE 或殼層，再重新加以開啟，才能存取該變數。
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_vars)]
 
 使用端點和金鑰來具現化用戶端。 使用您的金鑰和端點建立 [ApiKeyCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.apikeycredentials?view=azure-python) 物件，然後使用該物件建立 [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) 物件。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_client)]
+
+然後，定義函式 `computerVision`，然後使用主要函式和回呼函式宣告非同步序列。 您會將快速入門程式碼新增至主要函式，然後在指令碼底部呼叫 `computerVision`。 本快速入門中的其餘程式碼會放在 `computerVision` 函式內。
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_begin)]
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_end)]
 
 ## <a name="analyze-an-image"></a>分析影像
 
 本節中的程式碼會分析遠端影像，以擷取各種視覺功能。 您可以在用戶端物件的 **analyzeImage** 方法中執行這些作業，也可以使用個別的方法來呼叫它們。 如需詳細資訊，請參閱[參考文件](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)。
 
 > [!NOTE]
-> 您也可以分析本機影像。 如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上的範例程式碼。
+> 您也可以分析本機影像。 請參閱 [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) 方法，例如 **analyzeImageInStream** 。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上的範例程式碼。
 
 ### <a name="get-image-description"></a>取得影像說明
 
@@ -212,22 +219,27 @@ npm install @azure/cognitiveservices-computervision
 
 電腦視覺可以擷取影像中的可見文字，並將其轉換成字元串流。 這個範例會使用讀取作業。
 
-> [!NOTE]
-> 您也可以從本機影像讀取文字。 如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上的範例程式碼。
-
 ### <a name="set-up-test-images"></a>設定測試影像
 
 儲存您要從中擷取文字之影像的 URL 參考。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_images)]
 
+> [!NOTE]
+> 您也可以從本機影像讀取文字。 請參閱 [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) 方法，例如 **readInStream** 。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上的範例程式碼。
+
 ### <a name="call-the-read-api"></a>呼叫讀取 API
 
-新增下面的程式碼，以針對指定的影像呼叫 `readTextFromURL` 和 `readTextFromFile` 函式。
+在您的函式中定義下列欄位，以表示讀取呼叫狀態值。
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_statuses)]
+
+
+新增下面的程式碼，以針對指定的影像呼叫 `readTextFromURL` 函式。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
 
-定義 `readTextFromURL` 和 `readTextFromFile` 函式。 這兩個函式會在用戶端物件上呼叫 **read** 和 **readInStream** 方法，這會傳回作業識別碼並啟動非同步程序來讀取影像的內容。 然後，其會使用作業識別碼來檢查作業狀態，直到傳回結果為止。 其會接著傳回擷取的結果。
+定義 `readTextFromURL` 函式。 這會在用戶端物件上呼叫 **read** 方法，以傳回作業識別碼並啟動非同步程序來讀取影像的內容。 然後系統會使用作業識別碼來檢查作業狀態，直到傳回結果為止。 接著會傳回擷取的結果。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_helper)]
 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: d0e677377037203a6a67150d985efb30e09af86e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e415e0979e7f45531093993b0524a1bb556d339b
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89321825"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92886489"
 ---
 <a name="HOLTop"></a>
 
@@ -121,8 +121,8 @@ touch sample-app.go
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_analyze_url)]
 
-> [!NOTE]
-> 您也可以分析本機影像。 如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go) 上的範例程式碼。
+> [!TIP]
+> 您也可以分析本機影像。 請參閱 [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient) 方法，例如 **DescribeImageInStream** 。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go) 上的範例程式碼。
 
 ### <a name="specify-visual-features"></a>指定視覺特徵
 
@@ -210,12 +210,12 @@ touch sample-app.go
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_readinmain)]
 
-> [!NOTE]
-> 您也可以從本機影像擷取文字。 如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go) 上的範例程式碼。
+> [!TIP]
+> 您也可以從本機影像擷取文字。 請參閱 [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient) 方法，例如 **BatchReadFileInStream** 。 或如需本機影像的相關案例，請參閱 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go) 上的範例程式碼。
 
 ### <a name="call-the-read-api"></a>呼叫讀取 API
 
-定義用來讀取文字的新函式 `RecognizeTextReadAPIRemoteImage`。 新增下列程式碼，以針對指定的影像呼叫 **BatchReadFile**方法。 此方法會傳回作業識別碼，並啟動非同步程序來讀取影像的內容。
+定義用來讀取文字的新函式 `RecognizeTextReadAPIRemoteImage`。 新增下列程式碼，以針對指定的影像呼叫 **BatchReadFile** 方法。 此方法會傳回作業識別碼，並啟動非同步程序來讀取影像的內容。
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_read_call)]
 
