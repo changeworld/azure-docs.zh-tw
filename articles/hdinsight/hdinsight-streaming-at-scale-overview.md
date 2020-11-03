@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 006310f1a0efa69881bbe6d6ea4403b9c50402e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a04ce77c7e81a3a73b87eaf5790b383dece35d86
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75435384"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92535224"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight 中的大規模串流
 
 即時的 big data 解決方案可針對正在移動的資料採取行動。 通常此資料是在抵達時最具價值。 如果傳入資料流變大到無法在該時間處理的程度，您可能就需要為資源進行節流。 或者，HDInsight 叢集也可以視需要新增節點來擴大規模，以配合您的串流解決方案。
 
-在串流應用程式中，一或多個資料來源會產生事件 (有時每秒會有數百萬個事件)，系統必須在不捨棄任何有用資訊的情況下快速消化這些事件。 處理連入事件時，會由服務 (例如 [Apache Kafka](kafka/apache-kafka-introduction.md) 或[事件中樞](https://azure.microsoft.com/services/event-hubs/)) 使用「串流緩衝處理」** (也稱為「事件佇列」**) 來處理。 在您收集事件之後，可以接著使用「串流處理」** 層 內的即時分析系統 (例如 [Apache Storm](storm/apache-storm-overview.md) 或 [Apache Spark 串流](spark/apache-spark-streaming-overview.md)) 來分析資料。 處理過的資料可以儲存在長期的儲存體系統中 (例如 [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/))，並即時顯示在商業智慧儀表板上 (例如 [Power BI](https://powerbi.microsoft.com)、Tableau 或自訂網頁)。
+在串流應用程式中，一或多個資料來源會產生事件 (有時每秒會有數百萬個事件)，系統必須在不捨棄任何有用資訊的情況下快速消化這些事件。 處理連入事件時，會由服務 (例如 [Apache Kafka](kafka/apache-kafka-introduction.md) 或[事件中樞](https://azure.microsoft.com/services/event-hubs/)) 使用「串流緩衝處理」 (也稱為「事件佇列」) 來處理。 在您收集事件之後，可以接著使用「串流處理」層 內的即時分析系統 (例如 [Apache Storm](storm/apache-storm-overview.md) 或 [Apache Spark 串流](spark/apache-spark-streaming-overview.md)) 來分析資料。 處理過的資料可以儲存在長期的儲存體系統中 (例如 [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/))，並即時顯示在商業智慧儀表板上 (例如 [Power BI](https://powerbi.microsoft.com)、Tableau 或自訂網頁)。
 
 ![Azure HDInsight 串流模式](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
 
@@ -39,7 +39,7 @@ Apache Storm 是一個容錯的分散式開放原始碼計算系統，此系統�
 
 Spark Streamin 是 Spark 的延伸，可讓您重複使用用於執行批次處理的相同程式碼。 您可以將批次和互動式查詢結合在相同的應用程式中。 與風暴不同的是，Spark 串流只提供具狀態的處理語義。 與 [Kafka 直接 API](https://spark.apache.org/docs/latest/streaming-kafka-integration.html)搭配使用時，可確保所有 Kafka 資料只會由 Spark 資料流程接收一次，因此可以達到端對端正好一次的保證。 Spark Streaming 的其中一個優點就是容錯功能，可在叢集內使用多個節點的情況下，快速復原發生錯誤的節點。
 
-如需詳細資訊，請參閱[什麼是 Apache Spark 串流？](hdinsight-spark-streaming-overview.md)。
+如需詳細資訊，請參閱[什麼是 Apache Spark 串流？](./spark/apache-spark-streaming-overview.md)。
 
 ## <a name="scaling-a-cluster"></a>調整叢集規模
 
@@ -61,7 +61,7 @@ Apache Spark 可根據應用程式需求，使用下列三個主要參數來設�
 
 您可以在叢集層級針對在叢集上執行的所有應用程式設定這三個組態參數，也可以針對每個個別應用程式指定這些參數。 如需詳細資訊，請參閱[管理 Apache Spark 的資源](spark/apache-spark-resource-manager.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [建立和監視 Azure HDInsight 中的 Apache Storm 拓撲](storm/apache-storm-quickstart.md)
 * [Apache Storm on HDInsight 的範例拓撲](storm/apache-storm-example-topology.md)

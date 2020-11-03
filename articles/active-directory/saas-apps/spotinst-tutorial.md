@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 3b8297175c24aac132fd7d83580e0889e0da4730
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9c9ac87e655cf9178d58f04b502f7e781d1fef7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88587949"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520535"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Spotinst 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88587949"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Spotinst。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -49,7 +49,7 @@ ms.locfileid: "88587949"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Spotinst**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Spotinst** 。
 1. 從結果面板中選取 [Spotinst]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-spotinst"></a>設定及測試 Spotinst 的 Azure AD 單一登入
@@ -70,15 +70,15 @@ ms.locfileid: "88587949"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Spotinst]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
 1. 在 [基本 SAML 組態] 區段中，若您想要以 IDP 起始模式設定應用程式，請完成下列步驟：
 
-   1. 確定將**回覆 URL** 設為： https://console.spotinst.com/auth/saml 。
-   1. 在**轉送狀態**中，輸入您的 Spotinst 組織識別碼；您也可以在 **SSO** 索引標籤上確認。
+   1. 確定將 **回覆 URL** 設為： https://console.spotinst.com/auth/saml 。
+   1. 在 **轉送狀態** 中，輸入您的 Spotinst 組織識別碼；您也可以在 **SSO** 索引標籤上確認。
    1. **登入 URL** 必須是空的。
 
 1. 按一下 [儲存]。
@@ -99,7 +99,7 @@ ms.locfileid: "88587949"
 
     ![憑證下載連結](common/metadataxml.png)
 
-1. 在 [設定 Spotinst]**** 區段上，根據您的需求複製適當的 URL。
+1. 在 [設定 Spotinst] 區段上，根據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -120,7 +120,7 @@ ms.locfileid: "88587949"
 在本節中，您會將 Spotinst 的存取權授與 B.Simon，使其能夠使用 Azure 單一登入。
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]，然後選取 [所有應用程式]。
-1. 在應用程式清單中，選取 [Spotinst]****。
+1. 在應用程式清單中，選取 [Spotinst]。
 1. 在應用程式的概觀頁面中尋找 [管理] 區段，然後選取 [使用者和群組]。
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
@@ -137,19 +137,19 @@ ms.locfileid: "88587949"
 
 1. 在不同的網頁瀏覽器視窗中，以安全性系統管理員身分登入 Spotinst。
 
-2. 按一下畫面右上方的 [使用者圖示]****，然後按一下 [設定]****。
+2. 按一下畫面右上方的 [使用者圖示]，然後按一下 [設定]。
 
-    ![Spotinst 設定](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
+    ![此螢幕擷取畫面顯示從 [使用者] 圖示選取的 [設定]。](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
-3. 按一下頂端的 [安全性]**** 索引標籤，然後選取 [識別提供者]**** 並執行下列步驟：
+3. 按一下頂端的 [安全性] 索引標籤，然後選取 [識別提供者] 並執行下列步驟：
 
     ![Spotinst 安全性](./media/spotinst-tutorial/tutorial_spotinst_security.png)
 
-    a. 複製執行個體的 [轉送狀態]**** 值，並將它貼到 Azure 入口網站 [基本 SAML 設定]**** 區段的 [轉送狀態]**** 文字方塊中。
+    a. 複製執行個體的 [轉送狀態] 值，並將它貼到 Azure 入口網站 [基本 SAML 設定] 區段的 [轉送狀態] 文字方塊中。
 
-    b. 按一下 [瀏覽]****，上傳您從 Azure 入口網站下載的中繼資料 xml 檔案
+    b. 按一下 [瀏覽]，上傳您從 Azure 入口網站下載的中繼資料 xml 檔案
 
-    c. 按一下 **[儲存]**。
+    c. 按一下 **[儲存]** 。
 
 ### <a name="create-spotinst-test-user"></a>建立 Spotinst 測試使用者
 
@@ -159,23 +159,23 @@ ms.locfileid: "88587949"
 
    a. 在不同的網頁瀏覽器視窗中，以安全性系統管理員身分登入 Spotinst。
 
-   b. 按一下畫面右上方的 [使用者圖示]****，然後按一下 [設定]****。
+   b. 按一下畫面右上方的 [使用者圖示]，然後按一下 [設定]。
 
-    ![Spotinst 設定](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
+    ![此螢幕擷取畫面顯示從 [使用者] 圖示選取的 [設定]。](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
-    c. 按一下 [使用者]****，然後選取 [新增使用者]****。
+    c. 按一下 [使用者]，然後選取 [新增使用者]。
 
-    ![Spotinst 設定](./media/spotinst-tutorial/adduser1.png)
+    ![此螢幕擷取畫面顯示從 [使用者] 選取的 [新增使用者]。](./media/spotinst-tutorial/adduser1.png)
 
     d. 在 [新增使用者] 區段中，執行下列步驟：
 
-    ![Spotinst 設定](./media/spotinst-tutorial/adduser2.png)
+    ![此螢幕擷取畫面顯示 [新增使用者] 區段，您可以在其中輸入所述的值。](./media/spotinst-tutorial/adduser2.png)
 
-    * 在 [全名]**** 文字方塊中，輸入使用者的全名，例如 **BrittaSimon**。
+    * 在 [全名] 文字方塊中，輸入使用者的全名，例如 **BrittaSimon** 。
 
-    * 在 [電子郵件]**** 文字方塊中，輸入使用者的電子郵件地址，例如 `brittasimon\@contoso.com`。
+    * 在 [電子郵件] 文字方塊中，輸入使用者的電子郵件地址，例如 `brittasimon\@contoso.com`。
 
-    * 針對 [組織角色、帳戶角色和帳戶]**** 選取組織特定詳細資料。
+    * 針對 [組織角色、帳戶角色和帳戶] 選取組織特定詳細資料。
 
 2. 如果您已經以 **IDP** 起始模式設定應用程式，則這個區段沒有適用的動作項目。 Spotinst 支援預設啟用的 Just-In-Time 佈建。 當您嘗試存取 Spotinst 時，如果 Spotinst 還沒有使用者，它將會建立新的使用者。
 
@@ -183,15 +183,14 @@ ms.locfileid: "88587949"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Spotinst] 圖格時，應該會自動登入您已設定 SSO 的 Spotinst。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Spotinst] 圖格時，應該會自動登入您已設定 SSO 的 Spotinst。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Spotinst](https://aad.portal.azure.com/)
-

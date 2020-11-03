@@ -6,18 +6,22 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 10/22/2020
 ms.author: banders
-ms.openlocfilehash: ae504072e2a2cc481217933478ccbfb7bc3372b3
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 69d6544485e356741634749dd91ba6485cfbb31c
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132358"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460677"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>在訂閱者與 CSP 之間轉移 Azure 訂用帳戶
 
 本文概述在雲端解決方案提供者 (CSP) 合作夥伴及其客戶往返轉移 Azure 訂用帳戶的步驟。 這裡的資訊適用於 Azure 訂閱者，以協助其與合作夥伴協調。 Microsoft 合作夥伴用於轉移程序的資訊記載於[了解如何將客戶的 Azure 訂用帳戶轉移給另一個合作夥伴](/partner-center/switch-azure-subscriptions-to-a-different-partner)。
+
+開始傳送要求之前，您應該下載任何想要保留的成本和帳單資訊或將其匯出。 計費和使用量資訊不會與訂用帳戶一起轉移。 如需有關匯出成本管理資料的詳細資訊，請參閱[建立和管理匯出的資料](../costs/tutorial-export-acm-data.md)。 如需下載發票和使用量資料的詳細資訊，請參閱[下載或檢視您的 Azure 帳單發票和每日使用量資料](download-azure-invoice-daily-usage-date.md)。
+
+如果您有任何現有的保留，系統會在您轉移訂用帳戶之後停止套用這些保留。 在您轉移訂用帳戶之前，請務必[取消所有保留並申請退款](../reservations/exchange-and-refund-azure-reservations.md)。
 
 ## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>將 EA 訂用帳戶轉移給 CSP 合作夥伴
 

@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: 翻譯工具, 翻譯工具服務, 翻譯文字, 進行文字音譯, 語言偵測
-ms.openlocfilehash: e5b0bc17e8df1d82fb23a098f857be4fea13b982
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ca86ce1dc015c8d7ee3bc83a6d7e3279a146f195
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318835"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517033"
 ---
 # <a name="quickstart-get-started-with-translator"></a>快速入門：開始使用翻譯工具
 
@@ -123,7 +123,7 @@ ms.locfileid: "91318835"
 
 ## <a name="keys-and-endpoints"></a>[金鑰和端點]
 
-為方便說明，此頁面上的範例會使用硬式編碼的金鑰和端點。 切記，**完成時請從程式碼中移除金鑰**，且**切勿公開發佈金鑰**。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)一文。
+為方便說明，此頁面上的範例會使用硬式編碼的金鑰和端點。 切記， **完成時請從程式碼中移除金鑰** ，且 **切勿公開發佈金鑰** 。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)一文。
 
 ## <a name="translate-text"></a>翻譯文字 
 
@@ -2440,6 +2440,12 @@ print(json.dumps(response, sort_keys=True, ensure_ascii=False, indent=4, separat
     }
 ]
 ```
+
+## <a name="troubleshooting"></a>疑難排解
+
+### <a name="java-users"></a>Java 使用者
+
+如果遇到連線問題，可能是您的 SSL 憑證已過期。 若要解決此問題，請將 [DigiCertGlobalRootG2.crt](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt) 安裝到您的私人存放區。 
 
 ## <a name="next-steps"></a>後續步驟
 

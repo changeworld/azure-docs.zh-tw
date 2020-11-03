@@ -11,12 +11,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2018
-ms.openlocfilehash: e63180a3c4b8de06ab9e26afc8fff322188291cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27425717f6d96953326edde621966530d240c015
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81418978"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92632357"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>在 Azure Data Factory 中使用 Databricks Notebook 活動執行 Databricks Notebook
 
@@ -42,7 +42,7 @@ ms.locfileid: "81418978"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-  - **Azure Databricks 工作區**。 [建立 Databricks 工作區](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)或使用現有的工作區。 您可在 Azure Databricks 工作區中建立 Python Notebook。 然後執行 Notebook，並使用 Azure Data Factory 將參數傳遞給該 Notebook。
+  - **Azure Databricks 工作區** 。 [建立 Databricks 工作區](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)或使用現有的工作區。 您可在 Azure Databricks 工作區中建立 Python Notebook。 然後執行 Notebook，並使用 Azure Data Factory 將參數傳遞給該 Notebook。
 
 ## <a name="create-a-data-factory"></a>建立 Data Factory
 
@@ -52,9 +52,9 @@ ms.locfileid: "81418978"
 
     ![建立新的資料處理站](media/transform-data-using-databricks-notebook/new-azure-data-factory-menu.png)
 
-1.  在 [新增資料處理站]  窗格的 [名稱]  下，輸入 **ADFTutorialDataFactory**。
+1.  在 [新增資料處理站]  窗格的 [名稱]  下，輸入 **ADFTutorialDataFactory** 。
 
-    Azure Data Factory 的名稱必須是 *全域唯一的*。 如果您看到下列錯誤，請變更資料處理站的名稱。 (例如，使用 **\<yourname\>ADFTutorialDataFactory**)。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory - 命名規則](https://docs.microsoft.com/azure/data-factory/naming-rules)一文。
+    Azure Data Factory 的名稱必須是 *全域唯一的* 。 如果您看到下列錯誤，請變更資料處理站的名稱。 (例如，使用 **\<yourname\>ADFTutorialDataFactory** )。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory - 命名規則](./naming-rules.md)一文。
 
     ![提供新資料處理站的名稱](media/transform-data-using-databricks-notebook/new-azure-data-factory.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "81418978"
     
     - 選取 [建立新的]  ，然後輸入資源群組的名稱。
 
-    本快速入門的某些步驟是假設您使用 **ADFTutorialResourceGroup** 作為資源群組名稱。 若要了解資源群組，請參閱 [使用資源群組管理您的 Azure 資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。
+    本快速入門的某些步驟是假設您使用 **ADFTutorialResourceGroup** 作為資源群組名稱。 若要了解資源群組，請參閱 [使用資源群組管理您的 Azure 資源](../azure-resource-manager/management/overview.md)。
 
 1.  針對 [版本]  ，選取 [V2]  。
 
@@ -100,9 +100,9 @@ ms.locfileid: "81418978"
 
 1.  在 [新增連結服務]  視窗中，完成下列步驟：
     
-    1.  針對 [名稱]  ，輸入 ***AzureDatabricks\_LinkedService***
+    1.  針對 [名稱]，輸入 * *_AzureDatabricks\_LinkedService_* _
     
-    1.  選取您要在其中執行 Notebook 的適當 **Databricks 工作區**
+    1.  選取您要在其中執行筆記本的適當 *Databricks 工作區*
 
     1.  針對 [選取叢集]  ，選取 [新增作業叢集] 
     
@@ -114,7 +114,7 @@ ms.locfileid: "81418978"
 
     1.  針對 [叢集節點類型]  ，請為本教學課程選取 [一般用途 (HDD)]  分類下的 [標準\_D3\_v2]  。 
     
-    1.  針對 [背景工作角色]  ，輸入 **2**。
+    1.  針對 [背景工作角色]  ，輸入 **2** 。
     
     1.  選取 [完成]  。
 
@@ -126,7 +126,7 @@ ms.locfileid: "81418978"
 
     ![用於建立新管線的按鈕](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image9.png)
 
-1.  建立要用於 [管線]  的**參數**。 稍後您會將此參數傳遞給 Databricks Notebook 活動。 在空的管線中，按一下 [參數]  索引標籤，然後按一下 [新增]  並將它命名為 '**name**'。
+1.  建立要用於 [管線]  的 **參數** 。 稍後您會將此參數傳遞給 Databricks Notebook 活動。 在空的管線中，按一下 [參數]  索引標籤，然後按一下 [新增]  並將它命名為 ' **name** '。
 
     ![建立新的參數](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image10.png)
 
@@ -144,15 +144,15 @@ ms.locfileid: "81418978"
 
     c. 切換至 [設定]  索引標籤
 
-    c. 瀏覽以選取 Databricks **Notebook 路徑**。 讓我們建立 Notebook 並在此指定路徑。 您可以依照下列步驟取得 Notebook 路徑。
+    c. 瀏覽以選取 Databricks **Notebook 路徑** 。 讓我們建立 Notebook 並在此指定路徑。 您可以依照下列步驟取得 Notebook 路徑。
 
        1. 啟動您的 Azure Databricks 工作區
 
-       1. 在工作區中建立**新資料夾**，並將它稱為 **adftutorial**。
+       1. 在工作區中建立 **新資料夾** ，並將它稱為 **adftutorial** 。
 
           ![建立新的資料夾](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       1. [建立新的 Notebook](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) \(英文\) (Python)，在 **adftutorial** 資料夾下將它稱為 **mynotebook**，然後按一下 [建立]  。
+       1. [建立新的 Notebook](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) \(英文\) (Python)，在 **adftutorial** 資料夾下將它稱為 **mynotebook** ，然後按一下 [建立]  。
 
           ![建立新的 Notebook](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 
@@ -173,13 +173,13 @@ ms.locfileid: "81418978"
 
        1. 在此例中，[Notebook 路徑]  是 **/adftutorial/mynotebook**
 
-1.  切換回 **Data Factory UI 撰寫工具**。 瀏覽至 [Notebook1 活動]  之下的 [設定]  索引標籤。
+1.  切換回 **Data Factory UI 撰寫工具** 。 瀏覽至 [Notebook1 活動]  之下的 [設定]  索引標籤。
 
     a.  [新增參數]  至 Notebook 活動。 您可使用先前新增至 [管線]  的相同參數。
 
        ![新增參數](media/transform-data-using-databricks-notebook/new-adf-parameters.png)
 
-    b.  將參數命名為 **input**，並提供此值作為 **\@pipeline().parameters.name** 運算式。
+    b.  將參數命名為 **input** ，並提供此值作為 **\@pipeline().parameters.name** 運算式。
 
 1.  若要驗證管線，選取工具列上的 [驗證]  按鈕。 若要關閉驗證視窗，請選取 **\>\>** (向右箭頭) 按鈕。
 
@@ -215,11 +215,11 @@ ms.locfileid: "81418978"
 
 ## <a name="verify-the-output"></a>驗證輸出
 
-您可以登入 **Azure Databricks 工作區**，移至 [叢集]  並可看到 [作業]  狀態為「暫止執行」、「執行中」或「已終止」  。
+您可以登入 **Azure Databricks 工作區** ，移至 [叢集]  並可看到 [作業]  狀態為「暫止執行」、「執行中」或「已終止」  。
 
 ![檢視作業叢集和作業](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image24.png)
 
-您可以按一下**作業名稱**並瀏覽以查看進一步的詳細資料。 對於成功的執行，您可以驗證所傳遞的參數和 Python Notebook 的輸出。
+您可以按一下 **作業名稱** 並瀏覽以查看進一步的詳細資料。 對於成功的執行，您可以驗證所傳遞的參數和 Python Notebook 的輸出。
 
 ![檢視執行詳細資料和輸出](media/transform-data-using-databricks-notebook/databricks-output.png)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2020
 ms.author: jeedes
-ms.openlocfilehash: c99d1359c1d354e7464d473c6d859afde51577a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 021497fa7766b7eecfa935d4186ecc98edef8d61
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88523294"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92633683"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whosoffice"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 WhosOffice 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88523294"
 * 讓使用者使用其 Azure AD 帳戶自動登入 WhosOffice。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -40,7 +40,7 @@ ms.locfileid: "88523294"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * WhosOffice 支援 **SP 和 IDP** 起始的 SSO
-* 設定 WhosOffice 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 WhosOffice 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 > [!NOTE]
 > 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
@@ -53,7 +53,7 @@ ms.locfileid: "88523294"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **WhosOffice**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **WhosOffice** 。
 1. 從結果面板選取 [WhosOffice]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -75,7 +75,7 @@ ms.locfileid: "88523294"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [WhosOffice]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -89,7 +89,7 @@ ms.locfileid: "88523294"
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<SUBDOMAIN>.my.whosoffice.com/int/azure`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的回覆 URL 與登入 URL 更新這些值。 請連絡 [WhosOffice 用戶端支援小組](mailto:support@whosoffice.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的回覆 URL 與登入 URL 更新這些值。 請連絡 [WhosOffice 用戶端支援小組](mailto:support@whosoffice.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -135,19 +135,19 @@ ms.locfileid: "88523294"
 
 1. 按一下 [設定]  並選取 [公司]  。
 
-    ![WhosOffice 組態](./media/whosoffice-tutorial/configuration1.png)
+    ![螢幕擷取畫面：顯示已從 [設定] 選取 [公司]。](./media/whosoffice-tutorial/configuration1.png)
 
 1. 按一下 [應用程式/整合]  。
 
-    ![WhosOffice 組態](./media/whosoffice-tutorial/configuration2.png)
+    ![螢幕擷取畫面：顯示已從 [公司設定] 選取 [應用程式/整合]。](./media/whosoffice-tutorial/configuration2.png)
 
 1. 從提供者下拉式清單選取 [Microsoft Azure]  ，然後按一下 [啟用登入提供者]  。
 
-    ![WhosOffice 組態](./media/whosoffice-tutorial/configuration3.png)
+    ![螢幕擷取畫面：顯示已為 Microsoft Azure 選取 [啟用登入提供者]。](./media/whosoffice-tutorial/configuration3.png)
 
 1. 按一下 [上傳]  選項，上傳從 Azure 入口網站下載的同盟中繼資料檔案。
     
-    ![WhosOffice 組態](./media/whosoffice-tutorial/configuration4.png)
+    ![螢幕擷取畫面：顯示中繼資料檔案的 [上傳] 選項。](./media/whosoffice-tutorial/configuration4.png)
 
 ### <a name="create-whosoffice-test-user"></a>建立 WhosOffice 測試使用者
 
@@ -155,30 +155,30 @@ ms.locfileid: "88523294"
 
 1. 按一下 [設定]  並選取 [使用者]  。
 
-    ![WhosOffice 組態](./media/whosoffice-tutorial/user1.png)
+    ![螢幕擷取畫面：顯示已從 [設定] 選取 [使用者]。](./media/whosoffice-tutorial/user1.png)
 
 1. 選取 [建立新使用者]  。
 
-    ![WhosOffice 組態](./media/whosoffice-tutorial/user2.png)
+    ![螢幕擷取畫面：顯示已選取 [建立新使用者]。](./media/whosoffice-tutorial/user2.png)
 
 1. 依據您的組織需求，提供使用者所需的詳細資料。
 
-    ![WhosOffice 組態](./media/whosoffice-tutorial/user3.png)
+    ![螢幕擷取畫面：顯示 [新增使用者] 對話方塊，您可以在其中輸入使用者資料。](./media/whosoffice-tutorial/user3.png)
 
 ## <a name="test-sso"></a>測試 SSO 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 WhosOffice 圖格時，應該會自動登入您已設定 SSO 的 WhosOffice。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 WhosOffice 圖格時，應該會自動登入您已設定 SSO 的 WhosOffice。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 WhosOffice](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)

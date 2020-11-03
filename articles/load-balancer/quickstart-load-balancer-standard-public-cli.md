@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/23/2020
+ms.date: 10/23/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: d78b67cbd811ae0f3b7cea8aec119d05464c124a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 454dc3ddd03be319c23df67231ea2ab08b95c52b
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047789"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92544914"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>快速入門：使用 Azure CLI 建立公用負載平衡器以平衡 VM 的負載
 
@@ -42,12 +42,12 @@ Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
 使用 [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) 來建立資源群組：
 
-* 具名 **myResourceGroupLB**。 
+* 名為 **CreatePubLBQS-rg** 。 
 * 在 **eastus** 位置中。
 
 ```azurecli-interactive
   az group create \
-    --name myResourceGroupLB \
+    --name CreatePubLBQS-rg \
     --location eastus
 ```
 ---
@@ -65,16 +65,16 @@ Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
 使用 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt) 建立虛擬網路：
 
-* 具名 **myVNet**。
-* 位址前置詞 **10.1.0.0/16**。
+* 具名 **myVNet** 。
+* 位址前置詞 **10.1.0.0/16** 。
 * 名為 **MyBackendSubnet** 的子網路。
 * **10.1.0.0/24** 的子網路前置詞。
-* 在 **myResourceGroupLB** 資源群組中。
+* 位於 **CreatePubLBQS-rg** 資源群組中。
 * **eastus** 的位置。
 
 ```azurecli-interactive
   az network vnet create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --location eastus \
     --name myVNet \
     --address-prefixes 10.1.0.0/16 \
@@ -88,12 +88,12 @@ Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
 使用 [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) 建立網路安全性群組：
 
-* 具名 **myNSG**。
-* 在 **myResourceGroupLB** 資源群組中。
+* 具名 **myNSG** 。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 
 ```azurecli-interactive
   az network nsg create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNSG
 ```
 
@@ -101,20 +101,20 @@ Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
 使用 [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 建立網路安全性群組規則：
 
-* 具名 **myNSGRuleHTTP**。
+* 具名 **myNSGRuleHTTP** 。
 * 在上一個步驟中建立的網路安全性群組 **myNSG** 中。
-* 在 **myResourceGroupLB** 資源群組中。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 * 通訊協定 **(*)** 。
-* 方向**輸入**。
+* 方向 **輸入** 。
 * 來源 **(*)** 。
 * 目的地 **(*)** 。
-* 目的地連接埠**連接埠 80**。
-* 存取**允許**。
-* 優先順序 **200**。
+* 目的地連接埠 **連接埠 80** 。
+* 存取 **允許** 。
+* 優先順序 **200** 。
 
 ```azurecli-interactive
   az network nsg rule create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --nsg-name myNSG \
     --name myNSGRuleHTTP \
     --protocol '*' \
@@ -133,8 +133,8 @@ Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
 #### <a name="vm1"></a>VM1
 
-* 具名 **myNicVM1**。
-* 在 **myResourceGroupLB** 資源群組中。
+* 具名 **myNicVM1** 。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 * 在虛擬網路 **MyVNet** 中。
 * 在子網路 **MyBackendSubnet** 中。
 * 在網路安全性群組 **myNSG** 中。
@@ -142,7 +142,7 @@ Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 ```azurecli-interactive
 
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNicVM1 \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
@@ -150,14 +150,14 @@ Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 ```
 #### <a name="vm2"></a>VM2
 
-* 具名 **myNicVM2**。
-* 在 **myResourceGroupLB** 資源群組中。
+* 具名 **myNicVM2** 。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 * 在虛擬網路 **MyVNet** 中。
 * 在子網路 **MyBackendSubnet** 中。
 
 ```azurecli-interactive
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNicVM2 \
     --vnet-name myVnet \
     --subnet myBackEndSubnet \
@@ -165,15 +165,15 @@ Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 ```
 #### <a name="vm3"></a>VM3
 
-* 具名 **myNicVM3**。
-* 在 **myResourceGroupLB** 資源群組中。
+* 具名 **myNicVM3** 。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 * 在虛擬網路 **MyVNet** 中。
 * 在子網路 **MyBackendSubnet** 中。
 * 在網路安全性群組 **myNSG** 中。
 
 ```azurecli-interactive
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNicVM3 \
     --vnet-name myVnet \
     --subnet myBackEndSubnet \
@@ -239,16 +239,16 @@ runcmd:
 使用 [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) 建立虛擬機器：
 
 #### <a name="vm1"></a>VM1
-* 具名 **myVM1**。
-* 在 **myResourceGroupLB** 資源群組中。
-* 連結到網路介面 **myNicVM1**。
-* 虛擬機器映像 **UbuntuLTS**。
-* 您在上述步驟中建立的組態檔 **cloud-init.txt**。
+* 具名 **myVM1** 。
+* 在資源群組 **CreatePubLBQS-rg** 中。
+* 連結到網路介面 **myNicVM1** 。
+* 虛擬機器映像 **UbuntuLTS** 。
+* 您在上述步驟中建立的組態檔 **cloud-init.txt** 。
 * 在 **區域 1** 中。
 
 ```azurecli-interactive
   az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myVM1 \
     --nics myNicVM1 \
     --image UbuntuLTS \
@@ -259,16 +259,16 @@ runcmd:
     
 ```
 #### <a name="vm2"></a>VM2
-* 具名 **myVM2**。
-* 在 **myResourceGroupLB** 資源群組中。
-* 連結到網路介面 **myNicVM2**。
-* 虛擬機器映像 **UbuntuLTS**。
-* 您在上述步驟中建立的組態檔 **cloud-init.txt**。
+* 具名 **myVM2** 。
+* 在資源群組 **CreatePubLBQS-rg** 中。
+* 連結到網路介面 **myNicVM2** 。
+* 虛擬機器映像 **UbuntuLTS** 。
+* 您在上述步驟中建立的組態檔 **cloud-init.txt** 。
 * 在 **區域 2** 中。
 
 ```azurecli-interactive
   az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myVM2 \
     --nics myNicVM2 \
     --image UbuntuLTS \
@@ -279,16 +279,16 @@ runcmd:
 ```
 
 #### <a name="vm3"></a>VM3
-* 具名 **myVM3**。
-* 在 **myResourceGroupLB** 資源群組中。
-* 連結到網路介面 **myNicVM3**。
-* 虛擬機器映像 **UbuntuLTS**。
-* 您在上述步驟中建立的組態檔 **cloud-init.txt**。
+* 具名 **myVM3** 。
+* 在資源群組 **CreatePubLBQS-rg** 中。
+* 連結到網路介面 **myNicVM3** 。
+* 虛擬機器映像 **UbuntuLTS** 。
+* 您在上述步驟中建立的組態檔 **cloud-init.txt** 。
 * 在 **區域 3** 中。
 
 ```azurecli-interactive
    az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myVM3 \
     --nics myNicVM3 \
     --image UbuntuLTS \
@@ -306,11 +306,11 @@ runcmd:
 使用 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) 來：
 
 * 建立名為 **myPublicIP** 的標準區域冗餘公用 IP 位址。
-* 在 **myResourceGroupLB**。
+* 位於 **CreatePubLBQS-rg** 中。
 
 ```azurecli-interactive
   az network public-ip create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIP \
     --sku Standard
 ```
@@ -319,7 +319,7 @@ runcmd:
 
 ```azurecli-interactive
   az network public-ip create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIP \
     --sku Standard \
     --zone 1
@@ -338,14 +338,14 @@ runcmd:
 
 使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create) 建立公用負載平衡器：
 
-* 具名 **myLoadBalancer**。
+* 具名 **myLoadBalancer** 。
 * 名為 **myFrontEnd** 的前端集區。
 * 名為 **myBackEndPool** 的後端集區。
 * 與您在上一個步驟中建立的公用 IP 位址 **myPublicIP** 相關聯。 
 
 ```azurecli-interactive
   az network lb create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myLoadBalancer \
     --sku Standard \
     --public-ip-address myPublicIP \
@@ -362,13 +362,13 @@ runcmd:
 使用 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create) 建立健康狀態探查：
 
 * 監視虛擬機器的健康情況。
-* 具名 **myHealthProbe**。
-* 通訊協定 **TCP**。
-* 監視**連接埠 80**。
+* 具名 **myHealthProbe** 。
+* 通訊協定 **TCP** 。
+* 監視 **連接埠 80** 。
 
 ```azurecli-interactive
   az network lb probe create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --lb-name myLoadBalancer \
     --name myHealthProbe \
     --protocol tcp \
@@ -386,15 +386,17 @@ runcmd:
 使用 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) 建立負載平衡器規則：
 
 * 已命名為 **myHTTPRule**
-* 接聽前端集區 **myFrontEnd** 中的**連接埠 80**。
-* 使用**連接埠 80** 將負載平衡的網路流量傳送到後端位址集區 **myBackEndPool**。 
-* 使用健康情況探查 **MyHealthProbe**。
-* 通訊協定 **TCP**。
-* 使用前端 IP 位址啟用輸出來源網路位址轉譯 (SNAT)。
+* 接聽前端集區 **myFrontEnd** 中的 **連接埠 80** 。
+* 使用 **連接埠 80** 將負載平衡的網路流量傳送到後端位址集區 **myBackEndPool** 。 
+* 使用健康情況探查 **MyHealthProbe** 。
+* 通訊協定 **TCP** 。
+* 閒置逾時時間為 **15 分鐘** 。
+* 啟用 TCP 重設。
+
 
 ```azurecli-interactive
   az network lb rule create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --lb-name myLoadBalancer \
     --name myHTTPRule \
     --protocol tcp \
@@ -403,7 +405,10 @@ runcmd:
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool \
     --probe-name myHealthProbe \
-    --disable-outbound-snat true 
+    --disable-outbound-snat true \
+    --idle-timeout 15 \
+    --enable-tcp-reset true
+
 ```
 ### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>將虛擬機器新增至負載平衡器後端集區
 
@@ -411,7 +416,7 @@ runcmd:
 
 #### <a name="vm1"></a>VM1
 * 在後端位址集區 **myBackEndPool** 中。
-* 在 **myResourceGroupLB** 資源群組中。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 * 與網路介面 **myNicVM1** 和 **ipconfig1** 相關聯。
 * 與負載平衡器 **myLoadBalancer** 相關聯。
 
@@ -420,13 +425,13 @@ runcmd:
    --address-pool myBackendPool \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM1 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
 #### <a name="vm2"></a>VM2
 * 在後端位址集區 **myBackEndPool** 中。
-* 在 **myResourceGroupLB** 資源群組中。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 * 與網路介面 **myNicVM2** 和 **ipconfig1** 相關聯。
 * 與負載平衡器 **myLoadBalancer** 相關聯。
 
@@ -435,13 +440,13 @@ runcmd:
    --address-pool myBackendPool \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM2 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
 #### <a name="vm3"></a>VM3
 * 在後端位址集區 **myBackEndPool** 中。
-* 在 **myResourceGroupLB** 資源群組中。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 * 與網路介面 **myNicVM3** 和 **ipconfig1** 相關聯。
 * 與負載平衡器 **myLoadBalancer** 相關聯。
 
@@ -450,7 +455,7 @@ runcmd:
    --address-pool myBackendPool \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM3 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
@@ -469,12 +474,12 @@ runcmd:
 
 #### <a name="public-ip"></a>公用 IP
 
-* 具名 **myPublicIPOutbound**。
-* 在 **myResourceGroupLB**。
+* 具名 **myPublicIPOutbound** 。
+* 位於 **CreatePubLBQS-rg** 中。
 
 ```azurecli-interactive
   az network public-ip create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIPOutbound \
     --sku Standard
 ```
@@ -483,20 +488,20 @@ runcmd:
 
 ```azurecli-interactive
   az network public-ip create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIPOutbound \
     --sku Standard \
     --zone 1
 ```
 #### <a name="public-ip-prefix"></a>公用 IP 首碼
 
-* 具名 **myPublicIPPrefixOutbound**。
-* 在 **myResourceGroupLB**。
-* 前置長度 **28**。
+* 具名 **myPublicIPPrefixOutbound** 。
+* 位於 **CreatePubLBQS-rg** 中。
+* 前置長度 **28** 。
 
 ```azurecli-interactive
   az network public-ip prefix create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIPPrefixOutbound \
     --length 28
 ```
@@ -504,7 +509,7 @@ runcmd:
 
 ```azurecli-interactive
   az network public-ip prefix create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIPPrefixOutbound \
     --length 28 \
     --zone 1
@@ -518,14 +523,14 @@ runcmd:
 
 #### <a name="public-ip"></a>公用 IP
 
-* 具名 **myFrontEndOutbound**。
-* 在 **myResourceGroupLB** 資源群組中。
+* 具名 **myFrontEndOutbound** 。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 * 與公用 IP 位址 **myPublicIPOutbound** 相關聯。
 * 與負載平衡器 **myLoadBalancer** 相關聯。
 
 ```azurecli-interactive
   az network lb frontend-ip create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myFrontEndOutbound \
     --lb-name myLoadBalancer \
     --public-ip-address myPublicIPOutbound 
@@ -533,14 +538,14 @@ runcmd:
 
 #### <a name="public-ip-prefix"></a>公用 IP 首碼
 
-* 具名 **myFrontEndOutbound**。
-* 在 **myResourceGroupLB** 資源群組中。
+* 具名 **myFrontEndOutbound** 。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 * 與公用 IP 前置詞 **myPublicIPPrefixOutbound** 相關聯。
 * 與負載平衡器 **myLoadBalancer** 相關聯。
 
 ```azurecli-interactive
   az network lb frontend-ip create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myFrontEndOutbound \
     --lb-name myLoadBalancer \
     --public-ip-prefix myPublicIPPrefixOutbound 
@@ -550,13 +555,13 @@ runcmd:
 
 使用 [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create) 建立新的輸出集區：
 
-* 具名 **myBackendPoolOutbound**。
-* 在 **myResourceGroupLB** 資源群組中。
+* 具名 **myBackendPoolOutbound** 。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 * 與負載平衡器 **myLoadBalancer** 相關聯。
 
 ```azurecli-interactive
   az network lb address-pool create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --lb-name myLoadBalancer \
     --name myBackendPoolOutbound
 ```
@@ -564,18 +569,18 @@ runcmd:
 
 使用 [az network lb outbound-rule create](https://docs.microsoft.com/cli/azure/network/lb/outbound-rule?view=azure-cli-latest#az-network-lb-outbound-rule-create) 為輸出後端集區建立新的輸出規則：
 
-* 具名 **myOutboundRule**。
-* 在 **myResourceGroupLB** 資源群組中。
+* 具名 **myOutboundRule** 。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 * 與負載平衡器 **myLoadBalancer** 相關聯
 * 與前端 **myFrontEndOutbound** 相關聯。
-* 通訊協定**所有**。
-* 閒置逾時 **15**。
-* 輸出連接埠 **10000**。
+* 通訊協定 **所有** 。
+* 閒置逾時 **15** 。
+* 輸出連接埠 **10000** 。
 * 與後端集區 **myBackEndPoolOutbound** 相關聯。
 
 ```azurecli-interactive
   az network lb outbound-rule create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --lb-name myLoadBalancer \
     --name myOutboundRule \
     --frontend-ip-configs myFrontEndOutbound \
@@ -591,7 +596,7 @@ runcmd:
 
 #### <a name="vm1"></a>VM1
 * 在後端位址集區 **myBackEndPoolOutbound** 中。
-* 在 **myResourceGroupLB** 資源群組中。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 * 與網路介面 **myNicVM1** 和 **ipconfig1** 相關聯。
 * 與負載平衡器 **myLoadBalancer** 相關聯。
 
@@ -600,13 +605,13 @@ runcmd:
    --address-pool myBackendPoolOutbound \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM1 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
 #### <a name="vm2"></a>VM2
 * 在後端位址集區 **myBackEndPoolOutbound** 中。
-* 在 **myResourceGroupLB** 資源群組中。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 * 與網路介面 **myNicVM2** 和 **ipconfig1** 相關聯。
 * 與負載平衡器 **myLoadBalancer** 相關聯。
 
@@ -615,13 +620,13 @@ runcmd:
    --address-pool myBackendPoolOutbound \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM2 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
 #### <a name="vm3"></a>VM3
 * 在後端位址集區 **myBackEndPoolOutbound** 中。
-* 在 **myResourceGroupLB** 資源群組中。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 * 與網路介面 **myNicVM3** 和 **ipconfig1** 相關聯。
 * 與負載平衡器 **myLoadBalancer** 相關聯。
 
@@ -630,7 +635,7 @@ runcmd:
    --address-pool myBackendPoolOutbound \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM3 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
@@ -647,16 +652,16 @@ runcmd:
 
 使用 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt) 建立虛擬網路：
 
-* 具名 **myVNet**。
-* 位址前置詞 **10.1.0.0/16**。
+* 具名 **myVNet** 。
+* 位址前置詞 **10.1.0.0/16** 。
 * 名為 **MyBackendSubnet** 的子網路。
 * **10.1.0.0/24** 的子網路前置詞。
-* 在 **myResourceGroupLB** 資源群組中。
+* 位於 **CreatePubLBQS-rg** 資源群組中。
 * **eastus** 的位置。
 
 ```azurecli-interactive
   az network vnet create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --location eastus \
     --name myVNet \
     --address-prefixes 10.1.0.0/16 \
@@ -670,12 +675,12 @@ runcmd:
 
 使用 [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) 建立網路安全性群組：
 
-* 具名 **myNSG**。
-* 在 **myResourceGroupLB** 資源群組中。
+* 具名 **myNSG** 。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 
 ```azurecli-interactive
   az network nsg create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNSG
 ```
 
@@ -683,20 +688,20 @@ runcmd:
 
 使用 [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 建立網路安全性群組規則：
 
-* 具名 **myNSGRuleHTTP**。
+* 具名 **myNSGRuleHTTP** 。
 * 在上一個步驟中建立的網路安全性群組 **myNSG** 中。
-* 在 **myResourceGroupLB** 資源群組中。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 * 通訊協定 **(*)** 。
-* 方向**輸入**。
+* 方向 **輸入** 。
 * 來源 **(*)** 。
 * 目的地 **(*)** 。
-* 目的地連接埠**連接埠 80**。
-* 存取**允許**。
-* 優先順序 **200**。
+* 目的地連接埠 **連接埠 80** 。
+* 存取 **允許** 。
+* 優先順序 **200** 。
 
 ```azurecli-interactive
   az network nsg rule create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --nsg-name myNSG \
     --name myNSGRuleHTTP \
     --protocol '*' \
@@ -715,8 +720,8 @@ runcmd:
 
 #### <a name="vm1"></a>VM1
 
-* 具名 **myNicVM1**。
-* 在 **myResourceGroupLB** 資源群組中。
+* 具名 **myNicVM1** 。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 * 在虛擬網路 **MyVNet** 中。
 * 在子網路 **MyBackendSubnet** 中。
 * 在網路安全性群組 **myNSG** 中。
@@ -724,7 +729,7 @@ runcmd:
 ```azurecli-interactive
 
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNicVM1 \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
@@ -732,15 +737,15 @@ runcmd:
 ```
 #### <a name="vm2"></a>VM2
 
-* 具名 **myNicVM2**。
-* 在 **myResourceGroupLB** 資源群組中。
+* 具名 **myNicVM2** 。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 * 在虛擬網路 **MyVNet** 中。
 * 在子網路 **MyBackendSubnet** 中。
 * 在網路安全性群組 **myNSG** 中。
 
 ```azurecli-interactive
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNicVM2 \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
@@ -748,15 +753,15 @@ runcmd:
 ```
 #### <a name="vm3"></a>VM3
 
-* 具名 **myNicVM3**。
-* 在 **myResourceGroupLB** 資源群組中。
+* 具名 **myNicVM3** 。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 * 在虛擬網路 **MyVNet** 中。
 * 在子網路 **MyBackendSubnet** 中。
 * 在網路安全性群組 **myNSG** 中。
 
 ```azurecli-interactive
   az network nic create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myNicVM3 \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
@@ -825,14 +830,14 @@ runcmd:
 
 使用 [az vm availability-set create](https://docs.microsoft.com/cli/azure/vm/availability-set?view=azure-cli-latest#az-vm-availability-set-create) 建立可用性設定組：
 
-* 具名 **myAvSet**。
-* 在 **myResourceGroupLB** 資源群組中。
-* 位置 **eastus**。
+* 具名 **myAvSet** 。
+* 在資源群組 **CreatePubLBQS-rg** 中。
+* 位置 **eastus** 。
 
 ```azurecli-interactive
   az vm availability-set create \
     --name myAvSet \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --location eastus 
     
 ```
@@ -842,16 +847,16 @@ runcmd:
 使用 [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) 建立虛擬機器：
 
 #### <a name="vm1"></a>VM1
-* 具名 **myVM1**。
-* 在 **myResourceGroupLB** 資源群組中。
-* 連結到網路介面 **myNicVM1**。
-* 虛擬機器映像 **UbuntuLTS**。
-* 您在上述步驟中建立的組態檔 **cloud-init.txt**。
+* 具名 **myVM1** 。
+* 在資源群組 **CreatePubLBQS-rg** 中。
+* 連結到網路介面 **myNicVM1** 。
+* 虛擬機器映像 **UbuntuLTS** 。
+* 您在上述步驟中建立的組態檔 **cloud-init.txt** 。
 * 在可用性設定組 **myAvSet** 中。
 
 ```azurecli-interactive
   az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myVM1 \
     --nics myNicVM1 \
     --image UbuntuLTS \
@@ -861,16 +866,16 @@ runcmd:
     --no-wait 
 ```
 #### <a name="vm2"></a>VM2
-* 具名 **myVM2**。
-* 在 **myResourceGroupLB** 資源群組中。
-* 連結到網路介面 **myNicVM2**。
-* 虛擬機器映像 **UbuntuLTS**。
-* 您在上述步驟中建立的組態檔 **cloud-init.txt**。
+* 具名 **myVM2** 。
+* 在資源群組 **CreatePubLBQS-rg** 中。
+* 連結到網路介面 **myNicVM2** 。
+* 虛擬機器映像 **UbuntuLTS** 。
+* 您在上述步驟中建立的組態檔 **cloud-init.txt** 。
 * 在 **區域 2** 中。
 
 ```azurecli-interactive
   az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myVM2 \
     --nics myNicVM2 \
     --image UbuntuLTS \
@@ -881,16 +886,16 @@ runcmd:
 ```
 
 #### <a name="vm3"></a>VM3
-* 具名 **myVM3**。
-* 在 **myResourceGroupLB** 資源群組中。
-* 連結到網路介面 **myNicVM3**。
-* 虛擬機器映像 **UbuntuLTS**。
-* 您在上述步驟中建立的組態檔 **cloud-init.txt**。
+* 具名 **myVM3** 。
+* 在資源群組 **CreatePubLBQS-rg** 中。
+* 連結到網路介面 **myNicVM3** 。
+* 虛擬機器映像 **UbuntuLTS** 。
+* 您在上述步驟中建立的組態檔 **cloud-init.txt** 。
 * 在 **區域 3** 中。
 
 ```azurecli-interactive
    az vm create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myVM3 \
     --nics myNicVM3 \
     --image UbuntuLTS \
@@ -909,11 +914,11 @@ runcmd:
 使用 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) 來：
 
 * 建立名為 **myPublicIP** 的標準區域冗餘公用 IP 位址。
-* 在 **myResourceGroupLB**。
+* 位於 **CreatePubLBQS-rg** 中。
 
 ```azurecli-interactive
   az network public-ip create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIP \
     --sku Basic
 ```
@@ -931,14 +936,14 @@ runcmd:
 
 使用 [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create) 建立公用負載平衡器：
 
-* 具名 **myLoadBalancer**。
+* 具名 **myLoadBalancer** 。
 * 名為 **myFrontEnd** 的前端集區。
 * 名為 **myBackEndPool** 的後端集區。
 * 與您在上一個步驟中建立的公用 IP 位址 **myPublicIP** 相關聯。 
 
 ```azurecli-interactive
   az network lb create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myLoadBalancer \
     --sku Basic \
     --public-ip-address myPublicIP \
@@ -955,13 +960,13 @@ runcmd:
 使用 [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create) 建立健康狀態探查：
 
 * 監視虛擬機器的健康情況。
-* 具名 **myHealthProbe**。
-* 通訊協定 **TCP**。
-* 監視**連接埠 80**。
+* 具名 **myHealthProbe** 。
+* 通訊協定 **TCP** 。
+* 監視 **連接埠 80** 。
 
 ```azurecli-interactive
   az network lb probe create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --lb-name myLoadBalancer \
     --name myHealthProbe \
     --protocol tcp \
@@ -979,14 +984,15 @@ runcmd:
 使用 [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) 建立負載平衡器規則：
 
 * 已命名為 **myHTTPRule**
-* 接聽前端集區 **myFrontEnd** 中的**連接埠 80**。
-* 使用**連接埠 80** 將負載平衡的網路流量傳送到後端位址集區 **myBackEndPool**。 
-* 使用健康情況探查 **MyHealthProbe**。
-* 通訊協定 **TCP**。
+* 接聽前端集區 **myFrontEnd** 中的 **連接埠 80** 。
+* 使用 **連接埠 80** 將負載平衡的網路流量傳送到後端位址集區 **myBackEndPool** 。 
+* 使用健康情況探查 **MyHealthProbe** 。
+* 通訊協定 **TCP** 。
+* 閒置逾時時間為 **15 分鐘** 。
 
 ```azurecli-interactive
   az network lb rule create \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --lb-name myLoadBalancer \
     --name myHTTPRule \
     --protocol tcp \
@@ -994,7 +1000,8 @@ runcmd:
     --backend-port 80 \
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool \
-    --probe-name myHealthProbe
+    --probe-name myHealthProbe \
+    --idle-timeout 15
 ```
 
 ### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>將虛擬機器新增至負載平衡器後端集區
@@ -1004,7 +1011,7 @@ runcmd:
 
 #### <a name="vm1"></a>VM1
 * 在後端位址集區 **myBackEndPool** 中。
-* 在 **myResourceGroupLB** 資源群組中。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 * 與網路介面 **myNicVM1** 和 **ipconfig1** 相關聯。
 * 與負載平衡器 **myLoadBalancer** 相關聯。
 
@@ -1013,13 +1020,13 @@ runcmd:
    --address-pool myBackendPool \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM1 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
 #### <a name="vm2"></a>VM2
 * 在後端位址集區 **myBackEndPool** 中。
-* 在 **myResourceGroupLB** 資源群組中。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 * 與網路介面 **myNicVM2** 和 **ipconfig1** 相關聯。
 * 與負載平衡器 **myLoadBalancer** 相關聯。
 
@@ -1028,13 +1035,13 @@ runcmd:
    --address-pool myBackendPool \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM2 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 
 #### <a name="vm3"></a>VM3
 * 在後端位址集區 **myBackEndPool** 中。
-* 在 **myResourceGroupLB** 資源群組中。
+* 在資源群組 **CreatePubLBQS-rg** 中。
 * 與網路介面 **myNicVM3** 和 **ipconfig1** 相關聯。
 * 與負載平衡器 **myLoadBalancer** 相關聯。
 
@@ -1043,7 +1050,7 @@ runcmd:
    --address-pool myBackendPool \
    --ip-config-name ipconfig1 \
    --nic-name myNicVM3 \
-   --resource-group myResourceGroupLB \
+   --resource-group CreatePubLBQS-rg \
    --lb-name myLoadBalancer
 ```
 ---
@@ -1056,7 +1063,7 @@ runcmd:
 
 ```azurecli-interactive
   az network public-ip show \
-    --resource-group myResourceGroupLB \
+    --resource-group CreatePubLBQS-rg \
     --name myPublicIP \
     --query [ipAddress] \
     --output tsv
@@ -1069,7 +1076,7 @@ runcmd:
 
 ```azurecli-interactive
   az group delete \
-    --name myResourceGroupLB
+    --name CreatePubLBQS-rg
 ```
 
 ## <a name="next-steps"></a>後續步驟

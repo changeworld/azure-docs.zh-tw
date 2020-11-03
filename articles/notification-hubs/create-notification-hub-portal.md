@@ -11,12 +11,12 @@ ms.date: 08/04/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 981e23a2b021cc0eb8085aa943830f87352aee69
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 141812e83653b458a2562bf73b70117c39bf7be0
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87828518"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426553"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Azure 通知中樞
 
@@ -35,7 +35,7 @@ Azure 通知中樞提供易於使用且相應放大的推播引擎，可讓您�
 在本節中，您會在現有命名空間中建立通知中樞。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選取左側功能表上的 [所有服務]  ，搜尋**通知中樞**，選取 [通知中樞命名空間]  旁的**星號** (`*`)，以將其新增至左側功能表上的 [我的最愛]  區段。 選取 [通知中樞命名空間]  。
+2. 選取左側功能表上的 [所有服務]  ，搜尋 **通知中樞** ，選取 [通知中樞命名空間]  旁的 **星號** (`*`)，以將其新增至左側功能表上的 [我的最愛]  區段。 選取 [通知中樞命名空間]  。
 
       ![Azure 入口網站 - 選取通知中樞命名空間](./media/create-notification-hub-portal/select-notification-hub-namespaces-all-services.png)
 3. 在 [通知中樞命名空間]  頁面上，從清單中選取您的命名空間。
@@ -52,10 +52,10 @@ Azure 通知中樞提供易於使用且相應放大的推播引擎，可讓您�
       ![部署通知](./media/create-notification-hub-portal/deployment-notification.png)
 7. 重新整理 [通知中樞命名空間]  網頁，以在清單中查看您的新中樞。
 
-      ![Azure 入口網站 - 通知 -> 前往資源](./media/create-notification-hub-portal/new-hub-in-list.png)
-8. 選取您的**通知中樞**以查看通知中樞的首頁。
+      ![顯示通知中樞命名空間網頁清單中列出新中樞的螢幕擷取畫面。](./media/create-notification-hub-portal/new-hub-in-list.png)
+8. 選取您的 **通知中樞** 以查看通知中樞的首頁。
 
-      ![Azure 入口網站 - 通知 -> 前往資源](./media/create-notification-hub-portal/hub-home-page.png)
+      ![顯示通知中樞歡迎頁面的螢幕擷取畫面。](./media/create-notification-hub-portal/hub-home-page.png)
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/29/2019
+ms.date: 10/20/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9427ec4530ac249d5b8059d04fc85f1183c0081c
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ced33bb17e9c24faa127b27adacce9cab011e1d8
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123886"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426259"
 ---
 ::: zone target="docs"
 
@@ -74,7 +74,7 @@ ms.locfileid: "92123886"
 
     ![取得 SMB 共用的共用認證](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
-2. 在 [存取共用及複製資料] 對話方塊中，複製與共用相對應的 [使用者名稱] 和 [密碼]。 選取 [確定]。
+2. 在 [存取共用及複製資料] 對話方塊中，複製與共用相對應的 [使用者名稱] 和 [密碼]。 如果密碼有特殊字元，請在前後加上雙引號。 然後選取 [確定]  。
     
     ![取得共用的使用者名稱和密碼](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
@@ -103,7 +103,7 @@ ms.locfileid: "92123886"
     
     ![檔案總管中顯示的共用](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
-    **一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾**。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root] 資料夾。
+    **一律針對您想複製的檔案，在共用之下建立一個資料夾，然後將檔案複製到該資料夾** 。 在區塊 Blob 和分頁 Blob 底下建立的資料夾，代表資料以 Blob 形式上傳至的容器。 您無法將檔案直接複製到儲存體帳戶中的 [root] 資料夾。
     
 使用 Linux 用戶端時，請使用下列命令來掛接 SMB 共用。 下方的 "vers" 參數是您的 Linux 主機支援的 SMB 版本。 請在下列命令中插入適當的版本。 如需資料箱支援哪些 SMB 版本的相關資訊，請參閱 [Linux 用戶端支援的檔案系統](./data-box-system-requirements.md#supported-file-transfer-protocols-for-clients) 
 

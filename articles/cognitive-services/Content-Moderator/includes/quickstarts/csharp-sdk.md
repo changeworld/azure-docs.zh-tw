@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: cb0d9ff1074ba1a309cf4f5a8cad12f34335e435
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2db80cdba778d868d90d5278005791257acb0ed3
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91989455"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548229"
 ---
 開始使用適用於 .NET 的 Azure Content Moderator 用戶端程式庫。 請遵循下列步驟來安裝 NuGet 套件，並試用基本工作的程式碼範例。 
 
@@ -34,7 +34,7 @@ Content Moderator 是一種 AI 服務，可讓您處理可能具冒犯意味、�
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) 或目前版本的 [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
-* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account"  title="建立 [產品名稱] 資源"  target="_blank">建立 Content Moderator 資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 部署完成後，按一下 [移至資源] 按鈕。
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator"  title="建立 Content Moderator 資源"  target="_blank">建立 Content Moderator 資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 部署完成後，按一下 [移至資源] 按鈕。
     * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 Content Moderator。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
     * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
 
@@ -48,11 +48,11 @@ Content Moderator 是一種 AI 服務，可讓您處理可能具冒犯意味、�
 
 ### <a name="install-the-client-library"></a>安裝用戶端程式庫 
 
-建立新專案後，以滑鼠右鍵按一下 [方案總管] 中的專案解決方案，然後選取 [管理 NuGet 套件]，以安裝用戶端程式庫。 在開啟的套件管理員中，選取 [瀏覽]、核取 [包含發行前版本]，然後搜尋 `Microsoft.Azure.CognitiveServices.ContentModerator`。 選取版本 `2.0.0`，然後 **安裝**。 
+建立新專案後，以滑鼠右鍵按一下 [方案總管] 中的專案解決方案，然後選取 [管理 NuGet 套件]，以安裝用戶端程式庫。 在開啟的套件管理員中，選取 [瀏覽]、核取 [包含發行前版本]，然後搜尋 `Microsoft.Azure.CognitiveServices.ContentModerator`。 選取版本 `2.0.0`，然後 **安裝** 。 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `content-moderator-quickstart` 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔：*Program.cs*。
+在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `content-moderator-quickstart` 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔： *Program.cs* 。
 
 ```console
 dotnet new console -n content-moderator-quickstart
@@ -169,7 +169,7 @@ Crap is the profanity here. Is this information PII? phone 4255550111
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_image_vars)]
 
-然後，在專案的根目錄中建立輸入檔 *ImageFiles.txt*。 在此檔案中，您會新增要分析之影像的 URL &mdash; 每行一個 URL。 您可以使用下列範例影像：
+然後，在專案的根目錄中建立輸入檔 *ImageFiles.txt* 。 在此檔案中，您會新增要分析之影像的 URL &mdash; 每行一個 URL。 您可以使用下列範例影像：
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
@@ -232,7 +232,7 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 ### <a name="define-the-review-creation-method"></a>定義審核建立方法
 
-現在您已準備就緒，可定義用來處理審核建立和查詢的方法。 新增方法 **CreateReviews**，並定義下列本機變數。
+現在您已準備就緒，可定義用來處理審核建立和查詢的方法。 新增方法 **CreateReviews** ，並定義下列本機變數。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_createreview_fields)]
 

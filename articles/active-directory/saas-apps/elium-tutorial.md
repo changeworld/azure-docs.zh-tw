@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: c4ac9e182a7504ea96f73f2ab95d50fb9d859e47
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 7f0e9d0c97b9325a30de3cb8c6ce10a3ba8489f4
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91665220"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454108"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-elium"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Elium 整合
 
@@ -51,8 +51,8 @@ ms.locfileid: "91665220"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]**** 區段的搜尋方塊中，輸入 **Elium**。
-1. 從結果面板中選取 [Elium]****，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
+1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Elium** 。
+1. 從結果面板中選取 [Elium]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-sso-for-elium"></a>設定和測試 Elium 的 Azure AD SSO
 
@@ -72,7 +72,7 @@ ms.locfileid: "91665220"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 Azure 入口網站的 [Elium] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -105,13 +105,13 @@ ms.locfileid: "91665220"
     | company| user.companyname|
 
     > [!NOTE]
-    > 這些是預設宣告。 **只需要電子郵件宣告**。 若為 JIT 佈建，也只需要電子郵件宣告。 其他自訂宣告會因客戶平台而有所不同。
+    > 這些是預設宣告。 **只需要電子郵件宣告** 。 若為 JIT 佈建，也只需要電子郵件宣告。 其他自訂宣告會因客戶平台而有所不同。
 
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
-1. 在 [設定 Elium]**** 區段上，根據您的需求複製適當的 URL。
+1. 在 [設定 Elium] 區段上，根據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -132,7 +132,7 @@ ms.locfileid: "91665220"
 在本節中，您會將 Elium 的存取權授與 B.Simon，讓她能夠使用 Azure 單一登入。
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 [Elium]****。
+1. 在應用程式清單中，選取 [Elium]。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
 1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
 1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
@@ -174,11 +174,11 @@ ms.locfileid: "91665220"
 
     d. 按一下 [下載]  按鈕以開啟 [SP 中繼資料]  。
 
-    e. 在 **SP 中繼資料**檔案中搜尋 **entityID**，複製 **entityID** 值，並將其貼到 Azure 入口網站中的 [基本 SAML 組態]  區段上的 [識別碼]  文字方塊中。 
+    e. 在 **SP 中繼資料** 檔案中搜尋 **entityID** ，複製 **entityID** 值，並將其貼到 Azure 入口網站中的 [基本 SAML 組態]  區段上的 [識別碼]  文字方塊中。 
 
     ![設定單一登入 Elium 04](./media/elium-tutorial/elium-04.png)
 
-    f. 在 **SP 中繼資料**檔案中搜尋 **AssertionConsumerService**，複製 [位置]  值，並將其貼到 Azure 入口網站中的 [基本 SAML 組態]  區段上的 [回覆 URL]  文字方塊中。
+    f. 在 **SP 中繼資料** 檔案中搜尋 **AssertionConsumerService** ，複製 [位置]  值，並將其貼到 Azure 入口網站中的 [基本 SAML 組態]  區段上的 [回覆 URL]  文字方塊中。
 
     ![設定單一登入 Elium 05](./media/elium-tutorial/elium-05.png)
 
@@ -188,7 +188,7 @@ ms.locfileid: "91665220"
 
 ### <a name="create-elium-test-user"></a>建立 Elium 測試使用者
 
-本節會在 Elium 中建立名為 B.Simon 的使用者。 Elium 支援依預設啟用的 **Just-In-Time 佈建**。 在這一節沒有您需要進行的動作項目。 如果 Elium 中還沒有使用者存在，在您嘗試存取 Elium 時就會建立新的使用者。
+本節會在 Elium 中建立名為 B.Simon 的使用者。 Elium 支援依預設啟用的 **Just-In-Time 佈建** 。 在這一節沒有您需要進行的動作項目。 如果 Elium 中還沒有使用者存在，在您嘗試存取 Elium 時就會建立新的使用者。
 
 > [!Note]
 > 如果您需要手動建立使用者，請連絡 [Elium 支援小組](mailto:support@elium.com)。
@@ -207,8 +207,8 @@ ms.locfileid: "91665220"
  
 * 在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入您已設定 SSO 的 Elium 
  
-您也可以使用 Microsoft 存取面板，以任何模式測試應用程式。 當您按一下存取面板中的 Elium 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果在 IDP 模式中設定，您應該會自動登入已設定 SSO 的 Elium。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+您也可以使用 Microsoft 存取面板，以任何模式測試應用程式。 當您按一下存取面板中的 Elium 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果在 IDP 模式中設定，您應該會自動登入已設定 SSO 的 Elium。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-設定 Elium 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+設定 Elium 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。

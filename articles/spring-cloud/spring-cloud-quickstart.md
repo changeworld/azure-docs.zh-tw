@@ -4,16 +4,16 @@ description: 在本快速入門中，我們會將 Spring Cloud 應用程式部�
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 09/18/2020
+ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 2ec79c9c1fc3b461037b2005da7198f81cbbab34
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.openlocfilehash: a060528d3140203541f6a13064659651c7a4f67d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170357"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488943"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>快速入門：部署您的第一個 Azure Spring Cloud 應用程式
 
@@ -96,7 +96,7 @@ az extension add --name spring-cloud
    cd hello-world
    ```
 
-1. 編輯 *appSettings.json* 檔案以新增下列設定：
+1. 編輯 appSettings.json 檔案以新增下列設定：
 
    ```json
    "spring": {
@@ -345,9 +345,9 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
 
 ## <a name="generate-a-spring-cloud-project"></a>產生 Spring Cloud 專案
 
-從 [Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin) 開始，使用 Azure Spring Cloud 的建議相依性來產生範例專案。 下圖顯示為此範例專案所設定的 Initializr。
+從 [Spring Initializr](https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client) 開始，使用 Azure Spring Cloud 的建議相依性來產生範例專案。 下圖顯示為此範例專案所設定的 Initializr。
 ```url
-https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.3.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin
+https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=hellospring&name=hellospring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.hellospring&dependencies=web,cloud-eureka,actuator,cloud-starter-sleuth,cloud-starter-zipkin,cloud-config-client
 ```
 
   ![Initializr 頁面](media/spring-cloud-quickstart-java/initializr-page.png)

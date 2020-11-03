@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: b15a034a73882287e70afcbcaa9c72ee931c9f78
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 09641fb66d2f68054d23abbf8ee9f4324e19832f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91630197"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521504"
 ---
 # <a name="what-is-the-speech-service"></a>什麼是語音服務？
 
 語音服務會將語音轉文字、文字轉語音及語音翻譯整合至單一 Azure 訂用帳戶。 藉由[語音 CLI](spx-overview.md)、[語音 SDK](speech-sdk-reference.md)、[語音裝置 SDK](https://aka.ms/sdsdk-quickstart)、[Speech Studio](https://speech.microsoft.com/) 或 [REST API](rest-apis.md)，可輕易地透過語音來啟用您的應用程式、工具和裝置。
 
 > [!IMPORTANT]
-> 語音服務已取代 Bing 語音 API 和翻譯工具語音。 如需移轉說明，請參閱 [操作指南] > [移轉]。
+> 語音服務已取代 Bing 語音 API 和翻譯工具語音。 如需移轉說明，請參閱「移轉」一節。
 
 下列功能是語音服務的一部分。 請使用此資料表中的連結，深入了解每項功能的常見使用案例，或瀏覽 API 參考。
 
@@ -61,11 +61,11 @@ ms.locfileid: "91630197"
 
 1. 使用您的 Microsoft 帳戶，登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 選取入口網站左上方的 [建立資源]****。 如果您沒有看到 [建立資源]，則隨時都可以在畫面左上角選取摺疊的功能表來找到。
+1. 選取入口網站左上方的 [建立資源]。 如果您沒有看到 [建立資源]，則隨時都可以在畫面左上角選取摺疊的功能表來找到。
 
 1. 在 [新增] 視窗中，於搜尋方塊中輸入「語音」，然後按 ENTER。
 
-1. 在搜尋結果中，選取 [Speech]****。
+1. 在搜尋結果中，選取 [Speech]。
 
    ![語音搜尋結果](media/index/speech-search.png)
 
@@ -81,7 +81,21 @@ ms.locfileid: "91630197"
 > [!NOTE]
 > You can create an unlimited number of standard-tier subscriptions in one or multiple regions. However, you can create only one free-tier subscription. Model deployments on the free tier that remain unused for 7 days will be decommissioned automatically.
 -->
-部署新的語音資源需要幾分鐘的時間。 部署完成後，選取 [移至資源]，然後在左側瀏覽窗格中選取 [金鑰] 以顯示語音服務訂用帳戶金鑰。 每個訂用帳戶都有兩個金鑰，您可以在應用程式中使用任一個金鑰。 若要快速地將金鑰複製/貼到您的程式碼編輯器或其他位置，請選取每個金鑰旁的 [複製] 按鈕，切換視窗將剪貼簿內容貼到所需的位置。
+部署新的語音資源需要幾分鐘的時間。 
+
+### <a name="find-keys-and-region"></a>尋找金鑰和區域
+
+若要尋找已完成部署的金鑰和區域，請遵循下列步驟：
+
+1. 使用您的 Microsoft 帳戶，登入 [Azure 入口網站](https://portal.azure.com/)。
+
+2. 選取 [所有資源]，然後選取認知服務資源的名稱。
+
+3. 在左側窗格中，於 **資源管理** 下選取 [金鑰和端點]。
+
+每個訂用帳戶都有兩個金鑰，您可以在應用程式中使用任一個金鑰。 若要將金鑰複製/貼到您的程式碼編輯器或其他位置，請選取每個金鑰旁的 [複製] 按鈕，切換視窗將剪貼簿內容貼到所需的位置。
+
+此外，請複製 `LOCATION` 值，也就是您的區域識別碼 (例如 `westus`、`westeurope`) 以呼叫 SDK。
 
 > [!IMPORTANT]
 > 這些訂用帳戶金鑰可用來存取您的認知服務 API。 請勿共用您的金鑰。 安全地加以儲存，例如使用 Azure Key Vault。 我們也建議您定期重新產生這些金鑰。 進行 API 呼叫時，只需要一個金鑰。 重新產生第一個金鑰時，您可以使用第二個金鑰繼續存取服務。
@@ -115,7 +129,7 @@ ms.locfileid: "91630197"
 
 語音服務可順利地與內建模型搭配使用，不過，您可以進一步自訂及調整體驗，以搭配您的產品或環境。 從原音模型調整到專屬於自身品牌的獨特聲音音調，都是自訂選項的範圍。
 
-其他產品則會提供專為醫療保健或保險等特定用途而調整的語音模型，但可供所有人平等地使用。 Azure 語音中的自訂會成為*您的獨特*競爭優勢一部分，而其他使用者或客戶則無法使用。 換句話說，您的模型是私人的，而且只會針對您的使用案例進行自訂調整。
+其他產品則會提供專為醫療保健或保險等特定用途而調整的語音模型，但可供所有人平等地使用。 Azure 語音中的自訂會成為 *您的獨特* 競爭優勢一部分，而其他使用者或客戶則無法使用。 換句話說，您的模型是私人的，而且只會針對您的使用案例進行自訂調整。
 
 | 語音服務 | 平台 | 描述 |
 | -------------- | -------- | ----------- |

@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: b070d6600f18b87ec16f1f9894d577f4c0a6c51c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 47cca5019277b2f4d0025ccb6743589a21dfaafa
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149190"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480117"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>教學課程：搭配 IoT 中樞來設定及使用計量和診斷記錄
 
@@ -138,7 +138,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 2. 在 IoT 中樞刀鋒視窗中找到 [監視]  區段。 按一下 [診斷設定]  。 
 
-   ![螢幕擷取畫面，顯示 IoT 中樞刀鋒視窗的診斷設定部分。](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
+   ![螢幕擷取畫面：醒目提示 [監視] 區段中的 [診斷設定]。](./media/tutorial-use-metrics-and-diags/01-diagnostic-settings.png)
 
 
 3. 確定訂用帳戶和資源群組是否正確。 在 [資源類型]  底下，取消核取 [全選]  ，然後尋找並核取 [IoT 中樞]  。 (這麼做會讓 [全選]  旁邊再出出現核取記號，予以忽略即可)。在 [資源]  底下，選取中樞名稱。 畫面應該會如下圖所示： 
@@ -178,11 +178,11 @@ az iot hub device-identity show --device-id $iotDeviceName \
    ![螢幕擷取畫面，顯示為已傳送的遙測訊息新增計量。](./media/tutorial-use-metrics-and-diags/07-metrics-telemetry-messages-sent.png)
 
 
-4. 現在，按一下 [新增計量]  以在圖表中新增其他計量。 選取您的資源群組 (**ContosoTestHub**)。 在 [計量]  底下，選取 [已使用的訊息總數]  。 在 [彙總]  中選取 [平均]  。 
+4. 現在，按一下 [新增計量]  以在圖表中新增其他計量。 選取您的資源群組 ( **ContosoTestHub** )。 在 [計量]  底下，選取 [已使用的訊息總數]  。 在 [彙總]  中選取 [平均]  。 
 
    現在，您的畫面中會顯示已最小化的 [已傳送的遙測訊息]  計量，以及用於 [已使用的訊息總數]  的新計量。
 
-   ![螢幕擷取畫面，顯示為已傳送的遙測訊息新增計量。](./media/tutorial-use-metrics-and-diags/07-metrics-num-messages-used.png)
+   ![醒目提示 [釘選到儀表板] 按鈕的螢幕擷取畫面。](./media/tutorial-use-metrics-and-diags/07-metrics-num-messages-used.png)
 
    按一下 [釘選到儀表板]  。 此選項會將計量釘選到 Azure 入口網站的儀表板，以便您可以再次存取。 如果未將其釘選到儀表板，則不會保留您的設定。
 
@@ -204,23 +204,23 @@ IoT 中樞尚未遷移至 [Azure 監視器中的計量](../azure-monitor/platfor
 
     訂用帳戶  ：讓此欄位設定為您目前的訂用帳戶。
 
-    **來源**：將此欄位設定為 [計量]  。
+    **來源** ：將此欄位設定為 [計量]  。
 
-    **資源群組**：將此欄位設定為您目前的資源群組 ContosoResources  。 
+    **資源群組** ：將此欄位設定為您目前的資源群組 ContosoResources  。 
 
-    **資源類型**：將此欄位設定為 IoT 中樞。 
+    **資源類型** ：將此欄位設定為 IoT 中樞。 
 
-    **資源**：選取您的 IoT 中樞 ContosoTestHub  。
+    **資源** ：選取您的 IoT 中樞 ContosoTestHub  。
 
 3. 按一下 [新增計量警示 (傳統)]  來設定新警示。
 
     填寫欄位：
 
-    **Name**：提供警示規則的名稱，例如 telemetry-messages  。
+    **Name** ：提供警示規則的名稱，例如 telemetry-messages  。
 
-    **描述**：提供描述的警示，例如「傳送了 1000 則遙測訊息時發出警示」  。 
+    **描述** ：提供描述的警示，例如「傳送了 1000 則遙測訊息時發出警示」  。 
 
-    **來源**：將此欄位設定為 [計量]  。
+    **來源** ：將此欄位設定為 [計量]  。
 
     [訂用帳戶]  、[資源群組]  和 [資源]  應該設定為您在 [檢視傳統警示]  畫面所選取的值。 
 
@@ -230,13 +230,13 @@ IoT 中樞尚未遷移至 [Azure 監視器中的計量](../azure-monitor/platfor
 
 4. 在圖表之後，設定下列欄位：
 
-   **條件**：設定為 [大於]  。
+   **條件** ：設定為 [大於]  。
 
-   **閾值**：設為 1000。
+   **閾值** ：設為 1000。
 
-   **期間**：設定為 [過去 5 分鐘]  。
+   **期間** ：設定為 [過去 5 分鐘]  。
 
-   **通知電子郵件收件者**：在此輸入您的電子郵件地址。 
+   **通知電子郵件收件者** ：在此輸入您的電子郵件地址。 
 
    ![螢幕擷取畫面，顯示警示畫面下半部。](./media/tutorial-use-metrics-and-diags/11-alerts-add-rule-bottom.png)
 
@@ -246,11 +246,11 @@ IoT 中樞尚未遷移至 [Azure 監視器中的計量](../azure-monitor/platfor
 
    在 [檢視傳統警示]  畫面上，按一下 [新增計量警示 (傳統)]  ，然後在 [新增規則]  窗格上填入這些欄位。
 
-   **Name**：提供警示規則的名稱，例如 number-of-messages-used  。
+   **Name** ：提供警示規則的名稱，例如 number-of-messages-used  。
 
-   **描述**：提供描述的警示，例如「在接近配額時發出警示」  。
+   **描述** ：提供描述的警示，例如「在接近配額時發出警示」  。
 
-   **來源**：將此欄位設定為 [計量]  。
+   **來源** ：將此欄位設定為 [計量]  。
 
     [訂用帳戶]  、[資源群組]  和 [資源]  應該設定為您在 [檢視傳統警示]  畫面所選取的值。 
 
@@ -258,13 +258,13 @@ IoT 中樞尚未遷移至 [Azure 監視器中的計量](../azure-monitor/platfor
 
 6. 在圖表底下，填寫下列欄位：
 
-   **條件**：設定為 [大於]  。
+   **條件** ：設定為 [大於]  。
 
-   **閾值**：設為 1000。
+   **閾值** ：設為 1000。
 
-   **期間**：將此欄位設定為 [過去 5 分鐘]  。 
+   **期間** ：將此欄位設定為 [過去 5 分鐘]  。 
 
-   **通知電子郵件收件者**：在此輸入您的電子郵件地址。 
+   **通知電子郵件收件者** ：在此輸入您的電子郵件地址。 
 
    按一下 [確定]  以儲存規則。 
 
@@ -282,7 +282,7 @@ IoT 中樞尚未遷移至 [Azure 監視器中的計量](../azure-monitor/platfor
 
 下載 [IoT 裝置模擬](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)的解決方案。 此連結會下載包含數個應用程式的存放庫；您需要的解決方案位於 iot-hub/Tutorials/Routing/。
 
-按兩下解決方案檔案 (SimulatedDevice.sln)，從 Visual Studio 中開啟程式碼，然後開啟 Program.cs。 以 IoT 中樞的主機名稱取代 `{iot hub hostname}`。 IoT 中樞主機名稱的格式是 **{iot-hub-name}.azure-devices.net**。 在此教學課程中，中樞主機名稱是 **ContosoTestHub.azure-devices.net**。 接下來，以您稍早設定模擬裝置時儲存的裝置金鑰取代 `{device key}`。 
+按兩下解決方案檔案 (SimulatedDevice.sln)，從 Visual Studio 中開啟程式碼，然後開啟 Program.cs。 以 IoT 中樞的主機名稱取代 `{iot hub hostname}`。 IoT 中樞主機名稱的格式是 **{iot-hub-name}.azure-devices.net** 。 在此教學課程中，中樞主機名稱是 **ContosoTestHub.azure-devices.net** 。 接下來，以您稍早設定模擬裝置時儲存的裝置金鑰取代 `{device key}`。 
 
    ```csharp
         static string myDeviceId = "contoso-test-device";

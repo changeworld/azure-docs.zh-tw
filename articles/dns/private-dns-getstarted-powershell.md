@@ -1,18 +1,18 @@
 ---
 title: 快速入門 - Azure PowerShell 建立 Azure 私人 DNS 區域
-description: 在本文中，您可以建立並測試私人 DNS 區域，並記錄在 Azure DNS 中。 這份逐步指南將引導您使用 Azure PowerShell，來建立和管理第一個私人 DNS 區域和第一筆記錄。
+description: 在本快速入門中，您會了解如何使用 Azure PowerShell，建立和管理第一個私人 DNS 區域和第一筆記錄。
 services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: rohink
-ms.openlocfilehash: fd795c9e251a7c4c0c8cbea5ce6c48cec3535484
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ee6dde6b34cccd415f9bf2052f65dcbe940715c1
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311746"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92424380"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立 Azure 私人 DNS 區域
 
@@ -22,7 +22,7 @@ ms.locfileid: "92311746"
 
 DNS 區域用來裝載特定網域的 DNS 記錄。 若要開始將網域裝載到 Azure DNS 中，您必須建立該網域名稱的 DNS 區域。 接著在此 DNS 區域內，建立網域的每筆 DNS 記錄。 若要將私人 DNS 區域發佈至虛擬網路，指定可以在區域內解析記錄的虛擬網路清單。  這稱為「連結」  虛擬網路。 啟用自動註冊時，Azure DNS 也會在每次建立虛擬機器時更新區域記錄，變更其 IP 位址，或者在刪除虛擬機器時更新。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
@@ -42,7 +42,7 @@ New-AzResourceGroup -name MyAzureResourceGroup -location "eastus"
 
 使用 `New-AzPrivateDnsZone` Cmdlet 建立 DNS 區域。
 
-下列範例會建立名為 **myAzureVNet** 的虛擬網路。 然後，它會在 **MyAzureResourceGroup**資源群組中建立名為 **private.contoso.com** 的 DNS 區域、將 DNS 區域連結到 **MyAzureVnet** 虛擬網路，以及啟用自動註冊。
+下列範例會建立名為 **myAzureVNet** 的虛擬網路。 然後，它會在 **MyAzureResourceGroup** 資源群組中建立名為 **private.contoso.com** 的 DNS 區域、將 DNS 區域連結到 **MyAzureVnet** 虛擬網路，以及啟用自動註冊。
 
 ```azurepowershell
 Install-Module -Name Az.PrivateDns -force
@@ -108,7 +108,7 @@ New-AzVm `
 
 ## <a name="create-an-additional-dns-record"></a>建立其他的 DNS 記錄
 
-您可以使用 `New-AzPrivateDnsRecordSet` Cmdlet 來建立記錄集。 下列範例會在資源群組 **MyAzureResourceGroup** 中的 DNS 區域 **private.contoso.com** 中，建立具有相對名稱 **db** 的記錄。 記錄集的完整名稱是 **db.private.contoso.com**。 記錄類型為 "A"，IP 位址是 "10.2.0.4"，TTL 為 3600 秒。
+您可以使用 `New-AzPrivateDnsRecordSet` Cmdlet 來建立記錄集。 下列範例會在資源群組 **MyAzureResourceGroup** 中的 DNS 區域 **private.contoso.com** 中，建立具有相對名稱 **db** 的記錄。 記錄集的完整名稱是 **db.private.contoso.com** 。 記錄類型為 "A"，IP 位址是 "10.2.0.4"，TTL 為 3600 秒。
 
 ```azurepowershell
 New-AzPrivateDnsRecordSet -Name db -RecordType A -ZoneName private.contoso.com `

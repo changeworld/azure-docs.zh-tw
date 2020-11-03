@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.author: jeedes
-ms.openlocfilehash: 30971c9c5280bfba37f46aaab0aaf2c2506502c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8cf58f49cba1bcc77c96a0da2061a037bb62bf2
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542338"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504735"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-teamphoria"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Teamphoria 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88542338"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Teamphoria。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -49,7 +49,7 @@ ms.locfileid: "88542338"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Teamphoria**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Teamphoria** 。
 1. 從結果面板選取 [Teamphoria]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-teamphoria"></a>設定及測試 Teamphoria 的 Azure AD 單一登入
@@ -70,7 +70,7 @@ ms.locfileid: "88542338"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Teamphoria]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -80,7 +80,7 @@ ms.locfileid: "88542338"
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<sub-domain>.teamphoria.com/login`
 
     > [!NOTE]
-    > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Teamphoria 用戶端支援小組](https://www.teamphoria.com/)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Teamphoria 用戶端支援小組](https://www.teamphoria.com/)以取得此值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -134,23 +134,23 @@ ms.locfileid: "88542338"
 
 4. 移至左側工具列中的 [管理設定]  選項，然後按一下 [設定] 索引標籤下的 [單一登入]  以開啟 SSO 設定視窗。
 
-    ![設定單一登入](./media/teamphoria-tutorial/admin_sso_configure.png)
+    ![螢幕擷取畫面：顯示 [管理員設定]，您可以在其中選取 [單一登入]。](./media/teamphoria-tutorial/admin_sso_configure.png)
 
 5. 按一下右上角的 [新增識別提供者]  選項來開啟表單，以供新增 SSO 的設定。
 
-    ![設定單一登入](./media/teamphoria-tutorial/add_new_identity_provider.png)
+    ![螢幕擷取畫面：顯示您可以選取 [新增識別提供者] 的位置。](./media/teamphoria-tutorial/add_new_identity_provider.png)
 
 6. 在欄位中輸入詳細資料，如下所示
 
-    ![設定單一登入](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
+    ![此螢幕擷取畫面顯示可輸入所述值的頁面。](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
 
-    a. **顯示名稱**：輸入管理頁面上外掛程式的顯示名稱。
+    a. **顯示名稱** ：輸入管理頁面上外掛程式的顯示名稱。
 
-    b. **按鈕名稱**：索引標籤的名稱，會在用於透過 SSO 登入的登入頁面上顯示。
+    b. **按鈕名稱** ：索引標籤的名稱，會在用於透過 SSO 登入的登入頁面上顯示。
 
-    c. **憑證**：在記事本中開啟您稍早從 Azure 入口網站下載的憑證，複製相同的內容並貼到這裡的方塊中。
+    c. **憑證** ：在記事本中開啟您稍早從 Azure 入口網站下載的憑證，複製相同的內容並貼到這裡的方塊中。
 
-    d. **進入點**：貼上稍早從 Azure 入口網站複製的 [登入 URL]  。
+    d. **進入點** ：貼上稍早從 Azure 入口網站複製的 [登入 URL]  。
 
     e. 將選項切換為 [開啟]  ，然後按一下 [儲存]  。
 
@@ -168,17 +168,17 @@ ms.locfileid: "88542338"
 
 1. 按一下 [手動邀請]  選項。
 
-    ![邀請人員](./media/teamphoria-tutorial/admin_manage_add_users.png)
+    ![螢幕擷取畫面：顯示 [手動邀請] 選項。](./media/teamphoria-tutorial/admin_manage_add_users.png)
 
 1. 在這個頁面上執行下列動作。
 
-    ![邀請人員](./media/teamphoria-tutorial/manual_user_invite.png)
+    ![螢幕擷取畫面：顯示 [手動使用者邀請] 頁面，您可以在其中輸入名稱和電子郵件地址。](./media/teamphoria-tutorial/manual_user_invite.png)
 
-    a. 在 [電子郵件地址]  文字方塊中，輸入像是 B.Simon 的使用者**電子郵件地址**。
+    a. 在 [電子郵件地址]  文字方塊中，輸入像是 B.Simon 的使用者 **電子郵件地址** 。
 
-    b. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **B**。
+    b. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **B** 。
 
-    c. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon**。
+    c. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon** 。
 
     d. 按一下 [邀請 1 位使用者]  。 使用者必須接受邀請才能建立到系統中。
 
@@ -186,15 +186,14 @@ ms.locfileid: "88542338"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Teamphoria] 圖格時，應該會自動登入您設定 SSO 的 Teamphoria。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Teamphoria] 圖格時，應該會自動登入您設定 SSO 的 Teamphoria。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Teamphoria](https://aad.portal.azure.com/)
-

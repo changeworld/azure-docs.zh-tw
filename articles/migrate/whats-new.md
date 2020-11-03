@@ -4,12 +4,12 @@ description: 了解 Azure Migrate 服務中的新功能和最新更新。
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: b03f3a7e10aa42f3393ecc22cb74f4e565587032
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ed2347d2d322e272b4fb7f4dfd697f3499419124
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314567"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92545169"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate 中的新功能
 
@@ -22,6 +22,7 @@ ms.locfileid: "92314567"
 - 相依性分析 (無代理程式) 現在可以同時在 1000 個 VM 上執行。
 - 現在可以使用 PowerShell 指令碼，大規模地啟用或停用相依性分析 (無代理程式)。 [深入了解。](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
 - 使用利用相依性分析 (無代理程式) 收集的資料，將 Power BI 中的網路連線視覺化 [深入了解。](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
+- 現在使用 Azure Migrate 可支援移轉資料磁碟達 32 TB 的 VMware VM：伺服器移轉無代理程式 VMware 移轉方法。 
 
 ## <a name="update-august-2020"></a>更新 (2020 年 8 月)
 

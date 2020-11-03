@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 18c8cd675470d1f1f93baf5ab2a8f811d546ffac
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: f992bc6d1ff2062e9159fefcaee8ffa293c98930
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826868"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460252"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-cloudsuite"></a>教學課程：Azure Active Directory 與 CloudSuite 整合
 
@@ -27,7 +27,7 @@ ms.locfileid: "91826868"
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Infor CloudSuite (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -62,7 +62,7 @@ ms.locfileid: "91826868"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Infor CloudSuite**，從結果面板中選取 **Infor CloudSuite**，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Infor CloudSuite** ，從結果面板中選取 **Infor CloudSuite** ，然後按一下 [新增]  按鈕以新增應用程式。
 
     ![結果清單中的 Infor CloudSuite](common/search-new-app.png)
 
@@ -134,9 +134,9 @@ ms.locfileid: "91826868"
     ```
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Infor CloudSuite 用戶端支援小組](mailto:support@infor.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Infor CloudSuite 用戶端支援小組](mailto:support@infor.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -170,7 +170,7 @@ ms.locfileid: "91826868"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`。 例如， BrittaSimon@contoso.com
 
@@ -206,18 +206,18 @@ ms.locfileid: "91826868"
 
 ### <a name="create-infor-cloudsuite-test-user"></a>建立 Infor CloudSuite 測試使用者
 
-本節會在 Infor CloudSuite 中建立名為 Britta Simon 的使用者。 Infor CloudSuite 支援依預設啟用的 Just-In-Time 使用者佈建。 在這一節沒有您需要進行的動作項目。 如果 Infor CloudSuite 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。 如果您需要手動建立使用者，請連絡  [Infor CloudSuite 支援小組](mailto:support@infor.com)。
+本節會在 Infor CloudSuite 中建立名為 Britta Simon 的使用者。 Infor CloudSuite 支援依預設啟用的 Just-In-Time 使用者佈建。 在這一節沒有您需要進行的動作項目。 如果 Infor CloudSuite 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。 如果您需要手動建立使用者，請連絡 [Infor CloudSuite 支援小組](mailto:support@infor.com)。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Infor CloudSuite] 圖格時，應該會自動登入您已設定 SSO 的 Infor CloudSuite。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Infor CloudSuite] 圖格時，應該會自動登入您已設定 SSO 的 Infor CloudSuite。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: include
-ms.date: 09/15/2020
+ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 1e32cd924c8e0f713ebe7cedfca0466a1e07c3bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 304807214958a9893560b176e96f6bfcf79877ab
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332544"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92548265"
 ---
 開始使用適用於 Java 的 Azure Content Moderator 用戶端程式庫。 請遵循下列步驟來安裝 Maven 套件，並試用基本工作的程式碼範例。 
 
@@ -24,42 +24,41 @@ Content Moderator 是一種 AI 服務，可讓您處理可能具冒犯意味、�
 
 使用適用於 Java 的 Content Moderator 用戶端程式庫可以：
 
-* 仲裁成人或猥褻內容、文字或人臉的影像。
+* 仲裁影像
+* 仲裁文字
 
-[參考文件](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable) | [成品 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator) | [範例](https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator)
+[參考文件](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-contentmoderator) |[成品 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator) | [範例](https://docs.microsoft.com/samples/browse/?products=azure&term=content-moderator)
 
 ## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 * 最新版的 [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Gradle 建置工具](https://gradle.org/install/)，或其他相依性管理員。
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator"  title="建立 Content Moderator 資源"  target="_blank">建立 Content Moderator 資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 部署完成後，按一下 [移至資源] 按鈕。
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 Content Moderator。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
 
-## <a name="create-a-content-moderator-resource"></a>建立 Content Moderator 資源
+## <a name="setting-up"></a>設定
 
-Azure 認知服務會由您訂閱的 Azure 資源呈現。 請使用 [Azure 入口網站](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本機電腦上建立 Content Moderator 的資源。 您也可以：
-
-* 在 [Azure 入口網站](https://portal.azure.com/)上檢視您的資源。
-
-從資源取得金鑰後，請為名為 `AZURE_CONTENTMODERATOR_KEY` 的金鑰[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
-
-## <a name="create-a-new-gradle-project"></a>建立新的 Gradle 專案
+### <a name="create-a-new-gradle-project"></a>建立新的 Gradle 專案
 
 在主控台視窗 (例如 cmd、PowerShell 或 Bash) 中，為您的應用程式建立新的目錄，並瀏覽至該目錄。 
 
 ```console
 mkdir myapp && cd myapp
 ```
-執行 `gradle init`。 此命令會建立 Gradle 的基本組建檔案，包括 *build.gradle.kts*，此檔案將在執行階段用來建立及設定您的應用程式。 從您的工作目錄執行下列命令：
+
+從您的工作目錄執行 `gradle init` 命令。 此命令會建立 Gradle 的基本組建檔案，包括 *build.gradle.kts* ，此檔案將在執行階段用來建立及設定您的應用程式。
 
 ```console
 gradle init --type basic
 ```
 
-出現選擇建置指令碼 DSL 的提示時，請選取 [Kotlin]。
+出現選擇 **DSL** 的提示時，請選取 [Kotlin]。
 
 ## <a name="install-the-client-library"></a>安裝用戶端程式庫
 
-找出 *build.gradle.kts*，並使用您慣用的 IDE 或文字編輯器加以開啟。 然後，在其中複製下列組建組態。 此組態會將專案定義為進入點為 **ContentModeratorQuickstart** 類別的 Java 應用程式。 其會匯入 Content Moderator 用戶端程式庫以及 Gson SDK，以進行 JSON 序列化。
+找出 *build.gradle.kts* ，並使用您慣用的 IDE 或文字編輯器加以開啟。 然後，在其中複製下列組建組態。 此組態會將專案定義為進入點為 **ContentModeratorQuickstart** 類別的 Java 應用程式。 其會匯入 Content Moderator 用戶端程式庫以及 GSON SDK，以進行 JSON 序列化。
 
 ```kotlin
 plugins {
@@ -81,15 +80,35 @@ dependencies{
 }
 ```
 
-在您的工作目錄中執行下列命令，以建立專案來源資料夾。
+### <a name="create-a-java-file"></a>建立 Java 檔案
+
+
+在您的工作目錄中執行下列命令，以建立專案來源資料夾：
 
 ```console
 mkdir -p src/main/java
 ```
 
-然後，在新的資料夾中建立名為 *ContentModeratorQuickstart.java* 的檔案。 在您慣用的編輯器或 IDE 中開啟檔案，並在頂端匯入下列程式庫：
+瀏覽至新的資料夾，並建立名為 *ContentModeratorQuickstart.java* 的檔案。 在您慣用的編輯器或 IDE 中開啟該檔案，並新增下列 `import` 陳述式：
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imports)]
+
+> [!TIP]
+> 想要立刻檢視整個快速入門程式碼檔案嗎？ 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java) 上找到該檔案，其中包含本快速入門中的程式碼範例。
+
+In the application's **ContentModeratorQuickstart** class, create variables for your resource's key and endpoint.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_creds)]
+
+> [!IMPORTANT]
+> 前往 Azure 入口網站。 如果您在 [必要條件] 區段中建立的 [產品名稱] 資源成功部署，請按一下 [後續步驟] 底下的 [前往資源] 按鈕。 您可以在 [資源管理] 底下的 [金鑰和端點] 頁面中找到金鑰和端點。 
+>
+> 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security)一文。
+
+在應用程式的 **main** 方法中，針對本快速入門中使用的方法新增呼叫。 稍後您會定義這些項目。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_maincalls)]
+
 
 ## <a name="object-model"></a>物件模型
 
@@ -109,41 +128,29 @@ mkdir -p src/main/java
 
 * [驗證用戶端](#authenticate-the-client)
 * [仲裁影像](#moderate-images)
+* [仲裁文字](#moderate-text)
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-> [!NOTE]
-> 此步驟假設您已針對名為 `AZURE_CONTENTMODERATOR_KEY` 的 Content Moderator 金鑰[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
-
-在應用程式的 `main` 方法中，使用您的訂用帳戶端點值和訂用帳戶金鑰環境變數來建立 [ContentModeratorClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable) 物件。 
-
-> [!NOTE]
-> 如果您在啟動應用程式後才建立環境變數，則必須先關閉執行該應用程式的編輯器、IDE 或殼層，再重新加以開啟，才能存取該變數。
+在應用程式的 `main` 方法中，使用您的訂用帳戶端點值和訂用帳戶金鑰來建立 [ContentModeratorClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable) 物件。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
 
 ## <a name="moderate-images"></a>仲裁影像
 
-### <a name="get-sample-images"></a>取得範例影像
+### <a name="set-up-sample-image"></a>設定範例影像
 
-在專案的 **src/main/** 資料夾中建立 **resources** 資料夾，並瀏覽至該資料夾。 然後，建立新的文字檔 *ImageFiles.txt*。 在此檔案中，您會新增要分析之影像的 URL &mdash; 每行一個 URL。 您可以使用下列範例影像：
+在新的方法中，使用指向影像的指定 URL 字串建立 **[BodyModelModel](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.models.bodymodelmodel?view=azure-java-stable)** 物件。
 
-```
-https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
-https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
-```
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod)]
+
 
 ### <a name="define-helper-class"></a>定義協助程式類別
 
-然後，在您的 *ContentModeratorQuickstart.java* 檔案中，將下列類別定義新增至 **ContentModeratorQuickstart** 類別內。 影像仲裁程序後續將會使用此內部類別。
+然後，在您的 *ContentModeratorQuickstart.java* 檔案中，將下列類別定義新增至 **ContentModeratorQuickstart** 類別內。 影像仲裁程序將會使用此內部類別。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_evaluationdata)]
 
-### <a name="iterate-through-images"></a>逐一查看影像
-
-接著，將下列程式碼新增至 `main` 方法底部。 或者，您可以將其新增至從 `main` 呼叫的個別方法。 此程式碼會逐步執行 _ImageFiles.txt_ 檔案的每一行。
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_iterate)]
 
 ### <a name="analyze-content"></a>分析內容
 這行程式碼會檢查指定 URL 中的影像是否有成人或猥褻內容。 如需這些字詞的相關資訊，請參閱「影像仲裁概念」指南。
@@ -166,13 +173,38 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 ### <a name="print-results"></a>列印結果
 
-在 `while` 迴圈後面新增下列程式碼，以將結果列印至主控台和輸出檔案 *src/main/resources/ModerationOutput.json*。
+在 `while` 迴圈後面新增下列程式碼，以將結果列印至主控台和輸出檔案 *src/main/resources/ModerationOutput.json* 。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_printdata)]
 
 關閉 `try` 陳述式，並新增用來完成此方法的 `catch` 陳述式。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_catch)]
+
+## <a name="moderate-text"></a>仲裁文字
+
+### <a name="set-up-sample-text"></a>設定範例文字
+
+在 **ContentModeratorQuickstart** 類別的頂端，定義對本地文字檔的參考。 將 .txt 檔案新增至您的專案目錄，並輸入想要分析的文字。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_var)]
+
+### <a name="analyze-text"></a>分析文字
+
+建立新的方法來讀取 .txt 檔案，並在每一行上呼叫 **screenText** 方法。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod)]
+
+### <a name="print-text-moderation-results"></a>列印文字仲裁結果
+
+新增下列程式碼，將仲裁結果列印到專案目錄中的 .json 檔案。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_print)]
+
+關閉 `try` 和 `catch` 陳述式以完成此方法。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_catch)]
+
 
 ## <a name="run-the-application"></a>執行應用程式
 

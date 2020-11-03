@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: jeedes
-ms.openlocfilehash: ba9fe6b727ec3f2f5ec8133901fb1aea287fbcd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0e5134da9083e97b3977b05d601c2cfba25f5d4
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88523102"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636675"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whosonlocation"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 WhosOnLocation 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88523102"
 * 讓使用者使用其 Azure AD 帳戶自動登入 WhosOnLocation。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -41,7 +41,7 @@ ms.locfileid: "88523102"
 
 * WhosOnLocation 支援 **SP** 起始的 SSO
 
-* 設定 WhosOnLocation 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 WhosOnLocation 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-whosonlocation-from-the-gallery"></a>從資源庫新增 WhosOnLocation
 
@@ -51,7 +51,7 @@ ms.locfileid: "88523102"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **WhosOnLocation**。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **WhosOnLocation** 。
 1. 從結果面板選取 [WhosOnLocation]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -73,7 +73,7 @@ ms.locfileid: "88523102"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [WhosOnLocation] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -87,7 +87,7 @@ ms.locfileid: "88523102"
     c. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://login.whosonlocation.com/saml/acs/<CUSTOM_ID>`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的 [登入 URL]、[回覆 URL] 和 [識別碼] 來更新這些值。 請連絡 [WhosOnLocation 用戶端支援小組](mailto:support@whosonlocation.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的 [登入 URL]、[回覆 URL] 和 [識別碼] 來更新這些值。 請連絡 [WhosOnLocation 用戶端支援小組](mailto:support@whosonlocation.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，尋找 [憑證 (Base64)] 並選取 [下載]，以下載憑證並將其儲存在電腦上。
 
@@ -133,47 +133,46 @@ ms.locfileid: "88523102"
 
 2. 按一下 [工具] -> [帳戶]。
 
-    ![WhosOnLocation 設定](./media/WhosOnLocation-tutorial/config1.png)
+    ![螢幕擷取畫面：顯示已從 WhosOnLocation 網站的 [工具] 功能表選取 [帳戶]。](./media/WhosOnLocation-tutorial/config1.png)
 
 3. 在左側的瀏覽器中，選取 [員工存取]。
 
-    ![WhosOnLocation 設定](./media/WhosOnLocation-tutorial/config2.png)
+    ![螢幕擷取畫面：顯示已從 [帳戶設定檔] 選取 [員工存取權]。](./media/WhosOnLocation-tutorial/config2.png)
 
 4. 在下列頁面上，執行下列步驟。
 
-    ![WhosOnLocation 設定](./media/WhosOnLocation-tutorial/config3.png)
+    ![螢幕擷取畫面：顯示 [員工存取權] 索引標籤，您可以在其中輸入使用者資料。](./media/WhosOnLocation-tutorial/config3.png)
 
-    a. 將**以 SAML 設定單一登入頁面**變更為**是**。
+    a. 將 **以 SAML 設定單一登入頁面** 變更為 **是** 。
 
     b. 在 [Issuer URL] \(簽發者 URL\) 文字方塊中，貼上您從 Azure 入口網站複製的 [實體識別碼] 值。
 
     c. 在 [SSO 端點] 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL] 值。
 
-    d. 從 Azure 入口網站將所下載的**憑證(Base64)** 以記事本開啟，然後將內容貼至 [憑證] 文字方塊。
+    d. 從 Azure 入口網站將所下載的 **憑證(Base64)** 以記事本開啟，然後將內容貼至 [憑證] 文字方塊。
 
     e. 按一下 [儲存 SAML 組態]。
 
 ### <a name="create-whosonlocation-test-user"></a>建立 WhosOnLocation 測試使用者
 
-在本節中，您要在 WhosOnLocation 中建立名為 B.Simon 的使用者。 請與  [WhosOnLocation 支援小組](mailto:support@whosonlocation.com)合作，在 WhosOnLocation 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您要在 WhosOnLocation 中建立名為 B.Simon 的使用者。 請與 [WhosOnLocation 支援小組](mailto:support@whosonlocation.com)合作，在 WhosOnLocation 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ## <a name="test-sso"></a>測試 SSO 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [WhosOnLocation] 圖格時，應該會自動登入您已設定 SSO 的 WhosOnLocation。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [WhosOnLocation] 圖格時，應該會自動登入您已設定 SSO 的 WhosOnLocation。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [以 Azure AD 試用 WhosOnLocation](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用進階可見性和控制項保護 WhosOnLocation](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [如何使用進階可見性和控制項保護 WhosOnLocation](/cloud-app-security/proxy-intro-aad)

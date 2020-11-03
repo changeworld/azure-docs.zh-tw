@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d244ed92cceb385f9f80690ae630e617e952c481
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 8349654650ff0c85fb7c9c1af6ab5dabc4f5c3ac
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124580"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677416"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>開始使用群組聊天 Hero 範例
 
@@ -25,16 +25,18 @@ ms.locfileid: "92124580"
 > links to our Hero Sample repo need to be updated when the sample is publicly available.
 ---->
 
-Azure 通訊服務的**群組聊天 Hero 範例**會示範如何使用通訊服務的聊天 Web 用戶端程式庫，來組建群組通話體驗。
+> [!IMPORTANT]
+> [您可在 GitHub 上取得此範例。](https://github.com/Azure-Samples/communication-services-web-chat-hero)
+
+
+Azure 通訊服務的 **群組聊天 Hero 範例** 會示範如何使用通訊服務的聊天 Web 用戶端程式庫，來組建群組通話體驗。
 
 在此範例快速入門中，我們將先了解範例如何運作，然後在您的本機電腦上執行範例。 接著，我們會使用您自己的 Azure 通訊服務資源，將範例部署至 Azure。
 
-> [!IMPORTANT]
-> [從 GitHub 下載範例](https://github.com/Azure-Samples/communication-services-web-chat-hero)
 
 ## <a name="overview"></a>概觀
 
-此範例同時包含用戶端應用程式和伺服器端應用程式。 **用戶端應用程式**是使用 Microsoft Fluent UI 架構的 React/Redux Web 應用程式。 此應用程式會將要求傳送至 ASP.NET Core 的**伺服器端應用程式**，以協助用戶端應用程式連線至 Azure。 
+此範例同時包含用戶端應用程式和伺服器端應用程式。 **用戶端應用程式** 是使用 Microsoft Fluent UI 架構的 React/Redux Web 應用程式。 此應用程式會將要求傳送至 ASP.NET Core 的 **伺服器端應用程式** ，以協助用戶端應用程式連線至 Azure。 
 
 範例如下所示：
 
@@ -42,17 +44,17 @@ Azure 通訊服務的**群組聊天 Hero 範例**會示範如何使用通訊服�
 
 當您按下 [開始聊天] 按鈕時，Web 應用程式就會從伺服器端應用程式提取使用者存取權杖。 然後，此權杖會用來將用戶端應用程式連線到 Azure 通訊服務。 一旦擷取權杖之後，系統會提示您指定在聊天中代表您的名稱和表情。 
 
-:::image type="content" source="./media/chat/pre-chat.png" alt-text="顯示範例應用程式登陸頁面的螢幕擷取畫面。":::
+:::image type="content" source="./media/chat/pre-chat.png" alt-text="顯示應用程式聊天前畫面的螢幕擷取畫面。":::
 
 設定顯示名稱和表情之後，您就可以加入聊天的工作階段中。 現在您會看到核心聊天體驗所在的主要聊天畫布。
 
-:::image type="content" source="./media/chat/main-app.png" alt-text="顯示範例應用程式登陸頁面的螢幕擷取畫面。":::
+:::image type="content" source="./media/chat/main-app.png" alt-text="顯示範例應用程式主畫面的螢幕擷取畫面。":::
 
 主要聊天畫面的元件：
 
-- **主要聊天區域**：這是使用者可以傳送和接收訊息的核心聊天體驗。 若要傳送訊息，您可以使用輸入區域，然後按 Enter 鍵 (或使用 [傳送] 按鈕)。 接收的核心訊息會依具有正確名稱和表情的寄件者分類。 您會在聊天區域中看到兩種類型的通知：1) 當使用者輸入時輸入通知，2) 傳送及讀取訊息的通知。
-- **標頭**：使用者會在這個位置看到聊天對話標題，以及用來切換參與者和設定側邊欄的控制項，還有一個用來結束聊天工作階段的離開按鈕。
-- **側邊欄**：使用標頭中的控制項進行切換時，會在此處顯示參與者和設定資訊。 參與者側邊欄包含聊天中的參與者清單，以及邀請參與者加入聊天工作階段的連結。 設定側邊欄可讓您設定聊天對話標題。 
+- **主要聊天區域** ：這是使用者可以傳送和接收訊息的核心聊天體驗。 若要傳送訊息，您可以使用輸入區域，然後按 Enter 鍵 (或使用 [傳送] 按鈕)。 接收的核心訊息會依具有正確名稱和表情的寄件者分類。 您會在聊天區域中看到兩種類型的通知：1) 當使用者輸入時輸入通知，2) 傳送及讀取訊息的通知。
+- **標頭** ：使用者會在這個位置看到聊天對話標題，以及用來切換參與者和設定側邊欄的控制項，還有一個用來結束聊天工作階段的離開按鈕。
+- **側邊欄** ：使用標頭中的控制項進行切換時，會在此處顯示參與者和設定資訊。 參與者側邊欄包含聊天中的參與者清單，以及邀請參與者加入聊天工作階段的連結。 設定側邊欄可讓您設定聊天對話標題。 
 
 您可以在下面找到有關設定範例的必要條件及步驟的詳細資訊。
 
@@ -62,7 +64,7 @@ Azure 通訊服務的**群組聊天 Hero 範例**會示範如何使用通訊服�
 - [Node.js (8.11.2 及更新版本)](https://nodejs.org/en/download/)
 - [Visual Studio (2017 及更新版本)](https://visualstudio.microsoft.com/vs/)
 - [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (請務必安裝與您 Visual Studio 執行個體 (32 與 64 位元) 對應的版本)
-- 建立 Azure 通訊服務資源。 如需詳細資訊，請參閱[建立 Azure 通訊資源](../quickstarts/create-communication-resource.md)。 您必須在本快速入門中記錄您的資源**連接字串**。
+- 建立 Azure 通訊服務資源。 如需詳細資訊，請參閱[建立 Azure 通訊資源](../quickstarts/create-communication-resource.md)。 您必須在本快速入門中記錄您的資源 **連接字串** 。
 
 ## <a name="locally-deploying-the-service--client-app"></a>在本機部署服務與用戶端應用程式
 
@@ -75,7 +77,7 @@ Azure 通訊服務的**群組聊天 Hero 範例**會示範如何使用通訊服�
 ## <a name="before-running-the-sample-for-the-first-time"></a>第一次執行範例之前
 
 1. 開啟 [PowerShell]、[Windows 終端機]、[命令提示字元] 或 [對等] 的執行個體，然後瀏覽至您想要將範例複製到其中的目錄。
-2. `git clone https://github.com/Azure/Communication.git`
+2. `git clone https://github.com/Azure-Samples/communication-services-web-chat-hero.git`
 3. 從 Azure 入口網站取得 `Connection String`。 如需連接字串的詳細資訊，請參閱[建立 Azure 通訊資源](../quickstarts/create-communication-resource.md)
 4. 取得 `Connection String` 之後，請將連接字串新增至聊天資料夾下找到的 **Chat/appsettings** 檔案。 在變數中輸入您的連接字串：`ResourceConnectionString`。
 

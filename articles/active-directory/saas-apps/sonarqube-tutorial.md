@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/18/2019
 ms.author: jeedes
-ms.openlocfilehash: b3790c52598b2857f56cac54acad156b3ba0bf51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d872c50174ba2fe7dfa321ac568e51fdaa80affc
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544998"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514736"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sonarqube"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Sonarqube 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88544998"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Sonarqube。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -52,7 +52,7 @@ ms.locfileid: "88544998"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Sonarqube**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Sonarqube** 。
 1. 從結果面板選取 [Sonarqube]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-sonarqube"></a>設定及測試 Sonarqube 的 Azure AD 單一登入
@@ -73,7 +73,7 @@ ms.locfileid: "88544998"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Sonarqube]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -142,9 +142,9 @@ ms.locfileid: "88544998"
 
     a. 將 [啟用]  選項切換為 [是]  。
 
-    b. 在 [應用程式識別碼]  文字方塊中輸入名稱，例如 **sonarqube**。
+    b. 在 [應用程式識別碼]  文字方塊中輸入名稱，例如 **sonarqube** 。
 
-    c. 在 [提供者名稱]  文字方塊中輸入名稱，例如 **SAML**。
+    c. 在 [提供者名稱]  文字方塊中輸入名稱，例如 **SAML** 。
 
     d. 在 [提供者識別碼]  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
 
@@ -162,21 +162,20 @@ ms.locfileid: "88544998"
 
 ### <a name="create-sonarqube-test-user"></a>建立 Sonarqube 測試使用者
 
-在本節中，您要在 Sonarqube 中建立名為 B.Simon 的使用者。 請連絡 [Sonarqube 用戶端支援小組](https://www.sonarsource.com/support/)，在 Sonarqube 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。 
+在本節中，您要在 Sonarqube 中建立名為 B.Simon 的使用者。 請與 [Sonarqube 用戶端支援小組](https://www.sonarsource.com/support/)合作，在 Sonarqube 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。 
 
 ## <a name="test-sso"></a>測試 SSO 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Sonarqube] 圖格時，應該會自動登入您已設定 SSO 的 Sonarqube。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Sonarqube] 圖格時，應該會自動登入您已設定 SSO 的 Sonarqube。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Sonarqube](https://aad.portal.azure.com/)
-

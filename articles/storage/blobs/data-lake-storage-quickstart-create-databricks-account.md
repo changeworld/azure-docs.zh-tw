@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/12/2020
 ms.reviewer: jeking
-ms.openlocfilehash: 482d703689ca6cfc34dd5d78574ae52e4def2b1f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 908bf21d2fe101731b11e3a8ad783f17728c8ed3
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86109768"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677327"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>快速入門：以 Databricks 分析資料
 
@@ -25,7 +25,7 @@ ms.locfileid: "86109768"
 
 * 您的 Azure Data Lake Gen2 儲存體帳戶的名稱。 [建立 Azure Data Lake Storage Gen2 儲存體帳戶](data-lake-storage-quickstart-create-account.md)。
 
-* 已被指派**儲存體 Blob 資料參與者**角色之 Azure 服務主體的租用戶識別碼、應用程式識別碼和密碼。 [建立服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)。
+* 已被指派 **儲存體 Blob 資料參與者** 角色之 Azure 服務主體的租用戶識別碼、應用程式識別碼和密碼。 [建立服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
   > [!IMPORTANT]
   > 在 Data Lake Storage Gen2 儲存體帳戶的範圍中指派該角色。 您可以將角色指派給父資源群組或訂用帳戶，但在這些角色指派傳播至儲存體帳戶之前，您將會收到與權限有關的錯誤。
@@ -86,7 +86,7 @@ ms.locfileid: "86109768"
 
 2. 在左側窗格中，選取 [工作區]  。 從 [工作區]  下拉式清單選取 [建立]   > [Notebook]  。
 
-    ![在 Databricks 中建立筆記本](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "在 Databricks 中建立筆記本")
+    ![顯示如何在 Databricks 中建立筆記本的螢幕擷取畫面，並反白顯示建立 > 筆記本功能表選項。](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "在 Databricks 中建立筆記本")
 
 3. 在 [建立 Notebook]  對話方塊中，輸入 Notebook 的名稱。 選取 [Scala]  作為語言，然後選取您先前建立的 Spark 叢集。
 
@@ -151,7 +151,7 @@ dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<container-name>@<st
 
     `%sql` 語言的 magic 命令可讓您從 Notebook 執行 SQL 程式碼，即使該 Notebook 屬於其他類型也是如此。 如需詳細資訊，請參閱[在 Notebook 中混合使用語言](https://docs.azuredatabricks.net/user-guide/notebooks/index.html#mixing-languages-in-a-notebook)。
 
-2. 讓我們看看 JSON 資料範例的快照集，以便進一步了解您所執行的查詢。 將下列程式碼片段貼到程式碼資料格中，然後按下 **SHIFT + ENTER**。
+2. 讓我們看看 JSON 資料範例的快照集，以便進一步了解您所執行的查詢。 將下列程式碼片段貼到程式碼資料格中，然後按下 **SHIFT + ENTER** 。
 
     ```sql
     %sql
@@ -162,7 +162,7 @@ dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<container-name>@<st
 
     ![範例 JSON 資料](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sample-csv-data.png "範例 JSON 資料")
 
-    至於其他細節，資料範例會擷取電台頻道的聽眾性別 (資料行名稱為**性別**)，以及其擁有的是免費或付費訂閱 (資料行名稱為**層級**)。
+    至於其他細節，資料範例會擷取電台頻道的聽眾性別 (資料行名稱為 **性別** )，以及其擁有的是免費或付費訂閱 (資料行名稱為 **層級** )。
 
 4. 您現在可以建立這項資料的視覺呈現，以顯示每種性別、多少使用者擁有免費帳戶，以及多少使用者是付費訂閱者。 從表格式輸出底部，按一下 [長條圖]  圖示，然後再按一下 [繪圖選項]  。
 
@@ -170,7 +170,7 @@ dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<container-name>@<st
 
 5. 在 [自訂繪圖]  中，如螢幕擷取畫面所示的方式拖放值。
 
-    ![自訂長條圖](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-customize-plot.png "自訂長條圖")
+    ![顯示自訂繪圖畫面的螢幕擷取畫面，以及您可以拖放的值。](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-customize-plot.png "自訂長條圖")
 
     - 將 [索引鍵]  設定為 [性別]  。
     - 將 [數列群組]  設定為 [層級]  。

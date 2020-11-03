@@ -6,12 +6,12 @@ ms.author: nimag
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: b66ee8117e5326a8ed8c1a1ad973fb13e942e0c7
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 652566efda4d4f274dc5700d35bcf45c1ebfb9e2
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761958"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92347190"
 ---
 在本快速入門中，您將了解如何使用適用於 JavaScript 的 Azure 通訊服務通話用戶端程式庫以開始通話。
 
@@ -45,6 +45,14 @@ npm init -y
 ```console
 npm install @azure/communication-common --save
 npm install @azure/communication-calling --save
+```
+
+本快速入門中建議使用下列版本的 Webpack：
+
+```console
+"webpack": "^4.42.0",
+"webpack-cli": "^3.3.11",
+"webpack-dev-server": "^3.10.3"
 ```
 
 `--save` 選項會在您的 **package.json** 檔案中，將程式庫列為相依性。
@@ -97,11 +105,10 @@ import { CallClient, CallAgent } from "@azure/communication-calling";
 import { AzureCommunicationUserCredential } from '@azure/communication-common';
 
 let call;
+let callAgent;
 const calleeInput = document.getElementById("callee-id-input");
 const callButton = document.getElementById("call-button");
 const hangUpButton = document.getElementById("hang-up-button");
-
-// quickstart code goes here
 ```
 
 ## <a name="object-model"></a>物件模型
@@ -117,15 +124,16 @@ const hangUpButton = document.getElementById("hang-up-button");
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-您必須將 `<USER_ACCESS_TOKEN>` 取代為資源的有效使用者存取權杖。 如果您還沒有可用的權杖，請參閱[使用者存取權杖](../../access-tokens.md)文件。 使用 `CallClient`，透過 `CommunicationUserCredential` 來初始化 `CallAgent` 執行個體，讓我們能夠撥打和接收通話。 將下列程式碼新增至 **client.js**：
+您必須將 `<USER_ACCESS_TOKEN>` 取代為資源的有效使用者存取權杖。 如果您還沒有可用的權杖，請參閱[使用者存取權杖](../../access-tokens.md)文件。 使用 `CallClient`，透過 `CommunicationUserCredential` 來初始化 `CallAgent` 執行個體，讓我們能夠撥打和接收通話。 將下列程式碼新增至 **client.js** ：
 
 ```javascript
-const callClient = new CallClient();
-const tokenCredential = new AzureCommunicationUserCredential("<USER ACCESS TOKEN>");
-let callAgent;
-
-callAgent = await callClient.createCallAgent(tokenCredential);
-callButton.disabled = false;
+async function init() {
+    const callClient = new CallClient();
+    const tokenCredential = new AzureCommunicationUserCredential("<USER ACCESS TOKEN>");
+    callAgent = await callClient.createCallAgent(tokenCredential);
+    callButton.disabled = false;
+}
+init();
 ```
 
 ## <a name="start-a-call"></a>開始通話

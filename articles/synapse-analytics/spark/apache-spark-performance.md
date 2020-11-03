@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: f8eb87909ffdf9ce15108d78bed425bf6c142262
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bb64fb3c9e25e629a0bcb36fe60fd5ae2d7fc906
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249462"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368599"
 ---
 # <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>最佳化 Azure Synapse Analytics 中的 Apache Spark 作業 (預覽)
 
@@ -52,7 +52,7 @@ ms.locfileid: "91249462"
 
 Spark 支援許多格式，例如 csv、json、xml、parquet、orc 和 avro。 Spark 可以擴充來支援外部資料來源的多種格式，如需詳細資訊，請參閱 [Apache Spark 封裝](https://spark-packages.org)。
 
-效能的最佳格式是 *snappy 壓縮*的 parquet，這是 Spark 2.x 的預設格式。 Parquet 以單欄式格式儲存資料，而且在 Spark 中高度最佳化。 此外，「snappy 壓縮」可能會產生比 gzip 壓縮更大的檔案。 由於這些檔案的可分割本質，因此可加快解壓縮速度
+效能的最佳格式是 *snappy 壓縮* 的 parquet，這是 Spark 2.x 的預設格式。 Parquet 以單欄式格式儲存資料，而且在 Spark 中高度最佳化。 此外，「snappy 壓縮」可能會產生比 gzip 壓縮更大的檔案。 由於這些檔案的可分割本質，因此可加快解壓縮速度。
 
 ## <a name="use-the-cache"></a>使用快取
 
@@ -178,6 +178,6 @@ MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 
 ## <a name="next-steps"></a>後續步驟
 
-- [調整 Apache Spark](https://spark.apache.org/docs/latest/tuning.html)
+- [調整 Apache Spark](https://spark.apache.org/docs/2.4.5/tuning.html)
 - [如何實際調整 Apache Spark 作業，以便這些作業運作](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
 - [Kryo 序列化](https://github.com/EsotericSoftware/kryo)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: jeedes
-ms.openlocfilehash: 8d34ca8ed01144ee282f6411640894807a09ef08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2a6b902f1c6b7e06b1a72b183007fbb9fe05c3c
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88527854"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515945"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-single-sign-on-for-skytap"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Single Sign-on for Skytap 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88527854"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Single Sign-on for Skytap。
 * 在 Azure 入口網站中集中管理您的帳戶。
 
-若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -40,7 +40,7 @@ ms.locfileid: "88527854"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * Single Sign-on for Skytap 支援 SP 和 IDP 起始的 SSO。
-* 在設定 Single Sign-on for Skytap 之後，您便可以強制執行工作階段控制。 這可即時保護貴組織的敏感性資料免於外洩和遭到滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 在設定 Single Sign-on for Skytap 之後，您便可以強制執行工作階段控制。 這可即時保護貴組織的敏感性資料免於外洩和遭到滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-single-sign-on-for-skytap-from-the-gallery"></a>從資源庫新增 Single Sign-on for Skytap
 
@@ -50,7 +50,7 @@ ms.locfileid: "88527854"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 移至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增新的應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Single Sign-on for Skytap**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Single Sign-on for Skytap** 。
 1. 從結果面板中選取 [Single Sign-on for Skytap]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-single-sign-on-for-skytap"></a>設定及測試 Single Sign-on for Skytap 的 Azure AD 單一登入
@@ -74,7 +74,7 @@ ms.locfileid: "88527854"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Single Sign-on for Skytap]  應用程式整合頁面上，尋找 [管理]  區段。 選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，選取 [基本 SAML 組態]  的鉛筆圖示，以編輯設定。
 
    ![以 SAML 設定單一登入頁面的螢幕擷取畫面，醒目提示鉛筆圖示](common/edit-urls.png)
@@ -93,9 +93,9 @@ ms.locfileid: "88527854"
     b. 在 [轉送狀態]  文字方塊中，以下列模式輸入 URL︰`https://pingone.com/1.0/<custom ID>`
 
     > [!NOTE]
-    > 這些都不是真正的值。 使用實際的「識別碼」、「回覆 URL」、「登入 URL」及「轉送狀態」來更新這些值。 請連絡 [Single Sign-on for Skytap 用戶端支援小組](mailto:support@skytap.com)，以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 使用實際的「識別碼」、「回覆 URL」、「登入 URL」及「轉送狀態」來更新這些值。 請連絡 [Single Sign-on for Skytap 用戶端支援小組](mailto:support@skytap.com)，以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找**同盟中繼資料 XML**。 選取 [下載]  以下載中繼資料檔案，並將其儲存在您的電腦上。
+1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 **同盟中繼資料 XML** 。 選取 [下載]  以下載中繼資料檔案，並將其儲存在您的電腦上。
 
     ![憑證下載連結的螢幕擷取畫面](common/metadataxml.png)
 
@@ -140,21 +140,20 @@ ms.locfileid: "88527854"
 
 ### <a name="create-single-sign-on-for-skytap-test-user"></a>建立 Single Sign-on for Skytap 測試使用者
 
-在本節中，您要在 Single Sign-on for Skytap 中建立名為 B.Simon 的使用者。 與 [Single Sign-on for Skytap 用戶端支援小組合作](mailto:support@skytap.com)，在 Single Sign-on for Skytap 平台中新增使用者。 您必須先建立和啟動使用者，才能使用單一登入。
+在本節中，您要在 Single Sign-on for Skytap 中建立名為 B.Simon 的使用者。 請與 [Single Sign-on for Skytap 用戶端支援小組](mailto:support@skytap.com)合作，在 Single Sign-on for Skytap 平台中新增使用者。 您必須先建立和啟動使用者，才能使用單一登入。
 
 ## <a name="test-sso"></a>測試 SSO 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入組態。
 
-當您在存取面板中選取 [Single Sign-on for Skytap] 圖格時，應該會自動登入您設定 SSO 的 Single Sign-on for Skytap。 如需詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [Single Sign-on for Skytap] 圖格時，應該會自動登入您設定 SSO 的 Single Sign-on for Skytap。 如需詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Slack](https://aad.portal.azure.com/)
-

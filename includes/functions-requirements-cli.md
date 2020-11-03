@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: e969520e226999bc2b104fb4f757619832eaa165
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ddceb2808874e531cfda81e5a9ce74be3a4fab4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88944498"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517069"
 ---
 ## <a name="configure-your-local-environment"></a>設定您的本機環境
 
@@ -42,11 +42,7 @@ ms.locfileid: "88944498"
 + [.NET Core SDK 3.1](https://www.microsoft.com/net/download)
 ::: zone-end
 ::: zone pivot="programming-language-java"  
-+ [Java Developer Kit](https://aka.ms/azure-jdks) 第 8 版。 
-
-    > [!IMPORTANT]
-    > + Java 11 的函數支援目前處於預覽狀態，而且 Maven 原型預設會建立 Java 8 部署。 如果想要改在 Java 11 上執行函數應用程式，您必須將 pom.xml 檔案手動更新為 Java 11 的值。 若要深入了解，請參閱 [Java 版本](../articles/azure-functions/functions-reference-java.md#java-versions)。 
-    > + `JAVA_HOME` 環境變數必須設定為正確 JDK 版本的安裝位置，才能完成本快速入門。
++ [Java Developer Kit](https://aka.ms/azure-jdks) 第 8 或第 11 版。 
 
 + [Apache Maven](https://maven.apache.org) 3.0 版或更高版本。
 

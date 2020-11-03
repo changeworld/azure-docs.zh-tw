@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 5a8fe24e5fa1935b2363ed5d2c15c72af8af11ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad6a4d075ea861068ad0c929d92cd2f12efa6121
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88539720"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516098"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>教學課程：Azure Active Directory 與 Signagelive 整合
 
@@ -27,7 +27,7 @@ Signagelive 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Signagelive (單一登入)。
 * 您可以集中管理您的帳戶：Azure 入口網站。
 
-如需 SaaS 應用程式與 Azure AD 整合的詳細資訊，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
+如需 SaaS 應用程式與 Azure AD 整合的詳細資訊，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -60,7 +60,7 @@ Signagelive 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Signagelive**。 
+4. 在搜尋方塊中，輸入 **Signagelive** 。 
 
      ![結果清單中的 Signagelive](common/search-new-app.png)
 
@@ -141,7 +141,7 @@ Signagelive 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 "brittasimon@yourcompanydomain.extension"。 例如，在此情況下，您可以輸入 "BrittaSimon@contoso.com"。
 
@@ -177,19 +177,18 @@ Signagelive 與 Azure AD 整合提供下列優點：
 
 ### <a name="create-a-signagelive-test-user"></a>建立 Signagelive 測試使用者
 
-在本節中，您要在 Signagelive 中建立名為 Britta Simon 的使用者。 請與 [Signagelive 支援小組](mailto:support@signagelive.com)合作，以在 Signagelive 平台中新增使用者。 您必須先建立和啟動使用者，才能使用單一登入。
+在本節中，您要在 Signagelive 中建立名為 Britta Simon 的使用者。 請與 [Signagelive 支援小組](mailto:support@signagelive.com)合作，以在 Signagelive 平台中新增使用者。 您必須先建立和啟動使用者，才能使用單一登入。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 
 在本節中，您會使用 MyApps 入口網站來測試您的 Azure AD 單一登入組態。
 
-當您在 MyApps 入口網站中選取 **Signagelive** 圖格時，您應該會自動登入。 如需 MyApps 入口網站的詳細資訊，請參閱[什麼是 MyApps 入口網站？](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在 MyApps 入口網站中選取 **Signagelive** 圖格時，您應該會自動登入。 如需 MyApps 入口網站的詳細資訊，請參閱[什麼是 MyApps 入口網站？](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

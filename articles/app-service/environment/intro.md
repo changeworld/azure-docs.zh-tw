@@ -7,15 +7,14 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 4e9ea34317951ecd9d3b6649ce42ffcf2f476d03
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6fff19498e9ca70991d3190165df70a48136f502
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149231"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631133"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>App Service 環境簡介 #
- 
 ## <a name="overview"></a>概觀 ##
 
 Azure App Service Environment 是 Azure App Service 的功能，可提供完全隔離和專用的環境，以便安全地大規模執行 App Service 應用程式。 此功能可以裝載您的：
@@ -32,7 +31,7 @@ App Service Environment (ASE) 適合需要下列項目的應用程式工作負�
 * 隔離和安全的網路存取。
 * 高記憶體使用率。
 
-客戶可以在單一 Azure 區域中或跨多個 Azure 區域建立多個 ASE。 這種彈性讓 ASE 很適合用於水平調整無狀態應用程式層的規模，以支援高 RPS 的工作負載。
+客戶可以在單一 Azure 區域中或跨多個 Azure 區域建立多個 ASE。 這種彈性讓 ASE 很適合用於水平調整無狀態應用程式層的規模，以支援高每秒要求數 (RPS) 的工作負載。
 
 ASE 只能裝載一個客戶的應用程式，並且會在其中一個 VNet 中執行此動作。 客戶可以精確控制輸入和輸出的應用程式網路流量。 應用程式可以透過 VPN 建立內部部署公司資源的高速安全連線。
 

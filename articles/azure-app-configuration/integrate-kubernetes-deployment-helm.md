@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: ee5f70f40103a92ff26cfcabc6adf9e2b825b59b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c388bd22ba20dd681997064496a90a81dabb292f
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074833"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426711"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>使用 Helm 與 Kubernetes 部署整合
 
@@ -51,16 +51,16 @@ Helm 提供一種方式來定義、安裝及升級在 Kubernetes 中執行的應
     目前先讓 [標籤]  和 [內容類型]  保持空白。
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>將 Key Vault 參考新增至應用程式組態
-1. 登入 [Azure 入口網站](https://portal.azure.com) 並將秘密新增至 [Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault)，包括名稱 **Password** 和值 **myPassword**。 
+1. 登入 [Azure 入口網站](https://portal.azure.com) 並將秘密新增至 [Key Vault](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault)，包括名稱 **Password** 和值 **myPassword** 。 
 2. 選取您上一節中建立的應用程式組態存放區執行個體。
 
 3. 選取 [組態總管]  。
 
 4. 選取 [+ 建立]   > [金鑰保存庫參考]  ，然後指定下列值：
-    - **金鑰**：選取 **secrets.password**。
-    - **標籤**︰將此值保留空白。
-    - **訂用帳戶**、**資源群組**與**金鑰保存庫**：輸入與您在上一步中建立之金鑰保存庫對應的值。
-    - **祕密**：選取您在上一節中所建立，名為 **Password** 的祕密。
+    - **金鑰** ：選取 **secrets.password** 。
+    - **標籤** ︰將此值保留空白。
+    - **訂用帳戶** 、 **資源群組** 與 **金鑰保存庫** ：輸入與您在上一步中建立之金鑰保存庫對應的值。
+    - **祕密** ：選取您在上一節中所建立，名為 **Password** 的祕密。
 
 ## <a name="create-helm-chart"></a>建立 Helm 圖表 ##
 首先，使用下列命令建立範例 Helm 圖表
@@ -182,7 +182,7 @@ settings:
 ```
 
 ## <a name="pass-configuration-from-app-configuration-in-helm-install"></a>在 Helm 安裝中從應用程式組態傳遞組態 ##
-首先，將組態從應用程式組態下載至 myConfig.yaml  檔案。 使用金鑰篩選器，只下載開頭為**設定**的金鑰。 如果您摸金鑰篩選不足以排除 Key Vault 參考的金鑰，可以使用引數 **--skip-keyvault** 將其排除。 
+首先，將組態從應用程式組態下載至 myConfig.yaml  檔案。 使用金鑰篩選器，只下載開頭為 **設定** 的金鑰。 如果您摸金鑰篩選不足以排除 Key Vault 參考的金鑰，可以使用引數 **--skip-keyvault** 將其排除。 
 
 > [!TIP]
 > 深入了解 [export 命令](/cli/azure/appconfig/kv?view=azure-cli-latest#az-appconfig-kv-export)。 
@@ -225,13 +225,13 @@ else{
 
 ```
 
-存取 [Kubernetes 儀表板](../aks/kubernetes-dashboard.md)，確認已成功設定組態和祕密。 您會看到來自應用程式組態的**色彩**和**訊息**值已填入容器的環境變數中。
+存取 [Kubernetes 儀表板](../aks/kubernetes-dashboard.md)，確認已成功設定組態和祕密。 您會看到來自應用程式組態的 **色彩** 和 **訊息** 值已填入容器的環境變數中。
 
 ![快速入門應用程式啟動本機](./media/kubernetes-dashboard-env-variables.png)
 
-儲存為應用程式組態中 Key Vault 參考的祕密，**Password**，也已新增至 Kubernetes 祕密。 
+儲存為應用程式組態中 Key Vault 參考的祕密， **Password** ，也已新增至 Kubernetes 祕密。 
 
-![快速入門應用程式啟動本機](./media/kubernetes-dashboard-secrets.png)
+![在 [資料] 區段中醒目提示密碼的螢幕擷取畫面。](./media/kubernetes-dashboard-secrets.png)
 
 ## <a name="clean-up-resources"></a>清除資源
 

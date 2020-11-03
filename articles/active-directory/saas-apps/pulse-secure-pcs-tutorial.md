@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: jeedes
-ms.openlocfilehash: c46565f7eaa060a060183cf321bb1df1903b945c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d38ff5c8f33bda5b12f6267e7a8cdf477db6c7d7
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90992279"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92511438"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pulse-secure-pcs"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Pulse Secure PCS 整合
 
@@ -47,7 +47,7 @@ ms.locfileid: "90992279"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Pulse Secure PCS**。
+1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Pulse Secure PCS** 。
 1. 從結果面板中選取 [Pulse Secure PCS]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -69,7 +69,7 @@ ms.locfileid: "90992279"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 Azure 入口網站的 [Pulse Secure PCS] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -84,7 +84,7 @@ ms.locfileid: "90992279"
 
 
     > [!NOTE]
-    > 這些都不是真正的值。 使用實際的「登入 URL」、「回覆 URL」和「識別碼」來更新這些值。 請連絡 [Pulse Secure PCS 用戶端支援小組](mailto:support@pulsesecure.net)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 使用實際的「登入 URL」、「回覆 URL」和「識別碼」來更新這些值。 請連絡 [Pulse Secure PCS 用戶端支援小組](mailto:support@pulsesecure.net)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -174,7 +174,7 @@ ms.locfileid: "90992279"
 
 ### <a name="create-pulse-secure-pcs-test-user"></a>建立 Pulse Secure PCS 測試使用者
 
-在本節中，您會在 Pulse Secure PCS 中建立名為 Britta Simon 的使用者。 請與  [Pulse Secure PCS 支援小組](mailto:support@pulsesecure.net)合作，在 Pulse Secure PCS 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您會在 Pulse Secure PCS 中建立名為 Britta Simon 的使用者。 請與 [Pulse Secure PCS 支援小組](mailto:support@pulsesecure.net)合作，在 Pulse Secure PCS 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ## <a name="test-sso"></a>測試 SSO 
 
@@ -184,10 +184,8 @@ ms.locfileid: "90992279"
 
 2. 直接移至 Pulse Secure PCS 登入 URL，然後從該處起始登入流程。
 
-3. 您可以使用 Microsoft 存取面板。 當您按一下存取面板中的 Pulse Secure PCS 圖格時，將會重新導向至 Pulse Secure PCS 登入 URL。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+3. 您可以使用 Microsoft 存取面板。 當您按一下存取面板中的 Pulse Secure PCS 圖格時，將會重新導向至 Pulse Secure PCS 登入 URL。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-設定 Pulse Secure PCS 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+設定 Pulse Secure PCS 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。

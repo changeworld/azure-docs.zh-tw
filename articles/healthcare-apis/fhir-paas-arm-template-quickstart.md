@@ -1,6 +1,6 @@
 ---
 title: 快速入門：使用 ARM 範本部署 Azure API for FHIR
-description: 在本快速入門中，了解如何使用 Azure Resource Manager 範本，來部署適用於快速健康照護互通資源 (FHIR®) 的 Azure API。
+description: 在本快速入門中，了解如何使用 Azure Resource Manager 範本 (ARM 範本)，來部署適用於快速健康照護互通資源 (FHIR®) 的 Azure API。
 author: mgblythe
 ms.service: healthcare-apis
 ms.subservice: fhir
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 10/06/2020
-ms.openlocfilehash: e9b2ec017ca985c1de739ee74c4d0732f39bdc1d
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 0d045aac63daf99bf67ec79438f55eedd5f200d9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91772731"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521436"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-api-for-fhir"></a>快速入門：使用 ARM 範本部署 Azure API for FHIR
 
@@ -81,7 +81,7 @@ Replace the line above with the following line once https://docs.microsoft.com/a
 
 4. 輸入新的 [服務名稱] ，然後選擇 Azure API for FHIR 的 [位置]。 此位置可以與資源群組的區域相同或不同。
 
-    :::image type="content" source="./media/fhir-paas-arm-template-quickstart/deploy-azure-api-fhir.png" alt-text="在 Azure 入口網站中使用 ARM 範本，來部署 Azure API for FHIR 服務。":::
+    :::image type="content" source="./media/fhir-paas-arm-template-quickstart/deploy-azure-api-fhir.png" alt-text="在 Azure 入口網站中使用 ARM 範本，來部署 Azure API for FHIR。":::
 
 5. 選取 [檢閱 + 建立]。
 
@@ -224,9 +224,14 @@ read -p "Press [ENTER] to continue: "
 
 ---
 
+如需逐步教學課程，以引導您完成建立 ARM 範本的流程，請參閱：[建立和部署第一個 ARM 範本教學課程](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+
 ## <a name="next-steps"></a>後續步驟
 
-如需逐步教學課程，以引導您完成建立 ARM 範本的流程，請參閱：
+在本快速入門手冊中，您已將 Azure API for FHIR 部署至您的訂用帳戶。 若要在 Azure API for FHIR 中設定其他設定，請繼續進行其他設定操作指南。 如果您已準備好開始使用 Azure API for FHIR，請參閱如何註冊應用程式了解詳細資訊。
 
-> [!div class="nextstepaction"]
-> [教學課程：建立及部署您的第一個 ARM 範本](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+>[!div class="nextstepaction"]
+>[Azure API for FHIR 中的其他設定](azure-api-for-fhir-additional-settings.md)
+
+>[!div class="nextstepaction"]
+>[註冊應用程式概觀](fhir-app-registration.md)

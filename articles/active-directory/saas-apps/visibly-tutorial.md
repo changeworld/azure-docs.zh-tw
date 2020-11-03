@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2020
 ms.author: jeedes
-ms.openlocfilehash: 1a1e2716d3f2328ebd64bbb5b6b70036ac991b56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de41e1ef021ea3da2b3a5bef4268469aab448a21
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88531832"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637933"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-visibly"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Visibly 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88531832"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Visibly。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -41,7 +41,7 @@ ms.locfileid: "88531832"
 
 * Visibly 支援 **SP** 起始的 SSO
 
-* 設定 Visibly 後，您可以強制執行工作階段控制，以即時防止組織的敏感性資料遭到外洩及滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 Visibly 後，您可以強制執行工作階段控制，以即時防止組織的敏感性資料遭到外洩及滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-visibly-from-the-gallery"></a>從資源庫新增 Visibly
 
@@ -51,7 +51,7 @@ ms.locfileid: "88531832"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Visibly**。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Visibly** 。
 1. 從結果面板選取 [Visibly]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -73,7 +73,7 @@ ms.locfileid: "88531832"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Visibly] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -142,27 +142,27 @@ ms.locfileid: "88531832"
 
 1. 瀏覽至導覽功能表中的 **設定** 選項。
 
-    ![組態](./media/visibly-tutorial/settings.png)
+    ![螢幕擷取畫面：顯示已選取 [設定] 選項。](./media/visibly-tutorial/settings.png)
 
 1. 按一下設定中的 [整合]。
 
-    ![組態](./media/visibly-tutorial/integrations.png)
+    ![螢幕擷取畫面：顯示已從 [設定] 功能表選取 [整合]。](./media/visibly-tutorial/integrations.png)
 
-1. 在 **整合**中，選取 [SSO]。
+1. 在 **整合** 中，選取 [SSO]。
 
-    ![組態](./media/visibly-tutorial/sso.png)
+    ![螢幕擷取畫面：顯示已從 [整合] 選取 SSO。](./media/visibly-tutorial/sso.png)
 
 1. 在下列頁面上，執行下列步驟。
 
-    ![組態](./media/visibly-tutorial/configuration.png)
+    ![此螢幕擷取畫面顯示 [SSO 整合] 頁面，您可以在其中輸入所述的值。](./media/visibly-tutorial/configuration.png)
 
     a. 在 [實體識別碼] 文字方塊中，貼上您從 Azure 入口網站複製的 [實體識別碼] 值。
 
     b. 在 [SSO URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL] 值。
 
-    c. 在 **SSO 名稱**文字方塊中，提供任何有效的名稱。
+    c. 在 **SSO 名稱** 文字方塊中，提供任何有效的名稱。
 
-    d. 在 [記事本] 中開啟從 Azure 入口網站下載的**憑證 (Base64)** ，複製內容並貼到**憑證**方塊，或者您可以選取 [上傳憑證]，直接上傳**憑證**。
+    d. 在 [記事本] 中開啟從 Azure 入口網站下載的 **憑證 (Base64)** ，複製內容並貼到 **憑證** 方塊，或者您可以選取 [上傳憑證]，直接上傳 **憑證** 。
 
     e. 按一下 [儲存] 
 
@@ -174,16 +174,16 @@ ms.locfileid: "88531832"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 Visibly 圖格時，應該會自動登入您設定 SSO 的 Visibly。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 Visibly 圖格時，應該會自動登入您設定 SSO 的 Visibly。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Visibly](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)

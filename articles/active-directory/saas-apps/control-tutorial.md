@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 46686818f9a5b7a0ef287843887440331f5ac24e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6b752b2c562944748d21aa1a28a177163a95aee
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88548118"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455284"
 ---
 # <a name="tutorial-integrate-continuity-control-with-azure-active-directory"></a>教學課程：整合 Continuity Control 與 Azure Active Directory
 
@@ -26,7 +26,7 @@ ms.locfileid: "88548118"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Control。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -47,7 +47,7 @@ ms.locfileid: "88548118"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Control**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Control** 。
 1. 從結果面板選取 [Control]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
@@ -78,7 +78,7 @@ ms.locfileid: "88548118"
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<SUBDOMAIN>.continuity.net/auth/saml`
 
     > [!Note]
-    > 這不是真正的值。 使用正確的子網域更新此值。 您可以在[控制驗證策略](https://control.continuity.net/settings/account_profile#tab/security)設定 SSO 子網域。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這不是真正的值。 使用正確的子網域更新此值。 您可以在[控制驗證策略](https://control.continuity.net/settings/account_profile#tab/security)設定 SSO 子網域。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [SAML 簽署憑證]  區段中，按一下 [編輯]  按鈕以開啟 [SAML 簽署憑證]  對話方塊。
 
@@ -122,22 +122,22 @@ ms.locfileid: "88548118"
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組]  對話方塊中，從使用者清單選取 **Britta Simon**，然後按一下畫面底部的 [選取]  按鈕。
+1. 在 [使用者和群組]  對話方塊中，從使用者清單選取 **Britta Simon** ，然後按一下畫面底部的 [選取]  按鈕。
 1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
 1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 
 ### <a name="create-control-test-user"></a>建立 Control 測試使用者
 
-在本節中，您要在 Control 中建立名為 Britta Simon 的使用者。 請與 [Control 支援小組](mailto:help@continuity.net) 合作，在 Control 平台中新增使用者。 使用 Britta Simon 的 Azure AD [使用者名聲]  ，在 Control 中填入其 [識別提供者使用者識別碼]  。 您必須先在 Control 中建立使用者，以及設定其 [識別提供者使用者識別碼]  ，才能使用單一登入。
+在本節中，您要在 Control 中建立名為 Britta Simon 的使用者。 請與 [Control 支援小組](mailto:help@continuity.net) 合作，在 Control 平台中新增使用者。 使用 Britta Simon 的 Azure AD [使用者名聲]  ，在 Control 中填入其 [識別提供者使用者識別碼]  。 您必須先在 Control 中建立使用者，以及設定其 [識別提供者使用者識別碼]  ，才能使用單一登入。
 
 ### <a name="test-sso"></a>測試 SSO
 
-當您在存取面板中選取 Control 圖格時，應該會自動登入您設定 SSO 的 Control。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 Control 圖格時，應該會自動登入您設定 SSO 的 Control。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

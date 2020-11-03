@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e541a5620d4f263e5e1379b364d7c7dd9a97a331
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 355e300ec9f3671cf29ccc763e211a9bb3806f64
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289016"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92474779"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>如何搭配 SQL 隨選使用 (預覽) OPENROWSET
 
@@ -127,7 +127,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
  指定儲存體內的路徑，其指向您想要讀取的資料夾或檔案。 如果路徑指向容器或資料夾，則會從該特定容器或資料夾讀取所有檔案。 子資料夾中的檔案不會包含在內。 
 
  您可以使用萬用字元將目標設為多個檔案或資料夾。 允許使用多個不連續的萬用字元。
-以下範例表示會從所有開頭為 */csv/population* 的資料夾中，讀取所有開頭為 *population*的 *csv* 檔案：  
+以下範例表示會從所有開頭為 */csv/population* 的資料夾中，讀取所有開頭為 *population* 的 *csv* 檔案：  
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
 如果您將 unstructured_data_path 指定為資料夾，SQL 隨選查詢將會從該資料夾擷取檔案。 
@@ -192,9 +192,9 @@ FIELDQUOTE = 'field_quote'
 
 DATA_COMPRESSION = 'data_compression_method'
 
-指定壓縮方法。 以下是支援的壓縮方法：
+指定壓縮方法。 僅在 PARSER_VERSION='1.0' 中支援。 以下是支援的壓縮方法：
 
-- org.apache.hadoop.io.compress.GzipCodec
+- GZIP
 
 PARSER_VERSION = 'parser_version'
 

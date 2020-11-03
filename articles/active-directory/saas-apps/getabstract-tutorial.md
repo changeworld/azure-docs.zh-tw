@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 6881681eef553dd2e21ba68a2bf722c7af1fc4a7
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 05138011822b15363b12f2c860f4f459972201a7
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91821181"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92449739"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>教學課程：Azure Active Directory 與 Getabstract 整合
 
@@ -27,7 +27,7 @@ Getabstract 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Getabstract (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -67,7 +67,7 @@ Getabstract 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Getabstract**，從結果面板中選取 [Getabstract]****，然後按一下 [新增]**** 按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Getabstract** ，從結果面板中選取 [Getabstract]，然後按一下 [新增] 按鈕以新增應用程式。
 
      ![結果清單中的 Getabstract](common/search-new-app.png)
 
@@ -91,7 +91,7 @@ Getabstract 與 Azure AD 整合提供下列優點：
 
 若要設定與 Getabstract 搭配運作的 Azure AD 單一登入，請執行下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Getabstract]**** 應用程式整合分頁上，選取 [單一登入]****。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Getabstract] 應用程式整合分頁上，選取 [單一登入]。
 
     ![設定單一登入連結](common/select-sso.png)
 
@@ -123,20 +123,20 @@ Getabstract 與 Azure AD 整合提供下列優點：
 
     ![Getabstract 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
     
-    在 [登入 URL]**** 文字方塊中，使用下列模式輸入 URL︰
+    在 [登入 URL] 文字方塊中，使用下列模式輸入 URL︰
 
     針對階段/pre_production：`https://int.getabstract.com/portal/<org_username>`
     
     針對生產環境：`https://www.getabstract.com/portal/<org_username>`
 
     > [!NOTE] 
-    > 這不是真實的值。 請使用實際的登入 URL 來更新此值。 請連絡 [Getabstract 客戶支援小組](https://www.getabstract.com/en/contact)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這不是真實的值。 請使用實際的登入 URL 來更新此值。 請連絡 [Getabstract 客戶支援小組](https://www.getabstract.com/en/contact)以取得此值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-4. 在 [以 SAML 設定單一登入]**** 頁面的 [SAML 簽署憑證]**** 區段中按一下 [下載]****，以依據您的需求從指定選項下載 [同盟中繼資料 XML]****，並儲存在您的電腦上。
+4. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中按一下 [下載]，以依據您的需求從指定選項下載 [同盟中繼資料 XML]，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
-6. 在 [設定 Getabstract]**** 區段上，依據您的需求複製適當的 URL。
+6. 在 [設定 Getabstract] 區段上，依據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -148,7 +148,7 @@ Getabstract 與 Azure AD 整合提供下列優點：
 
 ### <a name="configure-getabstract-single-sign-on"></a>設定 Getabstract 單一登入
 
-若要在 **Getabstract** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]**** 和所複製的適當 URL 傳送給 [Getabstract 支援小組](https://www.getabstract.com/en/contact)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Getabstract** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML] 和所複製的適當 URL 傳送給 [Getabstract 支援小組](https://www.getabstract.com/en/contact)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
@@ -166,7 +166,7 @@ Getabstract 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱] 欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -179,11 +179,11 @@ Getabstract 與 Azure AD 整合提供下列優點：
 
 在本節中，您會將 Getabstract 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]****、[所有應用程式]**** 及 [Getabstract]****。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]、[所有應用程式] 及 [Getabstract]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [Getabstract] ****。
+2. 在應用程式清單中，選取 [Getabstract] 。
 
     ![應用程式清單中的 Getabstract 連結](common/all-applications.png)
 
@@ -212,13 +212,12 @@ Getabstract 與 Azure AD 整合提供下列優點：
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 Getabstract 圖格時，應該會自動登入您已設定 SSO 的 Getabstract。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 Getabstract 圖格時，應該會自動登入您已設定 SSO 的 Getabstract。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

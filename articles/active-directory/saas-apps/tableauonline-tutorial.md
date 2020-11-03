@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 035bc13ee44a8a003ae860eb2bdd67432fa91f14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7841f09b113b4bdf7eacddbbfc5f054bf69b1750
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542504"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517815"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-online"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Tableau Online 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88542504"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Tableau Online。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -40,7 +40,7 @@ ms.locfileid: "88542504"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD 單一登入。
 
 * Tableau Online 支援由 **SP** 起始的 SSO
-* 設定 Tableau Online 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 設定 Tableau Online 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-tableau-online-from-the-gallery"></a>從資源庫新增 Tableau Online
 
@@ -50,7 +50,7 @@ ms.locfileid: "88542504"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Tableau Online**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Tableau Online** 。
 1. 從結果面板中選取 [Tableau Online]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
@@ -96,7 +96,7 @@ ms.locfileid: "88542504"
     > [!NOTE]
     > 您會收到本教學課程的 [設定 Tableau Online]  區段中的 `<entityid>` 值。 實體 ID 值會是 [設定 Tableau Online]  區段中的 [Azure AD 識別碼]  值。
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -126,7 +126,7 @@ ms.locfileid: "88542504"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如，BrittaSimon\@contoso.com
@@ -165,15 +165,15 @@ ms.locfileid: "88542504"
 
 1. 在不同的瀏覽器視窗中，登入您的 Tableau Online 應用程式。 依序前往 [設定]  和 [驗證]  。
 
-    ![設定單一登入](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
+    ![螢幕擷取畫面：顯示已從 [設定] 功能表中選取 [驗證]。](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
 
 2. 若要在 [驗證類型]  區段下啟用 SAML： 請勾選 [啟用其他驗證方法]  ，然後勾選 [SAML]  核取方塊。
 
-    ![設定單一登入](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
+    ![螢幕擷取畫面：顯示 [驗證類型] 區段，您可以在其中選取值。](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
 
 3. 向下捲動到 [將中繼資料檔匯入到 Tableau Online]  區段。  按一下 [瀏覽]，然後匯入您從 Azure AD 下載的中繼資料檔案。 然後，按一下 [套用]  。
 
-   ![設定單一登入](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
+   ![螢幕擷取畫面：顯示可於其中匯入中繼資料檔案的區段。](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
 
 4. 在 [比對判斷提示]  區段中，針對 [電子郵件地址]  、[名字]  和 [姓氏]  插入對應的識別提供者判斷提示名稱。 若要從 Azure AD 取得這項資訊︰ 
   
@@ -181,29 +181,29 @@ ms.locfileid: "88542504"
 
     b. 在 [使用者屬性和宣告]  區段中，按一下編輯圖示。
 
-   ![設定單一登入](./media/tableauonline-tutorial/attributesection.png)
+   ![螢幕擷取畫面：顯示 [使用者屬性和宣告] 區段，您可以在其中選取 [編輯] 圖示。](./media/tableauonline-tutorial/attributesection.png)
 
     c. 使用下列步驟複製 givenname、email 和 surname 屬性的命名空間值：
 
-   ![Azure AD 單一登入](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
+   ![螢幕擷取畫面：顯示 Givenname、Surname 和 Emailaddress 屬性。](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
 
     d. 按一下 [user.givenname]  值
 
     e. 從 [命名空間]  文字方塊複製該值。
 
-    ![設定單一登入](./media/tableauonline-tutorial/attributesection2.png)
+    ![螢幕擷取畫面：顯示 [管理使用者宣告] 區段，您可以在其中輸入命名空間。](./media/tableauonline-tutorial/attributesection2.png)
 
     f. 若要複製 email 和 surname 的命名空間值，請重複上述步驟。
 
     g. 切換至 Tableau Online 應用程式，然後將 [使用者屬性和宣告]  區段設定如下：
 
-    * 電子郵件︰**mail** 或 **userprincipalname**
+    * 電子郵件︰ **mail** 或 **userprincipalname**
 
     * 名字︰ **givenname**
 
     * 姓氏︰ **surname**
 
-    ![設定單一登入](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
+    ![螢幕擷取畫面：顯示 [比對屬性] 區段，您可以在其中輸入值。](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
 
 ### <a name="create-tableau-online-test-user"></a>建立 Tableau Online 測試使用者
 
@@ -211,11 +211,11 @@ ms.locfileid: "88542504"
 
 1. 在 [Tableau Online]  中，依序按一下 [設定]  和 [驗證]  區段。 向下捲動至 [管理使用者]  區段。 依序按一下 [新增使用者]  和 [輸入電子郵件地址]  。
   
-    ![建立 Azure AD 測試使用者](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
+    ![螢幕擷取畫面：顯示 [管理使用者] 區段，您可以在其中選取 [新增使用者]。](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
 
 2. 選取 [新增 (SAML) 驗證的使用者]  。 在 [輸入電子郵件地址]  文字方塊中新增 britta.simon\@contoso.com
   
-    ![建立 Azure AD 測試使用者](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
+    ![螢幕擷取畫面：顯示 [新增使用者] 頁面，您可以在其中輸入電子郵件地址。](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
 
 3. 按一下 [加入使用者]  。
 
@@ -223,14 +223,14 @@ ms.locfileid: "88542504"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 Tableau Online 圖格時，應該會自動登入您設定 SSO 的 Tableau Online。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 Tableau Online 圖格時，應該會自動登入您設定 SSO 的 Tableau Online。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)

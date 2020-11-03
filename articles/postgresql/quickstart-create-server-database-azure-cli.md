@@ -8,16 +8,16 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: df7c27fb0aca6a9b903d29ea4414832fb677b3eb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8a9661f7f5cdd66dc0aab6d937701cda48048219
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91705239"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92488022"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>快速入門：使用 Azure CLI 建立適用於 PostgreSQL 的 Azure 資料庫伺服器
 
-本快速入門說明如何使用 [Azure Cloud Shell](https://shell.azure.com) 中的 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 命令，在五分鐘內建立單一的「適用於 PostgreSQL 的 Azure 資料庫」伺服器。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+本快速入門說明如何使用 [Azure Cloud Shell](https://shell.azure.com) 中的 [Azure CLI](/cli/azure/get-started-with-azure-cli) 命令，在五分鐘內建立單一的「適用於 PostgreSQL 的 Azure 資料庫」伺服器。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -27,23 +27,23 @@ ms.locfileid: "91705239"
 ## <a name="prerequisites"></a>先決條件
 本文要求您在本機執行 Azure CLI 2.0 版或更新版本。 若要查看所安裝的版本，請執行 `az --version` 命令。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
-您必須使用 [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) 命令登入您的帳戶。 請注意 **id** 屬性，這是指您的 Azure 帳戶的**訂用帳戶識別碼**。 
+您必須使用 [az login](/cli/azure/reference-index#az-login) 命令登入您的帳戶。 請注意 **id** 屬性，這是指您的 Azure 帳戶的 **訂用帳戶識別碼** 。 
 
 ```azurecli-interactive
 az login
 ```
 
-使用 [az account set](/cli/azure/account) 命令來選取您帳戶底下的特定訂用帳戶 ID。 記下 **az login** 輸出中的 **id** 值，作為命令中**訂用帳戶**引數的值。 
+使用 [az account set](/cli/azure/account) 命令來選取您帳戶底下的特定訂用帳戶 ID。 記下 **az login** 輸出中的 **id** 值，作為命令中 **訂用帳戶** 引數的值。 
 
 ```azurecli
 az account set --subscription <subscription id>
 ```
 
-如果您有多個訂用帳戶，請選擇資源計費的適當訂用帳戶。 若要取得您的所有訂用帳戶，請使用 [az account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list)。
+如果您有多個訂用帳戶，請選擇資源計費的適當訂用帳戶。 若要取得您的所有訂用帳戶，請使用 [az account list](/cli/azure/account#az-account-list)。
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>建立適用於 PostgreSQL 的 Azure 資料庫伺服器
 
-使用 [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) 命令建立 [Azure 資源群組](../azure-resource-manager/management/overview.md)，然後在此資源群組內建立您的 PostgreSQL 伺服器。 請提供唯一的名稱。 下列範例會在 `westus` 位置建立名為 `myresourcegroup` 的資源群組。
+使用 [az group create](/cli/azure/group#az-group-create) 命令建立 [Azure 資源群組](../azure-resource-manager/management/overview.md)，然後在此資源群組內建立您的 PostgreSQL 伺服器。 請提供唯一的名稱。 下列範例會在 `westus` 位置建立名為 `myresourcegroup` 的資源群組。
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
@@ -58,16 +58,16 @@ az postgres server create --resource-group myresourcegroup --name mydemoserver  
 
 **設定** | **範例值** | **說明**
 ---|---|---
-NAME | mydemoserver | 可識別 Azure Database for PostgreSQL 伺服器的唯一名稱。 伺服器名稱只能包含小寫字母、數字及連字號 (-) 字元。 其必須包含 3 到 63 個字元。
+NAME | mydemoserver | 可識別 Azure Database for PostgreSQL 伺服器的唯一名稱。 伺服器名稱只能包含小寫字母、數字及連字號 (-) 字元。 其必須包含 3 到 63 個字元。 如需詳細資訊，請參閱[適用於 PostgreSQL 的 Azure 資料庫命名規則](../azure-resource-manager/management/resource-name-rules.md#microsoftdbforpostgresql)。
 resource-group | myresourcegroup | Azure 資源群組的名稱。
 location | westus | 伺服器的 Azure 位置。
-admin-user | myadmin | 適用於系統管理員登入的使用者名稱。 此名稱不得為 **azure_superuser**、**admin**、**administrator**、**root**、**guest** 或 **public**。
+admin-user | myadmin | 適用於系統管理員登入的使用者名稱。 此名稱不得為 **azure_superuser** 、 **admin** 、 **administrator** 、 **root** 、 **guest** 或 **public** 。
 admin-password | *安全密碼* | 系統管理員使用者的密碼。 其必須包含 8 到 128 個字元，且來自下列類別的其中三個類別：英文大寫字母、英文小寫字母、數字及非英數字元。
 sku-name|GP_Gen5_2| 定價層和計算設定的名稱。 遵循簡短形式的慣例 {pricing tier} _{compute generation}_ {vCores}。 如需詳細資訊，請參閱[適用於 PostgreSQL 的 Azure 資料庫定價](https://azure.microsoft.com/pricing/details/postgresql/server/)。
 
 >[!IMPORTANT] 
->- 伺服器上的預設 PostgreSQL 版本為 9.6。 若要查看所有支援的版本，請參閱[支援的 PostgreSQL 主要版本](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)。
->- 若要檢視 **az postgres server create** 命令的所有引數，請參閱[此參考文件](https://docs.microsoft.com/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create)。
+>- 伺服器上的預設 PostgreSQL 版本為 9.6。 若要查看所有支援的版本，請參閱[支援的 PostgreSQL 主要版本](./concepts-supported-versions.md)。
+>- 若要檢視 **az postgres server create** 命令的所有引數，請參閱 [此參考文件](/cli/azure/postgres/server#az-postgres-server-create)。
 >- 伺服器上預設會強制執行 SSL。 如需 SSL 的詳細資訊，請參閱[設定 SSL 連線能力](./concepts-ssl-connection-security.md)。
 
 ## <a name="configure-a-server-level-firewall-rule"></a>設定伺服器層級防火牆規則 
@@ -123,7 +123,7 @@ az postgres server show --resource-group myresourcegroup --name mydemoserver
 ```
 
 ## <a name="connect-to-the-azure-database-for-postgresql-server-by-using-psql"></a>使用 psql 連線到適用於 PostgreSQL 資料庫的 Azure 資料庫伺服器
-[psql](https://www.postgresql.org/docs/current/static/app-psql.html) 用戶端是用於連線到 PostgreSQL 伺服器的熱門選擇。 您可以搭配使用 psql 與 [Azure Cloud Shell](../cloud-shell/overview.md) 來連線到您的伺服器。 您也可以在本機環境中使用 psql (如果有的話)。 系統會使用新的 PostgreSQL 伺服器自動建立空的資料庫 **postgres**。 您可以使用該資料庫來與 psql 連線，如下列程式碼所示。 
+[psql](https://www.postgresql.org/docs/current/static/app-psql.html) 用戶端是用於連線到 PostgreSQL 伺服器的熱門選擇。 您可以搭配使用 psql 與 [Azure Cloud Shell](../cloud-shell/overview.md) 來連線到您的伺服器。 您也可以在本機環境中使用 psql (如果有的話)。 系統會使用新的 PostgreSQL 伺服器自動建立空的資料庫 **postgres** 。 您可以使用該資料庫來與 psql 連線，如下列程式碼所示。 
 
    ```bash
  psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
@@ -154,7 +154,6 @@ az postgres server delete --resource-group myresourcegroup --name mydemoserver
 > [!div class="nextstepaction"]
 > [使用匯出和匯入來移轉資料庫](./howto-migrate-using-export-and-import.md)
 > 
-> [使用 PostgreSQL 部署 Django Web 應用程式](../app-service/containers/tutorial-python-postgresql-app.md)
+> [使用 PostgreSQL 部署 Django Web 應用程式](../app-service/tutorial-python-postgresql-app.md)
 >
 > [與 Node.JS 應用程式連線](./connect-nodejs.md)
-

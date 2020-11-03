@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: a7e159c94bf1b9f3e8049fd657abb562f1c85671
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2bac9645fa66cd33c7cda79f16628c1104e27d7d
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87503917"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480542"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>Azure Synapse Analytics IP 防火牆規則 (預覽)
 
@@ -27,7 +27,7 @@ IP 防火牆規則會根據每個要求的來源 IP 位址，授與或拒絕 Syn
 
 有兩種方式可將 IP 防火牆規則新增至 Synapse 工作區。 若要將 IP 防火牆新增至您的工作區，請選取 [安全性 + 網路]，並在建立工作區時，核取 [允許從所有 IP 位址進行連線]。
 
-![Azure 入口網站的 Synapse 工作區 IP 設定。](./media/synpase-workspace-ip-firewall/ip-firewall-1.png)
+![反白顯示 [安全性 + 網路] 按鈕的螢幕擷取畫面。](./media/synpase-workspace-ip-firewall/ip-firewall-1.png)
 
 ![Azure 入口網站的 Synapse 工作區 IP 設定。](./media/synpase-workspace-ip-firewall/ip-firewall-2.png)
 

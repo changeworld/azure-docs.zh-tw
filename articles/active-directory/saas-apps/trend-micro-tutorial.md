@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
-ms.openlocfilehash: f2a6598cc28c39719d73be333bd74c24fce9371b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b76c41787d7a35fb3024fa18c0122bc966243bbc
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551886"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514532"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Trend Micro Web Security (TMWS) 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88551886"
 * 讓使用者使用其 Azure AD 帳戶自動登入 TMWS。
 * 在 Azure 入口網站中集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 的整合，請參閱 [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解 SaaS 應用程式與 Azure AD 的整合，請參閱 [Azure Active Directory 中的應用程式單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -40,7 +40,7 @@ ms.locfileid: "88551886"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * TMWS 支援 SP 起始的 SSO。
-* 在設定 TMWS 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 若要了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制，請參閱[上線和部署任何應用程式的條件式存取應用程式控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 在設定 TMWS 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 若要了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制，請參閱[上線和部署任何應用程式的條件式存取應用程式控制](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-tmws-from-the-gallery"></a>從資源庫新增 TMWS
 
@@ -71,7 +71,7 @@ ms.locfileid: "88551886"
 完成下列步驟，在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Trend Micro Web Security (TMWS)]  應用程式整合頁面上，於 [管理]  區段選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，選取 [基本 SAML 組態]  的畫筆按鈕，以編輯設定：
 
    ![編輯 [基本 SAML 組態] 設定](common/edit-urls.png)
@@ -116,7 +116,7 @@ ms.locfileid: "88551886"
 1. 在畫面頂端選取 [新增使用者]  。
 1. 在 [使用者]  屬性中，執行下列步驟：
    1. 在 [名稱]  方塊中，輸入 `B.Simon`。  
-   1. 在 [使用者名稱]  方塊中，輸入 ***username *@* companydomain *.* extension***。 例如： `B.Simon@contoso.com` 。
+   1. 在 [使用者名稱] 方塊中，輸入 * *_username_@* companydomain *.* extension***。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼]  ，然後記下 [密碼]  方塊中顯示的值。
    1. 選取 [建立]  。
 
@@ -177,7 +177,7 @@ ms.locfileid: "88551886"
 
 1. 登入 TMWS 管理主控台，然後移至 [系統管理]   > [使用者與驗證]   > [目錄服務]  。
 
-1. 選取畫面上方區域中的**這裡**。
+1. 選取畫面上方區域中的 **這裡** 。
 
 1. 在 [驗證方法]  頁面上，選取 [Azure AD]  。
 
@@ -190,7 +190,7 @@ ms.locfileid: "88551886"
 
     a. 在 [服務 URL]  方塊中，輸入您從 Azure 入口網站複製的 [登入 URL]  值。
 
-    b. 在 [登入名稱屬性]  方塊中，輸入**使用者宣告名稱**與來自 Azure 入口網站的 **user.onpremisessamaccountname** 來源屬性。
+    b. 在 [登入名稱屬性]  方塊中，輸入 **使用者宣告名稱** 與來自 Azure 入口網站的 **user.onpremisessamaccountname** 來源屬性。
 
     c. 在 [公用 SSL 憑證]  方塊中，使用從 Azure 入口網站下載的 [憑證 (Base64)]  。
 
@@ -224,21 +224,20 @@ ms.locfileid: "88551886"
 
 1. 造訪任何網際網路網站。 TMWS 會將您導向至 TMWS 網頁驗證入口。
 
-1. 指定 Active Directory 帳戶 (格式：*domain*\\*sAMAccountName* or *sAMAccountName*@*domain*)、電子郵件地址或 UPN，然後選取 [登入]  。 TMWS 會將您傳送至 [Azure AD 登入] 視窗。
+1. 指定 Active Directory 帳戶 (格式： *domain*\\*sAMAccountName* or *sAMAccountName*@*domain* )、電子郵件地址或 UPN，然後選取 [登入]  。 TMWS 會將您傳送至 [Azure AD 登入] 視窗。
 
 1. 在 [Azure AD 登入] 視窗中，輸入您的 Azure AD 帳號認證。 您現在應已登入 TMWS。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何整合 SaaS 應用程式與 Azure Active Directory 的教學課程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何整合 SaaS 應用程式與 Azure Active Directory 的教學課程](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Trend Micro Web Security](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用進階可見性和控制項保護 Trend Micro Web Security](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [如何使用進階可見性和控制項保護 Trend Micro Web Security](/cloud-app-security/proxy-intro-aad)

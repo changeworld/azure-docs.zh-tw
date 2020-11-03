@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: da8ae35ce85ca9ffb031511e81270afd8529681d
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 7754da168465c58c1481f355f3597a621a99609e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994186"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522303"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 OpenAthens 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91994186"
 * 讓使用者使用其 Azure AD 帳戶自動登入 OpenAthens。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -50,7 +50,7 @@ ms.locfileid: "91994186"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **OpenAthens**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **OpenAthens** 。
 1. 從結果面板選取 [OpenAthens]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-openathens"></a>設定及測試 OpenAthens 的 Azure AD 單一登入
@@ -71,18 +71,18 @@ ms.locfileid: "91994186"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [OpenAthens]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 組態]  區段上，上傳**服務提供者中繼資料檔案**，並執行稍後在本教學課程中提及的步驟。
+1. 在 [基本 SAML 組態]  區段上，上傳 **服務提供者中繼資料檔案** ，並執行稍後在本教學課程中提及的步驟。
 
     a. 按一下 [上傳中繼資料檔案]  。
 
     ![openathens 上傳中繼資料](common/upload-metadata.png)
 
-    b. 按一下**資料夾圖示**以選取中繼資料檔案，然後按一下 [上傳]  。
+    b. 按一下 **資料夾圖示** 以選取中繼資料檔案，然後按一下 [上傳]  。
 
     ![Openathens 瀏覽上傳中繼資料](common/browse-upload-metadata.png)
 
@@ -140,48 +140,48 @@ ms.locfileid: "91994186"
 
     ![顯示 [選取本機驗證系統類型] 對話方塊的螢幕擷取畫面， 其中已選取 [S A M L 1.1/2.0] 和 [設定] 按鈕。](./media/openathens-tutorial/tutorial_openathens_application2.png)
 
-1. 若要新增設定，請選取 [瀏覽]**** 按鈕以上傳您從 Azure 入口網站下載的中繼資料 .xml 檔案，然後選取 [新增]****。
+1. 若要新增設定，請選取 [瀏覽] 按鈕以上傳您從 Azure 入口網站下載的中繼資料 .xml 檔案，然後選取 [新增]。
 
     ![顯示 [新增 S A M L 驗證系統] 對話方塊的螢幕擷取畫面， 其中已選取 [瀏覽] 動作和 [新增] 按鈕。](./media/openathens-tutorial/tutorial_openathens_application3.png)
 
-1. 在 [詳細資料]**** 索引標籤下方執行以下步驟。
+1. 在 [詳細資料] 索引標籤下方執行以下步驟。
 
     ![設定單一登入](./media/openathens-tutorial/tutorial_openathens_application4.png)
 
-    a. 在 [顯示名稱對應]**** 中，選取 [使用屬性]****。
+    a. 在 [顯示名稱對應] 中，選取 [使用屬性]。
 
-    b. 在 [顯示名稱屬性]**** 文字方塊中，輸入 `http://schema.microsoft.com/identity/claims/displayname` 值。
+    b. 在 [顯示名稱屬性] 文字方塊中，輸入 `http://schema.microsoft.com/identity/claims/displayname` 值。
 
-    c. 在 [唯一使用者對應]**** 中，選取 [使用屬性]****。
+    c. 在 [唯一使用者對應] 中，選取 [使用屬性]。
 
-    d. 在 [唯一使用者屬性]**** 文字方塊中，輸入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` 值。
+    d. 在 [唯一使用者屬性] 文字方塊中，輸入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` 值。
 
-    e. 在 [狀態]**** 中，勾選三個核取方塊。
+    e. 在 [狀態] 中，勾選三個核取方塊。
 
-    f. 在 [建立本機帳戶]**** 中，選取 [自動]****。
+    f. 在 [建立本機帳戶] 中，選取 [自動]。
 
     g. 選取 [儲存變更]  。
 
-    h. 從 [</> 信賴憑證者]**** 索引標籤，複製 [中繼資料 URL]**** ，並在瀏覽器中開啟此 URL 以下載 **SP 中繼資料 XML** 檔案。 在 Azure AD 中的 [基本 SAML 組態]**** 區段上，上傳此 SP 中繼資料檔案。
+    h. 從 [</> 信賴憑證者] 索引標籤，複製 [中繼資料 URL] ，並在瀏覽器中開啟此 URL 以下載 **SP 中繼資料 XML** 檔案。 在 Azure AD 中的 [基本 SAML 組態] 區段上，上傳此 SP 中繼資料檔案。
 
     ![顯示已選取 [信賴憑證者] 索引標籤，並已反白顯示 [中繼資料 U R L] 的螢幕擷取畫面。](./media/openathens-tutorial/tutorial_openathens_application5.png)
 
 ### <a name="create-openathens-test-user"></a>建立 OpenAthens 測試使用者
 
-本節會在 OpenAthens 中建立名為 Britta Simon 的使用者。 OpenAthens 支援依預設啟用的 **Just-In-Time 使用者佈建**。 在這一節沒有您需要進行的動作項目。 如果 OpenAthens 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
+本節會在 OpenAthens 中建立名為 Britta Simon 的使用者。 OpenAthens 支援依預設啟用的 **Just-In-Time 使用者佈建** 。 在這一節沒有您需要進行的動作項目。 如果 OpenAthens 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
 
 ## <a name="test-sso"></a>測試 SSO
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 OpenAthens 圖格時，應該會自動登入您已設定 SSO 的 OpenAthens。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 OpenAthens 圖格時，應該會自動登入您已設定 SSO 的 OpenAthens。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 OpenAthens](https://aad.portal.azure.com/)

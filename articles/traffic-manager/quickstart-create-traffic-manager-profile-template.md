@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: duau
 ms.date: 09/01/2020
-ms.openlocfilehash: dbdb6a255fdf0214103a0011f25b0a6d25014e69
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ec569781a6318062810358c2c5e17ba71efc4f71
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89299145"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676009"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-an-arm-template"></a>快速入門：使用 ARM 範本建立流量管理員設定檔
 
@@ -43,7 +43,7 @@ ms.locfileid: "89299145"
 
 ## <a name="deploy-the-template"></a>部署範本
 
-1. 選取以下程式碼區塊的 [試用] 以開啟 Azure Cloud Shell，然後遵循指示登入 Azure。 
+1. 選取以下程式碼區塊的 [試用] 以開啟 Azure Cloud Shell，然後遵循指示登入 Azure。
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -66,7 +66,7 @@ ms.locfileid: "89299145"
 
 1. 輸入這些值。
 
-    範本部署會建立具有兩個外部端點的設定檔。 **Endpoint1** 會使用 *w<span>ww.microsoft</span>.com* 的目標端點搭配 [北歐] 的位置。 **Endpoint2** 會使用 *d<span>ocs.microsoft</span>.com* 的目標端點搭配 [美國中南部] 的位置。 
+    範本部署會建立具有兩個外部端點的設定檔。 **Endpoint1** 會使用 `www.microsoft.com` 的目標端點搭配 **北歐** 的位置。 **Endpoint2** 會使用 `docs.microsoft.com` 的目標端點搭配 **美國中南部** 的位置。
 
     資源群組名稱是附加 **rg** 的專案名稱。
 
@@ -87,21 +87,23 @@ Azure PowerShell 用於部署範本。 除了 Azure PowerShell 以外，您也�
     Get-AzTrafficManagerProfile -Name ExternalEndpointExample -ResourceGroupName $resourceGroupName | Select RelativeDnsName
     ```
 
-    複製 **RelativeDnsName** 值。 流量管理員設定檔的 DNS 名稱為 *<* relativednsname *>.trafficmanager.net*。 
+    複製 **RelativeDnsName** 值。 流量管理員設定檔的 DNS 名稱為 `<relativednsname>.trafficmanager.net`。
 
-1. 從本機 PowerShell 執行下列命令，方法是將 **{relativeDNSname}** 變數取代為 *<* relativednsname *>.trafficmanager.net*。
+1. 從本機 PowerShell 執行下列命令，方法是將 **{relativeDNSname}** 變數取代為 `<relativednsname>.trafficmanager.net`。
 
     ```powershell
     Resolve-DnsName -Name {relativeDNSname} | Select-Object NameHost | Select -First 1
     ```
-    您應會取得 *w<span>ww.microsoft</span>.com* or *d<span>ocs.microsoft</span>.com* 的 NameHost，這取決於哪個區域較接近您。
 
-1. 若要檢查您是否可解析為其他端點，請針對您在上一個步驟中取得的目標停用端點。 以 **endpoint1** 或 **endpoint2** 取代 **{endpointName}** ，分別停用 *w<span>ww.microsoft</span>.com* 或 *d<span>ocs.microsoft</span>.com*的目標。
+    您應會取得 `www.microsoft.com` 或 `docs.microsoft.com` 的 NameHost，這取決於哪個區域較接近您。
+
+1. 若要檢查您是否可解析為其他端點，請針對您在上一個步驟中取得的目標停用端點。 以 **endpoint1** 或 **endpoint2** 取代 **{endpointName}** ，分別停用 `www.microsoft.com` 或 `docs.microsoft.com` 的目標。
 
     ```azurepowershell-interactive
     Disable-AzTrafficManagerEndpoint -Name {endpointName} -Type ExternalEndpoints -ProfileName ExternalEndpointExample -ResourceGroupName $resourceGroupName -Force
     ```
-1. 在本機 PowerShell 中再次執行步驟 2 中的命令。 此時，您應會取得其他端點的其他 NameHost。 
+
+1. 在本機 PowerShell 中再次執行步驟 2 中的命令。 此時，您應會取得其他端點的其他 NameHost。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -115,8 +117,7 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已建立一個：
-* 流量管理員設定檔
+在本快速入門中，您建立了流量管理員設定檔。
 
 若要深入了解如何路由傳送流量，請繼續進行流量管理員的教學課程。
 

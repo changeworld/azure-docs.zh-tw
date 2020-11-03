@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 8554a78112d197ef8174ac9d18147d301745165e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5deece615e9d7de1e71e33164560c1c26212ec08
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83652170"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676790"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>對雲端儲存體應用程式進行疑難排解及監視
 
@@ -43,7 +43,7 @@ ms.locfileid: "83652170"
 
 完成時，按一下 [儲存]  。
 
-![[診斷] 窗格](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
+![螢幕擷取畫面：醒目提示含有組態設定而可供開啟記錄和計量的區段。](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
 
 ## <a name="enable-alerts"></a>啟用警示
 
@@ -81,7 +81,7 @@ curl https://<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/<CONTAINER_NAME>/<INCO
 
 ## <a name="download-and-view-logs"></a>下載及檢視記錄
 
-儲存體記錄會將資料儲存在您儲存體帳戶 Blob 容器內的一組 Blob 中，該容器名為 **$logs**。 當您列出帳戶中的所有 Blob 容器時，不會顯示這個容器；但如果您直接存取，即可查看其中的內容。
+儲存體記錄會將資料儲存在您儲存體帳戶 Blob 容器內的一組 Blob 中，該容器名為 **$logs** 。 當您列出帳戶中的所有 Blob 容器時，不會顯示這個容器；但如果您直接存取，即可查看其中的內容。
 
 在此案例中，您會使用 [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx) 來與 Azure 儲存體帳戶進行互動。
 
@@ -91,13 +91,13 @@ curl https://<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/<CONTAINER_NAME>/<INCO
 
 啟動應用程式，然後選擇 [檔案]   > [開啟]   > [From Other File Sources] \(從其他檔案來源)  。
 
-在 [檔案選取器]  對話方塊中，選取 [+ Add Azure Connection] \(+ 新增 Azure 連線)  。 輸入**儲存體帳戶的名稱**和**帳戶金鑰**，然後按一下 [確定]  。
+在 [檔案選取器]  對話方塊中，選取 [+ Add Azure Connection] \(+ 新增 Azure 連線)  。 輸入 **儲存體帳戶的名稱** 和 **帳戶金鑰** ，然後按一下 [確定]  。
 
 ![Microsoft Message Analyzer - [新增 Azure 儲存體連線] 對話方塊](media/storage-monitor-troubleshoot-storage-application/figure3.png)
 
 一旦連線後，即可展開儲存體樹狀檢視中的容器來檢視記錄檔 Blob。 選取最新的記錄檔，然後按一下 [確定]  。
 
-![Microsoft Message Analyzer - [新增 Azure 儲存體連線] 對話方塊](media/storage-monitor-troubleshoot-storage-application/figure4.png)
+![螢幕擷取畫面：顯示 Microsoft Message Analyzer 並醒目提示已選取的記錄檔。](media/storage-monitor-troubleshoot-storage-application/figure4.png)
 
 在 [新增工作階段]  對話方塊中，按一下 [啟動]  以檢視您的記錄檔。
 

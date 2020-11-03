@@ -1,39 +1,39 @@
 ---
-author: Juliako
+author: IngridAtMicrosoft
 ms.service: media-services
 ms.topic: include
-ms.date: 03/31/2020
-ms.author: juliako
-ms.openlocfilehash: d6ff823951e6474a35a514036f02c0aabb17bf01
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/26/2020
+ms.author: inhenkel
+ms.openlocfilehash: 84aa07ef282dd7100043f7e9bfcc97cb3b3673a5
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82997712"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92755871"
 ---
 > [!NOTE]
 > 對於未修正的資源，請開啟支援票證以要求增加配額。 請勿為了嘗試取得更高的限制而建立其他 Azure 媒體服務。
 
 ### <a name="account-limits"></a>帳戶限制
 
-| 資源 | 預設限制 | 
-| --- | --- | 
-| 單一訂用帳戶的媒體服務帳戶 | 25 (固定) |
+| 資源 | 預設限制 |
+| --- | --- |
+| 單一訂用帳戶的媒體服務帳戶 | 100 (固定) |
 
 ### <a name="asset-limits"></a>資產限制
 
-| 資源 | 預設限制 | 
-| --- | --- | 
+| 資源 | 預設限制 |
+| --- | --- |
 | 每個媒體服務帳戶的資產 | 1,000,000|
 
 ### <a name="storage-media-limits"></a>儲存體 (媒體) 限制
 
-| 資源 | 預設限制 | 
-| --- | --- | 
+| 資源 | 預設限制 |
+| --- | --- |
 | 檔案大小| 在某些情況下，對於媒體服務中支援處理的檔案大小上限有所限制。 <sup>(1)</sup> |
 | 儲存體帳戶 | 100<sup>(2)</sup> (固定) |
 
-<sup>1</sup> 單一 blob 支援的大小上限目前在 Azure Blob 儲存體是最多 5 TB。 其他限制會根據服務所使用的 VM 大小，套用在 Azure 媒體服務中。 大小限制適用於您所上傳的檔案，以及因媒體服務處理 (編碼或分析) 而產生的檔案。 如果原始程式檔超過 260 GB，您的工作可能會失敗。 
+<sup>1</sup> 單一 blob 支援的大小上限目前在 Azure Blob 儲存體是最多 5 TB。 其他限制會根據服務所使用的 VM 大小，套用在 Azure 媒體服務中。 大小限制適用於您所上傳的檔案，以及因媒體服務處理 (編碼或分析) 而產生的檔案。 如果原始程式檔超過 260 GB，您的工作可能會失敗。
 
 下表顯示媒體保留單元 (S1、S2 和 S3) 上的限制。 如果來源檔案大於資料表中定義的限制，編碼作業就會失敗。 如果您要編碼長時間的 4k 解析來源，就必須使用 S3 媒體保留單位來達成所需的效能。 如果您的4K 內容大於 S3 媒體保留單元的 260 GB 限制，請開啟支援票證。
 
@@ -47,8 +47,8 @@ ms.locfileid: "82997712"
 
 ### <a name="jobs-encoding--analyzing-limits"></a>作業 (編碼和分析) 限制
 
-| 資源 | 預設限制 | 
-| --- | --- | 
+| 資源 | 預設限制 |
+| --- | --- |
 | 每個媒體服務帳戶的工作 | 500,000 <sup>(3)</sup> (固定)|
 | 每個作業的作業輸入 | 50 (固定)|
 | 每個作業的作業輸出 | 20 (固定) |
@@ -62,8 +62,8 @@ ms.locfileid: "82997712"
 
 ### <a name="live-streaming-limits"></a>即時串流限制
 
-| 資源 | 預設限制 | 
-| --- | --- | 
+| 資源 | 預設限制 |
+| --- | --- |
 | 每個媒體服務帳戶的即時事件 <sup>(4)</sup> |5|
 | 每個即時事件的即時輸出 |3 <sup>(5)</sup> |
 | 即時輸出持續時間上限 | [DVR 視窗的大小](../articles/media-services/latest/live-event-cloud-dvr.md) |
@@ -74,9 +74,9 @@ ms.locfileid: "82997712"
 
 ### <a name="packaging--delivery-limits"></a>封裝和傳遞限制
 
-| 資源 | 預設限制 | 
-| --- | --- | 
-| 每個媒體服務帳戶的串流端點 (已停止或執行中)|2 (固定)|
+| 資源 | 預設限制 |
+| --- | --- |
+| 每個媒體服務帳戶的串流端點 (已停止或執行中)| 2 |
 | 動態資訊清單篩選條件|100|
 | 串流原則 | 100 <sup>(6)</sup> |
 | 一次與資產相關聯的唯一串流定位器 | 100<sup>(7)</sup> (固定) |
@@ -87,11 +87,11 @@ ms.locfileid: "82997712"
 
 ### <a name="protection-limits"></a>保護限制
 
-| 資源 | 預設限制 | 
-| --- | --- | 
-| 每個內容金鑰原則的選項 |30 | 
+| 資源 | 預設限制 |
+| --- | --- |
+| 每個內容金鑰原則的選項 | 30 |
 | 針對每個帳戶媒體服務金鑰傳遞服務上的每個 DRM 類型，每月的授權|1,000,000|
 
 ### <a name="support-ticket"></a>支援票證
 
-如果是不固定的資源，您可以建立[支援票證](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，要求增加配額。 請在要求中包含所需的配額變更、使用案例情況及所需區域的詳細資訊。 <br/>**請勿**為了嘗試取得更高的限制而建立其他 Azure 媒體服務。
+如果是不固定的資源，您可以建立[支援票證](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，要求增加配額。 請在要求中包含所需的配額變更、使用案例情況及所需區域的詳細資訊。 <br/>**請勿** 為了嘗試取得更高的限制而建立其他 Azure 媒體服務。

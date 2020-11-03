@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 27e346dd97824918d859ea6819e3c2b43f4c02aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ce3f6bd1cf7f5ab30b85cb2273932e1523cd87b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88551922"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521785"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-unifi"></a>教學課程：Azure Active Directory 與 UNIFI 整合
 
@@ -27,7 +27,7 @@ UNIFI 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 UNIFI (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -42,7 +42,7 @@ UNIFI 與 Azure AD 整合提供下列優點：
 在本教學課程中，您會在測試環境中設定和測試 Azure AD 單一登入。
 
 * UNIFI 支援 **SP 和 IDP** 起始的 SSO
-* UNIFI 支援**自動**使用者佈建
+* UNIFI 支援 **自動** 使用者佈建
 
 ## <a name="adding-unifi-from-the-gallery"></a>從資源庫新增 UNIFI
 
@@ -62,7 +62,7 @@ UNIFI 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **UNIFI**，從結果面板中選取 [UNIFI]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **UNIFI** ，從結果面板中選取 [UNIFI]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 UNIFI](common/search-new-app.png)
 
@@ -130,15 +130,15 @@ UNIFI 與 Azure AD 整合提供下列優點：
 
 2. 按一下 [使用者]  。
 
-    ![設定單一登入](./media/unifi-tutorial/app1.png)
+    ![螢幕擷取畫面：顯示已從 UNIFI 網站選取 [使用者]。](./media/unifi-tutorial/app1.png)
 
 3. 按一下 [新增識別提供者]  。
 
-    ![設定單一登入](./media/unifi-tutorial/app2.png)
+    ![螢幕擷取畫面：顯示已選取 [新增識別提供者]。](./media/unifi-tutorial/app2.png)
 
 4. 在 [新增識別提供者]  區段中，執行下列步驟：
 
-    ![設定單一登入](./media/unifi-tutorial/app3.png) 
+    ![此螢幕擷取畫面顯示 [新增識別提供者]，您可以在其中輸入所述的值。](./media/unifi-tutorial/app3.png) 
 
     a. 在 [提供者名稱]  文字方塊中，輸入識別提供者的名稱。
 
@@ -164,7 +164,7 @@ UNIFI 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -207,13 +207,12 @@ UNIFI 與 Azure AD 整合提供下列優點：
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 UNIFI 圖格時，應該會自動登入您已設定 SSO 的 UNIFI。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 UNIFI 圖格時，應該會自動登入您已設定 SSO 的 UNIFI。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 09/21/2020
+ms.date: 10/23/2020
 ms.author: aahi
-ms.openlocfilehash: 856e73181ee02fe2bb21c4317ec8c733e2536d53
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 14b4e7217b6e902023e5e82f8dbd404e43b36ef0
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973116"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92676151"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>遷移至 Read v3. x OCR 容器
 
@@ -29,21 +29,11 @@ ms.locfileid: "91973116"
 
 ## <a name="api-changes"></a>API 變更
 
-Read v3.x 容器會使用第 3 版的電腦視覺 API，並具有下列端點：
-
-#### <a name="version-31-preview"></a>[3.1-preview 版](#tab/version-3-1)
+Read v3.1 容器會使用第 3 版的電腦視覺 API，並具有下列端點：
 
 * `/vision/v3.1-preview.2/read/analyzeResults/{operationId}`
 * `/vision/v3.1-preview.2/read/analyze`
 * `/vision/v3.1-preview.2/read/syncAnalyze`
-
-#### <a name="version-30-preview"></a>[3.0-preview 版](#tab/version-3)
-
-* `/vision/v3.0/read/analyzeResults/{operationId}`
-* `/vision/v3.0/read/analyze`
-* `/vision/v3.0/read/syncAnalyze`
-
----
 
 如需將應用程式更新為使用第 3 版雲端式讀取 API 的詳細資訊，請參閱[電腦視覺 v3 REST API 移轉指南](https://docs.microsoft.com/azure/cognitive-services/computer-vision/upgrade-api-versions)。 此資訊也適用於容器。 請注意，僅在容器中支援同步作業。
 
@@ -53,8 +43,7 @@ Read v3.x 容器會使用第 3 版的電腦視覺 API，並具有下列端點：
 
 |容器  |最小值 | 建議  |
 |---------|---------|------|
-|Read 3.0-預覽     | 8 核心，16-GB 記憶體         | 8 核心，24-GB 記憶體
-|Read 3.1-預覽 | 8 核心，16-GB 記憶體         | 8 核心，24-GB 記憶體
+|Read 3.1-預覽 | 8 核心，16-GB 記憶體         | 8 核心，24-GB 記憶體 |
 
 每個核心必須至少 2.6 GHz 或更快。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 044ee51fb7ff675af0fb97224313c388c4cbeac1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b89ae74a1f4ead568a5454c9494d4a82b0eeea3e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371336"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521330"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>教學課程：Azure Active Directory 與 Mitel MiCloud Connect 或 CloudLink Platform 整合
 
@@ -25,7 +25,7 @@ ms.locfileid: "92371336"
 * 您可以使用使用者的企業認證，控制使用者是否能存取 MiCloud Connect 應用程式和 Azure AD 中的 CloudLink 應用程式。
 * 您可以讓帳戶上的使用者使用其 Azure AD 帳戶自動登入 MiCloud Connect 或 CloudLink (單一登入)。
 
-如需有關 SaaS 應用程式與 Azure AD 整合的詳細資訊，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如需有關 SaaS 應用程式與 Azure AD 整合的詳細資訊，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 如果您沒有 Azure 訂用帳戶，請先[建立免費帳戶](https://azure.microsoft.com/free/)，再開始整合 Azure AD 與 Mitel MiCloud Connect 或 CloudLink Platform。
 
@@ -41,7 +41,7 @@ ms.locfileid: "92371336"
 在本教學課程中，您會設定和測試 Azure AD 單一登入 (SSO)。
 
 * Mitel Connect 支援由 **SP** 起始的 SSO
-* 設定 Mitel Connect 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 Mitel Connect 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-mitel-connect-from-the-gallery"></a>從資源庫新增 Mitel Connect
 
@@ -51,7 +51,7 @@ ms.locfileid: "92371336"
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
-2. 選取 [企業應用程式]****，然後選取 [所有應用程式]****。
+2. 選取 [企業應用程式]，然後選取 [所有應用程式]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "92371336"
     
     [Connect 單一登入設定] 對話方塊會隨即出現。
     
-3. 選取 [啟用單一登入]**** 核取方塊。
+3. 選取 [啟用單一登入] 核取方塊。
     
     ![顯示 [Mitel Connect 單一登入設定] 頁面的螢幕擷取畫面，其中已選取 [啟用單一登入] 核取方塊。](./media/mitel-connect-tutorial/mitel-connect-enable.png)
 
@@ -116,13 +116,13 @@ ms.locfileid: "92371336"
 
     [基本 SAML 組態] 對話方塊會隨即出現。
 
-5.  從 Mitel 帳戶入口網站中的 [Mitel 識別碼 (實體識別碼)]**** 欄位複製 URL，並將其貼到 Azure 入口網站中的 [識別碼 (實體識別碼)]**** 欄位。
+5.  從 Mitel 帳戶入口網站中的 [Mitel 識別碼 (實體識別碼)] 欄位複製 URL，並將其貼到 Azure 入口網站中的 [識別碼 (實體識別碼)] 欄位。
 
-6. 從 Mitel 帳戶入口網站中的 [回覆 URL (判斷提示取用者服務 URL)]**** 欄位中複製 URL，然後將其貼到 Azure 入口網站中的 [回覆 URL (判斷提示取用者服務 URL)]**** 欄位。
+6. 從 Mitel 帳戶入口網站中的 [回覆 URL (判斷提示取用者服務 URL)] 欄位中複製 URL，然後將其貼到 Azure 入口網站中的 [回覆 URL (判斷提示取用者服務 URL)] 欄位。
 
    ![此螢幕擷取畫面顯示 Azure 入口網站中的 [基本 SAML 設定]，以及 Mitel 帳戶入口網站中的 [設定識別提供者] 區段，並以線條指出這兩者之間的關聯性。](./media/mitel-connect-tutorial/mitel-azure-basic-configuration.png)
 
-7. 在 [登入 URL]**** 文字方塊中，輸入下列其中一個 URL：
+7. 在 [登入 URL] 文字方塊中，輸入下列其中一個 URL：
 
     1. **https://portal.shoretelsky.com** - 使用 Mitel 帳戶入口網站作為您預設的 Mitel 應用程式
     1. **https://teamwork.shoretel.com** - 使用 Teamwork 作為您預設的 Mitel 應用程式
@@ -136,15 +136,15 @@ ms.locfileid: "92371336"
 
     ![此螢幕擷取畫面顯示您可以在其中下載憑證的 [SAML 簽署憑證] 窗格。](./media/mitel-connect-tutorial/azure-signing-certificate.png)
 
-10. 在文字編輯器中開啟簽署憑證檔案，複製檔案中的所有資料，然後將資料貼到 Mitel 帳戶入口網站中的 [簽署憑證]**** 欄位。 
+10. 在文字編輯器中開啟簽署憑證檔案，複製檔案中的所有資料，然後將資料貼到 Mitel 帳戶入口網站中的 [簽署憑證] 欄位。 
 
       ![顯示 [簽署憑證] 欄位的螢幕擷取畫面。](./media/mitel-connect-tutorial/mitel-connect-signing-certificate.png)
 
 11. 在 Azure 入口網站中，於 [SAML 型登入] 頁面上的 [設定 Mitel Connect] 區段：
 
-     1. 從 [登入 URL]**** 欄位複製 URL，並將其貼到 Mitel 帳戶入口網站的 [登入 URL]**** 欄位中。
+     1. 從 [登入 URL] 欄位複製 URL，並將其貼到 Mitel 帳戶入口網站的 [登入 URL] 欄位中。
 
-     1. 從 [Azure AD 識別碼]**** 欄位複製 URL，並將其貼到 Mitel 帳戶入口網站的 [實體識別碼]**** 欄位中。
+     1. 從 [Azure AD 識別碼] 欄位複製 URL，並將其貼到 Mitel 帳戶入口網站的 [實體識別碼] 欄位中。
          
          ![此螢幕擷取畫面顯示 Azure 入口網站與 Mitel 帳戶入口網站中 [SAML 型登入] 頁面之間的關聯性。](./media/mitel-connect-tutorial/mitel-azure-set-up-connect.png)
 
@@ -166,11 +166,11 @@ ms.locfileid: "92371336"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    1. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    1. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     1. 在 [使用者名稱] 欄位中，輸入 brittasimon@\<yourcompanydomain\>.\<extension\>。  例如： BrittaSimon@contoso.com 。
 
-    1. 選取 [顯示密碼]**** 核取方塊，然後記下 [密碼]**** 方塊中顯示的值。
+    1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
 
     1. 選取 [建立]。
 
@@ -182,7 +182,7 @@ ms.locfileid: "92371336"
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [Mitel Connect]****。
+2. 在應用程式清單中，選取 [Mitel Connect]。
 
     ![應用程式清單中的 Mitel Connect 連結](common/all-applications.png)
 
@@ -190,7 +190,7 @@ ms.locfileid: "92371336"
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 選取 [新增使用者]****，然後在 [新增指派]**** 對話方塊中選取 [使用者和群組]****。
+4. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
@@ -221,7 +221,7 @@ ms.locfileid: "92371336"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您選取存取面板中的 [Mitel Connect] 圖格時，系統應該會自動將您重新導向，讓您登入您在 [登入 URL] 欄位中設定的預設 MiCloud Connect 應用程式。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您選取存取面板中的 [Mitel Connect] 圖格時，系統應該會自動將您重新導向，讓您登入您在 [登入 URL] 欄位中設定的預設 MiCloud Connect 應用程式。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="configure-and-test-azure-ad-sso-with-cloudlink-platform"></a>設定及測試與 CloudLink Platform 搭配運作的 Azure AD SSO
 
@@ -321,11 +321,11 @@ ms.locfileid: "92371336"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    1. 在 [名稱]**** 欄位中，輸入 **BrittaSimon**。
+    1. 在 [名稱] 欄位中，輸入 **BrittaSimon** 。
   
     1. 在 [使用者名稱] 欄位中，輸入 brittasimon@\<yourcompanydomain\>.\<extension\>。  例如： BrittaSimon@contoso.com 。
 
-    1. 選取 [顯示密碼]**** 核取方塊，然後記下 [密碼]**** 方塊中顯示的值。
+    1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
 
     1. 選取 [建立]。
 
@@ -337,7 +337,7 @@ ms.locfileid: "92371336"
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [Mitel Connect]****。
+2. 在應用程式清單中，選取 [Mitel Connect]。
 
     ![應用程式清單中的 Mitel Connect 連結](common/all-applications.png)
 
@@ -345,7 +345,7 @@ ms.locfileid: "92371336"
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-4. 選取 [新增使用者]****，然後在 [新增指派]**** 對話方塊中選取 [使用者和群組]****。
+4. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
@@ -359,7 +359,7 @@ ms.locfileid: "92371336"
 
 本節說明如何在 CloudLink Platform 上建立名為 **_Britta Simon_** 的測試使用者。 您必須先建立並啟動使用者，然後使用者才能使用單一登入。
 
-如需如何在 CloudLink 帳戶入口網站中新增使用者的詳細資訊，請參閱 [CloudLink 帳戶文件](https://www.mitel.com/document-center/technology/cloudlink/all-releases/en/cloudlink-accounts-html)中的**_管理使用者_**。
+如需如何在 CloudLink 帳戶入口網站中新增使用者的詳細資訊，請參閱 [CloudLink 帳戶文件](https://www.mitel.com/document-center/technology/cloudlink/all-releases/en/cloudlink-accounts-html)中的 **_管理使用者_** 。
 
 在 CloudLink 帳戶入口網站上使用下列詳細資料建立使用者：
 
@@ -375,12 +375,12 @@ ms.locfileid: "92371336"
 
 在本節中，您會使用存取面板來測試您的 Azure AD SSO 設定。
 
-當您選取存取面板中的 [Mitel Connect] 圖格時，系統會自動將您重新導向，讓您登入您在 [登入 URL] 欄位中設定的預設 CloudLink 應用程式。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您選取存取面板中的 [Mitel Connect] 圖格時，系統會自動將您重新導向，讓您登入您在 [登入 URL] 欄位中設定的預設 CloudLink 應用程式。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

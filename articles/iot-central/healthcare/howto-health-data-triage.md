@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 957cea854b9894b3149a0e292b8072b73875cae5
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 5175575bcd968ab9d9bb9db7e284eb332bc7f675
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127075"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92542415"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>教學課程：建置 Power BI 提供者儀表板
 
@@ -62,9 +62,9 @@ ms.locfileid: "92127075"
     >[!div class="mx-imgBorder"] 
     >![建立串流資料集](media/create-streaming-dataset.png)
 
-3. 針對您資料集的來源，選擇 **API**。
+3. 針對您資料集的來源，選擇 **API** 。
 
-4. 針對您的資料集輸入**名稱** (例如，患者的姓名)，然後從您的串流填入值。 您可以在持續性患者監視應用程式範本中，根據來自模擬裝置的值，查看下列範例。 此範例有兩個患者：
+4. 針對您的資料集輸入 **名稱** (例如，患者的姓名)，然後從您的串流填入值。 您可以在持續性患者監視應用程式範本中，根據來自模擬裝置的值，查看下列範例。 此範例有兩個患者：
 
     * Teddy Silvers，其中包含來自 Smart Knee Brace 的資料
     * Yesenia Sanford，其中包含來自 Smart Vitals Patch 的資料
@@ -153,7 +153,7 @@ ms.locfileid: "92127075"
     >[!div class="mx-imgBorder"]
     >![初始化變數](media/initialize-string-variables.png)
     
-4. 選取 [+ 新增步驟]，然後新增 [剖析 JSON] 動作。 將此重新命名為 **Parse Properties**。 針對 [內容]，選擇來自事件中樞的 [內容]。 選取底部的 [請使用範例承載產生結構描述]，然後從上方的 [內容] 區段貼上範例承載。
+4. 選取 [+ 新增步驟]，然後新增 [剖析 JSON] 動作。 將此重新命名為 **Parse Properties** 。 針對 [內容]，選擇來自事件中樞的 [內容]。 選取底部的 [請使用範例承載產生結構描述]，然後從上方的 [內容] 區段貼上範例承載。
 
 5. 接下來，選擇 [設定變數] 動作，並使用剖析的 JSON 屬性中的 **iothub-interface-name** 更新您的 [介面名稱] 變數。
 
@@ -168,7 +168,7 @@ ms.locfileid: "92127075"
 
 9. 新增 [設定變數] 動作，並以步驟 7 中剖析的 JSON 的 **Body** 更新 **Body** 變數。
 
-10. 新增 **Condition** 控制項作為下一個動作，並將條件設定為 **Body**、**contains**、**HeartRate**。 這可確保您在填入 Power BI 資料集之前，有一組來自 Smart Vitals Patch 的正確資料。 步驟 7-9 看起來會像下面這樣：
+10. 新增 **Condition** 控制項作為下一個動作，並將條件設定為 **Body** 、 **contains** 、 **HeartRate** 。 這可確保您在填入 Power BI 資料集之前，有一組來自 Smart Vitals Patch 的正確資料。 步驟 7-9 看起來會像下面這樣：
 
     >[!div class="mx-imgBorder"] 
     >![Smart Vitals 新增條件](media/smart-vitals-pbi.png)
@@ -180,10 +180,10 @@ ms.locfileid: "92127075"
     >[!div class="mx-imgBorder"] 
     >![將資料列新增至 Power BI](media/add-rows-yesenia.png)
 
-13. 針對 **Smart Knee Brace** 切換案例，新增 [剖析 JSON] 動作來剖析內容，類似於步驟 7。 接著，**將資料列新增至資料集**，以便在 Power BI 中更新您的 Teddy Silvers 資料集。
+13. 針對 **Smart Knee Brace** 切換案例，新增 [剖析 JSON] 動作來剖析內容，類似於步驟 7。 接著， **將資料列新增至資料集** ，以便在 Power BI 中更新您的 Teddy Silvers 資料集。
 
     >[!div class="mx-imgBorder"] 
-    >![Smart Vitals 新增條件](media/knee-brace-pbi.png)
+    >![螢幕擷取畫面：顯示如何將資料列新增至資料集。](media/knee-brace-pbi.png)
 
 14. 按 [儲存]，然後執行您的邏輯應用程式。
 

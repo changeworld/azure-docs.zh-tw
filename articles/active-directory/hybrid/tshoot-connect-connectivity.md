@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: efca190f3dad1c0a323aa56ffd68b8b2597b5862
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 56e9820c5e3a750a35b7271b86750df00eb4784e
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370214"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92677065"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD 連線能力進行疑難排解
 這篇文章說明 Azure AD Connect 與 Azure AD 之間的連線的運作方式，以及如何疑難排解連線問題。 這些問題最有可能出現在具有 Proxy 伺服器的環境中。
@@ -52,9 +52,17 @@ Proxy 伺服器也必須開啟必要的 URL。 如需官方清單，請參閱 [O
 | \*.windows.net |HTTPS/443 |用來登入 Azure AD。 |
 | secure.aadcdn.microsoftonline-p.com |HTTPS/443 |用於 MFA。 |
 | \*.microsoftonline.com |HTTPS/443 |用來設定您的 Azure AD 目錄及匯入/匯出資料。 |
+| \*. crl3.digicert.com |HTTP/80 |用來驗證憑證。 |
+| \*. crl4.digicert.com |HTTP/80 |用來驗證憑證。 |
+| \*. ocsp.digicert.com |HTTP/80 |用來驗證憑證。 |
+| \*. www.d-trust.net |HTTP/80 |用來驗證憑證。 |
+| \*. root-c3-ca2-2009.ocsp.d-trust.net |HTTP/80 |用來驗證憑證。 |
+| \*. crl.microsoft.com |HTTP/80 |用來驗證憑證。 |
+| \*. oneocsp.microsoft.com |HTTP/80 |用來驗證憑證。 |
+| \*. ocsp.msocsp.com |HTTP/80 |用來驗證憑證。 |
 
 ## <a name="errors-in-the-wizard"></a>精靈中的錯誤
-安裝精靈會使用兩種不同的安全性內容。 在 [連線到 Azure AD] **** 頁面上，使用的是目前登入的使用者。 在 [設定]**** 頁面上，它會變更為[執行同步處理引擎服務的帳戶](reference-connect-accounts-permissions.md#adsync-service-account)。 如果發生問題，問題最有可能已經出現在精靈中的 [連線到 Azure AD]**** 頁面，因為 Proxy 組態是全域組態。
+安裝精靈會使用兩種不同的安全性內容。 在 [連線到 Azure AD]  頁面上，使用的是目前登入的使用者。 在 [設定] 頁面上，它會變更為[執行同步處理引擎服務的帳戶](reference-connect-accounts-permissions.md#adsync-service-account)。 如果發生問題，問題最有可能已經出現在精靈中的 [連線到 Azure AD] 頁面，因為 Proxy 組態是全域組態。
 
 下列問題是您會在安裝精靈中遇到的最常見錯誤。
 
@@ -66,7 +74,7 @@ Proxy 伺服器也必須開啟必要的 URL。 如需官方清單，請參閱 [O
 * 如果看起來正確，請依照 [確認 Proxy 連線](#verify-proxy-connectivity) 中的步驟，查看問題是否也出現在精靈以外的地方。
 
 ### <a name="a-microsoft-account-is-used"></a>使用了 Microsoft 帳戶
-如果您使用 **Microsoft 帳戶**而不是**學校或組織帳戶**，就會看到一個一般錯誤。
+如果您使用 **Microsoft 帳戶** 而不是 **學校或組織帳戶** ，就會看到一個一般錯誤。
 ![使用了 Microsoft 帳戶](./media/tshoot-connect-connectivity/unknownerror.png)
 
 ### <a name="the-mfa-endpoint-cannot-be-reached"></a>無法連線 MFA 端點
@@ -87,13 +95,13 @@ PowerShell 會使用 machine.config 中的組態來連絡 Proxy。 winhttp/netsh
 
 如果 proxy 設定正確，您應該會收到成功狀態： ![ 當正確設定 proxy 時顯示成功狀態的螢幕擷取畫面。](./media/tshoot-connect-connectivity/invokewebrequest200.png)
 
-如果您收到 **無法連線到遠端伺服器**，則 PowerShell 會嘗試在未使用 proxy 的情況下進行直接呼叫，或未正確設定 DNS。 請確定已正確設定 **machine.config** 檔案。
+如果您收到 **無法連線到遠端伺服器** ，則 PowerShell 會嘗試在未使用 proxy 的情況下進行直接呼叫，或未正確設定 DNS。 請確定已正確設定 **machine.config** 檔案。
 ![unabletoconnect](./media/tshoot-connect-connectivity/invokewebrequestunable.png)
 
 如果 Proxy 設定不正確，您將會收到錯誤：![proxy200](./media/tshoot-connect-connectivity/invokewebrequest403.png)
 ![proxy407](./media/tshoot-connect-connectivity/invokewebrequest407.png)
 
-| 錯誤 | 錯誤文字 | 註解 |
+| Error | 錯誤文字 | 註解 |
 | --- | --- | --- |
 | 403 |禁止 |Proxy 尚未對要求的 URL 開放。 重新瀏覽 Proxy 組態，並確定 [URL](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) 已經開啟。 |
 | 407 |需要 Proxy 驗證 |Proxy 伺服器要求提供登入資訊，但並未提供任何登入資訊。 如果您的 proxy 伺服器需要驗證，請務必在 machine.config 中設定此設定。此外，也請確定您使用的是網域帳戶，讓使用者執行嚮導和服務帳戶。 |
@@ -109,7 +117,7 @@ PowerShell 會使用 machine.config 中的組態來連絡 Proxy。 winhttp/netsh
 * 端點 adminwebservice 和 provisioningapi 是探索端點，可用來尋找要使用的實際端點。 這些端點會依據您的區域而有所不同。
 
 ### <a name="reference-proxy-logs"></a>參考 Proxy 記錄
-以下是實際 Proxy 記錄檔的傾印及取得它的安裝精靈頁面 (已移除至相同端點的重複項目)。 本節可以作為您自己 Proxy 和網路記錄的參考。 您環境中實際的端點可能會有所不同 (特別是以「斜體字」** 表示的 URL)。
+以下是實際 Proxy 記錄檔的傾印及取得它的安裝精靈頁面 (已移除至相同端點的重複項目)。 本節可以作為您自己 Proxy 和網路記錄的參考。 您環境中實際的端點可能會有所不同 (特別是以「斜體字」表示的 URL)。
 
 **連接至 Azure AD**
 
@@ -117,26 +125,26 @@ PowerShell 會使用 machine.config 中的組態來連絡 Proxy。 winhttp/netsh
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:32 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:32 |connect:// *bba800-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:32 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://provisioningapi.microsoftonline.com:443 |
-| 1/11/2016 8:33 |connect://*bwsc02-relay*.microsoftonline.com:443 |
+| 1/11/2016 8:33 |connect:// *bwsc02-relay*.microsoftonline.com:443 |
 
 **設定**
 
 | Time | URL |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
-| 1/11/2016 8:43 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:43 |connect:// *bba800-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |connect://*bba900-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect:// *bba900-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect:// *bba800-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:46 |connect://provisioningapi.microsoftonline.com:443 |
-| 1/11/2016 8:46 |connect://*bwsc02-relay*.microsoftonline.com:443 |
+| 1/11/2016 8:46 |connect:// *bwsc02-relay*.microsoftonline.com:443 |
 
 **初始同步處理**
 
@@ -144,8 +152,8 @@ PowerShell 會使用 machine.config 中的組態來連絡 Proxy。 winhttp/netsh
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:49 |connect://*bba900-anchor*.microsoftonline.com:443 |
-| 1/11/2016 8:49 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect:// *bba900-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect:// *bba800-anchor*.microsoftonline.com:443 |
 
 ## <a name="authentication-errors"></a>驗證錯誤
 本節涵蓋可能從 ADAL (Azure AD Connect 所使用的驗證程式庫) 和 PowerShell 傳回的錯誤。 其中所說明的錯誤應可幫助您了解後續步驟。
@@ -219,7 +227,7 @@ Azure AD 目錄找不到或無法解析。 可能是您嘗試以未驗證網域�
 驗證成功。 無法從 Azure AD 擷取網域資訊。
 
 ### <a name="unspecified-authentication-failure"></a>未指定的驗證失敗
-在安裝精靈中顯示為未預期的錯誤。 如果您嘗試使用 **Microsoft 帳戶**而不是**學校或組織帳戶**，就可能發生此錯誤。
+在安裝精靈中顯示為未預期的錯誤。 如果您嘗試使用 **Microsoft 帳戶** 而不是 **學校或組織帳戶** ，就可能發生此錯誤。
 
 ## <a name="troubleshooting-steps-for-previous-releases"></a>舊版的疑難排解步驟
 從組建編號 1.1.105.0 (於 2016 年 2 月發行) 版本開始即已淘汰登入小幫手。 應該已不再需要本節及組態設定，但仍保留供參考之用。

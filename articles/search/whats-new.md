@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 135e0ccfd9b4681932a9a69df0372aa400933124
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: ddf418c90857b5bb7eca97eb2c6943cc93fce9ab
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102569"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518920"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 認知搜尋的新功能
 
@@ -21,12 +21,12 @@ ms.locfileid: "92102569"
 
 ## <a name="september-2020"></a>2020 年 9 月
 
-在 Azure Active Directory 中建立搜尋服務的身分識別，然後使用 RBAC 權限將身分識別唯讀權限授與 Azure 資料來源。 如果 IP 規則不是選項，可以選擇性地選擇[信任的服務例外狀況](search-indexer-howto-access-trusted-service-exception.md)功能。
+在 Azure Active Directory 中建立搜尋服務的身分識別，然後使用 Azure RBAC 權限將身分識別唯讀權限授與 Azure 資料來源。 如果 IP 規則不是選項，可以選擇性地選擇[信任的服務例外狀況](search-indexer-howto-access-trusted-service-exception.md)功能。
 
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
 |------------------------------|----------|-------------|---------------|
-| [受控服務識別](search-howto-managed-identities-data-sources.md) | 索引子，安全性 | 在 Azure Active Directory 中建立搜尋服務的身分識別，然後使用 RBAC 權限將存取權授與 Azure 資料來源。 這種方法不需要連接字串上的認證。 <br><br>如果 IP 規則不是選項，使用受控服務識別的另一種方式是透過[信任的服務例外狀況](search-indexer-howto-access-trusted-service-exception.md)。 | 正式推出。 使用入口網站或[建立資料來源 (REST)](/rest/api/searchservice/create-data-source) (api-version=2020-06-30) 時，請存取此功能。 |
+| [受控服務識別](search-howto-managed-identities-data-sources.md) | 索引子，安全性 | 在 Azure Active Directory 中建立搜尋服務的身分識別，然後使用 Azure RBAC 權限將存取權授與 Azure 資料來源。 這種方法不需要連接字串上的認證。 <br><br>如果 IP 規則不是選項，使用受控服務識別的另一種方式是透過[信任的服務例外狀況](search-indexer-howto-access-trusted-service-exception.md)。 | 正式推出。 使用入口網站或[建立資料來源 (REST)](/rest/api/searchservice/create-data-source) (api-version=2020-06-30) 時，請存取此功能。 |
 | [使用私人連結的輸出要求](search-indexer-howto-access-private.md) | 索引子，安全性 | 建立索引子可在存取 Azure 私人連結所保護 Azure 資源時使用的共用私人連結資源。 如需有關您可以保護索引子連線所有方法的詳細資訊，請參閱[索引子對內容的存取會由 Azure 網路安全性功能保護](search-indexer-securing-resources.md)。 | 正式推出。 使用入口網站或[共用私人連結資源](/rest/api/searchmanagement/sharedprivatelinkresources) (api-version=2020-08-01) 時，請存取此功能。 |
 | [管理 REST API (2020-08-01)](/rest/api/searchmanagement/management-api-versions) | REST | 新的穩定 REST API 新增了建立共用私人連結資源的支援。 | 正式推出。 |
 | [管理 REST API (2020-08-01-Preview)](/rest/api/searchmanagement/management-api-versions) | REST | 新增 Azure Functions 和適用於 MySQL 資料庫的 Azure SQL 的共用私人連結資源。 | 公開預覽。 |

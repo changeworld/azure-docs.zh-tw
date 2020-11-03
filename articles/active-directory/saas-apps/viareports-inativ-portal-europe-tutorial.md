@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: jeedes
-ms.openlocfilehash: c4c1ffa4d8e9b175ced40671f1ac3d092b51c8c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8393410c5b15ee888a2c0cee82c783f17e0e177
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88531988"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517611"
 ---
 # <a name="tutorial-integrate-viareport-europe-with-azure-active-directory"></a>教學課程：整合 Viareport (歐洲) 與 Azure Active Directory
 
@@ -26,7 +26,7 @@ ms.locfileid: "88531988"
 * 讓使用者能使用其 Azure AD 帳戶自動登入 Viareport (歐洲)。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -85,7 +85,7 @@ ms.locfileid: "88531988"
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://inativ.viareport.com/SSO/<tenant_id>/login`
 
     > [!NOTE]
-    > 這些都不是真正的值。 使用實際的回覆 URL 與登入 URL 更新這些值。 請聯絡 [Viareport (歐洲) 用戶端支援小組](mailto:ycezard@viareport.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 使用實際的回覆 URL 與登入 URL 更新這些值。 請聯絡 [Viareport (歐洲) 用戶端支援小組](mailto:ycezard@viareport.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 4. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]  ，並將其儲存在您的電腦上。
 
@@ -126,19 +126,18 @@ ms.locfileid: "88531988"
 
 ### <a name="create-viareport-europe-test-user"></a>建立 Viareport (歐洲) 測試使用者
 
-在本節中，您會在 Viareport (歐洲) 中建立名為 B.Simon 的使用者。 請與 [Viareport (歐洲) 支援小組](mailto:ycezard@viareport.com)合作，在 Viareport (歐洲) 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您會在 Viareport (歐洲) 中建立名為 B.Simon 的使用者。 請與 [Viareport (歐洲) 支援小組](mailto:ycezard@viareport.com)合作，在 Viareport (歐洲) 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ### <a name="test-sso"></a>測試 SSO 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下Viareport (歐洲) 圖格時，應該會自動登入您已設定 SSO 的 Viareport (歐洲)。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下Viareport (歐洲) 圖格時，應該會自動登入您已設定 SSO 的 Viareport (歐洲)。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 05/04/2020
+ms.date: 10/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: efb32631c5ee1eedece6d2a06b94702b602ed418
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95c55f92304ddd3ec2b3d44d4f07fb64ab815c6d
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86276104"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92756005"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>哪些區域可用？
 
@@ -45,6 +45,10 @@ RDP 和 SSH 都是以使用方式為基礎的通訊協定。 工作階段的高�
 
 目前僅支援文字複製/貼上功能。 不支援檔案複製之類的功能。 請不吝在 [Azure Bastion 意見反應頁面](https://feedback.azure.com/forums/217313-networking?category_id=367303)分享關於新功能的意見反應。
 
+### <a name="does-bastion-hardening-work-with-aadj-vm-extension-joined-vms"></a><a name="aadj"></a>強化的 Bastion 是否會與已加入 AADJ VM 擴充功能的 VM 搭配運作？
+
+這項功能不適用於使用 Azure AD 之使用者且已加入 AADJ VM 擴充功能的電腦。 如需詳細資訊，請參閱 [Windows Azure VM 和 Azure AD](../articles/active-directory/devices/howto-vm-sign-in-azure-ad-windows.md#requirements)。
+
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>支援哪些瀏覽器？
 
 在 Windows 中，請使用 Microsoft Edge 瀏覽器或 Google Chrome。 若為 Apple Mac，請使用 Google Chrome 瀏覽器。 Windows 和 Mac 也支援 Microsoft Edge Chromium。
@@ -66,7 +70,7 @@ Azure Bastion 不會將客戶資料移動或儲存到其部署所在的區域外
 如需詳細資訊，請參閱[價格頁面](https://aka.ms/BastionHostPricing)。
 
 ### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Azure Bastion 是否需要 RDS CAL 才能在 Azure 裝載的虛擬機器上進行管理？
-否，當 Azure Bastion 僅用於管理目的時，不需要 [RDS CAL](https://www.microsoft.com/en-us/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) 也可以存取 Windows Server VM。
+否，當 Azure Bastion 僅用於管理目的時，不需要 [RDS CAL](https://www.microsoft.com/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) 也可以存取 Windows Server VM。
 
 ### <a name="what-keyboard-layouts-are-supported-during-the-bastion-remote-session"></a><a name="keyboard"></a>Bastion 遠端工作階段期間支援哪些鍵盤配置？
 

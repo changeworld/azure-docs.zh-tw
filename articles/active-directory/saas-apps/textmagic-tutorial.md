@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 81dc3a4f55b214ea6ca7ad0388e57f4b4fdc7124
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6b646688fb0c42091182cc7f94e019432b354fa
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546469"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504587"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-textmagic"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 TextMagic 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88546469"
 * 讓使用者使用其 Azure AD 帳戶自動登入 TextMagic。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -54,7 +54,7 @@ ms.locfileid: "88546469"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **TextMagic**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **TextMagic** 。
 1. 從結果面板選取 [TextMagic]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-textmagic"></a>設定及測試 TextMagic 的 Azure AD 單一登入
@@ -75,7 +75,7 @@ ms.locfileid: "88546469"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [TextMagic]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -149,11 +149,11 @@ ms.locfileid: "88546469"
 
 4. 選取使用者名稱下的 [帳戶設定]  。
 
-    ![TextMagic 設定](./media/textmagic-tutorial/config1.png)
+    ![螢幕擷取畫面：顯示已從使用者選取 [帳戶設定]。](./media/textmagic-tutorial/config1.png)
 
 5. 按一下 [單一登入 (SSO)]  索引標籤並填寫下列欄位：  
 
-    ![TextMagic 設定](./media/textmagic-tutorial/config2.png)
+    ![此螢幕擷取畫面顯示 [單一登入] 索引標籤，您可以在其中輸入所述的值。](./media/textmagic-tutorial/config2.png)
 
     a. 在 [識別提供者實體識別碼：]  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
 
@@ -167,22 +167,21 @@ ms.locfileid: "88546469"
 
 ### <a name="create-textmagic-test-user"></a>建立 TextMagic 測試使用者
 
-應用程式支援 **Just in time 使用者佈建**，而在驗證之後，會在應用程式中自動建立使用者。 第一次登入以啟動子帳戶至系統時，您需要填入資訊一次。
+應用程式支援 **Just in time 使用者佈建** ，而在驗證之後，會在應用程式中自動建立使用者。 第一次登入以啟動子帳戶至系統時，您需要填入資訊一次。
 在這一節沒有您需要進行的動作項目。
 
 ## <a name="test-sso"></a>測試 SSO 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 TextMagic 圖格時，應該會自動登入您已設定 SSO 的 TextMagic。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 TextMagic 圖格時，應該會自動登入您已設定 SSO 的 TextMagic。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 TextMagic](https://aad.portal.azure.com/)
-

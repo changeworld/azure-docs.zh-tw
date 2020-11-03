@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 6eaf00679566aa8dfb7a90db95228349c81fcfec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a6fc68ddcb86c7ba768f59519cfb4273d381fab
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983420"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92637695"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>在 Data Factory 管道中將活動分支和鏈結
 
@@ -40,7 +40,7 @@ ms.locfileid: "90983420"
 > * 啟動管道執行
 > * 監視管道和活動執行
 
-本教學課程使用 .NET SDK。 您可以使用其他機制與 Azure Data Factory 互動。 如需 Data Factory 的快速入門，請參閱 [5 分鐘快速入門](/azure/data-factory/quickstart-create-data-factory-portal)。
+本教學課程使用 .NET SDK。 您可以使用其他機制與 Azure Data Factory 互動。 如需 Data Factory 的快速入門，請參閱 [5 分鐘快速入門](./quickstart-create-data-factory-portal.md)。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -54,11 +54,11 @@ ms.locfileid: "90983420"
 
 如需目前可使用 Data Factory 的 Azure 區域，請參閱[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。 資料存放區和計算可位於其他區域。 這些存放區包含 Azure 儲存體和 Azure SQL Database。 計算包含 Data Factory 所使用的 HDInsight。
 
-依照[建立 Azure Active Directory 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)中的說明建立應用程式。 依照同一篇文章中的指示，將應用程式指派給「參與者」角色。 您在本教學課程的後續部分將需要數個值，例如**應用程式 (用戶端) 識別碼**和**目錄 (租用戶) 識別碼**。
+依照[建立 Azure Active Directory 應用程式](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)中的說明建立應用程式。 依照同一篇文章中的指示，將應用程式指派給「參與者」角色。 您在本教學課程的後續部分將需要數個值，例如 **應用程式 (用戶端) 識別碼** 和 **目錄 (租用戶) 識別碼** 。
 
 ### <a name="create-a-blob-table"></a>建立 Blob 資料表
 
-1. 開啟文字編輯器。 複製下列文字，並在本機位置將其儲存為 *input.txt*。
+1. 開啟文字編輯器。 複製下列文字，並在本機位置將其儲存為 *input.txt* 。
 
    ```
    Ethel|Berg
@@ -66,7 +66,7 @@ ms.locfileid: "90983420"
    ```
 
 1. 開啟 [Azure 儲存體總管]。 展開您的儲存體帳戶。 以滑鼠右鍵按一下 [Blob 容器]，然後選取 [建立 Blob 容器]。
-1. 將新容器命名為 *adfv2branch*，然後選取 [上傳] 將您的 *input.txt* 檔案新增至該容器。
+1. 將新容器命名為 *adfv2branch* ，然後選取 [上傳] 將您的 *input.txt* 檔案新增至該容器。
 
 ## <a name="create-visual-studio-project"></a>建立 Visual Studio 專案<a name="create-visual-studio-project"></a>
 
@@ -74,7 +74,7 @@ ms.locfileid: "90983420"
 
 1. 啟動 Visual Studio，然後選取 [建立新專案]。
 1. 在 [建立新專案] 中，針對 C# 選擇 [主控台應用程式 (.NET Framework)]，然後選取 [下一步]。
-1. 將專案命名為 *ADFv2BranchTutorial*。
+1. 將專案命名為 *ADFv2BranchTutorial* 。
 1. 選取 [.NET 4.5.2 版] 或更新版本，然後選取 [建立]。
 
 ### <a name="install-nuget-packages"></a>安裝 NuGet 套件
@@ -90,7 +90,7 @@ ms.locfileid: "90983420"
 
 ### <a name="create-a-data-factory-client"></a>建立資料處理站用戶端
 
-1. 開啟 *Program.cs*，並新增下列陳述式：
+1. 開啟 *Program.cs* ，並新增下列陳述式：
 
    ```csharp
    using System;
@@ -211,7 +211,7 @@ ms.locfileid: "90983420"
 
 ### <a name="create-a-dataset-for-a-source-azure-blob"></a>建立來源 Azure Blob 的資料集
 
-新增建立 *Azure Blob 資料集*的方法。 若要進一步了解支援的屬性和詳細資訊，請參閱 [Azure Blob 資料集屬性](connector-azure-blob-storage.md#dataset-properties)。
+新增建立 *Azure Blob 資料集* 的方法。 若要進一步了解支援的屬性和詳細資訊，請參閱 [Azure Blob 資料集屬性](connector-azure-blob-storage.md#dataset-properties)。
 
 將 `SourceBlobDatasetDefinition` 方法新增至您的 *Program.cs* 檔案：
 
@@ -234,7 +234,7 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 }
 ```
 
-您可以定義資料集來代表 Azure Blob 中的來源資料。 此 Blob 資料集會參考先前的步驟中支援的 Azure 儲存體連結服務。 Blob 資料集會說明要從中複製 Blob 的位置：*FolderPath* 和 *FileName*。
+您可以定義資料集來代表 Azure Blob 中的來源資料。 此 Blob 資料集會參考先前的步驟中支援的 Azure 儲存體連結服務。 Blob 資料集會說明要從中複製 Blob 的位置： *FolderPath* 和 *FileName* 。
 
 請注意 *FolderPath* 的參數用法。 `sourceBlobContainer` 是參數的名稱，而運算式會取代為傳入管線執行中的值。 定義參數的語法是 `@pipeline().parameters.<parameterName>`
 
@@ -336,7 +336,7 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 
 此 JSON 內容與您在上一節建立的 `EmailRequest` 類別一致。
 
-新增 `Office 365 Outlook – Send an email` 的動作。 針對**傳送電子郵件**動作，使用傳入要求**本文** JSON 結構描述中的屬性，自訂您要格式化電子郵件的方式。 以下是範例：
+新增 `Office 365 Outlook – Send an email` 的動作。 針對 **傳送電子郵件** 動作，使用傳入要求 **本文** JSON 結構描述中的屬性，自訂您要格式化電子郵件的方式。 以下是範例：
 
 ![邏輯應用程式設計工具 - 傳送電子郵件動作](media/tutorial-control-flow/customize-send-email-action.png)
 
@@ -597,7 +597,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 建置並啟動應用程式，然後確認管線執行。
 
-應用程式會顯示建立資料處理站、連結服務、資料集、管線和管線執行的進度。 然後會檢查管線執行狀態。 請等待出現複製活動執行詳細資料及讀取/寫入的資料大小。 然後，使用 Azure 儲存體總管之類的工具，確認 Blob 已從 *inputBlobPath* 複製到 *outputBlobPath*，如同您在變數中的指定。
+應用程式會顯示建立資料處理站、連結服務、資料集、管線和管線執行的進度。 然後會檢查管線執行狀態。 請等待出現複製活動執行詳細資料及讀取/寫入的資料大小。 然後，使用 Azure 儲存體總管之類的工具，確認 Blob 已從 *inputBlobPath* 複製到 *outputBlobPath* ，如同您在變數中的指定。
 
 輸出應該會如下列範例所示：
 
@@ -610,7 +610,7 @@ Creating linked service AzureStorageLinkedService...
 {
   "type": "AzureStorage",
   "typeProperties": {
-    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***"
+    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=**_"
   }
 }
 Creating dataset SourceStorageDataset...
@@ -753,7 +753,7 @@ Press any key to exit...
 您已在此教學課程中執行下列工作：
 
 > [!div class="checklist"]
-> * 建立 Data Factory
+> _ 建立資料處理站
 > * 建立 Azure 儲存體連結服務
 > * 建立 Azure Blob 資料集
 > * 建立包含複製活動和網路活動的管道

@@ -3,12 +3,12 @@ title: 快速入門：使用 Kafka 通訊協定透過 Azure 事件中樞進行�
 description: 快速入門：本文提供關於如何使用 Kafka 通訊協定和 API 串流至 Azure 事件中樞的資訊。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: e87d9b1e4a444695d64dc6acfa0e29f7b72e37f2
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2020534a3984453bcd6eff7ad0f5c02d9e7a29ff
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319359"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92368344"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>快速入門：透過使用 Kafka 通訊協定的事件中樞串流資料 | Microsoft Docs
 本快速入門說明如何串流至事件中樞，而不需要變更通訊協定用戶端或執行您自己的叢集。 您將了解如何僅在應用程式中變更設定，就能讓產生者和取用者與事件中樞交談。 
@@ -28,10 +28,10 @@ ms.locfileid: "92319359"
 
 
 ## <a name="create-an-event-hubs-namespace"></a>建立事件中樞命名空間
-當您建立**標準**層事件中樞命名空間時，命名空間的 Kafka 端點會自動啟用。 您可以將事件從使用 Kafka 通訊協定的應用程式串流到標準層事件中樞。 遵循[使用 Azure 入口網站建立事件中樞](event-hubs-create.md)中的逐步指示來建立**標準**層事件中樞命名空間。 
+當您建立 **標準** 層事件中樞命名空間時，命名空間的 Kafka 端點會自動啟用。 您可以將事件從使用 Kafka 通訊協定的應用程式串流到標準層事件中樞。 遵循 [使用 Azure 入口網站建立事件中樞](event-hubs-create.md)中的逐步指示來建立 **標準** 層事件中樞命名空間。 
 
 > [!NOTE]
-> Kafka 的事件中樞只能在**標準**和**專用**層使用。 **基本**層不支援在事件中樞上使用 Kafka。
+> Kafka 的事件中樞只能在 **標準** 和 **專用** 層使用。 **基本** 層不支援在事件中樞上使用 Kafka。
 
 ## <a name="send-and-receive-messages-with-kafka-in-event-hubs"></a>使用事件中樞內的 Kafka 傳送及接收訊息
 
@@ -49,6 +49,10 @@ ms.locfileid: "92319359"
     sasl.mechanism=PLAIN
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
     ```
+    
+    > [!IMPORTANT]
+    > 將 `{YOUR.EVENTHUBS.CONNECTION.STRING}` 取代為事件中樞命名空間的連接字串。 如需有關取得連接字串的指示，請參閱[取得事件中樞連接字串](event-hubs-get-connection-string.md)。 以下是範例組態：`sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+
     **OAuth：**
 
     ```xml
@@ -79,6 +83,9 @@ ms.locfileid: "92319359"
     sasl.mechanism=PLAIN
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
     ```
+
+    > [!IMPORTANT]
+    > 將 `{YOUR.EVENTHUBS.CONNECTION.STRING}` 取代為事件中樞命名空間的連接字串。 如需有關取得連接字串的指示，請參閱[取得事件中樞連接字串](event-hubs-get-connection-string.md)。 以下是範例組態：`sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
 
     **OAuth：**
 

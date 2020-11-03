@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: jeedes
-ms.openlocfilehash: b2027cbe3fd04f500e03a2b3bdcb7463643d15a2
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 1b9ef8887216443640a24c36906e7b45e7064a5e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91774495"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92454808"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-digicert"></a>教學課程：Azure Active Directory 與 DigiCert 整合
 
@@ -27,7 +27,7 @@ DigiCert 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 DigiCert (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ DigiCert 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中輸入 **DigiCert**，並從結果面板中選取 [DigiCert]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中輸入 **DigiCert** ，並從結果面板中選取 [DigiCert]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 DigiCert](common/search-new-app.png)
 
@@ -116,7 +116,7 @@ DigiCert 與 Azure AD 整合提供下列優點：
     | digicertrole | CanAccessCertCentral |
 
     > [!Note]
-    > **company**值不是真實的屬性。 請使用實際的 company 程式碼來更新此值。 若要取得 **company** 屬性的值，請連絡 [DigiCert 支援小組](mailto:support@digicert.com)。
+    > **company** 值不是真實的屬性。 請使用實際的 company 程式碼來更新此值。 若要取得 **company** 屬性的值，請連絡 [DigiCert 支援小組](mailto:support@digicert.com)。
 
     a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
 
@@ -136,7 +136,7 @@ DigiCert 與 Azure AD 整合提供下列優點：
 
     g. 按一下 [檔案]  。
 
-7. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+7. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -170,7 +170,7 @@ DigiCert 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -207,19 +207,18 @@ DigiCert 與 Azure AD 整合提供下列優點：
 
 ### <a name="create-digicert-test-user"></a>建立 DigiCert 測試使用者
 
-在本節中，您要在 DigiCert 中建立名為 Britta Simon 的使用者。 請與  [DigiCert 支援小組](mailto:support@digicert.com)合作，在 DigiCert 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您要在 DigiCert 中建立名為 Britta Simon 的使用者。 請與 [DigiCert 支援小組](mailto:support@digicert.com)合作，在 DigiCert 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [DigiCert] 圖格時，應該會自動登入您已設定 SSO 的 DigiCert。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [DigiCert] 圖格時，應該會自動登入您已設定 SSO 的 DigiCert。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

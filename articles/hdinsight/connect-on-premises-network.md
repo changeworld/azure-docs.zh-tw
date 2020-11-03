@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: 542e4e09949aa3d673f632890bd7ee99adf431d5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 71ef902e909e552ade5174196f291630bc242ca0
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487274"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92543231"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>將 HDInsight 連線至內部部署網路
 
@@ -35,7 +35,7 @@ ms.locfileid: "92487274"
 
 這些設定會啟用下列行為：
 
-* 對於完整網域名稱包含__虛擬網路__之 DNS 尾碼的要求會轉寄到自訂的 DNS 伺服器。 然後，自訂的 DNS 伺服器會將這些要求轉寄到 Azure 遞迴解析程式，以傳回 IP 位址。
+* 對於完整網域名稱包含 __虛擬網路__ 之 DNS 尾碼的要求會轉寄到自訂的 DNS 伺服器。 然後，自訂的 DNS 伺服器會將這些要求轉寄到 Azure 遞迴解析程式，以傳回 IP 位址。
 * 所有其他要求都會轉寄到內部部署 DNS 伺服器。 即使是公用網際網路資源 (例如 microsoft.com) 的要求也會轉寄到內部部署 DNS 伺服器進行名稱解析。
 
 在下列圖表中，綠線表示的資源要求會以虛擬網路的 DNS 尾碼結尾。 藍線表示在內部部署網路或公用網際網路上的資源要求。
@@ -45,7 +45,7 @@ ms.locfileid: "92487274"
 ## <a name="prerequisites"></a>Prerequisites
 
 * SSH 用戶端。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](./hdinsight-hadoop-linux-use-ssh-unix.md)。
-* 如果使用 PowerShell，您將需要 [AZ 模組](https://docs.microsoft.com/powershell/azure/)。
+* 如果使用 PowerShell，您將需要 [AZ 模組](/powershell/azure/)。
 * 如果您想要使用 Azure CLI，但尚未安裝，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-virtual-network-configuration"></a>建立虛擬網路設定
@@ -69,46 +69,46 @@ ms.locfileid: "92487274"
 
     ![建立 Ubuntu 虛擬機器](./media/connect-on-premises-network/azure-portal-create-resource.png)
 
-1. 選取 [**計算**  >  **虛擬機器**] 以移至 [**建立虛擬機器**] 頁面。
+1. 選取 [ **計算**  >  **虛擬機器** ] 以移至 [ **建立虛擬機器** ] 頁面。
 
-1. 在 [基本]____ 索引標籤中，輸入下列資訊：  
+1. 在 [基本] 索引標籤中，輸入下列資訊：  
   
     | 欄位 | 值 |
     | --- | --- |
     |訂用帳戶 |選取適當的訂用帳戶。|
     |資源群組 |選取包含先前建立之虛擬網路的資源群組。|
-    |虛擬機器名稱 | 輸入此虛擬機器的易記名稱。 此範例使用 **DNSProxy**。|
-    |區域 | 選取與先前建立之虛擬網路相同的區域。  並非所有 VM 大小在所有區域都可供使用。  |
-    |可用性選項 |  選取所需的可用性層級。  Azure 提供各種選項以管理應用程式的可用性和復原。  建立解決方案的架構，以在「可用性區域」或「可用性設定組」中使用複寫的虛擬機器來保護您的應用程式和資料避免發生資料中心中斷，並維護事件。 此範例使用 [不需要基礎結構備援]****。 |
-    |映像 | 離開 **Ubuntu Server 18.04 LTS**。 |
-    |驗證類型 | __密碼__ 或 __SSH 公開金鑰__： ssh 帳戶的驗證方法。 我們建議使用公開金鑰，因為它們更為安全。 此範例會使用 **密碼**。  如需詳細資訊，請參閱[建立及使用適用於 Linux VM 的 SSH 金鑰](../virtual-machines/linux/mac-create-ssh-keys.md)文件。|
-    |使用者名稱 |輸入虛擬機器的系統管理員使用者名稱。  此範例使用 **sshuser**。|
-    |密碼或 SSH 公開金鑰 | 可用的欄位取決於您選擇的**驗證類型**而定。  輸入適當的值。|
-    |公用輸入連接埠|選取 [允許選取的連接埠]。 然後從 [**選取輸入埠**] 下拉式清單中選取**SSH (22) ** 。|
+    |虛擬機器名稱 | 輸入此虛擬機器的易記名稱。 此範例使用 **DNSProxy** 。|
+    |Region | 選取與先前建立之虛擬網路相同的區域。  並非所有 VM 大小在所有區域都可供使用。  |
+    |可用性選項 |  選取所需的可用性層級。  Azure 提供各種選項以管理應用程式的可用性和復原。  建立解決方案的架構，以在「可用性區域」或「可用性設定組」中使用複寫的虛擬機器來保護您的應用程式和資料避免發生資料中心中斷，並維護事件。 此範例使用 [不需要基礎結構備援]。 |
+    |Image | 離開 **Ubuntu Server 18.04 LTS** 。 |
+    |驗證類型 | __密碼__ 或 __SSH 公開金鑰__ ： ssh 帳戶的驗證方法。 我們建議使用公開金鑰，因為它們更為安全。 此範例會使用 **密碼** 。  如需詳細資訊，請參閱[建立及使用適用於 Linux VM 的 SSH 金鑰](../virtual-machines/linux/mac-create-ssh-keys.md)文件。|
+    |使用者名稱 |輸入虛擬機器的系統管理員使用者名稱。  此範例使用 **sshuser** 。|
+    |密碼或 SSH 公開金鑰 | 可用的欄位取決於您選擇的 **驗證類型** 而定。  輸入適當的值。|
+    |公用輸入連接埠|選取 [允許選取的連接埠]。 然後從 [ **選取輸入埠** ] 下拉式清單中選取 **SSH (22)** 。|
 
     ![虛擬機器基本設定](./media/connect-on-premises-network/virtual-machine-basics.png)
 
-    將其他項目保留在預設值，然後選取 [網路]**** 索引標籤。
+    將其他項目保留在預設值，然後選取 [網路] 索引標籤。
 
-4. 在 [網路]**** 索引標籤中，輸入下列資訊：
+4. 在 [網路] 索引標籤中，輸入下列資訊：
 
     | 欄位 | 值 |
     | --- | --- |
     |虛擬網路 | 選取您先前建立的虛擬網路。|
-    |子網路 | 為您稍早建立的虛擬網路選取預設子網路。 請__勿__選取 VPN 閘道使用的子網路。|
+    |子網路 | 為您稍早建立的虛擬網路選取預設子網路。 請 __勿__ 選取 VPN 閘道使用的子網路。|
     |公用 IP | 使用自動填入的值。  |
 
     ![HDInsight 虛擬網路設定](./media/connect-on-premises-network/virtual-network-settings.png)
 
-    將其他項目保留在預設值，然後選取 [檢閱 + 建立]****。
+    將其他項目保留在預設值，然後選取 [檢閱 + 建立]。
 
-5. 在 [檢閱 + 建立]**** 索引標籤中，選取 [建立]**** 以建立虛擬機器。
+5. 在 [檢閱 + 建立] 索引標籤中，選取 [建立] 以建立虛擬機器。
 
 ### <a name="review-ip-addresses"></a>檢閱 IP 位址
 
-一旦建立虛擬機器之後，您將會收到 **部署成功** 的通知，其中包含 [ **移至資源** ] 按鈕。  選取 [移至資源] ****，以移至新的虛擬機器。  在新虛擬機器的預設檢視中，遵循下列步驟來找出相關聯的 IP 位址：
+一旦建立虛擬機器之後，您將會收到 **部署成功** 的通知，其中包含 [ **移至資源** ] 按鈕。  選取 [移至資源] ，以移至新的虛擬機器。  在新虛擬機器的預設檢視中，遵循下列步驟來找出相關聯的 IP 位址：
 
-1. 從 [設定]**** 中，選取 [屬性]****。
+1. 從 [設定] 中，選取 [屬性]。
 
 2. 請記下 **PUBLIC IP ADDRESS/DNS NAME LABEL** 和 **PRIVATE IP ADDRESS** 的值，以供稍後使用。
 
@@ -116,7 +116,7 @@ ms.locfileid: "92487274"
 
 ### <a name="install-and-configure-bind-dns-software"></a>安裝並設定 Bind (DNS 軟體)
 
-1. 使用 SSH 連線至虛擬機器的__公用 IP 位址__。 將取代 `sshuser` 為您在建立 VM 時所指定的 SSH 使用者帳戶。 下列範例會連線到 40.68.254.142 的虛擬機器：
+1. 使用 SSH 連線至虛擬機器的 __公用 IP 位址__ 。 將取代 `sshuser` 為您在建立 VM 時所指定的 SSH 使用者帳戶。 下列範例會連線到 40.68.254.142 的虛擬機器：
 
     ```bash
     ssh sshuser@40.68.254.142
@@ -168,7 +168,7 @@ ms.locfileid: "92487274"
     sudo nano /etc/bind/named.conf.options
     ```
 
-    若要儲存檔案，請使用 __Ctrl+X__、__Y__ 和 __Enter__ 鍵。
+    若要儲存檔案，請使用 __Ctrl+X__ 、 __Y__ 和 __Enter__ 鍵。
 
 4. 在 SSH 工作階段中，使用下列命令：
 
@@ -182,7 +182,7 @@ ms.locfileid: "92487274"
     dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
     ```
 
-    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` 文字是此虛擬網路的 __DNS 尾碼__。 儲存此值，因為稍後會用到。
+    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` 文字是此虛擬網路的 __DNS 尾碼__ 。 儲存此值，因為稍後會用到。
 
 5. 若要將 Bind 設定為解析虛擬網路內資源的 DNS 名稱，請使用下列文字作為 `/etc/bind/named.conf.local` 檔案的內容：
 
@@ -203,7 +203,7 @@ ms.locfileid: "92487274"
     sudo nano /etc/bind/named.conf.local
     ```
 
-    若要儲存檔案，請使用 __Ctrl+X__、__Y__ 和 __Enter__ 鍵。
+    若要儲存檔案，請使用 __Ctrl+X__ 、 __Y__ 和 __Enter__ 鍵。
 
 6. 若要啟動 Bind，請使用下列命令：
 
@@ -221,7 +221,7 @@ ms.locfileid: "92487274"
     > [!IMPORTANT]  
     > 將 `dns.mynetwork.net` 取代為內部部署網路中的資源完整網域名稱 (FQDN)。
     >
-    > 將 `10.0.0.4` 取代為虛擬網路中自訂 DNS 伺服器的 __內部 IP 位址__。
+    > 將 `10.0.0.4` 取代為虛擬網路中自訂 DNS 伺服器的 __內部 IP 位址__ 。
 
     回應看起來類似下列文字：
 
@@ -238,13 +238,13 @@ ms.locfileid: "92487274"
 
 若要將虛擬網路設定為使用自訂的 DNS 伺服器，而不使用 Azure 遞迴解析程式，請從 [Azure 入口網站](https://portal.azure.com)使用下列步驟：
 
-1. 從左側功能表中，流覽至 [**所有服務**  >  **網路**  >  **虛擬網路**]。
+1. 從左側功能表中，流覽至 [ **所有服務**  >  **網路**  >  **虛擬網路** ]。
 
 2. 從清單中選取虛擬網路，將會為您的虛擬網路開啟預設檢視。  
 
-3. 從預設檢視中，在 [設定]**** 下方，選取 [DNS 伺服器]****。  
+3. 從預設檢視中，在 [設定] 下方，選取 [DNS 伺服器]。  
 
-4. 選取 [自訂]____，並輸入自訂 DNS 伺服器的**私人 IP 位址**。
+4. 選取 [自訂]，並輸入自訂 DNS 伺服器的 **私人 IP 位址** 。
 
 5. 選取 [儲存]。  <br />  
 
@@ -254,7 +254,7 @@ ms.locfileid: "92487274"
 
 在上一節中，您已將自訂 DNS 伺服器設定為將要求轉寄到內部部署 DNS 伺服器。 接下來，您必須將內部部署 DNS 伺服器設定為將要求轉寄到自訂 DNS 伺服器。
 
-如需有關如何設定您 DNS 伺服器的特定步驟，請參閱您 DNS 伺服器軟體的文件。 尋找如何設定__條件式轉寄站__的步驟。
+如需有關如何設定您 DNS 伺服器的特定步驟，請參閱您 DNS 伺服器軟體的文件。 尋找如何設定 __條件式轉寄站__ 的步驟。
 
 條件式轉寄只會轉寄特定 DNS 尾碼的要求。 在此情況下，您必須設定虛擬網路 DNS 尾碼的轉寄站。 應將這個尾碼的要求轉寄到自訂 DNS 伺服器的 IP 位址。 
 
@@ -267,7 +267,7 @@ zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
 };
 ```
 
-如需有關在 **Windows Server 2016** 上使用 DNS 的資訊，請參閱 [Add-DnsServerConditionalForwarderZone](https://technet.microsoft.com/itpro/powershell/windows/dnsserver/add-dnsserverconditionalforwarderzone) 文件...
+如需有關在 **Windows Server 2016** 上使用 DNS 的資訊，請參閱 [Add-DnsServerConditionalForwarderZone](/powershell/module/dnsserver/add-dnsserverconditionalforwarderzone) 文件...
 
 設定內部部署 DNS 伺服器之後，您就可以 `nslookup` 從內部部署網路使用，以確認您可以在虛擬網路中解析名稱。 下列範例 
 
@@ -288,8 +288,8 @@ nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.
 
 2. 針對步驟 1 中所識別的 IP 位址，允許來自那些 IP 位址的輸入流量。
 
-   * 如果您使用的是__NSG__：允許埠__443__上的__輸入__流量作為 IP 位址。
-   * 如果您是使用 __UDR__：將 IP 位址的路由的 __下一個躍點__ 類型設定為 __網際網路__ 。
+   * 如果您使用的是 __NSG__ ：允許埠 __443__ 上的 __輸入__ 流量作為 IP 位址。
+   * 如果您是使用 __UDR__ ：將 IP 位址的路由的 __下一個躍點__ 類型設定為 __網際網路__ 。
 
 如需使用 Azure PowerShell 或 Azure CLI 建立 NSG 的範例，請參閱[使用 Azure 虛擬網路擴充 HDInsight](hdinsight-create-virtual-network.md#hdinsight-nsg) 文件。
 
@@ -302,7 +302,7 @@ nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.
 
 > [!WARNING]  
 > * 叢集建立期間，您必須選擇包含您虛擬網路的位置。
-> * 在設定的__進階設定__部分，您必須選取稍早建立的虛擬網路與子網路。
+> * 在設定的 __進階設定__ 部分，您必須選取稍早建立的虛擬網路與子網路。
 
 ## <a name="connecting-to-hdinsight"></a>連線至 HDInsight
 
@@ -341,12 +341,12 @@ HDInsight 上大部分的文件都假設您透過網際網路擁有叢集存取�
     >
     > 例如，Apache Ambari 一次只在一個前端節點上作用。 如果您嘗試在一個前端節點上存取 Ambari 而傳回 404 錯誤，表示它正在其他前端節點上執行中。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 如需在虛擬網路中使用 HDInsight 的詳細資訊，請參閱 [規劃 Azure HDInsight 叢集的虛擬網路部署](./hdinsight-plan-virtual-network-deployment.md)。
 
 * 如需 Azure 虛擬網路的詳細資訊，請參閱 [Azure 虛擬網路概觀](../virtual-network/virtual-networks-overview.md)。
 
-* 如需網路安全性群組的詳細資訊，請參閱[網路安全性群組](../virtual-network/security-overview.md)。
+* 如需網路安全性群組的詳細資訊，請參閱[網路安全性群組](../virtual-network/network-security-groups-overview.md)。
 
 * 如需使用者定義路由的詳細資訊，請參閱[使用者定義路由和 IP 轉送](../virtual-network/virtual-networks-udr-overview.md)。

@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: a6f1a5b532ba3d8d5ce24d6f9856d86719d35c6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9415d66c49992bc31f773dec908a861f1126e714
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839532"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92427205"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>教學課程：使用 Azure AD 進行端對端內容保護
 
@@ -146,7 +146,7 @@ SPA 播放器應用程式會完成下列動作：
 選擇要用於端對端範例的 Azure AD 租用戶。 您有兩個選擇：
 
 * 現有的 Azure AD 租用戶。 任何 Azure 訂用帳戶都必須有一個 Azure AD 租用戶，但 Azure AD 租用戶可供多個 Azure 訂用帳戶使用。
-* 新的 Azure AD 租用戶，*不*為任何 Azure 訂用帳戶所使用。 如果您選擇新租用戶選項，媒體服務帳戶和範例播放器應用程式則必須位於使用不同 Azure AD 租用戶的 Azure 訂用帳戶中。 這會讓您獲得一些彈性。 例如，您可以既使用自己的 Azure AD 租用戶，又使用客戶在 Azure 訂用帳戶中所擁有的客戶媒體服務帳戶。
+* 新的 Azure AD 租用戶， *不* 為任何 Azure 訂用帳戶所使用。 如果您選擇新租用戶選項，媒體服務帳戶和範例播放器應用程式則必須位於使用不同 Azure AD 租用戶的 Azure 訂用帳戶中。 這會讓您獲得一些彈性。 例如，您可以既使用自己的 Azure AD 租用戶，又使用客戶在 Azure 訂用帳戶中所擁有的客戶媒體服務帳戶。
 
 ## <a name="register-the-backend-resource-app"></a>註冊後端資源應用程式
 
@@ -155,7 +155,7 @@ SPA 播放器應用程式會完成下列動作：
 1. 從功能表中選取 [應用程式註冊]。
 1. 按一下 [+ 新增註冊]。
 1. 將應用程式命名為 *LicenseDeliveryResource2* (其中 2 表示 AAD v2 端點)。
-1. 選取 [僅限此組織目錄中的帳戶 (僅限 [*您的租用戶名稱*] - 單一租用戶)]。 如果您想要啟用多個租用戶的存取權，請選取其他多個租用戶選項的其中一個。
+1. 選取 [僅限此組織目錄中的帳戶 (僅限 [ *您的租用戶名稱* ] - 單一租用戶)]。 如果您想要啟用多個租用戶的存取權，請選取其他多個租用戶選項的其中一個。
 1. [重新導向 URI] 是選擇性選項，可於稍後變更。
 1. 按一下 [註冊] 。 [應用程式註冊] 檢視隨即出現。
 1. 從功能表中選取 [資訊清單]。 [資訊清單] 檢視隨即出現。
@@ -181,8 +181,8 @@ SPA 播放器應用程式會完成下列動作：
 1. 從功能表中選取 [Azure Active Directory]。
 1. 從功能表中選取 [應用程式註冊]。
 1. 按一下 [+ 新增註冊]。
-1. 提供用戶端應用程式的名稱，例如 *AMS AAD 內容保護*。
-1. 選取 [僅限此組織目錄中的帳戶 (僅限 [*您的租用戶名稱*] - 單一租用戶)]。 如果您想要啟用多個租用戶的存取權，請選取其他多個租用戶選項的其中一個。
+1. 提供用戶端應用程式的名稱，例如 *AMS AAD 內容保護* 。
+1. 選取 [僅限此組織目錄中的帳戶 (僅限 [ *您的租用戶名稱* ] - 單一租用戶)]。 如果您想要啟用多個租用戶的存取權，請選取其他多個租用戶選項的其中一個。
 1. [重新導向 URI] 是選擇性選項，可於稍後變更。
 1. 按一下 [註冊] 。
 1. 從功能表中選取 [API 權限]。
@@ -265,12 +265,12 @@ return objContentKeyPolicyRestriction;
 
 1. 啟動 Visual Studio Code。
 1. 若要開啟專案，請按一下 [檔案] > [開啟資料夾]-> 瀏覽並選取 *package.json* 檔案的父資料夾。
-1. 開啟 JavaScript 檔案 *public/javascript/constants.js*。
+1. 開啟 JavaScript 檔案 *public/javascript/constants.js* 。
 1. 將 `OAUTH2_CONST.CLIENT_ID` 取代為 AAD 租用戶中已註冊用戶端應用程式的 `client_id`。  您可以在 Azure 入口網站的已註冊應用程式 [概觀] 區段中找到 `client_id`。 注意：這是用戶端識別碼，而不是物件識別碼。
 1. 將 `OAUTH2_CONST.TENANT_ID` 取代為 Azure AD 租用戶的 `tenant_id`。 按一下 Azure Active Directory 功能表即可找到您的 `tenant_id`。 tenant_id 會出現在 [概觀] 區段中。
 1. 將 `OAUTH2_CONST.SCOPE` 取代為新增至已註冊用戶端應用程式的範圍。 您可以從 [應用程式註冊] 功能表中瀏覽至已註冊的用戶端應用程式，然後選取您的用戶端應用程式，以尋找此範圍：
-    1. 選取您的用戶端應用程式、按一下 [API 權限] 功能表，然後選取 API 權限 [LicenseDeliveryResource2] 底下的範圍 [DRM.License.Delivery]。 權限的格式應該會類似 *api://df4ed433-dbf0-4da6-b328-e1fe05786db5/DRM.License.Delivery*。 **重要**：將 `offline_access` 前面的空間保留在 `OAUTH2_CONST.SCOPE` 中。
-1. 取代 `AMS_CONST` 的兩個常數字串，如下所示。 一個是您測試資產的受保護串流 URL，另一個是 FPS 應用程式憑證 URL (如果您想要納入 FairPlay 測試案例的話)。 否則，您可以針對 `AMS_CONST.APP_CERT_URL` 將其保持原狀。 然後按一下 [ **儲存**]。
+    1. 選取您的用戶端應用程式、按一下 [API 權限] 功能表，然後選取 API 權限 [LicenseDeliveryResource2] 底下的範圍 [DRM.License.Delivery]。 權限的格式應該會類似 *api://df4ed433-dbf0-4da6-b328-e1fe05786db5/DRM.License.Delivery* 。 **重要** ：將 `offline_access` 前面的空間保留在 `OAUTH2_CONST.SCOPE` 中。
+1. 取代 `AMS_CONST` 的兩個常數字串，如下所示。 一個是您測試資產的受保護串流 URL，另一個是 FPS 應用程式憑證 URL (如果您想要納入 FairPlay 測試案例的話)。 否則，您可以針對 `AMS_CONST.APP_CERT_URL` 將其保持原狀。 然後按一下 [ **儲存** ]。
 
 ```javascript
 //defaults in ams.js
@@ -304,16 +304,16 @@ class AMS_CONST {
 * *public/* * (JavaScript 檔案、CSS、映像，如下所示)
 
 1. 將 *view* 資料夾中找到的檔案複製到新目錄的根目錄。
-1. 將 *public* 資料夾中找到的*資料夾*複製到新目錄的根目錄。
+1. 將 *public* 資料夾中找到的 *資料夾* 複製到新目錄的根目錄。
 1. 將 `.ejs` 檔案的副檔名變更為 `.html`。 (未使用伺服器端變數，因此您可以安全地加以變更)。
-1. 在 VSC (或其他程式碼編輯器) 中開啟 *index.html*，然後變更 `<script>` 和 `<link>` 路徑，使其反映檔案所在的位置。  如果您有遵循前面的步驟來進行，則只需要刪除路徑中的 `\`。  例如，`<script type="text/javascript" src="/javascript/constants.js"></script>` 會成為 `<script type="text/javascript" src="javascript/constants.js"></script>`。
+1. 在 VSC (或其他程式碼編輯器) 中開啟 *index.html* ，然後變更 `<script>` 和 `<link>` 路徑，使其反映檔案所在的位置。  如果您有遵循前面的步驟來進行，則只需要刪除路徑中的 `\`。  例如，`<script type="text/javascript" src="/javascript/constants.js"></script>` 會成為 `<script type="text/javascript" src="javascript/constants.js"></script>`。
 1. 和選項 1 一樣，自訂 *javascript/constants.js* 檔案中的常數。
 
 ## <a name="common-customer-scenarios"></a>常見客戶案例
 
 您已完成本教學課程並擁有運作中的子系統，因此接下來可以嘗試加以修改以符合下列客戶案例：
 
-### <a name="role-based-access-control-rbac-for-license-delivery-via-azure-ad-group-membership"></a>透過 Azure AD 群組成員資格來傳遞授權的角色型存取控制 (RBAC)
+### <a name="azure-role-based-access-control-azure-rbac-for-license-delivery-via-azure-ad-group-membership"></a>透過 Azure AD 群組成員資格來傳遞授權的 Azure 角色型存取控制 (Azure RBAC)
 
 到目前為止，系統允許任何可以登入的使用者取得有效的授權，並播放受保護的內容。
 
@@ -321,10 +321,10 @@ class AMS_CONST {
 
 #### <a name="set-up-the-azure-ad-tenant"></a>設定 Azure AD 租用戶
 
-1. 在您的租用戶中設定兩個帳戶。 這些帳戶可以命名為 *premium_user* 和 *basic_user*；
-1. 建立使用者群組，並將其命名為 *PremiumGroup*。
+1. 在您的租用戶中設定兩個帳戶。 這些帳戶可以命名為 *premium_user* 和 *basic_user* ；
+1. 建立使用者群組，並將其命名為 *PremiumGroup* 。
 1. 將 *premium_user* 新增至 *PremiumGroup* 作為成員，但不要將 *basic_user* 新增至群組。
-1. 記下 *PremiumGroup* 的**物件識別碼**。
+1. 記下 *PremiumGroup* 的 **物件識別碼** 。
 
 #### <a name="set-up-the-media-services-account"></a>設定媒體服務帳戶
 
@@ -342,7 +342,7 @@ if (tokenClaims != null && tokenClaims.Length > 0)
 }
 ```
 
-*groups* 宣告是 Azure AD 中[受限制的宣告集](../../active-directory/develop/active-directory-claims-mapping.md#claim-sets)的成員。
+*groups* 宣告是 Azure AD 中 [受限制的宣告集](../../active-directory/develop/active-directory-claims-mapping.md#claim-sets)的成員。
 
 #### <a name="test"></a>測試
 

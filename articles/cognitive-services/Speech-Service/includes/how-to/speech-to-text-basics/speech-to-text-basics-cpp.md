@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: trbye
-ms.openlocfilehash: 65340bfcab76bd35901d1b3a9f3b4a8736205706
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 7575e174f1f47d55c507fdbf0386fbd578649839
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91377121"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92499220"
 ---
 語音服務的核心功能之一，就是能夠辨識並轉譯人類語音 (通常稱為語音轉文字)。 在本快速入門中，您將了解如何在您的應用程式和產品中使用語音 SDK，以執行高品質的語音轉換文字辨識。
 
@@ -31,68 +31,62 @@ ms.locfileid: "91377121"
 
 ## <a name="create-a-speech-configuration"></a>建立語音設定
 
-若要使用語音 SDK 來呼叫語音服務，您必須建立 [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)。 此類別包含訂用帳戶的相關資訊，例如您的金鑰和關聯的區域、端點、主機或授權權杖。
+若要使用語音 SDK 來呼叫語音服務，您必須建立 [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)。 此類別包含訂用帳戶的相關資訊，例如您的金鑰和關聯的區域、端點、主機或授權權杖。 使用您的金鑰和區域來建立 [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)。 請參閱[區域支援](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)頁面，以尋找您的區域識別碼。
 
-> [!NOTE]
-> 無論您是執行語音辨識、語音合成、翻譯還是意圖辨識，都一定會建立設定。
+```cpp
+using namespace std;
+using namespace Microsoft::CognitiveServices::Speech;
 
-您可以透過數種方式將 [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) 初始化：
+auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+```
 
-* 使用訂用帳戶：傳入金鑰和相關聯的區域。
+您可以透過其他數種方式將 [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) 初始化：
+
 * 使用端點：傳入語音服務端點。 金鑰或授權權杖是選用項目。
 * 使用主機：傳入主機位址。 金鑰或授權權杖是選用項目。
 * 使用授權權杖：傳入授權權杖和相關聯的區域。
 
-我們來看看如何使用金鑰和區域建立 [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)。 請參閱[區域支援](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)頁面，以尋找您的區域識別碼。
+> [!NOTE]
+> 無論您是執行語音辨識、語音合成、翻譯還是意圖辨識，都一定會建立設定。
 
-```cpp
-auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");
-```
+## <a name="recognize-from-microphone"></a>從麥克風辨識
 
-## <a name="initialize-a-recognizer"></a>初始化辨識器
-
-建立 [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) 之後，下一步是初始化 [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer)。 當您初始化 [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) 時，您必須為其傳入您的 `speech_config`。 這會提供語音服務驗證您的要求所需的認證。
-
-```cpp
-auto recognizer = SpeechRecognizer::FromConfig(config);
-```
-
-## <a name="recognize-from-microphone-or-file"></a>從麥克風或檔案辨識
-
-如果要指定音訊輸入裝置，必須建立 [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig)，並在初始化 [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer) 時提供參數。
-
-若要使用裝置麥克風辨識語音，請使用 `FromDefaultMicrophoneInput()` 建立 `AudioConfig`，然後在建立 `SpeechRecognizer` 物件時傳遞音訊設定。
+若要使用您的裝置麥克風辨識語音，請使用 `FromDefaultMicrophoneInput()` 建立 `AudioConfig`。 然後初始化 [`SpeechRecognizer`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer)，傳遞您的 `audioConfig` 和 `config`。
 
 ```cpp
 using namespace Microsoft::CognitiveServices::Speech::Audio;
 
 auto audioConfig = AudioConfig::FromDefaultMicrophoneInput();
 auto recognizer = SpeechRecognizer::FromConfig(config, audioConfig);
+
+cout << "Speak into your microphone." << std::endl;
+auto result = recognizer->RecognizeOnceAsync().get();
+cout << "RECOGNIZED: Text=" << result->Text << std::endl;
 ```
 
-> [!TIP]
-> [了解如何取得音訊輸入裝置的裝置識別碼](../../../how-to-select-audio-input-devices.md)。
+如果要使用「特定」的音訊輸入裝置，您需要在 `AudioConfig` 中指定裝置識別碼。 了解 [如何取得音訊輸入裝置的裝置識別碼](../../../how-to-select-audio-input-devices.md)。
 
-如果要辨識來自音訊檔案的語音而不使用麥克風，您仍然需要建立 `AudioConfig`。 不過，建立 [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig) 時，您不會呼叫 `FromDefaultMicrophoneInput()`，而是會呼叫 `FromWavFileInput()` 並傳遞 `filename` 參數。
+## <a name="recognize-from-file"></a>從檔案辨識
+
+如果要辨識來自音訊檔案的語音而不使用麥克風，您仍然需要建立 `AudioConfig`。 不過，建立 [`AudioConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig) 時，您不會呼叫 `FromDefaultMicrophoneInput()`，而是會呼叫 `FromWavFileInput()` 並傳遞檔案路徑。
 
 ```cpp
+using namespace Microsoft::CognitiveServices::Speech::Audio;
+
 auto audioInput = AudioConfig::FromWavFileInput("YourAudioFile.wav");
 auto recognizer = SpeechRecognizer::FromConfig(config, audioInput);
+
+auto result = recognizer->RecognizeOnceAsync().get();
+cout << "RECOGNIZED: Text=" << result->Text << std::endl;
 ```
 
 ## <a name="recognize-speech"></a>辨識語音
 
 「適用於 C++ 的語音 SDK」的[辨識器類別](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer)會公開一些可供您用於語音辨識的方法。
 
-* 一次性辨識 (非同步) -在非封鎖 (非同步) 模式下執行辨識。 這將會辨識單一語句。 單一語句的結尾會藉由聽取結束時的靜默來決定，或是在處理音訊達 15 秒的上限時結束。
-* 連續辨識 (非同步) - 以非同步方式起始連續辨識作業。 使用者必須連線至處理事件，才能接收辨識結果。 若要停止非同步連續識別，請呼叫 [`StopContinuousRecognitionAsync`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#stopcontinuousrecognitionasync)。
-
-> [!NOTE]
-> 深入了解如何[選擇語音辨識模式](../../../how-to-choose-recognition-mode.md)。
-
 ### <a name="single-shot-recognition"></a>一次性辨識
 
-以下是使用 [`RecognizeOnceAsync`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#recognizeonceasync) 進行非同步一次性辨識的範例：
+一次性辨識會以非同步方式辨識單一語句。 單一語句的結尾會藉由聽取結束時的靜默來決定，或是在處理音訊達 15 秒的上限時結束。 以下是使用 [`RecognizeOnceAsync`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#recognizeonceasync) 進行非同步一次性辨識的範例：
 
 ```cpp
 auto result = recognizer->RecognizeOnceAsync().get();

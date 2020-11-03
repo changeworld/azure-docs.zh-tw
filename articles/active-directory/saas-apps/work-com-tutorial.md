@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 5fe8697327203a84f91b42e8742db75150b6cb19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a77b6472ea91a6ba4b6e31d1b7739aae236a1783
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88541440"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636148"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>教學課程：Azure Active Directory 與 Work.com 整合
 
@@ -27,7 +27,7 @@ Work.com 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Work.com (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ Work.com 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Work.com**，從結果面板中選取 [Work.com]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Work.com** ，從結果面板中選取 [Work.com]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
     ![結果清單中的 Work.com](common/search-new-app.png)
 
@@ -107,7 +107,7 @@ Work.com 與 Azure AD 整合提供下列優點：
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`http://<companyname>.my.salesforce.com`
 
     > [!NOTE]
-    > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Work.com 用戶端支援小組](https://help.salesforce.com/articleView?id=000159855&type=3)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Work.com 用戶端支援小組](https://help.salesforce.com/articleView?id=000159855&type=3)以取得此值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
@@ -129,11 +129,11 @@ Work.com 與 Azure AD 整合提供下列優點：
 
 2. 移到 [設定]  。
    
-    ![安裝程式](./media/work-com-tutorial/ic794108.png "安裝程式")
+    ![螢幕擷取畫面：顯示已從 [使用者] 功能表選取 [設定]。](./media/work-com-tutorial/ic794108.png "安裝程式")
 
 3. 在 [系統管理員]  區段的左方導覽窗格中，按一下 [網域管理]  展開相關的區段，然後按一下 [我的網域]  來開啟 [我的網域]  頁面。 
    
-    ![我的網域](./media/work-com-tutorial/ic767825.png "我的網域")
+    ![螢幕擷取畫面：顯示 [管理] 窗格中的 [我的網域選取的網域管理]。](./media/work-com-tutorial/ic767825.png "我的網域")
 
 4. 若要確認已正確設定您的網域，請確定目前在 [步驟 4 已部署到使用者]  中，然後檢閱 [我的網域設定]  。
    
@@ -143,7 +143,7 @@ Work.com 與 Azure AD 整合提供下列優點：
 
 6. 移到 [設定]  。
     
-    ![安裝程式](./media/work-com-tutorial/ic794108.png "安裝程式")
+    ![螢幕擷取畫面：顯示已從 [使用者] 功能表選取 [設定]。](./media/work-com-tutorial/ic794108.png "安裝程式")
 
 7. 展開 [安全性控制]  功能表，然後再按一下 [單一登入設定]  。
     
@@ -186,15 +186,15 @@ Work.com 與 Azure AD 整合提供下列優點：
 
 10. 在 Work.com 傳統入口網站的左側導覽窗格中，按一下 [網域管理]  以展開相關區段，然後按一下 [我的網域]  來開啟 [我的網域]  頁面。 
     
-    ![我的網域](./media/work-com-tutorial/ic794115.png "我的網域")
+    ![螢幕擷取畫面：顯示已從 [網域管理] 選取 [我的網域]。](./media/work-com-tutorial/ic794115.png "我的網域")
 
 11. 在 [我的網域]  頁面的 [登入頁面商標]  區段中，按一下 [編輯]  。
     
-    ![登入頁面商標](./media/work-com-tutorial/ic767826.png "登入頁面商標")
+    ![螢幕擷取畫面：顯示 [登入頁面商標] 區段，您可以在其中選取 [編輯]。](./media/work-com-tutorial/ic767826.png "登入頁面商標")
 
 12. [登入頁面商標]  頁面的 [驗證服務]  區段中，會顯示您的 [SAML SSO 設定]  的名稱。 請選取該名稱，然後按一下 [儲存]  。
     
-    ![登入頁面商標](./media/work-com-tutorial/ic784366.png "登入頁面商標")
+    ![螢幕擷取畫面：顯示 [登入頁面商標]，您可以在其中選取設定的名稱，也就是 PPE。](./media/work-com-tutorial/ic784366.png "登入頁面商標")
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
@@ -212,7 +212,7 @@ Work.com 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`。 例如， BrittaSimon@contoso.com
 
@@ -256,7 +256,7 @@ Azure Active Directory 使用者必須先佈建到 Work.com，才可以登入。
 
 2. 移到 [設定]  。
    
-    ![安裝程式](./media/work-com-tutorial/IC794108.png "安裝程式")
+    ![螢幕擷取畫面：顯示已從 [使用者] 功能表選取 [設定]。](./media/work-com-tutorial/ic794108.png "安裝程式")
 
 3. 移至 [管理使用者 \> 使用者]  。
    
@@ -270,17 +270,17 @@ Azure Active Directory 使用者必須先佈建到 Work.com，才可以登入。
    
     ![使用者編輯](./media/work-com-tutorial/ic794118.png "使用者編輯")
    
-    a. 在 [名字]  文字方塊中，輸入使用者的**名字**：**Britta**。
+    a. 在 [名字]  文字方塊中，輸入使用者的 **名字** ： **Britta** 。
     
-    b. 在 [姓氏]  文字方塊中，輸入使用者的**姓氏**：**Simon**。
+    b. 在 [姓氏]  文字方塊中，輸入使用者的 **姓氏** ： **Simon** 。
     
-    c. 在 [別名]  文字方塊中，輸入使用者的**名字**：**BrittaS**。
+    c. 在 [別名]  文字方塊中，輸入使用者的 **名字** ： **BrittaS** 。
     
-    d. 在 [電子郵件]  文字方塊中，輸入使用者 Brittasimon@contoso.com 的**電子郵件地址**。
+    d. 在 [電子郵件]  文字方塊中，輸入使用者 Brittasimon@contoso.com 的 **電子郵件地址** 。
     
     e. 在 [使用者名稱]  文字方塊中，輸入使用者的使用者名稱，例如 Brittasimon@contoso.com。
     
-    f. 在 [暱稱]  文字方塊中，輸入使用者的**暱稱**：**Simon**。
+    f. 在 [暱稱]  文字方塊中，輸入使用者的 **暱稱** ： **Simon** 。
     
     g. 選取 [角色]  、[使用者授權]  和 [設定檔]  。
     
@@ -294,13 +294,12 @@ Azure Active Directory 使用者必須先佈建到 Work.com，才可以登入。
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Work.com] 圖格時，應該會自動登入您已設定 SSO 的 Work.com。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Work.com] 圖格時，應該會自動登入您已設定 SSO 的 Work.com。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

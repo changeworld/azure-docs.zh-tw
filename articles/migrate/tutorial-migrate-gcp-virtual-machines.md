@@ -4,12 +4,12 @@ description: 本文說明如何使用 Azure Migrate 將 GCP VM 遷移至 Azure�
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: cd3bf225c6de0401aaa625cf3bb037b3beb58a35
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2caebb5dda87a34d003f7f2bd208fff427c98431
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91716309"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92315891"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>探索和評估 Google Cloud Platform (GCP) VM 並將其遷移至 Azure
 
@@ -44,12 +44,12 @@ ms.locfileid: "91716309"
         - 針對 Linux 電腦：
             1. 登入每一部 Linux 電腦。
             2. 開啟 sshd_config 檔案：vi /etc/ssh/sshd_config
-            3. 在檔案中，找出 **PasswordAuthentication** 行，並將值變更為 **yes**。
+            3. 在檔案中，找出 **PasswordAuthentication** 行，並將值變更為 **yes** 。
             4. 儲存並關閉檔案。 重新啟動 ssh 服務
     - 如果您使用根使用者來探索 Linux VM，請確定已允許在 VM 上進行根登入。
         1. 登入每一部 Linux 電腦
         2. 開啟 sshd_config 檔案：vi /etc/ssh/sshd_config
-        3. 在檔案中，找出 **PermitRootLogin** 行，並將值變更為 **yes**。
+        3. 在檔案中，找出 **PermitRootLogin** 行，並將值變更為 **yes** 。
         4. 儲存並關閉檔案。 重新啟動 ssh 服務
 
 2. 然後，遵循此[教學課程](./tutorial-assess-gcp.md)來設定 Azure Migrate 專案和設備，以探索及評估您的 GCP VM。
@@ -79,9 +79,9 @@ ms.locfileid: "91716309"
 
 ### <a name="assign-permissions-to-create-project"></a>指派建立專案的權限
 
-1. 在 Azure 入口網站中開啟訂用帳戶，然後選取 [存取控制 (IAM)]****。
-2. 在 [檢查存取權]**** 中，尋找相關的帳戶，然後按一下以查看權限。
-3. 您應該會具有「參與者」**** 或「擁有者」**** 權限。
+1. 在 Azure 入口網站中開啟訂用帳戶，然後選取 [存取控制 (IAM)]。
+2. 在 [檢查存取權] 中，尋找相關的帳戶，然後按一下以查看權限。
+3. 您應該會具有「參與者」或「擁有者」權限。
     - 如果您剛建立免費的 Azure 帳戶，您就是訂用帳戶的擁有者。
     - 如果您不是訂用帳戶擁有者，請與擁有者合作以指派角色。
 
@@ -105,8 +105,8 @@ ms.locfileid: "91716309"
 
 Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 複寫設備會執行下列元件。
 
-- **設定伺服器**：設定伺服器會協調 GCP VM 與 Azure 之間的通訊，以及管理資料複寫。
-- **處理序伺服器**：處理序伺服器可作為複寫閘道。 負責接收複寫資料，以快取、壓縮和加密進行最佳化，然後將其傳送至 Azure 中的快取儲存體帳戶。
+- **設定伺服器** ：設定伺服器會協調 GCP VM 與 Azure 之間的通訊，以及管理資料複寫。
+- **處理序伺服器** ：處理序伺服器可作為複寫閘道。 負責接收複寫資料，以快取、壓縮和加密進行最佳化，然後將其傳送至 Azure 中的快取儲存體帳戶。
 
 準備設備部署，如下所示：
 
@@ -127,25 +127,25 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
 
 設定 Azure Migrate 專案，然後將伺服器移轉工具新增至其中。
 
-1. 在 Azure 入口網站 > [所有服務]**** 中，搜尋 **Azure Migrate**。
+1. 在 Azure 入口網站 > [所有服務] 中，搜尋 **Azure Migrate** 。
 2. 在 [服務] 下，選取 [Azure Migrate]。
-3. 在 [概觀]**** 中，按一下 [評估和遷移伺服器]****。
-4. 在 [探索、評估和遷移伺服器]**** 下方，按一下 [評估和遷移伺服器]****。
+3. 在 [概觀] 中，按一下 [評估和遷移伺服器]。
+4. 在 [探索、評估和遷移伺服器] 下方，按一下 [評估和遷移伺服器]。
 
     ![探索和評估伺服器](./media/tutorial-migrate-physical-virtual-machines/assess-migrate.png)
 
-5. 在 [探索、評估和遷移伺服器]**** 中，按一下 [新增工具]****。
-6. 在 [Migrate 專案]**** 中選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有的話)。
-7. 在 [專案詳細資料]**** 中指定專案名稱，以及您要在其中建立專案的地理位置，然後按 [下一步]****。 請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
+5. 在 [探索、評估和遷移伺服器] 中，按一下 [新增工具]。
+6. 在 [Migrate 專案] 中選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有的話)。
+7. 在 [專案詳細資料] 中指定專案名稱，以及您要在其中建立專案的地理位置，然後按 [下一步]。 請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
     - 專案地理區域只會用來儲存從 GCP 機器收集到的中繼資料。
     - 當您執行移轉時，可以選取任何目的地區域。
 
     ![建立 Azure Migrate 專案](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
 
-8. 在 [選取評量工具]**** 中，選取 [暫時跳過新增評量工具]**** > [下一步]****。
-9. 在 [選取移轉工具]**** 中，選取 **[Azure Migrate：伺服器移轉]**  > [下一步]****。
-10. 在 [檢閱 + 新增工具]**** 中檢閱設定，然後按一下 [新增工具]****
-11. 新增工具之後，工具會出現在 Azure Migrate 專案 > [伺服器]**** > [移轉工具]**** 中。
+8. 在 [選取評量工具] 中，選取 [暫時跳過新增評量工具] > [下一步]。
+9. 在 [選取移轉工具] 中，選取 **[Azure Migrate：伺服器移轉]**  > [下一步]。
+10. 在 [檢閱 + 新增工具] 中檢閱設定，然後按一下 [新增工具]
+11. 新增工具之後，工具會出現在 Azure Migrate 專案 > [伺服器] > [移轉工具] 中。
 
 ## <a name="set-up-the-replication-appliance"></a>設定複寫設備
 
@@ -153,11 +153,11 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
 
 ### <a name="download-the-replication-appliance-installer"></a>下載複寫設備安裝程式
 
-1. 在 [Azure Migrate 專案] > [伺服器]**** 的 **[Azure Migrate：伺服器移轉]** 中，按一下 [探索]****。
+1. 在 [Azure Migrate 專案] > [伺服器] 的 **[Azure Migrate：伺服器移轉]** 中，按一下 [探索]。
 
     ![探索 VM](./media/tutorial-migrate-physical-virtual-machines/migrate-discover.png)
 
-2. 在 [探索機器]**** > [機器是否已虛擬化?]**** 中，按一下 [未虛擬化/其他]****。
+2. 在 [探索機器] > [機器是否已虛擬化?] 中，按一下 [未虛擬化/其他]。
 3. 在 [目標區域] 中，選取您要將機器遷移到的 Azure 區域。
 4. 選取 [確認移轉的目標區域為 <region-name>]。
 5. 按一下 [建立資源]。 這會在背景中建立 Azure Site Recovery 保存庫。
@@ -166,7 +166,7 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
     - 若要將您的 VM 遷移至不同的區域，您必須建立新的/不同的 Azure Migrate 專案。
 
 6. 在 [是否要安裝新的複寫設備?] 中，選取 [安裝複寫設備]。
-7. 在 [下載並安裝複寫設備軟體]**** 中，下載設備安裝程式和註冊金鑰。 您必須要有金鑰，才能註冊設備。 此金鑰在下載後有五天的有效期。
+7. 在 [下載並安裝複寫設備軟體] 中，下載設備安裝程式和註冊金鑰。 您必須要有金鑰，才能註冊設備。 此金鑰在下載後有五天的有效期。
 
     ![下載提供者](media/tutorial-migrate-physical-virtual-machines/download-provider.png)
 
@@ -194,11 +194,11 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
 行動服務代理程式必須安裝在要遷移的來源 GCP VM 上。 代理程式安裝程式可在複寫設備上取得。 您必須找出正確的安裝程式，並在要遷移的每個機器上安裝代理程式。 做法如下所示：
 
 1. 登入複寫設備。
-2. 瀏覽至 **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository**。
+2. 瀏覽至 **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository** 。
 3. 尋找來源 GCP VM 作業系統和版本適用的安裝程式。 檢閱[支援的作業系統](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines)。
 4. 將安裝程式檔案複製到要遷移的來源 GCP VM。
 5. 請確定您已儲存安裝複寫設備時所建立的複雜密碼文字檔。
-    - 如果您忘記儲存複雜密碼，您可以使用此步驟來查看複寫設備上的複雜密碼。 從命令列執行 **C:\ProgramData\ASR\home\svsystems\bin\genpassphrase.exe -v**，可檢視目前的複雜密碼。
+    - 如果您忘記儲存複雜密碼，您可以使用此步驟來查看複寫設備上的複雜密碼。 從命令列執行 **C:\ProgramData\ASR\home\svsystems\bin\genpassphrase.exe -v** ，可檢視目前的複雜密碼。
     - 現在，將此複雜密碼複製到剪貼簿，並將其儲存在來源 VM 上的暫存文字檔中。
 
 ### <a name="installation-guide-for-windows-gcp-vms"></a>Windows GCP VM 的安裝指南
@@ -253,7 +253,7 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
 2. 在 [複寫] > [來源設定][您的電腦虛擬化了嗎] >  中，選取 [未虛擬化/其他]。
 3. 在 [內部部署設備] 中，選取您設定的 Azure Migrate 設備的名稱。
 4. 在 [處理序伺服器] 中，選取複寫設備的名稱。 
-5. 在**來賓認證**中，請選取先前在[複寫安裝程式安裝](#download-the-replication-appliance-installer)期間建立的虛擬帳戶以手動安裝行動服務 (不支援推送安裝)。 然後按 [下一步：**虛擬機器]** 。   
+5. 在 **來賓認證** 中，請選取先前在 [複寫安裝程式安裝](#download-the-replication-appliance-installer)期間建立的虛擬帳戶以手動安裝行動服務 (不支援推送安裝)。 然後按 [下一步： **虛擬機器]** 。   
  
     ![複寫設定](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 6. 在 [虛擬機器] 的 [從評量匯入移轉設定?] 中，保留預設設定 [否，我將手動指定移轉設定]。
@@ -263,7 +263,7 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
 
 8. 在 [目標設定] 中，選取訂用帳戶、您的遷移目標區域，並指定 Azure VM 在移轉後所在的資源群組。
 9. 在 [虛擬網路] 中，選取 Azure VM 在移轉後所將加入的 Azure VNet/子網路。
-10. 在**可用性選項**中，選取：
+10. 在 **可用性選項** 中，選取：
     -  可用性區域，將已遷移的機器釘選到該區域中特定的可用性區域。 使用此選項可將形成多節點應用程式層的伺服器散發到可用性區域。 如果選取此選項，則必須在計算索引標籤中指定要用於每部所選電腦的可用性區域。只有選取要移轉的目的地區域支援可用性區域時，才可以使用此選項
     -  可用性設定組，可將遷移的電腦放在可用性設定組中。 選取的目標資源群組必須有一或多個可用性設定組，才能使用此選項。
     - 如果您不需要為已遷移的電腦提供任何一種可用性設定，則不需要任何基礎結構備援選項。
@@ -273,12 +273,12 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
 
     ![目標設定](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
 
-12. 請檢閱**計算**中的 VM 名稱、大小、OS 磁碟類型和可用性設定 (如果有在上一個步驟中選取)。 VM 必須符合 [Azure 需求](migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
+12. 請檢閱 **計算** 中的 VM 名稱、大小、OS 磁碟類型和可用性設定 (如果有在上一個步驟中選取)。 VM 必須符合 [Azure 需求](migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
 
-    - **VM 大小**：如果您使用評估建議，[VM 大小] 下拉式清單會顯示建議的大小。 否則，Azure Migrate 會根據 Azure 訂用帳戶中最接近的相符項來選擇大小。 或者，您可以在 [Azure VM 大小] 中手動選擇大小。
-    - **OS 磁碟**：指定 VM 的 OS (開機) 磁碟。 OS 磁碟是具有作業系統開機載入器和安裝程式的磁碟。
-    - **可用性區域**：指定要使用的可用性區域。
-    - **可用性設定組**：指定要使用的可用性設定組。
+    - **VM 大小** ：如果您使用評估建議，[VM 大小] 下拉式清單會顯示建議的大小。 否則，Azure Migrate 會根據 Azure 訂用帳戶中最接近的相符項來選擇大小。 或者，您可以在 [Azure VM 大小] 中手動選擇大小。
+    - **OS 磁碟** ：指定 VM 的 OS (開機) 磁碟。 OS 磁碟是具有作業系統開機載入器和安裝程式的磁碟。
+    - **可用性區域** ：指定要使用的可用性區域。
+    - **可用性設定組** ：指定要使用的可用性設定組。
 
 ![計算設定](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
@@ -324,8 +324,8 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
     ![測試移轉](./media/tutorial-migrate-physical-virtual-machines/test-migrate.png)
 
 3. 在 [測試移轉] 中，選取 Azure VM 在移轉後將位於其中的 Azure VNet。 建議您使用非生產 VNet。
-4. **測試移轉**作業隨即啟動。 請在入口網站通知中監視作業。
-5. 移轉完成之後，請在 Azure 入口網站的 [虛擬機器] 中檢視已遷移的 Azure VM。 機器名稱會具有尾碼 **-Test**。
+4. **測試移轉** 作業隨即啟動。 請在入口網站通知中監視作業。
+5. 移轉完成之後，請在 Azure 入口網站的 [虛擬機器] 中檢視已遷移的 Azure VM。 機器名稱會具有尾碼 **-Test** 。
 6. 測試完成之後，以滑鼠右鍵按一下 [複寫機器] 中的 Azure VM，然後按一下 [清除測試移轉]。
 
     ![清除移轉](./media/tutorial-migrate-physical-virtual-machines/clean-up.png)
@@ -349,7 +349,7 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
 
 1. 完成移轉之後，以滑鼠右鍵按一下 VM > [停止移轉]。 這會執行以下動作：
     - 停止 GCP VM 的複寫。
-    - 從 Azure Migrate 中的**複寫伺服器**計數移除 GCP VM：伺服器移轉。
+    - 從 Azure Migrate 中的 **複寫伺服器** 計數移除 GCP VM：伺服器移轉。
     - 清除 VM 的複寫狀態資訊。
 2. 在已遷移的機器上安裝 Azure VM [Windows](../virtual-machines/extensions/agent-windows.md) 或 [Linux](../virtual-machines/extensions/agent-linux.md) 代理程式。
 3. 執行任何移轉後應用程式調整，例如更新資料庫連接字串和 Web 伺服器設定。
@@ -367,7 +367,7 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
     - 使用 Site Recovery 將 Azure VM 複寫至次要區域，讓工作負載保持執行且持續可供使用。 [深入了解](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - 針對提升安全性：
     - 使用 [Azure 資訊安全中心 - Just In Time 系統管理](../security-center/security-center-just-in-time.md)來鎖定並限制輸入流量存取。
-    - 使用[網路安全性群組](../virtual-network/security-overview.md)來限制傳送至管理端點的網路流量。
+    - 使用[網路安全性群組](../virtual-network/network-security-groups-overview.md)來限制傳送至管理端點的網路流量。
     - 部署 [Azure 磁碟加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)以協助保護磁碟，以及防止資料遭到竊取和受到未經授權的存取。
     - 深入了解如何[保護 IaaS 資源](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)，並瀏覽 [Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)。
 - 針對監視及管理：
@@ -399,7 +399,7 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
 **答：** 您可能必須先進行這些變更，才能將 EC2 VM 遷移至 Azure：
 
 - 如果您使用雲端初始佈建 VM，建議您先在 VM 上停用雲端初始，再複寫至 Azure。 VM 上的雲端初始所執行的佈建步驟可能是 GCP 特有步驟，而且在遷移至 Azure 之後將變為無效。  
-- 請檢閱[必要條件](#prerequisites)一節，以判斷您使用的作業系統是否有任何必要的變更
+- 請檢閱[必要條件](#prerequisites)一節，以判斷作業系統是否需要任何必要的變更，才能遷移至 Azure。
 - 我們建議您在進行最後移轉之前，先執行測試移轉。  
 
 ## <a name="next-steps"></a>後續步驟

@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6037ece7f4cbe0edc9cf44bded3ee34815f76a48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d504cbe9c2ac9046a34187d4a5576385b1f73bbe
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91620200"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518104"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-gen1-environment"></a>教學課程：建立 Azure 時間序列深入解析 Gen1 環境
 
@@ -36,7 +36,7 @@ ms.locfileid: "91620200"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* 您的 Azure 登入帳戶也必須是訂用帳戶的**擁有者**角色成員。 如需詳細資訊，請閱讀[使用角色型存取控制和 Azure 入口網站管理存取權](../role-based-access-control/role-assignments-portal.md)。
+* 您的 Azure 登入帳戶也必須是訂用帳戶的 **擁有者** 角色成員。 如需詳細資訊，請參閱[使用 Azure 入口網站新增或移除 Azure 角色指派](../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="review-video"></a>檢閱影片
 
@@ -83,7 +83,7 @@ Azure IoT 中樞是教學課程中所有裝置 (模擬或實體) 用來安全地
 
    [![裝置模擬解決方案佈建完成](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png#lightbox)
 
-1. 現在，您可以在 Azure 入口網站中檢查新建立的資源。 在 [資源群組]  頁面中，您會看到已建立的新資源群組，其使用上一個步驟中提供的**解決方案名稱**。 記下針對裝置模擬所建立的資源。
+1. 現在，您可以在 Azure 入口網站中檢查新建立的資源。 在 [資源群組]  頁面中，您會看到已建立的新資源群組，其使用上一個步驟中提供的 **解決方案名稱** 。 記下針對裝置模擬所建立的資源。
 
    [![裝置模擬資源](media/tutorial-create-populate-tsi-environment/tsi-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/tsi-device-sim-solution-resources.png#lightbox)
 
@@ -128,7 +128,7 @@ Azure IoT 中樞是教學課程中所有裝置 (模擬或實體) 用來安全地
 
 連同 IoT 中樞，也產生了 Azure App Service Web 應用程式，以建立及傳輸模擬裝置遙測資料。
 
-1. 返回您的[解決方案加速器儀表板](https://www.azureiotsolutions.com/Accelerators#dashboard)。 如有必要，請使用您在本教學課程中使用的相同 Azure 帳戶重新登入。 選取您的「裝置解決方案」，然後**移至您的解決方案加速器**，以啟動您已部署的解決方案。
+1. 返回您的[解決方案加速器儀表板](https://www.azureiotsolutions.com/Accelerators#dashboard)。 如有必要，請使用您在本教學課程中使用的相同 Azure 帳戶重新登入。 選取您的「裝置解決方案」，然後 **移至您的解決方案加速器** ，以啟動您已部署的解決方案。
 
    [![解決方案加速器儀表板](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png#lightbox)
 
@@ -150,7 +150,7 @@ Azure IoT 中樞是教學課程中所有裝置 (模擬或實體) 用來安全地
 
    [![裝置模擬設定](media/tutorial-create-populate-tsi-environment/sawa-simulation-setup.png)](media/tutorial-create-populate-tsi-environment/sawa-simulation-setup.png#lightbox)
 
-1. 模擬執行時，您會注意到 [訊息總數]  和 [每秒訊息數]  欄位大約每隔 10 秒會更新一次。 模擬大約會在 5 分鐘後結束，並且返回**模擬設定**。
+1. 模擬執行時，您會注意到 [訊息總數]  和 [每秒訊息數]  欄位大約每隔 10 秒會更新一次。 模擬大約會在 5 分鐘後結束，並且返回 **模擬設定** 。
 
    [![裝置模擬執行中](media/tutorial-create-populate-tsi-environment/sawa-simulation-running.png)](media/tutorial-create-populate-tsi-environment/sawa-simulation-running.png#lightbox)
 
@@ -170,11 +170,11 @@ Azure IoT 中樞是教學課程中所有裝置 (模擬或實體) 用來安全地
 
    [![Azure 時間序列深入解析總管時間範圍篩選條件](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png#lightbox)
 
-1. 縮小時間範圍，可讓圖表放大顯示傳輸至 IoT 中樞與 Azure 時間序列深入解析環境的資料明顯暴增。 同時也請留意右上角的**串流處理完成**文字，此處會顯示找到的事件總數。 您也可以拖曳 [間隔大小]  滑桿，來控制圖表的繪圖細微性。
+1. 縮小時間範圍，可讓圖表放大顯示傳輸至 IoT 中樞與 Azure 時間序列深入解析環境的資料明顯暴增。 同時也請留意右上角的 **串流處理完成** 文字，此處會顯示找到的事件總數。 您也可以拖曳 [間隔大小]  滑桿，來控制圖表的繪圖細微性。
 
    [![Azure 時間序列深入解析總管時間範圍篩選後檢視](media/tutorial-create-populate-tsi-environment/tsie-view-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range.png#lightbox)
 
-1. 最後，您也可以對某個區域按一下滑鼠左鍵來篩選範圍。 然後按一下滑鼠右鍵，使用**瀏覽事件**在表格式 [事件]  檢視中顯示事件的詳細資料。
+1. 最後，您也可以對某個區域按一下滑鼠左鍵來篩選範圍。 然後按一下滑鼠右鍵，使用 **瀏覽事件** 在表格式 [事件]  檢視中顯示事件的詳細資料。
 
    [![Azure 時間序列深入解析總管時間範圍篩選後檢視和事件](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png#lightbox)
 

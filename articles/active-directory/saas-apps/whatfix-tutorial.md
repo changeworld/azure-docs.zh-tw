@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 273151cf08bd149da427e9631764f4dae2759b12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd3ce846abbd2ce310b12634391453ef78ce0094
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88523249"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521633"
 ---
 # <a name="tutorial-integrate-whatfix-with-azure-active-directory"></a>教學課程：整合 Whatfix 與 Azure Active Directory
 
@@ -26,7 +26,7 @@ ms.locfileid: "88523249"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Whatfix。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -47,7 +47,7 @@ ms.locfileid: "88523249"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Whatfix**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Whatfix** 。
 1. 從結果面板選取 [Whatfix]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
@@ -92,7 +92,7 @@ ms.locfileid: "88523249"
 
 ### <a name="configure-whatfix-sso"></a>設定 Whatfix SSO
 
-若要在 **Whatfix** 端設定單一登入，您必須將**應用程式同盟中繼資料 URL** 傳送給 [Whatfix 支援小組](https://support.whatfix.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Whatfix** 端設定單一登入，您必須將 **應用程式同盟中繼資料 URL** 傳送給 [Whatfix 支援小組](https://support.whatfix.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -120,22 +120,22 @@ ms.locfileid: "88523249"
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組]  對話方塊中，從使用者清單選取 **Britta Simon**，然後按一下畫面底部的 [選取]  按鈕。
+1. 在 [使用者和群組]  對話方塊中，從使用者清單選取 **Britta Simon** ，然後按一下畫面底部的 [選取]  按鈕。
 1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
 1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 
 ### <a name="create-whatfix-test-user"></a>建立 Whatfix 測試使用者
 
-在本節中，您要在 Whatfix 中建立名為 Britta Simon 的使用者。 請與  [Whatfix 支援小組](https://support.whatfix.com) 合作，在 Whatfix 平台中加入使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您要在 Whatfix 中建立名為 Britta Simon 的使用者。 請與 [Whatfix 支援小組](https://support.whatfix.com)合作，在 Whatfix 平台中加入使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ### <a name="test-sso"></a>測試 SSO
 
-當您在存取面板中選取 [Whatfix] 圖格時，應該會自動登入您已設定 SSO 的 Whatfix。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [Whatfix] 圖格時，應該會自動登入您已設定 SSO 的 Whatfix。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

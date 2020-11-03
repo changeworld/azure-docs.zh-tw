@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 8936c2150c32a22877f9b56736ecc4b8f3424b32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6bf3eccec70619bf73397e315c6d851f753ec52f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88533124"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521827"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>教學課程：Azure Active Directory 與 Uberflip 整合
 
@@ -28,7 +28,7 @@ Uberflip 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Uberflip (單一登入)。
 * 您可以集中管理您的帳戶：Azure 入口網站。
 
-如需軟體即服務 (SaaS) 應用程式與 Azure AD 整合的詳細資訊，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如需軟體即服務 (SaaS) 應用程式與 Azure AD 整合的詳細資訊，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -63,7 +63,7 @@ Uberflip 支援下列功能︰
 
    ![新增應用程式選項](common/add-new-app.png)
 
-1. 在搜尋方塊中，輸入 **Uberflip**。 在搜尋結果中，選取 [Uberflip]  ，然後選取 [新增]  以新增應用程式。
+1. 在搜尋方塊中，輸入 **Uberflip** 。 在搜尋結果中，選取 [Uberflip]  ，然後選取 [新增]  以新增應用程式。
 
    ![結果清單中的 Uberflip](common/search-new-app.png)
 
@@ -96,7 +96,7 @@ Uberflip 支援下列功能︰
 
 1. 在 [以 SAML 設定單一登入]  窗格上選取 [編輯]  (鉛筆圖示)，以開啟 [基本 SAML 組態]  窗格。
 
-   ![編輯基本 SAML 組態](common/edit-urls.png)
+   ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入回覆 URL。](common/edit-urls.png)
 
 1. 在 [基本 SAML 組態]  窗格上，根據您要設定的 SSO 模式，執行下列其中一個步驟：
 
@@ -113,7 +113,7 @@ Uberflip 支援下列功能︰
 
      `https://app.uberflip.com/users/login`
 
-     ![Uberflip 網域與 URL 單一登入資訊](common/both-signonurl.png)
+     ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/both-signonurl.png)
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，選取 [下載]  ，以從指定的選項下載 [同盟中繼資料 XML]  並儲存在電腦上。
 
@@ -147,9 +147,9 @@ Uberflip 支援下列功能︰
 
     ![[使用者] 窗格](common/user-properties.png)
 
-    1. 在 [名稱]  方塊中，輸入 **BSimon**。
+    1. 在 [名稱]  方塊中，輸入 **BSimon** 。
   
-    1. 在**使用者名稱**方塊中，輸入 **BSimon\@\<yourcompanydomain>.\<extension>** 。 例如 **BSimon\@contoso.com**。
+    1. 在 **使用者名稱** 方塊中，輸入 **BSimon\@\<yourcompanydomain>.\<extension>** 。 例如 **BSimon\@contoso.com** 。
 
     1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
 
@@ -192,12 +192,12 @@ Uberflip 中現在會建立名為 B. Simon 的使用者。 您不需要採取任
 
 在本節中，您會使用 MyApps 入口網站來測試您的 Azure AD 單一登入組態。
 
-當您在 My Apps 入口網站中選取 [Uberflip]  時，應該會自動登入您已設定單一登入的 Uberflip 訂用帳戶。 如需 My Apps 入口網站的詳細資訊，請參閱[在 My Apps 入口網站上存取和使用應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在 My Apps 入口網站中選取 [Uberflip]  時，應該會自動登入您已設定單一登入的 Uberflip 訂用帳戶。 如需 My Apps 入口網站的詳細資訊，請參閱[在 My Apps 入口網站上存取和使用應用程式](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* [整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](./tutorial-list.md)
 
-* [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+* [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-* [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 97f6817a02b7adf4d2d3e12dee6d1e3445e09a5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fdcef7e3b4a4246c3e093874fbb775f4811e59f
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552187"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92522014"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-stormboard"></a>教學課程：Azure Active Directory 與 Stormboard 整合
 
@@ -27,7 +27,7 @@ Stormboard 與 Azure AD 整合可提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 Stormboard (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -64,7 +64,7 @@ Stormboard 與 Azure AD 整合可提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中輸入 **Stormboard**，並從結果面板中選取 [Stormboard]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中輸入 **Stormboard** ，並從結果面板中選取 [Stormboard]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Stormboard](common/search-new-app.png)
 
@@ -102,18 +102,18 @@ Stormboard 與 Azure AD 整合可提供下列優點：
 
 4. 在 [基本 SAML 設定]  區段上，如果您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![Stormboard 網域和 URL 單一登入資訊](common/both-replyurl.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入回覆 URL 以及選取 [儲存]。](common/both-replyurl.png)
 
     在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<SUBDOMAIN>.stormboard.com/saml2/ad/acs/<TEAMID>`
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
 
-    ![Stormboard 網域和 URL 單一登入資訊](common/both-signonurl.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/both-signonurl.png)
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<SUBDOMAIN>.stormboard.com/saml2/ad/login/<TEAMID>`
 
     > [!NOTE]
-    > 這些都不是真正的值。 使用實際的回覆 URL 與登入 URL 更新這些值。 請連絡 [Stormboard 用戶端支援小組](mailto:support@stormboard.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 使用實際的回覆 URL 與登入 URL 更新這些值。 請連絡 [Stormboard 用戶端支援小組](mailto:support@stormboard.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
@@ -149,7 +149,7 @@ Stormboard 與 Azure AD 整合可提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -186,19 +186,18 @@ Stormboard 與 Azure AD 整合可提供下列優點：
 
 ### <a name="create-stormboard-test-user"></a>建立 Stormboard 測試使用者
 
-本節會在 Stormboard 中建立名為 Britta Simon 的使用者。 Stormboard 支援依預設啟用的 **Just-In-Time 使用者佈建**。 在這一節沒有您需要進行的動作項目。 如果 Stormboard 中還沒有使用者存在，在驗證之後就會建立新的使用者。
+本節會在 Stormboard 中建立名為 Britta Simon 的使用者。 Stormboard 支援依預設啟用的 **Just-In-Time 使用者佈建** 。 在這一節沒有您需要進行的動作項目。 如果 Stormboard 中還沒有使用者存在，在驗證之後就會建立新的使用者。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Stormboard] 圖格時，應該會自動登入您已設定 SSO 的 Stormboard。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Stormboard] 圖格時，應該會自動登入您已設定 SSO 的 Stormboard。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

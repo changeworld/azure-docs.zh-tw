@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: d85e6bbaf85ebb84d3664d90e3d645f61b2cb60a
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 8706ac588f2cc868805de7126140a1edd4b8c735
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91817372"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92445506"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>教學課程：設定 Azure Active Directory 與 F5 之間的單一登入 (SSO)
 
@@ -26,7 +26,7 @@ ms.locfileid: "91817372"
 * 讓使用者使用其 Azure AD 帳戶自動登入 F5。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 中單一登入的整合，請參閱 [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解 SaaS 應用程式與 Azure AD 中單一登入的整合，請參閱 [Azure Active Directory 中的應用程式單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -60,7 +60,7 @@ ms.locfileid: "91817372"
 
 ## <a name="access-guided-configuration"></a>存取引導式設定
 
-* F5 TMOS version 13.1.0.8 版和更新版本支援存取引導式設定。 如果您的 BIG-IP 系統執行低於 13.1.0.8 的版本，請參閱**進階設定**一節。
+* F5 TMOS version 13.1.0.8 版和更新版本支援存取引導式設定。 如果您的 BIG-IP 系統執行低於 13.1.0.8 的版本，請參閱 **進階設定** 一節。
 
 * 存取引導式設定提供全新且簡化的使用者體驗。 這個以工作流程為基礎的架構提供了針對選取的拓撲而設計的直覺、可重新進入的設定步驟。
 
@@ -117,7 +117,7 @@ ms.locfileid: "91817372"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **F5**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **F5** 。
 1. 從結果面板選取 [F5]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>設定及測試 F5 的 Azure AD 單一登入
@@ -138,7 +138,7 @@ ms.locfileid: "91817372"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [F5]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -154,7 +154,7 @@ ms.locfileid: "91817372"
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<YourCustomFQDN>.f5.com/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [F5 用戶端支援小組](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [F5 用戶端支援小組](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  和 [憑證 (Base64)]  ，然後選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -213,7 +213,7 @@ ms.locfileid: "91817372"
 
     ![顯示 [SSL 憑證清單] 的螢幕擷取畫面，您可以在其中選取 [憑證名稱] 和 [憑證來源]。](./media/headerf5-tutorial/configure12.png)
  
-1. 此外，您將需要**應用程式主機名稱的 SSL 憑證。瀏覽至 [系統] > [憑證管理] > [流量憑證管理] > [SSL 憑證清單]** 。 從右下角選取 [匯入]  。 [匯入類型]  將是 [PKCS 12(IIS)]  。 指定 [金鑰名稱]  (稍後將在設定中參考)，並指定 PFX 檔案。 指定 PFX 的 [密碼]  。 按一下 [匯入]  。
+1. 此外，您將需要 **應用程式主機名稱的 SSL 憑證。瀏覽至 [系統] > [憑證管理] > [流量憑證管理] > [SSL 憑證清單]** 。 從右下角選取 [匯入]  。 [匯入類型]  將是 [PKCS 12(IIS)]  。 指定 [金鑰名稱]  (稍後將在設定中參考)，並指定 PFX 檔案。 指定 PFX 的 [密碼]  。 按一下 [匯入]  。
 
     >[!NOTE]
     >在此範例中，我們的應用程式名稱為 `Headerapp.superdemo.live`，並使用萬用字元憑證，金鑰名稱則為 `WildCard-SuperDemo.live`。
@@ -237,7 +237,7 @@ ms.locfileid: "91817372"
 
     ![顯示 [虛擬伺服器屬性] 頁面的螢幕擷取畫面。](./media/headerf5-tutorial/configure04.png) 
 
-1. 在 [選取設定 IdP 連接器的方法]  底下指定中繼資料，按一下 [選擇檔案]，然後上傳先前從 Azure AD 下載的中繼資料 XML 檔案。 為 SAML IDP 連接器指定唯一的**名稱**。 選擇先前上傳的 [中繼資料簽署憑證]  。 按一下 [儲存並繼續下一步]  。
+1. 在 [選取設定 IdP 連接器的方法]  底下指定中繼資料，按一下 [選擇檔案]，然後上傳先前從 Azure AD 下載的中繼資料 XML 檔案。 為 SAML IDP 連接器指定唯一的 **名稱** 。 選擇先前上傳的 [中繼資料簽署憑證]  。 按一下 [儲存並繼續下一步]  。
 
     ![顯示 [外部識別提供者連接器設定] 頁面的螢幕擷取畫面。](./media/headerf5-tutorial/configure05.png)
  
@@ -293,7 +293,7 @@ ms.locfileid: "91817372"
  
     ![顯示具有範本選擇的 [應用程式服務] 頁面螢幕擷取畫面。](./media/headerf5-tutorial/configure18.png)
 
-1. 在此案例中，我們會在外部將 HeaderApp2 發佈為 HTTPS，而在 [BIG-IP 系統如何處理 SSL 流量？]  中，我們指定 [從用戶端終止 SSL，以純文字傳送到伺服器 (SSL 卸載)]  。 在**您要使用哪個 SSL 憑證？** 和**您要使用哪個 SSL 私密金鑰？** 下，指定您的憑證和金鑰。 在 [您要將哪個 IP 位址用於虛擬伺服器？]  底下，指定虛擬伺服器 IP。 
+1. 在此案例中，我們會在外部將 HeaderApp2 發佈為 HTTPS，而在 [BIG-IP 系統如何處理 SSL 流量？]  中，我們指定 [從用戶端終止 SSL，以純文字傳送到伺服器 (SSL 卸載)]  。 在 **您要使用哪個 SSL 憑證？** 和 **您要使用哪個 SSL 私密金鑰？** 下，指定您的憑證和金鑰。 在 [您要將哪個 IP 位址用於虛擬伺服器？]  底下，指定虛擬伺服器 IP。 
 
     * **指定其他詳細資料**
 
@@ -301,7 +301,7 @@ ms.locfileid: "91817372"
 
         * 指定現有的應用程式集區，或建立一個新的。
 
-        * 如果建立新的應用程式伺服器，請指定**內部 IP 位址**和**連接埠號碼**。
+        * 如果建立新的應用程式伺服器，請指定 **內部 IP 位址** 和 **連接埠號碼** 。
 
         ![顯示窗格的螢幕擷取畫面，您可以在其中指定這些詳細資料。](./media/headerf5-tutorial/configure19.png) 
 
@@ -355,9 +355,9 @@ ms.locfileid: "91817372"
 
     f. **相符的來源  =  %{session.server.landinguri}** 
 
-    g. **相符的值     = /** *
+    g. **相符的值     = /** _
 
-    h. 按一下 [更新]
+    h. 按一下 [更新]*
 
     i. 按一下 [檔案] &gt; [新增] &gt; [專案]
 
@@ -445,25 +445,24 @@ ms.locfileid: "91817372"
  
 ### <a name="create-f5-test-user"></a>建立 F5 測試使用者
 
-在本節中，您會在 F5 中建立名為 B.Simon 的使用者。 請與 [F5 客戶支援小組](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45)合作，在 F5 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。 
+在本節中，您會在 F5 中建立名為 B.Simon 的使用者。 請與 [F5 客戶支援小組](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45)合作，在 F5 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。 
 
 ## <a name="test-sso"></a>測試 SSO 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [F5] 圖格時，應該會自動登入您已設定 SSO 的 F5。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [F5] 圖格時，應該會自動登入您已設定 SSO 的 F5。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 F5](https://aad.portal.azure.com/)
 
 - [設定適用於 Kerberos 應用程式的 F5 單一登入](kerbf5-tutorial.md)
 
 - [設定適用於進階 Kerberos 應用程式的 F5 單一登入](advance-kerbf5-tutorial.md)
-

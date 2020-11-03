@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
 ms.custom: devx-track-js
-ms.openlocfilehash: c210096c1765015378f12f8c5e01fc9f8f97e10b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 02bcbf0b4f6f6021c157a8ba3c5d2783fc94f1aa
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327675"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425320"
 ---
 # <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>快速入門：使用 JavaScript 搭配 Azure Functions 與 SignalR Service 來建立聊天室
 
@@ -54,19 +54,19 @@ Azure SignalR Service 可讓您輕鬆地在應用程式中新增即時功能，�
 
     ![搜尋 SignalR 服務執行個體](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
 
-1. 選取 [金鑰]**** 以檢視 SignalR 服務執行個體的連接字串。
+1. 選取 [金鑰] 以檢視 SignalR 服務執行個體的連接字串。
 
 1. 選取並複製主要連接字串。
 
-    ![建立 SignalR 服務](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
+    ![反白顯示主要連接字串的螢幕擷取畫面。](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
 1. 在程式碼編輯器中，開啟複製的存放庫中包含的 *src/chat/javascript* 資料夾。
 
-1. 將 *local.settings.sample.json* 重新命名為 *local.settings.json*。
+1. 將 *local.settings.sample.json* 重新命名為 *local.settings.json* 。
 
 1. 在 **local.settings.json** 中，將連接字串貼到 **AzureSignalRConnectionString** 設定的值中。 儲存檔案。
 
-1. JavaScript 函式會組織成資料夾。 在每個文件夾中有兩個檔案：*function.json* 定義函式中所使用的繫結，*index.js* 是函式的主體。 此函式應用程式中有兩個 HTTP 觸發的函式：
+1. JavaScript 函式會組織成資料夾。 在每個文件夾中有兩個檔案： *function.json* 定義函式中所使用的繫結， *index.js* 是函式的主體。 此函式應用程式中有兩個 HTTP 觸發的函式：
 
     - **negotiate** - 使用 *SignalRConnectionInfo* 輸入繫結來產生並傳回有效的連線資訊。
     - **messages** - 在要求主體中接收聊天訊息，並使用 *SignalR* 輸出繫結來將訊息廣播給所有已連線的用戶端應用程式。

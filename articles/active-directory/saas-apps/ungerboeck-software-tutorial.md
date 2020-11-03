@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 0999cbcb53edad8c496dc2f6dbd27471c93f3e4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddc83da2836d414ee3fadd23288475a6829018aa
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88532724"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521776"
 ---
 # <a name="tutorial-integrate-ungerboeck-software-with-azure-active-directory"></a>教學課程：Ungerboeck Software 與 Azure Active Directory 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88532724"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Ungerboeck Software。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -47,7 +47,7 @@ ms.locfileid: "88532724"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Ungerboeck Software**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Ungerboeck Software** 。
 1. 從結果面板選取 [Ungerboeck Software]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
@@ -79,20 +79,20 @@ ms.locfileid: "88532724"
 
     1. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：
     
-    *  **針對實際執行環境**：
+    *  **針對實際執行環境** ：
 
        - `https://<SUBDOMAIN>.ungerboeck.com/prod`
        - `https://<SUBDOMAIN>.ungerboeck.net/prod`
        - `https://<SUBDOMAIN>.ungerboeck.io/prod`
 
-   * **針對測試環境**：
+   * **針對測試環境** ：
 
      - `https://<SUBDOMAIN>.ungerboeck.com/test`
      - `https://<SUBDOMAIN>.ungerboeck.net/test`
      - `https://<SUBDOMAIN>.ungerboeck.io/test`
 
    > [!NOTE]
-   > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值 (稍後在本教學課程的**設定 Ungerboeck Software 單一登入**一節中會加以說明)。
+   > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值 (稍後在本教學課程的 **設定 Ungerboeck Software 單一登入** 一節中會加以說明)。
 
 1. 在 [SAML 簽署憑證]  區段中，按一下 [編輯]  按鈕以開啟 [SAML 簽署憑證]  對話方塊。
 
@@ -114,7 +114,7 @@ ms.locfileid: "88532724"
 
 ### <a name="configure-ungerboeck-software-sso"></a>設定 Ungerboeck Software SSO
 
-若要在 **Ungerboeck Software** 端設定單一登入，您必須將來自 Azure 入口網站的**指紋值** 和複製的適當 URL 傳送給 [Ungerboeck Software 支援小組](mailto:Rhonda.Jannings@ungerboeck.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Ungerboeck Software** 端設定單一登入，您必須將來自 Azure 入口網站的 **指紋值** 和複製的適當 URL 傳送給 [Ungerboeck Software 支援小組](mailto:Rhonda.Jannings@ungerboeck.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -148,16 +148,16 @@ ms.locfileid: "88532724"
 
 ### <a name="create-ungerboeck-software-test-user"></a>建立 Ungerboeck Software 測試使用者
 
-在本節中，您要在 Ungerboeck Software 中建立名為 B.Simon 的使用者。 與  [Ungerboeck Software 支援小組](mailto:Rhonda.Jannings@ungerboeck.com)合作，在 Ungerboeck Software 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您要在 Ungerboeck Software 中建立名為 B.Simon 的使用者。 請與 [Ungerboeck Software 支援小組](mailto:Rhonda.Jannings@ungerboeck.com)合作，在 Ungerboeck Software 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ### <a name="test-sso"></a>測試 SSO
 
-當您在存取面板中選取 [Ungerboeck Software] 圖格時，應該會自動登入您已設定 SSO 的 Ungerboeck Software。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [Ungerboeck Software] 圖格時，應該會自動登入您已設定 SSO 的 Ungerboeck Software。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

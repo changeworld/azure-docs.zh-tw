@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: e3b22b831deca47eece70d337a99346ae472c7ee
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 9ed3a4b0827e81b3f779d95a6eab1dc341e69bb1
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569475"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503261"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>使用 Synapse SQL 安全地載入資料
 
@@ -76,7 +76,7 @@ WITH (
 3. 您必須開啟 Azure 儲存體帳戶 [防火牆與虛擬網路] 設定功能表下方的 [允許信任的 Microsoft 服務存取此儲存體帳戶]。 如需詳細資訊請參閱此[指南](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions)。
 #### <a name="steps"></a>步驟
 
-1. 在 PowerShell 中，透過 Azure Active Directory **註冊您的 SQL Server**：
+1. 在 PowerShell 中，透過 Azure Active Directory **註冊您的 SQL Server** ：
 
    ```powershell
    Connect-AzAccount
@@ -84,20 +84,20 @@ WITH (
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
    ```
 
-2. 以此[指南](../../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)建立**一般用途的 v2 儲存體帳戶**。
+2. 以此 [指南](../../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)建立 **一般用途的 v2 儲存體帳戶** 。
 
    > [!NOTE]
-   > 如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此 [指南](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)**升級至 v2**。
+   > 如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此 [指南](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)**升級至 v2** 。
 
-3. 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將**儲存體 Blob 資料擁有者、參與者或讀取者** Azure 角色指派給您的 SQL 伺服器。
+3. 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將 **儲存體 Blob 資料擁有者、參與者或讀取者** Azure 角色指派給您的 SQL 伺服器。
 
    > [!NOTE]
    > 僅有具備「擁有者」權限的成員才能執行此步驟。 如需各種 Azure 內建角色，請參閱此[指南](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
    
     > [!IMPORTANT]
-    > 指定**儲存體** **Blob 資料**的擁有者、參與者或讀取者 Azure 角色。 這些角色與 Azure 內建的擁有者、參與者和讀取者角色不同。 
+    > 指定 **儲存體** **Blob 資料** 的擁有者、參與者或讀取者 Azure 角色。 這些角色與 Azure 內建的擁有者、參與者和讀取者角色不同。 
 
-    ![授與 RBAC 授權以載入](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+    ![授與 Azure RBAC 授權以載入](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
 4. 現在，您可以執行指定「受控識別」的 COPY 陳述式：
 
@@ -113,12 +113,12 @@ WITH (
 ## <a name="d-azure-active-directory-authentication"></a>D. Azure Active Directory 驗證
 #### <a name="steps"></a>步驟
 
-1. 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將**儲存體 Blob 資料擁有者、參與者或讀取者** Azure 角色指派給您的 Azure AD 使用者。 
+1. 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將 **儲存體 Blob 資料擁有者、參與者或讀取者** Azure 角色指派給您的 Azure AD 使用者。 
 
     > [!IMPORTANT]
-    > 指定**儲存體** **Blob 資料**的擁有者、參與者或讀取者 Azure 角色。 這些角色與 Azure 內建的擁有者、參與者和讀取者角色不同。
+    > 指定 **儲存體** **Blob 資料** 的擁有者、參與者或讀取者 Azure 角色。 這些角色與 Azure 內建的擁有者、參與者和讀取者角色不同。
 
-    ![授與 RBAC 授權以載入](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+    ![授與 Azure RBAC 授權以載入](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
 2. 參考下列[文件](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#create-an-azure-ad-administrator-for-azure-sql-server)以設定 Azure AD 驗證。 
 

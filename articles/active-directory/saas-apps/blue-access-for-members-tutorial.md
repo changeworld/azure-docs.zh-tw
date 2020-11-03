@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/06/2019
 ms.author: jeedes
-ms.openlocfilehash: b0a12c7ce4ac5faac7103d0032feff7788431751
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38765fd6d740c7494cbf7e5a0a38f1d98aecf4a6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88553046"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92456971"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-blue-access-for-members-bam"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Blue Access for Members (BAM) 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88553046"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Blue Access for Members (BAM)。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -75,7 +75,7 @@ ms.locfileid: "88553046"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Blue Access for Members \(BAM\]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -91,7 +91,7 @@ ms.locfileid: "88553046"
     d. 在 [轉送狀態]  文字方塊中，使用下列模式輸入 URL：`https://<CUSTOMURL>/BAMSSOServlet/sso/BamInboundSsoServlet`
 
     > [!NOTE]
-    > 這些都不是真正的值。 使用實際的「識別碼」、「回覆 URL」及「轉送狀態」來更新這些值。 請連絡 [Blue Access for Members (BAM) 用戶端支援小組](https://www.bcbstx.com/contact-us)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 使用實際的「識別碼」、「回覆 URL」及「轉送狀態」來更新這些值。 請連絡 [Blue Access for Members (BAM) 用戶端支援小組](https://www.bcbstx.com/contact-us)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. Blue Access for Members (BAM) 應用程式預期應有特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。
 
@@ -144,24 +144,24 @@ ms.locfileid: "88553046"
 
 ## <a name="configure-blue-access-for-members-bam-sso"></a>設定 Blue Access for Members (BAM) SSO
 
-若要在 **Blue Access for Members (BAM)** 端設定單一登入，您必須將從 Azure 入口網站下載的**同盟中繼資料 XML** 和複製的適當 URL 傳送給 [Blue Access for Members (BAM) 支援小組](https://www.bcbstx.com/contact-us)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Blue Access for Members (BAM)** 端設定單一登入，您必須將從 Azure 入口網站下載的 **同盟中繼資料 XML** 和複製的適當 URL 傳送給 [Blue Access for Members (BAM) 支援小組](https://www.bcbstx.com/contact-us)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-blue-access-for-members-bam-test-user"></a>建立 Blue Access for Members (BAM) 測試使用者
 
-在本節中，您要在 Blue Access for Members (BAM) 中建立名為 B.Simon 的使用者。 與  [Blue Access for Members (BAM) 支援小組](https://www.bcbstx.com/contact-us)合作，在 Blue Access for Members (BAM) 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您要在 Blue Access for Members (BAM) 中建立名為 B.Simon 的使用者。 請與 [Blue Access for Members (BAM) 支援小組](https://www.bcbstx.com/contact-us)合作，在 Blue Access for Members (BAM) 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ## <a name="test-sso"></a>測試 SSO
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Blue Access for Members \(BAM\] 圖格時，應該會自動登入您已設定 SSO 的 Blue Access for Members (BAM)。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Blue Access for Members \(BAM\] 圖格時，應該會自動登入您已設定 SSO 的 Blue Access for Members (BAM)。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Blue Access for Members (BAM)](https://aad.portal.azure.com/)

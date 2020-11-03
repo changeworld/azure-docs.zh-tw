@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 41dd61182674d63e7c8b83232c53b9e7054de04d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: b20d47962bf5467b9a5d69327e7fc152215edaa7
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91816848"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92445022"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-helpshift"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Helpshift 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91816848"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Helpshift。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -49,7 +49,7 @@ ms.locfileid: "91816848"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Helpshift**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Helpshift** 。
 1. 從結果面板中選取 [Helpshift]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-helpshift"></a>設定及測試 Helpshift 的 Azure AD 單一登入
@@ -70,7 +70,7 @@ ms.locfileid: "91816848"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Helpshift]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -88,7 +88,7 @@ ms.locfileid: "91816848"
     e. 在 [轉送狀態]  文字方塊中，使用下列模式輸入 URL：`https://<YourDOMAIN>.helpshift.com/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 使用實際的「識別碼」、「回覆 URL」、「登入 URL」及「轉送狀態」來更新這些值。 請連絡 [Helpshift 用戶端支援小組](mailto:support@helpshift.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 使用實際的「識別碼」、「回覆 URL」、「登入 URL」及「轉送狀態」來更新這些值。 請連絡 [Helpshift 用戶端支援小組](mailto:support@helpshift.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -132,7 +132,7 @@ ms.locfileid: "91816848"
 
 1. 在不同的網頁瀏覽器中，以系統管理員身分登入您的 Helpshift 應用程式。
 
-1. 開啟 Helpshift **儀表板**，然後按一下 [設定]  圖示。
+1. 開啟 Helpshift **儀表板** ，然後按一下 [設定]  圖示。
 
     ![顯示 Helpshift 設定圖示的螢幕擷取畫面。](./media/helpshift-tutorial/configuration01.png)
 
@@ -142,32 +142,32 @@ ms.locfileid: "91816848"
 
     a. 開啟 **單一登入 (SAML-SSO)** 。
 
-    b. 將 [識別提供者 (IDP)]  選取為 **Azure Active Directory**。
+    b. 將 [識別提供者 (IDP)]  選取為 **Azure Active Directory** 。
 
-    c. 在 [SAML 2.0 端點 URL]  文字方塊中，貼上您從 Azure 入口網站複製的**登入 URL** 值。
+    c. 在 [SAML 2.0 端點 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 **登入 URL** 值。
 
-    d. 開啟下載的**憑證 (Base64)** 檔案進入記事本，複製檔案的內容 (不使用 ‘—–BEGIN CERTIFICATE—–‘ 和 ‘—–END CERTIFICATE—–‘ 行)，並將其貼入 [X.509 憑證]  文字方塊。
+    d. 開啟下載的 **憑證 (Base64)** 檔案進入記事本，複製檔案的內容 (不使用 ‘—–BEGIN CERTIFICATE—–‘ 和 ‘—–END CERTIFICATE—–‘ 行)，並將其貼入 [X.509 憑證]  文字方塊。
 
-    e. 在 [簽發者 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 **Azure AD 識別碼**值。
+    e. 在 [簽發者 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 **Azure AD 識別碼** 值。
 
     f. 按一下 [套用變更]  。
 
 ### <a name="create-helpshift-test-user"></a>建立 Helpshift 測試使用者
 
-在本節中，您會在 Helpshift 中建立名為 B.Simon 的使用者。 請與 [Helpshift 客戶支援小組](mailto:support@helpshift.com)合作，在 Helpshift 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您會在 Helpshift 中建立名為 B.Simon 的使用者。 請與 [Helpshift 客戶支援小組](mailto:support@helpshift.com)合作，在 Helpshift 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ## <a name="test-sso"></a>測試 SSO
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Helpshift] 圖格時，應該會自動登入您已設定 SSO 的 Helpshift。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Helpshift] 圖格時，應該會自動登入您已設定 SSO 的 Helpshift。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Helpshift](https://aad.portal.azure.com/)

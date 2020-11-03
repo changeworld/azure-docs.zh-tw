@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/08/2019
 ms.author: jeedes
-ms.openlocfilehash: b40a124c9cee05e8d06df3de6539c566bb2ac76a
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 11439a8c93c0f1ef682e7104e989a3a2cbbdc28e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945119"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92446730"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gtnexus-sso-system"></a>教學課程：Azure Active Directory 與 GTNexus SSO 系統整合
 
@@ -27,7 +27,7 @@ GTNexus SSO 系統與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用他們的 Azure AD 帳戶自動登入 GTNexus SSO 系統 (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ GTNexus SSO 系統與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **GTNexus SSO 系統**，從結果面板中選取 [GTNexus SSO 系統]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **GTNexus SSO 系統** ，從結果面板中選取 [GTNexus SSO 系統]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 GTNexus SSO 系統](common/search-new-app.png)
 
@@ -97,13 +97,13 @@ GTNexus SSO 系統與 Azure AD 整合提供下列優點：
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 如果您有**服務提供者中繼資料檔案**，請在 [基本 SAML 設定]  區段上執行下列步驟：
+4. 如果您有 **服務提供者中繼資料檔案** ，請在 [基本 SAML 設定]  區段上執行下列步驟：
 
     a. 按一下 [上傳中繼資料檔案]  。
 
     ![顯示 [基本 S A M L 設定] 頁面的螢幕擷取畫面，其中已選取 [上傳中繼資料檔案] 動作。](common/upload-metadata.png)
 
-    b. 按一下**資料夾圖示**以選取中繼資料檔案，然後按一下 [上傳]  。
+    b. 按一下 **資料夾圖示** 以選取中繼資料檔案，然後按一下 [上傳]  。
 
     ![顯示 [選取檔案] 欄位的螢幕擷取畫面，其中已選取 [資料夾] 標誌和 [上傳] 按鈕。](common/browse-upload-metadata.png)
 
@@ -114,13 +114,13 @@ GTNexus SSO 系統與 Azure AD 整合提供下列優點：
     > [!Note]
     > 如果 [識別碼]  和 [回覆 URL]  值未自動填入，請根據您的需求手動填入這些值。
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
 ### <a name="configure-gtnexus-sso-system-single-sign-on"></a>設定 GTNexus SSO 系統單一登入
 
-若要在 **GTNexus SSO 系統**端設定單一登入，您必須將已下載的 [同盟中繼資料 XML]  傳送給 [GTNexus SSO 系統支援小組](mailto:support@gtnexus.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **GTNexus SSO 系統** 端設定單一登入，您必須將已下載的 [同盟中繼資料 XML]  傳送給 [GTNexus SSO 系統支援小組](mailto:support@gtnexus.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -138,7 +138,7 @@ GTNexus SSO 系統與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -175,18 +175,18 @@ GTNexus SSO 系統與 Azure AD 整合提供下列優點：
 
 ### <a name="create-gtnexus-sso-system-test-user"></a>建立 GTNexus SSO 系統測試使用者
 
-在本節中，您會在 GTNexus SSO 系統中建立名為 Britta Simon 的使用者。 與 [GTNexus SSO 系統支援小組](mailto:support@gtnexus.com) 合作，在 GTNexus SSO 系統平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您會在 GTNexus SSO 系統中建立名為 Britta Simon 的使用者。 請與 [GTNexus SSO 系統支援小組](mailto:support@gtnexus.com)合作，在 GTNexus SSO 系統平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ### <a name="test-single-sign-on"></a>測試單一登入
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [GTNexus SSO 系統] 圖格時，應該會自動登入您已設定 SSO 的 GTNexus SSO 系統。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [GTNexus SSO 系統] 圖格時，應該會自動登入您已設定 SSO 的 GTNexus SSO 系統。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 2b99d5ea33693431fb3811af50385891684a366e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa3c5115a5255d30decbc66691878ffbe2579a06
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546452"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514583"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-thousandeyes"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 ThousandEyes 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88546452"
 * 讓使用者使用其 Azure AD 帳戶自動登入 ThousandEyes。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -40,7 +40,7 @@ ms.locfileid: "88546452"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * ThousandEyes 支援由 **SP 和 IDP** 起始的 SSO
-* ThousandEyes 支援[**自動**使用者佈建](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-provisioning-tutorial)
+* ThousandEyes 支援 [**自動** 使用者佈建](./thousandeyes-provisioning-tutorial.md)
 
 > [!NOTE]
 > 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
@@ -53,7 +53,7 @@ ms.locfileid: "88546452"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **ThousandEyes**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **ThousandEyes** 。
 1. 從結果面板選取 [ThousandEyes]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-thousandeyes"></a>設定及測試 ThousandEyes 的 Azure AD 單一登入
@@ -74,7 +74,7 @@ ms.locfileid: "88546452"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [ThousandEyes]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -129,11 +129,11 @@ ms.locfileid: "88546452"
 
 2. 在頂端的功能表中，按一下 [設定]  。
 
-    ![設定](./media/thousandeyes-tutorial/ic790066.png "設定")
+    ![螢幕擷取畫面：顯示已選取 [設定] 的 ThousandEyes 網站。](./media/thousandeyes-tutorial/ic790066.png "設定")
 
 3. 按一下 [帳戶] 
 
-    ![帳戶](./media/thousandeyes-tutorial/ic790067.png "帳戶")
+    ![螢幕擷取畫面：顯示已從 [設定] 功能表選取 [帳戶]。](./media/thousandeyes-tutorial/ic790067.png "帳戶")
 
 4. 按一下 [安全性與驗證]  索引標籤。
 
@@ -165,11 +165,11 @@ ms.locfileid: "88546452"
 
 2. 按一下 [設定]  。
 
-    ![設定](./media/thousandeyes-tutorial/IC790066.png "設定")
+    ![螢幕擷取畫面：顯示已選取 [設定] 的 ThousandEyes 網站。](./media/thousandeyes-tutorial/ic790066.png "設定")
 
 3. 按一下 [帳戶]  。
 
-    ![帳戶](./media/thousandeyes-tutorial/IC790067.png "帳戶")
+    ![螢幕擷取畫面：顯示已從 [設定] 功能表選取 [帳戶]。](./media/thousandeyes-tutorial/ic790067.png "帳戶")
 
 4. 按一下 [帳戶和使用者]  索引標籤。
 
@@ -179,7 +179,7 @@ ms.locfileid: "88546452"
 
     ![新增使用者帳戶](./media/thousandeyes-tutorial/IC790074.png "新增使用者帳戶")
 
-    a. 在 [名稱]  文字方塊中，輸入使用者的名稱，例如 **B.Simon**。
+    a. 在 [名稱]  文字方塊中，輸入使用者的名稱，例如 **B.Simon** 。
 
     b. 在 [電子郵件]  文字方塊中，輸入使用者的電子郵件，例如 b.simon@contoso.com。
 
@@ -196,16 +196,16 @@ ms.locfileid: "88546452"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 ThousandEyes 圖格時，應該會自動登入您設定 SSO 的 ThousandEyes。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 ThousandEyes 圖格時，應該會自動登入您設定 SSO 的 ThousandEyes。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 ThousandEyes](https://aad.portal.azure.com/)
 
-- [設定使用者佈建](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-provisioning-tutorial)
+- [設定使用者佈建](./thousandeyes-provisioning-tutorial.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 17c9672663cae4df7eacb72779e6caf6476e3d24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8f12b6d55cb11c0cfeda5331072127ea4a696bc
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88550464"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460099"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>教學課程：Azure Active Directory 與 InsideView 整合
 
@@ -27,7 +27,7 @@ ms.locfileid: "88550464"
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 InsideView (單一登入)。
 * 您可以集中管理您的帳戶：Azure 入口網站。
 
-若要深入了解 SaaS 應用程式與 Azure AD 的整合，請參閱 [Azure Active Directory 中的應用程式單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 的整合，請參閱 [Azure Active Directory 中的應用程式單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -60,7 +60,7 @@ ms.locfileid: "88550464"
 
     ![選取 [新增應用程式]](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **InsideView**。 在搜尋結果中，選取 [InsideView]  ，然後選取 [新增]  。
+4. 在搜尋方塊中，輸入 **InsideView** 。 在搜尋結果中，選取 [InsideView]  ，然後選取 [新增]  。
 
     ![搜尋結果](common/search-new-app.png)
 
@@ -115,11 +115,11 @@ ms.locfileid: "88550464"
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
-    1. **登入 URL**。
+    1. **登入 URL** 。
 
-    1. **Azure AD 識別碼**。
+    1. **Azure AD 識別碼** 。
 
-    1. **登出 URL**。
+    1. **登出 URL** 。
 
 ### <a name="configure-insideview-single-sign-on"></a>設定 InsideView 單一登入
 
@@ -135,7 +135,7 @@ ms.locfileid: "88550464"
 
     1. 在 [STS 名稱]  方塊中，為設定輸入名稱。
 
-    1. 在 [SamlP/WS-Fed 來路不明端點]  方塊中，貼上您從 Azure 入口網站複製的**登入 URL** 值。
+    1. 在 [SamlP/WS-Fed 來路不明端點] 方塊中，貼上您從 Azure 入口網站複製的 **登入 URL** 值。
 
     1. 開啟您從 Azure 入口網站下載的原始憑證。 將憑證的內容複製到剪貼簿，再將該內容貼到 [STS 憑證]  方塊中。
 
@@ -165,7 +165,7 @@ ms.locfileid: "88550464"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    1. 在 [名稱]  方塊中，輸入 **BrittaSimon**。
+    1. 在 [名稱]  方塊中，輸入 **BrittaSimon** 。
   
     1. 在 [使用者名稱] 方塊中，輸入 **BrittaSimon@\<yourcompanydomain>.\<extension>** 。 (例如，BrittaSimon@contoso.com)。
 
@@ -212,12 +212,12 @@ ms.locfileid: "88550464"
 
 您現在必須使用存取面板來測試您的 Azure AD 單一登入組態。
 
-當您在存取面板中選取 [InsideView] 圖格時，應該會自動登入您已設定 SSO 的 InsideView 執行個體。 如需存取面板的詳細資訊，請參閱[在 My Apps 入口網站上存取和使用應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中選取 [InsideView] 圖格時，應該會自動登入您已設定 SSO 的 InsideView 執行個體。 如需存取面板的詳細資訊，請參閱[在 My Apps 入口網站上存取和使用應用程式](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

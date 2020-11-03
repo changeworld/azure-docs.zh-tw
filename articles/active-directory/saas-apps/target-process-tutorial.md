@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d5b0be147b8aa25e6c737d423eaf4a8a23cde083
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef21ba46ff64ec2b3c47e9659660fd51f84fbf2e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88546520"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521198"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>教學課程：將 Azure Active Directory 與 TargetProcess 整合
 
@@ -27,7 +27,7 @@ ms.locfileid: "88546520"
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 TargetProcess (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -62,7 +62,7 @@ ms.locfileid: "88546520"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **TargetProcess**，從結果面板中選取 [TargetProcess]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **TargetProcess** ，從結果面板中選取 [TargetProcess]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 TargetProcess](common/search-new-app.png)
 
@@ -107,7 +107,7 @@ ms.locfileid: "88546520"
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<subdomain>.tpondemand.com/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [TargetProcess 客戶支援小組](mailto:support@targetprocess.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [TargetProcess 客戶支援小組](mailto:support@targetprocess.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
@@ -137,15 +137,15 @@ ms.locfileid: "88546520"
 
 1. 以系統管理員身分登入您的 TargetProcess 應用程式。
 
-1. 在上方功能表中，按一下 [設定]****。
+1. 在上方功能表中，按一下 [設定]。
 
     ![安裝程式](./media/target-process-tutorial/tutorial_target_process_05.png)
 
-1. 按一下 [設定]**** 索引標籤。
+1. 按一下 [設定] 索引標籤。
 
     ![設定](./media/target-process-tutorial/tutorial_target_process_06.png)
 
-1. 按一下 [單一登入] **** 索引標籤。
+1. 按一下 [單一登入]  索引標籤。
 
     ![按一下 [單一登入]](./media/target-process-tutorial/tutorial_target_process_07.png)
 
@@ -153,13 +153,13 @@ ms.locfileid: "88546520"
 
     ![設定單一登入](./media/target-process-tutorial/tutorial_target_process_08.png)
 
-    a. 按一下 [啟用單一登入]****。
+    a. 按一下 [啟用單一登入]。
 
-    b. 在 [登入 URL]**** 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]**** 值。
+    b. 在 [登入 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL] 值。
 
     c. 在記事本中開啟下載的憑證，複製其內容，然後貼到 [憑證] 文字方塊中。
 
-    d. 按一下 [ **啟用 JIT 佈建**]。
+    d. 按一下 [ **啟用 JIT 佈建** ]。
 
     e. 按一下 [檔案] 。
 
@@ -179,7 +179,7 @@ ms.locfileid: "88546520"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱] 欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -192,11 +192,11 @@ ms.locfileid: "88546520"
 
 在本節中，您會將 TargetProcess 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]****、[所有應用程式]**** 及 [TargetProcess]****。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]、[所有應用程式] 及 [TargetProcess]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [TargetProcess] ****。
+2. 在應用程式清單中，選取 [TargetProcess] 。
 
     ![應用程式清單中的 TargetProcess 連結](common/all-applications.png)
 
@@ -219,18 +219,18 @@ ms.locfileid: "88546520"
 本節會在 TargetProcess 中建立名為 Britta Simon 的使用者。 TargetProcess 支援依預設啟用的 Just-In-Time 使用者佈建。 在這一節沒有您需要進行的動作項目。 如果 TargetProcess 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
 
 > [!Note]
-> 如果您需要手動建立使用者，請連絡  [ 支援小組](mailto:support@targetprocess.com)。
+> 如果您需要手動建立使用者，請連絡 [TargetProcess 支援小組](mailto:support@targetprocess.com)。
 
 ### <a name="test-single-sign-on"></a>測試單一登入
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [TargetProcess] 圖格時，應該會自動登入您設定 SSO 的 TargetProcess。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [TargetProcess] 圖格時，應該會自動登入您設定 SSO 的 TargetProcess。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

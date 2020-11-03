@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 03/15/2020
 ms.author: cavoeg
-ms.openlocfilehash: f3b3430ef7669022e532166848cb16d6aa66efe8
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: cabacd5204f4a9ac5c17c7bd66924482b5bf688a
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220783"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339283"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-portal"></a>快速入門：使用 Azure 入口網站部署 Azure API for FHIR
 
@@ -23,7 +23,7 @@ ms.locfileid: "92220783"
 
 ## <a name="create-new-resource"></a>建立新資源
 
-開啟 [Azure 入口網站](https://portal.azure.com)，然後按一下 [建立資源]****。
+開啟 [Azure 入口網站](https://portal.azure.com)，然後按一下 [建立資源]。
 
 ![建立資源](media/quickstart-paas-portal/portal-create-resource.png)
 
@@ -35,15 +35,15 @@ ms.locfileid: "92220783"
 
 ## <a name="create-azure-api-for-fhir-account"></a>建立 Azure API for FHIR 帳戶
 
-選取 [建立]**** 以建立新的 Azure API for FHIR 帳戶：
+選取 [建立] 以建立新的 Azure API for FHIR 帳戶：
 
-:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="搜尋健康照護 API":::
+:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="建立 Azure API for FHIR 帳戶":::
 
 ## <a name="enter-account-details"></a>輸入帳戶詳細資料
 
-選取現有的資源群組或建立新的資源群組，選擇帳戶的名稱，最後按一下 [檢閱 + 建立]****：
+選取現有的資源群組或建立新的資源群組，選擇帳戶的名稱，最後按一下 [檢閱 + 建立]：
 
-:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="搜尋健康照護 API":::
+:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="新的健康照護 API 詳細資料":::
 
 確認建立並等待 FHIR API 部署。
 
@@ -51,7 +51,7 @@ ms.locfileid: "92220783"
 
 您也可以按 [下一步:其他設定] 來檢視驗證設定。 Azure API for FHIR 的預設設定是要[使用 Azure RBAC 來指派資料平面角色](configure-azure-rbac.md)。 在此模式中設定時，FHIR 服務的「授權單位」將會設定為訂用帳戶的 Azure Active Directory 租用戶：
 
-:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="搜尋健康照護 API":::
+:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="預設驗證設定":::
 
 請注意，用於輸入允許物件識別碼的方塊會呈現灰色，因為我們在此案例中使用 Azure RBAC 來設定角色指派。
 
@@ -63,11 +63,14 @@ ms.locfileid: "92220783"
 
 ## <a name="clean-up-resources"></a>清除資源
 
-若不再需要，您可以刪除資源群組、Azure API for FHIR 和所有相關資源。 若要這麼做，請選取包含 Azure API for FHIR 帳戶的資源群組，選取 [刪除資源群組]****，然後確認要刪除的資源群組名稱。
+若不再需要，您可以刪除資源群組、Azure API for FHIR 和所有相關資源。 若要這麼做，請選取包含 Azure API for FHIR 帳戶的資源群組，選取 [刪除資源群組]，然後確認要刪除的資源群組名稱。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門手冊中，您已將 Azure API for FHIR 部署至您的訂用帳戶。 若要在 Azure API for FHIR 中設定其他設定，請繼續進行其他設定操作指南。
+在本快速入門手冊中，您已將 Azure API for FHIR 部署至您的訂用帳戶。 若要在 Azure API for FHIR 中設定其他設定，請繼續進行其他設定操作指南。 如果您已準備好開始使用 Azure API for FHIR，請參閱如何註冊應用程式了解詳細資訊。
 
 >[!div class="nextstepaction"]
 >[Azure API for FHIR 中的其他設定](azure-api-for-fhir-additional-settings.md)
+
+>[!div class="nextstepaction"]
+>[註冊應用程式概觀](fhir-app-registration.md)

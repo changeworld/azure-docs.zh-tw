@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 7b0db0f97531c60b3e809dd0dafa042dbcc2b542
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 31e129b9b1a4b5161ed33c27ea4da76168170dbe
+ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667430"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92495995"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什麼是 Azure Machine Learning Studio？
 
@@ -74,7 +74,7 @@ ms.locfileid: "91667430"
 
 **Azure Machine Learning Studio** 是 Azure Machine Learning 中的 Web 入口網站，包含用於專案撰寫和資產管理的低程式碼和無程式碼選項。 
 
-我們建議新的使用者選擇 **Azure Machine Learning**，而不是 ML Studio (傳統版)，以取得最新的資料科學工具。
+我們建議新的使用者選擇 **Azure Machine Learning** ，而不是 ML Studio (傳統版)，以取得最新的資料科學工具。
 
 ### <a name="feature-comparison"></a>功能比較
 
@@ -98,7 +98,9 @@ ms.locfileid: "91667430"
 ## <a name="next-steps"></a>後續步驟
 
 請造訪 [Studio](https://ml.azure.com)，或使用下列教學課程來探索不同的撰寫選項：  
-  + [使用 Python 筆記本來定型和部署模型](tutorial-1st-experiment-sdk-setup.md)
+
+- + [在您自己的開發環境中著手進行](tutorial-1st-experiment-sdk-setup-local.md)
+  + [在計算執行個體上使用 Jupyter Notebook 來定型並部署模型](tutorial-1st-experiment-sdk-setup.md)
   + [使用自動化機器學習來定型和部署模型](tutorial-first-experiment-automated-ml.md)  
   + [使用設計工具來定型和部署模型](tutorial-designer-automobile-price-train-score.md)
 

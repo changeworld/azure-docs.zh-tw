@@ -16,12 +16,12 @@ ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 7e68e93e8a103ccf92c949df779d929ac4095d92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5485dacc4d9e3210ad69819caf4e36f96c626da
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268820"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92428372"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-06"></a>教學課程：使用 Firebase SDK 0.6 版將推播通知傳送至 Android 裝置
 
@@ -76,7 +76,7 @@ ms.locfileid: "91268820"
 ### <a name="configure-firebase-cloud-messaging-settings-for-the-hub"></a>設定中樞的 Firebase 雲端通訊設定
 
 1. 在左窗格的 [設定] 下方，選取 [Google (GCM/FCM)]。 
-2. 針對您稍早儲存的 FCM 專案，輸入其**伺服器金鑰**。 
+2. 針對您稍早儲存的 FCM 專案，輸入其 **伺服器金鑰** 。 
 3. 在工具列上，選取 [儲存]。 
 
     ![Azure 通知中樞 - Google (FCM)](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
@@ -100,7 +100,7 @@ ms.locfileid: "91268820"
     ![Android SDK Manager - 已選取 Google Play Services](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
 3. 如果您看到 [確認變更] 對話方塊，請選取 [確定]。 元件安裝程式會安裝要求的元件。 在元件安裝完成後選取 [完成]。
 4. 選取 [確定] 以關閉 [新專案的設定] 對話方塊。  
-1. 開啟 AndroidManifest.xml 檔案，然後在*application*標籤中新增下列標籤。
+1. 開啟 AndroidManifest.xml 檔案，然後在 *application* 標籤中新增下列標籤。
 
     ```xml
     <meta-data android:name="com.google.android.gms.version"
@@ -175,8 +175,8 @@ ms.locfileid: "91268820"
 
     請務必在 `NotificationSettings` 類別的下列程式碼中更新這三個預留位置：
 
-   * **HubListenConnectionString**：中樞的 **DefaultListenAccessSignature** 連接字串。 在 [Azure 入口網站]上的中樞內按一下 [存取原則]，即可複製該連接字串。
-   * **HubName**︰使用出現在 [Azure 入口網站]中樞頁面中的中樞名稱。
+   * **HubListenConnectionString** ：中樞的 **DefaultListenAccessSignature** 連接字串。 在 [Azure 入口網站]上的中樞內按一下 [存取原則]，即可複製該連接字串。
+   * **HubName** ︰使用出現在 [Azure 入口網站]中樞頁面中的中樞名稱。
 
      `NotificationSettings` 程式碼︰
 
@@ -188,7 +188,7 @@ ms.locfileid: "91268820"
         ```
 
      > [!IMPORTANT]
-     > 請輸入中樞的**名稱**和 **DefaultListenSharedAccessSignature**，再繼續進行。 
+     > 請輸入中樞的 **名稱** 和 **DefaultListenSharedAccessSignature** ，再繼續進行。 
 
 2. 將另一個新類別新增至名為 `RegistrationIntentService`的專案。 此類別會實作 `IntentService` 介面。 此類別也會處理[重新整理 GCM 權杖](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)和[向通知中樞註冊](notification-hubs-push-notification-registration-management.md)的作業。
 
@@ -411,7 +411,7 @@ ms.locfileid: "91268820"
     android:id="@+id/text_hello"
     ```
 
-    ![Azure 通知中樞 - 測試傳送](./media/notification-hubs-android-push-notification-google-fcm-get-started/activity-main-xml.png)
+    ![螢幕擷取畫面：顯示 android:id="@+id/text_hello" 識別碼已套用至 TextView 控制項。](./media/notification-hubs-android-push-notification-google-fcm-get-started/activity-main-xml.png)
 
 10. 接下來，您會為 AndroidManifest.xml 中所定義的接收者新增子類別。 將另一個新類別新增至名為 `FirebaseService`的專案。
 

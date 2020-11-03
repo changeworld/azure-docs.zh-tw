@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 4aaf4f059976635f32c1a4e6b7130f8835598f98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2687909a7067bc135f6fcf27fce2e1694325887
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552130"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92504026"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tas"></a>教學課程：Azure Active Directory 與 TAS 整合
 
@@ -27,7 +27,7 @@ ms.locfileid: "88552130"
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 TAS (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ ms.locfileid: "88552130"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **TAS**，從結果面板中選取 [TAS]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **TAS** ，從結果面板中選取 [TAS]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 TAS](common/search-new-app.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "88552130"
 
 4. 在 [基本 SAML 組態]  區段上，若您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
-    ![TAS 網域及 URL 單一登入資訊](common/idp-intiated.png)
+    ![顯示基本 SAML 設定的螢幕擷取畫面，您可以在其中輸入識別碼、回覆 URL 以及選取 [儲存]。](common/idp-intiated.png)
 
     a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://taseu.combtas.com/<DOMAIN>`
 
@@ -107,12 +107,12 @@ ms.locfileid: "88552130"
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
 
-    ![TAS 網域及 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
+    ![顯示您可以在其中輸入登入 URL 的設定額外 URL 螢幕擷取畫面。](common/metadata-upload-additional-signon.png)
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://taseu.combtas.com/<DOMAIN>`
 
     > [!NOTE]
-    > 這些都不是真正的值。 您將會使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值，稍後在本教學課程中會有說明。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 您將會使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值，稍後在本教學課程中會有說明。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
@@ -134,11 +134,11 @@ ms.locfileid: "88552130"
 
 2. 在左側的功能表上，按一下 [Settings] \(設定\)  並瀏覽至 [Administrator] \(系統管理員\)  ，然後按一下 [Manage Single sign on] \(管理單一登入\)  。
 
-    ![TAS 設定](./media/tas-tutorial/configure01.png)
+    ![螢幕擷取畫面：顯示已選取 [管理單一登入]。](./media/tas-tutorial/configure01.png)
 
 3. 在 [Manage Single sign on] \(管理單一登入\)  頁面上，執行下列步驟：
 
-    ![TAS 設定](./media/tas-tutorial/configure02.png)
+    ![螢幕擷取畫面：顯示 [管理單一登入] 頁面，您可以在其中輸入所述的值。](./media/tas-tutorial/configure02.png)
 
     a. 在 [Name] \(名稱\)  文字方塊中，輸入您的環境名稱。
     
@@ -175,7 +175,7 @@ ms.locfileid: "88552130"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -218,13 +218,12 @@ ms.locfileid: "88552130"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [TAS] 圖格時，應該會自動登入您已設定 SSO 的 TAS。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [TAS] 圖格時，應該會自動登入您已設定 SSO 的 TAS。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

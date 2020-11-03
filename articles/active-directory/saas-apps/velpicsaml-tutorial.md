@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 85dfa6b57171ce68c3d962bac27016434d587080
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81523a1c11b6a3da4e7d1db5d8249921ad5047ff
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88532631"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92635859"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-velpic-saml"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Velpic SAML 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88532631"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Velpic SAML。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -49,7 +49,7 @@ ms.locfileid: "88532631"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Velpic SAML**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Velpic SAML** 。
 1. 從結果面板選取 [Velpic SAML]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。    
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-velpic-saml"></a>設定及測試 Velpic SAML 的 Azure AD 單一登入
@@ -70,7 +70,7 @@ ms.locfileid: "88532631"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Velpic SAML]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -136,23 +136,23 @@ ms.locfileid: "88532631"
 
 4. 按一下 [管理]  索引標籤，然後移至 [整合]  區段，您必須在此處按一下 [外掛程式]  按鈕以建立用於登入的新外掛程式。
 
-    ![外掛程式](./media/velpicsaml-tutorial/velpic_1.png)
+    ![螢幕擷取畫面：顯示 [整合] 頁面，您可以在其中選取 [外掛程式]。](./media/velpicsaml-tutorial/velpic_1.png)
 
 5. 按一下 [新增外掛程式]  按鈕。
     
-    ![外掛程式](./media/velpicsaml-tutorial/velpic_2.png)
+    ![螢幕擷取畫面：顯示已選取 [新增外掛程式] 按鈕。](./media/velpicsaml-tutorial/velpic_2.png)
 
 6. 按一下 [新增外掛程式] 頁面中的 [SAML]  圖格。
     
-    ![外掛程式](./media/velpicsaml-tutorial/velpic_3.png)
+    ![螢幕擷取畫面：顯示已在 [新增外掛程式] 頁面中選取 [SAML]。](./media/velpicsaml-tutorial/velpic_3.png)
 
 7. 為新的 SAML 外掛程式輸入名稱，然後按一下 [新增]  按鈕。
 
-    ![外掛程式](./media/velpicsaml-tutorial/velpic_4.png)
+    ![螢幕擷取畫面：顯示 [新增 SAML 外掛程式] 對話方塊，其中已輸入 Azure AD。](./media/velpicsaml-tutorial/velpic_4.png)
 
 8. 輸入詳細資料，如下所示︰
 
-    ![外掛程式](./media/velpicsaml-tutorial/velpic_5.png)
+    ![此螢幕擷取畫面顯示可輸入所述值的 Azure AD 頁面。](./media/velpicsaml-tutorial/velpic_5.png)
 
     a. 在 [名稱]  文字方塊中，輸入 SAML 外掛程式的名稱。
 
@@ -162,7 +162,7 @@ ms.locfileid: "88532631"
 
     d. 您也可以選擇啟用 [自動建立新使用者]  核取方塊，來啟用 SAML 即時佈建。 如果使用者不存在於 Velpic，而且這個旗標未啟用，從 Azure 登入時就會失敗。 如果該旗標已啟用，則系統會在使用者登入時自動將其佈建到 Velpic。 
 
-    e. 從文字方塊複製**單一登入 URL**，並將它貼到 Azure 入口網站。
+    e. 從文字方塊複製 **單一登入 URL** ，並將它貼到 Azure 入口網站。
     
     f. 按一下 [檔案]  。
 
@@ -198,17 +198,16 @@ ms.locfileid: "88532631"
 
 1. 當您按一下存取面板中的 [Velpic SAML] 圖格時，您應該會看到 Velpic SAML 應用程式的登入頁面。 您應該會在登入頁面上看到 [以 Azure AD 登入]  按鈕。
 
-    ![外掛程式](./media/velpicsaml-tutorial/velpic_6.png)
+    ![螢幕擷取畫面：顯示已選取 [使用 Azure AD 登入] 的學習入口網站。](./media/velpicsaml-tutorial/velpic_6.png)
 
 1. 按一下 [以 Azure AD 登入]  按鈕以使用 Azure AD 帳戶登入 Velpic。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD Velpic 使用 SAML](https://aad.portal.azure.com/)
-

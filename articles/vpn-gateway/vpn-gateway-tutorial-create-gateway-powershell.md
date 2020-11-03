@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8e4c0174e9f5e1a15fe85d5744ddcb6ee21c4a86
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 91004b9cb545275746f75dbd6ad46981fe4b04d5
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048265"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461153"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>教學課程：使用 PowerShell 建立和管理 VPN 閘道
 
@@ -26,7 +26,7 @@ Azure VPN 閘道提供客戶組織內部與 Azure 之間的跨單位連線。 �
 
 下圖顯示在本教學課程中建立的虛擬網路和 VPN 閘道。
 
-![VNet 和 VPN 閘道](./media/vpn-gateway-tutorial-create-gateway-powershell/vnet1-gateway.png)
+:::image type="content" source="./media/vpn-gateway-tutorial-create-gateway-powershell/gateway-diagram.png" alt-text="VNet 和 VPN 閘道圖表":::
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -125,7 +125,7 @@ New-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
 金鑰參數值：
 * GatewayType：使用 **Vpn** 進行站對站和 VNet 對 VNet 連線
 * VpnType：使用 **RouteBased** 與較大範圍的 VPN 裝置和較多路由功能互動
-* GatewaySku：**VpnGw1** 是預設值；如果您需要更高的輸送量或更多連線，請將其變更為其他 VpnGw SKU。 如需詳細資訊，請參閱[閘道 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
+* GatewaySku： **VpnGw1** 是預設值；如果您需要更高的輸送量或更多連線，請將其變更為其他 VpnGw SKU。 如需詳細資訊，請參閱[閘道 SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
 
 如果您使用 TryIt，則工作階段可能會逾時。沒關係。 閘道仍會建立。
 
@@ -151,7 +151,7 @@ $gateway = Get-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
 Resize-AzVirtualNetworkGateway -GatewaySku VpnGw2 -VirtualNetworkGateway $gateway
 ```
 
-雖然為 VPN 閘道調整大小的作業並**不會**干擾或移除現有的連線和組態，但也需要約 30 到 45 分鐘的時間。
+雖然為 VPN 閘道調整大小的作業並 **不會** 干擾或移除現有的連線和組態，但也需要約 30 到 45 分鐘的時間。
 
 ## <a name="reset-a-gateway"></a>重設閘道
 
@@ -187,4 +187,4 @@ Remove-AzResourceGroup -Name $RG1
 接著，繼續進行下列教學課程：
 
 > [!div class="nextstepaction"]
-> * [建立連線](vpn-gateway-tutorial-vpnconnection-powershell.md)
+> * [建立 S2S 連線](vpn-gateway-create-site-to-site-rm-powershell.md)

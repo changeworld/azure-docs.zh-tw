@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: marobert
-ms.openlocfilehash: 77b1e9ab245f668ab81741451a5e032f37bc3625
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 22cfe369561eab1ca334c7ff2450162dfae3e761
+ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943888"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92347256"
 ---
 ## <a name="prerequisites"></a>必要條件
 
@@ -125,6 +125,15 @@ console.log(token);
 ```javascript  
 await identityClient.revokeTokens(userResponse);
 console.log(`\nSuccessfully revoked all tokens for user with Id: ${userResponse.communicationUserId}`);
+```
+
+## <a name="refresh-user-access-tokens"></a>重新整理使用者存取權杖
+
+若要重新整理權杖，請使用 `CommunicationUser` 物件來重新發出：
+
+```javascript  
+let userResponse = new CommunicationUser(existingUserId);
+let tokenResponse = await identityClient.issueToken(userResponse, ["voip"]);
 ```
 
 ## <a name="delete-a-user"></a>刪除使用者

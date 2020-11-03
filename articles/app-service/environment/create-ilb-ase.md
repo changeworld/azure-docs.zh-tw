@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: baf528e1b4ab7e323b69574729669d09692741cc
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 27c9198558a730d0af49077d6f5baa6db4789416
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148150"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503516"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>建立及使用內部負載平衡器 App Service 環境 
 
@@ -96,7 +96,7 @@ Azure App Service 環境 (ASE) 是將 Azure App Service 部署到客戶 Azure �
 
 ### <a name="web-jobs-functions-and-the-ilb-ase"></a>Web 工作、函式和 ILB ASE 
 
-ILB ASE 支援函式和 Web 工作，但若要讓入口網站可以使用，您必須具有 SCM 網站的網路存取。  這表示您的瀏覽器必須在主機上，或是在虛擬網路中或已連線到虛擬網路。 如果 ILB ASE 的網域名稱結尾不是 *appserviceenvironment.net*，您就必須讓您的瀏覽器信任您的 scm 網站所使用的 HTTPS 憑證。
+ILB ASE 支援函式和 Web 工作，但若要讓入口網站可以使用，您必須具有 SCM 網站的網路存取。  這表示您的瀏覽器必須在主機上，或是在虛擬網路中或已連線到虛擬網路。 如果 ILB ASE 的網域名稱結尾不是 *appserviceenvironment.net* ，您就必須讓您的瀏覽器信任您的 scm 網站所使用的 HTTPS 憑證。
 
 ## <a name="dns-configuration"></a>DNS 組態 
 
@@ -104,22 +104,22 @@ ILB ASE 支援函式和 Web 工作，但若要讓入口網站可以使用，您�
 
 若要使用 ILB ASE 在自己的 DNS 伺服器中設定 DNS：
 
-1. 為 <ASE name>.appserviceenvironment.net 建立一個區域
+1. 為 &lt;ASE 名稱&gt;.appserviceenvironment.net 建立一個區域
 2. 在該區域中建立一個指向 ILB IP 位址的 A 記錄
 3. 在該區域中建立一個將 @ 指向 ILB IP 位址的 A 記錄
-4. 在名為 scm 的 <ASE name>.appserviceenvironment.net 中建立一個區域
+4. 在名為 scm 的 &lt;ASE 名稱&gt;.appserviceenvironment.net 中建立一個區域
 5. 在 scm 區域中建立一個將 * 指向 ILB IP 位址的 A 記錄
 
 若要在 Azure DNS 私人區域中設定 DNS：
 
-1. 建立名為 <ASE name>.appserviceenvironment.net 的 Azure DNS 私人區域
+1. 建立名為 &lt;ASE name&gt;.appserviceenvironment.net 的 Azure DNS 私人區域
 2. 在該區域中建立一個指向 ILB IP 位址的 A 記錄
 3. 在該區域中建立一個將 @ 指向 ILB IP 位址的 A 記錄
 4. 在該區域中建立一個將 *.scm 指向 ILB IP 位址的 A 記錄
 
-ASE 預設網域尾碼的 DNS 設定並不會將您的應用程式限制為僅供那些名稱存取。 在 ILB ASE 中，您可以在應用程式上設定自訂網域名稱，而不會進行任何驗證。 如果您想要建立名為 contoso.net 的區域，則可以這麼做，並將其指向 ILB IP 位址。 自訂網域名稱適用於應用程式要求，但不適用於 scm 網站。 scm 網站僅能在 <appname>.scm.<asename>.appserviceenvironment.net 上使用。
+ASE 預設網域尾碼的 DNS 設定並不會將您的應用程式限制為僅供那些名稱存取。 在 ILB ASE 中，您可以在應用程式上設定自訂網域名稱，而不會進行任何驗證。 如果您想要建立名為 contoso.net 的區域，則可以這麼做，並將其指向 ILB IP 位址。 自訂網域名稱適用於應用程式要求，但不適用於 scm 網站。 scm 網站僅能在 &lt;appname&gt;.scm.&lt;asename&gt;.appserviceenvironment.net 上使用。
 
-名為 <asename>.appserviceenvironment.net 的區域是全域唯一的。 在 2019 年 5月之前，客戶可以指定 ILB ASE 的網域尾碼。 如果想要使用 contoso.com 做為網域尾碼，您可以這麼做，這會包含 scm 網站。 該模型會有挑戰，包括管理預設 SSL 憑證、缺少與 scm 網站的單一登入，以及使用萬用字元憑證的需求。 ILB ASE 預設憑證升級程序也會造成干擾，並導致應用程式重新啟動。 為了解決這些問題，ILB ASE 行為已變更為根據 ASE 名稱和搭配 Microsoft 擁有的尾碼來使用網域尾碼。 ILB ASE 行為的變更只會影響 2019 年 5 月之後所做的 ILB ASE。 預先存在的 ILB ASE 仍然必須管理 ASE 的預設憑證和其 DNS 組態。
+名為 .&lt;asename&gt;.appserviceenvironment.net 的區域是全域唯一的。 在 2019 年 5月之前，客戶可以指定 ILB ASE 的網域尾碼。 如果想要使用 contoso.com 做為網域尾碼，您可以這麼做，這會包含 scm 網站。 該模型會有挑戰，包括管理預設 SSL 憑證、缺少與 scm 網站的單一登入，以及使用萬用字元憑證的需求。 ILB ASE 預設憑證升級程序也會造成干擾，並導致應用程式重新啟動。 為了解決這些問題，ILB ASE 行為已變更為根據 ASE 名稱和搭配 Microsoft 擁有的尾碼來使用網域尾碼。 ILB ASE 行為的變更只會影響 2019 年 5 月之後所做的 ILB ASE。 預先存在的 ILB ASE 仍然必須管理 ASE 的預設憑證和其 DNS 組態。
 
 ## <a name="publish-with-an-ilb-ase"></a>使用 ILB ASE 發佈
 
@@ -129,7 +129,7 @@ SCM 網站名稱會帶您前往 Azure 入口網站中的 Kudu 主控台，稱為
 
 網際網路型的 CI 系統 (如 GitHub 和 Azure DevOps)，依然可以搭配 ILB ASE 使用，前提是組建代理程式可以存取網際網路，而且位在與 ILB ASE 相同的網路中。 對於 Azure DevOps，如果建立組建代理程式的 VNET 與 ILB ASE 相同 (子網路不同沒關係)，就能從 Azure DevOps git 提取程式碼，並部署到 ILB ASE。 如果您不想要建立自己的組建代理程式，便需要使用採用提取模型的 CI 系統，如 Dropbox。
 
-ILB ASE 中應用程式的發佈端點會使用用來建立 ILB ASE 的網域。 在應用程式的發行設定檔中，以及應用程式的入口網站刀鋒視窗中可以看到這個網域 (在 [概觀]   >  [基本資訊]  以及 [屬性]  中)。 如果您的 ILB ASE 具有網域尾碼 *&lt;ASE 名稱&gt;.appserviceenvironment.net*，且應用程式名為 *mytest*，則要在 FTP 中使用 *mytest.&lt;ASE 名稱&gt;.appserviceenvironment.net*，在 Web 部署中使用 *mytest.scm.contoso.net*。
+ILB ASE 中應用程式的發佈端點會使用用來建立 ILB ASE 的網域。 在應用程式的發行設定檔中，以及應用程式的入口網站刀鋒視窗中可以看到這個網域 (在 [概觀]   >  [基本資訊]  以及 [屬性]  中)。 如果您的 ILB ASE 具有網域尾碼 *&lt;ASE 名稱&gt;.appserviceenvironment.net* ，且應用程式名為 *mytest* ，則要在 FTP 中使用 *mytest.&lt;ASE 名稱&gt;.appserviceenvironment.net* ，在 Web 部署中使用 *mytest.scm.contoso.net* 。
 
 ## <a name="configure-an-ilb-ase-with-a-waf-device"></a>設定具有 WAF 裝置的 ILB ASE ##
 

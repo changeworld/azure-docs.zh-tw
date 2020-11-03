@@ -11,14 +11,17 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 14ae5f01e23a7922f508c4a2674e1a3f29e354b8
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f8b4256f33a143c711a23a3564c2a46c69e0783b
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166058"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92675765"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>使用 Jupyter Notebook 探索 Azure Machine Learning
+
+> [!NOTE] 
+> 如需範例的社群導向存放庫，請參閱 https://github.com/Azure/azureml-examples 。
 
 [範例 Azure Machine Learning Notebook 存放庫](https://github.com/azure/machinelearningnotebooks)包含最新的 Azure Machine Learning Python SDK 範例。 這些 Juypter Notebook 可協助您探索 SDK，並且可供您自己的機器學習服務專案作為模型。
 

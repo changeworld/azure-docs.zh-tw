@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: e8585779a263f4ff5dbdd998bbf065c6a4e1acdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 977e3571a24e8be9d9ef6cd79e80e654ca944fa4
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86079253"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92538811"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>針對 Azure HDInsight 中的腳本動作進行疑難排解
 
@@ -31,7 +31,7 @@ ms.locfileid: "86079253"
 
     ![Ambari Web UI 列與選取的 ops](./media/troubleshoot-script-action/hdi-apache-ambari-nav.png)
 
-1. 尋找在 [作業]**** 欄位中有 **run\_customscriptaction** 的項目。 這些項目是在執行指令碼動作時建立的。
+1. 尋找在 [作業] 欄位中有 **run\_customscriptaction** 的項目。 這些項目是在執行指令碼動作時建立的。
 
     ![Apache Ambari 腳本動作作業](./media/troubleshoot-script-action/ambari-script-action.png)
 
@@ -45,21 +45,21 @@ ms.locfileid: "86079253"
 
     ![腳本動作記錄](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
 
-    在此目錄底下，記錄會個別針對**前端節點**、**背景工作節點**及 **Zookeeper 節點**進行組織。 請參閱下列範例：
+    在此目錄底下，記錄會個別針對 **前端節點** 、 **背景工作節點** 及 **Zookeeper 節點** 進行組織。 請參閱下列範例：
 
-    * 前端**節點**：`<ACTIVE-HEADNODE-NAME>.cloudapp.net`
+    * 前端 **節點** ：`<ACTIVE-HEADNODE-NAME>.cloudapp.net`
 
-    * 背景**工作節點**：`<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
+    * 背景 **工作節點** ：`<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
 
-    * **Zookeeper 節點**： `<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
+    * **Zookeeper 節點** ： `<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
 
-* 相對應主機的所有 **stdout** 和 **stderr** 都會上傳到儲存體帳戶。 每個指令碼動作都有一個 **output-\*.txt** 和 **errors-\*.txt**。 **output-*.txt** 檔案包含在主機上執行之指令碼的 URI 相關資訊。 以下文字是此資訊的範例：
+* 相對應主機的所有 **stdout** 和 **stderr** 都會上傳到儲存體帳戶。 每個指令碼動作都有一個 **output-\*.txt** 和 **errors-\*.txt** 。 **output-*.txt** 檔案包含在主機上執行之指令碼的 URI 相關資訊。 以下文字是此資訊的範例：
 
     ```output
     'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
     ```
 
-* 您有可能重複建立具有相同名稱的指令碼動作叢集。 在該情況下，您可以根據 **DATE** 資料夾名稱來區分相關的記錄。 例如，在不同日期建立之叢集 (**mycluster**) 的資料夾結構會類似下列記錄項目：
+* 您有可能重複建立具有相同名稱的指令碼動作叢集。 在該情況下，您可以根據 **DATE** 資料夾名稱來區分相關的記錄。 例如，在不同日期建立之叢集 ( **mycluster** ) 的資料夾結構會類似下列記錄項目：
 
     `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-04` `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-05`
 
@@ -75,7 +75,7 @@ ms.locfileid: "86079253"
 
 ## <a name="cant-import-name-blobservice"></a>無法匯入名稱 BlobService
 
-__徵兆__。 指令碼動作失敗。 在 Ambari 中檢視作業時，會顯示類似下列錯誤的文字：
+__徵兆__ 。 指令碼動作失敗。 在 Ambari 中檢視作業時，會顯示類似下列錯誤的文字：
 
 ```
 Traceback (most recent call list):
@@ -84,9 +84,9 @@ Traceback (most recent call list):
 ImportError: cannot import name BlobService
 ```
 
-__原因__。 如果您升級 HDInsight 叢集隨附的「Python Azure 儲存體」用戶端，就會發生此錯誤。 HDInsight 需要 Azure 儲存體用戶端 0.20.0。
+__原因__ 。 如果您升級 HDInsight 叢集隨附的「Python Azure 儲存體」用戶端，就會發生此錯誤。 HDInsight 需要 Azure 儲存體用戶端 0.20.0。
 
-__解決方法__： 若要解決此錯誤，請使用 `ssh`來手動連線至每個叢集節點。 請執行下列命令來重新安裝正確的儲存體用戶端版本：
+__解決方法__ ： 若要解決此錯誤，請使用 `ssh`來手動連線至每個叢集節點。 請執行下列命令來重新安裝正確的儲存體用戶端版本：
 
 ```bash
 sudo pip install azure-storage==0.20.0
@@ -116,4 +116,4 @@ sudo pip install azure-storage==0.20.0
 
 * 連線至 [@AzureSupport](https://twitter.com/azuresupport) - 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 將 Azure 社群連線到正確的資源：解答、支援和專家。
 
-* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。
+* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列中選取 [支援] 或開啟 [說明 + 支援] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](../azure-portal/supportability/how-to-create-azure-support-request.md)。 您可透過 Microsoft Azure 訂閱來存取訂閱管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。

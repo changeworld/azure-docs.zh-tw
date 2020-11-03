@@ -9,12 +9,12 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8df4de01750de92222bfa9021b66828927804e85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8b4b86656e7b1b4dfd8b69cbc8386f5b6ff6a8c
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005474"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674939"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>教學課程：實作資料湖擷取模式以更新 Databricks 差異資料表
 
@@ -69,7 +69,7 @@ ms.locfileid: "89005474"
    536365,85123A,WHITE HANGING HEART T-LIGHT HOLDER,6,12/1/2010 8:26,2.55,17850,United Kingdom
    ```
 
-4. 將此檔案儲存到您的本機電腦，並將其命名為 **data.csv**。
+4. 將此檔案儲存到您的本機電腦，並將其命名為 **data.csv** 。
 
 5. 在儲存體總管中，將此檔案上傳至 **input** 資料夾。  
 
@@ -126,7 +126,7 @@ ms.locfileid: "89005474"
 
 2. 在 [建立 Notebook]  對話方塊中，輸入 Notebook 的名稱。 選取 [Python]  作為語言，然後選取您先前建立的 Spark 叢集。
 
-    ![在 Databricks 中建立筆記本](./media/data-lake-storage-events/new-databricks-notebook.png "在 Databricks 中建立筆記本")
+    ![螢幕擷取畫面：顯示 [建立筆記本] 對話方塊，以及可在何處選取 [Python] 作為語言。](./media/data-lake-storage-events/new-databricks-notebook.png "在 Databricks 中建立筆記本")
 
     選取 [建立]  。
 
@@ -268,7 +268,7 @@ ms.locfileid: "89005474"
 
 5. 在函式應用程式的 [概觀]  頁面中，按一下 [組態]  。
 
-   ![設定函式應用程式](./media/data-lake-storage-events/configure-function-app.png "設定函式應用程式")
+   ![螢幕擷取畫面：在 [已設定的功能] 下醒目提示 [設定] 選項。](./media/data-lake-storage-events/configure-function-app.png "設定函式應用程式")
 
 6. 在 [應用程式設定]  頁面中，選擇 [新增應用程式設定]  按鈕以新增每項設定。
 
@@ -291,7 +291,7 @@ ms.locfileid: "89005474"
 
    [新增函式]  窗格隨即出現。
 
-9. 在 [新增函式]  窗格中，將函式命名為 **UpsertOrder**，然後按一下 [建立]  按鈕。
+9. 在 [新增函式]  窗格中，將函式命名為 **UpsertOrder** ，然後按一下 [建立]  按鈕。
 
 10. 將程式碼檔案的內容取代為此程式碼，然後按一下 [儲存]  按鈕：
 
@@ -345,7 +345,7 @@ ms.locfileid: "89005474"
 
 1. 在 [函式程式碼] 頁面上，按一下 [新增事件方格訂用帳戶]  按鈕。
 
-   ![新增事件訂閱](./media/data-lake-storage-events/new-event-subscription.png "新增事件訂閱")
+   ![螢幕擷取畫面：醒目提示 [新增事件方格訂用帳戶] 按鈕。](./media/data-lake-storage-events/new-event-subscription.png "新增事件訂閱")
 
 2. 在 [建立事件訂用帳戶]  頁面中為訂用帳戶命名，然後使用頁面中的欄位選取您的儲存體帳戶。
 

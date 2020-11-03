@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 92a0c7fd3733b5e27c34c6fd0fe157bfb466a0fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 317b530fbaa34ca5689bb505126892e4eba06bd9
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444883"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674805"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>建立和管理 Azure SQL Database 安全性以供異地還原或容錯移轉使用
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "91444883"
 
 ## <a name="disaster-recovery-with-contained-users"></a>災害復原與自主使用者
 
-不同於傳統的使用者必須對應到 master 資料庫中的登入，自主使用者完全由資料庫本身管理。 這樣有兩個優點。 在災害復原案例中，使用者可以繼續連線到新的主要資料庫或使用異地還原復原的資料庫，而不需任何額外的組態，因為資料庫可管理使用者。 從登入的觀點來看，這個組態也有潛在的延展性和效能優勢。 如需詳細資訊，請參閱 [自主的資料庫使用者 - 使資料庫可攜](https://msdn.microsoft.com/library/ff929188.aspx)。
+不同於傳統的使用者必須對應到 master 資料庫中的登入，自主使用者完全由資料庫本身管理。 這樣有兩個優點。 在災害復原案例中，使用者可以繼續連線到新的主要資料庫或使用異地還原復原的資料庫，而不需任何額外的組態，因為資料庫可管理使用者。 從登入的觀點來看，這個組態也有潛在的延展性和效能優勢。 如需詳細資訊，請參閱 [自主的資料庫使用者 - 使資料庫可攜](/sql/relational-databases/security/contained-database-users-making-your-database-portable)。
 
 主要的缺點是管理大規模災害復原程序更具挑戰性。 當您有使用相同登入的多個資料庫時，維護在多個資料庫中使用自主使用者的認證可能不利於自主使用者。 例如，密碼替換原則需要在多個資料庫中進行一致的變更，而不是在主要資料庫一次變更登入的密碼。 基於這個理由，如果您有使用相同使用者名稱和密碼的多個資料庫，則不建議使用自主使用者。
 
@@ -34,7 +34,7 @@ ms.locfileid: "91444883"
 如果您使用登入和使用者 (而非自主使用者)，您必須採取額外步驟以確保主要資料庫中有相同的登入。 下列各節概述涉及的步驟和其他考量。
 
   >[!NOTE]
-  > 也可以使用 Azure Active Directory (AAD) 登入來管理您的資料庫。 如需詳細資訊，請參閱 [Azure SQL 登入與使用者](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins)。
+  > 也可以使用 Azure Active Directory (AAD) 登入來管理您的資料庫。 如需詳細資訊，請參閱 [Azure SQL 登入與使用者](./logins-create-manage.md)。
 
 ### <a name="set-up-user-access-to-a-secondary-or-recovered-database"></a>設定次要或復原資料庫的使用者存取
 
@@ -82,7 +82,7 @@ WHERE [type_desc] = 'SQL_USER'
 ```
 
 > [!NOTE]
-> **INFORMATION_SCHEMA** 和 **sys** 使用者有「NULL」** SID，而**來賓**的 SID 是 **0x00**。 如果資料庫建立者是伺服器系統管理員，而不是 **DbManager** 的成員，**dbo** SID 可能會以 *0x01060000000001648000000000048454* 開頭。
+> **INFORMATION_SCHEMA** 和 **sys** 使用者有「NULL」SID，而 **來賓** 的 SID 是 **0x00** 。 如果資料庫建立者是伺服器系統管理員，而不是 **DbManager** 的成員， **dbo** SID 可能會以 *0x01060000000001648000000000048454* 開頭。
 
 #### <a name="3-create-the-logins-on-the-target-server"></a>3. 在目標伺服器上建立登入
 
@@ -106,7 +106,7 @@ SID = <desired login SID>
 ## <a name="next-steps"></a>後續步驟
 
 * 如需管理資料庫存取和登入的詳細資訊，請參閱 [SQL Database 安全性︰管理資料庫存取與登入安全性](logins-create-manage.md)。
-* 如需自主資料庫使用者的詳細資訊，請參閱 [自主資料庫使用者 - 使資料庫可攜](https://msdn.microsoft.com/library/ff929188.aspx)。
+* 如需自主資料庫使用者的詳細資訊，請參閱 [自主資料庫使用者 - 使資料庫可攜](/sql/relational-databases/security/contained-database-users-making-your-database-portable)。
 * 若要深入了解作用中異地複寫，請參閱[作用中異地複寫](active-geo-replication-overview.md)。
 * 若要深入瞭解自動容錯移轉群組，請參閱 [自動容錯移轉群組](auto-failover-group-overview.md)。
 * 如需使用異地還原的相關資訊，請參閱[異地還原](recovery-using-backups.md#geo-restore)

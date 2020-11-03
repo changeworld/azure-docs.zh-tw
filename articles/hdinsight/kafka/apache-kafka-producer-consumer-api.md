@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 260a3fbb8486a1e9eeaa87e920143615e5fae867
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b942fb321d2bceef64930bea0c660f66747508b6
+ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83681810"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92629301"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>教學課程：使用 Apache Kafka Producer 和 Consumer API
 
@@ -34,7 +34,7 @@ Kafka Producer API 可讓應用程式將資料流傳送至 Kafka 叢集。 Kafka
 ## <a name="prerequisites"></a>Prerequisites
 
 * HDInsight 叢集上的 Apache Kafka。 若要深入了解如何建立叢集，請參閱[開始使用 HDInsight 上的 Apache Kafka](apache-kafka-get-started.md)。
-* [Java Developer Kit (JDK) 第 8 版](https://aka.ms/azure-jdks)或同等版本，例如 OpenJDK。
+* [Java Developer Kit (JDK) 第 8 版](/azure/developer/java/fundamentals/java-jdk-long-term-support)或同等版本，例如 OpenJDK。
 * 根據 Apache 正確[安裝](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是適用於 Java 專案的專案建置系統。
 * SSH 用戶端，例如 Putty。 如需詳細資訊，請參閱[使用 SSH 連線至 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
@@ -117,7 +117,7 @@ consumer = new KafkaConsumer<>(properties);
 
 ### <a name="use-pre-built-jar-files"></a>使用預建的 JAR 檔案
 
-從 [Kafka 開始使用 Azure 範例](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/Prebuilt-Jars)下載 JAR。 如果您的叢集已啟用**企業安全性套件 (ESP)** ，請使用 kafka-producer-consumer-esp.jar。 使用下列命令將 JAR 複製到您的叢集。
+從 [Kafka 開始使用 Azure 範例](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/Prebuilt-Jars)下載 JAR。 如果您的叢集已啟用 **企業安全性套件 (ESP)** ，請使用 kafka-producer-consumer-esp.jar。 使用下列命令將 JAR 複製到您的叢集。
 
 ```cmd
 scp kafka-producer-consumer*.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
@@ -125,7 +125,7 @@ scp kafka-producer-consumer*.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafk
 
 ### <a name="build-the-jar-files-from-code"></a>從程式碼建置 JAR 檔案
 
-如果您想要略過此步驟，可從 `Prebuilt-Jars` 子目錄下載預先建立的 jar。 下載 kafka-producer-consumer.jar。 如果您的叢集已啟用**企業安全性套件 (ESP)** ，請使用 kafka-producer-consumer-esp.jar。 執行步驟 3 將 jar 複製到您的 HDInsight 叢集。
+如果您想要略過此步驟，可從 `Prebuilt-Jars` 子目錄下載預先建立的 jar。 下載 kafka-producer-consumer.jar。 如果您的叢集已啟用 **企業安全性套件 (ESP)** ，請使用 kafka-producer-consumer-esp.jar。 執行步驟 3 將 jar 複製到您的 HDInsight 叢集。
 
 1. 從 [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) 下載並解壓縮範例。
 
@@ -217,9 +217,9 @@ Kafka 中儲存的記錄會依照其在資料分割內接收的順序儲存。 �
 
 ## <a name="common-issues-faced"></a>常見的問題
 
-1. **主題建立失敗** 如果您的叢集已啟用企業安全性套件，請使用[適用於生產者和取用者的預建 JAR 檔案](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Prebuilt-Jars/kafka-producer-consumer-esp.jar)。 您可以從[`DomainJoined-Producer-Consumer`子目錄](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)中的程式碼建立 ESP JAR。 請注意，生產者和取用者屬性都有已啟用 ESP 的叢集所適用的額外屬性 `CommonClientConfigs.SECURITY_PROTOCOL_CONFIG`。
+1. **主題建立失敗** 如果您的叢集已啟用企業安全性套件，請使用 [適用於生產者和取用者的預建 JAR 檔案](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Prebuilt-Jars/kafka-producer-consumer-esp.jar)。 您可以從[`DomainJoined-Producer-Consumer`子目錄](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer)中的程式碼建置 ESP jar。 生產者和取用者屬性都有已啟用 ESP 的叢集所適用的額外屬性 `CommonClientConfigs.SECURITY_PROTOCOL_CONFIG`。
 
-2. **面臨已啟用 ESP 的叢集問題** 如果產生和取用作業失敗，而且您使用已啟用 ESP 的叢集，請檢查使用者 `kafka` 是否存在於所有 Ranger 原則中。 如果不存在，請將其新增至所有 Ranger 原則。
+2. **已啟用 ESP 的叢集中發生失敗** ：如果產生和取用作業失敗，而且您使用已啟用 ESP 的叢集，請檢查使用者 `kafka` 是否存在於所有 Ranger 原則中。 如果不存在，請將其新增至所有 Ranger 原則。
 
 ## <a name="clean-up-resources"></a>清除資源
 

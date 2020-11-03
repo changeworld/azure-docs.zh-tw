@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
-ms.openlocfilehash: d257935aa3e9ad54b64b0f416119931661809172
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b4484b9bb235b24d2b733c329b52ab6b04be183
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88545959"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519817"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Zoom 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88545959"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Zoom。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -40,7 +40,7 @@ ms.locfileid: "88545959"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * Zoom 支援 **SP** 起始的 SSO，且 
-* Zoom 支援[**自動**使用者佈建](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial) \(部分機器翻譯\)。
+* Zoom 支援 [**自動** 使用者佈建](./zoom-provisioning-tutorial.md) \(部分機器翻譯\)。
 
 ## <a name="adding-zoom-from-the-gallery"></a>從資源庫新增 Zoom
 
@@ -50,7 +50,7 @@ ms.locfileid: "88545959"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Zoom**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Zoom** 。
 1. 從結果面板選取 [Zoom]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-zoom"></a>設定及測試 Zoom 的 Azure AD 單一登入
@@ -85,18 +85,18 @@ ms.locfileid: "88545959"
     c. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://<companyname>.zoom.us`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Zoom 客戶支援小組](https://support.zoom.us/hc/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Zoom 客戶支援小組](https://support.zoom.us/hc/)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，尋找 [憑證 (Base64)] 並選取 [下載]，以下載憑證並將其儲存在電腦上。
 
     ![憑證下載連結](common/certificatebase64.png)
 
-1. 在 [設定 Zoom]**** 區段上，根據您的需求複製適當的 URL。
+1. 在 [設定 Zoom] 區段上，根據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
 > [!NOTE]
-> 若要了解如何設定 Azure AD 中的角色，請參閱[針對企業應用程式設定 SAML 權杖中發出的角色宣告](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)。
+> 若要了解如何設定 Azure AD 中的角色，請參閱[針對企業應用程式設定 SAML 權杖中發出的角色宣告](../develop/active-directory-enterprise-app-role-management.md)。
 
 > [!NOTE]
 > Zoom 可能會預期 SAML 承載中有群組宣告。 如果您已建立任何群組，請連絡 [Zoom 用戶端支援小組](https://support.zoom.us/hc/)並提供群組資訊，讓他們可以在那一端設定群組資訊。 您也必須將物件識別碼提供給 [Zoom 客戶支援小組](https://support.zoom.us/hc/)，讓他們可在那一端設定物件識別碼。 若要取得物件識別碼，請參閱[使用 Azure 設定 Zoom](https://support.zoom.us/hc/articles/115005887566)。
@@ -118,7 +118,7 @@ ms.locfileid: "88545959"
 在本節中，您會將 Zoom 的存取權授與 B.Simon，讓其能夠使用 Azure 單一登入。
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]，然後選取 [所有應用程式]。
-1. 在應用程式清單中，選取 [Zoom]****。
+1. 在應用程式清單中，選取 [Zoom]。
 1. 在應用程式的概觀頁面中尋找 [管理] 區段，然後選取 [使用者和群組]。
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
@@ -135,31 +135,31 @@ ms.locfileid: "88545959"
 
 1. 在不同的 Web 瀏覽器視窗中，以系統管理員身分登入您的 Zoom 公司網站。
 
-2. 按一下 [單一登入]**** 索引標籤。
+2. 按一下 [單一登入] 索引標籤。
 
     ![[單一登入] 索引標籤](./media/zoom-tutorial/zoom-sso1.png "單一登入")
 
-3. 按一下 [安全性控制]**** 索引標籤，然後移至 [單一登入]**** 設定。
+3. 按一下 [安全性控制] 索引標籤，然後移至 [單一登入] 設定。
 
 4. 在 [單一登入] 區段中，執行下列步驟：
 
     ![[單一登入] 區段](./media/zoom-tutorial/zoom-sso2.png "單一登入")
 
-    a. 在 [登入頁面 URL]**** 文字方塊中，貼上您從 Azure 入口網站複製的**登入 URL** 值。
+    a. 在 [登入頁面 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 **登入 URL** 值。
 
-    b. 針對 [登出頁面 URL]**** 值，您必須移至 Azure 入口網站，並按一下左側的 **Azure Active Directory**，然後瀏覽至 [應用程式註冊]****。
+    b. 針對 [登出頁面 URL] 值，您必須移至 Azure 入口網站，並按一下左側的 **Azure Active Directory** ，然後瀏覽至 [應用程式註冊]。
 
     ![Azure Active Directory 按鈕](./media/zoom-tutorial/appreg.png)
 
-    c. 按一下 [端點]****
+    c. 按一下 [端點]
 
     ![端點按鈕](./media/zoom-tutorial/endpoint.png)
 
-    d. 將 **SAML-P SIGN-OUT ENDPOINT** 複製並貼到 [登出頁面 URL]**** 文字方塊中。
+    d. 將 **SAML-P SIGN-OUT ENDPOINT** 複製並貼到 [登出頁面 URL] 文字方塊中。
 
     ![複製端點按鈕](./media/zoom-tutorial/endpoint1.png)
 
-    e. 在記事本中開啟 Base-64 編碼的憑證，將內容複製到剪貼簿，然後將它貼到 [身分識別提供者憑證]**** 文字方塊中。
+    e. 在記事本中開啟 Base-64 編碼的憑證，將內容複製到剪貼簿，然後將它貼到 [身分識別提供者憑證] 文字方塊中。
 
     f. 在 [簽發者] 文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼] 值。 
 
@@ -170,7 +170,7 @@ ms.locfileid: "88545959"
 
 ### <a name="create-zoom-test-user"></a>建立 Zoom 測試使用者
 
-本節的目標是要在 Zoom 中建立一個名為 B.Simon 的使用者。 Zoom 支援自動使用者佈建，該功能預設為啟用。 您可以在[這裡](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial)找到關於如何設定自動使用者佈建的更多詳細資料。
+本節的目標是要在 Zoom 中建立一個名為 B.Simon 的使用者。 Zoom 支援自動使用者佈建，該功能預設為啟用。 您可以在[這裡](./zoom-provisioning-tutorial.md)找到關於如何設定自動使用者佈建的更多詳細資料。
 
 > [!NOTE]
 > 如果您需要手動建立使用者，請連絡 [Zoom 用戶端支援小組](https://support.zoom.us/hc/)
@@ -179,14 +179,14 @@ ms.locfileid: "88545959"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Zoom] 圖格時，應該會自動登入您設定 SSO 的 Zoom。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Zoom] 圖格時，應該會自動登入您設定 SSO 的 Zoom。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Zoom](https://aad.portal.azure.com/)

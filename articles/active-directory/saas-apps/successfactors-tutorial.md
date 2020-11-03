@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 48524bec352d2fa9c169a1345e52ad4c789e59d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6570845c6a37a09315b038287ee35a3b48f1cdd0
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552113"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521963"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SuccessFactors 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88552113"
 * 讓使用者使用其 Azure AD 帳戶自動登入 SuccessFactors。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -40,7 +40,7 @@ ms.locfileid: "88552113"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * SuccessFactors 支援由 **SP** 起始的 SSO。
-* 設定 SuccessFactors 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 設定 SuccessFactors 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-successfactors-from-the-gallery"></a>從資源庫新增 SuccessFactors
 
@@ -50,7 +50,7 @@ ms.locfileid: "88552113"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **SuccessFactors**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **SuccessFactors** 。
 1. 從結果面板選取 [SuccessFactors]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -154,26 +154,26 @@ ms.locfileid: "88552113"
 
 ## <a name="configure-successfactors-sso"></a>設定 SuccessFactors SSO
 
-1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入您的 **SuccessFactors 管理入口網站**。
+1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入您的 **SuccessFactors 管理入口網站** 。
 
 2. 造訪 [應用程式安全性]  和原生 [單一登入功能]  。
 
 3. 在 [重設權杖]  中放入任何值，然後按一下 [儲存權杖]  以啟用 SAML SSO。
 
-    ![在應用程式端設定單一登入][11]
+    ![螢幕擷取畫面：顯示已標註 [單一登入功能] 的 [應用程式安全性] 索引標籤，您可以在其中輸入權杖。][11]
 
     > [!NOTE]
     > 此值是用來作為 on/off 開關。 如果儲存了任何值，SAML SSO 為 ON。 如果儲存了空白值，SAML SSO 為 OFF。
 
 4. 瀏覽至以下螢幕擷取畫面，然後執行下列動作：
 
-    ![在應用程式端設定單一登入][12]
+    ![螢幕擷取畫面：顯示 [針對 SAML 型 SSO] 窗格，您可以在其中輸入所述的值。][12]
   
     a. 選取 [SAML v2 SSO]  選項按鈕
   
     b. 設定 [SAML Asserting Party Name] \(SAML 判斷提示方名稱\)  (例如 SAML 簽發者 + 公司名稱)。
 
-    c. 在 [簽發者 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 **Azure AD 識別碼**值。
+    c. 在 [簽發者 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 **Azure AD 識別碼** 值。
 
     d. 選取 [判斷提示]  作為 [需要必要簽章]  。
 
@@ -192,7 +192,7 @@ ms.locfileid: "88552113"
 
 5. 瀏覽至 [SAML V2]，然後執行下列步驟：
 
-    ![在應用程式端設定單一登入][13]
+    ![螢幕擷取畫面：顯示 [SAML v2 SP 起始的登出] 窗格，您可以在其中輸入所述的值。][13]
 
     a. 選取 [是]  做為 [支援 SP 起始的全域登出]  。
 
@@ -229,21 +229,21 @@ ms.locfileid: "88552113"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [SuccessFactors] 圖格時，應該會自動登入您設定 SSO 的 SuccessFactors。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [SuccessFactors] 圖格時，應該會自動登入您設定 SSO 的 SuccessFactors。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試 SuccessFactors 搭配 Azure AD](https://aad.portal.azure.com)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用進階可見性和控制項保護 SuccessFactors](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何使用進階可見性和控制項保護 SuccessFactors](/cloud-app-security/proxy-intro-aad)
 
 <!--Image references-->
 

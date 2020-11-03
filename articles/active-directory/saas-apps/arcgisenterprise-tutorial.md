@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
-ms.openlocfilehash: fc0303cc4ba00f873ecfea7b02047ebd1bff7da1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 61920b7c5356b6e1fa5683ac0553060c85e256d3
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713885"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92457804"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>教學課程：Azure Active Directory 與 ArcGIS Enterprise 整合
 
@@ -27,7 +27,7 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 ArcGIS Enterprise (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -66,7 +66,7 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **ArcGIS Enterprise**，從結果面板中選取 [ArcGIS Enterprise]****，然後按一下 [新增]**** 按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **ArcGIS Enterprise** ，從結果面板中選取 [ArcGIS Enterprise]，然後按一下 [新增] 按鈕以新增應用程式。
 
      ![結果清單中的 ArcGIS Enterprise](common/search-new-app.png)
 
@@ -90,7 +90,7 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
 若要設定與 [應用程式名稱] 搭配運作的 Azure AD 單一登入，請執行下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [ArcGIS Enterprise]**** 應用程式整合頁面上，選取 [單一登入]****。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [ArcGIS Enterprise] 應用程式整合頁面上，選取 [單一登入]。
 
     ![設定單一登入連結](common/select-sso.png)
 
@@ -136,31 +136,31 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 1. 如果您想要手動設定 ArcGIS Enterprise，請以管理員身分登入您的 ArcGIS Enterprise 公司網站。
 
 
-1. 選取 [組織] > [編輯設定]****。
+1. 選取 [組織] > [編輯設定]。
 
     ![顯示已呼叫 [編輯] 設定的 ArcGIS 企業組織索引標籤螢幕擷取畫面。](./media/arcgisenterprise-tutorial/configure1.png)
 
-1. 選取 [安全性]**** 索引標籤。
+1. 選取 [安全性] 索引標籤。
 
     ![顯示已選取 [安全性] 索引標籤的螢幕擷取畫面。](./media/arcgisenterprise-tutorial/configure2.png)
 
-1. 向下捲動至 [透過 SAML 進行企業登入]**** 區段，然後選取 [設定企業登入]****。
+1. 向下捲動至 [透過 SAML 進行企業登入] 區段，然後選取 [設定企業登入]。
 
     ![顯示透過 SAML 進行企業登入的螢幕擷取畫面，您可以在其中選取 [設定企業登入]。](./media/arcgisenterprise-tutorial/configure3.png)
 
-1. 在 [設定識別提供者]**** 區段中，執行下列步驟：
+1. 在 [設定識別提供者] 區段中，執行下列步驟：
 
     ![顯示設定識別提供者的螢幕擷取畫面，您會在其中執行這裡所述的步驟。](./media/arcgisenterprise-tutorial/configure4.png)
 
-    a. 在 [名稱]**** 文字方塊中提供名稱，例如 **Azure Active Directory 測試**。
+    a. 在 [名稱] 文字方塊中提供名稱，例如 **Azure Active Directory 測試** 。
 
-    b. 在 [URL]**** 文字方塊中，貼上您從 Azure 入口網站複製的 [應用程式同盟中繼資料 Url]**** 值。
+    b. 在 [URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [應用程式同盟中繼資料 Url] 值。
 
-    c. 按一下 [顯示進階設定]**** 並複製 [實體識別碼]**** 值，然後將它貼至 Azure 入口網站中 [ArcGIS Enterprise 網域和 URL]**** 區段的 [識別碼]**** 文字方塊。
+    c. 按一下 [顯示進階設定] 並複製 [實體識別碼] 值，然後將它貼至 Azure 入口網站中 [ArcGIS Enterprise 網域和 URL] 區段的 [識別碼] 文字方塊。
     
     ![顯示取得實體識別碼和更新識別提供者所在位置的螢幕擷取畫面。](./media/arcgisenterprise-tutorial/configure5.png)
 
-    d. 按一下 [更新識別提供者]****。
+    d. 按一下 [更新識別提供者]。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
@@ -178,7 +178,7 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱] 欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -191,11 +191,11 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
 在本節中，您會將 ArcGIS Enterprise 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]****、[所有應用程式]**** 及 [ArcGIS Enterprise]****。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]、[所有應用程式] 及 [ArcGIS Enterprise]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，輸入並選取 [ArcGIS Enterprise]****。
+2. 在應用程式清單中，輸入並選取 [ArcGIS Enterprise]。
 
     ![應用程式清單中的 ArcGIS Enterprise 連結](common/all-applications.png)
 
@@ -218,19 +218,18 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 本節會在 ArcGIS Enterprise 中建立名為 Britta Simon 的使用者。 ArcGIS Enterprise 支援依預設啟用的 Just-In-Time 使用者佈建。 在這一節沒有您需要進行的動作項目。 如果 ArcGIS Enterprise 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
 
 > [!Note]
-> 如果您需要手動建立使用者，請連絡  [ArcGIS Enterprise 支援小組](mailto:support@esri.com)。
+> 如果您需要手動建立使用者，請連絡 [ArcGIS Enterprise 支援小組](mailto:support@esri.com)。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [ArcGIS Enterprise] 圖格時，應該會自動登入您已設定 SSO 的 ArcGIS Enterprise。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [ArcGIS Enterprise] 圖格時，應該會自動登入您已設定 SSO 的 ArcGIS Enterprise。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

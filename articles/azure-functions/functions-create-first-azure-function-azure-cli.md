@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: b299f0bb13bb25fbc192f3d117be11ca1ce26586
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b457c3b0ec0f68dd6a8213fbebe7a2596bed4c2e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89145547"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519668"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>快速入門：在 Azure 中建立可回應 HTTP 要求的函式
 
@@ -82,7 +82,11 @@ func init LocalFunctionProj --powershell
 ```
 ::: zone-end    
 ::: zone pivot="programming-language-java"  
-在空的資料夾中，執行下列命令以從 [Maven 原型](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) \(英文\) 產生 Functions 專案。 如果您希望函式在 Java 11 上執行，請使用 `-DjavaVersion=11`。 若要深入了解，請參閱 [Java 版本](functions-reference-java.md#java-versions)。 
+在空的資料夾中，執行下列命令以從 [Maven 原型](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) \(英文\) 產生 Functions 專案。 
+
+> [!IMPORTANT]
+> + 如果您希望函式在 Java 11 上執行，請使用 `-DjavaVersion=11`。 若要深入了解，請參閱 [Java 版本](functions-reference-java.md#java-versions)。 
+> + `JAVA_HOME` 環境變數必須設定為正確 JDK 版本的安裝位置，才能完成本文。
 
 # <a name="bash"></a>[bash](#tab/bash)
 ```bash
@@ -153,13 +157,11 @@ Function.java 包含 `run` 方法，會接收 `request` 變數中的要求資料
 
 #### <a name="pomxml"></a>pom.xml
 
-為裝載應用程式所建立的 Azure 資源設定，會定義於外掛程式的 **configuration** 元素中，並在產生的 pom.xml 檔案中使用 `com.microsoft.azure` 的 **groupId**。 例如，下方的 configuration 元素會指示以 Maven 為基礎的部署，以在 `westus` 區域的 `java-functions-group` 資源群組中建立函式應用程式。 函式應用程式本身會在 `java-functions-app-service-plan` 方案所裝載的 Windows 上執行，預設為無伺服器取用方案。    
+為裝載應用程式所建立的 Azure 資源設定，會定義於外掛程式的 **configuration** 元素中，並在產生的 pom.xml 檔案中使用 `com.microsoft.azure` 的 **groupId** 。 例如，下方的 configuration 元素會指示以 Maven 為基礎的部署，以在 `westus` 區域的 `java-functions-group` 資源群組中建立函式應用程式。 函式應用程式本身會在 `java-functions-app-service-plan` 方案所裝載的 Windows 上執行，預設為無伺服器取用方案。    
 
 :::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
 
 您可以變更這些設定，以控制在 Azure 中建立資源的方式，例如，在初始部署之前將 `runtime.os` 從 `windows` 變更為 `linux`。 如需 Maven 外掛程式支援的設定完整清單，請參閱[組態詳細資料](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details)。
-
-如果要在 JAVA 11 (而不是 JAVA 8) 上執行函式應用程式，您必須將 pom.xml 檔案手動更新為 Java 11 的值。 若要深入了解，請參閱 [Java 版本](functions-reference-java.md#java-versions)。 在 Java 11 上執行時，請確定  
 
 #### <a name="functiontestjava"></a>FunctionTest.java
 
@@ -381,14 +383,14 @@ mvn azure-functions:deploy
 
 # <a name="browser"></a>[瀏覽器](#tab/browser)
 
-將發佈命令的輸出中顯示的完整**叫用 URL** 複製到瀏覽器網址列中 (請附加查詢參數 `&name=Functions`)。 瀏覽器應該會顯示與您在本機執行函式時類似的輸出。
+將發佈命令的輸出中顯示的完整 **叫用 URL** 複製到瀏覽器網址列中 (請附加查詢參數 `&name=Functions`)。 瀏覽器應該會顯示與您在本機執行函式時類似的輸出。
 
 ![使用瀏覽器在 Azure 上執行函式的輸出](./media/functions-create-first-azure-function-azure-cli/function-test-cloud-browser.png)
 
 
 # <a name="curl"></a>[curl](#tab/curl)
 
-使用**叫用 URL** 來執行 [`curl`](https://curl.haxx.se/) (請附加參數 `&name=Functions`)。 命令的輸出應該是文字 "Hello Functions"。
+使用 **叫用 URL** 來執行 [`curl`](https://curl.haxx.se/) (請附加參數 `&name=Functions`)。 命令的輸出應該是文字 "Hello Functions"。
 
 ![使用 curl 在 Azure 上執行函式的輸出](./media/functions-create-first-azure-function-azure-cli/function-test-cloud-curl.png)
 

@@ -10,16 +10,16 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 27311270c1383a54192d072d0e152c7cf1a58225
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ce4efe0250ea1b85e2e2d77b7ee69bdf3dbcab26
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85200948"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480390"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>什麼是 Azure Synapse Analytics (先前為 SQL DW)？
 
-> [!NOTE] 
+> [!NOTE]
 >探索 [Azure Synapse (工作區預覽) 文件](../overview-what-is.md)。
 >
 
@@ -40,7 +40,7 @@ Synapse SQL 集區是已在 Azure Synapse 中正式推出的企業資料倉儲�
 
 SQL 集區代表使用 Synapse SQL 時所佈建的分析資源集合。 SQL 集區的大小取決於資料倉儲單位 (DWU)。
 
-使用簡單的 [PolyBase](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 查詢匯入巨量資料，然後使用 MPP 功能來執行高效能分析。 當您進行整合及分析時，Synapse SQL 集區將會變成您企業可以信賴的真正單一版本，可為您提供更快速且更穩健的深入解析。  
+使用簡單的 [PolyBase](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 查詢匯入巨量資料，然後使用分散式查詢引擎功能來執行高效能分析。 當您整合及分析資料時，Synapse SQL 將會變成您企業可以信賴的真正單一版本，可為您提供更快速且更穩健的深入解析。 
 
 ## <a name="key-component-of-a-big-data-solution"></a>巨量資料解決方案的重要元件
 

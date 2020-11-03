@@ -1,22 +1,22 @@
 ---
 title: 在您的組織外部共用 (ARM 範本) - Azure Data Share 快速入門
-description: 了解如何使用本快速入門中的 Azure Data Share 和 Resource Manager 範本來與客戶及合作夥伴共用資料。
+description: 了解如何使用本快速入門中的 Azure Data Share 和 Azure Resource Manager 範本 (ARM 範本) 來與客戶及合作夥伴共用資料。
 author: mumian
 ms.author: jgao
 ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/19/2020
-ms.openlocfilehash: f72fbad579bcb08a36c2dd29c387e18953f26c09
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5abe92120c8b822ac86ced90658869a0858d4ff4
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146151"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92487682"
 ---
-# <a name="quickstart-share-data-using-azure-data-share-and-resource-manager-templates"></a>快速入門：使用 Azure Data Share 和 Resource Manager 範本共用資料
+# <a name="quickstart-share-data-using-azure-data-share-and-arm-template"></a>快速入門：使用 Azure Data Share 和 ARM 範本共用資料
 
-使用 Azure Resource Manager 範本，了解如何在 Azure 儲存體帳戶中設定新的 Azure Data Share，並開始與 Azure 組織外的客戶及合作夥伴共用資料。 如需支援的資料存放區清單，請參閱 [Azure Data Share 中支援的資料存放區](./supported-data-stores.md)。
+了解如何使用 Azure Resource Manager 範本 (ARM 範本) 從 Azure 儲存體帳戶設定新的 Azure Data Share， 並開始與 Azure 組織外部的客戶和合作夥伴共用您的資料。 如需支援的資料存放區清單，請參閱 [Azure Data Share 中支援的資料存放區](./supported-data-stores.md)。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -38,12 +38,12 @@ ms.locfileid: "92146151"
 
 * [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)：
 * [Microsoft.Storage/storageAccounts/blobServices/containers](/azure/templates/microsoft.storage/storageaccounts/blobservices/containers)
+* [Microsoft.DataShare/accounts](/azure/templates/microsoft.datashare/accounts)
+* [Microsoft.DataShare/accounts/shares](/azure/templates/microsoft.datashare/accounts/shares)
 * [Microsoft.Storage/storageAccounts/providers/roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
-* [Microsoft.DataShare/accounts](/rest/api/datashare/accounts/create)
-* [Microsoft.DataShare/accounts/shares](/rest/api/datashare/shares/create)
-* [Microsoft.DataShare/accounts/shares/dataSets](/rest/api/datashare/datasets/create)
-* [Microsoft.DataShare/accounts/shares/invitations](/rest/api/datashare/invitations/create)
-* [Microsoft.DataShare/accounts/shares/synchronizationSettings](/rest/api/datashare/synchronizationsettings/create)
+* [Microsoft.DataShare/accounts/shares/dataSets](/azure/templates/microsoft.datashare/accounts/shares/datasets)
+* [Microsoft.DataShare/accounts/shares/invitations](/azure/templates/microsoft.datashare/accounts/shares/invitations)
+* [Microsoft.DataShare/accounts/shares/synchronizationSettings](/azure/templates/microsoft.datashare/accounts/shares/synchronizationsettings)
 
 這個範本會執行下列作業：
 
@@ -56,11 +56,11 @@ ms.locfileid: "92146151"
 
 此範本是針對學習用途而建立的。 在實務上，現有的儲存體帳戶中通常會有一些資料。 您必須先建立角色指派，才能執行範本或指令碼來建立資料集。 有時候在部署範本時，可能會收到下列錯誤訊息：
 
-```error message
+```plaintext
 "Missing permissions for DataShareAcccount on resource 'subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>' (Code: 5006)"
 ```
 
-這是因為在 Azure 角色指派完成之前，部署就嘗試建立資料集。 儘管出現錯誤訊息，部署還是會成功。  您仍然可以依[檢閱已部署的資源](#review-deployed-resources)來逐步完成。
+這是因為在 Azure 角色指派完成之前，部署就嘗試建立資料集。 儘管出現錯誤訊息，部署還是會成功。 您仍然可以依[檢閱已部署的資源](#review-deployed-resources)來逐步完成。
 
 ## <a name="deploy-the-template"></a>部署範本
 

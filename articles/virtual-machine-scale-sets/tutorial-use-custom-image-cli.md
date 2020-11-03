@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: dd0cf450ca63349d29aba3d65f3c76f40a44be2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e1f94b5a8e361a6bbd34f3f12756377dd1713f4
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503628"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92518707"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>教學課程：使用 Azure CLI 建立及使用虛擬機器擴展集的自訂映像
 當您建立擴展集時，您會指定部署 VM 執行個體時所要使用的映像。 若要減少部署 VM 執行個體後的工作數量，您可以使用自訂的 VM 映像。 此自訂 VM 映像包括任何必要的應用程式安裝或組態。 在擴展集中建立的任何 VM 執行個體都會使用自訂 VM 映像，並已可以處理您的應用程式流量。 在本教學課程中，您將了解如何：
@@ -55,7 +55,7 @@ az vm create \
 ```
 
 > [!IMPORTANT]
-> VM 的**識別碼**會顯示在 [az vm create](/cli/azure/vm) 命令的輸出中。 將此識別碼複製到安全的位置，以便您稍後在本教學課程中使用。
+> VM 的 **識別碼** 會顯示在 [az vm create](/cli/azure/vm) 命令的輸出中。 將此識別碼複製到安全的位置，以便您稍後在本教學課程中使用。
 
 VM 的公用 IP 位址也會顯示在 [az vm create](/cli/azure/vm)命令的輸出中。 透過 SSH 連線至 VM 的公用 IP 位址，如下所示：
 
@@ -111,14 +111,14 @@ az sig image-definition create \
 ```
 
 > [!IMPORTANT]
-> 映像定義的**識別碼**會顯示在命令的輸出中。 將此識別碼複製到安全的位置，以便您稍後在本教學課程中使用。
+> 映像定義的 **識別碼** 會顯示在命令的輸出中。 將此識別碼複製到安全的位置，以便您稍後在本教學課程中使用。
 
 
 ## <a name="create-the-image-version"></a>建立映像版本
 
 使用 [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create)，從 VM 建立映像版本。  
 
-映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
+映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式： *MajorVersion*. *MinorVersion*. *Patch* 。
 
 在此範例中，我們的映像版本是 1.0.0  ，而我們即將在「美國中南部」  區域中建立 1 個複本，以及在「美國東部 2」  區域中建立 1 個複本。 複寫區域必須包含來源 VM 所在的區域。
 
@@ -197,7 +197,7 @@ az network public-ip show \
 
 ## <a name="share-the-gallery"></a>共用資源庫
 
-您可以使用角色型存取控制 (RBAC) 來跨訂用帳戶共用映像。 您可以在資源庫、映像定義或映像版本上共用映像。 具有映像版本 (甚至可跨訂用帳戶) 讀取權限的使用者，都能夠使用映像版本來部署 VM。
+您可以使用 Azure 角色型存取控制 (Azure RBAC) 來跨訂用帳戶共用映像。 您可以在資源庫、映像定義或映像版本上共用映像。 具有映像版本 (甚至可跨訂用帳戶) 讀取權限的使用者，都能夠使用映像版本來部署 VM。
 
 我們建議您在資源庫層級上與其他使用者共用。 若要取得資源庫的物件識別碼，請使用 [az sig show](/cli/azure/sig#az-sig-show)。
 
@@ -217,7 +217,7 @@ az role assignment create \
    --scope <gallery ID>
 ```
 
-如需使用 RBAC 共用資源的詳細資訊，請參閱[使用 RBAC 和 Azure CLI 管理存取](../role-based-access-control/role-assignments-cli.md)。
+如需如何使用 Azure RBAC 來共用資源的詳細資訊，請參閱[使用 Azure CLI 新增或移除 Azure 角色指派](../role-based-access-control/role-assignments-cli.md)。
 
 
 ## <a name="clean-up-resources"></a>清除資源

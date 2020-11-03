@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: a656ec60fd3cb1e6b94da2122d8f493f426cef07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c19ad34c2ae9b5fbbdb2f9e3afd78a868b0a3712
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851300"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459623"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>教學課程：Azure Active Directory 與 Ivanti Service Manager (ISM) 整合
 
@@ -27,7 +27,7 @@ Ivanti Service Manager (ISM) 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用他們的 Azure AD 帳戶自動登入 Ivanti Service Manager (ISM) (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -119,7 +119,7 @@ Ivanti Service Manager (ISM) 與 Azure AD 整合提供下列優點：
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<customer>.saasit.com/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Ivanti Service Manager (ISM) 客戶支援小組](https://www.ivanti.com/support/contact)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Ivanti Service Manager (ISM) 客戶支援小組](https://www.ivanti.com/support/contact)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (原始)]  ，並儲存在您的電腦上。
 
@@ -137,7 +137,7 @@ Ivanti Service Manager (ISM) 與 Azure AD 整合提供下列優點：
 
 ### <a name="configure-ivanti-service-manager-ism-single-sign-on"></a>設定 Ivanti Service Manager (ISM) 單一登入
 
-若要在 **Ivanti Service Manager (ISM)** 端設定單一登入，您必須將已下載的**憑證 (原始)** ，以及從 Azure 入口網站複製適當 URL 傳送到 [Ivanti Service Manager (ISM) 支援小組](https://www.ivanti.com/support/contact)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Ivanti Service Manager (ISM)** 端設定單一登入，您必須將已下載的 **憑證 (原始)** ，以及從 Azure 入口網站複製適當 URL 傳送到 [Ivanti Service Manager (ISM) 支援小組](https://www.ivanti.com/support/contact)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
@@ -155,7 +155,7 @@ Ivanti Service Manager (ISM) 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -195,19 +195,18 @@ Ivanti Service Manager (ISM) 與 Azure AD 整合提供下列優點：
 本節會在 Ivanti Service Manager (ISM) 中建立名為 Britta Simon 的使用者。 Ivanti Service Manager (ISM) 支援預設啟用的 Just-In-Time 使用者佈建。 在這一節沒有您需要進行的動作項目。 如果 Ivanti Service Manager (ISM) 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
 
 > [!Note]
-> 如果您需要手動建立使用者，請連絡  [Ivanti Service Manager (ISM) 支援小組](https://www.ivanti.com/support/contact)。
+> 如果您需要手動建立使用者，請連絡 [Ivanti Service Manager (ISM) 支援小組](https://www.ivanti.com/support/contact)。
 
 ### <a name="test-single-sign-on"></a>測試單一登入
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Ivanti Service Manager (ISM)] 磚時，應該會自動登入您已設定 SSO 的 Ivanti Service Manager (ISM)。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Ivanti Service Manager (ISM)] 磚時，應該會自動登入您已設定 SSO 的 Ivanti Service Manager (ISM)。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

@@ -5,12 +5,12 @@ author: spelluru
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: d3dc63106e1ca5d9db2b14392ca1fb97e3a68289
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9085ccd272c6634e4be518872cb7e279da6b803c
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88191543"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92425405"
 ---
 # <a name="use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>使用 Azure 入口網站建立服務匯流排主題和主題的訂用帳戶
 在本快速入門中，您會使用 Azure 入口網站來建立服務匯流排主題，然後建立該主題的訂用帳戶。 
@@ -32,7 +32,11 @@ ms.locfileid: "88191543"
 > 您可以使用[服務匯流排總管](https://github.com/paolosalvatori/ServiceBusExplorer/)來管理服務匯流排資源。 服務匯流排總管可讓使用者連線到服務匯流排命名空間，並以簡便的方式管理傳訊實體。 此工具提供進階的功能 (例如匯入/匯出功能) 或測試主題、佇列、訂用帳戶、轉送服務、通知中樞和事件中樞的能力。 
 
 ## <a name="next-steps"></a>後續步驟
-若要了解如何傳送訊息至主題，並透過訂用帳戶接收那些訊息，請參閱下列文章：選取 TOC 中的程式設計語言。 
+在本文中，您已建立服務匯流排命名空間、命名空間中的主題，以及訂閱該主題的三個訂用帳戶。 若要了解如何將訊息發佈至主題並訂閱訂用帳戶中的訊息，請參閱「發佈和訂閱訊息」一節中的下列其中一個快速入門。 
 
-> [!div class="nextstepaction"]
-> [發佈和訂閱訊息](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+- [.NET](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+- [Java](service-bus-java-how-to-use-topics-subscriptions.md)
+- [JavaScript](service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)
+- [Python](service-bus-python-how-to-use-topics-subscriptions.md)
+- [PHP](service-bus-php-how-to-use-topics-subscriptions.md)
+- [Ruby](service-bus-ruby-how-to-use-topics-subscriptions.md)

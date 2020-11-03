@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/01/2020
+ms.date: 10/22/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fbccbcf1ac85b63c5610b9904a84e5e6e3fb6c63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dce41f979a46ae2bda568b5db79f0e0304705dd8
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87922188"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670178"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>教學課程：建立 Active Directory B2C 租用戶
 
@@ -50,19 +50,25 @@ ms.locfileid: "87922188"
 1. 選取 [建立新的 Azure AD B2C 租用戶]。
 
     ![建立在 Azure 入口網站中選取的新 Azure AD B2C 租用戶](media/tutorial-create-tenant/portal-02-create-tenant.png)
+    
+1. 輸入 [組織名稱] 和 [初始網域名稱]。 選取 [國家或區域] (之後無法變更)，然後選取 [建立]。
 
-1. 在 [建立目錄] 頁面上，輸入下列內容：
+    網域名稱會用來作為完整租用戶網域名稱的一部分。 在此範例中，租用戶名稱是 *contosob2c.onmicrosoft.com* ：
 
-   - **組織名稱** - 輸入您 Azure AD B2C 租用戶的名稱。
-   - **初始網域名稱** - 輸入您 Azure AD B2C 租用戶的網域名稱。
-   - **國家或區域** 從清單中選取您的國家或區域。 稍後無法變更此選取項目。
-   - **訂用帳戶** - 從清單中選取您的訂用帳戶。
-   - **資源群組** 選取包含租用戶的資源群組。 或是選取 [新建]，輸入資源群組的 [名稱]、選取 [資源群組位置]，然後選取 [確認]。
+1. 租用戶建立完成後，請選取 [租用戶建立] 頁面頂端的 [建立新的 B2C 租用戶或連結至現有租用戶] 連結。
 
-    ![使用 Azure 入口網站中的範例值建立租用戶表單](media/tutorial-create-tenant/review-and-create-tenant.png)
+    ![Azure 入口網站中已醒目提示連結租用戶階層連結](media/tutorial-create-tenant/portal-04-select-link-sub-link.png)
 
-1. 選取 [檢閱 + 建立]。
-1. 檢閱您的目錄設定。 然後選取 [建立]。
+1. 選取 [將現有的 Azure AD B2C 租用戶連結至我的 Azure 訂用帳戶]。 您必須以擁有者角色的身分登入，才能執行此步驟。
+
+   ![在 Azure 入口網站中連結現有的訂用帳戶選取項目](media/tutorial-create-tenant/portal-05-link-subscription.png)
+
+1. 選取您建立的 [Azure AD B2C 租用戶]，然後選取您的 [訂用帳戶]。
+
+    在 [資源群組] 中，選取 [新建]。 輸入將包含租用戶的資源群組 [名稱]，選取 [資源群組位置]，然後選取 [建立]。
+
+    ![Azure 入口網站中的連結訂用帳戶設定表單](media/tutorial-create-tenant/portal-06-link-subscription-settings.png)
+    
 
 您可以將多個 Azure AD B2C 租用戶連結至單一 Azure 訂用帳戶，以供計費之用。 若要連結租用戶，您必須是 Azure AD B2C 租用戶中的系統管理員，且在 Azure 訂用帳戶中至少指派一個參與者角色。 請參閱[將 Azure AD B2C 租用戶連結至訂用帳戶](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription)。
 
@@ -86,7 +92,7 @@ ms.locfileid: "87922188"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在 Azure 入口網站功能表中，選取 [所有服務]。
-1. 在 [所有服務] 搜尋方塊中，搜尋 **Azure AD B2C**，將滑鼠停留在搜尋結果上方，然後選取工具提示中的星星圖示。 **Azure AD B2C** 現在會出現在 Azure 入口網站的 [我的最愛] 底下。
+1. 在 [所有服務] 搜尋方塊中，搜尋 **Azure AD B2C** ，將滑鼠停留在搜尋結果上方，然後選取工具提示中的星星圖示。 **Azure AD B2C** 現在會出現在 Azure 入口網站的 [我的最愛] 底下。
 1. 如果您想要變更新的我的最愛位置，請移至 Azure 入口網站功能表，選取 [Azure AD B2C]，然後將其向上或向下拖曳至所需的位置。
 
     ![Azure AD B2C, 我的最愛功能表, Microsoft Azure 入口網站](media/tutorial-create-tenant/portal-08-b2c-favorite.png)

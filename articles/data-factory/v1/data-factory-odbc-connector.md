@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 11/19/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e1735c2d2ed107f7ec65d68a6826267ee83a93f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c68b1f4d76a1899ce473c57f3a6d5de1eab71c6
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84707373"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92636862"
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>使用 Azure Data Factory 從 ODBC 資料存放區移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -47,13 +47,13 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 ODBC �
 ## <a name="getting-started"></a>開始使用
 您可以藉由使用不同的工具/API，建立內含複製活動的管線，以從 ODBC 資料存放區移動資料。
 
-若要建立管線，最簡單的方式就是使用「 **複製嚮導**」。 如需使用複製資料精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md) 。
+若要建立管線，最簡單的方式就是使用「 **複製嚮導** 」。 如需使用複製資料精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md) 。
 
-您也可以使用下列工具來建立管線： **Visual Studio**、 **Azure PowerShell**、 **Azure Resource Manager 範本**、 **.net API**和 **REST API**。 請參閱「 [複製活動」教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 課程，以取得使用複製活動建立管線的逐步指示。
+您也可以使用下列工具來建立管線： **Visual Studio** 、 **Azure PowerShell** 、 **Azure Resource Manager 範本** 、 **.net API** 和 **REST API** 。 請參閱「 [複製活動」教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 課程，以取得使用複製活動建立管線的逐步指示。
 
 不論您是使用工具還是 API，都需執行下列步驟來建立將資料從來源資料存放區移到接收資料存放區的管線：
 
-1. 建立**連結服務**，將輸入和輸出資料存放區連結到資料處理站。
+1. 建立 **連結服務** ，將輸入和輸出資料存放區連結到資料處理站。
 2. 建立 **資料集** 以代表複製作業的輸入和輸出資料。
 3. 建立具有複製活動的 **管線** ，該活動會採用資料集做為輸入，並使用資料集做為輸出。
 
@@ -64,7 +64,7 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 ODBC �
 ## <a name="linked-service-properties"></a>連結服務屬性
 下表提供 ODBC 連結服務專屬 JSON 元素的描述。
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
 | type |類型屬性必須設為： **OnPremisesOdbc** |是 |
 | connectionString |連接字串的非存取認證部分和選擇性的加密認證。 請參閱下列幾節中的範例。 <br/><br/>您可以用 `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` 模式指定連接字串，或使用您在閘道電腦上以 `"DSN=<name of the DSN>;"` 設定的系統 DSN (資料來源名稱) (仍需要據此指定連結的服務中的認證部分)。 |是 |
@@ -94,7 +94,7 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 ODBC �
 }
 ```
 ### <a name="using-basic-authentication-with-encrypted-credentials"></a>使用基本驗證與加密認證
-您可以使用 [新的-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) (1.0 版的 Azure PowerShell) Cmdlet 或 [才能 new-azuredatafactoryencryptvalue](https://msdn.microsoft.com/library/dn834940.aspx) (0.9 或舊版的 Azure PowerShell) 來加密認證。
+您可以使用 [新的-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) (1.0 版的 Azure PowerShell) Cmdlet 或 [才能 new-azuredatafactoryencryptvalue](/previous-versions/azure/dn834940(v=azure.100)) (0.9 或舊版的 Azure PowerShell) 來加密認證。
 
 ```json
 {
@@ -136,7 +136,7 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 ODBC �
 
 每個資料集類型的 **>typeproperties** 區段都不同，並提供資料存放區中資料位置的相關資訊。 **RelationalTable** 資料集類型的 typeProperties 區段 (包含 ODBC 資料集) 具有下列屬性
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 | --- | --- | --- |
 | tableName |ODBC 資料存放區中資料表的名稱。 |是 |
 
@@ -293,7 +293,7 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 ODBC �
 
 **具有 ODBC 來源 (RelationalSource) 和 Blob 接收器 (BlobSink) 的管線中複製活動**
 
-此管線包含「複製活動」，該活動已設定為使用這些輸入和輸出資料集，並且排定為每小時執行。 在管線 JSON 定義中，已將 **source** 類型設為 **RelationalSource**，並將 **sink** 類型設為 **BlobSink**。 針對 **query** 屬性指定的 SQL 查詢會選取過去一小時內要複製的資料。
+此管線包含「複製活動」，該活動已設定為使用這些輸入和輸出資料集，並且排定為每小時執行。 在管線 JSON 定義中，已將 **source** 類型設為 **RelationalSource** ，並將 **sink** 類型設為 **BlobSink** 。 針對 **query** 屬性指定的 SQL 查詢會選取過去一小時內要複製的資料。
 
 ```json
 {
@@ -346,7 +346,7 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 ODBC �
 1. 從原生來源類型轉換成 .NET 類型
 2. 從 .NET 類型轉換成原生接收類型
 
-從 ODBC 資料存放區移動資料時，ODBC 資料類型會對應至 .NET 類型，如 [ODBC 資料類型對應](https://msdn.microsoft.com/library/cc668763.aspx) 主題中所述。
+從 ODBC 資料存放區移動資料時，ODBC 資料類型會對應至 .NET 類型，如 [ODBC 資料類型對應](/dotnet/framework/data/adonet/odbc-data-type-mappings) 主題中所述。
 
 ## <a name="map-source-to-sink-columns"></a>將來源對應到接收資料行
 若要了解如何將來源資料集內的資料行與接收資料集內的資料行對應，請參閱[在 Azure Data Factory 中對應資料集資料行](data-factory-map-columns.md)。
@@ -355,17 +355,17 @@ Data Factory 服務支援使用資料管理閘道器連接至內部部署 ODBC �
 從關聯式資料存放區複製資料時，請將可重複性謹記在心，以避免產生非預期的結果。 在 Azure Data Factory 中，您可以手動重新執行配量。 您也可以為資料集設定重試原則，使得在發生失敗時，重新執行配量。 以上述任一方式重新執行配量時，您必須確保不論將配量執行多少次，都會讀取相同的資料。 請參閱 [關聯式來源的可重複讀取](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)。
 
 ## <a name="troubleshoot-connectivity-issues"></a>疑難排解連線問題
-若要針對連線問題進行疑難排解，請使用 [資料管理閘道器組態管理員]**** 的 [診斷]**** 索引標籤。
+若要針對連線問題進行疑難排解，請使用 [資料管理閘道器組態管理員] 的 [診斷] 索引標籤。
 
-1. 啟動 **資料管理閘道器組態管理員**。 您可以直接執行 "C:\Program Files\Microsoft Data Management Gateway\1.0\Shared\ConfigManager.exe" (或) 搜尋**閘道**，以尋找 **Microsoft 資料管理閘道**應用程式的連結，如下圖所示。
+1. 啟動 **資料管理閘道器組態管理員** 。 您可以直接執行 "C:\Program Files\Microsoft Data Management Gateway\1.0\Shared\ConfigManager.exe" (或) 搜尋 **閘道** ，以尋找 **Microsoft 資料管理閘道** 應用程式的連結，如下圖所示。
 
     ![搜尋閘道器](./media/data-factory-odbc-connector/search-gateway.png)
-2. 切換至 [診斷] **** 索引標籤。
+2. 切換至 [診斷]  索引標籤。
 
     ![閘道診斷](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png)
 3. 選取資料存放區的 **類型** (連結的服務)。
-4. 指定 [驗證]****，然後輸入用來連線到資料存放區的**認證** (或) 輸入**連接字串**。
-5. 按一下 [測試連線] **** 以測試資料存放區連線。
+4. 指定 [驗證]，然後輸入用來連線到資料存放區的 **認證** (或) 輸入 **連接字串** 。
+5. 按一下 [測試連線]  以測試資料存放區連線。
 
 ## <a name="performance-and-tuning"></a>效能和微調
 請參閱[複製活動的效能及微調指南](data-factory-copy-activity-performance.md)一文，以了解在 Azure Data Factory 中會影響資料移動 (複製活動) 效能的重要因素，以及各種最佳化的方法。

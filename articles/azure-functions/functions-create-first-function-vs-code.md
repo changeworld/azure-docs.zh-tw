@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo, devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c8e22373f4550b0c65f6ea5c0b62815e32dcbb58
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 4e50f6b2770f9f787c92e7a9c66f72cdbb252a94
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92105119"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92519685"
 ---
 # <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>快速入門：使用 Visual Studio Code 在 Azure 中建立函式
 
@@ -65,7 +65,7 @@ ms.locfileid: "92105119"
 - [.NET Core 3.1](https://www.microsoft.com/net/download) 與 [.NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.2)
 ::: zone-end
 ::: zone pivot="programming-language-java"
-- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) 第 8 版。
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) 第 8 或第 11 版。
 
 - [Apache Maven](https://maven.apache.org) 3.0 版或更高版本。
 ::: zone-end
@@ -101,50 +101,50 @@ ms.locfileid: "92105119"
 1. 依照提示提供下列資訊：
 
     ::: zone pivot="programming-language-csharp"
-    - **為您的函式專案選取語言**：選擇 `C#`。
+    - **為您的函式專案選取語言** ：選擇 `C#`。
     ::: zone-end
     ::: zone pivot="programming-language-javascript"
-    - **為您的函式專案選取語言**：選擇 `JavaScript`。
+    - **為您的函式專案選取語言** ：選擇 `JavaScript`。
     ::: zone-end
     ::: zone pivot="programming-language-typescript"
-    - **為您的函式專案選取語言**：選擇 `TypeScript`。
+    - **為您的函式專案選取語言** ：選擇 `TypeScript`。
     ::: zone-end
     ::: zone pivot="programming-language-powershell"
-    - **為您的函式專案選取語言**：選擇 `PowerShell`。
+    - **為您的函式專案選取語言** ：選擇 `PowerShell`。
     ::: zone-end
     ::: zone pivot="programming-language-python"
-    - **為您的函式專案選取語言**：選擇 `Python`。
+    - **為您的函式專案選取語言** ：選擇 `Python`。
 
-    - **選取 Python 別名以建立虛擬環境**：選擇 Python 解譯器的位置。 如果未顯示位置，請輸入 Python 二進位檔的完整路徑。
+    - **選取 Python 別名以建立虛擬環境** ：選擇 Python 解譯器的位置。 如果未顯示位置，請輸入 Python 二進位檔的完整路徑。
     ::: zone-end
 
     ::: zone pivot="programming-language-java"
-    - **為您的函式專案選取語言**：選擇 `Java`。
+    - **為您的函式專案選取語言** ：選擇 `Java`。
 
-    - **選取 Java 的版本**：選擇您的函式在 Azure 中執行的 `Java 8` 或 `Java 11 (preview)`。 選擇您已在本機驗證的 Java 版本。
+    - **選取 Java 的版本** ：選擇您的函式在 Azure 中執行的 `Java 8` 或 `Java 11`。 選擇您已在本機驗證的 Java 版本。
 
-    - **提供群組識別碼**：選擇 `com.function`。
+    - **提供群組識別碼** ：選擇 `com.function`。
 
-    - **提供成品識別碼**：選擇 `myFunction`。
+    - **提供成品識別碼** ：選擇 `myFunction`。
 
-    - **提供版本**：選擇 `1.0-SNAPSHOT`。
+    - **提供版本** ：選擇 `1.0-SNAPSHOT`。
 
-    - **提供套件名稱**：選擇 `com.function`。
+    - **提供套件名稱** ：選擇 `com.function`。
 
-    - **提供應用程式名稱**：選擇 `myFunction-12345`。
+    - **提供應用程式名稱** ：選擇 `myFunction-12345`。
     ::: zone-end
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
-    - **選取您的專案第一個函式的範本**：選擇 `HTTP trigger`。
+    - **選取您的專案第一個函式的範本** ：選擇 `HTTP trigger`。
   
-    - **提供函式名稱**：輸入 `HttpExample`。
+    - **提供函式名稱** ：輸入 `HttpExample`。
     ::: zone-end
     ::: zone pivot="programming-language-csharp"
-    - **提供命名空間**：輸入 `My.Functions`。
+    - **提供命名空間** ：輸入 `My.Functions`。
     ::: zone-end
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
-    - **授權層級**選擇 `Anonymous`，讓任何人都能呼叫您的函式端點。 若要了解授權層級，請參閱[授權金鑰](functions-bindings-http-webhook-trigger.md#authorization-keys)。
+    - **授權層級** 選擇 `Anonymous`，讓任何人都能呼叫您的函式端點。 若要了解授權層級，請參閱[授權金鑰](functions-bindings-http-webhook-trigger.md#authorization-keys)。
     ::: zone-end
-    - **選取您開啟專案的方式**：選擇 `Add to workspace`。
+    - **選取您開啟專案的方式** ：選擇 `Add to workspace`。
 
 1. Visual Studio Code 會使用這項資訊產生具有 HTTP 觸發程序的 Azure Functions 專案。 您可以在 Explorer 中檢視本機專案檔。 若要深入了解所建立的檔案，請參閱[產生的專案檔](functions-develop-vs-code.md#generated-project-files)。 
 

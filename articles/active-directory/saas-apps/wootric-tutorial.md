@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/23/2020
 ms.author: jeedes
-ms.openlocfilehash: e96cdaf6b8d1d3127753c1f186fa8c0c227f6bde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a959dd3615c9498411b141356420939ad7026189
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88541342"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92638358"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wootric"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Wootric 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88541342"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Wootric。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -41,7 +41,7 @@ ms.locfileid: "88541342"
 
 * Wootric 支援由 **IDP** 起始的 SSO
 * Wootric 支援 **Just In Time** 使用者佈建
-* 設定 Wootric 後，您可以強制執行工作階段控制，以即時防止組織的敏感性資料遭到外洩及滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 Wootric 後，您可以強制執行工作階段控制，以即時防止組織的敏感性資料遭到外洩及滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-wootric-from-the-gallery"></a>從資源庫新增 Wootric
 
@@ -51,7 +51,7 @@ ms.locfileid: "88541342"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Wootric**。
+1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Wootric** 。
 1. 從結果面板選取 [Wootric]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -73,7 +73,7 @@ ms.locfileid: "88541342"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Wootric] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -133,28 +133,27 @@ ms.locfileid: "88541342"
 
 1. 在不同的瀏覽器視窗中，以系統管理員身分登入 Wootric 網站。
 
-1. 在頂端功能表的**設定圖示**上按一下。
+1. 在頂端功能表的 **設定圖示** 上按一下。
 
-    ![組態 ](./media/wootric-tutorial/configure-1.PNG)
+    ![螢幕擷取畫面：顯示已從 Wootric 網站選取 [設定] 圖示。](./media/wootric-tutorial/configure-1.PNG)
 
 1. 在 [整合] 中，從左側功能表中選取 [驗證]，然後按一下 [Enable Single Sign On with Azure Active Directory] \(啟用使用 Azure Active Directory 的單一登入\)。
 
-    ![組態 ](./media/wootric-tutorial/configure-2.PNG)
+    ![螢幕擷取畫面：顯示 [驗證] 項目中已連線的 [啟用使用 Azure Active Directory 的單一登入]。](./media/wootric-tutorial/configure-2.PNG)
 
 1. 在下列頁面上，執行下列步驟：
 
-    ![組態 ](./media/wootric-tutorial/configure-3.PNG)
-
+    ![螢幕擷取畫面：顯示 [設定] 頁面，您可以在其中輸入所述的值。](./media/wootric-tutorial/configure-3.PNG)
 
     a. 在 [識別提供者單一登入 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL] 值。
 
     b. 在 [識別提供者簽發者] 文字方塊中，貼上您從 Azure 入口網站複製的 [實體識別碼] 值。
 
-    c. 以記事本開啟從 Azure 入口網站下載的**憑證 (Base64)** ，然後將內容貼至 [X.509 憑證] 文字方塊。
+    c. 以記事本開啟從 Azure 入口網站下載的 **憑證 (Base64)** ，然後將內容貼至 [X.509 憑證] 文字方塊。
 
     d. 選取 [Automatically grant access to new users] \(自動授與新使用者存取權\) 核取方塊。
     
-    e. 按一下 [ **儲存**]。
+    e. 按一下 [ **儲存** ]。
 
 ### <a name="create-wootric-test-user"></a>建立 Wootric 測試使用者
 
@@ -164,18 +163,18 @@ ms.locfileid: "88541342"
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Wootric] 圖格時，應該會自動登入您已設定 SSO 的 Wootric。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Wootric] 圖格時，應該會自動登入您已設定 SSO 的 Wootric。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Wootric](https://aad.portal.azure.com/)
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
 
-- [如何使用進階可見性和控制措施保護 Wootric](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad) \(部分機器翻譯\)
+- [如何使用進階可見性和控制措施保護 Wootric](/cloud-app-security/proxy-intro-aad) \(部分機器翻譯\)

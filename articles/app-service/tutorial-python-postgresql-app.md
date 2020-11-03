@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: e171ce1ab7d2b9d4a78399ee639945bde16b71ca
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 63fdee6036580df42f7f965244b5f888c1ec082d
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019404"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92540749"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>教學課程：在 Azure App Service 中使用 PostgreSQL 部署 Django Web 應用程式
 
@@ -111,7 +111,7 @@ djangoapp 範例包含資料驅動的 Django 投票應用程式，您可以依�
 
 此範例也會修改為在實際執行環境中執行，例如 App Service：
 
-- 實際執行設定位於 *azuresite/production.py* 檔案中。 開發詳細資料位於 *azuresite/settings.py*。
+- 實際執行設定位於 *azuresite/production.py* 檔案中。 開發詳細資料位於 *azuresite/settings.py* 。
 - 將 `DJANGO_ENV` 環境變數設定為 "production" 時，應用程式就會使用實際執行設定。 您稍後會在教學課程中建立此環境變數，以及用於 PostgreSQL 資料庫設定的其他變數。
 
 這些變更專門用來將 Django 設定為在任何實際執行環境中執行，而不是特別針對 App Service。 如需詳細資訊，請參閱 [Django 部署檢查清單](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/) \(英文\)。 另請參閱 [Azure 上的 Django 適用的生產設定](configure-language-python.md#production-settings-for-django-apps)，以取得某些變更的詳細資料。
@@ -138,7 +138,7 @@ az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --
 ```
 
 - 使用在所有 Azure 中都是唯一的名稱取代 *\<postgres-server-name>* (伺服器端點會成為 `https://<postgres-server-name>.postgres.database.azure.com`)。 良好的模式是使用您的公司名稱和另一個唯一值的組合。
-- 為 *\<admin-username>* 和 *\<admin-password>* ，指定認證以建立此 Postgres 伺服器的系統管理員使用者。
+- 為 *\<admin-username>* 和 *\<admin-password>* ，指定認證以建立此 Postgres 伺服器的系統管理員使用者。 請勿在使用者名稱或密碼中使用 `$` 字元。 稍後您會使用這些值來建立環境變數，其中 `$` 字元在用來執行 Python 應用程式的 Linux 容器內具有特殊意義。
 - 這裡使用的 B_Gen5_1 (基本、第 5 代、1 核心) [定價層](../postgresql/concepts-pricing-tiers.md)成本最低。 針對實際執行資料庫，請省略 `--sku-name` 引數，改為使用 GP_Gen5_2 (一般用途、第 5 代、2 核心) 層。
 
 此命令會執行下列動作，這可能需要幾分鐘的時間：
@@ -153,7 +153,7 @@ az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --
 
 您可以分別使用其他 `az postgres` 和 `psql` 命令來執行所有步驟，但 `az postgres up` 會一併完成所有步驟。
 
-當命令完成時，即會輸出 JSON 物件，其中包含適用於資料庫的不同連接字串，以及伺服器 URL、產生的使用者名稱 (例如 "joyfulKoala@msdocs-djangodb-12345") 及 GUID 密碼。 將使用者名稱與密碼複製到暫存文字檔，因為您稍後在此教學課程中將需要用到。
+當命令完成時，即會輸出 JSON 物件，其中包含適用於資料庫的不同連接字串，以及伺服器 URL、產生的使用者名稱 (例如 "joyfulKoala@msdocs-djangodb-12345") 及 GUID 密碼。 將簡短使用者名稱 (@ 之前) 與密碼複製到暫存文字檔，因為您稍後在此教學課程中將需要用到。
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
@@ -212,7 +212,7 @@ az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<pos
 ```
 
 - 使用您稍早用來搭配 `az postgres up` 命令的名稱取代 *\<postgres-server-name>* 。 *azuresite/production.py* 中的程式碼會自動附加 `.postgres.database.azure.com`，以建立完整的 Postgres 伺服器 URL。
-- 將 *\<username>* 和 *\<password>* 取代為您先前用於 `az postgres up` 命令的系統管理員認證，或 `az postgres up` 為您產生的認證。 *azuresite/production.py* 中的程式碼會自動從 `DBUSER` 和 `DBHOST` 中建構完整的 Postgres 使用者名稱。
+- 將 *\<username>* 和 *\<password>* 取代為您先前用於 `az postgres up` 命令的系統管理員認證，或 `az postgres up` 為您產生的認證。 *azuresite/production.py* 中的程式碼會自動從 `DBUSER` 和 `DBHOST` 中建構完整的 Postgres 使用者名稱，因此請勿包含 `@server` 部分。 (如前文所述，您也不應該在任何一個值中使用 `$` 字元，因為此字元對 Linux 環境變數具有特殊意義。)
 - 資源群組和應用程式名稱均提取自 *.azure/config* 檔案中的快取值。
 
 在您的 Python 程式碼中，您可以使用 `os.environ.get('DJANGO_ENV')` 之類的陳述式，存取這些設定作為環境變數。 如需詳細資訊，請參閱[存取環境變數](configure-language-python.md#access-environment-variables)。
@@ -350,7 +350,7 @@ python manage.py runserver
 
 1. 移至 `http:///localhost:8000/admin`，然後使用您先前建立的管理使用者進行登入。 在 [投票] 下方，再次選取 [問題] 旁的 [新增]，然後建立具有一些選項的投票問題。 
 
-1. 再次移至 *http:\//localhost:8000*，然後回答問題以測試應用程式。 
+1. 再次移至 *http:\//localhost:8000* ，然後回答問題以測試應用程式。 
 
 1. 按 **Ctrl**+**C** 以停止 Django 伺服器。
 
@@ -427,7 +427,7 @@ az webapp log tail
 
 如果您沒有立即看到主控台記錄，請在 30 秒後再查看。
 
-若要隨時停止記錄資料流，請輸入 **Ctrl**+**C**。
+若要隨時停止記錄資料流，請輸入 **Ctrl**+**C** 。
 
 [有任何問題嗎？請告訴我們。](https://aka.ms/DjangoCLITutorialHelp)
 

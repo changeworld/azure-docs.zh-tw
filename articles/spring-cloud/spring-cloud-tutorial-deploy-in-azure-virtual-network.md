@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: f1a6a99285e54338b0020aad63fef2944ce3469d
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: e0fc50647e926ea919f70b888f3efc303713fe1e
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088664"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631184"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>教學課程：在 Azure 虛擬網路中部署 Azure Spring Cloud (VNet 插入)
 
@@ -35,14 +35,14 @@ az provider register --namespace Microsoft.AppPlatform
 ## <a name="virtual-network-requirements"></a>虛擬網路需求
 您作為 Azure Spring Cloud 服務執行個體部署目的地的虛擬網路必須符合下列需求：
 
-* **位置**：虛擬網路必須位於與 Azure Spring Cloud 服務執行個體相同的位置。
+* **位置** ：虛擬網路必須位於與 Azure Spring Cloud 服務執行個體相同的位置。
 * 訂用帳戶：虛擬網路必須位於與 Azure Spring Cloud 服務執行個體相同的訂用帳戶。
-* **子網路**：虛擬網路必須包含兩個專用於 Azure Spring Cloud 服務執行個體的子網路： 
+* **子網路** ：虛擬網路必須包含兩個專用於 Azure Spring Cloud 服務執行個體的子網路： 
     * 一個用於服務執行階段
     * 一個用於 Spring Boot 微服務應用程式。 
     * 這些子網路與 Azure Spring Cloud 服務執行個體之間有一對一的關聯性。 您必須針對所部署的每個服務執行個體使用新的子網路，且每個子網路只能包含單一服務執行個體。
-* **位址空間**：一個最高 /28 的 CIDR 區塊用於服務執行階段子網路，另一個最高 /24 的 CIDR 區塊用於 Spring Boot 微服務應用程式子網路。
-* **路由表**：子網路不能有相關聯的現有路由表。
+* **位址空間** ：一個最高 /28 的 CIDR 區塊用於服務執行階段子網路，另一個最高 /24 的 CIDR 區塊用於 Spring Boot 微服務應用程式子網路。
+* **路由表** ：子網路不能有相關聯的現有路由表。
 
 下列程序描述如何為包含 Azure Spring Cloud 執行個體的虛擬網路進行設定。
 
@@ -58,15 +58,15 @@ az provider register --namespace Microsoft.AppPlatform
     |訂用帳戶     |選取您的訂用帳戶。                         |
     |資源群組   |選取您的資源群組，或建立新的資源群組。  |
     |Name             |輸入 *azure-spring-cloud-vnet*                   |
-    |Location         |選取 [美國東部]****                                |
+    |Location         |選取 [美國東部]                                |
 
 1. 按一下 **[下一步IP 位址 >]** 。 
  
 1. 針對 [IPv4 位址空間]，輸入 10.1.0.0/16。
 
-1. 選取 [新增子網路]，然後輸入 *service-runtime-subnet* 作為 [子網路名稱]，以及輸入 10.1.0.0/24 作為 [子網路位址範圍]。 然後按一下 [ **新增**]。
+1. 選取 [新增子網路]，然後輸入 *service-runtime-subnet* 作為 [子網路名稱]，以及輸入 10.1.0.0/24 作為 [子網路位址範圍]。 然後按一下 [ **新增** ]。
 
-1. 再次選取 [新增子網路]，然後輸入 *apps-subnet* 作為 [子網路名稱]，以及輸入 10.1.1.0/24 作為 [子網路位址範圍]。  按一下 [新增] 。
+1. 再次選取 [新增子網路]，然後輸入 [子網路名稱] 和 [子網路位址範圍]，例如 *apps-subnet* 和 10.1.1.0/24。  按一下 [新增] 。
 
 1. 按一下 [檢閱 + 建立]。 讓其餘項目保留預設值，然後按一下 [建立]。
 
@@ -108,7 +108,7 @@ az role assignment create \
 
 1. 使用在 https://ms.portal.azure.com 開啟 Azure 入口網站。
 
-1. 從頂端的搜尋方塊中，搜尋 **Azure Spring Cloud**，然後從結果中選取 [Azure Spring Cloud]。
+1. 從頂端的搜尋方塊中，搜尋 **Azure Spring Cloud** ，然後從結果中選取 [Azure Spring Cloud]。
 
 1. 在 [Azure Spring Cloud] 頁面上，選取 [+ 新增]。
 
@@ -135,11 +135,11 @@ az role assignment create \
 
 部署之後，將會在訂用帳戶中另外建立兩個資源群組，以裝載 Azure Spring Cloud 服務執行個體的網路資源。  瀏覽至 [首頁]，然後從頂端功能表項目選取 [資源群組]，以尋找下列新資源群組。
 
-名為 *azure-spring-cloud-service-runtime_{service instance name}_{service instance region}* 的資源群組包含服務執行個體的服務執行階段網路資源。
+名為 *ap-svc-rt_{service instance name}_{service instance region}* 的資源群組包含服務執行個體的服務執行階段網路資源。
 
   ![服務執行階段](./media/spring-cloud-v-net-injection/service-runtime-resource-group.png)
 
-名為 *azure-spring-cloud-service-runtime_{service instance name}_{service instance region}* 的資源群組包含服務執行個體的 Spring Boot 微服務應用程式網路資源。
+名為 *ap-app_{service instance name}_{service instance region}* 的資源群組包含服務執行個體的 Spring Boot 微服務應用程式網路資源。
 
   ![應用程式資源群組](./media/spring-cloud-v-net-injection/apps-resource-group.png)
 

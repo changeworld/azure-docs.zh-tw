@@ -2,22 +2,23 @@
 title: 規劃 Azure VMware 解決方案部署
 description: 本文概述 Azure VMware 解決方案部署工作流程。  最終結果是準備好用於建立和移轉虛擬機器 (VM) 的環境。
 ms.topic: tutorial
-ms.date: 10/02/2020
-ms.openlocfilehash: fe1396c8f256ba8374208febad2afe03a453e5f5
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.date: 10/16/2020
+ms.openlocfilehash: e30692f26af786097f3cdb81690be617bfea0c79
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055081"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92517356"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>規劃 Azure VMware 解決方案部署
 
-在本文中，我們會提供您規劃程序，以識別和收集部署期間所使用的資料。 [使用預先部署檢查清單](pre-deployment-checklist.md)來記錄資訊，並在部署期間輕鬆參考。  
+本文會提供您規劃程序，以識別和收集部署期間所使用的資料。 當您規劃部署時，請務必記錄您收集的資訊，以便在部署期間輕鬆參考。
 
 此快速入門的程序會產生生產環境就緒的環境，以便建立虛擬機器 (VM) 和移轉。 
 
 >[!IMPORTANT]
->建立 Azure VMware 解決方案資源之前，您必須提交支援票證，以配置您的節點。 一旦支援小組收到您的要求後，最多需要五個工作天的時間來確認您的要求，並配置您的節點。 如果您有現有的 Azure VMware 解決方案私人雲端，且想要配置更多節點，您將會經歷相同的程序。 如需詳細資訊，請參閱[如何啟用 Azure VMware 解決方案資源](enable-azure-vmware-solution.md)。 
+>建立 Azure VMware 解決方案資源之前，請遵循[如何啟用 Azure VMware 解決方案資源](enable-azure-vmware-solution.md)文章來提交支援票證，以配置您的節點。 一旦支援小組收到您的要求後，最多需要五個工作天的時間來確認您的要求，並配置您的節點。 如果您有現有的 Azure VMware 解決方案私人雲端，且想要配置更多節點，您將會經歷相同的程序。 
+
 
 ## <a name="subscription"></a>訂用帳戶
 
@@ -72,13 +73,13 @@ Azure VMware 解決方案、您現有的 Azure 環境，以及內部部署環境
 
 識別 IP 區段，以在私人雲端中建立您的第一個網路 (NSX 區段)。  換句話說，您想要在 Azure VMware 解決方案上建立網路區段，讓您可以將 VM 部署至 Azure VMware 解決方案。   
 
-即使您只打算擴充 L2 網路，請建立可用於驗證環境的網路區段。
+即使您只打算擴充 L2 網路，請建立會驗證環境的網路區段。
 
 請記住，在您的 Azure 和內部部署磁碟使用量中，任何建立的 IP 區段都必須是唯一的。  
 
 **範例︰** 10.0.4.0/24
 
-:::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="識別 - IP 位址區段" border="false":::     
+:::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="識別 - 虛擬機器工作負載的 IP 位址區段" border="false":::     
 
 ## <a name="optional-extend-networks"></a>(選擇性) 延伸網路
 
@@ -91,11 +92,11 @@ Azure VMware 解決方案、您現有的 Azure 環境，以及內部部署環境
 
 ## <a name="expressroute-global-reach-peering-network"></a>ExpressRoute Global Reach 對等互連網路
 
-識別 `/29` CIDR 網路位址區塊，其用於進行 ExpressRoute Global Reach 對等互連。 請記住，在您的 Azure VMware 解決方案和內部部署磁碟使用量中，任何建立的 IP 區段都必須是唯一的。 此區段中的 IP 會用於 ExpressRoute Global Reach 的每一端，以將 Azure VMware 解決方案 ExpressRoute 電路與內部部署 ExpressRoute 電路連線。 
+識別 ExpressRoute Global Reach 對等互連所需的 `/29` CIDR 網路位址區塊。 請記住，在您的 Azure VMware 解決方案和內部部署磁碟使用量中，任何建立的 IP 區段都必須是唯一的。 此區段中的 IP 會用於 ExpressRoute Global Reach 的每一端，以將 Azure VMware 解決方案 ExpressRoute 電路與內部部署 ExpressRoute 電路連線。 
 
 **範例︰** 10.1.0.0/29
 
-:::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="識別 - IP 位址區段" border="false":::
+:::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="識別 - ExpressRoute Global Reach 對等互連網路" border="false":::
 
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure 虛擬網路以附加 Azure VMware 解決方案
 
@@ -118,7 +119,7 @@ Azure VMware 解決方案、您現有的 Azure 環境，以及內部部署環境
 >[!NOTE]
 >您的內部部署環境和 Azure VMware 解決方案會看到此虛擬網路，因此請確定您在此虛擬網路和子網路中使用的任何 IP 區段不會重疊。
 
-:::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="識別 - IP 位址區段" border="false":::
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="身分識別 - Azure 虛擬網路以附加 Azure VMware 解決方案" border="false":::
 
 ## <a name="vmware-hcx-network-segments"></a>VMware HCX 網路區段
 

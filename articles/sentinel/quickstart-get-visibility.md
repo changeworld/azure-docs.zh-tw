@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: bdd3f543c948ac2825b836fdbedd4c0f0d713b2c
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: affefb302d602e9069a903fa5f6a0fbae78992b9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92208221"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516948"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>快速入門：開始使用 Azure Sentinel
 
@@ -80,10 +80,10 @@ ms.locfileid: "92208221"
 您可以從頭開始建立新的活頁簿，或使用內建活頁簿作為新活頁簿的基礎。
 
 1. 若要從頭開始建立新的活頁簿，請依序選取 [活頁簿] 和 [+新增活頁簿]。
-2. 選取活頁簿建立所在的訂用帳戶，並為它提供描述性名稱。 每個活頁簿都是一項 Azure 資源，您可以指派其角色 (RBAC) 來定義及限制可以存取的人員。 
+2. 選取活頁簿建立所在的訂用帳戶，並為它提供描述性名稱。 每個活頁簿都是一項 Azure 資源，您可以指派其角色 (Azure RBAC) 來定義及限制可以存取的人員。 
 3. 若要讓它顯示在您要釘選視覺效果的活頁簿中，您必須共用它。 按一下 [共用]，然後按一下 [管理使用者]。 
  
-1. 如同處理任何其他 Azure 資源一樣，使用 [檢查存取權] 和 [角色指派]。 如需詳細資訊，請參閱[使用 RBAC 共用 Azure 活頁簿](../azure-portal/azure-portal-dashboard-share-access.md)。
+1. 如同處理任何其他 Azure 資源一樣，使用 [檢查存取權] 和 [角色指派]。 如需詳細資訊，請參閱[使用 Azure RBAC 共用 Azure 活頁簿](../azure-portal/azure-portal-dashboard-share-access.md)。
 
 
 ## <a name="new-workbook-examples"></a>新的活頁簿範例

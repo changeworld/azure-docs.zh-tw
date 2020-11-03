@@ -1,22 +1,22 @@
 ---
-title: 將 IoT 隨插即用裝置轉換成一般模組 | Microsoft Docs
-description: 使用 C# PnP 裝置程式碼並將其轉換成模組。
+title: 與一般 IoT 隨插即用模組連線 | Microsoft Docs
+description: 在一般模組中使用 C# IoT 隨插即用裝置程式碼範例。
 author: ericmitt
 ms.author: ericmitt
 ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ccc450242c50f82d4215f6b172f72d8eceab7c52
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: d425152f83821e1d157065370bd02e2d990ec876
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046331"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426933"
 ---
-# <a name="tutorial-how-to-convert-an-iot-plug-and-play-device-to-a-module-c"></a>教學課程：如何將 IoT 隨插即用裝置轉換成模組 (C#)
+# <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>教學課程：與 IoT 隨插即用模組連線 (C#)
 
-本教學課程說明如何將 IoT 隨插即用裝置程式碼轉換成以一般模組執行。
+本教學課程說明如何與一般 IoT 隨插即用[模組](../iot-hub/iot-hub-devguide-module-twins.md)連線。
 
 若裝置在連線到 IoT 中樞，並實作模型識別碼所指定數位分身定義語言 (DTDL) 模型中所述的屬性和方法時，發佈裝置的模型識別碼，則該裝置即為 IoT 隨插即用裝置。 若要深入了解裝置如何使用 DTDL 和模型識別碼，請參閱 [IoT 隨插即用開發人員指南](./concepts-developer-guide-device-csharp.md)。 模組會以相同的方式使用模型識別碼和 DTDL 模型。
 
@@ -33,7 +33,7 @@ ms.locfileid: "92046331"
 
 使用 Azure IoT 總管工具，將名為 **my-module-device** 的新裝置新增至您的 IoT 中樞。
 
-將名為 **my-module** 的模組新增至 **my-module-device**：
+將名為 **my-module** 的模組新增至 **my-module-device** ：
 
 1. 在 Azure IoT 總管工具中，瀏覽至 **my-module-device** 裝置。
 
@@ -41,7 +41,7 @@ ms.locfileid: "92046331"
 
 1. 輸入 **my-module** 做為模組身分識別名稱，然後選取 [儲存]。
 
-1. 在模組身分識別清單中，選取 **my-module**。 然後複製 [主要連接字串]。 您稍後會在本教學課程中使用此模組連接字串。
+1. 在模組身分識別清單中，選取 **my-module** 。 然後複製 [主要連接字串]。 您稍後會在本教學課程中使用此模組連接字串。
 
 1. 選取 [模組對應項] 索引標籤，並注意沒有所需或報告的屬性：
 

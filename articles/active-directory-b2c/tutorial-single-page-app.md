@@ -11,12 +11,12 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 86d89dc6973e61f0cff80b5c65a8c5b836485575
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 3a3eb77315953c3791e09c4326af7cc3e3231a69
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216518"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92670040"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>教學課程：在單頁應用程式中透過 Azure AD B2C 啟用驗證
 
@@ -117,6 +117,72 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
     };
     ```
 
+1. 開啟 JavaScriptSPA 資料夾內的 authConfig.js 檔案。
+1. 在 `msalConfig` 物件中，更新：
+    * `clientId` (使用您在先前步驟中記錄的 **應用程式 (用戶端) 識別碼** )
+    * *URI，以具有您 Azure AD B2C 租用戶名稱和建立為一部分必要條件的註冊/登入使用者流程名稱 (例如 `authority`B2C_1_signupsignin1* ) 。
+1. 開啟 *policies.js* 檔案。
+1. 尋找 `names` 和 `authorities` 的項目，並適當地將其取代為您在步驟 2 中建立的原則名稱。 將 `fabrikamb2c.onmicrosoft.com` 取代為您的 Azure AD B2C 租用戶名稱，例如 `https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-sign-in-sign-up-policy>`。
+1. 開啟 *apiConfig.js* 檔案。
+1. 尋找 `b2cScopes` 範圍的指派，並將 URL 取代為您為 Web API 建立的範圍 URL，例如 `b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/helloapi/demo.read"]`。
+1. 尋找 API URL `webApi` 的指派，並將目前的 URL 取代為您在步驟 4 中用來部署 Web API 的 URL，例如 `webApi: http://localhost:5000/hello`。
+
+您產生的程式碼看起來應該如下所示：
+
+### <a name="authconfigjs"></a>authConfig.js
+
+```javascript
+const msalConfig = {
+  auth: {
+    clientId: "e760cab2-b9a1-4c0d-86fb-ff7084abd902",
+    authority: b2cPolicies.authorities.signUpSignIn.authority,
+    validateAuthority: false
+  },
+  cache: {
+    cacheLocation: "localStorage",
+    storeAuthStateInCookie: true
+  }
+};
+
+const loginRequest = {
+  scopes: ["openid", "profile"],
+};
+
+const tokenRequest = {
+  scopes: apiConfig.b2cScopes // i.e. ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"]
+};
+```
+### <a name="policiesjs"></a>policies.js
+
+```javascript
+const b2cPolicies = {
+    names: {
+        signUpSignIn: "b2c_1_susi",
+        forgotPassword: "b2c_1_reset",
+        editProfile: "b2c_1_edit_profile"
+    },
+    authorities: {
+        signUpSignIn: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_susi",
+        },
+        forgotPassword: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_reset",
+        },
+        editProfile: {
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_edit_profile"
+        }
+    },
+}
+```
+### <a name="apiconfigjs"></a>apiConfig.js
+
+```javascript
+const apiConfig = {
+  b2cScopes: ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"],
+  webApi: "https://fabrikamb2chello.azurewebsites.net/hello"
+};
+```
+
 ## <a name="run-the-sample"></a>執行範例
 
 1. 開啟主控台視窗並變更至包含範例的目錄。 例如：
@@ -150,13 +216,13 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
     請使用有效的電子郵件地址，並使用驗證碼進行驗證。 設定密碼。 輸入要求的屬性值。
 
-    :::image type="content" source="media/tutorial-single-page-app/user-flow-sign-up-workflow-01.png" alt-text="網頁瀏覽器顯示在本機執行的單頁應用程式":::
+    :::image type="content" source="media/tutorial-single-page-app/user-flow-sign-up-workflow-01.png" alt-text="Azure AD B2C 使用者流程所顯示的註冊頁面":::
 
 1. 選取 [建立]，在 Azure AD B2C 目錄中建立本機帳戶。
 
 當您選取 [建立] 時，應用程式會顯示已登入之使用者的名稱。
 
-:::image type="content" source="media/tutorial-single-page-app/web-app-spa-02-logged-in.png" alt-text="網頁瀏覽器顯示在本機執行的單頁應用程式":::
+:::image type="content" source="media/tutorial-single-page-app/web-app-spa-02-logged-in.png" alt-text="網頁瀏覽器顯示具有已登入使用者的單頁應用程式":::
 
 如果想測試登入，請選取 [登出] 按鈕，然後選取 [登入]，然後以您註冊時所輸入的電子郵件地址和密碼登入。
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 22025e7be9a0ff276336511a906055dc31a67230
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: f0d0742994b14f692c2aea9130edc73d779cff52
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089718"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92544761"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何設定 Azure Redis 快取
 本主題說明您「Azure Redis 快取」執行個體可用的設定。 本主題也涵蓋適用於「Azure Redis 快取」執行個體的預設 Redis 伺服器設定。
@@ -24,14 +24,14 @@ ms.locfileid: "92089718"
 ## <a name="configure-azure-cache-for-redis-settings"></a>設定 Azure Redis 快取設定
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
 
-您可以在 [Azure Redis 快取]**** 刀鋒視窗上使用 [資源功能表]**** 來檢視及設定「Azure Redis 快取」設定。
+您可以在 [Azure Redis 快取] 刀鋒視窗上使用 [資源功能表] 來檢視及設定「Azure Redis 快取」設定。
 
 ![Azure Redis 快取設定](./media/cache-configure/redis-cache-settings.png)
 
-您可以使用 [資源功能表]**** 檢視及設定下列設定。
+您可以使用 [資源功能表] 檢視及設定下列設定。
 
 * [概觀](#overview)
-* [活動記錄檔](#activity-log)
+* [活動記錄](#activity-log)
 * [ (IAM) 的存取控制 ](#access-control-iam)
 * [Tags](#tags) (標籤)
 * [診斷和解決問題](#diagnose-and-solve-problems)
@@ -64,29 +64,29 @@ ms.locfileid: "92089718"
 
 ## <a name="overview"></a>概觀
 
-**概觀**提供您快取的基本資訊，例如名稱、連接埠、定價層，以及選取的快取度量。
+**概觀** 提供您快取的基本資訊，例如名稱、連接埠、定價層，以及選取的快取度量。
 
 ### <a name="activity-log"></a>活動記錄檔
 
-按一下 [活動記錄] **** ，以檢視在快取上執行的動作。 您也可以使用篩選，來展開此檢視以包含其他資源。 如需使用稽核記錄的詳細資訊，請參閱[使用 Resource Manager 來稽核作業](../azure-resource-manager/management/view-activity-logs.md)。 如需有關監視「Azure Redis 快取」事件的詳細資訊，請參閱[作業和警示](cache-how-to-monitor.md#operations-and-alerts)。
+按一下 [活動記錄]  ，以檢視在快取上執行的動作。 您也可以使用篩選，來展開此檢視以包含其他資源。 如需使用稽核記錄的詳細資訊，請參閱[使用 Resource Manager 來稽核作業](../azure-resource-manager/management/view-activity-logs.md)。 如需有關監視「Azure Redis 快取」事件的詳細資訊，請參閱[作業和警示](cache-how-to-monitor.md#operations-and-alerts)。
 
 ### <a name="access-control-iam"></a>存取控制 (IAM)
 
-** (IAM) **一節的存取控制提供了 azure 角色型存取控制 (azure RBAC) 在 Azure 入口網站中的支援。 此設定可協助組織簡單而精準地符合其存取管理需求。 如需詳細資訊，請參閱 [Azure 入口網站中的 Azure 角色型存取控制](../role-based-access-control/role-assignments-portal.md)。
+**(IAM)** 一節的存取控制提供了 azure 角色型存取控制 (azure RBAC) 在 Azure 入口網站中的支援。 此設定可協助組織簡單而精準地符合其存取管理需求。 如需詳細資訊，請參閱 [Azure 入口網站中的 Azure 角色型存取控制](../role-based-access-control/role-assignments-portal.md)。
 
 ### <a name="tags"></a>Tags
 
-[標記] **** 區段有助於您組織資源。 如需詳細資訊，請參閱 [使用標記組織您的 Azure 資源](../azure-resource-manager/management/tag-resources.md)。
+[標記]  區段有助於您組織資源。 如需詳細資訊，請參閱 [使用標記組織您的 Azure 資源](../azure-resource-manager/management/tag-resources.md)。
 
 
 ### <a name="diagnose-and-solve-problems"></a>診斷並解決問題
 
-按一下 [診斷並解決問題] **** 將提供您這些常見問題和解決問題的策略。
+按一下 [診斷並解決問題]  將提供您這些常見問題和解決問題的策略。
 
 
 
 ## <a name="settings"></a>設定
-[設定]**** 區段中的設定可讓您存取和設定下列快取設定。
+[設定] 區段中的設定可讓您存取和設定下列快取設定。
 
 * [便捷鍵](#access-keys)
 * [進階設定](#advanced-settings)
@@ -105,19 +105,19 @@ ms.locfileid: "92089718"
 
 
 ### <a name="access-keys"></a>便捷鍵
-按一下 [存取金鑰] **** 以檢視或重新產生快取的存取金鑰。 這些金鑰是由連線到您的快取的用戶端所使用。
+按一下 [存取金鑰]  以檢視或重新產生快取的存取金鑰。 這些金鑰是由連線到您的快取的用戶端所使用。
 
 ![Azure Redis 快取存取金鑰](./media/cache-configure/redis-cache-manage-keys.png)
 
 ### <a name="advanced-settings"></a>進階設定
-下列設定是在 [進階設定]**** 刀鋒視窗上進行設定。
+下列設定是在 [進階設定] 刀鋒視窗上進行設定。
 
 * [存取連接埠](#access-ports)
 * [記憶體原則](#memory-policies)
 * [Keyspace 通知 (進階設定)](#keyspace-notifications-advanced-settings)
 
 #### <a name="access-ports"></a>存取連接埠
-預設會停用新快取的非 TLS/SSL 存取。 若要啟用非 TLS 埠，請在 [ **Advanced settings** ] 分頁上按一下 [**否**]，**只允許透過 SSL 存取**，然後按一下 [**儲存**]。
+預設會停用新快取的非 TLS/SSL 存取。 若要啟用非 TLS 埠，請在 [ **Advanced settings** ] 分頁上按一下 [ **否** ]， **只允許透過 SSL 存取** ，然後按一下 [ **儲存** ]。
 
 > [!NOTE]
 > Azure Cache for Redis 的 TLS 存取目前支援 TLS 1.0、1.1 和1.2，但即將淘汰1.0 和1.1 版。  如需詳細資料，請參閱我們的 [移除 TLS 1.0 和1.1 頁面](cache-remove-tls-10-11.md) 。
@@ -126,11 +126,11 @@ ms.locfileid: "92089718"
 
 <a name="maxmemory-policy-and-maxmemory-reserved"></a>
 #### <a name="memory-policies"></a>記憶體原則
-[進階設定]**** 刀鋒視窗中的 [Maxmemory 原則]****、[maxmemory-reserved]**** 和 [maxfragmentationmemory-reserved]**** 設定，會設定快取的記憶體原則。
+[進階設定] 刀鋒視窗中的 [Maxmemory 原則]、[maxmemory-reserved] 和 [maxfragmentationmemory-reserved] 設定，會設定快取的記憶體原則。
 
 ![Azure Redis 快取 Maxmemory 原則](./media/cache-configure/redis-cache-maxmemory-policy.png)
 
-[Maxmemory 原則]**** 設定快取的收回原則，並讓您從下列收回原則中選擇：
+[Maxmemory 原則] 設定快取的收回原則，並讓您從下列收回原則中選擇：
 
 * `volatile-lru`：這是預設的收回原則。
 * `allkeys-lru`
@@ -141,11 +141,11 @@ ms.locfileid: "92089718"
 
 如需 `maxmemory` 原則的詳細資訊，請參閱[收回原則](https://redis.io/topics/lru-cache#eviction-policies)。
 
-**Maxmemory 保留**設定會設定保留給非快取作業（例如容錯移轉期間的複寫）的記憶體數量（以 MB 為單位）。 設定此值可讓您在負載變動時具有更一致的 Redis 伺服器體驗。 對於頻繁寫入的工作負載，此值應該設定為更高的值。 當記憶體保留給這類作業時，無法用於儲存快取的資料。
+**Maxmemory 保留** 設定會設定保留給非快取作業（例如容錯移轉期間的複寫）的記憶體數量（以 MB 為單位）。 設定此值可讓您在負載變動時具有更一致的 Redis 伺服器體驗。 對於頻繁寫入的工作負載，此值應該設定為更高的值。 當記憶體保留給這類作業時，無法用於儲存快取的資料。
 
-**Maxfragmentationmemory-reserved 保留**設定會設定叢集內每個實例的記憶體數量（以 MB 為單位），並保留以容納記憶體片段。 設定此值可讓您在快取已滿或接近全滿，且片段比率很高時，擁有更為一致的 Redis 伺服器體驗。 當記憶體保留給這類作業時，無法用於儲存快取的資料。
+**Maxfragmentationmemory-reserved 保留** 設定會設定叢集內每個實例的記憶體數量（以 MB 為單位），並保留以容納記憶體片段。 設定此值可讓您在快取已滿或接近全滿，且片段比率很高時，擁有更為一致的 Redis 伺服器體驗。 當記憶體保留給這類作業時，無法用於儲存快取的資料。
 
-選擇新的記憶體保留值 (**maxmemory-reserved** 或 **maxfragmentationmemory-reserved**) 時，需要考慮的一件事是，這項變更對已有大量資料在執行的快取會有怎麼樣的影響。 例如，如果您有容量為 53 GB 的快取，而其中有 49 GB 的資料，則將保留值變更為 8 GB，此變更會將系統的最大可用記憶體降至 45 GB。 如果目前的 `used_memory` 或 `used_memory_rss` 值高於 45 GB 的新限制，則等 `used_memory` 和 `used_memory_rss` 都低於 45 GB 後，系統必須收回資料。 收回會增加伺服器負載並讓記憶體過於分散。 如需快取計量的詳細資訊，例如 `used_memory` 和 `used_memory_rss`，請參閱[可用計量和報告間隔](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)。
+選擇新的記憶體保留值 ( **maxmemory-reserved** 或 **maxfragmentationmemory-reserved** ) 時，需要考慮的一件事是，這項變更對已有大量資料在執行的快取會有怎麼樣的影響。 例如，如果您有容量為 53 GB 的快取，而其中有 49 GB 的資料，則將保留值變更為 8 GB，此變更會將系統的最大可用記憶體降至 45 GB。 如果目前的 `used_memory` 或 `used_memory_rss` 值高於 45 GB 的新限制，則等 `used_memory` 和 `used_memory_rss` 都低於 45 GB 後，系統必須收回資料。 收回會增加伺服器負載並讓記憶體過於分散。 如需快取計量的詳細資訊，例如 `used_memory` 和 `used_memory_rss`，請參閱[可用計量和報告間隔](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)。
 
 > [!IMPORTANT]
 > 只有標準和高階快取提供 **maxmemory-reserved** 和 **maxfragmentationmemory-reserved** 設定。
@@ -153,7 +153,7 @@ ms.locfileid: "92089718"
 >
 
 #### <a name="keyspace-notifications-advanced-settings"></a>Keyspace 通知 (進階設定)
-Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 Keyspace 通知可讓用戶端在特定事件發生時收到通知。
+Redis Keyspace 通知是在 [進階設定]  刀鋒視窗上進行設定。 Keyspace 通知可讓用戶端在特定事件發生時收到通知。
 
 ![Azure Redis 快取進階設定](./media/cache-configure/redis-cache-advanced-settings.png)
 
@@ -167,19 +167,19 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 
 <a name="recommendations"></a>
 ## <a name="azure-cache-for-redis-advisor"></a>Azure Redis 快取建議程式
-[Azure Redis 快取建議程式]**** 刀鋒視窗會顯示適用於快取的建議。 在一般作業期間，不會顯示任何建議。
+[Azure Redis 快取建議程式] 刀鋒視窗會顯示適用於快取的建議。 在一般作業期間，不會顯示任何建議。
 
 ![顯示建議顯示位置的螢幕擷取畫面。](./media/cache-configure/redis-cache-no-recommendations.png)
 
-如果在快取作業期間發生任何狀況 (例如高記憶體使用量、網路頻寬或伺服器負載)，[Azure Redis 快取] **** 刀鋒視窗上就會顯示警示。
+如果在快取作業期間發生任何狀況 (例如高記憶體使用量、網路頻寬或伺服器負載)，[Azure Redis 快取]  刀鋒視窗上就會顯示警示。
 
 ![顯示 Azure Cache for Redis 區段中顯示警示的螢幕擷取畫面。](./media/cache-configure/redis-cache-recommendations-alert.png)
 
-您可以在 [建議] **** 刀鋒視窗中找到進一步資訊。
+您可以在 [建議]  刀鋒視窗中找到進一步資訊。
 
 ![建議](./media/cache-configure/redis-cache-recommendations.png)
 
-您可以在 [Azure Redis 快取]**** 刀鋒視窗的[監視圖表](cache-how-to-monitor.md#monitoring-charts)和[使用量圖表](cache-how-to-monitor.md#usage-charts)區段上監視這些計量。
+您可以在 [Azure Redis 快取] 刀鋒視窗的[監視圖表](cache-how-to-monitor.md#monitoring-charts)和[使用量圖表](cache-how-to-monitor.md#usage-charts)區段上監視這些計量。
 
 每個定價層都有不同的用戶端連線、記憶體和頻寬的限制。 如果您的快取持續一段時間接近這些計量的最大容量，即會提供建議。 如需有關「 **建議** 」工具所檢查之計量和限制的詳細資訊，請參閱下表：
 
@@ -194,7 +194,7 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 
 
 ### <a name="scale"></a>調整
-按一下 [調整]**** 以檢視或變更快取的定價層。 如需有關調整規模的詳細資訊，請參閱 [如何調整 Azure Redis 快取的規模](cache-how-to-scale.md)。
+按一下 [調整] 以檢視或變更快取的定價層。 如需有關調整規模的詳細資訊，請參閱 [如何調整 Azure Redis 快取的規模](cache-how-to-scale.md)。
 
 ![Azure Redis 快取定價層](./media/cache-configure/pricing-tier.png)
 
@@ -205,7 +205,7 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 
 ![叢集大小](./media/cache-configure/redis-cache-redis-cluster-size.png)
 
-若要變更叢集大小，請使用滑桿，或在 [分區計數]**** 文字方塊中輸入 1 到 10 之間的數字，然後按一下 [確定]**** 加以儲存。
+若要變更叢集大小，請使用滑桿，或在 [分區計數] 文字方塊中輸入 1 到 10 之間的數字，然後按一下 [確定] 加以儲存。
 
 > [!IMPORTANT]
 > Redis 叢集只適用於進階快取。 如需詳細資訊，請參閱 [如何設定進階 Azure Redis 快取的叢集功能](cache-how-to-premium-clustering.md)。
@@ -225,7 +225,7 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 >
 
 ### <a name="schedule-updates"></a>更新排程
-[排程更新] **** 刀鋒視窗可讓您指定適用於快取的 Redis 伺服器更新維護期間。
+[排程更新]  刀鋒視窗可讓您指定適用於快取的 Redis 伺服器更新維護期間。
 
 > [!IMPORTANT]
 > 維護期間僅適用於 Redis 伺服器更新，不適用於任何 Azure 更新，或是在裝載快取的 VM 上更新作業系統。
@@ -234,24 +234,24 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 
 ![更新排程](./media/cache-configure/redis-schedule-updates.png)
 
-若要指定維護期間，請檢查所需的天數，並指定每一天的維護期間開始小時，然後按一下 [確定] ****。 維護時間範圍的時間是採用 UTC。
+若要指定維護期間，請檢查所需的天數，並指定每一天的維護期間開始小時，然後按一下 [確定] 。 維護時間範圍的時間是採用 UTC。
 
 > [!IMPORTANT]
-> 只有進階層快取提供**排程更新**功能。 如需詳細資訊和指示，請參閱 [Azure Redis 快取管理 - 排程更新](cache-administration.md#schedule-updates)。
+> 只有進階層快取提供 **排程更新** 功能。 如需詳細資訊和指示，請參閱 [Azure Redis 快取管理 - 排程更新](cache-administration.md#schedule-updates)。
 >
 >
 
 ### <a name="geo-replication"></a>異地複寫
 
-[異地複寫]**** 刀鋒視窗提供一個機制，可連結兩個「進階」層「Azure Redis 快取」執行個體。 其中一個快取被指定為主要連結快取，而另一個則為次要連結快取。 次要連結快取會變成唯讀，而寫入主要快取的資料會複寫至次要連結快取。 這項功能可用來跨 Azure 區域複寫快取。
+[異地複寫] 刀鋒視窗提供一個機制，可連結兩個「進階」層「Azure Redis 快取」執行個體。 其中一個快取被指定為主要連結快取，而另一個則為次要連結快取。 次要連結快取會變成唯讀，而寫入主要快取的資料會複寫至次要連結快取。 這項功能可用來跨 Azure 區域複寫快取。
 
 > [!IMPORTANT]
-> **異地複寫**僅適用於進階層快取。 如需詳細資訊和指示，請參閱[如何為 Azure Redis 快取設定異地複寫](cache-how-to-geo-replication.md)。
+> **異地複寫** 僅適用於進階層快取。 如需詳細資訊和指示，請參閱[如何為 Azure Redis 快取設定異地複寫](cache-how-to-geo-replication.md)。
 >
 >
 
 ### <a name="virtual-network"></a>虛擬網路
-[虛擬網路]**** 區段可讓您為快取設定虛擬網路。 如需有關使用 VNET 支援來建立進階快取並更新其設定的資訊，請參閱[如何為進階 Azure Redis 快取設定虛擬網路支援](cache-how-to-premium-vnet.md)。
+[虛擬網路] 區段可讓您為快取設定虛擬網路。 如需有關使用 VNET 支援來建立進階快取並更新其設定的資訊，請參閱[如何為進階 Azure Redis 快取設定虛擬網路支援](cache-how-to-premium-vnet.md)。
 
 > [!IMPORTANT]
 > 虛擬網路設定只適用於快取建立期間利用 VNET 支援設定的進階快取。
@@ -262,7 +262,7 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 
 防火牆規則設定可供所有「Azure Redis 快取」層使用。
 
-按一下 [防火牆]**** 以檢視和設定快取的防火牆規則。
+按一下 [防火牆] 以檢視和設定快取的防火牆規則。
 
 ![防火牆](./media/cache-configure/redis-firewall-rules.png)
 
@@ -274,19 +274,19 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 >
 
 ### <a name="properties"></a>屬性
-按一下 [內容]**** 以檢視快取相關的資訊，包括快取端點及連接埠。
+按一下 [內容] 以檢視快取相關的資訊，包括快取端點及連接埠。
 
 ![Azure Redis 快取屬性](./media/cache-configure/redis-cache-properties.png)
 
 ### <a name="locks"></a>鎖定
-**鎖定**區段可讓您鎖定訂用帳戶、資源群組或資源，以防止組織中的其他使用者不小心刪除或修改重要資源。 如需詳細資訊，請參閱 [使用 Azure Resource Manager 鎖定資源](../azure-resource-manager/management/lock-resources.md)。
+**鎖定** 區段可讓您鎖定訂用帳戶、資源群組或資源，以防止組織中的其他使用者不小心刪除或修改重要資源。 如需詳細資訊，請參閱 [使用 Azure Resource Manager 鎖定資源](../azure-resource-manager/management/lock-resources.md)。
 
 ### <a name="automation-script"></a>自動化指令碼
 
-按一下 [自動化指令碼]**** 可建置並匯出您所部署資源的範本，供未來部署使用。 如需使用範本的詳細資訊，請參閱 [使用 Azure Resource Manager 範本部署資源](../azure-resource-manager/templates/deploy-powershell.md)。
+按一下 [自動化指令碼] 可建置並匯出您所部署資源的範本，供未來部署使用。 如需使用範本的詳細資訊，請參閱 [使用 Azure Resource Manager 範本部署資源](../azure-resource-manager/templates/deploy-powershell.md)。
 
 ## <a name="administration-settings"></a>管理設定
-[管理]**** 區段中的設定可讓您針對快取執行下列管理工作。
+[管理] 區段中的設定可讓您針對快取執行下列管理工作。
 
 ![系統管理](./media/cache-configure/redis-cache-administration.png)
 
@@ -307,16 +307,16 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 >
 >
 
-### <a name="reboot"></a>重新啟動
-[重新啟動]**** 刀鋒視窗可讓您重新啟動快取的節點。 這個重新啟動的能力可讓您測試應用程式在快取節點失敗時的恢復功能。
+### <a name="reboot"></a>重新開機
+[重新啟動] 刀鋒視窗可讓您重新啟動快取的節點。 這個重新啟動的能力可讓您測試應用程式在快取節點失敗時的恢復功能。
 
-![重新啟動](./media/cache-configure/redis-cache-reboot.png)
+![重新開機](./media/cache-configure/redis-cache-reboot.png)
 
 如果您的進階快取已啟用叢集，您可以選取要重新啟動的快取分區。
 
 ![顯示要在哪裡選取要重新開機之快取分區的螢幕擷取畫面。](./media/cache-configure/redis-cache-reboot-cluster.png)
 
-若要重新啟動快取的一或多個節點，選取所需的節點，然後按一下 [重新啟動] ****。 如果您的進階快取已啟用叢集，選取要重新啟動的分區，然後按一下 [重新啟動] ****。 稍候幾分鐘之後，選取的節點會重新啟動，並在幾分鐘之後重新上線。
+若要重新啟動快取的一或多個節點，選取所需的節點，然後按一下 [重新啟動] 。 如果您的進階快取已啟用叢集，選取要重新啟動的分區，然後按一下 [重新啟動] 。 稍候幾分鐘之後，選取的節點會重新啟動，並在幾分鐘之後重新上線。
 
 > [!IMPORTANT]
 > 重新啟動現在適用於所有定價層。 如需詳細資訊和指示，請參閱 [Azure Redis 快取管理 - 重新啟動](cache-administration.md#reboot)。
@@ -326,7 +326,7 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 
 ## <a name="monitoring"></a>監視
 
-[監視]**** 區段可讓您設定「Azure Redis 快取」的診斷和監視。
+[監視] 區段可讓您設定「Azure Redis 快取」的診斷和監視。
 如需有關「Azure Redis 快取」監視和診斷的詳細資訊，請參閱[如何監視 Azure Redis 快取](cache-how-to-monitor.md)。
 
 ![診斷](./media/cache-configure/redis-cache-diagnostics.png)
@@ -336,15 +336,15 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 * [診斷](#diagnostics)
 
 ### <a name="redis-metrics"></a>Redis 度量
-按一下 [Redis 度量]**** 以針對您的快取[檢視度量](cache-how-to-monitor.md#view-cache-metrics)。
+按一下 [Redis 度量] 以針對您的快取[檢視度量](cache-how-to-monitor.md#view-cache-metrics)。
 
 ### <a name="alert-rules"></a>警示規則
 
-按一下 [警示規則]**** 以根據「Azure Redis 快取」計量設定警示。 如需詳細資訊，請參閱 [警示](cache-how-to-monitor.md#alerts)。
+按一下 [警示規則] 以根據「Azure Redis 快取」計量設定警示。 如需詳細資訊，請參閱 [警示](cache-how-to-monitor.md#alerts)。
 
 ### <a name="diagnostics"></a>診斷
 
-根據預設，Azure 監視器中的快取計量會[儲存 30 天](../azure-monitor/platform/data-platform-metrics.md)，而後刪除。 若要保存您的快取計量超過 30 天，按一下 [診斷]**** 以[設定用來儲存快取診斷的儲存體帳戶](cache-how-to-monitor.md#export-cache-metrics)。
+根據預設，Azure 監視器中的快取計量會[儲存 30 天](../azure-monitor/platform/data-platform-metrics.md)，而後刪除。 若要保存您的快取計量超過 30 天，按一下 [診斷] 以[設定用來儲存快取診斷的儲存體帳戶](cache-how-to-monitor.md#export-cache-metrics)。
 
 >[!NOTE]
 >除了將您的快取計量封存至儲存體，您也可以將 [它們串流至事件中樞，或將它們傳送至 Azure 監視器記錄](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)檔。
@@ -360,7 +360,7 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 * [新增支援要求](#new-support-request)
 
 ### <a name="resource-health"></a>資源健康情況
-**資源健康狀態** 會監看您的資源，並告知您資源是否正如預期般執行。 如需 Azure 資源健康狀態服務的詳細資訊，請參閱 [Azure 資源健康狀態概觀](../resource-health/resource-health-overview.md)。
+**資源健康狀態** 會監看您的資源，並告知您資源是否正如預期般執行。 如需 Azure 資源健康狀態服務的詳細資訊，請參閱 [Azure 資源健康狀態概觀](../service-health/resource-health-overview.md)。
 
 > [!NOTE]
 > 資源健康狀態目前無法針對虛擬網路中所裝載「Azure Redis 快取」執行個體的健康狀態提出報告。 如需詳細資訊，請參閱 [將快取裝載於 VNET 時，所有快取功能都可以正常運作嗎？](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
@@ -368,7 +368,7 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 >
 
 ### <a name="new-support-request"></a>新增支援要求
-按一下 [新增支援要求] **** 以開啟快取的支援要求。
+按一下 [新增支援要求]  以開啟快取的支援要求。
 
 
 
@@ -382,7 +382,7 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 >
 > `StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
 >
-> 任何可設定的值 (例如 **max-memory-policy**) 都可以透過 Azure 入口網站或命令列管理工具 (例如 Azure CLI 或 PowerShell) 加以設定。
+> 任何可設定的值 (例如 **max-memory-policy** ) 都可以透過 Azure 入口網站或命令列管理工具 (例如 Azure CLI 或 PowerShell) 加以設定。
 >
 >
 
@@ -464,7 +464,7 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 如需 Redis 命令的詳細資訊，請參閱 [https://redis.io/commands](https://redis.io/commands) 。
 
 ## <a name="redis-console"></a>Redis 主控台
-您可以使用 [Redis 主控台]**** \(所有快取層的 Azure 入口網站中的都有提供此功能\) 對「Azure Redis 快取」執行個體安全地發出命令。
+您可以使用 [Redis 主控台] \(所有快取層的 Azure 入口網站中的都有提供此功能\) 對「Azure Redis 快取」執行個體安全地發出命令。
 
 > [!IMPORTANT]
 > - Redis 主控台不使用 [VNET](cache-how-to-premium-vnet.md)。 如果您的快取是 VNET 的一部分，只有在 VNET 中的用戶端可以存取快取。 由於 Redis 主控台在您的本機瀏覽器 (位於 VNET 之外) 中執行，因此無法連接到您的快取。
@@ -472,7 +472,7 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 >
 >
 
-若要存取 [Redis 主控台]，請從 [Azure Redis 快取]**** 刀鋒視窗按一下 [主控台]****。
+若要存取 [Redis 主控台]，請從 [Azure Redis 快取] 刀鋒視窗按一下 [主控台]。
 
 ![醒目顯示主控台按鈕的螢幕擷取畫面。](./media/cache-configure/redis-console-menu.png)
 
@@ -498,7 +498,7 @@ shard1>get myKey
 
 
 ## <a name="move-your-cache-to-a-new-subscription"></a>將您的快取移動到新的訂用帳戶
-您也可以按一下 [移動] ****，將快取移到新的訂用帳戶。
+您也可以按一下 [移動] ，將快取移到新的訂用帳戶。
 
 ![移動 Azure Redis 快取](./media/cache-configure/redis-cache-move.png)
 

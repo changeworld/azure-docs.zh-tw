@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 74e85906742207d6cde0b7c4cc5c021c23ee4c7b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bb5c7e082dc4a35183190f5d2d6a4b305b907f4f
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260133"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92480474"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Azure Synapse Analytics 中的 Apache Spark 核心概念
 
@@ -60,7 +60,40 @@ Spark 集區 (預覽) 會建立在 Azure 入口網站中。 其定義是，當 S
 - 另一個使用者 U2 會提交一個使用 10 個節點的作業 J3，此時會建立新的 Spark 執行個體 SI2 來處理作業。
 - 您現在會提交另一個使用 10 個節點的作業 J2，因為集區中仍然有容量，而執行個體 J2 會由 SI1 處理。
 
+## <a name="quotas-and-resource-constraints-in-apache-spark-for-azure-synapse"></a>適用於 Azure Synapse 的 Apache Spark 中的配額和資源條件約束
+
+### <a name="workspace-level"></a>工作區層級
+
+每個 Azure Synapse 工作區都有一個預設的虛擬核心配額，可用於 Spark。 配額會分割為使用者配額和資料流程配額，因此這兩種使用模式都不會用盡工作區中的所有虛擬核心。 配額會根據您的訂用帳戶類型而有所不同，但在使用者和資料流程之間的數量是相同的。 不過，如果您要求的虛擬核心超過工作區中剩餘的數目，則會收到下列錯誤：
+
+```console
+Failed to start session: [User] MAXIMUM_WORKSPACE_CAPACITY_EXCEEDED
+Your Spark job requested 480 vcores.
+However, the workspace only has xxx vcores available out of quota of yyy vcores.
+Try reducing the numbers of vcores requested or increasing your vcore quota. Click here for more information - https://go.microsoft.com/fwlink/?linkid=213499
+```
+
+訊息中的連結會指向這篇文章。
+
+下列文章說明如何要求增加工作區的虛擬核心配額。
+
+- 選取 "Azure Synapse Analytics" 作為服務類型。
+- 在配額詳細資料視窗中，為每個工作區選取 Apache Spark (虛擬核心)
+
+[透過 Azure 入口網站要求增加容量](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests#request-a-standard-quota-increase-from-help--support)
+
+### <a name="spark-pool-level"></a>Spark 集區層級
+
+定義 Spark 集區時，您可以有效地為該集區的每個使用者定義配額，如果您執行多個筆記本或作業，或 2 者混合，則可能會耗盡集區配額。 如果這樣做，則系統會產生類似下列的錯誤訊息
+
+```console
+Failed to start session: Your Spark job requested xx vcores.
+However, the pool is consuming yy vcores out of available zz vcores.Try ending the running job(s) in the pool, reducing the numbers of vcores requested, increasing the pool maximum size or using another pool
+```
+
+若要解決此問題，您必須先減少使用集區資源，然後再執行筆記本或作業來提交新的資源要求。
+
 ## <a name="next-steps"></a>後續步驟
 
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
-- [Apache Spark 文件](https://spark.apache.org/docs/2.4.4/)
+- [Apache Spark 文件](https://spark.apache.org/docs/2.4.5/)

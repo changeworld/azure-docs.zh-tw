@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: d0dd7f71c21e223203fb0e695ba3139eaea0aa81
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c456c7eb31e1e8e66aa3276a0cb5f6f8b39efa9a
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368820"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631745"
 ---
 # <a name="updating-azure-machine-learning-studio-classic-models-using-update-resource-activity"></a>使用更新資源活動更新 Azure Machine Learning Studio (傳統) 模型
 
@@ -26,8 +26,8 @@ ms.locfileid: "92368820"
 > * [MapReduce 活動](data-factory-map-reduce.md)
 > * [Hadoop 串流活動](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活動](data-factory-spark.md)
-> * [Azure Machine Learning Studio (傳統) 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
-> * [Azure Machine Learning Studio (傳統) 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning Studio (傳統版) 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
+> * [Azure Machine Learning Studio (傳統版) 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
 > * [預存程序活動](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL 活動](data-factory-usql-activity.md)
 > * [.NET 自訂活動](data-factory-use-custom-activities.md)
@@ -42,9 +42,9 @@ ms.locfileid: "92368820"
 經過一段時間之後，就必須使用新的輸入資料集重新定型 Azure Machine Learning Studio 中的預測模型 (傳統) 評分實驗。 完成重新訓練之後，您想要使用已重新訓練的 ML 模型來更新評分 Web 服務。 透過 web 服務啟用重新訓練和更新 Studio (傳統) 模型的一般步驟如下：
 
 1. 在 [Azure Machine Learning Studio (傳統) ](https://studio.azureml.net)中建立實驗。
-2. 當您滿意模型時，請使用 Azure Machine Learning Studio (傳統) ，將 web 服務發佈至 **訓練實驗** 和評分/預測性**實驗**。
+2. 當您滿意模型時，請使用 Azure Machine Learning Studio (傳統) ，將 web 服務發佈至 **訓練實驗** 和評分/預測性 **實驗** 。
 
-下表說明本範例中使用的 Web 服務。  請參閱以程式設計方式重新定型 [Azure Machine Learning Studio (傳統) 模型](../../machine-learning/studio/retrain-machine-learning-model.md) 以取得詳細資料。
+下表說明本範例中使用的 Web 服務。  請參閱以程式設計方式重新定型 [Azure Machine Learning Studio (傳統) 模型](../../machine-learning/classic/retrain-machine-learning-model.md) 以取得詳細資料。
 
 - **訓練 Web 服務** - 接收訓練資料並產生已訓練的模型。 重新訓練的輸出是 Azure Blob 儲存體中的 .ilearner 檔案。 當您將訓練實驗發佈為 Web 服務時，系統會自動為您建立 **預設端點** 。 您可以建立多個端點，但此範例僅使用預設端點。
 - **評分 Web 服務** - 接收未標記的資料範例並進行預測。 預測的輸出可能會有各種不同的表單，例如 Azure SQL Database 中的 .csv 檔案或資料列，視實驗的設定而定。 當您將預測實驗發佈為 Web 服務時，系統會自動為您建立預設端點。 
@@ -53,15 +53,15 @@ ms.locfileid: "92368820"
 
 ![Web 服務](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
 
-您可以使用**Azure Machine Learning Studio (傳統) 批次執行活動**來叫用**定型 web 服務**。 叫用訓練 web 服務的方式，與叫用 Azure Machine Learning Studio (傳統) web 服務 (評分 web 服務) 以評分資料相同。 上述各節涵蓋如何詳細地從 Azure Data Factory 管線叫用 Azure Machine Learning Studio (傳統) web 服務。 
+您可以使用 **Azure Machine Learning Studio (傳統) 批次執行活動** 來叫用 **定型 web 服務** 。 叫用訓練 web 服務的方式，與叫用 Azure Machine Learning Studio (傳統) web 服務 (評分 web 服務) 以評分資料相同。 上述各節涵蓋如何詳細地從 Azure Data Factory 管線叫用 Azure Machine Learning Studio (傳統) web 服務。 
 
-您可以使用**Azure Machine Learning Studio (傳統) 更新資源活動**來叫用**評分 web 服務**，以使用新定型的模型來更新 web 服務。 下列範例提供連結的服務定義︰ 
+您可以使用 **Azure Machine Learning Studio (傳統) 更新資源活動** 來叫用 **評分 web 服務** ，以使用新定型的模型來更新 web 服務。 下列範例提供連結的服務定義︰ 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>評分 Web 服務是傳統的 Web 服務
-如果評分 web 服務是傳統的 **web 服務**，請使用 Azure 入口網站建立第二個 **非預設且可更新的端點** 。 如需相關步驟，請參閱[建立端點](../../machine-learning/studio/create-endpoint.md)一文。 建立非預設的可更新端點之後，執行下列步驟：
+如果評分 web 服務是傳統的 **web 服務** ，請使用 Azure 入口網站建立第二個 **非預設且可更新的端點** 。 如需相關步驟，請參閱[建立端點](../../machine-learning/classic/create-endpoint.md)一文。 建立非預設的可更新端點之後，執行下列步驟：
 
-* 按一下 [批次執行]**** 以取得 **mlEndpoint** JSON 屬性的 URI 值。
-* 按一下 [更新資源]**** 連結以取得 **updateResourceEndpoint** JSON 屬性的 URI 值。 API 金鑰本身位於端點頁面 (位於右下角)。
+* 按一下 [批次執行] 以取得 **mlEndpoint** JSON 屬性的 URI 值。
+* 按一下 [更新資源] 連結以取得 **updateResourceEndpoint** JSON 屬性的 URI 值。 API 金鑰本身位於端點頁面 (位於右下角)。
 
 ![可更新端點](./media/data-factory-azure-ml-batch-execution-activity/updatable-endpoint.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "92368820"
 ```
 
 ## <a name="scoring-web-service-is-azure-resource-manager-web-service"></a>評分 Web 服務是 Azure Resource Manager Web 服務 
-如果 Web 服務是會公開 Azure Resource Manager 端點的新 Web 服務類型，您不需要新增第二個「非預設」**** 端點。 連結服務中 **updateResourceEndpoint** 的格式如下︰ 
+如果 Web 服務是會公開 Azure Resource Manager 端點的新 Web 服務類型，您不需要新增第二個「非預設」端點。 連結服務中 **updateResourceEndpoint** 的格式如下︰ 
 
 ```
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
@@ -208,13 +208,13 @@ Azure 儲存體會保留下列資料：
 }
 ```
 
-在 **Azure Machine Learning Studio (傳統) **中，請執行下列動作以取得 **>mlendpoint** 和 **apiKey**的值：
+在 **Azure Machine Learning Studio (傳統)** 中，請執行下列動作以取得 **>mlendpoint** 和 **apiKey** 的值：
 
 1. 按一下左功能表中的 [ **Web 服務** ]。
 2. 按一下 Web 服務清單中的 **訓練 Web 服務** 。
-3. 按一下 [API 金鑰] **** 文字方塊旁的 [複製]。 將剪貼簿中的金鑰貼到 Data Factory JSON 編輯器中。
-4. 在 **Azure Machine Learning Studio (傳統) **中，按一下 [ **批次執行** ] 連結。
-5. 從 [要求]**** 區段複製 [要求 URI]**** 並將它貼到 Data Factory JSON 編輯器中。   
+3. 按一下 [API 金鑰]  文字方塊旁的 [複製]。 將剪貼簿中的金鑰貼到 Data Factory JSON 編輯器中。
+4. 在 **Azure Machine Learning Studio (傳統)** 中，按一下 [ **批次執行** ] 連結。
+5. 從 [要求] 區段複製 [要求 URI] 並將它貼到 Data Factory JSON 編輯器中。   
 
 ### <a name="linked-service-for-studio-classic-updatable-scoring-endpoint"></a>適用于 Studio (傳統) 可更新評分端點的連結服務：
 下列 JSON 程式碼片段會定義 Studio (傳統) 連結服務，以指向評分 web 服務的非預設可更新端點。  
@@ -260,7 +260,7 @@ Studio (傳統) 更新資源活動不會產生任何輸出。 不過，Azure Dat
 ```
 
 ### <a name="pipeline"></a>管線
-管線有兩個活動：**AzureMLBatchExecution** 和 **AzureMLUpdateResource**。 Azure Machine Learning Studio (傳統) 批次執行活動會以定型資料作為輸入，並產生 .Ilearner 檔案作為輸出。 此活動會使用輸入訓練資料叫用訓練 Web 服務 (公開為 Web 服務的訓練實驗)，並從 Web 服務接收 iLearner 檔案。 PlaceholderBlob 只是 Azure Data Factory 服務執行管線所需的虛擬輸出資料集而已。
+管線有兩個活動： **AzureMLBatchExecution** 和 **AzureMLUpdateResource** 。 Azure Machine Learning Studio (傳統) 批次執行活動會以定型資料作為輸入，並產生 .Ilearner 檔案作為輸出。 此活動會使用輸入訓練資料叫用訓練 Web 服務 (公開為 Web 服務的訓練實驗)，並從 Web 服務接收 iLearner 檔案。 PlaceholderBlob 只是 Azure Data Factory 服務執行管線所需的虛擬輸出資料集而已。
 
 ![管線圖](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
 

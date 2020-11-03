@@ -4,25 +4,27 @@ description: 教學課程：了解如何使用開放原始碼 Azure Cosmos DB �
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 10/23/2020
 ms.author: dech
-ms.openlocfilehash: 16412e6949bd6bf3d9496b33a900a0331bd1e9fb
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 8613d3b02d396f16008ee771cdff25fe8b2e2f10
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92278163"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490640"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>教學課程：使用資料移轉工具將您的資料移轉至 Azure Cosmos DB
 
 本教學課程提供使用 Azure Cosmos DB 資料移轉工具的相關指示，可將資料從各種來源匯入到 Azure Cosmos 容器和資料表。 您可以從 JSON 檔案、CSV 檔案、SQL、MongoDB、Azure 資料表儲存體、Amazon DynamoDB 及 Azure Cosmos DB SQL API 集合匯入資料。 您可將該資料遷移到集合和資料表，以便搭配 Azure Cosmos DB 使用。 針對 SQL API 從單一分割區集合移轉到多重分割區集合時，也可以使用資料移轉工具。
 
-您要將哪個 API 用於 Azure Cosmos DB？
+> [!NOTE]
+> Azure Cosmos DB 資料移轉工具是專為小型移轉而設計的開放原始碼工具。 若要進行更大的移轉，請檢視我們的 [資料擷取指南](cosmosdb-migrationchoices.md)。
 
-* **[SQL API](documentdb-introduction.md)** - 您可以使用資料移轉工具中所提供的任何來源選項來匯入資料。
-* **[資料表 API](table-introduction.md)** - 您可以使用資料移轉工具或 AzCopy 來匯入資料。 如需詳細資訊，請參閱[匯入資料以用於 Azure Cosmos DB 資料表 API](table-import.md)。
-* **[Azure Cosmos DB 的 MongoDB API](mongodb-introduction.md)** - 資料移轉工具目前不支援以 Azure Cosmos DB 的 MongoDB API 作為來源或目標。 如果您想要在 Azure Cosmos DB 的集合中移入或移出資料，請參閱[如何將 MongoDB 資料遷移至具有 Azure Cosmos DB MongoDB API 的 Cosmos 資料庫](mongodb-migrate.md)以取得相關指示。 您仍可使用資料移轉工具，將資料從 MongoDB 匯出到 Azure Cosmos DB SQL API 集合，以便使用於 SQL API。
-* **[Gremlin API](graph-introduction.md)** - 資料移轉工具目前仍不是 Gremlin API 帳戶所支援的匯入工具。
+* **[SQL API](./introduction.md)** - 您可以使用資料移轉工具中所提供的任何來源選項來小規模地匯入資料。 [了解可供大規模匯入資料的移轉選項](cosmosdb-migrationchoices.md)。
+* **[資料表 API](table-introduction.md)** - 您可以使用資料移轉工具或 [AzCopy](table-import.md#migrate-data-by-using-azcopy) 來匯入資料。 如需詳細資訊，請參閱[匯入資料以用於 Azure Cosmos DB 資料表 API](table-import.md)。
+* **[Azure Cosmos DB 的 MongoDB API](mongodb-introduction.md)** - 資料移轉工具不支援以 Azure Cosmos DB 的 MongoDB API 作為來源或目標。 如果您想要在 Azure Cosmos DB 的集合中移入或移出資料，請參閱 [如何將 MongoDB 資料遷移至具有 Azure Cosmos DB MongoDB API 的 Cosmos 資料庫](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json) 以取得相關指示。 您仍可使用資料移轉工具，將資料從 MongoDB 匯出到 Azure Cosmos DB SQL API 集合，以便使用於 SQL API。
+* **[Cassandra API](graph-introduction.md)** - 資料移轉工具不是支援 Cassandra API 帳戶的匯入工具。 [了解可將資料匯入到 Cassandra API 的移轉選項](cosmosdb-migrationchoices.md#azure-cosmos-db-cassandra-api)
+* **[Gremlin API](graph-introduction.md)** - 資料移轉工具目前仍不是 Gremlin API 帳戶所支援的匯入工具。 [了解可將資料匯入到 Gremlin API 的移轉選項](cosmosdb-migrationchoices.md#other-apis) 
 
 本教學課程涵蓋下列工作：
 
@@ -42,7 +44,7 @@ ms.locfileid: "92278163"
 * **建立 Azure Cosmos DB 資源：** 在您開始移轉資料之前，請先從 Azure 入口網站預先建立所有集合。 若要遷移至具有資料庫層級輸送量的 Azure Cosmos DB 帳戶，請在建立 Azure Cosmos 容器時提供分割區索引鍵。
 
 > [!IMPORTANT]
-> 若要確定資料移轉工具在連線到您的 Azure Cosmos 帳戶時使用傳輸層安全性 (TLS) 1.2，請使用 .NET Framework 版本 4.7，或遵循[這篇文章](https://docs.microsoft.com/dotnet/framework/network-programming/tls)中的指示進行。
+> 若要確定資料移轉工具在連線到您的 Azure Cosmos 帳戶時使用傳輸層安全性 (TLS) 1.2，請使用 .NET Framework 版本 4.7，或遵循[這篇文章](/dotnet/framework/network-programming/tls)中的指示進行。
 
 ## <a name="overview"></a><a id="Overviewl"></a>概觀
 
@@ -59,12 +61,15 @@ ms.locfileid: "92278163"
 
 雖然匯入工具包括圖形化使用者介面 (dtui.exe)，您也可以從命令列 (dt.exe) 驅動此工具。 事實上，在透過 UI 設定匯入之後，有一個選項可以輸出相關聯的命令。 您可以轉換表格式來源資料 (例如 SQL Server 或 CSV 檔案)，以在匯入期間建立階層式關聯性 (子文件)。 繼續閱讀以深入了解來源選項、從每個來源匯入的範例命令、目標選項，以及檢視匯入結果。
 
+> [!NOTE]
+> 請只使用 Azure Cosmos DB 移轉工具來進行小型移轉。 若要進行大型移轉，請檢視我們的 [資料擷取指南](cosmosdb-migrationchoices.md)。
+
 ## <a name="installation"></a><a id="Install"></a>安裝
 
 移轉工具的原始程式碼可在 GitHub 上的[這個存放庫](https://github.com/azure/azure-documentdb-datamigrationtool)中取得。 您可以在本機下載並編譯解決方案，或下載[預先編譯的二進位檔](https://aka.ms/csdmtool)，然後執行：
 
-* **Dtui.exe**：此工具的圖形化介面版本
-* **Dt.exe**：此工具的命令列版本
+* **Dtui.exe** ：此工具的圖形化介面版本
+* **Dt.exe** ：此工具的命令列版本
 
 ## <a name="select-data-source"></a>選取資料來源
 
@@ -94,7 +99,7 @@ JSON 檔案來源匯入工具選項可讓您匯入一或多個單一文件 JSON 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>`
 
 * `<CosmosDB Endpoint>` 是端點 URI。 您可以從 Azure 入口網站中取得此值。 瀏覽至 Azure Cosmos 帳戶。 開啟 [概觀] 窗格，並複製 **URI** 值。
-* `<AccountKey>` 是「密碼」或**主要金鑰**。 您可以從 Azure 入口網站中取得此值。 瀏覽至 Azure Cosmos 帳戶。 開啟 [連接字串] 或 [金鑰] 窗格，並複製 [密碼] 或 [主要金鑰] 值。
+* `<AccountKey>` 是「密碼」或 **主要金鑰** 。 您可以從 Azure 入口網站中取得此值。 瀏覽至 Azure Cosmos 帳戶。 開啟 [連接字串] 或 [金鑰] 窗格，並複製 [密碼] 或 [主要金鑰] 值。
 * `<CosmosDB Database>` 是 CosmosDB 資料庫名稱。
 
 範例： `AccountEndpoint=https://myCosmosDBName.documents.azure.com:443/;AccountKey=wJmFRYna6ttQ79ATmrTMKql8vPri84QBiHTt6oinFkZRvoe7Vv81x9sn6zlVlBY10bEPMgGM982wfYXpWXWB9w==;Database=myDatabaseName`
@@ -124,11 +129,11 @@ dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t
 ## <a name="import-from-mongodb"></a><a id="MongoDB"></a>從 MongoDB 匯入
 
 > [!IMPORTANT]
-> 如果您要匯入到使用 Azure Cosmos DB MongoDB API 所設定的 Cosmos 帳戶中，請遵循這些[指示](mongodb-migrate.md)。
+> 如果您要匯入到使用 Azure Cosmos DB MongoDB API 所設定的 Cosmos 帳戶中，請遵循這些[指示](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)。
 
 透過 MongoDB 來源匯入工具選項，您可以從單一 MongoDB 集合匯入，使用查詢來選擇性地篩選文件，以及使用投影來修改文件結構。  
 
-:::image type="content" source="./media/import-data/mongodbsource.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+:::image type="content" source="./media/import-data/mongodbsource.png" alt-text="MongoDB 來源選項的螢幕擷取畫面":::
 
 連接字串會採用標準的 MongoDB 格式：
 
@@ -152,11 +157,11 @@ dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<po
 ## <a name="import-mongodb-export-files"></a><a id="MongoDBExport"></a>匯入 MongoDB 匯出檔案
 
 > [!IMPORTANT]
-> 如果您要匯入具有 MongoDB 支援的 Azure Cosmos DB 帳戶中，請遵循這些[指示](mongodb-migrate.md)。
+> 如果您要匯入具有 MongoDB 支援的 Azure Cosmos DB 帳戶中，請遵循這些[指示](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)。
 
 MongoDB 匯出 JSON 檔案來源匯入工具選項可讓您匯入從 mongoexport 公用程式產生的一或多個 JSON 檔案。  
 
-:::image type="content" source="./media/import-data/mongodbexportsource.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+:::image type="content" source="./media/import-data/mongodbexportsource.png" alt-text="MongoDB 匯出來源選項的螢幕擷取畫面":::
 
 新增具有要匯入之 MongoDB 匯出 JSON 檔案的資料夾，您可以選擇是否要以遞迴方式搜尋子資料夾中的檔案。
 
@@ -170,7 +175,7 @@ dt.exe /s:MongoDBExport /s.Files:D:\mongoemployees.json /t:DocumentDBBulk /t.Con
 
 SQL 來源匯入工具選項可讓您從個別的 SQL Server 資料庫匯入，並使用查詢來選擇性地篩選要匯入的記錄。 此外，您可以藉由指定巢狀分隔符號 (稍後將有更詳細的說明) 來修改文件結構。  
 
-:::image type="content" source="./media/import-data/sqlexportsource.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+:::image type="content" source="./media/import-data/sqlexportsource.png" alt-text="SQL 來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
 
 連接字串的格式會採用標準的 SQL 連接字串格式。
 
@@ -183,7 +188,11 @@ SQL 來源匯入工具選項可讓您從個別的 SQL Server 資料庫匯入，�
 
 它會傳回下列 (部分) 結果：
 
-:::image type="content" source="./media/import-data/sqlqueryresults.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具" } }*
+:::image type="content" source="./media/import-data/sqlqueryresults.png" alt-text="SQL 查詢結果的螢幕擷取畫面":::
+
+注意別名，例如 Address.AddressType 和 Address.Location.StateProvinceName。 藉由指定巢狀分隔符號 '.'，匯入工具會在匯入期間建立 Address 和 Address.Location 子文件。 在 Azure Cosmos DB 中產生的文件範例如下：
+
+*{ "id":"956", "Name":"Finer Sales and Service", "Address": { "AddressType":"Main Office", "AddressLine1": "#500-75 O'Connor Street", "Location": { "City":"Ottawa", "StateProvinceName":"Ontario" }, "PostalCode":"K4B 1S2", "CountryRegionName":"Canada" } }*
 
 以下是從 SQL Server 匯入的一些命令列範例：
 
@@ -199,11 +208,22 @@ dt.exe /s:SQL /s.ConnectionString:"Data Source=<server>;Initial Catalog=Adventur
 
 CSV 檔案來源匯入工具選項可讓您匯入一或多個 CSV 檔案。 新增具有要匯入之 CSV 檔案的資料夾時，您可以選擇是否要以遞迴方式搜尋子資料夾中的檔案。
 
-:::image type="content" source="media/import-data/csvsource.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+:::image type="content" source="media/import-data/csvsource.png" alt-text="CSV 來源選項的螢幕擷取畫面 - CSV 轉換成 JSON":::
 
 與 SQL 來源類似，巢狀分隔符號屬性可用來在匯入期間建立階層式關聯性 (子文件)。 請考慮下列 CSV 標頭資料列和資料資料列：
 
-:::image type="content" source="./media/import-data/csvsample.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具" 字串)。
+:::image type="content" source="./media/import-data/csvsample.png" alt-text="CSV 範例記錄的螢幕擷取畫面 - CSV 轉換成 JSON":::
+
+注意別名，例如 DomainInfo.Domain_Name 和 RedirectInfo.Redirecting。 藉由指定巢狀分隔符號 '.'，匯入工具將會在匯入期間建立 DomainInfo 和 RedirectInfo 子文件。 在 Azure Cosmos DB 中產生的文件範例如下：
+
+*{ "DomainInfo": { "Domain_Name":"ACUS.GOV", "Domain_Name_Address": "https:\//www.ACUS.GOV" }, "Federal Agency":"Administrative Conference of the United States", "RedirectInfo": { "Redirecting":"0", "Redirect_Destination": "" }, "id":"9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
+
+匯入工具會嘗試推斷 CSV 檔案中不具引號之值的類型資訊 (加上引號的值永遠會被視為字串)。  系統會依照下列順序識別類型：數字、日期時間、布林值。  
+
+下面提供兩個其他有關 CSV 匯入的注意事項：
+
+1. 根據預設，不具引號的值一律會針對定位點和空格進行修剪，而具有引號的值則會以原樣方式加以保留。 您可以使用 [修剪具有引號的值] 核取方塊或 /s.TrimQuoted 命令列選項，來覆寫這個行為。
+2. 根據預設，不具引號的 Null 會被視為 Null 值。 您可以使用 [將不具引號的 NULL 視為字串] 核取方塊或 /s.NoUnquotedNulls 命令列選項，來覆寫這個行為 (亦即將不具引號的 Null 視為 "null" 字串)。
 
 以下是 CSV 匯入的命令列範例：
 
@@ -217,7 +237,7 @@ Azure 資料表儲存體來源匯入工具選項可讓您從個別的 Azure 資�
 
 您可以將從 Azure 資料表儲存體匯入的資料，輸出到 Azure Cosmos DB 資料表和實體以用於資料表 API。 也可以將匯入的資料輸出到集合和文件以用於 SQL API。 不過，資料表 API 只能作為命令列公用程式中的目標。 您無法使用資料移轉工具使用者介面來匯出到資料表 API。 如需詳細資訊，請參閱[匯入資料以用於 Azure Cosmos DB 資料表 API](table-import.md)。
 
-:::image type="content" source="./media/import-data/azuretablesource.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+:::image type="content" source="./media/import-data/azuretablesource.png" alt-text="Azure 資料表儲存體來源選項的螢幕擷取畫面":::
 
 Azure 資料表儲存體連接字串的格式如下：
 
@@ -226,7 +246,7 @@ Azure 資料表儲存體連接字串的格式如下：
 > [!NOTE]
 > 若要確定可以存取連接字串欄位中指定的 Azure 資料表儲存體執行個體，請使用 Verify 命令。
 
-輸入要從中匯入資料的 Azure 資料表名稱。 您可以選擇性地指定 [篩選器](../vs-azure-tools-table-designer-construct-filter-strings.md)。
+輸入要從中匯入資料的 Azure 資料表名稱。 您可以選擇性地指定 [篩選器](/visualstudio/azure/vs-azure-tools-table-designer-construct-filter-strings)。
 
 Azure 資料表儲存體來源匯入工具選項具有下列其他選項：
 
@@ -247,9 +267,9 @@ dt.exe /s:AzureTable /s.ConnectionString:"DefaultEndpointsProtocol=https;Account
 
 Amazon DynamoDB 來源匯入工具選項可讓您從單一 Amazon DynamoDB 資料表匯入。 還可選擇性地篩選要匯入的實體。 會提供數個範本，讓設定匯入盡量簡化。
 
-:::image type="content" source="./media/import-data/dynamodbsource1.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+:::image type="content" source="./media/import-data/dynamodbsource1.png" alt-text="Amazon DynamoDB 來源選項的螢幕擷取畫面 - 資料庫移轉工具。":::
 
-:::image type="content" source="./media/import-data/dynamodbsource2.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+:::image type="content" source="./media/import-data/dynamodbsource2.png" alt-text="Amazon DynamoDB 來源選項與範本的螢幕擷取畫面 - 資料庫移轉工具。":::
 
 Amazon DynamoDB 連接字串的格式如下：
 
@@ -268,20 +288,25 @@ dt.exe /s:DynamoDB /s.ConnectionString:ServiceURL=https://dynamodb.us-east-1.ama
 
 JSON 檔案、MongoDB 匯出檔案和 CSV 檔案來源匯入工具選項可讓您從 Azure Blob 儲存體匯入一或多個檔案。 在指定 Blob 容器 URL 和帳戶金鑰之後，請提供規則運算式來選取要匯入的檔案。
 
-:::image type="content" source="./media/import-data/blobsource.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:doctest
+:::image type="content" source="./media/import-data/blobsource.png" alt-text="Blob 檔案來源選項的螢幕擷取畫面":::
+
+以下是從 Azure Blob 儲存體匯入 JSON 檔案的命令列範例：
+
+```console
+dt.exe /s:JsonFile /s.Files:"blobs://<account key>@account.blob.core.windows.net:443/importcontainer/.*" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:doctest
 ```
 
 ## <a name="import-from-a-sql-api-collection"></a><a id="SQLSource"></a>從 SQL API 集合匯入
 
 Azure Cosmos DB 來源匯入工具選項可讓您從一或多個 Azure Cosmos 容器匯入資料，並選擇性地使用查詢來篩選文件。  
 
-:::image type="content" source="./media/import-data/documentdbsource.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+:::image type="content" source="./media/import-data/documentdbsource.png" alt-text="Azure Cosmos DB 來源選項的螢幕擷取畫面":::
 
 Azure Cosmos DB 連接字串的格式如下：
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;`
 
-就像[如何管理 Azure Cosmos DB 帳戶](manage-account.md)中所述，您可以從 Azure 入口網站的 [金鑰] 頁面擷取 Azure Cosmos DB 帳戶的連接字串。 不過，必須以下列格式將資料庫的名稱附加至連接字串：
+就像[如何管理 Azure Cosmos DB 帳戶](./how-to-manage-database-account.md)中所述，您可以從 Azure 入口網站的 [金鑰] 頁面擷取 Azure Cosmos DB 帳戶的連接字串。 不過，必須以下列格式將資料庫的名稱附加至連接字串：
 
 `Database=<CosmosDB Database>;`
 
@@ -300,7 +325,7 @@ Azure Cosmos DB 來源匯入工具選項具有下列進階選項：
 3. Retry Interval (重試間隔)：指定與 Azure Cosmos DB 的連線發生暫時性失敗 (例如網路連線中斷) 時要等候的重試間隔時間。
 4. Connection Mode (連線模式)：指定要與 Azure Cosmos DB 搭配使用的連線模式。 可用的選項包括：DirectTcp、DirectHttps 和閘道器。 直接連線模式會比較快，但閘道器模式比較支援防火牆，因為它只會使用連接埠 443。
 
-:::image type="content" source="./media/import-data/documentdbsourceoptions.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+:::image type="content" source="./media/import-data/documentdbsourceoptions.png" alt-text="Azure Cosmos DB 來源進階選項的螢幕擷取畫面":::
 
 > [!TIP]
 > 匯入工具會預設 DirectTcp 連線模式。 如果您遇到防火牆問題，請切換到閘道器連線模式，因為它只需要連接埠 443。
@@ -325,9 +350,9 @@ dt.exe /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;Ac
 
 HBase 來源匯入工具選項可讓您從 HBase 資料表匯入資料，並選擇性地篩選資料。 會提供數個範本，讓設定匯入盡量簡化。
 
-:::image type="content" source="./media/import-data/hbasesource1.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+:::image type="content" source="./media/import-data/hbasesource1.png" alt-text="HBase 檔案來源選項的螢幕擷取畫面。":::
 
-:::image type="content" source="./media/import-data/hbasesource2.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+:::image type="content" source="./media/import-data/hbasesource2.png" alt-text="已展開 [篩選] 捷徑功能表的 HBase 來源選項螢幕擷取畫面。":::
 
 HBase Stargate 連接字串的格式如下：
 
@@ -346,13 +371,13 @@ dt.exe /s:HBase /s.ConnectionString:ServiceURL=<server-address>;Username=<userna
 
 為了提高效率，Azure Cosmos DB 大量匯入工具可讓您使用 Azure Cosmos DB 預存程序，從任何可用的來源選項匯入。 此工具支援匯入到一個單一分割的 Azure Cosmos 容器。 也支援跨多個單一分割 Azure Cosmos 容器分割資料的分區化匯入。 如需分割資料的詳細資訊，請參閱 [Azure Cosmos DB 的資料分割與調整規模](partitioning-overview.md)。 此工具會建立並執行預存程序，然後從目標集合中將它刪除。  
 
-:::image type="content" source="./media/import-data/documentdbbulk.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+:::image type="content" source="./media/import-data/documentdbbulk.png" alt-text="Azure Cosmos DB 大量選項的螢幕擷取畫面":::
 
 Azure Cosmos DB 連接字串的格式如下：
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;`
 
-就像[如何管理 Azure Cosmos DB 帳戶](manage-account.md)中所述，可從 Azure 入口網站的 [金鑰] 頁面中擷取 Azure Cosmos DB 帳戶的連接字串，但必須以下列格式將資料庫的名稱附加至連接字串：
+就像[如何管理 Azure Cosmos DB 帳戶](./how-to-manage-database-account.md)中所述，可從 Azure 入口網站的 [金鑰] 頁面中擷取 Azure Cosmos DB 帳戶的連接字串，但必須以下列格式將資料庫的名稱附加至連接字串：
 
 `Database=<CosmosDB Database>;`
 
@@ -376,11 +401,11 @@ Azure Cosmos DB 連接字串的格式如下：
 
 匯入期間有數個可用的進階選項。 首先，雖然此工具包含預設的大量匯入預存程序 (BulkInsert.js)，但您可以選擇指定自己的匯入預存程序：
 
- :::image type="content" source="./media/import-data/bulkinsertsp.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+ :::image type="content" source="./media/import-data/bulkinsertsp.png" alt-text="Azure Cosmos DB 大量插入 sproc 選項的螢幕擷取畫面":::
 
 此外，匯入日期類型時 (例如從 SQL Server 或 MongoDB)，有三種匯入選項可供選擇：
 
- :::image type="content" source="./media/import-data/datetimeoptions.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+ :::image type="content" source="./media/import-data/datetimeoptions.png" alt-text="Azure Cosmos DB 日期時間匯入選項的螢幕擷取畫面":::
 
 * String (字串)：保存為字串值
 * Epoch：保存為 Epoch 數值
@@ -396,7 +421,7 @@ Azure Cosmos DB 大量匯入工具含有下列其他進階選項：
 6. Retry Interval (重試間隔)：指定與 Azure Cosmos DB 的連線發生暫時性失敗 (例如網路連線中斷) 時要等候的重試間隔時間。
 7. Connection Mode (連線模式)：指定要與 Azure Cosmos DB 搭配使用的連線模式。 可用的選項包括：DirectTcp、DirectHttps 和閘道器。 直接連線模式會比較快，但閘道器模式比較支援防火牆，因為它只會使用連接埠 443。
 
-:::image type="content" source="./media/import-data/docdbbulkoptions.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+:::image type="content" source="./media/import-data/docdbbulkoptions.png" alt-text="Azure Cosmos DB 大量匯入進階選項的螢幕擷取畫面":::
 
 > [!TIP]
 > 匯入工具會預設 DirectTcp 連線模式。 如果您遇到防火牆問題，請切換到閘道器連線模式，因為它只需要連接埠 443。
@@ -405,13 +430,13 @@ Azure Cosmos DB 大量匯入工具含有下列其他進階選項：
 
 Azure Cosmos DB 循序記錄匯入工具可讓您從可用的來源選項逐筆匯入記錄。 如果您打算匯入至已達到預存程序配額的現有集合，您可以選擇此選項。 此工具支援匯入到單一 (單一分割區和多個分割區) Azure Cosmos 容器。 也支援跨多個單一分割區或多重分割區 Azure Cosmos 容器分割資料的分區化匯入。 如需分割資料的詳細資訊，請參閱 [Azure Cosmos DB 的資料分割與調整規模](partitioning-overview.md)。
 
-:::image type="content" source="./media/import-data/documentdbsequential.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+:::image type="content" source="./media/import-data/documentdbsequential.png" alt-text="Azure Cosmos DB 循序記錄匯入選項的螢幕擷取畫面":::
 
 Azure Cosmos DB 連接字串的格式如下：
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;`
 
-就像[如何管理 Azure Cosmos DB 帳戶](manage-account.md)中所述，您可以從 Azure 入口網站的 [金鑰] 頁面擷取 Azure Cosmos DB 帳戶的連接字串。 不過，必須以下列格式將資料庫的名稱附加至連接字串：
+就像[如何管理 Azure Cosmos DB 帳戶](./how-to-manage-database-account.md)中所述，您可以從 Azure 入口網站的 [金鑰] 頁面擷取 Azure Cosmos DB 帳戶的連接字串。 不過，必須以下列格式將資料庫的名稱附加至連接字串：
 
 `Database=<Azure Cosmos database>;`
 
@@ -435,7 +460,7 @@ Azure Cosmos DB 連接字串的格式如下：
 
 匯入期間有數個可用的進階選項。 首先，匯入日期類型時 (例如從 SQL Server 或 MongoDB)，有三種匯入選項可供選擇：
 
- :::image type="content" source="./media/import-data/datetimeoptions.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+ :::image type="content" source="./media/import-data/datetimeoptions.png" alt-text="Azure Cosmos DB 日期時間匯入選項的螢幕擷取畫面":::
 
 * String (字串)：保存為字串值
 * Epoch：保存為 Epoch 數值
@@ -450,7 +475,7 @@ Azure Cosmos DB 循序記錄匯入工具含有下列其他進階選項：
 5. Retry Interval (重試間隔)：指定與 Azure Cosmos DB 的連線發生暫時性失敗 (例如網路連線中斷) 時要等候的重試間隔時間。
 6. Connection Mode (連線模式)：指定要與 Azure Cosmos DB 搭配使用的連線模式。 可用的選項包括：DirectTcp、DirectHttps 和閘道器。 直接連線模式會比較快，但閘道器模式比較支援防火牆，因為它只會使用連接埠 443。
 
-:::image type="content" source="./media/import-data/documentdbsequentialoptions.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+:::image type="content" source="./media/import-data/documentdbsequentialoptions.png" alt-text="Azure Cosmos DB 循序記錄匯入進階選項的螢幕擷取畫面":::
 
 > [!TIP]
 > 匯入工具會預設 DirectTcp 連線模式。 如果您遇到防火牆問題，請切換到閘道器連線模式，因為它只需要連接埠 443。
@@ -459,7 +484,7 @@ Azure Cosmos DB 循序記錄匯入工具含有下列其他進階選項：
 
 當您允許移轉工具在匯入期間建立 Azure Cosmos DB SQL API 集合時，您可以指定集合的索引編製原則。 在 Azure Cosmos DB 大量匯入和 Azure Cosmos DB 循序記錄選項的進階選項區段中，瀏覽至 [編製索引原則] 區段。
 
-:::image type="content" source="./media/import-data/indexingpolicy1.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+:::image type="content" source="./media/import-data/indexingpolicy1.png" alt-text="Azure Cosmos DB 編製索引原則進階選項的螢幕擷取畫面。":::
 
 使用索引編製原則進階選項，您可以選取索引編製原則檔案，以手動方式輸入索引編製原則，或從一組預設範本中選取 (以滑鼠右鍵按一下索引編製原則文字方塊)。
 
@@ -468,7 +493,7 @@ Azure Cosmos DB 循序記錄匯入工具含有下列其他進階選項：
 * 預設值。 當您對字串執行相等查詢時，這是最佳的原則。 最適合您使用 ORDER BY、範圍及數字的等號查詢時。 這個原則的索引儲存空間負擔比範圍低。
 * 範圍。 當您在數字和字串上使用 ORDER BY、範圍及相等查詢時，這是最佳的原則。 這個原則的索引儲存空間負擔比預設或雜湊高。
 
-:::image type="content" source="./media/import-data/indexingpolicy2.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+:::image type="content" source="./media/import-data/indexingpolicy2.png" alt-text="Azure Cosmos DB 編製索引原則進階選項的螢幕擷取畫面，這些選項用來指定目標資訊。":::
 
 > [!NOTE]
 > 如果未指定索引編製原則，則會套用預設原則。 如需編製索引原則的詳細資訊，請參閱 [Azure Cosmos DB 編製索引原則](index-policy.md)。
@@ -477,9 +502,43 @@ Azure Cosmos DB 循序記錄匯入工具含有下列其他進階選項：
 
 Azure Cosmos DB JSON 匯出工具可讓您將任何可用的來源選項匯出至具有 JSON 文件陣列的 JSON 檔案。 此工具會為您處理匯出作業。 或者，您可以選擇檢視產生的移轉命令，然後自己執行命令。 產生的 JSON 檔案可能會儲存在本機或 Azure Blob 儲存體中。
 
-:::image type="content" source="./media/import-data/jsontarget.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+:::image type="content" source="./media/import-data/jsontarget.png" alt-text="Azure Cosmos DB JSON 本機檔案匯出選項的螢幕擷取畫面":::
 
-:::image type="content" source="./media/import-data/jsontarget2.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具"
+:::image type="content" source="./media/import-data/jsontarget2.png" alt-text="Azure Cosmos DB JSON Azure Blob 儲存體匯出選項的螢幕擷取畫面":::
+
+您可以選擇性地選擇美化產生的 JSON。 這個動作會增加產生文件的大小，但會使內容更容易閱讀。
+
+* 標準 JSON 匯出
+
+  ```JSON
+  [{"id":"Sample","Title":"About Paris","Language":{"Name":"English"},"Author":{"Name":"Don","Location":{"City":"Paris","Country":"France"}},"Content":"Don's document in Azure Cosmos DB is a valid JSON document as defined by the JSON spec.","PageViews":10000,"Topics":[{"Title":"History of Paris"},{"Title":"Places to see in Paris"}]}]
+  ```
+
+* 美化 JSON 匯出
+
+  ```JSON
+    [
+     {
+    "id": "Sample",
+    "Title": "About Paris",
+    "Language": {
+      "Name": "English"
+    },
+    "Author": {
+      "Name": "Don",
+      "Location": {
+        "City": "Paris",
+        "Country": "France"
+      }
+    },
+    "Content": "Don's document in Azure Cosmos DB is a valid JSON document as defined by the JSON spec.",
+    "PageViews": 10000,
+    "Topics": [
+      {
+        "Title": "History of Paris"
+      },
+      {
+        "Title": "Places to see in Paris"
       }
     ]
     }]
@@ -502,23 +561,23 @@ dt.exe /ErrorDetails:All /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<Cos
 3. 如果選取了現有的檔案，則會覆寫該檔案，沒有任何附加選項。
 4. 然後，選擇是要記錄所有錯誤訊息、嚴重錯誤訊息，還是不記錄任何錯誤訊息。 最後，決定螢幕上傳輸訊息更新其進度的頻率。
 
-   :::image type="content" source="./media/import-data/AdvancedConfiguration.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+   :::image type="content" source="./media/import-data/AdvancedConfiguration.png" alt-text="進階設定畫面的螢幕擷取畫面":::
 
 ## <a name="confirm-import-settings-and-view-command-line"></a>確認匯入設定及檢視命令列
 
 1. 指定來源資訊、目標資訊與進階組態之後，請檢閱移轉摘要，以及檢視或複製所產生的移轉命令。 (複製命令對於自動匯入作業非常有用。)
 
-    :::image type="content" source="./media/import-data/summary.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+    :::image type="content" source="./media/import-data/summary.png" alt-text="摘要畫面的螢幕擷取畫面。":::
 
-    :::image type="content" source="./media/import-data/summarycommand.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+    :::image type="content" source="./media/import-data/summarycommand.png" alt-text="摘要畫面與命令列預覽的螢幕擷取畫面。":::
 
 2. 在您滿意來源和目標選項之後，請按一下 [匯入] 。 隨著匯入的處理，已耗用時間、傳送的計數，以及失敗的資訊 (如果您未在 [進階組態] 中提供檔案名稱) 都會隨之更新。 完成後，您可以匯出結果 (例如處理任何匯入失敗)。
 
-    :::image type="content" source="./media/import-data/viewresults.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+    :::image type="content" source="./media/import-data/viewresults.png" alt-text="Azure Cosmos DB JSON 匯出選項的螢幕擷取畫面。":::
 
 3. 重設所有的值或保留現有設定，也可以開始新的匯入。 (例如，您可以選擇保留連接字串資訊、來源和目標選擇等等。)
 
-    :::image type="content" source="./media/import-data/newimport.png" alt-text="JSON 檔案來源選項的螢幕擷取畫面 - 資料庫移轉工具":::
+    :::image type="content" source="./media/import-data/newimport.png" alt-text="Azure Cosmos DB JSON 匯出選項與 [新增匯入確認] 對話方塊的螢幕擷取畫面。":::
 
 ## <a name="next-steps"></a>後續步驟
 

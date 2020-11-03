@@ -11,12 +11,12 @@ ms.custom: mvc, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8b10dd2d87ab7d4cf41a0bf860798f27651294d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9fe1363ffc714754c1de333a77d36595ce4223e6
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258992"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442332"
 ---
 # <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>教學課程：使用 Azure AD B2C 從單頁應用程式保護並授與 Node.js Web API 的存取權限
 
@@ -56,7 +56,7 @@ ms.locfileid: "91258992"
 
 若要從另一個應用程式呼叫受保護的 Web API，您必須為該應用程式授與對 Web API 的權限。
 
-在必要條件教學課程中，您已建立名為 *webapp1* 的 Web 應用程式。 在本教學課程中，您會設定該應用程式，以呼叫您在上一節中建立的 Web API，即 *webapi1*。
+在必要條件教學課程中，您已建立名為 *webapp1* 的 Web 應用程式。 在本教學課程中，您會設定該應用程式，以呼叫您在上一節中建立的 Web API，即 *webapi1* 。
 
 [!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
@@ -74,14 +74,20 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 
 ### <a name="configure-the-web-api"></a>設定 Web API
 
-1. 在程式碼編輯器中開啟 config.js  檔案。
+1. 在程式碼編輯器中開啟 config.json 檔案。
 1. 修改變數值，以反映您稍早建立的應用程式註冊。 也請使用您建立為必要條件一部分的使用者流程更新 `policyName`。 例如，B2C_1_signupsignin1  。
-
-    ```javascript
-    const clientID = "<your-webapi-application-ID>"; // Application (client) ID
-    const b2cDomainHost = "<your-tenant-name>.b2clogin.com";
-    const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can use your Directory (tenant) ID (a GUID)
-    const policyName = "B2C_1_signupsignin1";
+    
+    ```json
+    "credentials": {
+        "tenantName": "<your-tenant-name>",
+        "clientID": "<your-webapi-application-ID>"
+    },
+    "policies": {
+        "policyName": "B2C_1_signupsignin1"
+    },
+    "resource": {
+        "scope": ["demo.read"] 
+    },
     ```
 
 #### <a name="enable-cors"></a>啟用 CORS
@@ -108,7 +114,7 @@ app.use((req, res, next) => {
 
 1. 從您在上一個教學課程下載或複製的 [active-directory-b2c-javascript-msal-singlepageapp][github-js-spa] 專案中，開啟 JavaScriptSPA  中的 apiConfig.js  檔案。
 1. 使用您先前建立的 *demo.read* 範圍的 URI 以及 Web API 的 URL 來設定範例。
-    1. 在 `apiConfig` 定義中，將 `b2cScopes` 值取代為 demo.read  範圍的完整 URI (您先前記錄的**範圍**值)。
+    1. 在 `apiConfig` 定義中，將 `b2cScopes` 值取代為 demo.read  範圍的完整 URI (您先前記錄的 **範圍** 值)。
     1. 將 `webApi` 值中的網域變更為您在先前步驟中註冊 Web API 應用程式時所新增的重新導向 URI。
 
     因為 API 可在 `/hello` 端點存取，所以請將 */hello* 保留在 URI 中。

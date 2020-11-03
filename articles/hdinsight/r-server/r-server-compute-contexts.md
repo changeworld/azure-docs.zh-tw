@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 4df3c24c6f0853c1ae7447a8e20e8c2944319686
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21781015aa91c9c953d716b9b3399851f25be9b5
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087600"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92536329"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>在 HDInsight 上計算 ML 服務的內容選項
 
@@ -23,18 +23,18 @@ Azure HDInsight 上的 ML 服務控制如何透過設定計算內容來執行呼
 
 ## <a name="ml-services-on-azure-hdinsight"></a>Azure HDInsight 上的 ML 服務
 
-[Azure HDInsight 上的 ML 服務](r-server-overview.md)可提供最新的 R 型分析功能。 它可以使用儲存在 [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob 儲存體") 儲存體帳戶、Data Lake Store 或本機 Linux 檔案系統中 APACHE Hadoop HDFS 容器中的資料。 由於 ML 服務是以開放原始碼 R 為基礎，因此您所建立的 R 應用程式可以套用任何 8000 + 開放原始碼 R 套件。 它們也可以使用 [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler) (ML 服務隨附的 Microsoft 巨量資料分析套件) 中的常式。  
+[Azure HDInsight 上的 ML 服務](r-server-overview.md)可提供最新的 R 型分析功能。 它可以使用儲存在 [Azure Blob](../../storage/common/storage-introduction.md "Azure Blob 儲存體") 儲存體帳戶、Data Lake Store 或本機 Linux 檔案系統中 APACHE Hadoop HDFS 容器中的資料。 由於 ML 服務是以開放原始碼 R 為基礎，因此您所建立的 R 應用程式可以套用任何 8000 + 開放原始碼 R 套件。 它們也可以使用 [RevoScaleR](/machine-learning-server/r-reference/revoscaler/revoscaler) (ML 服務隨附的 Microsoft 巨量資料分析套件) 中的常式。  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>邊緣節點的計算內容
 
 一般而言，在邊緣節點上 ML 服務叢集中執行的 R 指令碼會在該節點上的 R 解譯器內執行。 但呼叫 RevoScaleR 函式的步驟則屬例外狀況。 RevoScaleR 呼叫會在計算環境中執行，該環境是由您設定 RevoScaleR 計算內容的方式所決定。  當您從邊緣節點執行 R 指令碼時，可能的計算內容值為：
 
-- 本機循序 (local**)
-- 本機平行 (localpar**)
+- 本機循序 (local)
+- 本機平行 (localpar)
 - Map Reduce
 - Spark
 
-local** 和 localpar** 選項的差別只在於執行 **rxExec** 呼叫的方式。 它們都會在所有可用的核心之間，以平行方式執行其他的 rx 函式呼叫，除非已指定，否則皆使用 RevoScaleR **numCoresToUse** 選項，例如 `rxOptions(numCoresToUse=6)`。 平行執行選項提供最佳效能。
+local 和 localpar 選項的差別只在於執行 **rxExec** 呼叫的方式。 它們都會在所有可用的核心之間，以平行方式執行其他的 rx 函式呼叫，除非已指定，否則皆使用 RevoScaleR **numCoresToUse** 選項，例如 `rxOptions(numCoresToUse=6)`。 平行執行選項提供最佳效能。
 
 下表摘要說明各種不同的計算內容選項來設定呼叫的執行方式：
 
@@ -59,8 +59,8 @@ local** 和 localpar** 選項的差別只在於執行 **rxExec** 呼叫的方式
 
 ### <a name="local"></a>本機
 
-- 如果要分析的資料量很小，而且不需要重複分析，請使用 *本機* 或 *localpar*，直接將它串流到分析常式。
-- 如果要分析的資料量很小或是中等大小，而且需要重複分析，請將它複製到本機檔案系統、匯入至 XDF，然後透過 local** 或 localpar** 分析。
+- 如果要分析的資料量很小，而且不需要重複分析，請使用 *本機* 或 *localpar* ，直接將它串流到分析常式。
+- 如果要分析的資料量很小或是中等大小，而且需要重複分析，請將它複製到本機檔案系統、匯入至 XDF，然後透過 local 或 localpar 分析。
 
 ### <a name="apache-spark"></a>Apache Spark
 
@@ -77,9 +77,9 @@ local** 和 localpar** 選項的差別只在於執行 **rxExec** 呼叫的方式
 > ?rxSetComputeContext
 ```
 
-您也可以參考 [Machine Learning Server 文件](https://docs.microsoft.com/machine-learning-server/)中的[分散式計算概觀](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing)。
+您也可以參考 [Machine Learning Server 文件](/machine-learning-server/)中的[分散式計算概觀](/machine-learning-server/r/how-to-revoscaler-distributed-computing)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 在此文章中，您可以了解可用於指定是否以及如何跨邊緣節點核心或 HDInsight 叢集將執行作業平行化的選項。 若要深入了解如何使用 HDInsight 叢集上的 ML 服務，請參閱下列主題：
 

@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 9/29/2020
-ms.openlocfilehash: 70f2cf183a9bd93b6066516cb68e99ee21cdc1ac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/22/2020
+ms.openlocfilehash: 0c082c797c75ba912bafead15d24ea3941cfc25e
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91569623"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92534187"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>快速入門：使用 Azure 入口網站建立適用於 MySQL 的 Azure 資料庫彈性伺服器
 
@@ -28,36 +28,36 @@ ms.locfileid: "91569623"
 
 ## <a name="create-an-azure-database-for-mysql-flexible-server"></a>建立適用於 MySQL 的 Azure 資料庫彈性伺服器
 
-您可使用一組已定義的[計算和儲存體資源](./concepts-compute-storage.md)來建立彈性伺服器。 您可在 [Azure 資源群組](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)內建立伺服器。
+您可使用一組已定義的[計算和儲存體資源](./concepts-compute-storage.md)來建立彈性伺服器。 您可在 [Azure 資源群組](../../azure-resource-manager/management/overview.md)內建立伺服器。
 
 請遵循這些步驟建立彈性伺服器：
 
-1. 在入口網站的左上角，選取 [建立資源]  (+)。
+1. 在入口網站的搜尋方塊中搜尋「適用於 MySQL 的 Azure 資料庫」尋找此服務。 
+    
+    > :::image type="content" source="./media/quickstart-create-server-portal/find-mysql-portal.png" alt-text="搜尋適用於 MySQL 的 Azure 資料庫":::
 
-2. 選取 [資料庫]   > [Azure Database for MySQL]  。 您也可以在搜尋方塊中輸入 **MySQL** 以尋找此服務。
+2. 選取 [新增]  。 
 
-    > :::image type="content" source="./media/quickstart-create-server-portal/navigate-to-mysql.png" alt-text="適用於 MySQL 的 Azure 資料庫 選項":::
-
-3. 選取 [彈性伺服器] 作為部署選項。
+3. 在 [選取部署選項] 頁面上，選取 [彈性伺服器] 作為部署選項。
      
-    > :::image type="content" source="./media/quickstart-create-server-portal/deployment-option.png" alt-text="適用於 MySQL 的 Azure 資料庫 選項":::    
+    > :::image type="content" source="./media/quickstart-create-server-portal/deployment-option.png" alt-text="挑選部署選項 ":::    
 
 4. 在 [基本資料]  表單中填寫下列資訊： 
 
-    > :::image type="content" source="./media/quickstart-create-server-portal/create-form.png" alt-text="適用於 MySQL 的 Azure 資料庫 選項"::: 
+    > :::image type="content" source="./media/quickstart-create-server-portal/create-form.png" alt-text="建立伺服器表單"::: 
                                     
     |**設定**|**建議的值**|**說明**|
     |---|---|---|
     訂用帳戶|您的訂用帳戶名稱|您要用於伺服器的 Azure 訂用帳戶。 如果您有多個訂用帳戶，請選擇資源計費的訂用帳戶。|
     資源群組|*myresourcegroup*| 新的資源群組名稱，或您訂用帳戶中現有的資源群組名稱。|
     伺服器名稱 |*mydemoserver*|可識別您彈性伺服器的唯一名稱。 網域名稱 mysql.database.azure.com 已附加至您提供的伺服器名稱。 伺服器只能包含小寫字母、數字及連字號 (-) 字元。 它必須包含至少 3 到 63 個字元。|
-    系統管理員使用者名稱 |*mydemouser*| 連線至伺服器時所要使用之自己的登入帳戶。 管理員登入名稱不能是 **azure_superuser**、**admin**、**administrator**、**root**、**guest** 或 **public**。|
+    系統管理員使用者名稱 |*mydemouser*| 連線至伺服器時所要使用之自己的登入帳戶。 管理員登入名稱不能是 **azure_superuser** 、 **admin** 、 **administrator** 、 **root** 、 **guest** 或 **public** 。|
     密碼 |您的密碼| 伺服器管理帳戶的新密碼。 其必須包含 8 到 128 個字元。 您的密碼必須包含下列類別中三種類別的字元：英文大寫字母、英文小寫字母、數字 (0 到 9) 及非英數字元 (!、$、#、% 等等)。|
     區域|最接近使用者的區域| 最靠近您使用者的位置。|
     版本|5.7| MySQL 主要版本。|
-    計算 + 儲存體 | **高載**、**Standard_B1ms**、**10 GiB**、**7 天** | 新伺服器的計算、儲存體和備份組態。 選取 [設定伺服器]  。 高載、Standard_B1ms、10 GiB 和 7 天是**計算層級**、**計算大小**、**儲存體**和**備份保留期間**的預設值。 您可以讓這些滑桿保持原狀或加以調整。 若要儲存此計算和儲存體選取項目，請選取 [儲存] 以繼續設定。 下列螢幕擷取畫面顯示計算和儲存體選項。|
+    計算 + 儲存體 | **高載** 、 **Standard_B1ms** 、 **10 GiB** 、 **7 天** | 新伺服器的計算、儲存體和備份組態。 選取 [設定伺服器]  。 高載、Standard_B1ms、10 GiB 和 7 天是 **計算層級** 、 **計算大小** 、 **儲存體** 和 **備份保留期間** 的預設值。 您可以讓這些滑桿保持原狀或加以調整。 若要儲存此計算和儲存體選取項目，請選取 [儲存] 以繼續設定。 下列螢幕擷取畫面顯示計算和儲存體選項。|
     
-    > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="適用於 MySQL 的 Azure 資料庫 選項":::
+    > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="計算 + 儲存體":::
 
 5. 設定網路功能選項
 
@@ -66,15 +66,15 @@ ms.locfileid: "91569623"
     > [!NOTE]
     > 建立伺服器後，就無法變更連線方法。 例如，如果您在建立期間選取了「公用存取 (允許的 IP 位址)」，則在建立之後，就無法變更為「私人存取 (VNet 整合)」。 強烈建議您建立具有私人存取權的伺服器，才能使用 VNet 整合安全地存取您的伺服器。 若要深入了解私人存取，請參閱[概念文章](./concepts-networking.md)。
 
-    > :::image type="content" source="./media/quickstart-create-server-portal/networking.png" alt-text="適用於 MySQL 的 Azure 資料庫 選項":::  
+    > :::image type="content" source="./media/quickstart-create-server-portal/networking.png" alt-text="設定網路功能":::  
 
 6. 選取 [檢閱 + 建立]，檢閱彈性伺服器組態。
 
 7. 選取 [建立] 以佈建伺服器。 佈建這可能需要數分鐘的時間。
 
-8. 在工具列上選取 [通知] \(鈴鐺圖示) 以監視部署程序。 完成部署後，您可以選取 [釘選到儀表板]，在 Azure 入口網站儀表板上建立此彈性伺服器的圖格，以作為伺服器 [概觀] 頁面的捷徑。 選取 [移至資源]**** 會開啟伺服器的 [概觀]**** 頁面。
+8. 在工具列上選取 [通知] \(鈴鐺圖示) 以監視部署程序。 完成部署後，您可以選取 [釘選到儀表板]，在 Azure 入口網站儀表板上建立此彈性伺服器的圖格，以作為伺服器 [概觀] 頁面的捷徑。 選取 [移至資源] 會開啟伺服器的 [概觀] 頁面。
 
-根據預設，您的伺服器底下會建立下列資料庫：**information_schema**、**mysql**、**performance_schema** 和 **sys**。
+根據預設，您的伺服器底下會建立下列資料庫： **information_schema** 、 **mysql** 、 **performance_schema** 和 **sys** 。
 
 > [!NOTE]
 > 檢查您的網路是否允許連接埠 3306 的輸出流量，以供適用於 MySQL 的 Azure 資料庫彈性伺服器使用以避免連線問題。  
@@ -103,7 +103,7 @@ ms.locfileid: "91569623"
 若要刪除伺服器，您可以在伺服器的 [概觀] 頁面上按一下 [刪除] 按鈕，如下所示：
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-server-portal/delete-server.png" alt-text="適用於 MySQL 的 Azure 資料庫 選項":::
+> :::image type="content" source="./media/quickstart-create-server-portal/delete-server.png" alt-text="刪除資源":::
 
 ## <a name="next-steps"></a>後續步驟
 

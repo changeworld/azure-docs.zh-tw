@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/29/2020
+ms.date: 10/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1d207e7cc052af32917eb6c871f332136580e56c
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 46c5271c8ded970442d1ae4022573473997d98af
+ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743249"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92426984"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>教學課程：準備部署 Azure Stack Edge Pro 搭配 GPU 
 
@@ -107,7 +107,7 @@ ms.locfileid: "91743249"
 
 1. 使用您的 Microsoft Azure 認證經由以下 URL 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 
-2. 在左窗格中，選取 [+ 建立資源]。 搜尋並選取 **Azure Stack Edge/資料箱閘道**。 選取 [建立]。 
+2. 在左窗格中，選取 [+ 建立資源]。 搜尋並選取 **Azure Stack Edge/資料箱閘道** 。 選取 [建立]。 
 
 3. 挑選要用於 Azure Stack Edge Pro 裝置的訂用帳戶。 選取您要寄送此實體裝置的國家/地區。 選取 [顯示裝置]。
 
@@ -137,8 +137,7 @@ ms.locfileid: "91743249"
 
     ![建立資源 5](media/azure-stack-edge-gpu-deploy-prep/create-resource-5.png)
 
-
-8. 完成時，選取 [下一步:**** 交貨地址]。
+8. 完成時，選取 [下一步:交貨地址]。
 
     - 如果您已經有一個裝置，請選取 [我有 Azure Stack Edge Pro 裝置] 的下拉式方塊。
 
@@ -167,6 +166,9 @@ ms.locfileid: "91743249"
 下單之後，Microsoft 會檢閱順訂單並與您接洽 (透過電子郵件) 交貨詳細資料。
 
 <!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)-->
+
+> [!NOTE]
+>如果您想要一次建立多個訂單或複製現有訂單，則可以使用 [Azure 範例中的指令碼](https://github.com/Azure-Samples/azure-stack-edge-order)。 如需詳細資訊，請參閱讀我檔案。
 
 如果您在訂單處理期間遇到任何問題，請參閱[訂單問題疑難排解](azure-stack-edge-troubleshoot-ordering.md)。
 

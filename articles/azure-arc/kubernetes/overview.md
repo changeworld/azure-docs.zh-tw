@@ -9,12 +9,12 @@ ms.author: mlearned
 description: 本文提供已啟用 Azure Arc 的 Kubernetes 概觀。
 keywords: Kubernetes, Arc, Azure, 容器
 ms.custom: references_regions
-ms.openlocfilehash: 601fcb096bf2bfeb1a6120015690c9aff4b6177b
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 7e48ebf98f12e79cb154fb50d8e6dbdfaea1cd95
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216074"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371302"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>什麼是已啟用 Azure Arc 的 Kubernetes 預覽？
 
@@ -37,6 +37,7 @@ ms.locfileid: "92216074"
 * Canonical Charmed Kubernetes 1.18
 * AKS 引擎
 * Azure Stack Hub 上的 AKS Engine
+* Azure Stack HCI 上的 AKS
 * 叢集 API 提供者 Azure
 
 ## <a name="supported-scenarios"></a>支援的案例 

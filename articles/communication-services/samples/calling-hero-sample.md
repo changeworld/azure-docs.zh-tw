@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: cfb6a7ba10c388cadb19268ee1431fe523a0cfa4
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e6cbf840fa27755fa43eb2a81e752415562ce41f
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126321"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461136"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>開始使用群組通話 Hero 範例
 
@@ -25,16 +25,16 @@ ms.locfileid: "92126321"
 > Add links to our Hero Sample repo when the sample is publicly available.
 ---->
 
-Azure 通訊服務的**群組通話 Hero 範例**會示範如何使用通訊服務的通話 Web 用戶端程式庫，來建立群組通話體驗。
+> [!IMPORTANT]
+> [您可在 GitHub 上取得此範例。](https://github.com/Azure-Samples/communication-services-web-calling-hero)
+
+Azure 通訊服務的 **群組通話 Hero 範例** 會示範如何使用通訊服務的通話 Web 用戶端程式庫，來建立群組通話體驗。
 
 在此範例快速入門中，我們將先了解範例如何運作，然後在您的本機電腦上執行範例。 接著，我們會使用您自己的 Azure 通訊服務資源，將範例部署至 Azure。
 
-> [!IMPORTANT]
-> [從 GitHub 下載範例](https://github.com/Azure-Samples/communication-services-web-calling-hero)
-
 ## <a name="overview"></a>概觀
 
-此範例同時包含用戶端應用程式和伺服器端應用程式。 **用戶端應用程式**是使用 Microsoft Fluent UI 架構的 React/Redux Web 應用程式。 此應用程式會將要求傳送至 ASP.NET Core 的**伺服器端應用程式**，以協助用戶端應用程式連線至 Azure。 
+此範例同時包含用戶端應用程式和伺服器端應用程式。 **用戶端應用程式** 是使用 Microsoft Fluent UI 架構的 React/Redux Web 應用程式。 此應用程式會將要求傳送至 ASP.NET Core 的 **伺服器端應用程式** ，以協助用戶端應用程式連線至 Azure。 
 
 範例如下所示：
 
@@ -42,17 +42,17 @@ Azure 通訊服務的**群組通話 Hero 範例**會示範如何使用通訊服�
 
 當您按下 [開始通話] 按鈕時，Web 應用程式就會從伺服器端應用程式提取使用者存取權杖。 然後，此權杖會用來將用戶端應用程式連線到 Azure 通訊服務。 一旦取得權杖之後，系統就會提示您指定想要使用的相機和麥克風。 您將能夠使用切換控制項來停用/啟用您的裝置：
 
-:::image type="content" source="./media/calling/pre-call.png" alt-text="顯示範例應用程式登陸頁面的螢幕擷取畫面。":::
+:::image type="content" source="./media/calling/pre-call.png" alt-text="顯示範例應用程式通話前準備畫面的螢幕擷取畫面。":::
 
 設定顯示名稱和裝置之後，您就可以加入通話的會話中。 現在您會看到核心通話體驗所在的主要通話畫布。
 
-:::image type="content" source="./media/calling/main-app.png" alt-text="顯示範例應用程式登陸頁面的螢幕擷取畫面。":::
+:::image type="content" source="./media/calling/main-app.png" alt-text="顯示範例應用程式主畫面的螢幕擷取畫面。":::
 
 主要通話畫面的元件：
 
-1. **媒體庫**：顯示參與者的主要階段。 如果參與者已啟用其相機，此處會顯示其影片摘要。 每個參與者都有個別圖格，其中顯示他們的顯示名稱和影片串流 (如果有的話)
-2. **標頭**：這是主要通話控制項所在的位置，可切換設定和參與者側邊欄、開啟/關閉影片和混合功能、共用畫面及離開通話。
-3. **側邊欄**：使用標頭上的控制項進行切換時，此處會顯示參與者和設定資訊。 您可以使用右上角的 [X] 來關閉該元件。 參與者側邊欄會顯示參與者清單，以及邀請更多使用者加入聊天的連結。 [設定] 側邊欄可讓您設定麥克風和相機設定。
+1. **媒體庫** ：顯示參與者的主要階段。 如果參與者已啟用其相機，此處會顯示其影片摘要。 每個參與者都有個別圖格，其中顯示他們的顯示名稱和影片串流 (如果有的話)
+2. **標頭** ：這是主要通話控制項所在的位置，可切換設定和參與者側邊欄、開啟/關閉影片和混合功能、共用畫面及離開通話。
+3. **側邊欄** ：使用標頭上的控制項進行切換時，此處會顯示參與者和設定資訊。 您可以使用右上角的 [X] 來關閉該元件。 參與者側邊欄會顯示參與者清單，以及邀請更多使用者加入聊天的連結。 [設定] 側邊欄可讓您設定麥克風和相機設定。
 
 您可以在下面找到有關設定範例的必要條件及步驟的詳細資訊。
 
@@ -62,7 +62,7 @@ Azure 通訊服務的**群組通話 Hero 範例**會示範如何使用通訊服�
 - [Node.js (12.18.4 及更新版本)](https://nodejs.org/en/download/)
 - [Visual Studio (2019 及更新版本)](https://visualstudio.microsoft.com/vs/)
 - [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (請務必安裝與您 Visual Studio 執行個體 (32 與 64 位元) 對應的版本)
-- 建立 Azure 通訊服務資源。 如需詳細資訊，請參閱[建立 Azure 通訊資源](../quickstarts/create-communication-resource.md)。 您必須在本快速入門中記錄您的資源**連接字串**。
+- 建立 Azure 通訊服務資源。 如需詳細資訊，請參閱[建立 Azure 通訊資源](../quickstarts/create-communication-resource.md)。 您必須在本快速入門中記錄您的資源 **連接字串** 。
 
 ## <a name="locally-deploy-the-service--client-applications"></a>在本機部署服務與用戶端應用程式
 
@@ -108,7 +108,6 @@ Azure 通訊服務的**群組通話 Hero 範例**會示範如何使用通訊服�
 如需詳細資訊，請參閱下列文章：
 
 - 熟悉如何[使用通話用戶端程式庫](../quickstarts/voice-video-calling/calling-client-samples.md)
-- 了解[通話用戶端程式庫功能](../quickstarts/voice-video-calling/calling-client-samples.md)
 - 深入了解[通話的運作方式](../concepts/voice-video-calling/about-call-types.md)
 
 ## <a name="additional-reading"></a>延伸閱讀

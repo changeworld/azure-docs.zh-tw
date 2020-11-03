@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 815c738f1680c12f94aa97e91cd123237bf1b4f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6085ba5091b2b9973354280175aeb01f93ad7e28
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88542491"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92521164"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>教學課程：Azure Active Directory 與 TeamSeer 整合
 
@@ -27,7 +27,7 @@ TeamSeer 與 Azure AD 整合提供下列優點：
 * 您可以讓使用者使用其 Azure AD 帳戶自動登入 TeamSeer (單一登入)。
 * 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若您想了解 SaaS app 與 Azure AD 整合的更多詳細資訊，請參閱 [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -61,7 +61,7 @@ TeamSeer 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **TeamSeer**，從結果面板中選取 [TeamSeer]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **TeamSeer** ，從結果面板中選取 [TeamSeer]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 TeamSeer](common/search-new-app.png)
 
@@ -104,7 +104,7 @@ TeamSeer 與 Azure AD 整合提供下列優點：
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://www.teamseer.com/<companyid>`
 
     > [!NOTE]
-    > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [TeamSeer 客戶支援小組](https://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [TeamSeer 客戶支援小組](https://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
@@ -126,7 +126,7 @@ TeamSeer 與 Azure AD 整合提供下列優點：
 
 1. 移至 [HR 管理]  。
 
-    ![HR 管理](./media/teamseer-tutorial/ic789634.png "HR 管理")
+    ![螢幕擷取畫面：顯示已從 TeamSeer 視窗選取 [HR 管理員]。](./media/teamseer-tutorial/ic789634.png "HR 管理")
 
 1. 按一下 [設定]  。
 
@@ -134,19 +134,19 @@ TeamSeer 與 Azure AD 整合提供下列優點：
 
 1. 按一下 [設定 SAML 提供者詳細資料]  。
 
-    ![SAML 設定](./media/teamseer-tutorial/ic789636.png "SAML 設定")
+    ![螢幕擷取畫面：顯示已選取 [設定 SAML 提供者詳細資料]。](./media/teamseer-tutorial/ic789636.png "SAML 設定")
 
 1. 在 [SAML 提供者詳細資料] 區段中，執行下列步驟：
 
-    ![SAML 設定](./media/teamseer-tutorial/ic789637.png "SAML 設定")
+    ![螢幕擷取畫面：顯示 [SAML 提供者詳細資料]，您可以在其中輸入所述的值。](./media/teamseer-tutorial/ic789637.png "SAML 設定")
 
-    a. 在 [URL]  文字方塊中，貼上您從 Azure 入口網站複製的**登入 URL** 值。
+    a. 在 [URL]  文字方塊中，貼上您從 Azure 入口網站複製的 **登入 URL** 值。
 
     b. 在記事本中開啟 Base-64 編碼的憑證，將其內容複製到剪貼簿，然後貼到 [IdP 公開憑證]  文字方塊。
 
 1. 若要完成 SAML 提供者的設定，請執行下列步驟：
 
-    ![SAML 設定](./media/teamseer-tutorial/ic789638.png "SAML 設定")
+    ![螢幕擷取畫面：顯示 [SAML 提供者設定]，您可以在其中輸入所述的值。](./media/teamseer-tutorial/ic789638.png "SAML 設定")
 
     a. 在 [測試電子郵件地址]  中輸入測試使用者的電子郵件地址。
   
@@ -170,7 +170,7 @@ TeamSeer 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -215,7 +215,7 @@ TeamSeer 與 Azure AD 整合提供下列優點：
 
 1. 移至 [HR 管理]\>[使用者]  ，然後按一下 [執行新增使用者精靈]  。
 
-    ![HR 管理](./media/teamseer-tutorial/ic789640.png "HR 管理")
+    ![螢幕擷取畫面：顯示 [HR 管理員] 索引標籤，您可以在其中選取要執行的精靈。](./media/teamseer-tutorial/ic789640.png "HR 管理")
 
 1. 在 [使用者詳細資料]  區段中，執行下列步驟：
 
@@ -234,12 +234,12 @@ TeamSeer 與 Azure AD 整合提供下列優點：
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [TeamSeer] 圖格時，應該會自動登入您設定 SSO 的 TeamSeer。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [TeamSeer] 圖格時，應該會自動登入您設定 SSO 的 TeamSeer。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)

@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 10/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 26a448ded06b32fef80fee06568655067a727620
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d045014cd92df084e4dd409012fdb668d312de1a
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320401"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92442315"
 ---
 # <a name="what-is-azure-cognitive-search"></a>什麼是 Azue 認知搜尋？
 
@@ -28,7 +28,7 @@ Azure 認知搜尋 ([先前稱為「Azure 搜尋服務」](whats-new.md#new-serv
 
 搜尋服務的兩個主要工作負載是「編製索引」及「查詢」。
 
-+ 編製索引會將文字帶入您的搜尋服務，並讓它可供搜尋。 在內部，會將輸入文字處理成權杖並儲存在反向索引中，以進行快速掃描。在編製索引期間，您可以選擇從 Microsoft 預先定義的技能，或您建立的自訂技能來新增「認知技能」。 後續的分析和轉換可能會產生先前不存在的新資訊和結構，為許多搜尋和知識挖掘案例提供高公用程式。
++ 編製索引會將文字帶入您的搜尋服務，並讓它可供搜尋。 系統會在內部將輸入文字處理成權杖並儲存在反向索引中，以進行快速掃描。 在編製索引期間，您可以選擇從 Microsoft 新增預先定義的認知技能，或新增您建立的自訂技能。 後續的分析和轉換可能會產生先前不存在的新資訊和結構，為許多搜尋和知識挖掘案例提供高公用程式。
 
 + 一旦將可搜尋的資料填入索引，您的用戶端應用程式就會將查詢要求傳送至搜尋服務並處理回應。 所有查詢執行都是在您建立、擁有並儲存在服務中的搜尋索引之上。 在您的用戶端應用程式中，搜尋體驗是使用 Azure 認知搜尋所提供的 API 來定義的，並可以包含相關性調整、自動完成、同義字比對、模糊比對、模式比對、篩選和排序。
 
@@ -74,7 +74,7 @@ Azure 認知搜尋適用於下列應用程式案例：
 
 推送模型會使用 [SDK](search-howto-dotnet-sdk.md) 或 [REST](/rest/api/searchservice/addupdate-or-delete-documents) 中的 API，將 JSON 文件「推送」至索引。 只要文件是 JSON，外部資料集就可以幾乎是任何資料來源。
 
-提取模型會從 Azure 上的來源「提取」資料，並將其傳送至搜尋索引。 提取模型是透過[*索引子*](/rest/api/searchservice/Indexer-operations)實作的，索引子可簡化和自動化資料擷取的各層面，例如連線至、讀取和序列化資料。 支援的資料來源包括 Azure Cosmos DB、Azure SQL 和 Azure 儲存體。
+提取模型會從 Azure 上的來源「提取」資料，並將其傳送至搜尋索引。 提取模型是透過 [*索引子*](/rest/api/searchservice/Indexer-operations)實作的，索引子可簡化和自動化資料擷取的各層面，例如連線至、讀取和序列化資料。 支援的資料來源包括 Azure Cosmos DB、Azure SQL 和 Azure 儲存體。
 
 ### <a name="step-4-send-queries-and-handle-responses"></a>步驟 4：傳送查詢並處理回應
 
@@ -88,7 +88,8 @@ Azure 認知搜尋適用於下列應用程式案例：
 
 | 相較於 | 主要差異 |
 |-------------|-----------------|
-|Bing | [Bing Web 搜尋 API](../cognitive-services/bing-web-search/index.yml) 會在 Bing.com 上搜尋索引中符合您送出的項目。 索引是從 HTML、XML 和其他公用網站上的網站內容所建置。 根據相同的基礎，[Bing 自訂搜尋](/azure/cognitive-services/bing-custom-search/)會為網站內容類型提供相同的編目程式技術，範圍設定為個別的網站。<br/><br/>Azure 認知搜尋會搜尋您所定義的索引，使用您所擁有的資料與文件填入，通常是來自不同的來源。 Azure 認知搜尋可透過[索引子](search-indexer-overview.md)為一些資料來源提供編目程式功能，但您可以將任何符合您索引結構描述的 JSON 文件推送到單一、彙總的可搜尋資源。 |
+| Microsoft 搜尋 | [Microsoft 搜尋](https://docs.microsoft.com/microsoftsearch/overview-microsoft-search)適用於需要在 SharePoint 中查詢內容之已通過 Microsoft 365 驗證的使用者。 這是由管理員啟用和設定的立即可用搜尋體驗所提供，而且能夠透過 Microsoft 和其他來源的連接器接受外部內容。 如果這與您的案例相符，您可以了解搭配 Microsoft 365 的 Microsoft 搜尋，這是一項不錯的選擇。<br/><br/>相反地，Azure 認知搜尋會查詢您定義的索引，使用不同的來源填入您所擁有的資料與文件。 Azure 認知搜尋可透過[索引子](search-indexer-overview.md)為一些 Azure 資料來源提供編目程式功能，但您可以將任何符合您索引結構描述的 JSON 文件推送到單一、彙總的可搜尋資源。 您也可以自訂編製索引管線，以包含機器學習服務和詞彙分析器。 由於認知搜尋的本質是較大型解決方案中的外掛程式元件，因此您可以在任何平台上將搜尋整合到幾乎任何應用程式。|
+|Bing | [Bing Web 搜尋 API](../cognitive-services/bing-web-search/index.yml) 會在 Bing.com 上搜尋索引中符合您送出的項目。 索引是從 HTML、XML 和其他公用網站上的網站內容所建置。 根據相同的基礎，[Bing 自訂搜尋](/azure/cognitive-services/bing-custom-search/)會為網站內容類型提供相同的編目程式技術，範圍設定為個別的網站。<br/><br/>在認知搜尋中，您可以定義和填入索引。 您可以使用[索引子](search-indexer-overview.md)搜耙 Azure 資料來源上的資料，或將任何符合索引的 JSON 文件 推送至您的搜尋服務。 |
 |資料庫搜尋 | 許多資料庫平台包括內建的搜尋經驗。 SQL Server 有[全文檢索搜尋](/sql/relational-databases/search/full-text-search)。 Cosmos DB 與類似技術有可供查詢的索引。 對結合搜尋和儲存體的產品進行評估時，可能不容易決定要使用哪一個。 許多解決方案會同時使用兩者：具有儲存體的 DBMS 和具有特製化搜尋功能的 Azure 認知搜尋。<br/><br/>相較於 DBMS 搜尋，Azure 認知搜尋會儲存異質來源中的內容及提供特製化文字處理功能，例如 [56 種語言](/rest/api/searchservice/language-support)的語言感知文字處理 (詞幹分析、詞形歸併還原、文字形式)。 並也支援拼字錯誤的自動校正、[同義字](/rest/api/searchservice/synonym-map-operations)、[建議](/rest/api/searchservice/suggestions)、[計分控制](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)、[Facet](./search-filters-facets.md) 和[自訂 Token 化](/rest/api/searchservice/custom-analyzers-in-azure-search)。 Azure 認知搜尋中的[全文檢索搜尋引擎](search-lucene-query-architecture.md)的建置基礎為 Apache Lucene，這是資訊擷取的業界標準。 不過，當 Azure 認知搜尋以反向索引的形式保留資料時，不會取代真實的資料儲存體，我們不建議在該容量中使用此形式。 如需詳細資訊，請參閱[此論壇文章](https://stackoverflow.com/questions/40101159/can-azure-search-be-used-as-a-primary-database-for-some-data)。 <br/><br/>資源使用率是此類別中的另一項轉折點。 編製索引及某些查詢作業通常會耗用大量運算資源。 將搜尋從 DBMS 卸載至雲端中的專用解決方案，可保留用於交易處理的系統資源。 此外，將搜尋外部化可以輕鬆調整級別以符合查詢量。|
 |專用的搜尋解決方案 | 假設您已決定使用具有全面功能的專用搜尋，最後就是要比較內部部署解決方案或雲端服務的範圍。 許多搜尋技術會提供編製索引和查詢管線的控制權、存取更豐富的查詢及篩選語法、控制順位和相關性，以及自我引導和智慧型搜尋的功能。 <br/><br/>如果您想要擁有最少額外負荷和維護，還可調整級別的周全方案，雲端服務是正確的選擇。 <br/><br/>在雲端範式內，許多提供者提供可比較的基準功能，不但有全文檢索搜尋、地區搜尋，還能夠處理搜尋輸入中一定程度的語意模糊。 是否最適合通常取決於[特殊化功能](search-features-list.md)，或 API、工具和管理的容易性和整體簡單性。 |
 

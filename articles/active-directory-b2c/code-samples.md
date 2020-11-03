@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 2db64a950569e4a96a9a87bb86a5397a17b4f2ba
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: b52bfc14906d8e47c804ae15ee898f6ca00784af
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92214935"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503839"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C 程式碼範例
 
@@ -60,10 +60,23 @@ ms.locfileid: "92214935"
 
 下列表格提供程式碼範例的連結，這些程式碼範例可讓您使用 [API 連接器](api-connectors-overview.md)，在您的使用者流程中運用 Web API。
 
-## <a name="api-connector-azure-function-quickstarts"></a>API 連接器 Azure Function 快速入門
+### <a name="azure-function-quickstarts"></a>Azure 函式快速入門
 
 | 範例                                                                                                                          | 描述                                                                                                                                               |
 | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [.NET Core](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-api-connector-azure-function-validate) | 此 .NET Core Azure Function 範例示範如何將註冊限制為特定的電子郵件網域，並驗證使用者提供的資訊。 |
 | [Node.js](https://github.com/Azure-Samples/active-directory-nodejs-external-identities-api-connector-azure-function-validate)   | 此 Node.js Azure Function 範例示範如何將註冊限制為特定的電子郵件網域，並驗證使用者提供的資訊。  |
 | [Python](https://github.com/Azure-Samples/active-directory-python-external-identities-api-connector-azure-function-validate)    | 此 Python Azure Function 範例示範如何將註冊限制為特定的電子郵件網域，並驗證使用者提供的資訊。    |
+
+### <a name="identity-verification-with-api-connectors"></a>使用 API 連接器進行身分識別驗證
+
+| 範例                                                                                                            | 描述                                                                                                                          |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [IDology](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-idology-identity-verification) | 這個範例示範如何使用 API 連接器與 IDology 整合，在進行自助式註冊時驗證使用者身分識別。 |
+| [Experian](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-experian-identity-verification) | 這個範例示範如何使用 API 連接器與 Experian 整合，在進行自助式註冊時驗證使用者身分識別。 |
+
+### <a name="community-samples"></a>社群範例
+
+| 範例                                                                                                            | 描述                                                                                                                          |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [API 連接器的社群範例](https://github.com/azure-ad-b2c/api-connector-samples) | 此存放庫含有由 API 連接器所啟用案例的社群維護範例。|

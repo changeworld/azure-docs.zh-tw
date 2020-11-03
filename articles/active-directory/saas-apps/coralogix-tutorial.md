@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 17e2d04a39a2ef5a935ea6e56ef16958419eddb1
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: e676268abb9e1a4a597ef431ea6ba6593411711e
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91775615"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455216"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coralogix"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Coralogix 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "91775615"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Coralogix。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -52,7 +52,7 @@ ms.locfileid: "91775615"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Coralogix**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Coralogix** 。
 1. 從結果面板中選取 [Coralogix]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-coralogix"></a>設定及測試 Coralogix 的 Azure AD 單一登入
@@ -73,7 +73,7 @@ ms.locfileid: "91775615"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Coralogix]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -104,9 +104,9 @@ ms.locfileid: "91775615"
     ![顯示 [使用者屬性和宣告] 對話方塊的螢幕擷取畫面，其中醒目提示 [編輯] 按鈕。](./media/coralogix-tutorial/tutorial_usermail.png)
     ![image](./media/coralogix-tutorial/tutorial_usermailedit.png)
 
-    b. 從 [選擇名稱識別碼格式]**** 清單中選取 [電子郵件地址]****。
+    b. 從 [選擇名稱識別碼格式] 清單中選取 [電子郵件地址]。
 
-    c. 從 [來源屬性]**** 清單中，選取 [user.mail]****。
+    c. 從 [來源屬性] 清單中，選取 [user.mail]。
 
     d. 選取 [儲存]。
 
@@ -114,7 +114,7 @@ ms.locfileid: "91775615"
 
     ![憑證下載連結](common/metadataxml.png)
 
-1. 在 [設定 Coralogix]**** 區段上，根據您的需求複製適當的 URL。
+1. 在 [設定 Coralogix] 區段上，根據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -135,7 +135,7 @@ ms.locfileid: "91775615"
 在本節中，您會將 Coralogix 的存取權授與 B.Simon，讓其能夠使用 Azure 單一登入。
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 [Coralogix]****。
+1. 在應用程式清單中，選取 [Coralogix]。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
@@ -150,25 +150,24 @@ ms.locfileid: "91775615"
 
 ## <a name="configure-coralogix-sso"></a>設定 Coralogix SSO
 
-若要在 **Coralogix** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]**** 和複製的適當 URL 傳送給 [Coralogix 支援小組](mailto:info@coralogix.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Coralogix** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML] 和複製的適當 URL 傳送給 [Coralogix 支援小組](mailto:info@coralogix.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-coralogix-test-user"></a>建立 Coralogix 測試使用者
 
-在本節中，您要在 Coralogix 中建立名為 Britta Simon 的使用者。 請與  [Coralogix 支援小組](mailto:info@coralogix.com)合作，以在 Coralogix 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您要在 Coralogix 中建立名為 Britta Simon 的使用者。 請與 [Coralogix 支援小組](mailto:info@coralogix.com)合作，以在 Coralogix 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ## <a name="test-sso"></a>測試 SSO 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Coralogix] 圖格時，應該會自動登入您設定 SSO 的 Coralogix。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Coralogix] 圖格時，應該會自動登入您設定 SSO 的 Coralogix。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 Coralogix](https://aad.portal.azure.com/)
-

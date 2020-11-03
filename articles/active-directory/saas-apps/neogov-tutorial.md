@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 9935d19ddbdf1f6eeff83fb4e4be480545baa2a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03efcd91553ab2235782d68cc70f4acdeedce4c6
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88552368"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92506888"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-neogov"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 NEOGOV 整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88552368"
 * 讓使用者使用其 Azure AD 帳戶自動登入 NEOGOV。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -71,7 +71,7 @@ ms.locfileid: "88552368"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [NEOGOV]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -140,24 +140,24 @@ ms.locfileid: "88552368"
 
 ## <a name="configure-neogov-sso"></a>設定 NEOGOV SSO
 
-若要在 **NEOGOV** 端設定單一登入，您必須將**應用程式同盟中繼資料 URL** 傳送給 [NEOGOV 支援小組](mailto:itops@neogov.net)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **NEOGOV** 端設定單一登入，您必須將 **應用程式同盟中繼資料 URL** 傳送給 [NEOGOV 支援小組](mailto:itops@neogov.net)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-neogov-test-user"></a>建立 NEOGOV 測試使用者
 
-在本節中，您會在 NEOGOV 中建立名為 B.Simon 的使用者。 請與 [NEOGOV 支援小組](mailto:itops@neogov.net)合作，在 NEOGOV 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您會在 NEOGOV 中建立名為 B.Simon 的使用者。 請與 [NEOGOV 支援小組](mailto:itops@neogov.net)合作，在 NEOGOV 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ## <a name="test-sso"></a>測試 SSO 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [NEOGOV] 圖格時，應該會自動登入您已設定 SSO 的 NEOGOV。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [NEOGOV] 圖格時，應該會自動登入您已設定 SSO 的 NEOGOV。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
 
 - [嘗試搭配 Azure AD 使用 NEOGOV](https://aad.portal.azure.com/)

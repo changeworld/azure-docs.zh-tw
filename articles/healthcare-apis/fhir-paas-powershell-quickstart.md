@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 10/15/2019
 ms.author: cavoeg
-ms.openlocfilehash: 07221e0cf8feeef48de27a84450c28b08d22e0d3
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 2cb50f2ae98dab1e64e01498e0913d1932e455cd
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217485"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92339402"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-powershell"></a>快速入門：使用 PowerShell 部署適用於 FHIR 的 Azure API
 
@@ -68,7 +68,10 @@ Remove-AzResourceGroup -Name myResourceGroupName
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門手冊中，您已將 Azure API for FHIR 部署至您的訂用帳戶。 若要在 Azure API for FHIR 中設定其他設定，請繼續進行其他設定操作指南。
+在本快速入門手冊中，您已將 Azure API for FHIR 部署至您的訂用帳戶。 若要在 Azure API for FHIR 中設定其他設定，請繼續進行其他設定操作指南。 如果您已準備好開始使用 Azure API for FHIR，請參閱如何註冊應用程式了解詳細資訊。
 
 >[!div class="nextstepaction"]
 >[Azure API for FHIR 中的其他設定](azure-api-for-fhir-additional-settings.md)
+
+>[!div class="nextstepaction"]
+>[註冊應用程式概觀](fhir-app-registration.md)

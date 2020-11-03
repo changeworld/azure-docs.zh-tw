@@ -6,70 +6,111 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/04/2020
+ms.date: 10/21/2020
 ms.author: aahi
-ms.openlocfilehash: 9c3bae9d2ad388409c40a8e8c89bcdd52f536cdb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 122e44da7bbf4229f932eefdae4c70dc49f43bfe
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85805898"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371270"
 ---
-Bing 影像搜尋用戶端程式庫是 API 的包裝函式，而且功能相同，您可以透過此快速入門，完成初次使用此 SDK 進行的影像搜尋。 這個簡單的 C# 應用程式會傳送影像搜尋查詢、剖析 JSON 回應，以及顯示第一個傳回影像的 URL。
+您可以透過此快速入門，完成初次使用此 SDK 進行的影像搜尋。 
+
+Bing 影像搜尋用戶端程式庫是 API 的包裝函式，而且功能相同， 
+
+您可以建立 C# 應用程式來傳送影像搜尋查詢、剖析 JSON 回應，以及顯示第一個傳回影像的 URL。
 
 此範例的原始程式碼可從 [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingImageSearch) 取得，其中含有其他錯誤處理和註釋。
 
 ## <a name="prerequisites"></a>必要條件
-* [Visual Studio 2017 或更新版本](https://visualstudio.microsoft.com/vs/whatsnew/)的任何版本。
-* [認知影像搜尋 NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch/)。
 
-若要在 Visual Studio 中安裝 Bing 影像搜尋用戶端程式庫，可在[方案總管] 中使用 [管理 NuGet 套件] 選項。
+* 如果您使用 Windows，則任何版本的 [Visual Studio 2017 或更新版本](https://visualstudio.microsoft.com/vs/whatsnew/) 均可。
+* 如果您使用 macOS 或 Linux，則 [VS Code](https://code.visualstudio.com) 已隨附 [.NET Core 安裝](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/install)
+* [免費的 Azure 訂用帳戶](https://azure.microsoft.com/free/dotnet)
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](~/includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 另請參閱[認知服務定價 - Bing 搜尋 API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)。
 
-## <a name="create-and-initialize-the-application"></a>建立應用程式並將其初始化
+## <a name="create-a-console-project"></a>建立主控台專案
 
-首先，在 Visual Studio 中建立新的 C# 主控台應用程式。 然後，將下列套件新增至您的專案。
+首先建立新的 C# 主控台應用程式。
 
-```csharp
-using System;
-using System.Linq;
-using Microsoft.Azure.CognitiveServices.Search.ImageSearch;
-using Microsoft.Azure.CognitiveServices.Search.ImageSearch.Models;
-```
+## <a name="create-a-console-project"></a>建立主控台專案
 
-在專案的主要方法中，針對有效訂用帳戶金鑰、要由 Bing 傳回的影像結果和搜尋字詞建立變數。 然後使用金鑰來將影像搜尋用戶端具現化。
+# <a name="visual-studio"></a>[Visual Studio](#tab/visualstudio)
 
-```csharp
-//IMPORTANT: replace this variable with your Cognitive Services subscription key
-string subscriptionKey = "ENTER YOUR KEY HERE";
-//stores the image results returned by Bing
-Images imageResults = null;
-// the image search term to be used in the query
-string searchTerm = "canadian rockies";
+1. 在 Visual Studio 中建立一個名為 BingImageSearch 的新主控台解決方案。
+    
+1. 新增 [認知影像搜尋 NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch)
+    1. 以滑鼠右鍵按一下 [方案總管] 中的專案。
+    1. 選取 [管理 NuGet 套件]。
+    1. 搜尋並選取 *Microsoft.Azure.CognitiveServices.Search.ImageSearch* ，然後安裝套件。
+    
+# <a name="vs-code"></a>[VS 程式碼](#tab/vscode)
 
-//initialize the client
-//NOTE: If you're using version 1.2.0 or below for the Bing Image Search client library, 
-// use ImageSearchAPI() instead of ImageSearchClient() to initialize your search client.
+1. 在 VS Code 中開啟終端機視窗。
+1. 在終端機視窗中輸入下列程式碼，以建立名為 *BingImageSearch* 的新主控台專案：
+    
+    ```bash
+    dotnet new console -n BingImageSearch
+    ```
+1. 在 VS Code 中開啟 BingImageSearch 資料夾。
+1. 在終端機視窗中輸入下列程式碼，以新增 [認知影像搜尋 NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch) NuGetPackage：
 
-var client = new ImageSearchClient(new ApiKeyServiceClientCredentials(subscriptionKey));
-```
+    ```bash
+    dotnet add package Microsoft.Azure.CognitiveServices.Search.ImageSearch
+    ```
 
+---
+
+## <a name="initialize-the-application"></a>初始化應用程式
+
+
+1. 使用下列程式碼取代 *Program.cs* 中的所有 `using` 陳述式：
+
+    ```csharp
+    using System;
+    using System.Linq;
+    using Microsoft.Azure.CognitiveServices.Search.ImageSearch;
+    using Microsoft.Azure.CognitiveServices.Search.ImageSearch.Models;
+    ```
+
+1. 在專案的 `Main` 方法中，針對有效訂用帳戶金鑰、要由 Bing 傳回的影像結果和搜尋字詞建立變數。 然後使用金鑰來將影像搜尋用戶端具現化。
+
+    ```csharp
+    static async Task Main(string[] args)
+    {
+        //IMPORTANT: replace this variable with your Cognitive Services subscription key
+        string subscriptionKey = "ENTER YOUR KEY HERE";
+        //stores the image results returned by Bing
+        Images imageResults = null;
+        // the image search term to be used in the query
+        string searchTerm = "canadian rockies";
+        
+        //initialize the client
+        //NOTE: If you're using version 1.2.0 or below for the Bing Image Search client library, 
+        // use ImageSearchAPI() instead of ImageSearchClient() to initialize your search client.
+        
+        var client = new ImageSearchClient(new ApiKeyServiceClientCredentials(subscriptionKey));
+    }
+    ```
+    
 ## <a name="send-a-search-query-using-the-client"></a>使用用戶端傳送搜尋查詢
-
-使用用戶端以利用查詢文字搜尋：
-
+    
+仍然在 `Main` 方法中，使用用戶端來搜尋查詢文字：
+    
 ```csharp
 // make the search request to the Bing Image API, and get the results"
-imageResults = client.Images.SearchAsync(query: searchTerm).Result; //search query
+imageResults = await client.Images.SearchAsync(query: searchTerm).Result; //search query
 ```
 
 ## <a name="parse-and-view-the-first-image-result"></a>剖析並檢視第一個影像結果
 
-剖析回應中所傳回的影像結果。
-如果回應包含搜尋結果，請儲存第一個結果並列印出其詳細資料，例如縮圖 URL、原始 URL 及傳回影像的總數。  
+剖析回應中所傳回的影像結果。 
+
+如果回應包含搜尋結果，請儲存第一個結果，並印出其部分詳細資料。
 
 ```csharp
 if (imageResults != null)
@@ -80,6 +121,7 @@ if (imageResults != null)
     Console.WriteLine($"Copy the following URLs to view these images on your browser.\n");
     Console.WriteLine($"URL to the first image:\n\n {firstImageResult.ContentUrl}\n");
     Console.WriteLine($"Thumbnail URL for the first image:\n\n {firstImageResult.ThumbnailUrl}");
+    Console.WriteLine("Press any key to exit ...");
     Console.ReadKey();
 }
 ```

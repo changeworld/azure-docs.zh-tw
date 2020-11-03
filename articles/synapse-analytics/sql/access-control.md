@@ -9,19 +9,19 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: a2e6111f2df5a8d7334a85ec5b6a9e514368ad6c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 708b8255f6cf7c60e2d2fc7fbd280b477c06a3d6
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289475"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92503278"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>管理工作區、資料和管線的存取權
 
 了解如何在 Azure Synapse Analytics 工作區 (預覽) 中管理工作區、資料和管線的存取控制。
 
 > [!NOTE]
-> 正式推出之後，RBAC 會透過引進 Synapse 特有的 Azure 角色而完成更進一步的開發
+> 正式推出之後，Azure RBAC 會透過引進 Synapse 特有的 Azure 角色而完成更進一步的開發
 
 ## <a name="access-control-for-workspace"></a>工作區的存取控制
 
@@ -52,10 +52,10 @@ ms.locfileid: "91289475"
 3. 瀏覽至您為 Azure Synapse 工作區挑選的容器 (檔案系統)
 4. 選取 [存取控制 (IAM)]
 5. 指派下列角色：
-   1. 將**讀者**角色指派給：  `Synapse_WORKSPACENAME_Users`
-   2. 將**儲存體 Blob 資料擁有者**角色指派給：  `Synapse_WORKSPACENAME_Admins`
-   3. 將**儲存體 Blob 資料參與者**角色指派給： `Synapse_WORKSPACENAME_Users`
-   4. 將**儲存體 Blob 資料擁有者**角色指派給：  `WORKSPACENAME`
+   1. 將 **讀者** 角色指派給：  `Synapse_WORKSPACENAME_Users`
+   2. 將 **儲存體 Blob 資料擁有者** 角色指派給：  `Synapse_WORKSPACENAME_Admins`
+   3. 將 **儲存體 Blob 資料參與者** 角色指派給： `Synapse_WORKSPACENAME_Users`
+   4. 將 **儲存體 Blob 資料擁有者** 角色指派給：  `WORKSPACENAME`
 
 > [!NOTE]
 > WORKSPACENAME - 此部分應使用實際的工作區名稱。
@@ -100,7 +100,7 @@ ms.locfileid: "91289475"
 ## <a name="access-control-to-sql-databases"></a>SQL Database 的存取控制
 
 > [!TIP]
-> 您必須為**每個** SQL 資料庫執行下列步驟，為使用者授與所有 SQL 資料庫的存取權，但不包括[伺服器層級權限](#server-level-permission)一節中的資料庫 (您可為使用者指派這些資料庫的系統管理員角色)。
+> 您必須為 **每個** SQL 資料庫執行下列步驟，為使用者授與所有 SQL 資料庫的存取權，但不包括 [伺服器層級權限](#server-level-permission)一節中的資料庫 (您可為使用者指派這些資料庫的系統管理員角色)。
 
 ### <a name="sql-on-demand"></a>SQL 隨選
 
@@ -108,7 +108,7 @@ ms.locfileid: "91289475"
 
 #### <a name="database-level-permission"></a>資料庫層級權限
 
-若要對使用者授與**單一** SQL 隨選資料庫的存取權，請遵循此範例中的步驟：
+若要對使用者授與 **單一** SQL 隨選資料庫的存取權，請遵循此範例中的步驟：
 
 1. 建立登入
 
@@ -140,16 +140,16 @@ ms.locfileid: "91289475"
 
 #### <a name="server-level-permission"></a>伺服器層級權限
 
-若要對使用者授與**所有** SQL 隨選資料庫的完整存取權，請遵循此範例中的步驟：
+若要對使用者授與 **所有** SQL 隨選資料庫的完整存取權，請遵循此範例中的步驟：
 
 ```sql
 CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
-ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
+ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
 ```
 
 ### <a name="sql-pools"></a>SQL 集區
 
-若要對使用者授與**單一** SQL Database 的存取權，請遵循下列步驟：
+若要對使用者授與 **單一** SQL Database 的存取權，請遵循下列步驟：
 
 1. 藉由在內容選取器 (用來選取資料庫的下拉式清單) 中執行下列以所需資料庫為目標的命令，於資料庫中建立使用者：
 

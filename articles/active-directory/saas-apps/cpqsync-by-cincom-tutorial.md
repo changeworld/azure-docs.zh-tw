@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/08/2019
 ms.author: jeedes
-ms.openlocfilehash: db8f7e77570ade206633781c9ba4726f881bff02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bd98acec06caf9c807844df2c957e61e0f0b2a8
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88549189"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92455114"
 ---
 # <a name="tutorial-integrate-cpqsync-by-cincom-with-azure-active-directory"></a>教學課程：整合 CPQSync by Cincom 與 Azure Active Directory
 
@@ -26,7 +26,7 @@ ms.locfileid: "88549189"
 * 讓使用者使用其 Azure AD 帳戶自動登入 CPQSync by Cincom。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -49,7 +49,7 @@ ms.locfileid: "88549189"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **CPQSync by Cincom**。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **CPQSync by Cincom** 。
 1. 從結果面板中選取 [CPQSync by Cincom]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-cpqsync-by-cincom"></a>設定及測試 CPQSync by Cincom 的 Azure AD 單一登入
@@ -86,7 +86,7 @@ ms.locfileid: "88549189"
     在 [登入 URL]  文字方塊中，輸入 URL：`https://cincom.okta.com/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [CPQSync by Cincom 用戶端支援小組](https://cpqsupport.cincomcpq.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [CPQSync by Cincom 用戶端支援小組](https://cpqsupport.cincomcpq.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 4. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (原始)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -132,19 +132,18 @@ ms.locfileid: "88549189"
 
 ### <a name="create-cpqsync-by-cincom-test-user"></a>建立 CPQSync by Cincom 測試使用者
 
-在本節中，您會在 CPQSync by Cincom 中建立名為 B.Simon 的使用者。 請與  [CPQSync by Cincom 支援小組](https://cpqsupport.cincomcpq.com)合作，在 CPQSync by Cincom 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您會在 CPQSync by Cincom 中建立名為 B.Simon 的使用者。 請與 [CPQSync by Cincom 支援小組](https://cpqsupport.cincomcpq.com)合作，在 CPQSync by Cincom 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ## <a name="test-sso"></a>測試 SSO 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [CPQSync by Cincom] 圖格時，應該會自動登入您已設定 SSO 的 CPQSync by Cincom。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [CPQSync by Cincom] 圖格時，應該會自動登入您已設定 SSO 的 CPQSync by Cincom。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="additional-resources"></a>其他資源
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
-- [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
