@@ -8,22 +8,21 @@ ms.author: chalton
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: 6a4dcec2b50a13a256c82e4a5ec54c9b22aa973f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 11/02/2020
+ms.openlocfilehash: f0295c27f1d193b0dcd7829a11b4aabe0edb659b
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791982"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286350"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用 blob 索引子和技能集為加密的 blob 編制索引
 
-本文說明如何使用[Azure 認知搜尋](search-what-is-azure-search.md)來編制先前使用[Azure Key Vault](../key-vault/general/overview.md)在[Azure Blob 儲存體](../storage/blobs/storage-blobs-introduction.md)內加密檔的索引。 一般而言，索引子無法從加密的檔案中解壓縮內容，因為它無法存取加密金鑰。 不過，藉由運用 [DecryptBlobFile](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile) 自訂技能，然後使用 [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md)，您可以提供金鑰的受控制存取來解密檔案，然後再將內容解壓縮。 如此一來，就能將這些檔編制索引，而不需要擔心資料是以未加密的狀態儲存。
+本文說明如何使用[Azure 認知搜尋](search-what-is-azure-search.md)來編制先前使用[Azure Key Vault](../key-vault/general/overview.md)在[Azure Blob 儲存體](../storage/blobs/storage-blobs-introduction.md)內加密之檔的索引。 一般而言，索引子無法從加密的檔案中解壓縮內容，因為它無法存取加密金鑰。 不過，藉由運用 [DecryptBlobFile](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile) 自訂技能，然後使用 [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md)，您可以提供金鑰的受控制存取來解密檔案，然後再將內容解壓縮。 這可以解除索引這些檔的能力，而不會危及儲存檔的加密狀態。
 
-本指南使用 Postman 和搜尋 REST Api 來執行下列工作：
+從先前加密的整份檔開始， (Azure Blob 儲存體中的非結構化文字) 例如 PDF、HTML、.DOCX 和 .PPTX，本指南會使用 Postman 和搜尋 REST Api 來執行下列工作：
 
 > [!div class="checklist"]
-> * 從整份檔開始 (非結構化文字) 例如，已使用 Azure Key Vault 加密的 Azure Blob 儲存體中的 PDF、HTML、.DOCX 和 .PPTX。
 > * 定義可解密檔並從中解壓縮文字的管線。
 > * 定義用來儲存輸出的索引。
 > * 執行用來建立和載入索引的管線。
@@ -36,13 +35,10 @@ ms.locfileid: "92791982"
 此範例假設您已將檔案上傳至 Azure Blob 儲存體，並已在程式中將它們加密。 如果您需要有關讓檔案一開始上傳及加密的協助，請參閱 [本教學](../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md) 課程以瞭解如何執行此操作。
 
 + [Azure 儲存體](https://azure.microsoft.com/services/storage/)
-+ [Azure 金鑰保存庫](https://azure.microsoft.com/services/key-vault/)
++ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 在與 Azure 認知搜尋相同的訂用帳戶中。 金鑰保存庫必須啟用虛 **刪除** 和 **清除保護** 。
++ [Azure 認知搜尋](search-create-service-portal.md) 在任何區域中的可 [計費層](search-sku-tier.md#tiers) (基本或更高版本) 
 + [Azure 函式](https://azure.microsoft.com/services/functions/)
 + [Postman 桌面應用程式](https://www.getpostman.com/)
-+ [建立](search-create-service-portal.md)或[尋找現有的搜尋服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
-
-> [!Note]
-> 您可以使用本指南的免費服務。 免費搜尋服務會限制您有三個索引、三個索引子、三個數據源和三個技能集。 本指南會建立每一個。 開始之前，請確定您的服務有空間可接受新的資源。
 
 ## <a name="1---create-services-and-collect-credentials"></a>1-建立服務並收集認證
 
@@ -104,9 +100,9 @@ AI 擴充和技能集執行是由認知服務所支援，包括自然語言和�
 
 ### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>取得 Azure 認知搜尋的管理員 API 金鑰和 URL
 
-1.  頁面中取得您的搜尋服務名稱。 您可藉由檢閱端點 URL 來確認您的服務名稱。 如果您的端點 URL 為 `https://mydemo.search.windows.net`，您的服務名稱會是 `mydemo`。
+1. [登入 Azure 入口網站](https://portal.azure.com/)，並在搜尋服務的 [概觀] 頁面中取得您的搜尋服務名稱。 您可藉由檢閱端點 URL 來確認您的服務名稱。 如果您的端點 URL 為 `https://mydemo.search.windows.net`，您的服務名稱會是 `mydemo`。
 
-2. 在 [設定]  >  [金鑰]  中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
+2. 在 [設定] >  [金鑰] 中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
 
    ![取得服務名稱及管理和查詢金鑰](media/search-get-started-javascript/service-name-and-keys.png)
 

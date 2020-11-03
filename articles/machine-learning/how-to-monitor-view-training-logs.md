@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: aa4b55cb0700a47d9235a1d526ef1b1678d6db8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11e4b79bf76a4612728992f7c16000d840b9c639
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333812"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285946"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>監視和查看 ML 執行記錄和計量
 
@@ -105,7 +105,9 @@ RunDetails(run).show()
 
 您可以在 [Azure Machine Learning studio](https://ml.azure.com)中流覽已完成的執行記錄（包括記錄的計量）。
 
-流覽至 [ **實驗** ] 索引標籤，然後選取您的實驗。 在 [實驗執行] 儀表板上，您可以看到每個執行的追蹤計量和記錄。 
+流覽至 [ **實驗** ] 索引標籤。若要跨實驗查看工作區中的所有執行，請選取 [ **所有執行** ] 索引標籤。您可以在頂端功能表列中套用實驗篩選，以向下切入特定實驗的執行。 
+
+針對個別實驗視圖，請選取 [ **所有實驗** ] 索引標籤。在 [實驗執行] 儀表板上，您可以看到每個執行的追蹤計量和記錄。 
 
 向下切入至特定回合以查看其輸出或記錄，或下載實驗的快照，讓您可以與其他人共用實驗資料夾。
 

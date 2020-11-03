@@ -3,12 +3,12 @@ title: 適用於 Azure Functions 2.x 的 host.json 參考
 description: Azure Functions host.json 檔案與 v2 執行階段的參考文件。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: f58eefd636b2bd59d6b3656bf162f7d601f7ff85
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 0b6fbe2553541b6260697584fa7066cdcb1fe122
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167641"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93284498"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 和更新版本的 host.json 參考 (機器翻譯) 
 
@@ -116,6 +116,11 @@ ms.locfileid: "92167641"
     },
     "managedDependency": {
         "enabled": true
+    },
+    "retry": {
+      "strategy": "fixedDelay",
+      "maxRetryCount": 5,
+      "delayInterval": "00:00:05"
     },
     "singleton": {
       "lockPeriod": "00:00:15",
@@ -349,6 +354,28 @@ ms.locfileid: "92167641"
 ## <a name="queues"></a>queues
 
 可在[儲存體佇列觸發程序和繫結](functions-bindings-storage-queue-output.md#host-json)中找到組態設定。  
+
+## <a name="retry"></a>retry
+
+控制應用程式中所有執行的 [重試原則](./functions-bindings-error-pages.md#retry-policies) 選項。
+
+```json
+{
+    "retry": {
+        "strategy": "fixedDelay",
+        "maxRetryCount": 2,
+        "delayInterval": "00:00:03"  
+    }
+}
+```
+
+|屬性  |預設 | 描述 |
+|---------|---------|---------| 
+|策略|null|必要。 要使用的重試策略。 有效值為 `fixedDelay` 或 `exponentialBackoff`。|
+|maxRetryCount|null|必要。 每個函數執行所允許的重試次數上限。 `-1` 表示要無限期地重試。|
+|delayInterval|null|使用策略重試之間的延遲 `fixedDelay` 。|
+|minimumInterval|null|使用策略時的最小重試延遲 `exponentialBackoff` 。|
+|maximumInterval|null|使用策略時的最大重試延遲 `exponentialBackoff` 。| 
 
 ## <a name="sendgrid"></a>sendGrid
 

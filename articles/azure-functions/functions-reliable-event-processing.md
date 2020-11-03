@@ -3,14 +3,14 @@ title: Azure Functions 可靠的事件處理
 description: 避免 Azure Functions 中遺失事件中樞訊息
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/01/2020
 ms.author: cshoe
-ms.openlocfilehash: 93a12d40e876293eb587ffba865a1d3b1f5f4983
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aaafe6d4080d85822ec5af9639c27fc8c55c2ce6
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86506021"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287237"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions 可靠的事件處理
 
@@ -50,7 +50,7 @@ Azure Functions 在迴圈執行下列步驟時，會取用事件中樞事件：
 
 此行為會顯示幾個重點：
 
-- *未處理的例外狀況可能會導致您遺失訊息。* 導致例外狀況的執行將會繼續進行指標的進度。
+- *未處理的例外狀況可能會導致您遺失訊息。* 導致例外狀況的執行將會繼續進行指標的進度。  設定 [重試原則](./functions-bindings-error-pages.md#retry-policies) 會延遲指標的進度，直到評估整個重試原則為止。
 - *函數可保證至少一次傳遞。* 您的程式碼和相依系統可能需要 [考慮相同訊息接收兩次的情況](./functions-idempotent.md)。
 
 ## <a name="handling-exceptions"></a>處理例外狀況
@@ -59,9 +59,9 @@ Azure Functions 在迴圈執行下列步驟時，會取用事件中樞事件：
 
 ### <a name="retry-mechanisms-and-policies"></a>重試機制和原則
 
-有些例外狀況本質上是暫時性的，而且在稍後重試一次作業時不會重新顯示。 這就是為什麼第一個步驟一律會重試作業的原因。 您可以自行撰寫重試處理規則，但是它們很普遍有許多可用的工具。 使用這些程式庫可讓您定義健全的重試原則，這也有助於保留處理順序。
+有些例外狀況本質上是暫時性的，而且在稍後重試一次作業時不會重新顯示。 這就是為什麼第一個步驟一律會重試作業的原因。  您可以利用函式應用程式 [重試原則](./functions-bindings-error-pages.md#retry-policies) ，或在函式執行內撰寫重試邏輯。
 
-將錯誤處理程式庫引進您的函式，可讓您定義基本和先進重試原則。 例如，您可以依照下列規則所說明的工作流程來執行原則：
+將錯誤處理行為引進您的函式，可讓您定義基本和先進重試原則。 例如，您可以依照下列規則所說明的工作流程來執行原則：
 
 - 請嘗試插入訊息三次， (可能會在重試之間有延遲) 。
 - 如果所有重試的最終結果都是失敗，則將訊息新增至佇列，以便可以在資料流程上繼續處理。
@@ -69,10 +69,6 @@ Azure Functions 在迴圈執行下列步驟時，會取用事件中樞事件：
 
 > [!NOTE]
 > [Polly](https://github.com/App-vNext/Polly) 是 c # 應用程式的復原和暫時性錯誤處理程式庫的範例。
-
-使用預先編譯的 c # 類別庫時， [例外狀況篩選器](/dotnet/csharp/language-reference/keywords/try-catch) 可讓您在發生未處理的例外狀況時，執行程式碼。
-
-示範如何使用例外狀況篩選器的範例可在 [AZURE WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 存放庫中取得。
 
 ## <a name="non-exception-errors"></a>非例外狀況錯誤
 

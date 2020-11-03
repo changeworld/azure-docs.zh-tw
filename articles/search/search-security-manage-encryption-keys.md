@@ -7,14 +7,14 @@ author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: fdc0ae3fef2fb70b7372ab4fb28497ea6a6400a4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: dfea03270dfea3699f7c3508b9f5275a2dd26372
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635427"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287157"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>在 Azure 認知搜尋中設定客戶管理的金鑰進行資料加密
 
@@ -41,15 +41,13 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 
 如果您使用不同的區域，或在8月1日之前建立的服務，則您的 CMK 加密僅限於資料磁片，但不包括服務使用的暫存磁片。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-此範例會使用下列工具和服務。 
+此案例中會使用下列工具和服務。
 
-+ [建立認知搜尋服務](search-create-service-portal.md) 或 [尋找現有](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)的辨識項。 
-
-+ [建立 Azure Key Vault 資源](../key-vault/secrets/quick-create-portal.md#create-a-vault) 或尋找現有資源。 Key Vault 和認知搜尋都必須位於相同的訂用帳戶中。 金鑰保存庫必須啟用虛 **刪除** 和 **清除保護** 。
-
-+ [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) 註冊應用程式，並建立應用程式用來驗證的秘密字串。 如果您沒有帳戶，請 [設定一個新的租](../active-directory/develop/quickstart-create-new-tenant.md)使用者。
++ [Azure 認知搜尋](search-create-service-portal.md) 在任何區域) 的可 [計費層級](search-sku-tier.md#tiers) (基本或更新版本。
++ [Azure Key Vault](../key-vault/secrets/quick-create-portal.md#create-a-vault) 在與 Azure 認知搜尋相同的訂用帳戶中。 金鑰保存庫必須啟用虛 **刪除** 和 **清除保護** 。
++ [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)。 如果您沒有帳戶，請 [設定一個新的租](../active-directory/develop/quickstart-create-new-tenant.md)使用者。
 
 您應該有可建立加密物件的搜尋應用程式。 在此程式碼中，您將參考金鑰保存庫金鑰，並 Active Directory 註冊資訊。 此程式碼可以是可運作的應用程式，或原型程式碼，例如 [c # 程式碼範例 DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK)。
 
@@ -112,11 +110,11 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 
 1. 選取左邊的索引 **鍵** ，然後選取 [ **+ 產生/匯入** ]。
 
-1. 在 [建立金鑰]  窗格中，從 [選項]  清單中選擇您要用來建立金鑰的方法。 您可以 [產生]  新的金鑰、[上傳]  現有金鑰，或使用 [還原備份]  來選取金鑰的備份。
+1. 在 [建立金鑰] 窗格中，從 [選項] 清單中選擇您要用來建立金鑰的方法。 您可以 [產生] 新的金鑰、[上傳] 現有金鑰，或使用 [還原備份] 來選取金鑰的備份。
 
 1. 輸入您的金鑰 **名稱** ，並選擇性地選取其他索引鍵屬性。
 
-1. 選取 [建立]  以開始部署。
+1. 選取 [建立] 以開始部署。
 
 1. 記下金鑰識別碼，它是由 **金鑰值 Uri** 、 **金鑰名稱** 和 **金鑰版本** 所組成。 在 Azure 認知搜尋中，您將需要用來定義加密索引的識別碼。
 
@@ -134,7 +132,7 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 
    如果您正在逐步執行 [DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK)，請將此值貼入檔案中的 **appsettings.js** 。
 
-   :::image type="content" source="media/search-manage-encryption-keys/cmk-application-id.png" alt-text="建立新的金鑰保存庫金鑰":::
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-application-id.png" alt-text="Essentials 區段中的應用程式識別碼":::
 
 1. 接下來，選取左側 **& 秘密的憑證** 。
 
@@ -142,7 +140,7 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 
 1. 複製應用程式秘密。 如果您要逐步執行範例，請將此值貼入檔案中的 **appsettings.js** 。
 
-   :::image type="content" source="media/search-manage-encryption-keys/cmk-application-secret.png" alt-text="建立新的金鑰保存庫金鑰":::
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-application-secret.png" alt-text="應用程式祕密":::
 
 ## <a name="4---grant-key-access-permissions"></a>4-授與金鑰存取權限
 
@@ -154,11 +152,11 @@ CMK 加密相依于 [Azure Key Vault](../key-vault/general/overview.md)。 您�
 
 1. 選取左側的 **存取原則** ，然後選取 [ **+ 新增存取原則** ]。
 
-   :::image type="content" source="media/search-manage-encryption-keys/cmk-add-access-policy.png" alt-text="建立新的金鑰保存庫金鑰":::
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-add-access-policy.png" alt-text="新增金鑰保存庫存取原則":::
 
 1. 選擇 [ **選取主體** ]，然後選取您向 Active Directory 註冊的應用程式。 您可以依名稱搜尋它。
 
-   :::image type="content" source="media/search-manage-encryption-keys/cmk-access-policy-permissions.png" alt-text="建立新的金鑰保存庫金鑰":::
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-access-policy-permissions.png" alt-text="選取 key vault 存取原則主體":::
 
 1. 在 [ **金鑰許可權** ] 中，選擇 [ *取得* ]、[解除包裝 *金鑰* 和 *包裝金鑰* ]。
 

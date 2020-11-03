@@ -9,18 +9,18 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8a975673bec3b3579eaa699f873fe8c4b1481d38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e0007f3b0dad8a68e9d81cebbe9fe24b5a7db3c
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744759"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285653"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>如何啟用 Key Vault 記錄
 
 在建立一或多個金鑰保存庫之後，您可能會想要監視金鑰保存庫的存取方式、時間和存取者。 如需此功能的完整詳細資訊，請參閱 [Key Vault 記錄](logging.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，必須具備下列項目：
 
@@ -64,7 +64,7 @@ Set-AzContext -SubscriptionId "<subscriptionID>"
 
 雖然您可以為記錄使用現有的儲存體帳戶，但我們將建立專用於 Key Vault 記錄的新儲存體帳戶。 
 
-為了進一步簡化管理，我們也會使用包含金鑰保存庫的同一個資源群組。 在 [Azure CLI 快速入門](quick-create-cli.md) 和 [Azure PowerShell 快速入門](quick-create-powershell.md)中，此資源群組會命名為 **myResourceGroup**，且位置為 *eastus*。 視情況將這些值取代為您自己的值。 
+為了進一步簡化管理，我們也會使用包含金鑰保存庫的同一個資源群組。 在 [Azure CLI 快速入門](quick-create-cli.md) 和 [Azure PowerShell 快速入門](quick-create-powershell.md)中，此資源群組會命名為 **myResourceGroup** ，且位置為 *eastus* 。 視情況將這些值取代為您自己的值。 
 
 我們也必須提供儲存體帳戶名稱。 儲存體帳戶名稱必須是唯一的，長度介於3到24個字元之間，而且只能使用數位和小寫字母。  最後，我們會建立「Standard_LRS」 SKU 的儲存體帳戶。
 
@@ -147,7 +147,7 @@ Set-AzDiagnosticSetting "<key-vault-resource-id>" -StorageAccountId $sa.id -Enab
   * 建立、修改或刪除這些金鑰或祕密。
   * 簽署、驗證、加密、解密、包裝和解除包裝金鑰、取得秘密，以及列出金鑰和祕密 (及其版本)。
 * 產生 401 回應的未經驗證要求。 例如，沒有持有人權杖的要求、格式不正確或已過期的要求，或具有無效權杖的要求。  
-* 即將過期、已過期和保存庫存取原則已變更的事件方格通知事件 (新版本事件未記錄)。 不論金鑰保存庫上是否已建立事件訂用帳戶，都會記錄事件。 如需詳細資訊，請參閱 [Key Vault 的事件方格事件結構描述](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault)
+* 即將過期、已過期和保存庫存取原則已變更的事件方格通知事件 (新版本事件未記錄)。 不論金鑰保存庫上是否已建立事件訂用帳戶，都會記錄事件。 如需詳細資訊，請參閱 [Key Vault 的事件方格事件結構描述](../../event-grid/event-schema-key-vault.md)
 
 ## <a name="access-your-logs"></a>存取記錄
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/06/2020
-ms.openlocfilehash: 8d23b89ab155c47e09f82d22c065db47ab9ac73d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: adc5dfcef8cce269b6b6d982178433b8ee163f92
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540783"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285437"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Ambari 活動訊號問題
 
@@ -28,7 +28,7 @@ Ambari 代理程式具有高 CPU 使用率，這會導致 Ambari UI 的警示，
 
 由於各種 ambari 代理程式的錯誤，在罕見的情況下，您的 ambari 代理程式可以有高 (接近100的 CPU 使用率) 百分比。
 
-### <a name="resolution"></a>解決方案
+### <a name="resolution"></a>解決方法
 
 1. 識別 ambari 代理程式的處理序識別碼 (pid) ：
 
@@ -67,7 +67,7 @@ Ambari 代理程式未啟動，這會導致 Ambari UI 的警示，而導致某�
 
 警示是由 Ambari 代理程式未執行所造成。
 
-### <a name="resolution"></a>解決方案
+### <a name="resolution"></a>解決方法
 
 1. 確認 ambari 代理程式的狀態：
 
@@ -93,7 +93,7 @@ Ambari 的心跳代理程式已中斷。
 
 OMS 記錄會造成高 CPU 使用率。
 
-### <a name="resolution"></a>解決方案
+### <a name="resolution"></a>解決方法
 
 * 使用 [AzHDInsightMonitoring](/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) PowerShell Cmdlet 停用 Azure 監視器記錄。
 * 刪除 `mdsd.warn` 記錄檔
@@ -102,10 +102,4 @@ OMS 記錄會造成高 CPU 使用率。
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
-
-* 透過 [Azure 社群支援](https://azure.microsoft.com/support/community/)獲得由 Azure 專家所提供的解答。
-
-* 與 [@AzureSupport](https://twitter.com/azuresupport) 聯繫 - 專為改善客戶體驗而設的官方 Microsoft Azure 帳戶，協助 Azure 社群連接至適當的資源，例如解答、支援及專家等。
-
-* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) 提交支援要求。 在功能表列選取 [支援] 或開啟 [說明 + 支援] 中心。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md) (機器翻譯)。 您可透過 Microsoft Azure 訂用帳戶來存取訂用帳戶管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

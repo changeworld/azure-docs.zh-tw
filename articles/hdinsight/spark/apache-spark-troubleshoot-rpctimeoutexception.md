@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: fdf8a6d36d6b9d112ef5b3ea50991ac7d98fcbae
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b4b5268bef71bd6b23df6049fd3ac8af973d4385
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547260"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287748"
 ---
 # <a name="scenario-rpctimeoutexception-for-apache-spark-thrift-server-in-azure-hdinsight"></a>案例： Azure HDInsight 中 Apache Spark thrift 伺服器的 RpcTimeoutException
 
@@ -38,7 +38,7 @@ java.lang.OutOfMemoryError: GC overhead limit exceeded
 
 這些錯誤是因為資料處理期間記憶體資源不足所造成。 如果 JAVA 垃圾收集處理常式啟動，可能會導致 Spark 應用程式停止回應。 查詢將會開始時間並停止處理。 此 `Futures timed out` 錯誤表示在嚴重壓力下的叢集。
 
-## <a name="resolution"></a>解決方案
+## <a name="resolution"></a>解決方法
 
 藉由新增更多背景工作節點或增加現有叢集節點的記憶體容量，來增加叢集大小。 您也可以調整資料管線，以減少一次處理的資料量。
 
@@ -46,10 +46,4 @@ java.lang.OutOfMemoryError: GC overhead limit exceeded
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
-
-* 透過 [Azure 社群支援](https://azure.microsoft.com/support/community/)獲得由 Azure 專家所提供的解答。
-
-* 與 [@AzureSupport](https://twitter.com/azuresupport) 聯繫 - 專為改善客戶體驗而設的官方 Microsoft Azure 帳戶，協助 Azure 社群連接至適當的資源，例如解答、支援及專家等。
-
-* 如果需要更多協助，您可在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) 提交支援要求。 在功能表列選取 [支援] 或開啟 [說明 + 支援] 中心。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md) (機器翻譯)。 您可透過 Microsoft Azure 訂用帳戶來存取訂用帳戶管理和帳單支援，並透過其中一項 [Azure 支援方案](https://azure.microsoft.com/support/plans/)以取得技術支援。
+[!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

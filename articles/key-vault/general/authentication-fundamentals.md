@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: c8d2304017a8fccd83c9c64559b8c5edf48481b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e8f1d2964f42c480026d13bed59921dd3f07610
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91604270"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286234"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault 驗證基本概念
 
@@ -24,8 +24,8 @@ Azure Key Vault 可讓您安全地儲存和管理應用程式認證，例如秘�
 
 本檔假設您已熟悉下列概念。 如果您不熟悉任何這些概念，請在繼續之前先遵循說明連結。
 
-* Azure Active Directory [連結](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
-* 安全性主體 [連結](https://docs.microsoft.com/azure/key-vault/general/authentication#app-identity-and-security-principals)
+* Azure Active Directory [連結](../../active-directory/fundamentals/active-directory-whatis.md)
+* 安全性主體 [連結](./authentication.md#app-identity-and-security-principals)
 
 ## <a name="key-vault-configuration-steps-summary"></a>Key Vault 設定步驟摘要
 
@@ -42,8 +42,8 @@ Azure Key Vault 可讓您安全地儲存和管理應用程式認證，例如秘�
 請依照下列檔連結，瞭解如何在 Azure Active Directory 中註冊使用者或應用程式。
 **請確定您為應用程式建立使用者註冊的密碼，以及用戶端密碼或用戶端憑證認證。**
 
-* 在 Azure Active Directory[連結](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory)中註冊使用者
-* 在 Azure Active Directory[連結](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)中註冊應用程式
+* 在 Azure Active Directory[連結](../../active-directory/fundamentals/add-users-azure-active-directory.md)中註冊使用者
+* 在 Azure Active Directory[連結](../../active-directory/develop/quickstart-register-app.md)中註冊應用程式
 
 ## <a name="assign-your-security-principal-a-role-in-azure-active-directory"></a>在 Azure Active Directory 中將角色指派給安全性主體
 
@@ -57,8 +57,8 @@ Azure Active Directory 使用角色型存取控制 (RBAC) 將許可權指派給�
 >[!NOTE]
 > 當您將角色指派指派給 Azure Active Directory 租使用者層級的使用者時，這組許可權會向下 trickle 到指派範圍內的所有訂用帳戶、資源群組和資源。 若要遵循最低許可權的主體，您可以在更細微的範圍中建立此角色指派。 例如，您可以為使用者指派訂用帳戶層級的讀取者角色，以及單一金鑰保存庫的擁有者角色。 移至訂用帳戶、資源群組或金鑰保存庫的身分識別存取管理 (IAM) 設定，以在更細微的範圍中建立角色指派。
 
-* 若要深入瞭解 Azure Active Directory 角色 [連結](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
-* 深入瞭解指派或移除角色指派 [連結](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* 若要深入瞭解 Azure Active Directory 角色 [連結](../../role-based-access-control/built-in-roles.md)
+* 深入瞭解指派或移除角色指派 [連結](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="configure-key-vault-access-policies-for-your-security-principal"></a>為您的安全性主體設定 key vault 存取原則
 
@@ -121,8 +121,8 @@ Key Vault 角色指派是一組 Azure 內建的角色指派，其中包含用來
 
 若要深入瞭解 Key Vault RBAC，請參閱下列檔：
 
-* Azure Key Vault RBAC [連結](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#management-plane-and-azure-rbac)
-* Azure Key Vault RBAC 角色 (預覽) [連結](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-administrator-preview)
+* Azure Key Vault RBAC [連結](./secure-your-key-vault.md#management-plane-and-azure-rbac)
+* Azure Key Vault RBAC 角色 (預覽) [連結](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview)
 
 ## <a name="configure-key-vault-firewall"></a>設定 Key Vault 防火牆
 
@@ -132,9 +132,9 @@ Key Vault 角色指派是一組 Azure 內建的角色指派，其中包含用來
 
 * 將 IPv4 位址新增至 key vault 防火牆允許清單。 此選項最適用于具有靜態 IP 位址的應用程式。
 
-* 將虛擬網路新增至金鑰保存庫防火牆。 此選項最適用于具有動態 IP 位址的 Azure 資源，例如虛擬機器。 您可以將 Azure 資源新增至虛擬網路，並將虛擬網路新增至 key vault 防火牆允許清單。 此選項會使用服務端點，這是虛擬網路內的私人 IP 位址。 這可提供額外一層保護，因此 key vault 與您虛擬網路之間的流量會透過公用網際網路路由傳送。 若要深入瞭解服務端點，請參閱下列檔。 [連結](https://docs.microsoft.com/azure/key-vault/general/network-security)
+* 將虛擬網路新增至金鑰保存庫防火牆。 此選項最適用于具有動態 IP 位址的 Azure 資源，例如虛擬機器。 您可以將 Azure 資源新增至虛擬網路，並將虛擬網路新增至 key vault 防火牆允許清單。 此選項會使用服務端點，這是虛擬網路內的私人 IP 位址。 這可提供額外一層保護，因此 key vault 與您虛擬網路之間的流量會透過公用網際網路路由傳送。 若要深入瞭解服務端點，請參閱下列檔。 [連結](./network-security.md)
 
-* 將私人連結連接新增至金鑰保存庫。 此選項會將您的虛擬網路直接連線到 key vault 的特定實例，有效地將您的金鑰保存庫帶入您的虛擬網路中。 若要深入瞭解如何設定金鑰保存庫的私人端點連線，請參閱下列 [連結](https://docs.microsoft.com/azure/key-vault/general/private-link-service)
+* 將私人連結連接新增至金鑰保存庫。 此選項會將您的虛擬網路直接連線到 key vault 的特定實例，有效地將您的金鑰保存庫帶入您的虛擬網路中。 若要深入瞭解如何設定金鑰保存庫的私人端點連線，請參閱下列 [連結](./private-link-service.md)
 
 ## <a name="test-your-service-principals-ability-to-access-key-vault"></a>測試您的服務主體存取金鑰保存庫的能力
 
@@ -142,11 +142,11 @@ Key Vault 角色指派是一組 Azure 內建的角色指派，其中包含用來
 
 ### <a name="authentication-process-for-users-examples"></a>使用者的驗證程式 (範例) 
 
-* 使用者可以登入 Azure 入口網站來使用 key vault。 [Key Vault 入口網站快速入門](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)
+* 使用者可以登入 Azure 入口網站來使用 key vault。 [Key Vault 入口網站快速入門](./quick-create-portal.md)
 
-* 使用者可以使用 Azure CLI 來使用金鑰保存庫。 [Key Vault Azure CLI 快速入門](https://docs.microsoft.com/azure/key-vault/general/quick-create-cli)
+* 使用者可以使用 Azure CLI 來使用金鑰保存庫。 [Key Vault Azure CLI 快速入門](./quick-create-cli.md)
 
-* 使用者可以使用 Azure PowerShell 來使用金鑰保存庫。 [Key Vault Azure PowerShell 快速入門](https://docs.microsoft.com/azure/key-vault/general/quick-create-powershell)
+* 使用者可以使用 Azure PowerShell 來使用金鑰保存庫。 [Key Vault Azure PowerShell 快速入門](./quick-create-powershell.md)
 
 ### <a name="azure-active-directory-authentication-process-for-applications-or-services-examples"></a>應用程式或服務的 Azure Active Directory 驗證程式 (範例) 
 
@@ -156,7 +156,7 @@ Key Vault 角色指派是一組 Azure 內建的角色指派，其中包含用來
 
 * Azure 資源會使用 MSI 驗證來取得 Azure Active Directory 的權杖。 
 
-* 深入瞭解 MSI 驗證 [連結](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+* 深入瞭解 MSI 驗證 [連結](../../active-directory/managed-identities-azure-resources/overview.md)
 
 ### <a name="authentication-process-for-application-python-example"></a>應用程式 (Python 範例) 的驗證程式
 
@@ -196,4 +196,4 @@ if __name__ == "__main__":
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解金鑰保存庫驗證的詳細資訊，請參閱下列檔。 [Key Vault 驗證](https://docs.microsoft.com/azure/key-vault/general/authentication)
+若要深入瞭解金鑰保存庫驗證的詳細資訊，請參閱下列檔。 [Key Vault 驗證](./authentication.md)

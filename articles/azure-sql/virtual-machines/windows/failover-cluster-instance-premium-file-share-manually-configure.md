@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: b6e33f32c6adcea12952474e3f09b45834b85c1e
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 1994cda9dbf22a81216408ee07d51f635e89cff4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164392"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285281"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>在 Azure Vm 上建立具有 premium 檔案共用 (SQL Server 的 FCI) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +29,7 @@ Premium 檔案共用是儲存空間直接存取 (SSD) 支援、一致的低延�
 
 若要深入瞭解，請參閱 [使用 Azure vm 上的 SQL Server](failover-cluster-instance-overview.md) 和叢集 [最佳作法](hadr-cluster-best-practices.md)的 FCI 總覽。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在您完成本文中的指示之前，您應該已經有：
 
@@ -42,7 +42,7 @@ Premium 檔案共用是儲存空間直接存取 (SSD) 支援、一致的低延�
 ## <a name="mount-premium-file-share"></a>掛接 premium 檔案共用
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 並移至您的儲存體帳戶。
-1. 移至 [檔案**服務**] 下的 [檔案**共用**]，然後選取您想要用於 SQL 儲存體的 premium 檔案共用。
+1. 移至 [檔案 **服務** ] 下的 [檔案 **共用** ]，然後選取您想要用於 SQL 儲存體的 premium 檔案共用。
 1. 選取 [連線]，以顯示檔案共用的連接字串。
 1. 在下拉式清單中，選取您要使用的磁碟機號，然後將兩個程式碼區塊複製到 [記事本]。
 
@@ -70,7 +70,7 @@ Premium 檔案共用是儲存空間直接存取 (SSD) 支援、一致的低延�
 
    若要從 UI 安裝容錯移轉叢集，請在兩個虛擬機器上執行下列步驟：
    1. 在 [伺服器管理員] 中，選取 [管理]，然後選取 [新增角色和功能]。
-   1. 在 [ **新增角色及功能** ] 嚮導中選取 **[下一步** ]，直到您進入 **選取功能**為止。
+   1. 在 [ **新增角色及功能** ] 嚮導中選取 **[下一步** ]，直到您進入 **選取功能** 為止。
    1. 在 [選取功能] 中，選取 [容錯移轉叢集]。 選取所有所需功能與管理工具。 
    1. 選取 [新增功能]。
    1. 選取 [下一步]，然後選取 [完成] 以安裝功能。
@@ -96,7 +96,17 @@ Premium 檔案共用是儲存空間直接存取 (SSD) 支援、一致的低延�
 1. 選取 [下一步] 。
 1. 在 [測試選取] 下，選取除 [儲存體] 和 [儲存空間直接存取] 以外的所有測試，如下所示：
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="從檔案共用連線入口網站複製這兩個 PowerShell 命令"
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="選取叢集驗證測試":::
+
+1. 選取 [下一步] 。
+1. 在 [確認] 下，選取 [下一步]。
+
+[ **驗證** 設定] 嚮導會執行驗證測試。
+
+若要使用 PowerShell 驗證叢集，請在其中一部虛擬機器上，從系統管理員 PowerShell 工作階段執行下列指令碼：
+
+   ```powershell
+   Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
    ```
 
 驗證叢集後，請建立容錯移轉叢集。
@@ -139,9 +149,9 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 ## <a name="test-cluster-failover"></a>測試叢集容錯移轉
 
-測試叢集的容錯移轉。 在**容錯移轉叢集管理員**中，以滑鼠右鍵按一下您的叢集，然後選取 [**其他動作**]  >  **移動核心叢集資源**  >  **選取節點**，然後選取叢集的其他節點。 將核心叢集資源移到叢集的每個節點，再移回主要節點。 如果您可成功地將叢集移至每個節點，即可開始安裝 SQL Server。  
+測試叢集的容錯移轉。 在 **容錯移轉叢集管理員** 中，以滑鼠右鍵按一下您的叢集，然後選取 [ **其他動作** ]  >  **移動核心叢集資源**  >  **選取節點** ，然後選取叢集的其他節點。 將核心叢集資源移到叢集的每個節點，再移回主要節點。 如果您可成功地將叢集移至每個節點，即可開始安裝 SQL Server。  
 
-:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="從檔案共用連線入口網站複製這兩個 PowerShell 命令":::
+:::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="將核心資源移至其他節點以測試叢集容錯移轉":::
 
 
 ## <a name="create-sql-server-fci"></a>建立 SDL Server FCI
@@ -150,7 +160,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 使用 RDP 連線到第一部虛擬機器。
 
-1. 在 **容錯移轉叢集管理員**中，請確定所有核心叢集資源都位於第一部虛擬機器上。 如有必要，請將所有資源移至此虛擬機器。
+1. 在 **容錯移轉叢集管理員** 中，請確定所有核心叢集資源都位於第一部虛擬機器上。 如有必要，請將所有資源移至此虛擬機器。
 
 1. 找出安裝媒體。 若虛擬機器是使用其中一個 Azure Marketplace 映像，則媒體會位於 `C:\SQLServer_<version number>_Full`。 
 
@@ -158,17 +168,17 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 在 [SQL Server 安裝中心] 中，選取 [安裝]。
 
-1. 選取 [ **新增 SQL Server 容錯移轉叢集安裝**]，然後遵循 wizard 中的指示來安裝 SQL Server FCI。
+1. 選取 [ **新增 SQL Server 容錯移轉叢集安裝** ]，然後遵循 wizard 中的指示來安裝 SQL Server FCI。
 
    FCI 資料目錄必須位於進階檔案共用中。 輸入共用的完整路徑，格式如下： `\\storageaccountname.file.core.windows.net\filesharename\foldername` 。 隨即會出現警告告知已指定檔案伺服器作為資料目錄。 這個警告是正常現象。 當您保存檔案共用時，請確定您用來透過 RDP 存取 VM 的使用者帳戶，與 SQL Server 服務用來避免可能發生失敗的帳戶相同。
 
-   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="從檔案共用連線入口網站複製這兩個 PowerShell 命令":::
+   :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/use-file-share-as-data-directories.png" alt-text="使用檔案共用作為 SQL 資料目錄":::
 
 1. 完成精靈中的步驟後，安裝程式會在第一個節點上安裝 SQL Server FCI。
 
 1. 安裝程式在第一個節點上安裝 FCI 後，請使用 RDP 連線到第二個節點。
 
-1. 開啟 **SQL Server 安裝中心**，然後選取 [ **安裝**]。
+1. 開啟 **SQL Server 安裝中心** ，然後選取 [ **安裝** ]。
 
 1. 選取 [將節點新增到 SQL Server 容錯移轉叢集]。 遵循精靈中的指示來安裝 SQL Server，並將伺服器新增到 FCI。
 
@@ -200,7 +210,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 
 - Windows Server 2016 及更早版本不支援 Microsoft Distributed Transaction Coordinator (MSDTC) 。 
 - 使用進階檔案共用的容錯移轉叢集不支援 Filestream。 若要使用 filestream，請改為使用 [儲存空間直接存取](failover-cluster-instance-storage-spaces-direct-manually-configure.md) 或 [Azure 共用磁片](failover-cluster-instance-azure-shared-disks-manually-configure.md) 來部署叢集。
-- 只支援以 [輕量管理模式](sql-vm-resource-provider-register.md#management-modes) 向 SQL VM 資源提供者註冊。 
+- 只支援以 [輕量管理模式](sql-server-iaas-agent-extension-automate-management.md#management-modes) 向 SQL VM 資源提供者註冊。 
 
 ## <a name="next-steps"></a>後續步驟
 

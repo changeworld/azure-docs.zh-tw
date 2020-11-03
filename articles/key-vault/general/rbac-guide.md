@@ -9,25 +9,25 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 38072e95ed89d8fbc095e2f8ed41ea1381636300
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: f3775e73ce8f152fe39bc8170bbeba054f856630
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015150"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286596"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>使用 Azure 角色型存取控制 (預覽，提供 Key Vault 金鑰、憑證和秘密的存取權) 
 
 > [!NOTE]
-> Key Vault 資源提供者支援兩種資源類型：保存 **庫** 和 **受管理的 hsm**。 本文所述的存取控制僅適用于保存 **庫**。 若要深入瞭解受控 HSM 的存取控制，請參閱 [受控 hsm 存取控制](../managed-hsm/access-control.md)。
+> Key Vault 資源提供者支援兩種資源類型：保存 **庫** 和 **受管理的 hsm** 。 本文所述的存取控制僅適用于保存 **庫** 。 若要深入瞭解受控 HSM 的存取控制，請參閱 [受控 hsm 存取控制](../managed-hsm/access-control.md)。
 
-Azure 角色型存取控制 (Azure RBAC) 是以 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 為基礎的授權系統，可提供更細緻的 Azure 資源存取管理。
+Azure 角色型存取控制 (Azure RBAC) 是以 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) 為基礎的授權系統，可提供更細緻的 Azure 資源存取管理。
 
 Azure RBAC 可讓使用者管理金鑰、秘密和憑證的許可權。 它提供一個位置來管理所有金鑰保存庫的擁有權限。 
 
 Azure RBAC 模型可讓您在不同的範圍層級上設定許可權：管理群組、訂用帳戶、資源群組或個別資源。  適用于 key vault 的 Azure RBAC 也可讓您在個別金鑰、秘密和憑證上擁有個別的許可權
 
-如需詳細資訊，請參閱 [azure 角色型存取控制 (AZURE RBAC) ](https://docs.microsoft.com/azure/role-based-access-control/overview)。
+如需詳細資訊，請參閱 [azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)。
 
 ## <a name="best-practices-for-individual-keys-secrets-and-certificates"></a>個別金鑰、秘密和憑證的最佳作法
 
@@ -59,18 +59,18 @@ Azure RBAC 模型可讓您在不同的範圍層級上設定許可權：管理群
 | Key Vault 秘密長 (預覽) | 對金鑰保存庫的秘密執行任何動作，但管理許可權除外。 僅適用于使用「Azure 角色型存取控制」許可權模型的金鑰保存庫。 | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
 | Key Vault 秘密使用者 (預覽) | 讀取秘密內容。 僅適用于使用「Azure 角色型存取控制」許可權模型的金鑰保存庫。 | 4633458b-17de-408a-b874-0445c86b69e6 |
 
-如需有關 Azure 內建角色定義的詳細資訊，請參閱 [azure 內建角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
+如需有關 Azure 內建角色定義的詳細資訊，請參閱 [azure 內建角色](../../role-based-access-control/built-in-roles.md)。
 
 ## <a name="using-azure-rbac-secret-key-and-certificate-permissions-with-key-vault"></a>搭配 Key Vault 使用 Azure RBAC 秘密、金鑰和憑證許可權
 
 Key vault 的新 Azure RBAC 許可權模型提供了保存庫存取原則許可權模型的替代方案。 
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 若要新增角色指派，您必須具有：
 
 - 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 權限，例如[使用者存取系統管理員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator)或[擁有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
+- `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 權限，例如[使用者存取系統管理員](../../role-based-access-control/built-in-roles.md#user-access-administrator)或[擁有者](../../role-based-access-control/built-in-roles.md#owner)
 
 ### <a name="enable-azure-rbac-permissions-on-key-vault"></a>在 Key Vault 上啟用 Azure RBAC 許可權
 
@@ -194,9 +194,9 @@ az role assignment create --role "Key Vault Secrets Officer (preview)" --assigne
 
 ### <a name="creating-custom-roles"></a>建立自訂角色 
 
-[az role definition create 命令](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create)
+[az role definition create 命令](/cli/azure/role/definition#az-role-definition-create)
 
-** (CLI bash 腳本) </br>**
+**(CLI bash 腳本) </br>**
 ```azurecli
 az role definition create --role-definition '{ \
    "Name": "Backup Keys Operator", \
@@ -216,7 +216,7 @@ az role definition create --role-definition '{ \
 
 如需有關如何建立自訂角色的詳細資訊，請參閱：
 
-[Azure 自訂角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles) (機器翻譯)
+[Azure 自訂角色](../../role-based-access-control/custom-roles.md) (機器翻譯)
 
 ## <a name="known-limits-and-performance"></a>已知的限制和效能
 
@@ -226,5 +226,5 @@ az role definition create --role-definition '{ \
 
 ## <a name="learn-more"></a>深入了解
 
-- [Azure RBAC 總覽](https://docs.microsoft.com/azure/role-based-access-control/overview)
-- [自訂角色教學課程](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-cli)
+- [Azure RBAC 總覽](../../role-based-access-control/overview.md)
+- [自訂角色教學課程](../../role-based-access-control/tutorial-custom-role-cli.md)

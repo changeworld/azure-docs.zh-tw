@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d16d14ff51cb9a7e71193d93c6755a8e4cb93ed0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9277d100eb6744adfc20fbba9f96b822654e64a3
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89481404"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287698"
 ---
 # <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>使用 Azure 入口網站指派 Key Vault 存取原則
 
@@ -23,21 +23,21 @@ Key Vault 存取原則會決定指定的服務主體（也就是應用程式或�
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 
-如需透過 Azure 入口網站在 Azure Active Directory 中建立群組的詳細資訊，請參閱 [建立基本群組和新增成員](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)
+如需透過 Azure 入口網站在 Azure Active Directory 中建立群組的詳細資訊，請參閱 [建立基本群組和新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
 ## <a name="assign-an-access-policy"></a>指派存取原則
 
 1.  在 [Azure 入口網站](https://portal.azure.com)中，流覽至 Key Vault 資源。 
 
-1.  在 [ **設定**] 底下，選取 [ **存取**原則]，然後選取 [ **新增存取原則**]：
+1.  在 [ **設定** ] 底下，選取 [ **存取** 原則]，然後選取 [ **新增存取原則** ]：
 
     ![選取 [存取原則]，選取 [新增角色指派]](../media/authentication/assign-policy-portal-01.png)
 
-1.  在 [ **憑證許可權**]、[ **金鑰許可權**] 和 [ **秘密許可權**] 下，選取您要的許可權。 您也可以選取包含一般許可權組合的範本：
+1.  在 [ **憑證許可權** ]、[ **金鑰許可權** ] 和 [ **秘密許可權** ] 下，選取您要的許可權。 您也可以選取包含一般許可權組合的範本：
 
     ![指定存取原則許可權](../media/authentication/assign-policy-portal-02.png)
 
-1. 在 [ **選取主體**] 下，選擇 [ **無選取** ] 連結以開啟 [ **主體** 選取] 窗格。 在 [搜尋] 欄位中，輸入應用程式或服務主體的名稱，選取適當的結果，然後選擇 [ **選取**]。
+1. 在 [ **選取主體** ] 下，選擇 [ **無選取** ] 連結以開啟 [ **主體** 選取] 窗格。 在 [搜尋] 欄位中，輸入應用程式或服務主體的名稱，選取適當的結果，然後選擇 [ **選取** ]。
 
     ![選取存取原則的服務主體](../media/authentication/assign-policy-portal-03.png)
 
@@ -47,7 +47,7 @@ Key Vault 存取原則會決定指定的服務主體（也就是應用程式或�
 
     ![新增已指派服務主體的存取原則](../media/authentication/assign-policy-portal-04.png)
 
-1. 回到 [ **存取原則** ] 頁面，確認您的存取原則列在 [ **目前的存取**原則] 底下，然後選取 [ **儲存**]。 存取原則在您儲存之前都不會套用。
+1. 回到 [ **存取原則** ] 頁面，確認您的存取原則列在 [ **目前的存取** 原則] 底下，然後選取 [ **儲存** ]。 存取原則在您儲存之前都不會套用。
 
     ![儲存存取原則變更](../media/authentication/assign-policy-portal-05.png)
 

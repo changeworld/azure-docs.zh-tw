@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b1c0ef42454b085c5d4dbcdc14162b2c829c6a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ec45ce7634b7bc0a8f38f354112cdc2e172f1e17
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074809"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288360"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>常見問題身分識別保護 Azure Active Directory 的常見問題
 
@@ -27,14 +27,6 @@ ms.locfileid: "93074809"
 關閉 Identity Protection 中的 **使用者風險** 將 identity protection 中使用者風險歷程記錄的執行者設定為 **\<Admin’s name with a hyperlink pointing to user’s blade\>** 。
 
 目前已知的問題會導致使用者風險關閉流程中的延遲。 如果您有「使用者風險原則」，按一下 [解除使用者風險] 的幾分鐘內，此原則將會停止將套用至已解除的使用者。 不過，已知解除使用者的 [風險狀態] 有 UX 重新整理延遲。 因應措施是在瀏覽器層級重新整理頁面，以查看最新的使用者 [風險狀態]。
-
-## <a name="risky-users-report-known-issues"></a>具風險使用者報告已知問題
-
-[使用者名稱] 欄位上的查詢區分大小寫，[名稱] 欄位上的查詢則為大小寫無從驗證。
-
-切換 [顯示日期為] 會隱藏 [RISK LAST UPDATED] 資料行。 若要讀取資料行，請按一下 [具風險的使用者] 刀鋒視窗頂端的 [資料行]。
-
-關閉傳統 Identity Protection 中的 **所有事件** ，將風險偵測的狀態設定為 **已關閉 (已解決)** 。
 
 
 ## <a name="frequently-asked-questions"></a>常見問題集

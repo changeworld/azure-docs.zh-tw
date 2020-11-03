@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c4c8d1101bd83b580c010132dd70284b78569392
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 9c1a08161dafa500e9cab2038621c2329cfe6d27
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124216"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286893"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>開始使用 Key Vault 憑證
 下列情節概述 Key Vault 憑證管理服務的數個主要用法 (包括在金鑰保存庫中建立第一個憑證所需的其他步驟)。
@@ -37,7 +37,7 @@ ms.locfileid: "92124216"
 
 **步驟 1** - 憑證授權單位 (CA) 提供者  
 -   以 IT 管理員、PKI 管理員或任何使用 CA 管理帳戶之人的身分上線，針對指定的公司 (例如 Contoso) 是使用 Key Vault 憑證的先決條件。  
-    下列 CAs 是目前與 Key Vault 的合作提供者。 在[這裡](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate#partnered-ca-providers)深入了解   
+    下列 CAs 是目前與 Key Vault 的合作提供者。 在[這裡](./create-certificate.md#partnered-ca-providers)深入了解   
     -   DigiCert-Key Vault 使用 DigiCert 提供 OV TLS/SSL 憑證。  
     -   GlobalSign-Key Vault 使用 GlobalSign 提供 OV TLS/SSL 憑證。  
 
@@ -50,7 +50,7 @@ ms.locfileid: "92124216"
     -   提供者  
     -   認證 – CA 帳戶認證。 每個 CA 都有自己的特定資料。  
 
-    如需使用 CA 提供者建立帳戶的詳細資訊，請參閱 [Key Vault 部落格](https://aka.ms/kvcertsblog)上的相關文章。  
+    如需使用 CA 提供者建立帳戶的詳細資訊，請參閱 [Key Vault 部落格](/archive/blogs/kv/manage-certificates-via-azure-key-vault)上的相關文章。  
 
 **步驟 3.1** -設定通知的 [憑證連絡人](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) 。 這是 Key Vault 使用者的連絡人。 Key Vault 不會強制執行此步驟。  
 
@@ -82,7 +82,7 @@ ms.locfileid: "92124216"
       -   因為延遲建立，所以可以起始取消作業。 取消不一定會有作用。  
 
 ### <a name="network-security-and-access-policies-associated-with-integrated-ca"></a>與整合式 CA 相關聯的網路安全性和存取原則
-Key Vault 服務將要求傳送至 CA (輸出流量) 。 因此，它與已啟用防火牆的金鑰保存庫完全相容。 Key Vault 不會與 CA 共用存取原則。 CA 必須設定為接受獨立簽署要求。 [整合受信任 CA 的指南](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
+Key Vault 服務將要求傳送至 CA (輸出流量) 。 因此，它與已啟用防火牆的金鑰保存庫完全相容。 Key Vault 不會與 CA 共用存取原則。 CA 必須設定為接受獨立簽署要求。 [整合受信任 CA 的指南](./how-to-integrate-certificate-authority.md)
 
 ## <a name="import-a-certificate"></a>匯入憑證  
  或者，可以將憑證匯入至 Key Vault – PFX 或 PEM。  

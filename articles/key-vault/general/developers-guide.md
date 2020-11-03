@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6bdf008c13a1466ec47134c303902a1f9d19545b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 707b6d0f8a5fa3cff89339b9b0465d96b5369a34
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072759"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287605"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 金鑰保存庫開發人員指南
 
@@ -33,9 +33,9 @@ Key Vault 可讓您從應用程式內安全地存取機密資訊︰
 
 ## <a name="creating-and-managing-key-vaults"></a>建立及管理金鑰保存庫
 
-Key Vault 管理（類似于其他 Azure 服務）是透過 Azure Resource Manager 服務來完成。 Azure Resource Manager 是 Azure 的部署和管理服務。 其提供管理層，可讓您建立、更新和刪除您 Azure 帳戶中的資源。 如需詳細資訊，請參閱 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)
+Key Vault 管理（類似于其他 Azure 服務）是透過 Azure Resource Manager 服務來完成。 Azure Resource Manager 是 Azure 的部署和管理服務。 其提供管理層，可讓您建立、更新和刪除您 Azure 帳戶中的資源。 如需詳細資訊，請參閱 [Azure Resource Manager](../../azure-resource-manager/management/overview.md)
 
-管理層的存取權是由 [Azure 角色型存取控制](https://docs.microsoft.com/azure/role-based-access-control/overview)所控制。 在 Key Vault 中，管理層（也稱為管理或控制平面）可讓您建立和管理金鑰保存庫和其屬性，包括存取原則，而不是在資料平面上管理的金鑰、秘密和憑證。 您可以使用預先定義的 `Key Vault Contributor` 角色，將管理存取權授與 Key Vault。     
+管理層的存取權是由 [Azure 角色型存取控制](../../role-based-access-control/overview.md)所控制。 在 Key Vault 中，管理層（也稱為管理或控制平面）可讓您建立和管理金鑰保存庫和其屬性，包括存取原則，而不是在資料平面上管理的金鑰、秘密和憑證。 您可以使用預先定義的 `Key Vault Contributor` 角色，將管理存取權授與 Key Vault。     
 
 **金鑰保存庫管理的 API 和 Sdk：**
 
@@ -45,7 +45,7 @@ Key Vault 管理（類似于其他 Azure 服務）是透過 Azure Resource Manag
 
 請參閱安裝套件和原始程式碼的 [用戶端程式庫](client-libraries.md) 。
 
-如需 Key Vault 管理平面的詳細資訊，請參閱 [Key Vault 管理平面](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#management-plane-and-azure-rbac)
+如需 Key Vault 管理平面的詳細資訊，請參閱 [Key Vault 管理平面](./secure-your-key-vault.md#management-plane-and-azure-rbac)
 
 ## <a name="authenticate-to-key-vault-in-code"></a>在程式碼中驗證 Key Vault
 
@@ -53,29 +53,29 @@ Key Vault 使用 Azure AD 驗證，要求 Azure AD 安全性主體授與存取�
 
 ### <a name="authentication-best-practices"></a>驗證最佳作法
 
-建議您針對部署至 Azure 的應用程式使用受控識別。 如果您使用的 Azure 服務不支援受控識別，或應用程式是部署在內部部署環境，則有可能的替代方案是 [具有憑證的服務主體](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) 。 在該案例中，憑證應儲存在 Key Vault 中，並經常輪替。 具有秘密的服務主體可用於開發和測試環境，建議您在本機或 Cloud Shell 使用使用者主體。
+建議您針對部署至 Azure 的應用程式使用受控識別。 如果您使用的 Azure 服務不支援受控識別，或應用程式是部署在內部部署環境，則有可能的替代方案是 [具有憑證的服務主體](../../active-directory/develop/howto-create-service-principal-portal.md) 。 在該案例中，憑證應儲存在 Key Vault 中，並經常輪替。 具有秘密的服務主體可用於開發和測試環境，建議您在本機或 Cloud Shell 使用使用者主體。
 
 建議的每個環境安全性主體：
-- **生產環境**：
+- **生產環境** ：
   - 具有憑證的受控識別或服務主體
-- **測試和開發環境**：
+- **測試和開發環境** ：
   - 受控識別、具有憑證的服務主體，以及具有秘密的服務主體
-- **本機開發**：
+- **本機開發** ：
   - 具有秘密的使用者主體或服務主體
 
-**Azure 身分識別用戶端程式庫**支援上述驗證案例，並與 Key Vault sdk 整合。 Azure 身分識別程式庫可以跨不同的環境和平臺使用，而不需要變更您的程式碼。 Azure 身分識別也會自動從使用 Azure CLI、Visual Studio、Visual Studio Code 及其他專案登入 Azure 使用者的驗證權杖中取出。 
+**Azure 身分識別用戶端程式庫** 支援上述驗證案例，並與 Key Vault sdk 整合。 Azure 身分識別程式庫可以跨不同的環境和平臺使用，而不需要變更您的程式碼。 Azure 身分識別也會自動從使用 Azure CLI、Visual Studio、Visual Studio Code 及其他專案登入 Azure 使用者的驗證權杖中取出。 
 
 如需 Azure 身分識別用戶端程式庫的詳細資訊，請參閱：
 
 ### <a name="azure-identity-client-libraries"></a>Azure 身分識別用戶端程式庫
 | .NET | Python | Java | JavaScript |
 |--|--|--|--|
-|[Azure 身分識別 SDK .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)|[Azure 身分識別 SDK Python](https://docs.microsoft.com/python/api/overview/azure/identity-readme)|[Azure 身分識別 SDK JAVA](https://docs.microsoft.com/java/api/overview/azure/identity-readme)|[Azure 身分識別 SDK JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)|     
+|[Azure 身分識別 SDK .NET](/dotnet/api/overview/azure/identity-readme)|[Azure 身分識別 SDK Python](/python/api/overview/azure/identity-readme)|[Azure 身分識別 SDK JAVA](/java/api/overview/azure/identity-readme)|[Azure 身分識別 SDK JavaScript](/javascript/api/overview/azure/identity-readme)|     
 
 如需如何在應用程式中驗證 Key Vault 的教學課程，請參閱：
-- [在 .NET 中的 VM 所裝載的應用程式中驗證 Key Vault](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
-- [在以 Python 進行的 VM 中裝載的應用程式中驗證 Key Vault](https://docs.microsoft.com/azure/key-vault/general/tutorial-python-virtual-machine)
-- [使用 App Service 驗證 Key Vault](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app)
+- [在 .NET 中的 VM 所裝載的應用程式中驗證 Key Vault](./tutorial-net-virtual-machine.md)
+- [在以 Python 進行的 VM 中裝載的應用程式中驗證 Key Vault](./tutorial-python-virtual-machine.md)
+- [使用 App Service 驗證 Key Vault](./tutorial-net-create-vault-azure-web-app.md)
 
 ## <a name="manage-keys-certificates-and-secrets"></a>管理金鑰、憑證和秘密
 
@@ -104,7 +104,7 @@ Key Vault 使用 Azure AD 驗證，要求 Azure AD 安全性主體授與存取�
 
 請參閱安裝套件和原始程式碼的 [用戶端程式庫](client-libraries.md) 。
 
-如需 Key Vault 資料平面安全性的詳細資訊，請參閱 [Key Vault 資料平面和存取原則](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#data-plane-and-access-policies) ，以及 [Key Vault 資料平面和 RBAC (預覽) ](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#data-plane-and-azure-rbac-preview)
+如需 Key Vault 資料平面安全性的詳細資訊，請參閱 [Key Vault 資料平面和存取原則](./secure-your-key-vault.md#data-plane-and-access-policies) ，以及 [Key Vault 資料平面和 RBAC (預覽) ](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview)
 
 ### <a name="code-examples"></a>程式碼範例
 
@@ -117,8 +117,8 @@ Key Vault 使用 Azure AD 驗證，要求 Azure AD 安全性主體授與存取�
 下列文章和案例提供使用 Azure Key Vault 的工作特定指引：
 
 - [存取防火牆後面的金鑰保存庫](access-behind-firewall.md)若要存取金鑰保存庫，您的金鑰保存庫用戶端應用程式必須能夠存取多個端點，才能使用各種功能。
-- 如何從 Key Vault [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows)（ [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) ）將憑證部署至 vm-在 Azure 上的 VM 中執行的雲端應用程式需要憑證。 現在應如何讓此憑證進入此 VM？
-- [透過 Key Vault 部署 Azure Web 應用程式憑證](https://docs.microsoft.com/azure/app-service/configure-ssl-certificate#import-a-certificate-from-key-vault)
+- 如何從 Key Vault [Windows](../../virtual-machines/extensions/key-vault-windows.md)（ [Linux](../../virtual-machines/extensions/key-vault-linux.md) ）將憑證部署至 vm-在 Azure 上的 VM 中執行的雲端應用程式需要憑證。 現在應如何讓此憑證進入此 VM？
+- [透過 Key Vault 部署 Azure Web 應用程式憑證](../../app-service/configure-ssl-certificate.md#import-a-certificate-from-key-vault)
 -  ([CLI](assign-access-policy-cli.md)  |  [PowerShell](assign-access-policy-powershell.md)  |  [入口網站](assign-access-policy-portal.md)) 指派存取原則。 
 - [如何以 CLI 使用金鑰保存庫虛刪除](soft-delete-cli.md)引導您完成金鑰保存庫和各種金鑰保存庫物件的使用和生命週期，並啟用虛刪除。
 - [如何在部署期間傳遞安全值 (例如密碼)](../../azure-resource-manager/templates/key-vault-parameter.md) - 當您需要在部署期間傳遞安全值 (例如密碼) 作為參數時，可以將該值儲存為 Azure 金鑰保存庫中的密碼，並在其他資源管理員範本中參考該值。
@@ -127,13 +127,13 @@ Key Vault 使用 Azure AD 驗證，要求 Azure AD 安全性主體授與存取�
 
 這些文章是關於其他可讓我們使用及整合 Key Vault 的案例和服務。
 
-- 待用[加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)可在資料保存時允許編碼 (加密) 。 資料加密金鑰通常會使用 Azure Key Vault 中的金鑰加密金鑰進行加密，以進一步限制存取。
+- 待用[加密](../../security/fundamentals/encryption-atrest.md)可在資料保存時允許編碼 (加密) 。 資料加密金鑰通常會使用 Azure Key Vault 中的金鑰加密金鑰進行加密，以進一步限制存取。
 - [Azure 資訊保護](/azure/information-protection/plan-implement-tenant-key)可讓您管理自己的租用戶金鑰。 例如，您可以管理自己的租用戶金鑰，以符合適用於貴組織的特定規範，而不需 Microsoft 管理您的租用戶金鑰 (預設值)。 管理自己的租用戶金鑰也稱為「自備金鑰」或 BYOK。
 - [Azure Private Link 服務](private-link-service.md) 可讓您透過虛擬網路中的私人端點，存取 azure 服務 (例如 Azure Key Vault、Azure 儲存體和 Azure Cosmos DB) ，以及 azure 裝載的客戶/合作夥伴服務。
-- Key Vault 與 [事件方格](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault)  的整合，可讓使用者在金鑰保存庫中儲存的秘密狀態變更時收到通知。 您可以將新版本的秘密散發至應用程式，或輪替接近的到期秘密，以避免中斷。
-- 您可以在 Key Vault 中保護 [Azure Devops](https://docs.microsoft.com/azure/devops/pipelines/release/azure-key-vault) 秘密免于不必要的存取。
-- [使用儲存在 DataBricks Key Vault 中的秘密，以連接到 Azure 儲存體](https://docs.microsoft.com/azure/key-vault/general/integrate-databricks-blob-storage)
-- 在 Kubernetes 上設定並執行 [秘密存放區 CSI 驅動程式](https://docs.microsoft.com/azure/key-vault/general/key-vault-integrate-kubernetes) 的 Azure Key Vault 提供者
+- Key Vault 與 [事件方格](../../event-grid/event-schema-key-vault.md)  的整合，可讓使用者在金鑰保存庫中儲存的秘密狀態變更時收到通知。 您可以將新版本的秘密散發至應用程式，或輪替接近的到期秘密，以避免中斷。
+- 您可以在 Key Vault 中保護 [Azure Devops](/azure/devops/pipelines/release/azure-key-vault) 秘密免于不必要的存取。
+- [使用儲存在 DataBricks Key Vault 中的秘密，以連接到 Azure 儲存體](./integrate-databricks-blob-storage.md)
+- 在 Kubernetes 上設定並執行 [秘密存放區 CSI 驅動程式](./key-vault-integrate-kubernetes.md) 的 Azure Key Vault 提供者
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault 的概觀和概念
 
@@ -143,5 +143,5 @@ Key Vault 使用 Azure AD 驗證，要求 Azure AD 安全性主體授與存取�
 
 ## <a name="social"></a>社交
 
-- [Key Vault Blog (金鑰保存庫部落格)](https://aka.ms/kvblog)
+- [Key Vault Blog (金鑰保存庫部落格)](/archive/blogs/kv/)
 - [Key Vault Forum (金鑰保存庫論壇)](https://aka.ms/kvforum)

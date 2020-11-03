@@ -4,12 +4,12 @@ description: 了解在使用 Azure Kubernetes Service (AKS) 時，如何針對�
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: dcbfed4fc83b980b3e54a808406b8d27e1e6c919
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d15e381baf3abdb77f63b17cbd1d33b24f5d3321
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074408"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286762"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑難排解
 
@@ -113,8 +113,8 @@ AKS 中支援的最低 TLS 版本是 TLS 1.2。
 當叢集因多種原因而進入失敗狀態時，就會發生此錯誤。 重試先前失敗的作業之前，請先遵循下列步驟來解決叢集失敗狀態：
 
 1. 在叢集離開 `failed` 狀態之前，`upgrade` 和 `scale` 作業都將失敗。 常見的根本問題與解決方式包括：
-    * 進行調整時**計算 (CRP) 配額不足**。 若要解決此問題，先將叢集調整回配額內穩定的目標狀態。 然後，遵循這些[步驟來要求提高計算配額](../azure-portal/supportability/resource-manager-core-quotas-request.md)，然後再次嘗試擴大以超過初始配額限制。
-    * 使用進階網路和**不足的子網路 (網路) 資源**來調整叢集。 若要解決此問題，先將叢集調整回配額內穩定的目標狀態。 然後，遵循[這些步驟來要求提高資源配額](../azure-resource-manager/templates/error-resource-quota.md#solution)，然後再次嘗試擴大以超過初始配額限制。
+    * 進行調整時 **計算 (CRP) 配額不足** 。 若要解決此問題，先將叢集調整回配額內穩定的目標狀態。 然後，遵循這些[步驟來要求提高計算配額](../azure-portal/supportability/resource-manager-core-quotas-request.md)，然後再次嘗試擴大以超過初始配額限制。
+    * 使用進階網路和 **不足的子網路 (網路) 資源** 來調整叢集。 若要解決此問題，先將叢集調整回配額內穩定的目標狀態。 然後，遵循[這些步驟來要求提高資源配額](../azure-resource-manager/templates/error-resource-quota.md#solution)，然後再次嘗試擴大以超過初始配額限制。
 2. 解決升級失敗的根本原因之後，您的叢集應該會處於成功狀態。 確認成功狀態之後，請重試原始作業。
 
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-upgraded-or-has-failed-upgrade"></a>我在嘗試升級或調整規模時收到錯誤，指出我的叢集正在升級或升級失敗
@@ -130,7 +130,7 @@ AKS 中支援的最低 TLS 版本是 TLS 1.2。
 
 ## <a name="can-i-move-my-cluster-to-a-different-subscription-or-my-subscription-with-my-cluster-to-a-new-tenant"></a>我是否可以將叢集移至不同的訂用帳戶，或將含有叢集的訂用帳戶新增至新的租用戶？
 
-如果您已將 AKS 叢集移至不同的訂用帳戶，或將叢集的訂用帳戶移至新的租用戶，該叢集將因缺少叢集身分識別權限而無法運作。 由於這個限制式，因此 **AKS 不支援在訂用帳戶或租用戶之間移動叢集**。
+如果您已將 AKS 叢集移至不同的訂用帳戶，或將叢集的訂用帳戶移至新的租用戶，該叢集將因缺少叢集身分識別權限而無法運作。 由於這個限制式，因此 **AKS 不支援在訂用帳戶或租用戶之間移動叢集** 。
 
 ## <a name="im-receiving-errors-trying-to-use-features-that-require-virtual-machine-scale-sets"></a>我在嘗試使用需要虛擬機器擴展集的功能時收到錯誤
 
@@ -154,10 +154,10 @@ AKS 中支援的最低 TLS 版本是 TLS 1.2。
 命名限制會透過 Azure 平台和 AKS 來實作。 如果資源名稱或參數違反這其中一個限制，即會傳回錯誤，要求您提供不同的輸入。 下列一般命名指導方針適用：
 
 * 叢集名稱必須是 1-63 個字元。 唯一允許的字元是字母、數字、破折號和底線。 第一個和最後一個字元必須是字母或數字。
-* AKS 節點/*MC_* 資源群組名稱會合併資源群組名稱與資源名稱。 自動產生的 `MC_resourceGroupName_resourceName_AzureRegion` 語法不得超過 80 個字元。 視需要縮短資源群組名稱或 AKS 叢集名稱的長度。 您也可以[自訂節點資源群組名稱](cluster-configuration.md#custom-resource-group-name)。
+* AKS 節點/ *MC_* 資源群組名稱會合併資源群組名稱與資源名稱。 自動產生的 `MC_resourceGroupName_resourceName_AzureRegion` 語法不得超過 80 個字元。 視需要縮短資源群組名稱或 AKS 叢集名稱的長度。 您也可以[自訂節點資源群組名稱](cluster-configuration.md#custom-resource-group-name)。
 * *dnsPrefix* 必須以英數字元值開頭和結束，且必須介於 1-54 個字元之間。 有效字元包含英數字元值和連字號 (-)。 *dnsPrefix* 不能包含特殊字元，例如句號 (.)。
 * 針對 Linux 節點集區，AKS 節點集區名稱必須全部小寫且為 1-11 個字元，針對 Windows 節點集區則是 1-6 個字元。 名稱的開頭必須是字母，而唯一允許的字元為字母與數字。
-* 系統管理員使用者 *名稱*（設定 Linux 節點的系統管理員使用者名稱）必須以字母開頭，且只可包含字母、數位、連字號和底線，且長度上限為64個字元。
+* 系統管理員使用者 *名稱* （設定 Linux 節點的系統管理員使用者名稱）必須以字母開頭，且只可包含字母、數位、連字號和底線，且長度上限為64個字元。
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>我在嘗試建立、更新、調整、刪除或升級叢集時收到錯誤，指出因為另一個作業正在進行，所以不允許該作業。
 
@@ -198,7 +198,7 @@ AKS 中支援的最低 TLS 版本是 TLS 1.2。
 
 確認您的設定不會與任何必要或選用的建議輸出連接埠 / 網路規則和 FQDN / 應用程式規則相衝突。
 
-## <a name="im-receiving-429---too-many-requests-errors"></a>我收到「429-太多要求」錯誤 
+## <a name="im-receiving-429---too-many-requests-errors"></a>我收到「429-太多要求」錯誤
 
 當 Azure 上的 kubernetes 叢集 (AKS 或沒有) 頻繁地向上/向下延展或使用叢集自動調整程式 (CA) 時，這些作業可能會導致大量的 HTTP 呼叫，進而導致失敗的指派訂用帳戶配額。 錯誤看起來會像這樣
 
@@ -213,6 +213,12 @@ AKS 工程團隊的 recommandation，是要確保您執行的版本至少為 1.1
 由於這些節流錯誤會在訂用帳戶層級進行測量，如果發生下列情況，可能仍會發生這些錯誤：
 - 有協力廠商應用程式提出 GET 要求 (例如 監視應用程式等 .。。) 。建議您減少這些呼叫的頻率。
 - VMSS 中有許多 AKS 叢集/nodepools。 一般建議是在指定的訂用帳戶中具有少於20-30 的叢集。
+
+## <a name="my-clusters-provisioning-status-changed-from-ready-to-failed-with-or-without-me-performing-an-operation-what-should-i-do"></a>我的叢集布建狀態從 [就緒] 變更為 [失敗]，而不是我執行操作。 我該怎麼辦？
+
+如果您叢集的布建狀態從 [ *就緒* ] 變更為 [ *失敗* ]，或未執行任何作業，但您的叢集上的應用程式仍在執行，則服務可能會自動解決此問題，而且您的應用程式不應該受到影響。
+
+如果叢集的布建狀態維持為 *失敗* ，或叢集上的應用程式停止運作，請 [提交支援要求](https://azure.microsoft.com/support/options/#submit)。
 
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Azure 儲存體和 AKS 疑難排解
@@ -382,7 +388,7 @@ parameters:
 一些其他有用的 *mountOptions* 設定：
 
 * *mfsymlinks* 將讓 Azure 檔案儲存體掛接 (cifs) 支援符號連結
-* *nobrl* 會防止將位元組範圍鎖定要求傳送至伺服器。 對於以 cifs 樣式強制位元組範圍鎖定中斷的特定應用程式而言，這是必要的設定。 大部分的 cifs 伺服器尚未支援要求諮詢位元組範圍鎖定。 如果未使用 *nobrl*，以 cifs 樣式強制位元組範圍鎖定中斷的應用程式可能會導致類似下列的錯誤訊息：
+* *nobrl* 會防止將位元組範圍鎖定要求傳送至伺服器。 對於以 cifs 樣式強制位元組範圍鎖定中斷的特定應用程式而言，這是必要的設定。 大部分的 cifs 伺服器尚未支援要求諮詢位元組範圍鎖定。 如果未使用 *nobrl* ，以 cifs 樣式強制位元組範圍鎖定中斷的應用程式可能會導致類似下列的錯誤訊息：
     ```console
     Error: SQLITE_BUSY: database is locked
     ```
@@ -398,7 +404,7 @@ fixing permissions on existing directory /var/lib/postgresql/data
 
 此錯誤是由使用 cifs/SMB 通訊協定的 Azure 檔案儲存體外掛程式所造成。 使用 cifs/SMB 通訊協定時，無法在掛接之後變更檔案和目錄權限。
 
-若要解決此問題，請搭配 Azure 磁碟外掛程式使用 *subPath*。 
+若要解決此問題，請搭配 Azure 磁碟外掛程式使用 *subPath* 。 
 
 > [!NOTE] 
 > 針對 ext3/4 磁碟類型，在將磁碟格式化之後，即會有 lost+found 目錄。
@@ -470,11 +476,8 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 
 ### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>磁碟連結變慢，GetAzureDiskLun 需要花費 10 到 15 分鐘的時間，而您會收到錯誤
 
-在**早於 1.15.0** 的 Kubernetes 版本上，您可能會收到類似下列的錯誤：**錯誤 WaitForAttach 找不到磁碟的 Lun**。  此問題的因應措施是大約等候 15 分鐘，然後重試。
+在 **早於 1.15.0** 的 Kubernetes 版本上，您可能會收到類似下列的錯誤： **錯誤 WaitForAttach 找不到磁碟的 Lun** 。  此問題的因應措施是大約等候 15 分鐘，然後重試。
 
-<!-- LINKS - internal -->
-[view-master-logs]: view-master-logs.md
-[cluster-autoscaler]: cluster-autoscaler.md
 
 ### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>使用具有 kubernetes.io 前置詞的節點標籤時，Kubernetes 1.16 升級失敗的原因
 
@@ -487,3 +490,9 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 3. 刪除較舊的 nodepool
 
 AKS 正在調查在 nodepool 上改變使用中標籤的功能，以改善這項緩和措施。
+
+
+
+<!-- LINKS - internal -->
+[view-master-logs]: view-master-logs.md
+[cluster-autoscaler]: cluster-autoscaler.md

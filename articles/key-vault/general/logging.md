@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 162e40555e11dff716b58eec4b1168728257693e
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 5423fc27ecc58bcd79b36a845e4b7569f342f712
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131168"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286709"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 記錄
 
@@ -26,7 +26,7 @@ ms.locfileid: "92131168"
 * 請使用標準的 Azure 存取控制方法限制可存取記錄的人員，藉此來保護記錄。
 * 刪除不想繼續保留在儲存體帳戶中的記錄。
 
-如 Key Vault 的概觀資訊，請參閱[什麼是 Azure Key Vault？](overview.md) 如需 Key Vault 適用地區的詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/key-vault/)。 如需使用[適用於 Key Vault 的 Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview)相關資訊。
+如 Key Vault 的概觀資訊，請參閱[什麼是 Azure Key Vault？](overview.md) 如需 Key Vault 適用地區的詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/key-vault/)。 如需使用[適用於 Key Vault 的 Azure 監視器](../../azure-monitor/insights/key-vault-insights-overview.md)相關資訊。
 
 ## <a name="interpret-your-key-vault-logs"></a>解譯金鑰保存庫記錄
 
@@ -73,9 +73,9 @@ ms.locfileid: "92131168"
 | **callerIpAddress** |提出要求用戶端的 IP 位址。 |
 | **correlationId** |選擇性的 GUID，用戶端可傳遞此 GUID 來讓用戶端記錄與服務端 (金鑰保存庫) 記錄相互關聯。 |
 | **身分識別** |權杖中的身分識別，會在 REST API 要求中提供。 就像從 Azure PowerShell Cmdlet 產生的要求一樣，這通常是「使用者」、「服務主體」或「使用者+appId」的組合。 |
-| **properties** |根據作業 (**operationName**) 而有所不同的資訊。 在大部分情況下，此欄位會包含用戶端資訊 (用戶端傳遞的使用者代理程式字串)、完全符合的 REST API 要求 URI 和 HTTP 狀態碼。 此外，在因為提出要求 (例如，**KeyCreate** 或 **VaultGet**) 而傳回物件時，此欄位也會包含金鑰 URI (形式為 `id`)、保存庫 URI 或祕密 URI。 |
+| **properties** |根據作業 ( **operationName** ) 而有所不同的資訊。 在大部分情況下，此欄位會包含用戶端資訊 (用戶端傳遞的使用者代理程式字串)、完全符合的 REST API 要求 URI 和 HTTP 狀態碼。 此外，在因為提出要求 (例如， **KeyCreate** 或 **VaultGet** ) 而傳回物件時，此欄位也會包含金鑰 URI (形式為 `id`)、保存庫 URI 或祕密 URI。 |
 
-**operationName** 欄位值的格式為 *ObjectVerb*。 例如：
+**operationName** 欄位值的格式為 *ObjectVerb* 。 例如：
 
 * 所有金鑰保存庫作業都有 `Vault<action>` 格式，例如 `VaultGet` 和 `VaultCreate`。
 * 所有金鑰作業都有 `Key<action>` 格式，例如 `KeySign` 和 `KeyList`。
@@ -88,32 +88,32 @@ ms.locfileid: "92131168"
 | operationName | REST API 命令 |
 | --- | --- |
 | **驗證** |透過 Azure Active Directory 端點驗證 |
-| **VaultGet** |[取得金鑰保存庫的相關資訊](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
-| **VaultPut** |[建立或更新金鑰保存庫](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
-| **VaultDelete** |[刪除金鑰保存庫](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
-| **VaultPatch** |[更新金鑰保存庫](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
-| **VaultList** |[列出資源群組中的所有金鑰保存庫](https://msdn.microsoft.com/library/azure/mt620027.aspx) |
-| **KeyCreate** |[建立金鑰](https://msdn.microsoft.com/library/azure/dn903634.aspx) |
-| **KeyGet** |[取得金鑰的相關資訊](https://msdn.microsoft.com/library/azure/dn878080.aspx) |
-| **KeyImport** |[將金鑰匯入保存庫](https://msdn.microsoft.com/library/azure/dn903626.aspx) |
-| **KeyBackup** |[備份金鑰](https://msdn.microsoft.com/library/azure/dn878058.aspx) |
-| **KeyDelete** |[刪除金鑰](https://msdn.microsoft.com/library/azure/dn903611.aspx) |
-| **KeyRestore** |[還原金鑰](https://msdn.microsoft.com/library/azure/dn878106.aspx) |
-| **KeySign** |[使用金鑰簽署](https://msdn.microsoft.com/library/azure/dn878096.aspx) |
-| **KeyVerify** |[使用金鑰驗證](https://msdn.microsoft.com/library/azure/dn878082.aspx) |
-| **KeyWrap** |[包裝金鑰](https://msdn.microsoft.com/library/azure/dn878066.aspx) |
-| **KeyUnwrap** |[解除包裝金鑰](https://msdn.microsoft.com/library/azure/dn878079.aspx) |
-| **KeyEncrypt** |[使用金鑰加密](https://msdn.microsoft.com/library/azure/dn878060.aspx) |
-| **KeyDecrypt** |[使用金鑰解密](https://msdn.microsoft.com/library/azure/dn878097.aspx) |
-| **KeyUpdate** |[更新金鑰](https://msdn.microsoft.com/library/azure/dn903616.aspx) |
-| **KeyList** |[列出保存庫中的金鑰](https://msdn.microsoft.com/library/azure/dn903629.aspx) |
-| **KeyListVersions** |[列出金鑰的版本](https://msdn.microsoft.com/library/azure/dn986822.aspx) |
-| **SecretSet** |[建立密碼](https://msdn.microsoft.com/library/azure/dn903618.aspx) |
-| **SecretGet** |[取得祕密](https://msdn.microsoft.com/library/azure/dn903633.aspx) |
-| **SecretUpdate** |[更新密碼](https://msdn.microsoft.com/library/azure/dn986818.aspx) |
-| **SecretDelete** |[刪除秘密](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
-| **SecretList** |[列出保存庫中的密碼](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
-| **SecretListVersions** |[列出密碼的版本](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
+| **VaultGet** |[取得金鑰保存庫的相關資訊](/rest/api/keyvault/vaults) |
+| **VaultPut** |[建立或更新金鑰保存庫](/rest/api/keyvault/vaults) |
+| **VaultDelete** |[刪除金鑰保存庫](/rest/api/keyvault/vaults) |
+| **VaultPatch** |[更新金鑰保存庫](/rest/api/keyvault/vaults) |
+| **VaultList** |[列出資源群組中的所有金鑰保存庫](/rest/api/keyvault/vaults) |
+| **KeyCreate** |[建立金鑰](/rest/api/keyvault/createkey) |
+| **KeyGet** |[取得金鑰的相關資訊](/rest/api/keyvault/getkey) |
+| **KeyImport** |[將金鑰匯入保存庫](/rest/api/keyvault/vaults) |
+| **KeyBackup** |[備份金鑰](/rest/api/keyvault/backupkey) |
+| **KeyDelete** |[刪除金鑰](/rest/api/keyvault/deletekey) |
+| **KeyRestore** |[還原金鑰](/rest/api/keyvault/restorekey) |
+| **KeySign** |[使用金鑰簽署](/rest/api/keyvault/sign) |
+| **KeyVerify** |[使用金鑰驗證](/rest/api/keyvault/vaults) |
+| **KeyWrap** |[包裝金鑰](/rest/api/keyvault/wrapkey) |
+| **KeyUnwrap** |[解除包裝金鑰](/rest/api/keyvault/unwrapkey) |
+| **KeyEncrypt** |[使用金鑰加密](/rest/api/keyvault/encrypt) |
+| **KeyDecrypt** |[使用金鑰解密](/rest/api/keyvault/decrypt) |
+| **KeyUpdate** |[更新金鑰](/rest/api/keyvault/updatekey) |
+| **KeyList** |[列出保存庫中的金鑰](/rest/api/keyvault/vaults) |
+| **KeyListVersions** |[列出金鑰的版本](/rest/api/keyvault/getkeyversions) |
+| **SecretSet** |[建立密碼](/rest/api/keyvault/updatecertificate) |
+| **SecretGet** |[取得祕密](/rest/api/keyvault/getsecret) |
+| **SecretUpdate** |[更新密碼](/rest/api/keyvault/updatesecret) |
+| **SecretDelete** |[刪除秘密](/rest/api/keyvault/deletesecret) |
+| **SecretList** |[列出保存庫中的密碼](/rest/api/keyvault/vaults) |
+| **SecretListVersions** |[列出密碼的版本](/rest/api/keyvault/getsecretversions) |
 | **VaultAccessPolicyChangedEventGridNotification** | 已發佈保存庫存取原則已變更事件 |
 | **SecretNearExpiryEventGridNotification** |已發佈祕密即將過期事件 |
 | **SecretExpiredEventGridNotification** |已發佈祕密已過期事件 |

@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 10/27/2020
+ms.date: 11/03/2020
 ms.custom: generated
-ms.openlocfilehash: 60e9ec88fd07d8b04254c5d3917aab09d671f517
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 701c901cb9b85aeaf329846c13e6ed051ea52e63
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900876"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288504"
 ---
 # <a name="azure-built-in-roles"></a>Azure 內建角色
 
@@ -77,6 +77,12 @@ ms.locfileid: "92900876"
 > | **Web** |  |  |
 > | [Azure 地圖服務資料讀者](#azure-maps-data-reader) | 授權從 Azure 地圖服務帳戶讀取地圖相關資料。 | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | [搜尋服務參與者](#search-service-contributor) | 可讓您管理「搜尋」服務，但無法存取它們。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
+> | [SignalR AccessKey 讀者](#signalr-accesskey-reader) | 讀取 SignalR Service 存取金鑰 | 04165923-9d83-45d5-8227-78b77b0a687e |
+> | [SignalR 應用程式伺服器 (預覽) ](#signalr-app-server-preview) | 使用 AAD 驗證選項，讓您的應用程式伺服器存取 SignalR Service。 | 420fcaa2-552c-430f-98ca-3264be4806c7 |
+> | [SignalR 參與者](#signalr-contributor) | 建立、讀取、更新和刪除 SignalR 服務資源 | 8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761 |
+> | [SignalR 無伺服器參與者 (預覽) ](#signalr-serverless-contributor-preview) | 使用 AAD 驗證選項，讓您的應用程式在無伺服器模式下存取服務。 | fd53cd77-2268-407a-8f46-7e7863d0f521 |
+> | [SignalR Service 擁有者 (預覽) ](#signalr-service-owner-preview) | Azure SignalR Service REST Api 的完整存取權 | 7e4f1700-ea5a-4f59-8f37-079cfe29dce3 |
+> | [SignalR Service 讀者 (預覽) ](#signalr-service-reader-preview) | Azure SignalR Service REST Api 的唯讀存取 | ddde6b66-c0df-4114-a159-3618637b3035 |
 > | [Web 方案參與者](#web-plan-contributor) | 可讓您管理網站的 Web 方案，但無法存取它們。 | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [網站參與者](#website-contributor) | 可讓您管理網站 (非 Web 方案)，但無法存取它們。 | de139f84-1756-47ae-9be6-808fbbe84772 |
 > | **容器** |  |  |
@@ -2674,6 +2680,282 @@ Avere vFXT 叢集用來管理叢集的 [深入瞭解](../avere-vfxt/avere-vfxt-m
 }
 ```
 
+### <a name="signalr-accesskey-reader"></a>SignalR AccessKey 讀者
+
+讀取 SignalR Service 存取金鑰
+
+> [!div class="mx-tableFixed"]
+> | 動作 | 描述 |
+> | --- | --- |
+> | [Microsoft.signalrservice](resource-provider-operations.md#microsoftsignalrservice)/*/read |  |
+> | [Microsoft. Microsoft.signalrservice](resource-provider-operations.md#microsoftsignalrservice)/SignalR/listkeys/action | 在管理入口網站中或透過 API 檢視 SignalR 存取金鑰 |
+> | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
+> | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
+> | **NotActions** |  |
+> | 無 |  |
+> | **DataActions** |  |
+> | 無 |  |
+> | **NotDataActions** |  |
+> | 無 |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Read SignalR Service Access Keys",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/04165923-9d83-45d5-8227-78b77b0a687e",
+  "name": "04165923-9d83-45d5-8227-78b77b0a687e",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.SignalRService/*/read",
+        "Microsoft.SignalRService/SignalR/listkeys/action",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "SignalR AccessKey Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="signalr-app-server-preview"></a>SignalR 應用程式伺服器 (預覽) 
+
+使用 AAD 驗證選項，讓您的應用程式伺服器存取 SignalR Service。
+
+> [!div class="mx-tableFixed"]
+> | 動作 | 描述 |
+> | --- | --- |
+> | 無 |  |
+> | **NotActions** |  |
+> | 無 |  |
+> | **DataActions** |  |
+> | [Microsoft. Microsoft.signalrservice](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/accessKey/action | 產生暫時 AccessKey 來簽署 ClientTokens。 |
+> | [Microsoft. Microsoft.signalrservice](resource-provider-operations.md#microsoftsignalrservice)/SignalR/serverConnection/write | 啟動伺服器連接。 |
+> | **NotDataActions** |  |
+> | 無 |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets your app server access SignalR Service with AAD auth options.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/420fcaa2-552c-430f-98ca-3264be4806c7",
+  "name": "420fcaa2-552c-430f-98ca-3264be4806c7",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.SignalRService/SignalR/auth/accessKey/action",
+        "Microsoft.SignalRService/SignalR/serverConnection/write"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "SignalR App Server (Preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="signalr-contributor"></a>SignalR 參與者
+
+建立、讀取、更新和刪除 SignalR 服務資源
+
+> [!div class="mx-tableFixed"]
+> | 動作 | 描述 |
+> | --- | --- |
+> | [Microsoft.signalrservice](resource-provider-operations.md#microsoftsignalrservice)/* |  |
+> | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
+> | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
+> | **NotActions** |  |
+> | 無 |  |
+> | **DataActions** |  |
+> | 無 |  |
+> | **NotDataActions** |  |
+> | 無 |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Create, Read, Update, and Delete SignalR service resources",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761",
+  "name": "8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.SignalRService/*",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "SignalR Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="signalr-serverless-contributor-preview"></a>SignalR 無伺服器參與者 (預覽) 
+
+使用 AAD 驗證選項，讓您的應用程式在無伺服器模式下存取服務。
+
+> [!div class="mx-tableFixed"]
+> | 動作 | 描述 |
+> | --- | --- |
+> | 無 |  |
+> | **NotActions** |  |
+> | 無 |  |
+> | **DataActions** |  |
+> | [Microsoft. Microsoft.signalrservice](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/clientToken/action | 產生用來啟動用戶端連接的 ClientToken。 |
+> | **NotDataActions** |  |
+> | 無 |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets your app access service in serverless mode with AAD auth options.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/fd53cd77-2268-407a-8f46-7e7863d0f521",
+  "name": "fd53cd77-2268-407a-8f46-7e7863d0f521",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.SignalRService/SignalR/auth/clientToken/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "SignalR Serverless Contributor (Preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="signalr-service-owner-preview"></a>SignalR Service 擁有者 (預覽) 
+
+Azure SignalR Service REST Api 的完整存取權
+
+> [!div class="mx-tableFixed"]
+> | 動作 | 描述 |
+> | --- | --- |
+> | 無 |  |
+> | **NotActions** |  |
+> | 無 |  |
+> | **DataActions** |  |
+> | [Microsoft. Microsoft.signalrservice](resource-provider-operations.md#microsoftsignalrservice)/SignalR/hub/send/action | 將訊息廣播至中樞內的所有用戶端連接。 |
+> | [Microsoft. Microsoft.signalrservice](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/send/action | 將訊息廣播到群組。 |
+> | [Microsoft. Microsoft.signalrservice](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/read | 檢查群組是否存在或使用者存在於群組中。 |
+> | [Microsoft. Microsoft.signalrservice](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/write | 加入/離開群組。 |
+> | [Microsoft. Microsoft.signalrservice](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/send/action | 將訊息直接傳送至用戶端連接。 |
+> | [Microsoft. Microsoft.signalrservice](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/read | 檢查用戶端連接是否存在。 |
+> | [Microsoft. Microsoft.signalrservice](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/write | 關閉用戶端連接。 |
+> | [Microsoft. Microsoft.signalrservice](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/send/action | 傳送訊息給使用者，其中可能包含多個用戶端連接。 |
+> | [Microsoft. Microsoft.signalrservice](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/read | 檢查使用者是否存在。 |
+> | [Microsoft. Microsoft.signalrservice](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/write |  |
+> | **NotDataActions** |  |
+> | 無 |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Full access to Azure SignalR Service REST APIs",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/7e4f1700-ea5a-4f59-8f37-079cfe29dce3",
+  "name": "7e4f1700-ea5a-4f59-8f37-079cfe29dce3",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.SignalRService/SignalR/hub/send/action",
+        "Microsoft.SignalRService/SignalR/group/send/action",
+        "Microsoft.SignalRService/SignalR/group/read",
+        "Microsoft.SignalRService/SignalR/group/write",
+        "Microsoft.SignalRService/SignalR/clientConnection/send/action",
+        "Microsoft.SignalRService/SignalR/clientConnection/read",
+        "Microsoft.SignalRService/SignalR/clientConnection/write",
+        "Microsoft.SignalRService/SignalR/user/send/action",
+        "Microsoft.SignalRService/SignalR/user/read",
+        "Microsoft.SignalRService/SignalR/user/write"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "SignalR Service Owner (Preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="signalr-service-reader-preview"></a>SignalR Service 讀者 (預覽) 
+
+Azure SignalR Service REST Api 的唯讀存取
+
+> [!div class="mx-tableFixed"]
+> | 動作 | 描述 |
+> | --- | --- |
+> | 無 |  |
+> | **NotActions** |  |
+> | 無 |  |
+> | **DataActions** |  |
+> | [Microsoft. Microsoft.signalrservice](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/read | 檢查群組是否存在或使用者存在於群組中。 |
+> | [Microsoft. Microsoft.signalrservice](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/read | 檢查用戶端連接是否存在。 |
+> | [Microsoft. Microsoft.signalrservice](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/read | 檢查使用者是否存在。 |
+> | **NotDataActions** |  |
+> | 無 |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Read-only access to Azure SignalR Service REST APIs",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ddde6b66-c0df-4114-a159-3618637b3035",
+  "name": "ddde6b66-c0df-4114-a159-3618637b3035",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.SignalRService/SignalR/group/read",
+        "Microsoft.SignalRService/SignalR/clientConnection/read",
+        "Microsoft.SignalRService/SignalR/user/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "SignalR Service Reader (Preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="web-plan-contributor"></a>Web 方案參與者
 
 可讓您管理網站的 Web 方案，但無法存取它們。
@@ -3943,7 +4225,7 @@ ACR 隔離資料寫入者
 > | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
 > | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
 > | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
-> | [Microsoft .Sql](resource-provider-operations.md#microsoftsql)/locations/administratorAzureAsyncOperation/read |  |
+> | [Microsoft .Sql](resource-provider-operations.md#microsoftsql)/locations/administratorAzureAsyncOperation/read | 取得受控實例的 azure async 系統管理員作業結果。 |
 > | [/ManagedInstances/databases/currentSensitivityLabels/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/ManagedInstances/databases/recommendedSensitivityLabels/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/ManagedInstances/databases/schemas/tables/columns/sensitivityLabels/*](resource-provider-operations.md#microsoftsql) |  |

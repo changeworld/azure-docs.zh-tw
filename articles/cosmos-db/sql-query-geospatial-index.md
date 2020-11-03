@@ -4,14 +4,14 @@ description: 使用 Azure Cosmos DB 索引空間資料
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/03/2020
+ms.date: 11/03/2020
 ms.author: tisande
-ms.openlocfilehash: f250c15dbb30736e3e89a301fc236a848bd05da2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 347617fb13041a8fb31c28f259aaf761baae2e53
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092053"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286315"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 為地理空間資料編制索引
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -20,14 +20,12 @@ ms.locfileid: "93092053"
 
 簡單來說，大地座標的幾何會投影在 2D 平面上，然後使用 **quadtree** 以漸進方式分成格子。 這些格子會根據 **希伯特空間填滿曲線** (Hilbert space filling curve) 內的格子位置對應至 1D，並保留點的位置。 此外，在為位置資料編製索引之後，會經過稱為 **鑲嵌式** 的處理程序，也就是會將位置上相交的所有格子識別為索引鍵並儲存在 Azure Cosmos DB 索引中。 在查詢時，點和多邊形之類的引數也會經過鑲嵌，以擷取相關的格子 ID 範圍，然後用來從索引擷取資料。
 
-如果您指定的索引編制原則包含/* (所有路徑) ，則在容器中找到的所有資料都會編制索引以進行有效率的空間查詢。
+如果您指定的索引編制原則包含 `/*` (所有路徑) 的空間索引，則在容器中找到的所有資料都會編制索引以進行有效率的空間查詢。
 
 > [!NOTE]
-> Azure Cosmos DB 支援為點、Linestring、多邊形和 MultiPolygons 編制索引
->
->
+> Azure Cosmos DB 支援為點、Linestring、多邊形和 MultiPolygons 編制索引。 如果您為這些類型的任何一個進行索引，我們會自動編制所有其他類型的索引。 換句話說，如果您建立多邊形的索引，我們也會編制點、Linestring 和 MultiPolygons 的索引。 除非您擁有該類型的有效 GeoJSON 資料，否則為新的空間類型編制索引並不會影響寫入 RU 費用或索引大小。
 
-## <a name="modifying-geospatial-data-type"></a>修改地理空間資料類型
+## <a name="modifying-geospatial-configuration"></a>修改地理空間設定
 
 在您的容器中， **地理空間** 設定會指定空間資料的索引方式。 為每個容器指定一個 **地理空間** 設定： geography 或 geometry。
 
@@ -162,7 +160,7 @@ ms.locfileid: "93092053"
 > [!NOTE]
 > 如果您嘗試將具有 **boundingBox** 的索引編制原則新增至具有 `geography` 資料類型的容器，它將會失敗。 您應該先修改容器的 **geospatialConfig** ， `geometry` 然後再新增 **boundingBox** 。 您可以新增資料並修改索引編制原則的其餘部分 (例如在選取容器的地理空間資料類型之前或之後) 的路徑和類型。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 既然您已了解如何開始使用 Azure Cosmos DB 中的地理空間支援，您可以接著：
 

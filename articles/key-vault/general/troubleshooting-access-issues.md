@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 155837802bd19ec1bb4e41484e229e1f5daef658
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1437ef8675d0ddc96eb7fc641b3663b66c3ea11b
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125247"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285247"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>針對 Azure Key Vault 存取原則問題進行疑難排解
 
@@ -20,11 +20,11 @@ ms.locfileid: "92125247"
 
 ### <a name="how-can-i-identify-how-and-when-key-vaults-are-accessed"></a>如何識別存取金鑰保存庫的方式和時間？
 
-在建立一或多個金鑰保存庫之後，您可能會想要監視金鑰保存庫的存取方式、時間和存取者。 若要監視，您可以啟用 Azure Key Vault 的記錄功能，請[在此深入了解](https://docs.microsoft.com/azure/key-vault/general/logging)啟用記錄功能的逐步指南。
+在建立一或多個金鑰保存庫之後，您可能會想要監視金鑰保存庫的存取方式、時間和存取者。 若要監視，您可以啟用 Azure Key Vault 的記錄功能，請[在此深入了解](./logging.md)啟用記錄功能的逐步指南。
 
 ### <a name="how-can-i-monitor-vault-availability-service-latency-periods-or-other-performance-metrics-for-key-vault"></a>如何監視金鑰保存庫的保存庫可用性、服務延遲期間或其他效能計量？
 
-開始調整服務時，傳送至金鑰保存庫的要求數將會增加。 這項要求會增加要求的延遲，而且在極端情況下，會導致您的要求受到節流處理，進而影響服務效能。 您可以監視金鑰保存庫效能計量，並取得特定閾值的警示，請[在此深入了解](https://docs.microsoft.com/azure/key-vault/general/alert)設定監視功能的逐步指南。
+開始調整服務時，傳送至金鑰保存庫的要求數將會增加。 這項要求會增加要求的延遲，而且在極端情況下，會導致您的要求受到節流處理，進而影響服務效能。 您可以監視金鑰保存庫效能計量，並取得特定閾值的警示，請[在此深入了解](./alert.md)設定監視功能的逐步指南。
 
 ### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>我無法修改存取原則，請問如何啟用？
 使用者必須有足夠的 AAD 權限才能修改存取原則。 在此情況下，使用者必須擁有較高的參與者角色。
@@ -53,7 +53,7 @@ ms.locfileid: "92125247"
 
 目前只要重新部署 Key Vault，就會刪除 Key Vault 中的任何存取原則，並將其取代為 ARM 範本中的存取原則。 Key Vault 存取原則沒有累加選項。 若要在 Key Vault 中保留存取原則，您必須在 Key Vault 中讀取現有的存取原則，並以這些原則填入 ARM 範本，以避免任何存取中斷。
 
-另一個有助於此案例的選項是使用 RBAC 角色做為存取原則的替代方案。 使用 RBAC，您可以重新部署金鑰保存庫，而不需要再次指定原則。 您可以在[這裡](https://docs.microsoft.com/azure/key-vault/general/rbac-guide)深入閱讀此解決方案。
+另一個有助於此案例的選項是使用 RBAC 角色做為存取原則的替代方案。 使用 RBAC，您可以重新部署金鑰保存庫，而不需要再次指定原則。 您可以在[這裡](./rbac-guide.md)深入閱讀此解決方案。
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>下列錯誤類型的建議疑難排解步驟
 

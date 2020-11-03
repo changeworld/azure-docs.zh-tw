@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 1f62e0b3a40382c911cd07c777c521adb3649c4d
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d6f3d2051790ba02f5e4ea1687830ccbdf6dcf21
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282328"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285139"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>如何使用 Resource Manager 範本建立 Azure key vault 和保存庫存取原則
 
@@ -23,7 +23,7 @@ ms.locfileid: "92282328"
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本文中的步驟：
 
@@ -84,7 +84,7 @@ ms.locfileid: "92282328"
 
 ```
 
-如需 Key Vault 範本設定的詳細資訊，請參閱 [KEY VAULT ARM 範本參考](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults)。
+如需 Key Vault 範本設定的詳細資訊，請參閱 [KEY VAULT ARM 範本參考](/azure/templates/microsoft.keyvault/vaults)。
 
 > [!IMPORTANT]
 > 如果重新部署範本，則會覆寫金鑰保存庫中的任何現有存取原則。 建議您在屬性中填入 `accessPolicies` 現有的存取原則，以避免遺失金鑰保存庫的存取權。 
@@ -160,7 +160,7 @@ ms.locfileid: "92282328"
 }
 
 ```
-如需 Key Vault 範本設定的詳細資訊，請參閱 [KEY VAULT ARM 範本參考](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/accesspolicies)。
+如需 Key Vault 範本設定的詳細資訊，請參閱 [KEY VAULT ARM 範本參考](/azure/templates/microsoft.keyvault/vaults/accesspolicies)。
 
 ## <a name="more-key-vault-resource-manager-templates"></a>更多 Key Vault Resource Manager 範本
 
@@ -168,13 +168,13 @@ ms.locfileid: "92282328"
 
 | 密碼 | 索引鍵 | 憑證 |
 |--|--|--|
-|<ul><li>[快速入門](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-template)<li>[參考](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)|N/A|N/A|
+|<ul><li>[快速入門](../secrets/quick-create-template.md)<li>[參考](/azure/templates/microsoft.keyvault/vaults/secrets)|N/A|N/A|
 
-您可以在這裡找到更多 Key Vault 範本： [Key Vault Resource Manager 參考](https://docs.microsoft.com/azure/templates/microsoft.keyvault/allversions)。
+您可以在這裡找到更多 Key Vault 範本： [Key Vault Resource Manager 參考](/azure/templates/microsoft.keyvault/allversions)。
 
 ## <a name="deploy-the-templates"></a>部署範本
 
-您可以使用 Azure 入口網站來部署上述範本，方法是使用 [ **在編輯器中建立您自己的範本** ] 選項，如下所述： [從自訂範本部署資源](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template)。
+您可以使用 Azure 入口網站來部署上述範本，方法是使用 [ **在編輯器中建立您自己的範本** ] 選項，如下所述： [從自訂範本部署資源](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)。
 
 您也可以將上述範本儲存至檔案，並使用下列命令：  [>new-azresourcegroupdeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [az group deployment create](/cli/azure/group/deployment#az-group-deployment-create)：
 
@@ -219,4 +219,4 @@ Write-Host "Press [ENTER] to continue..."
 
 - [針對金鑰保存庫的存取進行保護](secure-your-key-vault.md)
 - [對金鑰保存庫進行驗證](authentication.md)
-- [Azure Key Vault 開發人員指南](developers-guide.md)
+- [Azure 金鑰保存庫開發人員指南](developers-guide.md)

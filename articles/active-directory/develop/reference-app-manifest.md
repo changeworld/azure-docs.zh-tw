@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 6971e62b20dc1155b875f69eb1d4da9d7b6e6887
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f4e1def81fc79ec159ce6be825793a9bd8d0ce7
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627001"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286964"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 應用程式資訊清單
 
@@ -34,7 +34,7 @@ ms.locfileid: "91627001"
 若要設定應用程式資訊清單：
 
 1. 移至 [Azure 入口網站](https://portal.azure.com)。 搜尋並選取 [Azure Active Directory] 服務。
-1. 選取 **應用程式註冊**。
+1. 選取 **應用程式註冊** 。
 1. 選取您要設定的應用程式。
 1. 從應用程式的 [概觀] 頁面，選取 [資訊清單] 區段。 Web 式的資訊清單編輯器隨即開啟，以供您在入口網站內編輯資訊清單。 或者，您也可以選取 [下載] 在本機編輯資訊清單，然後使用 [上傳] 將其重新套用到您的應用程式。
 
@@ -124,7 +124,7 @@ ms.locfileid: "91627001"
 若應用程式要與其他租用戶共用，則設為 true；否則設為 false。
 
 > [!NOTE]
-> 此屬性僅適用於**應用程式註冊 (舊版)** 體驗。 已由[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗中的 `signInAudience` 取代。
+> 此屬性僅適用於 **應用程式註冊 (舊版)** 體驗。 已由[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗中的 `signInAudience` 取代。
 
 ### <a name="appid-attribute"></a>appId 屬性
 
@@ -174,7 +174,7 @@ ms.locfileid: "91627001"
 應用程式的顯示名稱。
 
 > [!NOTE]
-> 此屬性僅適用於**應用程式註冊 (舊版)** 體驗。 已由[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗中的 `name` 取代。
+> 此屬性僅適用於 **應用程式註冊 (舊版)** 體驗。 已由[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗中的 `name` 取代。
 
 ### <a name="errorurl-attribute"></a>errorUrl 屬性
 
@@ -194,6 +194,7 @@ ms.locfileid: "91627001"
 
 - `"None"`
 - `"SecurityGroup"` (適用於安全性群組和 Azure AD 角色)
+- `"ApplicationGroup"` (此選項只會包含指派給應用程式的群組) 
 - `"All"` (這會取得登入使用者所屬的所有安全性群組、通訊群組及 Azure AD 目錄角色)。
 
 範例：
@@ -211,7 +212,7 @@ ms.locfileid: "91627001"
 應用程式首頁的 URL。
 
 > [!NOTE]
-> 此屬性僅適用於**應用程式註冊 (舊版)** 體驗。 已由[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗中的 `signInUrl` 取代。
+> 此屬性僅適用於 **應用程式註冊 (舊版)** 體驗。 已由[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗中的 `signInUrl` 取代。
 
 ### <a name="objectid-attribute"></a>objectId 屬性
 
@@ -221,7 +222,7 @@ ms.locfileid: "91627001"
 
 目錄中應用程式的唯一識別碼。
 
-此屬性僅適用於**應用程式註冊 (舊版)** 體驗。 已由[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗中的 `id` 取代。
+此屬性僅適用於 **應用程式註冊 (舊版)** 體驗。 已由[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗中的 `id` 取代。
 
 範例：
 
@@ -496,7 +497,7 @@ ms.locfileid: "91627001"
 
 指定此應用程式是否為公開用戶端 (例如行動裝置上執行的已安裝應用程式)。
 
-此屬性僅適用於**應用程式註冊 (舊版)** 體驗。 已由[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗中的 `allowPublicClient` 取代。
+此屬性僅適用於 **應用程式註冊 (舊版)** 體驗。 已由[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗中的 `allowPublicClient` 取代。
 
 ### <a name="publisherdomain-attribute"></a>publisherDomain 屬性
 
@@ -520,7 +521,7 @@ ms.locfileid: "91627001"
 
 傳回權杖時，此多值屬性會保留 Azure AD 接受作為目的地的已註冊 redirect_uri 值清單。
 
-此屬性僅適用於**應用程式註冊 (舊版)** 體驗。 已由[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗中的 `replyUrlsWithType` 取代。
+此屬性僅適用於 **應用程式註冊 (舊版)** 體驗。 已由[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗中的 `replyUrlsWithType` 取代。
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType 屬性
 
@@ -672,7 +673,7 @@ ms.locfileid: "91627001"
 當您看到其中一個錯誤時，我們建議採取下列動作：
 
 1. 在資訊清單編輯器中個別地編輯屬性，而不是上傳先前下載的資訊清單。 使用[資訊清單參考](#manifest-reference)資料表來了解舊屬性和新屬性的語法和語義，讓您可成功編輯您感興趣的屬性。
-1. 如果您的工作流程要求您在來源存放庫中儲存資訊清單以供稍後使用，建議以您在**應用程式註冊**體驗中看到的資訊清單，將存放庫中儲存的資訊清單重訂基底。
+1. 如果您的工作流程要求您在來源存放庫中儲存資訊清單以供稍後使用，建議以您在 **應用程式註冊** 體驗中看到的資訊清單，將存放庫中儲存的資訊清單重訂基底。
 
 ## <a name="next-steps"></a>後續步驟
 

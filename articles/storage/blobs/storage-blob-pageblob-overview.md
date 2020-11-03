@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: add94fe05eecd2fb77ba0d6d79fe6765afe3baaa
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 5558a57812414f6f1bb1be053a089af98533155a
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091010"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288332"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure 分頁 Blob 的概觀
 
@@ -24,6 +24,10 @@ Azure 儲存體提供三種類型的 Blob 儲存體：區塊 Blob、附加 Blob 
 分頁 Blob 是 512 位元組分頁的集合，可提供讀取/寫入任意位元組範圍的功能。 因此，分頁 Blob 適合用於儲存索引式和疏鬆檔案結構，例如虛擬機器和資料庫的 OS 和資料磁碟。 例如，Azure SQL DB 會使用分頁 Blob 作為其資料庫的基礎永續性儲存體。 此外，分頁 Blob 也經常用於具有範圍型更新的檔案。  
 
 Azure 分頁 Blob 的主要功能包括其 REST 介面、基礎儲存體的持久性，以及能順暢移轉至 Azure 的能力。 下一節將更深入討論這些功能。 此外，Azure 分頁 Blob 目前支援兩種類型的儲存體：進階儲存體和標準儲存體。 進階儲存體是專為需要一致高效能和低延遲的工作負載所設計，讓高階頁面 blob 適用于高效能儲存體案例。 標準儲存體帳戶對於執行不區分延遲的工作負載而言更符合成本效益。
+
+## <a name="restrictions"></a>限制
+
+分頁 blob 只能使用 **經常性存取層** ，無法使用非經常性存取 **層或封存** 層 **。** 如需存取層的詳細資訊，請參閱 [Azure Blob 儲存體經常性存取、非經常性存取層和封存的存取層](storage-blob-storage-tiers.md)。
 
 ## <a name="sample-use-cases"></a>範例使用案例
 
@@ -59,7 +63,7 @@ Azure 分頁 Blob 的主要功能包括其 REST 介面、基礎儲存體的持�
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
-若要建立分頁 blob，我們會先建立 **CloudBlobClient** 物件，其中包含用來存取儲存體帳戶之 blob 儲存體的基底 URI (在 [圖) 1] 中 *>pbaccount* ，以及 **>storagecredentialsaccountandkey** 物件，如下列範例所示。 然後，此範例會顯示如何建立 **>cloudblobcontainer.listblobs** 物件的參考，然後建立容器 (*Testvhds*) （如果尚未存在）。 然後，透過 **CloudBlobContainer** 物件，建立 **CloudPageBlob** 物件的參照，方法是指定要存取的分頁 Blob 名稱 (os4.vhd)。 若要建立分頁 blob，請呼叫 [CloudPageBlob](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)，並傳入要建立之 blob 的大小上限。 *blobSize* 必須是 512 位元組的倍數。
+若要建立分頁 blob，我們會先建立 **CloudBlobClient** 物件，其中包含用來存取儲存體帳戶之 blob 儲存體的基底 URI (在 [圖) 1] 中 *>pbaccount* ，以及 **>storagecredentialsaccountandkey** 物件，如下列範例所示。 然後，此範例會顯示如何建立 **>cloudblobcontainer.listblobs** 物件的參考，然後建立容器 ( *Testvhds* ) （如果尚未存在）。 然後，透過 **CloudBlobContainer** 物件，建立 **CloudPageBlob** 物件的參照，方法是指定要存取的分頁 Blob 名稱 (os4.vhd)。 若要建立分頁 blob，請呼叫 [CloudPageBlob](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)，並傳入要建立之 blob 的大小上限。 *blobSize* 必須是 512 位元組的倍數。
 
 ```csharp
 using Microsoft.Azure;
