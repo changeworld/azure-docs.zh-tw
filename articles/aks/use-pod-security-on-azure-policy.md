@@ -4,13 +4,12 @@ description: '瞭解如何使用 Azure Kubernetes Service (AKS 上的 Azure 原�
 services: container-service
 ms.topic: article
 ms.date: 09/22/2020
-author: jluk
-ms.openlocfilehash: 5178aa30c3bfec014dd10e2c4f3de182aaef7e68
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 8e437095b3d527647a453ba89adaa2ab62672177
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900124"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348520"
 ---
 # <a name="secure-pods-with-azure-policy"></a>使用 Azure 原則保護 Pod
 
@@ -299,7 +298,7 @@ az aks disable-addons --addons azure-policy --name MyAKSCluster --resource-group
 
 以下摘要說明 pod 安全性原則和 Azure 原則之間的行為變更。
 
-|案例| Pod 安全性原則 | Azure 原則 |
+|狀況| Pod 安全性原則 | Azure 原則 |
 |---|---|---|
 |安裝|啟用 pod 安全性原則功能 |啟用 Azure 原則附加元件
 |部署原則| 部署 pod 安全性原則資源| 將 Azure 原則指派給訂用帳戶或資源群組範圍。 Kubernetes 資源應用程式需要 Azure 原則附加元件。

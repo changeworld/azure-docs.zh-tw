@@ -1,7 +1,7 @@
 ---
 title: 資料擷取管線的 DevOps
 titleSuffix: Azure Machine Learning
-description: 瞭解如何套用 DevOps 實務來建立資料內嵌管線來準備資料。 使用 Azure Data Factory 和 Azure Databricks。
+description: 瞭解如何套用 DevOps 實務來建立資料內嵌管線，以使用 Azure Data Factory 和 Azure Databricks 來準備資料。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,12 +12,12 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 5e3774b360df6dce318d1d640903d0df2e21c856
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8f229c52b62c740c9d955f745a6922e59163b907
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320692"
+ms.locfileid: "93348554"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>資料擷取管線的 DevOps
 

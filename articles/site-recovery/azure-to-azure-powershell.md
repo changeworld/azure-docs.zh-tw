@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 6a272294ca602e3f482156a7334084bf041f683e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1570bd9dfa62caa749d5a3983b93c2555be058ec
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307546"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348724"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>使用 Azure PowerShell 來設定 Azure 虛擬機器的災害復原
 
@@ -36,7 +36,7 @@ ms.locfileid: "91307546"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在開始之前：
 - 請確定您了解[情節架構和元件](azure-to-azure-architecture.md)。
@@ -45,13 +45,13 @@ ms.locfileid: "91307546"
 
 ## <a name="sign-in-to-your-microsoft-azure-subscription"></a>登入您的 Microsoft Azure 訂用帳戶
 
-使用 Cmdlet 登入您的 Azure 訂用帳戶 `Connect-AzAccount` 。
+使用 `Connect-AzAccount` Cmdlet 登入您的 Azure 訂用帳戶。
 
 ```azurepowershell
 Connect-AzAccount
 ```
 
-選取 Azure 訂用帳戶。 使用 `Get-AzSubscription` Cmdlet 來取得您可以存取的 Azure 訂用帳戶清單。 使用 Cmdlet 來選取要使用的 Azure 訂用帳戶 `Set-AzContext` 。
+選取 Azure 訂用帳戶。 您可以使用 `Get-AzSubscription` Cmdlet 取得您有權存取的 Azure 訂用帳戶清單。 使用 Cmdlet 來選取要使用的 Azure 訂用帳戶 `Set-AzContext` 。
 
 ```azurepowershell
 Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -249,6 +249,15 @@ Write-Output $TempASRJob.State
 $RecoveryProtContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $RecoveryFabric -Name "A2AWestUSProtectionContainer"
 ```
 
+#### <a name="fabric-and-container-creation-when-enabling-zone-to-zone-replication"></a>啟用區域對區域複寫時建立網狀架構和容器
+
+啟用區域對區域複寫時，只會建立一個網狀架構。 但會有兩個容器。 假設區域是西歐，請使用下列命令來取得主要和保護容器：
+
+```azurepowershell
+$primaryProtectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric -Name "asr-a2a-default-westeurope-container"
+$recoveryPprotectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $fabric -Name "asr-a2a-default-westeurope-t-container"
+```
+
 ### <a name="create-a-replication-policy"></a>建立複寫原則
 
 ```azurepowershell
@@ -287,6 +296,14 @@ Write-Output $TempASRJob.State
 $EusToWusPCMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $PrimaryProtContainer -Name "A2APrimaryToRecovery"
 ```
 
+#### <a name="protection-container-mapping-creation-when-enabling-zone-to-zone-replication"></a>啟用區域對區域複寫時建立保護容器對應
+
+啟用區域對區域複寫時，請使用下列命令來建立保護容器對應。 假設區域是西歐，則命令會是-
+
+```azurepowershell
+$protContainerMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $PrimprotectionContainer -Name "westeurope-westeurope-24-hour-retention-policy-s"
+```
+
 ### <a name="create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>建立用於容錯回復 (在容錯移轉之後反向複寫) 的保護容器對應
 
 在容錯移轉之後，當您準備好讓已容錯移轉的虛擬機器回到原始 Azure 區域時，就會進行容錯回復。 若要容錯回復，已容錯移轉的虛擬機器會從已容錯移轉的區域反向複寫至原始區域。 在反向複寫時，原始區域和復原區域的角色會對調。 原始區域現在會變成新的復原區域，原本的復原區域現在則會變成主要區域。 反向複寫的保護容器對應會表示原始區域和復原區域的對調角色。
@@ -316,7 +333,7 @@ $WusToEusPCMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Protec
 $EastUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestorage" -ResourceGroupName "A2AdemoRG" -Location 'East US' -SkuName Standard_LRS -Kind Storage
 ```
 
-針對 **不使用受控磁片**的虛擬機器，目標儲存體帳戶是復原區域中要複寫虛擬機器磁片的儲存體帳戶。 目標儲存體帳戶可以是標準儲存體帳戶，也可以是進階儲存體帳戶。 根據資料變更率來選取所需的儲存體帳戶類型 (磁片的 IO 寫入速率) ，以及針對儲存體類型 Azure Site Recovery 支援的流失限制。
+針對 **不使用受控磁片** 的虛擬機器，目標儲存體帳戶是復原區域中要複寫虛擬機器磁片的儲存體帳戶。 目標儲存體帳戶可以是標準儲存體帳戶，也可以是進階儲存體帳戶。 根據資料變更率來選取所需的儲存體帳戶類型 (磁片的 IO 寫入速率) ，以及針對儲存體類型 Azure Site Recovery 支援的流失限制。
 
 ```azurepowershell
 #Create Target storage account in the recovery region. In this case a Standard Storage account
@@ -396,7 +413,7 @@ $WestUSTargetStorageAccount = New-AzStorageAccount -Name "a2atargetstorage" -Res
 
 ## <a name="replicate-azure-virtual-machine"></a>複寫 Azure 虛擬機器
 
-以**受控磁碟**複寫 Azure 虛擬機器。
+以 **受控磁碟** 複寫 Azure 虛擬機器。
 
 ```azurepowershell
 #Get the resource group that the virtual machine must be created in when failed over.
@@ -430,7 +447,7 @@ $diskconfigs += $OSDiskReplicationConfig, $DataDisk1ReplicationConfig
 $TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId
 ```
 
-以**非受控磁碟**複寫 Azure 虛擬機器。
+以 **非受控磁碟** 複寫 Azure 虛擬機器。
 
 ```azurepowershell
 #Specify replication properties for each disk of the VM that is to be replicated (create disk replication configuration)

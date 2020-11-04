@@ -3,7 +3,7 @@ title: Azure 媒體服務概觀 | Microsoft Docs
 description: Microsoft Azure 媒體服務是一個可延伸的雲端型平台，供開發人員建置可擴充的媒體管理和傳遞應用程式。 本文提供 Azure 媒體服務的總覽。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2019
-ms.author: juliako
-ms.openlocfilehash: 0d896b0ce23116f1b87718f492d407ac094b9e6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/03/2020
+ms.author: inhenkel
+ms.openlocfilehash: c6f889963e87d900040d1fe77031f943ab368837
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89261150"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348739"
 ---
 # <a name="azure-media-services-overview"></a>Azure 媒體服務概觀
 
@@ -38,13 +38,13 @@ Microsoft Azure 媒體服務 (AMS) 是一個可延伸的雲端式平台，供開
 
 ## <a name="compliance-privacy-and-security"></a>合規性、隱私權和安全性
 
-重要提醒是，您必須遵守使用 Azure 媒體服務的所有適用法律，而且不得以違反他人權利或可能會對他人有害的方式使用媒體服務或任何 Azure 服務。
+重要提醒是，在使用 Azure 媒體服務時，您必須遵守所有適用的法律，且您不得以違反他人權利或可能會對他人有害的方式使用「媒體服務」或任何 Azure 服務。
 
-將任何影片/影像上傳至媒體服務之前，您必須具備使用影片/影像的所有適當許可權，包括法律所需的所有必要 (同意（如果影片/影像中有任何) ，可用於媒體服務和 Azure 中的資料使用、處理和儲存）。 有些司法管轄區可能會對特定資料類別 (例如生物識別資料) 的收集、線上處理和儲存施加特殊的法律要求。 在使用媒體服務和 Azure 來處理和儲存任何受限於特殊法律需求的資料之前，您必須確保符合您可能適用的任何這類法律需求。
+將任何影片/影像上傳至「媒體服務」之前，您必須擁有使用該影片/影像的所有適當權限，包括依據法律要求須徵得影片/影像中的個人 (如果有的話) 所有必要的同意，方可在「媒體服務」和 Azure 中使用、處理和儲存其資料。 有些司法管轄區可能會對特定資料類別 (例如生物識別資料) 的收集、線上處理和儲存施加特殊的法律要求。 使用「媒體服務」和 Azure 來處理及儲存任何受到特殊法律要求約束的資料之前，您必須確定已符合您可能適用的任何此類法律要求。
 
-若要瞭解媒體服務中的合規性、隱私權和安全性，請造訪 Microsoft [信任中心](https://www.microsoft.com/trust-center/?rtc=1)。 如需 Microsoft 的隱私權義務、資料處理和保留實務（包括如何刪除您的資料），請參閱 Microsoft 的 [隱私權聲明](https://privacy.microsoft.com/PrivacyStatement)、 [線上服務條款](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ( 「OST」 ) 和 [資料處理](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) 增補 ( 「DPA」 ) 。 使用媒體服務即表示您同意受到 OST、DPA 和隱私權聲明的約束。
+若要了解「媒體服務」中的合規性、隱私權和安全性，請造訪 Microsoft [信任中心](https://www.microsoft.com/trust-center/?rtc=1)。 如需 Microsoft 的隱私權義務、資料處理和保留實務（包括如何刪除您的資料），請參閱 Microsoft 的 [隱私權聲明](https://privacy.microsoft.com/PrivacyStatement)、 [線上服務條款](https://www.microsoft.com/licensing/product-licensing/products?rtc=1) ( 「OST」 ) 和 [資料處理](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) 增補 ( 「DPA」 ) 。 一旦使用「媒體服務」，即表示您同意受到 OST、DPA 和隱私權聲明的規範。
  
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要開始使用 Azure 媒體服務，您應該具備下列項目：
 
@@ -78,7 +78,7 @@ Microsoft Azure 媒體服務 (AMS) 是一個可延伸的雲端式平台，供開
 
 ## <a name="code-samples"></a>程式碼範例
 
-在 **Azure 程式碼範例**資源庫中找到多個程式碼範例：[Azure 媒體服務程式碼範例](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0)。
+在 **Azure 程式碼範例** 資源庫中找到多個程式碼範例： [Azure 媒體服務程式碼範例](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0)。
 
 ## <a name="concepts"></a>概念
 
@@ -86,13 +86,12 @@ Microsoft Azure 媒體服務 (AMS) 是一個可延伸的雲端式平台，供開
 
 ## <a name="supported-scenarios-and-availability-of-media-services-across-data-centers"></a>跨資料中心支援的媒體服務情節和可用性
 
-如需詳細資訊，請參閱[跨資料中心的 AMS 功能和服務情節和可用性](scenarios-and-availability.md)。
+如需 Azure 一般案例的詳細資訊，請參閱 [AMS 案例](scenarios-and-availability.md)。
+如需區域可用性的詳細資訊，請參閱 [媒體服務可用性](availability-regions-v-2.md)。
 
 ## <a name="service-level-agreement-sla"></a>服務等級協定 (SLA)
 
 如需詳細資訊，請參閱 [Microsoft Azure SLA](https://azure.microsoft.com/support/legal/sla/)。
-
-如需資料中心內可用性的資訊，請參閱[可用性](scenarios-and-availability.md#availability)一節。
 
 ## <a name="support"></a>支援
 

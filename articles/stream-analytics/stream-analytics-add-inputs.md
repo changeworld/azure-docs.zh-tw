@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: a9f48d95281971fc49a6a3fda93e4ee13ed8d753
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: b344e9e24d15189b805f586227c7253395e8448e
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130777"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348979"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>了解 Azure 串流分析的輸入
 
@@ -26,7 +26,7 @@ Azure 串流分析作業能連接一或多個資料輸入。 每個輸入都定�
 
 這些輸入資源可以存留于與串流分析作業相同的 Azure 訂用帳戶中，或從不同的訂用帳戶。
 
-您可以使用 [Azure 入口網站](stream-analytics-quick-create-portal.md#configure-job-input)、  [AZURE POWERSHELL](/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput)、 [.net API](/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions)、 [REST API](./stream-analytics-define-inputs.md)和 [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) 來建立、編輯和測試串流分析作業輸入。
+您可以使用 [Azure 入口網站](stream-analytics-quick-create-portal.md#configure-job-input)、  [AZURE POWERSHELL](/powershell/module/az.streamanalytics/New-azStreamAnalyticsInput)、 [.net API](/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions)、 [REST API](/rest/api/streamanalytics/2016-03-01/inputs)和 [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) 來建立、編輯和測試串流分析作業輸入。
 
 ## <a name="stream-and-reference-inputs"></a>資料流和參考輸入
 當資料發送到資料來源時，串流分析作業會即時取用並處理該資料。 輸入分為兩種類型：資料流輸入和參考資料輸入。
@@ -37,7 +37,7 @@ Azure 串流分析作業能連接一或多個資料輸入。 每個輸入都定�
 如需串流資料輸入的詳細資訊，請參閱[將資料作為輸入串流處理至串流分析中](stream-analytics-define-inputs.md)
 
 ### <a name="reference-data-input"></a>參考資料輸入
-串流分析也支援稱為「參考資料」  的輸入。 參考資料是完全靜態或緩慢變更的資料。 這些資料通常用來執行相互關聯和查閱。 比方說，您可能會將資料流輸入中的資料聯結至參考資料中的資料，很像是執行 SQL 聯結來查詢靜態值。 目前支援 Azure Blob 儲存體、Azure Data Lake Storage Gen2 和 Azure SQL Database 作為參考資料的輸入來源。 參考資料源 blob 的大小上限為 300 MB，視查詢複雜度和已配置的串流單位而定 (如需詳細資料，請參閱參考資料檔集的 [大小限制](stream-analytics-use-reference-data.md#size-limitation) 一節) 。
+串流分析也支援稱為「參考資料」的輸入。 參考資料是完全靜態或緩慢變更的資料。 這些資料通常用來執行相互關聯和查閱。 比方說，您可能會將資料流輸入中的資料聯結至參考資料中的資料，很像是執行 SQL 聯結來查詢靜態值。 目前支援 Azure Blob 儲存體、Azure Data Lake Storage Gen2 和 Azure SQL Database 作為參考資料的輸入來源。 參考資料源 blob 的大小上限為 300 MB，視查詢複雜度和已配置的串流單位而定 (如需詳細資料，請參閱參考資料檔集的 [大小限制](stream-analytics-use-reference-data.md#size-limitation) 一節) 。
 
 如需參考資料輸入的詳細資訊，請參閱[使用參考資料在串流分析中進行查閱](stream-analytics-use-reference-data.md)
 

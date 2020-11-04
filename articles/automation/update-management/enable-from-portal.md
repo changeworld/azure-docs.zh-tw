@@ -5,16 +5,16 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 681c5e169acc30cc6708b56b5ba180d2729919e5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 73813ffbb6ac1839a48fc455dec5f6ad26ed0164
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222096"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348784"
 ---
 # <a name="enable-update-management-from-the-azure-portal"></a>從 Azure 入口網站啟用更新管理
 
-本文說明如何瀏覽 Azure 入口網站，以啟用 VM 的[更新管理](overview.md)功能。 若要大規模啟用 Azure VM，您必須使用更新管理來啟用現有的 VM。
+本文說明如何瀏覽 Azure 入口網站，以啟用 VM 的[更新管理](overview.md)功能。 若要大規模啟用 Azure Vm，您必須使用更新管理啟用現有的 Azure VM。
 
 可用於管理 VM 的資源群組數目受限於 [Resource Manager 部署限制](../../azure-resource-manager/templates/cross-scope-deployment.md)。 Resource Manager 部署 (請勿與更新部署混淆) 受限於每個部署 5 個資源群組。 其中 2 個資源群組保留來設定 Log Analytics 工作區、自動化帳戶和相關資源。 這樣剩下三個資源群組，可供您選取由更新管理來管理。 此限制僅適用於同時的設定，而不是可由自動化功能管理的資源群組數目。
 
@@ -35,7 +35,7 @@ ms.locfileid: "92222096"
 
 1. 在 Azure 入口網站中，瀏覽至 [虛擬機器]。
 
-2. 使用核取方塊來選擇要新增至更新管理的 VM。 您一次最多可以將機器新增至三個不同的資源群組。 不論自動化帳戶在哪裡，Azure VM 可以存在於任何區域。
+2. 在 [ **虛擬機器** ] 頁面上，使用核取方塊來選擇要新增至更新管理的 vm。 您一次最多可以將機器新增至三個不同的資源群組。 不論自動化帳戶在哪裡，Azure VM 可以存在於任何區域。
 
     ![VM 清單](media/enable-from-portal/vmlist.png)
 
@@ -48,7 +48,7 @@ ms.locfileid: "92222096"
 
 4. 虛擬機器清單會加以篩選，只顯示位在相同訂用帳戶及位置中的虛擬機器。 如果您的虛擬機器位於三個以上的資源群組中，則會選取前三個資源群組。
 
-5. 預設會選取現有的 Log Analytics 工作區和自動化帳戶。 如果您想要使用不同的 Log Analytics 工作區和自動化帳戶，請選取 [ **自** 定義]，從 [自訂設定] 頁面選取它們。 當您選擇 Log Analytics 工作區時，系統會檢查此工作區是否與自動化帳戶連結。 如果找到連結的自動化帳戶，您會看到下列畫面。 完成時，選取 [確認]****。
+5. 預設會選取現有的 Log Analytics 工作區和自動化帳戶。 如果您想要使用不同的 Log Analytics 工作區和自動化帳戶，請選取 [ **自** 定義]，從 [自訂設定] 頁面選取它們。 當您選擇 Log Analytics 工作區時，系統會檢查此工作區是否與自動化帳戶連結。 如果找到連結的自動化帳戶，您會看到下列畫面。 完成時，選取 [確認]。
 
     [![選取工作區和帳戶](./media/enable-from-portal/select-workspace-and-account.png)](./media/enable-from-portal/select-workspace-and-account-expanded.png#lightbox)
 

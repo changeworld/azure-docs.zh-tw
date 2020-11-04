@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 189fa12b1fc11e79ab64231a7ecd453113b8771a
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 18b980a868173b1fa721f9fc0986d7e1efb203af
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336005"
+ms.locfileid: "93348911"
 ---
 # <a name="troubleshooting-shared-image-galleries-in-azure"></a>針對 Azure 中的共用映射資源庫進行疑難排解
 
@@ -223,7 +223,7 @@ ms.locfileid: "93336005"
 **原因** ：資料磁片映射上使用的磁片加密集的資源識別碼使用了不正確格式。  
 因應 **措施：確定** 磁片加密集的資源識別碼遵循/Subscriptions/<subscriptionID \> /ResourceGroups/<ResourceGroupName \> /providers/Microsoft.Compute/<diskEncryptionSetName 的格式 \> 。
 
-*參數 GalleryArtifactVersion 的值無效。 osDiskImage. DiskEncryptionSetId 的值無效。* 
+*參數 galleryArtifactVersion 的值無效。 osDiskImage. diskEncryptionSetId 的值無效。*  
 **原因** ： OS 磁片映射上使用的磁片加密集的資源識別碼使用了不正確格式  
 因應 **措施：確定** 磁片加密集的資源識別碼遵循/Subscriptions/<subscriptionID \> /ResourceGroups/<ResourceGroupName \> /providers/Microsoft.Compute/<diskEncryptionSetName 的格式 \> 。
 

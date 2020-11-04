@@ -2,15 +2,15 @@
 title: 從自動化帳戶啟用 Azure 自動化更新管理
 description: 此文章說明如何從自動化帳戶啟用更新管理。
 services: automation
-ms.date: 10/26/2020
+ms.date: 11/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 9630b29def0c450ef907219895d1488d72fd78d1
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 6f14516f36975d84256f9bb1bd3b4949dbf80448
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669895"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348826"
 ---
 # <a name="enable-update-management-from-an-automation-account"></a>從自動化帳戶啟用更新管理
 
@@ -19,11 +19,11 @@ ms.locfileid: "92669895"
 > [!NOTE]
 > 啟用更新管理時，只有特定區域支援連結 Log Analytics 工作區和自動化帳戶。 如需支援的對應配對清單，請參閱[自動化帳戶和 Log Analytics 工作區的區域對應](../how-to/region-mappings.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有這類帳戶，可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [自動化帳戶](../index.yml)，以管理電腦。
-* 在已啟用 Arc 的伺服器 (預覽) 註冊的 [Azure 虛擬機器](../../virtual-machines/windows/quick-create-portal.md)或 VM 或伺服器。 非 Azure Vm 或伺服器必須安裝適用于 Windows 或 Linux 的 [Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md) ，並向連結至自動化帳戶的工作區報告，更新管理已在中啟用。 建議您先將您的電腦連接到 [Azure Arc 啟用的伺服器](../../azure-arc/servers/overview.md)，然後使用 Azure 原則將「 [部署 Log analytics 代理程式」指派給 *Linux* 或 *Windows* Azure Arc 電腦](../../governance/policy/samples/built-in-policies.md#monitoring) 內建原則，以安裝適用于 Windows 或 Linux 的 Log analytics 代理程式。 如果您也打算使用適用於 VM 的 Azure 監視器監視電腦，請改用 [啟用適用於 VM 的 Azure 監視器](../../governance/policy/samples/built-in-initiatives.md#monitoring) 方案。
+* [Azure 虛擬機器](../../virtual-machines/windows/quick-create-portal.md)，或向啟用 Arc 的伺服器註冊的 VM 或伺服器。 非 Azure Vm 或伺服器必須安裝適用于 Windows 或 Linux 的 [Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md) ，並向連結至自動化帳戶的工作區報告，更新管理已在中啟用。 建議您先將您的電腦連接到 [Azure Arc 啟用的伺服器](../../azure-arc/servers/overview.md)，然後使用 Azure 原則將「 [部署 Log analytics 代理程式」指派給 *Linux* 或 *Windows* Azure Arc 電腦](../../governance/policy/samples/built-in-policies.md#monitoring) 內建原則，以安裝適用于 Windows 或 Linux 的 Log analytics 代理程式。 或者，如果您打算使用適用於 VM 的 Azure 監視器監視電腦，請改用 [ [啟用適用於 VM 的 Azure 監視器](../../governance/policy/samples/built-in-initiatives.md#monitoring) ] 方案。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 

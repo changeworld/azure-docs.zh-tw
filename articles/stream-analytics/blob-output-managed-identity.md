@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/11/2020
-ms.openlocfilehash: 99b7891f332298024c82103322cc6b58d066f587
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 7eb610f741681be89ef44f8288ed47674c1d6440
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123229"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348571"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>使用受控識別來驗證您的 Azure 串流分析作業，以 Azure Blob 儲存體輸出
 
@@ -25,7 +25,7 @@ ms.locfileid: "93123229"
 
    ![設定串流分析受控識別](./media/common/stream-analytics-enable-managed-identity.png)
 
-2. 在 Azure Blob 儲存體輸出接收的 [輸出屬性] 視窗中，選取 [驗證模式] 下拉式清單，然後選擇 [ **受控識別** ]。 如需其他輸出屬性的相關資訊，請參閱 [瞭解 Azure 串流分析的輸出](./stream-analytics-define-outputs.md)。 當您完成後，請按一下 [儲存]  。
+2. 在 Azure Blob 儲存體輸出接收的 [輸出屬性] 視窗中，選取 [驗證模式] 下拉式清單，然後選擇 [ **受控識別** ]。 如需其他輸出屬性的相關資訊，請參閱 [瞭解 Azure 串流分析的輸出](./stream-analytics-define-outputs.md)。 當您完成後，請按一下 [儲存]。
 
    ![設定 Azure Blob 儲存體輸出](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
 
@@ -33,7 +33,7 @@ ms.locfileid: "93123229"
 
 ## <a name="azure-resource-manager-deployment"></a>Azure Resource Manager 部署
 
-使用 Azure Resource Manager 可讓您將串流分析作業的部署作業完全自動化。 您可以使用 Azure PowerShell 或 [Azure CLI](/cli/azure/?view=azure-cli-latest)來部署 Resource Manager 範本。 下列範例會使用 Azure CLI。
+使用 Azure Resource Manager 可讓您將串流分析作業的部署作業完全自動化。 您可以使用 Azure PowerShell 或 [Azure CLI](/cli/azure/)來部署 Resource Manager 範本。 下列範例會使用 Azure CLI。
 
 
 1. 您可以在 Resource Manager 範本的資源區段中包含下列屬性，以使用受控識別建立 **>mslearn-streamanalytics/streamingjobs** 資源：
@@ -218,9 +218,9 @@ ms.locfileid: "93123229"
 
 設定儲存體帳戶的 **防火牆和虛擬網路** 時，您可以選擇性地允許來自其他受信任 Microsoft 服務的網路流量。 當串流分析使用受控識別進行驗證時，它會提供要求源自受信任服務的證明。 以下是啟用此 VNET 存取例外狀況的指示。
 
-1.  流覽至儲存體帳戶的 [設定] 窗格中的 [防火牆和虛擬網路] 窗格。
-2.  確定已啟用 [允許信任的 Microsoft 服務存取此儲存體帳戶] 選項。
-3.  如果您已啟用它，請按一下 [ **儲存** ]。
+1.    流覽至儲存體帳戶的 [設定] 窗格中的 [防火牆和虛擬網路] 窗格。
+2.    確定已啟用 [允許信任的 Microsoft 服務存取此儲存體帳戶] 選項。
+3.    如果您已啟用它，請按一下 [ **儲存** ]。
 
    ![啟用 VNET 存取](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-vnet-exception.png)
 

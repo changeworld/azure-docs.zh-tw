@@ -3,12 +3,12 @@ title: 針對登錄登入進行疑難排解
 description: 登入 Azure container registry 時常見問題的徵兆、原因和解決方式
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: f7bac49a79d32af3a0e533f4c4e3431c62b82172
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a00db5cc34da6d90210a22005f33b0ad1bf20f1b
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148437"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348894"
 ---
 # <a name="troubleshoot-registry-login"></a>針對登錄登入進行疑難排解
 
@@ -56,7 +56,7 @@ ms.locfileid: "92148437"
 
 ### <a name="specify-correct-registry-name"></a>指定正確的登錄名稱
 
-使用時 `docker login` ，請提供登錄的完整登入伺服器名稱，例如 *myregistry.azurecr.io*。 請確定您只使用小寫字母。 範例：
+使用時 `docker login` ，請提供登錄的完整登入伺服器名稱，例如 *myregistry.azurecr.io* 。 請確定您只使用小寫字母。 範例：
 
 ```console
 docker login myregistry.azurecr.io
@@ -77,10 +77,11 @@ az acr login --name myregistry
 檢查您在案例中使用的認證有效性，或由登錄擁有者提供給您。 一些可能的問題：
 
 * 如果使用 Active Directory 的服務主體，請確定您在 Active Directory 租使用者中使用正確的認證：
-  * 使用者名稱-服務主體應用程式識別碼 (也稱為 *用戶端識別碼*) 
+  * 使用者名稱-服務主體應用程式識別碼 (也稱為 *用戶端識別碼* ) 
   * 密碼服務主體密碼 (也稱為 *用戶端* 密碼) 
 * 如果使用 Azure 服務（例如 Azure Kubernetes Service 或 Azure DevOps）來存取登錄，請確認您的服務的登錄設定。
 * 如果您執行 `az acr login` 的 `--expose-token` 選項是啟用登錄登入，而不使用 Docker daemon，請務必使用使用者名稱進行驗證 `00000000-0000-0000-0000-000000000000` 。
+* 如果您的登錄設定為 [匿名提取存取](container-registry-faq.md#how-do-i-enable-anonymous-pull-access)，則從先前的 docker 登入儲存的現有 docker 認證可以防止匿名存取。 在 `docker logout` 登錄上嘗試匿名提取作業之前執行。
 
 相關連結：
 

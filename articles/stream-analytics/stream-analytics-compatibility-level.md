@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 87ee8a9c57fc456ba02f97bf56db25e4c91e9398
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 11014c5a5c5cd0cabae1b62083bd5e662be2c6b7
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129808"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348928"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 串流分析作業的相容性層級
 
@@ -33,12 +33,12 @@ Azure 串流分析目前支援三種相容性層級：
 
 ## <a name="set-the-compatibility-level"></a>設定相容性層級
 
-您可以在 Azure 入口網站中設定串流分析作業的相容性層級，或使用 [建立作業 REST API 呼叫](./stream-analytics-quick-create-portal.md)來設定相容性層級。
+您可以在 Azure 入口網站中設定串流分析作業的相容性層級，或使用 [建立作業 REST API 呼叫](/rest/api/streamanalytics/2016-03-01/streamingjobs/createorreplace#compatibilitylevel)來設定相容性層級。
 
 若要更新 Azure 入口網站中作業的相容性層級：
 
 1. 使用 [Azure 入口網站](https://portal.azure.com) 來尋找您的串流分析作業。
-2. 更新相容性層級之前，請先 **停止** 作業。 如果您的作業處於執行中狀態，則無法更新相容性層級。
+2. 更新相容性層級之前，請先 **停止** 作業。 如果您的作業處於執行中狀態，您就無法更新相容性層級。
 3. 在 [ **設定** ] 標題下，選取 [ **相容性層級** ]。
 4. 選擇您想要的相容性層級值。
 5. 選取頁面底部的 [ **儲存** ]。
@@ -83,7 +83,7 @@ Upsert 行為為 *insert 或 replace* 。
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>寫入 SQL 輸出時的 DateTimeOffset
 
-**先前的層級：** [DateTimeOffset](/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) 類型已調整為 UTC。
+**先前的層級：** [DateTimeOffset](/sql/t-sql/data-types/datetimeoffset-transact-sql) 類型已調整為 UTC。
 
 **1.2 層級：** DateTimeOffset 不再調整。
 

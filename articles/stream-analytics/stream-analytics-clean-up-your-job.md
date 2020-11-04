@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 124d2cf4380153bd3ea68de9233f6a1b5eb6ba78
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2652b97c9392d3016bbc52209d4b2bda81c31706
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130692"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348962"
 ---
 # <a name="stop-or-delete-your-azure-stream-analytics-job"></a>停止或刪除您的 Azure 串流分析作業
 
@@ -30,7 +30,7 @@ ms.locfileid: "93130692"
 
 2. 找到執行中的串流分析作業並加以選取。
 
-3. 在 [串流分析作業] 頁面上，選取 [停止]  以停止作業。 
+3. 在 [串流分析作業] 頁面上，選取 [停止] 以停止作業。 
 
    ![停止 Azure 串流分析作業](./media/stream-analytics-clean-up-your-job/stop-stream-analytics-job.png)
 
@@ -44,7 +44,7 @@ ms.locfileid: "93130692"
 
 2. 找到現有的串流分析作業並加以選取。
 
-3. 在 [串流分析作業] 頁面上，選取 [刪除]  以刪除作業。 
+3. 在 [串流分析作業] 頁面上，選取 [刪除] 以刪除作業。 
 
    ![刪除 Azure 串流分析作業](./media/stream-analytics-clean-up-your-job/delete-stream-analytics-job.png)
 
@@ -57,8 +57,8 @@ ms.locfileid: "93130692"
 
 ## <a name="stop-or-delete-a-job-using-azure-sdk-for-net"></a>使用適用於 .NET 的 Azure SDK 停止或刪除作業
 
-若要使用適用於 .NET 的 Azure SDK 停止作業，請使用 [StreamingJobsOperationsExtensions.BeginStop](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.beginstop?view=azure-dotnet) 方法。 若要使用適用於 .NET 的 Azure SDK 刪除作業，請使用 [StreamingJobsOperationsExtensions.BeginDelete](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.begindelete?view=azure-dotnet) 方法。
+若要使用適用於 .NET 的 Azure SDK 停止作業，請使用 [StreamingJobsOperationsExtensions.BeginStop](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.beginstop) 方法。 若要使用適用於 .NET 的 Azure SDK 刪除作業，請使用 [StreamingJobsOperationsExtensions.BeginDelete](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.begindelete) 方法。
 
 ## <a name="stop-or-delete-a-job-using-rest-api"></a>使用 REST API 停止或刪除作業
 
-若要使用 REST API 停止作業，請參閱 [Stop](/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#stop) 方法。 若要使用 REST API 刪除作業，請參閱 [Delete](/powershell/module/azurerm.streamanalytics/stop-azurermstreamanalyticsjob#delete) 方法。
+若要使用 REST API 停止作業，請參閱 [Stop](/rest/api/streamanalytics/2016-03-01/streamingjobs/stop) 方法。 若要使用 REST API 刪除作業，請參閱 [Delete](/rest/api/streamanalytics/2016-03-01/streamingjobs/delete) 方法。

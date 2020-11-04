@@ -5,16 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: d26354d8c247f0839bb96564c4e004158743bd88
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 36540de8924a1433f16f942d9aedc059efae05de
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742210"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348673"
 ---
 # <a name="update-management-overview"></a>更新管理概觀
 
-您可以使用 Azure 自動化中的更新管理，在 Azure、內部部署環境或其他雲端環境中，管理對 Windows 和 Linux 機器的作業系統更新。 您可以快速評估所有代理程式機器上可用更新的狀態，並管理為伺服器安裝必要更新的程序。
+您可以使用 Azure 自動化中的更新管理來管理 Azure、內部部署環境和其他雲端環境中 Windows 和 Linux 虛擬機器的作業系統更新。 您可以快速評估所有代理程式機器上可用更新的狀態，並管理為伺服器安裝必要更新的程序。
 
 > [!NOTE]
 > 您無法使用以更新管理設定的機器，從 Azure 自動化中執行自訂指令碼。 這部機器只能執行 Microsoft 簽署的更新指令碼。
@@ -25,12 +25,12 @@ ms.locfileid: "92742210"
 
 ## <a name="about-update-management"></a>關於更新管理
 
-更新管理所管理的機器會使用下列設定來執行評量和更新部署：
+受更新管理管理的機器會依賴下列各項來執行評估和部署更新：
 
-* 適用於 Windows 或 Linux 的 Log Analytics 代理程式
+* 適用于 Windows 或 Linux 的[Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)
 * 適用於 Linux 的 PowerShell 預期狀態組態 (DSC)
-* 自動化 Hybrid Runbook Worker
-* 適用於 Windows 機器的 Microsoft Update 或 Windows Server Update Services (WSUS)
+* 當您在電腦上啟用更新管理時，自動化混合式 Runbook 背景工作 (會自動安裝) 
+* Microsoft Update 或 [Windows Server Update Services](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) (適用于 Windows 電腦的 WSUS) 
 * 適用于 Linux 機器的私人或公用更新儲存機制
 
 下圖說明更新管理如何評估並將安全性更新套用至工作區中所有連線的 Windows Server 和 Linux 伺服器：
@@ -64,7 +64,7 @@ ms.locfileid: "92742210"
 
 ### <a name="supported-client-types"></a>支援的用戶端類型
 
-下表列出更新評估和修補支援的作業系統。 修補需要混合式 Runbook 背景工作角色。 如需混合式 Runbook 背景工作角色需求的相關資訊，請參閱[部署 Windows 混合式 Runbook 背景工作角色](../automation-windows-hrw-install.md)和[部署 Linux 混合式 Runbook 背景工作角色](../automation-linux-hrw-install.md)。
+下表列出更新評估和修補支援的作業系統。 修補需要混合式 Runbook 背景工作角色，當您啟用虛擬機器或伺服器進行更新管理管理時，會自動安裝此背景工作角色。 如需混合式 Runbook 背景工作角色系統需求的詳細資訊，請參閱 [部署 Windows 混合式 runbook 背景工作角色](../automation-windows-hrw-install.md) 和 [部署 Linux 混合式 Runbook 背景工作角色](../automation-linux-hrw-install.md)。
 
 > [!NOTE]
 > 只有在自動化帳戶和 Log Analytics 工作區[對應表](../how-to/region-mappings.md#supported-mappings) \(部分機器翻譯\) 中列出的特定區域，才支援 Linux 機器的更新評量。
@@ -97,7 +97,7 @@ ms.locfileid: "92742210"
 
 #### <a name="windows"></a>Windows
 
-Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取 Microsoft Update。 如需 Log Analytics 代理程式的相關資訊，請參閱 [Log analytics 代理程式總覽](../../azure-monitor/platform/log-analytics-agent.md)。 對於混合式電腦，建議先將您的電腦連接到 [Azure Arc 啟用的伺服器](../../azure-arc/servers/overview.md)，然後使用 Azure 原則將「 [部署 log analytics 代理程式」指派給 windows Azure Arc 電腦](../../governance/policy/samples/built-in-policies.md#monitoring) 內建原則，以安裝適用于 windows 的 log analytics 代理程式。 如果您也打算使用適用於 VM 的 Azure 監視器來監視電腦，請改用 [啟用適用於 VM 的 Azure 監視器](../../governance/policy/samples/built-in-initiatives.md#monitoring) 方案。
+Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取 Microsoft Update。 對於混合式電腦，建議先將您的電腦連接到 [Azure Arc 啟用的伺服器](../../azure-arc/servers/overview.md)，然後使用 Azure 原則將「 [部署 log analytics 代理程式」指派給 windows Azure Arc 電腦](../../governance/policy/samples/built-in-policies.md#monitoring) 內建原則，以安裝適用于 windows 的 log analytics 代理程式。 或者，如果您打算使用適用於 VM 的 Azure 監視器監視電腦，請改用 [ [啟用適用於 VM 的 Azure 監視器](../../governance/policy/samples/built-in-initiatives.md#monitoring) ] 方案。
 
 您可以搭配 Microsoft Endpoint Configuration Manager 使用更新管理。 若要深入了解整合案例，請參閱[整合更新管理與 Windows Endpoint Configuration Manager](mecmintegration.md)。 針對 Configuration Manager 環境中網站所管理的 Windows 伺服器，需要[適用於 Windows 的 Log Analytics 代理程式](../../azure-monitor/platform/agent-windows.md)。 
 
@@ -113,7 +113,7 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 > [!NOTE]
 > 只有在特定區域中才支援 Linux 機器的更新評量。 請參閱自動化帳戶和 Log Analytics 工作區[對應表](../how-to/region-mappings.md#supported-mappings) \(部分機器翻譯\)。
 
-如需 Log Analytics 代理程式的相關資訊，請參閱 [Log analytics 代理程式總覽](../../azure-monitor/platform/log-analytics-agent.md)。 對於混合式電腦，建議先將您的電腦連接到 [Azure Arc 啟用的伺服器](../../azure-arc/servers/overview.md)，然後使用 Azure 原則將「 [部署 log analytics 代理程式」指派給 linux Azure Arc 機器](../../governance/policy/samples/built-in-policies.md#monitoring) 內建原則，以安裝適用于 linux 的 log analytics 代理程式。 如果您也打算使用適用於 VM 的 Azure 監視器監視電腦，請改用 [啟用適用於 VM 的 Azure 監視器](../../governance/policy/samples/built-in-initiatives.md#monitoring) 方案。
+對於混合式電腦，建議先將您的電腦連接到 [Azure Arc 啟用的伺服器](../../azure-arc/servers/overview.md)，然後使用 Azure 原則將「 [部署 log analytics 代理程式」指派給 linux Azure Arc 機器](../../governance/policy/samples/built-in-policies.md#monitoring) 內建原則，以安裝適用于 linux 的 log analytics 代理程式。 或者，如果您打算使用適用於 VM 的 Azure 監視器監視電腦，請改用 [ [啟用適用於 VM 的 Azure 監視器](../../governance/policy/samples/built-in-initiatives.md#monitoring) ] 方案。
 
 從隨選 Red Hat Enterprise Linux 建立的 Vm (RHEL) 可在 Azure Marketplace 中取得的映射，以存取部署在 Azure 中的 [Red Hat 更新基礎結構 (RHUI) ](../../virtual-machines/workloads/redhat/redhat-rhui.md) 。 針對任何其他 Linux 發行版本，則必須使用該發行版本所支援的方法，從發行版本的線上檔案存放庫進行更新。
 
@@ -247,9 +247,11 @@ sudo yum -q --security check-update
 
 - 從您的 [自動化帳戶](enable-from-automation-account.md) ，適用于一或多個 azure 與非 azure 機器，包括已啟用 Arc 的伺服器。
 
-- 針對 Azure 入口網站中的 [虛擬機器] 頁面 [所選取的 AZURE VM](enable-from-vm.md) 。 此案例適用於 Linux 與 Windows VM。
+- 使用 **AutomationSolution** [runbook](enable-from-runbook.md) 方法。
 
-- 針對[多部 Azure VM](enable-from-portal.md)，透過從 Azure 入口網站的虛擬機器頁面中選取這些 VM 的方式來啟用。
+- 針對 Azure 入口網站中 [ **虛擬機器** ] 頁面的 [選取 Azure VM](enable-from-vm.md) 。 此案例適用於 Linux 與 Windows VM。
+
+- 針對 [多個 Azure vm](enable-from-portal.md) ，請從 Azure 入口網站中的 [ **虛擬機器** ] 頁面選取它們。
 
 > [!NOTE]
 > 更新管理需要將 Log Analytics 工作區連結至您的自動化帳戶。 如需支援區域的確切清單，請參閱 [Azure 工作區對應](../how-to/region-mappings.md)。 區域對應並不會影響從您的自動化帳戶，在不同區域中管理 VM 的能力。

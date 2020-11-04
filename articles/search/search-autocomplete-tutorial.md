@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 04123d06d22786c9dd2aa08c2dab1153f6d43375
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 5dd2d9e932bd1be3da74a2bdc9bd918401076aa3
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098445"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348605"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>將自動完成和建議新增至用戶端應用程式
 
@@ -139,7 +139,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 ### <a name="suggest-function"></a>建議函數
 
-如果您使用 c # 和 MVC 應用程式，您可以在 [控制器] 目錄下的 **HomeController.cs** 檔案，建立建議的結果類別。 在 .NET 中，建議函式是以 [DocumentsOperationsExtensions. 建議方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest)為基礎。 如需 .NET SDK 的詳細資訊，請參閱 [如何從 .Net 應用程式使用 Azure 認知搜尋](./search-howto-dotnet-sdk.md)。
+如果您使用 c # 和 MVC 應用程式，您可以在 [控制器] 目錄下的 **HomeController.cs** 檔案，建立建議的結果類別。 在 .NET 中，建議函式是以 [DocumentsOperationsExtensions. 建議方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest)為基礎。 如需 .NET SDK 的詳細資訊，請參閱 [如何從 .Net 應用程式使用 Azure 認知搜尋](search-howto-dotnet-sdk.md)。
 
 `InitSearch`方法會建立已驗證的 HTTP 索引用戶端至 Azure 認知搜尋服務。 [SuggestParameters](/dotnet/api/microsoft.azure.search.models.suggestparameters)類別上的屬性會決定要在結果中搜尋和傳回哪些欄位、相符的數目，以及是否使用模糊比對。 
 
@@ -247,10 +247,9 @@ public ActionResult AutoComplete(string term)
 
 自動完成函式會取用搜尋字詞輸入。 此方法會建立 [AutoCompleteParameters 物件](/rest/api/searchservice/autocomplete)。 結果接著會轉換為 JSON，以供在用戶端中顯示。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 請遵循下列連結以取得端對端指示，或示範搜尋即用類型體驗的程式碼。 這兩個程式碼範例都包含混合的建議和自動完成。
 
 + [教學課程：以 c # 建立您的第一個應用程式 (第3課) ](tutorial-csharp-type-ahead-and-suggestions.md)
 + [C # 程式碼範例： azure-搜尋-dotnet-sample/create-first-app/3-add-自動提示/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead)
-+ [使用 REST 並行程式碼的 c # 和 JavaScript 範例](https://github.com/wantedfast/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)

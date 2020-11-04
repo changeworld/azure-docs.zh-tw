@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/2/2020
-ms.openlocfilehash: fdd610be1dd7c5fe9c7aa574fde33df866116dd2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 022e2e25c96473f49468f2bd48e5ee997933baea
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128829"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348707"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Azure 串流分析的輸出
 
 Azure 串流分析作業是由輸入、查詢及輸出所組成。 有數種輸出類型可讓您傳送已轉換的資料。 本文列出支援的串流分析輸出。 在您設計串流分析查詢時，請使用 [INTO 子句](/stream-analytics-query/into-azure-stream-analytics)來參考輸出的名稱。 您可以針對每個作業使用單一輸出，或針對每個串流作業使用多個輸出 (如果您需要將多個 INTO 子句加入至查詢來) 這些輸出。
 
-若要建立、編輯及測試串流分析作業輸出，您可以使用 [Azure 入口網站](stream-analytics-quick-create-portal.md#configure-job-output)、[Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job)、[.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet)、[REST API](/rest/api/streamanalytics/)，以及 [Visual Studio](stream-analytics-quick-create-vs.md)。
+若要建立、編輯及測試串流分析作業輸出，您可以使用 [Azure 入口網站](stream-analytics-quick-create-portal.md#configure-job-output)、[Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job)、[.NET API](/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations)、[REST API](/rest/api/streamanalytics/)，以及 [Visual Studio](stream-analytics-quick-create-vs.md)。
 
 某些輸出類型支援[資料分割](#partitioning)，且[輸出批次大小](#output-batch-size)會變化以達到最佳輸送量。 下表顯示每個輸出類型所支援的功能：
 

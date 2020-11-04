@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 09/17/2020
+ms.date: 11/04/2020
 ms.author: victorh
-ms.openlocfilehash: 784459282007edab599d54edff0d2b38eed07b34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2899121db4b6a3f202be4860e2e4f43027cdef7c
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320637"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348758"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>監視 Azure 防火牆記錄和計量
 
@@ -24,7 +24,7 @@ ms.locfileid: "91320637"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 開始之前，您應該先閱讀 [Azure 防火牆記錄和計量](logs-and-metrics.md) ，以瞭解適用于 azure 防火牆的診斷記錄和計量。
 
@@ -33,7 +33,7 @@ ms.locfileid: "91320637"
 在您完成此程序來開啟診斷記錄之後，資料可能需要幾分鐘的時間，才會出現在您的記錄中。 如果您一開始沒有看到任何項目，請在幾分鐘後重新檢查一次。
 
 1. 在 Azure 入口網站中，開啟您的防火牆資源群組，然後選取防火牆。
-2. 在 [監視]**** 下方，選取 [診斷設定]****。
+2. 在 [監視]  下方，選取 [診斷設定]  。
 
    針對 Azure 防火牆，有四個可用的服務特定記錄：
 
@@ -43,12 +43,12 @@ ms.locfileid: "91320637"
    * AzureFirewallDnsProxy
 
 
-3. 選取 [ **新增診斷設定**]。 [診斷設定]**** 頁面中提供診斷記錄的設定。
-5. 在此範例中，Azure 監視器記錄會儲存記錄，因此請輸入**防火牆記錄分析**作為名稱。
-6. 在 [ **記錄**] 底下，選取 [ **>azurefirewallapplicationrule**]、[ **AzureFirewallNetworkRule**]、[ **AzureFirewallThreatIntelLog**] 和 [ **AzureFirewallDnsProxy** ] 以收集記錄。
+3. 選取 [ **新增診斷設定** ]。 [診斷設定] 頁面中提供診斷記錄的設定。
+5. 在此範例中，Azure 監視器記錄會儲存記錄，因此請輸入 **防火牆記錄分析** 作為名稱。
+6. 在 [ **記錄** ] 底下，選取 [ **>azurefirewallapplicationrule** ]、[ **AzureFirewallNetworkRule** ]、[ **AzureFirewallThreatIntelLog** ] 和 [ **AzureFirewallDnsProxy** ] 以收集記錄。
 7. 選取 [ **傳送至 Log Analytics** ] 以設定您的工作區。
 8. 選取您的訂用帳戶。
-9. 選取 [儲存]****。
+9. 選取 [儲存]。
 
 ## <a name="enable-logging-with-powershell"></a>使用 PowerShell 啟用記錄
 
@@ -56,11 +56,11 @@ ms.locfileid: "91320637"
 
 若要啟用診斷記錄，請使用下列步驟：
 
-1. 請記下您的儲存體帳戶的資源識別碼 (記錄資料的儲存之處)。 此值的形式為： */Subscriptions/ \<subscriptionId\> /resourceGroups/ \<resource group name\> /providers/Microsoft.Storage/storageAccounts/ \<storage account name\> *。
+1. 請記下您的儲存體帳戶的資源識別碼 (記錄資料的儲存之處)。 此值的形式為： */Subscriptions/ \<subscriptionId\> /resourceGroups/ \<resource group name\> /providers/Microsoft.Storage/storageAccounts/ \<storage account name\>* 。
 
-   您可以使用訂用帳戶中的所有儲存體帳戶。 您可以使用 Azure 入口網站來尋找此資訊。 資訊位於資源的 [屬性]**** 頁面中。
+   您可以使用訂用帳戶中的所有儲存體帳戶。 您可以使用 Azure 入口網站來尋找此資訊。 資訊位於資源的 [屬性] 頁面中。
 
-2. 請記下您防火牆的資源識別碼 (將為其啟用記錄功能)。 此值的形式為： */Subscriptions/ \<subscriptionId\> /resourceGroups/ \<resource group name\> /providers/Microsoft.Network/azureFirewalls/ \<Firewall name\> *。
+2. 請記下您防火牆的資源識別碼 (將為其啟用記錄功能)。 此值的形式為： */Subscriptions/ \<subscriptionId\> /resourceGroups/ \<resource group name\> /providers/Microsoft.Network/azureFirewalls/ \<Firewall name\>* 。
 
    您可以使用入口網站來尋找此資訊。
 
@@ -75,13 +75,57 @@ ms.locfileid: "91320637"
 > [!TIP]
 >診斷記錄不需要個別的儲存體帳戶。 將儲存體用於記錄存取和效能會產生服務費用。
 
+## <a name="enable-diagnostic-logging-by-using-azure-cli"></a>使用 Azure CLI 來啟用診斷記錄
+
+每個 Resource Manager 資源都會自動啟用活動記錄功能。 您必須啟用診斷記錄，才能開始收集可透過這些記錄取得的資料。
+
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+
+### <a name="enable-diagnostic-logging"></a>啟用診斷記錄
+
+使用下列命令來啟用診斷記錄。
+
+1. 執行 [az monitor 診斷-settings create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) 命令以啟用診斷記錄：
+
+   ```azurecli
+   az monitor diagnostic-settings create –name AzureFirewallApplicationRule \
+     --resource Firewall07 --storage-account MyStorageAccount
+   ```
+
+   執行 [az monitor 診斷-settings list](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_list) 命令以查看資源的診斷設定：
+
+   ```azurecli
+   az monitor diagnostic-settings list --resource Firewall07
+   ```
+
+   使用 [az monitor 診斷設定顯示](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_show) 來查看資源的作用中診斷設定：
+
+   ```azurecli
+   az monitor diagnostic-settings show --name AzureFirewallApplicationRule --resource Firewall07
+   ```
+
+1. 執行 [az monitor 診斷-settings update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) 命令以更新設定。
+
+   ```azurecli
+   az monitor diagnostic-settings update --name AzureFirewallApplicationRule --resource Firewall07 --set retentionPolicy.days=365
+   ```
+
+   使用 [az 監視器診斷-設定刪除](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_delete) 命令來刪除診斷設定。
+
+   ```azurecli
+   az monitor diagnostic-settings delete --name AzureFirewallApplicationRule --resource Firewall07
+   ```
+
+> [!TIP]
+>診斷記錄不需要個別的儲存體帳戶。 將儲存體用於記錄存取和效能會產生服務費用。
+
 ## <a name="view-and-analyze-the-activity-log"></a>檢視和分析活動記錄檔
 
 您可以使用下列任何方法，檢視和分析活動記錄資料：
 
-* **Azure 工具**：透過 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 入口網站，從活動記錄擷取資訊。 [活動作業與 Resource Manager](../azure-resource-manager/management/view-activity-logs.md) 一文會詳述每個方法的逐步指示。
-* **Power BI**：如果您還沒有 [Power BI](https://powerbi.microsoft.com/pricing) 帳戶，可以免費試用。 使用 [Power BI 的 Azure 活動記錄內容套件](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)，您可以使用預先設定的儀表板 (可按原樣使用或加以自訂) 來分析資料。
-* **Azure Sentinel**：您可以將 Azure 防火牆記錄連線到 Azure Sentinel，讓您可以在活頁簿中查看記錄資料、使用它來建立自訂警示，並將其納入以改善您的調查。 Azure Sentinel 中的 Azure 防火牆資料連線器目前處於公開預覽狀態。 如需詳細資訊，請參閱 [連接 Azure 防火牆的資料](../sentinel/connect-azure-firewall.md)。
+* **Azure 工具** ：透過 Azure PowerShell、Azure CLI、Azure REST API 或 Azure 入口網站，從活動記錄擷取資訊。 [活動作業與 Resource Manager](../azure-resource-manager/management/view-activity-logs.md) 一文會詳述每個方法的逐步指示。
+* **Power BI** ：如果您還沒有 [Power BI](https://powerbi.microsoft.com/pricing) 帳戶，可以免費試用。 使用 [Power BI 的 Azure 活動記錄內容套件](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)，您可以使用預先設定的儀表板 (可按原樣使用或加以自訂) 來分析資料。
+* **Azure Sentinel** ：您可以將 Azure 防火牆記錄連線到 Azure Sentinel，讓您可以在活頁簿中查看記錄資料、使用它來建立自訂警示，並將其納入以改善您的調查。 Azure Sentinel 中的 Azure 防火牆資料連線器目前處於公開預覽狀態。 如需詳細資訊，請參閱 [連接 Azure 防火牆的資料](../sentinel/connect-azure-firewall.md)。
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>檢視及分析網路和應用程式規則記錄
 
@@ -95,7 +139,7 @@ ms.locfileid: "91320637"
 > 如果您熟悉 Visual Studio 以及在 C# 中變更常數和變數值的基本概念，您可以使用 GitHub 所提供的[記錄檔轉換器工具 (英文)](https://github.com/Azure-Samples/networking-dotnet-log-converter)。
 
 ## <a name="view-metrics"></a>檢視計量
-流覽至 Azure 防火牆，並在 [ **監視** 選取的 **計量**] 下進行。 若要檢視可用的值，請選取 [計量]**** 下拉式清單。
+流覽至 Azure 防火牆，並在 [ **監視** 選取的 **計量** ] 下進行。 若要檢視可用的值，請選取 [計量] 下拉式清單。
 
 ## <a name="next-steps"></a>後續步驟
 

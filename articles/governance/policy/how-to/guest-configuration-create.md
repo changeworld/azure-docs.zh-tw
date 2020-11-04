@@ -3,12 +3,12 @@ title: 如何建立 Windows 的客體設定原則
 description: 了解如何建立 Windows 的 Azure 原則客體設定原則。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 563b178b9ba92125967c779b59a78a8e105ec744
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 325b00ac1cc747555d38b4c250709638f5e74d95
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542857"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348877"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何建立 Windows 的客體設定原則
 
@@ -23,8 +23,12 @@ ms.locfileid: "92542857"
 使用下列動作來建立自己的設定，以驗證 Azure 或非 Azure 電腦的狀態。
 
 > [!IMPORTANT]
-> 需要「來賓設定」擴充功能，才能在 Azure 虛擬機器中執行稽核。
+> 在 Azure Government 和 Azure 中國環境中具有來賓設定的自訂原則定義是預覽功能。
+>
+> 您需要客體設定延伸模組，才能在 Azure 虛擬機器中執行稽核。
 > 若要在所有 Windows 機器上大規模部署擴充功能，請指派下列原則定義： `Deploy prerequisites to enable Guest Configuration Policy on Windows VMs`
+> 
+> 請勿在自訂內容套件中使用秘密或機密資訊。
 
 ## <a name="install-the-powershell-module"></a>安裝 PowerShell 模組
 
@@ -487,9 +491,13 @@ New-GuestConfigurationPackage `
 
 ## <a name="policy-lifecycle"></a>原則生命週期
 
-如果您想要將更新發行至原則，則需要注意兩個欄位。
+如果您想要釋放原則的更新，有三個欄位需要注意。
 
-- **版本** ：當執行 `New-GuestConfigurationPolicy` Cmdlet 時，您必須指定大於目前發佈的版本號碼。 屬性會更新客體設定指派的版本，讓代理程式能夠辨識更新的套件。
+> [!NOTE]
+> `version`來賓設定指派的屬性只會影響 Microsoft 所裝載的封裝。 版本控制自訂內容的最佳作法是在檔案名中包含版本。
+
+- **版本** ：當執行 `New-GuestConfigurationPolicy` Cmdlet 時，您必須指定大於目前發佈的版本號碼。
+- **contentUri** ：當您執行 `New-GuestConfigurationPolicy` Cmdlet 時，您必須指定封裝位置的 URI。 在檔案名中包含套件版本，可確保每個版本中的這個屬性值都有變更。
 - **contentHash** ：`New-GuestConfigurationPolicy` Cmdlet 會自動更新此屬性。 此為 `New-GuestConfigurationPackage` 所建立套件的雜湊值。 針對您發佈的 `.zip` 檔案而言，此屬性必須是正確的。 如果只更新 **contentUri** 屬性，延伸模組就不會接受內容套件。
 
 發行更新套件的最簡單方式就是重複本文中所述程序，並提供更新的版本號碼。 此程序可確保所有屬性都已正確更新。

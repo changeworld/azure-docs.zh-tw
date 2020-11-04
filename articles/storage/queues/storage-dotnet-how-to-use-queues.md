@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bb53181355e292a885e8ffc2ac7c8a3aa48adaae
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: b59c7d2af33efd82f27af9e13fc9c1f36ca788ee
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787460"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348588"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>以 .NET 開始使用 Azure 佇列儲存體
 
@@ -30,7 +30,7 @@ Azure 佇列儲存體可提供應用程式元件之間的雲端傳訊。 設計�
 
 **預估完成時間：** 45 分鐘
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 
 - [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 - [Azure 儲存體帳戶](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
@@ -114,7 +114,7 @@ Azure 佇列儲存體可提供應用程式元件之間的雲端傳訊。 設計�
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
 2. 找出您的儲存體帳戶。
 3. 在儲存體帳戶概觀的 [設定] 區段中，選取 [存取金鑰]。 您的帳戶存取金鑰隨即出現，此外也會顯示每個金鑰的完整連接字串。
-4. 尋找 [金鑰1]  下方的 [連接字串]  值，然後按一下 [複製]  按鈕來複製連接字串。 在下一個步驟中，您會將連接字串值新增至環境變數。
+4. 尋找 [金鑰1] 下方的 [連接字串] 值，然後按一下 [複製] 按鈕來複製連接字串。 在下一個步驟中，您會將連接字串值新增至環境變數。
 
     ![顯示如何從 Azure 入口網站複製連接字串的螢幕擷取畫面](media/storage-dotnet-how-to-use-queues/portal-connection-string.png)
 

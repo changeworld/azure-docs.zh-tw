@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 1bd02043183bd0477d8663300fcb7a1d7ac9ea55
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 96720e156963a5fb542e72823a602aa2cc6a0ead
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242070"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348996"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-postgresql-single-server"></a>瞭解適用於 PostgreSQL 的 Azure 資料庫單一伺服器的根 CA 變更變更
 
@@ -31,9 +31,9 @@ ms.locfileid: "93242070"
 ## <a name="how-do-i-know-if-my-database-is-going-to-be-affected"></a>如何? 知道我的資料庫是否會受到影響？
 
 使用 SSL/TLS 並確認根憑證的所有應用程式都需要更新根憑證。 您可以藉由檢查您的連接字串來識別您的連接是否驗證根憑證。
--   如果您的連接字串包含 `sslmode=verify-ca` 或 `sslmode=verify-full` ，則需要更新憑證。
--   如果您的連接字串包含 `sslmode=disable` 、 `sslmode=allow` 、 `sslmode=prefer` 或 `sslmode=require` ，就不需要更新憑證。 
--   如果您的連接字串未指定 sslmode，您就不需要更新憑證。
+-    如果您的連接字串包含 `sslmode=verify-ca` 或 `sslmode=verify-full` ，則需要更新憑證。
+-    如果您的連接字串包含 `sslmode=disable` 、 `sslmode=allow` 、 `sslmode=prefer` 或 `sslmode=require` ，就不需要更新憑證。 
+-    如果您的連接字串未指定 sslmode，您就不需要更新憑證。
 
 如果您使用的用戶端會將連接字串抽象化，請參閱用戶端的檔，以瞭解它是否會驗證憑證。
 
@@ -80,19 +80,19 @@ ms.locfileid: "93242070"
  </br>-----終端憑證-----
 
 *   將原始的根 CA pem 檔案取代為合併的根 CA 檔案，然後重新開機您的應用程式/用戶端。
-*   未來，在伺服器端部署新的憑證之後，您可以將 CA pem 檔案變更為 DigiCertGlobalRootG2。
+*    未來，在伺服器端部署新的憑證之後，您可以將 CA pem 檔案變更為 DigiCertGlobalRootG2。
 
 ## <a name="what-can-be-the-impact-of-not-updating-the-certificate"></a>不更新憑證的影響為何？
 如果您使用巴爾的摩 CyberTrust 根憑證來確認適用於 PostgreSQL 的 Azure 資料庫的 SSL 連線（如這裡所述），則您的應用程式可用性可能會中斷，因為無法連接資料庫。 視您的應用程式而定，您可能會收到各種不同的錯誤訊息，包括但不限於：
-*   不正確憑證/撤銷憑證
-*   連線逾時
+*    不正確憑證/撤銷憑證
+*    連線逾時
 
 > [!NOTE]
 > 在進行 cert 變更之前，請勿捨棄或修改 **巴爾的摩 certificate** 。 變更完成之後，我們會傳送通訊，在這之後，就可以安全地捨棄巴爾的摩憑證。 
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
-### <a name="1-if-i-am-not-using-ssltls-do-i-still-need-to-update-the-root-ca"></a>1. 如果我未使用 SSL/TLS，是否仍需要更新根 CA？
+###    <a name="1-if-i-am-not-using-ssltls-do-i-still-need-to-update-the-root-ca"></a>1. 如果我未使用 SSL/TLS，是否仍需要更新根 CA？
 如果您不是使用 SSL/TLS，則不需要採取任何動作。 
 
 ### <a name="2-if-i-am-using-ssltls-do-i-need-to-restart-my-database-server-to-update-the-root-ca"></a>2. 如果我使用 SSL/TLS，是否需要重新開機我的資料庫伺服器來更新根 CA？
@@ -104,7 +104,7 @@ ms.locfileid: "93242070"
 ### <a name="4-what-is-the-impact-if-using-app-service-with-azure-database-for-postgresql"></a>4. 使用 App Service 搭配適用於 PostgreSQL 的 Azure 資料庫會有什麼影響？
 針對 Azure 應用程式服務，連接到適用於 PostgreSQL 的 Azure 資料庫，我們可以有兩個可能的案例，而這取決於您在應用程式中使用 SSL 的方式。
 *   此新憑證已新增至平台層級的 App Service。 如果您在應用程式中使用包含在 App Service 平臺上的 SSL 憑證，則不需要採取任何動作。
-*   如果您在程式碼中明確包含 SSL 憑證檔案的路徑，則需要下載新的憑證，並更新程式碼以使用新的憑證。此案例的一個良好範例是當您在 App Service 中使用自訂容器，如[App Service 檔](/azure/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress)中所共用
+*   如果您在程式碼中明確包含 SSL 憑證檔案的路徑，則需要下載新的憑證，並更新程式碼以使用新的憑證。此案例的一個良好範例是當您在 App Service 中使用自訂容器，如[App Service 檔](../app-service/tutorial-multi-container-app.md#configure-database-variables-in-wordpress)中所共用
 
 ### <a name="5-what-is-the-impact-if-using-azure-kubernetes-services-aks-with-azure-database-for-postgresql"></a>5. 使用 Azure Kubernetes Services (AKS) 搭配適用於 PostgreSQL 的 Azure 資料庫時的影響為何？
 如果您嘗試使用 Azure Kubernetes Services (AKS) 來連線至適用於 PostgreSQL 的 Azure 資料庫，其類似于從專用客戶主機環境進行存取。 請參閱 [此處](../aks/ingress-own-tls.md)的步驟。
@@ -123,10 +123,10 @@ ms.locfileid: "93242070"
 ### <a name="9-if-i-create-a-new-server-after-february-15-2021-02152021-will-i-be-impacted"></a>9. 如果我在2021年2月15日之後建立新的伺服器 (02/15/2021) 會受到影響嗎？
 針對在2021年2月15日之後建立的伺服器 (02/15/2021) ，您可以使用新發行的憑證，讓您的應用程式使用 SSL 進行連接。
 
-### <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. Microsoft 更新其憑證的頻率，或到期原則是什麼？
+###    <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. Microsoft 更新其憑證的頻率，或到期原則是什麼？
 適用於 PostgreSQL 的 Azure 資料庫所使用的憑證是由受信任的憑證授權單位單位 (CA) 提供。 因此，這些憑證在適用於 PostgreSQL 的 Azure 資料庫上的支援系結至 CA 支援這些憑證。 不過，在這種情況下，這些預先定義的憑證可能會有未預期的錯誤，這些都必須儘早修正。
 
-### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-the-primary-server-or-the-read-replicas"></a>11. 如果我使用讀取複本，我只需要在主伺服器或讀取複本上執行此更新嗎？
+###    <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-the-primary-server-or-the-read-replicas"></a>11. 如果我使用讀取複本，我只需要在主伺服器或讀取複本上執行此更新嗎？
 由於這項更新是用戶端的變更，如果用戶端用來從複本伺服器讀取資料，您也必須套用這些用戶端的變更。 
 
 ### <a name="12-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>12. 我們是否有伺服器端查詢，以確認是否正在使用 SSL？
@@ -138,5 +138,5 @@ ms.locfileid: "93242070"
 ### <a name="14-what-is-you-are-using-docker-image-of-pgbouncer-sidecar-provided-by-microsoft"></a>14. 您使用的是 Microsoft 所提供之 Pgbouncer) 側車的 docker 映射？
 支援 [**巴爾的摩**](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) 和 [**DigiCert**](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) 的新 docker 映射會發佈 [到下方，](https://hub.docker.com/_/microsoft-azure-oss-db-tools-pgbouncer-sidecar) (最新的標記) 。 您可以提取這個新映射，以避免自2021年2月15日起中斷連線。 
 
-### <a name="15-what-if-i-have-further-questions"></a>15. 如果我有其他問題，該怎麼辦？
+###    <a name="15-what-if-i-have-further-questions"></a>15. 如果我有其他問題，該怎麼辦？
 如果您有任何疑問，請從 [Microsoft Q&中的](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com)「社區專家」獲得解答。 如果您有支援方案，且需要技術協助，請  [與我們聯絡](mailto:AzureDatabaseforPostgreSQL@service.microsoft.com)
