@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: 7214915e28158fe5dbb7b350e175b068afed1244
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 5fa895964c30021452b8ce7b070a8b127d65e972
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166194"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305959"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>範例：使用文字分析來偵測語言
 
@@ -78,7 +78,7 @@ ms.locfileid: "92166194"
 + 在要求主體中，提供您準備用於此分析的 JSON 文件集合。
 
 > [!Tip]
-> 使用 [Postman](text-analytics-how-to-call-api.md) 或開啟[文件](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages) \(英文\) 中的 **API 測試主控台**來建立要求結構，並將它 POST 到服務。
+> 使用 [Postman](text-analytics-how-to-call-api.md) 或開啟 [文件](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages) \(英文\) 中的 **API 測試主控台** 來建立要求結構，並將它 POST 到服務。
 
 ## <a name="step-2-post-the-request"></a>步驟 2:張貼要求
 
@@ -184,7 +184,7 @@ ms.locfileid: "92166194"
         "documents": [
             {
                 "id": "1",
-                "detectedLanguages": [
+                "detectedLanguage": [
                     {
                         "name": "English",
                         "iso6391Name": "en",
@@ -194,7 +194,7 @@ ms.locfileid: "92166194"
             },
             {
                 "id": "2",
-                "detectedLanguages": [
+                "detectedLanguage": [
                     {
                         "name": "French",
                         "iso6391Name": "fr",
@@ -212,7 +212,7 @@ ms.locfileid: "92166194"
 ```json
     {
         "id": "5",
-        "detectedLanguages": [
+        "detectedLanguage": [
             {
                 "name": "(Unknown)",
                 "iso6391Name": "(Unknown)",
@@ -248,7 +248,7 @@ ms.locfileid: "92166194"
       "documents": [
         {
           "id": "1",
-          "detectedLanguages": [
+          "detectedLanguage": [
             {
               "name": "Spanish",
               "iso6391Name": "es",

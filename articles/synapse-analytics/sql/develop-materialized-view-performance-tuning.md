@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 9f786a791fda1f601df2a94d9f38edcbfe9dc401
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d10b7084cfc49d60e9d14c3c857d1ade839398ac
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92474762"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305111"
 ---
-# <a name="performance-tuning-with-materialized-views"></a>使用具體化檢視進行效能調整
+# <a name="performance-tuning-with-materialized-views-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的專用 SQL 集區，以具體化視圖進行效能微調
 
-在 Synapse SQL 集區中，具體化檢視提供低度維護方法，可以在不變更任何查詢的情況下，讓複雜的分析查詢有快速的效能。 本文討論使用具體化檢視的一般指引。
+在專用的 SQL 集區中，具體化視圖可針對複雜的分析查詢提供低維護方法，以取得快速效能，而不需要任何查詢變更。 本文討論使用具體化檢視的一般指引。
 
 ## <a name="materialized-views-vs-standard-views"></a>具體化檢視與標準檢視的比較
 
@@ -27,7 +27,7 @@ SQL 集區支援標準檢視和具體化檢視。  兩者都是使用 SELECT 運
 
 標準檢視會在每次使用檢視時計算其資料。  磁碟上沒有儲存任何資料。 人們通常會使用標準檢視作為協助整理資料庫中邏輯物件和查詢的工具。  若要使用標準檢視，查詢必須與其建立直接參考。
 
-具體化檢視會在 SQL 集區中預先計算、儲存和維護其資料，就像資料表一樣。  具體化檢視不需要在每次使用時都重新計算。  這就是為什麼在具體化檢視中使用全部資料或資料子集的查詢其效能會加速的原因。  更棒的是，查詢可以使用具體化檢視，而無需建立直接參考，因此不需要變更應用程式程式碼。  
+具體化視圖會預先計算、儲存和維護其在專用 SQL 集區中的資料，就像資料表一樣。  具體化檢視不需要在每次使用時都重新計算。  這就是為什麼在具體化檢視中使用全部資料或資料子集的查詢其效能會加速的原因。  更棒的是，查詢可以使用具體化檢視，而無需建立直接參考，因此不需要變更應用程式程式碼。  
 
 大部分的標準檢視需求仍適用於具體化檢視。 如需具體化檢視語法和其他需求的詳細資料，請參閱 [CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
@@ -46,13 +46,13 @@ SQL 集區支援標準檢視和具體化檢視。  兩者都是使用 SELECT 運
 
 - 使用聯結和彙總函式縮短了複雜查詢的執行時間。 查詢越複雜，越有可能節省執行時間。 對於計算成本高但所產生資料集很小的查詢，就能獲得最大效益。  
 
-- SQL 集區中的最佳化工具會自動使用已部署的具體化檢視來改善查詢執行計畫。  對於使用者而言，此流程是透明的，因此能加速查詢效能，而且不需要查詢就能直接參考具體化檢視。
+- 專用 SQL 集區中的查詢最佳化工具可以自動使用已部署的具體化視圖來改善查詢執行計畫。  對於使用者而言，此流程是透明的，因此能加速查詢效能，而且不需要查詢就能直接參考具體化檢視。
 
 - 只需對檢視進行低度維護。  具體化檢視將資料儲存在兩個位置中，一個是叢集的資料行存放區索引，用於儲存建立檢視時的初始資料，另一個是差異存放區，用於儲存增量資料變更。  基底資料表中的所有資料變更都會同步自動新增至差異存放區。  背景流程 (元組移動器) 會定期將資料從差異存放區移到檢視的資料行存放區索引。  這種設計可讓查詢具體化檢視傳回與直接查詢基底資料相同的資料。
 - 可以使用不同的方式從基底資料表散發具體化檢視中的資料。  
 - 具體化檢視的資料會與一般資料表的資料具備相同的高可用性和復原優點。  
 
-相較於其他資料倉儲提供者，在 SQL 集區中實作的具體化檢視還額外提供下列優點：
+相較于其他資料倉儲提供者，在專用 SQL 集區中執行的具體化視圖也提供下列其他優點：
 
 - 當基底資料表中有資料變更時，系統能自動並同步進行資料重新整理。 使用者不必採取任何動作。
 - 支援廣泛彙總涵式。 請參閱 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
@@ -151,7 +151,7 @@ GROUP BY A, C
 
 **具體化檢視和結果集快取**
 
-這兩個功能導入至 SQL 集區的時間幾乎與查詢效能調整同時。 結果集快取用於從對靜態資料進行的重複查詢中達成高度並行與快速的回應。  
+這兩項功能會在用於查詢效能微調的相同時間內，于專用的 SQL 集區中引進。 結果集快取用於從對靜態資料進行的重複查詢中達成高度並行與快速的回應。  
 
 若要使用快取的結果，要求查詢的快取形式必須符合產生快取的查詢。  此外，快取的結果必須套用至整個查詢。  
 

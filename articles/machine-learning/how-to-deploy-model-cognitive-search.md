@@ -1,7 +1,7 @@
 ---
 title: 部署用於認知搜尋的模型
 titleSuffix: Azure Machine Learning
-description: 本文會教您如何使用 Azure Machine Learning 部署模型，以搭配 Azure 認知搜尋使用。 認知搜尋可以使用 Azure Machine Learning 所部署的模型作為自訂技能，以豐富搜尋體驗。
+description: 瞭解如何使用 Azure Machine Learning 部署要與認知搜尋搭配使用的模型。 此模型可作為自訂技能，以豐富搜尋體驗。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: cjgronlund
 ms.reviewer: larryfr
 ms.date: 06/11/2020
 ms.custom: deploy
-ms.openlocfilehash: 5d198a27d7aeca679f1ee17f35d3f4384283f13c
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: e1eebf88b72c87ce9db02760c5c44a0aa25c57cc
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998909"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305919"
 ---
 # <a name="deploy-a-model-for-use-with-cognitive-search"></a>部署用於認知搜尋的模型
 
@@ -25,7 +25,7 @@ ms.locfileid: "91998909"
 
 認知搜尋會對未處理的內容執行內容處理，讓人或應用程式可以查詢它。 您可以使用從 Azure Machine Learning 部署的模型來增強這項處理常式。
 
-Azure Machine Learning 可以將定型的模型部署為 web 服務。 然後，web 服務就會內嵌在認知搜尋 _技能_中，這會成為處理管線的一部分。
+Azure Machine Learning 可以將定型的模型部署為 web 服務。 然後，web 服務就會內嵌在認知搜尋 _技能_ 中，這會成為處理管線的一部分。
 
 > [!IMPORTANT]
 > 本文中的資訊僅適用于模型的部署。 它提供支援的部署設定的相關資訊，這些設定可讓認知搜尋使用模型。
@@ -46,7 +46,7 @@ Azure Machine Learning 可以將定型的模型部署為 web 服務。 然後，
 
 * Azure Machine Learning 工作區。 如需詳細資訊，請參閱 [建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 
-* 已安裝 Azure Machine Learning SDK 的 Python 開發環境。 如需詳細資訊，請參閱 [AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true)。  
+* 已安裝 Azure Machine Learning SDK 的 Python 開發環境。 如需詳細資訊，請參閱 [AZURE MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。  
 
 * 已註冊的模型。 如果您沒有模型，請使用中的範例筆記本 [https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/AzureML-Custom-Skill) 。
 
@@ -75,7 +75,7 @@ except:
 
 ## <a name="create-a-kubernetes-cluster"></a>建立 Kubernetes 叢集
 
-**預估時間**：大約20分鐘。
+**預估時間** ：大約20分鐘。
 
 Kubernetes 叢集是一組虛擬機器實例， (稱為節點) ，用來執行容器化應用程式。
 
@@ -252,7 +252,7 @@ from azureml.core.model import InferenceConfig
 inf_config = InferenceConfig(entry_script='score.py', environment=myenv)
 ```
 
-如需詳細資訊，請參閱 [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true)的參考檔。
+如需詳細資訊，請參閱 [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py)的參考檔。
 
 ## <a name="deploy-the-model"></a>部署模型
 
@@ -277,7 +277,7 @@ aks_service.wait_for_deployment(show_output = True)
 print(aks_service.state)
 ```
 
-如需詳細資訊，請參閱 [模型](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true)的參考檔集。
+如需詳細資訊，請參閱 [模型](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py)的參考檔集。
 
 ## <a name="issue-a-sample-query-to-your-service"></a>將範例查詢發出至您的服務
 

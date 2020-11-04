@@ -1,26 +1,27 @@
 ---
-title: Power BI 和無伺服器 Synapse SQL 集區，以使用 Synapse 連結來分析 Azure Cosmos DB 資料
-description: 瞭解如何建立無伺服器 Synapse SQL 集區資料庫，並透過 Synapse 連結進行 Azure Cosmos DB、查詢 Azure Cosmos 容器，然後建立可 Power BI 這些視圖的模型。
+title: Power BI 和無伺服器 SQL 集區，以使用 Synapse 連結來分析 Azure Cosmos DB 資料
+description: 瞭解如何建立 Synapse 的 SQL 無伺服器資料庫，並透過 Synapse 連結進行 Azure Cosmos DB、查詢 Azure Cosmos DB 容器，然後使用這些視圖的 Power BI 建立模型。
 author: ArnoMicrosoft
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
-ms.openlocfilehash: 8599ebf1932d7c30622855cbf38af867d30b52b8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 38077dca1b8a27098e8db17354b82340a651b880
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098054"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305164"
 ---
-# <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>使用 Power BI 和無伺服器 Synapse SQL 集區，透過 Synapse 連結 (預覽來分析 Azure Cosmos DB 資料)  
+# <a name="use-power-bi-and-serverless-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>使用 Power BI 和無伺服器 SQL 集區，透過 Synapse 連結 (預覽來分析 Azure Cosmos DB 資料) 
+
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)][!INCLUDE[appliesto-mongodb-apis](includes/appliesto-mongodb-api.md)]
 
-在本文中，您將瞭解如何建立無伺服器 Synapse SQL 集區 (它先前稱為 **sql 隨選** 的) 資料庫，以及 Azure Cosmos DB 的 Synapse 連結。 您將會查詢 Azure Cosmos 容器，然後使用這些視圖 Power BI 建立模型，以反映該查詢。
+在本文中，您將瞭解如何建立無伺服器 SQL 集區資料庫，並透過 Synapse 連結來進行 Azure Cosmos DB 的流覽。 您將會查詢 Azure Cosmos DB 的容器，然後建立模型，以 Power BI 這些視圖，以反映該查詢。
 
 在此案例中，您將會在合作夥伴零售商店中使用有關 Surface product sales 的虛擬資料。 您將根據大型家庭的鄰近程度，以及對特定周廣告的影響，分析每個商店的收入。 在本文中，您會建立兩個名為 **RetailSales** 和 **StoreDemographics** 的視圖，以及兩者之間的查詢。 您可以從這個 [GitHub](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) 存放庫取得範例產品資料。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請務必先建立下列資源：
 
@@ -42,9 +43,9 @@ ms.locfileid: "93098054"
 
 :::image type="content" source="./media/synapse-link-power-bi/add-sql-script.png" alt-text="將 SQL 腳本新增至 Synapse Analytics 工作區":::
 
-每個工作區都有無伺服器 SQL 端點。 建立 SQL 腳本之後，請從頂端的工具列中，依需求連接至 **SQL** 。
+每個工作區都有無伺服器 SQL 端點。 建立 SQL 腳本之後，請從頂端的工具列連接至 **內建** 。
 
-:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="將 SQL 腳本新增至 Synapse Analytics 工作區":::
+:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="啟用 SQL 腳本以使用工作區中的無伺服器 SQL 端點":::
 
 建立名為 **RetailCosmosDB** 的新資料庫，並在已啟用 Synapse 連結的容器上建立 SQL view。 下列命令顯示如何建立資料庫：
 
@@ -104,7 +105,7 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 
 選取 [ **執行** ]，以提供下表作為結果：
 
-:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="將 SQL 腳本新增至 Synapse Analytics 工作區":::
+:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="聯結 StoreDemographics 和 RetailSales 視圖之後的查詢結果":::
 
 ## <a name="model-views-over-containers-with-power-bi"></a>使用 Power BI 的容器模型視圖
 
@@ -139,10 +140,10 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 1. 從 **RetailSales** view 將 [ **productCode** ] 拖放到 [圖例] 中，以選取特定的產品線。
 選擇這些選項之後，您應該會看到類似下列螢幕擷取畫面的圖表：
 
-:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="將 SQL 腳本新增至 Synapse Analytics 工作區":::
+:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="將家庭大小的相對重要性與每個商店的平均收益進行比較的報表":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 [使用 T-sql 利用 Azure Synapse Link 查詢 Azure Cosmos DB 資料](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)
 
-使用無伺服器 Synapse SQL 集區來 [分析 Azure 開放資料集，並在 Azure Synapse Studio 中將結果視覺化](../synapse-analytics/sql/tutorial-data-analyst.md)
+使用無伺服器 SQL 集區來 [分析 Azure 開放資料集，並在 Azure Synapse Studio 中將結果視覺化](../synapse-analytics/sql/tutorial-data-analyst.md)

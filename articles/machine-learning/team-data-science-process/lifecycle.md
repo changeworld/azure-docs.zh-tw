@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a043a1655950f3ed7688e59352f8a912146e12c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed54fda744978ac43bbffc6a70d6b331e85dc5e7
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76720447"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305600"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命週期
 
@@ -43,12 +43,12 @@ TDSP 生命週期會建立為一系列反覆執行步驟的模型，可針對需
 
 對於每個階段，我們會提供下列資訊：
 
-   * **目標**︰特定的目標。
-   * **作法**：概述特定工作和如何完成的指引。
-   * **成品**：交付項目和生產的支援。
+   * **目標** ︰特定的目標。
+   * **作法** ：概述特定工作和如何完成的指引。
+   * **成品** ：交付項目和生產的支援。
 
 ## <a name="next-steps"></a>後續步驟
 
 我們也會提供完整的端對端逐步解說，說明特定案例之程序中的所有步驟。 [範例逐步解說](walkthroughs.md)一文提供有連結和縮圖描述的案例清單。 這些逐步解說示範如何將雲端、內部部署工具與服務組合成工作流程或管線，以建立智慧型應用程式。 
 
-如需如何在使用 Azure Machine Learning Studio 的 TDSP 中執行步驟的範例，請參閱[配合使用 Team Data Science Process 與 Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)。
+如需如何在使用 Azure Machine Learning Studio 的 TDSP 中執行步驟的範例，請參閱[配合使用 Team Data Science Process 與 Azure Machine Learning](./index.yml)。

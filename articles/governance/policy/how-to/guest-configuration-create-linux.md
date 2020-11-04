@@ -4,12 +4,12 @@ description: 了解如何建立 Linux 的 Azure 原則客體設定原則。
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6b072a615cfc31f250d1a605a20e1628d601bb25
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c0559e284f1e7022510a458209ec8d985ffc6324
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676637"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305554"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何建立 Linux 的客體設定原則
 
@@ -160,7 +160,7 @@ AuditFilePathExists -out ./Config
 - **Name** ：客體設定套件名稱。
 - **設定** ：已編譯的設定文件完整路徑。
 - **路徑** ：輸出資料夾路徑。 這是選擇性參數。 如果未指定，則會在目前的目錄中建立套件。
-- **ChefProfilePath** ：InSpec 設定檔的完整路徑。 只有在建立用來稽核 Linux 的內容時，才支援此參數。
+- **ChefInspecProfilePath** ： InSpec 設定檔的完整路徑。 只有在建立用來稽核 Linux 的內容時，才支援此參數。
 
 執行下列命令，以使用上一個步驟中指定的設定來建立套件：
 
@@ -191,7 +191,7 @@ Test-GuestConfigurationPackage `
 此 Cmdlet 也支援來自 PowerShell 管線的輸入。 透過管線將 `New-GuestConfigurationPackage` Cmdlet 的輸出傳送至 `Test-GuestConfigurationPackage` Cmdlet。
 
 ```azurepowershell-interactive
-New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefProfilePath './' | Test-GuestConfigurationPackage
+New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefInspecProfilePath './' | Test-GuestConfigurationPackage
 ```
 
 下一步是要將檔案發佈至 Azure Blob 儲存體。  此命令 `Publish-GuestConfigurationPackage` 需要 `Az.Storage` 模組。

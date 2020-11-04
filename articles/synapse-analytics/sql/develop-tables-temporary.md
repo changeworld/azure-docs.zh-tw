@@ -10,26 +10,26 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 4559c72481dfa0cefb2ce84cab56a50d0bf182ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd285e8029d8e140380b0f90c60081d0e1f8dd56
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030322"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305041"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Synapse SQL 中的臨時表
 
 本文包含使用臨時表的基本指引，並強調 Synapse SQL 內工作階段層級臨時表的原則。 
 
-SQL 集區和 SQL 隨選 (預覽版) 資源都可以使用臨時表。 SQL 隨選的限制會在本文結尾討論。 
+專用的 SQL 集區和無伺服器 SQL 集區 (預覽版) 資源都可以使用臨時表。 無伺服器 SQL 集區具有本文最後討論的限制。 
 
 ## <a name="temporary-tables"></a>暫存資料表
 
 暫存資料表在處理資料時很有用，尤其是具有暫時性中繼結果的轉換期間。 在 Synapse SQL 中，臨時表存在於工作階段層級。  只有出現在其建立所在的工作階段。 如此一來，當該工作階段登出時，就會自動將其卸除。 
 
-## <a name="temporary-tables-in-sql-pool"></a>SQL 集區中的暫存資料表
+## <a name="temporary-tables-in-dedicated-sql-pool"></a>專用 SQL 集區中的臨時表
 
-在 SQL 集區資源中，暫存資料表的結果會寫入至本機，而不是遠端儲存體，這是其效能優點。
+在專用的 SQL 集區資源中，臨時表會提供效能優勢，因為它們的結果會寫入本機，而不是遠端儲存體。
 
 ### <a name="create-a-temporary-table"></a>建立暫存資料表
 
@@ -99,6 +99,7 @@ GROUP BY
 > 
 
 ### <a name="drop-temporary-tables"></a>捨棄臨時表
+
 建立新的工作階段時，不應該存在任何暫存資料表。  但是，如果您呼叫的相同預存程式會使用相同的名稱來建立暫時的，若要確保您的 `CREATE TABLE` 語句成功，請使用簡單的預先存在性檢查並搭配  `DROP` ： 
 
 ```sql
@@ -117,6 +118,7 @@ DROP TABLE #stats_ddl
 ```
 
 ### <a name="modularize-code"></a>模組化程式碼
+
 臨時表可在使用者會話中的任何位置使用。 如此一來，就可以利用這項功能來協助您模組化應用程式程式碼。  為了示範，下列預存程式會產生 DDL，以依統計資料名稱更新資料庫中的所有統計資料：
 
 ```sql
@@ -195,7 +197,7 @@ GO
 
 因為 `DROP TABLE` 預存程式結尾沒有，所以當預存程式完成時，所建立的資料表仍會保留，而且可以在預存程式之外讀取。  
 
-相較于其他 SQL Server 資料庫，Synapse SQL 可讓您在建立此資料表的程式之外使用該臨時表。  您可以在會話內的 **任何地方** 使用透過 SQL 集區建立的臨時表。 因此，您將會有更多模組化且可管理的程式碼，如下列範例所示：
+相較于其他 SQL Server 資料庫，Synapse SQL 可讓您在建立此資料表的程式之外使用該臨時表。  透過專用 SQL 集區建立的臨時表可以在會話內的 **任何位置** 使用。 因此，您將會有更多模組化且可管理的程式碼，如下列範例所示：
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -218,15 +220,15 @@ DROP TABLE #stats_ddl;
 
 ### <a name="temporary-table-limitations"></a>暫存資料表限制
 
-SQL 集區有一些臨時表的執行限制：
+專用的 SQL 集區有一些臨時表的執行限制：
 
 - 僅支援會話範圍的臨時表。  不支援全域暫存資料表。
 - 無法在臨時表上建立 Views。
 - 只能使用雜湊或循環配置資源散發來建立暫存資料表。  不支援複寫的暫存資料表散發。 
 
-## <a name="temporary-tables-in-sql-on-demand-preview"></a>SQL 隨選 (預覽) 的臨時表
+## <a name="temporary-tables-in-serverless-sql-pool-preview"></a>無伺服器 SQL 集區中的臨時表 (預覽) 
 
-支援 SQL 隨選的臨時表，但其使用方式有限。 它們不能用在以檔案為目標的查詢中。 
+支援無伺服器 SQL 集區中的臨時表，但其使用方式有限。 它們不能用在以檔案為目標的查詢中。 
 
 例如，您無法從儲存體中的檔案聯結臨時表與資料。 臨時表的數目限制為100，而其總大小限制為100MB。
 

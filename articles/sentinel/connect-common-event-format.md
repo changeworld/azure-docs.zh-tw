@@ -1,6 +1,6 @@
 ---
 title: 將 CEF 資料連線到 Azure Sentinel 預覽 |Microsoft Docs
-description: 使用 Linux 機器作為 proxy，將傳送常見事件格式 (CEF) 訊息的外部解決方案連線至 Azure Sentinel。
+description: 使用 Linux 機器作為記錄轉寄站，以將傳送常見事件格式 (CEF) 訊息的外部解決方案連線至 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: dae8ce6cbad1ae08898ae439c1f621bef185b5df
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e09b44504623516d41b6d310a82e78619477367c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747903"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93304983"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>使用常見事件格式連接您的外部解決方案
 
@@ -50,40 +50,49 @@ ms.locfileid: "92747903"
  
 ## <a name="prerequisites"></a>必要條件
 
-請確定您用來作為 proxy 的 Linux 機器正在執行下列其中一個作業系統：
+請確定您用來作為記錄轉寄站的 Linux 機器正在執行下列其中一個作業系統：
 
 - 64 位元
-  - CentOS 7 和子版本，以及較高的 (不是 6) 
+  - CentOS 7 和8，包括不 (6) 的子版本
   - Amazon Linux 2017.09
   - Oracle Linux 7
-  - Red Hat Enterprise Linux (RHEL) Server 7 和次要版本，以及較高的 (不是 6) 
-  - Debian GNU/Linux 8 和 9
+  - Red Hat Enterprise Linux (RHEL) Server 7 和8，包括 (不是6的子版本) 
+  - Debian GNU/Linux 8、9和10
   - Ubuntu Linux 14.04 LTS、16.04 LTS 和 18.04 LTS
-  - SUSE Linux Enterprise Server 12
+  - SUSE Linux Enterprise Server 12，15
+
 - 32 位元
-   - CentOS 7
-   - Oracle Linux 7
-   - Red Hat Enterprise Linux Server 7
-   - Debian GNU/Linux 8 和 9
-   - Ubuntu Linux 14.04 LTS 和 16.04 LTS
+  - CentOS 7 和8，包括不 (6) 的子版本
+  - Oracle Linux 7
+  - Red Hat Enterprise Linux (RHEL) Server 7 和8，包括 (不是6的子版本) 
+  - Debian GNU/Linux 8、9和10
+  - Ubuntu Linux 14.04 LTS 和 16.04 LTS
  
- - Daemon 版本
-   - Syslog-ng： 2.1-3.22。1
-   - Rsyslog： v8
+- Daemon 版本
+  - Syslog-ng： 2.1-3.22。1
+  - Rsyslog： v8
   
- - 支援 Syslog Rfc
-   - Syslog RFC 3164
-   - Syslog RFC 5424
+- 支援 Syslog Rfc
+  - Syslog RFC 3164
+  - Syslog RFC 5424
  
 請確定您的電腦也符合下列需求： 
+
 - 權限
-    - 您必須在電腦上擁有較高的許可權 (sudo) 。 
+  - 您必須在電腦上擁有較高的許可權 (sudo) 。 
+
 - 軟體需求
-    - 確定您的電腦上正在執行 python 2.7。
+  - 確定您的電腦上正在執行 python 2.7。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本檔中，您已瞭解如何將 CEF 設備連線至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
+在本檔中，您已瞭解 Azure Sentinel 如何從安全性解決方案和設備收集 CEF 記錄。 若要瞭解如何將您的解決方案連線至 Azure Sentinel，請參閱下列文章：
+
+- 步驟1： [部署 Syslog/CEF 轉寄站以連接 CEF](connect-cef-agent.md)
+- 步驟2： [執行特定解決方案的步驟](connect-cef-solution-config.md)
+- 步驟3： [驗證連線能力](connect-cef-verify.md)
+
+若要深入瞭解您在 Azure Sentinel 中收集到的資料，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats.md)。
 

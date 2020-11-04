@@ -5,12 +5,14 @@
   items:
     - name: Metrics Advisor 是什麼？
       href: overview.md
+    - name: 新功能
+      href: whats-new.md
 - name: 快速入門
   items:
     - name: 使用 Web 入口網站
       href: quickstarts/web-portal.md
-    - name: 使用 REST API
-      href: quickstarts/rest-api.md
+    - name: 使用 REST API 或用戶端程式庫
+      href: quickstarts/rest-api-and-client-library.md
 - name: 做法
   items:
     - name: 將資料上線

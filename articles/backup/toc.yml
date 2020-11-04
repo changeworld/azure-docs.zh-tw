@@ -406,6 +406,8 @@
           href: backup-encryption.md
         - name: 使用客戶管理的金鑰進行加密
           href: encryption-at-rest-with-cmk.md
+        - name: Transport Layer Security (傳輸層安全性)
+          href: transport-layer-security.md
         - name: Azure 原則的安全性控制
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md

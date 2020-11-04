@@ -8,15 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/02/2020
+ms.date: 11/03/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ed5c554e6307b08c412de16d1bb92b458c5f15f
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+zone_pivot_groups: keyword-quickstart
+ms.openlocfilehash: 2d15da55c0bab42571d2a9660156a780c5d27881
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166449"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305853"
 ---
 # <a name="get-started-with-custom-keyword"></a>開始使用自訂關鍵字
 
@@ -36,9 +37,9 @@ ms.locfileid: "92166449"
 
 1. 移至 [語音 Studio](https://aka.ms/sdsdk-speechportal) 並登 **入** ，如果您還沒有語音訂用帳戶，請選擇 [ [**建立訂用**](https://go.microsoft.com/fwlink/?linkid=2086754)帳戶]。
 
-1. 在 [ [自訂關鍵字](https://aka.ms/sdsdk-wakewordportal) ] 頁面上，建立 **新專案**。 
+1. 在 [ [自訂關鍵字](https://aka.ms/sdsdk-wakewordportal) ] 頁面上，建立 **新專案** 。 
 
-1. 輸入 **名稱**和選擇性 **描述**，然後選取語言。 您每一種語言都需要一個專案，而且目前支援的 `en-US` 語言有限。
+1. 輸入 **名稱** 和選擇性 **描述** ，然後選取語言。 您每一種語言都需要一個專案，而且目前支援的 `en-US` 語言有限。
 
     ![描述關鍵字專案](media/custom-keyword/custom-kws-portal-new-project.png)
 
@@ -46,9 +47,9 @@ ms.locfileid: "92166449"
 
     ![選取關鍵字專案](media/custom-keyword/custom-kws-portal-project-list.png)
 
-1. 若要建立新的關鍵字模型，請按一下 [ **定型模型**]。
+1. 若要建立新的關鍵字模型，請按一下 [ **定型模型** ]。
 
-1. 輸入模型的 **名稱** 、選擇性 **描述**，以及您選擇的 **關鍵字** ，然後按 **[下一步]**。 請參閱選擇有效關鍵字的 [指導方針](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword) 。
+1. 輸入模型的 **名稱** 、選擇性 **描述** ，以及您選擇的 **關鍵字** ，然後按 **[下一步]** 。 請參閱選擇有效關鍵字的 [指導方針](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword) 。
 
     ![輸入您的關鍵字](media/custom-keyword/custom-kws-portal-new-model.png)
 
@@ -64,25 +65,17 @@ ms.locfileid: "92166449"
 
 ## <a name="use-a-keyword-model-with-the-sdk"></a>搭配使用關鍵字模型與 SDK
 
-首先，使用靜態函式載入關鍵字模型檔案，此函式會傳回 `FromFile()` `KeywordRecognitionModel` 。 使用 `.table` 您從 Speech Studio 下載之檔案的路徑。 此外，您可以 `AudioConfig` 使用預設的麥克風建立，然後使用音訊設定來具現化新的 `KeywordRecognizer` 。
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [C# Basics include](includes/how-to/keyword-recognition/keyword-basics-csharp.md)]
+::: zone-end
 
-```csharp
-using Microsoft.CognitiveServices.Speech;
-using Microsoft.CognitiveServices.Speech.Audio;
+::: zone pivot="programming-language-python"
+[!INCLUDE [Python Basics include](includes/how-to/keyword-recognition/keyword-basics-python.md)]
+::: zone-end
 
-var keywordModel = KeywordRecognitionModel.FromFile("your/path/to/Activate_device.table");
-using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
-using var keywordRecognizer = new KeywordRecognizer(audioConfig);
-```
-
-接下來，藉 `RecognizeOnceAsync()` 由傳遞您的模型物件，透過一次呼叫來執行關鍵字識別。 這會啟動一個持續的關鍵字辨識會話，直到辨識關鍵字為止。 因此，您通常會在多執行緒應用程式中使用此設計模式，或在可能會無限期等候喚醒字的使用案例中使用此設計模式。
-
-```csharp
-KeywordRecognitionResult result = await keywordRecognizer.RecognizeOnceAsync(keywordModel);
-```
-
-> [!NOTE]
-> 此處所示的範例會使用本機關鍵詞辨識，因為它不需要 `SpeechConfig` 驗證內容的物件，也不會與後端連線。 不過，您可以 [使用連續的後端連接](https://docs.microsoft.com/azure/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk#view-the-source-code-that-enables-keyword)來執行關鍵字辨識和驗證。
+::: zone pivot="programming-languages-objectivec-swift"
+[!INCLUDE [ObjectiveC/Swift Basics include](includes/how-to/keyword-recognition/keyword-basics-objc.md)]
+::: zone-end
 
 ## <a name="next-steps"></a>後續步驟
 

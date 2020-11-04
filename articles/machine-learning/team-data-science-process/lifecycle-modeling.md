@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c3406b28c44644053fa984f2cf7739bb53ccf6c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3845c5e5d7cf6bb372744fb3c740c44aa2b94236
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336440"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305620"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命週期的模型化階段
 
@@ -41,8 +41,8 @@ ms.locfileid: "91336440"
 ## <a name="how-to-do-it"></a>如何執行此動作
 此階段會解決三項主要工作︰
 
-  * **特徵工程**：從原始資料建立資料特徵，以促進模型定型。
-  * **模型定型**：藉由比較其成功的度量，找出最能精確回答問題的模型。
+  * **特徵工程** ：從原始資料建立資料特徵，以促進模型定型。
+  * **模型定型** ：藉由比較其成功的度量，找出最能精確回答問題的模型。
   * 判斷您的模型是否 **適合生產環境。**
 
 ### <a name="feature-engineering"></a>特徵設計
@@ -57,13 +57,13 @@ ms.locfileid: "91336440"
 
 模型訓練程序包括下列步驟︰ 
 
-   * 將用於模型化的**輸入資料隨機分割**成訓練資料集和測試資料集。
-   * 使用訓練資料集來**建置模型**。
-   * **評估**訓練和測試資料集。 使用一系列競爭的機器學習演算法，以及專為使用目前資料回答感興趣問題的各種相關微調參數 (稱為*參數掃掠*)。
-   * 比較替代方法之間的成功標準，以**決定用來回答問題的「最佳」方案**。
+   * 將用於模型化的 **輸入資料隨機分割** 成訓練資料集和測試資料集。
+   * 使用訓練資料集來 **建置模型** 。
+   * **評估** 訓練和測試資料集。 使用一系列競爭的機器學習演算法，以及專為使用目前資料回答感興趣問題的各種相關微調參數 (稱為 *參數掃掠* )。
+   * 比較替代方法之間的成功標準，以 **決定用來回答問題的「最佳」方案** 。
 
 > [!NOTE]
-> **避免外洩**︰如果您納入訓練資料集以外的資料，可能會造成資料外洩，而讓模型或機器學習演算法做出誤以為良好的預測。 當資料科學家取得好得過頭的預測結果時，會讓他們感到不安的常見原因就是資料外洩。 這些相依性很難察覺。 為了避免外洩，通常會需要反覆建置分析資料集、建立模型，然後評估結果的精確度。 
+> **避免外洩** ︰如果您納入訓練資料集以外的資料，可能會造成資料外洩，而讓模型或機器學習演算法做出誤以為良好的預測。 當資料科學家取得好得過頭的預測結果時，會讓他們感到不安的常見原因就是資料外洩。 這些相依性很難察覺。 為了避免外洩，通常會需要反覆建置分析資料集、建立模型，然後評估結果的精確度。 
 > 
 > 
 
@@ -72,9 +72,9 @@ ms.locfileid: "91336440"
 ## <a name="artifacts"></a>Artifacts
 此階段所產生的成品包括︰
 
-   * [功能集](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md)：針對模型開發的功能，會在**資料定義**報表的 [**功能集**] 區段中描述。 它包含產生特徵的程式碼指標，以及特徵產生方式的描述。
+   * [功能集](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md)：針對模型開發的功能，會在 **資料定義** 報表的 [ **功能集** ] 區段中描述。 它包含產生特徵的程式碼指標，以及特徵產生方式的描述。
    * [模型報告](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md) \(英文\)：每個嘗試過的模型，都會產生一個標準的範本型報告，提供每項實驗的詳細資料。
-   * **檢查點決策**：評估模型是否足以執行于生產環境。 需要詢問的一些重要問題是︰
+   * **檢查點決策** ：評估模型是否足以執行于生產環境。 需要詢問的一些重要問題是︰
      * 在給訂測試資料的情況下，模型是否有足夠的信心來回答問題？ 
      * 您應該嘗試任何替代方法嗎？ 您應該收集其他資料、進行更多特徵設計，或實驗其他演算法嗎？
 
@@ -90,4 +90,4 @@ ms.locfileid: "91336440"
 
 我們也會提供完整的端對端逐步解說，說明特定案例之程序中的所有步驟。 [範例逐步解說](walkthroughs.md)一文提供有連結和縮圖描述的案例清單。 這些逐步解說示範如何將雲端、內部部署工具與服務組合成工作流程或管線，以建立智慧型應用程式。 
 
-如需如何在使用 Azure Machine Learning Studio 的 TDSP 中執行步驟的範例，請參閱[配合使用 Team Data Science Process 與 Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)。 
+如需如何在使用 Azure Machine Learning Studio 的 TDSP 中執行步驟的範例，請參閱[配合使用 Team Data Science Process 與 Azure Machine Learning](./index.yml)。

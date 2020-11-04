@@ -1,6 +1,6 @@
 ---
-title: 使用 SQL 隨選 (預覽) 查詢 Parquet 檔案
-description: 本文會說明如何使用 SQL 隨選 (預覽) 來查詢 Parquet 檔案。
+title: '使用無伺服器 SQL 集區來查詢 Parquet 檔 (預覽) '
+description: 在本文中，您將瞭解如何使用無伺服器 SQL 集區 (預覽版) 來查詢 Parquet 檔。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2e00ecd6048239683951a2d1e60d3bcb0eb5aa68
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 3559b3724d14be6aade07c4884190afce30c0715
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242427"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93306847"
 ---
-# <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用 SQL 隨選 (預覽) 來查詢 Parquet 檔案
+# <a name="query-parquet-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用無伺服器 SQL 集區 (預覽版) 查詢 Parquet 檔
 
-本文中會介紹如何使用會讀取 Parquet 檔案的 SQL 隨選 (預覽) 來寫入查詢。
+在本文中，您將瞭解如何使用可讀取 Parquet 檔案的無伺服器 SQL 集區 (預覽版) 來撰寫查詢。
 
 ## <a name="quickstart-example"></a>快速入門範例
 
@@ -111,7 +111,7 @@ ORDER BY
 下列範例顯示 Parquet 檔案的自動結構描述推斷功能。 其會傳回 2017 年 9 月的資料列數目，而不需要指定結構描述。
 
 > [!NOTE]
-> 讀取 Parquet 檔案時，您不需要在 OPENROWSET WITH 子句中指定資料行。 在此案例中，SQL 隨選查詢服務會利用 Parquet 檔案中的中繼資料，並依名稱繫結資料行。
+> 讀取 Parquet 檔案時，您不需要在 OPENROWSET WITH 子句中指定資料行。 在此情況下，無伺服器 SQL 集區查詢服務將會利用 Parquet 檔中的中繼資料，並依名稱系結資料行。
 
 ```sql
 SELECT TOP 10 *
@@ -128,7 +128,7 @@ FROM
 這個範例中提供的資料集會分割成不同的子資料夾。 您可以使用 filepath 函式將特定的分割區做為目標。 此範例會依年、月和 payment_type 顯示 2017 年前三個月的費用金額。
 
 > [!NOTE]
-> SQL 隨選查詢與 Hive/Hadoop 資料分割配置相容。
+> 無伺服器 SQL 集區查詢與 Hive/Hadoop 資料分割配置相容。
 
 ```sql
 SELECT

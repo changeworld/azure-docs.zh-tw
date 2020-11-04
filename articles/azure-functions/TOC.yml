@@ -270,7 +270,7 @@
         - name: 管理連接
           href: manage-connections.md
           displayName: best practice
-        - name: 錯誤處理
+        - name: 錯誤處理和重試
           href: functions-bindings-error-pages.md
         - name: 手動執行非 HTTP 觸發的函式
           href: functions-manually-run-non-http.md

@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 4a80b1f9bfa5d477c47e340f1dec1b37e4c69258
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 70e3185257c7c70d74fdc8492cf0a2b4970c03b1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631034"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305486"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure Resource Manager 範本建立 Azure Machine Learning 的工作區
 
@@ -30,7 +30,7 @@ ms.locfileid: "92631034"
 
 * **Azure 訂用帳戶** 。 如果您沒有訂用帳戶，則可[試用免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
-* 若要從 CLI 使用範本，您需要 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.2.0) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
+* 若要從 CLI 使用範本，您需要 [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) 或 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 
 * 某些案例需要您開啟支援票證。 這些案例為：
 
@@ -69,7 +69,7 @@ ms.locfileid: "92631034"
 > [!TIP]
 > 雖然與本文件建立關聯的範本會建立新 Azure Container Registry，但您也可建立新的工作區，而不需要建立容器登錄。 當執行需要容器登錄的作業時，將會建立一個。 例如，定型或部署模型。
 >
-> 您也可以在 Azure Resource Manager 範本中參考現有的容器登錄或儲存體帳戶，而不是建立一個新的。 不過，您使用的容器登錄必須啟用系統 __管理員帳戶__ 。 如需啟用系統管理員帳戶的相關資訊，請參閱系統 [管理員帳戶](/azure/container-registry/container-registry-authentication#admin-account)。
+> 您也可以在 Azure Resource Manager 範本中參考現有的容器登錄或儲存體帳戶，而不是建立一個新的。 不過，您使用的容器登錄必須啟用系統 __管理員帳戶__ 。 如需啟用系統管理員帳戶的相關資訊，請參閱系統 [管理員帳戶](../container-registry/container-registry-authentication.md#admin-account)。
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
@@ -77,7 +77,7 @@ ms.locfileid: "92631034"
 
 * [編寫 Azure Resource Manager 範本](../azure-resource-manager/templates/template-syntax.md)
 * [使用 Azure Resource Manager 範本部署應用程式](../azure-resource-manager/templates/deploy-powershell.md)
-* [Microsoft.MachineLearningServices resource 類型](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
+* [Microsoft.MachineLearningServices resource 類型](/azure/templates/microsoft.machinelearningservices/allversions)
 
 ## <a name="deploy-template"></a>部署範本
 
@@ -541,7 +541,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
-1. 遵循[從自訂範本部署資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)的步驟。 當您到達 [ __選取範本__ ] 畫面時，請從下拉式清單中選擇 [ **201-機器學習-advanced** ] 範本。
+1. 遵循[從自訂範本部署資源](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)的步驟。 當您到達 [ __選取範本__ ] 畫面時，請從下拉式清單中選擇 [ **201-機器學習-advanced** ] 範本。
 1. 選取 [ __選取範本__ ] 以使用範本。 根據您的部署案例提供下列必要資訊和任何其他參數。
 
    * 訂用帳戶：選取要用於這些資源的 Azure 訂用帳戶。
@@ -576,7 +576,7 @@ New-AzResourceGroupDeployment `
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query properties.accessPolicies
     ```
 
-    如需使用範本 `accessPolicies` 區段的詳細資訊，請參閱 [AccessPolicyEntry 物件參考](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)。
+    如需使用範本 `accessPolicies` 區段的詳細資訊，請參閱 [AccessPolicyEntry 物件參考](/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)。
 
 * 檢查 Key Vault 資源是否已存在。 如果有，請不要透過範本予以重建。 例如，若要使用現有的 Key Vault，而不是建立新的，請對範本進行下列變更：
 

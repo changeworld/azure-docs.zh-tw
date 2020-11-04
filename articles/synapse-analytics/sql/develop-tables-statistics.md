@@ -11,30 +11,30 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 368d43283d713b8d4e101c2ee26724242f29756c
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 6d59d64c861b74610e82b962ddd5db2331d3db64
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148247"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305023"
 ---
 # <a name="statistics-in-synapse-sql"></a>Synapse SQL 中的統計資料
 
-本文提供建立和更新 Synapse SQL 資源中查詢最佳化統計資料的建議和範例：SQL 集區和 SQL 隨選 (預覽)。
+本文提供的建議和範例，可讓您使用 Synapse SQL 資源來建立及更新查詢優化統計資料：專用的 SQL 集區和無伺服器 SQL 集區 (預覽) 。
 
-## <a name="statistics-in-sql-pool"></a>SQL 集區中的統計資料
+## <a name="statistics-in-dedicated-sql-pool"></a>專用 SQL 集區中的統計資料
 
 ### <a name="why-use-statistics"></a>為何使用統計資料
 
-SQL 集區越了解您的資料，執行查詢的速度就越快。 將資料載入 SQL 集區之後，收集資料的統計資料是將查詢最佳化最重要的工作之一。  
+更專用的 SQL 集區知道您的資料，執行查詢的速度就愈快。 將資料載入專用的 SQL 集區之後，收集資料的統計資料是查詢優化最重要的一件事。  
 
-SQL 集區查詢最佳化工具是以成本為基礎的最佳化工具。 它會比較各種查詢方案的成本，然後選擇成本最低的方案。 在大部分的情況下，它會選擇執行最快的方案。
+專用的 SQL 集區查詢最佳化工具是以成本為基礎的優化工具。 它會比較各種查詢方案的成本，然後選擇成本最低的方案。 在大部分的情況下，它會選擇執行最快的方案。
 
 例如，如果最佳化工具評估您的查詢篩選的日期會傳回一個資料列，則會選擇一個方案。 如果最佳化工具評估所選取的日期將傳回 100 萬個資料列，則會傳回不同的方案。
 
 ### <a name="automatic-creation-of-statistics"></a>自動建立統計資料
 
-當資料庫 AUTO_CREATE_STATISTICS 選項設為 `ON` 時，SQL 集區會分析傳入的使用者查詢是否有缺少的統計資料。  如果缺少統計資料，查詢最佳化工具會在查詢述詞或聯結條件中的個別資料行上建立統計資料。 
+當資料庫 AUTO_CREATE_STATISTICS 選項設定為時，專用的 SQL 集區引擎會分析傳入的使用者查詢是否有遺漏的統計資料 `ON` 。  如果缺少統計資料，查詢最佳化工具會在查詢述詞或聯結條件中的個別資料行上建立統計資料。 
 
 此函數用於改善查詢計劃的基數估計值。
 
@@ -166,7 +166,7 @@ WHERE
 #### <a name="create-single-column-statistics-with-default-options"></a>使用預設選項建立單一資料行統計資料
 
 若要建立資料行的統計資料，請提供統計資料物件的名稱和資料行的名稱。
-此語法會使用所有預設選項。 根據預設，SQL 集區在建立統計資料時會取樣 **20%** 的資料表。
+此語法會使用所有預設選項。 根據預設，專用的 SQL 集區會在建立統計資料時，取樣 **20%** 的資料表。
 
 ```sql
 CREATE STATISTICS [statistics_name]
@@ -430,7 +430,7 @@ UPDATE STATISTICS 陳述式易於使用。 只要記住，這會更新資料表�
 如果效能不成問題，此方法是保證擁有最新統計資料的最簡單且最完整的方式。
 
 > [!NOTE]
-> 更新資料表上的所有統計資料時，SQL 集區會進行掃描，以針對每個統計資料物件進行資料表取樣。 如果資料表很大，而且有許多資料行以及許多統計資料，則根據需求來更新個別統計資料可能比較有效率。
+> 更新資料表上的所有統計資料時，專用的 SQL 集區會進行掃描，以針對每個統計資料物件來取樣資料表。 如果資料表很大，而且有許多資料行以及許多統計資料，則根據需求來更新個別統計資料可能比較有效率。
 
 如需 `UPDATE STATISTICS` 程序的實作，請參閱[暫存資料表](develop-tables-temporary.md)。 實作方法與上述的 `CREATE STATISTICS` 程序有點不同，但結果相同。
 如需完整語法，請參閱[更新統計資料](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
@@ -512,7 +512,7 @@ DBCC SHOW_STATISTICS() 顯示統計資料物件中保存的資料。 此資料�
 
 標頭是關於統計資料的中繼資料。 此長條圖會顯示統計資料物件的第一個索引鍵資料行中的值散發。 
 
-密度向量可測量跨資料行關聯性。 SQL 集區可使用統計資料物件中的任何資料來計算基數估計值。
+密度向量可測量跨資料行關聯性。 專用的 SQL 集區會使用統計資料物件中的任何資料來計算基數估計值。
 
 #### <a name="show-header-density-and-histogram"></a>顯示標頭、密度和長條圖
 
@@ -546,7 +546,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 
 ### <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS() 差異
 
-相較於 SQL Server，`DBCC SHOW_STATISTICS()` 在 SQL集區中的實作更加嚴格：
+`DBCC SHOW_STATISTICS()` 相較于 SQL Server，更嚴格地在專用的 SQL 集區中執行：
 
 - 不支援未記載的功能。
 - 無法使用 Stats_stream。
@@ -556,25 +556,22 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 - 無法使用資料行名稱來識別統計資料物件。
 - 不支援自訂錯誤 2767。
 
-### <a name="next-steps"></a>後續步驟
 
-如需進一步改善查詢效能，請參閱[監視工作負載](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-
-## <a name="statistics-in-sql-on-demand-preview"></a>SQL 隨選 (預覽) 中的統計資料
+## <a name="statistics-in-serverless-sql-pool-preview"></a>無伺服器 SQL 集區中的統計資料 (預覽) 
 
 統計資料是依特定資料集的特殊資料行 (儲存體路徑) 建立的。
 
 ### <a name="why-use-statistics"></a>為何使用統計資料
 
-SQL 隨選 (預覽) 越了解您的資料，執行查詢的速度就越快。 從資料中收集統計資料是將查詢最佳化最重要的工作之一。 
+更多無伺服器的 SQL 集區 (預覽版) 瞭解您的資料，它可以更快執行查詢。 從資料中收集統計資料是將查詢最佳化最重要的工作之一。 
 
-SQL 隨選查詢最佳化工具是以成本為基礎的最佳化工具。 它會比較各種查詢方案的成本，然後選擇成本最低的方案。 在大部分的情況下，它會選擇執行最快的方案。 
+無伺服器 SQL 集區查詢最佳化工具是以成本為基礎的優化工具。 它會比較各種查詢方案的成本，然後選擇成本最低的方案。 在大部分的情況下，它會選擇執行最快的方案。 
 
 例如，如果最佳化工具評估您的查詢篩選的日期會傳回一個資料列，則會選擇一個方案。 如果最佳化工具評估所選取的日期將傳回 100 萬個資料列，則會傳回不同的方案。
 
 ### <a name="automatic-creation-of-statistics"></a>自動建立統計資料
 
-SQL 隨選會分析傳入的使用者查詢是否缺少統計資料。 如果缺少統計資料，查詢最佳化工具會在查詢述詞或聯結條件中的個別資料行上建立統計資料，以改善查詢計劃的基數估計值。
+無伺服器 SQL 集區會分析傳入的使用者查詢是否有遺漏的統計資料。 如果缺少統計資料，查詢最佳化工具會在查詢述詞或聯結條件中的個別資料行上建立統計資料，以改善查詢計劃的基數估計值。
 
 SELECT 陳述式將觸發統計資料的自動建立。
 
@@ -585,7 +582,7 @@ SELECT 陳述式將觸發統計資料的自動建立。
 
 ### <a name="manual-creation-of-statistics"></a>手動建立統計資料
 
-SQL 隨選可讓您手動建立統計資料。 對於 CSV 檔案，您必須手動建立統計資料，因為，CSV 檔案未開啟統計資料的自動建立。 
+無伺服器 SQL 集區可讓您手動建立統計資料。 對於 CSV 檔案，您必須手動建立統計資料，因為，CSV 檔案未開啟統計資料的自動建立。 
 
 如需如何手動建立統計資料的指示，請參閱以下範例。
 
@@ -593,7 +590,7 @@ SQL 隨選可讓您手動建立統計資料。 對於 CSV 檔案，您必須手�
 
 變更檔案中的資料、刪除和新增檔案，會造成資料散發變更，並讓統計資料過期。 在這種情況下，則需要更新統計資料。
 
-如果資料已大幅變更，SQL 隨選會自動重新建立統計資料。 每次自動建立統計資料時，也會儲存資料集的目前狀態：檔案路徑、大小、上次修改日期。
+如果資料有大幅變更，無伺服器 SQL 集區會自動重新建立統計資料。 每次自動建立統計資料時，也會儲存資料集的目前狀態：檔案路徑、大小、上次修改日期。
 
 如果統計資料過時，將建立新的統計資料。 此演算法會透過資料進行，並將資料與資料集的目前狀態進行比較。 如果變更的大小大於特定閾值，則會刪除舊的統計資料，並在新的資料集上重新建立。
 
@@ -650,7 +647,7 @@ sys.sp_create_openrowset_statistics [ @stmt = ] N'statement_text'
 
 若要建立資料行的統計資料，請提供查詢來傳回需要統計資料的資料行。
 
-根據預設，如果您未另行指定，SQL 隨選在建立統計資料時，會 100% 使用資料集提供的資料。
+根據預設，如果您未指定，無伺服器 SQL 集區會在建立統計資料時，使用資料集所提供的100% 資料。
 
 例如，根據 population.csv 檔案，為資料集的 [年] 資料行使用預設選項 (FULLSCAN)，建立統計資料：
 
@@ -816,4 +813,6 @@ CREATE STATISTICS sState
 
 ## <a name="next-steps"></a>後續步驟
 
-如需深入了解查詢效能改善，請參閱 [SQL 集區的最佳做法](best-practices-sql-pool.md#maintain-statistics)。
+若要進一步改善專用 SQL 集區的查詢效能，請參閱監視[專用 sql 集區的](best-practices-sql-pool.md#maintain-statistics)[工作負載](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)和最佳作法。
+
+若要進一步改善無伺服器 SQL 集區的查詢效能，請參閱 [無伺服器 sql 集區的最佳作法](best-practices-sql-on-demand.md)

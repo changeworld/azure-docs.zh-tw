@@ -9,23 +9,23 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 45f63aed410c4d140259808044872cbbecfaa95b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b00e75c5fda8a05f4ed0f3a756ba20cca570ba5c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91355562"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305980"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>使用 API 管理來管理 Machine Learning Studio (傳統版) Web 服務
 
-**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用於：** ![適用於。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)   ![不適用於。 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 ## <a name="overview"></a>概觀
 本指南示範如何快速開始使用 API 管理來管理 Azure Machine Learning Studio (傳統版) Web 服務。
 
 ## <a name="what-is-azure-api-management"></a>什麼是 Azure API 管理？
-Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、使用節流設定和儀表板監視，來管理 REST API 端點。 如需詳細資料，請參閱 [Azure API 管理網站](https://azure.microsoft.com/services/api-management/)。 若要開始使用 Azure API 管理，請參閱[匯入和發佈指南](/azure/api-management/import-and-publish)。 這是本指南所依據的另一份指南，涵蓋更多主題，包括通知組態、定價層、回應處理、使用者驗證、建立產品、開發人員訂用帳戶和使用量儀表板。
+Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、使用節流設定和儀表板監視，來管理 REST API 端點。 如需詳細資料，請參閱 [Azure API 管理網站](https://azure.microsoft.com/services/api-management/)。 若要開始使用 Azure API 管理，請參閱[匯入和發佈指南](../../api-management/import-and-publish.md)。 這是本指南所依據的另一份指南，涵蓋更多主題，包括通知組態、定價層、回應處理、使用者驗證、建立產品、開發人員訂用帳戶和使用量儀表板。
 
 ## <a name="prerequisites"></a>必要條件
 若要完成本指南，您需要：
@@ -151,15 +151,15 @@ Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、
 
    ![螢幕擷取畫面顯示 Azure M L 示範 A P I 對話方塊，其中已選取 [執行後 R R R S]，並顯示 [試用] 按鈕。](./media/manage-web-service-endpoints-using-api-management/try-it.png)
 
-4. 對於 [要求參數]，輸入您的 [工作區] 和 [服務]，在 [API 版本] 中輸入"2.0，以及在 [詳細資料] 中輸入 "true"。 您可以在 AzureML Web 服務儀表板中找到您的**工作區**和**服務** (請參閱附錄 A 中的**測試 Web 服務**)。
+4. 對於 [要求參數]，輸入您的 [工作區] 和 [服務]，在 [API 版本] 中輸入"2.0，以及在 [詳細資料] 中輸入 "true"。 您可以在 AzureML Web 服務儀表板中找到您的 **工作區** 和 **服務** (請參閱附錄 A 中的 **測試 Web 服務** )。
 
-   對於 [要求標頭]，按一下 [新增標頭] 並輸入 "Content-Type" 和 "application/json"。 再次按一下 [新增標頭] 並鍵入 "Authorization" 和 "Bearer *\<your service API-KEY\>* "。 您可以在 AzureML Web 服務儀表板中找到您的 API-KEY (請參閱附錄 A 中的**測試 Web 服務**)。
+   對於 [要求標頭]，按一下 [新增標頭] 並輸入 "Content-Type" 和 "application/json"。 再次按一下 [新增標頭] 並鍵入 "Authorization" 和 "Bearer *\<your service API-KEY\>* "。 您可以在 AzureML Web 服務儀表板中找到您的 API-KEY (請參閱附錄 A 中的 **測試 Web 服務** )。
 
    對於 [要求本文]，輸入 `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`。
 
    ![螢幕擷取畫面顯示 Azure M L 示範 A P I 要求參數、要求標頭、要求主體和授權。](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
 
-5. 按一下 [ **傳送**]。
+5. 按一下 [ **傳送** ]。
 
    ![螢幕擷取畫面顯示 [傳送] 按鈕。](./media/manage-web-service-endpoints-using-api-management/send.png)
 
@@ -179,7 +179,7 @@ Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、
 
 ![螢幕擷取畫面顯示已選取實驗的新頁面和文字搜尋。](./media/manage-web-service-endpoints-using-api-management/search-experiment-templates.png)
 
-重新命名為 **SimpleFeatureHashingExperiment**。 展開 [儲存的資料集]，將 [來自 Amazon 的書籍評論] 拖曳到您的實驗。
+重新命名為 **SimpleFeatureHashingExperiment** 。 展開 [儲存的資料集]，將 [來自 Amazon 的書籍評論] 拖曳到您的實驗。
 
 ![螢幕擷取畫面顯示左側的範例和右邊的 [SimpleFeatureHashingExperiment] 窗格，其中包含在此拖曳專案的指示。](./media/manage-web-service-endpoints-using-api-management/simple-feature-hashing-experiment.png)
 
@@ -195,7 +195,7 @@ Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、
 
 ![螢幕擷取畫面顯示新增至工作區的功能雜湊專案。](./media/manage-web-service-endpoints-using-api-management/connect-project-columns.png)
 
-在 [雜湊位元大小] 中，輸入 **3**。 這會建立 8 (23) 個資料行。
+在 [雜湊位元大小] 中，輸入 **3** 。 這會建立 8 (23) 個資料行。
 
 ![螢幕擷取畫面顯示已選取特徵雜湊的屬性，您可以輸入雜湊 bitsize。](./media/manage-web-service-endpoints-using-api-management/hashing-bitsize.png)
 
@@ -219,7 +219,7 @@ Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、
 ### <a name="test-the-web-service"></a>測試 Web 服務
 AzureML Web 服務是由 RSS (要求/回應服務) 和 BES (批次執行服務) 端點所組成。 RSS 適用於同步執行。 BES 適用於非同步工作執行。 若要使用下面的範例 Python 原始碼來測試您的 Web 服務，您可能需要下載並安裝適用於 Python 的 Azure SDK (請參閱：[如何安裝 Python](/azure/developer/python/azure-sdk-install))。
 
-下面的範例原始碼也需要用到實驗的**工作區**、**服務**和 **API 金鑰**。 若要尋找工作區和服務，請在 Web 服務儀表板中，按一下實驗的 [要求/回應] 或 [批次執行]。
+下面的範例原始碼也需要用到實驗的 **工作區** 、 **服務** 和 **API 金鑰** 。 若要尋找工作區和服務，請在 Web 服務儀表板中，按一下實驗的 [要求/回應] 或 [批次執行]。
 
 ![螢幕擷取畫面：顯示 [要求] 窗格，您可以在其中找到工作區和服務值。](./media/manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
 
@@ -233,7 +233,7 @@ AzureML Web 服務是由 RSS (要求/回應服務) 和 BES (批次執行服務) 
 
 ![螢幕擷取畫面顯示 web 服務儀表板中具有 [測試] 按鈕的實驗。](./media/manage-web-service-endpoints-using-api-management/test.png)
 
-在 [col2] 中，輸入**這是美好的一天**。 按一下核取記號。
+在 [col2] 中，輸入 **這是美好的一天** 。 按一下核取記號。
 
 ![螢幕擷取畫面顯示 [輸入要預測的資料] 對話方塊，您可以在其中輸入文字，例如，這是一個好日子。](./media/manage-web-service-endpoints-using-api-management/enter-data.png)
 
@@ -244,7 +244,7 @@ AzureML Web 服務是由 RSS (要求/回應服務) 和 BES (批次執行服務) 
 ##### <a name="sample-code"></a>範例程式碼
 測試 RRS 的另一個方式，是利用用戶端程式碼。 如果您按一下儀表板上的 [要求/回應] 並捲動至底部，您會看到 C#、Python 和 R 的範例程式碼。您也會看到 RRS 要求的語法，包括要求 URI、標頭和本文。
 
-本指南顯示一個運作正常的 Python 範例。 您必須使用實驗的**工作區**、**服務**和 **API 金鑰**加以修改。
+本指南顯示一個運作正常的 Python 範例。 您必須使用實驗的 **工作區** 、 **服務** 和 **API 金鑰** 加以修改。
 
 ```python
 import urllib2
@@ -278,7 +278,7 @@ try:
 #### <a name="test-bes-endpoint"></a>測試 BES 端點
 按一下儀表板上的 [批次執行] 並捲動至底部。 您會看到 C#、Python 和 R 的範例程式碼。您也會看到用來提交工作、啟動工作、取得工作狀態或結果，以及刪除工作的 BES 要求語法。
 
-本指南顯示一個運作正常的 Python 範例。 您必須使用實驗的**工作區**、**服務**和 **API 金鑰**加以修改。 此外，您必須修改**儲存體帳戶名稱**、**儲存體帳戶金鑰**和**儲存體容器名稱**。 最後，您必須修改**輸入檔**的位置和**輸出檔**的位置。
+本指南顯示一個運作正常的 Python 範例。 您必須使用實驗的 **工作區** 、 **服務** 和 **API 金鑰** 加以修改。 此外，您必須修改 **儲存體帳戶名稱** 、 **儲存體帳戶金鑰** 和 **儲存體容器名稱** 。 最後，您必須修改 **輸入檔** 的位置和 **輸出檔** 的位置。
 
 ```python
 import urllib2

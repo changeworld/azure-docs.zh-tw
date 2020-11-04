@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7224a7bb26ef491915df9fcb9b6b84ff171a9fc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2294ccb1d958b229a71e45bb502b8134d8d5c7f
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76720515"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305666"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命週期的客戶接受度階段
 
@@ -34,18 +34,18 @@ ms.locfileid: "76720515"
 
 
 ## <a name="goal"></a>目標
-**完成專案交付專案**：確認管線、模型及其在生產環境中的部署都符合客戶的目標。
+**完成專案交付專案** ：確認管線、模型及其在生產環境中的部署都符合客戶的目標。
 
 ## <a name="how-to-do-it"></a>如何執行此動作
 此階段會解決兩項主要工作︰
 
-   * **系統驗證**︰確認所部署的模型和管線符合客戶的需求。
-   * **專案移交**︰將專案移交給將在生產環境中執行系統的實體。
+   * **系統驗證** ︰確認所部署的模型和管線符合客戶的需求。
+   * **專案移交** ︰將專案移交給將在生產環境中執行系統的實體。
 
 客戶應該驗證系統是否符合其商務需求並以可接受的精確度回答問題，以將系統部署到生產環境以供其用戶端的應用程式使用。 所有文件皆已完成並檢閱。 專案已移交給負責運作的實體。 比方說，這個實體可能是 IT 或客戶的資料科學小組，或負責在生產環境中執行系統的客戶代理人。 
 
 ## <a name="artifacts"></a>Artifacts
-此最終階段所產生的主要成品是**客戶專案結束報表**。 此份技術報告包含可用於了解如何操作系統的所有專案詳細資料。 TDSP 提供[結束報告](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md)範本。 您可以直接使用範本，或者針對特定的用戶端需求加以自訂。 
+此最終階段所產生的主要成品是 **客戶專案結束報表** 。 此份技術報告包含可用於了解如何操作系統的所有專案詳細資料。 TDSP 提供[結束報告](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md)範本。 您可以直接使用範本，或者針對特定的用戶端需求加以自訂。 
 
 
 ## <a name="next-steps"></a>後續步驟
@@ -60,4 +60,4 @@ ms.locfileid: "76720515"
 
 我們會提供完整的逐步解說，示範適用于特定案例的程式中的所有步驟。 [範例逐步解說](walkthroughs.md)一文提供有連結和縮圖描述的案例清單。 這些逐步解說示範如何將雲端、內部部署工具與服務組合成工作流程或管線，以建立智慧型應用程式。 
 
-如需如何在使用 Azure Machine Learning Studio 的 TDSP 中執行步驟的範例，請參閱[配合使用 Team Data Science Process 與 Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)。
+如需如何在使用 Azure Machine Learning Studio 的 TDSP 中執行步驟的範例，請參閱[配合使用 Team Data Science Process 與 Azure Machine Learning](./index.yml)。

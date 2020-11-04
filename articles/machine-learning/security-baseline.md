@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c473955dbc2b41f434267e12f7983f19d4a0e4c5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ccc9f7c2521f846529642c644e70654d17ae54ce
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100954"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305723"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>適用于 Azure Machine Learning 的 Azure 安全性基準
 
@@ -21,7 +21,7 @@ ms.locfileid: "93100954"
 
 ## <a name="network-security"></a>網路安全性
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：網路安全性](/azure/security/benchmarks/security-control-network-security)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：網路安全性](../security/benchmarks/security-control-network-security.md)。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保護虛擬網路內的 Azure 資源
 
@@ -71,11 +71,11 @@ ms.locfileid: "93100954"
 
 在每個組織的網路界限上部署 Azure 防火牆，並啟用以威脅情報為基礎的篩選，並設定為惡意網路流量的「警示和拒絕」。
 
-- [如何設定 DDoS 保護](../virtual-network/manage-ddos-protection.md)
+- [如何設定 DDoS 保護](../ddos-protection/manage-ddos-protection.md)
 
 - [使用 Azure 防火牆後方的工作區進行 Azure Machine Learning](how-to-access-azureml-behind-firewall.md)
 
-- [如需 Azure 資訊安全中心威脅偵測的詳細資訊](/azure/security-center/security-center-alerts-service-layer)
+- [如需 Azure 資訊安全中心威脅偵測的詳細資訊](../security-center/azure-defender.md)
 
 **Azure 資訊安全中心監視** ：是
 
@@ -145,7 +145,7 @@ Azure Machine Learning 服務在虛擬網路內記錄其計算目標的服務標
 
 針對 Azure Machine Learning 虛擬網路中支援 [描述] 欄位的資源，請使用它來記錄允許流量進出網路的規則。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視** ：不適用
 
@@ -155,7 +155,7 @@ Azure Machine Learning 服務在虛擬網路內記錄其計算目標的服務標
 
 **指導** 方針：使用 Azure 活動記錄監視網路資源設定，並偵測與 Azure Machine Learning 相關之網路資源的變更。 在 Azure 監視器中建立警示，以在重要網路資源發生變更時觸發。
 
-- [如何檢視及擷取 Azure 活動記錄事件](/azure/azure-monitor/platform/activity-log-view)
+- [如何檢視及擷取 Azure 活動記錄事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [如何在 Azure 監視器中建立警示](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -165,7 +165,7 @@ Azure Machine Learning 服務在虛擬網路內記錄其計算目標的服務標
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：記錄和監視](/azure/security/benchmarks/security-control-logging-monitoring)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：記錄和監視](../security/benchmarks/security-control-logging-monitoring.md)。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用已核准的時間同步處理來源
 
@@ -197,7 +197,7 @@ Azure Machine Learning 服務在虛擬網路內記錄其計算目標的服務標
 
 - [瞭解 Azure 中的記錄和不同的記錄類型](../azure-monitor/platform/platform-logs-overview.md)
 
-- [在 Azure Machine Learning 中啟用記錄](/azure/machine-learning/how-to-enable-logging)
+- [在 Azure Machine Learning 中啟用記錄](./how-to-track-experiments.md)
 
 - [監視 Azure Machine Learning](monitor-azure-machine-learning.md)
 
@@ -237,7 +237,7 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 - [如何在 Log Analytics 工作區中執行 Azure Machine Learning 的查詢](monitor-azure-machine-learning.md#analyzing-log-data)
 
-- [在 Azure Machine Learning 中啟用記錄](/azure/machine-learning/how-to-enable-logging)
+- [在 Azure Machine Learning 中啟用記錄](./how-to-track-experiments.md)
 
 - [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
@@ -299,7 +299,7 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：身分識別與存取控制](/azure/security/benchmarks/security-control-identity-access-control)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：身分識別與存取控制](../security/benchmarks/security-control-identity-access-control.md)。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
@@ -311,7 +311,7 @@ Azure Machine Learning 針對 Azure Machine Learning 中的常見管理案例提
 
 - [瞭解 Azure Machine Learning 中的 Azure 角色型存取控制](how-to-assign-roles.md)
 
-- [如何使用 PowerShell 在 Azure Active Directory 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure Active Directory 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
 **Azure 資訊安全中心監視** ：是
 
@@ -333,7 +333,7 @@ Azure Machine Learning 針對 Azure Machine Learning 中的常見管理案例提
 
 - [若要深入瞭解 Machine Learning 預設角色](how-to-assign-roles.md#default-roles)
 
-- [深入瞭解 Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [深入瞭解 Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Azure 資訊安全中心監視** ：是
 
@@ -377,7 +377,7 @@ Azure Machine Learning 針對 Azure Machine Learning 中的常見管理案例提
 
 **指導** 方針：使用 Azure Active Directory 安全性報告和監視，來偵測環境中發生可疑或不安全的活動時。 使用 Azure 資訊安全中心來監視身分識別和存取活動。
 
-- [如何識別已標示為有風險活動的 Azure AD 使用者](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [如何識別已標示為有風險活動的 Azure AD 使用者](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何在 Azure 資訊安全中心監視使用者的身分識別和存取活動](../security-center/security-center-identity-access.md)
 
@@ -417,11 +417,11 @@ Azure Machine Learning 針對 Azure Machine Learning 中的常見管理案例提
  
 當環境中發生可疑或不安全的活動時，請使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 來產生記錄和警示。
 
-- [瞭解 Azure AD 報告](/azure/active-directory/reports-monitoring)
+- [瞭解 Azure AD 報告](../active-directory/reports-monitoring/index.yml)
 
 - [如何使用 Azure AD 身分識別和存取權評論](../active-directory/governance/access-reviews-overview.md)
 
-- [部署 Azure AD Privileged Identity Management (PIM)](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [部署 Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
 **Azure 資訊安全中心監視** ：是
 
@@ -434,7 +434,7 @@ Azure Machine Learning 針對 Azure Machine Learning 中的常見管理案例提
 您可以建立 Azure AD 使用者帳戶的診斷設定，並將審核記錄和登入記錄傳送至 Log Analytics 工作區，以簡化此程式。 您可以在 Log Analytics 工作區中設定所需的警示。
  
  
-- [如何整合 Azure 活動記錄與 Azure 監視器](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何整合 Azure 活動記錄與 Azure 監視器](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure 資訊安全中心監視** ：不適用
 
@@ -444,7 +444,7 @@ Azure Machine Learning 針對 Azure Machine Learning 中的常見管理案例提
 
 **指導** 方針：使用 Azure AD Identity Protection 功能，對偵測到與使用者身分識別相關的可疑動作設定自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
  
-- [如何檢視有風險的 Azure AD 登入](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何檢視有風險的 Azure AD 登入](../active-directory/identity-protection/overview-identity-protection.md)
  
 - [如何設定和啟用身分識別保護風險原則](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
  
@@ -464,13 +464,13 @@ Azure Machine Learning 針對 Azure Machine Learning 中的常見管理案例提
 
 ## <a name="data-protection"></a>資料保護
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：資料保護](/azure/security/benchmarks/security-control-data-protection)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：資料保護](../security/benchmarks/security-control-data-protection.md)。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的詳細目錄
 
 **指引** ：使用標籤協助追蹤可儲存或處理敏感性資訊的 Azure 資源。
  
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視** ：不適用
 
@@ -480,11 +480,11 @@ Azure Machine Learning 針對 Azure Machine Learning 中的常見管理案例提
 
 **指導** 方針：針對個別的安全性網域（例如環境類型和資料敏感度層級），使用不同的訂用帳戶和管理群組來執行隔離。 您可以限制您的應用程式和企業環境所需的 Azure 資源存取層級。 您可以透過 Azure RBAC 來控制對 Azure 資源的存取。
  
-- [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](../governance/management-groups/create.md)
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
  
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視** ：不適用
 
@@ -554,7 +554,7 @@ Microsoft 管理 Machine Learning 的基礎結構，並已實行嚴格的控制�
 
 - [瞭解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md)
 
-- [如何設定客戶管理的加密金鑰](../storage/common/storage-encryption-keys-portal.md)
+- [如何設定客戶管理的加密金鑰](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 **Azure 資訊安全中心監視** ：不適用
 
@@ -572,7 +572,7 @@ Microsoft 管理 Machine Learning 的基礎結構，並已實行嚴格的控制�
 
 ## <a name="vulnerability-management"></a>弱點管理
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：弱點管理](/azure/security/benchmarks/security-control-vulnerability-management)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：弱點管理](../security/benchmarks/security-control-vulnerability-management.md)。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：執行自動化弱點掃描工具
 
@@ -580,7 +580,7 @@ Microsoft 管理 Machine Learning 的基礎結構，並已實行嚴格的控制�
 
 Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資源之間有不同的支援。 針對您組織所擁有的計算資源，請遵循 Azure 資訊安全中心中的建議，在您的 Azure 虛擬機器、容器映射和 SQL server 上執行弱點評定。
 
-- [如何實行 Azure 資訊安全中心弱點評定建議](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [如何實行 Azure 資訊安全中心弱點評定建議](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure 資訊安全中心監視** ：不適用
 
@@ -592,9 +592,9 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資源之間有不同的支援。 針對貴組織所擁有的任何計算資源，請使用 Azure 自動化更新管理，以確保您的 Windows 和 Linux Vm 上已安裝最新的安全性更新。 針對 Windows Vm，請確定已啟用 Windows Update，並將其設定為自動更新。
 
-- [如何在 Azure 中設定虛擬機器的更新管理](/azure/automation/update-management/overview)
+- [如何在 Azure 中設定虛擬機器的更新管理](../automation/update-management/overview.md)
 
-- [瞭解由安全性中心監視的 Azure 安全性原則](../security-center/security-center-policy-definitions.md)
+- [瞭解由安全性中心監視的 Azure 安全性原則](../security-center/policy-reference.md)
 
 **Azure 資訊安全中心監視** ：不適用
 
@@ -612,7 +612,7 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 **指導** 方針： Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資源之間有不同的支援。 針對您組織所擁有的計算資源，請遵循 Azure 資訊安全中心中的建議，以在您的 Azure 虛擬機器、容器映射和 SQL server 上執行弱點評定。 以一致的間隔匯出掃描結果，並將結果與先前的掃描進行比較，以確認已補救弱點。 使用 Azure 資訊安全中心建議的弱點管理建議時，您可以在選取的解決方案入口網站中，切換到所選解決方案的入口網站以查看歷程記錄掃描資料。
 
-- [如何實行 Azure 資訊安全中心弱點評定建議](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [如何實行 Azure 資訊安全中心弱點評定建議](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure 資訊安全中心監視** ：不適用
 
@@ -628,7 +628,7 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：清查和資產管理](/azure/security/benchmarks/security-control-inventory-asset-management)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：清查和資產管理](../security/benchmarks/security-control-inventory-asset-management.md)。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自動化資產探索解決方案
 
@@ -638,7 +638,7 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 - [如何使用 Azure Resource Graph Explorer 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-- [如何查看您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何查看您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -650,7 +650,7 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 **指導** 方針：將標記套用至 Azure 資源，並新增中繼資料，以邏輯方式根據分類法進行組織。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視** ：不適用
 
@@ -662,15 +662,15 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
  
  
  
-- [ 如何建立額外的 Azure 訂用帳戶](/azure/billing/billing-create-subscription)
+- [ 如何建立額外的 Azure 訂用帳戶](../cost-management-billing/manage/create-subscription.md)
  
  
  
-- [ 如何建立管理群組](../governance/management-groups/create.md)
+- [ 如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
  
  
  
-- [ 如何建立和使用標記](/azure/azure-resource-manager/resource-group-using-tags)
+- [ 如何建立和使用標記](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視** ：不適用
 
@@ -784,7 +784,7 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 **指導** 方針： Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資源之間有不同的支援。 針對組織所擁有的計算資源，您可以使用作業系統特定的設定或協力廠商資源，以限制使用者在 Azure 計算資源中執行腳本的能力。  您也可以使用 Azure 資訊安全中心的自我調整應用程式控制，以確保只有授權的軟體會執行，而且所有未經授權的軟體都會在 Azure 虛擬機器上遭到封鎖而無法執行。
 
-- [如何在 Windows 環境中控制 PowerShell 腳本執行](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+- [如何在 Windows 環境中控制 PowerShell 腳本執行](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
 - [如何使用 Azure 資訊安全中心適應性應用程式控制](../security-center/security-center-adaptive-application.md)
 
@@ -802,7 +802,7 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 ## <a name="secure-configuration"></a>安全設定
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：安全](/azure/security/benchmarks/security-control-secure-configuration)設定。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：安全](../security/benchmarks/security-control-secure-configuration.md)設定。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
@@ -814,7 +814,7 @@ Azure Resource Manager 能夠在 JavaScript 物件標記法 (的 JSON) 中匯出
 
 Azure Machine Learning 完全支援用於追蹤工作的 Git 存放庫;您可以直接將存放庫複製到您的共用工作區檔案系統、在本機工作站上使用 Git，以及確定安全設定會套用至程式碼資源，作為 Machine Learning 環境的一部分。
 
-- [如何查看可用 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何查看可用 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [教學課程：建立和管理原則來強制執行相容性](../governance/policy/tutorials/create-and-manage.md)
 
@@ -870,7 +870,7 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 請注意，microsoft 發佈的 Azure Marketplace 虛擬機器映射是由 Microsoft 所管理和維護。 
 
-- [如何實行 Azure 資訊安全中心弱點評定建議](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [如何實行 Azure 資訊安全中心弱點評定建議](../security-center/deploy-vulnerability-assessment-vm.md)
 
 - [如何從 ARM 範本建立 Azure 虛擬機器](../virtual-machines/windows/ps-template.md)
 
@@ -892,9 +892,9 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 Azure Machine Learning 完全支援用於追蹤工作的 Git 存放庫;您可以直接將存放庫複製到您的共用工作區檔案系統、在本機工作站上使用 Git，以及確定安全設定會套用至程式碼資源，作為 Machine Learning 環境的一部分。
 
-- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Azure Repos 文件](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos 文件](/azure/devops/repos/index?view=azure-devops)
 
 **Azure 資訊安全中心監視** ：不適用
 
@@ -958,7 +958,7 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資源之間有不同的支援。 針對您組織所擁有的計算資源，請使用 Azure 資訊安全中心計算 &amp; 應用程式，並遵循 vm 和伺服器和容器的建議。
 
-- [了解 Azure 資訊安全中心容器建議](/azure/security-center/security-center-container-recommendations)
+- [了解 Azure 資訊安全中心容器建議](../security-center/container-security.md)
 
 **Azure 資訊安全中心監視** ：不適用
 
@@ -978,11 +978,11 @@ Azure Machine Learning 支援以客戶管理的金鑰進行資料存放區加密
 
 - [如何使用適用于 Azure 資源的受控識別](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [如何建立 Key Vault](/azure/key-vault/quick-create-portal)
+- [如何建立 Key Vault](../key-vault/secrets/quick-create-portal.md)
 
-- [如何驗證 Key Vault](https://docs.microsoft.com/azure/key-vault/general/authentication)
+- [如何驗證 Key Vault](../key-vault/general/authentication.md)
 
-- [如何指派 Key Vault 存取原則](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+- [如何指派 Key Vault 存取原則](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 資訊安全中心監視** ：是
 
@@ -1013,7 +1013,7 @@ Azure Machine Learning 支援以客戶管理的金鑰進行資料存放區加密
 
 ## <a name="malware-defense"></a>惡意程式碼防禦
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：惡意程式碼防護](/azure/security/benchmarks/security-control-malware-defense)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：惡意程式碼防護](../security/benchmarks/security-control-malware-defense.md)。*
 
 ### <a name="81-use-centrally-managed-antimalware-software"></a>8.1：使用集中管理的反惡意程式碼軟體
 
@@ -1023,7 +1023,7 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 - [如何設定適用于 Azure 的 Microsoft Antimalware](../security/fundamentals/antimalware.md)
 
-- [Azure 資訊安全中心內的威脅防護](../security-center/threat-protection.md)
+- [Azure 資訊安全中心內的威脅防護](../security-center/azure-defender.md)
 
 **Azure 資訊安全中心監視** ：不適用
 
@@ -1053,7 +1053,7 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 ## <a name="data-recovery"></a>資料復原
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：資料](/azure/security/benchmarks/security-control-data-recovery)復原。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：資料](../security/benchmarks/security-control-data-recovery.md)復原。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保會定期自動備份
 
@@ -1070,7 +1070,7 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 **指導** 方針： Machine Learning 服務中的資料備份是透過連線資料存放區上的資料管理。 啟用 Vm 的 Azure 備份，並設定所需的頻率和保留期限。 在 Azure Key Vault 中備份客戶管理的金鑰。
 
 - [如何從 Azure 虛擬機器備份復原檔案](../backup/backup-azure-restore-files-from-vm.md)
-- [如何在 Azure 中還原 Key Vault 金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [如何在 Azure 中還原 Key Vault 金鑰](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure 資訊安全中心監視** ：不適用
 
@@ -1095,9 +1095,9 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
  
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
-- [如何啟用 Key Vault 中的虛刪除和清除保護](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [如何啟用 Key Vault 中的虛刪除和清除保護](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
-- [Azure Blob 儲存體的虛刪除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Azure Blob 儲存體的虛刪除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 資訊安全中心監視** ：不適用
 
@@ -1105,7 +1105,7 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 ## <a name="incident-response"></a>事件回應
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：事件回應](/azure/security/benchmarks/security-control-incident-response)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：事件回應](../security/benchmarks/security-control-incident-response.md)。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：建立事件回應指南
 
@@ -1129,7 +1129,7 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 - [Azure 資訊安全中心的安全性警示](../security-center/security-center-alerts-overview.md)
 
-- [使用標記來組織 Azure 資源](/azure/azure-resource-manager/resource-group-using-tags)
+- [使用標記來組織 Azure 資源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視** ：是
 
@@ -1179,7 +1179,7 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：滲透測試和 red team 練習](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：滲透測試和 red team 練習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
@@ -1195,5 +1195,5 @@ Azure Machine Learning 在不同的計算資源，甚至是您自己的計算資
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

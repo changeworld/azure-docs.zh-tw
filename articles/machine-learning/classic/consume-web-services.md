@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-python, devx-track-js, devx-track-csharp
 ms.date: 05/29/2020
-ms.openlocfilehash: 66c9368d06960790c6dc960d2d95bd82be1a6e39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9922ddf0859e4f28d5759108581f5ef538f0c294
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342209"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305570"
 ---
 # <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>如何使用 Machine Learning Studio (傳統) web 服務
 
-**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否 ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 將 Azure Machine Learning Studio (傳統) 預測模型部署為 Web 服務之後，您就可以使用 REST API 傳送資料並取得預測。 您可以即時或以批次模式傳送資料。
@@ -31,7 +31,7 @@ ms.locfileid: "91342209"
 
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 使用 Azure Machine Learning Web 服務，外部應用程式會即時與機器學習服務工作流程計分模型通訊。 機器學習 Web 服務呼叫會將預測結果傳回外部應用程式。 若要進行機器學習 Web 服務呼叫，您可以傳遞部署預測時所建立的 API 金鑰。 機器學習服務 Web 服務以 REST 為基礎，這是一種常見的 Web 程式設計專案架構。
 
 Azure Machine Learning Studio (傳統) 有兩種類型的服務：
@@ -49,25 +49,25 @@ Azure Machine Learning Studio (傳統) 有兩種類型的服務：
 
 若要擷取新 Machine Learning Web 服務的 API 金鑰︰
 
-1. 在 Azure Machine Learning Web Services 入口網站中，按一下頂端功能表上的 [Web 服務]****。
+1. 在 Azure Machine Learning Web Services 入口網站中，按一下頂端功能表上的 [Web 服務]。
 2. 按一下您要擷取金鑰的 Web 服務。
-3. 在頂端功能表上，按一下 [取用] ****。
-4. 複製並儲存 [主要金鑰] ****。
+3. 在頂端功能表上，按一下 [取用] 。
+4. 複製並儲存 [主要金鑰] 。
 
 若要擷取傳統 Machine Learning Web 服務的 API 金鑰︰
 
-1. 在 Azure Machine Learning Web Services 入口網站中，按一下頂端功能表上的 [傳統 Web 服務]****。
+1. 在 Azure Machine Learning Web Services 入口網站中，按一下頂端功能表上的 [傳統 Web 服務]。
 2. 按一下您所使用的 Web 服務。
 3. 按一下您要取得金鑰的端點。
-4. 在頂端功能表上，按一下 [取用] ****。
-5. 複製並儲存 [主要金鑰] ****。
+4. 在頂端功能表上，按一下 [取用] 。
+5. 複製並儲存 [主要金鑰] 。
 
 ### <a name="classic-web-service"></a>傳統 Web 服務
  您也可以從 Machine Learning Studio (傳統) 取得傳統 Web 服務的金鑰。
 
 #### <a name="machine-learning-studio-classic"></a>Machine Learning Studio (傳統)
 1. 在 Machine Learning Studio (傳統) 中，按一下左側的 [ **WEB 服務** ]。
-2. 按一下某個 Web 服務。 [API 金鑰]**** 位於 [儀表板]**** 索引標籤上。
+2. 按一下某個 Web 服務。 [API 金鑰] 位於 [儀表板] 索引標籤上。
 
 ## <a name="connect-to-a-machine-learning-web-service"></a><a id="connect"></a>連接到 Machine Learning Web 服務
 您可以使用任何支援 HTTP 要求和回應的程式設計語言，連線到機器學習 Web 服務。 您可以從機器學習 Web 服務說明頁面檢視 C#、Python 和 R 的範例。
@@ -77,19 +77,19 @@ Azure Machine Learning Studio (傳統) 有兩種類型的服務：
 
 1. 按一下您所使用的 Web 服務。
 2. 按一下您想要檢視 API 說明頁面的端點。
-3. 在頂端功能表上，按一下 [取用] ****。
-4. 按一下 [要求-回應] 或 [批次執行] 端點底下的 [API 說明頁面]****。
+3. 在頂端功能表上，按一下 [取用] 。
+4. 按一下 [要求-回應] 或 [批次執行] 端點底下的 [API 說明頁面]。
 
 **檢視新 Web 服務的機器學習 API 說明**
 
 在 [Azure Machine Learning Web 服務入口網站](https://services.azureml.net/)中：
 
-1. 按一下頂端功能表上的 [Web 服務] **** 。
+1. 按一下頂端功能表上的 [Web 服務]  。
 2. 按一下您要擷取金鑰的 Web 服務。
 
-按一下 [使用 Web 服務]**** 取得要求-回應服務和批次執行服務的 URI，以及以 C#、R 和 Python 撰寫的範例程式碼。
+按一下 [使用 Web 服務] 取得要求-回應服務和批次執行服務的 URI，以及以 C#、R 和 Python 撰寫的範例程式碼。
 
-按一下 [Swagger API]**** 從提供的 URI，取得所呼叫 API 的 Swagger 相關文件。
+按一下 [Swagger API] 從提供的 URI，取得所呼叫 API 的 Swagger 相關文件。
 
 ### <a name="c-sample"></a>C# 範例
 若要連接到 Machine Learning Web 服務，請使用 **HttpClient** 傳遞 ScoreData。 ScoreData 包含 FeatureVector，這是代表 ScoreData 的數值特徵 N 維向量。 您要使用 API 金鑰向機器學習服務驗證。
@@ -99,8 +99,8 @@ Azure Machine Learning Studio (傳統) 有兩種類型的服務：
 **在 Visual Studio 中安裝 WebApi 用戶端 NuGet**
 
 1. 發佈 Download dataset from UCI: Adult 2 class dataset 的 Web 服務。
-2. 按一下 [**工具**]  >  **NuGet 封裝管理員**  >  **封裝管理員主控台**。
-3. 選擇 [ **Install-package Microsoft.AspNet.WebApi.Client**]。
+2. 按一下 [ **工具** ]  >  **NuGet 封裝管理員**  >  **封裝管理員主控台** 。
+3. 選擇 [ **Install-package Microsoft.AspNet.WebApi.Client** ]。
 
 **執行程式碼範例**
 
